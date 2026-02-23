@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A24CEC1113
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:06:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0366EC1113
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:06:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKe-0002LO-JA; Mon, 23 Feb 2026 12:02:52 -0500
+	id 1vuZMt-00068A-RO; Mon, 23 Feb 2026 12:05:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKc-0002I8-8y
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:50 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1vuZLF-0002wF-7M
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:32 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKZ-0000E9-Md
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:49 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-4362507f0feso2836241f8f.0
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:47 -0800 (PST)
+ id 1vuZL9-0000SV-UP
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:28 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4838c15e3cbso39671425e9.3
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866166; x=1772470966; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866200; x=1772471000; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=A4hIy6Kcu/S1hR9Ar9eqjjFF1c+deS8g8DeFKzdYWAM=;
- b=HUeFNmkGKpfMKKJ6SEsY5yyuiRBZDsyYz684Los8NW+Tsj/+a9i4gW2NbVW3GiNs6x
- VIa6rmBI0/N4DEc5u+ozKcofhzqAgQ51yniH4J/aooCNEAehypt0u3RbHbYx+OApdKrK
- NNfH6xcqQRWHcZcznRVwO3PcNe2ue8fvao9HULgRVNB+FMQc+axl7m1qYtm73YURWV2V
- In4ZxGmp8dkuVJ08tkcQCzLLmyQi+d1ld3AWAjOeWadnlKEN0DcMrVN0kUe3SLX3TjHT
- 8pc+uufbot/f8p0t4TozW5Wa8VMD6BeiyIUbgFWfpmGTKvmhh9AyU9J7rlOyZVnHNoQ0
- wUjA==
+ :reply-to; bh=W+SiJjnlnmDMFokE5A1Qunqp4HakTLA2MrS0hcnraE4=;
+ b=CR7cJ1/LuPvzRnF2+2QEsFjnf5wvZqHNlHNTFHrjrvlChkQzveK0399aAa7XVGSv4w
+ q+SY8y+FzMdC7jcuMq+NB6P5xj4xhNDkGqRFB8SbDY+ufSCKRvZ3YK+KvcJRf1+C7pBJ
+ EVjFcLSo8vB/NJhABAiSM6TCiEJNWXyzXthwvd2phSLq+jPd9mGmIhz76kZjtMHifzz5
+ FvG8OITcvb+fxATLSil4zOQDeUgcaMIerfanUBtR4GOwKePysLjTFef62kU9CEIk6oaA
+ 2YQLfZ16EDTTuLv5t7axkOckUcmTYa9PUpjDjKP8iUa2O3c7VZFJYgAMpKITrJNpT4ce
+ J/Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866166; x=1772470966;
+ d=1e100.net; s=20230601; t=1771866200; x=1772471000;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=A4hIy6Kcu/S1hR9Ar9eqjjFF1c+deS8g8DeFKzdYWAM=;
- b=dXj1jupjIpTGLjgYKYulEArg5VZqYOXMU+rJy+CYxRcnVU3rhU0DA71ZScOlkTihJS
- 71R6av45rGleT9dG3gMOdAzRIlA4AdDlvQrMS3cEkKaUJCifLFfRz4sTbmOE/I4iZr7f
- XRnFh6dOwdIOJALg66hbXNjeiZMY2KTK8x6/ps/qkmKxzN0sDCI8+23lvcmmPosVr1XJ
- rWMovBEBjKNMF17NE2EWyf7RjecUoxCpeG9Z6MG9Q1MMHb4REd6lyK6tK1IXyl2COaeW
- 4wvPhk2wHjOHp0gZ/0MuckijyYOtS6vXO3FzDQGNK7T2gqGEzTqq1YVEujPfMsu+MKRb
- Cjwg==
-X-Gm-Message-State: AOJu0YwpHAIW0ZP11SCQMPQbh+meEI43bbFB7pxXqDprABpVmkav6D1b
- xvYQg1J40Dq9rwINVRWU6CwoVbWEiA3r76ONNJMbUUEW39xLoPEl43GmOL72pTST0l1DwLD6RQ7
- Kpxh3
-X-Gm-Gg: AZuq6aI9YeKjHkXWLmj90jTVYkjllMug+iVE15sJ0HEOzuPJuuL+iWdAeVlE50bzHva
- 4459+FC+sB+RyLhA5fn2IwMoIDh0Pza8+kqMUjgwaK5TtmPbFVPDQ8JQHlechoENRi+5DiUaR2a
- 0ogSVIgzN/JZd+ODzQPtgoWYOGt1e1IdLoGIywHKZSy1tgwpVebWTZLGH8M//WiLuhLYOrto4uQ
- us+BPas9AWsRi/WCS0Ikzb9GQyNEVeU5VWdP7gkUV0jU+lYlMCbiz6zJiLaFt0wEUf2ShKqMdey
- Mno6o9X8xm05fLG88vxaba9w+mfNSJtIFCYQeYNwPZmM5GjBviLFkRWMqBhscDqd/kVXF4y7EE2
- ykY/DQkruhP+Ky/5NA2WKsVev2XEZ9sNepytko6ixwtOsVrZH35mpWz3Epz+4SIFZenF6Efp0Gx
- 2Gi6M9ykuWfp/ZTLv8OKMJLjADhs81FHb+OmvPxu5bnkI2vOn0ibtPhJUG1ubX4gedxY9S68Vh7
- 7DM7d/JYz+pPwzfpKJOGdPTQj97Ec0Q49/KCw1wJQ==
-X-Received: by 2002:a05:600c:3b0a:b0:47e:e2ec:9947 with SMTP id
- 5b1f17b1804b1-483a963df7amr151995955e9.33.1771866165623; 
- Mon, 23 Feb 2026 09:02:45 -0800 (PST)
+ bh=W+SiJjnlnmDMFokE5A1Qunqp4HakTLA2MrS0hcnraE4=;
+ b=iOdCRj6iB0/JorRCurBvElxCTt/g0YkDtQsEnRkahM9SRujoZ/ZJc2T8BNWJD4sWtB
+ JhyB6LVAi4uVvRb9V8WJ573PMgKCHETCUDMRipO4G2b6I/CEV/jyp681hpLSt0BEGnly
+ EI3Po7YXF+M95KoKwr1Jzel6Qi6SFQlxa7tqCr+q50q2l8n8kIx6ul29KrycR+YX3bsR
+ OjO1kU/7MAN0649liGS+iGz+klZ5+/E5QqfJMZrzvLPlCPonT3udesDi4nBw8mUo2Fof
+ LGtEno7FY9hoB8WVxyNfW2exx6ZFEJ1eEelcy5PxEPEKbHtOHp55U+WFsAT/RxscW7Vd
+ UtfQ==
+X-Gm-Message-State: AOJu0Yx0rAjf6GrQQqvR0es9d6jeHhI11TWwu1CD+uDFmawL10CuB2+8
+ hkTh8B+rOP+mnlbyrAPUhNYnbXXP8Ybxlms9hXrxuDwbL4DVr6jKkIGjgj3aJAZx9odh0DyMfp2
+ NDA5y
+X-Gm-Gg: AZuq6aLRQ3tGK/ZZ8L/NhtFx9Ny3ueq/bEJDZLoL/fIV+UB0iqoJBj0mZUY28vklKGD
+ EJX0cu/22I2Hic9HbxCSAGJiiTgLBPKkMQHuaMBOrf6aIugsh6bfhVtdrixXahv9Ik7S3aaZxIH
+ B8M9ME2bTvgJzRFn2KNbpMVAtQe9xvivPNl3Ive/yJmNzX7Vth4MO78w8qdGhQh3F7p1FTeBDFx
+ XaOVtG94bfY7So7knH0j/hkgMMXrURezK7+NA8FfW3Vf6+pa01V3wLGQh7SC9XdWZdBsFR3F4Ot
+ RCcuwx8HeZF3IqHn2D6/s+17gHMe+Bo1tA9rVkBXOH+9G2jTKFtrAjWtCAOocU0WpqtSzqV9PCZ
+ ar8TgGaPhJE1YX1sIK4407eKwCdw7hNU1/ytI+VcXTYVbHNB46/SeRaW6jwIIKjRHJOeW9qnBaf
+ 9S0OtXdT+RFKABoHkTDnzeGpEo1tv4Vr67RbIbYGMe5XVTLgOX/wEanwqZn5QHHdxX92UkN2Uij
+ FtcRr2bh6RIZI0iIWo1QOYOCB3Ak8c=
+X-Received: by 2002:a05:600c:8b16:b0:480:68ed:1e70 with SMTP id
+ 5b1f17b1804b1-483a963de73mr209947465e9.35.1771866200213; 
+ Mon, 23 Feb 2026 09:03:20 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.44
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:44 -0800 (PST)
+ Mon, 23 Feb 2026 09:03:19 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 27/65] hw/intc/arm_gicv5: Update SPI state for CLEAR/SET events
-Date: Mon, 23 Feb 2026 17:01:34 +0000
-Message-ID: <20260223170212.441276-28-peter.maydell@linaro.org>
+Subject: [PATCH 60/65] hw/arm/virt: Create and connect GICv5
+Date: Mon, 23 Feb 2026 17:02:07 +0000
+Message-ID: <20260223170212.441276-61-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,127 +100,270 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When an SPI irq line changes level, this causes what the spec
-describes as SET_LEVEL, SET_EDGE or CLEAR events.  These also happen
-when the trigger mode is reconfigured, or when software requests a
-manual resample via the IRS_SPI_RESAMPLER register.
+In this commit we create and connect up the GICv5.  We do not
+advertise it in the ACPI tables or DTB; that will be done in a
+following commit.
 
-SET_LEVEL and SET_EDGE events make the interrupt pending, and update
-its handler mode to match its trigger mode.  CLEAR events make the
-interrupt no longer pending.
+The user-facing gic-version property still only documents and permits
+in its setter function the existing set of possible values; we won't
+permit the user to select a GICv5 until all the code to handle it is
+in place.
+
+Although we currently implement only the IRS, and only for EL1,
+we reserve space in the virt board's memory map now for all the
+register frames that the GICv5 may use. Each interrupt domain has:
+ * one IRS config register frame
+ * one ITS config register frame
+ * one ITS translate register frame
+and each of these frames is 64K in size and 64K aligned and must be
+at a unique address (that is, it is not permitted to have all the IRS
+config register frames at the same physical address in the different
+S/NS/etc physical address spaces).
+
+The addresses and layout of these frames are entirely up to the
+implementation: software will be passed their addresses via firmware
+data structures (ACPI or DTB).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c  | 59 ++++++++++++++++++++++++++++++++++++++++++++
- hw/intc/trace-events |  1 +
- 2 files changed, 60 insertions(+)
+ hw/arm/virt.c         | 101 ++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  14 ++++++
+ 2 files changed, 115 insertions(+)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 9f4d44f975..d1baa015d1 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -908,6 +908,28 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3d19eb0fee..a9addf5ac0 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -69,6 +69,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "hw/intc/arm_gicv3_its_common.h"
++#include "hw/intc/arm_gicv5_common.h"
+ #include "hw/core/irq.h"
+ #include "kvm_arm.h"
+ #include "hvf_arm.h"
+@@ -185,6 +186,19 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_GIC_ITS] =            { 0x08080000, 0x00020000 },
+     /* This redistributor space allows up to 2*64kB*123 CPUs */
+     [VIRT_GIC_REDIST] =         { 0x080A0000, 0x00F60000 },
++    /* The GICv5 uses this address range differently from GICv2/v3/v4 */
++    [VIRT_GICV5_IRS_S] =        { 0x08000000, 0x00010000 },
++    [VIRT_GICV5_IRS_NS] =       { 0x08010000, 0x00010000 },
++    [VIRT_GICV5_IRS_EL3] =      { 0x08020000, 0x00010000 },
++    [VIRT_GICV5_IRS_REALM] =    { 0x08030000, 0x00010000 },
++    [VIRT_GICV5_ITS_S] =        { 0x08040000, 0x00010000 },
++    [VIRT_GICV5_ITS_NS] =       { 0x08050000, 0x00010000 },
++    [VIRT_GICV5_ITS_EL3] =      { 0x08060000, 0x00010000 },
++    [VIRT_GICV5_ITS_REALM] =    { 0x08070000, 0x00010000 },
++    [VIRT_GICV5_ITS_TR_S] =     { 0x08080000, 0x00010000 },
++    [VIRT_GICV5_ITS_TR_NS] =    { 0x08090000, 0x00010000 },
++    [VIRT_GICV5_ITS_TR_EL3] =   { 0x080A0000, 0x00010000 },
++    [VIRT_GICV5_ITS_TR_REALM] = { 0x080B0000, 0x00010000 },
+     [VIRT_UART0] =              { 0x09000000, 0x00001000 },
+     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
+     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
+@@ -781,6 +795,49 @@ static void create_v2m(VirtMachineState *vms)
+     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
  }
  
-+static void spi_sample(GICv5SPIState *spi)
++static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
 +{
-+    /*
-+     * Sample the state of the SPI input line; this generates
-+     * SET_EDGE, SET_LEVEL or CLEAR events which update the SPI's
-+     * pending state and handling mode per R_HHKMN.
-+     * The logic is the same for "the input line changed" (R_QBXXV)
-+     * and "software asked us to resample" (R_DMTFM).
-+     */
-+    if (spi->level) {
++    MachineState *ms = MACHINE(vms);
++    SysBusDevice *gicbusdev;
++    const char *gictype = gicv5_class_name();
++    QList *cpulist = qlist_new(), *iaffidlist = qlist_new();
++
++    vms->gic = qdev_new(gictype);
++    qdev_prop_set_uint32(vms->gic, "spi-range", NUM_IRQS);
++
++    object_property_set_link(OBJECT(vms->gic), "sysmem",
++                             OBJECT(mem), &error_fatal);
++
++    for (int i = 0; i < ms->smp.cpus; i++) {
++        qlist_append_link(cpulist, OBJECT(qemu_get_cpu(i)));
 +        /*
-+         * SET_LEVEL or SET_EDGE: interrupt becomes pending, and the
-+         * handling mode is updated to match the trigger mode.
++         * GICv5 IAFFIDs must be system-wide unique across all GICs.
++         * For virt we make them the same as the CPU index.
 +         */
-+        spi->pending = true;
-+        spi->hm = spi->tm == GICV5_TRIGGER_EDGE ? GICV5_EDGE : GICV5_LEVEL;
-+    } else if (spi->tm == GICV5_TRIGGER_LEVEL) {
-+        /* falling edges only trigger a CLEAR event for level-triggered */
-+        spi->pending = false;
++        qlist_append_int(iaffidlist, i);
 +    }
++    qdev_prop_set_array(vms->gic, "cpus", cpulist);
++    qdev_prop_set_array(vms->gic, "cpu-iaffids", iaffidlist);
++
++    gicbusdev = SYS_BUS_DEVICE(vms->gic);
++    sysbus_realize_and_unref(gicbusdev, &error_fatal);
++
++    /*
++     * Map the IRS config frames for the interrupt domains.
++     * At the moment we implement only the NS domain, so this is simple.
++     */
++    sysbus_mmio_map(gicbusdev, GICV5_ID_NS,
++                    vms->memmap[VIRT_GICV5_IRS_NS].base);
++
++    /*
++     * The GICv5 does not need to wire up CPU timer IRQ outputs to the GIC
++     * because for the GICv5 those PPIs are entirely internal to the CPU.
++     * Nor do we need to wire up GIC IRQ/FIQ signals to the CPUs, because
++     * that information is communicated directly between a GICv5 IRS and
++     * the GICv5 CPU interface via our equivalent of the stream protocol.
++     */
 +}
 +
- static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-                          uint64_t *data, MemTxAttrs attrs)
- {
-@@ -1055,7 +1077,24 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-     {
-         GICv5SPIState *spi = spi_for_selr(cs, domain);
-         if (spi) {
-+            GICv5TriggerMode old_tm = spi->tm;
-             spi->tm = FIELD_EX32(data, IRS_SPI_CFGR, TM);
-+            if (spi->tm != old_tm) {
-+                /*
-+                 * R_KBPXL: updates to SPI trigger mode can generate CLEAR or
-+                 * SET_LEVEL events. This is not the same logic as spi_sample().
-+                 */
-+                if (spi->tm == GICV5_TRIGGER_LEVEL) {
-+                    if (spi->level) {
-+                        spi->pending = true;
-+                        spi->hm = GICV5_LEVEL;
-+                    } else {
-+                        spi->pending = false;
-+                    }
-+                } else if (spi->level) {
-+                    spi->pending = false;
-+                }
-+            }
-         }
-         return true;
+ /*
+  * If the CPU has FEAT_NMI, then turn on the NMI support in the GICv3 too.
+  * It's permitted to have a configuration with NMI in the CPU (and thus the
+@@ -994,6 +1051,9 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+     case VIRT_GIC_VERSION_4:
+         create_gicv3(vms, mem);
+         break;
++    case VIRT_GIC_VERSION_5:
++        create_gicv5(vms, mem);
++        break;
+     default:
+         g_assert_not_reached();
      }
-@@ -1068,6 +1107,17 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+@@ -1929,6 +1989,11 @@ static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+     /*
+      * Adjust MPIDR to make TCG consistent (with 64-bit KVM hosts)
+      * and to improve SGI efficiency.
++     * - GICv2 only supports 8 CPUs anyway
++     * - GICv3 wants 16 CPUs per Aff0 because of an ICC_SGIxR
++     *   register limitation
++     * - GICv5 has no restrictions, so we retain the GICv3 16-per-Aff0
++     *   layout because that's what KVM does
+      */
+     if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         clustersz = GIC_TARGETLIST_BITS;
+@@ -2074,6 +2139,11 @@ static VirtGICType finalize_gic_version_do(const char *accel_name,
+         return finalize_gic_version_do(accel_name, VIRT_GIC_VERSION_MAX,
+                                        gics_supported, max_cpus);
+     case VIRT_GIC_VERSION_MAX:
++        /*
++         * We don't (currently) make 'max' select GICv5 as it is not
++         * backwards compatible for system software with GICv3/v4 and
++         * at time of writing not widely supported in guest kernels.
++         */
+         if (gics_supported & VIRT_GIC_VERSION_4_MASK) {
+             gic_version = VIRT_GIC_VERSION_4;
+         } else if (gics_supported & VIRT_GIC_VERSION_3_MASK) {
+@@ -2102,6 +2172,7 @@ static VirtGICType finalize_gic_version_do(const char *accel_name,
+     case VIRT_GIC_VERSION_2:
+     case VIRT_GIC_VERSION_3:
+     case VIRT_GIC_VERSION_4:
++    case VIRT_GIC_VERSION_5:
+         break;
+     }
+ 
+@@ -2126,6 +2197,12 @@ static VirtGICType finalize_gic_version_do(const char *accel_name,
+             exit(1);
+         }
+         break;
++    case VIRT_GIC_VERSION_5:
++        if (!(gics_supported & VIRT_GIC_VERSION_5_MASK)) {
++            error_report("%s does not support GICv5 emulation", accel_name);
++            exit(1);
++        }
++        break;
+     default:
+         error_report("logic error in finalize_gic_version");
+         exit(1);
+@@ -2177,6 +2254,10 @@ static void finalize_gic_version(VirtMachineState *vms)
+                 gics_supported |= VIRT_GIC_VERSION_4_MASK;
              }
          }
-         return true;
-+    case A_IRS_SPI_RESAMPLER:
-+    {
-+        uint32_t id = FIELD_EX32(data, IRS_SPI_RESAMPLER, SPI_ID);
-+        GICv5SPIState *spi = gicv5_spi_state(cs, id, domain);
-+
-+        if (spi) {
-+            spi_sample(spi);
++        if (!hvf_enabled() && module_object_class_by_name("arm-gicv5")) {
++            /* HVF doesn't have GICv5 support */
++            gics_supported |= VIRT_GIC_VERSION_5_MASK;
 +        }
-+        trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
-+        return true;
-+    }
+     } else {
+         error_report("Unsupported accelerator, can not determine GIC support");
+         exit(1);
+@@ -2210,6 +2291,9 @@ static void finalize_msi_controller(VirtMachineState *vms)
+             vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
+         } else if (whpx_enabled()) {
+             vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
++        } else if (vms->gic_version == VIRT_GIC_VERSION_5) {
++            /* GICv5 ITS is not yet implemented */
++            vms->msi_controller = VIRT_MSI_CTRL_NONE;
+         } else {
+             vms->msi_controller = VIRT_MSI_CTRL_ITS;
+         }
+@@ -2225,6 +2309,10 @@ static void finalize_msi_controller(VirtMachineState *vms)
+             error_report("GICv2 + ITS is an invalid configuration.");
+             exit(1);
+         }
++        if (vms->gic_version == VIRT_GIC_VERSION_5) {
++            error_report("GICv5 + ITS is not yet implemented.");
++            exit(1);
++        }
+         if (whpx_enabled()) {
+             error_report("ITS not supported on WHPX.");
+             exit(1);
+@@ -2397,6 +2485,13 @@ static void machvirt_init(MachineState *machine)
+      */
+     if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         virt_max_cpus = GIC_NCPU;
++    } else if (vms->gic_version == VIRT_GIC_VERSION_5) {
++        /*
++         * GICv5 imposes no CPU limit beyond the 16-bit IAFFID field.
++         * The maximum number of CPUs will be limited not by this, but
++         * by the MachineClass::max_cpus value we set earlier.
++         */
++        virt_max_cpus = 1 << QEMU_GICV5_IAFFID_BITS;
+     } else {
+         virt_max_cpus = virt_redist_capacity(vms, VIRT_GIC_REDIST);
+         if (vms->highmem_redists) {
+@@ -2442,6 +2537,12 @@ static void machvirt_init(MachineState *machine)
+         exit(1);
      }
-     return false;
- }
-@@ -1236,8 +1286,17 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
-     /* These irqs are all SPIs; the INTID is irq + s->spi_base */
-     GICv5Common *cs = ARM_GICV5_COMMON(opaque);
-     uint32_t spi_id = irq + cs->spi_base;
-+    GICv5SPIState *spi = gicv5_raw_spi_state(cs, spi_id);
-+
-+    if (!spi || spi->level == level) {
-+        return;
+ 
++    if ((vms->virt || vms->secure) &&
++        vms->gic_version == VIRT_GIC_VERSION_5) {
++        error_report("mach-virt: GICv5 currently supports EL1 only\n");
++        exit(1);
 +    }
- 
-     trace_gicv5_spi(spi_id, level);
 +
-+    spi->level = level;
-+    spi_sample(spi);
-+    trace_gicv5_spi_state(spi_id, spi->level, spi->pending, spi->active);
- }
+     create_fdt(vms);
  
- static void gicv5_reset_hold(Object *obj, ResetType type)
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 409935e15a..4c55af2780 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -241,6 +241,7 @@ gicv5_set_pending(const char *domain, const char *type, bool virtual, uint32_t i
- gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t id, int handling) "GICv5 IRS SetHandling %s %s virtual:%d ID %u handling %d"
- gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
- gicv5_request_config(const char *domain, const char *type, bool virtual, uint32_t id, uint64_t icsr) "GICv5 IRS RequestConfig %s %s virtual:%d ID %u ICSR 0x%" PRIx64
-+gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
+     assert(possible_cpus->len == max_cpus);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 6b4691761e..34588747aa 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -63,6 +63,18 @@ enum {
+     VIRT_GIC_VCPU,
+     VIRT_GIC_ITS,
+     VIRT_GIC_REDIST,
++    VIRT_GICV5_IRS_S,
++    VIRT_GICV5_IRS_NS,
++    VIRT_GICV5_IRS_EL3,
++    VIRT_GICV5_IRS_REALM,
++    VIRT_GICV5_ITS_S,
++    VIRT_GICV5_ITS_NS,
++    VIRT_GICV5_ITS_EL3,
++    VIRT_GICV5_ITS_REALM,
++    VIRT_GICV5_ITS_TR_S,
++    VIRT_GICV5_ITS_TR_NS,
++    VIRT_GICV5_ITS_TR_EL3,
++    VIRT_GICV5_ITS_TR_REALM,
+     VIRT_SMMU,
+     VIRT_UART0,
+     VIRT_MMIO,
+@@ -116,12 +128,14 @@ typedef enum VirtGICType {
+     VIRT_GIC_VERSION_2 = 2,
+     VIRT_GIC_VERSION_3 = 3,
+     VIRT_GIC_VERSION_4 = 4,
++    VIRT_GIC_VERSION_5 = 5,
+     VIRT_GIC_VERSION_NOSEL,
+ } VirtGICType;
  
- # arm_gicv5_common.c
- gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
+ #define VIRT_GIC_VERSION_2_MASK BIT(VIRT_GIC_VERSION_2)
+ #define VIRT_GIC_VERSION_3_MASK BIT(VIRT_GIC_VERSION_3)
+ #define VIRT_GIC_VERSION_4_MASK BIT(VIRT_GIC_VERSION_4)
++#define VIRT_GIC_VERSION_5_MASK BIT(VIRT_GIC_VERSION_5)
+ 
+ struct VirtMachineClass {
+     MachineClass parent;
 -- 
 2.43.0
 

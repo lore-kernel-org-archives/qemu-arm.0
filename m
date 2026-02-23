@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C361DEC1112
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E94EC1112
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:12:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZSp-00062T-9t; Mon, 23 Feb 2026 12:11:19 -0500
+	id 1vuZMl-0005Pn-Pp; Mon, 23 Feb 2026 12:05:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vuZK7-00017q-0a; Mon, 23 Feb 2026 12:02:19 -0500
-Received: from xmbghk7.mail.qq.com ([43.163.128.54])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vuZK3-0008TT-Tv; Mon, 23 Feb 2026 12:02:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1771866131; bh=a8Wf9hApdHaRm2BqY2IdxiTuw+MQlO3T9VjXVZ3Gf+M=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=KbcR5m7deWYaTib1azkSlQmd69K3kLTptpmyQtoMZvjIo6L3ISIFHDMMurHKvU/Zx
- RrBquNonSkB3rH4PeSo56WGYn4dJYeN9/0ec8ifid7m00b6qIB5KuH7OC2LkOn00+e
- EH+te2QdM+h8FvDPrtaMV3+HTHHl+q/ilpMqVpV0=
-Received: from archlinux ([111.52.70.122])
- by newxmesmtplogicsvrszc41-0.qq.com (NewEsmtp) with SMTP
- id DAD8BE84; Tue, 24 Feb 2026 00:54:45 +0800
-X-QQ-mid: xmsmtpt1771865688t6p4ps7sy
-Message-ID: <tencent_9903EBF42878B83D82A1EBAC1F4BB2755B07@qq.com>
-X-QQ-XMAILINFO: M1rD3f8svNzntez+LkwpwR/tGSchyKPMsH+KY2sblyoELUSsYgwpDVP1ql6SYN
- Xke7xlJ1O1T3QER7FcDymQbGDvu2feFQEhw7gVqHcSbLo1B/3mW4tX59dgTghyiwA3EjR6+CIewR
- 0JSSldTwUkqOLUKHevgHhlvvrYUTcSNmSdjZFvee1mTA9FeCEGV0eS88EFiIW00OCc56MooS3lN2
- 0NsvrR7w2T5fYK0w8E6/AjuShNsC0YIcMC3wD4xvZnOHDWQ0BgbavYQSxsVlr3dV0n6Cvu7pZZaV
- Mf6uQ5tJiMoEUZswfoJWfystniFnePhIBjUe2QflTqVd0s0oLAdneH3kIq75QjJ+LyT1XpccIk4w
- qc42cXacGXCENgfOJHlI34O+BUbz//5cHTzlFehP6yUyH1U9lh183vgpx7WO34yAr511V9oE5c9r
- +3ghPSaL9p9ZMWkY7QO9F54UQw+ZmTGz509Kw0ndqT90HNuszLPxqV1nvORHm4zeJAwIH9HvI9D/
- p6CbBujWQKdXlB7RdrPXC9EsZIhMifJCSgxhqNXs/NO71l/eZmvAzZvFLlnqmqS8kiJBsLQ+qH4F
- nFdfl0q6PHa3V6Twgf4tS0qS+o3eMuT8w2hUoN7rA6jwkBxVNrzMLS4FJF+vVF360U0rCFrPk5x9
- V2rbkknOZwnq7fhS51BKAEt5tckwgoD9GLFnmq+JZxvIcDQp49OTkMIVCi0mqC4UBdaNJGbJoq80
- 2IjMVc6hxR2neGbzDDsNovXSWkhnfO13MBJg2RpW9hg+q9IwkIoCNxXjKDjy7I1pPE/E7MIoMN/F
- 5iczLiQqqUZtB8PNRqUEeweyMb3BbrHoJz6FEkTKkbXnWhUIlAg+u7X2hlscSfUHtY7v56uAFS7r
- tuNzrf/huvu8qcyBrAyQlictXdRGIEuaXmFOyv0PyKTR6U+8yMVE3DtzerzBhMQq+hgrFVWUcoTk
- CYgu5v1OTyCS8LXP8qikaaUt68bnO3ZLFipk90AGypBo+ePAlkaUMfOAVidQgOLM1anN8jZ1t3IY
- ie64zvf5tdyi2yzLB4DRLUuTwXGSPJ8OlJzBbv8g==
-X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
-From: Yucai Liu <1486344514@qq.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	jcd@tribudubois.net
-Subject: [PATCH 1/1] hw/arm: Implement i.MX6UL LCDIF model
-Date: Tue, 24 Feb 2026 00:54:45 +0800
-X-OQ-MSGID: <20260223165445.318433-2-1486344514@qq.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260223165445.318433-1-1486344514@qq.com>
-References: <20260223165445.318433-1-1486344514@qq.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZLB-0002pp-LC
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:28 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZL4-0000PZ-P0
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:24 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-48373a4bca3so27431295e9.0
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771866194; x=1772470994; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=Oc4IQYy6jHc0YZ0doMPC3fB8hIXKqwZ6F4RE9AoioM0=;
+ b=Z+4NqwgNKHwCgXFwfU/6FvdMfunw6YwossNC/SPg/QmqpK+w2mSLfb5FL8y6Z0Hgei
+ lB0CcvdVVqboaGLNBWX1aByKFrBtUG0uPep/RKDDhNvvD50njI0rtqR6mFCsKxOj1bnf
+ jbibzy4COdxz1DXVX5q3h/yPRR2b4/t1LNi+GMB9pX+fpEkCjtavxNg2rpq1F4nIhwWW
+ ODhRfOtQXUWwXR567/vhqAecxlCz8GM9Vz799sQsgPMqsRUWhT3DZj8rHD68mVTxthpI
+ PFYYRMeBE5R4v40IqkrC/ALKHuxvnvuMWgjKXCUCqviiGkD9lZwoWaqs/7AiZiW46d8m
+ 5Fpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771866194; x=1772470994;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=Oc4IQYy6jHc0YZ0doMPC3fB8hIXKqwZ6F4RE9AoioM0=;
+ b=r7efnHPS2acIW/u0j4Y0w4hnPROdsNUcG3UZTs9zW/Xb6xoFpv9Oicb1rAl4FDX1U9
+ 2pnkxVlH34+3hKd2yMtOdRLRatnTBojGYp2ZrCs8i+bwLg7KIR4oEnYSNJgfaw4yOi46
+ BFfg8jdM0dHv2TFzoXnTDyHA3RIRqJzKWSriwojm571jNoj3f/HiGBWSrJLx4p3p3mMD
+ 2C/L1TyzDIyWGl8J8ijhOsVlBAKRnqxRyIx/vnVqB9Nc9ssx61Cnri8U6kUYN/3IvmLt
+ MAIVAYPLaJPCKBXDdGbbrPubvH6nAqqCljFptJwosfDpaQPgV2s4WcKrmkj7XTmQOaL7
+ 0ahw==
+X-Gm-Message-State: AOJu0YyNh3GnJdtmo+cMWv5K8PJHpCKOuhi0VUKwTybf00RuE283lgu0
+ 0vbkkzo02bAKjMMt0dq2H5rNMjlUKm6s5l+2cmbKyJexXT2EjSKVW+ig+mq4u+i5ux6bxF7vfRb
+ Vdi4u
+X-Gm-Gg: AZuq6aJBQdjYtK7KwqU3QBVCti23uZxjvnmKoSHWwhhnbNO5OOPMzuZXLcHtp/IWOEt
+ yTxHRdhWhxugwrlBL2B+TUqjgsl2DDOIRr7/fI6OG4Eap9gymR/aFGncryfAIAvlt1OhuhDCyCU
+ Dc9b3aefGE7ktY1WIwumiKQFoLM1xvTCHjdXl8sx7hZDEEKJ6BD8wYa+6SrlaiaxlAiKVH1w5v7
+ Psr0IRrYwc5ULYSLWPXpy1src9WC8XYvKR7rnjB1/6hNaRsdR0hOHeHdu8hSBSnFz4AlFWFJ3FL
+ sIvVH3f8QJ76KAVyoXaA/WNuwQ0R4LLWLzwnae1Gv4qHbnDMq3CZmYMe9w3aU+7wkOqN8b+rBjY
+ dr8riZ6akzsMVd41m/ei9DGviOdNiWiwKZNAOrlur675n+vCXM3eGRFFFNXzmY/gfYszrhGcZs5
+ oGvVxT3dkRM2zo9q93xeyVN+inaddOZwfwSw41eP7+jaBZ6q/+A6P6l1jcXM1m4obD6pvJ2sl6N
+ WUZchcLXXRCSfE5t/e+f5yJsAWgWIg=
+X-Received: by 2002:a05:600c:628d:b0:483:5a29:9678 with SMTP id
+ 5b1f17b1804b1-483a95bd8a7mr165353425e9.2.1771866193551; 
+ Mon, 23 Feb 2026 09:03:13 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Feb 2026 09:03:12 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 53/65] target/arm: Add has_gcie property to enable FEAT_GCIE
+Date: Mon, 23 Feb 2026 17:02:00 +0000
+Message-ID: <20260223170212.441276-54-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=43.163.128.54; envelope-from=1486344514@qq.com;
- helo=xmbghk7.mail.qq.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1.179, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.717,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 23 Feb 2026 12:11:17 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,557 +100,130 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a basic i.MX6UL LCDIF device model, hook it into the i.MX6UL SoC, and replace the previous unimplemented LCDIF stub. The model exposes MMIO registers, frame-done IRQ behavior, and framebuffer-backed display updates for RGB565/XRGB8888 formats.
+Add a has_gcie QOM property to the CPU which allows the board code to
+enable FEAT_GCIE, the GICv5 CPU interface.
 
-Signed-off-by: Yucai Liu <1486344514@qq.com>
+Enabling the GICv5 CPU interface comes with a significant
+restriction: because the GICv5 architecture is Armv9, it assumes the
+Armv9 requirement that only EL0 (userspace) may be in AArch32.  So
+there are no GIC control system registers defined for AArch32.  We
+force AArch32 at ELs 1, 2 and 3 to disabled, to avoid a guest being
+able to get into an EL where interrupts are completely broken.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- MAINTAINERS                   |   2 +
- hw/arm/fsl-imx6ul.c           |   9 +-
- hw/arm/imx6ul_lcdif.c         | 409 ++++++++++++++++++++++++++++++++++
- hw/arm/meson.build            |   5 +-
- include/hw/arm/fsl-imx6ul.h   |   2 +-
- include/hw/arm/imx6ul_lcdif.h |  37 +++
- 6 files changed, 460 insertions(+), 4 deletions(-)
- create mode 100644 hw/arm/imx6ul_lcdif.c
- create mode 100644 include/hw/arm/imx6ul_lcdif.h
+ target/arm/cpu-features.h |  5 +++++
+ target/arm/cpu.c          | 45 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h          |  2 ++
+ 3 files changed, 52 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4918f41ec4..11c16ff387 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -895,8 +895,10 @@ L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/arm/mcimx6ul-evk.c
- F: hw/arm/fsl-imx6ul.c
-+F: hw/arm/imx6ul_lcdif.c
- F: hw/misc/imx6ul_ccm.c
- F: include/hw/arm/fsl-imx6ul.h
-+F: include/hw/arm/imx6ul_lcdif.h
- F: include/hw/misc/imx6ul_ccm.h
- F: docs/system/arm/mcimx6ul-evk.rst
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index e391b394ba..c0ba56f244 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1072,6 +1072,11 @@ static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL2) >= 2;
+ }
  
-diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-index 225e179126..419dba5b56 100644
---- a/hw/arm/fsl-imx6ul.c
-+++ b/hw/arm/fsl-imx6ul.c
-@@ -19,6 +19,7 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "hw/arm/fsl-imx6ul.h"
-+#include "hw/arm/imx6ul_lcdif.h"
- #include "hw/misc/unimp.h"
- #include "hw/usb/imx-usb-phy.h"
- #include "hw/core/boards.h"
-@@ -163,6 +164,7 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-     DeviceState *gic;
-     SysBusDevice *gicsbd;
-     DeviceState *cpu;
-+    DeviceState *lcdif;
++static inline bool isar_feature_aa64_aa32_el3(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL3) >= 2;
++}
++
+ static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
+ {
+     return FIELD_EX64_IDREG(id, ID_AA64PFR0, RAS) != 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 551be14e22..7f67e8ae47 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1191,6 +1191,9 @@ static const Property arm_cpu_has_el2_property =
  
-     if (ms->smp.cpus > 1) {
-         error_setg(errp, "%s: Only a single CPU is supported (%d requested)",
-@@ -656,8 +658,11 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
-     /*
-      * LCD
-      */
--    create_unimplemented_device("lcdif", FSL_IMX6UL_LCDIF_ADDR,
--                                FSL_IMX6UL_LCDIF_SIZE);
-+    lcdif = qdev_new(TYPE_IMX6UL_LCDIF);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(lcdif), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(lcdif), 0, FSL_IMX6UL_LCDIF_ADDR);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(lcdif), 0,
-+                       qdev_get_gpio_in(gic, FSL_IMX6UL_LCDIF_IRQ));
+ static const Property arm_cpu_has_el3_property =
+             DEFINE_PROP_BOOL("has_el3", ARMCPU, has_el3, true);
++
++static const Property arm_cpu_has_gcie_property =
++            DEFINE_PROP_BOOL("has_gcie", ARMCPU, has_gcie, false);
+ #endif
  
-     /*
-      * CSU
-diff --git a/hw/arm/imx6ul_lcdif.c b/hw/arm/imx6ul_lcdif.c
-new file mode 100644
-index 0000000000..e2e42fbc26
---- /dev/null
-+++ b/hw/arm/imx6ul_lcdif.c
-@@ -0,0 +1,409 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * i.MX6UL LCDIF controller
-+ *
-+ * Copyright (c) 2026
-+ */
+ static const Property arm_cpu_cfgend_property =
+@@ -1423,6 +1426,11 @@ static void arm_cpu_post_init(Object *obj)
+         object_property_add_uint64_ptr(obj, "rvbar",
+                                        &cpu->rvbar_prop,
+                                        OBJ_PROP_FLAG_READWRITE);
 +
-+#include "qemu/osdep.h"
-+#include "hw/arm/imx6ul_lcdif.h"
-+#include "hw/core/irq.h"
-+#include "hw/display/framebuffer.h"
-+#include "system/address-spaces.h"
-+#include "qemu/bitops.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "ui/pixel_ops.h"
-+
-+#define LCDIF_MMIO_SIZE             0x1000
-+
-+#define LCDC_CTRL                   0x00
-+#define LCDC_CTRL1                  0x10
-+#define LCDC_V4_TRANSFER_COUNT      0x30
-+#define LCDC_V4_CUR_BUF             0x40
-+#define LCDC_V4_NEXT_BUF            0x50
-+#define LCDC_AS_NEXT_BUF            0x230
-+
-+#define REG_SET                     0x4
-+#define REG_CLR                     0x8
-+#define REG_TOG                     0xc
-+
-+#define CTRL_RUN                    BIT(0)
-+#define CTRL_WORD_LENGTH_MASK       (0x3 << 8)
-+#define CTRL_WORD_LENGTH_16         (0x0 << 8)
-+#define CTRL_WORD_LENGTH_24         (0x3 << 8)
-+#define CTRL1_CUR_FRAME_DONE_IRQ_EN BIT(13)
-+#define CTRL1_CUR_FRAME_DONE_IRQ    BIT(9)
-+#define FRAME_PERIOD_NS             (16 * 1000 * 1000ULL)
-+
-+static inline uint32_t imx6ul_lcdif_reg_idx(hwaddr offset)
-+{
-+    return (offset & ~0xf) >> 2;
-+}
-+
-+static inline uint32_t imx6ul_lcdif_reg_read(IMX6ULLCDIFState *s, hwaddr offset)
-+{
-+    return s->regs[imx6ul_lcdif_reg_idx(offset)];
-+}
-+
-+static inline void imx6ul_lcdif_reg_write(IMX6ULLCDIFState *s, hwaddr offset,
-+                                          uint32_t value)
-+{
-+    s->regs[imx6ul_lcdif_reg_idx(offset)] = value;
-+}
-+
-+static inline bool imx6ul_lcdif_is_running(IMX6ULLCDIFState *s)
-+{
-+    return imx6ul_lcdif_reg_read(s, LCDC_CTRL) & CTRL_RUN;
-+}
-+
-+static void imx6ul_lcdif_schedule_frame(IMX6ULLCDIFState *s)
-+{
-+    int64_t now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+
-+    timer_mod(s->frame_timer, now + FRAME_PERIOD_NS);
-+}
-+
-+static void imx6ul_lcdif_update_irq(IMX6ULLCDIFState *s)
-+{
-+    uint32_t ctrl1 = imx6ul_lcdif_reg_read(s, LCDC_CTRL1);
-+    bool level = (ctrl1 & CTRL1_CUR_FRAME_DONE_IRQ_EN) &&
-+                 (ctrl1 & CTRL1_CUR_FRAME_DONE_IRQ);
-+
-+    qemu_set_irq(s->irq, level);
-+}
-+
-+static void imx6ul_lcdif_frame_done(IMX6ULLCDIFState *s)
-+{
-+    uint32_t ctrl1 = imx6ul_lcdif_reg_read(s, LCDC_CTRL1);
-+
-+    imx6ul_lcdif_reg_write(s, LCDC_CTRL1, ctrl1 | CTRL1_CUR_FRAME_DONE_IRQ);
-+    imx6ul_lcdif_update_irq(s);
-+}
-+
-+static void imx6ul_lcdif_write_pixel(uint8_t **dst, uint8_t r,
-+                                     uint8_t g, uint8_t b, int dst_bpp)
-+{
-+    uint32_t rgb888;
-+
-+    switch (dst_bpp) {
-+    case 8:
-+        **dst = rgb_to_pixel8(r, g, b);
-+        *dst += 1;
-+        break;
-+    case 15:
-+        *(uint16_t *)*dst = rgb_to_pixel15(r, g, b);
-+        *dst += 2;
-+        break;
-+    case 16:
-+        *(uint16_t *)*dst = rgb_to_pixel16(r, g, b);
-+        *dst += 2;
-+        break;
-+    case 24:
-+        rgb888 = rgb_to_pixel24(r, g, b);
-+        (*dst)[0] = rgb888 & 0xff;
-+        (*dst)[1] = (rgb888 >> 8) & 0xff;
-+        (*dst)[2] = (rgb888 >> 16) & 0xff;
-+        *dst += 3;
-+        break;
-+    case 32:
-+        *(uint32_t *)*dst = rgb_to_pixel32(r, g, b);
-+        *dst += 4;
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static void imx6ul_lcdif_draw_line_rgb565(void *opaque, uint8_t *dst,
-+                                          const uint8_t *src, int width,
-+                                          int dststep)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+    uint16_t pixel;
-+    uint8_t r, g, b;
-+    int i;
-+
-+    for (i = 0; i < width; i++) {
-+        pixel = lduw_le_p((void *)src);
-+        r = ((pixel >> 11) & 0x1f) << 3;
-+        g = ((pixel >> 5) & 0x3f) << 2;
-+        b = (pixel & 0x1f) << 3;
-+        imx6ul_lcdif_write_pixel(&dst, r, g, b, s->dst_bpp);
-+        src += 2;
-+    }
-+}
-+
-+static void imx6ul_lcdif_draw_line_xrgb8888(void *opaque, uint8_t *dst,
-+                                            const uint8_t *src, int width,
-+                                            int dststep)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+    uint32_t pixel;
-+    uint8_t r, g, b;
-+    int i;
-+
-+    for (i = 0; i < width; i++) {
-+        pixel = ldl_le_p((void *)src);
-+        r = (pixel >> 16) & 0xff;
-+        g = (pixel >> 8) & 0xff;
-+        b = pixel & 0xff;
-+        imx6ul_lcdif_write_pixel(&dst, r, g, b, s->dst_bpp);
-+        src += 4;
-+    }
-+}
-+
-+static void imx6ul_lcdif_update_display(void *opaque)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+    DisplaySurface *surface = qemu_console_surface(s->con);
-+    uint32_t transfer_count = imx6ul_lcdif_reg_read(s, LCDC_V4_TRANSFER_COUNT);
-+    uint32_t width = transfer_count & 0xffff;
-+    uint32_t height = (transfer_count >> 16) & 0xffff;
-+    uint32_t ctrl = imx6ul_lcdif_reg_read(s, LCDC_CTRL);
-+    uint32_t frame_base = imx6ul_lcdif_reg_read(s, LCDC_V4_CUR_BUF);
-+    drawfn fn;
-+    int first = 0, last = 0;
-+    int src_width;
-+
-+    if (!imx6ul_lcdif_is_running(s) || width == 0 || height == 0) {
-+        return;
-+    }
-+
-+    s->dst_bpp = surface_bits_per_pixel(surface);
-+    if (s->dst_bpp == 0) {
-+        return;
-+    }
-+
-+    switch (ctrl & CTRL_WORD_LENGTH_MASK) {
-+    case CTRL_WORD_LENGTH_16:
-+        s->src_bpp = 2;
-+        fn = imx6ul_lcdif_draw_line_rgb565;
-+        break;
-+    case CTRL_WORD_LENGTH_24:
-+        s->src_bpp = 4;
-+        fn = imx6ul_lcdif_draw_line_xrgb8888;
-+        break;
-+    default:
-+        return;
-+    }
-+
-+    if (surface_width(surface) != width || surface_height(surface) != height) {
-+        qemu_console_resize(s->con, width, height);
-+        surface = qemu_console_surface(s->con);
-+        s->invalidate = true;
-+    }
-+
-+    src_width = width * s->src_bpp;
-+    if (s->invalidate || s->fb_base != frame_base ||
-+        s->src_width != src_width || s->rows != height) {
-+        framebuffer_update_memory_section(&s->fbsection, get_system_memory(),
-+                                          frame_base, height, src_width);
-+        s->fb_base = frame_base;
-+        s->src_width = src_width;
-+        s->rows = height;
-+    }
-+
-+    framebuffer_update_display(surface, &s->fbsection, width, height,
-+                               src_width, surface_stride(surface), 0,
-+                               s->invalidate, fn, s, &first, &last);
-+    if (first >= 0) {
-+        dpy_gfx_update(s->con, 0, first, width, last - first + 1);
-+    }
-+
-+    s->invalidate = false;
-+}
-+
-+static void imx6ul_lcdif_invalidate_display(void *opaque)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+
-+    s->invalidate = true;
-+}
-+
-+static const GraphicHwOps imx6ul_lcdif_graphic_ops = {
-+    .invalidate = imx6ul_lcdif_invalidate_display,
-+    .gfx_update = imx6ul_lcdif_update_display,
-+};
-+
-+static void imx6ul_lcdif_frame_timer_cb(void *opaque)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+
-+    if (!imx6ul_lcdif_is_running(s)) {
-+        return;
-+    }
-+
-+    imx6ul_lcdif_frame_done(s);
-+    imx6ul_lcdif_schedule_frame(s);
-+}
-+
-+static uint64_t imx6ul_lcdif_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+    uint32_t idx;
-+
-+    if (size != 4 || (offset & 0x3) || offset >= LCDIF_MMIO_SIZE) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad read offset=0x%" HWADDR_PRIx " size=%u\n",
-+                      TYPE_IMX6UL_LCDIF, offset, size);
-+        return 0;
-+    }
-+
-+    idx = imx6ul_lcdif_reg_idx(offset);
-+    return s->regs[idx];
-+}
-+
-+static void imx6ul_lcdif_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
-+{
-+    IMX6ULLCDIFState *s = opaque;
-+    hwaddr reg = offset & ~0xf;
-+    uint32_t idx, oldv;
-+
-+    if (size != 4 || (offset & 0x3) || offset >= LCDIF_MMIO_SIZE) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset=0x%" HWADDR_PRIx " size=%u\n",
-+                      TYPE_IMX6UL_LCDIF, offset, size);
-+        return;
-+    }
-+
-+    idx = imx6ul_lcdif_reg_idx(reg);
-+    oldv = s->regs[idx];
-+
-+    switch (offset & 0xf) {
-+    case REG_SET:
-+        s->regs[idx] |= (uint32_t)value;
-+        break;
-+    case REG_CLR:
-+        s->regs[idx] &= ~(uint32_t)value;
-+        break;
-+    case REG_TOG:
-+        s->regs[idx] ^= (uint32_t)value;
-+        break;
-+    default:
-+        s->regs[idx] = (uint32_t)value;
-+        break;
-+    }
-+
-+    switch (reg) {
-+    case LCDC_CTRL:
-+        if (!(oldv & CTRL_RUN) && (s->regs[idx] & CTRL_RUN)) {
-+            imx6ul_lcdif_frame_done(s);
-+            imx6ul_lcdif_schedule_frame(s);
-+            s->invalidate = true;
-+            graphic_hw_invalidate(s->con);
++        /* We only allow GICv5 on a 64-bit v8 CPU */
++        if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++            qdev_property_add_static(DEVICE(obj), &arm_cpu_has_gcie_property);
++        }
+     }
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
+@@ -1697,6 +1705,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+                        current_accel_name());
+             return;
+         }
++        if (cpu->has_gcie) {
++            error_setg(errp,
++                       "Cannot enable %s when guest CPU has GICv5 enabled",
++                       current_accel_name());
 +            return;
 +        }
-+        if ((oldv & CTRL_RUN) && !(s->regs[idx] & CTRL_RUN)) {
-+            timer_del(s->frame_timer);
-+        }
-+        break;
-+    case LCDC_V4_TRANSFER_COUNT:
-+        s->invalidate = true;
-+        graphic_hw_invalidate(s->con);
-+        break;
-+    case LCDC_V4_CUR_BUF:
-+        s->invalidate = true;
-+        graphic_hw_invalidate(s->con);
-+        break;
-+    case LCDC_V4_NEXT_BUF:
-+        imx6ul_lcdif_reg_write(s, LCDC_V4_CUR_BUF, s->regs[idx]);
-+        imx6ul_lcdif_frame_done(s);
-+        if (imx6ul_lcdif_is_running(s)) {
-+            imx6ul_lcdif_schedule_frame(s);
-+        }
-+        s->invalidate = true;
-+        graphic_hw_invalidate(s->con);
-+        return;
-+    case LCDC_AS_NEXT_BUF:
-+        imx6ul_lcdif_frame_done(s);
-+        if (imx6ul_lcdif_is_running(s)) {
-+            imx6ul_lcdif_schedule_frame(s);
-+        }
-+        return;
-+    default:
-+        break;
-+    }
-+
-+    imx6ul_lcdif_update_irq(s);
-+}
-+
-+static const MemoryRegionOps imx6ul_lcdif_ops = {
-+    .read = imx6ul_lcdif_read,
-+    .write = imx6ul_lcdif_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
-+};
-+
-+static void imx6ul_lcdif_reset(DeviceState *dev)
-+{
-+    IMX6ULLCDIFState *s = IMX6UL_LCDIF(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->fb_base = 0;
-+    s->src_width = 0;
-+    s->rows = 0;
-+    s->src_bpp = 0;
-+    s->invalidate = true;
-+    timer_del(s->frame_timer);
-+    qemu_set_irq(s->irq, 0);
-+}
-+
-+static void imx6ul_lcdif_realize(DeviceState *dev, Error **errp)
-+{
-+    IMX6ULLCDIFState *s = IMX6UL_LCDIF(dev);
-+
-+    s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
-+                                  imx6ul_lcdif_frame_timer_cb, s);
-+    s->invalidate = true;
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &imx6ul_lcdif_ops, s,
-+                          TYPE_IMX6UL_LCDIF, LCDIF_MMIO_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
-+    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+    s->con = graphic_console_init(dev, 0, &imx6ul_lcdif_graphic_ops, s);
-+}
-+
-+static void imx6ul_lcdif_finalize(Object *obj)
-+{
-+    IMX6ULLCDIFState *s = IMX6UL_LCDIF(obj);
-+
-+    if (s->fbsection.mr) {
-+        memory_region_set_log(s->fbsection.mr, false, DIRTY_MEMORY_VGA);
-+        memory_region_unref(s->fbsection.mr);
-+        s->fbsection.mr = NULL;
-+    }
-+    if (s->con) {
-+        graphic_console_close(s->con);
-+    }
-+    timer_free(s->frame_timer);
-+}
-+
-+static void imx6ul_lcdif_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = imx6ul_lcdif_realize;
-+    device_class_set_legacy_reset(dc, imx6ul_lcdif_reset);
-+    dc->desc = "i.MX6UL LCDIF";
-+}
-+
-+static const TypeInfo imx6ul_lcdif_info = {
-+    .name = TYPE_IMX6UL_LCDIF,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(IMX6ULLCDIFState),
-+    .instance_finalize = imx6ul_lcdif_finalize,
-+    .class_init = imx6ul_lcdif_class_init,
-+};
-+
-+static void imx6ul_lcdif_register_types(void)
-+{
-+    type_register_static(&imx6ul_lcdif_info);
-+}
-+
-+type_init(imx6ul_lcdif_register_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 47cdc51d13..afcaca55ba 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -87,7 +87,10 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
- arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
- arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
- arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
--arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
-+arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL',
-+                  if_true: files('fsl-imx6ul.c',
-+                                 'imx6ul_lcdif.c',
-+                                 'mcimx6ul-evk.c'))
- arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
- arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
-   'xen-stubs.c',
-diff --git a/include/hw/arm/fsl-imx6ul.h b/include/hw/arm/fsl-imx6ul.h
-index 4e3209b25b..cc41c2dbab 100644
---- a/include/hw/arm/fsl-imx6ul.h
-+++ b/include/hw/arm/fsl-imx6ul.h
-@@ -143,7 +143,7 @@ enum FslIMX6ULMemoryMap {
-     FSL_IMX6UL_PXP_SIZE             = (16 * KiB),
+     }
+ #endif
  
-     FSL_IMX6UL_LCDIF_ADDR           = 0x021C8000,
--    FSL_IMX6UL_LCDIF_SIZE           = 0x100,
-+    FSL_IMX6UL_LCDIF_SIZE           = 0x1000,
+@@ -2020,6 +2034,37 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         FIELD_DP32_IDREG(isar, ID_PFR1, VIRTUALIZATION, 0);
+     }
  
-     FSL_IMX6UL_CSI_ADDR             = 0x021C4000,
-     FSL_IMX6UL_CSI_SIZE             = 0x100,
-diff --git a/include/hw/arm/imx6ul_lcdif.h b/include/hw/arm/imx6ul_lcdif.h
-new file mode 100644
-index 0000000000..86da972d06
---- /dev/null
-+++ b/include/hw/arm/imx6ul_lcdif.h
-@@ -0,0 +1,37 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * i.MX6UL LCDIF controller
-+ *
-+ * Copyright (c) 2026
-+ */
++    /* Report FEAT_GCIE in our ID registers if property was set */
++    FIELD_DP64_IDREG(isar, ID_AA64PFR2, GCIE, cpu->has_gcie);
++    if (cpu_isar_feature(aa64_gcie, cpu)) {
++        if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
++            /*
++             * We only create the have_gcie property for AArch64 CPUs,
++             * but the user might have tried aarch64=off with has_gcie=on.
++             */
++            error_setg(errp, "Cannot both enable has_gcie and disable aarch64");
++            return;
++        }
 +
-+#ifndef IMX6UL_LCDIF_H
-+#define IMX6UL_LCDIF_H
++        /*
++         * FEAT_GCIE implies Armv9, which implies no AArch32 above EL0.
++         * Usually we don't strictly insist on this kind of feature
++         * dependency, but in this case we enforce it, because the
++         * GICv5 CPU interface has no AArch32 versions of its system
++         * registers, so interrupts wouldn't work if we allowed AArch32
++         * in EL1 or above. Downgrade "AArch32 and AArch64" to "AArch64".
++         */
++        if (cpu_isar_feature(aa64_aa32_el3, cpu)) {
++            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL3, 1);
++        }
++        if (cpu_isar_feature(aa64_aa32_el2, cpu)) {
++            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL2, 1);
++        }
++        if (cpu_isar_feature(aa64_aa32_el1, cpu)) {
++            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL1, 1);
++        }
++    }
 +
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+#include "qemu/timer.h"
-+#include "ui/console.h"
-+
-+#define TYPE_IMX6UL_LCDIF "imx6ul-lcdif"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX6ULLCDIFState, IMX6UL_LCDIF)
-+
-+struct IMX6ULLCDIFState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    MemoryRegionSection fbsection;
-+    qemu_irq irq;
-+    QemuConsole *con;
-+    QEMUTimer *frame_timer;
-+    uint32_t fb_base;
-+    uint32_t src_width;
-+    uint32_t rows;
-+    uint8_t src_bpp;
-+    uint8_t dst_bpp;
-+    bool invalidate;
-+    uint32_t regs[0x1000 / sizeof(uint32_t)];
-+};
-+
-+#endif /* IMX6UL_LCDIF_H */
+     if (cpu_isar_feature(aa64_mte, cpu)) {
+         /*
+          * The architectural range of GM blocksize is 2-6, however qemu
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 651fccd59b..a5f27dfe0f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1032,6 +1032,8 @@ struct ArchCPU {
+     bool has_neon;
+     /* CPU has M-profile DSP extension */
+     bool has_dsp;
++    /* CPU has FEAT_GCIE GICv5 CPU interface */
++    bool has_gcie;
+ 
+     /* CPU has memory protection unit */
+     bool has_mpu;
 -- 
-2.53.0
+2.43.0
 
 

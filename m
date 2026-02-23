@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8999DEC1112
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE72CEC110C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:06:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKG-0001Mr-I2; Mon, 23 Feb 2026 12:02:28 -0500
+	id 1vuZKB-0001F3-Me; Mon, 23 Feb 2026 12:02:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKE-0001Kx-UV
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:26 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ id 1vuZK8-0001AB-Tn
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:20 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKC-00005J-Vn
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:26 -0500
-Received: by mail-wm1-x342.google.com with SMTP id
- 5b1f17b1804b1-4837634de51so20462575e9.1
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:24 -0800 (PST)
+ id 1vuZK5-0008U5-8r
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:20 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4806cc07ce7so43122785e9.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866143; x=1772470943; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866136; x=1772470936; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=pqW9rM/0GD/85HW/dEUCbk4fqpodu9kP2QyiPy7FS58=;
- b=SqkqXLQq8NXEXv52hTgd4P71TPmdd9I8TvJfBGz4Rqsm2idEKwOhQhPsy2vX+eAIwG
- gjjk7ua6KWDqUB4tXcBxBYRDU4TWG+Vf4ZCslwFxQIlsyoZSNxXEw2jWgd2DckihVv5e
- h8PsxBjBQs/RGReEW3jk/HwblbEqPvM//tIW6LFDLCrkaY1b9yoQwAJ3NhQ70r0TN80d
- g0tHSkeYfIQ5ZuaRw8ja4odVcpyvjSUeaMnJ1O0fYTTru3Upu2z1CyTcgo+QuF5G24M5
- jqX9x/CqNTUd/QnLSoL2FfG5Z79wHkf1FhfkPQxvNgGJ17DPIbaRHZbz2XhPq2FdtmQo
- aHkw==
+ :reply-to; bh=lfcmTJ7ZFiBmTNCLyk9Egoe7KSwSf53JXY1tR6tWykw=;
+ b=n5metzxNLJK2AmRGhdaV1YhvYMl1BHgAxodcMb+8JHGnIfiPROwAFLAaJIOYC4Wrhh
+ IdhaLaucYJgfOmI2NlkA2DrFiDAKZX/xpq9COaF23rcTxyNPfIoj0O2yz71iK9dcTIsM
+ 1pkGzbmbRBb+oOXsK+MVFzV/j/Xa7qBCj7pJvkXbxBnp+0PStBwsXu5HgIEoR2N5/prQ
+ UAFHrNcSqw0//ewXArbnfWQklQsM81y9Gx97hO7XDE5Qa3GFCeLcAIE+G/Fvn1uLJstE
+ WFCF4IToMEfxAxlYaXcbLvfnboxazCeAnM0EH1jIeh+g7Bbvj9J+5FMCTDA+aWoPXf0O
+ xPyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866143; x=1772470943;
+ d=1e100.net; s=20230601; t=1771866136; x=1772470936;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=pqW9rM/0GD/85HW/dEUCbk4fqpodu9kP2QyiPy7FS58=;
- b=VTcGdHKL+t/sK7jDLpG6o1N+tQTG5EAMtpl9QnU7y6v87j+Qu8gIp1UQN5ewp2YtHl
- rkkj5yk3Rih7x3pFY5M6lZUSFIEYC5zg6S/of3Tx/a1Y3M0W8PHNZmD2ufGzQQnUNm/z
- cJCRI5kkJfk1RRI992E0DeNXrnNyKa5cUrGFwlSQ4XBi/M1YaJ6I3SBEYKSCxkROL/6H
- newxoYKpcaa4hxYkY2B3vIGEgNEVwwKmoOb3mgFNSMPQ2Ptqqn/WMvnOhezwScsFtM6Q
- QLFYzWpjZV8KCNHNu9Y4+npGQXC7BNXjkJYD4dBFpp0fhPKMQ1xrTus0DBukXnNe1zVM
- t58A==
-X-Gm-Message-State: AOJu0YzLJSwNZlfoBX+40RgxfZTwdbzUOFt0qq5fpCe1WyNnwwEpYUQk
- q0fw0GsE+FYv/nQeitb69qKRB2tY3ltporlxZZTYWa1vU6dFgLYPuiyei5mtgfidCjsHnSA3BO3
- QN0FIu/M=
-X-Gm-Gg: AZuq6aKuBPvcYiCodRY8rZuckSdPDe4323WtZ8nQ1gmck4trbqIviURNdkJdeVhJahB
- dWlg3eBQdTNplp5zvhk/tS8+KvCGz+QIEg+LuI4VfJnfhx8YxJsjDp7pWt1PfYI3P1AR/+xBzk/
- VPQBy0u5UO2oWafSbjsIgrOb3/y+yX+qguI4myvYu8TaVqFDATD2qZZzC7hfsHWZ1JPQSO5Z7UZ
- 2rezEkskLluGFI6x2wuWD/yHXZTYja8V61I+w/aapSqtZz58VKi2pdjkd8FdM4kVChll3AArg2X
- 8PUoOEhGEogZ6nPGUM3j59x59S6pCXF8XkBH5xaNrCaYygHHM8z7PatsmlB6zonlwG04Y0B1EFl
- nvFfTQtmdtpiA9ry7KUZ5iCX6wlpqKWSP9HRkUEr+cF+btS45vDgJLcMEY4DWHAl48zJJJNNHFl
- S+r2Rjf6/r7Fhfa8CJXGJfOHTiwLv8WH4+RajHvJ/wGceD7MEQ7etUWT0yp1Tson2H6i9Og6gFK
- e3fJWWN8ar4bZat7pq8FTDaSK/MgsU=
-X-Received: by 2002:a05:600c:1386:b0:475:da1a:53f9 with SMTP id
- 5b1f17b1804b1-483a96087d8mr171816225e9.14.1771866143092; 
- Mon, 23 Feb 2026 09:02:23 -0800 (PST)
+ bh=lfcmTJ7ZFiBmTNCLyk9Egoe7KSwSf53JXY1tR6tWykw=;
+ b=aUMwybKHjuRQmQSvchJ2V2Ah8IVdJZu1ofxw2+wbiWzgLJQZn85UG1+k9F1GhEFAdh
+ jw9E4K4PBNatM3Cza5lylNnp9UEIZPEz1iaR67eCa7BS+LSeGWaAAUMmGVzmd+Y5Lc0z
+ YMH1OmHLrs+jyiPFvF60AezQi93pmIIieZ91GoWcBmoY9DJMvoLAHTrWEVqcAepBkql1
+ ElyCcEEnXHrrJ7sF/LD0CSOt33MkPTiNPpHjn30egIrojE1kv4g2t95eNTK64b4WNQCz
+ nerzSXJkVwun9p6zgqvjtnhHlpq0fQJMUtr6UHsq297uLFAKCYHUDQr5F6iHj98tY7PL
+ q5oQ==
+X-Gm-Message-State: AOJu0YwlcCaiYVuUnkRJWw+l8GMm2ukt6ybtY+Q8PId5Ornw2OIVWsiG
+ V/Bj9H55sh1z0U1oYa3COh/dfmDYE/Q6YNtvClzL9t47tvW1xjdiviN54b1BsEANDTo1va6QTTc
+ AJ7Zb
+X-Gm-Gg: AZuq6aLxCmqftQhQUMo+g1IbF7wF4LpG6jGBIoH2qTSQqaxaPVx/AA7YZrW4h+U7s98
+ U+y4t6j84BlCMFhV51wJxzSJ/YkYEB6Cpb4rKw2xQgytME5UXMCHpuKXue804xzySTDIUFq+uSO
+ /uvRjwXLz91xDmpzy8Q9ACLiWcGEPpW9lOy05tl1diV6rWd5nEyil4W4vi35nB2DeiT0krnme5A
+ DtQILvfWFBUxptW1xv91owA8DfDMhXAvJrdeT/x5XS6URDsQUTD/banfcO8gK56xAQpuQ5S0i0n
+ o9SodabyPi0knuDT0qVxvlx3RTo2zEaLRDjyzGv0Kqb+GvjCnoZi2QcKRIuKWnq0rDrS1nzSYO3
+ V7t/l5lPsJ4jhJN7RT8s2CtrXtepgN8Fsm2McIOMWvWAPDmOVdm/vxiT1AbucmgGq38+5W8xxs8
+ YeDrTMczbWJa3v03w5hdC3XJSsxUB1SLZBcP3efdSFHNY36CTPETI3jfvoDAPQ5KURSiygWh+Ng
+ 2tCP+ouwpts+cGIr9TAiYlXU/IU66o=
+X-Received: by 2002:a05:600c:a11:b0:483:361b:deff with SMTP id
+ 5b1f17b1804b1-483a95c9e16mr164522645e9.14.1771866135388; 
+ Mon, 23 Feb 2026 09:02:15 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.22
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:22 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:14 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 08/65] hw/intc/arm_gicv5: Define macros for config frame
- registers
-Date: Mon, 23 Feb 2026 17:01:15 +0000
-Message-ID: <20260223170212.441276-9-peter.maydell@linaro.org>
+Subject: [PATCH 01/65] hw/core: Permit devices to define an array of link
+ properties
+Date: Mon, 23 Feb 2026 17:01:08 +0000
+Message-ID: <20260223170212.441276-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,275 +101,339 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Define constants for the various registers in the IRS config frame
-using the REG and FIELD macros.
+Currently we allow devices to define "link properties" with
+DEFINE_PROP_LINK(): these are a way to give a device a pointer to
+another QOM object.  (Under the hood this is done by handing it the
+canonical QOM path for the object.)
+
+We also allow devices to define "array properties" with
+DEFINE_PROP_ARRAY(): these are a way to give a device a
+variable-length array of properties.
+
+However, there is no way to define an array of link properties.  If
+you try to do it by passing qdev_prop_link as the arrayprop argument
+to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
+does not provide the .set and .get methods in its PropertyInfo
+struct.
+
+This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
+a device you can use it like this:
+
+struct MyDevice {
+    ...
+    uint32_t num_cpus;
+    ARMCPU **cpus;
+}
+
+and in your Property array:
+    DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
+                           TYPE_ARM_CPU, ARMCPU *),
+
+The array property code will fill in s->num_cpus, allocate memory in
+s->cpus, and populate it with pointers.
+
+On the device-creation side you set the property in the same way as
+the existing array properties, using the new qlist_append_link()
+function to append to the QList:
+
+    QList *cpulist = qlist_new();
+    for (int i = 0; i < cpus; i++) {
+        qlist_append_link(cpulist, OBJECT(cpu[i]));
+    }
+    qdev_prop_set_array(mydev, "cpus", cpulist);
+
+The implementation is mostly in the provision of the .set and
+.get methods to the qdev_prop_link PropertyInfo struct. The
+code of these methods parallels the code in
+object_set_link_property() and object_get_link_property().  We can't
+completely share the code with those functions because of differences
+in where we get the information like the target QOM type, but I have
+pulled out a new function object_resolve_and_typecheck() for the
+shared "given a QOM path and a type, give me the object or an error"
+code.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c | 243 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 243 insertions(+)
+I want this specifically for the GICv5 interrupt controller device
+I'm working on.  I'd like to be able to pass in links to the CPUs
+connected to the GIC, so that we don't have to have the code assume
+that it's connected to CPU numbers 0,1,2... the way the current
+GICv3 code does.
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 7ef48bb450..db754e7681 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -7,6 +7,7 @@
-  */
+I think Phil also had a proposed series a while back that wanted
+to do something similar with one of the existing devices.
+
+I figured I'd post this early for review, though obviously it's a
+little unmotivated until I have my new GICv5 code into enough shape
+to submit. This is tested, but with my work-in-progress code.
+---
+ hw/core/qdev-properties.c         | 78 +++++++++++++++++++++++++++++++
+ include/hw/core/qdev-properties.h | 40 ++++++++++++++++
+ include/qom/object.h              | 19 ++++++++
+ qom/object.c                      | 42 ++++++++++-------
+ 4 files changed, 161 insertions(+), 18 deletions(-)
+
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index ba8461e9a4..f8181b0d91 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -669,6 +669,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
+          * being inside the device struct.
+          */
+         .offset = (uintptr_t)elem - (uintptr_t)obj,
++        .link_type = parent_prop->link_type,
+     };
+ }
  
- #include "qemu/osdep.h"
-+#include "hw/core/registerfields.h"
- #include "hw/intc/arm_gicv5.h"
- #include "qapi/error.h"
- #include "qemu/log.h"
-@@ -22,6 +23,248 @@ static const char *domain_name[] = {
-     [GICV5_ID_REALM] = "Realm",
+@@ -950,6 +951,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
+     qobject_unref(values);
+ }
+ 
++void qlist_append_link(QList *qlist, Object *obj)
++{
++    g_autofree char *path = object_get_canonical_path(obj);
++    qlist_append_str(qlist, path);
++}
++
+ static GPtrArray *global_props(void)
+ {
+     static GPtrArray *gp;
+@@ -1059,9 +1066,80 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
+                                           OBJ_PROP_LINK_STRONG);
+ }
+ 
++/*
++ * The logic in these get_link() and set_link() functions is similar
++ * to that used for single-element link properties in the
++ * object_get_link_property() and object_set_link_property() functions.
++ * The difference is largely in how we get the expected type of the
++ * link: for us it is in the Property struct, and for a single link
++ * property it is part of the property name on the object.
++ */
++static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
++
++    if (*targetp) {
++        path = object_get_canonical_path(*targetp);
++        visit_type_str(v, name, &path, errp);
++    } else {
++        path = g_strdup("");
++        visit_type_str(v, name, &path, errp);
++    }
++}
++
++static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
++    Object *new_target, *old_target = *targetp;
++
++    ERRP_GUARD();
++
++    /* Get the path to the object we want to set the link to */
++    if (!visit_type_str(v, name, &path, errp)) {
++        return;
++    }
++
++    /* Now get the pointer to the actual object */
++    if (*path) {
++        new_target = object_resolve_and_typecheck(path, prop->name,
++                                                  prop->link_type, errp);
++        if (!new_target) {
++            return;
++        }
++    } else {
++        new_target = NULL;
++    }
++
++    /*
++     * Our link properties are always OBJ_PROP_LINK_STRONG and
++     * have the allow_set_link_before_realize check.
++     */
++    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
++    if (*errp) {
++        return;
++    }
++
++    *targetp = new_target;
++    object_ref(new_target);
++    object_unref(old_target);
++}
++
+ const PropertyInfo qdev_prop_link = {
+     .type = "link",
+     .create = create_link_property,
++    /*
++     * Since we have a create method, the get and set are used
++     * only in get_prop_array() and set_prop_array() for the case
++     * where we have an array of link properties.
++     */
++    .get = get_link,
++    .set = set_link,
  };
  
-+REG32(IRS_IDR0, 0x0)
-+    FIELD(IRS_IDR0, INT_DOM, 0, 2)
-+    FIELD(IRS_IDR0, PA_RANGE, 2, 5)
-+    FIELD(IRS_IDR0, VIRT, 6, 1)
-+    FIELD(IRS_IDR0, ONE_N, 7, 1)
-+    FIELD(IRS_IDR0, VIRT_ONE_N, 8, 1)
-+    FIELD(IRS_IDR0, SETLPI, 9, 1)
-+    FIELD(IRS_IDR0, MEC, 10, 1)
-+    FIELD(IRS_IDR0, MPAM, 11, 1)
-+    FIELD(IRS_IDR0, SWE, 12, 1)
-+    FIELD(IRS_IDR0, IRSID, 16, 16)
+ void qdev_property_add_static(DeviceState *dev, const Property *prop)
+diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
+index d8745d4c65..936d06023a 100644
+--- a/include/hw/core/qdev-properties.h
++++ b/include/hw/core/qdev-properties.h
+@@ -168,6 +168,31 @@ extern const PropertyInfo qdev_prop_link;
+     DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
+                 .link_type  = _type)
+ 
++/**
++ * DEFINE_PROP_LINK_ARRAY:
++ * @_name: name of the array
++ * @_state: name of the device state structure type
++ * @_field: uint32_t field in @_state to hold the array length
++ * @_arrayfield: field in @_state (of type '@_arraytype *') which
++ *               will point to the array
++ * @_linktype: QOM type name of the link type
++ * @_arraytype: C type of the array elements
++ *
++ * Define device properties for a variable-length array _name of links
++ * (i.e. this is the array version of DEFINE_PROP_LINK).
++ * The array is represented as a list of QStrings in the visitor interface,
++ * where each string is the QOM path of the object to be linked.
++ */
++#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
++                               _linktype, _arraytype)                   \
++    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
++                .set_default = true,                                    \
++                .defval.u = 0,                                          \
++                .arrayinfo = &qdev_prop_link,                           \
++                .arrayfieldsize = sizeof(_arraytype),                   \
++                .arrayoffset = offsetof(_state, _arrayfield),           \
++                .link_type = _linktype)
 +
-+REG32(IRS_IDR1, 0x4)
-+    FIELD(IRS_IDR1, PE_CNT, 0, 16)
-+    FIELD(IRS_IDR1, IAFFID_BITS, 16, 4)
-+    FIELD(IRS_IDR1, PRI_BITS, 20, 3)
+ #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
+ #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
+@@ -219,6 +244,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+ /* Takes ownership of @values */
+ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
+ 
++/**
++ * qlist_append_link: Add a QOM object to a QList of link properties
++ * @qlist: list to append to
++ * @obj: object to append
++ *
++ * This is a helper function for constructing a QList to pass to
++ * qdev_prop_set_array() when the qdev property array is an array of link
++ * properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
++ *
++ * The object is encoded into the list as a QString which is the
++ * canonical path of the object; this is the same encoding that
++ * object_set_link_property() and object_get_link_property() use.
++ */
++void qlist_append_link(QList *qlist, Object *obj);
 +
-+REG32(IRS_IDR2, 0x8)
-+    FIELD(IRS_IDR2, ID_BITS, 0, 5)
-+    FIELD(IRS_IDR2, LPI, 5, 1)
-+    FIELD(IRS_IDR2, MIN_LPI_ID_BITS, 6, 4)
-+    FIELD(IRS_IDR2, IST_LEVELS, 10, 1)
-+    FIELD(IRS_IDR2, IST_L2SZ, 11, 3)
-+    FIELD(IRS_IDR2, IST_MD, 14, 1)
-+    FIELD(IRS_IDR2, ISTMD_SZ, 15, 5)
+ void *object_field_prop_ptr(Object *obj, const Property *prop);
+ 
+ void qdev_prop_register_global(GlobalProperty *prop);
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 26df6137b9..48fdbf353e 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -1750,6 +1750,25 @@ ObjectProperty *object_class_property_add_link(ObjectClass *oc,
+                                             Object *val, Error **errp),
+                               ObjectPropertyLinkFlags flags);
+ 
 +
-+REG32(IRS_IDR3, 0xc)
-+    FIELD(IRS_IDR3, VMD, 0, 1)
-+    FIELD(IRS_IDR3, VMD_SZ, 1, 4)
-+    FIELD(IRS_IDR3, VM_ID_BITS, 5, 5)
-+    FIELD(IRS_IDR3, VMT_LEVELS, 10, 1)
++/**
++ * object_resolve_and_typecheck:
++ * @path: path to look up
++ * @name: name of property we are resolving for (used only in error messages)
++ * @target_type: QOM type we expect @path to resolve to
++ * @errp: error
++ *
++ * Look up the object at @path and return it. If it does not have
++ * the correct type @target_type, return NULL and set @errp.
++ *
++ * This is similar to object_resolve_path_type(), but it insists on
++ * a non-ambiguous path and it produces error messages that are specialised
++ * to the use case of setting a link property on an object.
++ */
++Object *object_resolve_and_typecheck(const char *path,
++                                     const char *name,
++                                     const char *target_type, Error **errp);
 +
-+REG32(IRS_IDR4, 0x10)
-+    FIELD(IRS_IDR4, VPED_SZ, 0, 6)
-+    FIELD(IRS_IDR4, VPE_ID_BITS, 6, 4)
-+
-+REG32(IRS_IDR5, 0x14)
-+    FIELD(IRS_IDR5, SPI_RANGE, 0, 25)
-+
-+REG32(IRS_IDR6, 0x18)
-+    FIELD(IRS_IDR6, SPI_IRS_RANGE, 0, 25)
-+
-+REG32(IRS_IDR7, 0x1c)
-+    FIELD(IRS_IDR7, SPI_BASE, 0, 24)
-+
-+REG32(IRS_IIDR, 0x40)
-+    FIELD(IRS_IIDR, IMPLEMENTER, 0, 12)
-+    FIELD(IRS_IIDR, REVISION, 12, 4)
-+    FIELD(IRS_IIDR, VARIANT, 16, 4)
-+    FIELD(IRS_IIDR, PRODUCTID, 20, 12)
-+
-+REG32(IRS_AIDR, 0x44)
-+    FIELD(IRS_AIDR, ARCHMINORREV, 0, 4)
-+    FIELD(IRS_AIDR, ARCHMAJORREV, 4, 4)
-+    FIELD(IRS_AIDR, COMPONENT, 8, 4)
-+
-+REG32(IRS_CR0, 0x80)
-+    FIELD(IRS_CR0, IRSEN, 0, 1)
-+    FIELD(IRS_CR0, IDLE, 1, 1)
-+
-+REG32(IRS_CR1, 0x84)
-+    FIELD(IRS_CR1, SH, 0, 2)
-+    FIELD(IRS_CR1, OC, 2, 2)
-+    FIELD(IRS_CR1, IC, 4, 2)
-+    FIELD(IRS_CR1, IST_RA, 6, 1)
-+    FIELD(IRS_CR1, IST_WA, 7, 1)
-+    FIELD(IRS_CR1, VMT_RA, 8, 1)
-+    FIELD(IRS_CR1, VMT_WA, 9, 1)
-+    FIELD(IRS_CR1, VPET_RA, 10, 1)
-+    FIELD(IRS_CR1, VPET_WA, 11, 1)
-+    FIELD(IRS_CR1, VMD_RA, 12, 1)
-+    FIELD(IRS_CR1, VMD_WA, 13, 1)
-+    FIELD(IRS_CR1, VPED_RA, 14, 1)
-+    FIELD(IRS_CR1, VPED_WA, 15, 1)
-+
-+REG32(IRS_SYNCR, 0xc0)
-+    FIELD(IRS_SYNCR, SYNC, 31, 1)
-+
-+REG32(IRS_SYNC_STATUSR, 0xc4)
-+    FIELD(IRS_SYNC_STATUSR, IDLE, 0, 1)
-+
-+REG64(IRS_SPI_VMR, 0x100)
-+    FIELD(IRS_SPI_VMR, VM_ID, 0, 16)
-+    FIELD(IRS_SPI_VMR, VIRT, 63, 1)
-+
-+REG32(IRS_SPI_SELR, 0x108)
-+    FIELD(IRS_SPI_SELR, ID, 0, 24)
-+
-+REG32(IRS_SPI_DOMAINR, 0x10c)
-+    FIELD(IRS_SPI_DOMAINR, DOMAIN, 0, 2)
-+
-+REG32(IRS_SPI_RESAMPLER, 0x110)
-+    FIELD(IRS_SPI_RESAMPLER, SPI_ID, 0, 24)
-+
-+REG32(IRS_SPI_CFGR, 0x114)
-+    FIELD(IRS_SPI_CFGR, TM, 0, 1)
-+
-+REG32(IRS_SPI_STATUSR, 0x118)
-+    FIELD(IRS_SPI_STATUSR, IDLE, 0, 1)
-+    FIELD(IRS_SPI_STATUSR, V, 1, 1)
-+
-+REG32(IRS_PE_SELR, 0x140)
-+    FIELD(IRS_PE_SELR, IAFFID, 0, 16)
-+
-+REG32(IRS_PE_STATUSR, 0x144)
-+    FIELD(IRS_PE_STATUSR, IDLE, 0, 1)
-+    FIELD(IRS_PE_STATUSR, V, 1, 1)
-+    FIELD(IRS_PE_STATUSR, ONLINE, 2, 1)
-+
-+REG32(IRS_PE_CR0, 0x148)
-+    FIELD(IRS_PE_CR0, DPS, 0, 1)
-+
-+REG64(IRS_IST_BASER, 0x180)
-+    FIELD(IRS_IST_BASER, VALID, 0, 1)
-+    FIELD(IRS_IST_BASER, ADDR, 6, 50)
-+
-+REG32(IRS_IST_CFGR, 0x190)
-+    FIELD(IRS_IST_CFGR, LPI_ID_BITS, 0, 5)
-+    FIELD(IRS_IST_CFGR, L2SZ, 5, 2)
-+    FIELD(IRS_IST_CFGR, ISTSZ, 7, 2)
-+    FIELD(IRS_IST_CFGR, STRUCTURE, 16, 1)
-+
-+REG32(IRS_IST_STATUSR, 0x194)
-+    FIELD(IRS_IST_STATUSR, IDLE, 0, 1)
-+
-+REG32(IRS_MAP_L2_ISTR, 0x1c0)
-+    FIELD(IRS_MAP_L2_ISTR, ID, 0, 24)
-+
-+REG64(IRS_VMT_BASER, 0x200)
-+    FIELD(IRS_VMT_BASER, VALID, 0, 1)
-+    FIELD(IRS_VMT_BASER, ADDR, 3, 53)
-+
-+REG32(IRS_VMT_CFGR, 0x210)
-+    FIELD(IRS_VMT_CFGR, VM_ID_BITS, 0, 5)
-+    FIELD(IRS_VMT_CFGR, STRUCTURE, 16, 1)
-+
-+REG32(IRS_VMT_STATUSR, 0x124)
-+    FIELD(IRS_VMT_STATUSR, IDLE, 0, 1)
-+
-+REG64(IRS_VPE_SELR, 0x240)
-+    FIELD(IRS_VPE_SELR, VM_ID, 0, 16)
-+    FIELD(IRS_VPE_SELR, VPE_ID, 32, 16)
-+    FIELD(IRS_VPE_SELR, S, 63, 1)
-+
-+REG64(IRS_VPE_DBR, 0x248)
-+    FIELD(IRS_VPE_DBR, INTID, 0, 24)
-+    FIELD(IRS_VPE_DBR, DBPM, 32, 5)
-+    FIELD(IRS_VPE_DBR, REQ_DB, 62, 1)
-+    FIELD(IRS_VPE_DBR, DBV, 63, 1)
-+
-+REG32(IRS_VPE_HPPIR, 0x250)
-+    FIELD(IRS_VPE_HPPIR, ID, 0, 24)
-+    FIELD(IRS_VPE_HPPIR, TYPE, 29, 3)
-+    FIELD(IRS_VPE_HPPIR, HPPIV, 32, 1)
-+
-+REG32(IRS_VPE_CR0, 0x258)
-+    FIELD(IRS_VPE_CR0, DPS, 0, 1)
-+
-+REG32(IRS_VPE_STATUSR, 0x25c)
-+    FIELD(IRS_VPE_STATUSR, IDLE, 0, 1)
-+    FIELD(IRS_VPE_STATUSR, V, 1, 1)
-+
-+REG64(IRS_VM_DBR, 0x280)
-+    FIELD(IRS_VM_DBR, VPE_ID, 0, 16)
-+    FIELD(IRS_VM_DBR, EN, 63, 1)
-+
-+REG32(IRS_VM_SELR, 0x288)
-+    FIELD(IRS_VM_SELR, VM_ID, 0, 16)
-+
-+REG32(IRS_VM_STATUSR, 0x28c)
-+    FIELD(IRS_VM_STATUSR, IDLE, 0, 1)
-+    FIELD(IRS_VM_STATUSR, V, 1, 1)
-+
-+REG64(IRS_VMAP_L2_VMTR, 0x2c0)
-+    FIELD(IRS_VMAP_L2_VMTR, VM_ID, 0, 16)
-+    FIELD(IRS_VMAP_L2_VMTR, M, 63, 1)
-+
-+REG64(IRS_VMAP_VMR, 0x2c8)
-+    FIELD(IRS_VMAP_VMR, VM_ID, 0, 16)
-+    FIELD(IRS_VMAP_VMR, U, 62, 1)
-+    FIELD(IRS_VMAP_VMR, M, 63, 1)
-+
-+REG64(IRS_VMAP_VISTR, 0x2d0)
-+    FIELD(IRS_VMAP_VISTR, TYPE, 29, 3)
-+    FIELD(IRS_VMAP_VISTR, VM_ID, 32, 16)
-+    FIELD(IRS_VMAP_VISTR, U, 62, 1)
-+    FIELD(IRS_VMAP_VISTR, M, 63, 1)
-+
-+REG64(IRS_VMAP_L2_VISTR, 0x2d8)
-+    FIELD(IRS_VMAP_L2_VISTR, ID, 0, 24)
-+    FIELD(IRS_VMAP_L2_VISTR, TYPE, 29, 3)
-+    FIELD(IRS_VMAP_L2_VISTR, VM_ID, 32, 16)
-+    FIELD(IRS_VMAP_L2_VISTR, M, 63, 1)
-+
-+REG64(IRS_VMAP_VPER, 0x2e0)
-+    FIELD(IRS_VMAP_VPER, VPE_ID, 0, 16)
-+    FIELD(IRS_VMAP_VPER, VM_ID, 32, 16)
-+    FIELD(IRS_VMAP_VPER, M, 63, 1)
-+
-+REG64(IRS_SAVE_VMR, 0x300)
-+    FIELD(IRS_SAVE_VMR, VM_ID, 0, 16)
-+    FIELD(IRS_SAVE_VMR, Q, 62, 1)
-+    FIELD(IRS_SAVE_VMR, S, 63, 1)
-+
-+REG32(IRS_SAVE_VM_STATUSR, 0x308)
-+    FIELD(IRS_SAVE_VM_STATUSR, IDLE, 0, 1)
-+    FIELD(IRS_SAVE_VM_STATUSR, Q, 1, 1)
-+
-+REG32(IRS_MEC_IDR, 0x340)
-+    FIELD(IRS_MEC_IDR, MECIDSIZE, 0, 4)
-+
-+REG32(IRS_MEC_MECID_R, 0x344)
-+    FIELD(IRS_MEC_MICID_R, MECID, 0, 16)
-+
-+REG32(IRS_MPAM_IDR, 0x380)
-+    FIELD(IRS_MPAM_IDR, PARTID_MAX, 0, 16)
-+    FIELD(IRS_MPAM_IDR, PMG_MAX, 16, 8)
-+    FIELD(IRS_MPAM_IDR, HAS_MPAM_SP, 24, 1)
-+
-+REG32(IRS_MPAM_PARTID_R, 0x384)
-+    FIELD(IRS_MPAM_IDR, PARTID, 0, 16)
-+    FIELD(IRS_MPAM_IDR, PMG, 16, 8)
-+    FIELD(IRS_MPAM_IDR, MPAM_SP, 24, 2)
-+    FIELD(IRS_MPAM_IDR, IDLE, 31, 1)
-+
-+REG64(IRS_SWERR_STATUSR, 0x3c0)
-+    FIELD(IRS_SWERR_STATUSR, V, 0, 1)
-+    FIELD(IRS_SWERR_STATUSR, S0V, 1, 1)
-+    FIELD(IRS_SWERR_STATUSR, S1V, 2, 1)
-+    FIELD(IRS_SWERR_STATUSR, OF, 3, 1)
-+    FIELD(IRS_SWERR_STATUSR, EC, 16, 8)
-+    FIELD(IRS_SWERR_STATUSR, IMP_EC, 24, 8)
-+
-+REG64(IRS_SWERR_SYNDROMER0, 0x3c8)
-+    FIELD(IRS_SWERR_SYNDROMER0, VM_ID, 0, 16)
-+    FIELD(IRS_SWERR_SYNDROMER0, ID, 32, 24)
-+    FIELD(IRS_SWERR_SYNDROMER0, TYPE, 60, 3)
-+    FIELD(IRS_SWERR_SYNDROMER0, VIRTUAL, 63, 1)
-+
-+REG64(IRS_SWERR_SYNDROMER1, 0x3d0)
-+    FIELD(IRS_SWERR_SYNDROMER2, ADDR, 3, 53)
-+
- static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-                          uint64_t *data, MemTxAttrs attrs)
+ /**
+  * object_property_add_str:
+  * @obj: the object to add a property to
+diff --git a/qom/object.c b/qom/object.c
+index ff8ede8a32..90b8f3461e 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1895,26 +1895,13 @@ static void object_get_link_property(Object *obj, Visitor *v,
+     }
+ }
+ 
+-/*
+- * object_resolve_link:
+- *
+- * Lookup an object and ensure its type matches the link property type.  This
+- * is similar to object_resolve_path() except type verification against the
+- * link property is performed.
+- *
+- * Returns: The matched object or NULL on path lookup failures.
+- */
+-static Object *object_resolve_link(Object *obj, const char *name,
+-                                   const char *path, Error **errp)
++Object *object_resolve_and_typecheck(const char *path,
++                                     const char *name,
++                                     const char *target_type, Error **errp)
  {
+-    const char *type;
+-    char *target_type;
+     bool ambiguous = false;
+     Object *target;
+ 
+-    /* Go from link<FOO> to FOO.  */
+-    type = object_property_get_type(obj, name, NULL);
+-    target_type = g_strndup(&type[5], strlen(type) - 6);
+     target = object_resolve_path_type(path, target_type, &ambiguous);
+ 
+     if (ambiguous) {
+@@ -1931,11 +1918,30 @@ static Object *object_resolve_link(Object *obj, const char *name,
+         }
+         target = NULL;
+     }
+-    g_free(target_type);
+-
+     return target;
+ }
+ 
++/*
++ * object_resolve_link:
++ *
++ * Lookup an object and ensure its type matches the link property type.  This
++ * is similar to object_resolve_path() except type verification against the
++ * link property is performed.
++ *
++ * Returns: The matched object or NULL on path lookup failures.
++ */
++static Object *object_resolve_link(Object *obj, const char *name,
++                                   const char *path, Error **errp)
++{
++    const char *type;
++    g_autofree char *target_type = NULL;
++
++    /* Go from link<FOO> to FOO.  */
++    type = object_property_get_type(obj, name, NULL);
++    target_type = g_strndup(&type[5], strlen(type) - 6);
++    return object_resolve_and_typecheck(path, name, target_type, errp);
++}
++
+ static void object_set_link_property(Object *obj, Visitor *v,
+                                      const char *name, void *opaque,
+                                      Error **errp)
 -- 
 2.43.0
 

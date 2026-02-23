@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20208E98E06
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:38:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E5FE98E06
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:38:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRRz-0000E3-UP; Mon, 23 Feb 2026 03:37:55 -0500
+	id 1vuRSG-0000Gw-1M; Mon, 23 Feb 2026 03:38:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRx-0000Cv-Qs
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:53 -0500
-Received: from p-east2-cluster4-host4-snip4-10.eps.apple.com ([57.103.78.151]
+ id 1vuRS6-0000Et-Om
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:03 -0500
+Received: from p-east2-cluster3-host1-snip4-10.eps.apple.com ([57.103.77.221]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRv-0002Bu-NX
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:53 -0500
+ id 1vuRS5-0002D6-Ds
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:02 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- B0A011800201; Mon, 23 Feb 2026 08:37:46 +0000 (UTC)
+ 219211800200; Mon, 23 Feb 2026 08:37:55 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835871; x=1774427871;
- bh=Ajm5wvw79Vw9L0B+loVcxnLQ5Hp1DddrxTh1ozEZLIw=;
+ s=sig1; t=1771835879; x=1774427879;
+ bh=mfxct9QuL+ifLWFIShtfDThHLnEEVf+FJyNrc4eM18s=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=A0IAW/dKIrEMacrVracfAlO2AKJLHlGsliuoNOSQtomI/KYTEwOEqdl1CtVI84rTfj6AB+bpAjGKVVgv4ZszHoubvzhi4SQKw/nIb7YCbXMqJYEcZ83mjPYOINl+8/h6s0pQXhcht6wPFYEh0vsC4crkkAdg5VlX9FnCTw1gUBKSKSHHFLvAI8b4ZNrsM8fTzpz+CG9/X/JrHfCacftsjuhSG06qBS1KwYt7ndSgabeWKVV7LnZkNREHVhXCawVu9PqcKVIuznbM7TKNqCzzOsLaaY1rMvoGB1SBywfgoKDp2tj5db6a76BLLkIsqEchbRnzMDv6AiaCgRq+WV4hCw==
+ b=IxFtgbYZ9ejTHYgZlcyQjK4A/5/1dF2YGbo7ExvXurzdjcIL3P/88yci8s480onXf3MXYIUdJVfr77HdC0GZPc/uCwBu4xb0PVuUSCUBKtv/wt6jMygsRPs0qavaOWs/KI48b9N6+96ak3I1GIhVpH7myJrIdVtbxW1ddfdHddyLnXV/H59QBnaY5zIpJeg/X/MVJokCgJD1Ou6mB2eJ4uzmaoFUdSUckAPafBBGfzNiYBKWryYuWrqPzHap8rrfZUS0LzfC9AS9/DPaxDZECJBhMmRA3xf5ceGmMnzlPaAWiBLmSgYHYBLglCsbbqqx12+bi36E2cSppLtg4Vbepw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- A86CF1800204; Mon, 23 Feb 2026 08:37:43 +0000 (UTC)
+ 63AF118000B5; Mon, 23 Feb 2026 08:37:53 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,38 +49,37 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 03/27] target/i386/emulate/x86_decode: Actually use stream
- in decode_instruction_stream()
-Date: Mon, 23 Feb 2026 09:37:09 +0100
-Message-ID: <20260223083734.48533-4-mohamed@unpredictable.fr>
+Subject: [PATCH v5 07/27] whpx: preparatory changes before switching over from
+ winhvemulation
+Date: Mon, 23 Feb 2026 09:37:13 +0100
+Message-ID: <20260223083734.48533-8-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
 References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 7l0suOC8UDg1QYPT_sF6TPUMy2yclX8x
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXw7D8SeGzJtjz
- pVK/b+0SwIM1fc5MLvJ7JtqJ3gUNb0bIQD95JpcX/BglguoD1Q8mKUgVnhGCb2Wv2GBskXZYYUc
- +JDY69fXWYo9bcSATqVQ2Mxaqxe5AMA04N+bWEjLw0v4JTKGB0K6LmbZDeI2OXtAG73q1eVprry
- Xx+swJiF6O4S5XcedtF8T1dK7HqdzyulvTDmJvdBtjAYyhuembVIiC6ULgj09Xk7UNQIuxUVxf0
- j7+Sd8/Km0f2VzzZoWRGSm1XXzsqdUNVH1wlA4hVgub2bvd0GZYvnyTlr9XiA0ZyrUiTumrBc2P
- eoiYAMN3w1T8oe+b/gmt2KhWmDLDrrLh/U8kmLdiB/5YuW8K+8UAdrFhbS2bp8=
-X-Authority-Info-Out: v=2.4 cv=WItyn3sR c=1 sm=1 tr=0 ts=699c11dd
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXz9xn3qzMFQxh
+ 9m08YIu7v+utVXjHkwXjS27jvFtPMl63r+wP9Jn6l//RECvpwVHBcQh/+Cg3ebwRUA5TQ837v3L
+ Mi1Ywq05t+uYCkB1Y/Xisss7gZyW5LKp8D3bqBmKS2wfHccMrqDlSPIWHIWuwN5HReVqjrw+1xp
+ fRiS3IUeZa+RjSWToaS1xzlsFcuwrqrfPzUXeEM1M8LoOmz3jJGizQo7mLcnCY2W1r/kB1YP1Nz
+ EpYBEDEyFHcmpY8Jey3GmNN3c+OtjwQrScEVrukVqfh3o3jrltHvnWryjx/YJmVjpE2TdNe1c5M
+ OUlUYJqLefbIaIW5dd+iygjPFMax7TW+Xtr1FuSH42v/wwbh/z0cRdVz1r03PA=
+X-Proofpoint-GUID: qfVl8H127eKKbqfkXA0rwP3o7QThhK9S
+X-Proofpoint-ORIG-GUID: qfVl8H127eKKbqfkXA0rwP3o7QThhK9S
+X-Authority-Info-Out: v=2.4 cv=Ra2dyltv c=1 sm=1 tr=0 ts=699c11e5
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=pGLkceISAAAA:8
- a=VwQbUJbxAAAA:8 a=yMhMjlubAAAA:8 a=s2ha6HylF4ed1T9rlyMA:9
-X-Proofpoint-ORIG-GUID: 7l0suOC8UDg1QYPT_sF6TPUMy2yclX8x
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=qtJoQR36IQ-qKrO0xoYA:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- adultscore=0 suspectscore=0 lowpriorityscore=0 spamscore=0 mlxscore=0
- malwarescore=0 bulkscore=0 mlxlogscore=857 phishscore=0 classifier=spam
+ mlxlogscore=941 spamscore=0 mlxscore=0 bulkscore=0 lowpriorityscore=0
+ malwarescore=0 adultscore=0 suspectscore=0 phishscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAABG8YMpFYHGnBMqygvkW/3tlLgcPUjW93IlZmWqOE8kraR3r3P0EOgrB9t7ARGnYluwtrHZ4akEkBOx5EemuAdl5aiidQ1LF4DbwaTW9HVr3axRlMjT9D7i/6jiK/GA32VIMnp4d3zceGqH3TmR+ymAbOTFtSMSwqaOjQ8iw0wkjwyvKVS1ThSB3ZLSyM3L/WJLcW2ER/Mq/wLZkrmYJ0QVObVISSlGydzGCkoBdv98s6xkxdO1ZxXW1PMZXpG3TmEdjibNLGPKBv/aH61dn1HOQFgWcB9LPIuRxB8H5YEnRwob9WvrIQTiKaX4TnFp5tieElF3kFv8HLqb4osI088N6O0nk5ChaJ+8kEfv54kk+fnHouMyMsAsFCRG8mtARwGmdXJ1DC8U69+XJjVPt1Bb/XJ5myXF9gugB5bJtnxfQQtrmkDBFqSTMDQfXbgiAphsw7w2DEZWgS2IlnCy9sc1zcOTCh+aZvEIrZaJZRvMVpRDgkcJrw7dqWhYgSLazprEPMwhCkqg8SfoYKVYuKU8+L1RQT2ecCaM5PjCOTwKhsp5b/0WqEOJfwLLlPs1oQqDgb6B9MudZxso34CDAwSK1qmaSH3gtEU0zSkA1wF5jcWEbzVm167vZiLxij/F+K8i5EzEsV2F9LpSIXmremdvP68kw0eUl7dJcNtPQVDB/ZX5AaM0W83t8fl6uAKXDjqzgxepCog8BozGagMOg3FJY8kdPDRk6AWCjMOfgRxDmMa1OqejzF0dBHA2/riPq5RLl1IZkg//HSbaocNAXBtK4frKGB/TtOJvkAoXx41EXg9xtHNnO/u3P8tYQ==
-Received-SPF: pass client-ip=57.103.78.151;
+X-JNJ: AAAAAAABGp9lZ8Orj5z8+jWfbKs2f1DQVXH0+k8rVlWcwfm/+FpjNlMugm39Qe6d1aLLQ2bAUvLhQnxVczWqq/8NpWPXzXwgIiX9HwvSCyKkMhBvLXPQv99Npa0nJIonfTQGQC1/kneSMDid+uiL4sIRoG5ljwoKZdwDqG2atzGAK7Cf7gxjBr0iEJAlcMt1R+mnWYemXrfKpAj5OsycpH6WCLi1Vb7SzR52ciPU7a0DbyctismcRBJdU6yAGVr9YzzEviswxtnTLLD6k8NM1CYhu/INxKnuIBREXE5xWtaZjbd7ULvjYoFYKgItRxeo/CixFy0usCU8Wf9vsPX+BTSqA7+I67nUfCJ69PwZkkaoz85CbCs4F9TcqDuy5br4795KgAnM8kC1ROlOlIlXnFgwq040HK91Npz3ucOKt8Rxz9LydEv1qLxb7IaEzVE+jojsfunnOkjsh944zkHhfoJMa6/HMWKCS9z3C0IprHMJuymLw8PI21/IbYAXOStsGpHVLsm/OylRiN2TZLZNbdPdfwpT/3X6vt4I8XR8GvYQ6kE+Rh7UB8iYNPhunkelxNhlSz723UP+aTSPp8183hsoJhIpLWMLZVdhtkRr++nBRwUMsSBrx97sHqgGc5jac8ooFe91hJUsqgbwz8DT1NyBF0DG+N2b7mqR6fZAscyFxk0saTE5U8aRrBjhCEEjfymFZEFlwBl97cSIQxxM8zwWRo1T2cp4d22dQxI6X5lLU1V78sA9+UD7ytmAdMhiGER46OHkbMvrHLfrTMJeKR0EVLwmnB9oq+7L1i5QXg043DR48fyx2Wfi
+Received-SPF: pass client-ip=57.103.77.221;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -11
 X-Spam_score: -1.2
@@ -105,50 +104,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Bernhard Beschow <shentey@gmail.com>
-
-Compared to decode_instruction(), decode_instruction_stream() has an additional
-stream parameter which avoids some guest memory accesses during instruction
-decoding. Both functions defer the actual work to decode_opcode() which would
-set the stream pointer to zero such that decode_instruction_stream() essentially
-behaved like decode_instruction(). Given that all callers of
-decode_instruction_stream() properly zero-initialize the decode parameter, the
-memset() call can be moved into decode_instruction() which is the only other
-user of decode_opcode(). This preserves the non-zero stream pointer which
-avoids extra guest memory accesses.
-
-Fixes: 1e25327b244a ("target/i386/emulate: Allow instruction decoding from stream")
-cc: qemu-stable
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Wei Liu (Microsoft) <wei.liu@kernel.org>
-Tested-by: Magnus Kulke <magnuskulke@linux.microsoft.com>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/emulate/x86_decode.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/i386/cpu.h               | 2 +-
+ target/i386/emulate/meson.build | 1 +
+ target/i386/mshv/meson.build    | 4 ++++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/target/i386/emulate/x86_decode.c b/target/i386/emulate/x86_decode.c
-index 6ad03b71b0..7bbcd2a9a2 100644
---- a/target/i386/emulate/x86_decode.c
-+++ b/target/i386/emulate/x86_decode.c
-@@ -2088,8 +2088,6 @@ static void decode_opcodes(CPUX86State *env, struct x86_decode *decode)
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 9f222a0c9f..065613722f 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2286,7 +2286,7 @@ typedef struct CPUArchState {
+     QEMUTimer *xen_periodic_timer;
+     QemuMutex xen_timers_lock;
+ #endif
+-#if defined(CONFIG_HVF) || defined(CONFIG_MSHV)
++#if defined(CONFIG_HVF) || defined(CONFIG_MSHV) || defined(CONFIG_WHPX)
+     void *emu_mmio_buf;
+ #endif
  
- static uint32_t decode_opcode(CPUX86State *env, struct x86_decode *decode)
- {
--    memset(decode, 0, sizeof(*decode));
--
-     decode_prefix(env, decode);
-     set_addressing_size(env, decode);
-     set_operand_size(env, decode);
-@@ -2101,6 +2099,8 @@ static uint32_t decode_opcode(CPUX86State *env, struct x86_decode *decode)
+diff --git a/target/i386/emulate/meson.build b/target/i386/emulate/meson.build
+index dd047c424a..1bb3516249 100644
+--- a/target/i386/emulate/meson.build
++++ b/target/i386/emulate/meson.build
+@@ -7,3 +7,4 @@ emulator_files = files(
  
- uint32_t decode_instruction(CPUX86State *env, struct x86_decode *decode)
- {
-+    memset(decode, 0, sizeof(*decode));
+ i386_system_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: emulator_files)
+ i386_system_ss.add(when: 'CONFIG_MSHV', if_true: emulator_files)
++i386_system_ss.add(when: 'CONFIG_WHPX', if_true: emulator_files)
+diff --git a/target/i386/mshv/meson.build b/target/i386/mshv/meson.build
+index 647e5dafb7..3fadd4598a 100644
+--- a/target/i386/mshv/meson.build
++++ b/target/i386/mshv/meson.build
+@@ -6,3 +6,7 @@ i386_mshv_ss.add(files(
+ ))
+ 
+ i386_system_ss.add_all(when: 'CONFIG_MSHV', if_true: i386_mshv_ss)
 +
-     return decode_opcode(env, decode);
- }
- 
++i386_system_ss.add(when: 'CONFIG_WHPX', if_true: files(
++  'x86.c',
++))
 -- 
 2.50.1 (Apple Git-155)
 

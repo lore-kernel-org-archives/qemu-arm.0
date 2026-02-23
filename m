@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE72CEC110C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:06:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A24CEC1113
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:06:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKB-0001F3-Me; Mon, 23 Feb 2026 12:02:23 -0500
+	id 1vuZKe-0002LO-JA; Mon, 23 Feb 2026 12:02:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZK8-0001AB-Tn
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:20 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1vuZKc-0002I8-8y
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:50 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZK5-0008U5-8r
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:20 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4806cc07ce7so43122785e9.1
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:16 -0800 (PST)
+ id 1vuZKZ-0000E9-Md
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:49 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-4362507f0feso2836241f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866136; x=1772470936; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866166; x=1772470966; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=lfcmTJ7ZFiBmTNCLyk9Egoe7KSwSf53JXY1tR6tWykw=;
- b=n5metzxNLJK2AmRGhdaV1YhvYMl1BHgAxodcMb+8JHGnIfiPROwAFLAaJIOYC4Wrhh
- IdhaLaucYJgfOmI2NlkA2DrFiDAKZX/xpq9COaF23rcTxyNPfIoj0O2yz71iK9dcTIsM
- 1pkGzbmbRBb+oOXsK+MVFzV/j/Xa7qBCj7pJvkXbxBnp+0PStBwsXu5HgIEoR2N5/prQ
- UAFHrNcSqw0//ewXArbnfWQklQsM81y9Gx97hO7XDE5Qa3GFCeLcAIE+G/Fvn1uLJstE
- WFCF4IToMEfxAxlYaXcbLvfnboxazCeAnM0EH1jIeh+g7Bbvj9J+5FMCTDA+aWoPXf0O
- xPyQ==
+ :reply-to; bh=A4hIy6Kcu/S1hR9Ar9eqjjFF1c+deS8g8DeFKzdYWAM=;
+ b=HUeFNmkGKpfMKKJ6SEsY5yyuiRBZDsyYz684Los8NW+Tsj/+a9i4gW2NbVW3GiNs6x
+ VIa6rmBI0/N4DEc5u+ozKcofhzqAgQ51yniH4J/aooCNEAehypt0u3RbHbYx+OApdKrK
+ NNfH6xcqQRWHcZcznRVwO3PcNe2ue8fvao9HULgRVNB+FMQc+axl7m1qYtm73YURWV2V
+ In4ZxGmp8dkuVJ08tkcQCzLLmyQi+d1ld3AWAjOeWadnlKEN0DcMrVN0kUe3SLX3TjHT
+ 8pc+uufbot/f8p0t4TozW5Wa8VMD6BeiyIUbgFWfpmGTKvmhh9AyU9J7rlOyZVnHNoQ0
+ wUjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866136; x=1772470936;
+ d=1e100.net; s=20230601; t=1771866166; x=1772470966;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=lfcmTJ7ZFiBmTNCLyk9Egoe7KSwSf53JXY1tR6tWykw=;
- b=aUMwybKHjuRQmQSvchJ2V2Ah8IVdJZu1ofxw2+wbiWzgLJQZn85UG1+k9F1GhEFAdh
- jw9E4K4PBNatM3Cza5lylNnp9UEIZPEz1iaR67eCa7BS+LSeGWaAAUMmGVzmd+Y5Lc0z
- YMH1OmHLrs+jyiPFvF60AezQi93pmIIieZ91GoWcBmoY9DJMvoLAHTrWEVqcAepBkql1
- ElyCcEEnXHrrJ7sF/LD0CSOt33MkPTiNPpHjn30egIrojE1kv4g2t95eNTK64b4WNQCz
- nerzSXJkVwun9p6zgqvjtnhHlpq0fQJMUtr6UHsq297uLFAKCYHUDQr5F6iHj98tY7PL
- q5oQ==
-X-Gm-Message-State: AOJu0YwlcCaiYVuUnkRJWw+l8GMm2ukt6ybtY+Q8PId5Ornw2OIVWsiG
- V/Bj9H55sh1z0U1oYa3COh/dfmDYE/Q6YNtvClzL9t47tvW1xjdiviN54b1BsEANDTo1va6QTTc
- AJ7Zb
-X-Gm-Gg: AZuq6aLxCmqftQhQUMo+g1IbF7wF4LpG6jGBIoH2qTSQqaxaPVx/AA7YZrW4h+U7s98
- U+y4t6j84BlCMFhV51wJxzSJ/YkYEB6Cpb4rKw2xQgytME5UXMCHpuKXue804xzySTDIUFq+uSO
- /uvRjwXLz91xDmpzy8Q9ACLiWcGEPpW9lOy05tl1diV6rWd5nEyil4W4vi35nB2DeiT0krnme5A
- DtQILvfWFBUxptW1xv91owA8DfDMhXAvJrdeT/x5XS6URDsQUTD/banfcO8gK56xAQpuQ5S0i0n
- o9SodabyPi0knuDT0qVxvlx3RTo2zEaLRDjyzGv0Kqb+GvjCnoZi2QcKRIuKWnq0rDrS1nzSYO3
- V7t/l5lPsJ4jhJN7RT8s2CtrXtepgN8Fsm2McIOMWvWAPDmOVdm/vxiT1AbucmgGq38+5W8xxs8
- YeDrTMczbWJa3v03w5hdC3XJSsxUB1SLZBcP3efdSFHNY36CTPETI3jfvoDAPQ5KURSiygWh+Ng
- 2tCP+ouwpts+cGIr9TAiYlXU/IU66o=
-X-Received: by 2002:a05:600c:a11:b0:483:361b:deff with SMTP id
- 5b1f17b1804b1-483a95c9e16mr164522645e9.14.1771866135388; 
- Mon, 23 Feb 2026 09:02:15 -0800 (PST)
+ bh=A4hIy6Kcu/S1hR9Ar9eqjjFF1c+deS8g8DeFKzdYWAM=;
+ b=dXj1jupjIpTGLjgYKYulEArg5VZqYOXMU+rJy+CYxRcnVU3rhU0DA71ZScOlkTihJS
+ 71R6av45rGleT9dG3gMOdAzRIlA4AdDlvQrMS3cEkKaUJCifLFfRz4sTbmOE/I4iZr7f
+ XRnFh6dOwdIOJALg66hbXNjeiZMY2KTK8x6/ps/qkmKxzN0sDCI8+23lvcmmPosVr1XJ
+ rWMovBEBjKNMF17NE2EWyf7RjecUoxCpeG9Z6MG9Q1MMHb4REd6lyK6tK1IXyl2COaeW
+ 4wvPhk2wHjOHp0gZ/0MuckijyYOtS6vXO3FzDQGNK7T2gqGEzTqq1YVEujPfMsu+MKRb
+ Cjwg==
+X-Gm-Message-State: AOJu0YwpHAIW0ZP11SCQMPQbh+meEI43bbFB7pxXqDprABpVmkav6D1b
+ xvYQg1J40Dq9rwINVRWU6CwoVbWEiA3r76ONNJMbUUEW39xLoPEl43GmOL72pTST0l1DwLD6RQ7
+ Kpxh3
+X-Gm-Gg: AZuq6aI9YeKjHkXWLmj90jTVYkjllMug+iVE15sJ0HEOzuPJuuL+iWdAeVlE50bzHva
+ 4459+FC+sB+RyLhA5fn2IwMoIDh0Pza8+kqMUjgwaK5TtmPbFVPDQ8JQHlechoENRi+5DiUaR2a
+ 0ogSVIgzN/JZd+ODzQPtgoWYOGt1e1IdLoGIywHKZSy1tgwpVebWTZLGH8M//WiLuhLYOrto4uQ
+ us+BPas9AWsRi/WCS0Ikzb9GQyNEVeU5VWdP7gkUV0jU+lYlMCbiz6zJiLaFt0wEUf2ShKqMdey
+ Mno6o9X8xm05fLG88vxaba9w+mfNSJtIFCYQeYNwPZmM5GjBviLFkRWMqBhscDqd/kVXF4y7EE2
+ ykY/DQkruhP+Ky/5NA2WKsVev2XEZ9sNepytko6ixwtOsVrZH35mpWz3Epz+4SIFZenF6Efp0Gx
+ 2Gi6M9ykuWfp/ZTLv8OKMJLjADhs81FHb+OmvPxu5bnkI2vOn0ibtPhJUG1ubX4gedxY9S68Vh7
+ 7DM7d/JYz+pPwzfpKJOGdPTQj97Ec0Q49/KCw1wJQ==
+X-Received: by 2002:a05:600c:3b0a:b0:47e:e2ec:9947 with SMTP id
+ 5b1f17b1804b1-483a963df7amr151995955e9.33.1771866165623; 
+ Mon, 23 Feb 2026 09:02:45 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.14
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:14 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:44 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/65] hw/core: Permit devices to define an array of link
- properties
-Date: Mon, 23 Feb 2026 17:01:08 +0000
-Message-ID: <20260223170212.441276-2-peter.maydell@linaro.org>
+Subject: [PATCH 27/65] hw/intc/arm_gicv5: Update SPI state for CLEAR/SET events
+Date: Mon, 23 Feb 2026 17:01:34 +0000
+Message-ID: <20260223170212.441276-28-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,339 +100,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently we allow devices to define "link properties" with
-DEFINE_PROP_LINK(): these are a way to give a device a pointer to
-another QOM object.  (Under the hood this is done by handing it the
-canonical QOM path for the object.)
+When an SPI irq line changes level, this causes what the spec
+describes as SET_LEVEL, SET_EDGE or CLEAR events.  These also happen
+when the trigger mode is reconfigured, or when software requests a
+manual resample via the IRS_SPI_RESAMPLER register.
 
-We also allow devices to define "array properties" with
-DEFINE_PROP_ARRAY(): these are a way to give a device a
-variable-length array of properties.
-
-However, there is no way to define an array of link properties.  If
-you try to do it by passing qdev_prop_link as the arrayprop argument
-to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
-does not provide the .set and .get methods in its PropertyInfo
-struct.
-
-This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
-a device you can use it like this:
-
-struct MyDevice {
-    ...
-    uint32_t num_cpus;
-    ARMCPU **cpus;
-}
-
-and in your Property array:
-    DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
-                           TYPE_ARM_CPU, ARMCPU *),
-
-The array property code will fill in s->num_cpus, allocate memory in
-s->cpus, and populate it with pointers.
-
-On the device-creation side you set the property in the same way as
-the existing array properties, using the new qlist_append_link()
-function to append to the QList:
-
-    QList *cpulist = qlist_new();
-    for (int i = 0; i < cpus; i++) {
-        qlist_append_link(cpulist, OBJECT(cpu[i]));
-    }
-    qdev_prop_set_array(mydev, "cpus", cpulist);
-
-The implementation is mostly in the provision of the .set and
-.get methods to the qdev_prop_link PropertyInfo struct. The
-code of these methods parallels the code in
-object_set_link_property() and object_get_link_property().  We can't
-completely share the code with those functions because of differences
-in where we get the information like the target QOM type, but I have
-pulled out a new function object_resolve_and_typecheck() for the
-shared "given a QOM path and a type, give me the object or an error"
-code.
+SET_LEVEL and SET_EDGE events make the interrupt pending, and update
+its handler mode to match its trigger mode.  CLEAR events make the
+interrupt no longer pending.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I want this specifically for the GICv5 interrupt controller device
-I'm working on.  I'd like to be able to pass in links to the CPUs
-connected to the GIC, so that we don't have to have the code assume
-that it's connected to CPU numbers 0,1,2... the way the current
-GICv3 code does.
+ hw/intc/arm_gicv5.c  | 59 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/intc/trace-events |  1 +
+ 2 files changed, 60 insertions(+)
 
-I think Phil also had a proposed series a while back that wanted
-to do something similar with one of the existing devices.
-
-I figured I'd post this early for review, though obviously it's a
-little unmotivated until I have my new GICv5 code into enough shape
-to submit. This is tested, but with my work-in-progress code.
----
- hw/core/qdev-properties.c         | 78 +++++++++++++++++++++++++++++++
- include/hw/core/qdev-properties.h | 40 ++++++++++++++++
- include/qom/object.h              | 19 ++++++++
- qom/object.c                      | 42 ++++++++++-------
- 4 files changed, 161 insertions(+), 18 deletions(-)
-
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index ba8461e9a4..f8181b0d91 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -669,6 +669,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
-          * being inside the device struct.
-          */
-         .offset = (uintptr_t)elem - (uintptr_t)obj,
-+        .link_type = parent_prop->link_type,
-     };
- }
- 
-@@ -950,6 +951,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
-     qobject_unref(values);
- }
- 
-+void qlist_append_link(QList *qlist, Object *obj)
-+{
-+    g_autofree char *path = object_get_canonical_path(obj);
-+    qlist_append_str(qlist, path);
-+}
-+
- static GPtrArray *global_props(void)
- {
-     static GPtrArray *gp;
-@@ -1059,9 +1066,80 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
-                                           OBJ_PROP_LINK_STRONG);
- }
- 
-+/*
-+ * The logic in these get_link() and set_link() functions is similar
-+ * to that used for single-element link properties in the
-+ * object_get_link_property() and object_set_link_property() functions.
-+ * The difference is largely in how we get the expected type of the
-+ * link: for us it is in the Property struct, and for a single link
-+ * property it is part of the property name on the object.
-+ */
-+static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
-+                     Error **errp)
-+{
-+    const Property *prop = opaque;
-+    Object **targetp = object_field_prop_ptr(obj, prop);
-+    g_autofree char *path = NULL;
-+
-+    if (*targetp) {
-+        path = object_get_canonical_path(*targetp);
-+        visit_type_str(v, name, &path, errp);
-+    } else {
-+        path = g_strdup("");
-+        visit_type_str(v, name, &path, errp);
-+    }
-+}
-+
-+static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
-+                     Error **errp)
-+{
-+    const Property *prop = opaque;
-+    Object **targetp = object_field_prop_ptr(obj, prop);
-+    g_autofree char *path = NULL;
-+    Object *new_target, *old_target = *targetp;
-+
-+    ERRP_GUARD();
-+
-+    /* Get the path to the object we want to set the link to */
-+    if (!visit_type_str(v, name, &path, errp)) {
-+        return;
-+    }
-+
-+    /* Now get the pointer to the actual object */
-+    if (*path) {
-+        new_target = object_resolve_and_typecheck(path, prop->name,
-+                                                  prop->link_type, errp);
-+        if (!new_target) {
-+            return;
-+        }
-+    } else {
-+        new_target = NULL;
-+    }
-+
-+    /*
-+     * Our link properties are always OBJ_PROP_LINK_STRONG and
-+     * have the allow_set_link_before_realize check.
-+     */
-+    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
-+    if (*errp) {
-+        return;
-+    }
-+
-+    *targetp = new_target;
-+    object_ref(new_target);
-+    object_unref(old_target);
-+}
-+
- const PropertyInfo qdev_prop_link = {
-     .type = "link",
-     .create = create_link_property,
-+    /*
-+     * Since we have a create method, the get and set are used
-+     * only in get_prop_array() and set_prop_array() for the case
-+     * where we have an array of link properties.
-+     */
-+    .get = get_link,
-+    .set = set_link,
- };
- 
- void qdev_property_add_static(DeviceState *dev, const Property *prop)
-diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
-index d8745d4c65..936d06023a 100644
---- a/include/hw/core/qdev-properties.h
-+++ b/include/hw/core/qdev-properties.h
-@@ -168,6 +168,31 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
-                 .link_type  = _type)
- 
-+/**
-+ * DEFINE_PROP_LINK_ARRAY:
-+ * @_name: name of the array
-+ * @_state: name of the device state structure type
-+ * @_field: uint32_t field in @_state to hold the array length
-+ * @_arrayfield: field in @_state (of type '@_arraytype *') which
-+ *               will point to the array
-+ * @_linktype: QOM type name of the link type
-+ * @_arraytype: C type of the array elements
-+ *
-+ * Define device properties for a variable-length array _name of links
-+ * (i.e. this is the array version of DEFINE_PROP_LINK).
-+ * The array is represented as a list of QStrings in the visitor interface,
-+ * where each string is the QOM path of the object to be linked.
-+ */
-+#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
-+                               _linktype, _arraytype)                   \
-+    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
-+                .set_default = true,                                    \
-+                .defval.u = 0,                                          \
-+                .arrayinfo = &qdev_prop_link,                           \
-+                .arrayfieldsize = sizeof(_arraytype),                   \
-+                .arrayoffset = offsetof(_state, _arrayfield),           \
-+                .link_type = _linktype)
-+
- #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
-     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
- #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
-@@ -219,6 +244,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
- /* Takes ownership of @values */
- void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
- 
-+/**
-+ * qlist_append_link: Add a QOM object to a QList of link properties
-+ * @qlist: list to append to
-+ * @obj: object to append
-+ *
-+ * This is a helper function for constructing a QList to pass to
-+ * qdev_prop_set_array() when the qdev property array is an array of link
-+ * properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
-+ *
-+ * The object is encoded into the list as a QString which is the
-+ * canonical path of the object; this is the same encoding that
-+ * object_set_link_property() and object_get_link_property() use.
-+ */
-+void qlist_append_link(QList *qlist, Object *obj);
-+
- void *object_field_prop_ptr(Object *obj, const Property *prop);
- 
- void qdev_prop_register_global(GlobalProperty *prop);
-diff --git a/include/qom/object.h b/include/qom/object.h
-index 26df6137b9..48fdbf353e 100644
---- a/include/qom/object.h
-+++ b/include/qom/object.h
-@@ -1750,6 +1750,25 @@ ObjectProperty *object_class_property_add_link(ObjectClass *oc,
-                                             Object *val, Error **errp),
-                               ObjectPropertyLinkFlags flags);
- 
-+
-+/**
-+ * object_resolve_and_typecheck:
-+ * @path: path to look up
-+ * @name: name of property we are resolving for (used only in error messages)
-+ * @target_type: QOM type we expect @path to resolve to
-+ * @errp: error
-+ *
-+ * Look up the object at @path and return it. If it does not have
-+ * the correct type @target_type, return NULL and set @errp.
-+ *
-+ * This is similar to object_resolve_path_type(), but it insists on
-+ * a non-ambiguous path and it produces error messages that are specialised
-+ * to the use case of setting a link property on an object.
-+ */
-+Object *object_resolve_and_typecheck(const char *path,
-+                                     const char *name,
-+                                     const char *target_type, Error **errp);
-+
- /**
-  * object_property_add_str:
-  * @obj: the object to add a property to
-diff --git a/qom/object.c b/qom/object.c
-index ff8ede8a32..90b8f3461e 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -1895,26 +1895,13 @@ static void object_get_link_property(Object *obj, Visitor *v,
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 9f4d44f975..d1baa015d1 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -908,6 +908,28 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
      }
  }
  
--/*
-- * object_resolve_link:
-- *
-- * Lookup an object and ensure its type matches the link property type.  This
-- * is similar to object_resolve_path() except type verification against the
-- * link property is performed.
-- *
-- * Returns: The matched object or NULL on path lookup failures.
-- */
--static Object *object_resolve_link(Object *obj, const char *name,
--                                   const char *path, Error **errp)
-+Object *object_resolve_and_typecheck(const char *path,
-+                                     const char *name,
-+                                     const char *target_type, Error **errp)
++static void spi_sample(GICv5SPIState *spi)
++{
++    /*
++     * Sample the state of the SPI input line; this generates
++     * SET_EDGE, SET_LEVEL or CLEAR events which update the SPI's
++     * pending state and handling mode per R_HHKMN.
++     * The logic is the same for "the input line changed" (R_QBXXV)
++     * and "software asked us to resample" (R_DMTFM).
++     */
++    if (spi->level) {
++        /*
++         * SET_LEVEL or SET_EDGE: interrupt becomes pending, and the
++         * handling mode is updated to match the trigger mode.
++         */
++        spi->pending = true;
++        spi->hm = spi->tm == GICV5_TRIGGER_EDGE ? GICV5_EDGE : GICV5_LEVEL;
++    } else if (spi->tm == GICV5_TRIGGER_LEVEL) {
++        /* falling edges only trigger a CLEAR event for level-triggered */
++        spi->pending = false;
++    }
++}
++
+ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                          uint64_t *data, MemTxAttrs attrs)
  {
--    const char *type;
--    char *target_type;
-     bool ambiguous = false;
-     Object *target;
- 
--    /* Go from link<FOO> to FOO.  */
--    type = object_property_get_type(obj, name, NULL);
--    target_type = g_strndup(&type[5], strlen(type) - 6);
-     target = object_resolve_path_type(path, target_type, &ambiguous);
- 
-     if (ambiguous) {
-@@ -1931,11 +1918,30 @@ static Object *object_resolve_link(Object *obj, const char *name,
+@@ -1055,7 +1077,24 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     {
+         GICv5SPIState *spi = spi_for_selr(cs, domain);
+         if (spi) {
++            GICv5TriggerMode old_tm = spi->tm;
+             spi->tm = FIELD_EX32(data, IRS_SPI_CFGR, TM);
++            if (spi->tm != old_tm) {
++                /*
++                 * R_KBPXL: updates to SPI trigger mode can generate CLEAR or
++                 * SET_LEVEL events. This is not the same logic as spi_sample().
++                 */
++                if (spi->tm == GICV5_TRIGGER_LEVEL) {
++                    if (spi->level) {
++                        spi->pending = true;
++                        spi->hm = GICV5_LEVEL;
++                    } else {
++                        spi->pending = false;
++                    }
++                } else if (spi->level) {
++                    spi->pending = false;
++                }
++            }
          }
-         target = NULL;
+         return true;
      }
--    g_free(target_type);
--
-     return target;
+@@ -1068,6 +1107,17 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             }
+         }
+         return true;
++    case A_IRS_SPI_RESAMPLER:
++    {
++        uint32_t id = FIELD_EX32(data, IRS_SPI_RESAMPLER, SPI_ID);
++        GICv5SPIState *spi = gicv5_spi_state(cs, id, domain);
++
++        if (spi) {
++            spi_sample(spi);
++        }
++        trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
++        return true;
++    }
+     }
+     return false;
+ }
+@@ -1236,8 +1286,17 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
+     /* These irqs are all SPIs; the INTID is irq + s->spi_base */
+     GICv5Common *cs = ARM_GICV5_COMMON(opaque);
+     uint32_t spi_id = irq + cs->spi_base;
++    GICv5SPIState *spi = gicv5_raw_spi_state(cs, spi_id);
++
++    if (!spi || spi->level == level) {
++        return;
++    }
+ 
+     trace_gicv5_spi(spi_id, level);
++
++    spi->level = level;
++    spi_sample(spi);
++    trace_gicv5_spi_state(spi_id, spi->level, spi->pending, spi->active);
  }
  
-+/*
-+ * object_resolve_link:
-+ *
-+ * Lookup an object and ensure its type matches the link property type.  This
-+ * is similar to object_resolve_path() except type verification against the
-+ * link property is performed.
-+ *
-+ * Returns: The matched object or NULL on path lookup failures.
-+ */
-+static Object *object_resolve_link(Object *obj, const char *name,
-+                                   const char *path, Error **errp)
-+{
-+    const char *type;
-+    g_autofree char *target_type = NULL;
-+
-+    /* Go from link<FOO> to FOO.  */
-+    type = object_property_get_type(obj, name, NULL);
-+    target_type = g_strndup(&type[5], strlen(type) - 6);
-+    return object_resolve_and_typecheck(path, name, target_type, errp);
-+}
-+
- static void object_set_link_property(Object *obj, Visitor *v,
-                                      const char *name, void *opaque,
-                                      Error **errp)
+ static void gicv5_reset_hold(Object *obj, ResetType type)
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 409935e15a..4c55af2780 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -241,6 +241,7 @@ gicv5_set_pending(const char *domain, const char *type, bool virtual, uint32_t i
+ gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t id, int handling) "GICv5 IRS SetHandling %s %s virtual:%d ID %u handling %d"
+ gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
+ gicv5_request_config(const char *domain, const char *type, bool virtual, uint32_t id, uint64_t icsr) "GICv5 IRS RequestConfig %s %s virtual:%d ID %u ICSR 0x%" PRIx64
++gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
+ 
+ # arm_gicv5_common.c
+ gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
 -- 
 2.43.0
 

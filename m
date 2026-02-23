@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2C51EC110C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02C41EC1113
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:12:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKL-0001TZ-UI; Mon, 23 Feb 2026 12:02:33 -0500
+	id 1vuZMh-0005FI-85; Mon, 23 Feb 2026 12:05:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKK-0001Qx-4G
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:32 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1vuZLD-0002uT-Jw
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:30 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKI-00007d-I6
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:31 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4837907f535so41151445e9.3
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:30 -0800 (PST)
+ id 1vuZL9-0000QT-Bq
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:27 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-483703e4b08so36485895e9.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866149; x=1772470949; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866195; x=1772470995; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=sngzmWpFYqov4tsRiPEbrCo+XLB7I8a4AeFdOGirVho=;
- b=b46WDa7qPdAvTMHuoQPVU2eKaCo1w9pMyO79mXtdbEN+PggUqVE36pmuTC0AuWiFEQ
- 0FaO6hLG5c5THhJNOes89tmbTEb3Y9+29dXe2BZrWPng+BE6oTptcWKuXnsTAxTeYD2f
- vHu0/gSDE2npYNInWkYcx/tkYCaTkkYF2X93OsgXcekqjaqRlKZwCefnFU9Vr6Olaesj
- eYl8tD9bF28RsgMUFrICKTYq/COBPKvHkzvWK2D1kUtQD8UkzdQuCmupVjis6Wi6f4R/
- Ur3UMhNN0wQnbYz+1iI0S0nPTM6gLqux1TEDLRs/IhMzqg9MnrEbrC0cfl3rA0uJLJ2l
- UGaQ==
+ :reply-to; bh=cwI7KECXfXNz5KI7P3D4TAbbo3v+8W/zQ7gFbJfb+Z4=;
+ b=oEh9X+SZMbhnsOSo/S09eriZbqI2Tv+F6wJIRtRRpdZ0znaIRGa5ulZ8KSYnKlGpbk
+ xkCJAIPSdmOyELBvheKN9N1KjiT00YaVG4BwRBzPiKQWUInArZ/4S+KuDqMtL7ROr9aC
+ Ys3NoLuzRdFtSamSozVzwkWzkGgVFKl522x5UcVBTBFZeVSsSYrZYPwzyQTB0apu/o8e
+ GRC8tkpTJI5/nhBRal0iqJxeXcQ0XVLa4LaWsQEGvQWIc8vbeb99piVmay6rBx8zIZbL
+ DjKus3b7eIqiG0dhJLcbbXX57xy0cOnNWVaBGPm+08C83C1FHpjNXphrXTGvYZhoPISJ
+ yYbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866149; x=1772470949;
+ d=1e100.net; s=20230601; t=1771866195; x=1772470995;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=sngzmWpFYqov4tsRiPEbrCo+XLB7I8a4AeFdOGirVho=;
- b=bMGHwJQrBOP5edHp5EV2uc/qfTV/BsC6G2l9jSjb83X5IR6J95Z/7qNeB9QtheLmPd
- a9V1OPdwaa+W1/icNAZQEIgIVUeWxRcr7f7yltW4F2R5DLq6V6oeO4GMNXTz+cFtgovP
- MnXvzMIt5Uz4vT1llNr88xiukdY42/KivbbANH59tu71oAvwmF31p8tI85gy/F+8D6Ao
- F6uOmbyK9QSJzr7Q7At015AdkPjZ3TY6dBf5ux4vgSFxDUYjDqabypzIskDYgiFvQFlk
- 8346yyCpdOc885ZICwYRFHSq/AywQr3HVwAeCKIMjkxVLdp1RsX/Vk0EwJp3DmjQrKsm
- O0Aw==
-X-Gm-Message-State: AOJu0YwwpCutIv2Jvlp0q9xQMxgBUi/SKG2SpylJf96tqHeKz97ZDfsM
- zIxz8K/uFnlb9U7ykNQznHiDyRf0jcJvEUx5hcZpfthOWPefaivRyiq5MP7VoYOPBo6woN6QCGO
- Dr4Z/
-X-Gm-Gg: AZuq6aISLUkMstaTj0WuSHpCbY+bO2EezganoRJPPKnDKWqbHBw50M045xn0C1gqd3M
- qT6rj1WcwpZxw00bc5GA49upUk8P3dK7n8ndNFPEbcLlYwuKaEViyJ8H9z9fDqcAQiuOzUuu/g+
- 5JMQt9swAiEMfc3LR2+CEv0bwg4qlgloQONY6pxMGhaZPEmtNCBZJ/APx33A77yzAH6VsgTWwOR
- hYVraKFQDlUtthMeHnu+CJN+TS54Pr03pNBe1aQDKyW0Ng7bSTiB3mOm5FK3jOSw3wnQvDHBSBg
- a/8CWJVnj4N25tPSVAvpzbkU4e3MyMTdJ3fZ5/iMPgL/pTmZ92CmMRC53VChDARjYGaAo7R3AEy
- ic9mA6AiIt01LcNk7+LvU56v6IZnrDZQV2d/k5QHvQMjJFrA4wr9jFG/IfQhVQn1xc4SVADDGHX
- Svbu2p2K4cEGlHZavC8cHDVCvyx4/QDMP3to9txQeTCB5hVr6Vn1m6qc7YIsCuJKtdv7BJdxKmG
- pU78twINsf7SiEi6RLAxC709P7/2qo=
-X-Received: by 2002:a05:600c:6211:b0:477:54f9:6ac2 with SMTP id
- 5b1f17b1804b1-483a9566b78mr139437995e9.0.1771866149008; 
- Mon, 23 Feb 2026 09:02:29 -0800 (PST)
+ bh=cwI7KECXfXNz5KI7P3D4TAbbo3v+8W/zQ7gFbJfb+Z4=;
+ b=cD/B6MIbBWLKTqqeLPXvsVzkyZ8j0Fa9tBrdukXmh3ANfflKcM2X05uHVuiO/hlS0c
+ /Eb30ehRXMxHnkqDX80w2fAvp2zjcFewE1JbEeeCdYN1xE+aPzo4F+orQkNcagxw4WsF
+ AfOGocIggfEpTahJOB5Tkz8gWMO/Yem8Tsz3qXmRY/9eSeG+VlsKcyb47QrfwtmLK6RY
+ Ow8chWCQhgImk1jU2BLbJrpeluQYPHXMm3u3ajVSuRzK7nL0gd7yFz/C3AmgPMDpU/wD
+ PCSUgGhKRRXDG/i7GEQZ4LjRtgwC8QpyWEftX4l2fXWRRGdVJWI/9eFWzCll+zrypcMY
+ XoBg==
+X-Gm-Message-State: AOJu0YylExwaiS9q8A7UclitywMC76Su3cOc5B27FeUS0wn/XNLlScUS
+ qp6F1eMV8EIlWYhNZS4SJeQubRoPSX4kLlXR7CBHyitMYV4WvpyQWt5+dmGVPfad7vsnsjsQ1/E
+ ARNrX
+X-Gm-Gg: AZuq6aIv0M10A3nLre2BK93LogrZq72vsVAhohVzwQJKGigzTIn/9QNEJ47MH7q/1Pn
+ Nb/tiZG2dzZLD0aaJ0XxfLVhrouL2enqQpcboGhIFDV+sWBBfgBmwAYkdV/zDOADSa+SAz75YyM
+ lu1SpWsGpMVCy6raPcU1mAFwK4V02BTq6MO26EIJDmNPriIBY1hlv+C8I9hpb+dh2Sir+aVSqPV
+ SnG8hHVEUvObsNlS5Xk3Ksjikldaf+jUSJ/IvCiD827tW36cmDhZq+gSFdZ6OtwDrIvchLdAxow
+ uyhW7W8u0k+eggnNrR2GxozRZ/R89lSjqjQSU6MA+E3qJZ3Dxbfb2t/DjX7ys1oy9gPk2vuvCjf
+ Hgi1ki91TGubfGJuZHaQQXWFGGnB8mQEpUDrse82MWVqol3h/3BHtIHVfttj07t8xOJBcxjcdZl
+ RwoNCgMfjs6/EUssUlU/aKtWVPi3fSUJHj1PQ7L/bdRiCaX+TWzQs04rPdZ7kCv6NTG03dMW/Ft
+ /jlIrbZ/toc7CM86HToeOZgVFb0458=
+X-Received: by 2002:a05:600c:1989:b0:479:1348:c63e with SMTP id
+ 5b1f17b1804b1-483a94c99admr175517055e9.9.1771866195261; 
+ Mon, 23 Feb 2026 09:03:15 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.28
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:28 -0800 (PST)
+ Mon, 23 Feb 2026 09:03:14 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 12/65] hw/intc/arm_gicv5: Add defines for GICv5 architected
- PPIs
-Date: Mon, 23 Feb 2026 17:01:19 +0000
-Message-ID: <20260223170212.441276-13-peter.maydell@linaro.org>
+Subject: [PATCH 55/65] hw/arm/virt: Update error message for bad gic-version
+ option
+Date: Mon, 23 Feb 2026 17:02:02 +0000
+Message-ID: <20260223170212.441276-56-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,44 +102,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 defines architected numbers for the PPI sources like the
-generic timer and the PMU; these are different from the ones
-traditionally used by GICv2 and GICv3.  Add defines for them.
+As we added different valid gic-version option settings,
+we forgot to update the hint in the error message produced
+when the user specifies an invalid value:
 
+$ qemu-system-aarch64 -M virt,help | grep gic-version
+  gic-version=<string>   - Set GIC version. Valid values are 2, 3, 4, host and max
+$ qemu-system-aarch64 -M virt,gic-version=bang
+qemu-system-aarch64: Invalid gic-version value
+Valid values are 3, 2, host, max.
+
+Update the error string to match the one we use in the help text
+for the option.
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/intc/arm_gicv5_types.h | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/intc/arm_gicv5_types.h b/include/hw/intc/arm_gicv5_types.h
-index 143dcdec28..9c7788b1e6 100644
---- a/include/hw/intc/arm_gicv5_types.h
-+++ b/include/hw/intc/arm_gicv5_types.h
-@@ -25,4 +25,24 @@ typedef enum GICv5Domain {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 50865e8115..8dc999712c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2971,7 +2971,7 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+         vms->gic_version = VIRT_GIC_VERSION_MAX; /* Will probe later */
+     } else {
+         error_setg(errp, "Invalid gic-version value");
+-        error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
++        error_append_hint(errp, "Valid values are 2, 3, 4, host, and max.\n");
+     }
+ }
  
- #define NUM_GICV5_DOMAINS 4
- 
-+/* Architected GICv5 PPIs (as listed in R_XDVCM) */
-+#define GICV5_PPI_S_DB_PPI 0
-+#define GICV5_PPI_RL_DB_PPI 1
-+#define GICV5_PPI_NS_DB_PPI 2
-+#define GICV5_PPI_SW_PPI 3
-+#define GICV5_PPI_HACDBSIRQ 15
-+#define GICV5_PPI_CNTHVS 19
-+#define GICV5_PPI_CNTHPS 20
-+#define GICV5_PPI_PMBIRQ 21
-+#define GICV5_PPI_COMMIRQ 22
-+#define GICV5_PPI_PMUIRQ 23
-+#define GICV5_PPI_CTIIRQ 24
-+#define GICV5_PPI_GICMNT 25
-+#define GICV5_PPI_CNTHP 26
-+#define GICV5_PPI_CNTV 27
-+#define GICV5_PPI_CNTHV 28
-+#define GICV5_PPI_CNTPS 29
-+#define GICV5_PPI_CNTP 30
-+#define GICV5_PPI_TRBIRQ 31
-+
- #endif
 -- 
 2.43.0
 

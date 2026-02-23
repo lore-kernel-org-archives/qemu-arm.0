@@ -4,111 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C9DEC1113
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D979DEC1112
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:10:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZK0-00013w-Ju; Mon, 23 Feb 2026 12:02:12 -0500
+	id 1vuZLu-0003Wz-Sl; Mon, 23 Feb 2026 12:04:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vuZJx-00010l-9f
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:09 -0500
-Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZKv-0002cL-E3
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:11 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vuZJv-0008SC-9j
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:08 -0500
-Received: by mail-ot1-x333.google.com with SMTP id
- 46e09a7af769-7d18d02af68so3130001a34.2
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771866125; cv=none;
- d=google.com; s=arc-20240605;
- b=QP5AEw4Rs4P77vO1yXuoCog0dU9ek8kR1oBp/kqnp5MfG3mR4NqL9JnE4F9hmKDrWc
- Ox6FXQ+thRqXSI1EsdbCVX6N4Ww/rN35yZIzeniCTDi98R4fVqZpYjdASSuCienOwmtM
- jSYo/gMnMx9EpP7ySZulbh393BAj9Klc6gbdM/3TzVCRx5X/jKw/RlqlmSVvPNIx4FpH
- tE5q6T3xiWk4muzqtNGMbm7kX47b2EWjwCu6tnqW856HE02sWM8Y53/ftb9IjllB6OT1
- q4t936/cM4m9m882C3nLqQX3iO1J3Uroe7wqgHVCg7DzDsXczpW0MfGaaSok9YEzGJZO
- wcEg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=uKapdWTYg4/AfpMV73PJXifaSo/eyOCqm8bePMIHZK4=;
- fh=So9fRRej9givN4QeFeSOQxkYO1aWosf4oD0gweYMyvo=;
- b=b2E7oSrThdqPB+Fu2my+Ca+OwvNBCbhQ8Lx2/94zk+GXNLVBoJWQwRP26h0y7Jk2mq
- ryN5IVPrI2C+IhLXeStiX0fK3v2mnz+aWynlpK6lpBZ0EFPF/ItIzq1ZmL2GyCtZUF4w
- XsFUWyNvlBDZzuzgLg37uQSuX1BbJW8Mb1gaYSDlSpoH29gVhukxCuiqGdB7sXGQ6B1S
- VdWBlISQwnklRPH/oMbbqfDXZgAddXmLIwFtk29nbySI0TsHL9nM1ciJkSksjMhlhlb/
- E1QXawTtUSDamUreoF4iGI8I5zISGGnB0FFNJFCtu3Epk4NfFnc91mGYLOjZ9wAQcBN8
- favA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZKt-0000MD-Gu
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:09 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48375f1defeso32337485e9.0
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771866125; x=1772470925; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uKapdWTYg4/AfpMV73PJXifaSo/eyOCqm8bePMIHZK4=;
- b=NDD2ZEOg+5E7s5QDgKgp29zncjsThfyJNpya0qVdS0Tj5pVeM3c+RUf5LzkfKxs20y
- fWnNYS8fEKJeUKCQvUy5wwnHxPJoUZUGYby1gXqfF/JR56hAc6zxRZtF+cyupBG3jm+A
- Zul26T4YQEyVDyK5JnwnRUIGcNSNrvTBvEpw2JItbw1/CRb2BJ51ZiuBlHvct2jTKj1W
- dEZMGfgJK9ZSbID9YHarUO4blOgHmeSVGqocOAg3FfpTe+iG7PlA4okSfwgLoh1J4fYk
- inrXPx4VPw0KZO/W4R+qhxzpuXtSzkJeqVGhQE39Apyyg1TincOAvs4kHkKlae5oiZxu
- klAw==
+ d=linaro.org; s=google; t=1771866186; x=1772470986; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=mVkOLAQp5zvH8Zemc4wj3jGGnDzUhMplQS5DRD9P+iI=;
+ b=M5Lt5gJI+x0miRvyChclRePjExC7G1ZV7gktNoNhNplHH23ADiBtDxb9J0ax5XNDxH
+ 6YB7UCJa7O2F+WlFZLWdH4yM6QdKYwCi0YEdfZSc+SlrPdbY7iNIfEiQWKe1eCZVXA7f
+ UJVohDNqBV7fX+t83DEeKeirf5avHNqoPqIK43GIec1w0bHivb9AzvejW1EXGvizhpr8
+ qk14evf2bSEVObwfkDQHmMajLEHK4eOi1jlPywO06c7IvmDNBuHOl0iCHWrxeclz7eud
+ e0/CXz1ICBKSPEve7McGCgiy8xXC2YmcvFCu4F+5RmqyFF8oUtkJ72mUJMSoXuPEdge8
+ AIng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866125; x=1772470925;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=uKapdWTYg4/AfpMV73PJXifaSo/eyOCqm8bePMIHZK4=;
- b=fcKj8W12xErUAEKasBoKSSMHB9yzZ486g7FNBgLVoFcFVhuDqf2W5IWTJSpdIvECHl
- 5aXyEacWBhgc2fYw5mcbyKTAxXV12kltfUAPe46JObolhSNRI+30FXAcH7GWzAPfT5Ke
- +IPYpI5b1pixyw1037nmw268GbfHRAeTVxruXDBkii9jf7m+BhdCvRuKlIcL/Skws1YJ
- laT6oJt5E+YmND3Fl8vkiVXgDZZwSVQPFKc6a1P+qIl6IUU9cepdERA4Bx8oj4rBQYBw
- eGa9Yva3YVZAT/jIySVaH4mba2VCAVbE7hM4WR613gxKCsqy336GDsPmyN93teZlg3MV
- luDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX3K6RTyAr+rqls2eWqyye3d1M5ni2JCYj86ShOyZsX1p0A/wWtLi2Jsb4GrNpB3rtye7V6ZsS2eA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx74QtmJqXCefiExnuNxiKBM3ALdFXZ1YlBpu5s37ikKT0SLQCk
- J/inQYwiZY/6O7E0O4WrDXBCY2qS3ETq2g2qbURkh3SomsdgYTpTV9jrzFkK1lWUmqgmrNwEUAq
- Vhd6sO9sD2bM8Qm7/YXksnqX5tHBeTKg=
-X-Gm-Gg: AZuq6aL7SB75FPD0vajEUUa5Ebjm4R2NeT0lsNTOhkKWIGrnxzeQWFYIxB+CvixtJ+X
- YUJ5V1M+HxXRQomMOcVpAIEA5FgnCvIizTXTIb0BtgyPmTYQrz/btCjeJKiEPJ6Y+2hOVyciovs
- sjAnQ113OUNOrnNCvbyVmijM3U30fTXM3JNeBLb124tBDZTTD9ToV1uAj1AwRQwnQcKhi5Pq+V8
- 9RpExc5RZQRK+L1ijr629uzbsyvprZY1CEy8elNA/Oz7Z44iUxCAwsvBmDbUwUoY8QiJatZx32H
- oM+XAW02
-X-Received: by 2002:a05:6808:2218:b0:44f:8b8b:5dcd with SMTP id
- 5614622812f47-464463b79ffmr5266747b6e.50.1771866124696; Mon, 23 Feb 2026
- 09:02:04 -0800 (PST)
+ d=1e100.net; s=20230601; t=1771866186; x=1772470986;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=mVkOLAQp5zvH8Zemc4wj3jGGnDzUhMplQS5DRD9P+iI=;
+ b=nlsAZOh8UV3nrzET0XDFKP59zHueuyiExmJ2TBFs7X4RjR0cAkyxlS7oGZ+xY2QQ36
+ MBo6IHoRp6jgdnlh8GtA55RYXdrQEzyNuiW/Q4gC0oVm4NWxPL2+lNbbk/vF26HgyZcf
+ 8ehV1NEP8CLhT0Qn78XKRLkI7JF/dxfwlxV8f99fk19ZfLFCzQScEs3mvfHq0LWzusWL
+ A9m40QHFZxZn+uD+Tv+lpwi7UgleNMcoHXD+KphoUGjFH4gSXxO+/NLiR7bqVET4VDLt
+ U7ekYb6Y35HCCwwUCcahbFvjI4IcySxmB2WUrKPXkV+QAwt4Oi1IxptW6z8a22Fum1Fq
+ 1oXQ==
+X-Gm-Message-State: AOJu0YyJAgvSIF6ISfZGdASYEwFVjIHya5vSw7RfvfmJEnw9RU9XWp7p
+ 1hW1ShCVOJd6nmtDAcEofIpUsD6/Qt0kmGibmiqZtYCWcHHCNoVKy8ugGOsZA4Bzf1svoT0PjcP
+ vg9WS
+X-Gm-Gg: AZuq6aK4z7bYPFcTt5fVD1Afud7HPPrc6FetU5OOckv3bRtaUYi+flJf7E9GCmlH93H
+ ClHAo19UG4UE4bQNnQnufuD8+ZOaINistB46kmYo2dbSjzC9dypGK+vD2X4dOKHGyMBVzX/CAkR
+ zmpOCPHSo+bt4NKA7es0cfMKH9ihW6rO4HIDZE5ox5B3ptqhmoeVRXciGi0fQ9M2T5xZUXSNfOd
+ xY+I4qyRMOVeNiNJDbdSE/OlIx7ops0nEAZ6EHHibfqooXG6fZj2W3EnwROyy4GWvUQQyQmjcC5
+ Y9XXZZhGroTA8hpU8m65wzAB2kY3/QTXlvlAh3XkBeLlsjY++/mo8LEnwwy5iZ9XcKkE1z3dwRe
+ n64ETC0KEu8WiL24OCZlgZTsQVeRZOsCZPL5uAoD53zXUR7Fu34+cV0wLPjs1j6uZD3k2kcEHv7
+ HUHBUeFcYMY+6RwJ4PCC/wqXP07qDprWRxPtvSmDjdW7ZdAjkeFckKI/rGHxxFeVe7VV7WZgUzF
+ hXAC54nKYkJ8o8mETqhwMJpMzZA7OoruurEgfdylw==
+X-Received: by 2002:a05:600c:1c1f:b0:477:6d96:b3e5 with SMTP id
+ 5b1f17b1804b1-483a95eb50bmr181508635e9.7.1771866185585; 
+ Mon, 23 Feb 2026 09:03:05 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Feb 2026 09:03:04 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 45/65] target/arm: GICv5 cpuif: Implement ICC_HPPIR_EL1
+Date: Mon, 23 Feb 2026 17:01:52 +0000
+Message-ID: <20260223170212.441276-46-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
- <20260219144901.3317747-1-ruslichenko.r@gmail.com>
- <dd8a92cc-51d6-4404-bd09-75b1798f925a@redhat.com>
- <87y0kj4mr3.fsf@draig.linaro.org>
-In-Reply-To: <87y0kj4mr3.fsf@draig.linaro.org>
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Date: Mon, 23 Feb 2026 18:01:52 +0100
-X-Gm-Features: AaiRm52B4c9_RLW6h7gTHr_vn_NiPc2ZIHBr-WJECHVBFGeX6hGcRqXhp9cgXbg
-Message-ID: <CAN-aV1H0_4LviryDEmDSN0TfdSit-uN31H8g87sRBkJAHYbrdQ@mail.gmail.com>
-Subject: Re: [PATCH v2 19/33] hw/core/machine: add '-hw-dtb' option for machine
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com, 
- takahiro.nakata.wr@renesas.com, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Ruslan_Ruslichenko@epam.com,
- balaton@eik.bme.hu, 
- philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com, 
- pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::333;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ot1-x333.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -126,115 +100,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Feb 23, 2026 at 2:23=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
-o.org> wrote:
->
-> Thomas Huth <thuth@redhat.com> writes:
->
-> >  Hi!
-> >
-> > On 19/02/2026 15.48, Ruslan Ruslichenko wrote:
-> >> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
-> >> Add new '-hw-dtb' command-line option and corresponding
-> >> MachineState property.
-> >> The 'hw-dtb' option allows to specify a Device tree
-> >> binary with hardware description which Qemu should
-> >> emulate.
-> >> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
-> >> ---
-> >>   hw/core/machine.c        | 19 +++++++++++++++++++
-> >>   include/hw/core/boards.h |  1 +
-> >>   qemu-options.hx          |  9 +++++++++
-> >>   system/vl.c              |  3 +++
-> >>   4 files changed, 32 insertions(+)
-> >> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> >> index d4ef620c17..affd24cd49 100644
-> >> --- a/hw/core/machine.c
-> >> +++ b/hw/core/machine.c
-> >> @@ -363,6 +363,20 @@ static void machine_set_dtb(Object *obj, const ch=
-ar *value, Error **errp)
-> >>       ms->dtb =3D g_strdup(value);
-> >>   }
-> >>   +static char *machine_get_hw_dtb(Object *obj, Error **errp)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +
-> >> +    return g_strdup(ms->hw_dtb);
-> >> +}
-> >> +
-> >> +static void machine_set_hw_dtb(Object *obj, const char *value, Error =
-**errp)
-> >> +{
-> >> +    MachineState *ms =3D MACHINE(obj);
-> >> +
-> >> +    ms->hw_dtb =3D g_strdup(value);
-> >> +}
-> >> +
-> >>   static char *machine_get_dumpdtb(Object *obj, Error **errp)
-> >>   {
-> >>       MachineState *ms =3D MACHINE(obj);
-> >> @@ -1145,6 +1159,11 @@ static void machine_class_init(ObjectClass *oc,=
- const void *data)
-> >>       object_class_property_set_description(oc, "dtb",
-> >>           "Linux kernel device tree file");
-> >>   +    object_class_property_add_str(oc, "hw-dtb",
-> >> +                            machine_get_hw_dtb, machine_set_hw_dtb);
-> >> +    object_class_property_set_description(oc, "hw-dtb",
-> >> +                "A device tree binary used to describe the hardware t=
-o QEMU");
-> >
-> > Do the hardware dtbs differ from the ones that are passed to the Linux
-> > kernel? If not, I think you likely could use the existing "dtb"
-> > property for your new feature?
->
-> They have to - the normal DTB cannot define the whole system because its
-> only concerned with reporting what the kernel can see to the kernel and
-> not defining the whole system including what the firmware sees.
->
+Implement ICC_HPPIR_EL1, which the guest can use to read the current
+highest priority pending interrupt.  Like APR, PCR and CR0, this is
+banked, with the _EL1 register reading the answer for the current
+logical interrupt domain, and the _EL3 register reading the answer
+for the EL3 interrupt domain.
 
-Yes, Indeed.
-Normal DTB was explored, but there is not enough information to create
-QEMU models from it.
-Thus we need to have a separate device tree.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv5.c                | 11 ++++++
+ include/hw/intc/arm_gicv5_stream.h | 14 +++++++
+ target/arm/tcg/gicv5-cpuif.c       | 62 ++++++++++++++++++++++++++++++
+ 3 files changed, 87 insertions(+)
 
-> >
-> > ...
-> >> diff --git a/qemu-options.hx b/qemu-options.hx
-> >> index 33fcfe7ce6..1568f3ce4c 100644
-> >> --- a/qemu-options.hx
-> >> +++ b/qemu-options.hx
-> >> @@ -4518,6 +4518,15 @@ SRST(initrd)
-> >>     ERST
-> >>   +DEF("hw-dtb", HAS_ARG, QEMU_OPTION_hw_dtb, \
-> >> +    "-hw-dtb file    use 'file' as device tree image\n", QEMU_ARCH_AL=
-L)
-> >> +SRST
-> >> +``-hw-dtb file``
-> >> +    Use <file> as a device tree binary (dtb) image used to create the
-> >> +    emulated machine. This dtb will not be passed to the kernel, use =
--dtb
-> >> +    for that.
-> >> +ERST
-> >
-> > Please don't add any new top level options if it is not really
-> > necessary. We already got too much duplicated logic in QEMU, so we try
-> > to avoid this nowadays. In your case here, it should be fine to simply
-> > configure the hw-dtb via the -machine property.
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 070d414d67..6cb81123e5 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -527,6 +527,17 @@ static void irs_recall_hppis(GICv5 *s, GICv5Domain domain)
+     }
+ }
+ 
++GICv5PendingIrq gicv5_get_hppi(GICv5Common *cs, GICv5Domain domain,
++                               uint32_t iaffid)
++{
++    GICv5 *s = ARM_GICV5(cs);
++
++    int cpuidx = irs_cpuidx_from_iaffid(cs, iaffid);
++
++    assert(cpuidx >= 0);
++    return s->hppi[domain][cpuidx];
++}
++
+ static hwaddr l1_iste_addr(GICv5Common *cs, const GICv5ISTConfig *cfg,
+                            uint32_t id)
+ {
+diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
+index 13b343504d..6850f03b74 100644
+--- a/include/hw/intc/arm_gicv5_stream.h
++++ b/include/hw/intc/arm_gicv5_stream.h
+@@ -175,4 +175,18 @@ uint64_t gicv5_request_config(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+  */
+ void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain);
+ 
++/**
++ * gicv5_get_hppi
++ * @cs: GIC IRS to query
++ * @domain: interrupt domain to act on
++ * @iaffid: IAFFID of this CPU interface
++ *
++ * Ask the IRS for the highest priority pending interrupt
++ * that it has for this CPU. This returns the equivalent of what in the
++ * stream protocol is the outstanding interrupt sent with
++ * a Forward packet.
++ */
++GICv5PendingIrq gicv5_get_hppi(GICv5Common *cs, GICv5Domain domain,
++                               uint32_t iaffid);
++
+ #endif
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index 45ef80ca87..adb4d2018f 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -51,6 +51,10 @@ FIELD(ICC_CR0, PID, 38, 1)
+ 
+ FIELD(ICC_PCR, PRIORITY, 0, 5)
+ 
++FIELD(ICC_HPPIR_EL1, ID, 0, 24)
++FIELD(ICC_HPPIR_EL1, TYPE, 29, 3)
++FIELD(ICC_HPPIR_EL1, HPPIV, 32, 1)
++
+ /*
+  * We implement 24 bits of interrupt ID, the mandated 5 bits of priority,
+  * and no legacy GICv3.3 vcpu interface (yet)
+@@ -114,6 +118,52 @@ static uint64_t gic_running_prio(CPUARMState *env, GICv5Domain domain)
+     return hap < 32 ? hap : PRIO_IDLE;
+ }
+ 
++static GICv5PendingIrq gic_hppi(CPUARMState *env, GICv5Domain domain)
++{
++    /*
++     * Return the current highest priority pending
++     * interrupt for the specified domain, if it has sufficient
++     * priority to preempt. The intid field of the return value
++     * will be in the format of the ICC_HPPIR register (and will
++     * be zero if and only if there is no interrupt that can preempt).
++     */
++
++    GICv5Common *gic = gicv5_get_gic(env);
++    GICv5PendingIrq best;
++    GICv5PendingIrq irs_hppi;
++
++    if (!(env->gicv5_cpuif.icc_cr0[domain] & R_ICC_CR0_EN_MASK)) {
++        /* If cpuif is disabled there is no HPPI */
++        return (GICv5PendingIrq) { .intid = 0, .prio = PRIO_IDLE };
++    }
++
++    irs_hppi = gicv5_get_hppi(gic, domain, env->gicv5_iaffid);
++
++    /*
++     * If the best PPI and the best interrupt from the IRS have the
++     * same priority, it's IMPDEF which we pick (R_VVBPS). We choose
++     * the PPI.
++     */
++    if (env->gicv5_cpuif.ppi_hppi[domain].prio <= irs_hppi.prio) {
++        best = env->gicv5_cpuif.ppi_hppi[domain];
++    } else {
++        best = irs_hppi;
++    }
++
++    /*
++     * D_MSQKF: an interrupt has sufficient priority if its priority
++     * is higher than the current running priority and equal to or
++     * higher than the priority mask.
++     */
++    if (best.prio == PRIO_IDLE ||
++        best.prio > env->gicv5_cpuif.icc_pcr[domain] ||
++        best.prio >= gic_running_prio(env, domain)) {
++        return (GICv5PendingIrq) { .intid = 0, .prio = PRIO_IDLE };
++    }
++    best.intid |= R_ICC_HPPIR_EL1_HPPIV_MASK;
++    return best;
++}
++
+ static void gic_recalc_ppi_hppi(CPUARMState *env)
+ {
+     /*
+@@ -407,6 +457,13 @@ static void gic_icc_pcr_el1_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+     }
+ }
+ 
++static uint64_t gic_icc_hppir_el1_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    GICv5Domain domain = gicv5_logical_domain(env);
++    GICv5PendingIrq hppi = gic_hppi(env, domain);
++    return hppi.intid;
++}
++
+ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+     /*
+      * Barrier: wait until the effects of a cpuif system register
+@@ -522,6 +579,11 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_hm[1]),
+         .resetvalue = PPI_HMR1_RESET,
+     },
++    {   .name = "ICC_HPPIR_EL1", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 3,
++        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .readfn = gic_icc_hppir_el1_read,
++    },
+     {   .name = "ICC_PPI_ENABLER0_EL1", .state = ARM_CP_STATE_AA64,
+         .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 6,
+         .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-- 
+2.43.0
 
-Agreed. As for now there is only one user of this hw option, we can move to=
- the
-arm-generic-fdt machine option itself. I'll move this for the next version.
-
-> >
-> >  Thanks,
-> >   Thomas
->
-> --
-> Alex Benn=C3=A9e
-> Virtualisation Tech Lead @ Linaro
-
-
---
-BR,
-Ruslan Ruslichenko
 

@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31058E98E08
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:42:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0BDE98E0E
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:42:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRUH-0002pV-UM; Mon, 23 Feb 2026 03:40:22 -0500
+	id 1vuRSV-0000hL-Lr; Mon, 23 Feb 2026 03:38:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSq-0001BK-OG
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:49 -0500
-Received: from p-east2-cluster3-host8-snip4-10.eps.apple.com ([57.103.77.251]
+ id 1vuRSK-0000Iw-Hp
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:18 -0500
+Received: from p-east2-cluster3-host7-snip4-8.eps.apple.com ([57.103.77.239]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSn-0002La-Fg
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:46 -0500
+ id 1vuRSE-0002Ez-Rr
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:12 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- 1C0F51800222; Mon, 23 Feb 2026 08:38:44 +0000 (UTC)
+ C6AB71800209; Mon, 23 Feb 2026 08:38:05 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835924; x=1774427924;
- bh=9BGts0SO+ELvn9DPQ6ozA7TaG8Ww+N7E7c4pnrVSxIg=;
+ s=sig1; t=1771835888; x=1774427888;
+ bh=fg6ASREgM8H3KqayXNpjqghODmRREAt5H2XvAof8pXs=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=B2FKKIDXHo2gmpmJGFi8LibfHq8kJCHsgROUgWlg1dA64AAn/xK+IKtMoxdjeIKmXNl6bH/ZtGMzIZr2spwxcgvLW2JPlt1n3xkwVnR+yKMBsWGh0tqiJqGd36F5SYBO4bM2Qpiy0V3nULVy+Luw4842D9eMLS2IfSz8fF6t5urJ52TIs8xnDmskoct8lycKUn8Vyc5S53OL2fgUgxmUeXbPHVeY+Zbgjr2WZWBZMABip7Darx+27kOQY7AJ+EK6xoLjeU6jqNgn4gtUcQh3TyVFBbhrjvJ5YuNONFwJqGRPw7Mi04fUJJyIrF1xyIiLZyyUqPOF3wsljCBDyT/76g==
+ b=UIlcicBDFslAQf/64hwP1H/MIU63ucp8NlaLB0teWUR8caGXbKGucbmp34DLsb3dSsvYI4I/Y8B6xwBLMJWxLFMXy3ZfwAXRmy/g/47InxQWr5td5MWQYR3k0IZD2z3WuNTM9Ek3mYo3mS1r0o/UTxKesOGQtcpR56KgxzTDKQhxiKtDW+kWd4GYqbjb4An2/YjqJH8XW+rx63gSP2DvRaL3Yjx85xLvfH4GeT6t9OmEgbfucdngEwv+cC66srxHJ4o3b/xrXCLt1dM67L0GqdO44qUXo5XjdYrdcH5o0ssoKu8SKCTtMJMLO6HngPcZVg39ye4ORuMs0mqfUXgjhQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- CA88E1800215; Mon, 23 Feb 2026 08:38:41 +0000 (UTC)
+ 1AE2918000B5; Mon, 23 Feb 2026 08:38:02 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,44 +49,44 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 27/27] whpx: i386: ignore send_msi to interrupt vector 0
-Date: Mon, 23 Feb 2026 09:37:33 +0100
-Message-ID: <20260223083734.48533-28-mohamed@unpredictable.fr>
+Subject: [PATCH v5 11/27] whpx: i386: flags conversion for target/i386/emulate
+ internal state
+Date: Mon, 23 Feb 2026 09:37:17 +0100
+Message-ID: <20260223083734.48533-12-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
 References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=U/efzOru c=1 sm=1 tr=0 ts=699c1214
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfX+GDBw3xxXUPF
+ laKBXr7+oJVTL/qMvoPz4bnZdU4J9lh+mQ29P6BRNwt1vauAi0wqZS5uiYqDNbmKeS0iAbQvpmk
+ UXI15WcpzeaY38qZa1YyE7AZaiO9U/0UKibP2FREOop0/0rWlwMG+MScyxnrfEU1FkUwGehQQuJ
+ KbyLrMpRdmGvWT94PJLrOeogwblGrsleyhBY1Pdf0WTlg1/vjIkCiXX9hY09mggyi9VANLwHg4k
+ MM+bsir+86sjUyVu2tVOo0txHPATp2990XIIaeJhrdEstJRYaY/yGJBh/m/ty0h6H/Hg07pllqF
+ peCwqSahNbMUt3VDhJlD/KnXPPC6ulwFQknmbj6E2DfA74glm0rOuZ5U66n0KI=
+X-Proofpoint-GUID: knrFs6kCT28b9cqWXSWgwkkLm2J3PjlV
+X-Authority-Info-Out: v=2.4 cv=RYadyltv c=1 sm=1 tr=0 ts=699c11ef
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=P0CsU09aOh3OwRgeKFoA:9
-X-Proofpoint-ORIG-GUID: MLStYARdgZTDIfSmQzhsB9lDgjtiWZkw
-X-Proofpoint-GUID: MLStYARdgZTDIfSmQzhsB9lDgjtiWZkw
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXzu5k77PfxO00
- wrwvwZW3a31RnGrsFzm9OpOwBXmCF4tSh+6cFd2BET3NxvsVV6OZKH1gNhberL+lej85VZl/vV5
- LekD4FbFt3VbIaSNOLcxK7XlXU2YG7RXoJba4yqlveBK2dwh0D3nvV4VGjSrraxIQS/uXqrSqa9
- EDSWso4EYt9txxg6g4QrNhzHZGqn6Wz+TKmlLcZU5KZWW0IpVPhl5iBXUZKmw5lzQ9SnKBD+6dh
- kzbTXOLTC49iV8hyVXgbmjWspWJm7Fk/qJtx+o54g07d/YDITOIixSkoY4yyKuHGpvODG6WMC+8
- gPZ6m81IpEDRMNO7ptR1BX0WUwjMt+urmeJDc0+4+tWljHDT3nMtalTyhTWwyc=
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=GO8j3Qv1z8u8_yQncx4A:9
+X-Proofpoint-ORIG-GUID: knrFs6kCT28b9cqWXSWgwkkLm2J3PjlV
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- adultscore=0 mlxlogscore=999 phishscore=0
- bulkscore=0 lowpriorityscore=0
- clxscore=1030 spamscore=0 mlxscore=0 suspectscore=0 classifier=spam
+ clxscore=1030 suspectscore=0 adultscore=0
+ mlxlogscore=817 spamscore=0
+ bulkscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAABByb2izpc8SyX4Yc7GdW4d6wzLrbrIkCBOc+XcvNjc/1xloUNX9Gg7FM/yD6K1AIa8M6Xz/baVfx+TMpmtQDzdGQUe5FOm068dMvfNq5Pn3Ath7V783hPUKTgb5U7IuwiKO4f4Br+4K3zDoNQopb0KbCu/EDrSoAXMoVgIGOwX/0nxytl/bySiAG6voSP8BdqK31fRYS0KuWwNnuQXeZEbAsqmY+NzMjyPVGwSROzMPn6MU1chTSC7EL1jrZeQtt5NNWlChgGs1EKo1F43kdP4iR09UdyMiK4P3BWbYW7Y/YkAOZIetTH/1FsQMELRdd0I4YWg6kYNs110JcT2aK+WKyIDMZttivdGmTM3gYMyQRdR5nyDvnMbIRZojSHWXNmCfniqdRyj7A9ELpvPUiQvkglqm/D/ajQ3lsbqnoSAjS7bwL696bviU3Ud45KWJAXlorZh/U65TqUPQ9EeBOGhXl9K3kTTWJnxQqz0RIbsK/ZmUMuVzoibrUNj7eTBMkWav97voSr0FhIqR/LChXbupW6i7Yk32jR4Srtzffw6aOuqARgRGZXGEJzxVZCG9Sj3VeCyMHLzd1ndNQlLKHYJur2+kC21jbc4bH2o4QhpF5dFDT8hLCr7rqA5sMRgCCySAETbksZ/SQwjvOZbF/c/Gy4hQTVfTXqpDgi6yqys5EtgDKCL9MJPH40+qvY/bCaXMEC36FvWkzkjM0Na4z+3OaPvZIqmIDWLfKiz8D319s46gid7kkE4wsfvKatyhStvme5tfy0Jt8m5YNdL7s1iAqSbiK2Iliu+icgxudG3ZriqA1QPnfGPg==
-Received-SPF: pass client-ip=57.103.77.251;
+X-JNJ: AAAAAAABsR+s+VedhzlgK1KO6fe5lNyVWSoo7elinTKThp+T189L1EjPb83dr3shc34hmfgC9HObYbJdHIg9ZrOq29X0dga/+n8YVejAibFzJiEz5GvOz3XDiZJOtE2zTEiQMR0kyYatv/uwYZAaWx7g6OADOsZb4Vm4Zw/uVZvfSgw2TN8Zu+A19+GNBKN2inMl6SqflpDfpzNcnLYDQBGI1C4/56p4cwITwaJhp3KassaBZCpglLlVQaKhyNzE1HzmXiWW9aYgtT+v/v3O56BFtsD7IfXDZv4+1+qPaTb+FSXsvx6KLBaJ1SOtUEGNeeleD9kILul31xZZZc/vN6f4jMKk3vfjBhfmFP4wqQDXN9XSvayHxEgDVywO7B6XfyYvI5w8uUQjJPDAN/fXc/b4hAcfCWKB0JcjEvn4j5qQy4B0Q2cgG6GrrdafQVdMBalyFWQRBpuYexnhfHSqcrIRkYGAuZLjEv1JCMGMABIOySXWVaYWT75kMO9337H55+Iqi6cZRnuwAG89KYl2zzIVCWwrvuaTCbbBqsHt74UjEzXTU3OmHDSIdCbcYU2bv2KWRh6QbMHKXqX1USzk6B8nwIgDFvsBRFhYfakFQxv1CfCZKeUx+F3nGo0KR0VmRiYqoXVP1iPUmCvkhH/hdo4nO+RKqpQoWqBTQWXEemawz9fcyAyBf/u6J4vBGO9KcGpBjbBKc5qugXniOis8vlq9gcUFV9o+X6RLaMsXjqznkCK9tpGSr9RgNiFRglaqBcmTrSrM568XqTXDRCJXRBZtOgEDCCaM5rsZPKkMeRpQbaKpwPK43khoaw==
+Received-SPF: pass client-ip=57.103.77.239;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.798, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.79,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -106,25 +106,29 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-apic.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/i386/whpx/whpx-all.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index b934fdcbe1..f26ecaf6e8 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -192,6 +192,11 @@ static void whpx_send_msi(MSIMessage *msg)
-     uint8_t trigger_mode = (data >> MSI_DATA_TRIGGER_SHIFT) & 0x1;
-     uint8_t delivery = (data >> MSI_DATA_DELIVERY_MODE_SHIFT) & 0x7;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index eb6076d2f4..0524885053 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -412,6 +412,7 @@ void whpx_set_registers(CPUState *cpu, int level)
+     vcxt.values[idx++].Reg64 = env->eip;
  
-+    if (vector == 0) {
-+        warn_report("Ignoring request for interrupt vector 0");
-+        return;
-+    }
-+
-     WHV_INTERRUPT_CONTROL interrupt = {
-         /* Values correspond to delivery modes */
-         .Type = delivery,
+     assert(whpx_register_names[idx] == WHvX64RegisterRflags);
++    lflags_to_rflags(env);
+     vcxt.values[idx++].Reg64 = env->eflags;
+ 
+     /* Translate 6+4 segment registers. HV and QEMU order matches  */
+@@ -637,6 +638,7 @@ void whpx_get_registers(CPUState *cpu)
+     env->eip = vcxt.values[idx++].Reg64;
+     assert(whpx_register_names[idx] == WHvX64RegisterRflags);
+     env->eflags = vcxt.values[idx++].Reg64;
++    rflags_to_lflags(env);
+ 
+     /* Translate 6+4 segment registers. HV and QEMU order matches  */
+     assert(idx == WHvX64RegisterEs);
 -- 
 2.50.1 (Apple Git-155)
 

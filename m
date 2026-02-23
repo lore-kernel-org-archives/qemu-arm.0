@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87924EC1114
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:08:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27881EC1112
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:09:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZM0-0003n4-OW; Mon, 23 Feb 2026 12:04:16 -0500
+	id 1vuZKX-00020n-6S; Mon, 23 Feb 2026 12:02:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKz-0002eR-CR
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:17 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1vuZKV-0001wP-Vn
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:44 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKv-0000N5-8C
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:12 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-48375f10628so29380395e9.1
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:08 -0800 (PST)
+ id 1vuZKS-0000AN-4W
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:43 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-483703e4b08so36480325e9.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866188; x=1772470988; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866159; x=1772470959; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=S8AwTy6f3L9trkb36+KIhDXHVhmdfQ2KBm07CMiwLbw=;
- b=MktcbywC2MTMRwaBntbfjyHF/IcItD0o0JC0XkyEyTqcRsgIeUn1SOeUJfvW7nFB2m
- dAuQdHnzs358TiL/6gYD5gerdqzXHI2vNMVdTbOqQ4xx3tqNviuVnwpjgRwKMiUZgRx2
- 6iGWqLFToWMY97R5/yNmV+soxR1AIjalYxcIaIpAPliegku4CL4ZsC01ccRfO/nOW5AE
- TW71l5HBiYp906pcAdsI7stF3NN7ALg+p8tc2lBAU0I0LoAT0dYkl90g+MYlE6DRNwWy
- JAO/bq4+6SW0VAko25w3Df+3fxjqMN1gFEmiI5ePKIGV56PYRl+Xy6HGkFFqH0b2RJ5d
- BiEQ==
+ :reply-to; bh=jYvTvJG/7tvhpdlK87g5RK3IBoj9LMlQcWK3SacPSog=;
+ b=s8feSO4dY64TAIcE/+s6igbqIlnkRV7QiAP4qg4zdv0zqgAZyPMw3XTZV7pzeLOidv
+ 2Yg/oVnVE5HovGwSi7M3DSFl/IIcJiQqBxcVJHVXI70b67Yj9X4geSxHGkcZyEf7fs5G
+ rEKb8S5abD5pdYfkGZfqjvYUtG1FDevP5/VZ+tfcCyyOBpRVnZYkdsPh720yqbhH5z/z
+ v36WoVD2mWBEXYM6bhNNMBxdcBzpJMNYPwB3vFk6cFB8eQyrnoc1x6vDyM6AiFtb9UTm
+ ONKWQQIZshDUjemeXkw7ZJqvFpYHohvgd+pVVrFAMWLL+FrEnE3QkvMZ9hFHrTL2orSw
+ uo3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866188; x=1772470988;
+ d=1e100.net; s=20230601; t=1771866159; x=1772470959;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=S8AwTy6f3L9trkb36+KIhDXHVhmdfQ2KBm07CMiwLbw=;
- b=g5C4sDhE7qJyE4z767pqT0vzOSnzjDj9qiVrJlnmtw2sso4Mn48unrlYye1bG+hwXv
- TpQhugILjdoXHKnvvto/15Uvrn8qebkugj8NsQiyTCODqvDPkEtkzohYUWbmH1RbliNu
- K3Wa5cfi2anQ73W7SGoGZIusOOrpQr9AwG2JLzfPWsIuirFTnlkMzNhv9vxGHw7LUHES
- 4t32dwp6EmUlyqQIbfI50LYoK4KtI1NF4DW1M2vgdGmga/Yss4I+cYBuhkRaI3SrcEHP
- /XIR4j7wFG4iUiqCkIMJigTYXaJ3KPwHq9xIJd2IzIET/wmf4QNbfkbeqmjy7aUaE2g2
- kT0w==
-X-Gm-Message-State: AOJu0Yyz4dZPGaeKygyCpzX9wU/FQ8UmiEyLwV2CDWFduENj8veRYRZa
- bovRxEOsU7njpp7t5oFUI9n1Qfk/jnMqpBdPqP5ehFZoEWjJHVL+LQTXnQzdXOgUQipmxr0jmsU
- sG998
-X-Gm-Gg: AZuq6aLVSQ02l4Voqb36uVxwV9n448+CUR+/gB4Xgq3rEvizJ6tUekoTXy+VucrnVTC
- Gft4J79jdOcxaVkTfaHLKp29VOp47P0HlSZbk0HzqUCWnMEk4UJ73DqeTL4KDvj2YIDMmDaRIYq
- AUHWoTCXuTSlhcLagfEZgtkFYLf7fjeef/MSVTus4Kwl1MrpkhLNdXvC+agtKUnAK6ia/C47tHj
- DdDXsY1vP1bcn0XvoxnqRUSC3fRGa6zpOqxblR6gH68KtaXttblO0wpmWL7oLsdmRP5NcHlFV6S
- d1cmoiCR8z1g3xwUonLOHSUcFbfbJWAg6kGVxt/jf+zx3wbeq0YMP7JEf/z6I9lbEzDJ5+kQkd7
- Na3ykac/eCT+xQUJN3pAMtF1n/fN4a6AqpE4iwnb16D51qPkd9QeVoisASDfUPeED7hnne1pTRY
- PlebvfQjcCTqarQ8Scjw/+MbHhYPnl8JHElnRct8CptFZZ2q9IBJJy0HVhV3jz32mrRLNyAZq59
- avokwJfYIiUfSaAgtnYOcprrOrRk1I=
-X-Received: by 2002:a05:600c:8287:b0:480:3a71:92b2 with SMTP id
- 5b1f17b1804b1-483a95eab99mr130172325e9.26.1771866187726; 
- Mon, 23 Feb 2026 09:03:07 -0800 (PST)
+ bh=jYvTvJG/7tvhpdlK87g5RK3IBoj9LMlQcWK3SacPSog=;
+ b=Rf16RN3Le3k3gINeORLU5CvXcWkmo6QSlnj2s7fIYnNJ6e0+Fxd5dejzf/MwG9GYie
+ Lh5Gtf7ctHcFuZzWG+OcfGMAI2VIi0bCbsp/6iHagtGI08BIdlJltI3Ldj9BFpw+SAk2
+ lxPgHm6LENbsXTYmYTyv6+KPnyWK1QaHzDQNgCrH9WymLjB0XTmEIzfMpPx9zFSszdI2
+ MKFostZ0Faqxx7Hkwf0wrQMMKpAqQ8Nmoh+3AVyeWwl3DDhGYuH6TmCQl3zH9Nwebh25
+ /f3hgjBJJXOad/NWUDoczwu0AZJp04n4H1Q2NtJuuOaV5HqC0sFrZyDR8ckZ7ItATspi
+ bjKQ==
+X-Gm-Message-State: AOJu0YyR9ptKw0zL0BYWIDP0Bu865rC5SCv8tHopbcIZY5dNvV9+2REM
+ pctEB2EHHqS/HMvfQTmNFJLppdyf2N62zD+kuCtmo+Smc+Um+sYUpHfE+rha2byFwwLDsDc+WV5
+ Th4q4
+X-Gm-Gg: AZuq6aKIB0fuDhfyFjk38BS4Lqspu5M1jmSeTKPYWJ+K43pC+7exQNgNICwnmekR8yF
+ bYgcv2mx55pyRRTbHp+NzUVBHezZg3dKlPndXyL1os7egAjMyxMToEn0xiYVNoSemfaQWFS5aos
+ 7WPoWlyZgJhLMpOkG2drE6gz/oYzuixuU6q1iKH6wuUkTBE4scmY0TdoGqt5mgpXyjWkHtZhHt2
+ 63pBsQ209xU5kcb0DN5pF7Abw8Ml8ATji6nXOntnrapTcZh4m/gxjVo2TniJIV7gbV67kox7/8q
+ OyPBSD2o4tbktmCxXDsuQpj0AxJXNxy8OJv5pZq6W0bFuwqbxhKMb/0nitR5HwktUfspOnsSkvc
+ doWFzg00VbmeyG0gUXaw2WdXK97P+rvDXaCF7wgXXfUTWQnsHvKJplULnTg3+NAcexgh7Hravfh
+ YsEIY570dpWmJVZqd44x4vqA5JAVAEhMVTVFFtuupYaxoecmxgtet9qR55B4Vk1ckeTHjVVKCSe
+ 3NNmx1imcc7646Lie099iCSQmqSEYQ=
+X-Received: by 2002:a05:600c:1d1c:b0:480:4a90:1afd with SMTP id
+ 5b1f17b1804b1-483a94a99e4mr143926575e9.0.1771866158504; 
+ Mon, 23 Feb 2026 09:02:38 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.06
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:03:06 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:37 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 47/65] target/arm: GICv5 cpuif: Implement GICR CDIA command
-Date: Mon, 23 Feb 2026 17:01:54 +0000
-Message-ID: <20260223170212.441276-48-peter.maydell@linaro.org>
+Subject: [PATCH 20/65] hw/intc/arm_gicv5: Implement remaining set-config
+ functions
+Date: Mon, 23 Feb 2026 17:01:27 +0000
+Message-ID: <20260223170212.441276-21-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,154 +101,279 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICR CDIA system instruction is what the guest uses to
-acknowledge the highest priority pending interrupt.  It returns a
-value corresponding to the HPPI for the current physical interrupt
-domain, if any, and moves that interrupt to being Active.
+Implement the GICv5 functions corresponding to the stream protocol
+SetEnabled, SetPending, SetHandling, and SetTarget commands.  These
+work exactly like SetPriority: the IRS looks up the L2TE and updates
+the corresponding field in it with the new value.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 102 +++++++++++++++++++++++++++++++++++
- target/arm/tcg/trace-events  |   2 +
- 2 files changed, 104 insertions(+)
+ hw/intc/arm_gicv5.c                | 133 +++++++++++++++++++++++++++++
+ hw/intc/trace-events               |   4 +
+ include/hw/intc/arm_gicv5_stream.h |  68 +++++++++++++++
+ include/hw/intc/arm_gicv5_types.h  |  15 ++++
+ 4 files changed, 220 insertions(+)
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index adb4d2018f..d32263a5b7 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -39,6 +39,10 @@ FIELD(GIC_CDHM, HM, 32, 1)
- FIELD(GIC_CDRCFG, ID, 0, 24)
- FIELD(GIC_CDRCFG, TYPE, 29, 3)
- 
-+FIELD(GICR_CDIA, ID, 0, 24)
-+FIELD(GICR_CDIA, TYPE, 29, 3)
-+FIELD(GICR_CDIA, VALID, 32, 1)
-+
- FIELD(ICC_IDR0_EL1, ID_BITS, 0, 4)
- FIELD(ICC_IDR0_EL1, PRI_BITS, 4, 4)
- FIELD(ICC_IDR0_EL1, GCIE_LEGACY, 8, 4)
-@@ -464,6 +468,94 @@ static uint64_t gic_icc_hppir_el1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return hppi.intid;
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index af27fb7e63..3c6ef17573 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -492,6 +492,139 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id,
+     put_l2_iste(cs, cfg, &h);
  }
  
-+static bool gic_hppi_is_nmi(CPUARMState *env, GICv5PendingIrq hppi,
-+                            GICv5Domain domain)
++void gicv5_set_enabled(GICv5Common *cs, uint32_t id,
++                        bool enabled, GICv5Domain domain,
++                        GICv5IntType type, bool virtual)
 +{
-+    /*
-+     * For GICv5 an interrupt is an NMI if it is signaled with
-+     * Superpriority and SCTLR_ELx.NMI for the current EL is 1.
-+     * GICR CDIA/CDNMIA always work on the current interrupt domain,
-+     * so we do not need to consider preemptive interrupts. This
-+     * means that the interrupt has Superpriority if and only if it
-+     * has priority 0.
-+     */
-+    return hppi.prio == 0 && arm_sctlr(env, arm_current_el(env)) & SCTLR_NMI;
++    const GICv5ISTConfig *cfg;
++    GICv5 *s = ARM_GICV5(cs);
++    uint32_t *l2_iste_p;
++    L2_ISTE_Handle h;
++
++    trace_gicv5_set_enabled(domain_name[domain], inttype_name(type), virtual,
++                            id, enabled);
++    if (virtual) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_enabled: tried to set "
++                      "enable state of a virtual interrupt\n");
++        return;
++    }
++    if (type != GICV5_LPI) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_enabled: tried to set "
++                      "enable state of bad interrupt type %d\n", type);
++        return;
++    }
++    cfg = &s->phys_lpi_config[domain];
++    l2_iste_p = get_l2_iste(cs, cfg, id, &h);
++    if (!l2_iste_p) {
++        return;
++    }
++    *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, ENABLE, enabled);
++    put_l2_iste(cs, cfg, &h);
 +}
 +
-+static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
++void gicv5_set_pending(GICv5Common *cs, uint32_t id,
++                       bool pending, GICv5Domain domain,
++                       GICv5IntType type, bool virtual)
 +{
-+    /* Acknowledge HPPI in the current interrupt domain */
-+    GICv5Common *gic = gicv5_get_gic(env);
-+    GICv5Domain domain = gicv5_current_phys_domain(env);
-+    GICv5PendingIrq hppi = gic_hppi(env, domain);
-+    GICv5IntType type = FIELD_EX64(hppi.intid, INTID, TYPE);
-+    uint32_t id = FIELD_EX64(hppi.intid, INTID, ID);
++    const GICv5ISTConfig *cfg;
++    GICv5 *s = ARM_GICV5(cs);
++    uint32_t *l2_iste_p;
++    L2_ISTE_Handle h;
 +
-+    bool cdnmia = ri->opc2 == 1;
-+
-+    if (!hppi.intid) {
-+        /* No interrupt available to acknowledge */
-+        trace_gicv5_gicr_cdia_fail(domain,
-+                                   "no available interrupt to acknowledge");
-+        return 0;
++    trace_gicv5_set_pending(domain_name[domain], inttype_name(type), virtual,
++                            id, pending);
++    if (virtual) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_pending: tried to set "
++                      "pending state of a virtual interrupt\n");
++        return;
 +    }
-+    assert(hppi.prio != PRIO_IDLE);
-+
-+    if (gic_hppi_is_nmi(env, hppi, domain) != cdnmia) {
-+        /* GICR CDIA only acknowledges non-NMI; GICR CDNMIA only NMI */
-+        trace_gicv5_gicr_cdia_fail(domain,
-+                                   cdnmia ? "CDNMIA but HPPI is not NMI" :
-+                                   "CDIA but HPPI is NMI");
-+        return 0;
++    if (type != GICV5_LPI) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_pending: tried to set "
++                      "pending state of bad interrupt type %d\n", type);
++        return;
 +    }
-+
-+    trace_gicv5_gicr_cdia(domain, hppi.intid);
-+
-+    /*
-+     * The interrupt becomes Active. If the handling mode of the
-+     * interrupt is Edge then we also clear the pending state.
-+     */
-+
-+    /*
-+     * Set the appropriate bit in the APR to track active priorities.
-+     * We do this now so that when gic_recalc_ppi_hppi() or
-+     * gicv5_activate() cause a re-evaluation of HPPIs they
-+     * use the right (new) running priority.
-+     */
-+    env->gicv5_cpuif.icc_apr[domain] |= (1 << hppi.prio);
-+    switch (type) {
-+    case GICV5_PPI:
-+    {
-+        uint32_t ppireg, ppibit;
-+
-+        assert(id < GICV5_NUM_PPIS);
-+        ppireg = id / 64;
-+        ppibit = 1 << (id % 64);
-+
-+        env->gicv5_cpuif.ppi_active[ppireg] |= ppibit;
-+        if (!(env->gicv5_cpuif.ppi_hm[ppireg] & ppibit)) {
-+            /* handling mode is Edge: clear pending */
-+            env->gicv5_cpuif.ppi_pend[ppireg] &= ~ppibit;
-+        }
-+        gic_recalc_ppi_hppi(env);
-+        break;
++    cfg = &s->phys_lpi_config[domain];
++    l2_iste_p = get_l2_iste(cs, cfg, id, &h);
++    if (!l2_iste_p) {
++        return;
 +    }
-+    case GICV5_LPI:
-+    case GICV5_SPI:
++    *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, PENDING, pending);
++    put_l2_iste(cs, cfg, &h);
++}
++
++void gicv5_set_handling(GICv5Common *cs, uint32_t id,
++                        GICv5HandlingMode handling, GICv5Domain domain,
++                        GICv5IntType type, bool virtual)
++{
++    const GICv5ISTConfig *cfg;
++    GICv5 *s = ARM_GICV5(cs);
++    uint32_t *l2_iste_p;
++    L2_ISTE_Handle h;
++
++    trace_gicv5_set_handling(domain_name[domain], inttype_name(type), virtual,
++                            id, handling);
++    if (virtual) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_handling: tried to set "
++                      "handling mode of a virtual interrupt\n");
++        return;
++    }
++    if (type != GICV5_LPI) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_handling: tried to set "
++                      "handling mode of bad interrupt type %d\n", type);
++        return;
++    }
++    cfg = &s->phys_lpi_config[domain];
++    l2_iste_p = get_l2_iste(cs, cfg, id, &h);
++    if (!l2_iste_p) {
++        return;
++    }
++    *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, HM, handling);
++    put_l2_iste(cs, cfg, &h);
++}
++
++void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
++                      GICv5RoutingMode irm, GICv5Domain domain,
++                      GICv5IntType type, bool virtual)
++{
++    const GICv5ISTConfig *cfg;
++    GICv5 *s = ARM_GICV5(cs);
++    uint32_t *l2_iste_p;
++    L2_ISTE_Handle h;
++
++    trace_gicv5_set_target(domain_name[domain], inttype_name(type), virtual,
++                           id, iaffid, irm);
++    if (virtual) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_target: tried to set "
++                      "target of a virtual interrupt\n");
++        return;
++    }
++    if (irm != GICV5_TARGETED) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_target: tried to set "
++                      "1-of-N routing\n");
 +        /*
-+         * Send an Activate command to the IRS, which, despite the name
-+         * of the stream command, does both "set Active" and "maybe set
-+         * not Pending" as a single atomic action.
++         * In the cpuif insn "GIC CDAFF", IRM is RES0 for a GIC which does not
++         * support 1-of-N routing. So warn, and fall through to treat
++         * IRM=1 the same as IRM=0.
 +         */
-+        gicv5_activate(gic, id, domain, type, false);
-+        break;
-+    default:
-+        g_assert_not_reached();
 +    }
-+
-+    return hppi.intid | R_GICR_CDIA_VALID_MASK;
++    if (type != GICV5_LPI) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_set_target: tried to set "
++                      "target of bad interrupt type %d\n", type);
++        return;
++    }
++    cfg = &s->phys_lpi_config[domain];
++    l2_iste_p = get_l2_iste(cs, cfg, id, &h);
++    if (!l2_iste_p) {
++        return;
++    }
++    /*
++     * For QEMU we do not implement 1-of-N routing, and so L2_ISTE.IRM is RES0.
++     * We never read it, and we can skip explicitly writing it to zero here.
++     */
++    *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, IAFFID, iaffid);
++    put_l2_iste(cs, cfg, &h);
 +}
 +
- static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-     /*
-      * Barrier: wait until the effects of a cpuif system register
-@@ -521,6 +613,16 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .writefn = gic_cdhm_write,
-     },
-+    {   .name = "GICR_CDIA", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 3, .opc2 = 0,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .readfn = gicr_cdia_read,
-+    },
-+    {   .name = "GICR_CDNMIA", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 3, .opc2 = 1,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .readfn = gicr_cdia_read,
-+    },
-     {   .name = "ICC_IDR0_EL1", .state = ARM_CP_STATE_AA64,
-         .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 2,
-         .access = PL1_R, .type = ARM_CP_CONST | ARM_CP_NO_RAW,
-diff --git a/target/arm/tcg/trace-events b/target/arm/tcg/trace-events
-index 7dc5f781c5..13e15cfcfc 100644
---- a/target/arm/tcg/trace-events
-+++ b/target/arm/tcg/trace-events
-@@ -3,3 +3,5 @@
+ static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+ {
+     GICv5Common *cs = ARM_GICV5_COMMON(s);
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 42f5e73d54..37ca6e8e12 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -236,6 +236,10 @@ gicv5_spi(uint32_t id, int level) "GICv5 SPI ID %u asserted at level %d"
+ gicv5_ist_valid(const char *domain, uint64_t base, uint8_t id_bits, uint8_t l2_idx_bits, uint8_t istsz, bool structure) "GICv5 IRS %s IST now valid: base 0x%" PRIx64 " id_bits %u l2_idx_bits %u IST entry size %u 2-level %d"
+ gicv5_ist_invalid(const char *domain) "GICv5 IRS %s IST no longer valid"
+ gicv5_set_priority(const char *domain, const char *type, bool virtual, uint32_t id, uint8_t priority) "GICv5 IRS SetPriority %s %s virtual:%d ID %u prio %u"
++gicv5_set_enabled(const char *domain, const char *type, bool virtual, uint32_t id, bool enabled) "GICv5 IRS SetEnabled %s %s virtual:%d ID %u enabled %d"
++gicv5_set_pending(const char *domain, const char *type, bool virtual, uint32_t id, bool pending) "GICv5 IRS SetPending %s %s virtual:%d ID %u pending %d"
++gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t id, int handling) "GICv5 IRS SetHandling %s %s virtual:%d ID %u handling %d"
++gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
  
- # gicv5-cpuif.c
- gicv5_recalc_ppi_hppi(int domain, uint32_t id, uint8_t prio) "domain %d new PPI HPPI id 0x%x prio %u"
-+gicv5_gicr_cdia_fail(int domain, const char *reason) "domain %d CDIA attempt failed: %s"
-+gicv5_gicr_cdia(int domain, uint32_t id) "domain %d CDIA acknowledge of interrupt 0x%x"
+ # arm_gicv5_common.c
+ gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
+diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
+index 3239a86f1a..db0e3e01c6 100644
+--- a/include/hw/intc/arm_gicv5_stream.h
++++ b/include/hw/intc/arm_gicv5_stream.h
+@@ -58,4 +58,72 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id,
+                         uint8_t priority, GICv5Domain domain,
+                         GICv5IntType type, bool virtual);
+ 
++/**
++ * gicv5_set_enabled
++ * @cs: GIC IRS to send command to
++ * @id: interrupt ID
++ * @enabled: new enabled state
++ * @domain: interrupt Domain to act on
++ * @type: interrupt type (LPI or SPI)
++ * @virtual: true if this is a virtual interrupt
++ *
++ * Set enabled state of an interrupt; matches stream interface
++ * SetEnabled command from CPUIF to IRS. There is no report back
++ * of success/failure to the CPUIF in the protocol.
++ */
++void gicv5_set_enabled(GICv5Common *cs, uint32_t id,
++                       bool enabled, GICv5Domain domain,
++                       GICv5IntType type, bool virtual);
++
++/**
++ * gicv5_set_pending
++ * @cs: GIC IRS to send command to
++ * @id: interrupt ID
++ * @pending: new pending state
++ * @domain: interrupt Domain to act on
++ * @type: interrupt type (LPI or SPI)
++ * @virtual: true if this is a virtual interrupt
++ *
++ * Set pending state of an interrupt; matches stream interface
++ * SetPending command from CPUIF to IRS. There is no report back
++ * of success/failure to the CPUIF in the protocol.
++ */
++void gicv5_set_pending(GICv5Common *cs, uint32_t id,
++                       bool pending, GICv5Domain domain,
++                       GICv5IntType type, bool virtual);
++
++/**
++ * gicv5_set_handling
++ * @cs: GIC IRS to send command to
++ * @id: interrupt ID
++ * @handling: new handling mode
++ * @domain: interrupt Domain to act on
++ * @type: interrupt type (LPI or SPI)
++ * @virtual: true if this is a virtual interrupt
++ *
++ * Set handling mode of an interrupt (edge/level); matches stream interface
++ * SetHandling command from CPUIF to IRS. There is no report back
++ * of success/failure to the CPUIF in the protocol.
++ */
++void gicv5_set_handling(GICv5Common *cs, uint32_t id,
++                        GICv5HandlingMode handling, GICv5Domain domain,
++                        GICv5IntType type, bool virtual);
++
++/**
++ * gicv5_set_target
++ * @cs: GIC IRS to send command to
++ * @id: interrupt ID
++ * @iaffid: new target PE's interrupt affinity
++ * @irm: interrupt routing mode (targeted vs 1-of-N)
++ * @domain: interrupt Domain to act on
++ * @type: interrupt type (LPI or SPI)
++ * @virtual: true if this is a virtual interrupt
++ *
++ * Set handling mode of an interrupt (edge/level); matches stream interface
++ * SetHandling command from CPUIF to IRS. There is no report back
++ * of success/failure to the CPUIF in the protocol.
++ */
++void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
++                      GICv5RoutingMode irm, GICv5Domain domain,
++                      GICv5IntType type, bool virtual);
+ #endif
+diff --git a/include/hw/intc/arm_gicv5_types.h b/include/hw/intc/arm_gicv5_types.h
+index b4452a7b7d..15d4d5c3f4 100644
+--- a/include/hw/intc/arm_gicv5_types.h
++++ b/include/hw/intc/arm_gicv5_types.h
+@@ -55,4 +55,19 @@ typedef enum GICv5IntType {
+     GICV5_SPI = 3,
+ } GICv5IntType;
+ 
++/* Interrupt handling mode (same encoding as L2_ISTE.HM) */
++typedef enum GICv5HandlingMode {
++    GICV5_EDGE = 0,
++    GICV5_LEVEL = 1,
++} GICv5HandlingMode;
++
++/*
++ * Interrupt routing mode (same encoding as L2_ISTE.IRM).
++ * Note that 1-of-N support is option and QEMU does not implement it.
++ */
++typedef enum GICv5RoutingMode {
++    GICV5_TARGETED = 0,
++    GICV5_1OFN = 1,
++} GICv5RoutingMode;
++
+ #endif
 -- 
 2.43.0
 

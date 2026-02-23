@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 246EAE98E08
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E4BE98E06
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:39:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRT0-0001Jx-PB; Mon, 23 Feb 2026 03:39:02 -0500
+	id 1vuRSO-0000QG-5b; Mon, 23 Feb 2026 03:38:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSc-0000s1-7o
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:35 -0500
-Received: from p-east2-cluster3-host2-snip4-10.eps.apple.com ([57.103.77.231]
+ id 1vuRS6-0000Er-GZ
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:03 -0500
+Received: from p-east2-cluster4-host1-snip4-10.eps.apple.com ([57.103.78.161]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSZ-0002JA-E6
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:33 -0500
+ id 1vuRS3-0002Cj-JJ
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:02 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- 8B4EF180021D; Mon, 23 Feb 2026 08:38:27 +0000 (UTC)
+ 94FF9180017D; Mon, 23 Feb 2026 08:37:51 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835910; x=1774427910;
- bh=A04BlxLz7/khJrSYJAsW3ORmDALVzlVjhIJh6HzuFL4=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=CKShV99yYLDTJAERr5f2QZefBqEIlV6evitCOusKaatHG3ug8H1qgTbWe02Gqnfy7XrYrYuG1jBJBwbZn3I04zOt2lku5oNCBVpZzm8xeKfUqotMSzl1/FLIA4dQnIbpQ71UraVoItZAy8Ql7cbJwK51a5tY1FS8MXIevySpF7Ubd82VsWjuum3PB6QIAan9W/IB2v0R/sT8PAyvdNpsH4yZom/mF1XvGqK8pLfdypzgBPqA/rcnibCbRuMhPFQE7wF7aIteIYDiVJBpBYUdKqWKXfx1IxuD/XtfprbOIVFLPkAQQV8t+bgawk7IEfzZj289+rU6L/YM1SrMMsnKAA==
+ s=sig1; t=1771835875; x=1774427875;
+ bh=tOIg27vUU88mwrgezr591bqoq+9r1MOdy71woXavApE=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=LmOV+9QKgZknnxII++r4GK8Q0n1uEicmK+Z6sjYxML0Jfdke9DU3wPKdvxF1+ed6IvIvfVtU8JjTG90HBGSntX6wtCFi4VoqV0NvQbygtyH6/y1KFwpU7c2CwfMzJ7Y1sFtBRTskYYM6+MiumWbZdvsjcNI+p80tsX+TZJgYi4YKOmn2ejlMYTQz687k4+ovRIWjiF0JU79We/equ/V0ahJ9dY/ek2IFOYldhf8VnL3oIuqCtTJ/0L02OdBGs82bOIkJSD5/dUIrX+SIArtqsbChs9VP6VhrHZJS+2R/DomFZPG8IJkKsq+ty74a1rTYlrgTIiFbXZLVXZVsH8HDVQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- D14211800223; Mon, 23 Feb 2026 08:38:24 +0000 (UTC)
+ 8B2701800173; Mon, 23 Feb 2026 08:37:48 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,43 +49,48 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 20/27] hvf: i386: save/restore CR0/2/3
-Date: Mon, 23 Feb 2026 09:37:26 +0100
-Message-ID: <20260223083734.48533-21-mohamed@unpredictable.fr>
+Subject: [PATCH v5 05/27] target/i386: emulate,
+ hvf: move x86_mmu to common code
+Date: Mon, 23 Feb 2026 09:37:11 +0100
+Message-ID: <20260223083734.48533-6-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
 References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXyeNcEKjCGvzH
- UXJFFkE+jkWzvAbNn6GP2fgp38byhKAOUNGjcwptl1G2l0d1y3nNB5UfafrK28O9P/AX/31bECp
- vylHgCa1jqfcgUYoX9tR5R1+kERdMQXmg7GTnpcMhXqEskjCuK6juyS4Di/ONNHZ2eO0L55sZ/s
- OVml5qDZpGexyRai9blnXUD2tWdw+n+fPLNXzSodJUbU/+wCqBgUp1PoYw/iQx51nu4qA8rVhxj
- WMzrK9ZGwln4USVpcWtG1v6h/3B5fEMS86U6lEAExMFtHvTzz7AzUeVmeP68tfqFO9M7pK1uTD1
- R3Yfr9xq3/4nngsfokgHGEHB2oZbGhDFLsg0BP5qcSAMGLmJIcypNEDlIPmHys=
-X-Authority-Info-Out: v=2.4 cv=fr/RpV4f c=1 sm=1 tr=0 ts=699c1204
+X-Proofpoint-GUID: HI1e8AiiyIZZKSavV8CMVqTr6jPxA_fw
+X-Authority-Info-Out: v=2.4 cv=FuQIPmrq c=1 sm=1 tr=0 ts=699c11e1
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=8nbFswGFAu2En9I1cXwA:9
-X-Proofpoint-ORIG-GUID: 15cdjiEEl0yYNg9W73i3iFOVHRshAJrL
-X-Proofpoint-GUID: 15cdjiEEl0yYNg9W73i3iFOVHRshAJrL
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
+ a=KKAkSRfTAAAA:8 a=NAek0MM3JjVz2OpMgrkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: HI1e8AiiyIZZKSavV8CMVqTr6jPxA_fw
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfX7PvZyTRBV37J
+ mZrqHQ6/2N5LYF9+4fdELLSrVnMbnAQfaCXXHlMR1iQ0lAUwDoEgtjO+ANuVWaQw0PE9yEUJ/jM
+ b7e+dA3C0Pfih8qFMdpICo3kYkysOiCQsFiZB90nm5DrK9h+YY7IFDAWb1DqMp1k/BM6XoWvOTa
+ iO9/rvmuML9x6cQaK3vJ3mKrWonQob46Imc3V/zGydjezLw5qZYfUQ0Y07qU1nWVbDwz2tstd9p
+ HxfpBIlfIiDCrhYQ2c0gEkTTeaFgvK7kReysRxWi4H8QW0kistcJNuB4ONTiN/5wYi/afHO1QKJ
+ He0xSHSt1FP6tE+paEl6Av3PpzYlaE0INj+9peFgH5OfXYkrCtGkB5+jVM5zgA=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- phishscore=0 mlxlogscore=747 clxscore=1030 mlxscore=0 spamscore=0
- adultscore=0 malwarescore=0 suspectscore=0 lowpriorityscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 suspectscore=0 adultscore=0
+ clxscore=1030 mlxlogscore=999
+ bulkscore=0 mlxscore=0 lowpriorityscore=0 phishscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAABj8p/Wv8oRtocVz95AdUpUShnXDgK/nU26VUiAFeMR1ePcTGC2VEcORdi3yJBZ+cpkV2tjubleqkSQ9IfQ4chRQvXtE/GvpO7JLxAYulEZ6PHbs4D6B6PTvNLTcf6/hvWHPgGl0Iw9OfkIs4hJX+leOW0gBliKe4GCPKtbe/fL63PVUdrRDUnhxYIVzmZgxWngE1KVEMlcp5w5IYXBLNbdm7Jc32EiuCqdJCd5JulcCcrWH0zdgukrE6neweFYo1+7nbrZqA9FBpB7R7yzm4WQX2vIDYzQ92L+5oye8kPsZSef5fF1rEG0J4u7ouGCJnmY06TZJxGFOo63nh95ByZqShmWyuImachUhaR2052iSwA0R/pylduArZcWGaodOB9nEx8k3CoU+NZmpoRDZuOl3LwkljRYlSOpWdmUOpPn8dgOHS/n3gKn3pCjhd5UrV74z0u+9VBqIvLpZWylCkOpdjuF54/kcQvXUO+fae7M5Y84QcPucF3xm2xOoIcjFWogtuBQ2I2S7aoik7mZGutjRHwf2ePZo2yH6j89/C3h62tZPlhyJvGRduQwX0heII5zd3LBNzvYheIvvTrHhLsv9PFjpve2ZmaQYbQrm5gT7w5IQCUTzOLZEmGCCuIt54ww14oyFRUVLuj4BmSasF5AKLm0jN7COd8agUYhqTvU9wj5IZCJAdbm2gK41cQhvKH8V9hGorfQ4YOko43KQ8gPC2AG+dqiS5qUugqoqc8FOJjjetEVJwmLo/DuPQNhf1Lny7m4bSZsZHx07y3E8znuS4hND2RXcEOWu0q
-Received-SPF: pass client-ip=57.103.77.231;
+X-JNJ: AAAAAAABHMnaiCtY/IhUwmF2mMO0VP1JqIAhIYKEExhWp8S4cfpqNvL8+MMvbZ1ndvPhkdoD6bIWdUwl7EVKIJUMZF9nQ5b0ZMBZciLsIg13Yqn7wCjtEDOd8Q7aeFeDvTqWhJ2u1g2Ab0vbYCN/4Fx9iegZuvbcKRZB10UyO1codikVp/duX5IbR0B6Pv9tyigBqsnmcZxPcOfSI+W3qwA7mSeV7iCEs94i3kic/MAWzPk5mHDSmYh+M4hSjRBEoMGpxpsV9OxoaM/peTeQmBRs+nylBGwNVW85h4pYdadrHo1uogp57YndyfJw3biRghXJrDZ3p3rUGFFU65X8M+Xbw/S64yEkzNlMwLNvNOkin1JaN/FAnjagTbEXbrwYm+svqgqMKmW7gQxhfQROONcAd8XWAmWoqwuzNfj06wPu4QGZII0vsSkvD6BezIu3uKSnAdtYR/ilJdGTe0O6jfcAI94bcxDHlfYxRzR/cc5sGafymC09/fNEqnifKUmAyPc0VkNuZUPEDwYzv3I56qaIk70UbEKiy2Owx4Y/G+AiDSlf5TN7aqZrbz11/lq06sYGugO9SsUu2kfUhksbwmdXcefiZj7aCdMz4tClyHJd4luUl0TZb3Dr/AbFi50WTjgRjbLxTaDfJqkuFfMfz4g4H/tzSHJT4nF0oAnyRlu7z4dL9lNF8RkVE7wD/A+bwwxCGlGg6zDIje+k63Wvl2IyPdZ2Y5H0CptJtmiGqrnLXfzh4GDRDksoOH0nAwJK7BrO+aToG+zT1DseBysZyk7RKkK02K9HfDiGtwu8X2g=
+Received-SPF: pass client-ip=57.103.78.161;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -11
 X-Spam_score: -1.2
 X-Spam_bar: -
 X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.798, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.79,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -103,63 +108,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For symmetry, save/restore the same set of registers even when not needed.
-
-CR2 save/restore needed as page faults injected to the guest imply modifying CR2.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/hvf/hvf.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ target/i386/emulate/meson.build        |  1 +
+ target/i386/{hvf => emulate}/x86_mmu.c | 14 +++++++++-----
+ target/i386/{hvf => emulate}/x86_mmu.h |  0
+ target/i386/hvf/hvf.c                  | 10 +++++++++-
+ target/i386/hvf/meson.build            |  1 -
+ target/i386/hvf/x86.c                  |  2 +-
+ target/i386/hvf/x86_task.c             |  2 +-
+ 7 files changed, 21 insertions(+), 9 deletions(-)
+ rename target/i386/{hvf => emulate}/x86_mmu.c (95%)
+ rename target/i386/{hvf => emulate}/x86_mmu.h (100%)
 
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index fb039ff7bd..a70f8461b0 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -477,7 +477,19 @@ static void hvf_load_crs(CPUState *cs)
+diff --git a/target/i386/emulate/meson.build b/target/i386/emulate/meson.build
+index b6dafb6a5b..dd047c424a 100644
+--- a/target/i386/emulate/meson.build
++++ b/target/i386/emulate/meson.build
+@@ -2,6 +2,7 @@ emulator_files = files(
+   'x86_decode.c',
+   'x86_emu.c',
+   'x86_flags.c',
++  'x86_mmu.c'
+ )
  
-     env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
-     env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
-+    env->cr[2] = rreg(cpu->accel->fd, HV_X86_CR2);
- }
-+
-+static void hvf_save_crs(CPUState *cs)
-+{
+ i386_system_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: emulator_files)
+diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/emulate/x86_mmu.c
+similarity index 95%
+rename from target/i386/hvf/x86_mmu.c
+rename to target/i386/emulate/x86_mmu.c
+index fe44d2edf4..b82a55a3da 100644
+--- a/target/i386/hvf/x86_mmu.c
++++ b/target/i386/emulate/x86_mmu.c
+@@ -19,10 +19,10 @@
+ #include "qemu/osdep.h"
+ #include "panic.h"
+ #include "cpu.h"
++#include "system/address-spaces.h"
++#include "system/memory.h"
+ #include "emulate/x86.h"
+-#include "x86_mmu.h"
+-#include "vmcs.h"
+-#include "vmx.h"
++#include "emulate/x86_mmu.h"
+ 
+ #define pte_present(pte) (pte & PT_PRESENT)
+ #define pte_write_access(pte) (pte & PT_WRITE)
+@@ -99,6 +99,8 @@ static bool get_pt_entry(CPUState *cpu, struct gpt_translation *pt,
+ static bool test_pt_entry(CPUState *cpu, struct gpt_translation *pt,
+                           int level, int *largeness, bool pae)
+ {
 +    X86CPU *x86_cpu = X86_CPU(cpu);
 +    CPUX86State *env = &x86_cpu->env;
-+
-+    wvmcs(cpu->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
-+    wvmcs(cpu->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
-+    wreg(cs->accel->fd, HV_X86_CR2, env->cr[2]);
-+}
-+
- void hvf_load_regs(CPUState *cs)
- {
-     X86CPU *cpu = X86_CPU(cs);
-@@ -794,6 +806,7 @@ static int hvf_handle_vmexit(CPUState *cpu)
-             decode_instruction(env, &decode);
-             exec_instruction(env, &decode);
-             hvf_store_regs(cpu);
-+            hvf_save_crs(cpu);
-             break;
-         }
-         break;
-@@ -837,6 +850,7 @@ static int hvf_handle_vmexit(CPUState *cpu)
-         assert(ins_len == decode.len);
-         exec_instruction(env, &decode);
-         hvf_store_regs(cpu);
-+        hvf_save_crs(cpu);
+     uint64_t pte = pt->pte[level];
  
-         break;
+     if (pt->write_access) {
+@@ -127,7 +129,7 @@ static bool test_pt_entry(CPUState *cpu, struct gpt_translation *pt,
+         pt->err_code |= MMU_PAGE_PT;
      }
-@@ -942,6 +956,7 @@ static int hvf_handle_vmexit(CPUState *cpu)
-         decode_instruction(env, &decode);
-         exec_instruction(env, &decode);
-         hvf_store_regs(cpu);
-+        hvf_save_crs(cpu);
-         break;
-     }
-     case EXIT_REASON_TPR: {
+ 
+-    uint32_t cr0 = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
++    uint32_t cr0 = env->cr[0];
+     /* check protection */
+     if (cr0 & CR0_WP_MASK) {
+         if (pt->write_access && !pte_write_access(pte)) {
+@@ -179,9 +181,11 @@ static inline uint64_t large_page_gpa(struct gpt_translation *pt, bool pae,
+ static bool walk_gpt(CPUState *cpu, target_ulong addr, int err_code,
+                      struct gpt_translation *pt, bool pae)
+ {
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
+     int top_level, level;
+     int largeness = 0;
+-    target_ulong cr3 = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
++    target_ulong cr3 = env->cr[3];
+     uint64_t page_mask = pae ? PAE_PTE_PAGE_MASK : LEGACY_PTE_PAGE_MASK;
+     
+     memset(pt, 0, sizeof(*pt));
+diff --git a/target/i386/hvf/x86_mmu.h b/target/i386/emulate/x86_mmu.h
+similarity index 100%
+rename from target/i386/hvf/x86_mmu.h
+rename to target/i386/emulate/x86_mmu.h
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index ce54020f00..0b3674ad33 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -62,7 +62,7 @@
+ #include "emulate/x86.h"
+ #include "x86_descr.h"
+ #include "emulate/x86_flags.h"
+-#include "x86_mmu.h"
++#include "emulate/x86_mmu.h"
+ #include "emulate/x86_decode.h"
+ #include "emulate/x86_emu.h"
+ #include "x86_task.h"
+@@ -254,11 +254,19 @@ static void hvf_read_segment_descriptor(CPUState *s, struct x86_segment_descript
+ 
+ static void hvf_read_mem(CPUState *cpu, void *data, target_ulong gva, int bytes)
+ {
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++    env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
++    env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
+     vmx_read_mem(cpu, data, gva, bytes);
+ }
+ 
+ static void hvf_write_mem(CPUState *cpu, void *data, target_ulong gva, int bytes)
+ {
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++    env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
++    env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
+     vmx_write_mem(cpu, gva, data, bytes);
+ }
+ 
+diff --git a/target/i386/hvf/meson.build b/target/i386/hvf/meson.build
+index 519d190f0e..22bf886978 100644
+--- a/target/i386/hvf/meson.build
++++ b/target/i386/hvf/meson.build
+@@ -3,7 +3,6 @@ i386_system_ss.add(when: [hvf, 'CONFIG_HVF'], if_true: files(
+   'x86.c',
+   'x86_cpuid.c',
+   'x86_descr.c',
+-  'x86_mmu.c',
+   'x86_task.c',
+   'x86hvf.c',
+   'hvf-cpu.c',
+diff --git a/target/i386/hvf/x86.c b/target/i386/hvf/x86.c
+index 5c75ec9a00..2fa210ff60 100644
+--- a/target/i386/hvf/x86.c
++++ b/target/i386/hvf/x86.c
+@@ -23,7 +23,7 @@
+ #include "emulate/x86_emu.h"
+ #include "vmcs.h"
+ #include "vmx.h"
+-#include "x86_mmu.h"
++#include "emulate/x86_mmu.h"
+ #include "x86_descr.h"
+ 
+ /* static uint32_t x86_segment_access_rights(struct x86_segment_descriptor *var)
+diff --git a/target/i386/hvf/x86_task.c b/target/i386/hvf/x86_task.c
+index bdf8b51ae6..b1e541a642 100644
+--- a/target/i386/hvf/x86_task.c
++++ b/target/i386/hvf/x86_task.c
+@@ -16,7 +16,7 @@
+ #include "vmx.h"
+ #include "emulate/x86.h"
+ #include "x86_descr.h"
+-#include "x86_mmu.h"
++#include "emulate/x86_mmu.h"
+ #include "emulate/x86_decode.h"
+ #include "emulate/x86_emu.h"
+ #include "x86_task.h"
 -- 
 2.50.1 (Apple Git-155)
 

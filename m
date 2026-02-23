@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 094B7EC110E
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:25:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF1E9EC110E
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:32:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZg9-0002aB-4O; Mon, 23 Feb 2026 12:25:05 -0500
+	id 1vuZnV-0004ka-GP; Mon, 23 Feb 2026 12:32:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZg7-0002Zs-OL
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:25:04 -0500
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1vuZnT-0004jB-8p
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:32:39 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZg6-0004XQ-4r
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:25:03 -0500
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-64ad79dfb6eso4395122d50.0
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:25:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771867501; cv=none;
- d=google.com; s=arc-20240605;
- b=ILXgnO6/lY4Koknlguq4pGi3oDfyBU9yryhsV4SGZg5pAfzjleW6dR3uPH051DHTY/
- oL+5tCqIs6FylODye6JbE122CTJgHFbry3ZsApQQf4ZTvPpjCFxtd/oq3aMvGyP77i9M
- Ce8+Rqm/ugYFt26fHRGYdOPHthRImWUT9Z6hEPgzcHbyO9zockSPXPuCNfYFyiOPq0Br
- +DlWNRljfKlNOp7chG3Z8MLI4NaWhj8TG753osIEmVvsmLlvTXAu39N/+2zZzOYsM88p
- zCoWJCaFGBpODFV3dl3N3W1XDtO9nQghnvKFNAb50XWoV30w4oSFD/g1XddI6toIo/LN
- Pf3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :dkim-signature;
- bh=aF4nLYer1W1Plh9seuNY1nlMdTk4JdT0Dd9anPkXhLg=;
- fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
- b=VWd2aIKNL25hq/oSL7ru+GmzTxt6RoSMU8mVb7Luan/k8rqetVX4k3/KP5v/xmkgUA
- RAM9ejGpeyzvEf+pk8Q3aj/rr226qpOktAyHcuZwjvlL5emJElSQ1Hl5zzig/O38jUZ+
- 1d6xBm5AR/jaPkOB+Vp0seyY6JzF274mN70Dh3mB7SS2vgtIMg5b4NU9ZjpZqan+m7ZL
- wqeB/gNY7t1mKk8pEm/4mhjvHbp40a6TjyQM1gZ5FBqvViq+vhPzK1SoSNxsTcS12W4O
- /tXPKxai7NtheGxCXDNna2jaNwM2UgQ1zZCrIOJi5CEz6n7w7/OokTxbyQKuptoM1W4G
- vuCg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1vuZnQ-0006z4-J1
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:32:39 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-483703e4b08so36776425e9.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:32:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771867501; x=1772472301; darn=nongnu.org;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc:subject:date:message-id:reply-to;
- bh=aF4nLYer1W1Plh9seuNY1nlMdTk4JdT0Dd9anPkXhLg=;
- b=mQlfavWTMAvLLTQ6t31Xrm4XrF1gSMSH+j76/Cvo7BmgqNuH6r93PaXXVeBhdk/wHm
- 5FyBg/COUjpL3SwZnxj5XZPaH5V5E/Xho7xBJEXJNuvsu6P4hR3Z2jRWwYPMfImeCh81
- ME3m/Km05KjAsCWyZvcGoh9BQqV0okhyvXadFOuibuTbhijXXfo4xc3bp2E3N/9L99RQ
- /PNNjI6NTg2pM/sRhQ9G8g30iwjtKox7tahRmHh+4bTPdyCjUEzEtiUzYm+N6IV62OgS
- FJWKeBugRZ4AqlkEfKwhQ+RTfrmu2/k9/9zVox34Qm1sg9cO91i5pzdwb/HXsF7OF0sp
- 6u8g==
+ d=linaro.org; s=google; t=1771867954; x=1772472754; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=5T7sRVsjsc0vAswkiMt0T0Tfylq5nMVM08uSQ21feNs=;
+ b=ZXmbh9y3DFDSSbMq1rFdD5RZjsXoaqGLdHSVMrhyPUL5Fo30CBQgREA52f9YcP4U69
+ 6eAGccQkG1m56S6njEc5rO4Rh4jqssQaSF+PGY9Cnd2RTRYRoZSJM3I9RSSXddVq4iQj
+ vjiUZLa0voMm89atvkYwqUuADfG+LQuY8gd3sAhedKVmyIemOEvV1tQWWy6oCDc4AXeN
+ cs8orHt/j9xEMCkU/N0DvDPo2hXsF7qd7MFhgjN2jWaY76AneJUeMuRJRyUeS6yme3M9
+ 8mvxObrBRSiEc856juHWTLSapqzrnf5zVnPwYC1n/NMpPK1i5TY6BNciMlP1hWLQj7Rq
+ 7XuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771867501; x=1772472301;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1771867954; x=1772472754;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=aF4nLYer1W1Plh9seuNY1nlMdTk4JdT0Dd9anPkXhLg=;
- b=Lz6o24Qjy1FikQvcikTFnVU3ZLMFgtQyRSKGONiFy2usuvv/pZFXnBLKTyW+2yAmvQ
- sVmO+dUFohnGEZXop/Uk6YEqNaDDXJwJ3HS/gcqeQHBPBM0ozjs7dTohoAjOLqvkjrko
- U20MH8iZIH3DMdPqk7CgIkZHizH8Qj+eNFpfjuCfj/uO1nrxD9iJvzbbbkqzil6C04b8
- gJOEk6P5PzswAKNTLs02ySlZ5JOX2QfHUEs/PlL7Oz8btk+h/v/tgFCyM1/pqf5bcqCe
- Ygd6iP4T9w4VqUoZkqFcQ+tQcEytWYSd5kjKY5OLRaHiweSNfmGBCoLJboxOQlq9MXY/
- ks/A==
-X-Gm-Message-State: AOJu0Yy6eUxApCGeqgXhp+gpHqWxYnSktc3i2umwDv8k/HAXrYTSHmXu
- 9+xMMsfO9ovDPTE1gUwtfwNJeTGiWUa9hfWFGvgclMW4V89xGuSx2Pv9RWi1HIpiNj3vf4on9Fw
- 0JyLWWX5sNeIkZJkZUJryINY/aWD7uNh/0KfZGNxthOmD53Kd2Z3IGMc=
-X-Gm-Gg: ATEYQzztkN4dl7ikGXTuUoTXaTzDF9NgTnJDAR9DL0TzsyMKyABWOl1TNooRkgMuLI/
- NVq/G8k1iyy4TfByaEZ/J7Hwnw5uYEfqExywOq+URWl7MvG9j+tILP6pZk0QegbTcTyrL9y/lB/
- wF6rCEVTh13KvK1NBwTzgi3+Id+Py3/2m5vQKri1Pg5pO+eBGQCDesIvzANANzZDNe705e30TSl
- UnHVVh9lmMQCkkhKDzPVf3RdPYcQZJQPSesCIvnytP6r+S5O4ticJ3tbe8/oHUmuruLyYZRAPv5
- wQVKHnsrepfxDc0wQe62aueU9VUSmynNsgyW+MQn0o9lzdhg/wNPhtfyh6UbIVzymVI=
-X-Received: by 2002:a53:c589:0:b0:644:60d9:7514 with SMTP id
- 956f58d0204a3-64c78f5ed96mr6173581d50.88.1771867500689; Mon, 23 Feb 2026
- 09:25:00 -0800 (PST)
-MIME-Version: 1.0
-References: <20260223170212.441276-1-peter.maydell@linaro.org>
-In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
+ bh=5T7sRVsjsc0vAswkiMt0T0Tfylq5nMVM08uSQ21feNs=;
+ b=jktjyyeO/r6Gtn/dxlGIWhcjNcuj5XcdN0GGqjOYlqQbV6iKLaxSllwDg9A8w9aPCA
+ MHmfV+4BHmxv1axB3+Z/PSKlMqiKrXhRkDSguMv5wdHEp4OVytht1ve8ICKHfQP9ktpJ
+ 4sStuETNC/1ng5KXmOSniRKHIv5ckGnxs/mxu364ul6HWbv9cfrItEMAvuF/XAYWbLbD
+ UKYuRs+2RVS3vAFMasK6cA0coL6tx6ayIZ0oyltDf+je0F8wHF4KQcTaEiy4KqJO7etI
+ mwtPxj1Te9+/PWxzl78elZa6xcqCx3bh/vy6FB4v9MFVe04VkHmat8ZomHP145m2rGWJ
+ P61Q==
+X-Gm-Message-State: AOJu0Yxlw5UBm+ZvnOn2EMEssB+vJ5Rbp+CCtDOvjWU5jgZyxwxmHybJ
+ TD3LpnRuOQ/jDmoPcQKjwafl7AVUtgcU/aE4B9o+jAaaqN58zEEjSLDeEXURznYrRMDgp1a9pBR
+ fEpkf
+X-Gm-Gg: AZuq6aIiDbMGFt7AHBDO8AJiBCqPoyu0mLd07GlUuVkKGKholtc6Ljkhatnx5rsAV76
+ 1NUj7/FDWbJH5O2svy9Fa6blfba6SJLGd5yws23VFqJH2dLptDlWg+FBwKCoXI6l+R6aB4di50p
+ FgAPCES5AdMHUA61bxnHn4mUzkR6nIMxOMpd4VWEvc8zQrsRV2q0ROPhiWqMi2I9UIrBJRosqox
+ WHYm+RL5wQ3e4fbBAYOCG66RMMNqj+fyZ5y5yj2s4eG+xu+cdSelkoIEQvJWJ7jLqKCaF9I2l3T
+ qEGcHkV33esk6xYAbvuUSiAlPcQJLq7x0FXr7KwsqNicWYcrzI9HHjBkALOaVw+VES4SMk+AIMP
+ cbv7tBFRydcmzBl5CQMXFRI/RscFhB21E+kGd2GNX86fEzEBw7PjwaxxhgrwzTQTK7dChdGypNK
+ LlYKLZe++978kQmCtZ0j/5FOUZ4UYGXaAfGJ4jG7tfYrwA9Mp+y/GYtJicsmMTRhHNCPF+UK3Gl
+ /wWjpN9R2pzxuRLUhpJnfumgD5v5+nsJnVjUcLRYw==
+X-Received: by 2002:a05:600c:3e11:b0:47d:403a:277 with SMTP id
+ 5b1f17b1804b1-483a9492398mr157257695e9.4.1771867954184; 
+ Mon, 23 Feb 2026 09:32:34 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483b823842esm725145e9.10.2026.02.23.09.32.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Feb 2026 09:32:33 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Feb 2026 17:24:49 +0000
-X-Gm-Features: AaiRm51f0kcYPGySN4UXNcplzCOwp3QbERK55DXkVz-N5xuOxveUSTJWs1XpaTA
-Message-ID: <CAFEAcA9ciDOcF-jNa84QKxGFO27qgzpOn1TVVC+M28T_Ybh2MQ@mail.gmail.com>
-Subject: Re: [PATCH 00/65] arm: Implement an emulation of GICv5 interrupt
- controller
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm/kvm: Don't free migration-blocker reason on failure
+Date: Mon, 23 Feb 2026 17:32:32 +0000
+Message-ID: <20260223173232.453165-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,13 +98,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 at 17:02, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> This patchset implements initial support of emulation of Arm's new
-> interrupt controller architecture, GICv5.
+The migrate_add_blocker() function documents that if it fails it will
+free the Error it is passed via its reasonp argument and set reasonp
+to NULL.  That means that in kvm_arm_enable_mte() we don't need to
+call error_free(mte_migration_blocker) in the failure codepath.
+Doing so is harmless because error_free(NULL) is permitted and does
+nothing, but we can remove the unnecessary code.
 
-...forgot to mention, but if you prefer a git tree you can find one at
- https://gitlab.com/pm215/qemu/-/tree/gicv5-v1
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+This seems to be the only caller of migrate_add_blocker() that
+was doing this.
+---
+ target/arm/kvm.c | 1 -
+ 1 file changed, 1 deletion(-)
 
--- PMM
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ded582e0da..388766c846 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2540,7 +2540,6 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp)
+         error_setg(&mte_migration_blocker,
+                    "Live migration disabled due to MTE enabled");
+         if (migrate_add_blocker(&mte_migration_blocker, errp)) {
+-            error_free(mte_migration_blocker);
+             return;
+         }
+ 
+-- 
+2.43.0
+
 

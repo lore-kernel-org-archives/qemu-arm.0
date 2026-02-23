@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1FE5EC110C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:04:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A77D5EC110C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:04:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKk-0002TO-Js; Mon, 23 Feb 2026 12:02:58 -0500
+	id 1vuZKY-00028J-N7; Mon, 23 Feb 2026 12:02:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKi-0002Ry-U4
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:56 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1vuZKV-0001uO-8g
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:43 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKh-0000Hh-5Z
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:56 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-483abed83b6so14148595e9.0
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:54 -0800 (PST)
+ id 1vuZKR-0000AC-7R
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:42 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4837907f535so41153215e9.3
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866174; x=1772470974; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866158; x=1772470958; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=/Mw22eOdEKGVrHgSJcdy0DJe9ef4kO7Rp5jrpc0VMn8=;
- b=qJADO7yvPw292zSD2Jkki4HHi5KIPUwQBhKxqg/tgZCsWlU7AkxDFc0X5Ygu8/6+nI
- YXgoUWDNb+UtCi8BTNvuv8q2Cx754s0F3wL6aNWOgaNiaLHbPGGsbVBptDXq9CPAb/DW
- CflsoIAZNOFPv+YCzdZPwRcfqMZN7A+Vp30CXTod8poK/DF9QaU15ysx6IZuTcipZJNQ
- mw1SnSoemNDke9RGey4JIsyDogkMjnxoTzpHFyUJ7txo7wfpezsPawThgpTyZwJqXiNG
- 4OzpNwH2xqefj3XNSLi49E2RdajjuLZPnf+xWySwypWrEIsux/Cp+x8SzcKcgOgtz4T3
- iXiw==
+ :reply-to; bh=Pxugm0oWVUcgkpDMORCz85xFJuuEUVhItUG4r6MiPs0=;
+ b=dEzfcDi8EPrNZGt1pK/smxvIwn7w+4jNuj3P7otqjonLrRWlZp98NSY9NgT5soKMMT
+ kIewJ9eVU5Fh/bpqoYQ15ywlXxfTbq/iq9OoZWAVDmIK1+vFWebpL99VXV5HMgGyqMFs
+ 21Neee8HtKeAo2ITDuQ6Jk2uu327plLyBANKt24H/fnxSLrU8rWLI0NwA8mae6yNefPX
+ r5znTxVwtzavhivah68mYNpw1h+nT8Cuvyz2yTgPhzVqhzl06fcAnpoRhn/kF1tWukwQ
+ gDYofSa6iK0TFQUZCL8FuKLAyULB/CiM18iiZ7FqmCsosdUq5o5CtHblw6uc4PoKERbp
+ gmlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866174; x=1772470974;
+ d=1e100.net; s=20230601; t=1771866158; x=1772470958;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=/Mw22eOdEKGVrHgSJcdy0DJe9ef4kO7Rp5jrpc0VMn8=;
- b=cyv3y+CCL8IAgt136pDJ4BKUqxxa/V34e0G6XkgB9mt2PAXW6C5ND0zSQzKKyhV4kP
- 9+ZqI8x6GxMEO8uVxzxD9d3B1k2gLrUayqJ+K/4HwlLcn87+LCR7z26sCyvTRaCyXeVX
- IJPHUH1lU3MZYH9MX4xXYER8t1vrfvFT72U2b8vzTI+bQY2ySJK4kd5YH0dl474GDDmS
- TMHJIvBA01DAmoq8ajBRVM70PWz+RDtXEfe/vRJhv5485RqTKpWD3ePCRB27kNDQRJsM
- VV0CyXdSLJhOG8OsfpWEGP0l7699yhYaHuzabOfsh74sZSDBa2iWI3xuv1v4KdYH8uSX
- 4Y3Q==
-X-Gm-Message-State: AOJu0YzoLokJbZZ3X3K8RYDHU6oZvnXY6QZva7AwXvJAvOO1ZQ4H64Zs
- i6qhW/JGNFlYWbgoMYDbSM+lGQVVyVzGXuj0QnIHDxdzGVCjc5rmNy9wuIM7MKy0fJrYCHFyGBp
- p1Tmr
-X-Gm-Gg: AZuq6aJMXgs+w/vIbE9Ldll1Hyk9QfkhqEoD/E/CATXajvzPoW6LNC7bACCIEJqMILn
- G1Id1rwdpxbe8epTSCOgFV9PPsucJ89hFgo0O9ZqQIi3BDgNpze1wO8CpSXwj0I4KQuapt9nsmf
- /KJR/1hnhv8AfwY1CMvsk24WcB4vPEBgPvOpIrBdefQigHJZUWEdUGMapK+TcxKykYQRnpB6p45
- oXhbCc3/QzTr9J6eTkKLVGVMXEx2+olDhY/cDSwlzIpLr1SRRlwetzPYVSkEH7/B+JaId1oLIYv
- lPRBgw7CG7ub3sBjXdUllJC2+4vKKmvUmxsBSmfBid6gD6dbwJEjP0QWYh97kW3DgOa1W/QuRY1
- G3wyWNCMMU5YuDufQR907xKIIIBlZXJwEMAMLflNjR303vPw/jmcg6T5zAQ42M+mH+IWh7wZ/AX
- EPeeqpwa3t+MDrULTRT1M9swUmqExg+rXQto0YiJbCKr3dNXDf7YaUjmYhHMkRIDj3/bPkn7aQa
- k0tliTBtl87ryDSgeZ38mwfWUrWik8BD1ARHkuV9w==
-X-Received: by 2002:a05:600c:1c22:b0:483:79ad:f3b9 with SMTP id
- 5b1f17b1804b1-483a95eada4mr163288105e9.28.1771866173689; 
- Mon, 23 Feb 2026 09:02:53 -0800 (PST)
+ bh=Pxugm0oWVUcgkpDMORCz85xFJuuEUVhItUG4r6MiPs0=;
+ b=pOIrwtSb4PQ9eVjKJXrRVa6OzDsQxEyL/0NKbyL9XlTUPzzWmhueRODHlX9tgJcLSF
+ LNlD8Ulpa7BP+9D4tx+aK4YpTFHBtsVJE1NFyIBKcn22cTtb2wiL39LBJselqa8syFEy
+ CJpG+GqghG5yfmz5WsyBTS0cwNi0jMOt1oeSgQ8gviKwmCYClVOVdWDeBsUVuUAuQuZ9
+ 9KeRoEj1tFyAsuPu3hzyE6Aw0l5dh59g9C5mTWn05/Nn3PlSCqw/g7BX6pdABy+opadg
+ 2NiE36F5+7pR5uk8Ajjui64LNtkPzyDQ46TVb/7FHm/DXTQL3TmC+2eLyTStaoJ77Z85
+ LUqg==
+X-Gm-Message-State: AOJu0Yz3mZDHtBmKi23gAm3kKXR05cDzbrBrnieuQSm19ODA0lEKn4/S
+ gvyOHxsc+TdR6QI7/xWjmhgI2HDd+0LC71OQIkatURSG8zB7/8wZVy1+Fl6IrMKFz4h/gsM8OmO
+ xSysU
+X-Gm-Gg: AZuq6aJFOMJ8kSh/rz45/pWmRLxOFla+fjZ6otHK6qCsS+RtaL7cXiIhjDgkAsa4e/A
+ aMmmOYTc1ulRhnIi9Qgp2x3nMUSc1ngVw0o+0DA/SCQ6zOuO+wLyQkgwrQzXTXBDgC/8DOzj2Pb
+ am151GQqnnBKqwRnJavLEWLGYPVU1QINgzJJRmkPBMeb4bnpI6m7fjTLZRRP9TqPIQNQHzg2xZf
+ etilOW/SdbbRPG5AESdFNZWkQsbm+JJql9G22TQcHfWAP7NeSMSJQ6anfIp80Azf9oFu+2WrBTz
+ XROwXiFSdaQx6wB1rwOF670BJgtHAh7NrQi6o2mM2Z8pNM3da4y5XO0CZmv7H5oPXedy5rtgueg
+ yxn4KMP+RhdnU76wCpN5UCgOjMlXa1/98r1xbmUaV5JNfEQnNBmR37dEZo3R9EygEQKw/FBm83U
+ RiUBbale4qzyBYSj8KD/zuEF7scBIUc39ttSaV3eZ5anDZ5ikBwZ9/5PfDwqPOE21sO79UF10KS
+ kuhdvPbEZ7fTS+ks16wjoKOQoAbmrQ=
+X-Received: by 2002:a05:600c:3115:b0:47a:814c:eea1 with SMTP id
+ 5b1f17b1804b1-483a961602dmr194302305e9.35.1771866157552; 
+ Mon, 23 Feb 2026 09:02:37 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.52
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:52 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:36 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 35/65] target/arm: GICv5 cpuif: Implement GICv5 PPI active
- set/clear registers
-Date: Mon, 23 Feb 2026 17:01:42 +0000
-Message-ID: <20260223170212.441276-36-peter.maydell@linaro.org>
+Subject: [PATCH 19/65] hw/intc/arm_gicv5: Implement IRS_MAP_L2_ISTR
+Date: Mon, 23 Feb 2026 17:01:26 +0000
+Message-ID: <20260223170212.441276-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,104 +100,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the GICv5 PPI state and control lives in the CPU interface; this
-is different from the GICv3 where this was all in the redistributor.
+The IRS register IRS_MAP_L2_ISTR is used by software to tell the IRS
+that it has updated the address in an L1 IST entry to point to an
+L2 IST. The sequence of events here is:
+ * software writes to L1_ISTE.L2_ADDR for some L1 ISTE which is
+   not valid (i.e. where L1_ISTE.VALID is 0); it leaves VALID at 0
+ * software writes to IRS_MAP_L2_ISTR with some INTID that is inside
+   the range for this L1 ISTE
+ * the IRS sets IRS_IST_STATUSR.IDLE to 0
+ * the IRS takes note of this information
+ * the IRS writes to the L1_ISTE to set VALID=1
+ * the IRS sets IRS_IST_STATUSR.IDLE to 1 to indicate that the
+   update is complete
 
-Implement the access system registers for the PPI active state; this
-is a pair of registers, one of which has "write 1 to clear" behaviour
-and the other of which has "write 1 to set".  In both cases, reads
-return the current state.
-
-We start here by implementing the accessors for the underlying state;
-we don't yet attempt to do anything (e.g.  recalculating the highest
-priority pending PPI) when the state changes.  That will come in
-subsequent commits.
+For QEMU, we're strictly synchronous, so (as with IRS_IST_BASER
+updates) we don't need to model the IDLE transitions and can have
+IRS_IST_STATUSR always return IDLE=1.  We also don't currently cache
+anything for ISTE lookups, so we don't need to invalidate or update
+anything when software makes the L2 valid.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h             |  5 +++++
- target/arm/tcg/gicv5-cpuif.c | 38 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 43 insertions(+)
+ hw/intc/arm_gicv5.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a32c5f3ab1..dd4dc12feb 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -257,6 +257,9 @@ typedef enum ARMFPStatusFlavour {
- } ARMFPStatusFlavour;
- #define FPST_COUNT  10
- 
-+/* Architecturally there are 128 PPIs in a GICv5 */
-+#define GICV5_NUM_PPIS 128
-+
- typedef struct CPUArchState {
-     /* Regs for current mode.  */
-     uint32_t regs[16];
-@@ -600,6 +603,8 @@ typedef struct CPUArchState {
-     struct {
-         /* GICv5 CPU interface data */
-         uint64_t icc_icsr_el1;
-+        /* Most PPI registers have 1 bit per PPI, so 64 PPIs to a register */
-+        uint64_t ppi_active[GICV5_NUM_PPIS / 64];
-     } gicv5_cpuif;
- 
-     struct {
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index 36d1c196a8..0132b13853 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -175,6 +175,20 @@ static void gic_cdhm_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     gicv5_set_handling(gic, id, hm, domain, type, virtual);
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 8572823edc..af27fb7e63 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -492,6 +492,44 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id,
+     put_l2_iste(cs, cfg, &h);
  }
  
-+static void gic_ppi_cactive_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
++static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
 +{
-+    uint64_t old = raw_read(env, ri);
-+    raw_write(env, ri, old & ~value);
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++    GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
++    uint32_t intid = FIELD_EX32(value, IRS_MAP_L2_ISTR, ID);
++    hwaddr l1_addr;
++    uint64_t l1_iste;
++    MemTxResult res;
++
++    if (!FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID) ||
++        !cfg->structure) {
++        /* WI if no IST set up or it is not 2-level */
++        return;
++    }
++
++    /* Find the relevant L1 ISTE and set its VALID bit */
++    l1_addr = l1_iste_addr(cs, cfg, intid);
++
++    l1_iste = address_space_ldq_le(&cs->dma_as, l1_addr, cfg->txattrs, &res);
++    if (res != MEMTX_OK) {
++        goto txfail;
++    }
++
++    l1_iste = FIELD_DP64(l1_iste, L1_ISTE, VALID, 1);
++
++    address_space_stq_le(&cs->dma_as, l1_addr, l1_iste, cfg->txattrs, &res);
++    if (res != MEMTX_OK) {
++        goto txfail;
++    }
++    return;
++
++txfail:
++    /* Reportable with EC=0x0 if sw error reporting implemented */
++    qemu_log_mask(LOG_GUEST_ERROR, "L1 ISTE update failed for ID 0x%x at "
++                  "physical address 0x" HWADDR_FMT_plx "\n", intid, l1_addr);
 +}
 +
-+static void gic_ppi_sactive_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    uint64_t old = raw_read(env, ri);
-+    raw_write(env, ri, old | value);
-+}
 +
- static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-     /*
-      * Barrier: wait until the effects of a cpuif system register
-@@ -254,6 +268,30 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-          */
-         .resetfn = arm_cp_reset_ignore,
-     },
-+    {   .name = "ICC_PPI_CACTIVER0_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 13, .opc2 = 0,
-+        .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[0]),
-+        .writefn = gic_ppi_cactive_write,
-+    },
-+    {   .name = "ICC_PPI_CACTIVER1_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 13, .opc2 = 1,
-+        .access = PL1_RW, .type = ARM_CP_ALIAS | ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[1]),
-+        .writefn = gic_ppi_cactive_write,
-+    },
-+    {   .name = "ICC_PPI_SACTIVER0_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 13, .opc2 = 2,
-+        .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[0]),
-+        .writefn = gic_ppi_sactive_write,
-+    },
-+    {   .name = "ICC_PPI_SACTIVER1_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 13, .opc2 = 3,
-+        .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[1]),
-+        .writefn = gic_ppi_sactive_write,
-+    },
- };
- 
- void define_gicv5_cpuif_regs(ARMCPU *cpu)
+ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+ {
+     GICv5Common *cs = ARM_GICV5_COMMON(s);
+@@ -675,6 +713,9 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             cs->irs_ist_cfgr[domain] = data;
+         }
+         return true;
++    case A_IRS_MAP_L2_ISTR:
++        irs_map_l2_istr_write(s, domain, data);
++        return true;
+     }
+     return false;
+ }
 -- 
 2.43.0
 

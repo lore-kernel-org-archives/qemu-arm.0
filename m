@@ -4,70 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA495EC110C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD27FEC1113
 	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:11:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZSo-0005yS-H2; Mon, 23 Feb 2026 12:11:19 -0500
+	id 1vuZKD-0001Ho-2N; Mon, 23 Feb 2026 12:02:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vuZGE-0000C8-W5; Mon, 23 Feb 2026 11:58:19 -0500
-Received: from xmbghk7.mail.qq.com ([43.163.128.49])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vuZG9-0007pC-0f; Mon, 23 Feb 2026 11:58:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1771865885; bh=6K0B5ssH2A9O7uCMMCrE+M5VlwvJQXKIZXBBohOM+lc=;
- h=From:To:Cc:Subject:Date;
- b=Sphylae/oUTps7N7yJl70Tg06xgu64RmxpmyAac6SD9OY3EeCc3X+71fEfeY2H9/8
- wZ/vwd0Z4tCIGcQX3WPkKY7MKrBGhZlexPkfAEigCXtJijPFP+E1gJFVFqjoQGQRlV
- UyYpf3H4FmbiSci1ZqH7GGT92bXMTYo3HV5Xf3kk=
-Received: from archlinux ([111.52.70.122])
- by newxmesmtplogicsvrszc41-0.qq.com (NewEsmtp) with SMTP
- id DAD8BE84; Tue, 24 Feb 2026 00:54:45 +0800
-X-QQ-mid: xmsmtpt1771865685t0fsg6l21
-Message-ID: <tencent_B692F5D92658BB452DC23D13EC5E33FD980A@qq.com>
-X-QQ-XMAILINFO: N/WmRbclY25GcyN8v9e4WoZyYC2WIm001jbS/aKPWF9wsmNcgiNkYvaqrt94by
- 1HAY6LNXu4/iD2ZsgCWhBan2CviXlb+tgC4AQr7+lX9553sVQxIszsUcfV2v+Uv1tdIDq33G8c6t
- wM13N/DUgEyiYxo9Zud5DmzCnnyaq2R/sbt9YiK75uaL9vXogmPfMTz2wpKUtZh53Ftf5dmtVGRq
- TkPfbcMj1RUpdecj5dXOxNS0ZMuETK9MAtgJUvEeYf+6OfQbJXJn4jHrXPxiaxWH4UpP5Vxg0hVt
- t91jrZTkYXnNZPjqplJftF0Yk3IWSpmnmmFRDPHPU0f+ME8WUMI2+yQA3MO9ODbdc6AM4VjM7j9H
- BFx+lq2HpNkcTolU1NtAbIqjT9XgIMNKGqIoinYR/0zeiHtO7ByW7JkJaWhYwHZNGIqQEOO63ULI
- LyhxlBT2jQQf4S2HWKij5UtqKJAqkl77Yrz3eUAYrj2b2X25Y4pwn8vx7pG//mNT4tSKAh2Hts0A
- 4b9FeesV76Nyu2U6XjwwdtcoAlC5HTga1xZt4dkLDIqkavKBSDD8by0s9Xdo+jy7pbhbKkOSz2y5
- v6h2Pj4DUt9xfYkJOjjuaMbTeY3XrujQYzgKZx2gzl5Q1c6tyDq/XvsH3UHVtFIpZNZj/3qHOqH/
- KTdJ9VrVgWnm9k739MHolA2VdGd0Sr+ZV5FRdR90KjEgNAxtAHC60LjExwlCJdVoUX24W9XzzO4S
- +vDnTUUsT0G9QiPv+D9IVMEGmoAnv+DMqbfpuKN2YKPDZ4TsPqoDvD/cfr3I4qNKR3UlLt3JEEmx
- 95bpYfTm86EXcPQqm3cx6Rni5FNMil6oA4yp6Y8ub5aVc2evJiNag1F1NMxRdmYHZRZgckGk6M9F
- HpB33DkGzjSPkjCzsGpjpa6W6PU6HyJVwJmRy3wajj+oSRf0Ab5l5ZoZAUz5lV1o8rZeFOqMriJP
- lhkCmsm8keqHKhQcuUEQud4xEXxmsOD0DdT/Mpr8XBx66y0YFKAmqlI71P117fMUnbnR9jg0z5LJ
- 3fbOgGV0rje1DSh0AV
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
-From: Yucai Liu <1486344514@qq.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	jcd@tribudubois.net
-Subject: [PATCH 0/1] hw/arm: Implement i.MX6UL LCDIF model
-Date: Tue, 24 Feb 2026 00:54:44 +0800
-X-OQ-MSGID: <20260223165445.318433-1-1486344514@qq.com>
-X-Mailer: git-send-email 2.53.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZKB-0001EE-Fq
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:23 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuZK8-0008Ur-D6
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:23 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4834826e5a0so57107885e9.2
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771866139; x=1772470939; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=VtZnSTrAdZDYVk7EjD3fTK7vrjYFNEe+1oEHJx6dAb4=;
+ b=ORJeWMUwYwWwhIkC7Ohyb5f5c8IAqUPYy2WNQt97+sWcZNM/Ef/IAZJ5sOECokygmi
+ S8mpCLhawXZcRWAAvsSKNsCMJ9VkCm7mJvCMtGXXl4w2rr8s5jfMwEe7LuJt3E/1egUC
+ bKeU2oS0osNZoGXX14niwodAv7y2qD5S1IKBY3hnndiaFRFz4OCnQipfWLu1+NiaG9Qt
+ MQjHwkZSOTXTEOsj/D4u/OXNTK8bNtfb3C/G6gMjTbVUtLpqadsveymcGPe1i25h5Fm3
+ YVvyPkwJDO7BE7dehaXoMDudisrMrsaMLeZP4nFrH0PXepCy0YfwhRXq8NdohUjaOtBg
+ tn0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771866139; x=1772470939;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=VtZnSTrAdZDYVk7EjD3fTK7vrjYFNEe+1oEHJx6dAb4=;
+ b=VsyTqtUZq2bdEk0AYTLFo3Kv6OvaRRaMGD3I6+hUexypj4Qqq6gRbFFIjYQFdfFXCN
+ KRxuWt4w8/ItT2+STBeh2mVET2+hQxnepawlt1OCWIbTbn0KMtBTIf/aCZjVcaBJcekY
+ UbRa0sQdCGsENrNcyv7uWhKq8R4o1xOhUdxSnPEjeMaZfnAUny5JP+oyseLMiDD6xJey
+ TdWpBRoZsnFIqohxWB3AkME9mpTjo2d6rOe/D61HpNE+bgTaIl/kW3bGV+LDH/LR0ZPc
+ b0DIR26oDbY4Yyb4AsgEI+p5bSV75ovh6Nn97IUU0e+DLa1uaR5UMQfhVRm310QCu/ZL
+ PyBw==
+X-Gm-Message-State: AOJu0YzxXJC3c06Gy/Vqzu0Lr+Z1gc+W6dvBFhqP92B8I47y4OBSoMR2
+ vzlBD1sVbYq1S8oid42TOHZnAWuJtr/eSfcXf4VrlM2dwUOMUJKLLpc2PKEl2NzMVm6Is/iL8Ic
+ Q3Ip0
+X-Gm-Gg: AZuq6aJrN39GSYdKbsix9e78xnEOFUulK0zVQC+2S99nQEeWEkwnE1Mil64X69dUqa7
+ nxKb8fgfCUVBWxREnmQ3Zw570l7nOhDZOjPGud5RevffF7URnsvjayZx8NYhCEJWh5Jm3XR+Qk0
+ xwmFPZl8G7fd/5c8Z1LR+MoOWXO6FfDc6VAplziKRKS9lMg9a+kSAH/ZH9hx7TMWngNd04c3hAK
+ ddUrFmVodviD7sb1AYK6BURqbaQ61XTT94qnlb+fKv8bCQvE6RYyN1poQaMqfwaL0AR7/dFfUMQ
+ FuECuMcByo5/ak3lgWDdTetrL2zTP4qHLG2TxgeGlxF7I4zeHkl19eu3k3RFK/d5+l+SHM76B0s
+ RUW68bT95yQBSPMLyaXoB+Yi8DRVhklmEstWatcFIid5ydjNJyq+v+ZlbmK1CiUxWwLk50fkKcv
+ eFHsx4n1MER+9PhGKFpdRrB5YxiDFi24tXNXfe+74Olqa83IaVXs7B/wCSM++PfV8xgs8i38M8+
+ 5b+8rfo3FrHVcbHajdrrqSXK4K49Ho=
+X-Received: by 2002:a05:600c:468d:b0:480:7162:fa48 with SMTP id
+ 5b1f17b1804b1-483a95c8f2dmr164256725e9.13.1771866138551; 
+ Mon, 23 Feb 2026 09:02:18 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Feb 2026 09:02:17 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 04/65] hw/intc/arm_gicv5: Implement skeleton code for IRS
+ register frames
+Date: Mon, 23 Feb 2026 17:01:11 +0000
+Message-ID: <20260223170212.441276-5-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=43.163.128.49; envelope-from=1486344514@qq.com;
- helo=xmbghk7.mail.qq.com
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1.179, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.717,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 23 Feb 2026 12:11:17 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,36 +101,452 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series replaces the i.MX6UL LCDIF unimplemented stub with a basic
-device model and wires it into the SoC.
+The GICv5 IRS has one mandatory register frame (the config frame) for
+each of up to four supported physical interrupt domains.  Implement
+the skeleton of the code needed to create these as sysbus MMIO
+regions.
 
-The LCDIF model implements register accesses, frame-done IRQ behavior,
-and framebuffer-backed display updates for RGB565 and XRGB8888 input
-formats.
+The config frame has a mix of 32-bit and 64-bit registers, and it is
+valid to access the 64-bit registers with 32-bit accesses.  In a
+similar way to the various GICv3 devices, we turn the MemoryRegionOps
+read_with_attrs and write_with_attrs calls into calls on functions
+specifically to read 32 or 64 bit values.  (We can't trivially
+implement one in terms of the other because various registers have
+side effects on write which must only trigger when the "correct" half
+of the 64-bit register is written to.)
 
-The series also updates the i.MX6UL MAINTAINERS patterns for the newly
-added LCDIF source/header files.
+Unlike the GICv3, we choose to expose a sysbus MMIO region for each
+interrupt domain even if the config of the GICv5 means that it
+doesn't implement that domain.  This avoids having the config frame
+for a domain ending up at a different MMIO region index depending on
+the config of the GICv5.  (This matters more for GICv5 because it
+supports Realm, and so there are more possible valid configurations.)
 
-Testing:
-- ninja -C build qemu-system-arm
-- perl scripts/checkpatch.pl --strict --mailback origin/master..HEAD
+gicv5_common_init_irqs_and_mmio() does not yet create any IRQs, but
+we name it this way to parallel the equivalent GICv3 function and to
+avoid having to rename it when we add the IRQ line creation in a
+subsequent commit.
 
-Yucai Liu (1):
-  hw/arm: Implement i.MX6UL LCDIF model
+The arm_gicv5_types.h header is a little undermotivated at this
+point, but the aim is to have somewhere to put definitions that we
+want in both the GIC proper and the CPU interface.
 
- MAINTAINERS                   |   2 +
- hw/arm/fsl-imx6ul.c           |   9 +-
- hw/arm/imx6ul_lcdif.c         | 409 ++++++++++++++++++++++++++++++++++
- hw/arm/meson.build            |   5 +-
- include/hw/arm/fsl-imx6ul.h   |   2 +-
- include/hw/arm/imx6ul_lcdif.h |  37 +++
- 6 files changed, 460 insertions(+), 4 deletions(-)
- create mode 100644 hw/arm/imx6ul_lcdif.c
- create mode 100644 include/hw/arm/imx6ul_lcdif.h
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv5.c                | 193 +++++++++++++++++++++++++++++
+ hw/intc/arm_gicv5_common.c         |  35 ++++++
+ hw/intc/trace-events               |   6 +
+ include/hw/intc/arm_gicv5.h        |   1 +
+ include/hw/intc/arm_gicv5_common.h |  50 ++++++++
+ include/hw/intc/arm_gicv5_types.h  |  28 +++++
+ 6 files changed, 313 insertions(+)
+ create mode 100644 include/hw/intc/arm_gicv5_types.h
 
-
-base-commit: a6ec632dca8c7d10743aff29345e5e9e5324228b
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index f9dab710d3..0eb4348e81 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -8,9 +8,178 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/intc/arm_gicv5.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "trace.h"
+ 
+ OBJECT_DEFINE_TYPE(GICv5, gicv5, ARM_GICV5, ARM_GICV5_COMMON)
+ 
++static const char *domain_name[] = {
++    [GICV5_ID_S] = "Secure",
++    [GICV5_ID_NS] = "NonSecure",
++    [GICV5_ID_EL3] = "EL3",
++    [GICV5_ID_REALM] = "Realm",
++};
++
++static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
++                         uint64_t *data, MemTxAttrs attrs)
++{
++    return false;
++}
++
++static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
++                          uint64_t data, MemTxAttrs attrs)
++{
++    return false;
++}
++
++static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
++                          uint64_t *data, MemTxAttrs attrs)
++{
++    return false;
++}
++
++static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
++                           uint64_t data, MemTxAttrs attrs)
++{
++    return false;
++}
++
++static MemTxResult config_read(void *opaque, GICv5Domain domain, hwaddr offset,
++                               uint64_t *data, unsigned size,
++                               MemTxAttrs attrs)
++{
++    GICv5 *s = ARM_GICV5(opaque);
++    bool result;
++
++    switch (size) {
++    case 4:
++        result = config_readl(s, domain, offset, data, attrs);
++        break;
++    case 8:
++        result = config_readll(s, domain, offset, data, attrs);
++        break;
++    default:
++        result = false;
++        break;
++    }
++
++    if (!result) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: invalid guest read for IRS %s config frame "
++                      "at offset " HWADDR_FMT_plx
++                      " size %u\n", __func__, domain_name[domain],
++                      offset, size);
++        trace_gicv5_badread(domain_name[domain], offset, size);
++        /*
++         * The spec requires that reserved registers are RAZ/WI;
++         * so we log the error but return MEMTX_OK so we don't cause
++         * a spurious data abort.
++         */
++        *data = 0;
++    } else {
++        trace_gicv5_read(domain_name[domain], offset, *data, size);
++    }
++
++    return MEMTX_OK;
++}
++
++static MemTxResult config_write(void *opaque, GICv5Domain domain,
++                                hwaddr offset, uint64_t data, unsigned size,
++                                MemTxAttrs attrs)
++{
++    GICv5 *s = ARM_GICV5(opaque);
++    bool result;
++
++    switch (size) {
++    case 4:
++        result = config_writel(s, domain, offset, data, attrs);
++        break;
++    case 8:
++        result = config_writell(s, domain, offset, data, attrs);
++        break;
++    default:
++        result = false;
++        break;
++    }
++
++    if (!result) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: invalid guest write for IRS %s config frame "
++                      "at offset " HWADDR_FMT_plx
++                      " size %u\n", __func__, domain_name[domain],
++                      offset, size);
++        trace_gicv5_badwrite(domain_name[domain], offset, data, size);
++        /*
++         * The spec requires that reserved registers are RAZ/WI;
++         * so we log the error but return MEMTX_OK so we don't cause
++         * a spurious data abort.
++         */
++    } else {
++        trace_gicv5_write(domain_name[domain], offset, data, size);
++    }
++
++    return MEMTX_OK;
++}
++
++#define DEFINE_READ_WRITE_WRAPPERS(NAME, DOMAIN)                           \
++    static MemTxResult config_##NAME##_read(void *opaque, hwaddr offset,   \
++                                            uint64_t *data, unsigned size, \
++                                            MemTxAttrs attrs)              \
++    {                                                                      \
++        return config_read(opaque, DOMAIN, offset, data, size, attrs);     \
++    }                                                                      \
++    static MemTxResult config_##NAME##_write(void *opaque, hwaddr offset,  \
++                                             uint64_t data, unsigned size, \
++                                             MemTxAttrs attrs)             \
++    {                                                                      \
++        return config_write(opaque, DOMAIN, offset, data, size, attrs);    \
++    }
++
++DEFINE_READ_WRITE_WRAPPERS(ns, GICV5_ID_NS)
++DEFINE_READ_WRITE_WRAPPERS(realm, GICV5_ID_REALM)
++DEFINE_READ_WRITE_WRAPPERS(secure, GICV5_ID_S)
++DEFINE_READ_WRITE_WRAPPERS(el3, GICV5_ID_EL3)
++
++static const MemoryRegionOps config_frame_ops[NUM_GICV5_DOMAINS] = {
++    [GICV5_ID_S] = {
++        .read_with_attrs = config_secure_read,
++        .write_with_attrs = config_secure_write,
++        .endianness = DEVICE_LITTLE_ENDIAN,
++        .valid.min_access_size = 4,
++        .valid.max_access_size = 8,
++        .impl.min_access_size = 4,
++        .impl.max_access_size = 8,
++    },
++    [GICV5_ID_NS] = {
++        .read_with_attrs = config_ns_read,
++        .write_with_attrs = config_ns_write,
++        .endianness = DEVICE_LITTLE_ENDIAN,
++        .valid.min_access_size = 4,
++        .valid.max_access_size = 8,
++        .impl.min_access_size = 4,
++        .impl.max_access_size = 8,
++    },
++    [GICV5_ID_EL3] = {
++        .read_with_attrs = config_el3_read,
++        .write_with_attrs = config_el3_write,
++        .endianness = DEVICE_LITTLE_ENDIAN,
++        .valid.min_access_size = 4,
++        .valid.max_access_size = 8,
++        .impl.min_access_size = 4,
++        .impl.max_access_size = 8,
++    },
++    [GICV5_ID_REALM] = {
++        .read_with_attrs = config_realm_read,
++        .write_with_attrs = config_realm_write,
++        .endianness = DEVICE_LITTLE_ENDIAN,
++        .valid.min_access_size = 4,
++        .valid.max_access_size = 8,
++        .impl.min_access_size = 4,
++        .impl.max_access_size = 8,
++    },
++};
++
+ static void gicv5_reset_hold(Object *obj, ResetType type)
+ {
+     GICv5 *s = ARM_GICV5(obj);
+@@ -21,6 +190,28 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
+     }
+ }
+ 
++static void gicv5_realize(DeviceState *dev, Error **errp)
++{
++    GICv5Common *cs = ARM_GICV5_COMMON(dev);
++    GICv5Class *gc = ARM_GICV5_GET_CLASS(dev);
++
++    ERRP_GUARD();
++
++    gc->parent_realize(dev, errp);
++    if (*errp) {
++        return;
++    }
++
++    /*
++     * When we implement support for more than one interrupt domain,
++     * we will provide some QOM properties so the board can configure
++     * which domains are implemented. For now, we only implement the
++     * NS domain.
++     */
++    cs->implemented_domains = (1 << GICV5_ID_NS);
++    gicv5_common_init_irqs_and_mmio(cs, config_frame_ops);
++}
++
+ static void gicv5_init(Object *obj)
+ {
+ }
+@@ -32,8 +223,10 @@ static void gicv5_finalize(Object *obj)
+ static void gicv5_class_init(ObjectClass *oc, const void *data)
+ {
+     ResettableClass *rc = RESETTABLE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(oc);
+     GICv5Class *gc = ARM_GICV5_CLASS(oc);
+ 
++    device_class_set_parent_realize(dc, gicv5_realize, &gc->parent_realize);
+     resettable_class_set_parent_phases(rc, NULL, gicv5_reset_hold, NULL,
+                                        &gc->parent_phases);
+ }
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index b0194f7f26..cb80c8821c 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -11,6 +11,41 @@
+ 
+ OBJECT_DEFINE_ABSTRACT_TYPE(GICv5Common, gicv5_common, ARM_GICV5_COMMON, SYS_BUS_DEVICE)
+ 
++static bool bad_frame_accepts(void *opaque, hwaddr addr, unsigned size,
++                              bool is_write, MemTxAttrs attrs)
++{
++    return false;
++}
++
++/*
++ * Used for the sysbus MMIO regions corresponding to IRS frames
++ * where this IRS does not implement the interrupt domain.
++ * It's probably a board/SoC error to create an IRS and try to wire
++ * up this MMIO region, but if it does then the region will behave as
++ * unassigned memory (generating a decode error).
++ * These frames are just here so that changing which domains are
++ * implemented doesn't reorder which sysbus MMIO region is which.
++ */
++static const MemoryRegionOps bad_frame_ops = {
++    .valid.accepts = bad_frame_accepts,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
++
++void gicv5_common_init_irqs_and_mmio(GICv5Common *cs,
++                                     const MemoryRegionOps config_ops[NUM_GICV5_DOMAINS])
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(cs);
++
++    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
++        g_autofree char *memname = g_strdup_printf("gicv5-irs-%d", i);
++        const MemoryRegionOps *ops = gicv5_domain_implemented(cs, i) ?
++            &config_ops[i] : &bad_frame_ops;
++        memory_region_init_io(&cs->iomem[i], OBJECT(cs), ops, cs,
++                              memname, IRS_CONFIG_FRAME_SIZE);
++        sysbus_init_mmio(sbd, &cs->iomem[i]);
++    }
++}
++
+ static void gicv5_common_reset_hold(Object *obj, ResetType type)
+ {
+ }
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 018c609ca5..edd3c49c5f 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -227,6 +227,12 @@ gicv3_its_vte_read(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr
+ gicv3_its_vte_read_fault(uint32_t vpeid) "GICv3 ITS: vPE Table read for vPEID 0x%x: faulted"
+ gicv3_its_vte_write(uint32_t vpeid, int valid, uint32_t vptsize, uint64_t vptaddr, uint32_t rdbase) "GICv3 ITS: vPE Table write for vPEID 0x%x: valid %d VPTsize 0x%x VPTaddr 0x%" PRIx64 " RDbase 0x%x"
+ 
++# arm_gicv5.c
++gicv5_read(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++gicv5_badread(const char *domain, uint64_t offset, unsigned size) "GICv5 IRS %s config frame read: offset 0x%" PRIx64 " size %u: error"
++gicv5_write(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
++gicv5_badwrite(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u: error"
++
+ # armv7m_nvic.c
+ nvic_recompute_state(int vectpending, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d vectpending_prio %d exception_prio %d"
+ nvic_recompute_state_secure(int vectpending, bool vectpending_is_s_banked, int vectpending_prio, int exception_prio) "NVIC state recomputed: vectpending %d is_s_banked %d vectpending_prio %d exception_prio %d"
+diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
+index 3cd9652f6f..42ccef8474 100644
+--- a/include/hw/intc/arm_gicv5.h
++++ b/include/hw/intc/arm_gicv5.h
+@@ -26,6 +26,7 @@ struct GICv5 {
+ 
+ struct GICv5Class {
+     GICv5CommonClass parent_class;
++    DeviceRealize parent_realize;
+     ResettablePhases parent_phases;
+ };
+ 
+diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+index d2243c7660..8ba2e5c879 100644
+--- a/include/hw/intc/arm_gicv5_common.h
++++ b/include/hw/intc/arm_gicv5_common.h
+@@ -11,6 +11,26 @@
+ 
+ #include "qom/object.h"
+ #include "hw/core/sysbus.h"
++#include "hw/intc/arm_gicv5_types.h"
++
++/*
++ * QEMU interface:
++ *
++ * sysbus MMIO regions (in order matching IRS_IDR0.INT_DOM encoding):
++ * - IRS config frame for the Secure Interrupt Domain
++ * - IRS config frame for the Non-secure Interrupt Domain
++ * - IRS config frame for the EL3 Interrupt Domain
++ * - IRS config frame for the Realm Interrupt Domain
++ *
++ * Note that even if this particular IRS does not implement all four
++ * interrupt domains it will still expose four sysbus MMIO regions.
++ * The regions corresponding to unimplemented domains will always
++ * fail accesses with a decode error. Generally the SoC/board should
++ * probably not map a region for a domain that it configured the IRS
++ * to not implement; the regions are only exposed so that changing
++ * which domains are implemented doesn't reorder which sysbus MMIO
++ * region is which (e.g. NS will always be 1 and EL3 will always be 2).
++ */
+ 
+ #define TYPE_ARM_GICV5_COMMON "arm-gicv5-common"
+ 
+@@ -22,10 +42,40 @@ OBJECT_DECLARE_TYPE(GICv5Common, GICv5CommonClass, ARM_GICV5_COMMON)
+  */
+ struct GICv5Common {
+     SysBusDevice parent_obj;
++
++    MemoryRegion iomem[NUM_GICV5_DOMAINS];
++
++    /* Bits here are set for each physical interrupt domain implemented */
++    uint8_t implemented_domains;
+ };
+ 
+ struct GICv5CommonClass {
+     SysBusDeviceClass parent_class;
+ };
+ 
++
++#define IRS_CONFIG_FRAME_SIZE 0x10000
++
++/**
++ * gicv5_common_init_irqs_and_mmio: Create IRQs and MMIO regions for the GICv5
++ * @s: GIC object
++ * @ops: array of MemoryRegionOps that implement the config frames behaviour
++ *
++ * Subclasses of ARM_GICV5_COMMON should call this to create the sysbus
++ * MemoryRegions for the IRS config frames, passing in a four element array
++ * of MemoryRegionOps structs.
++ */
++void gicv5_common_init_irqs_and_mmio(GICv5Common *cs,
++                                     const MemoryRegionOps ops[NUM_GICV5_DOMAINS]);
++
++/**
++ * gicv5_domain_implemented: Return true if this IRS implements this domain
++ * @s: GIC object
++ * @domain: domain to check
++ */
++static inline bool gicv5_domain_implemented(GICv5Common *cs, GICv5Domain domain)
++{
++    return cs->implemented_domains & (1 << domain);
++}
++
+ #endif
+diff --git a/include/hw/intc/arm_gicv5_types.h b/include/hw/intc/arm_gicv5_types.h
+new file mode 100644
+index 0000000000..143dcdec28
+--- /dev/null
++++ b/include/hw/intc/arm_gicv5_types.h
+@@ -0,0 +1,28 @@
++/*
++ * Type definitions for GICv5
++ *
++ * This file is for type definitions that we want to share between
++ * the GIC proper and the CPU interface.
++ *
++ * Copyright (c) 2025 Linaro Limited
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_INTC_ARM_GICv5_TYPES_H
++#define HW_INTC_ARM_GICv5_TYPES_H
++
++/*
++ * The GICv5 has four physical Interrupt Domains. This numbering
++ * must match the encoding used in IRS_IDR0.INT_DOM.
++ */
++typedef enum GICv5Domain {
++    GICV5_ID_S = 0,
++    GICV5_ID_NS = 1,
++    GICV5_ID_EL3 = 2,
++    GICV5_ID_REALM = 3,
++} GICv5Domain;
++
++#define NUM_GICV5_DOMAINS 4
++
++#endif
 -- 
-2.53.0
+2.43.0
 
 

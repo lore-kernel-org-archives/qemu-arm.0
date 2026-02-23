@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70748EC1112
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA5EEC1112
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:08:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKR-0001gO-Ea; Mon, 23 Feb 2026 12:02:39 -0500
+	id 1vuZMs-0005zF-Gs; Mon, 23 Feb 2026 12:05:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKP-0001Xt-Fa
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:37 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1vuZLH-0002wx-5z
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:32 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKN-000092-HZ
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:37 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-48375f1defeso32332185e9.0
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:35 -0800 (PST)
+ id 1vuZLD-0000Tl-4H
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:03:30 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-48371bb515eso58006835e9.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:03:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866154; x=1772470954; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866204; x=1772471004; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=uYeQtsFSRqumgTT/VZl4v9vn04UeGUZO9JJK+qvvYwg=;
- b=m2gKnqxYO5HZYEI4ji+/gu2pMQSaQyp1/lzHl+P0DWmNhCn5SHlqMNJpwDXxjkst1c
- +0WilnH/ubZmJjusSDSN7XayYVLczZPjTHu6488BGlAZQo+9TrU4fEGgV9yljjajwLjE
- 3yAAZ+qBZyS1j3fKE1F0X43KxmcB1vLOCHLN/+R6jE1npY5Z76xvO3E24bNjel0n3LqL
- JGi/bXWTTnQftIPuQMNais64CVq2CYOZcjAcPowPXjEMmNb8nGD1LSwFxXYQZvmgeFhY
- xfPtFw2nTnR1aM/IOLPQZM0mEbGTzULNizHcr0Mttky0y/K93HqE2WjLOgsG4BQe6jr2
- 7Rtw==
+ :reply-to; bh=PSIfnHT/9W4YeoezCcXgDdWqKuWJ/ARpVnHX63Z0IRE=;
+ b=tZXeBjnuGxACndcGJzyz2w93j4AD7zWABZDUh93CioAz2xKgUtLzvyImPTdaD6Jm+T
+ U+trSq+1rUsP/g59yP3UyP16uAYnfxHOJPAmZuyxVhLLRmTRUNoeVTQrEW27YleNyPNg
+ oQ5qERqUFxIC77/PxwnDu3cQREA8NBwTGPu6eB5lklxttLI5213oDvHaU4lMatYL2mdP
+ rIgQIjG0RssvGr4nRLgJHJzOadIBbi8dN2IzBzlAIqSMCZkfRGFykxsgyvp2LAvXDyt4
+ hEOouDyTyyzMRt7nAsRKmPoj79tv4s4FCyKgTBKOXU25/TRBmZfmi6GpIFobqw4oHxXx
+ pZcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866154; x=1772470954;
+ d=1e100.net; s=20230601; t=1771866204; x=1772471004;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=uYeQtsFSRqumgTT/VZl4v9vn04UeGUZO9JJK+qvvYwg=;
- b=vMsbKCufqGzTXsPdbuzYvV9VYL04JLvFizZP+5Ro4lLpnGGXzbuWuuWpNyU0gXE+59
- kvQ9yRBUFDtav3/ZS8XibRCv98wQI0O55nvwiabSD3nLVs8GgYYWkFNoNzy9CGPrywpb
- irMpQ26pv7dO/Pv7SRIhxvDGj4kkBJQdkEUnE1hLlyTch4Z2jvOLqDrszGgUd+mMaS9v
- 4UNEIcNp2I2zFpIH6TlnOLBXcTbJd3xOPmGcUFpDYUUGI2sdzTMpD231SFWbJ1zXCuef
- jfiWqiTIUY/HLFFmvUTqyWGdw4GU3LcPrwjbZGOcIXU3mL6k+FFH1UnvGIYg7YDs3LWm
- /awg==
-X-Gm-Message-State: AOJu0YwmfMEna4gt23/8VL2FWKlL15X3c76nLLdMLn2hozYrU7nDdpZ6
- Eboypz6o7xhjjImQg/UJla4hhoW+PuGxxIgLmXbFkBzkPVQSvxSJbu3WY0dJF1itQy/o/TRBq6d
- jMmMz
-X-Gm-Gg: AZuq6aJZNo0fzXZ1GfggtGehlxnc2E6Bp4yo8jJFPQxnHkvlwlut0PhfLaWBSMuMtdA
- 20Et3jWJZ5NE0hwpcLtQ3YSX2F91ro+0wsDDC+K3h++eWnk+MzEE57mDAjWW2gKFGE/GCJ6vHQa
- 7tReiTl3XEBZRN5SMmeuLV7L52iCbbu680HE6yqmueELXhaWhHr0JIj0iOL8IMALFuKF0X76AiI
- ExX5fuEkYOMxgruHj57eqnV0G7ricyIkFYddBQD9xabWvH4u5o1JCiCD0OhipHEjPmhSNPusCro
- pYILWm61pGJDyG+7xzkUinCJ/0ZdyjaMFDlJtwz4X1GroKom8sdaCQ8lJJNYy+aYrHH4jzgXOfp
- p+VoimaIyFS4sx6UeatpQrnz/N2taIDdIcecLxAiMmLNcjVW1Xgoonr8ITEhdVyxILhj9RGNGjW
- jLOvKYwp5TSokXYGFqnR4Au4tw66OQNZE16FhogJyvGXS/byj6j32b0zRFwazBBT2ExFcK4fE07
- TASPBxH4aMLFysjYp37c8IRqTQnvsI=
-X-Received: by 2002:a05:600c:8011:b0:477:7bca:8b34 with SMTP id
- 5b1f17b1804b1-483a95eb3eemr140245815e9.6.1771866153957; 
- Mon, 23 Feb 2026 09:02:33 -0800 (PST)
+ bh=PSIfnHT/9W4YeoezCcXgDdWqKuWJ/ARpVnHX63Z0IRE=;
+ b=D32w1gPLwPrzsEbapA1Vv5d6QScB+htD5uL9bDcOnLGFJolJ8MwLs5vRvRIxyvjyrK
+ E6a/5OYOZwjViKHuTaU0mSS17La1ezmRqWBFeLJx1ELeG8jF+jUjyrii3W1soVc6Rp80
+ M4d9iniI05Y3k/4dw3HHlt8LaMGODjg/k6fWqFRdDtqsMQ7dwl3pIB8sJiZWQQ6OMCbx
+ myNhTYqXtMOsef+a0WwgR+RbDQLrymRYMKPQQuVnkFOncchLY1JMWZgcUFA+efgV9Ev9
+ AbUerdp5Fc3Mh0VNBOZ9KmMv666PyfXODhSdoOc4kXH8+kC6tUzwit9h40Wc+qt3T1hY
+ 082A==
+X-Gm-Message-State: AOJu0Yww2B8qsgg5o6V+Xtqbgyv2QSL/2vdl5sX6G7qE1Nc5pRbLvQ0u
+ cSPb276LFtsCd4m3oPHzGeWxSeUWoYp1LCsfoycRs89bPkJU6K3nCvvsJN1OmifGcJg/f/ciQCM
+ UQTt1
+X-Gm-Gg: AZuq6aJ/0Wk/zNe2jOiDOTDxV3/o7W/BZAMQedg8LfHwo1RBcXpSlpjhZrY2ulhlh2p
+ j5Cm7JTCdkFJDLlEDWoGPB5tBir7jJ7W+axhBrC+xpsvI0/dBTHpyAUwKoI4yGs8yWywYXyDWQF
+ /1IhYM1aLFOe8bJcAjDjYaPYjRrrJR8segFdE8RPJuEeVow9yDO7aU7cTFw3WPERx5GHXf6hcDa
+ jOf09GDG7fROvDxnAVH7I2bYBGOrSSe/q1HFoVnKUSpLiVvbBct0YQXMfoCYeVnqpxRM3/JteOe
+ Ii0WBbn6Xqm6SEtYg7QqMhHV6dhGJ5qr9DmjbajKXmp6tRKUmHNHy5oFrWVlRlAq4ifh0UEOc0B
+ X7TEnTFhLqQrVTNUgI1pgXejl5x0JjpUL94+MiVyT1dINOzmfcAwXzdyo0+yPuHarEUhB7dU6Xs
+ oBojy52Vc0l92V3rg3zGbv0P5NmcehwzwVZX5RN/oMjweTVqnnBTBDNmVqKh/3nb2WP5qBkbIKJ
+ GjTmisS1WOmYJggJSOAFapGsbEJPfQ=
+X-Received: by 2002:a05:600c:3147:b0:477:6374:6347 with SMTP id
+ 5b1f17b1804b1-483a962e3e2mr138472885e9.22.1771866204456; 
+ Mon, 23 Feb 2026 09:03:24 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.32
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.03.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:33 -0800 (PST)
+ Mon, 23 Feb 2026 09:03:23 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 16/65] hw/intc/arm_gicv5: Cache LPI IST config in a struct
-Date: Mon, 23 Feb 2026 17:01:23 +0000
-Message-ID: <20260223170212.441276-17-peter.maydell@linaro.org>
+Subject: [PATCH 64/65] hw/arm/virt: Enable GICv5 CPU interface when using GICv5
+Date: Mon, 23 Feb 2026 17:02:11 +0000
+Message-ID: <20260223170212.441276-65-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,156 +100,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The IRS has multiple ISTs, for different contexts:
- * physical LPIs (separately for each interrupt domain)
- * virtual LPIs
- * virtual SPIs
-
-The config information for physical LPIs is in the IRS_IST_BASER and
-IRS_IST_CFGR registers; for virtual LPIs and virtual SPIs it will be
-in the L2_VMTE VM table entry.  We would like to be able to write
-generic code that can manipulate any of these ISTs.  Define a struct
-which captures the config information for an IST, and cache the
-IRS_IST_CFGR/IRS_IST_BASER data into this format when the guest sets
-the VALID bit.
-
-This also allows us to enforce the correct handling of reserved and
-out-of-range values, and expand the encodings of sizes into a more
-convenient format for later use.
+If we are using the GICv5 in the virt board, we need to set the
+has_gcie property on the CPU objects to tell them to implement the
+cpu interface part of GICv5.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c         | 64 +++++++++++++++++++++++++++++++++++++
- hw/intc/trace-events        |  2 ++
- include/hw/intc/arm_gicv5.h | 12 +++++++
- 3 files changed, 78 insertions(+)
+ hw/arm/virt.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index f5933197ea..3f74069e01 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -278,9 +278,68 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1b63338196..1c684b59b4 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2677,6 +2677,14 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, "lpa2", false, NULL);
          }
-         cs->irs_ist_baser[domain] = FIELD_DP64(cs->irs_ist_baser[domain],
-                                                IRS_IST_BASER, VALID, valid);
-+        s->phys_lpi_config[domain].valid = false;
-+        trace_gicv5_ist_invalid(domain_name[domain]);
-         return;
-     }
-     cs->irs_ist_baser[domain] = value;
-+
-+    if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
-+        /*
-+         * If the guest just set VALID then capture data into config struct,
-+         * sanitize the reserved values, and expand fields out into byte counts.
-+         */
-+        GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
-+        uint8_t istbits, l2bits, l2_idx_bits;
-+        uint8_t id_bits = FIELD_EX64(cs->irs_ist_cfgr[domain],
-+                                     IRS_IST_CFGR, LPI_ID_BITS);
-+        id_bits = MIN(MAX(id_bits, QEMU_GICV5_MIN_LPI_ID_BITS), QEMU_GICV5_ID_BITS);
-+
-+        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, ISTSZ)) {
-+        case 0:
-+        case 3: /* reserved: acts like the minimum required size */
-+            istbits = 2;
-+            break;
-+        case 1:
-+            istbits = 3;
-+            break;
-+        case 2:
-+            istbits = 4;
-+            break;
-+        default:
-+            g_assert_not_reached();
+ 
++        if (vms->gic_version == VIRT_GIC_VERSION_5) {
++            if (!object_property_find(cpuobj, "has_gcie")) {
++                error_report("Using GICv5 but guest CPU does not support it");
++                exit(1);
++            }
++            object_property_set_bool(cpuobj, "has_gcie", true, NULL);
 +        }
-+        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, L2SZ)) {
-+        case 0:
-+        case 3: /* reserved; CONSTRAINED UNPREDICTABLE */
-+            l2bits = 12; /* 4K: 12 bits */
-+            break;
-+        case 1:
-+            l2bits = 14; /* 16K: 14 bits */
-+            break;
-+        case 2:
-+            l2bits = 16; /* 64K: 16 bits */
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        /*
-+         * Calculate how many bits of an ID index the L2 table
-+         * (e.g. if we need 14 bits to index each byte in a 16K L2 table,
-+         * but each entry is 4 bytes wide then we need 14 - 2 = 12 bits
-+         * to index an entry in the table).
-+         */
-+        l2_idx_bits = l2bits - istbits;
-+        cfg->base = cs->irs_ist_baser[domain] & R_IRS_IST_BASER_ADDR_MASK;
-+        cfg->id_bits = id_bits;
-+        cfg->istsz = 1 << istbits;
-+        cfg->l2_idx_bits = l2_idx_bits;
-+        cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
-+                                    IRS_IST_CFGR, STRUCTURE);
-+        cfg->valid = true;
-+        trace_gicv5_ist_valid(domain_name[domain], cfg->base, cfg->id_bits,
-+                              cfg->l2_idx_bits, cfg->istsz, cfg->structure);
-+    }
- }
- 
- static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-@@ -568,6 +627,11 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
-     if (c->parent_phases.hold) {
-         c->parent_phases.hold(obj, type);
-     }
 +
-+    /* IRS_IST_BASER and IRS_IST_CFGR reset to 0, clear cached info */
-+    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
-+        s->phys_lpi_config[i].valid = false;
-+    }
- }
- 
- static void gicv5_set_idregs(GICv5Common *cs)
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 0797a23c1a..80fc47794b 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -233,6 +233,8 @@ gicv5_badread(const char *domain, uint64_t offset, unsigned size) "GICv5 IRS %s
- gicv5_write(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- gicv5_badwrite(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u: error"
- gicv5_spi(uint32_t id, int level) "GICv5 SPI ID %u asserted at level %d"
-+gicv5_ist_valid(const char *domain, uint64_t base, uint8_t id_bits, uint8_t l2_idx_bits, uint8_t istsz, bool structure) "GICv5 IRS %s IST now valid: base 0x%" PRIx64 " id_bits %u l2_idx_bits %u IST entry size %u 2-level %d"
-+gicv5_ist_invalid(const char *domain) "GICv5 IRS %s IST no longer valid"
- 
- # arm_gicv5_common.c
- gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
-diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
-index 42ccef8474..f6ecd9c323 100644
---- a/include/hw/intc/arm_gicv5.h
-+++ b/include/hw/intc/arm_gicv5.h
-@@ -17,11 +17,23 @@
- 
- OBJECT_DECLARE_TYPE(GICv5, GICv5Class, ARM_GICV5)
- 
-+typedef struct GICv5ISTConfig {
-+    hwaddr base; /* Base address */
-+    uint8_t id_bits; /* number of bits in an ID for this table */
-+    uint8_t l2_idx_bits; /* number of ID bits that index into L2 table */
-+    uint8_t istsz; /* L2 ISTE size in bytes */
-+    bool structure; /* true if using 2-level table */
-+    bool valid; /* true if this table is valid and usable */
-+} GICv5ISTConfig;
-+
- /*
-  * This class is for TCG-specific state for the GICv5.
-  */
- struct GICv5 {
-     GICv5Common parent_obj;
-+
-+    /* This is the info from IRS_IST_BASER and IRS_IST_CFGR */
-+    GICv5ISTConfig phys_lpi_config[NUM_GICV5_DOMAINS];
- };
- 
- struct GICv5Class {
+         if (object_property_find(cpuobj, "reset-cbar")) {
+             object_property_set_int(cpuobj, "reset-cbar",
+                                     vms->memmap[VIRT_CPUPERIPHS].base,
 -- 
 2.43.0
 

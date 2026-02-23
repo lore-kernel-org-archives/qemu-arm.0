@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E273E98E08
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D66E98E06
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:43:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRRt-0000Aj-1h; Mon, 23 Feb 2026 03:37:49 -0500
+	id 1vuRTh-000209-UF; Mon, 23 Feb 2026 03:39:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRr-0000AG-Lk
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:47 -0500
-Received: from p-east2-cluster4-host5-snip4-2.eps.apple.com ([57.103.78.193]
+ id 1vuRSh-0000xQ-QZ
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:41 -0500
+Received: from p-east2-cluster3-host5-snip4-6.eps.apple.com ([57.103.77.197]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRp-0002Ag-WB
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:47 -0500
+ id 1vuRSf-0002KK-RY
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:39 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- 837F61800168; Mon, 23 Feb 2026 08:37:39 +0000 (UTC)
+ BB601180022A; Mon, 23 Feb 2026 08:38:36 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835863; x=1774427863;
- bh=ZEXZ+aTnrDBCOh9Li2tnDLC2Xzz3JbNWeitNNLCXEtU=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=RxZuf+zRxBlkS6sXSoq9ZbOCjQSZO3auxyf01Il0ZTv+pI2RN6Ohy2IRIvO06irhjIyZeZyb1rah982/KpEtEC9z36dwZBgGrHuoE26WhpyM4TgeYpQUPbLUXYPjd1aWRsbegv3FZ9yqulET/C0UUeBHMC97QSQCL1VGdIBnnCXu4pReED9zuoTPsKvYau4AIrz5ZhxJqVKab+FyNkManefyM0TQjCX1SCVIWwBjz7N2gBgIOLO2iZ8W/l3GoeS5tyv808jHORSR9azEdfBje5YCHF7H5gpfO6wN1aFpu3HHEcKSjl2Wp1q+D0CvmNlEvR0Gnf48c2WGC7PDtMqcOQ==
+ s=sig1; t=1771835917; x=1774427917;
+ bh=A0kv8WcUrfCI0eP6NvMQADwHXSg1hEvtsUz+NsukzMg=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=A8rRUPy+C0zZo0i3JytokBFWvcNXxuM7+pQE21Q6y5KYTDd1t2iS0DppdG4hj1iPKVPuBZxAEvfphqLPc7g35t6StjekXmNW/UtEUmjmfPDEvOBuJw39mZvuy45i41mAO1CYANLRSs0kbcU/ROMugL+UhiYXlqyhj93JPQGCBLfvFkU3tXZwwbymRtjr/cIbkpsGv0IiZp71sc6WN0IRBiF0dxAHUPmycau4OiJwDaT0POT4kkUmBHo6lJpAaov+jZxoVmRBKPYCuFaHDOTgYvG70QH95l5rwdOknXBD5Gp2mbfA4O+YO6itjcMjhaWikN81Q/0ZfpvLMmNaOboQ4A==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- 629881800222; Mon, 23 Feb 2026 08:37:36 +0000 (UTC)
+ 7FFD11800215; Mon, 23 Feb 2026 08:38:34 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,36 +49,38 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 00/27] whpx: x86 updates (2026-02)
-Date: Mon, 23 Feb 2026 09:37:06 +0100
-Message-ID: <20260223083734.48533-1-mohamed@unpredictable.fr>
+Subject: [PATCH v5 24/27] target/i386: emulate: propagate memory errors on
+ most reads/writes
+Date: Mon, 23 Feb 2026 09:37:30 +0100
+Message-ID: <20260223083734.48533-25-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
+References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfX+goc3kexVp9+
- BgepvleVgFLm8CTZmceofG0HI4VvFEPrWIq5T/ScTDFWS+4+NZ24RS6fDkkdFFKr8ICFKLy4sSr
- 9T23/V1SZcV6x+ZGbaj/6ZLE3KL9xJ2D38DJgQr75HUHscxe3kq2iToI6ibfh/wXBoirDHTjL1p
- DqKEcFPtnvIlLbISgIYymGiBQYXyHu09KSltDL03rDIsDQk+cRlh+UFjhO0TZpr3mcyBXfcvm0T
- KMFadNGfNaZIv4c5SUBUvcx8VuDgSmm7R64q81ixt+HEZb4ZYwJNdtG4smnSVfuHDpuJHvzgPyD
- 58kUXM5HNXymP+Ju3yNr693bmncvLzZd5UdKiCSJoBP2znBySl5FhhhefjhXSQ=
-X-Proofpoint-GUID: -uVpWjct8pwQJmAbxNpNrG-w_QMBuIqj
-X-Authority-Info-Out: v=2.4 cv=C/PkCAP+ c=1 sm=1 tr=0 ts=699c11d5
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXzX4UOWoBgOzA
+ 4ebSoRXnoGQdiWQ7RHifmESWZsmTInGs4grjti3TSzAdWaKkl42cvXlhNtzEkZ10Ag9qQjLNg8E
+ VuJzQsQwDlsD7pcTTLZP2JP64fXyMst5IEmNdEnY9k/PwaTexBOdR6kGJrq5daHfPrT4nvgnNQz
+ EM2+YXWenY2RRPK/7IL7pg9kE8Ul6EG2zRYb0HaXhgZ4blNBcrSZKquqMTvPwUG4kDoXOQq75yZ
+ geOh0w5gEswwzCntRAR7IKchOirOFJ1uia5jreqwDFIbFhXJfAB33ugNj+Q83S9IHfjTMVdrCKL
+ Vgbs6ks1Iy+mF7pr697pRRkodqdAfielfvWMYvdtQBqDWLXtyYHC2RO45JvI7s=
+X-Proofpoint-GUID: R6IpnaC2gLFJPyOONrViqSWUpvkw3p-4
+X-Authority-Info-Out: v=2.4 cv=RYadyltv c=1 sm=1 tr=0 ts=699c120c
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
- a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=1kJ68ZxyAwdk7K1tokkA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: -uVpWjct8pwQJmAbxNpNrG-w_QMBuIqj
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=yuK-eIj46yw4D_dHqGMA:9
+X-Proofpoint-ORIG-GUID: R6IpnaC2gLFJPyOONrViqSWUpvkw3p-4
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- lowpriorityscore=0 spamscore=0 mlxlogscore=980 mlxscore=0 suspectscore=0
- adultscore=0 malwarescore=0 phishscore=0 bulkscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ clxscore=1030 suspectscore=0 adultscore=0
+ mlxlogscore=979 spamscore=0
+ bulkscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAABReO8mWYOVFjBfRw4Q07lFRFqsyrKsZzcp3PSnQ+cwjqpw5o3Ps6gpNqh25kuB1ZjUSnNKu4ldTIeAxCgocNThkEEHVqIJhHJKfRdkGBK/GOZPrubHDhS9Nu5jYNTa751QoaKi1oGuE6UYIZNzyWPB8ed5kL9HNsa2im/0nZXWixKdwPl4q9SAqMcdFgpLG7jhvE3YMm/K6Uk2BKzoAQWzjmzPCLMuNY2RTWkRR3wKYuVrVixRI7U82UpauhOtjG+4eXIxp+S90KRG5z0+W/AXFOOnbzCLyEPgjMeBgcMdsSG07FrmnMRsFwn0JYpQ/4Ixw0v/CjoPK8hxNhpSK9QIaoJ8BYl1UwrlGlNQjXt7NADn0uwbc3IJCSiEwygzwVXu7bTgxXh/J0AqHGtHAcYXb54ofVOvfbsbWiGhVDKBVMCmDFI6hQTSitdhjKIR3YEl2TIxgA4H27sllWDxxRGCvUymhGt9GVtsB6A+jbTL1tveBtCTC6eaMocydRud1rRCDFuqHxHfOC5gFka4emd5Cv+LqxYhiMFLKpB5kCUCT3GdZvWdjsKwEkVb/ZoMiPlM0kqgWCcq77Pl/Sz/ZEGgUgvR20cLKEAKDJJGDUI8oQgovChAWCblIC2uAnMybCY3EarMBlP1wyMuEtPsrmKd1PLKvaFxSQD1xKWte0HULUbsBcwBjiL0m3k/ht9xGAEC7IrPw3keg/Dduf1ux+19qKugg0jUsJ1eA/5Z1vKW9Ayqt6mdMjO5MUGuuQA+/lqwmllknWMAYbXtE0iZSqrxpU6zo0BcwZD0RrO2JJ3suO7HTBZ7xYbUHLqQ4f+G8hKWphpzBAYVcAp3iBLPYA3Tw==
-Received-SPF: pass client-ip=57.103.78.193;
+X-JNJ: AAAAAAAB+2m3PclqCc3IVA4xOzyufGRnKJooG/abyZetovkTW/aY4LRV/0xAHcdwWXnAh1HiB1iqJinuxRnUPcsXD+7krOsdeey4TjbW0ZWihVn6iAezv5HBlvm5b7HPdIjlF9hii9nsItXWN7tUeSs0GRqSMHhYMmSuo9A8MRuFbDAkMhiT69lOall7j9MFrV9YEy7pHyqCEw8kGdQZ1QFBls//SyMRDJdbVlcFFSt9mqwj2OECUpwjji5Wai/PoRDn45dwdWpX32x9Qo8XuIVt6dLTNM/3FvYw5+VVIVGfBsBPOhR13I8do3RcGdXzMNiIfhSEO7IF+JjwpJzhIM0LvAKvgmHgylp7muhNBBBVBkOZtLXyuABNC5xxnmJ8HOXoNOg0o1upXRKB227SvTen3lEDnmUgEUzbkviecV1dkAJ4E0Y61opYEN+rlVuwxh3jgMwsVpm6vtTFwa9ZpfV0HLaIwj0rRVQHjQe7M9BhJkg+N7K0qS1sQ2USnKebP6lcqvKfqm9MAMfi5PVz0mZS4iv+tVXbI5XjpW3foel9AOGzUgjPs5s30ACghrN3ec2iGIKD/++WW9CwjsbPCPoDe059e3KQjBmYQkNYjxH0UZEKB7Y5BNqQCa58XeRT6CawL9W0DXKKQPk4uALFQKkr06/GInHAWFIuiK8wql0Hn1fnQVmw079P4qG40sxIb1Lq+Xcb+V71PIJiMPPk4IVAosp1phXatuG7Jx9arBFvrMT1wfUlLqyYHdc3evN8wNJh6m19OdvcAJ5eO7hR8hiMSK51pUOlY6KmkBUAiHCmcwb98R2NsdlGIdyzG+Rt
+Received-SPF: pass client-ip=57.103.77.197;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
@@ -102,110 +104,321 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-x86_64 WHPX updates:
+Use that to not bump RIP for those cases.
 
-- target/i386/emulate fixes
-- move HVF x86_mmu code to common code
-- fixing debug support, which was broken since around: "gdbstub: move guest debug support check to ops"
-a48e7d9e52f8fe8b47f4c74f3e99d9d677b87fe5
-- switch over from winhvemulation to common x86 VM exit emulation code
-- remove some log lines
-- Remove WHPX CPUID traps as they're currently quite broken
-- Reworked implementation of the REP prefix for string instructions
-- page table walker rework, error propagation for target/i386/emulate,
-and injecting exceptions too
-- bump the exposed interrupt controller to an X2APIC
-- preemptively ignore interrupt requests to vector 0 instead of making the HV do it
+Leaves a coverage gap for read_val_ext(), to be handled in a later commit.
 
-Changes added since v4:
-- MMU code rework
-- page table walker rework, (some) error propagation for target/i386/emulate,
-and injecting exceptions too...
-- all around cleanups around target/i386/emulate...
-- bump the exposed interrupt controller to an X2APIC
-- preemptively ignore interrupt requests to vector 0 instead of making the HV do it
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/emulate/x86_emu.c | 115 +++++++++++++++++++++++++---------
+ 1 file changed, 84 insertions(+), 31 deletions(-)
 
-Changes added since v3:
-- Reworked implementation of the REP prefix for string instructions
-- Pick up flags conversion for WHPX x86 (used by target/i386/emulate)
-- get rid of the goto for the save/restore less state for WHPX patch
-
-Changes added since v2:
-- Take target/i386/emulate patches from Bernhard Beschow
-https://lore.kernel.org/qemu-devel/20260214131659.31378-1-shentey@gmail.com/
-- Rework state levels to an enum
-- Skip some state loading on the registers save path too
-
-Changes added since v1:
-- move HVF x86_mmu code to common code
-- Use x86_mmu in WHPX MMIO exits
-- Remove WHPX CPUID traps as they're currently quite broken
-- Optimise MMIO vmexits by not restoring the full state
-
-Bernhard Beschow (3):
-  target/i386/emulate/x86_decode: Fix compiler warning
-  target/i386/hvf/x86_mmu: Fix compiler warning
-  target/i386/emulate/x86_decode: Actually use stream in
-    decode_instruction_stream()
-
-Mohamed Mediouni (24):
-  target/i386/emulate: rework string_rep emulation
-  target/i386: emulate, hvf: move x86_mmu to common code
-  whpx: i386: re-enable guest debug support
-  whpx: preparatory changes before switching over from winhvemulation
-  whpx: refactor whpx_destroy_vcpu to arch-specific function
-  whpx: move whpx_get_reg/whpx_set_reg to generic code
-  whpx: i386: switch over from winhvemulation to target/i386/emulate
-  whpx: i386: flags conversion for target/i386/emulate internal state
-  whpx: i386: remove remaining winhvemulation support code
-  whpx: i386: remove messages
-  whpx: i386: remove CPUID trapping
-  whpx: common, i386, arm: rework state levels
-  whpx: i386: saving/restoring less state for
-    WHPX_LEVEL_FAST_RUNTIME_STATE
-  target/i386: mshv, emulate: move the generic x86 helpers to
-    target/i386/emulate
-  target/i386: emulate: 5-level paging for the page table walker
-  target/i386: emulate, hvf, mshv: rework MMU code
-  hvf: i386: save/restore CR0/2/3
-  target/i386: emulate: get rid of write_val_to_mem() helper
-  target/i386: emulate: raise an exception on translation fault
-  target/i386: emulate: remove fetch_instruction helper too
-  target/i386: emulate: propagate memory errors on most reads/writes
-  whpx: i386: inject exceptions
-  whpx: i386: bump to x2apic
-  whpx: i386: ignore send_msi to interrupt vector 0
-
- accel/whpx/whpx-accel-ops.c                   |   8 +
- accel/whpx/whpx-common.c                      |  68 +-
- include/system/whpx-accel-ops.h               |  16 +-
- include/system/whpx-all.h                     |  11 +-
- include/system/whpx-common.h                  |   6 +-
- include/system/whpx-internal.h                |  16 -
- meson.build                                   |   3 +-
- target/arm/whpx/whpx-all.c                    |  43 +-
- target/i386/cpu.h                             |   2 +-
- target/i386/emulate/meson.build               |   9 +
- target/i386/emulate/x86.h                     |   1 +
- target/i386/emulate/x86_decode.c              |  12 +-
- target/i386/emulate/x86_emu.c                 | 141 +++--
- target/i386/emulate/x86_emu.h                 |   6 +-
- .../{mshv/x86.c => emulate/x86_helpers.c}     |  13 +-
- target/i386/{hvf => emulate}/x86_mmu.c        | 188 ++++--
- target/i386/{hvf => emulate}/x86_mmu.h        |  31 +-
- target/i386/hvf/hvf.c                         |  40 +-
- target/i386/hvf/meson.build                   |   1 -
- target/i386/hvf/x86.c                         |  13 +-
- target/i386/hvf/x86_task.c                    |  10 +-
- target/i386/mshv/meson.build                  |   2 +-
- target/i386/mshv/mshv-cpu.c                   |  71 ---
- target/i386/whpx/whpx-all.c                   | 591 ++++++++----------
- target/i386/whpx/whpx-apic.c                  |   5 +
- 25 files changed, 652 insertions(+), 655 deletions(-)
- rename target/i386/{mshv/x86.c => emulate/x86_helpers.c} (95%)
- rename target/i386/{hvf => emulate}/x86_mmu.c (50%)
- rename target/i386/{hvf => emulate}/x86_mmu.h (51%)
-
+diff --git a/target/i386/emulate/x86_emu.c b/target/i386/emulate/x86_emu.c
+index 3aedd638a1..f5359d3a45 100644
+--- a/target/i386/emulate/x86_emu.c
++++ b/target/i386/emulate/x86_emu.c
+@@ -36,11 +36,14 @@
+ /////////////////////////////////////////////////////////////////////////
+ 
+ #include "qemu/osdep.h"
++#include "qemu/error-report.h"
+ #include "panic.h"
+ #include "x86_decode.h"
+ #include "x86.h"
+ #include "x86_emu.h"
+ #include "x86_flags.h"
++#include "x86_mmu.h"
++
+ 
+ #define EXEC_2OP_FLAGS_CMD(env, decode, cmd, FLAGS_FUNC, save_res) \
+ {                                                       \
+@@ -175,43 +178,52 @@ void write_val_ext(CPUX86State *env, struct x86_decode_op *decode, target_ulong
+ 
+ uint8_t *read_mmio(CPUX86State *env, target_ulong ptr, int bytes)
+ {
+-    x86_read_mem(env_cpu(env), env->emu_mmio_buf, ptr, bytes);
++    MMUTranslateResult res = x86_read_mem(env_cpu(env), env->emu_mmio_buf, ptr, bytes);
++    if (res) {
++        return NULL;
++    }
+     return env->emu_mmio_buf;
+ }
+ 
+ 
+-static target_ulong read_val_from_mem(CPUX86State *env, target_long ptr, int size)
++static bool read_val_from_mem(CPUX86State *env, target_long ptr, int size, target_ulong* val)
+ {
+-    target_ulong val;
+     uint8_t *mmio_ptr;
+ 
+     mmio_ptr = read_mmio(env, ptr, size);
++    if (mmio_ptr == NULL) {
++        return 1;
++    }
+     switch (size) {
+     case 1:
+-        val = *(uint8_t *)mmio_ptr;
++        *val = *(uint8_t *)mmio_ptr;
+         break;
+     case 2:
+-        val = *(uint16_t *)mmio_ptr;
++        *val = *(uint16_t *)mmio_ptr;
+         break;
+     case 4:
+-        val = *(uint32_t *)mmio_ptr;
++        *val = *(uint32_t *)mmio_ptr;
+         break;
+     case 8:
+-        val = *(uint64_t *)mmio_ptr;
++        *val = *(uint64_t *)mmio_ptr;
+         break;
+     default:
+         VM_PANIC("bad size\n");
+         break;
+     }
+-    return val;
++    return 0;
+ }
+ 
+ target_ulong read_val_ext(CPUX86State *env, struct x86_decode_op *decode, int size)
+ {
++    target_ulong val;
+     if (decode->type == X86_VAR_REG) {
+         return read_val_from_reg(decode->regptr, size);
+     } else {
+-        return read_val_from_mem(env, decode->addr, size);
++        if (read_val_from_mem(env, decode->addr, size, &val)) {
++            error_report("target/i386/emulate: read_val_ext: reading from unmapped address.");
++        }
++        return val;
+     }
+ }
+ 
+@@ -465,15 +477,17 @@ static inline int get_ZF(CPUX86State *env) {
+     return env->cc_dst ? 0 : CC_Z;
+ }
+ 
+-static inline void string_rep(CPUX86State *env, struct x86_decode *decode,
+-                              void (*func)(CPUX86State *env,
++static inline bool string_rep(CPUX86State *env, struct x86_decode *decode,
++                              bool (*func)(CPUX86State *env,
+                                            struct x86_decode *ins), int rep)
+ {
+     target_ulong rcx = read_reg(env, R_ECX, decode->addressing_size);
+ 
+     while (rcx != 0) {
+         bool is_cmps_or_scas = decode->cmd == X86_DECODE_CMD_CMPS || decode->cmd == X86_DECODE_CMD_SCAS;
+-        func(env, decode);
++        if (func(env, decode)) {
++            return 1;
++        }
+         rcx--;
+         write_reg(env, R_ECX, rcx, decode->addressing_size);
+         if ((PREFIX_REP == rep) && !get_ZF(env) && is_cmps_or_scas) {
+@@ -483,33 +497,44 @@ static inline void string_rep(CPUX86State *env, struct x86_decode *decode,
+             break;
+         }
+     }
++    return 0;
+ }
+ 
+-static void exec_ins_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_ins_single(CPUX86State *env, struct x86_decode *decode)
+ {
++    MMUTranslateResult res;
++
+     target_ulong addr = linear_addr_size(env_cpu(env), RDI(env),
+                                          decode->addressing_size, R_ES);
+ 
+     emul_ops->handle_io(env_cpu(env), DX(env), env->emu_mmio_buf, 0,
+                         decode->operand_size, 1);
+-    x86_write_mem(env_cpu(env), env->emu_mmio_buf, addr,
++    res = x86_write_mem(env_cpu(env), env->emu_mmio_buf, addr,
+                         decode->operand_size);
++    if (res) {
++        return 1;
++    }
+ 
+     string_increment_reg(env, R_EDI, decode);
++    return 0;
+ }
+ 
+ static void exec_ins(CPUX86State *env, struct x86_decode *decode)
+ {
++    bool res;
+     if (decode->rep) {
+-        string_rep(env, decode, exec_ins_single, 0);
++        res = string_rep(env, decode, exec_ins_single, 0);
+     } else {
+-        exec_ins_single(env, decode);
++        res = exec_ins_single(env, decode);
+     }
+ 
++    if (res) {
++        return;
++    }
+     env->eip += decode->len;
+ }
+ 
+-static void exec_outs_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_outs_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong addr = decode_linear_addr(env, decode, RSI(env), R_DS);
+ 
+@@ -519,48 +544,64 @@ static void exec_outs_single(CPUX86State *env, struct x86_decode *decode)
+                         decode->operand_size, 1);
+ 
+     string_increment_reg(env, R_ESI, decode);
++    return 0;
+ }
+ 
+ static void exec_outs(CPUX86State *env, struct x86_decode *decode)
+ {
++    bool res;
+     if (decode->rep) {
+-        string_rep(env, decode, exec_outs_single, 0);
++        res = string_rep(env, decode, exec_outs_single, 0);
+     } else {
+-        exec_outs_single(env, decode);
++        res = exec_outs_single(env, decode);
+     }
+ 
++    if (res) {
++        return;
++    }
+     env->eip += decode->len;
+ }
+ 
+-static void exec_movs_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_movs_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong src_addr;
+     target_ulong dst_addr;
+     target_ulong val;
++    MMUTranslateResult res;
+ 
+     src_addr = decode_linear_addr(env, decode, RSI(env), R_DS);
+     dst_addr = linear_addr_size(env_cpu(env), RDI(env),
+                                 decode->addressing_size, R_ES);
+ 
+-    val = read_val_from_mem(env, src_addr, decode->operand_size);
+-    x86_write_mem(env_cpu(env), &val, dst_addr, decode->operand_size);
++    if (read_val_from_mem(env, src_addr, decode->operand_size, &val)) {
++        return 1;
++    }
++    res = x86_write_mem(env_cpu(env), &val, dst_addr, decode->operand_size);
++    if (res) {
++        return 1;
++    }
+ 
+     string_increment_reg(env, R_ESI, decode);
+     string_increment_reg(env, R_EDI, decode);
++    return 0;
+ }
+ 
+ static void exec_movs(CPUX86State *env, struct x86_decode *decode)
+ {
++    bool res;
+     if (decode->rep) {
+-        string_rep(env, decode, exec_movs_single, 0);
++        res = string_rep(env, decode, exec_movs_single, 0);
+     } else {
+-        exec_movs_single(env, decode);
++        res = exec_movs_single(env, decode);
+     }
+ 
++    if (res) {
++        return;
++    }
+     env->eip += decode->len;
+ }
+ 
+-static void exec_cmps_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_cmps_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong src_addr;
+     target_ulong dst_addr;
+@@ -570,14 +611,19 @@ static void exec_cmps_single(CPUX86State *env, struct x86_decode *decode)
+                                 decode->addressing_size, R_ES);
+ 
+     decode->op[0].type = X86_VAR_IMMEDIATE;
+-    decode->op[0].val = read_val_from_mem(env, src_addr, decode->operand_size);
++    if (read_val_from_mem(env, src_addr, decode->operand_size, &decode->op[0].val)) {
++        return 1;
++    }
+     decode->op[1].type = X86_VAR_IMMEDIATE;
+-    decode->op[1].val = read_val_from_mem(env, dst_addr, decode->operand_size);
++    if (read_val_from_mem(env, dst_addr, decode->operand_size, &decode->op[1].val)) {
++        return 1;
++    }
+ 
+     EXEC_2OP_FLAGS_CMD(env, decode, -, SET_FLAGS_OSZAPC_SUB, false);
+ 
+     string_increment_reg(env, R_ESI, decode);
+     string_increment_reg(env, R_EDI, decode);
++    return 0;
+ }
+ 
+ static void exec_cmps(CPUX86State *env, struct x86_decode *decode)
+@@ -591,17 +637,22 @@ static void exec_cmps(CPUX86State *env, struct x86_decode *decode)
+ }
+ 
+ 
+-static void exec_stos_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_stos_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong addr;
+     target_ulong val;
++    MMUTranslateResult res;
+ 
+     addr = linear_addr_size(env_cpu(env), RDI(env),
+                             decode->addressing_size, R_ES);
+     val = read_reg(env, R_EAX, decode->operand_size);
+-    x86_write_mem(env_cpu(env), &val, addr, decode->operand_size);
++    res = x86_write_mem(env_cpu(env), &val, addr, decode->operand_size);
++    if (res) {
++        return 1;
++    }
+ 
+     string_increment_reg(env, R_EDI, decode);
++    return 0;
+ }
+ 
+ 
+@@ -616,7 +667,7 @@ static void exec_stos(CPUX86State *env, struct x86_decode *decode)
+     env->eip += decode->len;
+ }
+ 
+-static void exec_scas_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_scas_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong addr;
+ 
+@@ -627,6 +678,7 @@ static void exec_scas_single(CPUX86State *env, struct x86_decode *decode)
+ 
+     EXEC_2OP_FLAGS_CMD(env, decode, -, SET_FLAGS_OSZAPC_SUB, false);
+     string_increment_reg(env, R_EDI, decode);
++    return 0;
+ }
+ 
+ static void exec_scas(CPUX86State *env, struct x86_decode *decode)
+@@ -642,7 +694,7 @@ static void exec_scas(CPUX86State *env, struct x86_decode *decode)
+     env->eip += decode->len;
+ }
+ 
+-static void exec_lods_single(CPUX86State *env, struct x86_decode *decode)
++static bool exec_lods_single(CPUX86State *env, struct x86_decode *decode)
+ {
+     target_ulong addr;
+     target_ulong val = 0;
+@@ -652,6 +704,7 @@ static void exec_lods_single(CPUX86State *env, struct x86_decode *decode)
+     write_reg(env, R_EAX, val, decode->operand_size);
+ 
+     string_increment_reg(env, R_ESI, decode);
++    return 0;
+ }
+ 
+ static void exec_lods(CPUX86State *env, struct x86_decode *decode)
 -- 
 2.50.1 (Apple Git-155)
 

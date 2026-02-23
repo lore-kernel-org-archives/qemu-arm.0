@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A9DBE98E08
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:39:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13FA2E98E08
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:39:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRTO-0001c7-LZ; Mon, 23 Feb 2026 03:39:25 -0500
+	id 1vuRSY-0000o8-Jk; Mon, 23 Feb 2026 03:38:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSe-0000tt-1s
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:37 -0500
-Received: from p-east2-cluster3-host11-snip4-3.eps.apple.com ([57.103.77.174]
+ id 1vuRSN-0000Q9-7f
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:22 -0500
+Received: from p-east2-cluster3-host2-snip4-5.eps.apple.com ([57.103.77.226]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRSb-0002JU-Vn
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:35 -0500
+ id 1vuRSK-0002Fm-Am
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:18 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- EC2E218000A4; Mon, 23 Feb 2026 08:38:31 +0000 (UTC)
+ A57201800213; Mon, 23 Feb 2026 08:38:10 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835912; x=1774427912;
- bh=S9AJdBE8oo76V1KEGNHuiIM13A7vPwhp6IK3//MSg3Y=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=JE71G0fiYv5+xBQs5TjdHg9PIRh3fL7fpO70E84Y0hevzAKqMHcFgAjKyCHPPEPQ2Ja5SDZUUvGA2rSmgnaIGAlsR4zK4gbmndAF1aHoQNZGG3Iz2XMopP6V7PmFrPsSzWHY2dxbF1gNqmzb7EJux9nlfYj2aYXjdVOMbgp64c+cBH+yitjxOvAhNeqlM64Jvb/k/Zi3ENlwaRmifhPrMqPR4c68Cc/+mICAcSKRmh4WALD7iB4aLBTD8AXa5mONuCyu9MHJ1UxPAhpnBbWcoof5zJgiLvvDI9C69HMYoSXxm+/H99lCmj0mWPwLbcTJYZSiJgGpTLz6suCL+DWgAg==
+ s=sig1; t=1771835894; x=1774427894;
+ bh=YKGmjTwasOTKHJc2TN0N83W04DQ/70JvOkGojdqvAPY=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=L44vC6hLQ1BFnVyABO6kJ6U2nLcWWgAdL2D77RGVeWtc+hYsnpxJbMVcysroL0sTPCu3Zcp7/DtZKSmx+mi+Q6tClpYVL1TzhyzmCw8f+6euVl7Kf7dKcbX5KTBZMm6vt6/rOtrKWsdm2ja/fJmLSOg2y0AoNvOwg19zjukItlCWuB6P7gp0z06yFLnOM+u5nioQDVGMOfotHO8/f/X4F03xQX+iZa0UUUjfB6CLvRkhY7Q0uh8WMZvtFrS5q4XLSyTNDmD6zwum5kOwFAdC6GsI/dkYop+xvdeaPch7x++TkDz+Dat/bE1zVuoIq7OrshcNjaQA0g3LEVIQdzzCJg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- AD6E51800179; Mon, 23 Feb 2026 08:38:29 +0000 (UTC)
+ E2C20180016F; Mon, 23 Feb 2026 08:38:07 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,37 +49,39 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 22/27] target/i386: emulate: raise an exception on
- translation fault
-Date: Mon, 23 Feb 2026 09:37:28 +0100
-Message-ID: <20260223083734.48533-23-mohamed@unpredictable.fr>
+Subject: [PATCH v5 13/27] whpx: i386: remove messages
+Date: Mon, 23 Feb 2026 09:37:19 +0100
+Message-ID: <20260223083734.48533-14-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
 References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: rrGl6vO-anZ7dDG0eTHvJbAoN_zXIC8T
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXwpInSagZoX/T
- mpv4E5/ptyBA+tWJW7h6LONH8bsnYr7o1H4r3cBFQmMI9DcwmyEhzR2nv4nRs8t/YOv44O/bxlL
- BLEKoS3LehiVIohkXFe5JB9RiOSRH4cl3BCFp03hohdo0RrCIDe5jGl3ImkTRcH7tFPeT/kfmQc
- 2h1j4ZSB0brTmvRJnRNjRUctNRYvWtQQrUy9RJ9erhrvezQSTmqbcYmFtFkzbHSfV93m3IxGUfR
- H/irl+FRAJmqeiGh+TzIK2aacRoFg3Zz+YvfTpg15xiWmxqeUVjPK8xLLuODmHR/BuX4iZFHvRq
- FTekz6qwQ/YO92NW2eEj6q9hGToSH71/+c2fr4tOy6ZEDUr8aSx4e0An3Mk1qI=
-X-Proofpoint-ORIG-GUID: rrGl6vO-anZ7dDG0eTHvJbAoN_zXIC8T
-X-Authority-Info-Out: v=2.4 cv=N9Uk1m9B c=1 sm=1 tr=0 ts=699c1208
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfX6kHtHgqPysUD
+ ULzNFQ8nnuLk0Gvv+FiOiP1xvuXVh4yZCj7DkorXBgwnqb5ei9M0rXbbhiBRxFYG+ZfddrhX8c7
+ kapw3MsLLlTtUAQ5b6Xc+NCoL1C+Ghv4GrREKk3Ws/eVF1U45rxh7t+Tg0mXpQe0uZuWXV0f+lW
+ MwSCiHinB+uL70JvCh1wsZaSUzoIfs/+TBz0qxQQvMU7WG9CAZnPIP9CUi2gkaGJ491FUn8b74G
+ WogH67xYHSDvuJJLS+DimsRc+awTCKp26AqGPHpxyRoUggSVMN60Rpe71H5GDia5jmhbKnyyoNO
+ CTaHeMefY4DSiHfw6yePCgEBKrE2dAeXXJRiu0bHAp9boXSBPhQqdXuAu4ZPe8=
+X-Proofpoint-GUID: oM5km0EWyGKi4mm0glYQ-6Oxkd4pr1mJ
+X-Proofpoint-ORIG-GUID: oM5km0EWyGKi4mm0glYQ-6Oxkd4pr1mJ
+X-Authority-Info-Out: v=2.4 cv=Ra2dyltv c=1 sm=1 tr=0 ts=699c11f3
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=L5enj1CBYy6CaSJ8q-IA:9
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
+ a=KKAkSRfTAAAA:8 a=tHCKdM3VofH7q6B9RbgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0 clxscore=1030 bulkscore=0 spamscore=0 malwarescore=0 mlxscore=0
- suspectscore=0 mlxlogscore=794 lowpriorityscore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ mlxlogscore=999 spamscore=0 mlxscore=0 bulkscore=0 lowpriorityscore=0
+ malwarescore=0 adultscore=0 suspectscore=0 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAABWiWJJR/yVLAATf6Tn2moeCT3PqHkSN7Wg/qDrXIbjDyf9ShDpi9nk7q05fXM6m3qLVA7SJASir88nkbhXnAMQQthx3xPn8OWNluWlWlvOJF9XMWN1/Tve45xdG136huc2Ncf/xh8hR1v3sRSdckdqyqbN4ThqmujIroo2+bL4fxSYY9KCMZXA8xpjinvnKDzpXgZ8Bh9mqAd58vImga7cnY9LnO51I7DgbGyno64tpLijtVbiz41d+iYe0pfKeNDK8uiWGH7yEtycgN4FQJlYztnVkRVq3rvjH9+GAj2Tl/uwLMvaqgDQaHZojYtJbU7QyneZRflt91tT3o8P5++EgnKtei0NFwZRA3577nLWZUAExCUqJol/YBpfYgw+5Ys9Xz9y67xWOAHzQ1ee7SKoKoBIiH45jyqGnKi2JGHIIKYR6RohgWBbtVlGw9CqTBo8g2eUXlq3rowFWEwV4CXlSoCbEXWL3fSHLVACj1pwUeJKMngIPmPB0oHWj+1WAHuxxnNQBHUCwFu4//zmIsBY0uHIIEIpDlXPmZxgTmLrQsNDSiV9zSJoeCh2OjXfxFrCgqPIFW8kaRz+9PqWi4e4mVZOl6AfesP3nyDegWcHxQ1lcUjOOfppOLKhSdA2OfMhEgTXCFKoAuk2ScYUHDbqJvTiAjfp5GwanMSWnLFZGZcRJ6oc9tg/po1nvi764F6nMmohmPyDyzPffegWT5eR34y4ZTBBpwP193QeYjzVTzmkUppp7LpY7jNenaosZ5i0msZ1b1lQYwXrtrCq/KjFt1HqREyBWtDQX4eeg8=
-Received-SPF: pass client-ip=57.103.77.174;
+X-JNJ: AAAAAAAB3NZcXgrYcCl8tvGPtUGVbRvvj8yamMnZBrQjUMcZAEPolQfjIbkLiETP1RVClBCN4/bvPy3632Tij/JiyG7FrsPncwnIORv5axVJtmVEe2i/RubuoTNKOV/DTfZtu1MvHOkqUST70Ko72qONahewQRp+Gb1ehbS62jS5G1AnzOzO3HQj4Wyvv4UKdbOKg4Nf9hPoe6AlKHBxqWHlBCWyJATk4NeRtBPa0tTRzB3sLKT45rlQ6tmblfZGB+914l+7ChwV9HQyYaeNTDzLjhKTqJntYc7iSPg1KFlIhCoBnaFVFPLBjMxXZ5aHHRy7sqquwcbwMkQ/Mc9+hmfgGzHw3abRc1jLf3KIPGZacOmpsWMcigcGWVjv069c4LXg9kgC37jnA1o6giKaau3B+rD3QiCVkuFEpyJR7Vfh3E3smPNiQgpQiXhv71JHvmKH3kjfflvNZveB8/3b9VI1JfuXlkJ2Vb4rqkl8cy1m/Ittli9IJJXuShwuH3fkJI8wClTk9/gMDmCoITafFEEFEFHt+xJDn7+wK2TEtq6ymcxNno7C8uJzBP9twCJa1DtHazIS/Wm4MIvWAfASb49h2r1xucwSZKEH28KjxLPbnAFUNMUcjE3GMRSwvSNjBmnnWD9eJgs/r/4NgLEnQfYtMRLECeopFA8/GnOpGrCk7l38ewNF0d8lBfit01ac4ahAZa7c69diiHynBmWmHS+gxBiBL5AbT45s95nUnziKNsCmPpYA1yJPLnX/Q2pEJDEzOX7phGGeIX+WOYu/R5zmrlx6UBg+uzv7Tqp/6mZ+vO9lRF1r7xE=
+Received-SPF: pass client-ip=57.103.77.226;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
@@ -103,75 +105,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/i386/emulate/x86_mmu.c | 30 ++++++++++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+Remove some messages printed by the WHPX backend that don't
+have an equivalent elsewhere and don't convey an error.
 
-diff --git a/target/i386/emulate/x86_mmu.c b/target/i386/emulate/x86_mmu.c
-index d664df5e1c..c7d2a77531 100644
---- a/target/i386/emulate/x86_mmu.c
-+++ b/target/i386/emulate/x86_mmu.c
-@@ -239,8 +239,29 @@ MMUTranslateResult mmu_gva_to_gpa(CPUState *cpu, target_ulong gva, uint64_t *gpa
-     return res;
- }
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/i386/whpx/whpx-all.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 0524885053..2f2c613eda 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -2163,7 +2163,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2) {
+         WHV_X64_LOCAL_APIC_EMULATION_MODE mode =
+             WHvX64LocalApicEmulationModeXApic;
+-        printf("WHPX: setting APIC emulation mode in the hypervisor\n");
+         hr = whp_dispatch.WHvSetPartitionProperty(
+             whpx->partition,
+             WHvPartitionPropertyCodeLocalApicEmulationMode,
+@@ -2237,7 +2236,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     whpx_memory_init();
+     whpx_init_emu();
  
-+static int translate_res_to_error_code(MMUTranslateResult res, bool is_write, bool is_user)
-+{
-+    int error_code = 0;
-+    if (is_user) {
-+        error_code |= PG_ERROR_U_MASK;
-+    }
-+    if (!(res & MMU_TRANSLATE_PAGE_NOT_MAPPED)) {
-+        error_code |= PG_ERROR_P_MASK;
-+    }
-+    if (is_write && (res & MMU_TRANSLATE_PRIV_VIOLATION)) {
-+        error_code |= PG_ERROR_W_MASK;
-+    }
-+    if (res & MMU_TRANSLATE_INVALID_PT_FLAGS) {
-+        error_code |= PG_ERROR_RSVD_MASK;
-+    }
-+    return error_code;
-+}
-+
- static MMUTranslateResult x86_write_mem_ex(CPUState *cpu, void *data, target_ulong gva, int bytes, bool priv_check_exempt)
- {
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+
-     MMUTranslateResult translate_res = MMU_TRANSLATE_SUCCESS;
-     MemTxResult mem_tx_res;
-     uint64_t gpa;
-@@ -251,6 +272,9 @@ static MMUTranslateResult x86_write_mem_ex(CPUState *cpu, void *data, target_ulo
+-    printf("Windows Hypervisor Platform accelerator is operational\n");
+     return 0;
  
-         translate_res = mmu_gva_to_gpa(cpu, gva, &gpa, MMU_TRANSLATE_VALIDATE_WRITE);
-         if (translate_res) {
-+            int error_code = translate_res_to_error_code(translate_res, true, is_user(cpu));
-+            env->cr[2] = gva;
-+            x86_emul_raise_exception(env, EXCP0E_PAGE, error_code);
-             return translate_res;
-         }
- 
-@@ -282,6 +306,9 @@ MMUTranslateResult x86_write_mem_priv(CPUState *cpu, void *data, target_ulong gv
- 
- static MMUTranslateResult x86_read_mem_ex(CPUState *cpu, void *data, target_ulong gva, int bytes, bool priv_check_exempt)
- {
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+
-     MMUTranslateResult translate_res = MMU_TRANSLATE_SUCCESS;
-     MemTxResult mem_tx_res;
-     uint64_t gpa;
-@@ -292,6 +319,9 @@ static MMUTranslateResult x86_read_mem_ex(CPUState *cpu, void *data, target_ulon
- 
-         translate_res = mmu_gva_to_gpa(cpu, gva, &gpa, 0);
-         if (translate_res) {
-+            int error_code = translate_res_to_error_code(translate_res, false, is_user(cpu));
-+            env->cr[2] = gva;
-+            x86_emul_raise_exception(env, EXCP0E_PAGE, error_code);
-             return translate_res;
-         }
-         mem_tx_res = address_space_read(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
+ error:
 -- 
 2.50.1 (Apple Git-155)
 

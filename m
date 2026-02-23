@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93E6FEC1112
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56D8EC1112
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:11:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKD-0001JT-L6; Mon, 23 Feb 2026 12:02:25 -0500
+	id 1vuZKb-0002Gz-75; Mon, 23 Feb 2026 12:02:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKA-0001CR-U4
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:23 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1vuZKZ-00029V-3x
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:47 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZK9-0008VK-A0
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:22 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-43767807da6so3410314f8f.2
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:20 -0800 (PST)
+ id 1vuZKW-0000Ci-Rg
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:46 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48329eb96a7so26658665e9.3
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866140; x=1772470940; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866163; x=1772470963; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=Bp3RXdjJyq2zUkMPFoXr57Ilr22nwEt2DEhIgGusj+Q=;
- b=OxZ9v46BKMhJwt8TwEKAcCSe3Q1PCbjwhH1sQ24HIhDhQHEuLOsxaYhK5++D3jN/dG
- ZINsItsXfmpHJPoRWODIpRKmLZ4J3jbxrmpsAkfePLA5eiPMTNZrvfs+fT1YSqIBxwud
- GIH0XOsH9xCOB01JiN6QcQEW+6jnH+9kyRo1uAoVR0QffwVQO5TdTOfn0XBMbcnj9T5e
- bj5gvBBp/1cgm795QRG1jATPPVFkjHhZc6HFM0LRBvpsaOGVuBnWSIL57iIkDp0hsUfy
- ndfXV3VISxPjSCzG37FbBPo0wXUiA7Ps9t7IrBmUHd+KXbhz1ZkektHidbTW58XexeQT
- MroQ==
+ :reply-to; bh=F/dI1qFmZ1RsBVXqA0SGOU0duWbHv0A4HX6TOb0/aiw=;
+ b=a2s1EFy9to+CR0rhLUtOz9XtH/nS0nsUo0e9P64+jFBvPmo6rIuDlKxzlTCT+YKhw1
+ 4tSkJ93rWI/kNCHQzpAjKUT8h9h+C4LMN5o49Vnjz91niuGc9svQicDTyIxm81ofgfjY
+ EpDax5y2WkNnH8EodSZG8Yjvq5c0uu6lLPgQm88LEUUP0l++XlsFW/J/J/nYKSoO+8uN
+ O397bdNeKHIXPWFTS+WyY6bkw3lMyd31f0b2ax7rBMfMKtAbUAbO1hfL1mr3JdkdY4gt
+ D+SFJqAiNvP2GIrPCGloy0Jz78CgYTIUjUvO8UpooI6BFX9rLwhG3KmzptZtOSPtcrjd
+ XZgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866140; x=1772470940;
+ d=1e100.net; s=20230601; t=1771866163; x=1772470963;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=Bp3RXdjJyq2zUkMPFoXr57Ilr22nwEt2DEhIgGusj+Q=;
- b=wwzLqX24ypYNbd1jH4T+UDjFJsL1b3MUK0Jp0jDAUm0swzhJ0NouF3dMQoL9PV+tgp
- zKbHE8PfcZDzVPPAGYQhvpY46PcO3TcO6ixx++oePotUe87YDeUJcxs2amr/qlnUnRCs
- 8D+7EEjaAH61OZ61QbWsAponBMyrw4C0Kti1IMktDtEH1oPSG3YF226O17xmFD1Q+mYg
- QiAP2syLIt11ndY5ZvciDHTXNUvFaXWVPTbqM4tmllFr1pxp/BfvSB/fU84Sy25O24ar
- fmvB6HZ/Dh/PHZ8Y450J74qUrdwWrKQUxA6dUWDjL3Mt0AwdyBX1YgNNrlg/sqgGMO/Y
- ItaQ==
-X-Gm-Message-State: AOJu0YznE4z4M48X/A20sSkaf5t+mMyD8ti/WoCOgHEegQdFbBF70N6H
- hFgKXOsQFMQMzAIxTVFx79ue005nKGtXC8HaO0LJG/a7SJRD3cE7vD/Y/xfNA1l0j47gVutq702
- ZPy5n
-X-Gm-Gg: AZuq6aILrKX9ENZWiDrzFesKzVd0Oiy0gbm9pr3Q3Hl0cnh0KhdT8yRZPJfeVow73Oc
- 4MEnEwNJZ2YvsoyfQpp6CRhJ0BQgldnReV9ySwQ7pT+8tq1mLZopCIWVpu10g36I42olze13/bk
- VG0VsqfHelcNm4MRUzrZeBn1rVyuMuUer01LSHGnXJyPxC8q+6IdRNVP5rfveeQgsE3FzONIzKA
- ZylVLyKPcmPBJgp4mcEZOGTfpt/+CyoX/1z9OXHJyyFt+zYf2JYuXt3/6K65L/hTcoN7eUahKaQ
- cATq1GaZqIVaW3mYymeQt7UFQ9/bguyAIrj0KlWsSNQtgUp/mNPZu9MZK45YpX4u+xhisXDwQD7
- F3z7SZvfqF88syUFi9R4uncehtWXFL1yNd88kC0nRWtwKI53kwkBsyPjgEfvuwzHucLnynl9eat
- TyF4EkLhAOB/iWo5ti7+RNzWyABLF+ueDkbwhNjrC72ZQYaWDm1wi2mmtb6CXjEC8UOsnE2haJG
- x2gA6WzgH9Ht1qG9Jw7dzhlDe5cdEc=
-X-Received: by 2002:a05:600c:a00d:b0:480:690e:f14a with SMTP id
- 5b1f17b1804b1-483a95bf2f3mr162385865e9.14.1771866139684; 
- Mon, 23 Feb 2026 09:02:19 -0800 (PST)
+ bh=F/dI1qFmZ1RsBVXqA0SGOU0duWbHv0A4HX6TOb0/aiw=;
+ b=e6A05lm2oxCAO1d2ERmjSnD6EgdEmSJmhUpRonIZ7hov6c+tWm5ENfgaCVNb4ykcRK
+ nw9hNUYh3ZHe2gYA7pF3tBQNf3FJlkjna8DBlUjE67wNyfI/D6lnT+D3X5UxYpWTcN5y
+ 5n7d2ubSa/4wwY2q1gShldNmMkqmZ6whsa1JmcIUKa6d8OLEnjdhmG8XtCKKQSMknpJX
+ x0BvtqtBE53lBJzxBqdJGU6Xv6lccCql4myE5RmWUJYnnnLBks7RpGEzoESM8mSctwi/
+ tKPqupp0F+oVZD5DBBfOCLQPL8qkS5ytxOGFRyn9N7JCekRimQi4v8nmtUyZoahymEtK
+ Iq3A==
+X-Gm-Message-State: AOJu0YyRfh6BMa3DewF0MJI9jvqAmjQ+MYw7KdTFjEqk7Q+5Fg8YBuyd
+ IsEWv7XaRO1Kbwv62xC2vwkNVYEIUzGBCflvEmRYLDOBgkRkOFKizNKeuxxjVCIgWqt4ZZJzxzB
+ Vpt27
+X-Gm-Gg: AZuq6aLph/MWMICJcvC4XeN//EJrKeeo2w09gJWgdV88xawq4vgXR2D/vNVPpyZu5PM
+ YJxAcuh6RXehCi1gFz6THWFoJYeVcNhUlOITGHr1fi5iI6iLuBn05jnSEWxpSDtS8mZ8rAyNpny
+ RMSRb3mHeDH8PJbMuZeQfo57pvIvAnun/QrNkw3ofNPnjwNdqD67Qhq6m054Z9qwCJV3ZeCT518
+ oqkNy5kx8qNuPnA/9qgvIgEVLEQIpRqkfCFPtSTVJi8LRudvbKzGSFD+7d5k+UUgWmg8TnCpA2V
+ 59ICQkaMpzzTRinE46/rT/ODJsWohSk3aawLMPn8k78HM45Ol7GgcJ/gG3oXlC+g2oD0dzkWlsU
+ tycxizCYIvngxiYPlPpN73Gr3QGAgt4GEDhqVv0SODlCUVOyvA+kdMhN6vboqzvBEhgp0BphE98
+ f7ijw47u2oTVNBWPYLpU3nMSXsWQmnEF2Hex9AjWqZ67yIWAxcoxUiGcAPLWuKSY5aDHhJbjMa9
+ 03AbxBhIsiCvdw6h/UIInFVsqivv2k=
+X-Received: by 2002:a05:600c:638d:b0:480:1e40:3d2 with SMTP id
+ 5b1f17b1804b1-483a95f5a62mr142636435e9.29.1771866163326; 
+ Mon, 23 Feb 2026 09:02:43 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.18
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:18 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:42 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 05/65] hw/intc/arm_gicv5: Add migration blocker
-Date: Mon, 23 Feb 2026 17:01:12 +0000
-Message-ID: <20260223170212.441276-6-peter.maydell@linaro.org>
+Subject: [PATCH 25/65] target/arm: GICv5 cpuif: Implement GIC CDRCFG and
+ ICC_ICSR_EL1
+Date: Mon, 23 Feb 2026 17:01:32 +0000
+Message-ID: <20260223170212.441276-26-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,58 +101,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This initial version of the GICv5 will not support migration:
+Implement the GIC CDRCFG system instruction, which asks the IRS for
+the configuration of an interrupt, and the system register
+ICC_ICSR_EL1 which is where the answer is placed for the guest to
+read it.
 
- * the spec is still only at EAC level, so the data to be
-   migrated might in theory change before it is finalised
- * when we add support for missing features like EL2/EL3/Realm
-   we might find we want to refactor the data structures we use
- * I still need to check against the proposed KVM GICv5
-   handling to see if there are any awkward mismatches
-   that might affect how we want to store the data
- * it's experimental, so for pragmatic reasons I'm skipping
-   it to get the initial version done faster
-
-Install a migration blocker to enforce this.
+We mark ICC_ICSR_EL1 as ARM_CP_NO_RAW, because we do not want to have
+this migrated as part of the generic "system register" migration
+arrays.  Instead we will do migration via a GICv5 cpuif vmstate
+section.  This is necessary because some of the cpuif registers are
+banked by interrupt domain and so need special handling to migrate
+the data in all the banks; it's also how we handle the gicv3 cpuif
+registers.  (We expect that KVM also will expose the cpuif registers
+via GIC-specific ioctls rather than as generic sysregs.) We'll mark
+all the GICv5 sysregs as NO_RAW.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ target/arm/cpu.h             |  5 +++++
+ target/arm/tcg/gicv5-cpuif.c | 27 +++++++++++++++++++++++++++
+ 2 files changed, 32 insertions(+)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 0eb4348e81..73a6e629df 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -11,6 +11,7 @@
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "trace.h"
-+#include "migration/blocker.h"
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 16de0ebfa8..1fdfd91ba4 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -597,6 +597,11 @@ typedef struct CPUArchState {
+         uint64_t vmecid_a_el2;
+     } cp15;
  
- OBJECT_DEFINE_TYPE(GICv5, gicv5, ARM_GICV5, ARM_GICV5_COMMON)
- 
-@@ -194,6 +195,7 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
- {
-     GICv5Common *cs = ARM_GICV5_COMMON(dev);
-     GICv5Class *gc = ARM_GICV5_GET_CLASS(dev);
-+    Error *migration_blocker = NULL;
- 
-     ERRP_GUARD();
- 
-@@ -202,6 +204,12 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
-         return;
-     }
- 
-+    error_setg(&migration_blocker,
-+               "Live migration disabled: not yet supported by GICv5");
-+    if (migrate_add_blocker(&migration_blocker, errp)) {
-+        return;
-+    }
++    struct {
++        /* GICv5 CPU interface data */
++        uint64_t icc_icsr_el1;
++    } gicv5_cpuif;
 +
-     /*
-      * When we implement support for more than one interrupt domain,
-      * we will provide some QOM properties so the board can configure
+     struct {
+         /* M profile has up to 4 stack pointers:
+          * a Main Stack Pointer and a Process Stack Pointer for each
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index c426e045d9..4420a44c71 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -35,6 +35,9 @@ FIELD(GIC_CDHM, ID, 0, 24)
+ FIELD(GIC_CDHM, TYPE, 29, 3)
+ FIELD(GIC_CDHM, HM, 32, 1)
+ 
++FIELD(GIC_CDRCFG, ID, 0, 24)
++FIELD(GIC_CDRCFG, TYPE, 29, 3)
++
+ static GICv5Common *gicv5_get_gic(CPUARMState *env)
+ {
+     return env->gicv5state;
+@@ -134,6 +137,19 @@ static void gic_cdpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     gicv5_set_pending(gic, id, pending, domain, type, virtual);
+ }
+ 
++static void gic_cdrcfg_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    GICv5Common *gic = gicv5_get_gic(env);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDRCFG, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDRCFG, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
++
++    env->gicv5_cpuif.icc_icsr_el1 =
++        gicv5_request_config(gic, id, domain, type, virtual);
++}
++
+ static void gic_cdhm_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                            uint64_t value)
+ {
+@@ -194,11 +210,22 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+         .writefn = gic_cdpend_write,
+     },
++    {   .name = "GIC_CDRCFG", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 5,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdrcfg_write,
++    },
+     {   .name = "GIC_CDHM", .state = ARM_CP_STATE_AA64,
+         .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 2, .opc2 = 1,
+         .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+         .writefn = gic_cdhm_write,
+     },
++    {   .name = "ICC_ICSR_EL1", .state = ARM_CP_STATE_AA64,
++        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 4,
++        .access = PL1_RW, .type = ARM_CP_NO_RAW,
++        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.icc_icsr_el1),
++        .resetvalue = 0,
++    },
+ };
+ 
+ void define_gicv5_cpuif_regs(ARMCPU *cpu)
 -- 
 2.43.0
 

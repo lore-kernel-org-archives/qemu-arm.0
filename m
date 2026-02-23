@@ -4,125 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261FBEC110C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:41:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 847BAEEC2B0
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 23:56:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZw6-0006wm-V7; Mon, 23 Feb 2026 12:41:35 -0500
+	id 1vufmG-0004IU-6P; Mon, 23 Feb 2026 18:55:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vuZw4-0006wV-7T
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:41:32 -0500
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vuZw2-0000Gu-L5
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:41:31 -0500
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-8230c2d3128so1923654b3a.0
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:41:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771868489; x=1772473289; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6KZrm9qGTNNUk6b7A4nto/oqJi6i7qoWG7eK39hkOho=;
- b=vWyY/gbj8XAA1Hqdon4f1fZh29gRkrrhdTiPMfaSPtQCNWixdtwkPefX7u5uNc94c3
- KxmiWJtDWIXFNL+B4jcN+6asyTlPPNxCFtfUKs72hJC+fMDOV4TzFK+829v/C8uckCWq
- Lf0eWZHPPlYXoCJEGl3WpFtrSPEzQeppg/D5J39dfFlO8fBdgpbug5z9V9BMgCYqIxaG
- 71OXB1jF0+pNJKs3wbnHkY6/20bCCQmIhai4SLGSnh2uCQrzTUzx7hK3HySjDwNUUeNl
- VcPIPSPHfEcKgyWXwQoG61x5X7iaCYUV9AYKEy9VJ2n9/Faf70Tl73Ky8seWXRB3TNAu
- QDOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771868489; x=1772473289;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6KZrm9qGTNNUk6b7A4nto/oqJi6i7qoWG7eK39hkOho=;
- b=l8+1SDFGLlBlCfQyOyAmUqw8Zxos+UkJHz2xOvPuqbghvS9ZRv4+kiycvhKyJNQRZh
- EiqI+evhv1qhC7hC0pGMyrwhh9wnsIS4zZd2Kfh3fwPIIg+zFeO4BdtZVjYpnJPqiEOV
- VvT0dY7zZCOAGKKYM8+mUzhxPDV67BDhInn0hKHyAqRgDEzwSs2JV7LOnmNMc8FoQpGP
- 6AFARkrwYcxIgLPhRrn/FD34R4GoLXYDWoMLDHtNEVEG5rxtgrkkDuKpNL3Zml2jbLNL
- xGjUcXovTZ+q9rzgOTPm2IebeD3Z75hQz8fh2SaZGRjAbGb8ZPw6Pyit+92v8Dm2/wzd
- juTA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXCBP/F4pOJTLneFhmroq44QcaK+5ENioKbOxl876oCSeOvMBaYxP3XMoiSsxCDj8ujMpqsjPN3tw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxj0/JMc1wVcv31e4ydl0K2Mbjz8Xb5kBHoq3+XafcHAgoQOd31
- N7ZL3CwfkXCIQiVoTF7FlrfAgd2AjD8YEBxB8ziMQtN7uxYicFyj0XPYH7isDrl66kU=
-X-Gm-Gg: AZuq6aLEREOEzxgCDTPlb6OwluLzbJ6DxWAXU7rYM10kKw5WmRPsYSkCRVRV6bZN2pB
- 7/H592uKSU+9mzuNHHsGy57ItwXQoYfbMcnQ0ASa4/5YbMtKA5/nXF7QAwGEqe9FkmwOf7SKitA
- GLepLPgsfWwsUerqQejXTq6oL6SvBGXtytQqhcWYZGC7MEa7RoUL8zJIoFMN40A+0m7kgQ+yG1A
- s1qitn/5WOT//8v4XuNLzSWpbI1JJqwJa8laUnxuRTUR/5iLVl0ykrKXvwUlhAyEzX5EhDUsPBZ
- yCXYoE4IPq+zGS/xeFAcxOrMS7Z6wYVlSMUU/silfk1aGLhKOMH6ynlHkETMuldW8qoY+IPOHkG
- 3sd18KtbSx8JEWu1DB0ZZOyEJEEu96znGTHdqsHCWWLmLGNX/h99JtVAZDxK+gnlg58Rzh4JhAq
- WemhjIuVRLxk5BxXiuVIG5+5Olup+i8qzNLnf0XkieGDizldbykjMYkvF6E0M+kO2CQFz5
-X-Received: by 2002:a05:6a00:1c88:b0:81e:af19:34b8 with SMTP id
- d2e1a72fcca58-826daa22a20mr8190046b3a.43.1771868488901; 
- Mon, 23 Feb 2026 09:41:28 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-826dd86c93fsm8489475b3a.38.2026.02.23.09.41.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Feb 2026 09:41:28 -0800 (PST)
-Message-ID: <8c18fbfd-6e86-44bd-87c7-c5213cf761df@linaro.org>
-Date: Mon, 23 Feb 2026 09:41:27 -0800
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vufmE-0004IH-JN; Mon, 23 Feb 2026 18:55:46 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vufmC-000760-9k; Mon, 23 Feb 2026 18:55:46 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 13708596A0A;
+ Tue, 24 Feb 2026 00:55:38 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id R09405UlWcLw; Tue, 24 Feb 2026 00:55:32 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 940B65969FD; Tue, 24 Feb 2026 00:55:32 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 913F45969FC;
+ Tue, 24 Feb 2026 00:55:32 +0100 (CET)
+Date: Tue, 24 Feb 2026 00:55:32 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+cc: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, artem_mygaiev@epam.com, 
+ volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, 
+ Ruslan_Ruslichenko@epam.com, philmd@linaro.org, wangyanan55@huawei.com, 
+ zhao1.liu@intel.com, pbonzini@redhat.com, 
+ Bernhard Beschow <shentey@gmail.com>
+Subject: Re: [PATCH v2 19/33] hw/core/machine: add '-hw-dtb' option for machine
+In-Reply-To: <CAN-aV1H0_4LviryDEmDSN0TfdSit-uN31H8g87sRBkJAHYbrdQ@mail.gmail.com>
+Message-ID: <d2d16e2b-d86a-633f-b32a-e063746658d8@eik.bme.hu>
+References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
+ <20260219144901.3317747-1-ruslichenko.r@gmail.com>
+ <dd8a92cc-51d6-4404-bd09-75b1798f925a@redhat.com>
+ <87y0kj4mr3.fsf@draig.linaro.org>
+ <CAN-aV1H0_4LviryDEmDSN0TfdSit-uN31H8g87sRBkJAHYbrdQ@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm/kvm: Don't free migration-blocker reason on
- failure
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20260223173232.453165-1-peter.maydell@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
- eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
- CJmXbVYQgL5e6rsXoMlwFWuGrBY3Ig8YhEqpuYDkRXj2idO11CiDBT/b8A2aGixnpWV/s+AD
- gUyEVjHU6Z8UervvuNKlRUNE0rUfc502Sa8Azdyda8a7MAyrbA/OI0UnSL1m+pXXCxOxCvtU
- qOlipoCOycBjpLlzjj1xxRci+ssiZeOhxdejILf5LO1gXf6pP+ROdW4ySp9L3dAWnNDcnj6U
- 2voYk7/RpRUTpecvkxnwiOoiIQ7BatjkssFy+0sZOYNbOmoqU/Gq+LeFqFYKDV8gNmAoxBvk
- L6EtXUNfTBjiMHyjA/HMMq27Ja3/Y73xlFpTVp7byQoTwF4p1uZOOXjFzqIyW25GvEekDRF8
- IpYd6/BomxHzvMZ2sQ/VXaMAEQEAAc0uUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91
- dmllckBsaW5hcm8ub3JnPsLBDgQTAQoAOBYhBGa5lOyhT38uWroIH3+QVA0KHNAPBQJivXYM
- AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEH+QVA0KHNAPX58L/1DYzrEO4TU9ZhJE
- tKcw/+mCZrzHxPNlQtENJ5NULAJWVaJ/8kRQ3Et5hQYhYDKK+3I+0Tl/tYuUeKNV74dFE7mv
- PmikCXBGN5hv5povhinZ9T14S2xkMgym2T3DbkeaYFSmu8Z89jm/AQVt3ZDRjV6vrVfvVW0L
- F6wPJSOLIvKjOc8/+NXrKLrV/YTEi2R1ovIPXcK7NP6tvzAEgh76kW34AHtroC7GFQKu/aAn
- HnL7XrvNvByjpa636jIM9ij43LpLXjIQk3bwHeoHebkmgzFef+lZafzD+oSNNLoYkuWfoL2l
- CR1mifjh7eybmVx7hfhj3GCmRu9o1x59nct06E3ri8/eY52l/XaWGGuKz1bbCd3xa6NxuzDM
- UZU+b0PxHyg9tvASaVWKZ5SsQ5Lf9Gw6WKEhnyTR8Msnh8kMkE7+QWNDmjr0xqB+k/xMlVLE
- uI9Pmq/RApQkW0Q96lTa1Z/UKPm69BMVnUvHv6u3n0tRCDOHTUKHXp/9h5CH3xawms7AzQRi
- vXYMAQwAwXUyTS/Vgq3M9F+9r6XGwbak6D7sJB3ZSG/ZQe5ByCnH9ZSIFqjMnxr4GZUzgBAj
- FWMSVlseSninYe7MoH15T4QXi0gMmKsU40ckXLG/EW/mXRlLd8NOTZj8lULPwg/lQNAnc7GN
- I4uZoaXmYSc4eI7+gUWTqAHmESHYFjilweyuxcvXhIKez7EXnwaakHMAOzNHIdcGGs8NFh44
- oPh93uIr65EUDNxf0fDjnvu92ujf0rUKGxXJx9BrcYJzr7FliQvprlHaRKjahuwLYfZK6Ma6
- TCU40GsDxbGjR5w/UeOgjpb4SVU99Nol/W9C2aZ7e//2f9APVuzY8USAGWnu3eBJcJB+o9ck
- y2bSJ5gmGT96r88RtH/E1460QxF0GGWZcDzZ6SEKkvGSCYueUMzAAqJz9JSirc76E/JoHXYI
- /FWKgFcC4HRQpZ5ThvyAoj9nTIPI4DwqoaFOdulyYAxcbNmcGAFAsl0jJYJ5Mcm2qfQwNiiW
- YnqdwQzVfhwaAcPVABEBAAHCwPYEGAEKACAWIQRmuZTsoU9/Llq6CB9/kFQNChzQDwUCYr12
- DAIbDAAKCRB/kFQNChzQD/XaC/9MnvmPi8keFJggOg28v+r42P7UQtQ9D3LJMgj3OTzBN2as
- v20Ju09/rj+gx3u7XofHBUj6BsOLVCWjIX52hcEEg+Bzo3uPZ3apYtIgqfjrn/fPB0bCVIbi
- 0hAw6W7Ygt+T1Wuak/EV0KS/If309W4b/DiI+fkQpZhCiLUK7DrA97xA1OT1bJJYkC3y4seo
- 0VHOnZTpnOyZ+8Ejs6gcMiEboFHEEt9P+3mrlVJL/cHpGRtg0ZKJ4QC8UmCE3arzv7KCAc+2
- dRDWiCoRovqXGE2PdAW8788qH5DEXnwfzDhnCQ9Eot0Eyi41d4PWI8TWZFi9KzGXJO82O9gW
- 5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
- X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260223173232.453165-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: multipart/mixed;
+ BOUNDARY="3866299591-506529974-1771890007=:59426"
+Content-ID: <fc2ad578-7759-07fc-3866-49c7a1b04a85@eik.bme.hu>
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,22 +75,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/23/26 9:32 AM, Peter Maydell wrote:
-> The migrate_add_blocker() function documents that if it fails it will
-> free the Error it is passed via its reasonp argument and set reasonp
-> to NULL.  That means that in kvm_arm_enable_mte() we don't need to
-> call error_free(mte_migration_blocker) in the failure codepath.
-> Doing so is harmless because error_free(NULL) is permitted and does
-> nothing, but we can remove the unnecessary code.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This seems to be the only caller of migrate_add_blocker() that
-> was doing this.
-> ---
->   target/arm/kvm.c | 1 -
->   1 file changed, 1 deletion(-)
-> 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+--3866299591-506529974-1771890007=:59426
+Content-Type: text/plain; CHARSET=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+Content-ID: <f56486b2-6657-eb31-b3a2-e5d65cccfd58@eik.bme.hu>
+
+On Mon, 23 Feb 2026, Ruslan Ruslichenko wrote:
+> On Mon, Feb 23, 2026 at 2:23 PM Alex Bennée <alex.bennee@linaro.org> wrote:
+>>
+>> Thomas Huth <thuth@redhat.com> writes:
+>>
+>>>  Hi!
+>>>
+>>> On 19/02/2026 15.48, Ruslan Ruslichenko wrote:
+>>>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+>>>> Add new '-hw-dtb' command-line option and corresponding
+>>>> MachineState property.
+>>>> The 'hw-dtb' option allows to specify a Device tree
+>>>> binary with hardware description which Qemu should
+>>>> emulate.
+>>>> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+>>>> ---
+>>>>   hw/core/machine.c        | 19 +++++++++++++++++++
+>>>>   include/hw/core/boards.h |  1 +
+>>>>   qemu-options.hx          |  9 +++++++++
+>>>>   system/vl.c              |  3 +++
+>>>>   4 files changed, 32 insertions(+)
+>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
+>>>> index d4ef620c17..affd24cd49 100644
+>>>> --- a/hw/core/machine.c
+>>>> +++ b/hw/core/machine.c
+>>>> @@ -363,6 +363,20 @@ static void machine_set_dtb(Object *obj, const char *value, Error **errp)
+>>>>       ms->dtb = g_strdup(value);
+>>>>   }
+>>>>   +static char *machine_get_hw_dtb(Object *obj, Error **errp)
+>>>> +{
+>>>> +    MachineState *ms = MACHINE(obj);
+>>>> +
+>>>> +    return g_strdup(ms->hw_dtb);
+>>>> +}
+>>>> +
+>>>> +static void machine_set_hw_dtb(Object *obj, const char *value, Error **errp)
+>>>> +{
+>>>> +    MachineState *ms = MACHINE(obj);
+>>>> +
+>>>> +    ms->hw_dtb = g_strdup(value);
+>>>> +}
+>>>> +
+>>>>   static char *machine_get_dumpdtb(Object *obj, Error **errp)
+>>>>   {
+>>>>       MachineState *ms = MACHINE(obj);
+>>>> @@ -1145,6 +1159,11 @@ static void machine_class_init(ObjectClass *oc, const void *data)
+>>>>       object_class_property_set_description(oc, "dtb",
+>>>>           "Linux kernel device tree file");
+>>>>   +    object_class_property_add_str(oc, "hw-dtb",
+>>>> +                            machine_get_hw_dtb, machine_set_hw_dtb);
+>>>> +    object_class_property_set_description(oc, "hw-dtb",
+>>>> +                "A device tree binary used to describe the hardware to QEMU");
+>>>
+>>> Do the hardware dtbs differ from the ones that are passed to the Linux
+>>> kernel? If not, I think you likely could use the existing "dtb"
+>>> property for your new feature?
+>>
+>> They have to - the normal DTB cannot define the whole system because its
+>> only concerned with reporting what the kernel can see to the kernel and
+>> not defining the whole system including what the firmware sees.
+>>
+>
+> Yes, Indeed.
+> Normal DTB was explored, but there is not enough information to create
+> QEMU models from it.
+> Thus we need to have a separate device tree.
+
+What additional data is needed that's not present in dtb from firmware and 
+what if that additional data is passed to the kernel? I think the kernel 
+would just ignore the additional data that it doesn't need so one dtb 
+might be enough even if it has to be more detailed than what the kernel 
+normally gets. If that works we don't need a separate option.
+
+This series seems to be more complex than Bernhard's e500-fdt experiment 
+(I've linked to that in 
+<https://lists.nongnu.org/archive/html/qemu-devel/2026-01/msg05470.html>) 
+Bernhard's patch only added minimal support for creating devices from fdt 
+and then put additional logic in the devices instead of handling them in 
+generic code. Would such an approach lead to simpler fdt handling? If not 
+why is the additional complexity needed?
+
+Regards,
+BALATON Zoltan
+--3866299591-506529974-1771890007=:59426--
 

@@ -4,86 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF76E9B250
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC8AEE9B25A
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vurFg-0005gS-D2; Tue, 24 Feb 2026 07:10:56 -0500
+	id 1vurFP-0005bw-O3; Tue, 24 Feb 2026 07:10:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFJ-0005aQ-9l
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:34 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1vurF8-0005XO-Ji
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:23 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFF-0005tG-DM
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:32 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-65a3527c5easo9467707a12.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:22 -0800 (PST)
+ id 1vurF4-0005ru-C8
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:20 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-65b94e0a875so7799163a12.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771935021; x=1772539821; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hdm/FWJYafm9q16YplQfONC7aZ1Ud4UCye6jBHBX6zg=;
- b=FW6NUDS6QM0b0x1/xPGux5nI4/l7zolm44WoSHD6jHNEnpFMGNka1UcbLmW7SrG4ne
- 6pvzjyVVRRFMFo7fHzKDUJeHV0P7lXXho2kN9tqSYafFHxZhnqotBBQffCxzXVxQ4LhA
- TEnH2g1OPZ4GGd+29xsDrFxQl52VG+xcFmKS0kYetzQRwCVakU6PMLnYHXZ3oIem7nOp
- 8/h5FK3HtA6s31Euh4G03ASFTlcwpZXUg7VWJM1CIlZ8izbt4VaC56XWo1Bv71TIk/3s
- NRgWsvDZy3Gkcd1TfBfqaJEav1yLa1J5MmAfZOpgO0UrRUyPBq2SryTpAmnl0rWT2Q4y
- Pj2A==
+ d=linaro.org; s=google; t=1771935016; x=1772539816; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=+zKxWgR6pOqdVvfJdi5Yp5BJuOETBq4A6TkE1pQ808I=;
+ b=blpTHlCNM96fOM0K5b0H5oL8NwiFGlhj0xGKZwYfDmrPrAni5Q/hqRAY6iO2nkajBk
+ 0OEz7bNUqApiQHRSloax6wrxA3k7FiBx9fmo+f4bmorxcLx1ihNMT5iz1ViwKj6ttOjV
+ 0r/Uk/fozxI1zG9fOSIunr9TtJUunIDnjdRLmGCVOV5ZcB0ymmqbwplEf/SPsWwkq+3U
+ JRCJvotHFsqJHVy5Ckg627iQt/wVbwT8LUq5xxRLHOMpZWqMeEhZv5qqfw6ux4Gc7lY5
+ 8X6GGlQE4tR3Rz3Jfpm3Dpe/CAKKNSXpufBTlp7CVLd1cVVdoTnIU4cQkRP0WK8+TOIy
+ E+6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771935021; x=1772539821;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=hdm/FWJYafm9q16YplQfONC7aZ1Ud4UCye6jBHBX6zg=;
- b=mEundEjKDrR+fumsCeN2tY8Zv4I6ptfSMow00J6nXyaVG1KeQ3JcboC4qiMwksfV6d
- MotYJJ01Hn6hrxuL0rVhaSEOEW/8mEhdLTYoKZZpLq5GgWd7sD06cyybe2Wjj/oOdmCY
- nEtMRy6driJlGVEZiCuUYzJzRiLwNc/Zfk8/13Hp+C2w4ONBqwMxHQKHyFAx+v1x4wSu
- iNNINvPOohn4dsbmdPDwIY5mtWZJyHtlMUPWywUkjPTP5vK6bTx1UDkJkQGY0Jqb4++O
- A2RPMvPTTbhyLbW44cUiJRLRMNQ2wneEc9U/AQvZaaovaEQLjHe0ZZ7M0yMJ2jApQZSw
- LHLA==
+ d=1e100.net; s=20230601; t=1771935016; x=1772539816;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+zKxWgR6pOqdVvfJdi5Yp5BJuOETBq4A6TkE1pQ808I=;
+ b=sSoeHljNdwY47gMiSgmFwXRRUiJARuNdxG0zFuxrpb8JQoWqT55cRC9IINhda6Yrbq
+ rwc9wEeotT4USjMmLPs7XA86vkJWc0qu3vWl+GWNPt9ZUZGxI09yqiBr/SOPlscCwA7/
+ psX2RXaiXIAUJojkvvQg+75PDaVsmw7/aP1TIr9pXpTZ28sqdeSuC7dMk3y7jXrUmlLB
+ VPlVp/EKJ9KDQPx0Fgh199iq2XcpAf+UZrFobLboHMa2BX+yoplsdvEwMRLCsKoGYPYF
+ FBxdzfxaS9u7R1NVGvKojhIRqfSBrvnFo96TgiDOkaQdGgnA/Jia+ScvwXjKQMhT4LVC
+ jBbg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWaEJpwnP4aIVakjLRd/tugJCjilWP1YkE+GTUc4ryjmtiYn2726gQwfdNbnIAYsFqQe+8eefmWpg==@nongnu.org
-X-Gm-Message-State: AOJu0YwtGwgC/D/5WAUDuQT4/FTxEvHVEKAMbYrbzSSWAfuQSjpElXBg
- UjLKCB5sHnExs4LGzZFHJ9dPASASTtm3O8JXzrslLkmvgmMRsgo6pHzBNDG+vuo8kdo=
-X-Gm-Gg: ATEYQzzwp1udeG0ytSByoamCHiaS7soseffr9Ddfoh/ZtJR268l0eXL8ybt5mnxUWGB
- 52/O9tYngyjaYBvGlrP+j7jeyll7XX4dubt8B9OWOpBBayaJYRRgH85stBcKLVYHtvctYSIZDYf
- zXfoNudSTfNnUYldg+J3VKEuBGwhcovjqfw/8DSV7GTbUWDJawxXr4fWgSeAbS6MNmxteU7UDDJ
- o57PRi6VRN5RxkttDxqLiu9VxMNS7mIwGEHe6nNlWx/4yDx+kW0GwgIxbmE4hWip4LkEhxdeIK3
- 5RbsRGQ4wR/tZbZflsa+Pn4GVcfGkVCuRHqP/Yb30L0f01nzMZyeN7gj3eUD2gnZ5+0lV2NonQw
- p+B3rHXBiz5Mv15hsUQ5iEPliHeFznvPBvFCbWh/d+RIVKAXA6/xTOzE3zkJxVMU64ij2ZYl/9Y
- 81PLjde1ADrW5TWsNy+7dSIvRsB4/f71Ci7w==
-X-Received: by 2002:a05:6402:399b:b0:65b:bd9d:731a with SMTP id
- 4fb4d7f45d1cf-65ea4ec7eebmr5431890a12.13.1771935021335; 
- Tue, 24 Feb 2026 04:10:21 -0800 (PST)
+ AJvYcCWSN+j3twkGziaj/0CmneDVmQisyUGf9VnsiXc7iEmI7rGhnoehloFMrj0S4D4kGL0nY6DXhyI5iw==@nongnu.org
+X-Gm-Message-State: AOJu0YwCP1bQdTn/sSHuwL7aWnbNF5fuuU2O34QOfOJRaSmyXefeVOED
+ TUHTvdFHryOiKn5U2AKxuG+FztIocUKmS0cH2aSm9ugxZ0d8byzc64iUh+lqEA0Sa/U=
+X-Gm-Gg: ATEYQzzRJlzY8OqSryBcch0C4yDsKYuZl1G3s5s7C2yw/2sV1IdM4+b0JRvsUL1iZ1L
+ F1Maelr8zsdzwjg7MnNh3mIAaiQTJVFBEZDoFeI11991kwH1bK0jUp+dyKFoBMLGT9tHYAISmjJ
+ MrDNYq/+itdxO27Oc2eUvIdK+3lhaMXUurDATkFmjtvAXaH+sWE+GwALDMTAKiFV173lu8rFNW2
+ T3KQIijbEmFikt6uH0PgtVUnOXkIzdxyVg1DMabwsdhKaC2Hq2267LhbOojUkDToHEdse3huFvO
+ oSnFJPByo8ZypReQLSC2W4R1008FP0JUDxqSO38mbOdln7AD78P+GE/zC9KC7KA6+v1xz+G40/j
+ Zs7a/LPPkAZVKXNkcjn9i1t6csSaK2t1iGO8vw9Ozkjlt0B5VQsPjLwq/EI3Dq99Xtk34KLWTW7
+ 6z+ABT0VuMjlxTRJdPmdwyqX4=
+X-Received: by 2002:a17:907:94cc:b0:b88:31c1:c770 with SMTP id
+ a640c23a62f3a-b9081922ec1mr660690066b.5.1771935015932; 
+ Tue, 24 Feb 2026 04:10:15 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65eaba3f967sm3618611a12.31.2026.02.24.04.10.16
+ a640c23a62f3a-b9084c5dcb2sm416472766b.6.2026.02.24.04.10.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 04:10:18 -0800 (PST)
+ Tue, 24 Feb 2026 04:10:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0EE9D5F8D3;
- Tue, 24 Feb 2026 12:10:15 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 8FE415F81D;
+ Tue, 24 Feb 2026 12:10:14 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- eca <noreply@eca.dev>
-Subject: [PATCH 5/8] target/arm: extend WFX support for A-profile
-Date: Tue, 24 Feb 2026 12:10:11 +0000
-Message-ID: <20260224121014.279248-6-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 0/8] arm: implement WFx[T] for aa64 (!!GenAI usage!!)
+Date: Tue, 24 Feb 2026 12:10:06 +0000
+Message-ID: <20260224121014.279248-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260224121014.279248-1-alex.bennee@linaro.org>
-References: <20260224121014.279248-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,307 +102,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit extends support for WFI, WFE, WFIT, and WFET instructions
-for A-profile ARM CPUs, ensuring proper architectural semantics and
-full ISS (Instruction Specific Syndrome) field support for traps.
+*************************************************************************
+** GenAI was used in the production of this series, it is not intended **
+** for merging but an experiment to explore the capabilities of the    **
+** current models and perhaps inform future discussions. There is no   **
+** obligation to review this code.                                     **
+*************************************************************************
 
-Key changes:
-- Update `syn_wfx` in `target/arm/syndrome.h` to include `RN` (register
-  number) and `RV` (register valid) fields using `registerfields.h`
-  macros.
-- Refactor `HELPER(wfi)` and `HELPER(wfit)` to use correct AArch64
-  syndrome values (CV=0, COND=0xf).
-- Implement `HELPER(wfet)` and update `trans_WFET` to support the new
-  Wait For Event with Timeout instruction.
-- Update `HELPER(wfe)` to implement proper A-profile semantics,
-  including trap checks and event register handling.
-- Extend `event_register` handling to all ARM CPUs (not just M-profile)
-  by updating `HELPER(sev)` and `arm_cpu_has_work`.
-- Declare WFxT helpers as `TCG_CALL_NO_WG` as they can raise
-  exceptions.
+This order and layout of this series is a little unusual as I've
+included patches for tooling which wouldn't normally be included. This
+includes the PLAN.md which obviously wouldn't be something you keep in
+the tree.
 
-🤖 Generated with [eca](https://eca.dev)
+I've also included fixup patches where I cleaned up after the agent had a
+go. I also have noted what tweaks I've made to the agent commits under
+the ---. The patches with my s-o-b are pure human generated.
 
-Co-Authored-By: eca <noreply@eca.dev>
+I decided to try this experiment when fixing the WFIT syndrome data
+and could see a larger re-factoring would be needed to properly handle
+the RN/RD fields of the ISS. In total I've spent about 6 hours (3
+idly prompting the agent on a Sunday afternoon and 3 actually
+debugging and following up on failures). The total API cost was about
+£1.60 which means it didn't need to save much of my time to make it
+worthwhile. The model used was gemini-3-flash-preview driven by Editor
+Code Assistant (https://eca.dev) in my Emacs session.
 
----
-ajb
-  - this commit is a bit big, it didn't follow the instructions to
-  keep the commits small
-  - I had to add DEF_HELPER_FLAGS_3 to the helpers as it didn't
-  realise we need to ensure rd is potentially rectified.
----
- target/arm/syndrome.h          |  24 ++++++--
- target/arm/tcg/helper-defs.h   |   3 +-
- target/arm/cpu.c               |   6 +-
- target/arm/tcg/op_helper.c     | 101 +++++++++++++++++++++++----------
- target/arm/tcg/translate-a64.c |  17 +++---
- 5 files changed, 104 insertions(+), 47 deletions(-)
+My impression is it did help me get something working faster than if
+I'd gone from scratch. Even though the agent failed to account for GIC
+and page table device mapping it was helped that it was being driven
+by someone with a fairly good understanding of QEMU's internals.
+Rather than leaving it to figure out why it was seeing data aborts I
+was able to quickly theorise the reason (no mapping) and direct it to
+add the needed support. I suspect it would have taken me longer to get
+through that bit myself because I would be digging into the
+kvm-unit-test code or re-reading the page table format documentation.
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index bff61f052cc..49861758262 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -26,6 +26,7 @@
- #define TARGET_ARM_SYNDROME_H
- 
- #include "qemu/bitops.h"
-+#include "hw/core/registerfields.h"
- 
- /* Valid Syndrome Register EC field values */
- enum arm_exception_class {
-@@ -352,11 +353,26 @@ static inline uint32_t syn_breakpoint(int same_el)
-         | ARM_EL_IL | 0x22;
- }
- 
--static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
-+FIELD(WFX_ISS, TI, 0, 2)
-+FIELD(WFX_ISS, RV, 14, 1)
-+FIELD(WFX_ISS, RN, 15, 5)
-+FIELD(WFX_ISS, COND, 20, 4)
-+FIELD(WFX_ISS, CV, 24, 1)
-+
-+static inline uint32_t syn_wfx(int cv, int cond, int rd, int rv, int ti, bool is_16bit)
- {
--    return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
--           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
--           (cv << 24) | (cond << 20) | ti;
-+    uint32_t res = (EC_WFX_TRAP << ARM_EL_EC_SHIFT);
-+
-+    res = FIELD_DP32(res, WFX_ISS, CV, cv);
-+    res = FIELD_DP32(res, WFX_ISS, COND, cond);
-+    res = FIELD_DP32(res, WFX_ISS, RN, rd);
-+    res = FIELD_DP32(res, WFX_ISS, RV, rv);
-+    res = FIELD_DP32(res, WFX_ISS, TI, ti);
-+
-+    if (!is_16bit) {
-+        res |= ARM_EL_IL;
-+    }
-+    return res;
- }
- 
- static inline uint32_t syn_illegalstate(void)
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 5a10a9fba3b..d54eb63eef6 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -55,7 +55,8 @@ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
--DEF_HELPER_2(wfit, void, env, i64)
-+DEF_HELPER_FLAGS_3(wfit, TCG_CALL_NO_WG, void, env, i64, i32)
-+DEF_HELPER_FLAGS_3(wfet, TCG_CALL_NO_WG, void, env, i64, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 10f8280eef2..bc789515af9 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -144,10 +144,8 @@ static bool arm_cpu_has_work(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
- 
--    if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
--        if (cpu->env.event_register) {
--            return true;
--        }
-+    if (cpu->env.event_register) {
-+        return true;
-     }
- 
-     return (cpu->power_state != PSCI_OFF)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index aa14f15eb62..37538daea74 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -393,13 +393,17 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
-     }
- 
-     if (target_el) {
--        if (env->aarch64) {
-+        int cv = 1, cond = 0xe;
-+
-+        if (is_a64(env)) {
-             env->pc -= insn_len;
-+            cv = 0;
-+            cond = 0xf;
-         } else {
-             env->regs[15] -= insn_len;
-         }
- 
--        raise_exception(env, excp, syn_wfx(1, 0xe, 0, insn_len == 2),
-+        raise_exception(env, excp, syn_wfx(cv, cond, 0, 0, 0, insn_len == 2),
-                         target_el);
-     }
- 
-@@ -409,7 +413,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
- #endif
- }
- 
--void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
-+void HELPER(wfit)(CPUARMState *env, uint64_t timeout, uint32_t rd)
- {
- #ifdef CONFIG_USER_ONLY
-     /*
-@@ -448,7 +452,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
- 
-     if (target_el) {
-         env->pc -= 4;
--        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
-+        raise_exception(env, excp, syn_wfx(0, 0xf, rd, 1, 2, false), target_el);
-     }
- 
-     if (uadd64_overflow(timeout, offset, &nexttick)) {
-@@ -469,14 +473,50 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
- #endif
- }
- 
-+void HELPER(wfet)(CPUARMState *env, uint64_t timeout, uint32_t rd)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    return;
-+#else
-+    ARMCPU *cpu = env_archcpu(env);
-+    CPUState *cs = env_cpu(env);
-+    uint32_t excp;
-+    int target_el = check_wfx_trap(env, true, &excp);
-+    uint64_t cntval = gt_get_countervalue(env);
-+    uint64_t offset = gt_direct_access_timer_offset(env, GTIMER_VIRT);
-+    uint64_t cntvct = cntval - offset;
-+    uint64_t nexttick;
-+
-+    if (env->event_register || cpu_has_work(cs) || cntvct >= timeout) {
-+        env->event_register = false;
-+        return;
-+    }
-+
-+    if (target_el) {
-+        env->pc -= 4;
-+        raise_exception(env, excp, syn_wfx(0, 0xf, rd, 1, 3, false), target_el);
-+    }
-+
-+    if (uadd64_overflow(timeout, offset, &nexttick)) {
-+        nexttick = UINT64_MAX;
-+    }
-+    if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-+        timer_mod_ns(cpu->wfxt_timer, INT64_MAX);
-+    } else {
-+        timer_mod(cpu->wfxt_timer, nexttick);
-+    }
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
-+#endif
-+}
-+
- void HELPER(sev)(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
-     CPU_FOREACH(cs) {
-         ARMCPU *target_cpu = ARM_CPU(cs);
--        if (arm_feature(&target_cpu->env, ARM_FEATURE_M)) {
--            target_cpu->env.event_register = true;
--        }
-+        target_cpu->env.event_register = true;
-         if (!qemu_cpu_is_self(cs)) {
-             qemu_cpu_kick(cs);
-         }
-@@ -493,33 +533,34 @@ void HELPER(wfe)(CPUARMState *env)
-      */
-     return;
- #else
--    /*
--     * WFE (Wait For Event) is a hint instruction.
--     * For Cortex-M (M-profile), we implement the strict architectural behavior:
--     * 1. Check the Event Register (set by SEV or SEVONPEND).
--     * 2. If set, clear it and continue (consume the event).
--     */
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        CPUState *cs = env_cpu(env);
-+    CPUState *cs = env_cpu(env);
-+    uint32_t excp;
-+    int target_el = check_wfx_trap(env, true, &excp);
- 
--        if (env->event_register) {
--            env->event_register = false;
--            return;
-+    if (env->event_register) {
-+        env->event_register = false;
-+        return;
-+    }
-+
-+    if (target_el) {
-+        bool is_16bit = false;
-+        if (is_a64(env)) {
-+            env->pc -= 4;
-+        } else {
-+            is_16bit = env->thumb;
-+            env->regs[15] -= (is_16bit ? 2 : 4);
-         }
- 
--        cs->exception_index = EXCP_HLT;
--        cs->halted = 1;
--        cpu_loop_exit(cs);
--    } else {
--        /*
--         * For A-profile and others, we rely on the existing "yield" behavior.
--         * Don't actually halt the CPU, just yield back to top
--         * level loop. This is not going into a "low power state"
--         * (ie halting until some event occurs), so we never take
--         * a configurable trap to a different exception level
--         */
--        HELPER(yield)(env);
-+        raise_exception(env, excp,
-+                        syn_wfx(is_a64(env) ? 0 : 1,
-+                                is_a64(env) ? 0xf : 0xe,
-+                                0, 0, 1, is_16bit),
-+                        target_el);
-     }
-+
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
- #endif
- }
- 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 5d261a5e32b..f76a00d1329 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2064,7 +2064,7 @@ static bool trans_WFIT(DisasContext *s, arg_WFIT *a)
-     }
- 
-     gen_a64_update_pc(s, 4);
--    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd));
-+    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd), tcg_constant_i32(a->rd));
-     /* Go back to the main loop to check for interrupts */
-     s->base.is_jmp = DISAS_EXIT;
-     return true;
-@@ -2076,14 +2076,15 @@ static bool trans_WFET(DisasContext *s, arg_WFET *a)
-         return false;
-     }
- 
--    /*
--     * We rely here on our WFE implementation being a NOP, so we
--     * don't need to do anything different to handle the WFET timeout
--     * from what trans_WFE does.
--     */
--    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--        s->base.is_jmp = DISAS_WFE;
-+    if (s->ss_active) {
-+        /* Act like a NOP under architectural singlestep */
-+        return true;
-     }
-+
-+    gen_a64_update_pc(s, 4);
-+    gen_helper_wfet(tcg_env, cpu_reg(s, a->rd), tcg_constant_i32(a->rd));
-+    /* Go back to the main loop to check for interrupts */
-+    s->base.is_jmp = DISAS_EXIT;
-     return true;
- }
- 
+When IRQs weren't firing feeding results of the test case with the
+additional "-d trace:gic\*" debug output gave the model enough context
+to figure out what it had missed in the setup.
+
+Despite the plan it smooshed a lot of stuff into each commit which
+make them not ideal for review.
+
+From what I've seen in this example the potential for inadvertent
+copyright infringement is fairly low. Certainly the TCG code was
+following existing styles for QEMU code and the page table setup was a
+straight evolution. I'm not sure if the gic initialisation code would
+count as novel enough to be copyrightable anyway.
+
+As a first draft I think it worked quite well. To actually turn it
+into a proper series I would break the code apart into much more
+discreet steps and include re-factor steps before functionality
+changes. For example the addition of the rd field to the helper while
+correct missed the fact the timeout from rd is also in the args. I
+would have just pushed the reading of rd into the helper instead.
+
+I think it might be worth going through those steps to make a "proper"
+series and seeing how different a pure human series would make.
+However having a working reference with tests will be pretty helpful.
+
+Any thoughts?
+
+Alex.
+
+Alex Bennée (8):
+  target/arm: set the correct TI bits for WFIT traps
+  .eca: basic configuration for Editor Code Assistant
+  AGENTS.md: add basic AGENTS.md for QEMU
+  PLAN.md: add plan for the current work
+  target/arm: extend WFX support for A-profile
+  tests/tcg/aarch64: Add WFX instructions system test
+  tests/tcg/aarch64: fixes for WFX instructions system test
+  target/arm: fixes for WFx[T] support
+
+ target/arm/syndrome.h                     |  24 ++++-
+ target/arm/tcg/helper-defs.h              |   3 +-
+ tests/tcg/aarch64/system/lib/gicv3.h      |  56 ++++++++++
+ target/arm/tcg/a64.decode                 |   3 +-
+ target/arm/cpu.c                          |   6 +-
+ target/arm/tcg/op_helper.c                | 101 +++++++++++------
+ target/arm/tcg/translate-a64.c            |  27 +++--
+ target/arm/tcg/translate.c                |   4 +-
+ tests/tcg/aarch64/system/lib/gicv3.c      |  77 +++++++++++++
+ tests/tcg/aarch64/system/wfx.c            | 126 ++++++++++++++++++++++
+ .eca/config.json                          |  43 ++++++++
+ .eca/skills/checkpatch/SKILL.md           |   9 ++
+ .eca/skills/gtags/SKILL.md                |   7 ++
+ AGENTS.md                                 |  18 ++++
+ PLAN.md                                   |  77 +++++++++++++
+ tests/tcg/aarch64/Makefile.softmmu-target |  15 ++-
+ tests/tcg/aarch64/system/boot.S           |  55 ++++++----
+ 17 files changed, 579 insertions(+), 72 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.h
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.c
+ create mode 100644 tests/tcg/aarch64/system/wfx.c
+ create mode 100644 .eca/config.json
+ create mode 100644 .eca/skills/checkpatch/SKILL.md
+ create mode 100644 .eca/skills/gtags/SKILL.md
+ create mode 100644 AGENTS.md
+ create mode 100644 PLAN.md
+
 -- 
 2.47.3
 

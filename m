@@ -4,108 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B463E9B267
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 13:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3422DE9B269
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 14:10:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vusqG-0007TY-LZ; Tue, 24 Feb 2026 08:52:48 -0500
+	id 1vut7J-0007OH-E3; Tue, 24 Feb 2026 09:10:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vusqF-0007TQ-5g
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 08:52:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vut7F-0007Nm-Nh; Tue, 24 Feb 2026 09:10:22 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vusqD-0000YL-DP
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 08:52:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771941163;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lt8BBNz8s0SpZbq73sqRpE3xZ8Z+U0PvjqMyHfQe41o=;
- b=LGyKDmEebLQnQH0NKI1OxfwxiKBi2MIzerma2rh0TNopD0RQ+Bik3UNv7MAPgnWqNIOyx8
- dvNZ2pt49zG3BLqJoDg5ywnzwmmwKHWz6ilGdyQg4URQltdI8Kd2crmEqeLNPd1MrSwFBq
- D5n3H1uTy/fadkQFm6jOty92K5jJ9F8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-543-j52aIkEKNzidl0k6bWvozg-1; Tue, 24 Feb 2026 08:52:42 -0500
-X-MC-Unique: j52aIkEKNzidl0k6bWvozg-1
-X-Mimecast-MFC-AGG-ID: j52aIkEKNzidl0k6bWvozg_1771941161
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48071615686so7749175e9.1
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 05:52:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771941161; x=1772545961;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lt8BBNz8s0SpZbq73sqRpE3xZ8Z+U0PvjqMyHfQe41o=;
- b=Gffz0Yu2niirNXEC03lsvJcjYpC/zYKKAf4nQf+C7yWCKgGyoZge54wMq4OVU2XLFF
- uplRur6D5JL3fboXZ2L1GJmCBLtqtTK6MdmAimdi4rrUNok0r8VAnReC74y4OXsR43nB
- ukI+EeDezZj85PxyLeMm2P18xwdrHRLGp3qc+43UQR4yW+4OPL+N0ByeR3Y6C2/LALQN
- 3K00I0MnPnqJT/XzlJxQ1TPi5QZUfoXF9QSvobkBLpvxgp5yKZ/yDEU7eoMXeSOF43zV
- bTZGkCxduU+rzuszp4kn+DWYrkek4bx/YUpSqQwlpV9msCmRmTM7usfcU1rqczogD+jd
- Qt4g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUf/gI2gUSG3p5a1rDCB4QvKdGanhVyPNrfWW/ScqNa8Si1RzXWqqkIBK2YSMgi9TVWDC8JzKeSVQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1MXkmhvbJdFzrjP+7iPvZICgF9+W6c0+zFhXM8G7GC6scCf7V
- jzf+Dpj3EeX8F+O26XCpmsiVBiE5iIMk9ySRIq1SbjI+SD+uQHbEV8ZYc265Enoi5t25VNkuyjy
- zzhs9BfaBzJEKuw7pUZk1EJXa/WSNZnAL/xqsZlmILWjSDciljLjEfA==
-X-Gm-Gg: AZuq6aKIyFIJmRk8CsvTlVMBRk0RJgtxBkWB8Q+r7BkUH+ge556FFk2HY9wtZm+AuQT
- dmMKT7fZP9LtT9hwfbcVBXKzkjKB2HdhFtNiu9AR4uBMS3cr2/0eccBZb31F7lES9lpj2UauAHN
- 7gzjQZt26/0Jrr1jytPaRJ5nK1iXjRIjbgr5jRVwwIHXqIbEq4FkD0Y9zyIboSvRKsvKsiihkVn
- X6IfLxir++u8pGih+whIvsoGGsaW7XrQIeYe80TdL+mewWkuRVMTlzsR/XWjKwq1YdZq5NxDicO
- anZp9tywa5is5hrDKXY4x+d0cCd89orEZCesIqcCbNTiNgCL0vk7VLMCO3B7pjFJ0LgnyoYuR6E
- XG9PDIVHNCMTyfbpvqcYfLdTfKOvQrUiJoMd1OWdAk19OX4tg1LJLkgMnTuMLcK/AwiIjng==
-X-Received: by 2002:a05:600c:3484:b0:483:3380:ca11 with SMTP id
- 5b1f17b1804b1-483a95ee3fdmr179355945e9.33.1771941161181; 
- Tue, 24 Feb 2026 05:52:41 -0800 (PST)
-X-Received: by 2002:a05:600c:3484:b0:483:3380:ca11 with SMTP id
- 5b1f17b1804b1-483a95ee3fdmr179355665e9.33.1771941160689; 
- Tue, 24 Feb 2026 05:52:40 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bd6854c7sm4260105e9.0.2026.02.24.05.52.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Feb 2026 05:52:40 -0800 (PST)
-Message-ID: <b362122e-f46a-4298-874c-63b76cb62489@redhat.com>
-Date: Tue, 24 Feb 2026 14:52:38 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 0/5] vEVENTQ support for accelerated SMMUv3 devices
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
- mochs@nvidia.com, jan@nvidia.com, jgg@nvidia.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, kjaju@nvidia.com
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vut7C-0004wB-Pf; Tue, 24 Feb 2026 09:10:21 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.150])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fL02f4tjbzHnH7x;
+ Tue, 24 Feb 2026 22:09:14 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id B64EA40565;
+ Tue, 24 Feb 2026 22:09:54 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 24 Feb
+ 2026 14:09:53 +0000
+Date: Tue, 24 Feb 2026 14:09:52 +0000
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <nicolinc@nvidia.com>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
+Subject: Re: [PATCH v7 1/5] backends/iommufd: Introduce
+ iommufd_backend_alloc_veventq
+Message-ID: <20260224140952.00005eb0@huawei.com>
+In-Reply-To: <20260219090103.33697-2-skolothumtho@nvidia.com>
 References: <20260219090103.33697-1-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260219090103.33697-1-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vphzld8U6pgdfd3xZIIdnfoQonFj2GjFjvKmxjd7TLI_1771941161
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+ <20260219090103.33697-2-skolothumtho@nvidia.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.358, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.659,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,67 +68,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+On Thu, 19 Feb 2026 09:00:59 +0000
+Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-On 2/19/26 10:00 AM, Shameer Kolothum wrote:
-> Hi,
->
-> Changes from v6:
->  https://lore.kernel.org/qemu-devel/20260213103942.142823-1-skolothumtho@nvidia.com/
->  
->  -Addressed feedback and picked up R-by/T-by tags. Thanks!
->  -Updated error report (patch #3)
->
-> Please take a look and let me know.
-Thanks Shameer, this looks ready now!
-
-Feel free to grab my
-
-Tested-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
->
-> Thanks,
-> Shameer
->
-> ---
-> Background(From v2):
->
-> When accel=on is enabled for an SMMUv3 instance, the host hardware SMMUv3
-> may generate Stage-1 (S1) event notifications that are intended for the
-> vIOMMU instance in userspace.
->
-> This series adds QEMU support for receiving such host events through the
-> vEVENTQ interface and propagating them to the guest. The implementation
-> uses the vEVENTQ support provided by the IOMMUFD subsystem in the kernel.
->
-> I have tested this on a Grace platform using some hacks to generate
-> events. Further testing and feedback are welcome.
-> ---
->
->
-> Nicolin Chen (2):
->   backends/iommufd: Introduce iommufd_backend_alloc_veventq
->   hw/arm/smmuv3-accel: Allocate vEVENTQ for accelerated SMMUv3 devices
->
-> Shameer Kolothum (3):
->   hw/arm/smmuv3-accel: Add viommu free helper
->   hw/arm/smmuv3: Introduce a helper function for event propagation
->   hw/arm/smmuv3-accel: Read and propagate host vIOMMU events
->
->  hw/arm/smmuv3-accel.h    |   6 ++
->  hw/arm/smmuv3-internal.h |   4 ++
->  include/system/iommufd.h |  14 ++++
->  backends/iommufd.c       |  31 +++++++++
->  hw/arm/smmuv3-accel.c    | 146 ++++++++++++++++++++++++++++++++++++---
->  hw/arm/smmuv3.c          |  26 +++++--
->  backends/trace-events    |   1 +
->  hw/arm/trace-events      |   2 +-
->  8 files changed, 215 insertions(+), 15 deletions(-)
->
-
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> 
+> Add a new helper for IOMMU_VEVENTQ_ALLOC ioctl to allocate a virtual event
+> queue (vEVENTQ) for a vIOMMU object, and define struct IOMMUFDVeventq to
+> represent the allocated vEVENTQ.
+> 
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 

@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6785CF3C99B
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA8C8F3C99E
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:45:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuuZz-000830-0v; Tue, 24 Feb 2026 10:44:07 -0500
+	id 1vuuZy-00082j-Cs; Tue, 24 Feb 2026 10:44:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZr-0007ti-4P
+ id 1vuuZr-0007tl-5B
  for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:44:00 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZm-0006JF-WD
+ id 1vuuZl-0006Iq-2h
  for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:43:57 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-65c187dfc82so6966457a12.2
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:53 -0800 (PST)
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-65a380b554bso11058226a12.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771947833; x=1772552633; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=hoSqACMxBpjn4o73gjVBwtRN5Jt4IHBoZBFOG4xNiyc=;
- b=H8Y2mJJH2kWiS5cTKGPQC0qBSul+KxlGYVxxW5Kd3oOV4EqmWsYgst3+69/YXAGR5E
- nYCC5ddVIrURa7M2hi7hpw+GU0e32gUJmwcXqKEwR7jBjPFDa0Y8JGzz78yv4mQ3Eo6g
- 41TzRPY5fXZANyWLEOT72U0cXotp0I1RkhlYsV52SycN6rcQlQwcUvZp3dCqX3wDJdL+
- YHtMqWp6hS0KiYRfIyacYLK8N/wxdmFgKQrXeqoYhoXMfo1FUYj9A6nmiR2SYXVan5I8
- jCGGI07YZYpZk+3SCK/tyMEJkgxUV7Mrf84MNeNVMhxKmIS8Bzk7A+/uo38/H2fQQTiV
- dCIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771947833; x=1772552633;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1771947831; x=1772552631; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=hoSqACMxBpjn4o73gjVBwtRN5Jt4IHBoZBFOG4xNiyc=;
- b=raTmESjO+XFGK8BLFKLVRTMyt6+Z2SrBpSY4puuFP6zpvaW2PzHxV0FRlGHmT3OCHR
- v6HWNOuiqxgz2fUbNSrx9YQwOc18VRIPLl5IbLGVJuDqbq6GB0goY9ba+rG1r3vHUXqu
- wA8pLPJVx0v3MMbfJPZy/YKk4w2O8n0bQtrn3ObKDQsbMkcdvDpjIW3LTQdGk4TVVxl7
- xo2l2rIBw2T5QDqOFo43rrBR+AL81yMWnVfpEmJscXaIRhuAn+gHEg88n0xFRW2GnWgl
- y/jYxUphh6wQpi8y0TFsOwxtZydNP3O9ByoC448m9sM1cLKt3bq6boQ07isj9kp8St7Z
- NeqQ==
-X-Gm-Message-State: AOJu0Yz1WTXb80+hiULcmPBhf4D10M9anecw2D60Wzb3X2dzJhUd3rDs
- TPt3ZvSXz8UIaYWnO/7DqnXUALwXYqdpG99rmk+kE0McTYMN6d6KqmGM675WQImvk6Tnp0PHjRy
- klKaI
-X-Gm-Gg: ATEYQzwEzpcUBxveGO4JPVUMWX/F2bBP5k6N2snvx9FoottJj2RFZUky8Js8o8KmdK3
- FpK4O2AhWlFacskgYIeArf0uWTYYYr+krHvsQ9R6iuM9/wIoD+0qaT5tqEviJ2ciYD4iidT/+sj
- kkc2Hg3PNr5OCvfcncFDenBhNCIw9OlLUlvii66M5bKuSxS29a2LHXQI9RsSRXx31K2Ce6Jllmw
- ZHqP6y8FK2X4UV2sY2CD35WVHmdfNwQIlEmghBn+mV0yBPc4kr2E7Qmq0G+yEQ3h7k1rTAO5lDt
- Wq8k/vxI7TLBaau5TEwcrsQnCyZMcpxp+YUnZpdyxyydjGqU0TlDg5pDvB8A+H7s1TC22BXA60t
- ihmzkOWRDLQrhjCZs0hqsrIyNQWCPMBIQ9Hc+Kg16WFyZjqqMUiO3eE3TFi4e9mtEQ3ys2V3maU
- G2nNJcWl0nXiUuC6yrvpCmrgM=
-X-Received: by 2002:a05:6402:3496:b0:659:4099:877 with SMTP id
- 4fb4d7f45d1cf-65ea4b5bb64mr8317087a12.0.1771947832666; 
- Tue, 24 Feb 2026 07:43:52 -0800 (PST)
+ bh=JgHcP//ADNE+xVgcxDYmX1XpBdXs4RC0Pe5Zc7Pw41U=;
+ b=J9MQwxX9Bm3vKi6URbchJ0Q4iLEiHvzW6fImfQawvtksGZVi1+99WX04Pi5CCCzihw
+ PpIFAT60XU96qcPXxRql+/x0MK6ZXNaOk5jQw/tDe37P0uQTGUd1eNKBc2kldgGp33zZ
+ 8FXo7rHdwenUsvIa7QdYB4VXgurF4mHWWdB2dE8AkL9XBFoJVVXNz8pfTB/N5lPU9KrX
+ T1d5+vZp6cFcBhKpNnkxRFybp8HlYn4/1CjzZmygM3oulmHDPetOBq/82fizU+v0hxcK
+ /BSGvePr+bBLUi6KOVD8iY1is8pH3NKM4YsHycnmF39e08B1Ls8aH0W0tTJ857yJ0sW1
+ utaw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771947831; x=1772552631;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=JgHcP//ADNE+xVgcxDYmX1XpBdXs4RC0Pe5Zc7Pw41U=;
+ b=nYiaCg1bUsUAzhAjpi+pDj9ACJ509i0zcwiYgF+rADN4kU3Ggz6klD1xCbG3wbqADV
+ /kM+N37SSVAFWlPrD+Mp0kUixJrIg3of/vm52Vh+w/J+QgDwx/Gtrp4SIdFRzWeykF2x
+ I45MQ5YE325s2A5ifmeSv0aXev7zCu8Q5wekUdfWGSYmZIleQAN9x9xBg3aYtAouizVj
+ SabtakbnYyIxYkz4YMzW5zGlwFLDbJhPPA3SxZT7jdIrcJqkM5dGOwGNlTv7gIZrqEAi
+ AXBAosXNU1skjWSFvxM/ujQBXtIiMwDMNAJVeFIe0+2zeATy1DVTe09AawhPejT18HE+
+ MGyA==
+X-Gm-Message-State: AOJu0YwXU+u0gTDQCEBPwgSzDztNVhv23+48f6LYUwDIdvWJHuqEChIm
+ scnJ9pDcdFPAQrNCVPJJrWPL+yxIb3/E6ovdMs0KzOBA//S7EzSd7NLr5iPyuXrmPDSBnyl8kbi
+ Ptt8m
+X-Gm-Gg: AZuq6aJbrlQYTlXvEId0Ay4FzKZKcDcpSWzwQ0mO+iNPP7Lxu1XVfML4rQ+M7t9Xxex
+ KHEpulgK2MSxPh7xQj8nLeMjpLraPuE4mw1SH403MI6zFfykIi/vFE3a6BWMRc9RXYq7wUifIID
+ JSWQMBkvZXbTuWt4mOPgs7jWjlZCIZjc7J1iovJ7vG/YrNducATOa4FqojhUaRCWn/IU348MQWm
+ wEst9rx3UFkvTC8GyHwxNJ+W28zd9A0CSzw3cJ2EGarBwvjuuX3guscOlE3UQnAvWu8cIBOyz/R
+ nuEAzwLflDP5wQ/HsK+dapT4kdchT0UGQdb5/t9K1x4xNlYPq71guQWgFFDDO/FkKipv25VGTj6
+ VeIOMjKo/SIFiC+Kmenkh4IvfD1qsVIHDiOaT6UAU4eNckwAFv2l4w4t5zqBVRic+boBNR/OMJz
+ KA+qcVb+6pExtdSGRLt2FH9OIb5ly8KlKWRQ==
+X-Received: by 2002:a17:907:3d4f:b0:b8f:aa38:70bc with SMTP id
+ a640c23a62f3a-b9081b3e5d4mr853668666b.38.1771947831400; 
+ Tue, 24 Feb 2026 07:43:51 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65eaba3ff47sm3558690a12.30.2026.02.24.07.43.47
+ a640c23a62f3a-b9084c5c514sm434204066b.5.2026.02.24.07.43.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 07:43:50 -0800 (PST)
+ Tue, 24 Feb 2026 07:43:49 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3603D5F7B4;
+ by draig.lan (Postfix) with ESMTP id 9121F5F8D0;
  Tue, 24 Feb 2026 15:43:47 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/4] target/arm: fix WFIT syndrome reporting
-Date: Tue, 24 Feb 2026 15:43:42 +0000
-Message-ID: <20260224154347.344219-1-alex.bennee@linaro.org>
+Subject: [PATCH 4/4] target/arm: report register in WFIT syndromes
+Date: Tue, 24 Feb 2026 15:43:46 +0000
+Message-ID: <20260224154347.344219-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260224154347.344219-1-alex.bennee@linaro.org>
+References: <20260224154347.344219-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,23 +104,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This adds support for reporting the register value alongside the
-corrected syndrome information for trapped WFIT instructions.
+Now we have the register number we can report it in the syndrome.
 
-Alex.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/syndrome.h      | 4 +++-
+ target/arm/tcg/op_helper.c | 4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
 
-Alex Bennée (4):
-  target/arm: set the correct TI bits for WFIT traps
-  target/arm: use FIELD_DP32 instead of open-coding syn_wfx
-  target/arm: pass rd directly to wfit helper
-  target/arm: report register in WFIT syndromes
-
- target/arm/syndrome.h          | 24 ++++++++++++++++++++----
- target/arm/tcg/helper-defs.h   |  2 +-
- target/arm/tcg/op_helper.c     |  8 +++++---
- target/arm/tcg/translate-a64.c |  2 +-
- 4 files changed, 27 insertions(+), 9 deletions(-)
-
+diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+index 86a2d5ea9d0..086ac76d7f1 100644
+--- a/target/arm/syndrome.h
++++ b/target/arm/syndrome.h
+@@ -359,12 +359,14 @@ FIELD(WFX_ISS, RN, 15, 5)
+ FIELD(WFX_ISS, COND, 20, 4)
+ FIELD(WFX_ISS, CV, 24, 1)
+ 
+-static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
++static inline uint32_t syn_wfx(int cv, int cond, int rn, int rv, int ti, bool is_16bit)
+ {
+     uint32_t res = (EC_WFX_TRAP << ARM_EL_EC_SHIFT);
+ 
+     res = FIELD_DP32(res, WFX_ISS, CV, cv);
+     res = FIELD_DP32(res, WFX_ISS, COND, cond);
++    res = FIELD_DP32(res, WFX_ISS, RN, rn);
++    res = FIELD_DP32(res, WFX_ISS, RV, rv);
+     res = FIELD_DP32(res, WFX_ISS, TI, ti);
+ 
+     if (!is_16bit) {
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 28a1c7243ad..a68cdf6de23 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -399,7 +399,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+             env->regs[15] -= insn_len;
+         }
+ 
+-        raise_exception(env, excp, syn_wfx(1, 0xe, 0, insn_len == 2),
++        raise_exception(env, excp, syn_wfx(1, 0xe, 0, 0, 0, insn_len == 2),
+                         target_el);
+     }
+ 
+@@ -450,7 +450,7 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+ 
+     if (target_el) {
+         env->pc -= 4;
+-        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
++        raise_exception(env, excp, syn_wfx(1, 0xe, rd, 1, 2, false), target_el);
+     }
+ 
+     if (uadd64_overflow(timeout, offset, &nexttick)) {
 -- 
 2.47.3
 

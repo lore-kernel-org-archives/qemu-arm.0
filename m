@@ -4,62 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B4EF4BB64
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 17:25:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7266AF4BB67
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 17:38:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuwAC-0008Cr-0I; Tue, 24 Feb 2026 12:25:36 -0500
+	id 1vuwM2-0007B6-0z; Tue, 24 Feb 2026 12:37:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vuwA9-0008Ai-3l; Tue, 24 Feb 2026 12:25:33 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vuwA6-0001EX-1F; Tue, 24 Feb 2026 12:25:32 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 562965969F6;
- Tue, 24 Feb 2026 18:25:26 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id rwa40_B4xNIU; Tue, 24 Feb 2026 18:25:23 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id C76C2596A0B; Tue, 24 Feb 2026 18:25:23 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id C502F5969FD;
- Tue, 24 Feb 2026 18:25:23 +0100 (CET)
-Date: Tue, 24 Feb 2026 18:25:23 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-cc: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- peter.maydell@linaro.org, artem_mygaiev@epam.com, 
- volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, 
- Ruslan_Ruslichenko@epam.com, philmd@linaro.org, wangyanan55@huawei.com, 
- zhao1.liu@intel.com, pbonzini@redhat.com, 
- Bernhard Beschow <shentey@gmail.com>
-Subject: Re: [PATCH v2 19/33] hw/core/machine: add '-hw-dtb' option for machine
-In-Reply-To: <CAN-aV1Ezvu1VnQJYiMDrNceaRAG32-DKtV85v2w58R4bpkL=KA@mail.gmail.com>
-Message-ID: <0bfb8cfc-a793-30cd-72c6-98b7a8177d32@eik.bme.hu>
-References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
- <20260219144901.3317747-1-ruslichenko.r@gmail.com>
- <dd8a92cc-51d6-4404-bd09-75b1798f925a@redhat.com>
- <87y0kj4mr3.fsf@draig.linaro.org>
- <CAN-aV1H0_4LviryDEmDSN0TfdSit-uN31H8g87sRBkJAHYbrdQ@mail.gmail.com>
- <d2d16e2b-d86a-633f-b32a-e063746658d8@eik.bme.hu>
- <CAN-aV1Ezvu1VnQJYiMDrNceaRAG32-DKtV85v2w58R4bpkL=KA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuwLy-00075k-Cp
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:37:48 -0500
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuwLw-0003qa-ED
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:37:46 -0500
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-64ca6595c8aso268015d50.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 09:37:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771954663; cv=none;
+ d=google.com; s=arc-20240605;
+ b=buZjKlwCuMqTZun5HQWpWPCWcpGVvGLdskAN1FzYqScfipiUDsTdAKUdATxw/azjzJ
+ qAK3vjmWCFCwOa0skuUKW6kGC5aPuhO+jlRPwVcU7J5ZInu5K/T+K+OwN740DNCtgd4K
+ aGFEkf2ypDxxWE9w19oZwz18p8mJtw+59XtrYg5REWgc0aHmkUwUxzKto/I4+3nNM1V4
+ 0ZyLKbwF6XWjmYcGarcJRAjz3UV+u24Zzf3oF8YTsMVZzaUv5hpyg8t1StA4gFabYUWr
+ 0uz0yGmUfA++FAoHB5iYdwdNBmux0nehzEMMcgP0griQAjRlWxOc4iH+UPtNiexJmVXf
+ 7ikg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Tdh36pSD+tLfnMZN3vf5DS5AcaUa9J8WbbRp77AylTg=;
+ fh=u+tdDXjzZnPT8FH2vzpGJddHnMcTNCYzlPw0Spt2g5Q=;
+ b=RkGehFbYSB4njev5B3qr3KtaGIl0PxlI2jPl0DxcBMWFkeOpmrXb7IgCfRU1NlTGeo
+ t2qnEWVWUPYo23As8SElI4n32K1yyi+AiIjeB1rGFC3p3F6cBeFS7LwzW+YKf82Q1SmF
+ UZCCA1ToMZVtyoNWJKirYmdg2CqFcVp5Y6G2qqQO7Ts5AYPtnTgJMuCfJ5+XSjno8giw
+ xVSXw8pnNtoRb3coStupKTH8tga4CZiZ5X7rIGmn2H9UbR35O+01Oh/q97DTnRzG6+df
+ wtbeo4rEohgE6FDlOTjyLOjAjt/UHdCuDBx8DkwImQsSxUdEcvtOdjS8r8sMc2gfK1ct
+ A0Jg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771954663; x=1772559463; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Tdh36pSD+tLfnMZN3vf5DS5AcaUa9J8WbbRp77AylTg=;
+ b=UV9SIGjdAjBAkZ4qmnOk8rbpvq2rjkkkCJVUBKPsCDMa0A7v4l7aKMN7ZGZ4b3dhdt
+ 6lCmYFuULI0xLHBq2gJQ5aJT88N5csVXUSBtR3/kpRis9zS3aqqMuUmfAJHun0/TJ7nt
+ e4MYtN3+rUh/T07pD/bhDqNO/FPoSbVgTRcSxN4LJH19ab5aRmOgqQzFUO1pD3fXLd1w
+ Nb9FZYIIw+wNGhl3qphUHQ5FDA1MqZBrAd1xLzI3PUJUsmotbGFMltqZEB4pU9qGWe2U
+ JypgkhSQmlrGOOGBiRu4bumw+LzS8MWIts13AdtT1Y889JfiCl5nAucW7pVMDnCrIXU+
+ 2COA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771954663; x=1772559463;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Tdh36pSD+tLfnMZN3vf5DS5AcaUa9J8WbbRp77AylTg=;
+ b=mUdUwIuX0JKULDzB8ynunln7JYq/KyvigB7WmePbZfJHMdszt3B6TZfKrVb99RqlN9
+ HesCKR4BRbbguhrt6SXRm36MvF34OWpoXy2r7iSpHvE2U3OMPc3+rk7MIP4vLiPe/31S
+ z77gWQxHqYrGmWnu2vQglxWGTxMbQC3p2pADSYoktSnfHnoVK0wGYacxKhXyMY3TAIPr
+ EfoRkVamHQjplBRGXHOaBYfzcQ/p25sW2KFtLe6b5IRQLFeWrp+wyT0rsZ2LEhaS8UAr
+ NZ/w5FiHRftgfR3mXzSArKZUpZbxGOuNfIVpSwt539Kk3ot/ZTSqgoMn2b+spCTsZxwW
+ KHIg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXIqwTRyHgkQuGwzVtWxI7HbuiIVOSwO/B8PUtcDdnRIR9BGflgcAQVEqMJIbtIBDNN8ZILjjGlVw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz/9oXCKvnqcVgmuIWKLdS0v3d45U0rYjrYL9u4zp3RghYAEZpl
+ CiOKrRHyPjF/xUm+VoR8crc12dqZ2LGHOKf/xiW2JzHYPbeX1ybkjEn6gITHf6tUOht4RpQyXic
+ Zl1VS9Wv3/c/5XKMnl3ar1LmdjlfZ5tNiWq6J7Mw1gA==
+X-Gm-Gg: ATEYQzy3gVxOkK6hnknxs/PaMTkk5M2dByzgL3FnUP9+2Me51cHbkmWdi5E5B1CG2KQ
+ 1ax5nUhxYEu1zPOVwjrv/zVBRxcQtv3ofpWX2LjSh/QrHXERrlVkrK6AYPcwvyp04nklzRuaPXG
+ KF6NBkW+VqjsetWIDfIIIKLMIi/1CUx2eYZrZlC5pQvABsTL0F3NPE0Rp4A5F5iKAdJyEZfWgD8
+ xPprp9XOmN8X4N4FCX8z0cFVIao+SsojeNxeKnMJqZOj/PA0hO1dqktO0ItPLSGeU52csqC86vk
+ op7GLnwh9U7fzlGt9oz+hNt78m9suWPiwvktruieIF9O5q+XEB7Kl8Y1uYyyDTqLO+uV6LbHVy2
+ wKQ==
+X-Received: by 2002:a05:690e:d4c:b0:64a:ced1:4fa6 with SMTP id
+ 956f58d0204a3-64c788d282cmr9683307d50.12.1771954663283; Tue, 24 Feb 2026
+ 09:37:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1681850486-1771953923=:78977"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+References: <20260219171810.602667-1-alex.bennee@linaro.org>
+ <20260219171810.602667-4-alex.bennee@linaro.org>
+In-Reply-To: <20260219171810.602667-4-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Feb 2026 17:37:31 +0000
+X-Gm-Features: AaiRm51OBLSPJe1_nI5Tcc3wkfFFTGvqTYeKCQ4XRDuIx756xp6sVyNLXUQUg_s
+Message-ID: <CAFEAcA_gi319MwW8pV0doMxpvKx6H4pCeMA=0vmFm8ynyWP5Uw@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 03/14] hw/m68k: transition virt machine to
+ multi-phase reset
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>,
+ qemu-arm@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>, Thomas Huth <huth@tuxfamily.org>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Jim MacArthur <jim.macarthur@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Bastian Koppelmann <kbastian@rumtueddeln.de>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Yanan Wang <wangyanan55@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -76,166 +132,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-1681850486-1771953923=:78977
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Tue, 24 Feb 2026, Ruslan Ruslichenko wrote:
-> On Tue, Feb 24, 2026 at 12:55 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->> On Mon, 23 Feb 2026, Ruslan Ruslichenko wrote:
->>> On Mon, Feb 23, 2026 at 2:23 PM Alex Bennée <alex.bennee@linaro.org> wrote:
->>>>
->>>> Thomas Huth <thuth@redhat.com> writes:
->>>>
->>>>>  Hi!
->>>>>
->>>>> On 19/02/2026 15.48, Ruslan Ruslichenko wrote:
->>>>>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>>>> Add new '-hw-dtb' command-line option and corresponding
->>>>>> MachineState property.
->>>>>> The 'hw-dtb' option allows to specify a Device tree
->>>>>> binary with hardware description which Qemu should
->>>>>> emulate.
->>>>>> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>>>> ---
->>>>>>   hw/core/machine.c        | 19 +++++++++++++++++++
->>>>>>   include/hw/core/boards.h |  1 +
->>>>>>   qemu-options.hx          |  9 +++++++++
->>>>>>   system/vl.c              |  3 +++
->>>>>>   4 files changed, 32 insertions(+)
->>>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>>>>> index d4ef620c17..affd24cd49 100644
->>>>>> --- a/hw/core/machine.c
->>>>>> +++ b/hw/core/machine.c
->>>>>> @@ -363,6 +363,20 @@ static void machine_set_dtb(Object *obj, const char *value, Error **errp)
->>>>>>       ms->dtb = g_strdup(value);
->>>>>>   }
->>>>>>   +static char *machine_get_hw_dtb(Object *obj, Error **errp)
->>>>>> +{
->>>>>> +    MachineState *ms = MACHINE(obj);
->>>>>> +
->>>>>> +    return g_strdup(ms->hw_dtb);
->>>>>> +}
->>>>>> +
->>>>>> +static void machine_set_hw_dtb(Object *obj, const char *value, Error **errp)
->>>>>> +{
->>>>>> +    MachineState *ms = MACHINE(obj);
->>>>>> +
->>>>>> +    ms->hw_dtb = g_strdup(value);
->>>>>> +}
->>>>>> +
->>>>>>   static char *machine_get_dumpdtb(Object *obj, Error **errp)
->>>>>>   {
->>>>>>       MachineState *ms = MACHINE(obj);
->>>>>> @@ -1145,6 +1159,11 @@ static void machine_class_init(ObjectClass *oc, const void *data)
->>>>>>       object_class_property_set_description(oc, "dtb",
->>>>>>           "Linux kernel device tree file");
->>>>>>   +    object_class_property_add_str(oc, "hw-dtb",
->>>>>> +                            machine_get_hw_dtb, machine_set_hw_dtb);
->>>>>> +    object_class_property_set_description(oc, "hw-dtb",
->>>>>> +                "A device tree binary used to describe the hardware to QEMU");
->>>>>
->>>>> Do the hardware dtbs differ from the ones that are passed to the Linux
->>>>> kernel? If not, I think you likely could use the existing "dtb"
->>>>> property for your new feature?
->>>>
->>>> They have to - the normal DTB cannot define the whole system because its
->>>> only concerned with reporting what the kernel can see to the kernel and
->>>> not defining the whole system including what the firmware sees.
->>>>
->>>
->>> Yes, Indeed.
->>> Normal DTB was explored, but there is not enough information to create
->>> QEMU models from it.
->>> Thus we need to have a separate device tree.
->>
->> What additional data is needed that's not present in dtb from firmware and
->> what if that additional data is passed to the kernel? I think the kernel
->> would just ignore the additional data that it doesn't need so one dtb
->> might be enough even if it has to be more detailed than what the kernel
->> normally gets. If that works we don't need a separate option.
->>
+On Thu, 19 Feb 2026 at 17:18, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> Here are few specific examples:
+> We don't need to re-create the architectural reset behaviour now it is
+> handled in the core m68k CPU reset code. We do however need to add
+> support for direct kernel booting so we stash that value in
+> env->direct_kernel_boot_pc and enhance m68k_cpu_reset_exit() to use it
+> if set.
 >
-> 1. DTS compatibles and QOM type names are all different.
-> Using Linux device tree would require to maintain some massive hardcoded mapping
-> even for devices that otherwise don't require any special handling.
-
-Bernhard's patches had the same issue and solved it by adding subclasses 
-with names matching the dtb. I think that would not work but a better 
-approach is to allow alias names for devices (we already have machine name 
-aliases I thought something similar for devices) that would solve this 
-issue without too much additional complexity. Then the device would just 
-need an additional line registering an alias name to match the dtb name 
-(or more of different machines have different compatible names).
-
-> 2. Object properties. We would probably need to make sure there is no conflicts
-> and all properties are either ignored by Linux drivers or have exactly
-> the same meaning.
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 >
-> 3. Devices mapped to Secure Firmwares only. Those are not accessible by Linux
-> and trying to initialize them from the Linux kernel would cause memory aborts.
->
-> 4. Connecting devices to backends such as serial, block devices, etc.
-> We need to specify corresponding 'chardev' and 'driver' properties.
+> ---
+> v2
+>   - re-write to use proper 3-phase logic, so dropped all tags
+>   - favour cpu_reset over resettable_reset(cs)
 
-This is probably not part of the machine but a specific invocation so 
-these should be specified on the command line and not in the machine 
-definion.
+The commit message says it's doing three-phase reset, but
+the actual code is not:
 
-> 5. Interrupt wiring. Some hardware lines are transparent to Linux, but need be
-> wired by QEMU. For example, interrupt controllers are wired to CPUs, etc.
-> If we would want to initialize it from dts eventually, this would need to be
-> passed somehow.
->
-> Overall, my understanding is Device models typically need to support
-> booting existing
-> OS images and device trees from regular platform builds.
-> And at least due points 2-4, we cannot use them directly.
+> +static void virt_machine_reset(MachineState *ms, ResetType type)
+> +{
+> +    CPUState *cs =3D first_cpu;
+> +
+> +    qemu_devices_reset(type);
+> +    cpu_reset(cs);
 
-Some of the points may be solved other than modifying dtb but some may 
-indeed need extensions so a separate hw-dtb may be needed in more complex 
-cases.
+This first resets the whole system (going through its
+three phases) and then the CPU (which does its phases
+separately). Three-phase support would imply having the
+CPU do its enter phase at the same time as the other devices,
+its hold phase with the others, and so on.
 
-> Since we still need to modify the device tree for QEMU anyway, having support
-> for unified DTS doesn't really make sense.
+If you wanted that you could do it by using
+qemu_register_resettable(OBJECT(cpu)) instead of having
+a MachineClass::reset method, given that the only two
+things you're doing in it are the default thing and a
+cpu_reset() call.
 
-However it may be worthwile to try keeping the modifications minimal so 
-for simple machines like the e500-ppc that has no secure world or other 
-things not described by the normal dtb it could just use the regular dtb 
-and the hw-dtb option would be optional for more complex machines that 
-need it.
+> @@ -315,6 +300,7 @@ static void virt_machine_class_init(ObjectClass *oc, =
+const void *data)
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+>      mc->desc =3D "QEMU M68K Virtual Machine";
+>      mc->init =3D virt_init;
+> +    mc->reset =3D virt_machine_reset;
+>      mc->default_cpu_type =3D M68K_CPU_TYPE_NAME("m68040");
+>      mc->max_cpus =3D 1;
+>      mc->no_floppy =3D 1;
 
->> This series seems to be more complex than Bernhard's e500-fdt experiment
->> (I've linked to that in
->> <https://lists.nongnu.org/archive/html/qemu-devel/2026-01/msg05470.html>)
->> Bernhard's patch only added minimal support for creating devices from fdt
->> and then put additional logic in the devices instead of handling them in
->> generic code. Would such an approach lead to simpler fdt handling? If not
->> why is the additional complexity needed?
->
-> Most devices can be created from generic code. Supporting one common
-> approach to initialize some specific device class would be simpler and more
-> maintainable than writing a custom FDT handler logic within each device model.
+I did have a plan to look at making MachineClass a subset of
+Device so that it could be three-phase-reset aware rather than
+having its own special-snowflake reset method.
 
-I think putting device specific knowledge in generic code is against the 
-object oriented design of QEMU and would be less maintainable because it 
-would not belong to the device maintainers that way. If you have common 
-code for some device classes then those devices probably have a superclass 
-where this code could be put. The problem of mapping property names to 
-device specific properties could also be done easier within a device model 
-which has better knowledge of the device and then we would not need a 
-global table mapping these. So while at first look it may seem more 
-fragmented putting some logic in devices instead of a central place it's 
-better fits the object model and groups device specific logic in the 
-device model which is more maintainable than a global mapping that does 
-not belong to any device but touches several unrelated devices.
-
-Regards,
-BALATON Zoltan
---3866299591-1681850486-1771953923=:78977--
+thanks
+-- PMM
 

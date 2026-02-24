@@ -4,106 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C414E9B25B
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B463E9B267
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 13:53:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vurVD-0003zq-1R; Tue, 24 Feb 2026 07:26:59 -0500
+	id 1vusqG-0007TY-LZ; Tue, 24 Feb 2026 08:52:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vurVA-0003z1-T6
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:26:56 -0500
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vurV8-0000jo-1g
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:26:56 -0500
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-64acd19e1dfso4574599d50.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:26:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771936013; cv=none;
- d=google.com; s=arc-20240605;
- b=C4YB/KH+FJfwEfUbaFNEh7q3e8DT5/RVjWaoGyihROpAgsHtWQRm/BA2tqaBJuoDO8
- pmogiIWok5kKTk/nst5/W80M3CqQtLLzsN55z5RruYF+XRaEr7aODA85iHkzFaXetwUR
- wiLoj0RPfR0f6wPcxJ9qp1hYWwKqhu5H2wDc3hO7U8vAgP2ykds0+gW4oPWVxKwDt9So
- H7MuMOLiiWyxKAnLu3OfrQyO0OQob0qjTvAJW1KeXWVXhlIJZr3gcggbnqf0GGhcfciy
- piHid0memdSnzcdZ+eNElTK+FVYB5NqgfVLMh/CkA8HSdrTSLYBhMGtHsTE/dlBr3igk
- e7mw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
- fh=bjo26QaatubEJOABd4/9DEudrElXjqsLLC0/8cAyoSA=;
- b=idraZBlFjpx7FbLfmNHfIfbqpw2exSVlF1F41GuGg/fIE91CTmJ7N6WZ+Pzxh0tBGY
- Vcpw6NoR+Y+EObCQuHPT2Bc+4IifriUd97UmUTOxYsVjMgFYyOJhk8wLvtnXoykLlyfZ
- LYpdeEmYNa+7B9L71kqplHJQBcjBJG1FNXM0/8rfX52C8NaAzbsyv5ShqeWBWr8uZypi
- F2WneipRrOq2nKR4NWqcHKZDnVJhi/+lQ862dSzwEMkJGtQ+wsqlki/HZ3Sxt5ufNVWw
- hv6PJh4+aXmridi74Lgxk8BEyjNryC2evzzCJ5EnEf/rovmmz4Z2S+MAt+wsYWdQFLkU
- zsEw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771936013; x=1772540813; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
- b=npLAgqE7Peyl3zsXr4kjEA84I8B3ZDBbVBRh0eshebty2/NhJketiEHvlF/JX6/ey1
- HGOeO5dgyvzWgsseH2twdWH8o9X6Yu71xAVZO+8aWg070uJwyvZMpEGjbvLN6Rz147wM
- 0uwf9q6kgsyXnA5gHIKH7WdjNX1iPZNaZyDmWfRmfGXbfQrAOnI4tvGGvua1p/gXCdl2
- xoEWmo15G02flNED5Nnu77C9XmWaCmoT6tp3AINxXODIRGtGiHSBmveLnGR+OxLjqDNr
- wdwYu4KBnR333yTiyKD0w/u08sXKdhcf2tTgMScjYJfYpezN4mZdUejCnWQFqD3PRLq4
- YoWw==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vusqF-0007TQ-5g
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 08:52:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vusqD-0000YL-DP
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 08:52:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1771941163;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lt8BBNz8s0SpZbq73sqRpE3xZ8Z+U0PvjqMyHfQe41o=;
+ b=LGyKDmEebLQnQH0NKI1OxfwxiKBi2MIzerma2rh0TNopD0RQ+Bik3UNv7MAPgnWqNIOyx8
+ dvNZ2pt49zG3BLqJoDg5ywnzwmmwKHWz6ilGdyQg4URQltdI8Kd2crmEqeLNPd1MrSwFBq
+ D5n3H1uTy/fadkQFm6jOty92K5jJ9F8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-543-j52aIkEKNzidl0k6bWvozg-1; Tue, 24 Feb 2026 08:52:42 -0500
+X-MC-Unique: j52aIkEKNzidl0k6bWvozg-1
+X-Mimecast-MFC-AGG-ID: j52aIkEKNzidl0k6bWvozg_1771941161
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-48071615686so7749175e9.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 05:52:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771936013; x=1772540813;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
- b=DgEdSlPk0QvK4pXtaAjb7XrIvrvS3gu4H4sBFDuBH7pVhj/CSOw5HiHEZW+aZvwZtC
- s/nTy6X7DA+7jwUgRQZ/Bc3azUuXvhXQj0G0F299IPmiKt9uiQwirf6AGN8f2L4R1xD7
- flcdHAYjSd6gvuOLBxu71CYoICckRJN2AKzR60H9WCr8/jXwo0cnAwIEDjtABIWYTFo/
- la1xEU6/VGdDm4oZ0CFniRhYXRAQ5ijzAdjDADlGvp7I0gijZ85LZ7ihQYJec1GMJf1h
- 3d0mq+OvFENR9anyiGp5MkQOlYJR9eMwvtHoPMUCT2fE4CRBnoKRH2pdSUPxYbQ5kJK9
- L1Zw==
+ d=1e100.net; s=20230601; t=1771941161; x=1772545961;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lt8BBNz8s0SpZbq73sqRpE3xZ8Z+U0PvjqMyHfQe41o=;
+ b=Gffz0Yu2niirNXEC03lsvJcjYpC/zYKKAf4nQf+C7yWCKgGyoZge54wMq4OVU2XLFF
+ uplRur6D5JL3fboXZ2L1GJmCBLtqtTK6MdmAimdi4rrUNok0r8VAnReC74y4OXsR43nB
+ ukI+EeDezZj85PxyLeMm2P18xwdrHRLGp3qc+43UQR4yW+4OPL+N0ByeR3Y6C2/LALQN
+ 3K00I0MnPnqJT/XzlJxQ1TPi5QZUfoXF9QSvobkBLpvxgp5yKZ/yDEU7eoMXeSOF43zV
+ bTZGkCxduU+rzuszp4kn+DWYrkek4bx/YUpSqQwlpV9msCmRmTM7usfcU1rqczogD+jd
+ Qt4g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUiy1pc4ivxN1KWLm9EL4Tj5lOxKjsgQTzP1fFL17QDbhSWlP9KBYl3MbrqwCoJDTrqY+NsfIEPyg==@nongnu.org
-X-Gm-Message-State: AOJu0YxkhorCQzxiZmerJFEL8tiz3CnR0a4enetcMAYt6sDMX9MfWrvK
- aB/gGOwiFwh6OXqB/1kcHLxfrrCDCCOBTxxhnBkbobMPUQo4fiq7sCWnrSdS8QKoxEB0LstYdh3
- sEF5NdO4gn8N4GOB8jYVyjHskWqoObUVffKNvJZI2Fg==
-X-Gm-Gg: ATEYQzygKHc8TELCXXTyW0dwSUVpIE+qLjGXaj4u+kktXFns1krJa4Dfafkm92KF2uA
- gYvJnceq6JwTJIRJI28gagwvbegThKI4A/D56vVxCkNQuesI6gKDrEYDH4P0kjFB+E7lwWsDvOp
- W0rm1DRfvBOi/vHm8O5QLkhk4jcxystMll7kLIv4yTX8vYOTC6wml7nb2Dc7GrYZIKm1QAPymU3
- pur3OC3svklK4iIkcXuCoGGPdez+r3ira6uVqn881Zslvn90ZQLFVMEpE2XLqlimP9vdDa0J/bg
- 45k+BVLtwUZQno5OhfC26EFVjQ/IXcScha8+eloFFx9COSR18S07Mf3ip9PTn8SSj3Ykf+EOT1i
- U/Q==
-X-Received: by 2002:a05:690e:134b:b0:64a:d716:c8b5 with SMTP id
- 956f58d0204a3-64c787d5303mr9314935d50.18.1771936012612; Tue, 24 Feb 2026
- 04:26:52 -0800 (PST)
+ AJvYcCUf/gI2gUSG3p5a1rDCB4QvKdGanhVyPNrfWW/ScqNa8Si1RzXWqqkIBK2YSMgi9TVWDC8JzKeSVQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz1MXkmhvbJdFzrjP+7iPvZICgF9+W6c0+zFhXM8G7GC6scCf7V
+ jzf+Dpj3EeX8F+O26XCpmsiVBiE5iIMk9ySRIq1SbjI+SD+uQHbEV8ZYc265Enoi5t25VNkuyjy
+ zzhs9BfaBzJEKuw7pUZk1EJXa/WSNZnAL/xqsZlmILWjSDciljLjEfA==
+X-Gm-Gg: AZuq6aKIyFIJmRk8CsvTlVMBRk0RJgtxBkWB8Q+r7BkUH+ge556FFk2HY9wtZm+AuQT
+ dmMKT7fZP9LtT9hwfbcVBXKzkjKB2HdhFtNiu9AR4uBMS3cr2/0eccBZb31F7lES9lpj2UauAHN
+ 7gzjQZt26/0Jrr1jytPaRJ5nK1iXjRIjbgr5jRVwwIHXqIbEq4FkD0Y9zyIboSvRKsvKsiihkVn
+ X6IfLxir++u8pGih+whIvsoGGsaW7XrQIeYe80TdL+mewWkuRVMTlzsR/XWjKwq1YdZq5NxDicO
+ anZp9tywa5is5hrDKXY4x+d0cCd89orEZCesIqcCbNTiNgCL0vk7VLMCO3B7pjFJ0LgnyoYuR6E
+ XG9PDIVHNCMTyfbpvqcYfLdTfKOvQrUiJoMd1OWdAk19OX4tg1LJLkgMnTuMLcK/AwiIjng==
+X-Received: by 2002:a05:600c:3484:b0:483:3380:ca11 with SMTP id
+ 5b1f17b1804b1-483a95ee3fdmr179355945e9.33.1771941161181; 
+ Tue, 24 Feb 2026 05:52:41 -0800 (PST)
+X-Received: by 2002:a05:600c:3484:b0:483:3380:ca11 with SMTP id
+ 5b1f17b1804b1-483a95ee3fdmr179355665e9.33.1771941160689; 
+ Tue, 24 Feb 2026 05:52:40 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483bd6854c7sm4260105e9.0.2026.02.24.05.52.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Feb 2026 05:52:40 -0800 (PST)
+Message-ID: <b362122e-f46a-4298-874c-63b76cb62489@redhat.com>
+Date: Tue, 24 Feb 2026 14:52:38 +0100
 MIME-Version: 1.0
-References: <20260224121014.279248-1-alex.bennee@linaro.org>
- <20260224121014.279248-6-alex.bennee@linaro.org>
-In-Reply-To: <20260224121014.279248-6-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Feb 2026 12:26:41 +0000
-X-Gm-Features: AaiRm533j8zDX2_W69viuybZop_pjQHvzltY8QSUE_Gekc6F8p7hu_LMlDKkSOM
-Message-ID: <CAFEAcA--YmCZ2+BBy1kM_VjeER4vbX8VMBbSA1aqUQ9-jWp5tQ@mail.gmail.com>
-Subject: Re: [PATCH 5/8] target/arm: extend WFX support for A-profile
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, eca <noreply@eca.dev>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/5] vEVENTQ support for accelerated SMMUv3 devices
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jan@nvidia.com, jgg@nvidia.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20260219090103.33697-1-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260219090103.33697-1-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vphzld8U6pgdfd3xZIIdnfoQonFj2GjFjvKmxjd7TLI_1771941161
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.358, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.659,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,44 +118,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 24 Feb 2026 at 12:10, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+Hi,
+
+On 2/19/26 10:00 AM, Shameer Kolothum wrote:
+> Hi,
 >
-> This commit extends support for WFI, WFE, WFIT, and WFET instructions
-> for A-profile ARM CPUs, ensuring proper architectural semantics and
-> full ISS (Instruction Specific Syndrome) field support for traps.
+> Changes from v6:
+>  https://lore.kernel.org/qemu-devel/20260213103942.142823-1-skolothumtho@nvidia.com/
+>  
+>  -Addressed feedback and picked up R-by/T-by tags. Thanks!
+>  -Updated error report (patch #3)
 >
-> Key changes:
-> - Update `syn_wfx` in `target/arm/syndrome.h` to include `RN` (register
->   number) and `RV` (register valid) fields using `registerfields.h`
->   macros.
-> - Refactor `HELPER(wfi)` and `HELPER(wfit)` to use correct AArch64
->   syndrome values (CV=3D0, COND=3D0xf).
-> - Implement `HELPER(wfet)` and update `trans_WFET` to support the new
->   Wait For Event with Timeout instruction.
-> - Update `HELPER(wfe)` to implement proper A-profile semantics,
->   including trap checks and event register handling.
-> - Extend `event_register` handling to all ARM CPUs (not just M-profile)
->   by updating `HELPER(sev)` and `arm_cpu_has_work`.
-> - Declare WFxT helpers as `TCG_CALL_NO_WG` as they can raise
->   exceptions.
+> Please take a look and let me know.
+Thanks Shameer, this looks ready now!
 
-Yeah, no. This all needs to be split out to be anything
-close to reviewable. In particular "report the right
-syndrome info", "make WFE/SEV not NOPs on A profile like
-they are on M-profile" and "do better with WFET" are all
-separate things.
+Feel free to grab my
 
-Also, this doesn't change any of the places that it needs to
-change to implement the places that architecturally set the
-event register (see R_XRZRK in the Arm ARM), so it will
-break code that uses WFE. Notably for A-profile this includes
-generic timer "event streams", which we currently don't implement
-at all.
+Tested-by: Eric Auger <eric.auger@redhat.com>
 
-thanks
--- PMM
+Eric
+>
+> Thanks,
+> Shameer
+>
+> ---
+> Background(From v2):
+>
+> When accel=on is enabled for an SMMUv3 instance, the host hardware SMMUv3
+> may generate Stage-1 (S1) event notifications that are intended for the
+> vIOMMU instance in userspace.
+>
+> This series adds QEMU support for receiving such host events through the
+> vEVENTQ interface and propagating them to the guest. The implementation
+> uses the vEVENTQ support provided by the IOMMUFD subsystem in the kernel.
+>
+> I have tested this on a Grace platform using some hacks to generate
+> events. Further testing and feedback are welcome.
+> ---
+>
+>
+> Nicolin Chen (2):
+>   backends/iommufd: Introduce iommufd_backend_alloc_veventq
+>   hw/arm/smmuv3-accel: Allocate vEVENTQ for accelerated SMMUv3 devices
+>
+> Shameer Kolothum (3):
+>   hw/arm/smmuv3-accel: Add viommu free helper
+>   hw/arm/smmuv3: Introduce a helper function for event propagation
+>   hw/arm/smmuv3-accel: Read and propagate host vIOMMU events
+>
+>  hw/arm/smmuv3-accel.h    |   6 ++
+>  hw/arm/smmuv3-internal.h |   4 ++
+>  include/system/iommufd.h |  14 ++++
+>  backends/iommufd.c       |  31 +++++++++
+>  hw/arm/smmuv3-accel.c    | 146 ++++++++++++++++++++++++++++++++++++---
+>  hw/arm/smmuv3.c          |  26 +++++--
+>  backends/trace-events    |   1 +
+>  hw/arm/trace-events      |   2 +-
+>  8 files changed, 215 insertions(+), 15 deletions(-)
+>
+
 

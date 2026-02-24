@@ -4,66 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734F0F3C9A9
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 16:03:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2CC0F3C9AE
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 16:26:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuusR-0003He-Ck; Tue, 24 Feb 2026 11:03:11 -0500
+	id 1vuvEU-0003PJ-Ab; Tue, 24 Feb 2026 11:25:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vuusO-00033G-4l; Tue, 24 Feb 2026 11:03:10 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vuusH-0001pw-QL; Tue, 24 Feb 2026 11:03:07 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fL2YR4jGXzJ46bH;
- Wed, 25 Feb 2026 00:02:35 +0800 (CST)
-Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 728B340572;
- Wed, 25 Feb 2026 00:02:57 +0800 (CST)
-Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
- (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 24 Feb
- 2026 16:02:56 +0000
-Date: Tue, 24 Feb 2026 16:02:55 +0000
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
- <kjaju@nvidia.com>
-Subject: Re: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
- accelerated SMMUv3 devices
-Message-ID: <20260224160255.000076e6@huawei.com>
-In-Reply-To: <CH3PR12MB754814ECFD29951EFB571585AB74A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260219090103.33697-1-skolothumtho@nvidia.com>
- <20260219090103.33697-4-skolothumtho@nvidia.com>
- <20260224142857.00005fb6@huawei.com>
- <CH3PR12MB75483EAD05125D5FD3998474AB74A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <20260224150154.0000074f@huawei.com>
- <CH3PR12MB754814ECFD29951EFB571585AB74A@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuvEP-0003NK-25
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:25:54 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vuvEL-0005hh-Ku
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:25:52 -0500
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-b88593aa4dcso805444866b.3
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 08:25:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771950334; cv=none;
+ d=google.com; s=arc-20240605;
+ b=hz4jOvmCDh8vAm0c1jIh44RAriq8ixIEQl8gRyK01l7sA1F4hWMou3Lvga2LUu0qiZ
+ rku+oJbNVEWX6QfcWcP/EwJNYYoYOLNJhSU+X85SqKHaOMKyGQlX+PvwSGksPZYpul3G
+ 36D2mSoY19CRKwmSaiVax6PnhVNbrJ9nQOmYQa0GjDECefRYognevnKob0iLBDcan3Gr
+ a9iovlgMlhQTMguKVfxVjrxjOwgS0P6otsG/opMKsrPQ/i3GhFNk7KwU2XFoOzlwwbNI
+ s6YswaKAfNRAxTwOaBkK6FELFqhXdd6w2Pz3+8ozML1bysc49/9+lTBxQaLQsvaXUY6L
+ 6T/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
+ fh=DQKGvaUa1zWIpv3SFsiClZFTVGOAdthlKFXsyXaGYdg=;
+ b=LjavkbtdNF0/I7UXo55YEfwwMewD0ISsv+yetlpmt1kOn6UmzJM+Zc8YddVptbpSkn
+ yTyEWmpweKj4qYbEEfxLZc0Ity+ABADfGaeHlKu1lLiT/3o3ijxddCvXgS3VEWX9j1Q8
+ RzyrpCg9QIznsefose2o2vriHxKGSyy8r7FTFPURPjintMu8DcuHHdfs/geseDTzjyNt
+ J93lFkeIFRh0S4ihTztZ1xVsZkgLTWMrEsNuiwQtZ5irYF0O6B4GedU7SSI5ZNym/2rO
+ TGprK6vGpg20/GxpuzcbtZQnFi4fWNoL8Z8uUE0WK3FyJ5wggESBS7XxsAU5AZhV/HtA
+ 25vw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771950334; x=1772555134; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
+ b=DBwGIgmnrBHPGTHeRUFGv/rf86kqBLSgQxRiSa0EX8jCYtwJMoc7WiGwiWBV1myXtm
+ PRCGYUCelUKMhSUqGZl04onboXR6Hv6WLV0bUKunUq5hY0JSSVN/rS3iHteq8bp/+VeQ
+ yaoRXxlPr1pGMQZCe+hltiuMQfyUHNuOgP24vKGxEYFqqTle85vUTXa875B+BvEOCoSV
+ u2bcVGu1OMn8Wp9rDPUrnFcbQ/R6CHZy8S3aeGl9IrGLmnPTtmD9P04DmBNwWWTtORRZ
+ x9Ds4JqZRZeiWEP2oIC2xJ5c/tBR/Y55XI/lP6hZBisUBDXxVSBWtWY6kSn4B/thCLM9
+ unxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771950334; x=1772555134;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
+ b=cdT0Ysych3pe5rp+fB7F5unJKM7ftzcCFoHPCc7/bGXNcnikKQhCB+Pk3SN71lLVOQ
+ 4i0bss11R/ESaYzQIyoWymqeYocNuSjJIrXleDJ+nYUWDSBBxFvE71esZqZsblYw3q7o
+ vh5oU2myoPvmrKfuf/CY7bue4GgSybaibjq0myrSc8Y5urzC4Cs5UtdiTIHKcXIg0KRU
+ 0CGtLv3P+RtsDP0Ausmg481fNTve3IxGCzFvgqmoX0AgZCqKiS1GUik6AsTreJ88M7tS
+ SxP5sHyTnLF9fdFrSgvUTOfxu2cjO1i1o4Bvf9gOdkw8PIc2ZP3c8IJhUL0RLQ7o06QB
+ S08g==
+X-Gm-Message-State: AOJu0YyYkF8BSMjnkKD0TG6HR5mFOLYRQ3rdL6ySt0kpfaMFDKbQXVKp
+ xjmo3nEI388WdVrpPFLM185b5s6jScY46Rz+Ni87s5Bwry+kK9rDnWh2XrMeRC9boU8/wHELUBm
+ gj9T1u5z3uDUqJc8SXCVp4X7C9ctMmtYv5m/0Bh9SiQ==
+X-Gm-Gg: ATEYQzwbwUY7MomS1kDn5A3sNaCorpXiXcXAvg6LETiRcIv9Mr6KzRA9p5CcECMCeft
+ kowBSMiZFwfAIRD2L55tawoeHNTlsbeHZQNb9eJm5LRbYXLgE9VOeBTJyBKZYvkpYfVKqvnsWdR
+ aeLiCYerQObjbCos/usub+2Xk8thOipZrfleqDuhCsOb4FXt3Yy2xJHqC3dXK8rDMN0wbEzj6Jf
+ rcCSIwHL3rKw91ABlCcbc4KOqpr3xGku6c135XcurqhpVakywd+lHMhbWxU3xb8lIIkmIiL4giz
+ kovHaYxyNoujL3u/OCvtokIiMnMSnmVJK60Uy+tzowRH15VMTJdA0YYn/nrCx/MFJbeU52M+K/G
+ 5KA==
+X-Received: by 2002:a17:907:a43:b0:b83:b7c5:de2c with SMTP id
+ a640c23a62f3a-b9081986379mr832729366b.10.1771950333833; Tue, 24 Feb 2026
+ 08:25:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
- dubpeml500005.china.huawei.com (7.214.145.207)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.358, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.659,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20260202133353.2231685-1-peter.maydell@linaro.org>
+ <20260202133353.2231685-6-peter.maydell@linaro.org>
+ <7ffe8bf6-bd94-4f7f-aa77-274c90d1aa78@tls.msk.ru>
+In-Reply-To: <7ffe8bf6-bd94-4f7f-aa77-274c90d1aa78@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Feb 2026 16:25:20 +0000
+X-Gm-Features: AaiRm53MUn7Csb7YhgFkm-SftTRUdbqnL2h_ooGFYYKbzTkT98toSs7lqnz_6xg
+Message-ID: <CAFEAcA-iqQnwYnKR3BLE7VO0iAOSOjcOWADFw7XGu9kLB-f8Tw@mail.gmail.com>
+Subject: Re: [PATCH v3 05/15] target/arm: Don't let 'sme=on' downgrade SME
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ qemu-stable <qemu-stable@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,124 +117,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 24 Feb 2026 15:18:00 +0000
-Shameer Kolothum Thodi <skolothumtho@nvidia.com> wrote:
+On Sat, 21 Feb 2026 at 07:19, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> On 02.02.2026 16:33, Peter Maydell wrote:
+> > In our handling of the boolean 'sme' CPU property, we write this 0/1
+> > value directly to ID_AA64PFR1_EL1.SME.  This worked when the only
+> > valid values in that field were 0 (for no SME) and 1 (for SME1).
+> > However, with the addition of SME2 the SME field can now also read 2.
+> > This means that "-cpu max,sme=on" will result in an inconsistent set
+> > of ID registers, where ID_AA64PFR1_EL1.SME claims SME1 but
+> > ID_AA64SMFR0_EL1.SMEver claims SME2p1.  This isn't a valid thing to
+> > report, and confuses Linux into reporting SME2 to userspace but not
+> > actually enabling userspace access for it.
+> >
+> > Fix this bug by having arm_cpu_sme_finalize() fix up the
+> > ID_AA64PFR1_EL1.SME field to match ID_AA64SMFR0.SMEver.  This means
+> > the "sme" property's semantics are "off" for "no SME" and "on" for
+> > "enable at whatever the default SME version this CPU provides is".
+> >
+> > Update the documentation to clarify what 'sve=on' and 'sme=on' do.
+> > (We don't have the equivalent bug for 'sve=on' because
+> > ID_AA64PFR0_EL1.SVE only has 0 and 1 as valid values, but the
+> > semantics of the property are the same.)
+> >
+> > Cc: qemu-stable@nongnu.org
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Hi!
+>
+> I suppose this change makes sense for 10.0.x (LTS) series to.  There,
+> since it lacks idregs conversion which happened during 10.1 development
+> cycle, I had to adjust the change.
+>
+> The result is at
+> https://gitlab.com/mjt0k/qemu/-/commit/3c1f1b8065c625040787c2c89d22d5602100aeb4
+> (I kept original code fragments - using idregs - in comments).
+>
+> Please let me know if I should've done something different here, for
+> example not picking up this change for 10.0.x :)
 
-> > -----Original Message-----
-> > From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> > Sent: 24 February 2026 15:02
-> > To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
-> > <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
-> > <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
-> > <jgg@nvidia.com>; zhangfei.gao@linaro.org; zhenzhong.duan@intel.com;
-> > Krishnakant Jaju <kjaju@nvidia.com>
-> > Subject: Re: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
-> > accelerated SMMUv3 devices
-> > 
-> > External email: Use caution opening links or attachments
-> > 
-> > 
-> > On Tue, 24 Feb 2026 14:41:08 +0000
-> > Shameer Kolothum Thodi <skolothumtho@nvidia.com> wrote:
-> >   
-> > > > -----Original Message-----
-> > > > From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> > > > Sent: 24 February 2026 14:29
-> > > > To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> > > > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> > > > eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
-> > > > <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
-> > > > <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
-> > > > <jgg@nvidia.com>; zhangfei.gao@linaro.org; zhenzhong.duan@intel.com;
-> > > > Krishnakant Jaju <kjaju@nvidia.com>
-> > > > Subject: Re: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
-> > > > accelerated SMMUv3 devices
-> > > >
-> > > > External email: Use caution opening links or attachments
-> > > >
-> > > >
-> > > > On Thu, 19 Feb 2026 09:01:01 +0000
-> > > > Shameer Kolothum <skolothumtho@nvidia.com> wrote:
-> > > >  
-> > > > > From: Nicolin Chen <nicolinc@nvidia.com>
-> > > > >
-> > > > > When the guest enables the Event Queue and a vIOMMU is present,
-> > > > > allocate a vEVENTQ object so that host-side events related to the
-> > > > > vIOMMU can be received and propagated back to the guest.
-> > > > >
-> > > > > For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is
-> > > > > created before the guest boots. In this case, the vEVENTQ is allocated
-> > > > > when the guest writes to SMMU_CR0 and sets EVENTQEN = 1.
-> > > > >
-> > > > > If no cold-plugged device exists at boot (i.e. no vIOMMU initially),
-> > > > > the vEVENTQ is allocated when a vIOMMU is created, i.e. during the
-> > > > > first device hot-plug.  
-> > > >
-> > > > Why do it differently?  
-> > >
-> > > This is because a vEVENTQ must be associated with a vIOMMU, and
-> > > iommufd_backend_alloc_veventq() requires a valid viommu_id.
-> > >
-> > > A vIOMMU is only created once at least one vfio-pci device is
-> > > attached. If the VM boots without any cold-plugged devices, no
-> > > vIOMMU exists at that point.
-> > >
-> > > In that case, the vIOMMU is created during the first device
-> > > hot-plug, so we allocate the vEVENTQ at that time instead.
-> > >
-> > > So, the difference in behaviour simply follows when the vIOMMU
-> > > becomes available.
-> > >
-> > > Hope that is clear now.  
-> > Ok.  So maybe this is just a description thing that was confusing me.
-> > The key to my mental model is that both conditions must be met. That
-> > is SMMU_CR0 has EVENTQEN = 1 set and there is a VFIO device present.
-> > They happen in different orders in the two cases?  
-> 
-> Yes.  And EVENTQEN is set by Guest ARM SMMUv3 driver probe time.
-> 
-> > 
-> > What guarantees we don't get a hotplug event before the guest has
-> > set EVENTQEN = 1?  
-> 
->  vEVENTQ needs two things:
-> 
-> 1) The guest must set EVENTQEN=1.
-> 2) A vIOMMU must already exist (which happens when a VFIO device is attached).
-> 
-> EVENTQEN=1 is set by the guest when the SMMUv3 driver probes.
-> 
-> These two things can happen in either order.
-> 
-> In the cold-plug case, the vIOMMU already exists before the guest driver
-> probes. So when the guest sets EVENTQEN=1 during driver probe, we
-> allocate the vEVENTQ at that time.
-> 
-> In the hot-plug-first case, the first VFIO hotplug creates the vIOMMU,
-> possibly before the guest has loaded the SMMUv3 driver. In that case,
-> we wait until the guest sets EVENTQEN=1 during driver probe, and then
-> allocate the vEVENTQ.
-> 
-> So we do not depend on ordering. We just check that both conditions
-> are true, and allocate when the second one becomes true.
+Thanks for the ping -- there's nothing technically wrong with your
+backport and it would be harmless to have it in 10.0.x, but the
+support for the SME2 feature that makes "just write 0" become a bug
+only went in from the 10.1 release, so we don't need to backport
+the fix any further back than that.
 
-Perfect.  That explanation works for me. If you respin maybe start
-the explanation with the full conditions that must be met, then break
-down why they occur in different orders in the cold and hotplug
-(after we reach a particular point in guest boot) cases.
-
-Jonathan
-
-> 
-> Thanks,
-> Shameer
-> 
-
+thanks
+-- PMM
 

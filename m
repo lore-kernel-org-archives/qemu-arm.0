@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0169F4BB65
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 17:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C44F4F4BB65
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 17:44:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuwNX-0008A1-OD; Tue, 24 Feb 2026 12:39:23 -0500
+	id 1vuwRx-0001BD-5W; Tue, 24 Feb 2026 12:43:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuwNT-00089b-PM
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:39:20 -0500
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1vuwRw-0001B4-4D
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:43:56 -0500
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuwNQ-0003y8-F5
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:39:19 -0500
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-64ae222d978so5525917d50.1
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 09:39:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771954755; cv=none;
+ id 1vuwRu-0004mU-K2
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 12:43:55 -0500
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-64c9f7576d4so765697d50.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 09:43:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771955033; cv=none;
  d=google.com; s=arc-20240605;
- b=ZP8wOoTW3Rsbr2omjt7zCSAUlBAKDVIEFa+n6Wg4EEjecylFP2Soi4gH02GWsm9moD
- 0nYL9cPXMWsapT46jwScbZwRJp6bc4aMuI+ewioSNngAGPRUPRssgTYKcNSL2JkDYZcq
- yyqD5/fo/TAUCBe53A1QffmLRnQj9BciT5rmwG29mZ+938dyhaZLGiSoAodHGa/0FNDd
- 3DLDEReOMkhItapIHzgV2cNCpfbzOom+QFK//bQkIXU2CrU1YEHYCXPUrfXjxWZgCSuf
- xMAmxXW0x28LRgIll39OiTNaT2LcvaaB7d8FNu6hNl8m3fo/iZXbsO6AS3mMTCHntj4K
- 4vow==
+ b=RlOJw86aWO5s+Md7KavnaYFNbP0dwevP71DUfJQKk+9+As9MkSJDQgrrAjykczrPwS
+ evGHTNbyPMHYXJj5PXLB5s8xqm3HX1MUXWQpT3T03oInLgrsx0zzk5tlDre8tsqMNldC
+ A661cneL/Red3WED7gNEKbjmMjVmCif9GId0c7sssQ/h+wMvaJRv/y3agT/BD6cHcGHU
+ gS3cnXVDcah9epyW0cOv6Mk0/hnYsAcPaoUDDx/qbwUfbzRBqsk+0uvY98bb7feM5VoY
+ h+maJ2nS6dEbEg6GxGxyzs4++Z8ytwHXMcbV5km3OwKsfE3gkhf4IdRk7cnPyzSRj5+i
+ YCnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=tkIbci1DAFaxW/t/+Jin9X+O8itoBxS3vfyDbF3HHmE=;
- fh=tfPlYbAo/9Z/W6yChBth9c+CqPlBDmTs4pyketzMXhg=;
- b=J1MJvsmjlYfB9xwR9EZRiQIkMkjcgyWuIhF1NwT93z+nw0+dvCMbI/f1Ahiievz2wE
- haemYYzVCKDY5HbNzlOEn6OQ6iF/fnVCGLYFwokMPnvK/F6fx1lwHubzmjRNlAFkEt+q
- hQjdwwMntldmgTl7FWuCsyTI40IrNWCkq6qlrtt5YPWT33zvSVvf76ah/52Aaug15/za
- Q8fjUa5BPIvFVsDkmriXmo2U+NPI5t29zKOjalp0sTtD53yrvgCU9ftEMVBrkw1sg5gv
- pLjx170vOfqHO+dNk2d5U3wmfEYnW4IXVA8NbxwqeOP/aqJs0+VlcdxtBBYn+nb7184s
- MLyQ==; darn=nongnu.org
+ bh=bvlXZJbrhd0UjHZmAuDCJh18ioMIHHmNpbs0qCxkYDY=;
+ fh=TlajIxmXYiUUJgZ6ulC2fiUaBmfCVeSOSnDBiX1dnFY=;
+ b=H3s/Uo23AV1yhNFK9YCwfbba1J2N4s0e9gO7yo4IkcuL8jnlORdvr3gUC6j/FJWzI8
+ ZRn8IEthCcHY900J9CNh/CN7PmDf24ij2MTby+JvNRwHJWcNugaTsrHFpe90Jw7MftDK
+ G03ctfKHJJVkGDKbpCHRzx7xzB9nL+jnawbUbi5w+gWqZf11laiIy+A56R0jUizhb5h2
+ INX0usNn46ihdB9alDAR0YrSeXV2IFb1kiTHB/eTiBEEQRRCccm2p7tSbxRGE9IkgcxA
+ eTNLfCtKdYA7c76nIuXGbAco+Oc6SfvfI6z904PaOUDlwoyP4DdgXPw9BQ6hrtakQiDB
+ 4FEA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771954755; x=1772559555; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771955033; x=1772559833; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tkIbci1DAFaxW/t/+Jin9X+O8itoBxS3vfyDbF3HHmE=;
- b=FM5TWpJJe5zmK3GgDH2fk4X6Qi/ebRsc7/ckQlGspQBryTSvsP2BEZX1MHBP6Ttl3F
- sGkem+6TLLcDTjvWSy7Zp4AgIX5bHFveeYJ8AJ8KJlm5L/GM1g20K/fCWO08xE5yba/B
- NrUiFJj/Xxq1AQXTMdUIcC01GWrpJ8EJn+R1qgPB8pyYRi9I0e8mGtReSNP23ZgDgIAO
- 0tKovOoPnGZAEx3e4QHj9xRtHRn6UW2r+yCVvnUpefUxyRien7ht0ce/NNYXQPU9s5Uk
- YO6gnv6TsLM+GP52AwW1gDkKCITwUP+4AZ78s02lC6RVPg24p/HadzNiFTg42L5lvJCT
- 4pOw==
+ bh=bvlXZJbrhd0UjHZmAuDCJh18ioMIHHmNpbs0qCxkYDY=;
+ b=q6Gwzop6na32UIGFha/no5yqlLIL0RBSkaoVfILWdr++3Pa/IzDyZ2c5AL7t6dJRpn
+ 3w3Gx6GHqqKhYJBGdlkkoKgIuOUcEctIBsVy49ovv2m4UIPCungWDXdGZfmCoMdRmS9M
+ 6abHaaYzZq5+lNvMMMSymWBbyOKh8ErKz8fzE9pd7Lq6Jz8Y7l+v079FsdTEJyOOMTrZ
+ dRgryh62V3oOPRAEZUM0J2+Bq4K2o9s2Xtau0rUwgNmXTuk/kTG+xq6LJ3Skn9U3VDHM
+ rXRFofOJXV5bHWhcdKx+6xaNlFo+/e2hffPt4aTrHmHUZthgD8zOfrRGdmyM07RjMD5j
+ pG9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771954755; x=1772559555;
+ d=1e100.net; s=20230601; t=1771955033; x=1772559833;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=tkIbci1DAFaxW/t/+Jin9X+O8itoBxS3vfyDbF3HHmE=;
- b=GCaIOs17NQUoePXTrFxYvVpQgV+dbuBnloujtBuaQi5ff0p5PIdn21EUsOupsAgAjW
- /zakvUvqHD11T8vuM5s4wrKumGKTTGvalW5/KMbN4fn4/Mk77y84cWSbLYvgnm17Pee8
- Sp5JbKQwYcWuKtManyep3IJqsWewjmku8Vky7dgQtOO2igGiK5dZPxwOJdARQ0KCKywF
- tVvgim5KEgSRXTF8Vqi5n9pVVCNP1ahwWX+xFxEk7lMUMKtW3cSTnpG77n8/3JbnQYWO
- 5CRP3+iaBYoTBeSKh5018AO4bzXrfhxjF5eZp8t4hNPg3N3TDyFkRQlCIzJrR1R21mIw
- +b3A==
+ bh=bvlXZJbrhd0UjHZmAuDCJh18ioMIHHmNpbs0qCxkYDY=;
+ b=kVjr2WTThhY8qvoQuW6S6+DzsSnUU/YdnuGMPp54wpjyQym97JA1HPdEMrU03MklDK
+ GOy+yinQ//MT6AznVOSZ8GalQ5cNQbuEmUOxNGkKmTVAyTXTI5Hnwlr9X3UhkixgIHoi
+ cYG5Z3aHr6DcKFwIxcqp+/TYhmLHt0ibcptz5ZsPc6XxDnqFIAv6jGvjF8vNf3okXto5
+ 2292qOmRLsoVWc7I2G6TsVFTeNbIZPLC1tGEDs0FN3JyY1uEcB5JhPdT7jK56Axq4y6G
+ P0POPvAK4G2iAltuR56fmrQzLwuNBk25NcJ2WLAg720Iu1xRQNRn9rhXPy4EbM04zpcc
+ IQHg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWNpAHgpMI1lWvWv7ABxywR6vytUJB6L9XAoOp0f7Re0q369ptiA8xmg5lteIYV9xdx6SA/9nIRAg==@nongnu.org
-X-Gm-Message-State: AOJu0YzAIZB2L4pBbbiN45w/cvAJvGkLO1Hrk0xWKMAPFfS44bvE9jvB
- GrihRY1DJmCqSJN5ExTORtDKPoAPFaPaXu3spg8HUHzUD/GorqDrzfLGcTUqHkxahVgtJS6b5jk
- uXP7BDlIRUfCMYtYjlkcK2FRVq12ufD54PSkssLmr6w==
-X-Gm-Gg: ATEYQzwiFhX1uZa/WNk18Wgn5cQZZgVlyJWPDsV/H5YuD+B30cjHSH/m3zrBMMtO0NN
- Bh0DvVxBHLrgAqADtvBylA7rIQjVpWARxqzJfObiz4wLuhOk7R2JIp5F11/7QQ4hXs7aS4LGgae
- 1z1z/TTDXZPCBcNDoT0TYnne5UHLxryqO1BkWkr4VVomTEpytuVZSd3cyjGp3h9O80SuVGBGSlj
- y2rdVyIKYyLo8qtPQriWiuCQZ35adIsInULG8LdzzmVJQkV18LaDctDxW69CcORZR0ypksoktxr
- +1csKKN+Hh+vPopzOIPn+S7fpQ2IURYgpNlQpptOjQz9H0jUrJHGyXcXzMKjMoXgSSk=
-X-Received: by 2002:a05:690e:e87:b0:64a:d18a:66bd with SMTP id
- 956f58d0204a3-64c787d5328mr11475825d50.16.1771954755189; Tue, 24 Feb 2026
- 09:39:15 -0800 (PST)
+ AJvYcCUPHtnvWBqRigXF7SMNZp4JIF8gG6+vKzmHN6wQ/PfbeJZjjiiHxz1ud188rCSpsR3mBEVUPRH7gw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywkoqp7NlOP67njaYDyB/SnGzmHZyZeTrH/Rz4I0g9Nvj3JcVTH
+ /nsYPnQ2KAqKFFFsDQh/Z5Rt3YMnAZthdLakfBxx3Zw+zsm7Q9y+HM8/pUgHTd5PKTCrfW9hFE/
+ dQ2Xk6aztZyCXJY1cV+NqnrtHOqtBf9++V0KBnZvloA==
+X-Gm-Gg: ATEYQzwh0hfLj9I8WX2aAyqCCXdStadsL0STyi8LJi9BoTNYfRSDhElJellCtSQGwYj
+ 18NHEY0dcnLOnvYWub6HjzO4FAyyBh1gfB/dYfWkGFxArbOCiAXK1KD5tr8yHukuZAQslXqtRG2
+ LJ+QBPBdp+PBXhuakzGKs2OapPCRQ1SzWGC6H2ziq0Wa5dSaYP29iNOU6Nb6NAOWjwENTFgRNgi
+ 7AJlnJKxHSEgh+iRPkMkR4V3xXfIND/bHvgnFYcETY1Gz54TD2RxlK8JDdmMocApavmrl+yDDco
+ guoZASu6g6qdo/NrP6t95YO6EJvjoedYufpSipnygp3yHwQqZnbS3P1FxgCCiZPVVUM8QJt3SQ3
+ EKw==
+X-Received: by 2002:a53:cdcb:0:b0:64a:f2dc:2863 with SMTP id
+ 956f58d0204a3-64c78e3f4b2mr8694716d50.47.1771955033419; Tue, 24 Feb 2026
+ 09:43:53 -0800 (PST)
 MIME-Version: 1.0
 References: <20260219171810.602667-1-alex.bennee@linaro.org>
- <20260219171810.602667-10-alex.bennee@linaro.org>
-In-Reply-To: <20260219171810.602667-10-alex.bennee@linaro.org>
+ <20260219171810.602667-11-alex.bennee@linaro.org>
+In-Reply-To: <20260219171810.602667-11-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Feb 2026 17:39:03 +0000
-X-Gm-Features: AaiRm50pMo8gde-D1qm7vZm0Bhas8-SQLHZ6xUQkqf2U50DUphIzgmXP8vVT_eA
-Message-ID: <CAFEAcA-BG9s3LoC_QZeKmpbok03h6N++F2tcOVSORvrRBKkfyA@mail.gmail.com>
-Subject: Re: [RFC PATCH v2 09/14] target/tricore: move cpu_reset from
- tricore_cpu_realizefn
+Date: Tue, 24 Feb 2026 17:43:41 +0000
+X-Gm-Features: AaiRm52TuCRfIzNNGpZsyRSrbSfYPgjiMv87KBHufhgW597nJjYYrby_ozTNI9w
+Message-ID: <CAFEAcA8gvXGAhTZ+PuegZJucBHa6pYcDPxZYfUJfUjSKBme9TQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 10/14] target/arm: remove extraneous cpu_reset from
+ realizefn
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>,
  qemu-arm@nongnu.org, 
@@ -107,8 +108,8 @@ Cc: qemu-devel@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>,
  Yanan Wang <wangyanan55@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,52 +135,38 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Thu, 19 Feb 2026 at 17:18, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
-> Implement a proper cpu reset handler for tricore cpus.
+> We already have do_cpu_reset called when the system is reset so there
+> is no need to do it here.
 >
-> Message-ID: <20260108143423.1378674-11-alex.bennee@linaro.org>
+> By removing this we now only do (smp*2)-1 calls to cpu_reset. Once per
+> core as part of qemu_system_reset and then once per secondary core as
+> PSCI calls are made to reset them.
+>
+> Message-ID: <20260108143423.1378674-12-alex.bennee@linaro.org>
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > ---
->  target/tricore/cpu.c | 9 ++++++++-
->  1 file changed, 8 insertions(+), 1 deletion(-)
+>  target/arm/cpu.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-> index 04319e107ba..c3dda9f6a54 100644
-> --- a/target/tricore/cpu.c
-> +++ b/target/tricore/cpu.c
-> @@ -24,6 +24,7 @@
->  #include "qemu/error-report.h"
->  #include "tcg/debug-assert.h"
->  #include "accel/tcg/cpu-ops.h"
-> +#include "system/reset.h"
->
->  static inline void set_feature(CPUTriCoreState *env, int feature)
->  {
-> @@ -81,6 +82,12 @@ static void tricore_cpu_reset_hold(Object *obj, ResetT=
-ype type)
->      cpu_state_reset(cpu_env(cs));
->  }
->
-> +static void tricore_cpu_reset(void *opaque)
-> +{
-> +    CPUState *cs =3D opaque;
-> +    cpu_reset(cs);
-> +}
-> +
->  static bool tricore_cpu_has_work(CPUState *cs)
->  {
->      return true;
-> @@ -120,8 +127,8 @@ static void tricore_cpu_realizefn(DeviceState *dev, E=
-rror **errp)
->      if (tricore_has_feature(env, TRICORE_FEATURE_131)) {
->          set_feature(env, TRICORE_FEATURE_13);
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 10f8280eef2..dadc48e06e5 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2198,7 +2198,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Err=
+or **errp)
 >      }
-> -    cpu_reset(cs);
+>
 >      qemu_init_vcpu(cs);
-> +    qemu_register_reset(tricore_cpu_reset, cs);
+> -    cpu_reset(cs);
+>
+>      acc->parent_realize(dev, errp);
+>  }
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-We should arrange for CPUs to be reset in the board code, not in
-the realize function of the CPU itself.
+though it would not surprise me if there was some obscure ordering
+requirement that we run into by removing this. I guess we'll have
+to wait for the bug reports :-)
 
 thanks
 -- PMM

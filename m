@@ -4,104 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D112F3C984
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 14:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B48C9F3C985
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 14:42:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vutUy-0006ye-UT; Tue, 24 Feb 2026 09:34:52 -0500
+	id 1vutbL-0000xb-Vx; Tue, 24 Feb 2026 09:41:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vutUx-0006yI-LQ
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 09:34:51 -0500
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vutUw-0000LJ-3h
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 09:34:51 -0500
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-64ae222d87dso5027076d50.2
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 06:34:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771943689; cv=none;
- d=google.com; s=arc-20240605;
- b=Zb81ZXevqotqwomUeIAmlH0YVJCatX4dze16NcdRrzeohWDoShHHc4RtAZq1meZgE3
- tr0gTCPVNytPbN6LxMxsXwaS5K3d2JMTMZdJjXrUNUEdn8rJkPAgJ3BvlzHoVtxl5Khj
- eS3SQD4pXBZZYiFeCyLySjRwRJrl4JW/7hreUaNxn4WhMY4roD8aieBg0io+UpkFmNzc
- GCKYj5KwbaYnC0c4kEeT0N75lf/lHJQCQNmBntWf+5RqEv7lwRNFwrgjzx92uqamYj4m
- tSfWVBv8opcf0OBnY1JvgeazjL7Ahy0Wjkl/KeYBSYJvQ+x0ZIvI4YmDAB+pdIp7fPYR
- mZmA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=aflH0qDkgG4fC1sHybb7ibjojgZXGjJ7kgR08XJSBto=;
- fh=x5bEDFtxRhWgb/0a1ZBj6f3Tn6m/taQg8vQcALWTojE=;
- b=SXePjGVEbJconCFpRwMPnzyN/4mxZQ43FGsJM6+eRVbWvwwjTvzdiZyweE3QEBsiEt
- DtqQMijsOZk29rN7r6zqCCX/w4zoBnnLok5ObvqCy6bLCXPQjS9AwCKXIa4elGe4mmkM
- CGEYt2ipiC2DIMynP9Aewc/UWSe+3W5la/D4LRi8Kkd5Bxm/+ZlRIstxs5LJKnps18AB
- sE3xzunu+tIPX5fgIo8fsfY/EO57rNVO5wi1nIzbihW0SSU847ST7StBgOhpjGOC2hZM
- CoL6ck0uviwxiDAKr1dGU99Xg5WYhGqKbUV+Wo5YPmK1dsQ2nR9FLsVlI+FU4HL2lThm
- 0/tQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771943689; x=1772548489; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=aflH0qDkgG4fC1sHybb7ibjojgZXGjJ7kgR08XJSBto=;
- b=ZAZQorgmGwIO3VK/Emhojicui4U2V8OFumHsUSPI1CJiySewhheWguOp4UqDzC2InD
- rYZ8XzmcOeWglNCLmytLJFrPYIvrULeXsFppOKK2Xzg9/FY7Psn9gUAmzBkE6tOeqP9I
- /4vD/Kda1XsWMa1BJjcwSW3jzp7hF1RqcgoduJShMlA9wdy5PAXrCfWzqW0Ky0P9PFIw
- QWQ1AjmeotKyoeGw0Kzvn75yc71Act/6ZgV7yaJvsllZ9bJ98HfhgxJwmI1qoq4a2P1t
- 7ieBjwCiRXGm9TR3nYjE6tP7ePBjuG+RGZ63V8e1WzshASkIP7xVOJAemFTSLBsKw1qo
- fQFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771943689; x=1772548489;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aflH0qDkgG4fC1sHybb7ibjojgZXGjJ7kgR08XJSBto=;
- b=v8Lq6JS8AYb8S6Xv6sNX9BInds9NHNgMb2w7vqI11qe0PmsIWkNAqw2R0LlJiYh+5D
- fvlORB6BpWuiF9/NGyzmz7Q/ewFm8+pKHa1M806prjmed/I5Tno9RQnPBUNCltdB345V
- nCSdG3PvevpmKa8JXGYNI1izI69P8PpB3T3vJpu8EWGFp5omoZKpjBrCZ0ylIoGqF2Gk
- OoGAHNfpQdxoCCL6ON5HTjgt0QGuwyryILaaohz0dpd3C0F1vUY0B1d6tYX4k6QHHDRY
- 8lCKWCwhI624qEzC71xitb44oM+EgTzIH9qvjtuXdLkefnuMslfboD+zU/RVlRsha5Bx
- oZbQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWnBSAojQM7MY6r0KzznUalOLNHyVy80ae6qv6s3yB5MQ/YbHebLnOz7oTLfCvVIymYZ83roVG0qg==@nongnu.org
-X-Gm-Message-State: AOJu0YzhKlo+Z0aJe9fqKZGFlclbd24peOgQMasf/1PzmT7vpVmWruXw
- BQbA6YJXtMP1Lkj0obXqv0LkHbfwq3m0zMygg2CaY+IQ5hcgPTZawSiyjTJlZfoNOptdiRdYNlv
- iic/GD+HMKu24GG3UF0Bv23Us4JOu5jPkwXRhCoELNQ==
-X-Gm-Gg: ATEYQzzjC9WyA0qgjm0Xf+OxbcBQ74qvHBWwEJIkcbiPS2lKkCU0mxTwusqGY1rEcDK
- kmD4TC/URLUbeVqM/MbdceRB+g23V+PL85MhpD02TFEQznGz1Oj4X9WK8kNupA43KeeTx52Pmln
- Iw5UcpRFnViEyJZxYyZodfIP0cCQbnFII8S54lamjHIedTPN9RUk5/4+bqHF1E8iKuwOq0YIy4o
- MzDIPjff7kypT/PSXYVnX3dgHYZtK3XeDLLjesEXYRBQcCQ9nvAk8dEK883iXMeCU+7Et859NFe
- 0SCctuIxw9h55kKxmw3TCzR3yZ4aAA288Hg34YNPIVONcbg8I1kfaETZtIcReZxNAxo=
-X-Received: by 2002:a05:690e:dc2:b0:64a:d9f5:d412 with SMTP id
- 956f58d0204a3-64c78c1054cmr9104750d50.43.1771943688633; Tue, 24 Feb 2026
- 06:34:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vutbJ-0000sU-Tb; Tue, 24 Feb 2026 09:41:25 -0500
+Received: from mail-westus2azlp170120002.outbound.protection.outlook.com
+ ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vutbE-0001Lf-Ce; Tue, 24 Feb 2026 09:41:24 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DVJUuSySLJa7A7ISRXw2e9VOtJsW4uMPPsyJFdPv8HFPG7JK/L6qpGBtFjNGWp0eEqhY2916VjSDneRvw27iQv2vW2LeknTcl8EaT0h0CK92Fey+ffY86xCMfEsLUf7zPl/VgWfO9RG2diosfabO89u8oIwbxhsi0N8VcZSUAMyiVPK8OuInAD7JWJJ7LaHALAe86pqPo2+Qu97n1EP3h69r2Je9BgpJB5FEPSKAEIFVtlxJob1978Q8MNhG1yIvwKWrI9CkDZG6quvgXFUgMTBtPJ2YE6FjO+IQlZn/LGdwGNg3M6ssm3HTLTi+WRO7puIVkOB5h/qHJyszS7aX/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=FIE5W/p4d3FWsL23DNnDypW79Xeod8AwZM7h4C+bq8k=;
+ b=XvSXRTzVfYXs/RwCoQE3bmkEKu1ue0bla+rBsJ5h0DGJwaRmUXkqngQpPhsOOeksWTLg+kuNKf32XjhU0CXR2vPTsJGp56Wc5JLsIE0OW5x7CbDDDBIy0DFujIZ9WEI/CcWZyP2JW7uccK38l62WeBylmnvUUmJpgraIEVvztdCxZPJWefo9CF8Rmbx6Qq+hPZSJVPC9AWjCLQc2v5+NWvtF9U6OKKH6oJuJ7FkIF3+LBosCF7AciHy8oyyA7Vq5kGosD3BsskH86ZOqGQ+GZiKNwvo7DTihqoiPR82VzWZMaGBvgcR6AC+CP+ZJBD6NG3uHIVXtHDJFE72kyfNPxg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=FIE5W/p4d3FWsL23DNnDypW79Xeod8AwZM7h4C+bq8k=;
+ b=IuzQmyc6NjGr4H5TNxlfmKv/JHC0Hre+pEbYhPO4747eGk213FFydrdkDeGUzhAwDXF3BgOiGsXYtT7XeIH1GA9ubxCI8TN+i+5Jh6knkHDjLvhYvNGcqDFmH6QJF2Bj3BGuZ3VSV8+XnTm3sSpnI6s30d1QScjlIA5NydW/+fmxIIEy4FgSbq9XrvrsMwjWWIhv28XqqIbF0WxQH3HdOAlDRWsgUFopayJipP5zy6V5JzyyZ8vJM0RDxddETOWw56t5EpSyp7YmhTs3TUXLaSWFUxbNkh2++XfzgGy9ksaT86GP83V3XvXn4YoJ1kryjxk1risos3Mox35tTTPTEQ==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CH3PR12MB8212.namprd12.prod.outlook.com (2603:10b6:610:120::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9632.22; Tue, 24 Feb
+ 2026 14:41:08 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9632.017; Tue, 24 Feb 2026
+ 14:41:08 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
+ <kjaju@nvidia.com>
+Subject: RE: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+ accelerated SMMUv3 devices
+Thread-Topic: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+ accelerated SMMUv3 devices
+Thread-Index: AQHcoX5mqsuvOdSY5kmqaAuAN0RYDLWR8NSAgAAAo8A=
+Date: Tue, 24 Feb 2026 14:41:08 +0000
+Message-ID: <CH3PR12MB75483EAD05125D5FD3998474AB74A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260219090103.33697-1-skolothumtho@nvidia.com>
+ <20260219090103.33697-4-skolothumtho@nvidia.com>
+ <20260224142857.00005fb6@huawei.com>
+In-Reply-To: <20260224142857.00005fb6@huawei.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH3PR12MB8212:EE_
+x-ms-office365-filtering-correlation-id: 27b630cc-261f-4943-7737-08de73b2bf48
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700021;
+x-microsoft-antispam-message-info: =?us-ascii?Q?hcrEAgUyI0qVcYgYQTMr2M7bk3FUg6lHCCu8D2ycYGgBC4x/rzzDyp5LvuY1?=
+ =?us-ascii?Q?g6AqIwp2IY72YGrOpIBUSecu5ZBG10Th4myE5xUm+vOiOzlzwVsKvQqPOxv1?=
+ =?us-ascii?Q?27mjtG/QxUIJzQGkjBj9jhV5AkyN24cYrcvQpkgp9fYXtxdjZ0bMFsN2BH8F?=
+ =?us-ascii?Q?EPKt8FjWvOBsLyX1/HEvDomCenws8jYVNEBNLozF2S5jTWbZmg7IdgWhJ8SJ?=
+ =?us-ascii?Q?YnvOF2J9bMCoRDiQLrw61wLSf0CLE5mTHeiY4iEWxVSDphsJfK1yPzwCTq30?=
+ =?us-ascii?Q?LqYzMy2/whdB+bYBYTsDBg9kGml0n+wYQ8fjWMb6gkSPAEeMb1HVs50kJoCv?=
+ =?us-ascii?Q?RbBWL1+dlWe3PjWgzCBSKFERyAqSoEsULomb5+bdlEYhGveqLalpVZlN0Twk?=
+ =?us-ascii?Q?ITM94Q0uJSkzeGFmwrbn+UnglE1LreM8VFUg/PbTsll8AXqm2pb9+gtUY3LL?=
+ =?us-ascii?Q?o56lfptfyuEx+YrxC3M9ZuUrwVEXv1IrkpDby+feP4FvlOGX0UHbfOaxV5JQ?=
+ =?us-ascii?Q?IFedmz/uwEGTSol0SVismfXgpWIkA0sEO3hEkuEFm8+CihS5A/GaTWoZaXOq?=
+ =?us-ascii?Q?eRelY3AH+lulduY+BoyHfVPhcU1gSsMCOr7vUoGhCW90yLmZegj+9VnjAhrp?=
+ =?us-ascii?Q?/JyqWQJlJscbdcjvUXpmybJeyEppE3uz+ej+z549xQ73Zrk+FHHcCFK0DrS3?=
+ =?us-ascii?Q?d54QMCD+wrB+oROcRPYZP+S7Z0+EC0akXr0B/fF0vhuE2KWbyqIIKumKrEa7?=
+ =?us-ascii?Q?hQGo8fmsPKfRQAswDnVBuLrEkpzDvkVQQ0cLX3Xnd8pY0IJlnQeyr+sOMbKI?=
+ =?us-ascii?Q?1ybt4hI2+opGquvpfUhfBSw/7GJspf31Fv3NjZVp1PLHwTxoUWmbJpJKB+U1?=
+ =?us-ascii?Q?B6OtEGba3ho5/4gTyTKbFBib/jR2bnwYQojhza0t0AWH2GnUIzW9rEM0N/xf?=
+ =?us-ascii?Q?Qo7lgmzF5SXC+UeHc3OkszZZM4+k7BC7bsTUaJaJpCgjy91AOLD30PHdLvbO?=
+ =?us-ascii?Q?UCO3dvWWN+d94FawWwuJpFpSNo2YQ9SlYPcGeEBjMTqueKtupo4IbH49EbxS?=
+ =?us-ascii?Q?QFHDJZkZXb8fZyZyCi/UUs9EBPeI0ltndNRrsYp3KN6xiUC6Yf0Mwzzp1AnA?=
+ =?us-ascii?Q?7mZzCv50kphzhIbPQzIOfGBUksJUqbpa4pY/OUHSUGhxqLKZDuM2GYIrwGGO?=
+ =?us-ascii?Q?pI7IojvnCe9FKuPWvUfQPieOlCTZB+N92vDk5hTGErh/bztfagHxI/Wfggdb?=
+ =?us-ascii?Q?6oiUJMiINm3ZNZpzmiQs3iSiKNx5BavgErpFWnHUFrAyYbDjxN2K+6v6DfHK?=
+ =?us-ascii?Q?m3ZWMCZx52R2FvCP5f8HIbSIGLmejAvCEtaIOyuBmwhQTyOoSUik1Ic7LH5e?=
+ =?us-ascii?Q?cObHM5mE34+7A8hWl/PzxVmUEYylIvfIQZiKoVrT1+2bD5/QHZtI8fRQn9d/?=
+ =?us-ascii?Q?RT4KTzfBDE8CtJzyZQi2xoaJX39u9E+VOQ/7udX4P+pDlv7ToMRg+Tg+IfiT?=
+ =?us-ascii?Q?E6/0ZJzISUKvsT7W0bJmPZgi+2kGqyK5eWXlDpSY436rGmdeycgyPCSFPjAN?=
+ =?us-ascii?Q?YeUVc+V+ThSUtTDmnHIehTk9X8ZTiGDSj9HUCTNlmGZ26RsBpKGaD5+HzfLI?=
+ =?us-ascii?Q?y8ZZroRITMAFUBHgH4UJXSA=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(38070700021); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?JIl9lL70l7GqDjf3WX7fiOz9qeVqPtppLBnP3edTvNviMfTRK0I2tijPg/t1?=
+ =?us-ascii?Q?wi00Hz68wfotlEI7nqKVebRgoOk++vNXoVpZISB8xyRVCoKj+q/Xy3hW4CrP?=
+ =?us-ascii?Q?eOdm0FRGj7zNx+2LNOrTW4FsPLhK3hLJRtjjq8ZJHhDQ87X2/dLt55kySZQe?=
+ =?us-ascii?Q?I6MneumoO7NiSt9zfiOe+tuf7Co74YuG3DXdLm8CSiq/9c1WnSuc4b+lPBQr?=
+ =?us-ascii?Q?46OtFGCRwUOV6JGkrJwHsKEHM+LZ8R8yykuw3OQEKF7J28hpCV+dUEzBdQ5f?=
+ =?us-ascii?Q?EvIlGVywoJg3RBha4cbpWiOpjdZLXJE82eaYmToME+29uy5RRpeCW0kEr8Cc?=
+ =?us-ascii?Q?oNVWjBR8pvnlp/T89oU5/+6LcL3gSc7UyD8b0GlnvxOkfnl8Ipw/ojXqG7Pk?=
+ =?us-ascii?Q?mnm61Gox/PKnstSmuZpPyvm0jXzcj2qw6WvtNRSCwrIZdrRiGh9aDeY0MB1w?=
+ =?us-ascii?Q?FZIYBgjYnwZ0lvm8rhU2VpXTrdMlpnP+6YEB51bwyuckaGJlU3HAOGbBKvJR?=
+ =?us-ascii?Q?IIyJTbJgfXvyQPXAuH+44J6QiyPL3dwe/3OhMi1Iy+F7DLi5yh7xHnHaSX+Y?=
+ =?us-ascii?Q?uPfK0pQSO0cnd4yxRn0g6HKRcOMN/8U/TlqU312G5CZx2GgX1f8R6JGu1yuW?=
+ =?us-ascii?Q?u+ACqvrJaeMJ/PXnZ5KCfDDjHR26OIlYGwd5Ep94D+qcOvcA8bvI140X6WZC?=
+ =?us-ascii?Q?p7AkxRfvkibQ95E8wxkxABwo0gxdr9T0NQWbj0vQe5mc7QwbKbzeYutlQn9P?=
+ =?us-ascii?Q?bDcFQG7YBmTU9uAy0mAscSwNd0mHRREZOIiPyPID24OhtUl/q6U/xhMssnE/?=
+ =?us-ascii?Q?0+r7Ivf9uOeAJi8uY0NkrUxM/DmaFcusjczb02JoeSmKZrWPvXau7aKi4hdI?=
+ =?us-ascii?Q?ZQGe1jZF/grk7FkBmeOFEcTADBydcCQRfZ7ts9PFFjQBd4JH7YHKVNm9jHA+?=
+ =?us-ascii?Q?pjt+Wpp45vlJVDFI/ATGB9LqyI/OytPv+FWizvHsZinJPvh8rmrrS4OSgZ0u?=
+ =?us-ascii?Q?AE7drQHA417WoGD8hr6MglhmW53fzt5hXN5foLS+z5giTb16a8CUIS3H/SuL?=
+ =?us-ascii?Q?maiXCadhrCK4hAKv1iAsDRppClyvvROmawVEYNUnmofLapURen4M8CQ/qbEN?=
+ =?us-ascii?Q?d+JoTu4Lqo5GFTkKi8+XkZKVZH0VYWXIhQt9VIquY1hNPxcm1OC0L7HtjFC+?=
+ =?us-ascii?Q?QpKWYeM3zpCiajj7cRLzyfpm47+GYc1AuowFRFqwMQUy940fESEQ9dl7uUas?=
+ =?us-ascii?Q?mi/IYvq0lRvLVk+VarUI00GYxrDDxucDigMorkSc9ziUolkbMKo3ISa8EL+R?=
+ =?us-ascii?Q?PpcWYV/4xg3oP+pnKDctkuS3qeTbY1/YdUSgFnnRzDfCIVdDw3+DGCPHLt9A?=
+ =?us-ascii?Q?KbE9wuGLhJ8inpvCmUynniHi45Jdg0dZ4viiMD9PwyWMycAZ4nYVxosrpqlZ?=
+ =?us-ascii?Q?of8aV7TM2+5EhHUcv6Zehf4GocNzwG64Y6SZJ4UuQqG3054euKuPkFM4LeWk?=
+ =?us-ascii?Q?dlJTMVBf0GRoybqzq6Z1+VuFAFeYTarV1VdK4M7pX83JukmpufQlzp/RNF4s?=
+ =?us-ascii?Q?36gB316Us3VW5a70SnhmaGaP7JnkYXUOf8sOr0OngrtYsb58BHB82sHTb/rl?=
+ =?us-ascii?Q?TiPIF0VU3IVlLsuw1lw8wL3ZRrFzpWKYKFQ57IFDuTXtDQc7dw/lMwmjHxab?=
+ =?us-ascii?Q?PAAfwaV7UKqHnhWTMVWHwSAtOi+grLsCaf5eTrToiA2pZNSLWRrCyGVQtqNy?=
+ =?us-ascii?Q?c+ItIDAe4w=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20260220115656.4831-1-sebott@redhat.com>
- <20260220115656.4831-2-sebott@redhat.com>
-In-Reply-To: <20260220115656.4831-2-sebott@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Feb 2026 14:34:37 +0000
-X-Gm-Features: AaiRm515uOhz39gYNVWQiyM_zHuBmfxeUElFEXao9Pe5eZx0PQvwmWIjvVpaqkY
-Message-ID: <CAFEAcA8O2UEKToJ+zXA6=vvgkRyPKrPwtfHnti7yyGgCGwoJeA@mail.gmail.com>
-Subject: Re: [PATCH v6 1/1] target/arm/kvm: add kvm-psci-version vcpu property
-To: Sebastian Ott <sebott@redhat.com>
-Cc: qemu-devel@nongnu.org, eric.auger@redhat.com, kvm@vger.kernel.org, 
- kvmarm@lists.linux.dev, pbonzini@redhat.com, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 27b630cc-261f-4943-7737-08de73b2bf48
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2026 14:41:08.3274 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: D2ihclv5bnSGlRG9FO91bf26csr5oANAmIUFtbTr9A71nbFtncGS/yOF8mODwqnjADLzu3EAkyaAb5qf+ZBj8A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8212
+Received-SPF: permerror client-ip=2a01:111:f403:c007::2;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=MW6PR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,93 +175,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 20 Feb 2026 at 11:57, Sebastian Ott <sebott@redhat.com> wrote:
->
-> Provide a kvm specific vcpu property to override the default
-> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
-> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
->
-> Note: in order to support PSCI v0.1 we need to drop vcpu
-> initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
->
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Sebastian Ott <sebott@redhat.com>
-> ---
->  docs/system/arm/cpu-features.rst | 11 ++++++++
->  target/arm/cpu.c                 |  8 +++++-
->  target/arm/kvm.c                 | 48 ++++++++++++++++++++++++++++++--
->  3 files changed, 64 insertions(+), 3 deletions(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 3db1f19401..ce19ae6a04 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -204,6 +204,17 @@ the list of KVM VCPU features and their descriptions.
->    the guest scheduler behavior and/or be exposed to the guest
->    userspace.
->
-> +``kvm-psci-version``
-> +  Set the Power State Coordination Interface (PSCI) firmware ABI version
-> +  that KVM provides to the guest. By default KVM will use the newest
-> +  version that it knows about (which is PSCI v1.3 in Linux v6.13).
-> +
-> +  You only need to set this if you want to be able to migrate this
-> +  VM to a host machine running an older kernel that does not
-> +  recognize the PSCI version that this host's kernel defaults to.
-> +
-> +  Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3.
-> +
->  TCG VCPU Features
->  =================
->
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 10f8280eef..60f391651d 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1144,7 +1144,13 @@ static void arm_cpu_initfn(Object *obj)
->       * picky DTB consumer will also provide a helpful error message.
->       */
->      cpu->dtb_compatible = "qemu,unknown";
-> -    cpu->psci_version = QEMU_PSCI_VERSION_0_1; /* By default assume PSCI v0.1 */
-> +    if (!kvm_enabled()) {
-> +        /* By default KVM will use the newest PSCI version that it knows about.
-> +         * This can be changed using the kvm-psci-version property.
-> +         * For others assume PSCI v0.1 by default.
-> +         */
-> +        cpu->psci_version = QEMU_PSCI_VERSION_0_1;
-> +    }
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
->
->      if (tcg_enabled() || hvf_enabled()) {
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ded582e0da..5453460965 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -485,6 +485,28 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
->      ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
->  }
->
-> +static char *kvm_get_psci_version(Object *obj, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    return g_strdup_printf("%d.%d",
-> +                           (int) PSCI_VERSION_MAJOR(cpu->psci_version),
-> +                           (int) PSCI_VERSION_MINOR(cpu->psci_version));
-> +}
-> +
-> +static void kvm_set_psci_version(Object *obj, const char *value, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    uint16_t maj, min;
-> +
-> +    if (sscanf(value, "%hd.%hd", &maj, &min) != 2) {
 
-%hd is a signed value, so this will accept "-3.-5" I think ?
-Probably we want %hu.
 
-(If you agree I can just make this fix locally, no need for you to respin.)
+> -----Original Message-----
+> From: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Sent: 24 February 2026 14:29
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
+> <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+> <jgg@nvidia.com>; zhangfei.gao@linaro.org; zhenzhong.duan@intel.com;
+> Krishnakant Jaju <kjaju@nvidia.com>
+> Subject: Re: [PATCH v7 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+> accelerated SMMUv3 devices
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> On Thu, 19 Feb 2026 09:01:01 +0000
+> Shameer Kolothum <skolothumtho@nvidia.com> wrote:
+>=20
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> >
+> > When the guest enables the Event Queue and a vIOMMU is present,
+> > allocate a vEVENTQ object so that host-side events related to the
+> > vIOMMU can be received and propagated back to the guest.
+> >
+> > For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is
+> > created before the guest boots. In this case, the vEVENTQ is allocated
+> > when the guest writes to SMMU_CR0 and sets EVENTQEN =3D 1.
+> >
+> > If no cold-plugged device exists at boot (i.e. no vIOMMU initially),
+> > the vEVENTQ is allocated when a vIOMMU is created, i.e. during the
+> > first device hot-plug.
+>=20
+> Why do it differently?
 
--- PMM
+This is because a vEVENTQ must be associated with a vIOMMU, and
+iommufd_backend_alloc_veventq() requires a valid viommu_id.
+
+A vIOMMU is only created once at least one vfio-pci device is
+attached. If the VM boots without any cold-plugged devices, no
+vIOMMU exists at that point.
+
+In that case, the vIOMMU is created during the first device
+hot-plug, so we allocate the vEVENTQ at that time instead.
+
+So, the difference in behaviour simply follows when the vIOMMU
+becomes available.
+
+Hope that is clear now.
+
+Thanks,
+Shameer
 

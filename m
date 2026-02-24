@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19ADBF3C991
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:44:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6785CF3C99B
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:44:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuuZy-00082t-Ma; Tue, 24 Feb 2026 10:44:06 -0500
+	id 1vuuZz-000830-0v; Tue, 24 Feb 2026 10:44:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZr-0007tf-4h
+ id 1vuuZr-0007ti-4P
  for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:44:00 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZl-0006Il-2J
+ id 1vuuZm-0006JF-WD
  for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:43:57 -0500
-Received: by mail-ej1-x644.google.com with SMTP id
- a640c23a62f3a-b8842e5a2a1so808109466b.2
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:52 -0800 (PST)
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-65c187dfc82so6966457a12.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771947831; x=1772552631; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7a4s9yfVfg/sM27gpDGwRk6HTs+3jP0sag1g142pnus=;
- b=m/Z7tGB+6KATJGyQseJ7LdPCT05GDWvN2LXD/4rLbS2nNPjouIhFLS3SiD+SNaRSOg
- bp23wxycE2l2lIePy4QiCuYairwinE/wzVxelbxq9TqdgpAVY9MHpWuI2pCZCRtrxF4Q
- Ht3U+h5D5hgWgsK65mQU3a1aVBRF30IagEOsBXSiMuynRompXjEcs2juQQhzfrmt+Ac+
- 6+/wCgPzwoc313Pakdm8h4wc8lgnpq+ZVdfKEgHyq6UKlW+RSwWIk8g/YlgQP4+Xj6/G
- 4cN1+U58+W7+zLVGI/JER/w8/hVjPLLDHKbfTGZmipEEJjPDazzCK9vDMh1hoOajhIDn
- Z73Q==
+ d=linaro.org; s=google; t=1771947833; x=1772552633; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=hoSqACMxBpjn4o73gjVBwtRN5Jt4IHBoZBFOG4xNiyc=;
+ b=H8Y2mJJH2kWiS5cTKGPQC0qBSul+KxlGYVxxW5Kd3oOV4EqmWsYgst3+69/YXAGR5E
+ nYCC5ddVIrURa7M2hi7hpw+GU0e32gUJmwcXqKEwR7jBjPFDa0Y8JGzz78yv4mQ3Eo6g
+ 41TzRPY5fXZANyWLEOT72U0cXotp0I1RkhlYsV52SycN6rcQlQwcUvZp3dCqX3wDJdL+
+ YHtMqWp6hS0KiYRfIyacYLK8N/wxdmFgKQrXeqoYhoXMfo1FUYj9A6nmiR2SYXVan5I8
+ jCGGI07YZYpZk+3SCK/tyMEJkgxUV7Mrf84MNeNVMhxKmIS8Bzk7A+/uo38/H2fQQTiV
+ dCIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771947831; x=1772552631;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=7a4s9yfVfg/sM27gpDGwRk6HTs+3jP0sag1g142pnus=;
- b=NYiGimCVQPQ2ArkJC0KQmhuQNsbA3+Q9x7suduqjx/nO1S8e2poyUFzHJ1qyKriSvW
- bX4BKZ+XuhZnE0cHVWmi3zAkdxTyG+2abo0Ae9GFSfv7zhK89MJQlGZrodGcH/bOx4PN
- mI2sRjjxxjGBsmNvoRkoVd8qR0O1CWEgLJq+ySO5mztXUyEk8Fc5Kzg33lwgyxxJ6lKb
- Oo0uHIABzZZmYABPDeZR3xwu1rM4ZbpKEL7Rk8EYh43UAmlDJlLsyBvRigCVgUYEMFT2
- Bg04PxLuZ/Dz7f8bFuwjHHt8tKnuUiuUzd8O3GOF9ekpidMJ+kgpGo/Ge3Xtmfw+EEFd
- /shw==
-X-Gm-Message-State: AOJu0YzK0l3MGjWlwGdAY/DxG58M+wTTYF8gSvp6txT4UzhqsC5BrPzR
- bR5G/rol9QzGUuLyiB0q3698KRbZFl1SYmZva/eQ1ecuvGKqqn0BaqVlhcDLI/8eMAc=
-X-Gm-Gg: ATEYQzymqAJ6tyLHRvqM4WV/KmsOEstDaozPAc+ha4Pf+gk99saG1OpOsf2wZk8jDUR
- Hr9e7YiIvjlazirz/GR8Rz3WzM1ZStU//kFIROifQfdizjFAbJxf6KayhP7A7j3EQHRNUwmScHG
- VtoWGEDIybYYpKJqbqLCORH+dpyB8SKgRnwbvC/b2LYDUe7dw8O3ODUmLPHZvHqxaK+Rw88G1nu
- r3GJLnOWCrApPLaMQ3ChmzyACwASLaOeiQc4ApL9azJtb2tgKL+DHXuU14SMqORhoQU1BEoBWSx
- FNDlZdVEKLdk89HQhaASeS7ON9Z/5vYTJeKR6jFOOBuwwUEt4K2HANVt2pvFR0swyjSN5B37qjl
- 4AMB4sx1n+PNvJIfWRREEdJb7jrDaXq0q2ZKlKaxcTkad0fzxNp/6rkn6t9G5SBrMFHLUOy54WL
- tdpFGfI4W7eAgV8ToXOf7mSXs=
-X-Received: by 2002:a17:906:209c:b0:b87:1590:d528 with SMTP id
- a640c23a62f3a-b9081b6d72cmr475534566b.40.1771947830911; 
- Tue, 24 Feb 2026 07:43:50 -0800 (PST)
+ d=1e100.net; s=20230601; t=1771947833; x=1772552633;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hoSqACMxBpjn4o73gjVBwtRN5Jt4IHBoZBFOG4xNiyc=;
+ b=raTmESjO+XFGK8BLFKLVRTMyt6+Z2SrBpSY4puuFP6zpvaW2PzHxV0FRlGHmT3OCHR
+ v6HWNOuiqxgz2fUbNSrx9YQwOc18VRIPLl5IbLGVJuDqbq6GB0goY9ba+rG1r3vHUXqu
+ wA8pLPJVx0v3MMbfJPZy/YKk4w2O8n0bQtrn3ObKDQsbMkcdvDpjIW3LTQdGk4TVVxl7
+ xo2l2rIBw2T5QDqOFo43rrBR+AL81yMWnVfpEmJscXaIRhuAn+gHEg88n0xFRW2GnWgl
+ y/jYxUphh6wQpi8y0TFsOwxtZydNP3O9ByoC448m9sM1cLKt3bq6boQ07isj9kp8St7Z
+ NeqQ==
+X-Gm-Message-State: AOJu0Yz1WTXb80+hiULcmPBhf4D10M9anecw2D60Wzb3X2dzJhUd3rDs
+ TPt3ZvSXz8UIaYWnO/7DqnXUALwXYqdpG99rmk+kE0McTYMN6d6KqmGM675WQImvk6Tnp0PHjRy
+ klKaI
+X-Gm-Gg: ATEYQzwEzpcUBxveGO4JPVUMWX/F2bBP5k6N2snvx9FoottJj2RFZUky8Js8o8KmdK3
+ FpK4O2AhWlFacskgYIeArf0uWTYYYr+krHvsQ9R6iuM9/wIoD+0qaT5tqEviJ2ciYD4iidT/+sj
+ kkc2Hg3PNr5OCvfcncFDenBhNCIw9OlLUlvii66M5bKuSxS29a2LHXQI9RsSRXx31K2Ce6Jllmw
+ ZHqP6y8FK2X4UV2sY2CD35WVHmdfNwQIlEmghBn+mV0yBPc4kr2E7Qmq0G+yEQ3h7k1rTAO5lDt
+ Wq8k/vxI7TLBaau5TEwcrsQnCyZMcpxp+YUnZpdyxyydjGqU0TlDg5pDvB8A+H7s1TC22BXA60t
+ ihmzkOWRDLQrhjCZs0hqsrIyNQWCPMBIQ9Hc+Kg16WFyZjqqMUiO3eE3TFi4e9mtEQ3ys2V3maU
+ G2nNJcWl0nXiUuC6yrvpCmrgM=
+X-Received: by 2002:a05:6402:3496:b0:659:4099:877 with SMTP id
+ 4fb4d7f45d1cf-65ea4b5bb64mr8317087a12.0.1771947832666; 
+ Tue, 24 Feb 2026 07:43:52 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b931f81b914sm61831966b.7.2026.02.24.07.43.47
+ 4fb4d7f45d1cf-65eaba3ff47sm3558690a12.30.2026.02.24.07.43.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 07:43:48 -0800 (PST)
+ Tue, 24 Feb 2026 07:43:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 790255F8C1;
+ by draig.lan (Postfix) with ESMTP id 3603D5F7B4;
  Tue, 24 Feb 2026 15:43:47 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 3/4] target/arm: pass rd directly to wfit helper
-Date: Tue, 24 Feb 2026 15:43:45 +0000
-Message-ID: <20260224154347.344219-4-alex.bennee@linaro.org>
+Subject: [PATCH 0/4] target/arm: fix WFIT syndrome reporting
+Date: Tue, 24 Feb 2026 15:43:42 +0000
+Message-ID: <20260224154347.344219-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260224154347.344219-1-alex.bennee@linaro.org>
-References: <20260224154347.344219-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x644.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,65 +101,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If we generate an exception for WFIT we could also fill out the rv/rn
-fields of the ISS. To facilitate this pass the register number
-directly and read the timeout value in the helper itself.
+This adds support for reporting the register value alongside the
+corrected syndrome information for trapped WFIT instructions.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/tcg/helper-defs.h   | 2 +-
- target/arm/tcg/op_helper.c     | 4 +++-
- target/arm/tcg/translate-a64.c | 2 +-
- 3 files changed, 5 insertions(+), 3 deletions(-)
+Alex.
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 5a10a9fba3b..a9a062cf777 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -55,7 +55,7 @@ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
--DEF_HELPER_2(wfit, void, env, i64)
-+DEF_HELPER_FLAGS_2(wfit, TCG_CALL_NO_WG, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index aa14f15eb62..28a1c7243ad 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -409,7 +409,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
- #endif
- }
- 
--void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
-+void HELPER(wfit)(CPUARMState *env, uint32_t rd)
- {
- #ifdef CONFIG_USER_ONLY
-     /*
-@@ -428,6 +428,8 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
-     int target_el = check_wfx_trap(env, false, &excp);
-     /* The WFIT should time out when CNTVCT_EL0 >= the specified value. */
-     uint64_t cntval = gt_get_countervalue(env);
-+    uint64_t timeout = env->xregs[rd];
-+
-     /*
-      * We want the value that we would get if we read CNTVCT_EL0 from
-      * the current exception level, so the direct_access offset, not
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 5d261a5e32b..073454b9195 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2064,7 +2064,7 @@ static bool trans_WFIT(DisasContext *s, arg_WFIT *a)
-     }
- 
-     gen_a64_update_pc(s, 4);
--    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd));
-+    gen_helper_wfit(tcg_env, tcg_constant_i32(a->rd));
-     /* Go back to the main loop to check for interrupts */
-     s->base.is_jmp = DISAS_EXIT;
-     return true;
+Alex Bennée (4):
+  target/arm: set the correct TI bits for WFIT traps
+  target/arm: use FIELD_DP32 instead of open-coding syn_wfx
+  target/arm: pass rd directly to wfit helper
+  target/arm: report register in WFIT syndromes
+
+ target/arm/syndrome.h          | 24 ++++++++++++++++++++----
+ target/arm/tcg/helper-defs.h   |  2 +-
+ target/arm/tcg/op_helper.c     |  8 +++++---
+ target/arm/tcg/translate-a64.c |  2 +-
+ 4 files changed, 27 insertions(+), 9 deletions(-)
+
 -- 
 2.47.3
 

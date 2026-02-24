@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87DD7F3C991
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19ADBF3C991
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 15:44:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuuZt-0007wz-RF; Tue, 24 Feb 2026 10:44:02 -0500
+	id 1vuuZy-00082t-Ma; Tue, 24 Feb 2026 10:44:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZn-0007rF-7z
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:43:56 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1vuuZr-0007tf-4h
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:44:00 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vuuZk-0006IQ-K8
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:43:54 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-65a36583ef9so478678a12.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:51 -0800 (PST)
+ id 1vuuZl-0006Il-2J
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 10:43:57 -0500
+Received: by mail-ej1-x644.google.com with SMTP id
+ a640c23a62f3a-b8842e5a2a1so808109466b.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 07:43:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771947830; x=1772552630; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771947831; x=1772552631; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jLxuXw2XnWGwhF/mhX3epGfGgtQaomurSwQWIXwnoKY=;
- b=vE17HoZ8lvYb0tU2g5N8mBoBqfHJ+DqmXNjuPGtc5jW6WL+H/iwqAFdNL4d8/kSvz4
- HLVwT97b64CDm9E36BdRQEAoOlBe7wD3sgNWpuas2rihIXubURSHt/F9iKSWckCbFnZR
- DvOP68kXXaK0/vm+3lXquwatAyRA0XavS8RDX0DibX9Pb5b25eZzPTTgps/Kk0on04JZ
- Ebu635vBAvQDUTeFJMIdtgMLRLy9LXSzyt20g72VOyQPHsqcNERP0qTQeWylEJOcFrG+
- oW6o/iYcyqxO+2sY+yQhknst8xp3KWaSfHGTAMjuwmZNkjYCTUNq+UQkVTkMmHm63S3h
- XgWA==
+ bh=7a4s9yfVfg/sM27gpDGwRk6HTs+3jP0sag1g142pnus=;
+ b=m/Z7tGB+6KATJGyQseJ7LdPCT05GDWvN2LXD/4rLbS2nNPjouIhFLS3SiD+SNaRSOg
+ bp23wxycE2l2lIePy4QiCuYairwinE/wzVxelbxq9TqdgpAVY9MHpWuI2pCZCRtrxF4Q
+ Ht3U+h5D5hgWgsK65mQU3a1aVBRF30IagEOsBXSiMuynRompXjEcs2juQQhzfrmt+Ac+
+ 6+/wCgPzwoc313Pakdm8h4wc8lgnpq+ZVdfKEgHyq6UKlW+RSwWIk8g/YlgQP4+Xj6/G
+ 4cN1+U58+W7+zLVGI/JER/w8/hVjPLLDHKbfTGZmipEEJjPDazzCK9vDMh1hoOajhIDn
+ Z73Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771947830; x=1772552630;
+ d=1e100.net; s=20230601; t=1771947831; x=1772552631;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=jLxuXw2XnWGwhF/mhX3epGfGgtQaomurSwQWIXwnoKY=;
- b=EqjV/iMK0kkIUSs6va4KNiSrt2oJZ8k7imH84QYW2VEzdpWc9i3CHKNHWXStgsIhB+
- EEUdNLXEc8t62JbfHiOUB43qGq6iyuGUw88JRvedOOqFYVJmUi/YBsbuenNv+uyworQy
- EinMGuqmMr7vDTZVM3afzzzOF9Fy3ByGf+SsI2EGEIzmRup7mhyuDjSnfzqo53aob+Os
- IEM/Th1ef8o0C58ZbcBBe3Bz85QGa23FhKUzXmrRAcXF/4Wpi9LvwklNlCgu9il9L/gw
- A/d3bEyAaWq2TFDeaG0X8E7KRZNWJru4HypnJDnAo4A1F0+IwPX4uCRf379REDFBQUpw
- 7ffQ==
-X-Gm-Message-State: AOJu0YyDs04vfFK5ZCymS102U7M70EJRVjjVmpX0CgcWAvmHGwkqyVTI
- cm/lsIewmcATnPRhaXMhw6oniVTRwJnDtx7rw+5UM+mnuaC0K+B+OPqR+4zsSCwhHakV/9INeZv
- IvhB+
-X-Gm-Gg: ATEYQzzP1r6P+k8qvyBLIOCiEnudVOb/HyS6axWmW8qDWS8lzibv5+JtPAtC/b6GngQ
- sAUgDZnbSJwoPnIIxtwY4MSSZqzlWkT+Q/DOPIeIR2bROuO9PewG+Lcyx7vgXfQ9uH94CP2CYfX
- wNVi5kt0kXQy7wkSqlRF9FBVnr7tgR4T1jJzDbwrdLCBaiW+P7mc8W8/51sn8R41a1QsoBKTs9W
- DShaoebJM/NV2/hOjEKTdszorcJt5BCMl/5Y/Rw+YeBI4NQ8CxHlmOG4oMh2T5u+q9Rubj+GRCU
- yH8IjWmW0cwIKK+i3tMWGu1Ut+geeXo0AZxAJi8+9OnHmNFsoEe2Ixg98aLRHbJ3J4C+CLp8Mt9
- fFPn/qV4pyalJcxXxnTZngFwlOmpDTTTUHnCCJUfxzRWf3NlV88Lp+4hHdgk/i3waEmw2n8oBJ0
- BozoVut54g6RsBBgveyqwI52c=
-X-Received: by 2002:aa7:d5c2:0:b0:65a:23e6:ae60 with SMTP id
- 4fb4d7f45d1cf-65f7ba1a129mr180961a12.12.1771947829539; 
- Tue, 24 Feb 2026 07:43:49 -0800 (PST)
+ bh=7a4s9yfVfg/sM27gpDGwRk6HTs+3jP0sag1g142pnus=;
+ b=NYiGimCVQPQ2ArkJC0KQmhuQNsbA3+Q9x7suduqjx/nO1S8e2poyUFzHJ1qyKriSvW
+ bX4BKZ+XuhZnE0cHVWmi3zAkdxTyG+2abo0Ae9GFSfv7zhK89MJQlGZrodGcH/bOx4PN
+ mI2sRjjxxjGBsmNvoRkoVd8qR0O1CWEgLJq+ySO5mztXUyEk8Fc5Kzg33lwgyxxJ6lKb
+ Oo0uHIABzZZmYABPDeZR3xwu1rM4ZbpKEL7Rk8EYh43UAmlDJlLsyBvRigCVgUYEMFT2
+ Bg04PxLuZ/Dz7f8bFuwjHHt8tKnuUiuUzd8O3GOF9ekpidMJ+kgpGo/Ge3Xtmfw+EEFd
+ /shw==
+X-Gm-Message-State: AOJu0YzK0l3MGjWlwGdAY/DxG58M+wTTYF8gSvp6txT4UzhqsC5BrPzR
+ bR5G/rol9QzGUuLyiB0q3698KRbZFl1SYmZva/eQ1ecuvGKqqn0BaqVlhcDLI/8eMAc=
+X-Gm-Gg: ATEYQzymqAJ6tyLHRvqM4WV/KmsOEstDaozPAc+ha4Pf+gk99saG1OpOsf2wZk8jDUR
+ Hr9e7YiIvjlazirz/GR8Rz3WzM1ZStU//kFIROifQfdizjFAbJxf6KayhP7A7j3EQHRNUwmScHG
+ VtoWGEDIybYYpKJqbqLCORH+dpyB8SKgRnwbvC/b2LYDUe7dw8O3ODUmLPHZvHqxaK+Rw88G1nu
+ r3GJLnOWCrApPLaMQ3ChmzyACwASLaOeiQc4ApL9azJtb2tgKL+DHXuU14SMqORhoQU1BEoBWSx
+ FNDlZdVEKLdk89HQhaASeS7ON9Z/5vYTJeKR6jFOOBuwwUEt4K2HANVt2pvFR0swyjSN5B37qjl
+ 4AMB4sx1n+PNvJIfWRREEdJb7jrDaXq0q2ZKlKaxcTkad0fzxNp/6rkn6t9G5SBrMFHLUOy54WL
+ tdpFGfI4W7eAgV8ToXOf7mSXs=
+X-Received: by 2002:a17:906:209c:b0:b87:1590:d528 with SMTP id
+ a640c23a62f3a-b9081b6d72cmr475534566b.40.1771947830911; 
+ Tue, 24 Feb 2026 07:43:50 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65eaba2db5csm3657446a12.24.2026.02.24.07.43.47
+ a640c23a62f3a-b931f81b914sm61831966b.7.2026.02.24.07.43.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Tue, 24 Feb 2026 07:43:48 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 624525F8BC;
+ by draig.lan (Postfix) with ESMTP id 790255F8C1;
  Tue, 24 Feb 2026 15:43:47 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 2/4] target/arm: use FIELD_DP32 instead of open-coding syn_wfx
-Date: Tue, 24 Feb 2026 15:43:44 +0000
-Message-ID: <20260224154347.344219-3-alex.bennee@linaro.org>
+Subject: [PATCH 3/4] target/arm: pass rd directly to wfit helper
+Date: Tue, 24 Feb 2026 15:43:45 +0000
+Message-ID: <20260224154347.344219-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260224154347.344219-1-alex.bennee@linaro.org>
 References: <20260224154347.344219-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x644.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,55 +103,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We can use the registerfields API to safely set the individual fields
-and avoid open coding magic numbers. The EC and IL fields are still
-driven by defines but we could convert them later.
+If we generate an exception for WFIT we could also fill out the rv/rn
+fields of the ISS. To facilitate this pass the register number
+directly and read the timeout value in the helper itself.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/syndrome.h | 20 +++++++++++++++++---
- 1 file changed, 17 insertions(+), 3 deletions(-)
+ target/arm/tcg/helper-defs.h   | 2 +-
+ target/arm/tcg/op_helper.c     | 4 +++-
+ target/arm/tcg/translate-a64.c | 2 +-
+ 3 files changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index bff61f052cc..86a2d5ea9d0 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -26,6 +26,7 @@
- #define TARGET_ARM_SYNDROME_H
- 
- #include "qemu/bitops.h"
-+#include "hw/core/registerfields.h"
- 
- /* Valid Syndrome Register EC field values */
- enum arm_exception_class {
-@@ -352,11 +353,24 @@ static inline uint32_t syn_breakpoint(int same_el)
-         | ARM_EL_IL | 0x22;
+diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
+index 5a10a9fba3b..a9a062cf777 100644
+--- a/target/arm/tcg/helper-defs.h
++++ b/target/arm/tcg/helper-defs.h
+@@ -55,7 +55,7 @@ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
+ DEF_HELPER_1(setend, void, env)
+ DEF_HELPER_2(wfi, void, env, i32)
+ DEF_HELPER_1(wfe, void, env)
+-DEF_HELPER_2(wfit, void, env, i64)
++DEF_HELPER_FLAGS_2(wfit, TCG_CALL_NO_WG, void, env, i32)
+ DEF_HELPER_1(yield, void, env)
+ DEF_HELPER_1(pre_hvc, void, env)
+ DEF_HELPER_2(pre_smc, void, env, i32)
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index aa14f15eb62..28a1c7243ad 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -409,7 +409,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+ #endif
  }
  
-+FIELD(WFX_ISS, TI, 0, 2)
-+FIELD(WFX_ISS, RV, 14, 1)
-+FIELD(WFX_ISS, RN, 15, 5)
-+FIELD(WFX_ISS, COND, 20, 4)
-+FIELD(WFX_ISS, CV, 24, 1)
-+
- static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
+-void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
++void HELPER(wfit)(CPUARMState *env, uint32_t rd)
  {
--    return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
--           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
--           (cv << 24) | (cond << 20) | ti;
-+    uint32_t res = (EC_WFX_TRAP << ARM_EL_EC_SHIFT);
+ #ifdef CONFIG_USER_ONLY
+     /*
+@@ -428,6 +428,8 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+     int target_el = check_wfx_trap(env, false, &excp);
+     /* The WFIT should time out when CNTVCT_EL0 >= the specified value. */
+     uint64_t cntval = gt_get_countervalue(env);
++    uint64_t timeout = env->xregs[rd];
 +
-+    res = FIELD_DP32(res, WFX_ISS, CV, cv);
-+    res = FIELD_DP32(res, WFX_ISS, COND, cond);
-+    res = FIELD_DP32(res, WFX_ISS, TI, ti);
-+
-+    if (!is_16bit) {
-+        res |= ARM_EL_IL;
-+    }
-+    return res;
- }
+     /*
+      * We want the value that we would get if we read CNTVCT_EL0 from
+      * the current exception level, so the direct_access offset, not
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 5d261a5e32b..073454b9195 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2064,7 +2064,7 @@ static bool trans_WFIT(DisasContext *s, arg_WFIT *a)
+     }
  
- static inline uint32_t syn_illegalstate(void)
+     gen_a64_update_pc(s, 4);
+-    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd));
++    gen_helper_wfit(tcg_env, tcg_constant_i32(a->rd));
+     /* Go back to the main loop to check for interrupts */
+     s->base.is_jmp = DISAS_EXIT;
+     return true;
 -- 
 2.47.3
 

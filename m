@@ -4,158 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5145CEFB810
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 07:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616C2EFB819
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 09:13:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vumz1-0002A1-Ao; Tue, 24 Feb 2026 02:37:30 -0500
+	id 1vuoTp-00041o-Vt; Tue, 24 Feb 2026 04:13:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vumyu-00029c-P7; Tue, 24 Feb 2026 02:37:23 -0500
-Received: from mail-japanwestazon11022084.outbound.protection.outlook.com
- ([40.107.75.84] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vuoTk-00041N-QQ
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 04:13:18 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vumyr-00054H-9Z; Tue, 24 Feb 2026 02:37:20 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VxN/b5zDZPwVx9NS4Kvxy+o1XLbS5rIdWmz6USnZIqd2sXHTTmnlUJFibpyL45Q9j92ASfd0Fyi3g97dx5rECJz8walE6yVGcOzFca+hk22tbhLho5EBs9zMlrxnXOVBrkJnk71ZM71jk6Vqa/qu0EvK2kUFjTevRaWghKCFuTc6TblGnYoF6bom2WlklV4L+1gTapEYqkaj9z+kqlar6feBCW1BunOSEYvZ0mTDEr+JU1kUoJn/ts4AqjaNWOn7UnjU6Un7dGV1KXJHwbN/6SC2K3OfhmCcMWsZe9U569WaWNHbIJSxzIsShTuWoqo1PZz7G0jTnstZLbnDdJT42Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ye5dgOrlamF1YP13KyxebLisxmVjs5eoUoR90bKRkeM=;
- b=s3hZRQPqMYO/M+/49Pk5bXYf2qY/XCwmgeIxb2Vp6IQisTe0gkx1kQog1Bx1iz46FjfhBFAWlAZ1brlUCy+F4X8OMgYg1/2MG5kx+Ft/8MOTnbA/jzgLwmbySx7W2N10B38g5RHRKtijLN0c8AzWbtKtkYeAEjeedilld3GCI5xgy1DtUUknK6WXjNslw4YRankvBarOofdYvCvq052w2Zk5WE5kOx5ea8tKCi7V2oFMcNjBFg9i20/tkJqfJOcMzvNx5GBHURSq0zPYLxVRpZGniYDpNO/S5UIbej+eZZvG4jZKOZwKN24kw0k5F4m8dVRU35yANXfed8W6UZ0j7w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ye5dgOrlamF1YP13KyxebLisxmVjs5eoUoR90bKRkeM=;
- b=RBcBSvgdUY5FiVr6+ssliHiI7LyGnHwvKm2VvcuX9jhSSfYD0T33kbte7GVeqeuuOKJ95t6AxSBP/6jVzTfuiq3jYyKV1ByD9eU0HpaGpuOSnGGMtkLoSJQpnGPwnEh+36o9CNwkHqTd4Cx63l6P8F5LrI7YvX9737+E9eVm1iPRvHDA41scU8FVT5fJzkeemFp3qUP2dJIhKVB2IVfUiGuBpCxeX5EP2rlbPZ9wA9vPumgGAXDzSgNEk0lZXX0GkStkgiMlYqo3MsFmZeVBNgcg90QYqjWRoN3RzuwZtbgBeZRDkbNQVJHZfggJgSBhO3AtFHpFcOY5+eLfvjDHgA==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SE2PPF2BE5BD2CD.apcprd06.prod.outlook.com (2603:1096:108:1::7ca)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9632.17; Tue, 24 Feb
- 2026 07:32:09 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9632.017; Tue, 24 Feb 2026
- 07:32:09 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- Kane Chen <kane_chen@aspeedtech.com>
-Subject: [PATCH v1] hw/i2c/aspeed_i2c: Fix DMA64 address handling
-Thread-Topic: [PATCH v1] hw/i2c/aspeed_i2c: Fix DMA64 address handling
-Thread-Index: AQHcpV+vxH9fN/w7TkCKdAJqmFsUUA==
-Date: Tue, 24 Feb 2026 07:32:09 +0000
-Message-ID: <20260224073207.985162-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SE2PPF2BE5BD2CD:EE_
-x-ms-office365-filtering-correlation-id: bf97f616-2930-4dd4-10a8-08de7376d181
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|1800799024|366016|38070700021;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?ARe078LMWRAPYsoJs72KqmNFobE7ebhrRf6nZh+hLs/xFoVTdcsBW4yn0m?=
- =?iso-8859-1?Q?BdQgCEXXnPm1whVB9lLxrCXxOXk5+Buf05Wg2KLDZXQGy1fvvCyuVA6LEH?=
- =?iso-8859-1?Q?wXaYnYgahrjhHlkSX/NSE57rpwkwZtPsP6AGgPZGvAy4pK35HpwL98D2Zh?=
- =?iso-8859-1?Q?3cpCY9CBtuFfxMwy5zlphnFPsI6AgNSbiq++KUcYyknxAB1TReJJ8x2YF3?=
- =?iso-8859-1?Q?H3KZNKlAf1o4FCnz4Br6yHlf7S0KkcrE8JffOHXHam2hZISX8bGcoiVGyk?=
- =?iso-8859-1?Q?g1cCmBFXOkLmRcm2c2oRQcuvnyWA6sN0X9fyVzLSPqLiC6MUj12g0vNIrh?=
- =?iso-8859-1?Q?8KCBKjSEoaGXCKyRO0qjda3NMCLFM6e2BhiHwvKQzs4uZ4Z/i81JSXT3xh?=
- =?iso-8859-1?Q?cpL6zkuOiRKfCxc49f5VEEPW1l3Q8NKbg6/lM9XM9geabgDSeXyNcP/vCx?=
- =?iso-8859-1?Q?DEWbMXZNkdnF5xt51CUb3wjXgkh0FSKY+j/OIZD5yFDq4gFOBJ5BxqPRqu?=
- =?iso-8859-1?Q?2yw9FyLnFpVRCKF9lc1jb1MGCo04vdXsfEXVJflhC+0FPyLRfBPjUxLshO?=
- =?iso-8859-1?Q?r++DW2kXscCPi831i7ZlcoJzoIlK95zBUQjND1cp+UvpyAqRf5Ynq7gA07?=
- =?iso-8859-1?Q?fzkP7xgWd2RWqB0dc6XL1X1cggRo5dvfngLT9B1ysGUk9r4Fr/HHdislth?=
- =?iso-8859-1?Q?tmh508y+Jpk8KOxV/FeJu9RSRVAPmLeBZqvii9Oc4XaebZnnjJ5E6ekBog?=
- =?iso-8859-1?Q?BEug5EPu5NZY6ym0iwHDD1DWKILHR3UFt97JvyttzxWRaYx9i3TgpcF736?=
- =?iso-8859-1?Q?gJO8ngmgPZJkl7xMVK0TQSGl1SpUCke7FtNYohNrc2HPxWIAgNn90KeS8O?=
- =?iso-8859-1?Q?kpkaLuhBTQdY7FYZlXf52pCDcvGkClDyQugiwNbf81+08oHiTcEdVYpRAo?=
- =?iso-8859-1?Q?NrTri2t3Y/6yfuXURdL2DerE/C7PZcdp0d7SGAepOsQBNZDosX6um/B37z?=
- =?iso-8859-1?Q?Ol237ENQPhcvi+MtfNEjRSpLfUQSNq6kWVWXdu+5aoafGrtz0QTQOaLHHm?=
- =?iso-8859-1?Q?R8+CXYfiOb8pwM/YWnrMjyXzTcPSBaW2UGoEvqa+lWNMfg75fm8uQ0+WIn?=
- =?iso-8859-1?Q?PjFIbXctltIszcPas/AliFvDZyjwyNie38zjwPn4JQh9KyMDNtNdeXJV1x?=
- =?iso-8859-1?Q?1fovqYdNVFuzi5VXHYtW59KGdh6PG+DjzjzS6co6dTpANmWGU4Enh2cEoI?=
- =?iso-8859-1?Q?drBNJvsfK5+tppCEaQkm/F29naUtgYuhaDfkqHpf2Y5hIPWAfQjVCZ5aX7?=
- =?iso-8859-1?Q?nr9SiVw2ceK4260+CH8DuzKKmh7Uq5ZOuTyEnKszLP5g/0S7RnUUZ0/j7W?=
- =?iso-8859-1?Q?0/DpoLWg9/zUjhlpRP5stdYlLkCBK6hmDSsPDLLOIrFugP6auKwNJ+816N?=
- =?iso-8859-1?Q?8CYOHBcGEO7TZ+S2df2IqlDyjnFVcPos4i5XLDe/dtTci344gl3iZVYDTf?=
- =?iso-8859-1?Q?hpMHg/KS5qyl71xQd6u0y31T0zreB/f0dU+k60eWSZBA6p3c1JQzUa9F6z?=
- =?iso-8859-1?Q?a6zDoj0ChLQCEpCWY677TUuqqOO0OstReIROxPZFkuJAj/OFjckki/T3R3?=
- =?iso-8859-1?Q?Y8VJhMsjUc7d3pZ4yyU/9k0wscXJPnrPryuRuTXIrc/xOriHe05XhW71QY?=
- =?iso-8859-1?Q?kaVOi/TObEL824Qb/9g=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(38070700021); DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?JPDlouEMvCOUDNzfTWt5Qo8wrEe0fzj1pFaeUwcJMFUqo4V9BcHuTcj5lV?=
- =?iso-8859-1?Q?SYajKsuNVrM2yklvjMxYzbxfQBXft1sbV1oQGAEudz1e14mpJH/SNbDeOl?=
- =?iso-8859-1?Q?TMbHqBdztMafAaY++OtoqYl3snQDZCd4o55xxEkwoil4uyYHY2noeDjjqI?=
- =?iso-8859-1?Q?WNNTZAHzVTbb7G/EXlQV4VEYjt341oZk9XR7D4BzfktNDF3yQzBUO8BxaX?=
- =?iso-8859-1?Q?qxgbhPPUGxFdRJJ26WgnH6iaYgIvKE5TfCrZCoGJfDDs7n1+hzMYGJCkpF?=
- =?iso-8859-1?Q?5zEff9ZQPmoKwRxvEn4/g84+zo6GI/YO5reiGkBMIh6k3aAiuceAZzoOwm?=
- =?iso-8859-1?Q?3rtT70Dhtth4EZpiq2LIrhGnKJXI+vDwPYU4LVZMPeMyXIO/TLM5z8fwAZ?=
- =?iso-8859-1?Q?KcVT3HfVtXdSWsV4NOK6nIaT5Fp1+Yty542ms7+qZoJxzFPoNw47dawCv4?=
- =?iso-8859-1?Q?VBF/4lSH0YQACTXj/rWPEXvK8UYdSHjYoewSIx65WsjoOao4vHZPxE6RpS?=
- =?iso-8859-1?Q?AEDqr194SVIfKD8dzM7gIrm6wJAD0QhcGe+UzUlX15w2gvxq+TtA1PZZh7?=
- =?iso-8859-1?Q?jzhAzmRPaUW7WpQpZqfZVwV1tKJ2a5Oh0eobD/d81pgWWcYlsdfzzyX3jJ?=
- =?iso-8859-1?Q?Vpys9sbJYGuqVwQ5FEB907OvnnoZX+WjH2lyeyl+rTI37P2bXFGIAea41q?=
- =?iso-8859-1?Q?YraOguNHj+/Rb56yv+0HtDm+0Um0Oik5ou0vxpxMt/Ocs27nu79UOZuScQ?=
- =?iso-8859-1?Q?OE696tG6FbXNzD4VBh182n3t7PWSKYF/9EE4J4jSKSwD4qY3LEZWlAyXM/?=
- =?iso-8859-1?Q?wT1oCFxWXZARHWuGZJyzeZ4C43/xR4UvjJcXh3pCx48/05+lkkHX/n7OY8?=
- =?iso-8859-1?Q?cJdzgl8kpgKhOiQaPR+b16LVKF4vUK6kbFUgn8yE7NF/cfIcu9ZY5xrJzL?=
- =?iso-8859-1?Q?XozPmBbIKPI80tOeeT/rfe89HH6uTzyJoVw3sRel5RqmJwRjQTGXJshwMa?=
- =?iso-8859-1?Q?W3HTeqC6hRIu2r92lsqqsoOLfUnmpj8amhffHru9ODVHTQzYM2kXvQ4xhz?=
- =?iso-8859-1?Q?7I+SWct5h6dSu63mpoQacSTMO0HSm3f/G83qR4xbBHWz3P5rCthf9sbWt7?=
- =?iso-8859-1?Q?VpomfE6XkLlPqEKl1hbXk24KjsLue8o60PgbGfl7Pum/sL5crldjF1qOKq?=
- =?iso-8859-1?Q?gveHaWZy4+ipj+cTWWsyI62uNbmeT+jWOsT14KyM0Da8DdeGE6OHm7eLlz?=
- =?iso-8859-1?Q?kQmelR2O8Tp3l1SHMShSEbPf1mWvutlgt05WF4ns6WndJamfMEjrITj5Lw?=
- =?iso-8859-1?Q?UPG13xGH+T8x4z/PbJdCVVtNlx9aK8MFmrttcCF/43V3N8LMvHzpfLMd5G?=
- =?iso-8859-1?Q?eXhhW3Yjn56Cqcavsa2MLX5GL28ZVK2eOuK8Ex++Tn8fi4GFsja89N5fgG?=
- =?iso-8859-1?Q?BkcZcf0yY8fEPs4pvUdqkqyC/JK6kuyk97bmNKQ4lya5CUxO9WJh4gGwYB?=
- =?iso-8859-1?Q?O19ppJBQOkHb+1qsTgLvXOYHfurb3vJ3NyFz5foFmotO1+ScQCwywSY6gI?=
- =?iso-8859-1?Q?pe4EBzGb++NG12X3xPN14EfeaPujdExoCKHlNMyXtEsOG7MpQE/gV+J+7l?=
- =?iso-8859-1?Q?Vvx9uJOsDYy095cfnK8eBJH47XgTh5JSmGGaYLg8LeVO33dbA93SkRe0tY?=
- =?iso-8859-1?Q?K0rU/d6eJYPJf5JoWtb2qwN9t5chohvrNduHHJOmg9mOB/GSYavKg7J8hm?=
- =?iso-8859-1?Q?bfrWmGTZfSoNQ4GztoBGpfUqO36P0R8J6+ej7IFmaKC/AUxQpjafA1Q3gr?=
- =?iso-8859-1?Q?+j4HDU3FMw=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vuoTh-0003BQ-P6
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 04:13:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1771924391;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=FR2nGH/TLezukN/2n/e0ILFtuWyjeiAK2I7s85ZYHUc=;
+ b=AkqjydNz7iWdMvTjCv7tGi6D0i3tV5XTyvMVmwCilJ1QD92azeR3Yl6fzhFzZ5QJ/IeIrO
+ pYnj8Jl8sqr19kBjZePZtJ3UF97OnygjUf39d0D8ExIIKR+4q4Awqg0zw1bIR0MVAtwzlw
+ bxIM2poorR5rq+/Kwu4lEk2jnia7lxY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-179-ACovh8CWOZSBVk9Y0xtD-A-1; Tue, 24 Feb 2026 04:13:09 -0500
+X-MC-Unique: ACovh8CWOZSBVk9Y0xtD-A-1
+X-Mimecast-MFC-AGG-ID: ACovh8CWOZSBVk9Y0xtD-A_1771924389
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4837107e0a9so38530115e9.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 01:13:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771924388; x=1772529188;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FR2nGH/TLezukN/2n/e0ILFtuWyjeiAK2I7s85ZYHUc=;
+ b=FL9HVAUCOIonEK6JqDfJgS8GPxkdZbK7y7HlwCJsAJ84bQMokVaWQjqHJiI5VIxs8q
+ i9ezm2XB0sjqxBwv6pUVXSylICmqVO3EbKKO7zWTF6OaHDcrfV4ccPH9zRmGmMT5tJ5q
+ TzJVnS+qOIWdwynPIvFlARlI2FpXOPvsdKbeXM8FhV+lWtCfvz+chqWTzliBg8SP6dkL
+ jiiZJ7jv4PKJtKjhw/YiHQCTWhufjtKg6jMvU9cC1qR+Khg8V3d0mc+F5MyAYk3VaQA7
+ p0Hp0768SibHPJ9yDdzZ/G+nmUG3q98nv3Oa/TL9p26xDISLvWoAgMgL/lDxlWfVk3si
+ 2v+g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXYkQJlcnckrjg2za1Q9Q8b6uU9t3R1zcERMeVa0Rww3fWVKWAyrJvPXOZpMPI1y7cP4C7pIu3diQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3dciBlz5cbTUuEl/6MGPLxu6DBlmO1Bs68CxPXd8fHc+IyFG6
+ SkZ6NTD1hrlwwpttY3mEH3XIQZ3nn6vBMWVvac1BYgDUcGo5ZUsY8t9QUVQ0nbbOewByiRz6uuE
+ 1Q0ud7X7Q7KNEOWCrncoX2uY9CEcFRa6cVZntuk3nFTsJs2eCoaBiXg==
+X-Gm-Gg: AZuq6aIlUYDesh2jAXgy+vU61dC8qDwA5bFhM1TVNurjXkZ/r6iM5BI4y7oxoSMSuLK
+ chOXf7waHCHVpAo/SYZBgnZY3qSQHFH71ev4l1lF8XrdsbZHw/RQ67rKs0jC5cbKET9QgG8ZQtz
+ CsjFlrmyw+C7gl/5U9lKbmva7FKGLZ7F8QRJ8v2zTP4OeCovSdu781aHFKEh2C/3lQRKB5AGmXy
+ 8SqNz/owsB1xaRGYXso78GV+oBuCEF7AIWzg/eBKas4/qBAIv1zteiFCAThEaJIxohyDHpORUiW
+ TM5oou7q4nJTDLUnlG0oUU5OWSqXV9TO0Tghq55HFt8YJ6pifbRQFG/Ebq5HhHG4kZhfDCvfkMi
+ TIvAekiFdilVZVz8/kV0Vy+UvnARjCN8dHojrlVQNxTGjVCzRb45vJRpTcg==
+X-Received: by 2002:a05:600c:528a:b0:482:eec4:76d with SMTP id
+ 5b1f17b1804b1-483a95e9570mr182843385e9.17.1771924388448; 
+ Tue, 24 Feb 2026 01:13:08 -0800 (PST)
+X-Received: by 2002:a05:600c:528a:b0:482:eec4:76d with SMTP id
+ 5b1f17b1804b1-483a95e9570mr182842885e9.17.1771924387987; 
+ Tue, 24 Feb 2026 01:13:07 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:165:d60:2c1a:3780:4e49:dfcf?
+ ([2a01:e0a:165:d60:2c1a:3780:4e49:dfcf])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483a31bc0e3sm295347065e9.5.2026.02.24.01.13.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Feb 2026 01:13:07 -0800 (PST)
+Message-ID: <aa6cbbb8-d8db-451e-9f9d-c430b2e030d9@redhat.com>
+Date: Tue, 24 Feb 2026 10:13:06 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bf97f616-2930-4dd4-10a8-08de7376d181
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Feb 2026 07:32:09.1150 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: h222LTyumgASDRRIOllbrNYIbCDTphNIgcr8rLlDpei3udX45wP8PeqaUUVXyVYLSiOa5UlU1W+Fi7xvLKbWa23zTEt3eSo+42RBetf1rms=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE2PPF2BE5BD2CD
-Received-SPF: pass client-ip=40.107.75.84;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Kane Chen <kane_chen@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+References: <20260212213955.2225662-1-clg@redhat.com>
+ <20260212213955.2225662-3-clg@redhat.com>
+ <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
+ <CAFEAcA_9Np04vouA-m99xB8yU-JhduwxxLj_dTG0QM=AnDbHoQ@mail.gmail.com>
+ <aZMwvfw4O5xeH-Gm@redhat.com>
+ <98898cd4-de19-41b7-b519-541c48b462ea@redhat.com>
+ <7b68fe15-f8fb-4d72-9559-8b6b89bd7563@redhat.com>
+ <TYPPR06MB820657F01C98468E1F166C7FFC74A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <TYPPR06MB820657F01C98468E1F166C7FFC74A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dFxY0YV5pyv9Gx-vBDbTV29H_cswXLWOY19ebzNQK0U_1771924389
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -1
 X-Spam_score: -0.2
 X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1.179, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.717,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -171,47 +168,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The current code updates the upper 32 bits of dma_dram_offset only when=0A=
-aic->has_dma64 is false, which is incorrect.=0A=
-=0A=
-If aic->has_dma64 is true, the controller supports 64-bit DMA addressing=0A=
-and the upper 32-bit DMA address register must be used to update the=0A=
-dma_dram_offset accordingly.=0A=
-=0A=
-Fix the condition so that the upper 32 bits are updated only when=0A=
-64-bit DMA is supported.=0A=
-=0A=
-Fixes: efea7ddb4689a1ac4bce63a9ddb32887c7f3ac50 ("hw/i2c/aspeed_i2c: Fix DM=
-A moving data into incorrect address")=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/i2c/aspeed_i2c.c | 4 ++--=0A=
- 1 file changed, 2 insertions(+), 2 deletions(-)=0A=
-=0A=
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c=0A=
-index 122bfdd63d..8022938f34 100644=0A=
---- a/hw/i2c/aspeed_i2c.c=0A=
-+++ b/hw/i2c/aspeed_i2c.c=0A=
-@@ -237,7 +237,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2C=
-Bus *bus)=0A=
-         bus->dma_dram_offset =3D=0A=
-             deposit64(bus->dma_dram_offset, 0, 32,=0A=
-                       FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));=0A=
--        if (!aic->has_dma64) {=0A=
-+        if (aic->has_dma64) {=0A=
-             value =3D bus->regs[R_I2CM_DMA_TX_ADDR_HI];=0A=
-             bus->dma_dram_offset =3D=0A=
-                 deposit64(bus->dma_dram_offset, 32, 32,=0A=
-@@ -262,7 +262,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2C=
-Bus *bus)=0A=
-         bus->dma_dram_offset =3D=0A=
-             deposit64(bus->dma_dram_offset, 0, 32,=0A=
-                       FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));=0A=
--        if (!aic->has_dma64) {=0A=
-+        if (aic->has_dma64) {=0A=
-             value =3D bus->regs[R_I2CM_DMA_RX_ADDR_HI];=0A=
-             bus->dma_dram_offset =3D=0A=
-                 deposit64(bus->dma_dram_offset, 32, 32,=0A=
--- =0A=
-2.43.0=0A=
+On 2/24/26 03:53, Jamin Lin wrote:
+> + Troy
+> 
+> Hi Cédric,
+> 
+>> Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
+>>
+>> Hello,
+>>
+>> + Jamin,
+>>
+>> On 2/16/26 16:08, Cédric Le Goater wrote:
+>>> On 2/16/26 15:59, Daniel P. Berrangé wrote:
+>>>> On Mon, Feb 16, 2026 at 11:17:38AM +0000, Peter Maydell wrote:
+>>>>> On Mon, 16 Feb 2026 at 11:13, Peter Maydell <peter.maydell@linaro.org>
+>> wrote:
+>>>>>>
+>>>>>> On Thu, 12 Feb 2026 at 21:42, Cédric Le Goater <clg@redhat.com>
+>> wrote:
+>>>>>>>
+>>>>>>> Add functional tests for AST2500 and AST2600 machines using the
+>>>>>>> OpenBMC SDK v11.00 with Linux kernel 5.15. These tests complement
+>>>>>>> the existing SDK tests and verify that QEMU correctly boots older
+>>>>>>> kernel versions on these platforms.
+>>>>>>
+>>>>>>
+>>>>>>> +    ASSET_SDK_V1100_AST2600_515 = Asset(
+>>>>>>> +
+>>>>>>>
+>> +'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.
+>>>>>>> +00/ast2600-default-515-obmc.tar.gz',
+>>>>>>> +
+>>>>>>>
+>> +'ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c0f6
+>>>>>>> +')
+>>>>>>
+>>>>>> This asset file is over a gigabyte in size, it takes forever to
+>>>>>> download, and our functional test asset download framework has no
+>>>>>> mechanism for giving any kind of progress indication for downloads
+>>>>>> (or even for telling you the URL it is downloading until after the
+>>>>>> download is complete).
+>>>>>>
+>>>>>> Can we have a size limit for test assets please, at least until the
+>>>>>> framework can support large assets a bit better ?
+>>>>>
+>>>>> Followup: we have six test assets that are over 500MB in size, and
+>>>>> they are all aspeed tests. Please can you have a look at slimming
+>>>>> these down?
+>>>>
+>>>> I see 2 big assets from aspeed only
+>>>>
+>>>>     64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7
+>> 039e93
+>>>>     ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a857
+>> 44c0f6
+>>>>
+>>>>
+>>>> what are the names of the other files in $HOME/.cache/qemu/download
+>>>> you have that are over 500 MB ?
+>>>>
+>>>> With regards,
+>>>> Daniel
+>>>
+>>> These are the files :
+>>>
+>>>
+>> 5732255d4617d98b76bbbc116d331d6ac89906fa212969eb8213fdc4aea86451
+>>   166M
+>>> ast2500-default-515-obmc.tar.gz
+>>>
+>> 2768e2526bdd3f928df31341801cb6de3b9a40ca942b538a3d0800cd26fbdbfe
+>>   166M
+>>> ast2500-default-obmc.tar.gz
+>>>
+>> ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c0f6
+>>   1.1G
+>>> ast2600-default-515-obmc.tar.gz
+>>>
+>> 64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7039e93
+>>    1.2G
+>>> ast2600-default-obmc.tar.gz
+>>>
+>> 4f8778be176ece1b57d33c4aee13bb989be114c3e4703150eaeb6f996bd5587f
+>>   582M
+>>> ast2700-a1-dcscm-obmc.tar.gz
+>>>
+>> d5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76525
+>> 520M
+>>> ast2700-a1-obmc.tar.gz
+>>>
+>> 0e93f7976139da71fab9df7952a58bdd80650e23e7abf5853b0eb6695deb02d0
+>>   581M
+>>> ast2700-dcscm-obmc.tar.gz
+>>>
+>> e2b8f043fe8063dd3b6ded93422e38bd41914dc9c3202199507652df024de4dc
+>>   519M
+>>> ast2700-default-obmc.tar.gz
+>>
+>> The image size for v09.08 was around 250 MB for the ast2500,
+>> ast2600 and ast2700 SoCs. It would be best to keep it like this for testing.
+>>
+>> Would it be possible in v12.00 ?
+>>
+> 
+> 
+> Thank you for your suggestion and for reporting this issue.
+> 
+> To allow QEMU to accept the image tarball size, I will create new tarballs specifically for QEMU functional testing.
+> 
+> The "ast2600-default-image.tar.gz" tarball will be based on "ast2600-default-obmc.tar.gz".
+> It will contain only the necessary images from ast2600-default-obmc.tar.gz for QEMU functional testing, such as image-bmc.
+> Including only image-bmc in the tarball will significantly reduce its size. In SDK v11.01, the size should be around 64MB.
+
+I think the increase in size comes mainly from the rsa* directories.
+Removing these would save 1G.
+
+Can you keep the same v09.08 contents : u-boot.bin, kernel, dtb,
+rootfs etc ? It is good to have the different OpenBMC files for
+tests too.
+
+
+> I plan to create the following new tarballs for QEMU functional testing:
+> 1. ast2600-default-image.tar.gz
+> 2. ast2600-default-66-image.tar.gz
+> 3. ast2700-default-image.tar.gz
+> 4, ast2700-a1-image.tar.gz
+> 5. ast2700-dcscm-image.tar.gz
+> 6. ast2700-a1-dcscm-image.tar.gz
+ok. No need to change the AST2500 tarballs.
+  
+> ASPEED will release v11.01 this week. After the v11.01 release, I will update these tarballs and the QEMU functional tests accordingly.
+
+Great !
+
+Thanks,
+
+C.
+
 

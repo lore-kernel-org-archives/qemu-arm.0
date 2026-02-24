@@ -4,87 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D83EE9B25A
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C414E9B25B
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:27:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vurFm-0005jV-Lt; Tue, 24 Feb 2026 07:11:02 -0500
+	id 1vurVD-0003zq-1R; Tue, 24 Feb 2026 07:26:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFJ-0005aO-8n
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:34 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vurVA-0003z1-T6
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:26:56 -0500
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFF-0005t0-DB
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:32 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-658b6757f7fso1550445a12.1
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vurV8-0000jo-1g
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:26:56 -0500
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-64acd19e1dfso4574599d50.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:26:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771936013; cv=none;
+ d=google.com; s=arc-20240605;
+ b=C4YB/KH+FJfwEfUbaFNEh7q3e8DT5/RVjWaoGyihROpAgsHtWQRm/BA2tqaBJuoDO8
+ pmogiIWok5kKTk/nst5/W80M3CqQtLLzsN55z5RruYF+XRaEr7aODA85iHkzFaXetwUR
+ wiLoj0RPfR0f6wPcxJ9qp1hYWwKqhu5H2wDc3hO7U8vAgP2ykds0+gW4oPWVxKwDt9So
+ H7MuMOLiiWyxKAnLu3OfrQyO0OQob0qjTvAJW1KeXWVXhlIJZr3gcggbnqf0GGhcfciy
+ piHid0memdSnzcdZ+eNElTK+FVYB5NqgfVLMh/CkA8HSdrTSLYBhMGtHsTE/dlBr3igk
+ e7mw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
+ fh=bjo26QaatubEJOABd4/9DEudrElXjqsLLC0/8cAyoSA=;
+ b=idraZBlFjpx7FbLfmNHfIfbqpw2exSVlF1F41GuGg/fIE91CTmJ7N6WZ+Pzxh0tBGY
+ Vcpw6NoR+Y+EObCQuHPT2Bc+4IifriUd97UmUTOxYsVjMgFYyOJhk8wLvtnXoykLlyfZ
+ LYpdeEmYNa+7B9L71kqplHJQBcjBJG1FNXM0/8rfX52C8NaAzbsyv5ShqeWBWr8uZypi
+ F2WneipRrOq2nKR4NWqcHKZDnVJhi/+lQ862dSzwEMkJGtQ+wsqlki/HZ3Sxt5ufNVWw
+ hv6PJh4+aXmridi74Lgxk8BEyjNryC2evzzCJ5EnEf/rovmmz4Z2S+MAt+wsYWdQFLkU
+ zsEw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771935020; x=1772539820; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1771936013; x=1772540813; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2r5F7G6zukd8hzqhZtnhQrq7IzbWlPfcE0ATMILzLqc=;
- b=zxFXRIFJfskH2xi21BSQOAzQyqeUv1vcxL+5whennNUtt3Sy64u8PEGZ4Uhf9flzaA
- 2YxAeoxEkEoZeF9mV60qxRb6TGA1IftgNsrzFaJFpTtSSkftTiPUUeNDx2c03vs9qQHN
- yhHEo2ZlQAeJtpk5hA0MniStH8KBEQhIucSS9c+k+dFgeePEL/jRXZpkO8n5husm06je
- T2S8Vo0UzWRSwdINKOux6Yfv+o91nyZBFwAVhMrMjhrrvZSBpd9GVK3d2EqCwQXbcBgc
- h9i8qenAeKIssJAxbeiDwbQDTKQ6C4Go/3XceaD4/b+AcJ8DiBrwajByfHbJI6escQtJ
- OQBw==
+ bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
+ b=npLAgqE7Peyl3zsXr4kjEA84I8B3ZDBbVBRh0eshebty2/NhJketiEHvlF/JX6/ey1
+ HGOeO5dgyvzWgsseH2twdWH8o9X6Yu71xAVZO+8aWg070uJwyvZMpEGjbvLN6Rz147wM
+ 0uwf9q6kgsyXnA5gHIKH7WdjNX1iPZNaZyDmWfRmfGXbfQrAOnI4tvGGvua1p/gXCdl2
+ xoEWmo15G02flNED5Nnu77C9XmWaCmoT6tp3AINxXODIRGtGiHSBmveLnGR+OxLjqDNr
+ wdwYu4KBnR333yTiyKD0w/u08sXKdhcf2tTgMScjYJfYpezN4mZdUejCnWQFqD3PRLq4
+ YoWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771935020; x=1772539820;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1771936013; x=1772540813;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=2r5F7G6zukd8hzqhZtnhQrq7IzbWlPfcE0ATMILzLqc=;
- b=SEWwnPmZ1VI9bGj666wsMcVv4tbg470GatMCkVjNg8GuUAYuKpPra8JIl/avemTTY8
- gdVg/od9EaKC/BKC/nxbqoZdpF4+Kof9/CCNA8pe6JPr6EJE0WF17SeAheciqxhf8JEt
- zg7VigClh366vkjmL3nJjPLDOB4S6csUjBnfb+gE5TzMjXicQZOBLWbs0czWCOAnMy5u
- dnqR06sITlRv90+2Un6RSSm3E0Z2ORCGz5j1I4fzaR2xtSb3VHUbsG9MVRV/skDQxEIL
- PleoJKtga8G5IMojDN5ZMe+3VXJQ2yhvW1NNmhgtUTQRJSzLoC8Wualfd5AmhAe4NWnQ
- wsjw==
+ bh=vvoWfGKVGQm9ko9EEIC0W9a0OGkgQTcvXEztcIldwGs=;
+ b=DgEdSlPk0QvK4pXtaAjb7XrIvrvS3gu4H4sBFDuBH7pVhj/CSOw5HiHEZW+aZvwZtC
+ s/nTy6X7DA+7jwUgRQZ/Bc3azUuXvhXQj0G0F299IPmiKt9uiQwirf6AGN8f2L4R1xD7
+ flcdHAYjSd6gvuOLBxu71CYoICckRJN2AKzR60H9WCr8/jXwo0cnAwIEDjtABIWYTFo/
+ la1xEU6/VGdDm4oZ0CFniRhYXRAQ5ijzAdjDADlGvp7I0gijZ85LZ7ihQYJec1GMJf1h
+ 3d0mq+OvFENR9anyiGp5MkQOlYJR9eMwvtHoPMUCT2fE4CRBnoKRH2pdSUPxYbQ5kJK9
+ L1Zw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUlmaCnejWXB63QkdESksVV57lQu55fA+ojyD9+6IgneKJdVx5I5AbR7p+m7ZnyRyWj/EMvoMeU1Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxbR3AvqFGCz2W3veRh0tBQmfdX+5pEGCI6P4REXl8eWP1KaRzO
- GiQ9lHGtYRgvVJnqKZ7mVkhUIy7RhxpjZ0CoGMq5tWibmzsP/MOgUDe05JA0V/0QHUaN/T7lpwt
- TdWQh
-X-Gm-Gg: ATEYQzynVez/+Hmo+1Vp7mvSrugFmoLoQ5O4cam8iQqrorNdlkCHPqcXP3rzfCjrA5M
- IDxlDA8HMEIzObYvbxfQ8n5nYtyjsvKynz/FukBagYts6UI6jTHQoYUUiIqj41x81ALQt0XFyCV
- 9s2WaHMcDp9ODzv5a28+yOOevHS+6vS/TJxzMzaiJr31VnLMXC8D/UzTgvjcgP6aG86fwyN9tLU
- lBUdLRZxCjqIW2os9oytaP0M6wLmJJcS6LtHt/IKzEQJUsDL4uM/LhdAVe17b/Weima7/gfMVyh
- CkTpxO0XMqKteGrtkPB0LF4LzvUx5Rpssj776rEvPMNsFYE3GT279X8vmPQRClhzvdBQCFSqrzM
- adFPbVChVDBrkKcwT6ufI3cz1iIVebBFmuhD7AQKBiYe2y/L9+/eMrpsrjCzyowzICM8Q4Fib4U
- ACvpVQiTRx/FrdDMJFqmN29Vg=
-X-Received: by 2002:a05:6402:3581:b0:658:b9d8:1fbb with SMTP id
- 4fb4d7f45d1cf-65ea4eb4ec6mr7382983a12.10.1771935020411; 
- Tue, 24 Feb 2026 04:10:20 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65eab9a0844sm3531655a12.6.2026.02.24.04.10.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 04:10:18 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 261C65F8D5;
- Tue, 24 Feb 2026 12:10:15 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- eca <noreply@eca.dev>
-Subject: [PATCH 6/8] tests/tcg/aarch64: Add WFX instructions system test
-Date: Tue, 24 Feb 2026 12:10:12 +0000
-Message-ID: <20260224121014.279248-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260224121014.279248-1-alex.bennee@linaro.org>
-References: <20260224121014.279248-1-alex.bennee@linaro.org>
+ AJvYcCUiy1pc4ivxN1KWLm9EL4Tj5lOxKjsgQTzP1fFL17QDbhSWlP9KBYl3MbrqwCoJDTrqY+NsfIEPyg==@nongnu.org
+X-Gm-Message-State: AOJu0YxkhorCQzxiZmerJFEL8tiz3CnR0a4enetcMAYt6sDMX9MfWrvK
+ aB/gGOwiFwh6OXqB/1kcHLxfrrCDCCOBTxxhnBkbobMPUQo4fiq7sCWnrSdS8QKoxEB0LstYdh3
+ sEF5NdO4gn8N4GOB8jYVyjHskWqoObUVffKNvJZI2Fg==
+X-Gm-Gg: ATEYQzygKHc8TELCXXTyW0dwSUVpIE+qLjGXaj4u+kktXFns1krJa4Dfafkm92KF2uA
+ gYvJnceq6JwTJIRJI28gagwvbegThKI4A/D56vVxCkNQuesI6gKDrEYDH4P0kjFB+E7lwWsDvOp
+ W0rm1DRfvBOi/vHm8O5QLkhk4jcxystMll7kLIv4yTX8vYOTC6wml7nb2Dc7GrYZIKm1QAPymU3
+ pur3OC3svklK4iIkcXuCoGGPdez+r3ira6uVqn881Zslvn90ZQLFVMEpE2XLqlimP9vdDa0J/bg
+ 45k+BVLtwUZQno5OhfC26EFVjQ/IXcScha8+eloFFx9COSR18S07Mf3ip9PTn8SSj3Ykf+EOT1i
+ U/Q==
+X-Received: by 2002:a05:690e:134b:b0:64a:d716:c8b5 with SMTP id
+ 956f58d0204a3-64c787d5303mr9314935d50.18.1771936012612; Tue, 24 Feb 2026
+ 04:26:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
+References: <20260224121014.279248-1-alex.bennee@linaro.org>
+ <20260224121014.279248-6-alex.bennee@linaro.org>
+In-Reply-To: <20260224121014.279248-6-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Feb 2026 12:26:41 +0000
+X-Gm-Features: AaiRm533j8zDX2_W69viuybZop_pjQHvzltY8QSUE_Gekc6F8p7hu_LMlDKkSOM
+Message-ID: <CAFEAcA--YmCZ2+BBy1kM_VjeER4vbX8VMBbSA1aqUQ9-jWp5tQ@mail.gmail.com>
+Subject: Re: [PATCH 5/8] target/arm: extend WFX support for A-profile
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, eca <noreply@eca.dev>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,160 +119,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit adds a new system-mode TCG test to verify the behavior of
-WFI, WFE, WFIT, and WFET instructions on AArch64.
+On Tue, 24 Feb 2026 at 12:10, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> This commit extends support for WFI, WFE, WFIT, and WFET instructions
+> for A-profile ARM CPUs, ensuring proper architectural semantics and
+> full ISS (Instruction Specific Syndrome) field support for traps.
+>
+> Key changes:
+> - Update `syn_wfx` in `target/arm/syndrome.h` to include `RN` (register
+>   number) and `RV` (register valid) fields using `registerfields.h`
+>   macros.
+> - Refactor `HELPER(wfi)` and `HELPER(wfit)` to use correct AArch64
+>   syndrome values (CV=3D0, COND=3D0xf).
+> - Implement `HELPER(wfet)` and update `trans_WFET` to support the new
+>   Wait For Event with Timeout instruction.
+> - Update `HELPER(wfe)` to implement proper A-profile semantics,
+>   including trap checks and event register handling.
+> - Extend `event_register` handling to all ARM CPUs (not just M-profile)
+>   by updating `HELPER(sev)` and `arm_cpu_has_work`.
+> - Declare WFxT helpers as `TCG_CALL_NO_WG` as they can raise
+>   exceptions.
 
-The test ensures:
-- WFI correctly wakes on a timer interrupt.
-- WFE returns immediately if the event register is set (via SEV).
-- WFIT and WFET correctly sleep until the specified timeout.
+Yeah, no. This all needs to be split out to be anything
+close to reviewable. In particular "report the right
+syndrome info", "make WFE/SEV not NOPs on A profile like
+they are on M-profile" and "do better with WFET" are all
+separate things.
 
-🤖 Generated with [eca](https://eca.dev)
+Also, this doesn't change any of the places that it needs to
+change to implement the places that architecturally set the
+event register (see R_XRZRK in the Arm ARM), so it will
+break code that uses WFE. Notably for A-profile this includes
+generic timer "event streams", which we currently don't implement
+at all.
 
-Co-Authored-By: eca <noreply@eca.dev>
-
----
-ajb:
-  - removed an excess setting of QEMU_OPTS in the Makefile
----
- tests/tcg/aarch64/system/wfx.c            | 113 ++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.softmmu-target |   2 +
- 2 files changed, 115 insertions(+)
- create mode 100644 tests/tcg/aarch64/system/wfx.c
-
-diff --git a/tests/tcg/aarch64/system/wfx.c b/tests/tcg/aarch64/system/wfx.c
-new file mode 100644
-index 00000000000..59436c381fd
---- /dev/null
-+++ b/tests/tcg/aarch64/system/wfx.c
-@@ -0,0 +1,113 @@
-+/*
-+ * WFX Instructions Test (WFI, WFE, WFIT, WFET)
-+ *
-+ * Copyright (c) 2024 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include <stdint.h>
-+#include <minilib.h>
-+
-+#define __stringify_1(x...) #x
-+#define __stringify(x...)   __stringify_1(x)
-+
-+#define read_sysreg(r) ({                                           \
-+            uint64_t __val;                                         \
-+            asm volatile("mrs %0, " __stringify(r) : "=r" (__val)); \
-+            __val;                                                  \
-+})
-+
-+#define write_sysreg(r, v) do {                     \
-+        uint64_t __val = (uint64_t)(v);             \
-+        asm volatile("msr " __stringify(r) ", %x0"  \
-+                 : : "rZ" (__val));                 \
-+} while (0)
-+
-+#define isb() asm volatile("isb" : : : "memory")
-+#define sev() asm volatile("sev" : : : "memory")
-+#define wfi() asm volatile("wfi" : : : "memory")
-+#define wfe() asm volatile("wfe" : : : "memory")
-+#define wfit(reg) asm volatile("wfit %0" : : "r" (reg) : "memory")
-+#define wfet(reg) asm volatile("wfet %0" : : "r" (reg) : "memory")
-+
-+static void wait_ticks(uint64_t ticks)
-+{
-+    uint64_t start = read_sysreg(cntvct_el0);
-+    while ((read_sysreg(cntvct_el0) - start) < ticks) {
-+        /* spin */
-+    }
-+}
-+
-+int main(void)
-+{
-+    uint64_t start, end, elapsed;
-+    uint64_t timeout;
-+
-+    ml_printf("WFX Test\n");
-+
-+    /* 1. Test WFI with timer interrupt */
-+    ml_printf("Testing WFI...");
-+    /* Setup virtual timer to fire in 100000 ticks (~2ms at 50MHz) */
-+    start = read_sysreg(cntvct_el0);
-+    write_sysreg(cntv_tval_el0, 100000);
-+    write_sysreg(cntv_ctl_el0, 1); /* Enable timer, no mask */
-+    isb();
-+
-+    /*
-+     * We don't have a full interrupt handler, but WFI should wake up
-+     * when the interrupt is pending even if we have it masked at the CPU.
-+     * PSTATE.I is set by boot code.
-+     */
-+    wfi();
-+    end = read_sysreg(cntvct_el0);
-+    elapsed = end - start;
-+    if (elapsed < 100000) {
-+        ml_printf("FAILED: WFI woke too early (%ld ticks)\n", elapsed);
-+        return 1;
-+    }
-+    ml_printf("PASSED (elapsed %ld ticks)\n", elapsed);
-+    write_sysreg(cntv_ctl_el0, 0); /* Disable timer */
-+
-+    /* 2. Test WFE and SEV */
-+    ml_printf("Testing WFE/SEV...");
-+    sev(); /* Set event register */
-+    start = read_sysreg(cntvct_el0);
-+    wfe(); /* Should return immediately */
-+    end = read_sysreg(cntvct_el0);
-+    elapsed = end - start;
-+    if (elapsed > 1000) { /* Should be very fast */
-+        ml_printf("FAILED: WFE slept despite SEV (%ld ticks)\n", elapsed);
-+        return 1;
-+    }
-+    ml_printf("PASSED\n");
-+
-+    /* 3. Test WFIT */
-+    ml_printf("Testing WFIT...");
-+    start = read_sysreg(cntvct_el0);
-+    timeout = start + 200000;
-+    wfit(timeout);
-+    end = read_sysreg(cntvct_el0);
-+    elapsed = end - start;
-+    if (elapsed < 200000) {
-+        ml_printf("FAILED: WFIT woke too early (%ld ticks)\n", elapsed);
-+        return 1;
-+    }
-+    ml_printf("PASSED (elapsed %ld ticks)\n", elapsed);
-+
-+    /* 4. Test WFET */
-+    ml_printf("Testing WFET...");
-+    start = read_sysreg(cntvct_el0);
-+    timeout = start + 200000;
-+    wfet(timeout);
-+    end = read_sysreg(cntvct_el0);
-+    elapsed = end - start;
-+    if (elapsed < 200000) {
-+        ml_printf("FAILED: WFET woke too early (%ld ticks)\n", elapsed);
-+        return 1;
-+    }
-+    ml_printf("PASSED (elapsed %ld ticks)\n", elapsed);
-+
-+    ml_printf("ALL WFX TESTS PASSED\n");
-+    return 0;
-+}
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index f7a7d2b800f..84342c52cd7 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -102,6 +102,8 @@ run-pauth-3:
- 	$(call skip-test, "RUN of pauth-3", "not built")
- endif
- 
-+wfx: CFLAGS += -march=armv8.7-a
-+
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
- QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
- QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
--- 
-2.47.3
-
+thanks
+-- PMM
 

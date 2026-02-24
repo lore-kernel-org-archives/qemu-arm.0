@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C3BE9B250
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 794BCE9B25B
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vurFe-0005fa-IX; Tue, 24 Feb 2026 07:10:54 -0500
+	id 1vurFe-0005fZ-Da; Tue, 24 Feb 2026 07:10:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFB-0005YQ-Q9
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:25 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1vurFG-0005Yz-Vw
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:32 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurF6-0005sG-7r
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:24 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-65a380b554bso10579719a12.2
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:19 -0800 (PST)
+ id 1vurFB-0005su-Iz
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:30 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-65a43a512b0so6083821a12.3
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771935018; x=1772539818; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771935020; x=1772539820; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SrVJ9tdMlXwGedNfsdtlslEQzbHBYQL/tzdi3zI1jrg=;
- b=s5U6QSg0UJHkC9tz7eQ/GiNckPtIn5gcxipW+T3yxIxQ1+pMfk0w2iVE3iKTBbnoBB
- czID9cWSASprqB+zd7x49Z5q21Ak4gnGR4RdMC/sLsoccKT9oXiA4DlGXtLLQUMKglpk
- bZOtEH+kl01JrIZE0PEYulVFT4feduiEe6Bd/wMNoDyV1T8Z2LCl4q4dD6REsDbUHWR3
- JGD2lkBWo+7bVkOJEOMcfjscYXG3XdCiNRPXIcQjbXWLlSU+9vVIJE/9RuuEkBlyrFPw
- xSGp5dvapjIrOjQOUNi97jKXixrT6x/QQVv4lDOzhQLI8cvevOuPW5dd5/5jS/LIBQ9Q
- lSQg==
+ bh=mslQWctujhKO4cq/0uIEWyDzG5wEJ39Nyk5AzFm6SR4=;
+ b=vbv07YUcp4BEn4Or2kT9qExpfpFomTR2giRhVenVfZ73R6CiHuos9mULhLw6N0UieL
+ b51g/pa4fmQVK1ienWNMPCvWaaYTH61biAz/671FwhJgTMRFSA2DXTv/i9gLS9/8WhCp
+ Ic4thASJvzAMzkJkoA56GZq5u2jv+KHfPV434c1nXKtckUeWg5KIYQfGGodPZZb0fI5i
+ lHPUgekYVhKntGo4/Z2IEzK/wc+owB6Qoiu5zaKSsrgsXxTZmeuJT6nE3WNPCdZJJK3h
+ tJ+9i7G457Bemf+YecJJjZ114YY9waNG2pYRprI8U+n0ny67xUv/2NDz27lkNfuDfFp5
+ M8cA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771935018; x=1772539818;
+ d=1e100.net; s=20230601; t=1771935020; x=1772539820;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=SrVJ9tdMlXwGedNfsdtlslEQzbHBYQL/tzdi3zI1jrg=;
- b=Ks1/dCPK0QKjyENDEm+yaVEQXiz7nCvRwXcvE2uXMsfTl4w433/XfA+p4T57REHGQD
- hpmlfXSbmJeUHdJwfzuMAw19Rl4cisJK1NOVEAFN6UXPCvlfhig/q3n/UtHiItITVqet
- l/g1zJpPlWP8ZeuR7iaAwZJjncgAqVOzRhI02AT6km+wz3/Hx2YoexBVMuTxNQTohF9z
- xexGpi383fi10RaJsYfGlrf3NSReVnMq/Yoraq/M5LJT78E1IV1x2ZiHxHCwmmstCMWK
- BBLzKat8bh1nXxUHkwEsqczgllYooh9XPCQEYzLs11rClxP8t724ozhyijYNxVD5dW1S
- fmDg==
+ bh=mslQWctujhKO4cq/0uIEWyDzG5wEJ39Nyk5AzFm6SR4=;
+ b=Nf51FJ6p9X+uLEpnVXco8RHwrNqEkq7YB9sPbO2NmH//WnpA06/j+mv1VTiTpinUUj
+ YG0xN8fSDIbTTi27lVnSfr07BMxUwyIzi5UXN3d5+meC1K3xHq4B+vs+I5WYbwRasiRA
+ AMvMKhgtLZqi3xhoPRWic5V6qV3tDF264obcYUy71BWoskxeC+w/2sQJ7LNhhfU3A+vg
+ iBgUAgZLBU/mp5D/g88znFxwSlwcYqpDXaAEqYPInHiHZEXoWsveZkdmo4wuM99HFkff
+ JMK3c1xtdyYgDy7DmSfuHJ+GOe2HiSLauaa/FFmzKkZAncz5g7jcp4gBn/xA54aO9vaC
+ X2TQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUuhoxjrKBsh4FUCetvE1wGmkaQnXGiwfbpdFmXhLGgW6T/K9wWhaTRQnxvJn96MrZHDj/VE2SCoA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+EEyofr/FGUjuR0Mk72RFdP4IZUyZ922qsdVgF7GlKaDdtG77
- BjEYxeuOP5N5Vg4CnnKlzuKIZvn/zyTTXD+QcLXAsdWFcdsrO69SoHm79ZndHfs5Gfk=
-X-Gm-Gg: ATEYQzyynz01S8EYvHqB6QeXBqPsv9jsDlvE59AFI8CaMEbvhYTMPJaliQuxc5mD8Oo
- 9iaOuQmFuNrNPBVqxmDFSZ0UM3vuWDKlWGyI5Kd5AukHNRzye4H7nbSc5UPY83Qj4WFvXm5pDqj
- y4KOcxRAlYEhqjvT0B93smw7X+V6fJ6AF1xcx2golE1KlPxx2SYezmyoDzG7HWQLpxOd4RmaqeN
- j9ycpJL8FI2JfUeGomPRZmoA1jxJvg99EqGCoSZvFMbJ9FpfIDzryDV9EiG7phX4emaFHYSs972
- Rmzq+6sJXBp0aDDFBdg9ykJA0nhD8DCKi/SStNyeY+nuT22Z0G2lz+Beff8SBCvcfG1qEXja8eo
- mj8kokc5W7gPGvbqIAsOpBVs8KhudEIQ7VVvw6oFhZPw2yz6McBxBeTfUAWgJlIAheBxm0qs74H
- WqizGVSpeXGRogOKxO8Z2ZmlQ=
-X-Received: by 2002:a17:907:3f9a:b0:b73:1634:6d71 with SMTP id
- a640c23a62f3a-b9081a4cbf1mr805748666b.26.1771935017847; 
- Tue, 24 Feb 2026 04:10:17 -0800 (PST)
+ AJvYcCVdFwUrjX8RBqo2KDPFMb3XSzer3OF05quhhNnDy14L6JcHHi20TIvuNCoFzbZqoPAk8WiDm26LjQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxwWv0kqIfO8/9zLelmYXYTxgkxum9jfR56dd4tJwEINslu65J3
+ LRk6CKaKckP+G6cXw4LbRIOnVG6T4aAjh/6fajdjyI7kx1Fd6J2TD7AmnXzkQ3K8X9E=
+X-Gm-Gg: ATEYQzxDd66zGbpAiiV0u0FRWpPOUHIjgRjA9/ZTVF2gSAjizcU5aop8J1udNa+shIR
+ 1n/toxEk+aNZjuZAcRvFkHsF464zO9BUjoqM3SiXaHIlfIhP/J1XjbgKfuu6xzCbRNVT5hTRMRX
+ hYjdYIlLyOK6Q0Jm5zahkf61ufZaHwSvXA+AtT/+GmXkVBBhcYVqKKKoeV9svqJSgc5432oZJJJ
+ KQnE4FxQgD6kvQJSNoyr6WBgrRiIC/di+InTNWMRyApUCHFrMXLAj5uxIA3t/UoqqiOA2DnPL/7
+ iyCcd9xFCtRfnvYUrT7gK62LSiCahn9Gjl9YsTN/U64TqS0tIItGcCPx8y/VZlazKqeF6xXNuwV
+ gKxE/BoCHmmjLSJVRkJsZay+4tXRmnP/mICfnJi1KJT/i7xr4nhIwgDc9djptTdQV27wa5CT15F
+ 3KnS9XXWmLoPxx/xk6I2LjuNM=
+X-Received: by 2002:a17:907:3d4f:b0:b87:322d:a8bc with SMTP id
+ a640c23a62f3a-b9081b3e5e0mr787844966b.31.1771935019992; 
+ Tue, 24 Feb 2026 04:10:19 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9084e8b790sm421996066b.49.2026.02.24.04.10.15
+ a640c23a62f3a-b9084cad856sm409913566b.24.2026.02.24.04.10.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 04:10:16 -0800 (PST)
+ Tue, 24 Feb 2026 04:10:18 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E7BB05F8D0;
- Tue, 24 Feb 2026 12:10:14 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 598075F8D8;
+ Tue, 24 Feb 2026 12:10:15 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 4/8] PLAN.md: add plan for the current work
-Date: Tue, 24 Feb 2026 12:10:10 +0000
-Message-ID: <20260224121014.279248-5-alex.bennee@linaro.org>
+Subject: [PATCH 8/8] target/arm: fixes for WFx[T] support
+Date: Tue, 24 Feb 2026 12:10:14 +0000
+Message-ID: <20260224121014.279248-9-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260224121014.279248-1-alex.bennee@linaro.org>
 References: <20260224121014.279248-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,110 +105,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is entirely generated by ECA/Gemini using the
-gemini-3-flash-preview model. My initial prompt was:
+These are the bits I needed to fix manually on top of what the model
+had done.
 
-  I want to generate a PLAN.md for a piece of development work. Recently
-  support for WFE was added for M-profile but I want to extend that
-  support to A-profile along side proper semantics for WFI, WFE, WFIT
-  and WFET instructions. That includes setting the full ISS fields for
-  the traps (RN and RV fields of the ISS encoding from WF* intructions).
-  See syn_wfx() for where we currently build this up. Keep in mind we
-  want each commit to be kept small and review-able while maintaining
-  bisect-ability. We also should think about how we can test and defend
-  the functionality in QEMU's testing suite.
+  - ensure the SEV instruction is enabled for aa64
+  - remove the FEATURE_M check for aa32
+  - add an exit block so WFE can fall through
 
-This will form the "guide" for the agents next steps.
+On the last change I see the DISAS_WFI does tcg_gen_exit_tb to ensure
+we check for interrupts. However for yield and wfe we should just be
+able to roll into the next instruction. We could probably rationalise
+DISAS cases for all of these into a common handling.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- PLAN.md | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 77 insertions(+)
- create mode 100644 PLAN.md
+ target/arm/tcg/a64.decode      |  3 +--
+ target/arm/tcg/translate-a64.c | 10 ++++++++++
+ target/arm/tcg/translate.c     |  4 +---
+ 3 files changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/PLAN.md b/PLAN.md
-new file mode 100644
-index 00000000000..49f330b802d
---- /dev/null
-+++ b/PLAN.md
-@@ -0,0 +1,77 @@
-+# Plan: Extend WFX Support for A-profile
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 01b1b3e38be..d5b65d79da1 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -237,8 +237,7 @@ ERETA           1101011 0100 11111 00001 m:1 11111 11111 &reta  # ERETAA, ERETAB
+     YIELD       1101 0101 0000 0011 0010 0000 001 11111
+     WFE         1101 0101 0000 0011 0010 0000 010 11111
+     WFI         1101 0101 0000 0011 0010 0000 011 11111
+-    # We implement WFE to never block, so our SEV/SEVL are NOPs
+-    # SEV       1101 0101 0000 0011 0010 0000 100 11111
++    SEV         1101 0101 0000 0011 0010 0000 100 11111
+     # SEVL      1101 0101 0000 0011 0010 0000 101 11111
+     # Our DGL is a NOP because we don't merge memory accesses anyway.
+     # DGL       1101 0101 0000 0011 0010 0000 110 11111
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index f76a00d1329..4714bedd01c 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2032,6 +2032,14 @@ static bool trans_WFI(DisasContext *s, arg_WFI *a)
+     return true;
+ }
+ 
++static bool trans_SEV(DisasContext *s, arg_SEV *a)
++{
++#ifndef CONFIG_USER_ONLY
++    gen_helper_sev(tcg_env);
++#endif
++    return true;
++}
 +
-+This document outlines the plan to extend WFE support to A-profile ARM and ensure proper semantics for WFI, WFE, WFIT, and WFET instructions, including full ISS field support for traps.
-+
-+## 1. Syndrome Enhancements
-+
-+### 1.1 Update `syn_wfx` in `target/arm/syndrome.h`
-+- Modify `syn_wfx` to include `rd` (RN) and `rv` (Register Valid) fields.
-+- Ensure the bitfields match the ARM ARM for EC 0x01.
-+- Bit layout:
-+  - ISS[24]: CV
-+  - ISS[23:20]: COND
-+  - ISS[19:15]: RN (rd)
-+  - ISS[14]: RV
-+  - ISS[1:0]: TI
-+
-+### 1.2 Update WFX Syndrome Construction in Helpers
-+- In `target/arm/tcg/op_helper.c`, update `HELPER(wfi)`, `HELPER(wfit)`, and implement `HELPER(wfet)` to:
-+  - Check `is_a64(env)`.
-+  - For AArch64: Set `cv = 0` and `cond = 0xf`.
-+  - For AArch32: Maintain `cv = 1` and `cond = 0xe` (or pass the actual condition).
-+  - Pass the correct `rd` and `rv` based on the instruction.
-+
-+## 2. Instruction Helpers and Translation
-+
-+### 2.1 Update `HELPER(wfit)` and `trans_WFIT`
-+- Change `HELPER(wfit)` to accept the register number `rd`.
-+- Update `trans_WFIT` in `target/arm/tcg/translate-a64.c` to pass `a->rd`.
-+
-+### 2.2 Implement `HELPER(wfet)` and update `trans_WFET`
-+- Create `HELPER(wfet)` in `op_helper.c`. It should:
-+  - Check for traps using `check_wfx_trap(env, true, &excp)`.
-+  - If trapped, raise exception with `ti=1` and `rv=true, rd=rd`.
-+  - If not trapped, check `event_register` and timeout.
-+- Update `trans_WFET` to call the new helper instead of just setting `DISAS_WFE`.
-+
-+### 2.3 Refactor `HELPER(wfe)` for A-profile
-+- Update `HELPER(wfe)` to handle A-profile:
-+  - Check for traps using `check_wfx_trap(env, true, &excp)`.
-+  - If trapped, raise exception.
-+  - If not trapped:
-+    - If `env->event_register` is set, clear it and return.
-+    - Otherwise, halt the CPU (`cs->halted = 1`, `cs->exception_index = EXCP_HLT`, `cpu_loop_exit`).
-+
-+## 3. Wake-up Logic and Event Register
-+
-+### 3.1 Update `HELPER(sev)`
-+- Ensure `event_register` is set for all CPUs, not just M-profile.
-+- Kick all other CPUs to wake them from `EXCP_HLT`.
-+
-+### 3.2 Update `arm_cpu_has_work`
-+- Modify `target/arm/cpu.c` to check `event_register` for A-profile CPUs as well.
-+- This ensures that a CPU halted by WFE wakes up when the event register is set.
-+
-+## 4. Testing and Verification
-+
-+### 4.1 TCG Tests
-+- Add a new test case in `tests/tcg/aarch64` that:
-+  - Executes WFI, WFE, WFIT, WFET.
-+  - Verifies that WFE/WFI halt the CPU and can be woken up.
-+  - (Optional) Exercises traps by running at EL0 with SCTLR_EL1.nTWE/nTWI = 0 and verifying the syndrome in a signal handler or a small EL1 kernel.
-+
-+### 4.2 Regression Testing
-+- Ensure no regressions for M-profile WFE.
-+- Run `make check-qtest` and `make check-tcg`.
-+
-+## Commit Breakdown (Proposed)
-+
-+1. `target/arm: Update syn_wfx to include RN and RV`
-+2. `target/arm: Update HELPER(wfi) to use correct CV/COND for AArch64`
-+3. `target/arm: Update HELPER(wfit) to accept rd and use correct syndrome`
-+4. `target/arm: Implement HELPER(wfet) and update trans_WFET`
-+5. `target/arm: Update HELPER(wfe) to implement proper A-profile semantics`
-+6. `target/arm: Update HELPER(sev) and arm_cpu_has_work for A-profile event register`
-+7. `tests/tcg/aarch64: Add tests for WFX instructions`
-+
-+🤖 Generated with [eca](https://eca.dev)
+ static bool trans_WFE(DisasContext *s, arg_WFI *a)
+ {
+     /*
+@@ -10918,6 +10926,8 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+         case DISAS_WFE:
+             gen_a64_update_pc(dc, 4);
+             gen_helper_wfe(tcg_env);
++            gen_goto_tb(dc, 1, 4);
++            /* tcg_gen_exit_tb(NULL, 0); */
+             break;
+         case DISAS_YIELD:
+             gen_a64_update_pc(dc, 4);
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index f9d1b8897d2..78ba7d2fde5 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3248,9 +3248,7 @@ static bool trans_SEV(DisasContext *s, arg_SEV *a)
+      * For system-mode M-profile, it sets the event register.
+      */
+ #ifndef CONFIG_USER_ONLY
+-    if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-        gen_helper_sev(tcg_env);
+-    }
++    gen_helper_sev(tcg_env);
+ #endif
+     return true;
+ }
 -- 
 2.47.3
 

@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 510A9F4BB7A
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 19:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D906F4BB7F
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 19:33:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuy8Y-0002fy-1I; Tue, 24 Feb 2026 14:32:02 -0500
+	id 1vuy8Y-0002hb-7j; Tue, 24 Feb 2026 14:32:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vuy7U-0001sQ-Uq
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 14:31:09 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vuy7N-0000oL-9c
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vuy7G-0001pP-0Q
  for qemu-arm@nongnu.org; Tue, 24 Feb 2026 14:30:54 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4836f363d0dso49974685e9.3
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 11:30:46 -0800 (PST)
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vuy7D-0000nL-38
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 14:30:41 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4806cc07ce7so56659545e9.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 11:30:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771961445; x=1772566245; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771961437; x=1772566237; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ChlHn875Dvv2jy+w+z550jf4WHfHLtbl/BnX8u6SJxg=;
- b=kakVuhwSMpp9SI+tSfJZSkfy0NNJ1QRSqDi4v2oTEInD0FotqcqsFaFbJSINfUVSwl
- DGU9S2Cs1V9KZXByUUXzmn3dIWI0+OODEPopFfsC54/wDIJOLyW86j4XWB7EpYfK2PLd
- lXoNf/XFo9zSmKw6erAqjg9vet1lFxY29UevGarsVS3bSr89OJ16Nf7ru79PQuLnyNpV
- DKoEsC73hfdsLB/M35KkUmIOuu6hnwsywn63qFFCGEg6YQUExhJrtharoApwX4dEavtf
- hWuYXK+uPth3UJJ/ATAFxHqzPfqOkQMqZbDH2RImC8zt8cDnIp4DB5VxCZQsz5REDaa/
- rYog==
+ bh=Wz4xwsVedpRdwPffxWHKLrRmmOeokKoi4JBBPga8kag=;
+ b=C1Fh9JgEN/AxYmKQMXFKU3mjD+45t0qX29ozGLdjvYMIw7oHnL7ebBAeOLsMXz9V9p
+ pC0eupxQmhv5631DkQE2Pqk0zUoaH8xSamQKoRxD9uKH11l7N0G+C+3xbzqA5hQ54Bbd
+ EO+U0pxiPuDSKb55BwB167cXWrrWncz6c+IvxUEoFdIfyvcizgGwRE1E5FEt1rkKtZwh
+ DmthWiXNrMjh+MSRVq7rIWOw3k8qv3Y38YcU8DVqj+VxrRbUVu1Y3wAFIs+5eqhf4Ptw
+ 4Ny+CUYgaUL68x1AI7mni0Kx5S/HRYXhknGLlwbDWAROdoMg6kWDkcv1MT69g3CKIbK6
+ rMew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771961445; x=1772566245;
+ d=1e100.net; s=20230601; t=1771961437; x=1772566237;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ChlHn875Dvv2jy+w+z550jf4WHfHLtbl/BnX8u6SJxg=;
- b=rcnM7d5QjBxyjtPZGFe1dycKIJ7aYVfGLggCk81gv6V0soktfbGHWzcuQAxOnHdzh8
- ieuTM5LRRxuAnVikrHpJJjJIpVF37qFQAZLQDrZQ2ec0PE8FJ1xW/LyJa756jTkre0QG
- Lxw2A07GFVNU4nh8JwdWdXrf5TYK1aMhN0LtlrsuwkTbXyDlnVQMhsBDundqdf5bXoXr
- i1QAiLabXw776mV8ZGBsTgRkuPbPcG1zjjPte+wBPtMvs1/2tte22yX18n/oDOketIMo
- C6TAc1QrSDW/pfvgKoz+Q21dNBBnLeMXh+vBMe1q6KWTFj2TGY6IlyvW6r3rdnsNCB+s
- Cezg==
+ bh=Wz4xwsVedpRdwPffxWHKLrRmmOeokKoi4JBBPga8kag=;
+ b=WEjXxcGbONuUtw3ZLgF5vkwAcqveilTpBSsGVB80ZLig/bm0Fa1fc6arXnICdQg2W5
+ P1iql3+R8vnZuxrgUh4KQLION17G2zUm8sEgVeqn4DPyADID0ZWYK83FSjo/9sQaBzfJ
+ ibJ5gQgETgz6lQZFtarz0HRDspjq8RjNJPz7BvFh7UvtvxOlmnBEooWBqzqJt66DoeCm
+ hv/n8egPWguth6YUNBTIoK3HoACd/0FePWKJ4TiIBN4aK6flMVPabKFTDeqoBNveC/m1
+ FJtsLGSiXSczgzCdhoOsjls6VG1YAcWHiijLcDlpKwb/qToOwe134/OXji7chvCYkgAO
+ oFAg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXMjgozBJ8hLjhMS9oFsLm/NuvA6KauQTlkcSkYxtf+mJ7A8NQSqyCms8UZi1Ad2FlCXHrHQAvyEw==@nongnu.org
-X-Gm-Message-State: AOJu0YxyllnMPsDMeULxkkk6I3KaUcXrN60lpkqmNvMbaxrNJOpb5Hoe
- 84NOaM6ukLj22zXT3bUOJKOEJndtOLwW8IJqxgroAqiiWx12RKWKQDCchekZqinW52c=
-X-Gm-Gg: AZuq6aIcZ87ASj+7NghQUlFQZZ4rqxuaIH39aMBhRp18GVenZkWaeKrUlyNuhArffxY
- tGG67rTdpzYIVT/d/rYTuebqp2H2yjuhrdK+PCTHz1/fCBDamHcU92TcyowoW+InMiEay8Jvo4X
- VXfkY5/zqLHKD35EKHVmZxd/mL+4SwHZ+t7Euc5jYGnzay93wXd6dlcCW5SY+Ff1gNjN32/dyeU
- SH9uUu/pqTxGX0uDhisFLwWtUv0YBQ+QO4a6tpYMUDktCHbcqYLJngkfUtpQ4g2SWhDm8A3uRWa
- AeI6e5acYfl/Oq/5YcyWJtcj3HmabYoCqEOCKQHU+8p0Kl/0f9kbY46DtXQ7cDtP72TkC2IQiFd
- ++04ejQFZAmCfyICdqfbBkMBpMLjdjo8ulgMaxMHdSZjzkHZVsJ1hWfHIESQIgoFzKLCyxziQoq
- 1LHFb9UYHph04eUloCyKq1FgnRKu4sb7poUlIiFYycqaeGVmUmq/inIxT4/l1OjLoDmGJjp5Vu
-X-Received: by 2002:a05:600c:3b28:b0:47e:e952:86c9 with SMTP id
- 5b1f17b1804b1-483a95a2320mr224146815e9.0.1771961444951; 
- Tue, 24 Feb 2026 11:30:44 -0800 (PST)
+ AJvYcCWS7zycKQvm4ndGyN6UHa/3643OzYBDTSbaqjREFsbC0wXyedpzpi5TdCT3Br+jRc+t2Vi4piXk7Q==@nongnu.org
+X-Gm-Message-State: AOJu0YydHWWYPrQAzZk9+yOEOVHdVCHuXOMrfyz+Q+AVVFWKQK7NOlvg
+ WpwT0Sfd2SUnNi/tAo6teXTQtqhffhB6XnSMIxLkTcJRKcWel8y/tzAAEQ2TEpSL+4s=
+X-Gm-Gg: AZuq6aJWY8wx5lWB39LccKDP59HpnVGijtnwWpYeBxh7lRm5/Ucmo7xev60TsRyyYWJ
+ pgaeXK4wkWJU0OGdCPZdmo2+H0CCCI75pKOkuZyJNE023CQqolw/YPkqjCvqj1o1lslTmTxXy19
+ iE9yyNCNpZrhtfmuzZl11qo2xsTrtsyxguXNL+d+EuWV/0tSDrbryKQFImizOdLo5FlWuvwe432
+ 8RI8zWzMT84F6X9ZJsVc+qUyWs5qMwpADPZEsb9o7UDTyVc/uU9X68xAm3cKxc2oDi94VJ4FhFO
+ AxUX0KsZmQQuJyGLqJDobw7g68BmgGISgHtstDSJEu1LTaSdFD75TXv6q07OyzsS7DbhfIaE3qe
+ WMJm0oNT2j3S25aTZMCVTHRLXNDfAf2SBddpFPhyFkkhnCj/jtjYObXPy6gtVoDUpjI4q29yViU
+ WmvD5gh+EPWaMZJgXXCTz8T1z1bGqscLLfbV+YaMphzUFh1K1AOE/1XZFNiD43uIEg9E8O/mVq
+X-Received: by 2002:a05:600c:821b:b0:483:71f7:2794 with SMTP id
+ 5b1f17b1804b1-483a95c9e73mr240437805e9.15.1771961437464; 
+ Tue, 24 Feb 2026 11:30:37 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bd6f2f88sm20104885e9.2.2026.02.24.11.30.43
+ 5b1f17b1804b1-483bd6f2f88sm20099555e9.2.2026.02.24.11.30.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Feb 2026 11:30:44 -0800 (PST)
+ Tue, 24 Feb 2026 11:30:36 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -72,28 +72,27 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Zhao Liu <zhao1.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
  Song Gao <gaosong@loongson.cn>, Aurelien Jarno <aurelien@aurel32.net>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Aleksandar Rikalo <arikalo@gmail.com>
-Subject: [RFC PATCH 2/5] target/tcg: Rename crc32*() helpers
-Date: Tue, 24 Feb 2026 20:30:24 +0100
-Message-ID: <20260224193028.2370-3-philmd@linaro.org>
+Subject: [RFC PATCH 1/5] target/tcg: Rename bitswap() helpers
+Date: Tue, 24 Feb 2026 20:30:23 +0100
+Message-ID: <20260224193028.2370-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260224193028.2370-1-philmd@linaro.org>
 References: <20260224193028.2370-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,226 +114,94 @@ the target name.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/tcg/helper-defs.h                     |  4 ++--
- target/i386/ops_sse.h                            |  2 +-
- target/loongarch/tcg/helper.h                    |  4 ++--
- target/mips/helper.h                             |  4 ++--
- target/i386/tcg/ops_sse_header.h.inc             |  2 +-
- target/arm/tcg/arith_helper.c                    |  4 ++--
- target/arm/tcg/translate.c                       |  4 ++--
- target/loongarch/tcg/op_helper.c                 |  4 ++--
- target/mips/tcg/op_helper.c                      |  4 ++--
- target/mips/tcg/translate.c                      |  4 ++--
- target/i386/tcg/emit.c.inc                       |  2 +-
- .../loongarch/tcg/insn_trans/trans_extra.c.inc   | 16 ++++++++--------
- 12 files changed, 27 insertions(+), 27 deletions(-)
+ target/loongarch/tcg/helper.h                   | 2 +-
+ target/mips/helper.h                            | 2 +-
+ target/loongarch/tcg/op_helper.c                | 2 +-
+ target/mips/tcg/op_helper.c                     | 2 +-
+ target/mips/tcg/translate.c                     | 2 +-
+ target/loongarch/tcg/insn_trans/trans_bit.c.inc | 4 ++--
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 5a10a9fba3b..a9e3583e2bb 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -493,8 +493,8 @@ DEF_HELPER_FLAGS_4(crypto_sm4ekey, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_4(crypto_rax1, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
--DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
--DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
-+DEF_HELPER_FLAGS_3(arm_crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
-+DEF_HELPER_FLAGS_3(arm_crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_qrdmlah_s16, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
-diff --git a/target/i386/ops_sse.h b/target/i386/ops_sse.h
-index 99c4728ec81..3c683185253 100644
---- a/target/i386/ops_sse.h
-+++ b/target/i386/ops_sse.h
-@@ -2115,7 +2115,7 @@ void glue(helper_pcmpistrm, SUFFIX)(CPUX86State *env, Reg *d, Reg *s,
- 
- #define CRCPOLY        0x1edc6f41
- #define CRCPOLY_BITREV 0x82f63b78
--target_ulong helper_crc32(uint32_t crc1, target_ulong msg, uint32_t len)
-+target_ulong helper_x86_crc32(uint32_t crc1, target_ulong msg, uint32_t len)
- {
-     target_ulong crc = (msg & ((target_ulong) -1 >>
-                                (TARGET_LONG_BITS - len))) ^ crc1;
 diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
-index e36dd2f5de3..35b055eb3bc 100644
+index 8a6c62f1161..e36dd2f5de3 100644
 --- a/target/loongarch/tcg/helper.h
 +++ b/target/loongarch/tcg/helper.h
-@@ -12,8 +12,8 @@ DEF_HELPER_FLAGS_1(loongarch_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+@@ -7,7 +7,7 @@ DEF_HELPER_2(raise_exception, noreturn, env, i32)
+ 
+ DEF_HELPER_FLAGS_1(bitrev_w, TCG_CALL_NO_RWG_SE, tl, tl)
+ DEF_HELPER_FLAGS_1(bitrev_d, TCG_CALL_NO_RWG_SE, tl, tl)
+-DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
++DEF_HELPER_FLAGS_1(loongarch_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+ 
  DEF_HELPER_FLAGS_3(asrtle_d, TCG_CALL_NO_WG, void, env, tl, tl)
  DEF_HELPER_FLAGS_3(asrtgt_d, TCG_CALL_NO_WG, void, env, tl, tl)
- 
--DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl)
--DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl)
-+DEF_HELPER_FLAGS_3(loongarch_crc32, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl)
-+DEF_HELPER_FLAGS_3(loongarch_crc32c, TCG_CALL_NO_RWG_SE, tl, tl, tl, tl)
- DEF_HELPER_FLAGS_2(cpucfg, TCG_CALL_NO_RWG_SE, tl, env, tl)
- 
- /* Floating-point helper */
 diff --git a/target/mips/helper.h b/target/mips/helper.h
-index 1c9f76f0c9c..e70a3942fac 100644
+index b6cd53c8538..1c9f76f0c9c 100644
 --- a/target/mips/helper.h
 +++ b/target/mips/helper.h
-@@ -21,8 +21,8 @@ DEF_HELPER_FLAGS_1(mips_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+@@ -16,7 +16,7 @@ DEF_HELPER_3(lld, tl, env, tl, int)
+ #endif
+ #endif
+ 
+-DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
++DEF_HELPER_FLAGS_1(mips_bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+ #ifdef TARGET_MIPS64
  DEF_HELPER_FLAGS_1(dbitswap, TCG_CALL_NO_RWG_SE, tl, tl)
  #endif
- 
--DEF_HELPER_3(crc32, tl, tl, tl, i32)
--DEF_HELPER_3(crc32c, tl, tl, tl, i32)
-+DEF_HELPER_3(mips_crc32, tl, tl, tl, i32)
-+DEF_HELPER_3(mips_crc32c, tl, tl, tl, i32)
- DEF_HELPER_FLAGS_4(rotx, TCG_CALL_NO_RWG_SE, tl, tl, i32, i32, i32)
- 
- /* microMIPS functions */
-diff --git a/target/i386/tcg/ops_sse_header.h.inc b/target/i386/tcg/ops_sse_header.h.inc
-index bbeb7301c33..8569f9935e3 100644
---- a/target/i386/tcg/ops_sse_header.h.inc
-+++ b/target/i386/tcg/ops_sse_header.h.inc
-@@ -337,7 +337,7 @@ DEF_HELPER_4(glue(pcmpestri, SUFFIX), void, env, Reg, Reg, i32)
- DEF_HELPER_4(glue(pcmpestrm, SUFFIX), void, env, Reg, Reg, i32)
- DEF_HELPER_4(glue(pcmpistri, SUFFIX), void, env, Reg, Reg, i32)
- DEF_HELPER_4(glue(pcmpistrm, SUFFIX), void, env, Reg, Reg, i32)
--DEF_HELPER_3(crc32, tl, i32, tl, i32)
-+DEF_HELPER_3(x86_crc32, tl, i32, tl, i32)
- #endif
- 
- /* AES-NI op helpers */
-diff --git a/target/arm/tcg/arith_helper.c b/target/arm/tcg/arith_helper.c
-index cc081c8f966..3a5cb41c7a9 100644
---- a/target/arm/tcg/arith_helper.c
-+++ b/target/arm/tcg/arith_helper.c
-@@ -275,7 +275,7 @@ uint32_t HELPER(sel_flags)(uint32_t flags, uint32_t a, uint32_t b)
-  * The upper bytes of val (above the number specified by 'bytes') must have
-  * been zeroed out by the caller.
-  */
--uint32_t HELPER(crc32)(uint32_t acc, uint32_t val, uint32_t bytes)
-+uint32_t HELPER(arm_crc32)(uint32_t acc, uint32_t val, uint32_t bytes)
- {
-     uint8_t buf[4];
- 
-@@ -285,7 +285,7 @@ uint32_t HELPER(crc32)(uint32_t acc, uint32_t val, uint32_t bytes)
-     return crc32(acc ^ 0xffffffff, buf, bytes) ^ 0xffffffff;
- }
- 
--uint32_t HELPER(crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
-+uint32_t HELPER(arm_crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
- {
-     uint8_t buf[4];
- 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index f9d1b8897d2..24cd316ee7a 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -3348,9 +3348,9 @@ static bool op_crc32(DisasContext *s, arg_rrr *a, bool c, MemOp sz)
-     }
-     t3 = tcg_constant_i32(1 << sz);
-     if (c) {
--        gen_helper_crc32c(t1, t1, t2, t3);
-+        gen_helper_arm_crc32c(t1, t1, t2, t3);
-     } else {
--        gen_helper_crc32(t1, t1, t2, t3);
-+        gen_helper_arm_crc32(t1, t1, t2, t3);
-     }
-     store_reg(s, a->rd, t1);
-     return true;
 diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
-index 6b4fe535300..427b1da4004 100644
+index 16ac0d43bc9..6b4fe535300 100644
 --- a/target/loongarch/tcg/op_helper.c
 +++ b/target/loongarch/tcg/op_helper.c
-@@ -60,7 +60,7 @@ void helper_asrtgt_d(CPULoongArchState *env, target_ulong rj, target_ulong rk)
-     }
+@@ -32,7 +32,7 @@ target_ulong helper_bitrev_d(target_ulong rj)
+     return revbit64(rj);
  }
  
--target_ulong helper_crc32(target_ulong val, target_ulong m, uint64_t sz)
-+target_ulong helper_loongarch_crc32(target_ulong val, target_ulong m, uint64_t sz)
+-target_ulong helper_bitswap(target_ulong v)
++target_ulong helper_loongarch_bitswap(target_ulong v)
  {
-     uint8_t buf[8];
-     target_ulong mask = ((sz * 8) == 64) ? -1ULL : ((1ULL << (sz * 8)) - 1);
-@@ -70,7 +70,7 @@ target_ulong helper_crc32(target_ulong val, target_ulong m, uint64_t sz)
-     return (int32_t) (crc32(val ^ 0xffffffff, buf, sz) ^ 0xffffffff);
- }
- 
--target_ulong helper_crc32c(target_ulong val, target_ulong m, uint64_t sz)
-+target_ulong helper_loongarch_crc32c(target_ulong val, target_ulong m, uint64_t sz)
- {
-     uint8_t buf[8];
-     target_ulong mask = ((sz * 8) == 64) ? -1ULL : ((1ULL << (sz * 8)) - 1);
+     v = ((v >> 1) & (target_ulong)0x5555555555555555ULL) |
+         ((v & (target_ulong)0x5555555555555555ULL) << 1);
 diff --git a/target/mips/tcg/op_helper.c b/target/mips/tcg/op_helper.c
-index 83c340e38e0..723253da59d 100644
+index 4502ae2b5be..83c340e38e0 100644
 --- a/target/mips/tcg/op_helper.c
 +++ b/target/mips/tcg/op_helper.c
-@@ -145,7 +145,7 @@ target_ulong helper_rotx(target_ulong rs, uint32_t shift, uint32_t shiftx,
+@@ -45,7 +45,7 @@ target_ulong helper_dbitswap(target_ulong rt)
  }
+ #endif
  
- /* these crc32 functions are based on target/loongarch/tcg/op_helper.c */
--target_ulong helper_crc32(target_ulong val, target_ulong m, uint32_t sz)
-+target_ulong helper_mips_crc32(target_ulong val, target_ulong m, uint32_t sz)
+-target_ulong helper_bitswap(target_ulong rt)
++target_ulong helper_mips_bitswap(target_ulong rt)
  {
-     uint8_t buf[8];
-     target_ulong mask = ((sz * 8) == 64) ?
-@@ -157,7 +157,7 @@ target_ulong helper_crc32(target_ulong val, target_ulong m, uint32_t sz)
-     return (int32_t) (crc32(val ^ 0xffffffff, buf, sz) ^ 0xffffffff);
+     return (int32_t)bitswap(rt);
  }
- 
--target_ulong helper_crc32c(target_ulong val, target_ulong m, uint32_t sz)
-+target_ulong helper_mips_crc32c(target_ulong val, target_ulong m, uint32_t sz)
- {
-     uint8_t buf[8];
-     target_ulong mask = ((sz * 8) == 64) ?
 diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index a63aa67808e..7ffa0d77273 100644
+index 54849e9ff1a..a63aa67808e 100644
 --- a/target/mips/tcg/translate.c
 +++ b/target/mips/tcg/translate.c
-@@ -13440,9 +13440,9 @@ void gen_crc32(DisasContext *ctx, int rd, int rs, int rt, int sz,
-     gen_load_gpr(t1, rs);
- 
-     if (crc32c) {
--        gen_helper_crc32c(cpu_gpr[rd], t0, t1, tsz);
-+        gen_helper_mips_crc32c(cpu_gpr[rd], t0, t1, tsz);
-     } else {
--        gen_helper_crc32(cpu_gpr[rd], t0, t1, tsz);
-+        gen_helper_mips_crc32(cpu_gpr[rd], t0, t1, tsz);
-     }
- }
- 
-diff --git a/target/i386/tcg/emit.c.inc b/target/i386/tcg/emit.c.inc
-index ce636b6c56c..47b3940e943 100644
---- a/target/i386/tcg/emit.c.inc
-+++ b/target/i386/tcg/emit.c.inc
-@@ -1916,7 +1916,7 @@ static void gen_CRC32(DisasContext *s, X86DecodedInsn *decode)
-     TCGv_i32 tmp = tcg_temp_new_i32();
- 
-     tcg_gen_trunc_tl_i32(tmp, s->T0);
--    gen_helper_crc32(s->T0, tmp, s->T1, tcg_constant_i32(8 << ot));
-+    gen_helper_x86_crc32(s->T0, tmp, s->T1, tcg_constant_i32(8 << ot));
- }
- 
- static void gen_CVTPI2Px(DisasContext *s, X86DecodedInsn *decode)
-diff --git a/target/loongarch/tcg/insn_trans/trans_extra.c.inc b/target/loongarch/tcg/insn_trans/trans_extra.c.inc
-index 298a80cff55..0a45f6c16a2 100644
---- a/target/loongarch/tcg/insn_trans/trans_extra.c.inc
-+++ b/target/loongarch/tcg/insn_trans/trans_extra.c.inc
-@@ -101,11 +101,11 @@ static bool gen_crc(DisasContext *ctx, arg_rrr *a,
-     return true;
- }
- 
--TRANS(crc_w_b_w, CRC, gen_crc, gen_helper_crc32, tcg_constant_tl(1))
--TRANS(crc_w_h_w, CRC, gen_crc, gen_helper_crc32, tcg_constant_tl(2))
--TRANS(crc_w_w_w, CRC, gen_crc, gen_helper_crc32, tcg_constant_tl(4))
--TRANS64(crc_w_d_w, CRC, gen_crc, gen_helper_crc32, tcg_constant_tl(8))
--TRANS(crcc_w_b_w, CRC, gen_crc, gen_helper_crc32c, tcg_constant_tl(1))
--TRANS(crcc_w_h_w, CRC, gen_crc, gen_helper_crc32c, tcg_constant_tl(2))
--TRANS(crcc_w_w_w, CRC, gen_crc, gen_helper_crc32c, tcg_constant_tl(4))
--TRANS64(crcc_w_d_w, CRC, gen_crc, gen_helper_crc32c, tcg_constant_tl(8))
-+TRANS(crc_w_b_w, CRC, gen_crc, gen_helper_loongarch_crc32, tcg_constant_tl(1))
-+TRANS(crc_w_h_w, CRC, gen_crc, gen_helper_loongarch_crc32, tcg_constant_tl(2))
-+TRANS(crc_w_w_w, CRC, gen_crc, gen_helper_loongarch_crc32, tcg_constant_tl(4))
-+TRANS64(crc_w_d_w, CRC, gen_crc, gen_helper_loongarch_crc32, tcg_constant_tl(8))
-+TRANS(crcc_w_b_w, CRC, gen_crc, gen_helper_loongarch_crc32c, tcg_constant_tl(1))
-+TRANS(crcc_w_h_w, CRC, gen_crc, gen_helper_loongarch_crc32c, tcg_constant_tl(2))
-+TRANS(crcc_w_w_w, CRC, gen_crc, gen_helper_loongarch_crc32c, tcg_constant_tl(4))
-+TRANS64(crcc_w_d_w, CRC, gen_crc, gen_helper_loongarch_crc32c, tcg_constant_tl(8))
+@@ -4839,7 +4839,7 @@ static void gen_bitswap(DisasContext *ctx, int opc, int rd, int rt)
+     gen_load_gpr(t0, rt);
+     switch (opc) {
+     case OPC_BITSWAP:
+-        gen_helper_bitswap(cpu_gpr[rd], t0);
++        gen_helper_mips_bitswap(cpu_gpr[rd], t0);
+         break;
+ #if defined(TARGET_MIPS64)
+     case OPC_DBITSWAP:
+diff --git a/target/loongarch/tcg/insn_trans/trans_bit.c.inc b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
+index ee5fa003ce0..76d6ba742d5 100644
+--- a/target/loongarch/tcg/insn_trans/trans_bit.c.inc
++++ b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
+@@ -194,8 +194,8 @@ TRANS(revb_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revb_2w)
+ TRANS(revb_d, 64, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_bswap64_i64)
+ TRANS(revh_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_2w)
+ TRANS(revh_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_d)
+-TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_bitswap)
+-TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitswap)
++TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_loongarch_bitswap)
++TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_loongarch_bitswap)
+ TRANS(bitrev_w, ALL, gen_rr, EXT_NONE, EXT_SIGN, gen_helper_bitrev_w)
+ TRANS(bitrev_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitrev_d)
+ TRANS(maskeqz, ALL, gen_rrr, EXT_NONE, EXT_NONE, EXT_NONE, gen_maskeqz)
 -- 
 2.52.0
 

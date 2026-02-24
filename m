@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494EFE9B25A
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C3BE9B250
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 12:12:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vurFg-0005gD-8P; Tue, 24 Feb 2026 07:10:56 -0500
+	id 1vurFe-0005fa-IX; Tue, 24 Feb 2026 07:10:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFH-0005ZD-MT
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:32 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1vurFB-0005YQ-Q9
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:25 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vurFB-0005sl-FE
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:31 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b884a84e622so830702466b.1
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:20 -0800 (PST)
+ id 1vurF6-0005sG-7r
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 07:10:24 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-65a380b554bso10579719a12.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 04:10:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771935020; x=1772539820; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771935018; x=1772539818; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ptd0y3gAC5QENHI0CgxkdBmiUWNBddi1bewDX6MYILQ=;
- b=UrGSJbIOouzrV3bwBF+Wp9d3/BAh8wZ5ytGjUX8uN0qsfsEKjEffug/3wUyHsKv7iw
- DHiOrKNVSLxQ84rCROdfDVSfVAk/SpAc0UAsDTjS4UjIc2JrlJFEHkzvwu1GKmV4ob3i
- fAuVYtP4X16IhkukB6+t7U4S9fuslDq8lWitOSfZ3PckPDUpBc35h25PYW8cmN6Cchgb
- 0FgT54Mk99bRt2lDdba++hSin4piE1q32mCwHjIEEPStFFlXWAfWU2gA0XkxpCBIBfam
- ADuiOPIZG4SX85jzlxRQZ2ec+GwOmWgcVuYTcPfvcTsbHCFb5Vce0Ut1bY9tXtijzV/h
- 0EbA==
+ bh=SrVJ9tdMlXwGedNfsdtlslEQzbHBYQL/tzdi3zI1jrg=;
+ b=s5U6QSg0UJHkC9tz7eQ/GiNckPtIn5gcxipW+T3yxIxQ1+pMfk0w2iVE3iKTBbnoBB
+ czID9cWSASprqB+zd7x49Z5q21Ak4gnGR4RdMC/sLsoccKT9oXiA4DlGXtLLQUMKglpk
+ bZOtEH+kl01JrIZE0PEYulVFT4feduiEe6Bd/wMNoDyV1T8Z2LCl4q4dD6REsDbUHWR3
+ JGD2lkBWo+7bVkOJEOMcfjscYXG3XdCiNRPXIcQjbXWLlSU+9vVIJE/9RuuEkBlyrFPw
+ xSGp5dvapjIrOjQOUNi97jKXixrT6x/QQVv4lDOzhQLI8cvevOuPW5dd5/5jS/LIBQ9Q
+ lSQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771935020; x=1772539820;
+ d=1e100.net; s=20230601; t=1771935018; x=1772539818;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ptd0y3gAC5QENHI0CgxkdBmiUWNBddi1bewDX6MYILQ=;
- b=Z1iB4ExU9Wpyew7T0yUcUneGdgg2WmNKsuxlRIPAjYYMaicdCltIQDQQo5lZVAjh/l
- XKYfyLi88fOXHXA8ebyvgktl/P4Zl3y4Lr98MEcJFuTDJK5FQUGRnheX+4UYDGbJJvaK
- Eag/GnhtnG0gV29dM6yktfjYlH5nPyrA+C0mZTPRsIqsWajKuYXcjWZ5L5r6dWthYqMz
- gWBmYTl4qIDgQ0M5u3J1eTZJLBcXxOlUr2PMHAnw6BdDm6DEgwt7xYB5mf+Z4sfwPbII
- bA5oxlbakYMmTEEt74X1blW4Lc3Y5ubFPejYqZZoCIWofelgn//YF80LT6n/Sa0JB/7O
- P7tA==
+ bh=SrVJ9tdMlXwGedNfsdtlslEQzbHBYQL/tzdi3zI1jrg=;
+ b=Ks1/dCPK0QKjyENDEm+yaVEQXiz7nCvRwXcvE2uXMsfTl4w433/XfA+p4T57REHGQD
+ hpmlfXSbmJeUHdJwfzuMAw19Rl4cisJK1NOVEAFN6UXPCvlfhig/q3n/UtHiItITVqet
+ l/g1zJpPlWP8ZeuR7iaAwZJjncgAqVOzRhI02AT6km+wz3/Hx2YoexBVMuTxNQTohF9z
+ xexGpi383fi10RaJsYfGlrf3NSReVnMq/Yoraq/M5LJT78E1IV1x2ZiHxHCwmmstCMWK
+ BBLzKat8bh1nXxUHkwEsqczgllYooh9XPCQEYzLs11rClxP8t724ozhyijYNxVD5dW1S
+ fmDg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXGATP4m0V7xjPEfC1fWqh7sD/KcnTTLG8I922kXUA6F1Cp6eQSTVGpQGLaWup12Y5lj6X4O00/Kg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx45fIC2e9V2yprmfenWOJo97IkUBXNp65PsWurM2GEsf44GMIp
- xGZUYYIDddtEhQGxeJW0WYvSTqAfVOQA5TYVYaVjmgx6DAMDIy3gr7AcwHr9V/JBqnKkZdNJ3lr
- M3JKy
-X-Gm-Gg: ATEYQzwBE3ElNnM+ALXPbXP0GoZ5TfeAey7dJAWyZVCzam/dV5RzW7V5S+TdWIckgnu
- xvyzI+G0LjSgkOONE7c94aP9o9+hiX16mla6ostF+Okt8pRZh1CU3GR+TAQ9588yiLimR5PtV0L
- iA2GW8icYm5BeMuUKmJcf4Rm+ogLl8kKJ79MXZkVoxSvAbfVh0jNuU5n3a6k/8TxADDqwyTNrKe
- mvAfwYOBO+yC3pS2ir9PcgOgYDgio1NaIaumNmSyaaFBWqlj/3n7Kiio5JlEG7R3Oj3FvZ8lpKr
- hcWWUwy8SKERYRNBu7d9VItPldPYpGP/DvWDLQVOCOCMPRAyvlTbESF0o8QTqUqmKX7Qy97cxqT
- ClHkSvqjUq8iawTPx9MAO1jpk5nF5Iaix/wOcLnCu+zs5AWiOq6jiao/NHPg1h5uGtwQwm/72xK
- pRHP5fj+uQc5mQWE7uLIowFCQ=
-X-Received: by 2002:a17:907:1b1c:b0:b8e:d260:cb20 with SMTP id
- a640c23a62f3a-b9081a09c97mr790538666b.18.1771935019481; 
- Tue, 24 Feb 2026 04:10:19 -0800 (PST)
+ AJvYcCUuhoxjrKBsh4FUCetvE1wGmkaQnXGiwfbpdFmXhLGgW6T/K9wWhaTRQnxvJn96MrZHDj/VE2SCoA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+EEyofr/FGUjuR0Mk72RFdP4IZUyZ922qsdVgF7GlKaDdtG77
+ BjEYxeuOP5N5Vg4CnnKlzuKIZvn/zyTTXD+QcLXAsdWFcdsrO69SoHm79ZndHfs5Gfk=
+X-Gm-Gg: ATEYQzyynz01S8EYvHqB6QeXBqPsv9jsDlvE59AFI8CaMEbvhYTMPJaliQuxc5mD8Oo
+ 9iaOuQmFuNrNPBVqxmDFSZ0UM3vuWDKlWGyI5Kd5AukHNRzye4H7nbSc5UPY83Qj4WFvXm5pDqj
+ y4KOcxRAlYEhqjvT0B93smw7X+V6fJ6AF1xcx2golE1KlPxx2SYezmyoDzG7HWQLpxOd4RmaqeN
+ j9ycpJL8FI2JfUeGomPRZmoA1jxJvg99EqGCoSZvFMbJ9FpfIDzryDV9EiG7phX4emaFHYSs972
+ Rmzq+6sJXBp0aDDFBdg9ykJA0nhD8DCKi/SStNyeY+nuT22Z0G2lz+Beff8SBCvcfG1qEXja8eo
+ mj8kokc5W7gPGvbqIAsOpBVs8KhudEIQ7VVvw6oFhZPw2yz6McBxBeTfUAWgJlIAheBxm0qs74H
+ WqizGVSpeXGRogOKxO8Z2ZmlQ=
+X-Received: by 2002:a17:907:3f9a:b0:b73:1634:6d71 with SMTP id
+ a640c23a62f3a-b9081a4cbf1mr805748666b.26.1771935017847; 
+ Tue, 24 Feb 2026 04:10:17 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b90ba93bcfesm111868466b.60.2026.02.24.04.10.17
+ a640c23a62f3a-b9084e8b790sm421996066b.49.2026.02.24.04.10.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Feb 2026 04:10:18 -0800 (PST)
+ Tue, 24 Feb 2026 04:10:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 415065F8D7;
- Tue, 24 Feb 2026 12:10:15 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id E7BB05F8D0;
+ Tue, 24 Feb 2026 12:10:14 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 7/8] tests/tcg/aarch64: fixes for WFX instructions system test
-Date: Tue, 24 Feb 2026 12:10:13 +0000
-Message-ID: <20260224121014.279248-8-alex.bennee@linaro.org>
+Subject: [PATCH 4/8] PLAN.md: add plan for the current work
+Date: Tue, 24 Feb 2026 12:10:10 +0000
+Message-ID: <20260224121014.279248-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260224121014.279248-1-alex.bennee@linaro.org>
 References: <20260224121014.279248-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,384 +105,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This required some iteration with the model to add bits it missed in
-the initial implementation. I ended up debugging and then prompting
-for the missing bits:
+This is entirely generated by ECA/Gemini using the
+gemini-3-flash-preview model. My initial prompt was:
 
-  - a basic gicv3 implementation
-  - a couple of rounds of tweaking the config
-  - mapping the GIC via page tables
-  - fixing the compilation of the support library
-  - extending the elapsed time check for WFE
-  - light re-ordering of Makefile, setting correct machine opts
+  I want to generate a PLAN.md for a piece of development work. Recently
+  support for WFE was added for M-profile but I want to extend that
+  support to A-profile along side proper semantics for WFI, WFE, WFIT
+  and WFET instructions. That includes setting the full ISS fields for
+  the traps (RN and RV fields of the ISS encoding from WF* intructions).
+  See syn_wfx() for where we currently build this up. Keep in mind we
+  want each commit to be kept small and review-able while maintaining
+  bisect-ability. We also should think about how we can test and defend
+  the functionality in QEMU's testing suite.
+
+This will form the "guide" for the agents next steps.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/aarch64/system/lib/gicv3.h      | 56 +++++++++++++++++
- tests/tcg/aarch64/system/lib/gicv3.c      | 77 +++++++++++++++++++++++
- tests/tcg/aarch64/system/wfx.c            | 17 ++++-
- tests/tcg/aarch64/Makefile.softmmu-target | 13 +++-
- tests/tcg/aarch64/system/boot.S           | 55 ++++++++++------
- 5 files changed, 196 insertions(+), 22 deletions(-)
- create mode 100644 tests/tcg/aarch64/system/lib/gicv3.h
- create mode 100644 tests/tcg/aarch64/system/lib/gicv3.c
+ PLAN.md | 77 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 77 insertions(+)
+ create mode 100644 PLAN.md
 
-diff --git a/tests/tcg/aarch64/system/lib/gicv3.h b/tests/tcg/aarch64/system/lib/gicv3.h
+diff --git a/PLAN.md b/PLAN.md
 new file mode 100644
-index 00000000000..9a1268937c6
+index 00000000000..49f330b802d
 --- /dev/null
-+++ b/tests/tcg/aarch64/system/lib/gicv3.h
-@@ -0,0 +1,56 @@
-+/*
-+ * GICv3 Helper Library
-+ *
-+ * Copyright (c) 2024 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef GICV3_H
-+#define GICV3_H
-+
-+#include <stdint.h>
-+
-+/* Virt machine GICv3 base addresses */
-+#define GICD_BASE       0x08000000  /* c.f. VIRT_GIC_DIST */
-+#define GICR_BASE       0x080a0000  /* c.f. VIRT_GIC_REDIST */
-+
-+/* Distributor registers */
-+#define GICD_CTLR       (GICD_BASE + 0x0000)
-+#define GICD_TYPER      (GICD_BASE + 0x0004)
-+#define GICD_IIDR       (GICD_BASE + 0x0008)
-+
-+/* Redistributor registers (per-CPU) */
-+#define GICR_SGI_OFFSET 0x00010000
-+
-+#define GICR_CTLR       0x0000
-+#define GICR_WAKER      0x0014
-+#define GICR_IGROUPR0   (GICR_SGI_OFFSET + 0x0080)
-+#define GICR_ISENABLER0 (GICR_SGI_OFFSET + 0x0100)
-+#define GICR_IPRIORITYR0 (GICR_SGI_OFFSET + 0x0400)
-+
-+/* GICD_CTLR bits */
-+#define GICD_CTLR_ARE_NS (1U << 4)
-+#define GICD_CTLR_ENA_G1NS (1U << 1)
-+#define GICD_CTLR_ENA_G0 (1U << 0)
-+
-+/* GICR_WAKER bits */
-+#define GICR_WAKER_ChildrenAsleep (1U << 2)
-+#define GICR_WAKER_ProcessorSleep (1U << 1)
-+
-+/**
-+ * gicv3_init:
-+ *
-+ * Initialize GICv3 distributor and the redistributor for the current CPU.
-+ */
-+void gicv3_init(void);
-+
-+/**
-+ * gicv3_enable_irq:
-+ * @irq: The IRQ number to enable
-+ *
-+ * Enable the specified IRQ (SPI or PPI).
-+ */
-+void gicv3_enable_irq(unsigned int irq);
-+
-+#endif /* GICV3_H */
-diff --git a/tests/tcg/aarch64/system/lib/gicv3.c b/tests/tcg/aarch64/system/lib/gicv3.c
-new file mode 100644
-index 00000000000..a09a0e430e6
---- /dev/null
-+++ b/tests/tcg/aarch64/system/lib/gicv3.c
++++ b/PLAN.md
 @@ -0,0 +1,77 @@
-+/*
-+ * GICv3 Helper Library Implementation
-+ *
-+ * Copyright (c) 2024 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++# Plan: Extend WFX Support for A-profile
 +
-+#include "gicv3.h"
++This document outlines the plan to extend WFE support to A-profile ARM and ensure proper semantics for WFI, WFE, WFIT, and WFET instructions, including full ISS field support for traps.
 +
-+#define write_sysreg(r, v) do {                     \
-+        uint64_t __val = (uint64_t)(v);             \
-+        asm volatile("msr " #r ", %x0"              \
-+                 : : "rZ" (__val));                 \
-+} while (0)
++## 1. Syndrome Enhancements
 +
-+#define isb() asm volatile("isb" : : : "memory")
++### 1.1 Update `syn_wfx` in `target/arm/syndrome.h`
++- Modify `syn_wfx` to include `rd` (RN) and `rv` (Register Valid) fields.
++- Ensure the bitfields match the ARM ARM for EC 0x01.
++- Bit layout:
++  - ISS[24]: CV
++  - ISS[23:20]: COND
++  - ISS[19:15]: RN (rd)
++  - ISS[14]: RV
++  - ISS[1:0]: TI
 +
-+static inline void write_reg(uintptr_t addr, uint32_t val)
-+{
-+    *(volatile uint32_t *)addr = val;
-+}
++### 1.2 Update WFX Syndrome Construction in Helpers
++- In `target/arm/tcg/op_helper.c`, update `HELPER(wfi)`, `HELPER(wfit)`, and implement `HELPER(wfet)` to:
++  - Check `is_a64(env)`.
++  - For AArch64: Set `cv = 0` and `cond = 0xf`.
++  - For AArch32: Maintain `cv = 1` and `cond = 0xe` (or pass the actual condition).
++  - Pass the correct `rd` and `rv` based on the instruction.
 +
-+static inline uint32_t read_reg(uintptr_t addr)
-+{
-+    return *(volatile uint32_t *)addr;
-+}
++## 2. Instruction Helpers and Translation
 +
-+void gicv3_init(void)
-+{
-+    uint32_t val;
++### 2.1 Update `HELPER(wfit)` and `trans_WFIT`
++- Change `HELPER(wfit)` to accept the register number `rd`.
++- Update `trans_WFIT` in `target/arm/tcg/translate-a64.c` to pass `a->rd`.
 +
-+    /* 1. Enable Distributor ARE and Group 1 NS */
-+    val = read_reg(GICD_CTLR);
-+    val |= GICD_CTLR_ARE_NS | GICD_CTLR_ENA_G1NS;
-+    write_reg(GICD_CTLR, val);
++### 2.2 Implement `HELPER(wfet)` and update `trans_WFET`
++- Create `HELPER(wfet)` in `op_helper.c`. It should:
++  - Check for traps using `check_wfx_trap(env, true, &excp)`.
++  - If trapped, raise exception with `ti=1` and `rv=true, rd=rd`.
++  - If not trapped, check `event_register` and timeout.
++- Update `trans_WFET` to call the new helper instead of just setting `DISAS_WFE`.
 +
-+    /* 2. Wake up Redistributor 0 */
-+    /* Clear ProcessorSleep */
-+    val = read_reg(GICR_BASE + GICR_WAKER);
-+    val &= ~GICR_WAKER_ProcessorSleep;
-+    write_reg(GICR_BASE + GICR_WAKER, val);
++### 2.3 Refactor `HELPER(wfe)` for A-profile
++- Update `HELPER(wfe)` to handle A-profile:
++  - Check for traps using `check_wfx_trap(env, true, &excp)`.
++  - If trapped, raise exception.
++  - If not trapped:
++    - If `env->event_register` is set, clear it and return.
++    - Otherwise, halt the CPU (`cs->halted = 1`, `cs->exception_index = EXCP_HLT`, `cpu_loop_exit`).
 +
-+    /* Wait for ChildrenAsleep to be cleared */
-+    while (read_reg(GICR_BASE + GICR_WAKER) & GICR_WAKER_ChildrenAsleep) {
-+        /* spin */
-+    }
++## 3. Wake-up Logic and Event Register
 +
-+    /* 3. Enable CPU interface */
-+    /* Set Priority Mask to allow all interrupts */
-+    write_sysreg(ICC_PMR_EL1, 0xff);
-+    /* Enable Group 1 Non-Secure interrupts */
-+    write_sysreg(ICC_IGRPEN1_EL1, 1);
-+    isb();
-+}
++### 3.1 Update `HELPER(sev)`
++- Ensure `event_register` is set for all CPUs, not just M-profile.
++- Kick all other CPUs to wake them from `EXCP_HLT`.
 +
-+void gicv3_enable_irq(unsigned int irq)
-+{
-+    if (irq < 32) {
-+        /* PPI: use GICR_ISENABLER0 */
-+        uintptr_t addr;
++### 3.2 Update `arm_cpu_has_work`
++- Modify `target/arm/cpu.c` to check `event_register` for A-profile CPUs as well.
++- This ensures that a CPU halted by WFE wakes up when the event register is set.
 +
-+        /* Set Group 1 */
-+        addr = GICR_BASE + GICR_IGROUPR0;
-+        write_reg(addr, read_reg(addr) | (1U << irq));
++## 4. Testing and Verification
 +
-+        /* Set priority (0xa0) */
-+        addr = GICR_BASE + GICR_IPRIORITYR0 + irq;
-+        *(volatile uint8_t *)addr = 0xa0;
++### 4.1 TCG Tests
++- Add a new test case in `tests/tcg/aarch64` that:
++  - Executes WFI, WFE, WFIT, WFET.
++  - Verifies that WFE/WFI halt the CPU and can be woken up.
++  - (Optional) Exercises traps by running at EL0 with SCTLR_EL1.nTWE/nTWI = 0 and verifying the syndrome in a signal handler or a small EL1 kernel.
 +
-+        /* Enable it */
-+        addr = GICR_BASE + GICR_ISENABLER0;
-+        write_reg(addr, 1U << irq);
-+    } else {
-+        /* SPI: not implemented yet */
-+    }
-+}
-diff --git a/tests/tcg/aarch64/system/wfx.c b/tests/tcg/aarch64/system/wfx.c
-index 59436c381fd..567d9e59c70 100644
---- a/tests/tcg/aarch64/system/wfx.c
-+++ b/tests/tcg/aarch64/system/wfx.c
-@@ -8,6 +8,7 @@
- 
- #include <stdint.h>
- #include <minilib.h>
-+#include "gicv3.h"
- 
- #define __stringify_1(x...) #x
- #define __stringify(x...)   __stringify_1(x)
-@@ -31,6 +32,9 @@
- #define wfit(reg) asm volatile("wfit %0" : : "r" (reg) : "memory")
- #define wfet(reg) asm volatile("wfet %0" : : "r" (reg) : "memory")
- 
-+#define enable_irq()  asm volatile("msr daifclr, #2" : : : "memory")
-+#define disable_irq() asm volatile("msr daifset, #2" : : : "memory")
++### 4.2 Regression Testing
++- Ensure no regressions for M-profile WFE.
++- Run `make check-qtest` and `make check-tcg`.
 +
- static void wait_ticks(uint64_t ticks)
- {
-     uint64_t start = read_sysreg(cntvct_el0);
-@@ -44,6 +48,9 @@ int main(void)
-     uint64_t start, end, elapsed;
-     uint64_t timeout;
- 
-+    gicv3_init();
-+    gicv3_enable_irq(27); /* Virtual Timer PPI */
++## Commit Breakdown (Proposed)
 +
-     ml_printf("WFX Test\n");
- 
-     /* 1. Test WFI with timer interrupt */
-@@ -58,8 +65,13 @@ int main(void)
-      * We don't have a full interrupt handler, but WFI should wake up
-      * when the interrupt is pending even if we have it masked at the CPU.
-      * PSTATE.I is set by boot code.
-+     *
-+     * We unmask interrupts here to ensure the CPU can take the minimal
-+     * exception handler defined in boot.S.
-      */
-+    enable_irq();
-     wfi();
-+    disable_irq();
-     end = read_sysreg(cntvct_el0);
-     elapsed = end - start;
-     if (elapsed < 100000) {
-@@ -76,11 +88,12 @@ int main(void)
-     wfe(); /* Should return immediately */
-     end = read_sysreg(cntvct_el0);
-     elapsed = end - start;
--    if (elapsed > 1000) { /* Should be very fast */
-+    /* while this should be fast there is some overhead from TCG */
-+    if (elapsed > 20000) {
-         ml_printf("FAILED: WFE slept despite SEV (%ld ticks)\n", elapsed);
-         return 1;
-     }
--    ml_printf("PASSED\n");
-+    ml_printf("PASSED (%ld ticks)\n", elapsed);
- 
-     /* 3. Test WFIT */
-     ml_printf("Testing WFIT...");
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 84342c52cd7..9a5b95de621 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -4,8 +4,9 @@
- 
- AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
- AARCH64_SYSTEM_SRC=$(AARCH64_SRC)/system
-+AARCH64_SYSTEM_LIB_SRC=$(AARCH64_SYSTEM_SRC)/lib
- 
--VPATH+=$(AARCH64_SYSTEM_SRC)
-+VPATH+=$(AARCH64_SYSTEM_SRC) $(AARCH64_SYSTEM_LIB_SRC)
- 
- # These objects provide the basic boot code and helper functions for all tests
- CRT_OBJS=boot.o
-@@ -24,7 +25,7 @@ LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
- TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
- EXTRA_RUNS+=$(MULTIARCH_RUNS)
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC) -I$(AARCH64_SYSTEM_LIB_SRC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
- config-cc.mak: Makefile
-@@ -102,7 +103,15 @@ run-pauth-3:
- 	$(call skip-test, "RUN of pauth-3", "not built")
- endif
- 
-+gicv3.o: gicv3.c gicv3.h
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c $< -o $@
++1. `target/arm: Update syn_wfx to include RN and RV`
++2. `target/arm: Update HELPER(wfi) to use correct CV/COND for AArch64`
++3. `target/arm: Update HELPER(wfit) to accept rd and use correct syndrome`
++4. `target/arm: Implement HELPER(wfet) and update trans_WFET`
++5. `target/arm: Update HELPER(wfe) to implement proper A-profile semantics`
++6. `target/arm: Update HELPER(sev) and arm_cpu_has_work for A-profile event register`
++7. `tests/tcg/aarch64: Add tests for WFX instructions`
 +
- wfx: CFLAGS += -march=armv8.7-a
-+wfx: LDFLAGS += gicv3.o
-+wfx: gicv3.o
-+
-+QEMU_GICV3_MACHINE=-M virt,gic-version=3 -cpu max -display none
-+run-wfx: QEMU_OPTS=$(QEMU_GICV3_MACHINE) $(QEMU_BASE_ARGS) -kernel
- 
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
- QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
-diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
-index 8bfa4e4efc7..6a71fc0da5a 100644
---- a/tests/tcg/aarch64/system/boot.S
-+++ b/tests/tcg/aarch64/system/boot.S
-@@ -60,7 +60,6 @@ curr_sp0_irq:
- curr_sp0_fiq:
- curr_sp0_serror:
- curr_spx_sync:
--curr_spx_irq:
- curr_spx_fiq:
- curr_spx_serror:
- lower_a64_sync:
-@@ -248,29 +247,34 @@ at_testel:
- 	msr	ttbr0_el1, x0
- 
- 	/*
--	 * Setup a flat address mapping page-tables. Stage one simply
--	 * maps RAM to the first Gb. The stage2 tables have two 2mb
--	 * translation block entries covering a series of adjacent
--	 * 4k pages.
-+	 * Setup a flat address mapping page-tables.
-+	 *
-+	 * ttb (Level 1):
-+	 *   - Entry 0 [0 - 1GB]: 1GB Device block (for GIC and other H/W)
-+	 *   - Entry 1 [1GB - 2GB]: Table entry pointing to ttb_stage2 (for RAM)
- 	 */
- 
--	/* Stage 1 entry: indexed by IA[38:30] */
--	adr	x1, .				/* phys address */
--	bic	x1, x1, #(1 << 30) - 1		/* 1GB alignment*/
--	add	x2, x0, x1, lsr #(30 - 3)	/* offset in l1 page table */
-+	/* Entry 0: 1GB Device block mapping at 0x0 */
-+	ldr	x1, =0x401 | (1 << 2)		/* AF=1, block, AttrIndx=Attr1 (Device) */
-+	str	x1, [x0]
- 
--	/* point to stage 2 table [47:12] */
--	adrp	x0, ttb_stage2
--	orr 	x1, x0, #3 			/* ptr to stage 2 */
--	str	x1, [x2]
-+	/* Entry 1: Table entry pointing to ttb_stage2 */
-+	adrp	x1, ttb_stage2
-+	orr 	x1, x1, #3 			/* ptr to table (type=3) */
-+	str	x1, [x0, #8]
- 
--	/* Stage 2 entries: indexed by IA[29:21] */
-+	/* Stage 2 entries: indexed by IA[29:21] (within 1GB-2GB range) */
-+	adrp	x0, ttb_stage2
-+	add	x0, x0, :lo12:ttb_stage2
- 	ldr	x5, =(((1 << 9) - 1) << 21)
- 
- 	/* First block: .text/RO/execute enabled */
- 	adr	x1, .				/* phys address */
- 	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment	*/
--	and	x4, x1, x5			/* IA[29:21] */
-+	/* Note: we assume RAM is in the 1GB-2GB range, so IA[30] is 1 */
-+	mov	x4, x1
-+	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
-+	and	x4, x4, x5			/* IA[29:21] */
- 	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
- 	ldr	x3, =0x401			/* attr(AF, block) */
- 	orr	x1, x1, x3
-@@ -280,7 +284,9 @@ at_testel:
- 	adrp	x1, .data
- 	add	x1, x1, :lo12:.data
- 	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment */
--	and	x4, x1, x5			/* IA[29:21] */
-+	mov	x4, x1
-+	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
-+	and	x4, x4, x5			/* IA[29:21] */
- 	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
- 	ldr	x3, =(3 << 53) | 0x401		/* attr(AF, NX, block) */
- 	orr	x1, x1, x3
-@@ -290,7 +296,9 @@ at_testel:
- 	adrp	x1, mte_page
- 	add	x1, x1, :lo12:mte_page
- 	bic	x1, x1, #(1 << 21) - 1
--	and 	x4, x1, x5
-+	mov	x4, x1
-+	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
-+	and 	x4, x4, x5
- 	add	x2, x0, x4, lsr #(21 - 3)
- 	/* attr(AF, NX, block, AttrIndx=Attr1) */
- 	ldr	x3, =(3 << 53) | 0x401 | (1 << 2)
-@@ -317,7 +325,7 @@ at_testel:
- 	ldr	x0, = (2 << 32) | 25 | (3 << 10) | (3 << 8)
- 	msr	tcr_el1, x0
- 
--	mov	x0, #0xee			/* Inner/outer cacheable WB */
-+	ldr	x0, =0x04ee			/* Attr1: Device-nGnRE, Attr0: Normal WB */
- 	msr	mair_el1, x0
- 	isb
- 
-@@ -370,6 +378,17 @@ _exit:
- 	semihosting_call
- 	/* never returns */
- 
-+	/*
-+	 * IRQ handler
-+	 */
-+	.global curr_spx_irq
-+curr_spx_irq:
-+	/* Minimal IRQ handler: just mask the timer and return */
-+	mrs	x0, cntv_ctl_el0
-+	orr	x0, x0, #2		/* IMASK=1 */
-+	msr	cntv_ctl_el0, x0
-+	eret
-+
- 	/*
- 	 * Helper Functions
- 	*/
++🤖 Generated with [eca](https://eca.dev)
 -- 
 2.47.3
 

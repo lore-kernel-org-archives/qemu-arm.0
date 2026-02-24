@@ -4,107 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2CC0F3C9AE
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 16:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A38DF3C9BE
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Feb 2026 16:36:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuvEU-0003PJ-Ab; Tue, 24 Feb 2026 11:25:59 -0500
+	id 1vuvOG-0007Tr-16; Tue, 24 Feb 2026 11:36:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuvEP-0003NK-25
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:25:54 -0500
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vuvOF-0007Tb-8x
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:36:03 -0500
+Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuvEL-0005hh-Ku
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:25:52 -0500
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b88593aa4dcso805444866b.3
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 08:25:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771950334; cv=none;
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vuvOD-0007Sy-GI
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 11:36:02 -0500
+Received: by mail-qt1-x830.google.com with SMTP id
+ d75a77b69052e-5069a785ed2so62951cf.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 08:36:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771950959; cv=none;
  d=google.com; s=arc-20240605;
- b=hz4jOvmCDh8vAm0c1jIh44RAriq8ixIEQl8gRyK01l7sA1F4hWMou3Lvga2LUu0qiZ
- rku+oJbNVEWX6QfcWcP/EwJNYYoYOLNJhSU+X85SqKHaOMKyGQlX+PvwSGksPZYpul3G
- 36D2mSoY19CRKwmSaiVax6PnhVNbrJ9nQOmYQa0GjDECefRYognevnKob0iLBDcan3Gr
- a9iovlgMlhQTMguKVfxVjrxjOwgS0P6otsG/opMKsrPQ/i3GhFNk7KwU2XFoOzlwwbNI
- s6YswaKAfNRAxTwOaBkK6FELFqhXdd6w2Pz3+8ozML1bysc49/9+lTBxQaLQsvaXUY6L
- 6T/Q==
+ b=a38emJUYxY1wElw9sjmWSzuBucSWa5dW8q2VZWQCPfY3nUX50NQYY6StMW8zesOCvI
+ atIa3lFmtmevWnBJRezToQZR/y3oOwTvOqMzIiVUB5kBB75gXg+PpmHTKRaiY7LsjgPl
+ eJAiWlteMyHXaawT3O2fD1EsFsHmjnEwM9gZzhnLPdXiTnvdFozZtqjIrYM3WtWjo0kb
+ 1qFHjHSMC13H2iOCpOhUjbL1C4zNCGVnGXtLd5OJ2kedKc0ADMXMx9S77aezB2n3WFmb
+ 0+1UePiYMs3ivid0rHFbEIgPG0Eu+OGfFK5DqplELQw3HGqY+FEfoFgqva2VPPiZfzHv
+ 1Ipw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
- fh=DQKGvaUa1zWIpv3SFsiClZFTVGOAdthlKFXsyXaGYdg=;
- b=LjavkbtdNF0/I7UXo55YEfwwMewD0ISsv+yetlpmt1kOn6UmzJM+Zc8YddVptbpSkn
- yTyEWmpweKj4qYbEEfxLZc0Ity+ABADfGaeHlKu1lLiT/3o3ijxddCvXgS3VEWX9j1Q8
- RzyrpCg9QIznsefose2o2vriHxKGSyy8r7FTFPURPjintMu8DcuHHdfs/geseDTzjyNt
- J93lFkeIFRh0S4ihTztZ1xVsZkgLTWMrEsNuiwQtZ5irYF0O6B4GedU7SSI5ZNym/2rO
- TGprK6vGpg20/GxpuzcbtZQnFi4fWNoL8Z8uUE0WK3FyJ5wggESBS7XxsAU5AZhV/HtA
- 25vw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=PCtfCuHENWEXCalHDflSvkISbE8QjePpBnrO1b/uMEI=;
+ fh=fIhhXKv8ONMfrGe6K1wVlUqnOv51KC/WrbptzV42c3E=;
+ b=AYkYV6whQZFGEvxaKH1kAiA1piG2TV5dZg06olOlTO6p9e0NKDYDM1nmWcoBMET2ce
+ 1ua4SdQqJf7fB7IN/+zn7XscvxT8xklvYaGJbrThOuXyiyfCiryMX1LCYbSv50hXMKcr
+ 4K/ISy/N20nIKRaVdZFzqasYJvAuySkjyqrmDLsmZjQvx0pQ5NwJyi4hmCPssKH0VYGj
+ 73SLOFvFAoGTIg0+3n36knsl/wjnCWZsQqiUNq2mi3XjXrKTte+pNkINw77riLQ4utUr
+ 4El8TfEb82sDym302m3cm2HVFgR908Fner8yTKrBUDMEn/q769W2hFMFeOHCFZ/SRyM+
+ dz2Q==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771950334; x=1772555134; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
- b=DBwGIgmnrBHPGTHeRUFGv/rf86kqBLSgQxRiSa0EX8jCYtwJMoc7WiGwiWBV1myXtm
- PRCGYUCelUKMhSUqGZl04onboXR6Hv6WLV0bUKunUq5hY0JSSVN/rS3iHteq8bp/+VeQ
- yaoRXxlPr1pGMQZCe+hltiuMQfyUHNuOgP24vKGxEYFqqTle85vUTXa875B+BvEOCoSV
- u2bcVGu1OMn8Wp9rDPUrnFcbQ/R6CHZy8S3aeGl9IrGLmnPTtmD9P04DmBNwWWTtORRZ
- x9Ds4JqZRZeiWEP2oIC2xJ5c/tBR/Y55XI/lP6hZBisUBDXxVSBWtWY6kSn4B/thCLM9
- unxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771950334; x=1772555134;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=google.com; s=20230601; t=1771950959; x=1772555759; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LlaW/iLqxXy1/nsGtsTdVe3Q5EDwrQub1KATZa42W8g=;
- b=cdT0Ysych3pe5rp+fB7F5unJKM7ftzcCFoHPCc7/bGXNcnikKQhCB+Pk3SN71lLVOQ
- 4i0bss11R/ESaYzQIyoWymqeYocNuSjJIrXleDJ+nYUWDSBBxFvE71esZqZsblYw3q7o
- vh5oU2myoPvmrKfuf/CY7bue4GgSybaibjq0myrSc8Y5urzC4Cs5UtdiTIHKcXIg0KRU
- 0CGtLv3P+RtsDP0Ausmg481fNTve3IxGCzFvgqmoX0AgZCqKiS1GUik6AsTreJ88M7tS
- SxP5sHyTnLF9fdFrSgvUTOfxu2cjO1i1o4Bvf9gOdkw8PIc2ZP3c8IJhUL0RLQ7o06QB
- S08g==
-X-Gm-Message-State: AOJu0YyYkF8BSMjnkKD0TG6HR5mFOLYRQ3rdL6ySt0kpfaMFDKbQXVKp
- xjmo3nEI388WdVrpPFLM185b5s6jScY46Rz+Ni87s5Bwry+kK9rDnWh2XrMeRC9boU8/wHELUBm
- gj9T1u5z3uDUqJc8SXCVp4X7C9ctMmtYv5m/0Bh9SiQ==
-X-Gm-Gg: ATEYQzwbwUY7MomS1kDn5A3sNaCorpXiXcXAvg6LETiRcIv9Mr6KzRA9p5CcECMCeft
- kowBSMiZFwfAIRD2L55tawoeHNTlsbeHZQNb9eJm5LRbYXLgE9VOeBTJyBKZYvkpYfVKqvnsWdR
- aeLiCYerQObjbCos/usub+2Xk8thOipZrfleqDuhCsOb4FXt3Yy2xJHqC3dXK8rDMN0wbEzj6Jf
- rcCSIwHL3rKw91ABlCcbc4KOqpr3xGku6c135XcurqhpVakywd+lHMhbWxU3xb8lIIkmIiL4giz
- kovHaYxyNoujL3u/OCvtokIiMnMSnmVJK60Uy+tzowRH15VMTJdA0YYn/nrCx/MFJbeU52M+K/G
- 5KA==
-X-Received: by 2002:a17:907:a43:b0:b83:b7c5:de2c with SMTP id
- a640c23a62f3a-b9081986379mr832729366b.10.1771950333833; Tue, 24 Feb 2026
- 08:25:33 -0800 (PST)
+ bh=PCtfCuHENWEXCalHDflSvkISbE8QjePpBnrO1b/uMEI=;
+ b=aKKqrv4sy3Zzvrk1wuYs0p7JoGBIEyCdKCDSVxMNJQASZhcvv8r9UfIa3J9Ohm942U
+ qLKTgEMFu4DRNqGWZnswGA/BFo7pwVMQShT6G1WyzaKJPC8Oe5GBSJd37GTXQrYoqnZU
+ +fUVIghwejtNxVIisBKBS0NDndjEItqF+UCJAM9LFrde2rA+LT85HEuSj/PQOJ0SOVpY
+ gwNFOZJ2OIgdfIqCL0+sNWf0lSDbCiDyIOqKN+nysCDYX5Fjd8NJz3K0GkxRXH/jUs12
+ 6pne66ct0ve9w7NPu/GhltwqKGxOdBXKUUCBycLspASCyv4pIFQby0TFNsWi+rJl8Ll6
+ HU5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771950959; x=1772555759;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=PCtfCuHENWEXCalHDflSvkISbE8QjePpBnrO1b/uMEI=;
+ b=gtUyPiykzgtRMojoW3WXlvWCEpqR3CUwTWt7FbsyNdCSSbPiz6+xk+5XOFREv9aAw9
+ ieOHp591aKrs8q/BOT4+8G1/m6qp7ZJKTUpWGVgWgZ+Ayb1/ycpY/Kv/cLcoH3B7L2bg
+ wMQXPwNy05A4sSnjxdtu1QaPtu/1YoWk+iKj3UGQ3puOUWX+IBZoDhcy8VMJ2layqxz8
+ jdIjhVBL+IZT0q+93XZUi1sk5MkNh2xTDJZNs8soFdnrHGSeFkU+OcspxHlCqINnhhVJ
+ vHRguTCjqxHmpr7EP2Uspo/MLwFpRsqrSZX8CqT0ohnSILi/PeD2+OLe9Nj+hVlZm1oL
+ LMPA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUU4uLvr+cv/YU9tGvzELj3y6xh04GJicKee/5ZUxgtgEUB6JsUXfg/S7xchoPSEzLztTIr08tU2Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxS+76/SlxK88pXvAD/lHwpu/Win5V8ejX3CpVt6mr9Ie1DA0K+
+ Gk4P+8k8ZkHGQmeFNUc8m3tUK+vsCk93e1bTAVF0Hi8UFbowfI+lH5c22xl2XihEDS9RteJsgoy
+ yGDYTcOsQuowh+V0JH2QVKGIQxXTr1ZlmTdvENhBv
+X-Gm-Gg: AZuq6aLLie0TNKFSfzlB9G2jU3de19+WXnfEflXsRSpswQt4itT3J/iDd67sxsVpkiy
+ 6XWBw58tCWKGPdWJ6rbROdTYV6OMvrp3CWsW3H423UHxyi3Ze3o2M3NUWRL/Zv4Y9ZsG1+HkVvX
+ 72lsL2E8Jg72WyjD9uVmP1UTP2r2D+1U8D8oOpyZyVtrUCcVXEMYrs2R/O2cja09llp+PxIcn9a
+ gOAd12wB+qWKzbV01+e4v3j0SU6XWSRr86VnCxw801k31x3iyRgUPancYmAjeBdN8eG2VqZRsW4
+ UUpDLjTTSBaVlwQFdCu5q6q9GcjlJbW6sQhM9z3E3+MYBhOvfLLYUdzAYksH5FLIK7DeknNhR5q
+ 5JlwMZDGiF2hJTnyRUaBkfV7yCQZx57ltJNKu
+X-Received: by 2002:a05:622a:15d4:b0:506:a3c8:d44d with SMTP id
+ d75a77b69052e-5072df03d92mr11183981cf.9.1771950958651; Tue, 24 Feb 2026
+ 08:35:58 -0800 (PST)
 MIME-Version: 1.0
-References: <20260202133353.2231685-1-peter.maydell@linaro.org>
- <20260202133353.2231685-6-peter.maydell@linaro.org>
- <7ffe8bf6-bd94-4f7f-aa77-274c90d1aa78@tls.msk.ru>
-In-Reply-To: <7ffe8bf6-bd94-4f7f-aa77-274c90d1aa78@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Feb 2026 16:25:20 +0000
-X-Gm-Features: AaiRm53MUn7Csb7YhgFkm-SftTRUdbqnL2h_ooGFYYKbzTkT98toSs7lqnz_6xg
-Message-ID: <CAFEAcA-iqQnwYnKR3BLE7VO0iAOSOjcOWADFw7XGu9kLB-f8Tw@mail.gmail.com>
-Subject: Re: [PATCH v3 05/15] target/arm: Don't let 'sme=on' downgrade SME
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-stable <qemu-stable@nongnu.org>
+References: <20260224053613.589102-1-jamin_lin@aspeedtech.com>
+ <20260224053613.589102-23-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260224053613.589102-23-jamin_lin@aspeedtech.com>
+From: Nabih Estefan <nabihestefan@google.com>
+Date: Tue, 24 Feb 2026 08:35:47 -0800
+X-Gm-Features: AaiRm512_eNhMxLtQ6PtJok3ExPxyEcPfHX3ysWfbWxnFzdSEZ8ZKZU7nZAiz6c
+Message-ID: <CA+QoejW1sU6dGFLaveLu36Cu0pk08erT_d+Mpgz_uNegAH40tg@mail.gmail.com>
+Subject: Re: [PATCH v6 22/22] MAINTAINERS: Add I3C maintainers and reviewer
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, 
+ Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ "komlodi@google.com" <komlodi@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::830;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x830.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,51 +131,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, 21 Feb 2026 at 07:19, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Mon, Feb 23, 2026 at 9:36=E2=80=AFPM Jamin Lin <jamin_lin@aspeedtech.com=
+> wrote:
 >
-> On 02.02.2026 16:33, Peter Maydell wrote:
-> > In our handling of the boolean 'sme' CPU property, we write this 0/1
-> > value directly to ID_AA64PFR1_EL1.SME.  This worked when the only
-> > valid values in that field were 0 (for no SME) and 1 (for SME1).
-> > However, with the addition of SME2 the SME field can now also read 2.
-> > This means that "-cpu max,sme=on" will result in an inconsistent set
-> > of ID registers, where ID_AA64PFR1_EL1.SME claims SME1 but
-> > ID_AA64SMFR0_EL1.SMEver claims SME2p1.  This isn't a valid thing to
-> > report, and confuses Linux into reporting SME2 to userspace but not
-> > actually enabling userspace access for it.
-> >
-> > Fix this bug by having arm_cpu_sme_finalize() fix up the
-> > ID_AA64PFR1_EL1.SME field to match ID_AA64SMFR0.SMEver.  This means
-> > the "sme" property's semantics are "off" for "no SME" and "on" for
-> > "enable at whatever the default SME version this CPU provides is".
-> >
-> > Update the documentation to clarify what 'sve=on' and 'sme=on' do.
-> > (We don't have the equivalent bug for 'sve=on' because
-> > ID_AA64PFR0_EL1.SVE only has 0 and 1 as valid values, but the
-> > semantics of the property are the same.)
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Add a new I3C section to the MAINTAINERS file.
 >
-> Hi!
+> List Joe Komlodi and Jamin Lin as maintainers, and Nabih Estefan as the
+> reviewer, covering the I3C core and related files under hw/i3c/ and
+> include/hw/i3c/.
 >
-> I suppose this change makes sense for 10.0.x (LTS) series to.  There,
-> since it lacks idregs conversion which happened during 10.1 development
-> cycle, I had to adjust the change.
->
-> The result is at
-> https://gitlab.com/mjt0k/qemu/-/commit/3c1f1b8065c625040787c2c89d22d5602100aeb4
-> (I kept original code fragments - using idregs - in comments).
->
-> Please let me know if I should've done something different here, for
-> example not picking up this change for 10.0.x :)
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Thanks for the ping -- there's nothing technically wrong with your
-backport and it would be harmless to have it in 10.0.x, but the
-support for the SME2 feature that makes "just write 0" become a bug
-only went in from the 10.1 release, so we don't need to backport
-the fix any further back than that.
+Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 
-thanks
--- PMM
+Thanks for taking ownership of getting these patches upstream Jamin!
+- Nabih
+> ---
+>  MAINTAINERS | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 233d2a5e71..7bf78e0691 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -3933,6 +3933,18 @@ F: include/hw/i2c/smbus_master.h
+>  F: include/hw/i2c/smbus_slave.h
+>  F: include/hw/i2c/smbus_eeprom.h
+>
+> +I3C
+> +M: Joe Komlodi <komlodi@google.com>
+> +M: Jamin Lin <jamin_lin@aspeedtech.com>
+> +R: Nabih Estefan <nabihestefan@google.com>
+> +S: Maintained
+> +F: hw/i3c/*.c
+> +F: hw/i3c/.h
+> +F: hw/i3c/Kconfig
+> +F: hw/i3c/meson.build
+> +F: hw/i3c/trace-events
+> +F: include/hw/i3c/*.h
+> +
+>  PMBus
+>  M: Titus Rwantare <titusr@google.com>
+>  S: Maintained
+> --
+> 2.43.0
 

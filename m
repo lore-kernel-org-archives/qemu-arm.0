@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1285F357DA
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 07:29:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 937C0F357DA
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 07:32:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv9K9-0002PJ-A2; Wed, 25 Feb 2026 02:28:45 -0500
+	id 1vv9Nw-0003kT-Dc; Wed, 25 Feb 2026 02:32:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9K6-0002Of-Sk
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:28:43 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Nt-0003fG-4d
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:32:37 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9K3-00047x-Sb
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:28:42 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Nr-0004jH-ML
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:32:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772004517;
+ s=mimecast20190719; t=1772004754;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZZo+kFwAJ//5ZhBYyzbFjvG2bg6tRCPIsroZnk9WCpc=;
- b=ivs/jHAREfr2nbvAoBBTkyGio0ZKUkkqmljz4T9sYupUmWNhNr2tTBqZ3y7na+wf9Q0jv4
- 2eGhad/SDO0B572AGOZ6+9uv7Xirw+vog9fKu6hdPfe8d/UMWxTMwUbqw7BjE8rXlh8Kmj
- y0ORZFYvukFtGgmF0/HbfWx8SwvTl/E=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=lvFk/kN2RHiafpdo4S3E2ny8c6iz1a+WLXK14+OPBHc=;
+ b=GGKM8Ico/VJrWY+IuqZL0iegqi79qujcgtYKqG7Xx9POF5e8d3PbIeL525e2lNKYoXJEf+
+ Lr95MzmQZvSm1yz4LNsaITSWJkuIqQld/vedrVlAC3RFXod2Q5gUGhwoUeSIoGmizC2Lht
+ sdRsa+cuahUcsmOKX6KzohPn8q5tmAk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-601-vKJckyKuPlG67vUhL9ytdA-1; Wed,
- 25 Feb 2026 02:28:36 -0500
-X-MC-Unique: vKJckyKuPlG67vUhL9ytdA-1
-X-Mimecast-MFC-AGG-ID: vKJckyKuPlG67vUhL9ytdA_1772004515
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-473-iZHnwNj_O8SRoOlI8-Nd0Q-1; Wed,
+ 25 Feb 2026 02:32:31 -0500
+X-MC-Unique: iZHnwNj_O8SRoOlI8-Nd0Q-1
+X-Mimecast-MFC-AGG-ID: iZHnwNj_O8SRoOlI8-Nd0Q_1772004749
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C9BC9195609D; Wed, 25 Feb 2026 07:28:34 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2F27F19560A3; Wed, 25 Feb 2026 07:32:29 +0000 (UTC)
 Received: from [10.45.224.158] (unknown [10.45.224.158])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B15BD19560A2; Wed, 25 Feb 2026 07:28:30 +0000 (UTC)
-Message-ID: <713e08db-2411-4917-a6a5-a60070a8790f@redhat.com>
-Date: Wed, 25 Feb 2026 08:28:28 +0100
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1F3641800465; Wed, 25 Feb 2026 07:32:22 +0000 (UTC)
+Message-ID: <3f229a02-1db2-43de-ae0b-10881b0618be@redhat.com>
+Date: Wed, 25 Feb 2026 08:32:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] hw/arm/smmuv3: Avoid including CONFIG_DEVICES in hw/
- header
+Subject: Re: [PATCH 2/3] hw/i386/intel_iommu: Avoid including CONFIG_DEVICES
+ in hw/ header
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eric.auger@redhat.com>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
+ =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>
 References: <20260225031658.32095-1-philmd@linaro.org>
- <20260225031658.32095-2-philmd@linaro.org>
+ <20260225031658.32095-3-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -102,9 +106,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20260225031658.32095-2-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: dCOmEqen2tLse-cAJUz0am77DuUYlio4o5ST-e09nQM_1772004515
+In-Reply-To: <20260225031658.32095-3-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: lvfatSBPAsnTxhZBqrgTLHMbgJjK3qm4KkW2SApNyng_1772004749
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -139,145 +143,33 @@ On 25/02/2026 04.16, Philippe Mathieu-Daudé wrote:
 
 s/By inlining the stubs/By turning the inline functions into stubs/ ?
 
-Apart from that:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-
 > CONFIG_DEVICES include in a hw/ header, allowing to build the
 > source files including it as common objects.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/smmuv3-accel.h       | 35 -----------------------------
->   hw/arm/smmuv3-accel-stubs.c | 44 +++++++++++++++++++++++++++++++++++++
->   hw/arm/meson.build          |  5 +++--
->   3 files changed, 47 insertions(+), 37 deletions(-)
->   create mode 100644 hw/arm/smmuv3-accel-stubs.c
+>   hw/i386/intel_iommu_accel.h       | 35 ++---------------------------
+>   hw/i386/intel_iommu_accel-stubs.c | 37 +++++++++++++++++++++++++++++++
+>   hw/i386/meson.build               |  1 +
+>   3 files changed, 40 insertions(+), 33 deletions(-)
+>   create mode 100644 hw/i386/intel_iommu_accel-stubs.c
 > 
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index a8a64802eca..7e48d1555d3 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -14,7 +14,6 @@
->   #ifdef CONFIG_LINUX
->   #include <linux/iommufd.h>
->   #endif
+> diff --git a/hw/i386/intel_iommu_accel.h b/hw/i386/intel_iommu_accel.h
+> index e5f0b077b4b..d75d232c6d4 100644
+> --- a/hw/i386/intel_iommu_accel.h
+> +++ b/hw/i386/intel_iommu_accel.h
+> @@ -10,9 +10,9 @@
+>   
+>   #ifndef HW_I386_INTEL_IOMMU_ACCEL_H
+>   #define HW_I386_INTEL_IOMMU_ACCEL_H
 > -#include CONFIG_DEVICES
 >   
->   /*
->    * Represents an accelerated SMMU instance backed by an iommufd vIOMMU object.
-> @@ -40,7 +39,6 @@ typedef struct SMMUv3AccelDevice {
->       SMMUv3AccelState *s_accel;
->   } SMMUv3AccelDevice;
->   
-> -#ifdef CONFIG_ARM_SMMUV3_ACCEL
->   void smmuv3_accel_init(SMMUv3State *s);
->   bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
->                                 Error **errp);
-> @@ -51,38 +49,5 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
->                                   Error **errp);
->   void smmuv3_accel_idr_override(SMMUv3State *s);
->   void smmuv3_accel_reset(SMMUv3State *s);
-> -#else
-> -static inline void smmuv3_accel_init(SMMUv3State *s)
-> -{
-> -}
-> -static inline bool
-> -smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-> -                         Error **errp)
-> -{
-> -    return true;
-> -}
-> -static inline bool
-> -smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-> -                               Error **errp)
-> -{
-> -    return true;
-> -}
-> -static inline bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
-> -{
-> -    return true;
-> -}
-> -static inline bool
-> -smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
-> -                           Error **errp)
-> -{
-> -    return true;
-> -}
-> -static inline void smmuv3_accel_idr_override(SMMUv3State *s)
-> -{
-> -}
-> -static inline void smmuv3_accel_reset(SMMUv3State *s)
-> -{
-> -}
-> -#endif
->   
->   #endif /* HW_ARM_SMMUV3_ACCEL_H */
-> diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
-> new file mode 100644
-> index 00000000000..b64f1e4d93e
-> --- /dev/null
-> +++ b/hw/arm/smmuv3-accel-stubs.c
-> @@ -0,0 +1,44 @@
-> +/*
-> + * Stubs for accelerated SMMU instance backed by an iommufd vIOMMU object.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/arm/smmuv3.h"
-> +#include "hw/arm/smmuv3-accel.h"
-> +
-> +void smmuv3_accel_init(SMMUv3State *s)
-> +{
-> +}
-> +
-> +bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-> +                              Error **errp)
-> +{
-> +    return true;
-> +}
-> +
-> +bool smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-> +                                    Error **errp)
-> +{
-> +    return true;
-> +}
-> +
-> +bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
-> +{
-> +    return true;
-> +}
-> +
-> +bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
-> +                                Error **errp)
-> +{
-> +    return true;
-> +}
-> +
-> +void smmuv3_accel_idr_override(SMMUv3State *s)
-> +{
-> +}
-> +
-> +void smmuv3_accel_reset(SMMUv3State *s)
-> +{
-> +}
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 47cdc51d135..8f834c32b1f 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -85,8 +85,9 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
-> -arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
-> -arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
-> +arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
-> +arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
-> +stub_ss.add(files('smmuv3-accel-stubs.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
->   arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
->   arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
+> -#ifdef CONFIG_VTD_ACCEL
+> +#include "hw/i386/intel_iommu_internal.h"
+Why is this #include suddenly required? ... please add a comment about this 
+to the patch description!
+
+  Thanks,
+   Thomas
 
 

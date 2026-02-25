@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88C34FD3764
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 15:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F11A5FD3765
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 15:02:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvGP1-0003SS-Pv; Wed, 25 Feb 2026 10:02:22 -0500
+	id 1vvGPD-0003TB-W4; Wed, 25 Feb 2026 10:02:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1vvFnL-0001ny-Rf
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 09:23:19 -0500
-Received: from mail-dl1-x1243.google.com ([2607:f8b0:4864:20::1243])
+ id 1vvGC5-0004YT-1e
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 09:48:53 -0500
+Received: from mail-dy1-x1343.google.com ([2607:f8b0:4864:20::1343])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1vvFnH-0003AK-Pb
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 09:23:19 -0500
-Received: by mail-dl1-x1243.google.com with SMTP id
- a92af1059eb24-1275750cf9cso5544132c88.0
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 06:23:15 -0800 (PST)
+ id 1vvGC0-0007Hh-MP
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 09:48:52 -0500
+Received: by mail-dy1-x1343.google.com with SMTP id
+ 5a478bee46e88-2b4520f6b32so8362114eec.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 06:48:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772029394; x=1772634194; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1772030922; x=1772635722; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=juYoEm78xCL2QYOylmbVKBz615aWeLZ4f99sM1Riy/c=;
- b=BSDWpWHRwbTsfXgEfZzvLgok5+bC/sxc7UriYlgrZZj7FZbTOm8kYEtzFt6LNdlXu8
- +H7guX7o22V1iKCfIfqATsAX9JDo6ZdrTYUzae23epj2EY019zrXFrH6dSS01pTkQ9CU
- lfq5Hsnsrfg375XnFbmzOjamSLtEtj1tYkypx8viJ02i+jc+rj3UvBpx6stJbBRxOi69
- HOMO7INF+kJ4RBTCglCPZsznaFzgk3Cdkrn6he+VHjOKWfbrr5npNnkJG+YwqYY/2wIQ
- lpZ36V510nEa6OtXIWByXcxtyL5kdCz6dh1aUpBYVc1zxi9BwzXlSyDtpQ3a+LadPlob
- 7toQ==
+ bh=OD2ZDOcsB7hl8E3T7PCQShOa5gey7FJkN6MvpXFqEGs=;
+ b=HJ8PQVOFOhkpLRn+gxAgJM+teUPZva0bxBctnaQz3fZGtJD7CVwYceL4LBKFDPCHyr
+ e3MTbFjrQmMs174FS6rERv+IkCbfnx0H1fsXNwd4SNJ2LqouIvJJ1c6hGy5yFx//GqDF
+ h0zos/5PPEev+GyIH68YOEOCFiAW26XlRTV4Q9890zoDdiQHE+6lMzaq7zsBacj5xQ0+
+ NOx2p96plNf/9G0MPQQ4gWgw5dY7zYsRi4hfElaNDrOItR6ESBZxhDUQsQJpSwF3j/q2
+ xpYG6M5scY4tAjJ3cSi7UVPfQM5Y7yIdZYd6xRuROtxPj0g5dY0JwWgf/muX5S83MMoO
+ RDWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772029394; x=1772634194;
+ d=1e100.net; s=20230601; t=1772030922; x=1772635722;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=juYoEm78xCL2QYOylmbVKBz615aWeLZ4f99sM1Riy/c=;
- b=PMLzaO8y+3jid+SZeoNxYBFdDiYO0364QE+DNLt8Vd1GEiJkkQjLDdCDN0lpZaHlE3
- P+fvJOOKAyp0AZnVGHgXZS+082gvfm4rU2o5PrDnw2iWgE02/cqgSm1PZFKVsCZWDEAO
- 96wlg50EfMubNoGJn6qRHWhqWzOiowBwCip2aHeJLNRKviYtEekkqYFpHs62mj7VFW1V
- /AijR3dOPd6NTY9LiWyi/WkKo2+XHMfNvdu0WjXikOvfUy+p+mRTkXkNpOQUYEqYuaFk
- NvH0TrvEGEI+4F4WqrcULDhuCFSRuM14dmB1X0EdnPFYRSF8nXYW4RSYmQxiStJeYd1W
- Q1LQ==
+ bh=OD2ZDOcsB7hl8E3T7PCQShOa5gey7FJkN6MvpXFqEGs=;
+ b=JuAW59VIsBYxDo1mXyo691T4pm8v1BFLmA4e6fQl3exdoHHh7smYLMMTQLp8eoHKc0
+ Vsk/Wf9z86ZGMLT9Nc8V3/DowE+Ma3wDThRUHr+ZBh7osRIKcROuyduZVppfNuOrzneX
+ j5vtmW+4+pC80lL30zdOR78gsxTzUXyg5vpdLmLLWXA+sp7iTX8izhz5HqTaPK4yiW5s
+ HAh7G2c4oAnnBAnUIveC7DqylkFeGgtqcIzO3WDXh0LSJddLEpWmMilUPb+3ifKwuafi
+ Wvi4T/VpJLZC9Ty2EOgic7Yg37ge08DP03Uf2xJSAIeOyvAH2CBdYVBuJxE4JBwdW0rT
+ vHVg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX3JKNX9+4arSi7iIeT7N4Qlz7T8J4RZCaWtnusadcwkKY9Cw7KPRylbymHDAuslv0vTNhvtmVpEg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx9cggeP3kTUwCO1vzDdN+pUQj0/39M0YSxyZui16M+nkL1bn6j
- yxl/uP9GPPjBk9TRCTNLpBC9dR+xOxn8AZNDlV+8u7xpXv4/UJewYsz4
-X-Gm-Gg: ATEYQzymrnvteV4YzhSTxtZE1g1+Gw2btecWxBMYTNdFjYR8zvyeJf0ttPxJkT1ledw
- 0y5Hp/45pRx3tKHY33U1nK+mOv8TPWritcFBYskbYcN1Tfiwdwrfw4wEiX/wUHAuZyLjxzeLO74
- qVHt4GSdPZXGKaL8+KLLNyiQQSZNDge1NCVAR1yMLjfNzq2GkoJUJVDeBULsV7sqCG43grFhKEO
- 0vK32yGJH11tXXZShDDr8H9yTmSRh0jqEpTOlalTmbDQM90ysF9GRS0CtZoqEZav/LbvIT52wAt
- zebJF/ZGeZKGTBWQh4EWucjlc8ZTF2O0r2M2kll9tl/6CI6yGL1262CRPqnNRWbanZzW0Km8tKx
- CrJ/E08gCAZLteUPI/KPgazHwBhk/hQqX6fcGZUtPaSCFcph+P7QfKlyeos1gMziV7IwP5s+pIz
- uOlVJaqO18bbsnLi1XNSKluryH5skcCgalM2T38lxtC4jYdvVMx5q34WOD1219DN6P33HnEXoXX
- wgZeetxByJNtWml5eIsl9Ju2gfMDFw=
-X-Received: by 2002:a05:7022:404:b0:127:3f2a:af21 with SMTP id
- a92af1059eb24-1276acbe0efmr5224579c88.15.1772029393586; 
- Wed, 25 Feb 2026 06:23:13 -0800 (PST)
+ AJvYcCULxYbFBYekwEnTOSZ789TMHgvBlEv9ywvmmvNkunbjwkwcIXqKWdnx+LjwtOK79D+xuK9vmX/paw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2IqoYuGVC7HxuP2Hewu9NSt4Mj65pDKXSAp61ZFolNgancRSi
+ 9KJ4+JpCjIJkFivCWqQoljB84rA5ssvNZ1P5SMlgRs9+NxEZ/Xm0Yq31
+X-Gm-Gg: ATEYQzwVrWIS+8QwmwyIFk7MSgC/DZAMyg0UTbO9Bu5H7E5X1s7fr2rEyInr09eMvGX
+ Jvqhd+VPkfeIMb/8S63EQOULe4Lz8YMZkXhdydNC/visF1w87dNi0TRj8VGehgj8LMqOXTSAana
+ ImlkUQ2AHyuMt9hHxKFlqfLvgkVVjjEyTQ5bWcJ2bgAQJASaxIC4xgRh9MDkpHKDmVZ/CXMNop9
+ wL+Nyb5gHhQWC6muTpVyHnVdLFYM4Lnyg7lKzM8NzFaws0MepU5hYZS4lFpk6IZ1wsiinc0bhW+
+ nblzZgumEddZTcwzAGRok7zUncCpGajBfikp6tlvwOcwQwqAn6hLsXuvQlS3iL6utsWd6gQ4HNk
+ SARToJcZQmRKDO6+kyTfXgVwZZpC+cLMB+ONV32tYBvDp+OqSztUmigjpYXaddHhxm5YUcfQbAB
+ kAndli5eQpoLdU5skRpp4jDkzNKT2FIjq2gscVnmkKKXGJNEfh/FLJJvw+47f+Ew8Oaj7Z9Pf7I
+ 5OCdwjKwsLZAelj0KHyckLyNCCNuco=
+X-Received: by 2002:a05:7300:b10b:b0:2b0:52cc:fe69 with SMTP id
+ 5a478bee46e88-2bd7b9d392fmr6425927eec.5.1772030922041; 
+ Wed, 25 Feb 2026 06:48:42 -0800 (PST)
 Received: from ZEVORN-PC.localdomain ([38.95.120.198])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1276af7ad65sm11817360c88.11.2026.02.25.06.23.07
+ 5a478bee46e88-2bdc412c8aasm1445183eec.25.2026.02.25.06.48.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Feb 2026 06:23:12 -0800 (PST)
-Date: Wed, 25 Feb 2026 22:23:14 +0800
+ Wed, 25 Feb 2026 06:48:41 -0800 (PST)
+Date: Wed, 25 Feb 2026 22:48:45 +0800
 From: Chao Liu <chao.liu.zevorn@gmail.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: Re: [RFC 1/2] tests/qtest: Support for memory access with
- secure/space attr
-Message-ID: <aZ8ABZwi_RVQUEj8@ZEVORN-PC.localdomain>
+Subject: Re: [RFC 2/2] tests/qtest: Add qtest-attrs-test to verify memory
+ access with attr
+Message-ID: <aZ8Jtl8jxBqDq8Rz@ZEVORN-PC.localdomain>
 References: <20260222082529.491384-1-tangtao1634@phytium.com.cn>
- <20260222082529.491384-2-tangtao1634@phytium.com.cn>
+ <20260222082529.491384-3-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260222082529.491384-2-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1243;
- envelope-from=chao.liu.zevorn@gmail.com; helo=mail-dl1-x1243.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+In-Reply-To: <20260222082529.491384-3-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1343;
+ envelope-from=chao.liu.zevorn@gmail.com; helo=mail-dy1-x1343.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
+ TVD_PH_SUBJ_META=2.499 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 25 Feb 2026 10:02:07 -0500
+X-Mailman-Approved-At: Wed, 25 Feb 2026 10:02:10 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,1308 +107,783 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
-
-Some additional comments on top of Peter's review:
-
-On Sun, Feb 22, 2026 at 04:25:28PM +0800, Tao Tang wrote:
-> Introduce `*_secure` and `*_space` commands to the qtest protocol and
-> libqtest API. This allows testing devices that behave differently based
-> on security state (e.g., ARM TrustZone/CCA or x86 SMM).
+On Sun, Feb 22, 2026 at 04:25:29PM +0800, Tao Tang wrote:
+> Add a new test case `qtest-attrs-test` to validate the newly introduced
+> `*_secure` and `*_space` qtest commands.
 > 
-> - `*_secure` commands specify the SECURE parameter (0 or 1) and are
->   compatible with x86 and ARM.
-> - `*_space` commands specify the ARM security space (0-3) and are
->   ARM-specific.
+> The test covers:
+> - ARM (virt machine): Verifies access to all four ARM security spaces
+>   (Secure, NonSecure, Root, Realm).
+> - x86 (pc machine): Verifies access to the SMM AddressSpace.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  system/qtest.c                | 482 ++++++++++++++++++++++++++++++++++
->  tests/qtest/libqtest-single.h | 133 ++++++++++
->  tests/qtest/libqtest.c        | 249 ++++++++++++++++++
->  tests/qtest/libqtest.h        | 281 ++++++++++++++++++++
->  4 files changed, 1145 insertions(+)
+>  tests/qtest/meson.build        |   4 +-
+>  tests/qtest/qtest-attrs-test.c | 669 +++++++++++++++++++++++++++++++++
+>  2 files changed, 672 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/qtest/qtest-attrs-test.c
 > 
-> diff --git a/system/qtest.c b/system/qtest.c
-> index e42b83ce67..2140aaac99 100644
-> --- a/system/qtest.c
-> +++ b/system/qtest.c
-> @@ -217,6 +217,60 @@ static void *qtest_server_send_opaque;
->   * B64_DATA is an arbitrarily long base64 encoded string.
->   * If the sizes do not match, the data will be truncated.
->   *
-> + * Memory access with MemTxAttrs:
-> + * """"""""""""""""""""""""""""""
-> + *
-> + * The following commands allow specifying memory transaction attributes,
-> + * which is useful for testing devices that behave differently based on
-> + * security state (e.g., ARM TrustZone/CCA or System Management Mode in x86).
-> + *
-> + * Two variants are available:
-> + *
-> + * 1. ``*_secure`` commands: Available on x86 and ARM.
-> + * Only specifies the SECURE parameter (0 or 1).
-> + * When SECURE=1, uses the secure AddressSpace. The asidx argument to
-> + * cpu_get_address_space() can only be 1 on x86 (SMM mode, X86ASIdx_SMM) and
-> + * ARM (Secure state, ARMASIdx_S); all other targets always use 0 for the asidx
-> + * parameter. When issuing ``*_secure`` commands, we assert that the secure
-> + * AddressSpace must exist.
-> + *
-> + * 2. ``*_space`` commands: ARM-specific.
-> + * Only specifies the SPACE parameter (0-3).
-> + * SECURE is auto-derived: secure=1 for Secure(0)/Root(2), secure=0 for
-> + * NonSecure(1)/Realm(3), following ARM's arm_space_is_secure() semantics.
-> + *
-> + * Secure variants with .secure attribute (x86/ARM):
-> + * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> + *
-> + * .. code-block:: none
-> + *
-> + *  > writeb_secure ADDR VALUE SECURE
-> + *  < OK
-> + *  > readb_secure ADDR SECURE
-> + *  < OK VALUE
-> + *  > read_secure ADDR SIZE SECURE
-> + *  < OK DATA
-> + *  > write_secure ADDR SIZE DATA SECURE
-> + *  < OK
-> + *  > memset_secure ADDR SIZE VALUE SECURE
-> + *  < OK
-> + *
-> + * Space variants with .space attribute (ARM-specific):
-> + * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> + *
-> + * .. code-block:: none
-> + *
-> + *  > writeb_space ADDR VALUE SPACE
-> + *  < OK
-> + *  > readb_space ADDR SPACE
-> + *  < OK VALUE
-> + *  > read_space ADDR SIZE SPACE
-> + *  < OK DATA
-> + *  > write_space ADDR SIZE DATA SPACE
-> + *  < OK
-> + *  > memset_space ADDR SIZE VALUE SPACE
-> + *  < OK
-> + *
->   * IRQ management:
->   * """""""""""""""
->   *
-> @@ -668,6 +722,434 @@ static void qtest_process_command(CharFrontend *chr, gchar **words)
->              g_free(data);
->          }
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 25fdbc7980..a53c90474a 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -115,6 +115,7 @@ qtests_i386 = \
+>     'drive_del-test',
+>     'cpu-plug-test',
+>     'migration-test',
+> +   'qtest-attrs-test',
+>    ]
 >  
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "writeb_secure") == 0 ||
-> +               strcmp(words[0], "writew_secure") == 0 ||
-> +               strcmp(words[0], "writel_secure") == 0 ||
-> +               strcmp(words[0], "writeq_secure") == 0) {
-> +        /*
-> +         * *_secure commands: x86/ARM compatible.
-> +         * Only specifies SECURE parameter.
-> +         */
-> +        uint64_t addr, value, secure;
-> +        MemTxAttrs attrs;
-MemTxAttrs is declared on the stack without initialization here.
-This struct has many fields (user, memory, debug, requester_id,
-unspecified, etc.) that will all contain garbage values. This
-happens in every single new command handler (all 12 branches).
+>  if dbus_display and config_all_devices.has_key('CONFIG_VGA')
+> @@ -272,7 +273,8 @@ qtests_aarch64 = \
+>    ['arm-cpu-features',
+>     'numa-test',
+>     'boot-serial-test',
+> -   'migration-test']
+> +   'migration-test',
+> +   'qtest-attrs-test']
+>  
+>  qtests_s390x = \
+>    qtests_filter + \
+> diff --git a/tests/qtest/qtest-attrs-test.c b/tests/qtest/qtest-attrs-test.c
+> new file mode 100644
+> index 0000000000..69daced706
+> --- /dev/null
+> +++ b/tests/qtest/qtest-attrs-test.c
+> @@ -0,0 +1,669 @@
+> +/*
+> + * QTest for memory access with transaction attributes
+> + *
+> + * This test verifies if the qtest *_secure and *_space commands work correctly.
+> + *
+> + * Two architectures are covered:
+> + *
+> + * - ARM (virt machine, cortex-a57, secure=on):
+> + *     *_secure uses the ARM Secure AddressSpace (ARMASIdx_S = 1).
+> + *     *_space uses all four ARM security spaces (Secure/NonSecure/Root/Realm).
+> + *     secure=on is required so that the ARM Secure address space is initialised;
+> + *
+> + * - x86 (pc machine, TCG):
+> + *     *_secure uses the SMM AddressSpace (X86ASIdx_SMM = 1).
+> + *     On TCG, cpu_address_space_init() always creates X86ASIdx_SMM as a
+> + *     container that is an alias of all system memory, so no special machine
+> + *     flags are needed -- the SMM AS exists unconditionally under TCG.
+> + *     *_space commands are ARM-specific and have no x86 equivalents.
+> + *
+> + * Copyright (c) 2026 Phytium Technology
+> + *
+> + * Author:
+> + *  Tao Tang <tangtao1634@phytium.com.cn>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest.h"
+> +#include "libqtest-single.h"
+> +#include "hw/arm/arm-security.h"
+> +
+This header is included unconditionally, but the test is compiled
+for both i386 and aarch64 targets.
 
-You need either:
+While it works (the header only defines an enum and inline functions),
+it's a bit odd to pull in ARM-specific definitions for x86 test code.
+
+Not a blocker, but worth noting. :)
+
+> +
+> +/*
+> + * Define test addresses for ARM and x86.
+> + *
+> + * Default RAM size is 128 MiB for all architectures including "virt" machine in
+> + * ARM and "pc" machine in x86.
+> + * We define a 4 KiB size offset above the RAM base, both in ARM and x86, as the
+> + * test address.
+> + */
+> +#define TEST_ADDR_OFFSET    0x1000ULL
+> +#define TEST_ARM_BASE       0x40000000ULL
+> +#define TEST_X86_BASE       0x0ULL
+> +
+> +#define TEST_ADDR_ARM       (TEST_ARM_BASE + TEST_ADDR_OFFSET)
+> +#define TEST_ADDR_X86       (TEST_X86_BASE + TEST_ADDR_OFFSET)
+> +
+> +#define ARM_MACHINE_ARGS "-machine virt,secure=on -cpu cortex-a57"
+> +
+> +/* ARM *_secure tests */
+> +
+> +static void test_arm_writeb_readb_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    /* secure=0: NonSecure access */
+> +    qtest_writeb_secure(qts, TEST_ADDR_ARM, 0x55, 0);
+> +    val = qtest_readb_secure(qts, TEST_ADDR_ARM, 0);
+> +    g_assert_cmpuint(val, ==, 0x55);
+> +
+> +    /* secure=1: Secure access (ARM Secure AS) */
+> +    qtest_writeb_secure(qts, TEST_ADDR_ARM, 0xAA, 1);
+> +    val = qtest_readb_secure(qts, TEST_ADDR_ARM, 1);
+> +    g_assert_cmpuint(val, ==, 0xAA);
+> +
+The test pattern here (and in all other test functions) is:
+write value -> read back -> assert equal. This only verifies that
+the round-trip works, but does NOT verify that different security
+spaces are actually isolated from each other.
+
+A meaningful test would be something like:
 
 ```
-    MemTxAttrs attrs = {};
+    /* Write different values to the same address in different spaces */
+    qtest_writeb_secure(qts, TEST_ADDR_ARM, 0xAA, 1);  /* Secure */
+    qtest_writeb_secure(qts, TEST_ADDR_ARM, 0x55, 0);  /* NonSecure */
+
+    /* Verify Secure space was not clobbered by the NonSecure write */
+    val = qtest_readb_secure(qts, TEST_ADDR_ARM, 1);
+    g_assert_cmpuint(val, ==, 0xAA);
 ```
 
-or build on top of MEMTXATTRS_UNSPECIFIED and then set the
-specific fields you need. As-is this is a real bug that could
-cause unpredictable behavior depending on what garbage ends up
-in the other attribute fields.
+Without this kind of cross-space verification, the tests would
+pass even if the attrs parameter were completely ignored and all
+accesses went to the same address space.
 
-> +        AddressSpace *as;
-> +        int ret;
+> +    qtest_quit(qts);
+> +}
 > +
-> +        g_assert(words[1] && words[2] && words[3]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &value);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[3], NULL, 0, &secure);
-> +        g_assert(ret == 0);
+> +static void test_arm_writew_readw_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint16_t val;
 > +
-> +        attrs.secure = secure & 1;
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
 > +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            /* Secure AddressSpace must be available when issuing secure commands */
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
 > +
-As Peter already pointed out, hardcoding asidx=1 is wrong. But I
-want to add: once you properly initialize attrs, you can unify the
-AS lookup for both *_secure and *_space into a single helper:
+> +    qtest_writew_secure(qts, TEST_ADDR_ARM, 0x1234, 0);
+> +    val = qtest_readw_secure(qts, TEST_ADDR_ARM, 0);
+> +    g_assert_cmpuint(val, ==, 0x1234);
+> +
+> +    qtest_writew_secure(qts, TEST_ADDR_ARM, 0x1234, 1);
+> +    val = qtest_readw_secure(qts, TEST_ADDR_ARM, 1);
+> +    g_assert_cmpuint(val, ==, 0x1234);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_writel_readl_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint32_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_writel_secure(qts, TEST_ADDR_ARM, 0xDEADBEEF, 0);
+> +    val = qtest_readl_secure(qts, TEST_ADDR_ARM, 0);
+> +    g_assert_cmpuint(val, ==, 0xDEADBEEF);
+> +
+> +    qtest_writel_secure(qts, TEST_ADDR_ARM, 0xDEADBEEF, 1);
+> +    val = qtest_readl_secure(qts, TEST_ADDR_ARM, 1);
+> +    g_assert_cmpuint(val, ==, 0xDEADBEEF);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_writeq_readq_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint64_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_writeq_secure(qts, TEST_ADDR_ARM, 0x123456789ABCDEF0ULL, 0);
+> +    val = qtest_readq_secure(qts, TEST_ADDR_ARM, 0);
+> +    g_assert_cmpuint(val, ==, 0x123456789ABCDEF0ULL);
+> +
+> +    qtest_writeq_secure(qts, TEST_ADDR_ARM, 0x123456789ABCDEF0ULL, 1);
+> +    val = qtest_readq_secure(qts, TEST_ADDR_ARM, 1);
+> +    g_assert_cmpuint(val, ==, 0x123456789ABCDEF0ULL);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+These four functions (writeb/writew/writel/writeq) have identical
+logic, differing only in data width. Same for the *_space and x86
+variants. The 669-line test file could be reduced to ~200 lines
+using parameterized tests with g_test_add_data_func, e.g.:
 
 ```
-    static AddressSpace *qtest_get_as_for_attrs(MemTxAttrs attrs)
+    typedef struct {
+        const char *name;
+        int width;  /* 1, 2, 4, 8 */
+        ...
+    } TestParam; /* this is a demo name */
+
+    static void test_arm_read_write_secure(const void *data)
     {
-        int asidx = cpu_asidx_from_attrs(first_cpu, attrs);
-        AddressSpace *as = cpu_get_address_space(first_cpu, asidx);
-        g_assert(as);
-        return as;
+        const TestParam *p = data;
+        /* single function handling all widths */
     }
 ```
 
-This eliminates the duplicated if/else AS lookup in every branch.
+> +static void test_arm_memwrite_memread_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t wbuf[16] = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+> +                         0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF };
+> +    uint8_t rbuf[16];
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+Every single test function calls qtest_init/qtest_quit, which
+means starting and stopping a full QEMU instance for each test.
+For the ARM tests alone that's 14 QEMU startups. This will be
+very slow. Consider using a test fixture (g_test_add) to share
+the QTestState across tests of the same architecture.
 
-Also, the *_secure commands have no architecture guard at all. If
-someone runs `readb_secure ADDR 1` on RISC-V or MIPS (which only
-have one address space), cpu_get_address_space(first_cpu, 1) will
-return NULL and hit the g_assert. You should either add a guard
-similar to what *_space does, or (better) rely on
-cpu_asidx_from_attrs() which will naturally return 0 for
-architectures that don't understand the secure attribute.
+> +    qtest_memwrite_secure(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), 0);
+> +    qtest_memread_secure(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), 0);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_memwrite_secure(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), 1);
+> +    qtest_memread_secure(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), 1);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_memset_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t rbuf[16];
+> +    size_t i;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_memset_secure(qts, TEST_ADDR_ARM, 0x42, sizeof(rbuf), 0);
+> +    qtest_memread_secure(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), 0);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x42);
+> +    }
+> +
+> +    qtest_memset_secure(qts, TEST_ADDR_ARM, 0x42, sizeof(rbuf), 1);
+> +    qtest_memread_secure(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), 1);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x42);
+> +    }
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +/* ARM *_space tests (ARM-specific: Secure/NonSecure/Root/Realm) */
+> +
+> +static void test_arm_writeb_readb_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    /* NonSecure space (secure=0) */
+> +    qtest_writeb_space(qts, TEST_ADDR_ARM, 0x11, ARMSS_NonSecure);
+> +    val = qtest_readb_space(qts, TEST_ADDR_ARM, ARMSS_NonSecure);
+> +    g_assert_cmpuint(val, ==, 0x11);
+> +
+> +    /* Realm space (secure=0) */
+> +    qtest_writeb_space(qts, TEST_ADDR_ARM, 0x33, ARMSS_Realm);
+> +    val = qtest_readb_space(qts, TEST_ADDR_ARM, ARMSS_Realm);
+> +    g_assert_cmpuint(val, ==, 0x33);
+> +
+> +    /* Secure space (secure=1) */
+> +    qtest_writeb_space(qts, TEST_ADDR_ARM, 0x22, ARMSS_Secure);
+> +    val = qtest_readb_space(qts, TEST_ADDR_ARM, ARMSS_Secure);
+> +    g_assert_cmpuint(val, ==, 0x22);
+> +
+> +    /* Root space (secure=1) */
+> +    qtest_writeb_space(qts, TEST_ADDR_ARM, 0x44, ARMSS_Root);
+> +    val = qtest_readb_space(qts, TEST_ADDR_ARM, ARMSS_Root);
+> +    g_assert_cmpuint(val, ==, 0x44);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_writew_readw_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint16_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_writew_space(qts, TEST_ADDR_ARM + 0x10, 0x1122, ARMSS_NonSecure);
+> +    val = qtest_readw_space(qts, TEST_ADDR_ARM + 0x10, ARMSS_NonSecure);
+> +    g_assert_cmpuint(val, ==, 0x1122);
+> +
+> +    qtest_writew_space(qts, TEST_ADDR_ARM + 0x20, 0x3344, ARMSS_Realm);
+> +    val = qtest_readw_space(qts, TEST_ADDR_ARM + 0x20, ARMSS_Realm);
+> +    g_assert_cmpuint(val, ==, 0x3344);
+> +
+> +    qtest_writew_space(qts, TEST_ADDR_ARM + 0x30, 0x5566, ARMSS_Secure);
+> +    val = qtest_readw_space(qts, TEST_ADDR_ARM + 0x30, ARMSS_Secure);
+> +    g_assert_cmpuint(val, ==, 0x5566);
+> +
+> +    qtest_writew_space(qts, TEST_ADDR_ARM + 0x40, 0x7788, ARMSS_Root);
+> +    val = qtest_readw_space(qts, TEST_ADDR_ARM + 0x40, ARMSS_Root);
+> +    g_assert_cmpuint(val, ==, 0x7788);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_writel_readl_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint32_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_writel_space(qts, TEST_ADDR_ARM + 0x50, 0x11223344, ARMSS_NonSecure);
+> +    val = qtest_readl_space(qts, TEST_ADDR_ARM + 0x50, ARMSS_NonSecure);
+> +    g_assert_cmpuint(val, ==, 0x11223344);
+> +
+> +    qtest_writel_space(qts, TEST_ADDR_ARM + 0x60, 0x55667788, ARMSS_Realm);
+> +    val = qtest_readl_space(qts, TEST_ADDR_ARM + 0x60, ARMSS_Realm);
+> +    g_assert_cmpuint(val, ==, 0x55667788);
+> +
+> +    qtest_writel_space(qts, TEST_ADDR_ARM + 0x70, 0x99AABBCC, ARMSS_Secure);
+> +    val = qtest_readl_space(qts, TEST_ADDR_ARM + 0x70, ARMSS_Secure);
+> +    g_assert_cmpuint(val, ==, 0x99AABBCC);
+> +
+> +    qtest_writel_space(qts, TEST_ADDR_ARM + 0x80, 0xDDEEFF00, ARMSS_Root);
+> +    val = qtest_readl_space(qts, TEST_ADDR_ARM + 0x80, ARMSS_Root);
+> +    g_assert_cmpuint(val, ==, 0xDDEEFF00);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_writeq_readq_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint64_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_writeq_space(qts, TEST_ADDR_ARM + 0x90, 0x1122334455667788ULL,
+> +                       ARMSS_NonSecure);
+> +    val = qtest_readq_space(qts, TEST_ADDR_ARM + 0x90, ARMSS_NonSecure);
+> +    g_assert_cmpuint(val, ==, 0x1122334455667788ULL);
+> +
+> +    qtest_writeq_space(qts, TEST_ADDR_ARM + 0xA0, 0x99AABBCCDDEEFF00ULL,
+> +                       ARMSS_Realm);
+> +    val = qtest_readq_space(qts, TEST_ADDR_ARM + 0xA0, ARMSS_Realm);
+> +    g_assert_cmpuint(val, ==, 0x99AABBCCDDEEFF00ULL);
+> +
+> +    qtest_writeq_space(qts, TEST_ADDR_ARM + 0xB0, 0x0123456789ABCDEFULL,
+> +                       ARMSS_Secure);
+> +    val = qtest_readq_space(qts, TEST_ADDR_ARM + 0xB0, ARMSS_Secure);
+> +    g_assert_cmpuint(val, ==, 0x0123456789ABCDEFULL);
+> +
+> +    qtest_writeq_space(qts, TEST_ADDR_ARM + 0xC0, 0xFEDCBA9876543210ULL,
+> +                       ARMSS_Root);
+> +    val = qtest_readq_space(qts, TEST_ADDR_ARM + 0xC0, ARMSS_Root);
+> +    g_assert_cmpuint(val, ==, 0xFEDCBA9876543210ULL);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_memwrite_memread_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t wbuf[8] = { 0xA1, 0xB2, 0xC3, 0xD4, 0xE5, 0xF6, 0x07, 0x18 };
+> +    uint8_t rbuf[8];
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_memwrite_space(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), ARMSS_NonSecure);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_NonSecure);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_memwrite_space(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), ARMSS_Realm);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Realm);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +
+> +    qtest_memwrite_space(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), ARMSS_Secure);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Secure);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_memwrite_space(qts, TEST_ADDR_ARM, wbuf, sizeof(wbuf), ARMSS_Root);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Root);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_arm_memset_space(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t rbuf[8];
+> +    size_t i;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(ARM_MACHINE_ARGS);
+> +
+> +    qtest_memset_space(qts, TEST_ADDR_ARM, 0x99, sizeof(rbuf), ARMSS_NonSecure);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_NonSecure);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x99);
+> +    }
+> +
+> +    qtest_memset_space(qts, TEST_ADDR_ARM, 0x99, sizeof(rbuf), ARMSS_Realm);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Realm);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x99);
+> +    }
+> +
+> +    qtest_memset_space(qts, TEST_ADDR_ARM, 0x99, sizeof(rbuf), ARMSS_Secure);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Secure);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x99);
+> +    }
+> +
+> +    qtest_memset_space(qts, TEST_ADDR_ARM, 0x99, sizeof(rbuf), ARMSS_Root);
+> +    qtest_memread_space(qts, TEST_ADDR_ARM, rbuf, sizeof(rbuf), ARMSS_Root);
+> +
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x99);
+> +    }
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +/* Test new *_secure / *_space API in libqtest-single.h */
+> +static void test_arm_single_secure(void)
+> +{
+> +    uint8_t val;
+> +    uint8_t wbuf[4] = { 0x10, 0x20, 0x30, 0x40 };
+> +    uint8_t rbuf[4];
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qtest_start(ARM_MACHINE_ARGS);
+> +
+> +    writeb_secure(TEST_ADDR_ARM, 0x5A, 0);
+> +    val = readb_secure(TEST_ADDR_ARM, 0);
+> +    g_assert_cmpuint(val, ==, 0x5A);
+> +
+> +    memwrite_secure(TEST_ADDR_ARM + 0x80, wbuf, sizeof(wbuf), 0);
+> +    memread_secure(TEST_ADDR_ARM + 0x80, rbuf, sizeof(rbuf), 0);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_end();
+> +}
+> +
+> +static void test_arm_single_space(void)
+> +{
+> +    uint32_t val;
+> +
+> +    if (!qtest_has_machine("virt")) {
+> +        g_test_skip("virt machine not available");
+> +        return;
+> +    }
+> +
+> +    qtest_start(ARM_MACHINE_ARGS);
+> +
+> +    writel_space(TEST_ADDR_ARM + 0x400, 0xA5A5A5A5, ARMSS_NonSecure);
+> +    val = readl_space(TEST_ADDR_ARM + 0x400, ARMSS_NonSecure);
+> +    g_assert_cmpuint(val, ==, 0xA5A5A5A5);
+> +
+> +    writel_space(TEST_ADDR_ARM + 0x404, 0x1A2B3C4D, ARMSS_Realm);
+> +    val = readl_space(TEST_ADDR_ARM + 0x404, ARMSS_Realm);
+> +    g_assert_cmpuint(val, ==, 0x1A2B3C4D);
+> +
+> +    writel_space(TEST_ADDR_ARM + 0x408, 0x55667788, ARMSS_Secure);
+> +    val = readl_space(TEST_ADDR_ARM + 0x408, ARMSS_Secure);
+> +    g_assert_cmpuint(val, ==, 0x55667788);
+> +
+> +    writel_space(TEST_ADDR_ARM + 0x40C, 0xCCDDEEFF, ARMSS_Root);
+> +    val = readl_space(TEST_ADDR_ARM + 0x40C, ARMSS_Root);
+> +    g_assert_cmpuint(val, ==, 0xCCDDEEFF);
+> +
+> +    qtest_end();
+> +}
+> +
+> +#define X86_MACHINE_ARGS  "-machine pc -accel tcg"
+The x86 tests hardcode `-accel tcg` but only check for machine
+availability, not accelerator availability. If the build doesn't
+include TCG, qtest_init() will fail instead of gracefully
+skipping. You should add a `qtest_has_accel("tcg")` check.
 
-> +        if (words[0][5] == 'b') {
-> +            uint8_t data = value;
-> +            address_space_write(as, addr, attrs, &data, 1);
-> +        } else if (words[0][5] == 'w') {
-> +            uint16_t data = value;
-> +            tswap16s(&data);
-> +            address_space_write(as, addr, attrs, &data, 2);
-> +        } else if (words[0][5] == 'l') {
-> +            uint32_t data = value;
-> +            tswap32s(&data);
-> +            address_space_write(as, addr, attrs, &data, 4);
-> +        } else if (words[0][5] == 'q') {
-> +            uint64_t data = value;
-> +            tswap64s(&data);
-> +            address_space_write(as, addr, attrs, &data, 8);
-> +        }
-This byte-swap + address_space_write block is copy-pasted verbatim
-from the existing writeb/writew/writel/writeq handler, and then
-duplicated again for *_space. Same for the read side. Please
-extract a common helper, e.g.:
-
-```
-    static void qtest_do_typed_write(AddressSpace *as, MemTxAttrs attrs,
-                                     uint64_t addr, uint64_t value,
-                                     char size_char)
-```
-
-This would let the existing non-secure commands share the same
-code path too, which aligns with Peter's suggestion of extending
-the existing commands with optional parameters.
-
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "readb_secure") == 0 ||
-> +               strcmp(words[0], "readw_secure") == 0 ||
-> +               strcmp(words[0], "readl_secure") == 0 ||
-> +               strcmp(words[0], "readq_secure") == 0) {
-> +        uint64_t addr, secure;
-> +        uint64_t value = UINT64_C(-1);
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        g_assert(words[1] && words[2]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &secure);
-> +        g_assert(ret == 0);
-> +
-> +        attrs.secure = secure & 1;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        if (words[0][4] == 'b') {
-> +            uint8_t data;
-> +            address_space_read(as, addr, attrs, &data, 1);
-> +            value = data;
-> +        } else if (words[0][4] == 'w') {
-> +            uint16_t data;
-> +            address_space_read(as, addr, attrs, &data, 2);
-> +            value = tswap16(data);
-> +        } else if (words[0][4] == 'l') {
-> +            uint32_t data;
-> +            address_space_read(as, addr, attrs, &data, 4);
-> +            value = tswap32(data);
-> +        } else if (words[0][4] == 'q') {
-> +            address_space_read(as, addr, attrs, &value, 8);
-> +            tswap64s(&value);
-> +        }
-> +        qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-> +    } else if (strcmp(words[0], "read_secure") == 0) {
-> +        g_autoptr(GString) enc = NULL;
-> +        uint64_t addr, len, secure;
-> +        uint8_t *data;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        g_assert(words[1] && words[2] && words[3]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[3], NULL, 0, &secure);
-> +        g_assert(ret == 0);
-> +        g_assert(len);
-> +
-> +        attrs.secure = secure & 1;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        data = g_malloc(len);
-> +        address_space_read(as, addr, attrs, data, len);
-> +
-> +        enc = qemu_hexdump_line(NULL, data, len, 0, 0);
-> +        qtest_sendf(chr, "OK 0x%s\n", enc->str);
-> +        g_free(data);
-> +    } else if (strcmp(words[0], "write_secure") == 0) {
-> +        uint64_t addr, len, i, secure;
-> +        uint8_t *data;
-> +        size_t data_len;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        g_assert(words[1] && words[2] && words[3] && words[4]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[4], NULL, 0, &secure);
-> +        g_assert(ret == 0);
-> +
-> +        data_len = strlen(words[3]);
-> +        if (data_len < 3) {
-> +            qtest_send(chr, "ERR invalid argument size\n");
-> +            return;
-> +        }
-> +
-> +        attrs.secure = secure & 1;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        data = g_malloc(len);
-> +        for (i = 0; i < len; i++) {
-> +            if ((i * 2 + 4) <= data_len) {
-> +                data[i] = hex2nib(words[3][i * 2 + 2]) << 4;
-> +                data[i] |= hex2nib(words[3][i * 2 + 3]);
-> +            } else {
-> +                data[i] = 0;
-> +            }
-> +        }
-> +        address_space_write(as, addr, attrs, data, len);
-> +        g_free(data);
-> +
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "memset_secure") == 0) {
-> +        uint64_t addr, len, secure;
-> +        uint8_t *data;
-> +        unsigned long pattern;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        g_assert(words[1] && words[2] && words[3] && words[4]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtoul(words[3], NULL, 0, &pattern);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[4], NULL, 0, &secure);
-> +        g_assert(ret == 0);
-> +
-> +        attrs.secure = secure & 1;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        if (len) {
-> +            data = g_malloc(len);
-> +            memset(data, pattern, len);
-> +            address_space_write(as, addr, attrs, data, len);
-> +            g_free(data);
-> +        }
-> +
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "writeb_space") == 0 ||
-> +               strcmp(words[0], "writew_space") == 0 ||
-> +               strcmp(words[0], "writel_space") == 0 ||
-> +               strcmp(words[0], "writeq_space") == 0) {
-> +        /* *_space commands: ARM-specific. */
-> +        uint64_t addr, value, space;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        if (!target_arm() && !target_aarch64()) {
-> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
-> +            return;
-> +        }
-> +
-> +        g_assert(words[1] && words[2] && words[3]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &value);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[3], NULL, 0, &space);
-> +        g_assert(ret == 0);
-> +
-> +        attrs.space = space & 3;
-> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        if (words[0][5] == 'b') {
-> +            uint8_t data = value;
-> +            address_space_write(as, addr, attrs, &data, 1);
-> +        } else if (words[0][5] == 'w') {
-> +            uint16_t data = value;
-> +            tswap16s(&data);
-> +            address_space_write(as, addr, attrs, &data, 2);
-> +        } else if (words[0][5] == 'l') {
-> +            uint32_t data = value;
-> +            tswap32s(&data);
-> +            address_space_write(as, addr, attrs, &data, 4);
-> +        } else if (words[0][5] == 'q') {
-> +            uint64_t data = value;
-> +            tswap64s(&data);
-> +            address_space_write(as, addr, attrs, &data, 8);
-> +        }
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "readb_space") == 0 ||
-> +               strcmp(words[0], "readw_space") == 0 ||
-> +               strcmp(words[0], "readl_space") == 0 ||
-> +               strcmp(words[0], "readq_space") == 0) {
-> +        uint64_t addr, space;
-> +        uint64_t value = UINT64_C(-1);
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        if (!target_arm() && !target_aarch64()) {
-> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
-> +            return;
-> +        }
-> +
-> +        g_assert(words[1] && words[2]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &space);
-> +        g_assert(ret == 0);
-> +
-> +        attrs.space = space & 3;
-> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
-> +
-Two issues here:
-
-1. If the user passes space=5, it gets silently truncated to 1
-   (NonSecure) via `& 3`. You should validate space <= 3 before
-   masking and return an error for out-of-range values.
-
-2. As Peter noted, you should use arm_space_is_secure() from
-   include/hw/arm/arm-security.h instead of open-coding the
-   mapping. That header is safe to include in compiled-once code.
-
-More broadly, the *_space commands are defined as "ARM-specific"
-with hardcoded numeric values 0-3 mapping to ARM security spaces.
-But other architectures may have analogous concepts in the future
-(e.g., RISC-V has Machine/Supervisor/User privilege levels and
-PMP-based memory isolation). Baking ARM's specific space encoding
-into the qtest protocol makes it harder to extend later.
-
-This is another reason Peter's suggestion of using optional named
-parameters on existing commands is a better design:
-
-    readb ADDR space=realm     # ARM
-    readb ADDR secure          # generic secure bit
-
-Named parameters are self-documenting, architecture-neutral at the
-protocol level, and trivially extensible for new architectures
-without inventing new command families each time.
+Similarly, the ARM tests don't verify that `-cpu cortex-a57` is
+available or that `secure=on` is supported for the virt machine.
 
 Thanks,
 Chao
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
 > +
-> +        if (words[0][4] == 'b') {
-> +            uint8_t data;
-> +            address_space_read(as, addr, attrs, &data, 1);
-> +            value = data;
-> +        } else if (words[0][4] == 'w') {
-> +            uint16_t data;
-> +            address_space_read(as, addr, attrs, &data, 2);
-> +            value = tswap16(data);
-> +        } else if (words[0][4] == 'l') {
-> +            uint32_t data;
-> +            address_space_read(as, addr, attrs, &data, 4);
-> +            value = tswap32(data);
-> +        } else if (words[0][4] == 'q') {
-> +            address_space_read(as, addr, attrs, &value, 8);
-> +            tswap64s(&value);
-> +        }
-> +        qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
-> +    } else if (strcmp(words[0], "read_space") == 0) {
-> +        g_autoptr(GString) enc = NULL;
-> +        uint64_t addr, len, space;
-> +        uint8_t *data;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        if (!target_arm() && !target_aarch64()) {
-> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
-> +            return;
-> +        }
-> +
-> +        g_assert(words[1] && words[2] && words[3]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[3], NULL, 0, &space);
-> +        g_assert(ret == 0);
-> +        g_assert(len);
-> +
-> +        attrs.space = space & 3;
-> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        data = g_malloc(len);
-> +        address_space_read(as, addr, attrs, data, len);
-> +
-> +        enc = qemu_hexdump_line(NULL, data, len, 0, 0);
-> +        qtest_sendf(chr, "OK 0x%s\n", enc->str);
-> +        g_free(data);
-> +    } else if (strcmp(words[0], "write_space") == 0) {
-> +        uint64_t addr, len, i, space;
-> +        uint8_t *data;
-> +        size_t data_len;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        if (!target_arm() && !target_aarch64()) {
-> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
-> +            return;
-> +        }
-> +
-> +        g_assert(words[1] && words[2] && words[3] && words[4]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[4], NULL, 0, &space);
-> +        g_assert(ret == 0);
-> +
-> +        data_len = strlen(words[3]);
-> +        if (data_len < 3) {
-> +            qtest_send(chr, "ERR invalid argument size\n");
-> +            return;
-> +        }
-> +
-> +        attrs.space = space & 3;
-> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        data = g_malloc(len);
-> +        for (i = 0; i < len; i++) {
-> +            if ((i * 2 + 4) <= data_len) {
-> +                data[i] = hex2nib(words[3][i * 2 + 2]) << 4;
-> +                data[i] |= hex2nib(words[3][i * 2 + 3]);
-> +            } else {
-> +                data[i] = 0;
-> +            }
-> +        }
-> +        address_space_write(as, addr, attrs, data, len);
-> +        g_free(data);
-> +
-> +        qtest_send(chr, "OK\n");
-> +    } else if (strcmp(words[0], "memset_space") == 0) {
-> +        uint64_t addr, len, space;
-> +        uint8_t *data;
-> +        unsigned long pattern;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
-> +        int ret;
-> +
-> +        if (!target_arm() && !target_aarch64()) {
-> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
-> +            return;
-> +        }
-> +
-> +        g_assert(words[1] && words[2] && words[3] && words[4]);
-> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtoul(words[3], NULL, 0, &pattern);
-> +        g_assert(ret == 0);
-> +        ret = qemu_strtou64(words[4], NULL, 0, &space);
-> +        g_assert(ret == 0);
-> +
-> +        attrs.space = space & 3;
-> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
-> +
-> +        if (attrs.secure) {
-> +            as = cpu_get_address_space(first_cpu, 1);
-> +            g_assert(as);
-> +        } else {
-> +            as = first_cpu->as;
-> +        }
-> +
-> +        if (len) {
-> +            data = g_malloc(len);
-> +            memset(data, pattern, len);
-> +            address_space_write(as, addr, attrs, data, len);
-> +            g_free(data);
-> +        }
-> +
->          qtest_send(chr, "OK\n");
->      }  else if (strcmp(words[0], "b64write") == 0) {
->          uint64_t addr, len;
-> diff --git a/tests/qtest/libqtest-single.h b/tests/qtest/libqtest-single.h
-> index 851724cbcb..d7c89154e3 100644
-> --- a/tests/qtest/libqtest-single.h
-> +++ b/tests/qtest/libqtest-single.h
-> @@ -291,6 +291,139 @@ static inline void memwrite(uint64_t addr, const void *data, size_t size)
->      qtest_memwrite(global_qtest, addr, data, size);
->  }
->  
-> +/*
-> + * *_secure commands: only available with x86/ARM.
-> + */
-> +
-> +static inline void writeb_secure(uint64_t addr, uint8_t value,
-> +                                 unsigned secure)
+> +/* x86 *_secure tests */
+> +static void test_x86_writeb_readb_secure(void)
 > +{
-> +    qtest_writeb_secure(global_qtest, addr, value, secure);
-> +}
+> +    QTestState *qts;
+> +    uint8_t val;
 > +
-> +static inline void writew_secure(uint64_t addr, uint16_t value,
-> +                                 unsigned secure)
-> +{
-> +    qtest_writew_secure(global_qtest, addr, value, secure);
-> +}
-> +
-> +static inline void writel_secure(uint64_t addr, uint32_t value,
-> +                                 unsigned secure)
-> +{
-> +    qtest_writel_secure(global_qtest, addr, value, secure);
-> +}
-> +
-> +static inline void writeq_secure(uint64_t addr, uint64_t value,
-> +                                 unsigned secure)
-> +{
-> +    qtest_writeq_secure(global_qtest, addr, value, secure);
-> +}
-> +
-> +static inline uint8_t readb_secure(uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_readb_secure(global_qtest, addr, secure);
-> +}
-> +
-> +static inline uint16_t readw_secure(uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_readw_secure(global_qtest, addr, secure);
-> +}
-> +
-> +static inline uint32_t readl_secure(uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_readl_secure(global_qtest, addr, secure);
-> +}
-> +
-> +static inline uint64_t readq_secure(uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_readq_secure(global_qtest, addr, secure);
-> +}
-> +
-> +static inline void memread_secure(uint64_t addr, void *data, size_t size,
-> +                                  unsigned secure)
-> +{
-> +    qtest_memread_secure(global_qtest, addr, data, size, secure);
-> +}
-> +
-> +static inline void memwrite_secure(uint64_t addr, const void *data,
-> +                                   size_t size, unsigned secure)
-> +{
-> +    qtest_memwrite_secure(global_qtest, addr, data, size, secure);
-> +}
-> +
-> +static inline void memset_secure(uint64_t addr, uint8_t pattern,
-> +                                 size_t size, unsigned secure)
-> +{
-> +    qtest_memset_secure(global_qtest, addr, pattern, size, secure);
-> +}
-> +
-> +/**
-> + * *_space commands: ARM-specific.
-> + * Only specifies SPACE parameter, SECURE is auto-derived using
-> + * arm_space_is_secure-like semantics.
-> + */
-> +static inline void writeb_space(uint64_t addr, uint8_t value,
-> +                                unsigned space)
-> +{
-> +    qtest_writeb_space(global_qtest, addr, value, space);
-> +}
-> +
-> +static inline void writew_space(uint64_t addr, uint16_t value,
-> +                                unsigned space)
-> +{
-> +    qtest_writew_space(global_qtest, addr, value, space);
-> +}
-> +
-> +static inline void writel_space(uint64_t addr, uint32_t value,
-> +                                unsigned space)
-> +{
-> +    qtest_writel_space(global_qtest, addr, value, space);
-> +}
-> +
-> +static inline void writeq_space(uint64_t addr, uint64_t value,
-> +                                unsigned space)
-> +{
-> +    qtest_writeq_space(global_qtest, addr, value, space);
-> +}
-> +
-> +static inline uint8_t readb_space(uint64_t addr, unsigned space)
-> +{
-> +    return qtest_readb_space(global_qtest, addr, space);
-> +}
-> +
-> +static inline uint16_t readw_space(uint64_t addr, unsigned space)
-> +{
-> +    return qtest_readw_space(global_qtest, addr, space);
-> +}
-> +
-> +static inline uint32_t readl_space(uint64_t addr, unsigned space)
-> +{
-> +    return qtest_readl_space(global_qtest, addr, space);
-> +}
-> +
-> +static inline uint64_t readq_space(uint64_t addr, unsigned space)
-> +{
-> +    return qtest_readq_space(global_qtest, addr, space);
-> +}
-> +
-> +static inline void memread_space(uint64_t addr, void *data, size_t size,
-> +                                 unsigned space)
-> +{
-> +    qtest_memread_space(global_qtest, addr, data, size, space);
-> +}
-> +
-> +static inline void memwrite_space(uint64_t addr, const void *data,
-> +                                  size_t size, unsigned space)
-> +{
-> +    qtest_memwrite_space(global_qtest, addr, data, size, space);
-> +}
-> +
-> +static inline void memset_space(uint64_t addr, uint8_t pattern,
-> +                                size_t size, unsigned space)
-> +{
-> +    qtest_memset_space(global_qtest, addr, pattern, size, space);
-> +}
-> +
->  /**
->   * clock_step_next:
->   *
-> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-> index 794d870085..308428829b 100644
-> --- a/tests/qtest/libqtest.c
-> +++ b/tests/qtest/libqtest.c
-> @@ -1447,6 +1447,255 @@ void qtest_memset(QTestState *s, uint64_t addr, uint8_t pattern, size_t size)
->      qtest_rsp(s);
->  }
->  
-> +/**
-> + * qtest_*_secure commands: only available with x86/ARM.
-> + */
-> +static void qtest_write_secure(QTestState *s, const char *cmd, uint64_t addr,
-> +                               uint64_t value, unsigned secure)
-> +{
-> +    qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 " %u\n",
-> +                cmd, addr, value, secure);
-> +    qtest_rsp(s);
-> +}
-> +
-> +static uint64_t qtest_read_secure(QTestState *s, const char *cmd,
-> +                                  uint64_t addr, unsigned secure)
-> +{
-> +    gchar **args;
-> +    int ret;
-> +    uint64_t value;
-> +
-> +    qtest_sendf(s, "%s 0x%" PRIx64 " %u\n", cmd, addr, secure);
-> +    args = qtest_rsp_args(s, 2);
-> +    ret = qemu_strtou64(args[1], NULL, 0, &value);
-> +    g_assert(!ret);
-> +    g_strfreev(args);
-> +
-> +    return value;
-> +}
-> +
-> +void qtest_writeb_secure(QTestState *s, uint64_t addr, uint8_t value,
-> +                         unsigned secure)
-> +{
-> +    qtest_write_secure(s, "writeb_secure", addr, value, secure);
-> +}
-> +
-> +void qtest_writew_secure(QTestState *s, uint64_t addr, uint16_t value,
-> +                         unsigned secure)
-> +{
-> +    qtest_write_secure(s, "writew_secure", addr, value, secure);
-> +}
-> +
-> +void qtest_writel_secure(QTestState *s, uint64_t addr, uint32_t value,
-> +                         unsigned secure)
-> +{
-> +    qtest_write_secure(s, "writel_secure", addr, value, secure);
-> +}
-> +
-> +void qtest_writeq_secure(QTestState *s, uint64_t addr, uint64_t value,
-> +                         unsigned secure)
-> +{
-> +    qtest_write_secure(s, "writeq_secure", addr, value, secure);
-> +}
-> +
-> +uint8_t qtest_readb_secure(QTestState *s, uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_read_secure(s, "readb_secure", addr, secure);
-> +}
-> +
-> +uint16_t qtest_readw_secure(QTestState *s, uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_read_secure(s, "readw_secure", addr, secure);
-> +}
-> +
-> +uint32_t qtest_readl_secure(QTestState *s, uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_read_secure(s, "readl_secure", addr, secure);
-> +}
-> +
-> +uint64_t qtest_readq_secure(QTestState *s, uint64_t addr, unsigned secure)
-> +{
-> +    return qtest_read_secure(s, "readq_secure", addr, secure);
-> +}
-> +
-> +void qtest_memread_secure(QTestState *s, uint64_t addr, void *data,
-> +                          size_t size, unsigned secure)
-> +{
-> +    uint8_t *ptr = data;
-> +    gchar **args;
-> +    size_t i;
-> +
-> +    if (!size) {
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
 > +        return;
 > +    }
 > +
-> +    qtest_sendf(s, "read_secure 0x%" PRIx64 " 0x%zx %u\n", addr, size, secure);
-> +    args = qtest_rsp_args(s, 2);
+> +    qts = qtest_init(X86_MACHINE_ARGS);
 > +
-> +    for (i = 0; i < size; i++) {
-> +        ptr[i] = hex2nib(args[1][2 + (i * 2)]) << 4;
-> +        ptr[i] |= hex2nib(args[1][2 + (i * 2) + 1]);
-> +    }
+> +    /* secure=0: normal memory access (X86ASIdx_MEM) */
+> +    qtest_writeb_secure(qts, TEST_ADDR_X86, 0x55, 0);
+> +    val = qtest_readb_secure(qts, TEST_ADDR_X86, 0);
+> +    g_assert_cmpuint(val, ==, 0x55);
 > +
-> +    g_strfreev(args);
+> +    /* secure=1: SMM address space (X86ASIdx_SMM) */
+> +    qtest_writeb_secure(qts, TEST_ADDR_X86, 0xAA, 1);
+> +    val = qtest_readb_secure(qts, TEST_ADDR_X86, 1);
+> +    g_assert_cmpuint(val, ==, 0xAA);
+> +
+> +    qtest_quit(qts);
 > +}
 > +
-> +void qtest_memwrite_secure(QTestState *s, uint64_t addr, const void *data,
-> +                           size_t size, unsigned secure)
+> +static void test_x86_writew_readw_secure(void)
 > +{
-> +    const uint8_t *ptr = data;
-> +    size_t i;
-> +    char *enc;
+> +    QTestState *qts;
+> +    uint16_t val;
 > +
-> +    if (!size) {
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
 > +        return;
 > +    }
 > +
-> +    enc = g_malloc(2 * size + 1);
+> +    qts = qtest_init(X86_MACHINE_ARGS);
 > +
-> +    for (i = 0; i < size; i++) {
-> +        sprintf(&enc[i * 2], "%02x", ptr[i]);
-> +    }
+> +    qtest_writew_secure(qts, TEST_ADDR_X86, 0x1234, 0);
+> +    val = qtest_readw_secure(qts, TEST_ADDR_X86, 0);
+> +    g_assert_cmpuint(val, ==, 0x1234);
 > +
-> +    qtest_sendf(s, "write_secure 0x%" PRIx64 " 0x%zx 0x%s %u\n",
-> +                addr, size, enc, secure);
-> +    qtest_rsp(s);
-> +    g_free(enc);
+> +    qtest_writew_secure(qts, TEST_ADDR_X86, 0x5678, 1);
+> +    val = qtest_readw_secure(qts, TEST_ADDR_X86, 1);
+> +    g_assert_cmpuint(val, ==, 0x5678);
+> +
+> +    qtest_quit(qts);
 > +}
 > +
-> +void qtest_memset_secure(QTestState *s, uint64_t addr, uint8_t pattern,
-> +                         size_t size, unsigned secure)
+> +static void test_x86_writel_readl_secure(void)
 > +{
-> +    qtest_sendf(s, "memset_secure 0x%" PRIx64 " 0x%zx 0x%02x %u\n",
-> +                addr, size, pattern, secure);
-> +    qtest_rsp(s);
-> +}
+> +    QTestState *qts;
+> +    uint32_t val;
 > +
-> +/**
-> + * *_space commands: ARM-specific
-> + */
-> +
-> +static void qtest_write_space(QTestState *s, const char *cmd,
-> +                              uint64_t addr, uint64_t value, unsigned space)
-> +{
-> +    qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 " %u\n",
-> +                cmd, addr, value, space);
-> +    qtest_rsp(s);
-> +}
-> +
-> +static uint64_t qtest_read_space(QTestState *s, const char *cmd,
-> +                                 uint64_t addr, unsigned space)
-> +{
-> +    gchar **args;
-> +    int ret;
-> +    uint64_t value;
-> +
-> +    qtest_sendf(s, "%s 0x%" PRIx64 " %u\n", cmd, addr, space);
-> +    args = qtest_rsp_args(s, 2);
-> +    ret = qemu_strtou64(args[1], NULL, 0, &value);
-> +    g_assert(!ret);
-> +    g_strfreev(args);
-> +
-> +    return value;
-> +}
-> +
-> +void qtest_writeb_space(QTestState *s, uint64_t addr, uint8_t value,
-> +                        unsigned space)
-> +{
-> +    qtest_write_space(s, "writeb_space", addr, value, space);
-> +}
-> +
-> +void qtest_writew_space(QTestState *s, uint64_t addr, uint16_t value,
-> +                        unsigned space)
-> +{
-> +    qtest_write_space(s, "writew_space", addr, value, space);
-> +}
-> +
-> +void qtest_writel_space(QTestState *s, uint64_t addr, uint32_t value,
-> +                        unsigned space)
-> +{
-> +    qtest_write_space(s, "writel_space", addr, value, space);
-> +}
-> +
-> +void qtest_writeq_space(QTestState *s, uint64_t addr, uint64_t value,
-> +                        unsigned space)
-> +{
-> +    qtest_write_space(s, "writeq_space", addr, value, space);
-> +}
-> +
-> +uint8_t qtest_readb_space(QTestState *s, uint64_t addr, unsigned space)
-> +{
-> +    return qtest_read_space(s, "readb_space", addr, space);
-> +}
-> +
-> +uint16_t qtest_readw_space(QTestState *s, uint64_t addr, unsigned space)
-> +{
-> +    return qtest_read_space(s, "readw_space", addr, space);
-> +}
-> +
-> +uint32_t qtest_readl_space(QTestState *s, uint64_t addr, unsigned space)
-> +{
-> +    return qtest_read_space(s, "readl_space", addr, space);
-> +}
-> +
-> +uint64_t qtest_readq_space(QTestState *s, uint64_t addr, unsigned space)
-> +{
-> +    return qtest_read_space(s, "readq_space", addr, space);
-> +}
-> +
-> +void qtest_memread_space(QTestState *s, uint64_t addr, void *data,
-> +                         size_t size, unsigned space)
-> +{
-> +    uint8_t *ptr = data;
-> +    gchar **args;
-> +    size_t i;
-> +
-> +    if (!size) {
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
 > +        return;
 > +    }
 > +
-> +    qtest_sendf(s, "read_space 0x%" PRIx64 " 0x%zx %u\n", addr, size, space);
-> +    args = qtest_rsp_args(s, 2);
+> +    qts = qtest_init(X86_MACHINE_ARGS);
 > +
-> +    for (i = 0; i < size; i++) {
-> +        ptr[i] = hex2nib(args[1][2 + (i * 2)]) << 4;
-> +        ptr[i] |= hex2nib(args[1][2 + (i * 2) + 1]);
-> +    }
+> +    qtest_writel_secure(qts, TEST_ADDR_X86, 0xDEADBEEF, 0);
+> +    val = qtest_readl_secure(qts, TEST_ADDR_X86, 0);
+> +    g_assert_cmpuint(val, ==, 0xDEADBEEF);
 > +
-> +    g_strfreev(args);
+> +    qtest_writel_secure(qts, TEST_ADDR_X86, 0xCAFEBABE, 1);
+> +    val = qtest_readl_secure(qts, TEST_ADDR_X86, 1);
+> +    g_assert_cmpuint(val, ==, 0xCAFEBABE);
+> +
+> +    qtest_quit(qts);
 > +}
 > +
-> +void qtest_memwrite_space(QTestState *s, uint64_t addr, const void *data,
-> +                          size_t size, unsigned space)
+> +static void test_x86_writeq_readq_secure(void)
 > +{
-> +    const uint8_t *ptr = data;
-> +    size_t i;
-> +    char *enc;
+> +    QTestState *qts;
+> +    uint64_t val;
 > +
-> +    if (!size) {
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
 > +        return;
 > +    }
 > +
-> +    enc = g_malloc(2 * size + 1);
+> +    qts = qtest_init(X86_MACHINE_ARGS);
 > +
-> +    for (i = 0; i < size; i++) {
-> +        sprintf(&enc[i * 2], "%02x", ptr[i]);
+> +    qtest_writeq_secure(qts, TEST_ADDR_X86, 0x123456789ABCDEF0ULL, 0);
+> +    val = qtest_readq_secure(qts, TEST_ADDR_X86, 0);
+> +    g_assert_cmpuint(val, ==, 0x123456789ABCDEF0ULL);
+> +
+> +    qtest_writeq_secure(qts, TEST_ADDR_X86, 0xFEDCBA9876543210ULL, 1);
+> +    val = qtest_readq_secure(qts, TEST_ADDR_X86, 1);
+> +    g_assert_cmpuint(val, ==, 0xFEDCBA9876543210ULL);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_x86_memwrite_memread_secure(void)
+> +{
+> +    QTestState *qts;
+> +    uint8_t wbuf[16] = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+> +                         0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF };
+> +    uint8_t rbuf[16];
+> +
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
+> +        return;
 > +    }
 > +
-> +    qtest_sendf(s, "write_space 0x%" PRIx64 " 0x%zx 0x%s %u\n",
-> +                addr, size, enc, space);
-> +    qtest_rsp(s);
-> +    g_free(enc);
+> +    qts = qtest_init(X86_MACHINE_ARGS);
+> +
+> +    qtest_memwrite_secure(qts, TEST_ADDR_X86, wbuf, sizeof(wbuf), 0);
+> +    qtest_memread_secure(qts, TEST_ADDR_X86, rbuf, sizeof(rbuf), 0);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_memwrite_secure(qts, TEST_ADDR_X86 + 0x100, wbuf, sizeof(wbuf), 1);
+> +    qtest_memread_secure(qts, TEST_ADDR_X86 + 0x100, rbuf, sizeof(rbuf), 1);
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_quit(qts);
 > +}
 > +
-> +void qtest_memset_space(QTestState *s, uint64_t addr, uint8_t pattern,
-> +                        size_t size, unsigned space)
+> +static void test_x86_memset_secure(void)
 > +{
-> +    qtest_sendf(s, "memset_space 0x%" PRIx64 " 0x%zx 0x%02x %u\n",
-> +                addr, size, pattern, space);
-> +    qtest_rsp(s);
+> +    QTestState *qts;
+> +    uint8_t rbuf[16];
+> +    size_t i;
+> +
+> +    if (!qtest_has_machine("pc")) {
+> +        g_test_skip("pc machine not available");
+> +        return;
+> +    }
+> +
+> +    qts = qtest_init(X86_MACHINE_ARGS);
+> +
+> +    qtest_memset_secure(qts, TEST_ADDR_X86, 0x42, sizeof(rbuf), 0);
+> +    qtest_memread_secure(qts, TEST_ADDR_X86, rbuf, sizeof(rbuf), 0);
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0x42);
+> +    }
+> +
+> +    qtest_memset_secure(qts, TEST_ADDR_X86 + 0x100, 0xBE, sizeof(rbuf), 1);
+> +    qtest_memread_secure(qts, TEST_ADDR_X86 + 0x100, rbuf, sizeof(rbuf), 1);
+> +    for (i = 0; i < sizeof(rbuf); i++) {
+> +        g_assert_cmpuint(rbuf[i], ==, 0xBE);
+> +    }
+> +
+> +    qtest_quit(qts);
 > +}
 > +
->  QDict *qtest_vqmp_assert_failure_ref(QTestState *qts,
->                                       const char *fmt, va_list args)
->  {
-> diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-> index 9c118c89ca..57d6be7ca8 100644
-> --- a/tests/qtest/libqtest.h
-> +++ b/tests/qtest/libqtest.h
-> @@ -705,6 +705,287 @@ void qtest_bufwrite(QTestState *s, uint64_t addr,
->   */
->  void qtest_memset(QTestState *s, uint64_t addr, uint8_t patt, size_t size);
->  
-> +/*
-> + * qtest_*_secure commands: only available with x86/ARM.
-> + */
+> +int main(int argc, char **argv)
+> +{
+> +    g_test_init(&argc, &argv, NULL);
 > +
-> +/**
-> + * qtest_writeb_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Writes an 8-bit value to memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_writeb_secure(QTestState *s, uint64_t addr, uint8_t value,
-> +                         unsigned secure);
+> +    /* ARM *_secure tests (secure/non-secure, requires secure=on) */
+> +    qtest_add_func("/qtest/arm/secure/writeb_readb",
+> +                   test_arm_writeb_readb_secure);
+> +    qtest_add_func("/qtest/arm/secure/writew_readw",
+> +                   test_arm_writew_readw_secure);
+> +    qtest_add_func("/qtest/arm/secure/writel_readl",
+> +                   test_arm_writel_readl_secure);
+> +    qtest_add_func("/qtest/arm/secure/writeq_readq",
+> +                   test_arm_writeq_readq_secure);
+> +    qtest_add_func("/qtest/arm/secure/memwrite_memread",
+> +                   test_arm_memwrite_memread_secure);
+> +    qtest_add_func("/qtest/arm/secure/memset",
+> +                   test_arm_memset_secure);
 > +
-> +/**
-> + * qtest_writew_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Writes a 16-bit value to memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_writew_secure(QTestState *s, uint64_t addr, uint16_t value,
-> +                         unsigned secure);
+> +    /* ARM *_space tests (Secure/NonSecure/Root/Realm, requires secure=on) */
+> +    qtest_add_func("/qtest/arm/space/writeb_readb",
+> +                   test_arm_writeb_readb_space);
+> +    qtest_add_func("/qtest/arm/space/writew_readw",
+> +                   test_arm_writew_readw_space);
+> +    qtest_add_func("/qtest/arm/space/writel_readl",
+> +                   test_arm_writel_readl_space);
+> +    qtest_add_func("/qtest/arm/space/writeq_readq",
+> +                   test_arm_writeq_readq_space);
+> +    qtest_add_func("/qtest/arm/space/memwrite_memread",
+> +                   test_arm_memwrite_memread_space);
+> +    qtest_add_func("/qtest/arm/space/memset",
+> +                   test_arm_memset_space);
+> +    qtest_add_func("/qtest/arm/secure/single_shortcuts",
+> +                   test_arm_single_secure);
+> +    qtest_add_func("/qtest/arm/space/single_shortcuts",
+> +                   test_arm_single_space);
 > +
-> +/**
-> + * qtest_writel_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Writes a 32-bit value to memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_writel_secure(QTestState *s, uint64_t addr, uint32_t value,
-> +                         unsigned secure);
+> +    /* x86 *_secure tests (SMM address space, X86ASIdx_SMM = 1) */
+> +    qtest_add_func("/qtest/x86/secure/writeb_readb",
+> +                   test_x86_writeb_readb_secure);
+> +    qtest_add_func("/qtest/x86/secure/writew_readw",
+> +                   test_x86_writew_readw_secure);
+> +    qtest_add_func("/qtest/x86/secure/writel_readl",
+> +                   test_x86_writel_readl_secure);
+> +    qtest_add_func("/qtest/x86/secure/writeq_readq",
+> +                   test_x86_writeq_readq_secure);
+> +    qtest_add_func("/qtest/x86/secure/memwrite_memread",
+> +                   test_x86_memwrite_memread_secure);
+> +    qtest_add_func("/qtest/x86/secure/memset",
+> +                   test_x86_memset_secure);
 > +
-> +/**
-> + * qtest_writeq_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Writes a 64-bit value to memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_writeq_secure(QTestState *s, uint64_t addr, uint64_t value,
-> +                         unsigned secure);
-> +
-> +/**
-> + * qtest_readb_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Reads an 8-bit value from memory with secure attribute (x86/ARM).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint8_t qtest_readb_secure(QTestState *s, uint64_t addr, unsigned secure);
-> +
-> +/**
-> + * qtest_readw_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Reads a 16-bit value from memory with secure attribute (x86/ARM).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint16_t qtest_readw_secure(QTestState *s, uint64_t addr, unsigned secure);
-> +
-> +/**
-> + * qtest_readl_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Reads a 32-bit value from memory with secure attribute (x86/ARM).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint32_t qtest_readl_secure(QTestState *s, uint64_t addr, unsigned secure);
-> +
-> +/**
-> + * qtest_readq_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Reads a 64-bit value from memory with secure attribute (x86/ARM).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint64_t qtest_readq_secure(QTestState *s, uint64_t addr, unsigned secure);
-> +
-> +/**
-> + * qtest_memread_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @data: Pointer to where memory contents will be stored.
-> + * @size: Number of bytes to read.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Read guest memory into a buffer with secure attribute (x86/ARM).
-> + */
-> +void qtest_memread_secure(QTestState *s, uint64_t addr, void *data,
-> +                          size_t size, unsigned secure);
-> +
-> +/**
-> + * qtest_memwrite_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @data: Pointer to the bytes that will be written to guest memory.
-> + * @size: Number of bytes to write.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Write a buffer to guest memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_memwrite_secure(QTestState *s, uint64_t addr, const void *data,
-> +                           size_t size, unsigned secure);
-> +
-> +/**
-> + * qtest_memset_secure:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @patt: Byte pattern to fill the guest memory region with.
-> + * @size: Number of bytes to write.
-> + * @secure: 1 for secure access, 0 for non-secure.
-> + *
-> + * Write a pattern to guest memory with secure attribute (x86/ARM).
-> + */
-> +void qtest_memset_secure(QTestState *s, uint64_t addr, uint8_t patt,
-> +                         size_t size, unsigned secure);
-> +
-> +
-> +/*
-> + * qtest_*_space commands: ARM-specific.
-> + * Only specifies SPACE parameter, SECURE is auto-derived using
-> + * arm_space_is_secure-like semantics.
-> + */
-> +
-> +/**
-> + * qtest_writeb_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Writes an 8-bit value to memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_writeb_space(QTestState *s, uint64_t addr, uint8_t value,
-> +                        unsigned space);
-> +
-> +/**
-> + * qtest_writew_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Writes a 16-bit value to memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_writew_space(QTestState *s, uint64_t addr, uint16_t value,
-> +                        unsigned space);
-> +
-> +/**
-> + * qtest_writel_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Writes a 32-bit value to memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_writel_space(QTestState *s, uint64_t addr, uint32_t value,
-> +                        unsigned space);
-> +
-> +/**
-> + * qtest_writeq_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @value: Value being written.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Writes a 64-bit value to memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_writeq_space(QTestState *s, uint64_t addr, uint64_t value,
-> +                        unsigned space);
-> +
-> +/**
-> + * qtest_readb_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Reads an 8-bit value from memory with ARM security space (ARM-specific).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint8_t qtest_readb_space(QTestState *s, uint64_t addr, unsigned space);
-> +
-> +/**
-> + * qtest_readw_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Reads a 16-bit value from memory with ARM security space (ARM-specific).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint16_t qtest_readw_space(QTestState *s, uint64_t addr, unsigned space);
-> +
-> +/**
-> + * qtest_readl_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Reads a 32-bit value from memory with ARM security space (ARM-specific).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint32_t qtest_readl_space(QTestState *s, uint64_t addr, unsigned space);
-> +
-> +/**
-> + * qtest_readq_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Reads a 64-bit value from memory with ARM security space (ARM-specific).
-> + *
-> + * Returns: Value read.
-> + */
-> +uint64_t qtest_readq_space(QTestState *s, uint64_t addr, unsigned space);
-> +
-> +/**
-> + * qtest_memread_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to read from.
-> + * @data: Pointer to where memory contents will be stored.
-> + * @size: Number of bytes to read.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Read guest memory into a buffer with ARM security space (ARM-specific).
-> + */
-> +void qtest_memread_space(QTestState *s, uint64_t addr, void *data,
-> +                         size_t size, unsigned space);
-> +
-> +/**
-> + * qtest_memwrite_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @data: Pointer to the bytes that will be written to guest memory.
-> + * @size: Number of bytes to write.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Write a buffer to guest memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_memwrite_space(QTestState *s, uint64_t addr, const void *data,
-> +                          size_t size, unsigned space);
-> +
-> +/**
-> + * qtest_memset_space:
-> + * @s: #QTestState instance to operate on.
-> + * @addr: Guest address to write to.
-> + * @patt: Byte pattern to fill the guest memory region with.
-> + * @size: Number of bytes to write.
-> + * @space: Security space (0=Secure, 1=NonSecure, 2=Root, 3=Realm).
-> + *
-> + * Write a pattern to guest memory with ARM security space (ARM-specific).
-> + */
-> +void qtest_memset_space(QTestState *s, uint64_t addr, uint8_t patt,
-> +                        size_t size, unsigned space);
-> +
->  /**
->   * qtest_clock_step_next:
->   * @s: #QTestState instance to operate on.
+> +    return g_test_run();
+> +}
 > -- 
 > 2.34.1
 > 

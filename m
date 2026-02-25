@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA888FD45F7
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 21:31:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E83BFD45F1
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 21:32:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvMTq-00006n-Rc; Wed, 25 Feb 2026 16:31:38 -0500
+	id 1vvMUv-0000i9-37; Wed, 25 Feb 2026 16:32:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMTq-00006Q-4c
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:31:38 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+ id 1vvMUt-0000gj-3Q
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:32:43 -0500
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMTo-0002xy-A2
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:31:37 -0500
-Received: by mail-pf1-x441.google.com with SMTP id
- d2e1a72fcca58-82728e5680cso108989b3a.0
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 13:31:35 -0800 (PST)
+ id 1vvMUr-00039G-JC
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:32:42 -0500
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-824a3509a12so97085b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 13:32:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772055094; x=1772659894; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772055159; x=1772659959; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=vpK1BvruVfr9+YQapkt4lhgoL3LuxwZOgy0XjBiM+Y4=;
- b=nz7/dezqrugv/d68GFuwQtBQAGh5fjcDrl8W0upOznUyivGEW4EkpvzfToY9QF/ChU
- kLa3+d6St2QQUBn/G2KMk0xFmc/CGFmaQHkUf+UPObRJP+qMqm3AXbEfZqsvy74MzqBG
- wU9an35cQgavZhbCRrKJE9Mq71WsJu3zgCMNkZEa/ovN33qc6R+hL6/emynK4XrUHkYZ
- 2lXbJBm6W+gGeUMuGtnsBOrv+lb0SwmyfaxSPXIArc2DZKbqzO/kRfeoxEH8CXgZVsrm
- jIMrUb/EukiqLyduCeySFF7P4NjySiKEXcWxpBDPg80Z/6uzyUT3fBhL3AzeSrR5dEyw
- psxQ==
+ bh=wbcxzDz+oEDrtE3wvXoStGeTJtAyY0GinIODRTtbASY=;
+ b=x6cxw8aTwCutJJhAyUZDN/2opLBMRzNxkmyW3kOA+WAWakcOufLDriRli1Hb4hVHe4
+ oq4JdiAYDKnhd6weqwHB1AeU/p64GVcMS6Y5eInzJeWoRDXAby3vAL96qOjF1TnEq+el
+ zUtZPzvcUBjq1YHWfBZnKuxlIFdb5zLVTuluMaujIYZ4oQN6f3QPEH4O3BXErGjm/B6Z
+ NhlpX3TV+964EWp7+KV0wpLUZCKMojCQAZRPvp4nI1zc/hvNi9snj6lM+YQgYqs7qgOv
+ QjUKEOzNQuDkBYHwZHDkaQXWoaFr+affUDy939/SYXx+zslt67/CYCFqektwEOTvhYSY
+ hBWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772055094; x=1772659894;
+ d=1e100.net; s=20230601; t=1772055159; x=1772659959;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=vpK1BvruVfr9+YQapkt4lhgoL3LuxwZOgy0XjBiM+Y4=;
- b=Kg7NlsnPVeU8fEIB0K/vouzdxpAwOWyEq+u4pTwyYOxHeWS6ZshElpj7GzB206Ag3g
- tWnGDk2Yf2p1IQx4lYzpDkdMWubkPAxi1+Q0/aEWGdGXFXtMo390RmZd9CxMl0nJf786
- RYwDYT22ndAdcehxSfpydmVMcJqu2yxyZLpAbWV7S7aJTYbBOZaBg/FS7eV0iWhabjuY
- xItiUzIxiJHlaYKiddtc4yZ7qCNWtCEjlngE4icvgVKQM0raesY2YPg9SDBwbwqfae8P
- iHnWy0JSr4x+EhlLVm5g5Ti5fAJJe3Vej8xq0s2C2wR9DQJReOGB8pjlryX6P2yDbSQy
- Vwgw==
+ bh=wbcxzDz+oEDrtE3wvXoStGeTJtAyY0GinIODRTtbASY=;
+ b=IGPQoubBXSbMAWXbpBuBArRKEVAQ3k+Xx+gGMp5gr5J+GPnFQDhgoMDBfSguF40QYA
+ vjR5EQm8JeuBD1BDfhVw5jQ0eMGrhzuTpd0KMBqrj7z7rPIVCrZembTGfswY02AWObJ9
+ /XETks21r/3GW+/zuhNWl00k3zQrhvwFcc7gr56W4BlaZA1glkgxm9VKIkg7PagM5xOZ
+ 4kFr2OtIFfLZg0hDnspj1WMWKVojTy4ZIKHpV2BkXPXAf9w7A/fmFrN2A0meYh3vOx2K
+ 49FI75bTBinx2aYg3LO+Uh05TVkrm54yH7AFLuEkBC8bogfExiOnfdP4h+a2kQWZnRBg
+ eTEw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYhrtDllHpyQSIsbYSFeIrKjeVKdVQdv2O9zp64HbZd9QP8wuICsvYDbMFI9JyRyAUg9lRtroscQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyKJ9Nx2n7VK5rtom/KX3yLGICKOkPOmRPe7HPTWbosnn2T+J/P
- L0ecwRzedmUJgE4gs+Fb6t+CW32qnaK81ls7EwkcfgMkbvm756tOJG9cbq6r8NPzReA=
-X-Gm-Gg: ATEYQzw0SVwyIZeG0Va3T02PeDIFBhqhuxEnUdxxpMVvd5TeKeUnPXKtUH/hZN26pF2
- SN5Uww9cw398bPnSaJoR4XLxAA+gXI0sHxCCat/qlUNRrPnfT15VpNpe7yWDxM/58JCLJbdYYe1
- ysurDL2Jb6whMZajIqg+BFCJ6NLKdLYD+i5U0tgtTjgtefq4BtAoFZnOMW3bL5nQ5auJUsSdo6H
- KfqtrVcyeL3UDjj1GsTqRGj4yHcb1wbsYHPNhKz651V534rpZ0HOKBce+RlbFoIYECi8JffGuzI
- fUngbZAJEL9o+2OztDRDkiozKWc7Gi5Sla0Gdl3m0WkbtEhvkN5ETNG6++GgJR3tIXeaYGWtipd
- K+mswUwxeUpsyxMK+Cn2N+ZwgyORuPnflHKbGYHMavU3HyDZ5Yw/2ceJ5xagYKTWPKljoUaVABF
- 0DHBeKL8ioo+Yx98qw4z9keC097zl1ujmu+dKDf/O7pIRRn4fAveuPCfz1pE8l12cLwDD+
-X-Received: by 2002:a05:6a00:b8c:b0:823:30a1:8958 with SMTP id
- d2e1a72fcca58-826da8c0e85mr16891969b3a.2.1772055094246; 
- Wed, 25 Feb 2026 13:31:34 -0800 (PST)
+ AJvYcCW9tY0hHcuavYtcRLUcKBcPUH1hlRQqh/en2uKr6PutSHOrZoMvWZ0AWQXnAkQ02Nurp9VRBuj3lQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxY9jb4icZTSJy00ylCxtifIO1JYTbePs33cVQ1SC2Wy2HCp5A+
+ 4QLbbxVq3Ww89PmOWQE86AvtUSi+FcFeEZwjFcrBCpp2WkswfVSuK4GVh/I2x/Umgjo=
+X-Gm-Gg: ATEYQzx0ZnnbeRwn6sJMnEsxuC+Zwx03yObQhuiRXO8Xd/PXVXgjW0z6qjB2zqQWmFN
+ djxUj1UDvWe9KDD5n+IT6EW+tf25URMkUBCJJ0lOgDkUCq6ducIcxwfFnIVj3NEv9KYvhZb6mDS
+ Ly0SJ9dp/Ux33CaU3vZC52IPMIWLo1jkyfG25ZjGrtLN3g6LQbqF5PptgfFYweLIY/Pnwp4Mum8
+ 0NRsu/AGkgyhLJVXpPQFw3BM1Dkb/AnsznE8C7xhnPxJ7lRuR46Lzq7mbb3hPM68p2CtBOiQhM8
+ I3gn0kT1VEaoFnyHoImnMUtH1zQclLvXqavWwQm84NQv7X8MvHBlXfYtbM+plzHzge6ZSaDeT6D
+ 8RWiLIkxza+eOB5xPx+szQtPE5poMSxhvOlDeqBRedw5V7dDPdIzE9JMfnok4IfbnN57SaVriYW
+ Sp8mNmHJsa+2/KrSRof5XdZA3aMxbsBJMsWfvEFZLR2KvHBDJF8lREJhib0svTdkSmOOy7
+X-Received: by 2002:a05:6a00:4f90:b0:81f:3c34:fa83 with SMTP id
+ d2e1a72fcca58-826daaa6eb8mr17475558b3a.57.1772055159247; 
+ Wed, 25 Feb 2026 13:32:39 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82739db4955sm198506b3a.29.2026.02.25.13.31.33
+ d2e1a72fcca58-82739d87e78sm217480b3a.17.2026.02.25.13.32.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 13:31:33 -0800 (PST)
-Message-ID: <36f2aa40-1b01-4cb8-8546-06d9e770b30b@linaro.org>
-Date: Wed, 25 Feb 2026 13:31:32 -0800
+ Wed, 25 Feb 2026 13:32:38 -0800 (PST)
+Message-ID: <7ab216f3-a453-425e-8cc9-db728cd0c0cb@linaro.org>
+Date: Wed, 25 Feb 2026 13:32:37 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 31/31] [NOT-MERGE] hw/arm/smmuv3: temporarily enable SEL2
- bit and sone other features
+Subject: Re: [RFC v4 16/31] hw/arm/smmuv3: Plumb SEC_SID through IOMMU
+ notifier path
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
  <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,7 +83,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101933.2998060-1-tangtao1634@phytium.com.cn>
+ <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -119,11 +119,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260221101933.2998060-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x441.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,34 +146,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/21/26 2:19 AM, Tao Tang wrote:
-> Temporarily:
-> - enable S_IDR1.SEL2,
-> - change AIDR to 0x2 to indicate SMMUv3.2,
-> - use smaller SID size and Cmd/Evt queue size.
+On 2/21/26 2:17 AM, Tao Tang wrote:
+> Extend IOMMU notifier functions to be SEC_SID-aware, ensuring that
+> invalidation notifications are dispatched to the correct security-aware
+> address space.
+> 
+> This ensures IOMMU notifier events (e.g., to VFIO) are correctly routed
+> to the appropriate security world's address space, maintaining isolation
+> between secure and non-secure DMA operations.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->   hw/arm/smmuv3.c                | 3 ++-
->   include/hw/arm/smmuv3-common.h | 6 +++---
->   2 files changed, 5 insertions(+), 4 deletions(-)
+>   hw/arm/smmuv3.c | 18 +++++++++++-------
+>   1 file changed, 11 insertions(+), 7 deletions(-)
 > 
 
-I have been able to boot hafnium with:
-- instructions at 
-https://hnusdr.github.io/2025/08/09/Test-Secure-SMMU-with-Hafnium-ENG/
-- the current patch
-- qemu-system-aarch64 -global arm-smmuv3.secure-impl=on ...
-
-In case someone else wants to reproduce this easily:
-
-```
-git clone https://github.com/p-b-o/qemu-linux-stack
-cd qemu-linux-stack
-git checkout optee-secure-smmu
-./build.sh # only requires podman and qemu-user-static
-./run.sh /path/to/qemu-system-aarch64
-```
-
-Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

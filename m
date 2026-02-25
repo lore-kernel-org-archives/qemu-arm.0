@@ -4,157 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CF59EFB7F0
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 06:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0AEF357C5
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 07:17:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv8eS-0000Wy-5K; Wed, 25 Feb 2026 01:45:40 -0500
+	id 1vv98T-00077y-KT; Wed, 25 Feb 2026 02:16:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vv8eP-0000Vj-Ag
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 01:45:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vv98H-00073O-UU
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:16:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vv8eM-0006ne-Pw
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 01:45:36 -0500
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vv98F-0001tU-NP
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:16:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772001933;
+ s=mimecast20190719; t=1772003784;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=qQlzP7R+aGrBmQTMQNnIoUiYbYcejk2ZvxxDY5duvMk=;
- b=W9w7Ogxqo/34do9e0Vx5kdRzLkjXtFDARt0jJZQK1XiUJbD0NWIwW8W5Rx4T3tPs3MPuy+
- gq3aLcYgWdC6UOU0u+duWvo+IB/wFTkqQ8hbKWFMd0bbLe4eRBrTeh/hqR7L2b9d+AcXiK
- uskeuR+tm8C/TxXy6Rc/MknQqddFmBs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=qL6dea3nPOVHlv2oBcUsVZrWZwNNBBgQt3IQvJSqORw=;
+ b=W5EutY1o0Xw2DKHzrU3GtvbN50aVCikTMLFtp2qQ1nw+N93gBeScg5Z8Xg05gdbZrMpRGA
+ l61wl9/Hf68qhJSM+qhfUewhr4SL7qXolgGz11HZp9li/4fPYHZKnUSchVyZOKo0M/4S2J
+ L+dHI4IxEwSlMdC9+HVjaeYcISsqTFY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-522-OMgFxbU3OG-Up-SinWPQng-1; Wed, 25 Feb 2026 01:45:31 -0500
-X-MC-Unique: OMgFxbU3OG-Up-SinWPQng-1
-X-Mimecast-MFC-AGG-ID: OMgFxbU3OG-Up-SinWPQng_1772001930
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4837b9913c9so60465905e9.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 22:45:31 -0800 (PST)
+ us-mta-663-WQ-QJAsGOsO5DBCYKOVOrA-1; Wed, 25 Feb 2026 02:16:22 -0500
+X-MC-Unique: WQ-QJAsGOsO5DBCYKOVOrA-1
+X-Mimecast-MFC-AGG-ID: WQ-QJAsGOsO5DBCYKOVOrA_1772003782
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-483a24db6ecso68502845e9.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 23:16:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772001930; x=1772606730;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qQlzP7R+aGrBmQTMQNnIoUiYbYcejk2ZvxxDY5duvMk=;
- b=TaVPHgEf+FmqqszqELBovWe7UKDFcKmzLagzoyxPSi+hQAVIv9dsEFvXm6rgaQSNuD
- VJ4cSEEUm0EkQ57TzcW35QftdohZrR87ppCP+iLfhsZ4KYcyKCuhMOBLqPL78YABCpFj
- 1OWVlgts4m8oobYcmNhgbFo+yP2OB0koPvoq/uHL1ulHPYJlFPRbt6IlzM4ydfnCTky3
- ybk8wrPZdHpIHuDx/hMuhE/OZauBNiU88kkGUGVNpec9c9mhYwyY2WesDV0NwdPQzF6O
- fChcWtBveft7Tc0gtxGmZH7OSFLI4FKOxpumE2XtGoGUeqJzmb8+bdHOROdShR9zJoZa
- PXmA==
+ d=1e100.net; s=20230601; t=1772003781; x=1772608581;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qL6dea3nPOVHlv2oBcUsVZrWZwNNBBgQt3IQvJSqORw=;
+ b=vrUUvo0CTZZd4MbASG1iBEL+qSry+2e9qlTkJ/5YXT5ssuTQpmXCCQmtmLJoDaR1w0
+ uJufv9SzoFPCwYJxTscnV3K7AmI9kCURrkCIl9JiUtQN20BgcYwkt8o/M9luSTxRqdXY
+ AYsxlIECM0pMUA0BeReXDm/i3KgG+24zxyDqt8z2OMs2cyiv9KssHpLykPC28T+ouQ+3
+ IeCWfo+xnBHlz9VnvAVXMI78EWHgy7YxUldQLIrU2ZAX8z36Xyr975Xa329D1zbrI3bp
+ v7csWlgtrC/AOUVhUNMrrp8AiNtcYshRB2p3DlOk93DT+W3uvH5uLXLw6eQcqxMQPLPa
+ BEFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVVduQRoebambKNaeZjcl7bWAI+EgXryFxSzoGHtSfTAodx+6Vx2mIdldtx6JaBqpx2dY7LTF/Klg==@nongnu.org
-X-Gm-Message-State: AOJu0YyGEr4vg+TvmTyXCWjGf3kRXVoamiHOROhYtdeRti7tJL63sTuI
- E8MpauqAfbNYqHPnQxp4xCkdf2oHoXqtrwMJiQocn4PF10VqARLGRGW2qp6FC4vmM09NYqI/O7l
- fvpSQJuhqw1xDvFTqcgohZmFk4l2RZKhY70ak+BgPS0lsh08KfYRy0g==
-X-Gm-Gg: ATEYQzzMVTUnBKHhkr8TgCYt86BUtigLrKcAlLPDi6ambqAOYUkXKGDvkF8L8ekKujX
- mEdb6NV2+XNuDIdNPSrGNeOYMM1daTqd4m3eWOj1RQPco3kwV7L8Cqt8x2Fixj0DRElNSrM+Ik3
- Vua6K8EB9sPvxnL8hNaqE0RwqGJFqjwboe01JUDVpW4FzcGbwTkD3KO/hkQtZOWYAEiY/fFX3kk
- eBdAbVakRz3U9aJoSrICoYjgkU5y0i3WCxyXNqKzHJQqxuMuOjnPT7YO20N5xQo0whwvQEOoQsz
- MnDTLE7AQpzo3hot12TOglOdd5Pehx+pT3M1BXmXSkeHfsWJJfbvGTDNCvvqNXwWK0bzTJOEs4p
- w9FKmqAKHPCdbkP8TJcc8v3bKz8klfAUawo9XqyBjXA1WYv2TXMaqbNAlyQ==
-X-Received: by 2002:a05:600c:46c9:b0:483:a21:774c with SMTP id
- 5b1f17b1804b1-483a95eab7cmr249368445e9.25.1772001930383; 
- Tue, 24 Feb 2026 22:45:30 -0800 (PST)
-X-Received: by 2002:a05:600c:46c9:b0:483:a21:774c with SMTP id
- 5b1f17b1804b1-483a95eab7cmr249368065e9.25.1772001929903; 
- Tue, 24 Feb 2026 22:45:29 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:165:d60:2c1a:3780:4e49:dfcf?
- ([2a01:e0a:165:d60:2c1a:3780:4e49:dfcf])
+ AJvYcCV9M9CXscXOEfVIHSmnHC4mAp2TkvC8uiKL8x5jpYfV1zvs2ON0eCQNYdAe1xs2oMXJhzdSHm2OoA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyzfwe2/eXqZGqT/g2g4rwGsVhgUL4zO77aD7iLjQgOe9bnCqz1
+ Z67XQGP29+ivLQHDmCjvoBtfgXYF3uJzqyoOgUNr8iPiDiMiL0INXlMBJTOcCTDcjR7509J7Vyg
+ vpu2mxA1zh3B50wnkKIrzYcdPoq++ednwal1QA5OaGvRRgeEZm/eTgg==
+X-Gm-Gg: ATEYQzyFzLjTfGOJVDDBGJ2p/82sBVaKuylO075dZl0ZcSCUB47NC2gyP/yrJtVL8Bm
+ JO4EaOrf1JKFPmb24jqFRIvfsAKOZ+yl5yUpk4o/PNfziCoOnGWLC3wacco4xGHRChVmJh0HLkq
+ wRoXl6KVggIPhVGoF1JP5qOK5oRURxoK+dak/0veMlDYqrEccilhxu1LBoSAbn1KgbSnNqZ4jhV
+ ZW7tXDq9op1GrdKR9mQCsUSPW8wGnJ+zswlYA06XLqmF7nmzjAVUtVQpLmqvoWE+F03NEQ4WjqD
+ PK7ZRLysN8Frq0W3H6qbKOkM2cOMxsjiYSgqRtCuc++yT2gt4ZDqQRoXyUXJnIuZ2tlfgCdonK6
+ DCN8SrXB47B5FRy/QVUjkIHbdg8KOjnO0OqlE6MVAd67o4vx1Jt6fUY6jQOWAPszQfmu5iTY=
+X-Received: by 2002:a05:600c:8708:b0:477:7c7d:d9b2 with SMTP id
+ 5b1f17b1804b1-483a963d62amr213324435e9.32.1772003781523; 
+ Tue, 24 Feb 2026 23:16:21 -0800 (PST)
+X-Received: by 2002:a05:600c:8708:b0:477:7c7d:d9b2 with SMTP id
+ 5b1f17b1804b1-483a963d62amr213324075e9.32.1772003781071; 
+ Tue, 24 Feb 2026 23:16:21 -0800 (PST)
+Received: from rh (p200300f6af25cc00b2a92b19386de96f.dip0.t-ipconnect.de.
+ [2003:f6:af25:cc00:b2a9:2b19:386d:e96f])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bfccb9f9sm4531085e9.23.2026.02.24.22.45.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Feb 2026 22:45:29 -0800 (PST)
-Message-ID: <47860c63-e6df-40a9-b34b-e981b246b204@redhat.com>
-Date: Wed, 25 Feb 2026 07:45:28 +0100
+ 5b1f17b1804b1-483bd732eb1sm50579945e9.12.2026.02.24.23.16.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Feb 2026 23:16:20 -0800 (PST)
+Date: Wed, 25 Feb 2026 08:16:19 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: qemu-devel@nongnu.org, eric.auger@redhat.com, kvm@vger.kernel.org, 
+ kvmarm@lists.linux.dev, pbonzini@redhat.com, qemu-arm@nongnu.org
+Subject: Re: [PATCH v6 1/1] target/arm/kvm: add kvm-psci-version vcpu property
+In-Reply-To: <CAFEAcA8O2UEKToJ+zXA6=vvgkRyPKrPwtfHnti7yyGgCGwoJeA@mail.gmail.com>
+Message-ID: <0616fe7f-96b8-251e-dc0f-9e15ec8298ba@redhat.com>
+References: <20260220115656.4831-1-sebott@redhat.com>
+ <20260220115656.4831-2-sebott@redhat.com>
+ <CAFEAcA8O2UEKToJ+zXA6=vvgkRyPKrPwtfHnti7yyGgCGwoJeA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Kane Chen <kane_chen@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-References: <20260212213955.2225662-1-clg@redhat.com>
- <20260212213955.2225662-3-clg@redhat.com>
- <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
- <CAFEAcA_9Np04vouA-m99xB8yU-JhduwxxLj_dTG0QM=AnDbHoQ@mail.gmail.com>
- <aZMwvfw4O5xeH-Gm@redhat.com>
- <98898cd4-de19-41b7-b519-541c48b462ea@redhat.com>
- <7b68fe15-f8fb-4d72-9559-8b6b89bd7563@redhat.com>
- <TYPPR06MB820657F01C98468E1F166C7FFC74A@TYPPR06MB8206.apcprd06.prod.outlook.com>
- <aa6cbbb8-d8db-451e-9f9d-c430b2e030d9@redhat.com>
- <TYPPR06MB82061B01B8E9B13A241A6AF8FC74A@TYPPR06MB8206.apcprd06.prod.outlook.com>
- <6be71017-6be7-4be1-9010-6a1cc4391bd8@redhat.com>
- <TYPPR06MB8206A6B15C49657A1465DA4EFC75A@TYPPR06MB8206.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <TYPPR06MB8206A6B15C49657A1465DA4EFC75A@TYPPR06MB8206.apcprd06.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: wCXhfsoITmSrZW5pLQF0PARCmne0SlgCDoMzQ7dkp3o_1772001930
+X-Mimecast-MFC-PROC-ID: h-36Cdof07_LqvsEFjfkGxUFsXaaZELbQZR_C65lJcA_1772003782
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.358, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.659,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -172,67 +112,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Jamin,
 
 
-> I plan to create a new set of artifacts for each QEMU machine.
-> The original packages will remain available on the ASPEED SDK release page, as they should not be modified.
-> These packages are used by customers as well as for ASPEED internal testing.
+On Tue, 24 Feb 2026, Peter Maydell wrote:
 
-yes. This is what I expected.
+> On Fri, 20 Feb 2026 at 11:57, Sebastian Ott <sebott@redhat.com> wrote:
+>>
+>> Provide a kvm specific vcpu property to override the default
+>> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
+>> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
+>>
+>> Note: in order to support PSCI v0.1 we need to drop vcpu
+>> initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
+>>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>> Tested-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+>> ---
+>>  docs/system/arm/cpu-features.rst | 11 ++++++++
+>>  target/arm/cpu.c                 |  8 +++++-
+>>  target/arm/kvm.c                 | 48 ++++++++++++++++++++++++++++++--
+>>  3 files changed, 64 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+>> index 3db1f19401..ce19ae6a04 100644
+>> --- a/docs/system/arm/cpu-features.rst
+>> +++ b/docs/system/arm/cpu-features.rst
+>> @@ -204,6 +204,17 @@ the list of KVM VCPU features and their descriptions.
+>>    the guest scheduler behavior and/or be exposed to the guest
+>>    userspace.
+>>
+>> +``kvm-psci-version``
+>> +  Set the Power State Coordination Interface (PSCI) firmware ABI version
+>> +  that KVM provides to the guest. By default KVM will use the newest
+>> +  version that it knows about (which is PSCI v1.3 in Linux v6.13).
+>> +
+>> +  You only need to set this if you want to be able to migrate this
+>> +  VM to a host machine running an older kernel that does not
+>> +  recognize the PSCI version that this host's kernel defaults to.
+>> +
+>> +  Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3.
+>> +
+>>  TCG VCPU Features
+>>  =================
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index 10f8280eef..60f391651d 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -1144,7 +1144,13 @@ static void arm_cpu_initfn(Object *obj)
+>>       * picky DTB consumer will also provide a helpful error message.
+>>       */
+>>      cpu->dtb_compatible = "qemu,unknown";
+>> -    cpu->psci_version = QEMU_PSCI_VERSION_0_1; /* By default assume PSCI v0.1 */
+>> +    if (!kvm_enabled()) {
+>> +        /* By default KVM will use the newest PSCI version that it knows about.
+>> +         * This can be changed using the kvm-psci-version property.
+>> +         * For others assume PSCI v0.1 by default.
+>> +         */
+>> +        cpu->psci_version = QEMU_PSCI_VERSION_0_1;
+>> +    }
+>>      cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+>>
+>>      if (tcg_enabled() || hvf_enabled()) {
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index ded582e0da..5453460965 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -485,6 +485,28 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
+>>      ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
+>>  }
+>>
+>> +static char *kvm_get_psci_version(Object *obj, Error **errp)
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +
+>> +    return g_strdup_printf("%d.%d",
+>> +                           (int) PSCI_VERSION_MAJOR(cpu->psci_version),
+>> +                           (int) PSCI_VERSION_MINOR(cpu->psci_version));
+>> +}
+>> +
+>> +static void kvm_set_psci_version(Object *obj, const char *value, Error **errp)
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +    uint16_t maj, min;
+>> +
+>> +    if (sscanf(value, "%hd.%hd", &maj, &min) != 2) {
+>
+> %hd is a signed value, so this will accept "-3.-5" I think ?
+> Probably we want %hu.
 
-> 
-> If users need to test specific images such as ROFS, U-Boot, the kernel, or perform full OpenBMC firmware updates,
-> they can download the default package (for example, ast2600-default-obmc.tar.gz) for complete testing.
+Ugh, right.
 
-Good.
+> (If you agree I can just make this fix locally, no need for you to respin.)
 
-> The ast2600-default-image.tar.gz package will include only image-bmc for QEMU functional testing and will support programming the entire FMC flash.
-> 
-> The contents of the new tarballs will be as follows:
-> 
-> 1. ast2600-default-image.tar.gz
->    image-bmc
-> 
-> 2. ast2600-default-66-image.tar.gz
->    image-bmc
-> 
-> 3. ast2700-default-image.tar.gz
->    image-bmc
->    u-boot.bin
->    zephyr-aspeed-ssp.elf
->    zephyr-aspeed-tsp.elf
->    bl31.bin
->    optee/tee-raw.bin
-> 
-> 4, ast2700-a1-image.tar.gz
->    image-bmc
->    u-boot.bin
->    zephyr-aspeed-ssp.elf
->    zephyr-aspeed-tsp.elf
->    bl31.bin
->    optee/tee-raw.bin
-> 
-> 5. ast2700-dcscm-image.tar.gz
->    image-bmc
->    u-boot.bin
->    zephyr-aspeed-ssp.elf
->    zephyr-aspeed-tsp.elf
->    bl31.bin
->    optee/tee-raw.bin
-> 
-> 6. ast2700-a1-dcscm-image.tar.gz
->    image-bmc
->    u-boot.bin
->    zephyr-aspeed-ssp.elf
->    zephyr-aspeed-tsp.elf
->    bl31.bin
->    optee/tee-raw.bin
-> 
-> Please let me know if this approach works for you.
+That'd be great, Thanks!
 
-That seems perfect to me. Thank you very much.
-
-C.
+Sebastian
 
 

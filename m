@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 937C0F357DA
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 07:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45904F357D5
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 07:35:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv9Nw-0003kT-Dc; Wed, 25 Feb 2026 02:32:40 -0500
+	id 1vv9Qm-0004rF-44; Wed, 25 Feb 2026 02:35:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Nt-0003fG-4d
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:32:37 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Qg-0004pt-Rk
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:35:31 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Nr-0004jH-ML
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:32:36 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vv9Qf-0005AA-CB
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 02:35:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772004754;
+ s=mimecast20190719; t=1772004928;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=lvFk/kN2RHiafpdo4S3E2ny8c6iz1a+WLXK14+OPBHc=;
- b=GGKM8Ico/VJrWY+IuqZL0iegqi79qujcgtYKqG7Xx9POF5e8d3PbIeL525e2lNKYoXJEf+
- Lr95MzmQZvSm1yz4LNsaITSWJkuIqQld/vedrVlAC3RFXod2Q5gUGhwoUeSIoGmizC2Lht
- sdRsa+cuahUcsmOKX6KzohPn8q5tmAk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=/CQ6pfUu7TmrL08s7eehMA1vzS7r0KwPZaXl/+QmAbc=;
+ b=ErOMsKiW0iSf1Fsv+hyYnfnrsmcMosPdDE3kwyWC0+YuyLFHh4Fg+RkHavOs9/zNphdJEO
+ 3GQB5DeEcMwkzw4A0LtQbtuB8mLXGKOI7Xxm8IG921JPn7z+xteW+KPFg2p7KghuP/OcQ4
+ ypiwTiTpKyTFULkY7vXbjUxsZX85dPU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-473-iZHnwNj_O8SRoOlI8-Nd0Q-1; Wed,
- 25 Feb 2026 02:32:31 -0500
-X-MC-Unique: iZHnwNj_O8SRoOlI8-Nd0Q-1
-X-Mimecast-MFC-AGG-ID: iZHnwNj_O8SRoOlI8-Nd0Q_1772004749
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-HSZ7JWxiNV6Cb1_rhMKvEw-1; Wed,
+ 25 Feb 2026 02:35:22 -0500
+X-MC-Unique: HSZ7JWxiNV6Cb1_rhMKvEw-1
+X-Mimecast-MFC-AGG-ID: HSZ7JWxiNV6Cb1_rhMKvEw_1772004921
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2F27F19560A3; Wed, 25 Feb 2026 07:32:29 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C6B2A19560A1; Wed, 25 Feb 2026 07:35:20 +0000 (UTC)
 Received: from [10.45.224.158] (unknown [10.45.224.158])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1F3641800465; Wed, 25 Feb 2026 07:32:22 +0000 (UTC)
-Message-ID: <3f229a02-1db2-43de-ae0b-10881b0618be@redhat.com>
-Date: Wed, 25 Feb 2026 08:32:21 +0100
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D9FDB19560A2; Wed, 25 Feb 2026 07:35:14 +0000 (UTC)
+Message-ID: <9fbea300-dfbb-4bcd-9f0c-702ce0690624@redhat.com>
+Date: Wed, 25 Feb 2026 08:35:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] hw/i386/intel_iommu: Avoid including CONFIG_DEVICES
- in hw/ header
+Subject: Re: [PATCH 3/3] hw/s390x/s390-pci-vfio: Avoid including
+ CONFIG_DEVICES in hw/ header
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
- =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Farhan Ali <alifm@linux.ibm.com>
 References: <20260225031658.32095-1-philmd@linaro.org>
- <20260225031658.32095-3-philmd@linaro.org>
+ <20260225031658.32095-4-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -106,9 +107,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20260225031658.32095-3-philmd@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: lvfatSBPAsnTxhZBqrgTLHMbgJjK3qm4KkW2SApNyng_1772004749
+In-Reply-To: <20260225031658.32095-4-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: S2Xzj9rFOGsH_k2-ethFpSdNtz31IjKxj--vQAzLDyA_1772004921
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -141,35 +142,9 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 25/02/2026 04.16, Philippe Mathieu-Daudé wrote:
 > By inlinining the stubs we can avoid the use of target-specific
 
-s/By inlining the stubs/By turning the inline functions into stubs/ ?
+Please fix at least the "inlinining" typo!
 
-> CONFIG_DEVICES include in a hw/ header, allowing to build the
-> source files including it as common objects.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/i386/intel_iommu_accel.h       | 35 ++---------------------------
->   hw/i386/intel_iommu_accel-stubs.c | 37 +++++++++++++++++++++++++++++++
->   hw/i386/meson.build               |  1 +
->   3 files changed, 40 insertions(+), 33 deletions(-)
->   create mode 100644 hw/i386/intel_iommu_accel-stubs.c
-> 
-> diff --git a/hw/i386/intel_iommu_accel.h b/hw/i386/intel_iommu_accel.h
-> index e5f0b077b4b..d75d232c6d4 100644
-> --- a/hw/i386/intel_iommu_accel.h
-> +++ b/hw/i386/intel_iommu_accel.h
-> @@ -10,9 +10,9 @@
->   
->   #ifndef HW_I386_INTEL_IOMMU_ACCEL_H
->   #define HW_I386_INTEL_IOMMU_ACCEL_H
-> -#include CONFIG_DEVICES
->   
-> -#ifdef CONFIG_VTD_ACCEL
-> +#include "hw/i386/intel_iommu_internal.h"
-Why is this #include suddenly required? ... please add a comment about this 
-to the patch description!
-
-  Thanks,
-   Thomas
+With that fixed:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 899C0FD45F1
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 20:29:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0E7FD45EC
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 20:36:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvLVV-0003Zv-Tp; Wed, 25 Feb 2026 15:29:17 -0500
+	id 1vvLcE-0005q2-Du; Wed, 25 Feb 2026 15:36:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvLVV-0003XN-9H
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:29:17 -0500
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ id 1vvLcA-0005kc-Mg
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:36:11 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvLVT-0001mj-Er
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:29:16 -0500
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-8249fc726e9so105570b3a.2
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 12:29:15 -0800 (PST)
+ id 1vvLc8-0002s3-K4
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:36:10 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-358e3cc5e7eso1251160a91.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 12:36:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772051354; x=1772656154; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772051766; x=1772656566; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=SjCCMuK4CTNL3vWvtLROq6iP4PEtKgpugNTB4qxmL34=;
- b=QzoT4per5sm9vQ0Og9Ji/MVVnWQHO2z2Dj6AH+2gxd5Ysw1ttisuxQEMtAik1a/Vjx
- EA9yyFp3VIsWttPZ6z7xeZTj1aTqHKzpbXZ7AVpnM8MNSG55dm+FBk1DPEnI8GSfIzsV
- 0RoyIEZTfiTxeDAjvo/GsweFE/LFycXokOoWPIhljmNPL0C0FPFJPX8WM2ZIWj4OpnX8
- Hw6yj1iSBpak6TtybrWh7hTIFsA0kkFhK+PAkBbDMCfDjbJ3nLu5m27fuZLrf9zzAefZ
- tz1unUTLFEgu9QhtZ6XjXsvsMA+508QzMXsoFKjGOYIXV5cA+H2Oytmy9S5WO20yp+Uv
- bMJA==
+ bh=QPRFpkE4nb/taQRx4VWIxpVrTUtbjrOmiftYo9/QS4I=;
+ b=kNYoKuLUVOter69D0Q0CJb3zK4SczBTB59KAsDYf+PVD573ROZFazvbxLw6dVKIqam
+ feL+FkzdoULNFZ1NqWiGwmaNdhUSKky+6siTmQ7uhbRqI9Xs4Cbj2IgHwzBPe7D94U0S
+ 9OQ2yJuw0jMAwK0TTiTjyuui8s+UxVP7k3eph239hGAUYTn3wagiwxh9BqBUgcIgBVEv
+ 2oQvfXH0cyK31mr4JSlcAX9SS4HAAhZ1JYoVUZU090K1kkCr4gS1fpNQ+hxCxxWpBdkr
+ VsJpxZrR8tTvtwQPJL0sTrP4pV5juVnTiUJN63qcowzns9h4y8KrPYXlwVb9xxwyh2U+
+ ty4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772051354; x=1772656154;
+ d=1e100.net; s=20230601; t=1772051766; x=1772656566;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=SjCCMuK4CTNL3vWvtLROq6iP4PEtKgpugNTB4qxmL34=;
- b=j4pnnpandx2AlZKA30YK5Zesz9Nfgpb3qgyfvrgig5C+8ktjtddoEq09Z0V1MYvAO9
- uyJ5J7nDf29gjxSyKv68IuLBskd0Bm377rMROslbK5gjJauIHgeR0D+scjX7H88a7DLZ
- HreBRNwD1iEG4F3aB3jxo+TvEihBuJt8PJPp69Rs6UwVgILqsM/uaW579NPNV/ggQsv1
- tXLEtY603JqQpA0iDG/dU7ROMf1poU68HLF8Ht39K+tHsSAaglArYFhD/vzVkA6QzceN
- d22ce91JkFAasBE43Uyv9F+6SxJUdT4dIlysqw4m193e6HdV8XWi0gjrksm1Ojz5crDW
- JScw==
+ bh=QPRFpkE4nb/taQRx4VWIxpVrTUtbjrOmiftYo9/QS4I=;
+ b=AJSG1GiWLSJb9VOjgyyyqCGeSh/tmklRiMvguBEJVvEyUmv/xnI4zqgERNR4jEHqAJ
+ /sGsPXjrbcNw4zhyQcv9o9R3KAfFdUwz9ujPc9OeDIlhM/J06QfRSgp0514rHZUKsCoJ
+ EltxrTDsdxDAfefhNfi9GZ2zkG4roS8Kgc6Rc9pYKlfQYgFxe70SQMhNUJLshP2kVEFz
+ P/PfpztUzjqzoc60g8ARBO7IaTz4Ho/Lotk6kcwkwlr/felbAVnTuvLXiilqRsyPMxXX
+ f6FtyER0XpUitt96NJxWg0y1G/kyZZh39usL5zsjSpTOPXIBwFSihw22MF8RCtGGQEEu
+ r25Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUENeQjrhdR2ZX72UhpwPPVbn6Njg8P1dG683vK/16BGA4YdCOu/V7lXSAZd1GyG6wkdKjkGCIAZg==@nongnu.org
-X-Gm-Message-State: AOJu0YxgJq/z3LJSGkM67ubwZ0kPaSzDT+jh7xN2n7xh64CR+3EYKNSz
- AacnPOwDukSK+au11o97AWK/RoKE0bDZtJ66hrF6pxAHCy1lDdbuo0eHD7Aey9WGaLk=
-X-Gm-Gg: ATEYQzwGQGpkA7iy67+uE6hXpfuQlOmwu35d/tjkaDMGEhZwHkbdY6QFvmV7xG8qExW
- H5STb0dHjA0AQgwqML42A2mheRcwfe9cf3xXcpGKEKIMrrj0su8DiMGst56+6l52brm8YDuVsGQ
- uXRcNiw1nf3nD6GvHDenESE/cAMFyNpYuJlMEe2duFmCnRByPEk5rj/GLIR6jX68x+Ppme2lIX0
- r2GIl7EVQ/HLNbqsWlFYp2wN60+jvMkYfqJnNWZXNwF0uMEGKCt1SNucC7LGjDJjZsD8i9UxGs3
- NCpnClwjxwM0o0SUf1ErVfirqJIxvbW4r6tCxzoZCVtI2m9sBzzI0hWZhipq6Ddqb1L2W7eW36s
- Am1oCyA80O8anpLZGF0yD23QH9A3sjQ6b1eziAqsCxlfrc8frcab9mM/eb05UqVd4BLqr7JG8bK
- Txu7GoeRbKwusnWNibTbJQWJNYlaoKrXiLZmdItyk82bJQwCvpAD6F+ytWtKPDBnQfhmTI3qWMt
- YEKgJk=
-X-Received: by 2002:a05:6a00:18a7:b0:821:8250:8ded with SMTP id
- d2e1a72fcca58-8273390984bmr1064539b3a.65.1772051353813; 
- Wed, 25 Feb 2026 12:29:13 -0800 (PST)
+ AJvYcCW+jV391ocyYGSdjvgRmhx8Q5XFckWx6mwckdkmUNKKjMx0mb2R6NT/bD3wJSBRoQWyiG7iC9udFg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/IXxg6vVfvBvn1SkxZfjiGzV8XoJffeI3X7W2HNDDzT8KfY5E
+ SozwOwQr31KKRFNw6WERtZnCobSDD1drkIRdmcgppvNhPlXocrtvhjb9L9LvhLWAtJc=
+X-Gm-Gg: ATEYQzzFHk7uSTf2P4WdPku95cglnNGeU03IWuKA5b+zGDq4MK7YmCIgjid/qymgkBW
+ Z4uUjIH6pv8s+MxDQ8q5pg5OiiutcjOzrFZt7hSG2+T91bGxrjljbq89YCDblCPB5uwEVhqUF9F
+ VPs+1azZdjmHfJy1M0p/oWFCsyt0ueybEC0n7lXHXoL3Mtqdfg0fB99VLWdGVj45WcN+NLYp79O
+ +Iw0yjjidIPJyMnkwgJAGw7bL0S60pHHXxE3I9Qxef5NDneOLwjCD/KIrwPLmcoG1BmNdc22FrG
+ tQA8Na482e3kYD0TzKCvdDdsSElcfipNSlL1pUYc1Tebv+RrA0wyHOeh2+4vPxf6DOZLdN7Ueuv
+ NcuaYGR/8775LOqDyo/JJ54AmXukv4WVM+pYrjqUaJ6mSvp3fhDv5J6nqxsS8AvRGzezzT72RZ/
+ KB5uClX3wj4NSWoq9hpW+jFC2TjzCiBWuf9xOjuzgCF9f6r4h7eCTax+PzWZzg6BEvzq2a
+X-Received: by 2002:a17:90b:3a8e:b0:352:f72f:25f0 with SMTP id
+ 98e67ed59e1d1-358ae801efbmr12669584a91.13.1772051765943; 
+ Wed, 25 Feb 2026 12:36:05 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82739d8bcb2sm105276b3a.22.2026.02.25.12.29.13
+ 98e67ed59e1d1-3591342f19fsm1294025a91.10.2026.02.25.12.36.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 12:29:13 -0800 (PST)
-Message-ID: <f86f20df-d4e0-4f92-8298-79aa24e2df65@linaro.org>
-Date: Wed, 25 Feb 2026 12:29:12 -0800
+ Wed, 25 Feb 2026 12:36:05 -0800 (PST)
+Message-ID: <8d9eac8b-27ac-4c6f-adc9-b76ab72a82bd@linaro.org>
+Date: Wed, 25 Feb 2026 12:36:04 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 06/31] hw/arm/smmuv3: Track SEC_SID in configs and events
+Subject: Re: [RFC v4 07/31] hw/arm/smmu-common: Add security-aware address
+ space selector
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
  <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,7 +83,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221100250.2976287-7-tangtao1634@phytium.com.cn>
+ <20260221100250.2976287-8-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -119,18 +119,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260221100250.2976287-7-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221100250.2976287-8-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x429.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,23 +147,52 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2/21/26 2:02 AM, Tao Tang wrote:
-> Cache the SEC_SID inside SMMUTransCfg to keep configuration lookups
-> tied to the correct register bank.
-> 
-> Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
-> and event logs always show which security interface emitted the record.
-> To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
-> identified as soon as an event record is built.
+> Introduce SMMU_SEC_SID_S to represent SEC_SID == 1, meaning Secure. And
+> then provide smmu_get_address_space, a SMMU instance-based address space
+> selector. The helper now returns the per-device memory/secure-memory
+> AddressSpace and reports missing spaces.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 > ---
->   hw/arm/smmuv3-internal.h     |  1 +
->   hw/arm/smmuv3.c              | 20 +++++++++++++-------
->   hw/arm/trace-events          |  2 +-
->   include/hw/arm/smmu-common.h |  1 +
->   4 files changed, 16 insertions(+), 8 deletions(-)
+>   hw/arm/smmu-common.c         | 17 +++++++++++++++++
+>   include/hw/arm/smmu-common.h |  3 +++
+>   2 files changed, 20 insertions(+)
 > 
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 58c4452b1f5..3baba2a4c8e 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -30,6 +30,23 @@
+>   #include "hw/arm/smmu-common.h"
+>   #include "smmu-internal.h"
+>   
+> +AddressSpace *smmu_get_address_space(SMMUState *s, SMMUSecSID sec_sid)
+> +{
+> +    switch (sec_sid) {
+> +    case SMMU_SEC_SID_NS:
+> +        return &s->memory_as;
+> +    case SMMU_SEC_SID_S:
+> +        if (!s->secure_memory || s->secure_memory_as.root == NULL) {
+> +            warn_report("Secure address space requested but not available");
+> +            return NULL;
+> +        }
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Thinking about this one, I don't see any case where we would like to 
+silently return here.
+
+Instead, could we check that directly in smmuv3_realize?
+If arm-smmuv3.secure-impl is enabled, then we should have
+s->secure_memory set accordingly.
+
+As well, we can decide to enable secure-impl by default if secure-memory 
+is available. This way, it should do the right thing out of the box, and 
+assert with a good message if the machine configuration lacks something.
+And user is still free to deactivate it with -global 
+arm-smmuv3.secure-impl=off if there is any reason to do so.
+
+Do you see any reason to not enable secure-impl by default if 
+secure-memory is available?
+
+Regards,
+Pierrick
 

@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90B47F55425
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 00:08:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91957F55425
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 01:38:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv2RD-0005Mh-J7; Tue, 24 Feb 2026 19:07:35 -0500
+	id 1vv3qx-0003vV-ME; Tue, 24 Feb 2026 20:38:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vv2RB-0005MH-Ik; Tue, 24 Feb 2026 19:07:33 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vv2R6-0004tt-V1; Tue, 24 Feb 2026 19:07:31 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id A101A5972DF;
- Wed, 25 Feb 2026 01:07:21 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id TmTG0dORH7DH; Wed, 25 Feb 2026 01:07:19 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 0693E596A29; Wed, 25 Feb 2026 01:07:19 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 04143596A18;
- Wed, 25 Feb 2026 01:07:19 +0100 (CET)
-Date: Wed, 25 Feb 2026 01:07:18 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-cc: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- peter.maydell@linaro.org, artem_mygaiev@epam.com, 
- volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, 
- Ruslan_Ruslichenko@epam.com, philmd@linaro.org, wangyanan55@huawei.com, 
- zhao1.liu@intel.com, pbonzini@redhat.com, 
- Bernhard Beschow <shentey@gmail.com>
-Subject: Re: [PATCH v2 19/33] hw/core/machine: add '-hw-dtb' option for machine
-In-Reply-To: <0bfb8cfc-a793-30cd-72c6-98b7a8177d32@eik.bme.hu>
-Message-ID: <233e3622-19b5-ed7b-5fdc-df23d5597681@eik.bme.hu>
-References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
- <20260219144901.3317747-1-ruslichenko.r@gmail.com>
- <dd8a92cc-51d6-4404-bd09-75b1798f925a@redhat.com>
- <87y0kj4mr3.fsf@draig.linaro.org>
- <CAN-aV1H0_4LviryDEmDSN0TfdSit-uN31H8g87sRBkJAHYbrdQ@mail.gmail.com>
- <d2d16e2b-d86a-633f-b32a-e063746658d8@eik.bme.hu>
- <CAN-aV1Ezvu1VnQJYiMDrNceaRAG32-DKtV85v2w58R4bpkL=KA@mail.gmail.com>
- <0bfb8cfc-a793-30cd-72c6-98b7a8177d32@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vv3qr-0003uv-Po; Tue, 24 Feb 2026 20:38:09 -0500
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vv3qo-0003gS-51; Tue, 24 Feb 2026 20:38:09 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBnb2NwUp5p6iBxBw--.1636S2;
+ Wed, 25 Feb 2026 09:37:52 +0800 (CST)
+Received: from [10.31.62.13] (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwB30O1rUp5pBuwcAA--.50570S2;
+ Wed, 25 Feb 2026 09:37:47 +0800 (CST)
+Message-ID: <42f92f30-315b-4862-8876-cd8c41339fc5@phytium.com.cn>
+Date: Wed, 25 Feb 2026 09:37:46 +0800
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1247519594-1771978039=:99179"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 1/2] tests/qtest: Support for memory access with
+ secure/space attr
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260222082529.491384-1-tangtao1634@phytium.com.cn>
+ <20260222082529.491384-2-tangtao1634@phytium.com.cn>
+ <CAFEAcA-L2oQ2p3nQVDcqpZSjhtU123Sep+ou8xOH-0jFug9LNA@mail.gmail.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <CAFEAcA-L2oQ2p3nQVDcqpZSjhtU123Sep+ou8xOH-0jFug9LNA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwB30O1rUp5pBuwcAA--.50570S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAQBWmcw6oEYwACst
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxWrWrWw45Xr4DZw1UGryxAFb_yoWrCF1kpr
+ ZrA3ZIgF4DGF18t3Z7Xws0gFyxK393KF42qrZ5JryjyF9xCr1xCryF9r15Cry2gws7W3Wq
+ 9r4j9r43JFn8J37anT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.358,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.659, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,181 +76,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hi Peter,
 
---3866299591-1247519594-1771978039=:99179
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+On 2026/2/24 23:54, Peter Maydell wrote:
+> On Sun, 22 Feb 2026 at 08:26, Tao Tang <tangtao1634@phytium.com.cn> wrote:
+>> Introduce `*_secure` and `*_space` commands to the qtest protocol and
+>> libqtest API. This allows testing devices that behave differently based
+>> on security state (e.g., ARM TrustZone/CCA or x86 SMM).
+>>
+>> - `*_secure` commands specify the SECURE parameter (0 or 1) and are
+>>    compatible with x86 and ARM.
+>> - `*_space` commands specify the ARM security space (0-3) and are
+>>    ARM-specific.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>
+>
+>> + * Memory access with MemTxAttrs:
+>> + * """"""""""""""""""""""""""""""
+>> + *
+>> + * The following commands allow specifying memory transaction attributes,
+>> + * which is useful for testing devices that behave differently based on
+>> + * security state (e.g., ARM TrustZone/CCA or System Management Mode in x86).
+>> + *
+>> + * Two variants are available:
+>> + *
+>> + * 1. ``*_secure`` commands: Available on x86 and ARM.
+>> + * Only specifies the SECURE parameter (0 or 1).
+>> + * When SECURE=1, uses the secure AddressSpace. The asidx argument to
+>> + * cpu_get_address_space() can only be 1 on x86 (SMM mode, X86ASIdx_SMM) and
+>> + * ARM (Secure state, ARMASIdx_S); all other targets always use 0 for the asidx
+>> + * parameter. When issuing ``*_secure`` commands, we assert that the secure
+>> + * AddressSpace must exist.
+>> + *
+>> + * 2. ``*_space`` commands: ARM-specific.
+>> + * Only specifies the SPACE parameter (0-3).
+>> + * SECURE is auto-derived: secure=1 for Secure(0)/Root(2), secure=0 for
+>> + * NonSecure(1)/Realm(3), following ARM's arm_space_is_secure() semantics.
+>> + *
+>> + * Secure variants with .secure attribute (x86/ARM):
+>> + * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writeb_secure ADDR VALUE SECURE
+>> + *  < OK
+>> + *  > readb_secure ADDR SECURE
+>> + *  < OK VALUE
+>> + *  > read_secure ADDR SIZE SECURE
+>> + *  < OK DATA
+>> + *  > write_secure ADDR SIZE DATA SECURE
+>> + *  < OK
+>> + *  > memset_secure ADDR SIZE VALUE SECURE
+>> + *  < OK
+> Rather than creating two new separate families of commands
+> for this, we could instead have an extra optional parameter
+> to the existing read/write/etc commands, so for example:
+>
+>    readb ADDR              # read, with MEMTXATTRS_UNSPECIFIED
+>    readb ADDR secure       # ditto, but set the attrs for secure
+>    readb ADDR space=realm  # ditto but for a security space
+>
+> This patch has a lot of duplication of the existing code,
+> and I think that doing it this way round will help reduce that.
 
-On Tue, 24 Feb 2026, BALATON Zoltan wrote:
-> On Tue, 24 Feb 2026, Ruslan Ruslichenko wrote:
->> On Tue, Feb 24, 2026 at 12:55 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>> On Mon, 23 Feb 2026, Ruslan Ruslichenko wrote:
->>>> On Mon, Feb 23, 2026 at 2:23 PM Alex Bennée <alex.bennee@linaro.org> 
->>>> wrote:
->>>>> 
->>>>> Thomas Huth <thuth@redhat.com> writes:
->>>>>
->>>>>>  Hi!
->>>>>> 
->>>>>> On 19/02/2026 15.48, Ruslan Ruslichenko wrote:
->>>>>>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>>>>> Add new '-hw-dtb' command-line option and corresponding
->>>>>>> MachineState property.
->>>>>>> The 'hw-dtb' option allows to specify a Device tree
->>>>>>> binary with hardware description which Qemu should
->>>>>>> emulate.
->>>>>>> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>>>>> ---
->>>>>>>   hw/core/machine.c        | 19 +++++++++++++++++++
->>>>>>>   include/hw/core/boards.h |  1 +
->>>>>>>   qemu-options.hx          |  9 +++++++++
->>>>>>>   system/vl.c              |  3 +++
->>>>>>>   4 files changed, 32 insertions(+)
->>>>>>> diff --git a/hw/core/machine.c b/hw/core/machine.c
->>>>>>> index d4ef620c17..affd24cd49 100644
->>>>>>> --- a/hw/core/machine.c
->>>>>>> +++ b/hw/core/machine.c
->>>>>>> @@ -363,6 +363,20 @@ static void machine_set_dtb(Object *obj, const 
->>>>>>> char *value, Error **errp)
->>>>>>>       ms->dtb = g_strdup(value);
->>>>>>>   }
->>>>>>>   +static char *machine_get_hw_dtb(Object *obj, Error **errp)
->>>>>>> +{
->>>>>>> +    MachineState *ms = MACHINE(obj);
->>>>>>> +
->>>>>>> +    return g_strdup(ms->hw_dtb);
->>>>>>> +}
->>>>>>> +
->>>>>>> +static void machine_set_hw_dtb(Object *obj, const char *value, Error 
->>>>>>> **errp)
->>>>>>> +{
->>>>>>> +    MachineState *ms = MACHINE(obj);
->>>>>>> +
->>>>>>> +    ms->hw_dtb = g_strdup(value);
->>>>>>> +}
->>>>>>> +
->>>>>>>   static char *machine_get_dumpdtb(Object *obj, Error **errp)
->>>>>>>   {
->>>>>>>       MachineState *ms = MACHINE(obj);
->>>>>>> @@ -1145,6 +1159,11 @@ static void machine_class_init(ObjectClass *oc, 
->>>>>>> const void *data)
->>>>>>>       object_class_property_set_description(oc, "dtb",
->>>>>>>           "Linux kernel device tree file");
->>>>>>>   +    object_class_property_add_str(oc, "hw-dtb",
->>>>>>> +                            machine_get_hw_dtb, machine_set_hw_dtb);
->>>>>>> +    object_class_property_set_description(oc, "hw-dtb",
->>>>>>> +                "A device tree binary used to describe the hardware 
->>>>>>> to QEMU");
->>>>>> 
->>>>>> Do the hardware dtbs differ from the ones that are passed to the Linux
->>>>>> kernel? If not, I think you likely could use the existing "dtb"
->>>>>> property for your new feature?
->>>>> 
->>>>> They have to - the normal DTB cannot define the whole system because its
->>>>> only concerned with reporting what the kernel can see to the kernel and
->>>>> not defining the whole system including what the firmware sees.
->>>>> 
->>>> 
->>>> Yes, Indeed.
->>>> Normal DTB was explored, but there is not enough information to create
->>>> QEMU models from it.
->>>> Thus we need to have a separate device tree.
->>> 
->>> What additional data is needed that's not present in dtb from firmware and
->>> what if that additional data is passed to the kernel? I think the kernel
->>> would just ignore the additional data that it doesn't need so one dtb
->>> might be enough even if it has to be more detailed than what the kernel
->>> normally gets. If that works we don't need a separate option.
->>> 
->> 
->> Here are few specific examples:
->> 
->> 1. DTS compatibles and QOM type names are all different.
->> Using Linux device tree would require to maintain some massive hardcoded 
->> mapping
->> even for devices that otherwise don't require any special handling.
->
-> Bernhard's patches had the same issue and solved it by adding subclasses with 
-> names matching the dtb. I think that would not work but a better approach is 
-> to allow alias names for devices (we already have machine name aliases I 
-> thought something similar for devices) that would solve this issue without 
-> too much additional complexity. Then the device would just need an additional 
-> line registering an alias name to match the dtb name (or more of different 
-> machines have different compatible names).
->
->> 2. Object properties. We would probably need to make sure there is no 
->> conflicts
->> and all properties are either ignored by Linux drivers or have exactly
->> the same meaning.
->> 
->> 3. Devices mapped to Secure Firmwares only. Those are not accessible by 
->> Linux
->> and trying to initialize them from the Linux kernel would cause memory 
->> aborts.
->> 
->> 4. Connecting devices to backends such as serial, block devices, etc.
->> We need to specify corresponding 'chardev' and 'driver' properties.
->
-> This is probably not part of the machine but a specific invocation so these 
-> should be specified on the command line and not in the machine definion.
->
->> 5. Interrupt wiring. Some hardware lines are transparent to Linux, but need 
->> be
->> wired by QEMU. For example, interrupt controllers are wired to CPUs, etc.
->> If we would want to initialize it from dts eventually, this would need to 
->> be
->> passed somehow.
->> 
->> Overall, my understanding is Device models typically need to support
->> booting existing
->> OS images and device trees from regular platform builds.
->> And at least due points 2-4, we cannot use them directly.
->
-> Some of the points may be solved other than modifying dtb but some may indeed 
-> need extensions so a separate hw-dtb may be needed in more complex cases.
->
->> Since we still need to modify the device tree for QEMU anyway, having 
->> support
->> for unified DTS doesn't really make sense.
->
-> However it may be worthwile to try keeping the modifications minimal so for 
-> simple machines like the e500-ppc that has no secure world or other things 
-> not described by the normal dtb it could just use the regular dtb and the 
-> hw-dtb option would be optional for more complex machines that need it.
->
->>> This series seems to be more complex than Bernhard's e500-fdt experiment
->>> (I've linked to that in
->>> <https://lists.nongnu.org/archive/html/qemu-devel/2026-01/msg05470.html>)
->>> Bernhard's patch only added minimal support for creating devices from fdt
->>> and then put additional logic in the devices instead of handling them in
->>> generic code. Would such an approach lead to simpler fdt handling? If not
->>> why is the additional complexity needed?
->> 
->> Most devices can be created from generic code. Supporting one common
->> approach to initialize some specific device class would be simpler and more
->> maintainable than writing a custom FDT handler logic within each device 
->> model.
->
-> I think putting device specific knowledge in generic code is against the 
-> object oriented design of QEMU and would be less maintainable because it 
-> would not belong to the device maintainers that way. If you have common code 
-> for some device classes then those devices probably have a superclass where 
-> this code could be put. The problem of mapping property names to device 
-> specific properties could also be done easier within a device model which has 
-> better knowledge of the device and then we would not need a global table 
-> mapping these. So while at first look it may seem more fragmented putting 
-> some logic in devices instead of a central place it's better fits the object 
-> model and groups device specific logic in the device model which is more 
-> maintainable than a global mapping that does not belong to any device but 
-> touches several unrelated devices.
 
-It does not help that Google randomly refuses my emails saying it's spam 
-if I cc it to more than one gmail user. See my reply above if you've 
-missed the previous mail. Hopefully this gets through.
+Thanks for the feedback.
 
-Regards,
-BALATON Zoltan
---3866299591-1247519594-1771978039=:99179--
+
+I'll refactor this in V2.
+
+
+>
+>
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            /* Secure AddressSpace must be available when issuing secure commands */
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+> You can't assume that the first address space is the secure one.
+> To get the right address space for a given MemTxAttrs you do
+> what cpu_memory_rw_debug() does:
+>
+>          asidx = cpu_asidx_from_attrs(cpu, attrs);
+>          res = address_space_rw(cpu->cpu_ases[asidx].as, ....);
+
+
+I'll fix it in next version.
+
+>
+>
+>> +    } else if (strcmp(words[0], "writeb_space") == 0 ||
+>> +               strcmp(words[0], "writew_space") == 0 ||
+>> +               strcmp(words[0], "writel_space") == 0 ||
+>> +               strcmp(words[0], "writeq_space") == 0) {
+>> +        /* *_space commands: ARM-specific. */
+>> +        uint64_t addr, value, space;
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        if (!target_arm() && !target_aarch64()) {
+>> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
+>> +            return;
+>> +        attrs.space = space & 3;
+>> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
+> I think that because include/hw/arm/arm-security.h is a completely
+> standalone header that is safe to include in compiled-once-for-all-targets
+> code, we can include it in this file. Then we can use
+> arm_space_is_secure(), and also the ARMSS_* constants for
+> the space names rather than hardcoded numbers.
+
+
+Well I did hesitate initially about including 
+include/hw/arm/arm-security.h, because I wasn’t fully sure what the 
+rules are in QTest for pulling in target-related headers like this.
+
+But since you’ve confirmed, I’ll fix it in the next version.
+
+
+Thanks again.
+
+Tao
+
 

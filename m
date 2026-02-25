@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA265FD45F1
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 20:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90318FD45EC
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 21:01:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvLvF-0002fK-EF; Wed, 25 Feb 2026 15:55:53 -0500
+	id 1vvM0H-0003pT-Ip; Wed, 25 Feb 2026 16:01:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvLvD-0002es-UV
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:55:51 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1vvM0G-0003or-BZ
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:01:04 -0500
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvLvA-0005om-Eu
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:55:50 -0500
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2ad21f437eeso638845ad.0
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 12:55:47 -0800 (PST)
+ id 1vvM0E-0006TF-Qc
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:01:04 -0500
+Received: by mail-pf1-x442.google.com with SMTP id
+ d2e1a72fcca58-8230c33f477so98413b3a.2
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 13:01:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772052946; x=1772657746; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772053261; x=1772658061; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=PkcIX1QHSNOeeKJy7eBSe+HhZrb6DJ5nCXAorN/spQ0=;
- b=emWzqi7YZAnDjQZGcfQK8nPQ5iXK8TTx+kgbpWff78uDFjHj/hOrtczn5uaA89T71x
- L3cgS/PDawzMDFNm9DmK9Obc9eykSGeJgdx+wbJ43rbZ2wmMGbY+FBNH0B9qhwkpKCPx
- Bb2XurMuovpaVZxvW7bPm6z/DLdMrEUauRr0yvqoQkm6A23Bw8fFiYACls/TYGQPufOp
- UH24QNlvnH2rEVMqxKETBQZrKu4jAL9E61FrLTTXEJtkyGOgbTAxUFAIBzHRNsVc5DEn
- I/I1edWIuUSLxmksSjpflojk2/+lVFBVMDTk6V4G3CT8B4fHsPwyZmCyhj6VxGJ+6nfI
- HYug==
+ bh=8bZpsD4C/f1+7AkSEN+2MjbOt3liQMWo50+H+E72uVQ=;
+ b=MiKB9IUbhyxtMBjH0BTsg6EGVZ/T5DKjYdMIwFD+WI4YLU7GZmUAjRhgL1D4pPTjaI
+ 4wFuI9A3mdH4ZaCwsYa1UPoV0Fazxkc4MPWuC/LqA5ueumw0M2ikqZYNB4PS+kuQ+3GQ
+ JlYivl+6FPOqy772hVLEbnR/rffCV1qA4FWLFwYfdfJRHewTxrRYMduW6wurBU0f1CDY
+ jOKkvievAPlBNOdv22vDSJ+fX7TC+4387z3kQRePqeLhDSr4UvQHKYRIS/8DbpLe7877
+ AGjZx1N9U4u4SYCnPMCfwwZHIcGxrKJpKQiYsKg2WGpBmaFTXLdlrwDVYrQwqFnoM3Ve
+ 9S+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772052946; x=1772657746;
+ d=1e100.net; s=20230601; t=1772053261; x=1772658061;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=PkcIX1QHSNOeeKJy7eBSe+HhZrb6DJ5nCXAorN/spQ0=;
- b=A25j0ApnGStDi2qtxQbzCOorqBhWFFAUkXV/tfpVLXMKxJy3jNn6isnMm1RsTyDYG/
- zcUGGPI583o5TauEbLOD8bripndZ7yF4+LHm5cpPaw6cGK+wQ5ZuonfHsNP+RV9N+tiP
- 0WZDfngk1HDCUSprH2fMM+5havYxvPFWIP5MX/B/CIjmm3QwJjvbggmr5DalJ1Zn44Yb
- Bp3jYwejja/393fwRJRtLMW6iX4d23ChuWK4Q4g1dz8sey/FLpe7daQMapc0UrCRGdJf
- Eo+wHL/U0UjbBMj+ya/hSHe9rVfWzaKBVTNJniG126l/OaStvinJ7v6Bwl7eJ9Ytl5cb
- JVLw==
+ bh=8bZpsD4C/f1+7AkSEN+2MjbOt3liQMWo50+H+E72uVQ=;
+ b=ny2AGGibDHtk1fs6PsCaRpZiUHlpcHBl5iYB1eQchCr8iWsOf8UYFz8s7Cd0Ds0ulH
+ yjrMqvIsmFgjk3ZxfJO3gLXJZSwc/IwWz8e96KgPAsG2x7k+RDpBSI/lnYjs7mwJ2hYY
+ z1dtAY3pbERmGc45iRifO+wm02kap8SV2Cpg9cP89C2ET09ADmwbAlcHPs9O1Kdj5T9f
+ nJXC6irbYtwoT4+iQmWav2blROihKb3KPBMhU9vxF38rkUoQTNOC9ckleOqUx0+SzCnq
+ Cy583bQbBL8xnkUjR5Gh8Nv4ufjjj55qqsvULXdNjg5enpi5EmsL/ew2Giwjcle3SX2a
+ m96A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVGl1EMnNBet5FD6sJRaI3KtNukjZw4ZC9ZM+ge0aRze6A60bJLFBBB6bVTjNBZcm1X23mXDrAVRw==@nongnu.org
-X-Gm-Message-State: AOJu0YzYmP23UkO+ICCrVpYfbQn6/8RAI84mWfPoIBze9vtOyk4s7GCE
- wQf1/dW8xophtmkfcefz+3l6XJbKNmEkmAe0WMFMv+12ckUINu/pGxnwiz2y9NLgQfY=
-X-Gm-Gg: ATEYQzwSzc+CJCIHIT3NvUbleK3gAdlx4duXPsTFqexwx2xQjAGWlnw8YYWFBQYy1EA
- bOhgZoshIF2Z4t02iI1GbsKUgfEu9/1YjGQ/fFLbT3sW1QH/7T0rVA9XZGUz547kKGOnOkkpI6C
- Rk8XASHtk0Yr73ixG43VXpGdUuDBxqR83fSitKMf1BmF8B3h7YXbRXh3lCl4h5lmT5l4uAd+d7q
- S+g0hr6gGhxFphdTGDQXK+WlOLISqqmhkq/UaEdK/27CXkXHnkZrb+Ck9B1lhqqERwrea0i4K1v
- cQYQn4TFogpaT0KQyKoi/BCvfEsZMqNanB+o1/kDr5cxr///G2r7mnrk79IHduS4vFV7Pujufpy
- 5fI8ZjSqN9Mt6KaN/DN2/u461oTRb09QVf7sHF+DfHwSlaTVqAku8T13kGEMqt+gyN5m4CUVHp5
- LHfu54XyC7m8pTdkYqZtLPLWQ0HVi9iPLgO822rX6CZKvGYbD8md8nBHh/CuitX/OshDkR3mRiY
- NsCYLo=
-X-Received: by 2002:a17:902:cf04:b0:2a0:f0e5:74eb with SMTP id
- d9443c01a7336-2adf79692e1mr2954865ad.28.1772052946500; 
- Wed, 25 Feb 2026 12:55:46 -0800 (PST)
+ AJvYcCX9NZm51uIKUcW38cyIlqbOmjIZDX1QMc3ruGZyh4rB5YyXZbw6D00gkQMed07VUWbg7Ca9Ugobeg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywyzf6fvlswjz5lEr8xo3Yh8gIPbZ7Z4zI5gIL/UcJcCdQoddfU
+ wn/W8XkmeNrYr+9avY57okX4ttLris7JDBiMKnmE6M7RQgok1TAjGyPweuUYdipp3X4=
+X-Gm-Gg: ATEYQzyc8vjZS6eG5fvCBCiK0FUNGnSCJpytBkViRiVAbm8IFtzbiEu+v0ZMJlKlg7R
+ TLbyVDI6yBea5P7/ARL6i8wqiTNTqaFYmA1ejXdZ1KOC0qgyw2rHWaTEr1dzO8UGtLL6fqeGfoZ
+ 2i9YlqeqNkBAufWhvqMJHeX6ymcvzWWAhzOOlrxtuqUcjS2/889kHDzwdBWtp/kUw/lVa3xMvUe
+ dM4ZR83XyrYcqWu4cAv/FenjpuHszaDJKPT7lL4W3gG2j0o0KMAipTi0o6k+JDjTKgUAMnooU0N
+ cbwa9UYw2O5GBOGZq96G4XSmqt6rya3vvwrzb19FFnaeFz0VkbO9nCaPBZk7KEphcRyeaIAg1DA
+ 4BFVYnAyCppSKtnwKZOhfov1bhA4AOtVZ1d5j4OebMR9MqBqUM8J4Ee7ClPPJ702xfq11smG2WK
+ qmGYknP+pcXJ6NUC9xXzkGENA1IeZTlk15ln4beQ4WrpOVbUN4prRBdfBOdCB33d9+bVcf9B1g+
+ I59gSg=
+X-Received: by 2002:a05:6a00:994:b0:7fb:cf05:93cb with SMTP id
+ d2e1a72fcca58-826da8da4dbmr14107717b3a.1.1772053260974; 
+ Wed, 25 Feb 2026 13:01:00 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2adfb6df578sm979105ad.81.2026.02.25.12.55.45
+ d2e1a72fcca58-82739d4c9b5sm151260b3a.9.2026.02.25.13.01.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 12:55:45 -0800 (PST)
-Message-ID: <0ace6596-fba6-48dd-b0af-e0444565a5ae@linaro.org>
-Date: Wed, 25 Feb 2026 12:55:45 -0800
+ Wed, 25 Feb 2026 13:01:00 -0800 (PST)
+Message-ID: <ff593a94-78d0-445a-93ad-2fb09f418448@linaro.org>
+Date: Wed, 25 Feb 2026 13:01:00 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 08/31] hw/arm/smmuv3: Plumb transaction attributes into
- config helpers
+Subject: Re: [RFC v4 10/31] hw/arm/smmu-common: Key configuration cache on
+ SMMUDevice and SEC_SID
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
  <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -84,7 +84,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221100250.2976287-9-tangtao1634@phytium.com.cn>
+ <20260221101437.2990803-1-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -120,18 +120,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260221100250.2976287-9-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221101437.2990803-1-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x442.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,67 +147,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/21/26 2:02 AM, Tao Tang wrote:
-> As a preliminary step towards a multi-security-state configuration
-> cache, introduce MemTxAttrs and AddressSpace * members to the
-> SMMUTransCfg struct. The goal is to cache these attributes so that
-> internal functions can use them directly.
+On 2/21/26 2:14 AM, Tao Tang wrote:
+> Adapt the configuration cache to support multiple security states by
+> introducing a composite key, SMMUConfigKey. This key combines the
+> SMMUDevice with SEC_SID, preventing aliasing between Secure and
+> Non-secure configurations for the same device, also the future Realm and
+> Root configurations.
 > 
-> To facilitate this, hw/arm/arm-security.h is now included in
-> smmu-common.h. This is a notable change, as it marks the first time
-> these Arm CPU-specific security space definitions are used outside of
-> cpu.h, making them more generally available for device models.
-> 
-> The decode helpers (smmu_get_ste, smmu_get_cd, smmu_find_ste,
-> smmuv3_get_config) are updated to use these new attributes for memory
-> accesses. This ensures that reads of SMMU structures from memory, such
-> as the Stream Table, use the correct security context.
-> 
-> For the special case of smmuv3-accel.c, we only support the NS-only path
-> for now. Therefore, we initialize a minimal cfg with sec_sid, txattrs,
-> and as for the NS-only accel path.
-> 
-> For now, the configuration cache lookup key remains unchanged and is
-> still based solely on the SMMUDevice pointer. The new attributes are
-> populated during a cache miss in smmuv3_get_config. And some paths still
-> rely on the NS-only address_space_memory, for example smmuv3_notify_iova
-> and get_pte(). These will be progressively converted in follow-up commits
-> to use an AddressSpace selected according to SEC_SID.
+> The cache lookup, insertion, and invalidation mechanisms are updated
+> to use this new keying infrastructure. This change is critical for
+> ensuring correct translation when a device is active in more than one
+> security world.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Link: https://lore.kernel.org/qemu-devel/a9a840a6-c65f-4352-9a49-ddd1b5483f43@redhat.com/
 > ---
->   hw/arm/smmu-common.c         | 19 ++++++++++++++++++
->   hw/arm/smmuv3-accel.c        | 12 +++++++++++-
->   hw/arm/smmuv3-internal.h     |  3 ++-
->   hw/arm/smmuv3.c              | 38 ++++++++++++++++++++++--------------
->   include/hw/arm/smmu-common.h | 12 ++++++++++++
->   5 files changed, 67 insertions(+), 17 deletions(-)
+>   hw/arm/smmu-common.c         | 45 ++++++++++++++++++++++++++++++++++--
+>   hw/arm/smmuv3.c              | 13 +++++++----
+>   include/hw/arm/smmu-common.h |  7 ++++++
+>   3 files changed, 58 insertions(+), 7 deletions(-)
 > 
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 3baba2a4c8e..b320aec8c60 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -30,6 +30,25 @@
->   #include "hw/arm/smmu-common.h"
->   #include "smmu-internal.h"
->   
-> +ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid)
-> +{
-> +    switch (sec_sid) {
-> +    case SMMU_SEC_SID_S:
-> +        return ARMSS_Secure;
-> +    case SMMU_SEC_SID_NS:
-> +    default:
-> +        return ARMSS_NonSecure;
-> +    }
-> +}
-> +
 
-Would that be possible to add all switch values, and use 
-g_assert_not_reached() for SMMU_SEC_SID_NUM.
-This way, when adding SMMU_SEC_SID_R, we'll be directly blocked at 
-compilation because case is missing.
-
-Regards,
-Pierrick
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

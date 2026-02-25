@@ -4,90 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5909CF5544C
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:18:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16566F55452
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:45:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv5P1-0000ng-C7; Tue, 24 Feb 2026 22:17:31 -0500
+	id 1vv5ph-0005rX-EU; Tue, 24 Feb 2026 22:45:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Oz-0000n9-Sw
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:29 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5pb-0005n8-KV
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:45:00 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Oy-00037v-BV
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:29 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-48373a4bca3so37663735e9.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:17:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5pa-0007Tm-4A
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:44:59 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4836f363ad2so67928105e9.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:44:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771989447; x=1772594247; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZyFoJ14S6oW3srTeQcVGkbUM0aXn2EkRu3cSSx5I2ts=;
- b=gc2zw4UNIC3fQcR+5wvNF4i/z4PJiPESvwLWuaNU7GzaYK7Lp2bfkkqIvQePgQdEuT
- 2qVByURNujs3Ugvqj9PB5HMNb/AXeGS+muvO7dJM4Km+vMU7pFypfI5px4B+KGg0aTgg
- 1gHmLARRQ7iSgeZxOVtlbbFbGszKii7q32taJcWG94fltos9NFOo6+ezPSLVvfOFIGw+
- j9jAos93Je0VWSXgsBLQ5tQUyypQe9/RYVfmQj3gYukFKoQHkf63iPIUWOr7vAfxY3oZ
- GJ+s0DhP25zUBO6qC/gUb1TB6sY0PW8rI4GBhGkiF2EwqefD5Ji65i+SUsTzc0Sod0BN
- e+9A==
+ d=linaro.org; s=google; t=1771991094; x=1772595894; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=2UPbqmBwrljXKbelPv/ODOM3kOiQmDw3F4/3zO5SvZM=;
+ b=g5pPvF5AcG2Bc152D1+AXmteOpCP3t4j6aOmn6RDR9j4u1YIrNLIMPHG7gbKD8y9AU
+ PMfMwz3aHIzv9dCQjtHBhy4k497dwxJmEdtpxiZtle8jIC4oqGabumx38lDWJVMFEQXJ
+ +IOdgFIViWJ6JxMCkUkfNAEoXy4Eev+FZUNuw5nEVgNOBabwLOVhzI8oK3LfPm40DA3j
+ ScC+qq4dG0KT05tVFaQSC3eVXP+8r+P4KQSbICL3bJ3Qo67R2maflxo0euO/4GbHV7EW
+ zLbr3GsgzqoHbBHi+uk+udeyyleq+1au611qc4fXbH/dq8Yy1mdJ+cwllQS7SbOeAfBZ
+ 4rWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771989447; x=1772594247;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ZyFoJ14S6oW3srTeQcVGkbUM0aXn2EkRu3cSSx5I2ts=;
- b=gPnu6dBvIupVJOTOFD5xai2rdG0yFI/8EFGodpcFZb6GP6ZzVUQR3+M+ya7qtYmDE4
- y6p7wdvxvLOEBkEop6fBUwRvKaBaewU3eB9MtYY1gVp7HouIHWYaHgB2XQRSvZEBLW1R
- L88LG2J9zJyzdqgDIc945vdEHCHYaCIQIBg89d5RalnmZZxEUowbc2nEXT8WsR0x1S8E
- hQplsBtcbqsZpMy/wzEYvdHjTuz09eYqAuw8I9pbgLIT6NSgn0/vV30/i3ScbIuR4uG+
- +DnxehWXkhi5eo9RRlaiaUEyIq5Mdq36687eLhND6wCLUGYh71VkEPehiVAGFhfHcQv4
- +Vug==
+ d=1e100.net; s=20230601; t=1771991094; x=1772595894;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2UPbqmBwrljXKbelPv/ODOM3kOiQmDw3F4/3zO5SvZM=;
+ b=ngIbN9Ec+1QJktUUAg5CZvyqtbyIdIgZHnMpoXhtty5k1Rbw4qQ/GgJ0aMBRAJYWbq
+ eqBzHduoB4k6Ddl2wlf1MpG2aJM91CqzKZvyBaLtL+Qhdq4z3ruJ9jyLkyPC/UZKAr+R
+ q5e/Ovb0yFoeOBMynOVBl5CR+/Wt4/msKbvi6TYkjhbPRQ6lSXLrKblRw/h1MabaaVDX
+ Vw0t/EipqZEvcfa4aJmQLC+uDESjH2S1HNKaeXkSlZUmD9fvwnyfEqQompSbZjj8vH4T
+ aaJS6sf6L9fjfK5oNht6r6PTih6QKnbBFoegQBB/Ik4QyJftOzCErdrlsQsuE78z+Ab1
+ yW4A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWSfLIvE4hj+0jSv5zNFR24FRjSUUtK5esF2R40m6xfqEezIA7ED0sonc00RfS+vlqJeN1YwXaBWg==@nongnu.org
-X-Gm-Message-State: AOJu0YwMx/k5podTZBIhKpI2fcK16WAF+dzuXDaJ3RUsFvTnVWEVi0zW
- Nx1HVZVgpbAKZ712Jl0JED/fWR/qxj16Q5+jrgnIeatYlpCEN5RloAypfyZlYz02rAQ=
-X-Gm-Gg: ATEYQzycGZyBCCbhiAx7IcYSd+AWRaj8qmWeTSoTz0r3ifR2V2w0hMVVmLm3F1wDoeG
- xLXUg7Mxu9UUnHa/jPaYbRCiKYIkgPPw2EwXetQsLaFH8SFWwcMVmkKyZ8SdQ4rjnhxyVutSu1r
- OM3tieVqUjgmDXWsEoFDd6IIcBlNXjlSskFQh0P+soe0Kq63CEkaWl4IykcCTP+6FmdET025UyV
- 2EPbAW/nlkYhY5jFwADer8960RD9yboLySG55KfIrWJog0+VpEBq/ipwXVBQ3PzQqEgwEBjaxFh
- d4mBcm+GE9KmiYDwwffNKha6lcptA6exJfEa5T3+SGz1EE8h3WVFsVRHRjEatpCPJH6aBfTdp4N
- aM+IjMSSbQCxwMlthGt5cFKPnZu5Vte0dzQckyKukEYIbshoZPD22PH/XqTgMIOHHIcMC8HXbFR
- faq2G62w8u9MOBdJbk1lkB78t1ioqg51s8lo6hTorgdEwPN6FiVYYKRaDAEd1JEFfckP0v96cJ
-X-Received: by 2002:a05:600c:1f93:b0:45c:4470:271c with SMTP id
- 5b1f17b1804b1-483bef53c8emr13729355e9.18.1771989446939; 
- Tue, 24 Feb 2026 19:17:26 -0800 (PST)
+ AJvYcCWY9tljBMlCjQOxuc4GlRCkENlz61qSErD4DTNwr5Q1Jkdpp4sLScDgxfYM3d0Aj6uILvoDId83xQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzx8SVKulN2pg0v2aiq/gt4iRZ06iCG01YlxIrQHi2iGpprzGUF
+ /X6gWQ9L0Y8x/EGm0hjNlSrzLwmuEnmhYrYqKFK7crGg4vMjJOIsUdeCEKHN/dcACxw=
+X-Gm-Gg: ATEYQzx5a2X7E+4hZtTeCkMp2eaqIRM1ztpEFINZXIKEEgbDXbjlf5X4FVmh/BPs/wk
+ O/VqLCKuoNQHy1xBRXdxcDRxJmwva0dVZVcitjhiEZ3uz0DKyaQCOcYjlNvfsXL3dLPUaBvNUdw
+ i7w0U8MvlyhxT5ZTJtlXnVoLlaE1Mi0ovgdwvpIeFbiuMLLALHq/CSGoBZ1HmqfXpfuisZurfvG
+ YF1Q/tZSJf3Zw0IJ7qoU4778fa//GvVvO8BkJsysrd5ykoT60j8lRsBkdJaoFqGm991Zd3fApmr
+ FOM3a4mQqdApuhOZaIfKZ5ucpzCGd7REVGOdoqwTLQcg40ipRjjwzXhUEvhHS3N1czA5OcKXlQv
+ CMRnBWHlF4nt7MNrS3FSBUJ8/9EXnb2rK34hB7AXjoYGa7WNB/72xZQ/UqE8jZ8KyuhpJWs2YJB
+ FBgbKbPwgn7PxYB1BEivRAx65HoKAusIKP1ewNaF5USqfYa65vBVidh3qGuhoCF0LM53QDeNn4
+X-Received: by 2002:a05:600c:620c:b0:483:43d8:8d68 with SMTP id
+ 5b1f17b1804b1-483a95f8988mr228616375e9.28.1771991094515; 
+ Tue, 24 Feb 2026 19:44:54 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bfb87067sm935425e9.12.2026.02.24.19.17.24
+ 5b1f17b1804b1-483bd6f19f5sm96888525e9.1.2026.02.24.19.44.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Feb 2026 19:17:26 -0800 (PST)
+ Tue, 24 Feb 2026 19:44:53 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Farhan Ali <alifm@linux.ibm.com>
-Subject: [PATCH 3/3] hw/s390x/s390-pci-vfio: Avoid including CONFIG_DEVICES in
- hw/ header
-Date: Wed, 25 Feb 2026 04:16:58 +0100
-Message-ID: <20260225031658.32095-4-philmd@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/cpu: Build a15mpcore.c once as common object
+Date: Wed, 25 Feb 2026 04:44:51 +0100
+Message-ID: <20260225034451.41338-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260225031658.32095-1-philmd@linaro.org>
-References: <20260225031658.32095-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,105 +99,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-By inlinining the stubs we can avoid the use of target-specific
-CONFIG_DEVICES include in a hw/ header, allowing to build the
-source files including it as common objects.
+a15mpcore.c doesn't need to include the target-specific 'kvm_arm.h'
+header, it only lacks the qemu_get_cpu() declaration which comes
+from 'hw/core/cpu.h'. Include the latter and build as common object.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/s390x/s390-pci-vfio.h | 20 --------------------
- hw/s390x/s390-pci-vfio-stubs.c   | 32 ++++++++++++++++++++++++++++++++
- hw/s390x/meson.build             |  1 +
- 3 files changed, 33 insertions(+), 20 deletions(-)
- create mode 100644 hw/s390x/s390-pci-vfio-stubs.c
+ hw/cpu/a15mpcore.c | 2 +-
+ hw/cpu/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/s390x/s390-pci-vfio.h b/include/hw/s390x/s390-pci-vfio.h
-index ae1b126ff70..f7d6149daf6 100644
---- a/include/hw/s390x/s390-pci-vfio.h
-+++ b/include/hw/s390x/s390-pci-vfio.h
-@@ -13,32 +13,12 @@
- #define HW_S390_PCI_VFIO_H
+diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
+index 28cc4b3a4bd..28cda55ccf8 100644
+--- a/hw/cpu/a15mpcore.c
++++ b/hw/cpu/a15mpcore.c
+@@ -22,10 +22,10 @@
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+ #include "hw/cpu/a15mpcore.h"
++#include "hw/core/cpu.h"
+ #include "hw/core/irq.h"
+ #include "hw/core/qdev-properties.h"
+ #include "system/kvm.h"
+-#include "kvm_arm.h"
+ #include "target/arm/gtimer.h"
  
- #include "hw/s390x/s390-pci-bus.h"
--#include CONFIG_DEVICES
- 
--#ifdef CONFIG_VFIO
- bool s390_pci_update_dma_avail(int fd, unsigned int *avail);
- S390PCIDMACount *s390_pci_start_dma_count(S390pciState *s,
-                                           S390PCIBusDevice *pbdev);
- void s390_pci_end_dma_count(S390pciState *s, S390PCIDMACount *cnt);
- bool s390_pci_get_host_fh(S390PCIBusDevice *pbdev, uint32_t *fh);
- void s390_pci_get_clp_info(S390PCIBusDevice *pbdev);
--#else
--static inline bool s390_pci_update_dma_avail(int fd, unsigned int *avail)
--{
--    return false;
--}
--static inline S390PCIDMACount *s390_pci_start_dma_count(S390pciState *s,
--                                                        S390PCIBusDevice *pbdev)
--{
--    return NULL;
--}
--static inline void s390_pci_end_dma_count(S390pciState *s,
--                                          S390PCIDMACount *cnt) { }
--static inline bool s390_pci_get_host_fh(S390PCIBusDevice *pbdev, uint32_t *fh)
--{
--    return false;
--}
--static inline void s390_pci_get_clp_info(S390PCIBusDevice *pbdev) { }
--#endif
- 
- #endif
-diff --git a/hw/s390x/s390-pci-vfio-stubs.c b/hw/s390x/s390-pci-vfio-stubs.c
-new file mode 100644
-index 00000000000..d9882b7aad0
---- /dev/null
-+++ b/hw/s390x/s390-pci-vfio-stubs.c
-@@ -0,0 +1,32 @@
-+/*
-+ * s390 vfio-pci stubs
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/s390x/s390-pci-vfio.h"
-+
-+bool s390_pci_update_dma_avail(int fd, unsigned int *avail)
-+{
-+    return false;
-+}
-+
-+S390PCIDMACount *s390_pci_start_dma_count(S390pciState *s,
-+                                          S390PCIBusDevice *pbdev)
-+{
-+    return NULL;
-+}
-+
-+void s390_pci_end_dma_count(S390pciState *s, S390PCIDMACount *cnt)
-+{
-+}
-+
-+bool s390_pci_get_host_fh(S390PCIBusDevice *pbdev, uint32_t *fh)
-+{
-+    return false;
-+}
-+
-+void s390_pci_get_clp_info(S390PCIBusDevice *pbdev)
-+{
-+}
-diff --git a/hw/s390x/meson.build b/hw/s390x/meson.build
-index 1bc85837996..57cc2a6be3d 100644
---- a/hw/s390x/meson.build
-+++ b/hw/s390x/meson.build
-@@ -34,6 +34,7 @@ s390x_ss.add(when: 'CONFIG_S390_CCW_VIRTIO', if_true: files(
- ))
- s390x_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('3270-ccw.c'))
- s390x_ss.add(when: 'CONFIG_VFIO', if_true: files('s390-pci-vfio.c'))
-+stub_ss.add(files('s390-pci-vfio-stubs.c'))
- s390x_ss.add(when: 'CONFIG_VFIO_AP', if_false: files('ap-stub.c'))
- 
- virtio_ss = ss.source_set()
+ static void a15mp_priv_set_irq(void *opaque, int irq, int level)
+diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
+index 9d36bf8ae2c..9c1535ca325 100644
+--- a/hw/cpu/meson.build
++++ b/hw/cpu/meson.build
+@@ -4,4 +4,4 @@ system_ss.add(when: 'CONFIG_CPU_CLUSTER', if_true: files('cluster.c'))
+ system_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
+ system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
+ system_ss.add(when: 'CONFIG_A9MPCORE', if_true: files('a9mpcore.c'))
+-specific_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
++system_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
 -- 
 2.52.0
 

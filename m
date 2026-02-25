@@ -4,43 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7497EEFD23D
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 10:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2395F4BB99
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 10:47:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvCAC-00051o-C3; Wed, 25 Feb 2026 05:30:42 -0500
+	id 1vvCQS-0001rp-4q; Wed, 25 Feb 2026 05:47:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvCA8-00050V-HE
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 05:30:36 -0500
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvCQP-0001qv-1e
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 05:47:25 -0500
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvCA2-0005jK-2S
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 05:30:33 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.158])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4fLW7g1PKKz5w1C;
- Wed, 25 Feb 2026 10:30:22 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvCQM-0000F6-G5
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 05:47:24 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.0.134])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4fLWW82d1Tz5wwq;
+ Wed, 25 Feb 2026 10:47:15 +0000 (UTC)
+Received: from kaod.org (37.59.142.109) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Wed, 25 Feb
- 2026 11:30:22 +0100
+ 2026 11:47:14 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G006c23c229e-9077-476b-85a3-281f38707c13,
+ (GARM-109S0030806bb13-3f1a-433f-a07a-0adbc76e5069,
  C59C41ABD0014BFD9FF8970E1C3D3014408A4F94) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <445c5b2b-d35e-4cea-9c2e-d5c1270e3ef4@kaod.org>
-Date: Wed, 25 Feb 2026 11:30:21 +0100
+Message-ID: <e79610da-334b-40b8-bc67-dfb763c36312@kaod.org>
+Date: Wed, 25 Feb 2026 11:47:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] hw/i2c/aspeed_i2c: Fix DMA64 address handling
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20260224073207.985162-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH v7 21/22] tests/functional/arm/test_aspeed_ast2600_sdk:
+ Add i3c functional test
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "open list:All
+ patches CC here" <qemu-devel@nongnu.org>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ "nabihestefan@google.com" <nabihestefan@google.com>, "komlodi@google.com"
+ <komlodi@google.com>
+References: <20260225021158.1586584-1-jamin_lin@aspeedtech.com>
+ <20260225021158.1586584-22-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -85,27 +93,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260224073207.985162-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260225021158.1586584-22-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG16EX1.mxp5.local (172.16.2.161) To DAG14EX2.mxp5.local
+X-Originating-IP: [37.59.142.109]
+X-ClientProxiedBy: DAG12EX1.mxp5.local (172.16.2.121) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 343e6764-3da7-4005-9d14-52bb9abbddab
-X-Ovh-Tracer-Id: 14933373416625834930
+X-Ovh-Tracer-GUID: 57749d08-8643-4fcc-bae0-25f4a9ba6ac4
+X-Ovh-Tracer-Id: 15218507569250012036
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFKoKHKTCBtjTLiIrF40QWVr9oRrebG3wgo8c+Ibd8XTY4ogIaNAR/W1ku3Ii+jZ5/+FkzOKrnjx/sPYB1vqzXOPashtgRyjRnVdz8/AVyFTKibDqJSbWlBSLM6aAeOjja4Oj4DQIY1JbxG8u5aGh+c/8Jzr2he3+KF6NbQix447Qm2OHrWIJWfjcdD7A7pbYD2cNrH2fmlWZK3EwZB6lsPnjdEQJzzcl54JhUd+V0VaMlXr6q5SkXf6Kq2bHVYOxhQBfhC0vgUm9G3NClGKFgzAIQkngQ04wDLE2qlU/xZeldFcni1WjRgr/9BPvZMSswTiHiOOvk4C3mJNIpZvOS8h+bAVM7jfH0qd84+LBcmgqQyqfS5F0u2cVNESCK40DhRfAdsrLpqqufGjBDTPUOr8TpKeJOeSYrZAsk0kCBTy/kqw7p7po+vEOZtLDrkQoPJB7XOVjwoA1Nb6054V31HDfyaXRtQ9UyIvwEhR7Fc85wR/ial8IEMYP5ydHMbs08GyhWnAnMj7MoFWAhbiDfm1pZo5YYniExxoTpUHbx+BInsRXbjJ4yWQteyj1GmPWgGacQqHWE240/v7dwX+7zM5pCB4BbVw2qvOrj9xtiM/0Iv398LFqWM3JvyR7Y7d9wCM1/hRCmucbgYBlwFVtlxCxZN+8EifE5kGmAn87QGxw
-DKIM-Signature: a=rsa-sha256; bh=Z57FymAnn8BAwdHaBF6fDH7x5JbsCf4ho9cAF7BsNXU=; 
+X-VR-SPAMCAUSE: dmFkZTEfTT7NCtKI3I+OP8VzUjzldjUFiHbxqIWo/nzf1KGDG5Lx7rKyrf9K1Dro6FcydyTP2WYj3oqrDOjdWoIoOGwrOFN+QU+LXQzMDPn5Chx21yRV6QNbRKvN5g2G/WxaNpPvhxkNWI4Jkxe4L5hjFy3/ad81XNJ59MZBFsg54gBKjEiT2uJM9DOYAFs7k1W97Wsp8oi+60o/NJulxX2u+EfaUgD/HhhbozGpyE/KFQfrd9DDaDLamrAYDgIPmPqc9KrX94znqq+n4jiBBcBBk+CfCqqDU8k77s7gF57j3z62jw2DuPb/+BGNfBlJw1Q1lLfJi/LyZGGsuvFJkDgpY2Rqa3zOsT1fDbYbmyyKUdEKiU+B1LSzC1RltofPIqCGU0yj2r4Qi7wO67uz1wkWDjZ5he+uhrZbJNq627pLjCUajOji0YLFERV/fZx3XfvOpjIz/MxUUx1jw5NspVRU4R/FLiWtMpUBRcRbVOLu0EtYleRS+MmgHMOT0u/dCpUw158ndjRCTl98ofSKlYaLzjF5H5Dbox1EiYjAiHisvVnSF04LONdb5trEsRwc7JX2rEVyhhbCsUHDYMzrUcMHX3kwP/xWRmTqH7rw9LpJaFIYlJbthKIKX9HpcyEnLKM7LnAPpzE0fE0xse6LSyMn+q1lvQ9cnvfUa5I0liF26EHIww
+DKIM-Signature: a=rsa-sha256; bh=8GozfWXNi34NcWfS45YtvAy3sbP89wZrlv5I0Gs4s3k=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1772015424; v=1;
- b=AGAZqAtWDzmSZ/SP0yxkpo2AFWbxlkIwlnn5bT+FVv37P5UdEK9z9rWnqw5eJHI0JfAJB7M6
- PphVjcIZ9gIFdlYpi5bpNQrsIRK/AiGM351zf0NetIYMD7tuKv5/cxp6VDHzDKKBFF1oaOYipSl
- I1Zkc2McrA6ZgmiHT9/Qt4IbWAnZzt6zb27K0txGjb57lOFz13QaUfkn2laxV3yPhjmtdduw7rY
- euNbgSy9+ZmNVAPWe7Sgr5hYAUyP0UT8JdwpR7imF5fJd8x7X5G6NM6IfZZjPlveGjuQIr4Ynfp
- WI4zr+QHJcP8ySziVHMvhKlSjN0p6ttrwD6oz6YAzbu1A==
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
+ t=1772016437; v=1;
+ b=NF990/sri4EyfB0Sq3x474oF3UcM7GfR0bEErJgdQsiJkAGFNMRDpJctd9EushV+AVyyhWHP
+ mE/skLMW06NXgEr1XkrxMYK1LCf1AvNUAVOiBrvYPjc/9R12CyfsGWSfpUOVTl8h+u9v5JouRXb
+ lH4DaXPnjX91PNrhBprEH3ji2DQKiLRuNXVd5b+iZhOuu9Lwx11CXAJf54/EMLCEHIzDIMiPkJ/
+ YzfrfY4DDFTOBGUhZsNEvmLm8IFXGzrzH06nVrHf2R8kRUUAON9N6XtyuOaDv/MnZ8LJqXmuzmJ
+ cJxBloO/UAQwPhNdagzJfB/shMW6Rl7EbPM/ioYLrUxVw==
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -129,45 +137,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/24/26 08:32, Jamin Lin wrote:
-> The current code updates the upper 32 bits of dma_dram_offset only when
-> aic->has_dma64 is false, which is incorrect.
-> 
-> If aic->has_dma64 is true, the controller supports 64-bit DMA addressing
-> and the upper 32-bit DMA address register must be used to update the
-> dma_dram_offset accordingly.
-> 
-> Fix the condition so that the upper 32 bits are updated only when
-> 64-bit DMA is supported.
-> 
-> Fixes: efea7ddb4689a1ac4bce63a9ddb32887c7f3ac50 ("hw/i2c/aspeed_i2c: Fix DMA moving data into incorrect address")
+On 2/25/26 03:12, Jamin Lin wrote:
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/i2c/aspeed_i2c.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   tests/functional/arm/test_aspeed_ast2600_sdk.py | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 > 
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index 122bfdd63d..8022938f34 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -237,7 +237,7 @@ static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
->           bus->dma_dram_offset =
->               deposit64(bus->dma_dram_offset, 0, 32,
->                         FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
-> -        if (!aic->has_dma64) {
-> +        if (aic->has_dma64) {
->               value = bus->regs[R_I2CM_DMA_TX_ADDR_HI];
->               bus->dma_dram_offset =
->                   deposit64(bus->dma_dram_offset, 32, 32,
-> @@ -262,7 +262,7 @@ static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
->           bus->dma_dram_offset =
->               deposit64(bus->dma_dram_offset, 0, 32,
->                         FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
-> -        if (!aic->has_dma64) {
-> +        if (aic->has_dma64) {
->               value = bus->regs[R_I2CM_DMA_RX_ADDR_HI];
->               bus->dma_dram_offset =
->                   deposit64(bus->dma_dram_offset, 32, 32,
+> diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk.py b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+> index 971fa3390d..46b9f7058c 100755
+> --- a/tests/functional/arm/test_aspeed_ast2600_sdk.py
+> +++ b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+> @@ -31,6 +31,15 @@ def do_ast2600_pcie_test(self):
+>               'ip addr show dev eth4',
+>               'inet 10.0.2.15/24')
+>   
+> +    def do_ast2600_i3c_test(self):
+> +        exec_command_and_wait_for_pattern(self,
+> +            'i3ctransfer -d /dev/bus/i3c/5-1234567890ab'
+> +            ' -w 0x12,0x34,0x56,0x78,0x90,0xab,0xcd,0xef',
+> +            'Success on message 0')
+> +        exec_command_and_wait_for_pattern(self,
+> +            'i3ctransfer -d /dev/bus/i3c/5-1234567890ab -r 8 | grep 0x | xargs',
+> +            '0x12 0x34 0x56 0x78 0x90 0xab 0xcd 0xef')
+> +
+>       def test_arm_ast2600_evb_sdk(self):
+>           self.set_machine('ast2600-evb')
+>           self.require_netdev('user')
+> @@ -43,6 +52,8 @@ def test_arm_ast2600_evb_sdk(self):
+>               'ds1338,bus=aspeed.i2c.bus.5,address=0x32')
+>           self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.0')
+>           self.vm.add_args('-netdev', 'user,id=net1')
+> +        self.vm.add_args('-device',
+> +            'mock-i3c-target,bus=dw.i3c.5,pid=0xab9078563412')
+>           self.do_test_arm_aspeed_sdk_start(
+>               self.scratch_file("ast2600-default", "image-bmc"))
+>   
+> @@ -69,6 +80,7 @@ def test_arm_ast2600_evb_sdk(self):
+>           exec_command_and_wait_for_pattern(self,
+>                '/sbin/hwclock -f /dev/rtc1', year)
+>           self.do_ast2600_pcie_test()
+> +        self.do_ast2600_i3c_test()
+>   
+>   
+>   if __name__ == '__main__':
+
+
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

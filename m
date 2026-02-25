@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0360FD45F1
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 22:09:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEC8FD45F8
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 22:10:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvN4o-0000gg-LC; Wed, 25 Feb 2026 17:09:50 -0500
+	id 1vvN4h-0007vS-3E; Wed, 25 Feb 2026 17:09:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
- id 1vvN4n-0000XJ-2o; Wed, 25 Feb 2026 17:09:49 -0500
-Received: from pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([44.246.77.92])
+ id 1vvN4L-0007Dq-TE; Wed, 25 Feb 2026 17:09:22 -0500
+Received: from pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([34.218.115.239])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
- id 1vvN4l-00014U-5d; Wed, 25 Feb 2026 17:09:48 -0500
+ id 1vvN4J-00011j-LM; Wed, 25 Feb 2026 17:09:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1772057387; x=1803593387;
+ t=1772057359; x=1803593359;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=aglmDwrScyQmZ1Gqv0UlX8GtgDjIcpToIs7+LnpYPK0=;
- b=d69VVNS7JdblEOo1l8HQB0OWjRPSQrTNGVIa3uajI9j3aY1HPFHYfrwA
- a2MjZgrx5yZcBqTSu+bgqFRR479FE9GBfmYESMMah18sphR1UHBVwjFl/
- BwvuGtXcg98rg2X6g3gqXU/j58BlkZ5sDPKd5dZSUXitIyZHOD4hR+07I
- UmGAc2U/B/jgkH4W8MC8n9TRvRMEqrOBp/Sp5GjHs361Rd2ExU6E9krtP
- E5zWZiOHnBgfW3tO9v2dc1GTsLlzgmJz2ggR7j13+SRV9/92RI+yJJhaR
- K7+EWeLIwEVffOMLlUkrkJ17NvexQtvoLRZkHHoAPJV36ksLr0El3nGm4 w==;
-X-CSE-ConnectionGUID: QJJbUWzbRPe2oCJ8dEeq0w==
-X-CSE-MsgGUID: dVwlD+X0RaKRZRKRkfXZPw==
-X-IronPort-AV: E=Sophos;i="6.21,311,1763424000"; d="scan'208";a="13796753"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 22:09:41 +0000
-Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.104:21869]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.7.80:2525] with
- esmtp (Farcaster)
- id 18b0d670-d589-478e-b7b6-f111fa7c8e0c; Wed, 25 Feb 2026 22:09:41 +0000 (UTC)
-X-Farcaster-Flow-ID: 18b0d670-d589-478e-b7b6-f111fa7c8e0c
+ bh=uVNVDznm7NxQ+bwTqP9jZD0VXeg2067NIquqLqqPp8k=;
+ b=U5mC9BK+iVMdimumMT2zakxt78h5+790ESM4wmRxiUrPm2T5+6ks5T1x
+ k0C5yvo2NaFe0KjkGzeHNnitL1maf6HWxRJ55qCx+zYqs7tmlgZ2U5yYA
+ d7dq/iqpcY7ZK5nIM360PIoBgWScNKUMbuEwb9lFGcyrlAt5+7zN6SUi9
+ kSjOyszmcYeaSF5KHytolo1F64G9b23IIAKptQOwWx/m6FEJWPY+PXA9k
+ sp0MY5PVZO1BQ3SJJze5JGEej3eva9jdNRxlua+dO5k0XX9gxSA6fSipm
+ AqkdGKEJnVslt0iVzMGCSBOS+L6hQny+BZYFJFTE3QUGyzj27sJmFnhqY g==;
+X-CSE-ConnectionGUID: IeaVlMmDS7WNUWMK1MkrWQ==
+X-CSE-MsgGUID: Z7efPULUSA+SjoWLVIEdmw==
+X-IronPort-AV: E=Sophos;i="6.21,311,1763424000"; d="scan'208";a="13613953"
+Received: from ip-10-5-9-48.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.9.48])
+ by internal-pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 22:09:15 +0000
+Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.48:17534]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.50.69:2525]
+ with esmtp (Farcaster)
+ id 5dba8a24-f6f6-41a1-9f16-3a76b3f38820; Wed, 25 Feb 2026 22:09:15 +0000 (UTC)
+X-Farcaster-Flow-ID: 5dba8a24-f6f6-41a1-9f16-3a76b3f38820
 Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
- Wed, 25 Feb 2026 22:09:39 +0000
+ Wed, 25 Feb 2026 22:09:13 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
- Wed, 25 Feb 2026 22:09:37 +0000
+ Wed, 25 Feb 2026 22:09:10 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
@@ -60,21 +60,21 @@ CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
  <dorjoychy111@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Tyler Fanelli <tfanelli@redhat.com>,
  <mknaust@amazon.com>, <nh-open-source@amazon.com>
-Subject: [PATCH v3 09/11] hw/core/eif: Move definitions to header
-Date: Wed, 25 Feb 2026 22:08:03 +0000
-Message-ID: <20260225220807.33092-10-graf@amazon.com>
+Subject: [PATCH v3 07/11] target/arm/cpu64: Allow -host for nitro
+Date: Wed, 25 Feb 2026 22:08:01 +0000
+Message-ID: <20260225220807.33092-8-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260225220807.33092-1-graf@amazon.com>
 References: <20260225220807.33092-1-graf@amazon.com>
 MIME-Version: 1.0
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D035UWA003.ant.amazon.com (10.13.139.86) To
+X-ClientProxiedBy: EX19D036UWB001.ant.amazon.com (10.13.139.133) To
  EX19D020UWC004.ant.amazon.com (10.13.138.149)
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=44.246.77.92;
+Received-SPF: pass client-ip=34.218.115.239;
  envelope-from=prvs=509822c20=graf@amazon.de;
- helo=pdx-out-004.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-013.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -1
 X-Spam_score: -0.2
 X-Spam_bar: /
@@ -99,115 +99,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In follow-up patches we need some EIF file definitions that are
-currently in the eif.c file, but want to access them from a separate
-device. Move them into the header instead.
+The nitro accel does not actually make use of CPU emulation or details:
+It always uses the host CPU regardless of configuration. Machines for
+the nitro accel select the host CPU type as default to have a clear
+statement of the above and to have a unified cpu type across all
+supported architectures.
+
+The arm64 logic on Linux currently only allows -cpu host for KVM based
+virtual machines. Add a special case for nitro so that when the nitro
+accel is active, it allows use of the host cpu type.
 
 Signed-off-by: Alexander Graf <graf@amazon.com>
-Reviewed-by: Dorjoy Chowdhury <dorjoychy111@gmail.com>
 ---
- hw/core/eif.c | 38 --------------------------------------
- hw/core/eif.h | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 38 insertions(+), 38 deletions(-)
+ target/arm/cpu64.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/core/eif.c b/hw/core/eif.c
-index 513caec6b4..96f1d76578 100644
---- a/hw/core/eif.c
-+++ b/hw/core/eif.c
-@@ -18,44 +18,6 @@
- 
- #include "hw/core/eif.h"
- 
--#define MAX_SECTIONS 32
--
--/* members are ordered according to field order in .eif file */
--typedef struct EifHeader {
--    uint8_t  magic[4]; /* must be .eif in ascii i.e., [46, 101, 105, 102] */
--    uint16_t version;
--    uint16_t flags;
--    uint64_t default_memory;
--    uint64_t default_cpus;
--    uint16_t reserved;
--    uint16_t section_cnt;
--    uint64_t section_offsets[MAX_SECTIONS];
--    uint64_t section_sizes[MAX_SECTIONS];
--    uint32_t unused;
--    uint32_t eif_crc32;
--} QEMU_PACKED EifHeader;
--
--/* members are ordered according to field order in .eif file */
--typedef struct EifSectionHeader {
--    /*
--     * 0 = invalid, 1 = kernel, 2 = cmdline, 3 = ramdisk, 4 = signature,
--     * 5 = metadata
--     */
--    uint16_t section_type;
--    uint16_t flags;
--    uint64_t section_size;
--} QEMU_PACKED EifSectionHeader;
--
--enum EifSectionTypes {
--    EIF_SECTION_INVALID = 0,
--    EIF_SECTION_KERNEL = 1,
--    EIF_SECTION_CMDLINE = 2,
--    EIF_SECTION_RAMDISK = 3,
--    EIF_SECTION_SIGNATURE = 4,
--    EIF_SECTION_METADATA = 5,
--    EIF_SECTION_MAX = 6,
--};
--
- static const char *section_type_to_string(uint16_t type)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 5d7c6b7fbb..c01051f038 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -765,6 +765,14 @@ static void aarch64_a53_initfn(Object *obj)
+ static void aarch64_host_initfn(Object *obj)
  {
-     const char *str;
-diff --git a/hw/core/eif.h b/hw/core/eif.h
-index fed3cb5514..a3412377a9 100644
---- a/hw/core/eif.h
-+++ b/hw/core/eif.h
-@@ -11,6 +11,44 @@
- #ifndef HW_CORE_EIF_H
- #define HW_CORE_EIF_H
- 
-+#define MAX_SECTIONS 32
+     ARMCPU *cpu = ARM_CPU(obj);
 +
-+/* members are ordered according to field order in .eif file */
-+typedef struct EifHeader {
-+    uint8_t  magic[4]; /* must be .eif in ascii i.e., [46, 101, 105, 102] */
-+    uint16_t version;
-+    uint16_t flags;
-+    uint64_t default_memory;
-+    uint64_t default_cpus;
-+    uint16_t reserved;
-+    uint16_t section_cnt;
-+    uint64_t section_offsets[MAX_SECTIONS];
-+    uint64_t section_sizes[MAX_SECTIONS];
-+    uint32_t unused;
-+    uint32_t eif_crc32;
-+} QEMU_PACKED EifHeader;
++#if defined(CONFIG_NITRO)
++    if (nitro_enabled()) {
++        /* The nitro accel uses -cpu host, but does not actually consume it */
++        return;
++    }
++#endif
 +
-+/* members are ordered according to field order in .eif file */
-+typedef struct EifSectionHeader {
-+    /*
-+     * 0 = invalid, 1 = kernel, 2 = cmdline, 3 = ramdisk, 4 = signature,
-+     * 5 = metadata
-+     */
-+    uint16_t section_type;
-+    uint16_t flags;
-+    uint64_t section_size;
-+} QEMU_PACKED EifSectionHeader;
-+
-+enum EifSectionTypes {
-+    EIF_SECTION_INVALID = 0,
-+    EIF_SECTION_KERNEL = 1,
-+    EIF_SECTION_CMDLINE = 2,
-+    EIF_SECTION_RAMDISK = 3,
-+    EIF_SECTION_SIGNATURE = 4,
-+    EIF_SECTION_METADATA = 5,
-+    EIF_SECTION_MAX = 6,
-+};
-+
- bool read_eif_file(const char *eif_path, const char *machine_initrd,
-                    char **kernel_path, char **initrd_path,
-                    char **kernel_cmdline, uint8_t *image_sha384,
+ #if defined(CONFIG_KVM)
+     kvm_arm_set_cpu_features_from_host(cpu);
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
 -- 
 2.47.1
 

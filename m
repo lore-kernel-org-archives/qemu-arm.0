@@ -4,89 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D525FD3776
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 17:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BDC3FD45E4
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 19:39:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvIqV-0006YQ-FY; Wed, 25 Feb 2026 12:38:47 -0500
+	id 1vvKiu-0007nN-Jr; Wed, 25 Feb 2026 14:39:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3mjOfaQsKCNEzB8GBA81J5F3BB381.zB9D19H-xE9ABA3AH.BE3@flex--coltonlewis.bounces.google.com>)
- id 1vvIqR-0006WT-D0
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 12:38:43 -0500
-Received: from mail-oo1-xc49.google.com ([2607:f8b0:4864:20::c49])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vvKin-0007mq-BT
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 14:39:00 -0500
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3mjOfaQsKCNEzB8GBA81J5F3BB381.zB9D19H-xE9ABA3AH.BE3@flex--coltonlewis.bounces.google.com>)
- id 1vvIqO-0003PR-On
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 12:38:43 -0500
-Received: by mail-oo1-xc49.google.com with SMTP id
- 006d021491bc7-679c448d15cso67087726eaf.3
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 09:38:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vvKik-0001qu-IA
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 14:38:55 -0500
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-354c67da885so6080788a91.3
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 11:38:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772041115; x=1772645915; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=FxE+A5J4HGPNO2s3hfVFIukZ/uILKNBM11tjPpp3P/Y=;
- b=KVcYUFJq8j64SzyW99+xbRbhQxxk7EJbJj6WI+2T1p6UHgl6YlqZIccZm49IXt8J3q
- 1Et/QLL9t5R82MC9T3skVPPFb+qbTJgQICksQIRCKVwDCcWKcdW19kpoe5AB7hawQBLB
- lUfdkJmVifaV6Ze8rlxzbETerCThoGhaNaJz9uRzJq4QugLM1k/wBut+hE2KruHQrP/r
- TeksxDEPMVVCZ3WeS/uLitCm+PvOmwpvF+mv+6DDxDzU+YwhLI+yv3gwq7gjbtR9z0E8
- QNtPFbq9n4yaIRkT4z7IUhRU+jzvAoSta4f3OffA9kQRNsDHZt8BCQvw//TVkYntlPpg
- 35og==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772041115; x=1772645915;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ d=linaro.org; s=google; t=1772048333; x=1772653133; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=FxE+A5J4HGPNO2s3hfVFIukZ/uILKNBM11tjPpp3P/Y=;
- b=TD7lNyfXV6xAHNTaub/nl7D/LSdJ5gVI5L7S/NoV83hoFkxrgG89nGX0Uw+xsdAreb
- GKflRM8ai6a58H+ingP4cVHtsJAsEz4IpSWl9HEMhf35yN+XrkcaTX4P8DW1jK1kCBMW
- nETcISYK+gGm4zSw4AQMNprpc4MdNNSBGQe6XwPD4GmPLnbRs0e/rX3mOOc6dnlKd73l
- HoPBV8l2hCkHEaqPPnsRSNWToeH+lajBfwT64JaL2JnSHL82MHoT5eUg22kX/eGJbwa5
- UHyIfctRi+r5dfQ7bc6v+CNvXHXZX9sNzOITDNczkB+vDMUI9Thy80+Lb+gtNWqMQ3hw
- u0mQ==
+ bh=kOFGeA0FqE7Y8Al53D3nhfM0GksmdGXgOPfl105bU9o=;
+ b=lIWtrwmj5gv0TILkplOR0mzKNN7rdP/x2gP3boSQSdt9hBqlGgFPWeGWpf9Nd4/QPY
+ 2WxfKJL6fPkfC0GOo5G6MWv86kNbpSWgr9CkJqzuqFeJgDJVTTfHWTtj+OO8BhDvTYuk
+ +HDd532KG2/yp4Mup29izw0PWxCPW59wUrRGMzIi2j/1LYE71+q9QkhXqj3BJzMpAVb9
+ Zb7uQuMjZ2H6mVfZLp+d1/sH8IAdLWW0bM++l0KNe1wkbVs6moKzJlyhr4ohzMwy039s
+ MVgmilDc5LifnEwtKnGozvjRQJKSF0lF4xRkqiQ7ZkTETp5OD7kyIA4TRAkElziwB6+P
+ 9U1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772048333; x=1772653133;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kOFGeA0FqE7Y8Al53D3nhfM0GksmdGXgOPfl105bU9o=;
+ b=U0vr+Er6uCpjrjLK/KYVwbNphJs5iemPpduNIoytvg2abHjxXK8ppTV64YlFYbxs0F
+ xgpGSFjpXrA6UQpXOJet2wV6vBxg482fBV3Af6iJMYwVJOgFyF3k7kPCRiys5g3WcAqL
+ +ZqUsW4OGzamw/NoKcpO/7B9pd17GXU+3S1JOSeim4SnODJdwfOnPemh/on1dmMsm3s4
+ 7iisMTSlrpPQxd3fzdlSYDWecbFoGj1LEGWKGVmlxUV1ZmG7IGt/9Dz21Y8ruMt1UaqP
+ 5i/jkiYsCTEAGrRMNUSn9Hzk7/CmLSxs6MG5IPprRfbbZInOfQeeMKdMOvw0q+uxuva5
+ ZGtA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUubO3UWn4a6UpsV26P4dK1CtNwc/JEyPieeIdLK65+JtFk7IPK2XgLRDwNvj4HAWP1gmft7LZRRw==@nongnu.org
-X-Gm-Message-State: AOJu0YyHcOamM3MJyFpVI7HjtkN7LpIe5oCUcEQuJ4qt2lpwPX9crJNw
- nVjru3Wbgv9ejZx0wE8p3irry5bEqFVGymf6+1j4sBkHSv6j2RCiKTfCjpMdX+IRRIttIS0xwMN
- E87xAiFjflsGEP6Zy7nGGOtfN2A==
-X-Received: from ilbcf6.prod.google.com ([2002:a05:6e02:2306:b0:447:81b5:ae34])
- (user=coltonlewis job=prod-delivery.src-stubby-dispatcher) by
- 2002:a4a:b68a:0:b0:679:dcd7:fbe6 with SMTP id
- 006d021491bc7-679dcd80797mr3115611eaf.31.1772041114890; 
- Wed, 25 Feb 2026 09:38:34 -0800 (PST)
-Date: Wed, 25 Feb 2026 17:37:32 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.53.0.414.gf7e9f6c205-goog
-Message-ID: <20260225173732.3135526-1-coltonlewis@google.com>
-Subject: [RFC PATCH] arm: enable PMU partitioning
-From: Colton Lewis <coltonlewis@google.com>
-To: kvm@vger.kernel.org
-Cc: Alexandru Elisei <alexandru.elisei@arm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Jonathan Corbet <corbet@lwn.net>, Russell King <linux@armlinux.org.uk>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Marc Zyngier <maz@kernel.org>, 
- Oliver Upton <oliver.upton@linux.dev>, Mingwei Zhang <mizhang@google.com>, 
- Joey Gouly <joey.gouly@arm.com>, Suzuki K Poulose <suzuki.poulose@arm.com>, 
- Zenghui Yu <yuzenghui@huawei.com>, Mark Rutland <mark.rutland@arm.com>, 
- Shuah Khan <shuah@kernel.org>,
- Ganapatrao Kulkarni <gankulkarni@os.amperecomputing.com>, 
- kvmarm@lists.linux.dev, qemu-arm@nongnu.org, 
- Colton Lewis <coltonlewis@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c49;
- envelope-from=3mjOfaQsKCNEzB8GBA81J5F3BB381.zB9D19H-xE9ABA3AH.BE3@flex--coltonlewis.bounces.google.com;
- helo=mail-oo1-xc49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ AJvYcCVH3l1fTf4zGeJ0vtroCGsMlLbMzD6jsZh3Pi1tY4GYPsvYOYMsMf23jmbI4vMq5T1fpxtzAEY70g==@nongnu.org
+X-Gm-Message-State: AOJu0YxK350uYUh4ZvFVqszVk0BSusd8n0O/0VoADmAa3Iyo6SXtTFp0
+ jCwbYaVP3MWbPfr7Tp5WyEkseYH/aGtAeHgQP21J6LGtXy3L5vSYoeNKVsj2Lf+aRWg=
+X-Gm-Gg: ATEYQzxY1K5yhxIVVl/oKtOK/juH6+fiKHO3eedXdcG/h/3kulhb8/bTHx0ByUjSlzZ
+ Ooqred2sc6dSFNtZiR5cWJSkTMofXFZaMXTfpDFBsd5Ube/UWTOu4afaEpS8NiW5q2UWYieRJF2
+ PJlGwcZ8/0KfBZlCGJMRBHBn3CFrQRrmnf3qrS3+Vh0fAQstbguDxKdZ05RXd7WS9u9vmb1p7vH
+ aNYiGY+s56Ej89Hxy3neXn1Wqd+MybHxqonJPD3GvDNPgqWqSA7RCfPYpcAFNFejjnBC3JA2+sc
+ xdBzHqLsAqJSzOD5TpFW5+Hqc1sJEkq9k1YMD7nMUNvlj3aG9DiXBECW2EDNij2fMeKt8MrKwU7
+ GKsC9BUaHRCNpsUfqBGP2LVdy2uT29gkXcsvRyGdVLnjS9gX1B7h8ZkpfMQFSnI7fb6cpkjkvl3
+ 0SO+9xvAlXfdc8vW0JAogZU/ktzDIm0JmA9yJIL2FG8bKTQaAo8JbWPa1LcGSV8Hqj0wf9
+X-Received: by 2002:a17:90b:33c3:b0:340:ca7d:936a with SMTP id
+ 98e67ed59e1d1-35928b880demr1366464a91.18.1772048332611; 
+ Wed, 25 Feb 2026 11:38:52 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-359037c8384sm3585945a91.17.2026.02.25.11.38.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Feb 2026 11:38:52 -0800 (PST)
+Message-ID: <c216fec4-0fd1-4f02-8b85-bd2b24bfb954@linaro.org>
+Date: Wed, 25 Feb 2026 11:38:51 -0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 2/2] tests/qtest: Add qtest-attrs-test to verify memory
+ access with attr
+Content-Language: en-US
+To: Chao Liu <chao.liu.zevorn@gmail.com>, Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>
+References: <20260222082529.491384-1-tangtao1634@phytium.com.cn>
+ <20260222082529.491384-3-tangtao1634@phytium.com.cn>
+ <aZ8Jtl8jxBqDq8Rz@ZEVORN-PC.localdomain>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <aZ8Jtl8jxBqDq8Rz@ZEVORN-PC.localdomain>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_PH_SUBJ_META=2.499 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,113 +143,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This sets the vCPU device attribute to unconditionally enable
-partitioning when a PMU is available on an ARM host.
+On 2/25/26 6:48 AM, Chao Liu wrote:
+>> +static void test_arm_memwrite_memread_secure(void)
+>> +{
+>> +    QTestState *qts;
+>> +    uint8_t wbuf[16] = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
+>> +                         0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF };
+>> +    uint8_t rbuf[16];
+>> +
+>> +    if (!qtest_has_machine("virt")) {
+>> +        g_test_skip("virt machine not available");
+>> +        return;
+>> +    }
+>> +
+>> +    qts = qtest_init(ARM_MACHINE_ARGS);
+>> +
+> Every single test function calls qtest_init/qtest_quit, which
+> means starting and stopping a full QEMU instance for each test.
+> For the ARM tests alone that's 14 QEMU startups. This will be
+> very slow. Consider using a test fixture (g_test_add) to share
+> the QTestState across tests of the same architecture.
+> 
 
-Note that this patch is experimental to demonstrate the API. That is
-why it aborts immediately if the call does not succeed.
+Tao initially implemented something like this. However, it means that 
+you now need to cleanup/reset SMMU state between state, which is fragile 
+and requires even more code. Thus, at the time, I suggested to simply 
+spawn a new machine for every test.
 
-For the call to succeed, the host must be running a kernel with the
-ARM64 PMU Partitioning feature [1] and set the kernel command line
-arm_pmuv3.reserved_host_counters=n where n is between 0 and the number
-of counters on the system, inclusive.
+I would be prudent to call that slow and optimize before effectively 
+checking how long it gains. If we gain only 5 seconds by doing this, 
+it's not really worth all the complication. If that's 2 minutes, well, 
+it might be a good reason to group tests per categories.
 
-[1] https://lore.kernel.org/kvmarm/20260209221414.2169465-1-coltonlewis@google.com/
+For now, the full test takes 3 seconds on an optimized or debug build on 
+my machine. Thus, I definitely don't think it requires any more 
+complexity than this. The day it'll reach 30 seconds in debug build, 
+maybe we can reconsider this.
 
-Signed-off-by: Colton Lewis <coltonlewis@google.com>
----
- hw/arm/virt.c                 |  1 +
- linux-headers/asm-arm64/kvm.h |  2 ++
- target/arm/kvm-stub.c         |  5 +++++
- target/arm/kvm.c              | 18 ++++++++++++++++++
- target/arm/kvm_arm.h          |  1 +
- 5 files changed, 27 insertions(+)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 50865e8115..29082df31c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2234,6 +2234,7 @@ static void virt_post_cpus_gic_realized(VirtMachineState *vms,
-                 if (kvm_irqchip_in_kernel()) {
-                     kvm_arm_pmu_set_irq(ARM_CPU(cpu), VIRTUAL_PMU_IRQ);
-                 }
-+                kvm_arm_pmu_set_partition(ARM_CPU(cpu), true);
-                 kvm_arm_pmu_init(ARM_CPU(cpu));
-             }
-             if (steal_time) {
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 46ffbddab5..69309a182e 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -424,6 +424,8 @@ enum {
- #define   KVM_ARM_VCPU_PMU_V3_FILTER		2
- #define   KVM_ARM_VCPU_PMU_V3_SET_PMU		3
- #define   KVM_ARM_VCPU_PMU_V3_SET_NR_COUNTERS	4
-+#define   KVM_ARM_VCPU_PMU_V3_ENABLE_PARTITION	5
-+
- #define KVM_ARM_VCPU_TIMER_CTRL		1
- #define   KVM_ARM_VCPU_TIMER_IRQ_VTIMER		0
- #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
-diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-index ea67deea52..afbfffe2cd 100644
---- a/target/arm/kvm-stub.c
-+++ b/target/arm/kvm-stub.c
-@@ -80,6 +80,11 @@ void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
-     g_assert_not_reached();
- }
- 
-+void kvm_arm_pmu_set_partition(ARMCPU *cpu, bool partition)
-+{
-+    g_assert_not_reached();
-+}
-+
- void kvm_arm_pmu_init(ARMCPU *cpu)
- {
-     g_assert_not_reached();
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index ded582e0da..db1d564462 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1817,6 +1817,24 @@ void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq)
-     }
- }
- 
-+void kvm_arm_pmu_set_partition(ARMCPU *cpu, bool partition)
-+{
-+    struct kvm_device_attr part_attr = {
-+        .group = KVM_ARM_VCPU_PMU_V3_CTRL,
-+        .attr = KVM_ARM_VCPU_PMU_V3_ENABLE_PARTITION,
-+        .addr = (uint64_t)&partition
-+    };
-+
-+    if (!cpu->has_pmu) {
-+        return;
-+    }
-+
-+    if (!kvm_arm_set_device_attr(cpu, &part_attr, "PMU partition")) {
-+        error_report("failed to set PMU partition");
-+        abort();
-+    }
-+}
-+
- void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
- {
-     struct kvm_device_attr attr = {
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index cc0b374254..2b55f2956e 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -248,6 +248,7 @@ int kvm_arm_vgic_probe(void);
- 
- void kvm_arm_pmu_init(ARMCPU *cpu);
- void kvm_arm_pmu_set_irq(ARMCPU *cpu, int irq);
-+void kvm_arm_pmu_set_partition(ARMCPU *cpu, bool partition);
- 
- /**
-  * kvm_arm_pvtime_init:
-
-base-commit: afe653676dc6dfd49f0390239ff90b2f0052c2b8
--- 
-2.53.0.414.gf7e9f6c205-goog
+Regards,
+Pierrick
 
 

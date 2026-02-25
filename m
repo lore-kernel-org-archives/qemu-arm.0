@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58456FD3760
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 14:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59C4FD3762
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 14:49:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvGAX-00018K-LT; Wed, 25 Feb 2026 09:47:19 -0500
+	id 1vvGBj-00027U-F5; Wed, 25 Feb 2026 09:48:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
- id 1vvGA2-0000Wb-H8; Wed, 25 Feb 2026 09:46:46 -0500
-Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.13.214.179])
+ id 1vvGAX-00018J-Lz; Wed, 25 Feb 2026 09:47:19 -0500
+Received: from pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.68.102])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
- id 1vvG9z-000766-Tk; Wed, 25 Feb 2026 09:46:45 -0500
+ id 1vvGAV-00079X-OA; Wed, 25 Feb 2026 09:47:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1772030803; x=1803566803;
+ t=1772030835; x=1803566835;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=uVNVDznm7NxQ+bwTqP9jZD0VXeg2067NIquqLqqPp8k=;
- b=YS2SgXzrpDil1NE9uU2S1OabF2f7VN6XqJcsP+EXcWqF+kVcz8ltFY1m
- a1GrjqwmA2nJPBPNL/EJuFdWBuDvh4VrTqZ5NNt7sdAIDPzYAby2xe6Fb
- YtqWen083mJcVhidRcJfC89m9VZQVZ3nXIjbpF57aplHluUzTCN22+GaL
- DTtrokAJnLV2dFnM6F66HaktApyeVHR0PSHPSNR96h6mDeqM55uIUUfLc
- 7CXlVvKYs0bv1UgufNdpHofFkSiYvuobdGnaEhvgBlrHGOL9pe5hETRYl
- S8vFm04gfFnkvajgV8ME64dm2zScO0rR8cijWUVX8Qz+9MuUPhsO42F1S w==;
-X-CSE-ConnectionGUID: +vTHUKSqQSKNT0EyRm0YMg==
-X-CSE-MsgGUID: jhYyOK1UQca5uScKAuWp+g==
-X-IronPort-AV: E=Sophos;i="6.21,310,1763424000"; d="scan'208";a="13768594"
-Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
- by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 14:46:41 +0000
-Received: from EX19MTAUWB002.ant.amazon.com [205.251.233.111:20004]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.12.226:2525]
+ bh=wiFxVcGuOOQDsn9n6nHZt2xgOoJ7CV0tZ9+LBptze6g=;
+ b=mgoSjPM2swBxN8gQViDe/yUQKTiU0tqWoeaPH2JUayCgOmiEGKSmBK3G
+ xP4fvDYy9AuMCd9amFkhnGi1rIPixPIAEAFMTdRMWdaQVGGx4jUoSZyWy
+ LWXy/YEoUy+H1i6gKgkSoSoU5gLqT50rKKnevHxuN5/YoA6HtfzVSZEwO
+ Lju/anljdbcF+1PAwt11fTRTmEDV9CN+IIhw+VPoTCt6sLYhdSiIw6lof
+ bkW8J1jVtCWoUeSpBZJ4VY9K+3Vq1GcsOnUkRgYAT1ZkENe3Yyyn4l5Zh
+ VPQalriCXmqoNwRNS8MwpqXgQ7hHpmwmZk1xpH3RinAUywl3CRkyUaacm w==;
+X-CSE-ConnectionGUID: 5HL1FQWfQnCEQg3ym/1eWw==
+X-CSE-MsgGUID: 4zLpn9AATy24kFVMBqsTTw==
+X-IronPort-AV: E=Sophos;i="6.21,310,1763424000"; d="scan'208";a="13779701"
+Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
+ by internal-pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 14:47:10 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:9661]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.36.66:2525]
  with esmtp (Farcaster)
- id c571fd97-c8d4-4901-921b-6ca72cdfe0b7; Wed, 25 Feb 2026 14:46:41 +0000 (UTC)
-X-Farcaster-Flow-ID: c571fd97-c8d4-4901-921b-6ca72cdfe0b7
+ id 9d510a1e-b7dd-487e-a911-877d9d388bcf; Wed, 25 Feb 2026 14:47:10 +0000 (UTC)
+X-Farcaster-Flow-ID: 9d510a1e-b7dd-487e-a911-877d9d388bcf
 Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWB002.ant.amazon.com (10.250.64.231) with Microsoft SMTP Server
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
- Wed, 25 Feb 2026 14:46:40 +0000
+ Wed, 25 Feb 2026 14:47:09 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
- Wed, 25 Feb 2026 14:46:37 +0000
+ Wed, 25 Feb 2026 14:47:07 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
@@ -60,21 +60,21 @@ CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
  <dorjoychy111@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Tyler Fanelli <tfanelli@redhat.com>,
  <mknaust@amazon.com>, <nh-open-source@amazon.com>
-Subject: [PATCH v2 07/11] target/arm/cpu64: Allow -host for nitro
-Date: Wed, 25 Feb 2026 14:45:26 +0000
-Message-ID: <20260225144532.84673-8-graf@amazon.com>
+Subject: [PATCH v2 10/11] hw/nitro: Enable direct kernel boot
+Date: Wed, 25 Feb 2026 14:45:29 +0000
+Message-ID: <20260225144532.84673-11-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260225144532.84673-1-graf@amazon.com>
 References: <20260225144532.84673-1-graf@amazon.com>
 MIME-Version: 1.0
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D035UWA001.ant.amazon.com (10.13.139.101) To
+X-ClientProxiedBy: EX19D039UWB003.ant.amazon.com (10.13.138.93) To
  EX19D020UWC004.ant.amazon.com (10.13.138.149)
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=52.13.214.179;
+Received-SPF: pass client-ip=44.246.68.102;
  envelope-from=prvs=509822c20=graf@amazon.de;
- helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-003.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -1
 X-Spam_score: -0.2
 X-Spam_bar: /
@@ -99,40 +99,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The nitro accel does not actually make use of CPU emulation or details:
-It always uses the host CPU regardless of configuration. Machines for
-the nitro accel select the host CPU type as default to have a clear
-statement of the above and to have a unified cpu type across all
-supported architectures.
-
-The arm64 logic on Linux currently only allows -cpu host for KVM based
-virtual machines. Add a special case for nitro so that when the nitro
-accel is active, it allows use of the host cpu type.
+Nitro Enclaves can only boot EIF files which are a combination of
+kernel, initramfs and cmdline in a single file. When the kernel image is
+not an EIF, treat it like a kernel image and assemble an EIF image on
+the fly. This way, users can call QEMU with a direct
+kernel/initrd/cmdline combination and everything "just works".
 
 Signed-off-by: Alexander Graf <graf@amazon.com>
 ---
- target/arm/cpu64.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/core/eif.h        |   3 ++
+ hw/nitro/machine.c   | 116 +++++++++++++++++++++++++++++++++++++++++++
+ hw/nitro/meson.build |   2 +-
+ 3 files changed, 120 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 5d7c6b7fbb..c01051f038 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -765,6 +765,14 @@ static void aarch64_a53_initfn(Object *obj)
- static void aarch64_host_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
+diff --git a/hw/core/eif.h b/hw/core/eif.h
+index a3412377a9..0c432dbc2d 100644
+--- a/hw/core/eif.h
++++ b/hw/core/eif.h
+@@ -12,6 +12,7 @@
+ #define HW_CORE_EIF_H
+ 
+ #define MAX_SECTIONS 32
++#define EIF_HDR_ARCH_ARM64 0x1
+ 
+ /* members are ordered according to field order in .eif file */
+ typedef struct EifHeader {
+@@ -49,6 +50,8 @@ enum EifSectionTypes {
+     EIF_SECTION_MAX = 6,
+ };
+ 
++#define EIF_MAGIC { '.', 'e', 'i', 'f' }
 +
-+#if defined(CONFIG_NITRO)
-+    if (nitro_enabled()) {
-+        /* The nitro accel uses -cpu host, but does not actually consume it */
-+        return;
+ bool read_eif_file(const char *eif_path, const char *machine_initrd,
+                    char **kernel_path, char **initrd_path,
+                    char **kernel_cmdline, uint8_t *image_sha384,
+diff --git a/hw/nitro/machine.c b/hw/nitro/machine.c
+index e28c8e9bf5..8849959359 100644
+--- a/hw/nitro/machine.c
++++ b/hw/nitro/machine.c
+@@ -32,9 +32,104 @@
+ #include "system/nitro-accel.h"
+ #include "qemu/accel.h"
+ #include "hw/arm/machines-qom.h"
++#include "hw/core/eif.h"
++#include <zlib.h> /* for crc32 */
+ 
+ #define EIF_LOAD_ADDR   (8 * 1024 * 1024)
+ 
++static bool is_eif(char *eif, gsize len)
++{
++    const char eif_magic[] = EIF_MAGIC;
++
++    return len >= sizeof(eif_magic) &&
++           !memcmp(eif, eif_magic, sizeof(eif_magic));
++}
++
++static void build_eif_section(EifHeader *hdr, GByteArray *buf, uint16_t type,
++                              const char *data, uint64_t size)
++{
++    uint16_t section = be16_to_cpu(hdr->section_cnt);
++    EifSectionHeader shdr = {
++        .section_type = cpu_to_be16(type),
++        .flags = 0,
++        .section_size = cpu_to_be64(size),
++    };
++
++    hdr->section_offsets[section] = cpu_to_be64(buf->len);
++    hdr->section_sizes[section] = cpu_to_be64(size);
++
++    g_byte_array_append(buf, (const uint8_t *)&shdr, sizeof(shdr));
++    if (size) {
++        g_byte_array_append(buf, (const uint8_t *)data, size);
 +    }
-+#endif
 +
- #if defined(CONFIG_KVM)
-     kvm_arm_set_cpu_features_from_host(cpu);
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
++    hdr->section_cnt = cpu_to_be16(section + 1);
++}
++
++/*
++ * Nitro Enclaves only support loading EIF files. When the user provides
++ * a Linux kernel, initrd and cmdline, convert them into EIF format.
++ */
++static char *build_eif(const char *kernel_data, gsize kernel_size,
++                       const char *initrd_path, const char *cmdline,
++                       gsize *out_size, Error **errp)
++{
++    g_autofree char *initrd_data = NULL;
++    static const char metadata[] = "{}";
++    size_t metadata_len = sizeof(metadata) - 1;
++    gsize initrd_size = 0;
++    GByteArray *buf;
++    EifHeader hdr;
++    uint32_t crc = 0;
++    size_t cmdline_len;
++
++    if (initrd_path) {
++        if (!g_file_get_contents(initrd_path, &initrd_data,
++                                 &initrd_size, NULL)) {
++            error_setg(errp, "Failed to read initrd '%s'", initrd_path);
++            return NULL;
++        }
++    }
++
++    buf = g_byte_array_new();
++
++    cmdline_len = cmdline ? strlen(cmdline) : 0;
++
++    hdr = (EifHeader) {
++        .magic = EIF_MAGIC,
++        .version = cpu_to_be16(4),
++        .flags = cpu_to_be16(target_aarch64() ? EIF_HDR_ARCH_ARM64 : 0),
++    };
++
++    g_byte_array_append(buf, (const uint8_t *)&hdr, sizeof(hdr));
++
++    /* Kernel */
++    build_eif_section(&hdr, buf, EIF_SECTION_KERNEL, kernel_data, kernel_size);
++
++    /* Command line */
++    build_eif_section(&hdr, buf, EIF_SECTION_CMDLINE, cmdline, cmdline_len);
++
++    /* Initramfs */
++    build_eif_section(&hdr, buf, EIF_SECTION_RAMDISK, initrd_data, initrd_size);
++
++    /* Metadata */
++    build_eif_section(&hdr, buf, EIF_SECTION_METADATA, metadata, metadata_len);
++
++    /*
++     * Patch the header into the buffer first (with real section offsets
++     * and sizes), then compute CRC over everything except the CRC field.
++     */
++    memcpy(buf->data, &hdr, sizeof(hdr));
++    crc = crc32(crc, buf->data, offsetof(EifHeader, eif_crc32));
++    crc = crc32(crc, &buf->data[sizeof(hdr)], buf->len - sizeof(hdr));
++
++    /* Finally write the CRC into the in-buffer header */
++    ((EifHeader *)buf->data)->eif_crc32 = cpu_to_be32(crc);
++
++    *out_size = buf->len;
++    return (char *)g_byte_array_free(buf, false);
++}
++
+ static void nitro_machine_init(MachineState *machine)
+ {
+     const char *eif_path = machine->kernel_filename;
+@@ -74,6 +169,27 @@ static void nitro_machine_init(MachineState *machine)
+         error_report("nitro: failed to read EIF '%s'", eif_path);
+         exit(1);
+     }
++
++    if (!is_eif(eif_data, eif_size)) {
++        char *kernel_data = eif_data;
++        gsize kernel_size = eif_size;
++        Error *err = NULL;
++
++        /*
++         * The user gave us a non-EIF kernel, likely a Linux kernel image.
++         * Assemble an EIF file from it, the -initrd and the -append arguments,
++         * so that users can perform a natural direct kernel boot.
++         */
++        eif_data = build_eif(kernel_data, kernel_size, machine->initrd_filename,
++                             machine->kernel_cmdline, &eif_size, &err);
++        if (!eif_data) {
++            error_report_err(err);
++            exit(1);
++        }
++
++        g_free(kernel_data);
++    }
++
+     address_space_write(&address_space_memory, EIF_LOAD_ADDR,
+                         MEMTXATTRS_UNSPECIFIED, eif_data, eif_size);
+ 
+diff --git a/hw/nitro/meson.build b/hw/nitro/meson.build
+index e3f1895890..b9bd0d4300 100644
+--- a/hw/nitro/meson.build
++++ b/hw/nitro/meson.build
+@@ -1,4 +1,4 @@
+ system_ss.add(when: 'CONFIG_NITRO_VSOCK_BUS', if_true: files('nitro-vsock-bus.c'))
+ system_ss.add(when: 'CONFIG_NITRO_SERIAL_VSOCK', if_true: files('serial-vsock.c'))
+ system_ss.add(when: 'CONFIG_NITRO_HEARTBEAT', if_true: files('heartbeat.c'))
+-system_ss.add(when: 'CONFIG_NITRO_MACHINE', if_true: files('machine.c'))
++system_ss.add(when: 'CONFIG_NITRO_MACHINE', if_true: [files('machine.c'), zlib])
 -- 
 2.47.1
 

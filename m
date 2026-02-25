@@ -4,83 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BDC3FD45E4
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 19:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABFEFFD45EF
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 20:19:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvKiu-0007nN-Jr; Wed, 25 Feb 2026 14:39:05 -0500
+	id 1vvLLI-0006mc-G1; Wed, 25 Feb 2026 15:18:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvKin-0007mq-BT
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 14:39:00 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1vvLLG-0006lQ-I5
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:18:42 -0500
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvKik-0001qu-IA
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 14:38:55 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-354c67da885so6080788a91.3
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 11:38:53 -0800 (PST)
+ id 1vvLLC-0000ZG-KB
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 15:18:41 -0500
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-c6e248aa446so13598a12.1
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 12:18:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772048333; x=1772653133; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772050716; x=1772655516; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=kOFGeA0FqE7Y8Al53D3nhfM0GksmdGXgOPfl105bU9o=;
- b=lIWtrwmj5gv0TILkplOR0mzKNN7rdP/x2gP3boSQSdt9hBqlGgFPWeGWpf9Nd4/QPY
- 2WxfKJL6fPkfC0GOo5G6MWv86kNbpSWgr9CkJqzuqFeJgDJVTTfHWTtj+OO8BhDvTYuk
- +HDd532KG2/yp4Mup29izw0PWxCPW59wUrRGMzIi2j/1LYE71+q9QkhXqj3BJzMpAVb9
- Zb7uQuMjZ2H6mVfZLp+d1/sH8IAdLWW0bM++l0KNe1wkbVs6moKzJlyhr4ohzMwy039s
- MVgmilDc5LifnEwtKnGozvjRQJKSF0lF4xRkqiQ7ZkTETp5OD7kyIA4TRAkElziwB6+P
- 9U1w==
+ bh=ZNlQFwMqMuLFiV6Ec6fch2th8mXUyy2BNv0FX7a27Ys=;
+ b=Ov6vdMOn5Gj0Y2ULijbHFHwE7VdMfUzXjnJmZHrKIVKh1wqTqsZXzT4scvvKzl1zm3
+ JBQl5mfsX21uuICBxwWFlQbZVu251jY3BR3T9/QHy9mv/Qhowrz8nJhXbQ7P2dBnxbnN
+ mCL4bqdGbO26X5sSMoBgIbXuSOYM11AVZHPoSuSsodoNcgZj/TZpjFbK/YWregSHY5nb
+ bGiowpKjHOetbKeXK8Nbre6URmIVF+lea/dxWKogqQSM2hnMcwYKe76y7S5cuiPFa9Ye
+ z1Tbcqj3OFzmzpxy4jTiTvYnTOlqlYONr8nyYAqcpyrvaw9KD6/u8or+da1N5tSJaEHY
+ ATEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772048333; x=1772653133;
+ d=1e100.net; s=20230601; t=1772050716; x=1772655516;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=kOFGeA0FqE7Y8Al53D3nhfM0GksmdGXgOPfl105bU9o=;
- b=U0vr+Er6uCpjrjLK/KYVwbNphJs5iemPpduNIoytvg2abHjxXK8ppTV64YlFYbxs0F
- xgpGSFjpXrA6UQpXOJet2wV6vBxg482fBV3Af6iJMYwVJOgFyF3k7kPCRiys5g3WcAqL
- +ZqUsW4OGzamw/NoKcpO/7B9pd17GXU+3S1JOSeim4SnODJdwfOnPemh/on1dmMsm3s4
- 7iisMTSlrpPQxd3fzdlSYDWecbFoGj1LEGWKGVmlxUV1ZmG7IGt/9Dz21Y8ruMt1UaqP
- 5i/jkiYsCTEAGrRMNUSn9Hzk7/CmLSxs6MG5IPprRfbbZInOfQeeMKdMOvw0q+uxuva5
- ZGtA==
+ bh=ZNlQFwMqMuLFiV6Ec6fch2th8mXUyy2BNv0FX7a27Ys=;
+ b=G100QskbtDxwN0bmxXTl7XTr8vguO33SfizWVz7yet2VacdHgjQ9ejIPAncjudqegY
+ 3ueGcF+AHwv7Z7SJuif/Cg/7yG/pSBRrpmf5dY0QbeYSPA+Br1VM5omphH0bKaWLEZmJ
+ nxowwSyNpCSYAaRMIYhKQ0SPZtGzzQJlSX00n/evUYdm6VWudQTc1sNqr4uVqrag+45r
+ 5/EjKCUvqRTImrIHAdWjdH2WPD84lMuGmLhKOKGb1DhMZmTOlyu8zuwb/Kf4HKGr7mXc
+ 74H26iiE8G3X5rjr7W7CeINEj63pvKDfSbxGPswvl7l5nslLiOpHoTn3P+Atr4HVHxUt
+ y8RA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVH3l1fTf4zGeJ0vtroCGsMlLbMzD6jsZh3Pi1tY4GYPsvYOYMsMf23jmbI4vMq5T1fpxtzAEY70g==@nongnu.org
-X-Gm-Message-State: AOJu0YxK350uYUh4ZvFVqszVk0BSusd8n0O/0VoADmAa3Iyo6SXtTFp0
- jCwbYaVP3MWbPfr7Tp5WyEkseYH/aGtAeHgQP21J6LGtXy3L5vSYoeNKVsj2Lf+aRWg=
-X-Gm-Gg: ATEYQzxY1K5yhxIVVl/oKtOK/juH6+fiKHO3eedXdcG/h/3kulhb8/bTHx0ByUjSlzZ
- Ooqred2sc6dSFNtZiR5cWJSkTMofXFZaMXTfpDFBsd5Ube/UWTOu4afaEpS8NiW5q2UWYieRJF2
- PJlGwcZ8/0KfBZlCGJMRBHBn3CFrQRrmnf3qrS3+Vh0fAQstbguDxKdZ05RXd7WS9u9vmb1p7vH
- aNYiGY+s56Ej89Hxy3neXn1Wqd+MybHxqonJPD3GvDNPgqWqSA7RCfPYpcAFNFejjnBC3JA2+sc
- xdBzHqLsAqJSzOD5TpFW5+Hqc1sJEkq9k1YMD7nMUNvlj3aG9DiXBECW2EDNij2fMeKt8MrKwU7
- GKsC9BUaHRCNpsUfqBGP2LVdy2uT29gkXcsvRyGdVLnjS9gX1B7h8ZkpfMQFSnI7fb6cpkjkvl3
- 0SO+9xvAlXfdc8vW0JAogZU/ktzDIm0JmA9yJIL2FG8bKTQaAo8JbWPa1LcGSV8Hqj0wf9
-X-Received: by 2002:a17:90b:33c3:b0:340:ca7d:936a with SMTP id
- 98e67ed59e1d1-35928b880demr1366464a91.18.1772048332611; 
- Wed, 25 Feb 2026 11:38:52 -0800 (PST)
+ AJvYcCWaNwQb/Cf4ZMVIH4pAQgLq7hTpMcVwx87HtqwYhoKhGmreaByhRqG63pk7EE1Lv0ss32eG0hH9yQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyAJNDo34DI0N7ITZXPP9T++EFcAN4uk61qRvXJVbuF8tljCe3T
+ JSgHYoMfFYZkbmq+mFrBRe5/IyV/h+ATaSmMLgfNLw6+Jp3ojCRx5bxspzRD2dPBZ1Y=
+X-Gm-Gg: ATEYQzwYHcAMAuO97cq7TsyfFlmWw2AYBMaqiu8EDvq/iSThafv/68jwGwIjwCIu4J7
+ hd1MMYvX5rIPHRJGDbLQ9yvkTKLKXSDLsMhLevyJjZ6dmqpUjqkgsOIiMBUtz4oBga9vfZbOM2F
+ dcrn5kctwK+NmHIEdk0N0k2sLjSwG10j50l1zNot7ZIPp/G3jO8LqkHCwJI1lLNt41mlkBma2hR
+ mOy4tzszTreP8AQgHS7+f3e53EPYWSjfetZaaEv843rjGkOC4qNPjttmKLGt++Zb694fP+oj8hX
+ I8jtQlhF3nr6yDAVhlOtknPW+iPRFi7P4iNdWCyEE8rHE95yFPeKG798rRCnsHSZuMTzyPXzV5L
+ 1J0XmM1sUkkvofbJwP5z4k7qSQMuBnron+zagL8NNDwwy88vxr/1gHROsUok22MYY3Xle0HNwJ7
+ uRJjpdGR2NBauGr8QEFArh26golVWeKldcWFbTwVxYp1sfh01GNDnP4hc10ME+BvXIZ8yYODQUS
+ vjIsJE=
+X-Received: by 2002:a17:90b:4b11:b0:356:24c8:229d with SMTP id
+ 98e67ed59e1d1-358ae8a48b4mr13746414a91.21.1772050715977; 
+ Wed, 25 Feb 2026 12:18:35 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-359037c8384sm3585945a91.17.2026.02.25.11.38.51
+ 98e67ed59e1d1-359134938ccsm1121419a91.13.2026.02.25.12.18.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 11:38:52 -0800 (PST)
-Message-ID: <c216fec4-0fd1-4f02-8b85-bd2b24bfb954@linaro.org>
-Date: Wed, 25 Feb 2026 11:38:51 -0800
+ Wed, 25 Feb 2026 12:18:35 -0800 (PST)
+Message-ID: <01a2c1ad-1240-42b9-b94a-7b8cf1ab864b@linaro.org>
+Date: Wed, 25 Feb 2026 12:18:34 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 2/2] tests/qtest: Add qtest-attrs-test to verify memory
- access with attr
+Subject: Re: [RFC v4 01/31] hw/arm/smmuv3-common: Fix incorrect reserved mask
+ for SMMU CR0 register
 Content-Language: en-US
-To: Chao Liu <chao.liu.zevorn@gmail.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>
-References: <20260222082529.491384-1-tangtao1634@phytium.com.cn>
- <20260222082529.491384-3-tangtao1634@phytium.com.cn>
- <aZ8Jtl8jxBqDq8Rz@ZEVORN-PC.localdomain>
+To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
+ <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221100250.2976287-2-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -116,18 +120,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <aZ8Jtl8jxBqDq8Rz@ZEVORN-PC.localdomain>
+In-Reply-To: <20260221100250.2976287-2-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_PH_SUBJ_META=2.499 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,44 +147,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/25/26 6:48 AM, Chao Liu wrote:
->> +static void test_arm_memwrite_memread_secure(void)
->> +{
->> +    QTestState *qts;
->> +    uint8_t wbuf[16] = { 0x00, 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77,
->> +                         0x88, 0x99, 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF };
->> +    uint8_t rbuf[16];
->> +
->> +    if (!qtest_has_machine("virt")) {
->> +        g_test_skip("virt machine not available");
->> +        return;
->> +    }
->> +
->> +    qts = qtest_init(ARM_MACHINE_ARGS);
->> +
-> Every single test function calls qtest_init/qtest_quit, which
-> means starting and stopping a full QEMU instance for each test.
-> For the ARM tests alone that's 14 QEMU startups. This will be
-> very slow. Consider using a test fixture (g_test_add) to share
-> the QTestState across tests of the same architecture.
+On 2/21/26 2:02 AM, Tao Tang wrote:
+> The current definition of the SMMU_CR0_RESERVED mask is incorrect.
+> It mistakenly treats bit 10 (DPT_WALK_EN) as a reserved bit while
+> treating bit 9 (RES0) as an implemented bit.
+> 
+> According to the SMMU architecture specification, the layout for CR0 is:
+> | 31:11| RES0           |
+> | 10   | DPT_WALK_EN    |
+> | 9    | RES0           |
+> | 8:6  | VMW            |
+> | 5    | RES0           |
+> | 4    | ATSCHK         |
+> | 3    | CMDQEN         |
+> | 2    | EVENTQEN       |
+> | 1    | PRIQEN         |
+> | 0    | SMMUEN         |
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Link: https://lists.gnu.org/archive/html/qemu-arm/2025-06/msg00088.html
+> ---
+>   include/hw/arm/smmuv3-common.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
-Tao initially implemented something like this. However, it means that 
-you now need to cleanup/reset SMMU state between state, which is fragile 
-and requires even more code. Thus, at the time, I suggested to simply 
-spawn a new machine for every test.
-
-I would be prudent to call that slow and optimize before effectively 
-checking how long it gains. If we gain only 5 seconds by doing this, 
-it's not really worth all the complication. If that's 2 minutes, well, 
-it might be a good reason to group tests per categories.
-
-For now, the full test takes 3 seconds on an optimized or debug build on 
-my machine. Thus, I definitely don't think it requires any more 
-complexity than this. The day it'll reach 30 seconds in debug build, 
-maybe we can reconsider this.
-
-Regards,
-Pierrick
-
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610C4FD45F1
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 22:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47EB0FD45F1
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 22:05:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvMyj-00031R-FQ; Wed, 25 Feb 2026 17:03:33 -0500
+	id 1vvN0d-0004RO-9L; Wed, 25 Feb 2026 17:05:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMyi-000316-8l
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 17:03:32 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1vvN0c-0004Qz-D1
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 17:05:30 -0500
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMyg-0007tT-6O
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 17:03:32 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-8249aca0affso113319b3a.3
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 14:03:29 -0800 (PST)
+ id 1vvN0a-0008P4-NT
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 17:05:30 -0500
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-35691a231a7so24384a91.3
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 14:05:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772057009; x=1772661809; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772057127; x=1772661927; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Xqkd6Lc+kdkZi2VcQ25y784LC5TK6rSEaXnEvbW+C4M=;
- b=NAi9Xi+0qthgrmn/8HU1AQouydm4IRlOruNka1LV7s4zrXGCDdK72xkf7QG6Oe7WZf
- UDkmA3oT1dQc7/eo/VcUNkND5KIMdZCWdIttSfGjCMM3Sep32tdz33Rmbas4Z0mouqqP
- jofQjQ2tHY5ARfCJXdy7yNDdMCGTNFnKuAXikS24RAAvVsX1GeacQGyqRgmo/2L+08Oc
- jZpPKbzuKAVXL2GqWBcsxckzNVJfwKIU5o/3NEskwk2wmawGqiLCdLwAEPBVo1aljJu/
- lqZZmUah4mi5P/sbRdnesp6QFi43AYxKXvp6IWlDtLbF6ddpm61kXRb6l3XCaqeUUB3Z
- 6oUg==
+ bh=ZOC1fZQySZvdx09TbHkXK5Co/GO1m47GRg7nvHM4dYQ=;
+ b=IubMiK0uA/t5Dlb4K8Jn6ddVsmdK9om4SrSPzyc4PGz5cSAy4y5cYyXpuPOh83ytTt
+ 0uwadcbTpTB/hAmYGy4MjMqd6gWHM66aVexMF1Fb6YUp4ygbjQXMZVYU0D/9475FSdCg
+ xVWvldKAi7Gga6cxek2FD3DDLDdfSP2ZUAsyGl/WFtZRl1xV4S6v0pVTnJIDDr/oHiyo
+ qbn5X1Bs1dB1zugNsFljd8e9w4t65ZpEcj0QS7LfLvTp42yDVSLEFKvALQ3oi02cBSZA
+ bIjjhlW2Sws9Yq4EZCZJlHGxVDiRGOwRxC8tCN8Xcabz1ow7chd8x9Gl8/irSLgljtys
+ Ohdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772057009; x=1772661809;
+ d=1e100.net; s=20230601; t=1772057127; x=1772661927;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Xqkd6Lc+kdkZi2VcQ25y784LC5TK6rSEaXnEvbW+C4M=;
- b=dXDUYfg5+VHqDJBCvJUHYejB5aEW3ePNoTfiZwolDiGHxRhDGSI2is42LuEclEN9kt
- QOHwFduDpGdxrqanr8HRQdI+dGaqVAfR9LmK5qs9UFLtxjHrw7QU23xUI2AOFaPCGzTc
- dMEN+ciSL2jVL2VBZxs27QQ4TTgQnlHUTH+1dOxpZrlm6Dro5X2KPVOUUIpcF0RwMlFT
- 5u7xGNQ2EP9NnYlbiew2MjQXemJIJKY1gpYC4O8+V8uD8IMQzgtLP3p7N39dL+APh8D8
- hwvox0+5j4oX/ChIT0xuWbBfdxixMBSNfUUbl0vidj7/CtzBRPIf/ajvKnd0erfNnbKD
- BNBA==
+ bh=ZOC1fZQySZvdx09TbHkXK5Co/GO1m47GRg7nvHM4dYQ=;
+ b=oEGDOJozdRoE/TPty6zo2vtLWXxIvN1Dpev5bdgs/xuRB34RCFZjNwTZX3QM+gXRMC
+ Arct//iXLF8G7KspWeFiOtxUTpDW2GP8NPcz17kKVdX9Jj2QR6vS36W6xbKRcua7Y708
+ L38dR+ZHxGgM1JfaPDrreGCv7z++aRKtgpg1B9wR1ExZj0fukOh4v/fzGIb0vgo4Eyu8
+ 5lAzFHvXGZ/lwnlZDcPKdCeLiMiLvQ+Al9nkIjJ2munnT9HgAUUbJuletXP+rdRHG+1F
+ G2XxTvkZJKOQR1Kg5fupKVOrmNSTWo0HOaQqSgjfhvrMCrAdRjcdjruyI+ICiR2tKGvL
+ uZ/w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNlxWL9ccPxlN4/b6JUVYrXoZAB0nRN7nSEBJRqzBy38n1uaSkRLJmwf0ynQgzg/mwOJahS6EcAg==@nongnu.org
-X-Gm-Message-State: AOJu0YxP8MO71xMXF3cKI3X9l64qFHce861kH2/OnvcVT+NaZ4isXxNB
- ySTdAnJM+cP0bCIvX9XpWR4iwDEVqs9nkmd23cxtsVkt94otTwBloi6CEfjXCmC1NRk=
-X-Gm-Gg: ATEYQzy1c6Wer4DK+rlM6V3Tu8CV+oj8FO1PMbtfwyud3cx1PkdhGr09aoYO+FXUYiU
- W/qIHFlVDmwtedkeHyHwjLL9Igw8CKWEwTkYStcZryc3z8adCuYN9DTJ0OTQqOGwuslhwOMc8s9
- 1JXQM6FLn7GkjDcRKBjX1R+D3Rrl83T6RPjSCbra/8oF8pOX6g9nw0hKi4/XqnizJ5NObrkTTHw
- yNDpFFe8uT8diOm92aghQz0oDscONlH9/NlP1CWqs3MpdNlPMfENwven5w3yBpc7YzMkJ3LkK10
- h2PW+unJDn8sii5DqY7VtHXhumSP/GsGzQoeS+LzUzAY82N0DYFqpM2TX7S9UcxGqsrXNFKHlM5
- wooHMoaYObOZBnXGr2h/Wjr54GD98c9XYvu2vDDLJYnAw8MeCpt6y6N9qZnxi7pZfZ/UwZTg880
- BxTrXVDPQ7YuFoTuryGPH/lnpMQRQp3Ed/QHqnsXVOR91C+/keQ9+RG6Sezj83Iv6th4Jl
-X-Received: by 2002:a05:6a00:cd6:b0:81f:3c7c:8591 with SMTP id
- d2e1a72fcca58-827338bb132mr1259181b3a.50.1772057008571; 
- Wed, 25 Feb 2026 14:03:28 -0800 (PST)
+ AJvYcCVXDKDH4o9lTReYjozLNByk5SIUjwQZpgM6F+1SDr6BHUAMVA7TfXLMmhxOsPqvNSByyyxp70Y+Fw==@nongnu.org
+X-Gm-Message-State: AOJu0Yyavpaje6lagCVBCFs6w4gbec83KIEGhMvJF0a6UWD60yfM7r9Z
+ 1q0nZmkTDYRqmknZgGsbT63zNpS+YuweIVYGBaZWaZfNJE9NMcDEgFf282xoi3NZUNA=
+X-Gm-Gg: ATEYQzypZlIvpnYNSy6C5RdI4E60i/yE2scSE4il8oXPb6aoT2kGt2Blpeqn0l/ncSc
+ VCEBfdIVyRQBw0jOsq1W4yrIr1fNPfQv+vrjDhEajltPhd5M7j6XTYazC4TEPuCgBSSAHLiAKyR
+ tmpjdVf0EM37zE+L8B59ASbiyPSeVzlazm6sMhXhtEsy8ObZt84JPXQ2+tdCWF5Ep47maCFAuCb
+ bgi669aCzKwR+6wj/ZeaFVZc6yYKD7cayDYHIKFgeRm55H9T9YxuDCRBpVvtcFxOAhVlpHMm81G
+ 5Rfc26hosCKB7bV2rq7Q7kOT8+qhq9fUFc4EB3zi/RIEQDTgY+MK1dHGeWP18siTjc+R8J5VVab
+ Qtqt/i1Xm1lky4UBYPHKZ9cEQuwIW0Rb0izwbRexTwxr2cfEWbtosJo0MOujkTeh5Sl3Vicjb16
+ VsEYuIiPvZbEmZ23mcRKDtEycjZA+FSy6p1uB8A+s0B4a0mN5MHDC57XRQzRg/JSTAFO2D
+X-Received: by 2002:a17:90b:2782:b0:34c:2db6:57a7 with SMTP id
+ 98e67ed59e1d1-3593da9f5f3mr103797a91.8.1772057127015; 
+ Wed, 25 Feb 2026 14:05:27 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82739db3e4asm244747b3a.28.2026.02.25.14.03.27
+ 98e67ed59e1d1-3593dda3a4dsm33973a91.10.2026.02.25.14.05.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 14:03:28 -0800 (PST)
-Message-ID: <24f82c5a-6e30-41d5-8e8c-de3219b06d42@linaro.org>
-Date: Wed, 25 Feb 2026 14:03:27 -0800
+ Wed, 25 Feb 2026 14:05:26 -0800 (PST)
+Message-ID: <84f02ed2-c6ab-4c67-94af-637918dc8fa5@linaro.org>
+Date: Wed, 25 Feb 2026 14:05:26 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 26/31] hw/arm/smmuv3: Harden security checks in MMIO
- handlers
+Subject: Re: [RFC v4 27/31] hw/pci: Add sec-sid property to PCIDevice
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
  <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,7 +82,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101842.2996840-1-tangtao1634@phytium.com.cn>
+ <20260221101850.2996913-1-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -119,11 +118,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260221101842.2996840-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221101850.2996913-1-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -147,25 +146,73 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2/21/26 2:18 AM, Tao Tang wrote:
-> This patch hardens the security validation within the main MMIO
-> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+> Arm SMMUv3 uses a SEC_SID (StreamID Security state) to determine the
+> security state of the programming interface that controls a transaction.
+> The architecture explicitly states that the association between a device
+> and its SEC_SID is a system-defined property, not something derived from
+> the physical address space.
 > 
-> First, accesses to the secure register space are now correctly gated by
-> whether the SECURE_IMPL feature is enabled in the model. This prevents
-> guest software from accessing the secure programming interface when it is
-> disabled, though some registers are exempt from this check as per the
-> architecture.
+> We need a way to represent this system-defined SEC_SID for PCI devices
+> if we want to implement SMMU's Secure state. So that SMMUv3 can select
+> the correct register bank and configuration when handling their streams.
 > 
-> Second, the check for the input stream's security is made more robust.
-> It now validates not only the legacy MemTxAttrs.secure bit, but also
-> the .space field. This improves compatibility with Arm security space
-> handling.
+> This patch adds a new char *sec_sid field to PCIDevice, together with
+> a "sec-sid" QOM property. The property is intended to carry the
+> platform-defined SEC_SID for the device; for now only Non-secure and
+> Secure security states are supported.
 > 
+> Future RME-DA/TDISP work will use the PCIe TDISP/DTI protocol to model
+> Realm and Non-secure streams, instead of extending this static field.
+>
+
+In practice, it's not yet clear how will get this TDISP T-bit, since 
+it's part of encrypted payload. So far, we are detecting config fetch 
+and dynamically switching a given device to a new sec_sid accordingly.
+
+Thus, we *might* end up reusing this field eventually.
+
+All that said, for now, and in the context of this series, it's 
+definitely a static property.
+
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->   hw/arm/smmuv3.c | 80 +++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 80 insertions(+)
+>   hw/pci/pci.c                | 7 +++++++
+>   include/hw/pci/pci_device.h | 3 +++
+>   2 files changed, 10 insertions(+)
 > 
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index 90d6d71efdc..aca0509f705 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -98,6 +98,13 @@ static const Property pci_props[] = {
+>       DEFINE_PROP_STRING("sriov-pf", PCIDevice, sriov_pf),
+>       DEFINE_PROP_BIT("x-pcie-ext-tag", PCIDevice, cap_present,
+>                       QEMU_PCIE_EXT_TAG_BITNR, true),
+> +
+> +    /*
+> +     * System-defined, statically configured SEC_SID for this PCI device, used
+> +     * by Arm SMMU. Only support "non-secure" and "secure" security states.
+> +     */
+> +    DEFINE_PROP_STRING("sec-sid", PCIDevice, sec_sid),
+> +
+>       { .name = "busnr", .info = &prop_pci_busnr },
+>   };
+>   
+> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
+> index 88ccea50113..47ed4a13e40 100644
+> --- a/include/hw/pci/pci_device.h
+> +++ b/include/hw/pci/pci_device.h
+> @@ -184,6 +184,9 @@ struct PCIDevice {
+>       uint32_t max_bounce_buffer_size;
+>   
+>       char *sriov_pf;
+> +
+> +    /* Arm SMMU SEC_SID */
+> +    char *sec_sid;
+>   };
+>   
+>   static inline int pci_intx(PCIDevice *pci_dev)
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+
 

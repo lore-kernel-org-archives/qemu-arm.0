@@ -4,79 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16566F55452
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:45:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07082F55452
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:47:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv5ph-0005rX-EU; Tue, 24 Feb 2026 22:45:06 -0500
+	id 1vv5s0-0006WW-7o; Tue, 24 Feb 2026 22:47:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5pb-0005n8-KV
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:45:00 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5rx-0006Vm-LT
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:47:26 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5pa-0007Tm-4A
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:44:59 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4836f363ad2so67928105e9.1
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:44:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5rw-0007kN-2G
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:47:25 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4806cc07ce7so59545425e9.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:47:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771991094; x=1772595894; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771991242; x=1772596042; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=2UPbqmBwrljXKbelPv/ODOM3kOiQmDw3F4/3zO5SvZM=;
- b=g5pPvF5AcG2Bc152D1+AXmteOpCP3t4j6aOmn6RDR9j4u1YIrNLIMPHG7gbKD8y9AU
- PMfMwz3aHIzv9dCQjtHBhy4k497dwxJmEdtpxiZtle8jIC4oqGabumx38lDWJVMFEQXJ
- +IOdgFIViWJ6JxMCkUkfNAEoXy4Eev+FZUNuw5nEVgNOBabwLOVhzI8oK3LfPm40DA3j
- ScC+qq4dG0KT05tVFaQSC3eVXP+8r+P4KQSbICL3bJ3Qo67R2maflxo0euO/4GbHV7EW
- zLbr3GsgzqoHbBHi+uk+udeyyleq+1au611qc4fXbH/dq8Yy1mdJ+cwllQS7SbOeAfBZ
- 4rWA==
+ bh=vJq942fD/Df/iDSp0RynXY9ETFe2sy1oPhW/bPRR88I=;
+ b=Sgcc1SfWAOKANBHhvu9gWjBtyScTMqPZkXtxJcpyhJfUTyD3/VltWZXb4+ED4SX52L
+ 2DkudMW5zxLxs2f+q2EEd8/5j1psOYkZNMxCew28SpnQ4V+v+XowpK4gFFviI9U9i4g/
+ mgqu9ry0EnQm3szDJnL2OWtNeXneVocGBDCmHAE3XrHI//fKVdm594t1UBv237hDExtL
+ LPimTQdMTpBDWYqPwquFK4N4BGjOFO4aUiJDHcKLULwfQ4FAV4HmSrrwjmdsPytyO1oe
+ +hQpLLLOZCAt6UFcaw/WpjA6Li9DpIkVbdqYvI4w9xaY93CW09Kdj2StXt8i3nRbW2en
+ xUxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771991094; x=1772595894;
+ d=1e100.net; s=20230601; t=1771991242; x=1772596042;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2UPbqmBwrljXKbelPv/ODOM3kOiQmDw3F4/3zO5SvZM=;
- b=ngIbN9Ec+1QJktUUAg5CZvyqtbyIdIgZHnMpoXhtty5k1Rbw4qQ/GgJ0aMBRAJYWbq
- eqBzHduoB4k6Ddl2wlf1MpG2aJM91CqzKZvyBaLtL+Qhdq4z3ruJ9jyLkyPC/UZKAr+R
- q5e/Ovb0yFoeOBMynOVBl5CR+/Wt4/msKbvi6TYkjhbPRQ6lSXLrKblRw/h1MabaaVDX
- Vw0t/EipqZEvcfa4aJmQLC+uDESjH2S1HNKaeXkSlZUmD9fvwnyfEqQompSbZjj8vH4T
- aaJS6sf6L9fjfK5oNht6r6PTih6QKnbBFoegQBB/Ik4QyJftOzCErdrlsQsuE78z+Ab1
- yW4A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWY9tljBMlCjQOxuc4GlRCkENlz61qSErD4DTNwr5Q1Jkdpp4sLScDgxfYM3d0Aj6uILvoDId83xQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzx8SVKulN2pg0v2aiq/gt4iRZ06iCG01YlxIrQHi2iGpprzGUF
- /X6gWQ9L0Y8x/EGm0hjNlSrzLwmuEnmhYrYqKFK7crGg4vMjJOIsUdeCEKHN/dcACxw=
-X-Gm-Gg: ATEYQzx5a2X7E+4hZtTeCkMp2eaqIRM1ztpEFINZXIKEEgbDXbjlf5X4FVmh/BPs/wk
- O/VqLCKuoNQHy1xBRXdxcDRxJmwva0dVZVcitjhiEZ3uz0DKyaQCOcYjlNvfsXL3dLPUaBvNUdw
- i7w0U8MvlyhxT5ZTJtlXnVoLlaE1Mi0ovgdwvpIeFbiuMLLALHq/CSGoBZ1HmqfXpfuisZurfvG
- YF1Q/tZSJf3Zw0IJ7qoU4778fa//GvVvO8BkJsysrd5ykoT60j8lRsBkdJaoFqGm991Zd3fApmr
- FOM3a4mQqdApuhOZaIfKZ5ucpzCGd7REVGOdoqwTLQcg40ipRjjwzXhUEvhHS3N1czA5OcKXlQv
- CMRnBWHlF4nt7MNrS3FSBUJ8/9EXnb2rK34hB7AXjoYGa7WNB/72xZQ/UqE8jZ8KyuhpJWs2YJB
- FBgbKbPwgn7PxYB1BEivRAx65HoKAusIKP1ewNaF5USqfYa65vBVidh3qGuhoCF0LM53QDeNn4
-X-Received: by 2002:a05:600c:620c:b0:483:43d8:8d68 with SMTP id
- 5b1f17b1804b1-483a95f8988mr228616375e9.28.1771991094515; 
- Tue, 24 Feb 2026 19:44:54 -0800 (PST)
+ bh=vJq942fD/Df/iDSp0RynXY9ETFe2sy1oPhW/bPRR88I=;
+ b=s9Hz5pSAY9Ge+X7roHGffF7bacYmXkt6P+vtqpw+ILNhsGQCB0Jdp/qFZTMmubTc8H
+ 0qxv1L5D1HBQFz/A2ev6D3XpU9n2OyvNMX9xQBcPKK7t8IZDT3exi036UIm6d5uu3DKp
+ 0t3VvCNi3LfXor5RWv2EoonEGE/EPFIPyGQlPaqdLLgw8zR3Fd8ZJajiqQ1opa72OC7z
+ LF7aPgE6HrPdGrPEcJ8oHrmhfnkishlAjii09kcMrjsh1eztW9n1CKNTomNQJ9OKFFij
+ 8Khkjz+4wLuADsP2LCCTbmxMmYp6Y9xadxvqpryzZRsfLXPQnmT/acJzs+MyTxqEjcYr
+ PwYw==
+X-Gm-Message-State: AOJu0YwWGk0XVTGm/lGg8pNQuGnIfso2oFriaQFxdwX2tWJXdJq3iC1B
+ czEB5Maym2jwhKg/IjvaR8vBQt6FeGH0vT2Hyy0pbudYBQKQP3I5OvvpbC19t3+bNQE=
+X-Gm-Gg: ATEYQzzoMqrm/waK7wOZQCJ4ru+dG8in50nLWgUPORvpJdaS+pTY7xT67QP5cIM1wv6
+ HWyMYSEcaGyqyJ9ABLxnE0cXQxkcm4a51GQ5e8OMq0kc5XC9XkTwm0gGggLiTgiH4EGd5eCNBRX
+ zLWFDzq+qFK6Q4bl4901Hiox4Nkt0JntpYJWRL5RFBnMcEv86jTCttUldP9IqPZYR48pzK4nHcZ
+ oNoClL3h3gWG7IEvdjQI3n8zlim+PxyhTSnMXd30hs9KHVFw8AKrMq2YJiF8Es3mwZk7462Q9cI
+ t8cVvzVua3a3ESQPVbNSp6pleu5Otm0UPmlHvU0gjyuJ0VTtYsRPlJg7AImLAq/tVUcgWeeU2Yd
+ 7m24fRHMtBkvGYWKswQ/XQqi+2Z2ny2qL486vhk79dh3lbJHinWpAAG+pKgQp7Bdl46CWT/gh/E
+ +JaB5CevuhMG0Tg1RzPCZon4ALRXfqE5YiuBTfqBQUKGHhrQ7NBMZLTJeorPoZqIbErf0gXO4Y
+X-Received: by 2002:a05:600c:821b:b0:483:71f7:2794 with SMTP id
+ 5b1f17b1804b1-483a95c9e73mr259568975e9.15.1771991242277; 
+ Tue, 24 Feb 2026 19:47:22 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bd6f19f5sm96888525e9.1.2026.02.24.19.44.53
+ 5b1f17b1804b1-483bd72bd66sm37582405e9.11.2026.02.24.19.47.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Feb 2026 19:44:53 -0800 (PST)
+ Tue, 24 Feb 2026 19:47:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Cc: qemu-arm@nongnu.org, Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] hw/cpu: Build a15mpcore.c once as common object
-Date: Wed, 25 Feb 2026 04:44:51 +0100
-Message-ID: <20260225034451.41338-1-philmd@linaro.org>
+Subject: [PATCH] hw/misc/allwinner-cpucfg: Remove use of ARM_CPU() cast macro
+Date: Wed, 25 Feb 2026 04:47:20 +0100
+Message-ID: <20260225034720.41495-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,42 +99,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-a15mpcore.c doesn't need to include the target-specific 'kvm_arm.h'
-header, it only lacks the qemu_get_cpu() declaration which comes
-from 'hw/core/cpu.h'. Include the latter and build as common object.
+allwinner_cpucfg_cpu_reset() doesn't access ARM CPU internal
+fields: no need to cast, pass a generic CPU pointer along.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/cpu/a15mpcore.c | 2 +-
- hw/cpu/meson.build | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/misc/allwinner-cpucfg.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/cpu/a15mpcore.c b/hw/cpu/a15mpcore.c
-index 28cc4b3a4bd..28cda55ccf8 100644
---- a/hw/cpu/a15mpcore.c
-+++ b/hw/cpu/a15mpcore.c
-@@ -22,10 +22,10 @@
- #include "qapi/error.h"
- #include "qemu/module.h"
- #include "hw/cpu/a15mpcore.h"
-+#include "hw/core/cpu.h"
- #include "hw/core/irq.h"
- #include "hw/core/qdev-properties.h"
- #include "system/kvm.h"
--#include "kvm_arm.h"
- #include "target/arm/gtimer.h"
+diff --git a/hw/misc/allwinner-cpucfg.c b/hw/misc/allwinner-cpucfg.c
+index 3a1526bda0d..f8dbfdd120c 100644
+--- a/hw/misc/allwinner-cpucfg.c
++++ b/hw/misc/allwinner-cpucfg.c
+@@ -84,7 +84,7 @@ static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t cpu_id)
  
- static void a15mp_priv_set_irq(void *opaque, int irq, int level)
-diff --git a/hw/cpu/meson.build b/hw/cpu/meson.build
-index 9d36bf8ae2c..9c1535ca325 100644
---- a/hw/cpu/meson.build
-+++ b/hw/cpu/meson.build
-@@ -4,4 +4,4 @@ system_ss.add(when: 'CONFIG_CPU_CLUSTER', if_true: files('cluster.c'))
- system_ss.add(when: 'CONFIG_ARM11MPCORE', if_true: files('arm11mpcore.c'))
- system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview_mpcore.c'))
- system_ss.add(when: 'CONFIG_A9MPCORE', if_true: files('a9mpcore.c'))
--specific_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
-+system_ss.add(when: 'CONFIG_A15MPCORE', if_true: files('a15mpcore.c'))
+     trace_allwinner_cpucfg_cpu_reset(cpu_id, s->entry_addr);
+ 
+-    ARMCPU *target_cpu = ARM_CPU(arm_get_cpu_by_id(cpu_id));
++    CPUState *target_cpu = arm_get_cpu_by_id(cpu_id);
+     if (!target_cpu) {
+         /*
+          * Called with a bogus value for cpu_id. Guest error will
+@@ -92,7 +92,7 @@ static void allwinner_cpucfg_cpu_reset(AwCpuCfgState *s, uint8_t cpu_id)
+          */
+         return;
+     }
+-    bool target_aa64 = arm_feature(&target_cpu->env, ARM_FEATURE_AARCH64);
++    bool target_aa64 = arm_feature(cpu_env(target_cpu), ARM_FEATURE_AARCH64);
+ 
+     ret = arm_set_cpu_on(cpu_id, s->entry_addr, 0,
+                          CPU_EXCEPTION_LEVEL_ON_RESET, target_aa64);
 -- 
 2.52.0
 

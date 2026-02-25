@@ -4,90 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B3FF55449
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:17:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71477F55449
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 03:18:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vv5Os-0000lx-HA; Tue, 24 Feb 2026 22:17:22 -0500
+	id 1vv5Oj-0000kL-He; Tue, 24 Feb 2026 22:17:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Oq-0000lR-P9
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:20 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Oi-0000js-CO
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:12 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Op-00036W-4X
- for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:20 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4806ce0f97bso49843425e9.0
- for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:17:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vv5Og-00035c-No
+ for qemu-arm@nongnu.org; Tue, 24 Feb 2026 22:17:12 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4836e3288cdso2334265e9.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Feb 2026 19:17:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771989438; x=1772594238; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771989429; x=1772594229; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DoPGvmndfJWB+ezVYLMKCPYZN0oN2JJ1YLQJ64HIOf0=;
- b=zufSqG8hNBHqRVhDrkBkJcqoYnTvtil14p9Lg6r5CpLMcUQRGOIsrWiJqm1+XOpbOZ
- t9zx6uJZdmkrWEff6V9PL+X6wlCuWN9nFwnku5/qLgMGEhRaPGE63TRixFVbaf6X/gcn
- bo4+e+03mP0JChXS+SankwAxrg+sgz8P3JxQNiJlb0HnbLQZpEzYk5K4k7IQzQ0UDGit
- 0z81SJO4RJx0WAk0P3BRnVjCxu1ggrdcLgd4F2Efh//vson4H5eDaYn9UqNivztPM0zc
- jrexfdUWSxZbrXB8AQrqenp4ywbi1pf2vrXQMX9danV+NQBpT0WVgmo/WJ2pJniiL4U2
- Jdvw==
+ bh=pBFSSzCow/tWOBWocPKfqkuVJO6XeuexcV7U+ifCqGw=;
+ b=exVRjbYYPux1xLWe12hQmtV12cc53Zp1m9rXzc7xCSh1Zr+yLKj4dKurTiQlY0niNC
+ YanAPvpwWft75+QonpBwVHyJKq3bxWDM8T2AKVTfA5HJzIoDkQ5qmQDa2vbuc6yQLlO+
+ mPUCmTfDvKwt2jF4w2egLgpH707lAUxUkqybich7pOL0DrH5XhW48bov/ndxV3mtHC3R
+ mnFqLhK0S2+/lXJvylvR4ilIl3KOLUJOlTl84pzCxwDk+UZsLpxthFe7g/mEx6xD6A/9
+ vf8PiSPbjxRVP5kmXXGtxb+Tqz+JNjfKV86nwO1DYJyF2wSE6UrYqQM251Sfbxzhn4QB
+ SN+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771989438; x=1772594238;
+ d=1e100.net; s=20230601; t=1771989429; x=1772594229;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=DoPGvmndfJWB+ezVYLMKCPYZN0oN2JJ1YLQJ64HIOf0=;
- b=W13ctxB/x73fdFKoD2nSPDR+GXoMXgdGxNuUHg4QTZsQe/aVR7NOp283q6lc0Gv0M7
- ytwaq2tXWLdu7tNiMcUW+2xd6TaakyZAvPrgnwye/I5GXr7GjrojiiHqnh9l7FvJe7G9
- H6rSO912rHI9X2ztmDwcoH/vlpyIGJoGveRjrNEgUXtsnLLvkgPpk3/jH/6lfU7ikgVM
- sgss0WuPXjlGy9tGoi6/gpjNTcrKmVKh3IEJlxQvawVAthotjizFNM6kYkiXL1mOBEah
- NN9QCpMCDuSTaj42widlvLCFtipz/tjejn0HJd3kUdMPWwGAUc0fe32413OEzTuvJHBr
- gCmw==
+ bh=pBFSSzCow/tWOBWocPKfqkuVJO6XeuexcV7U+ifCqGw=;
+ b=nVAg06/NtJTJn8q7KNuoWp8Ce+UO857lUuhEDL8j7oZkjzYWxgmG8cF13uCR5sPyfL
+ ZWf4lyXq9Byi7y+khmzuUeDvq/0vN68ALDgmnYtT2QzLreOLV1FGYkOKBEg97iVAY2j0
+ 0SD+LmLaitpSYKMaVH386k0kvS2UVF7IvPDlN5gnfsnbRhPWRyy0bdwfE67rWUuJCNEf
+ sVKvDllunIinVDRHVPCUO2iu61aJc15yE9YjxO7RgsJ2W01pRElZ4xClgXqkHjx5vB9e
+ HOrmywFmsWKzYcdYCqt1QqyXPU8FL79hP+8ZDqKD6phDEiydvCpn0iErNCJsNvOV3ngX
+ ZMZg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXznzrqJKxbeG9YVb9VhdQXFZNtw8WAEmYWU4ld/lXofqvNQaniOMFMRfRty0UU693y9qltrIPDuA==@nongnu.org
-X-Gm-Message-State: AOJu0YxNWW+DDwVIIOIQTDj66jp/dfEKfAFXcU4VV3BgZfao6nacVx2n
- Uzl75nRDFKo8JNdFAZEySfM+QqQuLSR+tmfZzc1Wqp0slBLH7erMDj+RCQKS1ZE33YM=
-X-Gm-Gg: ATEYQzyPEltfmMb+f2KSVBusVOhF+mPcjbJen5QXYft43Wp2y4RQ19+0jfOvyHB0oUh
- 38i282xVrpYrLbZqjsGxxpVifFoMUO6gcJ+ZoZzGoaPJWiMHAZ4TWRfxV7E19/bxJSIe1T8KNWT
- puDwmpQwiiMP+e1Uh64atyKlMHh2yxhewlKHclY726iQnTvT6+7VHXO9UoelFmsP+J+2nd/4RAJ
- nj3AZ4R34Ovy9RsGZQKdJXGkpyOf5s7G/AjNX4A3QZjSfzC8YGv/pgqcshVWfbdFk0Iv8aw7UW2
- kjWZTVS+sCW7/svH4gIwlyFxudDcckiAO2u+9gkYVbRtn7KTfe4mUo1b7RgIvbOWa+0KcyvIFNa
- rdJPkxNBO2qiH7Y/cqOGxzmflv/bssfT5A2OVz2roPgDlmHxBJKDExp2KGRk/e5UhoVTGYfoUE4
- ARwfYHK0tx99t6HgGiEj/HNMbD7malxMesrAk5W/ZAai6V+njrdv3pTikKdzcd9FjHkH+omdUY
-X-Received: by 2002:a05:600c:6990:b0:483:6a8d:b2f9 with SMTP id
- 5b1f17b1804b1-483a95aa328mr245873865e9.5.1771989437583; 
- Tue, 24 Feb 2026 19:17:17 -0800 (PST)
+ AJvYcCXLRCVMt5gaXXowk8CNYSTYf2PPB4lZ5fjQic1mN6rGNYQFe7yPDD3HRGfdfJXYWMvoxeS3tTEH0A==@nongnu.org
+X-Gm-Message-State: AOJu0YxT1qKsd237LnufqdhS7VJRAZUP4i2QvarzYVLY+t1sWJ9GrCsx
+ dkQJKVrhFMzLhT4iBiW+5yiU2dbxyI6aKr18Pq/HKo03r0lB9TUwA0F/Wd9FVJhILnk=
+X-Gm-Gg: ATEYQzz8yuuvA5xylPGFHU0mi+RSqY0seSDaRe4HgfzazSPkhjpyI5/St72wrIawFlR
+ kfUjhmqJao3bjk786DEkiNvNL+3baIbIL6i7tSIXuayT1U3qmb/EfpJf/w3Wyigi1M8OrBqtNA3
+ eHnSFgAEpXK8KhfiAcpa+MDVBqumFjAdbHACbvlcKmLJQXr+FugC16ffBgIe9GWcM98CbHuxIfx
+ taBogjbnmCBUd4GrbjfHUDwkUqux6Z98+7dY+6/TTecq0SDbI2+kpEKjuuuMiOWw5y0XV2EKFiW
+ 5Vu+2Z7p8hCIpRopmvd3Ox8ybNLMRuV9nkA5pql8OCTq1mJ0BmQB+MY2/KWHJDpoav5r+okJKkM
+ LYeK1XDqpBPCxmrmV8N5WTyXGZ0C32/dakXF1KnkyoHHzKg9vsyu9HKfUFDdSRo5zgLxzZLyc/p
+ 2asF2RRxQ7SPGB3r9o07+ALUG8G/nCjIJmYns5nvAQfWF2usFN5+CHmsiPLiJbviZvS1nN55f4
+X-Received: by 2002:a05:600c:c045:b0:47a:8383:f2b2 with SMTP id
+ 5b1f17b1804b1-483bd76fa19mr21308535e9.17.1771989429299; 
+ Tue, 24 Feb 2026 19:17:09 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bd7031f3sm37810325e9.6.2026.02.24.19.17.16
+ 5b1f17b1804b1-483bd750701sm41216875e9.11.2026.02.24.19.17.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Feb 2026 19:17:16 -0800 (PST)
+ Tue, 24 Feb 2026 19:17:08 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  qemu-s390x@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Jason Wang <jasowang@redhat.com>, Yi Liu <yi.l.liu@intel.com>,
- =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>
-Subject: [PATCH 2/3] hw/i386/intel_iommu: Avoid including CONFIG_DEVICES in
- hw/ header
-Date: Wed, 25 Feb 2026 04:16:57 +0100
-Message-ID: <20260225031658.32095-3-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH 1/3] hw/arm/smmuv3: Avoid including CONFIG_DEVICES in hw/
+ header
+Date: Wed, 25 Feb 2026 04:16:56 +0100
+Message-ID: <20260225031658.32095-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260225031658.32095-1-philmd@linaro.org>
 References: <20260225031658.32095-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,120 +112,137 @@ source files including it as common objects.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/i386/intel_iommu_accel.h       | 35 ++---------------------------
- hw/i386/intel_iommu_accel-stubs.c | 37 +++++++++++++++++++++++++++++++
- hw/i386/meson.build               |  1 +
- 3 files changed, 40 insertions(+), 33 deletions(-)
- create mode 100644 hw/i386/intel_iommu_accel-stubs.c
+ hw/arm/smmuv3-accel.h       | 35 -----------------------------
+ hw/arm/smmuv3-accel-stubs.c | 44 +++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |  5 +++--
+ 3 files changed, 47 insertions(+), 37 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel-stubs.c
 
-diff --git a/hw/i386/intel_iommu_accel.h b/hw/i386/intel_iommu_accel.h
-index e5f0b077b4b..d75d232c6d4 100644
---- a/hw/i386/intel_iommu_accel.h
-+++ b/hw/i386/intel_iommu_accel.h
-@@ -10,9 +10,9 @@
- 
- #ifndef HW_I386_INTEL_IOMMU_ACCEL_H
- #define HW_I386_INTEL_IOMMU_ACCEL_H
+diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+index a8a64802eca..7e48d1555d3 100644
+--- a/hw/arm/smmuv3-accel.h
++++ b/hw/arm/smmuv3-accel.h
+@@ -14,7 +14,6 @@
+ #ifdef CONFIG_LINUX
+ #include <linux/iommufd.h>
+ #endif
 -#include CONFIG_DEVICES
  
--#ifdef CONFIG_VTD_ACCEL
-+#include "hw/i386/intel_iommu_internal.h"
-+
- bool vtd_check_hiod_accel(IntelIOMMUState *s, VTDHostIOMMUDevice *vtd_hiod,
-                           Error **errp);
- VTDHostIOMMUDevice *vtd_find_hiod_iommufd(VTDAddressSpace *as);
-@@ -21,36 +21,5 @@ void vtd_flush_host_piotlb_all_locked(IntelIOMMUState *s, uint16_t domain_id,
-                                       uint32_t pasid, hwaddr addr,
-                                       uint64_t npages, bool ih);
- void vtd_iommu_ops_update_accel(PCIIOMMUOps *ops);
--#else
--static inline bool vtd_check_hiod_accel(IntelIOMMUState *s,
--                                        VTDHostIOMMUDevice *vtd_hiod,
--                                        Error **errp)
--{
--    error_setg(errp, "host IOMMU cannot be checked!");
--    error_append_hint(errp, "CONFIG_VTD_ACCEL is not enabled");
--    return false;
--}
+ /*
+  * Represents an accelerated SMMU instance backed by an iommufd vIOMMU object.
+@@ -40,7 +39,6 @@ typedef struct SMMUv3AccelDevice {
+     SMMUv3AccelState *s_accel;
+ } SMMUv3AccelDevice;
  
--static inline VTDHostIOMMUDevice *vtd_find_hiod_iommufd(VTDAddressSpace *as)
+-#ifdef CONFIG_ARM_SMMUV3_ACCEL
+ void smmuv3_accel_init(SMMUv3State *s);
+ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+                               Error **errp);
+@@ -51,38 +49,5 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+                                 Error **errp);
+ void smmuv3_accel_idr_override(SMMUv3State *s);
+ void smmuv3_accel_reset(SMMUv3State *s);
+-#else
+-static inline void smmuv3_accel_init(SMMUv3State *s)
 -{
--    return NULL;
 -}
--
--static inline bool vtd_propagate_guest_pasid(VTDAddressSpace *vtd_as,
--                                             Error **errp)
+-static inline bool
+-smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+-                         Error **errp)
 -{
 -    return true;
 -}
--
--static inline void vtd_flush_host_piotlb_all_locked(IntelIOMMUState *s,
--                                                    uint16_t domain_id,
--                                                    uint32_t pasid, hwaddr addr,
--                                                    uint64_t npages, bool ih)
+-static inline bool
+-smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
+-                               Error **errp)
+-{
+-    return true;
+-}
+-static inline bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
+-{
+-    return true;
+-}
+-static inline bool
+-smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+-                           Error **errp)
+-{
+-    return true;
+-}
+-static inline void smmuv3_accel_idr_override(SMMUv3State *s)
 -{
 -}
--
--static inline void vtd_iommu_ops_update_accel(PCIIOMMUOps *ops)
+-static inline void smmuv3_accel_reset(SMMUv3State *s)
 -{
 -}
 -#endif
- #endif
-diff --git a/hw/i386/intel_iommu_accel-stubs.c b/hw/i386/intel_iommu_accel-stubs.c
+ 
+ #endif /* HW_ARM_SMMUV3_ACCEL_H */
+diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
 new file mode 100644
-index 00000000000..6015e0df2a1
+index 00000000000..b64f1e4d93e
 --- /dev/null
-+++ b/hw/i386/intel_iommu_accel-stubs.c
-@@ -0,0 +1,37 @@
++++ b/hw/arm/smmuv3-accel-stubs.c
+@@ -0,0 +1,44 @@
 +/*
-+ * Intel IOMMU acceleration with nested translation (stubs)
++ * Stubs for accelerated SMMU instance backed by an iommufd vIOMMU object.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/i386/intel_iommu_accel.h"
++#include "hw/arm/smmuv3.h"
++#include "hw/arm/smmuv3-accel.h"
 +
-+bool vtd_check_hiod_accel(IntelIOMMUState *s, VTDHostIOMMUDevice *vtd_hiod,
-+                          Error **errp)
++void smmuv3_accel_init(SMMUv3State *s)
 +{
-+    error_setg(errp, "host IOMMU cannot be checked!");
-+    error_append_hint(errp, "CONFIG_VTD_ACCEL is not enabled");
-+    return false;
 +}
 +
-+VTDHostIOMMUDevice *vtd_find_hiod_iommufd(VTDAddressSpace *as)
-+{
-+    return NULL;
-+}
-+
-+bool vtd_propagate_guest_pasid(VTDAddressSpace *vtd_as, Error **errp)
++bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
++                              Error **errp)
 +{
 +    return true;
 +}
 +
-+void vtd_flush_host_piotlb_all_locked(IntelIOMMUState *s, uint16_t domain_id,
-+                                      uint32_t pasid, hwaddr addr,
-+                                      uint64_t npages, bool ih)
++bool smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
++                                    Error **errp)
++{
++    return true;
++}
++
++bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
++{
++    return true;
++}
++
++bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
++                                Error **errp)
++{
++    return true;
++}
++
++void smmuv3_accel_idr_override(SMMUv3State *s)
 +{
 +}
 +
-+void vtd_iommu_ops_update_accel(PCIIOMMUOps *ops)
++void smmuv3_accel_reset(SMMUv3State *s)
 +{
 +}
-diff --git a/hw/i386/meson.build b/hw/i386/meson.build
-index 63ae57baa51..0f058761b66 100644
---- a/hw/i386/meson.build
-+++ b/hw/i386/meson.build
-@@ -22,6 +22,7 @@ i386_ss.add(when: 'CONFIG_VMMOUSE', if_true: files('vmmouse.c'))
- i386_ss.add(when: 'CONFIG_VMPORT', if_true: files('vmport.c'))
- i386_ss.add(when: 'CONFIG_VTD', if_true: files('intel_iommu.c'))
- i386_ss.add(when: 'CONFIG_VTD_ACCEL', if_true: files('intel_iommu_accel.c'))
-+stub_ss.add(files('intel_iommu_accel-stubs.c'))
- i386_ss.add(when: 'CONFIG_SGX', if_true: files('sgx-epc.c','sgx.c'),
-                                 if_false: files('sgx-stub.c'))
- 
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 47cdc51d135..8f834c32b1f 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -85,8 +85,9 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+-arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+-arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
++arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
++arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
++stub_ss.add(files('smmuv3-accel-stubs.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
 -- 
 2.52.0
 

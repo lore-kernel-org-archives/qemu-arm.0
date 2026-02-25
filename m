@@ -4,97 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B830FD3758
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 13:45:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3DFCFD3760
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 14:46:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvFCR-000755-S1; Wed, 25 Feb 2026 08:45:11 -0500
+	id 1vvG9G-0008SQ-Qe; Wed, 25 Feb 2026 09:45:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vvFCQ-000728-3o
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 08:45:10 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vvFCO-00041w-Jo
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 08:45:09 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b8869cd7bb1so1098634566b.1
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 05:45:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
+ id 1vvG9D-0008Ri-UU; Wed, 25 Feb 2026 09:45:57 -0500
+Received: from pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.12.53.23])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=509822c20=graf@amazon.de>)
+ id 1vvG98-00070U-L2; Wed, 25 Feb 2026 09:45:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772027107; x=1772631907; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iz+SN0OKzJlJssj66gNeJbnj9cbjEBwy9OiSf8ygE5c=;
- b=MzivGYAmz2jWdhdZjJuWCCF3uEyvTK8g9vJssQBwcJOSjlcp5eBPgZsPDgnLHzCPtH
- e1VwlMvxsRxlKv1T+4JBLhGBdn9IxNa1/JFtqDynjS8PCTWkK0gBvozjghSm/1IMLn5s
- b4tx+INkFS7Z98K77IB88P5GZKVTM7pkQSrOwoHxCDdU1Y96KdyTdJpXwi4tc7OG7WEz
- qE+U4aLJ8j0FmW/RsLg2QoH8y4Oh3doc+MrBrqbZcEToHUP52FcUcErIo2M0y4kezVhf
- ryTFkPs8YgvQlOBO91E24yDMDFzg1rdGJ4rbCTWXcHjl2+2Iz89uSqD3wenA/a7VaCxF
- jUWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772027107; x=1772631907;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=iz+SN0OKzJlJssj66gNeJbnj9cbjEBwy9OiSf8ygE5c=;
- b=jDc0LPL4Jk70K6kdiEj9jxwQAHLvt4jgvfRGUlGM6NOGKdjUbyXH2bf1HiqWr4Cl6K
- BUFMfblXqxYH+7wOorwzzGQBQLOz1F1THqhl9uFfjTMvIhT/wmUfjytFfU+IPGvF4Twg
- ck05b0ZcfDU72DGQThncJKx5UsjtAks8UiBu+dw4QC0zM1TrbdIoM0otK3UVQnAgeDfE
- wZyJPTkMZVdTi4h3I/97VVhCz9LHbu7JOciLmKHwnUv0OdWIUomUXjiTNq+1bVg7d9WX
- Sir0nSxT/EOXuAfnRWuB3RK/1pXZ2m+sy7aYrBhbCBOtFiw0lXiiix25TT3fXUIpyTJv
- Sbxg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV7/UjjQia0zYqt6Bw6l64aktNWmyinYfSJ5BMEzW1+IZHJliLMuZQnq3aUw5py+ND9+fkFwOMYCw==@nongnu.org
-X-Gm-Message-State: AOJu0YxyXpO1FuV2qoFs9F3yAj2h2qsibgoFxDaT+po71gIFYT+3jX6+
- rfsVWMg5eecFmZST29LsOBPtco9L3rWnL2CY+GK8VNn1Twalf1NX6yU4
-X-Gm-Gg: ATEYQzyq/fM9bVhJOpXxPnTzVHrU9qm2cdMTnDuKqcZFWljwAfLDWPn/MDPBWLxmczp
- CxQt8GMDuEWk9TSb0dmqOPTvgT3CEwZXHfCkzuOwP3K3TqVCkScgbPWwGg9LuTM1J6jhi42OK/S
- YgyxKhBLNSboHORPzsFcSh2potWy0Zaj95srCQjZymqESf8/0Zgv/Qzv4foZ3K46iXreLnMdaG/
- 1bQxFtl8RICQ/HZo+G3ieoXOZHURQPiJi0tl7c09qxaGbFgMPz4WoytZNmlumsgTkozNEfcFJAk
- qtkP9RubmKz9/qUoKJEFssyBb44zm7lCORBPHXmNz1qlPmlEcfxzJHbQrQd/PHohHYN38+fny1a
- vqbYKk9TevZFI9pxDl8msF+fubfeW0V53k+c68fiFIKd3iLsa75g6P59Ztryjp5UPuz9XfPnQYr
- t8py1MN3ZupJ1G4wBPLLy1GCYFhC107A==
-X-Received: by 2002:a17:906:f590:b0:b87:225f:2e74 with SMTP id
- a640c23a62f3a-b93514db737mr20345966b.14.1772027106500; 
- Wed, 25 Feb 2026 05:45:06 -0800 (PST)
-Received: from ehlo.thunderbird.net ([90.187.110.129])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9084c60b9dsm527787766b.4.2026.02.25.05.45.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 05:45:05 -0800 (PST)
-Date: Wed, 25 Feb 2026 11:45:20 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-CC: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Cameron Esfahani <dirty@apple.com>, 
- qemu-arm@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- Wei Liu <wei.liu@kernel.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v4_16/16=5D_whpx=3A_i386=3A_saving/restori?=
- =?US-ASCII?Q?ng_less_state_for_WHPX=5FLEVEL=5FFAST=5FRUNTIME=5FSTATE?=
-In-Reply-To: <20260222180241.14621-17-mohamed@unpredictable.fr>
-References: <20260222180241.14621-1-mohamed@unpredictable.fr>
- <20260222180241.14621-17-mohamed@unpredictable.fr>
-Message-ID: <6966551B-B54D-43E5-BF2A-0A1D812581A7@gmail.com>
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1772030750; x=1803566750;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=KCela8AQkLSev7ljQRFJIF4piqXcUABB/3Y09CBj+Qw=;
+ b=QwI1cpVnrsClD7yvwbxS0WhEdZB1igrCZ0yHhPIxdbLph2MB+JAlVrCm
+ bCMqUr6MOM3QfwJpZbFVnjr2Nwy/l5wfjfPINsEBUP5cXmtgq9sdPGAbF
+ sA/JvPYHAhQ77DoPPiTNTGKbIUQm1JRRtPbXpkwCKu/1amZOTfnHhROO/
+ xY0+e5vlPsTCmJq34yg7F+ZGx6CG5dtRnnDfjJlcuMIb5lMVUgR+owk6d
+ sfNG7ehDrd91Rs6g7rxtvsBNoFKroWqq6Vad0ssM8yBJU3F4wv8s86ZY+
+ h79Z+1lngv46AwQir71Ax9Yi9W1xGDclkP4s4VY+zT0s72BkYcCGGyCxE A==;
+X-CSE-ConnectionGUID: M5H7nu7DROSjPijvhyLG9A==
+X-CSE-MsgGUID: 7Q04jdrlSYuF3A3C+edLOQ==
+X-IronPort-AV: E=Sophos;i="6.21,310,1763424000"; d="scan'208";a="13645535"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 14:45:41 +0000
+Received: from EX19MTAUWC002.ant.amazon.com [205.251.233.51:3633]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.52.67:2525]
+ with esmtp (Farcaster)
+ id 5183695b-9ca8-468a-9051-b17fd1999a50; Wed, 25 Feb 2026 14:45:41 +0000 (UTC)
+X-Farcaster-Flow-ID: 5183695b-9ca8-468a-9051-b17fd1999a50
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
+ Wed, 25 Feb 2026 14:45:41 +0000
+Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
+ EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37;
+ Wed, 25 Feb 2026 14:45:38 +0000
+From: Alexander Graf <graf@amazon.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
+ Huth" <thuth@redhat.com>, <alex.bennee@linaro.org>, <philmd@linaro.org>,
+ <berrange@redhat.com>, <marcandre.lureau@redhat.com>, Cornelia Huck
+ <cohuck@redhat.com>, <mst@redhat.com>, Dorjoy Chowdhury
+ <dorjoychy111@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Tyler Fanelli <tfanelli@redhat.com>,
+ <mknaust@amazon.com>, <nh-open-source@amazon.com>
+Subject: [PATCH v2 01/11] scripts/update-linux-headers: Add Nitro Enclaves
+ header
+Date: Wed, 25 Feb 2026 14:45:20 +0000
+Message-ID: <20260225144532.84673-2-graf@amazon.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20260225144532.84673-1-graf@amazon.com>
+References: <20260225144532.84673-1-graf@amazon.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [172.19.99.218]
+X-ClientProxiedBy: EX19D041UWA004.ant.amazon.com (10.13.139.9) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=52.12.53.23;
+ envelope-from=prvs=509822c20=graf@amazon.de;
+ helo=pdx-out-010.esa.us-west-2.outbound.mail-perimeter.amazon.com
+X-Spam_score_int: -1
+X-Spam_score: -0.2
+X-Spam_bar: /
+X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.734, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.78,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,17 +100,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+We want to enable QEMU to drive the /dev/nitro_enclaves device node. Add
+its UAPI header into our kernel sync so we have all defines we need to
+drive it.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
+---
+ scripts/update-linux-headers.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
+index d09d8cf4c6..386d7a38e7 100755
+--- a/scripts/update-linux-headers.sh
++++ b/scripts/update-linux-headers.sh
+@@ -254,6 +254,7 @@ for i in "$hdrdir"/include/linux/*virtio*.h \
+          "$hdrdir/include/linux/kvm_para.h" \
+          "$hdrdir/include/linux/vhost_types.h" \
+          "$hdrdir/include/linux/vmclock-abi.h" \
++         "$hdrdir/include/linux/nitro_enclaves.h" \
+          "$hdrdir/include/linux/sysinfo.h"; do
+     cp_portable "$i" "$output/include/standard-headers/linux"
+ done
+-- 
+2.47.1
 
 
-Am 22=2E Februar 2026 18:02:40 UTC schrieb Mohamed Mediouni <mohamed@unpre=
-dictable=2Efr>:
->Optimise vmexits by save/restoring less state in those cases instead of t=
-he full state=2E
->
->Signed-off-by: Mohamed Mediouni <mohamed@unpredictable=2Efr>
->Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
 
-=2E=2E=2E and:
 
-Tested-by: Bernhard Beschow <shentey@gmail=2Ecom>
+Amazon Web Services Development Center Germany GmbH
+Tamara-Danz-Str. 13
+10243 Berlin
+Geschaeftsfuehrung: Christof Hellmis, Andreas Stieger
+Eingetragen am Amtsgericht Charlottenburg unter HRB 257764 B
+Sitz: Berlin
+Ust-ID: DE 365 538 597
+
 

@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40053FD45F7
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 21:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E4AFD45F7
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Feb 2026 21:40:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvMcF-0002h2-RU; Wed, 25 Feb 2026 16:40:19 -0500
+	id 1vvMcU-0002sl-W0; Wed, 25 Feb 2026 16:40:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMcE-0002gl-DV
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:40:18 -0500
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1vvMcT-0002rf-6k
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:40:33 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvMcC-0004OX-Fl
- for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:40:18 -0500
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-2ad4d639db3so539725ad.0
- for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 13:40:15 -0800 (PST)
+ id 1vvMcR-0004RV-Ms
+ for qemu-arm@nongnu.org; Wed, 25 Feb 2026 16:40:32 -0500
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2ad4d639db3so540345ad.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Feb 2026 13:40:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772055614; x=1772660414; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772055630; x=1772660430; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=JC3GKdsB/67HjMM0x+xM5DPdiXVg4HvrguWrnUX/u2M=;
- b=Kmy14jtPyywq6dwChmiwPD74tkSPZbvTk703DYEggRrbJ+0bFv4EhSqbZ3i9uIzuOD
- jGpgQZhEU2rzeserNPA178I6bKqfoE0Jym3N3cRxYH3rr1qpOf5LjSu8DCQ1FwIuqjy6
- 3VFmkzKXj24KJjlqx9B4Da4k/QYH2ukOoZNChfCyGyiqWuuJzJlMkNb1sDUDAf6at4cC
- FduMF6vUQRBnDWdZugNsSecxb0+wGlVHslNr+9qynABZ6a2A2c1p/s+I2YtKCqr+AUvr
- xJbbRP5gohTxNg1iObx5/0ampVTq1MwYJYM4vtFbt2Z2IE5fDrNtSc1gu3o+FVj64k63
- wiGw==
+ bh=jzUHQe/3bZXXU3luwKhL0L8k0oQVcJqaT4DGZBaYs+8=;
+ b=PZfvMx682YrmWW60+OWy820BvM/xg8vhFixT4VUmtb1Ff//GGgHNDL6VBJ6lYBlYo1
+ tOXUKE12z0fG8YplWpiev8gL5hY9Mza5+3rY1B7h2orYOS/SHUzGnpmOy5z11+t4H4Sh
+ J855b0sc7mc4/F6JCM26j5Hne5ij5VXOSOgu+BKvh7V1tFiy3lK8R0OzhJi0OZKqIGJr
+ f2vkuFt27YYoF+OWvXXO+sk9VoNNHn7BEXESId6AZHdD0SktquBZWAsW3Y5JxSILJ7PF
+ LyS+lLK+IO8d0xyhP3ABY1Tb+GlEwRL7cOwFc9MKAhnDxztyrej5lFKowrX7e8KG6Gcx
+ Wx5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772055614; x=1772660414;
+ d=1e100.net; s=20230601; t=1772055630; x=1772660430;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=JC3GKdsB/67HjMM0x+xM5DPdiXVg4HvrguWrnUX/u2M=;
- b=mqFwWey74JPHIaJeWzJwarMcp9eSA9bSMSq4TjW9B0OBHF7ArnyTObNgkEZw7fDTUB
- f1mp70Wo9i+cu3vmCUm+Y1TOlSZ9wMgzST9B4v0NGhKYJYdOcrYJHQk3DC9oat61qTlJ
- /fykKR3CHc5+bl0KGkvYfmaK+yl5jm7DYTQfCIoaz+W0hRzEQVfm3UNNIKEMoLXuJPdx
- t1I2nkkMeCx1luT9gaxn1KOupz6NbWtkgrKoLp1VskLlCPW992pLW8EC1siLOP6VSlS7
- v4Q1brfkEqbq2mM88n5mipZ0sdOBXPxZtqBMtcd7jzrF6d9P2XKv51Mr7scEyzTiR9x6
- InMA==
+ bh=jzUHQe/3bZXXU3luwKhL0L8k0oQVcJqaT4DGZBaYs+8=;
+ b=kXn/GvgaWrggjksaLGXWBbuDoCezKbKK+aI8B7UjR0eJYsy1MB2xIa3ctSLIsCo/P5
+ YJzZVNpsCfbMpn+KYC0WzQpzp6C4v3cdJXqIhDm8u2BNiNwNev74/RmnxK28FI/3+e7t
+ h0GKnoyyeUi8wFdR43g4x1jKC0o5G8yGI0UUM17TgRAkjLbt0ziIFWIUw2Z3MNg3WsSK
+ R3oDn7K2N3Qyt+noONRyfxeTS/41qZvst1mx/yBZYXcxVnfXiWBdvm5vzFJsv6K5+Cj+
+ OH3ewmC0Pbfw43KaexrspB5+7HVqjzuIB2RFWoxa99N0w5bz/fjNi1huDsSJM02QCZM2
+ lItA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWFpDdCX/uNObqoCrzbg2U/li43NJcJC8tJ/X0ZdSlEvK8FCwSv54Ve+m8O5YP+WS92kCJKYLm2tA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+sYP/IkaYJ1UjXPycxjf3aBqIlgOYNKK0PdyeoSDSOVzmpiRz
- 7foqeZNstZ7mxK5r1iiadmqlSbnGxzBUDDkDSemaD1cR3NP45OvV2cvHH84EcKn/VmQ=
-X-Gm-Gg: ATEYQzxm8OiZhK3BuXkzbe1qAVnyPec8Ap54QcS81VPOoapIFmnv+H50Y1afHbbIhb+
- GO+O9kbYrbhBnRhjhu1D4OccXmBWitkRJ3bFwy8VgkDPklmS7/5qB8ze+WlSF2+duo9Lxv+AGSf
- 43a4JHqzritA18+d1UiTz8hQO/jGYQb2NookzVH76HQ9m3VT1vc7LX566OpqzVIA4T8BTjCU6qS
- YLPqEADZTts2quHQkCNE22bkBinYEKxaf7OfS2pHNjxWXG/AqQ8leZdcBzSftby3So+4UfRhuir
- fFm61E7yxNeUH5kKQFEK+MYEUlOBCG1eS5Uk3rOzEDJxNJ/QjifXDQOWpPfiDcFk1FEfav2YB86
- rKWzazoHHa9efRIG+VIYXcRec/HySfusuqXg0BcVmvMztzqCWQdmF4G5Nxvk/eZLv/QHcviWk9p
- kKzw1Oq1QS54uFuMxBHuhgozXtAZ0m2wT7XHo+LpDLYJdzmyZ3IcIhvYv5AtNrXscDjW7Ed2C+l
- DbmftE=
-X-Received: by 2002:a17:902:eccd:b0:2a9:5c0b:e5e9 with SMTP id
- d9443c01a7336-2ade9a60f18mr14010365ad.35.1772055614468; 
- Wed, 25 Feb 2026 13:40:14 -0800 (PST)
+ AJvYcCUWWbFaBvacaB33QvG6BVL7Wxb8yCSA/CsSJ2Kl1rX6AIVlWPZ/tOE/FDAUwoeRVZfliz0ggVwbrw==@nongnu.org
+X-Gm-Message-State: AOJu0YzE9xRP5US0KPHXMeRFY8rXfbfCte8BhRCj8aezKlZF9Ow88S0c
+ 4pexFWiCDt3u9XaTCwoTggHkxT8NGr3LmTi1ghlLKqLPT1NICe3hegy/5jzDV/TE/A0=
+X-Gm-Gg: ATEYQzxvJJRI/iYIowS1Bkwo4HrG9QgtO8SLBs2JWb0fLg4l4eneVfbcqgGpR0FpaC1
+ K7fc9E9olr1UpI5EI8ofxe8upN49pQ0GWecyZfC+7TvWSyO7/LBfkojYSmSPuM7LXNV29eYc0DQ
+ kVYAltyfUjw2aEb8TqBErSzm8xvLI3o/8aLCSjMtDEQHsJ+ZpG0wgdYH7FoohZioTkB0+TThv+o
+ uLPi9qRMF0J5YuxLKaOGh/kJn45NEMfNwhcrOLgr7sqtNs5Yv0+JFYKYk1D219fHn9oGAPl8Vo8
+ bW+Szn6pvew2/97mvTQducwq2D+NOatCz/SWyyITh0lCHr904CpQoxhWwg0jqx41tRWidd/00y3
+ o+W/ljdiLuVd/YB5SGl/FPFIgoQAqKSovfeh/MRI3rb05c7UhbfmaJBiOMWB67ekByCqKMhmdzV
+ aovLj36rRlO0SU25VdGkTi0lchZxV3LrLpxINcAP1PqfUeSVIJvD591mD8oqDkRXg9vwlbwvemg
+ Kd3eJI=
+X-Received: by 2002:a17:903:1b6d:b0:2aa:d5e8:f4e2 with SMTP id
+ d9443c01a7336-2ade99bec80mr16982785ad.18.1772055630235; 
+ Wed, 25 Feb 2026 13:40:30 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2adfb5b22e7sm1921625ad.3.2026.02.25.13.40.13
+ d9443c01a7336-2adfb5e1174sm1903025ad.41.2026.02.25.13.40.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Feb 2026 13:40:13 -0800 (PST)
-Message-ID: <d09ecbc1-3ded-4e75-9488-617dab41e69b@linaro.org>
-Date: Wed, 25 Feb 2026 13:40:13 -0800
+ Wed, 25 Feb 2026 13:40:29 -0800 (PST)
+Message-ID: <d573d2a3-17ba-457e-85a5-a5b5022c086a@linaro.org>
+Date: Wed, 25 Feb 2026 13:40:29 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 18/31] hw/arm/smmuv3: Make evtq producer use SEC_SID
+Subject: Re: [RFC v4 19/31] hw/arm/smmuv3: Fix CFGI_CD handling when stage-1
+ is unsupported
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
  <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,7 +84,7 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101723.2994751-1-tangtao1634@phytium.com.cn>
+ <20260221101733.2995020-1-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -119,18 +120,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260221101723.2994751-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221101733.2995020-1-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,17 +148,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2/21/26 2:17 AM, Tao Tang wrote:
-> The event queue producer path wrote entries through address_space_memory
-> with MEMTXATTRS_UNSPECIFIED, so produced entries did not use the
-> sec_sid-selected DMA context.
+> Add a STAGE1_SUPPORTED check in the CMD_CFGI_CD and CMD_CFGI_CD_ALL path
+> and return CERROR_ILL when stage-1 translation is not implemented,
+> matching the architecture requirement (IHI 0070G.b, page 176).
 > 
-> Pass AddressSpace and MemTxAttrs to queue_write() from sec_sid, and
-> assert that the selected AddressSpace exists before producing entries.
-> 
+> Fixes: 32cfd7f39e08 ("hw/arm/smmuv3: Cache/invalidate config data")
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->   hw/arm/smmuv3.c | 13 +++++++++----
->   1 file changed, 9 insertions(+), 4 deletions(-)
+>   hw/arm/smmuv3.c | 9 +++++++++
+>   1 file changed, 9 insertions(+)
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

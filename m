@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A97FC5911
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 08:47:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0DAFC590F
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 08:47:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvX0d-00050K-Ih; Thu, 26 Feb 2026 03:46:11 -0500
+	id 1vvX0T-0004tk-VM; Thu, 26 Feb 2026 03:46:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vvX0W-0004uF-OD; Thu, 26 Feb 2026 03:46:05 -0500
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ id 1vvX0M-0004rQ-Np; Thu, 26 Feb 2026 03:45:55 -0500
+Received: from mail-westusazlp170120002.outbound.protection.outlook.com
+ ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vvX0U-00053l-9H; Thu, 26 Feb 2026 03:46:03 -0500
+ id 1vvX0K-0004yi-Jc; Thu, 26 Feb 2026 03:45:54 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=J0mM1ryytmp6jCWfp/GgRBJNEe1KYN2SguzGFD4/Bs06/t9yEVWjV+vUhsncH1gaelKBqGgwaGr+mPv6Ej+n1SbhHVC+SroJeTESpnWHSx8lucNQnzWCogVrDKZTQmcEklcxiWI5vAKaTUbH5/0GHgJgh6crf9RB/XgDG0VlRweXa41tTNaXNzAReWn05qK04yi//wlWXfh6voN0ozxCLpledrN6hGJPYnxIzkYfBLHu51iisrY3uG43tH9ip+06edpcdk3qmLzZtkq3zXfIwKCZ01tXqziHgbDdT9VfH0YggwaDAJXP6IQfyaoV6ih+sSUIO7UlcjbAPUTN4S2sxQ==
+ b=ZjQTWSyHPRDn3zLxC3K9ZKTkVRi+G3hHANiFLCqPuJFJxAHKyKZaPBbQgDws/YBYLLzsR/8D8JCmIt2Z6zCrDHXAIkkQD4xxWe644OhVzDgSV/2Bx2IZcDRsIBCDqbAbky1KaT5KCNCRL8Y0S7gdQM/X35rrazXattqSlXG39DMBIj7Rnn+viNikLT+5tCOWPJ/frzEReYRcF7wBXDLXFjmvFjLlG/6sB7o8sbN1x3Z40gYe5EC6RMKR90eoM2jebQS8jocMxfsEWI41RVInKSXofe7iJTt5vtY8PzkhxrkKSxs1Dqvq1MINeTELtRKTbSlZkhPQgPvYHo+LzExfLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ryb7l0u+b9lTcLpYAn+FUMKs2MINuV25mqvlij8oFmo=;
- b=WNZL5SMot05zPRObVSZ4jr9fOVfbYLBTRWI99L0OjHzb/gRs+k0I7qgQCGwXbAeik6U0HpBTV/sczGlGfdYH9YYQN/eW4fJHTDerjsneDaPaj+nQyhh0+LjZN7752fpi1FkXwH1qJxC5WP0TQT/VslDgykHSybIKgOgMuS5YE2AeXZQRPkTRgABrmO4gK5SsOXt53E0NHTYLIZ71Y95hFCcRG9vnHCz/6ap3+DdBC8prcOoNLq6nPlZraDo4w74a+Fs5V1Ww5w+gNs/pNl/jr/6D/FGgO0CjFu/R1nO58+sQBIUQ5F7BOoSQtn/oWla31ZhTeTel0iwUBZVq3GvR+w==
+ bh=Brsd0HF5ygXOdIq34LPZDiEjUKSOIZK7t4l8AzdgqnI=;
+ b=M8KVH/vmFgAjt0HRL+vuBR/77YyO/fyc/AF5O689Nboz+kmjnKm8e+WqDVn27AeastPECYIjeybLLQb8X6XqP8v2J3JsF7QIQTnTKT3TjC0eQcF2h1/m2r6MwB7S/ETbgdau2FBkquLDbPr6Ye68oOZqs9IAvjGVWGgOMDvH95pNpIZAWKMB58mZbjkFweoyjyt1d4quRYmizSQ2wFlAJCPxzkcGrpu7Bs5Mw025+ynYCzUOiB1oPegCoSdH4nZieFy4P6Bs3eofR++RN5JEhuyI0IZ2I4YVn3eGcGtTY80yVHigaTfWoYXyPEdp0v4FXA+5N1PwVNrcHcTUiptVTw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ryb7l0u+b9lTcLpYAn+FUMKs2MINuV25mqvlij8oFmo=;
- b=Dp67aCM2umSTPH3RbLbqgFSIVmk9zKPeFLNJRo3kY5p3gkjBK8mX2GokWubvKp/6GFDWN2wu21vBEv5qtkEmJbIfXFt3dMwWIpFoc4aepI8A1hZVrMxK3FUx/jkRHKjREz4MDqyiX8E2dPuZN8zYK4sjdPvsG/EEGJNuWR3Le7VtfGfZ8LDs8U1pdvY317emo8k09O+DxO1PkpCHuNebbVcvME3uV/7MYQLwv9+rTK0vzgaIq/Ptdo/72V6JgQKo3lQbLk2mD30FL5HAEccmmK9k6qfji2Jk3Mgfc3XIcyiHRD9jx+Wf/QWm40VD1LAbAjF3JLiRYMVchm4VNEgskA==
-Received: from DS7PR03CA0103.namprd03.prod.outlook.com (2603:10b6:5:3b7::18)
- by PH0PR12MB5608.namprd12.prod.outlook.com (2603:10b6:510:143::13) with
+ bh=Brsd0HF5ygXOdIq34LPZDiEjUKSOIZK7t4l8AzdgqnI=;
+ b=aWslJPsmC7fzEBD5aNe4ZU5tlbiVBr9mGVUcwdBZrsUjFsICnam+28UNyEvMrCO+DM4HDZJb5556p/zjzFUVq8PlLo8Y70vrte1u7cFijby527bhMZ51jqVgqIN2u2PcrmF605580IX+CSe202krAFHzKAJBGcYk9/5xtBKKdNTHpzTrFAV23Jg3t1Bb+Y6aWdAFXIoRazn6rYIpw6LNsIqQ8yMt/UCxDrXWdC7fsN4s+lS8RRZ0ZMffc8tvQsIpkz+63qS6whtQiLEavMD6q/eJQpRzvDwqBh76VLVUIBhEUDZ2PcTmdd6i8STvMmBB18HBW3VZBls1s0PJqKRnOw==
+Received: from DM6PR02CA0091.namprd02.prod.outlook.com (2603:10b6:5:1f4::32)
+ by IA1PR12MB7493.namprd12.prod.outlook.com (2603:10b6:208:41b::17) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.11; Thu, 26 Feb
- 2026 08:45:55 +0000
-Received: from DS3PEPF0000C381.namprd04.prod.outlook.com
- (2603:10b6:5:3b7:cafe::ac) by DS7PR03CA0103.outlook.office365.com
- (2603:10b6:5:3b7::18) with Microsoft SMTP Server (version=TLS1_3,
+ 2026 08:45:45 +0000
+Received: from DS3PEPF0000C37F.namprd04.prod.outlook.com
+ (2603:10b6:5:1f4:cafe::c9) by DM6PR02CA0091.outlook.office365.com
+ (2603:10b6:5:1f4::32) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.9632.26 via Frontend Transport; Thu,
- 26 Feb 2026 08:45:54 +0000
+ 26 Feb 2026 08:45:48 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.161 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.161) by
- DS3PEPF0000C381.mail.protection.outlook.com (10.167.23.11) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9632.12 via Frontend Transport; Thu, 26 Feb 2026 08:45:54 +0000
+ DS3PEPF0000C37F.mail.protection.outlook.com (10.167.23.9) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9632.12 via Frontend Transport; Thu, 26 Feb 2026 08:45:45 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 26 Feb
- 2026 00:45:35 -0800
+ 2026 00:45:23 -0800
 Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 26 Feb
- 2026 00:45:32 -0800
+ 2026 00:45:20 -0800
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
@@ -71,10 +71,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
  <jan@nvidia.com>, <jgg@nvidia.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <philmd@linaro.org>,
  <kjaju@nvidia.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH v8 4/5] hw/arm/smmuv3: Introduce a helper function for event
- propagation
-Date: Thu, 26 Feb 2026 08:44:55 +0000
-Message-ID: <20260226084456.112142-5-skolothumtho@nvidia.com>
+Subject: [PATCH v8 1/5] backends/iommufd: Introduce
+ iommufd_backend_alloc_veventq
+Date: Thu, 26 Feb 2026 08:44:52 +0000
+Message-ID: <20260226084456.112142-2-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260226084456.112142-1-skolothumtho@nvidia.com>
 References: <20260226084456.112142-1-skolothumtho@nvidia.com>
@@ -86,32 +86,32 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS3PEPF0000C381:EE_|PH0PR12MB5608:EE_
-X-MS-Office365-Filtering-Correlation-Id: d4288b16-2b6c-4c48-a771-08de75137473
+X-MS-TrafficTypeDiagnostic: DS3PEPF0000C37F:EE_|IA1PR12MB7493:EE_
+X-MS-Office365-Filtering-Correlation-Id: 743b764e-6150-48dc-acf9-08de75136e8c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700013|1800799024|376014|82310400026; 
-X-Microsoft-Antispam-Message-Info: L7/12S/eLX9YT8FS0E0rsNESW8q3y8eZGwQ1bHUDmFCtuxg2ER/rneeYKq2xxYu5M2MLHhR/8qKetgMVq4G8XrgftRRfRnJLlfBV0D+jL4meO916WgjKH3e7FE3qLz5KILEpU/jCE0cmb17VbrlUFxb6Y4p/PzyEhzEd411NxRfY8jnbKutfB5jspgVooRHtmlR13ySm/zAz55SKBZAQ9Kcd5PR25NthJ9GkZ0JDHJ6DD6zaVm/GKN309dT3CTj64J32wluvZyFb8sdPTE4ShT4ZIVc4GrKsNOu8l6qZPE2BVQW3nzJmMjXkHD/c2tog5gH6ilK9yrT7NVU6axhbfXFJ/wr+nDvCWYNPgV7syrif9Jg8bsgHRT0a5nQwvV4XIvw/KLNVWAGELhDyMXahMmQi01ecRid13yjmaVlVwnZRGqS8344U1OO0pZSyz5VPdHk0UmWTV+HxLVOwVcaxmRpndx4o4kJtqj1Aoon+r3RjzsTNRpfJCBjNbS4dAbV6zoJmyiGfBQaUgNEHo2OlWeWZ4r77N5co85AW9Uo0EANYQnXLIkVk9MYxK/Ch+Rp8ZkId+uJH7pdAfwq0JeHr9mAFj41C2zN3RaxWQnWNK+N8EOGpeVW4TLSAsn8ZiGr7dOLVsaKT79h+h7CQyvrXXfzel4ylLI5/9X197BH4H77FYvhC5d4G2chb0QYIJXIE4uv+mewO2xWuxJw8LfNiBP/ltuqsLj6F3u++B+nYaXWS09k9nNO7j6FlgF83OvhGfp7bFyhUOIlcUwVFrWwp9G98R915slmqSBf4NjgT6oe/DlvDR0NK75v+QMbqj3Ey6T/NOLxxv49KUrcdGjlYdw==
+ ARA:13230040|376014|82310400026|36860700013|1800799024; 
+X-Microsoft-Antispam-Message-Info: t+F6joi/9PbTyMic5ydEjBD2c0sYG2nP9zOXUGseTUX0qMKTgIwNjWzv8l/maAv92iSrKIgvJxUvEuA+D9hR4sWQtSh3NdOPSDxQv8twmqjVBtz6Ncl8bgDam2quynYzYmBaVxdqExVIVGV05BM7ohKGSoifkRl2/deP01oj+iWkVT+J48wRIIhuwo/iADpJ/Ec6Jke5cBzencEc41Tu4hAVjxY9W612d0QtNetCT7p6flUVNRdKo3UBbLnR/4wWbDw6JsVXrYAgzoQ3fRcRHXWtz1gxQPQ9W7692KhklZbut40+JzhHbBduZ2/yFGYjdxgO5JKxL9M1wmCVOjFXZ8X01kLhKzDDtqxYGGBIaDz+78/6RcF/pYps76QbL3SMi9BDsxiOhF3NBzrNLZngmt4nuHz9TmcPg9hqQnYn3qYfZVIcj21ZH6dGdTzwBoZNNObz8kT1oAeSaSd00dvhDSc0Vc416DVdDdoNf8IIGoWl8SyghTCI9Rb1rBeF0IToMZ51FpqmLMpiKSw/m4AwDpG2K5no8pLDEJfI0RFNEMAya1qEwG9mRDCIUeXLZ6NCtZ+QpAT+bOU7HgFJYqriB/wMCEtuJtTKSi0Sj4zUxfHc+HMhhGGYM0hS0BkMJIZIUqa+PXHsfrSXS/Cf3lZoGRXiWN1HBnoSQMKvE/PQgIrXzY/QWHcW8DtAPUQxDerGJIbV/8UHKLqKasMg8EVLBuCMXOfOU2v3D7Fe91zQyE+QcJ9wPtPseM6mp541xE8SvJcSfzxHlFp2IoEM0UDgaK4NVsG9DSINFuTcYbYqgURU57UGmr6JnVLcNs6YHwP0R/NFVQuTOjGWX8IW8ubxNQ==
 X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700013)(1800799024)(376014)(82310400026); DIR:OUT;
+ SFS:(13230040)(376014)(82310400026)(36860700013)(1800799024); DIR:OUT;
  SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: VLL3nhjhhkJQj17wuKI6MdJ6SDuR/yb2EX4FWywXykEiDFiWE2e8aEloaZJCVgx/wzwo82x5vuRm4O8hKyiNiWrJOEd9zTvgVpqsYn/8VUA+1QzP7XnsVTgb0BAwOormjZ4wZLEwrHgV/6SIjPJ8bFVM0LnAtaEX0hLZ0l5YZBjf7MJDvVP1ugvUjDNGvT5PfOpMYONC7ODwhH5+P8f9mXNpQ6jip3BzLO9CwMAjipyi7bBDrTslnWq02TBZ0rwuxJmEI2321ZmtRGtuy1oFVg23Fe4hN7FpDWyFwFNYIh5NcIiZG/N7fZCrMZjgTBwFM6aktivZaPzCM7l2VDnCQ32aEw5la+9Bi7e6SLVMQQu/znJHzsxT6HCZw0KKrSu6cAyj0FV7XXyeBGtm13u5sS1FTWycJJq95d4NuTWqvamZy5QiD/locH7JGv3ysYZN
+X-MS-Exchange-AntiSpam-MessageData-0: IrZW0Mit7C6IROniy8XkebFiWW5ElQdsDIecS99cG0nAnt1c/Ew7sSXvd8hs03x7BaMtkJ1uWwseqCiUZ6YIwSqw6weNbDOZN+K7qPicJtM876lZP8ouTW0Towdwp9FW0Gi5iJQCUQbzkUuUF22Nydj28/k+WS2r5/gfbC86C3nlieIb+nAzZyMITfC7WhYhCFhT+bSjSqqs87qcZ9pnlCXzQRjQW4QMoyWBPktcoND0BnWe/pmdVQ/EPDBIS5Dv5EpNynoeNoy+es/7Z0mX62QCNv4FctGJVV3S4UzUX+VIDz/Va5wmOLVQMaS1cimSVKaO0q5TLhJiHhO+9BqqE+d9Npt7kG876g5aqrEciNXd6i7y+fBuvi3tLPDKm7UYvgEscwJbTUwmHXLsTFSi/93Bys3ArW0XN/vWn+ddMdAOH8+MVgU37opg3EYi4+wm
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2026 08:45:54.8135 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d4288b16-2b6c-4c48-a771-08de75137473
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Feb 2026 08:45:45.0782 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 743b764e-6150-48dc-acf9-08de75136e8c
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF0000C381.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF0000C37F.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR12MB5608
-Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7493
+Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
  envelope-from=skolothumtho@nvidia.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
+ helo=SJ2PR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -134,100 +134,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Factor out the code that propagates event records to the guest into a
-helper function. The accelerated SMMUv3 path can use this to propagate
-host events in a subsequent patch.
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-Take the mutex inside the helper before accessing the Event Queue.
-Today event propagation occurs only in the core SMMUv3 path and is
-effectively serialized. A subsequent patch will also invoke this helper
-from the accelerated event read path, which may run concurrently.
-Therefore serialization is required here.
+Add a new helper for IOMMU_VEVENTQ_ALLOC ioctl to allocate a virtual event
+queue (vEVENTQ) for a vIOMMU object.
 
-No functional change intended.
-
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 Tested-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/smmuv3-internal.h |  4 ++++
- hw/arm/smmuv3.c          | 20 ++++++++++++++------
- hw/arm/trace-events      |  2 +-
- 3 files changed, 19 insertions(+), 7 deletions(-)
+ include/system/iommufd.h | 14 ++++++++++++++
+ backends/iommufd.c       | 31 +++++++++++++++++++++++++++++++
+ backends/trace-events    |  1 +
+ 3 files changed, 46 insertions(+)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index a6464425ec..b666109ad9 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -352,7 +352,11 @@ typedef struct SMMUEventInfo {
-             (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
-     } while (0)
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 80d72469a9..7062944fe6 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -56,6 +56,15 @@ typedef struct IOMMUFDVdev {
+     uint32_t virt_id;  /* virtual device ID */
+ } IOMMUFDVdev;
  
-+#define EVT_GET_TYPE(x)  extract32((x)->word[0], 0, 8)
-+#define EVT_GET_SID(x)   ((x)->word[1])
++/* Virtual event queue interface for a vIOMMU */
++typedef struct IOMMUFDVeventq {
++    IOMMUFDViommu *viommu;
++    uint32_t veventq_id;
++    uint32_t veventq_fd;
++    uint32_t last_event_seq; /* Sequence number of last processed event */
++    bool event_start; /* True after first valid event; cleared on overflow */
++} IOMMUFDVeventq;
 +
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
- int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
+ bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+ void iommufd_backend_disconnect(IOMMUFDBackend *be);
  
- static inline int oas2bits(int oas_field)
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 5d718da764..af7a54143f 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -168,10 +168,22 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-     return MEMTX_OK;
+@@ -86,6 +95,11 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+                                 uint32_t viommu_id, uint64_t virt_id,
+                                 uint32_t *out_vdev_id, Error **errp);
+ 
++bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
++                                   uint32_t type, uint32_t depth,
++                                   uint32_t *out_veventq_id,
++                                   uint32_t *out_veventq_fd, Error **errp);
++
+ bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+                                         bool start, Error **errp);
+ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 13822df82f..acfab907c0 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -504,6 +504,37 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+     return true;
  }
  
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
++bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
++                                   uint32_t type, uint32_t depth,
++                                   uint32_t *out_veventq_id,
++                                   uint32_t *out_veventq_fd, Error **errp)
 +{
-+    MemTxResult r;
++    int ret;
++    struct iommu_veventq_alloc alloc_veventq = {
++        .size = sizeof(alloc_veventq),
++        .flags = 0,
++        .type = type,
++        .veventq_depth = depth,
++        .viommu_id = viommu_id,
++    };
 +
-+    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
-+                                 EVT_GET_SID(evt));
-+    QEMU_LOCK_GUARD(&s->mutex);
-+    r = smmuv3_write_eventq(s, evt);
-+    if (r != MEMTX_OK) {
-+        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
++    ret = ioctl(be->fd, IOMMU_VEVENTQ_ALLOC, &alloc_veventq);
++
++    trace_iommufd_viommu_alloc_eventq(be->fd, viommu_id, type,
++                                      alloc_veventq.out_veventq_id,
++                                      alloc_veventq.out_veventq_fd, ret);
++    if (ret) {
++        error_setg_errno(errp, errno, "IOMMU_VEVENTQ_ALLOC failed");
++        return false;
 +    }
++
++    g_assert(out_veventq_id);
++    g_assert(out_veventq_fd);
++    *out_veventq_id = alloc_veventq.out_veventq_id;
++    *out_veventq_fd = alloc_veventq.out_veventq_fd;
++    return true;
 +}
 +
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+                                            uint32_t hwpt_id, Error **errp)
  {
-     Evt evt = {};
--    MemTxResult r;
+diff --git a/backends/trace-events b/backends/trace-events
+index 8dc64a20d3..b9365113e7 100644
+--- a/backends/trace-events
++++ b/backends/trace-events
+@@ -23,6 +23,7 @@ iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, u
+ iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
+ iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
+ iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
++iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
  
-     if (!smmuv3_eventq_enabled(s)) {
-         return;
-@@ -251,11 +263,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-         g_assert_not_reached();
-     }
- 
--    trace_smmuv3_record_event(smmu_event_string(info->type), info->sid);
--    r = smmuv3_write_eventq(s, &evt);
--    if (r != MEMTX_OK) {
--        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
--    }
-+    smmuv3_propagate_event(s, &evt);
-     info->recorded = true;
- }
- 
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 8135c0c734..3457536fb0 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -40,7 +40,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
- smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
- smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
- smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
--smmuv3_record_event(const char *type, uint32_t sid) "%s sid=0x%x"
-+smmuv3_propagate_event(const char *type, uint32_t sid) "%s sid=0x%x"
- smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
- smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
- smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
+ # igvm-cfg.c
+ igvm_reset_enter(int type) "type=%u"
 -- 
 2.43.0
 

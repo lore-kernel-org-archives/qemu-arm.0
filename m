@@ -4,99 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C8BFC591F
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D584FC5926
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:30:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvYTE-0002Pb-Dl; Thu, 26 Feb 2026 05:19:48 -0500
+	id 1vvYcm-0004L7-Ak; Thu, 26 Feb 2026 05:29:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vvYTD-0002PM-3j
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:19:47 -0500
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1vvYck-0004Jn-Ms
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:29:38 -0500
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vvYTB-00046m-Kb
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:19:46 -0500
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-7987531082aso6447257b3.3
- for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 02:19:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772101184; cv=none;
+ id 1vvYcj-0005Yr-4Y
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:29:38 -0500
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-64acd19e1dfso539267d50.0
+ for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 02:29:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772101776; cv=none;
  d=google.com; s=arc-20240605;
- b=Qisv5owfBNNB8va28EuAZdzOALeEXul0QkNarPoixxR0WWL/9aj8tRhtnd9RRSVoxC
- HWONR/MX63fgAp/xV8Yva6fS7j5t+V0pdzLg4FKv84n9ekrPe8xmiooez6inw0aPizbA
- ankvNVPABEvCwJnHkT3lRNhSMVBrVwFmPoSRAGUlNmP5rtMiW3Rhi6qMzNPzgpfg3eX7
- 3gHk2BTU2Xjnl3ce2fQfyX0oYuNOiSSv9WD74TktyO3gAYzvBROuGxQdQV/Av+//PXPs
- s+fnm2TS2NnLkYVxljk+v8vgcXsKwKRrnA5188pJ8jQ+mapiVP1TnBJrieCBrhALTz4I
- +JqQ==
+ b=QbYkooaYod7Y4TgXsNd7r5XA9/YxlNBQQ7RBpPsU69LBSraEtvJKDKi9RVJCnTCPOL
+ uzZI3EhHXj7LiZeUvXhkCo2buLUsbGXuZO0Hc/07gAwcEZfLV4/1PR+dD2wXAEPIzZ4J
+ A+zl6Nu5JgzUmWrqSueRqnqPzrepW42jrm9PALNutIPX6HbAHgLHqgE0Wnra5itHcKMT
+ iG3JLMXt7Zu4fvvEXw+dmywZHJtXmaa+zUhbuj//JBjkO0zVygMPw50a5l3HManPO8d9
+ T3gQVkCGs08i1Muh7Dapi4EkXSUNnoxYZUhwv74CqqG+BXjyIj1u4FvQPF/UUeQmaZj0
+ kbwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
- fh=3Xn4ErQEoYA2nKtGKqyFike4hTnuj40zeCW82w71QUQ=;
- b=Z7eCgXeSxIgx4G0yadlZ2HIX8IC/0pvb1AakhfsOrXdLNnOogZKb8rhBGJx0/k49nN
- s1Me6IhxTb1twGbcXWntRV00RMbNcSPIY+Aj95gCZ43jDWvTTcY7Q4FRYso6k+8DO91e
- wwjGLU8EqBurWuSptde+YyTOhSnforVehWRkllucdRijA05Htncen/ooxLA8Z/kDBFvg
- nA9cBZpqMwaUbPPtJENBCqRSuIcjjm8CHMSqeJ+hCiw6rkb7K1KbIDpiUjeEhi/bmA8B
- s8X1yilAVHNfK919pOWuoAC59GSjxojR2ZKNPH6+O7teBE4Uzwko6AjOb1OgmZ/r80JZ
- J6hw==; darn=nongnu.org
+ bh=ah9ojG0q3uo3b9b+2P9a9B8y88QGjOnwpMnd7A74Iz8=;
+ fh=ba+vcpJWHIPwraG96THxj1a6HzO5CdadslVak6WHjCo=;
+ b=HlWzTtlqDeAxtiBamSU+GNbsCCHwtS6hWTJOE0lc8jkEppWAfCObBFMZHfGXyzkJMR
+ gdxzic7SHQUe5bDUFPdpz07UnROki+HirIQ8ef6eJRzciMCcUHqBVn89IkW6+a3y59zC
+ THEEY/pyRXw4aBSA3Ib29+YKTvPOAoi5DcIqAOIryxvebquVcd7OBDFg2/5nH3CSCcNl
+ /hgS17SqjkQ2bwCUApWgZrQJVaBhmGOpPTXuT2bNCBSj2h6my0iGbtio/Yj1is5cU4VG
+ xPW54V7P5TD6NzLS6fEKBl4nMpBN++vVR/e1I/r6m3/N3OqjZpcarfyjpEyPa12NxWMp
+ jiRw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772101184; x=1772705984; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772101776; x=1772706576; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
- b=ir7sL2q495nJgZERktS/o8pQ11HTvOXUjQx8z+FngmGDbOeNtYa+aNpWHJ2mqPfeHR
- BvYtPZo6ifWwY71033p79sT3C4RQidDQg0O4ZNAouCS1LfdqTSb1B3H7NlfpHCm5KzgD
- cp+/87epuHj4iY2KQ4MZYb4+yrmStySFcosdTb1f3xUH2k6XKZXJ3L6I55Kl3L1gl2lK
- x83rop6AmpIwDExPVnJa/4o3epIooSqyVjXXGdKfLs/9nR4eiGY9fbYdO7mZZSMy7WaB
- R1LAFkcM3nkiilX/0QMt5YJ3v2m41obcBshd8UgCVbdsQ0kWWTpqa7T7Itlh5TTV7k88
- ZrvA==
+ bh=ah9ojG0q3uo3b9b+2P9a9B8y88QGjOnwpMnd7A74Iz8=;
+ b=pjxBn1N8LzKZ378tiMKBYr7cxjN6iRJjz7pk1W2Nam6adGYnmtxVlTARk/1QhetaNv
+ ASO6SlhYAN5IfPgh8jBEyW4vhtoTbLrBoBqtd1KBlkxf4qd4lw3a25IFVW52etrF5O0X
+ tlCarRVWmfFnxcRfmMc4f2SQmxTpEC46yDQNHDILK8AqyE5ndur/oQAKBUbMJ6MxUGOG
+ EdOWXKKS2qwqrkrrQ070KtNQcDNNc9lcUShfSc4zh/J45DzTpaww8tOvQQKLMLNbYUJv
+ E3T8m+XT9uS/JeFAczacS7EM7jKBcvAd+2YlDNwBG4jEzyKNLdXvFoWBciiVczk+YkbD
+ +nSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772101184; x=1772705984;
+ d=1e100.net; s=20230601; t=1772101776; x=1772706576;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
- b=prCYP8q7GfaDn2uOEI7z/b65EkB3aRddHPOG8PEboLlLZCVS6gZCNqIEjtBRew/7ig
- z0suHfUVRoHEq1z8HrJ1FLWQEmGWORx4iv/Ayi7gS2OuhjbQW74F59+gXC86s8Qg4VLh
- TYwvXy8+oKwuZGAwjDNNvaur77vturrvG0+amwvhnMcYH4YduovnIU4BFbLetbOGmoaA
- iTKIj+YZ9i+zoFMhWItQngRGPPI6NBuQBNLSt16z/R+BQiLbbE0HDgSsdXRx/tM6JIf/
- 4gHd9V0gxToOFnud/DmhPHNjh4dXVc+wXCKQ+NrDuhjrTR8Cu1L9WwUmLmSez7xGH7In
- G/uQ==
+ bh=ah9ojG0q3uo3b9b+2P9a9B8y88QGjOnwpMnd7A74Iz8=;
+ b=n1/wBBkCKxZuF7+gNNXYq/yl3ZkGLXNGFwVIpPv+aM5Z+KH5yrLKIWsItPtC7tXfuQ
+ Z2+3U+TDfPJpyJU7pL339NNIQPJh6EONfViZLHsI6xyBpbQNZNQYWN3CwAXZvCgPbseq
+ pELeEuIUF24kz+ldbC0jYXyBkmOfwvXr2ZSQf5WM8kk1hUpBywvbEKiJ7/Fg3pWplLdZ
+ XLBUgAkt0RHOpWSg3VqYbjDQtCEiozosvO/fOATCdj/IvHYlD1sen90Ze8aLzS0ENE4t
+ It2Gqy5NzMcD4iLybI1TkuVOKMnSlAb5PNsgdK6koIvSB8pBNSLhjcOI9qHOrrFFi7Pf
+ /hWQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW12bQ4wJt8wt84eVzS9vITj7pm9cGtWSSLYtdw1Qx2zXPL9oVq7hhMJZ6o+9p97VedTzYhANgbrg==@nongnu.org
-X-Gm-Message-State: AOJu0YyjVqhQ9E7Khga7MXMNplCi1OK01q6xy2uX8wBgOBG8nlNNmXqY
- LEOjFEGdzjhX6Cp7l8KOrakw5OgxMbMWi0Kj1HRjALgGU8okzuFEfApmniatyRcA8LLhw9avK2t
- CrO/XgvowL23KCO9gABZjoXvNMxckBIYlHIRywvKs+w==
-X-Gm-Gg: ATEYQzxTzaaUu1cP29MX2qQ5ZnBaNObbuwzOKIeqmRZkX/UqGeELOI8w5AFkvPPyOdT
- CYDYn3uB56AHQaocftLKI1AnCO61TwvQF3yLDM3kdeQPBjzmbge6XBzjk5wbHxXhL2sECjO/lAs
- UutvdIS/zQBu08uT2QhdHjArzEJnWH69Lnr9PVsTaP6oLW5tUJDK2IKH+b8nK5JJTbqd8e/4gLD
- kkaIxfnqQ9t+4fpkib3VedOWbMmerJtmSBZafpmjowmhBATfCWyNHSGl+MnDbNAIA0cR5ixAPY+
- z7JKcZ6V1Qtwsy9kg2lH0+rLI441SdAhhUn5cvm715aoWsuFnDY9XF+ZYmhx4vwoF8c=
-X-Received: by 2002:a05:690c:b10:b0:796:3f2f:a33b with SMTP id
- 00721157ae682-79876c1c2d7mr11547367b3.18.1772101183918; Thu, 26 Feb 2026
- 02:19:43 -0800 (PST)
+ AJvYcCVLvY00Cs0u0g/AtTI7ZG6fIzSDA9n+bQ7TE87J3vnJSfbBGx2a96ixsPyZJJklW4Wm3jYFdaGCWw==@nongnu.org
+X-Gm-Message-State: AOJu0YyHn1Eo0C4+bmJjSA4NwGIjPT3P4DbV+rlxGnlos179RI2T2vFo
+ wV7YVKbCCxGj0ZdiELl3QCyvJTn4U71u4xncVrlrMhitNpXZoHA43ZAZzuU+8fAkkuXiiLEZ5ul
+ YxiPhx0424BD6kL6Fku1Y34wIKDY47h2jiT1ejUlJkg==
+X-Gm-Gg: ATEYQzznI/R8TdcRC9JFElf/gja5O/Xu4dppPGc4yDxDKCpXhsVBUv55m6Ygbkzabud
+ UtVxS9efLpJgw55AgCpoR+mzPGM8t/B4qUJ/7P8uM0Gs+g46PuN8+cgWgHqgicZradwizGG8f/O
+ RNE4WpsZk4ODMB2aNGc0BnuZnv2pJupBIAXDAVh0FWpIVdshSpVCB3clHMxQbG5KzRgIni64eJ8
+ cmQ+aC1seBilog4gTtUA7c9M2GnDr0+ratm8qhELyWOBGmefzKdUgOFFkWMdJ7cuJ4NGFakUmWB
+ /+Er13/aALu97M3L23qTZtysgr9nZQSEiHP6BxIWiiJFkWHXYmUOWhi/rFqPKSSp0Bg=
+X-Received: by 2002:a53:ac88:0:b0:64c:b242:496e with SMTP id
+ 956f58d0204a3-64cb2425731mr2910841d50.17.1772101775643; Thu, 26 Feb 2026
+ 02:29:35 -0800 (PST)
 MIME-Version: 1.0
 References: <20260224154347.344219-1-alex.bennee@linaro.org>
- <20260224154347.344219-3-alex.bennee@linaro.org>
-In-Reply-To: <20260224154347.344219-3-alex.bennee@linaro.org>
+ <20260224154347.344219-4-alex.bennee@linaro.org>
+In-Reply-To: <20260224154347.344219-4-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Feb 2026 10:19:31 +0000
-X-Gm-Features: AaiRm50DPzGrXORSCBPZp3zns44SYEPNOpukRR4ANOPj6ov1RvPIjvsrF3rGS2o
-Message-ID: <CAFEAcA8BX-YdALLhyYB_mDOycnUaLQ_abmSyK3VcPNQz9E3imA@mail.gmail.com>
-Subject: Re: [PATCH 2/4] target/arm: use FIELD_DP32 instead of open-coding
- syn_wfx
+Date: Thu, 26 Feb 2026 10:29:24 +0000
+X-Gm-Features: AaiRm52sjpMfL2DsXcKotaMr15GNp12jlu3XaMBA5wXiQeZ0_juQvmmrhoogx40
+Message-ID: <CAFEAcA8km4H10ZseUd=D6KWTpHQptUaL0D3dSrg3-LGWY1bcgg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] target/arm: pass rd directly to wfit helper
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,38 +121,79 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Tue, 24 Feb 2026 at 15:43, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
-> We can use the registerfields API to safely set the individual fields
-> and avoid open coding magic numbers. The EC and IL fields are still
-> driven by defines but we could convert them later.
+> If we generate an exception for WFIT we could also fill out the rv/rn
+> fields of the ISS. To facilitate this pass the register number
+> directly and read the timeout value in the helper itself.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  target/arm/tcg/helper-defs.h   | 2 +-
+>  target/arm/tcg/op_helper.c     | 4 +++-
+>  target/arm/tcg/translate-a64.c | 2 +-
+>  3 files changed, 5 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
+> index 5a10a9fba3b..a9a062cf777 100644
+> --- a/target/arm/tcg/helper-defs.h
+> +++ b/target/arm/tcg/helper-defs.h
+> @@ -55,7 +55,7 @@ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vad=
+dr)
+>  DEF_HELPER_1(setend, void, env)
+>  DEF_HELPER_2(wfi, void, env, i32)
+>  DEF_HELPER_1(wfe, void, env)
+> -DEF_HELPER_2(wfit, void, env, i64)
+> +DEF_HELPER_FLAGS_2(wfit, TCG_CALL_NO_WG, void, env, i32)
 
-> +FIELD(WFX_ISS, TI, 0, 2)
-> +FIELD(WFX_ISS, RV, 14, 1)
-> +FIELD(WFX_ISS, RN, 15, 5)
-> +FIELD(WFX_ISS, COND, 20, 4)
-> +FIELD(WFX_ISS, CV, 24, 1)
-> +
->  static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
->  {
-> -    return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
-> -           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
-> -           (cv << 24) | (cond << 20) | ti;
-> +    uint32_t res =3D (EC_WFX_TRAP << ARM_EL_EC_SHIFT);
-> +
-> +    res =3D FIELD_DP32(res, WFX_ISS, CV, cv);
-> +    res =3D FIELD_DP32(res, WFX_ISS, COND, cond);
-> +    res =3D FIELD_DP32(res, WFX_ISS, TI, ti);
-> +
-> +    if (!is_16bit) {
-> +        res |=3D ARM_EL_IL;
-> +    }
-> +    return res;
+Why the change to NO_WG ? The code change doesn't remove any
+writes to globals...
+
+>  DEF_HELPER_1(yield, void, env)
+>  DEF_HELPER_1(pre_hvc, void, env)
+>  DEF_HELPER_2(pre_smc, void, env, i32)
+> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+> index aa14f15eb62..28a1c7243ad 100644
+> --- a/target/arm/tcg/op_helper.c
+> +++ b/target/arm/tcg/op_helper.c
+> @@ -409,7 +409,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+>  #endif
 >  }
+>
+> -void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+> +void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+>  {
+>  #ifdef CONFIG_USER_ONLY
+>      /*
+> @@ -428,6 +428,8 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+>      int target_el =3D check_wfx_trap(env, false, &excp);
+>      /* The WFIT should time out when CNTVCT_EL0 >=3D the specified value=
+. */
+>      uint64_t cntval =3D gt_get_countervalue(env);
+> +    uint64_t timeout =3D env->xregs[rd];
+> +
+>      /*
+>       * We want the value that we would get if we read CNTVCT_EL0 from
+>       * the current exception level, so the direct_access offset, not
+> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a6=
+4.c
+> index 5d261a5e32b..073454b9195 100644
+> --- a/target/arm/tcg/translate-a64.c
+> +++ b/target/arm/tcg/translate-a64.c
+> @@ -2064,7 +2064,7 @@ static bool trans_WFIT(DisasContext *s, arg_WFIT *a=
+)
+>      }
+>
+>      gen_a64_update_pc(s, 4);
+> -    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd));
+> +    gen_helper_wfit(tcg_env, tcg_constant_i32(a->rd));
+>      /* Go back to the main loop to check for interrupts */
+>      s->base.is_jmp =3D DISAS_EXIT;
+>      return true;
 
-I'm not hugely enthusiastic about this mostly because it
-means we would have one syn_foo function that's written totally
-differently to all the rest.
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+You might squash this in to patch 4 if you like.
+
+thanks
 -- PMM
 

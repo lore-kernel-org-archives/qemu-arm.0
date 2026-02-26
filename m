@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F883FC5910
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 939A2FC5910
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:04:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvYDA-0003ew-5c; Thu, 26 Feb 2026 05:03:12 -0500
+	id 1vvYDH-0003mr-8m; Thu, 26 Feb 2026 05:03:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vvYD3-0003YS-Bf
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:03:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vvYD4-0003c7-IC
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:03:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vvYCx-0000ZF-3W
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:03:02 -0500
+ id 1vvYD2-0000aL-8M
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:03:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772100178;
+ s=mimecast20190719; t=1772100182;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gEDVHW5aAJI4RFRnTs7B3lugYaQlSzUAPsmk9fsVk58=;
- b=HT5V+8qh0sx5wCZngHKKa4izYNWsa3//rIdojA4Qb58V7VML8tu/jkS/Btj6aPrlUBIVJn
- xzix9Y7Uw18ftuFjXZCYuoTDw8SIG886sgNMoos7tOZ4OAXZjGAco2rge5gv5zfas7SL+6
- nfp4e1bVAfpEFkZiMVwdPrf2wYj32Zc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=kufE9pPfhEf1yUFIFrxcGPy83C/DSKq8tZO7XjOggeY=;
+ b=NzuBq5F/jNvOg49ENU6AsgmgUa8P6BMW4wy5tf49xZ680FGU3ZLNy06FHQ5tNcWuyaKvlH
+ IKGjCkEQXhsr2k3BCj9HMb4RRbchaCYq5i7e9CmAbMHKE+r9i639Pq7cemftKhrUPwZWOZ
+ Ax5AJIJikaPH+70DSJwuDiY1ckPwjqY=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-624-Y3OFhGldNnWUtH1Z7FRWZQ-1; Thu,
- 26 Feb 2026 05:02:54 -0500
-X-MC-Unique: Y3OFhGldNnWUtH1Z7FRWZQ-1
-X-Mimecast-MFC-AGG-ID: Y3OFhGldNnWUtH1Z7FRWZQ_1772100173
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-439-cMAhiU7KMwiXJvdxLBxpkw-1; Thu,
+ 26 Feb 2026 05:02:58 -0500
+X-MC-Unique: cMAhiU7KMwiXJvdxLBxpkw-1
+X-Mimecast-MFC-AGG-ID: cMAhiU7KMwiXJvdxLBxpkw_1772100177
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 86BDE19560B7; Thu, 26 Feb 2026 10:02:53 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 71EB418003F6; Thu, 26 Feb 2026 10:02:57 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.35.26])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8D1A91800676; Thu, 26 Feb 2026 10:02:50 +0000 (UTC)
+ id 07DBF1800370; Thu, 26 Feb 2026 10:02:53 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH 4/5] target/arm/machine: Trace cpreg names which do not match
- on migration
-Date: Thu, 26 Feb 2026 11:01:32 +0100
-Message-ID: <20260226100232.500781-5-eric.auger@redhat.com>
+Subject: [PATCH 5/5] target/arm/machine: Trace all register mismatches
+Date: Thu, 26 Feb 2026 11:01:33 +0100
+Message-ID: <20260226100232.500781-6-eric.auger@redhat.com>
 In-Reply-To: <20260226100232.500781-1-eric.auger@redhat.com>
 References: <20260226100232.500781-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: UEco1JAb6c_kO2hWuT8MAqCLblSPulFnqXYg76s1_Qg_1772100173
+X-Mimecast-MFC-PROC-ID: Jt8SL-gfUROVUZIBm6-2EYcO5k82-CZ9Cwrm3sHtr-A_1772100177
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 27
-X-Spam_score: 2.7
-X-Spam_bar: ++
-X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.734,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.78, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.734, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.78,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,76 +88,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Whenever there is a mismatch between cpreg indexes in the incoming
-stream and cpregs exposed by the destination output the name of
-the register. We use a print_register_name() wrapper helper. At the
-moment we are only able to do a nice decoding of the index for
-KVM regs.
-
-Without this patch, the error would be:
-qemu-system-aarch64: load of migration failed: Operation not permitted:
-error while loading state for instance 0x0 of device 'cpu': post load
-hook failed for: cpu, version_id: 22, minimum_version: 22, ret: -1
-which is not helpful for the end user to understand the actual
-issue.
-
-This patch adds the actual information about the probme:
-qemu-system-aarch64: cpu_post_load: op0:3 op1:0 crn:2 crm:0 op2:3 in the
-incoming stream but unknown on the destination, fail migration
+At the moment, cpu_post_load() exists with error on the first
+catch of unexpected register in the incoming stream. Let the code
+go further and trace all the issues before exiting.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/machine.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+ target/arm/machine.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 214087111bc..ee68e752ea9 100644
+index ee68e752ea9..7a3b5a87932 100644
 --- a/target/arm/machine.c
 +++ b/target/arm/machine.c
-@@ -1,5 +1,6 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "cpregs.h"
- #include "trace.h"
- #include "qemu/error-report.h"
- #include "system/kvm.h"
-@@ -1036,6 +1037,15 @@ static int cpu_pre_load(void *opaque)
-     return 0;
- }
- 
-+static gchar *print_register_name(uint64_t kvm_regidx)
-+{
-+    if (kvm_enabled()) {
-+        return kvm_print_register_name(kvm_regidx);
-+    } else {
-+        return g_strdup_printf("0x%x", kvm_to_cpreg_id(kvm_regidx));
-+    }
-+}
-+
- static int cpu_post_load(void *opaque, int version_id)
+@@ -1050,6 +1050,7 @@ static int cpu_post_load(void *opaque, int version_id)
  {
      ARMCPU *cpu = opaque;
-@@ -1074,11 +1084,18 @@ static int cpu_post_load(void *opaque, int version_id)
+     CPUARMState *env = &cpu->env;
++    bool fail = false;
+     int i, v;
+ 
+     trace_cpu_post_load(cpu->cpreg_vmstate_array_len,
+@@ -1082,13 +1083,14 @@ static int cpu_post_load(void *opaque, int version_id)
+      */
+ 
      for (i = 0, v = 0; i < cpu->cpreg_array_len
-              && v < cpu->cpreg_vmstate_array_len; i++) {
+-             && v < cpu->cpreg_vmstate_array_len; i++) {
++             && v < cpu->cpreg_vmstate_array_len;) {
          if (cpu->cpreg_vmstate_indexes[v] > cpu->cpreg_indexes[i]) {
--            /* register in our list but not incoming : skip it */
-+            g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
-+
-+            warn_report("%s: %s "
-+                        "expected by the destination but not in the incoming stream, "
-+                        "skip it", __func__, name);
+             g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
+ 
+             warn_report("%s: %s "
+                         "expected by the destination but not in the incoming stream, "
+                         "skip it", __func__, name);
++            i++;
              continue;
          }
          if (cpu->cpreg_vmstate_indexes[v] < cpu->cpreg_indexes[i]) {
--            /* register in their list but not ours: fail migration */
-+            g_autofree gchar *name = print_register_name(cpu->cpreg_vmstate_indexes[v]);
-+
-+            error_report("%s: %s in the incoming stream but unknown on the destination, "
-+                         "fail migration", __func__, name);
-             return -1;
+@@ -1096,12 +1098,18 @@ static int cpu_post_load(void *opaque, int version_id)
+ 
+             error_report("%s: %s in the incoming stream but unknown on the destination, "
+                          "fail migration", __func__, name);
+-            return -1;
++            v++;
++            fail = true;
++            continue;
          }
          /* matching register, copy the value over */
+         cpu->cpreg_values[i] = cpu->cpreg_vmstate_values[v];
++        i++;
+         v++;
+     }
++    if (fail) {
++        return -1;
++    }
+ 
+     if (kvm_enabled()) {
+         if (!kvm_arm_cpu_post_load(cpu)) {
 -- 
 2.53.0
 

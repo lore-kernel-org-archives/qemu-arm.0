@@ -4,132 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A08CFD8FF4
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 19:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 035B9FD9E0C
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 20:31:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvh0D-0000hL-71; Thu, 26 Feb 2026 14:26:25 -0500
+	id 1vvi0O-0001iF-RB; Thu, 26 Feb 2026 15:30:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvh0B-0000gP-AE
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 14:26:23 -0500
-Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vvi0L-0001hL-Ut
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 15:30:38 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vvh09-0000Z0-Ap
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 14:26:23 -0500
-Received: by mail-pf1-x442.google.com with SMTP id
- d2e1a72fcca58-82735a41985so753081b3a.2
- for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 11:26:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vvi0I-00037f-Jp
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 15:30:37 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-43987b97701so892845f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 12:30:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772137832; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FheNxD8S4rGqNrnPVJi9x40C11bMFSXWw1q0ag6SgnV4ULzkjJgNKrCVPqrr5BPdOM
+ +E764PqlyaeLYllC8z49STCHkchvly+4AcKhT0M7J6ae4G69jF0vLN6xizUvvZP77fQe
+ BCtloTE+PJJTlUsG44drvbXxjzYCZAuqISNfcLl0SLJRo1hfYeoOnHN5r+nyXXXmW6Ta
+ tjzBmYrYDUOPC5+e3r6UM6ga+7FXSylU36DDlnUH1TNpErTeeBcnVlqiFxsvOWPjZeF6
+ BUW8t/3m8N6Nca1dAiv+cFsRnzSEHHkHfbxQeHOyZESGw/8xx7NRHzJIv2zlNYeJymgQ
+ BP+A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=4ok9rel8WXBnOljq9Lo5Jv+h7ulwDq4piEa1TyAp5nM=;
+ fh=tJVUKn6J8l0Silw5LKHBr8y4OUmPuCyD56sO3om4NtI=;
+ b=StRPpy+nxcHUJV06pJgzAIGHIlpHkOsn9FMzNgMYYwi+G2nrVAt3ZdmcPpiY0Xmd4Y
+ l3ZLev8HNbLjTuh0LlGoPmCRuiYcmsszA7T1er2VcJWjBUXaQXWWZ1vYR6dfXEMbzfgL
+ qGJiAyGfhhpuWzXN/Oyo/EN2OjAnqH3rMI2eJthANRAvUMeID7hFOWmuVL26ZnTf88TF
+ mk/4zEUgttxK4ZA4gW8uEWsWqJMWRs5Ngn0M1NJTd0UCniRiXQQCdnNGtV6mAnUu1+1P
+ 84JLd50+dLK8yGEFl+RPaEhN5d6nx/TifuLaNhg87ex9YQF2S6pR7zF6VikWNYXA2WTy
+ 7KiA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772133979; x=1772738779; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fBzSLc/fHo+AH9TdMZvDXfnX12fqlgQkihDDgs3PpLk=;
- b=T1/yVP9vc+NB2Gr68kS9VrH8NjkawTPesR4JeYZASr/wJy2Pa9L4mIm2NVWAoYB+9j
- Kl1HnC63+X5A2gvf64PuPQDXn3uX7t4OLXB0d1YoAa7XqnsqXfaflT1PmC4RYDNhPram
- 48/aX1H0MPSLFiZF4H/M3ekqPe9rvlD+tlgOx+r0mEahfTjOaTI9CaNFszxzJ9SnyCMR
- dunLtukiLSi47oUBOJ3ThmJ4l0YgawZ1PR8y1BybvCrkTbmyBbJH2Ig4HWN4xjaHgAmn
- u8usB1OL7sPbOS3POz+tEdhCxKK8ruBHPxC1A7gFXBUEq8sLVxsoCIHjapCIzF8sSE/G
- Ntrw==
+ d=linaro.org; s=google; t=1772137832; x=1772742632; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4ok9rel8WXBnOljq9Lo5Jv+h7ulwDq4piEa1TyAp5nM=;
+ b=ADsQQ6sWdiGM/P0GtTemFBLNMoXVrzQtb7BfvmRqoiRQFb9CwgOK8KjJY42URbImX1
+ LxX+VyuBXQfM2HaeVJx91l8MBeL9W6XULrGPKAeqjAC39dcZpImjW39az93/DdKVQkkb
+ DUa+Upt63vFubrQATv7D67o16olJZHDPPnEC9KjlpwWDb6HZ/1MFvEDz6lYQtUYBXJAt
+ ca/4D7TV5qX9ZsiM95h+PCebpiBAD7grhy7XnrTqZswYVbdJeqNI4e1TZIQBkxRUhREd
+ HJ82Oyc0Fwy2DSzxw07qmJ9rrcmfAAtfZ2zDDQcEpUhplEtKVffpQA7KVvBXODBtxlp6
+ zmbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772133979; x=1772738779;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fBzSLc/fHo+AH9TdMZvDXfnX12fqlgQkihDDgs3PpLk=;
- b=jY9sqsNB/RTpjIos7u5CM9QAW5we9t3cxhzLIIXAm7cxsea5aag2rHVgpWlnvE4uH2
- 7XdmpvLyvVHtyLCxz6d638VNkLT1zFC+W3lzLc/YhocvmBXYpfVdVI1JKOGaYY4hWzxF
- Y6DCN2hzKL+o7+63OxeSU75iC1U1j5BFi6Vyaqm80B+JnzXO+0v5hVzuOL830E2B4nxn
- d1Ra8pat+AwSlxEvCCXukGEQnW7CwiJpg/RArLFQTeg60ZRTmZ0CzfPWGa454LU0ktyZ
- Jiy/sWJ2Xh31RuOUwm9U5wCdRTs26w7N0Vw1Afi+dyuMkHvHSM3z3drkdqWxWAeo3ij+
- X4YQ==
+ d=1e100.net; s=20230601; t=1772137832; x=1772742632;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=4ok9rel8WXBnOljq9Lo5Jv+h7ulwDq4piEa1TyAp5nM=;
+ b=s0aPKrxomS+/Bcp2Nq5NBK2gy/fU0Bw52R4X9hKb4M5YNmO/HqJAgDItMVU2Z7fDtq
+ 1CA5vEoUTdZTiYqFdNOvlrui0smk2NhBZ28tvGSzR2uFlEIkkC8evuKM+5pYfIbyJqMd
+ 0WM6FT6zQXrmKrpkoTgJhQyvRAklywebLlFk86vk7RoduNObN2DQbUlcQCW8JO0lE4p4
+ QMdCJdWWm1IQ0+JIrtyTCdDxp9FjZFCmvGveSOeN/UtFnlwJlxDIhgh4BsONTqPOQXSa
+ 3X0QjKjQetoYiBrWY+NnIil6fnLC/W/0z60BPJdFOl1h+1Sa8cEsKC/eyEEH2VOsz9DI
+ 0i/g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUULeOpH1XDXhtYxDdqP66eZWydtuVs67NchKnYqZK3SSPGg5nn4Pro9QqIwo9Qtfh8HXFLhQT7hQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzvkSIDS2l8OSZB39a1pIoATbd2lqZGAd9NHXNRPT2InFYkKgrN
- pzcjjU/pkC0bI48TwDK7wimhoz5IOw7zypLaiY7Vby3y4L3IIBKtzQbsEBwQrj48kcM=
-X-Gm-Gg: ATEYQzyY2A1V/xTTaWPaEx/4k5vukZFLHONigG+qwHKJ03IWR3lD8bM8+boB877wsSX
- /Un+etvlhNJhymuNGTNlT34wWCBQdjMB+E4Oyrm9qslYPD6JhmXJDL0fSQBr+mm/v84EknO+TLS
- xvLei7taEDt4dmB/iBQlmtt4scUgtCBRxQ99A6hBpShxBXIsla+Su7+mJLYc363MIvqOvtGOc0l
- K1xzZ2M9KoDd4CJ7ayBMld4bAP/GJXhlpSjHtdXTQ7IVlDamjRXL+45JXnI3qcAiKYiiJbX/Abw
- 7QmHVuaBz821RKOzg/DKdOl2we4ondlnqoch5bevuuOPaIGLe6Pb/ilIaoF4G470nVS9qVu+6ZE
- n2oD15enLWBmHtnxf+lWnvcxoekZ6TnGypQiiELD82s10O5/r6jBGWRnogPjz6RPX80ZYbUUkhH
- 5Fcbsq9hvNzT3YlJ44tmXl/u05YopOy6hQuT7dTTPtHhT3D85xQNQthaBsB0I21WlQIKXk
-X-Received: by 2002:a05:6a00:1885:b0:7e8:4471:ae55 with SMTP id
- d2e1a72fcca58-8274da129c8mr168725b3a.33.1772133979180; 
- Thu, 26 Feb 2026 11:26:19 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8273a01a9dasm3112972b3a.49.2026.02.26.11.26.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Feb 2026 11:26:18 -0800 (PST)
-Message-ID: <a42315f0-e84b-46b3-9fac-299f9894de16@linaro.org>
-Date: Thu, 26 Feb 2026 11:26:17 -0800
+ AJvYcCXmwA+FPdgmUB9MOLD1QYgvRGW63dU6aNokuiqP/OFOqZDuVx1TjXeF0H7l3iczSps/h96HBoq80A==@nongnu.org
+X-Gm-Message-State: AOJu0YwAYpe3Jc7IepwLJlDbXes4VXEdK5H1/DItOh2bmHNZ77ROw+3S
+ yb6WTre3qioNQFUPiH+DHvmzOB97oXCOe7ob1fYs9HAmFFFUzMawdOxISGRGx2CTD//sAzpoBZT
+ 9lubaSWdMmI60dPv8tl5731xPhRaq1CxFeRxdjxXMZw==
+X-Gm-Gg: ATEYQzwoYRZnTBHTWffON4ZE9avZh9/9cFkA90NFxMFfCQwI/E0+Lly1fii3/PevXCB
+ mOSNCyDxjWdJkcsOaQwikTsTFP0UcE7qr45iZI3flEFQ5OUlgCTr1U4UOH/q3yX44ZSqo8JQ4gG
+ 3/K8GxH1AwGSfC8QcCI+TodaA6WnFh6f+Xmc/EnpDEMNMNoxW1ckGEoyaPIj3+uYqZyT4MU5n00
+ OUeI2OdBmcU3ThPZ/K8D3uvESh5AcEiJ1QRAiTZ1mJCHncYAFif4yiNNX/afX1GHv3ou2sTO5RL
+ LXVl23g4ZXx5JWUHcLnze+g6pkaZuqDssbd6VlJat24uqAWS70RKb1fPabdN
+X-Received: by 2002:a05:6000:2c01:b0:432:5bf9:cf15 with SMTP id
+ ffacd0b85a97d-4399dde2b1cmr287756f8f.5.1772137832068; Thu, 26 Feb 2026
+ 12:30:32 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 7/7] tests/functional: add Arm VBSA uefi conformance
- test
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Kyle Evans <kevans@freebsd.org>, Brad Smith <brad@comstyle.com>,
- Warner Losh <imp@bsdimp.com>
-References: <20260226185303.1920021-1-alex.bennee@linaro.org>
- <20260226185303.1920021-8-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260226185303.1920021-8-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x442.google.com
+References: <20260226-sme2-hvf-v3-0-ea5763dbeba2@linaro.org>
+ <20260226-sme2-hvf-v3-1-ea5763dbeba2@linaro.org>
+ <005B316F-6CFB-43E0-AC3A-B894ECD6BCAC@unpredictable.fr>
+In-Reply-To: <005B316F-6CFB-43E0-AC3A-B894ECD6BCAC@unpredictable.fr>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Thu, 26 Feb 2026 22:30:04 +0200
+X-Gm-Features: AaiRm51jyKD_Q4Qj0rwbbd8N9BbOxePCQi8ZDurZ_gtoqfAdYLZHEBrdlyniXk4
+Message-ID: <CAAjaMXZv0A1QKvH6TM5Fugm-9+dGrnXvQaEJ2y9ADwF=BAcDpg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/2] hvf/arm: handle FEAT_SME2 migration
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,154 +122,713 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/26/26 10:53 AM, Alex Bennée wrote:
-> The VBSA test is a subset of the wider Arm architecture compliance
-> suites (ACS) which validate machines meet particular minimum set of
-> requirements. The VBSA is for virtual machines so it makes sense we
-> should check the -M virt machine is compliant.
-> 
-> Fortunately there are prebuilt binaries published via github so all we
-> need to do is build an EFI partition and place things in the right
-> place.
-> 
-> There are some additional Linux based tests which are left for later.
-> 
-> Message-ID: <20260213154859.1551283-7-alex.bennee@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> ---
-> v2
->    - use the VBSA prebuilt shell
->    - fail the test if we see FAILED in the console stream
-> ---
->   tests/functional/aarch64/meson.build       |  1 +
->   tests/functional/aarch64/test_virt_vbsa.py | 99 ++++++++++++++++++++++
->   2 files changed, 100 insertions(+)
->   create mode 100755 tests/functional/aarch64/test_virt_vbsa.py
-> 
-> diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
-> index 49eca120589..7ea8c22b048 100644
-> --- a/tests/functional/aarch64/meson.build
-> +++ b/tests/functional/aarch64/meson.build
-> @@ -46,6 +46,7 @@ tests_aarch64_system_thorough = [
->     'tuxrun',
->     'virt',
->     'virt_gpu',
-> +  'virt_vbsa',
->     'xen',
->     'xlnx_versal',
->   ]
-> diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
-> new file mode 100755
-> index 00000000000..3da06904ea9
-> --- /dev/null
-> +++ b/tests/functional/aarch64/test_virt_vbsa.py
-> @@ -0,0 +1,99 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that runs the Arm VBSA conformance tests.
-> +#
-> +# Copyright (c) 2026 Linaro Ltd.
-> +#
-> +# Author:
-> +#  Alex Bennée <alex.bennee@linaro.org>
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import shutil
-> +from subprocess import check_call, DEVNULL
-> +
-> +from qemu_test import QemuSystemTest, Asset
-> +from qemu_test import wait_for_console_pattern, get_qemu_img, skipIfMissingCommands
-> +from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
-> +
-> +
-> +@skipIfMissingCommands("mformat", "mcopy", "mmd")
-> +class Aarch64VirtMachine(QemuSystemTest):
-> +    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-> +    timeout = 360
-> +
-> +    def wait_for_console_pattern(self, success_message, vm=None):
-> +        wait_for_console_pattern(self, success_message,
-> +                                 failure_message='FAILED',
-> +                                 vm=vm)
-> +
-> +    ASSET_VBSA_EFI = Asset('https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
-> +                           '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
-> +                           '80f37d2fb86d152d95dec4d05ff099c9e47ee8a89314268e08056b0e1359e1fa')
-> +
-> +    ASSET_BSA_SHELL = Asset('https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
-> +                            '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Shell.efi',
-> +                            'e526604f0d329b481c6a1f62f7a0db8ea24ce8178b2c6abda8e247425f38775c')
-> +
-> +    def test_aarch64_vbsa_uefi_tests(self):
-> +        """
-> +        Launch the UEFI based VBSA test from an EFI file-system
-> +        """
-> +
-> +        self.vm.set_console()
-> +
-> +        # virt machine wi
-> +        self.set_machine('virt')
-> +        self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
-> +        self.vm.add_args('-cpu', 'max','-m', '1024')
-> +
-> +        # We will use the QEMU firmware blobs to boot
-> +        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
-> +        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
-> +        vars_path = self.scratch_file('vars.fd')
-> +        shutil.copy(vars_source, vars_path)
-> +
-> +        self.vm.add_args('-drive', f'if=pflash,format=raw,readonly=on,file={code_path}')
-> +        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
-> +
-> +        # Build an EFI FAT32 file-system for the UEFI tests
-> +        vbsa_efi = self.ASSET_VBSA_EFI.fetch()
-> +        bsa_shell = self.ASSET_BSA_SHELL.fetch()
-> +
-> +        img_path = self.scratch_file('vbsa.img')
-> +        qemu_img = get_qemu_img(self)
-> +        check_call([qemu_img, 'create', '-f', 'raw', img_path, '64M'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        check_call(['mformat', '-i', img_path, '-v', 'VBSA', '::'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        check_call(['mmd', '-i', img_path, '::/EFI'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        check_call(['mmd', '-i', img_path, '::/EFI/BOOT'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        check_call(['mcopy', '-i', img_path, bsa_shell, '::/EFI/BOOT/BOOTAA64.EFI'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        check_call(['mcopy', '-i', img_path, vbsa_efi, '::/Vbsa.efi'],
-> +                   stdout=DEVNULL, stderr=DEVNULL)
-> +
-> +        self.vm.add_args('-drive', f'file={img_path},format=raw,if=none,id=drive0')
-> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=drive0')
-> +
-> +        self.vm.launch()
-> +
-> +        # wait for EFI prompt
-> +        self.wait_for_console_pattern('Shell>')
-> +
-> +        # Start the VBSA tests
-> +        ec_and_wait(self, "FS0:Vbsa.efi", 'VBSA Architecture Compliance Suite')
-> +
-> +        # could we parse the summary somehow?
-> +
-> +        self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
-> +
+On Thu, Feb 26, 2026 at 9:24=E2=80=AFPM Mohamed Mediouni
+<mohamed@unpredictable.fr> wrote:
+>
+>
+>
+> > On 26. Feb 2026, at 08:25, Manos Pitsidianakis <manos.pitsidianakis@lin=
+aro.org> wrote:
+> >
+> > SME2 support adds the following state for HVF guests:
+> >
+> > - Vector registers Z0, ... , Z31 (introduced by FEAT_SVE but HVF does
+> >  not support it)
+> > - Predicate registers P0, .., P15 (also FEAT_SVE)
+> > - ZA register
+> > - ZT0 register
+> > - PSTATE.{SM,ZA} bits (SVCR pseudo-register)
+> > - SMPRI_EL1 which handles the PE's priority in the SMCU
+> > - TPIDR2_EL0 the thread local ID register for SME
+> >
+> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> > ---
+> > target/arm/hvf/hvf.c           | 289 ++++++++++++++++++++++++++++++++++=
+++++++-
+> > target/arm/hvf/hvf_sme_stubs.h | 158 ++++++++++++++++++++++
+> > target/arm/hvf/sysreg.c.inc    |   8 ++
+> > target/arm/hvf_arm.h           |  44 +++++++
+> > target/arm/machine.c           |   2 +-
+> > 5 files changed, 498 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> > index 1b19d9713edd46cc7e9930de171fce87f49963d4..7d80c8b30aeedde8b81ac8f=
+afc70f61532141dad 100644
+> > --- a/target/arm/hvf/hvf.c
+> > +++ b/target/arm/hvf/hvf.c
+> > @@ -398,6 +398,60 @@ static const struct hvf_reg_match hvf_fpreg_match[=
+] =3D {
+> >     { HV_SIMD_FP_REG_Q31, offsetof(CPUARMState, vfp.zregs[31]) },
+> > };
+> >
+> > +static const struct hvf_reg_match hvf_sme2_zreg_match[] =3D {
+> > +    { HV_SME_Z_REG_0, offsetof(CPUARMState, vfp.zregs[0]) },
+> > +    { HV_SME_Z_REG_1, offsetof(CPUARMState, vfp.zregs[1]) },
+> > +    { HV_SME_Z_REG_2, offsetof(CPUARMState, vfp.zregs[2]) },
+> > +    { HV_SME_Z_REG_3, offsetof(CPUARMState, vfp.zregs[3]) },
+> > +    { HV_SME_Z_REG_4, offsetof(CPUARMState, vfp.zregs[4]) },
+> > +    { HV_SME_Z_REG_5, offsetof(CPUARMState, vfp.zregs[5]) },
+> > +    { HV_SME_Z_REG_6, offsetof(CPUARMState, vfp.zregs[6]) },
+> > +    { HV_SME_Z_REG_7, offsetof(CPUARMState, vfp.zregs[7]) },
+> > +    { HV_SME_Z_REG_8, offsetof(CPUARMState, vfp.zregs[8]) },
+> > +    { HV_SME_Z_REG_9, offsetof(CPUARMState, vfp.zregs[9]) },
+> > +    { HV_SME_Z_REG_10, offsetof(CPUARMState, vfp.zregs[10]) },
+> > +    { HV_SME_Z_REG_11, offsetof(CPUARMState, vfp.zregs[11]) },
+> > +    { HV_SME_Z_REG_12, offsetof(CPUARMState, vfp.zregs[12]) },
+> > +    { HV_SME_Z_REG_13, offsetof(CPUARMState, vfp.zregs[13]) },
+> > +    { HV_SME_Z_REG_14, offsetof(CPUARMState, vfp.zregs[14]) },
+> > +    { HV_SME_Z_REG_15, offsetof(CPUARMState, vfp.zregs[15]) },
+> > +    { HV_SME_Z_REG_16, offsetof(CPUARMState, vfp.zregs[16]) },
+> > +    { HV_SME_Z_REG_17, offsetof(CPUARMState, vfp.zregs[17]) },
+> > +    { HV_SME_Z_REG_18, offsetof(CPUARMState, vfp.zregs[18]) },
+> > +    { HV_SME_Z_REG_19, offsetof(CPUARMState, vfp.zregs[19]) },
+> > +    { HV_SME_Z_REG_20, offsetof(CPUARMState, vfp.zregs[20]) },
+> > +    { HV_SME_Z_REG_21, offsetof(CPUARMState, vfp.zregs[21]) },
+> > +    { HV_SME_Z_REG_22, offsetof(CPUARMState, vfp.zregs[22]) },
+> > +    { HV_SME_Z_REG_23, offsetof(CPUARMState, vfp.zregs[23]) },
+> > +    { HV_SME_Z_REG_24, offsetof(CPUARMState, vfp.zregs[24]) },
+> > +    { HV_SME_Z_REG_25, offsetof(CPUARMState, vfp.zregs[25]) },
+> > +    { HV_SME_Z_REG_26, offsetof(CPUARMState, vfp.zregs[26]) },
+> > +    { HV_SME_Z_REG_27, offsetof(CPUARMState, vfp.zregs[27]) },
+> > +    { HV_SME_Z_REG_28, offsetof(CPUARMState, vfp.zregs[28]) },
+> > +    { HV_SME_Z_REG_29, offsetof(CPUARMState, vfp.zregs[29]) },
+> > +    { HV_SME_Z_REG_30, offsetof(CPUARMState, vfp.zregs[30]) },
+> > +    { HV_SME_Z_REG_31, offsetof(CPUARMState, vfp.zregs[31]) },
+> > +};
+> > +
+> > +static const struct hvf_reg_match hvf_sme2_preg_match[] =3D {
+> > +    { HV_SME_P_REG_0, offsetof(CPUARMState, vfp.pregs[0]) },
+> > +    { HV_SME_P_REG_1, offsetof(CPUARMState, vfp.pregs[1]) },
+> > +    { HV_SME_P_REG_2, offsetof(CPUARMState, vfp.pregs[2]) },
+> > +    { HV_SME_P_REG_3, offsetof(CPUARMState, vfp.pregs[3]) },
+> > +    { HV_SME_P_REG_4, offsetof(CPUARMState, vfp.pregs[4]) },
+> > +    { HV_SME_P_REG_5, offsetof(CPUARMState, vfp.pregs[5]) },
+> > +    { HV_SME_P_REG_6, offsetof(CPUARMState, vfp.pregs[6]) },
+> > +    { HV_SME_P_REG_7, offsetof(CPUARMState, vfp.pregs[7]) },
+> > +    { HV_SME_P_REG_8, offsetof(CPUARMState, vfp.pregs[8]) },
+> > +    { HV_SME_P_REG_9, offsetof(CPUARMState, vfp.pregs[9]) },
+> > +    { HV_SME_P_REG_10, offsetof(CPUARMState, vfp.pregs[10]) },
+> > +    { HV_SME_P_REG_11, offsetof(CPUARMState, vfp.pregs[11]) },
+> > +    { HV_SME_P_REG_12, offsetof(CPUARMState, vfp.pregs[12]) },
+> > +    { HV_SME_P_REG_13, offsetof(CPUARMState, vfp.pregs[13]) },
+> > +    { HV_SME_P_REG_14, offsetof(CPUARMState, vfp.pregs[14]) },
+> > +    { HV_SME_P_REG_15, offsetof(CPUARMState, vfp.pregs[15]) },
+> > +};
+> > +
+> > /*
+> >  * QEMU uses KVM system register ids in the migration format.
+> >  * Conveniently, HVF uses the same encoding of the op* and cr* paramete=
+rs
+> > @@ -409,22 +463,201 @@ static const struct hvf_reg_match hvf_fpreg_matc=
+h[] =3D {
+> > #define HVF_TO_KVMID(HVF)  \
+> >     (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
+> >
+> > -/* Verify this at compile-time. */
+> > +/*
+> > + * Verify this at compile-time.
+> > + *
+> > + * SME2 registers are guarded by a runtime availability attribute inst=
+ead of a
+> > + * compile-time def, so verify those at runtime in hvf_arch_init_vcpu(=
+) below.
+> > + */
+> >
+> > #define DEF_SYSREG(HVF_ID, ...) \
+> >   QEMU_BUILD_BUG_ON(HVF_ID !=3D KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_=
+ARGS__)));
+> > +#define DEF_SYSREG_15_02(...)
+> >
+> > #include "sysreg.c.inc"
+> >
+> > #undef DEF_SYSREG
+> > +#undef DEF_SYSREG_15_02
+> >
+> > #define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  HVF_ID,
+> > +#define DEF_SYSREG_15_02(...)
+> >
+> > static const hv_sys_reg_t hvf_sreg_list[] =3D {
+> > #include "sysreg.c.inc"
+> > };
+> >
+> > #undef DEF_SYSREG
+> > +#undef DEF_SYSREG_15_02
+> > +
+> > +#define DEF_SYSREG(...)
+> > +#define DEF_SYSREG_15_02(HVF_ID, op0, op1, crn, crm, op2) HVF_ID,
+> > +
+> > +API_AVAILABLE(macos(15.2))
+> > +static const hv_sys_reg_t hvf_sreg_list_sme2[] =3D {
+> > +#include "sysreg.c.inc"
+> > +};
+> > +
+> > +#undef DEF_SYSREG
+> > +#undef DEF_SYSREG_15_02
+> > +
+> > +/*
+> > + * For FEAT_SME2 migration, we need to store PSTATE.{SM,ZA} bits which=
+ are
+> > + * accessible with the SVCR pseudo-register. However, in the HVF API t=
+his is
+> > + * not exposed as a system-register (i.e. HVF_SYS_REG_SVCR) but a cust=
+om
+> > + * struct, hv_vcpu_sme_state_t. So we need to define our own KVMID in =
+order to
+> > + * store it in cpreg_values and make it migrateable.
+> > + */
+> > +#define SVCR KVMID_AA64_SYS_REG64(3, 3, 4, 2, 2)
+> > +
+> > +API_AVAILABLE(macos(15.2))
+> > +static void hvf_arch_put_sme(CPUState *cpu)
+> > +{
+> > +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
+> > +    CPUARMState *env =3D &arm_cpu->env;
+> > +    const size_t svl_bytes =3D hvf_arm_sme2_get_svl();
+> > +    const size_t z_size =3D svl_bytes;
+> > +    const size_t preg_size =3D DIV_ROUND_UP(z_size, 8);
+> > +    const size_t za_size =3D svl_bytes * svl_bytes;
+> > +    hv_vcpu_sme_state_t sme_state =3D { 0 };
+> > +    hv_return_t ret;
+> > +    uint64_t svcr;
+> > +    int n;
+> > +
+> > +    /*
+> > +     * Set PSTATE.{SM,ZA} bits
+> > +     */
+> > +    svcr =3D arm_cpu->cpreg_values[arm_cpu->cpreg_array_len - 1];
+> > +    env->svcr =3D svcr;
+> > +
+> > +    /*
+> > +     * Construct SVCR (PSTATE.{SM,ZA}) state to pass to HVF:
+> > +     */
+> > +    sme_state.streaming_sve_mode_enabled =3D FIELD_EX64(env->svcr, SVC=
+R, SM) > 0;
+> > +    sme_state.za_storage_enabled =3D FIELD_EX64(env->svcr, SVCR, ZA) >=
+ 0;
+> > +    ret =3D hv_vcpu_set_sme_state(cpu->accel->fd, &sme_state);
+> > +    assert_hvf_ok(ret);
+> > +
+> > +    /*
+> > +     * We only care about Z/P registers if we're in streaming SVE mode=
+, i.e.
+> > +     * PSTATE.SM is set, because only then can instructions that acces=
+s them be
+> > +     * used. We don't care about the register values otherwise. This i=
+s because
+> > +     * when the processing unit exits/enters this mode, it zeroes out =
+those
+> > +     * registers.
+> > +     */
+> > +    if (sme_state.streaming_sve_mode_enabled) {
+> > +        for (n =3D 0; n < ARRAY_SIZE(hvf_sme2_zreg_match); ++n) {
+> > +            ret =3D hv_vcpu_set_sme_z_reg(cpu->accel->fd,
+> > +                                        hvf_sme2_zreg_match[n].reg,
+> > +                                        (uint8_t *)&env->vfp.zregs[n].=
+d[0],
+> > +                                        z_size);
+> > +            assert_hvf_ok(ret);
+> > +        }
+> > +
+> > +        for (n =3D 0; n < ARRAY_SIZE(hvf_sme2_preg_match); ++n) {
+> > +            ret =3D hv_vcpu_set_sme_p_reg(cpu->accel->fd,
+> > +                                        hvf_sme2_preg_match[n].reg,
+> > +                                        (uint8_t *)&env->vfp.pregs[n].=
+p[0],
+> > +                                        preg_size);
+> > +            assert_hvf_ok(ret);
+> > +        }
+> > +    }
+> > +
+> > +    /*
+> > +     * If PSTATE.ZA bit is set then ZA and ZT0 are valid, otherwise th=
+ey are
+> > +     * zeroed out.
+> > +     */
+> > +    if (sme_state.za_storage_enabled) {
+> > +        hv_sme_zt0_uchar64_t tmp =3D { 0 };
+> > +
+> > +        memcpy(&tmp, &env->za_state.zt0, 64);
+> > +        ret =3D hv_vcpu_set_sme_zt0_reg(cpu->accel->fd, &tmp);
+> > +        assert_hvf_ok(ret);
+> > +
+> > +        ret =3D hv_vcpu_set_sme_za_reg(cpu->accel->fd,
+> > +                                     (uint8_t *)&env->za_state.za,
+> > +                                     za_size);
+> > +        assert_hvf_ok(ret);
+> > +    }
+> > +
+> > +    return;
+> > +}
+> > +
+> > +API_AVAILABLE(macos(15.2))
+> > +static void hvf_arch_get_sme(CPUState *cpu)
+> > +{
+> > +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
+> > +    CPUARMState *env =3D &arm_cpu->env;
+> > +    const size_t svl_bytes =3D hvf_arm_sme2_get_svl();
+> > +    const size_t z_size =3D svl_bytes;
+> > +    const size_t preg_size =3D DIV_ROUND_UP(z_size, 8);
+> > +    const size_t za_size =3D svl_bytes * svl_bytes;
+> > +    hv_vcpu_sme_state_t sme_state =3D { 0 };
+> > +    hv_return_t ret;
+> > +    uint64_t svcr;
+> > +    int n;
+> > +
+> > +    /*
+> > +     * Get SVCR (PSTATE.{SM,ZA}) state from HVF:
+> > +     */
+> > +    ret =3D hv_vcpu_get_sme_state(cpu->accel->fd, &sme_state);
+> > +    assert_hvf_ok(ret);
+> > +
+> > +    /*
+> > +     * Set SVCR first because changing it will zero out Z/P regs
+> > +     */
+> > +    svcr =3D
+> > +        (sme_state.za_storage_enabled ? R_SVCR_ZA_MASK : 0)
+> > +        | (sme_state.streaming_sve_mode_enabled ? R_SVCR_SM_MASK : 0);
+> > +
+> > +    aarch64_set_svcr(env, svcr, R_SVCR_ZA_MASK | R_SVCR_SM_MASK);
+> > +    arm_cpu->cpreg_values[arm_cpu->cpreg_array_len - 1] =3D svcr;
+> > +
+> > +    /*
+> > +     * We only care about Z/P registers if we're in streaming SVE mode=
+, i.e.
+> > +     * PSTATE.SM is set, because only then can instructions that acces=
+s them be
+> > +     * used. We don't care about the register values otherwise. This i=
+s because
+> > +     * when the processing unit exits/enters this mode, it zeroes out =
+those
+> > +     * registers.
+> > +     */
+> > +    if (sme_state.streaming_sve_mode_enabled) {
+> > +        for (n =3D 0; n < ARRAY_SIZE(hvf_sme2_zreg_match); ++n) {
+> > +            ret =3D hv_vcpu_get_sme_z_reg(cpu->accel->fd,
+> > +                                        hvf_sme2_zreg_match[n].reg,
+> > +                                        (uint8_t *)&env->vfp.zregs[n].=
+d[0],
+> > +                                        z_size);
+> > +            assert_hvf_ok(ret);
+> > +        }
+> > +
+> > +        for (n =3D 0; n < ARRAY_SIZE(hvf_sme2_preg_match); ++n) {
+> > +            ret =3D hv_vcpu_get_sme_p_reg(cpu->accel->fd,
+> > +                                        hvf_sme2_preg_match[n].reg,
+> > +                                        (uint8_t *)&env->vfp.pregs[n].=
+p[0],
+> > +                                        preg_size);
+> > +            assert_hvf_ok(ret);
+> > +        }
+> > +    }
+> > +
+> > +    /*
+> > +     * If PSTATE.ZA bit is set then ZA and ZT0 are valid, otherwise th=
+ey are
+> > +     * zeroed out.
+> > +     */
+> > +    if (sme_state.za_storage_enabled) {
+> > +        hv_sme_zt0_uchar64_t tmp =3D { 0 };
+> > +
+> > +        /* Get ZT0 in a tmp vector, and then copy it to env.za_state.z=
+t0 */
+> > +        ret =3D hv_vcpu_get_sme_zt0_reg(cpu->accel->fd, &tmp);
+> > +        assert_hvf_ok(ret);
+> > +
+> > +        memcpy(&env->za_state.zt0, &tmp, 64);
+> > +        ret =3D hv_vcpu_get_sme_za_reg(cpu->accel->fd,
+> > +                                     (uint8_t *)&env->za_state.za,
+> > +                                     za_size);
+> > +        assert_hvf_ok(ret);
+> > +
+> > +    }
+> > +
+> > +    return;
+> > +}
+> >
+> > static uint32_t hvf_reg2cp_reg(uint32_t reg)
+> > {
+> > @@ -538,6 +771,10 @@ int hvf_arch_get_registers(CPUState *cpu)
+> >         uint64_t kvm_id =3D arm_cpu->cpreg_indexes[i];
+> >         int hvf_id =3D KVMID_TO_HVF(kvm_id);
+> >
+> > +        if (kvm_id =3D=3D HVF_TO_KVMID(SVCR)) {
+> > +            continue;
+> > +        }
+> > +
+> >         if (cpu->accel->guest_debug_enabled) {
+> >             /* Handle debug registers */
+> >             switch (hvf_id) {
+> > @@ -631,6 +868,13 @@ int hvf_arch_get_registers(CPUState *cpu)
+> >
+> >         arm_cpu->cpreg_values[i] =3D val;
+> >     }
+> > +    if (cpu_isar_feature(aa64_sme, arm_cpu)) {
+> > +        if (__builtin_available(macOS 15.2, *)) {
+> > +            hvf_arch_get_sme(cpu);
+> > +        } else {
+> > +            g_assert_not_reached();
+> > +        }
+> > +    }
+> >     assert(write_list_to_cpustate(arm_cpu));
+> >
+> >     aarch64_restore_sp(env, arm_current_el(env));
+> > @@ -687,6 +931,10 @@ int hvf_arch_put_registers(CPUState *cpu)
+> >         uint64_t kvm_id =3D arm_cpu->cpreg_indexes[i];
+> >         int hvf_id =3D KVMID_TO_HVF(kvm_id);
+> >
+> > +        if (kvm_id =3D=3D HVF_TO_KVMID(SVCR)) {
+> > +            continue;
+> > +        }
+> > +
+> >         if (cpu->accel->guest_debug_enabled) {
+> >             /* Handle debug registers */
+> >             switch (hvf_id) {
+> > @@ -781,6 +1029,13 @@ int hvf_arch_put_registers(CPUState *cpu)
+> >     ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0=
+, val);
+> >     assert_hvf_ok(ret);
+> >
+> > +    if (cpu_isar_feature(aa64_sme, arm_cpu)) {
+> > +        if (__builtin_available(macOS 15.2, *)) {
+> > +            hvf_arch_put_sme(cpu);
+> > +        } else {
+> > +            g_assert_not_reached();
+> > +        }
+> > +    }
+> >     return 0;
+> > }
+> >
+> > @@ -1010,6 +1265,18 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+> >     hv_return_t ret;
+> >     int i;
+> >
+> > +    if (__builtin_available(macOS 15.2, *)) {
+> > +        sregs_match_len +=3D ARRAY_SIZE(hvf_sreg_list_sme2) + 1;
+> > +
+> > +#define DEF_SYSREG_15_02(HVF_ID, ...) \
+> > +        g_assert(HVF_ID =3D=3D KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_=
+ARGS__)));
+> > +#define DEF_SYSREG(...)
+> > +
+> > +#include "sysreg.c.inc"
+> > +
+> > +#undef DEF_SYSREG
+> > +#undef DEF_SYSREG_15_02
+> > +    }
+> >     env->aarch64 =3D true;
+> >
+> >     /* system count frequency sanity check */
+> > @@ -1030,7 +1297,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+> >     memset(arm_cpu->cpreg_values, 0, sregs_match_len * sizeof(uint64_t)=
+);
+> >
+> >     /* Populate cp list for all known sysregs */
+> > -    for (i =3D 0; i < sregs_match_len; i++) {
+> > +    for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list); i++) {
+> >         hv_sys_reg_t hvf_id =3D hvf_sreg_list[i];
+> >         uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
+> >         uint32_t key =3D kvm_to_cpreg_id(kvm_id);
+> > @@ -1041,6 +1308,24 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+> >             arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
+> >         }
+> >     }
+> > +    if (__builtin_available(macOS 15.2, *)) {
+> > +        for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
+> > +            hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i];
+> > +            uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
+> > +            uint32_t key =3D kvm_to_cpreg_id(kvm_id);
+> > +            const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_=
+regs, key);
+> > +
+> > +            if (ri) {
+> > +                assert(!(ri->type & ARM_CP_NO_RAW));
+> > +                arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
+> > +            }
+> > +        }
+> > +        /*
+> > +         * Add SVCR last. It is elsewhere assumed its index is after
+> > +         * hvf_sreg_list and hvf_sreg_list_sme2.
+> > +         */
+> > +        arm_cpu->cpreg_indexes[sregs_cnt++] =3D HVF_TO_KVMID(SVCR);
+> > +    }
+> >     arm_cpu->cpreg_array_len =3D sregs_cnt;
+> >     arm_cpu->cpreg_vmstate_array_len =3D sregs_cnt;
+> >
+> > diff --git a/target/arm/hvf/hvf_sme_stubs.h b/target/arm/hvf/hvf_sme_st=
+ubs.h
+> > new file mode 100644
+> > index 0000000000000000000000000000000000000000..9c679b711017448681e532b=
+88ce10a07ebfd5122
+> > --- /dev/null
+> > +++ b/target/arm/hvf/hvf_sme_stubs.h
+> > @@ -0,0 +1,158 @@
+> > +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> > +
+> > +typedef int32_t hv_return_t;
+> > +typedef uint64_t hv_vcpu_t;
+> > +
+> > +static inline bool hvf_arm_sme2_supported(void)
+> > +{
+> > +    return false;
+> > +}
+> > +
+> > +static inline uint32_t hvf_arm_sme2_get_svl(void)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +typedef enum hv_sme_p_reg_t {
+> > +    HV_SME_P_REG_0,
+> > +    HV_SME_P_REG_1,
+> > +    HV_SME_P_REG_2,
+> > +    HV_SME_P_REG_3,
+> > +    HV_SME_P_REG_4,
+> > +    HV_SME_P_REG_5,
+> > +    HV_SME_P_REG_6,
+> > +    HV_SME_P_REG_7,
+> > +    HV_SME_P_REG_8,
+> > +    HV_SME_P_REG_9,
+> > +    HV_SME_P_REG_10,
+> > +    HV_SME_P_REG_11,
+> > +    HV_SME_P_REG_12,
+> > +    HV_SME_P_REG_13,
+> > +    HV_SME_P_REG_14,
+> > +    HV_SME_P_REG_15,
+> > +} hv_sme_p_reg_t;
+> > +
+> > +typedef __attribute__((ext_vector_type(64))) uint8_t hv_sme_zt0_uchar6=
+4_t;
+> > +
+> > +typedef enum hv_sme_z_reg_t {
+> > +    HV_SME_Z_REG_0,
+> > +    HV_SME_Z_REG_1,
+> > +    HV_SME_Z_REG_2,
+> > +    HV_SME_Z_REG_3,
+> > +    HV_SME_Z_REG_4,
+> > +    HV_SME_Z_REG_5,
+> > +    HV_SME_Z_REG_6,
+> > +    HV_SME_Z_REG_7,
+> > +    HV_SME_Z_REG_8,
+> > +    HV_SME_Z_REG_9,
+> > +    HV_SME_Z_REG_10,
+> > +    HV_SME_Z_REG_11,
+> > +    HV_SME_Z_REG_12,
+> > +    HV_SME_Z_REG_13,
+> > +    HV_SME_Z_REG_14,
+> > +    HV_SME_Z_REG_15,
+> > +    HV_SME_Z_REG_16,
+> > +    HV_SME_Z_REG_17,
+> > +    HV_SME_Z_REG_18,
+> > +    HV_SME_Z_REG_19,
+> > +    HV_SME_Z_REG_20,
+> > +    HV_SME_Z_REG_21,
+> > +    HV_SME_Z_REG_22,
+> > +    HV_SME_Z_REG_23,
+> > +    HV_SME_Z_REG_24,
+> > +    HV_SME_Z_REG_25,
+> > +    HV_SME_Z_REG_26,
+> > +    HV_SME_Z_REG_27,
+> > +    HV_SME_Z_REG_28,
+> > +    HV_SME_Z_REG_29,
+> > +    HV_SME_Z_REG_30,
+> > +    HV_SME_Z_REG_31,
+> > +} hv_sme_z_reg_t;
+> > +
+> > +enum {
+> > +  HV_SYS_REG_SMCR_EL1,
+> > +  HV_SYS_REG_SMPRI_EL1,
+> > +  HV_SYS_REG_TPIDR2_EL0,
+> > +  HV_SYS_REG_ID_AA64ZFR0_EL1,
+> > +  HV_SYS_REG_ID_AA64SMFR0_EL1,
+> > +};
+> > +
+> > +typedef struct {
+> > +    bool streaming_sve_mode_enabled;
+> > +    bool za_storage_enabled;
+> > +} hv_vcpu_sme_state_t;
+> > +
+> > +static inline hv_return_t hv_sme_config_get_max_svl_bytes(size_t *valu=
+e)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_get_sme_state(hv_vcpu_t vcpu,
+> > +                                                hv_vcpu_sme_state_t *s=
+me_state)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_set_sme_state(hv_vcpu_t vcpu,
+> > +                                                const hv_vcpu_sme_stat=
+e_t *sme_state)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_get_sme_z_reg(hv_vcpu_t vcpu,
+> > +                                                hv_sme_z_reg_t reg,
+> > +                                                uint8_t *value,
+> > +                                                size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_set_sme_z_reg(hv_vcpu_t vcpu,
+> > +                                                hv_sme_z_reg_t reg,
+> > +                                                const uint8_t *value,
+> > +                                                size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_get_sme_p_reg(hv_vcpu_t vcpu,
+> > +                                                hv_sme_p_reg_t reg,
+> > +                                                uint8_t *value,
+> > +                                                size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_set_sme_p_reg(hv_vcpu_t vcpu,
+> > +                                                hv_sme_p_reg_t reg,
+> > +                                                const uint8_t *value,
+> > +                                                size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_get_sme_za_reg(hv_vcpu_t vcpu,
+> > +                                                 uint8_t *value,
+> > +                                                 size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_set_sme_za_reg(hv_vcpu_t vcpu,
+> > +                                                 const uint8_t *value,
+> > +                                                 size_t length)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_get_sme_zt0_reg(hv_vcpu_t vcpu,
+> > +                                                  hv_sme_zt0_uchar64_t=
+ *value)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > +
+> > +static inline hv_return_t hv_vcpu_set_sme_zt0_reg(hv_vcpu_t vcpu,
+> > +                                                  const hv_sme_zt0_uch=
+ar64_t *value)
+> > +{
+> > +    g_assert_not_reached();
+> > +}
+> > diff --git a/target/arm/hvf/sysreg.c.inc b/target/arm/hvf/sysreg.c.inc
+> > index 067a8603fa785593ed0879cea26d036b0ec2823e..7a2f880f784b7610b14a6eb=
+91fec1817e98bfd2e 100644
+> > --- a/target/arm/hvf/sysreg.c.inc
+> > +++ b/target/arm/hvf/sysreg.c.inc
+> > @@ -145,3 +145,11 @@ DEF_SYSREG(HV_SYS_REG_TPIDRRO_EL0, 3, 3, 13, 0, 3)
+> > DEF_SYSREG(HV_SYS_REG_CNTV_CTL_EL0, 3, 3, 14, 3, 1)
+> > DEF_SYSREG(HV_SYS_REG_CNTV_CVAL_EL0, 3, 3, 14, 3, 2)
+> > DEF_SYSREG(HV_SYS_REG_SP_EL1, 3, 4, 4, 1, 0)
+> > +
+> > +DEF_SYSREG_15_02(HV_SYS_REG_SMCR_EL1, 3, 0, 1, 2, 6)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_SMPRI_EL1, 3, 0, 1, 2, 4)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_TPIDR2_EL0, 3, 3, 13, 0, 5)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_SMPRI_EL1, 3, 0, 1, 2, 4)
+> > +DEF_SYSREG_15_02(HV_SYS_REG_SMCR_EL1, 3, 0, 1, 2, 6)
+> > diff --git a/target/arm/hvf_arm.h b/target/arm/hvf_arm.h
+> > index 5d19d82e5ded66bc02da10523c0f7138840ecff3..6b5db457259667dd97620aa=
+c76ca0ab5c672fb04 100644
+> > --- a/target/arm/hvf_arm.h
+> > +++ b/target/arm/hvf_arm.h
+> > @@ -22,4 +22,48 @@ void hvf_arm_init_debug(void);
+> >
+> > void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu);
+> >
+> > +uint32_t hvf_arm_get_default_ipa_bit_size(void);
+> > +uint32_t hvf_arm_get_max_ipa_bit_size(void);
+> Are these lines intended to be there as part of this patch?
+>
 
-Same comment than on v1:
-https://lore.kernel.org/qemu-devel/5befbd0e-5f0f-41c4-99a7-1cf17bfe5454@linaro.org/
+Oops, for some reason git-rebase against master kept those in. Will
+post a new revision tomorrow. Thanks a lot!!
 
-In case a failing output would not contain any string easy to identify, 
-I'm fine with current patch, but since I didn't receive any answer on 
-previous series, I'm not sure if it has been tried.
+> > +
+> > +/*
+> > + * We need access to types from macOS SDK >=3D15.2, so expose stubs if=
+ the
+> > + * headers are not available until we raise our minimum macOS version.
+> > + */
+> > +#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED
+> > +  #if (__MAC_OS_X_VERSION_MAX_ALLOWED >=3D 150200)
+> > +    #include "system/hvf_int.h"
+> > +
+> > +    static inline bool hvf_arm_sme2_supported(void)
+> > +    {
+> > +        if (__builtin_available(macOS 15.2, *)) {
+> > +            size_t svl_bytes;
+> > +            hv_return_t result =3D hv_sme_config_get_max_svl_bytes(&sv=
+l_bytes);
+> > +            if (result =3D=3D HV_UNSUPPORTED) {
+> > +                return false;
+> > +            }
+> > +            assert_hvf_ok(result);
+> > +            return svl_bytes > 0;
+> > +        } else {
+> > +            return false;
+> > +        }
+> > +    }
+> > +
+> > +    static inline uint32_t hvf_arm_sme2_get_svl(void)
+> > +    {
+> > +        if (__builtin_available(macOS 15.2, *)) {
+> > +            size_t svl_bytes;
+> > +            hv_return_t result =3D hv_sme_config_get_max_svl_bytes(&sv=
+l_bytes);
+> > +            assert_hvf_ok(result);
+> > +            return svl_bytes;
+> > +        } else {
+> > +            abort();
+> > +        }
+> > +    }
+> > +  #else /* (__MAC_OS_X_VERSION_MAX_ALLOWED >=3D 150200) */
+> > +      #include "hvf/hvf_sme_stubs.h"
+> > +  #endif /* (__MAC_OS_X_VERSION_MAX_ALLOWED >=3D 150200) */
+> > +#else /* ifdef __MAC_OS_X_VERSION_MAX_ALLOWED */
+> > +  #include "hvf/hvf_sme_stubs.h"
+> > +#endif /* ifdef __MAC_OS_X_VERSION_MAX_ALLOWED */
+> > +
+> > #endif
+> > diff --git a/target/arm/machine.c b/target/arm/machine.c
+> > index bbaae3444928985813b7dcc91888784d06cfe305..81a506ce4cc09493dd7faed=
+88652d8d246e23187 100644
+> > --- a/target/arm/machine.c
+> > +++ b/target/arm/machine.c
+> > @@ -231,7 +231,7 @@ static bool sve_needed(void *opaque)
+> > {
+> >     ARMCPU *cpu =3D opaque;
+> >
+> > -    return cpu_isar_feature(aa64_sve, cpu);
+> > +    return cpu_isar_feature(aa64_sve, cpu) || cpu_isar_feature(aa64_sm=
+e, cpu);
+> > }
+> >
+> > /* The first two words of each Zreg is stored in VFP state.  */
+> >
+> > --
+> > 2.47.3
+> >
+>
 
-Regards,
-Pierrick
+--=20
+Manos Pitsidianakis
+Emulation and Virtualization Engineer at Linaro Ltd
 

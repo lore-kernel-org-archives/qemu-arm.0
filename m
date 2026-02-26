@@ -4,75 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0E38FC591C
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C8BFC591F
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 10:19:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvYCr-0003WH-Na; Thu, 26 Feb 2026 05:02:53 -0500
+	id 1vvYTE-0002Pb-Dl; Thu, 26 Feb 2026 05:19:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vvYCn-0003V6-Gd
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:02:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vvYCm-0000Xk-6w
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:02:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772100167;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fAwlq+9xVqaFn5n00aKeNQJ+WKDlqnxMclidobx3qgY=;
- b=B2pCYrXcXTE45uCQGPNxqHeDtxdOA5yEe4cvvmTzeRqv0p5QqauEpn3o7p/q1KDuAHutaO
- Sta3LEWTEZ0r6xFKjelqEkDYUYIkqgWfT/EiLOroxBEmL3AKbmARUoM+gOmQCSXy4pt5MV
- aQ16R0Kv8UTtxWr5kqndPD9D8lTy3vo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-676-gY4-yE2BOfaO6S4cdCXSnw-1; Thu,
- 26 Feb 2026 05:02:44 -0500
-X-MC-Unique: gY4-yE2BOfaO6S4cdCXSnw-1
-X-Mimecast-MFC-AGG-ID: gY4-yE2BOfaO6S4cdCXSnw_1772100163
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1C6E21800465; Thu, 26 Feb 2026 10:02:43 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.35.26])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 021AE1800671; Thu, 26 Feb 2026 10:02:39 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
- sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
- alex.bennee@linaro.org
-Subject: [PATCH 1/5] vmstate: Introduce VMSTATE_VARRAY_INT32_ALLOC
-Date: Thu, 26 Feb 2026 11:01:29 +0100
-Message-ID: <20260226100232.500781-2-eric.auger@redhat.com>
-In-Reply-To: <20260226100232.500781-1-eric.auger@redhat.com>
-References: <20260226100232.500781-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vvYTD-0002PM-3j
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:19:47 -0500
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vvYTB-00046m-Kb
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 05:19:46 -0500
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-7987531082aso6447257b3.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 02:19:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772101184; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Qisv5owfBNNB8va28EuAZdzOALeEXul0QkNarPoixxR0WWL/9aj8tRhtnd9RRSVoxC
+ HWONR/MX63fgAp/xV8Yva6fS7j5t+V0pdzLg4FKv84n9ekrPe8xmiooez6inw0aPizbA
+ ankvNVPABEvCwJnHkT3lRNhSMVBrVwFmPoSRAGUlNmP5rtMiW3Rhi6qMzNPzgpfg3eX7
+ 3gHk2BTU2Xjnl3ce2fQfyX0oYuNOiSSv9WD74TktyO3gAYzvBROuGxQdQV/Av+//PXPs
+ s+fnm2TS2NnLkYVxljk+v8vgcXsKwKRrnA5188pJ8jQ+mapiVP1TnBJrieCBrhALTz4I
+ +JqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
+ fh=3Xn4ErQEoYA2nKtGKqyFike4hTnuj40zeCW82w71QUQ=;
+ b=Z7eCgXeSxIgx4G0yadlZ2HIX8IC/0pvb1AakhfsOrXdLNnOogZKb8rhBGJx0/k49nN
+ s1Me6IhxTb1twGbcXWntRV00RMbNcSPIY+Aj95gCZ43jDWvTTcY7Q4FRYso6k+8DO91e
+ wwjGLU8EqBurWuSptde+YyTOhSnforVehWRkllucdRijA05Htncen/ooxLA8Z/kDBFvg
+ nA9cBZpqMwaUbPPtJENBCqRSuIcjjm8CHMSqeJ+hCiw6rkb7K1KbIDpiUjeEhi/bmA8B
+ s8X1yilAVHNfK919pOWuoAC59GSjxojR2ZKNPH6+O7teBE4Uzwko6AjOb1OgmZ/r80JZ
+ J6hw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772101184; x=1772705984; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
+ b=ir7sL2q495nJgZERktS/o8pQ11HTvOXUjQx8z+FngmGDbOeNtYa+aNpWHJ2mqPfeHR
+ BvYtPZo6ifWwY71033p79sT3C4RQidDQg0O4ZNAouCS1LfdqTSb1B3H7NlfpHCm5KzgD
+ cp+/87epuHj4iY2KQ4MZYb4+yrmStySFcosdTb1f3xUH2k6XKZXJ3L6I55Kl3L1gl2lK
+ x83rop6AmpIwDExPVnJa/4o3epIooSqyVjXXGdKfLs/9nR4eiGY9fbYdO7mZZSMy7WaB
+ R1LAFkcM3nkiilX/0QMt5YJ3v2m41obcBshd8UgCVbdsQ0kWWTpqa7T7Itlh5TTV7k88
+ ZrvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772101184; x=1772705984;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ERgBiwPJOT5sqaJzAZH1sG7hvUhBl2XMAdmXa++VDEg=;
+ b=prCYP8q7GfaDn2uOEI7z/b65EkB3aRddHPOG8PEboLlLZCVS6gZCNqIEjtBRew/7ig
+ z0suHfUVRoHEq1z8HrJ1FLWQEmGWORx4iv/Ayi7gS2OuhjbQW74F59+gXC86s8Qg4VLh
+ TYwvXy8+oKwuZGAwjDNNvaur77vturrvG0+amwvhnMcYH4YduovnIU4BFbLetbOGmoaA
+ iTKIj+YZ9i+zoFMhWItQngRGPPI6NBuQBNLSt16z/R+BQiLbbE0HDgSsdXRx/tM6JIf/
+ 4gHd9V0gxToOFnud/DmhPHNjh4dXVc+wXCKQ+NrDuhjrTR8Cu1L9WwUmLmSez7xGH7In
+ G/uQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW12bQ4wJt8wt84eVzS9vITj7pm9cGtWSSLYtdw1Qx2zXPL9oVq7hhMJZ6o+9p97VedTzYhANgbrg==@nongnu.org
+X-Gm-Message-State: AOJu0YyjVqhQ9E7Khga7MXMNplCi1OK01q6xy2uX8wBgOBG8nlNNmXqY
+ LEOjFEGdzjhX6Cp7l8KOrakw5OgxMbMWi0Kj1HRjALgGU8okzuFEfApmniatyRcA8LLhw9avK2t
+ CrO/XgvowL23KCO9gABZjoXvNMxckBIYlHIRywvKs+w==
+X-Gm-Gg: ATEYQzxTzaaUu1cP29MX2qQ5ZnBaNObbuwzOKIeqmRZkX/UqGeELOI8w5AFkvPPyOdT
+ CYDYn3uB56AHQaocftLKI1AnCO61TwvQF3yLDM3kdeQPBjzmbge6XBzjk5wbHxXhL2sECjO/lAs
+ UutvdIS/zQBu08uT2QhdHjArzEJnWH69Lnr9PVsTaP6oLW5tUJDK2IKH+b8nK5JJTbqd8e/4gLD
+ kkaIxfnqQ9t+4fpkib3VedOWbMmerJtmSBZafpmjowmhBATfCWyNHSGl+MnDbNAIA0cR5ixAPY+
+ z7JKcZ6V1Qtwsy9kg2lH0+rLI441SdAhhUn5cvm715aoWsuFnDY9XF+ZYmhx4vwoF8c=
+X-Received: by 2002:a05:690c:b10:b0:796:3f2f:a33b with SMTP id
+ 00721157ae682-79876c1c2d7mr11547367b3.18.1772101183918; Thu, 26 Feb 2026
+ 02:19:43 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: tUO3MAGTSw5LOA84amJFTxZwulTdbt8eyFS41DzM5tw_1772100163
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.734, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.78,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260224154347.344219-1-alex.bennee@linaro.org>
+ <20260224154347.344219-3-alex.bennee@linaro.org>
+In-Reply-To: <20260224154347.344219-3-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Feb 2026 10:19:31 +0000
+X-Gm-Features: AaiRm50DPzGrXORSCBPZp3zns44SYEPNOpukRR4ANOPj6ov1RvPIjvsrF3rGS2o
+Message-ID: <CAFEAcA8BX-YdALLhyYB_mDOycnUaLQ_abmSyK3VcPNQz9E3imA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] target/arm: use FIELD_DP32 instead of open-coding
+ syn_wfx
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,44 +119,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Already existing VMSTATE_VARRAY_INT32 requires an array to be
-pre-allocated, however there are cases when the size is not known in
-advance and there is no real need to enforce it.
+On Tue, 24 Feb 2026 at 15:43, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> We can use the registerfields API to safely set the individual fields
+> and avoid open coding magic numbers. The EC and IL fields are still
+> driven by defines but we could convert them later.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Introduce VMSTATE_VARRAY_INT32_ALLOC as we currently have for UINT32
-and UINT16.
+> +FIELD(WFX_ISS, TI, 0, 2)
+> +FIELD(WFX_ISS, RV, 14, 1)
+> +FIELD(WFX_ISS, RN, 15, 5)
+> +FIELD(WFX_ISS, COND, 20, 4)
+> +FIELD(WFX_ISS, CV, 24, 1)
+> +
+>  static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
+>  {
+> -    return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
+> -           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
+> -           (cv << 24) | (cond << 20) | ti;
+> +    uint32_t res =3D (EC_WFX_TRAP << ARM_EL_EC_SHIFT);
+> +
+> +    res =3D FIELD_DP32(res, WFX_ISS, CV, cv);
+> +    res =3D FIELD_DP32(res, WFX_ISS, COND, cond);
+> +    res =3D FIELD_DP32(res, WFX_ISS, TI, ti);
+> +
+> +    if (!is_16bit) {
+> +        res |=3D ARM_EL_IL;
+> +    }
+> +    return res;
+>  }
 
-The first user of this variant will be the target/arm/machine.c cpreg
-indexes/values arrays.
+I'm not hugely enthusiastic about this mostly because it
+means we would have one syn_foo function that's written totally
+differently to all the rest.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/migration/vmstate.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 89f9f49d20a..62c2abd0c49 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -447,6 +447,16 @@ extern const VMStateInfo vmstate_info_qlist;
-     .offset     = vmstate_offset_pointer(_state, _field, _type),     \
- }
- 
-+#define VMSTATE_VARRAY_INT32_ALLOC(_field, _state, _field_num, _version, _info, _type) {\
-+    .name       = (stringify(_field)),                               \
-+    .version_id = (_version),                                        \
-+    .num_offset = vmstate_offset_value(_state, _field_num, int32_t), \
-+    .info       = &(_info),                                          \
-+    .size       = sizeof(_type),                                     \
-+    .flags      = VMS_VARRAY_INT32 | VMS_POINTER | VMS_ALLOC,        \
-+    .offset     = vmstate_offset_pointer(_state, _field, _type),     \
-+}
-+
- #define VMSTATE_VARRAY_UINT32_ALLOC(_field, _state, _field_num, _version, _info, _type) {\
-     .name       = (stringify(_field)),                               \
-     .version_id = (_version),                                        \
--- 
-2.53.0
-
+-- PMM
 

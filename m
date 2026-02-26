@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D29DBFD8FF4
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 18:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC3AFD8FF5
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 18:53:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvgUA-0008EQ-Qx; Thu, 26 Feb 2026 13:53:20 -0500
+	id 1vvgUL-0008GW-Ni; Thu, 26 Feb 2026 13:53:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vvgU5-0008Cw-FC
+ id 1vvgU5-0008Cs-E7
  for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:14 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vvgU2-0003XL-D5
+ id 1vvgU1-0003Wy-GC
  for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:12 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-65fb991d7eeso1642069a12.0
- for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 10:53:10 -0800 (PST)
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b90bc00578cso182441466b.0
+ for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 10:53:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772131989; x=1772736789; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Oi5+N/x5xAvSZ7dTjPMAxsIhN66/aeUbNGSs4qe4/hc=;
- b=O3XqqpUN+dOjwCvwqQALRIEoQhVi4hkAEBLWEgDL6oBbLGQByAyvc6JyNhjgFUG5NO
- AKNNRH/jm+ju5GSdammqFji9B1OAynd878C2uNIaJnw2W1z0N0uZuTvymDPlJOr1TKA9
- LmTCitNJgXIrgA8i5iz6PNoVyFiWH3hnygx82sb70H8NR03FAA4d8GPL0oJpuML6PP/q
- hscwJHPE5R22Dr9d1mDNBYnjxtwgdgYIPAWKlubcKVAHBSL/05O0YqRtHny5RrEmWmJa
- MObf2DfLZEkxtqqPyoqdzaJuD3aINK7b1BIiPUjxeYujqSl+PNRo7dpaa8XAmEWTlvXG
- OEGg==
+ d=linaro.org; s=google; t=1772131988; x=1772736788; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=RMdtgRWA5gqr95DClCoxpPc26n0R06qA62QGanpPfPo=;
+ b=lVDBF5rWnVcaeDszs0UTPTnRQg7sW51MsN9JJzqymVixniPaiUdf38l9P4zroaih8v
+ UigWHB3NY0B/zA7H12lB7zAuO4Ly874C4yE1hk3UWF+JOwLt3XbScZPxDohH+IVajdBH
+ O9ACnvKBDWW274yB3mT5108S5aF5IOkZubjV8ntAk/z7QCHdlNZaBjzbjQfxMLC2tBmp
+ BJroWItHigPDwTLtG/U0onkCeXajdJ3MTVEnpjdMPXZpcLJHM08OTUICiS11Lls9q1Dn
+ HiyjOEGbM+AJENvYMNooukJw25hKQD12AkXCzndCijH98SeL+Xo0bw28i0uEkYW6oa06
+ TtyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772131989; x=1772736789;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Oi5+N/x5xAvSZ7dTjPMAxsIhN66/aeUbNGSs4qe4/hc=;
- b=kbKPUiUYAEHdZnLClz9lXulFaKxe1YbPPSL+c2rQ+4/tAtrJNpoYDGPJljK08sPy7a
- Am8JJcO+lR8vkLPvXpeo2ZGlXz7eCJWPEmGl/jySpeBRLFn2Zx/+6Gz0sVam7F87Qzew
- +XcsnOS6oyJva1TdZHdCg3v0vABLIMhRvXYWUNhh31ob2hW0EDUYdqDwjEHqM5Yn9yRj
- Vz2pUAXfitS9EQCs9lYSqtYATwa0inzRvcHn84sqXoHqwUv8haLpZiATHtCmslQrdfG2
- f6X458fy4nZxYb6QkLX1kKauUE6Gsfyb0dVoOqO9q8cI7PDrM5RgFCYamF0dSRFC8Q1Q
- tYcw==
+ d=1e100.net; s=20230601; t=1772131988; x=1772736788;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RMdtgRWA5gqr95DClCoxpPc26n0R06qA62QGanpPfPo=;
+ b=H1xaLITEebmcehqfzc6oX8P7ar2SWN5QO/z7KZktSrkzUUwFfS3ngJBFHyoSgr088N
+ r+4pQFU5MalT/JYBeWIYf2Xxk4KRAbbp0BV7c2e2eCxfC41jdEME1PrskewgY29fJ6JH
+ FAcCzQK7g9Rnjct3FrDMntsUWHrp/nfHgF8kXWudThP5d9jIGcZBcCL2x83Oa6xdEla9
+ SEf/X3WVG2dElASrhtlZZ9zrOk3MSm9okiF8aQMWNCTaXS0L2DqOeeDsoVt69Ge9I6qK
+ 3wgJqwgywL3CXgPgWGCh368y9rMNZNZHKjSD2mQpSOtwXDtqZo1LMM1Xvx6NuLMbSCn0
+ O4iQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWblu/5NA1vTrvo1l+PRFbCuo5MT5gBOVZ7Sqg5kObeiuZUtj5e4BqpNTb/lcewVH1W1zgVFVbjMg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+LpB6YBTKc4pUeWcPud8jTF3ktHYCuYVTxuGrxPQsZxnY9zK0
- IFxXNEc/FI/f6sXqA1YpUTHm74y4n9iT+zgHxZ0i2Q8PpYbMrCiHtvmN8tRm0uNHrzM=
-X-Gm-Gg: ATEYQzwPzW99Tw1g/IX+m1J58STuLJil5Y9DFG/w8Ew0iZUAEirEvPMn5fBuW58goTM
- QQ/QQSphsYpchBKl1SQQ2OBDCPuDITYAX5/fjJ5MFsF/p0hxNKwvrAgk2xkzSMFNCw2yZyU1wn3
- 0z9YuudKl7K7pnLUJmH8PKJvuyIxVPsWTHTwx8lzQWH0g30g0q6m0NWSra0AcwZLmogbEw+ehmN
- D5qUkBqfOmuzm+TJTqUl4raZEkdP6I4W6vIt01yAagA4nSzEwFhR0S7fr19wvXq8DvGGb2mOxxo
- fSWagCQdJ1V21ceotWb8tXUm+O/+VcTvtQYYMonAfOcQ33uyU0z7YXafOlK1f0cjheEWExMigWw
- jcaFVPPPv3NKwoIV0tcqjhuRabB1nO+QK2HRfL3WXgZKK8nnoE1kdOpk6DSXlIRg9BO/hoLtARo
- ewbxBSJkmPa3c1gAybnrAOVDA=
-X-Received: by 2002:a05:6402:42c4:b0:65c:2170:67d2 with SMTP id
- 4fb4d7f45d1cf-65fddcebdcamr232929a12.16.1772131988829; 
- Thu, 26 Feb 2026 10:53:08 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65fac07c09fsm718547a12.32.2026.02.26.10.53.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AJvYcCUgCU1s24IOx6Df97GP1ZUi6kROjmJ1lNHlnfCU9vLvLrA+rM+3g5Ei2nZ86KN3eFG3ulZCKy8hjw==@nongnu.org
+X-Gm-Message-State: AOJu0Yym6CdT5Gs+ZgnOcf+S72zIrRAWBZpnu22YciVzsoL9eXtcmWYh
+ CIQg1VMhy1Nr4SL6MDEWp0IBHJv24ZsWwZPiCuTiNmUNo7HR/V4Ie7LIJHa+9e28WCE=
+X-Gm-Gg: ATEYQzwCLn3e6XDnxlftitfvLiO71H1AeyDZ7Qjv5I1PyS62+nmRUT+Okxa7o9YPtfY
+ CKCOww+5E/Rbepj3cNP71+RoJ+uH9waungTtkZI17cYuMZ/thUvNauAXDsjS24RZy1Sd40+T5SQ
+ PzbAvY7ENnalNfJOMyyDBkAdbYWIC4IFuUDSn64KrSKySxx6s+NbHw2QGDJML77CJYajCzAHCXs
+ NtPAPHaoOrmcPvpteyk9x8ffwiR8S0nryc8jXFgx3yfYLGVM3fu5jhga7LQTtKQ8bkZgLLemg9/
+ xX5J+4mXfXCpW3cIBiHT+mncNX7QxubUi56VKQnEu62xlOlj2/2n+azgynNfJ97gbrJ0vknOQqw
+ b8WckW0EaN2zAtE5LG4NJUFwoLyrVHTHhUxQh/kPahcRmurkQcx3cOO5bj/uQeP0HmxMenqkfGo
+ HnQsDrOKWE56LbarYDUfkpQNGhiNxqDdxOcQ==
+X-Received: by 2002:a17:907:724b:b0:b87:4bdb:1061 with SMTP id
+ a640c23a62f3a-b935b4b8179mr199578866b.1.1772131987934; 
  Thu, 26 Feb 2026 10:53:07 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b935ab13564sm85778866b.9.2026.02.26.10.53.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Feb 2026 10:53:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DFF1F5F8D3;
+ by draig.lan (Postfix) with ESMTP id 5F8C55F802;
  Thu, 26 Feb 2026 18:53:03 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -76,26 +75,24 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Thomas Huth <thuth@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Brad Smith <brad@comstyle.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Warner Losh <imp@bsdimp.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 5/7] tests/vm: fix interactive boot
-Date: Thu, 26 Feb 2026 18:53:00 +0000
-Message-ID: <20260226185303.1920021-6-alex.bennee@linaro.org>
+ Warner Losh <imp@bsdimp.com>
+Subject: [PATCH v2 0/7] testing/next: libvirt-ci,
+ tests/vm and vbsa functional test
+Date: Thu, 26 Feb 2026 18:52:55 +0000
+Message-ID: <20260226185303.1920021-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260226185303.1920021-1-alex.bennee@linaro.org>
-References: <20260226185303.1920021-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,30 +108,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For reasons still not clear to me passing the single dashed
--interactive would confuse the argument parsing enough we tried to
-pass "nterative" as a string to the launch command causing failure and
-head scratching.
+While I was looking at Jon's python patches I noticed some failures
+with getting OpenBSD up and running. In pulling that thread I found a
+few other bits to fix and up revved the image and converted it to use
+lci-tool data like FreeBSD does.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20260213154859.1551283-5-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/vm/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I've also added the VBSA conformance test for Arm virt machines to the
+functional tests. This just adds the UEFI based tests as the full
+suite needs kernel modules and a userspace app which I think I have to
+build.
 
-diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
-index 8a5aaedce7a..0a53dc9fdd6 100644
---- a/tests/vm/Makefile.include
-+++ b/tests/vm/Makefile.include
-@@ -154,6 +154,6 @@ vm-boot-ssh-%: $(IMAGES_DIR)/%.img $(VM_VENV)
- 		$(if $(EFI_AARCH64),--efi-aarch64 $(EFI_AARCH64)) \
- 		$(if $(LOG_CONSOLE),--log-console) \
- 		--image "$<" \
--		$(if $(ROOT_USER),--interactive-root,-interactive) \
-+		$(if $(ROOT_USER),--interactive-root,--interactive) \
- 		false, \
- 		"  VM-BOOT-SSH $*") || true
+v2
+  - added the docker updates
+  - added tags
+  - fixed up binary and error checking on VBSA test
+
+The following still need review:
+
+  tests/functional: add Arm VBSA uefi conformance test
+  tests/docker: migrate legacy-test-cross compilers to trixie
+
+Alex.
+
+Alex Bennée (6):
+  tests/docker: migrate legacy-test-cross compilers to trixie
+  tests/vm: bump OpenBSD to the current 7.8 release
+  tests/vm: remove unused import
+  tests/vm: fix interactive boot
+  tests/vm: build openbsd from lcitool data (!567)
+  tests/functional: add Arm VBSA uefi conformance test
+
+John Snow (1):
+  tests/docker: upgrade most non-lcitool debian tests to debian 13
+
+ configure                                     | 10 +-
+ .gitlab-ci.d/buildtest.yml                    | 12 ---
+ .gitlab-ci.d/container-cross.yml              |  6 --
+ .gitlab-ci.d/containers.yml                   |  1 -
+ .../dockerfiles/debian-all-test-cross.docker  |  8 +-
+ .../dockerfiles/debian-hexagon-cross.docker   | 11 ++-
+ .../debian-legacy-test-cross.docker           | 51 ----------
+ .../dockerfiles/debian-loongarch-cross.docker | 10 +-
+ .../dockerfiles/debian-toolchain.docker       |  8 +-
+ .../dockerfiles/debian-tricore-cross.docker   |  5 +-
+ .../dockerfiles/debian-xtensa-cross.docker    |  2 +-
+ tests/functional/aarch64/meson.build          |  1 +
+ tests/functional/aarch64/test_virt_vbsa.py    | 99 +++++++++++++++++++
+ tests/lcitool/refresh                         | 13 ++-
+ tests/vm/Makefile.include                     |  2 +-
+ tests/vm/generated/openbsd.json               | 27 +++++
+ tests/vm/openbsd                              | 47 +--------
+ 17 files changed, 167 insertions(+), 146 deletions(-)
+ delete mode 100644 tests/docker/dockerfiles/debian-legacy-test-cross.docker
+ create mode 100755 tests/functional/aarch64/test_virt_vbsa.py
+ create mode 100644 tests/vm/generated/openbsd.json
+
 -- 
 2.47.3
 

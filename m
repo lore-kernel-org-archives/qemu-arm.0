@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7383FFD8FF4
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 18:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73413FD8FF5
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 18:54:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvgUH-0008Fb-W3; Thu, 26 Feb 2026 13:53:26 -0500
+	id 1vvgUE-0008FF-VJ; Thu, 26 Feb 2026 13:53:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vvgU7-0008DV-6l
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:16 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1vvgU5-0008Ct-Er
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:14 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vvgU3-0003Xh-AL
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:14 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b8d7f22d405so185637266b.0
- for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 10:53:10 -0800 (PST)
+ id 1vvgU1-0003Ws-7O
+ for qemu-arm@nongnu.org; Thu, 26 Feb 2026 13:53:11 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-65f771c6b89so1882467a12.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 10:53:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772131990; x=1772736790; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772131988; x=1772736788; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yboa4Ib5iNaVNTq21S5NaeZDhTNkVA/TIAAajIB1sXY=;
- b=kx+6xSlmw7fRFboHpfiJbJq9RZ1XOf48X+XXr1s2Q/aPUcVY7CdHiWoP6mNd16+x+W
- a8XHj2BoN54KhRNNaPG3jb125Bm5/3zbgYXq1ObPTYJT3saO4kTuZ6s+uzSTFACrAIBC
- rb0jghTyB+QfAoZTLLI67kqjP/dZn/PEzKXhVdJGkxNhuyrPL3WhJKfbXUjU0j/hQp7q
- OP8C6i5IddDSm/31wAsWhzrGIUJ5vffHJK//MSoe32ta2GUQZ1hkDtOiLQgr6185/vA6
- Vy/ury0xtc/313/CDLlECrBdeWuTDInq/EI3yvU5DAJgxLEXcChlLx5UrkGdJWle4/Jj
- 8N4Q==
+ bh=gVtMJo46t96oZ1ya/vn5y1AlDQXHYekuQeJieX1c/BY=;
+ b=UJLmzAui3/3zs+2OVP94JVaSfdHa0xvcRhbmDg+NgDd13SCAV84Oxb9Uym1FpPXK2p
+ ILstSwjCD9DwxPfVu1ptpMa0euFgeJyX8GoxIdRH+aG7RnDxNZ7OyAf/v8SylVZyQNmG
+ omvt4mTvE/NeQpb9DmWNImQNOYhkseGrFR8lAC7JW7hGb2Z3aFG/4pPVjb//EhDY9i3H
+ BpxeEOKEdO6FMPkYMABOGvkaU/o/OfeaucTOhbtZSsxdqwZddO22cY5jcyyiJcObwgrz
+ nM2hz+K//9DF+bptiSyyBbkgvHhK6nw3y0leri22YEAKkWTTaoL7iuf30f1qPSgPWC+r
+ 2cYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772131990; x=1772736790;
+ d=1e100.net; s=20230601; t=1772131988; x=1772736788;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=yboa4Ib5iNaVNTq21S5NaeZDhTNkVA/TIAAajIB1sXY=;
- b=ZojiYsJFqnWO+itlstTUWPB77s6bqMj6npdz0E+ZS+6efQFcM8oMUiLUX3Dtj4RRfJ
- e/V0yKbME12esQnvqjZphUIkNeAP5tFJbwFgI9mu7ZTLfium8FB2cdDzDNKuSfLOgybM
- jSzdfShYP7jbx/kh50HnNuSwOHWc3luF45uRddQLOltk1qUPoiXwE1xJsM+0JTPzhJxQ
- s6aBhbtKuSQEwyuE/kObpITn+bsbaS8GV7aBnA0RIPWxgzK5D4PP6cUCilAa6x2kakg0
- wDr900DJu9Sb2YqStWWM0iQiF+dhH4N3i/qNcPlZ79SrNrPLuNZsfkC/+5QavkTudoGR
- tmgA==
+ bh=gVtMJo46t96oZ1ya/vn5y1AlDQXHYekuQeJieX1c/BY=;
+ b=PcaQaS771LpeZNBbs0WOhiTSR6szBdr/JfN5HJrnNe85d9ZHL0EpUygKkd9UBS2pu3
+ bJgmSrKKDtJkBHyGRNEYOdDj+OfXKZGqaE0NeuwJxat+RUDzzfT2Tnr2vodTxCkCSTFG
+ NgGhan2s72wboEPRty9YVd0whRPZIUBokPvExy7DKlzyts3zfnfB7osc7vrjEkWfZtu9
+ aw8mLMZppRBtXY+0sOUD+K4TsQ19Zt0Um+ZYayNGViUWUaRxG9r8/Ts27CZ8m51SQtmO
+ 5ec94sRnqTtC9OCXDfGSTgQ6/mmPLn9xZUtqvOFEZj5qglMB1CJMiMakVKcHoVFAKSmV
+ lHPg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTOvTS+nk8VeFo3CxEOg1jAmvcKujr/De0SVrnQPZHsFo+1n+pjFsSlmfmTu6GV9fIpi4RqSCkXA==@nongnu.org
-X-Gm-Message-State: AOJu0YzhiRXeB4ouC8PNw1Ye8ZxijX0D+pCdns8gptlL+8PpaoFqExOS
- 43wscW1WzZ9/XYn5rWyp+8ZzDVnJGgRVjlUp58pjQnuNTUQBTtKTo8Ymf+NQiL6QM+g=
-X-Gm-Gg: ATEYQzxn+ApNjgCZOMkF9MKgAnp66GQPqxKAJNkJM4a54n8KNeUaKPg/+xRtS6zcWlI
- rQ34ZCtyPVjYZimORn+ssC9YmYgYfMHSZBrhTQZ5MfHbRtUEACSYqbTkAhN1JQcpAEl2P+NeNMq
- PhCS2N+Irhq4Iq065T85uUkjcoCBSk9egGiyevEncFqHMDzjbZxFsFz6+wEyBlmWkDCS66Ueu1u
- tpCCAU9Eqz08rnIJUp7jw//mw8SW2wpOS6KEFR67afj9xrPhahhekYy4j4K+T+wSLlGdtgfhLRg
- kWnzSKWYY5HV+cDJ0J7jon883JoSJILSQ4FRIOsR6DB2p0gWXDf5H+mycY91zc6fqs2JxrtwFtn
- o4B03h+GnR2+Hkw5xL5+lj/ZEBNh+gyZ+SYEz78f2SQDlmE9FH6szPRvkouZxOj7K7C0uw93lY3
- /N3lRL6PLxr2RDCjNJlLafO8E=
-X-Received: by 2002:a17:907:da17:b0:b87:6b9c:6386 with SMTP id
- a640c23a62f3a-b935bb25ae5mr260933866b.56.1772131989452; 
- Thu, 26 Feb 2026 10:53:09 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65fabf6d26dsm739784a12.16.2026.02.26.10.53.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AJvYcCWiWEZtvcd8Os/2/cpw356m3X/bpFAecIokPH03g3Hhs2erEQUs/3DNxVLD2Z7dXvVVPKKcLQMKlQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxdAJ4mYpu5Vm/ANlOPEm/UBiGLR8YwQAhx/8nGx6r8ymDYmDfg
+ Gzh8M7abYm9HiKdmdI1xm/phpGoHbq7m6rf6uj9FujyWjrw1VGZWj6VcaOhxPU3/Vzo=
+X-Gm-Gg: ATEYQzzQ8lnC1oRIf6X7mvRCIHskipa/c4O7pDDiUCcvyChFsTunPBRymOxdTjRHgx6
+ uiT8DDX8i4h7d5JWls4va5SZ9ouq1xNg7SakLMxRFZqQ8sk1LnflYrwl2lXnsxHlwNLPGHHT5NM
+ HzZTk2TL9SFUmAA2KlRWLxHrvlA2pz3TldoS5Q9TJ8U76GEreUn1fvJ7ypCS6Aqwlr+c4hFWepS
+ 5bS1ZXkTC+lCN1uOinLymHyaRm5H4Om9tyAsHSaoqy9w2ZlqODZSUCWBH7XpKBocSPNxYViK3XX
+ +hQ2t0cA8dZ8HYeFucaDaYe1OJ46foltHvqxIj4R8wxzXnIuU/EIZoXUL6vraNNVU96VY8r0yz0
+ dIRU+FJmjRXDnETyjxqC6B4hTS5KcbrmQBh2JemxLwzMZav3jqEz+zATSpZoEl+AbMrC0j+fmdz
+ k4EAwnv0gokPVKDYlPV8hs7nQ=
+X-Received: by 2002:a17:907:86ab:b0:b88:5e4c:f842 with SMTP id
+ a640c23a62f3a-b935b931214mr231810566b.47.1772131987515; 
  Thu, 26 Feb 2026 10:53:07 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b935a597d02sm82378566b.0.2026.02.26.10.53.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Feb 2026 10:53:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 050265F8D5;
- Thu, 26 Feb 2026 18:53:04 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id CAA8C5F8D0;
+ Thu, 26 Feb 2026 18:53:03 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -78,17 +78,17 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Warner Losh <imp@bsdimp.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 6/7] tests/vm: build openbsd from lcitool data (!567)
-Date: Thu, 26 Feb 2026 18:53:01 +0000
-Message-ID: <20260226185303.1920021-7-alex.bennee@linaro.org>
+Subject: [PATCH v2 4/7] tests/vm: remove unused import
+Date: Thu, 26 Feb 2026 18:52:59 +0000
+Message-ID: <20260226185303.1920021-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260226185303.1920021-1-alex.bennee@linaro.org>
 References: <20260226185303.1920021-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,139 +111,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For now only use the minimal decadency set until all the OpenBSD
-mappings can be divined.
-
-Currently depends on: https://gitlab.com/libvirt/libvirt-ci/-/merge_requests/567
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20260213154859.1551283-6-alex.bennee@linaro.org>
+Message-ID: <20260213154859.1551283-4-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/lcitool/refresh           |  5 ++--
- tests/vm/generated/openbsd.json | 27 +++++++++++++++++++++
- tests/vm/openbsd                | 42 ++-------------------------------
- 3 files changed, 32 insertions(+), 42 deletions(-)
- create mode 100644 tests/vm/generated/openbsd.json
+ tests/vm/openbsd | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index c74345e03d0..3e4b026035b 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -87,9 +87,9 @@ def generate_cirrus(target, trailer=None):
-     generate(filename, cmd, trailer)
- 
- 
--def generate_pkglist(vm, target):
-+def generate_pkglist(vm, target, project="qemu"):
-     filename = Path(src_dir, "tests", "vm", "generated", vm + ".json")
--    cmd = lcitool_cmd + ["variables", "--format", "json", target, "qemu"]
-+    cmd = lcitool_cmd + ["variables", "--format", "json", target, project]
-     generate(filename, cmd, None)
- 
- 
-@@ -316,6 +316,7 @@ try:
-     # VM packages lists
-     #
-     generate_pkglist("freebsd", "freebsd-14")
-+    generate_pkglist("openbsd", "openbsd-78", project="qemu-minimal")
- 
-     #
-     # Ansible package lists
-diff --git a/tests/vm/generated/openbsd.json b/tests/vm/generated/openbsd.json
-new file mode 100644
-index 00000000000..0886afd0d3d
---- /dev/null
-+++ b/tests/vm/generated/openbsd.json
-@@ -0,0 +1,27 @@
-+{
-+  "ccache": "/usr/local/bin/ccache",
-+  "cpan_pkgs": [],
-+  "cross_pkgs": [],
-+  "make": "/usr/local/bin/gmake",
-+  "ninja": "/usr/local/bin/ninja",
-+  "packaging_command": "pkg_add",
-+  "pip3": "/usr/local/bin/pip3",
-+  "pkgs": [
-+    "bash",
-+    "bison",
-+    "bzip2",
-+    "ccache",
-+    "dtc",
-+    "git",
-+    "glib2",
-+    "gmake",
-+    "gsed",
-+    "libffi",
-+    "meson",
-+    "ninja",
-+    "pkgconf",
-+    "python3"
-+  ],
-+  "pypi_pkgs": [],
-+  "python": "/usr/local/bin/python3"
-+}
 diff --git a/tests/vm/openbsd b/tests/vm/openbsd
-index 9aabfeec963..4f8eeb28e24 100755
+index d1289d78d24..9aabfeec963 100755
 --- a/tests/vm/openbsd
 +++ b/tests/vm/openbsd
-@@ -24,45 +24,6 @@ class OpenBSDVM(basevm.BaseVM):
-     link = "https://cdn.openbsd.org/pub/OpenBSD/7.8/amd64/install78.iso"
-     csum = "a228d0a1ef558b4d9ec84c698f0d3ffd13cd38c64149487cba0f1ad873be07b2"
-     size = "20G"
--    pkgs = [
--        # tools
--        "dtc",
--        "git",
--        "pkgconf",
--        "bzip2", "xz",
--        "ninja",
--
--        # gnu tools
--        "bash",
--        "gmake",
--        "gsed",
--        "gettext-tools",
--
--        # libs: usb
--        "libusb1--",
--
--        # libs: crypto
--        "gnutls",
--
--        # libs: images
--        "jpeg",
--        "png",
--
--        # libs: ui
--        "capstone",
--        "sdl2",
--        "gtk+3",
--        "libxkbcommon",
--
--        # libs: migration
--        "zstd",
--
--        # libs: networking
--        "libslirp",
--
--        # Python stuff
--        "py3-setuptools",
--    ]
+@@ -14,7 +14,6 @@
  
-     BUILD_SCRIPT = """
-         set -e;
-@@ -198,8 +159,9 @@ class OpenBSDVM(basevm.BaseVM):
-         self.console_wait("login:")
-         self.wait_ssh()
+ import os
+ import sys
+-import socket
+ import subprocess
+ import basevm
  
-+        pkgs = self.get_qemu_packages_from_lcitool_json()
-         self.print_step("Installing packages")
--        self.ssh_root_check("pkg_add %s\n" % " ".join(self.pkgs))
-+        self.ssh_root_check("pkg_add %s\n" % " ".join(pkgs))
- 
-         # shutdown
-         self.ssh_root(self.poweroff)
 -- 
 2.47.3
 

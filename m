@@ -4,114 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85B7FCE09B
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 14:46:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1400FD8FC3
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Feb 2026 15:46:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvcd3-0002bx-Aj; Thu, 26 Feb 2026 09:46:18 -0500
+	id 1vvdZ3-00036X-Nv; Thu, 26 Feb 2026 10:46:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dorjoychy111@gmail.com>)
- id 1vvccs-0002aX-Nz
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 09:46:04 -0500
-Received: from mail-vs1-xe36.google.com ([2607:f8b0:4864:20::e36])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dorjoychy111@gmail.com>)
- id 1vvcco-0006OJ-DG
- for qemu-arm@nongnu.org; Thu, 26 Feb 2026 09:46:00 -0500
-Received: by mail-vs1-xe36.google.com with SMTP id
- ada2fe7eead31-5ff0c095b69so678323137.0
- for <qemu-arm@nongnu.org>; Thu, 26 Feb 2026 06:45:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772117157; cv=none;
- d=google.com; s=arc-20240605;
- b=A576LV4k6ZQJnDxebyPvGYwcLfR/WJABQpWIA7EX7QlpPcEYUmGY1d29w6sww3J5Pu
- DqgPLdrhuTl+0HADLnmAYpAvFp1LD40ZlLA7917nLqCuenrM1UB4nOLAWyXNYsnKuZvV
- 1zc7DNK6XEr8LQt7X5rwKTAP6fHnuE7JH6yYROABvNGhvDY61qkxqufcTW0Hm/BiGq4F
- 2exTsIzRrN6VxJ4pKv9Ir3BCkKFnjPS87SnTmdvFSwB7f+qCVa3FD6wqTFOHKrNNgaLu
- I3EPEhYXDgy/uIedZiDDvNPEBMB4vJy/GiyROPvksnkwYE4/duDCKM78jpRpeRmXVom5
- 7w7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=C452zTfBbAXAGkhCMs/t9Amzk4sI1gHu6f9LEBLYONY=;
- fh=9oy696J2XS1hv/Q1/DmU5nM9fyMpAa1VITzmYThHaa4=;
- b=WcWZ29T8mcUu42FJ/3P1qc1MhQdMnprXh9CfcWx2i53Xgq0rvSNRxala7D7BvNGprG
- siuGOT1E/D+qoLT+B+/r7GCT3dExnkbqF+EeVa1EBA8JTV0JI1kSy1ysuZjKU/q41XB3
- pktYnpy/vObtvgdpNahDe1FDRcBmXqgcOUpthFXCFxxfQ7rb9475HH3P+hSI3OGuhkAf
- 64tG9Rlm5bt81x1Qhvr9yYKADXpOvDqvFyqP/QydgE9Lw1zdC5AlzXO+2bKxPUq54jQv
- UZ+GIh1ATP9W8mzHRduo++S1HrvdSxdtVyOHV4ojsBJHLU5V1QBjnFSoREF6gJiQYe9b
- VqCg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772117157; x=1772721957; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=C452zTfBbAXAGkhCMs/t9Amzk4sI1gHu6f9LEBLYONY=;
- b=EjaAMJK89ZXGmKyPBqZSvkugiM7r5GtfkQtqBKixICkKzAsHSaJKSPwl6iiHKc4OLb
- +ZjWnFBS+8Vxq0C5ef1SMpQA4ndGtxx3AsPxlTLFqcfSKkECF1ZEdI0Q32fd+uPoUOIG
- nChv26XR2d8SIFNa5t+/vshl5OzB9kmIy8E6j1wRXTz0fx0V6Tz0k3ysQKCdHNHUqc33
- LZgs/YEAsT8cGt9psRS8RJGu7qMLIsGjQSCRFPfY/3SO00qP7C72wQuW76SuG9HFH1/i
- qLyOuQPQmI9XiB7Nt6yKYVZi0zMVugsSHhDpc2Owd89Ilkq6nkqqNOcMUoa3B74QS2o1
- CUDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772117157; x=1772721957;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=C452zTfBbAXAGkhCMs/t9Amzk4sI1gHu6f9LEBLYONY=;
- b=fKx8WrVMT5WZpx8jTjlP1rkwP3NMpNWvFeno3h+4lgLW16EFRPfWNHA4x/4/tyLBzc
- 79qKgh7XaKAbq+LJm8YzXrZblsnXGdFWb3hbwNEpsgwEKqUSXCd7tAUBItKzHSV1ZkrT
- 2jqjsMK2SAn/7W+ICL+zuJzLZ14MjyrFuGB2/kh1KOHJ70N01nnVHyzA5/LYlyZBKApH
- tMQc7NVs7CmdqBmhTynGo6w0M3MF9v5Sq6jL9CSLJi7MXLYXtYpQvfUtkCjwm6kprG/K
- jrO1Y4bi1SNugkPoRB0K52qXa8rhO0CxHPmZBBlP1y8J/y7r8qbnnoq5suNfyP3gnB9p
- 2IXA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWut8FW3s1LJU5fvXHsWUvPZ9DGu7/X4pfO64MsB+kP572qsz4ByM9xLxuuTy4FqywmfN54vbc0AA==@nongnu.org
-X-Gm-Message-State: AOJu0YxIqWU++sofxVxm98nYai0C2iY518R0XBb/rHCmLczr9qY1GMrO
- kUamJuFl51dGR7B/Jg6JvVOb4orbAxTKDZCWcMVWzKnZeSURN7AmdXxtgW2xoHM2ZlQwKI1OooD
- eFFC0LUYIE3yqCUMma+OnXhwWYQpgBpc=
-X-Gm-Gg: ATEYQzzqM1TGXoe8V0BUQNLhMsCblL5hBJ3OVD4qlxrjdd+H/SnBJMUcvOXOsRBpNcH
- inoK1cO4V8XrDd44cYbKB+rqIWls4Sz6Uw0S9HNxUXVUkX3SRa6A/128ajQLgJ1IjClaFhSg4NN
- gU8BsdNfL4wbA+wWmDbk5M+OpiB0g40RyaVC4uuUKweg0w1X4Zp+qJ+REp6xurWfsI6Bu1etN51
- nsldFcIHC37XHOIOFgCsM/p4+OtAG1IryGkbBlqFNOEB+GpQH0vvgC3bWDWjAms11yBdNCzbllK
- VL/xoQVWo/sL1EGcTkm7grLbRqe9rNIS2IrO9GNbbg==
-X-Received: by 2002:a05:6102:3a0c:b0:5f5:2b1c:7551 with SMTP id
- ada2fe7eead31-5ff20b98161mr1237390137.19.1772117156789; Thu, 26 Feb 2026
- 06:45:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vvdYr-00035W-OJ; Thu, 26 Feb 2026 10:46:06 -0500
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vvdYo-0000rf-B4; Thu, 26 Feb 2026 10:45:57 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwC30qimaqBpvMeIBw--.4S2;
+ Thu, 26 Feb 2026 23:45:42 +0800 (CST)
+Received: from [192.168.31.151] (unknown [113.246.232.133])
+ by mail (Coremail) with SMTP id AQAAfwBXruukaqBpRHsdAA--.36559S2;
+ Thu, 26 Feb 2026 23:45:40 +0800 (CST)
+Message-ID: <2391877e-4346-48bf-848d-3a08b90a4e6d@phytium.com.cn>
+Date: Thu, 26 Feb 2026 23:45:40 +0800
 MIME-Version: 1.0
-References: <20260225220807.33092-1-graf@amazon.com>
- <20260225220807.33092-11-graf@amazon.com>
-In-Reply-To: <20260225220807.33092-11-graf@amazon.com>
-From: Dorjoy Chowdhury <dorjoychy111@gmail.com>
-Date: Thu, 26 Feb 2026 20:45:44 +0600
-X-Gm-Features: AaiRm511qfrZmQJTBFYOd3G8idXlDFQW3noTE5elOQpZ4EmnosyZ6oCqfPHpzNI
-Message-ID: <CAFfO_h6KOdwsL7Z_F89cnfMQWLi9AB2Rp2fN=+bw1derf-tJMQ@mail.gmail.com>
-Subject: Re: [PATCH v3 10/11] hw/nitro: Enable direct kernel boot
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- alex.bennee@linaro.org, 
- philmd@linaro.org, berrange@redhat.com, marcandre.lureau@redhat.com, 
- Cornelia Huck <cohuck@redhat.com>, mst@redhat.com, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Tyler Fanelli <tfanelli@redhat.com>, mknaust@amazon.com,
- nh-open-source@amazon.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e36;
- envelope-from=dorjoychy111@gmail.com; helo=mail-vs1-xe36.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC 1/2] tests/qtest: Support for memory access with
+ secure/space attr
+To: Chao Liu <chao.liu.zevorn@gmail.com>
+Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20260222082529.491384-1-tangtao1634@phytium.com.cn>
+ <20260222082529.491384-2-tangtao1634@phytium.com.cn>
+ <aZ8ABZwi_RVQUEj8@ZEVORN-PC.localdomain>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <aZ8ABZwi_RVQUEj8@ZEVORN-PC.localdomain>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwBXruukaqBpRHsdAA--.36559S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQASBWmfZugExgABst
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvAXoW3ury5AF4rArWxuw13Zw4DXFb_yoW8Ww1fCo
+ WFgFn2v3sxtr17uryq9ryktr13GFZ8WrnrAw4Fkw13J3WFqF4Uua45JFWUZFWUAayrKr9r
+ J3WxJa4FyFWjvrs8n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
+ J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
+ UUUUUUU==
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.306,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.668, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,219 +76,549 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 26, 2026 at 4:09=E2=80=AFAM Alexander Graf <graf@amazon.com> wr=
-ote:
->
-> Nitro Enclaves can only boot EIF files which are a combination of
-> kernel, initramfs and cmdline in a single file. When the kernel image is
-> not an EIF, treat it like a kernel image and assemble an EIF image on
-> the fly. This way, users can call QEMU with a direct
-> kernel/initrd/cmdline combination and everything "just works".
->
-> Signed-off-by: Alexander Graf <graf@amazon.com>
-> ---
->  hw/core/eif.h        |   3 ++
->  hw/nitro/machine.c   | 116 +++++++++++++++++++++++++++++++++++++++++++
->  hw/nitro/meson.build |   2 +-
->  3 files changed, 120 insertions(+), 1 deletion(-)
->
+Hi Chao,
 
-Reviewed-by: Dorjoy Chowdhury <dorjoychy111@gmail.com>
+On 2026/2/25 22:23, Chao Liu wrote:
+> Hi Tao,
+>
+> Some additional comments on top of Peter's review:
+>
+> On Sun, Feb 22, 2026 at 04:25:28PM +0800, Tao Tang wrote:
+>> Introduce `*_secure` and `*_space` commands to the qtest protocol and
+>> libqtest API. This allows testing devices that behave differently based
+>> on security state (e.g., ARM TrustZone/CCA or x86 SMM).
+>>
+>> - `*_secure` commands specify the SECURE parameter (0 or 1) and are
+>>    compatible with x86 and ARM.
+>> - `*_space` commands specify the ARM security space (0-3) and are
+>>    ARM-specific.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   system/qtest.c                | 482 ++++++++++++++++++++++++++++++++++
+>>   tests/qtest/libqtest-single.h | 133 ++++++++++
+>>   tests/qtest/libqtest.c        | 249 ++++++++++++++++++
+>>   tests/qtest/libqtest.h        | 281 ++++++++++++++++++++
+>>   4 files changed, 1145 insertions(+)
+>>
+>> diff --git a/system/qtest.c b/system/qtest.c
+>> index e42b83ce67..2140aaac99 100644
+>> --- a/system/qtest.c
+>> +++ b/system/qtest.c
+>> @@ -217,6 +217,60 @@ static void *qtest_server_send_opaque;
+>>    * B64_DATA is an arbitrarily long base64 encoded string.
+>>    * If the sizes do not match, the data will be truncated.
+>>    *
+>> + * Memory access with MemTxAttrs:
+>> + * """"""""""""""""""""""""""""""
+>> + *
+>> + * The following commands allow specifying memory transaction attributes,
+>> + * which is useful for testing devices that behave differently based on
+>> + * security state (e.g., ARM TrustZone/CCA or System Management Mode in x86).
+>> + *
+>> + * Two variants are available:
+>> + *
+>> + * 1. ``*_secure`` commands: Available on x86 and ARM.
+>> + * Only specifies the SECURE parameter (0 or 1).
+>> + * When SECURE=1, uses the secure AddressSpace. The asidx argument to
+>> + * cpu_get_address_space() can only be 1 on x86 (SMM mode, X86ASIdx_SMM) and
+>> + * ARM (Secure state, ARMASIdx_S); all other targets always use 0 for the asidx
+>> + * parameter. When issuing ``*_secure`` commands, we assert that the secure
+>> + * AddressSpace must exist.
+>> + *
+>> + * 2. ``*_space`` commands: ARM-specific.
+>> + * Only specifies the SPACE parameter (0-3).
+>> + * SECURE is auto-derived: secure=1 for Secure(0)/Root(2), secure=0 for
+>> + * NonSecure(1)/Realm(3), following ARM's arm_space_is_secure() semantics.
+>> + *
+>> + * Secure variants with .secure attribute (x86/ARM):
+>> + * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writeb_secure ADDR VALUE SECURE
+>> + *  < OK
+>> + *  > readb_secure ADDR SECURE
+>> + *  < OK VALUE
+>> + *  > read_secure ADDR SIZE SECURE
+>> + *  < OK DATA
+>> + *  > write_secure ADDR SIZE DATA SECURE
+>> + *  < OK
+>> + *  > memset_secure ADDR SIZE VALUE SECURE
+>> + *  < OK
+>> + *
+>> + * Space variants with .space attribute (ARM-specific):
+>> + * ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writeb_space ADDR VALUE SPACE
+>> + *  < OK
+>> + *  > readb_space ADDR SPACE
+>> + *  < OK VALUE
+>> + *  > read_space ADDR SIZE SPACE
+>> + *  < OK DATA
+>> + *  > write_space ADDR SIZE DATA SPACE
+>> + *  < OK
+>> + *  > memset_space ADDR SIZE VALUE SPACE
+>> + *  < OK
+>> + *
+>>    * IRQ management:
+>>    * """""""""""""""
+>>    *
+>> @@ -668,6 +722,434 @@ static void qtest_process_command(CharFrontend *chr, gchar **words)
+>>               g_free(data);
+>>           }
+>>   
+>> +        qtest_send(chr, "OK\n");
+>> +    } else if (strcmp(words[0], "writeb_secure") == 0 ||
+>> +               strcmp(words[0], "writew_secure") == 0 ||
+>> +               strcmp(words[0], "writel_secure") == 0 ||
+>> +               strcmp(words[0], "writeq_secure") == 0) {
+>> +        /*
+>> +         * *_secure commands: x86/ARM compatible.
+>> +         * Only specifies SECURE parameter.
+>> +         */
+>> +        uint64_t addr, value, secure;
+>> +        MemTxAttrs attrs;
+> MemTxAttrs is declared on the stack without initialization here.
+> This struct has many fields (user, memory, debug, requester_id,
+> unspecified, etc.) that will all contain garbage values. This
+> happens in every single new command handler (all 12 branches).
+>
+> You need either:
+>
+> ```
+>      MemTxAttrs attrs = {};
+> ```
+>
+> or build on top of MEMTXATTRS_UNSPECIFIED and then set the
+> specific fields you need. As-is this is a real bug that could
+> cause unpredictable behavior depending on what garbage ends up
+> in the other attribute fields.
 
-> diff --git a/hw/core/eif.h b/hw/core/eif.h
-> index a3412377a9..0c432dbc2d 100644
-> --- a/hw/core/eif.h
-> +++ b/hw/core/eif.h
-> @@ -12,6 +12,7 @@
->  #define HW_CORE_EIF_H
+
+Thanks for the feedback. I'll fix it in V2.
+
 >
->  #define MAX_SECTIONS 32
-> +#define EIF_HDR_ARCH_ARM64 0x1
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        g_assert(words[1] && words[2] && words[3]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &value);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[3], NULL, 0, &secure);
+>> +        g_assert(ret == 0);
+>> +
+>> +        attrs.secure = secure & 1;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            /* Secure AddressSpace must be available when issuing secure commands */
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+> As Peter already pointed out, hardcoding asidx=1 is wrong. But I
+> want to add: once you properly initialize attrs, you can unify the
+> AS lookup for both *_secure and *_space into a single helper:
 >
->  /* members are ordered according to field order in .eif file */
->  typedef struct EifHeader {
-> @@ -49,6 +50,8 @@ enum EifSectionTypes {
->      EIF_SECTION_MAX =3D 6,
->  };
->
-> +#define EIF_MAGIC { '.', 'e', 'i', 'f' }
-> +
->  bool read_eif_file(const char *eif_path, const char *machine_initrd,
->                     char **kernel_path, char **initrd_path,
->                     char **kernel_cmdline, uint8_t *image_sha384,
-> diff --git a/hw/nitro/machine.c b/hw/nitro/machine.c
-> index e28c8e9bf5..8849959359 100644
-> --- a/hw/nitro/machine.c
-> +++ b/hw/nitro/machine.c
-> @@ -32,9 +32,104 @@
->  #include "system/nitro-accel.h"
->  #include "qemu/accel.h"
->  #include "hw/arm/machines-qom.h"
-> +#include "hw/core/eif.h"
-> +#include <zlib.h> /* for crc32 */
->
->  #define EIF_LOAD_ADDR   (8 * 1024 * 1024)
->
-> +static bool is_eif(char *eif, gsize len)
-> +{
-> +    const char eif_magic[] =3D EIF_MAGIC;
-> +
-> +    return len >=3D sizeof(eif_magic) &&
-> +           !memcmp(eif, eif_magic, sizeof(eif_magic));
-> +}
-> +
-> +static void build_eif_section(EifHeader *hdr, GByteArray *buf, uint16_t =
-type,
-> +                              const char *data, uint64_t size)
-> +{
-> +    uint16_t section =3D be16_to_cpu(hdr->section_cnt);
-> +    EifSectionHeader shdr =3D {
-> +        .section_type =3D cpu_to_be16(type),
-> +        .flags =3D 0,
-> +        .section_size =3D cpu_to_be64(size),
-> +    };
-> +
-> +    hdr->section_offsets[section] =3D cpu_to_be64(buf->len);
-> +    hdr->section_sizes[section] =3D cpu_to_be64(size);
-> +
-> +    g_byte_array_append(buf, (const uint8_t *)&shdr, sizeof(shdr));
-> +    if (size) {
-> +        g_byte_array_append(buf, (const uint8_t *)data, size);
-> +    }
-> +
-> +    hdr->section_cnt =3D cpu_to_be16(section + 1);
-> +}
-> +
-> +/*
-> + * Nitro Enclaves only support loading EIF files. When the user provides
-> + * a Linux kernel, initrd and cmdline, convert them into EIF format.
-> + */
-> +static char *build_eif(const char *kernel_data, gsize kernel_size,
-> +                       const char *initrd_path, const char *cmdline,
-> +                       gsize *out_size, Error **errp)
-> +{
-> +    g_autofree char *initrd_data =3D NULL;
-> +    static const char metadata[] =3D "{}";
-> +    size_t metadata_len =3D sizeof(metadata) - 1;
-> +    gsize initrd_size =3D 0;
-> +    GByteArray *buf;
-> +    EifHeader hdr;
-> +    uint32_t crc =3D 0;
-> +    size_t cmdline_len;
-> +
-> +    if (initrd_path) {
-> +        if (!g_file_get_contents(initrd_path, &initrd_data,
-> +                                 &initrd_size, NULL)) {
-> +            error_setg(errp, "Failed to read initrd '%s'", initrd_path);
-> +            return NULL;
-> +        }
-> +    }
-> +
-> +    buf =3D g_byte_array_new();
-> +
-> +    cmdline_len =3D cmdline ? strlen(cmdline) : 0;
-> +
-> +    hdr =3D (EifHeader) {
-> +        .magic =3D EIF_MAGIC,
-> +        .version =3D cpu_to_be16(4),
-> +        .flags =3D cpu_to_be16(target_aarch64() ? EIF_HDR_ARCH_ARM64 : 0=
-),
-> +    };
-> +
-> +    g_byte_array_append(buf, (const uint8_t *)&hdr, sizeof(hdr));
-> +
-> +    /* Kernel */
-> +    build_eif_section(&hdr, buf, EIF_SECTION_KERNEL, kernel_data, kernel=
-_size);
-> +
-> +    /* Command line */
-> +    build_eif_section(&hdr, buf, EIF_SECTION_CMDLINE, cmdline, cmdline_l=
-en);
-> +
-> +    /* Initramfs */
-> +    build_eif_section(&hdr, buf, EIF_SECTION_RAMDISK, initrd_data, initr=
-d_size);
-> +
-> +    /* Metadata */
-> +    build_eif_section(&hdr, buf, EIF_SECTION_METADATA, metadata, metadat=
-a_len);
-> +
-> +    /*
-> +     * Patch the header into the buffer first (with real section offsets
-> +     * and sizes), then compute CRC over everything except the CRC field=
-.
-> +     */
-> +    memcpy(buf->data, &hdr, sizeof(hdr));
-> +    crc =3D crc32(crc, buf->data, offsetof(EifHeader, eif_crc32));
-> +    crc =3D crc32(crc, &buf->data[sizeof(hdr)], buf->len - sizeof(hdr));
-> +
-> +    /* Finally write the CRC into the in-buffer header */
-> +    ((EifHeader *)buf->data)->eif_crc32 =3D cpu_to_be32(crc);
-> +
-> +    *out_size =3D buf->len;
-> +    return (char *)g_byte_array_free(buf, false);
-> +}
-> +
->  static void nitro_machine_init(MachineState *machine)
->  {
->      const char *eif_path =3D machine->kernel_filename;
-> @@ -74,6 +169,27 @@ static void nitro_machine_init(MachineState *machine)
->          error_report("nitro: failed to read EIF '%s'", eif_path);
->          exit(1);
+> ```
+>      static AddressSpace *qtest_get_as_for_attrs(MemTxAttrs attrs)
+>      {
+>          int asidx = cpu_asidx_from_attrs(first_cpu, attrs);
+>          AddressSpace *as = cpu_get_address_space(first_cpu, asidx);
+>          g_assert(as);
+>          return as;
 >      }
-> +
-> +    if (!is_eif(eif_data, eif_size)) {
-> +        char *kernel_data =3D eif_data;
-> +        gsize kernel_size =3D eif_size;
-> +        Error *err =3D NULL;
-> +
-> +        /*
-> +         * The user gave us a non-EIF kernel, likely a Linux kernel imag=
-e.
-> +         * Assemble an EIF file from it, the -initrd and the -append arg=
-uments,
-> +         * so that users can perform a natural direct kernel boot.
-> +         */
-> +        eif_data =3D build_eif(kernel_data, kernel_size, machine->initrd=
-_filename,
-> +                             machine->kernel_cmdline, &eif_size, &err);
-> +        if (!eif_data) {
-> +            error_report_err(err);
-> +            exit(1);
-> +        }
-> +
-> +        g_free(kernel_data);
-> +    }
-> +
->      address_space_write(&address_space_memory, EIF_LOAD_ADDR,
->                          MEMTXATTRS_UNSPECIFIED, eif_data, eif_size);
+> ```
 >
-> diff --git a/hw/nitro/meson.build b/hw/nitro/meson.build
-> index e3f1895890..b9bd0d4300 100644
-> --- a/hw/nitro/meson.build
-> +++ b/hw/nitro/meson.build
-> @@ -1,4 +1,4 @@
->  system_ss.add(when: 'CONFIG_NITRO_VSOCK_BUS', if_true: files('nitro-vsoc=
-k-bus.c'))
->  system_ss.add(when: 'CONFIG_NITRO_SERIAL_VSOCK', if_true: files('serial-=
-vsock.c'))
->  system_ss.add(when: 'CONFIG_NITRO_HEARTBEAT', if_true: files('heartbeat.=
-c'))
-> -system_ss.add(when: 'CONFIG_NITRO_MACHINE', if_true: files('machine.c'))
-> +system_ss.add(when: 'CONFIG_NITRO_MACHINE', if_true: [files('machine.c')=
-, zlib])
-> --
-> 2.47.1
+> This eliminates the duplicated if/else AS lookup in every branch.
 >
+> Also, the *_secure commands have no architecture guard at all. If
+
+
+Thanks for the suggestion. Calling cpu_asidx_from_attrs and then 
+cpu_get_address_space and with an assertion following up is a good idea. 
+We do not need to add extra guard code as the assertion itself is the 
+guard.
+
+
+> someone runs `readb_secure ADDR 1` on RISC-V or MIPS (which only
+> have one address space), cpu_get_address_space(first_cpu, 1) will
+> return NULL and hit the g_assert. You should either add a guard
+> similar to what *_space does, or (better) rely on
+> cpu_asidx_from_attrs() which will naturally return 0 for
+> architectures that don't understand the secure attribute.
 >
+>> +        if (words[0][5] == 'b') {
+>> +            uint8_t data = value;
+>> +            address_space_write(as, addr, attrs, &data, 1);
+>> +        } else if (words[0][5] == 'w') {
+>> +            uint16_t data = value;
+>> +            tswap16s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 2);
+>> +        } else if (words[0][5] == 'l') {
+>> +            uint32_t data = value;
+>> +            tswap32s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 4);
+>> +        } else if (words[0][5] == 'q') {
+>> +            uint64_t data = value;
+>> +            tswap64s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 8);
+>> +        }
+> This byte-swap + address_space_write block is copy-pasted verbatim
+> from the existing writeb/writew/writel/writeq handler, and then
+> duplicated again for *_space. Same for the read side. Please
+> extract a common helper, e.g.:
 >
+> ```
+>      static void qtest_do_typed_write(AddressSpace *as, MemTxAttrs attrs,
+>                                       uint64_t addr, uint64_t value,
+>                                       char size_char)
+> ```
 >
-> Amazon Web Services Development Center Germany GmbH
-> Tamara-Danz-Str. 13
-> 10243 Berlin
-> Geschaeftsfuehrung: Christof Hellmis, Andreas Stieger
-> Eingetragen am Amtsgericht Charlottenburg unter HRB 257764 B
-> Sitz: Berlin
-> Ust-ID: DE 365 538 597
+> This would let the existing non-secure commands share the same
+> code path too, which aligns with Peter's suggestion of extending
+> the existing commands with optional parameters.
+
+
+Sure. I've refactored this logic after receiving Peter's feedback. The 
+current code is someting like:
+
+
+static bool qtest_parse_mem_attrs(CharFrontend *chr, const char *arg,
+                                   MemTxAttrs *attrs)
+{
+     if (!arg) {
+         *attrs = MEMTXATTRS_UNSPECIFIED;
+         return true;
+     }
+
+     if (strcmp(arg, "secure") == 0) {
+         *attrs = (MemTxAttrs){ .secure = 1 };
+         return true;
+     }
+
+     if (strncmp(arg, "space=", 6) == 0) {
+         const char *space = arg + 6;
+
+....
+
+}
+
+....
+
+     } else if (strcmp(words[0], "readb") == 0 ||
+                strcmp(words[0], "readw") == 0 ||
+                strcmp(words[0], "readl") == 0 ||
+                strcmp(words[0], "readq") == 0) {
+         uint64_t addr;
+         uint64_t value = UINT64_C(-1);
+         MemTxAttrs attrs;
+         AddressSpace *as;
+         int ret;
+
+....
+
+static void qtest_process_command(CharFrontend *chr, gchar **words)
+{
+
+....
+
+         if (!qtest_parse_mem_attrs(chr, words[2], &attrs) ||
+             !qtest_get_mem_as(chr, attrs, &as)) {
+             return;
+         }
+
+         if (words[0][4] == 'b') {
+             uint8_t data;
+             address_space_read(as, addr, attrs, &data, 1);
+             value = data;
+
+......
+
+
 >
+>> +        qtest_send(chr, "OK\n");
+>> +    } else if (strcmp(words[0], "readb_secure") == 0 ||
+>> +               strcmp(words[0], "readw_secure") == 0 ||
+>> +               strcmp(words[0], "readl_secure") == 0 ||
+>> +               strcmp(words[0], "readq_secure") == 0) {
+>> +        uint64_t addr, secure;
+>> +        uint64_t value = UINT64_C(-1);
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        g_assert(words[1] && words[2]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &secure);
+>> +        g_assert(ret == 0);
+>> +
+>> +        attrs.secure = secure & 1;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+>> +        if (words[0][4] == 'b') {
+>> +            uint8_t data;
+>> +            address_space_read(as, addr, attrs, &data, 1);
+>> +            value = data;
+>> +        } else if (words[0][4] == 'w') {
+>> +            uint16_t data;
+>> +            address_space_read(as, addr, attrs, &data, 2);
+>> +            value = tswap16(data);
+>> +        } else if (words[0][4] == 'l') {
+>> +            uint32_t data;
+>> +            address_space_read(as, addr, attrs, &data, 4);
+>> +            value = tswap32(data);
+>> +        } else if (words[0][4] == 'q') {
+>> +            address_space_read(as, addr, attrs, &value, 8);
+>> +            tswap64s(&value);
+>> +        }
+>> +        qtest_sendf(chr, "OK 0x%016" PRIx64 "\n", value);
+>> +    } else if (strcmp(words[0], "read_secure") == 0) {
+>> +        g_autoptr(GString) enc = NULL;
+>> +        uint64_t addr, len, secure;
+>> +        uint8_t *data;
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        g_assert(words[1] && words[2] && words[3]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[3], NULL, 0, &secure);
+>> +        g_assert(ret == 0);
+>> +        g_assert(len);
+>> +
+>> +        attrs.secure = secure & 1;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+>> +        data = g_malloc(len);
+>> +        address_space_read(as, addr, attrs, data, len);
+>> +
+>> +        enc = qemu_hexdump_line(NULL, data, len, 0, 0);
+>> +        qtest_sendf(chr, "OK 0x%s\n", enc->str);
+>> +        g_free(data);
+>> +    } else if (strcmp(words[0], "write_secure") == 0) {
+>> +        uint64_t addr, len, i, secure;
+>> +        uint8_t *data;
+>> +        size_t data_len;
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        g_assert(words[1] && words[2] && words[3] && words[4]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[4], NULL, 0, &secure);
+>> +        g_assert(ret == 0);
+>> +
+>> +        data_len = strlen(words[3]);
+>> +        if (data_len < 3) {
+>> +            qtest_send(chr, "ERR invalid argument size\n");
+>> +            return;
+>> +        }
+>> +
+>> +        attrs.secure = secure & 1;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+>> +        data = g_malloc(len);
+>> +        for (i = 0; i < len; i++) {
+>> +            if ((i * 2 + 4) <= data_len) {
+>> +                data[i] = hex2nib(words[3][i * 2 + 2]) << 4;
+>> +                data[i] |= hex2nib(words[3][i * 2 + 3]);
+>> +            } else {
+>> +                data[i] = 0;
+>> +            }
+>> +        }
+>> +        address_space_write(as, addr, attrs, data, len);
+>> +        g_free(data);
+>> +
+>> +        qtest_send(chr, "OK\n");
+>> +    } else if (strcmp(words[0], "memset_secure") == 0) {
+>> +        uint64_t addr, len, secure;
+>> +        uint8_t *data;
+>> +        unsigned long pattern;
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        g_assert(words[1] && words[2] && words[3] && words[4]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &len);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtoul(words[3], NULL, 0, &pattern);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[4], NULL, 0, &secure);
+>> +        g_assert(ret == 0);
+>> +
+>> +        attrs.secure = secure & 1;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+>> +        if (len) {
+>> +            data = g_malloc(len);
+>> +            memset(data, pattern, len);
+>> +            address_space_write(as, addr, attrs, data, len);
+>> +            g_free(data);
+>> +        }
+>> +
+>> +        qtest_send(chr, "OK\n");
+>> +    } else if (strcmp(words[0], "writeb_space") == 0 ||
+>> +               strcmp(words[0], "writew_space") == 0 ||
+>> +               strcmp(words[0], "writel_space") == 0 ||
+>> +               strcmp(words[0], "writeq_space") == 0) {
+>> +        /* *_space commands: ARM-specific. */
+>> +        uint64_t addr, value, space;
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        if (!target_arm() && !target_aarch64()) {
+>> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
+>> +            return;
+>> +        }
+>> +
+>> +        g_assert(words[1] && words[2] && words[3]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &value);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[3], NULL, 0, &space);
+>> +        g_assert(ret == 0);
+>> +
+>> +        attrs.space = space & 3;
+>> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
+>> +
+>> +        if (attrs.secure) {
+>> +            as = cpu_get_address_space(first_cpu, 1);
+>> +            g_assert(as);
+>> +        } else {
+>> +            as = first_cpu->as;
+>> +        }
+>> +
+>> +        if (words[0][5] == 'b') {
+>> +            uint8_t data = value;
+>> +            address_space_write(as, addr, attrs, &data, 1);
+>> +        } else if (words[0][5] == 'w') {
+>> +            uint16_t data = value;
+>> +            tswap16s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 2);
+>> +        } else if (words[0][5] == 'l') {
+>> +            uint32_t data = value;
+>> +            tswap32s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 4);
+>> +        } else if (words[0][5] == 'q') {
+>> +            uint64_t data = value;
+>> +            tswap64s(&data);
+>> +            address_space_write(as, addr, attrs, &data, 8);
+>> +        }
+>> +        qtest_send(chr, "OK\n");
+>> +    } else if (strcmp(words[0], "readb_space") == 0 ||
+>> +               strcmp(words[0], "readw_space") == 0 ||
+>> +               strcmp(words[0], "readl_space") == 0 ||
+>> +               strcmp(words[0], "readq_space") == 0) {
+>> +        uint64_t addr, space;
+>> +        uint64_t value = UINT64_C(-1);
+>> +        MemTxAttrs attrs;
+>> +        AddressSpace *as;
+>> +        int ret;
+>> +
+>> +        if (!target_arm() && !target_aarch64()) {
+>> +            qtest_send(chr, "ERR *_space commands are ARM-specific\n");
+>> +            return;
+>> +        }
+>> +
+>> +        g_assert(words[1] && words[2]);
+>> +        ret = qemu_strtou64(words[1], NULL, 0, &addr);
+>> +        g_assert(ret == 0);
+>> +        ret = qemu_strtou64(words[2], NULL, 0, &space);
+>> +        g_assert(ret == 0);
+>> +
+>> +        attrs.space = space & 3;
+>> +        attrs.secure = (attrs.space == 0 || attrs.space == 2) ? 1 : 0;
+>> +
+> Two issues here:
+>
+> 1. If the user passes space=5, it gets silently truncated to 1
+>     (NonSecure) via `& 3`. You should validate space <= 3 before
+>     masking and return an error for out-of-range values.
+
+
+I'll add an assertion here.
+
+
+> 2. As Peter noted, you should use arm_space_is_secure() from
+>     include/hw/arm/arm-security.h instead of open-coding the
+>     mapping. That header is safe to include in compiled-once code.
+>
+> More broadly, the *_space commands are defined as "ARM-specific"
+> with hardcoded numeric values 0-3 mapping to ARM security spaces.
+> But other architectures may have analogous concepts in the future
+> (e.g., RISC-V has Machine/Supervisor/User privilege levels and
+> PMP-based memory isolation). Baking ARM's specific space encoding
+> into the qtest protocol makes it harder to extend later.
+>
+> This is another reason Peter's suggestion of using optional named
+> parameters on existing commands is a better design:
+>
+>      readb ADDR space=realm     # ARM
+>      readb ADDR secure          # generic secure bit
+>
+> Named parameters are self-documenting, architecture-neutral at the
+> protocol level, and trivially extensible for new architectures
+> without inventing new command families each time.
+
+
+I'll refactor this like code below:
+
+     val = qtest_readb_attrs(qts, TEST_ADDR_ARM + 0x1, "secure");
+     g_assert_cmpuint(val, ==, 0x22);
+
+     qtest_writeb_attrs(qts, TEST_ADDR_ARM + 0x2, 0x33, "space=realm");
+     val = qtest_readb_attrs(qts, TEST_ADDR_ARM + 0x2, "space=realm");
+     g_assert_cmpuint(val, ==, 0x33);
+
+     qtest_writeb_attrs(qts, TEST_ADDR_ARM + 0x3, 0x44, "space=root");
+     val = qtest_readb_attrs(qts, TEST_ADDR_ARM + 0x3, "space=root");
+
+
+Thanks again for the review!
+
+Tao
+
+
 

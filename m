@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECCCEFEFB56
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:46:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 772A9FEFB56
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:48:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvz6e-0006qD-Bx; Fri, 27 Feb 2026 09:46:16 -0500
+	id 1vvz8Z-0007Wo-HX; Fri, 27 Feb 2026 09:48:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvz6J-0006cA-FG
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:46:02 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1vvz8S-0007Qu-Fj
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:48:09 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvz6G-000051-JI
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:45:54 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48318d08ec2so54715e9.1
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:45:52 -0800 (PST)
+ id 1vvz8M-0000RR-0V
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:48:05 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48371d2f661so55815e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:48:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772203551; x=1772808351; darn=nongnu.org;
+ d=google.com; s=20230601; t=1772203680; x=1772808480; darn=nongnu.org;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date:from:to
  :cc:subject:date:message-id:reply-to;
- bh=hv8vfDQugJuqVRDVi3GNFojBbRtAggQJQ/HDDho8giI=;
- b=hwtEpwDFebC6PSD/2eJ5oMZ+WNED5P04VdNeOCoUS3OiLkqo8pwgNTIZjVs94/5S0p
- NOp2XVw3/Pz9jo/lKGTagxRWSc/OFrUc/MCeAAR6msAx0O9HKDYXqDzIeMytHnYVTuFx
- oXc3TJrY4B0kSdldjdc4VNhTVrweb8l9Om9+/YbDgh8wt6f1r+LFFNYuQdYy59lEJsJX
- rOKgBbL0c9odwI6pvaOG3/fDH7ES0kv2Rh8lHLQo+JdwRZp/fVxWQLEtl6VaHgkJOYNQ
- 7xkm/rZCILxPrhRKUBvxTNMaYvC/98q+FoyeMP1LX/zbCIprpEXEY7PUIn4d3qr2vS/5
- +m1A==
+ bh=kq2sTxoBAMy/N4S6C9stR5oWuXQX8kO/FBbO6KZLDw0=;
+ b=3WHJdK6T3XNNlkN2RtLsojea4MZbjjrU4m9H0w+a5a+mAdFT8syqKC3a8dX7CaO3ky
+ CA6uQwx7aPW534bhkB9NfgQgFw6hmdcsBi2xfZma3uL0WE2rxnRDFCpc53Hhr6ILB/NJ
+ t/HBHkcYCGe0pwpuy3t92/mXiQ+Blumt+sWuO6/Ph4WTH7s8ygH6emwO6qohU0dCIS2c
+ CkfB26kZiR4x3v7N6bUUGaxIqcIChVZ1Buo12sChezJNx476Gv6yz1Ydia/1TXoh7vXp
+ T0oBV3V5op6vEb+3coy4Q+Q4bOh6tZs2L0+0gZ0JPtCTB2N/PTKO6mqr8bIhTXGBwlSV
+ oZAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772203551; x=1772808351;
+ d=1e100.net; s=20230601; t=1772203680; x=1772808480;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hv8vfDQugJuqVRDVi3GNFojBbRtAggQJQ/HDDho8giI=;
- b=xC6hTG0ACLwmqjABF+kNpo53wb/7K/YMSHs48qwJkUZos1z9Hh83I4aLx2ZY090+L+
- jOt8vAGoHjtIxNRWUwyLwi4l8+Erc8MSasG6sQw+HQJFrgJGa/z8/ycGKgn+HOrCNeYb
- fQK5Or9wbTSuJ95nLux/JHgSxu6ApV/0uyM/bmp9VxwknxFrHZ0R82ott2HdD34m0QTW
- jmQDcF1SLm7nOCSJ5c2nlxIG/Y/hF9umxQ3FpkpboyPyPgxx74tBf+cEjPw0B6yDt2dz
- ixVAPYt6BeYRv5deOFulUb/fmfQVmhFPFRT8ixY6ce+qb+Zzj3q1uZRSOhYnKS6nr4Er
- Aj+Q==
+ bh=kq2sTxoBAMy/N4S6C9stR5oWuXQX8kO/FBbO6KZLDw0=;
+ b=QoL7UOauy8wSR6LJh7T2AaKeK+lKFcrmyqd8sAOXbrhGE6YBURKQjaO9Y+CxFIJMAQ
+ A+Yoo1l8964wP8gjpRkXh6XLxDI6WgOAav7CpaIt12eDdrfe0Mozph4YFLhoBRF8g19q
+ f5bpkeg8wXGJA7hwLXrKLRl566LarlYRD1hL3yszRsTR27YS5W5ublTFq5WszBwT9I7N
+ 592XQSeHboNz16uPstvEYssZtE3boFdpgG4xXZWjq2nQY7GaKzdWwplpKRWtUG4VM+7y
+ s4D7idJqKml6sxtSzgqoJyfI+J6rVwuleIl8FFe9pQYy1TOqYjIMPTCro8lveFb/9re6
+ J5hw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXw7+r4po9yy1S8/wa7V7wG/vgRN/10Rw6dOT1rK1rEYoKdgk0a8SlvTMAz8hJirgekdn0PR+L67Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyqnI3Ro3+uGpm0XHDIR94ESIXA9EFL6/rL5TDCfCWx0lWhg7Dq
- MM3gc5UxFqya1P9wupT3ItEJI696igs2+Ssb3Yv36/4KIfrqrIB3Q4RSJxLrZHhkzw==
-X-Gm-Gg: ATEYQzy/mSTUsXBNYS72jRpIKgJPuVrlL+y0obibHgwYh2QeXLqpnN8KR8ACiEyYH+r
- eTTYqPI7b8G3TVYk0H5ee54v1evxoEEIJmJh8665jA/OW1Ygqhb513zTjkQMj1q1ffawcZZPv9A
- BXFxq2G38JdUub+Mf2YFgmCp8OshQmqRcFwXrVX7RdoMP1h3Q3NWVR6C/5ubcxsEuSzhF845IvH
- jdJtL2cpoSETFMu4rTUoR9h5ci5gO12umh1at30JC6P7TSRAzeOubHH6ho1AX5zxgyqItWkdqDw
- IJOsch479CUOHXpRLIsnGBjdpdMdNQhrB3QDWJURU0DSSn8S5/GdzhL1Cn/AsKL8xYhKyyboZSP
- HYwpwickOePxB8K9vx1Z7OXpb6nfUPT+RnaTadgOJXvjaI1ORZKidGq67jkU5VKoRGX14HHKRCJ
- RWiCeOuOZwa8DPNXzD4LmtHgFD5rJAp1gpWk2iRg4r+3BvTQNCnLPbxd7FrqoER9q9
-X-Received: by 2002:a05:600c:8214:b0:45f:2940:d194 with SMTP id
- 5b1f17b1804b1-483c3165c0emr2231905e9.2.1772203550192; 
- Fri, 27 Feb 2026 06:45:50 -0800 (PST)
+ AJvYcCUITQPrvX1eCSeqVUMp6X0SBk2gsX7z6D/6QSzYozYlbLGKOVrjBAdOT5guHMW8qvJIsMLygdhW+A==@nongnu.org
+X-Gm-Message-State: AOJu0YzQj2Of4GUTU2UQBwO3Pw8GRc4KtP0dTKAq9hDMRmCU6/jH1FlK
+ cPS6Bp1V9p2H+q+yWSfnbMe5642GSaqdckTUadOrHKg6OPs8fN80FUliYy3rTY7PgA==
+X-Gm-Gg: ATEYQzx30FTu3wRdOBkakJc4Tgm80ZpazeV32L3VajgWBqOR1+2zztx5TwhY2x75an7
+ ngmmYDGQ706MORkS+y2kcdnsf1zJVX0555axAX6GZFZcSPBbnxRC27XoW/0ja1Z6NqIsxsm4lyQ
+ pFzzp+E5TBYQQTRZfvKbJnRnv1gNXJCJZtvvuOkw27mPFelOFAvSY2Z4wv7VTiQeIYo2AOivY6n
+ JnAC7tuJ5o/si1HO4WcAtp93Afjjc3mwXWo2kVcSUgLZgEU+hYIeeLbTsxeaBeul7eQhez/6E05
+ +BjRYgAeqYol1q3JwRzuNYAfAfL+lu98u3ts+DNJHCsMYVD0akpdDr3sMfM1Lc87bsrCyVoVCf+
+ xWiOcJufLD6xfdGV6myL63voEMBXzr/eYK9/TSIxi64TkYAybNSKHYhJt3FOQIg3xBBM/xA2YWM
+ lLrDmCT7U9gPmODieQ9rZ849Y49jq8De7qVMb3RwWoP70mpoGcbZ5P8m7D7bM5RAUr
+X-Received: by 2002:a05:600c:6d8d:b0:47e:de3a:a929 with SMTP id
+ 5b1f17b1804b1-483c3188a3cmr1854505e9.12.1772203679471; 
+ Fri, 27 Feb 2026 06:47:59 -0800 (PST)
 Received: from google.com (206.56.155.104.bc.googleusercontent.com.
  [104.155.56.206]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4399c75b327sm7942778f8f.20.2026.02.27.06.45.49
+ 5b1f17b1804b1-483c35910f1sm99790985e9.2.2026.02.27.06.47.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Feb 2026 06:45:49 -0800 (PST)
-Date: Fri, 27 Feb 2026 14:45:46 +0000
+ Fri, 27 Feb 2026 06:47:58 -0800 (PST)
+Date: Fri, 27 Feb 2026 14:47:55 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Eric Auger <eric.auger@redhat.com>,
@@ -78,18 +78,18 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>
-Subject: Re: [RFC v4 13/31] hw/arm/smmu-common: Add sec_sid field to TLB
- entries
-Message-ID: <aaGuGuevX8HFqx0x@google.com>
+Subject: Re: [RFC v4 16/31] hw/arm/smmuv3: Plumb SEC_SID through IOMMU
+ notifier path
+Message-ID: <aaGumxmrKRelouE7@google.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101640.2993566-1-tangtao1634@phytium.com.cn>
+ <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260221101640.2993566-1-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=smostafa@google.com; helo=mail-wm1-x32f.google.com
+In-Reply-To: <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -113,44 +113,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Feb 21, 2026 at 06:16:40PM +0800, Tao Tang wrote:
-> This is a non-functional preparation step that adds storage for
-> resolved security state in SMMUTLBEntry.
+On Sat, Feb 21, 2026 at 06:17:06PM +0800, Tao Tang wrote:
+> Extend IOMMU notifier functions to be SEC_SID-aware, ensuring that
+> invalidation notifications are dispatched to the correct security-aware
+> address space.
 > 
+> This ensures IOMMU notifier events (e.g., to VFIO) are correctly routed
+> to the appropriate security world's address space, maintaining isolation
+> between secure and non-secure DMA operations.
 
-I am not sure about this, when I added stage-2 I re-used the same
-TLB instance as it might be used for nesting, and we can have
-end-to-end cached entires.
-For secure state, I think it’s cleaner to instantiate a new TLB, as
-both states can never mix, and in this case we can re-use the same
-functions without adding the secure bit in the TLB.
+I don’t think that VFIO cares about secure regime, my guess is to
+keep the functions as this and don’t call them for secure invalidations.
 
 Thanks,
 Mostafa
 
-> Together with the earlier commits that added NSCFG handling and
-> PTE NS/NSTable helpers, the plumbing is complete and we can now
-> refactor the PTW flow to handle Secure state.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  include/hw/arm/smmu-common.h | 1 +
->  1 file changed, 1 insertion(+)
+>  hw/arm/smmuv3.c | 18 +++++++++++-------
+>  1 file changed, 11 insertions(+), 7 deletions(-)
 > 
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index bd88e599c77..b0a02e12fe6 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -91,6 +91,7 @@ typedef struct SMMUTLBEntry {
->      uint8_t level;
->      uint8_t granule;
->      IOMMUAccessFlags parent_perm;
-> +    SMMUSecSID sec_sid;
->  } SMMUTLBEntry;
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 4a4de719a7c..e33a7babd1c 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1195,15 +1195,16 @@ epilogue:
+>   * @tg: translation granule (if communicated through range invalidation)
+>   * @num_pages: number of @granule sized pages (if tg != 0), otherwise 1
+>   * @stage: Which stage(1 or 2) is used
+> + * @sec_sid: StreamID Security state
+>   */
+>  static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>                                 IOMMUNotifier *n,
+>                                 int asid, int vmid,
+>                                 dma_addr_t iova, uint8_t tg,
+> -                               uint64_t num_pages, int stage)
+> +                               uint64_t num_pages, int stage,
+> +                               SMMUSecSID sec_sid)
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
+>                                 .inval_ste_allowed = true};
+>      SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo, sec_sid);
+> @@ -1251,7 +1252,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>      }
 >  
->  /* Stage-2 configuration. */
+>      event.type = IOMMU_NOTIFIER_UNMAP;
+> -    event.entry.target_as = &address_space_memory;
+> +    event.entry.target_as = smmu_get_address_space(sdev->smmu, sec_sid);
+> +    g_assert(event.entry.target_as);
+>      event.entry.iova = iova;
+>      event.entry.addr_mask = num_pages * (1 << granule) - 1;
+>      event.entry.perm = IOMMU_NONE;
+> @@ -1262,7 +1264,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>  /* invalidate an asid/vmid/iova range tuple in all mr's */
+>  static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+>                                        dma_addr_t iova, uint8_t tg,
+> -                                      uint64_t num_pages, int stage)
+> +                                      uint64_t num_pages, int stage,
+> +                                      SMMUSecSID sec_sid)
+>  {
+>      SMMUDevice *sdev;
+>  
+> @@ -1274,7 +1277,8 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
+>                                          iova, tg, num_pages, stage);
+>  
+>          IOMMU_NOTIFIER_FOREACH(n, mr) {
+> -            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg, num_pages, stage);
+> +            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg,
+> +                               num_pages, stage, sec_sid);
+>          }
+>      }
+>  }
+> @@ -1307,7 +1311,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+>      if (!tg) {
+>          trace_smmuv3_range_inval(sec_sid, vmid, asid, addr,
+>                                   tg, 1, ttl, leaf, stage);
+> -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
+> +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage, sec_sid);
+>          if (stage == SMMU_STAGE_1) {
+>              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, sec_sid);
+>          } else {
+> @@ -1331,7 +1335,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+>          trace_smmuv3_range_inval(sec_sid, vmid, asid, addr, tg,
+>                                   num_pages, ttl, leaf, stage);
+>          smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
+> -                                  num_pages, stage);
+> +                                  num_pages, stage, sec_sid);
+>          if (stage == SMMU_STAGE_1) {
+>              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
+>                                  num_pages, ttl, sec_sid);
 > -- 
 > 2.34.1
-> 
 > 
 

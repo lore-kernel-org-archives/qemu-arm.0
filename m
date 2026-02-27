@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2358FD9E3A
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 20:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A8C6FEFB51
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 20:27:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw43h-0001VW-Kn; Fri, 27 Feb 2026 15:03:33 -0500
+	id 1vw4Qw-0004Xc-9c; Fri, 27 Feb 2026 15:27:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw43f-0001Uw-NQ
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:03:31 -0500
+ id 1vw4Qq-0004Wn-5t
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:27:30 -0500
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw43e-0000Tr-Aj
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:03:31 -0500
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ id 1vw4Qo-0005Cs-5k
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:27:27 -0500
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 61RH0TPw527624
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:03:28 GMT
+ 61RH0IeO1365613
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:27:24 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- pDHL5/sWqgqbrG94mN026T8E4mtZsD47FQXehS9P/K0=; b=WpLIHJ2LhktISaqh
- QtUZv0jswc+bzhE0jFWdc6C7UTp5RcSg6nNkjezFMr6xsNM6k1Jt2l6WRr7sIIDG
- 5D+/k801R0RzmsFuttMgDyTVSyulhMeBOkKhmsENLJ746UOe5u6T9cJLiDvr2N4k
- zhq07SBgS+AHumOfONFrR52bmMfsfSZScP7XJpKl5VvefdXM49/EJwlRSEFRcNeh
- 64TfkV3j7A1/VdcxKUN3y6s1g/1ACMgkaA6367WfwxGmRDmeIbCV28vhnQGuU+Cp
- ATHf7eNBeV8qjUPleH+AQuv75Kf9To4/9KHuu+883q/dXzhEz160tKeSE2Ub/biG
- PW0rLw==
-Received: from mail-dl1-f71.google.com (mail-dl1-f71.google.com [74.125.82.71])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cjw23c6hv-1
+ Td16kqcg+TPRxFR+xlLquf80+8PBpCDG1LsZZ6CsW9U=; b=hZ27k1wejrXoPJbX
+ yrhM+BD6SgIRL0dM2QRanRG/B5Y8dtVaYDSsL4zaHTfTpmwVneToJ9Q8UDX5Iykg
+ t2qO5MsGQwyIaNZjcENl1JeRPc72F7xqT9Xlw6oh5piwJ9Rh3EnDAkcu7JNDHgub
+ p2RzVPgH2vj6g5AaW35hNEyEHgdfSmTCbzR7xkwZjrnhBT2fooP9/f2eGBMvglU5
+ Sq4P/H2SA/4ERegETheNQSSl3pK12p1amP77GVInHr8pv1XoPLdKLGi3iCgrcs2l
+ Q/qahLfdsPxQNzxenCO2+fhTTdcc9SeDQkCZulGLZZWCIxIJ5Sb1L8pC0ewEubnc
+ oULEbw==
+Received: from mail-dl1-f69.google.com (mail-dl1-f69.google.com [74.125.82.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ck9f01vgp-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:03:28 +0000 (GMT)
-Received: by mail-dl1-f71.google.com with SMTP id
- a92af1059eb24-126e8ee6227so4556336c88.0
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 12:03:28 -0800 (PST)
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:27:24 +0000 (GMT)
+Received: by mail-dl1-f69.google.com with SMTP id
+ a92af1059eb24-1276e71652fso4604588c88.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 12:27:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1772222607; x=1772827407; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1772224043; x=1772828843; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=pDHL5/sWqgqbrG94mN026T8E4mtZsD47FQXehS9P/K0=;
- b=BDzvHrLKpoI+JdKQpRv8g1y6yLE+NeQPnGNU+hRM9jcGlTsOtLaDtocgHSzZ6IlUNu
- OFD+W1tAEikelHnO93oFV+7KDdAneEWrYcaGr2Vz1QhDqvrpIv0JXXAxolH5OgHG1FAU
- 677niz0Os6if1JX2aN+mXzEhl1uzqXJqSIPoUlKqEW8q9FGGOhcEtpp7EEE4LrePkMkI
- pQuiGFb2C9EQeuw/+Ma56PWjEttwH4b6vEAg9bCp+wZbH+aQ+hrbHO7m9FSBxklZu9+Y
- 7dx5Z0xFFbRjeMYOL/4iquIMuO0R1MJtLrzBcKuRk9OdnMPWMp6ee6pZTiCcPgWdL/ns
- c8bw==
+ bh=Td16kqcg+TPRxFR+xlLquf80+8PBpCDG1LsZZ6CsW9U=;
+ b=cDezr8Ba+X7jrp2IykCkez1By3z2Z11lqvVWdH5PsuNUqpmDnw/+yRMU84ZXFCn9H0
+ VXapGYgROtS3hIDeNpM/2wxZlqkfwFaPr+7Qw7uaJRCcooYD8A7hKXARyJ9E+nt7gg2c
+ wgVYETHkyjntr0Mlb7vjRXe7h4fhUvNl7HNCwJii43W+KB2klMay+veYVkOaMIP8TuoF
+ VYiy2YEV7Sk5abUeLyU3N65qW8Gd7WX1G4mVKJq9uiWzzrd+TyQmsu50kEu68uSwEIEP
+ QGV6T/B9LnEZ5e8Spsi+7z45nYsWt+o7daSmX4cGXoYEU6XqLepsbSnNDrpCsbWgepNB
+ HcfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772222607; x=1772827407;
+ d=1e100.net; s=20230601; t=1772224043; x=1772828843;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=pDHL5/sWqgqbrG94mN026T8E4mtZsD47FQXehS9P/K0=;
- b=K4CVQlmLQ6uHzV3ZcjBZLD7fkab7Ih2hT97dch6VIZxw06958zxwjfaam5QI1PC8Gj
- 56rbk5k+zo1VaQWmB3dWzc/f9vTB7mTb5CaiCBoPaanSMfzfc7rr0b3VhWnHDZwuzkpe
- Lodlo8yR9Sg+CqarTNsmlEBxHHlNN/E4sQB6VyNai7wJv2c4mQmKciT5jbT8IZOmSUMu
- ec6xO3OaVk+cvqBWtjaA1+R5RK5RrAtw4O/hpwwuKPaYVNHrbPOviKk6ncsLT7eCPHyE
- Itt/O4tgu4vtlmpBpRgv9bBklPK8Z0G4yU7t2AfW3nX2qhklTaebCJ0m/ouJC6kB39QF
- 4U1A==
+ bh=Td16kqcg+TPRxFR+xlLquf80+8PBpCDG1LsZZ6CsW9U=;
+ b=JMJO/KBAPw9zHc1rGfAPq7d3aY5B6sUFcZLihva0rlo/uokA0jvT5cIVysUjW6bg3U
+ KaueMQt0xEo9LhhRbYltQEUZr3X3K0vDeB+LS0N4JmjyZf8LUrnyFAlNr+AKCAXYwsxj
+ KUFymJuG9700H55Yhr3ag0QPh7PkPeW0YyRE3OAgY7ivfdRAfYRQLYMm7YMEUI/eerNs
+ HkiNwiv0g0RXyomcpBKIXEURjTpH5oQtJ/k0HRzwfOTvN4r8f1XW3AJAyv4XnRovMFdk
+ uRaC2qhN5viw6KEAVdffaNyafEs9vWcUO4FYKUP8j1gOG+R0CFNGM3JJY/vTFXiYF4Ed
+ iRzw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZyYTcg0YvR+I0jTBQDv2gAk5Rxs4FFRiKaLsKqh7Xr8uzttGVTbnGLhxG4I1zciiD4YudIdiCbg==@nongnu.org
-X-Gm-Message-State: AOJu0YxGN8f35O5fyW5vVYbwP8kPly96OeuNvD8yxM7gXQM+exmTcLmI
- rtgyxu1c/NRravcUD3y6ExFgo+919b9J5X4aMDeO/pbtlibTAc0qVOYxoahRFPHTyE9pdrT+K8Y
- a9TjvIPv76vSYu8kc0Unr1QcEk6oJ6Oj5glNIuZoPKhMjp9OrhZsmQrQ=
-X-Gm-Gg: ATEYQzwipzZ/sTiDTsmoYWV77Irgih+Yk72j2ad5EIQDWPOUTfQqORzIcP5HSQ/PLDN
- cAqjpU17z2pnjEZcz/f21dV9rUwlnpFM0h9bHdfDs6Gq+tCyXdxRFVu0NkeBg6t8tjJ8vhwYqVz
- Blu0SQxLvK9Io9JivFoDMBX/obs5h/8zCBsiOd6qU8PabjlVYc1Z/Ut0bosavobDsKIXTEBKSPi
- v0zDUMzWNxgs4EwHDbrspBLFTujRRFtvPFlnmFDvcfyztMdiIB9sr5+1ySy7+Gn0XiegZfVdI1V
- NBs289sx2IGS04fIJYXoRP5mPdrCbZzmM8sakNI/yXa8fdr7SAS2Ry4SvF6743BhQXrOIWCl+Ss
- HJWf2H58FZvk+kXwQ9ouLV0BmIGY6xuLSfls+ftVwlrdZobTjzU+HrpF8gV6sShffDAchcrmCp3
- H6ZQ==
-X-Received: by 2002:a05:7022:e29:b0:11b:8b4b:bff7 with SMTP id
- a92af1059eb24-1278fc57617mr1440444c88.39.1772222607124; 
- Fri, 27 Feb 2026 12:03:27 -0800 (PST)
-X-Received: by 2002:a05:7022:e29:b0:11b:8b4b:bff7 with SMTP id
- a92af1059eb24-1278fc57617mr1440418c88.39.1772222606421; 
- Fri, 27 Feb 2026 12:03:26 -0800 (PST)
+ AJvYcCWBziUpf4Eyv3987cmrpesuRfzhxgkJaEExhHDPAlyq3y0MYjqtnS+eDKgCJhjz2ZzhpO/F6YY7yw==@nongnu.org
+X-Gm-Message-State: AOJu0YxfjaZYk0XCqyll0MeAZLHEGGy5HBQKleg0L6rpk34j2GFY0DNP
+ KWNzHXwEsZ5m199cnBMl3mpyJL/S8np21eQyPNaJFzN/RxVFaqCNMl2clwU9xAiCeM9itoBfbf4
+ zOMyWgH0gs7VKhNJQ2YgmdV4qHDqhopi3ptPch6hy91tpA47Jpx6sS5zf1Di/Haw=
+X-Gm-Gg: ATEYQzxIr+82sbdy+OgAr9ySXRcWdGZ2VwX4hQjRrFVY8QJWSVDje7JNsyc5NZni5tA
+ FXHWKSiwNNXgz3Oyspx2S/ZPMewkfvfpNK+wA3gpwo2L5tgTOpnzg6y71VD9P9wsqLgKQpavEpE
+ sSokHFys76iQDNkPexSAeEtICGYoRIyJrUodUa2KDsNWnr3XN0bP8ghaUxJfUa+xO6xDaC9qwcO
+ QxzL2P1okhLgj2KwTCB0+NVFnetjn7FBUWHkm6x01giNfPnMm618senxm5zOPYs9LKW/BepcPXR
+ 1chh9FAuRHeFFR6ctIdHwouc7aU89GYKgt4QzlwLTggl3n6VHO8WDwJRlLujeFvKv3VQpYD9cuA
+ dlOhSAyqzUzaOriTXyLNbJiZ5FA9tbDf5kzkVUUCUJA8FHdOXs+AkShDvxUbbyX/VtPOAf3OP5B
+ lAkg==
+X-Received: by 2002:a05:7022:79f:b0:119:e569:f60d with SMTP id
+ a92af1059eb24-1278fb606bdmr2073586c88.6.1772224043401; 
+ Fri, 27 Feb 2026 12:27:23 -0800 (PST)
+X-Received: by 2002:a05:7022:79f:b0:119:e569:f60d with SMTP id
+ a92af1059eb24-1278fb606bdmr2073559c88.6.1772224042604; 
+ Fri, 27 Feb 2026 12:27:22 -0800 (PST)
 Received: from [10.110.80.16] (i-global254.qualcomm.com. [199.106.103.254])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-127899eab46sm5430552c88.8.2026.02.27.12.03.24
+ a92af1059eb24-12789a32863sm5307490c88.10.2026.02.27.12.27.20
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Feb 2026 12:03:25 -0800 (PST)
-Message-ID: <08e52599-d4a1-47ad-b828-60a6a20673f3@oss.qualcomm.com>
-Date: Fri, 27 Feb 2026 12:03:23 -0800
+ Fri, 27 Feb 2026 12:27:21 -0800 (PST)
+Message-ID: <dcfa638b-fbcd-479d-aa1d-9b193b530d1d@oss.qualcomm.com>
+Date: Fri, 27 Feb 2026 12:27:19 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 00/22] i3c: aspeed: Add I3C support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
+Subject: Re: [PATCH v7 03/22] hw/i3c: Add bus support
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>,
@@ -107,39 +107,40 @@ To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
  "nabihestefan@google.com" <nabihestefan@google.com>,
- "komlodi@google.com" <komlodi@google.com>
+ "komlodi@google.com" <komlodi@google.com>,
+ Patrick Venture <venture@google.com>, Titus Rwantare <titusr@google.com>
 References: <20260225021158.1586584-1-jamin_lin@aspeedtech.com>
- <a19985e2-c9ca-4158-9c64-e0d16ce40c8c@oss.qualcomm.com>
- <e58d1526-d9cf-4f31-b7cb-808a7b0f2c66@kaod.org>
+ <20260225021158.1586584-4-jamin_lin@aspeedtech.com>
 Content-Language: en-US
 From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-In-Reply-To: <e58d1526-d9cf-4f31-b7cb-808a7b0f2c66@kaod.org>
+In-Reply-To: <20260225021158.1586584-4-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: qAO80Y0X0Aq66Xa16CScbgLNJvhEsjAU
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI3MDE3NSBTYWx0ZWRfXwt+uD6iGVT30
- +i2Pxelykywsjrf4TtSCL59YwWVf5gRtTbx5Nyb4FNWsDsDLY2os/u19x9oQMydmqPgTFeeHK05
- jVoj2EmfNUiQ2B9HYCkNruHrZVni0zd65+NSkBqZz/oFVCZPo/3H54h+u/vvvOlXZzPGpZmttdC
- cj2c7Yo+hQCW5a53RMVYAtmFnP6FFn4Pn1HO30w2rcL+uCwoC193pF+ajIGwhKnlFToGQJqnGIk
- A6nrAVwgikK5sIeIHwxyRD0y5+bIKBSfbHK+GLjoZsdlDrKQJjY/O16uwp1UX5+T798qFPP6LED
- na//krLVmhbxufiIzm6x/nmB5gHmK9dSO61+QD1WRtUpJdFT2mtEYQGHC4xfc2aO5rm2CIQtKLW
- EYqr9EKUhSPcbqHpHztulkC20JpZxOx+1EeIP7yR5Za1UuZ0bXr+b1gO9AJ7937n4FGw9w/88MA
- zGMztxdLDB3RzAsD46w==
-X-Authority-Analysis: v=2.4 cv=cJHtc1eN c=1 sm=1 tr=0 ts=69a1f890 cx=c_pps
- a=JYo30EpNSr/tUYqK9jHPoA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI3MDE3OSBTYWx0ZWRfX9R5brv4LHePp
+ MBgsSiodQ+cb1v1uzSJGDPpwskO/yn7+jr7O4aHWsRIv5wNWdBKsKvvSWwr90w59BBNj3TmHii2
+ aDM6mzNKLQenhKfga2zSTrY13ddrJ/vraPZEpH+xn/DiXr7XiC0sHlmCk55ACoXSEuTQcdag4GC
+ /sIqpxQW7t/s/ZGxKoy8btgbIgh7YKsB0WNs/4z2FMPrbSJlNXfHKeq8rPwqcdvs3CvOONFs/NN
+ rxkJ7nYahiqOlBK4LuTiEpBeLu93K2NcsDbuvYaGhrO/FA1so3l+jmIxSQPcNNR0HTJc1XBI4Ng
+ 48mKfBLPizG3TA2ZAx6OMOmge5OFlU2elEilzT44iF/V0qR6+kSlQhwYI0HjA1XeZa4HvcsIiyY
+ 0U+U8G3AursN5cGIy7692HL1zVlTS9qbh61UDhagUUKSBwPmOLLsrn4/73V+jYxDY7g1ZYXKtTB
+ B4komB8w8KO1VU1v8zw==
+X-Proofpoint-GUID: 7TgKJnQJLLwssCZC32z8txGdhl6XDLNa
+X-Authority-Analysis: v=2.4 cv=bIsb4f+Z c=1 sm=1 tr=0 ts=69a1fe2c cx=c_pps
+ a=kVLUcbK0zfr7ocalXnG1qA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
  a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=1XWaLZrsAAAA:8 a=3kjpQGTRYXVoOlmu2nQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=Fk4IpSoW4aLDllm1B1p-:22
-X-Proofpoint-ORIG-GUID: qAO80Y0X0Aq66Xa16CScbgLNJvhEsjAU
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=EUspDBNiAAAA:8 a=5-m66uigXNRcoxOG-vkA:9 a=QEXdDO2ut3YA:10
+ a=vr4QvYf-bLy2KjpDp97w:22
+X-Proofpoint-ORIG-GUID: 7TgKJnQJLLwssCZC32z8txGdhl6XDLNa
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-27_04,2026-02-27_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 impostorscore=0 lowpriorityscore=0 phishscore=0 adultscore=0
- spamscore=0 clxscore=1015 priorityscore=1501 suspectscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602270175
+ adultscore=0 spamscore=0 phishscore=0 impostorscore=0 suspectscore=0
+ malwarescore=0 bulkscore=0 clxscore=1015 priorityscore=1501
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
+ definitions=main-2602270179
 Received-SPF: pass client-ip=205.220.180.131;
  envelope-from=jithu.joseph@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -16
@@ -165,27 +166,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/26/2026 11:53 PM, Cédric Le Goater wrote:
-> On 2/27/26 03:33, Jithu Joseph wrote:
->> On 2/24/2026 6:11 PM, Jamin Lin wrote:
->>
->>>    The initial patch series was based on work by Joe Komlodi <komlodi@google.com>.
->>>
->>>    This series adds I3C bus support to QEMU and adds more functionality to the
->>>    Aspeed I3C controller.
->>>
->>
->> Thanks Jaimin for the series, I was able to test this series to a good extent over the last week
->>
->> Tested read/write transfers from guest Linux using i3ctransfer against the mock-i3c-target  on an AST2600 based machine
-> 
-> Can you be more precise on the machine used ?
-> 
+On 2/24/2026 6:12 PM, Jamin Lin wrote:
+> Adds an I3C bus and a target class.
+> The bus supports:
+> - I3C data transmission and reception
+> - CCCs (including ENTDAA)
+> - IBIs
+> - legacy I2C transactions
 
-This is an internal clone of ast2600-evb which is still a "Work in Progress" and not yet upstream.
+Reviewed-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+
 
 
 Thanks
 Jithu
-
 

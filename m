@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99452FD531B
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 09:48:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FFAFD5327
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 09:57:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvuRi-0004bL-6d; Fri, 27 Feb 2026 04:47:42 -0500
+	id 1vvuaW-0006hi-HP; Fri, 27 Feb 2026 04:56:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvuRE-0004Zl-D4
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 04:47:17 -0500
-Received: from 5.mo552.mail-out.ovh.net ([188.165.45.220])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvuaT-0006gs-TX
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 04:56:45 -0500
+Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvuR9-00073H-Ri
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 04:47:12 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.0.133])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4fMk4l0sWMz5w85;
- Fri, 27 Feb 2026 09:47:02 +0000 (UTC)
-Received: from kaod.org (37.59.142.97) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vvuaP-0001cH-2w
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 04:56:45 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.87])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4fMkHl5ChYz5wCT;
+ Fri, 27 Feb 2026 09:56:35 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Fri, 27 Feb
- 2026 10:47:01 +0100
+ 2026 10:56:34 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0029f86ab2c-04be-4556-98fc-f33ff16cbfa7,
+ (GARM-101G0042d85ad11-4afd-4cac-a12c-d5fdbac140d1,
  1764588C194503052958D0AAF3448E51E66CE866) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <8349c679-8fe8-4994-be55-6de9b71a1b6c@kaod.org>
-Date: Fri, 27 Feb 2026 10:47:00 +0100
+Message-ID: <ea6c66ce-da45-4362-b3e7-11010f4744a1@kaod.org>
+Date: Fri, 27 Feb 2026 10:56:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 03/22] hw/i3c: Add bus support
+Subject: Re: [PATCH v7 13/22] hw/i3c/dw-i3c: Add data TX and RX
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>, 
  Peter Maydell <peter.maydell@linaro.org>, Steven Lee
  <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
@@ -45,10 +45,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
  <qemu-arm@nongnu.org>
 CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
  "nabihestefan@google.com" <nabihestefan@google.com>, "komlodi@google.com"
- <komlodi@google.com>, Patrick Venture <venture@google.com>, Titus Rwantare
- <titusr@google.com>
+ <komlodi@google.com>, Stephen Longfield <slongfield@google.com>, Patrick
+ Venture <venture@google.com>
 References: <20260225021158.1586584-1-jamin_lin@aspeedtech.com>
- <20260225021158.1586584-4-jamin_lin@aspeedtech.com>
+ <20260225021158.1586584-14-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -93,27 +93,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260225021158.1586584-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260225021158.1586584-14-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG14EX1.mxp5.local (172.16.2.141) To DAG14EX2.mxp5.local
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG14EX2.mxp5.local (172.16.2.142) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: a8ce6106-ec4f-4931-a5fc-7eb3a1f1d806
-X-Ovh-Tracer-Id: 7500182232834083786
+X-Ovh-Tracer-GUID: 291ee5a6-1f2e-40b6-aa50-4b54307b106b
+X-Ovh-Tracer-Id: 7661467394511375306
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGdXHpDnnIVhM+jOZOQ2vFje4ylX1q2W2yGfUnaMH8tRBxydNWLkwZFXTNyz2y8Ql1CZ4+DMX0jRAqbbYe7w0x+ev5RA96RS1PoI6bS7ZsGiIM+cLk68jaPAPFJw8OSvdWr54Y9hfDkCEwDNPqSDiXnEPiyT1sSnXOhz0nIGajZM+/HZw85TG796GwE/NfiRMTxZBbkuyaJM16LjhcHw5aND2V/elw9WAXy4kmoBXjLaxqXQkhdXEImGGa2JMkhJA1K1EIuRwi9i+3rXNErtwDXsU9iUpcF4huPOyLnBdp27NoZhGQqmbjk7x0P46iBLIkkPRnFtbOCt5GEo049DiAVtw9j+uCupo+O9UVaRngjYJRp8PLCHmIxvDJ0e1rs4Gdnch4o2MyCIkaJe6+jHQx6bU5/5jsPvaAZsVQCQ263TEgArIDnAbhOGknS8A40S8SiTr7l1/21n6Squ273HhLlo+nkO/rbPFagc58J95/1JM4K+8/ljeel4yfg2aFQ0zWfqrileaNHR//QHpQ5cfXDGW0MOCAd4/Kea/BZc4ElWIcBFqp5vLaadmw1JmWORDmFsc+iOJ+mV36y+CSDZe871OI7NFrirNGFKZYbJVL3fOfD3hBwILTQvjsorzew1YxOvgMaxK8SzBkLWicLBfYIAMSwq6rN5AHjiBf+fHHjmg
-DKIM-Signature: a=rsa-sha256; bh=4jPSLOib4PyOtgSJk58mRotYxxqkDUIrFhcWapF2uXg=; 
+X-VR-SPAMCAUSE: dmFkZTEpIcbVwiOAo3kJw5cB5L6pGBdl1IWvVd/F27zMCNSWSAi07YRhDc3r2fQNiUCRsCyO5qi/CVGXioOy4uowAIhAwv4TQRWimEL+9xG6p5a+cbCBwryv+5Olc/y7SAK8Yin+7zyD8s1rfuRp0s7jgoBoi9pOkhZ/IDLrv1SR6B2Y+ZDRcs0jCCQdB4vXiEjIUyQ1qBtqy3GLmuocYfpJj+FePcJWIwvuePCRcPQu+LMk+NlGUCidpb9WoAOl521QYQnR3OiwLUG3cQmS+ueK/TKDFpQDUS9bXzRHdiIqezWD1XahiQTEuiTZEgrF1c/yCZbrqdM/M7I0raBLpzC8/vxdndxKvBWTROyXsw7iE8oKDZidltFNPA9xIJCKJts7wWB05K7RycGWJEgzzh15rpRORGoAk82emJMzw260RP2R06ivk+qzIDh+fopXZvf9IxlAcHPEJa+X9+RRlCbHHJSyL9PGF4NGgiIUdAx+g02IgY8gGq6CxU8hks3hfw7UkhVtrWuWm+BQ4oZqfJWMUq8z4004F3ldvBPvtAgWqg4VMVrImk7tQds7J9qWiArCfGcKKjDWz13F5HK+uJHw4ppboat7pf9xQ+PTxHcCoSV/yjzkXtXc/k0rPvwxPqJCxzLLhw2ZkpNsZUh57tJk2v8TE2vdfgu4RjfflUTF633jVg
+DKIM-Signature: a=rsa-sha256; bh=O6J50eGgc+t2xbGqkrEtk1XioB20iy8RzHA2JDDFLdQ=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1772185624; v=1;
- b=pTsWKlN2XwUzWoed7n68RtJB5KQmnUSPowjazHNZukmwifhdkMbbqvAqj1rwqokPQMifakPY
- HtMik5JewvrlMVDxtQf2jHLSlaufvXIyQk50PGENeI5jJP99aJWSuLkpNNZlwZPHFL4yxjSuWrt
- 5QiiEmi4hqabD1CLx3XdXPdT5RWi+Z8R9cuyZ3W1Hp+aDIb0oLippjq021lE09RajOZjq/4MHyK
- 208LJcLVc5OTuhaafmm3qlYR1JIktwk26+DwvpWy8SscAEES06Xw2tAK8+KFDUfZYgjiYALPUgX
- SdkfxGVBAAgJn7TiXNiqr+0KpfsneyicKsZMabC2Z3YAQ==
-Received-SPF: pass client-ip=188.165.45.220; envelope-from=clg@kaod.org;
- helo=5.mo552.mail-out.ovh.net
+ t=1772186197; v=1;
+ b=NQafjJcvum3L2DvAABBcpTg0t57AyjTzhxAi98JpsJyR6c1VgqKhJnFL7Ge9yjDSfbIozMSL
+ G8orwmWJhEP3wTzDI2tp2hZqoLSVzkraVW8PGk99G1q/0E7qbOY0OmvXSlY+8YV5BLyTEDkPzTp
+ aU9kDMzSQMbXjzh3l8fovxOJvJRk5qwZ1VBlK5YtqmCYo15UMRhBo4NH+cACp0y9RCWFYv0fLoc
+ qGju8TZaxih39LHTiWNY5O35f+a/V7ZA+ToXBoNzbsv87BHCaeVXDupDGbKfA4zBNlTepeUSNjL
+ 7aEdN81ig7MfXi1AXnhghSvAWkZ/e3XgsH83TzYsi1Chw==
+Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
+ helo=9.mo548.mail-out.ovh.net
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -138,1026 +138,1209 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2/25/26 03:12, Jamin Lin wrote:
-> Adds an I3C bus and a target class.
-> The bus supports:
-> - I3C data transmission and reception
-> - CCCs (including ENTDAA)
-> - IBIs
-> - legacy I2C transactions
+> This adds data and CCC transmission, reception, and the associated
+> queues required for data transmission and reception to happen.
 > 
-> General usage of the bus is similar to I2C. Users are expected to
-> initialize a bus via i3c_init_bus, and use the bus returned from the
-> init function to do transactions on the bus.
+> The I3C controller transmits data by the user writing into a command
+> queue. When the queue has a command and an argument in it, the
+> controller starts executing the command.
 > 
-> In order to handle IBIs, the controller provides callbacks to handle
-> receiving an IBI from a target, receiving (optional) additional IBI
-> bytes from a target, and handling when a target is done with its IBI.
+> The controller can execute 1 of 3 ways:
+> 1. A larger data transfer that involves using the TX and RX queues. This
+>     is the most common way the controller does transactions.
 > 
-> Similarly, target creation is done via i3c_target_create_simple and
-> users use the provided I3CTarget to handle transactions.
-> The target has functions provided that it can use to invoke an IBI and
-> send additional bytes.
+> 2. A small data transfer that involves sending a couple bytes passed
+>     into the command queue argument.
 > 
-> Along with the send, recv, and event callbacks that are expected of an
-> I3C target, which are similar to I2C, there is a separate callback for
-> CCC handling.
-> This is to help encapsulate CCC handling and keep it separate from
-> target-specific read/write functionality.
+> 3. An address assignment command. This is how the controller does
+>     ENTDAA. When ENTDAA succeeds in assigning an address to a target, it
+>     updates the controller's char table with the target's PID, BCR, and
+>     DCR.
 > 
-> To avoid repition for required CCCs among I3C targets, there is some
-> class-level CCC handling added. The CCC is then passed to the target in
-> case it needs to handle it in some way.
+> The controller determines what addresses to send by looking at the index
+> in the device address table specified by the argument in the command
+> queue. ENTDAA also uses these addresses to assign to targets on the bus.
+> 
+> When the controller is done executing a command, it puts a response in
+> the response queue indicating how command execution went.
+> 
+> In order for the user to send and receive data to/from the controller,
+> the user reads/writes to a bidirectional TX/RX port.
 > 
 > Signed-off-by: Joe Komlodi <komlodi@google.com>
+> Reviewed-by: Stephen Longfield <slongfield@google.com>
 > Reviewed-by: Patrick Venture <venture@google.com>
-> Reviewed-by: Titus Rwantare <titusr@google.com>
-> Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/i3c/i3c.h | 277 ++++++++++++++++++
->   hw/i3c/core.c        | 647 +++++++++++++++++++++++++++++++++++++++++++
->   hw/i3c/meson.build   |   1 +
->   hw/i3c/trace-events  |  16 ++
->   4 files changed, 941 insertions(+)
->   create mode 100644 include/hw/i3c/i3c.h
->   create mode 100644 hw/i3c/core.c
+>   include/hw/i3c/aspeed_i3c.h |   1 +
+>   include/hw/i3c/dw-i3c.h     | 143 +++++-
+>   hw/i3c/dw-i3c.c             | 882 +++++++++++++++++++++++++++++++++++-
+>   hw/i3c/trace-events         |  10 +
+>   4 files changed, 1030 insertions(+), 6 deletions(-)
 > 
-> diff --git a/include/hw/i3c/i3c.h b/include/hw/i3c/i3c.h
-> new file mode 100644
-> index 0000000000..6ba90793ad
-> --- /dev/null
-> +++ b/include/hw/i3c/i3c.h
-> @@ -0,0 +1,277 @@
-> +/*
-> + * QEMU I3C bus interface.
-> + *
-> + * Copyright 2025 Google LLC
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef QEMU_INCLUDE_HW_I3C_I3C_H_
-> +#define QEMU_INCLUDE_HW_I3C_I3C_H_
-> +
-> +#include "hw/core/qdev.h"
-> +#include "qom/object.h"
-> +#include "hw/i2c/i2c.h"
-> +
-> +#define TYPE_I3C_TARGET "i3c-target"
-> +OBJECT_DECLARE_TYPE(I3CTarget, I3CTargetClass, I3C_TARGET)
-> +
-> +typedef enum I3CEvent {
-> +    I3C_START_RECV,
-> +    I3C_START_SEND,
-> +    I3C_STOP,
-> +    I3C_NACK,
-> +} I3CEvent;
-> +
-> +typedef enum I3CCCC {
-> +    /* Broadcast CCCs */
-> +    I3C_CCC_ENEC      = 0x00,
-> +    I3C_CCC_DISEC     = 0x01,
-> +    I3C_CCC_ENTAS0    = 0x02,
-> +    I3C_CCC_ENTAS1    = 0x03,
-> +    I3C_CCC_ENTAS2    = 0x04,
-> +    I3C_CCC_ENTAS3    = 0x05,
-> +    I3C_CCC_RSTDAA    = 0x06,
-> +    I3C_CCC_ENTDAA    = 0x07,
-> +    I3C_CCC_DEFTGTS   = 0x08,
-> +    I3C_CCC_SETMWL    = 0x09,
-> +    I3C_CCC_SETMRL    = 0x0a,
-> +    I3C_CCC_ENTTM     = 0x0b,
-> +    I3C_CCC_SETBUSCON = 0x0c,
-> +    I3C_CCC_ENDXFER   = 0x12,
-> +    I3C_CCC_ENTHDR0   = 0x20,
-> +    I3C_CCC_ENTHDR1   = 0x21,
-> +    I3C_CCC_ENTHDR2   = 0x22,
-> +    I3C_CCC_ENTHDR3   = 0x23,
-> +    I3C_CCC_ENTHDR4   = 0x24,
-> +    I3C_CCC_ENTHDR5   = 0x25,
-> +    I3C_CCC_ENTHDR6   = 0x26,
-> +    I3C_CCC_ENTHDR7   = 0x27,
-> +    I3C_CCC_SETXTIME  = 0x28,
-> +    I3C_CCC_SETAASA   = 0x29,
-> +    I3C_CCC_RSTACT    = 0x2a,
-> +    I3C_CCC_DEFGRPA   = 0x2b,
-> +    I3C_CCC_RSTGRPA   = 0x2c,
-> +    I3C_CCC_MLANE     = 0x2d,
-> +    /* Direct CCCs */
-> +    I3C_CCCD_ENEC       = 0x80,
-> +    I3C_CCCD_DISEC      = 0x81,
-> +    I3C_CCCD_ENTAS0     = 0x82,
-> +    I3C_CCCD_ENTAS1     = 0x83,
-> +    I3C_CCCD_ENTAS2     = 0x84,
-> +    I3C_CCCD_ENTAS3     = 0x85,
-> +    I3C_CCCD_SETDASA    = 0x87,
-> +    I3C_CCCD_SETNEWDA   = 0x88,
-> +    I3C_CCCD_SETMWL     = 0x89,
-> +    I3C_CCCD_SETMRL     = 0x8a,
-> +    I3C_CCCD_GETMWL     = 0x8b,
-> +    I3C_CCCD_GETMRL     = 0x8c,
-> +    I3C_CCCD_GETPID     = 0x8d,
-> +    I3C_CCCD_GETBCR     = 0x8e,
-> +    I3C_CCCD_GETDCR     = 0x8f,
-> +    I3C_CCCD_GETSTATUS  = 0x90,
-> +    I3C_CCCD_GETACCCR   = 0x91,
-> +    I3C_CCCD_ENDXFER    = 0x92,
-> +    I3C_CCCD_SETBRGTGT  = 0x93,
-> +    I3C_CCCD_GETMXDS    = 0x94,
-> +    I3C_CCCD_GETCAPS    = 0x95,
-> +    I3C_CCCD_SETROUTE   = 0x96,
-> +    I3C_CCCD_SETXTIME   = 0x98,
-> +    I3C_CCCD_GETXTIME   = 0x99,
-> +    I3C_CCCD_RSTACT     = 0x9a,
-> +    I3C_CCCD_SETGRPA    = 0x9b,
-> +    I3C_CCCD_RSTGRPA    = 0x9c,
-> +    I3C_CCCD_MLANE      = 0x9d,
-> +} I3CCCC;
-> +
-> +#define CCC_IS_DIRECT(_ccc) (_ccc & 0x80)
-> +
-> +#define I3C_BROADCAST 0x7e
-> +#define I3C_HJ_ADDR 0x02
-> +#define I3C_ENTDAA_SIZE 8
-> +
-> +struct I3CTargetClass {
-> +    DeviceClass parent_class;
-> +
-> +    /*
-> +     * Controller to target. Returns 0 for success, non-zero for NAK or other
-> +     * error.
-> +     */
-> +    int (*send)(I3CTarget *s, const uint8_t *data, uint32_t num_to_send,
-> +                uint32_t *num_sent);
-> +    /*
-> +     * Target to controller. I3C targets are able to terminate reads early, so
-> +     * this returns the number of bytes read from the target.
-> +     */
-> +    uint32_t (*recv)(I3CTarget *s, uint8_t *data, uint32_t num_to_read);
-> +    /* Notify the target of a bus state change. */
-> +    int (*event)(I3CTarget *s, enum I3CEvent event);
-> +    /*
-> +     * Handle a read CCC transmitted from a controller.
-> +     * CCCs are I3C commands that I3C targets support.
-> +     * The target can NACK the CCC if it does not support it.
-> +     */
-> +    int (*handle_ccc_read)(I3CTarget *s, uint8_t *data, uint32_t num_to_read,
-> +                           uint32_t *num_read);
-> +    /*
-> +     * Handle a write CCC transmitted from a controller.
-> +     * CCCs are I3C commands that I3C targets support.
-> +     * The target can NACK the CCC if it does not support it.
-> +     */
-> +    int (*handle_ccc_write)(I3CTarget *s, const uint8_t *data,
-> +                            uint32_t num_to_send, uint32_t *num_sent);
-> +
-> +    /*
-> +     * Matches and adds the candidate if the address matches the candidate's
-> +     * address.
-> +     * Returns true if the address matched, or if this was a broadcast, and
-> +     * updates the device list. Otherwise returns false.
-> +     */
-> +    bool (*target_match)(I3CTarget *candidate, uint8_t address, bool is_read,
-> +                         bool broadcast, bool in_entdaa);
-> +};
-> +
-> +struct I3CTarget {
-> +    DeviceState parent_obj;
-> +
-> +    uint8_t address;
-> +    uint8_t static_address;
-> +    uint8_t dcr;
-> +    uint8_t bcr;
-> +    uint64_t pid;
-> +
-> +    /* CCC State tracking. */
-> +    I3CCCC curr_ccc;
-> +    uint8_t ccc_byte_offset;
-> +    bool in_ccc;
-> +    bool in_test_mode;
-> +};
-> +
-> +struct I3CNode {
-> +    I3CTarget *target;
-> +    QLIST_ENTRY(I3CNode) next;
-> +};
-> +
-> +typedef struct I3CNode I3CNode;
-> +
-> +typedef QLIST_HEAD(I3CNodeList, I3CNode) I3CNodeList;
-> +
-> +#define TYPE_I3C_BUS "i3c-bus"
-> +OBJECT_DECLARE_TYPE(I3CBus, I3CBusClass, I3C_BUS)
-> +
-> +struct I3CBus {
-> +    BusState parent_obj;
-> +
-> +    /* Legacy I2C. */
-> +    I2CBus *i2c_bus;
-> +
-> +    I3CNodeList current_devs;
-> +    bool broadcast;
-> +    uint8_t ccc;
-> +    bool in_ccc;
-> +    bool in_entdaa;
-> +    uint8_t saved_address;
-> +};
-> +
-> +struct I3CBusClass {
-> +    BusClass parent_class;
-> +
-> +    /* Handle an incoming IBI request from a target */
-> +    int (*ibi_handle) (I3CBus *bus, uint8_t addr, bool is_recv);
-> +    /* Receive data from an IBI request */
-> +    int (*ibi_recv) (I3CBus *bus, uint8_t data);
-> +    /* Do anything that needs to be done, since the IBI is finished. */
-> +    int (*ibi_finish) (I3CBus *bus);
-> +};
-> +
-> +I3CBus *i3c_init_bus(DeviceState *parent, const char *name);
-> +I3CBus *i3c_init_bus_type(const char *type, DeviceState *parent,
-> +                          const char *name);
-> +void i3c_set_target_address(I3CTarget *dev, uint8_t address);
-> +bool i3c_bus_busy(I3CBus *bus);
-> +
-> +/*
-> + * Start a transfer on an I3C bus.
-> + * If is_recv is known at compile-time (i.e. a device will always be sending or
-> + * will always be receiving at a certain point), prefer to use i3c_start_recv or
-> + * i3c_start_send instead.
-> + *
-> + * Returns 0 on success, non-zero on an error.
-> + */
-> +int i3c_start_transfer(I3CBus *bus, uint8_t address, bool is_recv);
-> +
-> +/*
-> + * Start a receive transfer on an I3C bus.
-> + *
-> + * Returns 0 on success, non-zero on an error
-> + */
-> +int i3c_start_recv(I3CBus *bus, uint8_t address);
-> +
-> +/*
-> + * Start a send transfer on an I3C bus.
-> + *
-> + * Returns 0 on success, non-zero on an error
-> + */
-> +int i3c_start_send(I3CBus *bus, uint8_t address);
-> +
-> +void i3c_end_transfer(I3CBus *bus);
-> +void i3c_nack(I3CBus *bus);
-> +int i3c_send_byte(I3CBus *bus, uint8_t data);
-> +int i3c_send(I3CBus *bus, const uint8_t *data, uint32_t num_to_send,
-> +             uint32_t *num_sent);
-> +/*
-> + * I3C receives can only NACK on a CCC. The target should NACK a CCC it does not
-> + * support.
-> + */
-> +int i3c_recv_byte(I3CBus *bus, uint8_t *data);
-> +int i3c_recv(I3CBus *bus, uint8_t *data, uint32_t num_to_read,
-> +             uint32_t *num_read);
-> +bool i3c_scan_bus(I3CBus *bus, uint8_t address, enum I3CEvent event);
-> +int i3c_do_entdaa(I3CBus *bus, uint8_t address, uint64_t *pid, uint8_t *bcr,
-> +                  uint8_t *dcr);
-> +int i3c_start_device_transfer(I3CTarget *dev, int send_length);
-> +bool i3c_target_match_and_add(I3CBus *bus, I3CTarget *target, uint8_t address,
-> +                             enum I3CEvent event);
-> +int i3c_target_send_ibi(I3CTarget *t, uint8_t addr, bool is_recv);
-> +int i3c_target_send_ibi_bytes(I3CTarget *t, uint8_t data);
-> +int i3c_target_ibi_finish(I3CTarget *t, uint8_t data);
-> +
-> +/*
-> + * Legacy I2C functions.
-> + *
-> + * These are wrapper for I2C functions that take in an I3C bus instead of an I2C
-> + * bus. Internally they use the I2C bus (and devices attached to it) that's a
-> + * part of the I3C bus
-> + */
-> +void legacy_i2c_nack(I3CBus *bus);
-> +uint8_t legacy_i2c_recv(I3CBus *bus);
-> +int legacy_i2c_send(I3CBus *bus, uint8_t data);
-> +int legacy_i2c_start_transfer(I3CBus *bus, uint8_t address, bool is_recv);
-> +int legacy_i2c_start_recv(I3CBus *bus, uint8_t address);
-> +int legacy_i2c_start_send(I3CBus *bus, uint8_t address);
-> +void legacy_i2c_end_transfer(I3CBus *bus);
-> +I2CSlave *legacy_i2c_device_create_simple(I3CBus *bus, const char *name,
-> +                                          uint8_t addr);
-> +
-> +/**
-> + * Create an I3C Target.
-> + *
-> + * The target returned from this function still needs to be realized.
-> + */
-> +I3CTarget *i3c_target_new(const char *name, uint8_t addr, uint8_t dcr,
-> +                          uint8_t bcr, uint64_t pid);
-> +
-> +/**
-> + * Create and realize an I3C target.
-> + *
-> + * Create the target, initialize it, put it on the specified I3C bus, and
-> + * realize it.
-> + */
-> +I3CTarget *i3c_target_create_simple(I3CBus *bus, const char *name,
-> +                                    uint8_t addr, uint8_t dcr, uint8_t bcr,
-> +                                    uint64_t pid);
-> +
-> +/* Realize and drop the reference count on an I3C target. */
-> +bool i3c_target_realize_and_unref(I3CTarget *dev, I3CBus *bus, Error **errp);
-> +
-> +#endif  /* QEMU_INCLUDE_HW_I3C_I3C_H_ */
-> diff --git a/hw/i3c/core.c b/hw/i3c/core.c
-> new file mode 100644
-> index 0000000000..22e6e226a7
-> --- /dev/null
-> +++ b/hw/i3c/core.c
-> @@ -0,0 +1,647 @@
-> +/*
-> + * QEMU I3C bus interface.
-> + *
-> + * Copyright 2025 Google LLC
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "qapi/error.h"
-> +#include "trace.h"
+> diff --git a/include/hw/i3c/aspeed_i3c.h b/include/hw/i3c/aspeed_i3c.h
+> index ade5c42d39..b8827d31d7 100644
+> --- a/include/hw/i3c/aspeed_i3c.h
+> +++ b/include/hw/i3c/aspeed_i3c.h
+> @@ -2,6 +2,7 @@
+>    * ASPEED I3C Controller
+>    *
+>    * Copyright (C) 2021 ASPEED Technology Inc.
+> + * Copyright (C) 2023 Google, LLC
+>    *
+>    * This code is licensed under the GPL version 2 or later.  See
+>    * the COPYING file in the top-level directory.
+> diff --git a/include/hw/i3c/dw-i3c.h b/include/hw/i3c/dw-i3c.h
+> index 7143e8ca7a..c50d67cc6b 100644
+> --- a/include/hw/i3c/dw-i3c.h
+> +++ b/include/hw/i3c/dw-i3c.h
+> @@ -10,20 +10,159 @@
+>   #ifndef DW_I3C_H
+>   #define DW_I3C_H
+>   
+> +#include "qemu/fifo32.h"
 > +#include "hw/i3c/i3c.h"
-> +#include "hw/core/qdev-properties.h"
+>   #include "hw/core/sysbus.h"
+>   
+>   #define TYPE_DW_I3C "dw.i3c"
+>   OBJECT_DECLARE_SIMPLE_TYPE(DWI3C, DW_I3C)
+>   
+> -#define DW_I3C_NR_REGS (0x300 >> 2)
+> +/*
+> + * Sufficiently large enough to handle configurations with large device address
+> + * tables.
+> + */
+> +#define DW_I3C_NR_REGS (0x1000 >> 2)
+> +
+> +/* From datasheet. */
+> +#define DW_I3C_CMD_ATTR_TRANSFER_CMD 0
+> +#define DW_I3C_CMD_ATTR_TRANSFER_ARG 1
+> +#define DW_I3C_CMD_ATTR_SHORT_DATA_ARG 2
+> +#define DW_I3C_CMD_ATTR_ADDR_ASSIGN_CMD 3
+> +
+> +/* Enum values from datasheet. */
+> +typedef enum DWI3CRespQueueErr {
+> +    DW_I3C_RESP_QUEUE_ERR_NONE = 0,
+> +    DW_I3C_RESP_QUEUE_ERR_CRC = 1,
+> +    DW_I3C_RESP_QUEUE_ERR_PARITY = 2,
+> +    DW_I3C_RESP_QUEUE_ERR_FRAME = 3,
+> +    DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK = 4,
+> +    DW_I3C_RESP_QUEUE_ERR_DAA_NACK = 5,
+> +    DW_I3C_RESP_QUEUE_ERR_OVERFLOW = 6,
+> +    DW_I3C_RESP_QUEUE_ERR_ABORTED = 8,
+> +    DW_I3C_RESP_QUEUE_ERR_I2C_NACK = 9,
+> +} DWI3CRespQueueErr;
+> +
+> +typedef enum DWI3CTransferState {
+> +    DW_I3C_TRANSFER_STATE_IDLE = 0x00,
+> +    DW_I3C_TRANSFER_STATE_START = 0x01,
+> +    DW_I3C_TRANSFER_STATE_RESTART = 0x02,
+> +    DW_I3C_TRANSFER_STATE_STOP = 0x03,
+> +    DW_I3C_TRANSFER_STATE_START_HOLD = 0x04,
+> +    DW_I3C_TRANSFER_STATE_BROADCAST_W = 0x05,
+> +    DW_I3C_TRANSFER_STATE_BROADCAST_R = 0x06,
+> +    DW_I3C_TRANSFER_STATE_DAA = 0x07,
+> +    DW_I3C_TRANSFER_STATE_DAA_GEN = 0x08,
+> +    DW_I3C_TRANSFER_STATE_CCC_BYTE = 0x0b,
+> +    DW_I3C_TRANSFER_STATE_HDR_CMD = 0x0c,
+> +    DW_I3C_TRANSFER_STATE_WRITE = 0x0d,
+> +    DW_I3C_TRANSFER_STATE_READ = 0x0e,
+> +    DW_I3C_TRANSFER_STATE_IBI_READ = 0x0f,
+> +    DW_I3C_TRANSFER_STATE_IBI_DIS = 0x10,
+> +    DW_I3C_TRANSFER_STATE_HDR_DDR_CRC = 0x11,
+> +    DW_I3C_TRANSFER_STATE_CLK_STRETCH = 0x12,
+> +    DW_I3C_TRANSFER_STATE_HALT = 0x13,
+> +} DWI3CTransferState;
+> +
+> +typedef enum DWI3CTransferStatus {
+> +    DW_I3C_TRANSFER_STATUS_IDLE = 0x00,
+> +    DW_I3C_TRANSFER_STATUS_BROACAST_CCC = 0x01,
+> +    DW_I3C_TRANSFER_STATUS_DIRECT_CCC_W = 0x02,
+> +    DW_I3C_TRANSFER_STATUS_DIRECT_CCC_R = 0x03,
+> +    DW_I3C_TRANSFER_STATUS_ENTDAA = 0x04,
+> +    DW_I3C_TRANSFER_STATUS_SETDASA = 0x05,
+> +    DW_I3C_TRANSFER_STATUS_I3C_SDR_W = 0x06,
+> +    DW_I3C_TRANSFER_STATUS_I3C_SDR_R = 0x07,
+> +    DW_I3C_TRANSFER_STATUS_I2C_SDR_W = 0x08,
+> +    DW_I3C_TRANSFER_STATUS_I2C_SDR_R = 0x09,
+> +    DW_I3C_TRANSFER_STATUS_HDR_TS_W = 0x0a,
+> +    DW_I3C_TRANSFER_STATUS_HDR_TS_R = 0x0b,
+> +    DW_I3C_TRANSFER_STATUS_HDR_DDR_W = 0x0c,
+> +    DW_I3C_TRANSFER_STATUS_HDR_DDR_R = 0x0d,
+> +    DW_I3C_TRANSFER_STATUS_IBI = 0x0e,
+> +    DW_I3C_TRANSFER_STATUS_HALT = 0x0f,
+> +} DWI3CTransferStatus;
 > +
 > +/*
-> + * In test mode (enabled by ENTTM CCC) we're supposed to send a random PID
-> + * during ENTDAA, so we'll just send "QEMU".
+> + * Transfer commands and arguments are 32-bit wide values that the user passes
+> + * into the command queue. We interpret each 32-bit word based on the cmd_attr
+> + * field.
 > + */
-> +#define TEST_MODE_PROVISIONED_ID 0x0000554d4551ULL
+> +typedef struct DWI3CTransferCmd {
+> +    uint8_t cmd_attr:3;
+> +    uint8_t tid:4; /* Transaction ID */
+> +    uint16_t cmd:8;
+> +    uint8_t cp:1; /* Command present */
+> +    uint8_t dev_index:5;
+> +    uint8_t speed:3;
+> +    uint8_t resv0:1;
+> +    uint8_t dbp:1; /* Defining byte present */
+> +    uint8_t roc:1; /* Response on completion */
+> +    uint8_t sdap:1; /* Short data argument present */
+> +    uint8_t rnw:1; /* Read not write */
+> +    uint8_t resv1:1;
+> +    uint8_t toc:1; /* Termination (I3C STOP) on completion */
+> +    uint8_t pec:1; /* Parity error check enabled */
+> +} DWI3CTransferCmd;
 > +
-> +static const Property i3c_props[] = {
-> +    DEFINE_PROP_UINT8("static-address", struct I3CTarget, static_address, 0),
-> +    DEFINE_PROP_UINT8("dcr", struct I3CTarget, dcr, 0),
-> +    DEFINE_PROP_UINT8("bcr", struct I3CTarget, bcr, 0),
-> +    DEFINE_PROP_UINT64("pid", struct I3CTarget, pid, 0),
-> +};
+> +typedef struct DWI3CTransferArg {
+> +    uint8_t cmd_attr:3;
+> +    uint8_t resv:5;
+> +    uint8_t db; /* Defining byte */
+> +    uint16_t data_len;
+> +} DWI3CTransferArg;
 > +
-> +I3CBus *i3c_init_bus(DeviceState *parent, const char *name)
-> +{
-> +    return i3c_init_bus_type(TYPE_I3C_BUS, parent, name);
-> +}
+> +typedef struct DWI3CShortArg {
+> +    uint8_t cmd_attr:3;
+> +    uint8_t byte_strb:3;
+> +    uint8_t resv:2;
+> +    uint8_t byte0;
+> +    uint8_t byte1;
+> +    uint8_t byte2;
+> +} DWI3CShortArg;
 > +
-> +I3CBus *i3c_init_bus_type(const char *type, DeviceState *parent,
-> +                          const char *name)
-> +{
+> +typedef struct DWI3CAddrAssignCmd {
+> +    uint8_t cmd_attr:3;
+> +    uint8_t tid:4; /* Transaction ID */
+> +    uint16_t cmd:8;
+> +    uint8_t resv0:1;
+> +    uint8_t dev_index:5;
+> +    uint16_t dev_count:5;
+> +    uint8_t roc:1; /* Response on completion */
+> +    uint8_t resv1:3;
+> +    uint8_t toc:1; /* Termination (I3C STOP) on completion */
+> +    uint8_t resv2:1;
+> +} DWI3CAddrAssignCmd;
+> +
+> +typedef union DWI3CCmdQueueData {
+> +    uint32_t word;
+> +    DWI3CTransferCmd transfer_cmd;
+> +    DWI3CTransferArg transfer_arg;
+> +    DWI3CShortArg short_arg;
+> +    DWI3CAddrAssignCmd addr_assign_cmd;
+> +} DWI3CCmdQueueData;
+>   
+>   struct DWI3C {
+>       SysBusDevice parent_obj;
+>   
+>       MemoryRegion mr;
+>       qemu_irq irq;
 > +    I3CBus *bus;
 > +
-> +    bus = I3C_BUS(qbus_new(type, parent, name));
-> +    QLIST_INIT(&bus->current_devs);
-> +    bus->broadcast = false;
-> +    bus->in_entdaa = false;
-> +    bus->in_ccc = false;
-> +
-> +    /* I2C init. */
-> +    g_autofree gchar *i2c_bus_name = g_strdup_printf("%s-legacy-i2c", name);
-> +    bus->i2c_bus = i2c_init_bus(parent, i2c_bus_name);
-> +
-> +    return bus;
-> +}
-> +
-> +bool i3c_bus_busy(I3CBus *bus)
+> +    Fifo32 cmd_queue;
+> +    Fifo32 resp_queue;
+> +    Fifo32 tx_queue;
+> +    Fifo32 rx_queue;
+>   
+> -    uint8_t id;
+> +    struct {
+> +        uint8_t id;
+> +        uint8_t cmd_resp_queue_capacity_bytes;
+> +        uint16_t tx_rx_queue_capacity_bytes;
+> +        uint8_t num_addressable_devices;
+> +        uint16_t dev_addr_table_pointer;
+> +        uint16_t dev_addr_table_depth;
+> +        uint16_t dev_char_table_pointer;
+> +        uint16_t dev_char_table_depth;
+> +    } cfg;
+>       uint32_t regs[DW_I3C_NR_REGS];
+>   };
+>   
+> diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c
+> index 0b99c7edfb..2453d74a8c 100644
+> --- a/hw/i3c/dw-i3c.c
+> +++ b/hw/i3c/dw-i3c.c
+> @@ -336,12 +336,179 @@ static const uint32_t dw_i3c_ro[DW_I3C_NR_REGS] = {
+>       [R_SLAVE_CONFIG]                = 0xffffffff,
+>   };
+>   
+> +static inline bool dw_i3c_has_hdr_ts(DWI3C *s)
 > +{
-> +    return !QLIST_EMPTY(&bus->current_devs);
+> +    return ARRAY_FIELD_EX32(s->regs, HW_CAPABILITY, HDR_TS);
 > +}
 > +
-> +static bool i3c_target_match(I3CTarget *candidate, uint8_t address,
-> +                             bool is_recv, bool broadcast, bool in_entdaa)
+> +static inline bool dw_i3c_has_hdr_ddr(DWI3C *s)
 > +{
-> +    /* Once a target has a dynamic address, it only responds to that. */
-> +    uint8_t targ_addr = candidate->address ? candidate->address :
-> +                                             candidate->static_address;
-> +
-> +    if (in_entdaa) {
-> +        if (address != I3C_BROADCAST) {
-> +            g_autofree char *path =
-> +                object_get_canonical_path(OBJECT(candidate));
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: I3C Address 0x%.2x sent during "
-> +                          "ENTDAA instead of a broadcast address\n",
-> +                          path, address);
-> +            return false;
-> +        }
-> +
-> +        /*
-> +         * Targets should only ACK ENTDAA broadcasts if they have no dynamic
-> +         * address.
-> +         */
-> +        return candidate->address == 0;
-> +    }
-> +
-> +    /* Return if our addresses match, or if it's a broadcast. */
-> +    return targ_addr == address || broadcast;
+> +    return ARRAY_FIELD_EX32(s->regs, HW_CAPABILITY, HDR_DDR);
 > +}
 > +
-> +bool i3c_target_match_and_add(I3CBus *bus, I3CTarget *target, uint8_t address,
-> +                              enum I3CEvent event)
-> +{
-> +    I3CTargetClass *tc = I3C_TARGET_GET_CLASS(target);
-> +    bool matched = tc->target_match(target, address, event == I3C_START_RECV,
-> +                                    bus->broadcast, bus->in_entdaa);
-> +
-> +    if (matched) {
-> +        I3CNode *node = g_new(struct I3CNode, 1);
-> +        node->target = target;
-> +        QLIST_INSERT_HEAD(&bus->current_devs, node, next);
-> +    }
-> +    return matched;
-> +}
-> +
-> +bool i3c_scan_bus(I3CBus *bus, uint8_t address, enum I3CEvent event)
-> +{
-> +    BusChild *child;
-> +    I3CNode *node, *next;
-> +
-> +    /* Clear out any devices from a previous (re-)START. */
-> +    QLIST_FOREACH_SAFE(node, &bus->current_devs, next, next) {
-> +        QLIST_REMOVE(node, next);
-> +        g_free(node);
-> +    }
-> +
-> +    QTAILQ_FOREACH(child, &bus->parent_obj.children, sibling) {
-> +        DeviceState *qdev = child->child;
-> +        I3CTarget *target = I3C_TARGET(qdev);
-> +
-> +        if (i3c_target_match_and_add(bus, target, address, event)) {
-> +            return true;
-> +        }
-> +    }
-> +
-> +    /* No one on the bus could respond. */
-> +    return false;
-> +}
-> +
-> +/* Class-level event handling, since we do some CCCs at the class level. */
-> +static int i3c_target_event(I3CTarget *t, enum I3CEvent event)
-> +{
-> +    I3CTargetClass *tc = I3C_TARGET_GET_CLASS(t);
-> +    trace_i3c_target_event(t->address, event);
-> +
-> +    if (event == I3C_STOP) {
-> +        t->curr_ccc = 0;
-> +        t->ccc_byte_offset = 0;
-> +        t->in_ccc = false;
-> +    }
-> +    return tc->event(t, event);
-> +}
-> +
-> +/*
-> + * Sends a START or repeated START and the address for an I3C transaction.
-> + *
-> + * This function returns 0 if a device on the bus was able to respond to the
-> + * address, and non-zero otherwise.
-> + * A non-zero return represents a NACK.
-> + */
-> +static int i3c_do_start_transfer(I3CBus *bus, uint8_t address,
-> +                                 enum I3CEvent event)
-> +{
-> +    I3CTargetClass *tc;
-> +    I3CNode *node;
-> +
-> +    if (address == I3C_BROADCAST) {
-> +        bus->broadcast = true;
-> +        /* If we're not in ENTDAA, a broadcast is the start of a new CCC. */
-> +        if (!bus->in_entdaa) {
-> +            bus->in_ccc = false;
-> +        }
-> +    } else {
-> +        bus->broadcast = false;
-> +    }
-> +
-> +    /* No one responded to the address, NACK it. */
-> +    if (!i3c_scan_bus(bus, address, event)) {
-> +        return -1;
-> +    }
-> +
-> +    QLIST_FOREACH(node, &bus->current_devs, next) {
-> +        I3CTarget *t = node->target;
-> +
-> +        tc = I3C_TARGET_GET_CLASS(t);
-> +        if (tc->event) {
-> +            int rv = i3c_target_event(t, event);
-> +            if (rv && !bus->broadcast) {
-> +                return rv;
-> +            }
-> +        }
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +int i3c_start_transfer(I3CBus *bus, uint8_t address, bool is_recv)
-> +{
-> +    trace_i3c_start_transfer(address, is_recv);
-> +    return i3c_do_start_transfer(bus, address, is_recv
-> +                                               ? I3C_START_RECV
-> +                                               : I3C_START_SEND);
-> +}
-> +
-> +int i3c_start_recv(I3CBus *bus, uint8_t address)
-> +{
-> +    trace_i3c_start_transfer(address, true);
-> +    return i3c_do_start_transfer(bus, address, I3C_START_RECV);
-> +}
-> +
-> +int i3c_start_send(I3CBus *bus, uint8_t address)
-> +{
-> +    trace_i3c_start_transfer(address, false);
-> +    return i3c_do_start_transfer(bus, address, I3C_START_SEND);
-> +}
-> +
-> +void i3c_end_transfer(I3CBus *bus)
-> +{
-> +    I3CTargetClass *tc;
-> +    I3CNode *node, *next;
-> +
-> +    trace_i3c_end_transfer();
-> +
-> +    /*
-> +     * If we're in ENTDAA, we need to notify all devices when ENTDAA is done.
-> +     * This is because everyone initially participates due to the broadcast,
-> +     * but gradually drops out as they get assigned addresses.
-> +     * Since the current_devs list only stores who's currently participating,
-> +     * and not everyone who previously participated, we send the STOP to all
-> +     * children.
-> +     */
-> +    if (bus->in_entdaa) {
-> +        BusChild *child;
-> +
-> +        QTAILQ_FOREACH(child, &bus->parent_obj.children, sibling) {
-> +            DeviceState *qdev = child->child;
-> +            I3CTarget *t = I3C_TARGET(qdev);
-> +            tc = I3C_TARGET_GET_CLASS(t);
-> +            if (tc->event) {
-> +                i3c_target_event(t, I3C_STOP);
-> +            }
-> +        }
-> +    } else {
-> +        QLIST_FOREACH_SAFE(node, &bus->current_devs, next, next) {
-> +            I3CTarget *t = node->target;
-> +            tc = I3C_TARGET_GET_CLASS(t);
-> +            if (tc->event) {
-> +                i3c_target_event(t, I3C_STOP);
-> +            }
-> +            QLIST_REMOVE(node, next);
-> +            g_free(node);
-> +        }
-> +    }
-> +    bus->broadcast = false;
-> +    bus->in_entdaa = false;
-> +    bus->in_ccc = false;
-> +}
-> +
-> +/*
-> + * Any CCCs that are universal across all I3C devices should be handled here.
-> + * Once they're handled, we pass the CCC up to the I3C target to do anything
-> + * else it may want with the bytes.
-> + */
-> +static int i3c_target_handle_ccc_write(I3CTarget *t, const uint8_t *data,
-> +                                       uint32_t num_to_send, uint32_t *num_sent)
-> +{
-> +    I3CTargetClass *tc = I3C_TARGET_GET_CLASS(t);
-> +    *num_sent = 0;
-> +
-> +    /* Is this the start of a new CCC? */
-> +    if (!t->in_ccc) {
-> +        t->curr_ccc = *data;
-> +        t->in_ccc = true;
-> +        *num_sent = 1;
-> +        trace_i3c_target_handle_ccc(t->address, t->curr_ccc);
-> +    }
-> +
-> +    switch (t->curr_ccc) {
-> +    case I3C_CCC_ENTDAA:
-> +        /*
-> +         * This is the last byte of ENTDAA, the controller is assigning us an
-> +         * address.
-> +         */
-> +        if (t->ccc_byte_offset == 8) {
-> +            t->address = *data;
-> +            t->in_ccc = false;
-> +            t->curr_ccc = 0;
-> +            t->ccc_byte_offset = 0;
-> +            *num_sent = 1;
-> +        }
-> +        break;
-> +    case I3C_CCCD_SETDASA:
-> +        t->address = t->static_address;
-> +        break;
-> +    case I3C_CCC_SETAASA:
-> +        t->address = t->static_address;
-> +        break;
-> +    case I3C_CCC_RSTDAA:
-> +        t->address = 0;
-> +        break;
-> +    case I3C_CCCD_SETNEWDA:
-> +        /* If this isn't the CCC byte, it's our new address. */
-> +        if (*num_sent == 0) {
-> +            t->address = *data;
-> +            *num_sent = 1;
-> +        }
-> +        break;
-> +    case I3C_CCC_ENTTM:
-> +        /*
-> +         * If there are still more to look at, the next byte is the test mode
-> +         * byte.
-> +         */
-> +        if (*num_sent != num_to_send) {
-> +            /* Enter test mode if the byte is non-zero. Otherwise exit. */
-> +            t->in_test_mode = !!data[*num_sent];
-> +            ++*num_sent;
-> +        }
-> +        break;
-> +    /* Ignore other CCCs it's better to handle on a device-by-device basis. */
-> +    default:
-> +        break;
-> +    }
-> +    return tc->handle_ccc_write(t, data, num_to_send, num_sent);
-> +}
-> +
-> +int i3c_send_byte(I3CBus *bus, uint8_t data)
+> +static inline bool dw_i3c_can_transmit(DWI3C *s)
 > +{
 > +    /*
-> +     * Ignored, the caller can determine how many were sent based on if this was
-> +     * ACKed/NACKed.
+> +     * We can only transmit if we're enabled and the resume bit is cleared.
+> +     * The resume bit is set on a transaction error, and software must clear it.
 > +     */
-> +    uint32_t num_sent;
-> +    return i3c_send(bus, &data, 1, &num_sent);
+> +    return ARRAY_FIELD_EX32(s->regs, DEVICE_CTRL, I3C_EN) &&
+> +           !ARRAY_FIELD_EX32(s->regs, DEVICE_CTRL, I3C_RESUME);
 > +}
 > +
-> +int i3c_send(I3CBus *bus, const uint8_t *data, uint32_t num_to_send,
-> +             uint32_t *num_sent)
+> +static inline uint8_t dw_i3c_fifo_threshold_from_reg(uint8_t regval)
 > +{
-> +    I3CTargetClass *tc;
-> +    I3CTarget *t;
-> +    I3CNode *node;
-> +    int ret = 0;
-> +
-> +    /* If this message is a broadcast and no CCC has been found, grab it. */
-> +    if (bus->broadcast && !bus->in_ccc) {
-> +        bus->ccc = *data;
-> +        bus->in_ccc = true;
-> +        /*
-> +         * We need to keep track if we're currently in ENTDAA.
-> +         * On any other CCC, the CCC is over on a RESTART or STOP, but ENTDAA
-> +         * is only over on a STOP.
-> +         */
-> +        if (bus->ccc == I3C_CCC_ENTDAA) {
-> +            bus->in_entdaa = true;
-> +        }
-> +    }
-> +
-> +    QLIST_FOREACH(node, &bus->current_devs, next) {
-> +        t = node->target;
-> +        tc = I3C_TARGET_GET_CLASS(t);
-> +        if (bus->in_ccc) {
-> +            if (!tc->handle_ccc_write) {
-> +                ret = -1;
-> +                continue;
-> +            }
-> +            ret = i3c_target_handle_ccc_write(t, data, num_to_send, num_sent);
-> +            /* Targets should only NACK on a direct CCC. */
-> +            if (ret && !CCC_IS_DIRECT(bus->ccc)) {
-> +                ret = 0;
-> +            }
-> +        } else {
-> +            if (tc->send) {
-> +                ret = ret || tc->send(t, data, num_to_send, num_sent);
-> +            } else {
-> +                ret = -1;
-> +            }
-> +        }
-> +    }
-> +
-> +    trace_i3c_send(*num_sent, num_to_send, ret == 0);
-> +
-> +    return ret ? -1 : 0;
+> +    return regval = regval ? (2 << regval) : 1;
 > +}
 > +
-> +static int i3c_target_handle_ccc_read(I3CTarget *t, uint8_t *data,
-> +                                      uint32_t num_to_read, uint32_t *num_read)
+>   static void dw_i3c_update_irq(DWI3C *s)
+>   {
+>       bool level = !!(s->regs[R_INTR_SIGNAL_EN] & s->regs[R_INTR_STATUS]);
+>       qemu_set_irq(s->irq, level);
+>   }
+>   
+> +static void dw_i3c_end_transfer(DWI3C *s, bool is_i2c)
 > +{
-> +    I3CTargetClass *tc = I3C_TARGET_GET_CLASS(t);
-> +    uint8_t read_count = 0;
-> +    uint64_t pid;
-> +
-> +    switch (t->curr_ccc) {
-> +    case I3C_CCC_ENTDAA:
-> +        if (t->in_test_mode) {
-> +            pid = TEST_MODE_PROVISIONED_ID;
-> +        } else {
-> +            pid = t->pid;
-> +        }
-> +        /* Return the 6-byte PID, followed by BCR then DCR. */
-> +        while (t->ccc_byte_offset < 6) {
-> +            if (read_count >= num_to_read) {
-> +                break;
-> +            }
-> +            data[read_count] = (pid >> (t->ccc_byte_offset * 8)) & 0xff;
-> +            t->ccc_byte_offset++;
-> +            read_count++;
-> +        }
-> +        if (read_count < num_to_read) {
-> +            data[read_count] = t->bcr;
-> +            t->ccc_byte_offset++;
-> +            read_count++;
-> +        }
-> +        if (read_count < num_to_read) {
-> +            data[read_count] = t->dcr;
-> +            t->ccc_byte_offset++;
-> +            read_count++;
-> +        }
-> +        *num_read = read_count;
-> +        break;
-> +    case I3C_CCCD_GETPID:
-> +        while (t->ccc_byte_offset < 6) {
-> +            if (read_count >= num_to_read) {
-> +                break;
-> +            }
-> +            data[read_count] = (t->pid >> (t->ccc_byte_offset * 8)) & 0xff;
-> +            t->ccc_byte_offset++;
-> +            read_count++;
-> +        }
-> +        *num_read = read_count;
-> +        break;
-> +    case I3C_CCCD_GETBCR:
-> +        *data = t->bcr;
-> +        *num_read = 1;
-> +        break;
-> +    case I3C_CCCD_GETDCR:
-> +        *data = t->dcr;
-> +        *num_read = 1;
-> +        break;
-> +    default:
-> +        /* Unhandled on the I3CTarget class level. */
-> +        break;
+> +    if (is_i2c) {
+> +        legacy_i2c_end_transfer(s->bus);
+> +    } else {
+> +        i3c_end_transfer(s->bus);
 > +    }
-> +
-> +    return tc->handle_ccc_read(t, data, num_to_read, num_read);
 > +}
 > +
-> +int i3c_recv_byte(I3CBus *bus, uint8_t *data)
+> +static int dw_i3c_send_start(DWI3C *s, uint8_t addr, bool is_recv, bool is_i2c)
 > +{
-> +     /*
-> +      * Ignored, the caller can determine how many bytes were read based on if
-> +      * this is ACKed/NACKed.
-> +      */
-> +    uint32_t num_read;
-> +    return i3c_recv(bus, data, 1, &num_read);
-> +}
+> +    int ret;
 > +
-> +int i3c_recv(I3CBus *bus, uint8_t *data, uint32_t num_to_read,
-> +             uint32_t *num_read)
-> +{
-> +    int ret = 0;
-> +    I3CTargetClass *tc;
-> +    I3CTarget *t;
-> +
-> +    *data = 0xff;
-> +    if (!QLIST_EMPTY(&bus->current_devs)) {
-> +        tc = I3C_TARGET_GET_CLASS(QLIST_FIRST(&bus->current_devs)->target);
-> +        t = QLIST_FIRST(&bus->current_devs)->target;
-> +        if (bus->in_ccc) {
-> +            if (!tc->handle_ccc_read) {
-> +                return -1;
-> +            }
-> +            ret = i3c_target_handle_ccc_read(t, data, num_to_read, num_read);
-> +        } else {
-> +            if (tc->recv) {
-> +                /*
-> +                 * Targets cannot NACK on a direct transfer, so the data
-> +                 * is returned directly.
-> +                 */
-> +                *num_read = tc->recv(t, data, num_to_read);
-> +            }
-> +        }
+> +    if (is_i2c) {
+> +        ret = legacy_i2c_start_transfer(s->bus, addr, is_recv);
+> +    } else {
+> +        ret = i3c_start_transfer(s->bus, addr, is_recv);
 > +    }
-> +
-> +    trace_i3c_recv(*num_read, num_to_read, ret == 0);
+> +    if (ret) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: NACKed on TX with addr 0x%.2x\n",
+> +                      path, addr);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_STATUS,
+> +                         DW_I3C_TRANSFER_STATUS_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TRANSFER_ERR, 1);
+> +        ARRAY_FIELD_DP32(s->regs, DEVICE_CTRL, I3C_RESUME, 1);
+> +    }
 > +
 > +    return ret;
 > +}
 > +
-> +void i3c_nack(I3CBus *bus)
+> +static int dw_i3c_send(DWI3C *s, const uint8_t *data, uint32_t num_to_send,
+> +                       uint32_t *num_sent, bool is_i2c)
 > +{
-> +    I3CTargetClass *tc;
-> +    I3CNode *node;
+> +    int ret;
+> +    uint32_t i;
 > +
-> +    if (QLIST_EMPTY(&bus->current_devs)) {
+> +    *num_sent = 0;
+> +    if (is_i2c) {
+> +        /* Legacy I2C must be byte-by-byte. */
+> +        for (i = 0; i < num_to_send; i++) {
+> +            ret = legacy_i2c_send(s->bus, data[i]);
+> +            if (ret) {
+> +                break;
+> +            }
+> +            (*num_sent)++;
+> +        }
+> +    } else {
+> +        ret = i3c_send(s->bus, data, num_to_send, num_sent);
+> +    }
+> +    if (ret) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: NACKed sending byte 0x%.2x\n",
+> +                      path, data[*num_sent]);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_STATUS,
+> +                         DW_I3C_TRANSFER_STATUS_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TRANSFER_ERR, 1);
+> +        ARRAY_FIELD_DP32(s->regs, DEVICE_CTRL, I3C_RESUME, 1);
+> +    }
+> +
+> +    trace_dw_i3c_send(s->cfg.id, *num_sent);
+> +
+> +    return ret;
+> +}
+> +
+> +static int dw_i3c_send_byte(DWI3C *s, uint8_t byte, bool is_i2c)
+> +{
+> +    /*
+> +     * Ignored, the caller will know if we sent 0 or 1 bytes depending on if
+> +     * we were ACKed/NACKed.
+> +     */
+> +    uint32_t num_sent;
+> +    return dw_i3c_send(s, &byte, 1, &num_sent, is_i2c);
+> +}
+> +
+> +static int dw_i3c_recv_data(DWI3C *s, bool is_i2c, uint8_t *data,
+> +                            uint16_t num_to_read, uint32_t *num_read)
+> +{
+> +    int ret;
+> +
+> +    if (is_i2c) {
+> +        for (uint16_t i = 0; i < num_to_read; i++) {
+> +            data[i] = legacy_i2c_recv(s->bus);
+> +        }
+> +        /* I2C devices can neither NACK a read, nor end transfers early. */
+> +        *num_read = num_to_read;
+> +        trace_dw_i3c_recv_data(s->cfg.id, *num_read);
+> +        return 0;
+> +    }
+> +    /* I3C devices can NACK if the controller sends an unsupported CCC. */
+> +    ret = i3c_recv(s->bus, data, num_to_read, num_read);
+> +    if (ret) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: NACKed receiving byte\n",
+> +                      object_get_canonical_path(OBJECT(s)));
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_STATUS,
+> +                         DW_I3C_TRANSFER_STATUS_HALT);
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TRANSFER_ERR, 1);
+> +        ARRAY_FIELD_DP32(s->regs, DEVICE_CTRL, I3C_RESUME, 1);
+> +    }
+> +
+> +    trace_dw_i3c_recv_data(s->cfg.id, *num_read);
+> +
+> +    return ret;
+> +}
+> +
+> +static inline bool dw_i3c_target_is_i2c(DWI3C *s, uint16_t offset)
+> +{
+> +    /* / sizeof(uint32_t) because we're indexing into our 32-bit reg array. */
+> +    uint16_t dev_index = (ARRAY_FIELD_EX32(s->regs, DEVICE_ADDR_TABLE_POINTER,
+> +                                          ADDR) / sizeof(uint32_t)) + offset;
+> +    return FIELD_EX32(s->regs[dev_index], DEVICE_ADDR_TABLE_LOC1,
+> +                   LEGACY_I2C_DEVICE);
+> +}
+> +
+> +static uint8_t dw_i3c_target_addr(DWI3C *s, uint16_t offset)
+> +{
+> +    if (offset > s->cfg.num_addressable_devices) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Device addr table offset %d out of "
+> +                      "bounds\n", path, offset);
+> +        /* If we're out of bounds, return an address of 0. */
+> +        return 0;
+> +    }
+> +
+> +    /* / sizeof(uint32_t) because we're indexing into our 32-bit reg array. */
+> +    uint16_t dev_index = (ARRAY_FIELD_EX32(s->regs, DEVICE_ADDR_TABLE_POINTER,
+> +                                          ADDR) / sizeof(uint32_t)) + offset;
+> +    /* I2C devices use a static address. */
+> +    if (dw_i3c_target_is_i2c(s, offset)) {
+> +        return FIELD_EX32(s->regs[dev_index], DEVICE_ADDR_TABLE_LOC1,
+> +                          DEV_STATIC_ADDR);
+> +    }
+> +    return FIELD_EX32(s->regs[dev_index], DEVICE_ADDR_TABLE_LOC1,
+> +                      DEV_DYNAMIC_ADDR);
+> +}
+> +
+>   static uint32_t dw_i3c_intr_status_r(DWI3C *s)
+>   {
+>       /* Only return the status whose corresponding EN bits are set. */
+> @@ -376,6 +543,56 @@ static void dw_i3c_intr_force_w(DWI3C *s, uint32_t val)
+>       dw_i3c_update_irq(s);
+>   }
+>   
+> +static uint32_t dw_i3c_pop_rx(DWI3C *s)
+> +{
+> +    if (fifo32_is_empty(&s->rx_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to read RX FIFO when empty\n",
+> +                      path);
+> +        return 0;
+> +    }
+> +
+> +    uint32_t val = fifo32_pop(&s->rx_queue);
+> +    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, RX_BUF_BLR,
+> +                     fifo32_num_used(&s->rx_queue));
+> +
+> +    /* Threshold is 2^RX_BUF_THLD. */
+> +    uint8_t threshold = ARRAY_FIELD_EX32(s->regs, DATA_BUFFER_THLD_CTRL,
+> +                                         RX_BUF_THLD);
+> +    threshold = dw_i3c_fifo_threshold_from_reg(threshold);
+> +    if (fifo32_num_used(&s->rx_queue) < threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RX_THLD, 0);
+> +        dw_i3c_update_irq(s);
+> +    }
+> +
+> +    trace_dw_i3c_pop_rx(s->cfg.id, val);
+> +    return val;
+> +}
+> +
+> +static uint32_t dw_i3c_resp_queue_port_r(DWI3C *s)
+> +{
+> +    if (fifo32_is_empty(&s->resp_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to read response FIFO when "
+> +                      "empty\n", path);
+> +        return 0;
+> +    }
+> +
+> +    uint32_t val = fifo32_pop(&s->resp_queue);
+> +    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, RESP_BUF_BLR,
+> +                     fifo32_num_used(&s->resp_queue));
+> +
+> +    /* Threshold is the register value + 1. */
+> +    uint8_t threshold = ARRAY_FIELD_EX32(s->regs, QUEUE_THLD_CTRL,
+> +                                         RESP_BUF_THLD) + 1;
+> +    if (fifo32_num_used(&s->resp_queue) < threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RESP_RDY, 0);
+> +        dw_i3c_update_irq(s);
+> +    }
+> +
+> +    return val;
+> +}
+> +
+>   static uint64_t dw_i3c_read(void *opaque, hwaddr offset, unsigned size)
+>   {
+>       DWI3C *s = DW_I3C(opaque);
+> @@ -392,16 +609,635 @@ static uint64_t dw_i3c_read(void *opaque, hwaddr offset, unsigned size)
+>       case R_INTR_STATUS:
+>           value = dw_i3c_intr_status_r(s);
+>           break;
+> +    case R_RX_TX_DATA_PORT:
+> +        value = dw_i3c_pop_rx(s);
+> +        break;
+> +    case R_RESPONSE_QUEUE_PORT:
+> +        value = dw_i3c_resp_queue_port_r(s);
+> +        break;
+>       default:
+>           value = s->regs[addr];
+>           break;
+>       }
+>   
+> -    trace_dw_i3c_read(s->id, offset, value);
+> +    trace_dw_i3c_read(s->cfg.id, offset, value);
+>   
+>       return value;
+>   }
+>   
+> +static void dw_i3c_resp_queue_push(DWI3C *s, uint8_t err, uint8_t tid,
+> +                                   uint8_t ccc_type, uint16_t data_len)
+> +{
+> +    uint32_t val = 0;
+> +    val = FIELD_DP32(val, RESPONSE_QUEUE_PORT, ERR_STATUS, err);
+> +    val = FIELD_DP32(val, RESPONSE_QUEUE_PORT, TID, tid);
+> +    val = FIELD_DP32(val, RESPONSE_QUEUE_PORT, CCCT, ccc_type);
+> +    val = FIELD_DP32(val, RESPONSE_QUEUE_PORT, DL, data_len);
+> +    if (!fifo32_is_full(&s->resp_queue)) {
+> +        trace_dw_i3c_resp_queue_push(s->cfg.id, val);
+> +        fifo32_push(&s->resp_queue, val);
+> +    }
+> +
+> +    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, RESP_BUF_BLR,
+> +                     fifo32_num_used(&s->resp_queue));
+> +    /* Threshold is the register value + 1. */
+> +    uint8_t threshold = ARRAY_FIELD_EX32(s->regs, QUEUE_THLD_CTRL,
+> +                                         RESP_BUF_THLD) + 1;
+> +    if (fifo32_num_used(&s->resp_queue) >= threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RESP_RDY, 1);
+> +        dw_i3c_update_irq(s);
+> +    }
+> +}
+> +
+> +static void dw_i3c_push_tx(DWI3C *s, uint32_t val)
+> +{
+> +    if (fifo32_is_full(&s->tx_queue)) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to push to TX FIFO when "
+> +                      "full\n", object_get_canonical_path(OBJECT(s)));
 > +        return;
 > +    }
 > +
-> +    QLIST_FOREACH(node, &bus->current_devs, next) {
-> +        tc = I3C_TARGET_GET_CLASS(node->target);
-> +        if (tc->event) {
-> +            i3c_target_event(node->target, I3C_NACK);
-> +        }
+> +    trace_dw_i3c_push_tx(s->cfg.id, val);
+> +    fifo32_push(&s->tx_queue, val);
+> +    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
+> +                     fifo32_num_free(&s->tx_queue));
+> +
+> +    /* Threshold is 2^TX_BUF_THLD. */
+> +    uint8_t empty_threshold = ARRAY_FIELD_EX32(s->regs, DATA_BUFFER_THLD_CTRL,
+> +                                               TX_BUF_THLD);
+> +    empty_threshold =
+> +        dw_i3c_fifo_threshold_from_reg(empty_threshold);
+> +    if (fifo32_num_free(&s->tx_queue) < empty_threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TX_THLD, 0);
+> +        dw_i3c_update_irq(s);
 > +    }
 > +}
 > +
-> +int i3c_target_send_ibi(I3CTarget *t, uint8_t addr, bool is_recv)
+> +static uint32_t dw_i3c_pop_tx(DWI3C *s)
 > +{
-> +    I3CBus *bus = I3C_BUS(t->parent_obj.parent_bus);
-> +    I3CBusClass *bc = I3C_BUS_GET_CLASS(bus);
-> +    trace_i3c_target_send_ibi(addr, is_recv);
-> +    return bc->ibi_handle(bus, addr, is_recv);
+> +    if (fifo32_is_empty(&s->tx_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to pop from TX FIFO when "
+> +                      "empty\n", path);
+> +        return 0;
+> +    }
+> +
+> +    uint32_t val = fifo32_pop(&s->tx_queue);
+> +    trace_dw_i3c_pop_tx(s->cfg.id, val);
+> +    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,
+> +                     fifo32_num_free(&s->tx_queue));
+> +
+> +    /* Threshold is 2^TX_BUF_THLD. */
+> +    uint8_t empty_threshold = ARRAY_FIELD_EX32(s->regs, DATA_BUFFER_THLD_CTRL,
+> +                                               TX_BUF_THLD);
+> +    empty_threshold =
+> +        dw_i3c_fifo_threshold_from_reg(empty_threshold);
+> +    if (fifo32_num_free(&s->tx_queue) >= empty_threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TX_THLD, 1);
+> +        dw_i3c_update_irq(s);
+> +    }
+> +    return val;
 > +}
 > +
-> +int i3c_target_send_ibi_bytes(I3CTarget *t, uint8_t data)
+> +static void dw_i3c_push_rx(DWI3C *s, uint32_t val)
 > +{
-> +    I3CBus *bus = I3C_BUS(t->parent_obj.parent_bus);
-> +    I3CBusClass *bc = I3C_BUS_GET_CLASS(bus);
-> +    trace_i3c_target_send_ibi_bytes(data);
-> +    return bc->ibi_recv(bus, data);
+> +    if (fifo32_is_full(&s->rx_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to push to RX FIFO when "
+> +                      "full\n", path);
+> +        return;
+> +    }
+> +    trace_dw_i3c_push_rx(s->cfg.id, val);
+> +    fifo32_push(&s->rx_queue, val);
+> +
+> +    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, RX_BUF_BLR,
+> +                     fifo32_num_used(&s->rx_queue));
+> +    /* Threshold is 2^RX_BUF_THLD. */
+> +    uint8_t threshold = ARRAY_FIELD_EX32(s->regs, DATA_BUFFER_THLD_CTRL,
+> +                                         RX_BUF_THLD);
+> +    threshold = dw_i3c_fifo_threshold_from_reg(threshold);
+> +    if (fifo32_num_used(&s->rx_queue) >= threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RX_THLD, 1);
+> +        dw_i3c_update_irq(s);
+> +    }
 > +}
 > +
-> +int i3c_target_ibi_finish(I3CTarget *t, uint8_t data)
+> +static void dw_i3c_short_transfer(DWI3C *s, DWI3CTransferCmd cmd,
+> +                                  DWI3CShortArg arg)
 > +{
-> +    I3CBus *bus = I3C_BUS(t->parent_obj.parent_bus);
-> +    I3CBusClass *bc = I3C_BUS_GET_CLASS(bus);
-> +    trace_i3c_target_ibi_finish();
-> +    return bc->ibi_finish(bus);
+> +    uint8_t err = DW_I3C_RESP_QUEUE_ERR_NONE;
+> +    uint8_t addr = dw_i3c_target_addr(s, cmd.dev_index);
+> +    bool is_i2c = dw_i3c_target_is_i2c(s, cmd.dev_index);
+> +    uint8_t data[4]; /* Max we can send on a short transfer is 4 bytes. */
+> +    uint8_t len = 0;
+> +    uint32_t bytes_sent; /* Ignored on short transfers. */
+> +
+> +    /* Can't do reads on a short transfer. */
+> +    if (cmd.rnw) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Cannot do a read on a short "
+> +                      "transfer\n", path);
+> +        return;
+> +    }
+> +
+> +    if (dw_i3c_send_start(s, addr, /*is_recv=*/false, is_i2c)) {
+> +        err = DW_I3C_RESP_QUEUE_ERR_I2C_NACK;
+> +        goto transfer_done;
+> +    }
+> +
+> +    /* Are we sending a command? */
+> +    if (cmd.cp) {
+> +        data[len] = cmd.cmd;
+> +        len++;
+> +        /*
+> +         * byte0 is the defining byte for a command, and is only sent if a
+> +         * command is present and if the command has a defining byte present.
+> +         * (byte_strb & 0x01) is always treated as set by the controller, and is
+> +         * ignored.
+> +         */
+> +        if (cmd.dbp) {
+> +            data[len] += arg.byte0;
+> +            len++;
+> +        }
+> +    }
+> +
+> +    /* Send the bytes passed in the argument. */
+> +    if (arg.byte_strb & 0x02) {
+> +        data[len] = arg.byte1;
+> +        len++;
+> +    }
+> +    if (arg.byte_strb & 0x04) {
+> +        data[len] = arg.byte2;
+> +        len++;
+> +    }
+> +
+> +    if (dw_i3c_send(s, data, len, &bytes_sent, is_i2c)) {
+> +        err = DW_I3C_RESP_QUEUE_ERR_I2C_NACK;
+> +    } else {
+> +        /* Only go to an idle state on a successful transfer. */
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_IDLE);
+> +    }
+> +
+> +transfer_done:
+> +    if (cmd.toc) {
+> +        dw_i3c_end_transfer(s, is_i2c);
+> +    }
+> +    if (cmd.roc) {
+> +        /*
+> +         * ccc_type is always 0 in controller mode, data_len is 0 in short
+> +         * transfers.
+> +         */
+> +        dw_i3c_resp_queue_push(s, err, cmd.tid, /*ccc_type=*/0,
+> +                                          /*data_len=*/0);
+> +    }
 > +}
 > +
-> +static bool i3c_addr_is_rsvd(uint8_t addr)
+> +/* Returns number of bytes transmitted. */
+> +static uint16_t dw_i3c_tx(DWI3C *s, uint16_t num, bool is_i2c)
 > +{
-> +    const bool is_rsvd[255] = {
+> +    uint16_t bytes_sent = 0;
+> +    union {
+> +        uint8_t b[sizeof(uint32_t)];
+> +        uint32_t val;
+> +    } val32;
+> +
+> +    while (bytes_sent < num) {
+> +        val32.val = dw_i3c_pop_tx(s);
+> +        for (uint8_t i = 0; i < sizeof(val32.val); i++) {
+> +            if (dw_i3c_send_byte(s, val32.b[i], is_i2c)) {
+> +                return bytes_sent;
+> +            }
+> +            bytes_sent++;
+> +
+> +            /* We're not sending the full 32-bits, break early. */
+> +            if (bytes_sent >= num) {
+> +                break;
+> +            }
+> +        }
+> +    }
+> +
+> +    return bytes_sent;
+> +}
+> +
+> +/* Returns number of bytes received. */
+> +static uint16_t dw_i3c_rx(DWI3C *s, uint16_t num, bool is_i2c)
+> +{
+> +    /*
+> +     * Allocate a temporary buffer to read data from the target.
+> +     * Zero it and word-align it as well in case we're reading unaligned data.
+> +     */
+> +    g_autofree uint8_t *data = g_new0(uint8_t, num + (4 - (num & 0x03)));
 
-This array should be a static const and its size needs a fix (0x100)
+Why not use ROUND_UP(num, 4) ?
 
 Thanks,
 
 C.
 
 
-> +        [0x00] = true,
-> +        [0x01] = true,
-> +        [0x02] = true,
-> +        [0x3e] = true,
-> +        [0x5e] = true,
-> +        [0x6e] = true,
-> +        [0x76] = true,
-> +        [0x7a] = true,
-> +        [0x7c] = true,
-> +        [0x7e] = true,
-> +        [0x7f] = true,
-> +    };
+> +    uint32_t *data32 = (uint32_t *)data;
+> +    /*
+> +     * 32-bits since the I3C API wants a 32-bit number, even though the
+> +     * controller can only do 16-bit transfers.
+> +     */
+> +    uint32_t num_read = 0;
 > +
-> +    return is_rsvd[addr];
-> +}
-> +
-> +I3CTarget *i3c_target_new(const char *name, uint8_t addr, uint8_t dcr,
-> +                          uint8_t bcr, uint64_t pid)
-> +{
-> +    DeviceState *dev;
-> +
-> +    dev = qdev_new(name);
-> +    qdev_prop_set_uint8(dev, "static-address", addr);
-> +    qdev_prop_set_uint8(dev, "dcr", dcr);
-> +    qdev_prop_set_uint8(dev, "bcr", bcr);
-> +    qdev_prop_set_uint64(dev, "pid", pid);
-> +
-> +    if (i3c_addr_is_rsvd(addr)) {
-> +        g_autofree char *path = object_get_canonical_path(OBJECT(dev));
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: I3C target created with reserved "
-> +                      "address 0x%.2x\n", path, addr);
+> +    /* Can NACK if the target receives an unsupported CCC. */
+> +    if (dw_i3c_recv_data(s, is_i2c, data, num, &num_read)) {
+> +        return 0;
 > +    }
-> +    return I3C_TARGET(dev);
+> +
+> +    for (uint16_t i = 0; i < num_read / 4; i++) {
+> +        dw_i3c_push_rx(s, *data32);
+> +        data32++;
+> +    }
+> +    /*
+> +     * If we're pushing data that isn't 32-bit aligned, push what's left.
+> +     * It's software's responsibility to know what bits are valid in the partial
+> +     * data.
+> +     */
+> +    if (num_read & 0x03) {
+> +        dw_i3c_push_rx(s, *data32);
+> +    }
+> +
+> +    return num_read;
 > +}
 > +
-> +bool i3c_target_realize_and_unref(I3CTarget *dev, I3CBus *bus, Error **errp)
+> +static int dw_i3c_transfer_ccc(DWI3C *s, DWI3CTransferCmd cmd,
+> +                               DWI3CTransferArg arg)
 > +{
-> +    return qdev_realize_and_unref(&dev->parent_obj, &bus->parent_obj, errp);
+> +    /* CCC start is always a write. CCCs cannot be done on I2C devices. */
+> +    if (dw_i3c_send_start(s, I3C_BROADCAST, /*is_recv=*/false,
+> +                                     /*is_i2c=*/false)) {
+> +        return DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK;
+> +    }
+> +    trace_dw_i3c_transfer_ccc(s->cfg.id, cmd.cmd);
+> +    if (dw_i3c_send_byte(s, cmd.cmd, /*is_i2c=*/false)) {
+> +        return DW_I3C_RESP_QUEUE_ERR_I2C_NACK;
+> +    }
+> +
+> +    /* On a direct CCC, we do a restart and then send the target's address. */
+> +    if (CCC_IS_DIRECT(cmd.cmd)) {
+> +        bool is_recv = cmd.rnw;
+> +        uint8_t addr = dw_i3c_target_addr(s, cmd.dev_index);
+> +        if (dw_i3c_send_start(s, addr, is_recv, /*is_i2c=*/false)) {
+> +            return DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK;
+> +        }
+> +    }
+> +
+> +    return DW_I3C_RESP_QUEUE_ERR_NONE;
 > +}
 > +
-> +I3CTarget *i3c_target_create_simple(I3CBus *bus, const char *name, uint8_t addr,
-> +                                    uint8_t dcr, uint8_t bcr, uint64_t pid)
+> +static void dw_i3c_transfer(DWI3C *s, DWI3CTransferCmd cmd,
+> +                            DWI3CTransferArg arg)
 > +{
-> +    I3CTarget *dev = i3c_target_new(name, addr, dcr, bcr, pid);
-> +    dev->address = 0;
-> +    i3c_target_realize_and_unref(dev, bus, &error_abort);
+> +    bool is_recv = cmd.rnw;
+> +    uint8_t err = DW_I3C_RESP_QUEUE_ERR_NONE;
+> +    uint8_t addr = dw_i3c_target_addr(s, cmd.dev_index);
+> +    bool is_i2c = dw_i3c_target_is_i2c(s, cmd.dev_index);
+> +    uint16_t bytes_transferred = 0;
 > +
-> +    return dev;
+> +    if (cmd.cp) {
+> +        /* We're sending a CCC. */
+> +        err = dw_i3c_transfer_ccc(s, cmd, arg);
+> +        if (err != DW_I3C_RESP_QUEUE_ERR_NONE) {
+> +            goto transfer_done;
+> +        }
+> +    } else {
+> +        if (ARRAY_FIELD_EX32(s->regs, DEVICE_CTRL, I3C_BROADCAST_ADDR_INC) &&
+> +            is_i2c == false) {
+> +            if (dw_i3c_send_start(s, I3C_BROADCAST,
+> +                                             /*is_recv=*/false, is_i2c)) {
+> +                err = DW_I3C_RESP_QUEUE_ERR_I2C_NACK;
+> +                goto transfer_done;
+> +            }
+> +        }
+> +        /* Otherwise we're doing a private transfer. */
+> +        if (dw_i3c_send_start(s, addr, is_recv, is_i2c)) {
+> +            err = DW_I3C_RESP_QUEUE_ERR_I2C_NACK;
+> +            goto transfer_done;
+> +        }
+> +    }
+> +
+> +    if (is_recv) {
+> +        bytes_transferred = dw_i3c_rx(s, arg.data_len, is_i2c);
+> +    } else {
+> +        bytes_transferred = dw_i3c_tx(s, arg.data_len, is_i2c);
+> +    }
+> +
+> +    ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                     DW_I3C_TRANSFER_STATE_IDLE);
+> +
+> +transfer_done:
+> +    if (cmd.toc) {
+> +        dw_i3c_end_transfer(s, is_i2c);
+> +    }
+> +    if (cmd.roc) {
+> +        /*
+> +         * data_len is the number of bytes that still need to be TX'd, or the
+> +         * number of bytes RX'd.
+> +         */
+> +        uint16_t data_len = is_recv ? bytes_transferred : arg.data_len -
+> +                                                          bytes_transferred;
+> +        /* CCCT is always 0 in controller mode. */
+> +        dw_i3c_resp_queue_push(s, err, cmd.tid, /*ccc_type=*/0,
+> +                                          data_len);
+> +    }
+> +
+> +    dw_i3c_update_irq(s);
 > +}
 > +
-> +/* Legacy I2C functions. */
-> +void legacy_i2c_nack(I3CBus *bus)
+> +static void dw_i3c_transfer_cmd(DWI3C *s, DWI3CTransferCmd cmd,
+> +                                DWI3CCmdQueueData arg)
 > +{
-> +    trace_legacy_i2c_nack();
-> +    i2c_nack(bus->i2c_bus);
+> +    uint8_t arg_attr = FIELD_EX32(arg.word, COMMAND_QUEUE_PORT, CMD_ATTR);
+> +
+> +    ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CMD_TID, cmd.tid);
+> +
+> +    /* User is trying to do HDR transfers, see if we can do them. */
+> +    if (cmd.speed == 0x06 && !dw_i3c_has_hdr_ddr(s)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: HDR DDR is not supported\n", path);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +        return;
+> +    }
+> +    if (cmd.speed == 0x05 && !dw_i3c_has_hdr_ts(s)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: HDR TS is not supported\n", path);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +        return;
+> +    }
+> +
+> +    if (arg_attr == DW_I3C_CMD_ATTR_TRANSFER_ARG) {
+> +        dw_i3c_transfer(s, cmd, arg.transfer_arg);
+> +    } else if (arg_attr == DW_I3C_CMD_ATTR_SHORT_DATA_ARG) {
+> +        dw_i3c_short_transfer(s, cmd, arg.short_arg);
+> +    } else {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Unknown command queue cmd_attr 0x%x"
+> +                      "\n", path, arg_attr);
+> +        ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                         DW_I3C_TRANSFER_STATE_HALT);
+> +    }
 > +}
 > +
-> +uint8_t legacy_i2c_recv(I3CBus *bus)
+> +static void dw_i3c_update_char_table(DWI3C *s, uint8_t offset, uint64_t pid,
+> +                                     uint8_t bcr, uint8_t dcr, uint8_t addr)
 > +{
-> +    uint8_t byte = i2c_recv(bus->i2c_bus);
-> +    trace_legacy_i2c_recv(byte);
-> +    return byte;
+> +    if (offset > s->cfg.num_addressable_devices) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Device char table offset %d out of "
+> +                      "bounds\n", path, offset);
+> +        /* If we're out of bounds, do nothing. */
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * Each device offset is 128 bits apart in the table, since each device gets
+> +     * 4 * 32-bits of entries in the table.
+> +     * / sizeof(uint32_t) because we're indexing into our 32-bit reg array.
+> +     */
+> +    uint16_t dev_index = (ARRAY_FIELD_EX32(s->regs, DEV_CHAR_TABLE_POINTER,
+> +                                          P_DEV_CHAR_TABLE_START_ADDR) /
+> +                                          sizeof(uint32_t)) +
+> +                                          (offset * sizeof(uint32_t));
+> +    s->regs[dev_index] = pid & 0xffffffff;
+> +    pid >>= 32;
+> +    s->regs[dev_index + 1] = FIELD_DP32(s->regs[dev_index + 1],
+> +                                        DEVICE_CHARACTERISTIC_TABLE_LOC2,
+> +                                        MSB_PID, pid);
+> +    s->regs[dev_index + 2] = FIELD_DP32(s->regs[dev_index + 2],
+> +                                        DEVICE_CHARACTERISTIC_TABLE_LOC3, DCR,
+> +                                        dcr);
+> +    s->regs[dev_index + 2] = FIELD_DP32(s->regs[dev_index + 2],
+> +                                        DEVICE_CHARACTERISTIC_TABLE_LOC3, BCR,
+> +                                        bcr);
+> +    s->regs[dev_index + 3] = FIELD_DP32(s->regs[dev_index + 3],
+> +                                        DEVICE_CHARACTERISTIC_TABLE_LOC4,
+> +                                        DEV_DYNAMIC_ADDR, addr);
+> +
+> +    /* Increment PRESENT_DEV_CHAR_TABLE_INDEX. */
+> +    uint8_t idx = ARRAY_FIELD_EX32(s->regs, DEV_CHAR_TABLE_POINTER,
+> +                     PRESENT_DEV_CHAR_TABLE_INDEX);
+> +    /* Increment and rollover. */
+> +    idx++;
+> +    if (idx >= ARRAY_FIELD_EX32(s->regs, DEV_CHAR_TABLE_POINTER,
+> +                               DEV_CHAR_TABLE_DEPTH) / 4) {
+> +        idx = 0;
+> +    }
+> +    ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER,
+> +                     PRESENT_DEV_CHAR_TABLE_INDEX, idx);
 > +}
 > +
-> +int legacy_i2c_send(I3CBus *bus, uint8_t data)
+> +static void dw_i3c_addr_assign_cmd(DWI3C *s, DWI3CAddrAssignCmd cmd)
 > +{
-> +    trace_legacy_i2c_send(data);
-> +    return i2c_send(bus->i2c_bus, data);
+> +    uint8_t i = 0;
+> +    uint8_t err = DW_I3C_RESP_QUEUE_ERR_NONE;
+> +
+> +    /* Tell everyone to ENTDAA. If these error, no one is on the bus. */
+> +    if (dw_i3c_send_start(s, I3C_BROADCAST, /*is_recv=*/false,
+> +                                     /*is_i2c=*/false)) {
+> +        err = DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK;
+> +        goto transfer_done;
+> +    }
+> +    if (dw_i3c_send_byte(s, cmd.cmd, /*is_i2c=*/false)) {
+> +        err = DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK;
+> +        goto transfer_done;
+> +    }
+> +
+> +    /* Go through each device in the table and assign it an address. */
+> +    for (i = 0; i < cmd.dev_count; i++) {
+> +        uint8_t addr = dw_i3c_target_addr(s, cmd.dev_index + i);
+> +        union {
+> +            uint64_t pid:48;
+> +            uint8_t bcr;
+> +            uint8_t dcr;
+> +            uint32_t w[2];
+> +            uint8_t b[8];
+> +        } target_info;
+> +
+> +        /* If this fails, there was no one left to ENTDAA. */
+> +        if (dw_i3c_send_start(s, I3C_BROADCAST, /*is_recv=*/false,
+> +                                         /*is_i2c=*/false)) {
+> +            err = DW_I3C_RESP_QUEUE_ERR_BROADCAST_NACK;
+> +            break;
+> +        }
+> +
+> +        /*
+> +         * In ENTDAA, we read 8 bytes from the target, which will be the
+> +         * target's PID, BCR, and DCR. After that, we send it the dynamic
+> +         * address.
+> +         * Don't bother checking the number of bytes received, it must send 8
+> +         * bytes during ENTDAA.
+> +         */
+> +        uint32_t num_read;
+> +        if (dw_i3c_recv_data(s, /*is_i2c=*/false, target_info.b,
+> +                                        I3C_ENTDAA_SIZE, &num_read)) {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Target NACKed ENTDAA CCC\n",
+> +                          path);
+> +            err = DW_I3C_RESP_QUEUE_ERR_DAA_NACK;
+> +            goto transfer_done;
+> +        }
+> +        if (dw_i3c_send_byte(s, addr, /*is_i2c=*/false)) {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Target NACKed addr 0x%.2x "
+> +                          "during ENTDAA\n", path, addr);
+> +            err = DW_I3C_RESP_QUEUE_ERR_DAA_NACK;
+> +            break;
+> +        }
+> +        dw_i3c_update_char_table(s, cmd.dev_index + i,
+> +                                            target_info.pid, target_info.bcr,
+> +                                            target_info.dcr, addr);
+> +
+> +        /* Push the PID, BCR, and DCR to the RX queue. */
+> +        dw_i3c_push_rx(s, target_info.w[0]);
+> +        dw_i3c_push_rx(s, target_info.w[1]);
+> +    }
+> +
+> +transfer_done:
+> +    /* Do we send a STOP? */
+> +    if (cmd.toc) {
+> +        dw_i3c_end_transfer(s, /*is_i2c=*/false);
+> +    }
+> +    /*
+> +     * For addr assign commands, the length field is the number of devices
+> +     * left to assign. CCCT is always 0 in controller mode.
+> +     */
+> +    if (cmd.roc) {
+> +        dw_i3c_resp_queue_push(s, err, cmd.tid, /*ccc_type=*/0,
+> +                                         cmd.dev_count - i);
+> +    }
 > +}
 > +
-> +int legacy_i2c_start_transfer(I3CBus *bus, uint8_t address, bool is_recv)
+> +static uint32_t dw_i3c_cmd_queue_pop(DWI3C *s)
 > +{
-> +    trace_legacy_i2c_start_transfer(address, is_recv);
-> +    return i2c_start_transfer(bus->i2c_bus, address, is_recv);
+> +    if (fifo32_is_empty(&s->cmd_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Tried to dequeue command queue "
+> +                      "when it was empty\n", path);
+> +        return 0;
+> +    }
+> +    uint32_t val = fifo32_pop(&s->cmd_queue);
+> +
+> +    uint8_t empty_threshold = ARRAY_FIELD_EX32(s->regs, QUEUE_THLD_CTRL,
+> +                                               CMD_BUF_EMPTY_THLD);
+> +    uint8_t cmd_queue_empty_loc = ARRAY_FIELD_EX32(s->regs,
+> +                                                   QUEUE_STATUS_LEVEL,
+> +                                                   CMD_QUEUE_EMPTY_LOC);
+> +    cmd_queue_empty_loc++;
+> +    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
+> +                     cmd_queue_empty_loc);
+> +    if (cmd_queue_empty_loc >= empty_threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, CMD_QUEUE_RDY, 1);
+> +        dw_i3c_update_irq(s);
+> +    }
+> +
+> +    return val;
 > +}
 > +
-> +int legacy_i2c_start_recv(I3CBus *bus, uint8_t address)
+> +static void dw_i3c_cmd_queue_execute(DWI3C *s)
 > +{
-> +    trace_legacy_i2c_start_transfer(address, true);
-> +    return i2c_start_transfer(bus->i2c_bus, address, /*is_recv=*/true);
+> +    ARRAY_FIELD_DP32(s->regs, PRESENT_STATE, CM_TFR_ST_STATUS,
+> +                     DW_I3C_TRANSFER_STATE_IDLE);
+> +    if (!dw_i3c_can_transmit(s)) {
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * We only start executing when a command is passed into the FIFO.
+> +     * We expect there to be a multiple of 2 items in the queue. The first item
+> +     * should be an argument to a command, and the command should be the second
+> +     * item.
+> +     */
+> +    if (fifo32_num_used(&s->cmd_queue) & 1) {
+> +        return;
+> +    }
+> +
+> +    while (!fifo32_is_empty(&s->cmd_queue)) {
+> +        DWI3CCmdQueueData arg;
+> +        arg.word = dw_i3c_cmd_queue_pop(s);
+> +        DWI3CCmdQueueData cmd;
+> +        cmd.word = dw_i3c_cmd_queue_pop(s);
+> +        trace_dw_i3c_cmd_queue_execute(s->cfg.id, cmd.word, arg.word);
+> +
+> +        uint8_t cmd_attr = FIELD_EX32(cmd.word, COMMAND_QUEUE_PORT, CMD_ATTR);
+> +        switch (cmd_attr) {
+> +        case DW_I3C_CMD_ATTR_TRANSFER_CMD:
+> +            dw_i3c_transfer_cmd(s, cmd.transfer_cmd, arg);
+> +            break;
+> +        case DW_I3C_CMD_ATTR_ADDR_ASSIGN_CMD:
+> +            /* Arg is discarded for addr assign commands. */
+> +            dw_i3c_addr_assign_cmd(s, cmd.addr_assign_cmd);
+> +            break;
+> +        case DW_I3C_CMD_ATTR_TRANSFER_ARG:
+> +        case DW_I3C_CMD_ATTR_SHORT_DATA_ARG:
+> +            {
+> +                g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: Command queue received "
+> +                              "argument packet when it expected a command "
+> +                              "packet\n", path);
+> +            }
+> +            break;
+> +        default:
+> +            /*
+> +             * The caller's check before queueing an item should prevent this
+> +             * from happening.
+> +             */
+> +            g_assert_not_reached();
+> +            break;
+> +        }
+> +    }
 > +}
 > +
-> +int legacy_i2c_start_send(I3CBus *bus, uint8_t address)
+> +static void dw_i3c_cmd_queue_push(DWI3C *s, uint32_t val)
 > +{
-> +    trace_legacy_i2c_start_transfer(address, false);
-> +    return i2c_start_transfer(bus->i2c_bus, address, /*is_recv=*/false);
+> +    if (fifo32_is_full(&s->cmd_queue)) {
+> +        g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Command queue received packet when "
+> +                      "already full\n", path);
+> +        return;
+> +    }
+> +    trace_dw_i3c_cmd_queue_push(s->cfg.id, val);
+> +    fifo32_push(&s->cmd_queue, val);
+> +
+> +    uint8_t empty_threshold = ARRAY_FIELD_EX32(s->regs, QUEUE_THLD_CTRL,
+> +                                               CMD_BUF_EMPTY_THLD);
+> +    uint8_t cmd_queue_empty_loc = ARRAY_FIELD_EX32(s->regs,
+> +                                                   QUEUE_STATUS_LEVEL,
+> +                                                   CMD_QUEUE_EMPTY_LOC);
+> +    if (cmd_queue_empty_loc) {
+> +        cmd_queue_empty_loc--;
+> +        ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,
+> +                         cmd_queue_empty_loc);
+> +    }
+> +    if (cmd_queue_empty_loc < empty_threshold) {
+> +        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, CMD_QUEUE_RDY, 0);
+> +        dw_i3c_update_irq(s);
+> +    }
 > +}
 > +
-> +void legacy_i2c_end_transfer(I3CBus *bus)
+> +static void dw_i3c_cmd_queue_port_w(DWI3C *s, uint32_t val)
 > +{
-> +    trace_legacy_i2c_end_transfer();
-> +    i2c_end_transfer(bus->i2c_bus);
+> +    uint8_t cmd_attr = FIELD_EX32(val, COMMAND_QUEUE_PORT, CMD_ATTR);
+> +
+> +    switch (cmd_attr) {
+> +    /* If a command is received we can start executing it. */
+> +    case DW_I3C_CMD_ATTR_TRANSFER_CMD:
+> +    case DW_I3C_CMD_ATTR_ADDR_ASSIGN_CMD:
+> +        dw_i3c_cmd_queue_push(s, val);
+> +        dw_i3c_cmd_queue_execute(s);
+> +        break;
+> +    /* If we get an argument just push it. */
+> +    case DW_I3C_CMD_ATTR_TRANSFER_ARG:
+> +    case DW_I3C_CMD_ATTR_SHORT_DATA_ARG:
+> +        dw_i3c_cmd_queue_push(s, val);
+> +        break;
+> +    default:
+> +        {
+> +            g_autofree char *path = object_get_canonical_path(OBJECT(s));
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Command queue received packet "
+> +                          "with unknown cmd attr 0x%x\n", path, cmd_attr);
+> +        }
+> +        break;
+> +    }
 > +}
 > +
-> +I2CSlave *legacy_i2c_device_create_simple(I3CBus *bus, const char *name,
-> +                                          uint8_t addr)
-> +{
-> +    I2CSlave *dev = i2c_slave_new(name, addr);
+>   static void dw_i3c_write(void *opaque, hwaddr offset, uint64_t value,
+>                            unsigned size)
+>   {
+> @@ -409,7 +1245,7 @@ static void dw_i3c_write(void *opaque, hwaddr offset, uint64_t value,
+>       uint32_t addr = offset >> 2;
+>       uint32_t val32 = (uint32_t)value;
+>   
+> -    trace_dw_i3c_write(s->id, offset, value);
+> +    trace_dw_i3c_write(s->cfg.id, offset, value);
+>   
+>       val32 &= ~dw_i3c_ro[addr];
+>       switch (addr) {
+> @@ -433,6 +1269,10 @@ static void dw_i3c_write(void *opaque, hwaddr offset, uint64_t value,
+>                         __func__, offset, value);
+>           break;
+>       case R_RX_TX_DATA_PORT:
+> +        dw_i3c_push_tx(s, val32);
+> +        break;
+> +    case R_COMMAND_QUEUE_PORT:
+> +        dw_i3c_cmd_queue_port_w(s, val32);
+>           break;
+>       case R_RESET_CTRL:
+>           break;
+> @@ -475,22 +1315,56 @@ static void dw_i3c_reset_enter(Object *obj, ResetType type)
+>       DWI3C *s = DW_I3C(obj);
+>   
+>       memcpy(s->regs, dw_i3c_resets, sizeof(s->regs));
+> +    /*
+> +     * The user config for these may differ from our resets array, set them
+> +     * manually.
+> +     */
+> +    ARRAY_FIELD_DP32(s->regs, DEVICE_ADDR_TABLE_POINTER, ADDR,
+> +                     s->cfg.dev_addr_table_pointer);
+> +    ARRAY_FIELD_DP32(s->regs, DEVICE_ADDR_TABLE_POINTER, DEPTH,
+> +                     s->cfg.dev_addr_table_depth);
+> +    ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER,
+> +                     P_DEV_CHAR_TABLE_START_ADDR,
+> +                     s->cfg.dev_char_table_pointer);
+> +    ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH,
+> +                     s->cfg.dev_char_table_depth);
+>   }
+>   
+>   static void dw_i3c_realize(DeviceState *dev, Error **errp)
+>   {
+>       DWI3C *s = DW_I3C(dev);
+> -    g_autofree char *name = g_strdup_printf(TYPE_DW_I3C ".%d", s->id);
+> +    g_autofree char *name = g_strdup_printf(TYPE_DW_I3C ".%d", s->cfg.id);
+>   
+>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+>   
+>       memory_region_init_io(&s->mr, OBJECT(s), &dw_i3c_ops, s, name,
+>                             DW_I3C_NR_REGS << 2);
+>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
 > +
-> +    i2c_slave_realize_and_unref(dev, bus->i2c_bus, &error_abort);
-> +    return dev;
-> +}
+> +    fifo32_create(&s->cmd_queue, s->cfg.cmd_resp_queue_capacity_bytes);
+> +    fifo32_create(&s->resp_queue, s->cfg.cmd_resp_queue_capacity_bytes);
+> +    fifo32_create(&s->tx_queue, s->cfg.tx_rx_queue_capacity_bytes);
+> +    fifo32_create(&s->rx_queue, s->cfg.tx_rx_queue_capacity_bytes);
 > +
-> +static void i3c_target_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *k = DEVICE_CLASS(klass);
-> +    I3CTargetClass *sc = I3C_TARGET_CLASS(klass);
-> +    set_bit(DEVICE_CATEGORY_MISC, k->categories);
-> +    k->bus_type = TYPE_I3C_BUS;
-> +    device_class_set_props(k, i3c_props);
-> +    sc->target_match = i3c_target_match;
-> +}
-> +
-> +static const TypeInfo i3c_types[] = {
-> +    {
-> +        .name = TYPE_I3C_BUS,
-> +        .parent = TYPE_BUS,
-> +        .instance_size = sizeof(I3CBus),
-> +        .class_size = sizeof(I3CBusClass),
-> +    },
-> +    {
-> +        .name = TYPE_I3C_TARGET,
-> +        .parent = TYPE_DEVICE,
-> +        .instance_size = sizeof(I3CTarget),
-> +        .abstract = true,
-> +        .class_size = sizeof(I3CTargetClass),
-> +        .class_init = i3c_target_class_init,
-> +    },
-> +};
-> +
-> +DEFINE_TYPES(i3c_types)
-> diff --git a/hw/i3c/meson.build b/hw/i3c/meson.build
-> index ebf20325cb..fb127613fe 100644
-> --- a/hw/i3c/meson.build
-> +++ b/hw/i3c/meson.build
-> @@ -1,3 +1,4 @@
->   i3c_ss = ss.source_set()
-> +i3c_ss.add(when: 'CONFIG_I3C', if_true: files('core.c'))
->   i3c_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_i3c.c'))
->   system_ss.add_all(when: 'CONFIG_I3C', if_true: i3c_ss)
+> +    s->bus = i3c_init_bus(DEVICE(s), name);
+>   }
+>   
+>   static const Property dw_i3c_properties[] = {
+> -    DEFINE_PROP_UINT8("device-id", DWI3C, id, 0),
+> +    DEFINE_PROP_UINT8("device-id", DWI3C, cfg.id, 0),
+> +    DEFINE_PROP_UINT8("command-response-queue-capacity-bytes", DWI3C,
+> +                      cfg.cmd_resp_queue_capacity_bytes, 0x10),
+> +    DEFINE_PROP_UINT16("tx-rx-queue-capacity-bytes", DWI3C,
+> +                      cfg.tx_rx_queue_capacity_bytes, 0x40),
+> +    DEFINE_PROP_UINT8("num-addressable-devices", DWI3C,
+> +                      cfg.num_addressable_devices, 8),
+> +    DEFINE_PROP_UINT16("dev-addr-table-pointer", DWI3C,
+> +                       cfg.dev_addr_table_pointer, 0x280),
+> +    DEFINE_PROP_UINT16("dev-addr-table-depth", DWI3C,
+> +                       cfg.dev_addr_table_depth, 0x08),
+> +    DEFINE_PROP_UINT16("dev-char-table-pointer", DWI3C,
+> +                       cfg.dev_char_table_pointer, 0x200),
+> +    DEFINE_PROP_UINT16("dev-char-table-depth", DWI3C,
+> +                       cfg.dev_char_table_depth, 0x20),
+>   };
+>   
+>   static void dw_i3c_class_init(ObjectClass *klass, const void *data)
 > diff --git a/hw/i3c/trace-events b/hw/i3c/trace-events
-> index 3ead84eb45..cdf7cb07f6 100644
+> index 2d944387db..044ff06a01 100644
 > --- a/hw/i3c/trace-events
 > +++ b/hw/i3c/trace-events
-> @@ -5,3 +5,19 @@ aspeed_i3c_read(uint64_t offset, uint64_t data) "I3C read: offset 0x%" PRIx64 "
->   aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64 " data 0x%" PRIx64
->   aspeed_i3c_device_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
->   aspeed_i3c_device_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
-> +
-> +# core.c
-> +i3c_target_event(uint8_t address, uint8_t event) "I3C target 0x%" PRIx8 " event 0x%" PRIx8
-> +i3c_target_handle_ccc(uint8_t address, uint8_t ccc) "I3C target 0x%" PRIx8 " handling CCC 0x%" PRIx8
-> +i3c_target_send_ibi(uint8_t address, bool is_recv) "I3C target IBI address 0x%" PRIx8 " RnW=%d"
-> +i3c_target_send_ibi_bytes(uint8_t byte) "I3C target IBI byte 0x%" PRIx8
-> +i3c_target_ibi_finish(void) "I3C target IBI finish"
-> +i3c_start_transfer(uint8_t address, bool is_recv) "I3C START with address 0x%" PRIx8 " is_recv=%d"
-> +i3c_end_transfer(void) "I3C transfer done"
-> +i3c_send(uint32_t num_sent, uint32_t num_to_send, bool ack) "I3C send %" PRId32 "/%" PRId32 " bytes, ack=%d"
-> +i3c_recv(uint32_t num_read, uint32_t num_to_read, bool ack) "I3C recv %" PRId32 "/%" PRId32 " bytes, ack=%d"
-> +legacy_i2c_nack(void) "Legacy I2C NACK"
-> +legacy_i2c_recv(uint8_t byte) "Legacy I2C recv 0x%" PRIx8
-> +legacy_i2c_send(uint8_t byte) "Legacy I2C send 0x%" PRIx8
-> +legacy_i2c_start_transfer(uint8_t address, bool is_recv) "Legacy I2C START with address 0x%" PRIx8 " is_recv=%d"
-> +legacy_i2c_end_transfer(void) "Legacy I2C STOP"
+> @@ -7,6 +7,16 @@ aspeed_i3c_write(uint64_t offset, uint64_t data) "I3C write: offset 0x%" PRIx64
+>   # dw-i3c,c
+>   dw_i3c_read(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] read: offset 0x%" PRIx64 " data 0x%" PRIx64
+>   dw_i3c_write(uint32_t deviceid, uint64_t offset, uint64_t data) "I3C Dev[%u] write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> +dw_i3c_send(uint32_t deviceid, uint32_t num_bytes) "I3C Dev[%u] send %" PRId32 " bytes to bus"
+> +dw_i3c_recv_data(uint32_t deviceid, uint32_t num_bytes) "I3C Dev[%u] recv %" PRId32 " bytes from bus"
+> +dw_i3c_pop_rx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] pop 0x%" PRIx32 " from RX FIFO"
+> +dw_i3c_resp_queue_push(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push 0x%" PRIx32 " to response queue"
+> +dw_i3c_push_tx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push 0x%" PRIx32 " to TX FIFO"
+> +dw_i3c_pop_tx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] pop 0x%" PRIx32 " from TX FIFO"
+> +dw_i3c_push_rx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push 0x%" PRIx32 " to RX FIFO"
+> +dw_i3c_transfer_ccc(uint32_t deviceid, uint8_t ccc) "I3C Dev[%u] transfer CCC 0x%" PRIx8
+> +dw_i3c_cmd_queue_execute(uint32_t deviceid, uint32_t cmd, uint32_t arg) "I3C Dev[%u] execute command 0x%" PRIx32 " arg 0x%" PRIx32
+> +dw_i3c_cmd_queue_push(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push 0x%" PRIx32 " to cmd queue"
+>   
+>   # core.c
+>   i3c_target_event(uint8_t address, uint8_t event) "I3C target 0x%" PRIx8 " event 0x%" PRIx8
 
 

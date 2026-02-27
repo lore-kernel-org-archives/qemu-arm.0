@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26BEBFD9E3A
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 19:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EF21039881
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 19:58:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw3q1-0006tN-IJ; Fri, 27 Feb 2026 14:49:25 -0500
+	id 1vw3yp-0008Vx-CI; Fri, 27 Feb 2026 14:58:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw3pz-0006sg-9d
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:49:23 -0500
+ id 1vw3yh-0008SM-Fc
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:58:26 -0500
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw3px-00069W-Ev
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:49:23 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ id 1vw3ye-0007mv-M5
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:58:22 -0500
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 61RH0Mij065418
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 19:49:19 GMT
+ 61RH0Hku527514
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 19:58:18 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 6K9sfSR2fIEkQwYqHVZ/5+9B6OUMNvks+hlGXi/67i8=; b=Z/XF0LGIxnk4XX3a
- X5KL4eed1shr3gdKRk/4QG2MPqS3gfqk1Aa1NEEyw3UYgzxzCltrQUC5vll66/dW
- 9H+YKVscTEuUareVKWhCHRh0nZi5tbimu516t/7yyNo7b/aKgr1UgmE8O9V267vP
- iupfT808899I24UAtX7TANjcb2J7I0tbvia+2Dl8ys8wNsrpfgXdQCE3Z66Tx6gn
- w5PWgYnfzg25CEOPNFdScOoppgQw/7j9/UFxhtTLTs5ev25p4bbbp11jL1efR7o6
- k+AMf/isrFrK9cDhI2BTzmXfiVvIqUW8/zGUdC4CxAwIsGEbeoC6EynIv2Jic1jt
- YpU1RQ==
+ 6sC5JrJcrlfE/LAMh1DpWEeXWD+LUE8oTL/gPCOyY/s=; b=jIAqPzfVGU2j6Mbj
+ Z5ir2JtwKaIILIJ7rlLPgtw6diodfGqT7k1xCAgWUT4So7KfHfBSAvbVbq19/A0l
+ ddx+Sorb95CIlnIM4e15tYcjKlizRew2wGhIvRyiALgKAxGGpW8iuC3DdDq5tjEJ
+ uwzn4H9EHZSzUw17SEXQIPa1IG1Rf77nFBP3AFXRi1gD3Bq3+1l8BvBDkjfrf0CS
+ Ey1rSJRpFbcyBPF1tRSOT7YQ2wVu8KGZ7L7xqgk9P1Ksi+PYUCdrY3Fzqdorg5SZ
+ x3NLIWiUuUwucNBfeitjW45EBb5Qd0r6gWnu4gJt0O25YW12gWpN+8QLHiw2hJ5b
+ C8GqkA==
 Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
  [74.125.82.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cka2xhm67-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cjw23c61h-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 19:49:19 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 19:58:18 +0000 (GMT)
 Received: by mail-dy1-f197.google.com with SMTP id
- 5a478bee46e88-2bdbe1bd565so2629230eec.1
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 11:49:19 -0800 (PST)
+ 5a478bee46e88-2bdd4ce8dc3so2244694eec.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 11:58:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1772221758; x=1772826558; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1772222297; x=1772827097; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=6K9sfSR2fIEkQwYqHVZ/5+9B6OUMNvks+hlGXi/67i8=;
- b=IG945+4UV46haHsFh6/rxhxqW1KD3R9G7a/ODtuvuMWxbj7Gk9R17k4Y9RYHv23gSn
- fMT8D2Z3au5SKY+n3X+dTdTCVDDTnDKnfuzNAN0GvD1U70zWFGDCyYKdk2fC/GYTi3CR
- xmaPbqLM6p0l9mMQhymw7a/y2mGJhnyfC8bYWzoLT3Mucyuz74LQITC6LVNRRHITyOsc
- rCWREmZ4VdnLkLlBZsfeNOdB6ToJcgXHwtJU9C90P4518eoR3LW95IiINe6ehers2UQ+
- l5U7QWcKbXshdBdEDt3CCvgTzCOt7c9/RvGMno/EkO/kPpcLf2H8zVzKPqF9fgar57ia
- D0WA==
+ bh=6sC5JrJcrlfE/LAMh1DpWEeXWD+LUE8oTL/gPCOyY/s=;
+ b=RMnzHpttJ/JOWt+feAC9UgWfkMp8uO4MpKL44HcmWHVyO3jlRKBQ6yYZEl22D/qj1T
+ BODCW4vKgYyiqgJJ2cLN/+i2i0Z3INqKu/QIv1HYVtkKu33KWzlwsOintJ/ueDRkTfv0
+ UYI7SC6QHNksgeFgeHjx25Dio0BcCOQhzYjoIapq4ypzDhF+OFng+deR/20t9tudhkV7
+ L1Tz/tMzz1pe4nEsLhrrwODWhjq+iSgMnKLlqWZKKGMqMHF32Cf8hJqOmLiNxGe6tUsn
+ RkoWRfv+stfKXLK+Ifo4sY8ARQJb+jSpuDM5ExxA6wzBHFS1fKnGSl0yRB++YZMd08vm
+ +8Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772221758; x=1772826558;
+ d=1e100.net; s=20230601; t=1772222297; x=1772827097;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6K9sfSR2fIEkQwYqHVZ/5+9B6OUMNvks+hlGXi/67i8=;
- b=r1pdLiqjhMfNh6xep4YgvHKflfh/1qwpd17SkDDeJkARukFq2y1XpBFjKBE0c66aq+
- 0+S8m5Q534SwOeJbVGmVRWkfQlOuXpv/FYwYQn49YRxrTgnD31knmJDvXGB4UpaRMR0q
- N+Ba+p4eUUwmg9RYPYqjmpXkbi/q6rGyeThEEA5tqXBNrvPdYeE+7DnyZMQxUu9Opu+P
- e5XxGlHpMPuUfflAJKdRUDE3VS4Ifrsed5NocBOSoeSvqWnZflLLyoDdXf8+sDPix+bA
- Nm1+fJ130YwG+5WlbB/OUeGYf9UFstAB6ZAfEJoiugFlLLgsZR7nylLcRlPW971S6ps/
- nATw==
+ bh=6sC5JrJcrlfE/LAMh1DpWEeXWD+LUE8oTL/gPCOyY/s=;
+ b=mXBEtw+/5uG3bDQLzyM8mUQQ9+ttVlz6HgWQxg/SOUFivk2FgelDF95zNj7WlGv2L7
+ amlKzohrUlQxoZjIeqH+s+Bfj2FoOYjmN8+nkpiwTEwjLWKjac9zY2NZwNF/i+Mus4nX
+ /zSOaQ825fsUE8nitra+L3rHqo7VTGfx4ny8eM/Os1Zab8/I40D1Yz/6exEtakzfqbv+
+ kb8sGobRFwq+SqrtrC3lfYsgs014c2pEm6mNiY49QVuNYcqxiAG8Tbn4HPnp1/rZS382
+ BRDDxsq13YzqZrH/ySyDfhhV3ZKzwFOZ6cZsq3fiZe/OY1BAppuXiw9Oa4YIASTqn6iE
+ bkRA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXugpS/mAkBJ3wrxYKVoCOtWAF3wdO0j8v/UydbidoBjtAvLVI+iKF30mG/JPene+/vwI9Q5LJHOQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyip0uqiYmZjJ+iLV/28DcYAYELds/rtiMCho0IOQjrWr90PWr7
- SjuZPfWRMXcmoPBuq+oqtSfpfziLbiNPQaMbSl0lg9kH/eVi0to+zfDp1c67tmdw38bZX6wVWBS
- 6VMYXm28j7rrGeDTWiR9//wqFxry49XjtvTxMs5lsMLzvKxK6Y+ot4CE=
-X-Gm-Gg: ATEYQzzGxuBRIiC1N6PO9j12J9qCSO4QZUzGl9M70bS7veKMo6R29s7ppiBCPqIAsOa
- 8Bulo21+N94HKmDxn/L9X6emQl08XZTu3jXulYgCZfdomwcj/YlXZzqNPUzRMzMgr+Yxf1X8ov0
- Uv90agbaIhMUsvKHFVWOsgJpYuNvX5WLl24sLJX4mtgjM10mj3ekjbs+WEgIMGACT2+EYvXabUk
- Y78adrs1AuJFDRCoAXZwrsbtZZpEqboYimsBWU6kh7vIPVLIwM1gG6H0p1vNQoCnA0MZ82ptnbO
- YjNX7adJASLrCZjFFlgIzVPoQAWgZ03uSf428lOhnrI5KB7ojtqutYTIfKVaAr7dv05rSBHRWm1
- VP+wOzWr+E8Ig6Th4kINn3dL5492JZXUpW0mqiV232yacfrm0U5cUgvNoo7OHRvbdht4q6NM3XO
- BGGA==
-X-Received: by 2002:a05:693c:60cd:b0:2bd:ef4a:1772 with SMTP id
- 5a478bee46e88-2bdef4a1b9bmr417442eec.33.1772221758440; 
- Fri, 27 Feb 2026 11:49:18 -0800 (PST)
-X-Received: by 2002:a05:693c:60cd:b0:2bd:ef4a:1772 with SMTP id
- 5a478bee46e88-2bdef4a1b9bmr417422eec.33.1772221757883; 
- Fri, 27 Feb 2026 11:49:17 -0800 (PST)
+ AJvYcCWh4CyrUrSaKkPvrhmDw1XJDvO3pOi2SPyS/GEppa9RP7VvjRObgAcejpZiDypYEJ7xlUXSN5TB6A==@nongnu.org
+X-Gm-Message-State: AOJu0YxeP+I+MkWQvSE6BPs62rb6PIssYry5qNZC0S02A/xqtZQatmdd
+ K7I6ov1Vh25pVd8nNBxkBY0YsVcYqDXECsFbDJ/GEmuQeA+9TtjdeloDc6hR5SvvZvH4yLwA9Kj
+ HfFTI0ub7W2ylC2eH/5jTy170WZoQkaUKUXQBwW1ifHFthkww7H2A2Ig=
+X-Gm-Gg: ATEYQzylyP76yU7xsWfXsTAED87onnevS0g0x+MNtC7i5adJ2kG/1eA+Q94oKOuXPEp
+ zB3pev+FCQeAQPsA7qosCb31ixfq+uL6RsS/15uI8zkK0wqsiTtO3DKxtUTGEMIoakuGW2/RKj7
+ rTID/sdkEUreDD9/KAEPcX102L1nPbVrajSxw6UFlJ8XBLJasrhyB4FybFfT+DUrl9HwuWhHwL9
+ ZXqh7O1T0T9oXz48Q7AWStFjYi0uhBNj32Iycl0Z8+JwrT6aiSFJiy/4+Gc78/JJj9S6mG1TUgW
+ g7tBKabzFHrVcJCgLUtAQpHzktQhxogj0fyPJjuEHcHto7Rai4Elr8aBoLAs3zsqbd+CfHMuzKf
+ DuuelIn+XaX/RIwljxgB2zLZEAxRpicNbMSiyFo7F/OZnodRHPUefXglt5JDydAV95pToxfDrAD
+ vfEA==
+X-Received: by 2002:a05:7300:72d0:b0:2b9:dde1:33e0 with SMTP id
+ 5a478bee46e88-2bde1c0f805mr1736202eec.2.1772222297157; 
+ Fri, 27 Feb 2026 11:58:17 -0800 (PST)
+X-Received: by 2002:a05:7300:72d0:b0:2b9:dde1:33e0 with SMTP id
+ 5a478bee46e88-2bde1c0f805mr1736187eec.2.1772222296554; 
+ Fri, 27 Feb 2026 11:58:16 -0800 (PST)
 Received: from [10.110.80.16] (i-global254.qualcomm.com. [199.106.103.254])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2bdf0cd07e6sm307371eec.21.2026.02.27.11.49.16
+ 5a478bee46e88-2bdd1bcea4esm4366458eec.5.2026.02.27.11.58.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Feb 2026 11:49:17 -0800 (PST)
-Message-ID: <734cf0d5-6f0a-4f13-a2e0-e35fa0f47997@oss.qualcomm.com>
-Date: Fri, 27 Feb 2026 11:49:15 -0800
+ Fri, 27 Feb 2026 11:58:16 -0800 (PST)
+Message-ID: <16fcdd24-621d-4cd3-97ad-c45fd4725e31@oss.qualcomm.com>
+Date: Fri, 27 Feb 2026 11:58:14 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 18/22] hw/i3c: Add Mock target
+Subject: Re: [PATCH v7 03/22] hw/i3c: Add bus support
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -108,39 +108,39 @@ To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
  "nabihestefan@google.com" <nabihestefan@google.com>,
- "komlodi@google.com" <komlodi@google.com>, Titus Rwantare
- <titusr@google.com>, Patrick Venture <venture@google.com>
+ "komlodi@google.com" <komlodi@google.com>,
+ Patrick Venture <venture@google.com>, Titus Rwantare <titusr@google.com>
 References: <20260225021158.1586584-1-jamin_lin@aspeedtech.com>
- <20260225021158.1586584-19-jamin_lin@aspeedtech.com>
- <c904f61d-b836-41e2-8032-31ea32324396@oss.qualcomm.com>
- <047f2aea-acc7-4966-8b55-723709fe0f28@kaod.org>
+ <20260225021158.1586584-4-jamin_lin@aspeedtech.com>
+ <ad58c432-8c9e-4cd8-847a-df4bd6a45d6d@oss.qualcomm.com>
+ <897005bf-fd67-4d78-86b4-b92c9cc0f666@kaod.org>
 Content-Language: en-US
 From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-In-Reply-To: <047f2aea-acc7-4966-8b55-723709fe0f28@kaod.org>
+In-Reply-To: <897005bf-fd67-4d78-86b4-b92c9cc0f666@kaod.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=BOC+bVQG c=1 sm=1 tr=0 ts=69a1f53f cx=c_pps
+X-Proofpoint-GUID: 9YwcPiWlAbK49G6XLkYlGwyiuSAM_cbv
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI3MDE3NCBTYWx0ZWRfX+cp/QX4XUooR
+ +vejw1UtpWGtelNQ/amUB3viU2k20HYymd+5FeiS1snUpf0L7Uwo2mbdPOozfcKFHwRT0gaIjJ9
+ dazMJtfDdaHdXYLsUhye3cYWmleVsrWz2xgP5qiYPLLCth8NXCi8TgYcb4GQZRtBODbayXdpDSb
+ fgX9ldUSI2qaZ18VW4aFYqcIq1nalxYwTHKMJMQLoOM202pcPVu3ksv+RbBN6hgX6cNj2PWLpxf
+ zXIQXnCOjamtDN+zwj21DCOTc0NuVpGcArjNNH9sW3ZE3y4AGXTHlpyKo9jq9BkLv9QwbzqL3It
+ m8/GXjI1D4HZzDg9ywSm/pG0fw1P/EM+E1oce1JjsHu6RcM+dTpveD456qEe5eYhGmPh1MdbXJo
+ JDl+nr1vwShq50mUMruLUAtQ9sHOn0AJHZIyJVAq5WL7GapJ3eVSTZ5kOmCVB1sz035HlvvwOR/
+ FlEjUmX59NAGPhm9Wyw==
+X-Authority-Analysis: v=2.4 cv=cJHtc1eN c=1 sm=1 tr=0 ts=69a1f75a cx=c_pps
  a=Uww141gWH0fZj/3QKPojxA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
  a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=0OfGDMpDe1E0IF_93y4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=uFRWuoFFug6GEp8UtR4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=PxkB5W3o20Ba91AHUih5:22
-X-Proofpoint-GUID: rmj79CmrIf7uLSndqDOVfZCR9LJ_VL2S
-X-Proofpoint-ORIG-GUID: rmj79CmrIf7uLSndqDOVfZCR9LJ_VL2S
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI3MDE3NCBTYWx0ZWRfX24xgSMa6pmAa
- z/GVcokTs1TuRILjMA2QYtXTdM7h9HP+EZnLtDHiMlVkckwZUU5Ui63NfjHM5VG3WA/oqEBuWbO
- W0eeZ5UOCK/tk4KmMFdeu6rqGRbWdKmz7Bm7ibQdDv8qSy3JbxeDy0KntQw0AE72l2Rx96ZJESp
- isX8vfLznZWN4fLPqpXOHerfkslIwdXumJHCj7RxPHqRbbTAO98T3ZPEQDX23zRdFqI0C8HOl99
- WIww0gf/y1NumwvFdUNa03ILZMbD6ljdZAQlex6mvSiZ8mU9iwRD8bxQU7/3yRDoZ8WfGEGPxkU
- N8ZXbxXV7LIVm930DDy7Ej+QYV7CrUmIwR1Z6dm3eEFjiJhH+IW5LStplneUXTe1M/0MCsm3QGv
- nesZVq1B2ToCt3iNgCwpOa/h0mCBqdAxg3KcGE6vpBQ+Xc/xTQ+s60n8W6Wp59EuGw08t4f2F6c
- rRR7d+hxPBQ4TqiZRbg==
+X-Proofpoint-ORIG-GUID: 9YwcPiWlAbK49G6XLkYlGwyiuSAM_cbv
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-27_04,2026-02-27_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 impostorscore=0 spamscore=0 suspectscore=0 phishscore=0
- clxscore=1015 priorityscore=1501 lowpriorityscore=0 adultscore=0 bulkscore=0
+ bulkscore=0 impostorscore=0 lowpriorityscore=0 phishscore=0 adultscore=0
+ spamscore=0 clxscore=1015 priorityscore=1501 suspectscore=0 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602270174
 Received-SPF: pass client-ip=205.220.180.131;
@@ -168,65 +168,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/26/2026 11:52 PM, Cédric Le Goater wrote:
-> On 2/27/26 02:43, Jithu Joseph wrote:
+On 2/26/2026 11:51 PM, Cédric Le Goater wrote:
+> Hello Jithu,
+> 
+> On 2/27/26 03:23, Jithu Joseph wrote:
 >>
->> Apologies for chiming in this late ... I only got a chance to test this last week
->> This really is a minor comment ... can be addressed subsequently
-> 
-> No problem. It is not merged yet and fixes are expected.
-> 
 
 ...
 
->>> +static int mock_i3c_target_tx(I3CTarget *i3c, const uint8_t *data,
->>> +                              uint32_t num_to_send, uint32_t *num_sent)
+>>
+>>> +
+>>> +int i3c_send_byte(I3CBus *bus, uint8_t data)
 >>> +{
->>> +    MockI3cTargetState *s = MOCK_I3C_TARGET(i3c);
->>> +    int ret;
->>> +    uint32_t to_write;
->>> +
->>> +    if (s->cfg.ibi_magic && num_to_send == 1 && s->cfg.ibi_magic == *data) {
->>> +        mock_i3c_target_ibi_timer_start(s);
->>> +        return 0;
->>> +    }
->>> +
->>> +    /* Bounds check. */
->>> +    if (num_to_send + s->p_buf > s->cfg.buf_size) {
->>> +        to_write = s->cfg.buf_size - s->p_buf;
->>> +        ret = -1;
->>> +    } else {
->>> +        to_write = num_to_send;
->>> +        ret = 0;
->>> +    }
->>> +    for (uint32_t i = 0; i < to_write; i++) {
->>> +        trace_mock_i3c_target_tx(data[i]);
->>> +        s->buf[s->p_buf] = data[i];
->>> +        s->p_buf++;
->>> +    }
+>>> +    /*
+>>> +     * Ignored, the caller can determine how many were sent based on if this was
+>>> +     * ACKed/NACKed.
+>>> +     */
+>>> +    uint32_t num_sent;
 >>
->>
->> num_sent is never updated prior to return, so the traces (from caller i3c_send) looked a bit confusing
->>
->> <snip>
->> mock_i3c_target_tx I3C mock target write 0x12
->> i3c_send I3C send 0/1 bytes, ack=1   ---------------------> instead of 1/1 bytes
->> mock_i3c_target_tx I3C mock target write 0x34
->> i3c_send I3C send 0/1 bytes, ack=1
->> </snip>
->>
->> Something like below is needed
->> + *num_sent = to_write
->> (might also needed in the ibi magic path above)
+>> num_sent is uninitialized here. Even though i3c_send_byte ignores it after the call, it gets passed by pointer into i3c_send() where it is used in the trace_i3c_send() call.
+>> If the send callback does not write *num_sent (as is the case with mock_i3c_target_tx, refer my prev comment for patch 18/22), the trace might show garbage. Initializing it to zero might reduce the confusion
 > 
+> Could please send a patch ? I will queue it after this series.
+
+Got it,  I will send 2 patches one to address this comment and another one to address my comment on 18/22, which will apply  on-top of this series
+
 > 
-> Please send a patch.
+> Also, since you have tested this series, would mind sending
+> a Tested-by tag ? possibly a Reviewed-by too.
 
-Would you like me to revise this patch with the changes, and send it in-reply-to v7 18/22 ?
+You can add my Tested-by for the whole series , I have replied to the cover-letter with the tag .
 
-or would you like me to first apply the whole series and create a new patch with just the delta suggested above ?
+I will send in Reviewed-by for the couple of patches I sent review comments for
 
 
 Jithu
 
+ 
 

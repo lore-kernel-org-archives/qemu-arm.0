@@ -4,153 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B59F1039894
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 20:28:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514E0104891E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 21:55:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw4Rh-0004nZ-Te; Fri, 27 Feb 2026 15:28:22 -0500
+	id 1vw5n8-000610-4X; Fri, 27 Feb 2026 16:54:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw4Re-0004mc-8x
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:28:19 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1vw4Rb-0005FY-0f
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 15:28:16 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 61RH0Wh53944938
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:28:14 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Aao5UYcVyyesJid49Opt7MuSBqHv8loG4Q+a4mRZ2Vo=; b=LRdHs2yCYvDYsNFV
- wxZXVF/iBYfYhYD0gLNEpU+9cX0pwLlq2vwbDd+28/I/y/276MPxip5wKfvmB5BL
- x+/2IMQlyArNkVu42FwJh61fY01XOrJFKzggwmmOxcmj3VyI25KrF2ILGk3X8FZz
- +UIDbw8HEHJTVg0Ih2Pqevcjhts78VY34c9mlZXCUj2CePGj+b06z85nTW4uXYFo
- P18tlda4eH7f57O0+QPo9DFwO3rN96lq1C90s1MO30xAe8IwOQa7n4qSJLHM3yBO
- nHkSKL/cjvHCcf3BuD/qsytll1MdUdqyQirvdtrSzuP4AHNKGvcaqG0dM0txF5G0
- Twq2sA==
-Received: from mail-dy1-f197.google.com (mail-dy1-f197.google.com
- [74.125.82.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ck73q2cje-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:28:14 +0000 (GMT)
-Received: by mail-dy1-f197.google.com with SMTP id
- 5a478bee46e88-2bdee946fb8so1176409eec.0
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 12:28:13 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vw5n6-0005zz-EO
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 16:54:32 -0500
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vw5n4-0003q4-97
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 16:54:32 -0500
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2a8fba3f769so12452585ad.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 13:54:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1772224093; x=1772828893; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1772229269; x=1772834069; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Aao5UYcVyyesJid49Opt7MuSBqHv8loG4Q+a4mRZ2Vo=;
- b=Q8vgU5245opaf2iCvqz93VdUDiHUYeyqffDYj22g5JmcqqbDo52qfouTZtE9dGiOuc
- xjJbBO41yNi/si9MK0bF9/yAwheIIlu2z427LB47V1T+jOFYsE/IrHx64ANwPMDr9j24
- OWDbiR9t29iEkl9H9sTQPgneauzbpvt067dLSy4CIkn05QO2uHE6m8hXaC9NCBIVpr1C
- iPcvU9rXywzPQNSSkPI7jH2D6oKNcwzMv4ac/Yld4SzXTAWdzX846wex2Z5zOwOJdk4y
- MfuGUHfcHLTkwDG/qcclDmgEZI1GM02cZooyuXxTBwb2IqhSPwi2Qbe/7cSp19aCp9Vk
- IoLA==
+ bh=N1QCNbUZCXncakW2sKpOA1tH8cYQK2JAhTTRtB4bwyE=;
+ b=n/29N7pASNK+QCULEXO6KBLeScHRn4JGwso1iJyQOITpkzKiSXBj99755Hd2PjQRXN
+ prx/wjFXfZ7880cUMTQR59GMQZb72c/f+WvsPTp2zXvVcX51qklpQLVyYW3/T6w9PXiC
+ mY3c+WL1SljMIVjLqm3GQVKEDJaEIvNVXjTtjy4f33m3ydwaIbFQ97AGVPAPIKP5CwGm
+ 7VKXO4C4OogxZUr5EJ3q8ri7l0RBnZ4vwHRvTXDh06sM4XKuJ451VmD1XYqxWnncdkr0
+ W2bZqUHF//MrShC6/9iVjJd0pRn5TPnBjrBqGKocH1719agjyOMqGWJGjpAvYtyyWoZ+
+ Wbaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772224093; x=1772828893;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1772229269; x=1772834069;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Aao5UYcVyyesJid49Opt7MuSBqHv8loG4Q+a4mRZ2Vo=;
- b=wAUjUZP3FqvbMIS2y6Abc0T8Wx7fFgZO1IyjFjyk9h3VLnU/eOs7MXiEEGOgZVp2Wm
- ztxNjMU4sZyLDg9wkJbG4d0zHBpKN5VTA3GWUEhUcSS4lGpcYF1WbsnYBq4hGnCiOtzo
- yUvYh4ULkuKQXlmoMO2d1DYUrv29YZv/Kbs3H5zaUjnqHN7M/vFH/QapL9Eg+uvHuzjW
- 5jj3P+ZgxD46zwI0MnHzvohbUCcI4b/p/Oyp5FS3C5JhKXzi1j8YnUkWY3kvpTZ9cePS
- Uyt5HHo1fbQUVothiEVw/sdF84NQITRmExp5OGYqwJlLWFB8W3vB5RZuu2XHge2RuVjz
- Gm5g==
+ bh=N1QCNbUZCXncakW2sKpOA1tH8cYQK2JAhTTRtB4bwyE=;
+ b=pATeQAg1N57G+USwXZ/JtsVLaqn+xi75m6A6rKZPT2KsCpD3dqsOZQqFQ99ma/8aja
+ Lb35P4AKCZrtdGJN5M228L90zNkg1dL10+u65IQmqF05GSaqpdjXodiV4lRWgiALdN1x
+ BT+dNJ2SFTkRZB4nsKGA37f3lnSZOJ3L+SfCBN1SjrGjTLp+IjT8Dpr8Kf/2eK3Imxx3
+ B0523aV8ewDth0ofqxK9OUegi6pCpRun2CTGfU9k/bdBTOgylZRYiRLPKPZld0hmZBgU
+ b4DSCpQRcxtDmC54Y8sv40NPzTQsHu1IzdtzoC4MmoHO73t1t8X7QK5dfvP+B0sKidoj
+ AK8Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW/J+Rxy/amk5vx28VvtF/3/N6jjsvDaqPgg6kpb1MN49Fdv8T2au7zndhWZl9W6bpnRF3TjfZxUQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwxfkW5GxTNxbmNM9+F3WIgCPCkiZqfsKZlTPp8dBizEb92ukKH
- nVJg/Anx0UI86ximlLbQ/Lz74Kvp6whvvWuyU9IIfUNA5bUb7U1mIimyjTqOz5gFH0BQBGYmRS8
- WrC4QjngTdgpa2pcE1R/T+FENEa+vyXRMg5S4gIMAMT5Cz9ixxHjw0x0=
-X-Gm-Gg: ATEYQzzCA2qdOOb+6fbGwdwtLpRu4By1SbDdnZoGxPhxdVy2sCp/RX5b1vwbVlsZ/sI
- qCZUSi185LOJBnumYzBJQszEFu+oE7XclHqWSMO0IXn2eeUOTQHavY5PGaDdos44XlOGpb0eVay
- Y6AJjw7soa9GhtIig9SNw/DWRdYAJJeTTLyR1uYxcSxjJhoMDexJpmpCUVp5h7MZ2wwatZH4Quz
- mLyu3Ssf3ffCHnYKl2MreKxjZOz//BtPDtbzOsk/09QPmC0H51D+dSuivM6X9dMt4T19AalHbif
- +Hnu+CS82jLeeDOkAQRndeZi6NHeDWNZ/c++h5XjmRLNxM1pbAUD1K48Ent0fbSS47jCwohfyJJ
- 4JC9ys3tyGZpO0GoXUCBlexzxigXFT9QKjGIdvtkG1OKBHmSmJHy8a8jTgxVJ3bXqwDsbyJLSV1
- jsCw==
-X-Received: by 2002:a05:7300:538e:b0:2b8:711:ae5c with SMTP id
- 5a478bee46e88-2bde1b25446mr1660730eec.7.1772224093112; 
- Fri, 27 Feb 2026 12:28:13 -0800 (PST)
-X-Received: by 2002:a05:7300:538e:b0:2b8:711:ae5c with SMTP id
- 5a478bee46e88-2bde1b25446mr1660723eec.7.1772224092533; 
- Fri, 27 Feb 2026 12:28:12 -0800 (PST)
-Received: from [10.110.80.16] (i-global254.qualcomm.com. [199.106.103.254])
+ AJvYcCVq6EzR2OSUNlp+YtbXDi1+ApFrPKGWF1oMRkseKcqq53bKm9rIdeyEr8E59iK5ywmLA6A5KUTjxg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy3A82GwZxkDPTKNH3HFE4anXb9ffCjI/WHypyerqFyAH7Vzuoz
+ YyHfQ+ZuwxB1zC9eclXmKpil+Eidb5C1mHWVzhrMmxHnrpC6V2uETKck3JAYy8WThZo=
+X-Gm-Gg: ATEYQzzvmkd4FHBLPqWoIKr/s1TWaU5R1xlWjNy/u5K+J9s817KI7EQRsiROE9Ov0I9
+ G+crIwToju7EokN5p1SxTpgS7ZKWQCu74hihwAYHylIVooL3VjjSl6vuwoGeIZGL5Y3SZvjVh+q
+ Wp6Cf8ST7wuwJYeAVacwswJq0/AOocEPCQvrqosBQxeLP7srhjTDjhjW9NjbkUp03CO2ygoLf5R
+ Hr9gJOw/uJcZO/YAW3Z6H61PUNdCgFDuya4khfxo2GnvplYRwEuPmZ1Prnr/P4as5NncjjiWfSs
+ OpetR6p29mi1gLdx0+/fGZVIAJruYa+gUgXLYWPy4NosZ6IVrDaVRta4p0Y4bqZZcnpv9FU/LHu
+ e7HKdHVhtEMpDNc+mVhc+CrZhjlYSe/HjpyjwACeqZODTfEg18zx4gceJC0dofrsgmx+L7SglQZ
+ GTUw+X84WSyBDVKGtgi1chcsFTZthpEzVUnoaJ0ez6VeLXTivcoQHaiuRiiecrOdzGOcV2
+X-Received: by 2002:a17:902:dacb:b0:2a7:919c:34c6 with SMTP id
+ d9443c01a7336-2ae2e4cd74bmr41611535ad.38.1772229268688; 
+ Fri, 27 Feb 2026 13:54:28 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2bdd1f49d96sm4303188eec.27.2026.02.27.12.28.10
+ d9443c01a7336-2adfb5b22fesm91486445ad.2.2026.02.27.13.54.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Feb 2026 12:28:11 -0800 (PST)
-Message-ID: <cd0b743c-544a-4a50-b451-c660f3142187@oss.qualcomm.com>
-Date: Fri, 27 Feb 2026 12:28:10 -0800
+ Fri, 27 Feb 2026 13:54:28 -0800 (PST)
+Message-ID: <efbc1189-408d-4010-8a00-6ddc8aa0b45f@linaro.org>
+Date: Fri, 27 Feb 2026 13:54:27 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 18/22] hw/i3c: Add Mock target
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>,
- "komlodi@google.com" <komlodi@google.com>, Titus Rwantare
- <titusr@google.com>, Patrick Venture <venture@google.com>
-References: <20260225021158.1586584-1-jamin_lin@aspeedtech.com>
- <20260225021158.1586584-19-jamin_lin@aspeedtech.com>
+Subject: Re: [RFC v4 30/31] hw/arm/smmuv3: Add secure bank migration and
+ secure-impl property
 Content-Language: en-US
-From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-In-Reply-To: <20260225021158.1586584-19-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjI3MDE3OSBTYWx0ZWRfX8DCDckhmt8Iv
- mgGORdRoTo6p6G8Xi7BvRuZXsb9gu5OSFJJXJanztNDgWhddVnf0e/5+XV2oozfQIZwG1vsacER
- TuRiN5kRH6n8rk52xwapS0n0/+w3VpYwcr0TGiOkFbCRpymMYiW14EPLlodwBZ0b4f73ylNhOd/
- z0VOcS7JE3rHrLmukie/q8knByuS69cZqy/phSYvNdTo1w2ntzmYv8BR2JsC34RvqfutFtBzxvG
- H2ZBJK8POP14XIDBbOWBlbQscllYCoewwasnw5eWDxLItWqaAvhJ4DVIgvSwdRwBv39VvtDfGVe
- l3ClvibAdRdW6hqlpgAdGYoME/KIISRnRq9ngoKVkS896YxxM92hB4LJCmAFclJ71klDrDbxFxP
- PHEkXIoRwdRoVEisBg9EBifo1dQon4dWR19XM8N79IcnWobs0yiBZhnkfLB4HR7ETPj9SQJr16+
- dzAp0xkLRLfOGY7hXQA==
-X-Authority-Analysis: v=2.4 cv=KL9XzVFo c=1 sm=1 tr=0 ts=69a1fe5e cx=c_pps
- a=Uww141gWH0fZj/3QKPojxA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
- a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=GazINkvHHIBmrhdueQwA:9 a=QEXdDO2ut3YA:10
- a=PxkB5W3o20Ba91AHUih5:22
-X-Proofpoint-ORIG-GUID: cLgjunW-W1V9rGgfAw8ZKumduWvKygZu
-X-Proofpoint-GUID: cLgjunW-W1V9rGgfAw8ZKumduWvKygZu
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-27_04,2026-02-27_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 clxscore=1015 malwarescore=0 priorityscore=1501 adultscore=0
- bulkscore=0 phishscore=0 impostorscore=0 lowpriorityscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602270179
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=jithu.joseph@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
+ <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221101926.2997959-1-tangtao1634@phytium.com.cn>
+ <831335ed-7463-4020-847a-b65518875376@linaro.org>
+ <b5da3509-fff4-4b38-8bcc-a54ad21e7eb0@phytium.com.cn>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <b5da3509-fff4-4b38-8bcc-a54ad21e7eb0@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.706,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.401, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,13 +148,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/24/2026 6:12 PM, Jamin Lin wrote:
-> Adds a simple i3c device to be used for testing in lieu of a real
-> device.
+On 2/27/26 8:16 AM, Tao Tang wrote:
+>> As mentioned before, should we enable it automatically in case
+>> secure-memory address space is available at realize time?
+> 
+> 
+> Let me take this opportunity to address the same concern you raised
+> across patches #07, #17, and #30 on the secure-impl vs secure-memory topic.
+> 
+> 
+> My initial intent was a demand-driven (lazy) validation model — i.e.
+> only validate Secure capability when a device actually declares
+> sec-sid=secure and we go through smmu_init_sdev() /
+> smmuv3_validate_sec_sid(). That avoids forcing Secure-related
+> configuration checks on machines that never exercise Secure DMA.
+> 
+> That said, I agree with your point that secure-impl=on without a
+> corresponding secure-memory link is an unconditional misconfiguration
+> and should fail fast at realize time. For v5 I’ll combine both approaches:
+> 
+> 1) Realize-time inference + fail-fast
+> 
+> - If a secure-memory address space is wired at realize time, the SMMU
+> should “do the right thing out of the box” and enable Secure support
+> automatically.
+> 
+> - If Secure support ends up enabled (either explicitly or via
+> auto-inference) but secure-memory is missing, smmuv3_realize() will
+> error out with a clear message.
+> 
+> Importantly, I’ll preserve the explicit user override you mentioned
+> (-global arm-smmuv3.secure-impl=off).
 > 
 
-Reviewed-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+This is a good summary.
+Let's see what other people think about it, and if they are ok with it.
 
+> 
+> 2) Make helpers assume the invariant
+> 
+> With the realize-time invariant in place, the Secure branch in
+> smmu_get_address_space() will no longer “warn + return NULL”; it will
+> become an assert (or equivalent hard failure) because the machine
+> configuration is already validated.
+>
 
-Jithu
+Sounds good.
+
+> 
+> 3) Keep the device-level guard
+> 
+> I will keep smmuv3_validate_sec_sid() as a complementary per-device
+> guard. This still matters when the user forces secure-impl=off: if a
+> device declares sec-sid=secure, we can reject it immediately with a
+> targeted error at device init/hotplug time, which is a different
+> granularity than the SMMU-wide realize check.
+> 
+> 
+> I’ll incorporate these changes in the next revision.
+> 
+
+Regards,
+Pierrick
 

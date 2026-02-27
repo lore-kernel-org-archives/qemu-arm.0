@@ -4,101 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63E7BFEFB56
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:59:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E832EFEFB56
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 15:05:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvzJT-0003op-Sv; Fri, 27 Feb 2026 09:59:32 -0500
+	id 1vvzOy-0006Lc-4R; Fri, 27 Feb 2026 10:05:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvzJS-0003oT-5j
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:59:30 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vvzOw-0006KQ-5G
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 10:05:10 -0500
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvzJP-00037g-A6
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:59:29 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-48373ad38d2so88025e9.0
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:59:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vvzOt-0003j4-Rb
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 10:05:09 -0500
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-64ad9238d8fso2029384d50.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 07:05:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772204706; cv=none;
+ d=google.com; s=arc-20240605;
+ b=ApNKpKSkw1jun1640OSG/ZGsRHfQm68Xtvoi5UQ/JDMhNCe3cVbs5kmWM5OnmU/YWk
+ Pcd+KPbCQ+81HcM5Ejo8Pbr37YnB3DAXlz8fK8W4rkgLEqJZg0JwyCN7S9AnaABHLokF
+ dhX1bICsLa/YFN2v/S2wnWkSwED87u4S8mECJUCknrgBnHS39NKvl9caiO6N79lSnPbu
+ XJzaSMITp4RE40tJuO3rgHb4g+pKPtx/0uEOjhUX8qVKqvvPWTKl8hWdXklZKtIfXZrL
+ uNI7Oor1spDxRMTlmc65aPPdz14JBNTnBbraUJmeTRo2fyg3ApM5ZBtiBiFtwZX2HO3K
+ 36tA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=bQYyYl6AGFnau/0Z1LKVfDyYADIMLrkJIezRGu7W9DI=;
+ fh=DGQ4PCtqkmG3Clj0hVuvj0GV2Z5LAKYKVvLb/Y/OJ7Y=;
+ b=V7OCDOsDKqy4QGFL7odysOvICdzLYTvwxPdyAMwr72RGAGGfxScJKRNsDvVSiJFMHj
+ vrjdEeYRvZ132b8VsVUwnxQGU3jT4Q4E7N7mm9WYlMgo92ZjQdnEYIJ2jVCyYjEK3W+F
+ frAk4Y/31sXy+Qo6i9yQwIG97xeFHbbmXoss5hbdSbCZjXfgd8VsmqUQD5Tg2U/HF1o8
+ O/JtCh6VyJXkqk/Jn2lQjk+eaqa0a6L2ULREVJnAB0d015lnSdQgWeccsF3uEjMYWI8K
+ Iuz8i+HaOUjFsyB3nKzVwLBwtK6zjEoBK3HumKd6Nd1+iMo6a6hhFFmXcA8ih17bQJtn
+ W+3Q==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772204366; x=1772809166; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=2U6BkZZmlo7MrZabwn9eG8crLb3somxEKkXgFy3eCjU=;
- b=ySvzfA7CSe1VU1TbCniW37MoasC+8IKZE0mmf9zbmkuWw68SgSjtcyLjQMi6asWTCo
- P/G3C5orF3X5gF8RzfFQBuJXoX/UPvFu1FptlZcnwDnAkfjPDqNZ8ZBIX3V4tfp7q70K
- zU/sGdEObfq1tGe2NblaqIMrlZ2V68RoN3jQfa2KqJ8A69n5h7MV9D4vzSp6GDSGdN5z
- 18y6VS0KatmLD/FJf8PlqQ4LHFXIGacptOdPmLwqVgnFk9Tj6cVyZHVwyl86DyfUYzya
- YEzI1wFzJFurZffi8DSe/nTdsoz+wHtcW4EDWArGX8ozOKW/j/SjbU9kn3lHgoeoQ8sJ
- 7fyw==
+ d=linaro.org; s=google; t=1772204706; x=1772809506; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=bQYyYl6AGFnau/0Z1LKVfDyYADIMLrkJIezRGu7W9DI=;
+ b=WufVHUymL0X7QWiKYpV7mf7uDiz/NPkA+3CFs3uLBFr2s/Y67yxAPT2iHDi4CztUaj
+ JcAgCmtWJAm9OaV/6IvxHwKhe8zcDEcVkQ0rLd/RvEhenQNHbX2G7K8NlyFw+GwXdJHd
+ 3nyFBVWjqApe9NMO/BIMDwW2Xcy+rz1LAG++WR8q2xmwIvXLP/YJfnIJxYZaAHYJuH1q
+ DtSJSUNBezWRkJdrlfZ1HtDlK+a8dCMB9kGKTEGI3WZvuVJOBsFk5ls9HspydAraP1XS
+ G3dgHiyfaZpIMj6zccx1arXwcW4mQPjaPBwg+WSYv2nIJ3L2/dQCzkDjvxB6l2Y4JdxY
+ MZYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772204366; x=1772809166;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2U6BkZZmlo7MrZabwn9eG8crLb3somxEKkXgFy3eCjU=;
- b=mx2kkefdHuvUhpB7lLx/+9E7sWz3ZZwziHRM7mXbftvmV6KK5Yr5LnZMA3PI/7sK2Z
- vzc5ucPsQXkcG+kmAnsW3RWUsQAVfRvYHe6xLW0XvkNVZSnTYU513SK0h/Dp8ZSWnpmL
- MRBO0vcdDzd5NJhGnQLqaQHw68A/YRvNOPkerfsYsGDTkP3yabvLWw9QtHDHwuvfp9zA
- +Egac4x4DiCwkZouM1b3T8KREICBTo6oFyU4rPXk56+/Y4/gutVluY9RuYnIfg/2pqhV
- /xaZ8QAiBVVT1yT8+wBAQ6+CAniV/PaKbUYNKGSxRDH35t42INH2rblzddB/g0WCb6O2
- MJuw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVWNwMomAxAY54Yzv01rvVWgqMouxFSJv3IVQXdD09MN3+Eo0+0pnhL4ZW75R6/Pdv8gKn3cA0J7g==@nongnu.org
-X-Gm-Message-State: AOJu0YxemKTAAHCqcmGZwYrJMkwFZQW0/QBD92ya5LsVyXBKZRwU6SiF
- ROoIfdPog3I44xWJrssgmJkUudYql+kBoQyL45inexojbb5xxRn3SAdwb4VfGecMYg==
-X-Gm-Gg: ATEYQzwDSV4f33pzHUXJ2VyPuv/ZBZyG+izL/OGHHuSP/jWh+67mOt96OzP0JqiCVC3
- v7HKvyklyC1DCmrzRoQ/VRRCvY7tYLN/TNeDEUEP/16X3XXH9RjYcSVLAAXQ01qmbyVegaSPZ6D
- yKr3bS+ruqsrkzxqKbV6gtJ4deQAXlkpt4XAiCPL3N8sS5Ms+VqrnE+FWEBTHdHpGCb9YfsWsIl
- LCGFEKhy56viCSEQKNRVTveH3z1EKwBpS+i/wTPVmSTxqoks43Fh+b2scKAxeBOs2ydmDs4U7fY
- B+M3AEPJk+mD2WExSwYJflXujDLcvAoxal49W4fckysFJzQSqV1ilrtcJksAJ0VoTXRqz3eV0Tm
- ov6BzYb5ggPuD0bPXflGmXhsXu0dCTcDm31AAOJ9UH42XKIVKExqzm4mrJaA+LSmNemiEBVZTWA
- Bdn/SYv1bataNsjQuSDHWrFfaBGRoyKWNiH8u/bSbTnurVi1v8TeLsGOu8rVgA800FsjHXoeKKy
- KU=
-X-Received: by 2002:a05:600c:154e:b0:47e:d9e7:1c12 with SMTP id
- 5b1f17b1804b1-483c31a96c4mr2353065e9.6.1772204365303; 
- Fri, 27 Feb 2026 06:59:25 -0800 (PST)
-Received: from google.com (206.56.155.104.bc.googleusercontent.com.
- [104.155.56.206]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4399c75b8afsm8064154f8f.23.2026.02.27.06.59.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Feb 2026 06:59:24 -0800 (PST)
-Date: Fri, 27 Feb 2026 14:59:21 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-Subject: Re: [RFC v4 24/31] hw/arm/smmuv3: Determine register bank from MMIO
- offset
-Message-ID: <aaGxST56MQWlN8fJ@google.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101830.2996354-1-tangtao1634@phytium.com.cn>
+ d=1e100.net; s=20230601; t=1772204706; x=1772809506;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bQYyYl6AGFnau/0Z1LKVfDyYADIMLrkJIezRGu7W9DI=;
+ b=nN3zuZwEAj/yFzKGr5ohlsVGF7STHJRNDQCdGugrpls69jRcYofPCMwcZnjA8Kav7q
+ Ye91Z95X+9Dkwhbgu5MFhkzypgDf0DLd3TWvcewyZMYFNLq5eMIc2VqcuBDLYv/Esjig
+ p7N8W4EtRQ7sLcTLa0txzpHNRE3g5yN+7EIimJYMdTIY9cPOJle//u1lvkcKiNSCMWOy
+ EsyHR4zKaROfgKIwyABYtgDAEx0bqDOPsx6iiR7e3a3fWaAGNMivnN0wm/HJxpa5eMjq
+ Z3KwuLFhPnlm7ZBoATfN+CNZCjW5NXGKpuHQsh0Rbv2ucRwYMJc81RCBMQlwK4U8Og8i
+ 5yYQ==
+X-Gm-Message-State: AOJu0YyB+0ANX/qn1SnHQmCfqNncJB1SpXuiRVnAm1lMkwdEwT5r8Ll5
+ Gt+E1tHa5ssR0hB1QzOMRaGrX6M7CEAK/1NPc2nCV4uAjIQAUm/cwdp/H7h84aTYSj1iGy1hRdt
+ HKD0zuh9Pokq/fMin5Cabg06PxdspoJFoIAaYOId7ZXEPoRYe+faY
+X-Gm-Gg: ATEYQzwgtaoCUKoKj5bv600LcIi3B44M3ZJH8EbpQMvlhDTxvnsbY4a4Cr8YPuZlpu+
+ 04k26brWxTU4v9a+3165cr40AyXXZvM/S0dXaFD6hypplJZ6BWSiVMsm0c87b6i9+H8f6dVEhzP
+ HzkBluODbtTqkrE9toNos6NkLj9eBP5XIl4HpOlJFwO1+A+dIRZT76uWn77U/hF6swavsXzZO+L
+ XuuDpkcmhp7BMg/kwuwQVitfT0fvxPKYnT7xKG1HEEZXSzAOK20ow9ZoglB37MKdhbsJ7N6uUZY
+ nhAwv8ymF+MudYJVSBdrhKYDvJvCc04r/Xl85u0RUXv/aXhWnlddXdhOef1iyltxwhg=
+X-Received: by 2002:a05:690e:44a5:b0:64c:a894:f723 with SMTP id
+ 956f58d0204a3-64cc1f2704emr2043353d50.0.1772204706420; Fri, 27 Feb 2026
+ 07:05:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260221101830.2996354-1-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=smostafa@google.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+References: <20260227135736.2280161-1-peter.maydell@linaro.org>
+ <20260227135736.2280161-2-peter.maydell@linaro.org>
+In-Reply-To: <20260227135736.2280161-2-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 27 Feb 2026 15:04:53 +0000
+X-Gm-Features: AaiRm521CMDjXfjtvXpLaKxDxfrq5PyN4OGz451qxRCQIRIESTccqQ-z6s0XMk0
+Message-ID: <CAFEAcA853KSRD7yJKjyoM-E2R4YNou=x+BCR9EWrjym==-tQjA@mail.gmail.com>
+Subject: Re: [PATCH 1/4] scripts: Move lsan_suppressions.txt out of oss-fuzz
+ subdir
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Alexander Bulekov <alxndr@bu.edu>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Stefan Hajnoczi <stefanha@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,207 +120,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Feb 21, 2026 at 06:18:29PM +0800, Tao Tang wrote:
-> Modify the main MMIO handlers (smmu_write_mmio, smmu_read_mmio)
-> to determine the security state of the target register based on its
-> memory-mapped offset.
-> 
-> By checking if the offset is within the secure register space (>=
-> SMMU_SECURE_REG_START), the handlers can deduce the register's
-> SEC_SID (reg_sec_sid). This SID is then passed down to the register
-> access helper functions (smmu_writel, smmu_readl, etc.).
-> 
-> Inside these helpers, the switch statement now operates on a masked,
-> relative offset:
-> 
->     uint32_t reg_offset = offset & 0xfff;
->     switch (reg_offset) {
->         ...
->     }
-> 
-> This design leverages a key feature of the SMMU specification: registers
-> with the same function across different 3 security states
-> (Non-secure, Secure, Realm) share the same relative offset. This avoids
-> significant code duplication. The reg_sec_sid passed from the MMIO
-> handler determines which security bank to operate on, while the masked
-> offset identifies the specific register within that bank.
-> 
-> It is important to distinguish between the security state of the
-> register itself and the security state of the access. A
-> higher-privilege security state is permitted to access registers
-> belonging to a lower-privilege state, but the reverse is not allowed.
-> This patch lays the groundwork for enforcing such rules.
-> 
-> For future compatibility with Realm states, the logic in the
-> else block corresponding to the secure offset check:
-> 
->     if (offset >= SMMU_SECURE_REG_START) {
->         reg_sec_sid = SMMU_SEC_SID_S;
->     } else {
->         /* Future Realm handling */
->     }
-> 
-> will need to be expanded.
-> 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+I forgot to cc the 'device fuzzing' maintainers on this patch;
+sorry about that.
+
+-- PMM
+
+On Fri, 27 Feb 2026 at 13:57, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> The oss-fuzz code uses an lsan_suppressions file to suppress certain
+> leak-sanitizer cases that are known issues or not our code's bug.
+> This is useful more widely than just for the fuzzer harness: if you
+> want to build QEMU with the leak sanitizer enabled and run 'make
+> check' then you will want to suppress some bogus leak reports.
+>
+> Move the file up a directory, and add the usual SPDX identifier
+> and a comment describing how to use it.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/smmuv3.c | 57 +++++++++++++++++++++++++++++++++----------------
->  1 file changed, 39 insertions(+), 18 deletions(-)
-> 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 9c09ea0716e..d81485a6a46 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1781,12 +1781,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
->  }
->  
->  static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t data, MemTxAttrs attrs)
-> +                                uint64_t data, MemTxAttrs attrs,
-> +                                SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
-
-This breaks all registers above 4k?
-For example, TCU registers/PMU reside on some of this area and if SW
-writes to those this might be aliased to something as CR0, which might
-disable the SMMU and bypass some security checks. (in case it’s managed
-by the hypervisor).
-
-I believe you should check the secure offset explicitly to distinguish secure
-and non-secure.
-
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_GERROR_IRQ_CFG0:
->          if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
->              /* SMMU_(*_)_IRQ_CTRL.GERROR_IRQEN == 1: IGNORED this write */
-> @@ -1851,13 +1852,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->  }
->  
->  static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t data, MemTxAttrs attrs)
-> +                               uint64_t data, MemTxAttrs attrs,
-> +                               SMMUSecSID reg_sec_sid)
->  {
->      Error *local_err = NULL;
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_CR0:
->          bank->cr[0] = data;
->          bank->cr0ack = data & ~SMMU_CR0_RESERVED;
-> @@ -2094,16 +2096,25 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->      SMMUState *sys = opaque;
->      SMMUv3State *s = ARM_SMMUV3(sys);
->      MemTxResult r;
-> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->  
->      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->      offset &= ~0x10000;
->  
-> +    /*
-> +     * Realm and Non-secure share the same page-local offset layout; Secure uses
-> +     * the same layout but is mapped starting at 0x8000(SMMU_SECURE_REG_START)
-> +     */
-> +    if (offset >= SMMU_SECURE_REG_START) {
-> +        reg_sec_sid = SMMU_SEC_SID_S;
-> +    }
+>  .gitlab-ci.d/buildtest.yml             |  2 +-
+>  scripts/lsan_suppressions.txt          | 11 +++++++++++
+>  scripts/oss-fuzz/lsan_suppressions.txt |  5 -----
+>  3 files changed, 12 insertions(+), 6 deletions(-)
+>  create mode 100644 scripts/lsan_suppressions.txt
+>  delete mode 100644 scripts/oss-fuzz/lsan_suppressions.txt
+>
+> diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+> index 1b656b9eb0..7548057c54 100644
+> --- a/.gitlab-ci.d/buildtest.yml
+> +++ b/.gitlab-ci.d/buildtest.yml
+> @@ -626,7 +626,7 @@ build-oss-fuzz:
+>      IMAGE: fedora
+>    script:
+>      - mkdir build-oss-fuzz
+> -    - export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt
+> +    - export LSAN_OPTIONS=suppressions=scripts/lsan_suppressions.txt
+>      - CC="clang" CXX="clang++" CFLAGS="-fsanitize=address"
+>        ./scripts/oss-fuzz/build.sh
+>      - export ASAN_OPTIONS="fast_unwind_on_malloc=0"
+> diff --git a/scripts/lsan_suppressions.txt b/scripts/lsan_suppressions.txt
+> new file mode 100644
+> index 0000000000..ffade3ba5a
+> --- /dev/null
+> +++ b/scripts/lsan_suppressions.txt
+> @@ -0,0 +1,11 @@
+> +# SPDX-License-Identifier: GPL-2.0-or-later
 > +
->      switch (size) {
->      case 8:
-> -        r = smmu_writell(s, offset, data, attrs);
-> +        r = smmu_writell(s, offset, data, attrs, reg_sec_sid);
->          break;
->      case 4:
-> -        r = smmu_writel(s, offset, data, attrs);
-> +        r = smmu_writel(s, offset, data, attrs, reg_sec_sid);
->          break;
->      default:
->          r = MEMTX_ERROR;
-> @@ -2115,12 +2126,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->  }
->  
->  static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t *data, MemTxAttrs attrs)
-> +                               uint64_t *data, MemTxAttrs attrs,
-> +                               SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_GERROR_IRQ_CFG0:
->          /* SMMU_(*_)GERROR_IRQ_CFG0 BOTH check SMMU_IDR0.MSI */
->          if (!smmu_msi_supported(s)) {
-> @@ -2149,17 +2161,22 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
->  }
->  
->  static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-> -                              uint64_t *data, MemTxAttrs attrs)
-> +                              uint64_t *data, MemTxAttrs attrs,
-> +                              SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_IDREGS ... A_IDREGS + 0x2f:
-> -        *data = smmuv3_idreg(offset - A_IDREGS);
-> +        *data = smmuv3_idreg(reg_offset - A_IDREGS);
->          return MEMTX_OK;
->      case A_IDR0 ... A_IDR5:
-> -        *data = bank->idr[(offset - A_IDR0) / 4];
-> +        if (reg_sec_sid == SMMU_SEC_SID_S) {
-> +            g_assert((reg_offset - A_IDR0) / 4 < 5);
-
-Asserting here is too much as this can be easily triggered by guests,
-we should follow the convention of other unimplemented registers.
-
-Thanks,
-Mostafa
-
-> +        }
+> +# This is a set of suppressions for LeakSanitizer; you can use it by setting
+> +#   LSAN_OPTIONS="suppressions=/path/to/scripts/lsan_suppressions.txt"
+> +# when running a QEMU built with the leak-sanitizer.
 > +
-> +        *data = bank->idr[(reg_offset - A_IDR0) / 4];
->          return MEMTX_OK;
->      case A_IIDR:
->          *data = s->iidr;
-> @@ -2275,16 +2292,20 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
->      SMMUState *sys = opaque;
->      SMMUv3State *s = ARM_SMMUV3(sys);
->      MemTxResult r;
-> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->  
->      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->      offset &= ~0x10000;
-> +    if (offset >= SMMU_SECURE_REG_START) {
-> +        reg_sec_sid = SMMU_SEC_SID_S;
-> +    }
->  
->      switch (size) {
->      case 8:
-> -        r = smmu_readll(s, offset, data, attrs);
-> +        r = smmu_readll(s, offset, data, attrs, reg_sec_sid);
->          break;
->      case 4:
-> -        r = smmu_readl(s, offset, data, attrs);
-> +        r = smmu_readl(s, offset, data, attrs, reg_sec_sid);
->          break;
->      default:
->          r = MEMTX_ERROR;
-> -- 
-> 2.34.1
-> 
-> 
+> +# The tcmalloc on Fedora37 confuses things
+> +leak:/lib64/libtcmalloc_minimal.so.4
+> +
+> +# libxkbcommon also leaks in qemu-keymap
+> +leak:/lib64/libxkbcommon.so.0
+> diff --git a/scripts/oss-fuzz/lsan_suppressions.txt b/scripts/oss-fuzz/lsan_suppressions.txt
+> deleted file mode 100644
+> index 7d90c280d0..0000000000
+> --- a/scripts/oss-fuzz/lsan_suppressions.txt
+> +++ /dev/null
+> @@ -1,5 +0,0 @@
+> -# The tcmalloc on Fedora37 confuses things
+> -leak:/lib64/libtcmalloc_minimal.so.4
+> -
+> -# libxkbcommon also leaks in qemu-keymap
+> -leak:/lib64/libxkbcommon.so.0
+> --
+> 2.43.0
 

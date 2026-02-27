@@ -4,91 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29543FEFB53
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 13:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC08CFEFB58
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:31:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvyLw-0006Ff-3p; Fri, 27 Feb 2026 08:58:00 -0500
+	id 1vvysJ-0008Fc-L4; Fri, 27 Feb 2026 09:31:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vvyLi-0006A1-Bc
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 08:57:47 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1vvysB-00088Q-9S
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:31:19 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vvyLd-0007Uh-Rb
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 08:57:44 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-4398f9e3b40so2145683f8f.1
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 05:57:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <smostafa@google.com>)
+ id 1vvys8-0005Je-WC
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:31:19 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-48318d08ec2so53255e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:31:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772200660; x=1772805460; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0r5tVTwr3FwSzfLr0irG0lziyL9H4aagQEDitRzfyJI=;
- b=ppBmVzzM6ln8tfKsIK5LisTWB9dvW82wEIBhMaZnPP6W+9ysDRIhYuyOBJDdeL1DTY
- JM9f/c/OwE8h7B2AaqzolR1KbdppGz5CTiDDaOJxwXhGzE6W7NvGqNBoDo4bWLriFLGD
- 8v1MF+9I5x00lzPIbwFl4wbz6+2h3TM6q10Z4dksOVbkNvc+hffbwgUBEclwaYDDH1ih
- xAvPolO6GYMTK2Sb2FaTqQO8sTKG3u8AY/UajMVQfDRBc/Y5NcCxaHLgjbTFOzBcH7cC
- 3npWjioGPzjYYJ4V2p2gRJR/GUg559wbVK4/GaeDYcGNVfnbPdz3MBjvq+hJGnMNepar
- W8Tw==
+ d=google.com; s=20230601; t=1772202670; x=1772807470; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=7t70c5yCnUVrPN1M20H2ZzeIsX//ZNTm9WFwFVy1xhw=;
+ b=HCfDJ/wQBKcPwTVkx+nYntxhOhMxSR+ak6WiFzXhJLpcory7AlcLgFtOM/kkhfNJQF
+ gMlHLydHZxpWkiq1K8tn+j8esXZTXZPyFYB/VqLHV827/tkTT234+o80nMkI06/DoWZQ
+ zCfxxqqXNmbxuxXEljP2tSgpPOYYch6G4vbQ1JKA4jVeLBMey5oR2ErSAFtsFqVFkXQ7
+ s+y8pMQKwlLX0iytmUKEk0JtGw0vEfqayJrXRex8zclvnu1ZKUii2U/6b1UKUf1R2SVo
+ a3vLb3zKHMslTqJdS3r2/tmqc1qOQJitl9BkoVOxjZM4ifE24wCWy3hN2C8P5DsAuUJa
+ v/eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772200660; x=1772805460;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=0r5tVTwr3FwSzfLr0irG0lziyL9H4aagQEDitRzfyJI=;
- b=wOAKSEfUMlO4UT3G4N3TnuuJmSCVAXQyITAI/wGZ3RgdU1ELhaxeJr+TdRm2w2h0lQ
- 051QKYllGxnyus9pql8FFHm2j/r46O17kJlDWpwgv2CJXnvJeCC0VGgmFQkaqMNzrF4I
- bQLrgO83cl0v1/lpIjQoCjqdgy0VkJ7CzgrIztprMR2qRSMsgLCKRfrwctwWAW88r525
- /VkGeLB5g0mV+M3iDNSjAtsDSUKrG1mzFVOdhXEQ9XMsT4MjOapRqKZQIyF02GZszNYe
- rnYYADWfu9S7RKuBkgY4tYPP8cIqdp82LTec6x14xCGMsxoBEldjRNyKXOT7FdsN+qlR
- 4opw==
-X-Gm-Message-State: AOJu0YwuFM3EuUoof0MiDqDjky3NU83b2h5Fh6DVYh9X/jjMljACnFtN
- /kbcDSBcHxGwt/FQxOK0JTQ5r1xrFB4I6B7zuXUHhRVDoxiLJ5ZIpCBJS3xq1HE8FAFQgL9aSLZ
- 6MzP0
-X-Gm-Gg: ATEYQzy8LmmIx+Pq/Pybamhf3wlRMIzrdk+FQSelphHb8gwBPQJ2rJz9CCde8W5q+9k
- +iz8aYi7RiygNlboQgy7UjDBia1XqokQutE0hsFl7urBS4uTSRMxNbxs3faWT5ELY5qLx8b2qH0
- +joW/+DLcYUKy42ZATmt6icHtEgg8JgS0qrrHe/4+UsrJABZgK+n7BKJrhe8ax76jPS5uYMHvYd
- hGWguyh5ZTmEWcmEPnEv2ifyUr3GixKJOS1qVCRiDjzi8z1sBKrlpiD+GEZJNB0Xsy5EZn9e8ZF
- 7QUrpOo4W4YHxH1w8k2M/yusvdNmPa7gdmwm1Z2zLlL2FCAydbqnZ74wVEo0NBPjwsI8DKKE8sT
- YZm9+acJEqBFpXLdQu9GYsy1z0eXxTMN+rMmIDS5hs2miTIys2iliYwbw9NWuwp9aI4Lekiey/r
- XN/dAC3sDf1KzY05USXDvDWT+evsuV441qCGgP2/na57z4qgxRF8coWKyjKxWkbFtsXmWZcC0ll
- TiwBRLQoWUluFQPyiUONfrbNAGGSuM=
-X-Received: by 2002:a05:6000:24c3:b0:439:8ddd:90be with SMTP id
- ffacd0b85a97d-4399de14ff7mr4836650f8f.24.1772200660100; 
- Fri, 27 Feb 2026 05:57:40 -0800 (PST)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4399c75b327sm7655163f8f.20.2026.02.27.05.57.39
+ d=1e100.net; s=20230601; t=1772202670; x=1772807470;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7t70c5yCnUVrPN1M20H2ZzeIsX//ZNTm9WFwFVy1xhw=;
+ b=F4+k7qLCwpyWCvSDcmiqbeKXUqUPiEYu9FgttZitWJngmA4geSUMz1ooIMoid4v8fH
+ y8iwZFdxwRvSOfH8VGlnvE+i2ETLYsZirX1VaivzRfyMNGy7lcn+A3fWU1uG9mSx9NE1
+ wYJ/myjs5VTwaYqimH5HlEzqglzq5HAd/e5uquDp3ymSeGU/a699Ci3QQxf9r36aV2/9
+ zD88pjPwKVFy1X8iWS08enjpHsDGkICyzBn8MnT4cSA8JCDWrIgGsOJa2qCDMjerdylI
+ qXCUnqICcxbb8wxkzhzZvsxOLRLVTWwqLjB6iRmEBff6ePwMjwaZO/H3FCVogayoLKv1
+ itqA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUNVuyp3CF8Inj4wqELaXjEP8sAyHyABCTCUVA1cjebggA8xOqtqnqyGRTK+csLdjbE8JhvLDytQg==@nongnu.org
+X-Gm-Message-State: AOJu0YwbYGLyss+hPcEfAAFd4PitWweYzCH3W7IfXbPJK6gnX3cAjU2i
+ bLZxelscBlPjhBXs8yOiTYDU/SJQ0/WOFWtChWrMG0LTtwbjMaslszGC+6ac60N63A==
+X-Gm-Gg: ATEYQzyGPDVOBYt2w3ZPvMOt5bZv6SstKWykP8HIzDK6aCzD9naPmi+0luQ6DrWTARl
+ tr+bFOCKWhLRwFZ5Zxm7IKu2d726hwbsl0vUBe6cbvuNcmYixVWRb2Yka+KQRKwkOU6rKJo49SP
+ /YfcpzxhWyzPR+/tEHTmSg48OPIEzSTEWmYeIxJwc7YvaNBdkwSWNrqX0X4vJzSbuycxJRl4qEL
+ gqemhVRFPrFzdlLI9bJBvA9ffsADlCFpkxefMRawP3nvlCqCupmR9TKvdyVaklrfhkwoQmmA5lA
+ /svCuWcUdRvH3wAurjVTEtK8ya7kBIupguCJIlG2NxcjCvh0aE0l0D70FODBPilmi/dWHdhepmw
+ QsL1DqY47ZTwjFK+8iXFrBi6jduliP/SuihEtH22IgdnNt8hVZ3hNNaHZ6ZXKrjJGMBLt0TSzM7
+ RehPxXudYX73OgDz8usf+xhu/6TTLek5JU3u8etLwtqmLuU8huKHkzKUJ6+LgwOGqG
+X-Received: by 2002:a05:600c:154e:b0:47e:d9e7:1c12 with SMTP id
+ 5b1f17b1804b1-483c31a96c4mr2321145e9.6.1772202669842; 
+ Fri, 27 Feb 2026 06:31:09 -0800 (PST)
+Received: from google.com (206.56.155.104.bc.googleusercontent.com.
+ [104.155.56.206]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4399c75b8afsm7922957f8f.23.2026.02.27.06.31.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Feb 2026 05:57:39 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH 2/4] scripts/lsan_suppressions.txt: Add more leaks
-Date: Fri, 27 Feb 2026 13:57:34 +0000
-Message-ID: <20260227135736.2280161-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260227135736.2280161-1-peter.maydell@linaro.org>
-References: <20260227135736.2280161-1-peter.maydell@linaro.org>
+ Fri, 27 Feb 2026 06:31:08 -0800 (PST)
+Date: Fri, 27 Feb 2026 14:31:05 +0000
+From: Mostafa Saleh <smostafa@google.com>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Chao Liu <chao.liu.zevorn@gmail.com>
+Subject: Re: [RFC v4 01/31] hw/arm/smmuv3-common: Fix incorrect reserved mask
+ for SMMU CR0 register
+Message-ID: <aaGqqcW6qo6jnp7_@google.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221100250.2976287-2-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260221100250.2976287-2-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,45 +111,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Running "make check" with the clang leak sanitizer reveals some
-leak reports which are either not our problem or else not
-a leak which is worth our time to fix. Add some suppressions
-for these.
+On Sat, Feb 21, 2026 at 06:02:20PM +0800, Tao Tang wrote:
+> The current definition of the SMMU_CR0_RESERVED mask is incorrect.
+> It mistakenly treats bit 10 (DPT_WALK_EN) as a reserved bit while
+> treating bit 9 (RES0) as an implemented bit.
+> 
+> According to the SMMU architecture specification, the layout for CR0 is:
+> | 31:11| RES0           |
+> | 10   | DPT_WALK_EN    |
+> | 9    | RES0           |
+> | 8:6  | VMW            |
+> | 5    | RES0           |
+> | 4    | ATSCHK         |
+> | 3    | CMDQEN         |
+> | 2    | EVENTQEN       |
+> | 1    | PRIQEN         |
+> | 0    | SMMUEN         |
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Link: https://lists.gnu.org/archive/html/qemu-arm/2025-06/msg00088.html
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- scripts/lsan_suppressions.txt | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+I think fixes as this, should be separate, that would make the series
+smaller.
 
-diff --git a/scripts/lsan_suppressions.txt b/scripts/lsan_suppressions.txt
-index ffade3ba5a..bd6ef07079 100644
---- a/scripts/lsan_suppressions.txt
-+++ b/scripts/lsan_suppressions.txt
-@@ -9,3 +9,23 @@ leak:/lib64/libtcmalloc_minimal.so.4
- 
- # libxkbcommon also leaks in qemu-keymap
- leak:/lib64/libxkbcommon.so.0
-+
-+# g_set_user_dirs() deliberately leaks the previous cached g_get_user_*
-+# values. This is documented in upstream glib's valgrind-format
-+# suppression file:
-+# https://github.com/GNOME/glib/blob/main/tools/glib.supp
-+# This avoids false positive leak reports for the qga-ssh-test.
-+leak:g_set_user_dirs
-+
-+# The walk_path() function in qos-test does free its memory,
-+# but something about the setup with tests run in a subprocess
-+# seems to confuse the sanitizer. Suppress the errors.
-+leak:walk_path
-+
-+# qemu_irq_intercept_in is only used by the qtest harness, and
-+# its API inherently involves a leak.
-+# While we could keep track of the old IRQ data structure
-+# in order to free it, it doesn't seem very important to fix
-+# since it is only used by the qtest test harness.
-+# Just ignore the leak, at least for the moment.
-+leak:qemu_irq_intercept_in
--- 
-2.43.0
+Reviewed-by: Mostafa Saleh <smostafa@google.com>
 
+Thanks,
+Mostafa
+
+> ---
+>  include/hw/arm/smmuv3-common.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+> index 67a23fbeaae..2df54ba60f9 100644
+> --- a/include/hw/arm/smmuv3-common.h
+> +++ b/include/hw/arm/smmuv3-common.h
+> @@ -355,7 +355,7 @@ REG32(CR0,                 0x20)
+>      FIELD(CR0, EVENTQEN,      2, 1)
+>      FIELD(CR0, CMDQEN,        3, 1)
+>  
+> -#define SMMU_CR0_RESERVED 0xFFFFFC20
+> +#define SMMU_CR0_RESERVED 0xFFFFFA20
+>  
+>  REG32(CR0ACK,              0x24)
+>  REG32(CR1,                 0x28)
+> -- 
+> 2.34.1
+> 
 

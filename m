@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 772A9FEFB56
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2199EFEFB54
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 14:49:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vvz8Z-0007Wo-HX; Fri, 27 Feb 2026 09:48:15 -0500
+	id 1vvz9e-00007d-Bm; Fri, 27 Feb 2026 09:49:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvz8S-0007Qu-Fj
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:48:09 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1vvz9a-00006U-Ug
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:49:19 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vvz8M-0000RR-0V
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:48:05 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-48371d2f661so55815e9.1
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:48:01 -0800 (PST)
+ id 1vvz9Z-0000dG-Es
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 09:49:18 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4806b0963a9so73825e9.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 06:49:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772203680; x=1772808480; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=kq2sTxoBAMy/N4S6C9stR5oWuXQX8kO/FBbO6KZLDw0=;
- b=3WHJdK6T3XNNlkN2RtLsojea4MZbjjrU4m9H0w+a5a+mAdFT8syqKC3a8dX7CaO3ky
- CA6uQwx7aPW534bhkB9NfgQgFw6hmdcsBi2xfZma3uL0WE2rxnRDFCpc53Hhr6ILB/NJ
- t/HBHkcYCGe0pwpuy3t92/mXiQ+Blumt+sWuO6/Ph4WTH7s8ygH6emwO6qohU0dCIS2c
- CkfB26kZiR4x3v7N6bUUGaxIqcIChVZ1Buo12sChezJNx476Gv6yz1Ydia/1TXoh7vXp
- T0oBV3V5op6vEb+3coy4Q+Q4bOh6tZs2L0+0gZ0JPtCTB2N/PTKO6mqr8bIhTXGBwlSV
- oZAw==
+ d=google.com; s=20230601; t=1772203755; x=1772808555; darn=nongnu.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=EMytu01jL5efHCJb/FWsaKOhAjnP/YXQLGi72/gI6no=;
+ b=RU9hZCih0oiUB4h/ZNNUnqC4KelrlJJQE4ajcuIlBcuC9UBGgbOUlFPEYUOsKgFF2A
+ tN8hP5tpS20xJ8ow4xAKlyIvMAFspVSOG/MIZMHBxG3PLi1aJTKtG/pgWg/5y02Wr9JT
+ P+ryO4CGlEmkEx2zsQCEXzGAT/f78yyWg7xaNyGl10rJG/GRecC97ev2rCrBiuCJrvBD
+ gOOb8CnQWo/SQVM21h9Q07cYeDWwKIWF7AIe/BSLbFlT4z6BM1GLQGToeNAL89Gw2UWA
+ SH27rSCEf0gIQbrWK3GNpQGbBdcloXRNFVSqfAjPg+EefTyO7q+/MdRcqnfCePhq8pJH
+ lCQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772203680; x=1772808480;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kq2sTxoBAMy/N4S6C9stR5oWuXQX8kO/FBbO6KZLDw0=;
- b=QoL7UOauy8wSR6LJh7T2AaKeK+lKFcrmyqd8sAOXbrhGE6YBURKQjaO9Y+CxFIJMAQ
- A+Yoo1l8964wP8gjpRkXh6XLxDI6WgOAav7CpaIt12eDdrfe0Mozph4YFLhoBRF8g19q
- f5bpkeg8wXGJA7hwLXrKLRl566LarlYRD1hL3yszRsTR27YS5W5ublTFq5WszBwT9I7N
- 592XQSeHboNz16uPstvEYssZtE3boFdpgG4xXZWjq2nQY7GaKzdWwplpKRWtUG4VM+7y
- s4D7idJqKml6sxtSzgqoJyfI+J6rVwuleIl8FFe9pQYy1TOqYjIMPTCro8lveFb/9re6
- J5hw==
+ d=1e100.net; s=20230601; t=1772203755; x=1772808555;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=EMytu01jL5efHCJb/FWsaKOhAjnP/YXQLGi72/gI6no=;
+ b=fVbaki70zX6L+Z75vOBiR+scNjx1waqAnL2g/8y4f0rlLAvQB9Tf7tYufz2WEsh12Q
+ LSN8jrluNRnmetY2Lgril9zMn/UYQR9oHtHAYzZAmF4Wnvo7ebvavZZq8h6y8+c2rtSk
+ 9gVyDzEi5wRU965DX/RUYo/lnhVqfkGzjGMR1dPqUkK6ung1yH99Zm4w83llc0TzrBSD
+ bU7K8QBSNj0MdIzPATH+K6swJlwTAZeAbzNomKikX8oLews/jGqXRk0DKrBx1qkug57Z
+ nloOABTdW5Zxvzdc/oEmf27e83SYpoSSYuAR1WDZ7xMRIOyqj5Pv2Ieoi+e6hKq1EXVi
+ CG6Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUITQPrvX1eCSeqVUMp6X0SBk2gsX7z6D/6QSzYozYlbLGKOVrjBAdOT5guHMW8qvJIsMLygdhW+A==@nongnu.org
-X-Gm-Message-State: AOJu0YzQj2Of4GUTU2UQBwO3Pw8GRc4KtP0dTKAq9hDMRmCU6/jH1FlK
- cPS6Bp1V9p2H+q+yWSfnbMe5642GSaqdckTUadOrHKg6OPs8fN80FUliYy3rTY7PgA==
-X-Gm-Gg: ATEYQzx30FTu3wRdOBkakJc4Tgm80ZpazeV32L3VajgWBqOR1+2zztx5TwhY2x75an7
- ngmmYDGQ706MORkS+y2kcdnsf1zJVX0555axAX6GZFZcSPBbnxRC27XoW/0ja1Z6NqIsxsm4lyQ
- pFzzp+E5TBYQQTRZfvKbJnRnv1gNXJCJZtvvuOkw27mPFelOFAvSY2Z4wv7VTiQeIYo2AOivY6n
- JnAC7tuJ5o/si1HO4WcAtp93Afjjc3mwXWo2kVcSUgLZgEU+hYIeeLbTsxeaBeul7eQhez/6E05
- +BjRYgAeqYol1q3JwRzuNYAfAfL+lu98u3ts+DNJHCsMYVD0akpdDr3sMfM1Lc87bsrCyVoVCf+
- xWiOcJufLD6xfdGV6myL63voEMBXzr/eYK9/TSIxi64TkYAybNSKHYhJt3FOQIg3xBBM/xA2YWM
- lLrDmCT7U9gPmODieQ9rZ849Y49jq8De7qVMb3RwWoP70mpoGcbZ5P8m7D7bM5RAUr
-X-Received: by 2002:a05:600c:6d8d:b0:47e:de3a:a929 with SMTP id
- 5b1f17b1804b1-483c3188a3cmr1854505e9.12.1772203679471; 
- Fri, 27 Feb 2026 06:47:59 -0800 (PST)
+ AJvYcCV3aPhs8+mHcbspWV5+Lf3gOd/kWmTqSS1PHFbaRMOvocqD6u2X9PYsMLjUOTvFWc7KD6kSFFLntw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxet8A/b9xS7xuWWxHPtMjgw4W7b/KnD3aYQ24UjdBOkL//53xR
+ vK85d3ON0ZOj80u2jBREPOP9ut+3D1T+RTDtityHq3QalX2CxugqooqjsVFCCb/icQ==
+X-Gm-Gg: ATEYQzxGXK2Q/7fpR/Dc3nFoYoqHcf0/ItVO7uSgpevEUuOkPZtORw50OJuEZdN7Xwv
+ ZQ2LbDSowFi/C9bRrXCwup4ye1j92aD+hOg2/sk/YFSAfVe9udFfe3l78x22bytEG514yOrMs7F
+ 3vuc8xkCa/m2rIEhULWDVhd7PpaDM3UIYCd8g7GawHpK5nHsp+9BQa6CxaiTum6qHTBUYK49n+t
+ v6id5oFv2S03+MVtoJEeoTKLLIoM9+mVNEC7W1oxvOhN5VO1ztSMFVhZ59t/HowDODFV7kLzwn7
+ Xtw926M9CCSl9VsxfnXXcianFZBat4Yt3XPWE5L1wFxCr0cz1WgkfuSmtYUodT1VDKblonEk5Vr
+ otHC1uOKkjXYDLoSfwQ8MHI4UZ/EbVFoCT/VOSAxewp2MthMvyRD5vFkaYxdG4/jOV+DzBOLZlG
+ 9Ur5HnqjUORmu+ivn4tywDM0HkFNny5WALRbQ3dHpK+T/LVVL6pbvtlWm4GgceZrnb
+X-Received: by 2002:a05:600d:9:b0:47d:1e65:e841 with SMTP id
+ 5b1f17b1804b1-483c39ee08fmr1489425e9.9.1772203754670; 
+ Fri, 27 Feb 2026 06:49:14 -0800 (PST)
 Received: from google.com (206.56.155.104.bc.googleusercontent.com.
  [104.155.56.206]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483c35910f1sm99790985e9.2.2026.02.27.06.47.58
+ ffacd0b85a97d-4399c6100b8sm8556456f8f.2.2026.02.27.06.49.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Feb 2026 06:47:58 -0800 (PST)
-Date: Fri, 27 Feb 2026 14:47:55 +0000
+ Fri, 27 Feb 2026 06:49:13 -0800 (PST)
+Date: Fri, 27 Feb 2026 14:49:10 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Eric Auger <eric.auger@redhat.com>,
@@ -78,18 +77,17 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>
-Subject: Re: [RFC v4 16/31] hw/arm/smmuv3: Plumb SEC_SID through IOMMU
- notifier path
-Message-ID: <aaGumxmrKRelouE7@google.com>
+Subject: Re: [RFC v4 19/31] hw/arm/smmuv3: Fix CFGI_CD handling when stage-1
+ is unsupported
+Message-ID: <aaGu5v0To65M5LkB@google.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
+ <20260221101733.2995020-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=smostafa@google.com; helo=mail-wm1-x32c.google.com
+In-Reply-To: <20260221101733.2995020-1-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -97,7 +95,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,98 +111,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Feb 21, 2026 at 06:17:06PM +0800, Tao Tang wrote:
-> Extend IOMMU notifier functions to be SEC_SID-aware, ensuring that
-> invalidation notifications are dispatched to the correct security-aware
-> address space.
+On Sat, Feb 21, 2026 at 06:17:33PM +0800, Tao Tang wrote:
+> Add a STAGE1_SUPPORTED check in the CMD_CFGI_CD and CMD_CFGI_CD_ALL path
+> and return CERROR_ILL when stage-1 translation is not implemented,
+> matching the architecture requirement (IHI 0070G.b, page 176).
 > 
-> This ensures IOMMU notifier events (e.g., to VFIO) are correctly routed
-> to the appropriate security world's address space, maintaining isolation
-> between secure and non-secure DMA operations.
+> Fixes: 32cfd7f39e08 ("hw/arm/smmuv3: Cache/invalidate config data")
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 
-I don’t think that VFIO cares about secure regime, my guess is to
-keep the functions as this and don’t call them for secure invalidations.
+This is a separate fix, it can be sent standalone to make this series
+smaller, similarly the first patch.
+Also the "Fixes" comment is not accurate, that was probably broken from
+the stage-2 implementation which was added later.
+
+Reviewed-by: Mostafa Saleh <smostafa@google.com>
 
 Thanks,
 Mostafa
 
-> 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  hw/arm/smmuv3.c | 18 +++++++++++-------
->  1 file changed, 11 insertions(+), 7 deletions(-)
+>  hw/arm/smmuv3.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
 > 
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 4a4de719a7c..e33a7babd1c 100644
+> index fa09099a09a..d4c58c0c724 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -1195,15 +1195,16 @@ epilogue:
->   * @tg: translation granule (if communicated through range invalidation)
->   * @num_pages: number of @granule sized pages (if tg != 0), otherwise 1
->   * @stage: Which stage(1 or 2) is used
-> + * @sec_sid: StreamID Security state
->   */
->  static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->                                 IOMMUNotifier *n,
->                                 int asid, int vmid,
->                                 dma_addr_t iova, uint8_t tg,
-> -                               uint64_t num_pages, int stage)
-> +                               uint64_t num_pages, int stage,
-> +                               SMMUSecSID sec_sid)
->  {
->      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
->                                 .inval_ste_allowed = true};
->      SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo, sec_sid);
-> @@ -1251,7 +1252,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->      }
+> @@ -1461,6 +1461,15 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+>                  break;
+>              }
 >  
->      event.type = IOMMU_NOTIFIER_UNMAP;
-> -    event.entry.target_as = &address_space_memory;
-> +    event.entry.target_as = smmu_get_address_space(sdev->smmu, sec_sid);
-> +    g_assert(event.entry.target_as);
->      event.entry.iova = iova;
->      event.entry.addr_mask = num_pages * (1 << granule) - 1;
->      event.entry.perm = IOMMU_NONE;
-> @@ -1262,7 +1264,8 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->  /* invalidate an asid/vmid/iova range tuple in all mr's */
->  static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
->                                        dma_addr_t iova, uint8_t tg,
-> -                                      uint64_t num_pages, int stage)
-> +                                      uint64_t num_pages, int stage,
-> +                                      SMMUSecSID sec_sid)
->  {
->      SMMUDevice *sdev;
->  
-> @@ -1274,7 +1277,8 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
->                                          iova, tg, num_pages, stage);
->  
->          IOMMU_NOTIFIER_FOREACH(n, mr) {
-> -            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg, num_pages, stage);
-> +            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg,
-> +                               num_pages, stage, sec_sid);
->          }
->      }
->  }
-> @@ -1307,7 +1311,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
->      if (!tg) {
->          trace_smmuv3_range_inval(sec_sid, vmid, asid, addr,
->                                   tg, 1, ttl, leaf, stage);
-> -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
-> +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage, sec_sid);
->          if (stage == SMMU_STAGE_1) {
->              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, sec_sid);
->          } else {
-> @@ -1331,7 +1335,7 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
->          trace_smmuv3_range_inval(sec_sid, vmid, asid, addr, tg,
->                                   num_pages, ttl, leaf, stage);
->          smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
-> -                                  num_pages, stage);
-> +                                  num_pages, stage, sec_sid);
->          if (stage == SMMU_STAGE_1) {
->              smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
->                                  num_pages, ttl, sec_sid);
+> +            /*
+> +             * This command raises CERROR_ILL when stage 1 is not implemented
+> +             * according to (IHI 0070G.b) Page 176.
+> +             */
+> +            if (!STAGE1_SUPPORTED(s)) {
+> +                cmd_error = SMMU_CERROR_ILL;
+> +                break;
+> +            }
+> +
+>              trace_smmuv3_cmdq_cfgi_cd(sid);
+>              smmuv3_flush_config(sdev);
+>              if (!smmuv3_accel_issue_inv_cmd(s, &cmd, sdev, errp)) {
 > -- 
 > 2.34.1
 > 

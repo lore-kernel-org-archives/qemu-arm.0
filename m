@@ -4,128 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346BF103FFAC
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 22:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615C3103FFAC
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 22:23:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw5uu-0000nQ-Bl; Fri, 27 Feb 2026 17:02:36 -0500
+	id 1vw6Ew-0002XT-QO; Fri, 27 Feb 2026 17:23:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vw5uo-0000mg-SR
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 17:02:30 -0500
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vw6EV-0002Iz-1x
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 17:22:52 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vw5um-0005W6-BH
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 17:02:30 -0500
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2ae3a2f6007so790485ad.2
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 14:02:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vw6ET-0008JD-KQ
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 17:22:50 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4806bf39419so26336085e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 14:22:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772229746; x=1772834546; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1772230968; x=1772835768; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Y9sp0/JzOhL4IYezj/NIeqisTxzSea44/cDA2bqR6yE=;
- b=jc15Dfw9qiZ+lRuKkbRb3s0+eaTPQGaa0g4rEkFt6Wb/NYn/ufzShJbiKGOaNd7CBg
- uGzkXIeFAl2xsg3DaTyhe+Rzgpu3o5K0jws/o7K9lBgZerQb0Jb8GpUfh0cxPMV1EbbL
- K994EgTQHizDQ6di1HPr4LTZlkQ11uqREcSO4bu3ECwMzvMcMc1O5nxqFZS6+Y8x1KGv
- fs1i3lt+PsoULbM4KEmgyN2ZOhZHoewwrM+WhmpM6eB+w948NI5ZNlBGpepweKUbFTLv
- iS9fCWdaqFnhV2wSShwQiyLAV0VM9AgerU+Wb5rSEaUdZPydWjVru9qsNoFhrfQOU/4N
- ZB+A==
+ bh=laQeLrkd2ExBqEl9v8d60lyREPD8T8cRbOsW0WuGe2c=;
+ b=alHS3hKSKgTAugdzWRjkY+AF7Q1FvlZX1z/k9L+I4yjTihwpL1DtcsA6fZoavmIojd
+ 2mXnQoSTxAkJAzm+vZ7dMunIHd6UgXaFPfZPCs5oktqAtrgxZTAD38uvZ7wCPBBeopHB
+ 2/UxhiLht3y5llFZihwnmwXvWFhwUYpRglmAN5NnrdV50vplNCYAJHcsckKz/UxUXsLG
+ 64wDPDAqvzZvBJRzSwr+uFx39hP7syglVqVzPFjlOiNqGwl8f6lhNTnqfIIMVNoO/6k3
+ gM8Yt691Z5NFVOy7ebzjMuTPUFGw3Z9ABgwcJGa9vjk7Hx7MUVEP26YOUlhyeBhkAv+9
+ +q2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772229746; x=1772834546;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1772230968; x=1772835768;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Y9sp0/JzOhL4IYezj/NIeqisTxzSea44/cDA2bqR6yE=;
- b=Ah3JpThP1vbp/GgUoof1IGtbdqAH3VW91DQCQBpLLwiGiAtfXQDRgNiNj2+X71Lw2e
- Ak+i/g3ITPtE7REj2WhHWtfEQhd8eE8Ib/CZ2Okf99uFyD9T0hibi1XiRVYQw4BImgm2
- 07Gv1bqMsDbzXlEXObozjVGtc5tlszkkclV7vKYUCElPqu9KqSybScAXerhBztSkFQJc
- knI+hrIYzn6JuYAV3rtyxLrDpWMhfvlUG8iTM/M8yi4RcjEZvBLToMTudcJNULZilX4y
- tqCRqLq8Ae1UP81q2Jurzb/lBt82QUd4prUDvjFDlZHEorjT16/oN9DXXxlC6on4cwxd
- bklw==
+ bh=laQeLrkd2ExBqEl9v8d60lyREPD8T8cRbOsW0WuGe2c=;
+ b=CkpUiTq9sVdSTB7RaIpaSPiIIo9LKGz37FF6ILdc89DffcihunqkZ6iOa2O6SGwViH
+ XQQMqGqp9vYPYT701EINrLT/kpC0t/9W/FayG0DT+yb0a/NAn0sMSW51leg8WJbDhOlH
+ l0Wy/lx7BMwOgc192/b+26zZxkc0ZMly7JpGHllzzQl/QWqHdGMGxzYZmr4j7jjYPi+W
+ VbeOEgOkolyvBfpebTSzRPVgT4Vug1h847NPl2wtgx6ph7Ht0mOLgDIyfa8eCbytl94D
+ /FYGJ5vHZZzRqglJWG+l3VT/n1dh7B0diTGQq2p/6TvIAkap+/ZeAjugnjQvuNsKRE10
+ hSOQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXqgcZi1kfuoDvNVr81HU39QIXHqToBynGAjJreDEoHyo9dIzlTJDWBKUULPpczGCgl23icB9nyyw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9FxWuhCKABu3YckZWagSrMHZQFpePiyenipxSe5MoLqRxK4LV
- LuyuNngDv9OR1Za2FvmdojCKIqzmLkLr2bBYMVZgoaRspS5jyRl7b0I9mWHqMa0qgeA=
-X-Gm-Gg: ATEYQzx12VVmQJ8TC3odee6tdH4tkEdwdk2xyAqbparQ5WcCgG8AG7v/Nez398i6QET
- a7IWzBijk5MgWNknExgGSUZal8YIMebkShN3AU0duZqzvHo8gHKKp8GvpfmLNwKcg6J+FYvmPMh
- cbs8YuSVY5mUC7Vp6ENyIr71+vT5o1DsycxYo/tn1WRvGpkxohqu9DJs0xgEmUGJ/+UjVDSFj0X
- 0tOKfgTXQ2kzjyICYpJaZDY7aoPa4xnssdOcKh1pmug2P2RUOkzndjUrvMfHmBBOasmOIUZTmYo
- yhZuN+PPl9NWtEjrwWUhz/UEAgcYIw9i8LscLKxphOZbnneIWN8n7z3PcMs9MoXsygiptfmKwjU
- V7hlYRKqZnP0ToTOUb2XXH2waQ+7WRLOcPqLVeuG83rkAWlQNCGG3iGefbFW5rpnVoVEZlEdl9H
- yd2X6RGcbRZR4B/Rd3oj56ZNqjNJVT72GwfjPA1vfZ7IZuBCDmvCyBrB7xw5uMT766m/YQ
-X-Received: by 2002:a17:903:41cb:b0:2ad:ba04:40ca with SMTP id
- d9443c01a7336-2ae2e419430mr42316735ad.25.1772229745615; 
- Fri, 27 Feb 2026 14:02:25 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2adfb6a0432sm98368445ad.52.2026.02.27.14.02.24
+ AJvYcCXsV30oXoXBaK3nKDR4QSj/dUjsoGUburPQxsgYyurh9GCMDV2++Omb3/BDjq0JWtBGar2xFHxf5A==@nongnu.org
+X-Gm-Message-State: AOJu0YwoX84isNVtGFZ6oUyP1IrVTUJS5ZjX7XAdamLe/TzWyCyLCMaj
+ 2AYKZU/gbCLUQJfWuqJ6tsGkvQfvoqB6N44/1NvD2eE9vEhwiLri8Ocu9d6brfTOHAI=
+X-Gm-Gg: ATEYQzyYGL+iFgZZSRX15GFJBYKgbEaLMdczKJc1NXdURHvItjir/CXklWBk2npDDrG
+ hmgtPhxBTf7fRKDJ/kjTlgChK1JFFHXS7fQI7kDxtVAnSOP9fgPzMun4wN9lCaHpY5VhxvfUhXA
+ CXc0Ty/UXTroWDfVbilu3iysg5s8D2iCQp9E+gZj6TnVu0zgcEwDFzyXb1fUnkm5En/X6FAa5Sb
+ rO2nWxPNa7dDaWlplbl1r/QtcpEz+DOIh9OxuTklS9L1U9yF3l+hs1w/i4Sw7+RxIcMgDaZsZ6Y
+ XpFUCsbXy6gm5UOCfgosRXEu8CRI+7a8Aoy05jwwRMlGLqriwHIjWzfvF6PlL02g0uZEzcfzsHq
+ P2XbZeMN/LGtpRZ62LPe8Mz2bjjTF55vyAjs4vEv3EkSB57ZVLiyBzluOiATHRtVh86cTpCb50t
+ q5sr0/SF6sLJ2AmgM2ktC/AdyrEZgxuHGrVocM5K76AOiZ8T7A2dIIA8hfqCFKYFDHFg==
+X-Received: by 2002:a05:600c:c16e:b0:475:ddad:c3a9 with SMTP id
+ 5b1f17b1804b1-483c99348c5mr73001995e9.13.1772230967961; 
+ Fri, 27 Feb 2026 14:22:47 -0800 (PST)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483bd765604sm210745335e9.15.2026.02.27.14.22.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Feb 2026 14:02:25 -0800 (PST)
-Message-ID: <6057721c-1fca-45bf-acd2-f5990e8aea68@linaro.org>
-Date: Fri, 27 Feb 2026 14:02:24 -0800
+ Fri, 27 Feb 2026 14:22:47 -0800 (PST)
+Message-ID: <f1131f1f-a884-416e-9209-2de6dc1d167c@linaro.org>
+Date: Fri, 27 Feb 2026 23:22:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 08/31] hw/arm/smmuv3: Plumb transaction attributes into
- config helpers
+Subject: Re: [PATCH 3/4] hw/arm/aspeed_gpio: Don't leak string in
+ aspeed_gpio_init()
 Content-Language: en-US
-To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger
- <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221100250.2976287-9-tangtao1634@phytium.com.cn>
- <e39d683f-5f0a-4528-bbbb-811dfaa37d69@linaro.org>
- <6288fb9e-9ddc-459d-bb7d-28242f83f9c2@phytium.com.cn>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <6288fb9e-9ddc-459d-bb7d-28242f83f9c2@phytium.com.cn>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+References: <20260227135736.2280161-1-peter.maydell@linaro.org>
+ <20260227135736.2280161-4-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260227135736.2280161-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -148,352 +106,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/27/26 7:20 AM, Tao Tang wrote:
-> Hi Pierrick,
+On 27/2/26 14:57, Peter Maydell wrote:
+> We allocate the string for the GPIO property name, but never free it.
+> Use g_autofree to avoid this.
 > 
-> On 2026/2/26 04:52, Pierrick Bouvier wrote:
->> On 2/21/26 2:02 AM, Tao Tang wrote:
->>> As a preliminary step towards a multi-security-state configuration
->>> cache, introduce MemTxAttrs and AddressSpace * members to the
->>> SMMUTransCfg struct. The goal is to cache these attributes so that
->>> internal functions can use them directly.
->>>
->>> To facilitate this, hw/arm/arm-security.h is now included in
->>> smmu-common.h. This is a notable change, as it marks the first time
->>> these Arm CPU-specific security space definitions are used outside of
->>> cpu.h, making them more generally available for device models.
->>>
->>> The decode helpers (smmu_get_ste, smmu_get_cd, smmu_find_ste,
->>> smmuv3_get_config) are updated to use these new attributes for memory
->>> accesses. This ensures that reads of SMMU structures from memory, such
->>> as the Stream Table, use the correct security context.
->>>
->>> For the special case of smmuv3-accel.c, we only support the NS-only path
->>> for now. Therefore, we initialize a minimal cfg with sec_sid, txattrs,
->>> and as for the NS-only accel path.
->>>
->>> For now, the configuration cache lookup key remains unchanged and is
->>> still based solely on the SMMUDevice pointer. The new attributes are
->>> populated during a cache miss in smmuv3_get_config. And some paths still
->>> rely on the NS-only address_space_memory, for example smmuv3_notify_iova
->>> and get_pte(). These will be progressively converted in follow-up
->>> commits
->>> to use an AddressSpace selected according to SEC_SID.
->>>
->>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>> ---
->>>    hw/arm/smmu-common.c         | 19 ++++++++++++++++++
->>>    hw/arm/smmuv3-accel.c        | 12 +++++++++++-
->>>    hw/arm/smmuv3-internal.h     |  3 ++-
->>>    hw/arm/smmuv3.c              | 38 ++++++++++++++++++++++--------------
->>>    include/hw/arm/smmu-common.h | 12 ++++++++++++
->>>    5 files changed, 67 insertions(+), 17 deletions(-)
->>>
->>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->>> index 3baba2a4c8e..b320aec8c60 100644
->>> --- a/hw/arm/smmu-common.c
->>> +++ b/hw/arm/smmu-common.c
->>> @@ -30,6 +30,25 @@
->>>    #include "hw/arm/smmu-common.h"
->>>    #include "smmu-internal.h"
->>>    +ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid)
->>> +{
->>> +    switch (sec_sid) {
->>> +    case SMMU_SEC_SID_S:
->>> +        return ARMSS_Secure;
->>> +    case SMMU_SEC_SID_NS:
->>> +    default:
->>> +        return ARMSS_NonSecure;
->>> +    }
->>> +}
->>> +
->>> +MemTxAttrs smmu_get_txattrs(SMMUSecSID sec_sid)
->>> +{
->>> +    return (MemTxAttrs) {
->>> +        .secure = sec_sid > SMMU_SEC_SID_NS ? 1 : 0,
->>> +        .space = smmu_get_security_space(sec_sid),
->>> +    };
->>> +}
->>> +
->>>    AddressSpace *smmu_get_address_space(SMMUState *s, SMMUSecSID sec_sid)
->>>    {
->>>        switch (sec_sid) {
->>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
->>> index fdcb15005ea..9a41391826b 100644
->>> --- a/hw/arm/smmuv3-accel.c
->>> +++ b/hw/arm/smmuv3-accel.c
->>> @@ -244,6 +244,16 @@ bool smmuv3_accel_install_ste(SMMUv3State *s,
->>> SMMUDevice *sdev, int sid,
->>>        const char *type;
->>>        STE ste;
->>>        SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>> +    /*
->>> +     * smmu_find_ste() requires a SMMUTransCfg to provide address
->>> space and
->>> +     * transaction attributes for DMA reads. Only NS state is
->>> supported here.
->>> +     */
->>> +    SMMUState *bc = &s->smmu_state;
->>> +    SMMUTransCfg cfg = {
->>> +        .sec_sid = sec_sid,
->>> +        .txattrs = smmu_get_txattrs(sec_sid),
->>> +        .as = smmu_get_address_space(bc, sec_sid),
->>> +    };
->>>          if (!accel || !accel->viommu) {
->>>            return true;
->>> @@ -259,7 +269,7 @@ bool smmuv3_accel_install_ste(SMMUv3State *s,
->>> SMMUDevice *sdev, int sid,
->>>            return false;
->>>        }
->>>    -    if (smmu_find_ste(sdev->smmu, sid, &ste, &event)) {
->>> +    if (smmu_find_ste(sdev->smmu, sid, &ste, &event, &cfg)) {
->>>            /* No STE found, nothing to install */
->>>            return true;
->>>        }
->>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->>> index a1071f7b689..6d29b9027f0 100644
->>> --- a/hw/arm/smmuv3-internal.h
->>> +++ b/hw/arm/smmuv3-internal.h
->>> @@ -363,7 +363,8 @@ typedef struct SMMUEventInfo {
->>>        } while (0)
->>>      void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
->>> -int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
->>> SMMUEventInfo *event);
->>> +int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
->>> SMMUEventInfo *event,
->>> +                  SMMUTransCfg *cfg);
->>>      static inline int oas2bits(int oas_field)
->>>    {
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index 3438adcecd2..2192bec2368 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -347,14 +347,13 @@ static void smmuv3_reset(SMMUv3State *s)
->>>    }
->>>      static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
->>> -                        SMMUEventInfo *event)
->>> +                        SMMUEventInfo *event, SMMUTransCfg *cfg)
->>>    {
->>>        int ret, i;
->>>          trace_smmuv3_get_ste(addr);
->>>        /* TODO: guarantee 64-bit single-copy atomicity */
->>> -    ret = dma_memory_read(&address_space_memory, addr, buf,
->>> sizeof(*buf),
->>> -                          MEMTXATTRS_UNSPECIFIED);
->>> +    ret = dma_memory_read(cfg->as, addr, buf, sizeof(*buf),
->>> cfg->txattrs);
->>>        if (ret != MEMTX_OK) {
->>>            qemu_log_mask(LOG_GUEST_ERROR,
->>>                          "Cannot fetch pte at address=0x%"PRIx64"\n",
->>> addr);
->>> @@ -399,8 +398,7 @@ static int smmu_get_cd(SMMUv3State *s, STE *ste,
->>> SMMUTransCfg *cfg,
->>>        }
->>>          /* TODO: guarantee 64-bit single-copy atomicity */
->>> -    ret = dma_memory_read(&address_space_memory, addr, buf,
->>> sizeof(*buf),
->>> -                          MEMTXATTRS_UNSPECIFIED);
->>> +    ret = dma_memory_read(cfg->as, addr, buf, sizeof(*buf),
->>> cfg->txattrs);
->>>        if (ret != MEMTX_OK) {
->>>            qemu_log_mask(LOG_GUEST_ERROR,
->>>                          "Cannot fetch pte at address=0x%"PRIx64"\n",
->>> addr);
->>> @@ -655,17 +653,19 @@ bad_ste:
->>>     * @sid: stream ID
->>>     * @ste: returned stream table entry
->>>     * @event: handle to an event info
->>> + * @cfg: translation configuration cache
->>>     *
->>>     * Supports linear and 2-level stream table
->>>     * Return 0 on success, -EINVAL otherwise
->>>     */
->>> -int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
->>> SMMUEventInfo *event)
->>> +int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
->>> SMMUEventInfo *event,
->>> +                  SMMUTransCfg *cfg)
->>>    {
->>>        dma_addr_t addr, strtab_base;
->>>        uint32_t log2size;
->>>        int strtab_size_shift;
->>>        int ret;
->>> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>> +    SMMUSecSID sec_sid = cfg->sec_sid;
->>>        SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->>>          trace_smmuv3_find_ste(sid, bank->features, bank->sid_split);
->>> @@ -693,8 +693,8 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid,
->>> STE *ste, SMMUEventInfo *event)
->>>            l2_ste_offset = sid & ((1 << bank->sid_split) - 1);
->>>            l1ptr = (dma_addr_t)(strtab_base + l1_ste_offset *
->>> sizeof(l1std));
->>>            /* TODO: guarantee 64-bit single-copy atomicity */
->>> -        ret = dma_memory_read(&address_space_memory, l1ptr, &l1std,
->>> -                              sizeof(l1std), MEMTXATTRS_UNSPECIFIED);
->>> +        ret = dma_memory_read(cfg->as, l1ptr, &l1std, sizeof(l1std),
->>> +                              cfg->txattrs);
->>>            if (ret != MEMTX_OK) {
->>>                qemu_log_mask(LOG_GUEST_ERROR,
->>>                              "Could not read L1PTR at 0X%"PRIx64"\n",
->>> l1ptr);
->>> @@ -736,7 +736,7 @@ int smmu_find_ste(SMMUv3State *s, uint32_t sid,
->>> STE *ste, SMMUEventInfo *event)
->>>            addr = strtab_base + sid * sizeof(*ste);
->>>        }
->>>    -    if (smmu_get_ste(s, addr, ste, event)) {
->>> +    if (smmu_get_ste(s, addr, ste, event, cfg)) {
->>>            return -EINVAL;
->>>        }
->>>    @@ -865,7 +865,7 @@ static int
->>> smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
->>>        /* ASID defaults to -1 (if s1 is not supported). */
->>>        cfg->asid = -1;
->>>    -    ret = smmu_find_ste(s, sid, &ste, event);
->>> +    ret = smmu_find_ste(s, sid, &ste, event, cfg);
->>>        if (ret) {
->>>            return ret;
->>>        }
->>> @@ -899,7 +899,8 @@ static int smmuv3_decode_config(IOMMUMemoryRegion
->>> *mr, SMMUTransCfg *cfg,
->>>     * decoding under the form of an SMMUTransCfg struct. The hash
->>> table is indexed
->>>     * by the SMMUDevice handle.
->>>     */
->>> -static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev,
->>> SMMUEventInfo *event)
->>> +static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev,
->>> SMMUEventInfo *event,
->>> +                                       SMMUSecSID sec_sid)
->>>    {
->>>        SMMUv3State *s = sdev->smmu;
->>>        SMMUState *bc = &s->smmu_state;
->>> @@ -919,7 +920,14 @@ static SMMUTransCfg
->>> *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
->>>                                100 * sdev->cfg_cache_hits /
->>>                                (sdev->cfg_cache_hits +
->>> sdev->cfg_cache_misses));
->>>            cfg = g_new0(SMMUTransCfg, 1);
->>> -        cfg->sec_sid = SMMU_SEC_SID_NS;
->>> +        cfg->sec_sid = sec_sid;
->>> +        cfg->txattrs = smmu_get_txattrs(sec_sid);
->>> +        cfg->as = smmu_get_address_space(bc, sec_sid);
->>> +        cfg->ns_as = (sec_sid > SMMU_SEC_SID_NS)
->>> +                     ? smmu_get_address_space(bc, SMMU_SEC_SID_NS)
->>> +                     : cfg->as;
->>> +        /* AddressSpace must be available, assert if not. */
->>> +        g_assert(cfg->as && cfg->ns_as);
->>>              if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
->>>                g_hash_table_insert(bc->configs, sdev, cfg);
->>> @@ -1101,7 +1109,7 @@ static IOMMUTLBEntry
->>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>            goto epilogue;
->>>        }
->>>    -    cfg = smmuv3_get_config(sdev, &event);
->>> +    cfg = smmuv3_get_config(sdev, &event, sec_sid);
->>>        if (!cfg) {
->>>            status = SMMU_TRANS_ERROR;
->>>            goto epilogue;
->>> @@ -1183,7 +1191,7 @@ static void
->>> smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>>        SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>>        SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
->>>                                   .inval_ste_allowed = true};
->>> -    SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo);
->>> +    SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo, sec_sid);
->>>        IOMMUTLBEvent event;
->>>        uint8_t granule;
->>>    diff --git a/include/hw/arm/smmu-common.h
->>> b/include/hw/arm/smmu-common.h
->>> index b3ca55effc5..7944e8d1b64 100644
->>> --- a/include/hw/arm/smmu-common.h
->>> +++ b/include/hw/arm/smmu-common.h
->>> @@ -22,6 +22,7 @@
->>>    #include "hw/core/sysbus.h"
->>>    #include "hw/pci/pci.h"
->>>    #include "qom/object.h"
->>> +#include "hw/arm/arm-security.h"
->>>      #define SMMU_PCI_BUS_MAX                    256
->>>    #define SMMU_PCI_DEVFN_MAX                  256
->>> @@ -47,6 +48,9 @@ typedef enum SMMUSecSID {
->>>        SMMU_SEC_SID_NUM,
->>>    } SMMUSecSID;
->>>    +MemTxAttrs smmu_get_txattrs(SMMUSecSID sec_sid);
->>> +ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid);
->>> +
->>>    /*
->>>     * Page table walk error types
->>>     */
->>> @@ -124,6 +128,14 @@ typedef struct SMMUTransCfg {
->>>        SMMUTransTableInfo tt[2];
->>>        /* Used by stage-2 only. */
->>>        struct SMMUS2Cfg s2cfg;
->>> +    MemTxAttrs txattrs;        /* cached transaction attributes */
->>> +    /*
->>> +     * Cached AS related to the SEC_SID, which will be statically
->>> marked, and
->>> +     * in future RME support it will be implemented as a dynamic
->>> switch.
->>> +     */
->>> +    AddressSpace *as;
->>> +    /* Cached NS AS. It will be used if previous SEC_SID !=
->>> SMMU_SEC_SID_NS. */
->>> +    AddressSpace *ns_as;
->>>    } SMMUTransCfg;
->>>
->>
->> As an alternative, you can simply pass SMMUState where it's missing
->> (like smmu_ptw_64_s2) and call smmu_get_address_space from there.
->> It will avoid having to keep this in cfg.
->>
->> Maybe there is another reason I missed?
-> 
-> 
-> My original motivation for having an extra ns_as (and caching
-> as/txattrs) was tied to the architectural semantics: a transaction being
-> "secure" does not automatically mean the walk can access Secure PAS.
-> Whether the walk can touch Secure PAS (or is effectively constrained to
-> Non-secure PAS) is determined by the STE/CD fields and the page-table
-> attributes at each level; in an RME setup we would also add GPC checks.
-> So, if the combined state ends up forcing Non-secure PAS, the intent was
-> to reuse a preselected NS address space rather than re-deriving it
-> repeatedly during the walk.
-> 
-> That said, I agree that keeping as/txattrs (and ns_as) inside
-> SMMUTransCfg is debatable, and it also blurs “decoded translation
-> config” versus “per-walk execution context”. Eric previously suggested
-> caching as and MemTxAttrs in v2 to streamline the hot path:
-> 
-> https://lore.kernel.org/qemu-devel/4b90afba-d708-4628-a087-c16829ee0512@redhat.com/
-> 
-> 
-> But given your feedback, I’m leaning toward your alternative. In
-> particular, with your recent commit (53b54a8 "add memory regions as
-> property for an SMMU instance"), selecting the appropriate AddressSpace
-> is very cheap. So I think it’s reasonable to refactor now: pass
-> SMMUState where it’s missing (e.g. in smmu_ptw_64_s2) and compute
-> AddressSpace/MemTxAttrs on-demand based on the current walk state,
-> instead of caching them in SMMUTransCfg.
-> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/gpio/aspeed_gpio.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-It's indeed trivial to derive address space from cfg->sec_sid, and 
-clearer since we'll always provide a sec_sid to access it, so I don't 
-see any good reason left to cache it.
-
-Eric, would you be ok with it?
-
-> 
-> I’ll rework the patch accordingly, and I’d also very much welcome any
-> further comments or suggestions from others.
-> 
-> 
->>
->> Regards,
->> Pierrick
-> 
-> 
-> Thanks,
-> 
-> Tao
-> 
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

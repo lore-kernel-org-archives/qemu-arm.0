@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5FDEFD530A
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 19:01:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 163E8FEFB7F
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 19:10:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw35h-00011u-FC; Fri, 27 Feb 2026 14:01:34 -0500
+	id 1vw3EC-0006uW-4J; Fri, 27 Feb 2026 14:10:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vw35g-0000zO-Hk
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:01:32 -0500
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ id 1vw3EA-0006tB-HO
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:10:18 -0500
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vw35e-0005MO-QE
- for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:01:32 -0500
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-64ca2b32f46so1817316d50.3
- for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 11:01:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772218889; cv=none;
+ id 1vw3E8-0006vP-QP
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 14:10:18 -0500
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-649278a69c5so2150423d50.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 11:10:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772219415; cv=none;
  d=google.com; s=arc-20240605;
- b=dgfh/FHk2BsZ+td5+qW5CmeN3nDZyTApH+uxi6rH1fsOiaEFz5agqiZhHvT5ekgtIP
- sI4UlIdXunlW6mPoFsCS+lz0GeXjFAiIl2hDO0W8S2cOpYxCJigrVaYBd6kKYamGBhBm
- ugjmEwVreLgN+8uxK3VTSb1ocRI7VdQiV/g8XoMuw+KnqykynS6R30adoZ/OZ8pat+2L
- SkemI0iwyvX6L/aqLxcysE3NpxMWErUf0q4GDu62ueAG0Mn++E+8U5g3Tji7Fj2z08n5
- DVgzNebTCPXyN0YCm+2QiDI45KFu8+dZnIxiKcOkb4mY2KJeeHB68knFKsBGe4JQteX/
- +hQA==
+ b=CS70L/ngqZb/ImUJIQETWkoPx4Ei3W18O/IoXZiKmqxrsXhGLl4p9FhZ2Bhxx1rmxr
+ NDCT5Srv2uY5BorsIOPcNJiNPGfXUxI0CavL1fiWrUie7VHohZiYuWs3RzXTSGkGqoZ+
+ WxQpsT9TlcNoCdoOXIrqgqHT4Cwv4iuQ3rwKEdYIwDVsX+k7tB26fdme8Vrko8G1vmGc
+ KeVsO5ejSpxrlXJYsbZIK3S1rk+8ndZe2KKpxrgjRcinjjkjeyRb00Va/jb2HFKnGkqF
+ lEeNGd/P5LHS/C4kQ2XSU+c6iHd7zlaOgr3PbLtZtZiiDl4g3qxnPflWZTHU7ds2qvnm
+ XffA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=SULAEUuAj73q2fCD7zwSktbXm56L8xKX3BLqNOyYMeI=;
+ bh=DD6yn6NzzigaBPzH+pNo8V6nWbXpvcqKj8f3rHF3t5Y=;
  fh=U+7tNHDaFPWyYcN6vfXMYAsPt/D348kAsUUpYANrNSo=;
- b=G0DucjpH7n8SLgJw5clwfXt4IFCMSeUTKc7Spf8YsW/8c5XOUwRtMtz1x693KMxmnh
- 6Z6LFIxhGOYMdZtNtTFSbvUR635OEn86aRq7XbmpqVndcUZhLzRPXZJ1dlwmPv51Li3x
- h4vYpQgFnK/v2qV2iuw5rX5f3bYpScIw8tYzIfkh8exnUTjE7dDMdcvGFDlJ5k5O7brG
- TqLZTzNn36kGd4J9eyE9oOrwr+QJowYKkTEUVnFfetyLkzlVW4wqboFoAaHPdUkH44Xc
- BKwQxOer+o+Bz0BX5HehZOFRX1bvehLXE/GpZvLGvZHY7fRaCyNpKnS49ZaXr4iBi4UN
- KQ3w==; darn=nongnu.org
+ b=OhF5SiTBOOaosOB46sXngkg5SJXcvmP/fYuJel8DLQq8SAFdUsJ9Ol9MgNiIN+YJMC
+ aRQLVr8xExXxxgzcqL+V/jftX9djls6fADlL+4PLFTJt4Y7f54mQQN1k/YCMvKBYd4YB
+ pf9kHj1B7ytaRa/QSvarIkKFJcSVpKMt4O8oLVMcL6iu/b8cH/D3UQn4aOzY08hx34Qj
+ GganMfx3q+Mqhdn6cGtW5rU5k8WTxyJoSSVDQOGZPoRcMnFev83UzhA1zXNTyUS0ytzd
+ hThOtzSlZ+rOXYBb8ZuniE53Mmmj3q4MzY77TfNnvw8j6ktxg2t2HTOIPLr+nxo4rP7M
+ Owzg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772218889; x=1772823689; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772219415; x=1772824215; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SULAEUuAj73q2fCD7zwSktbXm56L8xKX3BLqNOyYMeI=;
- b=yEJtBV1YJ/eb+p+wBMtlRRQ8qzVBBinzERCi51qYoBaEViW0zku3ub4gQgCp7t6iKc
- 3aP3E++fi55f3F7F1uDpB2oYeMHfeewmvMNTPifhRwIwsusra1UdR2hca7ZQNZ8pqCzT
- 9e+lrPJv/mqpO86nupJk8o5EsNzGMriCSvsTx/yMiYNum8wgDGq4MRbMTEZg0ztSdN/T
- V9SqGg6XOXyF3Ai4tI0EkaD0JUzeFPom/LWx2KJbNJMtTSzQsF2G1uzmNANHCs7TrMpM
- QYe9PFBsCd3+2KKcge3+IOYAnARD7zi2NqTd8hxEk3CuhrRR4jvoBju6WN8hkkhSJJgP
- 41tQ==
+ bh=DD6yn6NzzigaBPzH+pNo8V6nWbXpvcqKj8f3rHF3t5Y=;
+ b=eJi2Hu4eQj9T9RCRPB2lX55mcwHfc7naNowyidKdU1juo7N5DvfvTIBdEEKzfHi/Rj
+ ay5jOSmhT/9rJzXq9/jMyyMzKeT4kYDZ3vRibrGsuoWO7E/8/Z82hRnp0xNFzRMDTF8y
+ 9TvGlasDFtjVNXROaug0FzM34K0MemoXYVUuyrcJy8dmrcBrIBHhTchHr4iTfxIcBKnY
+ gAZ6lmOkPZUziW+hZcjflky5To3LmIGSREHxEy7cByYMXKjSFHq3OZhDO27S1mVihKDp
+ O3+dpA3vtA2G/N4WkY/xIxUF7ak2WRrehHjPtyJFPc8D2lxbjoLCPnArt0ihI31J2mXD
+ pM0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772218889; x=1772823689;
+ d=1e100.net; s=20230601; t=1772219415; x=1772824215;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SULAEUuAj73q2fCD7zwSktbXm56L8xKX3BLqNOyYMeI=;
- b=uy1rafH1kmiC2zAR/Mp7S8NN1xXPC38/TOkUSmbHkngptXIQcgwkxc4Qlomrjytqfu
- Pj9+vqk+gvc83vs37EOqvgfPzo/NqRszs+IxklrwaPWTphHuWAxHOoTAwEWe7zxdPi/w
- JWKtkiG1Tdo6BoPHbsUFoGohqr87sQcazX+pMFxiYPnoqK6DekwRumsxhwfgZ0O56+ju
- 7zIGAoDcESJUuT3IZYghJJeTvNEe78t5XosPkR6DBlTskkkJMeMJWZl6LlB1uZOt2w4T
- BUwWvOHW4jhcuQdLNiHjH2odVN3mNv6iZCm2ka/IcJ0qN3zP7FKYfntumFxhQfGePAbk
- G8GA==
-X-Gm-Message-State: AOJu0Yweac6O0BMKI2i0KUnBFUX3SMf+yc9pyAHSAmZh5CoBDWlWkS/O
- 38tSZ6Oe4izofGPL/DSHgRYOhFBqkkyaSzwo27Nj8NvFOkiOO3DzEPoLQ4NjnpdAFKKIpt/88HQ
- 24U2fz55U7l9bpbT62+RDFL89GyMOrMfwNq2bwUM6+w==
-X-Gm-Gg: ATEYQzweHCS/hytVA6D0SR0QQ+TY85koWN4nFgJXx7z6Qtumql2pMFwwLCM0+ybAJoD
- bRboL8szFJL/o+P0ayow3mo2/Kw7rAy4RNth1wlNxmesyPxm8v5gk49fZaY7X7bIS3dx1I1OCMC
- IS7ICUpIEUx4/dIxQ1jR4YWJTsiV2xqQfWvXJNLyfiB/2Dm/oDSgmXTwzG+Qwb1l1BKm1M/s0Zi
- /WzReda8lswWmJ6VBdP3VuZnLEPyvHXyd5gfxKuml92faMohTfVRt3khFcGGyAemwe7a18BtHSG
- zphrBi1+AI5r7qkDADG73yZ9TMMYjQ/PGswL3sdJsyKGTIQf86QUqYkkzyDkRhZb3A8=
-X-Received: by 2002:a05:690e:16dc:b0:644:60d9:7514 with SMTP id
- 956f58d0204a3-64cc233f94cmr2441738d50.88.1772218889291; Fri, 27 Feb 2026
- 11:01:29 -0800 (PST)
+ bh=DD6yn6NzzigaBPzH+pNo8V6nWbXpvcqKj8f3rHF3t5Y=;
+ b=DjN3tRCnXQG4GWjP3k5at1eWPpuNCjbaSRakHoS348kUDnTBIKUAfdLd4TyZ8u0bEU
+ eAnsT3ZUcmvX6M+xswVu5hnc2dfu5O4nb+XbJbrIg+YvhwIqwodb8nUYs3hybhTF+POB
+ SniiBKm+Cdq4ZH5KwlBUvmHPe+OFxbJJpJN0/Th51qA8dWaPwx6YM0P8aI1WfziXIx3O
+ ul9HQcM9vRN8qWMi0ocotJ7EyFgbST9p5eVLaXLC0AnfPiGk5wlwOabhZh2rHqnESC+J
+ jjxfGDz6somRy5Os7+UkHXS8SOmi0jEKOdSV2J5/puKS3IZTfE4hm6QP1W8t+WRyUwn4
+ G0wg==
+X-Gm-Message-State: AOJu0YwBLBE+j9acfHDD6F+qGEUBarmKzzoawg3wzqNhhH0ttUxb4C8G
+ l7dNPlwJ9AXI2MindlbI7U7tshDuLcEXKW97BfuIE9c/7pVFs2K84/Yf2TlqWGYID2woFHOs57m
+ 3eWOF2e1URydE6a2ihioRJmdXHPLfxJEFjraTf6jVwA==
+X-Gm-Gg: ATEYQzzZkmaBE8sbecaG5F0hhZWyanNGegAv9ZNEr3mRKOZsD1KH14E0L1i0nN3peht
+ hwwj5vR1sNhhTGMbhe7MmQmFdrMGGvRpSLlWf3bB24BNJ4CgpzckR4+RN1LzuXWi7BIeIIs9XXJ
+ PhGs63WPgi4MRmCIPU6a2657pydte+6KE7m7AyHw1aPZKlJPyvl6dgZWzqckIVTG81O/08hsjOO
+ ri7btCx7/3vWu6JIc43y2JH/kbVxX0881Uw7Y0w5vSnxCxbK3pgphULhppItmHz5PuuUCzEOgU6
+ iZFrsS5InqGhQSQMamCB0pHI3pk4+kUaN4w3w05yFuqrH6/moclNIiJB0pSkkmIs0EQ=
+X-Received: by 2002:a53:ee49:0:b0:649:4bbf:9a18 with SMTP id
+ 956f58d0204a3-64cc20c893emr2458993d50.23.1772219415292; Fri, 27 Feb 2026
+ 11:10:15 -0800 (PST)
 MIME-Version: 1.0
 References: <20260227135736.2280161-1-peter.maydell@linaro.org>
- <87ldge5899.fsf@suse.de>
-In-Reply-To: <87ldge5899.fsf@suse.de>
+ <20260227135736.2280161-3-peter.maydell@linaro.org> <87ikbi580c.fsf@suse.de>
+In-Reply-To: <87ikbi580c.fsf@suse.de>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Feb 2026 19:01:17 +0000
-X-Gm-Features: AaiRm53LJYTqOvy_kESUmBEk5XK9GeB5E8Kq-3_IM14Xi_92bEfRkcVdfs__3lw
-Message-ID: <CAFEAcA-xvHDyE+gJ6KKv=rkEbiTbdtmAreLNKsGTuvvZyZyYDA@mail.gmail.com>
-Subject: Re: [PATCH 0/4] arm: Fix some memory leaks
+Date: Fri, 27 Feb 2026 19:10:04 +0000
+X-Gm-Features: AaiRm53K4eaqXv8397D5JpyU92Zcz5VEA-gpekHzUjaaBRpXxdr3XZooB5V9WaE
+Message-ID: <CAFEAcA9+GzKxWKLcWvT5e2voO0mRR5jaKfXk4JrhWU6jFGXpNA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] scripts/lsan_suppressions.txt: Add more leaks
 To: Fabiano Rosas <farosas@suse.de>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,49 +117,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 27 Feb 2026 at 18:52, Fabiano Rosas <farosas@suse.de> wrote:
+On Fri, 27 Feb 2026 at 18:57, Fabiano Rosas <farosas@suse.de> wrote:
 >
 > Peter Maydell <peter.maydell@linaro.org> writes:
 >
-> > This patchset fixes a couple of minor memory leaks I found by running
-> > "make check" for the arm targets with the clang leak sanitizer enabled.
+> > Running "make check" with the clang leak sanitizer reveals some
+> > leak reports which are either not our problem or else not
+> > a leak which is worth our time to fix. Add some suppressions
+> > for these.
 > >
-> > The first two patches are necessary because there are a few leaks
-> > that are either not interesting to fix or which are not in our code,
-> > and which otherwise clutter up the logs with failure messages.
-> > We have a suppressions-file already, but it's in the scripts/oss-fuzz
-> > subdirectory, so I move it out as it's more widely useful than that,
-> > and add some more suppression lines to it.
-> >
-> > Patches 3 and 4 are the actual leak fixes, which are straightforward.
-> >
-> > This gets me what would be a clean run, except that there's something
-> > wrong with the refcounting of qio channel objects in the chardev code,
-> > which results in variously use-after-free, leak, or assertion failures
-> > when running the vhost-user tests in qos-test. I'm still looking at
-> > those, but in the meantime posting this series gives me something to
-> > point at as part of the repro instructions for those errors.
-> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> Looks like something I worked on in the past. It seems this fell through
-> the cracks:
+> Reviewed-by: Fabiano Rosas <farosas@suse.de>
 >
-> https://lore.kernel.org/r/20250515222014.4161-1-farosas@suse.de
+> FYI, mine has these. The first one is on my list to fix once I find some
+> time. The last two seem to be part of the stack for the ones you added
+> here.
+>
+> leak:qcrypto_tls_session_push
+> leak:gnutls_handshake
+> leak:memory_region_do_init
+> leak:qos_traverse_graph
+> leak:qdev_get_named_gpio_list
 
-Yeah, that looks very familiar. The way it only reproduces in
-a loaded system is fantastically annoying -- it relatively
-reliably falls over in a full "make -j20 check" run for me
-but I had massive trouble trying to get anything to reliably
-repro in a useful way...
+qdev_get_named_gpio_list is definitely used in paths other than
+the qemu_irq_intercept_in one we want to hit.
 
-The vhost-user-test also seems to be doing some odd things itself:
-for instance the wait_for_fds() function assumes there is RAM at
-0x0, but we run the test on the arm virt board where RAM doesn't
-start at that address. Presumably we should either make the test
-handle that or else restrict it to not run on boards where it
-will never work.
+I think that recent memory region fixes ought to have fixed the
+ones you're suppressing with memory_region_do_init.
 
-I'll have a go with your patches and see if I still see issues.
+I couldn't make any sense of the qos_traverse_graph/walk_path one:
+it seems to be related to the qtest "subprocess" functionality
+somehow and doesn't repro without that.
 
+thanks
 -- PMM
 

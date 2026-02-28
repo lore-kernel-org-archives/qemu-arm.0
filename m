@@ -4,67 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7061048922
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Feb 2026 23:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCA9FEE4C3
+	for <qemu-arm@archiver.kernel.org>; Sat, 28 Feb 2026 04:07:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vw7hJ-0007bN-TG; Fri, 27 Feb 2026 18:56:42 -0500
+	id 1vwBbW-00018k-1p; Fri, 27 Feb 2026 23:06:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1vw7hI-0007b5-2W; Fri, 27 Feb 2026 18:56:40 -0500
-Received: from forwardcorp1b.mail.yandex.net
- ([2a02:6b8:c02:900:1:45:d181:df01])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1vw7hE-0006MZ-Ut; Fri, 27 Feb 2026 18:56:38 -0500
-Received: from mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- [IPv6:2a02:6b8:c0c:bf1f:0:640:c739:0])
- by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id 14BBA807BE;
- Sat, 28 Feb 2026 02:56:32 +0300 (MSK)
-Received: from [IPV6:2a02:6bf:8080:42e::1:38] (unknown
- [2a02:6bf:8080:42e::1:38])
- by mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id Uut7du7Ag8c0-6i8IMy0Z; Sat, 28 Feb 2026 02:56:31 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; t=1772236591;
- bh=ypShSVZ4kRJbpPOKBgdfb3jtGN0KL/Lf1jCUjbPBsHU=;
- h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
- b=sLv0Y/o/++UYlZ5yh5C0eS9dPj/8F7dqGUDfWhAORpaHc5LUQgrmYw+Q4MM5Gm5j9
- KizJTKvhq7MQvuxON91rcpZGnB6wGuUx0fAV+mLsbrKAPvbTlW4yoEJCFArDcuDVB2
- yfisNmO7WIHdGKdxKyhzdJ2/f4fUsyuVqq2K6mYs=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-Message-ID: <5be3da95-a636-4b50-8d68-17f363fc005b@yandex-team.ru>
-Date: Sat, 28 Feb 2026 02:56:30 +0300
+ (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
+ id 1vwBbU-000185-Lr
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 23:06:56 -0500
+Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <thiago.bauermann@linaro.org>)
+ id 1vwBbS-0005V6-ID
+ for qemu-arm@nongnu.org; Fri, 27 Feb 2026 23:06:56 -0500
+Received: by mail-vk1-xa2b.google.com with SMTP id
+ 71dfb90a1353d-56aa0de09e0so808316e0c.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Feb 2026 20:06:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772251611; x=1772856411; darn=nongnu.org;
+ h=mime-version:message-id:date:user-agent:references:in-reply-to
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=PUUQXYV8KprNC3S30OlYdhUgDO0fYH/3J2N7M/Dx1I4=;
+ b=MY9HBt/aHen88WxN/BqbNmQwnghk81mXeuKBeq3qWLO6Q1qtw/2E4Br5bX1YCLwMWq
+ two1A08JZz+uttzZW71O5hwCv89PxBrAA584UntaicjgtWLXiCukuT+2nqxFRnbYJLws
+ GZR/ZfcBtpAZiLpvKbw94lbfDIht8k6USJO8TASz9UwkSWIti21uC7+ZB1jM5sRKsrKu
+ xJyb1xueNyLpShAZHzFPJ9XGyRyXcXx46C46jmbCV3ZVlv3IpNvr5Y1iW05buUAZLE+4
+ cLjiOoJ8liLErPc702L5JLkjYDmaVlxOkFXI6HBm3Qmx6HdMzW7WBvnwjiQHBgxXQpL8
+ X/rg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772251611; x=1772856411;
+ h=mime-version:message-id:date:user-agent:references:in-reply-to
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=PUUQXYV8KprNC3S30OlYdhUgDO0fYH/3J2N7M/Dx1I4=;
+ b=Fyi6RisXi69umbJj+n3kyE3uY5LP0BFrPO1r2Qu06VzfL7KGdkMxUG69I0aysLTUdh
+ aMNccoCXJN7nXPecSyA4tFY7fztoU3lVdswLgE/hz+6YlfPl0Dpw/2dL3oIAPsXIS7Nj
+ hyiTHFDFCpnoHE9l4mtvmMdBcXD0nGiiGN5wIY+R2aZjuIMuYw23REJxarD3pvFIUBmW
+ szvrlJHUYsfPaY72NI7UFXrZl6XflL2aflpozCE/XX5WahVwbyDIHqFEqVoo+qpfk7VC
+ hqHRrYECI4hqCuJUeFIUmWsQI6xOAt5nXhsUqE76yaDKoK55sU5q3Q/S7+tNxNtbquDF
+ thcQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXjKnKtOZfGuITN9vCjkwCD/oWhAyn8aw6sEB7MriitdeKjL5qoSmagp2LjiHYlSLhNWVCnf6OLQg==@nongnu.org
+X-Gm-Message-State: AOJu0YzD2cKAxTUqcQaMAUE34lW/IkcV2zAiREgr/vSgudfb5Dg+lnh+
+ bjslKev1O74sUo8TWytkz8vPbCRs0Xd70Y9IR7509mOZv6MOkpKTTO0IQdpMutrAqHo=
+X-Gm-Gg: ATEYQzzmZpZY7nY5xfE7XjoAgvI56+5+4Dnr/29ctqn2W1ce4YR2wRFWxrPdAcmJSKZ
+ roVyvDsaowxTnnUc4xipA83y22zd8m6A46/gHowRjWMSHH9c1eRiKu/D55XmLYKGvA4YblVDSjd
+ NtauFpqj3OrMLdV3rzUAO3myRtpEY6FE7nQ0Bze68DlB5nLHVCZQWPLhGyllruPpzXSB8XPzxdW
+ StPlc0CbYJAlPfpxYx1m8mz9Capvyt12YPo/9q/t+F/MLl8ncYjxI7B0F8Ef9qIdGRA416goBuA
+ x1Okdz9nWxz+PEaBLKGXwmgDsGqcTWraP4373EoouhpTPTBQwowl9e6fQmDM4mEX1R1QML4LiSk
+ bQ745Mo2dKdKRx6qUjMIC2f16VNLru5u4pxE3mb+Wzh4rWB/Ya7M79cEimAybCQzjMpyLCILm4p
+ y5x/3uIErYO86VC9Rtxo3MynrQ6P4M/77uaw==
+X-Received: by 2002:a05:6122:895:b0:567:44ba:bd87 with SMTP id
+ 71dfb90a1353d-56aa0a17a0fmr2674739e0c.1.1772251611116; 
+ Fri, 27 Feb 2026 20:06:51 -0800 (PST)
+Received: from localhost ([2804:14d:7e39:8083:f04c:42e3:5943:38f6])
+ by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-56a91659421sm9437145e0c.0.2026.02.27.20.06.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Feb 2026 20:06:49 -0800 (PST)
+From: Thiago Jung Bauermann <thiago.bauermann@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH v4 00/84] target/arm: Implement FEAT_GCS
+In-Reply-To: <20250830054128.448363-1-richard.henderson@linaro.org> (Richard
+ Henderson's message of "Sat, 30 Aug 2025 15:40:04 +1000")
+References: <20250830054128.448363-1-richard.henderson@linaro.org>
+User-Agent: mu4e 1.12.15; emacs 30.2
+Date: Sat, 28 Feb 2026 01:06:47 -0300
+Message-ID: <87tsv1fr54.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/16] migration: make .post_save() a void function
-To: Fabiano Rosas <farosas@suse.de>, peterx@redhat.com
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:sPAPR (pseries)" <qemu-ppc@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20260220210214.800050-1-vsementsov@yandex-team.ru>
- <20260220210214.800050-4-vsementsov@yandex-team.ru> <87ecm5u7wc.fsf@suse.de>
-Content-Language: en-US
-From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-In-Reply-To: <87ecm5u7wc.fsf@suse.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:df01;
- envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
+Content-Type: multipart/mixed; boundary="=-=-="
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a2b;
+ envelope-from=thiago.bauermann@linaro.org; helo=mail-vk1-xa2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -81,37 +101,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28.02.26 01:41, Fabiano Rosas wrote:
->> diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
->> index 3695afd483..15578b3e28 100644
->> --- a/include/migration/vmstate.h
->> +++ b/include/migration/vmstate.h
->> @@ -223,7 +223,15 @@ struct VMStateDescription {
->>       bool (*post_load_errp)(void *opaque, int version_id, Error **errp);
->>       int (*pre_save)(void *opaque);
->>       bool (*pre_save_errp)(void *opaque, Error **errp);
->> -    int (*post_save)(void *opaque);
->> +
->> +    /*
->> +     * post_save() rarely used to free some temporary resources.
->> +     * It's is called if .pre_save[_errp]() call was successful
->> +     * (or .pre_save[_errp] handler absent), regardless success
->> +     * or failure during fields and subsections save. If
->> +     * .pre_save[_errp]() fails, .post_save() is not called.
->> +     */
-> I would not mention usage directly and maybe also simplify the language
-> a bit. If there's doubt on the exact flow, people can read the code:
-> 
->    /*
->     * Unless .pre_save() fails, post_save() is called after saving
->     * fields and subsections. It should not fail because at this point
->     * the state has potentially already been transferred.
->     */
+--=-=-=
+Content-Type: text/plain
 
+Hello,
 
-Agree, sounds good.
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Based on Peter's tags/pull-target-arm-20250828.
+> Tree: https://gitlab.com/rth7680/qemu/-/tree/tgt-arm-gcs
+>
+> This includes the prerequisite features, ATS1A and S1PIE, and
+> not a prerequisite but closely related, S2PIE.
+>
+> This passes the linux kselftests for gcs, with a 48-bit VA.
+> I also include a few smoke tests in tests/tcg/.
+>
+>
+> This includes a best-effort linux-user implementation.  Since we
+> don't have softmmu in user-only (yet), gcs stack pages get normal
+> read/write access.  This means we cannot write-protect the pages
+> in the same way the system implementation can.  But all of the
+> other parts of GCS work fine, which is good enough for testing.
+
+I tried using GCS in current QEMU trunk (commit d8a9d97317d0 "Merge tag
+'pull-target-arm-20260226' of https://gitlab.com/pm215/qemu into
+staging"), but I get this kernel oops with a simple program (attached)
+that just tries to enable GCS using prctl:
+
+[  226.334899] Unable to handle kernel paging request at virtual address fffff1ffc36c8008
+[  226.335033] Mem abort info:
+[  226.335088]   ESR = 0x0000000096000004
+[  226.335117]   EC = 0x25: DABT (current EL), IL = 32 bits
+[  226.335137]   SET = 0, FnV = 0
+[  226.335153]   EA = 0, S1PTW = 0
+[  226.335172]   FSC = 0x04: level 0 translation fault
+[  226.335192] Data abort info:
+[  226.335208]   ISV = 0, ISS = 0x00000004, ISS2 = 0x00000000
+[  226.335224]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
+[  226.335241]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[  226.335284] swapper pgtable: 4k pages, 52-bit VAs, pgdp=00000000dbe9b000
+[  226.335306] [fffff1ffc36c8008] pgd=10000000dcfcd003, p4d=0000000000000000
+[  226.335475] Internal error: Oops: 0000000096000004 [#1]  SMP
+[  226.336917] Modules linked in: tpm_tis tpm_tis_core qrtr sha256 cfg80211 rfkill fuse dm_mod drm backlight ipv6 btrfs blake2b libblake2b xor xor_neon raid6_pq zstd_compress sm3_ce
+[  226.337746] CPU: 0 UID: 1000 PID: 950 Comm: simple-gcs Tainted: G   M                6.19.0 #2 PREEMPT
+[  226.337963] Tainted: [M]=MACHINE_CHECK
+[  226.338035] Hardware name: QEMU QEMU Virtual Machine, BIOS edk2-stable202408-prebuilt.qemu.org 08/13/2024
+[  226.338281] pstate: 21402005 (nzCv daif +PAN -UAO -TCO +DIT -SSBS BTYPE=--)
+[  226.338411] pc : __get_user_pages+0x4a4/0xc0c
+[  226.338889] lr : __get_user_pages+0x3fc/0xc0c
+[  226.338977] sp : ffff800080e236f0
+[  226.339042] x29: ffff800080e236f0 x28: fff00000c3c21e80 x27: 0000000000000000
+[  226.339203] x26: 0000000000000000 x25: fff00000c1a988c8 x24: 0000000000000000
+[  226.339327] x23: 0000ffffa3200000 x22: 000000000000000e x21: 0000000000000000
+[  226.339453] x20: fff00000c80bc300 x19: 0008000000000000 x18: 0000000000000000
+[  226.339573] x17: 0000000000000000 x16: ffff95c0712386b8 x15: 0000ffffa363bfff
+[  226.339699] x14: 0000000000000000 x13: 1ffe000018271e21 x12: fff00000c138f10c
+[  226.339824] x11: fff00000c138f100 x10: 0000000000000001 x9 : 0000000000000001
+[  226.339962] x8 : 00c800011b200f41 x7 : fff00000c138f108 x6 : 00000000000008c8
+[  226.340086] x5 : fffff1ffc36c8000 x4 : ffffc1ffc0000000 x3 : 0000000000000000
+[  226.340207] x2 : 0000000000104a00 x1 : 0040000000000841 x0 : 0040000000000800
+[  226.340392] Call trace:
+[  226.340554]  __get_user_pages+0x4a4/0xc0c (P)
+[  226.340701]  get_dump_page+0xe4/0x150
+[  226.340797]  dump_user_range+0x64/0x2e8
+[  226.340886]  elf_core_dump+0xbf8/0xe10
+[  226.340955]  vfs_coredump+0xea0/0x1c80
+[  226.341026]  get_signal+0x644/0x82c
+[  226.341097]  arch_do_signal_or_restart+0x118/0x3c4
+[  226.341184]  exit_to_user_mode_loop+0x104/0x16c
+[  226.341269]  el0_da+0x8c/0x90
+[  226.341344]  el0t_64_sync_handler+0xd0/0xe4
+[  226.341419]  el0t_64_sync+0x198/0x19c
+[  226.341626] Code: eb00003f 540029a0 924d0113 b6982d88 (f94004a4)
+[  226.341893] ---[ end trace 0000000000000000 ]---
+[  226.851631] note: simple-gcs[950] exited with preempt_count 1
+
+This is using Linux kernel v6.19 built with defconfig.
+
+I also tried the QEMU commit corresponding to the last patch in this
+series (af0bd678df72 "tests/tcg/aarch64: Add gcsss") but had the same
+result.
+
+The same binaries work as expected using Arm FVP, so it seems to be
+something in QEMU.
+
+The command line I used was:
+
+$QEMU_PREFIX/bin/qemu-system-aarch64 \
+    -M virt \
+    -cpu max \
+    -m 4g \
+    -drive if=none,file=$HOME/VMs/ubuntu-25.10-aarch64.img,id=hd1,format=raw,cache=writeback,discard=on \
+    -device virtio-blk-device,drive=hd1 \
+    -netdev user,id=mynet0,hostfwd=tcp::8222-:22 -device virtio-net-pci,netdev=mynet0 \
+    -bios $QEMU_PREFIX/share/qemu/edk2-aarch64-code.fd \
+    -nographic
 
 -- 
-Best regards,
-Vladimir
+Thiago
+
+
+--=-=-=
+Content-Type: text/plain
+Content-Disposition: inline; filename=simple-gcs.c
+Content-Description: simple-gcs.c
+
+#include <stdlib.h>
+#include <sys/syscall.h>
+#include <linux/prctl.h>
+
+#ifndef PR_SET_SHADOW_STACK_STATUS
+#define PR_SET_SHADOW_STACK_STATUS 75
+#define PR_SHADOW_STACK_ENABLE (1UL << 0)
+#endif
+
+/* We need to use a macro to call prctl because after GCS is enabled, it's not
+   possible to return from the function which enabled it.  This is because the
+   return address of the calling function isn't on the GCS.  */
+#define my_syscall2(num, arg1, arg2)					\
+  ({									\
+    register long _num __asm__("x8") = (num);				\
+    register long _arg1 __asm__("x0") = (long)(arg1);			\
+    register long _arg2 __asm__("x1") = (long)(arg2);			\
+    register long _arg3 __asm__("x2") = 0;				\
+    register long _arg4 __asm__("x3") = 0;				\
+    register long _arg5 __asm__("x4") = 0;				\
+									\
+    asm volatile ("svc #0\n"						\
+		  : "=r"(_arg1)						\
+		  : "r"(_arg1), "r"(_arg2), "r"(_arg3), "r"(_arg4),	\
+		    "r"(_arg5), "r"(_num)				\
+		  : "memory", "cc");					\
+    _arg1;								\
+  })
+
+int main (void)
+{
+  int ret;
+
+  ret = my_syscall2 (__NR_prctl, PR_SET_SHADOW_STACK_STATUS, PR_SHADOW_STACK_ENABLE);
+
+  /* Don't return from main to avoid segmentation fault.  */
+  exit (ret);
+}
+
+--=-=-=--
 

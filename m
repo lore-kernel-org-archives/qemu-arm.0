@@ -4,67 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93BAFFD006D
-	for <qemu-arm@archiver.kernel.org>; Sun,  1 Mar 2026 16:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74063FD0077
+	for <qemu-arm@archiver.kernel.org>; Sun,  1 Mar 2026 20:00:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vwjay-0007kg-F2; Sun, 01 Mar 2026 11:24:40 -0500
+	id 1vwmxW-00017c-Bk; Sun, 01 Mar 2026 15:00:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vwjau-0007iL-L0; Sun, 01 Mar 2026 11:24:36 -0500
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vwjar-0002zG-3u; Sun, 01 Mar 2026 11:24:36 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwC3vmIraKRpReamBw--.11708S2;
- Mon, 02 Mar 2026 00:24:11 +0800 (CST)
-Received: from [192.168.31.94] (unknown [113.246.118.211])
- by mail (Coremail) with SMTP id AQAAfwBHoO0oaKRp7zEeAA--.52493S2;
- Mon, 02 Mar 2026 00:24:08 +0800 (CST)
-Message-ID: <19eb51c6-b794-4ff4-8ff6-37059dc69c25@phytium.com.cn>
-Date: Mon, 2 Mar 2026 00:24:07 +0800
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vwmxU-00017F-5Y; Sun, 01 Mar 2026 15:00:08 -0500
+Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vwmxQ-0000Pb-5o; Sun, 01 Mar 2026 15:00:07 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PjeKNSX6gNZEpK5HKjqVUo8PxW0Ftz7n2PjXvAm7Oun8hQxFt3eGmn3tSTUxJstF5yV1t3K6HTU1RFcE2sX9gPGnjEim9+7Tr8uAjMIf8XqLPZ2QcHcry+MYrppH2i8LIc/StfJ6RbsKrAnieB6SsiHEOOeaUuHv0vXpKkAQB/ksH8OQ+X5GwkLwpKR5cIyWakBxoQHgNGISdcKMTDOjVMv9ZKuG+SD+YZFj+7oq5LfIPrPKVMBUFZK/eDYmDqxZx6ZOlunMeP2+apr662RPS/Exf502H2hLpHF8A6xZPXUnPmxqk86DP1Py8X1zK/yFxx+sAIEX0KlWCdD4BKMHgw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=jzDZkxiW8hfL28WVXiixzJe3NXbAo3Mx03Tonz84F+o=;
+ b=CJeFXKgQ/LOz9byFioG67WosXosQMYboBrN5YK++0EcIhA7qIY9gnDHa4NeRDBmU0Jic+2gJ2e5ZUjDLKgedGqxV8oYKzj7G6MeiESGiK/8hMUjxdC/GZsQXAiPNr8w1duI8N2fzU08OPcmuCtEvnp+OAjwom7HbFRHkphDO1zvhcAAVkGf+skysXXdDRqS6wTC2QSDz9zhXYmUEF5n3TERqoJ9ooaIeTy/Fa2R1DGyjwrnRAde+Lxt11gvRC8pN/qHcr2hOnyGOTSiMJO1Q9m1syYh8xAKpW4mgogFpYRj/N5bPGSgEvrrulbyaNGVWRI7FAafIszMtvsU9SdPaLA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=jzDZkxiW8hfL28WVXiixzJe3NXbAo3Mx03Tonz84F+o=;
+ b=keumx8mnsvrzDahajhWEvTf7DpsPWx4g+LLw6R2/dPMWXEpLS9tSK22McHn+Rg4jmN1SsxO1H6rRZ5H3me+lyTMKAcyxBllzHABAB/mcjE3/SKgTLPLoiM2whtAGJr7649AjUkQ7iZr4S26NgzEQLu6jjr7kamK46V5svKF7OdSqgZOLt/JZrnmR3Xry+TE45Qk91xJRqrAcaGFNu74G8EDoBV2k69faMDLwPOpDf3iaZWxCJEafjHXfgDyWiLmIIhd6HkXU3VTbxmFRoad7r8ry9JGTVB5y7xk+j+S4IveMPLsCgMwm55UlhLNnszUumIvclsAY726wN019ybarQg==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by LV9PR12MB9831.namprd12.prod.outlook.com (2603:10b6:408:2e7::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.20; Sun, 1 Mar
+ 2026 19:59:57 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9654.015; Sun, 1 Mar 2026
+ 19:59:57 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>, "philmd@linaro.org" <philmd@linaro.org>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v8 5/5] hw/arm/smmuv3-accel: Read and propagate host
+ vIOMMU events
+Thread-Topic: [PATCH v8 5/5] hw/arm/smmuv3-accel: Read and propagate host
+ vIOMMU events
+Thread-Index: AQHcpvxYoJA2rVvrlUmoO+kVeNPgOrWXqK6AgAJnu9A=
+Date: Sun, 1 Mar 2026 19:59:56 +0000
+Message-ID: <CH3PR12MB754818FE668426F2078F25BCAB71A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260226084456.112142-1-skolothumtho@nvidia.com>
+ <20260226084456.112142-6-skolothumtho@nvidia.com>
+ <IA3PR11MB913652049863E1F32BE9C1319270A@IA3PR11MB9136.namprd11.prod.outlook.com>
+In-Reply-To: <IA3PR11MB913652049863E1F32BE9C1319270A@IA3PR11MB9136.namprd11.prod.outlook.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|LV9PR12MB9831:EE_
+x-ms-office365-filtering-correlation-id: 3facfdee-c78e-4e4f-c403-08de77cd1ce4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700021;
+x-microsoft-antispam-message-info: tspEvFQdu8lkJCNjbQ3dyAa1+evc/w9NyMTsPyeIn2VjIEl2Qgs5PlbsUZE7+XvSQIN7Xhn1DsvJYZf41WtXYpgyx/XRE+ZNDkZK7PARhiP5Mqt8SMN1KGi2mdvkdI8azPJ/GH32II1N1McZa+sEmbm6YjIysbbaQfwgtlMOMydDoD5+w06pzzQu3R8CDSpOX8DYZHPBw0CNKj4jDyXrxaMhmB767Zo2htrmdaPwAVOSIcVdvLmXmgzXJPF9tGMQNMmvoi4IBISf5aWkGCyFdyggE4iZf1gPJyAcjQI9ljX7/qTOvae3eRMD0F9P7xEybl6qASVwASmQxlpQemn7CHeK1OqOsh49yyWlmrcMsNw+VQDlL4emeTG6JPY3BAJ4FKAEIUAf3vYqVbwSYFp1wQQI9uW8a722BhVtv7HlmQg3duR7JDRtaKn4U1pCIQbUtthHZbvbC0HtphTnQBusZ94hqKC5U7zGqpkuhSHFzJ1f3lbJ2BJJ9+BlWbDkjdlWbqmxeOzy32GYwozm8yNNF4EyDjPa4viAdss9k/xQTLfbNSwwrZ3Elvacn9hmJgbjesp/HQ/vzvle1sY3e6nEJh8Icx6Fz5YK64TayIgJbo/2ZwEZmkOSB7D9rDYoZ+Z4kMKf/3n5AXuBIKe0CWJe75bFY02m/IoSADfj8P0v2r9KEo8+QlBPRMOb5oX1iQLg3cDhF//+s/U0YiZTCCf7Hg+CkZQvbEhsnpixQxb4tW5TdkgnsHwLtEqddQESW6FG+NFQ3K2uGyI7LpCMZqscERilRyJmFika2NOXhXECH1g=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700021); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?s28b5l2T0MWuovlbHnOUI5MMptS+ldn/7GUrDeSe35JECjJ6RlhIdIwiltmz?=
+ =?us-ascii?Q?e6pdwfh+3/xwaS2m4bVOKQeQ5UviQ9jItz7nHel4aboTDaDLCOLiJW+qjYhp?=
+ =?us-ascii?Q?M3Y9oCBBJnOcIW8jLSRCfGFK6iub0cdjwYoEQhS25jUR8muOauQCfKQXIm9d?=
+ =?us-ascii?Q?1fwYnAtYThJ75kkQHlASbJg15C8eAw+Ix3rFCaawPWdOQ/+e4XgwBMeaqHI0?=
+ =?us-ascii?Q?2glOu9FiluYWu+WOwAcdBZ3DLsmzS5oumlWU1T/xQega4lZI7KM2pJYzmyjv?=
+ =?us-ascii?Q?Tq62BuBrQB5nMnBkbsqtCFVDH6kKFcouYI64Q3m491qw0mvuiMnyeRpgo1o1?=
+ =?us-ascii?Q?gvJkkMRmUVsTlSpPQIk2C779S69RCzNrMGAp3GKQAYSHIcdUNPa999ksy1Kw?=
+ =?us-ascii?Q?BoiYb83AjmKNgsja8/xCPF1FYolC9jKHUBr5XZbnBbTEaua9yVC/s7+7q7ml?=
+ =?us-ascii?Q?UoGlxqJtZd4Jem83AcX5eWSAtu0K78krB+cjJQmVs9WDvl3d4qVokNi8hHRL?=
+ =?us-ascii?Q?zXV3ntZJmu69o1O3+RBL9y0l94GG+h5Aqh2UTbd5tj6MqC2xtfu0MPyetIXM?=
+ =?us-ascii?Q?2NqULBZ7OiIAwti9c6lp07rJmc57l8MPbJxqbSnZh6uCkA1MC5Lx2CltFmuE?=
+ =?us-ascii?Q?EMHWURL4Ofa/xqIXdU/S0pbMJ9/NEXja1fDh7t6wiQNt2cxcoUddkQS10bT2?=
+ =?us-ascii?Q?KnpBsZ8QX02zmg+RaRPsxAleOQCRP57UVNq3X9hc/jzAujZwsuoWAZKGCmfE?=
+ =?us-ascii?Q?5C1v8/C3i+DxSXgMTc38/NlnDHZ4JwBbZvYYCSgKdCS26sg/jyit7J2fmAz3?=
+ =?us-ascii?Q?QZx7JEEYZssSsoa/uV0py4vY0u3Q4Gv25cBdIT9QJfcINfg/L8jYhIiifscH?=
+ =?us-ascii?Q?NsZyjthb2ZJs7CIIOX7ygH7RzLoDG5pM+wWb4cUSsPa6wRHFkwUrOedv0G8w?=
+ =?us-ascii?Q?fwxxsQOBnWy4OKNL/EmyXrq8gXL+J2SXVll/TuFOPUoBcUyfVN6KN9muWKiQ?=
+ =?us-ascii?Q?QswmPCJwqUVaEW92t8xiZRZmVxKukpUMKqlsaYuiDQA4kH4cldZTsW++02CO?=
+ =?us-ascii?Q?b2UiL6nQgYdK95NdoPGJVtSMlgELawMgHvYrxKZkfcv6atnUwG/jIqwar0Ar?=
+ =?us-ascii?Q?G7+hkrAuSxwd/b5TKjEA+VqnBNQ6Le2ydj6ooNYSBoxovA0cejKMJyuHwwqk?=
+ =?us-ascii?Q?IQpnbHWE3pFygCOcQ7G02liAwFLgMSw2SWYOIVd0+TKYynTxGqRFsVn1yg8H?=
+ =?us-ascii?Q?MgSg4dhC3az0HWVaNnysmGai/OsBPgKhMMtYY1mKsK23U+j0ceIGIiqMMafO?=
+ =?us-ascii?Q?jHv1BrD9EBL0aDyc4I0IMG+EdE44FfItE7o0hAQjTygp5TFJi14g3nX33HPK?=
+ =?us-ascii?Q?UyOZRTiArUsXWjPyKlHsizPyUbGWAgr8em7E4W4+rSiK1XIItoigxv6aarrR?=
+ =?us-ascii?Q?YsQyOMgJ1SFYlKkN2GCttbEWYuFU8yW4akZclG86YZwCkaO1TyVYkK2EtF1F?=
+ =?us-ascii?Q?zuXGMRjITt8Y6BwAxrrUJT3JX0JLlo4sc5cGGkosRn0vBJrMQfapUckPccyc?=
+ =?us-ascii?Q?pQQZaHD6l4D/f0BzrkJ/o9kORNKIsdkrPPkD3oY/r6oAm/ZKhbHPkScQfHML?=
+ =?us-ascii?Q?nB/TvzytK4J9A+xjr50bVLqxgXpH2SJlwsjotkMuZRAGXwuVyJq9g3svPXDX?=
+ =?us-ascii?Q?J/q64WBVJSzDLjIv3CxAYlc1EV+dUg4YV64DNmqQJUbO8t4QhOQJZDOVbwMj?=
+ =?us-ascii?Q?/PsxCbbQwQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 24/31] hw/arm/smmuv3: Determine register bank from MMIO
- offset
-To: Mostafa Saleh <smostafa@google.com>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101830.2996354-1-tangtao1634@phytium.com.cn>
- <aaGxST56MQWlN8fJ@google.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <aaGxST56MQWlN8fJ@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwBHoO0oaKRp7zEeAA--.52493S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWmiCd8FiAAJsd
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3AryfXr4rAF1xKw43uw17ZFb_yoWxtFyxpr
- Z5JF1SgF4DKF4fXF43Xa1UuFyrAws3Kr13Crn8KFyUCayjkwn7JFW8C34S9F1Dury7ZrsY
- yFW5XrW3urs8ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.012,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=1.188, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3facfdee-c78e-4e4f-c403-08de77cd1ce4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Mar 2026 19:59:56.9583 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ASAhHRttFHlg5giD9rZqWxxavP9oMsonbn11FcVDhrup7gX/2BrW5mDUzKPs8Y7t/fPGiwj5jHjsQdgnOhR2fg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV9PR12MB9831
+Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH4PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1.676, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,199 +150,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mostafa,
+Hi Zhenzhong,
 
-On 2026/2/27 PM10:59, Mostafa Saleh wrote:
-> On Sat, Feb 21, 2026 at 06:18:29PM +0800, Tao Tang wrote:
->> Modify the main MMIO handlers (smmu_write_mmio, smmu_read_mmio)
->> to determine the security state of the target register based on its
->> memory-mapped offset.
->>
->> By checking if the offset is within the secure register space (>=
->> SMMU_SECURE_REG_START), the handlers can deduce the register's
->> SEC_SID (reg_sec_sid). This SID is then passed down to the register
->> access helper functions (smmu_writel, smmu_readl, etc.).
->>
->> Inside these helpers, the switch statement now operates on a masked,
->> relative offset:
->>
->>      uint32_t reg_offset = offset & 0xfff;
->>      switch (reg_offset) {
->>          ...
->>      }
->>
->> This design leverages a key feature of the SMMU specification: registers
->> with the same function across different 3 security states
->> (Non-secure, Secure, Realm) share the same relative offset. This avoids
->> significant code duplication. The reg_sec_sid passed from the MMIO
->> handler determines which security bank to operate on, while the masked
->> offset identifies the specific register within that bank.
->>
->> It is important to distinguish between the security state of the
->> register itself and the security state of the access. A
->> higher-privilege security state is permitted to access registers
->> belonging to a lower-privilege state, but the reverse is not allowed.
->> This patch lays the groundwork for enforcing such rules.
->>
->> For future compatibility with Realm states, the logic in the
->> else block corresponding to the secure offset check:
->>
->>      if (offset >= SMMU_SECURE_REG_START) {
->>          reg_sec_sid = SMMU_SEC_SID_S;
->>      } else {
->>          /* Future Realm handling */
->>      }
->>
->> will need to be expanded.
->>
->> Signed-off-by: Tao Tang<tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmuv3.c | 57 +++++++++++++++++++++++++++++++++----------------
->>   1 file changed, 39 insertions(+), 18 deletions(-)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 9c09ea0716e..d81485a6a46 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -1781,12 +1781,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
->>   }
->>   
->>   static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->> -                               uint64_t data, MemTxAttrs attrs)
->> +                                uint64_t data, MemTxAttrs attrs,
->> +                                SMMUSecSID reg_sec_sid)
->>   {
->> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
->> +    uint32_t reg_offset = offset & 0xfff;
-> This breaks all registers above 4k?
-> For example, TCU registers/PMU reside on some of this area and if SW
-> writes to those this might be aliased to something as CR0, which might
-> disable the SMMU and bypass some security checks. (in case it’s managed
-> by the hypervisor).
->
-> I believe you should check the secure offset explicitly to distinguish secure
-> and non-secure.
+> -----Original Message-----
+> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
+> Sent: 28 February 2026 06:28
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+> arm@nongnu.org; qemu-devel@nongnu.org
+> Cc: eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
+> <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
+> zhangfei.gao@linaro.org; philmd@linaro.org; Krishnakant Jaju
+> <kjaju@nvidia.com>
+> Subject: RE: [PATCH v8 5/5] hw/arm/smmuv3-accel: Read and propagate host
+> vIOMMU events
 
+[...]
 
-Thanks for catching this. You’re right! I implicitly assumed that 
-anything “above 4KB” in the register aperture could be safely decoded by 
-masking to a 4KB-local offset, but that overlooks the fact that real 
-SMMU IPs populate the *IMPLEMENTATION DEFINED* windows with meaningful 
-blocks. In practice, these implementation-defined ranges appear to start 
-around 0x0E00 in the main bank and 0x8E00 in the secure bank (per the 
-register overview)?  So collapsing offsets with offset & 0xfff can 
-easily alias accesses from those regions onto architected registers.
+> > static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
+> > {
+> >     IOMMUFDVeventq *veventq =3D accel->veventq;
+> >@@ -397,6 +441,7 @@ static void
+> >smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
+> >     if (!veventq) {
+> >         return;
+> >     }
+> >+    qemu_set_fd_handler(veventq->veventq_fd, NULL, NULL, NULL);
+> >     close(veventq->veventq_fd);
+> >     iommufd_backend_free_id(accel->viommu->iommufd, veventq-
+> >veventq_id);
+>=20
+> Did you ever see free_id failure here?
 
-I’ll rework this part: explicitly decode the MMIO access by **register 
-region/window**, and only canonicalize offsets in a way that preserves 
-at least the 64KB page granularity.
+So far I have not seen free_id() failure in my test setup.
 
->>   
->> -    switch (offset) {
->> +    switch (reg_offset) {
->>       case A_GERROR_IRQ_CFG0:
->>           if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
->>               /* SMMU_(*_)_IRQ_CTRL.GERROR_IRQEN == 1: IGNORED this write */
->> @@ -1851,13 +1852,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->>   }
->>   
->>   static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->> -                               uint64_t data, MemTxAttrs attrs)
->> +                               uint64_t data, MemTxAttrs attrs,
->> +                               SMMUSecSID reg_sec_sid)
->>   {
->>       Error *local_err = NULL;
->> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
->> +    uint32_t reg_offset = offset & 0xfff;
->>   
->> -    switch (offset) {
->> +    switch (reg_offset) {
->>       case A_CR0:
->>           bank->cr[0] = data;
->>           bank->cr0ack = data & ~SMMU_CR0_RESERVED;
->> @@ -2094,16 +2096,25 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->>       SMMUState *sys = opaque;
->>       SMMUv3State *s = ARM_SMMUV3(sys);
->>       MemTxResult r;
->> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>   
->>       /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->>       offset &= ~0x10000;
->>   
->> +    /*
->> +     * Realm and Non-secure share the same page-local offset layout; Secure uses
->> +     * the same layout but is mapped starting at 0x8000(SMMU_SECURE_REG_START)
->> +     */
->> +    if (offset >= SMMU_SECURE_REG_START) {
->> +        reg_sec_sid = SMMU_SEC_SID_S;
->> +    }
->> +
->>       switch (size) {
->>       case 8:
->> -        r = smmu_writell(s, offset, data, attrs);
->> +        r = smmu_writell(s, offset, data, attrs, reg_sec_sid);
->>           break;
->>       case 4:
->> -        r = smmu_writel(s, offset, data, attrs);
->> +        r = smmu_writel(s, offset, data, attrs, reg_sec_sid);
->>           break;
->>       default:
->>           r = MEMTX_ERROR;
->> @@ -2115,12 +2126,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->>   }
->>   
->>   static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
->> -                               uint64_t *data, MemTxAttrs attrs)
->> +                               uint64_t *data, MemTxAttrs attrs,
->> +                               SMMUSecSID reg_sec_sid)
->>   {
->> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
->> +    uint32_t reg_offset = offset & 0xfff;
->>   
->> -    switch (offset) {
->> +    switch (reg_offset) {
->>       case A_GERROR_IRQ_CFG0:
->>           /* SMMU_(*_)GERROR_IRQ_CFG0 BOTH check SMMU_IDR0.MSI */
->>           if (!smmu_msi_supported(s)) {
->> @@ -2149,17 +2161,22 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
->>   }
->>   
->>   static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
->> -                              uint64_t *data, MemTxAttrs attrs)
->> +                              uint64_t *data, MemTxAttrs attrs,
->> +                              SMMUSecSID reg_sec_sid)
->>   {
->> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
->> +    uint32_t reg_offset = offset & 0xfff;
->>   
->> -    switch (offset) {
->> +    switch (reg_offset) {
->>       case A_IDREGS ... A_IDREGS + 0x2f:
->> -        *data = smmuv3_idreg(offset - A_IDREGS);
->> +        *data = smmuv3_idreg(reg_offset - A_IDREGS);
->>           return MEMTX_OK;
->>       case A_IDR0 ... A_IDR5:
->> -        *data = bank->idr[(offset - A_IDR0) / 4];
->> +        if (reg_sec_sid == SMMU_SEC_SID_S) {
->> +            g_assert((reg_offset - A_IDR0) / 4 < 5);
-> Asserting here is too much as this can be easily triggered by guests,
-> we should follow the convention of other unimplemented registers.
+ I'm working on PRQ using FAULTQ in
+> intel_iommu
+> and find a race condition, I suspect the same for vEVENTQ because both ha=
+ve
+> similar
+> implementation in kernel and qemu.
+>=20
+> qemu_set_fd_handler() is called to remove veventq_fd from epoll() but it'=
+s
+> async,
+> this can lead to releasing of veventq_fd delayed after free_id(veventq_id=
+),
+> during veventq_fd releasing, it drops reference of veventq_id but it's to=
+o late
+> and free_id(veventq_id) already failed.
+>=20
+> It's not easy to reproduce, we had a test case in guest to trigger FAULTQ
+> allocation
+> and freeing sequence in loops.
 
+From a quick look:
 
-I'll fix it in V5.
+qemu_set_fd_handler(fd, NULL, NULL, NULL) -> aio_set_fd_handler()
 
+aio_set_fd_handler() takes ctx->list_lock. For the delete case it sets
+node->pfd.events =3D 0 and then calls:
 
->
-> Thanks,
-> Mostafa
+ctx->fdmon_ops->update(ctx, node, new_node); where new_node =3D NULL
 
+In the epoll backend (util/fdmon-epoll.c) this results in:
 
-Thanks for your time!
+epoll_ctl(ctx->epollfd, EPOLL_CTL_DEL, old_node->pfd.fd, ...);
 
-Tao
+As I understand it, epoll_ctl() is a synchronous syscall. When it returns,
+the fd has been removed from the epoll interest list in the kernel.
 
+Also, I think, aio_set_fd_handler() and aio_dispatch() run in the same thre=
+ad for
+a given AioContext, and dispatch runs with ctx->list_lock held (via
+lockcnt). So looks like handler removal and dispatch are serialized at the =
+QEMU
+level.
+
+Do you see a specific window where the fd could still trigger after
+EPOLL_CTL_DEL returns?
+
+Could you confirm which fdmon backend you are using..poll, epoll, or
+io_uring?
+
+One more question: is the FAULTQ register/unregister model identical to
+vEVENTQ in terms of allocation and teardown ordering? For vEVENTQ we only
+unregister when the last device is removed from the vIOMMU, typically via
+device_del hot unplug.
+
+Please let me know if you see a specific race case here that I may be
+missing.
+
+Thanks,
+Shameer
 

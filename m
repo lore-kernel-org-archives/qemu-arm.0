@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32949E9B356
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02520E9B356
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:23:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx0NY-0006DC-Hb; Mon, 02 Mar 2026 05:19:56 -0500
+	id 1vx0Q5-00011K-MC; Mon, 02 Mar 2026 05:22:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vx0NW-0006CX-Am
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:19:55 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1vx0Pr-0000Bq-5d
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:22:20 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vx0NU-00070g-AM
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:19:54 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48373ad38d2so121275e9.0
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 02:19:51 -0800 (PST)
+ id 1vx0Pn-0007cM-N4
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:22:17 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4806b0963a9so117145e9.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 02:22:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772446790; x=1773051590; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=cozeOcSo5NYB1Fwv5aq+MkvcKJ5E/mUbK5yqyoQkrxk=;
- b=h5rVU7jEc10bhXnRKv6qlFuppojIfR/Jafqhpc8wlSiVjsWVu+Y2Uhf3AFPLc6Ze/q
- sFC8zdrvOiEH/NHV2CvWtvkOd8eRfguTG05MdIw2ereWb0r5LkZKp00RiXe4V0UK8fTp
- /xd7WX0rRErMApRKsi0mxl9zNEnmm+cWOZBofTqCNv6DSJLFrxbw632aJRIn6rf3MscN
- 0X9ZPdq2//3YSV32fVkWlCBDnC50nSsIdPNChmejJrjoS40edfpA4/mKCmdKQC0tD5cZ
- wlZ0KYOjuAqto7bg6tA1vRofIlvIDau8Q7ZlMmR77k97oVrKgHnRnHxDj35jNBzvtJmT
- CIQw==
+ d=google.com; s=20230601; t=1772446934; x=1773051734; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=Gz1hN0+eeBQAr6nQnx5mO33Aq5OmQ4jTmU6WU/KWcHk=;
+ b=HWwCtrpLlGYCjKv5blMBeiqkEaHj98AgFU20Ox1YMt+OxgKWCtOFiwEaVRpkQbPepn
+ yDnZyE8m1sBC1Jh8JrbH5n2kUD9ryySI6w8HsObawrV/+R8qwlmImR0pZcXtumgiZVqc
+ A+cUP2amRmcn9TMpVHOHOYRRewFx62nRw9GZctnahwWoJ8ag2y8nAyigibMP5bt7PlZW
+ WZXc58+bXvYZWDnqjuVTPc8P1+1UIYQlGn+/VX3aOvmrLSD9FP8fqfLlvJVlD5xB7mz2
+ efBmeVZZ5uPMqsZc4MprAh4NYyXlvqFJC0R9LfKas2st/ckvshHTnJjkbmtF1iK55NLF
+ TxMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772446790; x=1773051590;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cozeOcSo5NYB1Fwv5aq+MkvcKJ5E/mUbK5yqyoQkrxk=;
- b=tugNqDW2y0GvyjOXNA/Z6s1kL5faEdnpMVQenY9oCxJtQtgvuoTypqwYheBlJq4bP7
- g223bhGZAdq/sq25d2Kqqaq2rXQBuJkhubawCMBNJi6hRciQv9A4RLzjM1skd/fCxWr9
- R7n7XIAFdC5/VPc3Wta7SewEsWNQeFLMREt0gbo8lcSVF5XXrKXlVUN4D0XgHdJTuZSk
- jG8a6U8d/7FJLI158q9zx3eP2tEp5IUYgC2AmRFnyQLdVcTcswYA+oE88s1hnKrKhI0a
- /lJI2ghDbq9fYuAE5x+gtMNRlUIyOMpf29dvwiSy5FhKliIpUDLEBsDL3ZTROOuBirkt
- QPVw==
+ d=1e100.net; s=20230601; t=1772446934; x=1773051734;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Gz1hN0+eeBQAr6nQnx5mO33Aq5OmQ4jTmU6WU/KWcHk=;
+ b=ehUD0kSrjQmqJ1FmwkGUYHUDxwrhmnxHZuIh301DMfRRayLDrro/WT3z5FGdmV8xXX
+ XWEesvOl8IZqpAbSQicVz1CgbKMZ1v0bcs7h3JO8qwYhGg/OnZsw87oH+GFInFpK/mF9
+ 07QtoCzzftYQGKB4mZ76lStdVXv/HyDsGWqmeDXdWBN0NGYKSrsR6LGnHzrIHrY9SP7z
+ 9xLwFIERyHJ/XLVC/N4I/J7IzQ63zIr2YtW4tGYfBQJ3RqoBIA3gi6stk5+gKzto1hcW
+ NGededwzGSmmdXL64ZA3NAzw+FumoaeQcXjn0oa/TTHjUJphjLhw1pbAxBehwLI+y3id
+ fLtw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUMbJSeXv5ysz2uLYz+Yoo045RSWoMaBOkbWV9iJuyWITW477dYR+5lufVBj/Zf38ZLUi+7sRK9ww==@nongnu.org
-X-Gm-Message-State: AOJu0YyCPYJygM5GJSB+2/ug2XM0iN3CWpSB6oMC6CdAtXke+BDPAic/
- O4grl2w/iIIU3XWWepOYYKE6odByiseLWgCOGhAEXo7W9vs4MT6gvncXYjVZx718q+3mkZVkzTE
- c3IGlCQ==
-X-Gm-Gg: ATEYQzwciisMnC7mIuf8EfC7vzyGnB+UvUOsvOSkbyS/SnuDy514jekUNYJlI5uy/Vt
- yqSnc1oYp4WBxGcytPeyamY8G0Cc3DXnDQFQLCPJUatnU3cahr1nXYsi05LudhL7NoDC0hWbA0o
- XshCMYUi2mg6Lk5o9LRrCxCU7sNh6yBE7+ME7nIx4/GzpxVEtUlpFsd3XZjbrkzX899DRpWCWq4
- GS5sg4o15lb40D25WjAOVWJuHtowRaW4rvegKXboVpwfGY3noTr0xHNim/61kyBpNW1CsJgCN8h
- YwV9YrCBVwXrnMvZPAn5XEMIzu+QdZ8/R7WGRI7Ys/saMaOJLKICfbZN55yzTyYCGb9Qlz0M0Lu
- 1dhbj/LpCUpqzeDqrpw9Y0ebyaxrNflMH5SzH264iIsLpumKkrUCi9FpRr8xN6bjnZ2e0h4QiOW
- tgJ5cWOln+uHubsb0eGDSBzuREPRHbMSSi6CkXRieL5HRrEC+mtPZKkSFS6W7OBSCC
-X-Received: by 2002:a05:600c:8b2f:b0:477:86fd:fb47 with SMTP id
- 5b1f17b1804b1-483ce5e2ccemr1948505e9.8.1772446789520; 
- Mon, 02 Mar 2026 02:19:49 -0800 (PST)
+ AJvYcCWx30pMaTRfsCVPQYq47LvB5zyoXl6v4kfdHWhhEtYYIj0e/KQSJXd4hNt5nhHeMPV3lc/YPiYMRQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzlt76eElRhbx7kE/lv3vMpq4UYvPX5k08qF1fdxqQCsStP3x0U
+ 5SbFzYiZC0Scq3fwVON2G9rktR7baVqR1+ige5fo5iLgrS7sPkAH87vFjMOc0UcSTg==
+X-Gm-Gg: ATEYQzwPQoJoFIlMbcTEGn5z3b9Za1sBobPTqEO8SYklVWkzEYeRVXvLbH2mL3qMp9X
+ 2RVK+WmrZAPHWTHQXcyFdjaha6k3B+NfGycGpHc40Ek6SL2ylRLcrw/elPPQi4NvrwIubBSoHcc
+ VQ8FMVesOmcz2170nVtJuCsr0w4ZbMleEJNDRXyerESYBe2iiBWU09YZjnlRTpW8Hw7H2IsD4tw
+ iYS00FO3M78+bf3zdwwaXqLlW/u98eCP/qy+N5pDrjrY4GHk+O8HlJ3MUGcH6/ZZUIXZ+WuIHRl
+ Zvi2QBrlg0wNmhIe6cclRTTBOD57VyzI4Lg21J9WU8z1ith2Lpg1FaTQg/FWrciz1Lltslnpmlc
+ +rpnN+Hg9Nm0gfS8dniYjpcVjE7DY7NWY0WCyayFjQrypTSXytmGFHo7muFOojPjFx6yYBRUoKk
+ A8MoSmKOqiwKiUhah/JpEis7ALRVBsZ6GN4WzYkJ7y4aa5HzV1qtYwfXy4jf81hbJ5
+X-Received: by 2002:a05:600c:4b0a:b0:477:c5b3:7a9b with SMTP id
+ 5b1f17b1804b1-483ce5e98cbmr1374215e9.10.1772446933663; 
+ Mon, 02 Mar 2026 02:22:13 -0800 (PST)
 Received: from google.com (206.56.155.104.bc.googleusercontent.com.
  [104.155.56.206]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bd75df9fsm466954595e9.13.2026.03.02.02.19.48
+ 5b1f17b1804b1-483bfeb932bsm123258085e9.28.2026.03.02.02.22.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2026 02:19:48 -0800 (PST)
-Date: Mon, 2 Mar 2026 10:19:45 +0000
+ Mon, 02 Mar 2026 02:22:13 -0800 (PST)
+Date: Mon, 2 Mar 2026 10:22:08 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Eric Auger <eric.auger@redhat.com>,
@@ -78,18 +78,19 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>
-Subject: Re: [RFC v4 06/31] hw/arm/smmuv3: Track SEC_SID in configs and events
-Message-ID: <aaVkQdanf4KhROna@google.com>
+Subject: Re: [RFC v4 12/31] hw/arm/smmuv3: Store CD NSCFG in TT info
+Message-ID: <aaVk0PuTAUkryPLb@google.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221100250.2976287-7-tangtao1634@phytium.com.cn>
- <aaGsltcRyTu7j1tU@google.com>
- <df545e5d-0380-49bd-97f1-5b7b9a4259da@phytium.com.cn>
+ <20260221101632.2993305-1-tangtao1634@phytium.com.cn>
+ <aaGtANCP87L-_gtp@google.com>
+ <2c1c08fe-ddd2-47a9-9e9a-4a900df60bae@phytium.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <df545e5d-0380-49bd-97f1-5b7b9a4259da@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=smostafa@google.com; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2c1c08fe-ddd2-47a9-9e9a-4a900df60bae@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=smostafa@google.com; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -113,79 +114,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, Mar 01, 2026 at 09:53:24PM +0800, Tao Tang wrote:
+On Sun, Mar 01, 2026 at 10:21:55PM +0800, Tao Tang wrote:
 > Hi Mostafa,
 > 
-> On 2026/2/27 PM10:39, Mostafa Saleh wrote:
-> > On Sat, Feb 21, 2026 at 06:02:25PM +0800, Tao Tang wrote:
-> > > Cache the SEC_SID inside SMMUTransCfg to keep configuration lookups
-> > > tied to the correct register bank.
-> > > 
-> > > Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
-> > > and event logs always show which security interface emitted the record.
-> > > To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
-> > > identified as soon as an event record is built.
+> On 2026/2/27 PM10:41, Mostafa Saleh wrote:
+> > On Sat, Feb 21, 2026 at 06:16:32PM +0800, Tao Tang wrote:
+> > > With NSCFG definitions in place, record the per-table NSCFG bits
+> > > in SMMUTransTableInfo during CD decode for later use.
 > > > 
 > > > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> > > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> > > ---
-> > >   hw/arm/smmuv3-internal.h     |  1 +
-> > >   hw/arm/smmuv3.c              | 20 +++++++++++++-------
-> > >   hw/arm/trace-events          |  2 +-
-> > >   include/hw/arm/smmu-common.h |  1 +
-> > >   4 files changed, 16 insertions(+), 8 deletions(-)
-> > > 
-> > > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> > > index 866d62257e3..a1071f7b689 100644
-> > > --- a/hw/arm/smmuv3-internal.h
-> > > +++ b/hw/arm/smmuv3-internal.h
-> > > @@ -274,6 +274,7 @@ static inline const char *smmu_event_string(SMMUEventType type)
-> > >   /*  Encode an event record */
-> > >   typedef struct SMMUEventInfo {
-> > > +    SMMUSecSID sec_sid;
-> > >       SMMUEventType type;
-> > >       uint32_t sid;
-> > >       bool recorded;
-> > > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> > > index 2c107724e77..3438adcecd2 100644
-> > > --- a/hw/arm/smmuv3.c
-> > > +++ b/hw/arm/smmuv3.c
-> > > @@ -148,9 +148,9 @@ static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
-> > >       return MEMTX_OK;
-> > >   }
-> > > -static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-> > > +static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
-> > > +                                       Evt *evt)
-> > >   {
-> > > -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-> > >       SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
-> > >       SMMUQueue *q = &bank->eventq;
-> > >       MemTxResult r;
-> > > @@ -178,7 +178,8 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-> > >   {
-> > >       Evt evt = {};
-> > >       MemTxResult r;
-> > > -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-> > > +    SMMUSecSID sec_sid = info->sec_sid;
-> > > +    g_assert(sec_sid < SMMU_SEC_SID_NUM);
-> > What does this defend against?
+> > I feel this patch would be better squashed with how it’s used,
+> > but no strong opinion.
 > 
 > 
-> sec_sid is now taken from SMMUEventInfo, so the assert is to catch
-> programming errors early and avoid out-of-bounds bank accesses in
-> smmuv3_record_event.
+> I split "definition" vs "usage" here because Eric suggested keeping plumbing
+> changes separate in previous series.
+> 
 
-Personally, I don't like this kind of defensive programming, someone can
-argue we can add such checks anywhere.
-I believe we should definitely know the possible states in the software
-and add checks needed at guest inputs.
-But that's also up to Eric.
+I don't have a strong opinion, you can keep it, if Eric is ok with it.
+I was just looking for ways to keep this series shorter.
 
 Thanks,
 Mostafa
 
 > 
-> > 
+> That said, I don’t mind squashing this into "hw/arm/smmu-common: Implement
+> secure state handling in ptw" in V5, since it’s effectively a one-liner and
+> will make the series smaller.
+> 
+> 
 > > Thanks,
 > > Mostafa
 > 
@@ -193,24 +150,5 @@ Mostafa
 > Best regards,
 > 
 > Tao
-> 
-> > 
-> > >       if (!smmuv3_eventq_enabled(s, sec_sid)) {
-> > >           return;
-> > > @@ -258,8 +259,9 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-> > >           g_assert_not_reached();
-> > >       }
-> > > -    trace_smmuv3_record_event(smmu_event_string(info->type), info->sid);
-> > > -    r = smmuv3_write_eventq(s, &evt);
-> > > +    trace_smmuv3_record_event(sec_sid, smmu_event_string(info->type),
-> > > +                              info->sid);
-> > > +    r = smmuv3_write_eventq(s, sec_sid, &evt);
-> > >       if (r != MEMTX_OK) {
-> > >           smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
-> > >       }
-> 
-> 
-> 
-> 
 > 
 

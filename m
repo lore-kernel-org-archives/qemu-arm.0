@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D9F4EF585D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0F9C624C2
 	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 09:24:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vwzU3-0001HO-Cc; Mon, 02 Mar 2026 04:22:35 -0500
+	id 1vwzU7-0001Kp-1y; Mon, 02 Mar 2026 04:22:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU1-0001Fz-O0
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:33 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1vwzU5-0001Jf-QY
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:37 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU0-0007fk-4N
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:33 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-483abed83b6so34038415e9.0
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:31 -0800 (PST)
+ id 1vwzU3-0007hg-Qx
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:37 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-48370174e18so23233245e9.2
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772443351; x=1773048151; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772443354; x=1773048154; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JrSDkpRuA4wc4OTpcBM2xlfnE+hqoQxnobPtJeyezk4=;
- b=kBojzAfv68NBqTaHsmVq607+IaF90hj+cRZ9P5clKDbC7Nr9qyIGDUp8zQLygXrqLr
- LpSCzt36gBo6+tPCwfrYNrk1bMfyp7S1ciJzvJq2YwdP948HkQ52MlxiNi5Dviv+r1pA
- MGpM9ntclLrkJu+VD2QmuszdQlEXBZAhfLg4xO6R3JkW7fG8U3KA22m6gIcygvkCd22b
- EJES07VDDF88sAyOtJLrV2dL1fPvrwSPUim0ugLpmPNIaPBK+I+W0lTzFCx8qXlD+XU9
- RnhLdzIfyf+MWvfXX9OluJTthkQfho7kKeGcLPuh7C6UhNi3m8rp7HCLxoirZ6P0ZeD1
- mQCw==
+ bh=HlEaot0Az2g5Lcmwus88Zh0yOjbHLCxHpraQxrLX9JA=;
+ b=ZQgDHMUEjPYCMV/vN4gcsHqFzVFlocxIrLpFaoJe1U1As+cwSDZJyOmDVlNZqxD9TY
+ vFAX6od6mwUAlQLJOkeuDPOXAVg8iYA8V/LzVEIAn2M0Wf1q+Lgjc6dzgzMOWr5ZAYSu
+ vfG2SNtTKUgB6Ugpsu7yBrdqA7weBQxkEnSvestEeUeSxhoc30A382jXWqBNWNizxY8H
+ PEuokdsuzPlORbuH0gwTkBFJ/p71t8CPCsluWdu0OmOONBunozwnPe6GHECZA4sm8DaY
+ T3GNKFrcM06hzFtIpVIt1t2S3BeJ63hpQXa2ay6a0vV+SnQg0g6MextZ93/dFBxgYeeY
+ qxoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772443351; x=1773048151;
+ d=1e100.net; s=20230601; t=1772443354; x=1773048154;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=JrSDkpRuA4wc4OTpcBM2xlfnE+hqoQxnobPtJeyezk4=;
- b=CSJd3WoxQFio1OWwJbtdznF7kiyvQRjZvB7AW+rk266TGo9m8MJgxlYtyw240LhT90
- 7eff5bBTZMeyk77ZHouTk8Qkn/90hwVN8GjvKQ+folAHXBBx3EmJ9wlCa2Kh2v+06+81
- Ux7sjOwPYxPk8H8szG2tE36x+liEEzQr5pKDFYHSB6x3Y10J6IRi/lriceoolaTZ6BMk
- DVqvCe0zx1P+vcFC+FnAS4Dcll5Y2Zd4z5d1ekNn8zixeO0V+XS7wFyl6CeJZg3IazGp
- iWEFeXRUsh1t2qK51yP/wjTunynt1pNccKq5M6uv0pAQ2y2Ex5ZJ8stmRrU/EZY1qBFX
- CBZQ==
-X-Gm-Message-State: AOJu0YyDt3QJR/Y8vM3xmN9fM8D9bOeYvpjdpr+jB2YHFg56Fp75ouRy
- HOcEOr0/mu5+V9mxoF9nl7xQmvsQQ9HEWFV7O2Krg2m1nkNExN8C20ic4JaEW7Y4F7iNzWGZU+P
- 9N46y
-X-Gm-Gg: ATEYQzxqHacFv8S3EKbPdHVaWZqZ5D92niDE3N1+vT+T8bCMYoU6DHrtZguybhYiMqk
- OJ7EXzui1dVrJ8RBGK3udjJJQiENbTuMPSoYVObyIRT/bzWfG2EE1npGfbDDoaS6zNcfZdgAvAO
- pti6WfVkrs5ayumEatY4w/hijRTMhpZWiWEJugAJTfQ646hOXbt0XBsZFiRQiagdhzn2pCfswCS
- UcUI+kzjDRiGRWUvthkKIL48qEGOXFVfMJ1fO1ecvfahsMqf3DvHXuJqiTPIR23FyYoxDX6ZnKC
- TlPP52FkGrHArqe95NqmP3cGMm6Chko6vC+OeJKPCG+kRKkDHe17V7DxZtyK1YOBwDQPX24frxy
- 4G3twpWHnIkmYyhc9NOixtSHby08OMhtvKeePGWZwIM3pGLMEvb1MoHnjVLsXd3BIzXr1lE7sDY
- fYZvcrCagP9GJdA0nXAvcpCCUVWX+RExdUCw5aMeU4avw5ejoZ9h1BHLJjhj8ALBCcxMdhhfKmd
- Ki2Gr9fOG0XDE+zgADDV7qLALtfoDkSf9oKXeenCQ==
-X-Received: by 2002:a05:600c:c174:b0:477:73e9:dbe7 with SMTP id
- 5b1f17b1804b1-483c9c0bcdamr202694715e9.35.1772443350535; 
- Mon, 02 Mar 2026 01:22:30 -0800 (PST)
+ bh=HlEaot0Az2g5Lcmwus88Zh0yOjbHLCxHpraQxrLX9JA=;
+ b=v/Ys8hglPayjjT/93qejRCxiGDt+AA4tDFKzLLefy1RdTAFcMt2ia+ZxSe7noDCsE4
+ jDOsFO5NeOIIbZwRjyHFCbXwtwMgoUuPyZip4dxVP0t3/S90NWduqp9NRgpOczwrMb85
+ D69kSLbMoBBeekcoZ0PsktyQluo1qaQpVr4Ihn8jVvixzPGIJce52gwSG8wgKOdRUoE/
+ 6CwC422tacqvWriBNdBJs2wlEHQuP0WxMB+hg8cS7cj8ZOy6hL6CMEJIFhDxsPssm7ok
+ wo7ZehTRNUCjovyo/gWfpXLekUrlB5ZPu981NnOODx6TgQ4jmxryyeH1O/SiKL96w+vO
+ Y3aw==
+X-Gm-Message-State: AOJu0Yz76HqCJU4vlCWtMpMiousPFQUiJngTMU34Qgze+Z7KqdhRH7kQ
+ 2B3M5ho4aYriopHdFE9vzgFVnoaqr+sR89xzWj2dLGsP1/XYLqBzWPlnewYpBepiCtZANl4btzc
+ Km74C
+X-Gm-Gg: ATEYQzwWyupbEIk1mcbjGldotqS/OI9DtAAeHmQbFqK/XFPpgD/YmJ9sLUynDgWfqCX
+ k8DatGjrtJS6otmMdOMXqsAEFcIzVrJ5V9iuUvdWwIv6taUnYSBOyuG2w3GBi/MTRBq323VRail
+ Rmzgs+pUxzfn4WgGWDwaqYIUPBPcDTTdfpw8CbdvdPq7gurTIP7f4lIoq2OEB4yv9+gSrFnh7Nj
+ NlID9hNONEi+ZoGLpZW2M1ZwVr23vmVN1yCqqo1gfWCjo3Aag0iCoJNyIXp940pd9bXvpRIppR2
+ ZMLkSntwlR4mJvGZwW58aYRFBTg6YgRS6jooyDvmaaQ6KNEh1DwY7mezGe6eOGgS7w712OHDhUP
+ TZQV9lN8FB9cMCwFNnXECIDSp6fg2i/+1x5nYHgumQik/IFizsmqbxq7IihzD59CCR0T7y1xi1v
+ +ISqHS07mQ1ztvobxEkassGBZPmkGA1BGVYQE69gyAjWTIZ/E8gpKlmR8SIKQI+EdNEygbr68YD
+ uTRcBpuP1GeB71Sr0khxHibaHmwgdk=
+X-Received: by 2002:a05:600c:6488:b0:480:1c69:9d36 with SMTP id
+ 5b1f17b1804b1-483c9bbc297mr214797835e9.17.1772443354251; 
+ Mon, 02 Mar 2026 01:22:34 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.29
+ 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2026 01:22:29 -0800 (PST)
+ Mon, 02 Mar 2026 01:22:33 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -80,25 +80,25 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
  Yodel Eldar <yodel.eldar@yodel.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 3/9] hw/arm/aspeed_gpio: Don't leak string in
- aspeed_gpio_init()
-Date: Mon,  2 Mar 2026 09:22:19 +0000
-Message-ID: <20260302092225.4088227-4-peter.maydell@linaro.org>
+Subject: [PATCH v2 6/9] chardev: Don't attempt to unregister yank function
+ more than once
+Date: Mon,  2 Mar 2026 09:22:22 +0000
+Message-ID: <20260302092225.4088227-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260302092225.4088227-1-peter.maydell@linaro.org>
 References: <20260302092225.4088227-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,29 +114,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We allocate the string for the GPIO property name, but never free it.
-Use g_autofree to avoid this.
+From: Fabiano Rosas <farosas@suse.de>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+tcp_chr_free_connection() can be called multiple times in succession,
+in which case the yank function will get as argument a NULL s->sioc
+that has been cleared by the previous tcp_chr_free_connection() call.
+
+This leads to an abort() at yank_unregister_function().
+
+ #0  __GI_raise (sig=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+ #1  __GI_abort () at abort.c:79
+ #2  qtest_check_status (s=0x513000005600) at ../tests/qtest/libqtest.c:209
+ #3  qtest_wait_qemu (s=0x513000005600) at ../tests/qtest/libqtest.c:273
+ #4  qtest_kill_qemu (s=0x513000005600) at ../tests/qtest/libqtest.c:285
+ #5  kill_qemu_hook_func (s=0x513000005600) at ../tests/qtest/libqtest.c:294
+ #6  g_hook_list_invoke (hook_list=0x55ea9cc750c0 <abrt_hooks>, may_recurse=0) at ../glib/ghook.c:534
+ #7  sigabrt_handler (signo=6) at ../tests/qtest/libqtest.c:299
+ #8  <signal handler called>
+ #9  __GI_raise (sig=6) at ../sysdeps/unix/sysv/linux/raise.c:51
+ #10 __GI_abort () at abort.c:79
+ #11 yank_unregister_function (instance=0x7fb26f2ea9a0,
+     func=0x55ea9bcc0a10 <char_socket_yank_iochannel>, opaque=0x0) at
+     ../util/yank.c:151
+ #12 tcp_chr_free_connection (chr=0x51300000ffc0) at ../chardev/char-socket.c:385
+ #13 tcp_chr_disconnect_locked (chr=0x51300000ffc0) at ../chardev/char-socket.c:477
+ #14 tcp_chr_disconnect (chr=0x51300000ffc0) at ../chardev/char-socket.c:495
+ #15 tcp_chr_hup (channel=0x514000000040, cond=G_IO_HUP, opaque=0x51300000ffc0) at ../chardev/char-socket.c:536
+ #16 qio_channel_fd_source_dispatch (source=0x50c0000b5fc0, callback=0x55ea9bcd6770 <tcp_chr_hup>,
+     user_data=0x51300000ffc0) at ../io/channel-watch.c:84
+ #17 g_main_dispatch (context=0x50f000000040) at ../glib/gmain.c:3381
+ #18 g_main_context_dispatch (context=context@entry=0x50f000000040) at ../glib/gmain.c:4099
+ #19 g_main_context_iterate (context=0x50f000000040, block=block@entry=1, dispatch=dispatch@entry=1,
+     self=<optimized out>) at ../glib/gmain.c:4175
+ #20 g_main_loop_run (loop=0x502000055690) at ../glib/gmain.c:4373
+
+Commit ebae6477dc ("chardev: check if the chardev is registered for
+yanking") seems to have encountered a similar issue, but checking
+s->registered_yank is not a complete solution because that flag
+pertains to the yank instance, not to each individual function.
+
+Skip the yank_unregister_function() in case s->sioc is already NULL,
+which indicates the last yank function was already removed.
+
+Signed-off-by: Fabiano Rosas <farosas@suse.de>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+[PMM: rebased]
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/gpio/aspeed_gpio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ chardev/char-socket.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index d9237d4360..7d0f87e90c 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -1488,7 +1488,7 @@ static void aspeed_gpio_init(Object *obj)
-     }
+diff --git a/chardev/char-socket.c b/chardev/char-socket.c
+index 5adeb90865..4e82915cf1 100644
+--- a/chardev/char-socket.c
++++ b/chardev/char-socket.c
+@@ -370,7 +370,8 @@ static void tcp_chr_free_connection(Chardev *chr)
  
-     for (int i = 0; i < agc->nr_gpio_sets; i++) {
--        char *name = g_strdup_printf("gpio-set[%d]", i);
-+        g_autofree char *name = g_strdup_printf("gpio-set[%d]", i);
-         object_property_add(obj, name, "uint32", aspeed_gpio_get_set,
-         aspeed_gpio_set_set, NULL, NULL);
-     }
+     tcp_chr_set_msgfds(chr, NULL, 0);
+     remove_fd_in_watch(chr);
+-    if (s->registered_yank &&
++
++    if (s->registered_yank && s->sioc &&
+         (s->state == TCP_CHARDEV_STATE_CONNECTING
+         || s->state == TCP_CHARDEV_STATE_CONNECTED)) {
+         yank_unregister_function(CHARDEV_YANK_INSTANCE(chr->label),
 -- 
 2.43.0
 

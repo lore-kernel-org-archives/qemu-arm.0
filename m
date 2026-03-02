@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B4F4E9B35B
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:37:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2CDE9B35A
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:37:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx0e9-0002zl-KF; Mon, 02 Mar 2026 05:37:05 -0500
+	id 1vx0eJ-00032N-4D; Mon, 02 Mar 2026 05:37:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx0e6-0002y4-5k
+ id 1vx0e6-0002y3-5F
  for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx0e2-0001qN-6X
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:00 -0500
+ id 1vx0dy-0001pV-OR
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:36:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772447816;
+ s=mimecast20190719; t=1772447811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S7hdK2T2rhmDCPf6n3Eg8p5Wr+WAP8uwwd7SD8gK1RA=;
- b=clg+0FJxmynEshfuzW0R4RrtK0m4AkaEOr5/OqLGajCiaRwap2i0nzyOcu+WB2Rz6Di4Wb
- V48E7lDcTKLWFwLxBPX86Uk3NB+nH7la+c1SvzQHuLKNICi/DxzU0xwC4I5fH0Nz+D2I3T
- OW2tBS1/lwdc3bWUwO5qX2mzEbwa5oM=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FE8U0nsaFLoWqF5Ob+XYunjpAnsrlC100n1+ax6jNf8=;
+ b=YwqjfFMmRDQnHDZKXfIQVkB7ZRmrJtnlPB7kHm5orlxtKG/DC+gPJMzxCvoQqtier0eVuM
+ r54ePXeFlVGuogxgzPZBElNyrx+RyuyhVxauvnR8VEW14CmEnOoEhmUiIUo5g+rGNbN6ew
+ cW4yFk7SpLirBqs7hjfqkDB/GA0Yjao=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-cgu0EvQxNU6Mc71-aMnsnA-1; Mon,
- 02 Mar 2026 05:36:52 -0500
-X-MC-Unique: cgu0EvQxNU6Mc71-aMnsnA-1
-X-Mimecast-MFC-AGG-ID: cgu0EvQxNU6Mc71-aMnsnA_1772447811
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-694-SyPNF7N4MZWlTSPD7fxZhA-1; Mon,
+ 02 Mar 2026 05:36:48 -0500
+X-MC-Unique: SyPNF7N4MZWlTSPD7fxZhA-1
+X-Mimecast-MFC-AGG-ID: SyPNF7N4MZWlTSPD7fxZhA_1772447807
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2936118001E3; Mon,  2 Mar 2026 10:36:51 +0000 (UTC)
+ id 6276D18001E2; Mon,  2 Mar 2026 10:36:47 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.23])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BBF271800666; Mon,  2 Mar 2026 10:36:47 +0000 (UTC)
+ id 888331800666; Mon,  2 Mar 2026 10:36:43 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v7 1/7] target/arm/machine: Fix detection of unknown incoming
- cpregs
-Date: Mon,  2 Mar 2026 11:35:23 +0100
-Message-ID: <20260302103640.1362564-2-eric.auger@redhat.com>
-In-Reply-To: <20260302103640.1362564-1-eric.auger@redhat.com>
-References: <20260302103640.1362564-1-eric.auger@redhat.com>
+Subject: [PATCH v7 0/7] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+Date: Mon,  2 Mar 2026 11:35:22 +0100
+Message-ID: <20260302103640.1362564-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 9drwIaNmGh3BILbQlKmR6-kjvN9QketPYVvO22TG3Vo_1772447811
+X-Mimecast-MFC-PROC-ID: ZtK-KhnEvMxh9btc_F9-SIDSUYX5dZ7xrPbB_OaguR4_1772447807
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -18
@@ -89,55 +86,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently the check of cpreg index matches fail to detect
-a situation where the length of both arrays is same but
-- destination has an extra register not found in the incoming stream (idx1)
-- source has an extra register not found in the destination (idx2)
-  where idx1 < = idx2
-Normally this should fail but it does not.
+This series applies on top of
+[PATCH 0/5] Improve traces on migration failure due to cpreg number mismatch
+https://lore.kernel.org/all/20260226100232.500781-1-eric.auger@redhat.com/
 
-Fix the logic to scan all indexes.
+It introduces an infrastructure to explicitly tolerate some
+mismatches between cpu cpreg indexes/values on migration.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
----
- target/arm/machine.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+We especially handle failures due to an attempt to migrate
+more registers than exposed on the destination.
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 7a3b5a87932..9297a8f5b41 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1107,6 +1107,29 @@ static int cpu_post_load(void *opaque, int version_id)
-         i++;
-         v++;
-     }
-+    /*
-+     * if we have reached the end of the incoming array but there are
-+     * still regs in cpreg, continue parsing the regs which are missing
-+     * in the input stream
-+     */
-+    for ( ; i < cpu->cpreg_array_len; i++) {
-+        g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
-+
-+        warn_report("%s: %s "
-+                    "expected by the destination but not in the incoming stream, "
-+                    "skip it", __func__, name);
-+    }
-+    /*
-+     * if we have reached the end of the cpreg array but there are
-+     * still regs in the input stream, continue parsing the vmstate array
-+     */
-+    for ( ; v < cpu->cpreg_vmstate_array_len; v++) {
-+        g_autofree gchar *name = print_register_name(cpu->cpreg_vmstate_indexes[v]);
-+
-+        error_report("%s: %s in the incoming stream but unknown on the destination, "
-+                     "fail migration", __func__, name);
-+        fail = true;
-+    }
-     if (fail) {
-         return -1;
-     }
+Once the infrastructure is in place we can handle the following
+known issues:
+KVM:
+- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+  from v6.13 onwards. Causes forward migration failure.
+- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+  register from v6.16 onwards. Causes backward migration failure.
+TCG:
+- We can eventually remove AArch32 DBGDTRTX register which was
+  erroneously defined.
+
+Both series are available at:
+https://github.com/eauger/qemu/tree/cpreg_vmstate_array_len_traces_mitig
+
+History:
+v6 -> v7
+- complete rework after Peter's comments in
+  (https://lore.kernel.org/all/20260126165445.3033335-1-eric.auger@redhat.com/)
+  Especially it does not use properties at all. Do not feature hidden regs
+  Also the initial series was split into 2.
+
+Eric Auger (7):
+  target/arm/machine: Fix detection of unknown incoming cpregs
+  target/arm/cpu: Introduce the infrastructure for cpreg migration
+    tolerances
+  target/arm/machine: Take account cpreg mig tolerances in case of
+    mismatch
+  target/arm/cpu64: Mitigate migration failures due to spurious TCR_EL1,
+    PIRE0_EL1 and PIR_EL1
+  target/arm/cpu64: Define cpreg migration tolerance for
+    KVM_REG_ARM_VENDOR_HYP_BMAP_2
+  target/arm/helper: Define cpreg migration tolerance for DGBDTR_EL0
+  Revert "target/arm: Reinstate bogus AArch32 DBGDTRTX register for
+    migration compat"
+
+ target/arm/cpu.h          | 32 +++++++++++++++++
+ target/arm/cpu.c          | 75 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c        | 34 ++++++++++++++++++
+ target/arm/debug_helper.c | 29 ---------------
+ target/arm/helper.c       |  5 +++
+ target/arm/machine.c      | 70 +++++++++++++++++++++++++++++-------
+ target/arm/trace-events   |  2 ++
+ 7 files changed, 206 insertions(+), 41 deletions(-)
+
 -- 
 2.53.0
 

@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0F9C624C2
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 09:24:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90DFEC624C6
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 09:25:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vwzU7-0001Kp-1y; Mon, 02 Mar 2026 04:22:39 -0500
+	id 1vwzU4-0001Ib-Vl; Mon, 02 Mar 2026 04:22:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU5-0001Jf-QY
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:37 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1vwzU2-0001Gp-SG
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:34 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU3-0007hg-Qx
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:37 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-48370174e18so23233245e9.2
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:35 -0800 (PST)
+ id 1vwzU1-0007g9-EW
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:34 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-437711e9195so3201769f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772443354; x=1773048154; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772443352; x=1773048152; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HlEaot0Az2g5Lcmwus88Zh0yOjbHLCxHpraQxrLX9JA=;
- b=ZQgDHMUEjPYCMV/vN4gcsHqFzVFlocxIrLpFaoJe1U1As+cwSDZJyOmDVlNZqxD9TY
- vFAX6od6mwUAlQLJOkeuDPOXAVg8iYA8V/LzVEIAn2M0Wf1q+Lgjc6dzgzMOWr5ZAYSu
- vfG2SNtTKUgB6Ugpsu7yBrdqA7weBQxkEnSvestEeUeSxhoc30A382jXWqBNWNizxY8H
- PEuokdsuzPlORbuH0gwTkBFJ/p71t8CPCsluWdu0OmOONBunozwnPe6GHECZA4sm8DaY
- T3GNKFrcM06hzFtIpVIt1t2S3BeJ63hpQXa2ay6a0vV+SnQg0g6MextZ93/dFBxgYeeY
- qxoA==
+ bh=QgoB5HfDRfRQ2Ou/Ss9qWoCChifI8a9FD/ElPyWHfHg=;
+ b=E/euRnZcW/JfUEOUWU67vA30NnJde6NE4ILOQMQF1ziyLYGLXTlXFjDYV4JLHvGmlK
+ p4R3MKh56Ro2J3wpnGVW3e3Is1thN509Dsb17pkct2SOcIt+5tsmue35zAsW4ZbLyAKy
+ xyUpNMtw5WxjcJeg0TdYcflKr66iG21XKs4hzM3yCWFq/uXIgMqS7VB6VQtMal6sFzlg
+ /1KRzSi3/xjr3uj5PeKvnni5FlU97Gc40EzM0zDUMXzj2gK2PRe3qRNZptZ792cdrmF3
+ y4XMLRmu5aM0GEjmLGTvM5jFE6HnL82NikWIfMUghQBolJG6+3RKDLJNc7ZgLxdEi93M
+ IOFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772443354; x=1773048154;
+ d=1e100.net; s=20230601; t=1772443352; x=1773048152;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HlEaot0Az2g5Lcmwus88Zh0yOjbHLCxHpraQxrLX9JA=;
- b=v/Ys8hglPayjjT/93qejRCxiGDt+AA4tDFKzLLefy1RdTAFcMt2ia+ZxSe7noDCsE4
- jDOsFO5NeOIIbZwRjyHFCbXwtwMgoUuPyZip4dxVP0t3/S90NWduqp9NRgpOczwrMb85
- D69kSLbMoBBeekcoZ0PsktyQluo1qaQpVr4Ihn8jVvixzPGIJce52gwSG8wgKOdRUoE/
- 6CwC422tacqvWriBNdBJs2wlEHQuP0WxMB+hg8cS7cj8ZOy6hL6CMEJIFhDxsPssm7ok
- wo7ZehTRNUCjovyo/gWfpXLekUrlB5ZPu981NnOODx6TgQ4jmxryyeH1O/SiKL96w+vO
- Y3aw==
-X-Gm-Message-State: AOJu0Yz76HqCJU4vlCWtMpMiousPFQUiJngTMU34Qgze+Z7KqdhRH7kQ
- 2B3M5ho4aYriopHdFE9vzgFVnoaqr+sR89xzWj2dLGsP1/XYLqBzWPlnewYpBepiCtZANl4btzc
- Km74C
-X-Gm-Gg: ATEYQzwWyupbEIk1mcbjGldotqS/OI9DtAAeHmQbFqK/XFPpgD/YmJ9sLUynDgWfqCX
- k8DatGjrtJS6otmMdOMXqsAEFcIzVrJ5V9iuUvdWwIv6taUnYSBOyuG2w3GBi/MTRBq323VRail
- Rmzgs+pUxzfn4WgGWDwaqYIUPBPcDTTdfpw8CbdvdPq7gurTIP7f4lIoq2OEB4yv9+gSrFnh7Nj
- NlID9hNONEi+ZoGLpZW2M1ZwVr23vmVN1yCqqo1gfWCjo3Aag0iCoJNyIXp940pd9bXvpRIppR2
- ZMLkSntwlR4mJvGZwW58aYRFBTg6YgRS6jooyDvmaaQ6KNEh1DwY7mezGe6eOGgS7w712OHDhUP
- TZQV9lN8FB9cMCwFNnXECIDSp6fg2i/+1x5nYHgumQik/IFizsmqbxq7IihzD59CCR0T7y1xi1v
- +ISqHS07mQ1ztvobxEkassGBZPmkGA1BGVYQE69gyAjWTIZ/E8gpKlmR8SIKQI+EdNEygbr68YD
- uTRcBpuP1GeB71Sr0khxHibaHmwgdk=
-X-Received: by 2002:a05:600c:6488:b0:480:1c69:9d36 with SMTP id
- 5b1f17b1804b1-483c9bbc297mr214797835e9.17.1772443354251; 
- Mon, 02 Mar 2026 01:22:34 -0800 (PST)
+ bh=QgoB5HfDRfRQ2Ou/Ss9qWoCChifI8a9FD/ElPyWHfHg=;
+ b=R+9FNvFkbMVTPdbjTFa9WB6Rjud8I6+kpT4aUHAh9ZuyjNQeNQ3TeCJAoPbR9EKm0R
+ OjDnWFBVcWzH4KZGZFQLWH3BqPTfeb7C2lV9fYy0VjHnKeZKnxctjuYcU3H2svUAPXg4
+ /BzSSIggpBhE0ImO6aYuHp7gDwfB9LRJYVD4b8hIxiWPTAgEcQIxXGBtrEPmIASoWnhR
+ V5zCS1yOLlQZdE7WwzYp5c6Cc3evOWiwYGVwSQqw1HggyYOMcENsRGG7m8QDDkvyg5ei
+ QsHnKeAx5HIMxzqkB2GlUXscUFcL7dJtcSQvxIDUxUNbM0t3ZWhY+uZzp+mqg5+wNrX9
+ Etjg==
+X-Gm-Message-State: AOJu0YyEQy44l1KazZE8Lud6W9F8uD/kwMUE9+fIpC+IMomhVvVrK5st
+ aCXjlzVK/rNRtOgrzs/6QpQVRr7P+gLmNGDPDhXcRiuVq+xb7hxrQlrE43NCMQ1dW2L831JwjCo
+ RnZKU
+X-Gm-Gg: ATEYQzw97bubXKCThorRNZ2wVR0PAIYLKUhC58ydCA5a7AR1xq6rXmDMQ1N6TTRh8g4
+ lRnzA0XL4PxVd5higSo15JTN35SaO1DuXEx4laCcyjJw5vxZirSxtBv+h1ovaRFt5MJrAL2aoFZ
+ MWLs0rlsQIKgXKBORyesk/5jxGWdcylNxaheIXm9LqM1C4c6eo3uOG11fAXiE6XjYCZ/S1ZyiXc
+ xynO8CzA2hFdEgMdvtkr+o1M0icd1BeQoz7s3cqHYo8SzkrjykpqkHm+kuos5uGlO2j18jtMgNk
+ 3LD5YpgYTUTXJMJ/Rl1mvmwZgcJI9pr7rKPECIkLjm6SkKcfHK+SQyeRWI+g5ToljMDBm/vfDUc
+ 0jNC1bDBYzRIGqFU1TsAAb4Yf/7NGwOATis0HWsyJFlWbHe+GGYtfbyWafqEtMwvK3s62yddGvb
+ f3YzXx6Hi2G67RykUB+JwpJLCaRi0edQw9yWodigr5TSIizkI7PWMuEvRuQ8PSpT9mYuo8GYtRu
+ bjmXnIonY1EV+KIuGtNOXURjhqxGQw=
+X-Received: by 2002:a05:600c:548a:b0:47e:e20e:bb9c with SMTP id
+ 5b1f17b1804b1-483c9bdb16emr183788885e9.8.1772443351719; 
+ Mon, 02 Mar 2026 01:22:31 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.33
+ 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2026 01:22:33 -0800 (PST)
+ Mon, 02 Mar 2026 01:22:31 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -80,18 +80,16 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
  Yodel Eldar <yodel.eldar@yodel.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 6/9] chardev: Don't attempt to unregister yank function
- more than once
-Date: Mon,  2 Mar 2026 09:22:22 +0000
-Message-ID: <20260302092225.4088227-7-peter.maydell@linaro.org>
+Subject: [PATCH v2 4/9] tests/qtest/iommu-smmuv3-test: Free QPCIDevice
+Date: Mon,  2 Mar 2026 09:22:20 +0000
+Message-ID: <20260302092225.4088227-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260302092225.4088227-1-peter.maydell@linaro.org>
 References: <20260302092225.4088227-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,70 +112,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Fabiano Rosas <farosas@suse.de>
+The QPCIDevice we get via qpci_device_foreach() is allocated
+memory, and we need to g_free() it after use.
 
-tcp_chr_free_connection() can be called multiple times in succession,
-in which case the yank function will get as argument a NULL s->sioc
-that has been cleared by the previous tcp_chr_free_connection() call.
+This fixes asan leaks like this:
 
-This leads to an abort() at yank_unregister_function().
+Direct leak of 64 byte(s) in 1 object(s) allocated from:
+    #0 0x622a5f16913d in calloc (/home/pm215/qemu/build/arm-clang/tests/qtest/iommu-smmuv3-test+0x1d413d) (BuildId: bc598be1f4ad6d1a9a600c55aeef36108bdb6a04)
+    #1 0x73ee41c0f771 in g_malloc0 (/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x63771) (BuildId: 116e142b9b52c8a4dfd403e759e71ab8f95d8bb3)
+    #2 0x622a5f1d4cec in qpci_device_find /home/pm215/qemu/build/arm-clang/../../tests/qtest/libqos/pci.c:82:11
+    #3 0x622a5f1d4cec in qpci_device_foreach /home/pm215/qemu/build/arm-clang/../../tests/qtest/libqos/pci.c:34:19
+    #4 0x622a5f23cc73 in setup_qtest_pci_device /home/pm215/qemu/build/arm-clang/../../tests/qtest/iommu-smmuv3-test.c:45:5
+    #5 0x622a5f23cc73 in run_smmuv3_translation /home/pm215/qemu/build/arm-clang/../../tests/qtest/iommu-smmuv3-test.c:74:11
 
- #0  __GI_raise (sig=6) at ../sysdeps/unix/sysv/linux/raise.c:51
- #1  __GI_abort () at abort.c:79
- #2  qtest_check_status (s=0x513000005600) at ../tests/qtest/libqtest.c:209
- #3  qtest_wait_qemu (s=0x513000005600) at ../tests/qtest/libqtest.c:273
- #4  qtest_kill_qemu (s=0x513000005600) at ../tests/qtest/libqtest.c:285
- #5  kill_qemu_hook_func (s=0x513000005600) at ../tests/qtest/libqtest.c:294
- #6  g_hook_list_invoke (hook_list=0x55ea9cc750c0 <abrt_hooks>, may_recurse=0) at ../glib/ghook.c:534
- #7  sigabrt_handler (signo=6) at ../tests/qtest/libqtest.c:299
- #8  <signal handler called>
- #9  __GI_raise (sig=6) at ../sysdeps/unix/sysv/linux/raise.c:51
- #10 __GI_abort () at abort.c:79
- #11 yank_unregister_function (instance=0x7fb26f2ea9a0,
-     func=0x55ea9bcc0a10 <char_socket_yank_iochannel>, opaque=0x0) at
-     ../util/yank.c:151
- #12 tcp_chr_free_connection (chr=0x51300000ffc0) at ../chardev/char-socket.c:385
- #13 tcp_chr_disconnect_locked (chr=0x51300000ffc0) at ../chardev/char-socket.c:477
- #14 tcp_chr_disconnect (chr=0x51300000ffc0) at ../chardev/char-socket.c:495
- #15 tcp_chr_hup (channel=0x514000000040, cond=G_IO_HUP, opaque=0x51300000ffc0) at ../chardev/char-socket.c:536
- #16 qio_channel_fd_source_dispatch (source=0x50c0000b5fc0, callback=0x55ea9bcd6770 <tcp_chr_hup>,
-     user_data=0x51300000ffc0) at ../io/channel-watch.c:84
- #17 g_main_dispatch (context=0x50f000000040) at ../glib/gmain.c:3381
- #18 g_main_context_dispatch (context=context@entry=0x50f000000040) at ../glib/gmain.c:4099
- #19 g_main_context_iterate (context=0x50f000000040, block=block@entry=1, dispatch=dispatch@entry=1,
-     self=<optimized out>) at ../glib/gmain.c:4175
- #20 g_main_loop_run (loop=0x502000055690) at ../glib/gmain.c:4373
-
-Commit ebae6477dc ("chardev: check if the chardev is registered for
-yanking") seems to have encountered a similar issue, but checking
-s->registered_yank is not a complete solution because that flag
-pertains to the yank instance, not to each individual function.
-
-Skip the yank_unregister_function() in case s->sioc is already NULL,
-which indicates the last yank function was already removed.
-
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-[PMM: rebased]
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- chardev/char-socket.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ tests/qtest/iommu-smmuv3-test.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/chardev/char-socket.c b/chardev/char-socket.c
-index 5adeb90865..4e82915cf1 100644
---- a/chardev/char-socket.c
-+++ b/chardev/char-socket.c
-@@ -370,7 +370,8 @@ static void tcp_chr_free_connection(Chardev *chr)
+diff --git a/tests/qtest/iommu-smmuv3-test.c b/tests/qtest/iommu-smmuv3-test.c
+index cced49a9b6..dae9821b92 100644
+--- a/tests/qtest/iommu-smmuv3-test.c
++++ b/tests/qtest/iommu-smmuv3-test.c
+@@ -77,6 +77,7 @@ static void run_smmuv3_translation(const QSMMUTestConfig *cfg)
+     g_test_message("### SMMUv3 translation mode=%d sec_sid=%d ###",
+                    cfg->trans_mode, cfg->sec_sid);
+     qsmmu_run_translation_case(qts, dev, bar, VIRT_SMMU_BASE, cfg);
++    g_free(dev);
+     qtest_quit(qts);
+ }
  
-     tcp_chr_set_msgfds(chr, NULL, 0);
-     remove_fd_in_watch(chr);
--    if (s->registered_yank &&
-+
-+    if (s->registered_yank && s->sioc &&
-         (s->state == TCP_CHARDEV_STATE_CONNECTING
-         || s->state == TCP_CHARDEV_STATE_CONNECTED)) {
-         yank_unregister_function(CHARDEV_YANK_INSTANCE(chr->label),
 -- 
 2.43.0
 

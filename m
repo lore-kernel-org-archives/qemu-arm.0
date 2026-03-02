@@ -4,116 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D8BDE9B342
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B4F4E9B35B
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:37:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx0Y5-0000Tc-U9; Mon, 02 Mar 2026 05:30:50 -0500
+	id 1vx0e9-0002zl-KF; Mon, 02 Mar 2026 05:37:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vx0Y0-0000S1-73
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:30:45 -0500
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1vx0Xy-0000pC-Ii
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:30:43 -0500
-Received: by mail-qt1-x834.google.com with SMTP id
- d75a77b69052e-5033b64256dso912511cf.0
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 02:30:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772447441; cv=none;
- d=google.com; s=arc-20240605;
- b=PuAOwipKeLABhURyFp7rVl6tJFBPJmGSFOIe5gcggncdOlzH43v/XvWZyTCKBPggBy
- W8hFCoHkun+Cz61S/ctCw3sK7L9CY6ahkhgJpVWg1BXiOv99ZGlUjxyWJHF21oVjAKh4
- qW0Y/Ocle4FdztTy9PVNXIarD/VVDrSSS60aOi9QxWb6VfjaW5h1vjZk9yobPJANY1oA
- YTKHJEYFhgEYDKstsycD0IKLKSZxuy4CcW/n3/vcS8a9ahPDK/Tudv63cqRmzwtaC1/W
- dibwnhDRQpxwSqT8QWBFFCYMAT3O/4DbRsNS/H7qwqKcH7EdFsS8VJHjC7t31z87rUR1
- tw9A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=rfhMUT7KiGMB4MQrlj5m2r1WYWrCliNf5mho226AQmo=;
- fh=VTS6+9ZOG58GXK8f5sHrRIn34cIIPbrXY6JEd0s1kko=;
- b=TzA9v0ZUY7WqgPQfL59QuTIEo8hja/6Lrkw2RWibYt5AbSFnsti59Rn0Z1R6vgRBqG
- GBcBmfZMnJlmrHLhGUIRA5K06zRX0Wa6/7b+9ak+/O1dFy6GVJKHzIAFwyj1IVfilj9g
- pEduqAy72FbE3+fcVQE/8xi3dqv0v390RGaIeMqMmY02Zfr3Ybmin8mJweIdiph7ipK6
- Lsy4HvhZTbExXZH/G/2IdGOLO5JMNzeEOrAa+k0j/ZuOfopsqa2ITd5v9TQTq14OLg0o
- aKij2hARW87OHZkT/ZEnt+bQU7BMHSRdcvpREgwHboqkA4jofUi3/Lh9kUQSO9EGpG/b
- zp0g==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1772447441; x=1773052241; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rfhMUT7KiGMB4MQrlj5m2r1WYWrCliNf5mho226AQmo=;
- b=CvAHUOOYecBNmG6dcg/5GxhMLkF438HUDr+uZ7kFgl0OtWfXI+p4wW6vR0oJU3/rsp
- 4a+PSiAqyb5D/YaygiX8zH6Q5Yc+sHwpaj5/eJ3Zvc9N8/9J14moTO4N2ek8sBrQP6wU
- obmmBWG8IxsLEE8cCznH4bRxbS46ESl00MwXhPhIHx7nO+MW+ncC1RfcEl2Vu3QcXvWj
- AalZg2AUJ5MBdiY640l8/pKu3vxSCTPBqFv1z+cJzpji0smwnwmWouOb4bxlEg+zeGPt
- 3R3xMSqzUti/OspCKavGW+2jBRW4x6AIJRna2X9XoFhDUDBuZsrFJWaGNp9UT+en3z2e
- 3rtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772447441; x=1773052241;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=rfhMUT7KiGMB4MQrlj5m2r1WYWrCliNf5mho226AQmo=;
- b=P+GFcUoorLRvHnDg8YJ12kAre7O+qu7CibdgxbDkQ4IWWGFHp1ses0s9PB1AIeDFhV
- QtJxxcIGKbQ5IvTU8s7vWUL063ghgdAvm1ZPmuI9XbLbrOJ69hJfrkdrz/UkjC6eCLcd
- 9TvCGJypTS9DszsiqHTZjXhjtXPekwLSWzWIBM+X7WzZVcnGAW6N+CqJn+y7arQ4LpSx
- ZyLyayghTla3acENt3AcE+panRvZkjNogZAeEj5VTuwjoBszJNv1/r2Dhud58D5BKMmi
- l1mBKg7rYXLLZZgbXCbTgvpOUi32gocJLdMHzhuXVFprls85/g+0zg2fE8IAkfy3jR46
- 6Oeg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX+aeeTGCf3DU2HBRJgbmrOQog2Zy7E9E4QanMiltjgK8acJCQtBwS+T0oyxWi+9zT7Ke7wmQ/Nvw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzlqmao32M6JO9ulLD4Y+6mfMJuPA2TXTErKNv91Ijj09eZbkdQ
- b0Z33nYcSki+0CLeciNBYPjqyDIpigEQnJMuudfeuygDYPaBFCseBdRhBRIYk7eSMbJbsRy4SCf
- 0fq29+sCjuNQjsrt3dMtrD9jLP2ZOUs09raLyH2x0
-X-Gm-Gg: ATEYQzw1CmI0JxykbfnU/DdufCSUtuIMlpMejOJRdepAyjc3PPKHgyC6R7emk0Pb1Pq
- CZAHrjCnjiYag0W+KMxyryJhs9cjGmQKwypr8lIB1/LUzj//0Fdhgri5XyR6gNyJdxwniflSUBi
- MLciKuyxFVQ7WplnYH7z2Zj9yLTupNwkR2B0Xv95kG01U/1IG+h0UH1RmKm9C6HlbLkdgvE8PIR
- 9/gHoN0hAMOPzl1/sTcsvUzssNRK4aWgMp4R4ZVTPsaNqlTEMffRj4wFHDs1RFCqzFC0AiJDhbW
- Z0Id2vpzA78CuKjKVct61FQsdmKt/fnizmJ/hi+rTEyLSLS2
-X-Received: by 2002:a05:622a:1999:b0:506:1f23:e22c with SMTP id
- d75a77b69052e-5075fcedcc2mr20207881cf.6.1772447440591; Mon, 02 Mar 2026
- 02:30:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vx0e6-0002y4-5k
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vx0e2-0001qN-6X
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772447816;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=S7hdK2T2rhmDCPf6n3Eg8p5Wr+WAP8uwwd7SD8gK1RA=;
+ b=clg+0FJxmynEshfuzW0R4RrtK0m4AkaEOr5/OqLGajCiaRwap2i0nzyOcu+WB2Rz6Di4Wb
+ V48E7lDcTKLWFwLxBPX86Uk3NB+nH7la+c1SvzQHuLKNICi/DxzU0xwC4I5fH0Nz+D2I3T
+ OW2tBS1/lwdc3bWUwO5qX2mzEbwa5oM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-cgu0EvQxNU6Mc71-aMnsnA-1; Mon,
+ 02 Mar 2026 05:36:52 -0500
+X-MC-Unique: cgu0EvQxNU6Mc71-aMnsnA-1
+X-Mimecast-MFC-AGG-ID: cgu0EvQxNU6Mc71-aMnsnA_1772447811
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2936118001E3; Mon,  2 Mar 2026 10:36:51 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.32.23])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id BBF271800666; Mon,  2 Mar 2026 10:36:47 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
+ sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
+ alex.bennee@linaro.org
+Subject: [PATCH v7 1/7] target/arm/machine: Fix detection of unknown incoming
+ cpregs
+Date: Mon,  2 Mar 2026 11:35:23 +0100
+Message-ID: <20260302103640.1362564-2-eric.auger@redhat.com>
+In-Reply-To: <20260302103640.1362564-1-eric.auger@redhat.com>
+References: <20260302103640.1362564-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101640.2993566-1-tangtao1634@phytium.com.cn>
- <aaGuGuevX8HFqx0x@google.com>
- <db70af79-b9ef-4da7-a561-850ad75ccb61@phytium.com.cn>
-In-Reply-To: <db70af79-b9ef-4da7-a561-850ad75ccb61@phytium.com.cn>
-From: Mostafa Saleh <smostafa@google.com>
-Date: Mon, 2 Mar 2026 10:30:29 +0000
-X-Gm-Features: AaiRm52hS_F3ZcPsJCdC4nhBinNAxK961Z_ItUqJ1LS5vCwWX17vQD8xPaXdhvg
-Message-ID: <CAFgf54rvZQ2q5hbZJyJdix-HxBKJh32VsaG2L36bwxLnrGDffA@mail.gmail.com>
-Subject: Re: [RFC v4 13/31] hw/arm/smmu-common: Add sec_sid field to TLB
- entries
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Chao Liu <chao.liu.zevorn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
- envelope-from=smostafa@google.com; helo=mail-qt1-x834.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: 9drwIaNmGh3BILbQlKmR6-kjvN9QketPYVvO22TG3Vo_1772447811
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.012, RCVD_IN_VALIDITY_RPBL_BLOCKED=1.188,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,62 +89,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, Mar 1, 2026 at 3:08=E2=80=AFPM Tao Tang <tangtao1634@phytium.com.cn=
-> wrote:
->
-> Hi Mostafa,
->
-> On 2026/2/27 PM10:45, Mostafa Saleh wrote:
-> > On Sat, Feb 21, 2026 at 06:16:40PM +0800, Tao Tang wrote:
-> >> This is a non-functional preparation step that adds storage for
-> >> resolved security state in SMMUTLBEntry.
-> >>
-> > I am not sure about this, when I added stage-2 I re-used the same
-> > TLB instance as it might be used for nesting, and we can have
-> > end-to-end cached entires.
-> > For secure state, I think it=E2=80=99s cleaner to instantiate a new TLB=
-, as
-> > both states can never mix, and in this case we can re-use the same
-> > functions without adding the secure bit in the TLB.
->
->
-> Thanks for the suggestion.
->
-> I agree that keeping separate TLB instances per security state is
-> cleaner and avoids having to carry a sec_sid tag through every cache path=
-.
->
-> The only downside is a bit more plumbing: we=E2=80=99ll need to make sure=
- the
-> translation/PTW paths always pick the right per-bank TLB (otherwise some
-> call sites may still default to the NS one). This also means touching
-> the common layer since smmu-common currently assumes a single s->iotlb.
->
+Currently the check of cpreg index matches fail to detect
+a situation where the length of both arrays is same but
+- destination has an extra register not found in the incoming stream (idx1)
+- source has an extra register not found in the destination (idx2)
+  where idx1 < = idx2
+Normally this should fail but it does not.
 
-I see, I will need to think more about this. My initial thought was
-that the iotlb seems to be exclusively used in smmu_iotlb_*()
-So, I was wondering if we can change those functions to pass the iotlb
-as a function argument. We should have enough context from translation
-or invalidation paths to pass the correct iotlb instance.
-But, I agree, it might not be as simple as I imagine, although I think
-that would be cleaner. I will look more into it.
+Fix the logic to scan all indexes.
 
-Thanks,
-Mostafa
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
+---
+ target/arm/machine.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
->
-> Although some refactoring work is still needed, I=E2=80=99m happy to foll=
-ow your
-> approach and will rework this in V5.
->
->
-> >
-> > Thanks,
-> > Mostafa
->
->
-> Best regards,
->
-> Tao
->
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 7a3b5a87932..9297a8f5b41 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -1107,6 +1107,29 @@ static int cpu_post_load(void *opaque, int version_id)
+         i++;
+         v++;
+     }
++    /*
++     * if we have reached the end of the incoming array but there are
++     * still regs in cpreg, continue parsing the regs which are missing
++     * in the input stream
++     */
++    for ( ; i < cpu->cpreg_array_len; i++) {
++        g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
++
++        warn_report("%s: %s "
++                    "expected by the destination but not in the incoming stream, "
++                    "skip it", __func__, name);
++    }
++    /*
++     * if we have reached the end of the cpreg array but there are
++     * still regs in the input stream, continue parsing the vmstate array
++     */
++    for ( ; v < cpu->cpreg_vmstate_array_len; v++) {
++        g_autofree gchar *name = print_register_name(cpu->cpreg_vmstate_indexes[v]);
++
++        error_report("%s: %s in the incoming stream but unknown on the destination, "
++                     "fail migration", __func__, name);
++        fail = true;
++    }
+     if (fail) {
+         return -1;
+     }
+-- 
+2.53.0
+
 

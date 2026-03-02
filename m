@@ -4,63 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61AF0E9B365
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 12:20:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5995E9B37D
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 13:47:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx2FJ-00052Z-1n; Mon, 02 Mar 2026 07:19:34 -0500
+	id 1vx3bN-0004C9-1o; Mon, 02 Mar 2026 08:46:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1vx2FE-00050e-6h
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 07:19:28 -0500
-Received: from out-172.mta0.migadu.com ([91.218.175.172])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vx3b7-00041S-8R
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 08:46:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1vx2FA-0003Cq-VK
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 07:19:27 -0500
-Message-ID: <b3db6e04-79a9-4235-96ab-a8767754e854@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
- t=1772453957;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vx3b3-00019K-Lq
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 08:46:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772459163;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iISHJ5DAeyrn/zoHgIs7HMxlQpqV7SQpUnX9RQkSrZs=;
- b=en8DRRaRcvTIuHIQnPOgVfAhrkcM4XivWOGjrbKKoafvw5H/LmsnMqGMUkOgjREk1LhjpH
- UVZcKx3GK9WhVEhk4UJty0rE6KnhlKUxSqu/0yN4KzhxMr4dQhUtt8jOj1I76G/SdoZQzV
- jHgvgyFyXkoQWFuMyBCriJTxC+ZN93Q=
-Date: Mon, 2 Mar 2026 20:18:55 +0800
+ bh=vXggzZksC/lnevLmb0OfpevtWIg+C4FZBStw4dowp9g=;
+ b=Ixokf+akRJ8R2s8G96wRVKtg42cPdLt+1oe0UvfYda1iskI6uCV79Y6VGddJPZakMfqju6
+ upEX2aIooITSNzanfkiMEbZTh6JpkXMUpm3vnvrfFX/tQroJnT1dygmzKiqYDm+Qt4JMvQ
+ YuFcg3S6bUfuP3KlAFRTCS42u/+WvAE=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-253-XmCgOFi6OrSVUdU_X3Rh9Q-1; Mon, 02 Mar 2026 08:46:01 -0500
+X-MC-Unique: XmCgOFi6OrSVUdU_X3Rh9Q-1
+X-Mimecast-MFC-AGG-ID: XmCgOFi6OrSVUdU_X3Rh9Q_1772459160
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4832c4621c2so49337815e9.3
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 05:46:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772459160; x=1773063960;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vXggzZksC/lnevLmb0OfpevtWIg+C4FZBStw4dowp9g=;
+ b=p4m/JkBboQxfppU1z2iAXzduw+m+AtoENGRtz3qmX39o9cocp/ZUUJ6CI6ftkAj2J1
+ Omh/ssb+uawMdRfAmAO+tu5rmY+dsh3FFmZy166T+RH2ab5wRE5bGxujxloRdnFA2lDl
+ IrW5eCbLQ+gNz5X9jLqCisCARmSXWgmmuyaXaOUPkueDS3doubK0vCNBhlhFDLHljHDJ
+ qf5/8Km6aL6WOAXBfvenJUkomNSAaPxhDBfsVyHOs3dxYEIvPjIFSFTrMV+UolvL0B4i
+ 3lhhSYqgwKpJ5Wb33y9HT6Tyr9hauL1d4v2B06baS42iz2IX5y/Q6Q/y+cOVxuPAlVif
+ zK1Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWkH7CbTxt5ZuzWS2t9y/AkueQVyx10KsUVH4NPwS+ChU2rJY+ywcT7k2KzR+BBvpQgizrBbdQsZQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyy04NFlAQtUNKbBGQhTBL3lv1Fht2kZ1wbLHMgYfAFuljtjTEY
+ nlIU27P9kMon1FgIn3m/C6SGHWJVrlGz+rcyMO9SLutBjyKfpIsnblYwlhD7SQYr3C60zjyL7oZ
+ Fj8wBOMFbHdtZKy7jIWLHmXE/7wbf4Zj4x5x15s38vFuh8MQP+6nJ+w==
+X-Gm-Gg: ATEYQzyN17+tmCULjobGDv47YSVeXpymIVginbuZM4MkrX89jkFMKQorimqpLfIhc8h
+ DliPz0jRnDdz8hZ89PMcSquI5FkAP4Ta37Os6BySKVdBgYBz+ldZ57zCJvtzVOYgAbM3+nPEzm8
+ rtv3wZ+2o7DRApFKqyLUbvlaY0AyOO7dWW52Cku638HAz0+qNGI7vWj65Ns9AqXXUJ0gXu5f1sz
+ 19QUTNACzEFK0/m3Y5gTHapyjObMRkDDF6NMfWQvk5XD1HUHstv39peYZAmVvXHa0Be2WSAhIPJ
+ hZ2uU4EN8/f3x7+br6dYJ7sqVhMK2+ZuXpHUoYN3/NK0Qzz3Jr161bXQDJ3Ttk5b4mzP4BBRhVl
+ PUNkz4vO8x3JQw5ubKFuoyoO5dn7m4voShkPCqvyoC8x+kn/9uKBDKTaDzO8Jvn8stRxTGQ==
+X-Received: by 2002:a05:600c:b86:b0:483:badb:618a with SMTP id
+ 5b1f17b1804b1-483c9c1525emr205510495e9.27.1772459159808; 
+ Mon, 02 Mar 2026 05:45:59 -0800 (PST)
+X-Received: by 2002:a05:600c:b86:b0:483:badb:618a with SMTP id
+ 5b1f17b1804b1-483c9c1525emr205510055e9.27.1772459159350; 
+ Mon, 02 Mar 2026 05:45:59 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483c3b44207sm301238455e9.7.2026.03.02.05.45.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Mar 2026 05:45:58 -0800 (PST)
+Message-ID: <faffa388-51b3-476f-8c5d-67aacc467c87@redhat.com>
+Date: Mon, 2 Mar 2026 14:45:57 +0100
 MIME-Version: 1.0
-Subject: Re: [PATCH v5 2/2] target/arm/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0
-To: Lucas Kornicki <lucas.kornicki@nutanix.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Cameron Esfahani <dirty@apple.com>,
- Mads Ynddal <mads@ynddal.dk>, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260118215945.46693-1-philmd@linaro.org>
- <20260118215945.46693-3-philmd@linaro.org>
- <84b3b9fc-d448-4da3-b76f-de72c4e775fd@nutanix.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v4 06/31] hw/arm/smmuv3: Track SEC_SID in configs and events
+To: Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221100250.2976287-7-tangtao1634@phytium.com.cn>
+ <aaGsltcRyTu7j1tU@google.com>
+ <df545e5d-0380-49bd-97f1-5b7b9a4259da@phytium.com.cn>
+ <aaVkQdanf4KhROna@google.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aaVkQdanf4KhROna@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Gdqj_sYzeMUsOhoiDJ6G7tqg5W2a1-dWMmvzV3jSKvs_1772459160
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Zenghui Yu <zenghui.yu@linux.dev>
-In-Reply-To: <84b3b9fc-d448-4da3-b76f-de72c4e775fd@nutanix.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-Received-SPF: pass client-ip=91.218.175.172; envelope-from=zenghui.yu@linux.dev;
- helo=out-172.mta0.migadu.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.012,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=1.188, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,39 +124,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Hi Tao,
 
-On 2/23/26 9:47 PM, Lucas Kornicki wrote:
-> Hi. I've found this patch to break EDK2 UEFI on MacOS 15.7
-> With it applied, the vm is usually stuck on display not initialized, but
-> sometimes it will init and hang on the tianocore logo.
-> I've narrowed it down to
-> 
-> b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, val);
-> 
-> in hvf_arch_get_registers.
+On 3/2/26 11:19 AM, Mostafa Saleh wrote:
+> On Sun, Mar 01, 2026 at 09:53:24PM +0800, Tao Tang wrote:
+>> Hi Mostafa,
+>>
+>> On 2026/2/27 PM10:39, Mostafa Saleh wrote:
+>>> On Sat, Feb 21, 2026 at 06:02:25PM +0800, Tao Tang wrote:
+>>>> Cache the SEC_SID inside SMMUTransCfg to keep configuration lookups
+>>>> tied to the correct register bank.
+>>>>
+>>>> Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
+>>>> and event logs always show which security interface emitted the record.
+>>>> To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
+>>>> identified as soon as an event record is built.
+>>>>
+>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>>> ---
+>>>>   hw/arm/smmuv3-internal.h     |  1 +
+>>>>   hw/arm/smmuv3.c              | 20 +++++++++++++-------
+>>>>   hw/arm/trace-events          |  2 +-
+>>>>   include/hw/arm/smmu-common.h |  1 +
+>>>>   4 files changed, 16 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+>>>> index 866d62257e3..a1071f7b689 100644
+>>>> --- a/hw/arm/smmuv3-internal.h
+>>>> +++ b/hw/arm/smmuv3-internal.h
+>>>> @@ -274,6 +274,7 @@ static inline const char *smmu_event_string(SMMUEventType type)
+>>>>   /*  Encode an event record */
+>>>>   typedef struct SMMUEventInfo {
+>>>> +    SMMUSecSID sec_sid;
+>>>>       SMMUEventType type;
+>>>>       uint32_t sid;
+>>>>       bool recorded;
+>>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>>>> index 2c107724e77..3438adcecd2 100644
+>>>> --- a/hw/arm/smmuv3.c
+>>>> +++ b/hw/arm/smmuv3.c
+>>>> @@ -148,9 +148,9 @@ static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
+>>>>       return MEMTX_OK;
+>>>>   }
+>>>> -static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+>>>> +static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
+>>>> +                                       Evt *evt)
+>>>>   {
+>>>> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>>>>       SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>>>>       SMMUQueue *q = &bank->eventq;
+>>>>       MemTxResult r;
+>>>> @@ -178,7 +178,8 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+>>>>   {
+>>>>       Evt evt = {};
+>>>>       MemTxResult r;
+>>>> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>>>> +    SMMUSecSID sec_sid = info->sec_sid;
+>>>> +    g_assert(sec_sid < SMMU_SEC_SID_NUM);
+>>> What does this defend against?
+>>
+>> sec_sid is now taken from SMMUEventInfo, so the assert is to catch
+>> programming errors early and avoid out-of-bounds bank accesses in
+>> smmuv3_record_event.
+> Personally, I don't like this kind of defensive programming, someone can
+> argue we can add such checks anywhere.
+> I believe we should definitely know the possible states in the software
+> and add checks needed at guest inputs.
+> But that's also up to Eric.
+I tend to agree with Mostafa. We shall avoid putting those asserts
+everywhere. Would it make sense to pove it to smmuv3_bank directly?
 
-It was fixed by a revert. See commit 28b0ed32b32c in master.
+Eric  
+>
+> Thanks,
+> Mostafa
+>
+>>> Thanks,
+>>> Mostafa
+>>
+>> Best regards,
+>>
+>> Tao
+>>
+>>>>       if (!smmuv3_eventq_enabled(s, sec_sid)) {
+>>>>           return;
+>>>> @@ -258,8 +259,9 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+>>>>           g_assert_not_reached();
+>>>>       }
+>>>> -    trace_smmuv3_record_event(smmu_event_string(info->type), info->sid);
+>>>> -    r = smmuv3_write_eventq(s, &evt);
+>>>> +    trace_smmuv3_record_event(sec_sid, smmu_event_string(info->type),
+>>>> +                              info->sid);
+>>>> +    r = smmuv3_write_eventq(s, sec_sid, &evt);
+>>>>       if (r != MEMTX_OK) {
+>>>>           smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
+>>>>       }
+>>
+>>
+>>
+>>
 
-> 
-> On a related note, I've noticed that when using accel=hvf on aarch64,
-> the cpu usage is maxing out all assigned cores even if the guest is
-> idle. It looks like it's constantly getting woken up from WFI. Could
-> this patch be part of the solution?
-
-This is another issue which I had also reported in [*]. It looks to me
-that commit b5f8f7727177 has made the WFI handling "an immediate
-re-entering in guest" which results in the high CPU utilization.
-
-Before someone familiar with the code acknowledges it, I just reverted
-b5f8f7727177 locally for power saving. ;-)
-
-[*]
-https://lore.kernel.org/qemu-devel/92a63a78-2ab8-481a-8b78-3a86fa130fe8@linux.dev
-
-Thanks,
-Zenghui
 

@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CED74E9B37E
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 16:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 279E7EB3621
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 17:08:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx6XO-0001jP-21; Mon, 02 Mar 2026 11:54:30 -0500
+	id 1vx6kJ-0006yH-0s; Mon, 02 Mar 2026 12:07:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx6XM-0001j5-Fo
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 11:54:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vx6kG-0006vS-E6
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 12:07:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx6XK-0004vj-LZ
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 11:54:28 -0500
+ id 1vx6kE-0006d8-KU
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 12:07:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772470465;
+ s=mimecast20190719; t=1772471264;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YLMDIEDZUbyVfEwyPH54dgchLAbl2qfz2wqS6nEjH1Y=;
- b=ZcCESwxrM2XY/BCKsJq1/6ViipggAmLhrBUSajT6+FwgU+IxXR7A9v+pFxC3Y13q+G7uSR
- LYL5o4e5D+Zk0slRwAtwYhyX+YeGKrl7xE53G0HnHpB22p0tiMxwDFlCM5ZdPQzUt2MyIT
- rpi379GpQy0NydKAaOTZRHc3ASxrzDU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=B+oQpBNNo4gl3vWw7Uae51pb033vs0p612iY93+q2Xc=;
+ b=Yr32RZi85aawXhD0XtBfSBT/CX0vk/iYp956+zTV2gQPlogCNPrYPLR9xilHofoXxewXMl
+ Aa7D2+sMZ/bEM67AlV65CJNXomZhvk0LS+35Fjl1zTg+5SFf8xoTu6h/hvRKJ8v9tajPhl
+ IKMxn6z6fdB8x8qUdpKPYAVrApXJT7U=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-548-dTmCzVKrP5CfPmx4vzcxBw-1; Mon, 02 Mar 2026 11:54:22 -0500
-X-MC-Unique: dTmCzVKrP5CfPmx4vzcxBw-1
-X-Mimecast-MFC-AGG-ID: dTmCzVKrP5CfPmx4vzcxBw_1772470461
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-439beddef55so76899f8f.0
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 08:54:22 -0800 (PST)
+ us-mta-185-cnM0hVo-Of-fzrYeFMTDzw-1; Mon, 02 Mar 2026 12:07:41 -0500
+X-MC-Unique: cnM0hVo-Of-fzrYeFMTDzw-1
+X-Mimecast-MFC-AGG-ID: cnM0hVo-Of-fzrYeFMTDzw_1772471260
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4837f288194so35420395e9.2
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 09:07:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772470461; x=1773075261;
+ d=1e100.net; s=20230601; t=1772471260; x=1773076060;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YLMDIEDZUbyVfEwyPH54dgchLAbl2qfz2wqS6nEjH1Y=;
- b=jfPnjyhGp1M/QeBd8ZvutKzaJpt/PddYXZ3z6xWZaZzMP0jcFEJ7G7wQds9DYpKJo1
- 1xjX+PNUDl9bpTE71sbxkuMiAUybpr+o6VuTZ+sVVCsRwwxiogFJSRc53lUa0QujzzJV
- Pz2WxQwHDzcWb7lb20PNJOCCz+gpRlOakSvEz2Ry/R3VQf0eBTnUcqk3DdUt0lVP0DSP
- w6f9GMJvJqoS5nFZkmY3F3wymWrY+9PtY8GxGN9G4FcEsjdjNsgMYRXLRzzF1e3r0eXl
- caFWCX4j1Sr+gfXb5KZwuRRy36yH5em1LIjFnPQM3/h6KqPVGR5RVcQ0Si/wAx3z0UCa
- UGAg==
+ bh=B+oQpBNNo4gl3vWw7Uae51pb033vs0p612iY93+q2Xc=;
+ b=BvtwBsHSbJQQRo8mM4ljJqG41512phns6s8sZGa70AJrNl2nkghF/vnApNhIaglbQ5
+ iz4LdB1/AFcxcwkU0cjSwysDknQaCNCXcfdqaORb4OKMAWR+REkNq/0EIvkYvEkz5QGF
+ zjfupDsLmjZA7jq/dimXwMSHtwkWSQY1tyR/yzEMMAhmzS11/0oZtghlh0ZcW3K5lHKR
+ Q4cHtvcczmzom6NJmYuTLBC8iAf8bBzkIUBzGli+gtkRicbKzXC2tKK3lIa5jjRfRpYe
+ T2Puas7O1at7j/xHGYZLxD8y6qRquXDUafiM/HnFz5lLCOCcbTQqD4Q0Hda4AjZsoLz2
+ JHoQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUXgFHGcfhAeaYXvR0mVdGgBjV6o7AUZO2DaO0mzL+HrcXAbkwkZmu3D46IpXND2Hz1rb9pZIrElw==@nongnu.org
-X-Gm-Message-State: AOJu0YwpVw43eo1Vm4W5pnUKY52fqvElhW7eRxgOrNHWTc9n3NhtRXmA
- U+ZqnDtGSwSDMH159P2dCXlsbQ3YKKIqSRZP2zwF2WDKaihoQaaGITRJ6JbXgJmLatiMe/ojErz
- A+u7D9LA/1dfCYzJGgA//cfUJuS+fOIxsg20UdUDhjPfdLyQ0rXTJbA==
-X-Gm-Gg: ATEYQzyHrmhAheDS2n3u2kFRn8WKG8K2v8aBlAN36s6aEWbXZOavi1b/hp1nFRjCW6L
- llZvx+2ATbjnRAHMtlpz2KsjpRjrpz0ITunO1wztKxDCLN8Kbv7gSV796kTB3unXY0ISdCK7Jy/
- NmFAMmPy6OxHAgPLphoc/FE911BRRlW3lj0zRZjI+pwZkzzG6WDv5URXA53UCAyrR2lisi4/Uf/
- x3u2AYkI760t1BiVMNZnU0u7+MOO/3LGoRUSvoq9LR0RN4LgV/nw5sRd2sseqLAGh5+VMaU196q
- bQk7G00DvivFTLk4c4L9ONwXeX5c+GPQaRqj8DW4+7IhOiyqKzHQiY4HapQl4DpsHMWIK2XpMKO
- 7Km4I18caR4LqJFu/oraFihEkaFFOYUSd0hE0rjQhGmlZbKd+wU9ww1l0Zoh8Mzavj5IrwA==
-X-Received: by 2002:adf:f404:0:b0:439:a706:7dbb with SMTP id
- ffacd0b85a97d-439a7067e80mr11793673f8f.25.1772470460931; 
- Mon, 02 Mar 2026 08:54:20 -0800 (PST)
-X-Received: by 2002:adf:f404:0:b0:439:a706:7dbb with SMTP id
- ffacd0b85a97d-439a7067e80mr11793629f8f.25.1772470460380; 
- Mon, 02 Mar 2026 08:54:20 -0800 (PST)
+ AJvYcCU9oelOuCanQylPd8SBJ6CSlhAkDn7uYp2+o9x6KST3wj4fa9BqJiJo4eggfBU79F4z9ei3WufCwA==@nongnu.org
+X-Gm-Message-State: AOJu0YxizywiodVAeGSpLyZmpvurI5KWDOk2/0j9os5mZc60WrDKI2IJ
+ 3JTL085BD2dTbz7YrlIorUb1W7YzmAh70Ne2RbAFMcLoA2W/hkZZWemZR3gPvobfTSVzDaAEgp4
+ 9MEE0rBowl+DDEk0wcxdzqf/WwLgzhSQN6sSLaARZUuGVIQDBDaE32w==
+X-Gm-Gg: ATEYQzwBx5lYF2QfmBCWs9woKVvzhD5S/8YjjL7FqGg3v7x9kJTJf77vuc8/4fZQX5V
+ gKzA2ybx/E+xBdKAWKAOMm2kvqYFOZuY1AcFQ9pWNFPMH2XjxFcH7rCaSPSvpFVS4d5MEk/u++7
+ 46zkBclftRBwXEyY605owCEQdpiamNy9P8i9jNQIrx1npIp2uF6IpnTXR3UBsSFPJgUQxdRS9c8
+ lmgYCOtUB6Rfgd09eoPCyG0UOU6BQICMsGRbrmyDkUtdaQqTzXeShWMD7hJ6jlgzC4pyMn0QMpH
+ rK2UP2FV3Z8ghM/KaJVSC+8wq8YBt3hCkJBn9xYfpBvq8Kjzbl4nNPBtGuhobk1sL9ZO0BgQUGT
+ 22Ukx62/5kgMO+QPHeXiBZ05qmYcngf2QmhRePz/XsXaY0WLnIUSwBosrPuLrKb6CSmgT1Q==
+X-Received: by 2002:a05:600c:8106:b0:47e:e8de:7420 with SMTP id
+ 5b1f17b1804b1-483c9c1d4bamr211427885e9.22.1772471260394; 
+ Mon, 02 Mar 2026 09:07:40 -0800 (PST)
+X-Received: by 2002:a05:600c:8106:b0:47e:e8de:7420 with SMTP id
+ 5b1f17b1804b1-483c9c1d4bamr211427245e9.22.1772471259939; 
+ Mon, 02 Mar 2026 09:07:39 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439b55df68dsm10209323f8f.26.2026.03.02.08.54.19
+ 5b1f17b1804b1-483bfb29715sm310318445e9.0.2026.03.02.09.07.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Mar 2026 08:54:19 -0800 (PST)
-Message-ID: <395c0640-c3bc-4f3e-9898-052fdbe68195@redhat.com>
-Date: Mon, 2 Mar 2026 17:54:18 +0100
+ Mon, 02 Mar 2026 09:07:39 -0800 (PST)
+Message-ID: <67ce2d21-0b7e-4f21-aa3a-d4a7dc52a059@redhat.com>
+Date: Mon, 2 Mar 2026 18:07:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 10/31] hw/arm/smmu-common: Key configuration cache on
- SMMUDevice and SEC_SID
+Subject: Re: [RFC v4 11/31] hw/arm/smmu: Add PTE NS/NSTable helpers
 To: Tao Tang <tangtao1634@phytium.com.cn>,
  Peter Maydell <peter.maydell@linaro.org>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -92,23 +91,23 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101437.2990803-1-tangtao1634@phytium.com.cn>
+ <20260221101544.2992355-1-tangtao1634@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260221101437.2990803-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260221101544.2992355-1-tangtao1634@phytium.com.cn>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: o_mfJ0GcWdiKkaVVxltbuit7hULtsU3eEkOrh-RV9YA_1772470461
+X-Mimecast-MFC-PROC-ID: wnOmlgGpO5AtblUnWpU-L8BxHrcB8L5uigS3xCaCMSQ_1772471260
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -5
 X-Spam_score: -0.6
 X-Spam_bar: /
 X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -127,196 +126,58 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
 
-On 2/21/26 11:14 AM, Tao Tang wrote:
-> Adapt the configuration cache to support multiple security states by
-> introducing a composite key, SMMUConfigKey. This key combines the
-> SMMUDevice with SEC_SID, preventing aliasing between Secure and
-> Non-secure configurations for the same device, also the future Realm and
-> Root configurations.
 
-Looking at 27/31, the sec_sid of a device looks rather static, set by a
-property. However here you mention risk of aliasing between non secure
-and secure for a given sdev
-
-Please could you clarify?
-
-Thanks
-
-Eric
->
-> The cache lookup, insertion, and invalidation mechanisms are updated
-> to use this new keying infrastructure. This change is critical for
-> ensuring correct translation when a device is active in more than one
-> security world.
+On 2/21/26 11:15 AM, Tao Tang wrote:
+> Add helper macros for NS and NSTable bits and group PTE attribute
+> accessors for clarity. No functional change beyond the new helpers.
 >
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Link: https://lore.kernel.org/qemu-devel/a9a840a6-c65f-4352-9a49-ddd1b5483f43@redhat.com/
 > ---
->  hw/arm/smmu-common.c         | 45 ++++++++++++++++++++++++++++++++++--
->  hw/arm/smmuv3.c              | 13 +++++++----
->  include/hw/arm/smmu-common.h |  7 ++++++
->  3 files changed, 58 insertions(+), 7 deletions(-)
+>  hw/arm/smmu-internal.h | 16 ++++++++++++++--
+>  1 file changed, 14 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index b320aec8c60..a732303b28b 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -30,6 +30,26 @@
->  #include "hw/arm/smmu-common.h"
->  #include "smmu-internal.h"
+> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+> index d143d296f34..a0454f720da 100644
+> --- a/hw/arm/smmu-internal.h
+> +++ b/hw/arm/smmu-internal.h
+> @@ -58,16 +58,28 @@
+>      ((level == 3) &&                                                    \
+>       ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
 >  
-> +/* Configuration Cache Management */
-> +static guint smmu_config_key_hash(gconstpointer key)
-> +{
-> +    const SMMUConfigKey *k = key;
-> +    return g_direct_hash(k->sdev) ^ (guint)k->sec_sid;
-> +}
+> +/* Block & page descriptor attributes */
+Maybe use the spec terminology:
+Stage 1 attribute fields in VMSAv8-64 Block and Page descriptors
+vs 7 Stage 1 VMSAv8-64 Table descriptor fields
+
+By the way AF belongs to both
+
+> +/* Non-secure bit */
+> +#define PTE_NS(pte) \
+> +    (extract64(pte, 5, 1))
 > +
-> +static gboolean smmu_config_key_equal(gconstpointer a, gconstpointer b)
-> +{
-> +    const SMMUConfigKey *ka = a;
-> +    const SMMUConfigKey *kb = b;
-> +    return ka->sdev == kb->sdev && ka->sec_sid == kb->sec_sid;
-> +}
+>  /* access permissions */
+>  
+>  #define PTE_AP(pte) \
+>      (extract64(pte, 6, 2))
+>  
+> +/* access flag */
+> +#define PTE_AF(pte) \
+> +    (extract64(pte, 10, 1))
 > +
-> +SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid)
-> +{
-> +    SMMUConfigKey key = {.sdev = sdev, .sec_sid = sec_sid};
-> +    return key;
-> +}
 > +
->  ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid)
->  {
->      switch (sec_sid) {
-> @@ -265,7 +285,8 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
->  static gboolean
->  smmu_hash_remove_by_sid_range(gpointer key, gpointer value, gpointer user_data)
->  {
-> -    SMMUDevice *sdev = (SMMUDevice *)key;
-> +    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
-> +    SMMUDevice *sdev = config_key->sdev;
->      uint32_t sid = smmu_get_sid(sdev);
->      SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
+> +/* Table descriptor attributes */
+>  #define PTE_APTABLE(pte) \
+>      (extract64(pte, 61, 2))
 >  
-> @@ -283,6 +304,24 @@ void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range)
->                                  &sid_range);
->  }
->  
-> +static gboolean smmu_hash_remove_by_sdev(gpointer key, gpointer value,
-> +                                         gpointer user_data)
-> +{
-> +    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
-> +    SMMUDevice *target = (SMMUDevice *)user_data;
+> -#define PTE_AF(pte) \
+> -    (extract64(pte, 10, 1))
+> +#define PTE_NSTABLE(pte) \
+> +    (extract64(pte, 63, 1))
 > +
-> +    if (config_key->sdev != target) {
-> +        return false;
-> +    }
-> +    trace_smmu_config_cache_inv(smmu_get_sid(target));
-> +    return true;
-> +}
-> +
-> +void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev)
-> +{
-> +    g_hash_table_foreach_remove(s->configs, smmu_hash_remove_by_sdev, sdev);
-> +}
-> +
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl)
->  {
-> @@ -978,7 +1017,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->          error_propagate(errp, local_err);
->          return;
->      }
-> -    s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
-> +    s->configs = g_hash_table_new_full(smmu_config_key_hash,
-> +                                       smmu_config_key_equal,
-> +                                       g_free, g_free);
->      s->iotlb = g_hash_table_new_full(smmu_iotlb_key_hash, smmu_iotlb_key_equal,
->                                       g_free, g_free);
->      s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index d011357253e..aa1a95a0093 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -904,10 +904,11 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
->   *
->   * @sdev: SMMUDevice handle
->   * @event: output event info
-> + * @sec_sid: StreamID Security state
->   *
->   * The configuration cache contains data resulting from both STE and CD
->   * decoding under the form of an SMMUTransCfg struct. The hash table is indexed
-> - * by the SMMUDevice handle.
-> + * by a composite key of the SMMUDevice and the sec_sid.
->   */
->  static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->                                         SMMUSecSID sec_sid)
-> @@ -915,8 +916,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->      SMMUv3State *s = sdev->smmu;
->      SMMUState *bc = &s->smmu_state;
->      SMMUTransCfg *cfg;
-> +    SMMUConfigKey lookup_key = smmu_get_config_key(sdev, sec_sid);
->  
-> -    cfg = g_hash_table_lookup(bc->configs, sdev);
-> +    cfg = g_hash_table_lookup(bc->configs, &lookup_key);
->      if (cfg) {
->          sdev->cfg_cache_hits++;
->          trace_smmuv3_config_cache_hit(smmu_get_sid(sdev),
-> @@ -940,7 +942,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->          g_assert(cfg->as && cfg->ns_as);
->  
->          if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
-> -            g_hash_table_insert(bc->configs, sdev, cfg);
-> +            SMMUConfigKey *persistent_key = g_new(SMMUConfigKey, 1);
-> +            *persistent_key = lookup_key;
-> +            g_hash_table_insert(bc->configs, persistent_key, cfg);
->          } else {
->              g_free(cfg);
->              cfg = NULL;
-> @@ -954,8 +958,7 @@ static void smmuv3_flush_config(SMMUDevice *sdev)
->      SMMUv3State *s = sdev->smmu;
->      SMMUState *bc = &s->smmu_state;
->  
-> -    trace_smmu_config_cache_inv(smmu_get_sid(sdev));
-> -    g_hash_table_remove(bc->configs, sdev);
-> +    smmu_configs_inv_sdev(bc, sdev);
->  }
->  
->  /* Do translation with TLB lookup. */
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index 7944e8d1b64..9e44c9f7710 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -162,6 +162,11 @@ typedef struct SMMUIOTLBKey {
->      uint8_t level;
->  } SMMUIOTLBKey;
->  
-> +typedef struct SMMUConfigKey {
-> +    SMMUDevice *sdev;
-> +    SMMUSecSID sec_sid;
-> +} SMMUConfigKey;
-> +
->  typedef struct SMMUSIDRange {
->      uint32_t start;
->      uint32_t end;
-> @@ -250,6 +255,7 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
->  void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
->  SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level);
-> +SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid);
->  void smmu_iotlb_inv_all(SMMUState *s);
->  void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
->  void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
-> @@ -259,6 +265,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->  void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
->                          uint64_t num_pages, uint8_t ttl);
->  void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
-> +void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev);
->  /* Unmap the range of all the notifiers registered to any IOMMU mr */
->  void smmu_inv_notifiers_all(SMMUState *s);
->  
+>  /*
+>   * TODO: At the moment all transactions are considered as privileged (EL1)
+>   * as IOMMU translation callback does not pass user/priv attributes.
+Eric
 
 

@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DE7C624C6
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 09:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D9F4EF585D
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 09:24:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vwzU8-0001Lx-K0; Mon, 02 Mar 2026 04:22:40 -0500
+	id 1vwzU3-0001HO-Cc; Mon, 02 Mar 2026 04:22:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU7-0001LK-G4
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:39 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1vwzU1-0001Fz-O0
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:33 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vwzU5-0007iY-RV
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:39 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4833115090dso42769035e9.3
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:37 -0800 (PST)
+ id 1vwzU0-0007fk-4N
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 04:22:33 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-483abed83b6so34038415e9.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 01:22:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772443356; x=1773048156; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772443351; x=1773048151; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gxlGmMADfBkDj23qA/r1rspF51lHVkOiqdCHs5z6fO0=;
- b=PsXE9euLDwt8maLDX4x8bwfRkqzlrvyKjK2nRV2u6VtSo7+7VYx0TL/7axrYRKbESn
- m4bLA/gzOcehb+ZsGusHSgMBVC0CV9nRrgVJhcOAfsjov5qXGqEyHLO4bMwlwBugRF0D
- 6kW58zBChsyqUw+IDOuie3AAIGcvRPRb/J1naeFL6Gjb9ClGSfqwn6qil5u27bB16SiP
- S35SM217gaei0vwp3OIUR9BdC0oHLcFHaIA5lgQwvZuKbMfpWADKccWEHG3vXgxGCO6c
- A7cw+QXSuFzu1ftyXj9vr5kx2mMCHOHLgZLCVz+H3r/+ZU9Gnpu/RNV+QpZLUk/4IJym
- 1LEA==
+ bh=JrSDkpRuA4wc4OTpcBM2xlfnE+hqoQxnobPtJeyezk4=;
+ b=kBojzAfv68NBqTaHsmVq607+IaF90hj+cRZ9P5clKDbC7Nr9qyIGDUp8zQLygXrqLr
+ LpSCzt36gBo6+tPCwfrYNrk1bMfyp7S1ciJzvJq2YwdP948HkQ52MlxiNi5Dviv+r1pA
+ MGpM9ntclLrkJu+VD2QmuszdQlEXBZAhfLg4xO6R3JkW7fG8U3KA22m6gIcygvkCd22b
+ EJES07VDDF88sAyOtJLrV2dL1fPvrwSPUim0ugLpmPNIaPBK+I+W0lTzFCx8qXlD+XU9
+ RnhLdzIfyf+MWvfXX9OluJTthkQfho7kKeGcLPuh7C6UhNi3m8rp7HCLxoirZ6P0ZeD1
+ mQCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772443356; x=1773048156;
+ d=1e100.net; s=20230601; t=1772443351; x=1773048151;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=gxlGmMADfBkDj23qA/r1rspF51lHVkOiqdCHs5z6fO0=;
- b=lVGyi3L5MC0HQiTljMjgYgaDnqWVf9LFRfGRuNiYaKGvZOwnGoKJ9xBqmxvgvugz+F
- txPObwrXt+tlj7pL3o2JbYGK35E+s2Qzu1q6aMevxNSUXyop3+ASWA3vSHb5wngEQbeA
- liESvLOTEYAKpLL/q8fyqsu1+qJDBJMNNtZVNpdqBoLxAc5CEOKQILLp76FrqfOpwTKA
- txt5rGPsELDbmtUCw4O2OzGeSy4/dHJ8dhHCpu5Hwb0T17RbJk+gzPFkJ6jAcmc8eK51
- 0JQ088+lKcGZaZoAYviOvqt7oXOVG3IGkzNwMFE/lRCo4K78BSMPJvKmbQ9RCLt/+PmJ
- qqKA==
-X-Gm-Message-State: AOJu0YyW6JdlcdNCbJGaf6rAuGHe4jrpJcUm5QxNG7gxJqK6+sXQv2jI
- B4cJzdVcXUbkGx86XsZoNWOqcVmO7rSEgi/fu0xuOa374Q7xs1EexjxxVvmTtaAJQNPRO9iG9Vc
- YojCp
-X-Gm-Gg: ATEYQzwRYgiJhB9eD3EeISMH+wpmWwR8sKXsMCNXuZu/7FfeYH6HQscelXjpK9l37MZ
- vj5lpTONDglu/QqGDmY4MkiAc28fJMwMqum8xeYXNXsBWS22KN9ZF8FEvCmhLQREC9JuQqIKqRk
- laiC7mJOAU55uaMLu2wCtsEzwOE/YPCsc1Q/UwOem1qQHU/gP7HoRHuLeCT3IbIXXzRbWejpokG
- YORYgz4sbb7WQR1tV7HwDF+G20r0Clqv5/J7PszesEwLK8OMSNTIFT1IoNfH95Ehyyps3FULMDz
- SnM1AUxHus76yBhQX7T8Bng0yBarB/pV4RnLsucVDXPMYj/0BLnGv49wYAjvaFRspPa/eAeA6Cj
- LXJEAFk/bsc57G1hePns8Nj/QDe+fUqv4XcuvBJel+rEzVP402bqfyItnfWjvfTXHywrKBWPUJj
- S1eiE/i5klOYNxA+VK41b0MQ0QPzv7liZ08Z3H8C/LlK5KCm6yZgXLOJxCN+/nlJsjfdQfpLc7Q
- qd7mHk8gIAddPcValQyx7SxViq7HkSbnQb6Kzhlkg==
-X-Received: by 2002:a05:600c:46c4:b0:483:b505:9db4 with SMTP id
- 5b1f17b1804b1-483c9c0f1d1mr198756705e9.31.1772443356398; 
- Mon, 02 Mar 2026 01:22:36 -0800 (PST)
+ bh=JrSDkpRuA4wc4OTpcBM2xlfnE+hqoQxnobPtJeyezk4=;
+ b=CSJd3WoxQFio1OWwJbtdznF7kiyvQRjZvB7AW+rk266TGo9m8MJgxlYtyw240LhT90
+ 7eff5bBTZMeyk77ZHouTk8Qkn/90hwVN8GjvKQ+folAHXBBx3EmJ9wlCa2Kh2v+06+81
+ Ux7sjOwPYxPk8H8szG2tE36x+liEEzQr5pKDFYHSB6x3Y10J6IRi/lriceoolaTZ6BMk
+ DVqvCe0zx1P+vcFC+FnAS4Dcll5Y2Zd4z5d1ekNn8zixeO0V+XS7wFyl6CeJZg3IazGp
+ iWEFeXRUsh1t2qK51yP/wjTunynt1pNccKq5M6uv0pAQ2y2Ex5ZJ8stmRrU/EZY1qBFX
+ CBZQ==
+X-Gm-Message-State: AOJu0YyDt3QJR/Y8vM3xmN9fM8D9bOeYvpjdpr+jB2YHFg56Fp75ouRy
+ HOcEOr0/mu5+V9mxoF9nl7xQmvsQQ9HEWFV7O2Krg2m1nkNExN8C20ic4JaEW7Y4F7iNzWGZU+P
+ 9N46y
+X-Gm-Gg: ATEYQzxqHacFv8S3EKbPdHVaWZqZ5D92niDE3N1+vT+T8bCMYoU6DHrtZguybhYiMqk
+ OJ7EXzui1dVrJ8RBGK3udjJJQiENbTuMPSoYVObyIRT/bzWfG2EE1npGfbDDoaS6zNcfZdgAvAO
+ pti6WfVkrs5ayumEatY4w/hijRTMhpZWiWEJugAJTfQ646hOXbt0XBsZFiRQiagdhzn2pCfswCS
+ UcUI+kzjDRiGRWUvthkKIL48qEGOXFVfMJ1fO1ecvfahsMqf3DvHXuJqiTPIR23FyYoxDX6ZnKC
+ TlPP52FkGrHArqe95NqmP3cGMm6Chko6vC+OeJKPCG+kRKkDHe17V7DxZtyK1YOBwDQPX24frxy
+ 4G3twpWHnIkmYyhc9NOixtSHby08OMhtvKeePGWZwIM3pGLMEvb1MoHnjVLsXd3BIzXr1lE7sDY
+ fYZvcrCagP9GJdA0nXAvcpCCUVWX+RExdUCw5aMeU4avw5ejoZ9h1BHLJjhj8ALBCcxMdhhfKmd
+ Ki2Gr9fOG0XDE+zgADDV7qLALtfoDkSf9oKXeenCQ==
+X-Received: by 2002:a05:600c:c174:b0:477:73e9:dbe7 with SMTP id
+ 5b1f17b1804b1-483c9c0bcdamr202694715e9.35.1772443350535; 
+ Mon, 02 Mar 2026 01:22:30 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.35
+ 5b1f17b1804b1-483bfb9d9c6sm129435305e9.14.2026.03.02.01.22.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2026 01:22:35 -0800 (PST)
+ Mon, 02 Mar 2026 01:22:29 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -80,24 +80,25 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  Darren Kenny <darren.kenny@oracle.com>, Qiuhao Li <Qiuhao.Li@outlook.com>,
  Yodel Eldar <yodel.eldar@yodel.dev>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH v2 8/9] tests/qtest/test-x86-cpuid-compat: Free allocated
- memory
-Date: Mon,  2 Mar 2026 09:22:24 +0000
-Message-ID: <20260302092225.4088227-9-peter.maydell@linaro.org>
+Subject: [PATCH v2 3/9] hw/arm/aspeed_gpio: Don't leak string in
+ aspeed_gpio_init()
+Date: Mon,  2 Mar 2026 09:22:19 +0000
+Message-ID: <20260302092225.4088227-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260302092225.4088227-1-peter.maydell@linaro.org>
 References: <20260302092225.4088227-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,39 +114,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Fabiano Rosas <farosas@suse.de>
+We allocate the string for the GPIO property name, but never free it.
+Use g_autofree to avoid this.
 
-Free the test arguments after test execution.
-
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/test-x86-cpuid-compat.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ hw/gpio/aspeed_gpio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qtest/test-x86-cpuid-compat.c b/tests/qtest/test-x86-cpuid-compat.c
-index 5e0547e81b..b2d884054a 100644
---- a/tests/qtest/test-x86-cpuid-compat.c
-+++ b/tests/qtest/test-x86-cpuid-compat.c
-@@ -65,6 +65,8 @@ static void test_cpuid_prop(const void *data)
+diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
+index d9237d4360..7d0f87e90c 100644
+--- a/hw/gpio/aspeed_gpio.c
++++ b/hw/gpio/aspeed_gpio.c
+@@ -1488,7 +1488,7 @@ static void aspeed_gpio_init(Object *obj)
+     }
  
-     qobject_unref(value);
-     g_free(path);
-+    g_free((void *)args->cmdline);
-+    g_free((void *)data);
- }
- 
- static void add_cpuid_test(const char *name, const char *cpu,
-@@ -161,6 +163,8 @@ static void test_feature_flag(const void *data)
-     qobject_unref(present);
-     qobject_unref(filtered);
-     g_free(path);
-+    g_free((void *)args->cmdline);
-+    g_free((void *)data);
- }
- 
- /*
+     for (int i = 0; i < agc->nr_gpio_sets; i++) {
+-        char *name = g_strdup_printf("gpio-set[%d]", i);
++        g_autofree char *name = g_strdup_printf("gpio-set[%d]", i);
+         object_property_add(obj, name, "uint32", aspeed_gpio_get_set,
+         aspeed_gpio_set_set, NULL, NULL);
+     }
 -- 
 2.43.0
 

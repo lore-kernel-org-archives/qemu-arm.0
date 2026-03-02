@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FB74E9B35C
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:38:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B6D6E9B35A
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 10:38:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vx0eK-00033R-Vw; Mon, 02 Mar 2026 05:37:17 -0500
+	id 1vx0eS-00037l-Tr; Mon, 02 Mar 2026 05:37:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx0e8-0002yw-MI
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vx0eN-00034H-1T
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vx0e5-0001qr-U5
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:04 -0500
+ id 1vx0eG-0001sW-IK
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 05:37:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772447819;
+ s=mimecast20190719; t=1772447827;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bo/UriJHsBloEjShz/XFZtX2zVln7mAsy/2g8XzXh1M=;
- b=KWcbbRlH3PUl70UzmISPbdMkxYPe3Yfq2i7ZvV3fJvkQnGo6Fw9fr8ftxGxUGW/2sh19Vq
- 4mJ/h3F1ueg1TgMmW7uU6Ul+aKBsYukSdYiJAeXBmv87J30DJ86DLeaCE6AdTAz0OTlZGO
- pE1Q9GciBMe2Qed4iHJZiw2oZa5uqf8=
+ bh=gqwIlq9YsCC/mk/RbZ2jJbZEoXtp/RnqPmOFKrdWkWY=;
+ b=BgNjOtvPR3hbrdXoUXV9+6pu+oe5JOkFIfubu29yoLnABB9orLgbHpGPXw9Zjj/TzjXJ/l
+ u1wKcx+ViO3MPDQSkPCF5QgBfYXPdsuR+B+AbU3rQU4f9Xo1QJii2uNHMwhsvhxcPNJRxH
+ t+vPEwWwfsVxiTPKFWPwwvFC2OvJBNE=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-C7q5wqodMyOKARmtj8RB8w-1; Mon,
- 02 Mar 2026 05:36:55 -0500
-X-MC-Unique: C7q5wqodMyOKARmtj8RB8w-1
-X-Mimecast-MFC-AGG-ID: C7q5wqodMyOKARmtj8RB8w_1772447814
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-393-qgevpJmTOymKrMbyLzaddw-1; Mon,
+ 02 Mar 2026 05:37:06 -0500
+X-MC-Unique: qgevpJmTOymKrMbyLzaddw-1
+X-Mimecast-MFC-AGG-ID: qgevpJmTOymKrMbyLzaddw_1772447825
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AC0A41956050; Mon,  2 Mar 2026 10:36:54 +0000 (UTC)
+ id 5805C1956053; Mon,  2 Mar 2026 10:37:05 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.23])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9DEEF180066A; Mon,  2 Mar 2026 10:36:51 +0000 (UTC)
+ id 1A2831800666; Mon,  2 Mar 2026 10:37:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v7 2/7] target/arm/cpu: Introduce the infrastructure for cpreg
- migration tolerances
-Date: Mon,  2 Mar 2026 11:35:24 +0100
-Message-ID: <20260302103640.1362564-3-eric.auger@redhat.com>
+Subject: [PATCH v7 5/7] target/arm/cpu64: Define cpreg migration tolerance for
+ KVM_REG_ARM_VENDOR_HYP_BMAP_2
+Date: Mon,  2 Mar 2026 11:35:27 +0100
+Message-ID: <20260302103640.1362564-6-eric.auger@redhat.com>
 In-Reply-To: <20260302103640.1362564-1-eric.auger@redhat.com>
 References: <20260302103640.1362564-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: _o2gPLcgPlGLxINQ3ZnuO5iNcWGQhMX4JlZMvqKvLGE_1772447814
+X-Mimecast-MFC-PROC-ID: hfSMYvJr3mOE5aJdRDC7KGVc1H9owjiJZq5Q5AVTGuc_1772447825
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 24
+X-Spam_score: 2.4
+X-Spam_bar: ++
+X-Spam_report: (2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.012,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=1.188, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
@@ -90,190 +90,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We introduce a datatype for a tolerance with respect to a given
-cpreg migration issue. The tolerance applies to a given cpreg kvm index,
-and can be of different types:
-- ToleranceNotOnBothEnds (cpreg index is allowed to be only on one end)
-- ToleranceDiffInMask (value differences are allowed only within a mask)
-- ToleranceFieldLT (incoming field value must be less than a given value)
-- ToleranceFieldGT (incoming field value must be greater than a given value)
-
-A QLIST of such tolerances can be populated using a new helper:
-arm_register_cpreg_mig_tolerance() and arm_cpu_cpreg_has_mig_tolerance()
-allows to check whether a tolerance exists for a given kvm index.
-
-callers for those helpers will be introduced in subsequent patches.
+KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
+from v6.15 onwards. Backward migration from a >= v6.15 to an older
+kernel would fail without cpreg migration tolerance definition
+for this register.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/cpu.h | 32 +++++++++++++++++++++
- target/arm/cpu.c | 75 ++++++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 107 insertions(+)
+ target/arm/cpu64.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 657ff4ab20b..9dcc838f611 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -843,6 +843,21 @@ struct ARMELChangeHook {
-     QLIST_ENTRY(ARMELChangeHook) node;
- };
- 
-+typedef enum {
-+    ToleranceNotOnBothEnds,
-+    ToleranceDiffInMask,
-+    ToleranceFieldLT,
-+    ToleranceFieldGT,
-+} ARMCPUCPREGMigToleranceType;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 9e64184f6f0..0a61edb27f6 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -817,6 +817,14 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+                                      0, 0, ToleranceNotOnBothEnds);
+     arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
+                                      0, 0, ToleranceNotOnBothEnds);
 +
-+typedef struct ARMCPUCPREGMigTolerance {
-+    uint64_t kvmidx;
-+    uint64_t mask;
-+    uint64_t value;
-+    ARMCPUCPREGMigToleranceType type;
-+    QLIST_ENTRY(ARMCPUCPREGMigTolerance) node;
-+} ARMCPUCPREGMigTolerance;
-+
- /* These values map onto the return values for
-  * QEMU_PSCI_0_2_FN_AFFINITY_INFO */
- typedef enum ARMPSCIState {
-@@ -1139,6 +1154,7 @@ struct ArchCPU {
- 
-     QLIST_HEAD(, ARMELChangeHook) pre_el_change_hooks;
-     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
-+    QLIST_HEAD(, ARMCPUCPREGMigTolerance) cpreg_mig_tolerances;
- 
-     int32_t node_id; /* NUMA node this CPU belongs to */
- 
-@@ -2632,6 +2648,22 @@ void arm_register_pre_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
- void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook, void
-         *opaque);
- 
-+/**
-+ * arm_register_cpreg_mig_tolerance:
-+ * Register a migration tolerance wrt one given cpreg identified by its
-+ * @kvmidx. Only one tolerance can be registered by kvm reg idx.
-+ */
-+void arm_register_cpreg_mig_tolerance(ARMCPU *cpu, uint64_t kvmidx,
-+                                      uint64_t mask, uint64_t value,
-+                                      ARMCPUCPREGMigToleranceType type);
-+
-+/**
-+ * arm_cpu_cpreg_has_mig_tolerance:
-+ * Check whether a tolerance of type @type exists for a given @kvmidx
-+ */
-+bool arm_cpu_cpreg_has_mig_tolerance(ARMCPU *cpu, uint64_t kvmidx,
-+                                     uint64_t vmstate_value, uint64_t local_value,
-+                                     ARMCPUCPREGMigToleranceType type);
- /**
-  * arm_rebuild_hflags:
-  * Rebuild the cached TBFLAGS for arbitrary changed processor state.
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 10f8280eef2..167f78cee13 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -181,6 +181,75 @@ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-     QLIST_INSERT_HEAD(&cpu->el_change_hooks, entry, node);
++    /*
++     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
++     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
++     * kernel would fail without cpreg migration tolerance definition
++     */
++    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
++                                     0, 0, ToleranceNotOnBothEnds);
  }
  
-+void arm_register_cpreg_mig_tolerance(ARMCPU *cpu, uint64_t kvmidx,
-+                                      uint64_t mask, uint64_t value,
-+                                      ARMCPUCPREGMigToleranceType type)
-+{
-+    ARMCPUCPREGMigTolerance *t, *entry;
-+
-+    /* make sure the kvmidx has not tolerance already registered */
-+    QLIST_FOREACH(t, &cpu->cpreg_mig_tolerances, node) {
-+        if (t->kvmidx == kvmidx) {
-+            g_assert_not_reached();
-+        }
-+    }
-+    entry = g_new0(ARMCPUCPREGMigTolerance, 1);
-+
-+    entry->kvmidx = kvmidx;
-+    entry->mask = mask;
-+    entry->value = value;
-+    entry->type = type;
-+
-+    QLIST_INSERT_HEAD(&cpu->cpreg_mig_tolerances, entry, node);
-+}
-+
-+bool arm_cpu_cpreg_has_mig_tolerance(ARMCPU *cpu, uint64_t kvmidx,
-+                                     uint64_t vmstate_value, uint64_t local_value,
-+                                     ARMCPUCPREGMigToleranceType type)
-+{
-+    ARMCPUCPREGMigTolerance *t;
-+    uint64_t diff, diff_outside_mask, field;
-+    bool found = false;
-+
-+    QLIST_FOREACH(t, &cpu->cpreg_mig_tolerances, node) {
-+        if (t->kvmidx == kvmidx)  {
-+            found = true;
-+            break;
-+        }
-+    }
-+    if (!found) {
-+        return false;
-+    }
-+
-+    /* we found one tolerance associated to the @kvmidx */
-+
-+    if (type == ToleranceNotOnBothEnds) {
-+        return true;
-+    }
-+
-+    /* Need to check mask */
-+    diff = vmstate_value ^ local_value;
-+    diff_outside_mask = diff & ~t->mask;
-+
-+    if (diff_outside_mask) {
-+        /* there are differences outside of the mask */
-+        return false;
-+    }
-+    if (type == ToleranceDiffInMask) {
-+        /* differences only in the field, tolerance granted */
-+        return true;
-+    }
-+    /* need to compare field value against authorized ones */
-+    field = vmstate_value & t->mask;
-+    if (type == ToleranceFieldLT && (field < t->value)) {
-+        return true;
-+    }
-+    if (type == ToleranceFieldGT && (field > t->value)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
- static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
- {
-     /* Reset a single ARMCPRegInfo register */
-@@ -1106,6 +1175,7 @@ static void arm_cpu_initfn(Object *obj)
- 
-     QLIST_INIT(&cpu->pre_el_change_hooks);
-     QLIST_INIT(&cpu->el_change_hooks);
-+    QLIST_INIT(&cpu->cpreg_mig_tolerances);
- 
- #ifdef CONFIG_USER_ONLY
- # ifdef TARGET_AARCH64
-@@ -1548,6 +1618,7 @@ static void arm_cpu_finalizefn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-     ARMELChangeHook *hook, *next;
-+    ARMCPUCPREGMigTolerance *t, *n;
- 
-     g_hash_table_destroy(cpu->cp_regs);
- 
-@@ -1559,6 +1630,10 @@ static void arm_cpu_finalizefn(Object *obj)
-         QLIST_REMOVE(hook, node);
-         g_free(hook);
-     }
-+    QLIST_FOREACH_SAFE(t, &cpu->cpreg_mig_tolerances, node, n) {
-+        QLIST_REMOVE(t, node);
-+        g_free(t);
-+    }
- #ifndef CONFIG_USER_ONLY
-     if (cpu->pmu_timer) {
-         timer_free(cpu->pmu_timer);
+ static void aarch64_host_initfn(Object *obj)
 -- 
 2.53.0
 

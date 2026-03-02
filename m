@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED480EB3637
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 22:04:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 799F2EB363D
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Mar 2026 22:05:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxBMF-0000Q2-6X; Mon, 02 Mar 2026 17:03:19 -0500
+	id 1vxBM7-0000KU-9A; Mon, 02 Mar 2026 17:03:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxBMC-0000Oc-8b
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 17:03:16 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxBM4-0000IT-VU
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 17:03:08 -0500
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxBMA-00019E-QH
- for qemu-arm@nongnu.org; Mon, 02 Mar 2026 17:03:16 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-439b9b190easo825829f8f.2
- for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 14:03:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxBM3-00016k-9x
+ for qemu-arm@nongnu.org; Mon, 02 Mar 2026 17:03:08 -0500
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-43991064db8so5136274f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 02 Mar 2026 14:03:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772488993; x=1773093793; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1772488986; x=1773093786; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kQcKbngO5gEYvP1cyAmsSZ3twrSC/3ssI8QyeEW5Z+s=;
- b=f5UpQ64KkxTS3PqQBfsxxvU41aUqbF56X9+iFjmxYUIX+EssXK/j5DpusnJWY7WVUb
- DUFFlc5Bkb8tFrnmX99my6y5+36p0uJq+7KLX/KsRQWfaBWw9qs30su9M3IGYXEFUuzV
- kEEcYHy0coRQO+TCrHRCdG+35QT74xt8IDhS4aj//jZfdMRT97yN5dJm9zvvGx/TIxes
- +jfTdL4ZDmFPZCMS8Sb8xy+NdoJpXDd25+yJyDPefOf6QW9fRD3LoE5EZU1s2Dn8Zvjp
- Jlq0iUuRURCmEkpuKTCWNgDNZLppDSARMNDQmm+iaEC3h7WrGhhOzQv0tqpkqFVpWdCy
- VItA==
+ bh=a20X3LL6nOL1DHB0RkjcJ0CTq+OL5+eKSUsrTa1dqPQ=;
+ b=MvjC4EyZ1YXn7IxuPGZ0gkeUXoxwkLpH2z16v8aU170tL0+/ZEcMNUhsjmcqZy7QV/
+ OwHFaPYiZMjrfrWoIkvzYf2m8IWgqpsx2KWDTFA+YhB4egUAsHPnKNFjk7x0omSWEs7X
+ /Ui2muAcF7DQn36QQkBRTy3p5Jdx1fqA00y97wmYLEpjz38MAtPQL37F0AlFVTdoKtrH
+ CgHIReAUEJs8BSBZyRI189j8BTtsHI5ITwgXfzS3vz02tpt2qC+XvxPiBMWKgX/nZo3z
+ WU8uiFryrLbEYdt89f0lATjf8hGMaOmETMuYrus7ZZLbY+cORrfDdc+W2jDMgU6tn2to
+ LOUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772488993; x=1773093793;
+ d=1e100.net; s=20230601; t=1772488986; x=1773093786;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=kQcKbngO5gEYvP1cyAmsSZ3twrSC/3ssI8QyeEW5Z+s=;
- b=ooHtJtQ0z6njsYn6WpycOpYNJ+JxQ3JYaAaJJfLSO/JWGgsohWkPfR5+aX1/p0zwxI
- Z5dGeCCG7djhtr34XRkBKYOoRVAmd+xwMr9FqlExgtObzOSbbNRCm4pXjJ3OxZeNRNtl
- 5tFrSOwmr+odftrVhqtblNH1OIlY4uUXJ045o3/V8E24dKDR8E3PCFl8uvqtju56hyEo
- uPE4GLMA7jNAqgti/8jsojIKW6fCc6raDcUST/nSQitt6igSPELmrQ6QU3DFBfIJ8QHw
- kcooQ7GUET3gD8NB4PNPUImFxNJOf5YT8HExBIotDBE5cjo3p44u7saEBXzjOblCybBh
- xUtg==
+ bh=a20X3LL6nOL1DHB0RkjcJ0CTq+OL5+eKSUsrTa1dqPQ=;
+ b=uhNFt5+fEt2LBo18dI+aemlEkiTwL8Wnc8uyqpDmnvGaIfxS4LAytxxQjovtYQ8JVi
+ uV07pFlm8hU8W5BITOfZDX3a1eL1NImzUlAbSS/r7i/sCOQcQE9weuuXz9+TzKmWZaOK
+ enFxm1PD03DE8g+YpowWx5wnQkbAqd3FehL3hr1VwvkXTFGSuvqowl70oiHyzprp1iaR
+ mTyzfF+o9cYdqlhciSprSzZ4SS2gv7ADWQ4K0VSFM3dlzzMPAof3kZwV3bvvGv9xJud1
+ 7apDkuzk1l+kPW+Wt10TOQJO/mAWoBCO/U/MzWgfNJaJTP+tVn2tLabKjlVcQFTeB8O6
+ 3wrA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXKdS4XHhuvjLKF+WQtbJb3w1ncryismecKk2NbEJMo0C7QCsE96JQNeepQ+qBACxZqw5OHtUGsqg==@nongnu.org
-X-Gm-Message-State: AOJu0YxU7Ksaj29jLJP32OgaIQa1mpTZJFhIgeM2xZG8ydlyQgGh7ZS0
- mRFLzbT0h+t+3u4cvV79ZmhrS6Tcd8rpQqi99ZA071JHlTChS/G3RA1w
-X-Gm-Gg: ATEYQzy2YludSGYYrdw9y9sywJWcKHRhlWl3vFUiC8HHUpNtWsTEeWLM8yRA/g4Ivqg
- Q2hiBkZc/lgBxIUzAJA0EQi9iibU8kYNSGQMPDSQSJHDtnRoKCt1AHYIMfqGiQ7lBPk31+if+0I
- b4191jXXYbPWAJ29avoL8TFkyxAobqJb/xWrczBK/5jYPEJxVbpd+wtYEyGTmC/fUJwTMhXneVB
- yGq9KYFnG/fluWli7esdoATa5MW4aMBmMGaoI2LHCVRr2ppQS1CbLG7nNkoO9qZ4XKOx00N06DN
- aTUnrBMYs2T6aXy7c1DNsPkykesKktp4VUrYTxgRBdMRtwg3rh7ImZf9ORtMNB5l3I9Fs8BYbHR
- 5xDQdXRndJF7EFt1K/CDEl8+BBaP5n4Hl0fIdDQds6G0w79RArxYbjF1ibf1bxKlaugsguuOwTW
- ftj0iucupWbal/50fr02ljcne+hK2AC4XfphQ3Z+0cm0jFJsFG3mospHVAQoXAIQ7Su77CsBmPO
- n5vB6D4NwEGzJev/ByfQ+dqPfnUlqKmOEcuexI0NymAQ0A=
-X-Received: by 2002:a5d:588c:0:b0:439:bfaa:ed9d with SMTP id
- ffacd0b85a97d-439bfaaf06dmr1154446f8f.58.1772488993199; 
- Mon, 02 Mar 2026 14:03:13 -0800 (PST)
+ AJvYcCViS09Yt9amE6Y5zVHeUTp8Z1XngpFCthtMHrQ/tkbaaZuku1YK7FTc0Ji6cOu2KBxqewbuDZDpXw==@nongnu.org
+X-Gm-Message-State: AOJu0YxoFNuFHDGJH2WJYyQ3RxxcUM9dSvM2n7kEU16X+S6qo6QLFFRg
+ R9sUlAURePHMmMwyTl7IiDgD1W36cWoWHy8aRtqBaDEczdxHdseAocSG
+X-Gm-Gg: ATEYQzx9Ve1a9pBWbudlIdBkJZNbQ6iKZPCUVCj1FXCwTXySx2BFC7jDBPaMdVRs4nD
+ PrgR73q3XJ4bsHepYiqoNGxWK74CME6bHoF9KXtyJFC/BJesvKuy0yQ6K6wPCX3YSNS9SG96Op3
+ ScaJH9phvdBmWrbfFsG5WYMDNBbKTY2g4WynCa+1blnxYZR34YnKxtM/bEe8ICN20A5pn30cGs+
+ wrFfy5zpZzrhPm6cQsV3vpc9Ih2EcLdo4Ng/GF/TM66sptrFHwgjPAvMSk8heelXkvv9TTHH3ep
+ RMlLrtpg+MZqMyTLXcvYYPMqmfnOfwl/JNKR3X0dsGkhRKMAjbG/O45cWHh6g+MtJnJU0PGpYI3
+ bNpNpNrP6RVltSdK/ypGe56MrNdeLPlxaBeEGdl/2w8xP6pDMoJz8akbxe0a4vCgTEvO0VRnAGM
+ wNMo/WXSxZC8+TE35a9TeF8NL4cWxyhZi7EmLarKh9tJywX4Tp+H23K/CVRNLkazLd6lOJX2qwt
+ cZCaGUZaHvLXKf2u4+49k92iQQaLxL9qHM03ljGrhSXc3M=
+X-Received: by 2002:adf:fa52:0:b0:439:ab3d:1c27 with SMTP id
+ ffacd0b85a97d-439ab3d1e51mr12575085f8f.2.1772488985526; 
+ Mon, 02 Mar 2026 14:03:05 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-2a02-3100-2e0b-4800-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:2e0b:4800:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4399c765c38sm29308102f8f.31.2026.03.02.14.03.12
+ ffacd0b85a97d-4399c765c38sm29308102f8f.31.2026.03.02.14.03.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Mar 2026 14:03:12 -0800 (PST)
+ Mon, 02 Mar 2026 14:03:05 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -81,16 +81,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Troy Lee <leetroy@gmail.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 08/12] hw/char/serial: Avoid implicit conversion when tracing
-Date: Mon,  2 Mar 2026 23:02:50 +0100
-Message-ID: <20260302220254.1166849-9-shentey@gmail.com>
+Subject: [PATCH 02/12] hw/char/serial: Remove explicit cast from void pointer
+Date: Mon,  2 Mar 2026 23:02:44 +0100
+Message-ID: <20260302220254.1166849-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260302220254.1166849-1-shentey@gmail.com>
 References: <20260302220254.1166849-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -113,31 +113,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 64 bit targets, the MemoryRegion API passes an address and a value as
-uint64_t, so use that for tracing. Keep the uint8_t for reading since
-this is what the device model produces. On targets with less than 64
-bits, uint64_t is wide enough to avoid narrowing.
+A void pointer asks for being casted, so C allows for omitting the
+explicit cast. Take advantage of that.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/char/trace-events | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/char/serial.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 9e74be2c14..a3fcc77287 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -5,8 +5,8 @@ parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s]
- parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index adbd1d1d4a..0f2e79dfba 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -715,7 +715,7 @@ static const VMStateDescription vmstate_serial_thr_ipending = {
  
- # serial.c
--serial_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
--serial_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
-+serial_read(uint64_t addr, uint8_t value) "[0x%02" PRIx64 "] -> 0x%02" PRIx8
-+serial_write(uint64_t addr, uint64_t value) "[0x%02" PRIx64 "] <- 0x%02" PRIx64
- serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
+ static bool serial_tsr_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return s->tsr_retry != 0;
+ }
  
- # virtio-serial-bus.c
+@@ -734,7 +734,7 @@ static const VMStateDescription vmstate_serial_tsr = {
+ 
+ static bool serial_recv_fifo_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return !fifo8_is_empty(&s->recv_fifo);
+ 
+ }
+@@ -752,7 +752,7 @@ static const VMStateDescription vmstate_serial_recv_fifo = {
+ 
+ static bool serial_xmit_fifo_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return !fifo8_is_empty(&s->xmit_fifo);
+ }
+ 
+@@ -769,7 +769,7 @@ static const VMStateDescription vmstate_serial_xmit_fifo = {
+ 
+ static bool serial_fifo_timeout_timer_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return timer_pending(s->fifo_timeout_timer);
+ }
+ 
+@@ -786,7 +786,7 @@ static const VMStateDescription vmstate_serial_fifo_timeout_timer = {
+ 
+ static bool serial_timeout_ipending_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return s->timeout_ipending != 0;
+ }
+ 
+@@ -803,7 +803,7 @@ static const VMStateDescription vmstate_serial_timeout_ipending = {
+ 
+ static bool serial_poll_needed(void *opaque)
+ {
+-    SerialState *s = (SerialState *)opaque;
++    SerialState *s = opaque;
+     return s->poll_msl >= 0;
+ }
+ 
 -- 
 2.53.0
 

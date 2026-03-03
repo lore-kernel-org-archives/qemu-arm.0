@@ -4,99 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 306B3EC145F
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 14:47:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA82DEB363E
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 15:07:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxR1i-0001Ki-Ck; Tue, 03 Mar 2026 09:47:11 -0500
+	id 1vxRKC-0006JJ-UE; Tue, 03 Mar 2026 10:06:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxR1E-0001DG-Kb
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:46:44 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vxRKA-0006Gx-2K
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:06:14 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxR1B-0004OK-6D
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:46:40 -0500
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vxRK7-0001zk-0T
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:06:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772549196;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1772550369;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Y+c8AoCeFzluR9KrpvTjGq6/pF+pIQS41oeINMDAlzk=;
- b=VTJDflGfnEnNpXDSEf3EfMINoccFshrwgUuRtNpp+86R+IhPS/HGSqqGG+pvu5/ijZlUAS
- zv6GeOiHeVcN3rFV1v0aPxT0EZ2iRCVK6xcltmvTa/skjCXYMsQSCttJbQvKIDUTwXlUyO
- 5W53UOMT/jVxMCVoioo57fKrUweRKw4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+/1Ia0JDxT+wMwXWYRKbNyOnEImODRJtabXEfJLopJw=;
+ b=INrskINz9MN9lQYBAGWsont48M0VwHX3WGuMHFF3u83+/rRwfLK3ZH7XdRFF09/+W2GNWm
+ 4teT72qwU5s6icM05rXDAlrCenS1+pGOkyTKySnap3PmMZA1BRCuFbzCrkr4OkG2OORt8+
+ L2fKVRjBeXe8jereJySdLn0kOcDhpkQ=
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-ZZOwcKKcP22QsQIjtQzPkg-1; Tue, 03 Mar 2026 09:46:34 -0500
-X-MC-Unique: ZZOwcKKcP22QsQIjtQzPkg-1
-X-Mimecast-MFC-AGG-ID: ZZOwcKKcP22QsQIjtQzPkg_1772549194
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-439af95a718so2450002f8f.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 06:46:34 -0800 (PST)
+ us-mta-145-kfXNNujcMmSzkL5g48kpmg-1; Tue, 03 Mar 2026 10:06:06 -0500
+X-MC-Unique: kfXNNujcMmSzkL5g48kpmg-1
+X-Mimecast-MFC-AGG-ID: kfXNNujcMmSzkL5g48kpmg_1772550365
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-8cb390a0c4eso3741285085a.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 07:06:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772549194; x=1773153994;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Y+c8AoCeFzluR9KrpvTjGq6/pF+pIQS41oeINMDAlzk=;
- b=Y++YacH60TLlNfXUcn4ieuHjZCZha0IHzzZRhLgaqhkg3JTjRuA45ZV5pHpztCRCq7
- ztQnV5Q6NhuuH6JTWPtxK9LkAR4CG4GDkh5f7vbk3DS4Mpc5SBKCzy42apBDsB1jpuXw
- Q8mDSrzWCLBQ7zoiZVymvhb4McdYoE5L+dlSTBxInw+MEO8KXOC9TDtDvw8eoM/HsyNl
- VQtAA+svGqRszxHylWiEpaulLknRUTI9Ks46R4WRCvpgEYzPpKwf1iP2eMz/043svAkr
- jYSZL6h1EKdzDpR9XBNb/G7g3yinXHGTz5fUTY442EqqyIV0pgxRcZ5QdrVoeb4XPP2a
- fJRg==
+ d=1e100.net; s=20230601; t=1772550365; x=1773155165;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+/1Ia0JDxT+wMwXWYRKbNyOnEImODRJtabXEfJLopJw=;
+ b=H8rSlSBWl4mkcqiPLOlcekgFOsXEgj5GxV5cEj2oEbJx2N+MdeZLK5R9dyt+8cIREv
+ dkQ1U6CLQMIE/Hqgww/W+OqADF2GWCq1LaeCJWMQO+6wi3srHtVJLueO3+020VDQVvy8
+ LXnjea307+DgcC8ZYFrgWmZQYnQZee2qoPBuPcyasQkuZwdyED4K+0Etjxwb1hKReO2D
+ kvzghaqxPcJrcS9Xr9tl+ZtSUkwPUrfvv+dUp1hiNUMgp3G0kyjgPplUdlxq1TAX00+v
+ YmZIMs719uUosELMtPgp/H9i62+pYoRwiS9LEzUqK2TK9Bipvr28s+8vCwvzl2Ewr9Z5
+ m3sQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXFU3xFlUSBlxr8dn2X77TPTMd99a65LocUdlADGRTv52JjOHn2tRp23RR9cIlJh3LBRene6ArYw==@nongnu.org
-X-Gm-Message-State: AOJu0YyoyU793oNaKS7oh24dPwIxKaLylpls4E43IxdWkuSbAA4X36QP
- zm3Fa2JVeZO8xisdxryOaNM7GfStbttxNWuUc+a+4jRX1MYk7HQeaGSJZVp9+tckOLMTR2qB+qk
- 0RqmPnRywn1bmwtIRzLKX/oFQwsiX/LWBZTOHp5M3YQluJNe/ofrwsA==
-X-Gm-Gg: ATEYQzz9LPTurS2msmVdLNjfA6GT7ZB8ooiWEBjWPvLosMdKzf4ZomCFQyAvcj9iBmv
- ZpoImqv6Cgl9KsRyz7KCQ04gSfGw+k4dl0iBxl+DBp8hNZn/iumIiKaBY+1Ms+pcLgJU3RfoHh0
- +kqqq+eOZzyc4xeY4LdZ6boANBA0KcHpI7el6rCO0jWUn+5hK61Ssey0wdTZ5Wtf6AM08iufF2i
- CkDNKBMd5qcr2b6/rtiwdKvk5dJkL7aTX1l6iersx4BCDI8i2sLQIiJjNq3svcQvhoNierZw3M7
- gCvuKetDPGw63JQWnVh8UVsqqqnyonuSb4ICEQPgiZfMVl8QbVMNGh6UmE5u5X0bMfzbfoMgH8z
- yYK4Y/DeIC2de8BhGHn49cV0j/97/V28sHLcSRTRKRBjy+MmX8fLx1uOE7dcUH117kxEUZQ==
-X-Received: by 2002:adf:f204:0:b0:439:b6f9:b438 with SMTP id
- ffacd0b85a97d-439b6f9b878mr10520477f8f.33.1772549193688; 
- Tue, 03 Mar 2026 06:46:33 -0800 (PST)
-X-Received: by 2002:adf:f204:0:b0:439:b6f9:b438 with SMTP id
- ffacd0b85a97d-439b6f9b878mr10520426f8f.33.1772549193194; 
- Tue, 03 Mar 2026 06:46:33 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439c2f8c0e7sm2900275f8f.29.2026.03.03.06.46.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2026 06:46:32 -0800 (PST)
-Message-ID: <34e0763f-b79e-4149-a4bb-066a158c5371@redhat.com>
-Date: Tue, 3 Mar 2026 15:46:31 +0100
+ AJvYcCUDCPqF6e1EDGzzFHewjfHciYeSgRu7PtjhjnqXZdWef8QKsLvuxxl2GZ+Jg1ygLocsDoAngqMs9w==@nongnu.org
+X-Gm-Message-State: AOJu0Yxu6LQisH2hGaPQNema0bR7MVLNRn0KWWIH8aY5bsJ+BvDHbuzo
+ 3ibagNep3aEz/2DljYenfwGKC+l900qzTYYqA/cVw5eX4BIkrLX7bcfX8bqDlU+n6KhGeoUPx8V
+ bkqgp1B9KvIXo01kTZAv7OgyB+bc6PXMdBZjnH5k6VHhMZvs1vqqf5w==
+X-Gm-Gg: ATEYQzyN6xq0mcvhaMrY6bZjc6wyk1mc5fiTnyAGl9ByoL9VfoQrvTs9yOUzI7IZCwD
+ W9E8Yp++VIXCW/C7rEyVJwyqaiyMmSzbV0cSr/dV2WQhrGzKsBmWdDSqPJ2ravTtJiqN4ufGq9c
+ 1CkOu903CGksDcZOmTA76oNMIR1InaO56of34TH1IyymjyTNeepOvKqs3UgMiFdOodQdtwRwe7n
+ tt1uStzc0f0KpA8+s6sCikz9yaXCi8cJ8H/tzoaft0dasvcNu4lj+JBr+ecP15ztHpDlAqDDVaq
+ g4WKU90HG9nUaHl1f9ZxmDOwa/tFFrlZ9VjHcJm0xgWbZTA5uhyrupn/x1gzVLn912dfB0Cgz85
+ 5QhOccD7bzGn7mQ==
+X-Received: by 2002:a05:620a:4015:b0:8cb:4d9b:6b48 with SMTP id
+ af79cd13be357-8cbc8d6f18bmr1928604285a.6.1772550365524; 
+ Tue, 03 Mar 2026 07:06:05 -0800 (PST)
+X-Received: by 2002:a05:620a:4015:b0:8cb:4d9b:6b48 with SMTP id
+ af79cd13be357-8cbc8d6f18bmr1928598185a.6.1772550365036; 
+ Tue, 03 Mar 2026 07:06:05 -0800 (PST)
+Received: from x1.local ([174.91.117.149]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-8cbbf6f93b5sm1399519585a.31.2026.03.03.07.06.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2026 07:06:03 -0800 (PST)
+Date: Tue, 3 Mar 2026 10:05:52 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Cc: Fabiano Rosas <farosas@suse.de>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:sPAPR (pseries)" <qemu-ppc@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH v2 03/16] migration: make .post_save() a void function
+Message-ID: <aab40Ou7EjkdYYv3@x1.local>
+References: <20260220210214.800050-1-vsementsov@yandex-team.ru>
+ <20260220210214.800050-4-vsementsov@yandex-team.ru>
+ <87ecm5u7wc.fsf@suse.de>
+ <5be3da95-a636-4b50-8d68-17f363fc005b@yandex-team.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] vmstate: Introduce VMSTATE_VARRAY_INT32_ALLOC
-To: Peter Xu <peterx@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, cohuck@redhat.com, sebott@redhat.com,
- philmd@linaro.org, alex.bennee@linaro.org
-References: <20260226100232.500781-1-eric.auger@redhat.com>
- <20260226100232.500781-2-eric.auger@redhat.com> <aabnCoT3Wp6L_ZuJ@x1.local>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <aabnCoT3Wp6L_ZuJ@x1.local>
+In-Reply-To: <5be3da95-a636-4b50-8d68-17f363fc005b@yandex-team.ru>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: j3nDyi5kCnTQ1cavAjbRHJv5EV1WFLfnLhFA2ofXFt4_1772549194
+X-Mimecast-MFC-PROC-ID: GRsLb-mgFjYtcSAlQJ2GYwcIEL4TfX-vac7CmjsmIgc_1772550365
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -5
 X-Spam_score: -0.6
 X-Spam_bar: /
@@ -117,31 +115,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Sat, Feb 28, 2026 at 02:56:30AM +0300, Vladimir Sementsov-Ogievskiy wrote:
+> On 28.02.26 01:41, Fabiano Rosas wrote:
+> > > diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+> > > index 3695afd483..15578b3e28 100644
+> > > --- a/include/migration/vmstate.h
+> > > +++ b/include/migration/vmstate.h
+> > > @@ -223,7 +223,15 @@ struct VMStateDescription {
+> > >       bool (*post_load_errp)(void *opaque, int version_id, Error **errp);
+> > >       int (*pre_save)(void *opaque);
+> > >       bool (*pre_save_errp)(void *opaque, Error **errp);
+> > > -    int (*post_save)(void *opaque);
+> > > +
+> > > +    /*
+> > > +     * post_save() rarely used to free some temporary resources.
+> > > +     * It's is called if .pre_save[_errp]() call was successful
+> > > +     * (or .pre_save[_errp] handler absent), regardless success
+> > > +     * or failure during fields and subsections save. If
+> > > +     * .pre_save[_errp]() fails, .post_save() is not called.
+> > > +     */
+> > I would not mention usage directly and maybe also simplify the language
+> > a bit. If there's doubt on the exact flow, people can read the code:
+> > 
+> >    /*
+> >     * Unless .pre_save() fails, post_save() is called after saving
+> >     * fields and subsections. It should not fail because at this point
+> >     * the state has potentially already been transferred.
+> >     */
+> 
+> 
+> Agree, sounds good.
 
+With the update, feel free to take:
 
-On 3/3/26 2:50 PM, Peter Xu wrote:
-> On Thu, Feb 26, 2026 at 11:01:29AM +0100, Eric Auger wrote:
->> Already existing VMSTATE_VARRAY_INT32 requires an array to be
->> pre-allocated, however there are cases when the size is not known in
->> advance and there is no real need to enforce it.
->>
->> Introduce VMSTATE_VARRAY_INT32_ALLOC as we currently have for UINT32
->> and UINT16.
->>
->> The first user of this variant will be the target/arm/machine.c cpreg
->> indexes/values arrays.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-Thanks!
-
-Eric
->
+-- 
+Peter Xu
 
 

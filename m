@@ -4,108 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F47EDEBE6
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 19:05:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADE8EDEBEC
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 19:43:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxV3W-0005lh-Qm; Tue, 03 Mar 2026 14:05:18 -0500
+	id 1vxVde-00061m-Qk; Tue, 03 Mar 2026 14:42:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vxV3U-0005l3-0a
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 14:05:17 -0500
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxVdb-00061C-Ah
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 14:42:35 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vxV3R-0004Rv-Ux
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 14:05:15 -0500
-Received: by mail-dy1-x1332.google.com with SMTP id
- 5a478bee46e88-2ba9c484e5eso5633555eec.1
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 11:05:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772564712; cv=none;
- d=google.com; s=arc-20240605;
- b=KN+njuJUrXOquJohAkjqzsO5px7973w8QyU9KadtnnhjJ0Tq36EqSV6tKxxQ1iPAhf
- 4lIOQOLYqnJm4KvYgcgZOX2l0OLomC/J2HJrnPDyMN2IF8dGEOONvsBSxMo5WVHGPgqH
- ox5BAiCQM9mNXC6J0r/tJv4027JF8X/ikgka572Pl8AYkfXHhphXxRVlYEiRRthAXQU2
- 7Sn0/8mrnxYpLh0bvW1fDP8cIR4SoyR0lnmnN/l/iiWLSLO78wALVZDGqcs8jiYwjyhf
- in867EoCQVdBv2BmhnahgQDIJoEUh3mrLY8cAAotKmAjq3MgrxvB1C3AMvdaLNziWhlc
- dSkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=/JU+Yglg3bp3vp0f6IoRqu/4RbRUFFqO6dRbMWFLiNY=;
- fh=3vZ97XN0r7Jx6Her1clVp7w4m6HlkL2xGy+Ym4EQppw=;
- b=ZmoiZzxDH7e+nIV4grfI3RLQ/SGLRp2B67QQL2FUk5x9DFtwaxVvOuBkdVEklVNMK2
- QDFZ+bk7TpBJ6tHO2xc+2h0OYPAM6iCTgWHLSwiZSEGaXSBa83Iph8cmD8DKRYH+UrGp
- gFYWWIGnXeNH6GXND6203YbKIG3CJs1W7xvBNB2SXgprxRwgU8vfP9v6GHsOCuGNrBLq
- L8KcdR4zR4cp1yzFNKN5OQpJm57ca/KYZbPWtsAw3QWCqGDx+UDP24B8+ozozabkJgyj
- FvLw+WBvzWeVwm1+S26S9ZUtWz2FhTx9GCcbcm8xrOoqea/c4XyH6k0R/mpmv0rvpp2p
- WgDg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxVdY-0007le-TV
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 14:42:34 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-439b790af67so1535748f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 11:42:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772564712; x=1773169512; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/JU+Yglg3bp3vp0f6IoRqu/4RbRUFFqO6dRbMWFLiNY=;
- b=YjKDvC6fSHWzmrthPXRWZmv4AUZETfqzSfNo64bMhCINidmxQIqpnllNpvH5hQx+Nz
- h40YipB+3P2nJZzfJSMLUyPH88sHQhZfuo7sBCOQBBN+gqEaPsrhWyR0FlmmHsB3Mm99
- OzzcFcxtb5OhjVqRZBYlFx1qYmwqjJSuWDZ8FPMN6/lMDY5Sh6ND1YY67jAjR977snmf
- YPwJqP1zGsxqrI60Z0VECbMZoE9SXaULSAxgfSk9rt+5r32ySubgTqx/eWSbYHLXUN8j
- eIpNmDNWt9XszrpUOsqQkkVMUdu+Z/v1wfXum8ovcLLN5kb8tUVSEc1xOqyMGLNT+pkG
- TZKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772564712; x=1773169512;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1772566951; x=1773171751; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/JU+Yglg3bp3vp0f6IoRqu/4RbRUFFqO6dRbMWFLiNY=;
- b=lWU0TrmxcdMeSn8Bq6BeUPf0cpirFdTNHk8UBYglaXPWljy4eRvK7ryMnMdeuyzvi/
- AQczqKwHEUJkL173lW32d5Tz6/I6C3Cjsr1NnVwcwZXik9TN7jK+WYN4jq+h8AwJ1d16
- UMtGWnSpFxs15emZX2/O2PbkXY4qI9HPIAZs/A1Z70q01el/2cDBtbhNkFDNfYF2RGkW
- Gv2l/GISsRgvKPoLTKnQ885IGPD71gN2FYBU6NlUE/jBh0DZRQ0M77YJlgox8Z2cyFvs
- PXbXnZFh3rgu2ey5BJSpVLgYJoqjraC9geHLBOZw8qFpzYom6OISFyScLdptMqDxy32I
- eZpA==
+ bh=+3VF3qSAGaHoy/q+VfuevnFQT/3hpVf3O3il8BToUiM=;
+ b=XlHWikC1WUQ0noNCyk6jyjM3Pmie8TsJOo+NnG4uu2O72h9FD+B1Q1GPSb067NsPH6
+ Ut2DUec/gnZw6wx6FsbkUodqRFlWocsQLBl00xpoOUL+6FKJH9m7i7QYlXhLSS3MFV2z
+ 1T795DFZDTdGcIl2LotuZqFrOP2EiQkEYawNP/cXfENjUR3huq08xnxE+fbpIXyq6rpe
+ nSYGfj/JuAuSjdNUSV8hbKmqwPet7IDhmDhHjfLYcILNO+YydEJglG52jkQCuIvpgPOM
+ Fa5qYYyqgSAJQVOqvHYDJLPRKgrZFzrbCFL1R9547p1seBqDr0PodCYUG0hXYOiJRR+8
+ r+/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772566951; x=1773171751;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=+3VF3qSAGaHoy/q+VfuevnFQT/3hpVf3O3il8BToUiM=;
+ b=JjHHDfcTRktCrrIN0xSXfMRVnwk8OQMQesE2S5WTZlEdFJ4a3T3GnBy2/SO/frw1SV
+ ij18dbFrCsDK1W3ELBxTCxciiezQOCNOmEyFZMqkJlnYKZoU8ry+DjNTY08C1ROHC3R8
+ 1lH8wqXfrVyelHhxaVTa292+UcFSZbhgJ1EOBtwOft5NwR35tsKtnxjLfOxXei200mKo
+ ptkAkpFMcwWGvj78E4eujlFuhoaEllmm3EGeTMGDuXj1CmVgty+Y4FhZZiIHHNt/6ePh
+ zZ4DiIayqO2DMRZK+RTM53eY/gAUFY7yvIrzTr7DxtfB+VyNPTtiYcUh/WnpKmWX52ql
+ nzyA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWbUNBlmS4biVQXT9ZZG0GA37lgaa5BCi6u2dMOkyVq4Tde3i5Iplafdu0WbMDvjlHASIZYdVIkyQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzz4As/hJ3auGqdoT3W7Ou8Wwn/YEXa4kSapD9ptE3uW8E1/k6g
- ec27d/ZdOXyYz3GY3GEFjlfVMeQvFjSIDV+E2ZwXdvmYP/BlTNJxLCv7DGJw2tEzuXMIgXAmIdG
- OodHRG6085cfFmw59NgauXDnl2HHb4VQ=
-X-Gm-Gg: ATEYQzywA3HxHDJ9A9qXw10Ka+glfhNKm6YrJwwBSK0+Nqg/Zd/aesOiEMr6mU2ImVj
- GYqh5YAA1W+UW0UelzdAhvOdTC32GWPM181SlOUpSiYqZMeynIX/2ZmbIwJxWh9CP2RZ09jGuvh
- 2OJWpA9a8HdYbByqUKw8NCA4GgLFtbaDebGAEMl1GLCYiUd5u4hicy+sX+sb+ICAeq9oqMqhYm/
- ssLKKVgEsbJqPGhHeZ3Kelk0TARJl+3DtIzlxNtRzZOsaAwEztRSyPiwigDGj+qBfAZsqVxtXNc
- yz22T7I=
-X-Received: by 2002:a05:693c:290d:b0:2b8:711:ae6e with SMTP id
- 5a478bee46e88-2bde1b504famr6969935eec.1.1772564712037; Tue, 03 Mar 2026
- 11:05:12 -0800 (PST)
-MIME-Version: 1.0
-References: <20260212104432.4168886-1-kchiu@axiado.com>
- <CAFEAcA_u5B2RdVEaGycCQ6gCx1pQuT8rvGVGZpoKLTK+2s72+w@mail.gmail.com>
- <69691e3b-1605-4a5a-8ad5-0eec56ce3eed@axiado.com>
- <CAJy5ezpcvp0Qy-P9gE46oDtsxZxNO=xMV1k-GC3WF4yY3gARGw@mail.gmail.com>
- <CAFEAcA8mC4TkicLy9bcS8NYMDNcSUjsataGGmkMpViw4wBvmCA@mail.gmail.com>
- <CAJy5ezqTAMr=A3uAfmuWLepK66AdLRu4Q8AmFMh4+4q2HtDrkA@mail.gmail.com>
-In-Reply-To: <CAJy5ezqTAMr=A3uAfmuWLepK66AdLRu4Q8AmFMh4+4q2HtDrkA@mail.gmail.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 3 Mar 2026 13:04:59 -0600
-X-Gm-Features: AaiRm50rASURkUYUGmVXx2oCdg77jdACm8Kf9EFJ8kIirhbydSVlcyBo4SwOCJs
-Message-ID: <CAJy5ezogVjNxHLFVBp9wd332kwyR8peBHMEjoALg6pYfVk1q8g@mail.gmail.com>
-Subject: Re: [PATCH v1] hw/char/cadence_uart: Add BXRS register
+ AJvYcCV3N5/alBEEicKByEUL217GATNXn6y3tKy6vfYdrQjYBShTLTbRZqOjdBnOtaet9+eyet/RrEphRQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyTRnFRxexgfoVmmFJRutMcVSFAqrVS+tUgVuYvKyQmSZlvtVVr
+ mnrsTvAk/j7Hny6mpdh5lANSksLhCqdbJ2GZuk3DBNINlinwaPjd/KcX70M8kQ==
+X-Gm-Gg: ATEYQzz3tIjM8dgnY6JLrN6reK2gFl34Zd1KshUI3+ATwX2qkg+5jvwMCHBbVMd4Vgy
+ qQZjVwU68DPug8K9ZUVTMkjtIqvgOQsaMjVy+B7xIryyW+5oB6wzAKaEhXybFgmqtjDnpsNCnPk
+ EJyMxXlFgIEiSOdB7AfcVh7RfkBJ/DrkpAW7SitSCpudVMniEdrDv4ncSmaNUZejwzE8U0Vwnqw
+ GR/yK+yZo8X+Refste8pJ71K6zILm2qxqUhqwN0FAgioS0WJzmdq6uU42Cf0eNBfmE6PBRQBwCA
+ JTob2Gi5Bp7VjoXdUdA1rTWApppYiwpo5egCM5O3SfbN+xKAT7/I3iBC3y0U33ffjRHV3RPtPqH
+ fdTGxH+UhT93ANahj+E0E2OGG8h1ZGlDo4SYzazEhHKCGzy3poSrnMQtnuSAIivkkAxGUbOIlAA
+ kyjEO80hMUrrAvB3SFCa7fBGaz4DAZKe3rNOrKNfRNTibHt8jaVypdZri4YKi3n+A0fpzZ9mFqZ
+ 6J9e0zx5k4YiTe1x4M0ioJIsUufmR7xDz0sMUyoD5GqR20=
+X-Received: by 2002:a05:6000:2913:b0:439:b9e8:635f with SMTP id
+ ffacd0b85a97d-439c10dae0emr6703753f8f.21.1772566951365; 
+ Tue, 03 Mar 2026 11:42:31 -0800 (PST)
+Received: from ehlo.thunderbird.net
+ (dynamic-2a02-3100-1c79-b600-f009-a6c9-39e7-d8fe.310.pool.telefonica.de.
+ [2a02:3100:1c79:b600:f009:a6c9:39e7:d8fe])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439b503424fsm20971231f8f.22.2026.03.03.11.42.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Mar 2026 11:42:30 -0800 (PST)
+Date: Tue, 03 Mar 2026 18:35:27 +0000
+From: Bernhard Beschow <shentey@gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Kuan-Jui Chiu <kchiu@axiado.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- pbonzini@redhat.com, marcandre.lureau@redhat.com, alistair@alistair23.me
-Content-Type: multipart/alternative; boundary="00000000000000a1d7064c23624f"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1332;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-dy1-x1332.google.com
+CC: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Helge Deller <deller@gmx.de>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Troy Lee <leetroy@gmail.com>
+Subject: Re: [PATCH 11/12] hw/char: Have SerialState inherit from SysBusDevice
+In-Reply-To: <CAFEAcA-dmbSDNC+AL=OO9w=bM-79gVaysroQty=u-SxzQziUrg@mail.gmail.com>
+References: <20260302220254.1166849-1-shentey@gmail.com>
+ <20260302220254.1166849-12-shentey@gmail.com>
+ <CAFEAcA-dmbSDNC+AL=OO9w=bM-79gVaysroQty=u-SxzQziUrg@mail.gmail.com>
+Message-ID: <591BD7DD-885A-4B27-BAED-FACC5EE5A5FB@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,165 +115,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---00000000000000a1d7064c23624f
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Tue, Mar 3, 2026 at 12:59=E2=80=AFPM Edgar E. Iglesias <edgar.iglesias@g=
-mail.com>
-wrote:
 
->
->
-> On Tue, Mar 3, 2026 at 12:44=E2=80=AFPM Peter Maydell <peter.maydell@lina=
-ro.org>
-> wrote:
->
->> On Tue, 3 Mar 2026 at 18:32, Edgar E. Iglesias <edgar.iglesias@gmail.com=
->
->> wrote:
->> >
->> >
->> >
->> > On Tue, Mar 3, 2026 at 2:33=E2=80=AFAM Kuan-Jui Chiu <kchiu@axiado.com=
-> wrote:
->> >>
->> >> Hi
->> >>
->> >> I was referring this commit of upstream kernel which xilinx added BXR=
-S
->> >> register in Cadence UART driver
->> >> serial: xuartps: Adds RXBS register support for zynqmp =C2=B7
->> >> torvalds/linux@3816b2f
->> >> <
->> https://github.com/torvalds/linux/commit/3816b2f886d0918d8a8ae593b2db203=
-ab905a889
->> >
->> >>
->> >> Peter Maydell =E6=96=BC 2026/2/16 =E4=B8=8B=E5=8D=88 06:53 =E5=AF=AB=
-=E9=81=93:
+Am 3=2E M=C3=A4rz 2026 11:41:52 UTC schrieb Peter Maydell <peter=2Emaydell=
+@linaro=2Eorg>:
+>On Mon, 2 Mar 2026 at 22:03, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
+:
 >>
->> >> > Where is this register documented? The cadence_uart.c file
->> >> > references the Zynq 7000 Soc TRM UG585; its URL for that
->> >> > is out of date, but looking at the copy on the AMD website,
->> >> > there is a table giving the register summary for the UART:
->> >> >
->> https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/UART-Controller-UAR=
-T
->> >> > and it lists only registers from offsets 0 to 0x44.
+>> SerialState currently inherits just from DeviceState and serial devices
+>> use SerialState as an "IP block"=2E Since DeviceState doesn't have an A=
+PI
+>> to provide MMIO regions or IRQs, all serial devices access attributes
+>> internal to SerialState directly=2E Fix this by having SerialState inhe=
+rit
+>> from SysBusDevice=2E
 >>
->> > There's documentation here for zynqmp:
->> >
->> https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/Rx_FIFO_by=
-te_status-UART-Register
->> >
->> > I haven't looked to carefully, it may be a register that didn't exist
->> in the version of the UART on zynq and was added in the version of the u=
-art
->> in the zynqmp.
+>> In addition, SerialState doesn't participate in the reset framework
+>> while SysBusDevice does=2E This allows for implementing reset
+>> functionality more idiomatically=2E
 >>
->> Thanks. On the subject of Xilinx specs, do you have an opinion on
->> https://gitlab.com/qemu-project/qemu/-/issues/3297 ?
->> Our Xilinx AXI ethernet device model lets software write to
->> the PHY registers for the PHY ID, and it's not clear to me
->> whether these registers are supposed to be read-only or not.
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>
+>
+>
+>> @@ -76,12 +76,13 @@ static void serial_isa_realizefn(DeviceState *dev, =
+Error **errp)
+>>      }
+>>      index++;
 >>
+>> -    s->irq =3D isa_get_irq(isadev, isa->isairq);
+>> -    qdev_realize(DEVICE(s), NULL, errp);
+>> +    sysbus_realize(sbd, errp);
+>> +    sysbus_connect_irq(sbd, 0, isa_get_irq(isadev, isa->isairq));
+>>      qdev_set_legacy_instance_id(dev, isa->iobase, 3);
 >>
-> Yes, they should be read-only, there's probably more registers and fields
-> that have the wrong access restrictions as well. The PHY model is super
-> simple, created just to get guests to not get stuck on boot or fail to us=
-e
-> the PHY...
+>> -    memory_region_init_io(&s->io, OBJECT(isa), &serial_io_ops, s, "ser=
+ial", 8);
+>> -    isa_register_ioport(isadev, &s->io, isa->iobase);
+>> +    memory_region_init_io(sysbus_mmio_get_region(sbd, 0), OBJECT(isa),
+>> +                          &serial_io_ops, sbd, "serial", 8);
 >
-> IIRC, there's been several attempts on list to create a better MDIO/PHY
-> interface with shared PHY models but never got merged.
+>This looks very odd, because sysbus_mmio_get_region() is supposed
+>to be "the sysbus device provides an MR it has initialized, and this
+>is how you get hold of it"=2E But here we're taking an uninitialized
+>thing and initializing it by calling memory_region_init_io()=2E It works
+>because it's just returning a pointer into the internal memory, but
+>it's still making assumptions about the internals of the device just as
+>much as directly accessing s->io=2E
 >
-> Cheers,
-> Edgar
->
+>Maybe this is worthwhile for the benefit of getting reset
+>handling automatically into the reset tree=2E
 
-For example:
-https://patchew.org/QEMU/20170922171323.10348-1-f4bug@amsat.org/
+I think the logic can be folded into TYPE_SERIAL=2E I'll send a v2=2E
 
---00000000000000a1d7064c23624f
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Best regards,
+Bernhard
 
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 3, =
-2026 at 12:59=E2=80=AFPM Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.igle=
-sias@gmail.com">edgar.iglesias@gmail.com</a>&gt; wrote:<br></div><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
-olid rgb(204,204,204);padding-left:1ex"><div dir=3D"ltr"><div dir=3D"ltr"><=
-br></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_att=
-r">On Tue, Mar 3, 2026 at 12:44=E2=80=AFPM Peter Maydell &lt;<a href=3D"mai=
-lto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org</a=
->&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px=
- 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On =
-Tue, 3 Mar 2026 at 18:32, Edgar E. Iglesias &lt;<a href=3D"mailto:edgar.igl=
-esias@gmail.com" target=3D"_blank">edgar.iglesias@gmail.com</a>&gt; wrote:<=
-br>
-&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; On Tue, Mar 3, 2026 at 2:33=E2=80=AFAM Kuan-Jui Chiu &lt;<a href=3D"ma=
-ilto:kchiu@axiado.com" target=3D"_blank">kchiu@axiado.com</a>&gt; wrote:<br=
 >
-&gt;&gt;<br>
-&gt;&gt; Hi<br>
-&gt;&gt;<br>
-&gt;&gt; I was referring this commit of upstream kernel which xilinx added =
-BXRS<br>
-&gt;&gt; register in Cadence UART driver<br>
-&gt;&gt; serial: xuartps: Adds RXBS register support for zynqmp =C2=B7<br>
-&gt;&gt; torvalds/linux@3816b2f<br>
-&gt;&gt; &lt;<a href=3D"https://github.com/torvalds/linux/commit/3816b2f886=
-d0918d8a8ae593b2db203ab905a889" rel=3D"noreferrer" target=3D"_blank">https:=
-//github.com/torvalds/linux/commit/3816b2f886d0918d8a8ae593b2db203ab905a889=
-</a>&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; Peter Maydell =E6=96=BC 2026/2/16 =E4=B8=8B=E5=8D=88 06:53 =E5=AF=
-=AB=E9=81=93:<br>
-<br>
-&gt;&gt; &gt; Where is this register documented? The cadence_uart.c file<br=
->
-&gt;&gt; &gt; references the Zynq 7000 Soc TRM UG585; its URL for that<br>
-&gt;&gt; &gt; is out of date, but looking at the copy on the AMD website,<b=
-r>
-&gt;&gt; &gt; there is a table giving the register summary for the UART:<br=
->
-&gt;&gt; &gt; <a href=3D"https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-T=
-RM/UART-Controller-UART" rel=3D"noreferrer" target=3D"_blank">https://docs.=
-amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/UART-Controller-UART</a><br>
-&gt;&gt; &gt; and it lists only registers from offsets 0 to 0x44.<br>
-<br>
-&gt; There&#39;s documentation here for zynqmp:<br>
-&gt; <a href=3D"https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registe=
-rs/Rx_FIFO_byte_status-UART-Register" rel=3D"noreferrer" target=3D"_blank">=
-https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/Rx_FIFO_byte_=
-status-UART-Register</a><br>
-&gt;<br>
-&gt; I haven&#39;t looked to carefully, it may be a register that didn&#39;=
-t exist in the version of the UART on zynq and was added in the version of =
-the uart in the zynqmp.<br>
-<br>
-Thanks. On the subject of Xilinx specs, do you have an opinion on<br>
-<a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/3297" rel=3D"noref=
-errer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/issues/3297=
-</a> ?<br>
-Our Xilinx AXI ethernet device model lets software write to<br>
-the PHY registers for the PHY ID, and it&#39;s not clear to me<br>
-whether these registers are supposed to be read-only or not.<br>
-<br></blockquote><div><br></div><div>Yes, they should be read-only, there&#=
-39;s probably more registers and fields that have the wrong access restrict=
-ions as well. The PHY model is super simple, created just to get guests to =
-not get stuck on boot or fail to use the PHY...</div><div><br></div><div>II=
-RC, there&#39;s been several attempts on list to create a better MDIO/PHY i=
-nterface with shared PHY models but never got merged.</div><div><br></div><=
-div>Cheers,</div><div>Edgar</div></div></div></blockquote><div><br></div><d=
-iv>For example:</div><div><a href=3D"https://patchew.org/QEMU/2017092217132=
-3.10348-1-f4bug@amsat.org/">https://patchew.org/QEMU/20170922171323.10348-1=
--f4bug@amsat.org/</a></div><div><br></div><div><br></div></div></div>
-
---00000000000000a1d7064c23624f--
+>thanks
+>-- PMM
 

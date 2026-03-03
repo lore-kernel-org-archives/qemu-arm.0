@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 476CEEC1459
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 14:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A6E3EC1459
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 14:40:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxQuk-0001Zo-R4; Tue, 03 Mar 2026 09:39:58 -0500
+	id 1vxQuv-0001k0-Un; Tue, 03 Mar 2026 09:40:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vxQub-0001U4-HP; Tue, 03 Mar 2026 09:39:51 -0500
-Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vxQut-0001fl-DB
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:40:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
- id 1vxQuY-00025s-2r; Tue, 03 Mar 2026 09:39:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1772548767; bh=d5M/afdSPgWRnZKbdT3KdaPEatJDvdBLhxLeJxpi1QQ=;
- h=From:To:Cc:Subject:Date;
- b=PraS6ofAtVLU0VgYJbMNj/O2h5zOo3W8iwNMCpS44H7KwxceMLr5SQQ/mHXw8UXgt
- MuxOOimddYTctE8/esUXzunhjlwQTC+kZ6iB5Fz9Fe+JanpEutn5ng73p5kfNSqJGk
- 6uUnOJs8mM4LllgjTJrBHNOmZOJbep2ezxX/FLCU=
-Received: from archlinux ([180.154.0.12])
- by newxmesmtplogicsvrszb43-0.qq.com (NewEsmtp) with SMTP
- id 7F901C7D; Tue, 03 Mar 2026 22:31:57 +0800
-X-QQ-mid: xmsmtpt1772548317tu5vbz0p4
-Message-ID: <tencent_D3A83F7C6433B6B2D6C4513970FD0446D708@qq.com>
-X-QQ-XMAILINFO: M1rD3f8svNzn35WTagDrqoIzBKa4F9gsvfAe3ooNqXFT46G4MdeUsbIetD0H4r
- 9YOaDEqExn0iSB2tpjc0BBZQSR66ce6WZFtxKGJ7i85C1zu0Dwq4VTNrUN+O302lvePwfa2v7Ra/
- IAbsrEFhmJ8PfIdAxGjFA3KbcYGqbrKJecw+MFZP2AbkBIZLsRiVkrH068F82DMTWPawZ3dZVtms
- dI5X/NNaqRUUaJ2Bj7dRitYNaNBCv+4KLrMjPwRVSiSWJsJ/x5nVE+lGPGlSgvQ8mPzZjMw0/ml2
- DTclLzICMUCrMFxQLb48qLi2c+/eB4hxXAG8XnmhDkIKKaBU6Ya4hQ6x9khqwki2BdgVSXNdj85X
- AjplFbZYVwIDr4Yn31f7Id2FlfONgEvU+B1HP58IfZDo11P9/9o1fFMxyVLq2RPYAJR40a+vY9WI
- x/AFINFuguL4F5Bu5/zZ23hc2vUBccErGcOBDwIUzr9EwE0pvEmJ/5254X8buGzvF5Cl1WV4kFOj
- h/bgiR93dwNNBPDtIKkVWLloWZRiT3rNWr9JkEEqFnvpFXVxARe3UwDnnuHu8tAhf3dQCSPVo02M
- fqNSSpdZ8nTd9eELR0MZgi7aIXhTkU/D15ky9jcFfNUqjbkRIT0eQvo2uvq/Kbs8FWjLP13Hnnjm
- 2ceOOpnLS2Bt2XRbSIAI2S3UbLMznFQhNuJwd8zjevMFXdINJuRcUwfyK7tAp7Huif0XgcLkFyzy
- IrVamE6y540zs0PEvElKa5ZjL3nmuO/hWvH2kEnJaZFJmNsXrP9/pcam6zqSG90FKz8Uopa6oG2b
- xnsgjkMnI5n1RoUWdz2Jcic6tzZ/YdR8eFjk4fI+O0+5CDx5FW0tJDm+A3vKy1gFTPkS8NtFDOiQ
- 4taJrXOmxc+pneR17V1iraxeY5TKW8XbOpHPAkliGI1Bw/H3eIfyrl0yEnaQ66GyYfYRIwSrJy3t
- XhGYta5584gB6szN4BMkdpNezA9hVrhaoa+O/Pz8TYj8IMSVh9atCjWOE6HSRV1aD4IdfIDpw4TT
- Fl11N4yRJgksdw9O+qLu4bbdSAdmg=
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-From: Yucai Liu <1486344514@qq.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, jcd@tribudubois.net,
- pbonzini@redhat.com
-Subject: [PATCH v2 0/3] i.MX6UL LCDIF: add model, build symbol, and SoC wiring
-Date: Tue,  3 Mar 2026 22:31:53 +0800
-X-OQ-MSGID: <20260303143157.80437-1-1486344514@qq.com>
-X-Mailer: git-send-email 2.53.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vxQuq-0002Qc-SZ
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:40:06 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772548804;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TNWsxK6/NvYySeLU0trFMBVUsLLcD9gWIFbk5GtfTio=;
+ b=M8JFHdbs7uoEBrkO+r4viWSY5NwZoJbTNkJD5Nm4JBVIPHvCFQQNmWS4gLCm2O+P8P29my
+ WihLle5m6dSQkCc4v+VyeKbkYWm2Cec/p/RN/Y2vHKKZ1ZUPRB4TEnWQTnrBzHiuLlXszU
+ mcExflCXmKbxT7JPP/lYV6DFAmZNxPA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-372-YwX0zgVMNr2ntvB1o-rAqw-1; Tue,
+ 03 Mar 2026 09:40:01 -0500
+X-MC-Unique: YwX0zgVMNr2ntvB1o-rAqw-1
+X-Mimecast-MFC-AGG-ID: YwX0zgVMNr2ntvB1o-rAqw_1772548800
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E90E71800259; Tue,  3 Mar 2026 14:39:59 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.45.224.89])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id BC2AA30001BF; Tue,  3 Mar 2026 14:39:56 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
+ sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
+ alex.bennee@linaro.org
+Subject: [PATCH v2 7/7] target/arm/machine: Fix detection of unknown incoming
+ cpregs
+Date: Tue,  3 Mar 2026 15:36:39 +0100
+Message-ID: <20260303143928.1747116-8-eric.auger@redhat.com>
+In-Reply-To: <20260303143928.1747116-1-eric.auger@redhat.com>
+References: <20260303143928.1747116-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: FXoZglzytDtuvq4acrFZR8aFgHLhjhm60KvX6l-wXy4_1772548800
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.210; envelope-from=1486344514@qq.com;
- helo=out162-62-57-210.mail.qq.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,37 +89,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Split the original LCDIF change into three patches and address review feedback:
+Currently the check of cpreg index matches fail to detect
+a situation where the length of both arrays is same but
+- destination has an extra register not found in the incoming stream (idx1)
+- source has an extra register not found in the destination (idx2)
+  where idx1 < = idx2
+Normally this should fail but it does not.
 
-- place the LCDIF device under hw/display and include/hw/display
-- use registerfields.h FIELD() definitions for register bitfields
-- simplify drawing to 32bpp host surfaces
-- add vmstate migration support
-- use SoC child device init/realize flow (object_initialize_child + sysbus_realize)
-- add a dedicated CONFIG_IMX6UL_LCDIF symbol, selected by FSL_IMX6UL
+Fix the logic to scan all indexes.
 
-Thanks for the review.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
+---
+ target/arm/machine.c | 61 +++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 49 insertions(+), 12 deletions(-)
 
-Yucai Liu (3):
-  hw/display: Add i.MX6UL LCDIF device model
-  hw/display: Build i.MX6UL LCDIF via its own config symbol
-  hw/arm/fsl-imx6ul: Wire in the LCDIF device model
-
- MAINTAINERS                       |   2 +
- hw/arm/Kconfig                    |   1 +
- hw/arm/fsl-imx6ul.c               |  12 +-
- hw/arm/meson.build                |   4 +-
- hw/display/Kconfig                |   4 +
- hw/display/imx6ul_lcdif.c         | 435 ++++++++++++++++++++++++++++++
- hw/display/meson.build            |   1 +
- include/hw/arm/fsl-imx6ul.h       |   4 +-
- include/hw/display/imx6ul_lcdif.h |  36 +++
- 9 files changed, 495 insertions(+), 4 deletions(-)
- create mode 100644 hw/display/imx6ul_lcdif.c
- create mode 100644 include/hw/display/imx6ul_lcdif.h
-
-
-base-commit: a6ec632dca8c7d10743aff29345e5e9e5324228b
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 13f3955be67..2108e7916bb 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -1054,6 +1054,35 @@ static gchar *print_register_name(uint64_t kvm_regidx)
+     }
+ }
+ 
++/*
++ * Handle the situation where @kvmidx is on destination but not
++ * in the incoming stream. This never fails the migration.
++ */
++static void handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
++{
++    g_autofree gchar *name = print_register_name(kvmidx);
++
++    warn_report("%s: %s "
++                "expected by the destination but not in the incoming stream: "
++                 "skip it", __func__, name);
++}
++
++/*
++ * Handle the situation where @kvmidx is in the incoming stream
++ * but not on destination. This currently fails the migration but
++ * we plan to accomodate some exceptions, hence the boolean returned value.
++ */
++static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
++{
++    g_autofree gchar *name = print_register_name(kvmidx);
++    bool fail = true;
++
++    error_report("%s: %s in the incoming stream but unknown on the "
++                 "destination: fail migration", __func__, name);
++
++    return fail;
++}
++
+ static int cpu_post_load(void *opaque, int version_id)
+ {
+     ARMCPU *cpu = opaque;
+@@ -1093,21 +1122,12 @@ static int cpu_post_load(void *opaque, int version_id)
+     for (i = 0, v = 0; i < cpu->cpreg_array_len
+              && v < cpu->cpreg_vmstate_array_len;) {
+         if (cpu->cpreg_vmstate_indexes[v] > cpu->cpreg_indexes[i]) {
+-            g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
+-
+-            warn_report("%s: %s "
+-                        "expected by the destination but not in the incoming stream: "
+-                        "skip it", __func__, name);
+-            i++;
++            handle_cpreg_missing_in_incoming_stream(cpu, cpu->cpreg_indexes[i++]);
+             continue;
+         }
+         if (cpu->cpreg_vmstate_indexes[v] < cpu->cpreg_indexes[i]) {
+-            g_autofree gchar *name = print_register_name(cpu->cpreg_vmstate_indexes[v]);
+-
+-            error_report("%s: %s in the incoming stream but unknown on the destination: "
+-                         "fail migration", __func__, name);
+-            v++;
+-            fail = true;
++            fail = handle_cpreg_only_in_incoming_stream(cpu,
++                                                        cpu->cpreg_vmstate_indexes[v++]);
+             continue;
+         }
+         /* matching register, copy the value over */
+@@ -1115,6 +1135,23 @@ static int cpu_post_load(void *opaque, int version_id)
+         i++;
+         v++;
+     }
++
++    /*
++     * if we have reached the end of the incoming array but there are
++     * still regs in cpreg, continue parsing the regs which are missing
++     * in the input stream
++     */
++    for ( ; i < cpu->cpreg_array_len; i++) {
++        handle_cpreg_missing_in_incoming_stream(cpu, cpu->cpreg_indexes[i]);
++    }
++    /*
++     * if we have reached the end of the cpreg array but there are
++     * still regs in the input stream, continue parsing the vmstate array
++     */
++    for ( ; v < cpu->cpreg_vmstate_array_len; v++) {
++        fail = handle_cpreg_only_in_incoming_stream(cpu,
++                                                    cpu->cpreg_vmstate_indexes[v]);
++    }
+     if (fail) {
+         return -1;
+     }
 -- 
 2.53.0
 

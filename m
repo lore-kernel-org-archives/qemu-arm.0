@@ -4,114 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60235EC1430
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B500AEC1434
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:42:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxO2r-0002Mk-SI; Tue, 03 Mar 2026 06:36:09 -0500
+	id 1vxO8b-000585-S0; Tue, 03 Mar 2026 06:42:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxO2l-0002Le-Kd
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:36:05 -0500
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxO2g-0000RD-Vv
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:36:01 -0500
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-64c9c8f8783so5761698d50.1
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:35:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772537756; cv=none;
- d=google.com; s=arc-20240605;
- b=DyWA7CocmBPGOOXh/4jkICcSPsacC13ZYPHSf9Az053V6oAlcG+3jaY3r4Wfh9jBGK
- WHize/iW7mFMP2zK31wisL2o6nulF0Bg+3IVvixMZilU087ClyuS2jT3zDSU6VkzyFp3
- 1Bcu125PCU8EEuI3+RU0Ffpzjz0QG4+WyzrRZvC1E/pwHWZH+NuRE2zCZlPfqgPQGVOX
- OYa1EKmfuXRU8jLeDErn6DvUHa3P6NP2EvTkVDvxQLZJn0Y1XB8mnzfafyQ8GZugE8Wf
- 4cq45/wprTMaz5t5WZe3Y8V8Kpksk5MyBkXdOEkFwkJYE8nmMY4YaRmW1RpjqCtBcpw2
- GBeQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=jNYUG423/WJwFfBAvxtbOTUONG2D9Kt6+fOOWN5TPU8=;
- fh=U7CQ+Lf8L5iJdsry3uDG33FUa0g+rWeetwLQSySbo2o=;
- b=OOmwSqrVbu+1bndIPRrdXZaH5A15gSHIBJBZgUGREE+P8w+fHvWYlRzqS1rr4Qs0xF
- 5VvEnCSITOLqg13wDnjKab+puwKfH9odWxsKwZKO/Y+1jRTaS5XL+kO0FdFi7TGWCS4/
- 0/54ZV77QL3zgBPLZTMvRARechLqhdCHolbWU0GDSn4sux7tzwVLF39ExkDiJVr6o0sT
- Z8xsPSJCX4n4fr7UGQxHoCb+Y1taYv7WUZg7dSa9qdQv82UzLE5R0+sYzodo97BdfMTK
- +VuCY0nIIPKQebkNBPKnt+S3eeeKrQ1iIQ7z5e0cQ01sY/Ve6d6kR4Cv+3h9Ln/+NpkC
- RbHg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772537756; x=1773142556; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=jNYUG423/WJwFfBAvxtbOTUONG2D9Kt6+fOOWN5TPU8=;
- b=oNjCIEJw/kWLMAkQPoG2UYcOw6vcTSBtBFznPc4eq68HfdWqlziQeauEkFnqj9S5+S
- mQE1YGj4684Fccvo8qP66oZMe6mTC8GupdQUitKLDYQ/w/daSsZQLugXnriqY9YRrj9G
- 71JUZz7PeOe81NkhyJRv6Z9VwznjnW14BowkEJAjUmwAElDojNUAdHAalj7BarlAWYo6
- 2b2mUukcaIU7XuqR+d5N4vAxTxGonvsN/kAM5KSuTd53bJUNfjG8fr/6vK6iZPDMzW5P
- KbSRs/ivnmtbAdV0A6jNxXNGHPSGJue/KnEfGZC0EnuT21i7FHKxJqgLPPf1wVOZPczR
- T6zw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772537756; x=1773142556;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jNYUG423/WJwFfBAvxtbOTUONG2D9Kt6+fOOWN5TPU8=;
- b=LkV7p4Ylgdxr9NeZftNWseK363PoF+XBFuZv6lcq6/o+/EYLh2i16gsigTf14HpUKl
- MMG4UIbyUBYuDAqPqoopQk7PA9X9HhlH9spkSFe80+bDupVvarvSfuXGpdPC+L99DdQz
- iA6g8TgH8MGXmt/Q7/MoubokLvOJTVKtwqufQddEbwnRmLHyzFYORhZYmNvO700wSXTU
- us59IUKb/fc951We/5CSqSCLunZEnNmIJSL4TxjS+KSnFIm8CV4ViXHDI93SRanxfx+N
- ETmEJuIkYH6zjnLVP/GdyLDktLKB4iSS2rRKO7nhrKKH/45a7IWdh6Z0GmOeXrNm/GKp
- 2Rvw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX5dohIbW/15AOPF17PgUPlFNp90PYJaKJCOspSPiQWWR57/kBvmRwjiY2K0rzYEExywwfG2NYxig==@nongnu.org
-X-Gm-Message-State: AOJu0YzhM+JRomT7Jh56ZlqskN0us8uVWwRxNQRD8TGNSfBgCCzAoD3q
- 3ppHXnFCWqZTclXXdP4hhMzqmoX8HIQ6IaEvW8V/P2Zyiq4JWP0IZAi1cm4k3uzeZzc+kW0WY2b
- BUWZzhend9fYDuUoQ2+QsKAFCEaXUcYI41GycagPqDQ==
-X-Gm-Gg: ATEYQzxQ/4+yEdx6ZRc6lzom1qfCpSr8ReoPzwuUESt4heIpPfIOG5bxUehyk+xlAoV
- yOQAA89SYpM2xR1Xf4NLOj+iizpYOIVlUL+trRJ9uZvz0IALYKjOt16UAOv6BmheYy2YqIyyUaO
- sCDsvaeF8KfqGdO6U4hyN5NEanvBG7VrMLbEl7X194PGhOppILzBMJ/RnyUpj8nW8787IVEFRfh
- 35zFe/UQYCJyyxt1gT41tlovAAXrHWR1Y0GbB3/rmeIY+CUMfGrXF/Nbi6oXqr/2T85wFwEKQTG
- k4zvZbuu4L3itVwPU/pBvG81mcl6jDCZ9GdvVUVGWInLPeEzPb+ETPcaOi1vLtWyBfI=
-X-Received: by 2002:a05:690e:130d:b0:63f:b6c0:23f8 with SMTP id
- 956f58d0204a3-64cedce4f47mr1044985d50.33.1772537755702; Tue, 03 Mar 2026
- 03:35:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vxO8R-00050n-MH
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:41:58 -0500
+Received: from p-west1-cluster6-host1-snip4-8.eps.apple.com ([57.103.67.31]
+ helo=outbound.pv.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vxO8N-0001Wz-OT
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:41:53 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-20-percent-3 (Postfix) with ESMTPS id
+ 63F5918003AA; Tue,  3 Mar 2026 11:41:45 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772538107; x=1775130107;
+ bh=gBxNQ3TjAYTeogiJbh69cd5jTUQ5SWnQGrtlwC8PRBY=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=LazU0yilVk/axwl4yclOi++VSFHVI+Doodc56e4jwTRc24Oms925XYNK2Ak6DAgNgoRchDV1T2kzyV0Su8Iy5t3JTaGy8PBWQZb9CnA/J9UWKT7UwBxMEmheE7gwqokQ2w2mPtGujfwq1IgPmUP8n2ea3Nha29jbJ6PuW7PA+tUfaiZ9/UujBP53RlYAVaHf+KP/9IYWohWSZ2qVAdUSmq8ZclDFHigeIq0YY0YBohXd7DAPxtHUM/NqDAVaeitZeEEOkSYtd2j3MM0krSFUp6XGOxSXbKfnY9RXJaj/rqyZGt0BZgwBS8FFge35St63snI3COScDeTFEPmfRltiuQ==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-20-percent-3 (Postfix) with ESMTPSA id
+ EB99C180019D; Tue,  3 Mar 2026 11:41:42 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ Wei Liu <wei.liu@kernel.org>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Cameron Esfahani <dirty@apple.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 2/6] target/i386: emulate: LA57 fix
+Date: Tue,  3 Mar 2026 12:41:31 +0100
+Message-ID: <20260303114135.15390-3-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260303114135.15390-1-mohamed@unpredictable.fr>
+References: <20260303114135.15390-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-References: <20260302220254.1166849-1-shentey@gmail.com>
- <20260302220254.1166849-11-shentey@gmail.com>
-In-Reply-To: <20260302220254.1166849-11-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 11:35:44 +0000
-X-Gm-Features: AaiRm53MAL6nwdFOQhIgqc9wlQyCd_q1TMPWryaEYM-utEPDBCxRiSBj8YrVuJY
-Message-ID: <CAFEAcA9beXAZHHnU-E9w3Ze1yA-8=Eq+nmjpqL3iuFHVwGk8yQ@mail.gmail.com>
-Subject: Re: [PATCH 10/12] hw/arm/aspeed_ast27x0-{ssp,tsp}: Do not access
- SerialMM internals directly
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Helge Deller <deller@gmx.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Troy Lee <leetroy@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAzMDA5MSBTYWx0ZWRfX5vF4xxSJbU/A
+ Ok5LCyZBDBMwujehYBaOjnGK1eGQNV1wKcDUpyuEu0NEezXbbwtmsnUsZeD1D4jGprFsK1h+/He
+ KlQcZPOlWv+JzMyPLixK9HDOORHJSVvn8ZzrVFPkyYjmTYt7XIm/TqtieviQC76Q7jrBmKjQbdg
+ LsdFmg7p1rx+flBrvYYBIEvufutMXPkhhVEl7TyNFn7DJWCqMPcMlKj+X8OXyvvGRAP225rGU7T
+ oeKOdXeqeDSgI0HE/1FLDtcHkz+XQEhQibgGozx5/0ZpJeYpGDI8jRwMDCUrGYttVpNVpPmuAOL
+ z/EmYV22PuPqLVJxCNbH8JRchLKYNn8H55HjieM+RTkJ4WBSuk8MCmkh3AhiVg=
+X-Proofpoint-ORIG-GUID: VikLG5vIp_oNXXB1Ew6PkGcWpzU5bwz2
+X-Authority-Info-Out: v=2.4 cv=XbKEDY55 c=1 sm=1 tr=0 ts=69a6c8fa
+ cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=AJrqCOfVdMXzVqk_6-kA:9
+X-Proofpoint-GUID: VikLG5vIp_oNXXB1Ew6PkGcWpzU5bwz2
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-02_05,2026-03-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ lowpriorityscore=0 spamscore=0 mlxscore=0 clxscore=1030 suspectscore=0
+ bulkscore=0 malwarescore=0 mlxlogscore=781 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603030091
+X-JNJ: AAAAAAABO4/qCN+wzhHdPgibQyVFJRCpD5XTftRNtAmidjqXTnfxch9iwNujtehQDvPZNgqcZx0KgzcreHzR+UsUxVh3y0n3I4p5WZoc4ColFESrC5oTIH6sc5/zxidCETGW+Xqv88uL8yYvVZGeB5YHnn5KC2g7+iui6CtbOmzOPk43a+9e1/EtQJKecKciADpAWI+9Vi3t8S3M1T7mA6OPm8QZZG7S+3eARz/trIO1dGepApYnR+qV+92uPoiKOuNLt51w0dkOeqQZknWtaCT00EymDOkwbtZ9f4Efs7YmG5gQ0M8npYj4bahLjxjdVurm0dGuWxWozV/T/42/toXixZx1zwTdnW2pvhFLqSGpjoonJ7mx8awJkMbvupfyqXnOmpoC0/+ZA/1De0eCUGZg51ePUuuRlbd2MtTHylgPycuZgFTWYTMXZBMTswy/bCEziHdEQxWo0jVciPzJNRe3H8UJW9Wd8fvNqLmUbhTPfQqj+liwGF76eUJ+gHrLKISS6yR5Lr2DpOKPT1Euw2kKNoD1y1TbJgP21uypaLX1CMxtegEwgDV3ZtGRSHOYFHJB2kEO3mnaqMWOV9UMReNrwy5S5KS0jtxh13UirWSgKP+eSN2yf8HrzN8vdC46sdOJRyn0iBaUkuy6HLILmVaaRhHz4vrmQDBQgoBLhSeQi2F4Bn3unJALzVHV2wMYebThXazZptC1BlZQIw==
+Received-SPF: pass client-ip=57.103.67.31;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,17 +93,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 2 Mar 2026 at 22:03, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> SerialMM inherits from SysBusDevice and exposes the memory region by
-> means of sysbus_mmio_get_region(). Use that in order to avoid accessing
-> implementation details of SerialMM.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
+Seen on a Sapphire Rapids box with LA57.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/emulate/x86_mmu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-thanks
--- PMM
+diff --git a/target/i386/emulate/x86_mmu.c b/target/i386/emulate/x86_mmu.c
+index 8261ca1635..4e39bae025 100644
+--- a/target/i386/emulate/x86_mmu.c
++++ b/target/i386/emulate/x86_mmu.c
+@@ -56,7 +56,7 @@ static bool is_user(CPUState *cpu)
+ struct gpt_translation {
+     target_ulong  gva;
+     uint64_t gpa;
+-    uint64_t pte[5];
++    uint64_t pte[6];
+ };
+ 
+ static int gpt_top_level(CPUState *cpu, bool pae)
+-- 
+2.50.1 (Apple Git-155)
+
 

@@ -4,104 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76409EC1436
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 12:07:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D1BEEC1444
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 13:50:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxOWg-0007Cw-9t; Tue, 03 Mar 2026 07:06:58 -0500
+	id 1vxQ8s-0006y3-Qv; Tue, 03 Mar 2026 08:50:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxOWe-0007Bv-DL
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 07:06:56 -0500
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxOWb-000851-7N
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 07:06:55 -0500
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-64c9c8f8783so5789094d50.1
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 04:06:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772539611; cv=none;
- d=google.com; s=arc-20240605;
- b=bOmJeEirDbcvluGMjuUWhp128BzDT9UKQBoFzDxMSV+yAzWRMOS4i7Wi/P20+H1kHZ
- tS8Gwz/WUa2xnPuuz8YFcBv5z/g2v3di04uOtlkxWtKFMaq+e5aYFh3k/6tPz7NK4M3D
- J2A/ABM7D6V1jILT6yjRQcT1BqD2RjzprX7JYgz0xBETd+nBXgdkPv6K6nQcTx3q22Dv
- JoBvFEVn9GUzT2N7jdl9vEruU/xFdUYRHnszn3+Boh0XUCccEEcRyFr36ciyns77XwpZ
- /DMVTdLkl7E6LBkvyAf/+ADgj4Qwn9//9D5tmNUVBZEoo8gJQBgTNZ/VrllR5Pf4Wf6N
- UOsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=ehkCGb5/hqMEmuZhMWfCZTFaXcJ9oco12dClte5n6zg=;
- fh=mEUvjThYVKlS4+Hmb0ArngSGAaiLJiDc4y5w81IQwHk=;
- b=Si9DhByoLs3aO+NU+l1FnP2KVURl7Thz4G97uBA7tRc+b4s0OQGPGm2BHW05Ky0/sC
- aACIy9rlo/pCmHMRgplZjzvAZh17bO705ZUQHPvBS3ZNGY9k9hMrSr9x3/coIEteg0m5
- MiZOSTTN86R4w2PW97hzLshrhJCpfOnM2E0iQz6isu05cT31uEAu7uin0PuM37mQAaM4
- Jq7JCKo5ysIu3fROWNtw1TBKcERTvjDF7WkPjqVamR2/XlbkSlzEdQbjbAwOL2ZGAaGn
- GCwGINScokvJJDYMZYaEpz4scUz7EFYZtfNYpyc274SRjPJI5y7F8kIAxrEKDJuA9DR2
- AYFA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772539611; x=1773144411; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ehkCGb5/hqMEmuZhMWfCZTFaXcJ9oco12dClte5n6zg=;
- b=mwBNdywfWWdo+Q5fUG7q1oxu8V3vKOlUMOeeHbCgECm+/Dj9kgwKGPwn3k4cyGQfkX
- sF2Tw/Kta4PBma8XI7QFBwpM+Vjnzb3qm6Gq+cIp7b+Rq+6EKu4zaIOEYHITsFb4EILk
- bHrzm5vb7Sc8cholLynRIjVpAwu09UXDtV9ZYbljFYuECSX76WJEGvYor92GoRvk1NHD
- Z9G/DwrD1M0Q0J6luUyQabC7U+1E7JYE8Gq4/uwqCL8yYl6JX9cOC1nYT6hVbr6Yici9
- dqu+D4B1Dn0Vci22d7TuB0VXNAZmqDIB+gOh/DxGR4YYWImWv4x94LXhMuhYO1mrYddw
- Bffg==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vxQ8k-0006pM-Ih
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 08:50:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vxQ8i-00034e-6X
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 08:50:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772545818;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=AdqA/kmjpsE3VC0ENsT1VKsbar2/DNF3vL+6YVM6Xzg=;
+ b=ay6yG2qzFdo0QGxe2++fBBY4+HOOsyY7U2Pb45unlhgJ9yYOcbnXcd9R0G9aImZOI9kITy
+ WTAr6u2jBuhzU6+rfg4kDjkql6kRCUCWCZ1r201REQl1UcfnxmEzPACeHAOIKH0hCW2VbO
+ bYuatLeSeRAJRQ17S4TcHcQyiWi2vcY=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-130-_m6YFQwDPX-ZKoy3lJk9sQ-1; Tue, 03 Mar 2026 08:50:15 -0500
+X-MC-Unique: _m6YFQwDPX-ZKoy3lJk9sQ-1
+X-Mimecast-MFC-AGG-ID: _m6YFQwDPX-ZKoy3lJk9sQ_1772545815
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-50620483ff6so495345531cf.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 05:50:15 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772539611; x=1773144411;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ehkCGb5/hqMEmuZhMWfCZTFaXcJ9oco12dClte5n6zg=;
- b=Y3qSwn/ynIqYWzrt/FgO7SyCw2xEhDYbQEcLeYJ4nUXm7uZgmx32QvK/NR6VulqA/U
- 6sVcVBFo0/34d39Acs2Qtiop4WuwqCTAh7qalxG9jo20C95yGUYz4ha2x4dkw2YABTo0
- gRyOiz/xCqbZmJ/ACMWnvr30RenKK0+UuK0UxsXHaafGOySlKR1NsTIhwI3OwMp5sDO0
- nKvbuZA9M8d4p3VIzWuooAUdZAg9KyTDYJ74rqdoJbqih17y75cTN3ptwpj3aTLBdMfL
- FTwxHG6AVkfJukQKINaE+/2GjvbaKV4sBEYTWLB7Lc5DA/15ZRholxMllg9GGVTyys/v
- s5TQ==
-X-Gm-Message-State: AOJu0YxtiJvSAwlp9tTTVVjUlZ3h7x6sOUnZbd9xdFtNQ6ViYly439gS
- qmRircn/nW3yWMSQbbbCuf0plHfiBKctxZBW1o7X5uYQ/yINWShCfFpQIaUDKqIyHrJcRdVQonP
- f8Jk61f2xm9XNJuSqOwcImDSWlG48Xn6wcf0/ELBK9g==
-X-Gm-Gg: ATEYQzx+IXJPhEnNECLXtNdKVendoiZcHmvZIun8C5kOdf9CSUwdpwqD+HPDLaUgcui
- W84Xbq2aGsczCKEa080VssJf6zifItb3+lU8rF6bhaywxUSEjUsFGgqnPAOhofQwyyzVD/pueit
- RKQ2it8kroBc8JqvCo04IoK7jJAXUh9wGJ+LAfMefeKPFfPQ0EqhcRDHw+RHj7ozIVrDeX2Iu0f
- nllJkuEf6scolBQ7AvF2hgzy/M7Q+Je4Uh90QsfVdQ0r4Fs5IJCaycr+T8q9m3LvzPXdmFEJqfU
- DurkXGATDrt3w3J3vUllL/f7l61LlPHdqWfnhAOVRfrez5ygSH6VB6j0IWgbiTrtGQ0=
-X-Received: by 2002:a05:690e:1686:b0:64a:d18a:66c3 with SMTP id
- 956f58d0204a3-64cedd494a9mr1198183d50.48.1772539611222; Tue, 03 Mar 2026
- 04:06:51 -0800 (PST)
+ d=1e100.net; s=20230601; t=1772545815; x=1773150615;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AdqA/kmjpsE3VC0ENsT1VKsbar2/DNF3vL+6YVM6Xzg=;
+ b=rOuMogSCvkxc7uYsybKAlmEU0PYsKIM+x8LB4kbmXA83KNrVHH3rMMr36ilNwdKmIp
+ LK+GRfS96vAE88oYrk7CNYrbSX1/JDd4cfcMUBhTFk/o0NW1VOJWdBXGK3ByeLmYSquD
+ AtvhNkJSxttPOWmVFIo9asjFnvo2LKrvVmwYphl78iAuLTvZrnEvPCxiN75HOEn9zCrf
+ fbW1TtVDybIsNHiO1fY7soz3VBPnvWS9dVK9oK1D/dknI7rJGzekFhirZQK04oS3WyyE
+ DXcti/jbIRdbdZN46Cw9zU4qHQ9DbCkZzkJaYbJtHJP10+W15jzi3RmvSq+GM7l90+MS
+ qxcw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUbNN3b7V9PzQ0TaF1Si2rq36aQTiZ8o5gtt/SKcchbuLwUOLaYJunxzWOYlJ7lV4fHzaLjWGEA8w==@nongnu.org
+X-Gm-Message-State: AOJu0Yzg0MZM30/oy0W5SA7EYSh3Z5NkYV+pzGDmqoT5ibqMMVUzyACU
+ qHLLLHYH8DT+ZcrjYaqeA6bT0k/CGzrsLH531Kj+nNdOqJ7CJ44rifqGTq2BnVsRbySp4lKEhtC
+ M6n7UM/pd6W40DVMISpNCj0ztaBcvICsN7BjW2olc+mkukVPkfLm9gQ==
+X-Gm-Gg: ATEYQzw7TY4hI2y5TETnEnxB+z82iw2q3wEH0IuBcHoEIDZB4qMyW/mQoQ8NHiEpTzu
+ C4DnX+hgFOiDrBmy8QXJ1d2kej/wqZ1de/8xDw9zx8GV4ys+FSAr9dsMlLhNNvrmEa3kCCvGWHy
+ TjiD4HTFrYkyh1IseKbc8SkGGtLCTM9viSsyF4UAUOaE4kARCCm5xfXp7A6o2NDIr3EvdkQGfsB
+ ePEGnqAdz29h9S+nEK32QCS0XdypynQt72I5JIrIDjMKgogzabHEZlprHKUx8gVQKYIQMqYarHq
+ EQvEKBXkUD0qDZq53Gc7LznxYFbv0OAG8byKj+LJ+YnG5WSaQGATJtx8Nk9I/BaQKNw+G1FAfhJ
+ KITHQNAxPHMXhqA==
+X-Received: by 2002:a05:622a:138d:b0:506:6e65:2334 with SMTP id
+ d75a77b69052e-50752884908mr176471081cf.7.1772545814636; 
+ Tue, 03 Mar 2026 05:50:14 -0800 (PST)
+X-Received: by 2002:a05:622a:138d:b0:506:6e65:2334 with SMTP id
+ d75a77b69052e-50752884908mr176470761cf.7.1772545814122; 
+ Tue, 03 Mar 2026 05:50:14 -0800 (PST)
+Received: from x1.local ([174.91.117.149]) by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-507449add38sm132020941cf.13.2026.03.03.05.50.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2026 05:50:13 -0800 (PST)
+Date: Tue, 3 Mar 2026 08:50:02 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, cohuck@redhat.com, sebott@redhat.com,
+ philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH 1/5] vmstate: Introduce VMSTATE_VARRAY_INT32_ALLOC
+Message-ID: <aabnCoT3Wp6L_ZuJ@x1.local>
+References: <20260226100232.500781-1-eric.auger@redhat.com>
+ <20260226100232.500781-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20260226175549.1319476-1-peter.maydell@linaro.org>
- <65e0593f-d5d6-4e22-a730-ebe65bc1a332@linaro.org>
-In-Reply-To: <65e0593f-d5d6-4e22-a730-ebe65bc1a332@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 12:06:39 +0000
-X-Gm-Features: AaiRm51C0S1WaXaJRwJhDW5kTXSffAuX06l7M_9kNo6a__BHx-7jq0mMzpLw1aQ
-Message-ID: <CAFEAcA-U0T9c6cZpyoPs7iGqLM=hFks8212no+_H5hp0jcNb6g@mail.gmail.com>
-Subject: Re: [PATCH] hw/net/smc91c111: Don't allow negative-length packets
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org, 
- Jason Wang <jasowang@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20260226100232.500781-2-eric.auger@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: f9Wp1NtcrwlSDQNGWXFEfDJQyh30CvL44PqQLu77z7s_1772545815
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,42 +111,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 26 Feb 2026 at 21:49, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 26/2/26 18:55, Peter Maydell wrote:
-> > The smc91c111 data frame format in memory (figure 8-1 in the
-> > datasheet) includes a "byte count" field which is intended to be the
-> > total size of the data frame, including not just the packet data but
-> > also the leading and trailing information like the status word and
-> > the byte count field itself.  It is therefore possible for the guest
-> > to set this to a value so small that the leading and trailing fields
-> > won't fit and the packet has effectively a negative area.
-> >
-> > We weren't checking for this, with the result that when we subtract 6
-> > from the length to get the length of the packet proper we end up with
-> > a negative length, which is then inconsistently handled in the
-> > qemu_send_packet() code such that we can try to transmit a very large
-> > amount of data and read off the end of the device's data array.
-> >
-> > Treat excessively small length values the same way we do excessively
-> > large values.  As with the oversized case, the datasheet does not
-> > describe what happens for this software error case, and there is no
-> > relevant tx error condition for this, so we just log and drop the
-> > packet.
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3304
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   hw/net/smc91c111.c | 16 ++++++++++++++--
-> >   1 file changed, 14 insertions(+), 2 deletions(-)
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On Thu, Feb 26, 2026 at 11:01:29AM +0100, Eric Auger wrote:
+> Already existing VMSTATE_VARRAY_INT32 requires an array to be
+> pre-allocated, however there are cases when the size is not known in
+> advance and there is no real need to enforce it.
+> 
+> Introduce VMSTATE_VARRAY_INT32_ALLOC as we currently have for UINT32
+> and UINT16.
+> 
+> The first user of this variant will be the target/arm/machine.c cpreg
+> indexes/values arrays.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
+-- 
+Peter Xu
 
-Applied to target-arm.next, thanks.
-
--- PMM
 

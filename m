@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE40EC1432
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC0AFEC1432
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:26:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNrz-0005CR-VB; Tue, 03 Mar 2026 06:24:56 -0500
+	id 1vxNsu-00065G-Jz; Tue, 03 Mar 2026 06:25:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNrx-00059v-VC
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:24:54 -0500
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1vxNss-00064i-Uv
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:25:51 -0500
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNrr-0005tv-Vd
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:24:51 -0500
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-64c9a398bc7so5270228d50.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:24:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772537082; cv=none;
+ id 1vxNsp-0006Oy-Si
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:25:48 -0500
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-64ae222d87dso4991995d50.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:25:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772537147; cv=none;
  d=google.com; s=arc-20240605;
- b=lr3ruE/Ug/xhDpLckdmUhYVCA0sFhu5UfOxTj8KNu6xSlSNaIcn08PgZQoROsduXih
- dcKAPHu1rwtIxy61lRGJCSB2ZB0W3Lbb0tuCWKJZcQFVw6rnDnKC0dGjIQWOOu9v6Nh7
- 3ifP/kzPR4U2NbeN8Jfz9u7DCI5eP37z/QFEs6dr6ggDV3emBJDyRdVNb+KvRdLAQNij
- RqOHg6eg9GZk56zNxZ84i/m9dKuDB1HSqCoV+3Rute5xwC1EBPoykpB6iOE26dQHIl+T
- YOgojSelLYHPxXMBVGQvd8twQhzm3mXrlmmnH/EU2L9irvspr2gAra+XLTq4ls24MEvK
- rp7A==
+ b=XJp6s/b1VoUJkKlO+EKIUtNtxuEoaf/Tnt+n6S604zQlo8e4lqBFdSKjuuJTOTtcRs
+ GU9UpLo215EdQSN5IRpzjI7tGzI4sxEXVeukh82NpYjITUkLVnHggIfhupSuo5FK4gZE
+ VA0T4f7uQ91sZnPnfQrEeiNElT0/yfPXcwlALRA4cvqHmLglro5+ljynxJ0yOEKtNBri
+ J+RfcsF+sq4JU1F3WU8C7EaQNIlTn/FF2Wmo+jxUTXkuKunFLd4o1G9P/YVrTJUNhOOu
+ 9CIMHLbE5QF7iyc2dPJetU5YRUwydgKvVbgBFmZfNISYVYaSrKoNAhLnitr9B5+JQbSH
+ uUhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=zhG3lYnK8prcsi7F0qfSX28vrAi9TRvqJXR8s+2eSKI=;
- fh=rxG5dnsxnPevRysxN0vqvLVC/so/YmLInIsYTOZElhI=;
- b=iAlEN1aJEBZeY6OCuY3eZvd4QzTrSxE8WphCl7l4k0ZSP5vjsbbP24XjQF7HhkVA9o
- OXcGggubwQWKuH/3BiroXLxa6QAeeRzL/9dtb3zLAFZLE8lTIdFIAbWFUOohtj+KaIV/
- rIWbik5QUcgIiz1+bv/aBa1S7ofuTKOJlKxqg7PhAEtIe9fg9+9RUPNMdFls0ELuXrG3
- y+LimrNI8yxnQkbkKE7lydGZOWiVDzde55EkZu864Z+WGLugDeJYQuZi75/BwY4KQvoK
- q9K9WLJUPUREhJsHQIfkkM1NLsU8rGV0l2ceGDdJQu7bFFPChywLAR+y3oD4K6Iaufsq
- ZZUw==; darn=nongnu.org
+ bh=wlBn0WEfQJ+tIVomWPQfmh4kj6g122O/Tv3r4t2YMNA=;
+ fh=ELD8SMj9GIBq+uGI2+MUw8aMPH4wL7J83osK1cngXp4=;
+ b=h4xJ4dgmEDljeuaZb7bQYB8EQhOHDL1MukHEaNXZbV67sF4ZiYurVz6o8x0cA4789g
+ L8fDT6hmvwQCAZ0128uvgH8XCY7N/QAvIKIUtjwexhiShoGY/gAIYGDe+M9gM90/ZHqv
+ RQ6H8H5kwW1CqV7OJCNyoRzzH8X3zsz9Z3+9MD7dvxkp+A8/a0b2EsAZYm57khxtwak6
+ Ucgsi1uWQ5jHoqK0WCLQusm2RX3J6PjzEGMyCUUrqeWHP+QXjmgJ/Z3QPQspvVE/ltXe
+ 3Zuf1EAK6JCJB8JXSSuFqg/kHaLxR+bgwU6yWAmPlSLGyQZD1yx2tBYznkSzjtlqDrrq
+ mPrQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772537082; x=1773141882; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772537147; x=1773141947; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=zhG3lYnK8prcsi7F0qfSX28vrAi9TRvqJXR8s+2eSKI=;
- b=XT+A1tx7tzFraN+5lWuejEuAgAQI1joo82zgs1vm3vbAeAVWMEimmVY0NYL2Ribzl+
- tonqEIJTel7og1w+MfplTC3IqAGNRyqULF7ZTmD/MiC8O8fn1HQ12t5S+E0vO9EzIOxg
- WK/xVfWss6WxrUY2/wcrGXQM4zmMPUtxtMMAmbOhhpE4jT8AeVB3O45VEbEebfBlX/rI
- 0eJes7eUAoaojSaaOtprJlA86uBn5My2Xo7mJQ3JEiy/NXzWDvPGpsK0FeguH5t3et8J
- 6xuLLSHFnY3rkDS5AJyL2EinidojMuVg/SdFm51M/dkPc8noW/U4jf7K3JLYBM+tX6Ke
- hZ8w==
+ bh=wlBn0WEfQJ+tIVomWPQfmh4kj6g122O/Tv3r4t2YMNA=;
+ b=x0m5GDVPQEhhG1efZg6fDZnAmKqARBrWniru3bgDjhg306JCG1FaUsoq73U6uSfTKb
+ zZ+jcMBRQ8hcLokfh2SoWjSXD29oajCHSZpINWnUGBOQY8vQyxZkBd9XWSJKgroIpB0M
+ y1pAhpB9iGU/h3rFQapQ80xHwVigywV/DBHFjl3Blc2eyL8Cgundx750SdgcYsx8DTgo
+ wY24aBJaUuCoViOH50VjihVTmuO0EZi1PfLj7IRc/LZfAOoKELgv5aKOZkdop2tXrdv9
+ pn9GuSOu78GTOzlaf+/Uh1AK8Vo8RDsFvAmn6lFVY2De4/wty23D/hamG8ApuFTOMv0p
+ qOgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772537082; x=1773141882;
+ d=1e100.net; s=20230601; t=1772537147; x=1773141947;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zhG3lYnK8prcsi7F0qfSX28vrAi9TRvqJXR8s+2eSKI=;
- b=fcBddvPn57HDo2C7e3U3SslhndjuPBGfakY1sTYpjCmRzFMK3BySjgm51p3ZJGoBmA
- PAXeYWaIvLko344eGu9hMRIoFECNEIB1JJ3aj8GN5myw3+r6r1GtYjYJZT+j2xkVIlYr
- DGr6EJEnPuiuPj74FO8lt2RLt3r1na+my91tFtehe/8Dm5xx2wLzD4s8AEjLKcJYELZ5
- 84sWNPS8ADINQqujqeAgPLkFuFJWlyMVt0FP1rfln4YNV2SU7BTm9ByrEpLD3fAaThbF
- g9yJKapAREu4viZGIkUfG8krzUwZxiofOCtA113vVei1Z9aXcICCX42FIrKaONu5TLJ7
- VydA==
+ bh=wlBn0WEfQJ+tIVomWPQfmh4kj6g122O/Tv3r4t2YMNA=;
+ b=tLY+Z7QEBehPSHzL8TXHNN9em8kqf2dzd96ukf46f3TBryol2if92qAn4s6QK6d7bb
+ R5rY8yBjITnnG2rIe+MaJgJgVXbVbTgArPw4mPw6LgdRzByUf5j2VMt6742pAQT1nDQE
+ 6hkEfzhFfbu8lE0GqnQLYST0ZisrL9l6VE65jdoBB57Vi+MBhSul+m3Pc3MyckFEQHPd
+ 6KNqmjoHOcYuYZyGmIB2UL7gaf7mTnUNtfYw01Udu4fDuHI7pqjlLJKbh9I3FA/JX5T/
+ R6S4gRqjA14Qmr9TY5Dd19QbCtCQe1UahAAtWKGHi88OojpriJ4bj7IWJKcsmYeY1Mwt
+ i/DA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVxbRdDCJ94YlbyOd7SMwPRZKrWghdIXbQ//hqftbCHQioGiiS5TdonPgPBfwBkI6iIcx9BtpblXA==@nongnu.org
-X-Gm-Message-State: AOJu0YzOzV6MmJgt6bPIOmxUNKCNiLTYFk7spgvFejfsBRdLQJNLeTUN
- O4AlpD7cEdAVdg4SJqs8ZVlvu3USC9UXVBdR6LMopdUbOI06EGPzboxHLNH+7ILlOCTmAIBuFCC
- yr5YbKhViwxSOoNeCY4BaihAUM48l3w7leYKFz97Wfw==
-X-Gm-Gg: ATEYQzw+9Vgp8TlhYdQG0L9nFQQpZv3Cgb/8DGtCKoPm/FtNO65iUttjV4re0oOt546
- kSasuIKRb+VTym11rPqxzJJ85EN8+XVxUe1nrlsuBdfzYk/mKymkp6LSXOUsVUwLMY0BlZJSikm
- Qfw73VraiDE4B1dXG1Dj7+QRF0VArHxto5Af0Yokk1PW7zezMG/p5KiwKxG6dh/cOs7qkPx13Ru
- zyhtFc1loJ0FFs6gp1chzusODgagrHzLkjdWwAzwCXEmPINyE4SXglpiNX33ENGTDLyVSB7nho/
- gWuq3f6odJJdRogrt0C/XxDkDq1CLskJ/9Et0ixC865BkeCmeMRJV1Tp8MpGnOQpYYY=
-X-Received: by 2002:a53:ee50:0:b0:64c:9fd7:676a with SMTP id
- 956f58d0204a3-64cc232ff88mr9551234d50.83.1772537081841; Tue, 03 Mar 2026
- 03:24:41 -0800 (PST)
+ AJvYcCWeKxPRyJv/Jnb5bcK+2tzTudFDfoQPH41RsY4oy8eON/ha43vdAi1RjOUh+pfg68yWk+S/ExK8VQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw6DPavd1AB9MSOLqC03klBy3DhBv+wq67n5vcUSN3XzKRqOsUu
+ VL3Cy4spT4uzRj7nlptSVXnMoHqfSs+Ic4siLoXLgvB7+OHIu067qqrGGzNsXqIEQCjWqlgfhZd
+ iawycWbw12G7rUv35+3JS87krMVU0a0RztvrBfUdXsA==
+X-Gm-Gg: ATEYQzzGfEDYr2eKZUR+J5sA9VY8dlgOh+1c9je0SJ3v4I4aPk8OkV0iG+omxVcI8HC
+ ZEn/Yf4sgeF5QPXSHrZs3DUC6y7f6wM4f3yWGvl4wOg7sAo1YvQI2su9hqIviwjfm50yCbVrQ5p
+ cuYZGx9BskhIRk9c7PCeTE20pDW34Qn0r+YBFtAcSIixyaXa7jwcDtM80iSySOoWOQdYCVmy1Fm
+ Nfw/Cgj3o43KacAlZ49TSJgzd9zmcInSeenqWqsw8Wn1//NsFO76CmZmuJRfiQHLHNhRU0p/Phk
+ KhGcKK38DgB1rUhjR1WChrke0+6TtBKgyxin8rPdXtUwyxauSfV3+owO/Sk2UHdA7T8=
+X-Received: by 2002:a05:690e:4243:b0:64a:cf34:d9ac with SMTP id
+ 956f58d0204a3-64cc20d2d3dmr10091821d50.29.1772537146620; Tue, 03 Mar 2026
+ 03:25:46 -0800 (PST)
 MIME-Version: 1.0
 References: <20260302220254.1166849-1-shentey@gmail.com>
- <20260302220254.1166849-3-shentey@gmail.com>
-In-Reply-To: <20260302220254.1166849-3-shentey@gmail.com>
+ <20260302220254.1166849-4-shentey@gmail.com>
+In-Reply-To: <20260302220254.1166849-4-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 11:24:30 +0000
-X-Gm-Features: AaiRm53LIb7RBQx4Dg__eBLCxG62Y9LFnIFLhHGYRErqmRo5b5dg2rPrrxBWhHE
-Message-ID: <CAFEAcA_fPRxPdcGtTKG1Pj7rw5XeSK+mnrnh9oK5Xhou=LoVNQ@mail.gmail.com>
-Subject: Re: [PATCH 02/12] hw/char/serial: Remove explicit cast from void
- pointer
+Date: Tue, 3 Mar 2026 11:25:34 +0000
+X-Gm-Features: AaiRm52_aAmb42dXlBQMmKQAWPnkMY7-5TzxobI5-majXAkfREvhExiRWMQJgGo
+Message-ID: <CAFEAcA8Kc_Nmvbr00zH_5MQKjhtt6USUg7fio-5V8qkG-gYnPw@mail.gmail.com>
+Subject: Re: [PATCH 03/12] hw/char/serial: Prefer fifo8 methods over
+ open-coding
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org, 
@@ -103,15 +103,15 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Troy Lee <leetroy@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,10 +129,14 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Mon, 2 Mar 2026 at 22:03, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> A void pointer asks for being casted, so C allows for omitting the
-> explicit cast. Take advantage of that.
+> Use fifo8_is_empty() and fifo8_is_full() to improve readability of the
+> code.
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  hw/char/serial.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

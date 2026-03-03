@@ -4,105 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D46EC1428
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5906EEC142A
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:59:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNOf-0005ev-9R; Tue, 03 Mar 2026 05:54:37 -0500
+	id 1vxNSy-0006Vg-SP; Tue, 03 Mar 2026 05:59:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNOb-0005db-1b
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:54:34 -0500
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ id 1vxNSy-0006VN-7W
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:59:04 -0500
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNOY-0006rA-Ir
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:54:32 -0500
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-64aedd812baso4816110d50.3
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:54:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772535269; cv=none;
+ id 1vxNSw-0007Nd-JO
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:59:03 -0500
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-64ad8435f46so5129528d50.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:59:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772535541; cv=none;
  d=google.com; s=arc-20240605;
- b=QqXkE1+OcNk9n+zWnmzC1XGG7CQB0M4BShG07iRv3vMKX3FPjMqRSr3wiS6elYt1wC
- q0xPu9gdjMuJDWCBTXHHIVwgL0XgwMdWdmU/AeLxUfTchFgXcET9M2bXzALj/hKQwi6V
- Q5ntXG3MVXql/y+rdMw9KdSxDSGyXZ8DxxPun0Ds5Ak3FRXTIhQ6uIIfrNl7cMz6LBlT
- Wmgg4bGbExPk7Wln2HrYlpHuuG1vT60yq6ZqEjJR1UQDg3wFjTmOt1LjQALUKhe7p4vh
- ttae3C0QSJJSP+DI5wRWBAhSvcBvDhQo/Bj5/f9q5HIm9AKQyVmVXQn8tqy5TMpjuuOF
- gtKQ==
+ b=CAihQmmamuxXw4myzKAMb18uzhYhb+Fn0pGQ2qNdAKDtGROFWMXJMQHUywdBTMB9t2
+ Lwlb4B9MOfEPnaJrSYREoF3oKTijW+Sd7s2FEpRHdyFYJbwOynH9I9FuNA/BHEsKDbGM
+ XPRLZOeraugutgE7DOuWoO6jZs+3Big8q3fLH03Wn9CdBfMIg06o/cPlI6ssfRsTqaq3
+ PQWCJsaCOQSDwHDZ7puQo3U6/ie9ZCfWGIy1sn4CQyGQfcf7M0jdL5jg4oMyGn8GC1pH
+ nywN8vMlr3jivF8/wdW5UiPEg2Ake76qCG4180JUF8QaQancGhMNZGOjhbSEy1XLEDmP
+ gAeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
- fh=mhxolGnpohZid40WVfMCaz0wFwg+nCwl6yhu/3DCmqU=;
- b=XVRUTc0ZcDf0QH+zuv7ansgajxhzNB2u5Ld55nMgxrtIcxobQCNP3iAhI9z2eHFAFI
- 8UP2R5U8rxmOkNDqvJ6naj0BFZTcR5QL3Yrh1Dk1O/YXHVHW8atmT7hlrU+G4uYXzb6/
- SKmyQHELTGZVP0Noq4o2nznSaHptOv0iC5P2YHydc6pjSAVdKEONwJWhhgS8CVX25zv7
- K5dHDiyiI2coOYdCYUGBxfWub75LTnVsC1e4bSGaQl7GWCnmW3t3Hz5PdADsWFExxx+a
- dAB33ifPePop7sVT6JQr/JfrwRVA5gu/4FFbSThfsUquEtPhErKOtoTTzMDoZs6W4Dqe
- ou5g==; darn=nongnu.org
+ bh=OuOUtAA7u9Z398L/7FL7Ixn0YPCowf0iHHYo7fQ+/J4=;
+ fh=YbJlNAjX5UbRUemX5bWfMpcpgNkkxAY9jZeM7c36a30=;
+ b=YwR7ZaVtFpmE/XHCUqw4Rg0xTGSnblv73jpc1qAdawOth5ndPBcVnZHrXZ4HIHoCip
+ lZKUfSHKqjGug+qCNA8dtQiJcXO62xg7kJtU95U5V+SpWaFzLEDVYltXFto52FHeoHyO
+ B0hRaobxfh3Jf6Am7W0GT8zYdyFP6zJdwdAqHd57SnV+f1o+91pmC4kjPSkGJJA1bOBD
+ ck65IsJtIUKj1QlFjXirEFRmwTwCmTnwG0tLyahxjaKde4mFyhpDRKKq+ZTyjzjfWucl
+ ZKJtoN/8rC9Mvbo19c2hCVi5LnNl5An/RAFywb0u5juf0io7RhuiSHAvnITiz9JalWSY
+ B5EQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772535269; x=1773140069; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772535541; x=1773140341; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
- b=v34GSJYyexibkjnIxoBTNnz+YzIfPu6PK2XH68gjngLiiLc1THV3ObbPve07x4zA5o
- TeIYntKL4lNVBm86cs17aHrx6MRijloroxOg275SHK9EhwyGIodxsRoScWKuONWGmcP2
- wrMwFjReQ/XE4QHVWvWjvBhNPKBTLydrTtiwy54q3CsXoYHOlAPowajKRerfog67bQ/s
- PPh5bhsio9lGCLnmKmr71qSzrW2yenlPo/Iou7/pi+FxInVHeRaXjoEF7IvX7G4GxNAD
- sUk23wJnEDmCLkLC3QplYuq+G2s9BhbqgLqyKyy6Gfft6fjdgKq16L4jNhN9KAF6xakp
- FHMA==
+ bh=OuOUtAA7u9Z398L/7FL7Ixn0YPCowf0iHHYo7fQ+/J4=;
+ b=zRB+C+DXHCtoEXq2hzMkV35HpCZjKEs7K1heR5Yxhkzf/pbRVMpBBmZLq2e56Uc7Yj
+ DCco4XlqceJGQQXLXxQ8oW4KviYtIF7tdsIuhZU0xyW+5zJKlb268aufnd604XIhjDJR
+ pzLz371rhmDNtZaxXZfxe02e9rqycp8xPiCQtHSzkSbE5PrZc3rsMXIrF00kgbIOEMSQ
+ mhKu/i7B9c06/ggTRemXnHiTvM3k202+CA16Wt04071gGaqE0VGprmu4L/CLRscgwlWH
+ Q5aPnrkBfoCM0zHyuf8v16vIQW7OHA8F2RIMy9Lk3dGPoNnqBVD4AhnjcLcT0FB0oDDJ
+ +Vjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772535269; x=1773140069;
+ d=1e100.net; s=20230601; t=1772535541; x=1773140341;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
- b=uw5jATOuklXzpOjtd4uN+nq1xEo6I1k1BaqktKqH/M2RqUf2D3puRDzbXpAsPULt6U
- kxST2gboGuJPP+CNMheTjfwoKrZVe3UZXOOftWCfwdQaBE/+B4fTcylKDPqt2HZRu0RV
- N7byhvhSUN6eybhQVMYEEhvV1/0ZcOoqbS8yLtcR57hwsjnueJ9AQDt+MZ0EqizTOdlZ
- e4NYt1X9P3NEewIVdsx+XQBsKHQRj45sXBdPpAHFAAqnBzF2Aa2QSE4C+1akFdfDpA5Y
- p5vMLq+wDZ8ja6XUUP1GVvxZcY9Zc+La+4cTGopRh/633lPF3sw3826L5t+TVhG54hrn
- betw==
+ bh=OuOUtAA7u9Z398L/7FL7Ixn0YPCowf0iHHYo7fQ+/J4=;
+ b=VZ4+itIZzT9ehSUDhHsfdT0nTyN/8gv6K0JSQuJIZSolS6C0Yuo3l/eo4GYdaoOWWh
+ 9JIyiJOtyWQkBJTl8ZovfwogrWXXJOPfXpsyVYg9U3JkGy9da/Jd/sHQaDD9HzwF3qoj
+ RcOiHQ1nDMEeiuwG35RXsVRI7mqm9JoEzLFymW8pzFMhzz7J3dNWuCFpoCc1ncqxK6yQ
+ gTZ4W7IE7JXVeP6JQ8gRsy7JPrnlrSaflEWfyck1LCgbh6PoGkb8Su4yjAGsj8z+ZiFh
+ 58ImRdHxA1nPp3CEIqme3b7cQ2XUbTcGn4wc3oCvTG4NFtUPhSAPHulan9SnL2nOTlTF
+ Bs5Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWuwMnk8d5qOy1OaE3MtZk+isessvNp2qW4vAVNh8/n+tYkpf4empCoqUTFx7WmSNnmPhKrMSgveQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwprPDqkh+V258/OfKaAewWu8jT+JqxgULXSraaxvmQhsqrBVKb
- 7IXKUXYgH212u5tDqLEU78OB3bRA6sHHZwfyUqqavPgD/ZEX9oYTzFP2q/vkCmgY3zC5IFXtErW
- KfFNEMO1moJqsvYofzkSudjE6pc80frZ2adLaFJhRSd/gDQ1mwFTG
-X-Gm-Gg: ATEYQzzvXAubAsxXXQCfqhZnSwlPUUVnuck0F3oqM/EvVBpIcOqkTKl70bT8K96HG95
- dsEYg5C5KtPOqw6JwRpd+6Rb65W5qW5X/hKkqnx+0babUp5aIaUSv5YDPAGsMkkk8jTpwVXRUhC
- jrz/pYb5HBrJfDdbKIJFJUVh0meFUlgfiM/nu2AzUjmjyUMSArpJzDFx2pC07vUvywH1MDP1Pnt
- nQZpP5KeLVgSWuYt2laxhA90+07a2g84mPMybKYeS9phHHYYiLeqzLSYd4Cy4latDW49FoeHpB2
- BdvKZ/KUeIGghX+1jOWUQCljRx1Ef1ZTjMYP9XbLV9pec+92rL4vSZXE4ThUixtDsZg=
-X-Received: by 2002:a53:cb82:0:b0:64a:d64a:b025 with SMTP id
- 956f58d0204a3-64cc20832c7mr9474194d50.7.1772535269176; Tue, 03 Mar 2026
- 02:54:29 -0800 (PST)
+ AJvYcCWyRamkGN+v8HFQoSqpH2RV63XDS2pvQux2+M9hvpJHfY43/vflgRRRjtscVvP91gzM961nxMWhpg==@nongnu.org
+X-Gm-Message-State: AOJu0YwvH9mfNoPpLryQbb0EK8gV3dhSFyl6FA7fZOPpwl2jZ4dEVukm
+ toDcVxsSLiX2YPVrNzz+GHt+gU7m4hZ4KNORcPYvg6QHAWpSrhYQHe2B7DU9jOSE698jjJFYG9S
+ OcK7VbVl9hCcdND8tKXdDkKwJs/FHAJzalislcvmkuQ==
+X-Gm-Gg: ATEYQzx5ziS2cijf8RM4qM5cJzzFcrd1W817z4LTRixtCdueG30AJo96gFaKMgh3GjS
+ hbqOB3kCXp5gCYHpHmJ2ZCyCUSeOOjPRMEEn0ACAwqK1ttnp/DCRBS1LetVkQOi4X+ycasSSC3A
+ XIq7Y53dSQ1Weq4qZqzuQyCO66DB4I1qJCTp3VMNaM5LRHD7pJ1dW7UKjNb3N5QwNkXSq+3/4QD
+ DryHEHD/fCC6jNo2U1vD1BRBttkb+pXI+wDMPMHskQnquPCWirRkxdGMBGwymWDfv7U2QZcY+YM
+ fRLbwdLLAS2tyVk6SYLO709I/M7j7suxSGyc6ese5His4T5N6p9SsLEk2u2et5U2AV0=
+X-Received: by 2002:a53:cf0d:0:b0:64a:ced1:4fa6 with SMTP id
+ 956f58d0204a3-64cc207eb33mr9746165d50.12.1772535541110; Tue, 03 Mar 2026
+ 02:59:01 -0800 (PST)
 MIME-Version: 1.0
 References: <20260226100232.500781-1-eric.auger@redhat.com>
- <20260226100232.500781-4-eric.auger@redhat.com>
-In-Reply-To: <20260226100232.500781-4-eric.auger@redhat.com>
+ <20260226100232.500781-5-eric.auger@redhat.com>
+In-Reply-To: <20260226100232.500781-5-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 10:54:18 +0000
-X-Gm-Features: AaiRm51Uk4LPPhktdHHnbdTNPiggtaynqQtbBi5uTc0ioSOzen9dE5fhBShiFqM
-Message-ID: <CAFEAcA9Z9LWKxisumU6C3WAtWiUhV0s+tnpFNAwuaBO7GSpCvQ@mail.gmail.com>
-Subject: Re: [PATCH 3/5] target/arm/kvm: Export kvm_print_register_name()
+Date: Tue, 3 Mar 2026 10:58:49 +0000
+X-Gm-Features: AaiRm529-MeTUVjWWwQ00t0xbktOtoPP-RRlvyU37tcYEBaikNvCcJ0bUKFq0Ng
+Message-ID: <CAFEAcA8V6nAHaB89kjozmidtwXtD0v3qdYsfovaTwsuY9CW5Xw@mail.gmail.com>
+Subject: Re: [PATCH 4/5] target/arm/machine: Trace cpreg names which do not
+ match on migration
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,52 +121,36 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 26 Feb 2026 at 10:02, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> We want to use kvm_print_register_name() in machine.c so
-> let's export the helper and implement a stub when kvm
-> is not enabled.
+> Whenever there is a mismatch between cpreg indexes in the incoming
+> stream and cpregs exposed by the destination output the name of
+> the register. We use a print_register_name() wrapper helper. At the
+> moment we are only able to do a nice decoding of the index for
+> KVM regs.
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  target/arm/kvm_arm.h  | 2 ++
->  target/arm/kvm-stub.c | 6 ++++++
->  target/arm/kvm.c      | 2 +-
->  3 files changed, 9 insertions(+), 1 deletion(-)
+> Without this patch, the error would be:
+> qemu-system-aarch64: load of migration failed: Operation not permitted:
+> error while loading state for instance 0x0 of device 'cpu': post load
+> hook failed for: cpu, version_id: 22, minimum_version: 22, ret: -1
+> which is not helpful for the end user to understand the actual
+> issue.
 >
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index cc0b374254e..b6980e4957a 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -266,4 +266,6 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level);
->
->  void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
->
-> +gchar *kvm_print_register_name(uint64_t regidx);
-> +
+> This patch adds the actual information about the probme:
+> qemu-system-aarch64: cpu_post_load: op0:3 op1:0 crn:2 crm:0 op2:3 in the
+> incoming stream but unknown on the destination, fail migration
 
-If this is going to be wider usage than just inside one
-file, then I think we should be a bit pickier about it:
+I think it would be helpful to be slightly more specific in
+both these messages by saying "system register", so in this
+example
 
- * brief doc comment in the header file
- * use the standard type "char *", not the glib funny typedef
+qemu-system-aarch64: cpu_post_load: system register op0:3 op1:0 crn:2
+crm:0 op2:3 in the
+incoming stream but unknown on the destination: fail migration
 
->  #endif
-> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
-> index ea67deea520..b13bb055e0e 100644
-> --- a/target/arm/kvm-stub.c
-> +++ b/target/arm/kvm-stub.c
-> @@ -129,3 +129,9 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
->  {
->      g_assert_not_reached();
->  }
-> +
-> +gchar *kvm_print_register_name(uint64_t regidx)
-> +{
-> +    g_assert_not_reached();
-> +    return NULL;
+and we should use ":" rather than "," at the end between
+the error and the bit about what we're going to do.
 
-Don't put code after a g_assert_not_reached().
-
-> +}
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

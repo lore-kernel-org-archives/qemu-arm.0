@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69FFEC145E
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 14:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB58CEC1459
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 14:42:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxQup-0001eY-Aq; Tue, 03 Mar 2026 09:40:03 -0500
+	id 1vxQuj-0001YC-I5; Tue, 03 Mar 2026 09:39:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxQum-0001bb-6W
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:40:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
+ id 1vxQuX-0001Rk-FP; Tue, 03 Mar 2026 09:39:45 -0500
+Received: from out203-205-221-153.mail.qq.com ([203.205.221.153])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxQuj-0002Cy-Tc
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 09:39:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772548797;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uqEFRcehEOqfJB6L6KH6l941FvMcz+lCVI77QQ4Ra1c=;
- b=YDhh0bEJhPEAcnVr0qmWfabRmTaoYez4Zd4k7oMpWO9f9y/yVYkgV+e9oMJZnUQZTC6koq
- +4IeUGXVvVqgs9Fz2ABQzwfYpUz4QrJ0v9pDnk57EbBcm7wK6yqeYpbEFnGGGzfLFH4Bg8
- DlCe5aTKS8ZQIZeXZ5eTVamjOpIjIhA=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-575-hQa4N-Z0PDyxOlacah-3qw-1; Tue,
- 03 Mar 2026 09:39:54 -0500
-X-MC-Unique: hQa4N-Z0PDyxOlacah-3qw-1
-X-Mimecast-MFC-AGG-ID: hQa4N-Z0PDyxOlacah-3qw_1772548792
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C71661800266; Tue,  3 Mar 2026 14:39:52 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.45.224.89])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2C3CB30001B9; Tue,  3 Mar 2026 14:39:48 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
- sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
- alex.bennee@linaro.org
-Subject: [PATCH v2 5/7] target/arm/machine: Trace cpreg names which do not
- match on migration
-Date: Tue,  3 Mar 2026 15:36:37 +0100
-Message-ID: <20260303143928.1747116-6-eric.auger@redhat.com>
-In-Reply-To: <20260303143928.1747116-1-eric.auger@redhat.com>
-References: <20260303143928.1747116-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <1486344514@qq.com>)
+ id 1vxQuO-00025d-0z; Tue, 03 Mar 2026 09:39:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+ t=1772548764; bh=4s6GhIz/LSpZIO/hl6zrWpB0pLOj22cJ8alqObYUCYE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=oECznp9DgI7Y32HIvaCPO2pUWM/tjeF584efykBqOWiGzOiICtdE5eOHEZBic0NTe
+ 3/ULg+gVvh6m4rweVyBYsYeuC7IJDLq3CK4fH1+nPElxYlgzjuQ3QM2eSHDwdwzB0+
+ AsFUnjQRBJB2J3jQUJxTPziQgnX7oojN3VxrLxt4=
+Received: from archlinux ([180.154.0.12])
+ by newxmesmtplogicsvrszb43-0.qq.com (NewEsmtp) with SMTP
+ id 7F901C7D; Tue, 03 Mar 2026 22:31:57 +0800
+X-QQ-mid: xmsmtpt1772548319twfy3fuzl
+Message-ID: <tencent_AEAA700C0455D77E3FEC6487B62AD68A5108@qq.com>
+X-QQ-XMAILINFO: NXhC3iKcc9GRKPcWaPK1oUbBKYfATGRD9jbs4Kx9OgwGhzS8A3U2M1TIHPGr2D
+ UyDLem6g9EwFimTfh6KVCZBNcME+aHcaErVze9+2KzU9nWNjYrHPbit/deOB5IzNPdmgeSepgev0
+ FujB2hMQl25mV7jnpZ/4opvU0D+NHZlC2UWBe7zb1xtVmPqE/hXvSDfB/N3h+fITjjuw1oJA4YtC
+ HtF38UL9WAJKZQZDDi0K1e/BnhMtDgttH/SzCv2SbyXdVz4gvB2SwT8v6yyrQOPm/FEPXZ7Dzy/g
+ +qGVQ3yJoGl9JXeliSr67JZtIGn7E7viK9Qybt+2ZkUDoqZ/lI8Ng1WpqYF/R03WN1yT7+r7yYcU
+ 6hcWC6LdoGA+W72dz+zPSmNSJC5Bl40vRm3NKeZRJu9513tTgFWPgeosvB8CtiKpiFvHcIskJD9o
+ anxQl7a/TjgAgjfzEK6CnlL+bSjQsUHshIlNjLtAc/t6bLgtUD2O27mionAv560jk7AYC5sZnTPG
+ RkA+CSP13YFmqMfJasITlT5PqD/pYgH/IfdSfQO6kmFB7L3itt3zX97KuAYyZfM29RFvnrHpkCCE
+ MaJBBDTr114NUl/469axT0lXPb4OJTR3tlRMMBABZanRrXRNaoaAH8DhcV3AoZrbr213Go2Oj5m1
+ AghbmIYcGDJ9p8wHEPKttbvxVcwKcTEFr/P1o71REcs044nAyUV98eN15R+kA88NUP8/KVxQt/WP
+ WMQ+VsvYNeMWiuKEgEDGm9Hbg6oItC31f/oaoBf48DeDo+H0UsSh6x4toMFSi++PKL4eTDaTINBh
+ aGy7L2YL4b5giRnoV6uazrR/p9y78xH5fhv0V8YX61FvT3osxdu9xmLkY/PrVLTiinBnhbapWPhs
+ EyE4xRMg1vHrT36xRzIcbAjjGRyJ97kvJBXm9H4NA763gqoAZPV/TbWo33VB9s45+DQPpVQn4okh
+ 8QzRkKsbRI8EjOnNUPS4Hkle5+r7rtO/3PVmzAh9eFp+pVYtDpeOGqJ8hQcyg3rGMNpQWDEtq8RW
+ DAg6wXz6XwkEtnd22Z3rOxMwPsnvvQJB0Ju+mCQ+FerMEx4qtTkQKOb7aKCYncfTF6h0m9og==
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+From: Yucai Liu <1486344514@qq.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, jcd@tribudubois.net,
+ pbonzini@redhat.com
+Subject: [PATCH v2 2/3] hw/display: Build i.MX6UL LCDIF via its own config
+ symbol
+Date: Tue,  3 Mar 2026 22:31:55 +0800
+X-OQ-MSGID: <20260303143157.80437-3-1486344514@qq.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260303143157.80437-1-1486344514@qq.com>
+References: <20260303143157.80437-1-1486344514@qq.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: kW-MTvbcZ124p_XzVOOsMenhjefqMb3E7BYAc5Mfljc_1772548792
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
+Received-SPF: pass client-ip=203.205.221.153; envelope-from=1486344514@qq.com;
+ helo=out203-205-221-153.mail.qq.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
 X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,84 +84,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Whenever there is a mismatch between cpreg indexes in the incoming
-stream and cpregs exposed by the destination output the name of
-the register. We use a print_register_name() wrapper helper. At the
-moment we are only able to do a nice decoding of the index for
-KVM regs.
+Introduce CONFIG_IMX6UL_LCDIF in hw/display/Kconfig and compile\nthe device from hw/display/meson.build.\n\nStop compiling the LCDIF source from hw/arm/meson.build so the\ndisplay device follows the standard per-device symbol pattern.
 
-Without this patch, the error would be:
-qemu-system-aarch64: load of migration failed: Operation not permitted:
-error while loading state for instance 0x0 of device 'cpu': post load
-hook failed for: cpu, version_id: 22, minimum_version: 22, ret: -1
-which is not helpful for the end user to understand the actual
-issue.
-
-This patch adds the actual information about the probme:
-qemu-system-aarch64: cpu_post_load: system register
-op0:3 op1:0 crn:2 crm:0 op2:3 in the incoming stream but
-unknown on the destination, fail migration
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
+Signed-off-by: Yucai Liu <1486344514@qq.com>
 ---
+ hw/arm/meson.build     | 4 +++-
+ hw/display/Kconfig     | 4 ++++
+ hw/display/meson.build | 1 +
+ 3 files changed, 8 insertions(+), 1 deletion(-)
 
-v1 -> v2:
-- replaced ',' by ':' in the traces
-- added system register in print_register_name when kvm is not enabled
----
- target/arm/machine.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index aa617dd64db..7dd649e8f64 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1,5 +1,6 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "cpregs.h"
- #include "trace.h"
- #include "qemu/error-report.h"
- #include "system/kvm.h"
-@@ -1044,6 +1045,15 @@ static int cpu_pre_load(void *opaque)
-     return 0;
- }
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 47cdc51d13..59ef60946b 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -87,7 +87,9 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+ arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+ arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
+-arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
++arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL',
++                  if_true: files('fsl-imx6ul.c',
++                                 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
+   'xen-stubs.c',
+diff --git a/hw/display/Kconfig b/hw/display/Kconfig
+index 1e95ab28ef..b3593fe981 100644
+--- a/hw/display/Kconfig
++++ b/hw/display/Kconfig
+@@ -25,6 +25,10 @@ config PL110
+     bool
+     select FRAMEBUFFER
  
-+static gchar *print_register_name(uint64_t kvm_regidx)
-+{
-+    if (kvm_enabled()) {
-+        return kvm_print_register_name(kvm_regidx);
-+    } else {
-+        return g_strdup_printf("system register 0x%x", kvm_to_cpreg_id(kvm_regidx));
-+    }
-+}
++config IMX6UL_LCDIF
++    bool
++    select FRAMEBUFFER
 +
- static int cpu_post_load(void *opaque, int version_id)
- {
-     ARMCPU *cpu = opaque;
-@@ -1082,11 +1092,18 @@ static int cpu_post_load(void *opaque, int version_id)
-     for (i = 0, v = 0; i < cpu->cpreg_array_len
-              && v < cpu->cpreg_vmstate_array_len; i++) {
-         if (cpu->cpreg_vmstate_indexes[v] > cpu->cpreg_indexes[i]) {
--            /* register in our list but not incoming : skip it */
-+            g_autofree gchar *name = print_register_name(cpu->cpreg_indexes[i]);
-+
-+            warn_report("%s: %s "
-+                        "expected by the destination but not in the incoming stream: "
-+                        "skip it", __func__, name);
-             continue;
-         }
-         if (cpu->cpreg_vmstate_indexes[v] < cpu->cpreg_indexes[i]) {
--            /* register in their list but not ours: fail migration */
-+            g_autofree gchar *name = print_register_name(cpu->cpreg_vmstate_indexes[v]);
-+
-+            error_report("%s: %s in the incoming stream but unknown on the destination: "
-+                         "fail migration", __func__, name);
-             return -1;
-         }
-         /* matching register, copy the value over */
+ config SII9022
+     bool
+     depends on I2C
+diff --git a/hw/display/meson.build b/hw/display/meson.build
+index 90e6c041bd..9b0b1ddf63 100644
+--- a/hw/display/meson.build
++++ b/hw/display/meson.build
+@@ -11,6 +11,7 @@ system_ss.add(when: ['CONFIG_VGA_CIRRUS', 'CONFIG_VGA_ISA'], if_true: files('cir
+ system_ss.add(when: 'CONFIG_G364FB', if_true: files('g364fb.c'))
+ system_ss.add(when: 'CONFIG_JAZZ_LED', if_true: files('jazz_led.c'))
+ system_ss.add(when: 'CONFIG_PL110', if_true: files('pl110.c'))
++system_ss.add(when: 'CONFIG_IMX6UL_LCDIF', if_true: files('imx6ul_lcdif.c'))
+ system_ss.add(when: 'CONFIG_SII9022', if_true: files('sii9022.c'))
+ system_ss.add(when: 'CONFIG_SSD0303', if_true: files('ssd0303.c'))
+ system_ss.add(when: 'CONFIG_SSD0323', if_true: files('ssd0323.c'))
 -- 
 2.53.0
 

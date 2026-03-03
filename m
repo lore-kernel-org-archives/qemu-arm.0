@@ -4,91 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 252FEEC1433
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CE6EC1431
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:29:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNuZ-0007CN-47; Tue, 03 Mar 2026 06:27:35 -0500
+	id 1vxNvp-0007my-41; Tue, 03 Mar 2026 06:28:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNuX-0007Bw-KE
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:27:33 -0500
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ id 1vxNvn-0007mF-Pt
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:28:51 -0500
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNuW-0006aE-2Q
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:27:33 -0500
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-64ad9fabd08so4485252d50.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:27:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772537251; cv=none;
+ id 1vxNvm-0006gv-ED
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:28:51 -0500
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-64c9cabfe5dso6715589d50.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:28:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772537329; cv=none;
  d=google.com; s=arc-20240605;
- b=FGTQGqEdJT7vm1/nIyr6FsaIvHsM03MzOShDX5xeLjop8bVwJAYMnD8hEtV0e/fS6t
- fdL2PWkKkCZKi3qGEAZP8cCLhGFb1/D6VlPy2L3jhsBEHJf1B7ZV9uJ8FZwQyN2hgRls
- rlXB83iryRqQzdzPW7UoRHLPZmDVbCvzBLOE2Ri+OwCFW8501nwKdEDlBJZ4kDAjSgl8
- cLe26OWutwMLtqC0H381mn87fSjswHdAPzjbM76nt/JowANr4y9RbVkQILmrrDJDO1b2
- 4Ceke2qZk1DFsJB50PKk7/klt1l4e/yl4AzpF7khK9IQ0BX2YIyxnIxB7rPB9e4Vn8Fw
- 6jag==
+ b=Qpmr6Gc94NBjxlxoqfqeJ5pVFVFCMKkFFBrPmkxajeatcYD0ECy1GF8VAnR+mxi2+C
+ htAOQB+Fb+1AovJkYFezHRBM27DOKuWaOm6ifYO1pd4dJHQKiOIKzkKZo/2GfGtrMhAr
+ h0x9T0UAL6m3Z57x/8csSn3oxkeJ+AF4huE1zOd9h+arEFbrYjz6IbfP7HXkIxGh47yA
+ rEOwIfAJcwJBwWVvH9v7XJAzi537thv1iDM3OiXoNNb1pwDWujZHAkcCh9MSAxPRNp9F
+ L6oyNZp/YcQwZK1wB8kug4Tj2YPuJo8dOk+is+NwA8YP7dQz/nurzuYGQez73nWkRab5
+ Nhjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=bwl/UmuqhM4/g/IhuVmS9Kn5HzDfeBwe3PBmNPfW3GE=;
- fh=Cxtn1B0HozxY6XY2nPp3WbyFlDuhGu2mywMp8FChY9Q=;
- b=crcLjJMFRiZ9aZzvKhqZdyzf9mg5qQSRKHa4jrEoIFN3cTSWuzKiaN+6vilIMXW5zd
- 3FpFcYZvVdGKUr+6CSwRpLjhaSRpX5ZA52guYC9v6jl/jKCG6gJOcgbH40cDAydndgSN
- 0ax/0LhDlNwAkq4ipCPMZTySysFfJF7u1Xxcx1RqTRwsLvgWVedFSiwuO3Lmtk13vBHh
- Px1hOr2t12QqLLRHqZPPlJJlts7gSEzaH3rP1yCDdWzRBDUBhkk2oHoSfuQPtltn0V93
- E8cGEsmEQpRcC6yUwE7UQZEqPHlCgaY1TbKJndkgBFWThUGK2Iv6gjcgbTcUs1qyOT+k
- 2/ig==; darn=nongnu.org
+ bh=+2b6TbtolqEqUHYCnJaMhaWWIYLpTc1S6n8wYDRGc5Q=;
+ fh=0yT/+P0OSCosfONH02tSTLn3VtGLA+PfhBlwm1rhsHg=;
+ b=TPFyCjcNfjE0nG0sE3VxSoNdWwOkOFQZJ6Wn76ShQtsgsxIC/i0hP8aWfn/WlcI7hr
+ 29yTIoqj4TysWXQDe4ZWThAp69ubEpWa8CVX8qjPyhHsJ1lC1I0UqLLM9Zp1kkTCE7nJ
+ SMXdXYWGBhwBU5VKgqqK/5OYPcXSuF7o+4pApF5OdlKBMY8B4X+Fn3+jGwvqE1dtun0+
+ fzq/M35Jh6KrkUr4UqEqjmtV83uax0tzX3Gb1kfI65ZfMffaRa00ArJaHMMp+z4yQ+Ua
+ MucAZ7XH0/ftaGbO70QziWK6yajD6ieZrxsTnaF9Q3Pypt+44llbHVfmAcBXMq0HL+kU
+ YcSQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772537251; x=1773142051; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772537329; x=1773142129; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bwl/UmuqhM4/g/IhuVmS9Kn5HzDfeBwe3PBmNPfW3GE=;
- b=aRurYto2Ol4H6UgsUYDOSzQmcB4evoSjbaTqgJYgpuP68SuE1NXblDumdVcapptdDl
- r2TKvXXmIML43YZ2u0olz7DFHwpsK9UmzNvugKgdP6mVTY8ewe0oEUMbrBGtO2SIUA1F
- 3sUYqTzFhfLrVEpI/d5dyAeAdr9uhw3ApTqC8aEMfB9PifgoNjrrJ44kEtFlZAN6Si+t
- UbNKjOcb3mbGU/keo5v/l0djfqNnVkzMlHdIdXTb/pKPg5r3F73BozpLrEdoGMyC+WiD
- Wgnz20VIsziBF0TdauTpaLIk4kg4wRbnYqg8UbecYToN5RuiSyHrPGnxK4qevq5N5BIV
- UmQQ==
+ bh=+2b6TbtolqEqUHYCnJaMhaWWIYLpTc1S6n8wYDRGc5Q=;
+ b=EMjVTD6BKx5zJRDFMR20Fhl/G2mCMn9Vhiy7bUk/wUzHtlTPasKQHWpxphTXppYWcN
+ UTn9x4lgcnmOIv5hCRI6GTwApHcmEO69BIZhi9DgglczrQBZmYXg2yQ0x7jN9xyJraY0
+ ueNz72ul+PJOxeDsN8dyiMZCdfneVAGGK1VTTEb7erskU3mRYqntWCftok0UzCO81DqI
+ aO7FMwdJyW4vhXASAzfh7aj108tUbQTvm86wAnjQHBVOYweaXQbZ18SowJJ2buMDida2
+ HLISfXkKQ/HYmjREGjJN6+gkNaynosL8rqb4nPJMKkvNkILvG1HLVZWVFCS6FY3d/TAV
+ Eo2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772537251; x=1773142051;
+ d=1e100.net; s=20230601; t=1772537329; x=1773142129;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bwl/UmuqhM4/g/IhuVmS9Kn5HzDfeBwe3PBmNPfW3GE=;
- b=Uil36Ugn2ASbzh1ERRTHQL3xuHi/jwzXoODGShosiiRw9e0mpoDg1Y22+BXSxnXtOp
- K2uyqBN9PefdBvWute8JEeh6uFFnPvop1vGVvxjCmFTBE53ceLd5bI1yekoTJIgHcNAp
- IRIRsQNPbLtkc4OH83pcJhPe3b4ErlIu18LrMrSO/Cmx15yXzYf00fD3i6QBBXGbzRav
- MqI15io6ofTZbTvDA8IWgGBYAu7jKT2ACY8buClVPHgFnaN26oNXsYjV+t+f2T2+7qVk
- V9gvdvhR225qJvcA1mJFmR2uJTM17UcfFKKDic512ZHHv1tpxYO4dNHj0LU5todvceyl
- 77Kw==
+ bh=+2b6TbtolqEqUHYCnJaMhaWWIYLpTc1S6n8wYDRGc5Q=;
+ b=jwc8exNUSKK1HArwd0KoCisVtxGIuTfpjaFrDphBBLabhvmvXDNoJmsxv9QtYJnzQ+
+ eNl9E+CZZLplBs1fenmc+IH9K7TlqR4zwuCNjZVNabWOLb41QN8jOvjOKNn+4XE3c+h9
+ Nn34rYtbDkKRgHAJPP85niI1zlSA6DpDvbhRstj2yecCG1HFipv+53eGyBcLAw0havFY
+ 0h4HoHVHnYIaEC6IKKR2Cgku+eXlGncBdYLE4lIrrsYfWQOIJT4gkM+mKYRmiEGAH0dZ
+ rSC9FHpacU1+pKSkj7xA+h7OZ96fEUWmF9v6hKcFxigRKfKeCP42CWEbeiVtbH9yolu9
+ lzMw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU02dkKZpj3/O1gI80jpEMuR0i6TWTBdLI8QLShROJLb9/JbdEJTCh80J7sawkdettmPlqAvJiORw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+w9vIBiB4F2wxbaneQqS6vENAXG+sb1duxZCqfhBlvf8fESlR
- udSTaGTbb9EuNeSWpS+SYKrzP6lin2SA3txm5ooZSTu3To5qLwG+ZhmIGVin5vyPLqe2B0bgQEG
- HNql9Cnic3jHdLovqTJI4WCUGaE3LKJAVtxTIwZidwA==
-X-Gm-Gg: ATEYQzywG1l3tmuifmc+/CooEz2GR2OYCLQOTYwpCTt3l0eoUb6Iw5eZM/ONQOmQiSP
- fVZ8x5YMTnch1pZI7w9JycSeejVoXIRm3haIXvpnUTf+1AGVIVHCGMq4WZJpmViOSo2j/F9QmSC
- 19HZNr0Kj5ULWyAwikbzPzG+mVCl/vfhiFrPPmcwSMhvHdQ3GEQZ1eBFkHMsdgiC2ZSiKWScky/
- omuXAj7uI5U4Npv/zPe/JU58+zsZOr5FbIu1KocquFMygEmtgBeCmvwS735V088Xn2nA62rBlZ2
- 28cV71kYWXg65VOQhFCO2D8uS0NKHBxqaD95tTUbuzoUh1rkGvt5CJpYn4x0A2gooqg=
-X-Received: by 2002:a05:690e:175c:b0:64c:97ad:17dc with SMTP id
- 956f58d0204a3-64cc22c28damr9071813d50.66.1772537250860; Tue, 03 Mar 2026
- 03:27:30 -0800 (PST)
+ AJvYcCWa2C8A5xHdM5wX39pVmKbuRBLiGCXmHTGdUlliP8CWT3ateax9vC60Zw3GX2PyUWbvE/lYcgtW2w==@nongnu.org
+X-Gm-Message-State: AOJu0YwMO06kmrmn0MeWlnsU/6dxlajhUXa10mZxbB/J8dP6g5RAFdky
+ XCk/Wh3T7cFnkS8pW7eCaWBS5AsWEV+f6y7MOdPA75HVOMHentY9xDHIyJsgJ0AMLoOhxc2wxdO
+ FWwnZ0qBC6sEBjXj4I2Qs/YHJh5oDkdQTwomVrO7r5V3JNUMRPIC7
+X-Gm-Gg: ATEYQzzNYlwrF2nakvvB87iFHlW1g3i6yGclouGW6/g+UVGXmVOKZVbmGFAMBaNfSKa
+ Xwu+4CIuzeo9TeVcaDQGzfK6MIjCyl2l5Ec5+WPozKbyGj47K9q18OSRcsAIdEE/tltiWfYQ8J6
+ AETWQGBJOVU1l8QwSovgBsMJKtLW2G/y6Em0RxeiW2O233pKg7eG8xULdK1jfH0KLYwE8feFQJW
+ jpkhwxs2yw0vob5UWuoenT+RdS6rqXJoMpKgJ066/0KNbAA2xXp/nhCWQ9KxeoHnkTLewIfTXjC
+ 2aX868EVp4Wrquh9lsHLyKTxHHIUZuBY+LYoR7F6nQKCGncZp37ko7dfYGyt4ZhWHzY=
+X-Received: by 2002:a05:690e:bcb:b0:64a:d3b2:d3a2 with SMTP id
+ 956f58d0204a3-64cedc262e0mr1043496d50.27.1772537329295; Tue, 03 Mar 2026
+ 03:28:49 -0800 (PST)
 MIME-Version: 1.0
 References: <20260302220254.1166849-1-shentey@gmail.com>
- <20260302220254.1166849-6-shentey@gmail.com>
-In-Reply-To: <20260302220254.1166849-6-shentey@gmail.com>
+ <20260302220254.1166849-7-shentey@gmail.com>
+In-Reply-To: <20260302220254.1166849-7-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 11:27:18 +0000
-X-Gm-Features: AaiRm51fNJHF0Io8q29dac6SID0toyi7KasfV9xF9UX8TlFCT4VmH-QqA6xZEyQ
-Message-ID: <CAFEAcA_Y11BUgYZ9erfSgDmak5E9CdxHaAemj+7ntscDGLUTVA@mail.gmail.com>
-Subject: Re: [PATCH 05/12] hw/char/serial: Remove unhelpful comment
+Date: Tue, 3 Mar 2026 11:28:38 +0000
+X-Gm-Features: AaiRm52xJmXiTl3H3wJ3imUf6rNuejBCuaWciDbNh6ErOqVpoz8mJ_vdO97cyI0
+Message-ID: <CAFEAcA__4Tc=QzZb4rUwWEE2s9naam2CawHZVyE4oy-GYMLu5A@mail.gmail.com>
+Subject: Re: [PATCH 06/12] hw/char/serial: Add constants for Line Control
+ Register
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org, 
@@ -102,8 +103,8 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
  Troy Lee <leetroy@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,31 +129,13 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Mon, 2 Mar 2026 at 22:03, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> There is no "is_load" flag and one can tell from the method name what
-> the method does. Remove this unhelpful comment.
+> Substitute some magic numbers by named constants for slightly improved
+> readability.
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  hw/char/serial.c | 3 ---
->  1 file changed, 3 deletions(-)
->
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index 2c558cb9fc..f73de1ae4f 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -281,9 +281,6 @@ static void serial_xmit(SerialState *s)
->      s->lsr |= UART_LSR_TEMT;
->  }
->
-> -/* Setter for FCR.
-> -   is_load flag means, that value is set while loading VM state
-> -   and interrupt should not be invoked */
->  static void serial_write_fcr(SerialState *s, uint8_t val)
->  {
->      /* Set fcr - val only has the bits that are supposed to "stick" */
-
-This must be an ancient stale comment from before the device
-was converted to vmstate.
+>  hw/char/serial.c | 17 +++++++++++------
+>  1 file changed, 11 insertions(+), 6 deletions(-)
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

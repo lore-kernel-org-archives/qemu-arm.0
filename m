@@ -4,136 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA080E67A8D
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 08:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7089EC047B
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:26:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxL20-0006kP-0C; Tue, 03 Mar 2026 03:23:04 -0500
+	id 1vxM0t-0003ls-59; Tue, 03 Mar 2026 04:25:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vxL1x-0006je-0M; Tue, 03 Mar 2026 03:23:02 -0500
-Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vxM0m-0003hx-Hc
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:25:54 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vxL1v-000208-BK; Tue, 03 Mar 2026 03:23:00 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=VRemmH4TpnnHDeEPPUjcY4Nm/9sg4ThIBfkpl9HifUpcM1dGyM4iechDmqkI4FCEC8VUjjb29QUtG01TDygUH4J/tolPb8s7B73pJMr6s6dVDTl6E4DHCV9I8ilZx0CYVNhbn600J5ZqZwNfxnSYPIF+k7KJlH6cHGoVSvFPCuNWRWgRRfz0f4rcAIMtKhtHk6w5Gmu6Xj4yiYl/0H2Llzp283GzEFEWNbOOQhd8XL6k+LRtHUlbJZcq1o3fkPxLxdo7I0rV7iG+X1Rp8SYwebe4xLMXRD0hE/1YdYCF8FSeLw2d9/Zl4zAj1qfVwRTjxXJPiHjWxQ0+SiCKdCOXaQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a11sNlB6F6JYuHI9kEsYPjCQLI3NizDPuLPB8b6eDag=;
- b=BQ3IXOlIcmyjXy4iIv5WFLqQBoNDiIcqupB4R5pscjhOBHUjRj1z2SRd8dHsExg3P3AMMxCFXQ3WBa7kRkAE+FuoX3H173fAN+DC/k+ZA60PvoZPIL/JB03dAsNT0cAlVLfSnDwG6Km0bR+z1YA0VpXJxoOF++GfnDcKJ+zRmCW8j3VUvNImYibLLExG9S0qS7C3UhREjuAq1/3k65ckJBROEEOq6KOgyQv47UxRNRoPHrfv3afCIXy1WcgLc24l9f+ZeqT2ti3ooJxr/5EJmptF3T0Dpms1bDnYB1ZMIiLk1AUly/B6kR2dANz4c9m3iE9aV4Pg6LjQ8mDMko9qOA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a11sNlB6F6JYuHI9kEsYPjCQLI3NizDPuLPB8b6eDag=;
- b=ckSpXktlLHiT9KSBnxD9r5CApEeXHPlQ9xoNr7nMQF05j4Gxc+iojh1ufxDaggdyeRyGrTHumqR18ijmWvmCiUn+4aCpjgYIcttCtRAorsvyLp9cxp+sjCBLK3FhA0oE9X23hXRtH+MaNbUYzpaTcyhnid9PdOB0uPCXFldZ3xjVLvABGlBljj/ks50RMuSNWy0kWZJ2lZgbnLmGHPJFSfRO7wwq/vCgLedVp1J3by0Cx6PBFUZpvotifsjLFop5t+XaWELOW1k5yV5hgjoGghmf7E7gTi6Pd6AqWcRijjr3i+h6BQOiQOS0iymEgVp2SU4aTxAMD9srp7LnC7Zk0g==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by SA1PR12MB8094.namprd12.prod.outlook.com (2603:10b6:806:336::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.22; Tue, 3 Mar
- 2026 08:22:51 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9654.022; Tue, 3 Mar 2026
- 08:22:51 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
- <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
- <zhenzhong.duan@intel.com>, "philmd@linaro.org" <philmd@linaro.org>,
- Krishnakant Jaju <kjaju@nvidia.com>
-Subject: RE: [PATCH v8 0/5] vEVENTQ support for accelerated SMMUv3 devices
-Thread-Topic: [PATCH v8 0/5] vEVENTQ support for accelerated SMMUv3 devices
-Thread-Index: AQHcpvxKhGTEzUemxU+DutzCxafRw7WcfjJg
-Date: Tue, 3 Mar 2026 08:22:51 +0000
-Message-ID: <CH3PR12MB7548985B33D65D626DFD840BAB7FA@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260226084456.112142-1-skolothumtho@nvidia.com>
-In-Reply-To: <20260226084456.112142-1-skolothumtho@nvidia.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|SA1PR12MB8094:EE_
-x-ms-office365-filtering-correlation-id: ed79a484-9078-484d-b782-08de78fe0fad
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|38070700021|7053199007; 
-x-microsoft-antispam-message-info: PNI3Z9v6apDN5jkeukNRsRA6QMbox3nk5wEXcBD9LKLI9ybstOVEKUSGqCtFCaBcaStbuAOT/g5JhAFH1cyPTOw5g3ham7uP5jujqRVgXaNMSv35KfkgHfINSLGUT5kllssKSvVJg3wqYpQzB34Zo1wy0C/GK3jBGBgS1UyWoAoyabt5E0Uq5S9a8CdWL/NcHpv0mIHpRJ1cfMgj9kNjutmuGe2hJsHCXQGasrzeTDUj202X3CxEwfv2RBHMU9iEBMqtBvx7jdWdNHNuAL7Ml+49vvYFWyEU77BbINkcTGbCczWh00nK8g7u8SelEZ1cMBfmSrTy5/eB7IbpkzHRo6ZJgxmJWoZe0PCJcG4bbnbBL21keliUIRUL/MiUErC1Cu582nDIRQU2ujl1s6EwUthonuQL0k8h6dKFPra0tuLnXkh9HGOq8/qImQaq64SEjuGKN5D4GLzuWIO/9AR2x7DvSEJcoK7bAQgWGDLvesedeRSaDfYRwLgfaGGuFrIMskxR6fd7qMg1EP6sw1Xh1i14mPxWmkFWwMxSLMfIdf90PIabyGQhmsbhExoR/9UOkdnWG747rQK11VhMkZRdwkxengbuycIDVHNa1F/ovd7bbYtDNqsgJ7kQQRBXx7PbUb5sPgmRFP7XegRO5dQ+7l9auxT0VcIIvhve0Tn4ApE8TQEi+fRhSI5yoI+2rP8qPHrtx8CeaH31LHDbA96LQQemCIcfnG/yM7t26JcFRPCxOUR5TUbf1SkWiUT3CVXcjzkmrFm7TL0fZorD6Uy7YWaOoqZywzadYIGQNrA2a2c=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(38070700021)(7053199007); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?9HAOB9arncBoLtwb6Ti9iNeRJ6sAD8bkrkWfOmnDZq/TjI7UoHnjgVf2M4YL?=
- =?us-ascii?Q?5KM092DBEngWjMnO9zXnMr5uzGryyuS1s0tvDq43+QQ/WOwH+2Y74a1h20GK?=
- =?us-ascii?Q?xPaCFiAPKQykKi/EKLepBuYadcxcdYM4BSiaUl4KNGCOa9qse8Gxx6oTMCRg?=
- =?us-ascii?Q?u4ZI3v3xfmJXmjRFSj4c+yfSHRlsxzyEV9AnngMcMvx7ge7k/A+9d2MBbiAD?=
- =?us-ascii?Q?U6ri+Mhc2b4RUwMAZJLHozdywGsX3Hb2Zq9l5/g4L5bveUv5pEXxAeNhD2lc?=
- =?us-ascii?Q?tZXJGoFnMNuAY7jUmxHu98eXaWrVhbpp6Zl4nudVEagmB5dKHdLgbGTpvdNo?=
- =?us-ascii?Q?jDuyEtj7Ot+BeQKFOeovDfnMJOlLbzft2zpUFPOEjKkfNZc8A0M76z4USrM0?=
- =?us-ascii?Q?ik0896VfTWXesz9gu7iSJaVHERzDP6nPS9rBXjHmO/ViexMF2YM9OPZDgaef?=
- =?us-ascii?Q?oqwZxXL04mOzi4GYjZcsCxbHen82m6bF71EINzcQqccLYLjFFXu0UGHEVkxM?=
- =?us-ascii?Q?38KGDbe9uOmlJGQGtIMkQe/whoLqbFo8amRC6rEgU3UVTE26dVRFsrzyMvch?=
- =?us-ascii?Q?E73WW9yhJFjOhkHU2XtybttUkDX9Xfgrrc9JzhmkWSiXZgiIYOxt8EpQJ29b?=
- =?us-ascii?Q?33jnhnG14dum7CLJoJMbFCOqzvRYtNwkGcNI6f2Rn3QjXP25SmER5vj5rEgs?=
- =?us-ascii?Q?O1Zz2HvIfNp5y28EY3pPY5weRVRxI7q+n3zyLEZuri4/uZ00juDo54adD6Zt?=
- =?us-ascii?Q?uN8qqYhmOGdfXw3IEGTJk2g7rvreSAMsbm3SnUOnxwJltbptHhXgMkGh51s4?=
- =?us-ascii?Q?rZgaFBIAle3BE1RegFlLAf0Jgdp2lWAhbAUZQKhkPvdvZ9Nk3a39leJW7giX?=
- =?us-ascii?Q?tyVdaZHEvkh0nFAWdGe3WG8S3MrFCD7pCLxu0PJgQMOgb4U0XtPVWdAH5GOC?=
- =?us-ascii?Q?EP5Nps5pyKkOxG4YFkfg/5ujXkbb3LtiKOE5k0ZVwoTeQK3sGIAqgJmGXdt8?=
- =?us-ascii?Q?pSZPxyJtUISLQOLlhBkh+Tri7RzhhYmr7FDLircnnKMPS3hA1P+SDLqHSPfE?=
- =?us-ascii?Q?A+jZOoyFDWvOjbi5DDaYfoN6fyXJwFODUwOOmedS5b5NZjMH81QxQzIM0end?=
- =?us-ascii?Q?lVz97i9SHDlrywBQfaMAUtQczcKwit/0vxdusEiJ0p5cbOrYGh8VBEPIguZm?=
- =?us-ascii?Q?ppedNaA0cyeHtNerYi43SD8UG/UBD9ZC3sxY0C9UBrv5AjRuQA0yR8xewLwJ?=
- =?us-ascii?Q?rJz5fNOl75hDjUlgr86+gFiNdTwhADehxK8bvTHQC49wcOunj4IJrXMQ93jA?=
- =?us-ascii?Q?kd32PH6zBSpTsYzhf7T1h3jhxI0AaqO4mBMfSEu13uFfBXcyI6S8T54en8DW?=
- =?us-ascii?Q?iAcDEcgDUP2ZjV9aIGrgoRYW286duDUc+70uGU6wgG9/fyv7N2mEG+gKMXE1?=
- =?us-ascii?Q?SFkUOkuASDYVjJdZhMx/Td+C+XYxrIfIeRVSUxDIgiwwRC0rS74Y/mmFRRxl?=
- =?us-ascii?Q?w+3gK1LVpLWONqunQypL8ltmO5lP1IMd4vkX4Syy3EL7L9Zjflp1r+hNNEg3?=
- =?us-ascii?Q?gYE04JvVNLa/PSY2hm4T7o61TNaEAdwTWONJk/9ICyw56roMVsTxxEWshA7x?=
- =?us-ascii?Q?8B2cOtCbOYYIcaRASMzm7jgTP0w+lGcHmuSK/bzIKHA8WZTCsdlEsmwf63L1?=
- =?us-ascii?Q?OI/zxeI9OpjuGYfyIm4QdMQJW5OX0LcYaBu0/xq4YvCYVfBax4BjBeMlLTQE?=
- =?us-ascii?Q?Ggw8D1E9Ow=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vxM0g-0004O2-Em
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:25:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772529944;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=f0nviQmyfoxkGSC8TIhGI+gJFiQb12ZDuPZvnBgq6io=;
+ b=QTsWQTIu/ddJpvjQ0ilM+JtzNeLDIyy3X47FfK5eJ1osdPwruMMSK44yEqozyiRgZYwhY8
+ ZoLTxxkrCu+TBVmfdVpKeFr0gcXpL2mdhJjD9gBwq2KTo9Vdi/l1FZ/mYDxiZeN4TUro0+
+ azDFHqEoMoRJhT1keFbLUss1seW6pmE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-457-NKcZjf8uPXuXYW8sYkOm4Q-1; Tue,
+ 03 Mar 2026 04:25:40 -0500
+X-MC-Unique: NKcZjf8uPXuXYW8sYkOm4Q-1
+X-Mimecast-MFC-AGG-ID: NKcZjf8uPXuXYW8sYkOm4Q_1772529939
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CFE46180049D; Tue,  3 Mar 2026 09:25:38 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3CB3C30001B9; Tue,  3 Mar 2026 09:25:34 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
+ zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+Subject: [PATCH v2 00/21] Introduce ACPI watchdog for Q35 and arm/virt boards
+Date: Tue,  3 Mar 2026 10:25:11 +0100
+Message-ID: <20260303092532.2410177-1-imammedo@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed79a484-9078-484d-b782-08de78fe0fad
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Mar 2026 08:22:51.3180 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: f7AQgNoBC5tBqFCbm0UwfS82EKr4DojC4qNgKl8JxIQv0B+sVXRvOnKvK8QGdoQDuX4Y+LDNCngx6FMs2QYNZw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB8094
-Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH5PR02CU005.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: XgbrCOu_qca0UO6LWAps2iv1TsRw3hwse5M4E2INbmw_1772529939
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,38 +87,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Changelog:
+  v2:
+     * ditch generic '-machine acpi-watchdog' option in favor of
+       board specific variants:
+           x86/q35:  -machine wdat={on|off}
+           arm/virt: -device sbsa_gwdt,wdat={on|off}
+     * arm/virt: add FDT and GTDT ACPI entries for GWDT when it's present
+       and hide GDTD one when WDAT is enabled.
+     * arm/virt: add test case for GTDT 
+     * [18-21] optional GWDT cleanup/fixes in handling WCV register update,
+       make QEMU behave according to spec (at least the way I read it and
+       it appears MS also read it that way). It fixes Windows 11 reboots when
+       GWDT is present (without WDAT). With that fixed it's up to MS to fix
+       their driver to set sane timeout as with the current one wdatchdog
+       will never trigger.
 
-Hi Peter,
+Windows doesn't ship built-in TCO watchdog driver, and users are
+forced to install vendor specific driver(s) if such exists.
+However the OS provides a generic watchdog driver that uses
+ACPI WDAT table [1] to abstract actual hardware behind it.
+The same applies to ARM version of Windows.
 
-> -----Original Message-----
-> From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> Sent: 26 February 2026 08:45
-> To: qemu-arm@nongnu.org; qemu-devel@nongnu.org
-> Cc: eric.auger@redhat.com; peter.maydell@linaro.org; Nicolin Chen
-> <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
-> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
-> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
-> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; philmd@linaro.org;
-> Krishnakant Jaju <kjaju@nvidia.com>; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>
-> Subject: [PATCH v8 0/5] vEVENTQ support for accelerated SMMUv3 devices
->=20
-> Hi,
->=20
-> Changes from v7:
->  https://lore.kernel.org/qemu-devel/20260219090103.33697-1-
-> skolothumtho@nvidia.com/
->=20
->  -Picked up R-by/T-by tags. Thanks!
->  -No code changes. Commit messages updated to improve descriptions
->  (Patch #3)
->=20
-> I think this is now ready for 11.0. Please consider.
+This series adds
+ *  WDAT table tailored for TCO watchdog that Q35 already
+    has as part of ICH9 chipset and a knob to enable it.
+ *  SBSA GWDT to arm/virt machine with WDAT table tailored
+    for it and necessary tweaks to GWDT to make usable
+    with WDAT driver.
+    * in addition to WDAT, it also adds native variant
+      with GWDT described in FDT and DTDT
+      (broken on Windows/works on linux).
 
-Just a gentle ping on this.
+Guest OS WDAT support is present since Windows Vista and Linux since 2016[2].
 
-If there are no further comments, please consider this for 11.0.
+One can test it launching VM with following options:
+  * x86:
+       -machine q35,wdat=on
+  * arm/virt:
+       -device sbsa_gwdt,wdat=on
 
-Thanks,
-Shameer
+to trace access to TCO registers one can add to CLI:
+    -trace "tco_*"
+to trace access to GWDT registers one can add to CLI:
+    -trace "sbsa_gwdt*"
+
+To verify that guest uses WDAT (both Windows and Linux would use it if present),
+  * on linux make sure that watchdog service is configured/enabled
+    (use wdctl to check what watchdog device is in use) and then
+    trigger kernel panic with command:
+      echo c > /proc/sysrq-trigger
+  * on Windows kill svchost process, running cmd in admin mode:
+      taskkill /f /im svchost.exe
+
+Tested with WS2025 & RHEL9.6 & Fedora 43 (aarch64)
+
+git tree at: https://gitlab.com/imammedo/qemu/-/commits/gwdt_v2
+
+1) http://msdn.microsoft.com/en-us/windows/hardware/gg463320.aspx
+2) https://lwn.net/Articles/700524/
+
+PS:
+ previous revision:
+  https://patchew.org/QEMU/20260206131438.1857182-1-imammedo@redhat.com/
+
+Igor Mammedov (21):
+  acpi: add API to build WDAT instructions
+  x86: q35: add 'wdat' property
+  x86: q35: generate WDAT ACPI table
+  tests: acpi: x86/q35: whitelist new WDAT table
+  tests: acpi: x86/q35: add WDAT table test case
+  tests: acpi: x86/q35: update expected WDAT blob
+  arm: sbsa_gwdt: fixup default "clock-frequency"
+  arm: add tracing events to sbsa_gwdt
+  arm: virt: create sbsa_gwdt watchdog
+  arm: sbsa_gwdt: add 'wdat' option
+  arm: virt: add support for WDAT based watchdog
+  tests: acpi: arm/virt: whitelist new WDAT table
+  tests: acpi: arm/virt: add WDAT table test case
+  tests: acpi: arm/virt: update expected WDAT blob
+  tests: acpi: arm/virt: whitelist GTDT table
+  tests: acpi: arm/virt: add GTDT watchdog table test case
+  tests: acpi: arm/virt: update expected GTDT blob
+  sbsa_gwdt: reduce code ident
+  sbsa_gwdt: move all foo_REFRESH logic under REFRESH condition
+  sbsa_gwdt: reschedule timer on direct WCV load
+  sbsa_gwdt: limit compare_value to INT64_MAX
+
+ include/hw/acpi/wdat-gwdt.h            |  19 ++++
+ include/hw/acpi/wdat-ich9.h            |  15 ++++
+ include/hw/acpi/wdat.h                 | 118 +++++++++++++++++++++++++
+ include/hw/i386/pc.h                   |   1 +
+ include/hw/watchdog/sbsa_gwdt.h        |   1 +
+ hw/acpi/aml-build.c                    |  14 +++
+ hw/acpi/meson.build                    |   5 +-
+ hw/acpi/wdat-gwdt-stub.c               |  16 ++++
+ hw/acpi/wdat-gwdt.c                    |  92 +++++++++++++++++++
+ hw/acpi/wdat-ich9-stub.c               |  15 ++++
+ hw/acpi/wdat-ich9.c                    |  90 +++++++++++++++++++
+ hw/arm/Kconfig                         |   1 +
+ hw/arm/virt-acpi-build.c               |  65 +++++++++++++-
+ hw/arm/virt.c                          |   2 +
+ hw/core/sysbus-fdt.c                   |  32 +++++++
+ hw/i386/acpi-build.c                   |  12 +++
+ hw/i386/pc_q35.c                       |  18 ++++
+ hw/watchdog/sbsa_gwdt.c                |  65 +++++++++-----
+ hw/watchdog/trace-events               |   9 ++
+ tests/data/acpi/aarch64/virt/GTDT.gwdt | Bin 0 -> 132 bytes
+ tests/data/acpi/aarch64/virt/WDAT.wdat | Bin 0 -> 260 bytes
+ tests/data/acpi/x86/q35/WDAT.wdat      | Bin 0 -> 308 bytes
+ tests/qtest/bios-tables-test.c         |  54 +++++++++++
+ 23 files changed, 618 insertions(+), 26 deletions(-)
+ create mode 100644 include/hw/acpi/wdat-gwdt.h
+ create mode 100644 include/hw/acpi/wdat-ich9.h
+ create mode 100644 include/hw/acpi/wdat.h
+ create mode 100644 hw/acpi/wdat-gwdt-stub.c
+ create mode 100644 hw/acpi/wdat-gwdt.c
+ create mode 100644 hw/acpi/wdat-ich9-stub.c
+ create mode 100644 hw/acpi/wdat-ich9.c
+ create mode 100644 tests/data/acpi/aarch64/virt/GTDT.gwdt
+ create mode 100644 tests/data/acpi/aarch64/virt/WDAT.wdat
+ create mode 100644 tests/data/acpi/x86/q35/WDAT.wdat
+
+-- 
+2.47.3
+
 

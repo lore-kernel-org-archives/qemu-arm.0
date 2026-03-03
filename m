@@ -4,101 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40196EDEBFA
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:24:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3388EDEBF7
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:57:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxY8D-0004oA-Vm; Tue, 03 Mar 2026 17:22:22 -0500
+	id 1vxYfI-00080x-Iw; Tue, 03 Mar 2026 17:56:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY8C-0004mv-QU
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:20 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY8B-0002Uv-79
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:20 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48370174e18so36003865e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 14:22:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772576538; x=1773181338; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Ov4Nf1FlvKPPTI6Fk3jlGNb+uvop9rtwW4FuxRgecD4=;
- b=IxXpAeLwCU4Hz6r+z3kFEs32Ofu34lAPVJUYCT3Lq2DBVYmk3MB6eyoTQ54Nq3nuUr
- cGeswy0PQFaZTLD0ZdC3qY0k5e2qTTWHwxqFqt4T9bTOrX7nBYHzlNMdMnAnQtJrDXTB
- cDVSRmuvNpv89Knv9kTiPR5dP7C/S1Uax19/QyZ15mvlQ4+iAt57wb/4L4MfF+0ScLeQ
- SZgGVU59DyOJ5llJFfPCHqcYjgoaoC4mlyjMx0l9D5Zs2dL/8xBdpH+KIwjMQn/3Vs9m
- V7ZXGUFuEaOifPOtwDQtvKIJ7wv5Zf1rmg8c/4GL7ikDRIxVO5VCQ0cvbA11rltbLwWg
- FQaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772576538; x=1773181338;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Ov4Nf1FlvKPPTI6Fk3jlGNb+uvop9rtwW4FuxRgecD4=;
- b=eCRxUUnBgDHYPvlgzx5cMmyc9eJL2kPzma4nCq02n6m+0SbFizBUXz5WmCAUoyOVed
- wNB3ti6evfkyIEBScKrQGFJkoGfM4NTUdqjrFp5FKfzFuIkWjEi5QiVUvFDUgNgv7Hit
- 9Vxl2B35ZzFKezLkFJ3R5L/YG/WtZuuZWRIFeAdy7lyVxFA2iRrrhh2FlSrMQAiRFGIJ
- /Ycve4B9rPFbT+yCDUiigr5VnDvCjrWofc3aDhIdzhhnc5qNvinVpA4gt7vDtZtoly5r
- GHDfMz7ZS1KTN8sV0F8tMbbZbQ7hyDm8fqLWu63qhm3IeplecslmzHYzsXlokMDSadQn
- W+hQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX3aJd5AiKXYmjbl7NoFVUeSIuUtOKt8k4rTBqSTdP2/yVH5H/iNDO68zmtcRfM7VnuxA/rG+SXAw==@nongnu.org
-X-Gm-Message-State: AOJu0YzshvSvR5W0l1Tcs8uPYj/oJZOGHNxlyzT2NmN+atVdPD79b98l
- mDXgApEai83EDDJugUo0mn8l/TTjy37YU1KEbZGKTY/wWDFJ7QKxuUfh
-X-Gm-Gg: ATEYQzzu+lw8wjwotOq3GHinYTjcYk4YaI06cSJOE9rcu2ecEpIkCxj33C9RALK9m9e
- waFpjZWwRaQa88IuHt06cPGjrKogWafo2JB1vUi4Gjo6gQLplgQQnsas+zUvNhKqXI38rA4eLIk
- 2qnClmO51Nrt+cLCVf/tGVy5HbWssAu66yw+28xp1WZqtmO9qC9VHeRqrR/fa06/CSurXfdgz4m
- Kn18j8nf0TtPA1aoYRS2KbrVUDfzFVTb/kqBuDllf02E/dODAFjEc3F0kxnsckL0W1mTdmYpt/p
- YHq4UYdewQPAwCG45MNwZ/1HEWh1wWo8d2kYwXc3DYq2c/pDsui2/Dn35gYjlbFMPNIkn2k+PNf
- mL80JCvIs4xEffT+CJPzylWEGIujLRzUnn0DeBjAuNh+azfYd7IEWyvce1srPW2vc2OjogtjozV
- iRKIa17AaDvzpm5a9/11nyd+PICJour6saUHq+7wWSz+8MbzRDD1OYCiKrGI4Fxe1vzMM63hRVn
- +JpOrd/nsd+FnXK4w3q2TnbL4pPRKQ=
-X-Received: by 2002:a05:600c:4e0f:b0:483:103c:b1ee with SMTP id
- 5b1f17b1804b1-483c9b9d925mr281291425e9.8.1772576537542; 
- Tue, 03 Mar 2026 14:22:17 -0800 (PST)
-Received: from Provence
- (dynamic-2a02-3100-1c79-b600-0219-99ff-feb2-2458.310.pool.telefonica.de.
- [2a02:3100:1c79:b600:219:99ff:feb2:2458])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485187c81adsm7577715e9.6.2026.03.03.14.22.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Mar 2026 14:22:17 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-arm@nongnu.org,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 13/13] hw/char/serial: Plug into reset framework
-Date: Tue,  3 Mar 2026 23:21:43 +0100
-Message-ID: <20260303222143.142741-14-shentey@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260303222143.142741-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vxYfE-000803-P5; Tue, 03 Mar 2026 17:56:28 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vxYfC-0007ah-4z; Tue, 03 Mar 2026 17:56:27 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 6FDC4596A10;
+ Tue, 03 Mar 2026 23:56:22 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id lbblxVITQwYH; Tue,  3 Mar 2026 23:56:20 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 6030A596A18; Tue, 03 Mar 2026 23:56:20 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 5E013596A0A;
+ Tue, 03 Mar 2026 23:56:20 +0100 (CET)
+Date: Tue, 3 Mar 2026 23:56:20 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ Troy Lee <leetroy@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-arm@nongnu.org, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>
+Subject: Re: [PATCH v2 11/13] hw/char/serial: Keep MemoryRegionOps private
+In-Reply-To: <20260303222143.142741-12-shentey@gmail.com>
+Message-ID: <8a363801-914d-7870-3b1b-a4c9182ba4cc@eik.bme.hu>
 References: <20260303222143.142741-1-shentey@gmail.com>
+ <20260303222143.142741-12-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,65 +75,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now that SerialState inherits from SysBusDevice we can take advantage of
-having the reset method called by the bus hierarchy rather than having
-to plug and unplug it manually.
+On Tue, 3 Mar 2026, Bernhard Beschow wrote:
+> Rather than requiring users of TYPE_SERIAL to initialize the MMIO region
+> themselves, make it generic enough to be configured via properties. This
+> makes TYPE_SERIAL more self-contained and prepares it for being turned
+> into a SysBusDevice.
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+> include/hw/char/serial-mm.h |  3 --
+> include/hw/char/serial.h    |  4 +-
+> hw/char/diva-gsp.c          |  5 ---
+> hw/char/serial-isa.c        |  1 -
+> hw/char/serial-mm.c         | 51 -------------------------
+> hw/char/serial-pci-multi.c  |  5 ---
+> hw/char/serial-pci.c        |  1 -
+> hw/char/serial.c            | 76 ++++++++++++++++++++++++++++++-------
+> 8 files changed, 66 insertions(+), 80 deletions(-)
+>
+> diff --git a/include/hw/char/serial-mm.h b/include/hw/char/serial-mm.h
+> index 0076bdc061..4c18e2a609 100644
+> --- a/include/hw/char/serial-mm.h
+> +++ b/include/hw/char/serial-mm.h
+> @@ -39,9 +39,6 @@ struct SerialMM {
+>     SysBusDevice parent;
+>
+>     SerialState serial;
+> -
+> -    uint8_t regshift;
+> -    uint8_t endianness;
+> };
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/char/serial.c | 9 +++------
- 1 file changed, 3 insertions(+), 6 deletions(-)
+This effectively makes TYPE_SERIAL the same as TYPE_SERIAL_MM so you could 
+just merge the two and have everything embed a SERIAL_MM device. But the 
+idea here is to make TYPE_SERIAL a superclass of all serial devices and 
+SERIAL_MM is the memory mapped version. Memory mapped devices are usually 
+SysBusDevices but others are not so this seems to be trying to model 
+things in the wrong way. Maybe you could just add accessor functions to 
+TYPE_SERIAL to get the memory regions and use that from subclasses to 
+avoid poking in the state struct and not try to reuse SysBusDevice for 
+this.
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index fc92897376..31ce3c7b40 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -31,7 +31,6 @@
- #include "chardev/char-serial.h"
- #include "qapi/error.h"
- #include "qemu/timer.h"
--#include "system/reset.h"
- #include "system/runstate.h"
- #include "qemu/error-report.h"
- #include "trace.h"
-@@ -853,9 +852,9 @@ const VMStateDescription vmstate_serial = {
-     }
- };
- 
--static void serial_reset(void *opaque)
-+static void serial_reset(DeviceState *dev)
- {
--    SerialState *s = opaque;
-+    SerialState *s = SERIAL(dev);
- 
-     if (s->watch_tag > 0) {
-         g_source_remove(s->watch_tag);
-@@ -985,7 +984,6 @@ static void serial_realize(DeviceState *dev, Error **errp)
-     s->modem_status_poll = timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerCB *) serial_update_msl, s);
- 
-     s->fifo_timeout_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, (QEMUTimerCB *) fifo_timeout_int, s);
--    qemu_register_reset(serial_reset, s);
- 
-     qemu_chr_fe_set_handlers(&s->chr, serial_can_receive1, serial_receive1,
-                              serial_event, serial_be_change, s, NULL, true);
-@@ -1008,8 +1006,6 @@ static void serial_unrealize(DeviceState *dev)
- 
-     fifo8_destroy(&s->recv_fifo);
-     fifo8_destroy(&s->xmit_fifo);
--
--    qemu_unregister_reset(serial_reset, s);
- }
- 
- static const Property serial_properties[] = {
-@@ -1032,6 +1028,7 @@ static void serial_class_init(ObjectClass *klass, const void *data)
-     dc->user_creatable = false;
-     dc->realize = serial_realize;
-     dc->unrealize = serial_unrealize;
-+    device_class_set_legacy_reset(dc, serial_reset);
-     device_class_set_props(dc, serial_properties);
- }
- 
--- 
-2.53.0
-
+Regards,
+BALATON Zoltan
 

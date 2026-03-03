@@ -4,106 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB08DEDA685
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 15:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA95EDA682
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 15:13:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxRNX-0004N1-VW; Tue, 03 Mar 2026 10:09:47 -0500
+	id 1vxRQm-0001gb-2J; Tue, 03 Mar 2026 10:13:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxRN6-0004A1-DL
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:09:18 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1vxRQk-0001Ox-9v
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:13:02 -0500
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxRN2-0003px-ML
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:09:15 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-798374d0f44so89589657b3.0
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 07:09:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772550551; cv=none;
+ id 1vxRQi-0004Zr-B7
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:13:02 -0500
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-64c9707fc11so4198169d50.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 07:12:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772550778; cv=none;
  d=google.com; s=arc-20240605;
- b=XA4B33emCEEtEdn73FgpikiO2BULNqYZ81E4Jb7zCbk6aNiEjrokXLQH+vZwZsJJmI
- kxA7fGlIf3UkoejUR6ir4BsUJKKRipdkx6qmKjqOkPFGCHmY44jKRkz7pRdRk9ojTGqh
- 7SvrNMPBkkOmy0tKV9jClanyYR8v0teM5T6dO1DHbFtG3PY4kpgWR5bqje23dVMvoGfk
- RvF6IgHOrBtCUdTO1yjbIKO1E/hqUkq/Q0sOJBiAxR7oLn171nLxil6Y9cHTRK5veU2Z
- wY3XMpx4BnVgLcS+R197Q3XcOljxstJ3Qt65NR7YehaEPWY+nF1Z/wdMVBBjlRlm2Ah+
- DKGQ==
+ b=e2/Ibj+rwrGT48PJQQtj84M0moWesGzVeCpBTuxECSPu6R7mZEFkvwisB96gHqNkE8
+ 4ocXmxbbdtI9EofV7zvf8xAU/dblfl1I2NuSXufVkk6B91lWFiHpQYyLhXN4dIJH0PC1
+ bqRmG49yjlTgz0do5xfHTKP7XnO+tgPhd5flgUx8+vJHRo7bnsVrHuMjgAjLIH5o0p9y
+ ys+rF6s0IBaMHK+3BPRED3stPLEmULSbQGl5zi7UgNlTToykUDWFfKUdE7wX9wOQfTbM
+ GaK2IgWk8FwsETBMUXyRsibvWtHn4TlmZxoXINRUhxOrmaQnst3CUmMEn8iGs8OrPqOI
+ SHCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=EVsl4KNaXtWkiKOuqqaGL0YvyFVVA2j+IlJDQ709Ows=;
- fh=PW2FViwq9ttFdbfp/8I6VDYlSXN5V9IxHZNyGNlICQE=;
- b=XvfubVV6R0RyoTIL9VsKzE09ah1tI7/wCC8l373JFEFLN2BI2SKFdiGhHaBNqfh3Ah
- 43YXEN4fwrstL3POK3kKI/jSAxoud2vQfQ3Ao2UlSHJPgBEY8+VxAYhVbSTJx3TNEhE0
- /Y9RYq0oszBLplOv74s2o5JlOVNVSSHao1vEF31DKSjEEn7Ocm4cnevPHyEIyTeeEflX
- UwSP70uIZunpIjVDdOwpcd92uLLqnAt+RvmRgekpRMjvKgNH0RAe2n3VaBud/fvzNzn5
- wQE7dFE6ECeIqUsaa8SWWUq08waSS8OQnWCz8bwIgIGGSsmtu8MBbq2OE3P0Lvq1iSaG
- BYVA==; darn=nongnu.org
+ bh=XFNJONuyhx9fILaHKjiZ06HlxX56FG4QbYLqYDjn9Tc=;
+ fh=9JvohhDGcqKOXHtXMYSuuLTu4U/UWQXPJ6ZSc14PYfY=;
+ b=kWsGkpPx0ouduG2BLO3jluRBkK6wBOglr85Kw1kLQaz8HR0WX0d6O2SMblnXdadU6E
+ AcjXL0i0llDXPrZG7NHbS6EdHd85+m9kXEQ/pG1/kzE4Qnn3LWvilp506VhbGD4VIH/2
+ e6sXqKvxztlaqui+nQDV2EVR7wuHewlhEDjy45JN5cUBluakQKbxmB/4ki6VxrGpZ1VF
+ nZBIKBGu+AiqZEsG6jRCK7OmF6C0qbdMflyJtKaJrkobz3KA3h2OFA4KiEEzCLcRg4zS
+ SFoFwKduV9frGVZbeazJaT8yDyCjpI70OvohTD3vTNArX+CLXjmfs6c8aG31aMD0q8yJ
+ grdA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772550551; x=1773155351; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772550778; x=1773155578; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=EVsl4KNaXtWkiKOuqqaGL0YvyFVVA2j+IlJDQ709Ows=;
- b=tuhbx1gsBAv7gHvAwRQdlu5b/e02tODwDolsacE7Zpwu7znEO2rXMpLjN0v/CfyAnl
- 5HAuYIT+i/G+7XingOJDYtit1LUNsSXM28sPbMVUlXkYTrtP3Ok2idQwcsyJuWKEYuon
- M72KxemxNk6ddXDKQh2nwXQAzfTeCmkB7V55LsE5UffocZTjjzxWk2VZ/Pn2ZSxuADnj
- N+o0bhKvpA2x2CV7bZxwxNTeFa/pII+ytMPg05zq69YE2rqhNPlQkgCcQMrjaVOtVj+o
- /t5YSGKUbYyNnq1wL2DBuU85MNHC5AqdV5avgJuHLhKhs3LB/K7pjll0OvJ3aXobytg+
- SdOw==
+ bh=XFNJONuyhx9fILaHKjiZ06HlxX56FG4QbYLqYDjn9Tc=;
+ b=Y0SS62kJ2wMENdf/husIwrT8gUPnbRVG2XcaTozYyQqBb28sTtjYgf19UZ5ElKLMJB
+ FP6kAXomybj2uC8aZBTcYdOg7f4XfTPxuTYit2KZI07JsT/UnTtqUKsbkhZsP8Yz1gPe
+ q+JBYejgsCOGIXuRbKueRQf+LD7Cb4HmfDjWT9p0dk2APySOcK/ogi2HMYW8eMVQW/VD
+ +Zi9abCudlbW9OrDlD4nr8hYB0JVQMrebgI11Cyvy7tJytL9IDuH+9xnpDd2y5n8MIC0
+ oiLjKDDOl+nov6oFSXQ2Fuhe/fv8glDrx7Zur7gCrGWJdjJ6qcSWtod6TAwFT7whmogU
+ 889Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772550551; x=1773155351;
+ d=1e100.net; s=20230601; t=1772550778; x=1773155578;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EVsl4KNaXtWkiKOuqqaGL0YvyFVVA2j+IlJDQ709Ows=;
- b=CzknEF/uoawPeSIG4u+HqmZo67biSv0wLZ3gicd0JgMJ0OSe4EaN1qg2vGRZBi9UKc
- MoNjqn7DQ6CUCjqt3lEEBQldg5txT8MTBcuWY/0TeNGQ9VUxIIo20eU+kCu5O8LnOMnA
- UTvkNMMRBCucbbJHCb0cRX+P7Prd497Y4GhRZfkbqv2YRVrFw1whLX86WYaL3GQQ8iPj
- ZSFZby7bQnSRTJkCaXrmApLYnkZZ/NFaT1GNRt0UgvDQZI2luRIAP+e7Tr5UqgEOpe3b
- zBk80MEC9vtTND+xEFmRnC05zLorvq1SNHLQ9tdaVRx9DFoqnIEJUMf+YCIdyWHU0kjr
- /Hsw==
+ bh=XFNJONuyhx9fILaHKjiZ06HlxX56FG4QbYLqYDjn9Tc=;
+ b=SobHRXM7rHXiH2Sn4pSZJoW8hqf2QzRwoq0IEvXTE7S/m3GZz3FHlF6cBzPkWkn0+M
+ TIOdnxINIqF2KdBEtAkl28rGrR4ix0lxdt1yT4SbgpOi+Yg4z1GpkfG1YZ/CnelHnYkd
+ rm73zjr9H+Hri36eLGbHjxJXn7xSxtFDBRhbmup6dSUUeqrhwROtNW86GruurpRBBKZ4
+ Moi9WzmjJ8LLL0/9lV42XF8wckIPpXkYPc9QP4z3eZ+k16P0s3FJTDrQZlJBtt8u9Hms
+ +pgnCjk+TIS4suTqWd5318DlcAvOPh9sOHU+X0AjFyCHXp526NF++avLhEcwyzghODo5
+ scFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUUkqjUooA5I9BbWl318DykSJlmEV1pySA4KKGadbllzSTGnIhUFLdBVOvDb36RFTcd2j2j8LApjw==@nongnu.org
-X-Gm-Message-State: AOJu0YyUN1UlE6qvrObtvjYKRcoOCQFNP8M4APAWYc7JSGGyqlpj+uFl
- kAr4QzR5vwXWIxSbL9P+llEcxhB3WCezxFBhj8R6e0Geto/VgbHd1wsJRZoKHJ7p3AMuNlT4x5u
- cnCBsCJf7OrK9//TdhKsYHewL/phZYTY4KMT0QizSYA==
-X-Gm-Gg: ATEYQzzyHVktJcTeRvH9Egr5W4piIJWFlP+F/r5uK8UYqvHuHKfdMVFZEF5WJVJ9Bec
- YTgqz0QSFkCYR3GXiAyckgNxK/yJA4ffWDefNuItXyXTc61I/QPIGr5ocQPYY7xCJLugmYWnkgc
- tOtKEfj26TtJKoZZBrBYLt0sDOQLef1qZxxSR1scx1HXJ69I/G4wBnl+eVkzaHm7fU+H5NuX3hE
- m38ow7kkREsRvrR2tgpg4YinOcgq3rjsdYZhWpGU9IfmEc1OxFjaRUtNjT0aULhlSPUsz3nJ1mL
- B75kk4+inmo8jrJafDL/Y/J3ol8T8Waw7Xfduu0IJyx1h1YmLNLK5j3nQWGh3L/T9fI=
-X-Received: by 2002:a05:690e:1383:b0:64c:9c1c:5f6e with SMTP id
- 956f58d0204a3-64cedb4a00fmr1920478d50.5.1772550551233; Tue, 03 Mar 2026
- 07:09:11 -0800 (PST)
+ AJvYcCWvCnYN5WgqTufQ+IiMEDtgmDtu2YqV4ioIWPo9MLU29Q9lQUPvi3pJKpe/u/N0QvVmd2uUtKvTDw==@nongnu.org
+X-Gm-Message-State: AOJu0YzBY5TFsZKoBY9lnFqdJuVfJEEUda1Zyny7hPzJuQZSYPZ38/Op
+ n2i06QS1i6iY1GsqpI5rEQI7E6ky94kAeJzvPQ2pPWRrDsB0ihsfFIfFQBdKvFv4CzLgw99cMUt
+ K0ezx+vwHY2I6aWmzmC4LM3g5th3D+BHZQ+fV2bskfQ==
+X-Gm-Gg: ATEYQzwUXOlQZvIqGgrOVH16mTjZK72BuDythO84hLTFC/0QxRYfgmyWbuE18+lnQ2s
+ oFjA+pQLymph1ZJPDUE/jGw/rtuHQqOoCamkaKk+uZpj/w0bwrJdH25h+bpgj4Jpo9Ygdi6+6+Q
+ uoqtiAlwMKcBzfZToAmzAIQKbr1hX4xBEONrNzdGWaqLDxzAW7sS0KDw2i6azO9GTMKmJajFcl5
+ /FI3uhuW37DOHc716Pd10rw648GgIvaNiICNBaqinb8TxT4TJQcO1oakdx006DLsXbA59xtCQ3B
+ SpbqMNxHyQfPCPsznn1wT47Y5AI3U3WrE4i23J9kWWxL50icnHY7d9ZcDraPgmknQ6OK74jnQ+3
+ xNA==
+X-Received: by 2002:a05:690e:4499:b0:649:443f:ab2a with SMTP id
+ 956f58d0204a3-64cc2183cecmr12815874d50.37.1772550777693; Tue, 03 Mar 2026
+ 07:12:57 -0800 (PST)
 MIME-Version: 1.0
 References: <20260303143928.1747116-1-eric.auger@redhat.com>
- <20260303143928.1747116-3-eric.auger@redhat.com>
-In-Reply-To: <20260303143928.1747116-3-eric.auger@redhat.com>
+ <20260303143928.1747116-8-eric.auger@redhat.com>
+In-Reply-To: <20260303143928.1747116-8-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 15:08:59 +0000
-X-Gm-Features: AaiRm509veks7jfVF4zfG7cRsBuRkgXkq4k39mF1vLk9aEJBBXtjiziT_3Hbcgk
-Message-ID: <CAFEAcA9i3PmcX8xLEPd+254Ry7ojPKetDGzYtSNp46WZqSNP7g@mail.gmail.com>
-Subject: Re: [PATCH v2 2/7] target/arm/machine: Use VMSTATE_VARRAY_INT32_ALLOC
- for cpreg arrays
+Date: Tue, 3 Mar 2026 15:12:45 +0000
+X-Gm-Features: AaiRm50oLXH1wUDKl3YErBgl7t5X-mXJf6g31-oeCs9GInEqCKfTJYmew7SGxdI
+Message-ID: <CAFEAcA9zpPwoHtVkbOxPmqNWm1FGcgFieXMsNU3esuXj0BD2RQ@mail.gmail.com>
+Subject: Re: [PATCH v2 7/7] target/arm/machine: Fix detection of unknown
+ incoming cpregs
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,78 +120,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 3 Mar 2026 at 14:39, Eric Auger <eric.auger@redhat.com> wrote:
+On Tue, 3 Mar 2026 at 14:40, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> This removes the need for explicitly allocating cpreg_vmstate arrays.
-> On post save we simply point to cpreg arrays and set the length
-> accordingly.
+> Currently the check of cpreg index matches fail to detect
+> a situation where the length of both arrays is same but
+> - destination has an extra register not found in the incoming stream (idx1)
+> - source has an extra register not found in the destination (idx2)
+>   where idx1 < = idx2
+> Normally this should fail but it does not.
 >
-> Remove VMSTATE_VARRAY_INT32 for cpreg_vmstate_array_len as now
-> the array is dynamically allocated.
->
-> Also add a trace point on post_load to trace potential mismatch
-> between the number of incoming cpregs versus current ones.
+> Fix the logic to scan all indexes.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
->
+> Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
 > ---
->
-> v1 -> v2:
-> - also modifies the allocation of cpureg_vmstate_* in
->   target/arm/whpx/whpx-all.c
-> - added Peter's suggested comment on cpu_pre_save()
-> - free the the vmstate arrays on post_load
-> - add assert on pre_load
-> - fix comment aboy length check in machine.c
 
-
-
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index bbaae344492..aa617dd64db 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -1,5 +1,6 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
-> +#include "trace.h"
->  #include "qemu/error-report.h"
->  #include "system/kvm.h"
->  #include "system/tcg.h"
-> @@ -984,11 +985,14 @@ static int cpu_pre_save(void *opaque)
->          }
->      }
->
-> +    /*
-> +     * On outbound migration, send the data in our cpreg_{values,indexes}
-> +     * arrays. The migration code will not allocate anything, but just
-> +     * reads the data pointed to by the VMSTATE_VARRAY_INT32_ALLOC() fields.
-> +     */
-> +    cpu->cpreg_vmstate_indexes = cpu->cpreg_indexes;
-> +    cpu->cpreg_vmstate_values = cpu->cpreg_values;
->      cpu->cpreg_vmstate_array_len = cpu->cpreg_array_len;
-> -    memcpy(cpu->cpreg_vmstate_indexes, cpu->cpreg_indexes,
-> -           cpu->cpreg_array_len * sizeof(uint64_t));
-> -    memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
-> -           cpu->cpreg_array_len * sizeof(uint64_t));
->
->      return 0;
->  }
-> @@ -1034,6 +1038,9 @@ static int cpu_pre_load(void *opaque)
->          pmu_op_start(env);
->      }
->
-> +    g_assert(!cpu->cpreg_vmstate_indexes);
-> +    g_assert(!cpu->cpreg_vmstate_values);
-> +
->      return 0;
->  }
-
-You missed clearing the pointers in post_save -- I think these
-asserts will fire if you do a vmsave and then follow it with
-a vmload in the same VM.
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

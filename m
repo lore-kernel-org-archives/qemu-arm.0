@@ -4,113 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 264EAEC1423
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D009EC1428
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:52:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNIr-00031z-HM; Tue, 03 Mar 2026 05:48:38 -0500
+	id 1vxNLX-0004YY-Co; Tue, 03 Mar 2026 05:51:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxNIq-00031g-4c
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:48:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxNIh-0004C7-2y
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:48:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772534906;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nEHegAVxKlLHUxF47/TrSWe3AW8x3xWT9xEVTACOVdc=;
- b=hqkaaTG2DDeHTcarlT3Pzk9w17XJwZFWryXOX9hck4/fXGWA1KmsJlqrV0+xCzONAhVsof
- SzCs5c7gDWvmJEQKwpNyohasrRx3ncjSLanGaeMCpPqctt2k4RlMyrIwSjLn9vjla1vDOp
- B9MXeLv8VlTNi1mZFW9SR2pqLgKoNno=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-310-2m9uv2yMOxK7xHidDCB5xQ-1; Tue, 03 Mar 2026 05:48:25 -0500
-X-MC-Unique: 2m9uv2yMOxK7xHidDCB5xQ-1
-X-Mimecast-MFC-AGG-ID: 2m9uv2yMOxK7xHidDCB5xQ_1772534904
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4398fed3552so4664302f8f.3
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:48:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vxNLW-0004YI-6y
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:51:22 -0500
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vxNLU-00057h-CD
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:51:21 -0500
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-64c9a6d6b70so4567392d50.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:51:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772535079; cv=none;
+ d=google.com; s=arc-20240605;
+ b=VWVwZDxUjt3ov4kECAitcOP9Q14lzdLumuIpnIgaQa7tIa5TlTDbRue1GH4WR4FWn+
+ VYl8yLLeV4TnA5nPNCtAb5Lq+XC5+Uu3pZvMT1QJf/GO56QmZTlNc2Yn9QMsZ/gBV0tl
+ VC9LsY0xG1ZMusQSU2qGme4i/9O40zlLh4n9KQnrko5eRvUWxVrrNzKHrdPJBdBgkmpR
+ mczmJ0OHRFA0QIO+n52RIJTBBnmRQ8SK3Uhb7URR+Ru6DOt6f+TtwuGVbkzAbNHozhUX
+ S+d90c7aLoHU0sJ7jzWrwkuyhc/HNjHE1+NFRrIR4ZEYEA/Wwd6LCrsSIGG54K5uz3JI
+ SexA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
+ fh=8MEyPbtOxtlXBrqSKmCe4mkprffPdwZG5qkRB9kVpbI=;
+ b=QQi6UBhDU4WcV/0gSxDYeWbzRTtASQ17YS6CHHlYaYMoDHzPfbZCeMbWDvUApcY3Lr
+ a55tSnaFfMX6t9y9Qu3G1XNHSIDB9ytB/8vzaXMtJUArRcw45hnZ9rSGD+A2CzllcuVK
+ TUqAgToKpVz6+GB2AUOhOHudfeb+k8zrTa36N77uKxEJm9+KE7NsnkOHP0EJnU1UCNc3
+ xIze9hPmxkMLCXASC0TRqBk88EWspwoavw45c1HtEnDsfWL5K7/I3MTRzlIh2bv1xqel
+ uwkcJ+WaweVD0VYlWe5oPafH1H3QXvc/hjMqFNJ0nBSpFUYjctkjx6goVfbdKWLxwmn1
+ CdWA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772535079; x=1773139879; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
+ b=QJaLBQJ3u7e+qS4eF1UeslOUCJCIYdXU/Dj0WhBSHwyocf4GO+wcqZiHwLk5IF1Aih
+ 2+rnYhe3TBaOJiEnNco6nd13v0FQuEumQgpDkT3vMV4HktfZ01/HNXzEpFCECblDJh3q
+ rFgOan+noKSvL94IKn9SqJWMCvnzQC9k+y16uTlQOh5Jzx5OEUAGbSOoLKb/hJBfpGm6
+ W6cQ+HJu6ILzT8HZ0WSRgfbxW+BrOR8M0jHFzrgbMEAuX6AUqrQgtK5U7olmUCPrCwb8
+ SAxgyMZYNqm7dgKiWBwBeo4pLL7uQBFOrpddCHCsLMOnGp8Hj/f7Xam9UYUZwXaMTZqM
+ IcPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772534904; x=1773139704;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1772535079; x=1773139879;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nEHegAVxKlLHUxF47/TrSWe3AW8x3xWT9xEVTACOVdc=;
- b=PaGNwi542KTPVH1CpY1MV1A/GLkPS7YSKf0rptc3tZ6xsp4kt+9xMvh6iUShGO1yHG
- rNeNxAaqb1r88Jlvas9Eo12+v4Mu8LmaxNlzaFYiF46Gh1xk8WRUknS14C3Al+Sh2jBo
- gCj4gVb1IBFiOroIHIi5T29BgLPxHsa3C1zEX9JZB+CbPiQ541KXfRXSPQ8K59v4rJKN
- se4Ftv9wERIE34WrPUWnD6ishv0kis2xQ/BZrqVJ/a8IrXp/gi56Bh7gTcX+Bk9Yb+Pr
- trJK/3ewpz8MJipWHDU0Q5n5zUlJIsIXHLosG9qH4OBMXkaaDPz3/4Jy4pYOrmYgGGE6
- vVJQ==
+ bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
+ b=XACC7tvTzslGqAN6n+sNA7lxIsGHkEzXrFxjVeSi3b/m2zSUHBXnHHTVqjHwVPi40T
+ M8taUZEL4rm0exboKiDTmZQYj2XURy2+C7az416qMdT2aUwGnmrTIxnP9tovBbitfkpc
+ Sj/G2FjyebM9ga1jSLh4w4wSVk01o5xobaZ5xCb/q9MZFKGfOw3KlNTig0xRIjdm/9li
+ Wcg7x6bxUuSSfBIbTOZwAvZiTHHc7UM8Ivvx0vCQgY00tBjOqX05VmtWMC3LbsSTuL9c
+ tPsMVaB7XYEGv8VVYABY8MKUR0Poj12ekrvTolT9aCmryR/OjmU2CHij6OyTBtNwVzt4
+ 9XMA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXg8UlI96btaIY69K0X8QsD1gRYG8S6xREvaptL4N2Jlp+0otOIpqwe6ghltn2TNaOljDyzXmJlPg==@nongnu.org
-X-Gm-Message-State: AOJu0YwD1xFrvbFvb3nXCGpME8wlfiFEAFXsLLeuTBClykpILQrU2cJW
- o5ZjSQkJbNS8CG0m/dwJj9BcjgrrK04Iq0YTHQgOHz7Z0iYfzoZlFGj+QX2LJocMT2cIjlaCbLg
- EPVi4nliH4STcu9tuefGreUI4GBQyC2e+Wmkj5EIuK9wTPK59onpi6Q==
-X-Gm-Gg: ATEYQzyM0t3/muIxbgRJrX5PxCHWihdum87EGi2F4zvX69C+3XbPx42Tu2w0/yWa6Rm
- MLOZThXNxysqsHgkJ5w2OareYzNwJYil4oukiKzzOUveAoOzveA1kpswVHPwmLpcU4jknFFmt7P
- mPM+K2MMwm3+eaZWZLUF08Zx8FFUHSbZ153XkYImHUSI6GVylIuAc55w4wCR+knOB5gu+AOwaiJ
- n7T1xMrY+CMJHk6UU3J0eKrJn52EJ/Pz9x8UhFi7XWmoVLv+R1vVURi0DzXMPL5CrpW7+gurZN8
- ZJobbBaB4dEO6tnPwHgayx46CXcBaVi7PXCJAsrqMIu3f3KucecsBneHesmb+fxpptczQfSJgLK
- mWjePVdxSJvy0s4uEIb6Dhp8rK+V35kdsRoOJn9sDT7NHv1G5BmBbA+tr3oQTTfFSCE7QeQ==
-X-Received: by 2002:a05:6000:610:b0:439:ba4d:bf40 with SMTP id
- ffacd0b85a97d-439ba4dc256mr9757732f8f.43.1772534903735; 
- Tue, 03 Mar 2026 02:48:23 -0800 (PST)
-X-Received: by 2002:a05:6000:610:b0:439:ba4d:bf40 with SMTP id
- ffacd0b85a97d-439ba4dc256mr9757689f8f.43.1772534903240; 
- Tue, 03 Mar 2026 02:48:23 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439b03db76bsm19148913f8f.18.2026.03.03.02.48.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2026 02:48:22 -0800 (PST)
-Message-ID: <f2bb8d0c-5498-4dfb-ac35-8526d8014b26@redhat.com>
-Date: Tue, 3 Mar 2026 11:48:21 +0100
+ AJvYcCUTFT1EgBGe9wkC6CLWLI85qScMhiTXVtCG30BU69T0kVCgPFdpBO88xxmQpBAEwRcm6dh4cVlRbA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7gGozLHXHUMBmZFA3nxLLiJfhDKH5Vp8BIkFfng7YzMTtiAbH
+ 8nEOoPQ9qCo9FCP33JtnxgzKeZ04SnNI3vK71rUOjgO7r4P+5MLBoTwX8ukQHE5Le1AyyMXYTCI
+ Nq7I59q4nopzVp4KCgVAhg6x5ggFSRX+D1YgjXbGfFA==
+X-Gm-Gg: ATEYQzwJ9T1BYJEel0at2MhjGvAHrPeIdP1fo9ODFkXcHnX/vl14RVP+D3hKtqze2Sx
+ B9I3wBUQ2qGVlABU2+rBQ0HfVc4Wj8MBhSpTEkfidEGg29s5gOglMpwPNFrDF2xgFma8KELn0d4
+ s4dpeT23qPKbg36g3bbllv0vrsOf8wQa1NB8bCy0QUhbUtiwWEdomSUey7XfsvLq1Z77OvS8Hdp
+ ydOY0txeAlAxsU0NowPPhWa3BjVoerqeE+JUu2tbhpkJY+rFWkvF1jkzwtA8VYXyesPeS9EwbSE
+ hrxNxNUW/BWBMmexLGKUEBjl1DzZQeN4Cad3c8uZH/mBqxj2LJr18NUKEyE7wNtDIiA=
+X-Received: by 2002:a05:690e:4499:b0:649:c7dd:d2e7 with SMTP id
+ 956f58d0204a3-64cc217f050mr11252874d50.33.1772535079136; Tue, 03 Mar 2026
+ 02:51:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 28/31] hw/arm/smmuv3: Select sec-sid from PCI property
- and validate SECURE_IMPL
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101907.2997408-1-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260221101907.2997408-1-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: w4Ci-2pQPO1oWQ6t9fYtW3p-l1wXbYdrlc5kjWiYhlo_1772534904
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260226100232.500781-1-eric.auger@redhat.com>
+ <20260226100232.500781-3-eric.auger@redhat.com>
+In-Reply-To: <20260226100232.500781-3-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Mar 2026 10:51:06 +0000
+X-Gm-Features: AaiRm50_5CkSmBqV-J1e2zUj2BybBLYbkssVgtYvocltSpZ7iPMhYQtLLxVWo_w
+Message-ID: <CAFEAcA800joxbtiwBhnqXvRpbkrKsJj+1QDg_h-DPhb7TbF5=w@mail.gmail.com>
+Subject: Re: [PATCH 2/5] target/arm/machine: Use VMSTATE_VARRAY_INT32_ALLOC
+ for cpreg arrays
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
+ alex.bennee@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,208 +116,176 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 2/21/26 11:19 AM, Tao Tang wrote:
-> Parse each PCI device's sec-sid property during SMMU device initialization
-> and cache it in SMMUDevice::sec_sid. Support "non-secure" and "secure",
-> default to non-secure when unspecified, and reject invalid values with an
-> explicit error. Use sdev->sec_sid in smmuv3_translate() to select the
-> register bank instead of hardcoding the non-secure context.
+On Thu, 26 Feb 2026 at 10:02, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> Keep sec-sid parsing in smmu-common, and add a SMMUv3-specific validation
-> hook to enforce architectural constraints: fail fast when sec-sid=secure
-> while SMMU_S_IDR1.SECURE_IMPL is 0 or secure AS is not available.
+> This removes the need for explicitly allocating cpreg_vmstate arrays.
+> On post save we simply point to cpreg arrays and set the length
+> accordingly.
 >
-> Typically, SEC_SID is a system-defined attribute (e.g. sideband or tied-off)
-> rather than something a PCIe endpoint can freely toggle in pre-RME scenario.
-> So this PCI sec-sid property is used as a static platform/testing knob to
-> drive the SMMU bank selection.
+> Remove VMSTATE_VARRAY_INT32 for cpreg_vmstate_array_len as now
+> the array is dynamically allocated.
 >
-> For future RME-DA + TDISP, this will need to become dynamic: the effective
-> state for PCIe requests is derived from PCIe IDE/TDISP T/XT
-> (e.g. SEC_SID = (XT || T) ? Realm : Non-secure), so we'll switch from a
-> static property to a runtime per-device state update when that plumbing
-> is added.
-
-When a translation is triggered, address_space_translate_iommu passes attrs.
-MemTxAttrs.secure bit should tell you whether the translation is
-requested in secure mode. 
-Shouldn't we pass that information the smmuv3 translate function()?
-
-In address_space_translate_iommu I see:
-if (imrc->attrs_to_index) {
-   iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
-}
-
-iotlb = imrc->translate(iommu_mr, addr, is_write ?
-                          IOMMU_WO : IOMMU_RO, iommu_idx);
-
-
-Thanks
-
-Eric
-
+> Also add a trace point on post_load to trace potential mismatch
+> between the number of incoming cpregs versus current ones.
 >
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/smmu-common.c         | 37 ++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3.c              | 34 ++++++++++++++++++++++++++++++++-
->  include/hw/arm/smmu-common.h |  2 ++
->  3 files changed, 72 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 5dece2024a4..b0a238abe93 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -21,6 +21,7 @@
->  #include "exec/target_page.h"
->  #include "hw/core/cpu.h"
->  #include "hw/pci/pci_bridge.h"
-> +#include "hw/pci/pci_device.h"
->  #include "hw/core/qdev-properties.h"
->  #include "qapi/error.h"
->  #include "qemu/jhash.h"
-> @@ -1071,14 +1072,50 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num)
->      return NULL;
->  }
->  
-> +static SMMUSecSID smmu_parse_pci_sec_sid(PCIDevice *pdev, int bus_num,
-> +                                         int devfn)
-> +{
-> +    const char *sec_sid;
-> +
-> +    if (!pdev || !pdev->sec_sid) {
-> +        return SMMU_SEC_SID_NS;
-> +    }
-> +
-> +    sec_sid = pdev->sec_sid;
-> +    if (!strcmp(sec_sid, "non-secure")) {
-> +        return SMMU_SEC_SID_NS;
-> +    }
-> +    if (!strcmp(sec_sid, "secure")) {
-> +        return SMMU_SEC_SID_S;
-> +    }
-> +
-> +    error_report("Invalid sec-sid value '%s' for PCI device %02x:%02x.%x; "
-> +                 "allowed values: non-secure or secure (case-sensitive)",
-> +                 sec_sid, bus_num, PCI_SLOT(devfn), PCI_FUNC(devfn));
-> +    exit(EXIT_FAILURE);
-> +}
-> +
->  void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev, PCIBus *bus, int devfn)
->  {
->      static unsigned int index;
->      g_autofree char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn,
->                                              index++);
-> +    SMMUBaseClass *sbc = ARM_SMMU_GET_CLASS(s);
-> +    PCIDevice *pdev;
-> +    int bus_num;
-> +
->      sdev->smmu = s;
->      sdev->bus = bus;
->      sdev->devfn = devfn;
-> +    sdev->sec_sid = SMMU_SEC_SID_NS;
-> +
-> +    bus_num = pci_bus_num(bus);
-> +    pdev = pci_find_device(bus, bus_num, devfn);
-> +    sdev->sec_sid = smmu_parse_pci_sec_sid(pdev, bus_num, devfn);
-> +    if (sbc->validate_sec_sid &&
-> +        !sbc->validate_sec_sid(s, sdev, bus_num)) {
-> +        exit(EXIT_FAILURE);
-> +    }
->  
->      memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
->                               s->mrtypename, OBJECT(s), name, UINT64_MAX);
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0b8ea922851..57a063b5e5d 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1116,7 +1116,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->      SMMUv3State *s = sdev->smmu;
->      uint32_t sid = smmu_get_sid(sdev);
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-> +    SMMUSecSID sec_sid = sdev->sec_sid;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      SMMUEventInfo event = {.type = SMMU_EVT_NONE,
->                             .sid = sid,
-> @@ -1509,6 +1509,36 @@ static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
->      return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
->  }
->  
-> +static bool smmuv3_validate_sec_sid(SMMUState *bs, SMMUDevice *sdev,
-> +                                    int bus_num)
-> +{
-> +    SMMUv3State *s = ARM_SMMUV3(bs);
-> +    bool secure_as_available = bs->secure_memory &&
-> +                               bs->secure_memory_as.root != NULL;
-> +
-> +    if (sdev->sec_sid != SMMU_SEC_SID_S) {
-> +        return true;
-> +    }
-> +
-> +    if (!smmu_hw_secure_implemented(s)) {
-> +        error_report("Invalid sec-sid value 'secure' for PCI device "
-> +                     "%02x:%02x.%x: S_IDR1.SECURE_IMPL is 0, so only "
-> +                     "non-secure is allowed",
-> +                     bus_num, PCI_SLOT(sdev->devfn), PCI_FUNC(sdev->devfn));
-> +        return false;
-> +    }
-> +
-> +    if (!secure_as_available) {
-> +        error_report("Invalid sec-sid value 'secure' for PCI device "
-> +                     "%02x:%02x.%x: secure-memory address space is not "
-> +                     "configured",
-> +                     bus_num, PCI_SLOT(sdev->devfn), PCI_FUNC(sdev->devfn));
-> +        return false;
-> +    }
-> +
-> +    return true;
-> +}
-> +
->  static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
->  {
->      SMMUState *bs = ARM_SMMU(s);
-> @@ -2664,6 +2694,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->      DeviceClass *dc = DEVICE_CLASS(klass);
->      ResettableClass *rc = RESETTABLE_CLASS(klass);
->      SMMUv3Class *c = ARM_SMMUV3_CLASS(klass);
-> +    SMMUBaseClass *sbc = ARM_SMMU_CLASS(klass);
->  
->      dc->vmsd = &vmstate_smmuv3;
->      resettable_class_set_parent_phases(rc, NULL, NULL, smmu_reset_exit,
-> @@ -2673,6 +2704,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->      device_class_set_props(dc, smmuv3_properties);
->      dc->hotpluggable = false;
->      dc->user_creatable = true;
-> +    sbc->validate_sec_sid = smmuv3_validate_sec_sid;
->  
->      object_class_property_set_description(klass, "accel",
->          "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index d05cf6ae53b..c74f66a1bb9 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -144,6 +144,7 @@ typedef struct SMMUDevice {
->      void               *smmu;
->      PCIBus             *bus;
->      int                devfn;
-> +    SMMUSecSID         sec_sid;
->      IOMMUMemoryRegion  iommu;
->      AddressSpace       as;
->      uint32_t           cfg_cache_hits;
-> @@ -204,6 +205,7 @@ struct SMMUBaseClass {
->      /*< public >*/
->  
->      DeviceRealize parent_realize;
-> +    bool (*validate_sec_sid)(struct SMMUState *s, SMMUDevice *sdev, int bus_num);
->  
->  };
->  
+>  target/arm/helper.c     |  5 -----
+>  target/arm/kvm.c        |  5 -----
+>  target/arm/machine.c    | 24 +++++++++++++-----------
+>  target/arm/trace-events |  3 +++
 
+target/arm/whpx/whpx-all.c also has the code to
+initialize cpureg_vmstate_{indexes,values,array_len}
+that needs to be updated like the TCG and KVM code.
+
+>  4 files changed, 16 insertions(+), 21 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 6bfab90981c..7389f2988c4 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -265,15 +265,10 @@ void arm_init_cpreg_list(ARMCPU *cpu)
+>      if (arraylen) {
+>          cpu->cpreg_indexes = g_new(uint64_t, arraylen);
+>          cpu->cpreg_values = g_new(uint64_t, arraylen);
+> -        cpu->cpreg_vmstate_indexes = g_new(uint64_t, arraylen);
+> -        cpu->cpreg_vmstate_values = g_new(uint64_t, arraylen);
+>      } else {
+>          cpu->cpreg_indexes = NULL;
+>          cpu->cpreg_values = NULL;
+> -        cpu->cpreg_vmstate_indexes = NULL;
+> -        cpu->cpreg_vmstate_values = NULL;
+>      }
+> -    cpu->cpreg_vmstate_array_len = arraylen;
+>      cpu->cpreg_array_len = 0;
+>
+>      g_hash_table_foreach(cpu->cp_regs, add_cpreg_to_list, cpu);
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index ded582e0da0..12a75f42e07 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -807,12 +807,7 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+>
+>      cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
+>      cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
+> -    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
+> -                                         arraylen);
+> -    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
+> -                                        arraylen);
+>      cpu->cpreg_array_len = arraylen;
+> -    cpu->cpreg_vmstate_array_len = arraylen;
+>
+>      for (i = 0, arraylen = 0; i < rlp->n; i++) {
+>          uint64_t regidx = rlp->reg[i];
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index bbaae344492..214087111bc 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -1,5 +1,6 @@
+>  #include "qemu/osdep.h"
+>  #include "cpu.h"
+> +#include "trace.h"
+>  #include "qemu/error-report.h"
+>  #include "system/kvm.h"
+>  #include "system/tcg.h"
+> @@ -984,11 +985,9 @@ static int cpu_pre_save(void *opaque)
+>          }
+>      }
+>
+> +    cpu->cpreg_vmstate_indexes = cpu->cpreg_indexes;
+> +    cpu->cpreg_vmstate_values = cpu->cpreg_values;
+>      cpu->cpreg_vmstate_array_len = cpu->cpreg_array_len;
+> -    memcpy(cpu->cpreg_vmstate_indexes, cpu->cpreg_indexes,
+> -           cpu->cpreg_array_len * sizeof(uint64_t));
+> -    memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
+> -           cpu->cpreg_array_len * sizeof(uint64_t));
+
+This is OK for pre-save, but it could use a comment, maybe
+something like:
+
+/*
+ * On outbound migration, send the data in our cpreg_{values,indexes}
+ * arrays. The migration code will not allocate anything, but just
+ * reads the data pointed to by the VMSTATE_VARRAY_INT32_ALLOC() fields.
+ */
+
+>
+>      return 0;
+>  }
+> @@ -1043,6 +1042,9 @@ static int cpu_post_load(void *opaque, int version_id)
+>      CPUARMState *env = &cpu->env;
+>      int i, v;
+>
+> +    trace_cpu_post_load(cpu->cpreg_vmstate_array_len,
+> +                        cpu->cpreg_array_len);
+> +
+>      /*
+>       * Handle migration compatibility from old QEMU which didn't
+>       * send the irq-line-state subsection. A QEMU without it did not
+
+On post-load, something seems to be missing. The migration core
+code will have allocated (with g_malloc()) the memory for the
+arrays. When the post-load hook has finished checking and copying
+the data out of there it needs to free that memory (and probably
+set the pointers back to NULL to make accidental use-after-free easier
+to spot). Otherwise we will leak the memory if we do an incoming
+migration followed by an outbound migration.
+
+Maybe we should enforce that these fields are always NULL/0 except
+during a migration, by having:
+ pre_save points them to the cpreg_indexes/cpreg_values arrays
+ post_save sets them to NULL/0
+ pre_load (maybe) asserts them as NULL?
+ post_load uses the data and then frees it and sets them to NULL/0
+
+and note that in the comment in cpu.h on the fields.
+
+> @@ -1170,13 +1172,13 @@ const VMStateDescription vmstate_arm_cpu = {
+>          /* The length-check must come before the arrays to avoid
+>           * incoming data possibly overflowing the array.
+>           */
+
+This comment needs to be updated -- we still need the length first,
+but it's no longer a length-check, and the reason is different:
+we need to receive the length first so we can allocate the arrays
+before their data arrives.
+
+> -        VMSTATE_INT32_POSITIVE_LE(cpreg_vmstate_array_len, ARMCPU),
+> -        VMSTATE_VARRAY_INT32(cpreg_vmstate_indexes, ARMCPU,
+> -                             cpreg_vmstate_array_len,
+> -                             0, vmstate_info_uint64, uint64_t),
+> -        VMSTATE_VARRAY_INT32(cpreg_vmstate_values, ARMCPU,
+> -                             cpreg_vmstate_array_len,
+> -                             0, vmstate_info_uint64, uint64_t),
+> +        VMSTATE_INT32(cpreg_vmstate_array_len, ARMCPU),
+> +        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_indexes, ARMCPU,
+> +                                   cpreg_vmstate_array_len,
+> +                                   0, vmstate_info_uint64, uint64_t),
+> +        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_values, ARMCPU,
+> +                                   cpreg_vmstate_array_len,
+> +                                   0, vmstate_info_uint64, uint64_t),
+>          VMSTATE_UINT64(env.exclusive_addr, ARMCPU),
+>          VMSTATE_UINT64(env.exclusive_val, ARMCPU),
+>          VMSTATE_UINT64(env.exclusive_high, ARMCPU),
+> diff --git a/target/arm/trace-events b/target/arm/trace-events
+> index 676d29fe516..2de0406f784 100644
+> --- a/target/arm/trace-events
+> +++ b/target/arm/trace-events
+> @@ -26,3 +26,6 @@ arm_powerctl_reset_cpu(uint64_t mp_aff) "cpu %" PRIu64
+>
+>  # tcg/psci.c and hvf/hvf.c
+>  arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpuid=0x%x"
+> +
+> +# machine.c
+> +cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
+> --
+> 2.53.0
+
+thanks
+-- PMM
 

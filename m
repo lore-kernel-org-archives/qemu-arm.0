@@ -4,87 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFD39FD006E
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 18:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FD4EEDEBE0
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 18:32:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxU8O-0002AV-Cr; Tue, 03 Mar 2026 13:06:21 -0500
+	id 1vxUXj-0001PF-Nc; Tue, 03 Mar 2026 13:32:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vxU8H-00029w-6L
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 13:06:09 -0500
-Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
+ id 1vxUXc-0001OO-4v
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 13:32:23 -0500
+Received: from mail-dl1-x1230.google.com ([2607:f8b0:4864:20::1230])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vxU8F-0000jW-HP
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 13:06:08 -0500
-Received: by mail-vk1-xa2b.google.com with SMTP id
- 71dfb90a1353d-56a857578a8so2025142e0c.3
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 10:06:06 -0800 (PST)
+ id 1vxUXa-00071Z-40
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 13:32:19 -0500
+Received: by mail-dl1-x1230.google.com with SMTP id
+ a92af1059eb24-12758ce1e8dso2620673c88.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 10:32:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772562737; cv=none;
+ d=google.com; s=arc-20240605;
+ b=HenStNaz1EiDl7CwrK7SVBSYIMs1Hr1ZP6zW3jAOYkQ1AHnp/6E/2se7hDKeMM+IWs
+ 5AMD2sa+wfkyU+ZY/oi+EOofu85zezLbE7xTjxLNv45iVzDaCQQTWBOqN/X5RD9qaXd0
+ jtaVmSPibf+Tbdo2dpYG6b9YwZqIwIZo6/yK9/GgyEjWSk9NhjkD2rT9jgSyM1j0S9Sy
+ hm5NaKgFp3zsc/AD+fR7U2mEjpA+OjWAMBQ7OEk2XP+yY0gtv8+BRyt+lD6IzYtHmf5Q
+ cvbpDj6iEIRXn3mIyU5UlD2OtC9rc21bMQ5tqYaqnQVWueIwaRZn14IvBk1KZLiGdhhq
+ u/CA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=/EdPveg4tGA8FqN+WLX4ITf8szipKUj0T5kGoi73b8s=;
+ fh=k3FakiIK5UxQc6qPe7VZfp9hGt16SzLuOmz2eWErCv4=;
+ b=TFo7YFhxhwZ/jYL2uG7+ugzlxtFcKBMMeUoSaLj7SWR8mybPaq8XCrAKwFaxKS6gcz
+ NdvHZlwLW5dCyC9FWdTLQsDkXxtQ54inBOqodc4Kd7ZGQ63N2mobfs54AMW7zJ5xTo/R
+ roP/c/20XXzxoOKzV7Jce7JJ2c0jgbK+DFJD8ofawt7LfY5WlaytueEUab/0eW3QIYMk
+ scJg2PvMRBMPew4k5DnZsWlmS+ZatAu8/DUwetvKjWWgjGKUZkiQJTE2+QEjF9anfIS7
+ 4HZ8yiwIN4rUIPXPHeTX4Evg5C0nzKKPk7I0ZWeVih5wLbKbAJx46KznA2ePSo6uAW6w
+ N1IA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772561166; x=1773165966; darn=nongnu.org;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=q9NqhcRpBvzqJTxvlOFYo1l0wkVjO6CCfkHMhTiQEQI=;
- b=DlCgUr9FqjL/g/3ZNatXGVaYFEuaqFsrNcMhcKaEc/528XkzgfmPSJjx2hO5ifvUEd
- arMMj4pw4phbxJ8pgf3eaDYWCTYuLP6rdrKf+FaUwIAChhElseEiZ+udhj0I6G0z/R+I
- 759f7/PNQRfKcXdaRJMhURROW7lKLacfQVIOtM5JGFv/1GOsk5QDC/bMSWtGoolqo2K2
- B9nBA+ub17tJyXfAt+nOaFmLU+xMrncu2l1VwmFmtY/LaOt/O9J0/OCf1SbOl+CzoFW0
- p+NmWvNXLU/1L8+rIjsoucZrk7gVxK0tcVIUnxBwTSU2TvQyvWZqVsZilQmuAoJKZQa6
- L5gQ==
+ d=gmail.com; s=20230601; t=1772562737; x=1773167537; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=/EdPveg4tGA8FqN+WLX4ITf8szipKUj0T5kGoi73b8s=;
+ b=mrZo0kkB+nUpjGAWRMsWYE2wJNs1Hhpv9hoeX3jGI1w6nc4YscDp/2Ag+HQ2SlGFDc
+ esKBnKiqCMhko393QYzh0naPjDASx3bHcszsolp1grJM96hhJQcWc/MMK67xU97i1XFX
+ Dbb0GM38CTMcuh8Kt8grQ8itCb+hFkPzrIS+zJQUfwgZHyimarSxL55bmxY1pUpuH5sI
+ 3hY2VWMVIEwlp9rKLiyMYVpYTUM0KfuycvQkQ6sIoPPGA8lG5qhB7LREXW9GmT0CaLbn
+ Z5DgZ68KhdGXG1nLNCRa7J5MOAO+U+ERNjsZndKeQaQT2jHXqF15Wi+aZ+jddzIVgBYY
+ /uZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772561166; x=1773165966;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=q9NqhcRpBvzqJTxvlOFYo1l0wkVjO6CCfkHMhTiQEQI=;
- b=t0E9vfPYqcBEk5191YbZz06hz3ZosXRPbBwkcsKswQdVtrslvAoIi2ixovUPix6F4L
- 7pI5IUkX4fBQIrRsIjybeHcPqECJG5k94w9JRfnqgnFwCnGEBQ+soyff0NbacK9ZQuMT
- r8pR4WAlwp87vNOZG6GTpwACD2RICXFl6WMeBo/QjcpsX42ttTl47Wn5AMZtl2wOxp+R
- fKqfZXeQR1VIixQG/S1aH632gDLHf63j8PO/Ctq7m/r0Thp3W/eAQJPwfpAdGi1vwpa3
- csTttfBo5GrxEFQNmjlds6mb9G4T0RSxQ0CnMusYEwEUnsPxeRxoLItxIo7b5D/wIrtD
- 52xg==
-X-Gm-Message-State: AOJu0Yylw4309qEjzBJSlFN2X44nj8C3pt7+VUojpgJv1ELCEYGwJb54
- qNxlCKcfVe/AUDDLFM4trTiEVr0vqFnE7qDmRfrmPVHyYZtmVLWOhLny
-X-Gm-Gg: ATEYQzz0Nz+1y/PstKNK/jMYEgIs7A5UwrCWNQwq7CqNmK6MBB9XlEywMGvOI0+1kCn
- cAbGwCvZ5P3rKEMFoZGXauT3IHOQ85KDBCFBFKXtDdDuzGcuf0gtwVcfMKkKpmEBbqngDvlKNAl
- /TwhUa7O1DNvKPYR+cG/FAqqDT7OFkdgO3y4mJEL2WY4/6GdxcfqLglbljfAdTXZXopG4ta31ji
- A5+f+0ksAqDzRpKx2Kcxdln0lUygUbHJL1FTHB4JF6cYePQik11wokz9qZf7JYs/LX74fhm7jQ2
- qDkF9xx+guGvwiUjxVLbZVza25K1nc7/r1k7Gohl2aft8y09AUQxE1kBUF88VClQ9Wz9sUhCSSV
- 5A9/P3o+RvvUXggym8OidTRlizae2Tneq+TA5zIlppnmUSSIdERMuYy/Q1feRcWwehZNhm6+HVr
- mB0tCquknjIXE6iln7JIB2oq3jmH5md5upCxS3p27L4aT3DnHEqps5CjUA8WVH1Li+Fgdp
-X-Received: by 2002:a05:6102:3e8a:b0:5dd:89af:459b with SMTP id
- ada2fe7eead31-5ff322c4256mr5771101137.7.1772561165701; 
- Tue, 03 Mar 2026 10:06:05 -0800 (PST)
-Received: from gmail.com (ip190-5-140-138.intercom.com.sv. [190.5.140.138])
- by smtp.gmail.com with ESMTPSA id
- ada2fe7eead31-5ff1ea15925sm18571467137.8.2026.03.03.10.06.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Mar 2026 10:06:04 -0800 (PST)
-Date: Tue, 3 Mar 2026 19:06:02 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>
-Subject: Re: [PATCH] hw/net/xilinx_ethlite: Check for oversized TX packets
-Message-ID: <aacjCn2lfpvuEgZY@zapote>
-References: <20260303172718.437015-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1772562737; x=1773167537;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/EdPveg4tGA8FqN+WLX4ITf8szipKUj0T5kGoi73b8s=;
+ b=drb2oXBj424vRD7XzHOX3UA/wQKoYpD4Eh9Q+hXpG31sFe0PlJeplpuYL9bjZ/c/Ug
+ Aur1CP0TW9Dw9USXEfi/ao7H1B6I3/oNdnkfkv9odHL89c+soNgVglJ9nFmUzlmuyfkV
+ Ym4tUTW7uvKOJiR/d68PbX/s8duaQ/5d8KOFNqviAJcwk8Ph+/FrdUr5D91SkpLHcIBY
+ LHOrSD8Hx2TC3v9Dp2Sp7gwn5OkfGvsqgW07TkSjFgAcQiqqBOkBSftXoMfSccsS67XX
+ M3yV3mb+0P80wCs5HYLItkSu0T5Z403eMfOwBOpZYVqcOKHeFoaie4lLsN5Xq08wnFk5
+ E2ZA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV0815R0weus7GLe1k8T5Ab3ecm3ZcUNqzTjfxnLikc+vJHY3wCX5oaJRugjRBfEZWaPaFXwyHQfg==@nongnu.org
+X-Gm-Message-State: AOJu0YwCZo8113l6Em6P8ONlYl8RBMhgTwCqNrw54vNPNvP9Nx9hixgf
+ iTG4TpTJgLZELpkWZ/OoNxU9wCoXmTCPDWuXsROyFZdqdX7o/g0D6NuzlC216bhwdHQp9TNcOza
+ DPhYCbrDdo6QDg/eAInmHW8cxl1AHi0o=
+X-Gm-Gg: ATEYQzw5xHeMzst66EnUVqzDvY7hZXISIMGydJW0TH0e0OObWIOnfwXR7dWQUCg5wOP
+ 2SE7UtuGHPfwYiO+kwOsUVrgfmNkMeMZnMvHxBzKmbx+Pm2bvW0Tx+HHeSuNH5KsjGlfmv4yYMW
+ W/GleAWk3MYVKJGEG4kPSpNgG9ZEODKJJSbi+4uodKudAwKd4w1x4fxco33YcO1VjksRURNl14M
+ g91fop1YDkpnjAgfTWe92DSAveJG1a2lDVHR61D+A5ULjZc4kW+KvFnaE/TzfUvkhwu5ftx8uSt
+ QXrmkxD3YemVx7Klcw==
+X-Received: by 2002:a05:7022:90f:b0:11b:9386:a3c8 with SMTP id
+ a92af1059eb24-1278fd7b7d5mr7481974c88.41.1772562736313; Tue, 03 Mar 2026
+ 10:32:16 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260303172718.437015-1-peter.maydell@linaro.org>
-User-Agent: Mutt/2.2.14+84 (2efcabc4) (2026-01-25)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2b;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-vk1-xa2b.google.com
+References: <20260212104432.4168886-1-kchiu@axiado.com>
+ <CAFEAcA_u5B2RdVEaGycCQ6gCx1pQuT8rvGVGZpoKLTK+2s72+w@mail.gmail.com>
+ <69691e3b-1605-4a5a-8ad5-0eec56ce3eed@axiado.com>
+In-Reply-To: <69691e3b-1605-4a5a-8ad5-0eec56ce3eed@axiado.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Tue, 3 Mar 2026 12:32:03 -0600
+X-Gm-Features: AaiRm50TlLO9zmZIRLd-fBZFSb0JSKwzkeJQUS3HRbcMX-n_cyGgN19ih5MFIUs
+Message-ID: <CAJy5ezpcvp0Qy-P9gE46oDtsxZxNO=xMV1k-GC3WF4yY3gARGw@mail.gmail.com>
+Subject: Re: [PATCH v1] hw/char/cadence_uart: Add BXRS register
+To: Kuan-Jui Chiu <kchiu@axiado.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ pbonzini@redhat.com, marcandre.lureau@redhat.com, alistair@alistair23.me
+Content-Type: multipart/alternative; boundary="0000000000003d783f064c22ece9"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1230;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-dl1-x1230.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,67 +119,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Mar 03, 2026 at 05:27:18PM +0000, Peter Maydell wrote:
-> The xilinx_ethlite network device wasn't checking that the TX packet
-> size set by the guest was within the size of its dual port RAM, with
-> the effect that the guest could get it to read off the end of the RAM
-> block.
-> 
-> Check the length.  There is no provision in this very simple device
-> for reporting errors, so as with various RX errors we just report via
-> tracepoint.
-> 
-> This lack of length check has been present since the device was first
-> introduced, though the code implementing the tx path has changed
-> somewhat since then.
-> 
-> Cc: qemu-stable@nongnu.org
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3317
-> Fixes: b43848a1005ce ("xilinx: Add ethlite emulation")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+--0000000000003d783f064c22ece9
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+On Tue, Mar 3, 2026 at 2:33=E2=80=AFAM Kuan-Jui Chiu <kchiu@axiado.com> wro=
+te:
+
+> Hi
+>
+> I was referring this commit of upstream kernel which xilinx added BXRS
+> register in Cadence UART driver
+> serial: xuartps: Adds RXBS register support for zynqmp =C2=B7
+> torvalds/linux@3816b2f
+> <
+> https://github.com/torvalds/linux/commit/3816b2f886d0918d8a8ae593b2db203a=
+b905a889
+> >
+>
+> Peter Maydell =E6=96=BC 2026/2/16 =E4=B8=8B=E5=8D=88 06:53 =E5=AF=AB=E9=
+=81=93:
+> > CAUTION: This email originated from outside of the organization. Do not
+> click links or open attachments unless you recognize the sender and know
+> the content is safe.
+> >
+> >
+> > On Thu, 12 Feb 2026 at 10:47, Kuan-Jui Chiu <kchiu@axiado.com> wrote:
+> >> The new CADENCE UART driver in upstream kernel access BXRS register
+> >> This patch adds BXRS (RX FIFO byte status register) or there would be
+> >> kernel panic if user are using the new CADENCE UART driver
+> >>
+> >> Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
+> > Hi; thanks for this patch.
+> >
+> >> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+> >> index eff6a3c4d1..f57cad57a8 100644
+> >> --- a/hw/char/cadence_uart.c
+> >> +++ b/hw/char/cadence_uart.c
+> >> @@ -120,6 +120,7 @@
+> >>   #define R_PMIN     (0x3C/4)
+> >>   #define R_PWID     (0x40/4)
+> >>   #define R_TTRIG    (0x44/4)
+> >> +#define R_RXBS     (0x48/4)
+> > Where is this register documented? The cadence_uart.c file
+> > references the Zynq 7000 Soc TRM UG585; its URL for that
+> > is out of date, but looking at the copy on the AMD website,
+> > there is a table giving the register summary for the UART:
+> >
+> https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/UART-Controller-UART
+> > and it lists only registers from offsets 0 to 0x44.
+> >
+> > thanks
+> > -- PMM
+>
 
 
+Hi,
 
-> ---
->  hw/net/trace-events     |  1 +
->  hw/net/xilinx_ethlite.c | 12 +++++++++---
->  2 files changed, 10 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/net/trace-events b/hw/net/trace-events
-> index 23efa91d05..001a20b0e2 100644
-> --- a/hw/net/trace-events
-> +++ b/hw/net/trace-events
-> @@ -527,3 +527,4 @@ xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d f
->  # xilinx_ethlite.c
->  ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
->  ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
-> +ethlite_pkt_tx_size_too_big(uint64_t size) "size:0x%" PRIx64
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index ba3acd4c77..75e6520569 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -162,9 +162,15 @@ static void port_tx_write(void *opaque, hwaddr addr, uint64_t value,
->          break;
->      case TX_CTRL:
->          if ((value & (CTRL_P | CTRL_S)) == CTRL_S) {
-> -            qemu_send_packet(qemu_get_queue(s->nic),
-> -                             txbuf_ptr(s, port_index),
-> -                             s->port[port_index].reg.tx_len);
-> +            uint32_t size = s->port[port_index].reg.tx_len;
-> +
-> +            if (size >= BUFSZ_MAX) {
-> +                trace_ethlite_pkt_tx_size_too_big(size);
-> +            } else {
-> +                qemu_send_packet(qemu_get_queue(s->nic),
-> +                                 txbuf_ptr(s, port_index),
-> +                                 size);
-> +            }
->              if (s->port[port_index].reg.tx_ctrl & CTRL_I) {
->                  eth_pulse_irq(s);
->              }
-> -- 
-> 2.43.0
-> 
+There's documentation here for zynqmp:
+https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/Rx_FIFO_byte_=
+status-UART-Register
+
+I haven't looked to carefully, it may be a register that didn't exist in
+the version of the UART on zynq and was added in the version of the uart in
+the zynqmp.
+
+Cheers,
+Edgar
+
+--0000000000003d783f064c22ece9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Mar 3, =
+2026 at 2:33=E2=80=AFAM Kuan-Jui Chiu &lt;<a href=3D"mailto:kchiu@axiado.co=
+m">kchiu@axiado.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
+e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
+;padding-left:1ex">Hi<br>
+<br>
+I was referring this commit of upstream kernel which xilinx added BXRS <br>
+register in Cadence UART driver<br>
+serial: xuartps: Adds RXBS register support for zynqmp =C2=B7 <br>
+torvalds/linux@3816b2f <br>
+&lt;<a href=3D"https://github.com/torvalds/linux/commit/3816b2f886d0918d8a8=
+ae593b2db203ab905a889" rel=3D"noreferrer" target=3D"_blank">https://github.=
+com/torvalds/linux/commit/3816b2f886d0918d8a8ae593b2db203ab905a889</a>&gt;<=
+br>
+<br>
+Peter Maydell =E6=96=BC 2026/2/16 =E4=B8=8B=E5=8D=88 06:53 =E5=AF=AB=E9=81=
+=93:<br>
+&gt; CAUTION: This email originated from outside of the organization. Do no=
+t click links or open attachments unless you recognize the sender and know =
+the content is safe.<br>
+&gt;<br>
+&gt;<br>
+&gt; On Thu, 12 Feb 2026 at 10:47, Kuan-Jui Chiu &lt;<a href=3D"mailto:kchi=
+u@axiado.com" target=3D"_blank">kchiu@axiado.com</a>&gt; wrote:<br>
+&gt;&gt; The new CADENCE UART driver in upstream kernel access BXRS registe=
+r<br>
+&gt;&gt; This patch adds BXRS (RX FIFO byte status register) or there would=
+ be<br>
+&gt;&gt; kernel panic if user are using the new CADENCE UART driver<br>
+&gt;&gt;<br>
+&gt;&gt; Signed-off-by: Kuan-Jui Chiu &lt;<a href=3D"mailto:kchiu@axiado.co=
+m" target=3D"_blank">kchiu@axiado.com</a>&gt;<br>
+&gt; Hi; thanks for this patch.<br>
+&gt;<br>
+&gt;&gt; diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c<br>
+&gt;&gt; index eff6a3c4d1..f57cad57a8 100644<br>
+&gt;&gt; --- a/hw/char/cadence_uart.c<br>
+&gt;&gt; +++ b/hw/char/cadence_uart.c<br>
+&gt;&gt; @@ -120,6 +120,7 @@<br>
+&gt;&gt;=C2=A0 =C2=A0#define R_PMIN=C2=A0 =C2=A0 =C2=A0(0x3C/4)<br>
+&gt;&gt;=C2=A0 =C2=A0#define R_PWID=C2=A0 =C2=A0 =C2=A0(0x40/4)<br>
+&gt;&gt;=C2=A0 =C2=A0#define R_TTRIG=C2=A0 =C2=A0 (0x44/4)<br>
+&gt;&gt; +#define R_RXBS=C2=A0 =C2=A0 =C2=A0(0x48/4)<br>
+&gt; Where is this register documented? The cadence_uart.c file<br>
+&gt; references the Zynq 7000 Soc TRM UG585; its URL for that<br>
+&gt; is out of date, but looking at the copy on the AMD website,<br>
+&gt; there is a table giving the register summary for the UART:<br>
+&gt; <a href=3D"https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/UART-C=
+ontroller-UART" rel=3D"noreferrer" target=3D"_blank">https://docs.amd.com/r=
+/en-US/ug585-zynq-7000-SoC-TRM/UART-Controller-UART</a><br>
+&gt; and it lists only registers from offsets 0 to 0x44.<br>
+&gt;<br>
+&gt; thanks<br>
+&gt; -- PMM<br></blockquote><div><br></div><div><br></div><div>Hi,</div><di=
+v><br></div><div>There&#39;s documentation here for zynqmp:</div><div><a hr=
+ef=3D"https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/Rx_FIFO=
+_byte_status-UART-Register">https://docs.amd.com/r/en-US/ug1087-zynq-ultras=
+cale-registers/Rx_FIFO_byte_status-UART-Register</a></div><div><br></div><d=
+iv>I haven&#39;t looked to carefully, it may be a register that didn&#39;t =
+exist in the version of the UART on zynq and was added in the version of th=
+e uart in the zynqmp.</div><div><br></div><div>Cheers,</div><div>Edgar</div=
+></div></div>
+
+--0000000000003d783f064c22ece9--
 

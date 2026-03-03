@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA77EDEBFA
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE763EDEBF5
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:23:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxY8C-0004mh-1C; Tue, 03 Mar 2026 17:22:20 -0500
+	id 1vxY82-0004gt-Kc; Tue, 03 Mar 2026 17:22:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY8A-0004lA-5A
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:18 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY80-0004fi-IS
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:08 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY87-0002TM-8B
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:17 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48375f1defeso46546745e9.0
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 14:22:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY7y-0002PT-Tx
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:08 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4806cc07ce7so69991285e9.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 14:22:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772576534; x=1773181334; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1772576525; x=1773181325; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kQcKbngO5gEYvP1cyAmsSZ3twrSC/3ssI8QyeEW5Z+s=;
- b=S9Ln4QA8uSGDVFlR8QxMcuS1IKxS0uhVBEA+LbwDjJ16cfOMW1vxPISkdXBQr2oNAM
- rY9hDQcP9e4QK5inIC2GAGS9OSL1Is1c6BIs6lsQqYsa5qloL9+LcWcyvA2gXwo2ol/2
- ci8S2Viy30MCAthkVdMLyFtLjbUbKKybiNTyW2eAVcluQ9Le7uBgzbTU/0fN6+9URCiv
- 95DliXLyAa9740P5BqESTBDl60C0UAFVRlkYYmmlSkesvLHnFTTvEnm1Vf9WuzKO5nIJ
- i32GIBI1i6R8ZVEcXr8PzUk1y6f4m1yCy5whFlwuHDk0sg8xr+19+rShF3cvQaOpfAHB
- /P3w==
+ bh=2tDkacrofsQyynIL5aV6S8J0KmjfmKGV0MBvFQ9/O94=;
+ b=FkRdlkWSmWAKpWZD33PmjCG/DMHTpgGWSp6Dtk4hMPuJ1LpHLIiW85/YVKy8cdUsIO
+ lwfDnDFM3/f1JZfOc9vwfXOjyswgDrAxOnBQ+/cgfZLSAaD2/NRkO8AYcGdrn97tMWFN
+ VDdTpOyRStjeQ+RC+0rPu9eAXIzg7gbdkxT0oddNUCtKlxW2CRWipCmLzc6AUy+Zz1yv
+ cEsgEnJ9dOXPi/tPhv+VlRhurjeY8R+0KrcimZoHB4gOyB06vorJU5Y8arSMQ3czec93
+ g6GQrNT0ZX9RBrzAWPwdTvthmWD5qke7Qj2IcfjLtWy63dH6YlEDdgtxZvTSbsHeGyBW
+ 0gLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772576534; x=1773181334;
+ d=1e100.net; s=20230601; t=1772576525; x=1773181325;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=kQcKbngO5gEYvP1cyAmsSZ3twrSC/3ssI8QyeEW5Z+s=;
- b=g4WW6vgA0GwCPWpnmTqgFHeO8S9P0jOytXpVJKd/eB5lbmccBHJOna3E8/Wx3hos6u
- pG57QDFxVEgCMMNrOEp8qDbtQ8XxMw9LQ59rJsyk7d1xW3I2oTDi9AadTn/srBuSS8fo
- 9Y/zbGJ6Db201MBPddrz/JTBgzYleMEbFQWeHHF/G4YQZw4WiIv0cCJJuIWPqiPgfpzO
- h6Ke0dcMkROFyrYmvg2Wb5pLlTQyy/9ZYP/U5LxaGijN2MrDbUpq8yfgDRQhQpi3Ziew
- 4KjGlgu8NviACCPHeNH8DkS6xTj/Z+rT8MrJLbqbstNov9JxXPcFMPKZNKOuvMnRk93c
- dDDw==
+ bh=2tDkacrofsQyynIL5aV6S8J0KmjfmKGV0MBvFQ9/O94=;
+ b=BDev5cNwcvK0Wa+0m+JI+CTG2lCJnB/M9Zyt2iZgncwRY13c8KLa4bIvmDsF8EYhoF
+ qnreZG+uF/nqA9E+KqEl26ISIDCZSfUoLDqFKuV8/a3g6z4V8ugXDqAOgNio9U5eM6wt
+ sLpMP+OtJLav3mS1ww1PoWkIb8wfVNKGNPuhEV1lLY/8FVhkYV6JOYmDDbBjGNPyJnvW
+ adLvaVsVAy+G1c5SKT9yRYUUVcDhhENIBlJGMgrhs/J5J5VVOYVrhzMuGOmrMyvQlqQI
+ Q7oIoMfvevWVxA0H9EPHL6lZc+NU6FykOmrrllURVYpdtxHEdX7yv5B8PH801oR4K4Kk
+ xHGg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUZ5I3vQDd8iqf50vglEaBg/i2uvWGi7/7ixLi96HTxbpq99XlbOKGGmCck2KKeJLVbUICsV3dJSg==@nongnu.org
-X-Gm-Message-State: AOJu0YyVbiN2/SMdCFFDJt8lJHQhbc/CGluj8wOSjG6LxhF+iJ8ZQO2O
- FWq1yCB19Fc+2GmDBQEyVu0D+oiYMAAlrDSaV4OaTr49DAHY+ycHKPE/OQn8Ew==
-X-Gm-Gg: ATEYQzx/DL+avv5X2Bvo5evALQa+v2i6X+dDfNMbXcq0kSYWiZS4S6n83l24u6iUcgF
- RT+3qrX89CJUQeltaIOz+7+HjqOX4TmNPrtO/WowYxsRWfb7GzvzLEWvxvzIqszj7RqKGTu+2WR
- yKYQm5DYNFlIrddRzqIprF8DTDPnwF/DUtSfcOhisd97Fy11yXPIauBLUJE6slVmk8eMArdfmI9
- RAQ6TlGs9WYLEIxxvgwPS2zc2vaUsm9WlE4VtiL2zRWli+zWSy/5T717dv+QBzJjK53N/gmtf7j
- EBBGvTipLpf3DUBpXE99kY60RTUw7E9spovJNpr6YfyzbgVksPf/eupdMuVKD5UAwJUsWTcGV1H
- SBRlATRu2YBX6i2kjgTfw3hCADxVrdJNR4SN+rfoX8Qob8AShfaE+04A6l+I/raSw8/K/8rJrDb
- xlKAAV45l/w7m692TTiBJf+d4PL1JzakJxYmzyFKOIMO+dRf0YD90kqdDcucNcAN3quShj2z/vm
- RoRDQIVBIWR5sY+20Lv4csoHLA9j5aGHL6i1wGqwQ==
-X-Received: by 2002:a05:600c:444d:b0:480:4a90:1afe with SMTP id
- 5b1f17b1804b1-483c9c2be1dmr286021745e9.34.1772576533734; 
- Tue, 03 Mar 2026 14:22:13 -0800 (PST)
+ AJvYcCUqzkJdZc9TtX3baMmqCunbviogoYPgMeMiRPGsuh0oghtuflCMEcfsiKjFShkYI9+MWr9TMwmlhw==@nongnu.org
+X-Gm-Message-State: AOJu0YyzxC/z8N7blN6BmnunqjxQPdfbDXmXrhoy7FLBHwhht1C5OXtp
+ SObdhJ2wSqEk8yENR/hIG+XhF9QjtaC+OcVOt1EKfsskHZZWbkj+S7z3
+X-Gm-Gg: ATEYQzxKimGAy015b754+FUqZY0RPbLG6fbAbZIDcdmCsCu+nYNFketabXjTuxf6TTo
+ b+nQCBzvhbaz6FKw03EXf1sChJyBq4UrtmTw8q0bb0SDELqVoUmoLzROk3+eDI+1ReyARhnbowH
+ Q17z5ZaWPrAtML/p3cKSU++WeAvF8Vvyv49xDekhkTwBcvk/3suYHJobeZQ3ku4pZxNuFlxM/if
+ hAu883qr6taP1w/XdPA5OPnoiYLM+8Y2s6FjIebEJMrt8EDzoaZ976uZR8ciRW5Wkj0vfLGb1/+
+ XDE7d8wAxRby5myiIqXtmvvqf3tySYvIlYCwN10Ogp9k+noPZxcvPUUeAAEm/j3YFQPudrifdbd
+ /fQS4V+l/fsFra9qrw2TxSAfMPufGM0RsuoDFUWDFGqOnUxPUc42b93QlUxOggbiXsHxcd/IGjA
+ xf9nHDlPiHDA4UmSZGX07/vVnYSwY6fLGevc9nHNwGo8qPMf8qvwQi9g/U9NlwsSBDxOWGtb06y
+ DiDMSh3WbfYYf32CNIU0Ca6VjrZxic=
+X-Received: by 2002:a05:600c:6095:b0:483:54cc:cd89 with SMTP id
+ 5b1f17b1804b1-483c9bb1dfemr296528495e9.9.1772576525328; 
+ Tue, 03 Mar 2026 14:22:05 -0800 (PST)
 Received: from Provence
  (dynamic-2a02-3100-1c79-b600-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c79:b600:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485187c81adsm7577715e9.6.2026.03.03.14.22.12
+ 5b1f17b1804b1-485187c81adsm7577715e9.6.2026.03.03.14.22.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Mar 2026 14:22:13 -0800 (PST)
+ Tue, 03 Mar 2026 14:22:04 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Helge Deller <deller@gmx.de>,
@@ -82,17 +82,16 @@ Cc: Helge Deller <deller@gmx.de>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 10/13] hw/char/serial: Avoid implicit conversion when
- tracing
-Date: Tue,  3 Mar 2026 23:21:40 +0100
-Message-ID: <20260303222143.142741-11-shentey@gmail.com>
+Subject: [PATCH v2 03/13] util/fifo8: Make all read-only methods const-correct
+Date: Tue,  3 Mar 2026 23:21:33 +0100
+Message-ID: <20260303222143.142741-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260303222143.142741-1-shentey@gmail.com>
 References: <20260303222143.142741-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,31 +114,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 64 bit targets, the MemoryRegion API passes an address and a value as
-uint64_t, so use that for tracing. Keep the uint8_t for reading since
-this is what the device model produces. On targets with less than 64
-bits, uint64_t is wide enough to avoid narrowing.
+Allows these methods to be used in const contexts, i.e. where the parent
+of the fifo itself is const. This is in particular useful for Rust code.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/char/trace-events | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/qemu/fifo8.h | 10 +++++-----
+ util/fifo8.c         | 10 +++++-----
+ 2 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 9e74be2c14..a3fcc77287 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -5,8 +5,8 @@ parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s]
- parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
+diff --git a/include/qemu/fifo8.h b/include/qemu/fifo8.h
+index 4f768d4ee3..6b476b404e 100644
+--- a/include/qemu/fifo8.h
++++ b/include/qemu/fifo8.h
+@@ -71,7 +71,7 @@ uint8_t fifo8_pop(Fifo8 *fifo);
+  *
+  * Returns: The peeked data byte.
+  */
+-uint8_t fifo8_peek(Fifo8 *fifo);
++uint8_t fifo8_peek(const Fifo8 *fifo);
  
- # serial.c
--serial_read(uint16_t addr, uint8_t value) "read addr 0x%02x val 0x%02x"
--serial_write(uint16_t addr, uint8_t value) "write addr 0x%02x val 0x%02x"
-+serial_read(uint64_t addr, uint8_t value) "[0x%02" PRIx64 "] -> 0x%02" PRIx8
-+serial_write(uint64_t addr, uint64_t value) "[0x%02" PRIx64 "] <- 0x%02" PRIx64
- serial_update_parameters(uint64_t baudrate, char parity, int data_bits, int stop_bits) "baudrate=%"PRIu64" parity='%c' data=%d stop=%d"
+ /**
+  * fifo8_pop_buf:
+@@ -181,7 +181,7 @@ void fifo8_reset(Fifo8 *fifo);
+  *
+  * Returns: True if the fifo is empty, false otherwise.
+  */
+-bool fifo8_is_empty(Fifo8 *fifo);
++bool fifo8_is_empty(const Fifo8 *fifo);
  
- # virtio-serial-bus.c
+ /**
+  * fifo8_is_full:
+@@ -191,7 +191,7 @@ bool fifo8_is_empty(Fifo8 *fifo);
+  *
+  * Returns: True if the fifo is full, false otherwise.
+  */
+-bool fifo8_is_full(Fifo8 *fifo);
++bool fifo8_is_full(const Fifo8 *fifo);
+ 
+ /**
+  * fifo8_num_free:
+@@ -201,7 +201,7 @@ bool fifo8_is_full(Fifo8 *fifo);
+  *
+  * Returns: Number of free bytes.
+  */
+-uint32_t fifo8_num_free(Fifo8 *fifo);
++uint32_t fifo8_num_free(const Fifo8 *fifo);
+ 
+ /**
+  * fifo8_num_used:
+@@ -211,7 +211,7 @@ uint32_t fifo8_num_free(Fifo8 *fifo);
+  *
+  * Returns: Number of used bytes.
+  */
+-uint32_t fifo8_num_used(Fifo8 *fifo);
++uint32_t fifo8_num_used(const Fifo8 *fifo);
+ 
+ extern const VMStateDescription vmstate_fifo8;
+ 
+diff --git a/util/fifo8.c b/util/fifo8.c
+index a26da66ad2..cc4f590b7a 100644
+--- a/util/fifo8.c
++++ b/util/fifo8.c
+@@ -71,7 +71,7 @@ uint8_t fifo8_pop(Fifo8 *fifo)
+     return ret;
+ }
+ 
+-uint8_t fifo8_peek(Fifo8 *fifo)
++uint8_t fifo8_peek(const Fifo8 *fifo)
+ {
+     assert(fifo->num > 0);
+     return fifo->data[fifo->head];
+@@ -157,22 +157,22 @@ void fifo8_drop(Fifo8 *fifo, uint32_t len)
+     assert(len == 0);
+ }
+ 
+-bool fifo8_is_empty(Fifo8 *fifo)
++bool fifo8_is_empty(const Fifo8 *fifo)
+ {
+     return (fifo->num == 0);
+ }
+ 
+-bool fifo8_is_full(Fifo8 *fifo)
++bool fifo8_is_full(const Fifo8 *fifo)
+ {
+     return (fifo->num == fifo->capacity);
+ }
+ 
+-uint32_t fifo8_num_free(Fifo8 *fifo)
++uint32_t fifo8_num_free(const Fifo8 *fifo)
+ {
+     return fifo->capacity - fifo->num;
+ }
+ 
+-uint32_t fifo8_num_used(Fifo8 *fifo)
++uint32_t fifo8_num_used(const Fifo8 *fifo)
+ {
+     return fifo->num;
+ }
 -- 
 2.53.0
 

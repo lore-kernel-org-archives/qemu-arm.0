@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78EEBEC047D
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:28:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4D0FEC047E
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:29:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxM1U-0004Uu-HH; Tue, 03 Mar 2026 04:26:36 -0500
+	id 1vxM1H-00046Y-H0; Tue, 03 Mar 2026 04:26:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM1R-0004Ie-Py
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:34 -0500
+ id 1vxM15-0003uO-CB
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:11 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM1Q-0004VM-EV
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:33 -0500
+ id 1vxM13-0004RY-Sh
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772529991;
+ s=mimecast20190719; t=1772529969;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=dTXxd75Vb4tuRfGl0ssr0ZVyvGOct06D38HHDpDitnk=;
- b=CZqmKtGYKj/1kZf6r+DkbyryquFY6fEpuQYbUjWKJjeaslBtwYUjULa4RIjeVoiCW+jleB
- Vl1VJoy7VR3NV22sPzjXjTRUN+xfCVAqLgKovr5mPn3xEq22YVuT/iKBbYMMjDmz1DCCEP
- HMhIXUs1beodKhrErDq/rqO8xIZ2SOk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=xD8Gm7sAoDZ6g3mqCtbrJgkIGAF1w0BbF15sQMZ+QNs=;
+ b=A8D0u2dD9aiGcs3T0G14CceIERB0iPzMUl8RdWVs4HhUI+ktNuCGbz5batmhzCCAS5AACf
+ iO4j5YfHHKPyG0K897d7PZtoQ9VT1ANoCdgwiJNAJc/FDIccn+RRTWtmN5SwTYT4w3mQ97
+ WpvgNS/e6NxeogD3FKVrF48SkkqV2Ww=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-349-HvmYUqwcPoyA57BjwJuQUQ-1; Tue,
- 03 Mar 2026 04:26:28 -0500
-X-MC-Unique: HvmYUqwcPoyA57BjwJuQUQ-1
-X-Mimecast-MFC-AGG-ID: HvmYUqwcPoyA57BjwJuQUQ_1772529987
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-151-YwTlZsCUP3y2J5SoB6kF_Q-1; Tue,
+ 03 Mar 2026 04:26:07 -0500
+X-MC-Unique: YwTlZsCUP3y2J5SoB6kF_Q-1
+X-Mimecast-MFC-AGG-ID: YwTlZsCUP3y2J5SoB6kF_Q_1772529966
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1A2E119560A5; Tue,  3 Mar 2026 09:26:27 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 89B911956046; Tue,  3 Mar 2026 09:26:06 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8285230001B9; Tue,  3 Mar 2026 09:26:24 +0000 (UTC)
+ id E947F30001B9; Tue,  3 Mar 2026 09:26:03 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
  zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org
-Subject: [PATCH v2 15/21] tests: acpi: arm/virt: whitelist GTDT table
-Date: Tue,  3 Mar 2026 10:25:26 +0100
-Message-ID: <20260303092532.2410177-16-imammedo@redhat.com>
+Subject: [PATCH v2 08/21] arm: add tracing events to sbsa_gwdt
+Date: Tue,  3 Mar 2026 10:25:19 +0100
+Message-ID: <20260303092532.2410177-9-imammedo@redhat.com>
 In-Reply-To: <20260303092532.2410177-1-imammedo@redhat.com>
 References: <20260303092532.2410177-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: FNb22k7QSgQPGudWV6C0o0S6Y6PAPCMEuW_AlEfUy_o_1772529987
+X-Mimecast-MFC-PROC-ID: w3VXCvAM7Dt-dQRQtmHYUbkcemzUbVZ51qHW0dK7Qz8_1772529966
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -92,17 +92,94 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 1 +
- 1 file changed, 1 insertion(+)
+ hw/watchdog/sbsa_gwdt.c  | 8 ++++++++
+ hw/watchdog/trace-events | 9 +++++++++
+ 2 files changed, 17 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..3e9be28cc4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,2 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/aarch64/virt/GTDT",
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index b739a3ce3c..acb970e8b3 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -24,6 +24,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
+ 
+ static const VMStateDescription vmstate_sbsa_gwdt = {
+     .name = "sbsa-gwdt",
+@@ -62,6 +63,7 @@ static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
+         qemu_log_mask(LOG_GUEST_ERROR, "bad address in refresh frame read :"
+                         " 0x%x\n", (int)addr);
+     }
++    trace_sbsa_gwdt_refresh_read(addr, ret);
+     return ret;
+ }
+ 
+@@ -93,6 +95,7 @@ static uint64_t sbsa_gwdt_read(void *opaque, hwaddr addr, unsigned int size)
+         qemu_log_mask(LOG_GUEST_ERROR, "bad address in control frame read :"
+                         " 0x%x\n", (int)addr);
+     }
++    trace_sbsa_gwdt_control_read(addr, ret);
+     return ret;
+ }
+ 
+@@ -127,6 +130,7 @@ static void sbsa_gwdt_rwrite(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size) {
+     SBSA_GWDTState *s = SBSA_GWDT(opaque);
+ 
++    trace_sbsa_gwdt_refresh_write(offset, data);
+     if (offset == SBSA_GWDT_WRR) {
+         s->wcs &= ~(SBSA_GWDT_WCS_WS0 | SBSA_GWDT_WCS_WS1);
+ 
+@@ -141,6 +145,7 @@ static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
+                              unsigned size) {
+     SBSA_GWDTState *s = SBSA_GWDT(opaque);
+ 
++    trace_sbsa_gwdt_control_write(offset, data);
+     switch (offset) {
+     case SBSA_GWDT_WCS:
+         s->wcs = data & SBSA_GWDT_WCS_EN;
+@@ -180,6 +185,7 @@ static void wdt_sbsa_gwdt_reset(DeviceState *dev)
+ {
+     SBSA_GWDTState *s = SBSA_GWDT(dev);
+ 
++    trace_sbsa_gwdt_reset();
+     timer_del(s->timer);
+ 
+     s->wcs  = 0;
+@@ -196,10 +202,12 @@ static void sbsa_gwdt_timer_sysinterrupt(void *opaque)
+ 
+     if (!(s->wcs & SBSA_GWDT_WCS_WS0)) {
+         s->wcs |= SBSA_GWDT_WCS_WS0;
++        trace_sbsa_gwdt_ws0_asserted();
+         sbsa_gwdt_update_timer(s, TIMEOUT_REFRESH);
+         qemu_set_irq(s->irq, 1);
+     } else {
+         s->wcs |= SBSA_GWDT_WCS_WS1;
++        trace_sbsa_gwdt_ws1_asserted();
+         qemu_log_mask(CPU_LOG_RESET, "Watchdog timer expired.\n");
+         /*
+          * Reset the watchdog only if the guest gets notified about
+diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
+index ad3be1e9bd..a5c10882f4 100644
+--- a/hw/watchdog/trace-events
++++ b/hw/watchdog/trace-events
+@@ -33,3 +33,12 @@ spapr_watchdog_expired(uint64_t num, unsigned action) "num=%" PRIu64 " action=%u
+ # watchdog.c
+ watchdog_perform_action(unsigned int action) "action=%u"
+ watchdog_set_action(unsigned int action) "action=%u"
++
++#sbsa_gwdt.c
++sbsa_gwdt_refresh_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
++sbsa_gwdt_refresh_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
++sbsa_gwdt_control_read(uint64_t addr, uint32_t value) "[0x%" PRIx64 "] -> 0x%" PRIx32
++sbsa_gwdt_control_write(uint64_t addr, uint64_t value) "[0x%" PRIx64 "] <- 0x%" PRIx64
++sbsa_gwdt_ws0_asserted(void) "WS0 signal is asserted"
++sbsa_gwdt_ws1_asserted(void) "WS1 signal is asserted"
++sbsa_gwdt_reset(void) "reset watchdog to default state"
 -- 
 2.47.3
 

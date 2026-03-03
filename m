@@ -4,105 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E6E5EDA682
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 15:13:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99123EDA698
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 16:41:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxRPA-0008Uw-44; Tue, 03 Mar 2026 10:11:24 -0500
+	id 1vxSna-0002nm-Vk; Tue, 03 Mar 2026 11:40:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxRP7-0008NL-P2
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:11:23 -0500
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxRP4-0004SZ-Q4
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 10:11:21 -0500
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-7986fb839f5so48670217b3.0
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 07:11:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772550677; cv=none;
- d=google.com; s=arc-20240605;
- b=Jis13CB2b/88tAN4meMPTUmNpy5vAamLpzw8MWqxUKhLluWQPPQvVz2xgrVqy7hCks
- h3kSBqCArXQ1yr5FYPtDwASmq3tqc5x9iczDwC395C2FihFYa8G/b6QNWaFDs4XXC3hz
- gHHIYN/ZzlyG6fJ6Hlm9gtb4wKTG350VlbiafC/b0DUxI/d173jZt8rBeUvE8GPnF03n
- aCKMINp72StAgu2vw3SzGhB/ibpa/yqxN2U47FkwPdtC9E7s3mfZ/H6ucX5xf9nyQ99i
- zKLL4cFh/bLdo8qbtmyTHNmziUncRcWlyFis/Eb0W3ANQdpSFezX2en1xdb9FBCkWaRW
- zvew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Nle2FLO5QO+OJp8DMg93RBHmiBQ5xMqtYMT81rPyudw=;
- fh=V9XOC7p/ewQCkq5ow4RXRtn7siWPU41tawiAJ2VfY+s=;
- b=S5FAME4LgB60eVgkq8AS1MsX5pO6afyHdvxb1RtxVn4b6vh1HFp+z0JDkdCdSLTTzc
- bD21PfIvHlPWtE0v1hMOBpLLTho3wW4/eOaXKGElbhxA9v2g5F8+Dy9rQrA7XT4rUmrs
- IGWaCh7rw1wWbM/OTBqkY5Yf0P2lOalkdd0XvXFe5eCbBp6DdCfQlLmzS1sVawb+AQYp
- dMFNfspGn6E2H4u16x53OJEPUWdNGCXxhbHVuSPau57Y7HkLvLI++9ahUJdciA0YFzA9
- UJLKDiDg6HZdLXimltZ4dNEuooGWIYu9qod/qRKKKmqHnt6676pn/UBby1E3RZ3nOXsz
- 3jkw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772550677; x=1773155477; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Nle2FLO5QO+OJp8DMg93RBHmiBQ5xMqtYMT81rPyudw=;
- b=KjLWpL+Gv2wgoN0GyQr/RNYD3DJvm1ubEArgp03Fx8TH6C6v0CKIwsWAoOVLw9XagM
- lWXyvDKR+kUBzphhGVoKOawgZh0ZvGGwxyu1NoZV8L8QXl+H05aiVOKUhhZXY5FX33Og
- bV0xN9lPrarVHEyF1bGZ8rm8Dx2ctdu0JBy+AfFaNLa/9HL12IB8H5DZ4E45rm7qPVXV
- /OvQX+SFcuk/bWItQY+tvbpRQE9Dm7pQUXMtzMiPxIk06qaoBhR0DorhaEqvYkHa0JKS
- fGuS4WpKDycwtR5xCiOIQvlfsgrI2lzAPH7OIrQ7tQxBL5YfTqogvUr4O/FkeBIWYTK7
- iEuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772550677; x=1773155477;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Nle2FLO5QO+OJp8DMg93RBHmiBQ5xMqtYMT81rPyudw=;
- b=ADqSz6wORXiZll++3vKb0A7MZaPLnZOgyx7Bscn+jQussvRMgNG+zG6gx2TlIYj+sb
- JK3HogDS54UKyQ1Xwv9Tf+AMVQUohJS3k80cEszA4rTBIUtmk8RM1dJGcXOgg+WAyOzx
- dx3rqLYr+YCgiJINXcA23Cmv/oMGc0/rzfo9iLuvsPVJ5DIgmNXwsbQnQwfjrBvB5r0q
- aURJVV+Dw7gqeGxsmsUlsGnovU1aMAzAyBVaaJH/ZTY3zWgqvf3cvEUYL4LibaXXTQBO
- aT1gsDUrGWZx1CKK2YsKA17Gc7iMdgU+atva1y/rYMfvXIySedA1n6l4st2ipGwrYy11
- TcEw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUV5IN3WESOXQbWOnX6Mbef35wp2ATIsEugJm0rP/455DJ46BWmofl/znIzOO9VGA0oKhNa0ufdVA==@nongnu.org
-X-Gm-Message-State: AOJu0YzZg0rFdeSN24MDooEnfUgPSSOitvW5g4e8nZfUAYZv2bJWNJQ8
- LdyNCcZcJaB3f4gVBSQY8QNOj0e6nl0Y4bm0hrb21Ij+aPs5Q4v+SFUnnEqwOLuEx6ox4g9j59p
- +afm/YDfY5qFZ7Siajo6LZUFaTTcXp7OOJlZntrDTjA==
-X-Gm-Gg: ATEYQzzHtIG0OBpAILZhVYgG/pQsrs7XoDLg3UMyYHuzcafqwWr1rYbGGZm3927rmSH
- 3qqhrWXWTiM0UyppvnpJVBb5v4tlUqEDJ3hmL3/No7IeWxJpvtqBm25KkOMx9ea90GXOtrfeS2l
- hmPJ+ZvBbnsLjNItDF590l/q/LJX/Hmau6RvAKmA2AuJB3/Cw7uKDlgxB6XDvoo6sQQ4eZlCRdC
- thDdWQOhFQCtBcUpAn+np0CC7m4/Nib0dNU1Qym28aY2ujB8MUysFX5R7EpacJAeXyWcyyb5Eg4
- Scvk8CHqwrlLnY1B02abwBNZLO6LYRJ1817w/xri9SnLc2mztwYFAZwb4hWfzfg0GSs=
-X-Received: by 2002:a53:ecd5:0:b0:649:bbf4:121b with SMTP id
- 956f58d0204a3-64cc201e459mr10769416d50.2.1772550677379; Tue, 03 Mar 2026
- 07:11:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vxSnZ-0002nK-FC
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 11:40:41 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vxSnU-0005pm-Jo
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 11:40:40 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.54.239])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4fQM3s5y5lz5wC5;
+ Tue,  3 Mar 2026 16:40:25 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Tue, 3 Mar
+ 2026 17:40:25 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G004e905d217-c8a2-4265-a199-da2aa9cd3de5,
+ 98E95E7FEDB3EB848AAA79F7F8576E65DBD0C5BF) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.14.253.154
+Message-ID: <1d36cebc-51fb-48b0-a2de-6c19ec74d046@kaod.org>
+Date: Tue, 3 Mar 2026 17:40:24 +0100
 MIME-Version: 1.0
-References: <20260303143928.1747116-1-eric.auger@redhat.com>
- <20260303143928.1747116-7-eric.auger@redhat.com>
-In-Reply-To: <20260303143928.1747116-7-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 15:11:06 +0000
-X-Gm-Features: AaiRm51vq65CRQcdJKlm7jyFix0xSuaq8lAWEH7xJZvPzSjzPYE_-mUfYAEafAg
-Message-ID: <CAFEAcA9BviMjiKKLRPWKgzFST2YeaijaGQvMPFYhfcqRwtM38w@mail.gmail.com>
-Subject: Re: [PATCH v2 6/7] target/arm/machine: Trace all register mismatches
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
- alex.bennee@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/10] Update test ASPEED OpenBMC SDK v11.01
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+References: <20260303063930.2878300-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260303063930.2878300-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG11EX1.mxp5.local (172.16.2.111) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: f0acb06d-415a-41a1-9905-729a7258a064
+X-Ovh-Tracer-Id: 1078893588667272114
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTG1l9M/jNgo6YYDJtmB906eX+DYBP3lnCkwOh/Jt4DMizuEtbkvbbUj7UDuD9lpgA2Il/mdUhAwzFM8chjv9XCnr/1zePyR7OsJ36LuCpsc2hjS4NkEBX1CagmfQy3OhWP+tE5p19uDTlMI4Sdud0V5D+dqwkFECMpoaWorjMczBHhMGtVsexUPFarObsF+i1mQbj6F7q6g033qMUFk8OiAeH5SqfEI4CgavT4cC15RoM58UMuYZsbysHJTUbbf319mJC2Naqi5xjA1wyNIJAQLxNo456FdotgHQ5aYz+RW0xUNHa23Vg+oTkljrhrUFOop6iI/thDPzvkshjRK3+GnaChGQwSrTx3z6RVaykP5ICmXFQKzG0Ke6srfITfR239dsE4bFXDowbB67mPeSezzxjIZWO8sGNtXMgVh0deed93YFh39ztUz7f8cQg+A0NzPC77HdWvxia0/2k5llBmcjhoYLh+RqtQ8YG4X4zAkbFE+wDOMW7LBY17yxKGSP/o1S2B+L/h2Ve24QgvB1ySE9pyc6pm78aaIKDs/PMyM+NWilyaBDm8kmn0fa88mYUI3LRym6eFDaVbvd9w0fmrw03wtrUUC3FHHeINR0CWNeSGSNpjTUpt/8V7g6ILDAwQp64TWYiTUvQVuyntBGzRhtIXVhEBL6dyOk9XQYAHRJg
+DKIM-Signature: a=rsa-sha256; bh=COC4/E+SQuWy/msSS/L3EC7Fj1qfliuSv6EGnPYcHvw=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1772556027; v=1;
+ b=ZpRvEilYLvYu4pdNPolgjKLOFIDhCdw1cQTn3xrYXwfaYg3XXBUUDa+W51mnab+8wftHxPtp
+ MCF+zee2IUsEg8gjLlUkG5sJ+xb7OhBCzeqR7y8lcqiIPuzGnsMZGsUhaTbT+n2O9Adv72xgjS/
+ oLgxg0RewvjWWx00FpXD33BdUR73FHA9+iNfQEsPAHh2dZAp8ypd2k37JhxRTxkEUIdth3n/N5P
+ N+xt5holNKCoG9ZIr5qBEbYSdSMD83cjSNzA+XgcSvo95eG3ggg/yYVM0/cD+BQ4lOvHkVhdVE5
+ nc/ZqT7v8mPfqMnUHJ/8WVYs/Y+PzzX3XKVALgm9y2drw==
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,23 +129,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 3 Mar 2026 at 14:39, Eric Auger <eric.auger@redhat.com> wrote:
->
-> At the moment, cpu_post_load() exists with error on the first
+On 3/3/26 07:39, Jamin Lin wrote:
+> v1
+>   1. Update test ASPEED OpenBMC SDK v11.01 for AST2500, AST2600 and AST2700
+>   2. Update test ASPEED Zephyr SDK v03.06 for AST1030
+>   3. Update test aspeed-zephyr-project v03.05 for AST1060
+>   
+> v2
+>   1. Update sha256sum of ast2700-dcscm-image.tar.gz
+>   2. Update sha256sum of ast2700-a1-dcscm-image.tar.gz
+> 
+> Jamin Lin (10):
+>    tests/functional/arm/test_aspeed_ast1030: Update test ASPEED Zephyr
+>      SDK v03.06
+>    tests/functional/arm/test_aspeed_ast1060: Update test
+>      aspeed-zephyr-project v03.05
+>    tests/functional/arm/test_aspeed_ast2500_sdk: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/arm/test_aspeed_ast2500_sdk_515: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/arm/test_aspeed_ast2600_sdk: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/arm/test_aspeed_ast2600_sdk_otp: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/arm/test_aspeed_ast2600_sdk_515: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/aarch64/test_aspeed_ast2700a1: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/aarch64/test_aspeed_ast2700a2: Update test ASPEED
+>      OpenBMC SDK v11.01
+>    tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED
+>      OpenBMC SDK v11.01
+> 
+>   .../aarch64/test_aspeed_ast2700a1.py          | 30 +++++++++----------
+>   .../aarch64/test_aspeed_ast2700a2.py          | 30 +++++++++----------
+>   .../aarch64/test_aspeed_ast2700fc.py          | 18 +++++------
+>   tests/functional/arm/test_aspeed_ast1030.py   | 12 ++++----
+>   tests/functional/arm/test_aspeed_ast1060.py   | 14 ++++-----
+>   .../functional/arm/test_aspeed_ast2500_sdk.py |  8 ++---
+>   .../arm/test_aspeed_ast2500_sdk_515.py        |  8 ++---
+>   .../functional/arm/test_aspeed_ast2600_sdk.py | 10 +++----
+>   .../arm/test_aspeed_ast2600_sdk_515.py        | 10 +++----
+>   .../arm/test_aspeed_ast2600_sdk_otp.py        | 10 +++----
+>   10 files changed, 75 insertions(+), 75 deletions(-)
+> 
 
-"exits"
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Tested-by: Cédric Le Goater <clg@redhat.com>
 
-> catch of unexpected register in the incoming stream. Let the code
-> go further and trace all the issues before exiting.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  target/arm/machine.c | 12 ++++++++++--
->  1 file changed, 10 insertions(+), 2 deletions(-)
+Thanks,
+
+C.
 
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 

@@ -4,113 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F00C7EC1431
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E78BCEC1430
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 11:43:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxO8l-0005E5-28; Tue, 03 Mar 2026 06:42:15 -0500
+	id 1vxO8s-0005LU-Iq; Tue, 03 Mar 2026 06:42:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxO8d-00058l-Fe
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vxO8b-000581-EM
  for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:42:07 -0500
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxO8b-0001gZ-S0
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:42:07 -0500
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-64ca1ba0089so4789962d50.1
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 03:42:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772538125; cv=none;
- d=google.com; s=arc-20240605;
- b=M2dAkX5hP10LQSfIAOU/a6tCSXQxqBLiIe+LiySKyaT3oMde9UUM1rTQvO/Ars37m+
- iPpn90b1CXggA+G5yiwH0jLjfI6IjfCkyFg1alQQBahbDpSSuF3Jusae6oiy6baOuONw
- 9agAFHpWjkMAsUiBSs+2k3IeB6uWX8dFwAi9S6zYan8oSOjxwbhhcJ0HvKNj4TPcWrrD
- 8GZrokL3R0w06RXxoTRlrT2yKdCL5aixcdNBfAIVq1CaN4VgzEarcDre0YK4Un18m1AF
- RBnu3exmrnJ8AQRoG+Qx6gJyKXPvmMCo7EJutQYKvmDquvwGKuYI8QBVQeDapPocZdP+
- IvhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=TmcAWmmVEiZVO2IXHyRF4hwYUTz2/PggnQC6ob57Es4=;
- fh=V2ugROAbF94SSiCphgfGJAXLhrhIWYHJOH0S/osoqPE=;
- b=gx6T+vTFXlWxj7QaGxH+FpJk69VIl3kbcUmIGsFSh74RU7cWawIgIW1D9O+qOm2P1/
- jvG37lN4ZdnA5Qb6Euv4gI6cLJJJGumH+IIiaMkP80n+W/IJzlfsC0FoVZB3CZ4eMP8U
- FDenEPcu/aCR8HCQPicQoyYkrG37BciyxnO7wgNNCQcFcAPVacsyDNklEvcIjHOkP5TK
- nFwbfX4nf87Oto4FVJI8Xg2XftcOZtSHA4pU0sKCw/doEXEtAYwYpicPxEeoAnMzSXEl
- B3mvZQvHWyqc64771L/VasqsRjSoSjLwf8gipgIYbYvLDQKtBkCMH9MyIvu4BCvkS3ic
- BxMw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772538125; x=1773142925; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=TmcAWmmVEiZVO2IXHyRF4hwYUTz2/PggnQC6ob57Es4=;
- b=wD6Jgnr5KFz7zPTsEMJtCfRm/WsXhkOqA9FCKCC/vIEUGeA96qGo28gcJFDGAOu2/7
- qh3dhDubXxHQ+K6HDvIb7h0m+LHitXSWugusxMtfzmuKuGTLEQe0VFnLsj5ZFcH7lrLL
- xsF8nnUoHV0KLSAjFKvx/7V0ZF1U7onNLxeufTtR5wI9FSSk9+V26AFon/ACMrI0QL6q
- jGaEsiLcY2v+Bnm2jwDP174G1+3mu8L3+2TBVf9fDdaaYOQwluljcvkMj/ahV9aKr2uc
- bAGGwCosZSpietnC0qaqrD/Zz3lrJE/uQP5xemrg11ts9YqAGvZjpWpEUfBJqrLXvdA7
- mL1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772538125; x=1773142925;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TmcAWmmVEiZVO2IXHyRF4hwYUTz2/PggnQC6ob57Es4=;
- b=Dv+l61T8G+XE4AU9vJq1Lv8jSDSSFdlFBYjVUGxDXPJ3I+DC/HxOCMI6YAP8UmwdOs
- hcm0+fhiiWdR8YBK9eY3r20tIIsfrza8Afzw7merd28vF5ZDkk9tq5j7H16cfCsDvbD7
- eHwCdlxnp0Ltaw05B68R0ed7zRs7IyNNUiN728VHnEM2PT3aGywgzvpb8pQws0sy7WWs
- w35PjN3FHlP2twO3yPWTJCxF9v/RWisyvhf/K5LnDqCucCOkT9QI3CvNwYB6BBmKOuUx
- +ZO8uoGejY8RSXBlFS/Ass5aW4StbUB+YX6/w52NatULOxCPtX2+PpxDXocYR91RuSTi
- +2VQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX1sj1Wf+9IclyChhryCAdWbmINsIgdvIyaOHsY8aMsKWpO9CUQxBN4K5VP3ojAYTBl/yDc3MYzSw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyahc2JMC/KTb2WKcNYVzZVahqr5loKNKC5SSM9aGnXPjby3RVL
- Z+29wz7F/GgTI2FxAtEBs3k/1+sXld340b7LD/teD5x/Y+b0NL6fpRExFK/X4faEAOG6L2r13dJ
- C6WpV7a1OYYcx3n5KuVlr0FX9DdB2OKuHm6aGMUA5Mw==
-X-Gm-Gg: ATEYQzx8LQ6ncqaIuAPe3k2dgIDPr46n9pikRUYTPQeH4SmXSe32N8Jll9GFljigcw7
- g2c+GmX3pFgbFk+PZCwA7Yx/RREyAkvl106VSaDz0/5HxzoNJnuWT0jLwDIcukn2UodPjrHjRFR
- G1W1Gx424uzzjSTRaqReyPW5ezKDcCjblVDa/H2xUiMDCMA5dP5Atz8cOTtfXnx7f80cgbfto+B
- +40cRQHWlVqyIxROn20/mO8aikarAsAkFfzjmw9RLYR68W0h1Uh90/iLIkgby2oIrtN2uLsyxCB
- iJLa0Iff/D94RY+PqeXnUpXvWLWfkB19piHgdE2DSQTIdcmjFYRYzWB8xR+t9ccVG74=
-X-Received: by 2002:a05:690e:44a5:b0:649:6872:9d89 with SMTP id
- 956f58d0204a3-64cc2285d6dmr9939518d50.50.1772538124574; Tue, 03 Mar 2026
- 03:42:04 -0800 (PST)
+Received: from p-west1-cluster3-host3-snip4-5.eps.apple.com ([57.103.66.68]
+ helo=outbound.pv.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vxO8X-0001cK-VG
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 06:42:05 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-20-percent-3 (Postfix) with ESMTPS id
+ 8CB0A18000AC; Tue,  3 Mar 2026 11:41:54 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772538118; x=1775130118;
+ bh=xfi6rjeDQo4vpSHmbqs0x+tY5PCeD7vMjLpTj63mmJI=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=ANz5olkz3ovdVCBtXguNYEpQYBgJazELBa7yZzMKVaTXepSkd2QfjOrP42evyvsQe293F8JKz0+IaKux/KEarJSmib+KiY1U1FKtV2aLsWfACVcd/JjP5oMpY55IanQ0hFvTIhmYQ/o9PvrQ1Lpjl60JZqwfbNVP3ay+x8k0HBCrbm0zvtcmEqvgMB16XNBbVJ5a+FQj8ieW5c/It/pKns4QFE+9PK2YGzE/zPWb3atdshGALeZtWfGWa4l087Al4OOwzwzt0URuM6q3v2obXd8LQTkOjhaj5IeVtgiSn5/m9ay3DAvRhNunFM+g6Nkx8Lo064nVGhHRsl2UnDw4Rg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-20-percent-3 (Postfix) with ESMTPSA id
+ C19761800194; Tue,  3 Mar 2026 11:41:51 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ Wei Liu <wei.liu@kernel.org>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Cameron Esfahani <dirty@apple.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 6/6] whpx: i386: remove SIPI trapping
+Date: Tue,  3 Mar 2026 12:41:35 +0100
+Message-ID: <20260303114135.15390-7-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260303114135.15390-1-mohamed@unpredictable.fr>
+References: <20260303114135.15390-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-References: <20260302220254.1166849-1-shentey@gmail.com>
- <20260302220254.1166849-12-shentey@gmail.com>
-In-Reply-To: <20260302220254.1166849-12-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 11:41:52 +0000
-X-Gm-Features: AaiRm50ZDWOSzNYDTMqP2C9-_reSRaMxHA35okEURMI-9ETR6WIHoSKGo3tJgUk
-Message-ID: <CAFEAcA-dmbSDNC+AL=OO9w=bM-79gVaysroQty=u-SxzQziUrg@mail.gmail.com>
-Subject: Re: [PATCH 11/12] hw/char: Have SerialState inherit from SysBusDevice
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Helge Deller <deller@gmx.de>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- Troy Lee <leetroy@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAzMDA5MSBTYWx0ZWRfX7oY5yHbtbqyW
+ AZrbUjrSNXzKDcyzn+00kemUTX48LXQ8QE2S+ffL13F7JNCPFkuhwnJRDCy6vqC1p6t+23uZmHL
+ LijrM/Yfd7lKO3oZD6isY+7gqpdX8iuWuNCYyet2rmnITNpemnXenwgGjqyO62IrK9n9Xk3ViZC
+ nq9I7tWem572OmakiFsJD/xYBOdNaEYhihTNul9BgUv76+P1Gs3k/Spbx8Mxm1MZzxXSSseNTXQ
+ sJDgGhGUxyHL0B8qX6FfsB8YCjyuYIDkzM2uz95uBhuP2/mF0Nkh7ZXyqwBJHAkMVuBdck8Eq9s
+ jISy2/L/Dq5SmAS/3fxss3xGCAejc5NCXuwS+/ufEQt4A4kB0OcgsKABx967e4=
+X-Proofpoint-GUID: m1Y-2qdMY6rixghNl_IltWIcxdKTo8SL
+X-Authority-Info-Out: v=2.4 cv=EJcLElZC c=1 sm=1 tr=0 ts=69a6c903
+ cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=Xl7PRCIL3n5FuX7mVuoA:9
+X-Proofpoint-ORIG-GUID: m1Y-2qdMY6rixghNl_IltWIcxdKTo8SL
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-02_05,2026-03-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ malwarescore=0 clxscore=1030 mlxlogscore=882 bulkscore=0 adultscore=0
+ lowpriorityscore=0 mlxscore=0 phishscore=0 suspectscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603030091
+X-JNJ: AAAAAAAB9xpHP4qgpueVBMhQC/CSK1uCW5wop07nzXt21aDVTfhuhSasWJryzCrI7cRQ2rzYCEf6Ko8jaKOc1c9TKuXZ4b0rGF+/4GcwAiLjz7UuVpaaFvrtSAisAyjSVwP1AQdBRP8PCt09374xhWhjQNP8D97V6ODWr9g1SG/ULRL/I9ti0qiL6d0UCwubJrfbWwKwVhJRiPa85FAlisKlQSF+MRuTKmmP6h+LDCZxQZ8NpediygB7hlh+ae4dNzmazowJ4vJbcJbd5tcJjKmFkRGlaQd++KXTucurU834agkwDo/l2vrOUPJdb5YQbke8TnBVIY7AVHSDUqFTSi+uC6sc1X98e0w1caInSgunzzfsFj7MlALkLQ923dgYPmBifzAQly1t/84GgVviw7M8D/5zrhkBQTvYLvebed/K5LgQd4oYqt/WobLgeXUMmVFZux9lRADpu6LuTXKxin2e/z3kn8PqH3RQlZ2Dm7hr8FRwbbesqJggduDYcvexSpC3d9ilXghy/Go+n6gxMUGY6y4IvVtJx4GuB++y4VYybAW8wajljauMtdoFqQRM9MGWBZVU0mEiMVT6dKgj/XEAX3ZysRW1WUynRN2TrLJxpYbnxYo5+LTXhREVvmMH8tvDNO6et6+a5yG8lQ716waeBVbfoNo3VBVFGQGPzmw1gi+iO+rKidm24LcTKqTTyTXztFtdTVqTEZDpUmpAOsS+uGpDJJt+76bH
+Received-SPF: pass client-ip=57.103.66.68;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,48 +93,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 2 Mar 2026 at 22:03, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> SerialState currently inherits just from DeviceState and serial devices
-> use SerialState as an "IP block". Since DeviceState doesn't have an API
-> to provide MMIO regions or IRQs, all serial devices access attributes
-> internal to SerialState directly. Fix this by having SerialState inherit
-> from SysBusDevice.
->
-> In addition, SerialState doesn't participate in the reset framework
-> while SysBusDevice does. This allows for implementing reset
-> functionality more idiomatically.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+The implementation in Hyper-V works fine and the code
+currently present doesn't handle x2APIC correctly anyway, so
+remove it and use the implementation in Hyper-V.
 
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/i386/whpx/whpx-all.c | 97 -------------------------------------
+ 1 file changed, 97 deletions(-)
 
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 4968a5a3e4..fa78218f80 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1679,100 +1679,6 @@ int whpx_vcpu_run(CPUState *cpu)
+             ret = whpx_handle_halt(cpu);
+             break;
+ 
+-        case WHvRunVpExitReasonX64ApicInitSipiTrap: {
+-            WHV_INTERRUPT_CONTROL ipi = {0};
+-            uint64_t icr = vcpu->exit_ctx.ApicInitSipi.ApicIcr;
+-            uint32_t delivery_mode =
+-                (icr & APIC_ICR_DELIV_MOD) >> APIC_ICR_DELIV_MOD_SHIFT;
+-            int dest_shorthand =
+-                (icr & APIC_ICR_DEST_SHORT) >> APIC_ICR_DEST_SHORT_SHIFT;
+-            bool broadcast = false;
+-            bool include_self = false;
+-            uint32_t i;
+-
+-            /* We only registered for INIT and SIPI exits. */
+-            if ((delivery_mode != APIC_DM_INIT) &&
+-                (delivery_mode != APIC_DM_SIPI)) {
+-                error_report(
+-                    "WHPX: Unexpected APIC exit that is not a INIT or SIPI");
+-                break;
+-            }
+-
+-            if (delivery_mode == APIC_DM_INIT) {
+-                ipi.Type = WHvX64InterruptTypeInit;
+-            } else {
+-                ipi.Type = WHvX64InterruptTypeSipi;
+-            }
+-
+-            ipi.DestinationMode =
+-                ((icr & APIC_ICR_DEST_MOD) >> APIC_ICR_DEST_MOD_SHIFT) ?
+-                    WHvX64InterruptDestinationModeLogical :
+-                    WHvX64InterruptDestinationModePhysical;
+-
+-            ipi.TriggerMode =
+-                ((icr & APIC_ICR_TRIGGER_MOD) >> APIC_ICR_TRIGGER_MOD_SHIFT) ?
+-                    WHvX64InterruptTriggerModeLevel :
+-                    WHvX64InterruptTriggerModeEdge;
+-
+-            ipi.Vector = icr & APIC_VECTOR_MASK;
+-            switch (dest_shorthand) {
+-            /* no shorthand. Bits 56-63 contain the destination. */
+-            case 0:
+-                ipi.Destination = (icr >> 56) & APIC_VECTOR_MASK;
+-                hr = whp_dispatch.WHvRequestInterrupt(whpx->partition,
+-                        &ipi, sizeof(ipi));
+-                if (FAILED(hr)) {
+-                    error_report("WHPX: Failed to request interrupt  hr=%08lx",
+-                        hr);
+-                }
+-
+-                break;
+-
+-            /* self */
+-            case 1:
+-                include_self = true;
+-                break;
+-
+-            /* broadcast, including self */
+-            case 2:
+-                broadcast = true;
+-                include_self = true;
+-                break;
+-
+-            /* broadcast, excluding self */
+-            case 3:
+-                broadcast = true;
+-                break;
+-            }
+-
+-            if (!broadcast && !include_self) {
+-                break;
+-            }
+-
+-            for (i = 0; i <= max_vcpu_index; i++) {
+-                if (i == cpu->cpu_index && !include_self) {
+-                    continue;
+-                }
+-
+-                /*
+-                 * Assuming that APIC Ids are identity mapped since
+-                 * WHvX64RegisterApicId & WHvX64RegisterInitialApicId registers
+-                 * are not handled yet and the hypervisor doesn't allow the
+-                 * guest to modify the APIC ID.
+-                 */
+-                ipi.Destination = i;
+-                hr = whp_dispatch.WHvRequestInterrupt(whpx->partition,
+-                        &ipi, sizeof(ipi));
+-                if (FAILED(hr)) {
+-                    error_report(
+-                        "WHPX: Failed to request SIPI for %d,  hr=%08lx",
+-                        i, hr);
+-                }
+-            }
+-
+-            break;
+-        }
+-
+         case WHvRunVpExitReasonCanceled:
+             if (exclusive_step_mode != WHPX_STEP_NONE) {
+                 /*
+@@ -2236,9 +2142,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+     prop.ExtendedVmExits.X64MsrExit = 1;
+     prop.ExtendedVmExits.ExceptionExit = 1;
+-    if (whpx_irqchip_in_kernel()) {
+-        prop.ExtendedVmExits.X64ApicInitSipiExitTrap = 1;
+-    }
+ 
+     hr = whp_dispatch.WHvSetPartitionProperty(
+             whpx->partition,
+-- 
+2.50.1 (Apple Git-155)
 
-> @@ -76,12 +76,13 @@ static void serial_isa_realizefn(DeviceState *dev, Error **errp)
->      }
->      index++;
->
-> -    s->irq = isa_get_irq(isadev, isa->isairq);
-> -    qdev_realize(DEVICE(s), NULL, errp);
-> +    sysbus_realize(sbd, errp);
-> +    sysbus_connect_irq(sbd, 0, isa_get_irq(isadev, isa->isairq));
->      qdev_set_legacy_instance_id(dev, isa->iobase, 3);
->
-> -    memory_region_init_io(&s->io, OBJECT(isa), &serial_io_ops, s, "serial", 8);
-> -    isa_register_ioport(isadev, &s->io, isa->iobase);
-> +    memory_region_init_io(sysbus_mmio_get_region(sbd, 0), OBJECT(isa),
-> +                          &serial_io_ops, sbd, "serial", 8);
-
-This looks very odd, because sysbus_mmio_get_region() is supposed
-to be "the sysbus device provides an MR it has initialized, and this
-is how you get hold of it". But here we're taking an uninitialized
-thing and initializing it by calling memory_region_init_io(). It works
-because it's just returning a pointer into the internal memory, but
-it's still making assumptions about the internals of the device just as
-much as directly accessing s->io.
-
-Maybe this is worthwhile for the benefit of getting reset
-handling automatically into the reset tree.
-
-thanks
--- PMM
 

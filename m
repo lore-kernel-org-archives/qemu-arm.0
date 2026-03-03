@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70BBCEC1423
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 264EAEC1423
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:48:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNIO-0002z4-1U; Tue, 03 Mar 2026 05:48:08 -0500
+	id 1vxNIr-00031z-HM; Tue, 03 Mar 2026 05:48:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxNIF-0002y3-Fs
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:47:59 -0500
+ id 1vxNIq-00031g-4c
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:48:36 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxNIC-000439-1u
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:47:59 -0500
+ id 1vxNIh-0004C7-2y
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:48:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772534874;
+ s=mimecast20190719; t=1772534906;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
  bh=nEHegAVxKlLHUxF47/TrSWe3AW8x3xWT9xEVTACOVdc=;
- b=Z0Dw01H9QoT0jN097N0gjzLi81tasNe+32wHxa8rGpGNkoeoyflMlX84IiKWz8EW7jtYw8
- ixoGV/GKy3rTVqiXd9kvq5ahjn1We4FGwm922dl7+8BYSkH2mer3vgg3p9g6P9nZxsqKr5
- fVcVbKqf1MI23z/N6FWFmW8V9iOufqQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ b=hqkaaTG2DDeHTcarlT3Pzk9w17XJwZFWryXOX9hck4/fXGWA1KmsJlqrV0+xCzONAhVsof
+ SzCs5c7gDWvmJEQKwpNyohasrRx3ncjSLanGaeMCpPqctt2k4RlMyrIwSjLn9vjla1vDOp
+ B9MXeLv8VlTNi1mZFW9SR2pqLgKoNno=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-664-5uMbvtLrPm6K22nk1tdMCw-1; Tue, 03 Mar 2026 05:47:51 -0500
-X-MC-Unique: 5uMbvtLrPm6K22nk1tdMCw-1
-X-Mimecast-MFC-AGG-ID: 5uMbvtLrPm6K22nk1tdMCw_1772534870
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-43993fea282so5729920f8f.0
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:47:51 -0800 (PST)
+ us-mta-310-2m9uv2yMOxK7xHidDCB5xQ-1; Tue, 03 Mar 2026 05:48:25 -0500
+X-MC-Unique: 2m9uv2yMOxK7xHidDCB5xQ-1
+X-Mimecast-MFC-AGG-ID: 2m9uv2yMOxK7xHidDCB5xQ_1772534904
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-4398fed3552so4664302f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:48:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772534870; x=1773139670;
+ d=1e100.net; s=20230601; t=1772534904; x=1773139704;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
  bh=nEHegAVxKlLHUxF47/TrSWe3AW8x3xWT9xEVTACOVdc=;
- b=v3UWxZ8UHr2/JEvJWP9GaDR0J8rsdTzXOvWP44UAfaW5I2ASrL0ukaVzwKd899vCrX
- kPQtx6ieLyl75s/VXnvlWp/8QAqO5QoYoGegLfSQbzSmM5q0b4ZpoOmgIBe2kMFWcEky
- ZEdU0Hw93RcybNxUezAdD5rQlX3WP13b4Qnk03H86y3SEz/BRSr8KsnNd9vPmBA4dG0V
- T3kSIhQWKudlCmKgSTBau/wFgIz/7NAWFhQnEzZQlcckQtRKBVQW4cwGOCLbyMiVPBgJ
- VXuniYUsSktlO7ero9BcVRpz6l+Wxg6T+qwOPTRU1i4mAYq6a0GHTe0vvYgUBx7v0GN4
- TRbw==
+ b=PaGNwi542KTPVH1CpY1MV1A/GLkPS7YSKf0rptc3tZ6xsp4kt+9xMvh6iUShGO1yHG
+ rNeNxAaqb1r88Jlvas9Eo12+v4Mu8LmaxNlzaFYiF46Gh1xk8WRUknS14C3Al+Sh2jBo
+ gCj4gVb1IBFiOroIHIi5T29BgLPxHsa3C1zEX9JZB+CbPiQ541KXfRXSPQ8K59v4rJKN
+ se4Ftv9wERIE34WrPUWnD6ishv0kis2xQ/BZrqVJ/a8IrXp/gi56Bh7gTcX+Bk9Yb+Pr
+ trJK/3ewpz8MJipWHDU0Q5n5zUlJIsIXHLosG9qH4OBMXkaaDPz3/4Jy4pYOrmYgGGE6
+ vVJQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUi0db009wM5waY/J8BtxlFATBrN6aGR5gckoMXJNFAnjsifVS54SlrKbBGtG5omwN2rlMtoe/QTg==@nongnu.org
-X-Gm-Message-State: AOJu0YxkbQ4PViVZNKqjp+bszv3CO8py0dXGQxHvPR3Pou3lqBIkQ/W7
- 5ThHbR5Ge/ipYEdZZHQzctQBRpZtlZlb5an8ubmd5Sq94haeMgUJPS2LcEZ7zUJY9xU2hP86TdI
- isGHn0HcdHiNCZzH8Tx5VFXQKrpKGmMiNS2d9t+lZaM28d+3BgQCgLQ==
-X-Gm-Gg: ATEYQzzwYe1renxJJYpJA5tPTXHwFSrmj4AkEa52RR3spWmz0Qi3QkcJ8C4gzJDIyZ4
- 2hn5P5k2jSw2Ir6cGWl09yTQnWT3WNy7XH1ZswN/Qbb3lNph5w2vKf+au/+QLRtqbQ8phi1BflD
- uCAQZxrFmJ6oecJr3oUZdK6ltzK4dpepeMi1m80hIGSi9vmHvVa/UmgTmTAxYjpuKCdumnKH+0e
- 39joRF8BzMw5w/f4PSSIYDs65ZEK664x0bJWmG5dz74kt4H5E8IYkVo86wXZAW/CrG9oOw+Xq80
- 6BBYern7GfFBasG+TtxMNW3VZL0xGYUGk9vZe8niDSralTemIErU8AG/Nb7RSmgh6cKQ983zYlD
- 9dxoi6E0URt3mVSqp9R+aqDGk4OukFI+sRBBADbwv36yGp1CE9Fdn6yS3QJALdlVl+i0QYA==
-X-Received: by 2002:a05:6000:2007:b0:437:6dc8:c372 with SMTP id
- ffacd0b85a97d-4399de194e5mr28550858f8f.38.1772534870210; 
- Tue, 03 Mar 2026 02:47:50 -0800 (PST)
-X-Received: by 2002:a05:6000:2007:b0:437:6dc8:c372 with SMTP id
- ffacd0b85a97d-4399de194e5mr28550806f8f.38.1772534869692; 
- Tue, 03 Mar 2026 02:47:49 -0800 (PST)
+ AJvYcCXg8UlI96btaIY69K0X8QsD1gRYG8S6xREvaptL4N2Jlp+0otOIpqwe6ghltn2TNaOljDyzXmJlPg==@nongnu.org
+X-Gm-Message-State: AOJu0YwD1xFrvbFvb3nXCGpME8wlfiFEAFXsLLeuTBClykpILQrU2cJW
+ o5ZjSQkJbNS8CG0m/dwJj9BcjgrrK04Iq0YTHQgOHz7Z0iYfzoZlFGj+QX2LJocMT2cIjlaCbLg
+ EPVi4nliH4STcu9tuefGreUI4GBQyC2e+Wmkj5EIuK9wTPK59onpi6Q==
+X-Gm-Gg: ATEYQzyM0t3/muIxbgRJrX5PxCHWihdum87EGi2F4zvX69C+3XbPx42Tu2w0/yWa6Rm
+ MLOZThXNxysqsHgkJ5w2OareYzNwJYil4oukiKzzOUveAoOzveA1kpswVHPwmLpcU4jknFFmt7P
+ mPM+K2MMwm3+eaZWZLUF08Zx8FFUHSbZ153XkYImHUSI6GVylIuAc55w4wCR+knOB5gu+AOwaiJ
+ n7T1xMrY+CMJHk6UU3J0eKrJn52EJ/Pz9x8UhFi7XWmoVLv+R1vVURi0DzXMPL5CrpW7+gurZN8
+ ZJobbBaB4dEO6tnPwHgayx46CXcBaVi7PXCJAsrqMIu3f3KucecsBneHesmb+fxpptczQfSJgLK
+ mWjePVdxSJvy0s4uEIb6Dhp8rK+V35kdsRoOJn9sDT7NHv1G5BmBbA+tr3oQTTfFSCE7QeQ==
+X-Received: by 2002:a05:6000:610:b0:439:ba4d:bf40 with SMTP id
+ ffacd0b85a97d-439ba4dc256mr9757732f8f.43.1772534903735; 
+ Tue, 03 Mar 2026 02:48:23 -0800 (PST)
+X-Received: by 2002:a05:6000:610:b0:439:ba4d:bf40 with SMTP id
+ ffacd0b85a97d-439ba4dc256mr9757689f8f.43.1772534903240; 
+ Tue, 03 Mar 2026 02:48:23 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4399c75a25dsm33428257f8f.21.2026.03.03.02.47.48
+ ffacd0b85a97d-439b03db76bsm19148913f8f.18.2026.03.03.02.48.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2026 02:47:49 -0800 (PST)
-Message-ID: <ac35d3e8-c1a6-4f2b-9a96-88f802299bae@redhat.com>
-Date: Tue, 3 Mar 2026 11:47:47 +0100
+ Tue, 03 Mar 2026 02:48:22 -0800 (PST)
+Message-ID: <f2bb8d0c-5498-4dfb-ac35-8526d8014b26@redhat.com>
+Date: Tue, 3 Mar 2026 11:48:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC v4 28/31] hw/arm/smmuv3: Select sec-sid from PCI property
@@ -96,7 +96,7 @@ References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20260221101907.2997408-1-tangtao1634@phytium.com.cn>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HfDc3IX727-pVlzgtZG3-bUCNyT6gWN0oH0sByWmrgc_1772534870
+X-Mimecast-MFC-PROC-ID: w4Ci-2pQPO1oWQ6t9fYtW3p-l1wXbYdrlc5kjWiYhlo_1772534904
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8

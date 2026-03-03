@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F81EC047D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FB3EC047F
 	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:27:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxM1Z-0004h0-1S; Tue, 03 Mar 2026 04:26:41 -0500
+	id 1vxM1m-00050R-48; Tue, 03 Mar 2026 04:26:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM1W-0004bZ-W2
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:39 -0500
+ id 1vxM1k-0004wO-CG
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:52 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM1V-0004Wi-Ik
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:38 -0500
+ id 1vxM1i-0004a6-VI
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772529996;
+ s=mimecast20190719; t=1772530010;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xX+Ce8faP4H6bZXal0EHFBt7uYRGVZmS8qFGR4H+x4c=;
- b=ECvgx/2GV4pcKZhq5BXjhh6S257y9JOePJNHAw21HvqZiLcBftu5bmeb8vmqe7/fwnKH0X
- sTd8BV+EHqIQhqJ8NniZF219CsJTdJRR5nJ7uCq2SJjjXGG8dpb4y+2iKlq9bJUTCrair4
- ZauQu9iHRhSlWq6td26gXKSB0s0BawQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=2FbkwBaBchwCc7nB+/T0ZJRIDXeC+Ip+qqcXaU/gL3A=;
+ b=NYDu7tD/iK3g3Fpffz+KMlgxW1ttWx3YprJomYhphr3I9BK5pMCEIUNDOGc5PHLGat7TaS
+ RfR+zjEclQk7+PB0uunJTmYoan/zh+o4D7R4iNyqgzKZpof7b3c52CqDgSfxlbEJWHYWvf
+ yIwKMjoo9QFWoLfyAhMn2lY2TQzWwuI=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-41-rLN_f7OkPd-5PCx2-58nNA-1; Tue,
- 03 Mar 2026 04:26:31 -0500
-X-MC-Unique: rLN_f7OkPd-5PCx2-58nNA-1
-X-Mimecast-MFC-AGG-ID: rLN_f7OkPd-5PCx2-58nNA_1772529990
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-75-AFFqanjVPlK5jGx4WJNhvg-1; Tue,
+ 03 Mar 2026 04:26:47 -0500
+X-MC-Unique: AFFqanjVPlK5jGx4WJNhvg-1
+X-Mimecast-MFC-AGG-ID: AFFqanjVPlK5jGx4WJNhvg_1772530005
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2DB711800465; Tue,  3 Mar 2026 09:26:30 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ACCE819560B5; Tue,  3 Mar 2026 09:26:45 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 71F7630001B9; Tue,  3 Mar 2026 09:26:27 +0000 (UTC)
+ id EE82230001BF; Tue,  3 Mar 2026 09:26:42 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
  zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org
-Subject: [PATCH v2 16/21] tests: acpi: arm/virt: add GTDT watchdog table test
- case
-Date: Tue,  3 Mar 2026 10:25:27 +0100
-Message-ID: <20260303092532.2410177-17-imammedo@redhat.com>
+Subject: [PATCH v2 21/21] sbsa_gwdt: limit compare_value to INT64_MAX
+Date: Tue,  3 Mar 2026 10:25:32 +0100
+Message-ID: <20260303092532.2410177-22-imammedo@redhat.com>
 In-Reply-To: <20260303092532.2410177-1-imammedo@redhat.com>
 References: <20260303092532.2410177-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 4vltLgF9xgL7LwkDFe4_4CJ49r-XELTPXV2v5Tguvao_1772529990
+X-Mimecast-MFC-PROC-ID: _-hj28-MmtqHdcUpqh8JjnqKdr75D1AsGKUCYY26UKg_1772530005
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 27
+X-Spam_score: 2.7
+X-Spam_bar: ++
+X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,49 +91,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+QEMU timer subsytem supports timeouts only upto INT64_MAX.
+However WCV value geater than that will cause integer overflow
+and timer will fire/expire immediately.
+
+It looks like Windows tries to use SBSA watchdog when it's
+exposed in GTDT ACPI table.
+But instead of using WRR to refresh WCV with configured WOR,
+it does direct load into WCV (probably as a means to
+reschedule timer). While it's not against spec,
+Windows does write following values:
+
+ sbsa_gwdt_control_write [0x8] <- 0xffffffff
+ sbsa_gwdt_control_write [0x0] <- 0x1
+ sbsa_gwdt_control_write [0x14] <- 0xffffffff
+ sbsa_gwdt_control_write [0x10] <- 0xa906ca28
+ sbsa_gwdt_control_write [0x14] <- 0xecb1
+
+1st intermediate write into 0x14 (WCVU),
+puts WCV into timer overflow range,
+triggering TimeoutRefresh and WS0 and WS1 asseritons.
+
+Clamp WCV to INT64_MAX to avoid timer API overflow.
+It prevents unexpected Windows reboots by watchdog.
+
+PS:
+Arguably Windows SBSA GWDT driver is broken,
+as it:
+  * sets WCV too far in the future so watchdog
+    would never trigger in practice,
+  * and typical watchdog flow for explict referesh
+    also broken due to:
+       1. small WOR value for explicit refresh (~4sec)
+       2. never triggering explicit refresh (WRR or other)
+
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/qtest/bios-tables-test.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ hw/watchdog/sbsa_gwdt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index 5082866184..11c6854af8 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2290,6 +2290,24 @@ static void test_acpi_aarch64_virt_tcg_wdat(void)
-     free_test_data(&data);
+diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
+index 7fec61b7b0..b1bce5008d 100644
+--- a/hw/watchdog/sbsa_gwdt.c
++++ b/hw/watchdog/sbsa_gwdt.c
+@@ -122,6 +122,8 @@ static void sbsa_gwdt_update_timer(SBSA_GWDTState *s, WdtRefreshType rtype)
+     }
+ 
+     timeout = (uint64_t)s->wcvu << 32 | s->wcvl;
++    /* clamp timeout to INT64_MAX to avoid timer overflow */
++    timeout &= INT64_MAX;
+     timer_mod(s->timer, timeout);
  }
  
-+static void test_acpi_aarch64_virt_tcg_gtdt_wd(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .variant = ".gwdt",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * MiB,
-+    };
-+
-+    test_acpi_one("-cpu cortex-a57 " "-device sbsa_gwdt", &data);
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_q35_viot(void)
- {
-     test_data data = {
-@@ -2910,6 +2928,8 @@ int main(int argc, char *argv[])
-             }
-             qtest_add_func("acpi/virt/acpi-watchdog",
-                            test_acpi_aarch64_virt_tcg_wdat);
-+            qtest_add_func("acpi/virt/gwdt-watchdog",
-+                           test_acpi_aarch64_virt_tcg_gtdt_wd);
-         }
-     } else if (strcmp(arch, "riscv64") == 0) {
-         if (has_tcg && qtest_has_device("virtio-blk-pci")) {
 -- 
 2.47.3
 

@@ -4,106 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D009EC1428
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1D46EC1428
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 10:55:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxNLX-0004YY-Co; Tue, 03 Mar 2026 05:51:23 -0500
+	id 1vxNOf-0005ev-9R; Tue, 03 Mar 2026 05:54:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNLW-0004YI-6y
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:51:22 -0500
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1vxNOb-0005db-1b
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:54:34 -0500
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vxNLU-00057h-CD
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:51:21 -0500
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-64c9a6d6b70so4567392d50.3
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:51:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772535079; cv=none;
+ id 1vxNOY-0006rA-Ir
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 05:54:32 -0500
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-64aedd812baso4816110d50.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 02:54:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772535269; cv=none;
  d=google.com; s=arc-20240605;
- b=VWVwZDxUjt3ov4kECAitcOP9Q14lzdLumuIpnIgaQa7tIa5TlTDbRue1GH4WR4FWn+
- VYl8yLLeV4TnA5nPNCtAb5Lq+XC5+Uu3pZvMT1QJf/GO56QmZTlNc2Yn9QMsZ/gBV0tl
- VC9LsY0xG1ZMusQSU2qGme4i/9O40zlLh4n9KQnrko5eRvUWxVrrNzKHrdPJBdBgkmpR
- mczmJ0OHRFA0QIO+n52RIJTBBnmRQ8SK3Uhb7URR+Ru6DOt6f+TtwuGVbkzAbNHozhUX
- S+d90c7aLoHU0sJ7jzWrwkuyhc/HNjHE1+NFRrIR4ZEYEA/Wwd6LCrsSIGG54K5uz3JI
- SexA==
+ b=QqXkE1+OcNk9n+zWnmzC1XGG7CQB0M4BShG07iRv3vMKX3FPjMqRSr3wiS6elYt1wC
+ q0xPu9gdjMuJDWCBTXHHIVwgL0XgwMdWdmU/AeLxUfTchFgXcET9M2bXzALj/hKQwi6V
+ Q5ntXG3MVXql/y+rdMw9KdSxDSGyXZ8DxxPun0Ds5Ak3FRXTIhQ6uIIfrNl7cMz6LBlT
+ Wmgg4bGbExPk7Wln2HrYlpHuuG1vT60yq6ZqEjJR1UQDg3wFjTmOt1LjQALUKhe7p4vh
+ ttae3C0QSJJSP+DI5wRWBAhSvcBvDhQo/Bj5/f9q5HIm9AKQyVmVXQn8tqy5TMpjuuOF
+ gtKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
- fh=8MEyPbtOxtlXBrqSKmCe4mkprffPdwZG5qkRB9kVpbI=;
- b=QQi6UBhDU4WcV/0gSxDYeWbzRTtASQ17YS6CHHlYaYMoDHzPfbZCeMbWDvUApcY3Lr
- a55tSnaFfMX6t9y9Qu3G1XNHSIDB9ytB/8vzaXMtJUArRcw45hnZ9rSGD+A2CzllcuVK
- TUqAgToKpVz6+GB2AUOhOHudfeb+k8zrTa36N77uKxEJm9+KE7NsnkOHP0EJnU1UCNc3
- xIze9hPmxkMLCXASC0TRqBk88EWspwoavw45c1HtEnDsfWL5K7/I3MTRzlIh2bv1xqel
- uwkcJ+WaweVD0VYlWe5oPafH1H3QXvc/hjMqFNJ0nBSpFUYjctkjx6goVfbdKWLxwmn1
- CdWA==; darn=nongnu.org
+ bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
+ fh=mhxolGnpohZid40WVfMCaz0wFwg+nCwl6yhu/3DCmqU=;
+ b=XVRUTc0ZcDf0QH+zuv7ansgajxhzNB2u5Ld55nMgxrtIcxobQCNP3iAhI9z2eHFAFI
+ 8UP2R5U8rxmOkNDqvJ6naj0BFZTcR5QL3Yrh1Dk1O/YXHVHW8atmT7hlrU+G4uYXzb6/
+ SKmyQHELTGZVP0Noq4o2nznSaHptOv0iC5P2YHydc6pjSAVdKEONwJWhhgS8CVX25zv7
+ K5dHDiyiI2coOYdCYUGBxfWub75LTnVsC1e4bSGaQl7GWCnmW3t3Hz5PdADsWFExxx+a
+ dAB33ifPePop7sVT6JQr/JfrwRVA5gu/4FFbSThfsUquEtPhErKOtoTTzMDoZs6W4Dqe
+ ou5g==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772535079; x=1773139879; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772535269; x=1773140069; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
- b=QJaLBQJ3u7e+qS4eF1UeslOUCJCIYdXU/Dj0WhBSHwyocf4GO+wcqZiHwLk5IF1Aih
- 2+rnYhe3TBaOJiEnNco6nd13v0FQuEumQgpDkT3vMV4HktfZ01/HNXzEpFCECblDJh3q
- rFgOan+noKSvL94IKn9SqJWMCvnzQC9k+y16uTlQOh5Jzx5OEUAGbSOoLKb/hJBfpGm6
- W6cQ+HJu6ILzT8HZ0WSRgfbxW+BrOR8M0jHFzrgbMEAuX6AUqrQgtK5U7olmUCPrCwb8
- SAxgyMZYNqm7dgKiWBwBeo4pLL7uQBFOrpddCHCsLMOnGp8Hj/f7Xam9UYUZwXaMTZqM
- IcPg==
+ bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
+ b=v34GSJYyexibkjnIxoBTNnz+YzIfPu6PK2XH68gjngLiiLc1THV3ObbPve07x4zA5o
+ TeIYntKL4lNVBm86cs17aHrx6MRijloroxOg275SHK9EhwyGIodxsRoScWKuONWGmcP2
+ wrMwFjReQ/XE4QHVWvWjvBhNPKBTLydrTtiwy54q3CsXoYHOlAPowajKRerfog67bQ/s
+ PPh5bhsio9lGCLnmKmr71qSzrW2yenlPo/Iou7/pi+FxInVHeRaXjoEF7IvX7G4GxNAD
+ sUk23wJnEDmCLkLC3QplYuq+G2s9BhbqgLqyKyy6Gfft6fjdgKq16L4jNhN9KAF6xakp
+ FHMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772535079; x=1773139879;
+ d=1e100.net; s=20230601; t=1772535269; x=1773140069;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=miL/sZTIH3G3KbR5lZo9Es/VdDkY8PR+6X5Pv0rkeEg=;
- b=XACC7tvTzslGqAN6n+sNA7lxIsGHkEzXrFxjVeSi3b/m2zSUHBXnHHTVqjHwVPi40T
- M8taUZEL4rm0exboKiDTmZQYj2XURy2+C7az416qMdT2aUwGnmrTIxnP9tovBbitfkpc
- Sj/G2FjyebM9ga1jSLh4w4wSVk01o5xobaZ5xCb/q9MZFKGfOw3KlNTig0xRIjdm/9li
- Wcg7x6bxUuSSfBIbTOZwAvZiTHHc7UM8Ivvx0vCQgY00tBjOqX05VmtWMC3LbsSTuL9c
- tPsMVaB7XYEGv8VVYABY8MKUR0Poj12ekrvTolT9aCmryR/OjmU2CHij6OyTBtNwVzt4
- 9XMA==
+ bh=I7/oEUbiOqQUR4EtlmAbLUTq9ldIKUaBwwgFXUxw3f8=;
+ b=uw5jATOuklXzpOjtd4uN+nq1xEo6I1k1BaqktKqH/M2RqUf2D3puRDzbXpAsPULt6U
+ kxST2gboGuJPP+CNMheTjfwoKrZVe3UZXOOftWCfwdQaBE/+B4fTcylKDPqt2HZRu0RV
+ N7byhvhSUN6eybhQVMYEEhvV1/0ZcOoqbS8yLtcR57hwsjnueJ9AQDt+MZ0EqizTOdlZ
+ e4NYt1X9P3NEewIVdsx+XQBsKHQRj45sXBdPpAHFAAqnBzF2Aa2QSE4C+1akFdfDpA5Y
+ p5vMLq+wDZ8ja6XUUP1GVvxZcY9Zc+La+4cTGopRh/633lPF3sw3826L5t+TVhG54hrn
+ betw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTFT1EgBGe9wkC6CLWLI85qScMhiTXVtCG30BU69T0kVCgPFdpBO88xxmQpBAEwRcm6dh4cVlRbA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy7gGozLHXHUMBmZFA3nxLLiJfhDKH5Vp8BIkFfng7YzMTtiAbH
- 8nEOoPQ9qCo9FCP33JtnxgzKeZ04SnNI3vK71rUOjgO7r4P+5MLBoTwX8ukQHE5Le1AyyMXYTCI
- Nq7I59q4nopzVp4KCgVAhg6x5ggFSRX+D1YgjXbGfFA==
-X-Gm-Gg: ATEYQzwJ9T1BYJEel0at2MhjGvAHrPeIdP1fo9ODFkXcHnX/vl14RVP+D3hKtqze2Sx
- B9I3wBUQ2qGVlABU2+rBQ0HfVc4Wj8MBhSpTEkfidEGg29s5gOglMpwPNFrDF2xgFma8KELn0d4
- s4dpeT23qPKbg36g3bbllv0vrsOf8wQa1NB8bCy0QUhbUtiwWEdomSUey7XfsvLq1Z77OvS8Hdp
- ydOY0txeAlAxsU0NowPPhWa3BjVoerqeE+JUu2tbhpkJY+rFWkvF1jkzwtA8VYXyesPeS9EwbSE
- hrxNxNUW/BWBMmexLGKUEBjl1DzZQeN4Cad3c8uZH/mBqxj2LJr18NUKEyE7wNtDIiA=
-X-Received: by 2002:a05:690e:4499:b0:649:c7dd:d2e7 with SMTP id
- 956f58d0204a3-64cc217f050mr11252874d50.33.1772535079136; Tue, 03 Mar 2026
- 02:51:19 -0800 (PST)
+ AJvYcCWuwMnk8d5qOy1OaE3MtZk+isessvNp2qW4vAVNh8/n+tYkpf4empCoqUTFx7WmSNnmPhKrMSgveQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwprPDqkh+V258/OfKaAewWu8jT+JqxgULXSraaxvmQhsqrBVKb
+ 7IXKUXYgH212u5tDqLEU78OB3bRA6sHHZwfyUqqavPgD/ZEX9oYTzFP2q/vkCmgY3zC5IFXtErW
+ KfFNEMO1moJqsvYofzkSudjE6pc80frZ2adLaFJhRSd/gDQ1mwFTG
+X-Gm-Gg: ATEYQzzvXAubAsxXXQCfqhZnSwlPUUVnuck0F3oqM/EvVBpIcOqkTKl70bT8K96HG95
+ dsEYg5C5KtPOqw6JwRpd+6Rb65W5qW5X/hKkqnx+0babUp5aIaUSv5YDPAGsMkkk8jTpwVXRUhC
+ jrz/pYb5HBrJfDdbKIJFJUVh0meFUlgfiM/nu2AzUjmjyUMSArpJzDFx2pC07vUvywH1MDP1Pnt
+ nQZpP5KeLVgSWuYt2laxhA90+07a2g84mPMybKYeS9phHHYYiLeqzLSYd4Cy4latDW49FoeHpB2
+ BdvKZ/KUeIGghX+1jOWUQCljRx1Ef1ZTjMYP9XbLV9pec+92rL4vSZXE4ThUixtDsZg=
+X-Received: by 2002:a53:cb82:0:b0:64a:d64a:b025 with SMTP id
+ 956f58d0204a3-64cc20832c7mr9474194d50.7.1772535269176; Tue, 03 Mar 2026
+ 02:54:29 -0800 (PST)
 MIME-Version: 1.0
 References: <20260226100232.500781-1-eric.auger@redhat.com>
- <20260226100232.500781-3-eric.auger@redhat.com>
-In-Reply-To: <20260226100232.500781-3-eric.auger@redhat.com>
+ <20260226100232.500781-4-eric.auger@redhat.com>
+In-Reply-To: <20260226100232.500781-4-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Mar 2026 10:51:06 +0000
-X-Gm-Features: AaiRm50_5CkSmBqV-J1e2zUj2BybBLYbkssVgtYvocltSpZ7iPMhYQtLLxVWo_w
-Message-ID: <CAFEAcA800joxbtiwBhnqXvRpbkrKsJj+1QDg_h-DPhb7TbF5=w@mail.gmail.com>
-Subject: Re: [PATCH 2/5] target/arm/machine: Use VMSTATE_VARRAY_INT32_ALLOC
- for cpreg arrays
+Date: Tue, 3 Mar 2026 10:54:18 +0000
+X-Gm-Features: AaiRm51Uk4LPPhktdHHnbdTNPiggtaynqQtbBi5uTc0ioSOzen9dE5fhBShiFqM
+Message-ID: <CAFEAcA9Z9LWKxisumU6C3WAtWiUhV0s+tnpFNAwuaBO7GSpCvQ@mail.gmail.com>
+Subject: Re: [PATCH 3/5] target/arm/kvm: Export kvm_print_register_name()
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,170 +120,52 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 26 Feb 2026 at 10:02, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> This removes the need for explicitly allocating cpreg_vmstate arrays.
-> On post save we simply point to cpreg arrays and set the length
-> accordingly.
->
-> Remove VMSTATE_VARRAY_INT32 for cpreg_vmstate_array_len as now
-> the array is dynamically allocated.
->
-> Also add a trace point on post_load to trace potential mismatch
-> between the number of incoming cpregs versus current ones.
+> We want to use kvm_print_register_name() in machine.c so
+> let's export the helper and implement a stub when kvm
+> is not enabled.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  target/arm/helper.c     |  5 -----
->  target/arm/kvm.c        |  5 -----
->  target/arm/machine.c    | 24 +++++++++++++-----------
->  target/arm/trace-events |  3 +++
+>  target/arm/kvm_arm.h  | 2 ++
+>  target/arm/kvm-stub.c | 6 ++++++
+>  target/arm/kvm.c      | 2 +-
+>  3 files changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index cc0b374254e..b6980e4957a 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -266,4 +266,6 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level);
+>
+>  void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+>
+> +gchar *kvm_print_register_name(uint64_t regidx);
+> +
 
-target/arm/whpx/whpx-all.c also has the code to
-initialize cpureg_vmstate_{indexes,values,array_len}
-that needs to be updated like the TCG and KVM code.
+If this is going to be wider usage than just inside one
+file, then I think we should be a bit pickier about it:
 
->  4 files changed, 16 insertions(+), 21 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 6bfab90981c..7389f2988c4 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -265,15 +265,10 @@ void arm_init_cpreg_list(ARMCPU *cpu)
->      if (arraylen) {
->          cpu->cpreg_indexes = g_new(uint64_t, arraylen);
->          cpu->cpreg_values = g_new(uint64_t, arraylen);
-> -        cpu->cpreg_vmstate_indexes = g_new(uint64_t, arraylen);
-> -        cpu->cpreg_vmstate_values = g_new(uint64_t, arraylen);
->      } else {
->          cpu->cpreg_indexes = NULL;
->          cpu->cpreg_values = NULL;
-> -        cpu->cpreg_vmstate_indexes = NULL;
-> -        cpu->cpreg_vmstate_values = NULL;
->      }
-> -    cpu->cpreg_vmstate_array_len = arraylen;
->      cpu->cpreg_array_len = 0;
->
->      g_hash_table_foreach(cpu->cp_regs, add_cpreg_to_list, cpu);
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ded582e0da0..12a75f42e07 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -807,12 +807,7 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
->
->      cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
->      cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
-> -    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
-> -                                         arraylen);
-> -    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
-> -                                        arraylen);
->      cpu->cpreg_array_len = arraylen;
-> -    cpu->cpreg_vmstate_array_len = arraylen;
->
->      for (i = 0, arraylen = 0; i < rlp->n; i++) {
->          uint64_t regidx = rlp->reg[i];
-> diff --git a/target/arm/machine.c b/target/arm/machine.c
-> index bbaae344492..214087111bc 100644
-> --- a/target/arm/machine.c
-> +++ b/target/arm/machine.c
-> @@ -1,5 +1,6 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
-> +#include "trace.h"
->  #include "qemu/error-report.h"
->  #include "system/kvm.h"
->  #include "system/tcg.h"
-> @@ -984,11 +985,9 @@ static int cpu_pre_save(void *opaque)
->          }
->      }
->
-> +    cpu->cpreg_vmstate_indexes = cpu->cpreg_indexes;
-> +    cpu->cpreg_vmstate_values = cpu->cpreg_values;
->      cpu->cpreg_vmstate_array_len = cpu->cpreg_array_len;
-> -    memcpy(cpu->cpreg_vmstate_indexes, cpu->cpreg_indexes,
-> -           cpu->cpreg_array_len * sizeof(uint64_t));
-> -    memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
-> -           cpu->cpreg_array_len * sizeof(uint64_t));
+ * brief doc comment in the header file
+ * use the standard type "char *", not the glib funny typedef
 
-This is OK for pre-save, but it could use a comment, maybe
-something like:
-
-/*
- * On outbound migration, send the data in our cpreg_{values,indexes}
- * arrays. The migration code will not allocate anything, but just
- * reads the data pointed to by the VMSTATE_VARRAY_INT32_ALLOC() fields.
- */
-
->
->      return 0;
+>  #endif
+> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+> index ea67deea520..b13bb055e0e 100644
+> --- a/target/arm/kvm-stub.c
+> +++ b/target/arm/kvm-stub.c
+> @@ -129,3 +129,9 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+>  {
+>      g_assert_not_reached();
 >  }
-> @@ -1043,6 +1042,9 @@ static int cpu_post_load(void *opaque, int version_id)
->      CPUARMState *env = &cpu->env;
->      int i, v;
->
-> +    trace_cpu_post_load(cpu->cpreg_vmstate_array_len,
-> +                        cpu->cpreg_array_len);
 > +
->      /*
->       * Handle migration compatibility from old QEMU which didn't
->       * send the irq-line-state subsection. A QEMU without it did not
+> +gchar *kvm_print_register_name(uint64_t regidx)
+> +{
+> +    g_assert_not_reached();
+> +    return NULL;
 
-On post-load, something seems to be missing. The migration core
-code will have allocated (with g_malloc()) the memory for the
-arrays. When the post-load hook has finished checking and copying
-the data out of there it needs to free that memory (and probably
-set the pointers back to NULL to make accidental use-after-free easier
-to spot). Otherwise we will leak the memory if we do an incoming
-migration followed by an outbound migration.
+Don't put code after a g_assert_not_reached().
 
-Maybe we should enforce that these fields are always NULL/0 except
-during a migration, by having:
- pre_save points them to the cpreg_indexes/cpreg_values arrays
- post_save sets them to NULL/0
- pre_load (maybe) asserts them as NULL?
- post_load uses the data and then frees it and sets them to NULL/0
-
-and note that in the comment in cpu.h on the fields.
-
-> @@ -1170,13 +1172,13 @@ const VMStateDescription vmstate_arm_cpu = {
->          /* The length-check must come before the arrays to avoid
->           * incoming data possibly overflowing the array.
->           */
-
-This comment needs to be updated -- we still need the length first,
-but it's no longer a length-check, and the reason is different:
-we need to receive the length first so we can allocate the arrays
-before their data arrives.
-
-> -        VMSTATE_INT32_POSITIVE_LE(cpreg_vmstate_array_len, ARMCPU),
-> -        VMSTATE_VARRAY_INT32(cpreg_vmstate_indexes, ARMCPU,
-> -                             cpreg_vmstate_array_len,
-> -                             0, vmstate_info_uint64, uint64_t),
-> -        VMSTATE_VARRAY_INT32(cpreg_vmstate_values, ARMCPU,
-> -                             cpreg_vmstate_array_len,
-> -                             0, vmstate_info_uint64, uint64_t),
-> +        VMSTATE_INT32(cpreg_vmstate_array_len, ARMCPU),
-> +        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_indexes, ARMCPU,
-> +                                   cpreg_vmstate_array_len,
-> +                                   0, vmstate_info_uint64, uint64_t),
-> +        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_values, ARMCPU,
-> +                                   cpreg_vmstate_array_len,
-> +                                   0, vmstate_info_uint64, uint64_t),
->          VMSTATE_UINT64(env.exclusive_addr, ARMCPU),
->          VMSTATE_UINT64(env.exclusive_val, ARMCPU),
->          VMSTATE_UINT64(env.exclusive_high, ARMCPU),
-> diff --git a/target/arm/trace-events b/target/arm/trace-events
-> index 676d29fe516..2de0406f784 100644
-> --- a/target/arm/trace-events
-> +++ b/target/arm/trace-events
-> @@ -26,3 +26,6 @@ arm_powerctl_reset_cpu(uint64_t mp_aff) "cpu %" PRIu64
->
->  # tcg/psci.c and hvf/hvf.c
->  arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpuid=0x%x"
-> +
-> +# machine.c
-> +cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
-> --
-> 2.53.0
+> +}
 
 thanks
 -- PMM

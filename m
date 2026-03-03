@@ -4,116 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99123EDA698
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 16:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0937EEDA6BC
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 17:27:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxSna-0002nm-Vk; Tue, 03 Mar 2026 11:40:43 -0500
+	id 1vxTX1-0007hG-A9; Tue, 03 Mar 2026 12:27:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vxSnZ-0002nK-FC
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 11:40:41 -0500
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vxSnU-0005pm-Jo
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 11:40:40 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.239])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4fQM3s5y5lz5wC5;
- Tue,  3 Mar 2026 16:40:25 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG14EX2.mxp5.local (172.16.2.142)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Tue, 3 Mar
- 2026 17:40:25 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004e905d217-c8a2-4265-a199-da2aa9cd3de5,
- 98E95E7FEDB3EB848AAA79F7F8576E65DBD0C5BF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.14.253.154
-Message-ID: <1d36cebc-51fb-48b0-a2de-6c19ec74d046@kaod.org>
-Date: Tue, 3 Mar 2026 17:40:24 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vxTWs-0007fQ-V3
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 12:27:34 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vxTWn-0004Kl-V8
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 12:27:30 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4806f3fc50bso63363405e9.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 09:27:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772558841; x=1773163641; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=mwLvQGHgXGM1rvifsMff8ixiuGcvGo9Ki/3I2UOm1yg=;
+ b=cEtZBZfQ55bFiDdLNT7ZDwZQB+YeFDByqNBbXMBL8GbqrCIgpq2DvWln6h52fcwyKG
+ dwFyOQNsTSbKA/XP8tlc2tp8s2lGAOLeRdud5m8kGKGJFXTChJyJ1Szy3lWF8j4rIZEG
+ IXuKEvFQD9Exy+UMYPmTGxlNj+imFen9YyO5asYdP6MX+23V0nql57ABiTC4/s1scPNk
+ TvEFN0nOAJzgdCJ8G1LfAKcJImEv09qjvOYlLw753UinBTu60ufwfDdt/oTkYxiIbO41
+ hbbTSwnWNygZtJP12aJwJEp2H2X+0EjJR0yjfYrt9uOOfC5/y5tDYfwWgHrDjSrBYtjk
+ Xlgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772558841; x=1773163641;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mwLvQGHgXGM1rvifsMff8ixiuGcvGo9Ki/3I2UOm1yg=;
+ b=o1NY0jeNSHYiwe9Le8DfhbDUqC8W6q8qpXAYfgzY3JAKbxc3QoDrUwm2NMp/Ljjvci
+ pHSg38GkMzAMMiB0iv3wVWU6yTUVC8XT/5ff65QTooT+4Q4/qcfHH1D5OdHMdFYgapIp
+ rXHz63EEl6k8hHsVHLszaWMqSLL8J4LrUo+isS3r+fFtXb4DSqrD9OtYd5DhBzlKKLMP
+ M5F7eawhvskK0Hej/UiRCrKjoJVzYFzJgzTOwv6RF0cuGf2OuXZ7oBFXSAqxWUuXfOfm
+ KISYFacyXrwm2ilHjyxy349QVp4vDA6muM3yK81LIzAzsFt3/YTArJaqKNYIb+ORJl4g
+ LaRA==
+X-Gm-Message-State: AOJu0YwC7fgqhPsYVGkMXzGfV9i0+oAdyh0Awa/cJt2dQg+fXz4v9zvd
+ 0xej4I9CPGk1T3+sk1ng70NedogPCV9CmcAbfTFj9ZTmDQWYYj8IMKN174+0SJvWcXEvgbJw6jV
+ pQN0H
+X-Gm-Gg: ATEYQzwbv+wPqkCiPwiy6vRkaVwXjnZsQ87r+vrsqiNEgc1/Me7XJHDm8k3m6TmoLUk
+ jYJY/GHKUhx6vAUDqvfIiOLIBtJrO1ePIvKExQxUSvVptSSCgW6O1KPNX4gvRMI7nXmYMHhVRhb
+ NWjIHerSK7uQ0WsXOmZ5T7XedyMfIpMh8orgBkQc9rjDyPhNvsJ9FY5dn8F0mye6ANrwd1tm+ag
+ ajY+K3TOCK1USY851MiQAzJvH/hKMEufXVjOXvkVSSNe8JvAHY2rveB2QAaB6ZZOzNWjx3rkF/x
+ fSmbzCDoIPnoy5ICqVL1WZyofEOSB8XiQkHdVKeAGOWoefee94t/JGEgsqdEhThFI4cOntC3fIT
+ QmNugeF+wOtfehi9vpc1XoTDY9tiUY8ChhseGMn//HIGv8YBDyK+P/40KRihxww+uLvPjCw5HcT
+ aSLDVxQEjAnIE9hs22NO4wM020WDiGm2ATW+ssAmBjOSjdxKKrPeWpwaHmxVXPnlUB/sQFTROgr
+ I6vGaptq7jAbF5WFwnCi7BRYb767kI=
+X-Received: by 2002:a05:600c:8106:b0:483:badb:618e with SMTP id
+ 5b1f17b1804b1-483c9b9e39dmr271918715e9.8.1772558840497; 
+ Tue, 03 Mar 2026 09:27:20 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483bd7507adsm536539465e9.9.2026.03.03.09.27.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Mar 2026 09:27:19 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH] hw/net/xilinx_ethlite: Check for oversized TX packets
+Date: Tue,  3 Mar 2026 17:27:18 +0000
+Message-ID: <20260303172718.437015-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/10] Update test ASPEED OpenBMC SDK v11.01
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20260303063930.2878300-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260303063930.2878300-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG11EX1.mxp5.local (172.16.2.111) To DAG14EX2.mxp5.local
- (172.16.2.142)
-X-Ovh-Tracer-GUID: f0acb06d-415a-41a1-9905-729a7258a064
-X-Ovh-Tracer-Id: 1078893588667272114
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTG1l9M/jNgo6YYDJtmB906eX+DYBP3lnCkwOh/Jt4DMizuEtbkvbbUj7UDuD9lpgA2Il/mdUhAwzFM8chjv9XCnr/1zePyR7OsJ36LuCpsc2hjS4NkEBX1CagmfQy3OhWP+tE5p19uDTlMI4Sdud0V5D+dqwkFECMpoaWorjMczBHhMGtVsexUPFarObsF+i1mQbj6F7q6g033qMUFk8OiAeH5SqfEI4CgavT4cC15RoM58UMuYZsbysHJTUbbf319mJC2Naqi5xjA1wyNIJAQLxNo456FdotgHQ5aYz+RW0xUNHa23Vg+oTkljrhrUFOop6iI/thDPzvkshjRK3+GnaChGQwSrTx3z6RVaykP5ICmXFQKzG0Ke6srfITfR239dsE4bFXDowbB67mPeSezzxjIZWO8sGNtXMgVh0deed93YFh39ztUz7f8cQg+A0NzPC77HdWvxia0/2k5llBmcjhoYLh+RqtQ8YG4X4zAkbFE+wDOMW7LBY17yxKGSP/o1S2B+L/h2Ve24QgvB1ySE9pyc6pm78aaIKDs/PMyM+NWilyaBDm8kmn0fa88mYUI3LRym6eFDaVbvd9w0fmrw03wtrUUC3FHHeINR0CWNeSGSNpjTUpt/8V7g6ILDAwQp64TWYiTUvQVuyntBGzRhtIXVhEBL6dyOk9XQYAHRJg
-DKIM-Signature: a=rsa-sha256; bh=COC4/E+SQuWy/msSS/L3EC7Fj1qfliuSv6EGnPYcHvw=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1772556027; v=1;
- b=ZpRvEilYLvYu4pdNPolgjKLOFIDhCdw1cQTn3xrYXwfaYg3XXBUUDa+W51mnab+8wftHxPtp
- MCF+zee2IUsEg8gjLlUkG5sJ+xb7OhBCzeqR7y8lcqiIPuzGnsMZGsUhaTbT+n2O9Adv72xgjS/
- oLgxg0RewvjWWx00FpXD33BdUR73FHA9+iNfQEsPAHh2dZAp8ypd2k37JhxRTxkEUIdth3n/N5P
- N+xt5holNKCoG9ZIr5qBEbYSdSMD83cjSNzA+XgcSvo95eG3ggg/yYVM0/cD+BQ4lOvHkVhdVE5
- nc/ZqT7v8mPfqMnUHJ/8WVYs/Y+PzzX3XKVALgm9y2drw==
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,57 +101,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/3/26 07:39, Jamin Lin wrote:
-> v1
->   1. Update test ASPEED OpenBMC SDK v11.01 for AST2500, AST2600 and AST2700
->   2. Update test ASPEED Zephyr SDK v03.06 for AST1030
->   3. Update test aspeed-zephyr-project v03.05 for AST1060
->   
-> v2
->   1. Update sha256sum of ast2700-dcscm-image.tar.gz
->   2. Update sha256sum of ast2700-a1-dcscm-image.tar.gz
-> 
-> Jamin Lin (10):
->    tests/functional/arm/test_aspeed_ast1030: Update test ASPEED Zephyr
->      SDK v03.06
->    tests/functional/arm/test_aspeed_ast1060: Update test
->      aspeed-zephyr-project v03.05
->    tests/functional/arm/test_aspeed_ast2500_sdk: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/arm/test_aspeed_ast2500_sdk_515: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/arm/test_aspeed_ast2600_sdk: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/arm/test_aspeed_ast2600_sdk_otp: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/arm/test_aspeed_ast2600_sdk_515: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/aarch64/test_aspeed_ast2700a1: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/aarch64/test_aspeed_ast2700a2: Update test ASPEED
->      OpenBMC SDK v11.01
->    tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED
->      OpenBMC SDK v11.01
-> 
->   .../aarch64/test_aspeed_ast2700a1.py          | 30 +++++++++----------
->   .../aarch64/test_aspeed_ast2700a2.py          | 30 +++++++++----------
->   .../aarch64/test_aspeed_ast2700fc.py          | 18 +++++------
->   tests/functional/arm/test_aspeed_ast1030.py   | 12 ++++----
->   tests/functional/arm/test_aspeed_ast1060.py   | 14 ++++-----
->   .../functional/arm/test_aspeed_ast2500_sdk.py |  8 ++---
->   .../arm/test_aspeed_ast2500_sdk_515.py        |  8 ++---
->   .../functional/arm/test_aspeed_ast2600_sdk.py | 10 +++----
->   .../arm/test_aspeed_ast2600_sdk_515.py        | 10 +++----
->   .../arm/test_aspeed_ast2600_sdk_otp.py        | 10 +++----
->   10 files changed, 75 insertions(+), 75 deletions(-)
-> 
+The xilinx_ethlite network device wasn't checking that the TX packet
+size set by the guest was within the size of its dual port RAM, with
+the effect that the guest could get it to read off the end of the RAM
+block.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Cédric Le Goater <clg@redhat.com>
+Check the length.  There is no provision in this very simple device
+for reporting errors, so as with various RX errors we just report via
+tracepoint.
 
-Thanks,
+This lack of length check has been present since the device was first
+introduced, though the code implementing the tx path has changed
+somewhat since then.
 
-C.
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3317
+Fixes: b43848a1005ce ("xilinx: Add ethlite emulation")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/net/trace-events     |  1 +
+ hw/net/xilinx_ethlite.c | 12 +++++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
 
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index 23efa91d05..001a20b0e2 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -527,3 +527,4 @@ xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d f
+ # xilinx_ethlite.c
+ ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
+ ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
++ethlite_pkt_tx_size_too_big(uint64_t size) "size:0x%" PRIx64
+diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+index ba3acd4c77..75e6520569 100644
+--- a/hw/net/xilinx_ethlite.c
++++ b/hw/net/xilinx_ethlite.c
+@@ -162,9 +162,15 @@ static void port_tx_write(void *opaque, hwaddr addr, uint64_t value,
+         break;
+     case TX_CTRL:
+         if ((value & (CTRL_P | CTRL_S)) == CTRL_S) {
+-            qemu_send_packet(qemu_get_queue(s->nic),
+-                             txbuf_ptr(s, port_index),
+-                             s->port[port_index].reg.tx_len);
++            uint32_t size = s->port[port_index].reg.tx_len;
++
++            if (size >= BUFSZ_MAX) {
++                trace_ethlite_pkt_tx_size_too_big(size);
++            } else {
++                qemu_send_packet(qemu_get_queue(s->nic),
++                                 txbuf_ptr(s, port_index),
++                                 size);
++            }
+             if (s->port[port_index].reg.tx_ctrl & CTRL_I) {
+                 eth_pulse_irq(s);
+             }
+-- 
+2.43.0
 
 

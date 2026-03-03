@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0ED4EDEBFA
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12996EDEBFB
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 22:24:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxY84-0004ik-Sw; Tue, 03 Mar 2026 17:22:12 -0500
+	id 1vxY87-0004k6-Br; Tue, 03 Mar 2026 17:22:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY82-0004hL-VL
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:10 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY85-0004j9-N5
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:13 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY81-0002Qd-El
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:10 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-483bd7354efso82468735e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 14:22:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vxY84-0002Ri-5K
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 17:22:13 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-483770e0b25so52930395e9.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 14:22:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772576528; x=1773181328; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1772576530; x=1773181330; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JOiFzMYt3nqjzzSrXRu86P7xq+XKX8Q8xCa2W8q3YHY=;
- b=kXPMI8l8ALa++p4ATRP1My4VsDS9Sh+oBWmuvmcvd8boyC+Fz2OdEq26dzHHSYn0N8
- P1ZBuyf0IjcuyQKTRN9dPHz1ZWiDaDoaxoIzdhBjZWwyujzlBsF/Exzf0HQe8kF0j4WK
- pOFFBv4XrlCopCX78z/rKJjknuwsvum17Q/uTZ31Hg0zu7f1dlq2Zn0d0bfY63lr44wK
- jMtU82SLfhSVYnLpl4MhJVK2ZGmrvGCvgOht0ekKcVZAiFSbYXXzHc7PHsLlnpgmTwG+
- YdvycMyU8olR7pRxOhGr8blHqeMBGJSGiQGFT+AlaqzPkij26iKatFB9Dq25NiMFm6kK
- vsqA==
+ bh=RXoZ/fOhayTS8r0vRAm++6Mi1cXikEvcCxkP8GuhY3Q=;
+ b=kg0FfzW9jYgQcquMqQeVZKov/EwkSt3HGsZ+iPvUaharvQXzRugTHOw9WT9OOVv4ah
+ CEkUlnV+wTaegJMsOdwgjK77+qlQviiEyGitYCKMifI/WJWpv+bXHxmQ75WJE9YP/kt8
+ JKiKLk1rIsnN9YU/ixFaynaLhVam7P0nTsa3QdjDDNlBMlqB8Zg+YhEHBT3ZgjogI05W
+ bkMZrsQpC3mUiPmOBjQQ2S6r7jbWBwjd0FvTMzmHl9aD+BRte8BF9Jfes0ZTzG3hkplI
+ frm9CaSTuYOvGQe6pNn86XpHhNaHprG0Lc4CBRS40sbFi+Q07k8eLk6sDRGag9sHi8Nf
+ JKsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772576528; x=1773181328;
+ d=1e100.net; s=20230601; t=1772576530; x=1773181330;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=JOiFzMYt3nqjzzSrXRu86P7xq+XKX8Q8xCa2W8q3YHY=;
- b=biUa95jiU86qxxXXaEWe1GHQhe0E8BS9P9r4UsQc/Lx0L0UGB//zk2AUJC+V+ndyJm
- xilOZhOB7qJSufphAqJ4wRCrlCuVfJ/dwo+8ASxdX5eIF/fcPiRweuRK8gvMs5tgAoS2
- qCnz21rocEADYZOMnGWxJ/unI5y4NTQeer3d+Qg9DL4a2YWivJpWK7tJOCKbajmAN0as
- GKFKz3FVrfBShBYvYmgLGh8naVQ/5EDQJPPzRSeN0D62HvxQSj65k9u2/Xg+q6lAEjZP
- jJ+FztQbCZv05d1LKfsnRHhK7GOIqFik8bZSlWMLonjW6dL4zX6milTwNVwTsyKVpXO/
- qdeg==
+ bh=RXoZ/fOhayTS8r0vRAm++6Mi1cXikEvcCxkP8GuhY3Q=;
+ b=JcYgpho7P7Cpy62NqdecTEbJcDYMFWeo+bFX9ecWyP0wSMNSkGrb0LPnEO8yn8u3Ro
+ Db/lEuhslljd3mNQ35PeBWjuXpAMLw8HumWGub4LGv5XrvAjcTL3mrjU5kx2MnoDrtcj
+ KDSqaMpXbNmDPBGeLRAMGntxruYf2dfDvtwUGrH8MCrFt0im2MWPJRrfc+DZwGw3Q920
+ BgRL6XWUwxVEQAn+I5VKwIFQi6MUmTkySuIK7Ak3ljmNFs6ygvgxp4flJ9EpQqkrE7d9
+ MwrNgt58nwzNcTJhQ+PXlbDpF+gRiuxq1bN4eHStpvDN9tTsTVMRFloGuoooiQyDUAE/
+ B7Fw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUf9YuBw4EaY5xJ1Iya62tv6QfFAvr8xcn7AJ7gGfes+ZpqkfHXbIVIeTgi7fwI/v3eEda7inFkaw==@nongnu.org
-X-Gm-Message-State: AOJu0YwZ0ddEgsZaTOIURIo90jHxenyu1IwHQ17q52fAIXWa82hgMjbD
- P2sfOGTMOZHhK056QV/iMtHGnT00stEtMfYm/HKb0dgyCd8SscfZ2WIc
-X-Gm-Gg: ATEYQzzWNhVTmsTQtYDSUbY4Gvaa90S6+FKVstomKVo8Wcu2TMeefx3EYg084WiV8JH
- 6viYFtle9oAIxygYwNmsANnvOGO5yzgAEJw8dlv7Ryu4GKhHQ8xsS8nuJOUW+dkykuMv2hGcHh+
- kt9zlWj3ZjU1CNXrs+Eln/QcG283e9AsZA5bGqmUZgpOEYF2jAHFv4NLasRk+cT5i4O+Ie8HbcT
- XyuhZY2bXwO7XiEZTcXsorQjOEysVIBgcrezXXk0nWj/ITxekh8CX++IsThDZkQ2zS3EghC29LB
- aIPKHqbg6PPuxTRfoz9oEWcUGTQ7nuIqvLAKoXwTjqZydU4q935LEk8ITq3I/vwRnQl6yPZS9n7
- LYx6MhqN5QFv5WwnOGN/RS74Zb9h/JdV0F5gMUWNbJObA2gEfGKuV9wJ/GFBldmOScdO9wU9ITF
- yqf1ak53nBpxB1xw569m2NcI/GyhCFzDIIJV2DnIDcVesTmmCbTR1F3qvL6j7iC1UXgqe04oFdB
- 7BDLbHSe3wt5YvOSKcyccqDXHMJjtI=
-X-Received: by 2002:a05:600c:530c:b0:483:afbb:a077 with SMTP id
- 5b1f17b1804b1-483c9b971a3mr296550795e9.1.1772576527895; 
- Tue, 03 Mar 2026 14:22:07 -0800 (PST)
+ AJvYcCVa01gJSpD1juSYPrWEYKO449e5HozKuhZPZwn3aJr1cPQxraGg/MG+5yWYxkUkD1MwdTZS9+sBAA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw27ulFKP6CRr2z983Y2iTvHywvZxg3RQd9eRsa5zcFcIU0Wuts
+ m9lO/8Lln4VId6aZmV6rGxKHnnhafBx/vktFFcfaI8u9DpZkwevcrKWr
+X-Gm-Gg: ATEYQzzm34BSykI6lm41bV1QLWCg2rrkkcrwbxiifK3Sy/rbSgL4t+EocYrmu0STm0h
+ kZ0cLqy7E7NO+KCKepgz99StphA1Bg42fIUKlgicCR/0XqVeLnNqubogQCNHY0N0Ctdh6221SFu
+ lQskyGTXVcNW3StuvmdkXksEIVw2ew1IctvJ30di3sK+1x8QZ+HvGNxDhR8TXCRls7Pzt8R+0dY
+ eP9pEPD+07UnUmalxN1xy85RKQKGrmDOqP9+JZPVVDzzau+nzIKRpznsf4mHVPZZV7yjlxUTCBT
+ F/jnSoXvxf60QAtWRcWbxVEu8cwEWd3NTUpWvS/XLGdcbFQMl96PIh2XWDZoao3oILVaAInnku0
+ prKWTBmqN9N/CIBgpJNKaxDv8Bdj1ylacan4p5Aaiyu/U35MYREkRpRu1qVJ+Efq0VUF0WYTEt2
+ H1oKAfxp4hJLmwhyHEsaoPnFaqwtXZXT8Z8up8gt5KLoQfs0BFsUlDNyT+OALiGJ9Sh89nhCb5r
+ 9vqcthu6CjA/3bU4aIcbhh1kdtNn5Y=
+X-Received: by 2002:a05:600c:4592:b0:480:52fd:d2e4 with SMTP id
+ 5b1f17b1804b1-483c9b78c20mr335635305e9.0.1772576530219; 
+ Tue, 03 Mar 2026 14:22:10 -0800 (PST)
 Received: from Provence
  (dynamic-2a02-3100-1c79-b600-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c79:b600:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485187c81adsm7577715e9.6.2026.03.03.14.22.06
+ 5b1f17b1804b1-485187c81adsm7577715e9.6.2026.03.03.14.22.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Mar 2026 14:22:07 -0800 (PST)
+ Tue, 03 Mar 2026 14:22:09 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Helge Deller <deller@gmx.de>,
@@ -82,16 +82,16 @@ Cc: Helge Deller <deller@gmx.de>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 05/13] hw/char/serial: Prefer fifo8 methods over open-coding
-Date: Tue,  3 Mar 2026 23:21:35 +0100
-Message-ID: <20260303222143.142741-6-shentey@gmail.com>
+Subject: [PATCH v2 07/13] hw/char/serial: Remove stale comment
+Date: Tue,  3 Mar 2026 23:21:37 +0100
+Message-ID: <20260303222143.142741-8-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260303222143.142741-1-shentey@gmail.com>
 References: <20260303222143.142741-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,55 +114,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use fifo8_is_empty() and fifo8_is_full() to improve readability of the
-code.
+There is no "is_load" flag and one can tell from the method name what
+the method does. Remove this stale comment.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/char/serial.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/char/serial.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
 diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 0f2e79dfba..20f68fd2f8 100644
+index 2c558cb9fc..f73de1ae4f 100644
 --- a/hw/char/serial.c
 +++ b/hw/char/serial.c
-@@ -239,7 +239,7 @@ static void serial_xmit(SerialState *s)
-             if (s->fcr & UART_FCR_FE) {
-                 assert(!fifo8_is_empty(&s->xmit_fifo));
-                 s->tsr = fifo8_pop(&s->xmit_fifo);
--                if (!s->xmit_fifo.num) {
-+                if (fifo8_is_empty(&s->xmit_fifo)) {
-                     s->lsr |= UART_LSR_THRE;
-                 }
-             } else {
-@@ -481,7 +481,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
-             if(s->fcr & UART_FCR_FE) {
-                 ret = fifo8_is_empty(&s->recv_fifo) ?
-                             0 : fifo8_pop(&s->recv_fifo);
--                if (s->recv_fifo.num == 0) {
-+                if (fifo8_is_empty(&s->recv_fifo)) {
-                     s->lsr &= ~(UART_LSR_DR | UART_LSR_BI);
-                 } else {
-                     timer_mod(s->fifo_timeout_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + s->char_transmit_time * 4);
-@@ -555,7 +555,7 @@ static uint64_t serial_ioport_read(void *opaque, hwaddr addr, unsigned size)
- static int serial_can_receive(SerialState *s)
+@@ -281,9 +281,6 @@ static void serial_xmit(SerialState *s)
+     s->lsr |= UART_LSR_TEMT;
+ }
+ 
+-/* Setter for FCR.
+-   is_load flag means, that value is set while loading VM state
+-   and interrupt should not be invoked */
+ static void serial_write_fcr(SerialState *s, uint8_t val)
  {
-     if(s->fcr & UART_FCR_FE) {
--        if (s->recv_fifo.num < UART_FIFO_LENGTH) {
-+        if (!fifo8_is_full(&s->recv_fifo)) {
-             /*
-              * Advertise (fifo.itl - fifo.count) bytes when count < ITL, and 1
-              * if above. If UART_FIFO_LENGTH - fifo.count is advertised the
-@@ -585,7 +585,7 @@ static void serial_receive_break(SerialState *s)
- /* There's data in recv_fifo and s->rbr has not been read for 4 char transmit times */
- static void fifo_timeout_int (void *opaque) {
-     SerialState *s = opaque;
--    if (s->recv_fifo.num) {
-+    if (!fifo8_is_empty(&s->recv_fifo)) {
-         s->timeout_ipending = 1;
-         serial_update_irq(s);
-     }
+     /* Set fcr - val only has the bits that are supposed to "stick" */
 -- 
 2.53.0
 

@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0CD8EC0463
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:30:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE271EC047F
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Mar 2026 09:30:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxM1I-000488-3i; Tue, 03 Mar 2026 04:26:24 -0500
+	id 1vxM1N-0004EB-Ok; Tue, 03 Mar 2026 04:26:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM0w-0003nG-5m
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vxM1K-0004BV-Fk
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vxM0t-0004Pk-Ld
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:00 -0500
+ id 1vxM1I-0004Tf-GQ
+ for qemu-arm@nongnu.org; Tue, 03 Mar 2026 04:26:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772529958;
+ s=mimecast20190719; t=1772529983;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xbha/IGaDlUjFoFljY+poWpmyiDFTty6W23jAkhC768=;
- b=Y+k++1mGpmn5Gl1TAneEDmJSlNW5/qEsDhTy+4afTxsirTG9v3PqAPiixHGWUE2sJwR2Rm
- nzny5hIrFU+gui3n+1bumug//1espl2PWSO16CbuqLxf1WRA5PPUSVeB1zH0PFe0T4CR1u
- U/xllw4+ZzDb6BKfOjRbOrpRwj2Pzqs=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=tmO6yW5qHc3RJmhk0uJMi2AqGREZ+/06OMioTcNQ2+Y=;
+ b=AJf1H1Z21hxTtVc7QVpM1QubADF6329ULkAo+EPX/YvdvBVUl+tVPwgJAghoaiRMgrUkJW
+ cB7ymRHBkDkVxTTBW7Wi6R00XaNezle+ARk72OYQzTTSZ/PaMFPghZPuWCqVEnISvSCQUQ
+ OOY+R8nV8naABzCoMpqM2zjBz4zG8IA=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-648-w7rau11SOlKaLMjJ87SqSg-1; Tue,
- 03 Mar 2026 04:25:55 -0500
-X-MC-Unique: w7rau11SOlKaLMjJ87SqSg-1
-X-Mimecast-MFC-AGG-ID: w7rau11SOlKaLMjJ87SqSg_1772529953
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-311-YBdFuhm2PTauA688Yan_pg-1; Tue,
+ 03 Mar 2026 04:26:22 -0500
+X-MC-Unique: YBdFuhm2PTauA688Yan_pg-1
+X-Mimecast-MFC-AGG-ID: YBdFuhm2PTauA688Yan_pg_1772529981
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C6EF5195605F; Tue,  3 Mar 2026 09:25:53 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 45EB3180057E; Tue,  3 Mar 2026 09:26:21 +0000 (UTC)
 Received: from dell-r430-03.lab.eng.brq2.redhat.com
  (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CD66630001BF; Tue,  3 Mar 2026 09:25:48 +0000 (UTC)
+ id B8BD630001B9; Tue,  3 Mar 2026 09:26:18 +0000 (UTC)
 From: Igor Mammedov <imammedo@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: mst@redhat.com, anisinha@redhat.com, pbonzini@redhat.com,
  peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
  zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
  qemu-arm@nongnu.org
-Subject: [PATCH v2 04/21] tests: acpi: x86/q35: whitelist new WDAT table
-Date: Tue,  3 Mar 2026 10:25:15 +0100
-Message-ID: <20260303092532.2410177-5-imammedo@redhat.com>
+Subject: [PATCH v2 13/21] tests: acpi: arm/virt: add WDAT table test case
+Date: Tue,  3 Mar 2026 10:25:24 +0100
+Message-ID: <20260303092532.2410177-14-imammedo@redhat.com>
 In-Reply-To: <20260303092532.2410177-1-imammedo@redhat.com>
 References: <20260303092532.2410177-1-imammedo@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: qDrMwGYjd2LK47lX8uxVtbHNTodSPDKzQ4xmTKicnp4_1772529953
+X-Mimecast-MFC-PROC-ID: jZHld5Ri7GHkRUlymgl5au72A3NCrpSbNlJHqWS6oiU_1772529981
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 27
-X-Spam_score: 2.7
-X-Spam_bar: ++
-X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.968, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.495,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,23 +91,49 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-Acked-by: Ani Sinha <anisinha@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 1 +
- tests/data/acpi/x86/q35/WDAT.wdat           | 0
- 2 files changed, 1 insertion(+)
- create mode 100644 tests/data/acpi/x86/q35/WDAT.wdat
+ tests/qtest/bios-tables-test.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8b..14b680debe 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,2 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/x86/q35/WDAT.wdat",
-diff --git a/tests/data/acpi/x86/q35/WDAT.wdat b/tests/data/acpi/x86/q35/WDAT.wdat
-new file mode 100644
-index 0000000000..e69de29bb2
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 5b01a657e5..5082866184 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2271,6 +2271,25 @@ static void test_acpi_aarch64_virt_tcg_msi_gicv2m(void)
+     free_test_data(&data);
+ }
+ 
++static void test_acpi_aarch64_virt_tcg_wdat(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .arch = "aarch64",
++        .variant = ".wdat",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
++        .scan_len = 128ULL * MiB,
++    };
++
++    test_acpi_one("-cpu cortex-a57 "
++                  "-device sbsa_gwdt,wdat=on", &data);
++    free_test_data(&data);
++}
++
+ static void test_acpi_q35_viot(void)
+ {
+     test_data data = {
+@@ -2889,6 +2908,8 @@ int main(int argc, char *argv[])
+                 qtest_add_func("acpi/virt/smmuv3-dev",
+                                test_acpi_aarch64_virt_smmuv3_dev);
+             }
++            qtest_add_func("acpi/virt/acpi-watchdog",
++                           test_acpi_aarch64_virt_tcg_wdat);
+         }
+     } else if (strcmp(arch, "riscv64") == 0) {
+         if (has_tcg && qtest_has_device("virtio-blk-pci")) {
 -- 
 2.47.3
 

@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5714EB7EA5
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 10:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C26D9EB7EB6
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 10:23:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxjHc-0002SH-IX; Wed, 04 Mar 2026 05:16:48 -0500
+	id 1vxjNi-000718-0A; Wed, 04 Mar 2026 05:23:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxjHa-0002Rb-Qo
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 05:16:46 -0500
+ id 1vxjNg-00070c-2y
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 05:23:04 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxjHZ-0008Ti-1U
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 05:16:46 -0500
+ id 1vxjNd-0002YT-2W
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 05:23:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772619404;
+ s=mimecast20190719; t=1772619780;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HlxXD3SwRBQxQ8pUvaYL9idlSRo9xX0PZQG86dGOGJM=;
- b=KQn2KwddWVhD31kPUpijdooUwurSfBJ7U2K6DPAFKA+BDLiMvs0Ymml9KifYi3qhm0C1oZ
- 5bODvZW93Ntvc7TPIJ3bSg9moHEo8+i0bYE+5Hhxd9GnzUdsr9967Q84SdXWAwLIy+UAa/
- iBd9/wyhHlFJrJBbmlumCAswTz3sSIo=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=eYqrXjzlMRX2r5f84qZKv+14d3Tw1qZIxlDLVXhHGeg=;
+ b=Wlw8uv1um8tOlWwXSZ+Rf2/43sA0WHMNvOod0TkQtkMJ5UwqU4gtuqUFKY5+gC7k5w1N+w
+ uZT/6iAi1uN1fY8OP3N5A0JBmVlNOLw9lRMt/hfLjO7WBS/pbU1c4DcxcNEywpbLA72hUv
+ ZJrYTF73B3W3xc0Ci22MeGKfydvVqQ0=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-411-s8yti4ZSNE-hs-HIGf5rhA-1; Wed,
- 04 Mar 2026 05:16:40 -0500
-X-MC-Unique: s8yti4ZSNE-hs-HIGf5rhA-1
-X-Mimecast-MFC-AGG-ID: s8yti4ZSNE-hs-HIGf5rhA_1772619399
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-413-ctnenVIXN_2V8Hcl6RIRbg-1; Wed,
+ 04 Mar 2026 05:22:56 -0500
+X-MC-Unique: ctnenVIXN_2V8Hcl6RIRbg-1
+X-Mimecast-MFC-AGG-ID: ctnenVIXN_2V8Hcl6RIRbg_1772619775
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0D22E18005B8; Wed,  4 Mar 2026 10:16:39 +0000 (UTC)
+ id 9AEDF180034E; Wed,  4 Mar 2026 10:22:55 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.89])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0EDE7180035F; Wed,  4 Mar 2026 10:16:35 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3B8F71958DC2; Wed,  4 Mar 2026 10:22:51 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v3 2/7] target/arm/machine: Use VMSTATE_VARRAY_INT32_ALLOC for
- cpreg arrays
-Date: Wed,  4 Mar 2026 11:15:41 +0100
-Message-ID: <20260304101625.1962633-3-eric.auger@redhat.com>
-In-Reply-To: <20260304101625.1962633-1-eric.auger@redhat.com>
-References: <20260304101625.1962633-1-eric.auger@redhat.com>
+Subject: [PATCH v8 0/6] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+Date: Wed,  4 Mar 2026 11:22:04 +0100
+Message-ID: <20260304102249.1963784-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: J_lSSVL0NDcKoNvtZG5m8qM8-LckkADuDWcYTV3TZIQ_1772619399
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: bk3TcKTKwMzz0FaEsQFldUp0DcMuo9hiQumrUTcdqi8_1772619775
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -5
@@ -89,212 +86,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This removes the need for explicitly allocating cpreg_vmstate arrays.
-On post save we simply point to cpreg arrays and set the length
-accordingly.
+This series applies on top of
+[PATCH v3 0/7] Improve traces on migration failure due to cpreg number mismatch
 
-Remove VMSTATE_VARRAY_INT32 for cpreg_vmstate_array_len as now
-the array is dynamically allocated.
+It introduces an infrastructure to explicitly tolerate some
+mismatches between cpu cpreg indexes/values on migration.
 
-Also add a trace point on post_load to trace potential mismatch
-between the number of incoming cpregs versus current ones.
+We especially handle failures due to an attempt to migrate 
+more registers than exposed on the destination.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Once the infrastructure is in place we can handle the following
+known issues:
+KVM:
+- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+  from v6.13 onwards. Causes forward migration failure.
+- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+  register from v6.16 onwards. Causes backward migration failure.
+TCG:
+- We can eventually remove AArch32 DBGDTRTX register which was
+  erroneously defined.
 
----
+Both series are available at:
+https://github.com/eauger/qemu/tree/cpreg_vmstate_array_len_traces_v3_mitig_v2
 
-v1 -> v2:
-- also modifies the allocation of cpureg_vmstate_* in
-  target/arm/whpx/whpx-all.c
-- added Peter's suggested comment on cpu_pre_save()
-- free the the vmstate arrays on post_load
-- add assert on pre_load
-- fix comment aboy length check in machine.c
+History:
+v7 -> v8:
+- rebase on top of v3 dep
+- removal of target/arm/machine: Fix detection of unknown incoming cpregs
+  which is integrated in prerequisite series
 
-v2 -> v3:
-- clear the pointers also in post_save()
----
- target/arm/helper.c        |  5 -----
- target/arm/kvm.c           |  5 -----
- target/arm/machine.c       | 45 +++++++++++++++++++++++++++-----------
- target/arm/whpx/whpx-all.c |  7 ------
- target/arm/trace-events    |  3 +++
- 5 files changed, 35 insertions(+), 30 deletions(-)
+v6 -> v7
+- complete rework after Peter's comments in
+  (https://lore.kernel.org/all/20260126165445.3033335-1-eric.auger@redhat.com/)
+  Especially it does not use properties at all. Do not feature hidden regs
+  Also the initial series was split into 2.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6bfab90981c..7389f2988c4 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -265,15 +265,10 @@ void arm_init_cpreg_list(ARMCPU *cpu)
-     if (arraylen) {
-         cpu->cpreg_indexes = g_new(uint64_t, arraylen);
-         cpu->cpreg_values = g_new(uint64_t, arraylen);
--        cpu->cpreg_vmstate_indexes = g_new(uint64_t, arraylen);
--        cpu->cpreg_vmstate_values = g_new(uint64_t, arraylen);
-     } else {
-         cpu->cpreg_indexes = NULL;
-         cpu->cpreg_values = NULL;
--        cpu->cpreg_vmstate_indexes = NULL;
--        cpu->cpreg_vmstate_values = NULL;
-     }
--    cpu->cpreg_vmstate_array_len = arraylen;
-     cpu->cpreg_array_len = 0;
- 
-     g_hash_table_foreach(cpu->cp_regs, add_cpreg_to_list, cpu);
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index eaa065d7261..555083e7aaf 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -864,12 +864,7 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
- 
-     cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
-     cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
--    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
--                                         arraylen);
--    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
--                                        arraylen);
-     cpu->cpreg_array_len = arraylen;
--    cpu->cpreg_vmstate_array_len = arraylen;
- 
-     for (i = 0, arraylen = 0; i < rlp->n; i++) {
-         uint64_t regidx = rlp->reg[i];
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index bbaae344492..d3d4f2ddc15 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1,5 +1,6 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "trace.h"
- #include "qemu/error-report.h"
- #include "system/kvm.h"
- #include "system/tcg.h"
-@@ -984,11 +985,14 @@ static int cpu_pre_save(void *opaque)
-         }
-     }
- 
-+    /*
-+     * On outbound migration, send the data in our cpreg_{values,indexes}
-+     * arrays. The migration code will not allocate anything, but just
-+     * reads the data pointed to by the VMSTATE_VARRAY_INT32_ALLOC() fields.
-+     */
-+    cpu->cpreg_vmstate_indexes = cpu->cpreg_indexes;
-+    cpu->cpreg_vmstate_values = cpu->cpreg_values;
-     cpu->cpreg_vmstate_array_len = cpu->cpreg_array_len;
--    memcpy(cpu->cpreg_vmstate_indexes, cpu->cpreg_indexes,
--           cpu->cpreg_array_len * sizeof(uint64_t));
--    memcpy(cpu->cpreg_vmstate_values, cpu->cpreg_values,
--           cpu->cpreg_array_len * sizeof(uint64_t));
- 
-     return 0;
- }
-@@ -1001,6 +1005,9 @@ static int cpu_post_save(void *opaque)
-         pmu_op_finish(&cpu->env);
-     }
- 
-+    cpu->cpreg_vmstate_indexes = NULL;
-+    cpu->cpreg_vmstate_values = NULL;
-+
-     return 0;
- }
- 
-@@ -1034,6 +1041,9 @@ static int cpu_pre_load(void *opaque)
-         pmu_op_start(env);
-     }
- 
-+    g_assert(!cpu->cpreg_vmstate_indexes);
-+    g_assert(!cpu->cpreg_vmstate_values);
-+
-     return 0;
- }
- 
-@@ -1043,6 +1053,9 @@ static int cpu_post_load(void *opaque, int version_id)
-     CPUARMState *env = &cpu->env;
-     int i, v;
- 
-+    trace_cpu_post_load(cpu->cpreg_vmstate_array_len,
-+                        cpu->cpreg_array_len);
-+
-     /*
-      * Handle migration compatibility from old QEMU which didn't
-      * send the irq-line-state subsection. A QEMU without it did not
-@@ -1094,6 +1107,11 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-     }
- 
-+    g_free(cpu->cpreg_vmstate_indexes);
-+    g_free(cpu->cpreg_vmstate_values);
-+    cpu->cpreg_vmstate_indexes = NULL;
-+    cpu->cpreg_vmstate_values = NULL;
-+
-     /*
-      * Misaligned thumb pc is architecturally impossible. Fail the
-      * incoming migration. For TCG it would trigger the assert in
-@@ -1167,16 +1185,17 @@ const VMStateDescription vmstate_arm_cpu = {
-         VMSTATE_UINT32_ARRAY(env.fiq_regs, ARMCPU, 5),
-         VMSTATE_UINT64_ARRAY(env.elr_el, ARMCPU, 4),
-         VMSTATE_UINT64_ARRAY(env.sp_el, ARMCPU, 4),
--        /* The length-check must come before the arrays to avoid
--         * incoming data possibly overflowing the array.
-+        /*
-+         * The length must come before the arrays so we can
-+         * allocate the arrays before their data arrives
-          */
--        VMSTATE_INT32_POSITIVE_LE(cpreg_vmstate_array_len, ARMCPU),
--        VMSTATE_VARRAY_INT32(cpreg_vmstate_indexes, ARMCPU,
--                             cpreg_vmstate_array_len,
--                             0, vmstate_info_uint64, uint64_t),
--        VMSTATE_VARRAY_INT32(cpreg_vmstate_values, ARMCPU,
--                             cpreg_vmstate_array_len,
--                             0, vmstate_info_uint64, uint64_t),
-+        VMSTATE_INT32(cpreg_vmstate_array_len, ARMCPU),
-+        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_indexes, ARMCPU,
-+                                   cpreg_vmstate_array_len,
-+                                   0, vmstate_info_uint64, uint64_t),
-+        VMSTATE_VARRAY_INT32_ALLOC(cpreg_vmstate_values, ARMCPU,
-+                                   cpreg_vmstate_array_len,
-+                                   0, vmstate_info_uint64, uint64_t),
-         VMSTATE_UINT64(env.exclusive_addr, ARMCPU),
-         VMSTATE_UINT64(env.exclusive_val, ARMCPU),
-         VMSTATE_UINT64(env.exclusive_high, ARMCPU),
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index bb94eac7bf8..c5b108166ac 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -783,12 +783,6 @@ int whpx_init_vcpu(CPUState *cpu)
-                                      sregs_match_len);
-     arm_cpu->cpreg_values = g_renew(uint64_t, arm_cpu->cpreg_values,
-                                     sregs_match_len);
--    arm_cpu->cpreg_vmstate_indexes = g_renew(uint64_t,
--                                             arm_cpu->cpreg_vmstate_indexes,
--                                             sregs_match_len);
--    arm_cpu->cpreg_vmstate_values = g_renew(uint64_t,
--                                            arm_cpu->cpreg_vmstate_values,
--                                            sregs_match_len);
- 
-     memset(arm_cpu->cpreg_values, 0, sregs_match_len * sizeof(uint64_t));
- 
-@@ -807,7 +801,6 @@ int whpx_init_vcpu(CPUState *cpu)
-         }
-     }
-     arm_cpu->cpreg_array_len = sregs_cnt;
--    arm_cpu->cpreg_vmstate_array_len = sregs_cnt;
- 
-     assert(write_cpustate_to_list(arm_cpu, false));
- 
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 676d29fe516..2de0406f784 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -26,3 +26,6 @@ arm_powerctl_reset_cpu(uint64_t mp_aff) "cpu %" PRIu64
- 
- # tcg/psci.c and hvf/hvf.c
- arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid) "PSCI Call x0=0x%016"PRIx64" x1=0x%016"PRIx64" x2=0x%016"PRIx64" x3=0x%016"PRIx64" cpuid=0x%x"
-+
-+# machine.c
-+cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
+
+Eric Auger (6):
+  target/arm/cpu: Introduce the infrastructure for cpreg migration
+    tolerances
+  target/arm/machine: Take account cpreg mig tolerances in case of
+    mismatch
+  target/arm/cpu64: Mitigate migration failures due to spurious TCR_EL1,
+    PIRE0_EL1 and PIR_EL1
+  target/arm/cpu64: Define cpreg migration tolerance for
+    KVM_REG_ARM_VENDOR_HYP_BMAP_2
+  target/arm/helper: Define cpreg migration tolerance for DGBDTR_EL0
+  Revert "target/arm: Reinstate bogus AArch32 DBGDTRTX register for
+    migration compat"
+
+ target/arm/cpu.h          | 32 +++++++++++++++++
+ target/arm/cpu.c          | 75 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c        | 34 ++++++++++++++++++
+ target/arm/debug_helper.c | 29 ---------------
+ target/arm/helper.c       |  5 +++
+ target/arm/machine.c      | 30 ++++++++++------
+ target/arm/trace-events   |  2 ++
+ 7 files changed, 168 insertions(+), 39 deletions(-)
+
 -- 
 2.53.0
 

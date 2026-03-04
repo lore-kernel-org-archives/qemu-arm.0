@@ -4,107 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 785C4EF9001
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 16:37:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55E7AEF8FFC
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 16:38:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxpD4-0007rX-6g; Wed, 04 Mar 2026 11:36:30 -0500
+	id 1vxpEd-0000T3-Vm; Wed, 04 Mar 2026 11:38:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxpD2-0007rC-2V
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:36:28 -0500
+ id 1vxpEb-0000SY-Jk
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:38:05 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxpD0-0007MS-BQ
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:36:27 -0500
+ id 1vxpEa-0007t6-4n
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:38:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772642183;
+ s=mimecast20190719; t=1772642283;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6/VcDIScbrvARStahzI6NOoxSTIAlk/3uFmz6XnZ1oo=;
- b=YMLpWNRFaN74FsNx8HfC3YiAluc8qX2kLPn+FbiSAupz9GZpGHzRkELRjfli9Z+wGPb56X
- nw3FzJoMCb8QAvjSpVmrO7LxILl3G8eFeY3iNPMRsYHympXptkPTkD05cL/zKlIZyX8ZxH
- H1d7d+WISGNHfHSthHWyzB9tRIuUXBM=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8brnyqqtWbtIOxiPRqwBOxDFBXvm2/fcZcwh2WUTBqY=;
+ b=Jc4Qm39w1wSn6LLUsaCDG0q4YN8LOQThz3u0Z8CvFC2Pw1Yk8XtdHlBNe9sjGr6/4nuMYh
+ BDav4dd+3q2hAtUJz4PQyNfaxMH8NK/IwQ+kCRs7LFY7kmkynQs/tC8PZDX0Ecub3MGmjs
+ GLsPY6vkPKWGC4qck6pMOVzxUTyybYU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-447--3mU8Gk1MyWEnezKQ4LmLg-1; Wed, 04 Mar 2026 11:36:22 -0500
-X-MC-Unique: -3mU8Gk1MyWEnezKQ4LmLg-1
-X-Mimecast-MFC-AGG-ID: -3mU8Gk1MyWEnezKQ4LmLg_1772642181
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-439b3011be7so2399577f8f.1
- for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 08:36:22 -0800 (PST)
+ us-mta-267-SP-_mm8nN8WLFCfIqII33A-1; Wed, 04 Mar 2026 11:38:00 -0500
+X-MC-Unique: SP-_mm8nN8WLFCfIqII33A-1
+X-Mimecast-MFC-AGG-ID: SP-_mm8nN8WLFCfIqII33A_1772642279
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4837b9913c9so53498005e9.0
+ for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 08:37:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772642181; x=1773246981;
+ d=1e100.net; s=20230601; t=1772642279; x=1773247079;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6/VcDIScbrvARStahzI6NOoxSTIAlk/3uFmz6XnZ1oo=;
- b=NR72UqdbsUx5hzs4JrGqqai+MfpzBsAc3t366GP12WCM5/uyz6+3QVMxTat0XAVqZc
- IIUh2xx3KtJWWz43uZLjFiirWbKfvHdJR2ve/rApzcFNGP2UZCVdvMxo0ktG0f7D1+HV
- abj9at1gvn/FmTh+P7NZfNlOOZptUSj3k7WyfoKlvdo3hw03m+meoZnHkTusDM5mI5oL
- YotC73yrEEZ/jvzn51FfoVP37xDcjpRe3o79lkuciQA4sP+1bBcGXtpzZVmh6y7n5Mf3
- TPsy/6qro+9xyLJNLymYLTyL4wAxaqst/E9c7CZUkSaqPdF/oy999eIRR98kbmGRMPAT
- Lc9w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVZ7dUDh8oOhL7J/qAHsE5xzFxwFc6eN2ny0IMNrsZfgRKNvdqM9KD3A0muBdmNT9sQPRZFlGuhpA==@nongnu.org
-X-Gm-Message-State: AOJu0YxteaS05nJEdbERR60Z+pANMwaIFtRVYkZ+xCVmMH5sZUVmu34v
- 45R06bUi5nyvDhKdZp8XlGpCOzXF7iVEQADYS/PDeerHanQARkK5S2+eLJaCufSNuxZDHuae23Q
- k/vNN9qp3/8/HIXzTyTTZyNBhq4XriHvrddtkP4V/lkH2mL+8nOIuMQ==
-X-Gm-Gg: ATEYQzwmPrEwbg8Ie3h1iaTxjgs4NVCiQTix2N/CKViNlHAvWBkUMAEstL81nv/fanQ
- zq0oehMt4HPLgLVa6AjKQ9dYA69wGyOrDQT3++nAkieSpKvpefTmNsMsOOuVlymRgd7AiWyOqgQ
- yd+1l9ndkaIPMa81UmjppzYtwCu3SG8/4Lzc9a7bGIfr5IC43csnUAqLdPBCKJs93PVmznA5x/5
- C3IaqBl558VKhTCefx75Lu4zRGEUqacARk4WH+3Tf+Jfp7FzvfESj7smunS8FQPFP6s8XDiNzwu
- +v4tE1tjOOAkCSyrhQ9ThrJ/Q7kZk/akHemyush9NDlBrjPok3MvdYRxFzdhSaRwaIPaBGV/hyu
- q1a1IJQaQT+8f4meBJG36DtBywHvx7FezmAd9iEAiWiAbff1AtdKXKToG4ZJPp4EsWMVp2w==
-X-Received: by 2002:a05:6000:2381:b0:439:b339:7eed with SMTP id
- ffacd0b85a97d-439c7f79ae6mr4714953f8f.20.1772642181103; 
- Wed, 04 Mar 2026 08:36:21 -0800 (PST)
-X-Received: by 2002:a05:6000:2381:b0:439:b339:7eed with SMTP id
- ffacd0b85a97d-439c7f79ae6mr4714865f8f.20.1772642180509; 
- Wed, 04 Mar 2026 08:36:20 -0800 (PST)
+ bh=8brnyqqtWbtIOxiPRqwBOxDFBXvm2/fcZcwh2WUTBqY=;
+ b=NvsgfIQ46lcc9mfEBbCSQjUy+djrCl+4y9dAN6ZJgGS56WW7WzeQr+ZMn0pwuu8GlH
+ ibE3+vVqkG3zbht6wqfsSibOGIuDQx7Nh2XujPP7eUPz9fjRYzCoFPu9K8CRoVDMQLg1
+ axm4hUCxsgFqyOxZr3r22CGaA8hpDtng3r/wjZJp4UXkIKMoYZl32LnPWcI+poOZqNn5
+ 14iWQQRV59Tqbre4nPgF6j4v4CZeV+7dSrOfQlJv6blZteBJBHri2NQfe+xKXSOiTva0
+ ni5qhcWFJBDxbFEL1ZYgy1z9DlqHTmHH3S5Ow4PJhgEtNs4caed++8Zi7+s43+WyjpSr
+ D81w==
+X-Gm-Message-State: AOJu0Yw/X13IKXQxqo14gIo6xKQLmcv9eXhmZ/wPWH5fuiK3T5AYDW8Q
+ L27jNeMTu3Nih12znnkHvRZ/zzFO2UuURIXwvmboOxMVuq1IbBbEE0Grum0WC8o1Gaw6u67B9Ru
+ FgHA4FnWQF/BZwKZMP8bH+2WYvTA4nxG5bXl1iYZo0L1ijQHBSWsomw==
+X-Gm-Gg: ATEYQzzoVNAB4am7iLJDrdag9TGgcleHvaY8moSmRjqSrVZceh5RAY4M9IwjfIaZjgO
+ xKlBI+LOG1nvAiQJ279L6LwCF9u3pYWmbGCB5jlrMqf8Z66DswO56frRslMHke+F0dRHwfySvv4
+ YG6iUnWfHrOg7AaJQSbGQ2/28INFOQgeBbUfAXH4aPce1Tp0eNNVOfexC1mMBCS2f4LCCk9tgam
+ 3eTxLKCG4oNq6NdEM7w6zx+iNUDU5RwgsxPw8UuWsFRdpZZZEsUfubusH8p8vAPuVeTNdTYxLFO
+ TvxEEcy90NdMYMEV0VYa4t9wWCsxY3MaEhUDSeYaNfb6uB9TYuLfn8c44wJrfc7pUx/UDM5caH8
+ YX0j0HGtpvL7SShDZN6uKBXCi1oYXWJLRHL4uKi6D23+IeD6L4+wQh5kQQqMnXIySG9UtbA==
+X-Received: by 2002:a05:600c:4e8a:b0:47e:e9c9:23bc with SMTP id
+ 5b1f17b1804b1-4851989fb4cmr39239425e9.30.1772642278689; 
+ Wed, 04 Mar 2026 08:37:58 -0800 (PST)
+X-Received: by 2002:a05:600c:4e8a:b0:47e:e9c9:23bc with SMTP id
+ 5b1f17b1804b1-4851989fb4cmr39238895e9.30.1772642278199; 
+ Wed, 04 Mar 2026 08:37:58 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439b485a0b6sm27811029f8f.39.2026.03.04.08.36.19
+ 5b1f17b1804b1-4851acfbd1bsm20826565e9.6.2026.03.04.08.37.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Mar 2026 08:36:20 -0800 (PST)
-Message-ID: <b1cadaec-be9f-4056-88a1-f994cd34f07c@redhat.com>
-Date: Wed, 4 Mar 2026 17:36:18 +0100
+ Wed, 04 Mar 2026 08:37:57 -0800 (PST)
+Message-ID: <b3257dcf-4a15-45e6-8d2c-c98ed13cde96@redhat.com>
+Date: Wed, 4 Mar 2026 17:37:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 16/31] hw/arm/smmuv3: Plumb SEC_SID through IOMMU
- notifier path
-To: Tao Tang <tangtao1634@phytium.com.cn>, Mostafa Saleh <smostafa@google.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101706.2994213-1-tangtao1634@phytium.com.cn>
- <aaGumxmrKRelouE7@google.com>
- <6a6144fe-3db3-4ce8-8a8c-c1391d7aa550@redhat.com>
- <aaXiQ84t1vxTH-EE@google.com>
- <adbb1e4f-2103-4927-aa5e-638c5dbc3896@redhat.com>
- <7a50275c-46bb-45b2-a419-135cc0e43c45@phytium.com.cn>
+Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify OAS
+ bits
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Jason Gunthorpe <jgg@nvidia.com>, Pavel Hrdina <phrdina@redhat.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+References: <20260126104342.253965-1-skolothumtho@nvidia.com>
+ <20260126104342.253965-32-skolothumtho@nvidia.com>
+ <d9192ae6-a94f-479a-b19f-734cc52a6be0@redhat.com>
+ <CH3PR12MB754867E986856DC7718D4051AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260202151917.GO2223369@nvidia.com>
+ <CH3PR12MB754835BE4A5C54387122504AAB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260202160000.GR2223369@nvidia.com>
+ <CH3PR12MB7548DFE7F7CE555A3B3BF947AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <CH3PR12MB7548515EDA96BD03F64DCAA2AB62A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <41aaf959-b417-469e-89aa-41c20a4b906c@redhat.com>
+ <IA0PR12MB755548A48375D1856ADE89F5AB7CA@IA0PR12MB7555.namprd12.prod.outlook.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <7a50275c-46bb-45b2-a419-135cc0e43c45@phytium.com.cn>
+In-Reply-To: <IA0PR12MB755548A48375D1856ADE89F5AB7CA@IA0PR12MB7555.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FYYl5Tg3fwDm1WEMt9R6jjxevuWZFN-8LL36iNhyxoM_1772642181
+X-Mimecast-MFC-PROC-ID: NpLQxz6vz449Vp4YB0YFUGWGOSDJP3ISpVZqgm_zZTE_1772642279
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 0
@@ -131,190 +142,65 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Shameer,
 
-
-On 3/4/26 4:34 PM, Tao Tang wrote:
-> Hi all,
+On 3/4/26 9:26 AM, Shameer Kolothum Thodi wrote:
+> Hi Eric,
 >
-> On 2026/3/3 PM3:49, Eric Auger wrote:
->> Hi Mostafa,
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 04 March 2026 07:47
+>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; Jason Gunthorpe
+>> <jgg@nvidia.com>; Pavel Hrdina <phrdina@redhat.com>
+>> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+>> peter.maydell@linaro.org; Nicolin Chen <nicolinc@nvidia.com>;
+>> ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
+>> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+>> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
+>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+>> Krishnakant Jaju <kjaju@nvidia.com>
+>> Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify
+>> OAS bits
 >>
->> On 3/2/26 8:17 PM, Mostafa Saleh wrote:
->>> On Mon, Mar 02, 2026 at 07:26:10PM +0100, Eric Auger wrote:
->>>> On 2/27/26 3:47 PM, Mostafa Saleh wrote:
->>>>> On Sat, Feb 21, 2026 at 06:17:06PM +0800, Tao Tang wrote:
->>>>>> Extend IOMMU notifier functions to be SEC_SID-aware, ensuring that
->>>>>> invalidation notifications are dispatched to the correct
->>>>>> security-aware
->>>>>> address space.
->>>>>>
->>>>>> This ensures IOMMU notifier events (e.g., to VFIO) are correctly
->>>>>> routed
->>>>>> to the appropriate security world's address space, maintaining
->>>>>> isolation
->>>>>> between secure and non-secure DMA operations.
->>>>> I don’t think that VFIO cares about secure regime, my guess is to
->>>>> keep the functions as this and don’t call them for secure
->>>>> invalidations.
->>>> So do we want to prevent VFIO devices from working in secure mode
->>>> along
->>>> with the SMMU?
->>> Yes, my impression was that VFIO only works with NS devices, for
->>> example
->>> I see vfio_iommu_map_notify() only deals with system memory:
+> [...]
+>>> This is how the usage would look with an added "ats" property on the
+>>> vfio-pci device:
 >>>
->>>      if (iotlb->target_as != &address_space_memory) {
->>>          error_setg(&local_err,
->>>                     "Wrong target AS \"%s\", only system memory is
->>> allowed",
->> Indeed this would need to be changed. I am totally fine not supporting
->> VFIO nor vhost devices (which also use unmap notifiers) in secure more.
->> However in that case I think the series would need to properly check
->> that those devices are not used in secure regime.
+>>> -device vfio-pci,...,ats=on
+>>>     if ATS_NOT_SUPPORTED then reject
+>>> -device vfio-pci,...,ats=off
+>>>     keep ATS off
+>>> -device vfio-pci,...,ats=auto (default)
+>>>    if ATS_NOT_SUPPORTED, disable ATS
+>>>     otherwise, enable ATS if the PCIe ATS capability is present
+>>>     (this also covers behaviour on older kernels)
+>>>
+>>> Does the above make sense?
+>> Do you have plans wrt the migration to auto properties for the various
+>> vSMMU properties (RIL, ssidsize, OAS, ATS)? I just would like to make
+>> sure libvirt integrators take this new design into account.
+>> Please let me know if some help is needed for the conversion of some of
+>> the properties?
+> Yes, Nathan is working on a QEMU series to convert those to auto
+> properties. I have also sent out a kernel series to report the effective
+> ATS status for the device. Sorry, I missed CCing you on that thread.
+> Please find it here [0]. The QEMU series needs to make use of this
+> as well.
 >
+> Hopefully, Nathan will be able to send out the QEMU series soon after
+> internal review and testing.
 >
-> Thanks for the clarification.
+> Thanks,
+> Shameer
+> [0] https://lore.kernel.org/linux-iommu/20260303150348.233997-1-skolothumtho@nvidia.com/
 >
->
-> For this series, I’m fine not supporting VFIO/vhost in Secure regime.
-> I’ll add a fail-fast check at smmuv3_inv_notifiers_iova to reject
-> devices using IOMMU notifiers when the selected regime is non-NS. The
-> NS path stays unchanged.
->
->
-> /* invalidate an asid/vmid/iova range tuple in all mr's */
-> static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
->                                       dma_addr_t iova, uint8_t tg,
->                                       uint64_t num_pages, int stage,
->                                       SMMUSecSID sec_sid)
-> {
->     SMMUDevice *sdev;
->     if (sec_sid != SMMU_SEC_SID_NS) {     // fail-fast check
->         return;
->     }
->     ......
-> } 
 
-You can do that earlier on notifier registration I think
+Thank you for the update & pointers!
+
 
 Eric
->
->
-> Best regards,
->
-> Tao
->
->
->>
->> Thanks
->>
->> Eric
->>>
->>> Otherwise, the callback needs to be enlighted by different address
->>> spaces, I am not sure how (and what uses cases?) will that be done,
->>> does
->>> QEMU emulate TZ in that case? (and present some devices as secure?)
->>>
->>> Thanks,
->>> Mostafa
->>>
->>>> Eric
->>>>> Thanks,
->>>>> Mostafa
->>>>>
->>>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>>> ---
->>>>>>   hw/arm/smmuv3.c | 18 +++++++++++-------
->>>>>>   1 file changed, 11 insertions(+), 7 deletions(-)
->>>>>>
->>>>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>>>> index 4a4de719a7c..e33a7babd1c 100644
->>>>>> --- a/hw/arm/smmuv3.c
->>>>>> +++ b/hw/arm/smmuv3.c
->>>>>> @@ -1195,15 +1195,16 @@ epilogue:
->>>>>>    * @tg: translation granule (if communicated through range
->>>>>> invalidation)
->>>>>>    * @num_pages: number of @granule sized pages (if tg != 0),
->>>>>> otherwise 1
->>>>>>    * @stage: Which stage(1 or 2) is used
->>>>>> + * @sec_sid: StreamID Security state
->>>>>>    */
->>>>>>   static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>>>>>                                  IOMMUNotifier *n,
->>>>>>                                  int asid, int vmid,
->>>>>>                                  dma_addr_t iova, uint8_t tg,
->>>>>> -                               uint64_t num_pages, int stage)
->>>>>> +                               uint64_t num_pages, int stage,
->>>>>> +                               SMMUSecSID sec_sid)
->>>>>>   {
->>>>>>       SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->>>>>> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>>>>>       SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
->>>>>>                                  .inval_ste_allowed = true};
->>>>>>       SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo,
->>>>>> sec_sid);
->>>>>> @@ -1251,7 +1252,8 @@ static void
->>>>>> smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>>>>>       }
->>>>>>         event.type = IOMMU_NOTIFIER_UNMAP;
->>>>>> -    event.entry.target_as = &address_space_memory;
->>>>>> +    event.entry.target_as = smmu_get_address_space(sdev->smmu,
->>>>>> sec_sid);
->>>>>> +    g_assert(event.entry.target_as);
->>>>>>       event.entry.iova = iova;
->>>>>>       event.entry.addr_mask = num_pages * (1 << granule) - 1;
->>>>>>       event.entry.perm = IOMMU_NONE;
->>>>>> @@ -1262,7 +1264,8 @@ static void
->>>>>> smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->>>>>>   /* invalidate an asid/vmid/iova range tuple in all mr's */
->>>>>>   static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid,
->>>>>> int vmid,
->>>>>>                                         dma_addr_t iova, uint8_t tg,
->>>>>> -                                      uint64_t num_pages, int
->>>>>> stage)
->>>>>> +                                      uint64_t num_pages, int
->>>>>> stage,
->>>>>> +                                      SMMUSecSID sec_sid)
->>>>>>   {
->>>>>>       SMMUDevice *sdev;
->>>>>>   @@ -1274,7 +1277,8 @@ static void
->>>>>> smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
->>>>>>                                           iova, tg, num_pages,
->>>>>> stage);
->>>>>>             IOMMU_NOTIFIER_FOREACH(n, mr) {
->>>>>> -            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg,
->>>>>> num_pages, stage);
->>>>>> +            smmuv3_notify_iova(mr, n, asid, vmid, iova, tg,
->>>>>> +                               num_pages, stage, sec_sid);
->>>>>>           }
->>>>>>       }
->>>>>>   }
->>>>>> @@ -1307,7 +1311,7 @@ static void smmuv3_range_inval(SMMUState
->>>>>> *s, Cmd *cmd, SMMUStage stage,
->>>>>>       if (!tg) {
->>>>>>           trace_smmuv3_range_inval(sec_sid, vmid, asid, addr,
->>>>>>                                    tg, 1, ttl, leaf, stage);
->>>>>> -        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1,
->>>>>> stage);
->>>>>> +        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1,
->>>>>> stage, sec_sid);
->>>>>>           if (stage == SMMU_STAGE_1) {
->>>>>>               smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1,
->>>>>> ttl, sec_sid);
->>>>>>           } else {
->>>>>> @@ -1331,7 +1335,7 @@ static void smmuv3_range_inval(SMMUState
->>>>>> *s, Cmd *cmd, SMMUStage stage,
->>>>>>           trace_smmuv3_range_inval(sec_sid, vmid, asid, addr, tg,
->>>>>>                                    num_pages, ttl, leaf, stage);
->>>>>>           smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
->>>>>> -                                  num_pages, stage);
->>>>>> +                                  num_pages, stage, sec_sid);
->>>>>>           if (stage == SMMU_STAGE_1) {
->>>>>>               smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
->>>>>>                                   num_pages, ttl, sec_sid);
->>>>>> -- 
->>>>>> 2.34.1
->>>>>>
+
 >
 
 

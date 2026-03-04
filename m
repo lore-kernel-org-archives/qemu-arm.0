@@ -4,99 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB10FEDEC01
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 02:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C9E4EDEC1B
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 07:48:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxc8z-0005ko-2W; Tue, 03 Mar 2026 21:39:26 -0500
+	id 1vxgxF-0002Xl-8f; Wed, 04 Mar 2026 02:47:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vxc8r-0005kB-5m
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 21:39:17 -0500
-Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vxc8n-00021s-3P
- for qemu-arm@nongnu.org; Tue, 03 Mar 2026 21:39:15 -0500
-Received: by mail-ua1-x930.google.com with SMTP id
- a1e0cc1a2514c-94ab69af6c8so4380396241.0
- for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 18:39:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772591951; x=1773196751; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=T2Hy5vODgk0ZornaPFlnwaS9qH3Awx2gy0GqbKNWQqc=;
- b=hdXoF0p0W88HxcqcUauKfOp++FtmfS/GSHuxq7Umue3I1W+RrlZqjrCYtUYFHg+eMa
- S3S50CjFysDZ8ak3HmwqhoQvCuNJGTZxH2IYeCgvlqPZnszYPjNiyvNShIe3CXZRQvaq
- GbC9LZLacULBh3XGWKoIEVthviDtN+KEZ6GI3r7l1SOE8/LjEW/E5ZX91QWsjMox2Gvp
- SXamYBvt6AmO4PWDZdV5c4jFXc7rUMtKcZY6yui0JGe8NBAKkZ+kS8muyxp5CXwoexuN
- XhsWy6uC71NmLDNcsXKOlpIEezHA1sDH7C4BpyjbE8Y5oBJFw0QYWpW8iN8rFu/uS2rm
- inzg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vxgxD-0002XV-EA
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 02:47:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vxgxB-0001w7-H0
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 02:47:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772610452;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ZvUPKYkxpX6p5uo9rCWImCxrWe8EsHHLUaB5/uPujno=;
+ b=TsJlhJ9wxaha8Rqowe9FMKeXdgSySfhSN2AIViqQLAm02YLG5CgbGR+csPUxs3t95joVXy
+ Ozmhw4ZQYguc0g01ZIwPmP4n1WJeYYYh0dZTy8PatX/+Lww0BXJR4LgzP/Zzk5p95M/Ndn
+ hQ/NRIvixeuCl+5soBvDoeDiebNi4FM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-241-ryI3bhOPNAWK4tbEBPqC3Q-1; Wed, 04 Mar 2026 02:47:31 -0500
+X-MC-Unique: ryI3bhOPNAWK4tbEBPqC3Q-1
+X-Mimecast-MFC-AGG-ID: ryI3bhOPNAWK4tbEBPqC3Q_1772610450
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48069a43217so62225595e9.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Mar 2026 23:47:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772591951; x=1773196751;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=T2Hy5vODgk0ZornaPFlnwaS9qH3Awx2gy0GqbKNWQqc=;
- b=YWR07DZumb4tmA4drhqKL1rzzpKFyCnJ+6B+lqf0Oh96HZhGthwEX8Tj7jJzgZDG2b
- 0iBLekMz4ThG2WhpCIxMNqV/9o8MtkF0UaPwAurM4LCVT28eZXd4TZJ2vi+7sM7PIYQT
- ykvCTmNAd0bxlnFciwbm5p+jFG3+SjsUU1JbB+cr/UtWNRk9tjtS7ahplXGu3Z9CZCmg
- inEURBAfHz+eRSvf/+KvLTqoFPi3XHRtEUru1c5H5aaT/O7OmJtmxQ0lnVTgZOw/WAkw
- T7OZt/kMTdpzYGrNC0NgnjmP/VihewfcHcl4NjoVVC1Htjz3K6uD0ej4+WTfAzLQwDJO
- v9UQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWbrQ8jd/H7Xp42/WGY9HvvMUJhfLugtCQfJrUG4N72nTrmYBjmN74Vh9DROjWIvbWD4H9HKWCSSw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx783PS6DbYMSE2tlQvnbkLO0sLdIImCyAeFjE3CvQmQj/dcS7E
- LeRydowy6Nr9FrrB4RwArc5FhoBrQpV2FlYV+prhEGjxt6nH60wzZjRGBG1FQvWOJ2c=
-X-Gm-Gg: ATEYQzy3UgztfEtLrOJk4LrbGkrxzqf279w5rbtkItSxg5Tb6tPiNxW677y4XsSufQn
- 5stb4MSvX+mtybEUjHd/U4szpNtdR+/nss3PLtM2qQ0vnBZdoaQ1fsPBaiythc0OWMiurgQC8oT
- FIl8NAon3vE8L0Ap5feb6zmdnpC0Lkneib/yBcE3MW+n1WgmsM/ucPR+e1bbeMmstBKJEVpVqV3
- c/K0oQB9fSGGA6RMKEECADOT9J1tpU+iUEofA3kUwfvcMC/KjXgZRb13bqEBxS7OJHGigmogZxw
- /mYMq/+qY4X8hIZsgVV4jxiWpdE4/xfKInwLVKZpXY24VG5XtMUIDZJcShJ5V8IslJeJ1CHOSbE
- KJcx0X6RaQ2AdwgxZ81YRw5w3FGsbXZrXcsgHl/0XGexZzlGp+saM3ItIEvIgz+2sYxqXI4UTH/
- PwCmLUSlZYkFfy+lA1xpFyE8rwa/OY5V/e
-X-Received: by 2002:a05:6102:c04:b0:5f5:3739:100d with SMTP id
- ada2fe7eead31-5ff8f555c1fmr2036577137.0.1772591951183; 
- Tue, 03 Mar 2026 18:39:11 -0800 (PST)
-Received: from [192.168.0.103] ([191.8.216.93])
+ d=1e100.net; s=20230601; t=1772610450; x=1773215250;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZvUPKYkxpX6p5uo9rCWImCxrWe8EsHHLUaB5/uPujno=;
+ b=QNkssnT/W2u80Kpe2xhhb3Deao+clj0fWyzV4/hNoYICPtEjtKWlah/HsibuYSeCHu
+ sanhERNGyzPuy66UT3CUFWGYyvL7F2//ldLgcz5k3Gu3xKUw8R0Dth44PCmmjKk/YrCj
+ PW3q/8U7U7vZm3hE4i/MFE4fzJtPzewbobU2a8EwaMCgAhOtasScIpSE0usHfgwqmO8S
+ L/1HhDx3ati4MpWWi3Xj1UcnbfMDiLPRANH5xPU5DoIeAonoRpuATOQ+42e5uGYzQiGA
+ fH5rgVuuPxAaAZOVCK0zOAON+RbCLxzyAbGMRcssPf5OWlBaY0g50WMHqosenRl/er2X
+ X/Uw==
+X-Gm-Message-State: AOJu0YyRGCeTpyXYQnxTACmVoZF84VmbCUW5Jw8fIoQAOtvwUJ4Z+duP
+ p2CoJI0VxF3Zg4tyKkGfc8JJynP8vaRrdiRHd8zoHRj6S4zUQtYod7g0sIp8q9dkSZUfVHVZzjb
+ 0nFCf4h8oiAL7G2YhowS94Sk8RJDKZlQCvDIu9lLVK/RJoZhNgap+bw==
+X-Gm-Gg: ATEYQzzvtVl5i4wATNgcgAJegXeNjueAfXfXXj/uW0WfIrUw5zjR+ow4Kb6mTbBvswz
+ lzg7W3C85i5EMJzbTk8MdCp2Ph5sXD4/FyZWSW/s23mVAY9X0ysy7Wzy4wD/QChPX1Retq0NHB2
+ fJAESPfXnNG/MW3qq/lqlVhiyTbZ0zP6H+NXtp55dG2cngliP12PVgSL59fNx8IPAqUxPYTTvwf
+ qSd8CoJC06lagNwuO3/2mz338p3VJMWedfKMYcT8/zPS9PaEhbJ4PcvgTk3T+DPS5srN2Ie/0Gv
+ rn0p9a+GzoUi8xeHZtR4EsWSmNl/kBuGhI4L5Pbgvo41mPCUNrwAiAH5494eMrWlkKyfmxSa9v3
+ IfzHIEdSDjB1HJED+sHW1C5YJ9yBRwe4vPLGjBCiW//1OOk/Psxdd9WvQNFLS+ot3w0ytPA==
+X-Received: by 2002:a05:600c:620f:b0:477:7b16:5f9f with SMTP id
+ 5b1f17b1804b1-485198a2bcfmr14417365e9.31.1772610449821; 
+ Tue, 03 Mar 2026 23:47:29 -0800 (PST)
+X-Received: by 2002:a05:600c:620f:b0:477:7b16:5f9f with SMTP id
+ 5b1f17b1804b1-485198a2bcfmr14416935e9.31.1772610449335; 
+ Tue, 03 Mar 2026 23:47:29 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- a1e0cc1a2514c-94df645b877sm16831501241.8.2026.03.03.18.39.03
+ 5b1f17b1804b1-4851a8a9542sm9494755e9.1.2026.03.03.23.47.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Mar 2026 18:39:10 -0800 (PST)
-Message-ID: <91570f1c-3579-4b82-8252-6d29bc7d2f6e@linaro.org>
-Date: Tue, 3 Mar 2026 23:39:02 -0300
+ Tue, 03 Mar 2026 23:47:28 -0800 (PST)
+Message-ID: <41aaf959-b417-469e-89aa-41c20a4b906c@redhat.com>
+Date: Wed, 4 Mar 2026 08:47:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v18 2/8] hw/core/machine: topology functions capabilities
- added
-To: Alireza Sanaee <alireza.sanaee@huawei.com>, mst@redhat.com,
- qemu-devel@nongnu.org
-Cc: anisinha@redhat.com, armbru@redhat.com, berrange@redhat.com,
- dapeng1.mi@linux.intel.com, eric.auger@redhat.com, farman@linux.ibm.com,
- imammedo@redhat.com, jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- linuxarm@huawei.com, maobibo@loongson.cn, mtosatti@redhat.com,
- peter.maydell@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
- richard.henderson@linaro.org, shannon.zhaosl@gmail.com, zhao1.liu@intel.com
-References: <20260220141128.789-1-alireza.sanaee@huawei.com>
- <20260220141128.789-3-alireza.sanaee@huawei.com>
+Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify OAS
+ bits
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Jason Gunthorpe <jgg@nvidia.com>, Pavel Hrdina <phrdina@redhat.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+References: <20260126104342.253965-1-skolothumtho@nvidia.com>
+ <20260126104342.253965-32-skolothumtho@nvidia.com>
+ <d9192ae6-a94f-479a-b19f-734cc52a6be0@redhat.com>
+ <CH3PR12MB754867E986856DC7718D4051AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260202151917.GO2223369@nvidia.com>
+ <CH3PR12MB754835BE4A5C54387122504AAB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260202160000.GR2223369@nvidia.com>
+ <CH3PR12MB7548DFE7F7CE555A3B3BF947AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <CH3PR12MB7548515EDA96BD03F64DCAA2AB62A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB7548515EDA96BD03F64DCAA2AB62A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cQTEN0InjhpltzwacFl_6bXtHpRla0WHVLT1W6pxkWQ_1772610450
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20260220141128.789-3-alireza.sanaee@huawei.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::930;
- envelope-from=gustavo.romero@linaro.org; helo=mail-ua1-x930.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.322, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.141,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,103 +136,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Hi Shameer,
 
-On 2/20/26 11:11, Alireza Sanaee wrote:
-> Add two functions one of which finds the lowest cache level defined in
-> the cache description input, and the other checks if a given cache
-> topology is defined at a particular cache level
-> 
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> ---
->   hw/core/machine-smp.c    | 52 ++++++++++++++++++++++++++++++++++++++++
->   include/hw/core/boards.h |  5 ++++
->   2 files changed, 57 insertions(+)
-> 
-> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-> index 189c70015f..bef04aa2d7 100644
-> --- a/hw/core/machine-smp.c
-> +++ b/hw/core/machine-smp.c
-> @@ -406,3 +406,55 @@ bool machine_check_smp_cache(const MachineState *ms, Error **errp)
->   
->       return true;
->   }
-> +
-> +/*
-> + * This function assumes L3 and L2 have unified cache and L1 is split L1d and
-> + * L1i.
-> + */
-> +bool machine_find_lowest_level_cache_at_topo_level(const MachineState *ms,
-> +                                                   int *lowest_cache_level,
-> +                                                   CpuTopologyLevel topo_level)
-> +{
-> +    enum CacheLevelAndType cache_level;
-> +    enum CpuTopologyLevel t;
-> +
-> +    for (cache_level = CACHE_LEVEL_AND_TYPE_L1D;
-> +         cache_level < CACHE_LEVEL_AND_TYPE__MAX; cache_level++) {
-> +        t = machine_get_cache_topo_level(ms, cache_level);
-> +        if (t == topo_level) {
-> +            /* Assume L1 is split into L1d and L1i caches. */
-> +            if (cache_level == CACHE_LEVEL_AND_TYPE_L1D ||
-> +                cache_level == CACHE_LEVEL_AND_TYPE_L1I) {
-> +                *lowest_cache_level = 1; /* L1 */
-> +            } else {
-> +                /* Assume the other caches are unified. */
-> +                *lowest_cache_level = cache_level;
-> +            }
-> +
-> +            return true;
-> +        }
-> +    }
-> +
-> +    return false;
-> +}
-> +
-> +/*
-> + * Check if there are caches defined at a particular level. It supports only
-> + * L1, L2 and L3 caches, but this can be extended to more levels as needed.
-> + *
-> + * Return True on success, False otherwise.
-> + */
-> +bool machine_defines_cache_at_topo_level(const MachineState *ms,
-> +                                         CpuTopologyLevel topology)
-> +{
-> +    enum CacheLevelAndType cache_level;
-> +
-> +    for (cache_level = CACHE_LEVEL_AND_TYPE_L1D;
-> +         cache_level < CACHE_LEVEL_AND_TYPE__MAX; cache_level++) {
-> +        if (machine_get_cache_topo_level(ms, cache_level) == topology) {
-> +            return true;
-> +        }
-> +    }
-> +
-> +    return false;
-> +}
-> diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
-> index edbe8d03e5..af5fd9f3cd 100644
-> --- a/include/hw/core/boards.h
-> +++ b/include/hw/core/boards.h
-> @@ -60,6 +60,11 @@ void machine_set_cache_topo_level(MachineState *ms, CacheLevelAndType cache,
->                                     CpuTopologyLevel level);
->   bool machine_check_smp_cache(const MachineState *ms, Error **errp);
->   void machine_memory_devices_init(MachineState *ms, hwaddr base, uint64_t size);
-> +bool machine_defines_cache_at_topo_level(const MachineState *ms,
-> +                                         CpuTopologyLevel level);
-> +bool machine_find_lowest_level_cache_at_topo_level(const MachineState *ms,
-> +                                                   int *level_found,
-> +                                                   CpuTopologyLevel topo_level);
->   
->   /**
->    * machine_class_allow_dynamic_sysbus_dev: Add type to list of valid devices
+On 2/10/26 4:12 PM, Shameer Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Shameer Kolothum Thodi
+>> Sent: 02 February 2026 16:04
+>> To: Jason Gunthorpe <jgg@nvidia.com>
+>> Cc: eric.auger@redhat.com; qemu-arm@nongnu.org; qemu-
+>> devel@nongnu.org; peter.maydell@linaro.org; Nicolin Chen
+>> <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
+>> clg@redhat.com; alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>;
+>> Matt Ochs <mochs@nvidia.com>; smostafa@google.com;
+>> wangzhou1@hisilicon.com; jiangkunkun@huawei.com;
+>> jonathan.cameron@huawei.com; zhangfei.gao@linaro.org;
+>> zhenzhong.duan@intel.com; yi.l.liu@intel.com; Krishnakant Jaju
+>> <kjaju@nvidia.com>
+>> Subject: RE: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to
+>> specify OAS bits
+>>
+>>
+>>
+>>> -----Original Message-----
+>>> From: Jason Gunthorpe <jgg@nvidia.com>
+>>> Sent: 02 February 2026 16:00
+>>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+>>> Cc: eric.auger@redhat.com; qemu-arm@nongnu.org; qemu-
+>>> devel@nongnu.org; peter.maydell@linaro.org; Nicolin Chen
+>>> <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
+>>> clg@redhat.com; alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>;
+>>> Matt Ochs <mochs@nvidia.com>; smostafa@google.com;
+>>> wangzhou1@hisilicon.com; jiangkunkun@huawei.com;
+>>> jonathan.cameron@huawei.com; zhangfei.gao@linaro.org;
+>>> zhenzhong.duan@intel.com; yi.l.liu@intel.com; Krishnakant Jaju
+>>> <kjaju@nvidia.com>
+>>> Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to
+>>> specify OAS bits
+>>>
+>>> On Mon, Feb 02, 2026 at 03:38:50PM +0000, Shameer Kolothum Thodi
+>>> wrote:
+>>>
+>>>>> We can treat ATS as a per-PCIe device property.. I think it would
+>>>>> be fine to tell the SMMU that it always has ATS support, it will
+>>>>> never do anything with it unless it sees a PCIe device with an ATS
+>>>>> cap, and the physical STE generated by the hypervisor should sanitize the
+>> EATS.
+>>>>> BIOS overriding it should be reflected as the devices being
+>>>>> reported as not supporting ATS, qemu should have a per-device flag
+>>>>> to disable ATS.
+>>>> Do we have way to detect that(IOMMU_FWSPEC_PCI_RC_ATS) from
+>>>> userspace now?
+>>> I don't think so.. I was describing how I suspect that should work.
+>>>
+>>> The iommu driver is the only entity that decides if ATS should be
+>>> enabled per-device, so it should report back to userspace in iommufd
+>>> if the device is allowed to enable ATS or not. That should roll up any
+>>> FW overrides and the PCI cap block.
+>> Right. May be just like the out_max_pasid_log2. Will take a look.
+> Looking at adding the ATS detection support through iommufd, one
+> idea is to extend the enum iommufd_hw_capabilities with
+> IOMMU_HW_CAP_PCI_ATS_NOT_SUPPORTED. The question I have
+> now is whether we need to differentiate an old kernel which doesn't
+> have this support or not.
+>
+> This is how the usage would look with an added "ats" property on the
+> vfio-pci device:
+>
+> -device vfio-pci,...,ats=on
+>     if ATS_NOT_SUPPORTED then reject
+> -device vfio-pci,...,ats=off
+>     keep ATS off
+> -device vfio-pci,...,ats=auto (default)
+>    if ATS_NOT_SUPPORTED, disable ATS
+>     otherwise, enable ATS if the PCIe ATS capability is present
+>     (this also covers behaviour on older kernels)
+>
+> Does the above make sense?
+Do you have plans wrt the migration to auto properties for the various
+vSMMU properties (RIL, ssidsize, OAS, ATS)? I just would like to make
+sure libvirt integrators take this new design into account.
+Please let me know if some help is needed for the conversion of some of
+the properties?
 
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+Thanks
 
+Eric
+>
+> Thanks,
+> Shameer
+>
 
-Cheers,
-Gustavo
 

@@ -4,100 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3890FEFCE21
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 17:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0274CEFCE47
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 21:25:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxpmO-0004sT-Fi; Wed, 04 Mar 2026 12:13:00 -0500
+	id 1vxth8-0004qk-8I; Wed, 04 Mar 2026 16:23:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vxpmN-0004rv-16
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 12:12:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1vxtgb-0004k3-Hn; Wed, 04 Mar 2026 16:23:20 -0500
+Received: from forwardcorp1b.mail.yandex.net ([178.154.239.136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vxpmL-0007wR-4U
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 12:12:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772644375;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=pPVdzIIePuK+F2R5oJ7gn/ShMMHO/lKUzbK9XmaCfmA=;
- b=Ouv2rWj4khk3nLWIggajVGVChX92GluFORyRhOTt6qHTqAUf7mvS+vk8uYqchK8pO9YrPv
- u0mp//2JcPUoljbijpIMJa1GACrmXkG2T+11SI15r4pzWhvtCKi9bAxfEC8z0Ti2DD1lQS
- hDgMWWOZj7vEgI0TQrGa4EzewvY7mmw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-Tb1a4KkpM6i5Vgm3tWzvSQ-1; Wed, 04 Mar 2026 12:12:52 -0500
-X-MC-Unique: Tb1a4KkpM6i5Vgm3tWzvSQ-1
-X-Mimecast-MFC-AGG-ID: Tb1a4KkpM6i5Vgm3tWzvSQ_1772644371
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-439ca4b3d0bso491109f8f.3
- for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 09:12:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772644371; x=1773249171;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pPVdzIIePuK+F2R5oJ7gn/ShMMHO/lKUzbK9XmaCfmA=;
- b=ok+Lyan7ZW1P0NoVRjApwdwIKTz16s6Wv2rke2rWP3BcjW7FxaAIAph3jGUj4zaKjQ
- mScfPFlzcZRJefVal7zzcjN86suXsfio6tzowDDGJ9D2eXHBAzbUw+hxlVR3hSH084mG
- 16bFSMVO9WVr6upS3dZeCM6xGZ0PfD2DR9HzKB0N7DI0UvucrRkAj+aGYGYbm5/tD1Dt
- LxHM22ISV/vPS9ll+p5OInj9s2qSlBEPKQviRvJ/AgXN5ZE6S3KqBIO7KJYUD/Odd7LC
- TggDwH754PngezGARW957F/jPpx5LXMYtMn4/ms2NIjyDRhO4LUmstDyRBzfCIqSYnCu
- BUyw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWvHZiFS+bKyzoMdf6SYgPCPXg+Dy52PHyIQCzwJukpkJTYe8MqLZsJE2kvPhb11Qo9J/guibrefw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy3b8lqSbz+ZHvDh9BStWCjXNUyzEgEb7CeKXUsQ4WM9djnGCIY
- MxYcFXiXmW84PS9ctfwV53REckY5t1wT6eeaVVn6IZA5jmAcD2MiTta/gKnMQhDB53j1msZw9rn
- jHsQRaBKxd54eU0XI/TrNpwbMGLoj8NIe+ZJT2aVWknbPDHpj/L26Rg==
-X-Gm-Gg: ATEYQzy0mYgnUHq5chGT8yu4pyXbeDqVSvtKXs6RAed+rPG6jWaYwBiLZkTTVhZ+qf3
- gTN86Y3nai/VcNDd8ctA6Q2oBt247TYlT23/6p0k6LQbR2PgkR4slvQg4i+QMvCiUUGuEV+GPSg
- U5W5utfKzQTRNvftssCcLg8p1iUe3KFi+lFdkTLrFtDtUrDJyiOxWAHgCKrhlJnP8aWr9FPixj+
- U/AECz5dcSKxurSgQsdwI4EwX1K2Nrb5hacqf/mQ1jyusw7sGEhBuKALWbK2Ec52mldDVp0b5JW
- PSqOi+Ik38A+7krMexOrF5pZGLCIjICO6LW/siFrui0e856hHj6ecYz9mEW5B0cncaZNXvv18aL
- DlmV4K8nnhZcmkNAkUS1dnwhg+Fds+gasnilaLTIkpXq61eTmiRbU4KIZdA9fhGkfzvrP
-X-Received: by 2002:a05:6000:26c7:b0:432:8504:8d5b with SMTP id
- ffacd0b85a97d-439c7fe6711mr5293792f8f.50.1772644370618; 
- Wed, 04 Mar 2026 09:12:50 -0800 (PST)
-X-Received: by 2002:a05:6000:26c7:b0:432:8504:8d5b with SMTP id
- ffacd0b85a97d-439c7fe6711mr5293739f8f.50.1772644370109; 
- Wed, 04 Mar 2026 09:12:50 -0800 (PST)
-Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
- [2003:f6:af4a:4900:3d6:f567:39ca:55c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439b41831easm27950931f8f.12.2026.03.04.09.12.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Mar 2026 09:12:49 -0800 (PST)
-Date: Wed, 4 Mar 2026 18:12:48 +0100 (CET)
-From: Sebastian Ott <sebott@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
- philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v7 1/7] target/arm/machine: Fix detection of unknown
- incoming cpregs
-In-Reply-To: <20260302103640.1362564-2-eric.auger@redhat.com>
-Message-ID: <e4025976-9200-8419-d533-8076de0174d5@redhat.com>
-References: <20260302103640.1362564-1-eric.auger@redhat.com>
- <20260302103640.1362564-2-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1vxtgX-0003RO-RJ; Wed, 04 Mar 2026 16:23:17 -0500
+Received: from mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
+ [IPv6:2a02:6b8:c0c:bf1f:0:640:c739:0])
+ by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id 34BA880809;
+ Thu, 05 Mar 2026 00:23:09 +0300 (MSK)
+Received: from vsementsov-lin (unknown [2a02:6bf:8080:921::1:1b])
+ by mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id 5NwBA90AmW20-q645lfnf; Thu, 05 Mar 2026 00:23:08 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; t=1772659388;
+ bh=8TqJW7KLyOGPsDaRdrX1G44CVXku6VnJ+G8bo1vDuhM=;
+ h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
+ b=dX9anVb6r1fJF6Y6RKCbjksWmwTvtr7zdkfSaAFnNGxaZ1IrvbVNN107sDh3KGp5R
+ c7SvDmgYzhARsY/9+IW/IQjaH07mSRAnwaJV0y3HsryLDiJwgVmrA9Ug/s0NjjaTdg
+ LhOa6aR4Ma0e8+8KzLyEFjqo34TktjkK65Ga4Lj4=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+To: peterx@redhat.com
+Cc: farosas@suse.de, vsementsov@yandex-team.ru, qemu-devel@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-ppc@nongnu.org (open list:sPAPR (pseries)),
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v3 03/18] migration: make .post_save() a void function
+Date: Thu,  5 Mar 2026 00:22:47 +0300
+Message-ID: <20260304212303.667141-4-vsementsov@yandex-team.ru>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260304212303.667141-1-vsementsov@yandex-team.ru>
+References: <20260304212303.667141-1-vsementsov@yandex-team.ru>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: QhqqjNW1PXwGpXUo3Rkr3ioPJBscNt100atN5DhGYJU_1772644371
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=178.154.239.136;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
 X-Spam_score_int: 0
 X-Spam_score: -0.0
 X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.703, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.386,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,20 +77,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 2 Mar 2026, Eric Auger wrote:
-> Currently the check of cpreg index matches fail to detect
-> a situation where the length of both arrays is same but
-> - destination has an extra register not found in the incoming stream (idx1)
-> - source has an extra register not found in the destination (idx2)
->  where idx1 < = idx2
-> Normally this should fail but it does not.
->
-> Fix the logic to scan all indexes.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
+All other handlers now have _errp() variants. Should we go this way
+for .post_save()? Actually it's rather strange, when the vmstate do
+successful preparations in .pre_save(), then successfully save all
+sections and subsections, end then fail when all the state is
+successfully transferred to the target.
 
+Happily, we have only three .post_save() realizations, all always
+successful. Let's make this a rule.
 
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
+Also note, that we call .post_save() in two places, and handle
+its (theoretical) failure inconsistently. Fix that too.
+
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+---
+ docs/devel/migration/main.rst |  2 +-
+ hw/ppc/spapr_pci.c            |  3 +--
+ include/migration/vmstate.h   |  8 +++++++-
+ migration/savevm.c            |  3 +--
+ migration/vmstate.c           | 12 +++---------
+ target/arm/machine.c          |  4 +---
+ 6 files changed, 14 insertions(+), 18 deletions(-)
+
+diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
+index 234d280249a..2de70507640 100644
+--- a/docs/devel/migration/main.rst
++++ b/docs/devel/migration/main.rst
+@@ -439,7 +439,7 @@ The functions to do that are inside a vmstate definition, and are called:
+ 
+   This function is called before we save the state of one device.
+ 
+-- ``int (*post_save)(void *opaque);``
++- ``void (*post_save)(void *opaque);``
+ 
+   This function is called after we save the state of one device
+   (even upon failure, unless the call to pre_save returned an error).
+diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+index ea998bdff15..1dc3b02659f 100644
+--- a/hw/ppc/spapr_pci.c
++++ b/hw/ppc/spapr_pci.c
+@@ -2093,14 +2093,13 @@ static int spapr_pci_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int spapr_pci_post_save(void *opaque)
++static void spapr_pci_post_save(void *opaque)
+ {
+     SpaprPhbState *sphb = opaque;
+ 
+     g_free(sphb->msi_devs);
+     sphb->msi_devs = NULL;
+     sphb->msi_devs_num = 0;
+-    return 0;
+ }
+ 
+ static int spapr_pci_post_load(void *opaque, int version_id)
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index 3695afd483f..85838a49aee 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -223,7 +223,13 @@ struct VMStateDescription {
+     bool (*post_load_errp)(void *opaque, int version_id, Error **errp);
+     int (*pre_save)(void *opaque);
+     bool (*pre_save_errp)(void *opaque, Error **errp);
+-    int (*post_save)(void *opaque);
++
++    /*
++     * Unless .pre_save() fails, .post_save() is called after saving
++     * fields and subsections. It should not fail because at this
++     * point the state has potentially already been transferred.
++     */
++    void (*post_save)(void *opaque);
+     bool (*needed)(void *opaque);
+     bool (*dev_unplug_pending)(void *opaque);
+ 
+diff --git a/migration/savevm.c b/migration/savevm.c
+index 3a16c467b25..c5236e71ba1 100644
+--- a/migration/savevm.c
++++ b/migration/savevm.c
+@@ -321,14 +321,13 @@ static int configuration_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int configuration_post_save(void *opaque)
++static void configuration_post_save(void *opaque)
+ {
+     SaveState *state = opaque;
+ 
+     g_free(state->capabilities);
+     state->capabilities = NULL;
+     state->caps_count = 0;
+-    return 0;
+ }
+ 
+ static int configuration_pre_load(void *opaque)
+diff --git a/migration/vmstate.c b/migration/vmstate.c
+index 651c3fe0115..5111e7a141f 100644
+--- a/migration/vmstate.c
++++ b/migration/vmstate.c
+@@ -550,10 +550,7 @@ static int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+                 if (ret) {
+                     error_prepend(errp, "Save of field %s/%s failed: ",
+                                   vmsd->name, field->name);
+-                    if (vmsd->post_save) {
+-                        vmsd->post_save(opaque);
+-                    }
+-                    return ret;
++                    goto out;
+                 }
+ 
+                 /* Compressed arrays only care about the first element */
+@@ -578,12 +575,9 @@ static int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
+ 
+     ret = vmstate_subsection_save(f, vmsd, opaque, vmdesc, errp);
+ 
++out:
+     if (vmsd->post_save) {
+-        int ps_ret = vmsd->post_save(opaque);
+-        if (!ret && ps_ret) {
+-            ret = ps_ret;
+-            error_setg(errp, "post-save failed: %s", vmsd->name);
+-        }
++        vmsd->post_save(opaque);
+     }
+     return ret;
+ }
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index bbaae344492..de810220e25 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -993,15 +993,13 @@ static int cpu_pre_save(void *opaque)
+     return 0;
+ }
+ 
+-static int cpu_post_save(void *opaque)
++static void cpu_post_save(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+ 
+     if (!kvm_enabled()) {
+         pmu_op_finish(&cpu->env);
+     }
+-
+-    return 0;
+ }
+ 
+ static int cpu_pre_load(void *opaque)
+-- 
+2.52.0
 
 

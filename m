@@ -4,120 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55E7AEF8FFC
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 16:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3890FEFCE21
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 17:13:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxpEd-0000T3-Vm; Wed, 04 Mar 2026 11:38:09 -0500
+	id 1vxpmO-0004sT-Fi; Wed, 04 Mar 2026 12:13:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxpEb-0000SY-Jk
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:38:05 -0500
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vxpmN-0004rv-16
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 12:12:59 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vxpEa-0007t6-4n
- for qemu-arm@nongnu.org; Wed, 04 Mar 2026 11:38:05 -0500
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vxpmL-0007wR-4U
+ for qemu-arm@nongnu.org; Wed, 04 Mar 2026 12:12:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772642283;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1772644375;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=8brnyqqtWbtIOxiPRqwBOxDFBXvm2/fcZcwh2WUTBqY=;
- b=Jc4Qm39w1wSn6LLUsaCDG0q4YN8LOQThz3u0Z8CvFC2Pw1Yk8XtdHlBNe9sjGr6/4nuMYh
- BDav4dd+3q2hAtUJz4PQyNfaxMH8NK/IwQ+kCRs7LFY7kmkynQs/tC8PZDX0Ecub3MGmjs
- GLsPY6vkPKWGC4qck6pMOVzxUTyybYU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pPVdzIIePuK+F2R5oJ7gn/ShMMHO/lKUzbK9XmaCfmA=;
+ b=Ouv2rWj4khk3nLWIggajVGVChX92GluFORyRhOTt6qHTqAUf7mvS+vk8uYqchK8pO9YrPv
+ u0mp//2JcPUoljbijpIMJa1GACrmXkG2T+11SI15r4pzWhvtCKi9bAxfEC8z0Ti2DD1lQS
+ hDgMWWOZj7vEgI0TQrGa4EzewvY7mmw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-267-SP-_mm8nN8WLFCfIqII33A-1; Wed, 04 Mar 2026 11:38:00 -0500
-X-MC-Unique: SP-_mm8nN8WLFCfIqII33A-1
-X-Mimecast-MFC-AGG-ID: SP-_mm8nN8WLFCfIqII33A_1772642279
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4837b9913c9so53498005e9.0
- for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 08:37:59 -0800 (PST)
+ us-mta-663-Tb1a4KkpM6i5Vgm3tWzvSQ-1; Wed, 04 Mar 2026 12:12:52 -0500
+X-MC-Unique: Tb1a4KkpM6i5Vgm3tWzvSQ-1
+X-Mimecast-MFC-AGG-ID: Tb1a4KkpM6i5Vgm3tWzvSQ_1772644371
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-439ca4b3d0bso491109f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 09:12:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772642279; x=1773247079;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8brnyqqtWbtIOxiPRqwBOxDFBXvm2/fcZcwh2WUTBqY=;
- b=NvsgfIQ46lcc9mfEBbCSQjUy+djrCl+4y9dAN6ZJgGS56WW7WzeQr+ZMn0pwuu8GlH
- ibE3+vVqkG3zbht6wqfsSibOGIuDQx7Nh2XujPP7eUPz9fjRYzCoFPu9K8CRoVDMQLg1
- axm4hUCxsgFqyOxZr3r22CGaA8hpDtng3r/wjZJp4UXkIKMoYZl32LnPWcI+poOZqNn5
- 14iWQQRV59Tqbre4nPgF6j4v4CZeV+7dSrOfQlJv6blZteBJBHri2NQfe+xKXSOiTva0
- ni5qhcWFJBDxbFEL1ZYgy1z9DlqHTmHH3S5Ow4PJhgEtNs4caed++8Zi7+s43+WyjpSr
- D81w==
-X-Gm-Message-State: AOJu0Yw/X13IKXQxqo14gIo6xKQLmcv9eXhmZ/wPWH5fuiK3T5AYDW8Q
- L27jNeMTu3Nih12znnkHvRZ/zzFO2UuURIXwvmboOxMVuq1IbBbEE0Grum0WC8o1Gaw6u67B9Ru
- FgHA4FnWQF/BZwKZMP8bH+2WYvTA4nxG5bXl1iYZo0L1ijQHBSWsomw==
-X-Gm-Gg: ATEYQzzoVNAB4am7iLJDrdag9TGgcleHvaY8moSmRjqSrVZceh5RAY4M9IwjfIaZjgO
- xKlBI+LOG1nvAiQJ279L6LwCF9u3pYWmbGCB5jlrMqf8Z66DswO56frRslMHke+F0dRHwfySvv4
- YG6iUnWfHrOg7AaJQSbGQ2/28INFOQgeBbUfAXH4aPce1Tp0eNNVOfexC1mMBCS2f4LCCk9tgam
- 3eTxLKCG4oNq6NdEM7w6zx+iNUDU5RwgsxPw8UuWsFRdpZZZEsUfubusH8p8vAPuVeTNdTYxLFO
- TvxEEcy90NdMYMEV0VYa4t9wWCsxY3MaEhUDSeYaNfb6uB9TYuLfn8c44wJrfc7pUx/UDM5caH8
- YX0j0HGtpvL7SShDZN6uKBXCi1oYXWJLRHL4uKi6D23+IeD6L4+wQh5kQQqMnXIySG9UtbA==
-X-Received: by 2002:a05:600c:4e8a:b0:47e:e9c9:23bc with SMTP id
- 5b1f17b1804b1-4851989fb4cmr39239425e9.30.1772642278689; 
- Wed, 04 Mar 2026 08:37:58 -0800 (PST)
-X-Received: by 2002:a05:600c:4e8a:b0:47e:e9c9:23bc with SMTP id
- 5b1f17b1804b1-4851989fb4cmr39238895e9.30.1772642278199; 
- Wed, 04 Mar 2026 08:37:58 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ d=1e100.net; s=20230601; t=1772644371; x=1773249171;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pPVdzIIePuK+F2R5oJ7gn/ShMMHO/lKUzbK9XmaCfmA=;
+ b=ok+Lyan7ZW1P0NoVRjApwdwIKTz16s6Wv2rke2rWP3BcjW7FxaAIAph3jGUj4zaKjQ
+ mScfPFlzcZRJefVal7zzcjN86suXsfio6tzowDDGJ9D2eXHBAzbUw+hxlVR3hSH084mG
+ 16bFSMVO9WVr6upS3dZeCM6xGZ0PfD2DR9HzKB0N7DI0UvucrRkAj+aGYGYbm5/tD1Dt
+ LxHM22ISV/vPS9ll+p5OInj9s2qSlBEPKQviRvJ/AgXN5ZE6S3KqBIO7KJYUD/Odd7LC
+ TggDwH754PngezGARW957F/jPpx5LXMYtMn4/ms2NIjyDRhO4LUmstDyRBzfCIqSYnCu
+ BUyw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWvHZiFS+bKyzoMdf6SYgPCPXg+Dy52PHyIQCzwJukpkJTYe8MqLZsJE2kvPhb11Qo9J/guibrefw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy3b8lqSbz+ZHvDh9BStWCjXNUyzEgEb7CeKXUsQ4WM9djnGCIY
+ MxYcFXiXmW84PS9ctfwV53REckY5t1wT6eeaVVn6IZA5jmAcD2MiTta/gKnMQhDB53j1msZw9rn
+ jHsQRaBKxd54eU0XI/TrNpwbMGLoj8NIe+ZJT2aVWknbPDHpj/L26Rg==
+X-Gm-Gg: ATEYQzy0mYgnUHq5chGT8yu4pyXbeDqVSvtKXs6RAed+rPG6jWaYwBiLZkTTVhZ+qf3
+ gTN86Y3nai/VcNDd8ctA6Q2oBt247TYlT23/6p0k6LQbR2PgkR4slvQg4i+QMvCiUUGuEV+GPSg
+ U5W5utfKzQTRNvftssCcLg8p1iUe3KFi+lFdkTLrFtDtUrDJyiOxWAHgCKrhlJnP8aWr9FPixj+
+ U/AECz5dcSKxurSgQsdwI4EwX1K2Nrb5hacqf/mQ1jyusw7sGEhBuKALWbK2Ec52mldDVp0b5JW
+ PSqOi+Ik38A+7krMexOrF5pZGLCIjICO6LW/siFrui0e856hHj6ecYz9mEW5B0cncaZNXvv18aL
+ DlmV4K8nnhZcmkNAkUS1dnwhg+Fds+gasnilaLTIkpXq61eTmiRbU4KIZdA9fhGkfzvrP
+X-Received: by 2002:a05:6000:26c7:b0:432:8504:8d5b with SMTP id
+ ffacd0b85a97d-439c7fe6711mr5293792f8f.50.1772644370618; 
+ Wed, 04 Mar 2026 09:12:50 -0800 (PST)
+X-Received: by 2002:a05:6000:26c7:b0:432:8504:8d5b with SMTP id
+ ffacd0b85a97d-439c7fe6711mr5293739f8f.50.1772644370109; 
+ Wed, 04 Mar 2026 09:12:50 -0800 (PST)
+Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
+ [2003:f6:af4a:4900:3d6:f567:39ca:55c])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851acfbd1bsm20826565e9.6.2026.03.04.08.37.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Mar 2026 08:37:57 -0800 (PST)
-Message-ID: <b3257dcf-4a15-45e6-8d2c-c98ed13cde96@redhat.com>
-Date: Wed, 4 Mar 2026 17:37:56 +0100
+ ffacd0b85a97d-439b41831easm27950931f8f.12.2026.03.04.09.12.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Mar 2026 09:12:49 -0800 (PST)
+Date: Wed, 4 Mar 2026 18:12:48 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
+ philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v7 1/7] target/arm/machine: Fix detection of unknown
+ incoming cpregs
+In-Reply-To: <20260302103640.1362564-2-eric.auger@redhat.com>
+Message-ID: <e4025976-9200-8419-d533-8076de0174d5@redhat.com>
+References: <20260302103640.1362564-1-eric.auger@redhat.com>
+ <20260302103640.1362564-2-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify OAS
- bits
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>, Pavel Hrdina <phrdina@redhat.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
-References: <20260126104342.253965-1-skolothumtho@nvidia.com>
- <20260126104342.253965-32-skolothumtho@nvidia.com>
- <d9192ae6-a94f-479a-b19f-734cc52a6be0@redhat.com>
- <CH3PR12MB754867E986856DC7718D4051AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <20260202151917.GO2223369@nvidia.com>
- <CH3PR12MB754835BE4A5C54387122504AAB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <20260202160000.GR2223369@nvidia.com>
- <CH3PR12MB7548DFE7F7CE555A3B3BF947AB9AA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CH3PR12MB7548515EDA96BD03F64DCAA2AB62A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <41aaf959-b417-469e-89aa-41c20a4b906c@redhat.com>
- <IA0PR12MB755548A48375D1856ADE89F5AB7CA@IA0PR12MB7555.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <IA0PR12MB755548A48375D1856ADE89F5AB7CA@IA0PR12MB7555.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: NpLQxz6vz449Vp4YB0YFUGWGOSDJP3ISpVZqgm_zZTE_1772642279
+X-Mimecast-MFC-PROC-ID: QhqqjNW1PXwGpXUo3Rkr3ioPJBscNt100atN5DhGYJU_1772644371
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 0
 X-Spam_score: -0.0
 X-Spam_bar: /
@@ -138,69 +110,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 3/4/26 9:26 AM, Shameer Kolothum Thodi wrote:
-> Hi Eric,
+On Mon, 2 Mar 2026, Eric Auger wrote:
+> Currently the check of cpreg index matches fail to detect
+> a situation where the length of both arrays is same but
+> - destination has an extra register not found in the incoming stream (idx1)
+> - source has an extra register not found in the destination (idx2)
+>  where idx1 < = idx2
+> Normally this should fail but it does not.
 >
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 04 March 2026 07:47
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; Jason Gunthorpe
->> <jgg@nvidia.com>; Pavel Hrdina <phrdina@redhat.com>
->> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
->> peter.maydell@linaro.org; Nicolin Chen <nicolinc@nvidia.com>;
->> ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
->> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
->> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->> Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify
->> OAS bits
->>
-> [...]
->>> This is how the usage would look with an added "ats" property on the
->>> vfio-pci device:
->>>
->>> -device vfio-pci,...,ats=on
->>>     if ATS_NOT_SUPPORTED then reject
->>> -device vfio-pci,...,ats=off
->>>     keep ATS off
->>> -device vfio-pci,...,ats=auto (default)
->>>    if ATS_NOT_SUPPORTED, disable ATS
->>>     otherwise, enable ATS if the PCIe ATS capability is present
->>>     (this also covers behaviour on older kernels)
->>>
->>> Does the above make sense?
->> Do you have plans wrt the migration to auto properties for the various
->> vSMMU properties (RIL, ssidsize, OAS, ATS)? I just would like to make
->> sure libvirt integrators take this new design into account.
->> Please let me know if some help is needed for the conversion of some of
->> the properties?
-> Yes, Nathan is working on a QEMU series to convert those to auto
-> properties. I have also sent out a kernel series to report the effective
-> ATS status for the device. Sorry, I missed CCing you on that thread.
-> Please find it here [0]. The QEMU series needs to make use of this
-> as well.
+> Fix the logic to scan all indexes.
 >
-> Hopefully, Nathan will be able to send out the QEMU series soon after
-> internal review and testing.
->
-> Thanks,
-> Shameer
-> [0] https://lore.kernel.org/linux-iommu/20260303150348.233997-1-skolothumtho@nvidia.com/
->
-
-Thank you for the update & pointers!
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Fixes: 721fae12536 ("target-arm: Convert TCG to using (index,value) list for cp migration")
 
 
-Eric
-
->
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
 
 

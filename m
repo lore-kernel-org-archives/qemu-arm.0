@@ -4,94 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A24D4F3D33A
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:14:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7182AF47CA3
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:57:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyCHK-0007oR-Dq; Thu, 05 Mar 2026 12:14:26 -0500
+	id 1vyCwu-0006xg-Hn; Thu, 05 Mar 2026 12:57:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyCHI-0007nc-NY
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:14:24 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyCHH-0005LP-7h
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:14:24 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-483abed83b6so69800615e9.0
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 09:14:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772730862; x=1773335662; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zCCGzmXjChzeSEjHhH3WqW1NwbzU5xzO9WxcoWWZwVI=;
- b=ThWYyMb+ulvo7OYD/4FO1xFVyEYZaWBuV9uGr/PWAvakbyESn7EcFHu4c1+cFpVbEn
- 9uiDDKycoJz3zo+ssHCDOOqa8jin1dNnwSbOjIQ+6fwUFhZ3u6Kv78Gvu+dqmixP7Ci6
- MCZjIx31gNUc7KsBi3nbjGw6zXBpD8Ef0uhVL4qLZdTXE7JpA4K6btlqMXpOkxf91S5e
- yNfnqU9XqUGhvayq0YPGp6bS2zYX36SBpI8Edprc8mTkUo681XZAp47QbWXnDT6qjz6+
- LaiPSfCqVXwVpurQEabYiDKTGCFZ4H0+1lo1lMcKLk5XuugFCXOf5HO+bDbqt82CUN0y
- i6WA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772730862; x=1773335662;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zCCGzmXjChzeSEjHhH3WqW1NwbzU5xzO9WxcoWWZwVI=;
- b=MiKAlSAAFV3jaqfhOErPdo63bf3DSt2G7w+kzOkYUrj0CR2s5t47DPJERtqs3kxb4q
- Ra+eiK3HFBu2L8A5O0aKWpSg1YhW4EOXCMfTdN/3DveOQ/WwEReB+Kt0T5INnv/lJwQv
- r0YtXhlxbacPoj7nhLCjP5H0OS2pieKsYDn/ZtYot0mK6GPY6Snb6Q9Y1PiH0DLFK458
- 8XQ52/SA+9GBGAGLe4ovJ/FJXjQ4EqLYrnbnR50KA4PMjFPviKYKjrw9LjlzlmuIk1pY
- o0dhV6ytU6Dga4KaFNaBV0swfxbTsR2g7xHujIs+Ui8gkdOOJQQUp0LES22xWJKYT4ql
- NFlA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUZYOOFL7MzniEeiW1dn3GMAoHF+Hu6GVi8oYTsUlB1E5I5R4cyZf0XKyxiC6SnJLbPQ+NSqYxwSg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2Gsk/TvTVrRESJU/voTceeEl+A2+GyeNPoYHN+ql5CBqrupaq
- y5REjzB8nNqAqQOIwBvMkhQk7s2Zpq1EaIp/euE6rxmxpRQz6iYf4XgBNpfh276z9X4=
-X-Gm-Gg: ATEYQzxao5Tx5YCfl3aQMJ0f2K2aZ9uoWNOAUVrt0tiNiN5iLh5H1yUfPB2ssqUl34+
- KBpx/dKlxHzpBgEC0xDv8vYHPaWR6C0QqRwpI3udVLGt8vI54p663Hq6t1MKGFAjtgVMDT7iwIx
- 0a84eM52ajCUVJ2OWSiZ8H1XqsFRy8mSBHrmn1bHOaoIus9o0H1+/z3d3nA1c1pvLrr7npqt+bL
- EK3tbswo+NrCgsXMjoui3NACuCyM75j1lDjHEO5RQ+uRejZxB5qkABYSJmvhrszh5+DMsjdP95l
- YQIeothBwrZ6U2bJHBkL0FSssL5nN/Yohu33eFVzyo+MuwrNu0bo5ClHMMMrKxwO4HkFeuJ9mA5
- k2x8VQ9d8bqnFNTw2aN0A0Ijz9KFFCiWhZ++HY6zDnoycqVmiFBdHH7/0h1/5AQo5SPbrbYvS6J
- 1DiniVimgPPHHO3g9HQTDVikmOS//dC3zhk49A8xLwby/kpWy92udnEJicrSw/ncJL9Q==
-X-Received: by 2002:a05:600c:1d09:b0:483:6f37:1b51 with SMTP id
- 5b1f17b1804b1-4851988366bmr115807145e9.23.1772730861805; 
- Thu, 05 Mar 2026 09:14:21 -0800 (PST)
-Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851a8955c1sm53950375e9.1.2026.03.05.09.14.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 09:14:21 -0800 (PST)
-Message-ID: <94b17a43-19ac-4497-a216-7b114fa9fda6@linaro.org>
-Date: Thu, 5 Mar 2026 18:14:20 +0100
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCws-0006wl-T5
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:57:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCwr-0003TP-2l
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:57:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772733439;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=uovKF5vaz4QHDVvFZ5gJ3dpJCW5AgJmXqiiw8MMjYlc=;
+ b=X4aCfrx5WFVSyB3NolsPovMY0ng4OZjCydEIb62M25Kq+HcPgGO/yF1Ye3AMGOVJxr/nAg
+ 9H/VkAwKP38ZTvZ088mtnYd8BuokbEoHgEqSisLFlX+6r1MBA7KcESGlgu2N+67Sh9GDmS
+ CcxuaFt2MSP1GTV6wDYRN6e1gpqmOVQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-205-f0MTcchUOH-V_YjNLx2JgQ-1; Thu,
+ 05 Mar 2026 12:57:16 -0500
+X-MC-Unique: f0MTcchUOH-V_YjNLx2JgQ-1
+X-Mimecast-MFC-AGG-ID: f0MTcchUOH-V_YjNLx2JgQ_1772733435
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 088241956095; Thu,  5 Mar 2026 17:57:15 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.32.26])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A2BAB3003E9E; Thu,  5 Mar 2026 17:57:13 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 00/38] aspeed queue
+Date: Thu,  5 Mar 2026 18:56:33 +0100
+Message-ID: <20260305175711.1119025-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 04/12] target/arm: hvf: instantiate GIC early
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
-References: <20260228220837.35275-1-mohamed@unpredictable.fr>
- <20260228220837.35275-5-mohamed@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260228220837.35275-5-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: iydbAKrGeroD2exar1-84fOlUWB-ArsC5Ob2PBQ1IlI_1772733435
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,16 +82,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/2/26 23:08, Mohamed Mediouni wrote:
-> While figuring out a better spot for it, put it in hv_arch_vm_create().
-> 
-> After hv_vcpu_create is documented as too late, and deferring
-> vCPU initialization isn't enough either.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   target/arm/hvf/hvf.c | 16 ++++++++++++++++
->   1 file changed, 16 insertions(+)
+The following changes since commit ae6e281633769bbc7424523d0ca1163e214571ad:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+  Merge tag 'pull-loongarch-20260302' of https://github.com/gaosong715/qemu into staging (2026-03-05 10:48:38 +0000)
+
+are available in the Git repository at:
+
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20260305
+
+for you to fetch changes up to ee357844b13904a826ffa77834cd08e10ba1e9ba:
+
+  tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED OpenBMC SDK v11.01 (2026-03-05 18:47:46 +0100)
+
+----------------------------------------------------------------
+aspeed queue:
+
+* Add I3C support to QEMU, add an dummy I3C device and extend the
+  Aspeed I3C controller
+* Update test ASPEED OpenBMC SDK v11.01
+* Fix DMA64 address handling in Aspeed I2C model (AST2700 SoC)
+
+----------------------------------------------------------------
+Cédric Le Goater (1):
+      hw/i3c: Fix array bounds and storage in i3c_addr_is_rsvd()
+
+Jamin Lin (37):
+      hw/i2c/aspeed_i2c: Fix DMA64 address handling
+      hw/misc/aspeed_i3c: Move to i3c directory
+      hw/i3c/aspeed_i3c: Switch to DEFINE_TYPES() and align parent_obj naming
+      hw/i3c: Add bus support
+      hw/i3c: Split DesignWare I3C out of Aspeed I3C
+      hw/i3c/dw-i3c: Add more register fields
+      hw/i3c/aspeed_i3c: Add more register fields
+      hw/i3c/dw-i3c: Add more reset values
+      hw/i3c/aspeed_i3c: Add register RO field masks
+      hw/i3c/dw-i3c: Add register RO field masks
+      hw/i3c/dw-i3c: Treat more registers as read-as-zero
+      hw/i3c/dw-i3c: Use 32 bits on MMIO writes
+      hw/i3c/dw-i3c: Add IRQ MMIO behavior
+      hw/i3c/dw-i3c: Add data TX and RX
+      hw/i3c/dw-i3c: Add IBI handling
+      hw/i3c/dw-i3c: Add ctrl MMIO handling
+      hw/i3c/dw-i3c: Add controller resets
+      hw/i3c/aspeed: Add I3C bus get function
+      hw/i3c: Add Mock target
+      hw/arm/aspeed: Build with I3C_DEVICES
+      hw/i3c: Add hotplug support
+      tests/functional/arm/test_aspeed_ast2600_sdk: Add i3c functional test
+      MAINTAINERS: Add I3C maintainers and reviewer
+      hw/i3c/dw-i3c: Use ROUND_UP() for RX buffer allocation alignment
+      hw/i3c/mock-i3c-target: Set num_sent in TX callback to fix trace reporting
+      hw/i3c/core: Initialize num_sent in i3c_send_byte()
+      hw/i3c/mock-i3c-target: Simplify GETMRL byte extraction logic
+      tests/functional/arm/test_aspeed_ast1030: Update test ASPEED Zephyr SDK v03.06
+      tests/functional/arm/test_aspeed_ast1060: Update test aspeed-zephyr-project v03.05
+      tests/functional/arm/test_aspeed_ast2500_sdk: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/arm/test_aspeed_ast2500_sdk_515: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/arm/test_aspeed_ast2600_sdk: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/arm/test_aspeed_ast2600_sdk_otp: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/arm/test_aspeed_ast2600_sdk_515: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/aarch64/test_aspeed_ast2700a1: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/aarch64/test_aspeed_ast2700a2: Update test ASPEED OpenBMC SDK v11.01
+      tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED OpenBMC SDK v11.01
+
+ MAINTAINERS                                        |   13 +
+ meson.build                                        |    1 +
+ hw/i3c/trace.h                                     |    2 +
+ include/hw/arm/aspeed_soc.h                        |    2 +-
+ include/hw/{misc => i3c}/aspeed_i3c.h              |   31 +-
+ include/hw/i3c/dw-i3c.h                            |  199 +++
+ include/hw/i3c/i3c.h                               |  277 +++
+ include/hw/i3c/mock-i3c-target.h                   |   52 +
+ hw/i2c/aspeed_i2c.c                                |    4 +-
+ hw/i3c/aspeed_i3c.c                                |  258 +++
+ hw/i3c/core.c                                      |  664 +++++++
+ hw/i3c/dw-i3c.c                                    | 1862 ++++++++++++++++++++
+ hw/i3c/mock-i3c-target.c                           |  303 ++++
+ hw/misc/aspeed_i3c.c                               |  383 ----
+ hw/Kconfig                                         |    1 +
+ hw/arm/Kconfig                                     |    3 +
+ hw/i3c/Kconfig                                     |   15 +
+ hw/i3c/meson.build                                 |    6 +
+ hw/i3c/trace-events                                |   48 +
+ hw/meson.build                                     |    1 +
+ hw/misc/meson.build                                |    1 -
+ hw/misc/trace-events                               |    6 -
+ tests/functional/aarch64/test_aspeed_ast2700a1.py  |   30 +-
+ tests/functional/aarch64/test_aspeed_ast2700a2.py  |   30 +-
+ tests/functional/aarch64/test_aspeed_ast2700fc.py  |   18 +-
+ tests/functional/arm/test_aspeed_ast1030.py        |   12 +-
+ tests/functional/arm/test_aspeed_ast1060.py        |   14 +-
+ tests/functional/arm/test_aspeed_ast2500_sdk.py    |    8 +-
+ .../functional/arm/test_aspeed_ast2500_sdk_515.py  |    8 +-
+ tests/functional/arm/test_aspeed_ast2600_sdk.py    |   22 +-
+ .../functional/arm/test_aspeed_ast2600_sdk_515.py  |   10 +-
+ .../functional/arm/test_aspeed_ast2600_sdk_otp.py  |   10 +-
+ 32 files changed, 3805 insertions(+), 489 deletions(-)
+ create mode 100644 hw/i3c/trace.h
+ rename include/hw/{misc => i3c}/aspeed_i3c.h (53%)
+ create mode 100644 include/hw/i3c/dw-i3c.h
+ create mode 100644 include/hw/i3c/i3c.h
+ create mode 100644 include/hw/i3c/mock-i3c-target.h
+ create mode 100644 hw/i3c/aspeed_i3c.c
+ create mode 100644 hw/i3c/core.c
+ create mode 100644 hw/i3c/dw-i3c.c
+ create mode 100644 hw/i3c/mock-i3c-target.c
+ delete mode 100644 hw/misc/aspeed_i3c.c
+ create mode 100644 hw/i3c/Kconfig
+ create mode 100644 hw/i3c/meson.build
+ create mode 100644 hw/i3c/trace-events
+
 

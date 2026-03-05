@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB41F513E1
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:18:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A464F513E2
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:18:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyH0s-00011J-3z; Thu, 05 Mar 2026 17:17:46 -0500
+	id 1vyH0y-00013a-2m; Thu, 05 Mar 2026 17:17:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0p-00010L-3K
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:43 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0v-00012D-0u
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:50 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0n-0003X5-64
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:42 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4806bf39419so70487875e9.1
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:17:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0t-0003Xm-Hk
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:48 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-48378136adcso51936105e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:17:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772749059; x=1773353859; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772749066; x=1773353866; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=6o7gJlSzox/1LQ7u+8u2lPFR/PjezTFDExdWlHtAlbM=;
- b=a/KJwL4d+Sa+D2IMljXpCZdI3BOAz9qgcsn3ZQoMbty+bGGxlThci3QfsCsRT94hjA
- WkAEEkZD6RBLxbLCDDIWPmLIoC4ol+6oHg3Cx876l8Un+zg9P4ioE5/sxNzh0Qg5K+Fc
- 0IUcFAYQKCfo51I4JXBsOJrGR3BaDlf/p8JLpnSSvR1xpfMz5Uc/g/um5gFb+kvE75px
- Cjasz0DUCq/NHuvLVmMIBc5UWJIrS74P7jCec4uP8LqG+tVlB5/HXsapSA3g/v4xUPch
- rQd87H5uQWG/MRxZTN1GQWBrH5vz+L/RKSeHc2g3wgUyEgQ5M0dzv9syiGH/YdLSu3AA
- k9cg==
+ bh=OaLyXrvU9QJibv9gna6B1ytKmYYtqjM0gR9d6a4SrSM=;
+ b=RFRPOyAylGIEAZKpbmeSDC2KBV1kC2LaWTF8pC0tBBLIBkLxk6CPnuA6QwiKmKaXyb
+ gEF2kWGZJtpYJICAb0GYpdjmj6nuUGpzpN+zcfwUBJVAVya1oWvql5AFnwPOGl8hFms9
+ xhVvLJ/dUyOFzs7ZFjJM7dqK85IH055C0wRk9FAz5BDuNwr+tXapAchrVReGZO58qYd3
+ IX2e0NmcBAKQRSRuM/n0Q3ffkM2epZIYinCt3yNqdDvbysYjfUqXlKqDWIMoy5UgwSfX
+ 8QD+DLBvHKLM+/SzGehEJAJ4OTaercKUBfyj+2Zuv1qfh3SvVTi9faliP2+lTNsclRVT
+ gMUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772749059; x=1773353859;
+ d=1e100.net; s=20230601; t=1772749066; x=1773353866;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6o7gJlSzox/1LQ7u+8u2lPFR/PjezTFDExdWlHtAlbM=;
- b=fIyp5O2VsZwOYtMEAbGv/s/YSH1bOD3Uh6N10Cw/iAqv13s7kV1yxSs8tOpZICB+KH
- 4lTuFz7/Hjmxc5MiRGW6GejI8zeQYE42oQh+nvBp3L/9FZIv8GTx+Wlml4ui0XiZnrTv
- P1DzGcNYUGrMVLHyPm1xmKJtTsP70MSTuCwE03tK4mu8WCFTg8bBSNl/TrGdnUCzYRR5
- FsBh/lYPHyFGbGXrGwsW/g260cLABc7DeDO5KlDJAg0Wlm9DCVVth/HQWggNAco34oXF
- KilJ4kRA6nWsw5EnijjlKrdxNdq+WVeLfVIh2jrGwSu7iqyokGR8ZrYOLRoHo6EE9dLc
- ssvg==
+ bh=OaLyXrvU9QJibv9gna6B1ytKmYYtqjM0gR9d6a4SrSM=;
+ b=KkcMSZKXKMMkKTiAKAjKAagPvXvdKxuBqf+3ZDqey5lC+UkRPOynm3z5QVsg5eBtdG
+ QaKpNmo5eQkWAVVP2FADp3oJw9nZaxCKqcYXYMoO1d7dGkgjBuLzX18qtL3HnPMkpBk3
+ mhl8zQavnIqFkJ9csq1OS29w+oUcFKy/lqU1QxeFm3q4HKcVDfrj/7H3x9vEwq9Z6QiH
+ zzUjKMQJmusoEMENTP3Cz8IKwQk5gvdQUl+l9AiUPL0oeMZbnKG2HxZG2QlwQClmkRue
+ /pmUn7NdxTulxRjRt7aiEV7VJTT2V0XnI1l7E6fxV5N2KOTQCqDvGmRZz90RhNgqnu8M
+ NnTg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5gU8PkW81bDs9EdnNPHpGD+v+LWQiyMAf24pHDJH9RSUhwciODpkfRTqMoylPRDKTw6W7AixF/Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1w7llvIInql2YXNKU4Q9ChgxAjQCk6vweHNpcC/IqNzgE7Brf
- 1xYiGIZ0BPVxwjapRuenxG80UkaKf6Q2brRFa0i857XQJFpDsm0fcPiimldznKCCXRs=
-X-Gm-Gg: ATEYQzzM+PIxZzDU2JXtxLI7LuFbe63TB6bQs+Kw6QJxK/2dp7JImTS0lDpVvcp7Frh
- 8Pf+rYa/eoqSkD5bJobhEdHu29Lf2QkqKeD3nHEBNPshWnZj712pl2TYtXfewQkMx3hXFL0YU9T
- f2eQ2DaJRDRklQcqgKUorQAsiU9ndC25iydWeckFE8nc8R4Y4Dfa3lZb3rlFPG6O4aG1gw73N4q
- R84ON+2gWIiKSO5JhweK0DW/8U3lIB1MPhwwFroBM+wkqJLHYhrQf6deHJ6JkbGzJueGfEeFmhA
- xzUE+gztWRwwA6PTrEhorBwWVk3RVXsxhDAXgY7O0jC+xX5fSEX7C751KT/gsWCCM3QsR943+8z
- aXofsyLr6+ckYRDgwxJbtqnueRFoRZA3gKuBrNiUO2mPIO6rzgMsUfsv5lVnyzZ76tIASEwV3st
- jSAvy0DPl516t7wZIa4k+SxH4wroE6LcRH5UNoa5ki2zqhY0VFByCvZeeuov9XWvWz4A==
-X-Received: by 2002:a05:600c:8a1b:20b0:47d:7004:f488 with SMTP id
- 5b1f17b1804b1-4851ee992d9mr53143545e9.10.1772749059349; 
- Thu, 05 Mar 2026 14:17:39 -0800 (PST)
+ AJvYcCUXzm+fvnjdGteQKmmAM+UYgtuMOMOdDfJBWPOF78PTHr8cCZvHtIatLchH/ZJiRe7D3MJg9yfhgQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1GtDKhigJM6VFx+pQmOy9L3k73QQHDH044f2HwdOCoM/ygtIH
+ 8Kcs54YQXgmnKo5jpzP2jOdxv1yCQt3mo8gaCqaTrqd7MI4vPeshapWfphzF9zlJbaHY9FXjtKv
+ J3H8nl7Q=
+X-Gm-Gg: ATEYQzwXxlfOhpK/lSo7s+Q/A0w+YCLpZqLRV2X6X4yVPtFDZEfczlzGVLW+6DiRn50
+ S16/dGqLeBAKc42uzVPeSfcTITZxVeqljULcde/kZ0KIeCQoQJRa/E9ZgxHOlsoh2LAlgDK1FwZ
+ KMY7OlKrJPxrkliH1WZrjrqVVJs4Nyfv981xwv3ok2XeYjmj2iV2aFbVnOwecOGc16XQWjBfxTZ
+ mVz8bFmjzAk3FLXK4lFQD25tYuXBWDtjgGYBsd1VONnuXGSx/hLLkc6dTAdOTUURClLFVY0/Fd9
+ F7dw7gC7ApwbzuptXUU93GknNqHtk69opJ/f5S3KQcNE8woT5f+Zg0IQ6qFEHHZG/abnQe6NbOH
+ /dHBzDSNXYK+CqV0DFOBKafvJjEw0aZ5kb12QkQ+WmaYGw4KOBh1TeqwiQU7E5GLazcPRIr5ccB
+ WWNeQ4kIS2mVGllYQm+JZSsV9DuEYPlIQ3YvcxWY4VXSEWOSzs2WKNCwrggnI+kYhTGA==
+X-Received: by 2002:a05:600c:6291:b0:47e:e20e:bbb0 with SMTP id
+ 5b1f17b1804b1-48519837bbdmr108780835e9.6.1772749066059; 
+ Thu, 05 Mar 2026 14:17:46 -0800 (PST)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fb33815sm140413985e9.12.2026.03.05.14.17.38
+ 5b1f17b1804b1-4851fb33815sm140413985e9.12.2026.03.05.14.17.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 14:17:38 -0800 (PST)
-Message-ID: <8ada0065-169f-4e52-b5e5-1861e4d6497e@linaro.org>
-Date: Thu, 5 Mar 2026 23:17:37 +0100
+ Thu, 05 Mar 2026 14:17:44 -0800 (PST)
+Message-ID: <1e9af00e-b757-4013-8564-a6b414261339@linaro.org>
+Date: Thu, 5 Mar 2026 23:17:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 06/14] hw/char/serial: Prefer fifo8 methods over
- open-coding
+Subject: Re: [PATCH v3 05/14] hw/char/serial: Remove explicit cast from void
+ pointer
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -84,13 +85,13 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org, Helge Deller <deller@gmx.de>
 References: <20260305220911.131508-1-shentey@gmail.com>
- <20260305220911.131508-7-shentey@gmail.com>
+ <20260305220911.131508-6-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260305220911.131508-7-shentey@gmail.com>
+In-Reply-To: <20260305220911.131508-6-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,14 +115,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/3/26 23:09, Bernhard Beschow wrote:
-> Use fifo8_is_empty() and fifo8_is_full() to improve readability of the
-> code.
+> A void pointer asks for being casted, so C allows for omitting the
+> explicit cast. Take advantage of that.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/char/serial.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>   hw/char/serial.c | 12 ++++++------
+>   1 file changed, 6 insertions(+), 6 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

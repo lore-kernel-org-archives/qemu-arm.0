@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 471B4F47CA6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD27F47CA5
 	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 18:06:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyD0o-0006yn-Bk; Thu, 05 Mar 2026 13:01:26 -0500
+	id 1vyCyt-0003Px-1O; Thu, 05 Mar 2026 12:59:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy7-0000IJ-70
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:40 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy3-0000EC-IN
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:36 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy3-0003lX-3U
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:37 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCxy-0003jr-GK
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772733511;
+ s=mimecast20190719; t=1772733503;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Co0tAYHCrdAqxSu1AS4NaI/owCp75j7aAjwNLCADJx0=;
- b=ZfnbBeTiBWR9zX3Srw3MwUueY4QjLPwrX2oL5aisRQQVw8nN3PoSj2HAGLMoF5sodm/4ua
- ZCrxhaNAQvjSGJRqU5XW7vD79JpVlRMQjw6L3n4QQbWxufGiPFLDom2t/ygH26Jd85RHPV
- z5Bai40M4f9j4naYMYe779uHF7CnaWU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Gxd0DBmGCNLItwmqxf9WoE3L+VXhutEHVrqXOm+qzcw=;
+ b=iEWN4KwZ3omCfVdh/i+zL5rE0Ft9b5ybQRnudwh8lKiWBbPe6jR8i0n+oP485saiXG0kUb
+ cmWb8xOFsxECcdCh6Qb4hFTk0GyaqnoxmGSkzr2w5sOsNlh5egC8QCy3LFln0HLSuIpn91
+ SyAv9nXvJ/+lyqeBvUIgLwNWNhZDn30=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-70-m07cqy9jMMa_SGPHVbuwgw-1; Thu,
- 05 Mar 2026 12:58:30 -0500
-X-MC-Unique: m07cqy9jMMa_SGPHVbuwgw-1
-X-Mimecast-MFC-AGG-ID: m07cqy9jMMa_SGPHVbuwgw_1772733509
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-2-g2zGIlmKPouXPZGh2QhKnQ-1; Thu,
+ 05 Mar 2026 12:58:18 -0500
+X-MC-Unique: g2zGIlmKPouXPZGh2QhKnQ-1
+X-Mimecast-MFC-AGG-ID: g2zGIlmKPouXPZGh2QhKnQ_1772733496
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E349D1800610; Thu,  5 Mar 2026 17:58:28 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 986A41956094; Thu,  5 Mar 2026 17:58:16 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2ACE33003E9E; Thu,  5 Mar 2026 17:58:26 +0000 (UTC)
+ id D591C3003E9E; Thu,  5 Mar 2026 17:58:14 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Jithu Joseph <jithu.joseph@oss.qualcomm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 27/38] hw/i3c/core: Initialize num_sent in i3c_send_byte()
-Date: Thu,  5 Mar 2026 18:57:00 +0100
-Message-ID: <20260305175711.1119025-28-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+Subject: [PULL 22/38] tests/functional/arm/test_aspeed_ast2600_sdk: Add i3c
+ functional test
+Date: Thu,  5 Mar 2026 18:56:55 +0100
+Message-ID: <20260305175711.1119025-23-clg@redhat.com>
 In-Reply-To: <20260305175711.1119025-1-clg@redhat.com>
 References: <20260305175711.1119025-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: i2tA5w4cMn2vJZ1N2pFcjqxRa6kl8QvfR3uCDaa4JQ8_1772733509
+X-Mimecast-MFC-PROC-ID: UmQM8KzB8Yvw7iu09BGc2Q2awM7r-akdLZkNwszW7NQ_1772733496
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,44 +90,52 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-i3c_send_byte() declared num_sent without initializing it before
-passing its address to i3c_send().
-
-Although i3c_send_byte() itself ignores num_sent after the call,
-i3c_send() forwards it to trace_i3c_send(). If the target send
-callback does not set *num_sent, the trace may print an
-uninitialized value, leading to misleading or garbage output.
-
-Example concern from review:
-  trace_i3c_send(*num_sent, num_to_send, ret == 0);
-
-If *num_sent is not written by the callback, this trace can report
-an incorrect number of transmitted bytes.
-
-Initialize num_sent to 0 to ensure deterministic and predictable
-trace output, even if the callback fails to update it.
-
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20260303013322.1297499-4-jamin_lin@aspeedtech.com
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Tested-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20260225021158.1586584-22-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i3c/core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/arm/test_aspeed_ast2600_sdk.py | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/hw/i3c/core.c b/hw/i3c/core.c
-index 0a266e00a279..168526003dab 100644
---- a/hw/i3c/core.c
-+++ b/hw/i3c/core.c
-@@ -325,7 +325,7 @@ int i3c_send_byte(I3CBus *bus, uint8_t data)
-      * Ignored, the caller can determine how many were sent based on if this was
-      * ACKed/NACKed.
-      */
--    uint32_t num_sent;
-+    uint32_t num_sent = 0;
-     return i3c_send(bus, &data, 1, &num_sent);
- }
+diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk.py b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+index 971fa3390d21..46b9f7058c08 100755
+--- a/tests/functional/arm/test_aspeed_ast2600_sdk.py
++++ b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+@@ -31,6 +31,15 @@ def do_ast2600_pcie_test(self):
+             'ip addr show dev eth4',
+             'inet 10.0.2.15/24')
  
++    def do_ast2600_i3c_test(self):
++        exec_command_and_wait_for_pattern(self,
++            'i3ctransfer -d /dev/bus/i3c/5-1234567890ab'
++            ' -w 0x12,0x34,0x56,0x78,0x90,0xab,0xcd,0xef',
++            'Success on message 0')
++        exec_command_and_wait_for_pattern(self,
++            'i3ctransfer -d /dev/bus/i3c/5-1234567890ab -r 8 | grep 0x | xargs',
++            '0x12 0x34 0x56 0x78 0x90 0xab 0xcd 0xef')
++
+     def test_arm_ast2600_evb_sdk(self):
+         self.set_machine('ast2600-evb')
+         self.require_netdev('user')
+@@ -43,6 +52,8 @@ def test_arm_ast2600_evb_sdk(self):
+             'ds1338,bus=aspeed.i2c.bus.5,address=0x32')
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.0')
+         self.vm.add_args('-netdev', 'user,id=net1')
++        self.vm.add_args('-device',
++            'mock-i3c-target,bus=dw.i3c.5,pid=0xab9078563412')
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2600-default", "image-bmc"))
+ 
+@@ -69,6 +80,7 @@ def test_arm_ast2600_evb_sdk(self):
+         exec_command_and_wait_for_pattern(self,
+              '/sbin/hwclock -f /dev/rtc1', year)
+         self.do_ast2600_pcie_test()
++        self.do_ast2600_i3c_test()
+ 
+ 
+ if __name__ == '__main__':
 -- 
 2.53.0
 

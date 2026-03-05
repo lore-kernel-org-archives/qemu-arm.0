@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E29EF513E1
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:10:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7554CF513E1
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:10:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyGt9-0001MQ-46; Thu, 05 Mar 2026 17:09:50 -0500
+	id 1vyGst-000123-Mv; Thu, 05 Mar 2026 17:09:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsy-00016f-7l
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:36 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsn-0000zI-Cy
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:25 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsw-0002I2-Gl
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:36 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4806ce0f97bso75143105e9.0
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsk-0002Cw-8f
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:24 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4836f4cbe0bso73577345e9.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772748573; x=1773353373; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1772748560; x=1773353360; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oh5fF1cD60o2GgdhvxUuihszrtUOa2nx4hPj7KeeMlk=;
- b=fKNPIodWeubcYPx8lqIzfuG8axzq0qS+3ItOqrjbsBrWtzMSFmLOg9pR73HAoaMA/Y
- iw2FtwcPMjLqpXyZCGrqJSFrQNL3t+Gdu6uCY9ZWD1d93vZnzZllfEUkUP/ZSrfAvQQs
- iYJhhjZROuA+xTK0TZDX8HA2SBCpD3O/yXIc8wwzN7YqCHLgF3IVO9oGGrKgWmXjDgtP
- BRH3nk8zeJjzaMOdl+kS2RTV9awxuwHSa67XtCDmLwdxmirZbBjWdjwd8o0GA6v+/Ztw
- UJAOlrdT4CCLPIUac1ATOtfF6dV39lYnYYu3m3TBT1B3PR+83ksUZyRZ6pWo55yYRpsD
- 2ypw==
+ bh=UyEy/g1PEDGl9OT2R7W8yjv5uTeT+1EIBQ0lv6lijmM=;
+ b=fdim6hrI3t17YZ2DdIjHL5Hml9aWGFOBGmgjkRXdiGOBc+ANX73CqjMjQudUPoX2Ue
+ fh3RWgEP5HNOGLxlhAM7xR2HVc5K1SfhKB/kLOqWUm0agDRUqlMB0aJ2lTfr/yzpS+7r
+ CY7J3W7cdlZMR6oD8oxVjhY/GhItYgu2UIifom1vb6oxm7lOk/jt+xUJ6eElvNv1TH1M
+ bM+4DRGWZ2Gh8yxT/K4edZPtxSPwXJ6k+5N3ELvmBvrqdMulkiAuiwQgtjzEREko1mt5
+ Qkr+4BoVS3h8cZR0oe8WHZuTdICXdz2ZfNOQFa78Qe2tdt8Htjfi2B+RmwbTdRCUY8df
+ U+3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772748573; x=1773353373;
+ d=1e100.net; s=20230601; t=1772748560; x=1773353360;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=oh5fF1cD60o2GgdhvxUuihszrtUOa2nx4hPj7KeeMlk=;
- b=C2VVXf0wgEzgkVx9dXFL/7XmP8GDpBBc8BSnLF76EiWICvCTtQKcS2KcLh9MXvnTP+
- vnltflB6JIKTEYQgCpwE5Bz6enVyIrlVfr7MFQOefIAqn9kciBEj4WHKACgObrjPQqAg
- rFbou3r+Uda0ilokKiCvGR3FNAxKGKP4A9zf6chLyiIcPtOqhXx0YEKp4elz6qYQS0YM
- 8GwkJ/dn1Cet3/hZhqTa98bWQWo6CCoILr7AzsFMzpjNm+KWUsaW0HfRxWkdB33MSX9e
- zFZ6GQOk17gN1MOjH8h2DLzp7Z11KYn/Z92RJE7mybJ1ZorIwuKxp3bLkgeGER8NyRac
- +BTA==
+ bh=UyEy/g1PEDGl9OT2R7W8yjv5uTeT+1EIBQ0lv6lijmM=;
+ b=RiLI+c7ed1RP/NZfiG5dSTAs3UvNwF2+l3OJqKf5B2F8iNMpqRDcB5wCOgkmZQzotO
+ IyVk8MBIsykf/h2yzP+dmG1SJR3XwucNKhcEspUjww/H/1QjxvL5TMOb4Ypq8sry48yR
+ 0tL9njNneqmEvEH0anuYPB3UGUootbVyEwQ2JCo+O062dKNC9Rca+wsN5EFbnSE5pvmJ
+ W7MhyGDVtOvbHxoQoaP/6xljUpu3evG/qn9pFvHOJrqOx1bksSetNIqe9pELo4VSMV3e
+ 051I4fUvL9CzhSZlSknHIeDvbo0bb63h0M+huU5y0I3dIheJ5TlmbvOvLLh366PWpE7L
+ Dqvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVLHc655SD9q8Q/dmmNxCeybUZI6CvBvoq7pTxL9fDFB/PWhyOgU1KZ3bohW5zTHKPYTZyFkzWL3A==@nongnu.org
-X-Gm-Message-State: AOJu0YwKjmaXkNxDeXyr/kmcn6n+6gwEn500xMeiEXjui0T7oiIDWOUL
- T8MhYnmc+frk2rdhJ5Lj4zFbFGw1aaI4N+1EZBHx7Kvmx+SvIMby5r8o
-X-Gm-Gg: ATEYQzxeCbIcj96qfqy6qWzQ/IwvQzUlWUQjBMFqo4QBxAyrQ0RNU+F8Fi2sp77F8XB
- RQdwSESVKRu1uA0w7UIaX57+rdtEYB8nWBK6LZR0zHndcPaItOSq+puGePk80TvSdgRPunKJwNE
- yQH0AO2xv+gY0Rp9hdZxz1MnmWZ3+Rs7HMlqwkf65/H4oHHsSlvS0oxdm5u46q5LnJlJBe7Bt96
- AC4/c6NtQ0jJzgwC99RCY2DWZaDMd96gP8PKjMcPMIby/RPCmE3G7DTRiotXCYIE5vnsuUexzVi
- GbwU9/w8seNL9XVpKGbmjR58tfCUfrxl8tfJyCjO9Wi9I7YyTGWBiamjkj8Lx8w48pv+rUQnBSV
- hMogiBVmVl5zJRgkFD1FwtgfuTQge7c9lBiO79/iGWirdWO/CxJCc7RjofM3ScxX3XBEb3dM/qn
- SRH7D1423b0Pkn91acZPsMlwmI6JDG1Aga1qJbPRXPpkJbkNe2/g3oiRcp9RD1XD9FBiVUFcxlu
- thqpIErfTIs7oGsguiVsanQPk7M/G86ExM4UAYaLYeyL7Q=
-X-Received: by 2002:a05:600c:5394:b0:480:6ab1:ed0d with SMTP id
- 5b1f17b1804b1-485235a7b78mr16462275e9.9.1772748573093; 
- Thu, 05 Mar 2026 14:09:33 -0800 (PST)
+ AJvYcCVGq1S21Dtq/xpC+i4SdPo/hv9U2Y++zdBFreNobu700W/Yb8MYNNVCt0i+we5Uhz8nUXtmlvYgQg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy9yOSY+KMsZ2VL7UGIE1sNwhl1lMve7zi9Smj89oUw10z1PaB6
+ fxBmiPXAgFktN0DkewEtkD0p8846O+U/HFu0cgxoTdut6ytI7k1oJxCy
+X-Gm-Gg: ATEYQzwICSWCYe0jkM6uPVWR6j9jQ/rzmS0oOko3BWq7+IIURkFrDATpAMUi7vTT+h/
+ UpB93mTLqiCKeBXEXykQnGyHWtp5oGgfPJ/pSoCMEjCioeq2wPt70bFSDfydb8ZRjmAYDFMiE5W
+ Z+S5cnBWmh/zeFzRaRj0uzEe1nPou3qIp8vVT06wizvXz3Do+oJveIlR7CYlyrD/yKxonLF51SQ
+ ggE5OmAYN+atIYN7JxrmG+WdcKn8lRuxNs0kpJqWeYzxCBVEdMIe73Ej1mIjDd/n8xGK+FzofDN
+ wjM0X+iBfDvZJdYEHWvDO0CRw40/P9BgDOcENZazN9sSngf6Fr+HePvxD48NUbSv0UEu7791YOl
+ VxHMJANGfVejtnCaPYzfyPjHfGBuClRUo0+/jo6WJHyh4j/LE77urtZ4pvdGFh4Z6A8zczanimY
+ nAG3q2fqDiwL4Il3DUQVBhuNMqD4kyCj4Y0wAeZLsDjDM06f8hGClovLaUgzJNy7KAQQ5Z797mS
+ 7SgBYEpZMZCI3JZJF/dLKW+kWrThqtFiEG03ssfsv4S/go=
+X-Received: by 2002:a05:600c:34c8:b0:47d:8479:78d5 with SMTP id
+ 5b1f17b1804b1-48523592d6amr17649355e9.7.1772748560440; 
+ Thu, 05 Mar 2026 14:09:20 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-2a02-3100-2989-c400-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:2989:c400:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fa87e56sm67419615e9.0.2026.03.05.14.09.31
+ 5b1f17b1804b1-4851fa87e56sm67419615e9.0.2026.03.05.14.09.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2026 14:09:32 -0800 (PST)
+ Thu, 05 Mar 2026 14:09:20 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -82,16 +82,16 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
  Helge Deller <deller@gmx.de>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 10/14] hw/char/serial: Remove redundant reset
-Date: Thu,  5 Mar 2026 23:09:07 +0100
-Message-ID: <20260305220911.131508-11-shentey@gmail.com>
+Subject: [PATCH v3 01/14] hw/arm/Kconfig: Fix serial selection for NPCM8XX
+Date: Thu,  5 Mar 2026 23:08:58 +0100
+Message-ID: <20260305220911.131508-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260305220911.131508-1-shentey@gmail.com>
 References: <20260305220911.131508-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,27 +114,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There is no need to invoke the reset method in realize since the reset
-framework will do so anyway before the machine starts.
+CONFIG_SERIAL selects the internal TYPE_SERIAL device which is akin to
+an "IP block" that needs to be integrated with glue logic. In case of
+NPCM8XX this glue logic is TYPE_SERIAL_MM which the code uses already.
+Fix Kconfig to select CONFIG_SERIAL_MM which matches TYPE_SERIAL_MM.
 
+Fixes: ae0c4d1a1290 ("hw/arm: Add NPCM8XX SoC")
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/char/serial.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/arm/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index 485b98f03f..0f3469a1e8 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -934,7 +934,6 @@ static void serial_realize(DeviceState *dev, Error **errp)
-                              serial_event, serial_be_change, s, NULL, true);
-     fifo8_create(&s->recv_fifo, UART_FIFO_LENGTH);
-     fifo8_create(&s->xmit_fifo, UART_FIFO_LENGTH);
--    serial_reset(s);
- }
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index c66c452737..20e99e52b1 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -493,7 +493,7 @@ config NPCM8XX
+     select SMBUS
+     select PL310  # cache controller
+     select NPCM7XX
+-    select SERIAL
++    select SERIAL_MM
+     select SSI
+     select UNIMP
  
- static void serial_unrealize(DeviceState *dev)
 -- 
 2.53.0
 

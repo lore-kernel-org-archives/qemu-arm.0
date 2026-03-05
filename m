@@ -4,93 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4670F30955
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 12:13:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18342F3095E
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 13:23:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vy7aR-0000gZ-7B; Thu, 05 Mar 2026 07:13:51 -0500
+	id 1vy8fo-00009I-UD; Thu, 05 Mar 2026 08:23:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1vy7aQ-0000gK-AG
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 07:13:50 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1vy7aN-00080t-BX
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 07:13:50 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-439aa2f8ebaso3233730f8f.2
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 04:13:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772712821; x=1773317621; darn=nongnu.org;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:from:to:cc:subject:date:message-id:reply-to;
- bh=o9ySsJCPRrRpMMsEvO5GNe2voaD7Aa2RjkICMkm45GA=;
- b=Usa2+eSqRF7NZkQzoX3tTsQBIz9ILFkyUpJ5CEHKe76v03rseP0xXuXrrtnSrzYMXi
- XzUp9gKDHggthSBOVBhg02Dm12RAQ37RZO528tQoARjNg3oRVk4toUaNCbKn+p5J/91g
- gKIxmgN0HavK3qpo9CqVX7boprd76GGF15JEYANc5EaInMx11y2/Z9eDhokWEnMk4ERT
- YkrXFxAGfIQ/yQO3/eFtvCZRVqRQXUzzYSx33/UOS70NZ3+XDG+h4Xy+/vzomIppoYNC
- ZQvHXm+xu0IOa8ukv1/+EznXBjgMT2Pxz0UrqvCxc47M36XBrji8Ql6JLJ5nZdoLvXXN
- 6LMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772712821; x=1773317621;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=o9ySsJCPRrRpMMsEvO5GNe2voaD7Aa2RjkICMkm45GA=;
- b=XOE8VWocXPJAoVMQnhhGo611giC8ZeoY4fpL65DFl5wV//PHclCWyKqwaK7XusFHmN
- AL4dCJkGSCH/Pvj0k+nLbB+FT0Py2zk66FqjEkwUtondHkB4bYh3HCTfy5rPjSC2Zajm
- 54J/9DeQnPPDjOCT3X+j2Qoe7mfrFuw/PlzmBN8NuLmvzW3G4ZtfOjufwumoYmSjWpqo
- pSauBDr5Vt/HYDzp0JL+bSDs9mbNYgQFgfzA5Nmh4tYdvZV5xiLkM/ZJiX89+AdY7roR
- mYU2vizz+W5IoCFhBggdHP6NYcp+ME7lDpB8Gh2X5mHCgekvGGI1or3vn0iw/4NnnE3u
- 5XNQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU5ewsJtoAG9vEIF2NLsfCz65wBPfS1VJnm89wsmGMSmN22JVe3Ifw+MyCQ/te1mVvfY5x3AMvSyw==@nongnu.org
-X-Gm-Message-State: AOJu0YxFOYwdZkjxTDDVr29QU3F05Zr9hN2RnVjD/XzUwzoufkkpVhhh
- 2yyor47r7RHsaJRvXRbn+dqxvncyJGyXOeLcrkIyshBAhv/l+tS3BN00GR87SZlg55M=
-X-Gm-Gg: ATEYQzzTyVb+FGMTrY+piYXUJJ11JKaAIGNvDkcQrk5KGJcNqMptXRXv+l3nLDOk+2g
- V5p/gJGj/Ss/CzRnIN4TU7/ITL6K536+PCm/fTRmyUqiWHw9vx1O/Bb1LF7YEqGKzfqwOQ/5qUe
- XIHyzFPGoqUNApQw3jZGWyM2xPIYCF3jFberdwbpPQtkpK3pHt6VdUpopbTXScLLAUusfSCK9no
- TOEFprnAKDeMxW0a0F+whrZ8DCyU7j+jDxYbOZ41xbblD6SuB2xN4E6u22Deet5Fa7AVhniiTO+
- 2VWQcbaWVb3OwCbm40eKnke4m0WRuPDQaq9kkXukaXH5Tg86xr82I88egAN7SRPKNyVJ6RAbD6t
- 4A8+Yv05ialQn3gCz2L5ney+8p6tmbVSIoGaN8g4nkx9x7F9/2DwPFV9eVXDuekdnmWmFDxw2Ja
- lU34ykkge0kmMR
-X-Received: by 2002:a05:6000:3113:b0:439:b541:a088 with SMTP id
- ffacd0b85a97d-439c801f74dmr10840149f8f.54.1772712820859; 
- Thu, 05 Mar 2026 04:13:40 -0800 (PST)
-Received: from [127.0.1.1] ([2a10:d582:31e:0:e891:67d5:3e8b:cb48])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439ac9f3e5bsm40337904f8f.37.2026.03.05.04.13.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2026 04:13:40 -0800 (PST)
-From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Thu, 05 Mar 2026 12:13:03 +0000
-Subject: [PATCH] hw/net/xilinx_axienet.c: Prevent writes to PHY
- Identification registers
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vy8fW-00007Y-0J; Thu, 05 Mar 2026 08:23:10 -0500
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vy8fR-0001C9-P1; Thu, 05 Mar 2026 08:23:09 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDXrEStg6lpwG6wAA--.2998S2;
+ Thu, 05 Mar 2026 21:22:53 +0800 (CST)
+Received: from [192.168.31.155] (unknown [113.246.233.224])
+ by mail (Coremail) with SMTP id AQAAfwD3Tuysg6lpnz0fAA--.53199S2;
+ Thu, 05 Mar 2026 21:22:52 +0800 (CST)
+Message-ID: <e42c6868-552b-4eb9-ba76-4e9d69525565@phytium.com.cn>
+Date: Thu, 5 Mar 2026 21:22:49 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260305-xilinx-phy-protection-v1-1-ffc9edd84e58@linaro.org>
-X-B4-Tracking: v=1; b=H4sIAE5zqWkC/x3MTQqAIBBA4avIrBswI/u5SrQQm2ogTFTCiO6et
- HyL7z0QKTBFGMUDgS6OfLoSdSXA7sZthLyUBiWVlo1sMfPBLqPfb/ThTGRTEWibQRvd9ovsFBT
- rA62c/+80v+8HXwiGYGcAAAA=
-To: qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
- qemu-arm@nongnu.org, Jim MacArthur <jim.macarthur@linaro.org>
-X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v4 11/31] hw/arm/smmu: Add PTE NS/NSTable helpers
+To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221101544.2992355-1-tangtao1634@phytium.com.cn>
+ <67ce2d21-0b7e-4f21-aa3a-d4a7dc52a059@redhat.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <67ce2d21-0b7e-4f21-aa3a-d4a7dc52a059@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwD3Tuysg6lpnz0fAA--.53199S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAFBWmooSAF7AAAso
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxJrWUKFy7uryktF43ur4kWFg_yoW8Ar13p3
+ 4DKa98KFW8Ja17Gan7twnavFnYqws5tF1UGFy7W3s8uws0vw1fWr129r15Ka4q9rn5Jwnr
+ ZF1qv34furWY9rJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,52 +78,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There are other registers in the PHY model which should be partially or
-entirely read-only, but this solves the immediate issue.
+Hi Eric,
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3297
+On 2026/3/3 01:07, Eric Auger wrote:
+>
+> On 2/21/26 11:15 AM, Tao Tang wrote:
+>> Add helper macros for NS and NSTable bits and group PTE attribute
+>> accessors for clarity. No functional change beyond the new helpers.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   hw/arm/smmu-internal.h | 16 ++++++++++++++--
+>>   1 file changed, 14 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+>> index d143d296f34..a0454f720da 100644
+>> --- a/hw/arm/smmu-internal.h
+>> +++ b/hw/arm/smmu-internal.h
+>> @@ -58,16 +58,28 @@
+>>       ((level == 3) &&                                                    \
+>>        ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
+>>   
+>> +/* Block & page descriptor attributes */
+> Maybe use the spec terminology:
+> Stage 1 attribute fields in VMSAv8-64 Block and Page descriptors
+> vs 7 Stage 1 VMSAv8-64 Table descriptor fields
+>
+> By the way AF belongs to both
 
-Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
----
-See:
 
-https://gitlab.com/qemu-project/qemu/-/issues/3297
 
-https://lore.kernel.org/qemu-devel/CAJy5ezqTAMr=A3uAfmuWLepK66AdLRu4Q8AmFMh4+4q2HtDrkA@mail.gmail.com/
+I’ll rework the comments to use the spec terminology and avoid grouping 
+AF too narrowly under Block/Page wording.
 
-IEEE 802.3-2022 does not explicitly state that these registers
-should be read-only, but suggests it in 22.2.4.3.1 which says this
-information should be entirely manufacturer-supplied information.
-
-The standard does mention several other registers in the set which
-should be partially or entirely read-only, so further work may be
-required.
----
- hw/net/xilinx_axienet.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index d85f8bb23f..970732b162 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -141,6 +141,10 @@ tdk_write(struct PHY *phy, unsigned int req, unsigned int data)
-     regnum = req & 0x1f;
-     DPHY(qemu_log("%s reg[%d] = %x\n", __func__, regnum, data));
-     switch (regnum) {
-+        case 2:
-+        case 3:
-+            /* Writes to PHY Identification registers are disallowed */
-+            break;
-         default:
-             phy->regs[regnum] = data;
-             break;
-
----
-base-commit: 3fb456e9a0e9eef6a71d9b49bfff596a0f0046e9
-change-id: 20260305-xilinx-phy-protection-c396a658d072
 
 Best regards,
--- 
-Jim MacArthur <jim.macarthur@linaro.org>
+
+Tao
+
+>
+>> +/* Non-secure bit */
+>> +#define PTE_NS(pte) \
+>> +    (extract64(pte, 5, 1))
+>> +
+>>   /* access permissions */
+>>   
+>>   #define PTE_AP(pte) \
+>>       (extract64(pte, 6, 2))
+>>   
+>> +/* access flag */
+>> +#define PTE_AF(pte) \
+>> +    (extract64(pte, 10, 1))
+>> +
+>> +
+>> +/* Table descriptor attributes */
+>>   #define PTE_APTABLE(pte) \
+>>       (extract64(pte, 61, 2))
+>>   
+>> -#define PTE_AF(pte) \
+>> -    (extract64(pte, 10, 1))
+>> +#define PTE_NSTABLE(pte) \
+>> +    (extract64(pte, 63, 1))
+>> +
+>>   /*
+>>    * TODO: At the moment all transactions are considered as privileged (EL1)
+>>    * as IOMMU translation callback does not pass user/priv attributes.
+> Eric
 
 

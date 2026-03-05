@@ -4,89 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A290F30939
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 11:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4670F30955
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 12:13:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vy6S2-0004pP-6c; Thu, 05 Mar 2026 06:01:07 -0500
+	id 1vy7aR-0000gZ-7B; Thu, 05 Mar 2026 07:13:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vy6Rr-0004oK-79
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 06:00:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vy6Ro-0006ou-Et
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 06:00:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772708451;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=exsvnWhrosw4L5DNyjABIiyzOYZiVGdS6s+3Kw8NrEc=;
- b=eYrIp24UdO1R6B+Dk7cJNUJeh2Qrjaig36I0gY1oxV5Upf3BMtyS2O6qS5bCj/zO2S5HqA
- On3Ph1wbBImNy27hTKlDGW1kBxZ8mqVgU2oro+NFtHpaWoZd92XDvf/L6ihzE8f5S+WvGa
- aPCxdAMUV1INRU82VLzwvNoRVpB1l5Y=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-529-iginTUkEMcGMvdrwC30X6A-1; Thu,
- 05 Mar 2026 06:00:47 -0500
-X-MC-Unique: iginTUkEMcGMvdrwC30X6A-1
-X-Mimecast-MFC-AGG-ID: iginTUkEMcGMvdrwC30X6A_1772708444
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BDCE91800619; Thu,  5 Mar 2026 11:00:43 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.24])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 248771956095; Thu,  5 Mar 2026 11:00:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 849AA21E6A04; Thu, 05 Mar 2026 12:00:40 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Bernhard Beschow <shentey@gmail.com>,  qemu-devel@nongnu.org,  Helge
- Deller <deller@gmx.de>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>, Troy Lee <leetroy@gmail.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Mark Cave-Ayland
- <mark.caveayland@nutanix.com>,  qemu-arm@nongnu.org,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,  Joel
- Stanley <joel@jms.id.au>
-Subject: Re: QOM parent type "sys-bus-device" vs. "device"
-In-Reply-To: <CAFEAcA8CTLsKxJ8iza9T3bSafdgaM0dag2=KXqWLdMiXAHiGGQ@mail.gmail.com>
- (Peter Maydell's message of "Thu, 5 Mar 2026 09:30:49 +0000")
-References: <20260303222143.142741-1-shentey@gmail.com>
- <20260303222143.142741-13-shentey@gmail.com>
- <87ikbbixy5.fsf_-_@pond.sub.org>
- <CAFEAcA_WYkAYccog-BiA6MJAvoFVwa6niKvFZ7UpLjzkRyd6aA@mail.gmail.com>
- <87fr6eocfc.fsf@pond.sub.org>
- <CAFEAcA8CTLsKxJ8iza9T3bSafdgaM0dag2=KXqWLdMiXAHiGGQ@mail.gmail.com>
-Date: Thu, 05 Mar 2026 12:00:40 +0100
-Message-ID: <874imuo813.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1vy7aQ-0000gK-AG
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 07:13:50 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1vy7aN-00080t-BX
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 07:13:50 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-439aa2f8ebaso3233730f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 04:13:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772712821; x=1773317621; darn=nongnu.org;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=o9ySsJCPRrRpMMsEvO5GNe2voaD7Aa2RjkICMkm45GA=;
+ b=Usa2+eSqRF7NZkQzoX3tTsQBIz9ILFkyUpJ5CEHKe76v03rseP0xXuXrrtnSrzYMXi
+ XzUp9gKDHggthSBOVBhg02Dm12RAQ37RZO528tQoARjNg3oRVk4toUaNCbKn+p5J/91g
+ gKIxmgN0HavK3qpo9CqVX7boprd76GGF15JEYANc5EaInMx11y2/Z9eDhokWEnMk4ERT
+ YkrXFxAGfIQ/yQO3/eFtvCZRVqRQXUzzYSx33/UOS70NZ3+XDG+h4Xy+/vzomIppoYNC
+ ZQvHXm+xu0IOa8ukv1/+EznXBjgMT2Pxz0UrqvCxc47M36XBrji8Ql6JLJ5nZdoLvXXN
+ 6LMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772712821; x=1773317621;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=o9ySsJCPRrRpMMsEvO5GNe2voaD7Aa2RjkICMkm45GA=;
+ b=XOE8VWocXPJAoVMQnhhGo611giC8ZeoY4fpL65DFl5wV//PHclCWyKqwaK7XusFHmN
+ AL4dCJkGSCH/Pvj0k+nLbB+FT0Py2zk66FqjEkwUtondHkB4bYh3HCTfy5rPjSC2Zajm
+ 54J/9DeQnPPDjOCT3X+j2Qoe7mfrFuw/PlzmBN8NuLmvzW3G4ZtfOjufwumoYmSjWpqo
+ pSauBDr5Vt/HYDzp0JL+bSDs9mbNYgQFgfzA5Nmh4tYdvZV5xiLkM/ZJiX89+AdY7roR
+ mYU2vizz+W5IoCFhBggdHP6NYcp+ME7lDpB8Gh2X5mHCgekvGGI1or3vn0iw/4NnnE3u
+ 5XNQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU5ewsJtoAG9vEIF2NLsfCz65wBPfS1VJnm89wsmGMSmN22JVe3Ifw+MyCQ/te1mVvfY5x3AMvSyw==@nongnu.org
+X-Gm-Message-State: AOJu0YxFOYwdZkjxTDDVr29QU3F05Zr9hN2RnVjD/XzUwzoufkkpVhhh
+ 2yyor47r7RHsaJRvXRbn+dqxvncyJGyXOeLcrkIyshBAhv/l+tS3BN00GR87SZlg55M=
+X-Gm-Gg: ATEYQzzTyVb+FGMTrY+piYXUJJ11JKaAIGNvDkcQrk5KGJcNqMptXRXv+l3nLDOk+2g
+ V5p/gJGj/Ss/CzRnIN4TU7/ITL6K536+PCm/fTRmyUqiWHw9vx1O/Bb1LF7YEqGKzfqwOQ/5qUe
+ XIHyzFPGoqUNApQw3jZGWyM2xPIYCF3jFberdwbpPQtkpK3pHt6VdUpopbTXScLLAUusfSCK9no
+ TOEFprnAKDeMxW0a0F+whrZ8DCyU7j+jDxYbOZ41xbblD6SuB2xN4E6u22Deet5Fa7AVhniiTO+
+ 2VWQcbaWVb3OwCbm40eKnke4m0WRuPDQaq9kkXukaXH5Tg86xr82I88egAN7SRPKNyVJ6RAbD6t
+ 4A8+Yv05ialQn3gCz2L5ney+8p6tmbVSIoGaN8g4nkx9x7F9/2DwPFV9eVXDuekdnmWmFDxw2Ja
+ lU34ykkge0kmMR
+X-Received: by 2002:a05:6000:3113:b0:439:b541:a088 with SMTP id
+ ffacd0b85a97d-439c801f74dmr10840149f8f.54.1772712820859; 
+ Thu, 05 Mar 2026 04:13:40 -0800 (PST)
+Received: from [127.0.1.1] ([2a10:d582:31e:0:e891:67d5:3e8b:cb48])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439ac9f3e5bsm40337904f8f.37.2026.03.05.04.13.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2026 04:13:40 -0800 (PST)
+From: Jim MacArthur <jim.macarthur@linaro.org>
+Date: Thu, 05 Mar 2026 12:13:03 +0000
+Subject: [PATCH] hw/net/xilinx_axienet.c: Prevent writes to PHY
+ Identification registers
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: YkrrH2Ub6ZnqbdFdpc2rSa2-JP_3NWhcaXcF_zxB90M_1772708444
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.703, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.386,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260305-xilinx-phy-protection-v1-1-ffc9edd84e58@linaro.org>
+X-B4-Tracking: v=1; b=H4sIAE5zqWkC/x3MTQqAIBBA4avIrBswI/u5SrQQm2ogTFTCiO6et
+ HyL7z0QKTBFGMUDgS6OfLoSdSXA7sZthLyUBiWVlo1sMfPBLqPfb/ThTGRTEWibQRvd9ovsFBT
+ rA62c/+80v+8HXwiGYGcAAAA=
+To: qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
+ qemu-arm@nongnu.org, Jim MacArthur <jim.macarthur@linaro.org>
+X-Mailer: b4 0.13.0
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,81 +106,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+There are other registers in the PHY model which should be partially or
+entirely read-only, but this solves the immediate issue.
 
-> On Thu, 5 Mar 2026 at 09:25, Markus Armbruster <armbru@redhat.com> wrote:
->> > Disentangling reset is extremely painful -- I don't even know
->> > what it ought to be doing. Maybe propagating along the QOM tree?
->>
->> I think this would make more sense.  Unlike the qtree, the QOM
->> composition tree contains all devices, and reflects the actual
->> composition.  It's certainly closer to the real reset tree than the
->> qtree is.  Is it close enough?  I don't know.  If yes, there's our reset
->> tree.  If no, I guess we could still use it as a base, with manually
->> corrected reset lines where the QOM composition tree is off.
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3297
 
-A walk to the farmers market jogged my memory: the QOM composition tree
-is in fact off for user-created devices.  These go into
-/machine/peripheral and /machine/peripheral-anon.
+Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
+---
+See:
 
-Most of them plug into a bus, and reset should flow through that bus,
-not through their peripheral container.
+https://gitlab.com/qemu-project/qemu/-/issues/3297
 
-A few don't, and I can't say how reset is supposed to work then.
+https://lore.kernel.org/qemu-devel/CAJy5ezqTAMr=A3uAfmuWLepK66AdLRu4Q8AmFMh4+4q2HtDrkA@mail.gmail.com/
 
-Onboard device can also be connected via some bus.  For instance,
-machine "pc" contains sysbus device "i440FX-pcihost", which provides a
-PCI bus.  It also contains PCI device "PIIX3" (the south bridge)
-connected via that PCI bus.
+IEEE 802.3-2022 does not explicitly state that these registers
+should be read-only, but suggests it in 22.2.4.3.1 which says this
+information should be entirely manufacturer-supplied information.
 
-The QOM composition tree has "i440FX-pcihost" and its PCI bus in the
-right place, and "PIIX3" in the orphanage:
+The standard does mention several other registers in the set which
+should be partially or entirely read-only, so further work may be
+required.
+---
+ hw/net/xilinx_axienet.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-    /machine (pc-i440fx-11.0-machine)
-      /i440fx (i440FX-pcihost)
-        /pci.0 (PCI)
-      /unattached (container)
-        /device[3] (PIIX3)
-        /sysbus (System)
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index d85f8bb23f..970732b162 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -141,6 +141,10 @@ tdk_write(struct PHY *phy, unsigned int req, unsigned int data)
+     regnum = req & 0x1f;
+     DPHY(qemu_log("%s reg[%d] = %x\n", __func__, regnum, data));
+     switch (regnum) {
++        case 2:
++        case 3:
++            /* Writes to PHY Identification registers are disallowed */
++            break;
+         default:
+             phy->regs[regnum] = data;
+             break;
 
-Say we fixed that like so
+---
+base-commit: 3fb456e9a0e9eef6a71d9b49bfff596a0f0046e9
+change-id: 20260305-xilinx-phy-protection-c396a658d072
 
-    /machine (pc-i440fx-11.0-machine)
-      /i440fx (i440FX-pcihost)
-        /pci.0 (PCI)
-        /piix3 (PIIX3)
-
-then reset flowing along the composition tree is still problematic: we
-probably want to reset the PCI bus before the devices plugged into it.
-
-So maybe reset should flow along the composition tree to buses, from bus
-to devices plugged into it, from such a device again along the
-composition tree, and so forth.
-
-> Yes. We really don't want to add more boilerplate requirements
-> to how you write "container" type devices like SoC objects.
-> It's already bad enough that you have to have an instance_init
-> that manually calls instance_init on all your subcomponents,
-> and a realize that calls realize on all of them. If we add
-> a requirement that you need to have reset methods for 3 phases
-> that call reset on all your subcomponents, people are going to
-> forget. We need the default to be "do the thing that's right
-> almost every time", not "do the thing that's wrong".
-
-Good interfaces make doing the right thing easier than doing the wrong
-thing.  We clearly failed there.
-
-> (And then of course there is the "how do we get there from
-> here?" question :-))
-
-Good question.  Next question?  SCNR!
-
-I'm afraid I don't understand how reset works *now* well enough to come
-up with a workable plan.
-
-In other words, I don't have a clear idea of "here", and I fear we
-together don't have a sufficiently clear idea of "there".
-
-What can we do to improve on both?
+Best regards,
+-- 
+Jim MacArthur <jim.macarthur@linaro.org>
 
 

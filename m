@@ -4,97 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79920F513E1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA666F513E4
 	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:09:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyGsq-00010M-9b; Thu, 05 Mar 2026 17:09:29 -0500
+	id 1vyGsV-0000xF-NG; Thu, 05 Mar 2026 17:09:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsm-0000z9-03
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:25 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGsT-0000wU-1S
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:05 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsj-0002CH-Et
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:23 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4837907f535so77742105e9.3
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGsR-0002Af-CH
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:04 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-483487335c2so71872425e9.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772748559; x=1773353359; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=QqAbdk4Pe2MQVed+WtrEw6pFfWk8J389+1HbvVagQKg=;
- b=k6X2UDfG9nE/p6wAylwyXj+x7UKnyJVJHn/Agcg9ZhSUjGsGo0Ogy/YcN6Pdw1QTzj
- BwyHcryRrRQKcDO8ATz2IlZGY5ezb3QBmfK55cCypCnjXsfbZblqoew/MMeWKQAuCj75
- dyCZV+FHlq6qCoLKkLxKc0xt4wNk4ba0dcD0dIWGInAnCDTddBP4kmoiuhH0FCkjMEiZ
- kr3bJJgzCC8cK/Y4a6V59DyegF4xOwbf9X06UL2WMYSo+GCRgXk4ozid28rodvnK7QUQ
- gtBwVwi3fkkYFA/sWR21BQs/hG8Nds4unaRCqUnDa1wpXSbYTsgLbbH4IAMczcrqR1l/
- KPtg==
+ d=linaro.org; s=google; t=1772748542; x=1773353342; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sp4NGGwXe8WZ9WaE/Rit85H9U9O9209qhDh1s0NEE9E=;
+ b=PsZRzz/P+/6F6U4LAos/Q+79mta2Z2G6Ah95dCt5XairvvXp5hAlWamrGLWlRenAD0
+ Bl90fKdK5+MQ7RXPgfGX2mJDCnbBaNNwUx7gT3jP10oxLw/eBqWItdlEeAdUFwC1Ju47
+ iwPHk4XS1iLW1Jd7EuVBHXp3Ea2VUtitksT11RucRqFMjmCMUQmEAIJ5rw4TqTMsYNKz
+ sxPtbHZg3KqOjbtLstU+5YxjDwDCt1ZXaGM6psP9AdOd8jPjM2tn7msZDQp//oTSvFLa
+ PrbRFpwRKXugqxwvwEFTOgrV2plC/whWrS4aMAZrRZ72FVFNijficYjY7i9CscaLz5nc
+ 6TNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772748559; x=1773353359;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=QqAbdk4Pe2MQVed+WtrEw6pFfWk8J389+1HbvVagQKg=;
- b=ieTpw3pUzxrRrWMsD2eUiE3WdDo/nRTo7MGXt2DtLXqeBkmI1oW/tlaekBWPfPDTvm
- xLO5oCrOMummG4DJtXkyQQeUH+Xl5Icu/9aFrSQbHug26+wstiGLu2WF7h+unEhQ9cur
- 678MDt6KCqHR4sHYP0LGCVzH0x+16n34ET6TACrqaRj8LZqGgbRPUOPthjhjyD6atgJa
- 7SwS2ww+kcSwxDkUTXsqs2ht+fQgz7yutMurw69H4ERzDBGJDXSfq/yzRg36dhp/lC9c
- wBD6u7iosbyOvAUMhagI+np4YaSBVr+p4/2UALYACVucbfFjRvweW1ozE+qUCQWJ2TyC
- U+rA==
+ d=1e100.net; s=20230601; t=1772748542; x=1773353342;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=sp4NGGwXe8WZ9WaE/Rit85H9U9O9209qhDh1s0NEE9E=;
+ b=Iv7AyAK468bvwOKVFg7JwalGltbJEs2kG7/oY18+PS5ksjRTYfoXYFVes1DoxfQmMB
+ N7FhrBKg+UiF8BrBNPuvaftgkAREozPQPSA1SjGoQ3KiNJIMCa98do1nivd3AYeqrYbG
+ vKwk3hmmv6rf0eEaiHC83clPFOAmSgafnoBHW9T1LPUjp9cCH3JU1XEs0zkQ/3vccfEe
+ DhgOXLsyafcIzWjmTgnCpl+FX/ZQR8E8iUT9SYFJRM5Vy8o9YVlYHxorHlxNjsK5dhVa
+ mbDoyp3tAoJsFe7gycEfAPAgUCP4bLghWGcl9th6Pb5Tdjp1B8jSrbOXuFTpUoVcDuxS
+ UFYw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWeFvRxhypBoKeYIWiWQiiK+vFpsQzI4qUQFVG4MPXCPsZ1fUdiuZOiLDpCDi2LODaLHq32Vq8b1w==@nongnu.org
-X-Gm-Message-State: AOJu0YyTRi2rMpjQI9mLD5XN56bu8Qb3U5nQgv5MHfljpKu+2dyrVEZM
- LfivIY3k03t+bIzakdnBtJp0e6t1oUD31H2hPJaqfw3D0n5T+CL047FM
-X-Gm-Gg: ATEYQzzKrdmbAQxrXX+zZm+newLgQBruBbOmvC6JvAFlVjAg+iwKE2aedlqb8boFKbH
- ZsuOUBvn9tHALQ3tVWxnEROY4Cw7zbgcFaE8nnmK55iPWIopiUWLajK6KYAdJwijCopKcovSwc6
- AnE10VGuXX50fVc0Y/6Z5YAwzj1SaskxiDGvPZRMAXxDGWGt7iq+OLgmVakGzLEMQaDcWlJ4QUI
- Nk0shz7d4qwdqdF+1im6Uwz363hRgb/+p7Wi5O61H+c+B1zuJ//l6ASkMOyGJZwLY8hVRT9MIJ0
- qE1Yq9J6QTBvqoXF7wMJ7Ctq7erWSzHA1TaSkCqVCWJl8yJvOZfRPg+/899Ayb2mp4HnZppcVxR
- yBrTVRJya3DMBa51+KnqdEBx0NP7TRGY/OQs7HliTVeEpSt70SdtRMaFiYuUm5WhBKtogB8Bz7A
- 9Hn6UlWnmslqVfTKba85/SRpuRUZge8vgqYLiG8BDvWs49hjkqeyrlLFQE4geX4G3nDTuGtmwQh
- lyn65HRuGc3uIVficKOrlw2mtFPS7HZ7fwkjQymioQ5F1U=
-X-Received: by 2002:a05:600c:1c18:b0:480:69ae:f0e9 with SMTP id
- 5b1f17b1804b1-48519871aa4mr147654815e9.16.1772748559328; 
- Thu, 05 Mar 2026 14:09:19 -0800 (PST)
-Received: from Provence.localdomain
- (dynamic-2a02-3100-2989-c400-0219-99ff-feb2-2458.310.pool.telefonica.de.
- [2a02:3100:2989:c400:219:99ff:feb2:2458])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fa87e56sm67419615e9.0.2026.03.05.14.09.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Mar 2026 14:09:18 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
- Helge Deller <deller@gmx.de>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 00/14] TYPE_SERIAL cleanup
-Date: Thu,  5 Mar 2026 23:08:57 +0100
-Message-ID: <20260305220911.131508-1-shentey@gmail.com>
-X-Mailer: git-send-email 2.53.0
+ AJvYcCWfpT/Y1pA9WzaSFSYvMCnI3Ffmmc9aEgj5j88Qpsi7Sciqm+YcfuBZ42VyXJgwfcVkcUrKU5Gdqw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx5Pq685+WQMr0prgAmg939VLWiJTL3hPFynsBBn6JdOH9OUD5w
+ OLnK2tIFv25XA3MoNtZeK77zaHYPVZ2qwhJT//Kx+KwL1AvoueFB15TMuofEDt9N8Rc=
+X-Gm-Gg: ATEYQzwiTu5LzwCFpce7tjLVW6oYq970kiZlZKhRcixax6XixYMZez4a1ABL9pdBHx0
+ 3fRAXDPr6TN8l62axqCIFH5DUBjWYQ64+1IlzRjGaIer/Y26DSvG7bhYfWHOAiJ8OuxcwPicyGL
+ CPMxullkRvmO6s7y8ylNOwccOPkyyXkx6o/21LqfrEWo88vClgBU/ujta0n9LIv16jA8mbVtFe/
+ MaXr0d41rN7TzU4hPE5ksGfE/REhi3NJz/eO86m/o4XLI3wuv0rU5A8peSPat4hvY+6vkHmC7Mz
+ Y7FBgWY7EzFYKsEwv3XX5MB81ZdlJorhV+VnHUEowPb+MFvbRdc7MYM5ddIXUy3IU133bnWMGzd
+ d5wZe3Ije6c7CkmxL2IAac6UHYq5525xA68XHl7kHnuvsDcsl1OfkB+IZ78YD90/sFxxnrhRIOA
+ yHGSaU9wvc/W+1gDzDXDU25IDclCcI0eX5FbLo9nzmbSX30zialaliII6NmzMwRuoIqA==
+X-Received: by 2002:a05:600c:8411:b0:477:df7:b020 with SMTP id
+ 5b1f17b1804b1-485198744camr124994385e9.18.1772748541644; 
+ Thu, 05 Mar 2026 14:09:01 -0800 (PST)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4852378de92sm7310645e9.0.2026.03.05.14.09.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Mar 2026 14:09:00 -0800 (PST)
+Message-ID: <3fdab598-c163-49ad-9927-b1f28668b5e7@linaro.org>
+Date: Thu, 5 Mar 2026 23:08:59 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 01/12] hw/intc: Add hvf vGIC interrupt controller
+ support
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
+ <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
+ qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
+References: <20260228220837.35275-1-mohamed@unpredictable.fr>
+ <20260228220837.35275-2-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260228220837.35275-2-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -112,76 +108,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series consists of cosmetic changes around TYPE_SERIAL. The biggest change
-is having it derive from TYPE_SYS_BUS_DEVICE which 1) eliminates usage of
-qemu_{un,}register_reset() and 2) stops all its users from accessing private
-data. The latter allows TYPE_SERIAL to be ported to Rust in the (near) future.
+On 28/2/26 23:08, Mohamed Mediouni wrote:
+> This opens up the door to nested virtualisation support.
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   hw/intc/arm_gicv3_hvf.c            | 735 +++++++++++++++++++++++++++++
+>   hw/intc/meson.build                |   1 +
+>   include/hw/intc/arm_gicv3_common.h |   1 +
+>   3 files changed, 737 insertions(+)
+>   create mode 100644 hw/intc/arm_gicv3_hvf.c
 
-v3:
-* Pick up further R-b tags. Thanks!
-* Add patch "hw/char/{diva-gsp,serial-pci-multi}: Fix deinitialization order"
-  (Peter)
-* Justify switching to serial_io_ops in certain cases in TYPE_SERIAL_MM (Peter)
+This patch is huge, so I surely missed details; but
+the overall LGTM (it it won't break any existing feature), so:
 
-v2:
-* Pick up R-b tags. Thanks!
-* Ad patch to free consumers of TYPE_SERIAL from setting up MemoryRegionOps;
-  configure via properties instead which should resolve odd code (Peter)
-* Improve wording in one commit message (Peter)
-* Sort patches by moving char/serial last
--> Keep "Avoid implicit conversion when tracing" untouched for now. Can be
-  omitted if deemed inappropriate.
-
-Testing done:
-* Boot mpc8544ds machine with Linux and interact with it on the serial console
-* Boot q35 machine with Arch Linux and interact with it on the serial console
-* Make check
-* Make check-functional with all architectures enabled:
-    Summary of Failures:
-
-    238/313 func-thorough+func-aarch64-thorough+thorough - qemu:func-aarch64-tcg_plugins          ERROR             0.72s   exit status 1
-    309/313 func-thorough+func-x86_64-thorough+thorough - qemu:func-x86_64-vhost_user_bridge      TIMEOUT          90.01s   killed by signal 15 SIGTERM
-    311/313 func-thorough+func-x86_64-thorough+thorough - qemu:func-x86_64-rebuild_vmfd           ERROR            33.64s   exit status 1
-
-    Ok:                257
-    Fail:              2
-    Skipped:           53
-    Timeout:           1
-
-Bernhard Beschow (14):
-  hw/arm/Kconfig: Fix serial selection for NPCM8XX
-  hw/char/{diva-gsp,serial-pci-multi}: Fix deinitialization order
-  hw/arm/aspeed_ast27x0-{ssp, tsp}: Do not access SerialMM internals
-    directly
-  util/fifo8: Make all read-only methods const-correct
-  hw/char/serial: Remove explicit cast from void pointer
-  hw/char/serial: Prefer fifo8 methods over open-coding
-  hw/char/serial: Reuse fifo8_num_used()
-  hw/char/serial: Remove unhelpful comment
-  hw/char/serial: Add constants for Line Control Register
-  hw/char/serial: Remove redundant reset
-  hw/char/serial: Avoid implicit conversion when tracing
-  hw/char/serial: Keep MemoryRegionOps private
-  hw/char/serial: Inherit from SysBusDevice
-  hw/char/serial: Plug into reset framework
-
- include/hw/char/serial-mm.h |   3 -
- include/hw/char/serial.h    |   8 ++-
- include/qemu/fifo8.h        |  10 +--
- hw/arm/aspeed_ast27x0-ssp.c |   7 +-
- hw/arm/aspeed_ast27x0-tsp.c |   7 +-
- hw/char/diva-gsp.c          |  23 +++---
- hw/char/serial-isa.c        |  17 +++--
- hw/char/serial-mm.c         |  59 ++--------------
- hw/char/serial-pci-multi.c  |  23 +++---
- hw/char/serial-pci.c        |  11 ++-
- hw/char/serial.c            | 137 +++++++++++++++++++++++++-----------
- util/fifo8.c                |  10 +--
- hw/arm/Kconfig              |   2 +-
- hw/char/trace-events        |   4 +-
- 14 files changed, 157 insertions(+), 164 deletions(-)
-
--- 
-2.53.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

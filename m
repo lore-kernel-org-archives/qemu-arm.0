@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05E33F3D337
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:04:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E3ECF3D337
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:05:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyC7w-00037J-5C; Thu, 05 Mar 2026 12:04:44 -0500
+	id 1vyC8X-0004AM-9b; Thu, 05 Mar 2026 12:05:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyC7r-0002zT-TA
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:04:40 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyC8V-00049v-Ah
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:05:19 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyC7q-00047h-4r
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:04:39 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-439c4bde55cso1773893f8f.1
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 09:04:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyC8P-0004Mb-5Z
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:05:19 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4834826e5a0so94406165e9.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 09:05:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772730276; x=1773335076; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772730312; x=1773335112; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=eOt65cxkcxIk7XLPeX43CZs39Ta2WhxQpw3VsVulev4=;
- b=VdYBeA86l5eqwbGT3rVv+0zms1WkKGAiHBnBpnD/4O9JX45aPNO5OUpa50O9y4j/2A
- sMn7XBvRkx6OkOakii+9dfU4c9tqyV/DJMIwgxw83UfC2HmL19KFGzgqPaBT8hQdcCSg
- taHEBU1wppVyQQFYWHuoyJyBZsL/DCa+TOlTLcAt7H2PpJAB6Ih3ZsMjqzmqLL73WNnq
- lRoi7PEZUZDwlXt+39hit23te/K0c7Yp0hzopmPGOuwC21lXAwnzQ3ODdbg63G5PUVw8
- ubPUSXRaZj6OqZhU4WH60IBoAdt6jzzBGOGqyJQVaGhe0W9JthI+uBRl9Y9zXj41CX5i
- QIqA==
+ bh=2jyGNY1pMlpjsNMruDr4yo1TU4KVhb4aGtVSeSnbYC4=;
+ b=gH07FZFoDjEIdLlGhe/gaHgdN45IBJE25tfkViYGPFhDweX2AitcQafGtFOi3hmJCY
+ xxBsdwlX4wCtQ76ZAIaEj9zH5YxW+2SxIlxDLx9/WkjZQWXYYRKNQEhQiK2QsQiQEPWg
+ g/5c7BaGLSDj5e9QAcQA9zf56vTHxcpPBDbyIQsg8EYFMmvvaZMsSOouKX4b3kz7mnJr
+ Sd0F1/u3oX+oowR3/odD5k0ftAfy7HG/qlbZnZR4zekS7PCN9nqYUfAMgCYL/eN0BwxK
+ 7XMG4DeKAhQiHvP8xgxEvxSdmhYmo+fUmTOE0/SDSUtO46ary4ChMs7pKLXiPj1Fb4r2
+ 0n2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772730276; x=1773335076;
+ d=1e100.net; s=20230601; t=1772730312; x=1773335112;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=eOt65cxkcxIk7XLPeX43CZs39Ta2WhxQpw3VsVulev4=;
- b=h//AUrK4JDqQ3uyOOrr4QtL4T6bvI8s1v35VNEaTOKdXQy1mPgTemOz0UpmTeiQqC2
- iJxcxtRyKihR2Nbj+4ooCGR8HmtbdL/yK0bdlaCR1P08ILbTgGv3tkdnAm59e99viZiK
- Jyz1YWbKCBAkEwWUuEOiqJnWwfMg9Lbp475nmSGFzJoQGrqnU3i6/LBiuxqu4ewxuG3Q
- PNZBKWeG4meFYcqWGD//cgl7E3YcGlyoGZkXC06Yd9Oqdj/rZ0QhgXq1lgr8/yjIqc3l
- ttOpG7Om8W0DrSSLWih7JIabmEy30pDU1mmrB41y8S2wVpkXrJ6c2w0SkAkFGPVZN6bA
- EhlA==
+ bh=2jyGNY1pMlpjsNMruDr4yo1TU4KVhb4aGtVSeSnbYC4=;
+ b=ZeXRu584TJ7oRaz+fXB4sZ1vf8DKPgc/GUscUrYfjf6IaEoe6IBaWRNy26bViO0kqp
+ elIjqoS4FYTNu/er1XfaxLQqGtao7q7qfJke/FbObfOMLONffYlW4Hzz4Xzm1La6DIaC
+ yNjef4klmdcjZPNt5WtpmF2mLr4SBRaQj47Su/feiPCReX+w8F3iOKvMulilWvS17bHH
+ Di7TA02JizPR56WpaWf9R80lmAZayz565ecfxFeSC7iMUIq/krexR236D4J3dkJVUUee
+ FQCOWcWqChWRoPTyA1CfMly2FitPmf4Y8goxl+bbHPcC6MYtEW24ldwPJrgmxwreo939
+ djWw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV09pqUa867hU72jYBoVYUiXDon6vi/nMbHJCHdzY4DXOTTbBKa2yP00CbqM8IJA+t0CB2SaCwUQA==@nongnu.org
-X-Gm-Message-State: AOJu0YyWnGpZa4jjOO5GQqM6pl8R7sZO1cMlJd7s3ja0aI9dW2b1ap9o
- uUeIaAjIEo34Pb6PocoOMm2ZgMp43DNYChtvLZHYcLW8o/mPVY8Sup5ufBxkkHWN1Zo=
-X-Gm-Gg: ATEYQzz2PI68EMfQryoYQyTNwKHR2BR5BM3Kom+2DTpOuBpmxARNFMU3K8CqNbydrfN
- sMR1MuMGuZZaZAKDJqeeA2Dv4fxBom1B+xv4G4dgOohPaGQ6u22tRJlZAIBKsaGc2g2l/c5xp+l
- mov3U32P7DDZn75lbwoqUya3Bv6Y6m5B1+i3tdAGJ5ie8MVPb6mF3ASpjOv7jJpiR3otLOODLq4
- L+m3sdhKq5OatC5CMvfvNUrF2H46Y8SiZNePXgK8N6ATtXarAwLd16lNZpgVkpDbFDg+0omQB5h
- YNXF/pAcGojd8gY0mOVSPHfTdCYkVtCi3GpnbokaMpZDs3rqa3v3Vn+1Be8iNZl5Gl1bI9Mrmg4
- PEEgQ+U1fRTgExQNUy/HxHihN/BPRzy2awM2J792rk0hZla9fes0eCQ515BAKOnXPg3i/sH4O2q
- bXKMY3SnGtCLPeKzfUT3hfEtTiy/GihVpl09DjWAf6mpLVFGLV5zQULueFuW1yTm/xVg==
-X-Received: by 2002:a05:6000:2011:b0:439:8eef:11f8 with SMTP id
- ffacd0b85a97d-439c7fd3e44mr10889157f8f.36.1772730276424; 
- Thu, 05 Mar 2026 09:04:36 -0800 (PST)
+ AJvYcCV+mbPbFHMeTsA+ntK3qkiNRXbgYx9XnRDpFCGB3n2XWz0+vDIknx3D2ijXc+j91afW9qdvfo+v/w==@nongnu.org
+X-Gm-Message-State: AOJu0Yw/1JdYWbJg+7awR/o7j9I7Xz9P4ErFwOA0F/Qq/Y6/KT9DsfZJ
+ Wl6Dgwbs3pKODj7/jccoAVkyImZu79iG1zCML+rNj5lqZbMo03UTmJNN7ckNrg4756xUiNCHiZr
+ 1LMVrC7M=
+X-Gm-Gg: ATEYQzwGxRqiG9si1LQbnk/KP0nCniurHXih36LTCLqhDFBiFu62P7ixKSuBsa6Wzrj
+ zTMLRzzDziO2rVpj9xK3e9b1EkJRAaHij83jxFUEMj5IHNnD9Tqs5w+A577WoQ9at/BEFF4EUbM
+ iyLp20dgfGtDjxvf+fjtCun5wCQbZkuZpY8P8DmOeFibxswm9sF2X5jJqfBTMJvEGs7LhX0COB5
+ /gGTWonLtTcybvfpKhzfVnOGdVI1j3iP1cNmNTfA2cZ5qMo1/KfC0Ls6orq15saJiUqYrOmn48g
+ bUWmf59PcTO9t96FJxtgXvsZ85ngSBYI5IR/wyy+bAwu3qsj98Ne0FZnaQ3u9G5jQTPRmE2r80l
+ gAP33c8FF6eloU9cLqP5S+DMLUq3tRa7t2zBlazz68A8qZKJzrKJaZsx0iLwL5b+QGyIlEwAPn+
+ Jn/Z2G4fQiSkKl9wXjRtJeeO1W0gSU9GzhG2pkBoO4KfBXtyNlG9PLtAd15isbagguXA==
+X-Received: by 2002:a05:600c:8708:b0:477:76bf:e1fb with SMTP id
+ 5b1f17b1804b1-485235c7e44mr2659705e9.16.1772730311641; 
+ Thu, 05 Mar 2026 09:05:11 -0800 (PST)
 Received: from [192.168.69.208] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439c2f8c0e7sm19850263f8f.29.2026.03.05.09.04.35
+ 5b1f17b1804b1-4851ec74bc7sm45228175e9.0.2026.03.05.09.05.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 09:04:35 -0800 (PST)
-Message-ID: <f90be20c-c224-4c4f-9d1e-3360bde17c29@linaro.org>
-Date: Thu, 5 Mar 2026 18:04:35 +0100
+ Thu, 05 Mar 2026 09:05:10 -0800 (PST)
+Message-ID: <5e1375b6-9629-4682-b7d3-24324b684180@linaro.org>
+Date: Thu, 5 Mar 2026 18:05:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 08/12] hvf: arm: allow exposing minimal PMU when
- running with nested virt on
+Subject: Re: [PATCH v11 09/12] target/arm: hvf: add asserts for code paths not
+ leveraged when using the vGIC
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -79,20 +80,20 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
  qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
 References: <20260228220837.35275-1-mohamed@unpredictable.fr>
- <20260228220837.35275-9-mohamed@unpredictable.fr>
+ <20260228220837.35275-10-mohamed@unpredictable.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260228220837.35275-9-mohamed@unpredictable.fr>
+In-Reply-To: <20260228220837.35275-10-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,13 +110,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 28/2/26 23:08, Mohamed Mediouni wrote:
-> When running with nested virt on, a minimum PMU is exposed by Hypervisor.framework
-> if a valid PMUVer register value is set. That PMU isn't exposed otherwise.
+> When using the vGIC, timers are directly handled by the platform.
+> No vmexits ought to happen in that case. Abort if reaching those code paths.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Reviewed-by: Mads Ynddal <mads@ynddal.dk>
 > ---
->   target/arm/hvf/hvf.c | 4 ++++
->   1 file changed, 4 insertions(+)
+>   target/arm/hvf/hvf.c | 3 +++
+>   1 file changed, 3 insertions(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

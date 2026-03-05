@@ -4,97 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2B1F47CA8
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 18:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FAE4F513E1
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:00:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyDF8-0003C2-0b; Thu, 05 Mar 2026 13:16:14 -0500
+	id 1vyGjM-0006Mo-8F; Thu, 05 Mar 2026 16:59:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyDEw-0003BY-PG
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 13:16:03 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGjL-0006MZ-CW
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 16:59:39 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyDEt-0006gQ-67
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 13:16:01 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-439baf33150so3678538f8f.0
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 10:15:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGjJ-0008Uz-RD
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 16:59:39 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4836f4cbe0bso73507405e9.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 13:59:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772734556; x=1773339356; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NlmsCJf2fzHTAC0WK8L7tDQENhBUUh9+SRB8PgBoI0Y=;
- b=PQ+fEu3oz8NR791Tv2BI2BtI9tadlSot14vNfOzFfBCdFC32ZvDNmqZnnb5z9c2aJg
- uN/fv/B+vpwGc5VDSDytL1RWEHcF2HsnSffTb/FTb5QPtmUdgMAVzF3VEKQxIh4+gnu+
- FkAHlPcWuMzkGRkPmSTHzG/IH6VAkZqF73CM22QeGvUbWygzmizKXxBg6jaol7YzBVoQ
- rVUa6ifxSx1p1ThLzu7NUZeU/hbGiqTIotMsLfboAatSx1igbIUNZdmnqXvuQCWvTlfY
- 0qft7wOygAVYhi8It3AOZBiLV+mQ9wPWBpqkVUxydvaGLYeapPMFUnfIsUIPESRQepyM
- uv8g==
+ d=linaro.org; s=google; t=1772747976; x=1773352776; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=AhvdEgbWbb60CUEgoGGrbB8sqJEe9ifPj9q7uHtYrHg=;
+ b=xQtzt9zRqMFZVSXOaEGsxgqFfTWJXIUcmzxYrm9kWEs4ji32EjKmuLwxgoFSj4j8SH
+ d7AwCh0E3Q+yyb/P0+dqspWjpDy2yK78KlPn0AdFMclRZCjVdpviFbrgUBpcXevCwBub
+ RPYTyOCMeXXIp7TtlcLE3uQWB1IE1ohlf2MQMKE9szpRei2OKra5OTfiX487XDsvjV1T
+ 7GewqtsSwd3M656F4udS5jhibCzRvjQzqReNqJmFD90YMNki9Zfy5B015dPRfhk/+3+9
+ jdN4P3uuRwPsz+gFOHq6viZ6CFCL3AQ1In/TXmy3W8Idgbh8Z3kqg0Cd6NzL7gkwktg8
+ ieiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772734556; x=1773339356;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=NlmsCJf2fzHTAC0WK8L7tDQENhBUUh9+SRB8PgBoI0Y=;
- b=w1yBWyYor885Z0tjjEzZfJ5MLaYyu66g5CfDuYvNGS2vDsvrcoxuSX4jrs4QrVnOt0
- wBb/rRzs5LXP0VeNrkAqiFAUX4XmusL31TQkkt84+BBMIDBvl18RxnS2wU+ntAY/F4Ta
- RjiBsXRZWEcrkp3gfGdng3pZspRITRDiwNsPge+SdhwYrnpWrRRN+Gma9oqo6+Igoxov
- LzlWNhEsOei0BiLQyYRjACQ56dOjdwrmam5n7YOglL/8QWmoFMXVAFJDK9eW3c7nwf9H
- /8eYa7oJQ7WfjISMREoH9ldfy0jDB0yXbpRrf6XD4uXTa29iXFWXjj2Yl0WCMzOEdTWP
- GSVQ==
+ d=1e100.net; s=20230601; t=1772747976; x=1773352776;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AhvdEgbWbb60CUEgoGGrbB8sqJEe9ifPj9q7uHtYrHg=;
+ b=vWgx4+fvsVL4biryeFMNh3aOfFWI8PapGg2hTn96gPqcec9FkizrbenM0z+1ckT9Ri
+ 3XSgARGI9ivQCAq0WWIfiedlvPhgdmaK+EIg3jFWMKtB7Z7pFdCvPK5uBij1K4ZTTdA8
+ Mt96tGIDHxRUrwU8ppuKT7rHM0UCby9sJyEvzK6LR1edVjf0SiZiJrbEEpBrcAsT1f0B
+ /9ZCE82IIGpEaAnaDUB/ZPwyULyYc+6GL7a5ZZLtyQJm1F9wUZvXFo5JFK30wUvtIDB6
+ EvxRws4kbl/4NgAQPkvVfcGF4N3elCPBsm2r70A9w5oq1bXYOGe+tnj9163vFWgQwN+1
+ P0KQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWo+XX2LaM2ELt0oBDA0JYRpqvKDzoMX9j8KVTtwMQADRIiNjJKsgz0fj4g5eYuUdlyekyCEKPbMA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz3U/3jkm4PUYzxg8zH2pHzJm7CtDECYDl2Zh3rpU9iIZWN/FU2
- wJud/G5Vp9kaVqNtRSH3kW3d1clBogrzINmkSVLWL3PaZ5KRpScbM1+O
-X-Gm-Gg: ATEYQzy/iIvSwb+lOOTw+jEwuFdc1rrfLLcuTk+HblSQiVDVESKizdXyhnGfqmqxsCK
- en7G3md9aOnaPh7Yd+tBrNb2W0FzrvYABymy8U3y7woKZo+hUTyJPSKtViEhg6UAchXFiW1f2Vu
- MIoaTOan6UG1bNddZbxW5hX2oACimNoiqoUJh02OvwsumJ48PxLJsQ/nGe2ubFEUqX6+SteBb14
- gHTEa4I9RZHw169RbwPRoIQVxhdEVjtrvVyULr7pj33Zayfd18dxS7XvkFn8zrWxNUxyFCq7L6T
- bp+roVD8xrVJJHFuvQPglH93jVd2khgF7R+J6yxs7vQb09A3Zk9pxZNt5+iZ2SztdXGJ73XIiRJ
- GiIUwn180xYlId3DnWdBEUdsNjzooaXr417UgLyOerBncpaDtS3MczR7mjeSdD6ImHstTBwWrIE
- IelWP2Dkt50w8vqykj2RyZn3MLMjEJRw==
-X-Received: by 2002:a05:6000:438a:b0:439:c560:bb79 with SMTP id
- ffacd0b85a97d-439cfd65a2emr6126449f8f.17.1772734555672; 
- Thu, 05 Mar 2026 10:15:55 -0800 (PST)
-Received: from ehlo.thunderbird.net ([185.238.219.34])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439ac9f3e5bsm42100771f8f.37.2026.03.05.10.15.54
+ AJvYcCUKH0NnQnCnecFI469a4D4MW8GuRDTEyTwdXBbrRTwSxMbqcPYs4nMOMpIz1RzlH4Ufk5gizuBxLw==@nongnu.org
+X-Gm-Message-State: AOJu0Yziej2fJSRYVqseRtrkhpNzZ4n/zU9B7qLHffKvTliEc7m0dVQ1
+ cZJwlhLr1uDJD1Gnu6A0UmVYLj54z9nBZx1FtA5IYP+U7TFCU6FwigzfZVIGCmuKnzk=
+X-Gm-Gg: ATEYQzwCJIXTsPxQHiatik0ayXbx4VFOsP/lefWOTRIVgQ5aTa6OIpC0r6a3zZHus/i
+ Tl2VPCE2GQEP557x8iKNybF0Unhmz3F4Cx1D3GycQDWPXnI252DyrEhUX9ce8AkqrP23S3rUCSc
+ ywZ+cvLOMfaBrzKGHZKvBVyF1Xuii2uoFAA6fTQDTyzFgLyUhBBf4HXcbo57DfcgTrrlY+S8rAP
+ TMKLUWYNmsWfSj1XY703bv/315IY756Y86/Hoz4o5RtBCe9j+NxKEnc2dWAj4MzoY9chflwmBK6
+ mYhYOgMuqDcjBhVA/ttllm/3vqAJSTY66i2Y+zyO5dgB1Dajcr3c1ei5rZJN30oDjn4xNjK8FDx
+ wuE27i/8qi2ePPg8IgXehbLFNvPZbcYU64xhroIMdutxgUa1Pl62KCAD2kX7hVkFhbtrlCIfw0t
+ NBvTMZ4BF1+bDMJ4hUvBHatx3TJ0DtK1gGoN42rS1VAVi9oUotyfdy84pQgFqaQz86LQ==
+X-Received: by 2002:a05:600c:3510:b0:480:690e:f14a with SMTP id
+ 5b1f17b1804b1-485235b4e40mr15624265e9.14.1772747975765; 
+ Thu, 05 Mar 2026 13:59:35 -0800 (PST)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851faf089csm55861545e9.12.2026.03.05.13.59.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 10:15:55 -0800 (PST)
-Date: Thu, 05 Mar 2026 17:53:29 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-arm@nongnu.org,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Subject: Re: [PATCH v2 12/13] hw/char/serial: Inherit from SysBusDevice
-In-Reply-To: <CAFEAcA9LLOTOrkUQW3Q74rrOiXGa7BoC8Lu11O9ESC-36WHtew@mail.gmail.com>
-References: <20260303222143.142741-1-shentey@gmail.com>
- <20260303222143.142741-13-shentey@gmail.com>
- <CAFEAcA9LLOTOrkUQW3Q74rrOiXGa7BoC8Lu11O9ESC-36WHtew@mail.gmail.com>
-Message-ID: <A0F637F1-BB16-42CB-AC5E-80D71DF8057B@gmail.com>
+ Thu, 05 Mar 2026 13:59:35 -0800 (PST)
+Message-ID: <ca77a80b-cd67-45f5-9a40-9e800ce8e4a7@linaro.org>
+Date: Thu, 5 Mar 2026 22:59:34 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 03/12] accel, hw/arm, include/system/hvf:
+ infrastructure changes for HVF vGIC
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
+ <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
+ qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
+References: <20260228220837.35275-1-mohamed@unpredictable.fr>
+ <20260228220837.35275-4-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260228220837.35275-4-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -112,94 +108,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 28/2/26 23:08, Mohamed Mediouni wrote:
+> Misc changes needed for HVF vGIC enablement.
+> 
+> Note: x86_64 macOS exposes interrupt controller virtualisation since macOS 12.
+> Keeping an #ifdef here in case we end up supporting that...
+> 
+> However, given that x86_64 macOS is on its way out, it'll probably (?) not be supported in Qemu.
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   accel/hvf/hvf-all.c        | 50 ++++++++++++++++++++++++++++++++++++++
+>   accel/stubs/hvf-stub.c     |  1 +
+>   hw/arm/virt.c              | 23 +++++++++++++++---
+>   hw/intc/arm_gicv3_common.c |  3 +++
+>   include/system/hvf.h       |  3 +++
+>   system/vl.c                |  2 ++
+>   6 files changed, 78 insertions(+), 4 deletions(-)
 
-
-Am 5=2E M=C3=A4rz 2026 10:07:23 UTC schrieb Peter Maydell <peter=2Emaydell=
-@linaro=2Eorg>:
->On Tue, 3 Mar 2026 at 22:22, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> SerialState currently inherits just from DeviceState and serial devices
->> use SerialState as an "IP block"=2E Since DeviceState doesn't have an A=
-PI
->> to provide MMIO regions or IRQs, all serial devices access attributes
->> internal to SerialState directly=2E Fix this by having SerialState inhe=
-rit
->> from SysBusDevice=2E
->>
->> In addition, DeviceState doesn't participate in the reset framework
->> while SysBusDevice does=2E This allows for implementing reset
->> functionality more idiomatically=2E
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->
->
->
->> diff --git a/hw/char/diva-gsp=2Ec b/hw/char/diva-gsp=2Ec
->> index 2ea60103ea=2E=2E55c42effe9 100644
->> --- a/hw/char/diva-gsp=2Ec
->> +++ b/hw/char/diva-gsp=2Ec
->> @@ -56,13 +56,13 @@ typedef struct PCIDivaSerialState {
->>  static void diva_pci_exit(PCIDevice *dev)
->>  {
->>      PCIDivaSerialState *pci =3D DO_UPCAST(PCIDivaSerialState, dev, dev=
-);
->> -    SerialState *s;
->>      int i;
->>
->>      for (i =3D 0; i < pci->ports; i++) {
->> -        s =3D pci->state + i;
->> -        qdev_unrealize(DEVICE(s));
->> -        memory_region_del_subregion(&pci->membar, &s->io);
->> +        SysBusDevice *sbd =3D SYS_BUS_DEVICE(pci->state + i);
->> +        qdev_unrealize(DEVICE(sbd));
->> +        memory_region_del_subregion(&pci->membar,
->> +                                    sysbus_mmio_get_region(sbd, 0));
->>      }
->>      qemu_free_irqs(pci->irqs, pci->ports);
->>  }
->
->The ordering here looks a little odd -- is it really OK to
->keep using sbd (passing it to sysbus_mmio_get_region()) after
->we have unrealized the device ? Remove the region from the membar
->first and then unrealize would seem a more natural order=2E
-
-Indeed=2E Will add a patch before this one=2E
-
-Thanks,
-Bermhard
-
->Perhaps the MR refcounts here save us, though=2E
->
->> diff --git a/hw/char/serial-pci-multi=2Ec b/hw/char/serial-pci-multi=2E=
-c
->> index 38e5a78e6f=2E=2E4e51d14111 100644
->> --- a/hw/char/serial-pci-multi=2Ec
->> +++ b/hw/char/serial-pci-multi=2Ec
->> @@ -50,13 +50,13 @@ typedef struct PCIMultiSerialState {
->>  static void multi_serial_pci_exit(PCIDevice *dev)
->>  {
->>      PCIMultiSerialState *pci =3D DO_UPCAST(PCIMultiSerialState, dev, d=
-ev);
->> -    SerialState *s;
->>      int i;
->>
->>      for (i =3D 0; i < pci->ports; i++) {
->> -        s =3D pci->state + i;
->> -        qdev_unrealize(DEVICE(s));
->> -        memory_region_del_subregion(&pci->iobar, &s->io);
->> +        SysBusDevice *sbd =3D SYS_BUS_DEVICE(pci->state + i);
->> +        qdev_unrealize(DEVICE(sbd));
->> +        memory_region_del_subregion(&pci->iobar,
->> +                                    sysbus_mmio_get_region(sbd, 0));
->>      }
->>  }
->
->Similarly here=2E
->
->Otherwise
->Reviewed-by: Peter Maydell <peter=2Emaydell@linaro=2Eorg>
->
->thanks
->-- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

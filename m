@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90197F30928
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 10:03:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B0DF30928
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 10:08:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vy5YH-00038Z-0p; Thu, 05 Mar 2026 05:03:29 -0500
+	id 1vy5cL-0004bW-BR; Thu, 05 Mar 2026 05:07:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vy5YG-000373-3L
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 05:03:28 -0500
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1vy5cI-0004Zg-9m
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 05:07:38 -0500
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vy5YD-000755-Ih
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 05:03:26 -0500
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-64c31ca77b4so7696045d50.2
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 02:03:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772705004; cv=none;
+ id 1vy5cG-0007W5-DG
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 05:07:37 -0500
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-7986d231b3cso104040837b3.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 02:07:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772705255; cv=none;
  d=google.com; s=arc-20240605;
- b=RA7fza6tfjwPft+sbOGrvwsEJhF3FPBLZEeKNMQRAaReLM4vvnrqnmLpazw4cSJA9o
- OjCfZ4RNBPcjwpRxx/9LkBUcUNHY7jWspYYriQZ9NnJOEpvbf+VmQT8uQmRazb38Ho01
- naHIIU+SEWkLwpANd3bnDEIfjZPAzofASbcE0kD/XGq+n+40FozzLPq9TuBlF+Rt2lVB
- wemMoDXvjLji42/Y3dEg1Cjfnihrz2MCpnecyTHVW8YDVtSsK8pJiaXkwUXG81RIKem6
- jvP7powV4WqlO/holOsOPqwnf3hR3y+2F3/Gqtm8dqlaMbSw+1zx5Mxg19ufQPLgfZz4
- rPwg==
+ b=aXkSvsktyWulVFK+BxyiJzZLM5tdaA8OUv3aEi3/TmqwB7ObH/DtakCqDbQaiI+65v
+ q7givvKJXVdZhoXH+qCgAK/HPhqWSvembhaXJFwQIt160hgqe0wAV82ZrxSE8g4sMGko
+ 8SeZT4PWjl6ZGchgHLy3yitSLsAtJ7wQ2w1PR1fNMo+MfMmf0xMyN9M2RZdXltYDrBcT
+ pQ3vEOACeVATMYt9pl3EzOPY/R5jqe5IY8zQOnOrWRaRFoOebfXUGxVthdCha+7qa3BF
+ udQU1Jpj2yVJ48faw8OVtSi0MXSlQrGB8KjIjs5giEgZFCAxVHgA0PRXz+8p0gFF2HXL
+ 2jJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=KHd7yIKGZb17pMwIRnOnZZ5BJusJ15j8VZsmgrfEs80=;
- fh=CLeRtDMnCDpAhrO4pGFANd72iPTXXBKAr/NSd3b5ReE=;
- b=cEpNLV/wgtMW9bcy1WicEBqn5yZ28Velq2lGU4FBJ7wI4SQSB3eyOCUiJjlnh6iodZ
- /3O+ooikTaAglvqBwYnSLqIeEJM4C0XIBySTeFaIELPGNjr/tkp4bnBpctSiO9dVsyZ6
- APWbJcFr/fmeUFh8c3kMiuYIv39zReh85TevBmHHSD5UDCNkc+QxS95P88c2h05yzL/M
- VPEUKsit6H/DuUNCG0FLXuiN3LlS9j0nMb6Z4v3DN7d2Sz9xjpyWxm5lSlxHYOJQ0HME
- GURS5AcQADkzMjQ9XrwikGdJx81P3JXHxzl49IE/SFHvp4QnkKK2n2X5WV+ECfGKoSHu
- JY6A==; darn=nongnu.org
+ bh=+46PBAE5dfExJ6zUoKpB0SFCPla//ppQb7h2XoBIa1E=;
+ fh=mkCpBfNn0bGaHuWdD7hiFjC/lk+7I/mczKYyMMN6tAE=;
+ b=jtQ/nRUYbfUM53JCMPHwmxBoWSuaeCePR4SAfz1KLERPlQJLVzOPnBrE2N+vlornKy
+ 0hAFy9L9P7EjKp3nK4eopGhPPYSkBmqgiOk6lV4hI0m2q2Q6nK6E1vsyPHMc71iYN22Z
+ c99Oe0NjT7axfhEs4f40TskoatLBlomhatsJIk6QTYOoIz5yHcGYVEUX7uIm5XDt1+KB
+ GG68zOyKwV6r7M0/r+elS5TQkvYLawYqxwh1C4ILURgoGclzS3kOfMdgZriLUQoBoTOH
+ FmJneAwr2xGBqQMZZzvXfmdchJTOHhpxKZt6St4/V86U9vGdtJlMyBtWHoxYmFBQOO6T
+ JXmg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772705004; x=1773309804; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772705255; x=1773310055; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KHd7yIKGZb17pMwIRnOnZZ5BJusJ15j8VZsmgrfEs80=;
- b=HnOdswRORyvfUuIo5p3iTYYldtjTeT4t9YiHGi6LX092+ZHSbLRDmvrd/JaFzt8CGj
- urs/kVztnmuwIzy3cDtoANbZCJt2+ng+WrkK6oGnAQ+cHNuAI0gUaJcNoMM/c1QYWBf6
- PYkEDZE4qYUgs/0KUS6FStpg8M9/Hi0qZad919dXYd+PkTnVPxBqB4RVAiBGTTLsnBUe
- MZ/lwHRQlQghZezoUHkUiniDrAxOLHHVPmvdeqc7iOnLaoUq2vl4osJzZuYkPZqzp7HF
- YImTU9H7xTyBa2LLFUCcvLDQULAvJ3ZFt+s6HofvsWQ/3Wl6peNBRnNH8UHOJIQSmMtz
- AqZw==
+ bh=+46PBAE5dfExJ6zUoKpB0SFCPla//ppQb7h2XoBIa1E=;
+ b=xd19bQ6E2STDqTKekquppd9HZoEViVwwuw3iY/ZxTHFCs2fuXYCl8gHwTjnCo5Bhjh
+ B8wnYPj0BpAdz2/TzQuxZ909krIOTLjxZ4uQEQwGiA8E7Fy6DzpXYcbSJY/eDjMDHSnH
+ jI9LYVNnuAlRUWXTuenLxqn/mlUzZTxYWFqLPVrH+MWqJ1N0cDORQHdnQ9zHnpevQlR9
+ 2oNjFXUKPDZ3e4BSfC+cLoD0NE9KHAWHBwH39wMKEmglg6maz8HnLyJz2N5aABQdv0MW
+ JwiaWg6M5aSuU+A2n9QU7jwXO+LCnPzVDKl9BjBLMq4VuH3gCa2V811jXpNTJcmOroNA
+ 3BXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772705004; x=1773309804;
+ d=1e100.net; s=20230601; t=1772705255; x=1773310055;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KHd7yIKGZb17pMwIRnOnZZ5BJusJ15j8VZsmgrfEs80=;
- b=JpcYt2IPiF5Y31/Upvy0sUALbevaUz8XuxOa+ANQO3KB/Jht8zjDeTvLOE66d6M9eO
- jjdUJsq/ldBZHKOtxsjV6YudFBTL5o4+6eXHc4pBNKY3I6d9lj+EelU9UjWE7qulKzfd
- Svad8PqH8CEzkBFzfo+iqCGgjI77hrnPqt/iwsQoaVkrGZjEX/EyuYfDqmFAFupGLIXS
- YMjM2icPqyWtC0T501tChHg1Z16WXlNRQF+sapSa2QP4xAMC5D+teBzI2iEmYc2M9QJw
- srVm9XETUE0p7Ej0mFeVzfALs5I4jZOLmZ1xguHZRmEKJTIOhYJHvpHfyPih/hhX8hgZ
- CmrA==
+ bh=+46PBAE5dfExJ6zUoKpB0SFCPla//ppQb7h2XoBIa1E=;
+ b=c2p+v1XSOr3gD3eZqkkZ9EUA5bYGp/GZ9/Puh14UvC2OABtVjc+WxUljIjA34uf4qc
+ Aywi7zlEHJWTe6TAUCp/YIOukVp5N/iBtJL+RZ3lcfRLT6aov+wjryXhgrEcZJX5ILds
+ urAptoRt/tLlb2Pj1KXVlySRXCbY+SbI0QVZR/qq9Cai7iGMBR97qdOW9ZusdfQ7I08a
+ x1N+SX38atEJwLt5h9HoXPoW+eaS6OsgUnDPaVJ3rbOhUGhl4NCkaHN++3KLrTgbEr/j
+ f3ew0Vzk2ZhTWmxPJzNzvIjuCf4+lOlciJdbcbIEJmoTOiWef/Twrawf6Dh6aB2N1VxC
+ oCfA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVXsxRyQkf4h21UEzbtw6njlMIARD4Nxa4n185aY3ju7u31vwAnMiDC4KuVRrCIlhCS8dFiTu4fHw==@nongnu.org
-X-Gm-Message-State: AOJu0YzuITgwGERmXMq5U813wL/PuvkI/3GL7q23oZBZyVjdvnandZE1
- +3erx7uFgdpr8ePjhY2KSl1eugJe5rAl+RO1JJSw8Jiq5R3XC3CAmJoRntu/E/LlfnWyZ5c3alT
- NBqCeAJlb67xo0nihpanu1ZJBrKBXOXgrQdx3uGIMmA==
-X-Gm-Gg: ATEYQzwiC1jJNfTpQjrMeP8HkDQwcWN7J9KhklBPiNAfGITGnXmypbeUOi2FdxfTmeb
- HufgDPVkyTmYjUfHXdnrCLDMQnBdG/sv4J8uV2j2WXxa0SRexgpZPs/mXMPwAx434T/T38OXtyn
- //AkXevRal35T65gIUFqflldZbQhUHZ8PswC9wJ7AncrpG/0H6GE+gMDUIYvYIC++LcAParYWWr
- Y53yh5noX00uf7hjer0JRc9okEL0DbShgpykSvp1ZGAiDiLvTMpdmy9xbO5nHD+8peUarURPNEq
- Lq6kpKH5nOgsmt7PTwuwqD467qAaNPWMNxKsPUfJEjaz3oCpI2cSxTdWXHWSt93Nm8o=
-X-Received: by 2002:a05:690e:1248:b0:64a:ea66:bb53 with SMTP id
- 956f58d0204a3-64cf9b488d8mr4701146d50.23.1772705004047; Thu, 05 Mar 2026
- 02:03:24 -0800 (PST)
+ AJvYcCWBmU1/SJ6L7t8c4lMXrHZ54JplEG30dcl7AKXxlULRvJlLTgEMAoL3vtRGn+ALEs26gC6f/NlEUQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxNnVqBh+cIueAlhzv19gqHcefvaAc6tnYJUzWFFUZT7YzkRWLB
+ 74KqcjELyfPVoE2+ad5lk+/9yrGBzCIylDtw0ZbkOeWn51oQxNDmZpRNcLPeqT+sV2lo1xJcYq5
+ JcnFmqaHs/j8JHbjiq1LGmEdJ/oy538twg8UXy1fyEQ==
+X-Gm-Gg: ATEYQzx4VgoeAbt0SuN9bvzlsClh/e1L1nNQpEy45u3u/2bcTJUG4uFRxNTqVgPGYH4
+ 0ofcRudWC5hWipVQYSB4c/W5EnLtzJ836W00iSqet/NeSuW3IGnW2Z5aiyz2t12bwzpQcyuhMEP
+ a4TE3SySt1XQ+3oahTywG+q73bJSOCwHIeIk7CV8cYbsnlssGxyN1WzQecozeFAwMbnylb0hF86
+ agX0UgWtxcw5yoENh2GPZ/6mPIbt0ytINCSkt8oKCvRYR8wv6f1gVLo6/cw/JUq5fSELE5Vi1FH
+ DqdJa0LI5cecRf5NMskqsIA+X3YalGPTyjNZL/b5yfootQw/hDspqe4x+fxzRt/9TAs=
+X-Received: by 2002:a05:690e:118d:b0:649:601e:432f with SMTP id
+ 956f58d0204a3-64d070f58e1mr1261297d50.16.1772705255009; Thu, 05 Mar 2026
+ 02:07:35 -0800 (PST)
 MIME-Version: 1.0
 References: <20260303222143.142741-1-shentey@gmail.com>
- <20260303222143.142741-12-shentey@gmail.com>
-In-Reply-To: <20260303222143.142741-12-shentey@gmail.com>
+ <20260303222143.142741-13-shentey@gmail.com>
+In-Reply-To: <20260303222143.142741-13-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Mar 2026 10:03:12 +0000
-X-Gm-Features: AaiRm52UNATOSx0iu2hbcolabT6dSuIWqmHWdFy47gJ-CZBrSuQLKhYZHynJSTc
-Message-ID: <CAFEAcA-bOjd7vRKpnzU18aNUFuMb4eJYcDAH0Xcbf4SDr6ZO5g@mail.gmail.com>
-Subject: Re: [PATCH v2 11/13] hw/char/serial: Keep MemoryRegionOps private
+Date: Thu, 5 Mar 2026 10:07:23 +0000
+X-Gm-Features: AaiRm51NkiPdLBQUrOzgk6o0VMlTRHI-BEEjXNeIbRe9fT-B4AqTejoCmfqH1pc
+Message-ID: <CAFEAcA9LLOTOrkUQW3Q74rrOiXGa7BoC8Lu11O9ESC-36WHtew@mail.gmail.com>
+Subject: Re: [PATCH v2 12/13] hw/char/serial: Inherit from SysBusDevice
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -101,8 +101,8 @@ Cc: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
  Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,58 +127,75 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Tue, 3 Mar 2026 at 22:22, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> Rather than requiring users of TYPE_SERIAL to initialize the MMIO region
-> themselves, make it generic enough to be configured via properties. This
-> makes TYPE_SERIAL more self-contained and prepares it for being turned
-> into a SysBusDevice.
+> SerialState currently inherits just from DeviceState and serial devices
+> use SerialState as an "IP block". Since DeviceState doesn't have an API
+> to provide MMIO regions or IRQs, all serial devices access attributes
+> internal to SerialState directly. Fix this by having SerialState inherit
+> from SysBusDevice.
+>
+> In addition, DeviceState doesn't participate in the reset framework
+> while SysBusDevice does. This allows for implementing reset
+> functionality more idiomatically.
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->  include/hw/char/serial-mm.h |  3 --
->  include/hw/char/serial.h    |  4 +-
->  hw/char/diva-gsp.c          |  5 ---
->  hw/char/serial-isa.c        |  1 -
->  hw/char/serial-mm.c         | 51 -------------------------
->  hw/char/serial-pci-multi.c  |  5 ---
->  hw/char/serial-pci.c        |  1 -
->  hw/char/serial.c            | 76 ++++++++++++++++++++++++++++++-------
->  8 files changed, 66 insertions(+), 80 deletions(-)
 
 
 
-This does leave TYPE_SERIAL_MM a bit of a do-nothing
-extra wrapper, as Balaton says. However I don't think
-it's being used by any versioned machine types, so we
-could maybe look after this at the possibility of dropping
-the wrapper (by having serial_mm_init() create a TYPE_SERIAL
-directly, and dropping TYPE_SERIAL_MM entirely). I don't
-think we strictly need to do that, though -- being able
-to clean up the reset handling here is worthwhile in
-itself.
+> diff --git a/hw/char/diva-gsp.c b/hw/char/diva-gsp.c
+> index 2ea60103ea..55c42effe9 100644
+> --- a/hw/char/diva-gsp.c
+> +++ b/hw/char/diva-gsp.c
+> @@ -56,13 +56,13 @@ typedef struct PCIDivaSerialState {
+>  static void diva_pci_exit(PCIDevice *dev)
+>  {
+>      PCIDivaSerialState *pci = DO_UPCAST(PCIDivaSerialState, dev, dev);
+> -    SerialState *s;
+>      int i;
+>
+>      for (i = 0; i < pci->ports; i++) {
+> -        s = pci->state + i;
+> -        qdev_unrealize(DEVICE(s));
+> -        memory_region_del_subregion(&pci->membar, &s->io);
+> +        SysBusDevice *sbd = SYS_BUS_DEVICE(pci->state + i);
+> +        qdev_unrealize(DEVICE(sbd));
+> +        memory_region_del_subregion(&pci->membar,
+> +                                    sysbus_mmio_get_region(sbd, 0));
+>      }
+>      qemu_free_irqs(pci->irqs, pci->ports);
+>  }
 
-I do have one question:
+The ordering here looks a little odd -- is it really OK to
+keep using sbd (passing it to sysbus_mmio_get_region()) after
+we have unrealized the device ? Remove the region from the membar
+first and then unrealize would seem a more natural order.
+Perhaps the MR refcounts here save us, though.
 
-> +    memory_region_init_io(&s->io, OBJECT(s),
-> +                          s->regshift ? &serial_mm_ops[s->endianness]
-> +                                      : &serial_io_ops,
-> +                          s, "serial", 8 << s->regshift);
+> diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+> index 38e5a78e6f..4e51d14111 100644
+> --- a/hw/char/serial-pci-multi.c
+> +++ b/hw/char/serial-pci-multi.c
+> @@ -50,13 +50,13 @@ typedef struct PCIMultiSerialState {
+>  static void multi_serial_pci_exit(PCIDevice *dev)
+>  {
+>      PCIMultiSerialState *pci = DO_UPCAST(PCIMultiSerialState, dev, dev);
+> -    SerialState *s;
+>      int i;
+>
+>      for (i = 0; i < pci->ports; i++) {
+> -        s = pci->state + i;
+> -        qdev_unrealize(DEVICE(s));
+> -        memory_region_del_subregion(&pci->iobar, &s->io);
+> +        SysBusDevice *sbd = SYS_BUS_DEVICE(pci->state + i);
+> +        qdev_unrealize(DEVICE(sbd));
+> +        memory_region_del_subregion(&pci->iobar,
+> +                                    sysbus_mmio_get_region(sbd, 0));
+>      }
+>  }
 
-This means that users of serial_mm_init() which pass 0 for
-regshift now get serial_io_ops rather than serial_mm_ops.
-That affects a handful of machines. I'm not sure if
-this makes a guest-visible difference (very possibly not),
-but for a "refactoring" type patch like this I'd rather
-err on the safe side and keep the same MemoryRegionOps
-if we can. This could be awkward, though, because we
-definitely have users of TYPE_SERIAL_MM which rely on
-the default regshift property value being 0. Maybe we
-can have the handful of places that want the serial_io_ops
-do an explicit setting of some property to request that?
+Similarly here.
 
-The other approach is to analyse the code and satisfy
-ourselves that serial_io_ops and serial_mm_ops with
-regshift == 0 really do have exactly identical behaviour,
-and note that in the commit message.
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

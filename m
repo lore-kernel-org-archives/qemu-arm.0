@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB18F47CA5
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 18:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D407F47CA5
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 18:05:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyCyK-0001Yv-AF; Thu, 05 Mar 2026 12:58:52 -0500
+	id 1vyCyH-0001DJ-Ri; Thu, 05 Mar 2026 12:58:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy9-0000Lw-0V
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:42 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy3-0000E9-GY
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:36 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCy7-0003nd-11
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:40 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCxy-0003ke-Gh
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772733518;
+ s=mimecast20190719; t=1772733507;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gMQduxnluG/Tkw5NdD3LVshsRn8xQODMCyimqNUgoVw=;
- b=gXZMZYH1JyKnAz9teSYP3ji15+uNpGnn7LiYry/wf/cMJwfDi+n5/IBk3SCXrW/l12+r2A
- wGIY4i0+Rh+wbjykhiuLkyVkHzQRx4xfvO7nsCGSM3xWu/HUH/9+Pc4fQ6nK1H/yAdTCX9
- 93HoilMSGtn1s6V//shDBeu0aSKEpCA=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=9gtjP6lKT8wRAcvLCssYZcH13XaKKj0cEAmNt4SrgQU=;
+ b=hLO10J1VMVGcodGSvj5BuR4vca0W67ShUuoPNEC55K8vw79yYXlrdGHn+2oq1K0We9FQ2C
+ eiV17bOXhdFNlwKVKQ1H2I5OnOa+poWpdGlf6JFy8jO0a1dHhGnT9drFaebwTZJ2txLsZn
+ 1nOTEmq5rVvHK/jU33+D7RlE3WVNhag=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-617-aiS3zozsPnGK1QeATM8vjA-1; Thu,
- 05 Mar 2026 12:58:36 -0500
-X-MC-Unique: aiS3zozsPnGK1QeATM8vjA-1
-X-Mimecast-MFC-AGG-ID: aiS3zozsPnGK1QeATM8vjA_1772733515
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-357-fHml3G3FOBO3Ip9Bpx87hQ-1; Thu,
+ 05 Mar 2026 12:58:24 -0500
+X-MC-Unique: fHml3G3FOBO3Ip9Bpx87hQ-1
+X-Mimecast-MFC-AGG-ID: fHml3G3FOBO3Ip9Bpx87hQ_1772733502
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1826118005BA; Thu,  5 Mar 2026 17:58:35 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1FDF81956060; Thu,  5 Mar 2026 17:58:22 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 90D603003E9E; Thu,  5 Mar 2026 17:58:33 +0000 (UTC)
+ id 3C2F63003E9F; Thu,  5 Mar 2026 17:58:19 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 30/38] tests/functional/arm/test_aspeed_ast1060: Update test
- aspeed-zephyr-project v03.05
-Date: Thu,  5 Mar 2026 18:57:03 +0100
-Message-ID: <20260305175711.1119025-31-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Nabih Estefan <nabihestefan@google.com>
+Subject: [PULL 24/38] hw/i3c: Fix array bounds and storage in
+ i3c_addr_is_rsvd()
+Date: Thu,  5 Mar 2026 18:56:57 +0100
+Message-ID: <20260305175711.1119025-25-clg@redhat.com>
 In-Reply-To: <20260305175711.1119025-1-clg@redhat.com>
 References: <20260305175711.1119025-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Wxgaylt7CkIOtIBfr2Na1zBoOx_SURmZ69BVJdkDrkM_1772733515
+X-Mimecast-MFC-PROC-ID: 2MIiYGnMC91KsVZ8tTKLZc-_6LP1rEaw1zkAFR9f3xw_1772733502
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,55 +88,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The size of the is_rsvd lookup table in i3c_addr_is_rsvd() is 255 but
+should be 256 to cover all possible uint8_t address values and avoid
+potential out-of-bounds access.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260303063930.2878300-3-jamin_lin@aspeedtech.com
+The array should be static too as it's a constant lookup table.
+
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
+Link: https://lore.kernel.org/qemu-devel/20260302193931.382228-1-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/test_aspeed_ast1060.py | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ hw/i3c/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
-index eccb4252d86a..833cfb8272e7 100755
---- a/tests/functional/arm/test_aspeed_ast1060.py
-+++ b/tests/functional/arm/test_aspeed_ast1060.py
-@@ -11,18 +11,18 @@
+diff --git a/hw/i3c/core.c b/hw/i3c/core.c
+index 8a37099ce3ff..0a266e00a279 100644
+--- a/hw/i3c/core.c
++++ b/hw/i3c/core.c
+@@ -525,7 +525,7 @@ int i3c_target_ibi_finish(I3CTarget *t, uint8_t data)
  
- 
- class AST1060Machine(AspeedTest):
--    ASSET_ASPEED_AST1060_PROT_3_04 = Asset(
-+    ASSET_ASPEED_AST1060_PROT_3_05 = Asset(
-         ('https://github.com/AspeedTech-BMC'
--         '/aspeed-zephyr-project/releases/download/v03.04'
--         '/ast1060_prot_v03.04.tgz'),
--         'c0319df55f5b7a547efefc5a6ba374b881223d5fe1a776bfdd36f97fd1f31d50')
-+         '/aspeed-zephyr-project/releases/download/v03.05'
-+         '/ast1060_prot_v03.05.tgz'),
-+         '63b36d7420290726ca80477de254474b7cb79539a42819bb1fe2665d598dadb5')
- 
--    def test_arm_ast1060_prot_3_04(self):
-+    def test_arm_ast1060_prot_3_05(self):
-         self.set_machine('ast1060-evb')
- 
-         kernel_name = "ast1060_prot/zephyr.bin"
-         kernel_file = self.archive_extract(
--            self.ASSET_ASPEED_AST1060_PROT_3_04, member=kernel_name)
-+            self.ASSET_ASPEED_AST1060_PROT_3_05, member=kernel_name)
- 
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_file, '-nographic')
-@@ -35,7 +35,7 @@ def test_arm_ast1060_otp_blockdev_device(self):
-         self.vm.set_machine("ast1060-evb")
- 
-         kernel_name = "ast1060_prot/zephyr.bin"
--        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_04,
-+        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_05,
-                                            member=kernel_name)
-         otp_img = self.generate_otpmem_image()
- 
+ static bool i3c_addr_is_rsvd(uint8_t addr)
+ {
+-    const bool is_rsvd[255] = {
++    static const bool is_rsvd[256] = {
+         [0x00] = true,
+         [0x01] = true,
+         [0x02] = true,
 -- 
 2.53.0
 

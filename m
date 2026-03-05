@@ -4,64 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0274CEFCE47
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Mar 2026 21:25:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19ED9EEF303
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 06:16:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vxth8-0004qk-8I; Wed, 04 Mar 2026 16:23:50 -0500
+	id 1vy20h-0007aw-E6; Thu, 05 Mar 2026 01:16:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1vxtgb-0004k3-Hn; Wed, 04 Mar 2026 16:23:20 -0500
-Received: from forwardcorp1b.mail.yandex.net ([178.154.239.136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1vxtgX-0003RO-RJ; Wed, 04 Mar 2026 16:23:17 -0500
-Received: from mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- [IPv6:2a02:6b8:c0c:bf1f:0:640:c739:0])
- by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id 34BA880809;
- Thu, 05 Mar 2026 00:23:09 +0300 (MSK)
-Received: from vsementsov-lin (unknown [2a02:6bf:8080:921::1:1b])
- by mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id 5NwBA90AmW20-q645lfnf; Thu, 05 Mar 2026 00:23:08 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; t=1772659388;
- bh=8TqJW7KLyOGPsDaRdrX1G44CVXku6VnJ+G8bo1vDuhM=;
- h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
- b=dX9anVb6r1fJF6Y6RKCbjksWmwTvtr7zdkfSaAFnNGxaZ1IrvbVNN107sDh3KGp5R
- c7SvDmgYzhARsY/9+IW/IQjaH07mSRAnwaJV0y3HsryLDiJwgVmrA9Ug/s0NjjaTdg
- LhOa6aR4Ma0e8+8KzLyEFjqo34TktjkK65Ga4Lj4=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net;
- dkim=pass header.i=@yandex-team.ru
-From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-To: peterx@redhat.com
-Cc: farosas@suse.de, vsementsov@yandex-team.ru, qemu-devel@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-ppc@nongnu.org (open list:sPAPR (pseries)),
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v3 03/18] migration: make .post_save() a void function
-Date: Thu,  5 Mar 2026 00:22:47 +0300
-Message-ID: <20260304212303.667141-4-vsementsov@yandex-team.ru>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260304212303.667141-1-vsementsov@yandex-team.ru>
-References: <20260304212303.667141-1-vsementsov@yandex-team.ru>
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vy20e-0007Xr-VG
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 01:16:32 -0500
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vy20d-0002Mu-2f
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 01:16:32 -0500
+Received: by mail-vk1-xa30.google.com with SMTP id
+ 71dfb90a1353d-5674d8be45eso3101389e0c.1
+ for <qemu-arm@nongnu.org>; Wed, 04 Mar 2026 22:16:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772691389; x=1773296189; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=wetarsDDx4hL0vxUu93kA2syxQHamQ2uPA0pOMoZdIU=;
+ b=UIJOQfmvWV5TiSpZbT87rITfAv4CZWDJyWVj2i66s31wZuvNL9AZpxp9vhM3u+lHLI
+ zX2jSa3BPQC9c1RFiGRu7AZmkPHQmedd7zK2CC4GnUDGyP4RxHJB9d3zE5fpyQ2qMQx8
+ 6hu2DFUJTv7AGpkuxptOjLhz60BanjO4Cg8sa4y0l/8K4mNQ+wOfEN28ShHxWAyV7q1r
+ opYeb4ITkBJov7CR2ojr6G9NsaFyYeCgaxcWpySLY8gk4EtlSrdaQh7n+9lp1Fs1Ag/+
+ 4CMfkPP972OEbU7F0webkxsoEfSw3Z/RX6F4iKG/vi7eBXFpgKuJoCXVeCV+H6hMD2Ti
+ 45ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772691389; x=1773296189;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wetarsDDx4hL0vxUu93kA2syxQHamQ2uPA0pOMoZdIU=;
+ b=EdLV2LLTniMqn4dvtM3/SjIcPx8e8VViFvvNvqmQdq/9s+q8jdPBqqc1BJQtuXDjHz
+ VSD8fFMSoE6swdwcVb+kn8Bhkz1ICpGlqe67qN72DGUpA99Ml/tq8rDJDXBjUePPGrjf
+ 1eQpLUB5R1pEZ2Jl3ea/XHniuh5t2lmea0CiFFMD+gZsqrizB1hY0fdzo/3Nk5qn6pMr
+ JGmPrIJm7Sg/cWoNdrEfrUzNeInsQWtjavFjFd4F8bJfC9EbkZDkKNqWL3TMKBvMIPGx
+ iCMgjIBo9YfYdfb91aq5zEHfERcIUxrjZ7HBY9mAe/SxwDhpjxCJKDdUCC6y2puZrkJs
+ /Taw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXgvTRROz8D7xn2U/tTJffvaWfxQhCZmoGDF5ODOVkgjsH5Lq7sIt1SpBojUM2dYKyxfmG5jlrjmA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxc7vxGXSRZKkgq/5ReCaAFkXs/bTWXmdba2uYCvY5g3b6/0tIO
+ UoxDv+0OPBd+VwAFFdiL41swfUqLLERu7Y/a9gcO6XZ5bnnYdMiBWRCetK6x+wgvO8k=
+X-Gm-Gg: ATEYQzx2pd66ncsGdDVoc8apLUd7cTRhlESSJcfXVDDU5RveBff6VRSC2Jv/LsoqjA1
+ lY2V/YMQeSfuKYZtm71fH9aOcrdMQ3c8oXq074i/WC2gAVggZ6ud6/XHEsiAUBDFYey4okNP3cM
+ 2Oyk5zAJ01A6Ks2PScqyASu0SVeRkFixPs9Ye/G63yI+2xUbgxdpH+ZHJ0K9l7zkU0gFSF7u5+O
+ 7x8V249eOf7O36l2ert6m2TPWrKQ6tuR7ZjgCEsvDQMZI2YQ+bKBp+A63ALXuY7R5D7bi7K95qR
+ q5C5RmZKyh9u/uqc10+hzeoUevsJ7TbKr62vwtTR9yEqdOHkNKwJ8S7wUJ6amKXNbmLYj24jQx/
+ TYh7KRBUCfAUrWV8sbEMMDBapHVzqT5V6DeUqWFxOG9awj8BnnMBLaiUyK9kCOxarpp7ixHp4Gp
+ fy+TZtgAYGI0olkaO1E7eMQHOu5RZ5cBwwCWn+BVbxqh0=
+X-Received: by 2002:a05:6102:1620:b0:5ff:a16b:93f0 with SMTP id
+ ada2fe7eead31-5ffaae25be8mr1811756137.22.1772691389397; 
+ Wed, 04 Mar 2026 22:16:29 -0800 (PST)
+Received: from [192.168.0.103] ([191.8.216.93])
+ by smtp.gmail.com with ESMTPSA id
+ ada2fe7eead31-5ffd1d8983dsm132583137.8.2026.03.04.22.16.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Mar 2026 22:16:29 -0800 (PST)
+Message-ID: <42b1b16b-2680-4200-bb62-7043bbfe7164@linaro.org>
+Date: Thu, 5 Mar 2026 03:16:20 -0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v18 2/8] hw/core/machine: topology functions capabilities
+ added
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: Alireza Sanaee <alireza.sanaee@huawei.com>, mst@redhat.com,
+ qemu-devel@nongnu.org
+Cc: anisinha@redhat.com, armbru@redhat.com, berrange@redhat.com,
+ dapeng1.mi@linux.intel.com, eric.auger@redhat.com, farman@linux.ibm.com,
+ imammedo@redhat.com, jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ linuxarm@huawei.com, maobibo@loongson.cn, mtosatti@redhat.com,
+ peter.maydell@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org, shannon.zhaosl@gmail.com, zhao1.liu@intel.com
+References: <20260220141128.789-1-alireza.sanaee@huawei.com>
+ <20260220141128.789-3-alireza.sanaee@huawei.com>
+ <91570f1c-3579-4b82-8252-6d29bc7d2f6e@linaro.org>
+Content-Language: en-US
+In-Reply-To: <91570f1c-3579-4b82-8252-6d29bc7d2f6e@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=178.154.239.136;
- envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
-X-Spam_score_int: 0
-X-Spam_score: -0.0
-X-Spam_bar: /
-X-Spam_report: (-0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa30.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.703, RCVD_IN_VALIDITY_SAFE_BLOCKED=1.386,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,154 +112,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All other handlers now have _errp() variants. Should we go this way
-for .post_save()? Actually it's rather strange, when the vmstate do
-successful preparations in .pre_save(), then successfully save all
-sections and subsections, end then fail when all the state is
-successfully transferred to the target.
+Hi Alireza,
 
-Happily, we have only three .post_save() realizations, all always
-successful. Let's make this a rule.
+On 3/3/26 23:39, Gustavo Romero wrote:
+> Hi,
+> 
+> On 2/20/26 11:11, Alireza Sanaee wrote:
+>> Add two functions one of which finds the lowest cache level defined in
+>> the cache description input, and the other checks if a given cache
+>> topology is defined at a particular cache level
+>>
+>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+>> ---
+>>   hw/core/machine-smp.c    | 52 ++++++++++++++++++++++++++++++++++++++++
+>>   include/hw/core/boards.h |  5 ++++
+>>   2 files changed, 57 insertions(+)
+>>
+>> diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
+>> index 189c70015f..bef04aa2d7 100644
+>> --- a/hw/core/machine-smp.c
+>> +++ b/hw/core/machine-smp.c
+>> @@ -406,3 +406,55 @@ bool machine_check_smp_cache(const MachineState 
+>> *ms, Error **errp)
+>>       return true;
+>>   }
+>> +
+>> +/*
+>> + * This function assumes L3 and L2 have unified cache and L1 is split 
+>> L1d and
+>> + * L1i.
+>> + */
+>> +bool machine_find_lowest_level_cache_at_topo_level(const MachineState 
+>> *ms,
+>> +                                                   int 
+>> *lowest_cache_level,
+>> +                                                   CpuTopologyLevel 
+>> topo_level)
+>> +{
+>> +    enum CacheLevelAndType cache_level;
+>> +    enum CpuTopologyLevel t;
+>> +
+>> +    for (cache_level = CACHE_LEVEL_AND_TYPE_L1D;
+>> +         cache_level < CACHE_LEVEL_AND_TYPE__MAX; cache_level++) {
+>> +        t = machine_get_cache_topo_level(ms, cache_level);
+>> +        if (t == topo_level) {
+>> +            /* Assume L1 is split into L1d and L1i caches. */
+>> +            if (cache_level == CACHE_LEVEL_AND_TYPE_L1D ||
+>> +                cache_level == CACHE_LEVEL_AND_TYPE_L1I) {
+>> +                *lowest_cache_level = 1; /* L1 */
+>> +            } else {
+>> +                /* Assume the other caches are unified. */
+>> +                *lowest_cache_level = cache_level;
+>> +            }
+>> +
+>> +            return true;
+>> +        }
+>> +    }
+>> +
+>> +    return false;
+>> +}
+>> +
+>> +/*
+>> + * Check if there are caches defined at a particular level. It 
+>> supports only
+>> + * L1, L2 and L3 caches, but this can be extended to more levels as 
+>> needed.
+>> + *
+>> + * Return True on success, False otherwise.
+>> + */
+>> +bool machine_defines_cache_at_topo_level(const MachineState *ms,
+>> +                                         CpuTopologyLevel topology)
+>> +{
+>> +    enum CacheLevelAndType cache_level;
+>> +
+>> +    for (cache_level = CACHE_LEVEL_AND_TYPE_L1D;
+>> +         cache_level < CACHE_LEVEL_AND_TYPE__MAX; cache_level++) {
+>> +        if (machine_get_cache_topo_level(ms, cache_level) == topology) {
+>> +            return true;
+>> +        }
+>> +    }
+>> +
+>> +    return false;
+>> +}
+>> diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+>> index edbe8d03e5..af5fd9f3cd 100644
+>> --- a/include/hw/core/boards.h
+>> +++ b/include/hw/core/boards.h
+>> @@ -60,6 +60,11 @@ void machine_set_cache_topo_level(MachineState *ms, 
+>> CacheLevelAndType cache,
+>>                                     CpuTopologyLevel level);
+>>   bool machine_check_smp_cache(const MachineState *ms, Error **errp);
+>>   void machine_memory_devices_init(MachineState *ms, hwaddr base, 
+>> uint64_t size);
+>> +bool machine_defines_cache_at_topo_level(const MachineState *ms,
+>> +                                         CpuTopologyLevel level);
+>> +bool machine_find_lowest_level_cache_at_topo_level(const MachineState 
+>> *ms,
+>> +                                                   int *level_found,
+>> +                                                   CpuTopologyLevel 
+>> topo_level);
+>>   /**
+>>    * machine_class_allow_dynamic_sysbus_dev: Add type to list of valid 
+>> devices
+> 
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
 
-Also note, that we call .post_save() in two places, and handle
-its (theoretical) failure inconsistently. Fix that too.
+I'm actually taking it back.
 
-Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Reviewed-by: Peter Xu <peterx@redhat.com>
----
- docs/devel/migration/main.rst |  2 +-
- hw/ppc/spapr_pci.c            |  3 +--
- include/migration/vmstate.h   |  8 +++++++-
- migration/savevm.c            |  3 +--
- migration/vmstate.c           | 12 +++---------
- target/arm/machine.c          |  4 +---
- 6 files changed, 14 insertions(+), 18 deletions(-)
+The function prototypes for machine_defines_cache_at_topo_level and
+machine_find_lowest_level_cache_at_topo_level in boards.h need to be
+updated to match the function signature:
 
-diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
-index 234d280249a..2de70507640 100644
---- a/docs/devel/migration/main.rst
-+++ b/docs/devel/migration/main.rst
-@@ -439,7 +439,7 @@ The functions to do that are inside a vmstate definition, and are called:
- 
-   This function is called before we save the state of one device.
- 
--- ``int (*post_save)(void *opaque);``
-+- ``void (*post_save)(void *opaque);``
- 
-   This function is called after we save the state of one device
-   (even upon failure, unless the call to pre_save returned an error).
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index ea998bdff15..1dc3b02659f 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -2093,14 +2093,13 @@ static int spapr_pci_pre_save(void *opaque)
-     return 0;
- }
- 
--static int spapr_pci_post_save(void *opaque)
-+static void spapr_pci_post_save(void *opaque)
- {
-     SpaprPhbState *sphb = opaque;
- 
-     g_free(sphb->msi_devs);
-     sphb->msi_devs = NULL;
-     sphb->msi_devs_num = 0;
--    return 0;
- }
- 
- static int spapr_pci_post_load(void *opaque, int version_id)
-diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-index 3695afd483f..85838a49aee 100644
---- a/include/migration/vmstate.h
-+++ b/include/migration/vmstate.h
-@@ -223,7 +223,13 @@ struct VMStateDescription {
-     bool (*post_load_errp)(void *opaque, int version_id, Error **errp);
-     int (*pre_save)(void *opaque);
-     bool (*pre_save_errp)(void *opaque, Error **errp);
--    int (*post_save)(void *opaque);
-+
-+    /*
-+     * Unless .pre_save() fails, .post_save() is called after saving
-+     * fields and subsections. It should not fail because at this
-+     * point the state has potentially already been transferred.
-+     */
-+    void (*post_save)(void *opaque);
-     bool (*needed)(void *opaque);
-     bool (*dev_unplug_pending)(void *opaque);
- 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 3a16c467b25..c5236e71ba1 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -321,14 +321,13 @@ static int configuration_pre_save(void *opaque)
-     return 0;
- }
- 
--static int configuration_post_save(void *opaque)
-+static void configuration_post_save(void *opaque)
- {
-     SaveState *state = opaque;
- 
-     g_free(state->capabilities);
-     state->capabilities = NULL;
-     state->caps_count = 0;
--    return 0;
- }
- 
- static int configuration_pre_load(void *opaque)
-diff --git a/migration/vmstate.c b/migration/vmstate.c
-index 651c3fe0115..5111e7a141f 100644
---- a/migration/vmstate.c
-+++ b/migration/vmstate.c
-@@ -550,10 +550,7 @@ static int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
-                 if (ret) {
-                     error_prepend(errp, "Save of field %s/%s failed: ",
-                                   vmsd->name, field->name);
--                    if (vmsd->post_save) {
--                        vmsd->post_save(opaque);
--                    }
--                    return ret;
-+                    goto out;
-                 }
- 
-                 /* Compressed arrays only care about the first element */
-@@ -578,12 +575,9 @@ static int vmstate_save_state_v(QEMUFile *f, const VMStateDescription *vmsd,
- 
-     ret = vmstate_subsection_save(f, vmsd, opaque, vmdesc, errp);
- 
-+out:
-     if (vmsd->post_save) {
--        int ps_ret = vmsd->post_save(opaque);
--        if (!ret && ps_ret) {
--            ret = ps_ret;
--            error_setg(errp, "post-save failed: %s", vmsd->name);
--        }
-+        vmsd->post_save(opaque);
-     }
-     return ret;
- }
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index bbaae344492..de810220e25 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -993,15 +993,13 @@ static int cpu_pre_save(void *opaque)
-     return 0;
- }
- 
--static int cpu_post_save(void *opaque)
-+static void cpu_post_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
- 
-     if (!kvm_enabled()) {
-         pmu_op_finish(&cpu->env);
-     }
--
--    return 0;
- }
- 
- static int cpu_pre_load(void *opaque)
--- 
-2.52.0
+"CpuTopologyLevel level" -> "CpuTopologyLevel topology" and
 
+"int *level_found" -> "int *lowest_cache_level"
+
+
+Cheers,
+Gustavo
 

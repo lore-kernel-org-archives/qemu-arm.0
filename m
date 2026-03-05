@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373E1F47CA3
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580DCF47CA3
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 17:59:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyCyO-0001rr-B4; Thu, 05 Mar 2026 12:59:05 -0500
+	id 1vyCyl-0002Wg-3L; Thu, 05 Mar 2026 12:59:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCyD-0000e5-Gj
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:45 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCyH-0001Bs-Ib
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:49 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCyA-0003p2-KY
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:45 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vyCyF-0003te-UP
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 12:58:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772733521;
+ s=mimecast20190719; t=1772733527;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=P+3jqqqH3xd03TNrf/HohE+5iPSijxKLrJMUcZwKO08=;
- b=KLxg6FK/T4U88ZXYdX5nKc+A1uje05yvgq7Uih/htu2KUY16dPJbdqOBnDDfrmrDmkEo6m
- SRQz0b2xnJnreJ2VMH9VDbSPWzgFLMSC7AcQTtygQt/GXnrRmxzeCMp7kWrrIxhoMzBejJ
- 5IDgLLwzIvyn9Aqve3Pc8J9W0qBfgXE=
+ bh=/BwgSbmt2ocXBLtaRYycV1vLjCFTX8mLDOMSCwP3rkA=;
+ b=B2ztds+0tsW7DAYXsx0iT3p5RlauW4qohipgwAjkggq/eE0PSkI8p6hBWcKs+G4MuMuFHh
+ Lr1sudVUYH26imee2wm8Wy8aywK/EGST0CnpW5XfOwd/d29Gcoc0dRYYkqO+Fjkr3LW5TD
+ BnN8NoQwLI6syLk/yRC5l1DnmkJbzb8=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-410-ueQZxVp3OBmE1yEpg5zr2A-1; Thu,
- 05 Mar 2026 12:58:38 -0500
-X-MC-Unique: ueQZxVp3OBmE1yEpg5zr2A-1
-X-Mimecast-MFC-AGG-ID: ueQZxVp3OBmE1yEpg5zr2A_1772733517
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-580-LO4Q__l9Nve0-tuqJiiC3Q-1; Thu,
+ 05 Mar 2026 12:58:44 -0500
+X-MC-Unique: LO4Q__l9Nve0-tuqJiiC3Q-1
+X-Mimecast-MFC-AGG-ID: LO4Q__l9Nve0-tuqJiiC3Q_1772733523
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1239719560A3; Thu,  5 Mar 2026 17:58:37 +0000 (UTC)
+ id 1E84B1956095; Thu,  5 Mar 2026 17:58:43 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8BBF43003E9E; Thu,  5 Mar 2026 17:58:35 +0000 (UTC)
+ id 970013003E9E; Thu,  5 Mar 2026 17:58:41 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 31/38] tests/functional/arm/test_aspeed_ast2500_sdk: Update
+Subject: [PULL 34/38] tests/functional/arm/test_aspeed_ast2600_sdk_otp: Update
  test ASPEED OpenBMC SDK v11.01
-Date: Thu,  5 Mar 2026 18:57:04 +0100
-Message-ID: <20260305175711.1119025-32-clg@redhat.com>
+Date: Thu,  5 Mar 2026 18:57:07 +0100
+Message-ID: <20260305175711.1119025-35-clg@redhat.com>
 In-Reply-To: <20260305175711.1119025-1-clg@redhat.com>
 References: <20260305175711.1119025-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: TKtmLLqn7dDfrSYZnGVp3YVwyzq3drgah5BobFLelig_1772733517
+X-Mimecast-MFC-PROC-ID: WWDz74q-d9gNHsVwvLuCwv93dM4PymqtrT7LTt2Zxzw_1772733523
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -93,35 +93,45 @@ From: Jamin Lin <jamin_lin@aspeedtech.com>
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Tested-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260303063930.2878300-4-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260303063930.2878300-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/test_aspeed_ast2500_sdk.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/arm/test_aspeed_ast2600_sdk_otp.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2500_sdk.py b/tests/functional/arm/test_aspeed_ast2500_sdk.py
-index 2c9211aeddc8..5ab36b99ab47 100755
---- a/tests/functional/arm/test_aspeed_ast2500_sdk.py
-+++ b/tests/functional/arm/test_aspeed_ast2500_sdk.py
-@@ -10,14 +10,14 @@
+diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py b/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
+index 31a1c3bed670..f24dea1e8f03 100755
+--- a/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
++++ b/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
+@@ -12,15 +12,15 @@
  
- class AST2500Machine(AspeedTest):
+ class AST2600Machine(AspeedTest):
  
--    ASSET_SDK_V1000_AST2500 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v10.00/ast2500-default-obmc.tar.gz',
--        '7d71a3f71d5f4d9f3451f59a73bf9baf8fd9f6a24107eb504a3216151a8b2b5b')
-+    ASSET_SDK_V1101_AST2500 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2500-default-obmc.tar.gz',
-+        '3faa1188198da2216837be4b53861c483a58c3ad63784089720bf8421e157da1')
+-    ASSET_SDK_V1100_AST2600 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2600-default-obmc.tar.gz',
+-        '64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7039e93')
++    ASSET_SDK_V1101_AST2600 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2600-default-image.tar.gz',
++        '3c5b4d4ccf27b0d208a073f98426db54cd751b96143180cd15df1a83978f832c')
  
-     def test_arm_ast2500_evb_sdk(self):
-         self.set_machine('ast2500-evb')
+     def test_arm_ast2600_otp_blockdev_device(self):
+         self.vm.set_machine("ast2600-evb")
+         self.require_netdev('user')
  
--        self.archive_extract(self.ASSET_SDK_V1000_AST2500)
-+        self.archive_extract(self.ASSET_SDK_V1101_AST2500)
+-        image_path = self.archive_extract(self.ASSET_SDK_V1100_AST2600)
++        image_path = self.archive_extract(self.ASSET_SDK_V1101_AST2600)
+         otp_img = self.generate_otpmem_image()
  
-         self.do_test_arm_aspeed_sdk_start(
-             self.scratch_file("ast2500-default", "image-bmc"))
+         self.vm.set_console()
+@@ -29,7 +29,7 @@ def test_arm_ast2600_otp_blockdev_device(self):
+             "-global", "aspeed-otp.drive=otp",
+         )
+         self.vm.add_args('-drive', 'file=' +
+-                self.scratch_file("ast2600-default", "image-bmc") +
++                self.scratch_file("ast2600-default-image", "image-bmc") +
+                 ',if=mtd,format=raw',
+                 '-net', 'nic', '-net', 'user', '-snapshot')
+         self.vm.launch()
 -- 
 2.53.0
 

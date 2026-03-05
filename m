@@ -4,95 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA666F513E4
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:09:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4787F513E4
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:09:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyGsV-0000xF-NG; Thu, 05 Mar 2026 17:09:07 -0500
+	id 1vyGst-00011Z-9N; Thu, 05 Mar 2026 17:09:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGsT-0000wU-1S
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:05 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsn-0000zR-UC
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:27 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGsR-0002Af-CH
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:04 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-483487335c2so71872425e9.2
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsl-0002DU-Uk
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:25 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-439cd6b09f8so1138075f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772748542; x=1773353342; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=sp4NGGwXe8WZ9WaE/Rit85H9U9O9209qhDh1s0NEE9E=;
- b=PsZRzz/P+/6F6U4LAos/Q+79mta2Z2G6Ah95dCt5XairvvXp5hAlWamrGLWlRenAD0
- Bl90fKdK5+MQ7RXPgfGX2mJDCnbBaNNwUx7gT3jP10oxLw/eBqWItdlEeAdUFwC1Ju47
- iwPHk4XS1iLW1Jd7EuVBHXp3Ea2VUtitksT11RucRqFMjmCMUQmEAIJ5rw4TqTMsYNKz
- sxPtbHZg3KqOjbtLstU+5YxjDwDCt1ZXaGM6psP9AdOd8jPjM2tn7msZDQp//oTSvFLa
- PrbRFpwRKXugqxwvwEFTOgrV2plC/whWrS4aMAZrRZ72FVFNijficYjY7i9CscaLz5nc
- 6TNw==
+ d=gmail.com; s=20230601; t=1772748562; x=1773353362; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6VeLOTnhmpK3hGfuKtvu330mCQPPVQNuv7C0J7IEVho=;
+ b=V0vBBOLbnAaqAJOWAPI9ZEddCBvzmWIVyN6qhvgVxZybqk0brWBKxVT7oEjgOEbmks
+ TLwsIn+/xmGbsiriaszq2j2uhai6CzNEoSZCNnhyW+P4Fwj3fzKn+Rsddh86ZrsvVsbJ
+ DJFE3fB54V6TEv4jLifFc9XEeHCkI2MpYwZ7v5plOVfxRW7e1vRcs587oszk1s+83ZSG
+ DliGpzpv1y1vPCsvcAt5svm+ruyUAjJgBkhtw8+3vc8DlD8i6XBWV43MZDzK1Ti1gs0g
+ IIqOEPYnXAjg3Yni8hoTKYAOuThCqvsG7ditdZPov0p5NGUNaPv8msVr7dBfBWomZlkJ
+ La5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772748542; x=1773353342;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=sp4NGGwXe8WZ9WaE/Rit85H9U9O9209qhDh1s0NEE9E=;
- b=Iv7AyAK468bvwOKVFg7JwalGltbJEs2kG7/oY18+PS5ksjRTYfoXYFVes1DoxfQmMB
- N7FhrBKg+UiF8BrBNPuvaftgkAREozPQPSA1SjGoQ3KiNJIMCa98do1nivd3AYeqrYbG
- vKwk3hmmv6rf0eEaiHC83clPFOAmSgafnoBHW9T1LPUjp9cCH3JU1XEs0zkQ/3vccfEe
- DhgOXLsyafcIzWjmTgnCpl+FX/ZQR8E8iUT9SYFJRM5Vy8o9YVlYHxorHlxNjsK5dhVa
- mbDoyp3tAoJsFe7gycEfAPAgUCP4bLghWGcl9th6Pb5Tdjp1B8jSrbOXuFTpUoVcDuxS
- UFYw==
+ d=1e100.net; s=20230601; t=1772748562; x=1773353362;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=6VeLOTnhmpK3hGfuKtvu330mCQPPVQNuv7C0J7IEVho=;
+ b=J6xeU6NV1rG6Yh/91+gSN4XSNodf91B3FKoq45Up92WhIT2OXNmSNqAayY+cA5b5l7
+ +kTushe8OZl/PmaxqxBsWSV2OvYfjNWciEM4N6ynWuJNF67chGSkVaWVDQoFFPmUW4eH
+ 3ZJrL3qdJQmlcs+NX9O+urVi8sWqWLVpwrQUYDlU3LEKKBkCFug9o6E5PH4wIU/U0tdp
+ YYqgnpX2uljtIMb6h7u1ne3PqAIl4aOo4iJhSHLyA1az4b6HqPocRSYHfCeLlyWMvZZr
+ 32ZYMBjRkaFmoQmtEgfkjaSmEAtQi8LiK73S9WKE0z//MbO6EnIC5Rby5i7z1i77HNh+
+ eeTQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfpT/Y1pA9WzaSFSYvMCnI3Ffmmc9aEgj5j88Qpsi7Sciqm+YcfuBZ42VyXJgwfcVkcUrKU5Gdqw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx5Pq685+WQMr0prgAmg939VLWiJTL3hPFynsBBn6JdOH9OUD5w
- OLnK2tIFv25XA3MoNtZeK77zaHYPVZ2qwhJT//Kx+KwL1AvoueFB15TMuofEDt9N8Rc=
-X-Gm-Gg: ATEYQzwiTu5LzwCFpce7tjLVW6oYq970kiZlZKhRcixax6XixYMZez4a1ABL9pdBHx0
- 3fRAXDPr6TN8l62axqCIFH5DUBjWYQ64+1IlzRjGaIer/Y26DSvG7bhYfWHOAiJ8OuxcwPicyGL
- CPMxullkRvmO6s7y8ylNOwccOPkyyXkx6o/21LqfrEWo88vClgBU/ujta0n9LIv16jA8mbVtFe/
- MaXr0d41rN7TzU4hPE5ksGfE/REhi3NJz/eO86m/o4XLI3wuv0rU5A8peSPat4hvY+6vkHmC7Mz
- Y7FBgWY7EzFYKsEwv3XX5MB81ZdlJorhV+VnHUEowPb+MFvbRdc7MYM5ddIXUy3IU133bnWMGzd
- d5wZe3Ije6c7CkmxL2IAac6UHYq5525xA68XHl7kHnuvsDcsl1OfkB+IZ78YD90/sFxxnrhRIOA
- yHGSaU9wvc/W+1gDzDXDU25IDclCcI0eX5FbLo9nzmbSX30zialaliII6NmzMwRuoIqA==
-X-Received: by 2002:a05:600c:8411:b0:477:df7:b020 with SMTP id
- 5b1f17b1804b1-485198744camr124994385e9.18.1772748541644; 
- Thu, 05 Mar 2026 14:09:01 -0800 (PST)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4852378de92sm7310645e9.0.2026.03.05.14.09.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 14:09:00 -0800 (PST)
-Message-ID: <3fdab598-c163-49ad-9927-b1f28668b5e7@linaro.org>
-Date: Thu, 5 Mar 2026 23:08:59 +0100
+ AJvYcCWZz8y+0ZXLpDLszWXgkRxXB8LDKET+4gA/vtGP3nJbfrrGhCYn3DkYoFYofT8kdM3jek8rrwz1Ww==@nongnu.org
+X-Gm-Message-State: AOJu0YzrXtBgIhwsngjxAHJe0Qn8Js6T7ekvBYvKqvL2frl3qJDfgFkj
+ r9zChy86RCAbbHrJN6Vhm04ccCqo8g2skxN3QtS3FAhnnTB+WRK2hi07
+X-Gm-Gg: ATEYQzz6df0B8CQLOPihOdEhJkJp5dLzCc1mAqbaaxspUkjSXfhHYUY9CoQK40NE78b
+ rDr/Jt0pXb8NJXjQlbqt8DLlHy1B9Ei0w5XcFODEM4IM/OonTzZ6UdzCMd7eaXeSWKACu+2dpWe
+ FbcftOy/LSZgVuIvV79OHw8uaYhnbHaSoP1fhKUP3yKbxq0PIp5fTsW3ZmGAChWbFNG3QJvH6qW
+ iW6k6x/nI9d4zXaMNDv9cqckA6gnKqUXweHJSAd8/X9oiCz+NXBVNitX7dgDzUwQHHkC5uLSbuY
+ jyIKPhKwvYxUTlZ3HUtHU+DwobK5PntLiXSwVaZwSAVS/P+HV8L351pYgoVhxREG1Efxc8LwRzS
+ uF36KYA3+7J3PwdGlGtE2dtvZzYHPmCz8zsJcGjf+prAejn/jG0pG2qkKKhGlNSgIx7drfObMJm
+ fJjqudnbXbAs/LjLBaKPetDSA2QaKJKs0bBqLG1PSfYvPYklIYldem0awXqswas/zJyZHNP8NSt
+ x1JKxka62sfb1u2a+T0KcgRaPMz7l+SNP13Z3FpArDtDx4=
+X-Received: by 2002:a05:600c:4688:b0:47e:e7e5:ff32 with SMTP id
+ 5b1f17b1804b1-485198a3bc4mr116276825e9.34.1772748561651; 
+ Thu, 05 Mar 2026 14:09:21 -0800 (PST)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-2989-c400-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:2989:c400:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fa87e56sm67419615e9.0.2026.03.05.14.09.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2026 14:09:21 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
+ Helge Deller <deller@gmx.de>, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 02/14] hw/char/{diva-gsp,
+ serial-pci-multi}: Fix deinitialization order
+Date: Thu,  5 Mar 2026 23:08:59 +0100
+Message-ID: <20260305220911.131508-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260305220911.131508-1-shentey@gmail.com>
+References: <20260305220911.131508-1-shentey@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 01/12] hw/intc: Add hvf vGIC interrupt controller
- support
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
-References: <20260228220837.35275-1-mohamed@unpredictable.fr>
- <20260228220837.35275-2-mohamed@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260228220837.35275-2-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,19 +115,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/2/26 23:08, Mohamed Mediouni wrote:
-> This opens up the door to nested virtualisation support.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   hw/intc/arm_gicv3_hvf.c            | 735 +++++++++++++++++++++++++++++
->   hw/intc/meson.build                |   1 +
->   include/hw/intc/arm_gicv3_common.h |   1 +
->   3 files changed, 737 insertions(+)
->   create mode 100644 hw/intc/arm_gicv3_hvf.c
+The memory region is owned by the device being unrealized, so must be
+removed from the mapping before unrealizing.
 
-This patch is huge, so I surely missed details; but
-the overall LGTM (it it won't break any existing feature), so:
+Fixes: d66bbea4e0d3 ("serial: add 2x + 4x pci variant")
+Fixes: 274074708455 ("hw/char: Add emulation of Diva GSP PCI management boards")
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/char/diva-gsp.c         | 2 +-
+ hw/char/serial-pci-multi.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+diff --git a/hw/char/diva-gsp.c b/hw/char/diva-gsp.c
+index 280d0413c6..f9aa6e326d 100644
+--- a/hw/char/diva-gsp.c
++++ b/hw/char/diva-gsp.c
+@@ -62,8 +62,8 @@ static void diva_pci_exit(PCIDevice *dev)
+ 
+     for (i = 0; i < pci->ports; i++) {
+         s = pci->state + i;
+-        qdev_unrealize(DEVICE(s));
+         memory_region_del_subregion(&pci->membar, &s->io);
++        qdev_unrealize(DEVICE(s));
+         g_free(pci->name[i]);
+     }
+     qemu_free_irqs(pci->irqs, pci->ports);
+diff --git a/hw/char/serial-pci-multi.c b/hw/char/serial-pci-multi.c
+index 17796b93dd..7782452018 100644
+--- a/hw/char/serial-pci-multi.c
++++ b/hw/char/serial-pci-multi.c
+@@ -56,8 +56,8 @@ static void multi_serial_pci_exit(PCIDevice *dev)
+ 
+     for (i = 0; i < pci->ports; i++) {
+         s = pci->state + i;
+-        qdev_unrealize(DEVICE(s));
+         memory_region_del_subregion(&pci->iobar, &s->io);
++        qdev_unrealize(DEVICE(s));
+         g_free(pci->name[i]);
+     }
+ }
+-- 
+2.53.0
+
 

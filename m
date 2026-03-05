@@ -4,62 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16835F30921
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 09:26:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C200F30923
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 09:31:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vy4xx-00036m-OR; Thu, 05 Mar 2026 04:25:58 -0500
+	id 1vy52w-0005iX-2O; Thu, 05 Mar 2026 04:31:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
- id 1vy4xu-00035w-Hl; Thu, 05 Mar 2026 04:25:55 -0500
-Received: from oxygen.pond.sub.org ([2a01:4f8:13b:3ad0:1::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@pond.sub.org>)
- id 1vy4xs-0002F1-9i; Thu, 05 Mar 2026 04:25:54 -0500
-Received: from blackfin.pond.sub.org (p50902e3b.dip0.t-ipconnect.de
- [80.144.46.59])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (Client did not present a certificate)
- by oxygen.pond.sub.org (Postfix) with ESMTPSA id B31B22487B;
- Thu, 05 Mar 2026 10:29:14 +0100 (CET)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4691721E6A04; Thu, 05 Mar 2026 10:25:43 +0100 (CET)
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Bernhard Beschow <shentey@gmail.com>,  qemu-devel@nongnu.org,  Helge
- Deller <deller@gmx.de>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>, Troy Lee <leetroy@gmail.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Mark Cave-Ayland
- <mark.caveayland@nutanix.com>,  qemu-arm@nongnu.org,  Jamin Lin
- <jamin_lin@aspeedtech.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,  Joel
- Stanley <joel@jms.id.au>
-Subject: Re: QOM parent type "sys-bus-device" vs. "device"
-In-Reply-To: <CAFEAcA_WYkAYccog-BiA6MJAvoFVwa6niKvFZ7UpLjzkRyd6aA@mail.gmail.com>
- (Peter Maydell's message of "Wed, 4 Mar 2026 13:54:07 +0000")
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vy52u-0005iE-Fj
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 04:31:04 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vy52s-0003Lw-SC
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 04:31:04 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-794719afcd4so72704107b3.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 01:31:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772703061; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Cix7DH1i+f4kE9JgpuL2UQv7Ikx+gq8JEswlqcaiwW6FvpjEcu04LVHXdiDzFa8Kjp
+ gtimPG6VMUSWSouQ1WR1QBOcUU+uHHkZbFRhvmjxI/COQLVWuT1algrF3MxTyVz6aJFk
+ cIc1FI1g1ddIqw9cmNtmZ4akrCLdV0BTEYIdMVw0Ke5lFlS05iqK2i7dsG3yJLMShjOe
+ WVu8F5VZlgQG/r6uRgdHOkqy9Q1vqRsv/PQ2FCYWJv7kW8Hz7kuhB0RO/Uk3Y3KLTU0/
+ dD/qQTEdu2hBJxVnrROfYYobg2uRI4404EX0AQ9hGT1mcwzyW3MgnO/u8WtzyjmMcXVq
+ Yjdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=tDoGGukLguIzkJFYbeEw6RZie/P8y8tXXjOxYEXSARw=;
+ fh=bs8afNYanGEKUpQTNsc85obUp3z1f3CWfPmOJlEqGCA=;
+ b=TkHJbUjq9DftxKcXDEzt2MsXFL5BfIqigP2tf1TaFi6d8Ml/5Ka9i/5ZHh+Op94arf
+ /ncSCk+KEtCEz7O0e42Euj5jCgMJYLFjSmmy/nqykZZp0wW7kx1pbonVP1rBJMmdsCvk
+ f5arJGsXCPL3khJGaFBTHzfvaOTBx9RrPn3KX21cCM2TRa1FjfKFwdS2/MZ190rxtKO0
+ hJHtd3S7EPAKIG+IGn1HLk1VGyhzq0TPMCLgLytry5LWu4qq4K2gXZCKkHnrVoeN986q
+ NE7OiAV6kopK8yjQ+lOYMWpKRZuRkejX6Y2ppNxHms2b6o1KM3cY3Lkc4Sz/1NvlL/PE
+ X01A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772703061; x=1773307861; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tDoGGukLguIzkJFYbeEw6RZie/P8y8tXXjOxYEXSARw=;
+ b=Pbs9gEj5RVpYSXbvWQvAiNEiqC36kjZBMaiVGTLF1dfbZ6m0iHGkXQkeDupy5CWJp8
+ +HYJo9IqB8+SPmjvB8Fgmr7Fk9GF1q56j3RHlJXoKPpaUDsAkXyOTcspMF3vOalGoeHV
+ JHgcjONNTBgRnmi64SYmpqXk8flG4mlKtypS99dfvEeQz/5hjqMiBNpWbq23I01IDLSG
+ qafuW85LPzCIfn/MPI/uGYe6FBKdrFdzde830yXKHqrAPxlFyOVw2cFkem/VxDvBHgrU
+ pq3qwoiJmwGl15msg1SdemTHh6aPjpwjEBP5ap4wqMnE5zLxvasEIuoaK5AzdLSdcsVo
+ VyKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772703061; x=1773307861;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tDoGGukLguIzkJFYbeEw6RZie/P8y8tXXjOxYEXSARw=;
+ b=q98Z5iEk8b5dtFimLPmeeETv5RG9RFRnuK2A/hS6rgqIllXINkU2OjSRztwCu1dZFC
+ uN8JrGHNC7sf/KOQmmFdoqu+weAD/KOQHRSeCgnJG4LPwfsBiRmBJS15WlEFnpsj6lE5
+ aFPOaZABUETMuDH5R/E3HTWCkmmguqmZqU2cpKv1p4OPteHXnCv+s2fi2VbYE4m7x7zG
+ ZgmYjlz+DQkPEvGox8xPw690KPCpFmGWZCvdSuBgbzZhJZ124eBMNurMgauTd6XkeQXH
+ rkbkvwOI4iakhFoTTY2QD35L/+CB0iJuvvWfzo36xjxkDpl5S/dB+37NUZQtFF1DbMMz
+ Y05A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWnZKjBX/Qgiagog8ILZlPEbHY8/8A5q7f6AaqsWRi8Yf5YTyIm9tu+hIkvrswhKBJxBkP4DCMBMw==@nongnu.org
+X-Gm-Message-State: AOJu0YwIo1HZzSbnK9eOrSPUgQy5LymNElYX0eRSqT+06ZPgWZAcQRLH
+ 0nphIfhf900/NhOk5Q9HCj2RZ30Q7SbteQKM2kFL2sHDExvy5pcqZ2JQSLG1/zXC2/KiRCusG75
+ VwGc9KNkftpIXZlNZ70RGrstv9IO6goPgmYDr8LDEkMSAbFEK/rNK
+X-Gm-Gg: ATEYQzzQ6O6hz+4n+w0oIUth/0RUFENR1dOmPzN8yaGXHNWEQ/pHrrh0537M4f28yer
+ rOSKpsE1EYuhISvaZQNZ6Pd6VqW9ceA2hvg857UOcTZCnLXHG4I+Zw3FUuv46o/toC7yfw7Sv+z
+ fjFdZpvRwZsDXfdHcKZQqJwzrZfLXTaU8ysCQJh7hIZUY0oOE2vxUXdbs05EX1ku6R8M+RdDzZn
+ rouK0PihIOQv/HNK+qYRQK/hsgYHsvEi3s7uHvbdCFLxxPqass+7CAMZXZ91MN+/DuQ8rjnuH0P
+ fbTEzRZhli7vUhhJpO3Mdgbwdbj8UWXdaGb5eITq/akmvzA/tMVw0MCHnNFFMuN5a0o=
+X-Received: by 2002:a05:690c:670a:b0:798:58be:324d with SMTP id
+ 00721157ae682-798c6d042ddmr39867387b3.55.1772703061234; Thu, 05 Mar 2026
+ 01:31:01 -0800 (PST)
+MIME-Version: 1.0
 References: <20260303222143.142741-1-shentey@gmail.com>
  <20260303222143.142741-13-shentey@gmail.com>
  <87ikbbixy5.fsf_-_@pond.sub.org>
  <CAFEAcA_WYkAYccog-BiA6MJAvoFVwa6niKvFZ7UpLjzkRyd6aA@mail.gmail.com>
-Date: Thu, 05 Mar 2026 10:25:43 +0100
-Message-ID: <87fr6eocfc.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
-MIME-Version: 1.0
-Content-Type: text/plain
-Received-SPF: pass client-ip=2a01:4f8:13b:3ad0:1::3;
- envelope-from=armbru@pond.sub.org; helo=oxygen.pond.sub.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <87fr6eocfc.fsf@pond.sub.org>
+In-Reply-To: <87fr6eocfc.fsf@pond.sub.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Mar 2026 09:30:49 +0000
+X-Gm-Features: AaiRm52bSeGJD1lQtiMyl4LniLGXSmafvCc640lpMO97fckjyIgvBsHKps7UTAg
+Message-ID: <CAFEAcA8CTLsKxJ8iza9T3bSafdgaM0dag2=KXqWLdMiXAHiGGQ@mail.gmail.com>
+Subject: Re: QOM parent type "sys-bus-device" vs. "device"
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
+ Helge Deller <deller@gmx.de>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Troy Lee <leetroy@gmail.com>, Richard Henderson <richard.henderson@linaro.org>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-arm@nongnu.org, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,173 +126,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Markus Armbruster <armbru@redhat.com>
-From:  Markus Armbruster via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Wed, 4 Mar 2026 at 12:25, Markus Armbruster <armbru@redhat.com> wrote:
->> We might be at a crossroads here.
->>
->> Paul Brook designed qdev around "a device plugs into some bus, and may
->> provide buses".  To make this work, he added a main system bus to serve
->> as root of a single tree.
->>
->> The parent of a device in that tree is the bus it plugs into, and the
->> parent of a bus is the device that provides it, except for the main
->> system bus, which has no parent.  "info qtree" shows this tree.
->>
->> Note a machine had just this one system bus back then.
->>
->> The system bus isn't something hardware people would call a bus.
->>
->> The qtree is a qdev thing.  It is *not* the QOM composition tree ("info
->> qom-tree /").
->>
->> We actually abandoned "a device plugs into some bus" a long time ago.
->> Moe on that below.
->>
->> Qdev was later rebased onto QOM, as follows.
->>
->> A bus QOM type is a subtype of "bus".
->>
->> A device QOM type is a subtype of "device".
->>
->> If a device type has a @bus_type, then it plugs into a bus of that QOM
->> type.  Such a concrete device is commonly[*] not a direct subtype of
->> "device".  Instead, it's a subtype of the abstract device that plugs
->> into that bus type.  Example: "isa-serial" is a direct subtype of
->> "isa-device", and it inherits its bus type "ISA" from there.
->>
->> If a device has no @bus_type, it doesn't plug into any bus.  It doesn't
->> show up in "info qtree" (it does in "info qom-tree", of course).
->> Example: "serial" is a direct subtype of "device".
->>
->> This lets us build devices from components without having to make up
->> buses to connect them.  Example: "isa-serial" has a direct QOM child of
->> type "serial".  Good!
->>
->> Except infrastructure useful to such bus-less devices lives in sysbus,
->> where bus-less devices can't access it.  This tempts us to make devices
->> sysbus devices just to be able to use the infrastructure, and to create
->> additional sysbuses.
+On Thu, 5 Mar 2026 at 09:25, Markus Armbruster <armbru@redhat.com> wrote:
+> > Disentangling reset is extremely painful -- I don't even know
+> > what it ought to be doing. Maybe propagating along the QOM tree?
 >
-> There is only one sysbus -- it is impossible to create more than one,
-> and there wouldn't be much point in creating a second one anyway.
+> I think this would make more sense.  Unlike the qtree, the QOM
+> composition tree contains all devices, and reflects the actual
+> composition.  It's certainly closer to the real reset tree than the
+> qtree is.  Is it close enough?  I don't know.  If yes, there's our reset
+> tree.  If no, I guess we could still use it as a base, with manually
+> corrected reset lines where the QOM composition tree is off.
 
-I was almost entirely mistaken there.  However, you're not quite right,
-either :)
+Yes. We really don't want to add more boilerplate requirements
+to how you write "container" type devices like SoC objects.
+It's already bad enough that you have to have an instance_init
+that manually calls instance_init on all your subcomponents,
+and a realize that calls realize on all of them. If we add
+a requirement that you need to have reset methods for 3 phases
+that call reset on all your subcomponents, people are going to
+forget. We need the default to be "do the thing that's right
+almost every time", not "do the thing that's wrong".
 
-We *can* create more than one system bus, and we in fact do: abstract
-PCI device "macio" contains a "macio-bus", which is a subtype of the
-system bus type.  Its concrete subtypes are "macio-oldworld" and
-"macio-newworld".  To see the "macio-bus" in "info qtree", try machine
-"g3beige".
+(And then of course there is the "how do we get there from
+here?" question :-))
 
-But this is the rare exception.  The rule is us doing something
-differently undesirable.
-
-Consider ARM machine "ast2700fc".  Its core are three devices:
-"ast2700-a2", "aspeed27x0ssp-coprocessor", and
-"aspeed27x0tsp-coprocessor".  All three contain component devices.  The
-QOM composition tree shows them as "/machine/ca35", "/machine/ssp", and
-"/machine/tsp", i.e. they are direct children of the machine object.
-
-Here's a closer look at a small part of the composition tree:
-
-    /machine (ast2700fc-machine)
-      [...]
-      /ca35 (ast2700-a2)
-        [...]
-        /ioexp[0] (aspeed.ast1700)
-          [...]
-          /uart (serial-mm)
-            /serial (serial)
-            /serial[0] (memory-region)
-
-I'll refer back to this later.
-
-A few components end up in the "/machine/unattached" orphanage instead
-due to sloppy modelling.
-
-My point is: the QOM composition tree actually reflects how devices are
-built from components, except for the parts where we got sloppy, which
-should be fixable.
-
-The qtree (the thing shown by "info qtree") shows a different picture.
-The three core devices are bus-less, and therefore not in the qtree.
-Their components, however, are mostly sysbus devices, and therefore in
-the qtree right under the root.  Here are the parts of the qtree that
-correspond to the QOM composition tree snippet above:
-
-bus: main-system-bus
-  type System
-  [...]
-  dev: serial-mm, id ""
-    gpio-out "sysbus-irq" 1
-    regshift = 2 (0x2)
-    endianness = 2 (0x2)
-    mmio ffffffffffffffff/0000000000000020
-  dev: aspeed.ast1700, id ""
-    board-idx = 0 (0x0)
-    silicon-rev = 100794627 (0x6020103)
-    dram = "/machine/ca35/ca35-dram[0]"
-    mmio 0000000030000000/0000000001000000
-
-The "aspeed.ast1700" and its "serial-mm" component are siblings.  The
-latter's "serial" component is bus-less, and therefore not in the qtree.
-Bernhard's patches make it a sysbus device instead, and therefore add it
-to the qtree as another sibling.
-
-My point is: the qtree does not reflect how devices are built from
-components / are wired together, at least not where sysbus devices are
-involved.
-
->> We can elect to go down this path further: make more sysbus devices.
->> Create more sysbuses.  If this is the right path, then bus-less devices
->> were a mistake, and we should consider eliminating them.
->>
->> Or we can pick the other branch: put the infrastructure where bus-less
->> devices can use it.  If this is the right path, then sysbus is
->> obsolescent.
->
-> I do think that at some point it would be good to move all that
-> stuff into the base "device" class, and drop sysbus. The real
-> problem, though, is reset. Currently reset propagates along the
-> qtree (the tree of buses).
-
-Unfortunately, the qtree is far removed from reality for sysbus devices.
-
-Case in point: "aspeed.ast1700" and its component "serial-mm" are
-siblings in the qtree.  In what order will they be reset?
-
-Physical hardware has reset lines.  Devices generally wire up their
-components' reset pins to their own.  I believe the sane way to model
-this is a reset tree.
-
->                            So something (like TYPE_SERIAL, and
-> also like CPU objects) that is a direct child of TYPE_DEVICE does
-> not get automatically reset. The major overriding reason why
-> (as it currently stands) I favour making things sysbus devices
-> and not plain devices is that devices that don't get reset are
-> either broken or need all their users to take extra steps that
-> most don't take, or do in a weird way. We can't just push the
-> reset handling into TYPE_DEVICE because by definition it is tied
-> to "being a thing on a bus, i.e. the sysbus".
->
-> Disentangling reset is extremely painful -- I don't even know
-> what it ought to be doing. Maybe propagating along the QOM tree?
-
-I think this would make more sense.  Unlike the qtree, the QOM
-composition tree contains all devices, and reflects the actual
-composition.  It's certainly closer to the real reset tree than the
-qtree is.  Is it close enough?  I don't know.  If yes, there's our reset
-tree.  If no, I guess we could still use it as a base, with manually
-corrected reset lines where the QOM composition tree is off.
-
-> So for now, we muddle along.
->
-> -- PMM
+thanks
+-- PMM
 

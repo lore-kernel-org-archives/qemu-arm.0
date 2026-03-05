@@ -4,95 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0EFF513E4
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:02:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79920F513E1
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:09:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyGlq-0007US-1j; Thu, 05 Mar 2026 17:02:14 -0500
+	id 1vyGsq-00010M-9b; Thu, 05 Mar 2026 17:09:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGlo-0007UA-Ur
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:02:12 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsm-0000z9-03
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:25 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGln-0000VI-Eg
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:02:12 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-48379a42f76so73891235e9.0
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:02:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyGsj-0002CH-Et
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:09:23 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4837907f535so77742105e9.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:09:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772748129; x=1773352929; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wsWrQUpivUrBhdiv7LUNR4ONaQbENTy1T2fCXVnUsVM=;
- b=xAb6gnfnr1O0J+JrwdO65CInXQYbBIbWvba2VhKpeX8ulSfHHRmHtuHrWRMwsDId6D
- AbuSIPE/GZzz8uNoEwlGJi8fU3Ha80yoS2MEira0OfRnUPyUGmL7eERkG1XDLih5mROk
- GQ6uHHY1xtotVxNLaJmMpu1JPiEXrL7PnwmzLQFMEn1rvALG/dSgKTv829gpoycvojFd
- MbUJskgNeiSnkY9fuZaVEXo04hZK425AeP02lnv0bahIN7wvlaObOIPdmdXcucY49vJh
- zbo7x2MeMmfvht64asyue7A+coNNj9QLlKbsxhSQUph59nYWIXlSQ4Hg3rwzKivPeB8A
- 9S1w==
+ d=gmail.com; s=20230601; t=1772748559; x=1773353359; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=QqAbdk4Pe2MQVed+WtrEw6pFfWk8J389+1HbvVagQKg=;
+ b=k6X2UDfG9nE/p6wAylwyXj+x7UKnyJVJHn/Agcg9ZhSUjGsGo0Ogy/YcN6Pdw1QTzj
+ BwyHcryRrRQKcDO8ATz2IlZGY5ezb3QBmfK55cCypCnjXsfbZblqoew/MMeWKQAuCj75
+ dyCZV+FHlq6qCoLKkLxKc0xt4wNk4ba0dcD0dIWGInAnCDTddBP4kmoiuhH0FCkjMEiZ
+ kr3bJJgzCC8cK/Y4a6V59DyegF4xOwbf9X06UL2WMYSo+GCRgXk4ozid28rodvnK7QUQ
+ gtBwVwi3fkkYFA/sWR21BQs/hG8Nds4unaRCqUnDa1wpXSbYTsgLbbH4IAMczcrqR1l/
+ KPtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772748129; x=1773352929;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wsWrQUpivUrBhdiv7LUNR4ONaQbENTy1T2fCXVnUsVM=;
- b=FjFPocZ3l606jvBpAHTROofC7IcCd2PeMggazHbxsBNB926E/CUO7a1dODgH9iscFB
- 8tQfvCQJsbSJyygLdGgsr22bsazfBpF/JCghB0GctvKNh8Rti9RhoMBQNerb7ChDgArx
- 52UfWxw5AjuGvNJiYWyqvuF2BT4D24c74sbpRO+cNu0uiWZRGAqgogJKQZF3/ltMelHh
- xSe61dq965XDN3+x7j4jWw8RLe9VmACjqzWnJTdzw7bE5nlajq7hYduWYzz6MrGxi47O
- XtoLXHctX4Q/7nDt4mOUaot0fzmWg3OluPz+/GAOgHMPhKwP01cIKgzF7pVI0ZuBQnF4
- 1ctg==
+ d=1e100.net; s=20230601; t=1772748559; x=1773353359;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=QqAbdk4Pe2MQVed+WtrEw6pFfWk8J389+1HbvVagQKg=;
+ b=ieTpw3pUzxrRrWMsD2eUiE3WdDo/nRTo7MGXt2DtLXqeBkmI1oW/tlaekBWPfPDTvm
+ xLO5oCrOMummG4DJtXkyQQeUH+Xl5Icu/9aFrSQbHug26+wstiGLu2WF7h+unEhQ9cur
+ 678MDt6KCqHR4sHYP0LGCVzH0x+16n34ET6TACrqaRj8LZqGgbRPUOPthjhjyD6atgJa
+ 7SwS2ww+kcSwxDkUTXsqs2ht+fQgz7yutMurw69H4ERzDBGJDXSfq/yzRg36dhp/lC9c
+ wBD6u7iosbyOvAUMhagI+np4YaSBVr+p4/2UALYACVucbfFjRvweW1ozE+qUCQWJ2TyC
+ U+rA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUHRVkF5mjUnb+EE1TLag/w6p0hY6xgheBqcyBAM+cJV3uMo2cb8tH/GNUGD54kVllEdQRkOAb9AA==@nongnu.org
-X-Gm-Message-State: AOJu0YxkZ8zfVx/n/GEK/z3hEzkBawiZ4pjEDWAoLNSIsmy/iVL+SIYk
- oU+RC3F8rZcEx34/CZGxx+3evMXuaVtj8H3FzA3ChIU7X5tsf2apzxgdC460jz6AJUU=
-X-Gm-Gg: ATEYQzzh9ReUdSUeS6pZ+NWeHE/IxiA2pdyQHT8cqmH2aMmUowpGB3YJgvRskk71zvK
- W3qqEes6Dddn7WwBbZrn18xrAIC0vwoxBHtjkid8NSAgyJWJHdZ61w5K9whalMNHneUV9radd8y
- 2+QWc5PXzb6++m7hmPMkpL4k/BvlaDV97hSMOIRXeiDfmV/oCHHmoIfiT4L2dMM9DFSYWv9rJvN
- FOq+YCPGDtVXkunghvvcOrxm4V/BwUgUFTfOTG8asEisq3mgW3zrRFUzeUBt0+i+Xk4IijkMnRs
- dHfpk25K/VlKTPo2jJVCPdgJ+dinfCZAXKUmwabuX7S0zpzA8yOoP70mlk5BDcTobxqwdPdhRfn
- R0/F8RJw+9kqJzbxjOjT1N/WyMxpI3H9aZr7x/lDX4J4Bi98RatHARoW8z3L0Mjdg77HnE03MC/
- ZBhw2r9MrK2hnjr3JaB15Q+0vuLeKw22wbxt3Oh1RtRvu6ItkCFdDFnipiZZDUPuumFQ==
-X-Received: by 2002:a05:600c:474e:b0:483:7020:864 with SMTP id
- 5b1f17b1804b1-4851988fcd3mr114547075e9.25.1772748129492; 
- Thu, 05 Mar 2026 14:02:09 -0800 (PST)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485256b1ea1sm3275905e9.1.2026.03.05.14.02.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 14:02:08 -0800 (PST)
-Message-ID: <abaf0a9d-051f-4b23-8607-17d99eb3ec20@linaro.org>
-Date: Thu, 5 Mar 2026 23:02:07 +0100
+ AJvYcCWeFvRxhypBoKeYIWiWQiiK+vFpsQzI4qUQFVG4MPXCPsZ1fUdiuZOiLDpCDi2LODaLHq32Vq8b1w==@nongnu.org
+X-Gm-Message-State: AOJu0YyTRi2rMpjQI9mLD5XN56bu8Qb3U5nQgv5MHfljpKu+2dyrVEZM
+ LfivIY3k03t+bIzakdnBtJp0e6t1oUD31H2hPJaqfw3D0n5T+CL047FM
+X-Gm-Gg: ATEYQzzKrdmbAQxrXX+zZm+newLgQBruBbOmvC6JvAFlVjAg+iwKE2aedlqb8boFKbH
+ ZsuOUBvn9tHALQ3tVWxnEROY4Cw7zbgcFaE8nnmK55iPWIopiUWLajK6KYAdJwijCopKcovSwc6
+ AnE10VGuXX50fVc0Y/6Z5YAwzj1SaskxiDGvPZRMAXxDGWGt7iq+OLgmVakGzLEMQaDcWlJ4QUI
+ Nk0shz7d4qwdqdF+1im6Uwz363hRgb/+p7Wi5O61H+c+B1zuJ//l6ASkMOyGJZwLY8hVRT9MIJ0
+ qE1Yq9J6QTBvqoXF7wMJ7Ctq7erWSzHA1TaSkCqVCWJl8yJvOZfRPg+/899Ayb2mp4HnZppcVxR
+ yBrTVRJya3DMBa51+KnqdEBx0NP7TRGY/OQs7HliTVeEpSt70SdtRMaFiYuUm5WhBKtogB8Bz7A
+ 9Hn6UlWnmslqVfTKba85/SRpuRUZge8vgqYLiG8BDvWs49hjkqeyrlLFQE4geX4G3nDTuGtmwQh
+ lyn65HRuGc3uIVficKOrlw2mtFPS7HZ7fwkjQymioQ5F1U=
+X-Received: by 2002:a05:600c:1c18:b0:480:69ae:f0e9 with SMTP id
+ 5b1f17b1804b1-48519871aa4mr147654815e9.16.1772748559328; 
+ Thu, 05 Mar 2026 14:09:19 -0800 (PST)
+Received: from Provence.localdomain
+ (dynamic-2a02-3100-2989-c400-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:2989:c400:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fa87e56sm67419615e9.0.2026.03.05.14.09.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Mar 2026 14:09:18 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Troy Lee <leetroy@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
+ Helge Deller <deller@gmx.de>, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 00/14] TYPE_SERIAL cleanup
+Date: Thu,  5 Mar 2026 23:08:57 +0100
+Message-ID: <20260305220911.131508-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 02/12] hw/intc: arm_gicv3_hvf: save/restore Apple GIC
- state
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
-References: <20260228220837.35275-1-mohamed@unpredictable.fr>
- <20260228220837.35275-3-mohamed@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260228220837.35275-3-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,20 +112,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/2/26 23:08, Mohamed Mediouni wrote:
-> On HVF, some of the GIC state is in an opaque Apple-provided structure.
-> 
-> Save/restore that state to be able to save/restore VMs that use the hardware GIC.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   hw/intc/arm_gicv3_common.c         |  1 +
->   hw/intc/arm_gicv3_hvf.c            | 95 ++++++++++++++++++++++++++++--
->   hw/intc/arm_gicv3_hvf_stub.c       | 25 ++++++++
->   hw/intc/meson.build                |  1 +
->   include/hw/intc/arm_gicv3_common.h |  3 +
->   5 files changed, 121 insertions(+), 4 deletions(-)
->   create mode 100644 hw/intc/arm_gicv3_hvf_stub.c
+This series consists of cosmetic changes around TYPE_SERIAL. The biggest change
+is having it derive from TYPE_SYS_BUS_DEVICE which 1) eliminates usage of
+qemu_{un,}register_reset() and 2) stops all its users from accessing private
+data. The latter allows TYPE_SERIAL to be ported to Rust in the (near) future.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+v3:
+* Pick up further R-b tags. Thanks!
+* Add patch "hw/char/{diva-gsp,serial-pci-multi}: Fix deinitialization order"
+  (Peter)
+* Justify switching to serial_io_ops in certain cases in TYPE_SERIAL_MM (Peter)
+
+v2:
+* Pick up R-b tags. Thanks!
+* Ad patch to free consumers of TYPE_SERIAL from setting up MemoryRegionOps;
+  configure via properties instead which should resolve odd code (Peter)
+* Improve wording in one commit message (Peter)
+* Sort patches by moving char/serial last
+-> Keep "Avoid implicit conversion when tracing" untouched for now. Can be
+  omitted if deemed inappropriate.
+
+Testing done:
+* Boot mpc8544ds machine with Linux and interact with it on the serial console
+* Boot q35 machine with Arch Linux and interact with it on the serial console
+* Make check
+* Make check-functional with all architectures enabled:
+    Summary of Failures:
+
+    238/313 func-thorough+func-aarch64-thorough+thorough - qemu:func-aarch64-tcg_plugins          ERROR             0.72s   exit status 1
+    309/313 func-thorough+func-x86_64-thorough+thorough - qemu:func-x86_64-vhost_user_bridge      TIMEOUT          90.01s   killed by signal 15 SIGTERM
+    311/313 func-thorough+func-x86_64-thorough+thorough - qemu:func-x86_64-rebuild_vmfd           ERROR            33.64s   exit status 1
+
+    Ok:                257
+    Fail:              2
+    Skipped:           53
+    Timeout:           1
+
+Bernhard Beschow (14):
+  hw/arm/Kconfig: Fix serial selection for NPCM8XX
+  hw/char/{diva-gsp,serial-pci-multi}: Fix deinitialization order
+  hw/arm/aspeed_ast27x0-{ssp, tsp}: Do not access SerialMM internals
+    directly
+  util/fifo8: Make all read-only methods const-correct
+  hw/char/serial: Remove explicit cast from void pointer
+  hw/char/serial: Prefer fifo8 methods over open-coding
+  hw/char/serial: Reuse fifo8_num_used()
+  hw/char/serial: Remove unhelpful comment
+  hw/char/serial: Add constants for Line Control Register
+  hw/char/serial: Remove redundant reset
+  hw/char/serial: Avoid implicit conversion when tracing
+  hw/char/serial: Keep MemoryRegionOps private
+  hw/char/serial: Inherit from SysBusDevice
+  hw/char/serial: Plug into reset framework
+
+ include/hw/char/serial-mm.h |   3 -
+ include/hw/char/serial.h    |   8 ++-
+ include/qemu/fifo8.h        |  10 +--
+ hw/arm/aspeed_ast27x0-ssp.c |   7 +-
+ hw/arm/aspeed_ast27x0-tsp.c |   7 +-
+ hw/char/diva-gsp.c          |  23 +++---
+ hw/char/serial-isa.c        |  17 +++--
+ hw/char/serial-mm.c         |  59 ++--------------
+ hw/char/serial-pci-multi.c  |  23 +++---
+ hw/char/serial-pci.c        |  11 ++-
+ hw/char/serial.c            | 137 +++++++++++++++++++++++++-----------
+ util/fifo8.c                |  10 +--
+ hw/arm/Kconfig              |   2 +-
+ hw/char/trace-events        |   4 +-
+ 14 files changed, 157 insertions(+), 164 deletions(-)
+
+-- 
+2.53.0
+
 

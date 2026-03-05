@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B007BF513E2
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FB41F513E1
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:18:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyGzn-0000YN-O2; Thu, 05 Mar 2026 17:16:39 -0500
+	id 1vyH0s-00011J-3z; Thu, 05 Mar 2026 17:17:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGzi-0000X9-1F
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:16:36 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0p-00010L-3K
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:43 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyGzg-0003Q3-JW
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:16:33 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-439afc58ac7so5563515f8f.0
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:16:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyH0n-0003X5-64
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:17:42 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4806bf39419so70487875e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:17:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772748989; x=1773353789; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772749059; x=1773353859; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ebZOB/cgjse70HqkBuSh7UhPJC61LIbOScMXnZGf/78=;
- b=bN7JXtqsE+siV0pCKzGuFSzUjBysAJ+OQXkCbvEQxYqD50SGS8siMIhkBgoj6gBmbA
- mG4skZWmRQZxV9LBDXKtzfDZRYmlS/rVvBSFwWfkwbUlY37J7UApm2j9nv6i2+O9tbZq
- OnWhZa8eCUoY8Vv0d5NxiCVHoE5d+bh2DZQmtzl+z5Oa/4CIVrZkWFP4VpH9oMWSHl6P
- aYs0lxXFQWhGJFFUtz333VoE1oevHd3iV2fJxNOVztLgzY3Fc0KGun4gV3ghqfEy5mUM
- 9dd/ugLedpgQ34Ar9v8hF2dxrleLXRLsnyknlP4x2Z1tmFkdDrwKM1/iz6mH7r4WzLwi
- eeuA==
+ bh=6o7gJlSzox/1LQ7u+8u2lPFR/PjezTFDExdWlHtAlbM=;
+ b=a/KJwL4d+Sa+D2IMljXpCZdI3BOAz9qgcsn3ZQoMbty+bGGxlThci3QfsCsRT94hjA
+ WkAEEkZD6RBLxbLCDDIWPmLIoC4ol+6oHg3Cx876l8Un+zg9P4ioE5/sxNzh0Qg5K+Fc
+ 0IUcFAYQKCfo51I4JXBsOJrGR3BaDlf/p8JLpnSSvR1xpfMz5Uc/g/um5gFb+kvE75px
+ Cjasz0DUCq/NHuvLVmMIBc5UWJIrS74P7jCec4uP8LqG+tVlB5/HXsapSA3g/v4xUPch
+ rQd87H5uQWG/MRxZTN1GQWBrH5vz+L/RKSeHc2g3wgUyEgQ5M0dzv9syiGH/YdLSu3AA
+ k9cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772748989; x=1773353789;
+ d=1e100.net; s=20230601; t=1772749059; x=1773353859;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ebZOB/cgjse70HqkBuSh7UhPJC61LIbOScMXnZGf/78=;
- b=h8f8R9tXUxCibdRNTEQcKAV0FGQ9UrjObOo9FIPBVBc25rwSAEsPzb+gX3ejjSQSqn
- 8STZLpMWMR9n1eqCMaU+ma+To1cs47VPBpB+1TYgCh21iwdv3Ghy2ucPC9EfBKSJf/GX
- h5SsArWH7BsKerB6iUDoCuvTEVWSi2AcKIL6vMIc745hZA/TG1W5AhDWyTx7FENcCQBX
- Nq9Vp2XhyXOlHE/9gzTma+LTe71Z+0BbTK2rkv+lzmgup87xBgW+Ums8fKYLhCUC5/aE
- Q8r6jc4M1KQbanw9ejb/2pDBttHoSyDqnnQI0p3xETAeiIuXU1Kf2HW2hM2+0LcQWUWa
- ERXg==
+ bh=6o7gJlSzox/1LQ7u+8u2lPFR/PjezTFDExdWlHtAlbM=;
+ b=fIyp5O2VsZwOYtMEAbGv/s/YSH1bOD3Uh6N10Cw/iAqv13s7kV1yxSs8tOpZICB+KH
+ 4lTuFz7/Hjmxc5MiRGW6GejI8zeQYE42oQh+nvBp3L/9FZIv8GTx+Wlml4ui0XiZnrTv
+ P1DzGcNYUGrMVLHyPm1xmKJtTsP70MSTuCwE03tK4mu8WCFTg8bBSNl/TrGdnUCzYRR5
+ FsBh/lYPHyFGbGXrGwsW/g260cLABc7DeDO5KlDJAg0Wlm9DCVVth/HQWggNAco34oXF
+ KilJ4kRA6nWsw5EnijjlKrdxNdq+WVeLfVIh2jrGwSu7iqyokGR8ZrYOLRoHo6EE9dLc
+ ssvg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWEDdB+mObyqH9VRza3auaEtdUjvV+0RwNEwYa57UxZIbD4fJL4ZPRZmQ9NoUYSQjQTVB0lGDZfdQ==@nongnu.org
-X-Gm-Message-State: AOJu0YweRYPMNXy/IbE+2GAOJxkkolLqePqELTq3dmUvb2OVtV2ezF+j
- llbrksQjp3Y+4cx7V72BRcGakTkqmUQbIccRXNtKpguUeHX1uhs1FYSwrLIzgsd+Zxs=
-X-Gm-Gg: ATEYQzws7yiQpcUlu6v5F52cJZsitg5NnaDCDZmCU6FEwCpeBxnIOFMmcl6fSIpoGkr
- GPvmVym1y0Cf2uuofcY9JVn4xtZkvWhf6Nzg7SpZTwiSyXdclmg57KXqmCUQ/nYBm6axU8zoqn3
- j5K0aILC9ckLslpuaA3NANuoXIPt1WxygEoECD6km6tBUxnRFSema8rqYqodNKTFBkZG52rqC+L
- LlJbaRnJ00hC5S7KW3dS+1Qpmqs73vPG4Gz3OExoriX20S8e7UicVzDu3qFJgSzaiRcayUMOzDR
- s/uzGVlnr0C6lxvPi+Nu1sXBOXM/dPRDXNixDD/FVmxER6BDQOwcGpiu6JA434UrPeQBQpNR0lQ
- +p5PuCNazI8gdJ0SFoBhFFNQiVcLv2z821+u43A4Racw8k81z5WXPagHG4K/I/hDJDks8mBXMAy
- Q9Gka68ufRO1vkb9XviT6iNIfSA2yhDFKeasT0xcg6dWuywassKq/vpm8rtOiuhSMP2A==
-X-Received: by 2002:a5d:5f50:0:b0:439:c157:2577 with SMTP id
- ffacd0b85a97d-439d7247e84mr2620092f8f.34.1772748989115; 
- Thu, 05 Mar 2026 14:16:29 -0800 (PST)
+ AJvYcCV5gU8PkW81bDs9EdnNPHpGD+v+LWQiyMAf24pHDJH9RSUhwciODpkfRTqMoylPRDKTw6W7AixF/Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yx1w7llvIInql2YXNKU4Q9ChgxAjQCk6vweHNpcC/IqNzgE7Brf
+ 1xYiGIZ0BPVxwjapRuenxG80UkaKf6Q2brRFa0i857XQJFpDsm0fcPiimldznKCCXRs=
+X-Gm-Gg: ATEYQzzM+PIxZzDU2JXtxLI7LuFbe63TB6bQs+Kw6QJxK/2dp7JImTS0lDpVvcp7Frh
+ 8Pf+rYa/eoqSkD5bJobhEdHu29Lf2QkqKeD3nHEBNPshWnZj712pl2TYtXfewQkMx3hXFL0YU9T
+ f2eQ2DaJRDRklQcqgKUorQAsiU9ndC25iydWeckFE8nc8R4Y4Dfa3lZb3rlFPG6O4aG1gw73N4q
+ R84ON+2gWIiKSO5JhweK0DW/8U3lIB1MPhwwFroBM+wkqJLHYhrQf6deHJ6JkbGzJueGfEeFmhA
+ xzUE+gztWRwwA6PTrEhorBwWVk3RVXsxhDAXgY7O0jC+xX5fSEX7C751KT/gsWCCM3QsR943+8z
+ aXofsyLr6+ckYRDgwxJbtqnueRFoRZA3gKuBrNiUO2mPIO6rzgMsUfsv5lVnyzZ76tIASEwV3st
+ jSAvy0DPl516t7wZIa4k+SxH4wroE6LcRH5UNoa5ki2zqhY0VFByCvZeeuov9XWvWz4A==
+X-Received: by 2002:a05:600c:8a1b:20b0:47d:7004:f488 with SMTP id
+ 5b1f17b1804b1-4851ee992d9mr53143545e9.10.1772749059349; 
+ Thu, 05 Mar 2026 14:17:39 -0800 (PST)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439abdf5430sm42495137f8f.5.2026.03.05.14.16.27
+ 5b1f17b1804b1-4851fb33815sm140413985e9.12.2026.03.05.14.17.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 14:16:28 -0800 (PST)
-Message-ID: <e864dcac-2b91-45a2-937b-8762620937ba@linaro.org>
-Date: Thu, 5 Mar 2026 23:16:27 +0100
+ Thu, 05 Mar 2026 14:17:38 -0800 (PST)
+Message-ID: <8ada0065-169f-4e52-b5e5-1861e4d6497e@linaro.org>
+Date: Thu, 5 Mar 2026 23:17:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 04/14] util/fifo8: Make all read-only methods
- const-correct
+Subject: Re: [PATCH v3 06/14] hw/char/serial: Prefer fifo8 methods over
+ open-coding
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -84,13 +84,13 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org, Helge Deller <deller@gmx.de>
 References: <20260305220911.131508-1-shentey@gmail.com>
- <20260305220911.131508-5-shentey@gmail.com>
+ <20260305220911.131508-7-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260305220911.131508-5-shentey@gmail.com>
+In-Reply-To: <20260305220911.131508-7-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,15 +114,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/3/26 23:09, Bernhard Beschow wrote:
-> Allows these methods to be used in const contexts, i.e. where the parent
-> of the fifo itself is const. This is in particular useful for Rust code.
+> Use fifo8_is_empty() and fifo8_is_full() to improve readability of the
+> code.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   include/qemu/fifo8.h | 10 +++++-----
->   util/fifo8.c         | 10 +++++-----
->   2 files changed, 10 insertions(+), 10 deletions(-)
+>   hw/char/serial.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

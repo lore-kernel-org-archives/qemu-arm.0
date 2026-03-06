@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 013BDF01814
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 09:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DC98F0180E
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 09:13:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyRDN-0003sx-Hu; Fri, 06 Mar 2026 04:11:21 -0500
+	id 1vyREw-0004VS-EX; Fri, 06 Mar 2026 04:12:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyRDM-0003qL-CK
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:11:20 -0500
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1vyREr-0004R9-83
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:12:53 -0500
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyRDK-0007zL-Rd
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:11:20 -0500
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-64acd19e1dfso7684455d50.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 01:11:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772788278; cv=none;
+ id 1vyREp-00083x-I0
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:12:52 -0500
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-64c9c8f8783so9421159d50.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 01:12:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772788370; cv=none;
  d=google.com; s=arc-20240605;
- b=c1bokTnMV4iEZVHUCIO9iRQide1673rAxxbJpcH/mP35k22q2KOE/Zm88r6kkUpulC
- ZhPAtrUjCiIVkNtZ4WK9C+9J1qPI1vFkc4dp298mmnuTiel0adn3ZwJSd1bZv32TDmbS
- /jYdeGHcyDe8I3TrSHLVcuXfmxUXUGH9OiA5D5xIhIu28t9IpOYRdfnfukz2cj6Rs+cK
- fVIFIli6JQwZE6LoxZwcFAWoa/AlHcbnNfbnv9sKgqGI97bcecYEvySWLLeKWqkpQQqm
- EeYhCTGtljzMtB+zo0Su38a/rfWggQAfsMnmMD8oqultmnbIyWw/zCafd0IKDTfMPnjj
- 9Ryw==
+ b=NaOBX9ERFWG9NPTzJYkkKpPx/Hcu4duh0jzXe+qY9sqopYfZDAaD5eKN9SQbvigk2G
+ ui/qIcmdoZDn11EJ0PYFQ0iYgtseDTuQP5EDx/Nez1flc5N6MB3E33o/jZDQzn+n2rqC
+ dBWda4Ttif5R5/TDSDkoQTH+hPwlIBLiW/T8ohx9qGUVrcwVA4U4oZ981u1/j7I2zOdx
+ Pf7ZB8pDx6T7ZNfQtHhhGV2AYvmcm8Qf09P3rYvCiPoS6lSxSiSDA6d4JXqFbtiHaPnW
+ JLCFJDlfN/cGPhzVxoXVneZf/kJlAgKosU5FDOPBPAWK/yJa6C7lJ3mIZaBFjgA9GJpy
+ etjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=qrLM5YbYYylYDyTkW1GefE7NXpG5k76cTHGUKpgdjTs=;
- fh=dssO1UcF19i8zvi+Qf8aoFDA+gyYvQHtxzse+5w83T8=;
- b=BKXHgMXFpkGj6tzzFb1iNYcIBn7TVc+is8KQqcEMNCEDonb7bfsiWZ8yCv0CxmOZ0W
- 3meWT0UwQqzQQ30UN5xndzwGf5mePI0gILiMWpNlECK4+cbo8gNRqg6MZnEYe/C0+4Cb
- 417gyGae9v27C3UsrOr0Yml0HtV0Xikudkii23qkvKVKLLFwwrdiGh3wS7tSwqninWtr
- BKVMtX53AdTMseViqFB5itdSQwmDORcI7BbON7qg8Ca3Q07H756b1RxnFKtoe1RwjqwR
- EkPsG0BIccOxXeJIwOWPSDUpwPouup3qkBsZDnKf69ZCnDMPCvJk56pyH9M3wUjI+jik
- 9v3w==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=tKLJ5+fiyUnNHmV9IryplIWI4j0jIDkQvWn3V9Nn/ZU=;
+ fh=KmeOpIKiT0nTNVMoZr09GQRxsHt0uhdIA6einzfgXPg=;
+ b=L/WFejRdjmTMcqy9XhSe10BdpDPAzkPaM/iRz2d1mHSNfl81mczS7soy+BCHbHHfMN
+ NcL8peh5w42zxNmADeOdSXpEtmcDrL1++GsDXeS4gO4CoaYCYHIHFXl8/zfc0GybBeEc
+ ZVG+onETqbQ9LVWmZ3ADvORby66bZ2WHyvxK1yBmEK/3OHIulQIgzH9+D4oD16oC7TLD
+ QORL+AE8aNkm32bY+1aoQh041XrpTNAoVS2+TbTLVJVWsat6AAcjE9+I3Sd50uNg64Hy
+ K20oxfj4m97pcG1DIxwyGCO6tnyxHdMo+OHTC6kmVleC9YhhOs4maPqmJTFpto3m6jGL
+ KxTA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772788277; x=1773393077; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=qrLM5YbYYylYDyTkW1GefE7NXpG5k76cTHGUKpgdjTs=;
- b=OSH5PDABrmvYiCk2w+z1yqki5VOzTmfP4A7+HqKAM0Xj7WhfJbJZHQKI7gHmtb5efE
- sJr0xeJNv+k0K/V5k658skaZ3zip0naSId1TCpsnVYSFkaAz3QSvmtv6W9+bDXFTinQv
- +CNXisqmBXu/UKV0IfCRCCuKVgHsrGyBc9nU/1o9NzJk12nynGYca35jjydprIom36Re
- AVsGlW50926xA6znpfbNLt49wRQg53EfPE0/ugNOBMd6KwowTAwRuOX+npWrdGDs71Lp
- f3FsS04FsYhSBvAgjQEkH4dWTt1UkMyKY0q+DowZqj7eEa47ZUu0L1v+rMTIZat1We7M
- G+1A==
+ d=linaro.org; s=google; t=1772788370; x=1773393170; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=tKLJ5+fiyUnNHmV9IryplIWI4j0jIDkQvWn3V9Nn/ZU=;
+ b=nYYWU10GtKchy9nMp20fN+hRdV0WTeTJhNPl/yurtC6PqE+f5aGpoX6qRSwRiKQbGw
+ vK0Q+rB9b/rpu1M08mXsAABIh5+CKHir0BsMMHTE9U/z4vHGJ2uJcyleEINKDIwKl6mX
+ RguGSR/+Zy1Wt9DZKZ2sYUVAS9I8MBq1jwGR+erXe0qzJRBK2/O+VKiHEaN5+EmK+hRq
+ kQpcaQ0KfOVVRlkPjUk6wesN2VsWaP5xjD/TYTWF6L0DxyTHomIUVDijQy8XmeuSHHce
+ S7Z6phT2y/pm5U2Txy+7NXoqyVcL2Dpj5uBSqb0m7E7TBnw4g/MGFTpn398bABqucJr7
+ 6N1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772788277; x=1773393077;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=qrLM5YbYYylYDyTkW1GefE7NXpG5k76cTHGUKpgdjTs=;
- b=XYEBumODkNt10R/FRAY05pJRDAGmFyS8IcNNyi+A2338CPO8pwFYg8MTP/AyNyrkTc
- fc0jTMlCqp50jgKHr5pKEzgldtLb85biFLsWjtJc8Z8Az7h0JRMS254SwiO6cvFVeozK
- TShWOF+p5oSS83xbKPeJiJNeZkjjFLIhZN/+ziA62mk8UIt/wydT5XOpkBYOIwkUSF97
- TtV9xCliniDPmvklAr8xBU0FVlzY5ku0uvP2ep1Jg1N0onSEGmk+ptDaNFMmrpmjRZ+f
- YFKRo2vQ3/uh/JcNzhrkpwl026E5o+6m2lK9EzQE3B7IqLTfw83FtIYodijlOA2Dk0tE
- xGHQ==
+ d=1e100.net; s=20230601; t=1772788370; x=1773393170;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tKLJ5+fiyUnNHmV9IryplIWI4j0jIDkQvWn3V9Nn/ZU=;
+ b=N7qFVVrA2xuTQL1u4hGim6zf6xgb24iS42bYHEwVKEoyFC8A2ed/nkouTwNFzeP6Cd
+ IdbV1i4+MjMSGlr2uZjwFdYW8eSLs7j7xoF8kACCbOiFNhYVSg1wV6svaYb/xzdzoqqG
+ /9DVnxVclu6AsQcD+npUEIloA+VgYZPCBV5pFKLTsu/NnJotrIWxFwAkeFGOidYeW+JS
+ GhlbrzASpHnjgjkCg1I9lqSbGep6EcwCmGAxDkx5Cj3PdFQgnghWjUzfmGUdOzHzFAUi
+ iyNOTQeyBJHy99vl0o3x+Tu+tZoKahj5oWkZVqGZD5eBY5chy3xYikmX/SFgY6BYZXk+
+ KyVQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGlpHbg2jGbzssWzA8cyY114NmFqikQqxbXvlhlGhxD2zcygs8xec4D4Rboa61tb4mxKH7Ua0R3g==@nongnu.org
-X-Gm-Message-State: AOJu0YyfbW9LBJLsk2oi+J6uxIbnJ2fNLr8Fu1lhoh4zY5jacZlMQl1R
- oKQ79rZxPlBlrVkeLtuWexiJNu51DkMAG5p7uqPUH5Nd5ayYBSzjOsffsuzJdgzwJqYyxoxvkQW
- eGH4rbmxycgicxOuW9QnToZbo1emRvRv1g3buwjfabA==
-X-Gm-Gg: ATEYQzyfePVQ38ZZBLar5CaBsnBCR9NLngCFWifNhtQebijm1tN6ctMbaRowQOh14Ct
- BFZ3dUyXKztABEabI30noW+4LNuQTWuDl+F2LzchW/GSlrAodqh1PppeVHyxaFTky0mpAGSXBZf
- MNZpurEBPkp1ABfWitXtqhUCwsYVa5uZx/PnwgbSwV8pKR8Oo60viB6A+l+J3O1SPHF7T0C+HG2
- IALiPqDyWc2DAWMq0SGdcqjYijxuEYq/iV/XF05gvNwm/pmW07PeO0KWLTx34QHJC8xwNH4v8qz
- fkcoPy8n1ROB5TftnOpbKaEAZPPdbr6obRJjl6B7DeGVtThTUnWpuCjuhTaIR95KqNA=
-X-Received: by 2002:a05:690e:2041:b0:64a:f1c0:65e0 with SMTP id
- 956f58d0204a3-64d1438bf00mr1118067d50.76.1772788277431; Fri, 06 Mar 2026
- 01:11:17 -0800 (PST)
+ AJvYcCVTknuSIAEpGaKA5G0q55u3W2uuxJ5yuFDMXNnZOYGirvdqUfnNtvQwTNB7jdzzFv7sxkiFtryiCQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwUW/HY1eZWR4Aa4koZDYFVwiIBGGfu8SMtJVJ3tlwH3ZV1qvBW
+ 9PekDzElC8Jkhl+uYIifs9VJBuIHGHQehr5pKViLac9FrrTk0FvHLvyH0qW9IiXdQl0+SYScdvE
+ saTeqxKvEWtz3Z5i1vf8/3YvzWbT9Bs04p7iNdxLL1g==
+X-Gm-Gg: ATEYQzzJD7DUBI6gPVgzK2+m13CjMRbA8tL5pdfH2fYu1jL6I8kx9J/qcOpedXzPL+3
+ EjbtsWjB5NWGZeWMFcjh/7fPeWV4gkbzAZj+lm6tfcRiiaZbIIFMc1CTkoBR8uWxzT4X33nA1Sl
+ I4/fCPR/vf0wvZMNuatb/U9OTOTWEjyPChrIxngtFWHoPkJRe2Xt51z+D6EmKWw0uO2sicUTKvu
+ o47Z7mKW8MeoL6rSaa0SSGBfL1Xux6nbdchUDufPZ3J97fAlN/YxClmM17p9zg2YkVWtk6v1SkA
+ 56OE/PtCryG2sC33ak+FDjPOho6YUCjTTuoENVkANNS2ENEe1oXrM3jnxcnZb3LTqlo=
+X-Received: by 2002:a05:690e:128d:b0:64a:e62c:16d0 with SMTP id
+ 956f58d0204a3-64d0715a088mr4764121d50.25.1772788370232; Fri, 06 Mar 2026
+ 01:12:50 -0800 (PST)
 MIME-Version: 1.0
 References: <20260306083113.74177-1-mohamed@unpredictable.fr>
  <20260306083113.74177-2-mohamed@unpredictable.fr>
- <CAFEAcA_dXMOzHuisenC+uEq5CyXBLgAjrA0SWVf8e+bmJ4Gsxw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_dXMOzHuisenC+uEq5CyXBLgAjrA0SWVf8e+bmJ4Gsxw@mail.gmail.com>
+In-Reply-To: <20260306083113.74177-2-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Mar 2026 09:11:06 +0000
-X-Gm-Features: AaiRm51DDPYdBjN5JGKsOcU5uV8wLuT-1_7XUpcnP2JKfbwX3gOYahKsAy0t_ko
-Message-ID: <CAFEAcA9AQdPs0ARmyfq_8PWu5mUckFtxuj8HBU6H38CAbahKOQ@mail.gmail.com>
+Date: Fri, 6 Mar 2026 09:12:39 +0000
+X-Gm-Features: AaiRm51dYvL5TEy2KcesCOtpGU6nJApG51IQ10CD9Z3R0p8zbYDeO3F_ZSE0Hps
+Message-ID: <CAFEAcA8CpS4_HdTRQmPO+1k4ZktRifB2HcObNdWkTS-ANqZtmg@mail.gmail.com>
 Subject: Re: [PATCH v14 01/19] hw/arm: virt: remove hvf_arm.h include
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -100,9 +98,8 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
  Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,53 +122,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 6 Mar 2026 at 09:04, Peter Maydell <peter.maydell@linaro.org> wrote=
-:
+On Fri, 6 Mar 2026 at 08:31, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
-> On Fri, 6 Mar 2026 at 08:31, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
-> >
-> > Having that include breaks the build for Linux after inclusion of SME s=
-upport.
-> >
-> > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Having that include breaks the build for Linux after inclusion of SME support.
 >
-> Why does this break the Linux build? This is with Manos's two
-> patches "hvf/arm: handle FEAT_SME2 migration" and "hvf/arm: expose FEAT_S=
-ME2
-> to guest if available", right? Linux builds fine for me with those.
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>  hw/arm/virt.c | 1 -
+>  1 file changed, 1 deletion(-)
 >
-> There doesn't seem to be anything in the hvf_arm.h header that would
-> be a problem on systems without hvf -- there's a couple of prototype
-> declarations which don't use any HVF specific types, and a block
-> of code protected by "#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED" which
-> won't be defined on non-macos hosts.
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cab2e21e8a..7456614d05 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -71,7 +71,6 @@
+>  #include "hw/intc/arm_gicv3_its_common.h"
+>  #include "hw/core/irq.h"
+>  #include "kvm_arm.h"
+> -#include "hvf_arm.h"
+>  #include "whpx_arm.h"
+>  #include "hw/firmware/smbios.h"
+>  #include "qapi/visitor.h"
+> --
 
-...and 5 seconds after sending this I see the include of the
-hvf_sme_stubs.h header, but that seems like it's also
-self-contained. So what goes wrong?
-
-The only thing I saw that looked like it might be a portability
-issue is the "ext_vector_type(64)" attribute on the hv_sme_zt0_uchar64_t
-typedef. That looks like it's a clang-specific attribute, so yes,
-this is a compilation problem, but it's a "fails on gcc" issue, not
-a "fails on Linux" one. I happened to have done my testing of these
-patches with a Linux clang build. With GCC on Linux:
-
-In file included from ../../target/arm/hvf_arm.h:63,
-                 from ../../hw/arm/virt.c:74:
-../../target/arm/hvf/hvf_sme_stubs.h:35:1: error: =E2=80=98ext_vector_type=
-=E2=80=99
-attribute directive ignored [-Werror=3Dattributes]
-   35 | typedef __attribute__((ext_vector_type(64))) uint8_t
-hv_sme_zt0_uchar64_t;
-      | ^~~~~~~
-
-Our other option for fixing this would be to either
-(a) just drop the attribute -- if we're using the stubs it's because
-we don't have the real type so it shouldn't matter whether we make
-it match the real system typedef or not
-(b) drop the attribute for not-clang, or for not-macos
+Regardless of what we want to do about the compile failure, if
+we don't need to include this header we should drop the include, so
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

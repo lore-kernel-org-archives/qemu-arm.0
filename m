@@ -4,100 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50322F01826
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 10:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C68FF01827
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 11:11:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vySqb-0000j0-91; Fri, 06 Mar 2026 05:55:57 -0500
+	id 1vyT5f-0000KB-Up; Fri, 06 Mar 2026 06:11:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vySqZ-0000iJ-Bl
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 05:55:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vyT5d-0000J6-Uv; Fri, 06 Mar 2026 06:11:30 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vySqX-0000LR-SB
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 05:55:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772794553;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ZLk9U3cnn9WXVQRPdQEQwYgcUewFMNjqG4kY0PtkobY=;
- b=BWyaBmiHdc2ybQ2f9Letyztbw6e1nLxWDBn/rSTofKawy/gMj78J0+5IQv7xLlrYlCOANX
- TRMR7XeNKkKTpLvI2IL2Nh32Wjs9JsCtakSJeLQ2Pml/cZsN/cYvSrWfDNN1jYYG03mS+8
- FBa1ivcbSER9SpmPzroxO+91HyuNm+U=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-361-QrZDKr54N323bLB6or6peQ-1; Fri, 06 Mar 2026 05:55:51 -0500
-X-MC-Unique: QrZDKr54N323bLB6or6peQ-1
-X-Mimecast-MFC-AGG-ID: QrZDKr54N323bLB6or6peQ_1772794551
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-439b3b408f9so4975573f8f.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 02:55:51 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772794551; x=1773399351;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZLk9U3cnn9WXVQRPdQEQwYgcUewFMNjqG4kY0PtkobY=;
- b=t7A0lfDSvdG6UroJ6jj8SDWgp/H3Sijf8UkRjUXr2EqlSaNRw5El/AlHAYM615IWk6
- 0NndEmK5+qYtxLtCvZxVHEDy1dJv0Az6mcwsXxGq4y6laJe9bpqkN/LyUqn3K6AbFtgn
- +wnPbZ3JhGKnseoM7Kc3cpAqHWbn2m+jqWFgyo7FTHwzn8Bc0DY/T1fb3+nLLkao4gbz
- c8UYY0It7AuXIsNHqX5BBU2YBkAfpfZy6SiKDcPDnY072z6YnvyQAvHSssB5gDlJGVcq
- 4G1/WBDG0FSV6ArOPEnB+edw6nC73zvk+a5n6Yu56ZfFNThoSOJe0lXuoc35g+pCiIQt
- CafA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVt3FOk3JIuvbnx4IOxUoSfsNFCENhHXLt3GWqp+nhh0BbtLbVZYwIuoe3q2eMUpyn5swEVUq4jFg==@nongnu.org
-X-Gm-Message-State: AOJu0YyBFZY8cIx0t0N6kdKxcwm3dNBlAHpCGX5N2Gx1Tr/+gjQdrmRE
- nJeTONXMzq+FlbTfN0MNkPRxISgyf6/kG82RWIrlvDfPnIK9AqUVGVKdbTEmfrn4Xeylj4JVNAF
- z5+wDCZQN6jRsijFcMsDkKy7XehoN+Q3+p08DYcYh9QFq8GRwOHxDBQ==
-X-Gm-Gg: ATEYQzx724v4eyNbl3zDXiYaNKRmflgYwfIJvKysyd28ArOeqdfrMGPYTKvSBGAogbJ
- tOoCqivv8uXA5wwfHE+b533el8mKzna9FuwF21jPaWRaARbL4wrhuTRpQjIEEj2wzK5PCNNa/y8
- pHhAf0R7skZofiNnHXHAUx1iKcuZJAjZyN7BMrbMEk+JJsiD5wNjIxHjYUcWnNVjc28QrCzHbif
- CuPDxpubNSvhbzd9+Zej7fJFdiATZIDZmSMfp5BZVbO3fsGQANpdgofPqnGP1dRofrCkzQvcDyg
- aDVoREe1Uck9rcJ2fvCPHx/96NHOzpQFqIUssteYgVNhEM86nmcFjVWovEZpG+A70vyy8HkFHhg
- MesVMqSyGRW1YPi4kksBoYhaPcTeljIlzYrft+Vn+FMq+yZ7/Yf3Vl4ZjYDHrJWku1HNc
-X-Received: by 2002:a05:6000:612:b0:439:be3e:52fe with SMTP id
- ffacd0b85a97d-439da35cbe7mr2896821f8f.26.1772794550691; 
- Fri, 06 Mar 2026 02:55:50 -0800 (PST)
-X-Received: by 2002:a05:6000:612:b0:439:be3e:52fe with SMTP id
- ffacd0b85a97d-439da35cbe7mr2896782f8f.26.1772794550276; 
- Fri, 06 Mar 2026 02:55:50 -0800 (PST)
-Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
- [2003:f6:af4a:4900:3d6:f567:39ca:55c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dad8d968sm2789308f8f.6.2026.03.06.02.55.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Mar 2026 02:55:49 -0800 (PST)
-Date: Fri, 6 Mar 2026 11:55:48 +0100 (CET)
-From: Sebastian Ott <sebott@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
- philmd@linaro.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v8 4/6] target/arm/cpu64: Define cpreg migration tolerance
- for KVM_REG_ARM_VENDOR_HYP_BMAP_2
-In-Reply-To: <20260304102249.1963784-5-eric.auger@redhat.com>
-Message-ID: <1c804bd6-7a54-53db-15fc-1c7a0865e157@redhat.com>
-References: <20260304102249.1963784-1-eric.auger@redhat.com>
- <20260304102249.1963784-5-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vyT5a-0006O3-6N; Fri, 06 Mar 2026 06:11:28 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.150])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fS3bs2nZfzJ46ZJ;
+ Fri,  6 Mar 2026 19:10:33 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id 4B0094056A;
+ Fri,  6 Mar 2026 19:11:11 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 6 Mar
+ 2026 11:11:10 +0000
+Date: Fri, 6 Mar 2026 11:11:06 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 01/65] hw/core: Permit devices to define an array of
+ link properties
+Message-ID: <20260306111106.0000023a@huawei.com>
+In-Reply-To: <20260223170212.441276-2-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-2-peter.maydell@linaro.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: pY5HVPhRK2t6CNHd6ECQ3M7atjSjOp5G3g2PedJrxfA_1772794551
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,17 +65,149 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 4 Mar 2026, Eric Auger wrote:
-> KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
-> from v6.15 onwards. Backward migration from a >= v6.15 to an older
-> kernel would fail without cpreg migration tolerance definition
-> for this register.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+On Mon, 23 Feb 2026 17:01:08 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
+> Currently we allow devices to define "link properties" with
+> DEFINE_PROP_LINK(): these are a way to give a device a pointer to
+> another QOM object.  (Under the hood this is done by handing it the
+> canonical QOM path for the object.)
+> 
+> We also allow devices to define "array properties" with
+> DEFINE_PROP_ARRAY(): these are a way to give a device a
+> variable-length array of properties.
+> 
+> However, there is no way to define an array of link properties.  If
+> you try to do it by passing qdev_prop_link as the arrayprop argument
+> to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
+> does not provide the .set and .get methods in its PropertyInfo
+> struct.
+> 
+> This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
+> a device you can use it like this:
+> 
+> struct MyDevice {
+>     ...
+>     uint32_t num_cpus;
+>     ARMCPU **cpus;
+> }
+> 
+> and in your Property array:
+>     DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
+>                            TYPE_ARM_CPU, ARMCPU *),
+> 
+> The array property code will fill in s->num_cpus, allocate memory in
+> s->cpus, and populate it with pointers.
+> 
+> On the device-creation side you set the property in the same way as
+> the existing array properties, using the new qlist_append_link()
+> function to append to the QList:
+> 
+>     QList *cpulist = qlist_new();
+>     for (int i = 0; i < cpus; i++) {
+>         qlist_append_link(cpulist, OBJECT(cpu[i]));
+>     }
+>     qdev_prop_set_array(mydev, "cpus", cpulist);
+> 
+> The implementation is mostly in the provision of the .set and
+> .get methods to the qdev_prop_link PropertyInfo struct. The
+> code of these methods parallels the code in
+> object_set_link_property() and object_get_link_property().  We can't
+> completely share the code with those functions because of differences
+> in where we get the information like the target QOM type, but I have
+> pulled out a new function object_resolve_and_typecheck() for the
+> shared "given a QOM path and a type, give me the object or an error"
+> code.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Hi Peter,
+
+Looks good to me, but I'm not confident enough on this stuff to give
+tags.  A couple of trivial things inline.
+
+Jonathan
+
+> ---
+> I want this specifically for the GICv5 interrupt controller device
+> I'm working on.  I'd like to be able to pass in links to the CPUs
+> connected to the GIC, so that we don't have to have the code assume
+> that it's connected to CPU numbers 0,1,2... the way the current
+> GICv3 code does.
+> 
+> I think Phil also had a proposed series a while back that wanted
+> to do something similar with one of the existing devices.
+> 
+> I figured I'd post this early for review, though obviously it's a
+> little unmotivated until I have my new GICv5 code into enough shape
+> to submit. This is tested, but with my work-in-progress code.
+
+You probably want to update this set of notes given it's in your
+GICv5 set now!
+
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index 26df6137b9..48fdbf353e 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -1750,6 +1750,25 @@ ObjectProperty *object_class_property_add_link(ObjectClass *oc,
+>                                              Object *val, Error **errp),
+>                                ObjectPropertyLinkFlags flags);
+>  
+> +
+> +/**
+> + * object_resolve_and_typecheck:
+> + * @path: path to look up
+> + * @name: name of property we are resolving for (used only in error messages)
+> + * @target_type: QOM type we expect @path to resolve to
+> + * @errp: error
+> + *
+> + * Look up the object at @path and return it. If it does not have
+> + * the correct type @target_type, return NULL and set @errp.
+> + *
+> + * This is similar to object_resolve_path_type(), but it insists on
+> + * a non-ambiguous path and it produces error messages that are specialised
+> + * to the use case of setting a link property on an object.
+> + */
+> +Object *object_resolve_and_typecheck(const char *path,
+> +                                     const char *name,
+> +                                     const char *target_type, Error **errp);
+
+I'm not sure why you went with this wrapping. I'd combine the first two lines.
+
+> +
+>  /**
+>   * object_property_add_str:
+>   * @obj: the object to add a property to
+> diff --git a/qom/object.c b/qom/object.c
+> index ff8ede8a32..90b8f3461e 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -1895,26 +1895,13 @@ static void object_get_link_property(Object *obj, Visitor *v,
+>      }
+>  }
+>  
+> -/*
+> - * object_resolve_link:
+> - *
+> - * Lookup an object and ensure its type matches the link property type.  This
+> - * is similar to object_resolve_path() except type verification against the
+> - * link property is performed.
+> - *
+> - * Returns: The matched object or NULL on path lookup failures.
+> - */
+> -static Object *object_resolve_link(Object *obj, const char *name,
+> -                                   const char *path, Error **errp)
+> +Object *object_resolve_and_typecheck(const char *path,
+> +                                     const char *name,
+
+As above.
+
+> +                                     const char *target_type, Error **errp)
+
 
 

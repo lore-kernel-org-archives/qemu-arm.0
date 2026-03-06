@@ -4,79 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D052FFCB61E
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:22:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C593EFCB61E
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:22:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXq2-0004Ac-Od; Fri, 06 Mar 2026 11:15:43 -0500
+	id 1vyXs2-0007kL-1q; Fri, 06 Mar 2026 11:17:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1vyXq2-00049c-1L
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:42 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vyXrv-0007Lt-3S
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:42 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1vyXpv-00076t-Nu
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:41 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4833115090dso97351055e9.3
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:15:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vyXrr-0007k8-UE
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:38 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48370174e18so57425485e9.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:17:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772813732; x=1773418532; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=vJBKXDfMOLJ17O6L4XJmaIZKXkUgnXJYCsrzUr4ccow=;
- b=R++pQJlG5GbZpzW7L1isbs1H05aQBohyklCLtqu5LM068wrd//2kXBY7nVwJpTcyoK
- n3v56FTcSILzg51qlF0x9i6UWYAF9C6WXmAUN9QcFqjpqOcYE7T/MGzsxq5AxwiGVfUg
- IGT4R2zNdwB6BaYYf3bPxNhYnZlh75o6r2ZMv8hK2lS71aUO85ga24Z3S/zotiJLfzKA
- TugZaq54HC6Rd53Yp/L52P5rXsW+FP59Y+5HcJ/XRf9MAhnI19PUpwrQYT6iyHUU8Zm+
- sIu7Pu/rpzjpC7OQDH0PaUutR2mjnxo9Q2ViPImEVE/Lzp+N89K+nEPFrfWgj0JsmBcK
- 8q/Q==
+ d=linaro.org; s=google; t=1772813854; x=1773418654; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dqXQr4uENYp7Zhjhp+PlBR4pffBHMkJZVYziiA75uYo=;
+ b=zV4C65+4jPK7wTIZV5THW0GzSzqehAr0P7LD+5Nj/gBxGzIFZKU52tp4GUBLeodq+2
+ oJKT6P2rWVSNAQxeE/G7Vfkx4AD70HLx5BJ5mqm/wksMy154qvhrmgaKhv+c1ldYaFXN
+ uJzn6ux8qWsAF8e/qMCxiJo9mCWEmCPN8F7uKDJL/1STEujZREwhUkOHgyRqUQNXp2Sj
+ r/9Q9IwcQIn6L+icYvaGzgNlGOzM6dHC9BFxmrBdzaoPtDowjKZX3DZSQwMvTqaZPY00
+ LGuvhPONQy6Xez+DTgUZpuYdK/5R3u5BL7Xj6Co1eFv93kvnMio7x6yq22EduMpGgEV3
+ jhlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772813732; x=1773418532;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vJBKXDfMOLJ17O6L4XJmaIZKXkUgnXJYCsrzUr4ccow=;
- b=LlZUNgpICJMgsI0qw4VKLmc/MjT5SODzyqKcByZD0i2h6RzTQKrhXb34wm+KnPa5x6
- 6Gf2zhbe9E87gwh2zE1o5zTubUXVnQRmNI5uSHV8qLqr+0UvuJEMQ5TrtkqJ4vaW1PSD
- Mc047xygo2gh01upFrpoOPrTA/WmjkqDq2EOFmv85uMhqkyeyhveWagZuoGZu1unOnsQ
- KJ8lfbB74/7ELk1pSR0syiSY1E7urdo4MCJsIU+3+A9bFEVUAhkVRV4MnKq0S+OjkPMu
- osUPmNzi5BSk96q8WqCjs1cfkJO53AdqTxV7ktBCbW+IkSOcLZCdXq+LW8YfuRSGFsbY
- E92w==
-X-Gm-Message-State: AOJu0Yx6Oojrz3krp2T1+Lo5zNsMurne6c2aiyjSRwY6azSbC1bapAPo
- 2Fp/E6wYM2+3jrBg/PnIFYKWwj1g3g1YQfnOGuQ/coR5HWU58T5YMHCW4S4+pdD2Q5aALJKRAWd
- 1fx16
-X-Gm-Gg: ATEYQzxvPL2eL0PaIwrkE1WSXuzompaCeQDTDLXs+vL3T/+m0R+87NdMCJsB6gpo0Lm
- XaY4W2dkxt5Zi8XjDBsc7ypf3IG0Na8q3+CeCpCdhygATRcfTjKEu78sJPd2hMn3oyBtOm0OFU9
- ibkQ31Og9bFaeXyxiabnk3hUoLN6q5Uh8mufpjMgYHZhRwP38s5I1ZPyBUZmk0CrzHfxawCLnrI
- 8vBDJd3C8LyhcMwZFYSS7AvB/5owk0Kiot2ex2ZFGEDGXgvhXFHkbaGp0HD8Pa1EqtAWsvpGwqV
- Eb43f7JH9qlgonHw6y6APSU/uuhz8LiOzksNTORmhOWYK9FRXCzG25Z9kPl69rPdqPzWOo1IgKU
- r4L6zpSk0AhJFVnSpWoGd//T8w0KDyXYMYBxRBwjaBuplIcMD3UrDpEqj+LuOeB+ifTjiSZxw5q
- v4mRa1U2UryuGIiiNT8ZcoSjolWRs/xq/xCA==
-X-Received: by 2002:a05:600c:3593:b0:482:eec4:74c with SMTP id
- 5b1f17b1804b1-4852695881dmr45079165e9.22.1772813731992; 
- Fri, 06 Mar 2026 08:15:31 -0800 (PST)
-Received: from linaro.org ([2a10:d582:31e:0:456b:162e:d641:32])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485238003a3sm31061105e9.3.2026.03.06.08.15.31
+ d=1e100.net; s=20230601; t=1772813854; x=1773418654;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=dqXQr4uENYp7Zhjhp+PlBR4pffBHMkJZVYziiA75uYo=;
+ b=jD+x8S4ZPZe0LlF0AsD1UusmLR9myAg4OfBW2Hf8x0/RI74E7JWwFOSBY3HLwIjWdm
+ UxFEYzJkVGhhkemWy3FM/MysolNiuJzKHnSYOOPMECbGXbIH6Lp1EmX/4vr91PRjZ0GJ
+ DqF0Tw6DPpZokSb1W60kXwQA0yVfWHXFFABjR/I3D5P4t9vj6Ks6bqyZSht4IrrbK4Yc
+ 793m50KSkQdgHWwGzwaOCDiW6HrhvF4L0A59SZGftelp+x68sGHUaNQPu9AR3wO3Gmp1
+ pMCpR58i/Ya5yO4C/hfCJKeRBCHJMX5PXIDdB/EsgppwD07eSULIcDIvOedbOrMtYF6X
+ bMEw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXMmdLzhqtCBMZpt0re6GaCJ7SRsLUFI9EtdQCf/ddFuUxWSTWQJlKgaNI5rFmW9wdc6I8rKc4B4A==@nongnu.org
+X-Gm-Message-State: AOJu0YwvxbenOlevxRa4Nqfiac1mWAOTwzxPnBUC8sycszZKAHr830cM
+ O0eCOJGw2c4tn7MAOVQwJ9IBluM5pgbRFdsH6tR2xICvgN2C1fpwBVGC/1mUiF3HUOQ=
+X-Gm-Gg: ATEYQzzqvHc6OCkZJNbdP/AyuxzDKz09lu34tRAkkqI5RfzE6DXKJ0x00+RCsS8qZYP
+ 2GwsYPVFOfXJCj6gpZ32j9FLevOywKFVYDr44FACXe3VcrxPHG8QHCWSgLPW49MHbD6Mub+CmCE
+ NDO0SfPgddZlux6k46HQ5NuijwjrQ5lPeklHgtK0PRBasCcSECOiWaVJmLc3VKwzlCpHHDg1lFj
+ uXXvefH1S9fMqtBBFk1YyzVJl8lIbyNtjayRGY4did0tDt1etH1e9q+1wv4/zB/Ho2/bKCaqlhW
+ 6X4cE+GMEM1MVqVtMiolQk7LOIL26HfywX8ozb7ZfFiIQKAvpO5PoXxoMcoz0EhMezZFlGjl1pl
+ lShGKwmSnmWvlp+ROzQ/EGHpYqV6QemjUNWEC/BCUEKqXVlzPBg+i3AHypEP1/fVdH/Bp39gthG
+ 0Hb8X6ALSW8Uk18VOl8rG5kGEBa3M1VO/9uQ==
+X-Received: by 2002:a05:600c:1c03:b0:480:1dc6:2686 with SMTP id
+ 5b1f17b1804b1-48526930d92mr47852765e9.13.1772813854432; 
+ Fri, 06 Mar 2026 08:17:34 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4852767d8e4sm42639265e9.2.2026.03.06.08.17.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Mar 2026 08:15:31 -0800 (PST)
-Date: Fri, 6 Mar 2026 16:15:30 +0000
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] hw/dma/pl080: Handle bogus swidth and dwidth in transfers
-Message-ID: <aar9otqHQI08k2sN@linaro.org>
-References: <20260306152140.2191653-1-peter.maydell@linaro.org>
+ Fri, 06 Mar 2026 08:17:33 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 80092689D6;
+ Fri, 06 Mar 2026 16:17:29 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Kyle Evans <kevans@freebsd.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 7/7] tests/functional: add VBSA linux tests
+Date: Fri,  6 Mar 2026 16:17:28 +0000
+Message-ID: <20260306161728.2657486-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260306161728.2657486-1-alex.bennee@linaro.org>
+References: <20260306161728.2657486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260306152140.2191653-1-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x333.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,56 +111,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Mar 06, 2026 at 03:21:40PM +0000, Peter Maydell wrote:
-> The PL080 TRM states that the DWidth and SWidth fields of the channel
-> control registers can only validly specify widths up to 32 bits (i.e.
-> values from 0 to 2) and all other values are reserved.
-> 
-> Currently we don't check this, so if the guest specifies an invalid
-> value we will transfer more data into our local 'buff[]' array than
-> it can hold.
-> 
-> Check the widths; since the TRM doesn't clearly specify any behaviour
-> for what to do on invalid values, we choose to log them and then
-> ignore the channel for transfers.
-> 
-> Cc: qemu-stable@nongnu.org
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3203
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/dma/pl080.c | 15 +++++++++++++++
->  1 file changed, 15 insertions(+)
-> 
-> diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-> index 3f8acb03de..6262c3f3df 100644
-> --- a/hw/dma/pl080.c
-> +++ b/hw/dma/pl080.c
-> @@ -164,6 +164,21 @@ again:
->                 destination widths are different.  */
->              swidth = 1 << ((ch->ctrl >> 18) & 7);
->              dwidth = 1 << ((ch->ctrl >> 21) & 7);
-> +
-> +            /* Only widths of 1, 2 or 4 are valid */
-> +            if (swidth > 4) {
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "pl080: channel %d: invalid SWidth %d\n",
-> +                              c, extract32(ch->ctrl, 18, 3));
-> +                continue;
-> +            }
-> +            if (dwidth > 4) {
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                              "pl080: channel %d: invalid DWidth %d\n",
-> +                              c, extract32(ch->ctrl, 21, 3));
-> +                continue;
-> +            }
-> +
->              for (n = 0; n < dwidth; n+= swidth) {
->                  address_space_read(&s->downstream_as, ch->src,
->                                     MEMTXATTRS_UNSPECIFIED, buff + n, swidth);
-> -- 
-> 2.43.0
+This extends the VBSA test to run the linux tests. The sysarch-acs
+test suite does provide some pre-built images which is good because
+the tests require a patched kernel. However due to the structure of
+the image we need to jump one or two hoops to get something useful:
 
-Thanks for picking this up, Peter.
+  - download and double decompress (zip then xz) the image
+  - navigate grub to launch the Linux Execution Environment
+  - shutdown the system once tests are done
+  - extract the logs from the MSDOS file system and parse them
 
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+It does make the code a bit ugly but it works for me at least. So far
+the subset of tests run is limited but that might be solved by adding
+some more devices to the PCIe bus to exercise the SMMU behaviour.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/functional/aarch64/test_virt_vbsa.py | 123 +++++++++++++++++++--
+ 1 file changed, 112 insertions(+), 11 deletions(-)
+
+diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
+index 1dd4cecde1e..0456dfe9fd5 100755
+--- a/tests/functional/aarch64/test_virt_vbsa.py
++++ b/tests/functional/aarch64/test_virt_vbsa.py
+@@ -10,12 +10,15 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ import shutil
+-from subprocess import check_call, DEVNULL
++import re
++from subprocess import check_call, check_output, DEVNULL
+ 
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import get_qemu_img, skipIfMissingCommands
+ from qemu_test import wait_for_console_pattern
++from qemu_test import interrupt_interactive_console_until_pattern as int_until
+ from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
++from qemu_test import send_key
+ 
+ 
+ @skipIfMissingCommands("mformat", "mcopy", "mmd")
+@@ -28,6 +31,20 @@ def wait_for_console_pattern(self, success_message, vm=None):
+                                  failure_message='FAILED',
+                                  vm=vm)
+ 
++    def append_firmware_blobs(self):
++        """
++        Setup QEMU firmware blobs for boot.
++        """
++        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
++        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
++        vars_path = self.scratch_file('vars.fd')
++        shutil.copy(vars_source, vars_path)
++
++        self.vm.add_args('-drive',
++                         f'if=pflash,format=raw,readonly=on,file={code_path}')
++        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++
++
+     ASSET_VBSA_EFI = Asset(
+         'https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
+         '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
+@@ -45,20 +62,12 @@ def test_aarch64_vbsa_uefi_tests(self):
+ 
+         self.vm.set_console()
+ 
+-        # virt machine wi
++        # virt machine
+         self.set_machine('virt')
+         self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
+         self.vm.add_args('-cpu', 'max', '-m', '1024')
+ 
+-        # We will use the QEMU firmware blobs to boot
+-        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
+-        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
+-        vars_path = self.scratch_file('vars.fd')
+-        shutil.copy(vars_source, vars_path)
+-
+-        self.vm.add_args('-drive',
+-                         f'if=pflash,format=raw,readonly=on,file={code_path}')
+-        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++        self.append_firmware_blobs()
+ 
+         # Build an EFI FAT32 file-system for the UEFI tests
+         vbsa_efi = self.ASSET_VBSA_EFI.fetch()
+@@ -102,5 +111,97 @@ def test_aarch64_vbsa_uefi_tests(self):
+         self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
+ 
+ 
++    ASSET_SYSREADY_IMAGE = Asset(
++        'https://github.com/ARM-software/arm-systemready/'
++        'releases/download/v25.10_SR_3.1.0/systemready_acs_live_image.img.xz.zip',
++        'df2c359de15784b1da6a8e6f3c98a053ee38ac0b3f241ccea62e17db092eb03a')
++
++    ROOT_PROMPT = '/ # '
++    DOWN_KEY = "\x1b[B"
++
++    @skipIfMissingCommands("sfdisk", "jq")
++    def test_aarch64_vbsa_linux_tests(self):
++        """
++        Launch the Linux based VBSA test from the ACS prebuilt images.
++
++        We can use the pre-built images and then trigger the Linux
++        build and run the tests. We then need to slurp the results
++        from the partition.
++        """
++
++        self.vm.set_console()
++
++        # virt machine with SMMU
++        self.set_machine('virt')
++        self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on,iommu=smmuv3')
++        self.vm.add_args('-cpu', 'max', '-m', '1024', '-smp', '4')
++
++        self.append_firmware_blobs()
++
++        # First fetch, decompress (twice) and prepare the disk image
++        # on an NVME device (the kernel only has drivers for that).
++        disk_image_zip = self.ASSET_SYSREADY_IMAGE.fetch()
++        disk_image_xz = self.uncompress(disk_image_zip,
++                                        target="sysacs.xz", format="zip")
++        disk_image = self.uncompress(disk_image_xz,
++                                     target="sysacs.img", format="xz")
++
++        self.vm.add_args('-device',
++                         'nvme,drive=hd,serial=QEMU_ROOT_SSD')
++        self.vm.add_args('-blockdev',
++                         f'driver=raw,node-name=hd,file.driver=file,file.filename={disk_image}')
++
++        # Launch QEMU and wait for grub and select the "Linux
++        # Execution Environment" so we can launch the test.
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Use the ^ and v keys to select which entry is highlighted')
++
++        # 3 down arrows then return to select entry
++        send_key(self, self.DOWN_KEY)
++        send_key(self, self.DOWN_KEY)
++        send_key(self, self.DOWN_KEY)
++
++        ec_and_wait(self, "\n", self.ROOT_PROMPT)
++
++        ec_and_wait(self, "/usr/bin/bsa.sh --skip B_REP_1,B_IEP_1,B_PCIe_11,B_MEM_06",
++                    self.ROOT_PROMPT)
++
++        # Now we can shutdown
++        ec_and_wait(self, "halt -f", "reboot: System halted")
++        self.vm.shutdown()
++
++        # and extract the test logs
++        offset = int(check_output(f"sfdisk --json {disk_image} |"
++                                  "jq '.partitiontable.partitions[0].start * 512'",
++                                  shell = True))
++        bsa_app_res = self.scratch_file("BsaResultsApp.log")
++        bsa_kern_res = self.scratch_file("BsaResultsKernel.log")
++
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    f"::acs_results/Linux/BsaResultsApp.log", bsa_app_res])
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    f"::acs_results/Linux/BsaResultsKernel.log", bsa_kern_res])
++
++        # for now just check the kernel log for the result summary
++        test_result_re = re.compile(r"\[.*\]\s+(.+): Result:\s+(\w+)")
++        summary_re = re.compile(r"Total Tests Run =\s*(\d+), Tests Passed =\s*(\d+), Tests Failed =\s*(\d+)")
++
++        with open(bsa_kern_res, 'r') as f:
++            for line in f:
++                test_match = test_result_re.search(line)
++                if test_match:
++                    desc = test_match.group(1)
++                    status = test_match.group(2)
++                    self.log.info(f"Test: {desc} status: {status}")
++
++                match = summary_re.search(line)
++                if match:
++                    total, passed, failed = match.groups()
++
++                    if int(failed) > 0:
++                        self.fail(f"{failed} tests failed ({total})")
++
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
+-- 
+2.47.3
+
 

@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559BFFCB605
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A15FCB60B
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:06:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyWiS-0006dE-4n; Fri, 06 Mar 2026 10:03:48 -0500
+	id 1vyWiR-0006XU-7U; Fri, 06 Mar 2026 10:03:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWi8-0006AI-95
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vyWiF-0006Ha-EM
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:37 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWi4-0003FT-PV
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:27 -0500
+ id 1vyWi8-0003G7-JO
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772809403;
+ s=mimecast20190719; t=1772809407;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=p96kQNLPHjt51NI8Jf6fV3SS0XQNmXFWFSJxOsCfe6c=;
- b=F9C8apFzLRFFhm0Fm2UKgEi+T9CU1clcHCW/vp7YXk4Yokf/NJbt2HEHh+b4huOz8KsBGM
- j2rztvPfkX2pYXDU34qMBexlPwmwGMIM7hzZvECneSaXeNmoit7Q866PAQ4eT31jYdyU1K
- mc86kgwZCNnYLq9PN5Cs+77K38/wAlg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=wECUQICQlfSyJaoevuqfyZMWVbAQ40qS5Z0WmE0SoJw=;
+ b=I5rGCwa91n9IucxcpUCMOkIAPw7xjsypFuVfzsfVSrspfzRGpG4SNYBoxm/NdANgOWsYlV
+ 7Jc49b3ILOw3G52tDDhc4/v9uSCleJvzwqewyv/Dc9QfF7tOQLZD0JuTW4TY+SKT8olrBB
+ c6ppDvFrEds5zkNhFaBN5I9jwLZqsyE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-rCXvBY0jOeeCCnlN2Ajcpw-1; Fri,
- 06 Mar 2026 10:03:17 -0500
-X-MC-Unique: rCXvBY0jOeeCCnlN2Ajcpw-1
-X-Mimecast-MFC-AGG-ID: rCXvBY0jOeeCCnlN2Ajcpw_1772809396
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-455-2yXIGyvuOM2EG4vEfwBQIA-1; Fri,
+ 06 Mar 2026 10:03:24 -0500
+X-MC-Unique: 2yXIGyvuOM2EG4vEfwBQIA-1
+X-Mimecast-MFC-AGG-ID: 2yXIGyvuOM2EG4vEfwBQIA_1772809403
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3E6E718005B9; Fri,  6 Mar 2026 15:03:16 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7F69D1955D9C; Fri,  6 Mar 2026 15:03:23 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.126])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B72283003EA4; Fri,  6 Mar 2026 15:03:12 +0000 (UTC)
+ id 7341E3003EA4; Fri,  6 Mar 2026 15:03:20 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v9 2/6] target/arm/machine: Take account cpreg mig tolerances
- in case of mismatch
-Date: Fri,  6 Mar 2026 16:02:20 +0100
-Message-ID: <20260306150302.203112-3-eric.auger@redhat.com>
+Subject: [PATCH v9 4/6] target/arm/cpu64: Define cpreg migration tolerance for
+ KVM_REG_ARM_VENDOR_HYP_BMAP_2
+Date: Fri,  6 Mar 2026 16:02:22 +0100
+Message-ID: <20260306150302.203112-5-eric.auger@redhat.com>
 In-Reply-To: <20260306150302.203112-1-eric.auger@redhat.com>
 References: <20260306150302.203112-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Kv_5UseTc1OiWaswOjfcbFkwbA0wwe-OLKtTIy7fPUA_1772809396
+X-Mimecast-MFC-PROC-ID: e3o9aMHuRu1RrdOzd3RuCrPj_6saG0QEVmdB3DYOHYo_1772809403
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -9
 X-Spam_score: -1.0
 X-Spam_bar: -
 X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -89,75 +89,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If there is a mismatch between the cpreg indexes found on both ends,
-check whether a tolerance was registered for the given kvmidx. If any,
-silence warning/errors.
-
-Create dedicated helper functions that print the name of the culprit reg
-and analyze whether a tolerance is set. According set the level of traces
-and analyze whether the migration must eventually fail.
+KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
+from v6.15 onwards. Backward migration from a >= v6.15 to an older
+kernel would fail without cpreg migration tolerance definition
+for this register.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
 ---
- target/arm/machine.c    | 21 +++++++++++++++------
- target/arm/trace-events |  2 ++
- 2 files changed, 17 insertions(+), 6 deletions(-)
+ target/arm/cpu64.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 476dad00ee7..fa236431a8b 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1065,25 +1065,34 @@ static void handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
- {
-     g_autofree gchar *name = print_register_name(kvmidx);
- 
-+    if (arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
-+                                          0, 0, ToleranceNotOnBothEnds)) {
-+        trace_tolerate_cpreg_missing_in_incoming_stream(name);
-+        return;
-+    }
-     warn_report("%s: %s "
-                 "expected by the destination but not in the incoming stream: "
-                  "skip it", __func__, name);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 4cfddc6e8c0..abc6b78ef7d 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -833,6 +833,14 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+                                      0, 0, ToleranceNotOnBothEnds);
+     arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
+                                      0, 0, ToleranceNotOnBothEnds);
++
++    /*
++     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
++     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
++     * kernel would fail without cpreg migration tolerance definition
++     */
++    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
++                                     0, 0, ToleranceNotOnBothEnds);
  }
  
- /*
-- * Handle the situation where @kvmidx is in the incoming stream
-- * but not on destination. This currently fails the migration but
-- * we plan to accomodate some exceptions, hence the boolean returned value.
-+ * Handle the situation where @kvmidx is in the incoming
-+ * stream but not on destination. This fails the migration if
-+ * no cpreg mig tolerance is matched for this @kvmidx
-+ * Return true if the migration shall eventually fail
-  */
- static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
- {
-     g_autofree gchar *name = print_register_name(kvmidx);
--    bool fail = true;
- 
-+    if (arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
-+                                          0, 0, ToleranceNotOnBothEnds)) {
-+        trace_tolerate_cpreg_only_in_incoming_stream(name);
-+        return false;
-+    }
-     error_report("%s: %s in the incoming stream but unknown on the "
-                  "destination: fail migration", __func__, name);
--
--    return fail;
-+    return true;
- }
- 
- static int cpu_post_load(void *opaque, int version_id)
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 2de0406f784..8502fb3265c 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -29,3 +29,5 @@ arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid
- 
- # machine.c
- cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
-+tolerate_cpreg_missing_in_incoming_stream(char *name) "%s is missing in incoming stream but this is explicitly tolerated"
-+tolerate_cpreg_only_in_incoming_stream(char *name) "%s is in incoming stream but not on destination but this is explicitly tolerated"
+ static void aarch64_host_initfn(Object *obj)
 -- 
 2.53.0
 

@@ -4,114 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BECBF01825
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 11:14:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731BFF01826
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 11:15:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyT8G-0001g8-OO; Fri, 06 Mar 2026 06:14:12 -0500
+	id 1vyT9L-0002Lz-Fa; Fri, 06 Mar 2026 06:15:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyT8F-0001fk-Eq
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:14:11 -0500
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyT8D-0006jN-QN
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:14:11 -0500
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-64ae2ce2fe1so8320196d50.1
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 03:14:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772795649; cv=none;
- d=google.com; s=arc-20240605;
- b=bwwBD8rtRmJdAMoc6kLSrrKagDoygVMytm7fHKLrpvSys82XcY/+5lDtQB5srI1qU3
- nu94kkLQJEzR+a2xCjVrxq9PM4vRQSdRPKr7HlyYxzQr7qXuHKQ02Lsd526wGlF5dZiI
- iyc4z3rPbyQFjKnBPPRGnZgZ/YTNiGcQa6qoHBSQpce3rkWjYkS8VBF0jMSKkJuDHULL
- LZlAtG3guuLpOgxuQ7rnQMfpcoo6n56odxxKMjo0jwg/GmIaeUMCFnH9Zxhc9e311iYM
- dvjCCdL1pzF8DUP5DmL5IMBF3guUTWi1HSCeZ+nBn/evu83h3t17H2PgaIlftm2h3ttC
- S/EA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=U28BL5+lwC9NiM/UwqkBnc3U9ps/l6bCSJUVodsJko8=;
- fh=cyK7lB5PgfOdmta+tppjBfBl9Z2NqFdJdqlm+srH37A=;
- b=VAJJzk+nBO+MNz8v01sRDoDNQlCNgJoAoxzByL+cjbIUiBor+0qowmkO0CfPpFm1Kq
- AiZVcejQOfnlSiiFxv73PpoZfmhPCYWIKtu8HZ/ocpVUMKzX++H0lsTseULhay2Qs4L1
- /oia0g4p3x4n35XBwjFgwILMxRlBc249cx5BA5kzdeoj+Npa38vGaDqq+fP21uXRAMih
- w2pOpihMHLJYN85w8V3oVM/zCQZ5VFCpQvst1OFaviDi/rrzZb38T8riMgA28wIOfNgJ
- YwZh79bTj/xp6yLFMl44ujf5kh2MS+UAKUk+gDuVRMngyrvBExkLXQuR/4iPZRxp67d4
- 5VQg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772795649; x=1773400449; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=U28BL5+lwC9NiM/UwqkBnc3U9ps/l6bCSJUVodsJko8=;
- b=PqM5Ce0HROqSsC4QiLfY2Pf3AQn4RzrV4+RVb6e+fnfyUd3kQceCjo9NEUqCh7FLv2
- C6Dnc8i8uev9KgDmoxkooWLg9zBDjV/6AFT/v7x7OwchXPL09C3Fd27JGQEWyAQu+Yn5
- muu46vFNP2vBynnnpp399wB6h2K7gflrcQQKnrtrQZReiLbBycu1xNtnDPHD5CM4tPf8
- URoFPi07g6eiamTQw0gBJML8McVnJkPgVIw6H89LaJCPBwDEcJE6T2s+j8150Mq6Ykxx
- +kcx88BQMhaq2WkQnzk39SPPYDDMVlOV3y+Jdkzw3SDopHBt6rEPn8+fkR9kGwpBAbGj
- 9mxQ==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vyT9J-0002Kj-Hm
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:15:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vyT9I-0006xh-0y
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:15:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772795713;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=EZhNksprdYhJsFBJGHpehsA641Ev1DzrhMR/qi8A+aY=;
+ b=QWxnBMcqne8GLNR9MROCLJNmfe0SeOYZgJAalu8GDrPU2CG+jOoSh/Hr4EZzAgp/4/c2bO
+ e0bvtXyCYCJrUSvK4XkfmYIftWb3rrk10J8+rCF4W4fkbwbDLRE1NobgZUfDIAK7Hvdio9
+ viAgiGMjZBQj22uzEemtAE1GZqRQ/Lk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-423-A-Erg9t-PcGELsIgjnEc6g-1; Fri, 06 Mar 2026 06:15:12 -0500
+X-MC-Unique: A-Erg9t-PcGELsIgjnEc6g-1
+X-Mimecast-MFC-AGG-ID: A-Erg9t-PcGELsIgjnEc6g_1772795711
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-439b9116e2eso3287968f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 03:15:12 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772795649; x=1773400449;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=U28BL5+lwC9NiM/UwqkBnc3U9ps/l6bCSJUVodsJko8=;
- b=HgdYbUbxmguknn/e6p+SFLUyG59IVxkWYQzISfGKQN5W+I51L00ZP4+c70DnwhuH/o
- F3VfhCWhvaA1jUtjDzyHzD8FofM8vUEPdgr6wY8HNRPH8veKscRer4Gg3ySS6zzdZMS8
- Z0jEOVi+dyUIFJcWg8zq8Sz5qJGDlEY2KlvrufutN9gbKTO6zMmz25p3NsJ/9O5ZZ15b
- w/VAyIObKbbYor9UQvOoHj1SXlhs8ThF0BcuYvgNDtTG5haDFYMeuo+0LUrp0LXkFcaL
- 0PUbfbaZaWi/G2rltosjyoHyxcGcW5+JyrFP+hRlpBwjrwAZMXZf/4PWGTHvvWAY2Ha5
- 2Abw==
+ d=1e100.net; s=20230601; t=1772795711; x=1773400511;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EZhNksprdYhJsFBJGHpehsA641Ev1DzrhMR/qi8A+aY=;
+ b=b48PlL0oW/+QMYrRAMkOi8uW/euQUOfnWAUDVAMNzUoNX4Au6nFcYWnt0nQHIyh7cV
+ qtgXMSqPTo6by+LUj8by0QILa7+oiEgMl40g1/uQXYmL8JdSEvOZDxnlCiEU2kBlq+b/
+ Ck757u48RxlISg2FWOvDtH6b4lpt9I1Bn2GanTsyc1AF0U5TBEgbWIbJNNUhuaEdXVUF
+ GrWcrBG4FBYxDSft9Dh/GgT4uRJYea2MxEGUqDYpdwK4UEBMxr4PR5J8Q/JwiidPOx9U
+ +zSX4NHlssnbPNq7Ty4/APxQo9jLuJ+3apOPcybFbKMzeyAoz4T8UXjAqC/ESRJSqGZq
+ QRfg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUfso1E+C9ecVvU6lkSEV1tbjXLferi1eMRb4KlZRT9M28HnXX6UE13xC7U1pFrTF69pZZzfeAOtA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzz7DRskymKXB77dyM/cDlNZBgvh2ehVYbYA1q/fVJD7KZgSnR+
- rQNEshYbiEIquyKYtXRJgMDeUNhtqA+sj+WT0a2P5Zi+UaflmIdhtI27JaN8DKw3Xm7lrzEtD5b
- lQyLq2byzpgOrlCY4jkTTvACxFJ/UMaOKpvwYBE0/tw==
-X-Gm-Gg: ATEYQzz8apu2DW0LVApidfBGChCRNjvX4eUTE4DPx6hrxjDdZ1su1+IisKQjLUR/NKt
- gMU9ronWjVthgUQGmGaXi8lMXaLRLJsGswSrodrAI4qLT1rVIIJBAmhrSoQcqBoZ/2puo9D+CeD
- FHFEHSwiTWBDG2VInPMKRM6fi59F/bdxyQyGV3buJCH9P3qMVbz9P2lLAqBXVGQs8wgH0M4wb+w
- ud3ZBLpWbVnQ2nsRKyreK7BwHLMlWXHwl5r2sL8XswPsgvhIGwzQjDgeQ77SdqFTELTthMvsZ5r
- Z+OcUC+QA007xvfb7ZyW7tZseu14vB0cske88keXgGjqDSr+fDApNDe+pHB3waspCnE=
-X-Received: by 2002:a53:e198:0:b0:64c:c1b6:7150 with SMTP id
- 956f58d0204a3-64d1429ae1dmr1122960d50.46.1772795648662; Fri, 06 Mar 2026
- 03:14:08 -0800 (PST)
+ AJvYcCVbw50iJP4pdFSU5A+e750f7jGUWw0X7o7EK0J80d42FysJZyGs5m06kXGUp+KZPPoC5CgB+WoF2g==@nongnu.org
+X-Gm-Message-State: AOJu0YzsVzt1XjE3wlhAwXxqDW/KzUjARhnOUsriM3jcdIaELizJQkGP
+ WL0xeZqlPfTiysLG80BknQg8S/rvMnVS/sqbcMgQLYYVOAQQhRzPdzE8bEc10RAs7wq2zX6IPCr
+ cWDIQh3DrJvIXV0Zw+/svhPdruk72Zd9/XM//xt+FaVRQ70ppH7WCpw==
+X-Gm-Gg: ATEYQzwZNVDFOyTB8S58nlEoJrOQn/hCKUG9eSPk4kI1dpvevaqmd+Ta2wElafcT7TL
+ gMl7/KWmRRj3BWcrHkUvmXWlH/jRBuwdH52QJpAys0KUzuDbHJTkOjadMRHLor+a2Z3lwUy9o3l
+ TClDt4FRllIz/yAM9ffuqY3eAW3RjE8vecDTheSUFU8krYhpdQKx3ZKwq71+S68bVvAlBWiRkmw
+ n302wiZRJEmat1KDx3v48yjphzMVdmrz++xXxUQdHxwoiSGo/lrf/0vwmqBSeYBE1icjFHhcUJ3
+ MMDL+Bn3C6yKUh19PPLK3h4oIHMMkW+mcJU03DQORHhG1E7PeMnZ+IXl6pz26pAgclP7mKs72ON
+ WXBIk/jp2A6iJhjSCRQwqNlZX1LyTh9wbWe040KmlPAQUGUczldIYEkBoKn8bNjURxBvJ
+X-Received: by 2002:a5d:64c9:0:b0:439:cee7:714f with SMTP id
+ ffacd0b85a97d-439da86f5afmr2779341f8f.53.1772795711082; 
+ Fri, 06 Mar 2026 03:15:11 -0800 (PST)
+X-Received: by 2002:a5d:64c9:0:b0:439:cee7:714f with SMTP id
+ ffacd0b85a97d-439da86f5afmr2779286f8f.53.1772795710612; 
+ Fri, 06 Mar 2026 03:15:10 -0800 (PST)
+Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
+ [2003:f6:af4a:4900:3d6:f567:39ca:55c])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439dae483desm2884818f8f.34.2026.03.06.03.15.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Mar 2026 03:15:10 -0800 (PST)
+Date: Fri, 6 Mar 2026 12:15:09 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
+ philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v8 5/6] target/arm/helper: Define cpreg migration tolerance
+ for DGBDTR_EL0
+In-Reply-To: <20260304102249.1963784-6-eric.auger@redhat.com>
+Message-ID: <ec81a766-8a0c-48e1-be74-fdd4cdf90f66@redhat.com>
+References: <20260304102249.1963784-1-eric.auger@redhat.com>
+ <20260304102249.1963784-6-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20260303-sme2-hvf-v6-0-b473702d8287@linaro.org>
- <20260303-sme2-hvf-v6-1-b473702d8287@linaro.org>
- <CAFEAcA8zTkc4pyHQKoDkTMhGPLQmxBaJS3bZiGRrPgux3rDLzw@mail.gmail.com>
- <CAAjaMXbXdrW9N1xLMPxL9OmjLqti6A3rqAmYipu6OkdBY8JPNQ@mail.gmail.com>
- <CAFEAcA_MuZH8d=Z=NfrNQ78k+Kv9mSx+=DLLt8AxZeEjccN8yw@mail.gmail.com>
- <CAAjaMXbq9A1NCO4jnF4aSL0XM2pzHsPsPyWfmqSCg_+2ZQpEHA@mail.gmail.com>
- <35FDE44D-63E2-426E-912C-6EB6CDA52116@unpredictable.fr>
-In-Reply-To: <35FDE44D-63E2-426E-912C-6EB6CDA52116@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Mar 2026 11:13:56 +0000
-X-Gm-Features: AaiRm52iM5T4V2oISvd27EDnJFJCO1yOBP6XZR7gYjkP1eVqqHBisLwM6om8dYw
-Message-ID: <CAFEAcA-Zgq43KW9EC-pteOqxHcZg==GE=1TAURZP-DGRh3OoHQ@mail.gmail.com>
-Subject: Re: [PATCH v6 1/2] hvf/arm: handle FEAT_SME2 migration
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: M43zpA_L_3hahKSUeGmWAaBKt5n46JNl9wjhqXgNkUA_1772795711
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,67 +113,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 6 Mar 2026 at 10:19, Mohamed Mediouni <mohamed@unpredictable.fr> wr=
-ote:
-> > On 6. Mar 2026, at 11:05, Manos Pitsidianakis <manos.pitsidianakis@lina=
-ro.org> wrote:
-> >
-> > On Fri, Mar 6, 2026 at 11:48=E2=80=AFAM Peter Maydell <peter.maydell@li=
-naro.org> wrote:
-> >> While you're retesting, could you also look at / test patches
-> >> 17 and 18 in Mohamed's series
-> >> https://lore.kernel.org/qemu-devel/20260306083113.74177-18-mohamed@unp=
-redictable.fr/T/#m2d1e3dfbfa5aecd41af6c0aa9e3b574a72c6f04d
-> >>
-> >> ?
-> >>
-> >> They look to me like bugfixes that we should be squashing/including
-> >> in the "enable SME2 for hvf" handling.
-> >
-> > Had a quick look, 17 seems to be nested-virt specific so not a bugfix
-> > if nested-virt was not already supported in the first place, right?
+On Wed, 4 Mar 2026, Eric Auger wrote:
+> We want to remove AArch32 DBGDTRTX which was erroneously exposed.
+> This was attempted by 655659a74a36b ("target/arm: Correct encoding
+> of Debug Communications Channel registers") but it was discovered
+> that the removal of this debug register broke forward migration on
+> TCG. Now we have the cpreg migration tolerance infrastructure, we
+> can declare one for the DBGDTRTX. This allow to revert the reinstate
+> patch.
 >
-> Hello,
->
-> This part isn=E2=80=99t:
->
-> @@ -1370,16 +1373,22 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
-> }
-> }
-> - if (__builtin_available(macOS 15.2, *)) {
-> - for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
-> - hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i].sreg;
-> - uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
-> - uint32_t key =3D kvm_to_cpreg_id(kvm_id);
-> - const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_regs, key);
-> -
-> - if (ri) {
-> - assert(!(ri->type & ARM_CP_NO_RAW));
-> - arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
-> + if (hvf_arm_sme2_supported()) {
-> + /*
-> + * Clang doesn't allow us to combine the two checks together.
-> + * -Wunsupported-availability-guard
-> + */
-> + if (__builtin_available(macOS 15.2, *)) {
-> + for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
-> + hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i].sreg;
-> + uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
-> + uint32_t key =3D kvm_to_cpreg_id(kvm_id);
-> + const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_regs, key);
-> +
-> + if (ri) {
-> + assert(!(ri->type & ARM_CP_NO_RAW));
-> + arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
-> + }
-> }
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Yes; the patch is doing two things and really ought to be two patches,
-so we can put the bit that we need for "make SME2 hvf work correctly"
-before the "enable SME2 HVF" patch, and the bit that is nested-virt
-specific in the nested-virt patches.
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
 
-thanks
--- PMM
 

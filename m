@@ -4,91 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96A3FFCB61C
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AD9AFCB61E
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:33:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyY0z-0003bu-2y; Fri, 06 Mar 2026 11:27:01 -0500
+	id 1vyY75-0007Hz-Pc; Fri, 06 Mar 2026 11:33:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyY0x-0003b8-JE
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:26:59 -0500
-Received: from p-west2-cluster1-host7-snip4-10.eps.apple.com ([57.103.68.93]
- helo=outbound.mr.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyY0v-0001Yv-JQ
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:26:59 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-5 (Postfix) with ESMTPS id
- B89A1180029D; Fri,  6 Mar 2026 16:26:54 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772814416; x=1775406416;
- bh=jDKiyyxqIXN5/prXrwqj18NmOIHioqVOmDlEAHoJ90w=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=Ev2Iiuo1QEjdp39EQNOTDQ0gQTXEg1E9fF7pg2KgOfSHdeiCWtZeP4B8mZSnJ1yoSjtDnoRCaxjc6NwcrH6iUIJLjK4choSJ2fUKTQqzQjYGzbBraDTpxo3RmvFXUDbz9eg/tLuzUMVkuk95T2ppfzRQ2/L83r7dgrrWRiKZlIXbpYZli0vUz/utULiKwSaNgzSMHUa78NGg1d13sydN0a5tiynCdQgiuaf2sc5IkW0TW8PNUk19fFLQXDL7NqwvY3Pn3iuU/NiKUR22LaAWIBCuQcJKU9gLTlEqfO7wcNj9yTLn2W+FqRyDSQVIVUJ5mGuklUn538GPJp7DhzQp8A==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-60-percent-5 (Postfix) with ESMTPSA id
- 9CFEF1800258; Fri,  6 Mar 2026 16:26:52 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH v15 00/17] HVF: Add support for platform vGIC and nested
- virtualisation
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <1A192D09-EFA1-4515-A655-6BEB19CDDAA5@unpredictable.fr>
-Date: Fri, 6 Mar 2026 17:26:40 +0100
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Alexander Graf <agraf@csgraf.de>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <79D8264F-1954-4626-9EBE-4577388D951E@unpredictable.fr>
-References: <20260306130107.35359-1-mohamed@unpredictable.fr>
- <CAFEAcA-e4GZB_TRG7Jm3O-RNJneUtk_WufiXNn6=UDHsgG4kdw@mail.gmail.com>
- <CAFEAcA8gB-36c1TvJSwJ0MkVMy5z_dqKpVY7KTJ-cMV5rAX1_w@mail.gmail.com>
- <83E62271-E3F8-432E-8499-D1D8D065B162@unpredictable.fr>
- <CAFEAcA-uxtCoawErLdM0HVuy_h-uxxcmFjJsZf1rTgNiov-JWw@mail.gmail.com>
- <1A192D09-EFA1-4515-A655-6BEB19CDDAA5@unpredictable.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1NSBTYWx0ZWRfX1A8fClMdzZJO
- Q/nc1pER0F8l/QG6JOhCvN4LN1JW1CR06rh3rizBy53IUWYGhOxB0OqHvFc0gIBn3lveTp/vxsX
- +qZ9C0k9mdAXDyRabFQXeHy8IuQF7P/y/X8yPcbQ2G2/ZygkzMizV5A4wFDeVWyr78OAsGi8i4O
- CM6yzmmQz/pOdvTwu04fF4ovdsWYd8cjQvE3Xu6FprJ/jdEkvguxOPijLmk+0f3dumgCpwrlLiO
- CX6+AEhrOLgWS+WkImFxvxqJszq4G/klRtzte0/mBN1ADcpQU2ARVRzkLaavBktd6uQrzx74067
- 0OnmPmhPLoo6wtQXEuR6WlU/kFq1nzp/1c55DSpn1CQJ1OqXcaAk4411NwzPSA=
-X-Proofpoint-GUID: PudYvlaGxOD5SMP8ZnYqeD4IQ1SInc5z
-X-Authority-Info-Out: v=2.4 cv=Q6ffIo2a c=1 sm=1 tr=0 ts=69ab004f
- cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=p0WdMEafAAAA:8 a=KKAkSRfTAAAA:8
- a=bU-1vNr_xgfpa6VbDIQA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: PudYvlaGxOD5SMP8ZnYqeD4IQ1SInc5z
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- clxscore=1030 adultscore=0 spamscore=0 bulkscore=0 mlxscore=0 malwarescore=0
- suspectscore=0 lowpriorityscore=0 mlxlogscore=999 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060155
-X-JNJ: AAAAAAABoZ9jUAfvgGV2bDwyMcXZApxfAYqlqdLq8YVV2RMU/KZVf4ltGLCcSiaW4I1AzL4W/cs51hXCsKtcWeN/tBJYIWaSIMH2211K9z6UL0yVoYIvTHJQdCKulPcYHVoWQ+/LpsmK7lWhCiEhnEoSzLYWFW+o5jfKHf++/EgNQR585cytDc9OneUpnDaf07ZrH45tcPlV2bLnf4TkjGY5h4GZEMC1qMBzGLGAA8FC1T/0UQHE9wyAoEQdDd1HuH7TSdITaeBZs1RkC+ZqX6J9nM8HuvP/SeOHn9jKO/0yx0U2WvT0ZQaT9qesyXSIaukOmmEr58l3CRkphynXfe3S4Ua3ZUS188hlcY4WTh9K7xNd3hUnT0mO/+3YyyRapTlAkpLW+ATOdGrO9l0MlonjYOPQRZMEa97pxBN2LDof7WnPRhLNk90IMH/YvUZbZHBsTzIN18lJUuINsT2i4ZLBziEOvZ2kIPPhOnaJkxfHbVuWjGkJo+es2ExTKd4ufeZHPnO/8Oxhyix5WqJj/ZrDq8G6gNdllbo51wpB5eaONOTF5tS4NKdUUrshADV0eBmpgHrD5EPaYwmn7U2j0hfNojCjxnmDxgc1sxAlksZXgKWvP7AUbEZWK15RtkNBATAAh9WCIFdQAQdu2ga3TcVIfCniF/vvfBYwLFR1e16pzfxGQ6t/8OFi7z0KAHIOcmgTP+QbfaIjM4VXX8mtO5I5uLcKn22QgEWysRT0cj5BJKDdcrgwimjYdsBNEHsu3Fc=
-Received-SPF: pass client-ip=57.103.68.93;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyY74-0007Fs-IG
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:33:18 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vyY73-0002Yu-2g
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:33:18 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-48371119eacso112091665e9.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:33:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772814795; x=1773419595; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=U9EMMAd/DqWuXItCh+HKPOnk2q8DVffg/N5vlix89U0=;
+ b=u8FnmzbN6VyA6kbMZTh0Ovl6lx3qBiCusQbsKVXLJ2hm+Rz6Fw2ONb3xVtOSruew7M
+ +nWD5FvsBfejIdPkovVz+yVJOq1pVqZdl0AQpY50WIK7MnaclYxLxTszfyu+U7i3Y5eR
+ OO+sZ6tseDjkslljfDIreiWriXyKiRyuEGYjuHv1CZz5VHrvpLd+NIJBOC/XnfQbJbQ5
+ UEqBWMLBOUfcotKYuepaVsUVLhrndGR6NYBJXXhc6j7JWzXJpAYUUaUmW8ONEzNFtMAR
+ Zi9zxmuXsNqRswM9gMb2fgYfATUB/Hl+F98WG+JpxfQKODrc7Q4uqjqgRb2eO1yqKGny
+ g+FA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772814795; x=1773419595;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=U9EMMAd/DqWuXItCh+HKPOnk2q8DVffg/N5vlix89U0=;
+ b=pP6KGLCz2HrktgzBmz8sZjZVBrdqnnkB9RcgNF84LJypkxbX/8kog4tck47yrtNO0P
+ WGoFjvTqHTa1oVgHw+f05Roqcp3GHwJCcrP02z+8B/pvHI2k0dT7ATC1Ut/YyvsaIUoq
+ thlhFHzH3Te0hjQHKKX6ciZtewvIKGxhkD+N4CLsGOQvQUF+hQcwfHbEXSfuurx69DK3
+ +3PpNkU7y3ndBZrQRwx67BNxUKibONUomEtVfAKaINgquZQxPBzChc5b7Cjo9hRbhGkW
+ +Yp0SsHrmu/yqNmjmNvaVgnSvY7UUCJBfn6Z9mlh9b7735e51FfuYGGiT3GPRocqUgRR
+ EtLw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW+Bi5qkSP/Nm/dMq167Z/zwVDuUMfxfYr0vPVrhQNW7b0qa1rNWEknP9CV8OOg8MditY0ZcNcYEA==@nongnu.org
+X-Gm-Message-State: AOJu0YxTCxQn7wI1/3nCsITnfw1ex43JbG+lb5U3G9YqLll1NHpdR9fG
+ 4Cnbb29tBrTApYhPEOyGZi0kJxARSrSreNNqeKVvNTDACgXy3ixRXOyC9FWmHmK7IUk=
+X-Gm-Gg: ATEYQzyXb/HtoniONVwwXmLriZKlaDZagrdk18Gs+hADcBPNIybGQ60YFmSrAQiKAbs
+ kEjiystJfAy5FCwDw4dzjeg/zX/ooSfAccjOPweIQAbw41Ul2MTjwbdt3UXXkkQJgnXv7ZgWo4w
+ ILN22SKF1yNPfNqeK52p0MZ6JxxrrVf7JpfZ4HkXrorusRKcH5dl2zQxSEE63O+yoQIMKFd6qEh
+ cZv3BwhdXVTBaZ3Op3GLec/3+t0vxJoODGsUcUkJIvclQ+mfn9kJcx1nnI5oaI7k9MXc7QlZwpn
+ G3EhPzpFF3ifZ3EyYsx41b1kpOUDooGWXBI4wtKsxgsZX3GUCSdCdrmZDeLmk8k0LU/Dx3lQHIO
+ Dcx+2J4C+wcjW/TfDLqBktd9rw/306ADcdXx/GB0VpOil/F7MsAXomwwsHA4aniqthJ+GjRYZT7
+ nMGVB+aquFLu/DQgOt/UiaUnxf/0TQtjs9ToofdeCNEq0CAzsgKLP7cQtwyizeLCMzPA==
+X-Received: by 2002:a05:600c:1991:b0:477:79c7:8994 with SMTP id
+ 5b1f17b1804b1-485269771aemr45251245e9.30.1772814795116; 
+ Fri, 06 Mar 2026 08:33:15 -0800 (PST)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-485246ece8bsm31708075e9.4.2026.03.06.08.33.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Mar 2026 08:33:14 -0800 (PST)
+Message-ID: <cf4a92e0-ac38-4ef9-92f4-1c5df9a5d952@linaro.org>
+Date: Fri, 6 Mar 2026 17:33:13 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v16 14/17] hvf: sync registers used at EL2
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
+ Cameron Esfahani <dirty@apple.com>, Alexander Graf <agraf@csgraf.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>
+References: <20260306161509.79712-1-mohamed@unpredictable.fr>
+ <20260306161509.79712-15-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260306161509.79712-15-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,140 +108,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 6/3/26 17:15, Mohamed Mediouni wrote:
+> When starting up the VM at EL2, more sysregs are available. Sync the state of those.
+> 
+> In addition, sync the state of the EL1 physical timer when the vGIC is used, even
+> if running at EL1. However, no OS running at EL1 is expected to use those registers.
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   target/arm/hvf/hvf.c        | 63 ++++++++++++++++++++++++++++++++-----
+>   target/arm/hvf/sysreg.c.inc | 44 ++++++++++++++++++++++++++
+>   2 files changed, 100 insertions(+), 7 deletions(-)
 
-
-> On 6. Mar 2026, at 16:58, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
->=20
->=20
->> On 6. Mar 2026, at 16:56, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>=20
->> On Fri, 6 Mar 2026 at 15:53, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>>=20
->>>=20
->>>=20
->>> On 6. Mar 2026, at 16:44, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>>=20
->>> On Fri, 6 Mar 2026 at 14:58, Peter Maydell =
-<peter.maydell@linaro.org> wrote:
->>>=20
->>>=20
->>> On Fri, 6 Mar 2026 at 13:01, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>>=20
->>>=20
->>> Link to branch: https://github.com/mediouni-m/qemu =
-hvf-irqchip-and-nested
->>> (tag for this submission: hvf-irqchip-and-nested-v15)
->>>=20
->>> This series adds supports for nested virtualisation when using HVF =
-on arm64 Macs.
->>>=20
->>> Reviews would be very welcome :-) It's maybe a bit unlikely that =
-this will make
->>> it to QEMU 11.0 I might as well try.
->>>=20
->>> The first two patches are from the SME enablement series and are =
-present for the
->>> series to be buildable on its own.
->>>=20
->>>=20
->>>=20
->>>=20
->>> Applied to target-arm.next, thanks.
->>>=20
->>>=20
->>> I'm afraid this failed to build in our gitlab CI job for macos:
->>>=20
->>> https://gitlab.com/qemu-project/qemu/-/jobs/13388426185
->>>=20
->>> In file included from ../target/arm/hvf/hvf.c:489:
->>> ../target/arm/hvf/sysreg.c.inc:174:21: error: =
-'HV_SYS_REG_CNTHCTL_EL2'
->>> is only available on macOS 15.0 or newer
->>> [-Werror,-Wunguarded-availability-new]
->>> 174 | DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHCTL_EL2, 3, 4, 14, 1, 0)
->>> | ^
->>> =
-/Applications/Xcode_16.1.app/Contents/Developer/Platforms/MacOSX.platform/=
-Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Hypervisor.framework/H=
-eaders/hv_vcpu_types.h:312:5:
->>> note: 'HV_SYS_REG_CNTHCTL_EL2' has been marked as being introduced =
-in
->>> macOS 15.0 here, but the deployment target is macOS 14.0.0
->>> 312 | HV_SYS_REG_CNTHCTL_EL2 API_AVAILABLE(macos(15.0))
->>> API_UNAVAILABLE(ios, tvos) =3D 0xe708,
->>> | ^
->>>=20
->>> and similarly for other registers.
->>>=20
->>> I'm going to drop the last 4 patches from the series, which I hope =
-will
->>> fix the CI problems.
->>>=20
->>> =E2=80=94 PMM
->>>=20
->>> Hello,
->>>=20
->>> Will submit a new rev of the last 4 patches with a workaround for =
-this then=E2=80=A6
->>>=20
->>> (Ugh @ compiler pragmas but there aren=E2=80=99t better choices =
-unfortunately)
->>=20
->> Unfortunately the problems aren't in just the nested-virt part:
->>=20
->> https://gitlab.com/qemu-project/qemu/-/jobs/13389185563
->>=20
->> still complains, including about hv_gic_config_create().
->>=20
->> I'm going to drop everything except the first 2 patches.
->>=20
->> thanks
->=20
-> Ok, will try to see if I can repro the CI config. My apologies.
->=20
-> (It all builds locally :( )
-
-Hello,
-
-For future reference what it takes to reproduce this locally is:
-export MACOSX_DEPLOYMENT_TARGET=3D14.0
-
-That showed a bunch of spurious warnings though:
-
-/Users/sunrise/workspaces/qemu/include/qemu/cutils.h:144:12: warning: =
-'strchrnul' is only available on macOS 15.4 or newer =
-[-Wunguarded-availability-new]
-  144 |     return strchrnul(s, c);
-      |            ^~~~~~~~~
-=
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Devel=
-oper/SDKs/MacOSX.sdk/usr/include/_string.h:198:9: note: 'strchrnul' has =
-been marked as being introduced in macOS 15.4 here, but the deployment =
-target is macOS 14.0.0
-  198 |         strchrnul(const char *__s, int __c);
-      |         ^
-/Users/sunrise/workspaces/qemu/include/qemu/cutils.h:144:12: note: =
-enclose 'strchrnul' in a __builtin_available check to silence this =
-warning
-  144 |     return strchrnul(s, c);
-
-Sent over a new rev with guarding squashed in as needed (for the vGIC =
-code, availability skipped because it=E2=80=99s=E2=80=A6 whether the GIC =
-is available or not is checked in target/arm/hvf/hvf.c, and for =
-target/arm/hvf/hvf.c, checking across the board except for EL2/vGIC =
-register availability which are handled via a separate mechanism)
-
-Sorry for this :/ should have anticipated it better
-
->> -- PMM
->>=20
->=20
->=20
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

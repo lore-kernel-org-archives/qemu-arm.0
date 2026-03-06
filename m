@@ -4,88 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD31BFCB61E
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5702FCB61C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:18:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXqH-0004ID-0t; Fri, 06 Mar 2026 11:15:57 -0500
+	id 1vyXs1-0007cE-8R; Fri, 06 Mar 2026 11:17:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXqD-0004Gi-5k
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:53 -0500
-Received: from p-west3-cluster3-host12-snip4-5.eps.apple.com ([57.103.72.226]
- helo=outbound.ms.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXqA-0007B0-0B
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:52 -0500
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPS id
- 26ABB18007B0; Fri,  6 Mar 2026 16:15:43 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772813749; x=1775405749;
- bh=RdupMbasv3vfE7MWncsbZfwo8ETMcn2mJfgeWSq9R+8=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=FAc0FoumzFfcidgqQCD1VTFFw+kUvK3EWgugFVELSotAav7KIj+A/OW1QjPJi5UKfkzDTAkqWUE5wUWSuFjR8ZNMPxxUvs/Fzqk6KaZBbYMvi4bKDgPHWuCmJ15zKro0Jhn4ZrzBKxmagMjaTm3Am0SLUfHWfKd7O37UB/qNATyu49M6zH/w2sPwGGdO8rbHgx2cql8vFKcrANhTOlZOqAc9XikRJsZxHfx4EbF3HBxN0UKOzrFcrTLgB29eNEG20S4yS2Si3jNwuWt9mte0VPoxZ2mdA4oeE4pNCqvLhaRaa/YR8YKmAr2cHVqlvqp8cFLfZEoiJG24yw/wnySHww==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPSA id
- 224D5180079A; Fri,  6 Mar 2026 16:15:40 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vyXru-0007LE-O2
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:42 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vyXrq-0007jh-JS
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:37 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48529c325f0so3428265e9.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:17:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772813853; x=1773418653; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vllX98KGLiZLLrBT8HEqhhUqOqA+FrnDnUy3NTzv/l0=;
+ b=YeCXZtqFDHDCAaHNjRUbYeQYZK+0+Ea2oA7dmM/04Dp6aDZTVqCSvpJUnarfDlS4S6
+ 4rupG8FVo6aF+eC5gmQ6bPM8OiUa1Gn8Snc8e6dJVyhcHOxPV/kIMvy1dvrPhY7fGKqn
+ zY36HbsRIGjl166CXuvEDoLtHgRjDDM0TeUn4HyoqTKcKhIz/KKhGrKf7Z6XShFXCWc6
+ qk+6sTZR6WKHWAckJvppnmkMIgtmrstJnAVZUYW5GnHPClR5TcWo+CENXKiEe2qIhPGp
+ GndeS1eHJ8aKl/vgRLFfJbyR9kcN8Yo+VZTPFR39SYDpEtMgAw1F7xCva51wz/LGGcx0
+ S+Wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772813853; x=1773418653;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=vllX98KGLiZLLrBT8HEqhhUqOqA+FrnDnUy3NTzv/l0=;
+ b=Lxni+RsJ1S4aD+D8sA5T8gKFw2+UgYmsjskIkPxgsHd6k+JnPqjNnAmAe05de+kP/N
+ 39PUixJK1hRsF0w8Sx5aeQb0JyJpfLYGwYoidrMd5FJU91LrGdpP7WuRHI+gMFcp+NCC
+ 52b2FguBtlNm9RlkrkTOoHv13ZNcg67DV9aW1bnhqbWbhE+Tq2cHcoVJH5fnGiAJ4DhD
+ R/5I0lM/hQsySLGX4OkrWeHbCKhk9zK1eeK8pRpV1xSOGvwn5tYCKmMAaxyISomqVQ0C
+ /qqbVKZnOPw6MaNs9/lrBa+UAEYzs8/xxUfbtJ6I7gG9WvvAL9k51JP7KZ/32LmV+PzS
+ HLtQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVqWjKfIpnWvP4KMkzpe4L0OVdRTjz0jsOywCKN9pdCIbZQWYsE28mqauwOC9HKVEXwkfdaxXhIag==@nongnu.org
+X-Gm-Message-State: AOJu0Yx0AhN967qB4QSUffpBeIFSX6DOKFdyEQ0HdVChW50Ev+c+HlwD
+ qnujinzPf5z4l2gDs9SVG69ByAIhYTaTJaU7bPosJlsYB3js9AKuLEKfAEMQJqrFevA=
+X-Gm-Gg: ATEYQzzjhX1P8v8OsqzRQfu15tQl9Q6koykWvdTf4fr20uHzuSNBRum5luPxyVzXPts
+ GbQFh0tckIAgNpHdLo9JeCcQIXhcZYYARsWkeVB9vCtbLK3TGtx8u9+bM9zikyVVrT30uieV+EN
+ KLit2+C4NMWW+FpGNJlPMsdCY7FrRMXsJINpEbGjrqIvRorK28L5yskXde6bBfLLRWRtpQZrYjm
+ E0Q3VsR7SU7ByrjquQhqXFeTKY1MfJlhvqYWnL+p6hPG/MMWciwJzuEtsW5c+MvSOCTts5QY2mc
+ hlT5sn2mpT9y4hMOb/KnyUkQqhLyh1wd1sqUdyAwi1qRCcxQC+Iqs+ihrSLNIMBRh1+9/pT3riQ
+ VcEVT4Xv7+LZaqvq2MYiQgX3H0gWFNfPDkEreQKiMaDfpHcLX9iOX8AV0dAaXdGCjTj5YqN9Qqu
+ ReOoD5t14thnkYCFV1gQ4/B70=
+X-Received: by 2002:a05:600c:c491:b0:480:20f1:7aa6 with SMTP id
+ 5b1f17b1804b1-4852695880emr47085425e9.21.1772813853014; 
+ Fri, 06 Mar 2026 08:17:33 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fad2812sm207962975e9.1.2026.03.06.08.17.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Mar 2026 08:17:30 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 3D204689D3;
+ Fri, 06 Mar 2026 16:17:29 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- Cameron Esfahani <dirty@apple.com>, Alexander Graf <agraf@csgraf.de>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
+Cc: Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Kyle Evans <kevans@freebsd.org>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v16 11/17] hvf: gate ARM_FEATURE_PMU register emulation behind
- not being at EL2
-Date: Fri,  6 Mar 2026 17:15:03 +0100
-Message-ID: <20260306161509.79712-12-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260306161509.79712-1-mohamed@unpredictable.fr>
-References: <20260306161509.79712-1-mohamed@unpredictable.fr>
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Warner Losh <imp@bsdimp.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 4/7] tests/functional: teach uncompress about zip files
+Date: Fri,  6 Mar 2026 16:17:25 +0000
+Message-ID: <20260306161728.2657486-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260306161728.2657486-1-alex.bennee@linaro.org>
+References: <20260306161728.2657486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=WesBqkhX c=1 sm=1 tr=0 ts=69aafdb1
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=lOv7bB1OiAV5i3s2B4UA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: rfSlUdcftab_3CAfKoLrj3Fxxc9VrXh4
-X-Proofpoint-GUID: rfSlUdcftab_3CAfKoLrj3Fxxc9VrXh4
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1NCBTYWx0ZWRfX+A4T+0BilWx7
- +GoOW1Qy/mocA0PNOq3OTyT19CdXOaMtlp/y6ycTkgj1AtnoyqgdHq6an+PRKK8prKl+PMtEF/j
- C8E6PZ74sGK45epz4OL+WO109g77aGkPUqn20wAh5A2wvLDVqg4SwZEViMnfbRB2WvC89m5eoqE
- tfH+FOg63Giurepl5upPnKgjMwabUJvIAemNU6B4OTcWuv1F8UKMWKDlzzzJSLOJKyyRvr2jM1S
- vngTSE8TDnYmH3IyovjfZBNLbUeVoVVVlNUDWoL31w00VrooVjAjZcyzn79W0kBULi/l1ORDHqS
- dz6j/CWo0f9FDynnqiQtzsR9kzB8iC0ST1AjaTC6H4nZ61qu7ybNwqUQjzn4Hc=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- bulkscore=0 suspectscore=0 mlxlogscore=752
- mlxscore=0 spamscore=0
- phishscore=0 lowpriorityscore=0 clxscore=1030 adultscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060154
-X-JNJ: AAAAAAABpXXodEuu3VR0PPxYF7W4Um3CLP9PbhpmlSMNJntfqPot1TjQqMWnOG7o8r6epdlWRNCa3mGz22ACK9j9oBhRDAlSffM5VTdZDr2Fr9/dBC2FYm03t9/XtwgC2PAqhZu05SJ5VyXckBuyJHbLV1S7Xr7q1BX2xpKLTh57T7s0XLetlyPZVxNBZlMfBMz78F5qwqP9X46LEJexuP7+uwyKXGdJlipWiCD+5q4j0kGRjBBw2Hz2LCsuEJcC9iJEkEeEnSvXuVGq4ySxu2JFosAtWkjdeTNgd3IWrWCbpZe0JOvB2TrzcENeSczOqIWsyG8UgIHjR/82F/UEq7vxSAPfDmGTY8cc4DXeIpjnD/kQv0surNWAb2355054l5cshOMRm20pal2v3c+mQceMCCMG9/E5mznHbeljFNa7dkvQiRVl7Y6BEb9BrdqEmEDKRS/m/zIYu4easOhzBlwLWAdXAHqS/3P0jMhU77ydVC6X7F3W1uPy+6EBALEIZTyJMwGu+HtnRVzZYhtkrKHyTWtJhnFjISsogwpLtEmW47mKQEmsUt7tvRJWX80PcxRnKnh38nV34/k9gU2kJ9hAJLTk8DsZCiVTxvxrv0+hsaL9n2K520U7Ac10YxEFQyR2xMwZygVJxGiJbYofREvFscvAzksRUERxE+eewgPcSC7WMa6SivLHl+5Uf83aNqF40vA0VNkDNYkV+YzL5Y1N/AmZjNDuYq275NtA7B/p0lvOQTGhno/MqlhhjVlpHzNsINh9RA2m3W1o
-Received-SPF: pass client-ip=57.103.72.226;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,50 +111,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From Apple documentation:
+Yes people still use them.
 
-> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
-> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
->  hv_vcpu_exit_t object contains the information about this exception.
-
-> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
-> field of ID_AA64DFR0_EL1 register.
-> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
-> exceptions, which are sent to the guest.
-> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
-> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
-
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/hvf/hvf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/functional/qemu_test/uncompress.py | 25 ++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f06a3088f8..926a88ce9d 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1598,7 +1598,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
+diff --git a/tests/functional/qemu_test/uncompress.py b/tests/functional/qemu_test/uncompress.py
+index 5bbdf8fe323..f1a0e583a5b 100644
+--- a/tests/functional/qemu_test/uncompress.py
++++ b/tests/functional/qemu_test/uncompress.py
+@@ -12,6 +12,7 @@
+ import os
+ import stat
+ import shutil
++import zipfile
+ from urllib.parse import urlparse
+ from subprocess import run, CalledProcessError
  
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCR_EL0:
-             *val = env->cp15.c9_pmcr;
-@@ -1859,7 +1859,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-                            SYSREG_OP2(reg),
-                            val);
+@@ -58,6 +59,26 @@ def zstd_uncompress(zstd_path, output_path):
+     os.chmod(output_path, stat.S_IRUSR | stat.S_IWUSR)
  
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCCNTR_EL0:
-             pmu_op_start(env);
+ 
++def zip_uncompress(zip_path, output_path):
++    if os.path.exists(output_path):
++        return
++    with zipfile.ZipFile(zip_path, 'r') as zip_in:
++        try:
++            # Get the first file from the archive
++            names = zip_in.namelist()
++            if len(names) != 1:
++                raise Exception(
++                    f"Zip file {zip_path} should contain exactly one file, "
++                    f"but contains {len(names)}")
++            with zip_in.open(names[0], 'r') as archived_file:
++                with open(output_path, 'wb') as raw_out:
++                    shutil.copyfileobj(archived_file, raw_out)
++        except:
++            if os.path.exists(output_path):
++                os.remove(output_path)
++            raise
++
++
+ def uncompress(compressed, uncompressed, format=None):
+     '''
+     @params compressed: filename, Asset, or file-like object to uncompress
+@@ -81,6 +102,8 @@ def uncompress(compressed, uncompressed, format=None):
+         gzip_uncompress(str(compressed), uncompressed)
+     elif format == "zstd":
+         zstd_uncompress(str(compressed), uncompressed)
++    elif format == "zip":
++        zip_uncompress(str(compressed), uncompressed)
+     else:
+         raise Exception(f"Unknown compression format {format}")
+ 
+@@ -103,5 +126,7 @@ def guess_uncompress_format(compressed):
+         return "gz"
+     elif ext in [".zstd", ".zst"]:
+         return 'zstd'
++    elif ext == ".zip":
++        return 'zip'
+     else:
+         raise Exception(f"Unknown compression format for {compressed}")
 -- 
-2.50.1 (Apple Git-155)
+2.47.3
 
 

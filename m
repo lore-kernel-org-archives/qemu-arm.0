@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2A4FCB638
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C032FCC048
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:23:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyYge-0003jv-N9; Fri, 06 Mar 2026 12:10:05 -0500
+	id 1vyYtn-0000LF-Kw; Fri, 06 Mar 2026 12:23:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyYgd-0003jZ-Jp; Fri, 06 Mar 2026 12:10:03 -0500
+ id 1vyYtl-0000Kj-CF; Fri, 06 Mar 2026 12:23:37 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyYgZ-0003Sy-Ex; Fri, 06 Mar 2026 12:10:03 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.107])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fSCYH2s56zHnGgq;
- Sat,  7 Mar 2026 01:08:51 +0800 (CST)
+ id 1vyYti-0007fg-C5; Fri, 06 Mar 2026 12:23:37 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.83])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fSCs23VRdzHnGhk;
+ Sat,  7 Mar 2026 01:22:30 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 6DAC040584;
- Sat,  7 Mar 2026 01:09:51 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 87EB440569;
+ Sat,  7 Mar 2026 01:23:30 +0800 (CST)
 Received: from localhost (10.48.149.21) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 6 Mar
- 2026 17:09:50 +0000
-Date: Fri, 6 Mar 2026 17:09:49 +0000
+ 2026 17:23:29 +0000
+Date: Fri, 6 Mar 2026 17:23:26 +0000
 To: Peter Maydell <peter.maydell@linaro.org>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 12/65] hw/intc/arm_gicv5: Add defines for GICv5
- architected PPIs
-Message-ID: <20260306170949.00006c40@huawei.com>
-In-Reply-To: <20260223170212.441276-13-peter.maydell@linaro.org>
+Subject: Re: [PATCH 13/65] target/arm: GICv5 cpuif: Initial skeleton and GSB
+ barrier insns
+Message-ID: <20260306172326.00003713@huawei.com>
+In-Reply-To: <20260223170212.441276-14-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-13-peter.maydell@linaro.org>
+ <20260223170212.441276-14-peter.maydell@linaro.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -70,14 +70,37 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:19 +0000
+On Mon, 23 Feb 2026 17:01:20 +0000
 Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> The GICv5 defines architected numbers for the PPI sources like the
-> generic timer and the PMU; these are different from the ones
-> traditionally used by GICv2 and GICv3.  Add defines for them.
+> In the GICv5 architecture, part of the GIC is implemented inside the
+> CPU: this is the CPU interface, which presents software with system
+> instructions and system registers, and communicates with the external
+> part of the GIC (the Interrupt Routing Service, IRS) via an
+> architected stream interface where both sides can send commands and
+> receive responses.
+> 
+> Add the initial source files for the GICv5 CPU interface, with
+> initial content implementing just the two GSB GIC barrier
+> instructions, which are no-ops for QEMU.
+> 
+> Since we will not initially implement virtualization or the "legacy
+> GICv3" interface that can be provided to a VM guest, we don't have
+> the ICH_VCTLR_EL2 register and do not need to implement an accessfn
+> for the "trap if at EL1 and EL2 enabled and legacy GICv3 is enabled"
+> handling.  We will come back and add this later as part of the
+> legacy-GICv3 code.
+> 
+> (The GICv3 has a similar architecture with part of the GIC being in
+> the CPU and part external; for QEMU we implemented the CPU interface
+> in hw/intc/, but in retrospect I think this was something of a design
+> mistake, and for GICv5 I am going to stick a bit closer to how the
+> hardware architecture splits things up; hence this code is in
+> target/arm.)
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+LGTM
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
 
 

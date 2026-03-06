@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 572B2FCB61E
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0EFFCB61C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:17:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXqD-0004H0-UB; Fri, 06 Mar 2026 11:15:53 -0500
+	id 1vyXpw-000476-JP; Fri, 06 Mar 2026 11:15:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXqB-0004GJ-PO
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:51 -0500
-Received: from p-west3-cluster3-host3-snip4-7.eps.apple.com ([57.103.72.178]
+ id 1vyXpm-00042h-Cy
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:26 -0500
+Received: from p-west3-cluster1-host6-snip4-10.eps.apple.com ([57.103.73.191]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXq8-0007Ap-Vx
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:51 -0500
+ id 1vyXpk-00074j-Hb
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:26 -0500
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPS id
- 3BF1718007AD; Fri,  6 Mar 2026 16:15:46 +0000 (UTC)
+ 7E3BA180012D; Fri,  6 Mar 2026 16:15:20 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772813748; x=1775405748;
- bh=NdAr8jiFn5AzUO3NtlP3Dsyqnl3XhiX8i1jilhhmbwg=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=eNbTOfblgoyTvghVKXtTZq4hrIJER11vCHuA7HUQO0yx5QfqfC+qjLFq8BidJvjVb3T+9kFW4brrrbQahJB4c+hXXe5KXa1JEYxS6hcsm3AsOeGwbTGJHBpj08gTybMr4EYiJcsUcmWygr9H8UKjrpWFphgMYM6D9QX+Ml9AtgsmuFRVCBq6abUNTF3sydaiX47R3rF/fw5JjGukn7muPlyvwmFywo0gtkgx43/mM6b8mMCtzseO2XDLQpl6OtuYT+dakPdd+DqnIMvTWmgUHMqXb8jM4cxn5yetl3YrnHbeWyWKgHiBfMnbcykB31S0MTWZEg7XeP0J2ydfYI792A==
+ s=sig1; t=1772813723; x=1775405723;
+ bh=Bv7t7Vy+N3Dr+xwTtt4qH/q/trULmWUOvcHWfy7me0o=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=evMBneXS+U/8Bo2oT14by89mAYbOa18h2XTnOQ8gz8QnhAJ7/or4GOa8gqC+XpUcIks/HscuZ+/T0Uh7/wVHQrY7Jf7pX7sBhUdeVdAHdHpQ93nSr1N8o23cq4RmXBLCx5uHoAASXPnvPnj4iw1dJuA6eShJ9XrKlmaLm5T9TExUUMy/z/HEjUtQeVsxNN9brvzTi6hxG6r0m+VgZ0sI0tds5avrzdlaSq3kGJoeAD+3JDAQZfpo+UrxEl0NqMTh5ZclPX5z8bGIROlJxaFKRJH/OLvBDS8EaYuvq/aGP9RNeTMkTkkU6XJfSSi9TGZKXhnB0CnS5dLWA3ISpIkmzw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPSA id
- B51C01800794; Fri,  6 Mar 2026 16:15:43 +0000 (UTC)
+ B2EBA1800119; Fri,  6 Mar 2026 16:15:17 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
@@ -43,45 +43,44 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v16 12/17] hvf: arm: allow exposing minimal PMU when running
- with nested virt on
-Date: Fri,  6 Mar 2026 17:15:04 +0100
-Message-ID: <20260306161509.79712-13-mohamed@unpredictable.fr>
+Subject: [PATCH v16 02/17] hvf/arm: expose FEAT_SME2 to guest if available
+Date: Fri,  6 Mar 2026 17:14:54 +0100
+Message-ID: <20260306161509.79712-3-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260306161509.79712-1-mohamed@unpredictable.fr>
 References: <20260306161509.79712-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: -_IFDDqr0C2MFIK9-OlgC2BuhvWpMXxE
-X-Authority-Info-Out: v=2.4 cv=PZzyRyhd c=1 sm=1 tr=0 ts=69aafdb3
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=DEZpVyLLCdwXg5o-P5sA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: -_IFDDqr0C2MFIK9-OlgC2BuhvWpMXxE
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1NCBTYWx0ZWRfX0vkxhxB60niH
- SuF2hFIbPepqTuhpUbDgQL6+C1vbpj+T4NVGiJnhsrYyLDBcEC4UTxhFzfjk/P++iGYEuYIDOEp
- EZ7sjo49bYtQYzRwvq6qogQ9BM20efXiGpSJHKXfN1FjtGvlCaZ9N4s0ikm7HpFgJwnF/mgodt0
- 70YCL4nfWbJWqb3k7w0VX631NiZlQtGHCCNpSpHog5lsFHQkW03yVkzhPOz/zCY7Q8W28gHYWc6
- PDUxDBd/dDXPko25Tyc1lUxC4YUuOnRP6pJo+/EWNK5vr5VrkCGd5EQbilL52RqgudZItrY8YVg
- P6tCdEY6oXTuPiOAEUGhlvbF/MN5hCWrc4Fo++JR2p/lDDgGOeKOiIbiJ8NC8w=
+X-Authority-Info-Out: v=2.4 cv=CcYFJbrl c=1 sm=1 tr=0 ts=69aafd99
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=cKmG3w1NXntEKhAjIXMA:9
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: d6att8EZ9eEiAk-o1aFH7PpNYL0bjNK3
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1NCBTYWx0ZWRfX/g5O176wo8pi
+ 7ustFW2EG8Q8IO92Hc149w6oBt4p2RUk1MexVL7BaeZVKxzCm13FCi9M47mycMhU5luHr3SriRf
+ a9DX7gS63kKw0oAcUHn4wxXFb2W4Ewv41SvbPzDwHvyd4Z5XjXxqK1aCJrqp5Avjkm85uaFqxJr
+ Ur/BW+tevSAcVvCFlwumr27AtQoi0+0tbKtK/V//5atTyi9f7j40Tz4xzQUm4eZalk+171KN3b7
+ Fi4j9hwGlSWcmlLT8ddshLD+uNJmbyQm12oiRJrDCYl3Ug7/44WA93CtWeg37YRUax/wML/2rXa
+ AdJO7UPv4deijmYIVJ1fNHWngc4SqXBK9X9z083bCcZqp2Z731BKisPYy2s/4s=
+X-Proofpoint-ORIG-GUID: d6att8EZ9eEiAk-o1aFH7PpNYL0bjNK3
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-06_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxscore=0 lowpriorityscore=0 mlxlogscore=673 phishscore=0 suspectscore=0
- spamscore=0 clxscore=1030 malwarescore=0 bulkscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ clxscore=1030 lowpriorityscore=0 spamscore=0
+ bulkscore=0 mlxscore=0
+ phishscore=0 suspectscore=0 mlxlogscore=999 adultscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603060154
-X-JNJ: AAAAAAABEV/a3bG1RgewmSf8ZszZHHu26FGxQn/OEB8Y4tJDwiZ3bNDoYtU0b2x/O/4aMCYPkEU5TJUXKoq8A/PBqYtvGJfC6A/lt40V5oio00wdvB7I7MnsW3mg6MsSi64fcYIjHfeUF115Is8l+v19r/35NikE9z5Xfv/iRlDziHfLVoTjPwc7hZeovFqOBFRFdWWmRgUT6L9fJvuVxI2xUdVHT7wX+RRvZGbEyj94Qpks85fyKsq5HeoF8nH4wWpqk0iFSgmJ0fD7cbxSW6EUzRjZO0Rey09i0/eeCzHDXuwgXO/MagNI45rBuYdJpIY22UI74t8MDN8rwDx7w8aUj3YoQ+r0ePWKCEcHZJMNblukP747wj4iPYBHrUSoCmZIpz+hAI/ALsBoIWG8H4+ituOHUFP4ixdrdfH6QHDTf49l8RFY/9LHFhFv30W9znya8M/JGMpzTtd4qMuCouOPa6sKDOCP1Bt4bYqbVAcjfQAb30HUkeMQfYBQNvC9+jWdJL4Bq2XEUD2n5q8gE8mAtS2XW0CQxAXZqJP5F3cTXfjBx5nLcgFlFtIcNZzoPMp527mj0ie20WIKPsaqSxSzjEXMcWzr2QJC7fu4+s+APsVuZMprqhAuDx1Ar22BZZertTCbnCzkkuok4ApQdBYS7c8HtoJDldXsQfTM1IIYNZzBWnOAeclsMnYwndBE1SGkci0dKKyV+zgWAK1NCX98WklPmcs+DBFeL9A+jzHyXfm5SziVKBzuy8h4SxjE2XOmfUtlM4wjNHTFyQqnOBTOGQewYii3Tg==
-Received-SPF: pass client-ip=57.103.72.178;
+X-JNJ: AAAAAAABm6Bnuo0lWMJeDS7w9AWTxhKczQtA2NPtPTvtZdsZSW0h1rm37c7+uH17PQFuk2Jb7MmGjCCSsmq43ENKM/u1bHFURGgPOkx8bfjpy3Hk2PDKi8x0Oq9jtHX01V3i0U8qbPvSEhQTzxtVUt5E25IxX0rRKDLclJ4lO+rffpmh5ywCsfQC13CwEKbfTSemfeGF3iA4Zav2iMl6dvJU8kkAqot2WrQbinTUq+Gfo2uZWUVuEy7vx4VWKxJykOqwzxfbfnioTnz0nO5VFqxOldLm7JW0bSQjr/R5cmNtihOu/uoLXPTN3iG94Obor3J2reP0cbWpEFCQfyMwsi7b5tn26V4MHPMen9a5+yiA/3hXcw27e9LoPm4EFf3iZdpQJYZlM/ZclXEPGFWNI8cNpgEXBuWyYKe/0zHCsi06LryBu1TkWYzuXx/ULGxDqWhjfWbda7/JnnWzF1SBMg9bNPMYP/ZIB8oxS5QwI/A75onRVlpNsaUIOPinzV1VKQ4CxOwoE129rLAWkcWpSlylOBSlLPp+9enr5OmpNmcjZV+HhTtkGo576FNXBqx1yeXHi4NbfTGGNHkFqOwZgqEhNlkOHoxFd2AvbM9FUFTUKIDw5GwzahM1cYALUm+vTr9b21+2/dNKl2nOBP0kGNqEm+EJwDHaOFtXHIWiF99dCk4y3wOcmpI2vuO3u6PGMk6P0DgJwZW9r6kXGys8UmlFjv/z6nqjyBLzHzmzRqVetakoz7PpEzEyT5sV416FznwRU4vsI/SVSWNMCdI=
+Received-SPF: pass client-ip=57.103.73.191;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -9
-X-Spam_score: -1.0
+X-Spam_score_int: -16
+X-Spam_score: -1.7
 X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -99,30 +98,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When running with nested virt on, a minimum PMU is exposed by Hypervisor.framework
-if a valid PMUVer register value is set. That PMU isn't exposed otherwise.
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Starting from M4 cores and MacOS 15.2 SDK, HVF can virtualise FEAT_SME2.
+
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Message-Id: <20260306-sme2-hvf-v7-2-e72eeda41ed3@linaro.org>
+
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/hvf/hvf.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ target/arm/hvf/hvf.c | 36 +++++++++++++++++++++++-------------
+ 1 file changed, 23 insertions(+), 13 deletions(-)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 926a88ce9d..2daa2ab132 100644
+index 21b16dfe42..5fc8f6bbbd 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -1145,6 +1145,10 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+@@ -315,6 +315,7 @@ typedef struct ARMHostCPUFeatures {
+     uint64_t features;
+     uint64_t midr;
+     uint32_t reset_sctlr;
++    uint32_t sme_vq_supported;
+     const char *dtb_compatible;
+ } ARMHostCPUFeatures;
+ 
+@@ -1106,6 +1107,24 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         r |= hv_vcpu_config_get_feature_reg(config, regs[i].reg,
+                                             &host_isar.idregs[regs[i].index]);
+     }
++
++    if (__builtin_available(macOS 15.2, *)) {
++        static const struct sme_isar_regs {
++            hv_feature_reg_t reg;
++            ARMIDRegisterIdx index;
++        } sme_regs[] = {
++            { HV_FEATURE_REG_ID_AA64SMFR0_EL1, ID_AA64SMFR0_EL1_IDX },
++            { HV_FEATURE_REG_ID_AA64ZFR0_EL1, ID_AA64ZFR0_EL1_IDX },
++        };
++
++        if (hvf_arm_sme2_supported()) {
++            for (i = 0; i < ARRAY_SIZE(sme_regs); i++) {
++                r |= hv_vcpu_config_get_feature_reg(config, sme_regs[i].reg,
++                                                    &host_isar.idregs[sme_regs[i].index]);
++            }
++        }
++    }
++
+     os_release(config);
+ 
+     /*
+@@ -1121,19 +1140,6 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
  
      clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
  
-+    if (hvf_nested_virt_enabled()) {
-+        FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
-+    }
-+
+-    /*
+-     * Disable SME, which is not properly handled by QEMU hvf yet.
+-     * To allow this through we would need to:
+-     * - make sure that the SME state is correctly handled in the
+-     *   get_registers/put_registers functions
+-     * - get the SME-specific CPU properties to work with accelerators
+-     *   other than TCG
+-     * - fix any assumptions we made that SME implies SVE (since
+-     *   on the M4 there is SME but not SVE)
+-     */
+-    SET_IDREG(&host_isar, ID_AA64PFR1,
+-              GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
+-
      ahcf->isar = host_isar;
  
      /*
+@@ -1148,6 +1154,8 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      */
+     ahcf->reset_sctlr |= 0x00800000;
+ 
++    ahcf->sme_vq_supported = hvf_arm_sme2_supported() ? hvf_arm_sme2_get_svl() : 0;
++
+     /* Make sure we don't advertise AArch32 support for EL0/EL1 */
+     if ((GET_IDREG(&host_isar, ID_AA64PFR0) & 0xff) != 0x11) {
+         return false;
+@@ -1199,6 +1207,7 @@ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     cpu->env.features = arm_host_cpu_features.features;
+     cpu->midr = arm_host_cpu_features.midr;
+     cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
++    cpu->sme_vq.supported = arm_host_cpu_features.sme_vq_supported;
+ }
+ 
+ void hvf_arch_vcpu_destroy(CPUState *cpu)
+@@ -1343,6 +1352,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+                               arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
+     assert_hvf_ok(ret);
+ 
++    aarch64_add_sme_properties(OBJECT(cpu));
+     return 0;
+ }
+ 
 -- 
 2.50.1 (Apple Git-155)
 

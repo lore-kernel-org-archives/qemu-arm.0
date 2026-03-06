@@ -4,88 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4129FCB61A
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE0CFCB61C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:57:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXUX-0002Wv-JE; Fri, 06 Mar 2026 10:53:29 -0500
+	id 1vyXXy-0004tb-PL; Fri, 06 Mar 2026 10:57:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXUV-0002WY-8f
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:53:27 -0500
-Received: from qs-2001e-snip4-4.eps.apple.com ([57.103.87.47]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyXUT-00032t-9P
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:53:27 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- C44BA1800AD0; Fri,  6 Mar 2026 15:53:20 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772812403; x=1775404403;
- bh=Bc2jHwIg/NYlfI0elnoHDZJRBs0BDdh3n8Uz/olsrRI=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=bWoOOKzhTDx70ma/nK6GpUeNCX1Wt27WMBulwBQASJIpOAiTv21cmorzwLM0It2Fdh+sW7CUX7XHqWZMuLB6x5AlpY+VCQDjEa0VVhXlhRBDxNZj/mOYsULnayCYlqRLUw2LtStdp6JWlkeVf0xb0SvKXZOL0XTraMYjbnii7GX3NjW+fHjBvY8HtGDCRNV4RgEXCLjXAiUwftdy00TPm6W1BstpuwEamCgwfAuPlz3grwnhSM9FDiceiEdwwJ8Bb7fJqwuVTMq7PMJKkPHQpRyFg5+RVxLgeHG8R/rQc6AiJcIZe/y5yRPJTd3K6uXAOi6Zj0nL9aKN82/KZVjp4w==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- 2FDEF1800252; Fri,  6 Mar 2026 15:53:19 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <83E62271-E3F8-432E-8499-D1D8D065B162@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_411DC154-3BE8-490B-B5EF-3030A9590040"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH v15 00/17] HVF: Add support for platform vGIC and nested
- virtualisation
-Date: Fri, 6 Mar 2026 16:53:07 +0100
-In-Reply-To: <CAFEAcA8gB-36c1TvJSwJ0MkVMy5z_dqKpVY7KTJ-cMV5rAX1_w@mail.gmail.com>
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Alexander Graf <agraf@csgraf.de>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-To: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyXXw-0004tF-Ux
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:57:01 -0500
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyXXu-0003Yl-W9
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:57:00 -0500
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-64c9a6d7f81so8505358d50.3
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 07:56:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772812617; cv=none;
+ d=google.com; s=arc-20240605;
+ b=lCDqxOrnmBE/38xQOJq2wbbIH8k/Mr3XcTb28wg7L8L7hZ2IOXYRFci8so2Bf3u+2C
+ RKIOsmzl+1hsr4TB0kwIIVxJYK5RvBukSZ0DtOAS+ZnqVi6+SMBWfwA6vQPMWzs4+Gcq
+ n6PXpMY3ZvOK4/Mx/UOF325CmlGTgKrRSC29OrCTNqffgIeu7K7h9gel3bkTq+FiFDxc
+ qNHBfZfKvacmepCDqGkeVN4yOewxtCNXXYISK7owMAFw9ttq6WMfn+XvuPMHmZBu70n3
+ h9temC730lhfKkQqWXAzJmJj8mhsKVUK7UyTcoS392yS0MRO8QMVmS4bOtw3ZhL7Th+Q
+ dKeA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=TI86w47GcBsT+8qlk2zMPDGXUsmClK0NLen5N7Y5DTg=;
+ fh=ATxerxSHXW6arjQK07/mGCFcetNniLQoifKf2Q4Ir/Y=;
+ b=dS+hD9d+74+MRuaoAVVn2ce6orvolyhMKlSNVi3AaUKGRoPlPiHqeHrG0Qb67h18LL
+ Yha3Rzi8s5pSGRs8fEp+b2BmQrFW+djZP3enJcrKp330mTUo2tbDYTVMUJYJ1NF/Sg0e
+ c2m5OoeXJRjaOM/FHIjmhgoaeQhfrehoKikb2g4oUX2YPqzdmBpDWHzjRI0ZRJ5Bty0h
+ v2gFopIZg8eMaJi7uWGiry86r4mSV4AjiKRffNQAh1VJzIwEDbgLta8N86qj8g2d+HiQ
+ Ztoqe0Qenq3L26dISma/xwDoChlCDjqbWATG3V5YQILAmwVOBBHlEBlloLSeoNcdcwME
+ sjIQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772812617; x=1773417417; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TI86w47GcBsT+8qlk2zMPDGXUsmClK0NLen5N7Y5DTg=;
+ b=UET4chjcDV8v91Sr8IhrNNRJ6D2J/oGjQus2Zk098SCpOPb0XsZjWCqA5VxjN5uct2
+ 4Cg+GWzu6HeBlJP8m/VQi6N6fv7lEJeyNI62njacbiOO2GuMqTZQDGdEfA23sv7Ox3S/
+ 16PmUCdv/YpBH3XVrR2IrjCOVQx0I8C+Gx1xIeZZRy0eMEIA/XjL24hdQ9YKoazTveYt
+ mTbNZ9f4PfJJCefLoZyGhxWBij7+BqzIIbWyHqkMyG/JjJfYyDg1VLMxJYzH4vz9J+Oc
+ e7PqOi4y2zQXZY7y6OwyFy5GtpK8ClQymEMja1aN0fUguCQYV9xpWAhvA0X5MiZ6E+vO
+ bKMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772812617; x=1773417417;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=TI86w47GcBsT+8qlk2zMPDGXUsmClK0NLen5N7Y5DTg=;
+ b=voEay+nhI2wgVm1AavCucVfk11xMjpk9CH1LFEYs/6Why4AyMPqeCveicuaxixcpH+
+ 5AfLiJfHlal80ZofXoR2A0X6Imtvgth8eLKRmjyCWukxaQR3NQP7Y22ScIkK6K/235p9
+ fJcZUfp3gOBPuj5K4f1DqyTEZqD5DltAIrP7l6uD3bPavsHwadWN0f0u2hf/N3nteW0s
+ HIqkKHnLscdLXpzCA1O/yisNi9rlX0fYfwkD69vpn8VY+UpoVMpRd+OrR6v+mTpkUTmJ
+ bM9yjWWhXy34z0RMxluqAVKJe5F5m/4Pm/w6pw8BHkgrCfxlZkJPwQZz+ijdQQ7gsg8k
+ 9sNQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUCyYhN+axpb/V5K3JtuB82pOi5KCgNlTBBtqKveUKH89bwny+F9VdspuNOzMSzJqzBuU67O4cFeA==@nongnu.org
+X-Gm-Message-State: AOJu0YwauvUEzWUGMpvRiAZ1hA7/wCi+LrmRYWIy5TbLABc6Qtu2SEGT
+ ob+MPpzM/EU4aereqq2OwmsXjkeuV1IkukXbHF8PlAVrCwZ/lxiL9ZnBMMqgqbBNDG66m0ZANNl
+ u8Eqt9QFi1y4wq413v8MjPnftfSGGHoHDSEIHPf4Z7A==
+X-Gm-Gg: ATEYQzy5dmAt2xGIXPP6eo0PvJnT2T+XJJgolModaSCOFeVOt+RztkAi1xicFz+EbUp
+ G97lqHlJ+n52Dw57kF+guxHe6zWvL0gSX3lVFP0f3Y8HkZuQWmdrDbsuZMAC55oN4jqGxpMOS/O
+ eJaWOr/ss8FFa0Ws+/nO970fLYdm+5HM3RFbW8JuQIHonihJK8Ygy07FfI7dH1eZmD9WNb6rSFe
+ zWn23jUuAO9htxWxO3DAr9CJTgNGBQ/e/FefQbINpFU7soMmph71OiJm+sfZvRbLySknGGmy/9P
+ 8RUYQqqQeKZzAE/+MP6MbzNPnD6pDoI+rYGtp7WhcvRU0LKsciISAU97cJvt13n1es8=
+X-Received: by 2002:a05:690e:1286:b0:64c:a0c6:da93 with SMTP id
+ 956f58d0204a3-64d1414c6damr2365243d50.28.1772812616732; Fri, 06 Mar 2026
+ 07:56:56 -0800 (PST)
+MIME-Version: 1.0
 References: <20260306130107.35359-1-mohamed@unpredictable.fr>
  <CAFEAcA-e4GZB_TRG7Jm3O-RNJneUtk_WufiXNn6=UDHsgG4kdw@mail.gmail.com>
  <CAFEAcA8gB-36c1TvJSwJ0MkVMy5z_dqKpVY7KTJ-cMV5rAX1_w@mail.gmail.com>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1MCBTYWx0ZWRfX0vvTznJ2w2J8
- x5/AGINR/Y66e+ulAoy5DBzFWLpNdjgTVzrPurt9E2f8p40d5si2NXO8dP/3UFFkHDNOpNdqNqR
- td+Hrc0pmDiJOAwNmBUjeJC9aqx+CxS/g2SFISVlAHHtvclXTovXKQHuFgMY0mRl1SPZPvyJTjI
- 9EVBP7PCd5hfBRQjvSe79O75W7f0Hg+8EA75XVrqYUAQ91H/u+2lVAk/Lb9vcrxuTvsjoVIoWHc
- WrteA2uwutcTiU0qQHCh714OO6BgAlMyyD5UpyOjKvjnmcqtkeA8xyTsYPxLG8h+oVXulfOgLtp
- uZa6QpRA+SPhlsA9r23XPKezcvSSH8QNzqXmuo4Fu1kBOASgkKg6TMymIhv0K8=
-X-Authority-Info-Out: v=2.4 cv=H/LWAuYi c=1 sm=1 tr=0 ts=69aaf871
- cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=NEAV23lmAAAA:8 a=p0WdMEafAAAA:8 a=Wl5m0qbhw6JhVLKDCg8A:9
- a=lqcHg5cX4UMA:10 a=QEXdDO2ut3YA:10 a=NgIqdsx1sarB9rkbcvUA:9
- a=Ji6w75vnG-JcrYYm:21 a=_W_S_7VecoQA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: FRChlNM9bVyYhF_dEjRzYyQz18OPwybB
-X-Proofpoint-ORIG-GUID: FRChlNM9bVyYhF_dEjRzYyQz18OPwybB
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- clxscore=1030 malwarescore=0 suspectscore=0
- mlxscore=0 bulkscore=0
- phishscore=0 adultscore=0 spamscore=0 lowpriorityscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060150
-X-JNJ: AAAAAAABJKQb0LzoCmGkiJg60ww3ibGpIPSkOSkKlereY4wspszh1tKhyXeR10wxDjVDJcsi6244VMBceFI0U8nwpFlAXofptVvMvR7DxJ6K0Q8dCyAPVuPiXV5fXt85AxSybVyAdQ8CXhcxlMxV6D1GcheMEEWWEk7mGcOYuBBlMLs36D9zU4vHRvA4dpKhaAM4BjarPIZrBlWiSisbqoTf1hb0Si/EHP3UuemxQqSthfsjmO3lYwHrbPXDgB4l3i6PDPnSNywdeEJkYckhs+pCMIy6GZ8wLS44jfu68X+dUcCRY270ks7gZ7Pn7yHaWW/UOaAGIksASplAJHyNg16ww9OeO/1RJ2PK/P+tr/9IqvSeZGjZ3xBi7IKTJ5sOTDk0VFBRU8EKqyA9K4Vz099jN1oU1xFEA243hRM0XZTBSjvbAqEdKz5HMZac8lduGTEVP/nXq9LMVsQF3QD+xgvvdgNfdexJLYjYmuhO+Hfp5kLezX+VeJjCk65rAzL8wauXMbcrxepsgTYjQwERSyjdbinAVFN1JobpVauHBxBvTZ6vczX7A0kJ/yh1IQ9Peryrf31R8b/t7BqWpg09Q+rROUbKq3Ar3DpAZgzY/iyNBqkmhX1MQxmkbmAEoMGZa/MNk9ypeatnf4/P31WM2ivKys+6REQsZGcze4SVE0ZBWB+Nn0EHtX4ibRGA8qvCKYHRRLiL/UFX6nbpOiQW0dKESsuLTf8Nq0T1WxgAek/oAXsPrmIlCejvDl3z6grVdRHfWrxv
-Received-SPF: pass client-ip=57.103.87.47;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <83E62271-E3F8-432E-8499-D1D8D065B162@unpredictable.fr>
+In-Reply-To: <83E62271-E3F8-432E-8499-D1D8D065B162@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Mar 2026 15:56:45 +0000
+X-Gm-Features: AaiRm51OemnN3-qba6GW8zVSKnnWuHGbSNPKbvIidLvDoxuza-4HX1dCCJ5KLUM
+Message-ID: <CAFEAcA-uxtCoawErLdM0HVuy_h-uxxcmFjJsZf1rTgNiov-JWw@mail.gmail.com>
+Subject: Re: [PATCH v15 00/17] HVF: Add support for platform vGIC and nested
+ virtualisation
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,398 +126,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
---Apple-Mail=_411DC154-3BE8-490B-B5EF-3030A9590040
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
-
-
-
-> On 6. Mar 2026, at 16:44, Peter Maydell <peter.maydell@linaro.org> =
+On Fri, 6 Mar 2026 at 15:53, Mohamed Mediouni <mohamed@unpredictable.fr> wr=
+ote:
+>
+>
+>
+> On 6. Mar 2026, at 16:44, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 6 Mar 2026 at 14:58, Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+>
+>
+> On Fri, 6 Mar 2026 at 13:01, Mohamed Mediouni <mohamed@unpredictable.fr> =
 wrote:
->=20
-> On Fri, 6 Mar 2026 at 14:58, Peter Maydell <peter.maydell@linaro.org =
-<mailto:peter.maydell@linaro.org>> wrote:
->>=20
->> On Fri, 6 Mar 2026 at 13:01, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>>=20
->>> Link to branch: https://github.com/mediouni-m/qemu =
-hvf-irqchip-and-nested
->>> (tag for this submission: hvf-irqchip-and-nested-v15)
->>>=20
->>> This series adds supports for nested virtualisation when using HVF =
-on arm64 Macs.
->>>=20
->>> Reviews would be very welcome :-) It's maybe a bit unlikely that =
-this will make
->>> it to QEMU 11.0 I might as well try.
->>>=20
->>> The first two patches are from the SME enablement series and are =
-present for the
->>> series to be buildable on its own.
->>=20
->>=20
->>=20
->> Applied to target-arm.next, thanks.
->=20
+>
+>
+> Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and-nested
+> (tag for this submission: hvf-irqchip-and-nested-v15)
+>
+> This series adds supports for nested virtualisation when using HVF on arm=
+64 Macs.
+>
+> Reviews would be very welcome :-) It's maybe a bit unlikely that this wil=
+l make
+> it to QEMU 11.0 I might as well try.
+>
+> The first two patches are from the SME enablement series and are present =
+for the
+> series to be buildable on its own.
+>
+>
+>
+>
+> Applied to target-arm.next, thanks.
+>
+>
 > I'm afraid this failed to build in our gitlab CI job for macos:
->=20
+>
 > https://gitlab.com/qemu-project/qemu/-/jobs/13388426185
->=20
+>
 > In file included from ../target/arm/hvf/hvf.c:489:
 > ../target/arm/hvf/sysreg.c.inc:174:21: error: 'HV_SYS_REG_CNTHCTL_EL2'
 > is only available on macOS 15.0 or newer
 > [-Werror,-Wunguarded-availability-new]
 > 174 | DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHCTL_EL2, 3, 4, 14, 1, 0)
 > | ^
-> =
-/Applications/Xcode_16.1.app/Contents/Developer/Platforms/MacOSX.platform/=
-Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Hypervisor.framework/H=
+> /Applications/Xcode_16.1.app/Contents/Developer/Platforms/MacOSX.platform=
+/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Hypervisor.framework/H=
 eaders/hv_vcpu_types.h:312:5:
 > note: 'HV_SYS_REG_CNTHCTL_EL2' has been marked as being introduced in
 > macOS 15.0 here, but the deployment target is macOS 14.0.0
 > 312 | HV_SYS_REG_CNTHCTL_EL2 API_AVAILABLE(macos(15.0))
 > API_UNAVAILABLE(ios, tvos) =3D 0xe708,
 > | ^
->=20
+>
 > and similarly for other registers.
->=20
-> I'm going to drop the last 4 patches from the series, which I hope =
-will
+>
+> I'm going to drop the last 4 patches from the series, which I hope will
 > fix the CI problems.
->=20
+>
 > =E2=80=94 PMM
-Hello,=20
+>
+> Hello,
+>
+> Will submit a new rev of the last 4 patches with a workaround for this th=
+en=E2=80=A6
+>
+> (Ugh @ compiler pragmas but there aren=E2=80=99t better choices unfortuna=
+tely)
 
-Will submit a new rev of the last 4 patches with a workaround for this =
-then=E2=80=A6
+Unfortunately the problems aren't in just the nested-virt part:
 
-(Ugh @ compiler pragmas but there aren=E2=80=99t better choices =
-unfortunately)
+https://gitlab.com/qemu-project/qemu/-/jobs/13389185563
 
+still complains, including about hv_gic_config_create().
 
---Apple-Mail=_411DC154-3BE8-490B-B5EF-3030A9590040
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
+I'm going to drop everything except the first 2 patches.
 
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 6. Mar 2026, at 16:44, Peter Maydell =
-&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">On Fri, 6 Mar 2026 at 14:58, Peter Maydell =
-&lt;</span><a href=3D"mailto:peter.maydell@linaro.org" =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px;">peter.maydell@linaro.org</a><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">&gt; wrote:</span><br style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: =
-solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
-none; text-decoration-thickness: auto; text-decoration-style: =
-solid;"><br>On Fri, 6 Mar 2026 at 13:01, Mohamed Mediouni =
-&lt;mohamed@unpredictable.fr&gt; wrote:<br><blockquote =
-type=3D"cite"><br>Link to branch: https://github.com/mediouni-m/qemu =
-hvf-irqchip-and-nested<br>(tag for this submission: =
-hvf-irqchip-and-nested-v15)<br><br>This series adds supports for nested =
-virtualisation when using HVF on arm64 Macs.<br><br>Reviews would be =
-very welcome :-) It's maybe a bit unlikely that this will make<br>it to =
-QEMU 11.0 I might as well try.<br><br>The first two patches are from the =
-SME enablement series and are present for the<br>series to be buildable =
-on its own.<br></blockquote><br><br><br>Applied to target-arm.next, =
-thanks.<br></blockquote><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">I'm afraid this failed to build in our =
-gitlab CI job for macos:</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><a =
-href=3D"https://gitlab.com/qemu-project/qemu/-/jobs/13388426185" =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: =
-0px;">https://gitlab.com/qemu-project/qemu/-/jobs/13388426185</a><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">In file included from =
-../target/arm/hvf/hvf.c:489:</span><br style=3D"caret-color: rgb(0, 0, =
-0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">../target/arm/hvf/sysreg.c.inc:174:21: =
-error: 'HV_SYS_REG_CNTHCTL_EL2'</span><br style=3D"caret-color: rgb(0, =
-0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">is only available on macOS 15.0 or =
-newer</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline =
-!important;">[-Werror,-Wunguarded-availability-new]</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">174 | =
-DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHCTL_EL2, 3, 4, 14, 1, 0)</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">| ^</span><br style=3D"caret-color: rgb(0, =
-0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline =
-!important;">/Applications/Xcode_16.1.app/Contents/Developer/Platforms/Mac=
-OSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Hyperviso=
-r.framework/Headers/hv_vcpu_types.h:312:5:</span><br style=3D"caret-color:=
- rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">note: 'HV_SYS_REG_CNTHCTL_EL2' has been =
-marked as being introduced in</span><br style=3D"caret-color: rgb(0, 0, =
-0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">macOS 15.0 here, but the deployment target =
-is macOS 14.0.0</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">312 | HV_SYS_REG_CNTHCTL_EL2 =
-API_AVAILABLE(macos(15.0))</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">API_UNAVAILABLE(ios, tvos) =3D =
-0xe708,</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">| ^</span><br style=3D"caret-color: rgb(0, =
-0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">and similarly for other =
-registers.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">I'm going to drop the last 4 patches from =
-the series, which I hope will</span><br style=3D"caret-color: rgb(0, 0, =
-0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">fix the CI problems.</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">=E2=80=94 =
-PMM</span></div></blockquote>Hello,&nbsp;</div><div><br></div><div>Will =
-submit a new rev of the last 4 patches with a workaround for this =
-then=E2=80=A6</div><div><br></div><div>(Ugh @ compiler pragmas but there =
-aren=E2=80=99t better choices unfortunately)</div><br></body></html>=
-
---Apple-Mail=_411DC154-3BE8-490B-B5EF-3030A9590040--
+thanks
+-- PMM
 

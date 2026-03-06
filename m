@@ -4,101 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72239F513E6
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Mar 2026 22:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C4BF513EE
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 03:45:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyHUi-0005if-V0; Thu, 05 Mar 2026 17:48:36 -0500
+	id 1vyM77-0004KT-K9; Thu, 05 Mar 2026 22:44:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyHUg-0005hl-Ty
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:48:34 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vyHUf-0007qI-BC
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 17:48:34 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4807068eacbso71944505e9.2
- for <qemu-arm@nongnu.org>; Thu, 05 Mar 2026 14:48:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1772750912; x=1773355712; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=N+633dY73xSn08tThGB24JtCEt7w15my9Oj7BSCTrS4=;
- b=bx2WwippWrJYbyijxcLWPnWMGG4y5V62K2MRyuhFLZm437o2bWxOh2reeypX1vRQAJ
- WqpGixOHyksuShabEg1/FG1t9a8+67ri3K1ZH9Y7/k5KAoBbu22ueLv8xxCEiedQ5xIa
- y1Sp7hGZOnT5umKOFUe4DTCk9SlJBaSEVNaegOqm8z1xjyWanVExt2oHM8uJYBcrysvO
- 2+AD0QGOEpdmtYHxbHXKJ4Fx72g2TuJst0K+XzKEJeiSU6qdF/4vCbz8YPw8f16j/8S8
- +W+Hp33QhtQWVLcSnEM77yb/dpq0dKx2WWKB64Jjsj5L8iAHE0ETZhtVwQvQBFxh/SoS
- Msvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772750912; x=1773355712;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=N+633dY73xSn08tThGB24JtCEt7w15my9Oj7BSCTrS4=;
- b=E4gidhgP1smmvlFygeHfHaqeTKLO3LBs1rmwpqPZf49hrYbCO084fBUv64yvo5+9GG
- 6kFrhFFJ4Ub5LveFTVWmjuUb1m2XH4QvxAxklECa6fl/Vm5gzonxLY54kdc33tqGacR/
- k+aHuSLr4sdb1OetP2lphkIzzF+pKjsTcjVbNcRoG7pMHn8ZqcuysMouNMIeBjmfKTm2
- 5dd5Xv7ess3r0AU68lhs3hK3XP3j0g8L2dEYUmizDmVEv86NVGef+ddlbn551ozf4EX5
- GzNoJKIouhxhtG0+YXHCFx4y9lTLrufAGH2wZ7g8jFbmlJCvhNdsgN1UIl80ETH9Uwmt
- QInA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXW/TkBflhzDak/aIaESMnExopexb07jFq8rgeC6/SZCGsAJDMZyratRLXcPLrFOwoiUDpRm+ZcHQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzdfAhFWyDM9woJQsUiGkuheP2vS4J45VhcUY7FY+5wXvvVBLCv
- CHwsSJitd0INjMQcmYWxs+6zGajfQRYYjwGPVBX/HcNp6BQQB4puH2Eo
-X-Gm-Gg: ATEYQzypYVXSLadk3HEvbQgiegMGqe3XqjPr6bh9w5RGXAjgJIBd1RqffqQV43uN58c
- Aagiqfj1XXcVjatQz4uHtVc6BHId75Y/5gyxr2wsfHXC5XU3Tsi054cp0aMxVE8xOUtmrAnzP/4
- b1dIarj7Wdo9SRSl1UQ+Y/WN9Hk1WfTV9QsQE4qj/XNA88cHWWZV1V7Do8EhLHTbX0ZV42UROK7
- BV4NGxRO7SYfI2zHOSuSkvC1psn+M1Kdcz7Kgq394tq3uIm3QNr9mPuwEibYZ8dCheH4V2uYdvc
- IZdZ1NUGKyalVNFk57QknC6bKxsSjKmpOg4si1vbg9TU8Xxwy2blvonvio20KVAzBP+Xv0itGRA
- 7PTaKEr4ZTn4zJkoXGFD2jaMcAXGOyoe0mWyVM29fOKWtmoW/iGHZhsAE47ZPmGlx7fKF8zdbIM
- WhoK/UNMZBAqTymMhW3hjzlIJeyuD9HttPkVsU8QSmysBdwP8r1FsqlLK9RU3n+g6lAnOfMryQe
- 9K85C9TFBjYd0UMQuUWYuCRt6FEKp+Q35s+d8NopeDJRrw=
-X-Received: by 2002:a05:600c:6388:b0:47a:7fd0:9eea with SMTP id
- 5b1f17b1804b1-4852359313emr18122585e9.3.1772750911349; 
- Thu, 05 Mar 2026 14:48:31 -0800 (PST)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-2989-c400-f009-a6c9-39e7-d8fe.310.pool.telefonica.de.
- [2a02:3100:2989:c400:f009:a6c9:39e7:d8fe])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4852449e73dsm6187555e9.3.2026.03.05.14.48.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Mar 2026 14:48:29 -0800 (PST)
-Date: Thu, 05 Mar 2026 22:48:28 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Steven Lee <steven_lee@aspeedtech.com>,
- =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-arm@nongnu.org,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Subject: Re: [PATCH v2 11/13] hw/char/serial: Keep MemoryRegionOps private
-In-Reply-To: <CAFEAcA-bOjd7vRKpnzU18aNUFuMb4eJYcDAH0Xcbf4SDr6ZO5g@mail.gmail.com>
-References: <20260303222143.142741-1-shentey@gmail.com>
- <20260303222143.142741-12-shentey@gmail.com>
- <CAFEAcA-bOjd7vRKpnzU18aNUFuMb4eJYcDAH0Xcbf4SDr6ZO5g@mail.gmail.com>
-Message-ID: <AA6DEE5C-A8B8-4B5C-BED3-2C9FE48A0CA9@gmail.com>
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1vyM75-0004Je-KY; Thu, 05 Mar 2026 22:44:31 -0500
+Received: from mgamail.intel.com ([192.198.163.8])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
+ id 1vyM73-00065y-FP; Thu, 05 Mar 2026 22:44:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1772768669; x=1804304669;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=0CFY7/ec9WolJ0TC6427evSbm7/oQkZWjLHaiUI4x3g=;
+ b=RmfKrr6UzQLzQ9zrt1Cs0lcR9ZGvYbp45+4sTqWRuiCi73wCvI+kVGQs
+ VoC4VqeRV/UG6snAu/T0iZQmUbeVPYT2HbupKEiK2aN9KAlH8o7jP6iec
+ 0oUVLmi6ZPuv9OgoewbA1qjgNOYUaJN8EMlB/jMr+qKtDgCNskeJ+hbWO
+ m4Gy8WdpPMCVjDeQzp+fA4hnMFUWLDXERkk/dv1N9hU8ZRBYOCsZ5yKSk
+ oa6el24jqh2cgg5cpowNan8xPmgnL+4QyDTAbbs4xWBG4fhAgpbLzmN89
+ x9fX/x0X4YfmRIdzPJ+V2pfrl5Y4qQK6A+xkux4PBdYxqtO146F2qsPWl w==;
+X-CSE-ConnectionGUID: /v/M7AKWTUS4I9LEG7e8Xw==
+X-CSE-MsgGUID: Dub2oX9FTdKZScirWpDb3Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11720"; a="91448251"
+X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="91448251"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2026 19:44:26 -0800
+X-CSE-ConnectionGUID: 2grBRXiLS7SAPapLN3m1dw==
+X-CSE-MsgGUID: s+pNRSstTAqp0bzNGsx85Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="215613311"
+Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.230.229])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2026 19:44:23 -0800
+From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+To: qemu-devel@nongnu.org
+Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
+ jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
+ skolothumtho@nvidia.com, joao.m.martins@oracle.com,
+ clement.mathieu--drif@eviden.com, kevin.tian@intel.com, yi.l.liu@intel.com,
+ xudong.hao@intel.com, Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ qemu-arm@nongnu.org
+Subject: [PATCH v1 02/13] iommufd: Extend attach/detach_hwpt callbacks to
+ support pasid
+Date: Thu,  5 Mar 2026 22:43:56 -0500
+Message-ID: <20260306034409.184873-3-zhenzhong.duan@intel.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260306034409.184873-1-zhenzhong.duan@intel.com>
+References: <20260306034409.184873-1-zhenzhong.duan@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=192.198.163.8;
+ envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,89 +86,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Same for the two wrappers and their call sites.
 
+Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
+Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+---
+ include/system/iommufd.h    | 16 +++++++++++-----
+ backends/iommufd.c          |  9 +++++----
+ hw/arm/smmuv3-accel.c       | 12 ++++++++----
+ hw/i386/intel_iommu_accel.c |  8 +++++---
+ hw/vfio/iommufd.c           | 10 +++++-----
+ 5 files changed, 34 insertions(+), 21 deletions(-)
 
-Am 5=2E M=C3=A4rz 2026 10:03:12 UTC schrieb Peter Maydell <peter=2Emaydell=
-@linaro=2Eorg>:
->On Tue, 3 Mar 2026 at 22:22, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> Rather than requiring users of TYPE_SERIAL to initialize the MMIO regio=
-n
->> themselves, make it generic enough to be configured via properties=2E T=
-his
->> makes TYPE_SERIAL more self-contained and prepares it for being turned
->> into a SysBusDevice=2E
->>
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>  include/hw/char/serial-mm=2Eh |  3 --
->>  include/hw/char/serial=2Eh    |  4 +-
->>  hw/char/diva-gsp=2Ec          |  5 ---
->>  hw/char/serial-isa=2Ec        |  1 -
->>  hw/char/serial-mm=2Ec         | 51 -------------------------
->>  hw/char/serial-pci-multi=2Ec  |  5 ---
->>  hw/char/serial-pci=2Ec        |  1 -
->>  hw/char/serial=2Ec            | 76 ++++++++++++++++++++++++++++++-----=
---
->>  8 files changed, 66 insertions(+), 80 deletions(-)
->
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 80d72469a9..80c8423654 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -124,14 +124,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
+      *
+      * @idev: host IOMMU device backed by IOMMUFD backend.
+      *
++     * @pasid: pasid of host IOMMU device.
++     *
+      * @hwpt_id: ID of IOMMUFD hardware page table.
+      *
+      * @errp: pass an Error out when attachment fails.
+      *
+      * Returns: true on success, false on failure.
+      */
+-    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t hwpt_id,
+-                        Error **errp);
++    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t pasid,
++                        uint32_t hwpt_id, Error **errp);
+     /**
+      * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
+      * VFIO and VDPA device can have different implementation.
+@@ -140,15 +142,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
+      *
+      * @idev: host IOMMU device backed by IOMMUFD backend.
+      *
++     * @pasid: pasid of host IOMMU device.
++     *
+      * @errp: pass an Error out when attachment fails.
+      *
+      * Returns: true on success, false on failure.
+      */
+-    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, Error **errp);
++    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t pasid,
++                        Error **errp);
+ };
+ 
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+-                                           uint32_t hwpt_id, Error **errp);
+-bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
++                                           uint32_t pasid, uint32_t hwpt_id,
+                                            Error **errp);
++bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
++                                           uint32_t pasid, Error **errp);
+ #endif
+diff --git a/backends/iommufd.c b/backends/iommufd.c
+index 13822df82f..153edf4f79 100644
+--- a/backends/iommufd.c
++++ b/backends/iommufd.c
+@@ -505,23 +505,24 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+ }
+ 
+ bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+-                                           uint32_t hwpt_id, Error **errp)
++                                           uint32_t pasid, uint32_t hwpt_id,
++                                           Error **errp)
+ {
+     HostIOMMUDeviceIOMMUFDClass *idevc =
+         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(idev);
+ 
+     g_assert(idevc->attach_hwpt);
+-    return idevc->attach_hwpt(idev, hwpt_id, errp);
++    return idevc->attach_hwpt(idev, pasid, hwpt_id, errp);
+ }
+ 
+ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+-                                           Error **errp)
++                                           uint32_t pasid, Error **errp)
+ {
+     HostIOMMUDeviceIOMMUFDClass *idevc =
+         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(idev);
+ 
+     g_assert(idevc->detach_hwpt);
+-    return idevc->detach_hwpt(idev, errp);
++    return idevc->detach_hwpt(idev, pasid, errp);
+ }
+ 
+ static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index f5cd4df336..6b04344959 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -294,7 +294,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+         return false;
+     }
+ 
+-    if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
++                                               errp)) {
+         if (s1_hwpt) {
+             iommufd_backend_free_id(idev->iommufd, s1_hwpt->hwpt_id);
+             g_free(s1_hwpt);
+@@ -436,7 +437,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+ 
+     /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
+     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+-    if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
++                                               errp)) {
+         goto free_bypass_hwpt;
+     }
+     accel->viommu = viommu;
+@@ -524,7 +526,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+     idev = accel_dev->idev;
+     accel = accel_dev->s_accel;
+     /* Re-attach the default s2 hwpt id */
+-    if (!host_iommu_device_iommufd_attach_hwpt(idev, idev->hwpt_id, NULL)) {
++    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID,
++                                               idev->hwpt_id, NULL)) {
+         error_report("Unable to attach the default HW pagetable: idev devid "
+                      "0x%x", idev->devid);
+     }
+@@ -720,7 +723,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
+ 
+     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+     QLIST_FOREACH(accel_dev, &accel->device_list, next) {
+-        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev, hwpt_id,
++        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
++                                                   IOMMU_NO_PASID, hwpt_id,
+                                                    &local_err)) {
+             error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
+                               "idev devid %u", hwpt_id, accel_dev->idev->devid);
+diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
+index 67d54849f2..45c08c8f6f 100644
+--- a/hw/i386/intel_iommu_accel.c
++++ b/hw/i386/intel_iommu_accel.c
+@@ -121,7 +121,8 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
+         }
+     }
+ 
+-    ret = host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp);
++    ret = host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
++                                                errp);
+     trace_vtd_device_attach_hwpt(idev->devid, vtd_as->pasid, hwpt_id, ret);
+     if (ret) {
+         /* Destroy old fs_hwpt if it's a replacement */
+@@ -145,7 +146,7 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
+     bool ret;
+ 
+     if (s->dmar_enabled && s->root_scalable) {
+-        ret = host_iommu_device_iommufd_detach_hwpt(idev, errp);
++        ret = host_iommu_device_iommufd_detach_hwpt(idev, IOMMU_NO_PASID, errp);
+         trace_vtd_device_detach_hwpt(idev->devid, pasid, ret);
+     } else {
+         /*
+@@ -153,7 +154,8 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
+          * we fallback to the default HWPT which contains shadow page table.
+          * So guest DMA could still work.
+          */
+-        ret = host_iommu_device_iommufd_attach_hwpt(idev, idev->hwpt_id, errp);
++        ret = host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID,
++                                                    idev->hwpt_id, errp);
+         trace_vtd_device_reattach_def_hwpt(idev->devid, pasid, idev->hwpt_id,
+                                            ret);
+     }
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index b4c5e81b1d..005f97fe25 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -924,21 +924,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
+ 
+ static bool
+ host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+-                                           uint32_t hwpt_id, Error **errp)
++                                           uint32_t pasid, uint32_t hwpt_id,
++                                           Error **errp)
+ {
+     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(idev)->agent;
+ 
+-    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
+-                                                hwpt_id, errp);
++    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
+ }
+ 
+ static bool
+ host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+-                                           Error **errp)
++                                           uint32_t pasid, Error **errp)
+ {
+     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(idev)->agent;
+ 
+-    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
++    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
+ }
+ 
+ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+-- 
+2.47.3
 
-Hi Peter,
-
->
->
->This does leave TYPE_SERIAL_MM a bit of a do-nothing
->extra wrapper, as Balaton says=2E However I don't think
->it's being used by any versioned machine types,
-
-Most prominently, the riscv and loongson virt machines use it, but aren't =
-versioned yet AFAICS=2E
-
-> so we
->could maybe look after this at the possibility of dropping
->the wrapper (by having serial_mm_init() create a TYPE_SERIAL
->directly, and dropping TYPE_SERIAL_MM entirely)=2E I don't
->think we strictly need to do that, though -- being able
->to clean up the reset handling here is worthwhile in
->itself=2E
->
->I do have one question:
->
->> +    memory_region_init_io(&s->io, OBJECT(s),
->> +                          s->regshift ? &serial_mm_ops[s->endianness]
->> +                                      : &serial_io_ops,
->> +                          s, "serial", 8 << s->regshift);
->
->This means that users of serial_mm_init() which pass 0 for
->regshift now get serial_io_ops rather than serial_mm_ops=2E
-
-This is correct=2E
-
->That affects a handful of machines=2E I'm not sure if
->this makes a guest-visible difference (very possibly not),
->but for a "refactoring" type patch like this I'd rather
->err on the safe side and keep the same MemoryRegionOps
->if we can=2E This could be awkward, though, because we
->definitely have users of TYPE_SERIAL_MM which rely on
->the default regshift property value being 0=2E Maybe we
->can have the handful of places that want the serial_io_ops
->do an explicit setting of some property to request that?
->
->The other approach is to analyse the code and satisfy
->ourselves that serial_io_ops and serial_mm_ops with
->regshift =3D=3D 0 really do have exactly identical behaviour,
->and note that in the commit message=2E
-
-I've already sent v3 to fix the lifetime issue you pointed out and attempt=
-ed to take the last approach from above=2E But then realized that a justifi=
-cation in the commit message isn't as straight forward as anticipated=2E I'=
-ve left some thoughts there=2E=2E=2E
-
-Best regards,
-Bernhard
-
->
->thanks
->-- PMM
 

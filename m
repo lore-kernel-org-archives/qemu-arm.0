@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ACDAF01804
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 08:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17CE6F01804
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 08:02:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyQ5h-0008Lm-Rl; Fri, 06 Mar 2026 02:59:21 -0500
+	id 1vyQ5g-0008Hn-GJ; Fri, 06 Mar 2026 02:59:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyQ5N-0007nO-1K
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 02:59:02 -0500
+ id 1vyQ52-0007aK-I4
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 02:58:47 -0500
 Received: from p-west2-cluster1-host5-snip4-2.eps.apple.com ([57.103.68.45]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyQ5I-0006Gn-CF
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 02:58:59 -0500
+ id 1vyQ50-0006G1-U0
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 02:58:40 -0500
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-3 (Postfix) with ESMTPS id
- 8A4C018001A7; Fri,  6 Mar 2026 07:58:42 +0000 (UTC)
+ 88B851800255; Fri,  6 Mar 2026 07:58:37 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772783923; x=1775375923;
- bh=LEFgZ1OOYuBdw8dPiYVuEpb1uHIu9H7rtzkrkhw9XrA=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=F3lRgdGi+/dJhuCxltT0+5WuHvjzEhBTaWBKr0LDxJMSRd+d1oYkQmZATLL19zxcri3NVTr+TmM66l+WLF6wVpGtDhC/3GJRlRx4lk5dQUOwCa5yITC1+WcKPtn97f2vHUIA/f9YAhbNy8EKQz2PDWw6foRiAwbB76xWjIpVHRpr1L5R7rTG2jAkKB4kHLhjyFLB9K2owtA2bAvn7qaznXYQuvBfFabhgSwntbL2flyMpcAKz/3zx55Kl7crJQXTuNR+n4buTpw/OiUC0hVIDCcT69w27O/Mg0fESVthfd+TszTu/kdKrrZ98ce8IAK18SjKjrpKsOCxYpoW8w0KGQ==
+ s=sig1; t=1772783917; x=1775375917;
+ bh=t4q77Dqvvy3Y0q2FeiECDJSHa9xcTExBPNU7QAvHHos=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=S7raPzsyXppVmi/n3Ig5N4GBAvo2QaYEJSK93qx+lCwLT3tB0IAsdXNEdV8pKpgYbCF9wimrKqDfJ2C3loPSocNZOpUZekN14vxuhPTfOJcUNzDkx28c5S2+pC1Iglz3QEXTEbh6YLl1QLIgIE76wutuLnVA3rTnm3Fq8p61M5rLWCLRzc/iDuZGgJIshav3EDeoVk1pbEhPzXhGrAmPFWBiyd/Z8QIM+siApTzG/iKPlDcCEpH/GXxME77UjspTiUQLfAWw1G2h/4KCN8rA3+4iasdzI+rVSTZSS6oyTWn378zrX8tEu/yWAoUDAemcpr7N/F9JQcNTfV7XvBAhqw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-3 (Postfix) with ESMTPSA id
- 3FB071800243; Fri,  6 Mar 2026 07:58:40 +0000 (UTC)
+ 5DC7618001BF; Fri,  6 Mar 2026 07:58:35 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -42,36 +42,40 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Peter Maydell <peter.maydell@linaro.org>, Mads Ynddal <mads@ynddal.dk>,
  Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v13 16/17] hvf: arm: fix SME capabilities reporting
-Date: Fri,  6 Mar 2026 08:57:55 +0100
-Message-ID: <20260306075756.88922-17-mohamed@unpredictable.fr>
+Subject: [PATCH v13 14/17] target/arm: hvf: pass through CNTHCTL_EL2 and
+ MDCCINT_EL1
+Date: Fri,  6 Mar 2026 08:57:53 +0100
+Message-ID: <20260306075756.88922-15-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260306075756.88922-1-mohamed@unpredictable.fr>
 References: <20260306075756.88922-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: sNyj4jGDCVbhAJoJIy1qTkKN-34bagaK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDA3NSBTYWx0ZWRfX2aEezUDL2Wrg
- vNZDI2Th19wJiqvObhODPe80erblJ8VLi8s8mTykyRT1adnqUhfGwn3zIOkwvIsxe9wj2eBX3hO
- 7ZBrtx9Z//9WGlIedS9NcMWwLOT+N6I27RXIcvAwKtVgav0v9udBms94X9Qlx576QdshyWWBxUw
- E+T8ujGLOnNAWgH07mLUs1rxHWYrsO4OMZ++SqS0skAa1qPH6kc4JKS440koKjKTBYHVquPlZ51
- 6EsIH6Wtc/ZOMOhyGSGqed/X9Qp8pzB/N4rf8JEj+fP9B7ABz6xJdlqf2DrIORqRo+KThL3REcW
- 4rEVonP87MxKigX09NU0V+wAwxZX3v0kLDOU9pkRC7U4XpXGcPmdqYXEa3fev0=
-X-Authority-Info-Out: v=2.4 cv=FcI6BZ+6 c=1 sm=1 tr=0 ts=69aa8932
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDA3NSBTYWx0ZWRfX60o0Hf6LqQeu
+ PjKC/E6scFTiYiNJSe2wvm6l3+Ej2BzD96pmaydHhe2DHpTvhOM+Sbr8HEc8Q1l4m8EJWEcoBPO
+ mQxszDSm664PB9nUtqzukiXhb8NWD/iZF8EjCKiDvcliHPuCekKE4jcdkLWL4vlyQwdf7VFfWlD
+ 7t1vocSbirWCF24+L07MVCDqZqbfAEJPIhvEs5J8WOsD0vjdwevPByideaX3HpW/UDtm/w/TGLg
+ dQLrXiMmQWrA24iH5TRV/rq37uzTGvs3F12BvTsifeNf0PnCbQExlvucoNKbcSf8VJN3ukfrRcf
+ E9fJXU3Vb7v9dU4qTes+6ZXU4a8p9hGOxsK3FkC1HHt2hRHIAm8h75MDb6bAoc=
+X-Proofpoint-GUID: wdn3kpamxfVWy1t91UsjdMkG5_O9gkBI
+X-Authority-Info-Out: v=2.4 cv=bbxmkePB c=1 sm=1 tr=0 ts=69aa892d
  cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=-YisE-5-8EYoV4yVs6QA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19
-X-Proofpoint-GUID: sNyj4jGDCVbhAJoJIy1qTkKN-34bagaK
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=L1bH-B2CdzmaWMF7168A:9
+ a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: wdn3kpamxfVWy1t91UsjdMkG5_O9gkBI
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-06_02,2026-03-04_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 adultscore=0 suspectscore=0
- clxscore=1030 phishscore=0
- bulkscore=0 mlxlogscore=859 lowpriorityscore=0 mlxscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=657
+ mlxscore=0 malwarescore=0 lowpriorityscore=0
+ phishscore=0 suspectscore=0
+ adultscore=0 spamscore=0 bulkscore=0 clxscore=1030 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603060075
-X-JNJ: AAAAAAAB86vCyzEu6VMVHXEVmIHB8SVrkcR4Nrff1Q2ahHCqsYGUrMbxoxldbCwgSoOIf2T7uJufJqMi5m7z2ohC5do6X5qafpWxq7a1GK//C9P+OWEJoy4XqDkl8pTi7pWyK0kKYEahMDoiQ9/dMOHaqXh8okfdGd0hL2cAoflp3KGrdruGiDKacjuhHvndqOQ05ph0eSFt0y+1bVUrjFbxpw409zMZStGFgqCCnDtxuAOZvCLxJaanHD99wg8QTnFOIxhDiIKSB8OW3fDpq1Pyy7vl2j/khhWFhjZMVTuX9iUCq+AckcWCgWzU/eLRlCZUJDH6ooGeWAG1L4vL5G00cZA8dluBJfQbqGPtT8wm1QpPewD5LhgH+syW45zI1ixA4QlV0GULhpcGEnKf6a3O6e0GTYFF24gi+6/GMA6aeZRsYAvbBIH6umwwE4nv+8cqghNrlVzPtCpXEnKsCcZIdl/v/GSIQt7a4Rcl27M/D7XfqnHMh3t+Ke7VwT4N3HBWbzWGlFUqxUlguQUEhYzWTw/FdyqG7kZqbeleHLtK2V0htdI9/Z9xq8xM4jgbS/yhUQnv+iK7z+BSwf+ly665dbGEQNzeIG66Sqoj0dPMOCel6Bz4we4YT4LjazIoTznOltTrtuP2N024BDS/75BJOe4+/hRKS+6fpBJ5W8P+ugqagkmBtRr9ecMARqZuSoKCYI2SAZkmoWjVBAjFMgo/MYIZ31oKmo60I/hUOgcWflM=
+X-JNJ: AAAAAAABksULakR+jxMso2syFeIv1rXtWV7bDpnU9DSmg7JytrKsO4GcoVHNB3gF27BV2NJrUBobEp7k0Xad8lbQsMkmgSrIYD9/Hv1SAIDg3ruR2vTEzN081LeCfmfED10nd5yGVpBydjqRVJPzPxDAbElkGpsgg8gm40paH55wh3fjxNMB9WmusxTfXn/VRT24zcsbxe8VHJ+PMHRYt7A0oho+sn6Tb59ZsX/bcCx0E5AZS6BT+DugjczGjIfgOqnjuYwMVZgq0vbar6O7U4oMa4WRgJkxTs2kuvJawqsJDQnPKjGkiJdjBf3h/neoSTXQKcCJQxgtktK/M/EVq7bozdC23vJbBl90/SnbukRZcwJ/xd9WNSLCcziC/o6MweA5OqukehHVNDTT9RTf4XSXeKkOV/4Hdpkxld+nRVeMkF3gLtXq/gv2RTVJkTBJqIjhFi3nAZEdutiMjrjqHXB7TNQjHPYH3hPVFzTP1QNpIJeSxlR/qOhZf5/LlQuCn+R5t0Xgu7paCtoWva6SruZz+CMX3tNnlyoZjbf3V8lLsI2uipi9C1MPhITwQDbsRZNaQ0PLXg6Vfv8ViFvPfVqsekzN5L+YiQS66pXxFwH7L06NIAKIFsgdtsnlNRmR4ILnU7pJwxTtgNl1i/9nbD6l0/hFRhVRxgg0ZpZ+9bvFZJyRNh0ZXrClxuW1LX+rIFLCEaxBZYmsZwtR5gV/5CRzoMIccWFDqpYKB/O9UQqwEnjmgCh8lql7jnwe1efeLgj2
 Received-SPF: pass client-ip=57.103.68.45;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -12
@@ -97,48 +101,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+HVF traps accesses to CNTHCTL_EL2. For nested guests, HVF traps accesses to MDCCINT_EL1.
+Pass through those accesses to the Hypervisor.framework library.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index cb05db2358..b7c5aea505 100644
+index a07702047e..8d1333cbb4 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -1126,6 +1126,15 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         { HV_FEATURE_REG_ID_AA64MMFR2_EL1, ID_AA64MMFR2_EL1_IDX },
-         /* Add ID_AA64MMFR3_EL1 here when HVF supports it */
-     };
-+
-+    API_AVAILABLE(macos(15.2)) static const struct sme_isar_regs {
-+        hv_feature_reg_t reg;
-+        ARMIDRegisterIdx index;
-+    } sme_regs[] = {
-+        { HV_FEATURE_REG_ID_AA64SMFR0_EL1, ID_AA64SMFR0_EL1_IDX },
-+        { HV_FEATURE_REG_ID_AA64ZFR0_EL1, ID_AA64ZFR0_EL1_IDX },
-+    };
-+
-     hv_return_t r = HV_SUCCESS;
-     hv_vcpu_config_t config = hv_vcpu_config_create();
-     uint64_t t;
-@@ -1146,6 +1155,16 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         r |= hv_vcpu_config_get_feature_reg(config, regs[i].reg,
-                                             &host_isar.idregs[regs[i].index]);
-     }
-+
-+    if (__builtin_available(macOS 15.2, *)) {
-+        if (hvf_arm_sme2_supported()) {
-+            for (i = 0; i < ARRAY_SIZE(sme_regs); i++) {
-+                r |= hv_vcpu_config_get_feature_reg(config, sme_regs[i].reg,
-+                                            &host_isar.idregs[sme_regs[i].index]);
-+            }
-+        }
-+    }
-+
-     os_release(config);
+@@ -296,6 +296,10 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
+ #define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
  
-     /*
++/* EL2 registers */
++#define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
++#define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
++
+ #define WFX_IS_WFE (1 << 0)
+ 
+ #define TMR_CTL_ENABLE  (1 << 0)
+@@ -1662,6 +1666,14 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTHCTL_EL2:
++        if (__builtin_available(macOS 15.0, *)) {
++            assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
++        }
++        return 0;
++    case SYSREG_MDCCINT_EL1:
++        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
++        return 0;
+     case SYSREG_ICC_AP0R0_EL1:
+     case SYSREG_ICC_AP0R1_EL1:
+     case SYSREG_ICC_AP0R2_EL1:
+@@ -1950,6 +1962,14 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTHCTL_EL2:
++        if (__builtin_available(macOS 15.0, *)) {
++            assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
++        }
++        return 0;
++    case SYSREG_MDCCINT_EL1:
++        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
++        return 0;
+     case SYSREG_LORC_EL1:
+         /* Dummy register */
+         return 0;
 -- 
 2.50.1 (Apple Git-155)
 

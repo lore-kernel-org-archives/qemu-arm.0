@@ -4,88 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D68F01812
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 08:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CA3F0180E
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 09:05:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyQlT-0000ep-Px; Fri, 06 Mar 2026 03:42:31 -0500
+	id 1vyR7a-0002I3-2A; Fri, 06 Mar 2026 04:05:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyQlS-0000eX-Mn
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 03:42:30 -0500
-Received: from p-west1-cluster4-host7-snip4-10.eps.apple.com ([57.103.65.181]
- helo=outbound.pv.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyQlP-0003iy-VP
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 03:42:29 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-6 (Postfix) with ESMTPS id
- 11ECC18001A4; Fri,  6 Mar 2026 08:42:21 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772786546; x=1775378546;
- bh=zXbcEnpeh1Z4yrvx24iNm/Es0uNeLUJOYge9951eWI4=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=cMmkTzkbLGd9Dg18WHq1xS4nURO0BTDJ32pgsRJpZvjUb/gkLRSVKZPSpUuRWHog33rRW0W3E+AKp0id3poBsWFVUVGBiEhOZE8KA4+1Nfcc3Cdu+UWpzd6nohiNs04deCaygoa6KmljnUJ5YS/Yx38nTpSaQNw6UsWAfl5a6fxx9GbjdDcIunIQQe5LjCx2Nnuos2dXLNnPXQbLPSpcMB9cfQcbFkc/xkestO7qsb7/v+gkHZy2DR9E9gmnCjtuscc8dGx86mBbLRCmeFOz7NfQfuoJwT5PCmfwt5zZyfBnefc7qpRWeWa62fnsGpSTQIVK1tXhm8O4j9XEuLKBMQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-6 (Postfix) with ESMTPSA id
- 394B018000B3; Fri,  6 Mar 2026 08:42:19 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH v14 00/19] HVF: Add support for platform vGIC and nested
- virtualisation
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260306083113.74177-1-mohamed@unpredictable.fr>
-Date: Fri, 6 Mar 2026 09:42:06 +0100
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Cameron Esfahani <dirty@apple.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <E0B1C0A2-DA89-4C00-9C6C-BBEEB2727AB2@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyR7S-0002Ff-TN
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:05:14 -0500
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyR7R-0007K8-0e
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 04:05:14 -0500
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-64aea64bf15so8196116d50.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 01:05:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772787912; cv=none;
+ d=google.com; s=arc-20240605;
+ b=DSqBIz8YnFRYxJLg78gOs0uYw/CpIvc7eqrDVPpPyegbxs8BhuQxYTqm+2yAfrpqF4
+ b6ohZJ0/7FcYKnCtwVnvGRLVX40ognF1GGyksbASKclCJnEJ5mUzuG1CqGJSVQbFxWWZ
+ 7zAEON1c+h3JNRJkiNSKrREopmyw79h+W0LeJTFbtFBAdZejF1ForYJdlxndfpgke234
+ +y6f/Mxorg5aNx8rdxf3/2zxAP9jBtcZI5Hbi1S7Dm1y8oK8IdvLwyMgZbEY7sXzY2i0
+ KlVHTrzkd7T03+rJbK78V8D/yOp9rMTrC/R47pJ9414aEFcwNmJ4bL3bqKvTH2eoAT98
+ qgOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=2D9mnmF9YIc1ASiULt752ZFEY40HMTd19gFA3OqX15I=;
+ fh=k1/E4d9qff1hxvfebcCEW69UtkLOc9sW8c+4t6hswEY=;
+ b=AXuS2m6so+yBwNLD+F2HGQVOe4gS8f7hZSXO+LAnbhNHLbRyD5LSriaMXlGe5vxyBG
+ 6lwHlibDyIJIlUaNUaT/jcszLqT82egTB4GfYNafblG6F6D1DOQ8/TvM0/Jh0EfYCGpV
+ NCL1B9VG2UwvKL15Pa+kaxxOGPSj5BAqJt/Ra5k6GRLe9WsK0QmjPBJc98PPsGbxJOVM
+ y37ZR/cVnzhrIFEdmVWqs5SVmebRlM3bLMbMQg+bZTmBnSRqQw1cuWCc3xYs5kXE9ONE
+ Wlm0bB/4q6ZbehwecBqxd1nBs9Q9/Azz/KE94AHZm7yXyQoB8qm6BhOPFAsLDaECoSOE
+ Ji0w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772787912; x=1773392712; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2D9mnmF9YIc1ASiULt752ZFEY40HMTd19gFA3OqX15I=;
+ b=mIBpYgTjcBdFUJzwtg3FApa8ukoIyym3OnZmlSTewnvwHTVD67N4LwynjN9RzrQf7Q
+ dcGbL6g6gjThT0E6JsSXq/GQVuWHRsGe2DpYGurzcK9XMguB5R/8pI/pIOTIA9kzD38j
+ b0UwwQt1822KdbYbSr1E+vlWry9ejtxxnnMIYMPLSvEijrtBfrkIJ0K8lqDflI9Wq6e9
+ mmgL0z5kDcH919O2eDtUOfdViwEcFQqQ0ncqelVt0iXAcYgFGleZxcmSYV6WKyHqJzth
+ dYsB34yfEYLS9nzmpNoTbH33xTuPa7FomlOnk1IHKlKvGfbs9vaS4Y3LLoYJc9TIQI5S
+ H1bw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772787912; x=1773392712;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2D9mnmF9YIc1ASiULt752ZFEY40HMTd19gFA3OqX15I=;
+ b=e6VsNtt26rAfjE8LUC13EKZIa6+vZs6D9yZ5SR7cLMnB0SHudF2yHF/0iz5jGd1YRG
+ 7mb0m7xkIiM2ew2la/aPCUdLKEqXQ5Mbz3TkUUwQNffUpyby/hWu6xyz7wpQbEWpoOmv
+ oCwlT61tDyi1JRtzzSz8MIme1PLnWDC94y5HvwPb8MfWAIv2OWYp9mYydtE+W1Uwk8+I
+ RJ1CTuyRyPFDenxYGwQaysU55d7tb6steswLmvPQ4TFaepLgRWvtOiCJE7Q+50Sbu/vq
+ mAE4Yul2DKouY5mOh0c+XuyLLFw2628dFkpwaAQITZEbAjYVFe7vqLwDhBtPW4Y5gYgc
+ w9HQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXfi6/Dbalw358Xvtj+lwj8BJ5VkukA9828sbOW9Z89H/PjUfmkAKgijSI+Rv0UiuH1BNrByIbdlA==@nongnu.org
+X-Gm-Message-State: AOJu0YxvUxNiRH0l2XnSjIExeFJKutWFhtA+9QNM5IzvkiKsAqITOxEd
+ VAKcgb68ewfYcSeQThpGGYCuV3z80B/tj5vIHzktJ2nIHdq93hHPUUI3llJk9/EsQ5+t7PRqvFx
+ I6PbvPon+Fx5Em5y0d4M1Cld/ZalTtC5/q5+Qs8xUow==
+X-Gm-Gg: ATEYQzzMJoKnD7s0oAmep2Tm3TPoykw4wqvE5kAVHbJ27I+nf2BgZTcnxNOMerY+mtY
+ 9g1CkYV0sWcUw2E8InMbaau12EmwEk2gzMgdeFfMNyxjOB+XU+nm2CdqXmGUUy/zUxeOyecLnTM
+ Dkf7GX3+4zRZwV7NGzMBRv1bnI4OnRfsLRIE1mZMg7K4cAFHwMfyiQsa5X6XZbQyMbN9j7/Eb8E
+ VK6PcfH0UfyxPbDY6i/y2BMlf0RBnbIfRFrdogMJ7eMiAcSlrw8V2OfLzT6vLbQ3mouR/iYbkrG
+ b4kkcf4z0WJiQCnpFNI4SDQJSzh6R8AqTAVTdZdwKSgCGI2blR73iKXCa+rXWHg2wNU4BfiVRsE
+ UiA==
+X-Received: by 2002:a05:690e:4192:b0:64a:ec39:dd64 with SMTP id
+ 956f58d0204a3-64d1427be45mr1108120d50.43.1772787911735; Fri, 06 Mar 2026
+ 01:05:11 -0800 (PST)
+MIME-Version: 1.0
 References: <20260306083113.74177-1-mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-ORIG-GUID: I7hrLEaiUj1itUwchx7oFIU51tECBVBK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDA4MiBTYWx0ZWRfX398a0tYppht1
- BuW+JvnfyACvKqQv3MET91916dD35Az85A77DTXb4ReQtmnyaRJLA4umta8ooLgbl30JOYbhFSA
- t9VTBlpdHR7tfTUzA+vOrVvW/ylKXJnEM/y5ruLZjSFPAfcn2PFGqESq7LiZXik8nSAdwWo92vQ
- 05L2xPy9nohu+IJUWowjksxXhqBxg0Qgf8Mc/GuOUk6dTwSk0OI6P+z9FF81xgTr7uqvuTwhJKW
- 3VKeLR3a/L7JPpi1YdFIIeCRlAN+pSGKHEeNYR9hMhci3xPac+IedrBC1pLJNJCchVIg+Dzwknw
- sE1Bfxdw2WgoBoEe6nJmzIhwEu0stpKuyo7GckNmZAbE5mTuCgP6lHauxIbK9s=
-X-Proofpoint-GUID: I7hrLEaiUj1itUwchx7oFIU51tECBVBK
-X-Authority-Info-Out: v=2.4 cv=TambdBQh c=1 sm=1 tr=0 ts=69aa936f
- cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=vPj9LedlLUqjr1h06ZwA:9
- a=QEXdDO2ut3YA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_03,2026-03-04_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- suspectscore=0 mlxscore=0 adultscore=0
- lowpriorityscore=0 clxscore=1030
- malwarescore=0 phishscore=0 bulkscore=0 spamscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060082
-Received-SPF: pass client-ip=57.103.65.181;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -12
-X-Spam_score: -1.3
-X-Spam_bar: -
-X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ <20260306083113.74177-2-mohamed@unpredictable.fr>
+In-Reply-To: <20260306083113.74177-2-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Mar 2026 09:04:59 +0000
+X-Gm-Features: AaiRm53vWqwli0FhM_mGRBpWQchwO7OdoMSJ2p2kh1F5wemoaiGQOuTQodt80jw
+Message-ID: <CAFEAcA_dXMOzHuisenC+uEq5CyXBLgAjrA0SWVf8e+bmJ4Gsxw@mail.gmail.com>
+Subject: Re: [PATCH v14 01/19] hw/arm: virt: remove hvf_arm.h include
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org, Cameron Esfahani <dirty@apple.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,206 +123,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Fri, 6 Mar 2026 at 08:31, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> Having that include breaks the build for Linux after inclusion of SME support.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
+Why does this break the Linux build? This is with Manos's two
+patches "hvf/arm: handle FEAT_SME2 migration" and "hvf/arm: expose FEAT_SME2
+to guest if available", right? Linux builds fine for me with those.
 
-> On 6. Mar 2026, at 09:30, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
-> Link to branch: https://github.com/mediouni-m/qemu =
-hvf-irqchip-and-nested
-> (tag for this submission: hvf-irqchip-and-nested-v13)
->=20
-Hello,
+There doesn't seem to be anything in the hvf_arm.h header that would
+be a problem on systems without hvf -- there's a couple of prototype
+declarations which don't use any HVF specific types, and a block
+of code protected by "#ifdef __MAC_OS_X_VERSION_MAX_ALLOWED" which
+won't be defined on non-macos hosts.
 
-Oops, hvf-irqchip-and-nested-v14
-
-> This series adds supports for nested virtualisation when using HVF on =
-arm64 Macs.
->=20
-> Reviews would be very welcome :-) It's maybe a bit unlikely that this =
-will make
-> it to QEMU 11.0 I might as well try.
->=20
-> Patches pending review:
->=20
-> 1, 2, 3, 15, 17, 18
-Please have patches 1 to 3 applied before the HVF SME2 patches=E2=80=A6 =
-otherwise the Linux build breaks=E2=80=A6
-And patch 18 is also not nested virt related as such but merely making =
-HVF SME2 support feature reporting functional.
-
-Note: I didn=E2=80=99t test x86 macOS builds but I believe this should =
-be enough.
-
-Sorry for sending a bit too many revisions in too short of a time but =
-this _should_ be the last one...
-
->=20
-> It has two parts:
-> - Apple vGICv3 support and necessary infrastructure changes for it
-> - Nested virtualisation support. Note that the nested virtualisation =
-implementation
-> shipping as of macOS 26.3 is nVHE only (but it _does_ use VNCR as =
-shipped).
->=20
-> This series doesn't contain EL2 physical timer emulation, which is
-> needed if not leveraging the Apple vGIC. As such, nested virt requires =
-kernel-irqchip=3Don.
->=20
-> Known issues:
-> - when nested virt is enabled, no UI response within EDK2
-> and a permanent wait. Workaround: -boot menu=3Don,splash-time=3D0.
->=20
-> Apple Feedback Assistant item: FB21649319
->=20
-Apple replied to that and said:
-
-Investigation complete - works as currently designed
-
-Which is a bit fair given how timer virt works on NV2 without relying on =
-ECV=E2=80=A6
-
-> When the VM is running at EL2 at the very moment the virtual timer =
-fires:
-> HV_EXIT_REASON_VTIMER_ACTIVATED doesn=E2=80=99t fire (when not using =
-the provided vGIC)
-> - using a GICv2 doesn=E2=80=99t require having transition notifiers =
-which Hypervisor.framework doesn=E2=80=99t have=E2=80=A6)
->=20
-> and when using the provided vGIC, the interrupt never gets delivered =
-back to the guest
->=20
-> Linux as a guest OS is fine with this=E2=80=A6 but the reference =
-ArmVirtQemu edk2 build always uses the virtual timer even when running =
-EFI at EL2, so it gets broken unless this patch is applied to edk2:
->=20
-> diff of ArmVirtPkg/ArmVirt.dsc.inc:
->=20
-> -  =
-ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerVirtCounterLib/Arm=
-GenericTimerVirtCounterLib.inf
-> +  =
-ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmG=
-enericTimerPhyCounterLib.inf^M
->=20
-> Changelog:
->=20
-> v1->v2:
-> Oops. I did a mistake when preparing my patches.
->=20
-> - Add hvf_arm_el2_enable(_) call to virt_set_virt
-> - Fix nested virt support check to add HVF
->=20
-> v2->v3:
-> - LORC_EL1 patch was merged separately, remove from this series.
-> - fix LPIs when kernel-irqchip disabled and using TCG
-> - remove spurious if case in vGIC supported version detection =
-(inapplicable now)
-> - Add hvf_enabled() check in combination with hvf kernel-irqchip =
-checks
-> - cleanly fail on attempt to use the platform vGIC together with ITS
->=20
-> v3->v4:
-> - GIC state save improvements, including saving the opaque =
-Apple-specific state
-> - Saving HVF system register state when using the vGIC and/or EL2
->=20
-> v5:
-> - oops, fixed up save/restore to be functional
-> - misc changes otherwise
->=20
-> v6:
-> - Addressing review comments
->=20
-> v7:
-> - Address review comments, adapt around Qemu changes and bugfixes.
->=20
-> v8:
-> - Rebase, and misc fixes
->=20
-> v9:
-> - Misc fixes from WHPX review comments
-> - Split enablement commit for EL2 into its own separate commit
->=20
-> v10:
->=20
-> - A bit of changes across the board
-> - move HVF irqchip save/restore into irqchip code
-> - block nested virt support when kernel-irqchip=3Doff with a GICv2 as
-> we don't implement an emulated physical timer yet.
->=20
-> v11:
-> - fixups for the save/restore Apple GIC state patch
-> - block the same registers as the revert in =
-28b0ed32b32c7e5094cf2f1ec9c0645c65fad2aa
-> for "hvf: sync registers used at EL2"
-> - drop patch that warns instead of aborts on mismatch
->=20
-> v12:
-> - Have the SME2 series at the start of this.
-> - Adaptation for the SME2 series.
->=20
-> v13:
-> - include "fix SME capabilities reporting" patch instead of it being =
-standalone
-> - include "remove hvf_arm.h include" patch at the beginning of the =
-series
->=20
-> v14:
-> - Turns out that the HVF SME2 patches broke the build for pretty much =
-anything
-> non-macOS, and didn't address that properly in v13
-> - Addressed some checkpatch nits
->=20
-> Manos Pitsidianakis (2):
->  hvf/arm: handle FEAT_SME2 migration
->  hvf/arm: expose FEAT_SME2 to guest if available
->=20
-> Mohamed Mediouni (17):
->  hw/arm: virt: remove hvf_arm.h include
->  target/arm: cpu64: only include hvf_arm.h when HVF is enabled
->  hvf: hvf-all: stop including hvf_arm.h
->  hw/intc: Add hvf vGIC interrupt controller support
->  hw/intc: arm_gicv3_hvf: save/restore Apple GIC state
->  accel, hw/arm, include/system/hvf: infrastructure changes for HVF =
-vGIC
->  target/arm: hvf: instantiate GIC early
->  hw/arm, target/arm: nested virtualisation on HVF
->  hvf: only call hvf_sync_vtimer() when running without the platform
->    vGIC
->  hvf: gate ARM_FEATURE_PMU register emulation behind not being at EL2
->  hvf: arm: allow exposing minimal PMU when running with nested virt on
->  target/arm: hvf: add asserts for code paths not leveraged when using
->    the vGIC
->  hvf: sync registers used at EL2
->  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
->  hvf: arm: SME2 availability fixes
->  hvf: arm: fix SME capabilities reporting
->  hvf: enable nested virtualisation support
->=20
-> accel/hvf/hvf-all.c                |  52 +-
-> accel/stubs/hvf-stub.c             |   2 +
-> hw/arm/virt.c                      |  38 +-
-> hw/intc/arm_gicv3_common.c         |   4 +
-> hw/intc/arm_gicv3_hvf.c            | 822 +++++++++++++++++++++++++++++
-> hw/intc/arm_gicv3_hvf_stub.c       |  25 +
-> hw/intc/meson.build                |   2 +
-> include/hw/intc/arm_gicv3_common.h |   4 +
-> include/system/hvf.h               |   8 +
-> system/vl.c                        |   2 +
-> target/arm/cpu64.c                 |   2 +
-> target/arm/hvf/hvf.c               | 468 +++++++++++++++-
-> target/arm/hvf/hvf_sme_stubs.h     | 158 ++++++
-> target/arm/hvf/sysreg.c.inc        |  52 ++
-> target/arm/hvf_arm.h               |  46 ++
-> target/arm/machine.c               |   2 +-
-> 16 files changed, 1659 insertions(+), 28 deletions(-)
-> create mode 100644 hw/intc/arm_gicv3_hvf.c
-> create mode 100644 hw/intc/arm_gicv3_hvf_stub.c
-> create mode 100644 target/arm/hvf/hvf_sme_stubs.h
->=20
-> --=20
-> 2.50.1 (Apple Git-155)
->=20
-
+thanks
+-- PMM
 

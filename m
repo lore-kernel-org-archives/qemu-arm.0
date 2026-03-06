@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37618FCC04F
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2913FCC04D
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:33:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyZ1I-0003CV-Eh; Fri, 06 Mar 2026 12:31:24 -0500
+	id 1vyZ2w-0004VF-4a; Fri, 06 Mar 2026 12:33:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vyZ10-0002wL-0A
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:31:07 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1vyZ2W-0004RN-Td
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:32:44 -0500
+Received: from mail-qv1-xf35.google.com ([2607:f8b0:4864:20::f35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vyZ0w-00040u-A4
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:31:05 -0500
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-829b2018c94so25269b3a.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 09:31:01 -0800 (PST)
+ id 1vyZ2S-0004NB-Ve
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:32:39 -0500
+Received: by mail-qv1-xf35.google.com with SMTP id
+ 6a1803df08f44-89a1d7cc7f0so27877946d6.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 09:32:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772818261; x=1773423061; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772818354; x=1773423154; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mLwxm/0SwTsmpyOBjsOJSBHPToEMdtQpxNwBuwSAc9w=;
- b=RGEIEC5ps5lG+D6qOZQKmMW5JOE/RZMF/44gSFCtSirLCtoCCHrIBJYTaNeHjp5yKR
- O/YKIrS60IbR5rak3KJM6pwilOI1WoyEUPUuaF9KcS+IUP4waMCYzuebAMN38oS3ivm+
- WN0fK+IsRM+2BaVWT5tK5W3RI2YkyHTqfSWMjyqaa5EigDhixRGa/9iJs21aaf1z+nnU
- eBl4xQr/Tb60+X7nO1Mwb1cPBZ4L1WGN9EZ+ub32nwX54vyLChVaSY7y6xNhch5PgW0I
- BwDOo1HmSZBgaegRu4oXps1rMWWxeoyuJR4Otu70fZAq6bFNbbrdQydvQaOyCPzG1eXR
- FbLQ==
+ bh=bkgbyf3gswKuEQIzITYNoeGmX6DnWgJ9oK8REkf0lQo=;
+ b=HONng1JvS7JJuR2BjFyyobTeMD9sXgxm+DZWSXZedscFp5mPWL2uJyVOI/TOfCTi80
+ b/d1dUPs39gX+bBrzbJMPrxmNormmu+JDXQ1I2PyWS8m/eiCYMA87SqijdcjtAc8KCeT
+ iGbvHUQoRfV1TBzi+gAHunY7IoKYzKSCGTrF3ccKre8QNUMNGOsJNrDbsdBoHPNvOD4c
+ PuKQaCdb/Xko66AAQRKGNq9OYuLqF8JLnzUjdkkAOqL8YWaoutoCmyBG45X4FW/5avqw
+ NUqGACozvdqQMicXWdk6Kwufe+VMYsevJrW8+QpznsZ7EWXeQyUCmGxcI2uQsrgjwi6k
+ +jsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772818261; x=1773423061;
+ d=1e100.net; s=20230601; t=1772818354; x=1773423154;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=mLwxm/0SwTsmpyOBjsOJSBHPToEMdtQpxNwBuwSAc9w=;
- b=JpYBKLZB1W+6FpMtT7erdKnQm6XYl/uUGmQ0G/eY1lxAPNjfiOJnWncb86jv4MivoC
- avB4RI0igDyDWShnhaD/6yTenVMzuFBnjSoFE2hHptmyilxMLprZnGDCNKxW/VctDbKo
- dPkY6N2yI4lkN2uGl9lhsVsJiT6kJDrwx3J9c2uXShb9n85cehU6e6GKO/VjWOHHxQhK
- wfF0wyGGQS0Fs9CmqL+QompAwRnYYW2jhpvO6i5Jt8zO+skkdUNLc+nnjAw64B5MVUTZ
- YB/5Mft8UEEGwRXgRIxddpTk3FdDFcfl4xKGkKq9K6ZTDGK2ogDObLpJSM777TD+qfSk
- SvfA==
+ bh=bkgbyf3gswKuEQIzITYNoeGmX6DnWgJ9oK8REkf0lQo=;
+ b=QvoHu9efk5tyQiFFMHs7FBf/jJ4DAkAN6hK84RO74AV64/lNJakSvn3pHR4x6VFZ9R
+ qryHW5g82z/L80yec25nrDjD3NxGeQ1KnQTVrYUQSfQPo7RBTmXq9ZOYWhFONn2JRoLG
+ EXx//uco+sjshhegD1GS92CIXZjbdo1M1RSyQ52MqMWQ5FS8BQBes5ynNtl6mPHsI/5X
+ rAYcLasH08+jBNR+Algyg2tIsKO367KSHDPimCKHG1wC3xgss7kVM3NGBVyH3l0aYtMW
+ AUfWQ27cWvLqppN7c0BMiAWmPZjAN24AHfYROAbwLoKMOaw4xasD0oi+ftteeE1QWZkj
+ xzrQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWhf+Q6Dyigp2g3HxbCqkaRBYLNByaXcMjDyXk6U+zWJUOO2xjHhI3oaKwY9abxMpNufEmqzFIfvw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywavt+DlVR9djD1SmBgXFRM979kwK00Dy0o1hofwRk5DvuYwPFG
- adM+BlZlEKYTSQ1jo8H3nuFmVQx08iuz/4zoDcdpF46LdgqofMoE+Emkv8F7ALWvjiY=
-X-Gm-Gg: ATEYQzzhOayfYbZV3OwQnWXXxh2ec4c9DRlZ+R3ghERvFeHr27St/YKjJ/QrwkjpPcj
- drHeFGM80XmOqjwvKPg3htZEoLmJctlT7Jrsz+xxUFM0OxKUYQ6FhpTM8AZd0TFbF/gT/6ZJuN8
- H656KL3MsKPID/ABmZYpobknM/2AuWA4jqF7ZpbrPiw+1FFJKMopkxLBmdl4a7I2xFdpIgrqPFg
- bF4X1tU0lEHfugIUznrKBOBJU6YjMQMHTSQnV4K0sNfUgWVJvM6ZhznXMkDchk1/wbH5LbvrLVL
- LBbx/CwY8Blp2iV8SUYRy9YE3yM3yDWL9Hs+8PS0G3zGMl52q5MpS23gz0vaN9fBWgtK8PG7KFT
- t8GpzYdmNBCSvwgEZwrn51i1OoX4WOJv+tkiXL9wcH324+Kqq0U1vOEXBYGiWE8iIpUy7L6+lBn
- nc+unLei4+UNd/xF0P49SwZeMUxOkoniRF+Q3x5OfcyWFcNkqwF1I4s9JVZmBKR5Eg2qrgy4uJ+
- bk3QZQ=
-X-Received: by 2002:a05:6a00:18a7:b0:821:70e7:b10a with SMTP id
- d2e1a72fcca58-829a2d992bcmr2666818b3a.8.1772818260680; 
- Fri, 06 Mar 2026 09:31:00 -0800 (PST)
+ AJvYcCXbypKwoG/8yLUE+mYqoIeHbAfAnomQIWhgOf3EZNPbeY9kzb0RLzNTQl3E2WNuPEEU3vWEf07c8w==@nongnu.org
+X-Gm-Message-State: AOJu0YwIhfQ9gCNGMeZEWItaeXlMnmKnR2SVV6ND0Gwvqukm+JySyMyQ
+ CX8FAvcXUzMVxSFSJbTCBeCn6NxnBDQlgnJYAcSKAgD08M9+VmS9gfieUqqS0TSKRo0=
+X-Gm-Gg: ATEYQzycWjP1rnY+NwvFwF7yROOL3tDGpCNJC7/Amra8UZZf57FDIQGIsaR+8xF73n9
+ tgrVexUVLG1xyyuossjfAnuGH6mvAvM+Rzai9t9LVctyWc65wMM9Df6HaNYd3c17qO1LczHl9dR
+ by+W6BWBULA2RhP6sfFtrd8FOa2xGStmfocxSaaaDZWPRmi7GFw96Mpy1kXok2cQsInZsMos3Jx
+ VwPjqTkrx4bAmS7VbxmK2lMYAGQPOw/88hqPcmOjNTFRy3yl/p85XPtHJIDzCNIeX/ZDikUdGFO
+ HAgtQscbwexCXZ9O90289kDjUIsm9bc4GKd+/m9OolqIEqXtq6SDRg1Td5D8sCqAIRPSQ7oFWPj
+ LVMKyDNBM7cGqXWSMlkI2aPErUyurKYfXzLNpfndKmp3Ov7PjymHxrJ+ycZI17v4n46ppjfJba6
+ RdaI/7eXRqVLHuWophFFe3RZE3L8GKWQFOi1btExQytGvFScpQnBowXb8rghIWkKtVVl/9
+X-Received: by 2002:a05:6214:da7:b0:899:ea9e:31c4 with SMTP id
+ 6a1803df08f44-89a30acdb41mr40909806d6.51.1772818354252; 
+ Fri, 06 Mar 2026 09:32:34 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-829a465743asm2329022b3a.15.2026.03.06.09.30.59
+ 6a1803df08f44-89a3140d77bsm15822706d6.5.2026.03.06.09.32.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Mar 2026 09:31:00 -0800 (PST)
-Message-ID: <af25f0bb-72d0-4cbf-89bc-0720c78131c6@linaro.org>
-Date: Fri, 6 Mar 2026 09:30:59 -0800
+ Fri, 06 Mar 2026 09:32:33 -0800 (PST)
+Message-ID: <c957fe25-a0a2-405f-be83-d411261c21e6@linaro.org>
+Date: Fri, 6 Mar 2026 09:32:32 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/7] tests/docker: add gdb-multiarch to all-test-cross
@@ -122,15 +121,15 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
 In-Reply-To: <20260306161728.2657486-2-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f35;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-qv1-xf35.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,6 +154,56 @@ On 3/6/26 8:17 AM, Alex Bennée wrote:
 >   tests/lcitool/refresh                                 | 1 +
 >   2 files changed, 2 insertions(+)
 > 
+> diff --git a/tests/docker/dockerfiles/debian-all-test-cross.docker b/tests/docker/dockerfiles/debian-all-test-cross.docker
+> index b73776d95b5..287770a995a 100644
+> --- a/tests/docker/dockerfiles/debian-all-test-cross.docker
+> +++ b/tests/docker/dockerfiles/debian-all-test-cross.docker
+> @@ -59,6 +59,7 @@ RUN DEBIAN_FRONTEND=noninteractive eatmydata \
+>     apt install -y --no-install-recommends \
+>     clang\
+>     dpkg-dev\
+> +  gdb-multiarch\
+>     libclang-rt-dev
+>   ENV AVAILABLE_COMPILERS gcc-aarch64-linux-gnu \
+>     libc6-dev-arm64-cross \
+> diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+> index 3e4b026035b..259e6ea0729 100755
+> --- a/tests/lcitool/refresh
+> +++ b/tests/lcitool/refresh
+> @@ -167,6 +167,7 @@ debian_all_test_cross_compilers = [
+>       "  apt install -y --no-install-recommends \\\n",
+>       "  clang\\\n",
+>       "  dpkg-dev\\\n",
+> +    "  gdb-multiarch\\\n",
+>       "  libclang-rt-dev\n",
+>       "ENV AVAILABLE_COMPILERS gcc-aarch64-linux-gnu \\\n",
+>       "  libc6-dev-arm64-cross \\\n",
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+As long as ppc gdbstub is not fixed or Philippe series reverted, you'll 
+need also:
+
+diff --git a/tests/tcg/multiarch/Makefile.target 
+b/tests/tcg/multiarch/Makefile.target
+index a347efbadf0..b6209ee082d 100644
+--- a/tests/tcg/multiarch/Makefile.target
++++ b/tests/tcg/multiarch/Makefile.target
+@@ -156,12 +156,16 @@ else
+  run-gdbstub-%:
+         $(call skip-test, "gdbstub test $*", "need working gdb with 
+$(patsubst -%,,$(TARGET_NAME)) support")
+  endif
++
++# gdbstub broken on ppc
++ifneq ($(TARGET_NAME), ppc)
+  EXTRA_RUNS += run-gdbstub-sha1 run-gdbstub-qxfer-auxv-read \
+               run-gdbstub-proc-mappings run-gdbstub-thread-breakpoint \
+               run-gdbstub-registers run-gdbstub-prot-none \
+               run-gdbstub-catch-syscalls 
+run-gdbstub-follow-fork-mode-child \
+               run-gdbstub-follow-fork-mode-parent \
+               run-gdbstub-qxfer-siginfo-read run-gdbstub-late-attach
++endif
+
+  # ARM Compatible Semi Hosting Tests
+  #
 

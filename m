@@ -4,105 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3235F01832
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 13:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 701D7F01832
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 13:30:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyUwA-0002vD-TH; Fri, 06 Mar 2026 08:09:52 -0500
+	id 1vyVGL-00039C-G2; Fri, 06 Mar 2026 08:30:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyUw7-0002un-SG
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 08:09:47 -0500
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyUw6-0000gX-5I
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 08:09:47 -0500
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-64ad46a44easo8144115d50.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 05:09:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772802585; cv=none;
- d=google.com; s=arc-20240605;
- b=BgQyMsWpn9MY8TGl1rm/EcpDQf5Fkqo2qbIxXjE6qRleQcR3rHNFaWufrkL2oP2OWV
- A3x98xHojgpc/ZUXS0YPDI+eYT5QNi3BtTTJJUEDtTEWT+I8W0EkFPaQcmBq5g7GZ0M/
- b3CcoaSaseFB2hNW4QmAmDZmdBS3gZDjcdJae2cdmj+M6xLr9vlHD/EO9HYLhKoC2EH7
- FnEGXcfOBOugexLCCWulSrxyi146L9SkNa1Kh9t1547kDb2QISxlbrTzstwPqll7nvPX
- BbFYO7p/jSbAu3Nco9d1Hp/HWHwn16MIp+YV/UPjoOEfTUXve30lgmZj1T2G+PXsDiZC
- 80Jg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Swf1K3gZWqxMPuwFx8GjZ1bCIultsIOQVBWJg7tJVms=;
- fh=F2znR2JgTxgwQAfCkf9SBUb1QPalOk9r+RyFr6s3Mng=;
- b=JC+MOZkCSEcOjHQEOXz0vHs2feRy7oUxlkR2dfBYJgPthLxuOtb9bsbTipNCaP0Vok
- ve/VVTsTM3DZMv18uVzX0dj+FgHDhO3+spYfQ49vHVQkeNe1aMOH/nDjnjbCiDGB2UA7
- GQpH2qOr78kuGFO8h62tedlABiggGKJTJT40G4nvMNRJGXJLZgXpQJ24ZkxAdPpOey0T
- 0vhX9Hw+/llbiFn1X8I3wJLjI3us2QkPgoSVLhRYWqwftNGZHKQCMgqTv4JgnAA4pk1z
- hASyvhWpQbkBqQAqSVSZUcf9I6sCyvALSR1E2a6AdwKSGempjxrubNwGgNWM0KA3/bjU
- p9rQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772802585; x=1773407385; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Swf1K3gZWqxMPuwFx8GjZ1bCIultsIOQVBWJg7tJVms=;
- b=RSKhnrGVeuWMinQ5hy+/9qnbz24/HjoRJQ5davb/Z1BaUDqrdxkkRp/IG+GX0BXuU9
- Nehk7DdDcmiZqGUGEkZ3Bq8FZj5bUvTGnleoOFVyDYEYGIEk3UVUZHr0hTjJSQWCHnbp
- YYCldyNy95X6rE2zhuJtxDLLW/p19XIP7anQAFToXDPlsJKoyTHGz6hyVLmU19U9UBEF
- ulC3eVYtiqk2huyW9QyFeTQ4FFJNwMumKPrzxnkQbB07cE8gCvdMqCk3o6qXDzbpP6xC
- 84wYEzWjCzjTzqtM7VEc7PUnQrHCx/P16G0TfW/pMRkQtsEGd844w7yvsj+ZK0cFWqg7
- rerQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772802585; x=1773407385;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Swf1K3gZWqxMPuwFx8GjZ1bCIultsIOQVBWJg7tJVms=;
- b=DuuaefLOY+zm1/rhhRb1Px3imvtTXxzpgurcsldCk2JheLIiql75sa85jRYBJQI/Om
- bcqLMo0kUChLSpFAbQNGMuzuQqFbWAqLPl4aVL161EzwTDjKPJA93RB4PXH+jOuvmWSH
- pshHcnwPsY2AJGIPGhK/KLQYLI+T5STInDGMhFrSg0G8dwdN7rVTxJvPNkzMbTggTnNC
- whj7J5R0FlQTeLoYa9e1yCEXJVXUT5LX5r1cCWtGlfwQDiruEKqqh9xW3D8MYjStr7KO
- q9vYpSCmOuYiy7/Uqb1ad/mKbZ8Ris5DESRChoKLyZPYxXzuokwMzu4Lpl3z8G6iaikE
- eF0g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWfWuH0wFSB0oLShOijLyhkJk7upr+K1FJBuwniik7woWkrd7Ec1YajwLljVFWL7IRi7zspLjpdKw==@nongnu.org
-X-Gm-Message-State: AOJu0YzHvU6k9d6wRxORVXF7wAauEFHHsp4wOpfPWYsCzCGskWVb83Of
- 2Y7iCQvFAZTk1lfIK4ysxLuTTGFE0LGTtml9eEQW5QtK3M6WzBNl1mM5Q8WP+kukkn3bu5CQ4hg
- wM8+i/Vhxcp9xS8/OJXbDwZHJmjuVxDQKtlXk87xDSQ==
-X-Gm-Gg: ATEYQzx4uYmY4YyJ+zh8RV1k5qP/FNcPMqbGrHlnP/BpdlnVWb1mLkUpOFCg0rhbUYb
- knii93db7JZOewtyap74YfoFPXjyXFE4e2FbWkja9XFuDea9oQ9hljE+GZdedu0HQIUdAZC+TbV
- agE3CfInkwTcynrQf0W/mSM+lQ11rKUvvtvihrHapSKVCnDQkLOI/iwAMvTrGoc7RYf7SmsR4iw
- ib4ngnnzG23it6g2ekwMkVUVpaHo4ybgbI1xQDCwSQgk7g2HRovm5l/Y075CiD4WSceACo4GBsT
- mN709jVjp6cPq1HBvVr8fpVR7DQIEg8sRUATxLIRr5vbgDqkW/SZkl0DSoU5Ab+syKM=
-X-Received: by 2002:a53:b44a:0:b0:64c:c267:7f82 with SMTP id
- 956f58d0204a3-64d14279a74mr1398364d50.48.1772802584764; Fri, 06 Mar 2026
- 05:09:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vyVGJ-00037s-Q4; Fri, 06 Mar 2026 08:30:39 -0500
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vyVGG-0004Q6-I5; Fri, 06 Mar 2026 08:30:39 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDnPNDw1qppOcS0AA--.38013S2;
+ Fri, 06 Mar 2026 21:30:24 +0800 (CST)
+Received: from [192.168.31.155] (unknown [113.246.232.19])
+ by mail (Coremail) with SMTP id AQAAfwCH3erg1qppyYQfAA--.39450S2;
+ Fri, 06 Mar 2026 21:30:16 +0800 (CST)
+Message-ID: <1b6a1849-6cec-4c09-aad4-3e5f33ec768e@phytium.com.cn>
+Date: Fri, 6 Mar 2026 21:30:08 +0800
 MIME-Version: 1.0
-References: <20260306-sme2-hvf-v7-0-e72eeda41ed3@linaro.org>
-In-Reply-To: <20260306-sme2-hvf-v7-0-e72eeda41ed3@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Mar 2026 13:09:33 +0000
-X-Gm-Features: AaiRm52fzqlmbRbXO6JlHmq9ubx2lGn2wCk2wvvNTZ_cAmQGSZgd-t4nYNjl6WA
-Message-ID: <CAFEAcA_V3FeSrhWdeegs6XoO-VQXH0Y-A_X9ChcRDR9ZYUjiSw@mail.gmail.com>
-Subject: Re: [PATCH v7 0/2] arm/hvf: Add SME2 support
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+From: Tao Tang <tangtao1634@phytium.com.cn>
+Subject: Re: [RFC v4 28/31] hw/arm/smmuv3: Select sec-sid from PCI property
+ and validate SECURE_IMPL
+To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
+References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
+ <20260221101907.2997408-1-tangtao1634@phytium.com.cn>
+ <ac35d3e8-c1a6-4f2b-9a96-88f802299bae@redhat.com>
+In-Reply-To: <ac35d3e8-c1a6-4f2b-9a96-88f802299bae@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwCH3erg1qppyYQfAA--.39450S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWmp8qEJhgAAse
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxWFyfKryxJFWrAFy5CF48JFb_yoW5tw4rpF
+ W8C3Z5Kr4DKFyxtan7Jw4UCa4SvayxJa15Xr98GrnxAF45W34SvFWI9ryF9r9rAr48ua4j
+ qayjyrWkuw4DArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,23 +78,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 6 Mar 2026 at 12:45, Manos Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
->
-> M4/M5 Macs support SME2, and HVF exposes this functionality in its
-> public API.
->
-> Add support for it in QEMU.
->
-> This was tested by running an SME2 benchmark from Arm [0]. savevm and
-> loadvm during the benchmark's run were used to verify migration works.
->
-> [0]:
-> https://learn.arm.com/learning-paths/cross-platform/multiplying-matrices-with-sme2/1-get-started/
->
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Hi Eric,
 
-Thanks for the respin -- applied to target-arm.next.
+On 2026/3/3 18:47, Eric Auger wrote:
+> On 2/21/26 11:19 AM, Tao Tang wrote:
+>> Parse each PCI device's sec-sid property during SMMU device initialization
+>> and cache it in SMMUDevice::sec_sid. Support "non-secure" and "secure",
+>> default to non-secure when unspecified, and reject invalid values with an
+>> explicit error. Use sdev->sec_sid in smmuv3_translate() to select the
+>> register bank instead of hardcoding the non-secure context.
+>>
+>> Keep sec-sid parsing in smmu-common, and add a SMMUv3-specific validation
+>> hook to enforce architectural constraints: fail fast when sec-sid=secure
+>> while SMMU_S_IDR1.SECURE_IMPL is 0 or secure AS is not available.
+>>
+>> Typically, SEC_SID is a system-defined attribute (e.g. sideband or tied-off)
+>> rather than something a PCIe endpoint can freely toggle in pre-RME scenario.
+>> So this PCI sec-sid property is used as a static platform/testing knob to
+>> drive the SMMU bank selection.
+>>
+>> For future RME-DA + TDISP, this will need to become dynamic: the effective
+>> state for PCIe requests is derived from PCIe IDE/TDISP T/XT
+>> (e.g. SEC_SID = (XT || T) ? Realm : Non-secure), so we'll switch from a
+>> static property to a runtime per-device state update when that plumbing
+>> is added.
+> When a translation is triggered, address_space_translate_iommu passes attrs.
+> MemTxAttrs.secure bit should tell you whether the translation is
+> requested in secure mode.
+> Shouldn't we pass that information the smmuv3 translate function()?
+>
+> In address_space_translate_iommu I see:
+> if (imrc->attrs_to_index) {
+>     iommu_idx = imrc->attrs_to_index(iommu_mr, attrs);
+> }
+>
+> iotlb = imrc->translate(iommu_mr, addr, is_write ?
+>                            IOMMU_WO : IOMMU_RO, iommu_idx);
 
--- PMM
+
+Thanks for pointing this out.
+
+I agree that per-transaction request intent should eventually come from 
+MemTxAttrs or attrs_to_index().
+
+However, the current producer side is not yet in a state where 
+transaction attrs alone can replace stream-level security wiring: many 
+PCI DMA paths still use MEMTXATTRS_UNSPECIFIED, and space cannot be 
+consumed safely without an explicit validity signal. For example, an 
+incorrect zero-initialized or otherwise unspecified .space value cannot 
+be treated as authoritative by itself as Pierrick mentioned in this thread:
+
+https://lore.kernel.org/qemu-devel/dbc4d33e-3477-4f39-a745-4fdc0866fc08@linaro.org/
+
+In the current codebase, this can easily blur the distinction between 
+“explicitly Secure” and “not specified at all”, especially for legacy or 
+non-Arm-aware producers. So I think there are really two separate 
+concerns here:
+
+1. the per-transaction intent (which should indeed come from MemTxAttrs 
+/ attrs_to_index()); and
+2. the stream-level capability / wiring, i.e. whether this SID is 
+allowed to reach the Secure programming interface in the first place.
+
+My concern with the current patch is not that attrs-based routing is the 
+wrong long-term direction, but that today transaction attrs are not yet 
+propagated consistently enough to replace a stream-level model entirely.
+
+So for now, I think a static sec-sid property is still useful as a 
+platform knob, until producer-side propagation becomes reliable enough. 
+Once that is in place, I agree that the bank selection should ultimately 
+be driven through the standard per-transaction attrs path. How do you 
+think about it?
+
+
+Best regards,
+
+Tao
+
 

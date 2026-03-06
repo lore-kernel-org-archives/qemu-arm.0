@@ -4,73 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69C4BF513EE
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 03:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5382FF513F4
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 04:18:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyM77-0004KT-K9; Thu, 05 Mar 2026 22:44:33 -0500
+	id 1vyMdY-0005f6-EP; Thu, 05 Mar 2026 23:18:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1vyM75-0004Je-KY; Thu, 05 Mar 2026 22:44:31 -0500
-Received: from mgamail.intel.com ([192.198.163.8])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vyMdW-0005eM-Ve
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:18:02 -0500
+Received: from p-west2-cluster1-host6-snip4-10.eps.apple.com ([57.103.68.63]
+ helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1vyM73-00065y-FP; Thu, 05 Mar 2026 22:44:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1772768669; x=1804304669;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=0CFY7/ec9WolJ0TC6427evSbm7/oQkZWjLHaiUI4x3g=;
- b=RmfKrr6UzQLzQ9zrt1Cs0lcR9ZGvYbp45+4sTqWRuiCi73wCvI+kVGQs
- VoC4VqeRV/UG6snAu/T0iZQmUbeVPYT2HbupKEiK2aN9KAlH8o7jP6iec
- 0oUVLmi6ZPuv9OgoewbA1qjgNOYUaJN8EMlB/jMr+qKtDgCNskeJ+hbWO
- m4Gy8WdpPMCVjDeQzp+fA4hnMFUWLDXERkk/dv1N9hU8ZRBYOCsZ5yKSk
- oa6el24jqh2cgg5cpowNan8xPmgnL+4QyDTAbbs4xWBG4fhAgpbLzmN89
- x9fX/x0X4YfmRIdzPJ+V2pfrl5Y4qQK6A+xkux4PBdYxqtO146F2qsPWl w==;
-X-CSE-ConnectionGUID: /v/M7AKWTUS4I9LEG7e8Xw==
-X-CSE-MsgGUID: Dub2oX9FTdKZScirWpDb3Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11720"; a="91448251"
-X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="91448251"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2026 19:44:26 -0800
-X-CSE-ConnectionGUID: 2grBRXiLS7SAPapLN3m1dw==
-X-CSE-MsgGUID: s+pNRSstTAqp0bzNGsx85Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="215613311"
-Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.230.229])
- by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2026 19:44:23 -0800
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vyMdV-0002RI-2z
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:18:02 -0500
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPS id
+ 33F121800110; Fri,  6 Mar 2026 04:17:58 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772770679; x=1775362679;
+ bh=uXYQoqD+b6enx0yN1GfreUu+eHC54GkioqxlyRGkbEw=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=SiT1xRZto2vZUzpWartqU65QpFfJxT5BGIPKaAWs9jsmE1u4wEk5BCisR5LeQJHO5yBqyk5C9trV52KqqbbqgycfAVXBktCD1DKuqC2GWIxgJ9fjF0d8pkM6t4B747ERWhWKBczB3+6HWnO+1o9DUSHCNR1WZM2X+iFfEfeomHV5v2sdrW/b3L8YFtG76wNptyq0TNMr2JRVUp5WH5aKSqmfvSUNAm3DL+tQ+uyPSbuzkfwdtDy6wqyjth9iupdBBJID5R1q8StbHKjJr0L0SJx8Gdxqhfj+AaN747lAJZvTGCfpdmJQqL6i656ZA8VVxhy+Dik2qx5irh1UJzJNvA==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.152.38])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPSA id
+ 6A845180011D; Fri,  6 Mar 2026 04:17:55 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
-Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
- jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
- skolothumtho@nvidia.com, joao.m.martins@oracle.com,
- clement.mathieu--drif@eviden.com, kevin.tian@intel.com, yi.l.liu@intel.com,
- xudong.hao@intel.com, Zhenzhong Duan <zhenzhong.duan@intel.com>,
- qemu-arm@nongnu.org
-Subject: [PATCH v1 02/13] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-Date: Thu,  5 Mar 2026 22:43:56 -0500
-Message-ID: <20260306034409.184873-3-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260306034409.184873-1-zhenzhong.duan@intel.com>
-References: <20260306034409.184873-1-zhenzhong.duan@intel.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v12 02/15] hvf/arm: expose FEAT_SME2 to guest if available
+Date: Fri,  6 Mar 2026 05:17:33 +0100
+Message-ID: <20260306041747.54554-3-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260306041747.54554-1-mohamed@unpredictable.fr>
+References: <20260306041747.54554-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.8;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Authority-Info-Out: v=2.4 cv=ddGNHHXe c=1 sm=1 tr=0 ts=69aa5577
+ cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=KKAkSRfTAAAA:8 a=oZ2wCSY6f7DP8ugrgSYA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: GAzMWzeGWqvkW9JDSWtg-tuBkkezmc_D
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDAzOCBTYWx0ZWRfXzNhKCuBUGid7
+ GfPF9lMo0IqRpjCDfI0IeZxi/1frdU3HEP1MTH1JVEgGkZ55IeEL+xRg/Yfb6gd174FLlPGoG1a
+ DA+Ny5Npxg462fndsP8uy/OnBbVhI9iKI0oiOpEEP5prCNGGObofM+fjPjV4IoyWjPOw5vgJvbI
+ K3+ejR3JaE6AEY6tkZAGadYXeQ7WMXqQf2XExgGOFH0PacOk8FRG4OFQMz6ZJPeX2Z26QQ377Pu
+ 1ntVeUcJfaCeP1wOS93YpbE7W4IXpfbJNSYTFMGakn/N6j9iBXkW3Xys+A8iVdo+lp++AVrqVUJ
+ 7nMwMSOhETc7KYdRPgD0/bLfOVRWlnfNGAExT2Cf5a+dOM6g3CiRgjT7dbK9Wc=
+X-Proofpoint-ORIG-GUID: GAzMWzeGWqvkW9JDSWtg-tuBkkezmc_D
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-06_01,2026-03-04_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ malwarescore=0 phishscore=0 lowpriorityscore=0 mlxlogscore=999 clxscore=1030
+ suspectscore=0 bulkscore=0 spamscore=0 mlxscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603060038
+X-JNJ: AAAAAAABuAMaIt2nMQp6a4qzWaOyWVqC0OvpoLua3nErH4VUQuIzHu03OrAceKfkoke9NfiKStZymOQqpliTV1VjPBNndTJzt/qjIMzh05mPYCSXgZDAgjqXNrajmx5Y6zl8I5unSjXCYo4Gr4hIFpyZ1vZ5432Hno5RrGiIATD51MIfT1K77PcxyjeEc9TsA+bxedZroCncpTK1rIRv9k4+FJXK0k+jC4hCxCaQNmMlsElKMhH4f/ePct03Gj6Zlm7Z/F6mCDSIg5DDI2p7yvpz0iFjKoSKiTeaCWFBYzDgoLvD0CFVHEKRRZKqG2lIKzwGPAjFLHELvX1hAHj9xl9wPGF0k/iXPRsIw8sQWqaBG4yobw9roKE82f56XwiY5tTIbV/otlIUluE0CDplFJWH1tKJD9kIdnVQKzPvrLOdX0EyD3mwR5XrB5cXsV8JYKYZWKqSCPfjhYudO/aE+lGfSS1UCx5/putiTGCYY19XrjTzi6AgPDZsy1BK3oZSpCo9jSR1E2Xvx/Bg9fesSHnYoTMARIfQLrCgc5aPOO0CIZtEUl2xQ98KYlgIgb0tpz1LZNRXUyq7WH6+iIKsgbVWUEgIapccxgJz2tir+8SUknwCGMbYb8j5AP6RjGk42cVQvaXzQkQ2LSViODLUeFyK8bk0/45itrJcUz9/TDeNNLgVZxMXVVof0Hw5UR/t23krBE10eKjWnc31vtj9nHJGDNAJXeyJlc1sCDlflLlkffQX6cLtHSRryXqkwOiVpfFDyyvPruMOPhV5Q1D3i/W4
+Received-SPF: pass client-ip=57.103.68.63;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Spam_score_int: -12
+X-Spam_score: -1.3
+X-Spam_bar: -
+X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,207 +97,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Same for the two wrappers and their call sites.
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Starting from M4 cores and MacOS 15.2 SDK, HVF can virtualise FEAT_SME2.
+
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20260303-sme2-hvf-v6-2-b473702d8287@linaro.org>
 ---
- include/system/iommufd.h    | 16 +++++++++++-----
- backends/iommufd.c          |  9 +++++----
- hw/arm/smmuv3-accel.c       | 12 ++++++++----
- hw/i386/intel_iommu_accel.c |  8 +++++---
- hw/vfio/iommufd.c           | 10 +++++-----
- 5 files changed, 34 insertions(+), 21 deletions(-)
+ target/arm/hvf/hvf.c | 18 +++++-------------
+ 1 file changed, 5 insertions(+), 13 deletions(-)
 
-diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-index 80d72469a9..80c8423654 100644
---- a/include/system/iommufd.h
-+++ b/include/system/iommufd.h
-@@ -124,14 +124,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @idev: host IOMMU device backed by IOMMUFD backend.
-      *
-+     * @pasid: pasid of host IOMMU device.
-+     *
-      * @hwpt_id: ID of IOMMUFD hardware page table.
-      *
-      * @errp: pass an Error out when attachment fails.
-      *
-      * Returns: true on success, false on failure.
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 3d194680cc..c9787b3ea1 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -315,6 +315,7 @@ typedef struct ARMHostCPUFeatures {
+     uint64_t features;
+     uint64_t midr;
+     uint32_t reset_sctlr;
++    uint32_t sme_vq_supported;
+     const char *dtb_compatible;
+ } ARMHostCPUFeatures;
+ 
+@@ -1121,19 +1122,6 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
+ 
+-    /*
+-     * Disable SME, which is not properly handled by QEMU hvf yet.
+-     * To allow this through we would need to:
+-     * - make sure that the SME state is correctly handled in the
+-     *   get_registers/put_registers functions
+-     * - get the SME-specific CPU properties to work with accelerators
+-     *   other than TCG
+-     * - fix any assumptions we made that SME implies SVE (since
+-     *   on the M4 there is SME but not SVE)
+-     */
+-    SET_IDREG(&host_isar, ID_AA64PFR1,
+-              GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
+-
+     ahcf->isar = host_isar;
+ 
+     /*
+@@ -1148,6 +1136,8 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
       */
--    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t hwpt_id,
--                        Error **errp);
-+    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t pasid,
-+                        uint32_t hwpt_id, Error **errp);
-     /**
-      * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
-      * VFIO and VDPA device can have different implementation.
-@@ -140,15 +142,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @idev: host IOMMU device backed by IOMMUFD backend.
-      *
-+     * @pasid: pasid of host IOMMU device.
-+     *
-      * @errp: pass an Error out when attachment fails.
-      *
-      * Returns: true on success, false on failure.
-      */
--    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, Error **errp);
-+    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *idev, uint32_t pasid,
-+                        Error **errp);
- };
+     ahcf->reset_sctlr |= 0x00800000;
  
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
--                                           uint32_t hwpt_id, Error **errp);
--bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
-+                                           uint32_t pasid, uint32_t hwpt_id,
-                                            Error **errp);
-+bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
-+                                           uint32_t pasid, Error **errp);
- #endif
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 13822df82f..153edf4f79 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -505,23 +505,24 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
- }
- 
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
--                                           uint32_t hwpt_id, Error **errp)
-+                                           uint32_t pasid, uint32_t hwpt_id,
-+                                           Error **errp)
- {
-     HostIOMMUDeviceIOMMUFDClass *idevc =
-         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(idev);
- 
-     g_assert(idevc->attach_hwpt);
--    return idevc->attach_hwpt(idev, hwpt_id, errp);
-+    return idevc->attach_hwpt(idev, pasid, hwpt_id, errp);
- }
- 
- bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
--                                           Error **errp)
-+                                           uint32_t pasid, Error **errp)
- {
-     HostIOMMUDeviceIOMMUFDClass *idevc =
-         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(idev);
- 
-     g_assert(idevc->detach_hwpt);
--    return idevc->detach_hwpt(idev, errp);
-+    return idevc->detach_hwpt(idev, pasid, errp);
- }
- 
- static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index f5cd4df336..6b04344959 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -294,7 +294,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
++    ahcf->sme_vq_supported = hvf_arm_sme2_supported() ? hvf_arm_sme2_get_svl() : 0;
++
+     /* Make sure we don't advertise AArch32 support for EL0/EL1 */
+     if ((GET_IDREG(&host_isar, ID_AA64PFR0) & 0xff) != 0x11) {
          return false;
-     }
- 
--    if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         if (s1_hwpt) {
-             iommufd_backend_free_id(idev->iommufd, s1_hwpt->hwpt_id);
-             g_free(s1_hwpt);
-@@ -436,7 +437,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
- 
-     /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
--    if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         goto free_bypass_hwpt;
-     }
-     accel->viommu = viommu;
-@@ -524,7 +526,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
-     idev = accel_dev->idev;
-     accel = accel_dev->s_accel;
-     /* Re-attach the default s2 hwpt id */
--    if (!host_iommu_device_iommufd_attach_hwpt(idev, idev->hwpt_id, NULL)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID,
-+                                               idev->hwpt_id, NULL)) {
-         error_report("Unable to attach the default HW pagetable: idev devid "
-                      "0x%x", idev->devid);
-     }
-@@ -720,7 +723,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
- 
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
-     QLIST_FOREACH(accel_dev, &accel->device_list, next) {
--        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev, hwpt_id,
-+        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
-+                                                   IOMMU_NO_PASID, hwpt_id,
-                                                    &local_err)) {
-             error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
-                               "idev devid %u", hwpt_id, accel_dev->idev->devid);
-diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
-index 67d54849f2..45c08c8f6f 100644
---- a/hw/i386/intel_iommu_accel.c
-+++ b/hw/i386/intel_iommu_accel.c
-@@ -121,7 +121,8 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
-         }
-     }
- 
--    ret = host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp);
-+    ret = host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID, hwpt_id,
-+                                                errp);
-     trace_vtd_device_attach_hwpt(idev->devid, vtd_as->pasid, hwpt_id, ret);
-     if (ret) {
-         /* Destroy old fs_hwpt if it's a replacement */
-@@ -145,7 +146,7 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
-     bool ret;
- 
-     if (s->dmar_enabled && s->root_scalable) {
--        ret = host_iommu_device_iommufd_detach_hwpt(idev, errp);
-+        ret = host_iommu_device_iommufd_detach_hwpt(idev, IOMMU_NO_PASID, errp);
-         trace_vtd_device_detach_hwpt(idev->devid, pasid, ret);
-     } else {
-         /*
-@@ -153,7 +154,8 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
-          * we fallback to the default HWPT which contains shadow page table.
-          * So guest DMA could still work.
-          */
--        ret = host_iommu_device_iommufd_attach_hwpt(idev, idev->hwpt_id, errp);
-+        ret = host_iommu_device_iommufd_attach_hwpt(idev, IOMMU_NO_PASID,
-+                                                    idev->hwpt_id, errp);
-         trace_vtd_device_reattach_def_hwpt(idev->devid, pasid, idev->hwpt_id,
-                                            ret);
-     }
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index b4c5e81b1d..005f97fe25 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -924,21 +924,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
- 
- static bool
- host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
--                                           uint32_t hwpt_id, Error **errp)
-+                                           uint32_t pasid, uint32_t hwpt_id,
-+                                           Error **errp)
- {
-     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(idev)->agent;
- 
--    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
--                                                hwpt_id, errp);
-+    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
+@@ -1199,6 +1189,7 @@ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     cpu->env.features = arm_host_cpu_features.features;
+     cpu->midr = arm_host_cpu_features.midr;
+     cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
++    cpu->sme_vq.supported = arm_host_cpu_features.sme_vq_supported;
  }
  
- static bool
- host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
--                                           Error **errp)
-+                                           uint32_t pasid, Error **errp)
- {
-     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(idev)->agent;
+ void hvf_arch_vcpu_destroy(CPUState *cpu)
+@@ -1339,6 +1330,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+                               arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
+     assert_hvf_ok(ret);
  
--    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
-+    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
++    aarch64_add_sme_properties(OBJECT(cpu));
+     return 0;
  }
  
- static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
 -- 
-2.47.3
+2.50.1 (Apple Git-155)
 
 

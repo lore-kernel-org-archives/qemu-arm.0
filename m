@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 978A2F513F5
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 04:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22942F513FB
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 04:24:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyMdo-0005n1-2E; Thu, 05 Mar 2026 23:18:20 -0500
+	id 1vyMjT-0004c2-M5; Thu, 05 Mar 2026 23:24:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyMdm-0005m0-Cf
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:18:18 -0500
-Received: from p-west2-cluster1-host3-snip4-10.eps.apple.com ([57.103.68.73]
- helo=outbound.mr.icloud.com)
+ id 1vyMjS-0004bO-6y
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:24:10 -0500
+Received: from p-west3-cluster1-host4-snip4-10.eps.apple.com ([57.103.73.171]
+ helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyMdk-0002Uc-TZ
- for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:18:18 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPS id
- F1545180013D; Fri,  6 Mar 2026 04:18:14 +0000 (UTC)
+ id 1vyMjQ-00032G-KS
+ for qemu-arm@nongnu.org; Thu, 05 Mar 2026 23:24:09 -0500
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-3 (Postfix) with ESMTPS id
+ 72DF418000BE; Fri,  6 Mar 2026 04:24:05 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772770696; x=1775362696;
- bh=qAVaZtJuZJH9uX/VVXHmkmsjUQo1XpfNBC4AOqSB4uA=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=T45mGqcnBhLIEkjY28SLuZC63ECSlCpLKSWnQZqUybg64w3i6oF6bbuHoRnUl86YfRY1Kmlz5ilMu0m9qTxeItFnadLoOe1qz+tKHUXWiTkrT5vk+vBy8SGurKs3pDRxplkMTvVytrReGp6obOb6tfOSrGQrwQldLz7vAH57kY9e76AstEqMO9U7JBe1u52jJIbNirgMRW1AcpZ5BjOJO7wpMrdWvjeq+qb1r9W3q2g/7jiwWOjK7ucO028dipXyTt/PLVntTot5qgJfab3vmxovy3yJRCK8mv/wyRprIbyDUvNVsEs4itGpLCkiJdyIX5jof86CaG47CMwyZejCgw==
+ s=sig1; t=1772771047; x=1775363047;
+ bh=ocQMUgh+diLfoU7tFyCqk/f6sIS3JWrRRntzf1eKfYM=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=HHlildU/guKnTAcThDnRWMTXm6ij2af9dl0CoYPXbOh6qXbwaof1bxMPzjchozLImu5vcH5J8+q+Sec+iOKZSn4/L2n13UDdS2p/0C3YQVn0g/Vq1MxiGlf2Rq8mwxPx437fztwfl2hjkTiGeWdMUWIgAY1c24fsE3wwJ5lZEM7QX5865H18wjkiOS9uBpI+OEs/Fpn5WuAF0y8QUqlaJ3APgbbK840J4czcu9pjwE6hwS4hRzdsrrzAk0VcJnNtiditCNZ5EFQSlJx959WMkrw9wp/PDxbcgFbQ9rjXw1NGRPteYuAxYpXr9UExdiprLsld2l7CIPj5JG1gCVP9dA==
 mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPSA id
- A1309180014D; Fri,  6 Mar 2026 04:18:12 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-3 (Postfix) with ESMTPSA id
+ 057F5180019D; Fri,  6 Mar 2026 04:24:02 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH v11 00/12] HVF: Add support for platform vGIC and nested
+ virtualisation
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
+In-Reply-To: <adbc2d78-bb8f-4ec8-a6de-29ac5617ebb0@linaro.org>
+Date: Fri, 6 Mar 2026 05:23:50 +0100
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
- Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v12 09/15] hvf: gate ARM_FEATURE_PMU register emulation behind
- not being at EL2
-Date: Fri,  6 Mar 2026 05:17:40 +0100
-Message-ID: <20260306041747.54554-10-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260306041747.54554-1-mohamed@unpredictable.fr>
-References: <20260306041747.54554-1-mohamed@unpredictable.fr>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDAzOCBTYWx0ZWRfXzYAsvIBViV2p
- 3edDTrvHXWWWfEoK2J3ddngvCxflUp0qkTGYzlZPy2OGbJmVxkIxHut7Um28JoIpB3U5G5EK8dp
- HV/fn5u067oY1NaeCa8uIDAw3rLMlGbNPpQX6AYSAoGg+q6qlxaIhiX8XtFTgEcqGX/selqfb9e
- 1n4QG5oMSPppunQ61C/w3x9Zx+1BfIZgmAKowpAqzcOp9YQnu71V9nWQ4lJyRaMWDINcyVRHJSp
- PjN41528uN78GGRA640VL9jnW8lBP/3qWgrg4Ds6jv062fhGu9cjPou1iBL5ZVSpxOgDKmhHS8K
- NK/Aav4z4l6vUdQaBhpj7jTBZhi2qOp8t8G08DV5vQZWQfjlAXoaB+Lsncf7uw=
-X-Proofpoint-ORIG-GUID: XmFEMIl-Gk2IVd60Ge6m6E29DkRAbzYT
-X-Authority-Info-Out: v=2.4 cv=QKtlhwLL c=1 sm=1 tr=0 ts=69aa5587
- cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=lOv7bB1OiAV5i3s2B4UA:9
- a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
+ qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <7D8111BD-283E-4142-84A5-E9ED86598A40@unpredictable.fr>
+References: <20260228220837.35275-1-mohamed@unpredictable.fr>
+ <0BFFD4B5-6B69-4F75-B329-5C429E65532C@unpredictable.fr>
+ <1a23f69f-fba4-4f7c-9679-d06ad65be1d0@linaro.org>
+ <adbc2d78-bb8f-4ec8-a6de-29ac5617ebb0@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Authority-Info-Out: v=2.4 cv=R9oO2NRX c=1 sm=1 tr=0 ts=69aa56e6
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=KKAkSRfTAAAA:8
+ a=lAH_Zx9sSwNqvdQjkb0A:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=QEXdDO2ut3YA:10
  a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: XmFEMIl-Gk2IVd60Ge6m6E29DkRAbzYT
+X-Proofpoint-GUID: C-b7FK0btf3KW0ER0mA1r3N-ikQVulVC
+X-Proofpoint-ORIG-GUID: C-b7FK0btf3KW0ER0mA1r3N-ikQVulVC
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDAzOSBTYWx0ZWRfXx/I0WM+YTTW3
+ LMYCO1lJE+HlWneCZLEFomwXxbeuTJgCCVd0n5LfV/ZD+x544YCf8PGWKNpShgKKKrY3H/T6K3y
+ UGAM30u77Ij7JeUZzUDaYWabdNcQeR0NR7e3vuaIWwH7Gu8J2b87ei1Y4bL3R4G4+lq0nDN0KG3
+ 4VqVz8xeUYyb5VMgKuLNG3aC5zsJV+2LiIa+PxGr7JzeTS/W1hqVjQHCyc3RTAJpMBnpgKaAzJ7
+ /1hSVxMHaYMgApeGkphwygGqJVFdlTj4IO8eMeYR+av3SYHmbq6u1wmsWaNmPNLvk5sr01KjKB/
+ 5pz42aLKYNPHS8fNwjawYVkfrG+oAzd/Ncp8gSydIox6hA2EE7XtCOqwbRfXss=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-06_01,2026-03-04_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 mlxlogscore=762 spamscore=0 lowpriorityscore=0 phishscore=0
- adultscore=0 malwarescore=0 mlxscore=0 clxscore=1030 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060038
-X-JNJ: AAAAAAABRuCLldnJI3IYoABCOQ7YeoO4YnFU9exxsQ0uhERpETNtqYk/uBc1XJI31X9AlfY7clGRTEA0MC+rY8sEkSvkv1WLnIEmYGqfHKrcP5pYuhwz8ysJVOgV9KTeCkS77F6yLktDJ0tPnVg1ObsG5X9Rehj0sZgz7lWwYLl53U0wheQdjtaamBCHGaexER6/4M/rCPkHh9CYkFSxfwHB/0TOJqp+hQSQUxKHR8EhKs8wcYUBiJLVwnoVt+zeVSkmkbeJ8tbynl+mkip/KvWekJyVyhTmxm9+WXCssmZ7B3zTMICimAgGLGBaPctCkIDl6FKT+jcYKkliThjGzN2a9vFMqI8mRZxlbxjJ0pDRtfE6TLlG1kvgtUOw2IvKpUXYi/Q37WpWOSA7+r4STPfSHys8oVj+be9fBKgzm/Nt3MOFv/dL+KdoTx4kBQ22NxeZHyqHckWfdNkXn8Tr+jZt4/BQnBHahdaR0RoFg0rFOafKkWirdWVBdKXWOem5atb62AMBl183SjOZoK69OO2UMdEfzb6+a8lpfVJoocr3evDJRcIbec5DXOvnL7W16hfC6ZZQr3BWCzlJaGT2DihwQQZIdzAZaaDDT+bmNbAzUNNTlMvEM/NsL8sC/cDv4UHD0Iw3Zm6Opm4ECr6HxsoOG0r72So0tEKV3Hx8uuZqUhlTssq/9vmaKICeMqAFcFgWaQrPCnnt8Q3rwu5QoIYXJTybEaTqo3afhAUKA5a7lDWowmnvJG8tmuvxhhi1Tw==
-Received-SPF: pass client-ip=57.103.68.73;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=828
+ clxscore=1030 adultscore=0 phishscore=0
+ lowpriorityscore=0 malwarescore=0
+ suspectscore=0 spamscore=0 mlxscore=0 bulkscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603060039
+X-JNJ: AAAAAAABMW82bw5IZJF3nl4kKBuakQTVmUybmHk2qI9txo1eTtkQaOvwaNNAwFpXFsZFyXGuyF/CEYFWttdMnPy3b82PzBU83BwVvUBbnkCYmxNgDJcwJeHPvTpuSNOqTWZq/0EKnSNDxLLRG5CjZU/CVFcm7O+rF7EgZytAu0gwpV99riNbYFnMVjwjPJ87mxK7B23gBOpeC7JbJOSU9PkqIbVMZoSUwYeLLgkD3vNcoHw4eptP++zXBSbO2lNHke1eXBYdjBDxVDcJso/l9dMS8CLNIW1xVsymgCu8tzzI/IftA59jsD9rRHHXSFHxj+H2ylP0VckAR+9HZrInDXd73hMUSbiU/hFhLKnfW9kHjyVI6y6UznbGNltb05IRVjowqwjijxGciKG1E5VsfBoGSe250dJJGgBvSNWM3acTu0ifoyAOKUmaSOkfiYGz51m5Um1t1uM9vknrph9VlZEEtzyEQZqyGBhcEtFkwbf0+loMtKUciWDHywe9MiSpOlm+KBrjU6tJ+ZR3CkAHmglUCiVkdo1wIEtKuZyUuBErxhqygZTIJU7cslevJgc/OGTgfZBA8+xeZQp4Egbrly1NEEZvyQbZg/5rHvxk9kARyYppAtNP3e0NM4XvS2/XRiFcd+MwYHMsuOhRzlkkSZcfZm1+Ws0qBGmSItVUffHzt8LxJTg5USolufdPE4GIdhmxoQ9CKRuqxf8FLMOzpiTQJW130kYlGo3wwOUrJw3BHbDE/CKQ5S9Q8B0f+hy/zmeUF1z5iXmW0MyRTiDzLI1rWD0=
+Received-SPF: pass client-ip=57.103.73.171;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -12
 X-Spam_score: -1.3
 X-Spam_bar: -
 X-Spam_report: (-1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -100,50 +103,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From Apple documentation:
 
-> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
-> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
->  hv_vcpu_exit_t object contains the information about this exception.
 
-> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
-> field of ID_AA64DFR0_EL1 register.
-> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
-> exceptions, which are sent to the guest.
-> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
-> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
+> On 5. Mar 2026, at 23:09, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
+> On 5/3/26 17:48, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On 1/3/26 02:34, Mohamed Mediouni wrote:
+>>>=20
+>>>> On 28. Feb 2026, at 23:08, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>>>=20
+>>>> Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and- =
+nested
+>>>> (tag for this submission: hvf-irqchip-and-nested-v11)
+>>>>=20
+>>>> This series adds supports for nested virtualisation when using HVF =
+on arm64 Macs.
+>>>>=20
+>>>> Reviews would be very welcome :-) It's maybe a bit unlikely that =
+this will make
+>>>> it to QEMU 11.0 I might as well try.
+>>>>=20
+>>>=20
+>>> The patches remaining for review:
+>>>=20
+>>> 1, 2, 3, 4, 5, 8, 10, 12
+>=20
+> Series fully reviewed! Hopefully it still applies on /master.
+>=20
+Hello,
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+It does apply on master but not together with Manos Pitsidianakis=E2=80=99=
+s SME2 support patches.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/hvf/hvf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Sent over a new revision with those patches at the start of the series =
+and then the nested virt patchset taking them into account.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 047b3601c9..da6b548880 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1567,7 +1567,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
- 
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCR_EL0:
-             *val = env->cp15.c9_pmcr;
-@@ -1828,7 +1828,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-                            SYSREG_OP2(reg),
-                            val);
- 
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCCNTR_EL0:
-             pmu_op_start(env);
--- 
-2.50.1 (Apple Git-155)
+The patch modified was "hvf: sync registers used at EL2" and a new patch =
+is added: "hvf: arm: SME2 availability fixes=E2=80=9D
 
 

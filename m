@@ -4,102 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0C30FCC056
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 18:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98E71FCC050
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 18:28:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyZnu-0001oP-Aq; Fri, 06 Mar 2026 13:21:38 -0500
+	id 1vyZtZ-0004Uz-TO; Fri, 06 Mar 2026 13:27:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyZnq-0001nW-G9
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 13:21:34 -0500
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1vyZtO-0004Tx-Gy
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 13:27:19 -0500
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyZno-0003cW-Cw
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 13:21:33 -0500
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-64c9707fc11so7182647d50.2
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 10:21:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772821290; cv=none;
+ id 1vyZtL-0004PW-D5
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 13:27:18 -0500
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-64c97997b0fso6837415d50.3
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 10:27:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772821634; cv=none;
  d=google.com; s=arc-20240605;
- b=X99mNnTebEqbvWNhgz5J/GQcdkVEEfQ2IzpPJeSlKFcu3X8cdJufHJZbUVPJsaJD4d
- VOxmWQYTkUh1t9xjUul87CjkcMAu0cvwIura7gHHGhhMudOdDL2jnS+v/rWPsRi1XUNK
- rkTdbNMIJM3Ojw91A3devKorLK+et2kfOnR7/7SDhK28cYVtzoq1LGTDoklqr8Eb0tP5
- R6nWNS2SZvHVMYdxqsP4gyzEPqD+i/9yPxfgZoiq2UsXMpbSIdtTjpCMv2E0rHPUdo9b
- 03aH5tYf3YVqAxJ40qfjFeBY4nWzx1Tsk9OSnwfWPtRk/R29LGZBx3BGnvT6XFOCFekW
- 2YUA==
+ b=XPro96smFaGL2lgJ+mN+G/A50rMDLsQUJ3nUrWZi5X60mO563FIP8TUUfKYzTvAoFm
+ 6RPXKQcHoKLn1e2Xw2J48jxg+mT+BhQpZ+/nye9EkZ+HB3kGgaFbTqE+OI9D2/WGCNGE
+ F8YA+GZQrMZZpBiHMqVejSLZw6NMiGstRW4Dgvev5l3Hpj/dMB15GkkWqvoAKMWSKRJy
+ sYJqLO6WLMmaN6Sl3DokUL4akhlPtY0LCy4bmroG3qShmQ7LhvNm9QrfM2MbcVjjrjRW
+ FGxwjHshELq7HYdEDGqUOE9hkMPQtZeYPG4LmoW2S/k/yECqGyhz0gHam2eEc5/zNepq
+ 75YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=v/sgonH7NBzkWVYQYkEUKAH5wS1cGADkJj/ukazuJPI=;
+ bh=vKznKg8kbE6VKmXiw/aLTPKUGyAueb2MWAi7kWLEtQw=;
  fh=tLP/gRpi7Iczn5ziGL7f2zBG1RdOSHMz6mExSpHcScY=;
- b=XcieV5tOcM6WWtH8PPKfGOzeaOz9gHIzCmWByW2yATxNdNT66c9YNtdvYai9tcX8K9
- fqSd/772KAJi1L/5AmRI/1m+s1yCc9+jhl43lorZ+Ps21q51oRrIekQke1hxz8lHlABx
- h5f4t7cn/PILG6e0Drg1I1v4+NAg5vEMcKBbgfSu0ZUi35K4E8/hB82aSLc9B6IfUvyc
- Rf0qil0qP79NOVZRQXn0AK4Gryvu7rdz5H1OpPude0ajwLZLOh3YsfJkuLwZ7E/rruRB
- yKdNcJ9LJBZMAkRjbl2/iQY6ij8iCoT8TIModmSBhLoPcZPKUHUqH436Q7VPK5HJR3bQ
- 2WOQ==; darn=nongnu.org
+ b=JOZ/VIMl2TqBEmCBRWttQTNDUPHhvXf9MDgf3OQIAnUgYDJmpBWt5tCvgbGHaPTRYY
+ XOPFykdRghxf+8uzjgvNIoRDT/zHF6VXJBr6E/WlSU8lr1DIcn+Lpqy8l2FTkcBKKg9N
+ 3iaFHZZ8vVrM2fpXZRXXnSoDWO82AEWgb315Ns/YZFz8ZLCjGDKPyMTrq5liTulRp5Xk
+ fIqjNIatD7OlvU5JJ7IfLir0aua4m0uMftpDTyOdu3FcQmmuOK1dthmkzqQzbkVg2XqV
+ h/wFjAmtVrCVt7QbbPVbNXh/jkU8HsstfHiEh4a3RsVEXDKaS6W1FXV4X64dDfC77tfB
+ Z1Yw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772821290; x=1773426090; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772821634; x=1773426434; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=v/sgonH7NBzkWVYQYkEUKAH5wS1cGADkJj/ukazuJPI=;
- b=yo+QcdWy5usRE2jOQaWSsusS6GHmNZNHg+J+we79skClQhN2aNarnR8L8gdGmjPsmc
- VBX4VjovLYHsqjZ1T8Iv9/iUs6+LtHjsM25Xd58UZn2Nl9F9yWeL8ur0hqnBe4LkpxH1
- vRJKyGVrDrLpeaQL7mRw0ofOUi3hZxSpE4JJjPPqUPtGn8UEw9phmZNyePh2GY0Ef0Gj
- K7ISbHujoFvJWHEqdTSmhIY9IIhQ1Jt42uK7ZZw99+PyJ1nfXfZn40AsjlaEXwn/O5dW
- oQh/ltBzHa76uEHwDjMoSY+gN9FVrLq1tcg9VlQiHn4tZlauiMa+6oaQ+uFXZkI9mroZ
- Cphw==
+ bh=vKznKg8kbE6VKmXiw/aLTPKUGyAueb2MWAi7kWLEtQw=;
+ b=XQZfkTQcRwhT3UKzS95CHpG6ghdHnkp7AHq4XsHHo6z112HzpJyigHTX9Rt7AiNTyo
+ jl+2mcbZ7I+2mSziNnnyafYlMxDJNfPCk4nUiSQ48dhD+RQdSk1BrU3L0oRak5GxgHmt
+ KBYBUmLJLmNJaJGrz4QbAi9I+inZYWiA+i2LiyGfgKo14zFnnZUVUvgGZSFrA4E65Tas
+ 6o61c+dvD41IbLJV2hayPe1WcGFGxANSQWAhSpMxeO5qqY0+29KuzDBizoZeLcAK80Po
+ i6YcAe544hCNWS1ojU54JyBNz/nfULP2orlV9pA6hAx9SC+jl0ivpyC27BNDlOkBhtpF
+ LPWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772821290; x=1773426090;
+ d=1e100.net; s=20230601; t=1772821634; x=1773426434;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=v/sgonH7NBzkWVYQYkEUKAH5wS1cGADkJj/ukazuJPI=;
- b=nvz4SIx01IpqoXV/uSVmyCV63Vp16LlAggA0MyS/eqagIY7rDAgZeVTaUheSR+PSAT
- 39097Vsa7/cIfJjPdyPWtOLDLzayICo0SK06bdvASWGe/jlq2bsgM46zpNX0JU8KN692
- SlkgTnADdsmNGgQFq//GHiAHJS6nIUjCBFksWLRjkuaUGs5SaL2uubKiB3AMA1ksysPJ
- NDF9wmaEOHq8kHQ0XVLssEpv9igfKoqXKNZT41mHf/yo9+x5n2FAm49ULDdUkJatfHup
- WZ8/hNuGqs7Wi0exkQQSeg62U2lD4ugMSGVU27ATuXDIks6+P+luae0jJU0Lug+z7tni
- L+8Q==
-X-Gm-Message-State: AOJu0Yy1o2HYHQPxx30lUw7b5oRo5XCWlBa5FgmgVKWrKxYJkXIJizBx
- cJuoPaxXx/NBAVV4Y7G5Kjd7XGw2lu+4yOphiEqabXZZzrG9SF0Rkhp2RAiUbSrdWwnANw7h2Vf
- KiUgGRIj39l36CEatpzmhA/ENm9QRs3PtDKJTwtymnw==
-X-Gm-Gg: ATEYQzyP7yYHpJ8GTuG90A49H/KXIHlAN2yvN8Q4SrckN+M4CXwYPwJwBdICc/Cj+jP
- cOwLoBXH4lKmdTcGb2MVrrPLTPjc3+01L2sMsrx/ww9v5QiDnVKcYPUk3XeA6aDryZgZ2FSjz41
- wKQOijGLi/r/Ze4YGUq1H6qpCYFnfiozrpK0nMjT1Z1qX6h8Un5slUyIZlLxcVwhLsM1RCSLwse
- rmMvCoqyaFjYc+c9sS5ZnptqIHrPRkV8oAmTESOPBx8WtH/ZfAq4Ash9nLRS/qp4CUgZ3J/eRYl
- W1HktMvx4B+wO9xFs9oOjoFYkWzxrFj0uR7eCNele7ycGVrAYnSWThD38NEOKpsjgnA=
-X-Received: by 2002:a53:ac90:0:b0:649:443f:ab2a with SMTP id
- 956f58d0204a3-64d141f5c5dmr2868867d50.37.1772821289470; Fri, 06 Mar 2026
- 10:21:29 -0800 (PST)
+ bh=vKznKg8kbE6VKmXiw/aLTPKUGyAueb2MWAi7kWLEtQw=;
+ b=n6KGxZlDlnIEPZoW4kOcrotTGe3sE0+uk4NX9KUUZ1q2zSSrlfEHXKT0JFs0pFV9il
+ 5FJP6F5r8okieVFCs5+/w6y9+14aXCD7+tAdGmns8T7zcsNTzkHi6OziK9wnMGaXVfwj
+ ZVDvg6oxPyUQLdnIlcHBAtDZOR7htnPsPmn7LEGjcD1MdMR/Onm6dqbSUmO/WvVbPngx
+ W399NdWKsyQaePu7PrX/D6p34KSZwd+FKzK5oxd5+0YRQ25fPvauNMduBuCvQRigwMt8
+ wP+z0DFRN1JO5g+pln8vkVhX5CzLriPZ6uYTWg+44rLnMezqgsYu86h4hIQRPjDNHwGT
+ C6CA==
+X-Gm-Message-State: AOJu0Yy7V0ZDXHKGKHsInaGyK1kE7ihuhdWEH8im6yoU4807Yg2fGlrO
+ 0KuvcSucwJI+L4k4US01XFENng60xT4oQSnEmSzDcBrz9ziocFmSFuCjtQIUOPF/q4WjBH1RIKz
+ 6xY8KKwxYgNO0BTt8X1nZZiiYl9mei9Vbi+wXR7OS7QW6k2ezp4mT5Yc=
+X-Gm-Gg: ATEYQzxjVHmWtGW/2TDMHfy9Gk6xwDdJxgSdqHv6Bgm72inZKiHAZ86uEjQWC5UDdFG
+ rSVg/U4IjoL6AubkQ55bRzkY3WzEjvrfiIp+NjO5SObkm0vmI2do6Td3zNO+dR3dBTULo7Bm9/X
+ qBaoM6KIaL1ZWZRwe0rMyCPAi5fjzm5oyEoy547S/9TomrbS+piuAoymEZFa/aj8e7yQjPR3sv8
+ 83CL/NOSggtFkdM2VC/KwcRITfJKyfQSdDjyPZqRqB4SLQ7TB88hLelJAfq0AcepT0gf4k9tBad
+ C7OL4DslOpUsxOreRV4HqtFM66UMD8nT5JxBz3EEMNcr7LXKw62ygWeF4gQqaN9AUHvuHmbUo2q
+ IVQ==
+X-Received: by 2002:a53:ee65:0:b0:64c:a63f:87a with SMTP id
+ 956f58d0204a3-64d14380ef5mr2295233d50.79.1772821633731; Fri, 06 Mar 2026
+ 10:27:13 -0800 (PST)
 MIME-Version: 1.0
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-20-peter.maydell@linaro.org>
- <20260306181008.00001850@huawei.com>
-In-Reply-To: <20260306181008.00001850@huawei.com>
+ <20260223170212.441276-16-peter.maydell@linaro.org>
+ <20260306173942.000008c8@huawei.com>
+In-Reply-To: <20260306173942.000008c8@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Mar 2026 18:21:18 +0000
-X-Gm-Features: AaiRm50UZlofQL7qaLtHlG9U5ba9ujl03MdIhD9s6PoTqk5BiE2zue5yM0BTBds
-Message-ID: <CAFEAcA_wJKO6nHnEJ3CjHZkt-1PwrVaWZbNGwy9ZarT477P-Ww@mail.gmail.com>
-Subject: Re: [PATCH 19/65] hw/intc/arm_gicv5: Implement IRS_MAP_L2_ISTR
+Date: Fri, 6 Mar 2026 18:27:00 +0000
+X-Gm-Features: AaiRm50fSEjeYjydGvMhaK5ACqlNoJO-h-h7DcbhZusj1LaYdFa1mVg7uB2dufI
+Message-ID: <CAFEAcA_zOCDyHrZV6+JmU4pw_T5TTv9W5sZTL+aO10Mzf2cFvQ@mail.gmail.com>
+Subject: Re: [PATCH 15/65] hw/intc/arm_gicv5: Implement IRS_IST_{BASER,
+ STATUSR, CFGR}
 To: Jonathan Cameron <jonathan.cameron@huawei.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,43 +117,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 6 Mar 2026 at 18:10, Jonathan Cameron
+On Fri, 6 Mar 2026 at 17:39, Jonathan Cameron
 <jonathan.cameron@huawei.com> wrote:
 >
-> On Mon, 23 Feb 2026 17:01:26 +0000
+> On Mon, 23 Feb 2026 17:01:22 +0000
 > Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> > The IRS register IRS_MAP_L2_ISTR is used by software to tell the IRS
-> > that it has updated the address in an L1 IST entry to point to an
-> > L2 IST. The sequence of events here is:
-> >  * software writes to L1_ISTE.L2_ADDR for some L1 ISTE which is
-> >    not valid (i.e. where L1_ISTE.VALID is 0); it leaves VALID at 0
-> >  * software writes to IRS_MAP_L2_ISTR with some INTID that is inside
-> >    the range for this L1 ISTE
-> >  * the IRS sets IRS_IST_STATUSR.IDLE to 0
-> >  * the IRS takes note of this information
-> >  * the IRS writes to the L1_ISTE to set VALID=1
-> >  * the IRS sets IRS_IST_STATUSR.IDLE to 1 to indicate that the
-> >    update is complete
+> > Implement the three registers that handle configuration of the
+> > interrupt status table for physical LPIs:
 > >
-> > For QEMU, we're strictly synchronous, so (as with IRS_IST_BASER
-> > updates) we don't need to model the IDLE transitions and can have
-> > IRS_IST_STATUSR always return IDLE=1.  We also don't currently cache
-> > anything for ISTE lookups, so we don't need to invalidate or update
-> > anything when software makes the L2 valid.
+> >  * IRS_IST_BASER holds the base address of the table, and
+> >    has the VALID bit that tells the IRS to start using the config
+> >  * IRS_IST_CFGR has all the other config data for the table
+> >  * IRS_IST_STATUSR has the IDLE bit that tells software when
+> >    updates to IRS_IST_BASER have taken effect
+> >
+> > Implement these registers.  Note that neither BASER nor CFGR can be
+> > written when VALID == 1, except to clear the VALID bit.
 > >
 > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> One trivial thing inline.
 >
+> One query inline but it'll probably become obvious later, so
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>
+> > diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+> > index 7db2c87ddc..2a49d58679 100644
+> > --- a/include/hw/intc/arm_gicv5_common.h
+> > +++ b/include/hw/intc/arm_gicv5_common.h
+> > @@ -62,6 +62,9 @@ struct GICv5Common {
+> >
+> >      MemoryRegion iomem[NUM_GICV5_DOMAINS];
+> >
+> > +    uint64_t irs_ist_baser[NUM_GICV5_DOMAINS];
+> > +    uint32_t irs_ist_cfgr[NUM_GICV5_DOMAINS];
+>
+> Feels like you are going to have a lot of these, why not an array of
+> structures?
 
-> I think other code is all one blank line between functions.  Guessing no
-> particular reason for 2 here?
+Six of them in total, at least in this series:
 
-No, no reason. This kind of thing usually creeps in during rebasing
-or shuffling around of pieces between patches and I don't always
-spot it.
+    uint64_t irs_ist_baser[NUM_GICV5_DOMAINS];
+    uint32_t irs_ist_cfgr[NUM_GICV5_DOMAINS];
+    uint32_t irs_spi_selr[NUM_GICV5_DOMAINS];
+    uint32_t irs_cr0[NUM_GICV5_DOMAINS];
+    uint32_t irs_cr1[NUM_GICV5_DOMAINS];
+    uint32_t irs_pe_selr[NUM_GICV5_DOMAINS];
 
-thanks
+I tend to implement banked registers as separate arrays
+because it's what I'm used to from how we've done the
+target/arm/cpu.h banked registers, and because
+ cs->irs_ist_baser[domain]
+is a bit shorter and more straightforward
+ cs->regs[domain].irs_ist_baser
+and because you generally don't want "the struct with all
+the regs for this domain" as a thing itself.
+
 -- PMM
 

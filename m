@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3213F01821
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 10:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DADFF01826
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 10:51:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vySbD-0002aH-2R; Fri, 06 Mar 2026 05:40:05 -0500
+	id 1vySm4-0005hF-4N; Fri, 06 Mar 2026 05:51:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vySb8-0002ZT-Gx; Fri, 06 Mar 2026 05:39:58 -0500
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vySb6-0006E4-07; Fri, 06 Mar 2026 05:39:58 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBnvdHvrqppu2m0AA--.49472S2;
- Fri, 06 Mar 2026 18:39:43 +0800 (CST)
-Received: from [10.31.91.115] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwC3DuztrqppV3QfAA--.39956S2;
- Fri, 06 Mar 2026 18:39:41 +0800 (CST)
-Message-ID: <57126277-be72-4c95-b4da-184b862bd2bc@phytium.com.cn>
-Date: Fri, 6 Mar 2026 18:39:40 +0800
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vySm2-0005gI-Hu
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 05:51:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vySm0-0008Cl-RN
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 05:51:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1772794270;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=/qg/sCSLNNFSekErTQIoLqHn/ybY7uWsDmjr8lRCats=;
+ b=bS+wdvaCOTDLGN85JdfWPLT/I4LaAcYCr4UXoN1+vqLF4s3HpguTedOYlhaWIlbv+C51iS
+ +nnYP3jm864Hl6Mg3CFoLn+quAIGEhczhs/Vt4b2ZMQ2lCO7CTa/NxcuXZMP55641KlrFh
+ hoJE079kLEYH4nUUGNwfIgbeknkiNx8=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-504-pQdHVAXvN0u2mr_SiMDmNA-1; Fri, 06 Mar 2026 05:51:08 -0500
+X-MC-Unique: pQdHVAXvN0u2mr_SiMDmNA-1
+X-Mimecast-MFC-AGG-ID: pQdHVAXvN0u2mr_SiMDmNA_1772794268
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4836abfc742so72060135e9.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 02:51:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772794267; x=1773399067;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/qg/sCSLNNFSekErTQIoLqHn/ybY7uWsDmjr8lRCats=;
+ b=dllocs/9Ip3GkGH2+tNn0p2lpNU9FXNg4aPLp6jcz8gf8jMx8z5lZ9lnIXn+pfiL4K
+ KdTdmAxkTbfnwffq5/nQe/+SB7Bs9k/EIedhd2tcGDmNt5/SMkIcd0Lhy44e/tUqSs3X
+ nKfo/ENXC/tKAUusvHOgsmfATSgHXpgzBI+0R7ynq/bTZF1bohT3rL5UHM3wwyExQYW+
+ 6rGPU4ZwB47Z5cjzps8K/E2BseNSIChFqsuxpfuZPL8llLRqt3YZqsJU1dXr9FHS9/9/
+ SZ1MV8w7nJ+/25kUrgSqd7TZiqnBmCYJXNBEvCTbjspBdnvSCBUMDBZebrxjQ8D03fbm
+ /fMQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUKQKNns6c8kIpO/Yk90Lpbnt15j3Y58EpQ+llug2BtkH+Gxfpzt/bjqOlAOXu4JBuJ3ROM9dNwHg==@nongnu.org
+X-Gm-Message-State: AOJu0YznBW4zzuLgrFH1OCB2LvZjA48828Yt3o/w5SNT05M65PTBmnFW
+ WQ2lZnv6Sc3evE4gFPxSjWOl+oA9FQ/L5yZa4VWCRVYaRMsoF+4aJ1c0UYLu2i3hhoGp8jKRsNC
+ XTAkpTwGkzB6ENX5j1v7xgG7kVv9EKAz2VrOyAOFOa0BPW0C0+e4sug==
+X-Gm-Gg: ATEYQzy8xWhrc8BYE5r0uCxFJ40cgAAea6sI6J955bg7vhlrz7cEXpyjjT+8gLkwKbb
+ 2tOOstNzjgkxrSeiuKFdzYZ7y8ypdRf9vSDvtKiHS+zqpwh+U7AOohiuhsyuUsxNfHjJL3f20F0
+ 8BclhjCE17Palb8+HBawVyqr9SCHJGMXHvOei8TqTQZPYKw3y6kCThdwLv6B+DC9Vve8P4ibxBz
+ kpR0tDW3cj5C4FFOxCRfWr7W1wQzCp9taKJRF7r5AKQFVZZ5dmGA+5Re4j/wTlJbvN2gTxxKd7N
+ zDYL5xKNMvLZEGi8vMK464VVuD+KhSSMWkCBT5Xkgnlv1dRAJWu8BIlSMH/YnYHpiCPC7yiFeas
+ w4Q0A6pmU09DYG1a7MVMJIvF9O6aA/ekUiqgRpqWp/mIdCH3QCZfEgdhVEs60JO3UpF8w
+X-Received: by 2002:a05:600c:4708:b0:471:1765:839c with SMTP id
+ 5b1f17b1804b1-485269587c8mr23574245e9.20.1772794267485; 
+ Fri, 06 Mar 2026 02:51:07 -0800 (PST)
+X-Received: by 2002:a05:600c:4708:b0:471:1765:839c with SMTP id
+ 5b1f17b1804b1-485269587c8mr23573775e9.20.1772794266894; 
+ Fri, 06 Mar 2026 02:51:06 -0800 (PST)
+Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
+ [2003:f6:af4a:4900:3d6:f567:39ca:55c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fb277e3sm98492625e9.10.2026.03.06.02.51.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Mar 2026 02:51:06 -0800 (PST)
+Date: Fri, 6 Mar 2026 11:51:05 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
+ philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v8 2/6] target/arm/machine: Take account cpreg mig
+ tolerances in case of mismatch
+In-Reply-To: <20260304102249.1963784-3-eric.auger@redhat.com>
+Message-ID: <5ddefbe2-3514-fda2-a933-e2df46b4db89@redhat.com>
+References: <20260304102249.1963784-1-eric.auger@redhat.com>
+ <20260304102249.1963784-3-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Tao Tang <tangtao1634@phytium.com.cn>
-Subject: Re: [RFC v4 14/31] hw/arm/smmu-common: Implement secure state
- handling in ptw
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
- <20260221101649.2993830-1-tangtao1634@phytium.com.cn>
- <0b346363-9450-4397-8e1b-cfd46b45ed9c@redhat.com>
-In-Reply-To: <0b346363-9450-4397-8e1b-cfd46b45ed9c@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAfwC3DuztrqppV3QfAA--.39956S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWmp8qEHpgAAsw
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3Jw4UKw4UAr1xWw1kAr17GFg_yoWxCFy8pr
- W8GFn0yrs3tFyIyws2qr4jv3W3J3ykKF4DGrZ7GFn3C3W5tr1kJr9FkrW5uFWDZF1rXa18
- Z34UKrs7uw4DJaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -3
-X-Spam_score: -0.4
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rxJT-qhCfkCv8GR2spAvuWsTeZnuHMSGGB-DZaxPeQQ_1772794268
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,188 +113,89 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
-
-On 2026/3/3 17:41, Eric Auger wrote:
-> Hi Tao,
+On Wed, 4 Mar 2026, Eric Auger wrote:
+> If there is a mismatch between the cpreg indexes found on both ends,
+> check whether a tolerance was registered for the given kvmidx. If any,
+> silence warning/errors.
 >
-> On 2/21/26 11:16 AM, Tao Tang wrote:
->> Enhance the page table walker to correctly handle secure and non-secure
->> memory accesses. This change introduces logic to select the appropriate
->> address space and enforce architectural security policies during walks.
->>
->> The page table walker now correctly processes Secure Stage 1
->> translations. Key changes include:
->>
->> - The get_pte function now uses the security context to fetch table
->> entries from either the Secure or Non-secure address space.
->>
->> - The stage 1 walker tracks the security state, respecting the NSCFG
->> and NSTable attributes. It correctly handles the hierarchical security
->> model: if a table descriptor in a secure walk has NSTable=1, all
->> subsequent lookups for that walk are forced into the Non-secure space.
->> This is a one-way transition, as specified by the architecture.
->>
->> - The final TLB entry is tagged with the correct output address space,
->> ensuring proper memory isolation.
->>
->> Note: We do not yet support secure stage 2 translations. So ns_as member
->> in SMMUTransCfg is used to cache non-secure AS instead of refactoring
->> smmu_ptw_64_s2 to pass SMMUState context.
->>
->> Signed-off-by: Tao Tang<tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmu-common.c | 50 ++++++++++++++++++++++++++++++++++++++++----
->>   hw/arm/smmuv3.c      |  1 +
->>   2 files changed, 47 insertions(+), 4 deletions(-)
->>
->> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->> index a732303b28b..84e71df6767 100644
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -406,15 +406,16 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
->>   /**
->>    * get_pte - Get the content of a page table entry located at
->>    * @base_addr[@index]
->> + * @as: AddressSpace to read from
-> while at it let's properly document all parameters in the doc comment.
-
-
-I'll doc attrs in V5.
-
->>    */
->>   static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
->> -                   SMMUPTWEventInfo *info)
->> +                   SMMUPTWEventInfo *info, AddressSpace *as, MemTxAttrs attrs)
->>   {
->>       int ret;
->>       dma_addr_t addr = baseaddr + index * sizeof(*pte);
->>   
->>       /* TODO: guarantee 64-bit single-copy atomicity */
->> -    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
->> +    ret = ldq_le_dma(as, addr, pte, attrs);
->>   
->>       if (ret != MEMTX_OK) {
->>           info->type = SMMU_PTW_ERR_WALK_EABT;
->> @@ -538,6 +539,9 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->>       SMMUStage stage = cfg->stage;
->>       SMMUTransTableInfo *tt = select_tt(cfg, iova);
->>       uint8_t level, granule_sz, inputsize, stride;
->> +    int nscfg, current_ns, new_nstable;
->> +    bool sid_is_ns = cfg->sec_sid == SMMU_SEC_SID_NS;
->> +    bool forced_ns = false;  /* Once true, NSTable is ignored */
->>   
->>       if (!tt || tt->disabled) {
->>           info->type = SMMU_PTW_ERR_TRANSLATION;
->> @@ -552,6 +556,8 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->>   
->>       baseaddr = extract64(tt->ttb, 0, cfg->oas);
->>       baseaddr &= ~indexmask;
->> +    nscfg = tt->nscfg;
->> +    forced_ns = sid_is_ns || nscfg;
-> do you really need this forced_ns
-> can't you simply set current_ns = sid_is_ns || nscfg
-> with first value of nscfg set to tt->nscfg and next level ones set to
-> aptable is !current_ns
-
-
-You're right. forced_ns could be simplified.
-
-
->>   
->>       while (level < VMSA_LEVELS) {
->>           uint64_t subpage_size = 1ULL << level_shift(level, granule_sz); @@ -560,8 +566,17 @@ static int 
->> smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg, uint64_t pte, gpa; 
->> dma_addr_t pte_addr = baseaddr + offset * sizeof(pte); uint8_t ap; + 
->> AddressSpace *pte_as; + MemTxAttrs pte_attrs; - if (get_pte(baseaddr, 
->> offset, &pte, info)) { + /* + * Start in NS for Non-secure streams or 
->> CD.NSCFGx == 1. + * Once walk is in NS, NSTable is ignored on 
->> subsequent levels. + */ + current_ns = forced_ns || nscfg; + pte_as = 
->> current_ns ? &bs->memory_as : &bs->secure_memory_as;
->> +        pte_attrs = current_ns ? MEMTXATTRS_UNSPECIFIED : cfg->txattrs;
->> +        if (get_pte(baseaddr, offset, &pte, info, pte_as, pte_attrs)) {
->>                   goto error;
->>           }
->>           trace_smmu_ptw_level(stage, level, iova, subpage_size,
->> @@ -586,6 +601,23 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->>                       goto error;
->>                   }
->>               }
->> +
->> +            /*
->> +             * NSTable can switch the walk to NS only while the current walk
->> +             * level is Secure. Once switched to NS, NSTable is ignored according
->> +             * to hierarchical control of Secure/Non-secure accesses:
->> +             * (IHI 0070G.b)13.4.1 Stage 1 page permissions and
->> +             * (DDI 0487H.a)D8.4.2 Control of Secure or Non-secure memory access
->> +             */
->> +            if (!forced_ns) {
->> +                new_nstable = PTE_NSTABLE(pte);
->> +                if (new_nstable) {
->> +                    forced_ns = true;
->> +                    nscfg = 1;
->> +                } else {
->> +                    nscfg = 0;
->> +                }
->> +            }
->>               level++;
->>               continue;
->>           } else if (is_page_pte(pte, level)) {
->> @@ -628,6 +660,13 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->>               goto error;
->>           }
->>   
->> +        if (current_ns) {
->> +            tlbe->sec_sid = SMMU_SEC_SID_NS;
->> +        } else {
->> +            tlbe->sec_sid = PTE_NS(pte) ? SMMU_SEC_SID_NS : SMMU_SEC_SID_S;
->> +        }
->> +        tlbe->entry.target_as = (tlbe->sec_sid == SMMU_SEC_SID_S)
->> +                                ? &bs->secure_memory_as : &bs->memory_as;
-> So I understand you need to set the target_as depending on sec_sid but
-> not sure why need to store the sec_sid in the tlbe?
-
-
-I will directly use a local sec_sid instead to generate target_as and 
-drop sec_sid in tlbe as the previous thread mentioned.
-
-
->>           tlbe->entry.translated_addr = gpa;
->>           tlbe->entry.iova = iova & ~mask;
->>           tlbe->entry.addr_mask = mask;
->> @@ -697,7 +736,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->>           dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
->>           uint8_t s2ap;
->>   
->> -        if (get_pte(baseaddr, offset, &pte, info)) {
->> +        if (get_pte(baseaddr, offset, &pte, info, cfg->ns_as,
->> +                    MEMTXATTRS_UNSPECIFIED)) {
->>                   goto error;
->>           }
->>           trace_smmu_ptw_level(stage, level, ipa, subpage_size,
->> @@ -750,6 +790,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->>               goto error_ipa;
->>           }
->>   
->> +        tlbe->sec_sid = SMMU_SEC_SID_NS;
->> +        tlbe->entry.target_as = cfg->ns_as;
-> Shouldn't you handle STE.NSCFG in case STE belongs to the secure stream
-> table (ns_sid=secure) and stage 1 is disabled?
+> Create dedicated helper functions that print the name of the culprit reg
+> and analyze whether a tolerance is set. According set the level of traces
+> and analyze whether the migration must eventually fail.
 >
-> Also shall we handle SMMU_IDR1.ATTR_PERMS_OVR?
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+> target/arm/machine.c    | 30 ++++++++++++++++++++----------
+> target/arm/trace-events |  2 ++
+> 2 files changed, 22 insertions(+), 10 deletions(-)
+>
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 476dad00ee7..13b8a0b2220 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -1065,24 +1065,34 @@ static void handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
+> {
+>     g_autofree gchar *name = print_register_name(kvmidx);
+>
+> -    warn_report("%s: %s "
+> -                "expected by the destination but not in the incoming stream: "
+> -                 "skip it", __func__, name);
+> +    if (!arm_cpu_cpreg_has_mig_tolerance(cpu, kvmidx,
+> +                                         0, 0, ToleranceNotOnBothEnds)) {
 
+I don't get this. You apply a different tolerance type than the one
+(potentially) registered. This check will only fail when there was no
+tolerance registered for this kvmidx. But this can be changed by someone
+registering a different type.
 
-I indeed ignored all Secure-related handling in stage-2, as I originally 
-planned to implement those parts in the upcoming S_IDR1.SEL2 feature series.
-
-
-But the senario you mentioned seems to unrelated to SEL2 feature afer I 
-rechecked the manual. So I'll implement it in V5 with handling 
-SMMU_IDR1.ATTR_PERMS_OVR.
-
-
-Best regards,
-
-Tao
+> +        warn_report("%s: %s "
+> +                    "expected by the destination but not in the incoming stream: "
+> +                     "skip it", __func__, name);
+> +    } else {
+> +        trace_tolerate_cpreg_missing_in_incoming_stream(name);
+> +    }
+> }
+>
+> /*
+> - * Handle the situation where @kvmidx is in the incoming stream
+> - * but not on destination. This currently fails the migration but
+> - * we plan to accomodate some exceptions, hence the boolean returned value.
+> + * Handle the situation where @kvmidx is in the incoming
+> + * stream but not on destination. This fails the migration if
+> + * no cpreg mig tolerance is set for this @kvmidx
+>  */
+> static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
+> {
+>     g_autofree gchar *name = print_register_name(kvmidx);
+> -    bool fail = true;
+> -
+> -    error_report("%s: %s in the incoming stream but unknown on the "
+> -                 "destination: fail migration", __func__, name);
+> +    bool fail = false;
+>
+> +    if (!arm_cpu_cpreg_has_mig_tolerance(cpu, kvmidx,
+> +                                        0, 0, ToleranceNotOnBothEnds)) {
+> +        error_report("%s: %s in the incoming stream but unknown on the "
+> +                     "destination: fail migration", __func__, name);
+> +        fail = true;
+> +    } else {
+> +        trace_tolerate_cpreg_only_in_incoming_stream(name);
+> +    }
+>     return fail;
+> }
+>
+> diff --git a/target/arm/trace-events b/target/arm/trace-events
+> index 2de0406f784..8502fb3265c 100644
+> --- a/target/arm/trace-events
+> +++ b/target/arm/trace-events
+> @@ -29,3 +29,5 @@ arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid
+>
+> # machine.c
+> cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
+> +tolerate_cpreg_missing_in_incoming_stream(char *name) "%s is missing in incoming stream but this is explicitly tolerated"
+> +tolerate_cpreg_only_in_incoming_stream(char *name) "%s is in incoming stream but not on destination but this is explicitly tolerated"
+> -- 
+> 2.53.0
+>
+>
 
 

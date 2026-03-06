@@ -4,81 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CE2BFCB61C
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:40:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61770FCB619
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:44:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXHr-000180-4Q; Fri, 06 Mar 2026 10:40:24 -0500
+	id 1vyXLy-00036e-4N; Fri, 06 Mar 2026 10:44:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyXHp-00013d-7i
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:40:21 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1vyXLk-00031i-Ek
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:44:25 -0500
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vyXHn-0000y2-H2
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:40:20 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-439aa2f8ebaso4101753f8f.2
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 07:40:19 -0800 (PST)
+ id 1vyXLh-0001Tz-Bb
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:44:24 -0500
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-64ca6595c8aso9152289d50.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 07:44:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772811860; cv=none;
+ d=google.com; s=arc-20240605;
+ b=KiMgsnUk4sabEZc8D/lvnA+cPo2mZ9wJGVJ5Q/LRCV0zGsA60GbmAIG3AeFjnOrdx8
+ OgeEOWnGTaLPFAEkRao8ERk53LyEQpgi1KgImOEaA1XAovrM/f+h7tl8023X6PLKIXD5
+ Iyoswa+0TxoWuAhRXEIFtv1b9MYMfJrLDFeRRe3eJGxyeVlDcaLB7nfJRr+k75O1Y4Xb
+ HGiBEvf0jhXW3zlIEwQPkOUbuoqtNiJRiCpN7a3iz14gtX8FYrp8Exu19xq6BMsbrHf2
+ 57BZyC6jaIIM6e9XzZaj1x0iaLrJexcl+yMdMxEXc2fJLpYMJkRO7AsjgRnQsx4wXDjw
+ ZrOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=pEgehalkeCNp10GuoaFl2X/abjVmlx4h7B5uiXqre5E=;
+ fh=P9JuysKvnNN0B/sfaEnmJ8aA6qfF5Q+iAl1zY8RlNVI=;
+ b=TG/bqOPkrxdDwBs6GFr/d9qkGqwS+pn82t8pkhrsO8GTaFZXW/g+I85Toh1p0O3HLP
+ 3rRD6qQmKkTO7wSxxJww+la7f/TbQ92hCuanaHaKZ1LPk6RJn01f6uWDzMqtWFZZLbMD
+ oDifkAxkw1iJ45ghVU5wvy2jbPxlCZZ4tSuVrtEIfjE5Sj1YrPV8/p9Fl2sTDg/rJK71
+ MwD4d0iQ2mGXPJqL5PpkidA9mzU+5aDZKhEAGmmHs1UplZ0+j+9l+x6+dAPzfcpXLokt
+ v8j7ZofyUDwHX94mlFXu/W1gubEw9aI45nBTasB657jQLNts9T34eSzt+NnCRE8jRI02
+ ZckA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772811618; x=1773416418; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=GdtUZgYJO/AkZ54kOEVmR9jlUu/MzOeYTvNR+pXLkow=;
- b=QiMPnfP84n11YEFWZ3qONNrtKjhqt7ksKbnu6SGRMhCr7i4mvEXcWEZB+Nc3Ay7gms
- uyWlONrudX/8BH9nfPd4EFcZKY1LlESeE8rCaF9p2G3LDdq06CoAKR1e0Cqt22xTclUA
- lnoV+rM6YxzwnwYq+dZwERa1ohHaSEEytKOmo4WkUWeCbnM5ihaHqLoqR4DTXKBiO76G
- kr3mDAzP2ckI4BRbhLks3bOudcecUJWcH7Gzf79miAeN0kEJAZ8OdbWd+ENCUbZRSYl0
- UUwwrheh/Vx5XCPxHE+xy36j/C5DhklhcLdE56JANTOY95wnFppAR+y8ycQOclhqV43d
- casA==
+ d=linaro.org; s=google; t=1772811860; x=1773416660; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=pEgehalkeCNp10GuoaFl2X/abjVmlx4h7B5uiXqre5E=;
+ b=ZnaOcQO+ggmQ/m3U0LuIxja1ll8+D2f2j/zP4o9tZfV3pJBsBf5caF/KWtwMXbwFFZ
+ 7QKmZBMOe1F/auOOonXwt93/ePT7oSNzPyu37bVQnidJxTkSdEpe8Am4hDbgYTyn7TtQ
+ yWnkFUn69JN3Q2tVb9EpyOiZtL6xZmgakY2KZJaGpvaPF2uhSJJLKBCJrBhPOVx+vrR/
+ pEpQrPvbQgqUlnnZPbpyMCQu8AEYrCEif7ZuOZt5uuXevPyrvdIsZ0rZhw83iOYj9W8R
+ yfCGbXT5zsRn3b/t96joy6BWWHzr1cfNU9Wxo6IOe54I0u+37KBES0tfsTvYprpnE6uV
+ GJIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772811618; x=1773416418;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1772811860; x=1773416660;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GdtUZgYJO/AkZ54kOEVmR9jlUu/MzOeYTvNR+pXLkow=;
- b=ww7yVh968w+ppHWsfBUAi7EkwTg1l2CJDSM4YBRL4Ext4s3xIeSssL7es9kTn+V81n
- G8poMZlLsHXVW39zjhO6i2F2zckcv0lQIz5HqWyIBsoqEelgoNhsyWmv2g0GRSLnO23+
- qp6Xfwn2Y9DprtmoQpwKaHB7WvbawjBVb2nqXoUevHQUUq/RdvdxwEtcdtte/eN8Oml3
- 7Uv3/9+uhfMzXRRfwarekw4IgFrErlHOv4xrdb5Vbj8IvjljqNDyC96/x8LkrPH8Mejr
- vlKoaaK8Sf6iOlP8D/6fJXW4Q5oZuowobTBo2jDSgFtNCeYSj+VDmTznyipw+ng4CEXx
- 6ToA==
-X-Gm-Message-State: AOJu0YxGtGu598Dj9MSnwcaL/b4liCYYPMTH3Xe7hesdxP3aPMhQ0lYr
- aLAdCbvLpYQQRI9/C3wsOVW8ILBl2VNbzSH8IPqB10qR87Y7OLXjemOMYZYYc290fLhPrJQY/Sw
- BFO6d
-X-Gm-Gg: ATEYQzxvFxvNhdy13rWasnlF1jAGUIF2Vn9SvhM3rzn2Dq+T6phssrka4QHz+PwZHor
- 6jgxzgQCnnRxLG3rJrE/cIRqQ5vOIr/9ifXeVgl0gwPvJ7dXpHUQI2nccbcRJ3Fo8SvlsfXqPQb
- qa5YaC31FFv32haDaqvcGFnO9gcGi/PrVyPu7kdKohslKW7uVNjzaqcA6A8MEW2S9hnad5u7CYy
- KBzrR7/SSIthNLyQUKyfW69to5Hme0lFyMRDHu2yuBKAXy7SbUJs27CNTU6Iszq4q+cpEb8YghW
- Fc9FIz4dHZK447o+j01M+6H0ZhWxs2OenCkPA0TrCUQv15iqFHKf5bOcmzrTOJCdlFDo7EJE49b
- rRVLoDUH5WpoZW84ByK/sWVxfhKNpIxddLQENfOv+sTscvbqgZVi8a7+/XrRCkhLvdU8E0cUcOv
- ddN0cs8+Z2jX3cZJlhmayYnJIJV5TZdkSMqxrqZkJs+Oox30oscL15VkD/ZM9jE73wOFcn9iP+h
- 9MsMnKdFbjI3PbeMTnyw3FfHy1gzjM=
-X-Received: by 2002:a05:600c:4ec9:b0:483:7783:5373 with SMTP id
- 5b1f17b1804b1-4852697a0d8mr39970575e9.23.1772811617839; 
- Fri, 06 Mar 2026 07:40:17 -0800 (PST)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4852470c258sm17921205e9.30.2026.03.06.07.40.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Mar 2026 07:40:17 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Jason Wang <jasowang@redhat.com>
-Subject: [PATCH] hw/net/npcm_gmac: Catch accesses off the end of the register
- array
-Date: Fri,  6 Mar 2026 15:40:16 +0000
-Message-ID: <20260306154016.2194091-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=pEgehalkeCNp10GuoaFl2X/abjVmlx4h7B5uiXqre5E=;
+ b=CrniyOvSegcaoaVrQ0dovcmosRJdkOzD5bRJz3tI+W2tTykIlJ/Uu7pVizauvCnExF
+ QyuHHaiBobho69HynQZwDOhNKraMKpE1aY8pYti0pU7lnE4Nacg4l8WoC3luFbjYkp4H
+ 3fZbS2CPM4hw6cLd58iK9Cngk0uU5Vfn1DGKhjA39zEjvqVMYynSSoqKSeqkD5RvzNqR
+ cqMXIjEGHmIwqKlzoVa50QFvN/PCGc7YbC0MfGYUWgjEnlnat6gF3JVZ2uvbnOaQXf61
+ NBSb4RBg+y7j9FozXtv8hS3erOi9zVisCcb1vV15ZEBgJ8lr7qs29azDChualik8pZCu
+ RCQw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUmgo/fz6xJ1BTSfIirlTXmr7hjDVRr7BETgteXKJpBC3UiXwEB9CI0qBryhzHW2mSmuWpLUhzivQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwLhuO9a3/UxoguzQGEZVevzAMu0LQMgQ9fb7Z4LC6k8zvcj6Qa
+ lA/uMjv42J3q7scFIVtB8zbXeBAUsyU5u2JOj5ZPJnH/9SU0S/BM6XVgN/8Dl0qICckiKbJlEkd
+ 3Ox7smpQqgG/v5t5z3lvCuP/5W/1iob980OX799cRkw==
+X-Gm-Gg: ATEYQzwajaiz/UquHVS3c0V74qTtlfxCpbQ0rSxuhiD4d9e/O5A+qBzeD4PMtf3qu3X
+ MjJBCo9AbzoFDO7wAF5m60EggmeFD9iLBbva7SwPwaXzG1r5bH0b6zkmmDpgWMCsEk2+bO1TnMj
+ PYDeh5tyjjBZTUC1fu2EOXlGnc2EbcdB+Qx/Snew1BegHJsVqFdDRuze2W19qEMx3Byk6B9TP+l
+ LHvmS3yTazG+hbIdKZ2Ya3Qlg8j3Qi5IPFUoR3CqY+HcAyP6VcYntNN/VGET9cEkyYye9fIaVzQ
+ TIc4EWUMH4Blby6Ja05mtrxNbeeu57K5qRMTg0jxhuECR3CASj1cg/1tXytujH0F2jSkTxcvTN4
+ a2w==
+X-Received: by 2002:a53:b602:0:b0:64c:9ec3:d71a with SMTP id
+ 956f58d0204a3-64d1429cb1bmr1608987d50.48.1772811860064; Fri, 06 Mar 2026
+ 07:44:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+References: <20260306130107.35359-1-mohamed@unpredictable.fr>
+ <CAFEAcA-e4GZB_TRG7Jm3O-RNJneUtk_WufiXNn6=UDHsgG4kdw@mail.gmail.com>
+In-Reply-To: <CAFEAcA-e4GZB_TRG7Jm3O-RNJneUtk_WufiXNn6=UDHsgG4kdw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Mar 2026 15:44:08 +0000
+X-Gm-Features: AaiRm52O3QsEtKOSRK7EBWX59_vg_qMWiqyyqakDBp4BtQoNNqFRBsOcbaRg_k0
+Message-ID: <CAFEAcA8gB-36c1TvJSwJ0MkVMy5z_dqKpVY7KTJ-cMV5rAX1_w@mail.gmail.com>
+Subject: Re: [PATCH v15 00/17] HVF: Add support for platform vGIC and nested
+ virtualisation
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,69 +123,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the npcm_gmac device, we create the iomem MemoryRegion with
-a size of 8KB, but NPCM_GMAC_NR_REGS is only 0x1060 / 4. This
-means there's a range of offsets that the guest can access
-that don't have gmac->regs[] entries. We weren't catching this,
-so the guest could get us to index off the end of the regs array.
+On Fri, 6 Mar 2026 at 14:58, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 6 Mar 2026 at 13:01, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+> >
+> > Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and-nested
+> > (tag for this submission: hvf-irqchip-and-nested-v15)
+> >
+> > This series adds supports for nested virtualisation when using HVF on arm64 Macs.
+> >
+> > Reviews would be very welcome :-) It's maybe a bit unlikely that this will make
+> > it to QEMU 11.0 I might as well try.
+> >
+> > The first two patches are from the SME enablement series and are present for the
+> > series to be buildable on its own.
+>
+>
+>
+> Applied to target-arm.next, thanks.
 
-Catch and log these invalid accesses.
+I'm afraid this failed to build in our gitlab CI job for macos:
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3316
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/net/npcm_gmac.c         | 14 ++++++++++++++
- include/hw/net/npcm_gmac.h |  3 ++-
- 2 files changed, 16 insertions(+), 1 deletion(-)
+https://gitlab.com/qemu-project/qemu/-/jobs/13388426185
 
-diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
-index 123fb92ca4..d9902d9ab5 100644
---- a/hw/net/npcm_gmac.c
-+++ b/hw/net/npcm_gmac.c
-@@ -700,6 +700,13 @@ static uint64_t npcm_gmac_read(void *opaque, hwaddr offset, unsigned size)
-     NPCMGMACState *gmac = opaque;
-     uint32_t v = 0;
- 
-+    if (offset >= NPCM_GMAC_REG_SIZE) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid register offset: 0x%04" HWADDR_PRIx"\n",
-+                      DEVICE(gmac)->canonical_path, offset);
-+        return v;
-+    }
-+
-     switch (offset) {
-     /* Write only registers */
-     case A_NPCM_DMA_XMT_POLL_DEMAND:
-@@ -724,6 +731,13 @@ static void npcm_gmac_write(void *opaque, hwaddr offset,
- 
-     trace_npcm_gmac_reg_write(DEVICE(gmac)->canonical_path, offset, v);
- 
-+    if (offset >= NPCM_GMAC_REG_SIZE) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: invalid register offset: 0x%04" HWADDR_PRIx"\n",
-+                      DEVICE(gmac)->canonical_path, offset);
-+        return;
-+    }
-+
-     switch (offset) {
-     /* Read only registers */
-     case A_NPCM_GMAC_VERSION:
-diff --git a/include/hw/net/npcm_gmac.h b/include/hw/net/npcm_gmac.h
-index d4fe49ada5..23b9841a80 100644
---- a/include/hw/net/npcm_gmac.h
-+++ b/include/hw/net/npcm_gmac.h
-@@ -24,7 +24,8 @@
- #include "hw/core/sysbus.h"
- #include "net/net.h"
- 
--#define NPCM_GMAC_NR_REGS (0x1060 / sizeof(uint32_t))
-+#define NPCM_GMAC_REG_SIZE 0x1060
-+#define NPCM_GMAC_NR_REGS (NPCM_GMAC_REG_SIZE / sizeof(uint32_t))
- 
- #define NPCM_GMAC_MAX_PHYS 32
- #define NPCM_GMAC_MAX_PHY_REGS 32
--- 
-2.43.0
+In file included from ../target/arm/hvf/hvf.c:489:
+../target/arm/hvf/sysreg.c.inc:174:21: error: 'HV_SYS_REG_CNTHCTL_EL2'
+is only available on macOS 15.0 or newer
+[-Werror,-Wunguarded-availability-new]
+174 | DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHCTL_EL2, 3, 4, 14, 1, 0)
+| ^
+/Applications/Xcode_16.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Hypervisor.framework/Headers/hv_vcpu_types.h:312:5:
+note: 'HV_SYS_REG_CNTHCTL_EL2' has been marked as being introduced in
+macOS 15.0 here, but the deployment target is macOS 14.0.0
+312 | HV_SYS_REG_CNTHCTL_EL2 API_AVAILABLE(macos(15.0))
+API_UNAVAILABLE(ios, tvos) = 0xe708,
+| ^
 
+and similarly for other registers.
+
+I'm going to drop the last 4 patches from the series, which I hope will
+fix the CI problems.
+
+-- PMM
 

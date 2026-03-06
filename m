@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EC4CFCB61E
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED86FCB61C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:23:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXs4-00086C-3K; Fri, 06 Mar 2026 11:17:48 -0500
+	id 1vyXs2-0007p8-Ft; Fri, 06 Mar 2026 11:17:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vyXrw-0007NS-1l
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:42 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1vyXrt-0007GB-C9
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:38 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vyXru-0007kd-9E
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:39 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48329eb96a7so62311875e9.3
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:17:36 -0800 (PST)
+ id 1vyXrq-0007jJ-DO
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:17:37 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-482f454be5bso96645175e9.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 08:17:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772813856; x=1773418656; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772813851; x=1773418651; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=rFrNo7xt4cWsD82/Y1vv1GAovu90HiLaptxTyNhWut8=;
- b=xjhH6QY9jrEXCaQHUNhsyHO4PWaffxYDeQagALEseE5Um7alA9OlYXrB64IWF6eBjM
- wr1MxQmaZNWElC6aeYowqPf+MWUdMPjGQPTpnOvqNoYU+IYjkXBSugnmti+7Q1op0rra
- C8R7PU84fqqGv+D/d9o7dr3yngwF5cBHOOVjpff9RFcr/7Ic7dTqq+Jqz3g8mua3ePJy
- nZN5vys9ZDULLTtX+lURP+IPZ4GG8Ipib6dK51Du8ipBeiyugYcxiFFnAfu38/XGNL89
- BV1Mj9LD1mG930onC+CVlUcTGQ+rJIFwIIyDpNXAcHJLtr9eH8ifIPuMrJXxD5SMp16j
- VcXg==
+ bh=a+UWl7QqCCvL307S47JaYkwj0UHFZYxrVcpTcdakFmY=;
+ b=hYSY4GgHplD2rUi4p6oIhwX9noQMTVryeSLPcdAELnGE3PxRrmaNZjVarw9/Un2m+u
+ 0qLrjV9ZM2e+URSVH9pwlhsLIvzRw2OYzKHuCmL2a8Gmtk1jU903EptP5qgsMS/XWLGB
+ 92OPPG9yUWo50syTQPI+W5nM33Ten00m2I+7hlvulvqKVto7gtCnfQzJHVJnL67hrYXu
+ p9sATANGR/3TxB8AKQ5LnCYGxF+YlEDwHEi7f6bdqiS8IDDkyy4vxiu9CBn1VUG+xEgH
+ qhN5XKv9ISGc4T+IeSelG16IAsQudVqoItDRQyBuT6M6VLZp5mmswJ7QXI1Ydvon5Dba
+ Js9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772813856; x=1773418656;
+ d=1e100.net; s=20230601; t=1772813851; x=1773418651;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=rFrNo7xt4cWsD82/Y1vv1GAovu90HiLaptxTyNhWut8=;
- b=vjES/PhKdk6WdUsAhQMqt5WZGBaWRGDyHJlz35DjlmDmWqEDPZSG6GvJ1JZ5rHZERi
- Gm6OlAS+skG5AP9FypxjpQrrzqXF7g1gDClsOWs0ZmV6zEL9ij5UnjVXAXPX7n9lKENX
- FFdfcKZv+GPeAJfTyUOoVJbR9maO+FMAj1i16Rhm/ttZjs9UGbOBVV28Yj2PiaRt5JAs
- EjIBsiVdtCpAxeE/BNjQOev5CrB9+FQCY5O/uFrSn4d4alISa+V3tIqyLYREodey0lLK
- gkoPz8yT/z2YyiGcCYbX36Wv2jBpXXSfxoOZPU/WNNj0unvD2uj0+FRvta831tOzdZuM
- jzMA==
+ bh=a+UWl7QqCCvL307S47JaYkwj0UHFZYxrVcpTcdakFmY=;
+ b=n7S12FXeCBapNv8Ln30jRx1LcZ+vFAG1lC5X7VQ1NNm+Qs+au2DuGtVObGgO09qjVl
+ mIKl99TduX4BFfKPOtdjh3RcXh42xC9QhC6NXPovZ4z+1biAoZyqQqPSLHf5iIKegBvj
+ YiJnrXN++eJDck9bjy4X1VhB8iU07yOIq9HqgEbweAmWTnehkSSn7tGQ9SY7SqiN6Fjf
+ r06bee+KUlrBqKf1+b5kh+7J3+xhGNnbU/CrPQ7/SJyJ7dKLzPqrCxLnwFFIC7U53VTU
+ dn/jg5e0SN8H3yiqIgdrE67HxLHo6eek+yislOAZBsZIBtxjy1rqhYrbDZx7aDew1Pqm
+ 0M4A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVp/A7v0K0zEsT2EgWSGUB2yaBkDwTGmO/xi4j9Xc7Fxse1nD2fiVGReinUFz0IfOWke22gM/Yc1g==@nongnu.org
-X-Gm-Message-State: AOJu0YyraoF0axPKhABNL6DzSDZx/KnKJo28lddnzK9VEm41nxc3WKNk
- VzKX5eRh5hwVoNq2y++BR1vbfjZltVgsR24tuzxt3hNhdJl9zhCwoKVCiag1VgleKio=
-X-Gm-Gg: ATEYQzwEO+A2SQdDaa4sIajssH6Iy33H72iTZuxaaAHhttF9Ac8bDxMFpgk44JbHvJ2
- Yf7savH2AAOVrsfbuZkzwofJqGbvKqGFOEtwWKzEU20822wzNWyZ0cd1fUjbC8ILOZz3JipOVD5
- //cnK+Qb9OrH7CQDk1LP6KK2ObMmfNcFxByJNW1KjrnxDwvfSaNnps9HixWqZZjET84KV7E6Upq
- +xpYT/uCqf3JEXy/+jpx8HimzVTHGEZGeInSKbLo1tKluank58NDQiBGJGsXDB68pFZvxLEdAqx
- XxZe+w8vRXXIbicc/+J9ngWikaJ6/iFuLrKarbjGIt4pvJbLFlnNGE84or7P2gIUYH7KKs9d185
- Mu8CmsScYceRBJmhYeGGSKuNzVn/UwxCsKM9mK/EUn4PH7azaAV3hn+OzDHD6FvEMKr3x2JRTTO
- KqaB1Imb8vW3bEBEPt2e+4QMQ=
-X-Received: by 2002:a05:600c:45c6:b0:480:3a71:92b2 with SMTP id
- 5b1f17b1804b1-48526979652mr41566045e9.26.1772813855827; 
- Fri, 06 Mar 2026 08:17:35 -0800 (PST)
+ AJvYcCW1lYGhG1MBFI2OxrGXfDomMu2rtBN9qjJbXpKqA4lkOQAxliU0LI0SFlDwY5H0GuGungAyxrZbYA==@nongnu.org
+X-Gm-Message-State: AOJu0YzjHO58PyeMT+349jmuRK0BzyrXVtIGkllAzIOmQXZX6hU660zz
+ sw3bm2+DrBItn8wmFKJ7uAaOIBLCg033rgIlsYxA/DAal6q6m2xdRimN6fvYnOiuvJM=
+X-Gm-Gg: ATEYQzx5fQJCFM53mcl2XcdcsQ/YpysQv4D04C/TmKXCFk7mjaOlwfzTAyMO1EpPZMD
+ clclJ5hzGR9bXHQHPUeb2EEWj5X2x/1MoVB3wU9abqdBc3DK8PLoavOdtNWuTkulBy+PQmeZf1J
+ AvD74ZeHh7kX/fHWoUznxSt1N9IPySVAEMiTZDtd2j5yet8wYqwFufftTatkfo6A7/v0h3LNJmq
+ Kmg0oWQUf8geGl+JnCi6CcFM4XNPzAFYbYSE7yYhEkVc9f8ZZ/mKFj4BEqH2pkrMoI43QeGSo3g
+ GPVV0vQDKakbdBYpaHI0nAq+ppzMltVShsAgE4i5wkXAyrD68JmL27cozjp6E27HQyVK4bchAye
+ /WHEPLF7+YDmaCuPe1Be4jwzX4aiUR19tMfxeLX9in8hyOTmxECPMOMcbpgcZYSB5BSVanKqNv1
+ aLSJZaGVUjGkeVZrGCvZZIYaI=
+X-Received: by 2002:a05:600c:a4f:b0:47e:e981:78b4 with SMTP id
+ 5b1f17b1804b1-4852674e8damr45041185e9.12.1772813851428; 
+ Fri, 06 Mar 2026 08:17:31 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fae00absm121465195e9.4.2026.03.06.08.17.31
+ 5b1f17b1804b1-48527686bcesm67253565e9.7.2026.03.06.08.17.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Mar 2026 08:17:33 -0800 (PST)
+ Fri, 06 Mar 2026 08:17:29 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6CB69689D5;
+ by draig.lan (Postfix) with ESMTP id 1132F689D1;
  Fri, 06 Mar 2026 16:17:29 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -78,24 +78,24 @@ Cc: Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Warner Losh <imp@bsdimp.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 6/7] tests/functional: add the ability to send keys
-Date: Fri,  6 Mar 2026 16:17:27 +0000
-Message-ID: <20260306161728.2657486-7-alex.bennee@linaro.org>
+Subject: [PATCH 2/7] tests/tcg: allow filtering of TCG tests
+Date: Fri,  6 Mar 2026 16:17:23 +0000
+Message-ID: <20260306161728.2657486-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260306161728.2657486-1-alex.bennee@linaro.org>
 References: <20260306161728.2657486-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,55 +111,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To navigate things like grub we need to send individual keys without
-trying to look for success messages.
+We have a lot of TCG tests now which can be fiddly if we just want to
+check one particular test type across the targets. Introduce
+TCG_TEST_FILTER to allow this:
+
+  make check-tcg TCG_TEST_FILTER=gdb
+
+to run all the gdb tests across the suites.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/qemu_test/__init__.py |  3 ++-
- tests/functional/qemu_test/cmd.py      | 15 +++++++++++++++
- 2 files changed, 17 insertions(+), 1 deletion(-)
+ tests/Makefile.include    |  8 +++++---
+ tests/tcg/Makefile.target | 12 +++++++++++-
+ 2 files changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
-index 03e5c73d39d..9ed8c6a4b53 100644
---- a/tests/functional/qemu_test/__init__.py
-+++ b/tests/functional/qemu_test/__init__.py
-@@ -10,7 +10,8 @@
- from .config import BUILD_DIR, dso_suffix
- from .cmd import is_readable_executable_file, \
-     interrupt_interactive_console_until_pattern, wait_for_console_pattern, \
--    exec_command, exec_command_and_wait_for_pattern, get_qemu_img, which
-+    exec_command, exec_command_and_wait_for_pattern, get_qemu_img, \
-+    which, send_key
- from .testcase import QemuBaseTest, QemuUserTest, QemuSystemTest
- from .linuxkernel import LinuxKernelTest
- from .decorators import skipIfMissingCommands, skipIfNotMachine, \
-diff --git a/tests/functional/qemu_test/cmd.py b/tests/functional/qemu_test/cmd.py
-index f544566245b..381e5162f02 100644
---- a/tests/functional/qemu_test/cmd.py
-+++ b/tests/functional/qemu_test/cmd.py
-@@ -142,6 +142,21 @@ def _console_interaction(test, success_message, failure_message,
+diff --git a/tests/Makefile.include b/tests/Makefile.include
+index 59b9a4b9220..f257288194d 100644
+--- a/tests/Makefile.include
++++ b/tests/Makefile.include
+@@ -16,9 +16,11 @@ check-help:
+ 	@echo " $(MAKE) check-tracetool               Run tracetool generator tests"
+ 	@echo " $(MAKE) check-block                   Run block tests"
+ ifneq ($(filter $(all-check-targets), check-softfloat),)
+-	@echo " $(MAKE) check-tcg                     Run TCG tests"
+ 	@echo " $(MAKE) check-softfloat               Run FPU emulation tests"
+-	@echo " $(MAKE) run-tcg-tests-TARGET-softmmu  Run TCG tests for a given target"
++	@echo " $(MAKE) check-tcg                     Run TCG tests"
++	@echo " $(MAKE) run-tcg-tests-TARGET          Run TCG tests for a given target"
++	@echo
++	@echo "The variable TCG_TEST_FILTER will select the subset of matching tests."
+ endif
+ 	@echo
+ 	@echo " $(MAKE) check-report.junit.xml        Generates an aggregated XML test report"
+@@ -64,7 +66,7 @@ $(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/
+ .PHONY: $(TCG_TESTS_TARGETS:%=run-tcg-tests-%)
+ $(TCG_TESTS_TARGETS:%=run-tcg-tests-%): run-tcg-tests-%: build-tcg-tests-%
+ 	$(call quiet-command, \
+-           $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) run, \
++           $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) TCG_TEST_FILTER=$(TCG_TEST_FILTER) run, \
+         "RUN", "$* guest-tests")
  
-     return out
+ .PHONY: $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%)
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index af72903f898..1b83824ff4e 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -254,8 +254,15 @@ endif
+ gdb-%: %
+ 	gdb --args $(QEMU) $(QEMU_OPTS) $<
  
-+def send_key(test, key, delay=0.2, vm=None):
-+    """
-+    Send a single key to the console.
++# Filter tests based on TCG_TEST_FILTER if set
++ifdef TCG_TEST_FILTER
++FILTERED_RUN_TESTS=$(foreach test,$(RUN_TESTS),$(if $(findstring $(TCG_TEST_FILTER),$(test)),$(test)))
++else
++FILTERED_RUN_TESTS=$(RUN_TESTS)
++endif
 +
-+    :key: key to send
-+    :delay: debounce delay to wait
-+    :vm: the vm to send to, defaults to test.vm
-+    """
-+    if vm is None:
-+        vm = test.vm
-+
-+    test.log.debug(f"Sending key: {key}")
-+    vm.console_socket.sendall(key.encode())
-+
-+
- def interrupt_interactive_console_until_pattern(test, success_message,
-                                                 failure_message=None,
-                                                 interrupt_string='\r',
+ .PHONY: run
+-run: $(RUN_TESTS)
++run: $(FILTERED_RUN_TESTS)
+ 
+ clean:
+ 	rm -f $(TESTS) *.o $(CLEANFILES)
+@@ -269,3 +276,6 @@ help:
+ 	@echo "Built with $(CC)"
+ 	@echo "Available tests:"
+ 	@$(foreach t,$(RUN_TESTS),echo "  $t";)
++	@echo ""
++	@echo "Environment variables:"
++	@echo "  TCG_TEST_FILTER=<pattern>  Filter tests matching pattern"
 -- 
 2.47.3
 

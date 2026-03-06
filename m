@@ -4,83 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A1C5F01832
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 12:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05857F01832
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 12:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyUfS-0006db-Nd; Fri, 06 Mar 2026 07:52:34 -0500
+	id 1vyUi5-0007zG-VB; Fri, 06 Mar 2026 07:55:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyUfN-0006ct-VK
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 07:52:30 -0500
-Received: from p-west1-cluster3-host6-snip4-1.eps.apple.com ([57.103.66.14]
- helo=outbound.pv.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyUfM-0005Yv-1A
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 07:52:29 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-4 (Postfix) with ESMTPS id
- B216318000A7; Fri,  6 Mar 2026 12:52:24 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772801546; x=1775393546;
- bh=VKiarpPWn4SDFb8GnIawhshkjbI5X447KDdHUVZ0sZ8=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=ePicUP2iEtMYR+BJiTHrOjPU1PFMcWBRq1NH19ImG633xoMYP+TDcL3K6JOmt5hBtJar6prvYj9znjJTV2xpxBG0KJIqAtI+nNeugrYuwNZbyDWSKIj898Yz3yoMtQtuISlqn6iqs9pQFWodVrsG/ARXwWz8c9CSuvAUd6FgED12zp8zU9akE0RwRntaAwOdgBCtQ6JhdZQgWv+W4hSRgaWWcOV9hkDba6BX/VOPQCtEyVD/rNKBpfhmonCD9jKcoD2cUymcUpKWic3/o6r70/s1bozbKATVriDtpDwJgRpkbJuym4Ayi2mWYjUn4KvxAStflLgk6LkqSH/Zvl0IeQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-4 (Postfix) with ESMTPSA id
- 612A41800224; Fri,  6 Mar 2026 12:52:22 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH v7 0/2] arm/hvf: Add SME2 support
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260306-sme2-hvf-v7-0-e72eeda41ed3@linaro.org>
-Date: Fri, 6 Mar 2026 13:52:10 +0100
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?utf-8?Q?Phil_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyUi4-0007wX-B8
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 07:55:16 -0500
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vyUi2-0005xE-D3
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 07:55:15 -0500
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-64acd19e1dfso7838382d50.0
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 04:55:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772801713; cv=none;
+ d=google.com; s=arc-20240605;
+ b=iy6Bqpmuy2OPar8r3rkqhkM/b59f+MVmiHlA1gtrJXBSMUy+5hS0GgrLEXBC5M2wSs
+ f4a+18k6WgozD6psdzeqoGvKN518BrC5+0hOo3djoY0e9wYqE9j5eb2bsmfCXMr9zDcE
+ mW6YH3UDVvIp334PZ0dO/RIIp98DpTXneS4ju74hd34S00EwlseBwMJf/mu5oDjBNY8p
+ IG/lC2J42XvtPRavOgf+edqCDQ0cx6CgC9wP/j8h02D6fMnvbkiPstK7xjaPB+yxCspb
+ Uj0TQqOzVQd/BIwO01KxSuadtDF1/kByrMNmlMHrjEl/KOnWwNTyN8d0knLlcfD1chCx
+ ln+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=zLZ5XQi3wxMRFR5Uc3e80yxjBAASCbrgfZjbhYmh57Q=;
+ fh=qiZPS4UC8WZTyfFCFo+5R+0C+WhFaVgWm6qQmIOAEaI=;
+ b=iB/mrdkbrNz38Whi4aAJUbA2IiGk5ZC4mKQwBbnf5e2jydyVQW24sY8w1wc0tW0Xol
+ rmzLFnbPXcM+JcNfvONgVmNeOLPe+qrx7ids1f18n6KPex9g3O3g6MSyW2C3pLbv+ws8
+ e2ZslWlQql21kFLzvfTNJgTM2qSCbe/fdQ8oDRKZ9wixHD9P/rOF25+d47GflE2jXRIB
+ crZ0EQfA7NaOIq0CBlf2xVDvFYOinO/rlxzWvTriCM7X9CQ7LoBmaNqn4uwyHRXdpj95
+ hhJAhRP65GsgODFUPwkLJUS1xbbkjNoMudtplYGx/u969ie06F1qInnDpkrYhop3zKSr
+ JUgg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772801713; x=1773406513; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zLZ5XQi3wxMRFR5Uc3e80yxjBAASCbrgfZjbhYmh57Q=;
+ b=vtxE1R/HDdiPo4dcVzBE4nUnpb1iKCTs7EmsAbqoa4OTUdUHsBlTuOscK+CEg8vUHE
+ EDnM9MiOEf+GUBwIQKhiAiMoWsIXsuyW6tTraII5yp5CB/9T64ezMTBUkqDUMCsjgd86
+ lK9w5vmwud/GXa31j9jaoXy35cN06i1iDdAOBA/2N4XawXIxb4pjC99slHFKL2QWTc9r
+ inOmoesCskltNunPJaQfJyf8H/uwAdy1OUEcHb/Iuvt7ckMmNYZd5UEHrHk/+qVfEIsy
+ F2LOAhZcAePRLXmd7klv94Yy/bh6vd3BICF82FicvWt+0Z1hbstJAFkWhjovJRmaC0Hr
+ oYkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772801713; x=1773406513;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=zLZ5XQi3wxMRFR5Uc3e80yxjBAASCbrgfZjbhYmh57Q=;
+ b=RXn6EvLkVTFC+K02JSoSgXCoWKSKMJ+ORLxk8uWdlMwQk96lMxSm+hOdD7PwZCyIcR
+ 3BDshvr+046pcYGZbSGUnLK2tT6G1Z9cZ0eEbWWujVwy8bxdWJZG1yk+iYoL3qsXYbm7
+ lqJIwikGwCnmyaqTVt/jFk8647PVK9UBur1CIpy+7v6v2jlGGOn9RNhha5/JM/amWa2a
+ 0/Fhspeq7Bpn20jJ9A1Ipe48PeAYftgcyd3fsi9XRZA42CyEyZPYRuhl43IEjs4K5soX
+ 1UU/7F251RZ5o/AyjtugJ/jiIqFW5vGkeAkZk3SYkHrP+cwkScsMo4ux3ganFm4Ret73
+ NZ9w==
+X-Gm-Message-State: AOJu0Yywz2D0J6QXS76ITC9ditfHKFzeRp2Ukqlu73RUe9Ahatl1aEiJ
+ hq1jV9TNjP9NzZplHoRZh42TEmMDG7csiq9GDFmFJ0Z01BdTsmMbK0d8hQrxvNhZFbOCOK5MAkz
+ kAeUPZt6g/cvvh4Q4ia8pjLYqIdS5mtqySSPycPipGg==
+X-Gm-Gg: ATEYQzwQP2MUwSJSSwVCkS0k1CqMTHqAC4lFS20P0NsrqogmDU4gzACgssfbUlk6Myw
+ Wnkihw2H2lYiNDbFJulgGR9B8HqaILMUfs2Zns1Jdzb5Gv5fp6E3o8PA7EpNhO9I+qux4oZoNSH
+ KxtpJ0Z5+wSz8B/XxKXlwM8c+BSWCjGNocLIcUW0VEWGEbtetYNxdLFPHCzAdGJ9Y4F6t9/m/qH
+ +QKPU0WKSewQJ8Cn9rshAsZRJzHndosClRD98bVjUQcNv9631jQRXe1gPsSNZGkxJ5PASL4RZKw
+ SVsDiRhH2YCh20tgb6l7rRsG/39HtYUlpu9phnu8oP59Z+vX58vCE9eMlnLKWlSFF8A=
+X-Received: by 2002:a05:690e:191c:b0:649:e501:21af with SMTP id
+ 956f58d0204a3-64d1407efeamr1690715d50.14.1772801712546; Fri, 06 Mar 2026
+ 04:55:12 -0800 (PST)
+MIME-Version: 1.0
+References: <20260305175711.1119025-1-clg@redhat.com>
+In-Reply-To: <20260305175711.1119025-1-clg@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 6 Mar 2026 12:55:01 +0000
+X-Gm-Features: AaiRm50NA0K-bBGJPO62ii9Vs0LBZqUlrHmxj-_xci6bijdT2fZbOVV5-Eqn8kE
+Message-ID: <CAFEAcA_dAZird_b0kPTaSDu0oBPyBkobj92xw7haQJR53jvgKQ@mail.gmail.com>
+Subject: Re: [PULL 00/38] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <3AEB372A-013D-478D-82F6-F5C0E288CB1B@unpredictable.fr>
-References: <20260306-sme2-hvf-v7-0-e72eeda41ed3@linaro.org>
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-GUID: H0DBvL4ubImwTe1YoqWAGLP3n9EMNRTP
-X-Authority-Info-Out: v=2.4 cv=GpRPO01C c=1 sm=1 tr=0 ts=69aace09
- cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=7CQSdrXTAAAA:8 a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8
- a=nfPvrw19EpdZ7zV4emMA:9 a=QEXdDO2ut3YA:10 a=a-qgeE7W1pNrGK8U0ZQC:22
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDEyMyBTYWx0ZWRfX4ZU+JeCWdZ9R
- iUE9+9oHiCxMUKfJdPIyEmueH/R3Xd2EwfT3QP2CyE9ipIpVDiTdo3eTFiFyh8qx/M9E8kREfBn
- ZUgyoTcG/U32cJb86WY1R7ilq0bUjLEW8WkPhLFRWgtMCS3E6QFuf03dNtd5gPfBnIKssuEfuae
- 39aC96uXGpnwNcasXLtq4HVNi80WFWgbWzJF5nlcp3O7WtNh/dhwxQxSoJLwkd7/IDS5OxoAiQB
- q+hFRsnYnaNCyfEcytUw9tjNe/WuSCKL6sB/n/iv3dfHMqrEBpA1LlAIyotMZNMTQCjSnfhiN/w
- WbHLBGhQ9r7G+d0BB6k0jBbriQKhR0WigJPKGi/4nCmwXwU3KEcVUp/U2axPV0=
-X-Proofpoint-ORIG-GUID: H0DBvL4ubImwTe1YoqWAGLP3n9EMNRTP
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-06_04,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- suspectscore=0 lowpriorityscore=0 mlxlogscore=999 spamscore=0 adultscore=0
- malwarescore=0 bulkscore=0 mlxscore=0 clxscore=1030 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603060123
-Received-SPF: pass client-ip=57.103.66.14;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,94 +115,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Thu, 5 Mar 2026 at 17:57, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
+>
+> The following changes since commit ae6e281633769bbc7424523d0ca1163e214571=
+ad:
+>
+>   Merge tag 'pull-loongarch-20260302' of https://github.com/gaosong715/qe=
+mu into staging (2026-03-05 10:48:38 +0000)
+>
+> are available in the Git repository at:
+>
+>   https://github.com/legoater/qemu/ tags/pull-aspeed-20260305
+>
+> for you to fetch changes up to ee357844b13904a826ffa77834cd08e10ba1e9ba:
+>
+>   tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED Open=
+BMC SDK v11.01 (2026-03-05 18:47:46 +0100)
+>
+> ----------------------------------------------------------------
+> aspeed queue:
+>
+> * Add I3C support to QEMU, add an dummy I3C device and extend the
+>   Aspeed I3C controller
+> * Update test ASPEED OpenBMC SDK v11.01
+> * Fix DMA64 address handling in Aspeed I2C model (AST2700 SoC)
 
 
-> On 6. Mar 2026, at 13:45, Manos Pitsidianakis =
-<manos.pitsidianakis@linaro.org> wrote:
->=20
-> M4/M5 Macs support SME2, and HVF exposes this functionality in its
-> public API.
->=20
-> Add support for it in QEMU.
->=20
-> This was tested by running an SME2 benchmark from Arm [0]. savevm and
-> loadvm during the benchmark's run were used to verify migration works.
->=20
-For the series:
 
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Applied, thanks.
 
-> [0]:
-> =
-https://learn.arm.com/learning-paths/cross-platform/multiplying-matrices-w=
-ith-sme2/1-get-started/
->=20
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
-> Changes in v7:
-> - Set ID config registers properly
-> - Fix build with non-clang compilers
-> - Link to v6: =
-https://lore.kernel.org/qemu-devel/20260303-sme2-hvf-v6-0-b473702d8287@lin=
-aro.org
->=20
-> Changes in v6:
-> - Remove host isar adjustment (thanks Richard)
-> - Link to v5: =
-https://lore.kernel.org/qemu-devel/20260227-sme2-hvf-v5-0-1c60a92910c8@lin=
-aro.org
->=20
-> Changes in v5:
-> - Fix NEON registers getting zeroed when loading vmstate by setting =
-SVCR first
-> - Link to v4: =
-https://lore.kernel.org/qemu-devel/20260227-sme2-hvf-v4-0-3dae31a1876d@lin=
-aro.org
->=20
-> Changes in v4:
-> - Set cpu->sme_vq.supported in hvf_arm_set_cpu_features_from_host =
-(thanks Richard)
-> - Removed two rogue lines that were smuggled in by git-rebase (thanks =
-Mohamed)
-> - Link to v3: =
-https://lore.kernel.org/qemu-devel/20260226-sme2-hvf-v3-0-ea5763dbeba2@lin=
-aro.org
->=20
-> Changes in v3:
-> - Rebased against master now that it supports SME-without-SVE setups =
-for
->  gdbstub
-> - Link to v2: =
-https://lore.kernel.org/qemu-devel/20260115-sme2-hvf-v2-0-2eca481bd7ee@lin=
-aro.org
->=20
-> Changes in v2:
-> - Added stubs if hvf 15.2 headers are not available (suggested by =
-agraf)
-> - Link to v1: =
-https://lore.kernel.org/qemu-devel/20260114-sme2-hvf-v1-0-ce9599596736@lin=
-aro.org
->=20
-> ---
-> Manos Pitsidianakis (2):
->      hvf/arm: handle FEAT_SME2 migration
->      hvf/arm: expose FEAT_SME2 to guest if available
->=20
-> target/arm/hvf/hvf.c           | 334 =
-+++++++++++++++++++++++++++++++++++++++--
-> target/arm/hvf/hvf_sme_stubs.h | 172 +++++++++++++++++++++
-> target/arm/hvf/sysreg.c.inc    |   8 +
-> target/arm/hvf_arm.h           |  41 +++++
-> target/arm/machine.c           |   2 +-
-> 5 files changed, 541 insertions(+), 16 deletions(-)
-> ---
-> base-commit: 483cb5b74cd247b1520e0994b4fae4d8fe44cb00
-> change-id: 20260114-sme2-hvf-105767189521
->=20
-> --
-> =CE=B3=CE=B1=E1=BF=96=CE=B1 =CF=80=CF=85=CF=81=CE=AF =CE=BC=CE=B9=CF=87=CE=
-=B8=CE=AE=CF=84=CF=89
->=20
->=20
+Please update the changelog at https://wiki.qemu.org/ChangeLog/11.0
+for any user-visible changes.
 
+-- PMM
 

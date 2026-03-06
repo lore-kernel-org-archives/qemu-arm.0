@@ -4,109 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FDCF01829
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 11:26:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79192F01828
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 11:50:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyTJk-0006qH-Qx; Fri, 06 Mar 2026 06:26:06 -0500
+	id 1vyTgs-0002YD-7X; Fri, 06 Mar 2026 06:49:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyTJg-0006pB-SJ
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:26:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyTJe-00006O-Bq
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:25:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772796357;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sYlEUlW/q2KCNVBJcYkE4AnArRDazI/bQcyRoVFTtRg=;
- b=Loez+GFsjcTqZSJwoJr4Xnl1vjPzy1WgcMODReu5btiQAldhirWOEA0d6RIYVGoQKCpu6O
- Bi7cYBBoMN4oFulHE3vDJ9Oy9OCH3aIDBvjRlzIISCf1jcIJ0VeFRVZZdsPQCsnGdC2Y/l
- URfpj3APhcNsextvMlyKmRw6rdMTstc=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-146-tK7Tl6WvPpmJbhc568Vqog-1; Fri, 06 Mar 2026 06:25:56 -0500
-X-MC-Unique: tK7Tl6WvPpmJbhc568Vqog-1
-X-Mimecast-MFC-AGG-ID: tK7Tl6WvPpmJbhc568Vqog_1772796355
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-483a2db68caso79535835e9.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 03:25:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772796355; x=1773401155;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vyTgq-0002Xx-Uw
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:49:56 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vyTgn-0002db-T2
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 06:49:55 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4836f363ad2so106894205e9.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 03:49:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772797792; cv=none;
+ d=google.com; s=arc-20240605;
+ b=jq+0nGJzqqoKekdr2naLr0f+5+U5LQtC5Khf1d7ju4L06Bmze64KxleqC7s3jeLkYB
+ Aq5dhUGsYUVNXsAJgJK8bYY/BVHBBWxrx/GgO77khD9710PqKKBYdry0b90qiwueclzj
+ CtsqEq7BOUeq58NNegV/lWTRkt4bEhL4r3vubBU0Aw+dCLhUUI0VNS8Fv3AH+dSTodCr
+ FyeWOpY+9yTn7mVD+dOEVM+0rMfur1hzkukIi+4moEs0yqSr6BIPZLzVx7w+YEtFosBe
+ 1brcKjSrkoz9cBh1y/rWmVJdKMTrgGCfADfCPbBNxWxBUqE3RLvoDp2XAaiyA/jjMXS3
+ oRQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=aEMUP9o7W63JZbWz7rK7k03pO+jBShh6IwlYY5T8OnQ=;
+ fh=R3koUL+cf3gxehtOyIcIT/diTUNlB24b617iF83roTs=;
+ b=YS41E7ZffYZ9f8jGUGA8jWGmqShAU5pmHfMvzSQ1EGekWhZqkyW6/LrcniiNzMaOyD
+ y4GkD1t/4mwUZTEntARze5Q3BL09VjvXqlFWFjet9D6VAuMnnySDUPMYcaK5uy4lJ6Tx
+ X/czTYb1k7V6uU+RXeZX07+xmuju3n1zcp67MPcGmLVPATKqIoM9NLX93fXF8KFNkDrJ
+ bpjXKvKzMLy4CPLpSkDRGSqsMw3P6a+vWhjYnKx0R1U17qy6Nzmg0c/xqE3rUGh/gLeP
+ Iz4+ucFW3OAXxYGoPdMeEJMZS9JksXieF9AwVg4aqCOxW2s4AutGw747U/eUTYHgTCPH
+ IgJw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1772797792; x=1773402592; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sYlEUlW/q2KCNVBJcYkE4AnArRDazI/bQcyRoVFTtRg=;
- b=PmTpRtESogf7iUDlecziR1RcL73DQD7Fa+ecqgIAmkaTgQya/QNj7iNPRsotbiwV69
- f0nt01iZJGDS+CEBGZNaz/MsN3LIHZtPBQmTRkjnK5esLcMFX3ODIZklwJm7OrkOM9mY
- JM/JpW9U7l9CYnMAn3pqlKRqRkQ9e6+pvdg8A5bsjbN0m2OgT5l2pLdl0NIQp1yX9tvh
- +HSfXf5IRk/Po0Pv6HtrCKWW2X7d5IWadHH0p2Rv4OJ8sTzaUtuONAv/YuCKeebEDFHj
- XxXGSyQepUMRtvLnL8nOCs+yIMJIEpyOe5uJAj/RWJFrUmQZKLntraNeTxf3tjY+SRsO
- jeZg==
+ bh=aEMUP9o7W63JZbWz7rK7k03pO+jBShh6IwlYY5T8OnQ=;
+ b=seEL0qSTUrI4S5naRDCPn6Gr4xCmGdqw+4tvt6uJxVJxnyFTHu9fmfWbacMuDAzkaP
+ LH0kub+cEFWadaUmhVbaIc8Fuby+qzZkwhUU18NrZtj9S4istDDMoTNFGr7ZcG9++9wj
+ 6iUBGovBlrc2SAe2mQKqt3SzjmSrgGTr6mTreZso1amH+wVUntQDmLboUKfvrkNplNQh
+ ONBW6FCIT0rwM2hR8UtcbWwTMuFa1Xzhaz0ROU/bwlMgXTcn2iT43HGvs2uL0CskJ5ml
+ Mcxo4NeFcEkAGHHcn3f89kTZVRqaahVByn8coPAnAInr+xQx74c+vUM7Uf/feKNhSKew
+ MuSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772797792; x=1773402592;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=aEMUP9o7W63JZbWz7rK7k03pO+jBShh6IwlYY5T8OnQ=;
+ b=XCN3U+U+wg16tR/NNtsWomytbkozkj8uvV8+lg5mhB05JtGsUYDt1Texs6fwrg97M0
+ PoJQzTJA0CAzeC9r+w3Z5fR2K4P4ndkP/fVkc1adt6ZmEl0UhXmzPICXQGVwdtwUYlOt
+ T3ZG6JtJT8OTid4qzn3PDonaOWtcz9Gr1UjzU779ZeMM5V37uRajraPiQ2tfR31ujF3y
+ EacvV2Dx3Wq11NTa9B7wGHSDnhIqO+e3S8Yq6Xav4qDJ/Kxr0NB3G46OPtNpB4rEoByq
+ 7x5gdkypm9NdR7AOlSMP2icjrL+kLurlR+SzgEJrTInL4cVruC0qMy1XOPqfwiYA2Uy1
+ SfsA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZgjeSeVbzt1ECxbUoUNuFCV7sqJoKt1UXRguGYRmP0Fs1UmzVDECV6qt8ZtWH3OScuOX9nH9kng==@nongnu.org
-X-Gm-Message-State: AOJu0Yy0fH3wpSN9nWrlRCQRZZxvy5OOS78suVXd+uedjmJtK0rx5EPI
- tINkyy4JIPyD1Ylj4ng74QwNdU2Gz4jJETDCB09Bux3VtRsa2IZ2cqjICaaPkBJ93jHDgPxg2bv
- /tEVkZeIBv5He+xaWdapQvvUIQD0Yu888YgZ5AagUMmfgHTu9rB2iyQ==
-X-Gm-Gg: ATEYQzxhGyk0wXHrcBshnPoD5HSLEJjBounZoOq64SLPrpYwNyTbs7OypcMmnd1Vqnw
- //4EknRwl7YstJDD7NO5Vi1TfXq47DN0Yx/gNiH+eURNkhnjG6+Yp+e1LLpWfESOeDNHmZDndSJ
- LsUh6IYrFZCNX7QMKVrzt0d27nb/smXnD/h6UEo7QHlJXcDBykUNIrZP3GfdR6QbSztxhPfbYmi
- tWh2lXhdh3dNf6Qhbf0rcKjMJm+uaUSEWKSXi8SQR2y7yUI/qGkBt19zhRYrdaEFbykvrnJxRwg
- qc2Mf5Vk/GadLK8dPwuneyYx4sFiMc/gegendiZCNis9ia9SBDvNXxnjF9EtYGbEXGt7RtUtbFj
- IPqjMHW9qnD+b853A5tN1mo9EaJ1yJE3fz9B44Me2SDN7/PfjY/q5C4/UDtBwTnGCYJzUsg==
-X-Received: by 2002:a05:600c:4752:b0:483:b505:9db7 with SMTP id
- 5b1f17b1804b1-48526976a4cmr23374645e9.32.1772796355137; 
- Fri, 06 Mar 2026 03:25:55 -0800 (PST)
-X-Received: by 2002:a05:600c:4752:b0:483:b505:9db7 with SMTP id
- 5b1f17b1804b1-48526976a4cmr23374265e9.32.1772796354659; 
- Fri, 06 Mar 2026 03:25:54 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fb4257csm174314465e9.15.2026.03.06.03.25.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Mar 2026 03:25:54 -0800 (PST)
-Message-ID: <69272bc3-e4da-48f1-a160-18a386fefd99@redhat.com>
-Date: Fri, 6 Mar 2026 12:25:53 +0100
+ AJvYcCVJVDeccWNZWryuYNrHoZ6DqiXwnX65nbIvkKG9wWDmWytJOfq37uHgdl34nn2BJZEGALVcjDFxiA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy39UKQ0DfMnrvEnLyk1oJr+2ryYCEYHv2wTDaID4BbBTSWW8EE
+ D/ppQZ1xr40ZRQqKJ8+7ATZiJ9kXt88eghtVr3i313c0gWc0C0GdUO4u0xHCxCQCHwPM8Z04xEK
+ IgGZkuMlyLvJkYzNFYlWmbEXpzWu9pGSuGiZQhWL66g==
+X-Gm-Gg: ATEYQzzQDHYKa5/lShOZ734l7ASLBXrse+8WW13D+jLiER+u9vDfmOILK9jVMKmioK9
+ qKsU7uu1jOXVw1aPwLaVNJrCc6YChuuMW3UO2VUQFH17i3MTLGs9wRHJhywZu2ZhOeyLb5SvMmI
+ 4acTniXNkmC0xyMDP0Juh9bScc2/y4QHPLTL7BllJJTDjyxbVqPP/2tZw2z8gRyOH8+l2vJ8J+3
+ 6kxdK9yfWZLAYhlCb1c2wak8D2dWf4swp9DACUi3t725BzyJ8BpxqqMOyJlrpQFXsFLjxRxz08d
+ cPusj/UGZv0cgbf5sCos4kmV59Bj2NqO1JtliEIEdkETGa4Sug==
+X-Received: by 2002:a05:600c:5303:b0:477:c478:46d7 with SMTP id
+ 5b1f17b1804b1-4852695aa55mr28908905e9.22.1772797791980; Fri, 06 Mar 2026
+ 03:49:51 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 2/6] target/arm/machine: Take account cpreg mig
- tolerances in case of mismatch
-To: Sebastian Ott <sebott@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com,
- philmd@linaro.org, alex.bennee@linaro.org
-References: <20260304102249.1963784-1-eric.auger@redhat.com>
- <20260304102249.1963784-3-eric.auger@redhat.com>
- <5ddefbe2-3514-fda2-a933-e2df46b4db89@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <5ddefbe2-3514-fda2-a933-e2df46b4db89@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HKxQG1V7zIFa_4YBxrh5NAAaFc9qBBZkiReMKASsGhk_1772796355
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.892, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.622,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260303-sme2-hvf-v6-0-b473702d8287@linaro.org>
+ <20260303-sme2-hvf-v6-1-b473702d8287@linaro.org>
+ <CAFEAcA8zTkc4pyHQKoDkTMhGPLQmxBaJS3bZiGRrPgux3rDLzw@mail.gmail.com>
+ <CAAjaMXbXdrW9N1xLMPxL9OmjLqti6A3rqAmYipu6OkdBY8JPNQ@mail.gmail.com>
+ <CAFEAcA_MuZH8d=Z=NfrNQ78k+Kv9mSx+=DLLt8AxZeEjccN8yw@mail.gmail.com>
+ <CAAjaMXbq9A1NCO4jnF4aSL0XM2pzHsPsPyWfmqSCg_+2ZQpEHA@mail.gmail.com>
+ <35FDE44D-63E2-426E-912C-6EB6CDA52116@unpredictable.fr>
+ <CAFEAcA-Zgq43KW9EC-pteOqxHcZg==GE=1TAURZP-DGRh3OoHQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-Zgq43KW9EC-pteOqxHcZg==GE=1TAURZP-DGRh3OoHQ@mail.gmail.com>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Fri, 6 Mar 2026 13:49:26 +0200
+X-Gm-Features: AaiRm50yoEkke4iSBaCmNRxYQSDppG8hP_7kkEgEuftC2-TKNrR_0Q3toKUV4bE
+Message-ID: <CAAjaMXa3h1abx=-ijZqf13ku-T=9+eV+XK9g85kGwxeRB-on1g@mail.gmail.com>
+Subject: Re: [PATCH v6 1/2] hvf/arm: handle FEAT_SME2 migration
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,114 +125,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 3/6/26 11:51 AM, Sebastian Ott wrote:
-> On Wed, 4 Mar 2026, Eric Auger wrote:
->> If there is a mismatch between the cpreg indexes found on both ends,
->> check whether a tolerance was registered for the given kvmidx. If any,
->> silence warning/errors.
->>
->> Create dedicated helper functions that print the name of the culprit reg
->> and analyze whether a tolerance is set. According set the level of
->> traces
->> and analyze whether the migration must eventually fail.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->> target/arm/machine.c    | 30 ++++++++++++++++++++----------
->> target/arm/trace-events |  2 ++
->> 2 files changed, 22 insertions(+), 10 deletions(-)
->>
->> diff --git a/target/arm/machine.c b/target/arm/machine.c
->> index 476dad00ee7..13b8a0b2220 100644
->> --- a/target/arm/machine.c
->> +++ b/target/arm/machine.c
->> @@ -1065,24 +1065,34 @@ static void
->> handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
->> {
->>     g_autofree gchar *name = print_register_name(kvmidx);
->>
->> -    warn_report("%s: %s "
->> -                "expected by the destination but not in the incoming
->> stream: "
->> -                 "skip it", __func__, name);
->> +    if (!arm_cpu_cpreg_has_mig_tolerance(cpu, kvmidx,
->> +                                         0, 0,
->> ToleranceNotOnBothEnds)) {
+On Fri, Mar 6, 2026 at 1:14=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
+org> wrote:
 >
-> I don't get this. You apply a different tolerance type than the one
-> (potentially) registered. This check will only fail when there was no
-> tolerance registered for this kvmidx. But this can be changed by someone
-> registering a different type. 
-
-Note at the moment, only one tolerance can be registered for a kvmidx
-
-Eric
+> On Fri, 6 Mar 2026 at 10:19, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+> > > On 6. Mar 2026, at 11:05, Manos Pitsidianakis <manos.pitsidianakis@li=
+naro.org> wrote:
+> > >
+> > > On Fri, Mar 6, 2026 at 11:48=E2=80=AFAM Peter Maydell <peter.maydell@=
+linaro.org> wrote:
+> > >> While you're retesting, could you also look at / test patches
+> > >> 17 and 18 in Mohamed's series
+> > >> https://lore.kernel.org/qemu-devel/20260306083113.74177-18-mohamed@u=
+npredictable.fr/T/#m2d1e3dfbfa5aecd41af6c0aa9e3b574a72c6f04d
+> > >>
+> > >> ?
+> > >>
+> > >> They look to me like bugfixes that we should be squashing/including
+> > >> in the "enable SME2 for hvf" handling.
+> > >
+> > > Had a quick look, 17 seems to be nested-virt specific so not a bugfix
+> > > if nested-virt was not already supported in the first place, right?
+> >
+> > Hello,
+> >
+> > This part isn=E2=80=99t:
+> >
+> > @@ -1370,16 +1373,22 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+> > arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
+> > }
+> > }
+> > - if (__builtin_available(macOS 15.2, *)) {
+> > - for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
+> > - hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i].sreg;
+> > - uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
+> > - uint32_t key =3D kvm_to_cpreg_id(kvm_id);
+> > - const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_regs, key);
+> > -
+> > - if (ri) {
+> > - assert(!(ri->type & ARM_CP_NO_RAW));
+> > - arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
+> > + if (hvf_arm_sme2_supported()) {
+> > + /*
+> > + * Clang doesn't allow us to combine the two checks together.
+> > + * -Wunsupported-availability-guard
+> > + */
+> > + if (__builtin_available(macOS 15.2, *)) {
+> > + for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
+> > + hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i].sreg;
+> > + uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
+> > + uint32_t key =3D kvm_to_cpreg_id(kvm_id);
+> > + const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_regs, key);
+> > +
+> > + if (ri) {
+> > + assert(!(ri->type & ARM_CP_NO_RAW));
+> > + arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
+> > + }
+> > }
 >
->> +        warn_report("%s: %s "
->> +                    "expected by the destination but not in the
->> incoming stream: "
->> +                     "skip it", __func__, name);
->> +    } else {
->> +        trace_tolerate_cpreg_missing_in_incoming_stream(name);
->> +    }
->> }
->>
->> /*
->> - * Handle the situation where @kvmidx is in the incoming stream
->> - * but not on destination. This currently fails the migration but
->> - * we plan to accomodate some exceptions, hence the boolean returned
->> value.
->> + * Handle the situation where @kvmidx is in the incoming
->> + * stream but not on destination. This fails the migration if
->> + * no cpreg mig tolerance is set for this @kvmidx
->>  */
->> static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu,
->> uint64_t kvmidx)
->> {
->>     g_autofree gchar *name = print_register_name(kvmidx);
->> -    bool fail = true;
->> -
->> -    error_report("%s: %s in the incoming stream but unknown on the "
->> -                 "destination: fail migration", __func__, name);
->> +    bool fail = false;
->>
->> +    if (!arm_cpu_cpreg_has_mig_tolerance(cpu, kvmidx,
->> +                                        0, 0,
->> ToleranceNotOnBothEnds)) {
->> +        error_report("%s: %s in the incoming stream but unknown on
->> the "
->> +                     "destination: fail migration", __func__, name);
->> +        fail = true;
->> +    } else {
->> +        trace_tolerate_cpreg_only_in_incoming_stream(name);
->> +    }
->>     return fail;
->> }
->>
->> diff --git a/target/arm/trace-events b/target/arm/trace-events
->> index 2de0406f784..8502fb3265c 100644
->> --- a/target/arm/trace-events
->> +++ b/target/arm/trace-events
->> @@ -29,3 +29,5 @@ arm_psci_call(uint64_t x0, uint64_t x1, uint64_t
->> x2, uint64_t x3, uint32_t cpuid
->>
->> # machine.c
->> cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t
->> cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
->> +tolerate_cpreg_missing_in_incoming_stream(char *name) "%s is missing
->> in incoming stream but this is explicitly tolerated"
->> +tolerate_cpreg_only_in_incoming_stream(char *name) "%s is in
->> incoming stream but not on destination but this is explicitly tolerated"
->> -- 
->> 2.53.0
->>
->>
+> Yes; the patch is doing two things and really ought to be two patches,
+> so we can put the bit that we need for "make SME2 hvf work correctly"
+> before the "enable SME2 HVF" patch, and the bit that is nested-virt
+> specific in the nested-virt patches.
 >
 
+Patch v18 needs an adjustment, because clang prints warnings about the
+`static const struct sme_isar_regs` array.
+
+
+../target/arm/hvf/hvf.c:1098:11: warning:
+'HV_FEATURE_REG_ID_AA64SMFR0_EL1' is only available on macOS 15.2 or
+newer [-Wunguarded-availability-new]
+
+Peter,
+
+Maybe I should send a new revision since you haven't merged these
+patches anyway?
+
+> thanks
+> -- PMM
+
+--=20
+Manos Pitsidianakis
+Emulation and Virtualization Engineer at Linaro Ltd
 

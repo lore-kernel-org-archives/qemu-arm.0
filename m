@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C81CCFCB605
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559BFFCB605
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:05:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyWiU-0006ot-3S; Fri, 06 Mar 2026 10:03:50 -0500
+	id 1vyWiS-0006dE-4n; Fri, 06 Mar 2026 10:03:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWiQ-0006OY-14
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:46 -0500
+ id 1vyWi8-0006AI-95
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:30 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWiN-0003H8-Cz
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:45 -0500
+ id 1vyWi4-0003FT-PV
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772809416;
+ s=mimecast20190719; t=1772809403;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4PiL1acTWit+AY6scjxh1ay5IsW07XQpblNERevEQd8=;
- b=Di9GMdVSmI9v1qi0EPQ63bHswtxaj7UHubEHJpzJI7Yfqvg0vA6WtbCdQ5TkKH+nMUAKRG
- Gf6EMQsvpsBlysfF4Osp0mzYBoHEIXID9TFXQdHq2dCzjzVg64mouVPjVxYJLXk/J8h68a
- MvzjsFthEx35OOwdUj/r5pXmntVgbwU=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=p96kQNLPHjt51NI8Jf6fV3SS0XQNmXFWFSJxOsCfe6c=;
+ b=F9C8apFzLRFFhm0Fm2UKgEi+T9CU1clcHCW/vp7YXk4Yokf/NJbt2HEHh+b4huOz8KsBGM
+ j2rztvPfkX2pYXDU34qMBexlPwmwGMIM7hzZvECneSaXeNmoit7Q866PAQ4eT31jYdyU1K
+ mc86kgwZCNnYLq9PN5Cs+77K38/wAlg=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-610-ze1-QmW3M56xi3J83QUZMA-1; Fri,
- 06 Mar 2026 10:03:32 -0500
-X-MC-Unique: ze1-QmW3M56xi3J83QUZMA-1
-X-Mimecast-MFC-AGG-ID: ze1-QmW3M56xi3J83QUZMA_1772809411
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-rCXvBY0jOeeCCnlN2Ajcpw-1; Fri,
+ 06 Mar 2026 10:03:17 -0500
+X-MC-Unique: rCXvBY0jOeeCCnlN2Ajcpw-1
+X-Mimecast-MFC-AGG-ID: rCXvBY0jOeeCCnlN2Ajcpw_1772809396
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7528C19560B2; Fri,  6 Mar 2026 15:03:31 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3E6E718005B9; Fri,  6 Mar 2026 15:03:16 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.126])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A43863003E9F; Fri,  6 Mar 2026 15:03:27 +0000 (UTC)
+ id B72283003EA4; Fri,  6 Mar 2026 15:03:12 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v9 6/6] Revert "target/arm: Reinstate bogus AArch32 DBGDTRTX
- register for migration compat"
-Date: Fri,  6 Mar 2026 16:02:24 +0100
-Message-ID: <20260306150302.203112-7-eric.auger@redhat.com>
+Subject: [PATCH v9 2/6] target/arm/machine: Take account cpreg mig tolerances
+ in case of mismatch
+Date: Fri,  6 Mar 2026 16:02:20 +0100
+Message-ID: <20260306150302.203112-3-eric.auger@redhat.com>
 In-Reply-To: <20260306150302.203112-1-eric.auger@redhat.com>
 References: <20260306150302.203112-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 4BRkiZHrbtj1RfmJUSNDHFhOthtIJdV9ToKG_i73Rpo_1772809411
+X-Mimecast-MFC-PROC-ID: Kv_5UseTc1OiWaswOjfcbFkwbA0wwe-OLKtTIy7fPUA_1772809396
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -89,64 +89,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 4f2b82f60431 ("target/arm: Reinstate bogus AArch32
-DBGDTRTX register for migration compat). We don't need that commit
-anymore as the AArch32 DBGDTRTX register is declared to
-be safe to ignore in the incoming migration stream.
+If there is a mismatch between the cpreg indexes found on both ends,
+check whether a tolerance was registered for the given kvmidx. If any,
+silence warning/errors.
+
+Create dedicated helper functions that print the name of the culprit reg
+and analyze whether a tolerance is set. According set the level of traces
+and analyze whether the migration must eventually fail.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
 ---
- target/arm/debug_helper.c | 29 -----------------------------
- 1 file changed, 29 deletions(-)
+ target/arm/machine.c    | 21 +++++++++++++++------
+ target/arm/trace-events |  2 ++
+ 2 files changed, 17 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 352c8e5c8e7..8477ca5def6 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -171,13 +171,6 @@ static void dbgclaimclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->cp15.dbgclaim &= ~(value & 0xFF);
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 476dad00ee7..fa236431a8b 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -1065,25 +1065,34 @@ static void handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
+ {
+     g_autofree gchar *name = print_register_name(kvmidx);
+ 
++    if (arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
++                                          0, 0, ToleranceNotOnBothEnds)) {
++        trace_tolerate_cpreg_missing_in_incoming_stream(name);
++        return;
++    }
+     warn_report("%s: %s "
+                 "expected by the destination but not in the incoming stream: "
+                  "skip it", __func__, name);
  }
  
--static CPAccessResult access_bogus(CPUARMState *env, const ARMCPRegInfo *ri,
--                                   bool isread)
--{
--    /* Always UNDEF, as if this cpreg didn't exist */
--    return CP_ACCESS_UNDEFINED;
--}
+ /*
+- * Handle the situation where @kvmidx is in the incoming stream
+- * but not on destination. This currently fails the migration but
+- * we plan to accomodate some exceptions, hence the boolean returned value.
++ * Handle the situation where @kvmidx is in the incoming
++ * stream but not on destination. This fails the migration if
++ * no cpreg mig tolerance is matched for this @kvmidx
++ * Return true if the migration shall eventually fail
+  */
+ static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
+ {
+     g_autofree gchar *name = print_register_name(kvmidx);
+-    bool fail = true;
+ 
++    if (arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
++                                          0, 0, ToleranceNotOnBothEnds)) {
++        trace_tolerate_cpreg_only_in_incoming_stream(name);
++        return false;
++    }
+     error_report("%s: %s in the incoming stream but unknown on the "
+                  "destination: fail migration", __func__, name);
 -
- static const ARMCPRegInfo debug_cp_reginfo[] = {
-     /*
-      * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
-@@ -240,28 +233,6 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 4, .opc2 = 0,
-       .access = PL0_RW, .accessfn = access_tdcc,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
--    /*
--     * This is not a real AArch32 register. We used to incorrectly expose
--     * this due to a QEMU bug; to avoid breaking migration compatibility we
--     * need to continue to provide it so that we don't fail the inbound
--     * migration when it tells us about a sysreg that we don't have.
--     * We set an always-fails .accessfn, which means that the guest doesn't
--     * actually see this register (it will always UNDEF, identically to if
--     * there were no cpreg definition for it other than that we won't print
--     * a LOG_UNIMP message about it), and we set the ARM_CP_NO_GDB flag so the
--     * gdbstub won't see it either.
--     * (We can't just set .access = 0, because add_cpreg_to_hashtable()
--     * helpfully ignores cpregs which aren't accessible to the highest
--     * implemented EL.)
--     *
--     * TODO: implement a system for being able to describe "this register
--     * can be ignored if it appears in the inbound stream"; then we can
--     * remove this temporary hack.
--     */
--    { .name = "BOGUS_DBGDTR_EL0", .state = ARM_CP_STATE_AA32,
--      .cp = 14, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
--      .access = PL0_RW, .accessfn = access_bogus,
--      .type = ARM_CP_CONST | ARM_CP_NO_GDB, .resetvalue = 0 },
-     /*
-      * OSECCR_EL1 provides a mechanism for an operating system
-      * to access the contents of EDECCR. EDECCR is not implemented though,
+-    return fail;
++    return true;
+ }
+ 
+ static int cpu_post_load(void *opaque, int version_id)
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 2de0406f784..8502fb3265c 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -29,3 +29,5 @@ arm_psci_call(uint64_t x0, uint64_t x1, uint64_t x2, uint64_t x3, uint32_t cpuid
+ 
+ # machine.c
+ cpu_post_load(uint32_t cpreg_vmstate_array_len, uint32_t cpreg_array_len) "cpreg_vmstate_array_len=%d cpreg_array_len=%d"
++tolerate_cpreg_missing_in_incoming_stream(char *name) "%s is missing in incoming stream but this is explicitly tolerated"
++tolerate_cpreg_only_in_incoming_stream(char *name) "%s is in incoming stream but not on destination but this is explicitly tolerated"
 -- 
 2.53.0
 

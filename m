@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E585FCC04D
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D0BCFCC04D
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:35:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyZ4g-0005BR-FG; Fri, 06 Mar 2026 12:34:54 -0500
+	id 1vyZ4o-0005Gq-Ew; Fri, 06 Mar 2026 12:35:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vyZ4b-00059Y-KR
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:34:52 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1vyZ4n-0005FN-0c
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:35:01 -0500
+Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vyZ4a-0004vN-46
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:34:49 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-358e3cc5e7eso4456354a91.0
- for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 09:34:46 -0800 (PST)
+ id 1vyZ4l-00051Q-Jy
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 12:35:00 -0500
+Received: by mail-pf1-x436.google.com with SMTP id
+ d2e1a72fcca58-82748257f5fso5283344b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 09:34:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772818485; x=1773423285; darn=nongnu.org;
+ d=linaro.org; s=google; t=1772818498; x=1773423298; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=BUXgSYVW8LFw1wL5B1Mln1UoAQWWgbEqaD8czeelTYM=;
- b=Q8q+r0UwcM/rlx9YqCg/I9gGhdNwd4w0T81OixnxXdEmUOIzudueUtQoZi6ZPBRv8k
- vYm2h+mENYuqmVOaX7P61JgsT9lYXo+pOly589Mav8GW7ycnqCtU/9SMygl4Ym9u4u7o
- IwhkBwg9p4T5fCM42RfU6HY0jlwTV2QM/A3Dni4xGEN+aR4Ln15SfJQK9ujF8s1NmIwd
- Iw25bsF2JF+UAjiFFgF5+bDJVsNq33LH/NtVj5YROCvXTG7FUJS6Vha3xt8Gl/3YUQP/
- lWjJwmhSxGw85V7LKQ02feQ4geN4rWRyrmdpYhM4nY6yqNDT+dfMUXlFoKHtjiJid+p6
- 4ZRQ==
+ bh=LZffydFpCQ8oX1deZ7Z+K6vD3hblkojF+uIgSi9+5bg=;
+ b=F5X4XSf+9LIGQEKCW6Njo3UgrDS4jHQqaDjTXSaGztFS71PCJcHtuBgFfFYOlN+SKn
+ dawv8QJK7i1Rm4ktudYkap+GSjlrOh57cxf6dcoNvIoyr5cXvPJIF5UPBZUf95sJg8Ri
+ 7mDYMOhHIRGuUot8KTFskPdi2Diezq54uXc+zJLPoLW0v7otp8o9Hk68oZxnAgQSk+Bx
+ 8nO6VdRVKvjWMMZDJ99k21DmiZggYyTuOjtn+3Y8JzNfeRBWaDZ1X+A+TZLgX88PYqIY
+ K6SuBCabFDJysg7ZU1NiQS62S5+0fR1OEfcPOU72UmbiTPBSfqTLazoGIIjqABDXLNaC
+ DaNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772818485; x=1773423285;
+ d=1e100.net; s=20230601; t=1772818498; x=1773423298;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BUXgSYVW8LFw1wL5B1Mln1UoAQWWgbEqaD8czeelTYM=;
- b=wNZnLqDBmlxbi0v8NPQ/YHy+0MVIgNb0ojLQWiH9KSscEInb/saypMed7/TFc00+Nb
- fPbwzH2MptCnaaNmo3rodNTQuy0AMIBm0lyh61/QTIti9ZzBET2zKMibCkuf2vpevyrT
- KnB+CWBDvvboyWB2ENt/eOiG/m1rXgqqygHZFMrmmFf7A5gAw0TvwMTIE8ITc2sHJ91U
- oEpi5xQLpUSIskZ6f/FRq1d20DbB0jZ1Q3yV94zADixCXw5LCTInaABfdC5x/L68sTjn
- E00cWQJC/gZy8pqwQk3uEkyKgeCGk3pcz75gs5yM35W9jwY9TeVN58Vsg/oLHCWOzKE8
- y3pw==
+ bh=LZffydFpCQ8oX1deZ7Z+K6vD3hblkojF+uIgSi9+5bg=;
+ b=i7rPA4svRM0qHEHvGgAAbqOnEwPk5Pn9CUkL25Qf5N6UmPdXngAoFnsjlB0vCfqPWC
+ JrGA5IytqeldGJto4+hSVqH5lUluewYxtfXKkfzwFE8rhlM7kwNSPWf4EFugblxtvryw
+ sqVU7EMt5RSyVOHHevqpxgljR7/0Uo1OP8JJhXJ25nx/xqRHOuzuKTiP4aD7OyQbzhfP
+ F5OjSOPvL/tkBiTrloDHHft6HfkhdFwvheS7spVqL45oKRar+xyE+EdBr8qGV+9cmTCJ
+ PqrE4hQG1Y/3ExDW2fdcTf2/w18CrE6TfZNXJEnnC9V8TQATZKxrKRR7SdJNa3c6kGoq
+ 7pYg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXYLe42oNXO8zmLf9jBdWUo1jCYILWva9eoQirqCAreh214ZtEKto2KCpsNWgDtrxmezOlxQq6jgg==@nongnu.org
-X-Gm-Message-State: AOJu0YyymAJqU6QpJjlgewTzjqXaw+oVMQeDbM6sdeoyO4nGTkZMMRgC
- Sh9CdNTA7ohohUnrbEPdWG1NtWd1Rn0q3Hy2lzSwd1vSHn0R0+2dAG0R/W+JfpgBRwA=
-X-Gm-Gg: ATEYQzzt+IIvSyDDl4sgxEFyZkKM3QpEzrkjGVBZg8nuNJQmZY2gwYm+d/vX/DpuwKk
- WmHLZKcaXsozAOCkFYekN4mfYcbwZTbHDeZkgg+q3A+Wi6mG36/wqqRx4+AA/DcFa0utYakdYq4
- 3ggAF0NrdN4TKXSdjlLcYGg2TEeJ4zs3SiGKi9c/4lxRTyZoctB1Pz7j9oVJOC9+VrE8Gxv8RfX
- tODIG8dYC9R7MOf3Edn+NOabDp/cA63zKI77w0Vib7G75rVFX1swE9JsI+AbO+7LZ6bgUarx+9h
- mHnKl/kbdCtZeVlR0/ghTuWXxzw+fsGUvWchyvrYdboyWkmxT3HXBg3QRYo7sd/I17yjGEPQwAv
- IqoGUomaxeah1h3q8+B9rht28c1VvjzelMf1R0sKOFLYBcjGApcpZiKgScCFwmBS1jmTo9MmS19
- bdjFK/p6ioJjAwkYeagiOx7Dissd/pa53t+fegAcixz7RQjGP/ZRs4ITWczLGlmgxRc5uO
-X-Received: by 2002:a17:90b:5104:b0:359:8988:38bc with SMTP id
- 98e67ed59e1d1-359be233210mr2687298a91.7.1772818485275; 
- Fri, 06 Mar 2026 09:34:45 -0800 (PST)
+ AJvYcCW8pcpaYUWX41RWe49NssiWcNFWcpSJ2RysSx2l+XPL7XmnN23dGheSzaDyqWm0zwUMmyqFTp7GsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxCoLK8AuGbH5ajFrGmJ9x87ln4NcHGwMaJFURsdw/bm9imNZYt
+ etImkNwOftCs6lnB/AhpeBUTyCo9RWXKdMsBjXdmP12PsPniEbLnhj5Rel6HF+XviDg=
+X-Gm-Gg: ATEYQzxEC2DTtck2tN8Tg6T8LESv3xgfK60WByRDEW7ct4zoLqtlNNnLLyj4yxX2vhm
+ 8LVDAtoYh6egFPGm+kvSAeREvXHcZCxa/UcoWxxjzj/4iafcRGj/SOqHhEEb9cj8ZV1eQnK9ZuH
+ daRhxwRqm0tx1fuKVaxyFhjqtobuCvxk59SIED6Z1TfDOg8qR0cI/YdNoYgq/8Lx6v7zuV1Vdqr
+ VWiNTX25nA2tVJFbSSI59c/Y0mPL35q+JALzJm0i5HUacRWKPdlXJ8fottcG2cNpjy7dtn+75Vw
+ b9kIjdEGBnGr1aUjwVfOi1b/NJkg3ytXxtKkjccifnx2upVFmudfbsAR1iy+EYw50O+9yP82z/P
+ UoEFJX2tkSgjbr3pAQHmYI2RDWIcbfMWW0Bah421MkBVq7uruja/Kmox8nn/zuzbzY5EeMOdeoH
+ hwNJXT9JHv3DgS/mGzj6A7YHuFM8dYfJcsfM50Lfedg8c45bWoHoEqGpqNQV2E+Nxp64Sc
+X-Received: by 2002:a05:6a00:418f:b0:822:69b2:7ed0 with SMTP id
+ d2e1a72fcca58-829a29d2a52mr2440724b3a.6.1772818498185; 
+ Fri, 06 Mar 2026 09:34:58 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-359c4eb8c48sm1652339a91.10.2026.03.06.09.34.44
+ d2e1a72fcca58-829a48de551sm2385053b3a.57.2026.03.06.09.34.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 06 Mar 2026 09:34:44 -0800 (PST)
-Message-ID: <5342a38e-ee34-4d52-928c-e60028848e2b@linaro.org>
-Date: Fri, 6 Mar 2026 09:34:44 -0800
+ Fri, 06 Mar 2026 09:34:57 -0800 (PST)
+Message-ID: <0d6e2c8f-8014-4560-b032-8d25a1d05d84@linaro.org>
+Date: Fri, 6 Mar 2026 09:34:57 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/7] tests/tcg: allow filtering of TCG tests
+Subject: Re: [PATCH 3/7] tests/tcg/multiarch/linux-test: use portable
+ alternative for dirent64
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
@@ -80,9 +81,11 @@ Cc: Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Warner Losh <imp@bsdimp.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
+ <berrange@redhat.com>,
+ Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>
 References: <20260306161728.2657486-1-alex.bennee@linaro.org>
- <20260306161728.2657486-3-alex.bennee@linaro.org>
+ <20260306161728.2657486-4-alex.bennee@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -118,11 +121,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260306161728.2657486-3-alex.bennee@linaro.org>
+In-Reply-To: <20260306161728.2657486-4-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,23 +149,21 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 3/6/26 8:17 AM, Alex Bennée wrote:
-> We have a lot of TCG tests now which can be fiddly if we just want to
-> check one particular test type across the targets. Introduce
-> TCG_TEST_FILTER to allow this:
+> From: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
 > 
->    make check-tcg TCG_TEST_FILTER=gdb
+> dirent64 and readdir64 are glibc-specific and not portable to other
+> C libraries such as musl. Define _FILE_OFFSET_BITS=64 instead, which
+> portably instructs all libc implementations to use 64-bit file offsets,
+> making readdir() and struct dirent equivalent to their 64-bit variants.
 > 
-> to run all the gdb tests across the suites.
-> 
+> Signed-off-by: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
+> Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
+> Message-ID: <af31d21c4d668cfb940ba4159f584fa6454c3d82.1772107448.git.matheus.bernardino@oss.qualcomm.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/Makefile.include    |  8 +++++---
->   tests/tcg/Makefile.target | 12 +++++++++++-
->   2 files changed, 16 insertions(+), 4 deletions(-)
+>   tests/tcg/multiarch/linux/linux-test.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-
-Ideally, we should have a list command available also, so we don't have 
-to guess what magic pattern names follow.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

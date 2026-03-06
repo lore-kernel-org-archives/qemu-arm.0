@@ -4,68 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C504AFCB611
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D013FCB607
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 15:17:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyWiT-0006kV-Gk; Fri, 06 Mar 2026 10:03:49 -0500
+	id 1vyWvP-0007Jl-SK; Fri, 06 Mar 2026 10:17:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWiD-0006C3-MN
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:36 -0500
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vyWvO-0007JQ-Qn
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:17:10 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vyWi6-0003Fa-6c
- for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:03:28 -0500
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vyWvN-0006Fa-2c
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 10:17:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1772809404;
+ s=mimecast20190719; t=1772810227;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=eldssNcwL2vzqR/skuruxhEOMx/slaPtYj/2cYe4PG0=;
- b=JE4mOVYsZFrNuMq0geAzbZtNhrWDoXXYYx7CmWJ5B7HUt2e2VV0VlubDFefwyOTNX08xIx
- x8jFB8JXAwtYGReIbxVQRysUoY8m9PriC0fYiyxvn3yCx587A7nLb+mWYOi5r6yqf7ISyi
- rtMvAxNCr8B436hTjDJwaqcnOKhShRc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-375-gspfo7W7O96rgc5S92frEw-1; Fri,
- 06 Mar 2026 10:03:21 -0500
-X-MC-Unique: gspfo7W7O96rgc5S92frEw-1
-X-Mimecast-MFC-AGG-ID: gspfo7W7O96rgc5S92frEw_1772809400
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F28DA18005BA; Fri,  6 Mar 2026 15:03:19 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.44.32.126])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B3A903003EA4; Fri,  6 Mar 2026 15:03:16 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
- sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
- alex.bennee@linaro.org
-Subject: [PATCH v9 3/6] target/arm/cpu64: Mitigate migration failures due to
- spurious TCR_EL1, PIRE0_EL1 and PIR_EL1
-Date: Fri,  6 Mar 2026 16:02:21 +0100
-Message-ID: <20260306150302.203112-4-eric.auger@redhat.com>
-In-Reply-To: <20260306150302.203112-1-eric.auger@redhat.com>
-References: <20260306150302.203112-1-eric.auger@redhat.com>
+ bh=TJgSIOR+KyHj/bksgpQYBE9Y+hEPHXDZrdmWwTGYK2A=;
+ b=Pix8Zs10+tnXmP+Y5FmL6nKULD3+exsMkdeHF2q63G5rLem7TnMZO/Q65m1alZAjilCa0Q
+ F9Snjeansmzh9FMX7up/RrPAQu9IvhDmHuOu6npFFwpWK1nWiK+l7XeL+6xohE1VawMuHq
+ X3o4swvfqGe0MaAfcSQ8yUITjYS8LD4=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-403-J97VKVchMQey4-H8AupgSw-1; Fri, 06 Mar 2026 10:17:05 -0500
+X-MC-Unique: J97VKVchMQey4-H8AupgSw-1
+X-Mimecast-MFC-AGG-ID: J97VKVchMQey4-H8AupgSw_1772810225
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-48379489438so93695225e9.2
+ for <qemu-arm@nongnu.org>; Fri, 06 Mar 2026 07:17:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772810224; x=1773415024;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=tR9P6wZJVn3Be7DBqKtwoMlRUtYfRrgjFxyxPPHBdIg=;
+ b=pOEROrW6NkngVlRVutECTNU/Yk8MYFs29emtAsTjJmWnIuxX8Dgu8XRagmfG5/cf0n
+ 8FPMF4XTo1zEfN7DBOyrhZAA3l2Kp31aKqbA6FZ0JNrYilTs8uptMib4WY5ca5zhELQS
+ lt/X4BQCSo7Y4TQLKdF47B/nWDdd3GxG9kjcpg/kw+ss4EKW0Or3fdeT7RFHIF68yzhB
+ 1ikISwz0Y9KQ8OH2pXhBXWPfAYAjmrenjBA7j/tlj0+StIUg2rlE5TTdB5EppeXUEOkt
+ MKRAU8uytt7i+FU6pFf9NtiZ8ZpPu7ADLjERo92BnxzlXYmD+TwCfeXzjuS2iY47Ye6R
+ mA0w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVfl2kxVr3jRruQHbA1/mfdxSlXeCsE5zy8ZJv/ROxHAuTuod+nR5ZNJaty0mFk46X09Dh8UbKpRQ==@nongnu.org
+X-Gm-Message-State: AOJu0Ywdg7ttz0lFMK8N/zifGqhFV59rQyjVNlwTSAcwMkZIZshe7XyP
+ bUMks/az/PND9327MnMNXXaQwkyvjcNOJgUpJx3NuYVVpjaRq7F7MvHoVYdjyooAdz2IE+dyq+C
+ NVicSOUiwxFHi3BRiccslp98sgHL0lGfQ3nqpvJRJtmgyEcLEeVrKWA==
+X-Gm-Gg: ATEYQzyw4XUU90WSV2ygFas68Z4G+x/yIIH+g4hqVNFLJIA2n5OSvL9IVsRmHxlp0Pa
+ 5DNnkTDHms2cuFLcKQFt2f+Snyq8tXpbRzPNvR7C1SUvHoXGS6x1XIhWSzvIpQJbzFIwC4PGVhC
+ NH5g09PnztRmXsrqWvjfGlphMmsEhsWc824AIwUCYIXZM1mfBaTVZscPYD4Eup0zhTz+N1AKwMg
+ nLe6vPFvFnxze1huzpLVdooy2gbwyhPMRp+tpAhYQO2wdiYImHdCNgVRHLqfTYpiT1rx5UkamdN
+ 3U5FcFJ+ZqYuZLiVCHGFJMlw5xPL+4iUl5JqKRRlTirzDk+BncSCTTliz3wzm28hbSkHr/nFMg2
+ fyC3zVWKjbP4uF4eP1jXhT1mA3Coy5wEFrIdiL6Tqo7PZ4Hf68GORlEh0s8wgwZbcnjUx
+X-Received: by 2002:a05:600c:c088:b0:483:79a6:e7e1 with SMTP id
+ 5b1f17b1804b1-48526919935mr36895285e9.7.1772810224555; 
+ Fri, 06 Mar 2026 07:17:04 -0800 (PST)
+X-Received: by 2002:a05:600c:c088:b0:483:79a6:e7e1 with SMTP id
+ 5b1f17b1804b1-48526919935mr36894675e9.7.1772810224049; 
+ Fri, 06 Mar 2026 07:17:04 -0800 (PST)
+Received: from rh (p200300f6af4a490003d6f56739ca055c.dip0.t-ipconnect.de.
+ [2003:f6:af4a:4900:3d6:f567:39ca:55c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fb4257csm194675115e9.15.2026.03.06.07.17.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 06 Mar 2026 07:17:03 -0800 (PST)
+Date: Fri, 6 Mar 2026 16:17:02 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, cohuck@redhat.com, peterx@redhat.com, 
+ philmd@linaro.org, alex.bennee@linaro.org
+Subject: Re: [PATCH v8 2/6] target/arm/machine: Take account cpreg mig
+ tolerances in case of mismatch
+In-Reply-To: <e60def83-cfeb-4c65-a4c8-44b20f8f17ca@redhat.com>
+Message-ID: <10e0b91a-4c1e-e12d-98fe-2c92ffa9a223@redhat.com>
+References: <20260304102249.1963784-1-eric.auger@redhat.com>
+ <20260304102249.1963784-3-eric.auger@redhat.com>
+ <5ddefbe2-3514-fda2-a933-e2df46b4db89@redhat.com>
+ <e60def83-cfeb-4c65-a4c8-44b20f8f17ca@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: wqS-10qyCvB2CGR6XTb2QXjSboNfG9C1HMFOPQKdvZ4_1772809400
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: JlSzlY8dWMna8W6dvQI8jUPqlisBs9922QvTJiDmSf8_1772810225
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: multipart/mixed;
+ boundary="-1463806286-824434614-1772810223=:21642"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -9
 X-Spam_score: -1.0
 X-Spam_bar: -
@@ -89,70 +116,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Before linux v6.13 those registers were erroneously unconditionally
-exposed and this was fixed by commits:
-- 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace when
-                 disabled for guests")
-- a68cddbe47ef ("KVM: arm64: Hide S1PIE registers from userspace
-                 when disabled for guests")
-in v6.13.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+---1463806286-824434614-1772810223=:21642
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-This means if we migrate from an old kernel host to a >= 6.13 kernel
-host, migration currently fails.
+On Fri, 6 Mar 2026, Eric Auger wrote:
+> On 3/6/26 11:51 AM, Sebastian Ott wrote:
+>> On Wed, 4 Mar 2026, Eric Auger wrote:
+>>> If there is a mismatch between the cpreg indexes found on both ends,
+>>> check whether a tolerance was registered for the given kvmidx. If any,
+>>> silence warning/errors.
+>>>
+>>> Create dedicated helper functions that print the name of the culprit reg
+>>> and analyze whether a tolerance is set. According set the level of
+>>> traces
+>>> and analyze whether the migration must eventually fail.
+>>>
+>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>> ---
+>>> target/arm/machine.c    | 30 ++++++++++++++++++++----------
+>>> target/arm/trace-events |  2 ++
+>>> 2 files changed, 22 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/target/arm/machine.c b/target/arm/machine.c
+>>> index 476dad00ee7..13b8a0b2220 100644
+>>> --- a/target/arm/machine.c
+>>> +++ b/target/arm/machine.c
+>>> @@ -1065,24 +1065,34 @@ static void
+>>> handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
+>>> {
+>>>     g_autofree gchar *name = print_register_name(kvmidx);
+>>>
+>>> -    warn_report("%s: %s "
+>>> -                "expected by the destination but not in the incoming
+>>> stream: "
+>>> -                 "skip it", __func__, name);
+>>> +    if (!arm_cpu_cpreg_has_mig_tolerance(cpu, kvmidx,
+>>> +                                         0, 0,
+>>> ToleranceNotOnBothEnds)) {
+>>
+>> I don't get this. You apply a different tolerance type than the one
+>> (potentially) registered. This check will only fail when there was no
+>> tolerance registered for this kvmidx. But this can be changed by someone
+>> registering a different type. 
+>
+> OK so we know the cpreg is missing in the input stream. If there is a
+> tolerance of type ToleranceNotOnBothEnds for this kvmidx, that's fine,
+> we just trace and do not report any warning. Otherwise we warn_report
+> the issue but do not fail.
+> Does it clarify?
 
-Declare cpreg migration tolerance for those registers.
+Yes, it does.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
----
- target/arm/cpu64.c | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+It just feels a bit odd that we identify specific issues when comparing
+destination vs incomming stream and then test if that specific issue is
+tolerated. With the infrastructure from patch 1 I would have expected
+that arm_cpu_cpreg_has_mig_tolerance() can already handle the specific
+issues - something like:
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index d6feba220e8..4cfddc6e8c0 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -810,6 +810,31 @@ static void aarch64_a53_initfn(Object *obj)
-     define_cortex_a72_a57_a53_cp_reginfo(cpu);
- }
- 
-+static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
-+{
-+    /*
-+     * Registers that may be in the incoming stream and not exposed
-+     * on the destination
-+     */
-+
-+    /*
-+     * TCR_EL1 was erroneously unconditionnally exposed before linux v6.13.
-+     * See commit 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace
-+     * when disabled for guests")
-+     */
-+    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 2, 0, 3),
-+                                     0, 0, ToleranceNotOnBothEnds);
-+    /*
-+     * PIRE0_EL1 and PIR_EL1 were erroneously unconditionnally exposed
-+     * before linux v6.13. See commit a68cddbe47ef ("KVM: arm64: Hide
-+     * S1PIE registers from userspace when disabled for guests")
-+     */
-+    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 2),
-+                                     0, 0, ToleranceNotOnBothEnds);
-+    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
-+                                     0, 0, ToleranceNotOnBothEnds);
-+}
-+
- static void aarch64_host_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -822,6 +847,7 @@ static void aarch64_host_initfn(Object *obj)
- #endif
- 
- #if defined(CONFIG_KVM)
-+    kvm_arm_set_cpreg_mig_tolerances(cpu);
-     kvm_arm_set_cpu_features_from_host(cpu);
-     aarch64_add_sve_properties(obj);
- #elif defined(CONFIG_HVF)
--- 
-2.53.0
+if (dest[i] == incomming[i]) {
+ 	//all good
+} else if (arm_cpu_cpreg_has_mig_tolerance()) {
+ 	//all good
+} else
+ 	fail();
+
+
+..but I guess I'm just missing smth.
+
+Sebastian
+---1463806286-824434614-1772810223=:21642--
 
 

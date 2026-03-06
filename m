@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB84FCB632
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:01:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2A4FCB638
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 17:10:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyYYE-0008CI-QO; Fri, 06 Mar 2026 12:01:23 -0500
+	id 1vyYge-0003jv-N9; Fri, 06 Mar 2026 12:10:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyYXj-000818-HI; Fri, 06 Mar 2026 12:00:54 -0500
+ id 1vyYgd-0003jZ-Jp; Fri, 06 Mar 2026 12:10:03 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyYXf-0007OU-TQ; Fri, 06 Mar 2026 12:00:51 -0500
+ id 1vyYgZ-0003Sy-Ex; Fri, 06 Mar 2026 12:10:03 -0500
 Received: from mail.maildlp.com (unknown [172.18.224.107])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fSCLj2npczHnGd6;
- Sat,  7 Mar 2026 00:59:41 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fSCYH2s56zHnGgq;
+ Sat,  7 Mar 2026 01:08:51 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 6857E40584;
- Sat,  7 Mar 2026 01:00:41 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 6DAC040584;
+ Sat,  7 Mar 2026 01:09:51 +0800 (CST)
 Received: from localhost (10.48.149.21) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 6 Mar
- 2026 17:00:40 +0000
-Date: Fri, 6 Mar 2026 17:00:37 +0000
+ 2026 17:09:50 +0000
+Date: Fri, 6 Mar 2026 17:09:49 +0000
 To: Peter Maydell <peter.maydell@linaro.org>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 11/65] hw/intc/arm_gicv5: Implement gicv5_class_name()
-Message-ID: <20260306170037.000075d8@huawei.com>
-In-Reply-To: <20260223170212.441276-12-peter.maydell@linaro.org>
+Subject: Re: [PATCH 12/65] hw/intc/arm_gicv5: Add defines for GICv5
+ architected PPIs
+Message-ID: <20260306170949.00006c40@huawei.com>
+In-Reply-To: <20260223170212.441276-13-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-12-peter.maydell@linaro.org>
+ <20260223170212.441276-13-peter.maydell@linaro.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -69,15 +70,12 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:18 +0000
+On Mon, 23 Feb 2026 17:01:19 +0000
 Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> Implement a gicv5_class_name() function that does the same job as
-> gicv3_class_name(): allows board code to get the correct QOM type for
-> the GIC at runtime depending on whether KVM is enabled or not.
-> 
-> For the GICv5, we don't yet implement KVM support, so the KVM-enabled
-> codepath is always an error.
+> The GICv5 defines architected numbers for the PPI sources like the
+> generic timer and the PMU; these are different from the ones
+> traditionally used by GICv2 and GICv3.  Add defines for them.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>

@@ -4,55 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DC07FCB61D
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:17:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2396AFCB61C
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Mar 2026 16:18:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyXrq-00078v-Sl; Fri, 06 Mar 2026 11:17:36 -0500
+	id 1vyXpy-00047T-Az; Fri, 06 Mar 2026 11:15:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyXrl-0006pE-Az; Fri, 06 Mar 2026 11:17:30 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vyXpp-00044L-EY
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:29 -0500
+Received: from p-west3-cluster3-host4-snip4-10.eps.apple.com ([57.103.72.191]
+ helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vyXrj-0007iU-T6; Fri, 06 Mar 2026 11:17:29 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.107])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fSBPD0kGYzJ468h;
- Sat,  7 Mar 2026 00:16:48 +0800 (CST)
-Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 589FA40587;
- Sat,  7 Mar 2026 00:17:26 +0800 (CST)
-Received: from localhost (10.48.149.21) by dubpeml500005.china.huawei.com
- (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 6 Mar
- 2026 16:17:25 +0000
-Date: Fri, 6 Mar 2026 16:17:24 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 10/65] hw/intc/arm_gicv5: Add link property for
- MemoryRegion for DMA
-Message-ID: <20260306161724.000001e1@huawei.com>
-In-Reply-To: <20260223170212.441276-11-peter.maydell@linaro.org>
-References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-11-peter.maydell@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vyXpo-00075o-1Z
+ for qemu-arm@nongnu.org; Fri, 06 Mar 2026 11:15:29 -0500
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPS id
+ A1238180011B; Fri,  6 Mar 2026 16:15:25 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772813726; x=1775405726;
+ bh=IzVSt1aVpyTkgRI+sV6HgtQSQ/A0iOy/FaOFV8C9G40=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=cQqhIHQfibx3xU/hymfWocKcNgX1fIOvu3fVCH7TRh9QpnpdOj1B5o+juumo3oxNfVcl5WBoyjfQ7fDT7vV7Pb/rBYUqmWPJZCEsqnDiurOvTVqQiaJcFsWT9GR7Tq+tFO6eH/vfL/U3W9CtZunU4FtBvMu3zkHSDaz7FcQ+4K85MTod+H1tVcU3TaH8OtY8abnj6MArf5bD1bi8QY+ZitJoCErk1HupTMPJ1Rw0ErZYVhu5URirFbtCy0c2VFolMXorjNRXystcz1lhlNOo8IB+aM6kUg2Tjzv3ccWlE8MCn4ROUNdrUP49iYaPzrLEQKU6T9qu4c4THvNZJLB4Mg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-20-percent-2 (Postfix) with ESMTPSA id
+ E92B7180013A; Fri,  6 Mar 2026 16:15:22 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
+ Cameron Esfahani <dirty@apple.com>, Alexander Graf <agraf@csgraf.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH v16 04/17] hvf: hvf-all: stop including hvf_arm.h
+Date: Fri,  6 Mar 2026 17:14:56 +0100
+Message-ID: <20260306161509.79712-5-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260306161509.79712-1-mohamed@unpredictable.fr>
+References: <20260306161509.79712-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.48.149.21]
-X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
- dubpeml500005.china.huawei.com (7.214.145.207)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: rwMDNeTmymxBSJKsoiQrNXdGM0BpUgyG
+X-Proofpoint-ORIG-GUID: rwMDNeTmymxBSJKsoiQrNXdGM0BpUgyG
+X-Authority-Info-Out: v=2.4 cv=TZObdBQh c=1 sm=1 tr=0 ts=69aafd9e
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=uNs1HyugXjh6PdyaFdwA:9
+ a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA2MDE1NCBTYWx0ZWRfXx8qLeGzW7H2w
+ LmsEnMqod2Pea+yWGtCjNrPbiJBqHBPeBpsGLxtnL547D7j1VucyJDdQPTcqX18VXM248hdw+0K
+ s+k8xwSVbkHH8JtHgEglCaneNckVGnEewQpqM7XIX7CiqbmbLbmbe8PeAzZu6h/9+UPQh0qd4b7
+ TVKBO+YdwP+II3SeV+wQ625pxdDpIiB7q6KL7eTKUoqmARdw5/fWa2sJrpfyiONuL40LOihzmi8
+ 3fUz62QJVIEhfO4YXCErHvwvm7c4ZL/AgBHZyVjKkrsKHamRVoGL8gH8u7YAFmDhR8EOdlZMq3q
+ 7rcTKqix8Hk98xuL5Q2gHqXD3NmabTe+caop+4eCTLsm31Huf7emTDKZOcyWK4=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-06_05,2026-03-06_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ mlxscore=0 bulkscore=0 phishscore=0 spamscore=0 suspectscore=0 malwarescore=0
+ lowpriorityscore=0 adultscore=0 mlxlogscore=660 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603060154
+X-JNJ: AAAAAAAB2ubFuceEpBhTfP5Qsdy3PqUfrwjSahhyCAutZ77y6O3Qq/BkctSGjpRzM9kMXTqx4+Sc2umhwMxDTqNDECeyfhC48j71JFu7lkkRZJ1p/lt6JQ6gRgIuQZTL3ZPc28Vv4fodieb7CYEnBQD+Nq0XHvxxTzHIaPw+OyTMTtsMq3I14vlZCr1ftXoTrYmsYSRvQPQC/no0q1ZUPBgB7jG4KPSD809WgcI738NZyhspTebWZyzW0ZkK0VUKw9cGml9Gt5SWoDl8lbjq9/Y2UB3FQgruBrohhh6CPiHDG1YFOwCbHoKytUNznxdrUnXr/fCW1mO8kYivcX+cwNJdE82GQDThaFqIUt6ZWKHe21ByHGC2GYuG+r2uIaPJnTHoh/cB9Ii+YAjzuec/1lk2LzxtpDyIaAIsTj4AOr7x49ZbUN3deyk7pQlIrnnrIO8ZCuVEjVEUb/Z4TuYgK0JeMoAd/99gSWntGT+flCYWad1KKLsfBzkp2ytZLXQCbUOo2TeX6gIov9fyVtW4+sMxdYp3ZIYB5JynZFN+L2aKqeAdN1McfVPyYuDxIpc8+K3IXdmaWeHx6as9P8RUdIFhygGph9Fk/QWcLRBs8Y8f40jWpAmcCB/dPPwp1eOTdkOktUREaacAPFqLPdvJM/r53rNKjXdt++RH+pYrJE5b8BrTEstwq7xM9/+3Y2SqTx3IllUou97pMG2NdmNd//BotNAcHqzE1nzBcAI5boxwSDwMxXssxNQ5KpSlcPW2UHwHtEU/zOekV+w=
+Received-SPF: pass client-ip=57.103.72.191;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,22 +94,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:17 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ accel/hvf/hvf-all.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> The GICv5 IRS keeps data structures in system memory.  (Notably, it
-> stores per-interrupt configuration information like the interrupt
-> priority and its active and pending state in an in-memory data
-> structure.) Add a link property so that the board or SoC can wire up
-> a MemoryRegion that we will do DMA to.  We name this property
-> "sysmem" to match the GICv3's equivalent property.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 033c677b6f..5f357c6d19 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -18,7 +18,6 @@
+ #include "system/hvf_int.h"
+ #include "hw/core/cpu.h"
+ #include "hw/core/boards.h"
+-#include "target/arm/hvf_arm.h"
+ #include "trace.h"
+ 
+ bool hvf_allowed;
+-- 
+2.50.1 (Apple Git-155)
 
 

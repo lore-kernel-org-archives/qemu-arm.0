@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF05FC9ECF
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 05:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B208FC9EC6
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 09:07:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vykYN-00055Z-28; Sat, 07 Mar 2026 00:50:22 -0500
+	id 1vync9-0006hJ-CD; Sat, 07 Mar 2026 04:06:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vykYL-00055G-DR; Sat, 07 Mar 2026 00:50:17 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vync4-0006ec-OQ
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 04:06:20 -0500
+Received: from qs-2007i-snip4-4.eps.apple.com ([57.103.84.215]
+ helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vykYI-0004mA-9k; Sat, 07 Mar 2026 00:50:17 -0500
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 6275mnlo066273
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 7 Mar 2026 14:49:50 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=orITRtaC4a0R0PsWvNR48y3aT8WPRnKWjVVi0dmYyWY=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1772862590; v=1;
- b=Re2i7o0CB1GQy3H93cEygFvD7gXSHrTHU3aLo2fySZ0CbZZj92iXb8lwqUAjczLD
- 6NUDN2HJ/jvGIMaiJO3/roS2HZSQvqDgmNietlYT762jSlYNj6EnfE84uOp/PZ9q
- AZFuoC+03wkNhyWmls7TuFYKTBapRCdTIDYo9BMy5lOMWKMLi2AmvCW+W9fNpxBB
- t61dYKszpDYZmqP/73/hO2hpblAOLrBaGC30ThNYLDfinVRIOSmHTjylZUEan22p
- 1XjVF1WuclnQ3AeQJUPAskzNv4s4GvBGYeJfb8dpuZt3tlYCMa3XybTKbih/38aw
- 5xwpk50ESedD66n1cIUqMQ==
-Message-ID: <17fccf01-7784-44a2-9745-33a48e8c60e3@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 7 Mar 2026 14:48:49 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 1/4] system: memory: convert some helpers to const
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Mads Ynddal <mads@ynddal.dk>, Peter Xu <peterx@redhat.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vync2-0000xk-IS
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 04:06:20 -0500
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-7 (Postfix) with ESMTPS id
+ 0F0E91800120; Sat,  7 Mar 2026 09:06:16 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772874378; x=1775466378;
+ bh=eJB3IuLEqPjgyixFo7qaEcwJGAeuNrjFWqtH2jy/vaQ=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=LYgVxa62QMDmUQbu461kRtCiXgkRIFf+YWuEKffRltE0dS4jlXLgGBoYjeJuCZ5W2oS/JAqo/Ff5iPsJnU7E7wOBqdtyjkyXoAELStpAgCP4cNQ2IRuW4QYxnURC1jkF2Ddx6VustGwd19QEMSBbA5ejnffUjQNBoQXnhOStr7HWHu32UUL8tPkOasntStXkhd1DPKq6TFEbKyhBIyZJa/4y8LPmtEkBhPxxCoxTZlYVxfic/EyTJAzlm31VtaC6nEodHKtlwALnTd6NSn4GIU/b8IOu1m1RgxFiiPdCmAidHhOb1uW08YHztlQQYtRhmRdaQ0EbFtQ7KrplKcgmuQ==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-7 (Postfix) with ESMTPSA id
+ 5E8981800132; Sat,  7 Mar 2026 09:06:15 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>
-References: <20260307044608.25486-1-mohamed@unpredictable.fr>
- <20260307044608.25486-2-mohamed@unpredictable.fr>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260307044608.25486-2-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH v17 04/14] target/arm: hvf: instantiate GIC early
+Date: Sat,  7 Mar 2026 10:05:56 +0100
+Message-ID: <20260307090606.95300-5-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260307090606.95300-1-mohamed@unpredictable.fr>
+References: <20260307090606.95300-1-mohamed@unpredictable.fr>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: 877EMMDnfl_sTIgTcyuEQAnw5UgJY6Nb
+X-Proofpoint-GUID: 877EMMDnfl_sTIgTcyuEQAnw5UgJY6Nb
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDA4MyBTYWx0ZWRfX8IDewjCO79+z
+ BLk+Fb46brawpXhz7QEJsj8azGL2el5Ek+n7q3484wtr9LBkz1gXb+v/d9eZ8Upp4XG4Mp07vwZ
+ xQjo9nP6T9qyVTrTRTOoURdkF7cTRswbiDp4Tw3sVQnpMfEJ0hfdC6it5gFfgxLMHoCRorCUzcQ
+ /Trf8PUnf1aKN1cXrPoyIoYz975cyp5VcW/8EqNUR5BmciY5pQVxw4ZU/P98q0R9jU38sGpCVNG
+ +bARJ8JDlxelffHh1keq7bEMQpZjHH/ElvmWJ6zh40ambmXCOawnHD8WMIW2jdBvWIDpXLny7sJ
+ vR6Auxvbh6RaUiv1jb5PPPsYupi27sxcU0FhKzqVErgW1M0plhrKpOTSFhtiOQ=
+X-Authority-Info-Out: v=2.4 cv=DMeCIiNb c=1 sm=1 tr=0 ts=69abea89
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=gV1jYa02L3q0mTRDDQ4A:9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-07_03,2026-03-06_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 suspectscore=0 mlxscore=0 malwarescore=0 adultscore=0
+ spamscore=0 mlxlogscore=618 phishscore=0 bulkscore=0 clxscore=1030
+ classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2601150000 definitions=main-2603070083
+X-JNJ: AAAAAAAB2jTt/VcY7BJ8gQhRW4d+bh6IsKsEi7q7IWEBjMJiIdvMm/DlG6NFC4nMBpLY7PF1GRzYq6Pg9cUtHEeBItGsoztEqgIXWy01YbnhqS+bAsDnpWkS7zRBtIj9nM19mzIuMZzgzhqH5JEGJe0Rr4uB9WfwU0NIhH/ZG31gN5fWnx4ONmXVLs2C5fc54SOpOo/5pd9N9oQOeG3PT+kuvhnzpTJx/y1hGURGybqG+mFahI/KrETXutw+3lrvFirRODCFbi+QpRf5Y3/SDMMPVBb91nZDatkYjaHmvanx0ww372pyucOvZv8XSDMF2nC+JF4GdWlK64mO7gTmuVU1iObfJRKNPelXN+pRHqliDmBADMqvHNluKmat+AL8pW4HxPtHw2K3OMsOXTNPqkda8d8phefvfeSUQBb9IWCsmEDMWnKdH9NA0Ij/CoaKKo+lXJFRtizXtxtofeXjiHUTEbmg1fWKJMn0arb90aANH5ptKmJKRa+nOA4otQLG+13bj0LP5kb+wAWvuxFo9m1BhBQN8cPtFThfmd73MqyJnZPXUGC49EdCe/a2LkYKx1iDaAFXMzqRziARZ5gwC9BO5cfrtnRyTVIn7CtXKs+bdtNO08bvMHfDdOiF3h/p1mqjCabnjGaLRSAdKokQfM/ceob7HVxsgCaeI/Vq2sbthze2pSR/lJGLa0pDUl6hfIhXRy9TDoI3pcWBMhNWTt960tjYzWv497xfx9RowX1g6OOXGh4VlJYu
+Received-SPF: pass client-ip=57.103.84.215;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.411, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.679,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,126 +95,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/03/07 13:46, Mohamed Mediouni wrote:
-> Seemed to be a better alternative than making flatview_for_each_range pass non-const
-> pointers.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   include/system/memory.h | 14 +++++++-------
->   system/memory.c         |  6 +++---
->   2 files changed, 10 insertions(+), 10 deletions(-)
-> 
-> diff --git a/include/system/memory.h b/include/system/memory.h
-> index 0562af3136..1a140ef203 100644
-> --- a/include/system/memory.h
-> +++ b/include/system/memory.h
-> @@ -1339,7 +1339,7 @@ void memory_region_init(MemoryRegion *mr,
->    *
->    * @mr: the #MemoryRegion
->    */
-> -void memory_region_ref(MemoryRegion *mr);
-> +void memory_region_ref(const MemoryRegion *mr);
+While figuring out a better spot for it, put it in hv_arch_vm_create().
 
-I don't firmly oppose this, but I feel a bit uneasy about this change.
+After hv_vcpu_create is documented as too late, and deferring
+vCPU initialization isn't enough either.
 
-You are right that this should be const in principle: this function does 
-not modify mr in any way.
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/arm/hvf/hvf.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-However, we can also consider the current implement as "abusing" the 
-const qualifier to express that we are not going to ref/unref. It is an 
-abuse, but I think it is practically makes sense.
-
-Regards,
-Akihiko Odaki
-
->   
->   /**
->    * memory_region_unref: Remove 1 to a memory region's reference count
-> @@ -1765,7 +1765,7 @@ uint64_t memory_region_size(MemoryRegion *mr);
->    *
->    * @mr: the memory region being queried
->    */
-> -static inline bool memory_region_is_ram(MemoryRegion *mr)
-> +static inline bool memory_region_is_ram(const MemoryRegion *mr)
->   {
->       return mr->ram;
->   }
-> @@ -1777,7 +1777,7 @@ static inline bool memory_region_is_ram(MemoryRegion *mr)
->    *
->    * @mr: the memory region being queried
->    */
-> -bool memory_region_is_ram_device(MemoryRegion *mr);
-> +bool memory_region_is_ram_device(const MemoryRegion *mr);
->   
->   /**
->    * memory_region_is_romd: check whether a memory region is in ROMD mode
-> @@ -1787,7 +1787,7 @@ bool memory_region_is_ram_device(MemoryRegion *mr);
->    *
->    * @mr: the memory region being queried
->    */
-> -static inline bool memory_region_is_romd(MemoryRegion *mr)
-> +static inline bool memory_region_is_romd(const MemoryRegion *mr)
->   {
->       return mr->rom_device && mr->romd_mode;
->   }
-> @@ -2071,7 +2071,7 @@ MemoryRegion *memory_region_from_host(void *ptr, ram_addr_t *offset);
->    *
->    * @mr: the memory region being queried.
->    */
-> -void *memory_region_get_ram_ptr(MemoryRegion *mr);
-> +void *memory_region_get_ram_ptr(const MemoryRegion *mr);
->   
->   /* memory_region_ram_resize: Resize a RAM region.
->    *
-> @@ -2967,7 +2967,7 @@ void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr);
->   int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr);
->   bool prepare_mmio_access(MemoryRegion *mr);
->   
-> -static inline bool memory_region_supports_direct_access(MemoryRegion *mr)
-> +static inline bool memory_region_supports_direct_access(const MemoryRegion *mr)
->   {
->       /* ROM DEVICE regions only allow direct access if in ROMD mode. */
->       if (memory_region_is_romd(mr)) {
-> @@ -2984,7 +2984,7 @@ static inline bool memory_region_supports_direct_access(MemoryRegion *mr)
->       return !memory_region_is_ram_device(mr);
->   }
->   
-> -static inline bool memory_access_is_direct(MemoryRegion *mr, bool is_write,
-> +static inline bool memory_access_is_direct(const MemoryRegion *mr, bool is_write,
->                                              MemTxAttrs attrs)
->   {
->       if (!memory_region_supports_direct_access(mr)) {
-> diff --git a/system/memory.c b/system/memory.c
-> index c51d0798a8..eb515fbee4 100644
-> --- a/system/memory.c
-> +++ b/system/memory.c
-> @@ -1825,7 +1825,7 @@ Object *memory_region_owner(MemoryRegion *mr)
->       return obj->parent;
->   }
->   
-> -void memory_region_ref(MemoryRegion *mr)
-> +void memory_region_ref(const MemoryRegion *mr)
->   {
->       /* MMIO callbacks most likely will access data that belongs
->        * to the owner, hence the need to ref/unref the owner whenever
-> @@ -1866,7 +1866,7 @@ const char *memory_region_name(const MemoryRegion *mr)
->       return mr->name;
->   }
->   
-> -bool memory_region_is_ram_device(MemoryRegion *mr)
-> +bool memory_region_is_ram_device(const MemoryRegion *mr)
->   {
->       return mr->ram_device;
->   }
-> @@ -2415,7 +2415,7 @@ int memory_region_get_fd(MemoryRegion *mr)
->       return mr->ram_block->fd;
->   }
->   
-> -void *memory_region_get_ram_ptr(MemoryRegion *mr)
-> +void *memory_region_get_ram_ptr(const MemoryRegion *mr)
->   {
->       uint64_t offset = 0;
->   
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bbbd..22d476cda9 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1230,6 +1230,28 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+     chosen_ipa_bit_size = pa_range;
+ 
+     ret = hv_vm_create(config);
++    if (hvf_irqchip_in_kernel()) {
++        if (__builtin_available(macOS 15.0, *)) {
++            /*
++            * Instantiate GIC.
++            * This must be done prior to the creation of any vCPU
++            * but past hv_vm_create()
++            */
++            hv_gic_config_t cfg = hv_gic_config_create();
++            hv_gic_config_set_distributor_base(cfg, 0x08000000);
++            hv_gic_config_set_redistributor_base(cfg, 0x080A0000);
++            ret = hv_gic_create(cfg);
++            if (ret != HV_SUCCESS) {
++                error_report("error creating platform VGIC");
++                goto cleanup;
++            }
++            os_release(cfg);
++        } else {
++            error_report("HVF: Unsupported OS for platform vGIC.");
++            ret = HV_UNSUPPORTED;
++            goto cleanup;
++        }
++    }
+ 
+ cleanup:
+     os_release(config);
+-- 
+2.50.1 (Apple Git-155)
 
 

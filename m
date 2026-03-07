@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D965FCB63F
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A4CF5141C
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:41:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyte6-0001fS-LT; Sat, 07 Mar 2026 10:32:50 -0500
+	id 1vytmJ-0000i0-Da; Sat, 07 Mar 2026 10:41:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytdm-0001LU-FC
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:32:30 -0500
-Received: from p-west2-cluster5-host9-snip4-10.eps.apple.com ([57.103.71.33]
- helo=outbound.mr.icloud.com)
+ id 1vytmH-0000gw-4K
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:17 -0500
+Received: from qs-2004h-snip4-1.eps.apple.com ([57.103.84.74]
+ helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytdj-0000QR-9C
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:32:30 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPS id
- B200B180013C; Sat,  7 Mar 2026 15:32:14 +0000 (UTC)
+ id 1vytmF-0001uU-M7
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:16 -0500
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
+ 0CD081800A8C; Sat,  7 Mar 2026 15:41:10 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772897536; x=1775489536;
- bh=qk5kNnRc/8ofMH+hHbzmjYvw1FzBv77gS+l8F0NuDbQ=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=aTD+6C6tp9X9eZZAStMlFbjkFzOceEngqCALk4QfxM4YotcdWIEgdhrbsh7ntQ2Gu/xl9lDJZLbQr1WKYTDzsDzJzqtiAs84yV9jniIUpuMwDEkiRUv9qt67zdM3IIuUsJt1sY17bo0qXL3cEniru8bdOlU93xAOz/Jv2MfcAlmlijoj7NFnyvFVBJ57XJ/m9DR7DdvxDCF9N1LKI1Sp2jIle7bvgaV3HDDOvvnmjneiRi4pSCu4EYybQ3KUMRz3M3pfBjiqkWRk8WIXpR+6igyb0ZdyBpEXFnppycc3lduZi4tW+6QcRqErf2dz2PzZh6O0nXGA0/Bly9Jrmih/oA==
+ s=sig1; t=1772898074; x=1775490074;
+ bh=+NoH88IZWNOWXHn7XiZHTQBxVxI8RNautRlaqzdVGdA=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=Y23r2EG39LyxkyLoIR/+z3jnCquCa7SOERCabDpZxurrpIzDJTwosKfHKmUCCwO6Ba4VCv0H4bBfDMpOX2efUWypfVO5ibsEKJanHg8pgRPyokA4nm8Pb35+paaEb/sFpyTAPMGxroW8zRH5zVsAhYX2iLwJyEjjKT/9wUADoaVtcJXGM+wQLkCv2dO5XKMHvz8ku9Poo28B7QBFOQ3X8XB1CbdZ1yXbP/tKi1ZInIOmdMuTMm3v7xDXaAgfxL+vxY5T5ka7ORZgvVEfojW9Z7kht6iUq90cBYeZE8tI/4AqDAXdAy6jzR6t+MI6x0OlDL3bKmQ5S3JJdzB2nkUirQ==
 mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPSA id
- 2E786180009A; Sat,  7 Mar 2026 15:32:12 +0000 (UTC)
+Received: from localhost.localdomain (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
+ 618A8180089E; Sat,  7 Mar 2026 15:41:08 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v18 11/13] target/arm: hvf: pass through CNTHCTL_EL2 and
- MDCCINT_EL1
-Date: Sat,  7 Mar 2026 16:31:41 +0100
-Message-ID: <20260307153143.76893-12-mohamed@unpredictable.fr>
+ Wei Liu <wei.liu@kernel.org>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v5 1/9] target/i386/hvf/hvf.c: fix compilation
+Date: Sat,  7 Mar 2026 16:40:56 +0100
+Message-ID: <20260307154104.84567-2-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260307153143.76893-1-mohamed@unpredictable.fr>
-References: <20260307153143.76893-1-mohamed@unpredictable.fr>
+In-Reply-To: <20260307154104.84567-1-mohamed@unpredictable.fr>
+References: <20260307154104.84567-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: b3YGGUXZw5iHW2O_791YHL0JyrQNUdCV
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0NyBTYWx0ZWRfXxDITBkFsvNq5
- 1XO17qxeic+Q/VS0UGGk3DK0e2iI9QcVrdyIy+7vOSH5tkD3H29MxTC/KZ69G0ldfEA2CSZzY2Y
- eNe/WC5ZWl94YccQUTMVbPDEi+Qxgle9ahOHB1Tla/oL8SwjPULCYeedGYN+eESrB3YMCT6bF6h
- PeGM2m8GrmPgB8Lrg+9N1mFkg81AG+DCIy91PhpJMlv93XYWKJ0+5RMSufgH3OLHXE3gptcwjiW
- d2pjhBzUfCKU4b6wLr1tRppHNqVS6EOAhrSuPDJrqpfWPHVeDch/hW7QC8CnqU2lAW16XxR5gI8
- RbxoM8ArrZM1P+FR74d2v+2cODknmU0NnCPe0ozmjyE4oPBMpN1g+x72wtquu0=
-X-Authority-Info-Out: v=2.4 cv=KNtXzVFo c=1 sm=1 tr=0 ts=69ac44ff
- cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=L1bH-B2CdzmaWMF7168A:9
- a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: b3YGGUXZw5iHW2O_791YHL0JyrQNUdCV
+X-Proofpoint-ORIG-GUID: Br5hv4kUyTGacZ4R-mybtFcNc1tXxyWb
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfXzQsMxclCsRgP
+ Nez6D5ZQh7nBUGHOHkb6Inthsbj5COSA7AKuKNz6Na3zDogAC8CbvSEZePPjqXQyJS176A+VXyi
+ 6sO/kqF3fBSEWJCNrlfk+oHwictq+uEpjJ4WiAU7dfcMPMoSfYA+VOTDoVrvRVdT3soOEbqSsAW
+ YRdJrAmEO8tPehasCpN8253whoieGK4uRg5hnQlU49R+XR6IJ0G6+i/IZC8JiWNSCgWPY4Smvyi
+ hklWg5N+YkRdie7QxWY+qEhXkDN7PH0P6xAL0JPCJCgVV9E5kBnQYNv1ZdYftO0DsmsiMkRps11
+ mttVpCzh+oWpK0/CWZ/vN87Oxa1Iu51Q2r6jsrgPT51sg7whB9HiP6/9B8VE5c=
+X-Authority-Info-Out: v=2.4 cv=FcI6BZ+6 c=1 sm=1 tr=0 ts=69ac4719
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=KKAkSRfTAAAA:8 a=prbQHjbDPxtVlcUdaJMA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: Br5hv4kUyTGacZ4R-mybtFcNc1tXxyWb
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- malwarescore=0 bulkscore=0 mlxlogscore=578 suspectscore=0 clxscore=1030
- phishscore=0 mlxscore=0 lowpriorityscore=0 spamscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 adultscore=0 suspectscore=0
+ clxscore=1030 phishscore=0
+ bulkscore=0 mlxlogscore=975 lowpriorityscore=0 mlxscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603070147
-X-JNJ: AAAAAAABFb9DsRDarQcWzsjiyNiMVxYMz//2CyvvxT8foLJgWyGHUeUhhkw0RnNqO/cdESWnLoo+orQtEeChqsyGzdJ8/oQKGJh1nIGUxQeo00H7mftNufSmjXaR+80/YQajK6aHVQoPdlUeUis45r9U3iNqoiFNhlTXqJtZoIEn50ts0bhEQk9nFAP3jSSICnT3LcM4gO6fpqmbNuZ8xjBPyLSbvVREBjsCetltGIlN3zd5+VdDiDfT2lCVUCU1YwVJtWpxaAR4F+iRNuFAL+yFxF9UC2hKJ00xOUUIrBTQdQf6VoubY9bxYJUSu390OLg1JDbdqHYqq4kzz4zsY9tC9sL0Nf0G1hz+xNgMsezAJJO3PK5mszm3/uIFFwK8GX/JhFFimbvNebkDdxLtXQ3rlVMkTrd8OJxOJKSTKJsz1DbgMtvgyT5H5Tv+H+eq9M2N+xHT/e3RahX5UD6xcJXJPn1vYGQBUGMG86k7GCTpLNkEv8Y3ToN11panf+8/EmjJ1J9gtk1a5N56KE4fH+XvqjyWJffdpgXSNSCvREarshXiVFWRtWbb3N0J2xNvt3gmqWBIKcHTA6BBwqOdZ3MLOLTaam3XCwWuj5D0UfaK1stUKB0rPwP/B9NjSugbSZusOu1VYrDAEa6HcjqdJmjO6B2lqgyLxnnT9/2scbpF2pLzwsaJIk+kVceitMWv+KQls5ZSzfI9B+Qe+mP4fNCbHdEFmBn0KNd+GrOXIWyJ4SqwFKpefnPTrk3C5w==
-Received-SPF: pass client-ip=57.103.71.33;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ definitions=main-2603070149
+X-JNJ: AAAAAAAB2si0L1mH7Gwh7fHTGZqa89095+ufJf1IH9/qUVJ7/1g5VWBgWU+BGVMZuq+KZaKnp6QUQwOz/C9wF+BzyeKUWKfEsyYOdvl3NL4vdQ/5YlIrGbIeu7045ZSHXKpqk54JqhvRPSwrPEOb7iuAJcnbEeWosZChvewfQe2gwaeMQGznM/hhopQZCYENSgq0KqB49VoV8u5/o3VUGZ5p1XCO6Cdu3yH+Y3dIN7bYlwYdD/uT4qXTJb4Acn4g5jggKpS6fC5tAF9mPx10Eru/7KWu2xfKS4atDm+Qek3kOCW1KkSfaDgXTn7XCxWqf/aNB3hzabbNyEPw33OyJskXnNz8dugkrJV5oWmglH31WuXhTRAxYYVbRdCzjSv7z34hzUQXLdZqUtJNMnFMX/PYIRA7ay9cbIf3sqGX7GNFBwuU4z4Av2ynmSfqxZIZ48KRpY+BSzi7y8h5iv3NEjQZXHBn/y4cZwPxX5eK8ukNbx7kIqKFLT1Rz0nU1LcuWM4sgnmCxKRhf21opscgSUL+4iqr6RH1FJZL5aQn69+rti3EvcKRbvMRKg0QGy0feypJMr7bplor0/vR717y9fBbacroOcPFaDSd5DupYI6+TIwr7oPQlhmzcEYKNneNYoD0alLaWyWcizBINAXANGp3wJP+C4PZXElCbVoHU6asTR6XT7V9RW+oS3wH+GYnARyOQP+MfoUKJnPEAyVoo41qJMeUFrIXxZ1rLzMBlzyloFA/DzyEX+L0KDFYdwMIRlyTFyZdV6BA3XFewLspFzf3eTZyY4ZmpyKsJBG2iAso2g==
+Received-SPF: pass client-ip=57.103.84.74;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -100,62 +100,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-HVF traps accesses to CNTHCTL_EL2. For nested guests, HVF traps accesses to MDCCINT_EL1.
-Pass through those accesses to the Hypervisor.framework library.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+../target/i386/hvf/hvf.c:476:31: error: use of undeclared identifier 'cpu'
+  476 |     X86CPU *x86_cpu = X86_CPU(cpu);
+      |                               ^
+../target/i386/hvf/hvf.c:479:24: error: use of undeclared identifier 'cpu'
+  479 |     env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
+      |                        ^
+../target/i386/hvf/hvf.c:480:24: error: use of undeclared identifier 'cpu'
+  480 |     env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
+      |                        ^
+../target/i386/hvf/hvf.c:481:23: error: use of undeclared identifier 'cpu'
+  481 |     env->cr[2] = rreg(cpu->accel->fd, HV_X86_CR2);
+      |                       ^
+../target/i386/hvf/hvf.c:486:31: error: use of undeclared identifier 'cpu'
+  486 |     X86CPU *x86_cpu = X86_CPU(cpu);
+      |                               ^
+../target/i386/hvf/hvf.c:489:11: error: use of undeclared identifier 'cpu'
+  489 |     wvmcs(cpu->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
+      |           ^
+../target/i386/hvf/hvf.c:490:11: error: use of undeclared identifier 'cpu'
+  490 |     wvmcs(cpu->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
+      |           ^
+7 errors generated.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ target/i386/hvf/hvf.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f6385532f3..03b174a8d4 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -296,6 +296,10 @@ void hvf_arm_init_debug(void)
- #define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
- #define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index a70f8461b0..c0d028b147 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -472,21 +472,21 @@ static void hvf_cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
  
-+/* EL2 registers */
-+#define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
-+#define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
-+
- #define WFX_IS_WFE (1 << 0)
+ static void hvf_load_crs(CPUState *cs)
+ {
+-    X86CPU *x86_cpu = X86_CPU(cpu);
++    X86CPU *x86_cpu = X86_CPU(cs);
+     CPUX86State *env = &x86_cpu->env;
  
- #define TMR_CTL_ENABLE  (1 << 0)
-@@ -1704,6 +1708,14 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        if (__builtin_available(macOS 15.0, *)) {
-+            assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-+        }
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_ICC_AP0R0_EL1:
-     case SYSREG_ICC_AP0R1_EL1:
-     case SYSREG_ICC_AP0R2_EL1:
-@@ -1992,6 +2004,14 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        if (__builtin_available(macOS 15.0, *)) {
-+            assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-+        }
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_LORC_EL1:
-         /* Dummy register */
-         return 0;
+-    env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
+-    env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
+-    env->cr[2] = rreg(cpu->accel->fd, HV_X86_CR2);
++    env->cr[0] = rvmcs(cs->accel->fd, VMCS_GUEST_CR0);
++    env->cr[3] = rvmcs(cs->accel->fd, VMCS_GUEST_CR3);
++    env->cr[2] = rreg(cs->accel->fd, HV_X86_CR2);
+ }
+ 
+ static void hvf_save_crs(CPUState *cs)
+ {
+-    X86CPU *x86_cpu = X86_CPU(cpu);
++    X86CPU *x86_cpu = X86_CPU(cs);
+     CPUX86State *env = &x86_cpu->env;
+ 
+-    wvmcs(cpu->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
+-    wvmcs(cpu->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
++    wvmcs(cs->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
++    wvmcs(cs->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
+     wreg(cs->accel->fd, HV_X86_CR2, env->cr[2]);
+ }
+ 
 -- 
 2.50.1 (Apple Git-155)
 

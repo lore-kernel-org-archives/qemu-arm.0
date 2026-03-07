@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE27F513F1
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5323EFCB638
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:43:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vytn9-0001Jf-7E; Sat, 07 Mar 2026 10:42:11 -0500
+	id 1vytmN-0000jV-J7; Sat, 07 Mar 2026 10:41:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytmc-0000qy-84
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:47 -0500
-Received: from qs-2002e-snip4-4.eps.apple.com ([57.103.87.175]
+ id 1vytmI-0000hl-Fi
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:19 -0500
+Received: from qs-2004h-snip4-1.eps.apple.com ([57.103.84.74]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytmU-0001zv-OS
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:35 -0500
+ id 1vytmH-0001uy-2Q
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:18 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
- C03231800AA7; Sat,  7 Mar 2026 15:41:23 +0000 (UTC)
+ D854B18000BC; Sat,  7 Mar 2026 15:41:12 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772898087; x=1775490087;
- bh=rK6/RxrpYBwJeZsqHscQwDSrvNy3tiDTtCWW5H3KBO4=;
+ s=sig1; t=1772898076; x=1775490076;
+ bh=XrC+A2cdwnTtrklru5J6gKiuM0nyKsFULUgUC4G4lrc=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=KRMiGTIJdgJ2coAavhvgxRjqcmzCRAHETbR3qfz7Cbv9YyGiXkcnDR1VswsotideXO0B2RWCQs932t3RBcYB6DH8TgLZqS8ArnoHD7/HaZHCJP7Cfmg9wojRonrPFE/ck5sv1A18qtYkOWz6tQWdhvOcaGNr3pwEo1dF+UK2AWixef8TNc71k8Kag69FbWhEtHYNBH9z+fuNvdnebuLGo92tz6CEYpN7W0iAXJ6tSVEn/rnTg8DhU0HjDInWSp/iz71kdzNVFJmVJLFxeUHOCnwnMzxyffldGmvGZ9PafUDKsoh+NqmBMI/14kZGfU3n+toXywRV9foBDSSLXTUxZQ==
+ b=DIPS8MpDjKl5sNNCcaUVFKHmk8sOhNjR+vh/oPZdCaNp2XrJC7Xc1f3LZpAn3PZp05n+i3yvNioqwUfP6HzOK4RSO3UrvBj10CR2BkTjXUB/Loz4Qe8DyM5etlACZOoSMGv9keZzIzgim0p6nF5+CE7YCzb3MvxCK+fqTE4CMFuo70bkdXnPKRLD5t2lEq/S+exaNzCiqrEb2T0Dhw0Wv8q0vvIIAADPCFmPDU/KfkQVD2pXN8sSeLmy0dQF5W6WABZYS0UI8jyOuRFGT6O0vk2r79ftkfFKYvON5J2jG14YToL0h3SzXhFAa42Sy+NFU5CMCnghawYPjSGdkA7BJg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
- 3FF681800AB9; Sat,  7 Mar 2026 15:41:21 +0000 (UTC)
+ 4BBC11825302; Sat,  7 Mar 2026 15:41:10 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -45,36 +45,37 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Wei Liu <wei.liu@kernel.org>, Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v5 8/9] whpx: arm64: enable enlightenments if asked for
-Date: Sat,  7 Mar 2026 16:41:03 +0100
-Message-ID: <20260307154104.84567-9-mohamed@unpredictable.fr>
+Subject: [PATCH v5 2/9] meson.build: older macOS targeting compatibility with
+ macOS 15.4 SDK
+Date: Sat,  7 Mar 2026 16:40:57 +0100
+Message-ID: <20260307154104.84567-3-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260307154104.84567-1-mohamed@unpredictable.fr>
 References: <20260307154104.84567-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: KjKWIqQd49_yxwqcJvSsYhKs07y26Bv-
-X-Proofpoint-ORIG-GUID: KjKWIqQd49_yxwqcJvSsYhKs07y26Bv-
-X-Authority-Info-Out: v=2.4 cv=d5f4CBjE c=1 sm=1 tr=0 ts=69ac4725
+X-Proofpoint-ORIG-GUID: FW8S7K-Y2vpRuCXyuRyrgQDZbwcvliec
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfX9Rx3LngyKgaW
+ i6TbgXH17sBZ91Pwn/D8PSeBc80xSWW7PPt6yKg3DmWcRah4qbnZv6G2qUoK/BeZLwsvfEJgK9g
+ DcG6AI8JjYAG8PiffYqOI5yOEJTMXCxQSnkv+VdUW/Va56PJxAaTYEfHYi+zVRwi7evttnd5ivb
+ 1qMFOU/j5Hhlb59bgmh5XeinXVYZjfoHEmQblDk0IBiFV1NgzHK+oDczwyjbRD+diI7vRhnCRMY
+ aC7nc7auNN0eTbRVSS3eJNUZbqHkx6ydsGIjCODAO3cmQFJq/JxjfsV83TjKuRNePBoGXpJaU8q
+ H1wyI0BpfT6Ozavy/eWw1gMs5m0odejthp14tP2KYs4bF4lTQTLhPgBpNXeSfs=
+X-Authority-Info-Out: v=2.4 cv=XfmEDY55 c=1 sm=1 tr=0 ts=69ac471a
  cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=rOdoSoqhRWX9tc6y9DEA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfX30GYeKfIiC1J
- b8h1jc+FwgjnUUgF74GYnPL30bw5g4alHNAEmxEGqDAKtrLFiCZBNUzzO1xHOfVZoa6MQsPEXJa
- EaIaY/oKvgkh9ktDWl9rWzNJD9MwGi7gvyGy2sb2O9mm5zi54WmY1Nxg3w1vLgvmPxDF8i2/HtK
- trYHo2vQuATRocJbGfeZ9LtaesliWaq7Iqo/czvFvTAmAt6MaRKousqnhKtJnOGC+xDhhlYWDCv
- nfW3+VRqZJkfbxRufSKU7dDNR7P2lQHFkmP+lKK/SKPg76clD5/I+2uNl2jPDjAZpYQ7tOH4EAP
- Huc7UhO7xthFK3j11AQLshkkLzYOK2deDNEt8Rzhf4Zwizi+ZeF2R7kNjy58OE=
+ a=11mQs7XRU_pcqQXa4wYA:9 a=O8hF6Hzn-FEA:10
+X-Proofpoint-GUID: FW8S7K-Y2vpRuCXyuRyrgQDZbwcvliec
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0 spamscore=0 mlxlogscore=796 phishscore=0 clxscore=1030
- lowpriorityscore=0 mlxscore=0 malwarescore=0 suspectscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ malwarescore=0 suspectscore=0 lowpriorityscore=0 clxscore=1030 spamscore=0
+ mlxlogscore=999 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603070149
-X-JNJ: AAAAAAABB66HnjRYpnNyoMpTKdsP/Yb1EXIo38OOp68locp6BEeZ79/ViUXj9RUDCcH2vkKi53QF/blWxtf/e3CpxCP0roLIvdWymWjXe3fBZ18ab/Xb0ff0w312YDwFfRypLuIpiZbSwYxtID/H/bkYudcOfbbzLEwBXAnF4/8FtUShWPqbDpOpM3N3uTd8DqsEXtq938CCErpm9h+rNnX0dviF38039b9BHZsfU+vcPy/idnkRAW8acmA5On5vn6Rct4Yw5XCFzws1J2UkNGGny9m2bezxGLMLfRCXuY5IywdLl6vD5ixIrfEiv69/osIEXz6s9hlAj4RdheSlllaiFx4+WOst3MLqbgH/otPLQY2uOLB65VJLgaZSnvKE5B+gDHUEM1QH0225NevCjujrWUD1bPGFkgpcUi4ECdDNqQ6rGtfPrA++2/FqpnwTVPHTCfg0XcURh8AOBLPeIShlOB7+GjNAtxo7PwkMHY1q7yrYKIk3dX2xg2skcYIszyS7SbkcLNytgsQ1pAyEV68LwbqljfqRRofNQMBLiGPI0giUfQEMCNNRjDRzgI1f/aRQ0KEsDnJVEx3tJDT+nKXDR+EPlGdGaKrAIE1CLuZUxR6TAskgdmiiwYeEuyuftc+BgJKdOsFBKPOFoBNNCYDc8afu8yF3rH21R3uSGclXIEikZkwhqrmM75kfagBotZ1Lnzg8d0HV4+MwEmTtwqgxe5b/U6f9NDTD5+ZJRi8Y5fRWXuS6nv0+TrUybSOkw91rOmDpZO70CeCd9tl7FHtgMN5vHzmgkpLPvHpKGjh2Knw=
-Received-SPF: pass client-ip=57.103.87.175;
+X-JNJ: AAAAAAABJaAZRThjeL+VdbNBBO+NsGQUxrZeLv64CxKjVb8mUKzR8wQ7oH4yfhTREVI49BfUO+unMaYmf0X+osR1F4Kf038V3oMvT/reyzfuTfB2dpH0NFZEA5gVy9UAYBhW32z05f4YrRLZh2LSMhCGlUHnfMkiwzp2iJtnSDIP10Jx5v5tml7rGCgdzK2OXNkN9TsLvw6e2JRcon2OLAAaE6RzyRvd8wpyPFBOwBtSWM8b73lzvjmmFidrdMsWvLQpUv+GrGFSPILdwh5bhtvuxPjZ+3EDsDkFow5QTkmCuKFtt4DYlyKEjR+2GT5QPD9LnQxHK0ww7iz16xU9nsWJINBFscRgBQdCzO4xi1PixoBV6Ipg90ZgsC7STwJho+tDrcdDKLfeNKZ+90swAh+TPHatZZvK9kgz+LzqePIKy1s3ViN9AH+UrBfeQA/yb69TarsgwknNZXcZVIcUoml4ReSCPzD4KpQVzYZ14+N1lUPIKHg/8SLJrXuk9tuoTGN8SugWXx3t/Jr/wD4PBArc6hGCTCG/9O5BOWXGIq+n52MJA8H4IzWcFlsiyWUcRLuMlHq9ExZxSWL/crgHMUhYNcwbesGvKOw4C8NlmDbjgFnu9SZwAxrk7MuW90cCKhADgqn8hk8MqnmxytueJUBjk28Ki4IQSov2OLBfZYsVPGQOVtNKLqT/pU61XGLubB3e03ny5Aeg03xPMh8aqyY05ip/fVkLCtVBq1fbch9tqVgSWZWPO0vmlWeK2G3dSt7+QsIDao3rRa7vjAztJwllo4mbESeRvQzM
+Received-SPF: pass client-ip=57.103.84.74;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
@@ -98,59 +99,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Using strchrnul eagerly results in a failure to compile when using the newest SDKs, with:
+
+error: 'strchrnul' is only available on macOS 15.4 or newer [-Werror,-Wunguarded-availability-new]
+
+Working around that by not using strchrnul when targeting macOS.
+
+This didn't show up on the CI because it used the macOS 15.1 SDK instead of a macOS 15.4 SDK or later.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/whpx/whpx-all.c | 37 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ meson.build | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index c5b108166a..513551bec1 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -940,6 +940,43 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
-     }
- 
-+    /* Enable synthetic processor features */
-+    WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS synthetic_features;
-+    memset(&synthetic_features, 0, sizeof(WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS));
-+    synthetic_features.BanksCount = 1;
+diff --git a/meson.build b/meson.build
+index 7b4e5bc72b..78bde0611b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -2646,7 +2646,12 @@ config_host_data.set('HAVE_COPY_FILE_RANGE', cc.has_function('copy_file_range'))
+ config_host_data.set('HAVE_GETIFADDRS', cc.has_function('getifaddrs'))
+ config_host_data.set('HAVE_GLIB_WITH_SLICE_ALLOCATOR', glib_has_gslice)
+ config_host_data.set('HAVE_OPENPTY', cc.has_function('openpty', dependencies: util))
+-config_host_data.set('HAVE_STRCHRNUL', cc.has_function('strchrnul', prefix: osdep_prefix))
 +
-+    synthetic_features.Bank0.HypervisorPresent = 1;
-+    synthetic_features.Bank0.Hv1 = 1;
-+    synthetic_features.Bank0.AccessVpRunTimeReg = 1;
-+    synthetic_features.Bank0.AccessPartitionReferenceCounter = 1;
-+    synthetic_features.Bank0.AccessPartitionReferenceTsc = 1;
-+    synthetic_features.Bank0.AccessHypercallRegs = 1;
-+    synthetic_features.Bank0.AccessVpIndex = 1;
-+    synthetic_features.Bank0.AccessHypercallRegs = 1;
-+    synthetic_features.Bank0.TbFlushHypercalls = 1;
-+    synthetic_features.Bank0.AccessSynicRegs = 1;
-+    synthetic_features.Bank0.AccessSyntheticTimerRegs = 1;
-+    synthetic_features.Bank0.AccessIntrCtrlRegs = 1;
-+    synthetic_features.Bank0.SyntheticClusterIpi = 1;
-+    synthetic_features.Bank0.DirectSyntheticTimers = 1;
-+
-+    /*
-+     * On ARM64, have enlightenments off by default
-+     * as they're not needed for performance.
-+     */
-+    if (whpx->hyperv_enlightenments_required) {
-+        hr = whp_dispatch.WHvSetPartitionProperty(
-+                whpx->partition,
-+                WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks,
-+                &synthetic_features,
-+                sizeof(WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS));
-+        if (FAILED(hr)) {
-+            error_report("WHPX: Failed to set synthetic features, hr=%08lx", hr);
-+            ret = -EINVAL;
-+            goto error;
-+        }
-+    }
-+
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
++# strchrnul was introduced in macOS 15.4.
++# Keep this condition for compatibility of new macOS SDKs with older releases.
++if host_os != 'darwin'
++  config_host_data.set('HAVE_STRCHRNUL', cc.has_function('strchrnul', prefix: osdep_prefix))
++endif
+ config_host_data.set('HAVE_SYSTEM_FUNCTION', cc.has_function('system', prefix: '#include <stdlib.h>'))
+ if rbd.found()
+   config_host_data.set('HAVE_RBD_NAMESPACE_EXISTS',
 -- 
 2.50.1 (Apple Git-155)
 

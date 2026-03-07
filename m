@@ -4,94 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB394FCB63F
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:43:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A0EF5141C
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:43:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vytnn-0004I8-AN; Sat, 07 Mar 2026 10:42:51 -0500
+	id 1vytmZ-0000qM-SN; Sat, 07 Mar 2026 10:41:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vytnm-00048W-8P
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:42:50 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vytnj-0002cn-TJ
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:42:49 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48371bb515eso151812095e9.1
- for <qemu-arm@nongnu.org>; Sat, 07 Mar 2026 07:42:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772898166; x=1773502966; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YxXcgTIjs3O9IFx8gABZ9Om88U+wQy7QKGtyc8xrz4s=;
- b=bHSTXC41eCO1fZhYWiunqf0MfcjmtfNkedciVsxoZIShmvUefcZ/8GA0WR2ypnVsLw
- WlJzXQOUGasFz4f/ULCJX37cGeUb5pMxdMg3bJ4LUMcy+zqBSDA9Vc49gQ7zN91icIdU
- 5Px8vZZvhefXyaw8eRIMWfMaP81FuqtfBX8qYjaCcMbtNfXUv773jZhjid8zPZE3dWs/
- hts4N3XH+UzGiQZT2HqInRPNuUuTdhCo3Qk73g3+j5oHICayAay2atM/PpVbeqw833sG
- 6QEKuXh+GZvvs/F4RfNbkZS8V18cm5bD9MH6VZL30X8Op+O6O5wuWcjEQPbSZFuBnbSz
- 6hGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772898166; x=1773502966;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=YxXcgTIjs3O9IFx8gABZ9Om88U+wQy7QKGtyc8xrz4s=;
- b=bZ8UJeh1QJkaMwkjksOH+Lpfr9I9Ppis1wzIS80CMXpwrxw00biy5adbFXip02J1Jx
- r66rqkv3d/UAoZpcowpScjAR2X7sZrMxg4cINiDN0SvfKcFkkofBOgHk945dDc1H0M9F
- GoVK/DXdbc2CN5w5NEZdxbL1YChxFlo3j7qXFcj3AtT6jlZPMvbQueIMN8DDX3UO9R32
- AlYJivPnNRA8jbvxRAD1qrqH416Yg8J+NigiLu5HGO8q2aeEyy3VGUCAN/nJIlRsWbbx
- 1+y6bwUom83tQpy7TU3R4qDGNgjboK937hYhH5dUU8hF02frLUFIWSCqAy6b+xqDHyIa
- ipuA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW8wGQ67hRoAhjDQHy1Mb3/pSLCyeehf7jo+97kNXyGiTt9ySLCxWfn1XOCEMVO1NdZ/2IDKO1bAQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzow61s9M4N6aFEksof9ytKBOD3Wm5Whf26qV9zrQ4fzqAUPsH1
- N+zILddHBHxO29/z2NxsUg0UO+pLiQJlPvc5700tWNxrBmRvhR/6ZzJYVK0i/Jx0tVE=
-X-Gm-Gg: ATEYQzy7dX/sfnVa9vFTAV9Po3JScp6Tc06oDPMsqvxjzU1NuOSPXE+GFShyLw6fz3V
- pwrwROnnyiboAvLcj96rIOFytwUyLlzJYDan02DmtCN2Sez1pr9pVfLp9gTaelrpAakPcetTW/c
- 5czJsYQnOMEOLlr9OtplSfp2phGavrgQL7D7ZtkSRzREgoLkIbQ3sAn5wREh0xPG2Zkm18qoK7B
- nLi5V0Aks1Y3e30cpv/b4qvUQS3l07AC8CAvHNPYfTfq8+w+2b9XEQyXeQRjatBrI+jSAyzNf6t
- kgLcZP90HodAvCnNHpLh+myxY5OHqVe9uwdMTsY+JAQMXX5H89caFakL14oogWVA6GSgRMLmy4S
- 1eI3ZF8FaeRlE/hYTHSMwImz1210AYCOyTGE2o5ePciMWTtdTwbXKkIXdRWeoO6Stk4EMkPTjKF
- KcrdBb7eBtwp8bAzd3WPM0V1npVOt/X8LBiVmC7tucKhWzb5cGZWgi6VEDtx1yPajGsHI/9TwM
-X-Received: by 2002:a05:600c:3b9e:b0:483:498f:7953 with SMTP id
- 5b1f17b1804b1-48526966364mr100848005e9.28.1772898166167; 
- Sat, 07 Mar 2026 07:42:46 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-485237dd017sm44629195e9.2.2026.03.07.07.42.45
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 07 Mar 2026 07:42:45 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vytmP-0000lv-Vj
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:27 -0500
+Received: from qs-2002e-snip4-2.eps.apple.com ([57.103.87.173]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vytmO-0001wS-Kq
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:25 -0500
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
+ 3B1D31800AB6; Sat,  7 Mar 2026 15:41:19 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1772898084; x=1775490084;
+ bh=hU9b4QgrAVOJZL2ae+ekCv8Jv6hLyKsDZdmc9E/YO7k=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=HNq2crs+OmgZCxbQ5wY1eDfUpkBeQj4sSDBAfyhhJQOVEzInUCduP7oD99TK8y3w9uHA5px3GxlkuJVkSvGl76GewSPKrY/etEWv5fFYRNP+OtQ80WTyFqq1M7zylfirFFUkrzWatsDljzsHLAbjCycAM4AFEP3ZhdQUm19Qct4aPXo9aJs6CNswAIk1/bvW+vD9+NRT+3jSclR8dty/EKy0yZSXeL/69jJQ80tAroxeyErux5DtscKfrPBX8SQgECZ7CvfFwmipSwoT5ggATAvOagFuuMT0bH2xX2tj7QojRMcrVTIdfexqH8+5vbXsjL8Fl/kbMzSUMu0paAxiOg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
+ 999781825304; Sat,  7 Mar 2026 15:41:17 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
-Cc: Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: [PATCH 6/6] hw/rtc/pl031: : Remove PL031State::migrate_tick_offset
- field
-Date: Sat,  7 Mar 2026 16:42:02 +0100
-Message-ID: <20260307154202.86309-7-philmd@linaro.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260307154202.86309-1-philmd@linaro.org>
-References: <20260307154202.86309-1-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Wei Liu <wei.liu@kernel.org>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v5 6/9] whpx: i386: enable some more enlightenments
+Date: Sat,  7 Mar 2026 16:41:01 +0100
+Message-ID: <20260307154104.84567-7-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260307154104.84567-1-mohamed@unpredictable.fr>
+References: <20260307154104.84567-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Authority-Info-Out: v=2.4 cv=fuLRpV4f c=1 sm=1 tr=0 ts=69ac4722
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=lWQTlSF5RC17BzGQrLAA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfXxKwKIDIZYqtO
+ bpcsnm6S/Wj1vngMG4Bh3E+n7CyKIsjhMJVdTPCJxIkMSQl9lXs3timtM1zLODApFViEzLgibrh
+ PyRKzVbXELHpJO8sZAx+0MA4b/cgr2mgZTgSuO943eGkwQgBBX7ET0A8U6MauKt4w1Z5LaSy6k2
+ QCrUvZ4Hp7APHmsAHOlPwO/NeH2THbWmVbSJWe97MgiGORuvHRQfOqwp5x508madsp4zd8fd/j1
+ 7G5KC6IlubwO0A7B/2gZNsuKaElXaewSJo8PayT/Nw73qZ8+XlZlmDFIYjlZUZogP7zr73Gs+fm
+ q1AT5PnoXXYiial/a3qIwqX1V3fBL5gstL8HFEgcv5CgjRdr0L1bYTJLYbDg2Y=
+X-Proofpoint-GUID: zpoUmwZjgcj_dQzpZ3zTb2BdzC6NpzkC
+X-Proofpoint-ORIG-GUID: zpoUmwZjgcj_dQzpZ3zTb2BdzC6NpzkC
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ spamscore=0 mlxlogscore=871 mlxscore=0 adultscore=0 lowpriorityscore=0
+ malwarescore=0 suspectscore=0 bulkscore=0 clxscore=1030 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603070149
+X-JNJ: AAAAAAABpxHmNcaiyzl+mZ35UPPkjk1G+v4K9vAG3yJO+qEXhDSxATWdjGZmwODZ3LyxfaJkcQtSRA8Vs5TrsFvIZ0QFZ2TQZkpOkqoNTsDsk/wIhZD6ciNcsLnc4xNGCrx7UGq2hngG8QJCPoMtjpcRDCUmwryVY5vTrwWrjairtXbFMpxgWfg+GCmpGY0wgwyUgeIRVWddJLn2IckauegMlIXeXe4owOh8M2o/UmNiHGkZ7tf7NDJ1OkFxkTsr3vetMGVpwZ3HBDugjlOJ9kO+ECwFqA8GgwSigFYBV/mJpwKArajI/h/N8TyYF9ztEgJsUO60wANXwKnlabXD9GBBAjqQO8zgBQRu9B/jCRSDGr+fmnyToZQNMQsUCWZmalVCniQbOwjZUalTrsahmmk1OwkgZQwqBlFn/7JgxflIMYQ5evxoY3IbnCtKqdiYnWOF7T/IpBNbwtMUODqqKhYzHqHCDWJAtUMoLpkinpva+enRvoh8ChLVVUi1CbuZ18iJScu394T2Sy8eln9bfLZtq0zW3NsXs8pfQNvQXOsy3kefMtpdvzUXjmjFaxFFiuL4iDFJ2K+xb3377Ay524SdTqYtmgvfZg8foQtTAfwNzvCOlmykta5a4PCphngPReVRVBbJq3aE2bmRHlfgvgBKbHdGHE+1H1rgOGwetgEoH3nuQYJOKD9d78TuoUtb2Vp6XU9Z+K116zPjoRk+vIzfYg2gI7fFX5o1k0bNIzLdpdTshZ0mQuky54kF6hc1ZKSF3p2Z6PARFTe3gG8F1g==
+Received-SPF: pass client-ip=57.103.87.173;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,80 +98,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The PL031State::migrate_tick_offset boolean was only set in
-the hw_compat_4_0[] array, via the 'migrate-tick-offset=false'
-property.  We removed all machines using that array, lets remove
-that property, along with the pl031_properties[] array which is
-now empty.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- include/hw/rtc/pl031.h |  1 -
- hw/rtc/pl031.c         | 22 ----------------------
- 2 files changed, 23 deletions(-)
+ target/i386/whpx/whpx-all.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/include/hw/rtc/pl031.h b/include/hw/rtc/pl031.h
-index c8b26c2f00e..75779c63122 100644
---- a/include/hw/rtc/pl031.h
-+++ b/include/hw/rtc/pl031.h
-@@ -36,7 +36,6 @@ struct PL031State {
-     uint32_t tick_offset_vmstate;
-     uint32_t tick_offset;
-     bool tick_offset_migrated;
--    bool migrate_tick_offset;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 9c60295d55..bc82995b33 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -2214,9 +2214,12 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
  
-     uint32_t mr;
-     uint32_t lr;
-diff --git a/hw/rtc/pl031.c b/hw/rtc/pl031.c
-index b56877c3a20..09d1b15c779 100644
---- a/hw/rtc/pl031.c
-+++ b/hw/rtc/pl031.c
-@@ -278,18 +278,10 @@ static int pl031_tick_offset_post_load(void *opaque, int version_id)
-     return 0;
- }
- 
--static bool pl031_tick_offset_needed(void *opaque)
--{
--    PL031State *s = opaque;
--
--    return s->migrate_tick_offset;
--}
--
- static const VMStateDescription vmstate_pl031_tick_offset = {
-     .name = "pl031/tick-offset",
-     .version_id = 1,
-     .minimum_version_id = 1,
--    .needed = pl031_tick_offset_needed,
-     .post_load = pl031_tick_offset_post_load,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32(tick_offset, PL031State),
-@@ -319,25 +311,11 @@ static const VMStateDescription vmstate_pl031 = {
-     }
- };
- 
--static const Property pl031_properties[] = {
--    /*
--     * True to correctly migrate the tick offset of the RTC. False to
--     * obtain backward migration compatibility with older QEMU versions,
--     * at the expense of the guest RTC going backwards compared with the
--     * host RTC when the VM is saved/restored if using -rtc host.
--     * (Even if set to 'true' older QEMU can migrate forward to newer QEMU;
--     * 'false' also permits newer QEMU to migrate to older QEMU.)
--     */
--    DEFINE_PROP_BOOL("migrate-tick-offset",
--                     PL031State, migrate_tick_offset, true),
--};
--
- static void pl031_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->vmsd = &vmstate_pl031;
--    device_class_set_props(dc, pl031_properties);
- }
- 
- static const TypeInfo pl031_info = {
+     synthetic_features.Bank0.HypervisorPresent = 1;
+     synthetic_features.Bank0.Hv1 = 1;
++    synthetic_features.Bank0.AccessVpRunTimeReg = 1;
+     synthetic_features.Bank0.AccessPartitionReferenceCounter = 1;
+     synthetic_features.Bank0.AccessPartitionReferenceTsc = 1;
++    synthetic_features.Bank0.AccessHypercallRegs = 1;
+     synthetic_features.Bank0.AccessFrequencyRegs = 1;
++    synthetic_features.Bank0.EnableExtendedGvaRangesForFlushVirtualAddressList = 1;
+     synthetic_features.Bank0.AccessVpIndex = 1;
+     synthetic_features.Bank0.AccessHypercallRegs = 1;
+     synthetic_features.Bank0.TbFlushHypercalls = 1;
 -- 
-2.52.0
+2.50.1 (Apple Git-155)
 
 

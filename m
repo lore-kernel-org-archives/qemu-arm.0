@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12A4CF5141C
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834D9F513F1
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 15:42:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vytmJ-0000i0-Da; Sat, 07 Mar 2026 10:41:19 -0500
+	id 1vytmP-0000lD-Eq; Sat, 07 Mar 2026 10:41:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytmH-0000gw-4K
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:17 -0500
-Received: from qs-2004h-snip4-1.eps.apple.com ([57.103.84.74]
+ id 1vytmN-0000j4-6R
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:23 -0500
+Received: from qs-2004h-snip4-11.eps.apple.com ([57.103.84.83]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vytmF-0001uU-M7
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:16 -0500
+ id 1vytmL-0001vm-AO
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 10:41:22 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
- 0CD081800A8C; Sat,  7 Mar 2026 15:41:10 +0000 (UTC)
+ 8C2251800ABE; Sat,  7 Mar 2026 15:41:16 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772898074; x=1775490074;
- bh=+NoH88IZWNOWXHn7XiZHTQBxVxI8RNautRlaqzdVGdA=;
+ s=sig1; t=1772898080; x=1775490080;
+ bh=yWjafZ03qoa8K6aHIxNQpbKVyqmuGjHcqx92A0qwutY=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Y23r2EG39LyxkyLoIR/+z3jnCquCa7SOERCabDpZxurrpIzDJTwosKfHKmUCCwO6Ba4VCv0H4bBfDMpOX2efUWypfVO5ibsEKJanHg8pgRPyokA4nm8Pb35+paaEb/sFpyTAPMGxroW8zRH5zVsAhYX2iLwJyEjjKT/9wUADoaVtcJXGM+wQLkCv2dO5XKMHvz8ku9Poo28B7QBFOQ3X8XB1CbdZ1yXbP/tKi1ZInIOmdMuTMm3v7xDXaAgfxL+vxY5T5ka7ORZgvVEfojW9Z7kht6iUq90cBYeZE8tI/4AqDAXdAy6jzR6t+MI6x0OlDL3bKmQ5S3JJdzB2nkUirQ==
+ b=JTVnUUxmGBxvUBTj5cKFn22dAukErQiTXQBnauf6EANwS1yjsZdn+kAvnVktgiav7O7UO1uKi39ZKZ5OjNl3gJ2lyAAfS7hyEPCEmIwMLV5fym9LT7Eeq07bA/BYzj+ejACiVEXIeP271rln4qpbOP/hvzC9ZUB5UHXDOjM/N/rb0lQvHFCVk7TZ5IyLh1634nl50AEA89vYhqAv6uPVy2CZe2ZxqP+khiXAlkGdcYD5DLx6DeqRrfW8qfsiQFo128rBW4paKV2DKc8aTAiNgyEOlZ89OJRyCSk0/ZZPOiy4XsN/YqOkmFGVygmhefQie8FyVKiJ3DS6OPASkpesig==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
- 618A8180089E; Sat,  7 Mar 2026 15:41:08 +0000 (UTC)
+ E4CAC1800AB8; Sat,  7 Mar 2026 15:41:13 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -44,47 +44,48 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
  Wei Liu <wei.liu@kernel.org>, Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5 1/9] target/i386/hvf/hvf.c: fix compilation
-Date: Sat,  7 Mar 2026 16:40:56 +0100
-Message-ID: <20260307154104.84567-2-mohamed@unpredictable.fr>
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v5 4/9] whpx: i386: do not enable nested virt when
+ kernel-irqchip=off
+Date: Sat,  7 Mar 2026 16:40:59 +0100
+Message-ID: <20260307154104.84567-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260307154104.84567-1-mohamed@unpredictable.fr>
 References: <20260307154104.84567-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: Br5hv4kUyTGacZ4R-mybtFcNc1tXxyWb
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfXzQsMxclCsRgP
- Nez6D5ZQh7nBUGHOHkb6Inthsbj5COSA7AKuKNz6Na3zDogAC8CbvSEZePPjqXQyJS176A+VXyi
- 6sO/kqF3fBSEWJCNrlfk+oHwictq+uEpjJ4WiAU7dfcMPMoSfYA+VOTDoVrvRVdT3soOEbqSsAW
- YRdJrAmEO8tPehasCpN8253whoieGK4uRg5hnQlU49R+XR6IJ0G6+i/IZC8JiWNSCgWPY4Smvyi
- hklWg5N+YkRdie7QxWY+qEhXkDN7PH0P6xAL0JPCJCgVV9E5kBnQYNv1ZdYftO0DsmsiMkRps11
- mttVpCzh+oWpK0/CWZ/vN87Oxa1Iu51Q2r6jsrgPT51sg7whB9HiP6/9B8VE5c=
-X-Authority-Info-Out: v=2.4 cv=FcI6BZ+6 c=1 sm=1 tr=0 ts=69ac4719
+X-Proofpoint-ORIG-GUID: cxsBDsXAtHxL4iMZduF_SEGx_rEsCjNx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE0OSBTYWx0ZWRfX07Wb6XH5JVMo
+ AYBsIvdctHd+cbBxYLaNz+tbpPUKDDnMad1WdjfAJOrdFUIG/l2lSvvDmxal4Ju5rbznFykNpFK
+ NZcmXkN4RIhhcJKdaPcY73CkCX6lRYyBxmRnQc5gQoTcSMDoc0pVkEirrOzXxHMyhASoVspbWSM
+ dZjrSUzZJWxjaNujniO8vy3Dc3dOoWvKxx1OSHPdymyuTwoveGI1CYO5PtWuU+zAY4q3ySljm96
+ eQhCcKiIhhYvo5gAZh8/ft8RwYKGbF7QIXMQ04JItC/1shbBmDxyEb5MBS3X7eR0qr/Ip7tVEAG
+ KQM9gBTmZOnfg5+b5iUkXCUyvQKXLThsn80pNbnpbn8jJ8XTBawfqJLKUx3cxU=
+X-Authority-Info-Out: v=2.4 cv=SPhPlevH c=1 sm=1 tr=0 ts=69ac471e
  cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=prbQHjbDPxtVlcUdaJMA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: Br5hv4kUyTGacZ4R-mybtFcNc1tXxyWb
+ a=eKpLbWQDCUPTAuIwU-0A:9
+X-Proofpoint-GUID: cxsBDsXAtHxL4iMZduF_SEGx_rEsCjNx
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 adultscore=0 suspectscore=0
- clxscore=1030 phishscore=0
- bulkscore=0 mlxlogscore=975 lowpriorityscore=0 mlxscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ phishscore=0 mlxscore=0 lowpriorityscore=0
+ clxscore=1030 bulkscore=0
+ malwarescore=0 adultscore=0 mlxlogscore=942 spamscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603070149
-X-JNJ: AAAAAAAB2si0L1mH7Gwh7fHTGZqa89095+ufJf1IH9/qUVJ7/1g5VWBgWU+BGVMZuq+KZaKnp6QUQwOz/C9wF+BzyeKUWKfEsyYOdvl3NL4vdQ/5YlIrGbIeu7045ZSHXKpqk54JqhvRPSwrPEOb7iuAJcnbEeWosZChvewfQe2gwaeMQGznM/hhopQZCYENSgq0KqB49VoV8u5/o3VUGZ5p1XCO6Cdu3yH+Y3dIN7bYlwYdD/uT4qXTJb4Acn4g5jggKpS6fC5tAF9mPx10Eru/7KWu2xfKS4atDm+Qek3kOCW1KkSfaDgXTn7XCxWqf/aNB3hzabbNyEPw33OyJskXnNz8dugkrJV5oWmglH31WuXhTRAxYYVbRdCzjSv7z34hzUQXLdZqUtJNMnFMX/PYIRA7ay9cbIf3sqGX7GNFBwuU4z4Av2ynmSfqxZIZ48KRpY+BSzi7y8h5iv3NEjQZXHBn/y4cZwPxX5eK8ukNbx7kIqKFLT1Rz0nU1LcuWM4sgnmCxKRhf21opscgSUL+4iqr6RH1FJZL5aQn69+rti3EvcKRbvMRKg0QGy0feypJMr7bplor0/vR717y9fBbacroOcPFaDSd5DupYI6+TIwr7oPQlhmzcEYKNneNYoD0alLaWyWcizBINAXANGp3wJP+C4PZXElCbVoHU6asTR6XT7V9RW+oS3wH+GYnARyOQP+MfoUKJnPEAyVoo41qJMeUFrIXxZ1rLzMBlzyloFA/DzyEX+L0KDFYdwMIRlyTFyZdV6BA3XFewLspFzf3eTZyY4ZmpyKsJBG2iAso2g==
-Received-SPF: pass client-ip=57.103.84.74;
+X-JNJ: AAAAAAAB0f/ExbjT18k556woQFpY2drdhTqZn5JEEH0s/ddQihxHgzZdgwl1sIg+hmxPqeOGvOToKY+FOpAdVWR9dzgTZUX927d4zQSNJDrS7DZkGnfz1BMyH7KIaooxpzdl+hIVfqCmDBmG50YBMABrx+aFztVttC8tT8/JRyL2GLkqFgXVtu5Bz58zdC8xw8MQRDGUulSp435bodxu0fh6VU2SK2FHQYzv2EX2gsEMjd6D5BPnIkBNJeNnonoZp+GOxy0qMoXSrmKYP5eMG8Ye0jKJ4OW8QQcHR3Htgk2ETMFwrXC4p5L4kEBZFeM17+Jt8qZ9vkEGgkMnjn7yC2p/EIsek0BBE4vyGGIgHRFRnDBl/FSoNInNm4NatbvwJ61+hY9xCBGOAPWfAHmK1XZGUIndxbIL/qgtnTY6vudsN1eO3XcgRS6GV3YflRH5ArF7WomSJdHBd5CdzKqhHQzqKQxwzN2qVZEVDTlq8lz6POe5GNZskYN5+J8KL0Dwut9BwEethOisGAGhpqHsezYCv7MldDjbsTHds50Y+epLuM2RdR/Jdv7fOjdmqdrPNqR1VC428bAUt8wpeBqNbDB1Eo9SOuKSAPiDQYeqm0B0KrO9oDiIpdvvdPzS3iPnuQz6SiTjnJiwVVGM0AncUUhWY1UJXpzDqfNP17KOeC3WZNxMK/JjPnch5DR37VvJZzVGD4d4fErgc497Wu0OJGJANEWtvbufdIOIrNbw/PDvBhDHST83pBq5cDnwGN7MeQXxVxEiyMUQVkqBXZ8FzhX+TztxjweeIwdEn69KaDfUQccWl7V0+IRz6Q==
+Received-SPF: pass client-ip=57.103.84.83;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,70 +101,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+This combination is not allowed as of build 26300.7939 and results in:
 
-../target/i386/hvf/hvf.c:476:31: error: use of undeclared identifier 'cpu'
-  476 |     X86CPU *x86_cpu = X86_CPU(cpu);
-      |                               ^
-../target/i386/hvf/hvf.c:479:24: error: use of undeclared identifier 'cpu'
-  479 |     env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
-      |                        ^
-../target/i386/hvf/hvf.c:480:24: error: use of undeclared identifier 'cpu'
-  480 |     env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
-      |                        ^
-../target/i386/hvf/hvf.c:481:23: error: use of undeclared identifier 'cpu'
-  481 |     env->cr[2] = rreg(cpu->accel->fd, HV_X86_CR2);
-      |                       ^
-../target/i386/hvf/hvf.c:486:31: error: use of undeclared identifier 'cpu'
-  486 |     X86CPU *x86_cpu = X86_CPU(cpu);
-      |                               ^
-../target/i386/hvf/hvf.c:489:11: error: use of undeclared identifier 'cpu'
-  489 |     wvmcs(cpu->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
-      |           ^
-../target/i386/hvf/hvf.c:490:11: error: use of undeclared identifier 'cpu'
-  490 |     wvmcs(cpu->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
-      |           ^
-7 errors generated.
+qemu-system-x86_64.exe: WHPX: Failed to setup partition, hr=c0350005
+qemu-system-x86_64.exe: failed to initialize whpx: Invalid argument
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/hvf/hvf.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ target/i386/whpx/whpx-all.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index a70f8461b0..c0d028b147 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -472,21 +472,21 @@ static void hvf_cpu_x86_cpuid(CPUX86State *env, uint32_t index, uint32_t count,
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index c172e86886..9c60295d55 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -2160,7 +2160,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
  
- static void hvf_load_crs(CPUState *cs)
- {
--    X86CPU *x86_cpu = X86_CPU(cpu);
-+    X86CPU *x86_cpu = X86_CPU(cs);
-     CPUX86State *env = &x86_cpu->env;
- 
--    env->cr[0] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR0);
--    env->cr[3] = rvmcs(cpu->accel->fd, VMCS_GUEST_CR3);
--    env->cr[2] = rreg(cpu->accel->fd, HV_X86_CR2);
-+    env->cr[0] = rvmcs(cs->accel->fd, VMCS_GUEST_CR0);
-+    env->cr[3] = rvmcs(cs->accel->fd, VMCS_GUEST_CR3);
-+    env->cr[2] = rreg(cs->accel->fd, HV_X86_CR2);
- }
- 
- static void hvf_save_crs(CPUState *cs)
- {
--    X86CPU *x86_cpu = X86_CPU(cpu);
-+    X86CPU *x86_cpu = X86_CPU(cs);
-     CPUX86State *env = &x86_cpu->env;
- 
--    wvmcs(cpu->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
--    wvmcs(cpu->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
-+    wvmcs(cs->accel->fd, VMCS_GUEST_CR0, env->cr[0]);
-+    wvmcs(cs->accel->fd, VMCS_GUEST_CR3, env->cr[3]);
-     wreg(cs->accel->fd, HV_X86_CR2, env->cr[2]);
- }
- 
+-    if (processor_features.Bank1.NestedVirtSupport) {
++    if (whpx_irqchip_in_kernel() && processor_features.Bank1.NestedVirtSupport) {
+         memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+         prop.NestedVirtualization = 1;
+         hr = whp_dispatch.WHvSetPartitionProperty(
 -- 
 2.50.1 (Apple Git-155)
 

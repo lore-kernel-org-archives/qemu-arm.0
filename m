@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAD7F55100
-	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 16:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F369F55102
+	for <qemu-arm@archiver.kernel.org>; Sat,  7 Mar 2026 16:22:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vyu6r-0005v9-HR; Sat, 07 Mar 2026 11:02:33 -0500
+	id 1vyuPu-0004ct-9X; Sat, 07 Mar 2026 11:22:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyu6q-0005uP-71
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 11:02:32 -0500
-Received: from ci-2004i-snip4-11.eps.apple.com ([57.103.89.93]
- helo=outbound.ci.icloud.com)
+ id 1vyuPr-0004Z2-UA
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 11:22:12 -0500
+Received: from p-east2-cluster6-host11-snip4-3.eps.apple.com ([57.103.76.234]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vyu6m-0004pw-PZ
- for qemu-arm@nongnu.org; Sat, 07 Mar 2026 11:02:31 -0500
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-0 (Postfix) with ESMTPS id
- DD21F180012B; Sat,  7 Mar 2026 16:02:24 +0000 (UTC)
+ id 1vyuPp-00084J-F1
+ for qemu-arm@nongnu.org; Sat, 07 Mar 2026 11:22:11 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-7 (Postfix) with ESMTPS id
+ CFB1E1800520; Sat,  7 Mar 2026 16:22:03 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1772899347; x=1775491347;
- bh=VtFqobNxz+eAHKsmBEnCemCe2d1yAO1MK7/R7kh/Yh4=;
+ s=sig1; t=1772900527; x=1775492527;
+ bh=Rwu6a4GQR/Fafkutd6iRYbGks+rvieci/uf7WVSt/og=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=NNVp+yx8VbjgLdMvpOKGcjLXIedcfspXvuUwkwlWDzJJy+8VPiVkQkNTTl3ZItpXci3cu74fr6PznJiiz6kj0s3aKnVzU3x4uAxrj8kqzFd8YEzcdYav2hde6cktmzdYbn6AJchWXQx22R2ZJ3lIrk20xmqUzWIg6EhzA5L9dHrxPPuL/Q1yXrLURrZTYyLyQrHhwDkF2J7HgSp4r5r9dlnDqpc2RhGExqu47CHc3hqpBVbR7sGkKI7XOZieoe/GPwpKwXjFEtdR6K7MHI/3KcdyJXysZKL4lLJqrm5+b9huxGGP0kh+PY5VBxo4njVrBhUEwO/vjD90+95Dp+QU3w==
+ b=ezL4QvneMwHNUzmboZrbAEudwwdk1i372+KQc6qxqhSJaZxqIYKTEPrAr683m2OVme+ZNFFJIyVL03sDy1Kpyb71zSYtQu9PoZoc4jfh2uiDtLbH++Jr3CbU0lWc90NQl1eUcZ5JmjwRe1oqWVvVBlNx6mW4J7D0C6T97moBe7bKjz2Iet4wG1SdmCkTcfxBdBtO8BZTipqPSt4Qd4gLllunpJJsU/kg2cbfGY+R6kPnhU+e/KdYlSY/1B3wNKPB4liDYdzU6pKjlvnT7FH37ETcAK+nNm4vJr43G7HEDZpb4/LIhU6UfQYHqF0AkmIMb3bQGaBbS9O64MBpmfPDrA==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-0 (Postfix) with ESMTPSA id
- BFC70180054C; Sat,  7 Mar 2026 16:02:22 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-7 (Postfix) with ESMTPSA id
+ 993051800188; Sat,  7 Mar 2026 16:22:01 +0000 (UTC)
 Content-Type: text/plain;
 	charset=utf-8
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH v5 7/9] whpx: make Hyper-V enlightenments configurable
+Subject: Re: [PATCH v18 05/13] hw/arm, target/arm: nested virtualisation on HVF
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <ef4e4171-e4fe-43a9-91c5-a720ba0612d3@linaro.org>
-Date: Sat, 7 Mar 2026 17:02:10 +0100
-Cc: qemu-devel@nongnu.org,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+In-Reply-To: <d2bd5f90-a0f7-490e-b735-43442f41c679@linaro.org>
+Date: Sat, 7 Mar 2026 17:21:49 +0100
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Wei Liu <wei.liu@kernel.org>, Pedro Barbuda <pbarbuda@microsoft.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <E2315EF6-0393-48F7-BA6D-2ADF18007D8D@unpredictable.fr>
-References: <20260307154104.84567-1-mohamed@unpredictable.fr>
- <20260307154104.84567-8-mohamed@unpredictable.fr>
- <ef4e4171-e4fe-43a9-91c5-a720ba0612d3@linaro.org>
+Message-Id: <E8185464-F6BB-4A50-BE57-EFB2A7F777F1@unpredictable.fr>
+References: <20260307153143.76893-1-mohamed@unpredictable.fr>
+ <20260307153143.76893-6-mohamed@unpredictable.fr>
+ <d2bd5f90-a0f7-490e-b735-43442f41c679@linaro.org>
 To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE1MiBTYWx0ZWRfX4O9HVlQl4Mjb
- MMxLPtlsyzDir/79EAlG8lqCva98gCTl3uHhejoTILLLDQJNpU4S2oQuhn2uLzRVAz9X3dmqXFu
- Rawq6u231K+HZ0Cg5nF4Tn0gEZ6SyWiVjpaMigIIVNhEjauGRksq236sPcev93Ybqf/3K/TWQFz
- jQ5VAKIghA+agyaUNRmics5eWmR7CmpD5mSXngJaZDI6pGqlqZnfy9jEHXxRBeH23aQkmLX7Xyn
- sdavt+4zfoOhsOhs4RQSm1SFKDEykITQEIwqd3KxElSrNnBIF9uylKV5gjqm2IhmBiDBJN42Mqe
- JSnQIkqwZsIADo2amF45mRaDV5NWYbq/Hke4KVwtH5Ufml0EOTyV5l9H+XJ2gc=
-X-Proofpoint-ORIG-GUID: tO0LoZ8Hx4EdUFyW3UMY3PrVR0Yoi3SP
-X-Authority-Info-Out: v=2.4 cv=MNRtWcZl c=1 sm=1 tr=0 ts=69ac4c11
- cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=gHRI74mPg0AvJkQz970A:9
+X-Authority-Info-Out: v=2.4 cv=dr/Wylg4 c=1 sm=1 tr=0 ts=69ac50ad
+ cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=xsIae2ODNr0s6XOKyHUA:9
  a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: tO0LoZ8Hx4EdUFyW3UMY3PrVR0Yoi3SP
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA3MDE1NSBTYWx0ZWRfXyVUNmDK6lCdh
+ 0stW8wXnRvC0fq1+nFFlWJXXvQT2V7x2Eh5f0irLINMM0Vn2YjQtJHkCd5J6B/YpqsTTUBoSFDP
+ ucW5PZtV1OqSyiV7hbqRfz2HnwP2rS1PfACe/XJy1Ia/mgDuz3JCwvZoU8ifDuwDci9P+3ZJ5EE
+ JNH8hr+wTCrkXOp7tyGQVn77UhbNG9w80jodoygrimCjTuwxMxC7r6DtoclAxY8Ic6QR/+L+r5p
+ fA2Y2qF+2eatnpPtSWu/h4PD040qYMuvU1TBROOLEchekzoR4o3hAfdUSLmxOq6G0FHSnE+ptGy
+ PitZbRwddnHuf+c0Fu2zouvlbY8z04wr+S4v/UujNnfkyAdsAgUiH5ol/8AXv0=
+X-Proofpoint-ORIG-GUID: wcwzsuJfLUwPrRPO0lg7XWgpqHKwzdx2
+X-Proofpoint-GUID: wcwzsuJfLUwPrRPO0lg7XWgpqHKwzdx2
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-07_05,2026-03-06_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- clxscore=1030 malwarescore=0 suspectscore=0 mlxscore=0 phishscore=0
- lowpriorityscore=0 spamscore=0 adultscore=0 mlxlogscore=999 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0 suspectscore=0 lowpriorityscore=0 mlxscore=0 mlxlogscore=999
+ spamscore=0 clxscore=1030 bulkscore=0 malwarescore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603070152
-X-JNJ: AAAAAAABjNikGbz3y/amYZpqg94//2XY32lRCRaT/pDRQ2Jzb+EyQ3AtYSXeI99bqc+x05d8p2C7nSdaEnLANJ7gv/p8tKWfzxGuZqagAt4YTDSzP4Bm2ZwvpdPAlfJ5jH6uqfRcoKYViPfMx96PK7eXElrTf+JDX8S4nFJcwfWQ6k8uo38QSK5Qm34ASaUbRYW8GdKS+/MKP8kBFSx7I37/EiJd7ZUscOMXBnWZ3APoYJ3EVBAwBM284wmgkFS+Xjsj1jVUNt0JNez4GpA6LVo+QuuoCogf/EOnupJ+kvMCgZiJAXehu9H5FexNoEodiZlqyZp+wu36yKiFflPM2rqKjzeQboXXPbKfhEW6IW7DMFAD2Dy+/hPpXs7xf50r7OBB5Xr40eTobq2uoCoUQyH/9a/zVOxGGDgnHS9gH6SpuwtiuWhI5WAnOv1RxXXDavz2fAgjPy+941RUAZuW5S2i2gQ/DrCrM3MZ56k5hC56Q+lUE3tQvX4QldD/pCZp9mYTCcuqExS8D8ACr2TR5KZsDwIdX/vmUOZc0lEdRN/9pwb6YDyxMftiEygFhy4Ux8hi60iEAMC3NADQ+3JlYsavNAmHpz3af61w3eVQfT95+ydh4oK+sPpUK3ZJKzfyuTkks2Nskk7xpeCXQH+g6iwTihm1EBd9QEl95RLtZl9XayYz9jraY7IKbj8HrwON03heMWMA4xu2lu4pohtGKGh/tOk6NiBZ4qNx0R7Q/uYYmXnW2Yc0QpS6hrx0hBYxkOG1tczVzy+YB2vsHuvx7akaXwKIRg==
-Received-SPF: pass client-ip=57.103.89.93;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ definitions=main-2603070155
+X-JNJ: AAAAAAABhovdkAHzJ+nXTrhBLVtt/wra4q+bFN4ZtFqMvbySEE/ZE7HsNtf4IrYVsnh2vYxOhIjOnntBiWxna9QlXE9ediDQ8U9q35vXMt+qR5LZBSjbi83lhKF7GTfqhCgsH5qeTy78Rboxmn5LHt34SfOk5vxKNtviLZg9P/AYnbMtVD927PUEwi8ejvpca9aYr/kgXBTbgNmN7RtX3QtQ2hqidRd2SS1EVL8fBJfqv+ycBxBlM4azdq+taO8gorAxTImSbf5jS3cFVN1iB+72Q6+hL9yIJDUw4IO+mXo/RCFkktiYxSfcSf0XElwG0nWebwfWk2B6djzbJFqyIKFnbRDFpYTchfONc1BvVG3L5GnFClt+loi8sYKOGGQxUcsgACQuajIZJXnVvipFQS5zxCkluzyMCBvgpkWGtO4LIn40EPuGPRgU5LrJ2FI5FFGwk2g9ROMY8xiki3Sjkn/+3f/79YuhkAmozL0ZV1mK6y6tWGBlWpMkZYQP+4xFcnA+knmn3Lwmnpi32jH4KBHws+7STkJj1DTwJOjPO90gE7FCCgr7pslAN+xI8ropWtC5q489JsECsi3fi1FwaDutt706o4aSA6oS/EhPkdOCOiyxuXgzvYqeMPGscd5Ve+Fp/dbOH8O6yB+ydWfw+eGXZPMrDzUsJRvBRBfBjMCc+Lal333INs94lKjx5sgycFAmZ4B4KbEJD4GD+IVLnpS+SPQoQUH+
+Received-SPF: pass client-ip=57.103.76.234;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -104,112 +100,98 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-> On 7. Mar 2026, at 16:53, Philippe Mathieu-Daud=C3=A9 =
+> On 7. Mar 2026, at 16:48, Philippe Mathieu-Daud=C3=A9 =
 <philmd@linaro.org> wrote:
 >=20
-> On 7/3/26 16:41, Mohamed Mediouni wrote:
->> Have them be a machine option instead of a CPU one, to have something =
-available, even if not ideal...
->> The existing Hyper-V enlightenments configuration mechanism is part =
-of per-CPU configuration, which happens too late for this.
+> On 7/3/26 16:31, Mohamed Mediouni wrote:
 >> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 >> ---
->>  accel/whpx/whpx-common.c       | 44 =
-++++++++++++++++++++++++++++++++++
->>  include/system/whpx-internal.h |  4 ++++
->>  target/i386/whpx/whpx-all.c    | 20 +++++++++-------
->>  3 files changed, 59 insertions(+), 9 deletions(-)
->> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
->> index 4863fc8663..dae9ff0800 100644
->> --- a/accel/whpx/whpx-common.c
->> +++ b/accel/whpx/whpx-common.c
->> @@ -25,6 +25,7 @@
->>  #include "qapi/qapi-visit-common.h"
->>  #include "migration/blocker.h"
->>  #include "accel/accel-cpu-target.h"
->> +#include "qemu/target-info.h"
+>>  accel/hvf/hvf-all.c    |  1 +
+>>  accel/stubs/hvf-stub.c |  1 +
+>>  hw/arm/virt.c          |  5 +++++
+>>  include/system/hvf.h   |  5 +++++
+>>  target/arm/hvf/hvf.c   | 42 =
+++++++++++++++++++++++++++++++++++++++++--
+>>  5 files changed, 52 insertions(+), 2 deletions(-)
 >=20
-> I suppose you meant "qapi/qapi-types-common.h=E2=80=9D?
-
-Skipping including the line at all :)
-
-Context: in an earlier iteration added an arch check added here with =
-using the target_aarch64() function*,
-but changed it for this rev.
-
-* at the end, decided to use a bifurcated =
-hyperv_enlightenments_allowed/hyperv_enlightenments_required
-design like for kernel-irqchip, with enlightenments off by default on =
-arm64 but on by default for x86, because=20
-arm64 virt is cleaner architecturally by enough that enlightenments =
-don=E2=80=99t really matter there.
-
 >=20
->>  #include <winerror.h>
->>    #include "system/whpx-internal.h"
->> @@ -470,6 +471,41 @@ static void whpx_set_kernel_irqchip(Object *obj, =
-Visitor *v,
->>      }
->>  }
->>  +static void whpx_set_hyperv(Object *obj, Visitor *v,
->> +                                   const char *name, void *opaque,
->> +                                   Error **errp)
->> +{
->> +    struct whpx_state *whpx =3D &whpx_global;
->> +    OnOffAuto mode;
->> +
->> +    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
->> +        return;
->> +    }
->> +
->> +    switch (mode) {
->> +    case ON_OFF_AUTO_ON:
->> +        whpx->hyperv_enlightenments_allowed =3D true;
->> +        whpx->hyperv_enlightenments_required =3D true;
->> +        break;
->> +
->> +    case ON_OFF_AUTO_OFF:
->> +        whpx->hyperv_enlightenments_allowed =3D false;
->> +        whpx->hyperv_enlightenments_required =3D false;
->> +        break;
->> +
->> +    case ON_OFF_AUTO_AUTO:
->> +        whpx->hyperv_enlightenments_allowed =3D true;
->> +        whpx->hyperv_enlightenments_required =3D false;
->> +        break;
->> +    default:
->> +        /*
->> +         * The value was checked in visit_type_OnOffAuto() above. If
->> +         * we get here, then something is wrong in QEMU.
->> +         */
->> +        abort();
->> +    }
->> +}
->> +
->>  static void whpx_cpu_accel_class_init(ObjectClass *oc, const void =
-*data)
->>  {
->>      AccelCPUClass *acc =3D ACCEL_CPU_CLASS(oc);
->> @@ -498,6 +534,11 @@ static void whpx_accel_class_init(ObjectClass =
-*oc, const void *data)
->>          NULL, NULL);
->>      object_class_property_set_description(oc, "kernel-irqchip",
->>          "Configure WHPX in-kernel irqchip");
->> +    object_class_property_add(oc, "hyperv", "OnOffAuto",
->> +        NULL, whpx_set_hyperv,
->> +        NULL, NULL);
->> +    object_class_property_set_description(oc, "hyperv",
->> +        "Configure Hyper-V enlightenments");
->>  }
->>    static void whpx_accel_instance_init(Object *obj)
->> @@ -507,6 +548,9 @@ static void whpx_accel_instance_init(Object *obj)
->>      memset(whpx, 0, sizeof(struct whpx_state));
->>      /* Turn on kernel-irqchip, by default */
->>      whpx->kernel_irqchip_allowed =3D true;
->> +
->> +    whpx->hyperv_enlightenments_allowed =3D true;
->> +    whpx->hyperv_enlightenments_required =3D false;
->>  }
+>> diff --git a/include/system/hvf.h b/include/system/hvf.h
+>> index dc8da85979..0f0632f7ae 100644
+>> --- a/include/system/hvf.h
+>> +++ b/include/system/hvf.h
+>> @@ -28,9 +28,14 @@ extern bool hvf_allowed;
+>>  #define hvf_enabled() (hvf_allowed)
+>>  extern bool hvf_kernel_irqchip;
+>>  #define hvf_irqchip_in_kernel()  (hvf_kernel_irqchip)
+>> +extern bool hvf_nested_virt;
+>> +#define hvf_nested_virt_enabled()  (hvf_nested_virt)
+>> +#define hvf_nested_virt_enable(enable) hvf_nested_virt =3D enable
+>=20
+> Unsafe macro. Better expose the method and add a stub.
+>=20
+Does this look saner? If so can send a rev with it=E2=80=A6
+
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 1c1437b467..66c3b48608 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -26,6 +26,10 @@ bool hvf_allowed;
+ bool hvf_kernel_irqchip;
+ bool hvf_nested_virt;
+=20
++void hvf_nested_virt_enable(bool nested_virt) {
++    hvf_nested_virt =3D nested_virt;
++}
++
+ const char *hvf_return_string(hv_return_t ret)
+ {
+     switch (ret) {
+diff --git a/accel/stubs/hvf-stub.c b/accel/stubs/hvf-stub.c
+index cec1cbb056..dc365c5307 100644
+--- a/accel/stubs/hvf-stub.c
++++ b/accel/stubs/hvf-stub.c
+@@ -12,3 +12,12 @@
+ bool hvf_allowed;
+ bool hvf_kernel_irqchip;
+ bool hvf_nested_virt;
++
++void hvf_nested_virt_enable(bool nested_virt) {
++    /*
++     * This is called unconditionally from hw/arm/virt.c
++     * because we don't know if HVF is going to be used
++     * as that step of initialisation happens later.
++     * As such, do nothing here instead of marking as unreachable.
++     */
++}
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index 0f0632f7ae..a961df8b95 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -30,14 +30,14 @@ extern bool hvf_kernel_irqchip;
+ #define hvf_irqchip_in_kernel()  (hvf_kernel_irqchip)
+ extern bool hvf_nested_virt;
+ #define hvf_nested_virt_enabled()  (hvf_nested_virt)
+-#define hvf_nested_virt_enable(enable) hvf_nested_virt =3D enable
+ #else /* !CONFIG_HVF_IS_POSSIBLE */
+ #define hvf_enabled() 0
+ #define hvf_irqchip_in_kernel() 0
+ #define hvf_nested_virt_enabled() 0
+-#define hvf_nested_virt_enable(enable) 0
+ #endif /* !CONFIG_HVF_IS_POSSIBLE */
+=20
++void hvf_nested_virt_enable(bool nested_virt);
++
+ #define TYPE_HVF_ACCEL ACCEL_CLASS_NAME("hvf")
+=20
+ typedef struct HVFState HVFState;
+
+>>  #else /* !CONFIG_HVF_IS_POSSIBLE */
+>>  #define hvf_enabled() 0
+>>  #define hvf_irqchip_in_kernel() 0
+>> +#define hvf_nested_virt_enabled() 0
+>> +#define hvf_nested_virt_enable(enable) 0
+>>  #endif /* !CONFIG_HVF_IS_POSSIBLE */
+>=20
 >=20
 
 

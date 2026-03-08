@@ -4,95 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46041EA852A
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Mar 2026 15:33:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81709EA8541
+	for <qemu-arm@archiver.kernel.org>; Sun,  8 Mar 2026 20:35:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzG7p-0005h5-PH; Sun, 08 Mar 2026 11:33:01 -0400
+	id 1vzKqd-0007Io-W3; Sun, 08 Mar 2026 16:35:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzG7K-0005Rp-5V
- for qemu-arm@nongnu.org; Sun, 08 Mar 2026 11:32:36 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqb-0007Gv-O7
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2026 16:35:33 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzG77-0006Cy-Lk
- for qemu-arm@nongnu.org; Sun, 08 Mar 2026 11:32:28 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4852f8ac7e9so14696815e9.1
- for <qemu-arm@nongnu.org>; Sun, 08 Mar 2026 08:32:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqa-00045u-8s
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2026 16:35:33 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4853c1ca73aso1116575e9.2
+ for <qemu-arm@nongnu.org>; Sun, 08 Mar 2026 13:35:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1772983936; x=1773588736; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=PrN4p/BD/fjYdU3wnZYTtnTYrSBl3tFrk2UtfU/gPkk=;
- b=S7edNOS2vPggKRoA8E8xBpo1c3CBTU9And1t2aeTxMKwkAhSe6Erds7i7IJtX1uZHt
- DgOG1x7yOQ8/NPUYtGnqAH9NoRp3SCMdltRqSId6EbQZDttO+PaXui+ttwyPB1+BBrtt
- mXOMO30zhdCQr2EIpqBRnYq/NJi+9JWkkpWMGT8x8VZsBV/KFLonq/QBM+y9X73AZiMM
- soENE3aqZ5ISgDQjf8VznD2yyrGVtcBRNL/D21krta1DGgah4IGVcgNXcn4dhFltQPI/
- JFuQsYWP+GnstlCQdCzyu1DRNXYSCAtiph3r2H7exWDiJXxp0sV2SktZ3lGspEfJpXsL
- uTpA==
+ d=gmail.com; s=20230601; t=1773002131; x=1773606931; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2i4QWuXnsIYxEz7i8mpYTk9RDE3sISGydinWlpK7m7M=;
+ b=Y92nr9TPAx6rfQlHQmR6bGbSjC3Qw7Io7377HYBDIgojVQLpBg82maSG4xyW2mT6RN
+ 1GDJhTXwGhN7HZPR3E8TyrLgSGtZy0Dnwk7V1GUg6ioImpSBzu7sCzkPjGiUNYTQ/IHC
+ 10mRAp+udJOKaPqMbL5/2j+md9Ktt0nBDUMgl02xmVP6GNDAwqcXoohVxbB5bDwDbSNy
+ kj7hpKDnEO3O6t36aa01VUD9pyhpd1bhVjnqNroXJtptYRyWXlCqKszN6lw+RiYclbT0
+ 6c+tJ/wih3QELMAc8XdYkKMFT2Yyl+xMxIIaK39s7PA5NAdsa6pwO+4rDWyZq1iaGlWv
+ aJtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1772983936; x=1773588736;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PrN4p/BD/fjYdU3wnZYTtnTYrSBl3tFrk2UtfU/gPkk=;
- b=eHByKSatDI7hx7/UYMzJMu4yeZbhImcybYzpJZvLPIf69vL/3Q2lN1cnPMJb06f2Jw
- 9zyWhcJy2f60TjumSP493QkBygb4kQKaN7UYFzYhXsqD+6eHrjlpuFNqTDddRnSeSwK/
- B3RnvMKi9mJbiJRD65eJ+LOeln71ilcS15P/kgpiJtxYPduHrgZfEia7ZbmzkmbG72q3
- 7AnY1HKbY+lQP09YZdNFAA3KqE/6nGCsH6yu0lz/kZk6hDJJnrpDUQZxdQJkVrxNnKUy
- /uODbfhH+ccNp+0EvNYVjzYjXOKHMIIfetj/6eKffzIKab9Nl7EqYUrZRvdgXyzskCKg
- b6aQ==
+ d=1e100.net; s=20230601; t=1773002131; x=1773606931;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=2i4QWuXnsIYxEz7i8mpYTk9RDE3sISGydinWlpK7m7M=;
+ b=Aj0S0OGRlZiRgrOtrkiglasd+U8Le3w19kVG8PxP7Qc6muNvh2ywoV/7kVUMRajcN2
+ KScm6NW7pE0erzCw5ADt0Ju6GKj167/yjVhVhOmYtUJAddxMwFRDLnc6CdQK9etLFRyL
+ VJyCt8rcDFJr4UwO7HTV2qGvBr9owjt/qq/TmWkEgIwYtJreeeVvkVCaXglsaK28Kdxn
+ KVTp1qibnLCgVNuipLLddlMdzxUxqMOAOggn4pHC9zVMCj4YXnq8SF1IzdMVDuHlx3Xi
+ bBDAHM+nCIPXcz+kDGUHByTR0PqlP+HRS/mSj9NBoiZQ9usp8A060g4+acGGhlWHdB1W
+ cp/w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVqRXQtYXm/Bbcqs212BV65p0q4sJ3SRNDWoOrsZgtwNo90HjpDPmThMd2lwS+oaQaxXn9fa6xeIA==@nongnu.org
-X-Gm-Message-State: AOJu0YzXNE5wgydZV6gVwQLdCWnwIvClYLQ3bDGFVGO08fhqSejeRmov
- LyNBWtM3AC44/jqsZvWavbjcifQ2J55oOdwxZn5N49FGAJtfR9oJH2dlv4VPpkD/JLs=
-X-Gm-Gg: ATEYQzyoihCHgi98AyosyuzEHpKWy+SIxChcRgoJrctLrUNtvAkwUxtwWq+fMO1t8lQ
- jb/XgeY7D5VmymalmvcjpAGUTKqxelL4R68RarFHLn3EaUXVqX9wzhoDOr8B+kRJVJvUdexGtQ/
- yd2p/0TgBFbQbAt2lLY2KS4F5zLu/unrjIWmbSdMQ0oiz5mH9KMpMiIEO9l7V7KQj5vQsOI8dhn
- 22cSfl33SonVxfblckvAlmItt/jXMGcsl2OLoPIgzHjpKlRIA2sOafQK+HyM3f21GusTEQIR2k6
- 8oV2MH1AiYPOaU1AWLwnxiHkRqsWzp82wI2V+QltQLQbGeNQdlNLT86FmoG1m69zu+VmW6mNFv8
- u4Y3rS3daWRxgV6Hv4FfKMf+tlYK/gpClerwBDeRhTJgxBBQITZ74OOsQIQNUBVE+j4X8YleUkZ
- /iVqxhNC9kHVCqnhIbnCAkI4qwyuRhUA2Crxc6NpUbzCUuOKxkC0ohskjWqmwkokmQE4KTWRjs6
- C97
-X-Received: by 2002:a05:600c:c8f:b0:483:2c98:4368 with SMTP id
- 5b1f17b1804b1-4852695aec4mr144438865e9.18.1772983936230; 
- Sun, 08 Mar 2026 08:32:16 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae56300sm18516050f8f.37.2026.03.08.08.32.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 08 Mar 2026 08:32:15 -0700 (PDT)
-Message-ID: <3cb43c27-1eb9-430f-9414-26d582f0001c@linaro.org>
-Date: Sun, 8 Mar 2026 16:32:14 +0100
+ AJvYcCUDXiPjd6cUjDMOmHgmsGQwJU3oY1c6r4paKzK87d4YZgwNDkmKr4lbn0MgcCK+aS7L63BoXF3zag==@nongnu.org
+X-Gm-Message-State: AOJu0Yzy8qd79mTKbJdloyadmXsuWg/vprwTRzNnwn/kNunoC8LEqmMS
+ S14KGM3TiR14x9RLhFlrqzKX5WAyiCSNvVTr0DNALxS/nILZst5vdQfC
+X-Gm-Gg: ATEYQzwcQZoNr4/E+uE2IwULxmbbApKYIFYNWIr5AfpvmywezEhYCUjixal5fWqUEjQ
+ yD90+IspGQ9VTkOYqc0cYED/J2ZmiNi0Hhm5ZgGmXtp3IWlvV8FCDdBZ9hfRlXSiegGqvUhjkW1
+ L3RCCdfLfZdC4o1d68SPsBnnpS6zPFswibwK2x8CewrWQnXY+HnmHkMT6DuC6tu396jLMGVCl4V
+ wIVIIqfPR+1B5qpJOQAieYEBnUtDb4pkLI55j72BzE0l892XD86TvLPIH2MJrgfG+KFj5mC5CAE
+ 43gMVdDuH4z2rAch8PO1Maa020KcyK2DSmni8y0i3rQI2ZKUDmGfclQM9IcsEDk/hT2oPzHVLh3
+ ZZF4Z31JiniJ77BkgoomMzE1R3yQRT0b8sXFHD2IosQKekbq9UZG5l1whV7Bz0E+sIrmx1S9Pl6
+ M7rJRt0TDHxeuMiuT7V/foU0OiULVOKu6zELj09Lzt/8YMZTEAAJaeb1tf1opQu4CNRzelZ7yqh
+ jlWqP54JK6PMSae+QyIcnr6TGw/BGg=
+X-Received: by 2002:a05:600c:64c7:b0:47a:7fdd:2906 with SMTP id
+ 5b1f17b1804b1-4852691ec50mr146662655e9.12.1773002130682; 
+ Sun, 08 Mar 2026 13:35:30 -0700 (PDT)
+Received: from Provence
+ (dynamic-2a02-3100-25c6-8f00-0219-99ff-feb2-2458.310.pool.telefonica.de.
+ [2a02:3100:25c6:8f00:219:99ff:feb2:2458])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 08 Mar 2026 13:35:30 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
+Date: Sun,  8 Mar 2026 21:35:16 +0100
+Message-ID: <20260308203516.160103-6-shentey@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
+References: <20260308203516.160103-1-shentey@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 3/9] hvf: arm: unbreak the x86 build
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Wei Liu <wei.liu@kernel.org>, Roman Bolshakov <rbolshakov@ddn.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Pedro Barbuda <pbarbuda@microsoft.com>
-References: <20260307181856.2209-1-mohamed@unpredictable.fr>
- <20260307181856.2209-4-mohamed@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260307181856.2209-4-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -110,15 +109,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/3/26 19:18, Mohamed Mediouni wrote:
-> We don't really have any great choices here, so use the __aarch64__ define to unbreak the x86 build.
-> 
-> Once the CI moves away from macOS 15.1 SDK to... 15.2 even we can get rid of these SME stubs horrible hacks.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr
-> ---
->   target/arm/hvf_arm.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+The callback has been introduced in commit 715ca691daca ("sysbus: add
+irq_routing_notifier") for use in VFIO platform. Meanwhile, VFIO
+platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
+platform'") which was its only user. Remove this unused code.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8.
+
+cc: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ include/hw/core/sysbus.h | 1 -
+ hw/core/sysbus.c         | 6 ------
+ 2 files changed, 7 deletions(-)
+
+diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
+index c0d18d9e00..f3c4259d29 100644
+--- a/include/hw/core/sysbus.h
++++ b/include/hw/core/sysbus.h
+@@ -50,7 +50,6 @@ struct SysBusDeviceClass {
+      * omitted then. (This is not considered a fatal error.)
+      */
+     char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
+-    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
+ };
+ 
+ struct SysBusDevice {
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 3adf2f2faf..3e1160ee92 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n)
+ 
+ void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
+ {
+-    SysBusDeviceClass *sbd = SYS_BUS_DEVICE_GET_CLASS(dev);
+-
+     qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, n, irq);
+-
+-    if (sbd->connect_irq_notifier) {
+-        sbd->connect_irq_notifier(dev, irq);
+-    }
+ }
+ 
+ /* Check whether an MMIO region exists */
+-- 
+2.53.0
+
 

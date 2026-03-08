@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A49FEA8543
-	for <qemu-arm@archiver.kernel.org>; Sun,  8 Mar 2026 21:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95ACEA8543
+	for <qemu-arm@archiver.kernel.org>; Sun,  8 Mar 2026 21:56:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzM5y-0006NT-BD; Sun, 08 Mar 2026 17:55:30 -0400
+	id 1vzM6u-0006x0-UL; Sun, 08 Mar 2026 17:56:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzM5x-0006ND-G1
- for qemu-arm@nongnu.org; Sun, 08 Mar 2026 17:55:29 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzM6t-0006wX-1r
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2026 17:56:27 -0400
 Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzM5v-0006J0-Vv
- for qemu-arm@nongnu.org; Sun, 08 Mar 2026 17:55:29 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzM6q-0006T9-NR
+ for qemu-arm@nongnu.org; Sun, 08 Mar 2026 17:56:25 -0400
 Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-485392de558so2065265e9.1
- for <qemu-arm@nongnu.org>; Sun, 08 Mar 2026 14:55:27 -0700 (PDT)
+ 5b1f17b1804b1-483703e4b08so107226965e9.1
+ for <qemu-arm@nongnu.org>; Sun, 08 Mar 2026 14:56:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773006926; x=1773611726; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773006983; x=1773611783; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=brHmvF8C8Vpmx/AM9QBAe/Pi3n+cQyjXbHdFnAx+i/M=;
- b=nIzl4s6HcnMuQ3v/v3jUxJv/WYEGOs53pYSdQH6o2a/m0Fb2hbFf2qP0NaJezO9srU
- WdKquUhZ5DKTHK0YXCRIy2c6rLXWsvoprobLZiLos1JLhozAAPcf/pHApVdfGrbQnxdJ
- JymbE2F8/kP9PdNdZIYbHBieCpKrUSzzDuP7blHSX3g0aUp7ToqMveiczlJ7fpIG+wfv
- wsntmS+PErULgq3cxfVpeE8t5wXqptrwd3py4BLIBsbCWmEwdr0yhb3bY8WiUxNdbzSk
- l39hkBNYcZKC5TQQLjIGka/Ds4pr7vp6JwW6WKepCWZ1Y5jp1+AZwreqjaVvJB1Qm8A0
- m8+Q==
+ bh=OWG9iN3qqepCYkioMpvHKEZS+w8pRJzbAj4UZzfmZ2I=;
+ b=JoAZXVdROtteGxH5T3W0pex049T95t9jZq/4ez1Cl+Efa/XzOe9v3BZESpJeM+b+hQ
+ kL0RxBkodixqBeNJWmRfe+k9TP4Awy7MOU5mB0aDxQuPNb/MRyLp7KpPeegwb4UrcP9S
+ LNd7ckzrQyc7g4mdpiSz3ZrzlqiuCMxqbbNWljtM0XPJYtNEWOY7tCx/ApIsoAqA+jsH
+ +iGknTGIl7c13p7hZZJIJ++zg8Hrkug1yHzLAGKGF806F8yvrBRO749TkYLEvawIYeLY
+ 8gjwFJoTCcY/ZEE2HWFN2EIZnkGPterJD9FKRVgDsqGERTwX5n+FTvBdIEPHDjzvGSoN
+ cBxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773006926; x=1773611726;
+ d=1e100.net; s=20230601; t=1773006983; x=1773611783;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=brHmvF8C8Vpmx/AM9QBAe/Pi3n+cQyjXbHdFnAx+i/M=;
- b=rOUm03m0ZbtJ3FYL2RaCCQdN7KZk09+aoCOwXB4+Kw4PQPD+JbK4IxN3LF4NSGFOSE
- GrxCvbfS+IcgELLn9RlQ/9n6uZ7kI60zYLFE1cpWMOQ1ucuH1+8PElnwV6qi8uGzVbDn
- rAnl2nS/BlG1ZhVjn9nM0cTwJRmi625Xd4tpo02mBCr76fC538hiCANkk9T5h7//b4GO
- K5hKMsS/voXpkjj/fFJydpG3ALxG8TdVT1FvWOD0ghPBUwpR3Mr66DMXr5q0y78JoTW2
- z6xxfcKjGBbErm2PW9Yy9J3dhG9NSzs/dnYVohKZIMm1nlYb9AXk3qOupjr5YZyYQxuX
- i1YA==
+ bh=OWG9iN3qqepCYkioMpvHKEZS+w8pRJzbAj4UZzfmZ2I=;
+ b=sV7X+gOtPIeR3MI0K2oa8TESgTgj5Nm8CR4vADoou9GhGr7h/xCs4y1OqvxA/kY2V5
+ CYKiN9rCkrKnEjLFfLP4O6CaqTT7fjrR+BZ0vpwtjJ9nvsB+lAsKuU6P2XiWH6q4V2KY
+ KCd+ii85lsHD9GzRTQm6Z8Jyhs9V3NBxcB5GILQmrnLJFe1gP0KgjuEQz7Zi1Uxo01MK
+ kg4H81m9yg/i08yoaWv3CW8ByDpI3Nnbz5PhsT0oCOyIOwxlwTfo0jE78ut1qqUbD0wR
+ ZuCU+jWs/RAzqWFdi1Xy/CC11XKky7nK6Gers0XDbtyodtmkl54sPmJkdxGIgcVOUFiS
+ OyHw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUmagj7kUdfrY4q94z4ShmvG64W1VLK9d6P4k2FWNl7tcrvcYXdcZl7fAlPy3eX2ZTv6gEflDDHww==@nongnu.org
-X-Gm-Message-State: AOJu0YysFQUkwsa6lrf9BaYTLHruoEV6jCieyg4IA1U4vQYQZJi0XVly
- K5rmcrfz8y/8CVdHhVT9+r4GyTudsC66IEXXv7ZwLpHPKZPqZKUvYj8m46JYsVoP/lM=
-X-Gm-Gg: ATEYQzx/mydWLEhybfX3YhsYyJwON54CGGL7SvJpq9MxMu9R/OdDE+UQaIeiQH/NfRL
- I+4HSmWZCQv7kVr2TtuOcBSsdkZmFXaInO6vA+HshmOlKf+SW75vFJ1oEiJfH/o5pUErfQ203FS
- Umbbg687tVmHfBSRBkVj6eoRDDKNd2osbIzfTTiXiWWqWVRGVZ3LgeeK6wTzOruRaPcBiJG/Rd2
- 90CBYm6Gncasg5SIvs7kC7k1ulXv2Phiopd+WFjmxfJbsxiX+9oBLMriWTb0h5T0E1v0snJzyM5
- sKj5e7jQMRQM8kbTw/ZunVFmfQDfo+OjdmKxTCNgeyF3TT5lPl3q9SAR+B+656EmZ4R8KJu6p5e
- QqroAQ72oOgGn67WPLo5dgKsq3sfMv4vtTWbR8qDnb4cS4/f8a7LkoDV5lBWDcjewafQCbC7o86
- Alq5dVHSWqMwaHOo4gNIUcGWdjQhdAvitzQ+iYsivYtNw6GF9MrMEMKds0FOQ87rEABg==
-X-Received: by 2002:a05:600c:c4a3:b0:485:39b2:a47c with SMTP id
- 5b1f17b1804b1-48539b2a60dmr40326515e9.25.1773006926315; 
- Sun, 08 Mar 2026 14:55:26 -0700 (PDT)
+ AJvYcCX8kR/rTa4uZur1/yxFdv+GMEsy5A0gltX2IM4kc+yrdfvAPvUP53snG/28n75l7PbnG/ck9pIHRg==@nongnu.org
+X-Gm-Message-State: AOJu0Yzsu/IURN0n3VSd36FEbYKMdMbl8u/Wu2UrEEVCOY7Ha42F2aXy
+ V6iKIvSkErQX51wAROrMVrX9rumOIZqBrSME2HIlSgY5uhjAJIJgJ7a1/TqCbwEtUaU=
+X-Gm-Gg: ATEYQzxppC1ocgrcxPcfDd0URXtmvGMVpdWl7aCve/tjXmQGKOIwflm6+ljvGMnCDTF
+ xRPzE4kp5q2rYYCWC4P4OZJgMDp/WxOGU7O7vgVFs1mdT+Uns7Gskhw+8P1cUa/H9M91PmdGJ8d
+ 1/LXAmIZcWHm2fz6EaYQ+zd0tc2sIfi4XJf91MOHTeLMaZoVP0PXD8iNmdOJ2CvtnLEdBneuPcW
+ 3I9lrNe7pGAKb2/PfWb5SYJiwjIXQexhzPk3NuefauxLSErBgf+0xRZ/r3K33Uz/3glPbSmzoQv
+ fLRcPwQwWbMd3of3vrsh1v/yOYJNAVQlAzUdH3u7XJn/JRHv4KhptC5UE2EjEr7pbT02ezxg7hc
+ C8DniD3i+jUOMz0vMbZ3aAUGzPYrO041z80Ha6w/ohtGAKu1WNvbyfic6o9VzH+3zEM+09KLfcC
+ BWHS8Dqt4UPd3LiKDcC8wHF0x2BlNgo8ZMuWWM+Z5q7HC4PtQgqQSk6E5neR3GLw+NcQ==
+X-Received: by 2002:a05:600c:8b2b:b0:477:9890:9ab8 with SMTP id
+ 5b1f17b1804b1-48526715213mr135556955e9.3.1773006983202; 
+ Sun, 08 Mar 2026 14:56:23 -0700 (PDT)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4851fae538bsm359063435e9.7.2026.03.08.14.55.24
+ ffacd0b85a97d-439dad8d840sm23611168f8f.8.2026.03.08.14.56.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 08 Mar 2026 14:55:25 -0700 (PDT)
-Message-ID: <5a2fa521-1575-4237-b91e-c19bf8b04ee3@linaro.org>
-Date: Sun, 8 Mar 2026 22:55:24 +0100
+ Sun, 08 Mar 2026 14:56:22 -0700 (PDT)
+Message-ID: <81e7b6c1-bedc-4762-8051-f67c54a3ffab@linaro.org>
+Date: Sun, 8 Mar 2026 22:56:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/14] hw/char/serial: Add constants for Line Control
- Register
+Subject: Re: [PATCH v3 00/14] TYPE_SERIAL cleanup
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -84,9 +83,8 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
  <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org, Helge Deller <deller@gmx.de>
 References: <20260305220911.131508-1-shentey@gmail.com>
- <20260305220911.131508-10-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260305220911.131508-10-shentey@gmail.com>
+In-Reply-To: <20260305220911.131508-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::334;
@@ -113,50 +111,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/3/26 23:09, Bernhard Beschow wrote:
-> Substitute some magic numbers by named constants for slightly improved
-> readability.
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/char/serial.c | 17 +++++++++++------
->   1 file changed, 11 insertions(+), 6 deletions(-)
+On 5/3/26 23:08, Bernhard Beschow wrote:
+> This series consists of cosmetic changes around TYPE_SERIAL. The biggest change
+> is having it derive from TYPE_SYS_BUS_DEVICE which 1) eliminates usage of
+> qemu_{un,}register_reset() and 2) stops all its users from accessing private
+> data. The latter allows TYPE_SERIAL to be ported to Rust in the (near) future.
 
 
-> @@ -153,23 +158,23 @@ static void serial_update_parameters(SerialState *s)
->   
->       /* Start bit. */
->       frame_size = 1;
-> -    if (s->lcr & 0x08) {
-> +    if (s->lcr & UART_LCR_PEN) {
->           /* Parity bit. */
->           frame_size++;
-> -        if (s->lcr & 0x10)
-> +        if (s->lcr & UART_LCR_EPS)
+> Bernhard Beschow (14):
+>    hw/arm/Kconfig: Fix serial selection for NPCM8XX
+>    hw/char/{diva-gsp,serial-pci-multi}: Fix deinitialization order
+>    hw/arm/aspeed_ast27x0-{ssp, tsp}: Do not access SerialMM internals
+>      directly
+>    util/fifo8: Make all read-only methods const-correct
+>    hw/char/serial: Remove explicit cast from void pointer
+>    hw/char/serial: Prefer fifo8 methods over open-coding
+>    hw/char/serial: Reuse fifo8_num_used()
+>    hw/char/serial: Remove unhelpful comment
+>    hw/char/serial: Add constants for Line Control Register
+>    hw/char/serial: Remove redundant reset
+>    hw/char/serial: Avoid implicit conversion when tracing
 
-FYI checkpatch is complaining because you are changing code
-that doesn't follow our coding style:
+Queueing 1-11, thanks!
 
-ERROR: braces {} are necessary for all arms of this statement
-#42: FILE: hw/char/serial.c:164:
-+        if (s->lcr & UART_LCR_EPS)
-[...]
-          else
-[...]
+>    hw/char/serial: Keep MemoryRegionOps private
+>    hw/char/serial: Inherit from SysBusDevice
+>    hw/char/serial: Plug into reset framework
 
-Next time better use a preliminary commit addressing style.
-
->               parity = 'E';
->           else
->               parity = 'O';
->       } else {
->               parity = 'N';
->       }
-> -    if (s->lcr & 0x04) {
-> +    if (s->lcr & UART_LCR_NSTB) {
->           stop_bits = 2;
->       } else {
->           stop_bits = 1;
->       }
 

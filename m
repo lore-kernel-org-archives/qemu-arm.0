@@ -4,149 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2762EFCD9A
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 11:31:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 328B3EFCD99
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 11:47:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzYpg-0006q3-AX; Mon, 09 Mar 2026 07:31:32 -0400
+	id 1vzZ4r-00042c-3F; Mon, 09 Mar 2026 07:47:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vzYpf-0006ok-4u; Mon, 09 Mar 2026 07:31:31 -0400
-Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vzZ4h-00041n-NB
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:47:05 -0400
+Received: from p-east2-cluster5-host12-snip4-7.eps.apple.com ([57.103.79.80]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vzYpc-0007rR-Vi; Mon, 09 Mar 2026 07:31:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LPdYwhKonpiF01z6BRRq7FnQyf/LxPA+l490ZrrkIWpLZK2CU5xlTTuTLBSESAR3o3tumDbPhRhvNJWHVOhEAENhpwP6Vb1PJiPZ1mDApj3In7auyunC608bDSB36Ndp96dq3jVRgcryCdzKYEi5Q+zkYalqbAChl9CYWYTtvcDnytWfT7g0SXt4U6tsYmUB3ysaRLodWjP6EHxPDpnV9WFeqpaPFshtYKcohDaew5wfuIS2fLIyKnx/WUxFlBMpnSEyNl4AM9w5GWivdjW/F64AGag1BJ2xEQNBkGUhuWtOvUn/C4ebc/MYbP9IbMiTW2kYxmREETF5GDICfRfZog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6thfEBdLWHsB9FFjvX8GW4ZMI+HzvwiH1X74DQRabJk=;
- b=V+His6OpJ8ynXQvIFFotKu6lcgY136RbexD44HOUh/ZqjE5RVjAPrhS/TpMGB+ZmAgn4ItpHlLYkJakyGuVdW3X7voqZVU/O1gswIM8kvN9CegYX429djmygyi+Onp7hyF3y1/ZTwaAT/b45EaD+vXNVkS7zNdzblIvFRTWIgGjCEnQCocWjab653tRGy7207EAl73MeGNloW5tjZzuCsKeb65VOCiLlAjofIFgeHczCI+aslIzx+vf24Gq/6HH42yiwA/qk2mqUn/x5Bx+ixdn8JA0n9U8e8k/rvZYk+PIxF5sirdBJSetbbxx6PzlQ6RbGFKSy1na/Ab6chJ5KVA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6thfEBdLWHsB9FFjvX8GW4ZMI+HzvwiH1X74DQRabJk=;
- b=JEKA2uMe2Dl/0/YVVdCv1jEwwjg+iKSvWuEGcRlzG2ZG0vpSKjXTox7ibzwjzivtPWhf0KjB7JfUtwSYvzaJe2pNv6TTdRt9gK46WxDHNJrr+EUu5Z1i/3SHwoliVbjnXbuduvZ+sR3RFkX89gwSSD/PV3/4s24Bcaf2iuXPzEPV2hjCjftLcntKPr/0Rgu9MiDOQdqn4+yVAEzA33eQD72J4xU3c3p8O2+IwB340UiQ/IJSgH46hACGb4Og66CNUH0nMkFTgZ+i1iwWam4Vfp+URmgXTxf0+UPII/2iK8btsVJ3TTK5r8sIqY+awnEa4gDPce3/StjhMid4kguY9w==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by LV8PR12MB9714.namprd12.prod.outlook.com (2603:10b6:408:2a0::5)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.11; Mon, 9 Mar
- 2026 11:31:23 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9700.010; Mon, 9 Mar 2026
- 11:31:23 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
- <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
- <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
- <zhenzhong.duan@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>,
- "phrdina@redhat.com" <phrdina@redhat.com>
-Subject: RE: [PATCH v3 13/32] hw/arm/tegra241-cmdqv: Implement CMDQV vIOMMU
- alloc/free
-Thread-Topic: [PATCH v3 13/32] hw/arm/tegra241-cmdqv: Implement CMDQV vIOMMU
- alloc/free
-Thread-Index: AQHcpw4Fma2ObIHsrEy0JlTsVjwpILWmHESAgAAEM4A=
-Date: Mon, 9 Mar 2026 11:31:22 +0000
-Message-ID: <CH3PR12MB7548F5610D7F339C5DAD0E41AB79A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-14-skolothumtho@nvidia.com>
- <ed5ca420-94e5-4e9e-a2c3-f59eb6ea8ada@redhat.com>
-In-Reply-To: <ed5ca420-94e5-4e9e-a2c3-f59eb6ea8ada@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|LV8PR12MB9714:EE_
-x-ms-office365-filtering-correlation-id: dc0af50f-bdec-4f6b-d282-08de7dcf646b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|366016|376014|1800799024|38070700021; 
-x-microsoft-antispam-message-info: I99R+GmPt7TvYY6mEvNiL7YbWrsN75yxsk5vSRi+3ZBtQXMsjrBou9dD8qWsik7VGfIs7/dNwVWcanbyV9Ie8zMMiiYjUXnLGjiA/0sbaI3opjFnAZzVdMLnQJvAzVAURYkI28GQcvFWaCSg3ikTHeaCQXVKT/SOwVbermvC0RjQ5dsTSwA1OOBEUoR3iZRTAoqqwY1ADlggnOn5UsE64TZrm3CpnxuOsnuK1kJxwGSy6vMD2C7P8SLU5KyQCk8Qg5zjlbDaWj13Ix9v+7qeXaTjoFwtZDjJbHJMXJET8zyE3YroTcIsxGBgQl4gAOqAGSRlO2z11t0GMBFXC+wr0Wmy5bZUccbuC4KqaR7RXecY0+RI5+lD5Fz3DRI5FLvCArBIcsPZPfbauooS3wlTqFtx0CcXkF9bQyGZCxVDh6sShdyVk0xBRHGuEFpc1mFu2UJs2GO7a+piJdZhJAE1SIqe78JsUpSQvpJmNQ2wGHmVNr4Ck/uk2mXs3w0r1yiE/xiA/yw6AOqcfyQdsyjdI1k7ySMVdPnv4FrqM/3TKijug8h+hRr1ylMXJNYBD/0ikTL5KQZvXjqn8mQaMbpql8aPjNae9tZDkvat3ZV/qL6jz4Mlwvbnkx/pUGOJ/iIk1FAXEigx83j2SiPbNI2JyTVPGturnEc8SkhiHk8uzLFa3h2xYQSjPyGcU0tcAo0SO5H7O2+Yg/Rp/Hcqe0Qo+XV8Z/wEbbIcBc4AmHBTzYSVvWQjlZo2LMTJCrHx2yvRwNq9g7rHKg8X+ksnco/vxJWdMMgHg+yFBPrw6tFkHLI=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(366016)(376014)(1800799024)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aEkwWDlVUVNnc0lkN1RKakJPOE9oZ2YwMlo4c25TNHBKZ3lIaGdkajhGVjYz?=
- =?utf-8?B?WkFPVzI2RW9vZSt3Z1IyVUFpY2MzODc3RHJva0p2S3RmencwOThwb3dmZnFZ?=
- =?utf-8?B?Z2EvdFpySUE5NnIxRzJUa0ZWc3phdW5RUDhLUVg4QmJ1V09kNTU4dzFKY3h3?=
- =?utf-8?B?RWdycVhhYWJHRVlEUDBycnFrS0xxdTBDaDhtK1c4ZG9iNDVlMkN3azRad2dF?=
- =?utf-8?B?ejhkTVRQK2E2Ykxad2ZoVFAxUERQZS9nN204Z2JTdUhzSCtHRkhROThuSVIr?=
- =?utf-8?B?QkNCRTdsbmNrcWJIZ0xIVUttRlQ4N0I3aWxFVnRLSWFITWlpOUtiOUlrZG1i?=
- =?utf-8?B?Yjk1dEdzN2VRSVgwbmNoKzMzOEJGYUR3SWliaXo1S2pVRlA4NmREOTdXckh6?=
- =?utf-8?B?K1hNZHRldG8veU5ydndETjQxSEZjVjFpTGxsNk4rd25lTWdvYUUwcTlNZWxT?=
- =?utf-8?B?RmdJdVZWblJNQmFUZ3Ywc09FYnltZmNuTHZNTmYxMThWRk9wWmx4RUZHSlJq?=
- =?utf-8?B?ZzNSR2IvOVl0d1o1amFwcWltRUQzNUEySS9ENmRQRmVIRmQyYU1yOHI2UlhD?=
- =?utf-8?B?TUNJSEc0bzRWT3dHSEZtZG5UMmUxd2xqaml1VHk0d0t0VmNLb2tlVUgycG83?=
- =?utf-8?B?dDBSenF1dzBQZVdQVVdFSVhJV0tDWklTNmFYSnFldGxrSzBFNDhRVHdVWStC?=
- =?utf-8?B?cWhwUlZKTzNxOS9pb3dlWi9QbXBOVE51ZC9kL1drTkRKRWZ2UnBGakt2RWZx?=
- =?utf-8?B?MXFoU2RCdHhDUlorMGRvazg4ajhVR3BudGlaR1FrL0IyNWZ0ODNZTi9HalBY?=
- =?utf-8?B?eUdjQU5lUUZLa2RJZVV6ZHRFSzlPWUw3c0dtTGl1WW5qVHN4TDhFY3NOd2cx?=
- =?utf-8?B?b3cwc25aN2hXVUM1dVdDR0hXd0hXZ3FDS01SZHhiM1BJclpiMGNSL3BuTHFB?=
- =?utf-8?B?SmdIb2k3NzYrMHU4QnIrY0pHTjNUTTUwS3U3UXpaN0VWYUtvUTc0K1Z2bldP?=
- =?utf-8?B?eHBiMVRId2RubUVCcG5NSUJoMXJrM3h4QTVzcFBXL2RhNDA0QXpQYTQxRFFJ?=
- =?utf-8?B?anhoVXNFcUJ5c3BXeXJrVlUyNnZCdUVoZFpoblE1SWhjQTVNZWtwU1BreVRB?=
- =?utf-8?B?QnJ4UTlzQW90eEt4K0ZOM3Y4THl3RHUvRnpFNUhQektGNlZJYjRCcGRRYU9D?=
- =?utf-8?B?ZjRKWE9DcTZ4ME1OMlBmMWRSZ0xKTHJ0WjVxMHdsWEd0azVBYU8xY1EzQjVn?=
- =?utf-8?B?YkgydTlqdFd3a1NSV3dlN0RmRUtYOGZGeTlqejVQYWt2dENNTERqeE1YQTM0?=
- =?utf-8?B?RkRiZVpsNHlSbGtNOVhOdTdxbjJDWG1tbWFFK0dUcTg1KzA5NWxOQUw3aVBJ?=
- =?utf-8?B?KzBQblVscG82QjNkT0tJRWpRVWJURFgyK3gveEdyME9iYUlqb1Z2UW1zV3Z4?=
- =?utf-8?B?QjRHdXlQbjdvdU1GUTFBdDhHdHNSZmRBdVBWcmVPOWdQYkZqRTVoNzdKMmVJ?=
- =?utf-8?B?THgxZVFQRzl2UWEvQ1NHZnFzc3I1amordHFieVhBcWltRnNVV0wxamJaeStq?=
- =?utf-8?B?bzZKS2k2c0hjUHN1d21QT2hFQmx5VURjNk03a2c3Y2ZySUdoOWgwM2Q1a04y?=
- =?utf-8?B?bTVHYzBGOUZaUVVuNGplTkczTWFRTkFWNm5taW0vOU9hYzEvc0RYYk9sMHpa?=
- =?utf-8?B?L0FWcEN4KzRBOUcwL3dXdGxhVHZSeTJUa3dQc3AwckhTRlBOVmRmbEtzODV6?=
- =?utf-8?B?WTcwRDZrSWdlY2F3RTJDRmlXZFFITHhSWEZ5SWhaNi9vbFpYcUIyanE2WGZ3?=
- =?utf-8?B?NXN1cFBSVVhZSDhhZHMyZTg4RUVEQVRtQjBxZW45Tnp5eTZaRlRwcWZPQUJN?=
- =?utf-8?B?L0pMRy9ja0x4d3haUXVwVEhRS1hXTVJ1d1VpMUw5Z01Jc1pzeXdhVzRiVG9T?=
- =?utf-8?B?UzFjU0xIOHZkQ3EwZEtVcG1mOXRKNkJlUWcyTVluWGZnUUY2dHNpaGpPZUFD?=
- =?utf-8?B?OG1uR0x4Tk5zdmd4dW1kU2pnaW52WDZ1amRGbHlLbzkweWpwZ2NuMUFlYWQy?=
- =?utf-8?B?bVkyY2lyMDNSblFnWGJHWkpaMHZSMlBsNmsvdWRmejl2RmJrcmdhd0dTbzVL?=
- =?utf-8?B?UFVzUVZzdmVJN3BqY29PQjAyTmJnOU1kcHJreUZBQVlWQUx5WGlscHdGVXVX?=
- =?utf-8?B?bWljTEliL0ZyVUxZeGJmeEhaSUx3UTZYb3BmZ0lScHdNalRVN0liMkFjQTZH?=
- =?utf-8?B?Q0FrTXhnbnJCc3U5eUQxbTdUK0dlMTBhVzQ0bjQ1TnAzMC84djMxRnVGelU2?=
- =?utf-8?B?SmJHR3I3alJoTWxELzI0Unh6Y1prbVVSUjU2dGZUZnhoTm5tSGdXZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vzZ4d-0001yU-Rg
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:47:03 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-10-percent-2 (Postfix) with ESMTPS id
+ 11A601800183; Mon,  9 Mar 2026 11:46:55 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1773056817; x=1775648817;
+ bh=M4X7F7sVtSxrSdswU0mmNoP5PsUwxm7FymuQOBZVwe8=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=StFNPSJCQMJCF4bCx1nY1Wd4cmdorH0m/P2hGNaVyF2XrI8nrGnEnptabIjLlprOPzJFu4acT1x/FtOKmKDTV65BgSZxWVBv1pnzgV+GSmbe/vn0v+KEISA86FM6vAxhLPqHPuRTf2BDLOyb6GaybpNY9B4LUuosQM22SjQT9TsRHRoANFvlEpJut0/JyermAz1y5N6tBN7q8JsneAu5pTTe0Nj42+MP21ujfoZekQiIVT6zTfe3RpMh71RV9sr6l3eWzSyXoD+fYNu5u372KZpZIU5eQoxUcW084f03unO87tZFldZ1IuEUm70CgtEBHverzUqxv8qfq/Fc5WNuWw==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-10-percent-2 (Postfix) with ESMTPSA id
+ 874BB180023F; Mon,  9 Mar 2026 11:46:54 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH v2] hvf: arm: fix Windows boot with kernel-irqchip=on
+Date: Mon,  9 Mar 2026 12:46:51 +0100
+Message-ID: <20260309114651.18825-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dc0af50f-bdec-4f6b-d282-08de7dcf646b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Mar 2026 11:31:22.9338 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aJx85RyaoHmm1XV3ABQex17xRacy//OnBE9vOZvHwiKnGHbGDUaNE1A33x9JBgevb/MgLUnYAegPPoD109pwvg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR12MB9714
-Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH1PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Authority-Info-Out: v=2.4 cv=F+Fat6hN c=1 sm=1 tr=0 ts=69aeb330
+ cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=JzR25OtQh3In-oAEvrgA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA5MDEwOCBTYWx0ZWRfX80igAhqfA5wx
+ k3Z0sof6xJYVGMcT9BUzIAI+r5LK60SffBJz90YzqT4e7xlfUPlVdgoP+/Zd/xOT0RSX/f/RVfF
+ tZzjKoSJKaIxb7Xln7waWaTvpyIX03uzwUG+tYYHg5ZvoHNJqvd2Y/BbHdl+vvrrRwHXh4/IZBY
+ AB0HhCjx2DYY9RQkqrhoPkCKCGYTn5+6w6IYe6TpOJPfwcFJqm1mmtdn3w4RHcS1NGSsPZ3rtcs
+ 7UK1g3vEeVsgP15qdx34wWt34GSWraMkY5F/XMOPdQBUIeb29R7F/uNarh+LGaofOsUqn7WUTE+
+ WhlLvrJRPrUHQwOdTmMK8+xAraOnRAGCoj8AQcKVHw+q+IyCh3qjZDkYk0yt5k=
+X-Proofpoint-GUID: QZU2tkLk-45yrQTjnBJD050XckdMbfOP
+X-Proofpoint-ORIG-GUID: QZU2tkLk-45yrQTjnBJD050XckdMbfOP
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-09_03,2026-03-06_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ suspectscore=0 mlxscore=0 clxscore=1030 spamscore=0 adultscore=0
+ mlxlogscore=870 bulkscore=0 malwarescore=0 lowpriorityscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603090108
+X-JNJ: AAAAAAABMoDJjOlVmJHigbOEm1sqtD4HyC3J0vuyd4Ug1P/o2WCJ84ygL/69MsuVpoW3LFwVXlHW4NJ7m4Es/Y8DkLuyHwaY84NfaXvp1x7BEJDq0Y9dvhnwSHXowSc+ZffWiX/0fUrxAGm/+D6ggpPbeGH4TBAJoBGvE1ixwutq6EFoQSGyTm08mPiST4DgHf10JvfpUXsK69VDw3TuDafYXUPAmt7WIQ+deTBQMbT0OGQotBxLMz7qfFrTC0Hw/0qLGC/VM9a5gMvLXxlBggMPpzv20gfiy2gOnRhxcNg0gu8c9jSsdEz8LA6Cpv81gVAcXP9+OE7FU0M5ZRPlhMVL6K3trIWvanQ3dE8J1WiuJBPm2T8P/317h/DI1Ah03XYIVPa4VzhjCVQwSrjowyrb/KRAcTt24PAZgp634g/nTh+LVIGcsNVNALgOOMiYWesCltfOD2eqUbBg9uUGWef72fqh3CMqgS+UBCBRzWhAnkq6Ty8hdbecCq4k6vyDxjKhijejCbIixS8Mfl/126HHtPWE9uM3lWsXtnVi3AqNI/s0th+bctFguCIkUW9LAq51V47yPcAKY8qv8pj3xrJoUrN10ewauzqdj8q/xgQyC0hhE6xrObTZsEppakKe3Q+QKh9PuX+0J/4k0TzNx94FRjLVEd2EDxJLihA4DTc=
+Received-SPF: pass client-ip=57.103.79.80;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,64 +92,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
-Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAwOSBNYXJjaCAyMDI2IDExOjA5DQo+IFRvOiBT
-aGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFlbXUtDQo+
-IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFsZXhAc2hhemJvdC5vcmc7IE5pY29saW4N
-Cj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IE5hdGhhbiBDaGVuIDxuYXRoYW5jQG52aWRp
-YS5jb20+OyBNYXR0DQo+IE9jaHMgPG1vY2hzQG52aWRpYS5jb20+OyBKaWFuZGkgQW4gPGphbkBu
-dmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBlDQo+IDxqZ2dAbnZpZGlhLmNvbT47IGpvbmF0aGFu
-LmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9u
-Zy5kdWFuQGludGVsLmNvbTsgS3Jpc2huYWthbnQgSmFqdQ0KPiA8a2phanVAbnZpZGlhLmNvbT47
-IHBocmRpbmFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYzIDEzLzMyXSBody9h
-cm0vdGVncmEyNDEtY21kcXY6IEltcGxlbWVudCBDTURRVg0KPiB2SU9NTVUgYWxsb2MvZnJlZQ0K
-PiANCj4gRXh0ZXJuYWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlua3Mgb3IgYXR0YWNo
-bWVudHMNCj4gDQo+IA0KPiBPbiAyLzI2LzI2IDExOjUwIEFNLCBTaGFtZWVyIEtvbG90aHVtIHdy
-b3RlOg0KPiA+IEZyb206IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT4NCj4gPg0K
-PiA+IFJlcGxhY2UgdGhlIHN0dWIgaW1wbGVtZW50YXRpb24gd2l0aCByZWFsIHZJT01NVSBhbGxv
-Y2F0aW9uIGZvcg0KPiA+IFRlZ3JhMjQxIENNRFFWLg0KPiA+DQo+ID4gRnJlZSB0aGUgdklPTU1V
-IElEIG9uIHRlYXJkb3duLg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogTmljb2xpbiBDaGVuIDxu
-aWNvbGluY0BudmlkaWEuY29tPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNoYW1lZXIgS29sb3RodW0g
-PHNrb2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiA+IC0tLQ0KPiA+ICBody9hcm0vdGVncmEyNDEt
-Y21kcXYuYyB8IDE5ICsrKysrKysrKysrKysrKysrLS0NCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDE3
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcv
-YXJtL3RlZ3JhMjQxLWNtZHF2LmMgYi9ody9hcm0vdGVncmEyNDEtY21kcXYuYyBpbmRleA0KPiA+
-IDY5NTk3NjYxMjkuLmQ0ODc2MTJiYTIgMTAwNjQ0DQo+ID4gLS0tIGEvaHcvYXJtL3RlZ3JhMjQx
-LWNtZHF2LmMNCj4gPiArKysgYi9ody9hcm0vdGVncmEyNDEtY21kcXYuYw0KPiA+IEBAIC0yNSwx
-NCArMjUsMjkgQEAgc3RhdGljIHZvaWQgdGVncmEyNDFfY21kcXZfd3JpdGUodm9pZCAqb3BhcXVl
-LA0KPiA+IGh3YWRkciBvZmZzZXQsIHVpbnQ2NF90IHZhbHVlLA0KPiA+DQo+ID4gIHN0YXRpYyB2
-b2lkIHRlZ3JhMjQxX2NtZHF2X2ZyZWVfdmlvbW11KFNNTVV2M1N0YXRlICpzKSAgew0KPiA+ICsg
-ICAgU01NVXYzQWNjZWxTdGF0ZSAqYWNjZWwgPSBzLT5zX2FjY2VsOw0KPiA+ICsgICAgSU9NTVVG
-RFZpb21tdSAqdmlvbW11ID0gYWNjZWwtPnZpb21tdTsNCj4gPiArDQo+ID4gKyAgICBpZiAoIXZp
-b21tdSkgew0KPiA+ICsgICAgICAgIHJldHVybjsNCj4gPiArICAgIH0NCj4gPiArICAgIGlvbW11
-ZmRfYmFja2VuZF9mcmVlX2lkKHZpb21tdS0+aW9tbXVmZCwgdmlvbW11LT52aW9tbXVfaWQpOw0K
-PiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIGJvb2wNCj4gPiAgdGVncmEyNDFfY21kcXZfYWxsb2Nf
-dmlvbW11KFNNTVV2M1N0YXRlICpzLA0KPiBIb3N0SU9NTVVEZXZpY2VJT01NVUZEICppZGV2LA0K
-PiA+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdWludDMyX3QgKm91dF92aW9tbXVfaWQs
-IEVycm9yICoqZXJycCkgIHsNCj4gPiAtICAgIGVycm9yX3NldGcoZXJycCwgIk5WSURJQSBUZWdy
-YTI0MSBDTURRViBpcyB1bnN1cHBvcnRlZCIpOw0KPiA+IC0gICAgcmV0dXJuIGZhbHNlOw0KPiA+
-ICsgICAgVGVncmEyNDFDTURRViAqY21kcXYgPSBzLT5zX2FjY2VsLT5jbWRxdjsNCj4gPiArDQo+
-ID4gKyAgICBpZiAoIWlvbW11ZmRfYmFja2VuZF9hbGxvY192aW9tbXUoaWRldi0+aW9tbXVmZCwg
-aWRldi0+ZGV2aWQsDQo+ID4gKw0KPiA+ICsgSU9NTVVfVklPTU1VX1RZUEVfVEVHUkEyNDFfQ01E
-UVYsDQo+IGlmIHRoZSBvbmx5IHRoaW5rIHRoYXQgZGlmZmVycyBjb21wYXJlZCB0byBubyBjbWRx
-IGlzIHRoZSB0eXBlLCBpZS4NCj4gDQo+IElPTU1VX1ZJT01NVV9UWVBFX1RFR1JBMjQxX0NNRFFW
-IHZzDQo+IElPTU1VX1ZJT01NVV9UWVBFX1RFR1JBMjQxX0NNRFFWDQo+IA0KPiArIHBhc3Npbmcg
-dHJ1ZSBhcmdzLCBtYXliZSB5b3UgY2FuIGp1c3QgcmVjb3JkIHRoZSB0eXBlIG9mIHRoZSBjbWRx
-dg0KPiArIHRoYXQgaXMgYmVpbmcgdXNlZCBpbiB0aGUgc21tdV9hY2NlbCBkZXZpY2UuIFRoZW4g
-eW91IGNhbiBnZXQgcmlkIG9mDQo+ICsgYWxsb2MgYW5kIGZyZWUNCg0KSXQgaXMgbm90IGp1c3Qg
-dGhlIHR5cGUuIEJhc2VkIG9uIHRoZSB0eXBlIHdlIGFsc28gbmVlZCB0byBwYXNzLA0KDQogKiBA
-ZGF0YV9sZW46IExlbmd0aCBvZiB0aGUgdHlwZSBzcGVjaWZpYyBkYXRhDQogKiBAX19yZXNlcnZl
-ZDogTXVzdCBiZSAwDQogKiBAZGF0YV91cHRyOiBVc2VyIHBvaW50ZXIgdG8gYSBkcml2ZXItc3Bl
-Y2lmaWMgdmlydHVhbCBJT01NVSBkYXRhDQogKg0KDQpBbmQgdGhlIGFib3ZlIGlzIGltcGxlbWVu
-dGF0aW9uIHNwZWNpZmljLg0KDQpJZiBvdXIgaWRlYSBvZiB0aGUgIm9wcyIgaXMgdG8gYWxsb3cg
-ZWFzaWVyIHN1cHBvcnQgZm9yIGRpZmZlcmVudCANCmltcGxlbWVudGF0aW9ucyBpbiBmdXR1cmUs
-IGl0IHByb2JhYmx5IG1ha2VzIHNlbnNlIHRvIGtlZXAgdGhpcy4NCg0KVGhhbmtzLA0KU2hhbWVl
-cg0KDQo+IA0KPiBFcmljDQo+IA0KPiANCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICBpZGV2LT5od3B0X2lkLCAmY21kcXYtPmNtZHF2X2RhdGEsDQo+ID4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2l6ZW9mKGNtZHF2LT5jbWRxdl9kYXRh
-KSwgb3V0X3Zpb21tdV9pZCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBlcnJwKSkgew0KPiA+ICsgICAgICAgIHJldHVybiBmYWxzZTsNCj4gPiArICAgIH0NCj4g
-PiArICAgIHJldHVybiB0cnVlOw0KPiA+ICB9DQo+ID4NCj4gPiAgc3RhdGljIHZvaWQgdGVncmEy
-NDFfY21kcXZfcmVzZXQoU01NVXYzU3RhdGUgKnMpDQoNCg==
+Apple headers say:
+
+> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
+> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
+>  hv_vcpu_exit_t object contains the information about this exception.
+
+> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
+> field of ID_AA64DFR0_EL1 register.
+> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
+> exceptions, which are sent to the guest.
+> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
+> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
+
+That documentation turns out to not be so accurate, with the determining factor being whether the vGIC
+is enabled instead of nested virtualisation. If ID_AA64DFR0_EL1.PMUVer = 0, Hypervisor.framework doesn't
+give us the luxury of having PMU sysreg accesses trapped to the VMM when the vGIC is enabled.
+
+As Windows really wants at least a single counter PMU, give it even when
+using the kernel-irqchip with nested virt off.
+
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/arm/hvf/hvf.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 8aa59a1f77..136761b429 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1187,8 +1187,12 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
+ 
+-    if (hvf_nested_virt_enabled()) {
++    /* Windows really wants at least a single counter PMU... */
++    if (hvf_irqchip_in_kernel()) {
+         FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
++    }
++
++    if (hvf_nested_virt_enabled()) {
+         /* SME is not implemented with nested virt on the Apple side */
+         FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
+     }
+@@ -1660,7 +1664,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
+     ARMCPU *arm_cpu = ARM_CPU(cpu);
+     CPUARMState *env = &arm_cpu->env;
+ 
+-    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
++    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
+         switch (reg) {
+         case SYSREG_PMCR_EL0:
+             *val = env->cp15.c9_pmcr;
+@@ -1930,7 +1934,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+                            SYSREG_OP2(reg),
+                            val);
+ 
+-    if (!hvf_nested_virt_enabled() && arm_feature(env, ARM_FEATURE_PMU)) {
++    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
+         switch (reg) {
+         case SYSREG_PMCCNTR_EL0:
+             pmu_op_start(env);
+-- 
+2.50.1 (Apple Git-155)
+
 

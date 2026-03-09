@@ -4,110 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75D0DF3C245
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 13:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB519F3C250
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 13:19:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzaDR-0003zC-55; Mon, 09 Mar 2026 09:00:09 -0400
+	id 1vzaVY-0000pJ-N7; Mon, 09 Mar 2026 09:18:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzaDO-0003ye-Bk
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 09:00:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzaDM-0006nh-Be
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 09:00:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773061201;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=L7q6Mt0SWI7ULkaVLz4mPtkMohfy5sqHJ6PlaNnk+v8=;
- b=M96unkjwZ8suhESsPOxZq0CR4+jkuzAFuWlht1EK7ZKIcTuldAV2k5qYNLe3JQoQFvhY33
- uVbLrcCE39+cMzYlQIx5zrX1Wg0qDvPw8doPhZACLfJM77Hbd/UnzIuZrj6+BHdbG1lA+K
- CQcc1ZhBC1mCHLAHFLXmdMA8tJVqKqk=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-128-SyjPLvxnO5iA6bj0HnhEAg-1; Mon, 09 Mar 2026 09:00:00 -0400
-X-MC-Unique: SyjPLvxnO5iA6bj0HnhEAg-1
-X-Mimecast-MFC-AGG-ID: SyjPLvxnO5iA6bj0HnhEAg_1773061199
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-b96e8e87061so131522866b.1
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 06:00:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vzaV3-0000h3-BA
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 09:18:30 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vzaV0-0001cc-Ef
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 09:18:20 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-64ad79df972so10923268d50.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 06:18:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773062296; cv=none;
+ d=google.com; s=arc-20240605;
+ b=dV5U2too/wnnr9u415Pb0dsLQ9O66GoYA2p170H4hsaTtjp+hyDbjIctlLfK1t7lHN
+ cJBnCKv8ooNZNs8vDxGoK42OgGQrrF5Ivz4/I1saG/sp0vv9ypWVuzAmkIwG18rdN/K3
+ B5d4D4aIm5DjGxKJH20FJJi5VgV2EWXI0fPL7sJRlc2oaZ4+S9HhW1kVVaZyPhe3h2TP
+ uB3UG3cozb2fqLeDCtgQN5R2DuYvyXrjg7tcaal4itQT8tP1DScV9mlgcEd8jEok55sv
+ 9BREDL0XLFe7wWBYJFzkbK/mvgYIpanzTwGWF5A6n+QmOsb1VPOy3HldvvSzYm9rxslh
+ t6qg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=SbOWHHVRszG47ZlggvIgxsalaSxoDe3K2iT0UqzdKNk=;
+ fh=mGTWdAKPidnpjmns52QqLeEGwEJNvDiLmG3ph24JSxM=;
+ b=K/NOPz8/zrqe5qd/RtHOfyjielTQzZCgP31nLXnX/CLh8yig88jKbHRJ6OhttuB9WM
+ oZXApHlW7TIhlKG4BOXVJqgZKbqUPAbSlCNzRGZ0cnpEBK7V/PB51YUrBsR45HXiZRfC
+ zg0/R6JOE+1gpvyJBIFyBDimeW/s5X00TCf8rBZZ2s9/+xoSq+EHZBODz0KUHKEPJxSh
+ LsqkCtcZ8ciV4fCCo3YK9WmsyjTD1YcktnKL+V9PzO5RdLcbDohlPpmhMgKc5jOwSg0+
+ YuVYpXg41DOk5Hl8+m77KNrU3C2e1T3JZPolqSFtDBaYOzdL1PVbqg7cRUNaZy8tCsEP
+ PCkg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773062296; x=1773667096; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=SbOWHHVRszG47ZlggvIgxsalaSxoDe3K2iT0UqzdKNk=;
+ b=Cwb7NfEojPIn8QVs0XvLIbonajkpBbyaaXIn7sdnqoDPA4xMHadV/cKmEvjOjpViBY
+ D/pZ0mZsxmwDOx93kVNpYJYKGH8jVqhSvU3RyoJS3EYjlZQRT0NAjGJnAmJwW8RF7fYB
+ kNS0+CbUyIIq4pNRiW/YJZM9+Z0kpFvQ+uZyMM/QSZVWjpRXvt5YeNlRkk31Eiran9xu
+ 9cHQjWYhteGt2B3uxe0mvsyHJ27adldl5m5vhTr34R8a+vG8wmeZooQA0dXdsvVCUwCQ
+ nQ+WGFcZ7xDK5kapxhVgFjjcsrUozsd/h/139zrXyhOuYPdCPBFBmoUsUOds/R2WMIGh
+ WSSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773061199; x=1773665999;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1773062296; x=1773667096;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=L7q6Mt0SWI7ULkaVLz4mPtkMohfy5sqHJ6PlaNnk+v8=;
- b=C6TOGGGhWMlESYCqwwqibQy2v0D+GYGwfXuIrXaIQ+p1SDh61ye+nSO5yq4idMvbEB
- XFGTeJIWcMLsz4UahPZSuSMVCzA6x763T0yZNn7mS/qm1uSEBJa5yZB9c/HGiIUIUF6q
- aQwZ4eAepBhTIFGV6R5e1x/cVohaJtzdMwmr/cyIIW/zFrWvIs9BnnXR8alz7uucWCtX
- +3Jr9tPPudDvzJJBDS0fSNvCdw87XlKsJKdkOBL1rBimQcaE34kwDY2lnJ5PfUevMpHJ
- 4qlj5Nq6h9BlNSl4VZwK4GFb6OJlvUbhcIXJGb3KPJmZiWENRtsgyW7UQnoNI5g5xMgD
- mKiA==
+ bh=SbOWHHVRszG47ZlggvIgxsalaSxoDe3K2iT0UqzdKNk=;
+ b=kXE7wnnanNAyxrM4xA9HJVaWg25rEVvyBJrSJv1iLH6+jlYxJlsDF5gLxF+vvMuBUN
+ 6IZ/VudNhLGvjeEJVn3EP2sQ7eTfvcuh6tZmNJDN1w/GyVsxGNs1OpkyU/5V0kiD/wGI
+ FmRYKoMwbj5B5er30/WoTQaFcuCseYVHJHgudTKr49tYcWAnBIo+Wt/Ew1IThpFsbxQY
+ ySyC0QpcEwd91Wh385Srx1cmOtBnQpLjsOFS6QY9Da5st17mvhZ/eS4/n2DulvnH8wiC
+ G83ozqoI8e+pjzYZteQmJ0gic+cHZmGEq09GTu+fzOBSPJqRyjJ65vzIoUi/xG1Bmac1
+ VftA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUe4xTili1KrQofALSlzem8aB+ETqbJJ4EQ8kXFVoX+9ym9vCO6hpwK2DRkMmcZpJrkqiVLvgktvQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxdmqTIYErV1ZUB+2K4XlxUwlTNqjW+umFuJIRAQ1EsDFU9tFL2
- tfb2MncBhmxxtbwFBwHT4q+CVy5wpF0broky5x+OHersjbBxdISWLkjifL10HaQOzRMK716Ne9f
- 558/d03NuXwQXgSvO3qY2nysF8b3IIId2muNlq371VBKgsMOAFcXiFw==
-X-Gm-Gg: ATEYQzyriN5kadmSu14t3dVcSycSiEmTqOG7oxeuuVeSogDZMN/HCHdE+4102W04krP
- XYKkQDXKR6XpoImDJgLuHRu8uJkgTla0egIXOK0pO1ZA7meYQGobVdOryRZwbTP4R/kc77OggUf
- VGiuZVrEEiid04rbUWEPXg1dOzUmL3/YW5Y7fntkKoWScqiyuka6KNs1cE6UlzIgQ5UN5YGtVxf
- MlJvSkGmCcNTvCKEnwKjl6QTcg0JM0yJ251RZahgCindOC5ryfajmeeM3RgsECCDaGrWA+SZaOf
- sKJqBEqfB4CmWumsT4W9l6byaU0mwHQrWyqrKW8evboEKmfZF3n39EJMxguHIWXKbD9O0+RhHoF
- dDhiGjp9buK0ZEwcJPFqxneC+Jvwz1c3z31H319Aq6cX0dqgVmJwGmu37/J7xb2xfLFgLoA==
-X-Received: by 2002:a17:907:728e:b0:b87:1e94:ef6a with SMTP id
- a640c23a62f3a-b942dfa042emr686968166b.47.1773061198963; 
- Mon, 09 Mar 2026 05:59:58 -0700 (PDT)
-X-Received: by 2002:a17:907:728e:b0:b87:1e94:ef6a with SMTP id
- a640c23a62f3a-b942dfa042emr686964466b.47.1773061198391; 
- Mon, 09 Mar 2026 05:59:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b942f139e24sm371829466b.38.2026.03.09.05.59.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 05:59:57 -0700 (PDT)
-Message-ID: <8f010ea3-b5ef-45bb-b4ad-c46359c30b48@redhat.com>
-Date: Mon, 9 Mar 2026 13:59:54 +0100
+ AJvYcCVD7V9qJDm/zMAvKJddLn6CE7nmtK87darxXBZaNdxolRaUzaQHRSJlxg0fmOE2CnrBqoGn9xinXA==@nongnu.org
+X-Gm-Message-State: AOJu0YxR2SiaNoFJcmQ3nwE2cx7BMjuDF6P+LNqFgUNohr/r4b96nJ55
+ S1h6Uj91pThs1hQaTedYX+NT1fS38jxoUUUipK5pnfmzcCaGNaUcSPZSlZW2maU36o7WPihr1mV
+ iDj4IEektacOS90VWZyI0Edg6n2waexAG7JkqM2urIw==
+X-Gm-Gg: ATEYQzwlfN9ZrT5GDhydLwjq4ATXZkhlSlUhiwibmgs0eR/HHFMkHYgHwp3eLZcUAyI
+ v3WmgJYX1hOhUy88sY1gaxG3/pTyCpy1kTzM+Ae/1+5q0VErC7WYXQAupEa9N+7vJ443XReICEP
+ FHBzVovBoxqXi7fl981smZXF+VyAYaitc/OhR13y2wd2Wa1XGCfqjo5ldWfNMoacUtlt0IbKciO
+ KCbuRJ4Pq7YFqct2oMvuaExTIxW6t/xkgOab8CEm0B5vP1LR3ILxOa3MGHW5rUNQtmM/i15JEsR
+ JOXqD7KNnDyAeh7gLWORT6rLKdhdefXKVXX6dBXXZs0VwutIw/p8e1bvbnGc0df202E=
+X-Received: by 2002:a05:690e:e0f:b0:649:d3e4:43c3 with SMTP id
+ 956f58d0204a3-64d14361080mr7842730d50.80.1773062296372; Mon, 09 Mar 2026
+ 06:18:16 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 06/32] hw/arm/tegra241-cmdqv: Add Tegra241 CMDQV ops
- backend stub
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, kjaju@nvidia.com, phrdina@redhat.com
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-7-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260226105056.897-7-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -hJr5pwGp1Nw89K_jH0HEAr_mKBEBaGsYCFBJtZEPzE_1773061199
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <tencent_D3A83F7C6433B6B2D6C4513970FD0446D708@qq.com>
+In-Reply-To: <tencent_D3A83F7C6433B6B2D6C4513970FD0446D708@qq.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 9 Mar 2026 13:18:04 +0000
+X-Gm-Features: AaiRm50q7Q3vxVtKecmTYiXAlOIptkbGH5Hqks3SyRoH_sLCNlbL8H-QbInN96o
+Message-ID: <CAFEAcA-L0t9rGZuJ2CWPitkBP4qBA9wvFf+xo4KN10EiWHjf=g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/3] i.MX6UL LCDIF: add model, build symbol,
+ and SoC wiring
+To: Yucai Liu <1486344514@qq.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, jcd@tribudubois.net, 
+ pbonzini@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,179 +114,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+On Tue, 3 Mar 2026 at 14:32, Yucai Liu <1486344514@qq.com> wrote:
+>
+> Split the original LCDIF change into three patches and address review feedback:
+>
+> - place the LCDIF device under hw/display and include/hw/display
+> - use registerfields.h FIELD() definitions for register bitfields
+> - simplify drawing to 32bpp host surfaces
+> - add vmstate migration support
+> - use SoC child device init/realize flow (object_initialize_child + sysbus_realize)
+> - add a dedicated CONFIG_IMX6UL_LCDIF symbol, selected by FSL_IMX6UL
+>
+> Thanks for the review.
+>
+> Yucai Liu (3):
+>   hw/display: Add i.MX6UL LCDIF device model
+>   hw/display: Build i.MX6UL LCDIF via its own config symbol
+>   hw/arm/fsl-imx6ul: Wire in the LCDIF device mode
 
-On 2/26/26 11:50 AM, Shameer Kolothum wrote:
-> Introduce a Tegra241 CMDQV backend that plugs into the SMMUv3 accelerated
-> CMDQV ops interface.
->
-> This patch wires up the Tegra241 CMDQV backend and provides a stub
-> implementation for CMDQV probe, initialization, vIOMMU allocation
-> and reset handling.
->
-> Functional CMDQV support is added in follow-up patches.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/tegra241-cmdqv.h       | 15 ++++++++++
->  hw/arm/tegra241-cmdqv-stubs.c | 18 +++++++++++
->  hw/arm/tegra241-cmdqv.c       | 56 +++++++++++++++++++++++++++++++++++
->  hw/arm/Kconfig                |  5 ++++
->  hw/arm/meson.build            |  2 ++
->  5 files changed, 96 insertions(+)
->  create mode 100644 hw/arm/tegra241-cmdqv.h
->  create mode 100644 hw/arm/tegra241-cmdqv-stubs.c
->  create mode 100644 hw/arm/tegra241-cmdqv.c
->
-> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
-> new file mode 100644
-> index 0000000000..07e10e86ee
-> --- /dev/null
-> +++ b/hw/arm/tegra241-cmdqv.h
-> @@ -0,0 +1,15 @@
-> +/*
-> + * Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved
-> + * NVIDIA Tegra241 CMDQ-Virtualiisation extension for SMMUv3
-> + *
-> + * Written by Nicolin Chen, Shameer Kolothum
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef HW_ARM_TEGRA241_CMDQV_H
-> +#define HW_ARM_TEGRA241_CMDQV_H
-> +
-> +const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
-> +
-> +#endif /* HW_ARM_TEGRA241_CMDQV_H */
-> diff --git a/hw/arm/tegra241-cmdqv-stubs.c b/hw/arm/tegra241-cmdqv-stubs.c
-> new file mode 100644
-> index 0000000000..eedc7bfdcd
-> --- /dev/null
-> +++ b/hw/arm/tegra241-cmdqv-stubs.c
-> @@ -0,0 +1,18 @@
-> +/*
-> + * Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved
-> + *
-> + * Stubs for Tegra241 CMDQ-Virtualiisation extension for SMMUv3
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "hw/arm/smmuv3.h"
-> +#include "smmuv3-accel.h"
-> +#include "hw/arm/tegra241-cmdqv.h"
-not sure you need all those headers for the stub
+Hi; thanks for these patches. This is just a note to let
+you know that I do have them on my to-review queue, but
+since they've missed softfreeze for 11.0 it might take me
+a little longer to get to them, as I'm going to be
+prioritizing 11.0 work.
 
-Eric
-> +
-> +const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void)
-> +{
-> +    return NULL;
-> +}
-> +
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> new file mode 100644
-> index 0000000000..ad5a0d4611
-> --- /dev/null
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -0,0 +1,56 @@
-> +/*
-> + * Copyright (c) 2025-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved
-> + * NVIDIA Tegra241 CMDQ-Virtualization extension for SMMUv3
-> + *
-> + * Written by Nicolin Chen, Shameer Kolothum
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "hw/arm/smmuv3.h"
-> +#include "smmuv3-accel.h"
-> +#include "tegra241-cmdqv.h"
-> +
-> +static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
-> +{
-> +}
-> +
-> +static bool
-> +tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
-> +                            uint32_t *out_viommu_id, Error **errp)
-> +{
-> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
-> +    return false;
-> +}
-> +
-> +static void tegra241_cmdqv_reset(SMMUv3State *s)
-> +{
-> +}
-> +
-> +static bool tegra241_cmdqv_init(SMMUv3State *s, Error **errp)
-> +{
-> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
-> +    return false;
-> +}
-> +
-> +static bool tegra241_cmdqv_probe(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
-> +                                 Error **errp)
-> +{
-> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
-> +    return false;
-> +}
-> +
-> +static const SMMUv3AccelCmdqvOps tegra241_cmdqv_ops = {
-> +    .probe = tegra241_cmdqv_probe,
-> +    .init = tegra241_cmdqv_init,
-> +    .alloc_viommu = tegra241_cmdqv_alloc_viommu,
-> +    .free_viommu = tegra241_cmdqv_free_viommu,
-> +    .reset = tegra241_cmdqv_reset,
-> +};
-> +
-> +const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void)
-> +{
-> +    return &tegra241_cmdqv_ops;
-> +}
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index c66c452737..3305c6e76e 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -626,6 +626,10 @@ config FSL_IMX8MP_EVK
->      depends on TCG
->      select FSL_IMX8MP
->  
-> +config TEGRA241_CMDQV
-> +    bool
-> +    depends on ARM_SMMUV3_ACCEL
-> +
->  config ARM_SMMUV3_ACCEL
->      bool
->      depends on ARM_SMMUV3
-> @@ -633,6 +637,7 @@ config ARM_SMMUV3_ACCEL
->  config ARM_SMMUV3
->      bool
->      select ARM_SMMUV3_ACCEL if IOMMUFD
-> +    imply TEGRA241_CMDQV
->  
->  config FSL_IMX6UL
->      bool
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 8f834c32b1..fc83b635e7 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -88,6 +88,8 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
->  arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
->  arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
->  stub_ss.add(files('smmuv3-accel-stubs.c'))
-> +arm_common_ss.add(when: 'CONFIG_TEGRA241_CMDQV', if_true: files('tegra241-cmdqv.c'))
-> +stub_ss.add(files('tegra241-cmdqv-stubs.c'))
->  arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
->  arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
->  arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
+PS: something seems to have gone wrong with how these emails
+got sent: the 3 patch emails have a header
+"In-Reply-To: <20260303143157.80437-1-1486344514@qq.com>"
+that ought to be pointing to the cover letter, but there's
+no email on list with that ID, and instead the cover letter
+got sent with
+"Message-ID: <tencent_D3A83F7C6433B6B2D6C4513970FD0446D708@qq.com>"
 
+The effect is that for instance patchew doesn't find the patches:
+https://patchew.org/QEMU/tencent._5FD3A83F7C6433B6B2D6C4513970FD0446D708@qq.com/
+
+It looks like something in the mail infrastructure you're
+using is rewriting message-IDs (e.g. in the cover letter it
+has added a note of the original ID as
+"X-OQ-MSGID: <20260303143157.80437-1-1486344514@qq.com>")
+which is breaking the patchset threading.
+
+thanks
+-- PMM
 

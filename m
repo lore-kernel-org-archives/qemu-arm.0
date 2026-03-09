@@ -4,109 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AE0BFCA16D
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 18:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D630CFCA16E
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 18:18:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzf5G-0002m5-Cn; Mon, 09 Mar 2026 14:12:02 -0400
+	id 1vzfAw-0008IS-H6; Mon, 09 Mar 2026 14:17:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzf5A-0002Qf-Nh
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 14:12:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzf56-0007lX-FF
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 14:11:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773079911;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=mj3P97yb9RRx48ItIGxujBywEF12DLHwJ6aUKmQbRlY=;
- b=aekcRw4DgzohWWAIp0z1gahBteuSQOWtYyzq5fizSifiVQIScntr33Ha8GGNFC0Cf/LvEg
- 1xrnO+ycymHHAEpwV270OwlL5kTmNDPWJjKIihvjECLOkE9+Lv7gg0ACkgBrpBZU6cCylY
- t7KfNT9XI61eNRhR/K/4MitsMjdLEok=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-518-c7EM6MiUM6-rxa-eicuyEw-1; Mon, 09 Mar 2026 14:11:50 -0400
-X-MC-Unique: c7EM6MiUM6-rxa-eicuyEw-1
-X-Mimecast-MFC-AGG-ID: c7EM6MiUM6-rxa-eicuyEw_1773079908
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-439ab866bc1so10687473f8f.2
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 11:11:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vzfAp-0008HT-UK
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 14:17:50 -0400
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vzfAn-0000Nu-BX
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 14:17:47 -0400
+Received: by mail-qk1-x735.google.com with SMTP id
+ af79cd13be357-8cd80f56b27so181942585a.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 11:17:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773080264; x=1773685064; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=X+R4o+BrQrFfyZH2D1qKyt9Ofr35TRhFtMT6NW16++I=;
+ b=zybkRPOdW16hNAQUrSN1bCPWLQW46hwGtVGZFPS6CIT716ybwrdnY+Ol/oRBoZsAGy
+ NHkbZZcpvpXLVslVxku2sahjGb4JSsWjQFBAK/ixgBiTBVtGqhyyp7IUYba1YBcoPqrP
+ hg2ulHvdvzHHuqiz+wiLHmQXnEI7bvyLEmhu2P5JiVpEPy4kAG4SOXuNkSpqKj6CtBdj
+ oNj50x6F4h+wFjXKuZS72nNjP0PT2efv1BmTt61031ptITR6aPQv9BhnbamwhmivnUoy
+ u3lQTeOCUe3P3ZxEiU4VTF17KDwMBWMZU8eilcDJHlR1i8IZrKbBFEJUK57S3r67hsA4
+ OXxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773079908; x=1773684708;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=mj3P97yb9RRx48ItIGxujBywEF12DLHwJ6aUKmQbRlY=;
- b=rIo8pJlpYv1T0Lx/n4zi9LaVezEYZU736AV2o8ydh+D1JOwtKaGZHx7x1z1swsbOEU
- /B/pLZj+R8oLcTaAXJdtsyzs9e7rfhRFMj5FCsHsIka2QTSVbSPbCc68jQVWdqLJ6nlW
- cPde8W5qkvvjgyCsg4NIszAtHtSMZn0x4pOAW7wqcGxz+K6/vdJZN44wJGGxqrte5CNg
- 3nVeIOVBb9bvEXLCX6VJ/JJA7MQ4s75MW6GygseXV6Uv4u1k6gEm+mm6Xmp+IgyT+5Wu
- DLGz7C/o1QxT6bte6t9DDnjqWiLl+Cn7DhURd+nmKi0sUUCNQLlc1t6SCMB4LuckQg8U
- XHiw==
+ d=1e100.net; s=20230601; t=1773080264; x=1773685064;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=X+R4o+BrQrFfyZH2D1qKyt9Ofr35TRhFtMT6NW16++I=;
+ b=NJroabn3OrCNx3Omgue7eRNxKj2U8DOAklxKW4J6m4/pN6dtPzs55nEc6MlzoADpOg
+ 2HwKDL4/Q+WoOwIjKJ96WRZUpf3mfvQmlPiNS+XnoAOEzVkA8AQDqBnQC7A9SFjxuluR
+ MU7RQWwFFJp18Cgd8EJGdlBIfY2w3k9BDbm1x9TNGRh5pFzRI/4iWKfz0aQZhfNO+1lX
+ eXShvJNoxkLp7jXYOyZcCYADMpKoM3AEURcp1y/NlMNt5APb6jamdLjqyYJVhnByaAx0
+ lLYLqrhOYYtqPG2PHaDnRUHuhDDVc8GEQ1HtuTGJhF5snTXhu7SQv16ZeSt748CViekd
+ L96g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX4WmbK5Muv1/Dsk5I3oLjxzqq/mPK1tICHLnvCMNmHOSIDAVkH0AqKYdyxiW14oC6xKzFHOXz2AQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzhuWR8hSXlNQhdwBcSY1JNLuK4ZnJk5FT9ke98kP68EH4+TDfb
- 2JDDtSaiF1sxKVipFrRF9bKuFEemMNfC+ICFBA9ykaq9NwbS+ebBS8Qa1JGO09u5bSbJeaNCRrW
- qi3J92eTXY48Si/wXpV/RiRwUVLPQT5m/I77rHnncaH96BHUpJKKnug==
-X-Gm-Gg: ATEYQzw4X39GbRkItkjae/bU9CMhBKSnD58JJbm2GtwlyvJhYY9CLRN1TZmgSufssqT
- bJpdVJKDO8ta6fIXG2W0AMQEkoS0Qk2ndWjCytzxZQt9yFs6n/ozuhOPKhfyF4Ce0CjG5HF0p5t
- bIfmQCQ9RyVv6togHxkxt+yuObVed0i0zPU9w+Ud9xYKRT2pAONau4TGHYrynRjVEP3ifNGVQM3
- jiAThRHWfq4e0Ohezkj5rxW+6EqNF0Wy5J+g5zzTQiC3VvNJZoPQ6Nl39R4Ua0PbwPQORJFz7zm
- BFmA3IBjqakD178bNBaKJK+sgMkU5HK8wqiJAyFI/2oAgSuI/FO35i8LJQBsVjjc8ViOLw3FQXS
- 2B6uAk52AYil0uYdHTH9olZ4s8t3JZfNCju6jXyZP9xjmFIMJ9vnRZ8E6XWdhSKYMd8sqTw==
-X-Received: by 2002:a05:600c:3109:b0:485:3c05:24dc with SMTP id
- 5b1f17b1804b1-4853c05278amr61794045e9.33.1773079907679; 
- Mon, 09 Mar 2026 11:11:47 -0700 (PDT)
-X-Received: by 2002:a05:600c:3109:b0:485:3c05:24dc with SMTP id
- 5b1f17b1804b1-4853c05278amr61793615e9.33.1773079907172; 
- Mon, 09 Mar 2026 11:11:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AJvYcCVVwuZK9yMeWFTMmtHu/pH0aR3W+cf/fesuGYr8TQJt529hBiukWTzFDZCnEOMvLolfN2UAjY8wOw==@nongnu.org
+X-Gm-Message-State: AOJu0YzfP4mG+roQQc/U4DPL7U/+/mhj7VpbE2VNy+CrPNZ4mTT0lI5g
+ okovkTQf/Z7GwSoq6bRbdrjmHiah6MvLr7I+SD6Hqt8nfZFdd7ygzQQ9aqYSqrZIbYJiccj4Lo/
+ 7R4Ln
+X-Gm-Gg: ATEYQzwV6egg+v32Aeuftg4F76Jr4SfmUrNne12qz8k3fJbjpqdiTGjH6/skAxbngkl
+ GnowquQ8CNto1XHLmwPCqX8crLI/hRSwJAqRv04RnDZB8z40SlQ7q+B4oI9LpPqqmHilSCMqKh3
+ Fpn7n4yaGGa4rm0kWQhFT+lgA88gsAIaky+k6+iAb7vX0frVynlNoOM8sXt5dns7YrbiLX6bxE3
+ /BFm6PdhMcHF1VL2cjXVlruQTfEZyunOEOUmF6GP2jNw8v/bokR1CgoG1NRm9Rj0Sc14dHIgCHj
+ GZbspctC1CSSpMM2CCwvHaGt16WBxpw+GYEgC8JePLYllRFkqSJysHt/KLV+qMJ/QJ2hScWhg3N
+ aZeL7XnAjYg0a4j3mKGRZuvYGJsZ7PtEQqqlkHsf9YtXWTQgQe/eOiWUHl4waXoYOB7RPITj8j4
+ fPY2WrXrySKrhOAUvEpYABCkd0LN2Zinj24qDEyJ8NJFCR3MA3PiM8nfo1wJ8Uz+PfvpBT
+X-Received: by 2002:a05:620a:44d1:b0:8ca:2baa:766 with SMTP id
+ af79cd13be357-8cd6d40d296mr1626454385a.2.1773080263786; 
+ Mon, 09 Mar 2026 11:17:43 -0700 (PDT)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48541aa73easm8520175e9.3.2026.03.09.11.11.45
+ af79cd13be357-8cd6f57291esm798679785a.50.2026.03.09.11.17.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 11:11:46 -0700 (PDT)
-Message-ID: <2e990df5-4b9b-49ff-b479-2317e60fdc3a@redhat.com>
-Date: Mon, 9 Mar 2026 19:11:44 +0100
+ Mon, 09 Mar 2026 11:17:43 -0700 (PDT)
+Message-ID: <b9c77055-e055-48fb-b504-6a00f912b4c9@linaro.org>
+Date: Mon, 9 Mar 2026 11:17:41 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 28/32] hw/arm/smmuv3: Add per-device identifier property
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, kjaju@nvidia.com, phrdina@redhat.com
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-29-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260226105056.897-29-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qHv5uoVwO2tB7K8veKGLGhXEG038E3xMOg2Uzezsk4E_1773079908
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 5/5] tests/functional: add VBSA linux tests
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Kyle Evans <kevans@freebsd.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Warner Losh <imp@bsdimp.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20260309174841.4184117-1-alex.bennee@linaro.org>
+ <20260309174841.4184117-6-alex.bennee@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <20260309174841.4184117-6-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::735;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-qk1-x735.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,111 +143,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Shameer,
+On 3/9/26 10:48 AM, Alex Bennée wrote:
+> This extends the VBSA test to run the linux tests. The sysarch-acs
+> test suite does provide some pre-built images which is good because
+> the tests require a patched kernel. However due to the structure of
+> the image we need to jump one or two hoops to get something useful:
+> 
+>    - download and double decompress (zip then xz) the image
+>    - navigate grub to launch the Linux Execution Environment
+>    - shutdown the system once tests are done
+>    - extract the logs from the MSDOS file system and parse them
+> 
+> It does make the code a bit ugly but it works for me at least. So far
+> the subset of tests run is limited but that might be solved by adding
+> some more devices to the PCIe bus to exercise the SMMU behaviour.
+>
 
-On 2/26/26 11:50 AM, Shameer Kolothum wrote:
-> Add an "identifier" property to the SMMUv3 device and use it when
-> building the ACPI IORT SMMUv3 node Identifier field.
->
-> This avoids relying on device enumeration order and provides a stable
-> per-device identifier. A subsequent patch will use the same identifier
-> when generating the DSDT description for Tegra241 CMDQV, ensuring that
-> the IORT and DSDT entries refer to the same SMMUv3 instance.
->
-> No functional change intended.
-besides changes the IORT table
->
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  include/hw/arm/smmuv3.h  | 1 +
->  hw/arm/smmuv3.c          | 2 ++
->  hw/arm/virt-acpi-build.c | 4 +++-
->  hw/arm/virt.c            | 3 +++
->  4 files changed, 9 insertions(+), 1 deletion(-)
->
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 648412cafc..73b8f39aaa 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -63,6 +63,7 @@ struct SMMUv3State {
->      qemu_irq     irq[4];
->      QemuMutex mutex;
->      char *stage;
-> +    uint8_t identifier;
->  
->      /* SMMU has HW accelerator support for nested S1 + s2 */
->      bool accel;
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 468135bb24..c1f84bedd4 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -2109,6 +2109,8 @@ static const Property smmuv3_properties[] = {
->       * Defaults to stage 1
->       */
->      DEFINE_PROP_STRING("stage", SMMUv3State, stage),
-> +    /* Identifier used for ACPI IORT SMMUv3 (and DSDT for CMDQV) generation */
-> +    DEFINE_PROP_UINT8("identifier", SMMUv3State, identifier, 0),
->      DEFINE_PROP_BOOL("accel", SMMUv3State, accel, false),
->      /* GPA of MSI doorbell, for SMMUv3 accel use. */
->      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index ae78e9b9e0..20605185c5 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -342,6 +342,7 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
->  typedef struct AcpiIortSMMUv3Dev {
->      int irq;
->      hwaddr base;
-> +    uint8_t id;
->      GArray *rc_smmu_idmaps;
->      /* Offset of the SMMUv3 IORT Node relative to the start of the IORT */
->      size_t offset;
-> @@ -404,6 +405,7 @@ static int populate_smmuv3_dev(GArray *sdev_blob, VirtMachineState *vms)
->                                                 &error_abort));
->          sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
->          sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
-> +        sdev.id = object_property_get_uint(obj, "identifier", &error_abort);
->          pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
->          sbdev = SYS_BUS_DEVICE(obj);
->          sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> @@ -630,7 +632,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->                       (ID_MAPPING_ENTRY_SIZE * smmu_mapping_count);
->          build_append_int_noprefix(table_data, node_size, 2); /* Length */
->          build_append_int_noprefix(table_data, 4, 1); /* Revision */
-> -        build_append_int_noprefix(table_data, id++, 4); /* Identifier */
-> +        build_append_int_noprefix(table_data, sdev->id, 4); /* Identifier */
->          /* Number of ID mappings */
->          build_append_int_noprefix(table_data, smmu_mapping_count, 4);
->          /* Reference to ID Array */
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index c75a8d6e9e..44c6b99c96 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -3138,6 +3138,7 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
->      }
->  }
->  
-> +static uint8_t smmuv3_dev_id;
-nit: I would rather put that at the top of the file
->  static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                              DeviceState *dev, Error **errp)
->  {
-> @@ -3196,6 +3197,8 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
->                                       OBJECT(vms->sysmem), NULL);
->              object_property_set_link(OBJECT(dev), "secure-memory",
->                                       OBJECT(vms->secure_sysmem), NULL);
-> +            object_property_set_uint(OBJECT(dev), "identifier", smmuv3_dev_id++,
-> +                                     NULL);
->          }
->          if (object_property_get_bool(OBJECT(dev), "accel", &error_abort)) {
->              hwaddr db_start = 0;
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+If I recall correctly, all TF-A tests concerning SMMU are based on 
+SMMUv3TestEngine device, which unfortunately has a proprietary interface.
+We would greatly benefit from all this is Arm published that as a 
+specification, and this would remove all the needs for ad hoc SMMU testing.
+Or we could reverse engineer the interface from how tests exercise it 
+and implement something similar in QEMU to run original Arm tests.
 
-Eric
-
+Regards,
+Pierrick
 

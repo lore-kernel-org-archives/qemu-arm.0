@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E67FCA198
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0EBFCA199
 	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:02:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzier-00038P-Nx; Mon, 09 Mar 2026 18:01:01 -0400
+	id 1vziet-00039R-K5; Mon, 09 Mar 2026 18:01:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vziek-000333-1r
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:55 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1vzien-000345-2H
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:57 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vzieh-0004Xu-5S
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:52 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-64c9fcc24b3so9390846d50.1
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:00:50 -0700 (PDT)
+ id 1vziej-0004Yl-W3
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:56 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-7990712fc39so9378787b3.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:00:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773093650; x=1773698450; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773093653; x=1773698453; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=GQQEc0WUkn1kST8uqeyTH9y+WEy6NEvoOvEkjAHa9Bo=;
- b=gk5TW6RFG0HWj+5yDzH7BH5hSQyOusWqPAwL58JUIGEF3gqOstQW66MuJvqKcOqNvj
- PQFY2V0EiqIlyuO7nFVH9Zn1LNnhsRPvdxGJJv/J/v73XlY4Ft9awqcyQeuWZ5B9IDmJ
- 6zTW7eIBG3UvNjmrbyug6fzEFpfV9r7lHPmtuT2gsTPSTTkykamvNZdyGok5Fp13Vmzr
- KffinaX7gNStBqYRuZWMR5tLY/PLmqFlflGIj3K5uwLeAq3dmuQxPyb6Tiuh2QDCGsJ2
- AuU1IRmz/LtZPW4VtFdowjTIw7BD52K3P/hAxH1cKWDKJlVW5+1VhuD/HZslfdgnINM0
- qzsA==
+ :reply-to; bh=jcqshWK0PF72SFSXYPEg36r5bTJvD4+18bCR7YlbW8c=;
+ b=ArlZQQYeXAYZpL3SmDFGDACd9BVV2VrGEKWx2MRNd/BzvkZPAvdngSsBjhO9V3H/ux
+ Zf8MBN+EVACO813CJm/E6l5CsCfaPV1OOAa/EZTkPJcElTPMFuIX13B0zbRB/4YeQ0EZ
+ 0nrku1OjBV3FmcN2FbTA9KEqUTDDN9YarMoJrB9IpLpkegQhl4dB+Rf4tAupCXwotcWD
+ 1Dx/a3DErmlMBaGCqVmq82LKvtNZPNawaTmIwowznyxS1t99Ac9d0hvCtgxBTCS0zZMZ
+ j/6bN5RnwAl2T/UOsVzbzvq7PYXzyZ/BfYhw1vM2Upb3C9DNLMDTYlwe4XtyMaVXj/uK
+ 31CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773093650; x=1773698450;
+ d=1e100.net; s=20230601; t=1773093653; x=1773698453;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=GQQEc0WUkn1kST8uqeyTH9y+WEy6NEvoOvEkjAHa9Bo=;
- b=aZUPBJDh+Kh05y5Ul9a9RhQ5BvLI8h2rLIXGqvC66walsyO3UklQHkHnB4eXnIzcsz
- Zfb9523vwpvH73sKLkGL/3Z6pBREk9lgy8LkRjeBVcwSP+wqBPqKUNSP7uZxxX7kXyfK
- lINb+GepErtQcquPwc9tY+CUip3wL9nlX4IGDGBeHuGnJMuevBddY2f0QLZbgf++V3QS
- XBnCp/abhwUW1NpUJp2XykK1KZxiEeH6gxXytC5mNLhJxMaN6S7i3p/eYVoF8NbRkc6T
- UhZPomh1W2vO/F0zhR0FWH9ZYltbr0LPML0riWlYRmZz52xVrNyFs2WPDlxbt8iNbLrk
- 1Mdw==
+ bh=jcqshWK0PF72SFSXYPEg36r5bTJvD4+18bCR7YlbW8c=;
+ b=YZBUGw3oUrSHvRX1ujP2BFSsUMkq650n7OLbQFnxmTESUiX4cyuMpQ2niX5EDQu+p6
+ CzZ/LngVOk8V7MnkFzxPBR8rKFCg4n5gUKAzOHfql4UWGpcEXPTjIzSyFEXL2EgcN6ZV
+ Kw4o7X8pvjXnr5qXZV4rAQe54d4IbP/Ws/6LngJ9ZCJxmY6Qu5TWZvm0to4Dzi/JkNKy
+ F7sk2sSbunxIMsDfoF4l0W3hO6IhrmtFF/mbF47pVk/yPDUs84C8moV5dVMV2wnWmNmx
+ MB2G9i6LTNOvPE2GfbpnNKliLsJ8Rpx5YvtTG0qP/Yz6SjxK0QJQoWhwiaTSwMzUEZrR
+ wtVA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXU3qFd9+WKX8E/8lmGgBNpYdNm4qt/6bmm/G7lcUN3SFagyBCO3RGlJhiDVdpOkwcd/qDGILJhLA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzv7VNq3DY0RvneqPTBn9c4hH05vbGQ8AKi5KCgkZwIE4/lUVIZ
- p9MzDh+Yyftv+a/QbDvKlEggEnjgWOHL3pjFm5g14fGTSef7N3X/enwh
-X-Gm-Gg: ATEYQzyFxNVKp3a09WrnDwMrfDjCmEKKxZEnieJgSOwDA2AEMThYe5mOFEI5KhiPRyh
- dM6t2nlqfTijjBu055K4F+OIkWAiQCjG6deHJ19VnIKB/RNWNgeK717kiMQ6H0+6f228VFGtx2g
- tV+GgibOT+qpbWVGDMxHgzpM6HB8OWbBFhGtU1NK8nqm9UpVyzCMHr3MS4yuEV3wfWksaZLAE/y
- mx33KTAUDI76RznKAT1MsU0gFH69APwaZGqLkTsZBxOiMt0GMjvloMsxcI+PdsbsZqvnoChQ/o1
- 6ClyGJlos2wetRQ6caWBigOhswDXh5e+M5fOA5yw+vnc2bHy5lFDH6aNDi8OrjYuBl0rpMGBHdu
- Pq4+WmIym0XDvWgTQEXNQ+D4QBWpAEcUDB5jwNj5DgxfpFvgPbg8LQ+yv8evd+fuP0cnGMrA+Ob
- 43Z+8AVJewreuAGhHC1YAvDNqtR6fcxNqjQhc=
-X-Received: by 2002:a53:b44f:0:b0:64c:f871:6524 with SMTP id
- 956f58d0204a3-64d14350b6cmr9031651d50.81.1773093649959; 
- Mon, 09 Mar 2026 15:00:49 -0700 (PDT)
+ AJvYcCUGsLwDHXgts+CNc/ki0MqIP3l5hiOc3uRETDR49mArl+NCj5aTNXENiYvGxBALOFl83F5kZUccow==@nongnu.org
+X-Gm-Message-State: AOJu0YzDsdYpFD53eaYOQ3LhslxTlnHBgpkT7dp7Bs53W2U9e0yVABLc
+ uHGF6op3B1xAm5zbSG8sAdt5t+qqKpO8HPvGYJtllVCq3mmodh3Yf/4J
+X-Gm-Gg: ATEYQzwhoOe6Du+XQwYveOFKRuKwe2QEzRI+5f88E4mbz3soR2yLvBrHRPQ4lzkJwzk
+ gnc7q/IZVaEw3j1KLHzqxhgtjKN+YqFBVJ9YmBpoaUVBL0MNzQJg57XgXmcozvFlq3n0OioVGil
+ DK3UMP1YJK83Z6jcTMvp8NkdjKLvWFHOM4TvHLvopah6vRSWmY6BHW/SLWS7gMWOunmhimj/wYv
+ 6C141LRqv1PcldqS49bMmQlsRdNUat+aagdsKyTvTIsTcGQuPSIEw54+uL1d38KSI1LrnPknh6t
+ xOYdzcXYAYD9x1nn9nktI72jrwO1pX5yfxOLMqCRyuIB8RHfTm0PyzwKO+bJjV+qBK4xUkx5HRC
+ KFynXd1iiyJzyPscWmgAQ8zQVQqf7TjeHy4GlhNfkoGuGPzWegOiwTJf7ugP7ZEqRddjTRj5SDK
+ MBg/d8GiI9nubRxhxRN2/nRGfZzrDGtz7RQ2k=
+X-Received: by 2002:a05:690c:6e83:b0:796:6df5:4840 with SMTP id
+ 00721157ae682-798dd7aa08cmr118886057b3.59.1773093652734; 
+ Mon, 09 Mar 2026 15:00:52 -0700 (PDT)
 Received: from [172.26.74.149] ([185.213.193.97])
  by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7990a54ba7csm5218437b3.19.2026.03.09.15.00.49
+ 00721157ae682-7990a54ba7csm5218437b3.19.2026.03.09.15.00.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Mar 2026 15:00:49 -0700 (PDT)
+ Mon, 09 Mar 2026 15:00:52 -0700 (PDT)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 09 Mar 2026 17:59:39 -0400
-Subject: [PATCH v4 07/13] target/arm: ldg on canonical tag loads the tag
+Date: Mon, 09 Mar 2026 17:59:42 -0400
+Subject: [PATCH v4 10/13] target/arm: with MTX, tag is not a part of PAuth
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260309-feat-mte4-v4-7-daaf0375620d@gmail.com>
+Message-Id: <20260309-feat-mte4-v4-10-daaf0375620d@gmail.com>
 References: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
 In-Reply-To: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
 To: qemu-devel@nongnu.org
@@ -82,15 +82,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773093641; l=2624;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773093641; l=2858;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=LIQLbnOi9t8oJGXDiTdEoadrMQhotgUGSWP3ejz82kI=;
- b=gkb8ojaplKj6LJ0PS7Fm3XshQONlr2JmX3LD2TRbny7CkKRHXA9oRapoN4qFs3sp/AromSCJ1
- OMUnpfz5i0MBiTK72zIbq+9J971/D1mAZImILhlpMCSosjYW03zbHDb
+ bh=+dUMv/5Rue52GZFtWN1V4EyVvStVLMNVxeKC+0+OyjY=;
+ b=zkMRguuEE/vuWFYkp8xiTmRtRqKhMNBRH/yEUpWpKMSvy9ymScZnmMMaxkLQHPTlbzlgHxlzx
+ Ljpbo4K+N44AnTwc9/GTZxjyCHX4QKqXfIsQYM3OrffLmyZ+8vJ4Ult
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=brookmangabriel@gmail.com; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,77 +113,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-According to ARM ARM, section "Memory Tagging Region Types", loading
-tags from canonically tagged regions should use the canonical tags, not
-allocation tags.
+As described in the section on MTX, tag bits should not be used to store
+or compute the PAC when MTX is set. See also Authenticate(),
+InsertPAC(), and Strip().
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/tcg/mte_helper.c | 35 +++++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ target/arm/internals.h        |  5 ++++-
+ target/arm/tcg/pauth_helper.c | 14 +++++++++++++-
+ 2 files changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index b54fbd11c0..07797aecf9 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -313,6 +313,11 @@ uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-     /* Load if page supports tags. */
-     if (mem) {
-         rtag = load_tag1(ptr, mem);
-+    } else {
-+        uint64_t bit55 = extract64(ptr, 55, 1);
-+        if (canonical_tagging_enabled(env, bit55)) {
-+            rtag = 0xF * bit55;
-+        }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2c4369cc16..71d8b419e2 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1820,7 +1820,10 @@ static inline uint64_t pauth_ptr_mask(ARMVAParameters param)
+     int bot_pac_bit = 64 - param.tsz;
+     int top_pac_bit = 64 - 8 * param.tbi;
+ 
+-    return MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
++    uint64_t mask = MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
++
++    /* If mtx is enabled, second nibble is not part of PAC */
++    return mask & ~(-(uint64_t)param.mtx & MAKE_64BIT_MASK(56, 4));
+ }
+ 
+ /* Add the cpreg definitions for debug related system registers */
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index 67c0d59d9e..08dd230614 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -342,9 +342,12 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
      }
  
-     return address_with_allocation_tag(xt, rtag);
-@@ -463,8 +468,10 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
-     void *tag_mem;
-     uint64_t ret;
-     int shift;
-+    bool bit55;
+     /* Build a pointer with known good extension bits.  */
+-    top_bit = 64 - 8 * param.tbi;
++    top_bit = 64 - 8 * (param.tbi || param.mtx);
+     bot_bit = 64 - param.tsz;
+     ext_ptr = deposit64(ptr, bot_bit, top_bit - bot_bit, ext);
++    if (param.mtx && !param.tbi) {
++        ext_ptr = deposit64(ext_ptr, 60, 4, ext);
++    }
  
-     ptr = QEMU_ALIGN_DOWN(ptr, gm_bs_bytes);
-+    bit55 = extract64(ptr, 55, 1);
+     pac = pauth_computepac(env, ext_ptr, modifier, *key);
  
-     /* Trap if accessing an invalid page.  */
-     tag_mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_LOAD,
-@@ -472,6 +479,34 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
+@@ -377,6 +380,11 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+     if (param.tbi) {
+         ptr &= ~MAKE_64BIT_MASK(bot_bit, 55 - bot_bit + 1);
+         pac &= MAKE_64BIT_MASK(bot_bit, 54 - bot_bit + 1);
++    } else if (param.mtx) {
++        ptr &= ~(MAKE_64BIT_MASK(60, 4)
++                | MAKE_64BIT_MASK(bot_bit, 55 - bot_bit + 1));
++        pac &= MAKE_64BIT_MASK(60, 4)
++            | MAKE_64BIT_MASK(bot_bit, 54 - bot_bit + 1);
+     } else {
+         ptr &= MAKE_64BIT_MASK(0, bot_bit);
+         pac &= ~(MAKE_64BIT_MASK(55, 1) | MAKE_64BIT_MASK(0, bot_bit));
+@@ -424,6 +432,10 @@ static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
+     cmp_mask = MAKE_64BIT_MASK(bot_bit, top_bit - bot_bit);
+     cmp_mask &= ~MAKE_64BIT_MASK(55, 1);
  
-     /* The tag is squashed to zero if the page does not support tags.  */
-     if (!tag_mem) {
-+        /* Load canonical value if mtx is set (untagged memory region) */
-+        if (canonical_tagging_enabled(env, bit55)) {
-+            switch (gm_bs) {
-+            case 3:
-+                /* 32 bytes -> 2 tags -> 8 result bits */
-+                ret = -(uint8_t)bit55;
-+                break;
-+            case 4:
-+                /* 64 bytes -> 4 tags -> 16 result bits */
-+                ret = -(uint16_t)bit55;
-+                break;
-+            case 5:
-+                /* 128 bytes -> 8 tags -> 32 result bits */
-+                ret = -(uint32_t)bit55;
-+                break;
-+            case 6:
-+                /* 256 bytes -> 16 tags -> 64 result bits */
-+                return -(uint64_t)bit55;
-+            default:
-+                /*
-+                 * CPU configured with unsupported/invalid gm blocksize.
-+                 * This is detected early in arm_cpu_realizefn.
-+                 */
-+                g_assert_not_reached();
-+            }
-+            shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
-+            return ret << shift;
-+        }
-         return 0;
-     }
- 
++    if (param.mtx) {
++        cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
++    }
++
+     if (pauth_feature >= PauthFeat_2) {
+         ARMPauthFeature fault_feature =
+             is_combined ? PauthFeat_FPACCOMBINED : PauthFeat_FPAC;
 
 -- 
 2.52.0

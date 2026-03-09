@@ -4,101 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 774EFFCA198
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C43FCA19A
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:16:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzies-00038U-1P; Mon, 09 Mar 2026 18:01:02 -0400
+	id 1vzitw-0003KT-AL; Mon, 09 Mar 2026 18:16:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vziep-00037L-SR
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:01:00 -0400
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1vziTU-0000uY-HF
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:17 -0400
+Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vzien-0004Zx-31
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:59 -0400
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-7986fb839f5so106841017b3.0
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:00:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1vziTS-0002CV-VC
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:16 -0400
+Received: by mail-dl1-x122b.google.com with SMTP id
+ a92af1059eb24-1271195d2a7so8521494c88.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 14:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773093656; x=1773698456; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=4UqJ0KkwcXgss5FI5RMGEGc98MAIzsKLiHEjZ3J/bic=;
- b=YBydFiaRBcUuZ9SNgYT85VtToadWqKoCHGvjSf0JZ1inzbscsHa0PWqJ1Azxj6zuSx
- 6jZ2G31gGwoSNa5h6jie3x+ko/MFBT6Yo+ZVHEk8Q7jujiDYEZe8JyfoKLlPXF/6qr2s
- gmfWL1FrYEfXBdrIfql1oazGaSdw4/xhGS2c6hrXDtlL2/iRJjjD0On8iPwmkvY2DoWe
- mu9W3F7MmxxMuldcMlY8PPhy0IKNplMw1UBgA8rCAuOQPi7T1MUovMUyeKoHS3tWwak0
- MLOzEEpvViKqZxLfPNYj5ZjQWgd1A5OIdNmWE3VGDuqHwdD2vF/khaH1o8xesyozXJtg
- 7gtw==
+ d=gmail.com; s=20230601; t=1773092953; x=1773697753; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sgvw3VewudVvF9Ok3qNdpbXGvScSSWvQXrdO30ThciA=;
+ b=mZoyevenAROLzWFv5xC4RNtalnN3H4I5JXmPRGLXkDqbqaFozVTvs5iAXMb+N2eVoZ
+ ntKRU+vQvKoHecLRP704P+DKHWq8pW+9SnocSsUh5CLA3WeEtUmsQ8VbjGSQ0Lkd6Kd3
+ PiMm+6w5qTrj8eb6br3dATwxPaqlcwcQoyhj36XpadpUG1BeSsWAiXW2h+0m08Uu172U
+ cK6AnbpHPkpR50SYsQmwwqINLxaeTBY1gAtimCpA8r3Hn9l5FYw3HSoVTpK5yWiSKMhS
+ DQyn0INgNy0AhxXMGMCFq06so0FAmZgc2EFF45TTRakR5YEOq1vdyx2KNLBaTcxfRvor
+ h4Zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773093656; x=1773698456;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=4UqJ0KkwcXgss5FI5RMGEGc98MAIzsKLiHEjZ3J/bic=;
- b=C9WlDlB25O3XUfMRJv0nJBR8C+Ueet3PutqZ+f4+BefZVftldwb3nMZJ9SaSHF0Bkp
- iFhBQop0gDosfAh6K969AolFU5D18C0krp20Zhyz01y8idVR5cQ7cJR5fd+dG1rBY7sq
- GW5HcQSr5Qc5PxfZlHAsNNBpVGwIylszmUsCvCHKBPU/Z75MFY4dK/8OKAhwLhoZHbhV
- L9FJfmEi4tr0BIHqiKvptTPtMX3YNUzHIQNVd/Ka/hX40suFHjtjueF49mJ2rZRlrzx1
- s6OJfJg5IXJj2YdRGb+K2P31em4d9XmqP1/9EIOklnmxj/3zUTViyHMXeJ5CYQPXOSyt
- ZiQA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUbGOtGGG8XemghVsOeRtdQMe9JsQ5MUV6aOOQp5v2dobr5bBUKfYzH5gsCnlcx16Oganwbfv/KvQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzEkT2vzLHsoZedN9VcVfi8r6/yXRzlHNgHqp70xmf/U7oz1/uC
- P0IWoRilOu+b7xw2Z1l7/mLT/AkZXTvTgrMHxRq0Z1BRx0cpyJoBXENj
-X-Gm-Gg: ATEYQzzMaWu9YY9ISp7SLGD8trxuEAXeCe8Hf6nPK9DlITclEoTCIgbjm+IbJYuH3qo
- wVCzsinHbTWeGXiJBGxTRoYkSqxoeIijtx8sYaTQAJNQ8eRAOCobI6JNCImSlxvFLDcbb7QpC3z
- 7pLVRCa1LrjmDVar+Nps3qgA1CHK6QPKsuGdHf+wVPYyytzM+pki9b8Jhwjff/CsZMK7XYmMsk3
- twYrSYijErwXXqli9QSzYf2KGMflHyQqnUvRGiApvkjybzucnosHAORqGTpz191Zr+qVWiYPdaA
- XDW8jVNI1nz5kIxZpVsRQk/rTHqz+2LLk5EQpg8dflfY7C2+QaPe8nqtmdBzIPzasj7VbbBJWYc
- VTDqiNbBOqJlEoa8YRf+MX6HWXV8RfQjRUAFAyQid6C54yh05MvUHDXsnffE4zz9TMYJd/vbodf
- QQiApmy2SN4GEZKn92zoFsbzDBH3ykVVJPKFU=
-X-Received: by 2002:a05:690c:6305:b0:798:752:101b with SMTP id
- 00721157ae682-798dd67888dmr121753027b3.1.1773093655923; 
- Mon, 09 Mar 2026 15:00:55 -0700 (PDT)
-Received: from [172.26.74.149] ([185.213.193.97])
+ d=1e100.net; s=20230601; t=1773092953; x=1773697753;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=sgvw3VewudVvF9Ok3qNdpbXGvScSSWvQXrdO30ThciA=;
+ b=YVKtMff0k/DR2OWGVzrLCnfnjq90e3tHC9VbmPxhKO9+7cz5YfGgdXOxNtOSz1AITn
+ qyE+q3FCecdPkLsiyDBQ2RsP2qv3eUJgFaTmu93OulkeFUzoEPFSzlrKxJJg9A7YFy44
+ PNZ7L3o+JyBs6U8hFttY3QYI3hi1UtP3tIYpKGWmz0qnWi65vEd+Igl+fcxPe8pV+TPM
+ X85NbTBZJAaUUbfvVwuBWz1GyMBi86keXNU+U08SeN7+dXD1BxwiMXKpR/yyT2wMlsdq
+ jsPhZVEyxvo9zkiy1DyTJeczu+5HjlqEETJr2qlvWUUMRaWweR/X481DPuCQ67wPs/li
+ mt6A==
+X-Gm-Message-State: AOJu0YyMS0QyDuSLnJ/0kqHbChTjHTcbm/hFisZw0CmMyO6PROuDEAfF
+ g628QBHkqWzXM0t7lY72t2e9xFxTDYAnPwGil56m2MMD6/Dl63SV9E0Z
+X-Gm-Gg: ATEYQzzBiJjaVhnDFi34z5Nbsd4u6P+WVeFTc1kn+7K1cmdn8U9ZEsoL15H1wpE4Jxk
+ AHj0DGVFu+ur0rA0YaOurdua58HEL/ozmJCWrdPTA9EYkVqWvvz1nEPKKpf0qRFm6mCBx/VMYEG
+ g1zFXx1sLe7rhE0oDtEO7vXq3ch2UGEMf2/ZoB6qdO5l/BG6i7yb5LiITwFfiqMPQScKirzNIDb
+ KGA+Fy2ky4VPW70NPWocpTi/G7+hDVxJtyOZZAxwA63TuLun4vmAClTaytpXFB4sNJBaQ5GfTdo
+ e0QyWZs/K/osPwtJF9dqk7F1TSoszFrRGLd8S3OwCAUm8Hp7SJ5LV1k8Ckb68wlnVpWH3VND3y1
+ fPBnb8ZeeQT20gfyt90yKf3i3CBjP46VLEzDplPI/mNwfofNsCwr8Cx18Fp1X/nuwaLKmK/dauC
+ 2YCllvYtDcT6cYP3mI+oeqfIqeXwQ3QOxyaMrbQGshSjEehLdTamk=
+X-Received: by 2002:a05:7301:2f95:b0:2be:e4b:60d2 with SMTP id
+ 5a478bee46e88-2be4de766demr5033962eec.4.1773092953384; 
+ Mon, 09 Mar 2026 14:49:13 -0700 (PDT)
+Received: from 192.168.0.29 ([2804:14d:4c71:86dd:4cc9:ee1b:bd8d:dbab])
  by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7990a54ba7csm5218437b3.19.2026.03.09.15.00.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Mar 2026 15:00:55 -0700 (PDT)
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 09 Mar 2026 17:59:45 -0400
-Subject: [PATCH v4 13/13] tests/tcg: add test for MTE_STORE_ONLY
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260309-feat-mte4-v4-13-daaf0375620d@gmail.com>
-References: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
-In-Reply-To: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
+ 5a478bee46e88-2be4f82b1d3sm10821438eec.11.2026.03.09.14.49.11
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 09 Mar 2026 14:49:12 -0700 (PDT)
+From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
- Gabriel Brookman <brookmangabriel@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773093641; l=2991;
- i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=BR2qvqK3g1qrJmisJ+SFI6LAMFWBhUqYUn2heQVrBI8=;
- b=STvzJdu25MkIR4UqGyc+cKtDJk+xVOeuYof3CSz/AxmgCOC6/rsNMs/bUByxcBAVdTxxgQ6vq
- O1jVnvR8rubD0LMJcOURPSHuEuW9DjrLiCgYOTW9rv9bJzGEdvG+N3z
-X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
- pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=brookmangabriel@gmail.com; helo=mail-yw1-x1133.google.com
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH 1/2] accel/hvf: introduce map granule abstraction
+Date: Mon,  9 Mar 2026 18:49:05 -0300
+Message-ID: <20260309214906.92578-2-lucaaamaral@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260309214906.92578-1-lucaaamaral@gmail.com>
+References: <20260309214906.92578-1-lucaaamaral@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ FSL_HELO_BARE_IP_2=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 09 Mar 2026 18:16:33 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,103 +100,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Added a test that checks that MTE checks are not performed on loads when
-MTE_STORE_ONLY is enabled.
+Replace hardcoded qemu_real_host_page_size() calls in HVF memory
+mapping with a configurable map granule (hvf_set/get_map_granule).
 
-Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+On macOS ARM64, the host page size is 16KB, but the guest kernel
+typically uses 4KB pages.  The map granule determines the minimum
+alignment for hv_vm_map() and hv_vm_protect().
+
+Default behavior is unchanged (returns host page size).  A subsequent
+commit will configure 4KB granule on macOS 26+.
+
+Also fix the non-aligned region path in hvf_set_phys_mem() to return
+early instead of proceeding with add=false, which would attempt an
+unnecessary unmap of a region that was never mapped.
+
+Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- tests/tcg/aarch64/Makefile.target |  2 +-
- tests/tcg/aarch64/mte-10.c        | 49 +++++++++++++++++++++++++++++++++++++++
- tests/tcg/aarch64/mte.h           |  4 ++--
- 3 files changed, 52 insertions(+), 3 deletions(-)
+ accel/hvf/hvf-all.c  | 21 ++++++++++++++++++---
+ include/system/hvf.h | 15 +++++++++++++++
+ 2 files changed, 33 insertions(+), 3 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index b491cfb5e1..6203ac9b51 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -64,7 +64,7 @@ AARCH64_TESTS += bti-2
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 033c677..ccff626 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -23,6 +23,21 @@
  
- # MTE Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
--AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9
-+AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10
- mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
- endif
+ bool hvf_allowed;
  
-diff --git a/tests/tcg/aarch64/mte-10.c b/tests/tcg/aarch64/mte-10.c
-new file mode 100644
-index 0000000000..46d26fe97f
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-10.c
-@@ -0,0 +1,49 @@
-+/*
-+ * Memory tagging, write-only tag checking
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++static uint64_t hvf_map_granule;
 +
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
++void hvf_set_map_granule(uint64_t size)
 +{
-+    exit(0);
++    hvf_map_granule = size;
 +}
 +
-+int main(int ac, char **av)
++uint64_t hvf_get_map_granule(void)
 +{
-+    struct sigaction sa;
-+    int *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_SYNC | PR_MTE_STORE_ONLY);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers. */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    /*
-+     * We write to p1 (stg above makes this check pass) and read from
-+     * p2 (improperly tagged, but since it's a read, we don't care).
-+     */
-+    *p1 = *p2;
-+
-+    /* enable handler */
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    /* now we write to badly tagged p2, should fault. */
-+    *p2 = 0;
-+
-+    abort();
++    if (!hvf_map_granule) {
++        return qemu_real_host_page_size();
++    }
++    return hvf_map_granule;
 +}
-diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
-index 17b932f3f1..7093b93dc7 100644
---- a/tests/tcg/aarch64/mte.h
-+++ b/tests/tcg/aarch64/mte.h
-@@ -40,10 +40,10 @@
- # define SEGV_MTESERR    9
- #endif
- 
--static void enable_mte(int tcf)
-+static void enable_mte(int flags)
++
+ const char *hvf_return_string(hv_return_t ret)
  {
-     int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
--                  PR_TAGGED_ADDR_ENABLE | tcf | (0xfffe << PR_MTE_TAG_SHIFT),
-+                  PR_TAGGED_ADDR_ENABLE | flags | (0xfffe << PR_MTE_TAG_SHIFT),
-                   0, 0, 0);
-     if (r < 0) {
-         perror("PR_SET_TAGGED_ADDR_CTRL");
-
+     switch (ret) {
+@@ -54,7 +69,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+ static void do_hv_vm_protect(hwaddr start, size_t size,
+                              hv_memory_flags_t flags)
+ {
+-    intptr_t page_mask = qemu_real_host_page_mask();
++    intptr_t page_mask = -(intptr_t)hvf_get_map_granule();
+     hv_return_t ret;
+ 
+     trace_hvf_vm_protect(start, size, flags,
+@@ -84,7 +99,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+     MemoryRegion *area = section->mr;
+     bool writable = !area->readonly && !area->rom_device;
+     hv_memory_flags_t flags;
+-    uint64_t page_size = qemu_real_host_page_size();
++    uint64_t page_size = hvf_get_map_granule();
+     uint64_t gpa = section->offset_within_address_space;
+     uint64_t size = int128_get64(section->size);
+     hv_return_t ret;
+@@ -105,7 +120,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+     if (!QEMU_IS_ALIGNED(size, page_size) ||
+         !QEMU_IS_ALIGNED(gpa, page_size)) {
+         /* Not page aligned, so we can not map as RAM */
+-        add = false;
++        return;
+     }
+ 
+     if (!add) {
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index d3dcf08..d1b702b 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
+ DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
+                          TYPE_HVF_ACCEL)
+ 
++#ifdef CONFIG_HVF_IS_POSSIBLE
++/*
++ * Minimum alignment for hv_vm_map(). Returns host page size (16KB on
++ * macOS ARM64), or 4KB when HVF 4KB IPA granule is configured (macOS 26+).
++ */
++void hvf_set_map_granule(uint64_t size);
++uint64_t hvf_get_map_granule(void);
++#else
++static inline void hvf_set_map_granule(uint64_t size) {}
++static inline uint64_t hvf_get_map_granule(void)
++{
++    return qemu_real_host_page_size();
++}
++#endif
++
+ #endif
 -- 
 2.52.0
 

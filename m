@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999A1FCA19C
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27AEFFCA191
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:18:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzitu-0003Ia-CS; Mon, 09 Mar 2026 18:16:34 -0400
+	id 1vzitu-0003Ib-Hz; Mon, 09 Mar 2026 18:16:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1vziTF-0000sk-7t
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:01 -0400
-Received: from mail-dl1-x1235.google.com ([2607:f8b0:4864:20::1235])
+ id 1vziTW-0000uq-VV
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:20 -0400
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1vziTD-0002Ap-6d
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:00 -0400
-Received: by mail-dl1-x1235.google.com with SMTP id
- a92af1059eb24-12732165d1eso13500477c88.1
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 14:48:58 -0700 (PDT)
+ id 1vziTV-0002Cv-9f
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 17:49:18 -0400
+Received: by mail-dy1-x132a.google.com with SMTP id
+ 5a478bee46e88-2ba9c484e5eso12002399eec.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 14:49:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773092937; x=1773697737; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=rbuxkECdLoEOxEmz+ngMjXiYldsLydHqIYR1x0mlIIo=;
- b=jxN6qlRbOg2qvXMg8PMzluO88lsw0MmFls1AkmzCUNNcoDtE3UL+6FDDnYimgVu73d
- UbZUTXkxmkhV73I2YdRgZNjikwurYyls+pKSW301fxRtdA0y8Mp/5BC99d3z9GDkFWC2
- W1StnSoKhNzoXg9bWGEfBG5McE6iZNw9sZtRTz/vhWRaKxKoPoLbiofF1Dntw24HdpLN
- bSvZ68IUdFx7B1cU3bkmt/cft+NEGIeUHUj9EUJCepReXceERzO5H7oa1ApQA5XCgA4P
- mL9e21AvKYcG4BrlRsa3HBA9olDoms0AeSLN06cpDz7dQin8xEFswYixU/aGMW5koNh0
- JYeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773092937; x=1773697737;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1773092956; x=1773697756; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=rbuxkECdLoEOxEmz+ngMjXiYldsLydHqIYR1x0mlIIo=;
- b=JiY3f4xiivAl+3+WVJZORN2J5dXlYjk4ZXE8quTJq9EqQbYGPPR8bVd6Py1y4mJdqG
- 5EHuYHstbvZmiQYEOQ76pusLtgWL10E8cuVI8xnEY7dCDjBUKyXDeFJcteGD0YTTV4vb
- sKJSd3RQjNS3RSIJj3IeDuu06T8ELh/MRLH8k/X1CkqhajIGG+VGD+Vl5GRiv6lP7+B4
- SaVE4VmK15yOrpVppZFc5atGN8cCbSIcdYi7Hdp8Zb/AGppFI5OlXB13RFV1+9+nvu0D
- oCNaSKHYguM9Kim8RmKGJRrIz4oyjfd6tL1/Ct8xitQGD6+sKqRdWC0KaD9Eq43MUyyC
- qWAQ==
-X-Gm-Message-State: AOJu0YydguSFo9NHzItmYKATstfgZjgEGdYY/RU4vrK28gzuzdX6kWic
- mCTLKNp/yWrFQn3h3LFJf3OF57BxlZqj31CrBpskDbDfYDyE/7AtQwOG
-X-Gm-Gg: ATEYQzy869ERlmZp+2t7SAuiZIVFQxJN9s/7QHzPNKFELWneMvAAt9HUfXJzJfy0h/o
- GmCCToXb8G075sPw0GZoy4uDuI4vMlUYnl+l/utofLVZVlWQ2JWtXrLpkScVYvnovR3BlgyNVva
- QQ7w4WGYnqzCl4qsbhIvUx0HyeC5rGeXEfoVyMEimxL6ToSB0ZQiExlYMhR6Gdic0FCkpRmAQzQ
- IQ3G5NQd+ytzQivcorzBj4GWzFGk0zjsjpBXJEC/uLOmctdQETrpkYLuOMzBWOAesd2LZz5rYAg
- JEDqEBMDx1kweCCpBRY5FM2MPlGP20ZL8dldNcdm15M/dDwv9nIuR/ycjPPz/q/MHILVumUxNfw
- sOT/XgLmkFYvP4amn2r/myPzV18Od8LgDrsoTH9iUh7Ef9LiuQGg9TjayOXrPk/SN0UnOo1Yrnm
- Dh1VTQYEhEquHN3w3FdYOqrdf8X2XOuV8o3NuCTc4m0oTtJpeY8RU=
-X-Received: by 2002:a05:7022:688e:b0:11f:2c69:2d with SMTP id
- a92af1059eb24-128c2f0d8a6mr4561038c88.45.1773092937147; 
- Mon, 09 Mar 2026 14:48:57 -0700 (PDT)
+ bh=2tuchCVVV/Puxk4LNxFCEHszeZBuFiHFk9yGxFArzvU=;
+ b=lqmGNxqpZ16G7n2osLDmt+B9gD8fTBmAlOOJjUib8ii0whDmtdjd24hBJOv43fj/e6
+ rflaqn5nsgX5obBztze9dGOupHOT4oRSXsuXNnapXX+8lPytOW2u0hjDq8TnQ9b2uf97
+ SYSwKX6HWcI5NV1sGlwjBDW4NJCrirzoxX2dhXbjIAyFAwxNS5U2+anTs2jb4JYP3iMW
+ 82geekRIDBS5opLmW/rIS0AC83gqiaLqIh0DvbOLs294Sd/f5oll7cVjj2Vu1s3S1SmI
+ CHM2e59a3pHB6Rcd0IkxyRXBnxTL2/14yhiBXeycpoy0sTS4eHphXL49qkkiYImpIaz7
+ UEow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1773092956; x=1773697756;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=2tuchCVVV/Puxk4LNxFCEHszeZBuFiHFk9yGxFArzvU=;
+ b=eH5wr/bVkMEuo1WQCx1p1QR4RlZOMyhszIcuRDa2vucvtK8hzrLeTXPLIt+wkpMILM
+ HFalYUCR1JoNSiEzo2U361drgnYt7q547rdfllc6WgH64TyH2Gs0UAtoNbxCwjiSBwGC
+ McUgjzQ47CdaaYbueZauygsmhr0+TCk2+SlPU6dltpq3FjLjsNmfyN+KAmygbD08P+br
+ VWOl21Xg5KUAPmgaDvnR+4yd8SSG2LYuFAsCiVtuZUaDaBj/Fpu3QXrjmTuUSZ7+wnLh
+ IZDb2fgBpVljn+nYXZc/aFdONCHMpCUlAC+5jNKIMPCN0aNVgKeSMgj6PdqadTrymurw
+ g6gw==
+X-Gm-Message-State: AOJu0YyxLQm50HgxmG5RZ6x6fntLhXkwScWXyUjNCzetMQqq06uuT9ND
+ 1ARQQjCxXyB0O2ahdVMZxA3JAcpyqcTu37pXesp9qlLH8RhMz24ynnRG1+dnmiQh
+X-Gm-Gg: ATEYQzzynMDTDAoq0LnOBBdqbHmVKw7JjKQO/9CflSFbw3/2qnh2pBOBHqwT8sBO286
+ A72MA8AORRUUp2xQOcRV9i27x33XRsic8zoUq4lsryGhUKBU09yToBdlg0ppQFySSOIx1w/DBAk
+ M8IiX+V9yIZKVHCaQbFgoYb5rkKCCrU35MxAHYFpi3h+PWYuLBwvfF/Cc+INIBxY/cakIE/d0B3
+ LrkRRY91rOoHeqozLJ0rKRBn1b8C0iKyDxbsVUMZVMSx0/pBpkXFZRxPX1xWQWIF6VmdWLl+GQr
+ KZomgZs8ZyNTFp5sIrG5ul1ixZErUmW6CnutHshgWHtBhQYEv5X87xFJfkz0C3BPCITWj1ThKgt
+ wgXD2lx28MjAh95ZrhxhWCBbmXVSmkSEC5w8WqgFS2I+u55Lxy76it1lSdtWWbFQaRuQEdY+rSB
+ 3PinA4X88K2SH7ZZwleV3q9/zPYLNdTGSTsbQJWHdM7ARED6vm5Q0=
+X-Received: by 2002:a05:7022:661f:b0:128:ced9:9409 with SMTP id
+ a92af1059eb24-128ced99529mr3422909c88.37.1773092955767; 
+ Mon, 09 Mar 2026 14:49:15 -0700 (PDT)
 Received: from 192.168.0.29 ([2804:14d:4c71:86dd:4cc9:ee1b:bd8d:dbab])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-128c3d5a85dsm10275643c88.3.2026.03.09.14.48.55
+ 5a478bee46e88-2be4f82b1d3sm10821438eec.11.2026.03.09.14.49.13
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Mar 2026 14:48:56 -0700 (PDT)
+ Mon, 09 Mar 2026 14:49:15 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, agraf@csgraf.de, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH] target/arm/hvf: emulate ISV=0 data abort instructions
-Date: Mon,  9 Mar 2026 18:48:52 -0300
-Message-ID: <20260309214852.92545-1-lucaaamaral@gmail.com>
+Subject: [PATCH 2/2] target/arm/hvf: set 4KB IPA granule on macOS 26
+Date: Mon,  9 Mar 2026 18:49:06 -0300
+Message-ID: <20260309214906.92578-3-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260309214906.92578-1-lucaaamaral@gmail.com>
+References: <20260309214906.92578-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1235;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x1235.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132a;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,351 +100,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Apple Silicon, HVF exits with ISV=0 (no syndrome information)
-for STP/LDP/STNP/LDNP, SIMD/FP load/stores, and DC cache
-maintenance instructions that access MMIO regions.  The existing
-code asserted ISV!=0, crashing the VM.
+macOS 26 introduces hv_vm_config_set_ipa_granule() which allows
+configuring 4KB IPA granularity for HVF virtual machines.  This
+enables hv_vm_map() to accept 4KB-aligned addresses, matching
+the guest kernel's page size.
 
-Decode the faulting instruction from guest memory and emulate:
-- Load/Store Pair (STP/LDP/STNP/LDNP) for GPR and SIMD registers
-- Single Load/Store with writeback and SIMD/FP variants
-- DC system instructions (NOP on MMIO regions)
-- LDPSW (sign-extending load pair)
+Without this, virtio-gpu blob BAR offsets that are 4KB-aligned but
+not 16KB-aligned cannot be mapped into the guest, falling back to
+slow MMIO emulation.
 
-For pair instructions, compute the effective virtual address from
-the base register to handle page-straddling accesses correctly.
-HPFAR_EL2 reports the faulting page, not the effective address,
-so using the IPA directly would produce wrong results when an
-STP straddles an HVF-mapped / MMIO boundary.
-
-Tested with virtio-gpu Venus blob resources on macOS ARM64.
+Gated behind MAC_OS_VERSION_26_0 compile-time and __builtin_available
+runtime checks.  Falls back to the default 16KB granule on older
+macOS versions.
 
 Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- target/arm/hvf/hvf.c | 309 ++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 306 insertions(+), 3 deletions(-)
+ target/arm/hvf/hvf.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index d79469c..87ddcdb 100644
+index 87ddcdb..b71a98a 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -1871,10 +1871,313 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
-         assert(!s1ptw);
+@@ -960,6 +960,20 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+     }
+     chosen_ipa_bit_size = pa_range;
  
-         /*
--         * TODO: ISV will be 0 for SIMD or SVE accesses.
--         * Inject the exception into the guest.
-+         * ISV=0: syndrome doesn't carry access size/register info.
-+         * This happens for STP/LDP/STNP/LDNP, SIMD/SVE load/stores,
-+         * and DC (data cache) maintenance instructions.
-+         *
-+         * Sync all CPU state (including TTBR/TCR/SCTLR for page table
-+         * walk) and decode the faulting instruction from guest memory.
-          */
--        assert(isv);
-+        if (!isv) {
-+            ARMCPU *arm_cpu = ARM_CPU(cpu);
-+            CPUARMState *env = &arm_cpu->env;
-+            uint32_t insn;
-+
-+            /*
-+             * Sync system registers (TTBR, TCR, SCTLR, etc.) from HVF
-+             * so cpu_memory_rw_debug can walk guest page tables.
-+             */
-+            cpu_synchronize_state(cpu);
-+
-+            if (cpu_memory_rw_debug(cpu, env->pc,
-+                                    (uint8_t *)&insn, 4, false) != 0) {
-+                error_report("HVF: ISV=0 at ipa=0x%" PRIx64
-+                             " -- cannot read insn at pc=0x%" PRIx64,
-+                             ipa, (uint64_t)env->pc);
-+                goto isv0_inject_fault;
-+            }
-+            insn = le32_to_cpu(insn);
-+
-+            /*
-+             * System instructions (DC CIVAC, DC CVAC, etc.):
-+             * bits [31:22] = 1101010100 identifies MRS/MSR/SYS class.
-+             * Cache maintenance on MMIO regions is a harmless NOP.
-+             */
-+            if ((insn & 0xFFC00000) == 0xD5000000) {
-+                advance_pc = true;
-+                break;
-+            }
-+
-+            /*
-+             * Load/Store Pair (STP/LDP/STNP/LDNP):
-+             * bits [29:27] = 101 identifies this instruction class.
-+             * Supports both integer (GPR) and SIMD/FP register pairs.
-+             */
-+            if ((insn & 0x38000000) == 0x28000000) {
-+                uint32_t opc = extract32(insn, 30, 2);
-+                bool is_vec = extract32(insn, 26, 1);
-+                bool is_load = extract32(insn, 22, 1);
-+                uint32_t rt = extract32(insn, 0, 5);
-+                uint32_t rt2 = extract32(insn, 10, 5);
-+                uint32_t rn = extract32(insn, 5, 5);
-+                uint32_t type = extract32(insn, 23, 3);
-+                bool writeback = (type == 1 || type == 3);
-+                uint32_t esize;
-+                int32_t imm7 = sextract32(insn, 15, 7);
-+
-+                if (!is_vec) {
-+                    esize = (opc & 2) ? 8 : 4;
-+                } else {
-+                    esize = 4u << opc;  /* 4, 8, or 16 bytes */
-+                }
-+
-+                int64_t stp_offset = (int64_t)imm7 * esize;
-+
-+                /*
-+                 * Compute the effective virtual address from the base
-+                 * register and immediate offset. HPFAR_EL2 reports
-+                 * the faulting page, not the effective address, so we
-+                 * must derive the VA from the instruction encoding.
-+                 *
-+                 * After cpu_synchronize_state(), env->xregs[0..30] are
-+                 * GPRs and env->xregs[31] is the current SP (restored
-+                 * via aarch64_restore_sp).
-+                 *
-+                 * Using the VA with cpu_memory_rw_debug() correctly
-+                 * splits page-straddling accesses via guest page tables.
-+                 */
-+                uint64_t rn_va = env->xregs[rn];
-+                /* post-index: access at unmodified base */
-+                uint64_t va = (type == 1) ? rn_va : rn_va + stp_offset;
-+
-+                if (is_load == iswrite) {
-+                    error_report("HVF: ISV=0 load/write mismatch at "
-+                                 "ipa=0x%" PRIx64, ipa);
-+                    goto isv0_inject_fault;
-+                }
-+
-+                if (iswrite) {
-+                    /* Store pair */
-+                    if (!is_vec) {
-+                        uint64_t val1 = env->xregs[rt];
-+                        uint64_t val2 = env->xregs[rt2];
-+                        uint8_t buf[16]; /* max 2 x 8 bytes */
-+                        memcpy(buf, &val1, esize);
-+                        memcpy(buf + esize, &val2, esize);
-+                        cpu_memory_rw_debug(cpu, va, buf,
-+                                            2 * esize, true);
-+                    } else {
-+                        /*
-+                         * SIMD STP: register data is in env->vfp.zregs[]
-+                         * after cpu_synchronize_state().
-+                         * esize=4: S reg, esize=8: D reg, esize=16: Q reg
-+                         */
-+                        uint8_t buf[32]; /* max 2 x 16 bytes */
-+                        memcpy(buf, &env->vfp.zregs[rt], esize);
-+                        memcpy(buf + esize,
-+                               &env->vfp.zregs[rt2], esize);
-+                        cpu_memory_rw_debug(cpu, va, buf,
-+                                            2 * esize, true);
-+                    }
-+                } else {
-+                    /* Load pair */
-+                    if (!is_vec) {
-+                        uint64_t val1 = 0, val2 = 0;
-+                        uint8_t buf[16];
-+                        memset(buf, 0, sizeof(buf));
-+                        cpu_memory_rw_debug(cpu, va, buf,
-+                                            2 * esize, false);
-+                        memcpy(&val1, buf, esize);
-+                        memcpy(&val2, buf + esize, esize);
-+                        if (opc == 1 && !is_vec) {
-+                            /* LDPSW: sign-extend 32-bit to 64-bit */
-+                            val1 = (int64_t)(int32_t)val1;
-+                            val2 = (int64_t)(int32_t)val2;
-+                        }
-+                        hvf_set_reg(cpu, rt, val1);
-+                        hvf_set_reg(cpu, rt2, val2);
-+                    } else {
-+                        /* SIMD LDP */
-+                        uint8_t buf[32];
-+                        memset(buf, 0, sizeof(buf));
-+                        cpu_memory_rw_debug(cpu, va, buf,
-+                                            2 * esize, false);
-+                        memset(&env->vfp.zregs[rt], 0,
-+                               sizeof(env->vfp.zregs[rt]));
-+                        memset(&env->vfp.zregs[rt2], 0,
-+                               sizeof(env->vfp.zregs[rt2]));
-+                        memcpy(&env->vfp.zregs[rt], buf, esize);
-+                        memcpy(&env->vfp.zregs[rt2],
-+                               buf + esize, esize);
-+                        cpu->vcpu_dirty = true;
-+                    }
-+                }
-+
-+                /* Handle base register writeback (pre/post-index) */
-+                if (writeback) {
-+                    env->xregs[rn] = env->xregs[rn] + stp_offset;
-+                    cpu->vcpu_dirty = true;
-+                }
-+
-+                advance_pc = true;
-+                break;
-+            }
-+
-+            /*
-+             * Load/Store Register (single):
-+             * bits [29:27] = 111, bit [25] = 0.
-+             * Covers immediate (unscaled, post-index, pre-index),
-+             * unsigned offset, and register offset variants.
-+             *
-+             * ISV=0 for: writeback variants (pre/post-indexed) and
-+             * all SIMD/FP loads/stores.
-+             */
-+            if ((insn & 0x3A000000) == 0x38000000) {
-+                uint32_t size_field = extract32(insn, 30, 2);
-+                bool is_vec = extract32(insn, 26, 1);
-+                uint32_t opc = extract32(insn, 22, 2);
-+                bool is_unsigned = extract32(insn, 24, 1);
-+                bool bit21 = extract32(insn, 21, 1);
-+                uint32_t rn = extract32(insn, 5, 5);
-+                uint32_t rt = extract32(insn, 0, 5);
-+                uint32_t sub_type = extract32(insn, 10, 2);
-+                bool is_reg = !is_unsigned && bit21;
-+
-+                /*
-+                 * [24]=0, [21]=1, [11:10]!=10 could be atomic ops
-+                 * (LDADD, SWP, CAS, etc.) -- not handled.
-+                 */
-+                if (is_reg && sub_type != 2) {
-+                    goto isv0_inject_fault;
-+                }
-+
-+                bool writeback = !is_unsigned && !is_reg
-+                                 && (sub_type == 1 || sub_type == 3);
-+
-+                uint32_t esize;
-+                bool is_load;
-+                bool is_signed = false;
-+                uint32_t sign_extend_to = 0;
-+
-+                if (!is_vec) {
-+                    esize = 1u << size_field;
-+                    switch (opc) {
-+                    case 0: /* STR */
-+                        is_load = false;
-+                        break;
-+                    case 1: /* LDR */
-+                        is_load = true;
-+                        break;
-+                    case 2:
-+                        is_load = true;                      /* LDRS->64 */
-+                        is_signed = true;
-+                        sign_extend_to = 8;
-+                        break;
-+                    case 3:
-+                        if (size_field == 3) {
-+                            /* PRFM -- prefetch is NOP on MMIO */
-+                            advance_pc = true;
-+                            goto isv0_done;
-+                        }
-+                        is_load = true;                      /* LDRS->32 */
-+                        is_signed = true;
-+                        sign_extend_to = 4;
-+                        break;
-+                    }
-+                } else {
-+                    /* SIMD/FP: size+opc determines element width */
-+                    is_load = (opc & 1);
-+                    if (opc >= 2 && size_field == 0) {
-+                        esize = 16;  /* Q register (128-bit) */
-+                    } else if (opc < 2) {
-+                        esize = 1u << size_field;
-+                    } else {
-+                        goto isv0_inject_fault;
-+                    }
-+                }
-+
-+                if (is_load == iswrite) {
-+                    error_report("HVF: ISV=0 LDR/STR load/write mismatch "
-+                                 "at ipa=0x%" PRIx64, ipa);
-+                    goto isv0_inject_fault;
-+                }
-+
-+                /* Perform memory access */
-+                if (!is_load) {
-+                    if (!is_vec) {
-+                        uint64_t val = hvf_get_reg(cpu, rt);
-+                        address_space_write(as, ipa,
-+                                            MEMTXATTRS_UNSPECIFIED,
-+                                            &val, esize);
-+                    } else {
-+                        address_space_write(as, ipa,
-+                                            MEMTXATTRS_UNSPECIFIED,
-+                                            &env->vfp.zregs[rt], esize);
-+                    }
-+                } else {
-+                    if (!is_vec) {
-+                        uint64_t val = 0;
-+                        address_space_read(as, ipa,
-+                                           MEMTXATTRS_UNSPECIFIED,
-+                                           &val, esize);
-+                        if (is_signed) {
-+                            switch (esize) {
-+                            case 1:
-+                                val = (int64_t)(int8_t)val;
-+                                break;
-+                            case 2:
-+                                val = (int64_t)(int16_t)val;
-+                                break;
-+                            case 4:
-+                                val = (int64_t)(int32_t)val;
-+                                break;
-+                            }
-+                            if (sign_extend_to == 4) {
-+                                val &= 0xFFFFFFFF;
-+                            }
-+                        }
-+                        hvf_set_reg(cpu, rt, val);
-+                    } else {
-+                        /* SIMD/FP load */
-+                        memset(&env->vfp.zregs[rt], 0,
-+                               sizeof(env->vfp.zregs[rt]));
-+                        address_space_read(as, ipa,
-+                                           MEMTXATTRS_UNSPECIFIED,
-+                                           &env->vfp.zregs[rt], esize);
-+                        cpu->vcpu_dirty = true;
-+                    }
-+                }
-+
-+                /* Base register writeback (post/pre-indexed) */
-+                if (writeback) {
-+                    int32_t imm9 = sextract32(insn, 12, 9);
-+                    env->xregs[rn] = env->xregs[rn] + imm9;
-+                    cpu->vcpu_dirty = true;
-+                }
-+
-+                advance_pc = true;
-+                goto isv0_done;
-+            }
-+
-+isv0_inject_fault:
-+            /*
-+             * Inject data abort into guest for unrecognized or
-+             * inconsistent ISV=0 instructions.  The guest kernel
-+             * will deliver SIGBUS to the faulting process.
-+             */
-+            {
-+                int target_el = 1;
-+                bool same_el = arm_current_el(env) == target_el;
-+                uint32_t esr = syn_data_abort_no_iss(same_el,
-+                    /*fnv=*/1, /*ea=*/0, /*cm=*/0,
-+                    /*s1ptw=*/0, iswrite, /*fsc=*/0x10);
-+                env->exception.vaddress = ipa;
-+                hvf_raise_exception(cpu, EXCP_DATA_ABORT,
-+                                    esr, target_el);
-+            }
-+isv0_done:
-+            break;
++#ifdef MAC_OS_VERSION_26_0
++#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_26_0
++    if (__builtin_available(macOS 26, *)) {
++        ret = hv_vm_config_set_ipa_granule(config, HV_IPA_GRANULE_4KB);
++        if (ret != HV_SUCCESS) {
++            error_report("HVF: failed to set 4KB IPA granule: %s",
++                         hvf_return_string(ret));
++            goto cleanup;
 +        }
++        hvf_set_map_granule(4096);
++    }
++#endif
++#endif
++
+     ret = hv_vm_create(config);
  
-         /*
-          * Emulate MMIO.
+ cleanup:
 -- 
 2.52.0
 

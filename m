@@ -4,102 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF904EFCD99
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 11:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AE0AEFCD93
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 11:17:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzYUT-00022f-0X; Mon, 09 Mar 2026 07:09:37 -0400
+	id 1vzYbu-0004Ux-Cq; Mon, 09 Mar 2026 07:17:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzYUR-00022C-DH
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:09:35 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1vzYbe-0004SW-Dk
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:17:06 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzYUP-0004GN-Qr
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:09:35 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1vzYbc-0005Ld-Ge
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 07:17:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773054572;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1773055019;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YRd8RDCobWzkOIL/55dBZ6Bma4Lf5yyWSHcJ6UJrR3A=;
- b=ZE5/r2a7dMhqWjwI81otvrvfhQSZvJiWyDHDqRCLZSubV7UysBY54TUg3OftZlDqByDavH
- cfpzEGq7dc9IDyyfzOy/kycFV3R8GLy1e2XXXhsq84lALIU65akZMSbe8kvLa1hhPXgJPS
- sl7sqL7xiI1Tv34g98UeHkpw8F2epTY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=tMRWNj22r8FDh1jIngNjeJbyrmVNdMjDt/5/9aMrxfM=;
+ b=dB2bk60D1tiYuxISHAMchadby6US9wSo0ZZGxWrjnRhm9kB8JUdO1jt0KJoX9gL1j/KXi5
+ dx5iCjfiBYIuLVdbR9ahrSCI4CvH1nilhpcbXynyMLFEMAcDeu7fJA9ShUsRIHt/SbLkrZ
+ hid+jDgbhX6VqNGr9RG+WG53Th9rjUo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-325-3NMA3qUpPm2kTGPnqLIArA-1; Mon, 09 Mar 2026 07:09:29 -0400
-X-MC-Unique: 3NMA3qUpPm2kTGPnqLIArA-1
-X-Mimecast-MFC-AGG-ID: 3NMA3qUpPm2kTGPnqLIArA_1773054569
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4837bfcfe0dso136111895e9.1
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 04:09:29 -0700 (PDT)
+ us-mta-111-lciLMEwNNHCWzcxonts-0Q-1; Mon, 09 Mar 2026 07:16:58 -0400
+X-MC-Unique: lciLMEwNNHCWzcxonts-0Q-1
+X-Mimecast-MFC-AGG-ID: lciLMEwNNHCWzcxonts-0Q_1773055017
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-439b50dfca1so6210586f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 04:16:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773054568; x=1773659368;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YRd8RDCobWzkOIL/55dBZ6Bma4Lf5yyWSHcJ6UJrR3A=;
- b=XULvQyYbmxGvYHQTWYENff/HqksMg3Y+vwzGHDHj50orGZci1JSeht9sN48Llo1n2V
- h5DO56fZvqxFRxTCQn3pc2fMwhIv2EizyZIbNq53N4oAS+uj5KB//BVMRS4e8jfx4pzv
- 5VCzTtvtJu8iBNuMynrebiKVSq7q5RfCmJ9H8ibqKVMrniqHRaZZEJT7CvqGn+m2lg5b
- Qf6c4/axEpqeV26OsbEW5BKsVoIjnlRdmf+KcOyzh/Qf/YmHHgUGCeYVC+giwlSJsLL+
- LnuK3lu5Huk4Pkzqa9n/S2QC2YrSJJoNuyC3bNhlFNX1Q8pW6X9h/ce3ouIfHyzK8hCI
- mMtw==
+ d=1e100.net; s=20230601; t=1773055017; x=1773659817;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=tMRWNj22r8FDh1jIngNjeJbyrmVNdMjDt/5/9aMrxfM=;
+ b=HPHES9YeSLFc7iWkxGPeRkbi55mpJI3A7t+v7/AXi6P5g6R1g2qmsTsCUWtEXjzSoh
+ NhcKFZse21l2e25HlcoaGzNHr3HzyzG00EnOU3cKM1iFyedyAxjliG3s9Emfa0IC90z8
+ A6G6YT08fE6jc3HktSrf7ysAGeaFCdcp671SinIPGZ+XP1pbxLle2JWMgYQzzivet427
+ 5o/ZKeXhrl2WcpPnS0kzQwkCdV5OYOeiC45IZG3UB9YKrNR0l5qB4akLVlI9KaGU+Eut
+ 7ND09GLBZ8B9A1FeG67/Axr7fTOqBo0b/R2sqeXEd7wNP4TiPL35pWxkyk+RGu0IZS2t
+ 9Blw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV1IqYN8dXX98umwmDHjJjA/T1/JZcTCCRsQSMCAPt9acjqHVmtQojsz1Dz6wTcmXjGk3195x1bcw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywh1qrRk9/oMQPr6sI6ohOPgv/+t7nfoxXAkpBM9dmwFHqhljfM
- +TQ2cD+QYQXDiFK9pniiPIc0tNoPjjT53Ybl6zoi3+M2QbeNiAGYFM0GUT9j+1pMP6eaZyb3HRD
- OcyKZuZPKyP+M3OasO+jbdRNfg6XWUulTMw4flRp8GowDI6gnPMlylg==
-X-Gm-Gg: ATEYQzz96v/payl3x5J6Z7DY+Q/pChd5z9tuCDo8WNMzN+9pgOhPslDwmr8KT7GPVu7
- ChI9xdyzoBeJDIiiU4rD5ZQCAfMWwKZAAewqIx5t/byCoI+hrhNXEDbIdK+riQiu/CXHhs6WpOO
- V8ah0YxwNEqwpYp4ctwE1qo9LmhqmixPE9mf9yoNSUg6jt5dpDFerox0Fh5JxUXBCiGA1qgTvFL
- Kr4jZ7h1DTUz3TbjZXkyzQZ+UbAHzGe9DXgjGQ2RND1w+WYDXk4hIlfUy6aFFsTmYUe6CqqeFvO
- Wgmy3B+NtVt/t/ba2WNXZPvSCPJfXkCNY2x/PoW86MUemQZhh5dDiNCfmmtlPt+Q+27qKqfCUVR
- yEo2LAIyWc8Q+pSX/tnevpKnMzEhzi+j2kKv4zPQxnHwZGKfl9w4fDVSrlyoGzb9lVRUhAg==
-X-Received: by 2002:a05:600c:500d:b0:47e:e48b:506d with SMTP id
- 5b1f17b1804b1-4852695b9f7mr179766625e9.16.1773054568504; 
- Mon, 09 Mar 2026 04:09:28 -0700 (PDT)
-X-Received: by 2002:a05:600c:500d:b0:47e:e48b:506d with SMTP id
- 5b1f17b1804b1-4852695b9f7mr179766265e9.16.1773054568075; 
- Mon, 09 Mar 2026 04:09:28 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4853f9f82a7sm24560715e9.10.2026.03.09.04.09.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 04:09:27 -0700 (PDT)
-Message-ID: <ed5ca420-94e5-4e9e-a2c3-f59eb6ea8ada@redhat.com>
-Date: Mon, 9 Mar 2026 12:09:25 +0100
+ AJvYcCXRk2Km1JjPRlBSEddrgydgpnDhkLhAhAIp+qQ9LQKVCb4JmqsOrd5+/9c+WssQRZ1PJJH+eRw2Bg==@nongnu.org
+X-Gm-Message-State: AOJu0YzrK535xO+9lEnj/qXGLn0I0N79SdMi0LuZXedQtGCGvNNCmTNq
+ af33bIcGMheo/3SUtzTVAM+MEYeGmPCQomdMRQcLdpMCiicV85f13NN3d80V0vwrnrik+zEjTAk
+ XtvD/bh/O5uQo2y6HslRvkbls091JJiIfz/WVY9wVno8SJMNZEJvdBlBEfdICaL3yq5+4N3U/Eg
+ 3MgwT8nGFnEVvdLjdLHBbjE0RhzSCT
+X-Gm-Gg: ATEYQzwJGBvq0+rFZD71eEKUDOUTzvZBXBpP4VWOM73DlldkniRjT90YHC45qm3bOvR
+ UEIlL4XbEYxl8CPAjpdGhliWvghP1fO/53+uNTR73/eRmz8/8+g0b5+/9LruiTgMsblQ8lD29iq
+ qp2Lm7ANK/3Hjt3UiSnhE6ECa1S/bvd8QVyR+TSJeplwKWpT4Zf4p41INzhwms8ZEBvQCb0lQ6h
+ gba8Vv2F6V3H37HZQRD1nXBvothfz2g5hu5pDrCRoj7JH5ajnD1Qm5LSviCi/o042E5erQfLLYp
+ qEwP1gM=
+X-Received: by 2002:a05:6000:25c2:b0:439:b788:73a3 with SMTP id
+ ffacd0b85a97d-439da552f96mr19215845f8f.49.1773055016639; 
+ Mon, 09 Mar 2026 04:16:56 -0700 (PDT)
+X-Received: by 2002:a05:6000:25c2:b0:439:b788:73a3 with SMTP id
+ ffacd0b85a97d-439da552f96mr19215772f8f.49.1773055016111; Mon, 09 Mar 2026
+ 04:16:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 13/32] hw/arm/tegra241-cmdqv: Implement CMDQV vIOMMU
- alloc/free
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, kjaju@nvidia.com, phrdina@redhat.com
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-14-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260226105056.897-14-skolothumtho@nvidia.com>
+References: <20260307181856.2209-1-mohamed@unpredictable.fr>
+ <20260307181856.2209-3-mohamed@unpredictable.fr>
+ <CABgObfZqDHL=kkto8i5VdpO+mEOfeZ9vYSMmVnS+T4cwNekzzA@mail.gmail.com>
+ <28C201EE-89A9-4454-8F8A-4FD05B38E132@unpredictable.fr>
+In-Reply-To: <28C201EE-89A9-4454-8F8A-4FD05B38E132@unpredictable.fr>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 9 Mar 2026 12:16:44 +0100
+X-Gm-Features: AaiRm505qiKL1t8d_eTXuEKNHBQ0bv6N8X2aTEq0gCRv7qRwzTf7bNGrRXZskKw
+Message-ID: <CABgObfZX0T1VCetJkTdRv9+9pHxubL8PRA0QDvR5W3chjP+=pA@mail.gmail.com>
+Subject: Re: [PATCH v6 2/9] meson.build: older macOS targeting compatibility
+ with macOS 15.4 SDK
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Wei Liu <wei.liu@kernel.org>, Roman Bolshakov <rbolshakov@ddn.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org, 
+ Phil Dennis-Jordan <phil@philjordan.eu>, Pedro Barbuda <pbarbuda@microsoft.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: h-aY3jSckQnp5BQTpIQOXmrZ47_tF0XdOf2CaSqHWEA_1773054569
+X-Mimecast-MFC-PROC-ID: 36hwucbuh1NfdjG1Pg6XNL4178-4-TXzsH9VIGsf2qU_1773055017
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
@@ -120,70 +116,35 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, Mar 9, 2026 at 9:38=E2=80=AFAM Mohamed Mediouni
+<mohamed@unpredictable.fr> wrote:
+> Another way would be to have the has_function have -Werror which should b=
+e enough to deal with
+> this case properly. Does that sound better?
 
+Yes, if that works it's better. For 11.1 we can look into adding
+-Werror to all cc.has_function() calls.
 
-On 2/26/26 11:50 AM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> Replace the stub implementation with real vIOMMU allocation for
-> Tegra241 CMDQV.
->
-> Free the vIOMMU ID on teardown.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/tegra241-cmdqv.c | 19 +++++++++++++++++--
->  1 file changed, 17 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index 6959766129..d487612ba2 100644
-> --- a/hw/arm/tegra241-cmdqv.c
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -25,14 +25,29 @@ static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
->  
->  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
->  {
-> +    SMMUv3AccelState *accel = s->s_accel;
-> +    IOMMUFDViommu *viommu = accel->viommu;
-> +
-> +    if (!viommu) {
-> +        return;
-> +    }
-> +    iommufd_backend_free_id(viommu->iommufd, viommu->viommu_id);
->  }
->  
->  static bool
->  tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
->                              uint32_t *out_viommu_id, Error **errp)
->  {
-> -    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
-> -    return false;
-> +    Tegra241CMDQV *cmdqv = s->s_accel->cmdqv;
-> +
-> +    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
-> +                                      IOMMU_VIOMMU_TYPE_TEGRA241_CMDQV,
-if the only think that differs compared to no cmdq is the type, ie.
+> For meson not sure whether it actually picks up the definition from the h=
+eader or tries to use a dummy
+> definition though from looking at https://github.com/mesonbuild/meson/blo=
+b/6e67be7492d6982d2baf153387f9adbdb480d099/mesonbuild/compilers/mixins/clik=
+e.py#L738
+> If it picks the definition from the header, having Werror there ought to =
+be enough. Otherwise, won=E2=80=99t be caught...
 
-IOMMU_VIOMMU_TYPE_TEGRA241_CMDQV vs IOMMU_VIOMMU_TYPE_TEGRA241_CMDQV
+If you have a "#include <>" in the prefix it will pick the declaration:
 
-+ passing true args, maybe you can just record the type of the cmdqv that is being used in the smmu_accel device. Then you can get rid of alloc and free
+        if '#include' in prefix:
+            head, main =3D self._have_prototype_templ()
+        else:
+            head, main =3D self._no_prototype_templ()
 
-Eric
+which is also something that we can add to 11.1.
 
-
-> +                                      idev->hwpt_id, &cmdqv->cmdqv_data,
-> +                                      sizeof(cmdqv->cmdqv_data), out_viommu_id,
-> +                                      errp)) {
-> +        return false;
-> +    }
-> +    return true;
->  }
->  
->  static void tegra241_cmdqv_reset(SMMUv3State *s)
+Paolo
 
 

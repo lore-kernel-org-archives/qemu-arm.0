@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42521F3C266
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 14:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D57FF4180E
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 16:11:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzbOh-0001Su-Ly; Mon, 09 Mar 2026 10:15:51 -0400
+	id 1vzdC2-00039B-S2; Mon, 09 Mar 2026 12:10:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vzbOe-0001Kz-2E; Mon, 09 Mar 2026 10:15:48 -0400
-Received: from mgamail.intel.com ([198.175.65.21])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vzbOZ-0001Sl-Az; Mon, 09 Mar 2026 10:15:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773065744; x=1804601744;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=4Uf0GaIowuI3Reb0WRrR0HQjXNehAdybZkTQ2CN1tgs=;
- b=VUv/Ty7Hvq9LqFJB+fW/3WyALMQdX27dhGJwwdnHTXPatQFbSMkfvgLy
- 34sWaNaCw8bTR9KB0K0932wgvWO5H8zcgZ6SH2cJrR23DY3VIIpnXRgBa
- el+APgXgUmr96nOYDXUZtgegFSM5lNqzWiDfD0GMLAFn5X25ZFHV3I60S
- VitAWVIswWhig9xnl0EDHb2hjiuRQe+InQVKp219mXoPkeWsfaGADfllI
- F+D6ws5Pcs0xLIoO7UOEsGld1Mbu54qIZOumXq8B4g3K0rBm3mHCNWnFW
- sGML8ut1MbCRQqJvPXodpyNCxq+4vkhyM5UH6YbqSfsacz9atoftXZ/Xl A==;
-X-CSE-ConnectionGUID: gsFM7GoWSGefAgpIQ59hPQ==
-X-CSE-MsgGUID: Zzjv+gj9QS+5ohguKIRkzA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11723"; a="73966367"
-X-IronPort-AV: E=Sophos;i="6.23,109,1770624000"; d="scan'208";a="73966367"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Mar 2026 07:15:37 -0700
-X-CSE-ConnectionGUID: jeLL88kTROu8Oo1mAr+yPg==
-X-CSE-MsgGUID: QUG8YIQ7TMylRehx1jYLTw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,109,1770624000"; d="scan'208";a="257688200"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa001.jf.intel.com with ESMTP; 09 Mar 2026 07:15:34 -0700
-Date: Mon, 9 Mar 2026 22:41:44 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- peterx@redhat.com, qemu-devel@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:sPAPR (pseries)" <qemu-ppc@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, qemu-rust@nongnu.org
-Subject: Re: [PATCH v3 03/18] migration: make .post_save() a void function
-Message-ID: <aa7cKDaCVmuZz9Sm@intel.com>
-References: <20260304212303.667141-1-vsementsov@yandex-team.ru>
- <20260304212303.667141-4-vsementsov@yandex-team.ru>
- <87o6l01r5z.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzdBh-000313-VZ
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 12:10:38 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzdBf-0002qC-NP
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 12:10:33 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-48539d21b76so10718495e9.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 09:10:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773072629; x=1773677429; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mBrdsfH8zkcr9CyEeAG3fxbrmPaBAIjJHWD1motCURk=;
+ b=rdv56A+p5R6XQmmr/x22EvPC8rTbBFV4q/hZEyToKka2F8sh5rQ3AVayNIEdy+xIZD
+ mSyu1EDkwh99HiWES0QQSkVKfrSWEjh2s4ySHNPntMW6L28QOzJyuTLDirdtcK8L5Vso
+ Sp0g5+L5Au0+KdesQ0sh1mucbYiEhfFHL5bk5TwVI8wjrPAciyVBUO1JVHRt7oszpG+n
+ 19mX1L9Kq+jjqBmwZfcWlOjsYRBtV8Jlw93GcNigTgdfs6j1RReIO4CU4om9xliwYd08
+ axHJyJjNfJ7s9iyia9+c65n7JZO5iOdJHJFjAN77xyStBpErsZQ8+qdsAU2SxXAsexCu
+ AwCw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1773072629; x=1773677429;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=mBrdsfH8zkcr9CyEeAG3fxbrmPaBAIjJHWD1motCURk=;
+ b=o5p7oHma8wGrA8N9NsBYPfpfPsioJHK0/GivR4oL5wiQcKUQxpKxMtt9yC5jn0+zkD
+ yDyXepoVjNDU+clmtwqKtFcqeIm8v3EWA+YLcFqKHs3tfhfFBPofNpYSow1rAX0m0JK6
+ OI2K1F4fcAs7qlzLe3u8mu3vXrvrLBtoqPNgZEPMVooIWwsCfFoNkrxdpeSRVmo/sJTl
+ Yjaly6+lpovkimaV7hX3h63MxFaefmH0Aw0HSlTnlrDJd1IHKuP7nuQRzHzu30QxaMTY
+ h+RlhlnUJexcl4yAKqML8pd5v5ciVEHyPlwekdbVtJs8yvIqX7GbH7QxbuUb4LQzUJ+q
+ FP7A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUYZ8W/CFG+yVfFIPYGLigqHmf6vP0SDhmyxpyIfXDwI7/IgKwKjIP6zdTUSaZ4T5zodneazQclAw==@nongnu.org
+X-Gm-Message-State: AOJu0YxYCHKfkYGgpFmEFcPo/BGVe7xD/oc8aAJ0ni6DtHJoP8w8F1X2
+ U8ITQRKPigoGBlEVX06Id/qb6voOLsEpOJwX4lb4v4BfaBwAJ3I/4Yt35LBDEFIxImQ=
+X-Gm-Gg: ATEYQzwWSgFw/beVB9SAAlfSKOygjZU0RwQ63epIZUOwp1ZI0IzewpoFnJdtbOlUzvo
+ ash8vLexlLTnjI6aRkQqUhN2GzhhCdP0EmDC37Vi02FyqX57QIzdxaF5X1uwm7ltk8iITuL40Pa
+ nLYwmMIZ7Tef7Mzj32fURUrDi1seIquK3LV9OEiTOu5aiF0jxlKjUwvi/Jb7AWUjiXklALPJT6B
+ V3KVrqfstdRr/SIgJftSqELeAfJXiJ5G5Xu9nkyfe+PbbYQakb1Yfs3+gJIs+xgpuX41z5L12GY
+ NEHTbkVZe380JzQqjogMCO3+6abF5x0Snz0QymcS49CEn2FGq4qgRvo0jXRHzEg7Cjb8wk4S92V
+ DB/iXSp+ZgDB3YjffdeweXdF3c8UYOSEaEJtOInCo2WpXFCGYZF2seXeiFhaJP9xjyKLYN6w5Km
+ WSvqfZijn2rqk8PE4j68Bi7laeazrTCzCG+Skv0uDlvdNFKBpaZbsTpEUSywh22OLUOw==
+X-Received: by 2002:a05:600c:4443:b0:485:410c:119b with SMTP id
+ 5b1f17b1804b1-485410c1bfemr14214555e9.13.1773072628715; 
+ Mon, 09 Mar 2026 09:10:28 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48541ab9f9esm1531615e9.4.2026.03.09.09.10.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Mar 2026 09:10:28 -0700 (PDT)
+Message-ID: <595ddc7a-de0c-4c21-91e8-626e76c7eca7@linaro.org>
+Date: Mon, 9 Mar 2026 17:10:27 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87o6l01r5z.fsf@suse.de>
-Received-SPF: pass client-ip=198.175.65.21; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/net/npcm_gmac: Catch accesses off the end of the
+ register array
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Jason Wang <jasowang@redhat.com>
+References: <20260306154016.2194091-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260306154016.2194091-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,63 +105,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> +CC Paolo, Zhao
+On 6/3/26 16:40, Peter Maydell wrote:
+> In the npcm_gmac device, we create the iomem MemoryRegion with
+> a size of 8KB, but NPCM_GMAC_NR_REGS is only 0x1060 / 4. This
+> means there's a range of offsets that the guest can access
+> that don't have gmac->regs[] entries. We weren't catching this,
+> so the guest could get us to index off the end of the regs array.
 > 
-> This change breaks the rust build:
-> https://gitlab.com/farosas/qemu/-/jobs/13393119755
+> Catch and log these invalid accesses.
 > 
->   error[E0308]: mismatched types
->      --> ../rust/migration/src/vmstate.rs:605:18
->       |
->   605 |             Some(vmstate_no_version_cb::<T, F>)
->       |             ---- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected fn pointer, found fn item
->       |             |
->       |             arguments to this enum variant are incorrect
->       |
->       = note: expected fn pointer `unsafe extern "C" fn(_) -> ()`
->                     found fn item `unsafe extern "C" fn(_) -> i32 {vmstate_no_version_cb::<T, F, impl Into<Errno>>}`
-> 
-> 
-> Is something like the following diff the right fix? It'd be nice to get
-> an ack so this series doesn't miss the freeze. (CI run:
-> https://gitlab.com/farosas/qemu/-/pipelines/2369688593)
-> 
-> -- >8 --
-> From 90a7b53d2b0d53692df1ef2cfe7607b13e4961d8 Mon Sep 17 00:00:00 2001
-> From: Fabiano Rosas <farosas@suse.de>
-> Date: Fri, 6 Mar 2026 18:53:14 -0300
-> Subject: [PATCH] fixup! migration: make .post_save() a void function
-> 
-> Signed-off-by: Fabiano Rosas <farosas@suse.de>
+> Cc: qemu-stable@nongnu.org
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3316
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  rust/migration/src/migratable.rs |  3 +--
->  rust/migration/src/vmstate.rs    | 12 +++++++-----
->  2 files changed, 8 insertions(+), 7 deletions(-)
-> 
-> diff --git a/rust/migration/src/migratable.rs b/rust/migration/src/migratable.rs
-> index 7748aac2f2..7088c1b156 100644
-> --- a/rust/migration/src/migratable.rs
-> +++ b/rust/migration/src/migratable.rs
-> @@ -406,10 +406,9 @@ fn pre_save(&self) -> Result<(), InvalidError> {
->          Ok(())
->      }
->  
-> -    fn post_save(&self) -> Result<(), InvalidError> {
-> +    fn post_save(&self) {
->          let state = unsafe { Box::from_raw(self.migration_state.replace(ptr::null_mut())) };
->          drop(state);
-> -        Ok(())
->      }
+>   hw/net/npcm_gmac.c         | 14 ++++++++++++++
+>   include/hw/net/npcm_gmac.h |  3 ++-
+>   2 files changed, 16 insertions(+), 1 deletion(-)
 
-What about this?
-
-fn post_save(&self) {
-    let _ = unsafe { Box::from_raw(self.migration_state.replace(ptr::null_mut())) };
-}
-
-Others LGTM,
-
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-
-
+Queued via hw-misc, thanks.
 

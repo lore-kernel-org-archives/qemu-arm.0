@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4EF7FCA16A
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 17:53:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C0AFCA16D
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 17:57:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzemn-0007B2-9G; Mon, 09 Mar 2026 13:52:57 -0400
+	id 1vzeqx-0003AV-BJ; Mon, 09 Mar 2026 13:57:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzemk-000754-He
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:52:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vzeqf-0002r1-8U
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:57:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzemi-0003lb-D7
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:52:54 -0400
+ id 1vzeqc-0004YL-5e
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:56:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773078765;
+ s=mimecast20190719; t=1773079011;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YEJIlIex9xx5Y2s0ZNwLMpfOdgpqqhSEP2D3AOhmv7I=;
- b=ijctM3HX0pMwITcWH7/gvD6weISVXsF0nME4RCPUqj3xnbtTNpyrgJNSjB+JeiN1LvGmGq
- t1mOpT3ZMX9ZeTQUl4HQb3BXnZam+6UUCO3fiIXOEzxtBM548OWFQLQtifd2IbbrHX5nQa
- oaGIQaHd6CtLY7wxO9uMVNxD/3Msa/Q=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZSvLLWvjRmDZVN3uF814aXfkVjyeW2ZXeQQRRPN9jj4=;
+ b=WJyiiK1ZgNTEqEhkhHbwuMee2WrZyNwzG63LwMNXhk3iLsbIRjcdrPQ11W+usHCBH7mdlV
+ DjscqU3drSuAcj0vDP8h90ayyNtC7SMyC3WJ+EfbbUqNb+WgSjE2J8RmlevlRUZHshlPUb
+ wW92I0DVtNIsKsFafocCu7n7R8HMHBk=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-460-f4OX7X2MOdO-HvlzK_Nzyg-1; Mon, 09 Mar 2026 13:52:42 -0400
-X-MC-Unique: f4OX7X2MOdO-HvlzK_Nzyg-1
-X-Mimecast-MFC-AGG-ID: f4OX7X2MOdO-HvlzK_Nzyg_1773078761
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-439ae28f5fcso6722552f8f.2
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 10:52:42 -0700 (PDT)
+ us-mta-435-8lPInpbsPt6h49taYBQ9nQ-1; Mon, 09 Mar 2026 13:56:50 -0400
+X-MC-Unique: 8lPInpbsPt6h49taYBQ9nQ-1
+X-Mimecast-MFC-AGG-ID: 8lPInpbsPt6h49taYBQ9nQ_1773079009
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-485397788b3so16962675e9.2
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 10:56:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773078761; x=1773683561;
+ d=1e100.net; s=20230601; t=1773079009; x=1773683809;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YEJIlIex9xx5Y2s0ZNwLMpfOdgpqqhSEP2D3AOhmv7I=;
- b=PcZAlKRDEgj5WQDe8y4ME0nrX0RYel3ElGetgJ0WGWnFZb7yR15aBI9FDIbbfQptpI
- QZVl24Rrbl5FGPLq6b5i5OFujDFGIFxoWGQPBRSn+YtsbSOlS6pYoErMgYgl1u4rERS9
- llkKDa3W+hg6+tSDRxnhF6+zRlZT0bXLxkvbwtU632+FI4d2ZJHQq0TcYOLFNqkbiXC/
- Sps923A7GaWtkvQnzyN4aw2rRkXfUua1bCK27305S66JPbH3t6zHyxVGacMVmbp5TGeU
- P5ZMqXzbRybTi1PFv5gyKofMHdzHzWGpRU0vdsRorivABwws5bS/zO+HUjG5SrmTu8kW
- P/fw==
+ bh=ZSvLLWvjRmDZVN3uF814aXfkVjyeW2ZXeQQRRPN9jj4=;
+ b=XF/vy+Bwnj/cY9srVXaaSICShLk+NlJ4w5zBqY/P07Ggc65Lj78gmhIRO8iWgtbRXG
+ YkLq/+3mqUStLWK+muF0v7tLYbNMZTDYq5+fKNeYxsIEmNv+4dcsYG7ZgC7yFNn2QpHN
+ QoF4uSaI3Im5C49MtZINMQVZd8J8XxtbDMRaDi2am1cBUrvCuDeyNFt1vUiuTglJiyLW
+ /6zIVlJTx9ICtI81ahZvDZdsOuC1D0wDQPQSkshbXUZsPZ1LzTcqAMjs+L3Garf1NKJ0
+ hKqqgihXAgwap5Posq0PA5GaJ6KZHBtvzDnl89HI73C9jA0B8HvOCvw5m8/ePlo0Y+9u
+ BAvQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXmFTripatnd0zw9pnRfytOB+cs/Gck3TuJekmS/wJu3OHHhGTHT1f/0OuAI5rihvdnq4H8zcr96Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxqtX01zCtBl88etsAotgJf2XsXFAsOHZlOVBmsydmunDIiTOaZ
- mzCHqMMM2mZyKzbFvI0f9OKlPW9IIfPVH/581qRZeJUEoy3AOd6EnDjv2hE0vYT4X7trBcKYcDv
- FJ1WYFlAWuBM1YRLRuy0KjEHHtmO3dk+mhY6QLK9zxRcLhFUDuVlbUg==
-X-Gm-Gg: ATEYQzxyArojd+YdTGLgZ6zT1bxnaomoWtwLq5KPMGh+7gWtawgj6kWo33RAtFmY8Vw
- 3u0it6Nk7POGLQNHc2cDTXMrEdwJvymkJzyDFyNg2U2lo0LjL0OK5m3B5ptU/gJedojsWPnRWYo
- EjqJ97L5Vrjg8kQOmkC2IwmbXHclfUcrHOdShP/qGK6tWgx17PSN4OkfXS2ycSMVH5dkbu3IhXf
- j+9NzwU46e6MUgO81oP9v5rgUUSPXSkbaSamaFXd/A5B78BcwqqcpJSeKFCLqFSYkOY3oW2AJ5M
- qVd992Ttly8NAYuyDZje3a8YDlW6FCPZ7ZoSTN/xYgHHhjaSh8BaABygzQV4GvXyf3DENk08sga
- 8M9AeUmt4nxfThzR8CbcBBAFkNRhWdtYRWH988Fvq/3yLqUp65jZAFjX3oJ6uW8ApaZJdFw==
-X-Received: by 2002:a05:6000:2008:b0:439:af96:29d8 with SMTP id
- ffacd0b85a97d-439da35f6cdmr22955489f8f.33.1773078761225; 
- Mon, 09 Mar 2026 10:52:41 -0700 (PDT)
-X-Received: by 2002:a05:6000:2008:b0:439:af96:29d8 with SMTP id
- ffacd0b85a97d-439da35f6cdmr22955438f8f.33.1773078760766; 
- Mon, 09 Mar 2026 10:52:40 -0700 (PDT)
+ AJvYcCVAuxb3eJV20CB9B1WB85aNj+6wUAM3Xhu2vIxoOwhbd2TeNfPo+A8LPAAcgKuzwriKdBHpPFuoYg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw688rqqxTnssB8WLomUeQ3zkTYtlao0MjWpKkXMr8Pom+lhyuD
+ koqHLeh1aZ10iR+OVz6sQAriP6QlZCw1qUvNpcDDsioq801hywFG1XYxA5GYbsS5F35/PPOa5vv
+ tGBOylGN6XVGJRw1ESDJ0nQosl2qdSEsWbz3jAdbqPHuUU2yYGaxOfw==
+X-Gm-Gg: ATEYQzzvFo466XxGZTZYYnZISuafi5h/jSD3uv4ht5OAFXlpsmWe7Pt/xnqp5z4uIkp
+ 1xz6O5MnC/UOFFUFYvuXzCoTwRNrMKK7ABlQeIFbiDUX0h9v6tJc40qaOem4EtbXGDwH4f0vy1f
+ lcdLC83RC7YeKC2kpHAqjUmpkqjY7I0dIqfgLGaYzJP7VZ4k5rese6CLoZSzdNwavUH8rv1H+yz
+ ke4C5PjzPOpbmhTkLN9Huy/k2m3C7aS6iyiNNfv5pvrDxeUsgFBtUPkjNMZdjHeYtxiwGFpeczZ
+ CbLvdnpa0ZkYgE+SrAxDxuYmSEUSM/JWlLEHwDYPWykW5V/7bI4t3BTpSsyN3lkiK6OmalhT9eS
+ 73TRgSAdgcR9kplkmM59lIPEDXyiK0d8dCbdQFggHxkClh40esLB1I7eVzgv+ROuzGv/MAg==
+X-Received: by 2002:a05:600c:5250:b0:485:3025:162 with SMTP id
+ 5b1f17b1804b1-48530250228mr144891425e9.35.1773079008894; 
+ Mon, 09 Mar 2026 10:56:48 -0700 (PDT)
+X-Received: by 2002:a05:600c:5250:b0:485:3025:162 with SMTP id
+ 5b1f17b1804b1-48530250228mr144890955e9.35.1773079008356; 
+ Mon, 09 Mar 2026 10:56:48 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae2b9ccsm27797346f8f.19.2026.03.09.10.52.39
+ 5b1f17b1804b1-48541b8d4easm7118405e9.15.2026.03.09.10.56.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 10:52:40 -0700 (PDT)
-Message-ID: <87ff0cdc-5a29-42be-ae3b-62f048603605@redhat.com>
-Date: Mon, 9 Mar 2026 18:52:38 +0100
+ Mon, 09 Mar 2026 10:56:47 -0700 (PDT)
+Message-ID: <e167ce4e-a7ea-4814-8331-a355d364784a@redhat.com>
+Date: Mon, 9 Mar 2026 18:56:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for CMDQV
+Subject: Re: [PATCH v3 14/32] hw/arm/tegra241-cmdqv: Emulate global CMDQV
+ registers
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
@@ -88,23 +89,23 @@ Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
  jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
  zhenzhong.duan@intel.com, kjaju@nvidia.com, phrdina@redhat.com
 References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-18-skolothumtho@nvidia.com>
+ <20260226105056.897-15-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260226105056.897-18-skolothumtho@nvidia.com>
+In-Reply-To: <20260226105056.897-15-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: QqiaPJsEmFMTWqUwJDOGcwnZSOd9QRqQM3uJXxvTYtY_1773078761
+X-Mimecast-MFC-PROC-ID: zIBYkFIZUQB7amZDYejVYEAes_0MwTMZNWeR9jsr5hc_1773079009
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -128,144 +129,298 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 2/26/26 11:50 AM, Shameer Kolothum wrote:
 > From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> Global VCMDQ pages provide a VM wide view of all VCMDQs, while the
-> VINTF pages expose a logical view local to a given VINTF. Although real
-Again I fail to understand the guest POV. If the goal is to let the
-guest have a direct access to some vcmdqs why do we need to emulate the
-CMDQ regs?
-
-Eric
-> hardware may support multiple VINTFs, the kernel currently exposes a
-> single VINTF per VM.
+> Tegra241 CMDQV defines a set of global control and status registers
+> used to configure virtual command queue allocation and interrupt
+> behavior.
 >
-> The kernel provides an mmap offset for the VINTF Page0 region during
-> vIOMMU allocation. However, the logical-to-physical association between
-> VCMDQs and a VINTF is only established after HW_QUEUE allocation. Prior
-> to that, the mapped Page0 does not back any real VCMDQ state.
->
-> When VINTF is enabled, mmap the kernel provided Page0 region and
-> unmap it when VINTF is disabled. This prepares the VINTF mapping
-> in advance of subsequent patches that add VCMDQ allocation support.
+> Add read/write emulation for the global CMDQV register page
+> (offset 0x00000), backed by a simple register cache. This includes
+> CONFIG, PARAM, STATUS, VI error and interrupt maps, CMDQ allocation
+> map and the VINTF0 related registers defined in the global CMDQV
+> register space.
 >
 > Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->  hw/arm/tegra241-cmdqv.h |  3 +++
->  hw/arm/tegra241-cmdqv.c | 44 +++++++++++++++++++++++++++++++++++++++--
->  2 files changed, 45 insertions(+), 2 deletions(-)
+>  hw/arm/tegra241-cmdqv.h | 108 +++++++++++++++++++++++++++++++++++
+>  hw/arm/tegra241-cmdqv.c | 121 +++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 228 insertions(+), 1 deletion(-)
 >
 > diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
-> index d379b8860c..3ce9f539ae 100644
+> index 46aa9e8a9f..50bcecee9d 100644
 > --- a/hw/arm/tegra241-cmdqv.h
 > +++ b/hw/arm/tegra241-cmdqv.h
-> @@ -18,6 +18,8 @@
->  #define TEGRA241_CMDQV_MAX_CMDQ            (1U << TEGRA241_CMDQV_NUM_CMDQ_LOG2)
->  #define TEGRA241_CMDQV_NUM_SID_PER_VM_LOG2 4
+> @@ -10,6 +10,9 @@
+>  #ifndef HW_ARM_TEGRA241_CMDQV_H
+>  #define HW_ARM_TEGRA241_CMDQV_H
 >  
-> +#define VINTF_PAGE_SIZE 0x10000
+> +#include "hw/core/registerfields.h"
+> +#include "smmuv3-accel.h"
 > +
->  /*
->   * Tegra241 CMDQV MMIO layout (64KB pages)
->   *
-> @@ -34,6 +36,7 @@ typedef struct Tegra241CMDQV {
+>  #define TEGRA241_CMDQV_VERSION             1
+>  #define TEGRA241_CMDQV_NUM_CMDQ_LOG2       1
+>  #define TEGRA241_CMDQV_MAX_CMDQ            (1U << TEGRA241_CMDQV_NUM_CMDQ_LOG2)
+> @@ -31,8 +34,113 @@ typedef struct Tegra241CMDQV {
 >      SMMUv3AccelState *s_accel;
 >      MemoryRegion mmio_cmdqv;
 >      qemu_irq irq;
-> +    void *vintf_page0;
+> +
+> +    /* Register Cache */
+> +    uint32_t config;
+> +    uint32_t param;
+> +    uint32_t status;
+> +    uint32_t vi_err_map[2];
+> +    uint32_t vi_int_mask[2];
+> +    uint32_t cmdq_err_map[4];
+> +    uint32_t cmdq_alloc_map[TEGRA241_CMDQV_MAX_CMDQ];
+> +    uint32_t vintf_config;
+> +    uint32_t vintf_status;
+> +    uint32_t vintf_sid_match[16];
+> +    uint32_t vintf_sid_replace[16];
+> +    uint32_t vintf_cmdq_err_map[4];
+>  } Tegra241CMDQV;
 >  
->      /* Register Cache */
->      uint32_t config;
+> +/* Global CMDQV MMIO registers (offset 0x00000) */
+> +REG32(CONFIG, 0x0)
+> +FIELD(CONFIG, CMDQV_EN, 0, 1)
+> +FIELD(CONFIG, CMDQV_PER_CMD_OFFSET, 1, 3)
+> +FIELD(CONFIG, CMDQ_MAX_CLK_BATCH, 4, 8)
+> +FIELD(CONFIG, CMDQ_MAX_CMD_BATCH, 12, 8)
+> +FIELD(CONFIG, CONS_DRAM_EN, 20, 1)
+> +
+> +REG32(PARAM, 0x4)
+> +FIELD(PARAM, CMDQV_VER, 0, 4)
+> +FIELD(PARAM, CMDQV_NUM_CMDQ_LOG2, 4, 4)
+> +FIELD(PARAM, CMDQV_NUM_VM_LOG2, 8, 4)
+> +FIELD(PARAM, CMDQV_NUM_SID_PER_VM_LOG2, 12, 4)
+> +
+> +REG32(STATUS, 0x8)
+> +FIELD(STATUS, CMDQV_ENABLED, 0, 1)
+> +
+> +#define A_VI_ERR_MAP 0x14
+> +#define A_VI_ERR_MAP_1 0x18
+> +#define V_VI_ERR_MAP_NO_ERROR (0)
+> +#define V_VI_ERR_MAP_ERROR (1)
+> +
+> +#define A_VI_INT_MASK 0x1c
+> +#define A_VI_INT_MASK_1 0x20
+> +#define V_VI_INT_MASK_NOT_MASKED (0)
+> +#define V_VI_INT_MASK_MASKED (1)
+> +
+> +#define A_CMDQ_ERR_MAP 0x24
+> +#define A_CMDQ_ERR_MAP_1 0x28
+> +#define A_CMDQ_ERR_MAP_2 0x2c
+> +#define A_CMDQ_ERR_MAP_3 0x30
+> +
+> +/* i = [0, 1] */
+> +#define A_CMDQ_ALLOC_MAP_(i)                 \
+> +    REG32(CMDQ_ALLOC_MAP_##i, 0x200 + i * 4) \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, ALLOC, 0, 1)   \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, LVCMDQ, 1, 7)  \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, VIRT_INTF_INDX, 15, 6)
+> +
+> +A_CMDQ_ALLOC_MAP_(0)
+> +A_CMDQ_ALLOC_MAP_(1)
+> +
+> +
+> +/* i = [0, 0] */
+> +#define A_VINTFi_CONFIG(i)                       \
+> +    REG32(VINTF##i##_CONFIG, 0x1000 + i * 0x100) \
+> +    FIELD(VINTF##i##_CONFIG, ENABLE, 0, 1)       \
+> +    FIELD(VINTF##i##_CONFIG, VMID, 1, 16)        \
+> +    FIELD(VINTF##i##_CONFIG, HYP_OWN, 17, 1)
+> +
+> +A_VINTFi_CONFIG(0)
+> +
+> +#define A_VINTFi_STATUS(i)                       \
+> +    REG32(VINTF##i##_STATUS, 0x1004 + i * 0x100) \
+> +    FIELD(VINTF##i##_STATUS, ENABLE_OK, 0, 1)    \
+> +    FIELD(VINTF##i##_STATUS, STATUS, 1, 3)       \
+> +    FIELD(VINTF##i##_STATUS, VI_NUM_LVCMDQ, 16, 8)
+> +
+> +A_VINTFi_STATUS(0)
+> +
+> +#define V_VINTF_STATUS_NO_ERROR (0 << 1)
+> +#define V_VINTF_STATUS_VCMDQ_EROR (1 << 1)
+> +
+> +/* i = [0, 0], j = [0, 15] */
+> +#define A_VINTFi_SID_MATCH_(i, j)                               \
+> +    REG32(VINTF##i##_SID_MATCH_##j, 0x1040 + j * 4 + i * 0x100) \
+> +    FIELD(VINTF##i##_SID_MATCH_##j, ENABLE, 0, 1)               \
+> +    FIELD(VINTF##i##_SID_MATCH_##j, VIRT_SID, 1, 20)
+> +
+> +A_VINTFi_SID_MATCH_(0, 0)
+> +/* Omitting [0][1~14] as not being directly called */
+> +A_VINTFi_SID_MATCH_(0, 15)
+> +
+> +/* i = [0, 0], j = [0, 15] */
+> +#define A_VINTFi_SID_REPLACE_(i, j)                               \
+> +    REG32(VINTF##i##_SID_REPLACE_##j, 0x1080 + j * 4 + i * 0x100) \
+> +    FIELD(VINTF##i##_SID_REPLACE_##j, PHYS_SID, 0, 19)
+> +
+> +A_VINTFi_SID_REPLACE_(0, 0)
+> +/* Omitting [0][1~14] as not being directly called */
+> +A_VINTFi_SID_REPLACE_(0, 15)
+> +
+> +/* i = [0, 0], j = [0, 3] */
+> +#define A_VINTFi_LVCMDQ_ERR_MAP_(i, j)                               \
+> +    REG32(VINTF##i##_LVCMDQ_ERR_MAP_##j, 0x10c0 + j * 4 + i * 0x100) \
+> +    FIELD(VINTF##i##_LVCMDQ_ERR_MAP_##j, LVCMDQ_ERR_MAP, 0, 32)
+> +
+> +A_VINTFi_LVCMDQ_ERR_MAP_(0, 0)
+> +/* Omitting [0][1~2] as not being directly called */
+> +A_VINTFi_LVCMDQ_ERR_MAP_(0, 3)
+> +
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+>  
+>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
 > diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index e1f1562c44..a3767a85a3 100644
+> index d487612ba2..a3830a02d6 100644
 > --- a/hw/arm/tegra241-cmdqv.c
 > +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -151,6 +151,39 @@ static uint64_t tegra241_cmdqv_read(void *opaque, hwaddr offset, unsigned size)
->      }
->  }
+> @@ -8,19 +8,138 @@
+>   */
 >  
-> +static bool
-> +tegra241_cmdqv_munmap_vintf_page0(Tegra241CMDQV *cmdqv, Error **errp)
+>  #include "qemu/osdep.h"
+> +#include "qemu/log.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+>  #include "smmuv3-accel.h"
+>  #include "tegra241-cmdqv.h"
+>  
+> +static uint64_t tegra241_cmdqv_read_vintf(Tegra241CMDQV *cmdqv, hwaddr offset)
 > +{
-> +    if (!cmdqv->vintf_page0) {
-> +        return true;
-> +    }
+> +    int i;
 > +
-> +    if (munmap(cmdqv->vintf_page0, VINTF_PAGE_SIZE) < 0) {
-> +        error_setg_errno(errp, errno, "Failed to unmap VINTF page0");
-> +        return false;
+> +    switch (offset) {
+> +    case A_VINTF0_CONFIG:
+> +        return cmdqv->vintf_config;
+> +    case A_VINTF0_STATUS:
+> +        return cmdqv->vintf_status;
+> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
+> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
+> +        return cmdqv->vintf_sid_match[i];
+> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
+> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
+> +        return cmdqv->vintf_sid_replace[i];
+> +    case A_VINTF0_LVCMDQ_ERR_MAP_0 ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        i = (offset - A_VINTF0_LVCMDQ_ERR_MAP_0) / 4;
+> +        return cmdqv->vintf_cmdq_err_map[i];
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +        return 0;
 > +    }
-> +    cmdqv->vintf_page0 = NULL;
-> +    return true;
 > +}
 > +
-> +static bool tegra241_cmdqv_mmap_vintf_page0(Tegra241CMDQV *cmdqv, Error **errp)
-> +{
-> +    IOMMUFDViommu *viommu = cmdqv->s_accel->viommu;
-> +
-> +    if (cmdqv->vintf_page0) {
-> +        return true;
-> +    }
-> +
-> +    if (!iommufd_backend_viommu_mmap(viommu->iommufd, viommu->viommu_id,
-> +                                     VINTF_PAGE_SIZE,
-> +                                     cmdqv->cmdqv_data.out_vintf_mmap_offset,
-> +                                     &cmdqv->vintf_page0, errp)) {
-> +        return false;
-> +    }
-> +
-> +    return true;
-> +}
-> +
->  /*
->   * Write a VCMDQ register using VCMDQ0_* offsets.
->   *
-> @@ -216,7 +249,7 @@ tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0, int index,
->  }
->  
->  static void tegra241_cmdqv_write_vintf(Tegra241CMDQV *cmdqv, hwaddr offset,
-> -                                       uint64_t value)
-> +                                       uint64_t value, Error **errp)
+>  static uint64_t tegra241_cmdqv_read(void *opaque, hwaddr offset, unsigned size)
 >  {
->      int i;
+> -    return 0;
+> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
+> +
+> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s offset 0x%" PRIx64 " off limit (0x50000)\n", __func__,
+> +                      offset);
+> +        return 0;
+> +    }
+> +
+> +    switch (offset) {
+> +    case A_CONFIG:
+> +        return cmdqv->config;
+> +    case A_PARAM:
+> +        return cmdqv->param;
+> +    case A_STATUS:
+> +        return cmdqv->status;
+> +    case A_VI_ERR_MAP ... A_VI_ERR_MAP_1:
+> +        return cmdqv->vi_err_map[(offset - A_VI_ERR_MAP) / 4];
+> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
+> +        return cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4];
+> +    case A_CMDQ_ERR_MAP ... A_CMDQ_ERR_MAP_3:
+> +        return cmdqv->cmdq_err_map[(offset - A_CMDQ_ERR_MAP) / 4];
+> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
+> +        return cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4];
+> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        return tegra241_cmdqv_read_vintf(cmdqv, offset);
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void tegra241_cmdqv_write_vintf(Tegra241CMDQV *cmdqv, hwaddr offset,
+> +                                       uint64_t value)
+> +{
+> +    int i;
+> +
+> +    switch (offset) {
+> +    case A_VINTF0_CONFIG:
+> +        /* Strip off HYP_OWN setting from guest kernel */
+> +        value &= ~R_VINTF0_CONFIG_HYP_OWN_MASK;
+> +
+> +        cmdqv->vintf_config = value;
+> +        if (value & R_VINTF0_CONFIG_ENABLE_MASK) {
+> +            cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
+> +        } else {
+> +            cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
+> +        }
+> +        break;
+> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
+> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
+> +        cmdqv->vintf_sid_match[i] = value;
+> +        break;
+> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
+> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
+> +        cmdqv->vintf_sid_replace[i] = value;
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +        return;
+> +    }
+>  }
 >  
-> @@ -227,8 +260,10 @@ static void tegra241_cmdqv_write_vintf(Tegra241CMDQV *cmdqv, hwaddr offset,
->  
->          cmdqv->vintf_config = value;
->          if (value & R_VINTF0_CONFIG_ENABLE_MASK) {
-> +            tegra241_cmdqv_mmap_vintf_page0(cmdqv, errp);
->              cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
->          } else {
-> +            tegra241_cmdqv_munmap_vintf_page0(cmdqv, errp);
->              cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
->          }
->          break;
-> @@ -251,6 +286,7 @@ static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
+>  static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
 >                                   unsigned size)
 >  {
->      Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
-> +    Error *local_err = NULL;
->      int index;
->  
->      if (offset >= TEGRA241_CMDQV_IO_LEN) {
-> @@ -276,7 +312,7 @@ static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
->          cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4] = value;
->          break;
->      case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
-> -        tegra241_cmdqv_write_vintf(cmdqv, offset, value);
-> +        tegra241_cmdqv_write_vintf(cmdqv, offset, value, &local_err);
->          break;
->      case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
->          /* Same decoding as read() case: See comments above */
-> @@ -300,6 +336,10 @@ static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
->          qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
->                        __func__, offset);
->      }
+> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
 > +
-> +    if (local_err) {
-> +        error_report_err(local_err);
+> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s offset 0x%" PRIx64 " off limit (0x50000)\n", __func__,
+> +                      offset);
+> +        return;
+> +    }
+> +
+> +    switch (offset) {
+> +    case A_CONFIG:
+> +        cmdqv->config = value;
+> +        if (value & R_CONFIG_CMDQV_EN_MASK) {
+> +            cmdqv->status |= R_STATUS_CMDQV_ENABLED_MASK;
+> +        } else {
+> +            cmdqv->status &= ~R_STATUS_CMDQV_ENABLED_MASK;
+> +        }
+> +        break;
+> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
+> +        cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4] = value;
+> +        break;
+> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
+> +        cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4] = value;
+> +        break;
+> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        tegra241_cmdqv_write_vintf(cmdqv, offset, value);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
 > +    }
 >  }
 >  
 >  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
+Please could you add trace points for mmio access as this is generally
+done for SMMU access? See trace_smmuv3_read/write_mmio()
+
+Eric
 
 

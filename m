@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E66EFCD74
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 10:19:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C452FEFCD74
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 10:32:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzXhF-00030d-U5; Mon, 09 Mar 2026 06:18:46 -0400
+	id 1vzXtz-0005xt-Bz; Mon, 09 Mar 2026 06:31:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzXgu-0002ti-U2
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 06:18:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vzXtj-0005vS-9k
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 06:31:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzXgr-0004d1-R5
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 06:18:23 -0400
+ id 1vzXte-0006T1-NI
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 06:31:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773051499;
+ s=mimecast20190719; t=1773052292;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u8YCq90UjcclfOFZjjnKI8QO7OBSSA6hQoDJ6x4cpXM=;
- b=O2nm7uNAJM/KeGJWMoyS5lNlQZ0yf/UyavC651qymeCfrTFA7NG0iMG+MhK+Vh6qmNElGC
- dPfpZZa4Sc07+M1HvUDvhajFNtCpoDGwYj+QShlUBwVdnvhtalcMCdkJoxh97xqJGRjb54
- v0VGn3LN1f1548gs03BYj510Lfwez4A=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=fsfuLPjL7R2VeAaDZOW9eIiFoe68uuih/4a9T+dUmlQ=;
+ b=O8WuZ3MqmVX7Pq/F4fZZok2x24r57aFT+eWfLTTK6qykLUpRRfMNHOX7hKqtCit6qio3V0
+ E4Z+WS6JyB2SISTm6joCvQ8cBvS0iBzMRz3j3l9MDXmnRFB7J/WcHm5Gwx5bmSpF3ojvcm
+ zAuqmRvv3gyI0vMwAX2ks9Rl3Gk8sj0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-599-hML6QED0PZWIymr058kBCw-1; Mon, 09 Mar 2026 06:18:18 -0400
-X-MC-Unique: hML6QED0PZWIymr058kBCw-1
-X-Mimecast-MFC-AGG-ID: hML6QED0PZWIymr058kBCw_1773051498
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4853ac455b2so9743685e9.1
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 03:18:18 -0700 (PDT)
+ us-mta-684-F2AeTKC7OZuRD_aXH-oMQQ-1; Mon, 09 Mar 2026 06:31:31 -0400
+X-MC-Unique: F2AeTKC7OZuRD_aXH-oMQQ-1
+X-Mimecast-MFC-AGG-ID: F2AeTKC7OZuRD_aXH-oMQQ_1773052291
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4852fbfc379so19314755e9.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 03:31:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773051498; x=1773656298;
+ d=1e100.net; s=20230601; t=1773052290; x=1773657090;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u8YCq90UjcclfOFZjjnKI8QO7OBSSA6hQoDJ6x4cpXM=;
- b=s1tc3YyLEjGI0SnVF7z0g8f9/jyn6l7wH8hC0iVjsQDLN5bZsXhl5XMtUjjzfLz60t
- nPuP5NpRVa+rT/rNlazwRq3bu+jvMKc54cNUkLmHMl3tNw1Q9aJAgRe/Tqe+M7th9YZB
- sCWvdhz1a2cuujFN0IkTkKQ9OCgWoEMfKrhgOGW3BydrR18GMaX0xK6GBQXsfelAng/5
- 10tkV2E43aVIwLmcGfGLcKoazq/jGdICsvEHKrVr3GUXmebiuArj6gmeavWVsFLdTJVq
- ZpxDRHe2oExax0+LypaTPlS4AGWYMs1IF9fJYi7wdDycAV+/dK96qCKZeYO88/o6vr4Q
- UnZw==
+ bh=fsfuLPjL7R2VeAaDZOW9eIiFoe68uuih/4a9T+dUmlQ=;
+ b=p3KPjI9BF8Q1dFZ+UGnozBoyXphoyuLOJQlFE83gJuL5CCBzdmmfVrbQVan4Z/C0Kd
+ Sf0RpznwDoAzb2xKU69lxAOROutRGe6vbgdT19/rTdAbxFzN1NLeCsuFMn6hvgF+oeig
+ qv6jo2MiZVD1UEAJORI0yyhXBeVAAS7t/ZJH9zq6k9lEPBY2ESEG5PI/aWHQ9158advf
+ WUAFpgbifawX7C3j/Ln7VyZLBDYsTJ+Os/J9R5vhK1td1Hx3SO7ubc5z+atUkLqDfhlM
+ w5evp6D9P50nQ62JpOQpKnu7UVgs51XmqSn0c05DpIE/0I5u6BQUCov8GH5iKTXsUgZA
+ bIdg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXfOpEIKipMkkBpGXbmkCNgBcZ1/yLPassHZRrWpoFTK1XE/0nwg6mw/JH/GSA5izLCGmuo1i/EUQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxUi6WHvfnc2tAxYzYmdPY3Y6dw4v1aSIPfIzBbsC9RoTFhZCyO
- cT+cjiG/OoITwh+gkK6K2fNlr0JIxrG0Wmo4atA1rtRsoQmCeYKtb2OejU1Z8HnSAEGyqPwEEWQ
- FxG4zOwQL+OZfz55wUhoCKbXwZVLf2lxZ31C7StpWmjdgYwwam+ToRQ==
-X-Gm-Gg: ATEYQzx/i7PDTZVmT5KzuHrGxLh9BvYPmJwF2rak2LGNYvQb97hLFb47nLYBjA0Qk01
- I70HEtvCA2Bq7fWG0LixPFQ+xZBvCJhuAq8qjJMlnpzWt+K722EbaArWTzRYhnUasNFZlxV2ZKh
- i+Sx7OXRkNAXVypyFWAbPU0EH/IZKHonw25fISMMAZT10xBZA89LqTnkXTV3XqEnqML4gbR8grO
- yFGTk0xmlRoFsqeVedAIj0ukCWZrJ9w2uWGwqhwLHfg43putQQljiLP2clc7IuW8vegwm10maJN
- JYYSg9JLasuoqmU4kWJU+Ch4DmBT0V/vLlP/k5mH7QEK03Fm0XAR2Ho5PbynggmL7X3ygrTrHPC
- 7py19Jfj0YLqiyHZ0BdCvbTufhgDl0AyQJ0yqJRfmGL0RlbcDUKqsgG6vq/19V9eb2jvR5w==
-X-Received: by 2002:a05:600c:3515:b0:485:364e:934e with SMTP id
- 5b1f17b1804b1-485364e94admr77136705e9.21.1773051497385; 
- Mon, 09 Mar 2026 03:18:17 -0700 (PDT)
-X-Received: by 2002:a05:600c:3515:b0:485:364e:934e with SMTP id
- 5b1f17b1804b1-485364e94admr77136175e9.21.1773051496879; 
- Mon, 09 Mar 2026 03:18:16 -0700 (PDT)
+ AJvYcCVRXcsX5zMDAOyHJtlvpar5NJJJxI4c8WITepQ2XX50GE248nC86ZUG7wJJjg2lfBzXMd959pImDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzvJdCPIIjsfydaDjjz21aqGaxqR3SQnhtmaEEAeCJhOcxc2voi
+ r/R4THLkCE5sFSY+u/i20tqF28V+TEupKf5qeI7wAO+DA/XaBMKmZNWsk+XLnW51kEL2Fa9BIrT
+ VODarpIBcu5Er5HeMick6dEIBuWzdTuXm8xAf9NeSP3SB816b//giQA==
+X-Gm-Gg: ATEYQzzi0/mvn2k5c5Ryi22qBWDj0LQEV66xnNB1G8OBOPdmlFP6fV21Z4yLEp+h4Si
+ uFdRzJ27QqpyXND3IRBnRcIEUCjAAZeyVlqI7B0+/DH7VdO6TG9Y++HN98s3mWXbTpBjLTx6ifY
+ kGRMHPdVZWzjIhO8XyjO65Lep4O2ycjX0IyHRZgU27OVRBngvDpjuots9Sj7YJLypSACiv3q+/+
+ oYZFj7wzwBW9HwpaTPWWlqbS0lCtiCwaPp7eIUxAr4d8YgYMLPIQHMdo+833P3F1ewkdk8wdB0/
+ m/3WLAEYEFALg7lzfZs+l8abAvANoBpFjSaJKHk+i10DGqnSuiNS6230kvcRWYqwQdeZrWUQZTy
+ vpwckUS5e3imjpTNd611ozL0ADKwuddwrq3/8FLpyN9tYI0MZpKov28tYTRLvQcmEtx73iA==
+X-Received: by 2002:a05:600c:3b8e:b0:485:35a4:939c with SMTP id
+ 5b1f17b1804b1-48535a4a188mr84759215e9.29.1773052290405; 
+ Mon, 09 Mar 2026 03:31:30 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b8e:b0:485:35a4:939c with SMTP id
+ 5b1f17b1804b1-48535a4a188mr84758615e9.29.1773052289961; 
+ Mon, 09 Mar 2026 03:31:29 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4853588758fsm63890085e9.4.2026.03.09.03.18.14
+ 5b1f17b1804b1-4852470a654sm83147495e9.29.2026.03.09.03.31.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 03:18:16 -0700 (PDT)
-Message-ID: <a1b62ea5-1fb9-4b6a-b413-2c3a71629d1f@redhat.com>
-Date: Mon, 9 Mar 2026 11:18:13 +0100
+ Mon, 09 Mar 2026 03:31:29 -0700 (PDT)
+Message-ID: <b3627b0d-5e21-46de-adba-1c9ec84fb602@redhat.com>
+Date: Mon, 9 Mar 2026 11:31:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/32] hw/arm/virt-acpi-build: Use stored SMMUv3
- devices for IORT build
+Subject: Re: [PATCH v3 10/32] hw/arm/tegra241-cmdqv: Probe host Tegra241 CMDQV
+ support
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
@@ -89,23 +89,23 @@ Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
  jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
  zhenzhong.duan@intel.com, kjaju@nvidia.com, phrdina@redhat.com
 References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-10-skolothumtho@nvidia.com>
+ <20260226105056.897-11-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260226105056.897-10-skolothumtho@nvidia.com>
+In-Reply-To: <20260226105056.897-11-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bDwYK0DSC_XPylsy9PAsqX2FHYxNIcuSAnfjXokKnv4_1773051498
+X-Mimecast-MFC-PROC-ID: SGOw_cYzMJZpx4S992taFQkSYqkexHC-zZcnEW3pcpk_1773052291
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -127,120 +127,83 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 On 2/26/26 11:50 AM, Shameer Kolothum wrote:
-> Stop walking the object tree to discover SMMUv3 devices when building
-> the IORT table.
+> Use IOMMU_GET_HW_INFO to check whether the host supports Tegra241 CMDQV.
 >
-> Use the SMMUv3 device array maintained by the virt machine instead,
-> avoiding recursive object traversal.
->
-> No functional change intended.
+> Validate the returned data type, version, number of vCMDQs and SIDs per
+> VM. Fail the probe if the host does not meet the expected requirements.
+
+Can you explain why it is important to check 
+
+number of vCMDQs and SIDs per VM? 
+
 >
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->  hw/arm/virt-acpi-build.c | 70 ++++++++++++++++++----------------------
->  1 file changed, 31 insertions(+), 39 deletions(-)
+>  hw/arm/tegra241-cmdqv.h |  5 +++++
+>  hw/arm/tegra241-cmdqv.c | 32 ++++++++++++++++++++++++++++++--
+>  2 files changed, 35 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 544004615d..ae78e9b9e0 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -385,49 +385,41 @@ static int smmuv3_dev_idmap_compare(gconstpointer a, gconstpointer b)
->      return map_a->input_base - map_b->input_base;
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index 07e10e86ee..312064a081 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -10,6 +10,11 @@
+>  #ifndef HW_ARM_TEGRA241_CMDQV_H
+>  #define HW_ARM_TEGRA241_CMDQV_H
+>  
+> +#define TEGRA241_CMDQV_VERSION             1
+> +#define TEGRA241_CMDQV_NUM_CMDQ_LOG2       1
+> +#define TEGRA241_CMDQV_MAX_CMDQ            (1U << TEGRA241_CMDQV_NUM_CMDQ_LOG2)
+> +#define TEGRA241_CMDQV_NUM_SID_PER_VM_LOG2 4
+> +
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+>  
+>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index ad5a0d4611..a270fa7ce4 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -38,8 +38,36 @@ static bool tegra241_cmdqv_init(SMMUv3State *s, Error **errp)
+>  static bool tegra241_cmdqv_probe(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>                                   Error **errp)
+>  {
+> -    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
+> -    return false;
+> +    uint32_t data_type = IOMMU_HW_INFO_TYPE_TEGRA241_CMDQV;
+> +    struct iommu_hw_info_tegra241_cmdqv cmdqv_info;
+> +    uint64_t caps;
+> +
+> +    if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
+> +                                         &cmdqv_info, sizeof(cmdqv_info), &caps,
+> +                                         NULL, errp)) {
+> +        return false;
+> +    }
+> +    if (data_type != IOMMU_HW_INFO_TYPE_TEGRA241_CMDQV) {
+> +        error_setg(errp, "Host CMDQV: unexpected data type %u (expected %u)",
+> +                   data_type, IOMMU_HW_INFO_TYPE_TEGRA241_CMDQV);
+> +        return false;
+> +    }
+> +    if (cmdqv_info.version != TEGRA241_CMDQV_VERSION) {
+> +        error_setg(errp, "Host CMDQV: unsupported version %u (expected %u)",
+> +                   cmdqv_info.version, TEGRA241_CMDQV_VERSION);
+> +        return false;
+> +    }
+> +    if (cmdqv_info.log2vcmdqs < TEGRA241_CMDQV_NUM_CMDQ_LOG2) {
+> +        error_setg(errp, "Host CMDQV: insufficient vCMDQs log2=%u (need >= %u)",
+> +                   cmdqv_info.log2vcmdqs, TEGRA241_CMDQV_NUM_CMDQ_LOG2);
+> +        return false;
+> +    }
+> +    if (cmdqv_info.log2vsids < TEGRA241_CMDQV_NUM_SID_PER_VM_LOG2) {
+> +        error_setg(errp, "Host CMDQV: insufficient SIDs log2=%u (need >= %u)",
+> +                   cmdqv_info.log2vsids, TEGRA241_CMDQV_NUM_SID_PER_VM_LOG2);
+> +        return false;
+> +    }
+> +    return true;
 >  }
 >  
-> -static int iort_smmuv3_devices(Object *obj, void *opaque)
-> -{
-> -    VirtMachineState *vms = VIRT_MACHINE(qdev_get_machine());
-> -    AcpiIortSMMUv3Dev sdev = {0};
-> -    GArray *sdev_blob = opaque;
-> -    AcpiIortIdMapping idmap;
-> -    PlatformBusDevice *pbus;
-> -    int min_bus, max_bus;
-> -    SysBusDevice *sbdev;
-> -    PCIBus *bus;
-> -
-> -    if (!object_dynamic_cast(obj, TYPE_ARM_SMMUV3)) {
-> -        return 0;
-> -    }
-> -
-> -    bus = PCI_BUS(object_property_get_link(obj, "primary-bus", &error_abort));
-> -    sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
-> -    sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
-> -    pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-> -    sbdev = SYS_BUS_DEVICE(obj);
-> -    sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> -    sdev.base += vms->memmap[VIRT_PLATFORM_BUS].base;
-> -    sdev.irq = platform_bus_get_irqn(pbus, sbdev, 0);
-> -    sdev.irq += vms->irqmap[VIRT_PLATFORM_BUS];
-> -    sdev.irq += ARM_SPI_BASE;
-> -
-> -    pci_bus_range(bus, &min_bus, &max_bus);
-> -    sdev.rc_smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
-> -    idmap.input_base = min_bus << 8,
-> -    idmap.id_count = (max_bus - min_bus + 1) << 8,
-> -    g_array_append_val(sdev.rc_smmu_idmaps, idmap);
-> -    g_array_append_val(sdev_blob, sdev);
-> -    return 0;
-> -}
-> -
->  /*
->   * Populate the struct AcpiIortSMMUv3Dev for all SMMUv3 devices and
->   * return the total number of idmaps.
->   */
-> -static int populate_smmuv3_dev(GArray *sdev_blob)
-> +static int populate_smmuv3_dev(GArray *sdev_blob, VirtMachineState *vms)
-nit: I would prefer vms to be the 1st arg
->  {
-> -    object_child_foreach_recursive(object_get_root(),
-> -                                   iort_smmuv3_devices, sdev_blob);
-> +    for (int i = 0; i < vms->smmuv3_devices->len; i++) {
-> +        Object *obj = OBJECT(g_ptr_array_index(vms->smmuv3_devices, i));
-> +        AcpiIortSMMUv3Dev sdev = {0};
-> +        AcpiIortIdMapping idmap;
-> +        PlatformBusDevice *pbus;
-> +        int min_bus, max_bus;
-> +        SysBusDevice *sbdev;
-> +        PCIBus *bus;
-> +
-> +        bus = PCI_BUS(object_property_get_link(obj, "primary-bus",
-> +                                               &error_abort));
-> +        sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
-> +        sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
-> +        pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
-> +        sbdev = SYS_BUS_DEVICE(obj);
-> +        sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-> +        sdev.base += vms->memmap[VIRT_PLATFORM_BUS].base;
-> +        sdev.irq = platform_bus_get_irqn(pbus, sbdev, 0);
-> +        sdev.irq += vms->irqmap[VIRT_PLATFORM_BUS];
-> +        sdev.irq += ARM_SPI_BASE;
-> +
-> +        pci_bus_range(bus, &min_bus, &max_bus);
-> +        sdev.rc_smmu_idmaps = g_array_new(false, true,
-> +                                          sizeof(AcpiIortIdMapping));
-> +        idmap.input_base = min_bus << 8;
-> +        idmap.id_count = (max_bus - min_bus + 1) << 8;
-> +        g_array_append_val(sdev.rc_smmu_idmaps, idmap);
-> +        g_array_append_val(sdev_blob, sdev);
-> +    }
->      /* Sort the smmuv3 devices(if any) by smmu idmap input_base */
->      g_array_sort(sdev_blob, smmuv3_dev_idmap_compare);
->      /*
-> @@ -561,7 +553,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      if (vms->legacy_smmuv3_present) {
->          rc_smmu_idmaps_len = populate_smmuv3_legacy_dev(smmuv3_devs);
->      } else {
-> -        rc_smmu_idmaps_len = populate_smmuv3_dev(smmuv3_devs);
-> +        rc_smmu_idmaps_len = populate_smmuv3_dev(smmuv3_devs, vms);
-So did you check this does not break existing bios qtests (as we change
-the way we iterate on the devices)? If so maybe add a comment in commit
-description.
->      }
->  
->      num_smmus = smmuv3_devs->len;
-I would squash previous patch in that one.
-
+>  static const SMMUv3AccelCmdqvOps tegra241_cmdqv_ops = {
+Besides
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
 Eric
 
 

@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B0EBFCA199
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78740FCA19A
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:02:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vziet-00039R-K5; Mon, 09 Mar 2026 18:01:03 -0400
+	id 1vzier-00038G-FI; Mon, 09 Mar 2026 18:01:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vzien-000345-2H
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:57 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ id 1vziee-00031E-Ms
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:51 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vziej-0004Yl-W3
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:56 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-7990712fc39so9378787b3.0
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:00:53 -0700 (PDT)
+ id 1vzieb-0004Vs-S9
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:00:48 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-793fdbb8d3aso147248877b3.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:00:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773093653; x=1773698453; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773093645; x=1773698445; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=jcqshWK0PF72SFSXYPEg36r5bTJvD4+18bCR7YlbW8c=;
- b=ArlZQQYeXAYZpL3SmDFGDACd9BVV2VrGEKWx2MRNd/BzvkZPAvdngSsBjhO9V3H/ux
- Zf8MBN+EVACO813CJm/E6l5CsCfaPV1OOAa/EZTkPJcElTPMFuIX13B0zbRB/4YeQ0EZ
- 0nrku1OjBV3FmcN2FbTA9KEqUTDDN9YarMoJrB9IpLpkegQhl4dB+Rf4tAupCXwotcWD
- 1Dx/a3DErmlMBaGCqVmq82LKvtNZPNawaTmIwowznyxS1t99Ac9d0hvCtgxBTCS0zZMZ
- j/6bN5RnwAl2T/UOsVzbzvq7PYXzyZ/BfYhw1vM2Upb3C9DNLMDTYlwe4XtyMaVXj/uK
- 31CQ==
+ :reply-to; bh=saxPVdNzQrCkohNF8gWwgcPyB3i+BYvE2L0q+VhSlxg=;
+ b=DGH/Fpopl2ys1b2wxSJO6Aowddnj2SRAY90JLiYyM8y2TmZutngXdakFQ2Fr8pA6oi
+ 2/B5liK1Qmzh7NEt36z3aDYRgV2fz4LY61Yedc7ZNbtr3f8IcrS0HFl2YV9D3KMptD0I
+ v2OVw0wLIpAjpXxhaSn1ij+w7xQ5ChEUHv8UmF4XzHHn4XzGiByVZX9R8mJJT6S7OeN3
+ SbUxJoPlUh/s+v8Rn8a28GYgixb+KwBrsV8RdZZZQWuH7KwTCtVh9GrwJ/aA4NuR8CR8
+ lHEFJWikFXb2S9hK6NnbMsyQCxB5oZwFHw370kce7ogqecEu4ekhQoh2tp72PRkHuL8E
+ BfkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773093653; x=1773698453;
+ d=1e100.net; s=20230601; t=1773093645; x=1773698445;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=jcqshWK0PF72SFSXYPEg36r5bTJvD4+18bCR7YlbW8c=;
- b=YZBUGw3oUrSHvRX1ujP2BFSsUMkq650n7OLbQFnxmTESUiX4cyuMpQ2niX5EDQu+p6
- CzZ/LngVOk8V7MnkFzxPBR8rKFCg4n5gUKAzOHfql4UWGpcEXPTjIzSyFEXL2EgcN6ZV
- Kw4o7X8pvjXnr5qXZV4rAQe54d4IbP/Ws/6LngJ9ZCJxmY6Qu5TWZvm0to4Dzi/JkNKy
- F7sk2sSbunxIMsDfoF4l0W3hO6IhrmtFF/mbF47pVk/yPDUs84C8moV5dVMV2wnWmNmx
- MB2G9i6LTNOvPE2GfbpnNKliLsJ8Rpx5YvtTG0qP/Yz6SjxK0QJQoWhwiaTSwMzUEZrR
- wtVA==
+ bh=saxPVdNzQrCkohNF8gWwgcPyB3i+BYvE2L0q+VhSlxg=;
+ b=JBRBpjI00c5sDquUcg78foMJwM+RSnH3GA/qDxwQRydYz5+TqRGrAqESyDwV2iplYf
+ 2srMFZExtH7w5/9gAB/JF9hFxv1VZb9C3PsG/usXoevmz3Nd+uZBcuyqxclkHLMeIQCb
+ Jp0q0kyBiZgIWGKzbswQyOICZ4+dYfQZWb6ED29fg6OihMbIFAxgt7Gh1rVoAFbJSSH/
+ WSkuYlISUI0sWC10v9CCh9YgzmeLOg/+iJMxA2PXWYMh0dHPGRoJWkFLGaGjcVHWNVxH
+ ILD+3XncLeX3rYGJaOayCMl2FeuKe2DrTgQVuhlW/fUeMND7d5/RAaII3Mz/XqyAjJ7j
+ 1PoQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUGsLwDHXgts+CNc/ki0MqIP3l5hiOc3uRETDR49mArl+NCj5aTNXENiYvGxBALOFl83F5kZUccow==@nongnu.org
-X-Gm-Message-State: AOJu0YzDsdYpFD53eaYOQ3LhslxTlnHBgpkT7dp7Bs53W2U9e0yVABLc
- uHGF6op3B1xAm5zbSG8sAdt5t+qqKpO8HPvGYJtllVCq3mmodh3Yf/4J
-X-Gm-Gg: ATEYQzwhoOe6Du+XQwYveOFKRuKwe2QEzRI+5f88E4mbz3soR2yLvBrHRPQ4lzkJwzk
- gnc7q/IZVaEw3j1KLHzqxhgtjKN+YqFBVJ9YmBpoaUVBL0MNzQJg57XgXmcozvFlq3n0OioVGil
- DK3UMP1YJK83Z6jcTMvp8NkdjKLvWFHOM4TvHLvopah6vRSWmY6BHW/SLWS7gMWOunmhimj/wYv
- 6C141LRqv1PcldqS49bMmQlsRdNUat+aagdsKyTvTIsTcGQuPSIEw54+uL1d38KSI1LrnPknh6t
- xOYdzcXYAYD9x1nn9nktI72jrwO1pX5yfxOLMqCRyuIB8RHfTm0PyzwKO+bJjV+qBK4xUkx5HRC
- KFynXd1iiyJzyPscWmgAQ8zQVQqf7TjeHy4GlhNfkoGuGPzWegOiwTJf7ugP7ZEqRddjTRj5SDK
- MBg/d8GiI9nubRxhxRN2/nRGfZzrDGtz7RQ2k=
-X-Received: by 2002:a05:690c:6e83:b0:796:6df5:4840 with SMTP id
- 00721157ae682-798dd7aa08cmr118886057b3.59.1773093652734; 
- Mon, 09 Mar 2026 15:00:52 -0700 (PDT)
+ AJvYcCVk9EHl9Jqn/LHMaXBnr2eSWQLjNyprJ94qbMQM/bIlyAVUDb4q1701EOekQamzLDTv1CPgo+CKLw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzf4dUp4cDLJk38NJftzuiaHWfvtF/tuGngBWhYudvkjzm3pct5
+ r8NwEhMjSsmOQfR+Ou971zziQCzJBULtE5agmMglD5HpQ7HKPFX1rVBH
+X-Gm-Gg: ATEYQzwNakICP4umVdRu2lwGjbO9ujXAls4I3D9/3cLajf3DcjwrAhTthNrsyYDZaZr
+ MVFS0k82kaSK1Q81CAGku5rghwvM64U4B/TupTJ5HuBFUJ7QAw3JGxYUbjCWR8kduHorgk+Niy8
+ BteFTupPgS2Vdwkfw1d+pG8bC88krYyHEEEONgX37EOanOn3s+xTj8ha5d7RJ5vS1YA2bJP+pzt
+ E5f5LRwkO1kpgvzpUC51xUThlKQhhl8Eh0XumU54cHP4REWDQ1KWulvAMiz2eYrVcCL3btv63E9
+ SJ410mRQwMuFjBNlTR16RGO3IWgX8Y8S4zMnnU9OqFc31FzagGm1z7lSmpBYDABZ+FnxWVipoVq
+ 3C0HN4Bopl8gkQHqEniBxOkmZKCkmlNvg4VvCzGF4d8iCh3Rl/BastDeStkBl7nF76fPK0xl3BG
+ 3ozk3WzEu5lE3L4rgCTxQyds2XJ/aTG5J6n+8=
+X-Received: by 2002:a05:690c:660e:b0:799:952:3e6f with SMTP id
+ 00721157ae682-799095253aemr16504277b3.19.1773093644476; 
+ Mon, 09 Mar 2026 15:00:44 -0700 (PDT)
 Received: from [172.26.74.149] ([185.213.193.97])
  by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7990a54ba7csm5218437b3.19.2026.03.09.15.00.52
+ 00721157ae682-7990a54ba7csm5218437b3.19.2026.03.09.15.00.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Mar 2026 15:00:52 -0700 (PDT)
+ Mon, 09 Mar 2026 15:00:43 -0700 (PDT)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 09 Mar 2026 17:59:42 -0400
-Subject: [PATCH v4 10/13] target/arm: with MTX, tag is not a part of PAuth
+Date: Mon, 09 Mar 2026 17:59:33 -0400
+Subject: [PATCH v4 01/13] target/arm: implement MTE_PERM
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260309-feat-mte4-v4-10-daaf0375620d@gmail.com>
+Message-Id: <20260309-feat-mte4-v4-1-daaf0375620d@gmail.com>
 References: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
 In-Reply-To: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
 To: qemu-devel@nongnu.org
@@ -82,15 +82,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773093641; l=2858;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773093641; l=4593;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=+dUMv/5Rue52GZFtWN1V4EyVvStVLMNVxeKC+0+OyjY=;
- b=zkMRguuEE/vuWFYkp8xiTmRtRqKhMNBRH/yEUpWpKMSvy9ymScZnmMMaxkLQHPTlbzlgHxlzx
- Ljpbo4K+N44AnTwc9/GTZxjyCHX4QKqXfIsQYM3OrffLmyZ+8vJ4Ult
+ bh=EFVy8rM6hzX0gBUkxRsGr/3LIt/4cq55D0ThmN9lXuM=;
+ b=+RE/9QXr0zFBlm8rppv0nDYsvtcUXj1GdvqscFuM+G5yMk6TcWgQfw5cWPDzjLNDTIqxbl+Kh
+ 5rT9XThppgABHWBFV2i1IHjhkmqgPpN+AADbpacqe3zGNguccChq6vG
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=brookmangabriel@gmail.com; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,73 +113,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As described in the section on MTX, tag bits should not be used to store
-or compute the PAC when MTX is set. See also Authenticate(),
-InsertPAC(), and Strip().
+Introduces a new stage 2 memory attribute, NoTagAccess, that raises a
+stage 2 data abort on a tag check, tag read, or tag write.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/internals.h        |  5 ++++-
- target/arm/tcg/pauth_helper.c | 14 +++++++++++++-
- 2 files changed, 17 insertions(+), 2 deletions(-)
+ target/arm/cpu-features.h   |  5 +++++
+ target/arm/ptw.c            | 25 ++++++++++++++++++++++---
+ target/arm/tcg/mte_helper.c | 30 ++++++++++++++++++++++++++++++
+ 3 files changed, 57 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 2c4369cc16..71d8b419e2 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1820,7 +1820,10 @@ static inline uint64_t pauth_ptr_mask(ARMVAParameters param)
-     int bot_pac_bit = 64 - param.tsz;
-     int top_pac_bit = 64 - 8 * param.tbi;
- 
--    return MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
-+    uint64_t mask = MAKE_64BIT_MASK(bot_pac_bit, top_pac_bit - bot_pac_bit);
-+
-+    /* If mtx is enabled, second nibble is not part of PAC */
-+    return mask & ~(-(uint64_t)param.mtx & MAKE_64BIT_MASK(56, 4));
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index b683c9551a..1f09d01713 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1144,6 +1144,11 @@ static inline bool isar_feature_aa64_mte3(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64PFR1, MTE) >= 3;
  }
  
- /* Add the cpreg definitions for debug related system registers */
-diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
-index 67c0d59d9e..08dd230614 100644
---- a/target/arm/tcg/pauth_helper.c
-+++ b/target/arm/tcg/pauth_helper.c
-@@ -342,9 +342,12 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
++static inline bool isar_feature_aa64_mteperm(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEPERM) >= 1;
++}
++
+ static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
+ {
+     return FIELD_EX64_IDREG(id, ID_AA64PFR1, SME) != 0;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 8b8dc09e72..d381413ef7 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3383,7 +3383,7 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
+                                         ARMCacheAttrs s1, ARMCacheAttrs s2)
+ {
+     ARMCacheAttrs ret;
+-    bool tagged = false;
++    bool tagged, notagaccess = false;
+ 
+     assert(!s1.is_s2_format);
+     ret.is_s2_format = false;
+@@ -3393,6 +3393,18 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
+         s1.attrs = 0xff;
      }
  
-     /* Build a pointer with known good extension bits.  */
--    top_bit = 64 - 8 * param.tbi;
-+    top_bit = 64 - 8 * (param.tbi || param.mtx);
-     bot_bit = 64 - param.tsz;
-     ext_ptr = deposit64(ptr, bot_bit, top_bit - bot_bit, ext);
-+    if (param.mtx && !param.tbi) {
-+        ext_ptr = deposit64(ext_ptr, 60, 4, ext);
-+    }
- 
-     pac = pauth_computepac(env, ext_ptr, modifier, *key);
- 
-@@ -377,6 +380,11 @@ static uint64_t pauth_addpac(CPUARMState *env, uint64_t ptr, uint64_t modifier,
-     if (param.tbi) {
-         ptr &= ~MAKE_64BIT_MASK(bot_bit, 55 - bot_bit + 1);
-         pac &= MAKE_64BIT_MASK(bot_bit, 54 - bot_bit + 1);
-+    } else if (param.mtx) {
-+        ptr &= ~(MAKE_64BIT_MASK(60, 4)
-+                | MAKE_64BIT_MASK(bot_bit, 55 - bot_bit + 1));
-+        pac &= MAKE_64BIT_MASK(60, 4)
-+            | MAKE_64BIT_MASK(bot_bit, 54 - bot_bit + 1);
-     } else {
-         ptr &= MAKE_64BIT_MASK(0, bot_bit);
-         pac &= ~(MAKE_64BIT_MASK(55, 1) | MAKE_64BIT_MASK(0, bot_bit));
-@@ -424,6 +432,10 @@ static uint64_t pauth_auth(CPUARMState *env, uint64_t ptr, uint64_t modifier,
-     cmp_mask = MAKE_64BIT_MASK(bot_bit, top_bit - bot_bit);
-     cmp_mask &= ~MAKE_64BIT_MASK(55, 1);
- 
-+    if (param.mtx) {
-+        cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
++    if (hcr & HCR_FWB) {
++        if (s2.attrs >= 0xe) {
++            notagaccess = true;
++            s2.attrs = 0x7;
++        }
++    } else {
++        if (s2.attrs == 0x4) {
++            notagaccess = true;
++            s2.attrs = 0xf;
++        }
 +    }
 +
-     if (pauth_feature >= PauthFeat_2) {
-         ARMPauthFeature fault_feature =
-             is_combined ? PauthFeat_FPACCOMBINED : PauthFeat_FPAC;
+     /* Combine shareability attributes (table D4-43) */
+     if (s1.shareability == 2 || s2.shareability == 2) {
+         /* if either are outer-shareable, the result is outer-shareable */
+@@ -3424,9 +3436,16 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
+         ret.shareability = 2;
+     }
+ 
+-    /* TODO: CombineS1S2Desc does not consider transient, only WB, RWA. */
++    /*
++     * The attr encoding 0xe0 corresponds to Tagged NoTagAccess and is only
++     * valid with FEAT_MTE_PERM (otherwise RESERVED, constrained
++     * unpredictable)). The presence of this feature is checked in
++     * allocation_tag_mem_probe, where Tagged NoTagAccess has its effect. See
++     * J1.3.5.2 EncodePARAttrs.
++     * TODO: CombineS1S2Desc does not consider transient, only WB, RWA.
++     */
+     if (tagged && ret.attrs == 0xff) {
+-        ret.attrs = 0xf0;
++        ret.attrs = notagaccess ? 0xe0 : 0xf0;
+     }
+ 
+     return ret;
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index a9fb979f63..4deec80208 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -58,6 +58,27 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
+     return tag;
+ }
+ 
++#ifndef CONFIG_USER_ONLY
++/*
++ * Constructs S2 Permission Fault as described in ARM ARM "Stage 2 Memory
++ * Tagging Attributes".
++ */
++static void mte_perm_check_fail(CPUARMState *env, uint64_t dirty_ptr,
++                                uintptr_t ra, bool is_write)
++{
++    uint64_t syn;
++
++    env->exception.vaddress = dirty_ptr;
++
++    syn = syn_data_abort_no_iss(0, 0, 0, 0, 0, is_write, 0);
++
++    syn |= BIT_ULL(41); /* TagAccess is bit 41 */
++
++    raise_exception_ra(env, EXCP_DATA_ABORT, syn, 2, ra);
++    g_assert_not_reached();
++}
++#endif
++
+ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+                                   uint64_t ptr, MMUAccessType ptr_access,
+                                   int ptr_size, MMUAccessType tag_access,
+@@ -117,6 +138,15 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+     }
+     assert(!(flags & TLB_INVALID_MASK));
+ 
++    /*
++     * If the virtual page MemAttr == Tagged NoTagAccess, throw S2 permission
++     * fault (conditional on mteperm being implemented and RA != 0).
++     */
++    if (ra && cpu_isar_feature(aa64_mteperm, env_archcpu(env))
++        && full->extra.arm.pte_attrs == 0xe0) {
++        mte_perm_check_fail(env, ptr, ra, tag_access == MMU_DATA_STORE);
++    }
++
+     /* If the virtual page MemAttr != Tagged, access unchecked. */
+     if (full->extra.arm.pte_attrs != 0xf0) {
+         return NULL;
 
 -- 
 2.52.0

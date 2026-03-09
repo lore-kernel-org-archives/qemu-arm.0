@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DDBDF41811
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 16:33:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8157CF4181F
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 17:15:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzdXz-0006C3-Qb; Mon, 09 Mar 2026 12:33:36 -0400
+	id 1vzeCJ-0008Fs-EN; Mon, 09 Mar 2026 13:15:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzdXy-0006B7-LQ
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 12:33:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vzeCI-0008ET-6U
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:15:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vzdXw-00071e-BH
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 12:33:34 -0400
+ id 1vzeCF-0005dp-OR
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 13:15:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773074011;
+ s=mimecast20190719; t=1773076509;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RzsGv2nEA+RlxnGGvE+xj8vZD8g066zVUIL779XMY34=;
- b=RvI0z7mgOb3Tzah6lgTsOCnwyJ4tFByFbRrOMC5icxfSocRwWONnGKMyNh0LPNfddYtzjM
- P2AsbOmB8RDIjybxnlQ5UJqIJgAdoQsA1KYjmoTEVAMUZh7zLKCtvu8E3oKsiO2gm8Me7g
- eyS1KWQ5KJUnnE/7r37DDh+qr0E0osA=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ARoBncR5NcZVVvfWzcDuZ/QuKB+J9jQFPrimQeMzT7E=;
+ b=T2e2AJsl3af2mSagASsYxkwWjZe/MW1MvaVHH0T0B93IamHLwxn+W839V6ILbr4Kn/Hljc
+ jvHFkH8VmZE8c9IdAiW8M79L7xqBUxzGJe/OzyU8qHDOgVnIoMwcyL76aVtYYLhyZms7Wo
+ 7d9GInaA6vu1CbKpAaiw6gGR5uu3IZg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-682-DX3_759ONo2Krf-z-Uo1XQ-1; Mon, 09 Mar 2026 12:33:29 -0400
-X-MC-Unique: DX3_759ONo2Krf-z-Uo1XQ-1
-X-Mimecast-MFC-AGG-ID: DX3_759ONo2Krf-z-Uo1XQ_1773074009
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-439c12269f3so4089315f8f.3
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 09:33:29 -0700 (PDT)
+ us-mta-179--i8l-VEuPRyQUS1SbQwOqw-1; Mon, 09 Mar 2026 13:15:08 -0400
+X-MC-Unique: -i8l-VEuPRyQUS1SbQwOqw-1
+X-Mimecast-MFC-AGG-ID: -i8l-VEuPRyQUS1SbQwOqw_1773076507
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-483786a09b1so6049165e9.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 10:15:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773074008; x=1773678808;
+ d=1e100.net; s=20230601; t=1773076507; x=1773681307;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RzsGv2nEA+RlxnGGvE+xj8vZD8g066zVUIL779XMY34=;
- b=RTxsVW91W2GeUiu6/kj1bAzyCRriEpHe9MMJ4OTXDnfsrWmMZDMxZXf6bkFQPiB0iz
- Wz00EyyNMdpKII/aX+jB43TNVQ5PmJ5iqVIAbI9NF9vHXnRuCNf19c0L696vLvMWXd41
- Qd27dS2xVTcUVJQgpVSnAxY+wr8FNsNILYaEWEJwbAOpzzJ4eQiJHrvYGgnIMSF1JTHm
- 34VdGpfRB1GYjEJA5EquHjPKWjBkmmf9DLADZekPsbFPNecDevHZsGb5KudaFfZbVjn0
- +LCo4JGkuw5L49ZvzPHBv4jbavTmYABuaYLx3Z2H3N0/RRqq9iaV3jYEWfxu0bMWViPf
- sZuA==
+ bh=ARoBncR5NcZVVvfWzcDuZ/QuKB+J9jQFPrimQeMzT7E=;
+ b=anS4F9kc6KOD/cXXaEVuWqIOK2k06yjHl9DNjX6yAEYRb8s8iS+Ky04IJHnmrkz4kO
+ AvqLX+SEcfR2spNZSecExgnVwdr5qnu+YUl38bfT+LDPPZRjlEUvhEKKvKVbQzJDTCJ/
+ 97wdjg0ak120HPyOuzt43pZTp2SQ6spTWMLURH0A2DMVU60D2dPRgAMjEpObMgGxVPKw
+ q89VBdaW0K8xx0VZ2eCXh9bltp7Xe0lhYHBAyqvnSrwhJdoDEZ58ArJudMPG0tzHoIuP
+ iYFXRpOfF5QJH3XO5TjgLySRPlgSFu9wtqmNpTNiqwlnuXkUOcbZ/TxBFPDZG8s4w3v9
+ Lz/g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUHJgZ3pmyU2slEsvvTTJuOdbNiCNCGnuyyb7uE8uN9jJyQzu0YhYETvHI13NYAQZJs0iMRL0KryA==@nongnu.org
-X-Gm-Message-State: AOJu0YzaBuBo08raaVqn/CncrTeOMvAsHoEFkWnVDJhkXYBFfcOqelrd
- AGtWMIF48C4GOdjXbr2DGJ65hTkk948aWrOEH9sEa3HSQT5O6p1BghuAvxkVHQsS8zjcHNey7PI
- ZX44tkpT9OxEhH6OZzxZt84Wwq8vKDxBrzZYSiMP19yl4frWxBkJzDw==
-X-Gm-Gg: ATEYQzwSDuEsCczIdLEPBBDNWQTLnZS+2nFsoROJ3tU1FZ3YUo6PjTWbNir1oLlB6qC
- 1tittvAAybYEZDWVMjbEtOqc5MpeqhWM2xMJ6oQ5DuZk7EbmXc3wBjBOKv0OMohSPNoeaca5bug
- oZr2oXjVRbooZiTdy2y7R/6+6u/a0exIlk/a6Q7VRwtKrdnSOV8RRIfzSxLG+Ouq5doVSlb1zBC
- GO59ooQDr3YeNvVwTop+hmPkusVBeOWD9CRoYahT4E+d2dR4Re5yy/RljhqC6A5Tuec7CJPdIFe
- vOzftYBUJwmPXDZSiIHwUlWLTneY/UcQO/i/c7Mv2lxDVxT6p6sKs7C5+J8X3a81JbBEqkm8CHp
- HRsYRGkjJ3dhTxRrk6XOtFL1Gi7yPAsZsMvotzYFKcfQ+N5gK0jSuUYPNzX+om1wJ9rBX2A==
-X-Received: by 2002:a05:6000:2902:b0:439:be86:5051 with SMTP id
- ffacd0b85a97d-439da8a35e6mr20500022f8f.59.1773074008396; 
- Mon, 09 Mar 2026 09:33:28 -0700 (PDT)
-X-Received: by 2002:a05:6000:2902:b0:439:be86:5051 with SMTP id
- ffacd0b85a97d-439da8a35e6mr20499917f8f.59.1773074007740; 
- Mon, 09 Mar 2026 09:33:27 -0700 (PDT)
+ AJvYcCW9CW4ldvpXYzu7wFWCqjaXAzPzZA5Rz6Wlpvwgc2vfDCiIchMzFiU67xNuKRJmbl8fk7bvnUp06A==@nongnu.org
+X-Gm-Message-State: AOJu0YyN/nkNSZbr1WWCYR87U8K64S58/fmuerieTe3kWZ1jP9VFCkts
+ JzTvH0Apioofiq6hHWQzYcRXuhkR6QX6urWOet4hsjdJKLM1KWg1AVpEg/GePQIxT+20bcTWSmR
+ 86tXcZ6XqZImNTD+p28JbByALlP2haltZq7z83QrsgWtoMkufLLZV6g==
+X-Gm-Gg: ATEYQzz3naGqUbMLNVff3ecGh70VDKpD7LtDcO9OBb6J6HdmXfzooiC28FCUIlA0ULh
+ O8jgtSCLE3+HgB9pddc4Y2aeRuRUFcC5j6ceYnV1jAQukdztMV/lYCZHcWyMEIq/WiJQEWV49xx
+ VfIScQbEfWd6TjaPIV3GBKDO91V4KAX1qVnSBBBhfPb7Wb695HKpkqarlNw4pdsww+QkeGipPl0
+ sOach7RnS94usRTizGYYtUbBNkEK3XOAcpFgteVMxFcOC/3aUSvxZJd6OVi6IxN6yOoWOnYTVCn
+ qzsBEBzDrUbODixls5A7YlO/Q2nZPAg0MHK2+/iGbnWAygLTMpd9ie6N0r9myrm5hYdMIdus/Kb
+ t7s797sApsbvgC3EYrZUZsvkqAf1yQtNdZb62164olWHonCGUNs0cftvFHxBnxsVE8RIQyA==
+X-Received: by 2002:a05:600c:4ecd:b0:485:3c2d:d02b with SMTP id
+ 5b1f17b1804b1-4853c2dd2e5mr55765545e9.22.1773076506746; 
+ Mon, 09 Mar 2026 10:15:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:4ecd:b0:485:3c2d:d02b with SMTP id
+ 5b1f17b1804b1-4853c2dd2e5mr55764605e9.22.1773076506106; 
+ Mon, 09 Mar 2026 10:15:06 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae57c05sm25765514f8f.39.2026.03.09.09.33.26
+ 5b1f17b1804b1-48541b6f6e6sm10396465e9.10.2026.03.09.10.15.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 09:33:27 -0700 (PDT)
-Message-ID: <122fbdb7-c162-4809-89ab-d900d9845182@redhat.com>
-Date: Mon, 9 Mar 2026 17:33:25 +0100
+ Mon, 09 Mar 2026 10:15:05 -0700 (PDT)
+Message-ID: <95908024-e238-43f3-82da-43a87d54bc5b@redhat.com>
+Date: Mon, 9 Mar 2026 18:15:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 14/32] hw/arm/tegra241-cmdqv: Emulate global CMDQV
@@ -93,19 +93,19 @@ References: <20260226105056.897-1-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20260226105056.897-15-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Dcz19BHlRoBAYiGOPLqnZyx5V4aghl_Xse2zEYcBoWA_1773074009
+X-Mimecast-MFC-PROC-ID: sVdT5FQXToEwViaD46S9IKfkYFUamaBtdwl4mV_mUwQ_1773076507
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -124,7 +124,7 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+
 
 On 2/26/26 11:50 AM, Shameer Kolothum wrote:
 > From: Nicolin Chen <nicolinc@nvidia.com>
@@ -134,6 +134,10 @@ On 2/26/26 11:50 AM, Shameer Kolothum wrote:
 > behavior.
 >
 > Add read/write emulation for the global CMDQV register page
+In the spec this is named CMDQ-V Config. This 64kB page contains CMDQ-V
+Config + VI-n Configs
+
+Eric
 > (offset 0x00000), backed by a simple register cache. This includes
 > CONFIG, PARAM, STATUS, VI error and interrupt maps, CMDQ allocation
 > map and the VINTF0 related registers defined in the global CMDQV
@@ -192,57 +196,39 @@ On 2/26/26 11:50 AM, Shameer Kolothum wrote:
 > +FIELD(PARAM, CMDQV_VER, 0, 4)
 > +FIELD(PARAM, CMDQV_NUM_CMDQ_LOG2, 4, 4)
 > +FIELD(PARAM, CMDQV_NUM_VM_LOG2, 8, 4)
-this is called CMDQV_NUM_VI_LOG2 in the spec I have access to
-VI = virtual interface
-I guess there is 1-1 mapping vetween VI and VM but I would keep spec naming
 > +FIELD(PARAM, CMDQV_NUM_SID_PER_VM_LOG2, 12, 4)
-same here s/VM/VI
 > +
 > +REG32(STATUS, 0x8)
 > +FIELD(STATUS, CMDQV_ENABLED, 0, 1)
 > +
-I would add "SMMU_CMDQV_VI_ERR_MAP_0/1 definitions"
 > +#define A_VI_ERR_MAP 0x14
-_0?
 > +#define A_VI_ERR_MAP_1 0x18
 > +#define V_VI_ERR_MAP_NO_ERROR (0)
 > +#define V_VI_ERR_MAP_ERROR (1)
 > +
-same SMMU_CMDQV_VI_ING_MASK0/1
 > +#define A_VI_INT_MASK 0x1c
 > +#define A_VI_INT_MASK_1 0x20
 > +#define V_VI_INT_MASK_NOT_MASKED (0)
 > +#define V_VI_INT_MASK_MASKED (1)
 > +
-SMMU_CMDQV_CMDQ_ERR_MAP0-3
 > +#define A_CMDQ_ERR_MAP 0x24
 > +#define A_CMDQ_ERR_MAP_1 0x28
 > +#define A_CMDQ_ERR_MAP_2 0x2c
 > +#define A_CMDQ_ERR_MAP_3 0x30
 > +
 > +/* i = [0, 1] */
-
-> +#define A_CMDQ_ALLOC_MAP_(i)   
-why A_? Since you rely on the REG macros, A_ should prefix the address
-offset
-Can't we call that SMMU_CMDQV_CMDQ_ALLOC_MAP_() as it is refered to in
-the spec?
->               \
+> +#define A_CMDQ_ALLOC_MAP_(i)                 \
 > +    REG32(CMDQ_ALLOC_MAP_##i, 0x200 + i * 4) \
 > +    FIELD(CMDQ_ALLOC_MAP_##i, ALLOC, 0, 1)   \
 > +    FIELD(CMDQ_ALLOC_MAP_##i, LVCMDQ, 1, 7)  \
 > +    FIELD(CMDQ_ALLOC_MAP_##i, VIRT_INTF_INDX, 15, 6)
 > +
-Please explain why we only expose 2 of those regs among 128?
 > +A_CMDQ_ALLOC_MAP_(0)
 > +A_CMDQ_ALLOC_MAP_(1)
 > +
 > +
 > +/* i = [0, 0] */
-> +#define A_VINTFi_CONFIG(i)     
-again why don't we use the spec terminology
-SMMU_CMDQV_VINTF0_CONFIG_0
->                   \
+> +#define A_VINTFi_CONFIG(i)                       \
 > +    REG32(VINTF##i##_CONFIG, 0x1000 + i * 0x100) \
 > +    FIELD(VINTF##i##_CONFIG, ENABLE, 0, 1)       \
 > +    FIELD(VINTF##i##_CONFIG, VMID, 1, 16)        \
@@ -260,15 +246,9 @@ SMMU_CMDQV_VINTF0_CONFIG_0
 > +
 > +#define V_VINTF_STATUS_NO_ERROR (0 << 1)
 > +#define V_VINTF_STATUS_VCMDQ_EROR (1 << 1)
-Nit: the spec also contains the typo but I would rather fix it in the code
-
-Explicitly state we only expose 1 VINTF
 > +
 > +/* i = [0, 0], j = [0, 15] */
-does that mean that we can have a max 16 SIDs per VM?
-> +#define A_VINTFi_SID_MATCH_(i, j) 
-if matched vi, I would prefer vi
->                               \
+> +#define A_VINTFi_SID_MATCH_(i, j)                               \
 > +    REG32(VINTF##i##_SID_MATCH_##j, 0x1040 + j * 4 + i * 0x100) \
 > +    FIELD(VINTF##i##_SID_MATCH_##j, ENABLE, 0, 1)               \
 > +    FIELD(VINTF##i##_SID_MATCH_##j, VIRT_SID, 1, 20)
@@ -278,25 +258,21 @@ if matched vi, I would prefer vi
 > +A_VINTFi_SID_MATCH_(0, 15)
 > +
 > +/* i = [0, 0], j = [0, 15] */
-vint = 0, 16 identical register entries
 > +#define A_VINTFi_SID_REPLACE_(i, j)                               \
 > +    REG32(VINTF##i##_SID_REPLACE_##j, 0x1080 + j * 4 + i * 0x100) \
 > +    FIELD(VINTF##i##_SID_REPLACE_##j, PHYS_SID, 0, 19)
-s/19/20
 > +
 > +A_VINTFi_SID_REPLACE_(0, 0)
 > +/* Omitting [0][1~14] as not being directly called */
 > +A_VINTFi_SID_REPLACE_(0, 15)
 > +
 > +/* i = [0, 0], j = [0, 3] */
-vi = 0, 4 identical regs
 > +#define A_VINTFi_LVCMDQ_ERR_MAP_(i, j)                               \
 > +    REG32(VINTF##i##_LVCMDQ_ERR_MAP_##j, 0x10c0 + j * 4 + i * 0x100) \
 > +    FIELD(VINTF##i##_LVCMDQ_ERR_MAP_##j, LVCMDQ_ERR_MAP, 0, 32)
 > +
 > +A_VINTFi_LVCMDQ_ERR_MAP_(0, 0)
 > +/* Omitting [0][1~2] as not being directly called */
-I don't get this comment
 > +A_VINTFi_LVCMDQ_ERR_MAP_(0, 3)
 > +
 >  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
@@ -350,8 +326,6 @@ I don't get this comment
 > +        qemu_log_mask(LOG_UNIMP,
 > +                      "%s offset 0x%" PRIx64 " off limit (0x50000)\n", __func__,
 > +                      offset);
-If all those regs belong to the Global CMDQV registers page this shall
-be within the first 64KB
 > +        return 0;
 > +    }
 > +
@@ -388,7 +362,6 @@ be within the first 64KB
 > +    case A_VINTF0_CONFIG:
 > +        /* Strip off HYP_OWN setting from guest kernel */
 > +        value &= ~R_VINTF0_CONFIG_HYP_OWN_MASK;
-Can you explain why this needed?
 > +
 > +        cmdqv->vintf_config = value;
 > +        if (value & R_VINTF0_CONFIG_ENABLE_MASK) {
@@ -411,8 +384,6 @@ Can you explain why this needed?
 > +        return;
 > +    }
 >  }
-nit: if you can put write_vintf just after its read fellow, I think it
-would ease the comparison/review
 >  
 >  static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
 >                                   unsigned size)
@@ -451,16 +422,5 @@ would ease the comparison/review
 >  }
 >  
 >  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
-
-At this stage of the reading it is unclear to me why we need to expose
-all those regs to the guest. I would assume that a subset of them are
-used by the hyp and not supposed to be accessed by the guest. For
-instance the SID match/replace, ...
-
-Please could you clairfy what is absolutely needed to expose to the guest?
-
-Thanks
-
-Eric
 
 

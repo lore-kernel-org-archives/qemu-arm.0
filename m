@@ -4,97 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1D1FCA191
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Mar 2026 22:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA19FCC9A5
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 01:26:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vziyd-0007n1-1T; Mon, 09 Mar 2026 18:21:27 -0400
+	id 1vzlrD-0001j5-Ev; Mon, 09 Mar 2026 21:26:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vziyb-0007ml-IT
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:21:25 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vziyZ-0007x0-Oo
- for qemu-arm@nongnu.org; Mon, 09 Mar 2026 18:21:25 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4852fdb36a8so28251335e9.2
- for <qemu-arm@nongnu.org>; Mon, 09 Mar 2026 15:21:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773094881; x=1773699681; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3cd9xy6/nLkzQC9860/bKo4IztW7zrPtLypSBqELmFw=;
- b=dkgkBaUb8vySO9ME1PZRWkozm/qdeZWJj/SLTeBNGFssBU/rOWn8/0/UAXE7GVaxlm
- JUhtU1/Ic9VEAfHkXdq92peodVQ1daY/fdag84LGozIKCWc/UjkOOOfUTO5MUK6r+QNH
- 5Z78xNNPcmxlVizF9C/JoXG+2WMhjeJlD9UXl3+jDNLEGkCnwlo4S8uyVWX9eILPE3Yj
- xXUsm8reEbXeg3CiKEq7iNLFSGbOMXtISROa1yDk4W/leAqL95CuK6QsAou9w+jo4wNS
- 360TwvH6zJSSFr726HGwlXTbPezYpupMZdcViKQDzJkK2IZ0UwYIbAhSkZ8FM3S3kjn+
- UElg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773094881; x=1773699681;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3cd9xy6/nLkzQC9860/bKo4IztW7zrPtLypSBqELmFw=;
- b=ix+rZlkwwZDefUPMoZEDuQ498GZnH/YPB/1Eia/M8cnZ5v4h2pSd3NaCC8raP5dMa+
- 3Aq0y9aHqDklBM7GNSQnZcBh/sywP9YeRRg1ZVErkgiM2a0/gE2wksqcBnJ/+zfSWj2I
- mgwW70pL4PXfdwUOCJ3RifrJvGj9lxdO/VMSppvMi7r/N77ir17ZxRVsNIAyDEh5l518
- biR9HX1iYs/LSVMND66WSXtYxOX7BlWwvGt6mKweVzQeubRkGlg9fVqKgdF1umdbPIc7
- yIpTdnJGEnx55vtxfLMm/XWATO8U3qyoTRfe5PGCI+aG3KT6meHLhlnR/41IGDFTCfop
- eEpw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU6Xr3mLTdQmP7upB0iB/L36fUaYzW2lAVY9yaX7doTSrGOY+v55Ei/4JNLLsBzPLjvfOguMLVJtg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw4ortpSuMJEAohirSuoxuve2/uf+PyjNJF9o7SgookfJaBcb7o
- leAEw24bRDjagw39Kp7I1rJ5b2WJfyb3N0vN5KFcgO+pSE2tZjUsY4d1p7xpPMD0wik=
-X-Gm-Gg: ATEYQzzPpF4YpjYTSG+bhgQGWkT3ZQkk4dTywDUN02yrfO1kW1VyBpUnwy7ciGJEIIE
- pg5Bijig9I7Iba6AQ92c41neblNPYltTMPZtcNljcZ/3cuB70ujqVy0/I6AKe3vK9r8tu7Z0+Sq
- vXPEopnpHJwcfXFQcW88uoIK6UbtVv/nZXkzpyviEEazTgJVT2XTFkep731iOdI5uyRX42qzlwb
- +R/mqWWMg1xy4TwyIWYapRTMxTSCy9VGxp3vd2uA075qjCWuxko5SRIjHioMUex7M8qXcUn1r0g
- Hq/pwDNhzZtT4s9a2lZigUXlFvYbPGFH/ErJ96lfLYYxDVVWz1spWtks3ltAxKBEhdnUoVJ0mT7
- gpl6uP/Cry7KVdKyIP2mubQu1k1V82T9SdTpLyHpQ6k3XMnlR0VCz9kKlxzQszqOERxoS4TFepS
- rrEz8jX8WWG54cIYKMQWWQTSHk7TpM3559ZXEfiUkORfbqwl1UgPmLUY/a17P6MyMTgw==
-X-Received: by 2002:a05:600c:4e4f:b0:485:3a27:a960 with SMTP id
- 5b1f17b1804b1-4853f4214fcmr53168945e9.0.1773094881531; 
- Mon, 09 Mar 2026 15:21:21 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48541a9c293sm19648095e9.10.2026.03.09.15.21.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 15:21:20 -0700 (PDT)
-Message-ID: <a24c76d0-4106-4d49-b032-35f7f6310e69@linaro.org>
-Date: Mon, 9 Mar 2026 23:21:19 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/2] vmapple: apple-gfx: make it work on the latest
- macOS release
-Content-Language: en-US
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>, Alexander Graf <agraf@csgraf.de>
-References: <20260306145246.10274-1-mohamed@unpredictable.fr>
- <20260306145246.10274-2-mohamed@unpredictable.fr>
- <8908689a-f5c1-490e-925d-7a664093963f@rsg.ci.i.u-tokyo.ac.jp>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <8908689a-f5c1-490e-925d-7a664093963f@rsg.ci.i.u-tokyo.ac.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vzlr3-0001i1-H1
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 21:25:52 -0400
+Received: from p-west2-cluster1-host8-snip4-10.eps.apple.com ([57.103.68.103]
+ helo=outbound.mr.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vzlr0-0000q3-7K
+ for qemu-arm@nongnu.org; Mon, 09 Mar 2026 21:25:48 -0400
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-60-percent-10 (Postfix) with ESMTPS id
+ 2F74C180029C; Tue, 10 Mar 2026 01:25:42 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1773105944; x=1775697944;
+ bh=SZnb2t5+GZGj+j7twuMN3+W9nN1rysKq5qDjA0Fr8SI=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=PzVXZObKqyFv4voAjvE2gqPR0whbzk7NZEnALn6MbsdN1xc+WhDcvzYxjaORPR/sZZGSTMAgj+ieIVVj5+MmPBlnXgthrKKK53LHXZ2wFVZyWOnOzyIZ81zpJaQj9xnkwqYvPCPWDz/S4dZHRQPRoL1gipoQVVVASbGFZzcsxNrtEEMW86rAzVdvFXNFKAyll/s7kt+uABL90LHXCL42Kv+bYq9XUzdJU3qU2uQfvEoLLOPF6tlfcRT/osOOJj+K0UAqCSV8P7JkhEGPKBmZ7GhKIgjVLubWImIP0NDMB96v4nOlbExtpKl4n4DhvR7HijSOyczuxrmwPrIV/skKJw==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.152.38])
+ by p00-icloudmta-asmtp-us-west-2a-60-percent-10 (Postfix) with ESMTPSA id
+ EC2A4180014D; Tue, 10 Mar 2026 01:25:41 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH 2/2] target/arm/hvf: set 4KB IPA granule on macOS 26
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260309214906.92578-3-lucaaamaral@gmail.com>
+Date: Tue, 10 Mar 2026 02:25:29 +0100
+Cc: qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,
+ agraf@csgraf.de
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <0F44C633-16F9-4A09-A264-F376500ABBDC@unpredictable.fr>
+References: <20260309214906.92578-1-lucaaamaral@gmail.com>
+ <20260309214906.92578-3-lucaaamaral@gmail.com>
+To: Lucas Amaral <lucaaamaral@gmail.com>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Authority-Info-Out: v=2.4 cv=cbXfb3DM c=1 sm=1 tr=0 ts=69af7317
+ cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8 a=8rPa9FTpWmDybJs0ZW8A:9
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: 4YlvB7q9_d4FMRxvFVqvEkX1S8L_FOSE
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEwMDAwOSBTYWx0ZWRfXxTeCVVXn+sL8
+ duvV5laiaOjejbUpjYjJb7+b1Jp4S58buGhGLlomzyhOlu1nobBD2BOYegInaGwg25WHEYcrtA9
+ t1HVwCFwDQhVHqTuVCSaR1hcTHIIBNjr3aEVzB21u/ro5wH22UTbnGV454L0TSr0tlsO7dM53To
+ 3F/oDJF5Wx49gapDX/KPg1hTsKnHIGKEyUudxqPNLXVpGIxRq/UZxHLNdQFHZIyeltN0DiVPZQ1
+ 27LHdm2UDuqolC+LSlDqnUeuLwrDfmKqMKX6KMDg2bu3G6kSVwR2T2nbCZ3GBjxXIw5nQauTWAh
+ WjD9+kQPN8Jz7Bzq8dBz5tqGmJLwYJdB4Nj5MqwxDxpX0Y9n9C3+Lac5wtOjew=
+X-Proofpoint-ORIG-GUID: 4YlvB7q9_d4FMRxvFVqvEkX1S8L_FOSE
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-09_06,2026-03-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ bulkscore=0 malwarescore=0 lowpriorityscore=0 clxscore=1030 mlxlogscore=999
+ phishscore=0 suspectscore=0 spamscore=0 mlxscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603100009
+X-JNJ: AAAAAAABU3f1EIt+N9Oe7b3a9KnVKoau7LAzVS6Wm+6Sup4xSdroCr6H9FzUeE5HauLcken7GmGyMh04rygslr/H0IaqqDjQwpQkZ/KgqlPAyIGQypct3lRVNi6sk8c6WoGQkOKshqOxuDYiEJmGG8DA1n/4KazpveESlz4PYo1zf5pOCqoHrASNv1ov0QJr3UZIboUQrgFQQ5bBja3o7zLhkY+hEQ0dXjS354A+EbE70kU7YPF6otuOUKDXlF3fTsNHrJ174tLeA13xTFfuEWRDpWjvA+W3O1+menL4DIbHRGx3tP3YQfpsvv5fWza0EaRYlo7aW008seRNCypPbqgtNHRakv9Pa+9AmGmlUxYoi/b/e604pFyELu8qphq3Q0gcsk1Qe2UlU59/p2pBm7AcssqoiNrWr8n6eopgQnk4i+tSFRTC5GwLy5YU+AsH6IaG/lknvw2OKjvLqJO9w9pY2eHz5xvjLzSF3mmfMb3VQ981TonzZCIOs+asLBrDQWw4Uvqsvdce3n3wyHOrF0G9oeSv4KflnMYvAtEx2+FGsrGYuD/Px0gpCh0IAd/nm7kuod83w9qneoPPSePtlnI5qX9mdcn1UibAzs2yjDTMq6GGCnSpTwj+e5tQHNUyg/31/HdzJdlliA==
+Received-SPF: pass client-ip=57.103.68.103;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,111 +96,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-+Peter/Paolo
-
-On 7/3/26 04:08, Akihiko Odaki wrote:
-> On 2026/03/06 23:52, Mohamed Mediouni wrote:
->> Follow changes in memory management introduced on macOS 15.4.
->>
->> The legacy memory management API has been removed for the IOSurface 
->> mapper on that macOS version.
->>
->> Also enable process isolation for a sandboxed GPU process when on a 
->> new OS.
->>
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->>   hw/display/apple-gfx-mmio.m | 62 ++++++++++++++++++++++++++++---------
->>   hw/display/apple-gfx.h      | 18 +++++++++++
->>   hw/display/apple-gfx.m      | 43 ++++++++++++++++++++++++-
->>   3 files changed, 107 insertions(+), 16 deletions(-)
 
 
->> diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
->> index e0a765fcb1..92404d20bf 100644
->> --- a/hw/display/apple-gfx.m
->> +++ b/hw/display/apple-gfx.m
->> @@ -21,6 +21,7 @@
->>   #include "system/address-spaces.h"
->>   #include "system/dma.h"
->>   #include "migration/blocker.h"
->> +#include "system/memory.h"
->>   #include "ui/console.h"
->>   #include "apple-gfx.h"
->>   #include "trace.h"
->> @@ -596,6 +597,37 @@ void apple_gfx_common_init(Object *obj, 
->> AppleGFXState *s, const char* obj_name)
->>       /* TODO: PVG framework supports serialising device state: 
->> integrate it! */
->>   }
->> +@interface PGDeviceDescriptor (IOSurfaceMapper)
->> +@property (readwrite, nonatomic, copy, nullable) 
->> PGMemoryMapDescriptor* memoryMapDescriptor;
->> +@end
->> +
->> +bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
->> +                                  const MemoryRegion *mr_const,
->> +                                  hwaddr offset_in_region, void 
->> *opaque) {
->> +    MemoryRegion *mr = (MemoryRegion *)mr_const;
-> 
-> flatview_for_each_range() should be changed to pass non-const pointers 
-> instead.
+> On 9. Mar 2026, at 22:49, Lucas Amaral <lucaaamaral@gmail.com> wrote:
+>=20
+> macOS 26 introduces hv_vm_config_set_ipa_granule() which allows
+> configuring 4KB IPA granularity for HVF virtual machines.  This
+> enables hv_vm_map() to accept 4KB-aligned addresses, matching
+> the guest kernel's page size.
+>=20
+> Without this, virtio-gpu blob BAR offsets that are 4KB-aligned but
+> not 16KB-aligned cannot be mapped into the guest, falling back to
+> slow MMIO emulation.
+>=20
+> Gated behind MAC_OS_VERSION_26_0 compile-time and __builtin_available
+> runtime checks.  Falls back to the default 16KB granule on older
+> macOS versions.
+>=20
+> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+> ---
+> target/arm/hvf/hvf.c | 14 ++++++++++++++
+> 1 file changed, 14 insertions(+)
+>=20
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 87ddcdb..b71a98a 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -960,6 +960,20 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, =
+uint32_t pa_range)
+>     }
+>     chosen_ipa_bit_size =3D pa_range;
+>=20
+> +#ifdef MAC_OS_VERSION_26_0
+> +#if MAC_OS_X_VERSION_MAX_ALLOWED >=3D MAC_OS_VERSION_26_0
+> +    if (__builtin_available(macOS 26, *)) {
+> +        ret =3D hv_vm_config_set_ipa_granule(config, =
+HV_IPA_GRANULE_4KB);
+> +        if (ret !=3D HV_SUCCESS) {
+> +            error_report("HVF: failed to set 4KB IPA granule: %s",
+> +                         hvf_return_string(ret));
+> +            goto cleanup;
+> +        }
+> +        hvf_set_map_granule(4096);
+> +    }
+> +#endif
+> +#endif
 
-flatview_for_each_range() was added in commit fb5ef4eeecd ("memory: Add
-FlatView foreach function") with memory fuzzing in mind, so const MR was
-the correct choice then IMO.
+Hello,
 
-FlatView is more of an internal memory API, I'm not sure it should be
-used by hw/ layer.
+Not really happy about having this as a default=E2=80=A6 I see a double =
+digit perf impact on compilation workloads here.
+So having this as an optional, off by default option sounds best.
 
-$ git grep -w flatview_for_each_range
-hw/core/loader.c:1656:    flatview_for_each_range(fv, find_rom_cb, &cbdata);
-semihosting/arm-compat-semi.c:158:    flatview_for_each_range(fv, 
-find_ram_cb, &info);
-tests/qtest/fuzz/generic_fuzz.c:310: 
-flatview_for_each_range(view, get_io_address_cb , &cb_info);
+Thank you,
+-Mohamed
+> +
+>     ret =3D hv_vm_create(config);
+>=20
+> cleanup:
+> --=20
+> 2.52.0
+>=20
+>=20
 
-Semihosting is special, as it the ROM loader helper, and fuzzing code.
-
-
-We provide MemoryRegionSection, MemoryListener and RamDiscardListener
-APIs. Maybe one of them is more appropriate here? See:
-
-  * A #RamDiscardManager coordinates which parts of specific RAM
-  * #MemoryRegion regions are currently populated to be used/accessed
-  * by the VM, notifying after parts were discarded (freeing up memory)
-  * and before parts will be populated (consuming memory), to be used/
-  * accessed by the VM.
-
-Could this be what this code needs to do?
-
-> Regards,
-> Akihiko Odaki
-> 
->> +    PGGuestPhysicalRange_t range;
->> +    PGMemoryMapDescriptor *memory_map_descriptor = opaque;
->> +    if (memory_access_is_direct(mr, true, MEMTXATTRS_UNSPECIFIED)) {
->> +        range.physicalAddress = start;
->> +        range.physicalLength = len;
->> +        range.hostAddress = memory_region_get_ram_ptr(mr);
->> +        [memory_map_descriptor addRange:range];
->> +        memory_region_ref(mr);
->> +    }
->> +    return false;
->> +}
->> +
->> +static void apple_gfx_register_memory(AppleGFXState *s,
->> +                                                     
->> PGDeviceDescriptor *desc)
->> +{
->> +    PGMemoryMapDescriptor* memoryMapDescriptor = 
->> [PGMemoryMapDescriptor new];
->> +
->> +    FlatView* fv = address_space_to_flatview(&address_space_memory);
->> +    flatview_for_each_range(fv, apple_gfx_register_memory_cb, 
->> memoryMapDescriptor);
->> +
->> +    desc.memoryMapDescriptor = memoryMapDescriptor;
->> +}
 

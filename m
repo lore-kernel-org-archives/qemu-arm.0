@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C436EFCC9D1
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 07:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5405DFCC9D1
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 07:07:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzr9j-0000PR-Su; Tue, 10 Mar 2026 03:05:27 -0400
+	id 1vzrBE-0001pD-Jg; Tue, 10 Mar 2026 03:07:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzr9i-0000PA-Eh
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:05:26 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzrBD-0001oi-9D
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:06:59 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzr9g-0000Vc-0Z
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:05:26 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzrBB-0001FC-KJ
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:06:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773126322;
+ s=mimecast20190719; t=1773126416;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=dOWsMxDffEU5sonTHWg6k8c6XF/rLnGiTdq6/9hDcI4=;
- b=dxSo3TJ9oBOI8GAwFBu+0/PsBwS0YXTSjP9MtPLqMzL/azUsrmJa0j9PsJN2GjrcVmWE3v
- VulAJM6vd1zotkqBu/wDb8SIEAXbWEAz63Hxt4pDsAMiWaJyK3OUyAmW3vAYQkA8RXu9ys
- 4yMUxliRaH/CNXb5/qhJtketPpvCdIM=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=K71luOn2wKaYkqvOibD8RcVwEiYVYuDg9flxuFRt1+c=;
+ b=JYBebZUEZXE4xgwZY+qIxpvv+JiJKohRSF+RPnA3USWxO1lJ3VLTaBdJPZW681gtJo/8M7
+ hgovb/0LvLb4+xQbac++dOPF4eQ4fWf8G33VCNuI6eklJiwvLMhi4eLiDSp74Y/IHA8XzU
+ oVwVtnyNii7hc8TCSdfkNXUY5CsjgAI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-483-HKQBG9fTPK2O7aF3QzAIbw-1; Tue,
- 10 Mar 2026 03:05:19 -0400
-X-MC-Unique: HKQBG9fTPK2O7aF3QzAIbw-1
-X-Mimecast-MFC-AGG-ID: HKQBG9fTPK2O7aF3QzAIbw_1773126317
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-395-mf0IAocWMLOVFzsDu1HtJA-1; Tue,
+ 10 Mar 2026 03:06:53 -0400
+X-MC-Unique: mf0IAocWMLOVFzsDu1HtJA-1
+X-Mimecast-MFC-AGG-ID: mf0IAocWMLOVFzsDu1HtJA_1773126412
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 535CE19560B7; Tue, 10 Mar 2026 07:05:17 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C01D81956052; Tue, 10 Mar 2026 07:06:51 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.12])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3AC4F30002D2; Tue, 10 Mar 2026 07:05:16 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 165971800759; Tue, 10 Mar 2026 07:06:51 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 75DC221E681B; Tue, 10 Mar 2026 08:05:13 +0100 (CET)
+ id 5ACD021E681B; Tue, 10 Mar 2026 08:06:48 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Nathan Chen <nathanc@nvidia.com>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Yi Liu
@@ -57,19 +57,19 @@ Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Yi Liu
  =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Alex Williamson
  <alex@shazbot.org>,
  =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,  Eric Blake
- <eblake@redhat.com>
-Subject: Re: [RFC PATCH 2/8] hw/arm/smmuv3-accel: Introduce _AUTO support
- for ATS
-In-Reply-To: <20260309192119.870186-3-nathanc@nvidia.com> (Nathan Chen's
- message of "Mon, 9 Mar 2026 12:21:13 -0700")
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [RFC PATCH 4/8] hw/arm/smmuv3-accel: Introduce _AUTO support
+ for RIL
+In-Reply-To: <20260309192119.870186-5-nathanc@nvidia.com> (Nathan Chen's
+ message of "Mon, 9 Mar 2026 12:21:15 -0700")
 References: <20260309192119.870186-1-nathanc@nvidia.com>
- <20260309192119.870186-3-nathanc@nvidia.com>
-Date: Tue, 10 Mar 2026 08:05:13 +0100
-Message-ID: <87pl5cnp06.fsf@pond.sub.org>
+ <20260309192119.870186-5-nathanc@nvidia.com>
+Date: Tue, 10 Mar 2026 08:06:48 +0100
+Message-ID: <87ldg0noxj.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: sF6pLG9bxLhJOOwqIZX5TeGpQxKAjoGGx2kuxoo9iEg_1773126317
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: Q3LuY2Dq5f5YPLqhXVKaz7r0AQ9_C5I2XXCSjWptU5I_1773126412
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
@@ -101,153 +101,106 @@ Nathan Chen <nathanc@nvidia.com> writes:
 
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Allow accelerated SMMUv3 Address Translation Services support property
-> to be derived from host IOMMU capabilities. Derive host values using
-> IOMMU_GET_HW_INFO, retrieving ATS capability from IDR0.
+> Allow accelerated SMMUv3 Range Invalidation support property to be
+> derived from host IOMMU capabilities. Derive host values using
+> IOMMU_GET_HW_INFO, retrieving RIL capability from IDR3.
 >
-> Set the default value of ATS to auto. The default for ATS support used
-> to be set to off, but we change it to match what the host IOMMU
-> properties report.
->
-> Add a "ats-enabled" read-only property for smmuv3 to address an
-> expected bool for the "ats" property in iort_smmuv3_devices().
+> Set the default value of RIL to auto. The default for RIL support used
+> to be set to on, but we change it to match what the host IOMMU
+> properties report so that users do not have to introspect host IDR3 for
+> Range Invalidation support. The RIL support needs to be compatible with
+> host SMMUv3 if accelerated mode is enabled.
 >
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/arm/smmuv3-accel.c    | 25 +++++++++++++++++++++++--
->  hw/arm/smmuv3.c          | 12 ++++++++++--
->  hw/arm/virt-acpi-build.c |  2 +-
->  include/hw/arm/smmuv3.h  |  2 +-
->  4 files changed, 35 insertions(+), 6 deletions(-)
+>  hw/arm/smmuv3-accel.c   | 20 +++++++++++++++++---
+>  hw/arm/smmuv3.c         |  4 ++--
+>  include/hw/arm/smmuv3.h |  2 +-
+>  3 files changed, 20 insertions(+), 6 deletions(-)
 >
 > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 617629bacd..8fec335557 100644
+> index 8fec335557..02e3f7a9f3 100644
 > --- a/hw/arm/smmuv3-accel.c
 > +++ b/hw/arm/smmuv3-accel.c
-> @@ -52,6 +52,12 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s, PCIDevice *pdev,
->          return;
+> @@ -58,6 +58,12 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s, PCIDevice *pdev,
+>                                 FIELD_EX32(info->idr[0], IDR0, ATS));
 >      }
 >  
-> +    /* Update ATS if auto from info */
-> +    if (s->ats == ON_OFF_AUTO_AUTO) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS,
-> +                               FIELD_EX32(info->idr[0], IDR0, ATS));
+> +    /* Update RIL if auto from info */
+> +    if (s->ril == ON_OFF_AUTO_AUTO) {
+> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL,
+> +                               FIELD_EX32(info->idr[3], IDR3, RIL));
 > +    }
 > +
 >      accel->auto_finalised = true;
 >  }
 >  
-> @@ -124,6 +130,13 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->                     smmuv3_oas_bits(FIELD_EX32(s->idr[5], IDR5, OAS)));
->          return false;
+> @@ -854,8 +860,15 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
+>          return;
 >      }
-> +    /* Check ATS value opted is compatible with Host SMMUv3 */
-> +    if (FIELD_EX32(info->idr[0], IDR0, ATS) <
-> +                FIELD_EX32(s->idr[0], IDR0, ATS)) {
-> +        error_setg(errp, "Host SMMUv3 doesn't support Address Translation"
-> +                   " Services");
-> +        return false;
+>  
+> -    /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
+> -    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
+> +    /*
+> +     * Only override RIL if user explicitly set ON or OFF.
+> +     * AUTO will be resolved later when host info is available.
+> +     */
+> +    if (s->ril == ON_OFF_AUTO_ON) {
+> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
+> +    } else if (s->ril == ON_OFF_AUTO_OFF) {
+> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 0);
 > +    }
 >  
->      /* QEMU SMMUv3 supports GRAN4K/GRAN16K/GRAN64K translation granules */
->      if (FIELD_EX32(info->idr[5], IDR5, GRAN4K) !=
-> @@ -844,8 +857,12 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->      /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
->  
-> -    /* QEMU SMMUv3 has no ATS. Advertise ATS if opt-in by property */
-> -    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, s->ats);
-> +    /* Only override ATS if user explicitly set ON or OFF */
-> +    if (s->ats == ON_OFF_AUTO_ON) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 1);
-> +    } else if (s->ats == ON_OFF_AUTO_OFF) {
-> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 0);
-> +    }
->  
->      /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
->      if (s->oas == SMMU_OAS_48BIT) {
-> @@ -923,4 +940,8 @@ void smmuv3_accel_init(SMMUv3State *s)
->      s->s_accel = g_new0(SMMUv3AccelState, 1);
+>      /* Only override ATS if user explicitly set ON or OFF */
+>      if (s->ats == ON_OFF_AUTO_ON) {
+> @@ -941,7 +954,8 @@ void smmuv3_accel_init(SMMUv3State *s)
 >      bs->iommu_ops = &smmuv3_accel_ops;
 >      smmuv3_accel_as_init(s);
-> +
-> +    if (s->ats == ON_OFF_AUTO_AUTO) {
-> +        s->s_accel->auto_mode = true;
-> +    }
+>  
+> -    if (s->ats == ON_OFF_AUTO_AUTO) {
+> +    if (s->ats == ON_OFF_AUTO_AUTO ||
+> +        s->ril == ON_OFF_AUTO_AUTO) {
+>          s->s_accel->auto_mode = true;
+>      }
 >  }
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 068108e49b..197ba7c77b 100644
+> index 197ba7c77b..7791e5294d 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -317,6 +317,12 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
->      smmuv3_accel_idr_override(s);
->  }
+> @@ -1973,7 +1973,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>  #endif
 >  
-> +static bool get_ats_enabled(Object *obj, Error **errp)
-> +{
-> +    SMMUv3State *s = ARM_SMMUV3(obj);
-> +    return FIELD_EX32(s->idr[0], IDR0, ATS);
-> +}
-> +
->  static void smmuv3_reset(SMMUv3State *s)
->  {
->      s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
-> @@ -1971,7 +1977,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>      if (!s->accel) {
+> -        if (!s->ril) {
+> +        if (s->ril == ON_OFF_AUTO_OFF) {
 >              error_setg(errp, "ril can only be disabled if accel=on");
 >              return false;
 >          }
-> -        if (s->ats) {
-> +        if (s->ats == ON_OFF_AUTO_ON) {
->              error_setg(errp, "ats can only be enabled if accel=on");
->              return false;
->          }
-> @@ -2128,7 +2134,7 @@ static const Property smmuv3_properties[] = {
+> @@ -2133,7 +2133,7 @@ static const Property smmuv3_properties[] = {
+>      /* GPA of MSI doorbell, for SMMUv3 accel use. */
 >      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
 >      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
-> -    DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
-> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
+> -    DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
+> +    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_AUTO),
 
-Is property "ats" accessible via QMP or JSON command line?  If yes, this
+Is property "ril" accessible via QMP or JSON command line?  If yes, this
 is an incompatible change: JSON values false and true no longer work.
 
+>      DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
 >      DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
 >      DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
->  };
-> @@ -2153,6 +2159,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->      dc->hotpluggable = false;
->      dc->user_creatable = true;
->  
-> +    object_class_property_add_bool(klass, "ats-enabled", get_ats_enabled, NULL);
-> +
->      object_class_property_set_description(klass, "accel",
->          "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
->          "configured in nested mode for vfio-pci dev assignment");
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 719d2f994e..6c77fc5f6a 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -402,7 +402,7 @@ static int iort_smmuv3_devices(Object *obj, void *opaque)
->  
->      bus = PCI_BUS(object_property_get_link(obj, "primary-bus", &error_abort));
->      sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
-> -    sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
-> +    sdev.ats = object_property_get_bool(obj, "ats-enabled", &error_abort);
->      pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
->      sbdev = SYS_BUS_DEVICE(obj);
->      sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
 > diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 26b2fc42fd..2ca49ded36 100644
+> index 2ca49ded36..9124bfe751 100644
 > --- a/include/hw/arm/smmuv3.h
 > +++ b/include/hw/arm/smmuv3.h
-> @@ -70,7 +70,7 @@ struct SMMUv3State {
+> @@ -69,7 +69,7 @@ struct SMMUv3State {
+>      struct SMMUv3AccelState *s_accel;
 >      uint64_t msi_gpa;
 >      Error *migration_blocker;
->      bool ril;
-> -    bool ats;
-> +    OnOffAuto ats;
+> -    bool ril;
+> +    OnOffAuto ril;
+>      OnOffAuto ats;
 >      uint8_t oas;
 >      uint8_t ssidsize;
->  };
 
 

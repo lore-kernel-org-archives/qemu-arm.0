@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 114D1FCC9D2
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 06:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A5F7FCC9D1
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 07:01:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzr1B-0006OO-JV; Tue, 10 Mar 2026 02:56:38 -0400
+	id 1vzr5S-0007r1-3E; Tue, 10 Mar 2026 03:01:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vzr18-0006O1-QI; Tue, 10 Mar 2026 02:56:34 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzr5Q-0007qg-3r
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:01:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vzr15-0007lb-22; Tue, 10 Mar 2026 02:56:34 -0400
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62A6tgM8005150
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 10 Mar 2026 15:55:42 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=S5rwXypB1d0YFjviafYwvyK0VFPZA5qO6P5jHyYDsoU=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1773125743; v=1;
- b=gamuXnY0j95DXP0LwCzY3VKffcu/2DbZvIcbJ4pCLckIoLb0MHhyj8e2+lDLDH2H
- 45cjK0kEWUB0TJIcZwER6mbpzXvWgke3R+WqaSarVyFnr/kH9vKLNYA3yE3ql9IM
- AZ8b+gJILrNqdygAQoJWS6n+cQjHAkzbwz5gn+Umprzd0Xczo5b/j3UgUVylcwbh
- Y0O0SArdI5WPYUFKVkbWRGiLt0O4B0HknuQQXWZhxSlKA8pfz58qaa/k/3Hvf4G8
- BPJHwR81LJqJsPKmAvZm1pYv7S3y/47QCIQh8ORAN8TjTAbDU7EYgIhA0qiKRpO6
- SyaNWLPU8tUhpgIqzOzMxg==
-Message-ID: <f94bebf5-a452-46cf-ad46-acb71c619917@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 10 Mar 2026 15:55:41 +0900
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vzr5L-0008MJ-Rh
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 03:00:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773126050;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=LlgN/BS5FvGEHxaqk6DduvK16zZTLoOwg7OzhAnmbgM=;
+ b=JvGcx7e8E6rWFjoTgyvLjkuO3ldmBt6yLmeij2EQCwra0jzo3qneXILyK+x906vKIDl8N9
+ 8eUxbADGIjnXBoiRygAg2ybMSNZLN5zVxZZHYQ3roEH1v1YadsBnaJYFlw/uOEdC9eI6P1
+ +EwaP8IN9anXfyskXF1hVmOopDtcx9Q=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-QQ3DniiLP1ysgPfcqq3pIQ-1; Tue,
+ 10 Mar 2026 03:00:46 -0400
+X-MC-Unique: QQ3DniiLP1ysgPfcqq3pIQ-1
+X-Mimecast-MFC-AGG-ID: QQ3DniiLP1ysgPfcqq3pIQ_1773126045
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 633221956095; Tue, 10 Mar 2026 07:00:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.12])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2B6E31800759; Tue, 10 Mar 2026 07:00:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8933921E6614; Tue, 10 Mar 2026 08:00:40 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Nathan Chen <nathanc@nvidia.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Yi Liu
+ <yi.l.liu@intel.com>,  Eric Auger <eric.auger@redhat.com>,  Zhenzhong Duan
+ <zhenzhong.duan@intel.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,  "Michael S . Tsirkin"
+ <mst@redhat.com>,  Igor Mammedov <imammedo@redhat.com>,  Ani Sinha
+ <anisinha@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel P .
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Alex Williamson
+ <alex@shazbot.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,  Eric Blake
+ <eblake@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>
+Subject: Re: [RFC PATCH 1/8] hw/arm/smmuv3-accel: Add helper for resolving
+ auto parameters
+In-Reply-To: <20260309192119.870186-2-nathanc@nvidia.com> (Nathan Chen's
+ message of "Mon, 9 Mar 2026 12:21:12 -0700")
+References: <20260309192119.870186-1-nathanc@nvidia.com>
+ <20260309192119.870186-2-nathanc@nvidia.com>
+Date: Tue, 10 Mar 2026 08:00:40 +0100
+Message-ID: <87tsuonp7r.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/2] vmapple: apple-gfx: make it work on the latest
- macOS release
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexander Bulekov <alxndr@bu.edu>
-References: <20260306145246.10274-1-mohamed@unpredictable.fr>
- <20260306145246.10274-2-mohamed@unpredictable.fr>
- <8908689a-f5c1-490e-925d-7a664093963f@rsg.ci.i.u-tokyo.ac.jp>
- <a24c76d0-4106-4d49-b032-35f7f6310e69@linaro.org>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <a24c76d0-4106-4d49-b032-35f7f6310e69@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: 0
-X-Spam_score: 0.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: doOtHxJ01x7lHtZUY3ovu5zaxmXLqyLCRGydEUZj9rg_1773126045
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
 X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,122 +97,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/03/10 7:21, Philippe Mathieu-Daudé wrote:
-> +Peter/Paolo
-> 
-> On 7/3/26 04:08, Akihiko Odaki wrote:
->> On 2026/03/06 23:52, Mohamed Mediouni wrote:
->>> Follow changes in memory management introduced on macOS 15.4.
->>>
->>> The legacy memory management API has been removed for the IOSurface 
->>> mapper on that macOS version.
->>>
->>> Also enable process isolation for a sandboxed GPU process when on a 
->>> new OS.
->>>
->>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->>> ---
->>>   hw/display/apple-gfx-mmio.m | 62 ++++++++++++++++++++++++++++---------
->>>   hw/display/apple-gfx.h      | 18 +++++++++++
->>>   hw/display/apple-gfx.m      | 43 ++++++++++++++++++++++++-
->>>   3 files changed, 107 insertions(+), 16 deletions(-)
-> 
-> 
->>> diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
->>> index e0a765fcb1..92404d20bf 100644
->>> --- a/hw/display/apple-gfx.m
->>> +++ b/hw/display/apple-gfx.m
->>> @@ -21,6 +21,7 @@
->>>   #include "system/address-spaces.h"
->>>   #include "system/dma.h"
->>>   #include "migration/blocker.h"
->>> +#include "system/memory.h"
->>>   #include "ui/console.h"
->>>   #include "apple-gfx.h"
->>>   #include "trace.h"
->>> @@ -596,6 +597,37 @@ void apple_gfx_common_init(Object *obj, 
->>> AppleGFXState *s, const char* obj_name)
->>>       /* TODO: PVG framework supports serialising device state: 
->>> integrate it! */
->>>   }
->>> +@interface PGDeviceDescriptor (IOSurfaceMapper)
->>> +@property (readwrite, nonatomic, copy, nullable) 
->>> PGMemoryMapDescriptor* memoryMapDescriptor;
->>> +@end
->>> +
->>> +bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
->>> +                                  const MemoryRegion *mr_const,
->>> +                                  hwaddr offset_in_region, void 
->>> *opaque) {
->>> +    MemoryRegion *mr = (MemoryRegion *)mr_const;
->>
->> flatview_for_each_range() should be changed to pass non-const pointers 
->> instead.
-> 
-> flatview_for_each_range() was added in commit fb5ef4eeecd ("memory: Add
-> FlatView foreach function") with memory fuzzing in mind, so const MR was
-> the correct choice then IMO.
-> 
-> FlatView is more of an internal memory API, I'm not sure it should be
-> used by hw/ layer.
-> 
-> $ git grep -w flatview_for_each_range
-> hw/core/loader.c:1656:    flatview_for_each_range(fv, find_rom_cb, 
-> &cbdata);
-> semihosting/arm-compat-semi.c:158:    flatview_for_each_range(fv, 
-> find_ram_cb, &info);
-> tests/qtest/fuzz/generic_fuzz.c:310: flatview_for_each_range(view, 
-> get_io_address_cb , &cb_info);
-> 
-> Semihosting is special, as it the ROM loader helper, and fuzzing code.
-> 
-> 
-> We provide MemoryRegionSection, MemoryListener and RamDiscardListener
-> APIs. Maybe one of them is more appropriate here? See:
-> 
->   * A #RamDiscardManager coordinates which parts of specific RAM
->   * #MemoryRegion regions are currently populated to be used/accessed
->   * by the VM, notifying after parts were discarded (freeing up memory)
->   * and before parts will be populated (consuming memory), to be used/
->   * accessed by the VM.
-> 
-> Could this be what this code needs to do?
+Nathan Chen <nathanc@nvidia.com> writes:
 
-The problem here is that the reverse-engineered interface is 
-insufficient to keep the memory map synchronized so it can only populate 
-the memory map during initialization. flatview_for_each_range() fits for 
-this purpose.
+> From: Nathan Chen <nathanc@nvidia.com>
+>
+> Introduce smmuv3_accel_auto_finalise() to resolve properties
+> that are set to 'auto' for accelerated SMMUv3. This helper
+> function allows properties such as ATS, RIL, SSIDSIZE, and OAS
+> support to be resolved from host IOMMU values, while avoiding
+> triggering auto-resolved values for hot-plugged devices.
+>
+> Auto mode requires at least one cold-plugged device to retrieve
+> and finalise these properties, and we fail boot if that is not
+> the case.
+>
+> Subsequent patches will make use of this helper to set the
+> values when we convert the values to OnOffAuto. New auto_mode
+> and auto_finalised bool members are added to SMMUv3AccelState.
+> smmuv3_accel_init() will set auto_mode to true when 'auto' is
+> detected for the accel SMMUv3 properties.
+> smmuv3_accel_auto_finalise() will set auto_finalised to true
+> after all 'auto' properties are resolved, and subsequent
+> calls to this function will return early if auto_finalised is
+> set to true.
+>
+> Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+> ---
+>  hw/arm/smmuv3-accel.c | 38 +++++++++++++++++++++++++++++++++-----
+>  hw/arm/smmuv3-accel.h |  2 ++
+>  2 files changed, 35 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 17306cd04b..617629bacd 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -35,11 +35,34 @@ static int smmuv3_oas_bits(uint32_t oas)
+>      return map[oas];
+>  }
+>  
+> +static void smmuv3_accel_auto_finalise(SMMUv3State *s, PCIDevice *pdev,
+> +                                       struct iommu_hw_info_arm_smmuv3 *info) {
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +
+> +    /* Return if no auto for any or finalised already */
+> +    if (!accel->auto_mode || accel->auto_finalised) {
+> +        return;
+> +    }
+> +
+> +    /* We can't update if device is hotplugged */
+> +    if (DEVICE(pdev)->hotplugged) {
+> +        warn_report("arm-smmuv3: 'auto' feature property detected, but host "
+> +                    "value cannot be applied for hot-plugged device; using "
+> +                    "existing value");
 
-Ideally the interface may be reverse-engineered more thoroughly to 
-synchronize the memory map at runtime but that needs more work.
+Why is this warning useful?
 
-> 
->> Regards,
->> Akihiko Odaki
->>
->>> +    PGGuestPhysicalRange_t range;
->>> +    PGMemoryMapDescriptor *memory_map_descriptor = opaque;
->>> +    if (memory_access_is_direct(mr, true, MEMTXATTRS_UNSPECIFIED)) {
->>> +        range.physicalAddress = start;
->>> +        range.physicalLength = len;
->>> +        range.hostAddress = memory_region_get_ram_ptr(mr);
->>> +        [memory_map_descriptor addRange:range];
->>> +        memory_region_ref(mr);
->>> +    }
->>> +    return false;
->>> +}
->>> +
->>> +static void apple_gfx_register_memory(AppleGFXState *s,
->>> + PGDeviceDescriptor *desc)
->>> +{
->>> +    PGMemoryMapDescriptor* memoryMapDescriptor = 
->>> [PGMemoryMapDescriptor new];
->>> +
->>> +    FlatView* fv = address_space_to_flatview(&address_space_memory);
->>> +    flatview_for_each_range(fv, apple_gfx_register_memory_cb, 
->>> memoryMapDescriptor);
->>> +
->>> +    desc.memoryMapDescriptor = memoryMapDescriptor;
->>> +}
+Does @auto's meaning depend on whether the device is cold- or
+hot-plugged?
+
+> +        return;
+> +    }
+> +
+> +    accel->auto_finalised = true;
+> +}
+> +
+>  static bool
+>  smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+>                                   struct iommu_hw_info_arm_smmuv3 *info,
+> +                                 PCIDevice *pdev,
+>                                   Error **errp)
+>  {
+> +    smmuv3_accel_auto_finalise(s, pdev, info);
+> +
+>      /* QEMU SMMUv3 supports both linear and 2-level stream tables */
+>      if (FIELD_EX32(info->idr[0], IDR0, STLEVEL) !=
+>                  FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
+> @@ -124,7 +147,7 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+>  
+>  static bool
+>  smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+> -                           Error **errp)
+> +                           PCIDevice *pdev, Error **errp)
+>  {
+>      struct iommu_hw_info_arm_smmuv3 info;
+>      uint32_t data_type;
+> @@ -142,7 +165,7 @@ smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>          return false;
+>      }
+>  
+> -    if (!smmuv3_accel_check_hw_compatible(s, &info, errp)) {
+> +    if (!smmuv3_accel_check_hw_compatible(s, &info, pdev, errp)) {
+>          return false;
+>      }
+>      return true;
+> @@ -595,6 +618,7 @@ static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
+>      SMMUv3State *s = ARM_SMMUV3(bs);
+>      SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
+>      SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
+> +    PCIDevice *pdev = pci_find_device(bus, pci_bus_num(bus), devfn);
+>  
+>      if (!idev) {
+>          return true;
+> @@ -613,7 +637,7 @@ static bool smmuv3_accel_set_iommu_device(PCIBus *bus, void *opaque, int devfn,
+>       * Check the host SMMUv3 associated with the dev is compatible with the
+>       * QEMU SMMUv3 accel.
+>       */
+> -    if (!smmuv3_accel_hw_compatible(s, idev, errp)) {
+> +    if (!smmuv3_accel_hw_compatible(s, idev, pdev, errp)) {
+>          return false;
+>      }
+>  
+> @@ -867,8 +891,12 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
+>  
+>  void smmuv3_accel_reset(SMMUv3State *s)
+>  {
+> -     /* Attach a HWPT based on GBPA reset value */
+> -     smmuv3_accel_attach_gbpa_hwpt(s, NULL);
+> +    if (s->s_accel && s->s_accel->auto_mode && !s->s_accel->auto_finalised) {
+> +        error_report("AUTO mode specified but properties not finalised.");
+> +        exit(1);
+
+How can we get here?
+
+> +    }
+> +    /* Attach a HWPT based on GBPA reset value */
+> +    smmuv3_accel_attach_gbpa_hwpt(s, NULL);
+>  }
+>  
+>  static void smmuv3_accel_as_init(SMMUv3State *s)
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index dba6c71de5..3c1cd55714 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -26,6 +26,8 @@ typedef struct SMMUv3AccelState {
+>      uint32_t bypass_hwpt_id;
+>      uint32_t abort_hwpt_id;
+>      QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+> +    bool auto_mode;
+> +    bool auto_finalised;
+>  } SMMUv3AccelState;
+>  
+>  typedef struct SMMUS1Hwpt {
 
 

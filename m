@@ -4,98 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C537AFD2D76
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 13:07:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F96FEB106E
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 15:16:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzwnW-0005hA-VU; Tue, 10 Mar 2026 09:06:55 -0400
+	id 1vzyns-00085G-1j; Tue, 10 Mar 2026 11:15:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzwnV-0005gS-1D
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 09:06:53 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vzynk-0007PG-FM
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:15:16 -0400
 Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vzwnT-0006so-3X
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 09:06:52 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vzyng-0000TU-2X
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:15:15 -0400
 Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-485445e80bdso5367405e9.0
- for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 06:06:50 -0700 (PDT)
+ 5b1f17b1804b1-483487335c2so109591615e9.2
+ for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 08:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773148009; x=1773752809; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wLNOPGKOFzZfNCLQVbiRm7ZxcyMu7lA7ftQG/58+jic=;
- b=CCt18sfBhzqUYZkFF2+J8NEcU9jIK/LQRGwzDBG2hlZP0gy7/6lih3yM8YgTi1Yeqx
- 3KmpXOV4oYsgKiHWPsROyRy4TXChHALoyAUR5WV5tRC/CDBC7h2cZ5b1R58nhqjByG7k
- 8jybvMvltPmUUr3hFAr3I/XDo7R7iOxC6OOAF4GegieyXyArsFLSFjznSR+lCQicOeRC
- gjT4T7/r2Y7dp0o/vp92MhOCK9omE8RNs27o6hMTHyfPWn8WyraeKbACziG50azgkU7F
- 2qW3GuU+Ev/edAPpUjow1TQhADutk78NkRee1fiNXwR2jaQNQz2YT39/6NU5ksVyk9Xm
- ZrtA==
+ d=linaro.org; s=google; t=1773155709; x=1773760509; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JBO254OXcyxuexxiSJRAkJvpBHGqkPF+Kc3tWsQuVWg=;
+ b=xj+xGz9cGmPm+Ql+lFFAJWkX8JTg2JASe6YwfgI1NrcwXFBPG+NBhU6bPlA7ogoeLb
+ fgfNTgsEC5NXzM6Lvf+POxJIk2mwEKncWCF+lIJGRmmaU2hCbgbc3kaGXhYmHXlFRoA+
+ gJz0uviSGFp0nuLIQ7OGKtOLg5Im5XZ/B59vwYXm9SJhgAkuAfVBmubHSHm+A/t51vj+
+ gRCa7fTHkMbwxVqSiKjAf6hPTGEU8xrI3zNPmA24Ih1ODXHVQT/9ZZFi7+EMHCiefHAE
+ I3rDvWqWe4MrQpoSBa502l3NCGesN/3uLULncwpsGmKYhLuOE/J7+YX365yL7kXn0Lmg
+ O67g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773148009; x=1773752809;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wLNOPGKOFzZfNCLQVbiRm7ZxcyMu7lA7ftQG/58+jic=;
- b=P26YBPZqIC38dUqpgPs/CsDivh5ubx1RRvsW5FFuWakBkQL/rJTW8VwFKfOj6ulAVd
- hYX8yuOFlRj7QiEHFgO1e8Dx/ERBJGZyKtb8j0ZVO65xEgHIgm9xdzeohd+iMpVIy5tx
- qdIAv6gwDQyARomlRWkxw+MXaPzOmVQz6+2cZ7ks5lKZODCkSAor8qe3rCiMRqDM5d4y
- TRw+ig1+N5p1YHwahFxyMu3FJSnaDORdxM4xbSJoAEeAjGwwO04Qp3eymZQoyB3W5+VN
- C7Z72mcnM6A6JvPX5AAb0g+rrNe2htAOumUtc5IKB4HMzzAAuYNyOYxk55z1b5q2Pg2D
- 9+bQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGaRl3/7bhxT9t0T6b/VXcz/iyE7HPxXvj4t67gEY1obR1ETcxQPgE951YMbziSxOEPhCKrGJOlA==@nongnu.org
-X-Gm-Message-State: AOJu0YwA7gd9rwmEMV6XazFx7OEZ/X+sF0ysZdIKFf14RC5KehvBwT6Q
- HU0AemdfHihbvitbHVgGW7SEs/b6TOTPo1BUXxNc17TsXjDRM8Slh8HZ9IjveJ6yLpw=
-X-Gm-Gg: ATEYQzzQyEXrzgZJbE/M0DnlSrarJE+EBnnPm3Nkjme5uZJ1roZud0Bet3xanDpbHFO
- rbFooDiLzZKcG/KTmnn0MA6dmEzqgdhsQrc1dlpMA+d2QnYmOnpmY0uloznMCiUmW2DTPozLO4R
- 2pAaRdt5NfEU63LPVk5pNEYLyl3tcDfKCisUzoWAPExujwikJ3H6Fnt8vjq7cOPXT+jiE+wbHrJ
- qP3vKvoVQgPjUKzjK18lYJGkcLys1XxY1ax+xAM56ByxYQUq107wEwJsT71LwgPRgZm+29al3tx
- azZGXNzmdO6m4Zlm4QPkvN5RkxKjsbFRDeLo+JgnFCH82kCoftaWtmF0E+TseIZPUQuQqZBXV50
- XH+sbk+G/Izb66Fr24iH1UUgUu0GV5ZCeb/9KwVOfxGNDs96gj8llR1rElmW6VxOtBiO/xNueq0
- g9AcwcfWHRgItUtC4b55otmQdoqq3GuSURVaw2t1OFO2SsrAmYLvLEEJX+tsrS4NQKng==
-X-Received: by 2002:a05:600c:8b5b:b0:46e:4e6d:79f4 with SMTP id
- 5b1f17b1804b1-48526927a4dmr254126055e9.15.1773148008977; 
- Tue, 10 Mar 2026 06:06:48 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae2bdf8sm38390545f8f.25.2026.03.10.06.06.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Mar 2026 06:06:48 -0700 (PDT)
-Message-ID: <7489d7bc-d2d4-4890-9fc9-0d105a272643@linaro.org>
-Date: Tue, 10 Mar 2026 14:06:47 +0100
+ d=1e100.net; s=20230601; t=1773155709; x=1773760509;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JBO254OXcyxuexxiSJRAkJvpBHGqkPF+Kc3tWsQuVWg=;
+ b=v1F/jDUcCJNWkS4/VdYy8+Bomfr1VtzUQFRFAdAJEas5LLvug7VBttcpq8+CzDC8O6
+ QIV004xYEqe6vZvdh+brbY/Z3PtPtT5r3gYbez4RNauw3XlIjOrlkllDX+i363moyynR
+ cBSvaiSOsfbsF/44vpxDBvO/EGcht+jUpyI0autBojgTolLcxI70RpANcV+LR5NgadVT
+ ds/zG1KltMOHyZip2GhMhdivAPuFwNWRQulCC3UPQ3ScQYjN73yC5TDbe2+yYx2o8u3x
+ PSl4dmNl6A213jnqo52/iHGb9e/XyyfJZvGwN1SY/iv/PydfjI4bmzPZFfhWr8mWxnEW
+ mOCA==
+X-Gm-Message-State: AOJu0YyGPgTm37L3QsusPCJaEF9CPjowNSeK3Su4qCEF2vr3dcKMSg7L
+ 62PKvEvUCt2GFsHhdBCDIUx0CUhRsWopUtzKGHQhmmft1r5kUGOxXMWEj7c7mvdx+DJVaVqpby4
+ XqsQA
+X-Gm-Gg: ATEYQzzuwf1z0ln+0RmUkZpiIS0/SZzuNVStyK+s2dgTVQ8qBULllkDQn10HaDZSkSg
+ ndNPxKT54SMEE4flJofb3MaQ3ARSf3u5eFgeuzLO2GbND+h8hCeMEA//vN/C7o6Z2fGD/827m92
+ voY1HNgslVFiNoQ0hG0U//rCa8Ckm2uyj93PjYo77zK2dyQOlSuqx1Boi2xAMaRMAxcuY6HOQZC
+ 6KChAYWA5Gbx4X+cleVN4TvKTocDAChwh92iMNpmDvDkhJ0z6UhzzfjWA7NO6HJoJv9lrr/ShVM
+ NpKeM8oDpu9sqSHPz3AY1QdiKxhweLm90AKovm6A7IkVjB6u7oEW2GKcZW5LPRF7Gjn0e4/hT1I
+ m+8zlPoXxRf6X5DvMTCLe9VzzHw1WJcgRzoR7BIO4r1mgDtmbeITKFmAvG5m7VLtT6RmqwDimgb
+ 1/mZk6JSKhcXqimAJQWPfFYoPTPVIC0X2pWmJyykxGxbLjM9/WSB6VW9ffcfHJEUDH2IWnrXqts
+ OHrJFDsZwOCC6xt0AijYmFgPhp1QaU=
+X-Received: by 2002:a05:600c:4e4f:b0:485:3f72:323f with SMTP id
+ 5b1f17b1804b1-4853f7233b2mr89907065e9.11.1773155709284; 
+ Tue, 10 Mar 2026 08:15:09 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4853588758fsm127303185e9.4.2026.03.10.08.15.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Mar 2026 08:15:08 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Fabiano Rosas <farosas@suse.de>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+Subject: [PATCH 0/2] tests/qtest: Avoid char arrays in some Arm tests
+Date: Tue, 10 Mar 2026 15:15:05 +0000
+Message-ID: <20260310151507.2973843-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v19 00/13] HVF: Add support for platform vGIC and nested
- virtualisation
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Phil Dennis-Jordan <phil@philjordan.eu>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Mads Ynddal <mads@ynddal.dk>,
- Joelle van Dyne <j@getutm.app>
-References: <20260307180330.75168-1-mohamed@unpredictable.fr>
- <CAFEAcA9TSQEVEVeQc4rPtz4HEJJbZUs9LaeVbz-y3=tB9zv4EA@mail.gmail.com>
- <7C4D7803-46A3-430C-A66E-5C3B63E92E0D@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <7C4D7803-46A3-430C-A66E-5C3B63E92E0D@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,82 +104,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/3/26 14:32, Mohamed Mediouni wrote:
-> 
-> 
->> On 9. Mar 2026, at 14:20, Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> On Sat, 7 Mar 2026 at 18:03, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->>>
->>> Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and-nested
->>> (tag for this submission: hvf-irqchip-and-nested-v19)
->>>
->>> This series adds support for nested virtualisation when using HVF on arm64 Macs.
->>>
->>> The first two patches are from the SME enablement series and are present for the
->>> series to be buildable on its own.
->>>
->>> It has two parts:
->>> - Apple vGICv3 support and necessary infrastructure changes for it
->>> - Nested virtualisation support. Note that the nested virtualisation implementation
->>> shipping as of macOS 26.3 is nVHE only (but it _does_ use VNCR as shipped).
->>>
->>> This series doesn't contain EL2 physical timer emulation, which is
->>> needed if not leveraging the Apple vGIC. As such, nested virt requires kernel-irqchip=on.
->>
->> Hi; I think at this point this series has unfortunately missed the
->> softfreeze deadline for 11.0, and we should be aiming to get it in
->> for early in the 11.1 cycle. I will keep it on my list to apply then.
->>
-> Hello,
-> 
-> That’s quite unfortunate :/ Too close to the softfreeze tomorrow I guess?
-> 
-> Thank you though, think we got quite close to it with even an attempt of a pull before
-> last-minute issues resulted in it not getting quite there. Hopefully future series will go more smoothly
-> than my first ones :)
+This patchset fixes a couple of problems reported by Fabiano Rosas
+with gcc 7.5.0 now we have turned on -Wformat-overflow=2. In both
+cases the test is using sprintf() into a fixed-size char array, and
+it can't actually overflow but gcc doesn't realize that. We prefer
+to use g_strdup_printf() for this kind of thing anyway, as it is
+much less error-prone, so switch to that.
 
-While we mentioned to our users that HVF/ARM is "supported" in our
-documentation (commit 16595bcd0e2 "docs: Document that hvf on Arm
-is supported"), it isn't "supported" by maintainers as in the
-MAINTAINERS definitions:
+thanks
+-- PMM
 
-            Supported:   Someone is actually paid to look after this.
-            Maintained:  Someone actually looks after it.
+Peter Maydell (2):
+  tests/qtest/ast2700-sgpio-test: Use g_strdup_printf() instead of char
+    arrays
+  tests/qtest/arm-cpu-features: Use g_strdup_printf() instead of char
+    arrays
 
-It is marked as "maintained", thus developers caring are not paid to
-do so (commit a1477da3dde "hvf: Add Apple Silicon support"). So it
-is hard to follow / review / merge all the patches mailing list traffic.
+ tests/qtest/arm-cpu-features.c   | 24 +++++++++++++++---------
+ tests/qtest/ast2700-sgpio-test.c | 24 ++++++++++++------------
+ 2 files changed, 27 insertions(+), 21 deletions(-)
 
-If we want to consider it as first tier class accelerator, we should
-at least improve our CI testing harness.
-
-I started few series / patches around it, but quickly got overflowed:
-
-- tests/qtest/migration: Update framework to allow using HVF accelerator
-https://lore.kernel.org/qemu-devel/20250128135429.8500-1-philmd@linaro.org/
-
-- split/arm: Run EL2 using TCG and EL1/EL0 in hardware with HVF
-https://lore.kernel.org/qemu-devel/41c83d3f-e5dc-42c5-a743-1aafc4cce27a@linaro.org/
-
-Some files already test nested guests and could be expanded:
-
-$ git grep -li nested tests/functional/aarch64/
-tests/functional/aarch64/test_device_passthrough.py
-tests/functional/aarch64/test_kvm.py
-tests/functional/aarch64/test_rme_sbsaref.py
-tests/functional/aarch64/test_rme_virt.py
-
-Regards,
-
-Phil.
-
-> 
-> Thank you,
-> -Mohamed
-> 
->> thanks
->> -- PMM
-> 
+-- 
+2.43.0
 
 

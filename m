@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCD8EB1076
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 21:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF55CFD4F3F
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 21:28:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w04cZ-0002Nq-Ml; Tue, 10 Mar 2026 17:28:08 -0400
+	id 1w04ce-0002OO-7l; Tue, 10 Mar 2026 17:28:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008P-0001Ne-Pk
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
-Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w00Cb-0002Ng-Su
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:45:01 -0400
+Received: from out203-205-221-236.mail.qq.com ([203.205.221.236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008K-00054d-FN
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w00CY-0006nv-94
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:45:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1773160823; bh=mbCTTOApFOG3TDTmxgfasqGqHqM4svuoOiNdQ73KCcQ=;
+ t=1773161090; bh=mbCTTOApFOG3TDTmxgfasqGqHqM4svuoOiNdQ73KCcQ=;
  h=From:To:Cc:Subject:Date;
- b=G7uHyihQH6KUB+mrk5xoQZB1PiTIIugnBt9lQ9JkykE7JUpJmU79o8u+3W5uCaQJ2
- aDqwzmwoTYR5lN9LU7p3OoK183Vzs58zudw+3J87YH4tlgZ6apLswG+GRVm5VFZ7/b
- wzLr+uG6+dbDcO7ZrRVnEdbD0YN2BpKan5hAIpnA=
+ b=JjqZ3PSvtCakwwHwPVgDT51JC8yldy+yunZURFOFCBasNDc3YUldJ6YpjRLh7aGdi
+ AZAlhGm1dgYOR2yzXmTcp3jUIICCpu3W1N2nPqKqTOl+sFDdbErrpIfQDpQgtqlHPj
+ qDuALPbcC3vBLBtE8BVTGALuMEgovP0Ze4pJxgB4=
 Received: from dt-VM.localdomain ([175.152.130.74])
- by newxmesmtplogicsvrszb43-0.qq.com (NewEsmtp) with SMTP
- id A151D2EF; Wed, 11 Mar 2026 00:40:21 +0800
-X-QQ-mid: xmsmtpt1773160821tfauccqjy
-Message-ID: <tencent_9DDE59F8423A88DA68E378777E694AD22009@qq.com>
-X-QQ-XMAILINFO: OZebYClYfzV+bm8ZWwKXZfAZ83gFt0G/Yf9lRfQWiONAt/QxeR2REVz8KHiGB1
- smFvnF/lJS6GXL4Lbcn0QiIR/kYx/bBdTWeS/9S7g2GyktmlajDPoR8zxlpyewqtTN69d7xWFxVa
- d51IILaFVlaSI7Uu6VRXlsaKTJxd0EtX9a2nXRAcfF1sLOo9lXOm6imCjJxRGfcJcVyWh+c+Kkkq
- ERybgcMgoWEvPTW/K9/WFbr5Q2u22rnAfHlfs4+x2sCBX8rHK0qShcXZQAFzM5ipI7dA47/3fOvn
- 5DIh+iuowxlwvxvNL5JM+gli5iJoXO1uDLK+MC+Z//5PFQpQAB2rcFoor+G5SqxbmnEUXWMrAp/k
- X3USASz8pDOnx/j4ytifKoUufScXGJTvVdl92ciWY6kk6otq2/Jw1vvmYC722DrBJrpQkxInVXm0
- Jb437U9ygMm+yAPx4+wVPA5fNCKz2LWm1+MiDLdHEFSVxgnfGkdIGTkhUtmLkurp3b25EE8mZzcd
- 09tLE+7Km54X/hrDNA27WBSI0JdEa5K7F3pKJteeLPdynUqQqNdiomYQppnDwOWCQdnog7ezQv3j
- z3KTVW6ZNbtu8LOXINBOeLgaSNN8PI4WuFMrXUurOACtZZMl3lYtcMUX6d1Utemib0Vh3Pf6UsBJ
- CtWpyr0yfbDxC4vqwA0fxHobriQ5G7eNa3EznICet8IECwatUWThnpq7JhTuHtHVMOlcRakyXQKC
- 3yrLK+YwmABvX6bwIHvqnQbEbs/J60IwGEzbZd7VfYcjOauQVmXu3zU/ihbHhdet0Mv+fh3rU73N
- +JxOxw0902HGR0+XtvGREhPb9jEdUTBIWSRsN3r4QdtUO/JYa5hn6/2C97L3keEdM3ClYdrZ288Z
- HHychorYAs0IPApRM+oU64EAI383hLLqtEaO7SUmk4unRzpgLBg2h0mhZo/AlkofGOlCOHocsrR/
- L2uzP+OIi0F8h2txDqNL6T7/JpbjzVnWMYIzydjxSRwgem6i0ltA==
-X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+ by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
+ id B30B5C9F; Wed, 11 Mar 2026 00:44:48 +0800
+X-QQ-mid: xmsmtpt1773161088tapqayc54
+Message-ID: <tencent_E977BD240C8286C531C496E883B68837F705@qq.com>
+X-QQ-XMAILINFO: M5VnWGI9u3hU8XSxW9IxVGnxN1D8dnyOJPsccz2PfU6O50shFe41FfQMApVAtJ
+ wGUv5o0kEKdihVOeChvYUoTw4w7zz0d7DOFLTcukXiTkdwSZmP978od01fysKbD6MaGOQPFics9v
+ Bw704VqqHZwvdzUTv/xP9uP61u5eg28soliN4HP0O+cci5O2jx2AqjNsZ83RSFltXBHdFuUguNlt
+ 0z0UZRMR/5rIv2n/SBKZUt5biPZt6/o3fofy3q5bSkYWqcrBf6B8C8ZOfX5/l363nFHQYBvCZBjU
+ iGc4uQsMvzF6t/3d66gnuCmI7gRbzg8l2aeNdM4ctaio+65BeyJg1lIX/3TtXE0lDgVKljENslze
+ 2owe+Os8VsDZ/CACB8BjrpM5oQIG5cMRVpn7Z7/2DC0x8EcJ5X8zY2hkYTSOXqqOfpYSpMDvwRBb
+ 0ppArQHeFL/4VXvwiDrhqRVh0TLG0FuiyLAruyF/xzQneDPwOQQRfpXe6nJGNAKHjuEAbLcQKHMp
+ ezkyIU7Nqt5X6KN9OfWG+H/Ioz5b4fwjg5EuL/pzApQmH6gMwNkYO2nj8EY9bOgsiQF8CuaP+8Iw
+ KSC5RU/Yd9j5ND32AQ2TS2Sm/Pxxd3tCMNOYrXP2x2NHO12wdNgJmb7ta6hRx1J+byO9cLnI/WN5
+ wKHpIRM+5tCqb3I0pUa/2rewXLkpaAAEqoY96lJp17Po2A/kfL/+hPLEQlGvXXJ9oJkB70SctBay
+ Sg9oPpz0/MvsJgoHvMg1NNo2BVEen8yup2HL6sL0VlKtbbyYz97O+ptNZAABh+SzwT4xRtDYHHfH
+ EiVCQqaKgILTZbunmdheW9p5L1fgP/0b76z3L/SdIqdd1PJrX54XUEdwNtQXs7le9plDhQQKdtJ0
+ tTmuRIAFEMky21J+e4LiZ5CQxDeFq8tc7TOg3vP6kg1BCMg/2uxe1Vk+45v/+9fo/8+Rblucwd19
+ v5B+V8mCDZeaxEHBwtOV5CHr1IAUQO4xWklAQjH4yhvx3p4HC5G1c9ORnMc5jVl7QpZU+ANyzs09
+ WeRScQScDSj7v8FNLWvy/wFk5Z5N3ggT3eMgQ/3Q==
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
 From: 1774596582@qq.com
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,
 	TaoDing <1774596582@qq.com>
 Subject: [PATCH v1 0/1] Fixed bugs in pl080
-Date: Wed, 11 Mar 2026 00:37:25 +0800
+Date: Wed, 11 Mar 2026 00:41:06 +0800
 X-OQ-MSGID: <cover.1773159339.git.1774596582@qq.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.210; envelope-from=1774596582@qq.com;
- helo=out162-62-57-210.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.236; envelope-from=1774596582@qq.com;
+ helo=out203-205-221-236.mail.qq.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
 X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action

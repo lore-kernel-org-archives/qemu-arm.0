@@ -4,46 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 451A5EB1076
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBFFDEB107E
 	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 21:29:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w04cg-0002Od-6p; Tue, 10 Mar 2026 17:28:15 -0400
+	id 1w04ch-0002Ov-Kd; Tue, 10 Mar 2026 17:28:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008P-0001Nd-MX
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
-Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w00Cd-0002O3-DV
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:45:03 -0400
+Received: from xmbghk7.mail.qq.com ([43.163.128.47])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008M-00054g-82
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w00CY-0006o1-75
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:45:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1773160824; bh=bhYWjbESGv/4DDIYvz7RH9wyRqoJb+xGspW5tAxbKeY=;
+ t=1773161091; bh=bhYWjbESGv/4DDIYvz7RH9wyRqoJb+xGspW5tAxbKeY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=NjY6ItYuV5RTyhkyPK4EJptnAb1Aw8zhBhy+rmEaiTRmqYKx6XVIU1+xzF9t67jfQ
- E+kABF0LBxd5Bn2K4jXlV+tb207i/wUauYzcUpmXz0umUachwLgE1Vjrpp3GR/2niO
- JqDhaw5a/5aLQxmOWjChLJG6AGq9+8jyASzWmsh4=
+ b=HfQ4p4+LQEVBwOaXq1zojUdaZxokG1wo+LkgYwPelpHH6Wnd6qUGZrZqsF05HkZhr
+ uqjEKzZBcIj3ont21jSUCiF9tk7733JdD1btHCmYFfMTXyLI4fwcWbFR/6gHAjs2Ox
+ x7F8oiBZNNfqbw1+vUu774vB4TMROEOI1GbsFqpU=
 Received: from dt-VM.localdomain ([175.152.130.74])
- by newxmesmtplogicsvrszb43-0.qq.com (NewEsmtp) with SMTP
- id A151D2EF; Wed, 11 Mar 2026 00:40:21 +0800
-X-QQ-mid: xmsmtpt1773160822ti83h7y50
-Message-ID: <tencent_2D20DA592A43C688A4698978137E934A3A09@qq.com>
-X-QQ-XMAILINFO: Mi+38GKm5OhVeMkpMh09eg0SaWRTLAguo1ia/4dKW6+vT9tUS71mNqHwA+1lf2
- T++5rCkQdoMCPur4UkAn4qUM1rsDd5iPlvYs2+acDXowoVtBHbD9YGru4oyxxZxTSDFL0oNVEdAB
- loP7xavESE0E5TkCIvKu0efeh+oww0uWWkhYSO7ZnERdK5oUAX91iO27CIgIHvOaf5I5y70d5cZ/
- sJ+bFzV+cQynnM8vsdQopf04fw5AXREQW+yyXs3MJfdgYtPZqPsYK/OMtxayGHD38qrGr1qsT3YP
- z9cEYbK4LJU3khNXTTg641z2YNQQ0XM2lbWL5kB1g7wmAhxviLYS+pxEdBAylZiLVs3sGqhY1F4h
- BOQS0e0KSyM8MgUElGaXPwAyu5Wo8sXow0+qUf8QprHXWJ/rORPH13no1yO55MgVrrk2m64BDAaQ
- ioigqXg/T8OWvwn+BiQ5PaR0up6i9xxCJTFARvNGqPsbJfnFM5vI7x3Y1jU/x1S7JvwsIpECkHFN
- Ms/aFWCVYx8FpcQ6nQ+XbozFigSA1CCuzL8POUk0GTG5v2qbUezMgGvEI8rPvwIfNJSmDOQ1UGAT
- ejilEkaLiFVknKd0c7cKi0NU7b2fCfGJ4bYnF023sCdPS4hSI944YzZ3syEW0KCKHzE1bmlXeykG
- sYhoNS5MWDh6Nu9rIPN6MxvptKTJfsMVMKXNCH/Iw7SzvE/SWlGPab7Z+a70Vx+kAgMsQXxdW1tF
- slZen4E12bRKdZY0ihBt1A9ENgs5qLhztPhA96wiCtUL6ms+B6hXrOeyFICuVK1884rTQ2X+iDac
- neAeEIwdliRlzUDLRxT3+VLyhpzipvvhr8BSttoRDPEANWXcqmziianSXF+DNnQUCvddkMuQ+W9R
- JRzq19pyhQCeMv86dv9Rt2q7KimcSvHpTCdMI9OawMP7XIGYOFhrqW2etwW94VuuAjOy9QXRZ89f
- HTl7dzKJCmUwZ4Ad8q9BbMXQ+6kVj1Ub1Pgdqfq0k=
-X-QQ-XMRINFO: Mp0Kj//9VHAxzExpfF+O8yhSrljjwrznVg==
+ by newxmesmtplogicsvrsza53-0.qq.com (NewEsmtp) with SMTP
+ id B30B5C9F; Wed, 11 Mar 2026 00:44:48 +0800
+X-QQ-mid: xmsmtpt1773161090tk4qhjqew
+Message-ID: <tencent_A60F5E8CDFA01275080C16D510212203DA07@qq.com>
+X-QQ-XMAILINFO: OZebYClYfzV+oHTdAt6NIqGZ0w/XHRYlG///CaMzGuLa0zMbjYCKGHlFEFwjID
+ 2RNKMMppG/TCx/9vN5pc5799Fj7LwfKhxO83c/BqkULKmADy3c07h0vx7BuW1bgVkX3gIMle122L
+ 3hGKyzgb6PXj7LDi+6CNHAvLN3ikvD920IGX6ZFIDfegsUJhaafsCcEw+St6rrdfZnD5lfKVDDMv
+ Gywj4rkqLizSiT74N0xLn8k6IQVNPUwWAuLi94RUdkR4FMA0PohAgoEhXM4Y14rmZu5dHSUWNv0X
+ DGICaLnDy2r0dJGy8t/rnND3vOTKMlEoujg+9B4fZ9HidLYrvqTwtCcsJCovHbUMpSB9OOVKGZVA
+ 1XbDcd2/JraMvvLeWZhG2WafQud3/xQNt7JyiDedgtQWALSMhcVG9ZFlbevyMk9Aezikz+NUPbPE
+ eQOAPytP0e/LogybmdlbTnmjNkXUSh1iceQ/Zj9VH1aTHvp0gzKr+fLeHD2XU7zUacKehez3OJ/P
+ KCGPiQtaCdeq5iMB6Hx5TvvOi99qfBX1+T4++g0AG6CRhHjZH5fWPtcved+cSmmCDlJ47vvTDIzZ
+ qGo8IHTqEq6gbsTd3Mbypspswa5wXdbVVjXZS8cN/5SvoP0AIKQnvbct3UxCIEx10uGvdXPoN4a5
+ HTx1cfcg5Vx5O0a5Eq8LkwWQhPAjrHFOdUFPmbE9Q1kTjtW/F+6gemqL078I8qK5/W3awtlsnZXl
+ jY680G31K5rdlgo5Tk6WVabsVdKyNKaiOzqwHPQkRr4BQQMKzAiEEBknZ2R3TG6HzCjv60HO+cBP
+ 3AQ2+UwuVcZ81ktXymi4F4rurI9WXIpaVRHlYtIlFCefu0K5OnQfqiNYXpaxFmt2aD1JaKIvhz8K
+ 7jPffaI/sDFsuJe9KpBtLlQH1FHW8URVlNLOXrT46EtuLGLca/iSJnZHqquYppN2+I5fOQHPERSk
+ VEhWR17uvo2C+OJ5uEIhroLVa40ri/CyCXGVv7xzVaAmoXHRWQRs1anYR2SHosl05QpbeRE/K+z1
+ O7vbtZmOd1C5uBA/h21A6TUobvwQ0UbAHIzRhIHUyC4r6hViJWGkiQ09ACx54=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
 From: 1774596582@qq.com
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,
@@ -52,24 +53,24 @@ Subject: [PATCH v1 1/1] Fix the bug where the PL080 transfer complete
  interrupt is not generated. Fix the bug where the PL080 LLI is not 32-bit
  aligned. Fix the bug when PL080's source and destination widths
  (swidth/dwidth) are inconsistent.
-Date: Wed, 11 Mar 2026 00:37:26 +0800
+Date: Wed, 11 Mar 2026 00:41:07 +0800
 X-OQ-MSGID: <f60050ed84d7b7972f8adbb0ff923f6adea7294c.1773159339.git.1774596582@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1773159339.git.1774596582@qq.com>
 References: <cover.1773159339.git.1774596582@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.210; envelope-from=1774596582@qq.com;
- helo=out162-62-57-210.mail.qq.com
+Received-SPF: pass client-ip=43.163.128.47; envelope-from=1774596582@qq.com;
+ helo=xmbghk7.mail.qq.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
 X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 10 Mar 2026 17:28:04 -0400
 X-BeenThere: qemu-arm@nongnu.org

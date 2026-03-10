@@ -4,146 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45170FD4F0F
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 17:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCD8EB1076
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 21:28:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w018t-0007yh-Sn; Tue, 10 Mar 2026 13:45:15 -0400
+	id 1w04cZ-0002Nq-Ml; Tue, 10 Mar 2026 17:28:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w018i-0007vq-Gt; Tue, 10 Mar 2026 13:45:04 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008P-0001Ne-Pk
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
+Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w018e-0002ix-Jr; Tue, 10 Mar 2026 13:45:02 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uoTQlILVX4VsqPFeabEQLkV1RLgF2LGGgWAIFXUD/QlqJticS83xTJliKdg4YAO3QvtwB01XKD5As2D5HmStouGHn+tElgOOLbZ0fAU+sECDTch+P3jqnQDhq+IxJlzLriyQFj7/GaEz1PIYsLP5FOQYU9Pj0IxGnLVoLHtXTZD+NzAeDSpIaDCLZaa+sGYnd8HmPHuqaeGzsH+zgP+fyceoMdpRzcDDZtfWIthPb9BnU2jMpRT8cN2qqJYWNzpkbAGvmIcxrI8kknuReFbFgG/JhC1mKRuadQVCOz7I57SCByb8oVeeeTOsbS2e9pqCoNMXZ7y/mo0LOhJWxv30bQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5KN49hLjlW7+K9fUkED41VPPMedDQDXBHmhvdw+t0iY=;
- b=PcYTeLkNCemHBfY1MhJQboChM7MYQDBA5akq8xEqkJYDXdEoVV0HF9oDYyxhCdn9jAEAubs0X9SPvWqCfrCRZQE1QLD4y8XdY4ZMvhYHbpKakQah7dzYY6szqMr7UanooPE6oPIMve7lQ73A+2thmxyt3E740YL5OtJUSh89TkVULNL+fSYWkfG7TTS0uVXNzzwLXLK5eAEVUwrmJZXQ/ZbImJDf7gs9sMOQJkQmL/OenDjUgY6ay6IpWepVri6hMO+OY0EnPRgFiz4+Ew6mOacTJiWJP6Gzh0B6kfr7X3xgHV/lhXVWdnk55JfKlCZ5trn6D/+muF1ulyyK8DuagQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5KN49hLjlW7+K9fUkED41VPPMedDQDXBHmhvdw+t0iY=;
- b=aqQREti0MMFOZF0qaDsERpRJPbZ1BCSyjdq3jf+NibsCjdPKXvf2SxB8PK4BdyTZYVa7hzWGy+6wbRYX5KNWHpsap1oScvdE92Kwl+ttLkJp+iiLqqjpvWJmmNNBI2guaNN+5OY8GA2JJ0uTlBspJI92i1ueUkI3gGvWQHkiWVSaqTrLXCIVBlQb3ujNNJw8ZunG2vq//boif4Zasa1FtkCCmvRD7X484eN4KESNUkGKWrkoy7Ae9HE8QHZluBQ2uBM06bGUGJEYia0qzUdDyyZOJAqzePFv7GBTr71RkoUF6a5ZV6Oa6f5lyOq8JRXEZU9GSH8sOAtFX0GKI3iGYw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
- BL1PR12MB5995.namprd12.prod.outlook.com (2603:10b6:208:39b::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.11; Tue, 10 Mar
- 2026 17:44:53 +0000
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9700.010; Tue, 10 Mar 2026
- 17:44:53 +0000
-Message-ID: <8b19e3cc-555d-462a-aa88-46b5fd783163@nvidia.com>
-Date: Tue, 10 Mar 2026 10:44:50 -0700
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 6/8] hw/arm/smmuv3-accel: Introduce _AUTO support for
- SSID size
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Yi Liu <yi.l.liu@intel.com>,
- Eric Auger <eric.auger@redhat.com>, Zhenzhong Duan
- <zhenzhong.duan@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?= <berrange@redhat.com>,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Eric Blake <eblake@redhat.com>
-References: <20260309192119.870186-1-nathanc@nvidia.com>
- <20260309192119.870186-7-nathanc@nvidia.com> <87bjgwno8r.fsf@pond.sub.org>
-Content-Language: en-US
-From: Nathan Chen <nathanc@nvidia.com>
-In-Reply-To: <87bjgwno8r.fsf@pond.sub.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SJ0PR03CA0165.namprd03.prod.outlook.com
- (2603:10b6:a03:338::20) To DS2PR12MB9567.namprd12.prod.outlook.com
- (2603:10b6:8:27c::8)
+ (Exim 4.90_1) (envelope-from <1774596582@qq.com>) id 1w008K-00054d-FN
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 12:40:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+ t=1773160823; bh=mbCTTOApFOG3TDTmxgfasqGqHqM4svuoOiNdQ73KCcQ=;
+ h=From:To:Cc:Subject:Date;
+ b=G7uHyihQH6KUB+mrk5xoQZB1PiTIIugnBt9lQ9JkykE7JUpJmU79o8u+3W5uCaQJ2
+ aDqwzmwoTYR5lN9LU7p3OoK183Vzs58zudw+3J87YH4tlgZ6apLswG+GRVm5VFZ7/b
+ wzLr+uG6+dbDcO7ZrRVnEdbD0YN2BpKan5hAIpnA=
+Received: from dt-VM.localdomain ([175.152.130.74])
+ by newxmesmtplogicsvrszb43-0.qq.com (NewEsmtp) with SMTP
+ id A151D2EF; Wed, 11 Mar 2026 00:40:21 +0800
+X-QQ-mid: xmsmtpt1773160821tfauccqjy
+Message-ID: <tencent_9DDE59F8423A88DA68E378777E694AD22009@qq.com>
+X-QQ-XMAILINFO: OZebYClYfzV+bm8ZWwKXZfAZ83gFt0G/Yf9lRfQWiONAt/QxeR2REVz8KHiGB1
+ smFvnF/lJS6GXL4Lbcn0QiIR/kYx/bBdTWeS/9S7g2GyktmlajDPoR8zxlpyewqtTN69d7xWFxVa
+ d51IILaFVlaSI7Uu6VRXlsaKTJxd0EtX9a2nXRAcfF1sLOo9lXOm6imCjJxRGfcJcVyWh+c+Kkkq
+ ERybgcMgoWEvPTW/K9/WFbr5Q2u22rnAfHlfs4+x2sCBX8rHK0qShcXZQAFzM5ipI7dA47/3fOvn
+ 5DIh+iuowxlwvxvNL5JM+gli5iJoXO1uDLK+MC+Z//5PFQpQAB2rcFoor+G5SqxbmnEUXWMrAp/k
+ X3USASz8pDOnx/j4ytifKoUufScXGJTvVdl92ciWY6kk6otq2/Jw1vvmYC722DrBJrpQkxInVXm0
+ Jb437U9ygMm+yAPx4+wVPA5fNCKz2LWm1+MiDLdHEFSVxgnfGkdIGTkhUtmLkurp3b25EE8mZzcd
+ 09tLE+7Km54X/hrDNA27WBSI0JdEa5K7F3pKJteeLPdynUqQqNdiomYQppnDwOWCQdnog7ezQv3j
+ z3KTVW6ZNbtu8LOXINBOeLgaSNN8PI4WuFMrXUurOACtZZMl3lYtcMUX6d1Utemib0Vh3Pf6UsBJ
+ CtWpyr0yfbDxC4vqwA0fxHobriQ5G7eNa3EznICet8IECwatUWThnpq7JhTuHtHVMOlcRakyXQKC
+ 3yrLK+YwmABvX6bwIHvqnQbEbs/J60IwGEzbZd7VfYcjOauQVmXu3zU/ihbHhdet0Mv+fh3rU73N
+ +JxOxw0902HGR0+XtvGREhPb9jEdUTBIWSRsN3r4QdtUO/JYa5hn6/2C97L3keEdM3ClYdrZ288Z
+ HHychorYAs0IPApRM+oU64EAI383hLLqtEaO7SUmk4unRzpgLBg2h0mhZo/AlkofGOlCOHocsrR/
+ L2uzP+OIi0F8h2txDqNL6T7/JpbjzVnWMYIzydjxSRwgem6i0ltA==
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+From: 1774596582@qq.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	TaoDing <1774596582@qq.com>
+Subject: [PATCH v1 0/1] Fixed bugs in pl080
+Date: Wed, 11 Mar 2026 00:37:25 +0800
+X-OQ-MSGID: <cover.1773159339.git.1774596582@qq.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|BL1PR12MB5995:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2aaba512-2887-46a7-ff5b-08de7eccbc6a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: UgyKzefVb5q53E/kSCexWgcHzOiADMYrqgtYPfEqHMg/UhR4AOPWwavQ3pvc4BYXd4c+gsJ1aKnudHborIgehquHj15dCtXRxuwQ5AAnGIkzwwGbnkmAfiBaIReUy9FZFG47VwunHSHP6DKqpTvSS9440/I5ghRWJ4djzsdaBE8YYTk62fTdyeQ+xg6vOHBsBys2zHBX53RICv7o6Sg1p9lJD11Q/VlPKdTM4P2mukh1wzQ5tQYadUlvRa91FBcZQ/lhHFeH19SBZzfiAO3T2p3KHXyZuMF4f1IylqajzI8G4Lmj4Y2S0RvPT7mwCmEXoBKxkLpfa9UcHDzZIiRiVEbzTWiPHkxCs6NGRWLg/ji6+3fG4LQ+GAIP1EucO1NxibSKMewvCifXv96H2ey2r6EoxF9Zuk24eCfAGHXWcn9cRQuOoa3pjw8f99QX6cT/gTNatWV0cWBAGnkwfzyZhourm3ovNlAManvAoBCGh88DWVy7nZRvpLYTy3HeSUoFMeMvn5ZxmPRx2Tt0YJNRpkQajuVXoDwu1EYueJCEt6yZHStn+s5bHvDSxDd7iQXuyXM/3Dts1JwF0nCvDJjnWUzbovYvSGPr3v6DFg8WDgPZkjw6olPTr8U9p+7DKZM0xQ+VMFjy0jhwteAaPbaKKpECgJsapRnEPIACxst/NjcD59Y4YrrkUXtT9jW3Btc3afUFAkIgQph+fcJS4bfrZdjZOe1h969mp2JNMlUcz04=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d3daYWxlZXRqVEp1aUV6eEpZeVZ2cFdIalNBWGVXeThCWWYxeFREVkZkU3VS?=
- =?utf-8?B?UFhhK2hWVTdTSjBuQUhUZVQ3M3BHVEJKdlNZQVdDazZGWnF1ZnRicnpyRG1k?=
- =?utf-8?B?cEFLeUYwWVNVUzlvNDBDNytzdUJRSmMwNG9TckV2ZVh1bFRKdngvV0pQeldo?=
- =?utf-8?B?ZXpnK0MramJvN2pPWVczUlNYUVlWOTVvcDg5cXA3dERSSzl1bG5LcnNDUXdV?=
- =?utf-8?B?T1M3TFljdW5DbEhQL050WjlLUytkZGVLZkU5NkR6VnBXMnVlT1JmT0gzMTNk?=
- =?utf-8?B?OVgvVG1YRk1qamwzNFZkMytIY2pTRGxxK0t4MloxQWdiNFJMczF2Nk10ZDR6?=
- =?utf-8?B?KzBjaDAwNGhNQm9VSUdHSllqWlptNjhGSm9pZG9xa21UU3BhYm9EcFdkY3dC?=
- =?utf-8?B?TGZTYlYvR3FpaEhTNjVmWERqRUxFblpjV0wreEFGU0UxemF4UnV6VWxLZmkw?=
- =?utf-8?B?VFRnVmpBandXR2wxVG5saU1la1ZvMCtBRERTWndQaVZCZ2hPT3M1V2FGQXpV?=
- =?utf-8?B?MXZiQlhOaDRMdzh6S3FLS24wTXFIcTdST0Y3TE95UElUcCtPdGk2TVhhbUha?=
- =?utf-8?B?Ui9kYXlSZE9WNEt2ZmlLVmx0d3gzTjJJbFNNUGNVQksrVEdQZXlUemRLSEl4?=
- =?utf-8?B?RURXT05SWElaanZETTBzc1paMEhMa08xWWRYc01qSkorQmQ1WXRXVzg0ZkE2?=
- =?utf-8?B?TmtabFU3M0h4TUNlSFg4eSt4bTFmbzBCU0t4eXd1ZUQ3UVEvZzVMRTBBeXBo?=
- =?utf-8?B?NVpKeGJFTDlRUS9UalNhOFBmbFQ1WkdNSjNvRHVyZFluWEZzZGVETW4zWERW?=
- =?utf-8?B?MFVFeXB3YkFpZWgweW9DRUJ3N21DS0FIeXZLQ0V2U0JZbmh2WTJuMlkrMWQ0?=
- =?utf-8?B?QzR5NE80MXIvNStaMTBFNllwVUxoTS9CaXo5azhXTVZzcHVVV3lkNURQTVZr?=
- =?utf-8?B?VzFQK2JCSzNOY0pXR1dGVWhnai9vRWQ0OHZRVGVGSDMxeTAvd1RCM3Y3Z0Vn?=
- =?utf-8?B?RjFzblBqRGNjbVE5QmQ2UmxQbXR4MHU0S1FOWnJwcndXNjRqOWZXZ2Eyazd0?=
- =?utf-8?B?Q1VydlRNM0R2OUhvY0p4aHp2SzRRcTd2TjYvbkhKTVV3eWpMU0lPV2pnZ1NW?=
- =?utf-8?B?MFFyVUIrZ1dyd0c1SkNYbzZIVGlTUmk3c28rTjVTWXZ2SE9IYndMQkVCWTRY?=
- =?utf-8?B?TDNGb1JaN1U5cW5wa2tlYTVHSEpLN2dhUE41NmRuQXROa25DbVJZSGNzbkVL?=
- =?utf-8?B?elJHeGNKTnVVUXhwNmMzWjd4bWkzZklQQWR4YnhsdTZGUUZubWl1V2I1SllS?=
- =?utf-8?B?YjFnY3p3WnJ3RkwwbmFIUVMrdFVLSlU5ek5VZlBmQ0JUV3dtcGI1YThwOUJu?=
- =?utf-8?B?bEowNmpRL1RmTWlqM3pFb0lqdlFMZ1lFcS9IekwrVklpTjR4cDF5dk5TQVFX?=
- =?utf-8?B?K1ZQRmYzZDRpcStCZzNBNlJwZWNTWjRMSzRLVjJ2dklZUXFMT2x5dElaSkdp?=
- =?utf-8?B?aWt5S2ZiYXJpaW40VXh2L2dJS1RxWEowZkxTV0t5cGcvSG1QU1IwVjdZZ21H?=
- =?utf-8?B?ZzRLRGJTTHYrZlA2L1ltcTdjWmZ3Y29lRndBRUhzRFhHQTFFOWRsblU3aXNV?=
- =?utf-8?B?WHpvSi9LVll6YVhvS2ZhTGxwQ2EyMUEyQVEwSkYxYmtGRG50bEJ6RFo0KzBF?=
- =?utf-8?B?U2NibEF3OUJUc2QrNkhVYXR5SHZVenhaSGNyUEJJa2xkTHRjd3ZmSzFDTVJq?=
- =?utf-8?B?UVdFVmcyWVpzV1dkcFdkUWU5bUxlMEgyaytsaTVpODhCNTAwWDEzU2kvZmR2?=
- =?utf-8?B?clpTajVCYzVHTURVaWVkbWFtRkpta29qYnJPL2sxT3VoVnREMnV1dG9wQUps?=
- =?utf-8?B?YTVkc3hKRU9SZ0JpWkhkUDBXTmxkZTRCdjd3TXNONnQxMDhWRU1SZUtKY1Rl?=
- =?utf-8?B?SWo5ZWhkU3k4MXVKc0lBZ20ydUg4RUtmaEFxOUE2ZGsxNVpNWDBlS1YzbndO?=
- =?utf-8?B?WjZORmlvNjloS1pqNFF3bzJwYlNRM2pMZlJiMm5oWjZiT28zV0VPUjdUWkpi?=
- =?utf-8?B?NjFuLzZiZk9sU2hmR2dvd3NkOGoyN1JWck1JNWVibmV3K1lYQjdsR3l6M3FQ?=
- =?utf-8?B?RWYzUDlzYVNGdHJYMW1Tdi9Qa3BnaWljbk5UV0YvZjhORnJXYTZSaXViVjdW?=
- =?utf-8?B?cFFLYUlVYmJ2K1g3dnNLdlBKdjNNU1FWdEloOWEzUFRLblhneFJocmMrOHgy?=
- =?utf-8?B?TkNDb0JBa1NEdEEyNUhWaTZTYlRKTDM3RTl3Wm8rSEpJMjVyblpOdytJMlRi?=
- =?utf-8?B?U3JoZDFJOFpvejFIeDQ3azhjRVE5TUpjUWNCTFp5cmdoZEx1UHJTQT09?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2aaba512-2887-46a7-ff5b-08de7eccbc6a
-X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2026 17:44:53.3994 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qvFI5UApTuM6rJ1kgNveOJ0V69z8CebE7UzP4G5zu1/IBpGuxgLN+YdzamvykcNu2mvh7lvjSxTKgK/JCYN+BA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5995
-Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
- envelope-from=nathanc@nvidia.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=162.62.57.210; envelope-from=1774596582@qq.com;
+ helo=out162-62-57-210.mail.qq.com
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 10 Mar 2026 17:28:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -158,170 +81,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: TaoDing <1774596582@qq.com>
 
+Hi all,
+I added pl080 to arm/virt, but when I tested it with the Linux dmatest, the test results did not meet expectations.
 
-On 3/10/2026 12:21 AM, Markus Armbruster wrote:
-> Nathan Chen<nathanc@nvidia.com> writes:
-> 
->> From: Nathan Chen<nathanc@nvidia.com>
->>
->> Allow accelerated SMMUv3 SSID size property to be derived from host
->> IOMMU capabilities. Derive host values using IOMMU_GET_HW_INFO,
->> retrieving SSID size from IDR1.
->>
->> Set the default ssidsize value to auto. The default SSID size used
->> to be 0, but we change it to match what the host IOMMU properties
->> report so that users do not have to introspect host IDR1 for the
->> Substream ID support. When the auto SSID size is resolved to a
->> non-zero value, PASID capability is advertised to the vIOMMU and
->> accelerated use cases such as Shared Virtual Addressing (SVA) are
->> supported.
->>
->> Signed-off-by: Nathan Chen<nathanc@nvidia.com>
->> ---
->>   hw/arm/smmuv3-accel.c   | 30 +++++++++++++++++++++++++++---
->>   hw/arm/smmuv3.c         | 16 ++++++----------
->>   include/hw/arm/smmuv3.h |  3 ++-
->>   3 files changed, 35 insertions(+), 14 deletions(-)
->>
->> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
->> index 02e3f7a9f3..bd27b0da7c 100644
->> --- a/hw/arm/smmuv3-accel.c
->> +++ b/hw/arm/smmuv3-accel.c
->> @@ -64,6 +64,13 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s, PCIDevice *pdev,
->>                                  FIELD_EX32(info->idr[3], IDR3, RIL));
->>       }
->>   
->> +    /* Update SSIDSIZE if auto from info */
->> +    if (s->ssidsize == SSID_SIZE_MODE_AUTO) {
->> +        /* Store for get_viommu_flags() to determine PASID support */
->> +        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
->> +                               FIELD_EX32(info->idr[1], IDR1, SSIDSIZE));
->> +    }
->> +
->>       accel->auto_finalised = true;
->>   }
->>   
->> @@ -839,7 +846,10 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
->>       SMMUState *bs = opaque;
->>       SMMUv3State *s = ARM_SMMUV3(bs);
->>   
->> -    if (s->ssidsize) {
->> +    if ((s->ssidsize != SSID_SIZE_MODE_0 &&
->> +         s->ssidsize != SSID_SIZE_MODE_AUTO) ||
->> +        (s->ssidsize == SSID_SIZE_MODE_AUTO &&
->> +         FIELD_EX32(s->idr[1], IDR1, SSIDSIZE))) {
->>           flags |= VIOMMU_FLAG_PASID_SUPPORTED;
->>       }
->>       return flags;
->> @@ -854,6 +864,16 @@ static const PCIIOMMUOps smmuv3_accel_ops = {
->>       .get_msi_direct_gpa = smmuv3_accel_get_msi_gpa,
->>   };
->>   
->> +static uint8_t ssidsize_mode_to_value(SsidSizeMode mode)
->> +{
->> +    /* SSID_SIZE_MODE_0 = 1, SSID_SIZE_MODE_1 = 2, etc. */
->> +    /* SSID_SIZE_MODE_AUTO = 0 */
->> +    if (mode == SSID_SIZE_MODE_AUTO) {
->> +        return 0;
->> +    }
->> +    return mode - 1;  /* Enum values are offset by 1 from actual values */
-> This relies on how the enum values are ordered in the schema, and on how
-> the QAPI generator encodes enums.  The latter is fine: we document it in
-> docs/devel/qapi-code-gen.rst section "Enumeration types".  The former is
-> worth a non-doc comment in the schema, like this:
-> 
->     { 'enum': 'SsidSizeMode',
->       'data': [ 'auto', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
->                 '10', '11', '12', '13', '14', '15', '16', '17', '18',
->                 '19', '20' ] } # order matters, see ssid_size_mode_auto()
-> 
-> 
+I found the following issues with pl080 in qemu:
+1. pl080 did not generate an interrupt after data transfer, causing dmatest to timeout.
+2. When swidth and dwidth are inconsistent, dmatest data verification failed.
+3. When bit0 of the DMACC0LLI register is not 0, the guest crashes.
 
-I see, I will include a comment in the schema to make this clear. Thanks!
+The proposed solutions for the above issues are as follows:
+1. The interrupt should be updated after pl080_run completes.
+2. The amount of data moved by pl080 each time should be determined based on the remaining data, swidth, and dwidth.
+3. Force next_lli to be word-aligned.
 
->> +}
->> +
->>   void smmuv3_accel_idr_override(SMMUv3State *s)
->>   {
->>       if (!s->accel) {
->> @@ -886,7 +906,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->>        * By default QEMU SMMUv3 has no SubstreamID support. Update IDR1 if user
->>        * has enabled it.
->>        */
->> -    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE, s->ssidsize);
->> +    if (s->ssidsize != SSID_SIZE_MODE_AUTO) {
->> +        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
->> +                               ssidsize_mode_to_value(s->ssidsize));
->> +    }
->>   }
->>   
->>   /* Based on SMUUv3 GPBA.ABORT configuration, attach a corresponding HWPT */
->> @@ -955,7 +978,8 @@ void smmuv3_accel_init(SMMUv3State *s)
->>       smmuv3_accel_as_init(s);
->>   
->>       if (s->ats == ON_OFF_AUTO_AUTO ||
->> -        s->ril == ON_OFF_AUTO_AUTO) {
->> +        s->ril == ON_OFF_AUTO_AUTO ||
->> +        s->ssidsize == SSID_SIZE_MODE_AUTO) {
->>           s->s_accel->auto_mode = true;
->>       }
->>   }
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 7791e5294d..bc03353759 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -20,6 +20,7 @@
->>   #include "qemu/bitops.h"
->>   #include "hw/core/irq.h"
->>   #include "hw/core/sysbus.h"
->> +#include "hw/core/qdev-properties-system.h"
->>   #include "migration/blocker.h"
->>   #include "migration/vmstate.h"
->>   #include "hw/core/qdev-properties.h"
->> @@ -626,7 +627,7 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
->>       }
->>   
->>       /* Multiple context descriptors require SubstreamID support */
->> -    if (!s->ssidsize && STE_S1CDMAX(ste) != 0) {
->> +    if (s->ssidsize == SSID_SIZE_MODE_0 && STE_S1CDMAX(ste) != 0) {
->>           qemu_log_mask(LOG_UNIMP,
->>                   "SMMUv3: multiple S1 context descriptors require SubstreamID support. "
->>                   "Configure ssidsize > 0 (requires accel=on)\n");
->> @@ -1985,7 +1986,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->>               error_setg(errp, "OAS must be 44 bits when accel=off");
->>               return false;
->>           }
->> -        if (s->ssidsize) {
->> +        if (s->ssidsize > SSID_SIZE_MODE_0) {
->>               error_setg(errp, "ssidsize can only be set if accel=on");
->>               return false;
->>           }
->> @@ -2003,11 +2004,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->>           error_setg(errp, "OAS can only be set to 44 or 48 bits");
->>           return false;
->>       }
->> -    if (s->ssidsize > SMMU_SSID_MAX_BITS) {
->> -        error_setg(errp, "ssidsize must be in the range 0 to %d",
->> -                   SMMU_SSID_MAX_BITS);
->> -        return false;
->> -    }
->>   
->>       return true;
->>   }
->> @@ -2136,7 +2132,8 @@ static const Property smmuv3_properties[] = {
->>       DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_AUTO),
->>       DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
->>       DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
->> -    DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
->> +    DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
->> +                              SSID_SIZE_MODE_AUTO),
-> Is property "ssidsize" accessible via QMP or JSON command line?  If yes,
-> this is an incompatible change: JSON integer values no longer work.
+Modified test results:
+~ # modprobe dmatest channel=dma0chan0 iterations=10 run=1
+[   28.637273] dmatest: Added 1 threads using dma0chan0
+[   28.649934] dmatest: Started 1 threads using dma0chan0
+[   28.664846] pl08xdmac 9001000.pl080: src=0x43bac1d2+/4 dst=0x43bb00e6+/4 len=15863
+[   28.667140] pl08xdmac 9001000.pl080: mbus=dst sbus=src
+[   28.668419] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc byte width LLIs (remain 0x00003df7)
+[   28.670659] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc max bytes per lli = 16380
+[   28.672871] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc fill lli with single lli chunk of size 0x00003df4 (remainder 0x00003df5)
+[   28.676198] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc align with boundary, send odd bytes (remain 1)
+[   28.679140] pl08xdmac 9001000.pl080: lli            csrc       cdst       clli       cctl
+[   28.681999] pl08xdmac 9001000.pl080:   0 @000000003a57aa5b: 0x43bac1d2 0x43bb00e6 0x4337e011 0x1e03f002
+[   28.685286] pl08xdmac 9001000.pl080:   1 @0000000080658250: 0x43bac1d4 0x43bb00e8 0x4337e021 0x1e4bff7d
+[   28.687560] pl08xdmac 9001000.pl080:   2 @00000000ce9a3773: 0x43baffc8 0x43bb3edc 0x00000000 0x9e03f001
+[   28.691012] pl08xdmac 9001000.pl080: allocated physical channel 0 for xfer on memcpy0
+[   28.693065] pl08xdmac 9001000.pl080: WRITE channel 0: csrc=0x43bac1d2, cdst=0x43bb00e6, clli=0x4337e011, cctl=0x1e03f002, ccfg=0x0000c000
+...
+[   28.941126] pl08xdmac 9001000.pl080: src=0x43bad504+/4 dst=0x43bb1848+/4 len=9233
+[   28.943821] pl08xdmac 9001000.pl080: mbus=dst sbus=src
+[   28.944726] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc max bytes per lli = 16380
+[   28.945643] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc fill lli with single lli chunk of size 0x00002410 (remainder 0x00002411)
+[   28.947219] pl08xdmac 9001000.pl080: pl08x_fill_llis_for_desc align with boundary, send odd bytes (remain 1)
+[   28.948248] pl08xdmac 9001000.pl080: lli            csrc       cdst       clli       cctl
+[   28.949171] pl08xdmac 9001000.pl080:   0 @000000003a57aa5b: 0x43bad504 0x43bb1848 0x4337e011 0x1e4bf904
+[   28.950958] pl08xdmac 9001000.pl080:   1 @0000000080658250: 0x43baf914 0x43bb3c58 0x00000000 0x9e03f001
+[   28.952028] pl08xdmac 9001000.pl080: allocated physical channel 0 for xfer on memcpy0
+[   28.953107] pl08xdmac 9001000.pl080: WRITE channel 0: csrc=0x43bad504, cdst=0x43bb1848, clli=0x4337e011, cctl=0x1e4bf904, ccfg=0x0000c000
+[   28.955467] pl08xdmac 9001000.pl080: txd 000000002cf18c89[b]: marked complete
+[   28.960501] dmatest: dma0chan0-copy0: summary 10 tests, 0 failures 33.59 iops 359 KB/s (0)
 
-Yes, I will update the SSID size and OAS properties to accept both 
-integer and string values in the next revision.
+TaoDing (1):
+  Fix the bug where the PL080 transfer complete interrupt is not
+    generated. Fix the bug where the PL080 LLI is not 32-bit aligned.
+    Fix the bug when PL080's source and destination widths
+    (swidth/dwidth) are inconsistent.
 
-Thanks,
-Nathan
+ hw/dma/pl080.c | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
+
+-- 
+2.43.0
+
 

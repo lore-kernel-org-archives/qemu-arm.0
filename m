@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F8AEB1070
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D1FEB1072
 	for <qemu-arm@archiver.kernel.org>; Tue, 10 Mar 2026 15:34:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vzz5o-0002sE-Co; Tue, 10 Mar 2026 11:33:57 -0400
+	id 1vzz5z-0002wU-5I; Tue, 10 Mar 2026 11:34:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vzz5g-0002qm-Bc
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:33:49 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1vzz5k-0002rd-KZ
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:33:55 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vzz5a-0007rW-I7
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:33:45 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-439b7c2788dso6822074f8f.1
- for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 08:33:41 -0700 (PDT)
+ id 1vzz5f-0007rs-Ub
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 11:33:51 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-439b7c2788dso6822109f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 08:33:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773156820; x=1773761620; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773156823; x=1773761623; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=phyKVf8+i/f8H3jvXeFmhE7LF3Q9UMc/WnROb/AlnvU=;
- b=VHFukDTYvgQifa5JNQVGn4XcO3r/CBxqZqQOG3t3FNnY0lNDtyU9OlCWTvo5kErZg9
- fux9IzMNe5QovtYxV4lKjL5J3G2JJUA9jqdaWvMPwN8TKbFs0NBAd86SWusuOqCluVzU
- fMUSXKcigUDHxV77tRVxMg4tg5I8N8UN+d1vczaWUk6jV+svfogE2IlrVBdhLRlZP393
- ofXhlEunLfZeVvJZYlv/AZ/hK063NgRKHPgMesIdgsFdpGclRNPTINP0zipO5ibS8duc
- 79iM4upuWMISY7MJ1GyoLyzgheUI17btfilHi+lo26TC3I/AyYZaYJvEy4sexEJTUfTw
- cRWw==
+ bh=DgItLWleYDMgqjfqaZWlaJdobsVkFs5LpuLzkjcWcM8=;
+ b=eTRSOYVS2fJnyXW0xksorvmbOlrooahpJj34AQpXvHnykDJ5EXBF6GlJUMHdzO7xbx
+ okOhq618LNUNlBRrtUiforjbKL9PZ3slLVZCMEx+FmZxo27CBMI5Cuqw7UxqTdAB+hmP
+ eVkm6Vt5cM+ZG1pFf753D5FvLjptmED/e791QPvOtDHYBreimBB42Mp2wgfVF6OfX2WG
+ 86eREbKcrPL88LiesO8/QBVsVZgh0F9OadqEwmOWdqCyHtCK+VPuaPLWe2xKMToHDuZn
+ gHJninR8Bwa7dIrPbP0fpvQYp/gIWajxDPfisaCFmAxG61DRj6OBxM5Ejc5daIO5IXSf
+ bk+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773156820; x=1773761620;
+ d=1e100.net; s=20230601; t=1773156823; x=1773761623;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=phyKVf8+i/f8H3jvXeFmhE7LF3Q9UMc/WnROb/AlnvU=;
- b=FMO581Q80M2QubVy/aWaz1A9DMfNkTCTL6Ig9GXMDoqLM35JPIXhCiZHYvTYzeZBs+
- j7xhVCFH1TJczClOLKEU2XrzpJNmgqb/Wrr3K2ETGXTetBowqJLPcY0A+3DKLV4YMKmr
- P2cgiO//xQv+XM14d+pmX6fWlY5Sm91Uq1AXAKw9K30DmM/0oFMjt+4ZdqBiFKZYBLWp
- b5YknTBNvMseWRrXhr0yhCOuNNT46PJHnnqpiSClDwgbjb6TOMYflFG0ZOhc7xQYxPfb
- BJ1BV6WwXHsU3VD5iTCbYK+k3T0FkzYN0XCRAfBvFBfK89C6cqcVg+ugaWwT6bdgjmiy
- MCzA==
-X-Gm-Message-State: AOJu0YwejmuJ9HwahYaLIHEi65/yGTLXqezxofSS4KqOgk7aU603IPVT
- cbZDINHzomBfTIeh+ijGKpkRsWv/C09F2163tAf7iF9/vi1kbAjYPknbxNQVFS7nLPGlKOcAfUh
- pzko6
-X-Gm-Gg: ATEYQzznLc29VKoVS+ZmfJpyHUPd87PmZolMTlO8F3Tr63z/DBlBrssMdvOR1mVIeq4
- 6qZOIJ+VgmRFoqMqGSbLiprYYHgKvNRg74h9myC04ewSyXvkMXTrGqen394tbxMe6GxdFVYyARF
- vRfCQZKLHZX0rSTjGDPjgZf7gdB4p56tUyHmuNX8xQxwB6R2ilsVQgJMAkE6evzjP0QZm9Q8/yl
- PBGJm+rXcn10AVGG+eGql1RfR+30O0c62mHelbAlyU2p8IBsNQyVSbO20RXHY9DO3sANTd6ujKR
- K3qVtjZJurKfmj7SBcdo0FPZHaG9cBANtk6i5Ho78B3+V9KxNWlzHOCy6/oas0dwOD59OvgPkg1
- 6gEEF082R0REJmFK0U8yllCxigMa9FuXenopALI5eY2sZkJWLZ+Btbn5SPsCAOGdtoFss6sRwmt
- +AD6tAM2RQUHFCpjCKbAa39T7s3yuxb75giSEbuvEV+YJLCPF+sNx5hFHts+qi0NySZRXkvTFgE
- diWr1GbI07hoVpOranWLPVqsxkzRl+1HuLgAhtDqA==
-X-Received: by 2002:a5d:5d06:0:b0:439:b8e5:5c36 with SMTP id
- ffacd0b85a97d-439da35ca0emr27292959f8f.24.1773156819959; 
- Tue, 10 Mar 2026 08:33:39 -0700 (PDT)
+ bh=DgItLWleYDMgqjfqaZWlaJdobsVkFs5LpuLzkjcWcM8=;
+ b=jRp4niWlyrFHmAOcQqMg4yzMoCo9tzU12xlJBuBadmCS/LqwxtIzKtB8PlFje9nKuK
+ QKVwkuEMcWQkEaliPIn6W2NBIeWabWUoGquAAo++FiKwOiKgtyaWKegcsZ6sXyvTP0S6
+ MiBsrn+Vwu9nfGBwBhP119uh+sJr2506UFLBqPHyAQ/ecpwB+VNDC+iBM07kCJNrBGIS
+ sp36JGLOKTEBq5tTaBOJ93toHpeFd5DBkUFh+Er0Ge7z+g0D6MD6sdKReZPVRohjLKG9
+ 3qMsWs5vQBXgnJJIFcJ+VQNm1TacmoJgtQ4PNeVHKUy2GubTk+wEz8TGo4MMtGGkyOsb
+ Ciew==
+X-Gm-Message-State: AOJu0YyWGY/DQCeGDQHu+7W+djoPC7vX/Hxueg3bnJo5W5L53XFTYFbI
+ SM8qf3UdzcqUg82/LvyPrh7YL0A7CfBgoS7LsERHsHFVLvzUc4/LWy+FFROltRVwx+YlR0Bp5LI
+ 9B80W
+X-Gm-Gg: ATEYQzzyIDq2qwRF5rX17u5mSqdfqunPEKZSKOglv8tIVLX2wTtDHEOxX+EeyjvlDk4
+ kPWiNS3dmYtH/G6RJ2aOitfsqrK6NWp2sPj9Lct5dAQ3UQIO8sOSPksLNp9BZTum9dVZ5GwyE4G
+ 7tej3Lh/nVtpfFfQSgZbenTEC7VFlHRJBLWPt+D86v+JC4j8+kyyTmjWRnniOENq0NvXKbm2t5L
+ OAZ5R5estujtcQw7XX7ubw//b822CUZx7H1vjzTqVqgxwK//n2YkaXQD+ZgteVlpcaSIxVDnlHA
+ g7gca8TLCPZJi1q0wEibyAc9kZ/HTk7h6RBjrEg0zpVw/7tgdegZz+qQTcKKWHAkLdI1JxGG+ub
+ sAlhhAiaG/i60WGMVKHXimLTXwlQwT6en6q+RIsenTMo1M4urnBwvIfrj6iu8Wk9RqxwF1j8+OP
+ Xfn/CG807zeCj5VyrwNuVXmHhyeloV6klCwOvDQaIIK2K5tvaUmTibgxYi1JzYfO/4N2JA7wTia
+ p3q44R4Stkf4JVlf2J4TDBtY+1VSDI=
+X-Received: by 2002:a05:6000:26c7:b0:439:b79d:b9ac with SMTP id
+ ffacd0b85a97d-439da67c237mr25995069f8f.45.1773156822857; 
+ Tue, 10 Mar 2026 08:33:42 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae45786sm41709388f8f.32.2026.03.10.08.33.36
+ ffacd0b85a97d-439dae45786sm41709388f8f.32.2026.03.10.08.33.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2026 08:33:36 -0700 (PDT)
+ Tue, 10 Mar 2026 08:33:40 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -74,18 +74,18 @@ Cc: Fabiano Rosas <farosas@suse.de>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-Subject: [PATCH 1/2] tests/qtest/ast2700-gpio-test: Use g_strdup_printf()
+Subject: [PATCH 2/2] tests/qtest/aspeed_gpio-test: Use g_strdup_printf()
  instead of char arrays
-Date: Tue, 10 Mar 2026 15:33:33 +0000
-Message-ID: <20260310153334.3063224-2-peter.maydell@linaro.org>
+Date: Tue, 10 Mar 2026 15:33:34 +0000
+Message-ID: <20260310153334.3063224-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260310153334.3063224-1-peter.maydell@linaro.org>
 References: <20260310153334.3063224-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,11 +111,11 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Older versions of gcc with -Wformat-overflow=2 don't like the usage of
 fixed size char arrays in this test; gcc 7.5.0 (SUSE Linux) says:
 
-../tests/qtest/ast2700-gpio-test.c: In function ‘test_input_pins’:
-../tests/qtest/ast2700-gpio-test.c:54:36: error: ‘sprintf’ may write a terminating nul past the end of the destination [-Werror=format-overflow=]
+../tests/qtest/aspeed_gpio-test.c: In function ‘test_set_input_pins’:
+../tests/qtest/aspeed_gpio-test.c:149:36: error: ‘sprintf’ may write a terminating nul past the end of the destination [-Werror=format-overflow=]
              sprintf(name, "gpio%c%d", c, i);
                                     ^
-../tests/qtest/ast2700-gpio-test.c:54:13: note: ‘sprintf’ output between 7 and 17 bytes into a destination of size 16
+../tests/qtest/aspeed_gpio-test.c:149:13: note: ‘sprintf’ output between 7 and 17 bytes into a destination of size 16
              sprintf(name, "gpio%c%d", c, i);
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,29 +127,29 @@ to use g_strdup_printf() for this kind of string work.
 Reported-by: Fabiano Rosas <farosas@suse.de>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/ast2700-gpio-test.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ tests/qtest/aspeed_gpio-test.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/ast2700-gpio-test.c b/tests/qtest/ast2700-gpio-test.c
-index eeae9bf11f..533feea7da 100644
---- a/tests/qtest/ast2700-gpio-test.c
-+++ b/tests/qtest/ast2700-gpio-test.c
-@@ -44,14 +44,13 @@ static void test_output_pins(const char *machine, const uint32_t base)
- static void test_input_pins(const char *machine, const uint32_t base)
+diff --git a/tests/qtest/aspeed_gpio-test.c b/tests/qtest/aspeed_gpio-test.c
+index decbba23c8..029b3731d1 100644
+--- a/tests/qtest/aspeed_gpio-test.c
++++ b/tests/qtest/aspeed_gpio-test.c
+@@ -140,13 +140,13 @@ static void test_set_colocated_pins(const void *data)
+ static void test_set_input_pins(const void *data)
  {
-     QTestState *s = qtest_init(machine);
+     QTestState *s = (QTestState *)data;
 -    char name[16];
-     uint32_t offset = 0;
-     uint32_t value = 0;
-     uint32_t pin = 0;
+     uint32_t value;
  
+     qtest_writel(s, AST2600_GPIO_BASE + GPIO_ABCD_DIRECTION, 0x00000000);
      for (char c = 'A'; c <= 'D'; c++) {
          for (int i = 0; i < 8; i++) {
 -            sprintf(name, "gpio%c%d", c, i);
 +            g_autofree const char *name = g_strdup_printf("gpio%c%d", c, i);
-             offset = base + (pin * 4);
-             /* input direction */
-             qtest_writel(s, offset, 0);
++
+             qtest_qom_set_bool(s, "/machine/soc/gpio", name, true);
+         }
+     }
 -- 
 2.43.0
 

@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B2B01125820
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 13:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D07A21125825
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 13:59:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0Jqj-00036s-5J; Wed, 11 Mar 2026 09:43:45 -0400
+	id 1w0K5u-000755-9y; Wed, 11 Mar 2026 09:59:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0Jqf-000369-6i
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 09:43:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1w0K5s-000747-AK
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 09:59:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0Jqc-00072x-KB
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 09:43:40 -0400
+ id 1w0K5p-0004fw-GL
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 09:59:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773236618;
+ s=mimecast20190719; t=1773237560;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oavnddaOXxzQD8fEx/WpdpMfC9OWAdSemUA4YeLWoHM=;
- b=ZUIQoI0FhO3iBMwis+9Qqxdnh29duIE30oX6DGsvqok8GRBl4Rg2joZWYKN61tpPaLZEZp
- bEHzeBj+vJrx6rJaZO4let0G3RVaik76j3pKFWg7kJR4Crgi4wuSLNfzQpk1MvI3uusXFX
- jhB4Fg3VHOQUTEE6Kdk5R7TPD6Q8Pv8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=jyxHV7EAj7S/AOcQBmSx3UDgudBsPBAjMuyhGS9Ssao=;
+ b=CrSRSPht3dX7ixfPpZDAxjMFicvX2rdUS1vr8h4QIWBMORytwP1Iv/ef0UmN7tM37BwCjM
+ 82tkP7WacIQjL5nn53J4P/RVux2ws2o7Td7BmJHVdxKKVkGMfnE9PMjeDsjLvgQt/dfnkm
+ es/JkuppxPrImYHhS6VIBLQ4f9WAAwk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-198-szB6mVijNGCTx9cA9ZA_Ng-1; Wed, 11 Mar 2026 09:43:34 -0400
-X-MC-Unique: szB6mVijNGCTx9cA9ZA_Ng-1
-X-Mimecast-MFC-AGG-ID: szB6mVijNGCTx9cA9ZA_Ng_1773236614
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-439ca4b3d0bso6413440f8f.3
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 06:43:34 -0700 (PDT)
+ us-mta-369-kPVG95McNsWOYoJpYVruFQ-1; Wed, 11 Mar 2026 09:59:17 -0400
+X-MC-Unique: kPVG95McNsWOYoJpYVruFQ-1
+X-Mimecast-MFC-AGG-ID: kPVG95McNsWOYoJpYVruFQ_1773237556
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-439c794ec8eso8340984f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 06:59:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773236613; x=1773841413;
+ d=1e100.net; s=20230601; t=1773237556; x=1773842356;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oavnddaOXxzQD8fEx/WpdpMfC9OWAdSemUA4YeLWoHM=;
- b=pFtBfiz72VBFeGNAed2Kf/5Je4nepit1LR/xtFSal2vIjC3YykHL4RCJC+XL/4uchz
- cO/VZaxLrTm+ErOtRF7EdnN+sp1Qayyy6SHaa+cpkGON0SabQEYE+Ig3C/CLi6uVFbzK
- cTgB4dgypraPSjyZhkeAHlmp+VMQCGO3xLLMGE5JRjPP6jOE+VSZiwa0on3qvbVVSuKZ
- IsUoZiJYD75+l5kmHPkwUZx161eVYu+YAt15vw3NrdNYzD4g6OXsy936E6xXtsL9x0w1
- p0Dy68XOyLhNu9TQ/XSszjkNrt3jIJJJ/ZZUIzLG1sWs/5au/x/YHWM+1lgXe1lHzegh
- bY/A==
+ bh=jyxHV7EAj7S/AOcQBmSx3UDgudBsPBAjMuyhGS9Ssao=;
+ b=xAjnS4SgxmvQNSzwFpvKiXZKM4D7ddi6+CzsK8qZhRFNBpxgMGYOgEhS51xpjidsTt
+ s6Pj//Jtk15VyOvDtTiP2HfJS/VM5r8Tw34kbO9A1rhJdwzhG6XVabNduYK2irStAu/v
+ K9bklzAguKS7l+/lB/y1M6cY6+kt06V86VP6xUUKtOkdrdQwy6Vck3MDbmIMuViBozY9
+ vXu0SGUQBfiUmTv15yMHdj+k3VHYeWyyql9+6KwbPh7vUeA10kmdgABPyXhAkJ5vnKqg
+ 3njgHG/gDFJta1Fek7BM3n/E3t03k5VT0qLlPOtpCbRRmiqAVQHy/9Uz4RF6GU+H72gM
+ Og0g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVRZCAQwR8t1zMgMxxmeJNaJsp+3eWoEkvLSGzvHjB9dopEnqT9aeS+APbnA6Faz9u289/5lq1eRA==@nongnu.org
-X-Gm-Message-State: AOJu0YxmGey25w7NYQDh5OxTErdMU1zSbCzJpQNlVKChi9MQxq2XMmVV
- yKJ1LIKWR8/PI1rkzg0fYXIwCgYucsod0kzsw0pJ/seK/Ca+6uGbDCg4xKqnm9EZ3j4JBW1hHi4
- ZMNiGO9swGv6F8OJDQNYeggVFMn/9Afk088HNZ3EV224mLA1KAu6Etw==
-X-Gm-Gg: ATEYQzyjpQRta0AXqlntGsrQXh+ErFXc6+xJP7N3VH6c0GJ1GWedZV/ubuzHToLHNL8
- OZTNJmZHpRCH+LPVjCvabGmowKrkHdZFG/eJEE0xGH7nwyggGal2VkfrfhHIVc5f9hkFsvUKbzt
- DuFImmbXYNMEmhue9Xnk3Mao1ah1Z0ZRXR5+HrHoPik2THuir0iYvOaxxpMA9zUwYaeNikWEJGx
- hl8sHGfftujAKLCv3jsQpDfWnZCsMGHgV6+33Mw5OA/Xx87gGgE0SjcJQdE5gYOlPTDEiBS17tT
- nayxcgdsXBeyBwoR99nUssH25d5+SlLZNFcs5mOw6r5hRaZLPv2OoqFdCNZTa3hA/PhP1wGQ1cs
- ByU0fu1XTVaK7s2sHS9e+1FPtIjKSW5qAlFbmsEtXZYEyKG/qD9fXxZGR1tNK+AUgrYJcFQ==
-X-Received: by 2002:a5d:5f42:0:b0:439:b0ed:2af6 with SMTP id
- ffacd0b85a97d-439f821d43dmr5172880f8f.26.1773236613456; 
- Wed, 11 Mar 2026 06:43:33 -0700 (PDT)
-X-Received: by 2002:a5d:5f42:0:b0:439:b0ed:2af6 with SMTP id
- ffacd0b85a97d-439f821d43dmr5172815f8f.26.1773236612915; 
- Wed, 11 Mar 2026 06:43:32 -0700 (PDT)
+ AJvYcCWSLnco0KYrKrfwR+dCRSmfBYkTN6p/dKb0ymQEj/3ZZwb28/4Ae7kzaf7HMKXCYiBJGdzPFUg08g==@nongnu.org
+X-Gm-Message-State: AOJu0YzUR67lmAJ95sk8+FXDIFlxNk/9BJQ6d8T6Qka78nGjUH+6ZQSw
+ KrQB8h4kZtztboLnBI0wuptuXvfK4jZVy6OIDHpmrUOSc87tY4DTj/ts9coWdwDNnEX4B7PqbnG
+ dpV3qER6lxAAhsQeZrm6MhI1uAPudECMh3tkK490UTBfR2kP3a6b2Mg==
+X-Gm-Gg: ATEYQzyBUxLaUpQ6Qc+inAKVRelz+OmFXrNGUKAnMjyzobtI3l2bCXERBLTwjlBKlrr
+ wQwiDdztHukmWfz55g44mrgceYDQqXm+VVmjONOgEwVfwQU38Oskb/EXpLqsL6AuMfR8h0cGWwb
+ 68occylFxRtRD7XLxBRS/q/HeHgvEiHkw2uqy1FK9sqZoYe36CQk5phYRkLDN7x7R9jo93Xqhax
+ OXkv4okmdmqzzU5n9qfVTJkcIunCZWB2Kctm2tpmis56vk2DZZ3j+UaQYqkKLwu2Rpksuxz58Dp
+ Rder7fK1elB+hauy7+SlLkq7ByoGOyku/yNSxIi9C23ChicKlY8WQRNv4SfkgNxJEVRljHTVK0D
+ ABjUeDNMwB+y2/Hg8i5gWlUTmyQwJ2zx66dg4s7/w4FDcXx+kQtpl+q/NxNligJfxQyKqVw==
+X-Received: by 2002:a05:6000:4014:b0:439:b4c5:cef2 with SMTP id
+ ffacd0b85a97d-439f820137fmr5040151f8f.24.1773237555916; 
+ Wed, 11 Mar 2026 06:59:15 -0700 (PDT)
+X-Received: by 2002:a05:6000:4014:b0:439:b4c5:cef2 with SMTP id
+ ffacd0b85a97d-439f820137fmr5040097f8f.24.1773237555418; 
+ Wed, 11 Mar 2026 06:59:15 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439f818d5eesm8055650f8f.1.2026.03.11.06.43.31
+ ffacd0b85a97d-439f8104515sm6932204f8f.0.2026.03.11.06.59.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Mar 2026 06:43:32 -0700 (PDT)
-Message-ID: <69714438-dd2a-4ef0-ae60-184827a13b81@redhat.com>
-Date: Wed, 11 Mar 2026 14:43:31 +0100
+ Wed, 11 Mar 2026 06:59:14 -0700 (PDT)
+Message-ID: <e5764435-fba0-43d6-8402-4f0b74bada88@redhat.com>
+Date: Wed, 11 Mar 2026 14:59:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for CMDQV
@@ -92,19 +92,19 @@ References: <20260226105056.897-1-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20260226105056.897-18-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FO22jaddFyHShfQUUbqlNLqhHnOvGGgke98IAUH4LIM_1773236614
+X-Mimecast-MFC-PROC-ID: 4TkMv0hHlhJ_LDzlQV3jkEri1YfFFQu7NT_xfLEjsOg_1773237556
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -137,24 +137,6 @@ On 2/26/26 11:50 AM, Shameer Kolothum wrote:
 > vIOMMU allocation. However, the logical-to-physical association between
 > VCMDQs and a VINTF is only established after HW_QUEUE allocation. Prior
 > to that, the mapped Page0 does not back any real VCMDQ state.
-So what does happen if the guest attempts to access the VI CMDQ before
-its mmapping.
-
-At the moment MMIO accesses are valid as VI_VCMDQ0 MMIOs are handled in
-the same MMIO region as the Config page. 
-Is it the expected behavior? I guess you should signal an error and
-maaybe signal an interrupt if it is not masked for this VI?
-
-Spec says:"While the SW can program the virtual CMDQ(s) directly using
-the direct VCMDQ aperture (and not though the Virtual Interface), it is
-required hat the VCMDQ be allocated to a VI before it is used to send
-commands to the SMMU
-
-Note the terminology used here: direct VCMDQ aparture (not Global)
-
-Thanks
-
-Eric
 >
 > When VINTF is enabled, mmap the kernel provided Page0 region and
 > unmap it when VINTF is disabled. This prepares the VINTF mapping
@@ -222,6 +204,12 @@ Eric
 > +    if (!iommufd_backend_viommu_mmap(viommu->iommufd, viommu->viommu_id,
 > +                                     VINTF_PAGE_SIZE,
 > +                                     cmdqv->cmdqv_data.out_vintf_mmap_offset,
+If I am not wrong the mmap_offset is only available after
+iommufd_backend_alloc_hw_queue(). So I would suggest to first introduce
+the patch that does the iommufd_backend_alloc_hw_queue (ie. 19/32) and
+then this one
+
+Eric
 > +                                     &cmdqv->vintf_page0, errp)) {
 > +        return false;
 > +    }

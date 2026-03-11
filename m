@@ -4,56 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA411125847
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:27:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FEC0112584D
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:27:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0LPw-0002zL-71; Wed, 11 Mar 2026 11:24:17 -0400
+	id 1w0LP2-0000l7-KA; Wed, 11 Mar 2026 11:23:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0LPh-0002fJ-CR; Wed, 11 Mar 2026 11:23:58 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w0LKm-0001cT-PL; Wed, 11 Mar 2026 11:18:53 -0400
+Received: from sender4-of-o54.zoho.com ([136.143.188.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0LPb-00030U-Mn; Wed, 11 Mar 2026 11:23:57 -0400
-Received: from mail.maildlp.com (unknown [172.18.224.150])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWDyr3BhszJ468g;
- Wed, 11 Mar 2026 23:23:00 +0800 (CST)
-Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id D268B4056A;
- Wed, 11 Mar 2026 23:23:46 +0800 (CST)
-Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
- (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
- 2026 15:23:46 +0000
-Date: Wed, 11 Mar 2026 15:23:44 +0000
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 27/65] hw/intc/arm_gicv5: Update SPI state for CLEAR/SET
- events
-Message-ID: <20260311152344.00004f06@huawei.com>
-In-Reply-To: <20260223170212.441276-28-peter.maydell@linaro.org>
-References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-28-peter.maydell@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w0LKl-0000xW-Af; Wed, 11 Mar 2026 11:18:52 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1773242212; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=GI7VVaDmpWAiApiWH9BukEkFSI4c6sC7L+TMUazcL0BGaQQToaFYc9KmBGkXua3LBH1GrdXbsf2syVqFS6u3Gw47s5FiV3Rk9QSRaqqo/TZI9ctzUcHTVh5oZJQYQRsiBaXH2zWrCtH517gOlHIDZXNcjJ1AIorf2OS3qKflHQs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1773242212;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=TtHVV09/azBFz2Seh9PYlKsEIwHX8fbx5TVphaMR2YA=; 
+ b=PX/yC5FQ61oiEjn3y/HPY78ZCFOFI8CzucrzcAmcsFtHyzz30CrMZ7vPCXzCUI7yuI5XU8gxpNQr11V9s8nbo/VcM5fNUIjdU2tBAS72zO5aTBLRCelpnFuMMjk/MA0/JdQxShGl57alKpSbCOXJAady8Day55X3TX79nwgRyCs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=anirudhrb.com;
+ spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
+ dmarc=pass header.from=<anirudh@anirudhrb.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773242212; 
+ s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
+ h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+ bh=TtHVV09/azBFz2Seh9PYlKsEIwHX8fbx5TVphaMR2YA=;
+ b=pWt2EdvvteRCwbFsHc20kbQ9TpJyhMW+s3m2X6V7tcX80jq4v+ZlcUS9TtT3Vb1s
+ XqcYD4T3hDR4JVNLshRVF1r1RFsEosIrijFTylWbm+XwH4lLACXp5EdGbdf1if8UDdx
+ 6ZDimYP93Fug5YwOqImxiLVrS44jBuEYdbyUboqI=
+Received: by mx.zohomail.com with SMTPS id 1773242209175320.2625669690708;
+ Wed, 11 Mar 2026 08:16:49 -0700 (PDT)
+From: Anirudh Rayabharam <anirudh@anirudhrb.com>
+Date: Wed, 11 Mar 2026 15:15:36 +0000
+Subject: [PATCH 09/14] target/arm: cpu: Mark MSHV supporting PSCI 1.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
- dubpeml500005.china.huawei.com (7.214.145.207)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Message-Id: <20260311-mshv_accel_arm64_supp-v1-9-c31699b7bc1f@anirudhrb.com>
+References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
+In-Reply-To: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
+To: qemu-devel@nongnu.org
+Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, 
+ Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
+X-Mailer: b4 0.14.3
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.54;
+ envelope-from=anirudh@anirudhrb.com; helo=sender4-of-o54.zoho.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 11 Mar 2026 11:21:32 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,27 +82,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:34 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
 
-> When an SPI irq line changes level, this causes what the spec
-> describes as SET_LEVEL, SET_EDGE or CLEAR events.  These also happen
-> when the trigger mode is reconfigured, or when software requests a
-> manual resample via the IRS_SPI_RESAMPLER register.
-> 
-> SET_LEVEL and SET_EDGE events make the interrupt pending, and update
-> its handler mode to match its trigger mode.  CLEAR events make the
-> interrupt no longer pending.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+MSHV supports PSCI 1.3. Expose this version to guests.
 
-Some fiddly rules covered by this one, but far as I can tell you
-have it right.
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+---
+ target/arm/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 4b1e9750e6..a0a018a8cd 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1157,7 +1157,7 @@ static void arm_cpu_initfn(Object *obj)
+     if (tcg_enabled() || hvf_enabled()) {
+         /* TCG and HVF implement PSCI 1.1 */
+         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
+-    } else if (whpx_enabled()) {
++    } else if (whpx_enabled() || mshv_enabled()) {
+         cpu->psci_version = QEMU_PSCI_VERSION_1_3;
+     }
+ }
+
+-- 
+2.43.0
 
 

@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E6B1112584D
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B45EE1125842
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:32:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0LVo-0007YQ-OZ; Wed, 11 Mar 2026 11:30:19 -0400
+	id 1w0LXU-0000QM-D4; Wed, 11 Mar 2026 11:32:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0LVE-00070F-4H; Wed, 11 Mar 2026 11:29:40 -0400
+ id 1w0LXR-0000PI-9c; Wed, 11 Mar 2026 11:31:57 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0LVC-0004O8-Is; Wed, 11 Mar 2026 11:29:39 -0400
+ id 1w0LXP-0005C4-NJ; Wed, 11 Mar 2026 11:31:57 -0400
 Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWF6H2wB0zHnH5R;
- Wed, 11 Mar 2026 23:29:27 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWF8C2D9dzJ46C6;
+ Wed, 11 Mar 2026 23:31:07 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 4FDC240086;
- Wed, 11 Mar 2026 23:29:35 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id B3D0840086;
+ Wed, 11 Mar 2026 23:31:53 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
- 2026 15:29:34 +0000
-Date: Wed, 11 Mar 2026 15:29:33 +0000
+ 2026 15:31:53 +0000
+Date: Wed, 11 Mar 2026 15:31:52 +0000
 To: Peter Maydell <peter.maydell@linaro.org>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 29/65] hw/intc/arm_gicv5: Implement IRS_SYNCR and
- IRS_SYNC_STATUSR
-Message-ID: <20260311152933.00006ed1@huawei.com>
-In-Reply-To: <20260223170212.441276-30-peter.maydell@linaro.org>
+Subject: Re: [PATCH 30/65] hw/intc/arm_gicv5: Implement
+ IRS_PE_{CR0,SELR,STATUSR}
+Message-ID: <20260311153152.000032c7@huawei.com>
+In-Reply-To: <20260223170212.441276-31-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-30-peter.maydell@linaro.org>
+ <20260223170212.441276-31-peter.maydell@linaro.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -70,17 +70,23 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:36 +0000
+On Mon, 23 Feb 2026 17:01:37 +0000
 Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> The IRS_SYNCR register is used by software to request synchronization
-> of interrupt events.  This means that in-flight interrupt events are
-> guaranteed to have been delivered.
+> The IRS_PE_CR0, IRS_PE_SELR, IRS_PE_STATUSR registers allow software
+> to set and query per-CPU config.  Software writes the AFFID of a CPU
+> to IRS_PE_SELR, and can then read and write the 1ofN config for that
+> CPU to IRS_PE_CR0, and read the CPU's online status from
+> IRS_PE_STATUSR.
 > 
-> Since QEMU's implementation is entirely synchronous, syncs are a
-> no-op for us.  This means we can ignore writes to IRS_SYNCR and
-> always report "sync complete" via the IDLE bit in IRS_SYNC_STATUSR.
+> For QEMU, we do not implement 1-of-N interrupt routing, so IRS_PE_CR0
+> can be RAZ/WI.  Our CPUs are always online and selecting a new one
+> via SELR is instantaneous, so IRS_PE_STATUSR will return either
+> ONLINE | V | IDLE if a valid AFFID was written to SELR, or just IDLE
+> if an invalid AFFID was written.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+
 

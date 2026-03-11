@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08002FD88DF
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 02:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AECFCFD88DF
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 02:28:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w09IY-0000f6-Lt; Tue, 10 Mar 2026 22:27:46 -0400
+	id 1w09IW-0000XW-DE; Tue, 10 Mar 2026 22:27:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w09IX-0000bR-Bd
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:27:45 -0400
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+ id 1w09IT-0000Qc-C7
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:27:41 -0400
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w09IU-0003ss-0y
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:27:45 -0400
-Received: by mail-dl1-x122d.google.com with SMTP id
- a92af1059eb24-12713e56abdso526718c88.1
- for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 19:27:41 -0700 (PDT)
+ id 1w09IR-0003sX-SR
+ for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:27:41 -0400
+Received: by mail-dl1-x1236.google.com with SMTP id
+ a92af1059eb24-1271195d2a7so797830c88.0
+ for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 19:27:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773196060; x=1773800860; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773196058; x=1773800858; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EXwwiABDq8rPzJnL1JUdTxpV62wLUq0WTiy3Tyw5lEg=;
- b=cMckmbEYxoTOwQXzPfancI+xVFDnkB6C0h04ougu2aYf0A/yvr8jPMR5uvkAd0tbAn
- wBpuDNQHXZ/6XeijgnrPH7hqFwRlOHbgNJgn+ML9MC0LnNhneTUxJ+KH4PY/U1SAlzPd
- T5cnOIfGb2S5+EtH2Q5O7GwoiMe853Mtd/c9GL9FT6PRkbmXYKEtbpsqECHFBe+TrCOH
- 9/VcoCFgIOG5eoYJCi4J8zBXL47zfX08J8d9ZqbIbXYTjy30HT7USHKWphWYdJYINwhG
- tOP8eKPPSnM4QNW7RW2HanV85F7NTkW2BnvSIQL9RPrad6jqiI5M7ZnZ9QO6z3iVp1Wc
- OzCg==
+ bh=qs5wJWhyZT6XUWYG06o5mhToQbdPiBSiCeM1BJtNX2s=;
+ b=Nh9DMWEd3ePaeXeywIk06gNze9WC/+i56hCd0rciCD/y7zhLc1PJMXEaHz0vVVg24k
+ O2srS94hqYFbTncbI26mQDHSsIZb62tCYrGxnUiVi85FqnKQf147SUJ+1PDnitwZ+Ogh
+ 0TqqKiOxwWG6BS0y7+uYlFkkScKYFAzih8Z1si3QC0I8YA2SYblIUnRdgN/WbfJHwce+
+ X+7SjbkhFXbR9/uBkfp9m/UHeKF72iXR4+1gQz8LFRe5cGEjwFCrKjU0n4cffbknQtxi
+ F/YRCttr/NXoQWc5DcH48ArQYZ0WlujcqHYEdDhurVuB/ALZDte8kRL5Q6uAz5QTBZWZ
+ D8hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773196060; x=1773800860;
+ d=1e100.net; s=20230601; t=1773196058; x=1773800858;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=EXwwiABDq8rPzJnL1JUdTxpV62wLUq0WTiy3Tyw5lEg=;
- b=iGXirJVMu8t/frAqHrTZykEh5tYLFc2TKQYUZrWfQ55kdrfICZZnP5JmKXxF0amtlU
- w2wmY6MxbgQ0lYMRjrrJN0OfmYmGbRCaeWDoRSAXNk6YqLWP264N31ubYfIjrNQJSXjR
- UsFTyf983HIl1GcnA2pYCRyEeyG/FKSPsHRh1QhNBycTbM5Dt4UBRW+zZ2mCAPPJhpR6
- E3raQiaQZwp4Sz85Znjfb+tU/YMmJS308IDSUZFc+qwvCtOMw8Ctm+TbqPtPHLQ2pj+S
- XCn5KB5Mkh+ysO/ldEdlbTDJ7N7FIYO00Gg46ClK6/62zjDkhDG0XNk1GiqK2U7YRVh7
- 3QsQ==
-X-Gm-Message-State: AOJu0YzFsr80O2H/gjenlIUwqfUtD4DQxmi0sypeS/O5cyBuyJOnuEqk
- cmzjSLo1hXMdM+8Qx/ifWtiCeb+Vb2ALmvahmH5+6LKYC6JV5ewc2dlK
-X-Gm-Gg: ATEYQzzNf1zjE1TQyXrbLZhrGrivZoZaPSWYrCRWnN4gJI/YLxvbOgt0HYhENDVmImv
- /NChbkNT9BFl64zJIjJuuNV1B+VkmU2Bd7N4frJqev2zd5XpQgfXRzU7grBK3g5hW/PT0ExKukr
- RKNjOLz0OuoUzP9zOR5MYOqNJ1UTweaqqaqHk2Dmaj8U5sy/1vUsztes8avOXPLG5ZIyqCkqbwp
- gKIJlGE3AR3TtzegXTS3UkNhH7rRo41MIr3kWeF6A+dJaXDNk+/mNduCx84LWPJzezbyk4YsiJe
- s93bhtcCHF7F1WVkHrDsbi9lCp7uxN5XgU6tuzwF7r1nfX3FY/k+f9klNwaCeUxT5RsSx7MV6/B
- DxVP6WSEQtYzfmZlF0bJfB4aW5RphT7AD6d+34jWxLhJ93viiUrwLisusswiR4y4DHCsjtDqZGy
- kAM/rkpBibnxbNHsJOFjn3WchmWb9+GH4gBSxdZtby5POPyW730UU=
-X-Received: by 2002:a05:7022:e28:b0:128:cdb7:76e1 with SMTP id
- a92af1059eb24-128e7a2f765mr320314c88.13.1773196060236; 
- Tue, 10 Mar 2026 19:27:40 -0700 (PDT)
+ bh=qs5wJWhyZT6XUWYG06o5mhToQbdPiBSiCeM1BJtNX2s=;
+ b=TS2AcgOM+ZQBDnmVNpuKugNqxTHqkk1osaDC913ZlU6o4UNsSItDjgPETSAr4n15di
+ yKrms/EYaJKPrakcHZl4gkXM+q8egFUgQYlidP3sa9yxuXUpKkUlRtOmBBx3h41mawXs
+ FBMsxCp8ryf3x8daxxr0tEiC+nrVxV4jXAL2mexSfr1EbTiq7piv6VKWu245BGyYNZr4
+ wESC2PPTl7puwSeyLdr6YEGwQfsRx9DHjXuK0q/VAisGBEDDp0Bxd4XP1nZlsuFeRL3f
+ qCwwZBEeLmdeIMUSDuTRLJEuNTrygFT96MkL/k98xPDV0c/OQQ5vswEnBOFzJiLg8FRO
+ Xemg==
+X-Gm-Message-State: AOJu0YzPob5GergRqUFuBhDIgrXFEDZK9pD0786FX2eNm3InsJswVnIE
+ j59btNDnvpYmGSRDtl6soEWvEZwNPdZV5RvoNYrFulFmX0O44RZ6vs0V
+X-Gm-Gg: ATEYQzy/9JnjuZ6APbA5NptOzBWMOUi2F7Rg/KIU+deKX2Ibbd4GBN7Y7XsX3YUZ+Se
+ d2leW4T+W7Y/qGkHx36DMHnP0LT46EMGR5cVfziD7a1KM9vnZnW1qW2s3max6pQGwvzwK3jFtzJ
+ EvKmFvsc7ayUJvGaPWxZEURGIfN5P64trYtHsit594jHygVfEFuyavpwiI7s9uzIf+lNsPiHmUg
+ V0dv8CI2wmxvMVZY1kAdQwJBFwMwEYdu/LcUdGerSqm8/YDt445VuHGEVy1kZgMKc87DmN3tnbH
+ oB086oAyWznioUFzi7gD5NsRJvyyeJ4sG9I6IPs80HLqKsD/qBrLRwonRD2IHd5hDWzGCz1ZJ5O
+ 42tWROhEXhdhB/Vrnej0Wb/AkkIQiBu+61qGxJ3mLpvPqpJMCB93Ng/7QhzlkOq0s37i9PfUZgS
+ 7jfs26DjxjEGpnxhEulA9d94wU/jKmfPAisN+OaKmmnk9llpq1MTQ=
+X-Received: by 2002:a05:7022:6714:b0:128:c134:c86 with SMTP id
+ a92af1059eb24-128e780efe6mr536449c88.23.1773196057900; 
+ Tue, 10 Mar 2026 19:27:37 -0700 (PDT)
 Received: from 192.168.0.29 ([2804:14d:4c71:86dd:80a9:8ba1:b664:ae3d])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-128e7bf1e1asm937039c88.3.2026.03.10.19.27.38
+ a92af1059eb24-128e7bf1e1asm937039c88.3.2026.03.10.19.27.35
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Mar 2026 19:27:39 -0700 (PDT)
+ Tue, 10 Mar 2026 19:27:37 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v2 1/2] accel/hvf: introduce map granule abstraction and IPA
- property
-Date: Tue, 10 Mar 2026 23:27:31 -0300
-Message-ID: <20260311022732.64141-2-lucaaamaral@gmail.com>
+Subject: [PATCH v2 0/2] hvf: map granule abstraction and configurable IPA
+Date: Tue, 10 Mar 2026 23:27:30 -0300
+Message-ID: <20260311022732.64141-1-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260311022732.64141-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260309214906.92578-1-lucaaamaral@gmail.com>
 References: <20260309214906.92578-1-lucaaamaral@gmail.com>
- <20260311022732.64141-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1236;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x1236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,191 +101,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace hardcoded qemu_real_host_page_size() in HVF memory mapping
-with a configurable map granule.  Non-aligned regions now return
-early instead of proceeding with add=false.
+macOS ARM64 requires 16KB alignment for hv_vm_map(), but the guest
+kernel uses 4KB pages.  When virtio-gpu blob BAR offsets are not
+16KB-aligned, the interior-mapping path fails, falling back to slow
+MMIO emulation.
 
-Add an 'ipa-granule' property (auto, 4k, 16k) on the HVF accelerator
-object for aarch64, allowing the user to select the IPA page granule
-for HVF stage-2 address translation:
+This series introduces:
 
-  -accel hvf,ipa-granule=4k
+1. A map granule abstraction (hvf_set/get_map_granule) replacing
+   hardcoded qemu_real_host_page_size() calls in HVF memory mapping.
+   Non-aligned regions return early instead of proceeding with
+   add=false (which attempted an unnecessary unmap).
+   An 'ipa-granule' property (auto, 4k, 16k) on the HVF accelerator
+   object allows opt-in configuration:
 
-'auto' (the default) resolves to the host page size (16KB on macOS
-ARM64).  The actual HVF configuration is handled by the arch-specific
-hvf_arch_vm_create() in a subsequent patch.
+     -accel hvf,ipa-granule=4k
 
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
----
+2. macOS 26 IPA granule support via hv_vm_config_set_ipa_granule(),
+   reading the ipa-granule property to select HV_IPA_GRANULE_4KB or
+   HV_IPA_GRANULE_16KB.  Falls back with a warning on macOS < 26.
+   Warns if the resolved granule exceeds the guest page size (Venus
+   blob mapping safety check).
+
+Dependencies: none.
+
+Changes v1 → v2 (Mohamed Mosaad review):
+- Replace hardcoded 4KB with configurable ipa-granule property
+  (auto, 4k, 16k) on the HVF accelerator object.
+- 'auto' defaults to host page size; explicit values opt in.
+- Add fallback warning when macOS < 26 can't honor the request.
+- Add Venus blob mapping safety warning (moved from venus-nogl
+  series to keep cross-series independence).
+- Use KiB constants instead of magic numbers.
+
+Lucas Amaral (2):
+  accel/hvf: introduce map granule abstraction and IPA property
+  target/arm/hvf: configure IPA granule on macOS 26
+
  accel/hvf/hvf-all.c      | 67 ++++++++++++++++++++++++++++++++++++++--
  include/system/hvf.h     | 15 +++++++++
  include/system/hvf_int.h |  1 +
- 3 files changed, 80 insertions(+), 3 deletions(-)
+ target/arm/hvf/hvf.c     | 49 +++++++++++++++++++++++++++++
+ 4 files changed, 129 insertions(+), 3 deletions(-)
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 033c677..d94926b 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -10,6 +10,8 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/error-report.h"
-+#include "qemu/units.h"
-+#include "qapi/error.h"
- #include "accel/accel-ops.h"
- #include "exec/cpu-common.h"
- #include "system/address-spaces.h"
-@@ -23,6 +25,21 @@
- 
- bool hvf_allowed;
- 
-+static uint64_t hvf_map_granule;
-+
-+void hvf_set_map_granule(uint64_t size)
-+{
-+    hvf_map_granule = size;
-+}
-+
-+uint64_t hvf_get_map_granule(void)
-+{
-+    if (!hvf_map_granule) {
-+        return qemu_real_host_page_size();
-+    }
-+    return hvf_map_granule;
-+}
-+
- const char *hvf_return_string(hv_return_t ret)
- {
-     switch (ret) {
-@@ -54,7 +71,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
- static void do_hv_vm_protect(hwaddr start, size_t size,
-                              hv_memory_flags_t flags)
- {
--    intptr_t page_mask = qemu_real_host_page_mask();
-+    intptr_t page_mask = -(intptr_t)hvf_get_map_granule();
-     hv_return_t ret;
- 
-     trace_hvf_vm_protect(start, size, flags,
-@@ -84,7 +101,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
-     MemoryRegion *area = section->mr;
-     bool writable = !area->readonly && !area->rom_device;
-     hv_memory_flags_t flags;
--    uint64_t page_size = qemu_real_host_page_size();
-+    uint64_t page_size = hvf_get_map_granule();
-     uint64_t gpa = section->offset_within_address_space;
-     uint64_t size = int128_get64(section->size);
-     hv_return_t ret;
-@@ -105,7 +122,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
-     if (!QEMU_IS_ALIGNED(size, page_size) ||
-         !QEMU_IS_ALIGNED(gpa, page_size)) {
-         /* Not page aligned, so we can not map as RAM */
--        add = false;
-+        return;
-     }
- 
-     if (!add) {
-@@ -187,6 +204,11 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
-     int pa_range = 36;
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
- 
-+    /* Resolve ipa-granule=auto → host page size */
-+    if (!s->ipa_granule) {
-+        s->ipa_granule = qemu_real_host_page_size();
-+    }
-+    hvf_set_map_granule(s->ipa_granule);
- 
-     if (mc->get_physical_address_range) {
-         pa_range = mc->get_physical_address_range(ms,
-@@ -217,6 +239,37 @@ static int hvf_gdbstub_sstep_flags(AccelState *as)
-     return SSTEP_ENABLE | SSTEP_NOIRQ;
- }
- 
-+#ifdef __aarch64__
-+static char *hvf_get_ipa_granule(Object *obj, Error **errp)
-+{
-+    HVFState *s = HVF_STATE(obj);
-+
-+    if (s->ipa_granule == 4 * KiB) {
-+        return g_strdup("4k");
-+    }
-+    if (s->ipa_granule == 16 * KiB) {
-+        return g_strdup("16k");
-+    }
-+    return g_strdup("auto");
-+}
-+
-+static void hvf_set_ipa_granule(Object *obj, const char *value, Error **errp)
-+{
-+    HVFState *s = HVF_STATE(obj);
-+
-+    if (!strcmp(value, "auto")) {
-+        s->ipa_granule = 0;
-+    } else if (!strcmp(value, "4k")) {
-+        s->ipa_granule = 4 * KiB;
-+    } else if (!strcmp(value, "16k")) {
-+        s->ipa_granule = 16 * KiB;
-+    } else {
-+        error_setg(errp, "invalid ipa-granule: '%s' (use auto, 4k, 16k)",
-+                   value);
-+    }
-+}
-+#endif /* __aarch64__ */
-+
- static void hvf_accel_class_init(ObjectClass *oc, const void *data)
- {
-     AccelClass *ac = ACCEL_CLASS(oc);
-@@ -224,6 +277,14 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
-     ac->init_machine = hvf_accel_init;
-     ac->allowed = &hvf_allowed;
-     ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
-+
-+#ifdef __aarch64__
-+    object_class_property_add_str(oc, "ipa-granule",
-+                                  hvf_get_ipa_granule,
-+                                  hvf_set_ipa_granule);
-+    object_class_property_set_description(oc, "ipa-granule",
-+        "IPA granule for HVF stage-2 translation (auto, 4k, 16k)");
-+#endif
- }
- 
- static const TypeInfo hvf_accel_type = {
-diff --git a/include/system/hvf.h b/include/system/hvf.h
-index d3dcf08..d1b702b 100644
---- a/include/system/hvf.h
-+++ b/include/system/hvf.h
-@@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
- DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
-                          TYPE_HVF_ACCEL)
- 
-+#ifdef CONFIG_HVF_IS_POSSIBLE
-+/*
-+ * Minimum alignment for hv_vm_map(). Returns host page size (16KB on
-+ * macOS ARM64), or 4KB when HVF 4KB IPA granule is configured (macOS 26+).
-+ */
-+void hvf_set_map_granule(uint64_t size);
-+uint64_t hvf_get_map_granule(void);
-+#else
-+static inline void hvf_set_map_granule(uint64_t size) {}
-+static inline uint64_t hvf_get_map_granule(void)
-+{
-+    return qemu_real_host_page_size();
-+}
-+#endif
-+
- #endif
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index 2621164..4c1caba 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -38,6 +38,7 @@ struct HVFState {
- 
-     hvf_vcpu_caps *hvf_caps;
-     uint64_t vtimer_offset;
-+    uint32_t ipa_granule;
-     QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
- };
- extern HVFState *hvf_state;
--- 
+--
 2.52.0
 
 

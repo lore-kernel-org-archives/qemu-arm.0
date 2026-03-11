@@ -4,137 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0553DFD88D8
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 02:37:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9074BFD88F3
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 04:38:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w09Rq-0005kx-DY; Tue, 10 Mar 2026 22:37:22 -0400
+	id 1w0BL5-0005rl-OH; Wed, 11 Mar 2026 00:38:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1w09Rp-0005kb-MJ
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:37:21 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w0BL4-0005ql-45
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 00:38:30 -0400
+Received: from p-west3-cluster3-host6-snip4-10.eps.apple.com ([57.103.72.151]
+ helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
- id 1w09Rn-00054O-F0
- for qemu-arm@nongnu.org; Tue, 10 Mar 2026 22:37:21 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 62AIWJLV3417135
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 02:37:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=qcppdkim1; bh=UT9CA032ReZS+FGJDFyjv+
- FY7jizDtZJi8z0EhFfcyQ=; b=JsEg/erjOUliQic46RhzPOt0tg+rx0JfqUywAF
- NvdBCmyWgX0PGKDQlgBo55CwAcV8xlIyLc1FOSNsghhlAGj33uUDIlj/YCZt3R8I
- +nLTzJOsIdgCapPi86tCt9OzAfV9KDkg2J+daB+QMQB3apn1LMX+DcshkI8Df4en
- ySWP9CvRhSJ562TM/WW4Tp+gjJ+YNrfxfPjg3yXgk+FZ6fIqa4cItsGquTAroBoQ
- fS8CtgdNbmv2ecfg96QBJPNVlDGC/p3yizLXeENXzZV93WLAtnS+AFrrhFsDU3GY
- xE2dqETDQ7gezE01IiRgVhlqE7QkBujmzUbwUhsQM+wd1MDg==
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ctja2b1wy-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 02:37:16 +0000 (GMT)
-Received: by mail-oi1-f200.google.com with SMTP id
- 5614622812f47-467102ea057so19090287b6e.2
- for <qemu-arm@nongnu.org>; Tue, 10 Mar 2026 19:37:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1773196636; x=1773801436; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=UT9CA032ReZS+FGJDFyjv+FY7jizDtZJi8z0EhFfcyQ=;
- b=W/vWsNbrF2WcUobdsLqdSHeR8ZmERqNQo7WDTaRA2C+MMUMe1TlzSU0GpFcTkysPk0
- 8PAxlQHq4IXQLgSwsAQkNKmnI+1gb0pWtv5j1fX8Ft8xwRTYF5+H8NRK3lU5wzEeuz61
- ReiwPO0U0anAqp9FU8pDOTkxKkDUP/grBSI0YRbdoqWhykadm3AEmYiPTqss5nglt1M4
- fpRG1XI0djJm03pX9cxkpq+jnCDIW+rG6lyI3IP5EmNnX+4vrEd9g2ls5dSe5syWtoUf
- DWCVB/xvYMTwNhXRg0L5GVPCAKpjfoDtQwaKZRBzckoEdGbR/7Lbh00Edz4YnKcygkj+
- 4wYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773196636; x=1773801436;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UT9CA032ReZS+FGJDFyjv+FY7jizDtZJi8z0EhFfcyQ=;
- b=ptPDmAVXj3U1/eadIO8UnPo9OlZmx6CQwELGh0N2bE5ILfc3o/7yfFWatKVqOffHQJ
- D7dV5eE2CQcFV71knas4PkmjQXw8KUTDqewNPs3wDcvc5QZOfRQTV0115oE1uc4zkTHe
- yjxzCnHW1mz4mS64XyLayvWtRqNkvRmf5y7X6pvegdVE1LNO2bfKqg7YwJHhyl9SkkPf
- R6gNgsTTCU1DM2NCsIBlDBykg4o3PQlFM7fQoVB4s4Pry6Sp13GR+BIqeelI8zcTtFEL
- i+L8kJH58KbQt4tHQ2t5j6op0REVj2ubLvCVx60uirXnbEuPgYEZl9JO5rMlAOPPncwT
- 6vVQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW8PfapnSJW+xbsd+XrmQ5aR2qxJ3v0Inkvltxyp3x5/pN7CREUsD3CcuM8B11IkIX7FR1OQUQ0HQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6JVcisOl67OzNG4Y/NWRoZwMpUlBvDk9pC3lz4r8CFDMQXzSZ
- dvPUboDJswphd4IOwUdzbIIbFahCZBv+XR/K2M9FIf9yyg++JEemz63na97vE8GGMpgKCI5+qC1
- yT+MCIb3kDotLA4lHwu4CE0gvFvvyppVQ5iNBD+vkoXGBTV//KeZw3S4=
-X-Gm-Gg: ATEYQzwomolXN+3bNbI3dsiyCNRC3N3bTZjHXpsdkCbG/dcSwTYKrJan/rtG3+9Jbip
- LuKApIx7Z3NclFVa4OpPyQbvMpuojmDC2KDpuQGWBLzCJeREOwXk/DsQsrjc7bSYaTsNz3OV+x7
- 3xI5a5/j8CSxjZassySKGkmqltvlCc+hhaf8CR/RpMrSyxUTzEZBbxKoFg80q2i0NYvJKMoEPHp
- as9Wdcpu/VRTWey6evUh1M7xzFLGfivcYFrhvT42i0EsDUFwrIB/wZliwj0oLi3MFXsovGn+rDn
- 3FNoLP+Dw5vTZgDGPfA2YS3JSSNWIWMRwc7sTXB4hkkIBBSqK7CCEmj7+CZefm0RK0DfvhGZ0+g
- 4n8UDqNpJUcGyZIKscGJRB/zIFXYHO/Vh+xIpBJd+uz790Gw8WhnZ4HxBeG8MyUxCAoj2F1FIjj
- Qs
-X-Received: by 2002:a05:6808:3505:b0:467:32c1:ad08 with SMTP id
- 5614622812f47-467335cf6a6mr613556b6e.56.1773196635668; 
- Tue, 10 Mar 2026 19:37:15 -0700 (PDT)
-X-Received: by 2002:a05:6808:3505:b0:467:32c1:ad08 with SMTP id
- 5614622812f47-467335cf6a6mr613524b6e.56.1773196635151; 
- Tue, 10 Mar 2026 19:37:15 -0700 (PDT)
-Received: from hu-jithjose-lv.qualcomm.com (Global_NAT1.qualcomm.com.
- [129.46.96.20]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-467342ef853sm435315b6e.15.2026.03.10.19.37.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2026 19:37:14 -0700 (PDT)
-From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-To: clg@kaod.org, peter.maydell@linaro.org
-Cc: steven_lee@aspeedtech.com, leetroy@gmail.com, jamin_lin@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jithu.joseph@oss.qualcomm.com,
- quan@os.amperecomputing.com, jae.yoo@oss.qualcomm.com
-Subject: [PATCH] hw/i2c/aspeed: fix lost interrupts on back-to-back commands
-Date: Tue, 10 Mar 2026 19:37:12 -0700
-Message-ID: <20260311023712.2730185-1-jithu.joseph@oss.qualcomm.com>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=c9WmgB9l c=1 sm=1 tr=0 ts=69b0d55c cx=c_pps
- a=AKZTfHrQPB8q3CcvmcIuDA==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=VwQbUJbxAAAA:8 a=vzhER2c_AAAA:8 a=EUspDBNiAAAA:8 a=i6Hr8m2T0cAuEC4tR94A:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=pF_qn-MSjDawc0seGVz6:22
- a=0YTRHmU2iG2pZC6F1fw2:22
-X-Proofpoint-ORIG-GUID: Qjs8yBsT0H5ZOZB0BPNr5pV-QzIqTV37
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDAyMCBTYWx0ZWRfX5fBEmCQsIBtb
- cQhdrQpSpZHMLiDiMa1UIPbJRX30YZWMxMxoTZlTb1rZFinKtbKEvHBZfht5wnGESIVlVwiNnxy
- uauG3wnAksZP8ZsgKLP0rygVGyZ3/XYgCXig9QbDKU5Ry76pn7mjYptgPZidvlvbxh1Gy9GFRhX
- CbAOuyvFR4o2yLg1WEl/KiE2/KObDSS4hof8cyFqfmlL/w6nB3/eXT8z33qPHtH5+isc7QtZiKl
- L18a0urmj41tJM2fCOBmCI+z+LgCaPX7swUHG4KVoGDQPaLnUMsiZkA07JFhROcd4/BD/lqwNtM
- H2lyW29eZULxv8ysLAebiRDWOo+UHOCIo8RIS6WOkNjGfzctVFmOOLQ1PGkAOCBS/Xe7M88eWv4
- aReyzoF7aaliVkdaad01fP2sIXM0eZ/4J3SVHzMNLPZGYo+Hzy2sZZ+A5HneZAEdBs9JDFRpTxk
- 9bE43W9kdNm2uPp0NiQ==
-X-Proofpoint-GUID: Qjs8yBsT0H5ZOZB0BPNr5pV-QzIqTV37
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w0BL1-00009h-TD
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 00:38:29 -0400
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-11 (Postfix) with ESMTPS id
+ 126CE1800115; Wed, 11 Mar 2026 04:38:22 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1773203905; x=1775795905;
+ bh=MRhTMLbckXL3VipTVa6PZJi3AQtBnnu+OOBo3XYWzYo=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=QKl2nVW+0W9S/LhY4GXF54Z6sJU/RxP1b0rk+D1yUJp1Kjx0vhWIeswfJR6I9KHuW/8ayY0hew/ffbtyAILbtgDbepa+9p+P1mTxH0rk2Oc1gS1qYyks95S//VIubnK5xu0aGmS5FgmcJKOgabAPgjl/DPMN6z17bL5vL4hYIb61JDgV5xGNimrObG9RPGrz+DryTAv1GzhCPa7QZ4Eh47ZeNqK848jgQ25sTKCtJuEsXt8czMM7iOmklfME6/SBVMbaNp1k0v0cCml0QZp2wtJ/KYejTrXIV69wDoty0+OlCIFUwy21pSUtmaJQA/PE8RvhpI33Ex5jtUFPMPqItg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-11 (Postfix) with ESMTPSA id
+ 4D52C18000B2; Wed, 11 Mar 2026 04:38:21 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH v2 1/2] accel/hvf: introduce map granule abstraction and
+ IPA property
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260311022732.64141-2-lucaaamaral@gmail.com>
+Date: Wed, 11 Mar 2026 05:38:09 +0100
+Cc: qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <14FFE8F2-761A-4311-8723-D080FBD0AE91@unpredictable.fr>
+References: <20260309214906.92578-1-lucaaamaral@gmail.com>
+ <20260311022732.64141-1-lucaaamaral@gmail.com>
+ <20260311022732.64141-2-lucaaamaral@gmail.com>
+To: Lucas Amaral <lucaaamaral@gmail.com>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Authority-Info-Out: v=2.4 cv=Xqn3+FF9 c=1 sm=1 tr=0 ts=69b0f1bf
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8
+ a=W6c9j4fWfPrNKXKlBuAA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: _rHirSdGNqjlB-tyq13PVxxFY0eD05xQ
+X-Proofpoint-ORIG-GUID: _rHirSdGNqjlB-tyq13PVxxFY0eD05xQ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDAzNiBTYWx0ZWRfX4pqProDahTfF
+ yV32Dt5YHUh9jm0wCBtiNglQNaB+4tLzVXWvcx3ynhUsaoGutzShu+QuVGcVv9Fgk5Z3Lyw8VZL
+ xkBiX1wAcx02nmv1yq4n87n+yaWcGYJMlV8FwYWq7KIesxk016eSEYnbycsMjyVsohwyC9Ll/3G
+ P1axIdKdK/JL6DS4TrWZr0zNk3f4pdEh0E0Td2HVSmgg4LWo/E5hBeuvx24hmGNDQtDN+kD30ZZ
+ GLxb1Bi2h0X0C+ShSTy2KTKoSl7MKK/1oOb7hxM310MTJSWG18xiDshyLw3lirnz0RJhhzhgN0b
+ tYt5yVMT3LSh3LRj2Zi2drev8udNvVbdebl6znfyrs1o8ezO0yTvy5ZW1xbToc=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-10_05,2026-03-09_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 malwarescore=0 lowpriorityscore=0 suspectscore=0 spamscore=0
- clxscore=1015 impostorscore=0 phishscore=0 bulkscore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603110020
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=jithu.joseph@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 mlxlogscore=999 mlxscore=0 bulkscore=0 phishscore=0
+ adultscore=0 suspectscore=0 malwarescore=0 clxscore=1030 spamscore=0
+ classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2601150000 definitions=main-2603110036
+X-JNJ: AAAAAAABfZ14g5adwcwab973LSuocN0zE5me5QHve3ueY25jcVk+EJiOiKgFfzjcdHZF5fdaVIeD7PIticIlweUz5UyAWxwNYuzVsVAcepwPQEMsk/GajgRThUFThDpSdRJEMsW47y4EbIMcLPtoqZ2TsGw8YN3BAEEw3qGwsVE3vAsNf5YIByjEc292zEUMZbmq+T3JfLuQTtl5UqlP6VAX8pJ3gGn686I/+lkavwg4gSSNJHKN7qGIALDTbyKtfbmKJ214Yx2lIExUfSufQy9vrPZi0uZsbWdpgv5fzFgq0BT2qLTG6dgjQq502J+R1Mlg4dkYgmGnf2jkCeINClC+HOD9c1PVd4PmVH8b6+Ux3ZvFtKVIEapEojRcOHl9wwTPvaSyC/nVc6A/xLIaEo3PnYHlG7cnP32cFWM6BnfhH2bW1UNZR3dDEHNxphxACLY3alAPLJKZ1SpS1aHxPOi2Se89WaVFhvSjJYooaGovu/qlHWM98+8JMXV/ssMHIlKvTXZkNQ5ugpx5oxnqrUnD4LoKK6B8Vi+d7zDVEJeDmLhd2XpzNuEdv/70tm6/gNJKiYJxr1gld3o0wsf5AtHUbDC7hQFZ0QkUgd5To8+Wp7Rf9orYD5PM6Xs7CkVxdq/O2GFY9iROM9++zVUYzekkxuE0Clq+5bQmnjo=
+Received-SPF: pass client-ip=57.103.72.151;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,201 +96,211 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QEMU executes I2C commands synchronously inside the CMD register write
-handler. On real hardware each command takes time on the bus, so the
-ISR can clear the previous interrupt status before the next completion
-arrives. In QEMU, when the guest ISR handles a TX_ACK and immediately
-issues the next command by writing to CMD, that command completes
-instantly — before the ISR returns to W1C-clear the first TX_ACK.
-Since the bit is already set, setting it again is a no-op. The ISR
-then clears it, wiping both completions at once. No interrupt fires
-for the second command and the driver stalls.
 
-This affects any multi-step I2C transaction: register reads, SMBus
-word reads, and PMBus device probes all fail ("Error: Read failed"
-from i2cget, -ETIMEDOUT from kernel drivers).
 
-The issue is exposed when the guest kernel includes commit "i2c:
-aspeed: Acknowledge Tx done with and without ACK irq late" [1] which
-defers W1C acknowledgment of TX_ACK until after the ISR has issued
-the next command. This means the old TX_ACK is still set when the
-next command completes synchronously, and the subsequent W1C wipes
-both completions at once.
+> On 11. Mar 2026, at 03:27, Lucas Amaral <lucaaamaral@gmail.com> wrote:
+>=20
+> Replace hardcoded qemu_real_host_page_size() in HVF memory mapping
+> with a configurable map granule.  Non-aligned regions now return
+> early instead of proceeding with add=3Dfalse.
+>=20
+> Add an 'ipa-granule' property (auto, 4k, 16k) on the HVF accelerator
+> object for aarch64, allowing the user to select the IPA page granule
+> for HVF stage-2 address translation:
+>=20
+>  -accel hvf,ipa-granule=3D4k
+>=20
+> 'auto' (the default) resolves to the host page size (16KB on macOS
+> ARM64).  The actual HVF configuration is handled by the arch-specific
+> hvf_arch_vm_create() in a subsequent patch.
+>=20
+> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+> ---
+> accel/hvf/hvf-all.c      | 67 ++++++++++++++++++++++++++++++++++++++--
+> include/system/hvf.h     | 15 +++++++++
+> include/system/hvf_int.h |  1 +
+> 3 files changed, 80 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 033c677..d94926b 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -10,6 +10,8 @@
+>=20
+> #include "qemu/osdep.h"
+> #include "qemu/error-report.h"
+> +#include "qemu/units.h"
+> +#include "qapi/error.h"
+> #include "accel/accel-ops.h"
+> #include "exec/cpu-common.h"
+> #include "system/address-spaces.h"
+> @@ -23,6 +25,21 @@
+>=20
+> bool hvf_allowed;
+>=20
+> +static uint64_t hvf_map_granule;
+> +
+> +void hvf_set_map_granule(uint64_t size)
+> +{
+> +    hvf_map_granule =3D size;
+> +}
+> +
+> +uint64_t hvf_get_map_granule(void)
+> +{
+> +    if (!hvf_map_granule) {
+> +        return qemu_real_host_page_size();
+> +    }
+> +    return hvf_map_granule;
+> +}
+> +
+> const char *hvf_return_string(hv_return_t ret)
+> {
+>     switch (ret) {
+> @@ -54,7 +71,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char =
+*file, unsigned int line,
+> static void do_hv_vm_protect(hwaddr start, size_t size,
+>                              hv_memory_flags_t flags)
+> {
+> -    intptr_t page_mask =3D qemu_real_host_page_mask();
+> +    intptr_t page_mask =3D -(intptr_t)hvf_get_map_granule();
+>     hv_return_t ret;
+>=20
+>     trace_hvf_vm_protect(start, size, flags,
+> @@ -84,7 +101,7 @@ static void hvf_set_phys_mem(MemoryRegionSection =
+*section, bool add)
+>     MemoryRegion *area =3D section->mr;
+>     bool writable =3D !area->readonly && !area->rom_device;
+>     hv_memory_flags_t flags;
+> -    uint64_t page_size =3D qemu_real_host_page_size();
+> +    uint64_t page_size =3D hvf_get_map_granule();
+>     uint64_t gpa =3D section->offset_within_address_space;
+>     uint64_t size =3D int128_get64(section->size);
+>     hv_return_t ret;
+> @@ -105,7 +122,7 @@ static void hvf_set_phys_mem(MemoryRegionSection =
+*section, bool add)
+>     if (!QEMU_IS_ALIGNED(size, page_size) ||
+>         !QEMU_IS_ALIGNED(gpa, page_size)) {
+>         /* Not page aligned, so we can not map as RAM */
+> -        add =3D false;
+> +        return;
+>     }
+>=20
+>     if (!add) {
+> @@ -187,6 +204,11 @@ static int hvf_accel_init(AccelState *as, =
+MachineState *ms)
+>     int pa_range =3D 36;
+>     MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+>=20
+> +    /* Resolve ipa-granule=3Dauto =E2=86=92 host page size */
+> +    if (!s->ipa_granule) {
+> +        s->ipa_granule =3D qemu_real_host_page_size();
+> +    }
+> +    hvf_set_map_granule(s->ipa_granule);
+>=20
+>     if (mc->get_physical_address_range) {
+>         pa_range =3D mc->get_physical_address_range(ms,
+> @@ -217,6 +239,37 @@ static int hvf_gdbstub_sstep_flags(AccelState =
+*as)
+>     return SSTEP_ENABLE | SSTEP_NOIRQ;
+> }
+>=20
+> +#ifdef __aarch64__
+Hello,
 
-The trace below shows `i2cget -y 15 0x50 0x00` (read EEPROM register
-0x00) failing without the fix. The first START+TX sets TX_ACK. The
-ISR handles it and issues a second TX to send the register address.
-That TX completes synchronously while TX_ACK is still set:
+checkpatch will warn on this, maybe this should be in a separate =
+potential hvf_arch_accel_init?
 
-  aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
-  aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
-  aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
-  aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
-  aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x1      # TX runs, TX_ACK already set!
-  aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # re-set is no-op
-  aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
-  aspeed_i2c_bus_read  0x10: 0x0                    # LOST — both ACKs wiped
-
-The driver sees INTR_STS=0 and never proceeds to the read phase.
-
-Fix this by tracking interrupt bits that collide with already-pending
-bits. Before calling aspeed_i2c_bus_handle_cmd(), save and clear
-INTR_STS so that only freshly set bits are visible after the call.
-Any overlap between the old and new bits is saved in pending_intr_sts.
-When the ISR later W1C-clears the old bits, re-apply the saved
-pending bits so the ISR sees them on its next loop iteration.
-
-With the fix, the same operation completes successfully:
-
-  aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
-  aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
-  aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
-  aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
-  aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x0      # INTR_STS cleared first
-  aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK freshly set
-  aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
-  aspeed_i2c_bus_read  0x10: 0x1                    # RE-DELIVERED from pending
-  aspeed_i2c_bus_write 0x14: 0x1b                   # ISR proceeds: START+RX
-  aspeed_i2c_bus_cmd cmd=0x40001b start|tx|rx|last| # read phase completes
-  i2c_recv recv(addr:0x50) data:0x00                # data received
-
-[1] https://lore.kernel.org/all/20231211102217.2436294-3-quan@os.amperecomputing.com/
-
-Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
----
-Background: A Linux kernel patch series by Quan Nguyen (Ampere) reworked
-the i2c-aspeed driver's interrupt handling to delay the W1C clear of
-TX_ACK until after the ISR has processed the completion and issued any
-follow-up command. The motivation was to correctly handle AST2600 and
-AST2500 hardware where I2C slave mode requires this ordering — the
-authors explicitly verified the series on both platforms. On our internal
-AST2600 hardware we carry this patch as a necessary fix for I2C slave
-mode to work correctly.
-
-The series did not make it into the upstream Linux kernel because test
-failures on QEMU blocked it. However, the failures are on the emulation
-side: QEMU executes I2C commands synchronously inside the MMIO write
-handler, causing a follow-up command to complete and re-raise an
-already-pending interrupt bit before the ISR has had a chance to
-W1C-clear it. On real hardware this race cannot occur since bus
-transactions take measurable time.
-
-Since the kernel patch reflects correct real-hardware behaviour, the
-right fix is to adapt QEMU's interrupt delivery to handle this ordering,
-rather than requiring the kernel driver to work around a QEMU-specific
-timing artifact. This patch does that.
-
- include/hw/i2c/aspeed_i2c.h |  1 +
- hw/i2c/aspeed_i2c.c         | 46 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 47 insertions(+)
-
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 53a9dba71b07..d42cb4865aa5 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -256,6 +256,7 @@ struct AspeedI2CBus {
-     qemu_irq irq;
- 
-     uint32_t regs[ASPEED_I2C_NEW_NUM_REG];
-+    uint32_t pending_intr_sts;
-     uint8_t pool[ASPEED_I2C_BUS_POOL_SIZE];
-     uint64_t dma_dram_offset;
- };
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 8022938f3478..ad6342bec0d4 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -628,6 +628,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-     bool handle_rx;
-     bool w1t;
-+    uint32_t old_intr;
-+    uint32_t cmd_intr;
- 
-     trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
- 
-@@ -665,6 +667,17 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-             break;
-         }
-         bus->regs[R_I2CM_INTR_STS] &= ~(value & 0xf007f07f);
-+        /*
-+         * Re-apply interrupts lost due to synchronous command completion.
-+         * When a command completes instantly during an MMIO write, the new
-+         * interrupt status bits collide with already-pending bits. After
-+         * the ISR clears them, re-apply the saved bits so the ISR can
-+         * process the new completion.
-+         */
-+        if (bus->pending_intr_sts) {
-+            bus->regs[R_I2CM_INTR_STS] |= bus->pending_intr_sts;
-+            bus->pending_intr_sts = 0;
-+        }
-         if (!bus->regs[R_I2CM_INTR_STS]) {
-             bus->controller->intr_status &= ~(1 << bus->id);
-             qemu_irq_lower(aic->bus_get_irq(bus));
-@@ -708,7 +721,17 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-             bus->regs[R_I2CM_CMD] = value;
-         }
- 
-+        old_intr = bus->regs[R_I2CM_INTR_STS];
-+        bus->regs[R_I2CM_INTR_STS] = 0;
-         aspeed_i2c_bus_handle_cmd(bus, value);
-+        /*
-+         * cmd_intr has only the bits handle_cmd freshly set.
-+         * Overlap with old_intr means the same bit was re-fired
-+         * and would be lost when the ISR W1C-clears the old one.
-+         */
-+        cmd_intr = bus->regs[R_I2CM_INTR_STS];
-+        bus->regs[R_I2CM_INTR_STS] = cmd_intr | old_intr;
-+        bus->pending_intr_sts |= old_intr & cmd_intr;
-         aspeed_i2c_bus_raise_interrupt(bus);
-         break;
-     case A_I2CM_DMA_TX_ADDR:
-@@ -845,6 +868,8 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
- {
-     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-     bool handle_rx;
-+    uint32_t old_intr;
-+    uint32_t cmd_intr;
- 
-     trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
- 
-@@ -868,6 +893,17 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
-         handle_rx = SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CD_INTR_STS, RX_DONE)
-                     && SHARED_FIELD_EX32(value, RX_DONE);
-         bus->regs[R_I2CD_INTR_STS] &= ~(value & 0x7FFF);
-+        /*
-+         * Re-apply interrupts lost due to synchronous command completion.
-+         * When a command completes instantly during an MMIO write, the new
-+         * interrupt status bits collide with already-pending bits. After
-+         * the ISR clears them, re-apply the saved bits so the ISR can
-+         * process the new completion.
-+         */
-+        if (bus->pending_intr_sts) {
-+            bus->regs[R_I2CD_INTR_STS] |= bus->pending_intr_sts;
-+            bus->pending_intr_sts = 0;
-+        }
-         if (!bus->regs[R_I2CD_INTR_STS]) {
-             bus->controller->intr_status &= ~(1 << bus->id);
-             qemu_irq_lower(aic->bus_get_irq(bus));
-@@ -915,7 +951,17 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->regs[R_I2CD_CMD] &= ~0xFFFF;
-         bus->regs[R_I2CD_CMD] |= value & 0xFFFF;
- 
-+        old_intr = bus->regs[R_I2CD_INTR_STS];
-+        bus->regs[R_I2CD_INTR_STS] = 0;
-         aspeed_i2c_bus_handle_cmd(bus, value);
-+        /*
-+         * cmd_intr has only the bits handle_cmd freshly set.
-+         * Overlap with old_intr means the same bit was re-fired
-+         * and would be lost when the ISR W1C-clears the old one.
-+         */
-+        cmd_intr = bus->regs[R_I2CD_INTR_STS];
-+        bus->regs[R_I2CD_INTR_STS] = cmd_intr | old_intr;
-+        bus->pending_intr_sts |= old_intr & cmd_intr;
-         aspeed_i2c_bus_raise_interrupt(bus);
-         break;
-     case A_I2CD_DMA_ADDR:
--- 
-2.43.0
+> +static char *hvf_get_ipa_granule(Object *obj, Error **errp)
+> +{
+> +    HVFState *s =3D HVF_STATE(obj);
+> +
+> +    if (s->ipa_granule =3D=3D 4 * KiB) {
+> +        return g_strdup("4k");
+> +    }
+> +    if (s->ipa_granule =3D=3D 16 * KiB) {
+> +        return g_strdup("16k");
+> +    }
+> +    return g_strdup("auto");
+> +}
+> +
+> +static void hvf_set_ipa_granule(Object *obj, const char *value, Error =
+**errp)
+> +{
+> +    HVFState *s =3D HVF_STATE(obj);
+> +
+> +    if (!strcmp(value, "auto")) {
+> +        s->ipa_granule =3D 0;
+> +    } else if (!strcmp(value, "4k")) {
+> +        s->ipa_granule =3D 4 * KiB;
+> +    } else if (!strcmp(value, "16k")) {
+> +        s->ipa_granule =3D 16 * KiB;
+> +    } else {
+> +        error_setg(errp, "invalid ipa-granule: '%s' (use auto, 4k, =
+16k)",
+> +                   value);
+> +    }
+> +}
+> +#endif /* __aarch64__ */
+> +
+> static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+> {
+>     AccelClass *ac =3D ACCEL_CLASS(oc);
+> @@ -224,6 +277,14 @@ static void hvf_accel_class_init(ObjectClass *oc, =
+const void *data)
+>     ac->init_machine =3D hvf_accel_init;
+>     ac->allowed =3D &hvf_allowed;
+>     ac->gdbstub_supported_sstep_flags =3D hvf_gdbstub_sstep_flags;
+> +
+> +#ifdef __aarch64__
+> +    object_class_property_add_str(oc, "ipa-granule",
+> +                                  hvf_get_ipa_granule,
+> +                                  hvf_set_ipa_granule);
+> +    object_class_property_set_description(oc, "ipa-granule",
+> +        "IPA granule for HVF stage-2 translation (auto, 4k, 16k)");
+> +#endif
+> }
+>=20
+> static const TypeInfo hvf_accel_type =3D {
+> diff --git a/include/system/hvf.h b/include/system/hvf.h
+> index d3dcf08..d1b702b 100644
+> --- a/include/system/hvf.h
+> +++ b/include/system/hvf.h
+> @@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
+> DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
+>                          TYPE_HVF_ACCEL)
+>=20
+> +#ifdef CONFIG_HVF_IS_POSSIBLE
+> +/*
+> + * Minimum alignment for hv_vm_map(). Returns host page size (16KB on
+> + * macOS ARM64), or 4KB when HVF 4KB IPA granule is configured (macOS =
+26+).
+> + */
+> +void hvf_set_map_granule(uint64_t size);
+> +uint64_t hvf_get_map_granule(void);
+> +#else
+> +static inline void hvf_set_map_granule(uint64_t size) {}
+> +static inline uint64_t hvf_get_map_granule(void)
+> +{
+> +    return qemu_real_host_page_size();
+> +}
+> +#endif
+> +
+> #endif
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 2621164..4c1caba 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -38,6 +38,7 @@ struct HVFState {
+>=20
+>     hvf_vcpu_caps *hvf_caps;
+>     uint64_t vtimer_offset;
+> +    uint32_t ipa_granule;
+>     QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
+> };
+> extern HVFState *hvf_state;
+> --=20
+> 2.52.0
+>=20
+>=20
 
 

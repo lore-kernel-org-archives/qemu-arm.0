@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9F91125854
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 16:13:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9991125847
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 16:15:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0M8P-0007oW-QD; Wed, 11 Mar 2026 12:10:09 -0400
+	id 1w0MCs-0005BH-Gt; Wed, 11 Mar 2026 12:14:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1w0M8M-0007bT-Ip; Wed, 11 Mar 2026 12:10:07 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1w0M8K-0007Vc-RK; Wed, 11 Mar 2026 12:10:06 -0400
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWG0C3wdMzJ468F;
- Thu, 12 Mar 2026 00:09:15 +0800 (CST)
-Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id F1C1A40569;
- Thu, 12 Mar 2026 00:10:01 +0800 (CST)
-Received: from a2303103017.china.huawei.com (10.203.177.99) by
- dubpeml500005.china.huawei.com (7.214.145.207) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Wed, 11 Mar 2026 16:10:00 +0000
-To: <qemu-devel@nongnu.org>, <gustavo.romero@linaro.org>, <mst@redhat.com>
-CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
- <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
- <farman@linux.ibm.com>, <imammedo@redhat.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <linuxarm@huawei.com>, <maobibo@loongson.cn>,
- <mtosatti@redhat.com>, <peter.maydell@linaro.org>, <philmd@linaro.org>,
- <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
- <shannon.zhaosl@gmail.com>, <zhao1.liu@intel.com>
-Subject: [PATCH v19 7/8] tests/qtest/bios-table-test: testing new ARM ACPI
- PPTT topology
-Date: Wed, 11 Mar 2026 16:06:07 +0000
-Message-ID: <20260311160609.358-8-alireza.sanaee@huawei.com>
-X-Mailer: git-send-email 2.51.0.windows.2
-In-Reply-To: <20260311160609.358-1-alireza.sanaee@huawei.com>
-References: <20260311160609.358-1-alireza.sanaee@huawei.com>
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1w0MCl-0005A7-GK; Wed, 11 Mar 2026 12:14:40 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1w0MCe-00008M-EF; Wed, 11 Mar 2026 12:14:37 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBnb5vjlLFpXgkBCA--.1549S2;
+ Thu, 12 Mar 2026 00:14:27 +0800 (CST)
+Received: from [192.168.31.181] (unknown [113.246.117.244])
+ by mail (Coremail) with SMTP id AQAAf8DwwJPilLFpLMYAAA--.3354S2;
+ Thu, 12 Mar 2026 00:14:26 +0800 (CST)
+Message-ID: <a8e75e56-a34b-4df0-866e-3ce5828dd472@phytium.com.cn>
+Date: Thu, 12 Mar 2026 00:14:23 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: 1774596582@qq.com
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
+Subject: Re: [PATCH v1 0/3] Fixed bugs in pl080
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
- dubpeml500005.china.huawei.com (7.214.145.207)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+X-CM-TRANSID: AQAAf8DwwJPilLFpLMYAAA--.3354S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQALBWmwb-oGTwAAsK
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
+ ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
+ nUUI43ZEXa7xR_UUUUUUUUU==
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,42 +65,24 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Test new PPTT topolopy with cache representation.
+Hi,
 
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
----
-Thanks for the tag Gustavo.
-Change log:
-     v18->v19:
-          No changes to this patch.
+It looks like three patches of this series were sent out-of-thread and 
+are not attached to this cover letter.
 
- tests/qtest/bios-tables-test.c | 4 ++++
- 1 file changed, 4 insertions(+)
+You may want to resend the full series, or resend those patches with 
+In-Reply-To pointing to the Message-ID of this cover letter so they 
+appear in the same thread:
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index a5a5b8807b..510751799e 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2229,6 +2229,10 @@ static void test_acpi_aarch64_virt_tcg_topology(void)
-     };
- 
-     test_acpi_one("-cpu cortex-a57 "
-+                  "-M virt,smp-cache.0.cache=l1i,smp-cache.0.topology=cluster,"
-+                  "smp-cache.1.cache=l1d,smp-cache.1.topology=cluster,"
-+                  "smp-cache.2.cache=l2,smp-cache.2.topology=cluster,"
-+                  "smp-cache.3.cache=l3,smp-cache.3.topology=cluster "
-                   "-smp sockets=1,clusters=2,cores=2,threads=2", &data);
-     free_test_data(&data);
- }
--- 
-2.43.0
+git 
+send-email --in-reply-to="tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com" 
+xxxxx
+
+Thanks for working on this!
+
+Tao
 
 

@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34201112583E
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3CF61125847
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:20:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0LGJ-00046I-Un; Wed, 11 Mar 2026 11:14:16 -0400
+	id 1w0LEm-0000NJ-5C; Wed, 11 Mar 2026 11:12:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w0LCt-0003Vj-Bg
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:10:46 -0400
-Received: from p-west2-cluster3-host6-snip4-8.eps.apple.com ([57.103.69.101]
+ id 1w0LCv-0003WP-LN
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:10:50 -0400
+Received: from p-west2-cluster3-host4-snip4-3.eps.apple.com ([57.103.69.16]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w0LCq-00068d-NZ
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:10:42 -0400
+ id 1w0LCt-00069Y-3a
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:10:45 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPS id
- 2B44E1800FB5; Wed, 11 Mar 2026 15:10:35 +0000 (UTC)
+ A3AED18015C4; Wed, 11 Mar 2026 15:10:38 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773241839; x=1775833839;
- bh=4icJ72AU1OOM5tOrqHPkWr3ogIPSAmTNwYbIOrNfOTo=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=Zzmy5bYt101PVnWTD4+CDcunetntJWbqXhAR46xGPQqoYmrdFj5lSJv1a5jlN2qbM/HyF0dBKkgoQpZNz5joh1ELJSxavnKHajLP/aArfwQfB7hU4PJAe+Fe4pVqYt1/gW+FH2E/zmWKcATyg8nA5RlVOSkdG1ASGdcMY/I7CUbwsT9ElponvbLSrUXrVDnmSPlA54nZK8nE8qHFvNDn9DaZyj8eskvqn/PBG4Bqnjp0fKhx6fWzvmCfH0VQNM9zzZb57bFPRFpCcD8vZ5IA49momP4VjYvdRLIcNMjN7eVTf2zknBMD1VKZ6JJmbif0CAEZRZ56dhTkd28PcZVybg==
+ s=sig1; t=1773241841; x=1775833841;
+ bh=YQagLCwFmO4F67dvVU7R6YOfqGT2OsNatNHouVOdmCw=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=PiQKPxuDZP498Zz+8wkY5h+j81lGE0br5WLCfwJ2QleYOehn6e1aRY1mGxm2V4HPAoi+kWhdmAY0wjWX6Z8aonHYrDk1zUEaYjyH7btwboE55yY9vr77c8+04UmuLjhGbqi/LCt9jKdXkbau9SeX9h93ODKfTk157DABj/C1R2DagsE7eZWb5CRtgFoH4d5pi9ZNcWWigxhT4Cw9VBavDVn8csia2AVxzMIZhao+/q+IppQe6IAntgg9iisjyYMtD8y2R8KDwKpWFQoi+5npEVvbGjPYjoY4PS6Zxs9L3qTsJuhFLmuasgDxIVknKM3af9wnq0d2WEYBUkRFm9EAtw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-2 (Postfix) with ESMTPSA id
- 967B71804E40; Wed, 11 Mar 2026 15:10:20 +0000 (UTC)
+ B8C4E18015F9; Wed, 11 Mar 2026 15:10:23 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
- Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 2/5] whpx: arm: add EC_DATAABORT assert for
- WHvRunVpExitReasonGpaIntercept/UnmappedGpa
-Date: Wed, 11 Mar 2026 16:10:11 +0100
-Message-ID: <20260311151014.55915-3-mohamed@unpredictable.fr>
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org
+Subject: [PATCH v2 4/5] whpx: arm: remove comment bit that is no longer
+ accurate
+Date: Wed, 11 Mar 2026 16:10:13 +0100
+Message-ID: <20260311151014.55915-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260311151014.55915-1-mohamed@unpredictable.fr>
 References: <20260311151014.55915-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: azrnpYiJsT2gFNFSbzJG4vboOO9_Mb0t
-X-Proofpoint-ORIG-GUID: azrnpYiJsT2gFNFSbzJG4vboOO9_Mb0t
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDEyOCBTYWx0ZWRfX2p9HmN3vs4Qd
- QG3WLoVnLmYZ2AdcFWQqdVcRvNaJMjkoou9ArTPhDPYAVqnWXb7O7a9Ry+D5HrSu/DJ81Qo9AJo
- 5NZC0WLFJcr6eAEWFLYjzqXfwc78+W8cAQ9XOAJAXk6KAlF+7O7zK82/9K3W0MDe2TjSVWh9oU5
- 2v9Ge2+WufMFEZEzd/YYenlHiWPIEw1ujD+Bm6xNyvKd3km4Up/XGgY+4jIkjSEk1qDWypbjV4c
- ZrPP2k1ku/XRywSHBBWXedayVLjA1tKyZbb8ZENpp4+BHcWXk+lKRf6PO+n7BA8BXHHcAVJO1Om
- 54UOtJrIE6q4ZO6Ji1aF7Gx/3+m7AhW+xyvyN+VmaFSri1Q5GV7Bj82fGCaZq8=
-X-Authority-Info-Out: v=2.4 cv=dfmNHHXe c=1 sm=1 tr=0 ts=69b185eb
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDEyOCBTYWx0ZWRfXwmftUv4/EzwE
+ KD3XzuPAs/ElgHGrhMi4iJlAaTqgHSCZJKkT2ToL9m+9b14A4pS+fRRMtJxPfUF4YUKXIaxK7jz
+ hG7OiMMZXte8+D7KG7nmWfhTMdBXfpGNRO1z7IVytjlMcIfLUJd0FX9yPwGmPpPtdkwXKTDSO/6
+ AAITjZJZRviq7BXNHwBSnKzyHh4OoQ3pIlFuYvxW5fkz6Ie0fcYnDPmndjZpVaZPW6Yb4X9hODd
+ qA7ITfl49VzbA/pYtC9z1r95PG9Pvogx8k7pv8zAIQN0xhtf6J02chtwbICBWazub08zVxfVIJ0
+ n3WT9t0E11UUxQzOTqJVuJA3mOeyTTQCqslxds9+hM9+3fIz9UbNudMhbqq6fo=
+X-Authority-Info-Out: v=2.4 cv=PL0COPqC c=1 sm=1 tr=0 ts=69b185ee
  cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=iF5FY4ceKisILDQj2E8A:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=91AnuRma_Mvq6p0JRGsA:9
+X-Proofpoint-GUID: CqLuOZP1rlcq9M-AO_a2XDk-LHNbx3vf
+X-Proofpoint-ORIG-GUID: CqLuOZP1rlcq9M-AO_a2XDk-LHNbx3vf
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-11_02,2026-03-09_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxscore=0 phishscore=0 bulkscore=0 mlxlogscore=659
- suspectscore=0
- lowpriorityscore=0 clxscore=1030 spamscore=0 adultscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ adultscore=0 phishscore=0 spamscore=0 bulkscore=0
+ clxscore=1030
+ lowpriorityscore=0 suspectscore=0 malwarescore=0 mlxscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603110128
-X-JNJ: AAAAAAAB+8OTMr/my65dSUzA9MN28twdwIxmI3M0J2kxSUzBsKLLymMxIklEOkW3IubX9beGo+/KD6jHiNNadaZ1vUpkv6kCIrfXpmr6CPADKQhDazewAzQzs/WZely7XCk04QW5Tp3uKKnC5yLv73qohgezkgvE0aNL1BA06KdH1QLRkMbLdDdu2NADOGbFPF0gK6oJxMOGZwk5aY9eFY3lsVLgcS/mKTQe6wjOK5PwLQPGMQj7OgGOz560D8fSrV1e8fSbqNGi35VDRnUC8QQk3r8x4ubvTXheaHAuYYiu0/PYCdRHB9FeKeGNgAvT4xHmALZlV0jwDyix8SvoBH3WiVqylYxMXh3xYowiNjE8UI//hizXTA0+sWntJSE2Y9ibCjRubC2phWEthEBxj0ovK4jQo+R0jpbdiGquMkJZk5ZEZT2OwAktra/4KNyPDK6F6QlXl0qN8/CVGLIRmi64hKrgJB/R31wG36AQt6M2Mav6XoIbEQ34FCB4YmynGhz7RKmUQgxxJQIJRnKdm3I/w56Y4mQRz85r6lyW6KiNS2MFqcu6T9InDNqBkSDJnvrgdl4FGwXKvuetGVydWaiYpHfvBdelxINxhSTziG492CI8rWGOwKwDX4y3+Vh5hzlcorecHttaoUxF/2pyxHj02fGJxU4E2GfdjR+8yQWl8Vbn+pHmFDiIYgaaOlpP7FSiGKYknTBZu++HPVpusACUBQ==
-Received-SPF: pass client-ip=57.103.69.101;
+X-JNJ: AAAAAAABBdqbsl5/geQC/BJo9nfit/0qZ6JDbQTjzTg4QxPcWWMy8dS/rD7jQgr0jyxDMxcdZIj6VF0DuWIZz6nKnPZG969UXawDERKZp9ABRBVNdwtXvdYt6a4O18Se+ZNPR4yttaRUo6EfrGcTloiSHIG65cYX2+2/FTklG+vfjVEZ1R+PhOsPz8McgOb4FPAKd4rHYT5TEGlcE8xFMnjSw4qgREMqnI22VyzjOXp683ajN8D6O1kDKDiACOrxabaUjplTvS2L8EU5m6h+ROafVbmlp8/iUkN7Pjij1ghw2n/9pYIlj5dY/cUkbMosptY1GSppJqIL9Ujz7dYzv2ILEPpyHhjyf8Nta+PNNh5hTTJWphA2aCr1J2FYkR2o0PZxIO1jUYWrdOCWbjJcYLPvScky9AwzsLPXPxbHoB/MH/9UDgOJZMZ8UPrzMQnj62tO7LcKqchG8ADNmfKB4vsAN8sB0F8nXjKDbkcmh7DYpSSZA/14ZqWVvmWv70/w8vgeIYAiiVBX1eIARriudJVorx/+K2nMGjiZNoxXxUmBIjzq4H6Wb19e1XD8GZVxhL4Vi38o4KC2hDUeXq7WuB6fAVvrL/4ixiqFNi6PJBG1YdTUQXPbuuT2T9vsFvglg1zay+VSCs9JwTk=
+Received-SPF: pass client-ip=57.103.69.16;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,26 +94,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If we get anything else from Hyper-V there's a problem, so enforce this.
+As of Windows 11 version 26H1, SME support shipped. However the MIT-licensed headers aren't updated yet.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/whpx/whpx-all.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/whpx/whpx-all.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 513551bec1..3df60a950d 100644
+index 9e5bc03a21..8aa24f2adc 100644
 --- a/target/arm/whpx/whpx-all.c
 +++ b/target/arm/whpx/whpx-all.c
-@@ -439,6 +439,7 @@ int whpx_vcpu_run(CPUState *cpu)
-         switch (vcpu->exit_ctx.ExitReason) {
-         case WHvRunVpExitReasonGpaIntercept:
-         case WHvRunVpExitReasonUnmappedGpa:
-+            assert(syn_get_ec(vcpu->exit_ctx.MemoryAccess.Syndrome) == EC_DATAABORT);
-             advance_pc = true;
- 
-             if (vcpu->exit_ctx.MemoryAccess.Syndrome & BIT(8)) {
+@@ -717,7 +717,7 @@ static bool whpx_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+      * Work needed for SVE support:
+      * - SVE state save/restore
+      * - any potentially needed VL management
+-     * Also disable SME at the same time. (not currently supported by Hyper-V)
++     * Also disable SME at the same time.
+      */
+     SET_IDREG(&ahcf->isar, ID_AA64PFR0,
+               GET_IDREG(&ahcf->isar, ID_AA64PFR0) & ~R_ID_AA64PFR0_SVE_MASK);
 -- 
 2.50.1 (Apple Git-155)
 

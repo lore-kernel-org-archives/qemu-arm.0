@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896B7FD0651
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CBD6112583B
 	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 14:25:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0KV7-0007Oq-0O; Wed, 11 Mar 2026 10:25:29 -0400
+	id 1w0KV3-0007KK-Gl; Wed, 11 Mar 2026 10:25:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KV0-0007Co-VE; Wed, 11 Mar 2026 10:25:24 -0400
-Received: from out203-205-221-242.mail.qq.com ([203.205.221.242])
+ id 1w0KUy-0007Br-B1; Wed, 11 Mar 2026 10:25:20 -0400
+Received: from out162-62-57-210.mail.qq.com ([162.62.57.210])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KUw-0000Ku-1B; Wed, 11 Mar 2026 10:25:22 -0400
+ id 1w0KUu-0000Kx-8w; Wed, 11 Mar 2026 10:25:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1773239109; bh=8b7SihBX8BbtdsXQqE1ZD4tPD47XInlkkrnuFAzhkok=;
+ t=1773239110; bh=wj+VZ3AI48/P+TeGQUBVC57Az+sIg2h/CodsDOqOyZ0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=DHuK2xhQwDVMG/hy+7vjJIfalriPx//lnd+aGtxFwoXkvWzmoXs8qyzaxSjUNumSw
- JLtCnH8nLS7vLtk1Te8xYZ8mwoYbhrFiaBGgMG1xGqfjqwilRHA+DIrCtz54hd8ZOX
- bj+9fMYyKVTmHNhtiLL0PmyrkIrkbtmo5JYSxJF4=
+ b=ElpPaVp/F1n4QONniJAKz0hGIllVpHaPdclpJuq30EIhjxJBmKKSJ2Ab6SmRn0bg0
+ 9Te6mtKAjiNHvANfiKWi/rqZnVs6IWblUoHv3D6G/a0TlOSjYOl6N8q+3FNI4Ddg54
+ xyjxE6Kd+oT84nuRYaLfJ/0+V9fzzUIWY/Iteqzg=
 Received: from dt-VM.localdomain ([175.152.130.74])
  by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
  id 6460A831; Wed, 11 Mar 2026 22:25:06 +0800
-X-QQ-mid: xmsmtpt1773239108tfmx7w0bz
-Message-ID: <tencent_7B1A04150B5EC83A51332D26AFC3EF7DC906@qq.com>
-X-QQ-XMAILINFO: MyzM/wvJS/65xy4JbzP99Z//k2GG5e8sMRl/C8kKhCHiyj8sSJkFk3M+1I4MAm
- vQxzLfjlVXuEapkrrr3TTuGIaooR2IiOE4Y8M+5w2m5Ktls9rWiE4mKr3pK1Xy5TjVfGKW0jrdMY
- wgjW24/K0SnWjkJHcYzLdSGjcCp/U4ZFGRKPkW9ZAG6LcCo8fJL1NDZbPoyZipN8lJneZQcEqorp
- 3vTDaOub25jEHLYELmeNujtCSBbNprHvV+uRwKpkxp2Q8sRHSVpQ9uG5Wg1jnghR9+ob567ZEOZi
- V8XL30ePc789iEokIh4jcYxZVIdxBTDpcRHOwdpm9Ja9bSDN1asL36X+qp/myQR3hEmMzgUR4g9h
- crS8WkTJ8AGKGrOHGRDOlb9RlD5vLbS3TEbcHQAQMERv0dJ2B58JsfznePLdxZ8Padbgl5wlsy6Y
- PJkGm3vfq0I2hSysnCMKPmvaC+wBMXAYbOF0Uw8I8n4v3/58V0w2aYjbi06snBHMTK3velYMu8MG
- yAa/MVqF/L50DyqMo2/A6kdr4MZHITbn/Uu7puAYNvV3kvp3LbtdW4CeyUlgDLAoY1DTSYVOrHQf
- wTlMTqG6VGL5zTG4aCAlbNnHW5SUC/Q0Qjwm1D9AJBMnrkmug+H6xxr1Lirlh4fRVlJXnFHdNHGv
- yNG06l6zN3Oduh/bDQ4XxqwcjAIoJTb1d9pkbriKliIIF5zflE8ItbxE7gSy9JPnKKSGq5NQI1XK
- gjtXXwaFEeGfecS6YNjUBtEyQpMjW6FO8RdpCvYVnjtMxNhnZDodm5cTFX4jfs3rlkUJmxRwgUmE
- 8aA4bKi/Wc45jD9WWFL4jBar7ovtARFuiAKmbgN+k2Ec92s52Fr3yHbumlGPKrziOB4CP/qnGK5m
- XOE+L5z7+Pqw1WGstofvukU5Mcfp0UeeoJDXDeC9zx78vw4OzRKeoSXMHwHrUOGve3RwlyKYpVGN
- Xg34LjU1JortAp7gcWbxAAa0pMYNrMhhOnwW0Gv1g6fi6R13DoPR7gkMqILAeU4q6JyW430Pso9d
- 07ryJUjpi8XubFCIsyEGkyPFAAL714MDJoyqvRDVYMOF3Ax7l0eb36juDzjniNL19U6yxU4KSJj4
- yA6bh9
-X-QQ-XMRINFO: MSVp+SPm3vtSI1QTLgDHQqIV1w2oNKDqfg==
+X-QQ-mid: xmsmtpt1773239108t115idvg1
+Message-ID: <tencent_EB97E44208B1F887301229D056F0AEFEB20A@qq.com>
+X-QQ-XMAILINFO: NVJ0hJNx7N5StURGviHjvEOXPyqW5Q0miKroqsJ6RuytshL9MaBDCYiwWj4kBg
+ HTBfXsLtQWag8A3uJS7/hAgR3D3PAhHohGwH12HjyIvYXtrEbOB/rsBfB4OPaxOHbLytezhKOruU
+ SrLVNQz70/z3aaILQ/zUVXIYIo6aSHoMlKA3w5tZk8gsORqvVCy4rmBnHfGboDxlKJWr/4psxaKV
+ inzcLMDIh5FMoGQu7mh4WQmI9eyPmT+Yx4GNsKURm9t6uGmqTqXQMHmlGuIovZX+DBTRPnmrgLDy
+ 7s8RrUYaCjqLqNnWzxxRjybp+q90SrQaox1o41k7TXmMsOQ9AunbencAJEUiFzr4+xBLWIFC5g70
+ m/2mTyu8FWq5wyLt4VM0WiYaOYo6zXF/pWdw2URMSEMR/Rx7JOiOBTNJYuiocnzVjvTuRxTSoBZP
+ 5ybqrUWXzZ3IPgWAL6qRya0ufViWkS/c+QdVZU3bSu/7g9VjdvPQEiyc403lGaGcTMSw0hfGiDNg
+ aTch8+fh1geRVdCsdO+0kKC/VC11bmXtq2S1/P57HlklxCKw1y8kkIDoy4m9Rcez2C0L+DzqYqa4
+ 4F7jRO8CL4ZrMr9wyoLohB8kiC51VxVzWZbQV0qksYPyMRATiZrtVF6no15Ju8W7sTwnBiEey/nZ
+ S4+szEejNIZB+Dv3S+4WK3B+c+Q6wK2/kEsY+HqIHiwEUYBEh35MPyf8YYvfb+fRLubb8zadtAzx
+ tqkZ+pzNyHKpXzIjbOk4bC6VvdsSfSpUVil3fS9tucZRhHDDL+HPn5hxMy5g5yo3yarYqqnEY40t
+ g9RCozR11Lue+bTvTPivsVQInxb3nVdUKW2E3TZevEyAMd71EYOanG/eNq8doJ5VWt+eAgn3KdEu
+ HK15ARYhBeai8jFcAD1U7kSHaEBtDOEnTkkfUWVFICHVWyuIXzF6asI2WOH/cp16wClVDSROcLT2
+ eINg3IcSao20ScRZziOo50amjaED/TOCVzNc8zwRGap8Ucz06lPCm3AvLRxZpuvtHqLV98qpOH2A
+ MqR4NAiurQfdIbAw5po2IHXNl08fYXwRdZFWz6S4aegeBMSM616rmdqIR4y1k=
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
 From: 1774596582@qq.com
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	TaoDing <1774596582@qq.com>
-Subject: [PATCH v1 2/3] The swidth and dwidth of pl080 are not equal.
-Date: Wed, 11 Mar 2026 22:24:57 +0800
-X-OQ-MSGID: <d149752c8bfa748039d42d2e5c8cdd5bed26d414.1773236195.git.1774596582@qq.com>
+Subject: [PATCH v1 3/3] The LLI of pl080 should be aligned with 4 bytes.
+Date: Wed, 11 Mar 2026 22:24:58 +0800
+X-OQ-MSGID: <71d57a9f29b73754ea54286b134b470c494cd620.1773236195.git.1774596582@qq.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1773236195.git.1774596582@qq.com>
 References: <cover.1773236195.git.1774596582@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=203.205.221.242; envelope-from=1774596582@qq.com;
- helo=out203-205-221-242.mail.qq.com
+Received-SPF: pass client-ip=162.62.57.210; envelope-from=1774596582@qq.com;
+ helo=out162-62-57-210.mail.qq.com
 X-Spam_score_int: 0
 X-Spam_score: -0.1
 X-Spam_bar: /
 X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,80 +86,84 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: TaoDing <1774596582@qq.com>
 
+When the bit0 of the LLI register is configured as master 1, 
+it can cause incorrect data reading, and even lead to qemu crash.
 
-The amount of data transmitted each time is the maximum value between s and w, 
-but it should be noted that the remaining transmission amount is less than the width.
-
-Configure swidth to 1 byte, width to 4 bytes, and transfer size to 4.
+Constructed 1 LLI item. The initial LLI register points to the address of the LLI item.
+But the bit 0 of the LLI register is 1, which mean read from Master1 port.
+According to the description in the PL080 manual, the address for the next LLI should be word aligned.
 
 Configuration
     ../configure --target-list=arm-softmmu --enable-debug
 Reproducer
     ./qemu-system-arm -M versatilepb -m 128M -nographic -S \
-    -device loader,addr=0x00000000,data=0x44332211,data-len=4 \
-    -device loader,addr=0x00001000,data=0x00000000,data-len=4 \
-    -device loader,addr=0x10130030,data=0x00000001,data-len=4 \
-    -device loader,addr=0x10130100,data=0x00000000,data-len=4 \
-    -device loader,addr=0x10130104,data=0x00001000,data-len=4 \
-    -device loader,addr=0x10130108,data=0x00000000,data-len=4 \
-    -device loader,addr=0x1013010C,data=0x9e47f004,data-len=4 \
-    -device loader,addr=0x10130110,data=0x0000c001,data-len=4 
+     -device loader,addr=0x00002000,data=0x00000004,data-len=4 \
+     -device loader,addr=0x00002004,data=0x00001004,data-len=4 \
+     -device loader,addr=0x00002008,data=0x00000000,data-len=4 \
+     -device loader,addr=0x0000200c,data=0x9e4bf001,data-len=4 \
+     -device loader,addr=0x00000000,data=0x44332211,data-len=4 \
+     -device loader,addr=0x00000004,data=0x88776655,data-len=4 \
+     -device loader,addr=0x00001000,data=0x00000000,data-len=4 \
+     -device loader,addr=0x00001004,data=0x00000000,data-len=4 \
+     -device loader,addr=0x10130030,data=0x00000001,data-len=4 \
+     -device loader,addr=0x10130100,data=0x00000000,data-len=4 \
+     -device loader,addr=0x10130104,data=0x00001000,data-len=4 \
+     -device loader,addr=0x10130108,data=0x00002001,data-len=4 \
+     -device loader,addr=0x1013010C,data=0x1e4bf001,data-len=4 \
+     -device loader,addr=0x10130110,data=0x0000c001,data-len=4  
 
-Qemu monitor
-    (qemu) xp /1wx 0x00001000
-    00001000: 0x00002211
+Qemu Crash.
 
 The result correctly after fixed
     (qemu) xp /1wx 0x00001000
-    00001000: 0x44332211
+     00001000: 0x44332211
+     (qemu) xp /1wx 0x00001004
+     00001004: 0x88776655
 
 ---
- hw/dma/pl080.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ hw/dma/pl080.c | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
 
 diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-index 1a39954f04..f8a0ae0342 100644
+index f8a0ae0342..980188dac4 100644
 --- a/hw/dma/pl080.c
 +++ b/hw/dma/pl080.c
-@@ -164,22 +164,30 @@ again:
-                destination widths are different.  */
-             swidth = 1 << ((ch->ctrl >> 18) & 7);
-             dwidth = 1 << ((ch->ctrl >> 21) & 7);
--            for (n = 0; n < dwidth; n+= swidth) {
-+            xsize = (dwidth < swidth) ? swidth : dwidth;
-+            xsize = (xsize < size * swidth) ? xsize : (size * swidth);
-+            for (n = 0; n < xsize; n+= swidth) {
-                 address_space_read(&s->downstream_as, ch->src,
-                                    MEMTXATTRS_UNSPECIFIED, buff + n, swidth);
-                 if (ch->ctrl & PL080_CCTRL_SI)
-                     ch->src += swidth;
-             }
--            xsize = (dwidth < swidth) ? swidth : dwidth;
-             /* ??? This may pad the value incorrectly for dwidth < 32.  */
--            for (n = 0; n < xsize; n += dwidth) {
--                address_space_write(&s->downstream_as, ch->dest + n,
--                                    MEMTXATTRS_UNSPECIFIED, buff + n, dwidth);
-+            if(xsize < dwidth){
-+                address_space_write(&s->downstream_as, ch->dest,
-+                                    MEMTXATTRS_UNSPECIFIED, buff, xsize);
-                 if (ch->ctrl & PL080_CCTRL_DI)
--                    ch->dest += swidth;
-+                    ch->dest += xsize;
-             }
--
--            size--;
-+            else{
-+                for (n = 0; n < xsize; n += dwidth) {
-+                    address_space_write(&s->downstream_as, ch->dest,
-+                                        MEMTXATTRS_UNSPECIFIED, buff + n, dwidth);
-+                    if (ch->ctrl & PL080_CCTRL_DI)
-+                        ch->dest += dwidth;
-+                }
-+            }
-+            size -= xsize / swidth;
+@@ -102,6 +102,7 @@ static void pl080_run(PL080State *s)
+     int size;
+     uint8_t buff[4];
+     uint32_t req;
++    uint32_t next_lli;
+ 
+     s->tc_mask = 0;
+     for (c = 0; c < s->nchannels; c++) {
+@@ -191,21 +192,22 @@ again:
              ch->ctrl = (ch->ctrl & 0xfffff000) | size;
              if (size == 0) {
                  /* Transfer complete.  */
+-                if (ch->lli) {
++                next_lli = (ch->lli & ~3);
++                if (next_lli) {
+                     ch->src = address_space_ldl_le(&s->downstream_as,
+-                                                   ch->lli,
++                                                   next_lli,
+                                                    MEMTXATTRS_UNSPECIFIED,
+                                                    NULL);
+                     ch->dest = address_space_ldl_le(&s->downstream_as,
+-                                                    ch->lli + 4,
++                                                    next_lli + 4,
+                                                     MEMTXATTRS_UNSPECIFIED,
+                                                     NULL);
+                     ch->ctrl = address_space_ldl_le(&s->downstream_as,
+-                                                    ch->lli + 12,
++                                                    next_lli + 12,
+                                                     MEMTXATTRS_UNSPECIFIED,
+                                                     NULL);
+                     ch->lli = address_space_ldl_le(&s->downstream_as,
+-                                                   ch->lli + 8,
++                                                   next_lli + 8,
+                                                    MEMTXATTRS_UNSPECIFIED,
+                                                    NULL);
+                 } else {
 -- 
 2.43.0
 

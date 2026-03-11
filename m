@@ -4,87 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC8A9112584F
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3500F112584F
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 16:06:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0Lxb-0007Xo-13; Wed, 11 Mar 2026 11:59:01 -0400
+	id 1w0M4o-0003vQ-Un; Wed, 11 Mar 2026 12:06:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w0LxW-0007XJ-7d
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:58:55 -0400
-Received: from p-west2-cluster3-host9-snip4-8.eps.apple.com ([57.103.69.71]
- helo=outbound.mr.icloud.com)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1w0M4j-0003tU-GZ; Wed, 11 Mar 2026 12:06:22 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w0LxT-00032B-DD
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 11:58:53 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-10-percent-0 (Postfix) with ESMTPS id
- 957ED1800491; Wed, 11 Mar 2026 15:58:43 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773244728; x=1775836728;
- bh=w+c6cOk8tA/H5cXDL8ZE+HdGU8gpruJsPMXJfLYwg58=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=FTCXaAcTABRGq/pfaP1AqenNniNVzYEwPqmQuViFLXiJwf93tpq5nMjBis6ZHWc8WhJpjn3eK27Nhnwi3XFNzxlu8KReOrscjPyIaWjdg5FNsYsaIcEyIgROXBWodl3iopEmLfsQTBibleRdJrV8mfu5/B3U1HPztyEjiPXx9k0N4bOk41nDikfUKAxjfTjky5x/Va7KXHwnvlVDSAztEI+PgLm0RLmf6KbTj0PAMKmtIM5oskTNU3mV3WnzExevn7OMNU3Pz5j3Hqg9HY3bwS/hRszP/F5pqyVeePiSbQMxZkpfhonMFwl1CAS0PX9KYBS4XuM0YPxxMOR70JCGKA==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-10-percent-0 (Postfix) with ESMTPSA id
- F419C1801164; Wed, 11 Mar 2026 15:58:40 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH 11/14] target/arm/mshv: add vCPU run loop
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260311-mshv_accel_arm64_supp-v1-11-c31699b7bc1f@anirudhrb.com>
-Date: Wed, 11 Mar 2026 16:58:28 +0100
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <DBA9B933-08E0-4599-AF36-AED339598F75@unpredictable.fr>
-References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
- <20260311-mshv_accel_arm64_supp-v1-11-c31699b7bc1f@anirudhrb.com>
-To: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-GUID: SHNKLr6DaaVBWvuzHwbQjMznofW3Mjaw
-X-Authority-Info-Out: v=2.4 cv=dK2rWeZb c=1 sm=1 tr=0 ts=69b19134
- cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=kj9zAlcOel0A:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=tFGNSmrwAAAA:8 a=TIPGJ-2hCsdCqnleXSkA:9
- a=CjuIK1q_8ugA:10 a=LpD6Tdepsyerr7eS-Jg7:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDEzNSBTYWx0ZWRfX4UyEtaCnXeWt
- WeSXwTAEkzQIntQG4AkKRAulukckFGGxj3SH6PMPomfRifcjB7eWI+yScORqNqi6579S6D3mqYV
- OEHRrc0hjGS9SkEyUu5s5J+V4ibRmkc0md9SqbGa/8PZ7X7YV3f+QOIRBC3umApGl2aaeXMsdgf
- Al4eJI8iMuz3fSHdonzK/s7pV73RC26RrQCR+0kSU4QUSnnzge+INc1MUE88pSa5gl2MU0NLF8e
- XJx2IrHKypuwTckVVD6GYZmearivHjJDbfB1mCzzWM5Ej/o9PY/bWMgUfggwqKOQ9LURg6hXW7L
- S6nlOTasO08g0fyYxbjltfvvgDxwS0QhNsCiWT5EzhEyEJE++3/9ep91eyeNtQ=
-X-Proofpoint-ORIG-GUID: SHNKLr6DaaVBWvuzHwbQjMznofW3Mjaw
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-11_02,2026-03-09_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- bulkscore=0 lowpriorityscore=0 suspectscore=0
- adultscore=0 mlxscore=0
- phishscore=0 clxscore=1030 malwarescore=0 spamscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603110135
-X-JNJ: AAAAAAABuCmvTdsmKxiq854AMf6Di63+GmFREsIKyLVSnpMMDKEFQUyNm+hxIJlO5f84CeT6LgKvQ83GjW1UXeJbARYbHEHcAQvaVQQyZ5WyYLsyoHamh5HNJaCLr/lUupyjbqMe1ECiXz1Ol3s1deER7qKXiUIqxLE57RPzlkNyOqIuKtMs3kyB7SlVJtf14zf3UJbw27GLX+uRwaYquloPJQIDmgqweQeH6m5Ne1TP5CnFXWr2QHfb6fz8aKrVpReHJ6JD5FgbzxqqamcUWKnH6BfS76MdcyG9wBZwLWP19f7yGNpphlBBqCLtSEAkB/jmdF5oAPwX2nRLwKihfWcN4AYfoAtH6jJPmAQCnTwmMZkUgVRAM0V61VbFsc3ZG9M3sXyJuEMTqRXzNUoIV/lXM/9rM8MyBa0F39TA+hQ9LQXXW+taG9hHMwvP4pwIdi+vgjbVfZvYpbsO+4hSog9DW+BB8aJsYvTpRZLnzSklraj7kTfPyehnaxJhEAW56vE1kKwUkDRVHtbfxBgVPiZuAoGEEEtZ6hHCzAoJaKa/R1N+OIrbOuXNjsqOsX91nDKvtyteFf2xP/sjOjCTaj6qfqy51owdADgtoTN7xuFeNDLR4TFb0dfFFkZ2DfTT1dRx0ambDkG+7Vt2Eh7DDADPlk/WOyhdXpPFKrXlR285Zkapn0gSWNrnFWpSWeJ+hiaqP2lD92yWR3g950eVBp0VfkzclJvL1Ri884a2ymSlhmfDIbYKDtNsKtIYamT2ofE2z4gLow==
-Received-SPF: pass client-ip=57.103.69.71;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1w0M4g-0005KN-2x; Wed, 11 Mar 2026 12:06:21 -0400
+Received: from mail.maildlp.com (unknown [172.18.224.150])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWFvp1p0ZzJ467L;
+ Thu, 12 Mar 2026 00:05:26 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id AA4524056A;
+ Thu, 12 Mar 2026 00:06:12 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.203.177.99) by
+ dubpeml500005.china.huawei.com (7.214.145.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Wed, 11 Mar 2026 16:06:11 +0000
+To: <qemu-devel@nongnu.org>, <gustavo.romero@linaro.org>, <mst@redhat.com>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
+ <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
+ <farman@linux.ibm.com>, <imammedo@redhat.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <linuxarm@huawei.com>, <maobibo@loongson.cn>,
+ <mtosatti@redhat.com>, <peter.maydell@linaro.org>, <philmd@linaro.org>,
+ <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
+ <shannon.zhaosl@gmail.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v19 0/8] Specifying cache topology on ARM
+Date: Wed, 11 Mar 2026 16:06:00 +0000
+Message-ID: <20260311160609.358-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.51.0.windows.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,322 +67,194 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Specifying the cache layout in virtual machines is useful for applications and
+operating systems to fetch accurate information about the cache structure and
+make appropriate adjustments. Enforcing correct sharing information can lead to
+better optimizations. Patches that allow for an interface to express caches was
+landed in the prior cycles. This patchset uses the interface as a foundation.
+Thus, the device tree and ACPI/PPTT table, and device tree are populated based
+on user-provided information and CPU topology.
+
+Example:
+
++----------------+                         +----------------+
+|    Socket 0    |                         |    Socket 1    |
+|    (L3 Cache)  |                         |    (L3 Cache)  |
++--------+-------+                         +--------+-------+
+         |                                          |
++--------+--------+                        +--------+--------+
+|   Cluster 0     |                        |   Cluster 0     |
+|   (L2 Cache)    |                        |   (L2 Cache)    |
++--------+--------+                        +--------+--------+
+         |                                          |
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |   |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |   |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+         |                    |                     |                    |
++--------+              +--------+             +--------+           +--------+
+|Thread 0|              |Thread 1|             |Thread 1|           |Thread 0|
++--------+              +--------+             +--------+           +--------+
+|Thread 1|              |Thread 0|             |Thread 0|           |Thread 1|
++--------+              +--------+             +--------+           +--------+
 
 
-> On 11. Mar 2026, at 16:15, Anirudh Rayabharam (Microsoft) =
-<anirudh@anirudhrb.com> wrote:
->=20
-> Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
->=20
-> Handle MMIO exits by emulating the instruction using the syndrome
-> information from ESR_EL2.
->=20
-> Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
-> ---
-> include/hw/hyperv/hvgdk_mini.h |  44 +++++++++
-> target/arm/mshv/mshv-all.c     | 198 =
-+++++++++++++++++++++++++++++++++++++++++
-> 2 files changed, 242 insertions(+)
->=20
-Hello,
+The following command will represent the system relying on **ACPI PPTT tables**.
 
-GDK updates in separate patches from the rest please. Maybe even combine =
-them together.
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
 
-And more comments below...
+The following command will represent the system relying on **the device tree**.
 
-> diff --git a/include/hw/hyperv/hvgdk_mini.h =
-b/include/hw/hyperv/hvgdk_mini.h
-> index d56be0d70f..84b3c6af5f 100644
-> --- a/include/hw/hyperv/hvgdk_mini.h
-> +++ b/include/hw/hyperv/hvgdk_mini.h
-> @@ -750,6 +750,50 @@ struct hv_x64_memory_intercept_message {
->     uint8_t instruction_bytes[16];
-> };
->=20
-> +union hv_arm64_vp_execution_state {
-> +    uint16_t as_uint16;
-> +    struct {
-> +        uint16_t cpl:2;
-> +        uint16_t debug_active:1;
-> +        uint16_t interruption_pending:1;
-> +        uint16_t vtl:4;
-> +        uint16_t virtualization_fault_active:1;
-> +        uint16_t reserved:7;
-> +    };
-> +};
-> +
-> +struct hv_arm64_intercept_message_header {
-> +    uint32_t vp_index;
-> +    uint8_t instruction_length;
-> +    uint8_t intercept_access_type;
-> +    union hv_arm64_vp_execution_state execution_state;
-> +    uint64_t pc;
-> +    uint64_t cpsr;
-> +};
-> +
-> +union hv_arm64_memory_access_info {
-> +    uint8_t as_uint8;
-> +    struct {
-> +        uint8_t gva_valid:1;
-> +        uint8_t gva_gpa_valid:1;
-> +        uint8_t hypercall_output_pending:1;
-> +        uint8_t reserved:5;
-> +    };
-> +};
-> +
-> +struct hv_arm64_memory_intercept_message {
-> +    struct hv_arm64_intercept_message_header header;
-> +    uint32_t cache_type; /* enum hv_cache_type */
-> +    uint8_t instruction_byte_count;
-> +    union hv_arm64_memory_access_info memory_access_info;
-> +    uint16_t reserved1;
-> +    uint8_t instruction_bytes[4];
-> +    uint32_t reserved2;
-> +    uint64_t guest_virtual_address;
-> +    uint64_t guest_physical_address;
-> +    uint64_t syndrome;
-> +};
-> +
-> union hv_message_flags {
->     uint8_t asu8;
->     struct {
-> diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> index 2b983845d3..b0649ba10b 100644
-> --- a/target/arm/mshv/mshv-all.c
-> +++ b/target/arm/mshv/mshv-all.c
-> @@ -166,8 +166,206 @@ int mshv_arch_put_registers(const CPUState *cpu)
->     return 0;
-> }
->=20
-> +static int set_memory_info(const struct hyperv_message *msg,
-> +                           struct hv_arm64_memory_intercept_message =
-*info)
-> +{
-> +    if (msg->header.message_type !=3D HVMSG_GPA_INTERCEPT
-> +            && msg->header.message_type !=3D HVMSG_UNMAPPED_GPA
-> +            && msg->header.message_type !=3D HVMSG_UNACCEPTED_GPA) {
-> +        error_report("invalid message type");
-> +        return -1;
-> +    }
-> +    memcpy(info, msg->payload, sizeof(*info));
-> +
-> +    return 0;
-> +}
-> +
-> +typedef union {
-> +    uint64_t raw;
-> +    struct {
-> +        uint32_t iss:25;
-> +        uint32_t il:1;
-> +        uint32_t ec:6;
-> +        uint32_t iss2:5;
-> +        uint32_t _rsvd:27;
-> +    } QEMU_PACKED;
-> +} EsrEl2;
-> +
-> +typedef union {
-> +    uint32_t raw;
-> +    struct {
-> +        uint32_t dfsc:6;
-> +        uint32_t wnr:1;
-> +        uint32_t s1ptw:1;
-> +        uint32_t cm:1;
-> +        uint32_t ea:1;
-> +        uint32_t fnv:1;
-> +        uint32_t set:2;
-> +        uint32_t vncr:1;
-> +        uint32_t ar:1;
-> +        uint32_t sf:1;
-> +        uint32_t srt:5;
-> +        uint32_t sse:1;
-> +        uint32_t sas:2;
-> +        uint32_t isv:1;
-> +        uint32_t _unused:7;
-> +    } QEMU_PACKED;
-> +} IssDataAbort;
-Think this is better suited for common code somewhere...
-> +
-> +typedef enum {
-> +    data_abort_lower =3D 36,
-> +    data_abort =3D 37,
-> +} ExceptionClass;
-> +
-> +int mshv_store_regs(CPUState *cpu)
-> +{
-> +    int ret;
-> +
-> +    ret =3D set_standard_regs(cpu);
-> +    if (ret < 0) {
-> +        error_report("Failed to store standard registers");
-> +        return -1;
-> +    }
-> +
-> +    /* TODO: should store special registers? the equivalent hvf code =
-doesn't */
-WHPX does handle this via state levels, but what HVF does via a separate =
-function is also workable.
+./qemu-system-aarch64 \
+ -machine virt,acpi=off,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
 
-> +    return 0;
-> +}
-> +
-> +static int emulate_with_syndrome(CPUState *cpu,
-> +                                 struct =
-hv_arm64_memory_intercept_message *info)
-> +{
-> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
-> +    CPUARMState *env =3D &arm_cpu->env;
-> +    int ret;
-> +    EsrEl2 syndrome =3D { 0 };
-> +    IssDataAbort iss =3D { 0 };
-> +    uint64_t gpa =3D info->guest_physical_address;
-> +    uint64_t len, reg_index;
-> +    bool sign_extend;
-> +
-> +    syndrome.raw =3D info->syndrome;
-> +
-> +    if (!(syndrome.ec =3D=3D data_abort_lower || syndrome.ec =3D=3D =
-data_abort)) {
-> +        error_report("Unknown exception class 0x%x", syndrome.ec);
-> +        return -1;
-> +    }
-> +
-> +    iss.raw =3D syndrome.iss;
-> +    if (!iss.isv) {
-> +        error_report("Invalid ESR EL2 ISV field");
-> +        return -1;
-> +    }
-> +
-> +    len =3D 1ULL << iss.sas;
-> +    sign_extend =3D iss.sse;
-> +    reg_index =3D iss.srt;
-> +
-> +    ret =3D mshv_load_regs(cpu);
-> +    if (ret < 0) {
-> +        error_report("Failed to load registers");
-> +        return -1;
-> +    }
-> +
-> +    if (iss.wnr) {
-> +        uint8_t data[8];
-> +        uint64_t val =3D reg_index < 31 ? env->xregs[reg_index] : =
-0ULL;
-> +
-> +        val =3D cpu_to_le64(val);
-> +
-> +        memcpy(data, &val, sizeof(val));
-> +        ret =3D mshv_guest_mem_write(gpa, data, len, false);
-> +        if (ret < 0) {
-> +            error_report("Failed to write guest memory");
-> +            return -1;
-> +        }
-> +    } else {
-> +        uint8_t data[8] =3D { 0 };
-> +
-> +        ret =3D mshv_guest_mem_read(gpa, data, len, false, false);
-> +        if (ret < 0) {
-> +            error_report("Failed to read guest memory");
-> +            return -1;
-> +        }
-> +
-> +        uint64_t val;
-> +        memcpy(&val, data, sizeof(val));
-> +
-> +        val =3D le64_to_cpu(val);
-> +
-> +        if (sign_extend) {
-> +            uint64_t shift =3D 64 - (len * 8);
-> +            val =3D (((int64_t)val << shift) >> shift);
-> +            if (!iss.sf) {
-> +                val &=3D 0xffffffff;
-> +            }
-> +        }
-> +
-> +        env->xregs[reg_index] =3D val;
-> +    }
-> +
-> +    env->pc +=3D (syndrome.il =3D=3D 1) ? 4 : 2;
-> +
-> +    ret =3D mshv_store_regs(cpu);
-> +    if (ret < 0) {
-> +        error_report("failed to store registers");
-> +        return -1;
-> +    }
-> +
-> +    return 0;
-> +}
+Failure cases:
+	1) There are scenarios where caches exist in systems' registers but left
+unspecified by users. In this case qemu returns failure.
 
-I think this deserves to go to common code somewhere at this point :)
+	2) SMT threads cannot share caches which is not very common. More
+discussions here [1].
 
-> +
-> +static int handle_unmapped_mem(int vm_fd, CPUState *cpu,
-> +                               const struct hyperv_message *msg,
-> +                               MshvVmExit *exit_reason)
-> +{
-> +    struct hv_arm64_memory_intercept_message info =3D { 0 };
-> +    int ret;
-> +
-> +    ret =3D set_memory_info(msg, &info);
-> +    if (ret < 0) {
-> +        error_report("failed to convert message to memory info");
-> +        return -1;
-> +    }
-> +
-> +    ret =3D emulate_with_syndrome(cpu, &info);
-> +    if (ret < 0) {
-> +        error_report("Failed to emulate with syndrome");
-> +        return -1;
-> +    }
-> +
-> +    *exit_reason =3D MshvVmExitIgnore;
-> +
-> +    return 0;
-> +}
-> +
-> int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, =
-MshvVmExit *exit)
-> {
-> +    int ret;
-> +    int cpu_fd =3D mshv_vcpufd(cpu);
-> +
-> +    ret =3D ioctl(cpu_fd, MSHV_RUN_VP, msg);
-> +    if (ret < 0) {
-> +        *exit =3D MshvVmExitShutdown;
-> +        return ret;
-> +    }
-> +
-> +    switch (msg->header.message_type) {
-> +    case HVMSG_UNRECOVERABLE_EXCEPTION:
-> +        *exit =3D MshvVmExitShutdown;
-> +        break;
-> +    case HVMSG_UNMAPPED_GPA:
-At least as observed on WHPX you also need to handle GpaIntercept the =
-same way
-for EDK2 to be happy
->=20
->=20
-> +        ret =3D handle_unmapped_mem(vm_fd, cpu, msg, exit);
-> +        if (ret < 0) {
-> +            error_report("failed to handle mmio");
-> +            return -1;
-> +        }
-> +        break;
-> +    default:
-> +        error_report("Unhandled message type: 0x%x", =
-msg->header.message_type);
-> +        return -1;
-> +    }
-> +
->     return 0;
-> }
->=20
->=20
-> --=20
-> 2.43.0
->=20
->=20
+Currently only three levels of caches are supported to be specified from the
+command line. However, increasing the value does not require significant
+changes. Further, this patch assumes l2 and l3 unified caches and does not
+allow l(2/3)(i/d). The level terminology is thread/core/cluster/socket.
+Hierarchy assumed in this patch: Socket level = Cluster level + 1 = Core level
++ 2 = Thread level + 3;
+
+Possible future enhancements:
+  1) Separated data and instruction cache at L2 and L3.
+  2) Additional cache controls.  e.g. size of L3 may not want to just match the
+underlying system, because only some of the associated host CPUs may be bound
+to this VM.
+
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v18->v19:
+    * Rebased to 1fd5ff9d76d23ab23a68419cbc76d5ee33e8b455.
+    * Addressed Gustavo's comments. Thanks for the review.
+    * v18: https://lore.kernel.org/qemu-devel/20260220141128.789-1-alireza.sanaee@huawei.com/
+
+  v17->v18:
+    * Rebased to 07f97d5da04a9f97e273de85c76f5017d8135a6e.
+    * Addressed Mst's comments regarding documenting build_cache_node function. Thanks for the review.
+    * v17: https://lore.kernel.org/all/20260106155828.643-1-alireza.sanaee@huawei.com/
+  v16->v17:
+    * Rebased to 0fc482b73d8e085d1375b4e17b0647fd2e6fe8f0.
+    * Addressed Gustavo's comments. Thanks for the review.
+    * v16: https://lore.kernel.org/all/20250827142152.206-1-alireza.sanaee@huawei.com/
+
+  v15->v16:
+    * Rebase to e771ba98de25c9f43959f79fc7099cf7fbba44cce.
+    * v15: https://lore.kernel.org/qemu-devel/20250812122829.204-1-alireza.sanaee@huawei.com/
+
+  v14->v15:
+   * Introduced a separate patch for loongarch64 build_pptt function.
+   * Made sure loongarch64 tests pass.
+   * Downgraded to V2 for ACPI PPTT. Removed PPTT IDs as was not necessary.
+   * Removed dependency as it's been merged in the recent cycle.
+     -- 20250604115233.1234-1-alireza.sanaee@huawei.com
+   * Fixed styling issues and removed irrelevant changes.
+   * Moved cache headers to core/cpu.h to be used in both acpi and virt.
+   * v14: https://lore.kernel.org/qemu-devel/20250707121908.155-1-alireza.sanaee@huawei.com/
+   # Thanks to Jonathan and Zhao for their comments.
+
+  v13->v14:
+   * Rebased on latest staging.
+   * Made some naming changes to machine-smp.c, addd docs added to the
+        same file.
+
+  v12->v13:
+   * Applied comments from Zhao.
+   * Introduced a new patch for machine specific cache topology functions.
+   * Base: bc98ffdc7577e55ab8373c579c28fe24d600c40f.
+
+  v11->v12:
+   * Patch #4 couldn't not merge properly as the main file diverged. Now it is fixed (hopefully).
+   * Loonarch build_pptt function updated.
+   * Rebased on 09be8a511a2e278b45729d7b065d30c68dd699d0.
+
+  v10->v11:
+   * Fix some coding style issues.
+   * Rename some variables.
+
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Alireza Sanaee (8):
+  target/arm/tcg: increase cache level for cpu=max
+  hw/core/machine: topology functions capabilities added
+  hw/arm/virt: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  acpi: Add parameters to pass cache descriptions to ACPI build_pptt()
+  hw/acpi: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables based on new aml-build.c
+
+ hw/acpi/aml-build.c                        | 203 ++++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 335 ++++++++++++++++++++-
+ hw/core/machine-smp.c                      |  52 ++++
+ hw/loongarch/virt-acpi-build.c             |   4 +-
+ include/hw/acpi/aml-build.h                |   4 +-
+ include/hw/acpi/cpu.h                      |  10 +
+ include/hw/arm/virt.h                      |  17 +-
+ include/hw/core/boards.h                   |   5 +
+ include/hw/core/cpu.h                      |  12 +
+ target/arm/tcg/cpu64.c                     |  10 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 516 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 13 files changed, 649 insertions(+), 15 deletions(-)
+
+
+base-commit: 1fd5ff9d76d23ab23a68419cbc76d5ee33e8b455
+-- 
+2.43.0
 
 

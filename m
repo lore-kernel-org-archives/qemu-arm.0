@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64456112583A
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:26:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674A81125847
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:26:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0LNz-0006mR-Gf; Wed, 11 Mar 2026 11:22:12 -0400
+	id 1w0LNz-0006n4-Mh; Wed, 11 Mar 2026 11:22:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w0LKa-0001Rn-K2; Wed, 11 Mar 2026 11:18:43 -0400
+ id 1w0LLG-00022Q-1o; Wed, 11 Mar 2026 11:19:26 -0400
 Received: from sender4-of-o54.zoho.com ([136.143.188.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w0LKY-0000vl-PA; Wed, 11 Mar 2026 11:18:40 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1773242207; cv=none; 
+ id 1w0LLC-000101-8Q; Wed, 11 Mar 2026 11:19:21 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1773242222; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=kLgUTAhScFZl+zxcrRpPSc6vFRn7QkxJO7YIuL8HbKpYzBxTF3tjxjP4HD9iLOyLBbdlwOPhe4ZTay5DNi4hM2RhZqgyLh98E235mY5aA53TMHMzqP7tJeGgHW72L8holLNtF0qw4tNuj2jZvPF/rCc11gBzNdnPjOPm6VHqMD4=
+ b=DO4PW5W2ShrFy4NjoZsDG7h/RIIVttsxGwm9HgMqM05oNqY5KD7SIfyQnIZYPFPNuapZ+ai304LLq22UeOT83i3AO2eK8KkN5bhLBV+CuX7BDKUkMBnFGysULgOnT/8lZdG03JEA2BcdVkgeAHFEQQ3Y3vBiDN8HL7zfRrrhD1c=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1773242207;
+ s=zohoarc; t=1773242222;
  h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=lD9ou+1I9HOVjEJNifDaRGSbUzrNGOkYSGBU+Trapw8=; 
- b=QlYBHOmi6cUQ9x+FjpI/JpyVcOV5tEHHMSyLvKcV4vVeWmyI3CTrCEOeJxhIRYIOro8nb7LJjn/dDIaUk8pQSwfA3WCrx8ipoWAUQl+7BR1/sMUdgggv0nHsUvMt5kYcyWORzV/53D4jpZ+CovaoT+KOptoty4h4H2s257t9hTE=
+ bh=tl1TuVW379TWu0X8kuo6XYGo0xIhPshRyx52O0YMWKo=; 
+ b=ShXEGOsyPkhmNifQPgPzsUxuiLobF4Grf82JDT4dUPrVQXNFYneC+28eKxpWMaoCBDt8heBESwJvthEsYT2SKcGZoTEbqvlTZUSQsDP6x8ZepAz/oKHSzyRaXsSqZId4Y8JmYgbas0EtBgFu5HFC8fzatFSJu4QFWdy7eSDeDQg=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=anirudhrb.com;
  spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
  dmarc=pass header.from=<anirudh@anirudhrb.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773242207; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773242222; 
  s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
  h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
- bh=lD9ou+1I9HOVjEJNifDaRGSbUzrNGOkYSGBU+Trapw8=;
- b=coEbFV0ZL2oxX1fcKo6XFsryDw3WqVNcXTLqDTP4DlRZGnKU4QnuHz+qIB2H/+3o
- 5l+WMGfUp/8UgUjhzk80xg1DsaVpShDR6JMD6J4vKqjtnxwrNJd/aFT4T7ELoWiwohi
- 0dkFKIbKYyW+CyS69bEkxXDk81FdVc87ca+OFp4M=
-Received: by mx.zohomail.com with SMTPS id 1773242205245914.9982326926611;
- Wed, 11 Mar 2026 08:16:45 -0700 (PDT)
-From: Anirudh Rayabharam <anirudh@anirudhrb.com>
-Date: Wed, 11 Mar 2026 15:15:35 +0000
-Subject: [PATCH 08/14] accel/mshv: Add access_vp_regs synthetic proc features
+ bh=tl1TuVW379TWu0X8kuo6XYGo0xIhPshRyx52O0YMWKo=;
+ b=St0EE1lYutVgLwiMPIP6ZMOgY56UvykaJFZI+vIp1KJ9FtX7QEM+vbL6Pt9+d+5o
+ 9rt+VufKOwEz2q5Gosa5XLOVUKbqMB/n6U7VJi/dyIa6e8juqnAgF050wB2I9TaKJLW
+ ISvqXpj7JGhGRKsOVodiB+v+RZbDFNq9pAbh3ew4=
+Received: by mx.zohomail.com with SMTPS id 1773242220986933.1361530940103;
+ Wed, 11 Mar 2026 08:17:00 -0700 (PDT)
+From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+Date: Wed, 11 Mar 2026 15:15:39 +0000
+Subject: [PATCH 12/14] include/hw/hyperv: adjust hv_interrupt_control
+ structure for arm64
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260311-mshv_accel_arm64_supp-v1-8-c31699b7bc1f@anirudhrb.com>
+Message-Id: <20260311-mshv_accel_arm64_supp-v1-12-c31699b7bc1f@anirudhrb.com>
 References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
 In-Reply-To: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
 To: qemu-devel@nongnu.org
@@ -70,7 +71,7 @@ X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 11 Mar 2026 11:21:39 -0400
+X-Mailman-Approved-At: Wed, 11 Mar 2026 11:21:43 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,157 +86,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
+Add the arm64 specific fields to the hv_interrupt_control struct and
+adjust the existing usage accordingly. mshv_request_interrupt is only
+needed only for x86 so compile it out entirely for arm64.
 
-Enable access_vp_regs feature for regs. In arm64, this feature bit
-allows the guest to set VP registers using hypercall. This wasn't
-required for x86 because such registers are set using wrmsr instead of
-hypercall.
-
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
 ---
- accel/mshv/mshv-all.c     |  1 +
- include/hw/hyperv/hvhdk.h | 87 +++++++++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 85 insertions(+), 3 deletions(-)
+ accel/mshv/irq.c               |  2 ++
+ include/hw/hyperv/hvgdk_mini.h | 25 +++++++++++++++++++++++++
+ include/system/mshv.h          |  2 ++
+ 3 files changed, 29 insertions(+)
 
-diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index d63b3a53bf..563599ef6a 100644
---- a/accel/mshv/mshv-all.c
-+++ b/accel/mshv/mshv-all.c
-@@ -199,6 +199,7 @@ static int set_synthetic_proc_features(int vm_fd)
-     features.tb_flush_hypercalls = 1;
-     features.synthetic_cluster_ipi = 1;
-     features.direct_synthetic_timers = 1;
-+    features.access_vp_regs = 1;
- 
-     mshv_arch_amend_proc_features(&features);
- 
-diff --git a/include/hw/hyperv/hvhdk.h b/include/hw/hyperv/hvhdk.h
-index 2e1ef80972..38af01f8ea 100644
---- a/include/hw/hyperv/hvhdk.h
-+++ b/include/hw/hyperv/hvhdk.h
-@@ -94,11 +94,15 @@ union hv_partition_synthetic_processor_features {
-          */
-         uint64_t access_partition_reference_tsc:1;
- 
--        /*
--         * Partition has access to the guest idle reg. Corresponds to
-+#if defined(__x86_64__)
-+
-+        /* Partition has access to the guest idle reg. Corresponds to
-          * access_guest_idle_reg privilege.
-          */
-         uint64_t access_guest_idle_reg:1;
-+#else
-+        uint64_t reserved_z10:1;
-+#endif
- 
-         /*
-          * Partition has access to frequency regs. corresponds to
-@@ -110,11 +114,16 @@ union hv_partition_synthetic_processor_features {
-         uint64_t reserved_z13:1; /* Reserved for access_root_scheduler_reg */
-         uint64_t reserved_z14:1; /* Reserved for access_tsc_invariant_controls */
+diff --git a/accel/mshv/irq.c b/accel/mshv/irq.c
+index 3c238c33c3..a391d7db86 100644
+--- a/accel/mshv/irq.c
++++ b/accel/mshv/irq.c
+@@ -310,6 +310,7 @@ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev)
+     return 0;
+ }
  
 +#if defined(__x86_64__)
-+
-         /*
-          * Extended GVA ranges for HvCallFlushVirtualAddressList hypercall.
-          * Corresponds to privilege.
-          */
-         uint64_t enable_extended_gva_ranges_for_flush_virtual_address_list:1;
-+#else
-+        uint64_t reserved_z15:1;
+ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+                            uint32_t vp_index, bool logical_dest_mode,
+                            bool level_triggered)
+@@ -346,6 +347,7 @@ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint3
+     }
+     return 0;
+ }
 +#endif
  
-         uint64_t reserved_z16:1; /* Reserved for access_vsm. */
-         uint64_t reserved_z17:1; /* Reserved for access_vp_registers. */
-@@ -161,13 +170,85 @@ union hv_partition_synthetic_processor_features {
-         /* HvCallRetargetDeviceInterrupt is supported. */
-         uint64_t retarget_device_interrupt:1;
+ void mshv_irqchip_commit_routes(void)
+ {
+diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+index 84b3c6af5f..eb766734d6 100644
+--- a/include/hw/hyperv/hvgdk_mini.h
++++ b/include/hw/hyperv/hvgdk_mini.h
+@@ -506,13 +506,38 @@ typedef struct hv_input_set_vp_registers {
+     struct hv_register_assoc elements[];
+ } hv_input_set_vp_registers;
  
++enum hv_interrupt_type {
 +#if defined(__x86_64__)
-         /* HvCallRestorePartitionTime is supported. */
-         uint64_t restore_time:1;
- 
-         /* EnlightenedVmcs nested enlightenment is supported. */
-         uint64_t enlightened_vmcs:1;
- 
--        uint64_t reserved:30;
-+        uint64_t nested_debug_ctl:1;
-+        uint64_t synthetic_time_unhalted_timer:1;
-+        uint64_t idle_spec_ctrl:1;
-+
-+#else
-+        uint64_t reserved_z31:1;
-+        uint64_t reserved_z32:1;
-+        uint64_t reserved_z33:1;
-+        uint64_t reserved_z34:1;
-+        uint64_t reserved_z35:1;
++    HV_X64_INTERRUPT_TYPE_FIXED             = 0x0000,
++    HV_X64_INTERRUPT_TYPE_LOWESTPRIORITY    = 0x0001,
++    HV_X64_INTERRUPT_TYPE_SMI               = 0x0002,
++    HV_X64_INTERRUPT_TYPE_REMOTEREAD        = 0x0003,
++    HV_X64_INTERRUPT_TYPE_NMI               = 0x0004,
++    HV_X64_INTERRUPT_TYPE_INIT              = 0x0005,
++    HV_X64_INTERRUPT_TYPE_SIPI              = 0x0006,
++    HV_X64_INTERRUPT_TYPE_EXTINT            = 0x0007,
++    HV_X64_INTERRUPT_TYPE_LOCALINT0         = 0x0008,
++    HV_X64_INTERRUPT_TYPE_LOCALINT1         = 0x0009,
++    HV_X64_INTERRUPT_TYPE_MAXIMUM           = 0x000A,
++#elif defined(__aarch64__)
++    HV_ARM64_INTERRUPT_TYPE_FIXED           = 0x0000,
++    HV_ARM64_INTERRUPT_TYPE_MAXIMUM         = 0x0008,
 +#endif
++};
 +
-+#if defined(__aarch64__)
-+        /* Register intercepts supported in V1. As more registers are supported in future
-+         * releases, new bits will be added here to prevent migration between incompatible hosts.
-+         *
-+         * List of registers supported in V1:
-+         * 1. TPIDRRO_EL0
-+         * 2. TPIDR_EL1
-+         * 3. SCTLR_EL1 - Supports write intercept mask.
-+         * 4. VBAR_EL1
-+         * 5. TCR_EL1 - Supports write intercept mask.
-+         * 6. MAIR_EL1 - Supports write intercept mask.
-+         * 7. CPACR_EL1 - Supports write intercept mask.
-+         * 8. CONTEXTIDR_EL1
-+         * 9. PAuth keys (total 10 registers)
-+         * 10. HvArm64RegisterSyntheticException
-+         */
-+        uint64_t register_intercepts_v1:1;
-+#else
-+        uint64_t reserved_z36:1;
-+#endif
-+
-+        /* HvCallWakeVps is supported */
-+        uint64_t wake_vps:1;
-+
-+        /* HvCallGet/SetVpRegisters is supported.
-+         * Corresponds to AccessVpRegisters privilege.
-+         * This feature only affects exo partitions.
-+         */
-+        uint64_t access_vp_regs:1;
-+
-+#if defined(__aarch64__)
-+        /* HvCallSyncContext/Ex is supported. */
-+        uint64_t sync_context:1;
-+#else
-+        uint64_t reserved_z39:1;
-+#endif /* __aarch64__ */
-+
-+        /* Management VTL synic support is allowed.
-+         * Corresponds to the ManagementVtlSynicSupport privilege.
-+         */
-+        uint64_t management_vtl_synic_support:1;
-+
+ union hv_interrupt_control {
+     uint64_t as_uint64;
+     struct {
+         uint32_t interrupt_type; /* enum hv_interrupt type */
 +#if defined(__x86_64__)
-+        /* Hypervisor supports guest mechanism to signal pending interrupts to paravisor. */
-+        uint64_t proxy_interrupt_doorbell_support:1;
-+#else
-+        uint64_t reserved_z41:1;
+         uint32_t level_triggered:1;
+         uint32_t logical_dest_mode:1;
+         uint32_t rsvd:30;
++#elif defined(__aarch64__)
++        uint32_t rsvd1:2;
++        uint32_t asserted:1;
++        uint32_t rsvd2:29;
 +#endif
-+
-+#if defined(__aarch64__)
-+        /* InterceptSystemResetAvailable is exposed. */
-+        uint64_t intercept_system_reset:1;
-+#else
-+        uint64_t reserved_z42:1;
-+#endif
-+
-+        /* Hypercalls for host MMIO operations are available. */
-+        uint64_t mmio_hypercalls:1;
-+
-+        uint64_t reserved:20;
      };
  };
  
+diff --git a/include/system/mshv.h b/include/system/mshv.h
+index 75286baf16..0db18fcee9 100644
+--- a/include/system/mshv.h
++++ b/include/system/mshv.h
+@@ -47,10 +47,12 @@ extern bool mshv_allowed;
+ typedef struct MshvState MshvState;
+ extern MshvState *mshv_state;
+ 
++#if defined(__x86_64__)
+ /* interrupt */
+ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
+                            uint32_t vp_index, bool logical_destination_mode,
+                            bool level_triggered);
++#endif
+ 
+ int mshv_irqchip_add_msi_route(int vector, PCIDevice *dev);
+ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev);
 
 -- 
 2.43.0

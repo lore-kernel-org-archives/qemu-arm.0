@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52237112583A
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 14:25:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298891125839
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 14:26:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0KV4-0007Lo-Lf; Wed, 11 Mar 2026 10:25:27 -0400
+	id 1w0KV6-0007O9-LE; Wed, 11 Mar 2026 10:25:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KUy-0007CE-UT; Wed, 11 Mar 2026 10:25:21 -0400
+ id 1w0KUz-0007CP-5A; Wed, 11 Mar 2026 10:25:21 -0400
 Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KUu-0000Kn-56; Wed, 11 Mar 2026 10:25:20 -0400
+ id 1w0KUv-0000Km-D7; Wed, 11 Mar 2026 10:25:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1773239108; bh=un+fO6utzHBLrdQ++Q1vvuMQfAIf43kwvCKZAjAmfHA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=VGYLtUtYF82SVVBh1NqFhhkMoHKI6ucVIpGyU7IOz7w96aSSB1Z4p76V2uKexZXrQ
- TwjXVuRDx0H7MUD8fpw2BGPSASlEQjDVfKsZ7AgckIfDoYA9BrEe/gQaQFuAPlkcZo
- VJckgk1MQ+nUbCrCUnGzY7Eb+QdG/sIrAKXT64Ws=
+ t=1773239107; bh=VvHpoEpak5oD4BWW2VNZzlgx/0J0ttLib2JoncQTjDQ=;
+ h=From:To:Cc:Subject:Date;
+ b=KQZZRweuMEVFmBLeueJD/XIdNgMww2nxFImadnHRAtMdA4iiH4o0sczLRQ38N4Q57
+ zyIBlXl19opH0+FVRBNPsw6CpTri2yVsYOd7NbQreT+lrSvnlRduxtILY8h73Qxgp2
+ 3hrMRh/VZnlQ9Hugpg6YRnqcOtull1pRiuyVjmxY=
 Received: from dt-VM.localdomain ([175.152.130.74])
  by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
  id 6460A831; Wed, 11 Mar 2026 22:25:06 +0800
-X-QQ-mid: xmsmtpt1773239107th3qvlhrm
-Message-ID: <tencent_7A1227883216A4103DA25F5A585E86DFE307@qq.com>
-X-QQ-XMAILINFO: NbgegmlEc3JumEERZiuJPG1Q72Fh1U+WTp/5sIGSWo9gSj2ObD7Vgk5nKvTZxp
- RG71QSaix8gEd4j+uePw3rMYeXujZU/KvxpFzmOX5SvQ4rC4A96IsvVAt/biLG5LNh/95nX87C1h
- YAmLrmK8rxDv5uruBHXQLuIsCS0XJnLKhFvMU0sB/xgbEooqlvkCUSLCSiR8ZNxvvkVy08RBm+Aa
- ObmJLzKea5WjQ7VjBjVB5qLGpBcqC7jFhq1u+MZi/Scpf4BThGy/ehIF824xSkyRCTbQiss/54Ur
- yGkYQ/d1KxtYbEOFyNXSahkhMUcpaYQqjNF9WUg+8b9gb1W54mCw7IjyXFqSV2xAXTR8cUurEMrR
- HY5XaYtzMWUX3YF+/TMkwnog0zyfMllG3knJgt6EkswBaRN9OOCzdrGLiF5gsL0pu0dmDQktAPgj
- VHwIHKI/2BeWlnsGCgOBpxBd1rx43tpnmnt2ZJDhtSexOrZhIfmtmAY9BNfe4O84xD3DtunJWfOB
- 3f2FZaR9B0OTfoZ2OCYY8ze+ATr/z3LkgeAxUvQdOVEMbz1QjQPbuLRqfScZWt3Refc8HjbB6aAL
- YHxDmOmTMXKJxDl4kEdjFUOoiTb5oSXd447oqDvSMCdO++a+ex88mBtKszHTiKAOC3BqhGBRVVq+
- /Cg+bWrXmHIPkNUUFJnuoxgT3jNLY0APFWXxCai8WLnjADmDKQLIWnBHJQjRIH9zJtvC3/G0g+Z0
- sWYZLpyq/mXrbdzqSFGWg4gcI3Pc8TAldq6ErdUFl3q7Mdt+sXV5F6d9Ex0b1FxPKf2mTKg+68Jj
- TvkG3LuUrMC2Difbt1X/EDWH0OfkhOD0BDcP7ieLfTipKBBdi0u8xYXb0Qo1Awf3l9Vhge708anu
- 6v/r3MiitlcpZ31b6dWFkZswX/m6a47Lm2M1N1MnQGr/Dfh1F87xREOkmksnPAhB3MqoxcShpaYo
- DquNOwpDpr4keFR0Vs1uGRAIPXg2HQe8C6FurrAqtk/yq0elB085APxKBqB76khaUC5hVuUr59xX
- Ky/M4E/09yVkq6+rmpuBiut7pNrhE0pwko2KhE+mEt9DtgoXe//LR3s8AQg9M=
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-mid: xmsmtpt1773239106tcpzbhgk8
+Message-ID: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
+X-QQ-XMAILINFO: NGZp1yYNf7Y+WrIA1BOiSRIdpssHXSykV3Q5QTFmdRXJ77DEKJ9otZ5mTg4qRK
+ dYyBEGAkaM79zem/hK6VEUISAVLLBvsL34DDqaQO62yixOy15T904SuOmxSHA0lSva9L38mGjSRa
+ yLYWLWfKloiYk4HallyBM6yQmnsNGXTY0nMUb35Rp0jm2VyalDvhiO5kIZQoE8ap83zcQGqfujCM
+ pi1PFbAS6J72UnEaxmJgJXezrMkdNrshqooHnWkkV3VutoeEidl98yQxfRJ6igLxESf3a/LlrI3D
+ oJmSFV7doo9po5csqLAnJ+ExlscpPglIBpNDeJIdWC15G02qw4LNx+UEdv/PAuhsrQnpEwK+V8u/
+ rRxzkrZAMosbDsco6L575eUROeq7ZNMOtEcVDGHcCBYEGnCVH4ZydzqNZZ3oWwxyYf69k/y7q0Oz
+ LELVlnEeuI2Mu+Hqj5NazsSWMImQqJyZlnST7sJ/DPj/NV3eFUh8St8RVZIuF55bBCn/aoB8l4x4
+ 51sit70CxpDPkCtkWLhh9UdPaPWgMbo79DC0dEPLseeCy5aR3OilZ8jBOhYBY7uB/T2wJcL3iWr9
+ /9S/870ZmqBkYwJ1SHoVMQSCQxEOFxaRHaB0gfMXOMto4Ueg73OsKaO2pOP2CHTTyrWAdv7KRGW4
+ 3xuizRvS6p4XAw5VX6ySinLHl/LvzES/zcK7ptZHpBIjafajm/mNojN55q8r4xTpp29ijVk++rq4
+ pAQLjBPgsnkFBm+gzzCtQj9NQr6sm/2O9SeDX90/40lKiIu70shDXUHFE23t87BUxZwIZn6rfPEY
+ 3I3/z+A1ZxruKewsPOO9KRFRSjVdH3UDxrsRkrRMKv9BWfpCYvAXElNO8JOIbd4zrpsjyxo8fC62
+ COJUw1EuVojlfngUgqri//lKBXbRnEIbQC2K1nLx7xHGXpYywrtsC1FWqy0d7LYBcFTGWd9mZWcy
+ l5T8AKozuQxtnxGlKH0hZwn0sJxlxC7WOw9p/7UOoevUocqQ0aZzmPMM6mbmVExWskJXi87eM05T
+ 9k/O8x1dkFJUWvkl6kNVrSpWw8NuRi+BfCfkiIgvHpuI4Z8dQzEPzixAwCoUY=
+X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
 From: 1774596582@qq.com
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	TaoDing <1774596582@qq.com>
-Subject: [PATCH v1 1/3] An interrupt is generated after the DMA transfer
- complete.
-Date: Wed, 11 Mar 2026 22:24:56 +0800
-X-OQ-MSGID: <fbe39deb69ed4a3da783407342eb14b59d77c7bb.1773236195.git.1774596582@qq.com>
+Subject: [PATCH v1 0/3] Fixed bugs in pl080
+Date: Wed, 11 Mar 2026 22:24:55 +0800
+X-OQ-MSGID: <cover.1773236195.git.1774596582@qq.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1773236195.git.1774596582@qq.com>
-References: <cover.1773236195.git.1774596582@qq.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=162.62.57.64; envelope-from=1774596582@qq.com;
@@ -87,54 +84,21 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: TaoDing <1774596582@qq.com>
 
-PL080 cannot trigger interrupt correctly. Reproduce this problem in a simple way.
+Hi all,
+When I tested pl080 using the existing dmatest tool in Linux, 
+I found that pl080 could not output the results correctly.
+The main issues involved are inconsistent source and destination bit widths, 
+misalignment of LLI, which can lead to incorrect data and even cause qemu crashes.
 
-In the versatilpb board, the interrupt output of pl080 is connected to the 17th interrupt input of pl190.
-By reading the status register of pl190, determined whether there is an interrupt generated for the corresponding input.
+TaoDing (3):
+  An interrupt is generated after the DMA transfer complete.
+  The swidth and dwidth of pl080 are not equal.
+  The LLI of pl080 should be aligned with 4 bytes.
 
-The basic address of pl080 is 0x10130000, and the basic address of pl190 is 0x10140000. 
-Read the value of the address through the qemu monitor.
+ hw/dma/pl080.c | 37 ++++++++++++++++++++++++-------------
+ 1 file changed, 24 insertions(+), 13 deletions(-)
 
-Configuration
-    ../configure --target-list=arm-softmmu --enable-debug
-Reproducer
-    ./qemu-system-arm -M versatilepb -m 128M -nographic -S \
-    -device loader,addr=0x00000000,data=0x11223344,data-len=4 \
-    -device loader,addr=0x00001000,data=0x00000000,data-len=4 \
-    -device loader,addr=0x10130030,data=0x00000001,data-len=4 \
-    -device loader,addr=0x10130100,data=0x00000000,data-len=4 \
-    -device loader,addr=0x10130104,data=0x00001000,data-len=4 \
-    -device loader,addr=0x10130108,data=0x00000000,data-len=4 \
-    -device loader,addr=0x1013010C,data=0x9e4bf001,data-len=4 \
-    -device loader,addr=0x10130110,data=0x0000c001,data-len=4
-
-Qemu monitor
-    (qemu) xp /1wx 0x10140008
-    10140008: 0x00000000
-
-The result correctly after fixed
-    (qemu) xp /1wx 0x10140008
-    10140008: 0x00020000
-
-
----
- hw/dma/pl080.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-index 3f8acb03de..1a39954f04 100644
---- a/hw/dma/pl080.c
-+++ b/hw/dma/pl080.c
-@@ -309,6 +309,7 @@ static void pl080_write(void *opaque, hwaddr offset,
-         case 4: /* Configuration */
-             s->chan[i].conf = value;
-             pl080_run(s);
-+            pl080_update(s);
-             break;
-         }
-         return;
 -- 
 2.43.0
-
 
 

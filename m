@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBAF41125854
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:06:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B0E1125854
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:08:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0N0R-0006eR-By; Wed, 11 Mar 2026 13:05:59 -0400
+	id 1w0N2q-0002vP-BB; Wed, 11 Mar 2026 13:08:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w0N0I-0006PD-Ct
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 13:05:51 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1w0N2o-0002re-Ov
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 13:08:26 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w0N0A-0001hO-8R
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 13:05:44 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-64ae2ce2fe1so105247d50.1
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 10:05:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773248736; cv=none;
+ id 1w0N2n-0002CC-1q
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 13:08:26 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-64c97997b0fso89117d50.3
+ for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 10:08:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773248903; cv=none;
  d=google.com; s=arc-20240605;
- b=aq/ZLavU4GAF2pCiu043UXQGuYRxSPu01O6K+aOVlrziVKiDbZt2p7EGTUY1DaCHlw
- c3/81vwVUmlAv78k7YheC8u/+aMIMFSbysyLUqvUbaXOAq4SlAQujL3VM1dARIjKPxk9
- bej31OCPTa9/pSTyDsdnZgFhODdWVnHQ9tAM5DGQK9F/e9AIqTtqJj2i5hwUQk3tfThc
- 3Ex2b1z2PrZw41f4Ba1iijFyfBXJhCDKDbtrEyCQ8Hjg1JUAoMaenMdCzwVmUVgWcrZV
- 0PxueKMQhZw959AcNzcFMnDzCShYjNnztIOgG3bXVstAVhRGO5dKNrc6pZkXXRyn+A2B
- Ltug==
+ b=DcRogAowxvlHoijZrZDRCvI5/mFGscP3EToltRJrlVgRb4N1YqYNIbhzLXkiJo5k21
+ TaR/7flDspiRQkPIpBv+4R3T80l2EHlMp06ZPFPrtI0AyrCuNtCNkDjpiY4IR/VGb2Eb
+ SDAeHH5h7+v+w6GTwXwiV41edhPA0v3XWV9+w3jKy6UWicnmCkZ+Jn6NnHYkB3AeWqtw
+ u5eY8oSxrsoToV/7RiZ7pACw/ZV9+5PxuRiTMmlCbYO7n4f496Wy0jGjQGNnuPiRBpH3
+ Br0g6ytA4546a46Ba/GBg16sdAJjxdNUO/a3RAtyk5zF5Dm0Esf6IUWc9u1qLmkcc+Yr
+ 4WKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=s8hhLwgIhU2/sosIgArVE4EJu0fvWf6z/Nekl4sBFGU=;
- fh=iqFqqEBg7Dud1mH5aCwSVWCLW1rH/Et+Q5WkkavK8jw=;
- b=O6KTqb+XbKJavuZzYCXhgAg/VScj3raqYKYJkQDHv5ERqOQabooNT0URuXyQhDzTUX
- HvuFHxK+vj0naMZ+5zumlaBmTCXB4DcGiWO+ijsZbeqAWR0c9DTvqqxp8wvDqHwOK0AB
- lz9k0gF9JGvdmMT5K5pih2Gy26mRhUy4+s7NXUEthksCjHXzl5TRGvMcrR82/rY0C9g6
- 9GgbsvkVK6XEVmFlPGMapgSZNqyy5KF0OeUp9RHovk37k9IMA/WOo8/AxhbWvox4G4FG
- VVAQmG4vVZ/xr94wQSbWZvA8ai+IBijbv+UaMteIMbCmOEnnNaYQ4dtLf+649JAcOOrv
- JTKg==; darn=nongnu.org
+ bh=oQ1ZQmTD+aQlp7Z0NCEYxNdfEv3Jy3pEAuTnQeKwK34=;
+ fh=tLP/gRpi7Iczn5ziGL7f2zBG1RdOSHMz6mExSpHcScY=;
+ b=OV0YopbFNb7doyFIN5otcA+zREIgkAZNyV4D8yHfqZNU9a0YeBlhn8U5908ioaUhsH
+ +Y1SdXPvidSXYGWTPhnTGfa0HEkJ22LIwcWKpU75GRfNyzGl7awmX22FFSfCWcZITUxe
+ C2GrWFZuzoCEy6v2G6YxG69oUppLY0jhDpr2ZXJu67l0l94BfdvfulcWo3NPpktNE8Ff
+ XABQgvmtwbHx7Wu4BpVGgiLDSQaumBkifg3Ethr6KNqI5lC2Z5nnxZyHzv3b56FSfzOw
+ Fx+2hNZWZoUZYLH7vYn9kfe+iazdO33J24b6Nicgf0xV9O/3h7yS1eRRoIdcGg1gq0Hn
+ uR6g==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773248736; x=1773853536; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773248903; x=1773853703; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=s8hhLwgIhU2/sosIgArVE4EJu0fvWf6z/Nekl4sBFGU=;
- b=ukJxvEFMty8wzC0vR8c5b5bBitLWch1ymK7GpYJkIKm+rv8Mnm6lPTKTTQbJlBish0
- ae5w6bNQZvFmMlkWCsuiMKe4NZQmTpsA+uWvAIBIcc1rxtpkT26kWF0fMqwxSSSCDAwb
- MhF3xlefFSIz7PMtjS+ryNq5ROi++ufgXpTXlFm5SSTVKON8yn/K4SmyvY6W0vW6eqoF
- tYSLO5iXv2Yh03BkC2GGGbl+6zWyNHVjqRBNdYGlX98a705RiVxhYPIUkAQ1+PuehaGM
- hRMxRdvrP5I7lYmk450XMpq8X3IlE7ghjHpg5kdc4VmtYiQ2ovmrGq8q7DjbuWmAZdjR
- MgOQ==
+ bh=oQ1ZQmTD+aQlp7Z0NCEYxNdfEv3Jy3pEAuTnQeKwK34=;
+ b=Kb6tAi2hbKUv2I2QBxhlvPCueFBrrXoNqdEnAMDpnBS2wrB2Z9EweL6eGKSxhGA4lV
+ SeMvSKO7fDwsxc/DSXexU3GJpIKdXOLaiib40DaZy24LVfIhrFYgvE5nRRfnLiT7WC8z
+ MRb3+ZqSMuG+JVUCvbSndwCEX0I+CidB7XmlYkyDGLpkwZMmS5hX8tse1A8KFNv4Y3s9
+ kaSPQ1ceU5h/AIux8G7Y6K/DjJsRIuD38DZojgfjlHPS7X6drGbrNrzP+NbDdQeE4pK7
+ MWCKqhZl0Rh45eUokKRcXesxJbhOldCLR9Gz8kcgFeOK3nlMXyBR6KHMEC+VDJ2Z8IAV
+ vTQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773248736; x=1773853536;
+ d=1e100.net; s=20230601; t=1773248903; x=1773853703;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=s8hhLwgIhU2/sosIgArVE4EJu0fvWf6z/Nekl4sBFGU=;
- b=F15ldEP//7xKlpfyJnDNxbD6lkmNM1Fnjqs0xgD+hd6A05waoToGnpOpLH+MMAThjo
- iy7vxFHX2IDDjz4anNbltuPyibYgDiFXwOaEvKgDRTGsF9edzltRFJTH50yDjztySpaF
- wEvN/uQ1cxVH3ut25QWCz5e6q/hStKCADnRx42xUVPL7SbI85ZV5NhImyc4YCOK9rmzU
- 2TEMdol+VfBv5T3yRLXQzyTOf2jxyKFv9iwAXXulqryZfcJvtPbpLsw0G+tFhdowdr9T
- 8bx9QtfhCy4o1IYMsFJSHFSgkgQft6CNg1CtAWuA09H2nnVuKmmUbqYkVhQx9fa/1oVZ
- +rdw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXIuGRLrxRq0j7oLZh9Yn3JrUyJ1VgEMaVs7Ou+sbr2iGoZoDpxfq5CSf+PlEimO37bDX0Kxw19Hg==@nongnu.org
-X-Gm-Message-State: AOJu0YyEVoOHC8dQZJkhuINwPxQdO7zXo/BXP2Ll8dZ0qdA5J7BxUn2p
- m+C8I6gYmv2YMYiMskI38ZfSe1+Lk61nfVGABrw2RjnbhTeoUpTueMHKIrKWaFOjejoNXgbAgd7
- 9vHWNxOAGK3O65n6nLZxF0C8H5r9KBdGdy9PqZx7YIcHyA5kb+wYp
-X-Gm-Gg: ATEYQzxwAm72CFB9qax3SKc7Imh7wkbN7yYV8Yogmt3XC5fBxbcx+pbANKYrCim3qsQ
- 20DQFQNpr+PH7PWSbiWaLZcAa8SCIIRlA2W9l2XoyTmKc+FxUsjfwPp/x6mR6WZvfv3UMtMrfA5
- XaStJj0umSQ6IAzitCJwarWlf9WZ0gjed6jnGJdIBsHTERJ+zVrqnZgqddILqOghjMjQf3VxhHC
- xp7JxKXuXaGZXjQ3LvolWtcR0+hb7FvyJ61PSDdpB9gigaf2RApkzaOryv/u72lCWB4DxfaRBQM
- Ff3w3suV9mZdeuKiv81fxbQSUAEfZY9fTrOqXAvdI21JipitmrqN0fO6qHheiY4bSSM=
-X-Received: by 2002:a05:690e:1595:20b0:649:cc0d:a99b with SMTP id
- 956f58d0204a3-64d656a9681mr2304942d50.11.1773248735633; Wed, 11 Mar 2026
- 10:05:35 -0700 (PDT)
+ bh=oQ1ZQmTD+aQlp7Z0NCEYxNdfEv3Jy3pEAuTnQeKwK34=;
+ b=QuQi/ED/4APSS/cuxPiQ3xu9FJ62xQTXmJ2FbbHTVJoM1EONgLdAqjUlsPzztqj5nF
+ MjYEb6rQEt0Erdl5zQavYpcPUBJdGeEQoJD6shHlkUyATCu31+4JZCInrm8kC/oQUQKN
+ gkBMqh8urxt29YlKfKnOTZ5zAY0DStxaui9E4dgykJ1YMcmPT7vBen+jCopIOL+h4qqi
+ 1xrtO6Q19v4tE9H5KSXNFZ5xNNQQPrxyHmlGpobWdPDAAwt3SyZSVjcKd3izaKMrtkee
+ OaRI29EMukaZ9SHgzkd7JtZG09cErrWkFcg6BkcUJutSQs310VDd48vZQ/iDsnan+7Wx
+ 0ltQ==
+X-Gm-Message-State: AOJu0YyTtX2BCkBIUsII8l7l0kuVd7zfd9qrfDcnm6jt4Ip7oTuLpmvv
+ WLrqDOVRF3elzYSfG10aYE6ZdOJwrxM84B7k/be444f4uUtEDwgoC+2yPArq7lf8B+qoNtSFCoJ
+ hrUgIldQBw9NsbkivE5e5pxcyWDBS30orBCMVSJfhLw==
+X-Gm-Gg: ATEYQzzQvJZweGD94ZuSO2xcSkvmp+c29ItcJnBnagISpQ6pb4BFlFjPE/i5kLvIoLC
+ mSTS33AFg7BEeKeRXtJJyfIqjQVIShBySQksL/YXIIcXzSJrY6NMJmhdqcmDCrllDqelmp7qKbA
+ wHxGqWRm7Pj7g1EnuRpftfbM+ZlR1ZS32SR+ygkDqZJfx3ROD6xN/MTIdTfejNwRkIKIpPjDZ1O
+ zvB0gO8Yz9mN9kRGlMEOp1VWvibEZVCxvgD20D8iCUbx/++scVIxrBMIVm19y7Rye3zP+4pluY9
+ eJ/FJdZi2uTmnMcVC3qNGOZAUCJCabS+RuE6BxAsbOi+/3YDQ6UJlBS3A33vIDrnBbw=
+X-Received: by 2002:a05:690e:144d:b0:64a:e142:a097 with SMTP id
+ 956f58d0204a3-64d656f7018mr3257779d50.24.1773248903342; Wed, 11 Mar 2026
+ 10:08:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
- <a8e75e56-a34b-4df0-866e-3ce5828dd472@phytium.com.cn>
-In-Reply-To: <a8e75e56-a34b-4df0-866e-3ce5828dd472@phytium.com.cn>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-42-peter.maydell@linaro.org>
+ <20260311165151.00004669@huawei.com>
+In-Reply-To: <20260311165151.00004669@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 11 Mar 2026 17:05:24 +0000
-X-Gm-Features: AaiRm51nohGj-1LpdtU9r14KeB2EsJn9ggPWTylVdOQVeHhkL01hqU7w0bB__ys
-Message-ID: <CAFEAcA8kPQwFFdhYWr5WQisAgSs3s4YOuvZm2UoFT83LF5dgHg@mail.gmail.com>
-Subject: Re: [PATCH v1 0/3] Fixed bugs in pl080
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: 1774596582@qq.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Wed, 11 Mar 2026 17:08:11 +0000
+X-Gm-Features: AaiRm53foUcrHGH73x4RHe2nJMuFFsFE8-8eJqoxcq15DCycxkunh_KpQayP2U0
+Message-ID: <CAFEAcA9UOGk3WZG3Dx5NmEAd4DUY0o+hnPo0+F5MGeMTcAyS1w@mail.gmail.com>
+Subject: Re: [PATCH 41/65] target/arm: GICv5 cpuif: Calculate the highest
+ priority PPI
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,25 +116,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 11 Mar 2026 at 16:14, Tao Tang <tangtao1634@phytium.com.cn> wrote:
+On Wed, 11 Mar 2026 at 16:51, Jonathan Cameron
+<jonathan.cameron@huawei.com> wrote:
 >
-> Hi,
+> On Mon, 23 Feb 2026 17:01:48 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> It looks like three patches of this series were sent out-of-thread and
-> are not attached to this cover letter.
+> > When the state of PPIs changes, recalculate the highest priority PPI.
+> > In subsequent commits we will use this cached value to provide the
+> > HPPI info to the guest, decide whether to signal IRQ or FIQ, handle
+> > interrupt acknowldge from the guest, and so on.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> You may want to resend the full series, or resend those patches with
-> In-Reply-To pointing to the Message-ID of this cover letter so they
-> appear in the same thread:
+> Other than struggling with the reference, LGTM
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 >
-> git
-> send-email --in-reply-to="tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com"
-> xxxxx
+> > +/*
+> > + * We keep track of candidate highest possible pending interrupts
+> > + * using this struct.
+> > + *
+> > + * Unlike GICv3, we don't need a separate NMI bool, because for
+> > + * GICv5 superpriority is signaled by @prio == 0.
+> > + *
+> > + * In this struct the intid includes the interrupt type in bits [31:29]
+> > + * (i.e. it is in the form defined by R_TJPHS).
+> Not sure it matters, but the particular GIC v5 spec I'm looking doesn't
+> seem to have a R_TJPHS (I happen to have EAC0)
 
-It looks to me looking at the headers that the emails were sent with correct
-message-id and in-reply-to headers, but something in the qq.com
-mail infrastructure has re-written the message-IDs and broken the
-threading.
+Hmm. It's in the EAC0 download from
+https://developer.arm.com/documentation/aes0070/latest/
+in section 2.4, on page 32, second rule from the bottom.
 
+thanks
 -- PMM
 

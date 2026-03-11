@@ -4,69 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298891125839
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 14:26:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6DDC1125838
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 14:30:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0KV6-0007O9-LE; Wed, 11 Mar 2026 10:25:29 -0400
+	id 1w0KZk-0000LG-Ts; Wed, 11 Mar 2026 10:30:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KUz-0007CP-5A; Wed, 11 Mar 2026 10:25:21 -0400
-Received: from out162-62-57-64.mail.qq.com ([162.62.57.64])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w0KZj-0000Kt-Hc; Wed, 11 Mar 2026 10:30:15 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <1774596582@qq.com>)
- id 1w0KUv-0000Km-D7; Wed, 11 Mar 2026 10:25:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1773239107; bh=VvHpoEpak5oD4BWW2VNZzlgx/0J0ttLib2JoncQTjDQ=;
- h=From:To:Cc:Subject:Date;
- b=KQZZRweuMEVFmBLeueJD/XIdNgMww2nxFImadnHRAtMdA4iiH4o0sczLRQ38N4Q57
- zyIBlXl19opH0+FVRBNPsw6CpTri2yVsYOd7NbQreT+lrSvnlRduxtILY8h73Qxgp2
- 3hrMRh/VZnlQ9Hugpg6YRnqcOtull1pRiuyVjmxY=
-Received: from dt-VM.localdomain ([175.152.130.74])
- by newxmesmtplogicsvrsza63-0.qq.com (NewEsmtp) with SMTP
- id 6460A831; Wed, 11 Mar 2026 22:25:06 +0800
-X-QQ-mid: xmsmtpt1773239106tcpzbhgk8
-Message-ID: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
-X-QQ-XMAILINFO: NGZp1yYNf7Y+WrIA1BOiSRIdpssHXSykV3Q5QTFmdRXJ77DEKJ9otZ5mTg4qRK
- dYyBEGAkaM79zem/hK6VEUISAVLLBvsL34DDqaQO62yixOy15T904SuOmxSHA0lSva9L38mGjSRa
- yLYWLWfKloiYk4HallyBM6yQmnsNGXTY0nMUb35Rp0jm2VyalDvhiO5kIZQoE8ap83zcQGqfujCM
- pi1PFbAS6J72UnEaxmJgJXezrMkdNrshqooHnWkkV3VutoeEidl98yQxfRJ6igLxESf3a/LlrI3D
- oJmSFV7doo9po5csqLAnJ+ExlscpPglIBpNDeJIdWC15G02qw4LNx+UEdv/PAuhsrQnpEwK+V8u/
- rRxzkrZAMosbDsco6L575eUROeq7ZNMOtEcVDGHcCBYEGnCVH4ZydzqNZZ3oWwxyYf69k/y7q0Oz
- LELVlnEeuI2Mu+Hqj5NazsSWMImQqJyZlnST7sJ/DPj/NV3eFUh8St8RVZIuF55bBCn/aoB8l4x4
- 51sit70CxpDPkCtkWLhh9UdPaPWgMbo79DC0dEPLseeCy5aR3OilZ8jBOhYBY7uB/T2wJcL3iWr9
- /9S/870ZmqBkYwJ1SHoVMQSCQxEOFxaRHaB0gfMXOMto4Ueg73OsKaO2pOP2CHTTyrWAdv7KRGW4
- 3xuizRvS6p4XAw5VX6ySinLHl/LvzES/zcK7ptZHpBIjafajm/mNojN55q8r4xTpp29ijVk++rq4
- pAQLjBPgsnkFBm+gzzCtQj9NQr6sm/2O9SeDX90/40lKiIu70shDXUHFE23t87BUxZwIZn6rfPEY
- 3I3/z+A1ZxruKewsPOO9KRFRSjVdH3UDxrsRkrRMKv9BWfpCYvAXElNO8JOIbd4zrpsjyxo8fC62
- COJUw1EuVojlfngUgqri//lKBXbRnEIbQC2K1nLx7xHGXpYywrtsC1FWqy0d7LYBcFTGWd9mZWcy
- l5T8AKozuQxtnxGlKH0hZwn0sJxlxC7WOw9p/7UOoevUocqQ0aZzmPMM6mbmVExWskJXi87eM05T
- 9k/O8x1dkFJUWvkl6kNVrSpWw8NuRi+BfCfkiIgvHpuI4Z8dQzEPzixAwCoUY=
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-From: 1774596582@qq.com
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	TaoDing <1774596582@qq.com>
-Subject: [PATCH v1 0/3] Fixed bugs in pl080
-Date: Wed, 11 Mar 2026 22:24:55 +0800
-X-OQ-MSGID: <cover.1773236195.git.1774596582@qq.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w0KZg-0002O3-85; Wed, 11 Mar 2026 10:30:15 -0400
+Received: from mail.maildlp.com (unknown [172.18.224.107])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWCmx5rl2zJ46Cj;
+ Wed, 11 Mar 2026 22:29:21 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id 2AE4640584;
+ Wed, 11 Mar 2026 22:30:08 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
+ 2026 14:30:07 +0000
+Date: Wed, 11 Mar 2026 14:30:06 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 22/65] hw/intc/arm_gicv5: Create backing state for SPIs
+Message-ID: <20260311143006.00005229@huawei.com>
+In-Reply-To: <20260223170212.441276-23-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-23-peter.maydell@linaro.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=162.62.57.64; envelope-from=1774596582@qq.com;
- helo=out162-62-57-64.mail.qq.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HELO_STATIC_HOST=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,26 +64,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: TaoDing <1774596582@qq.com>
+On Mon, 23 Feb 2026 17:01:29 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Hi all,
-When I tested pl080 using the existing dmatest tool in Linux, 
-I found that pl080 could not output the results correctly.
-The main issues involved are inconsistent source and destination bit widths, 
-misalignment of LLI, which can lead to incorrect data and even cause qemu crashes.
+> The GICv5 allows an IRS to implement SPIs, which are fixed-wire
+> interrupts connected directly to the IRS.  For QEMU we want to use
+> these for all our traditional fixed-wire interrupt devices.  (The
+> other option the architecture permits is an Interrupt Wire Bridge
+> (IWB), which converts from a fixed-wire interrupt to an interrupt
+> event that is then translated through an ITS to send an LPI to the
+> ITS -- this is much more complexity than we need or want.)
 
-TaoDing (3):
-  An interrupt is generated after the DMA transfer complete.
-  The swidth and dwidth of pl080 are not equal.
-  The LLI of pl080 should be aligned with 4 bytes.
+Skipping the fun stuff? :)
 
- hw/dma/pl080.c | 37 ++++++++++++++++++++++++-------------
- 1 file changed, 24 insertions(+), 13 deletions(-)
+> 
+> SPI configuration is set via the same CPUIF instructions as LPI
+> configuration.  Create an array of structs which track the SPI state
+> information listed in I_JVVTZ and I_BWPPP (ignoring for the moment
+> the VM assignment state, which we will add when we add virtualization
+> support).
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
--- 
-2.43.0
 
 

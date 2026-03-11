@@ -4,119 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 777A3104BED5
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 10:34:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 817CB104C00E
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 10:49:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0GtM-0006eZ-RR; Wed, 11 Mar 2026 06:34:18 -0400
+	id 1w0H8H-00030A-Ab; Wed, 11 Mar 2026 06:49:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0GtK-0006dy-7p
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 06:34:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1w0H8G-0002zs-26; Wed, 11 Mar 2026 06:49:40 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0GtH-0003un-9v
- for qemu-arm@nongnu.org; Wed, 11 Mar 2026 06:34:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773225250;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wjBM4+TO7MrRJZvud87gNg3RblxZL3WwpmpNCrfefl8=;
- b=WE1yW7W7eHbg3Bvq5pLddNWTjal7t210Bf3UwZIavawXYW5euyeZvwHT8a6iFxWEXa/z2X
- pRRlfoIgTStYINjUf8o7iMiSobru7C3CaQ40L+0t/bxWzqQ/3M2tKfESmbcVo1Hd9tMlN3
- rruW3YA7+3YV4iLTL2OUEA2Jy0BT94Q=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-266-WX7qn6AYNCWqbAqjTO_Kuw-1; Wed, 11 Mar 2026 06:34:08 -0400
-X-MC-Unique: WX7qn6AYNCWqbAqjTO_Kuw-1
-X-Mimecast-MFC-AGG-ID: WX7qn6AYNCWqbAqjTO_Kuw_1773225248
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-439da07c5bfso4126670f8f.1
- for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 03:34:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773225247; x=1773830047;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wjBM4+TO7MrRJZvud87gNg3RblxZL3WwpmpNCrfefl8=;
- b=vc+z8UWkzqKpjrdMiNGgCOLVrQXOGrJ7P5F8CdG3/J8VfZJrKmLinrxlmCXcyzI8hQ
- bDhVkunDn1FBUQ6gwbE0tTAITaemolgye6BoDxyOMdTsg4h2t+0F7X+TYwtd196qz0uf
- 69y9RVP389bsHwCxj8IQ/QvW1EOdPvq6AEc97y3wzosU8PJXVgbEmI3q9YijPuOykAHi
- 6S870OXHAtRsYXlsU0xwGfMCzVAvZV+Ex3veRTtYaMYd0quYmZ7vrqD0cVZy6+Ji9EXa
- moiZ9lIbpHZ/T4gD2XSYHoKA+LNSmuHw3/ZEqmSf9g/fDXKH80d5gPryq/NxnCA7NFZi
- yXdA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUe56Pd6VfQPXB3uPCV09mxNlXOycZT6x/Kv9laoW2/BYp8iGV3nhD31pekEW44nCosWtYRz7Wf0A==@nongnu.org
-X-Gm-Message-State: AOJu0YyNClDTa1JophJN4g5/3OVFY5c38+j209yzxlOMIgjaFxgHHcwh
- Y1E2uu0f7xsN/3MXlC6/7zpO2jjsCqnurfBdulGAjB4VAYHSal9kYxGs/spwzdzTez6+8OeGXbi
- QLPb8ttYJegpuTuTBefYONTju1sIGZKClfsOThweEGyYdpXzfDFXT0A==
-X-Gm-Gg: ATEYQzzssu8IDIDZiHCVlE/HOYlUIen9Wkm5v85KnYWxYPNz46MAk52BMN4ID+1/pJ7
- fWXiU/GFNVc+x+WRrjK1P2jek/Ob/MjZz2iujqFfAFvCEe+0wop88fbkJmTc0FPWyxM5ghkanVg
- Jomyyuj2OEUuD6VzZ+YhmoRuYnVXc1/lDvpkJ6+mQXtqxq936vAU2pF9/TQ6LXmXQY5w0hmha+f
- h60XbFvQq2SSfnPZUO/1T5TXfdw88x2/DcoCTPnOj3EomZgJ9OyFtcXeZn5IbQtw9C97n2BunjH
- Ag2vlxF42CmarBNcP1EcI1L5wfYJqtlWNb/Mq8vOdNfmVnlyt85LszFjSb/EFsOrlrD3b8GDqf1
- uTWQPSiCYrFmFcHYVEqBVIAGafQe2AUK2BoRwWe6h1pyIihQ9qMWz3MQMOAgdbBAToSrlGA==
-X-Received: by 2002:a05:6000:26d1:b0:439:abcd:b317 with SMTP id
- ffacd0b85a97d-439f81c7005mr3884300f8f.14.1773225247419; 
- Wed, 11 Mar 2026 03:34:07 -0700 (PDT)
-X-Received: by 2002:a05:6000:26d1:b0:439:abcd:b317 with SMTP id
- ffacd0b85a97d-439f81c7005mr3884212f8f.14.1773225246732; 
- Wed, 11 Mar 2026 03:34:06 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439f81a0307sm5736349f8f.11.2026.03.11.03.34.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Mar 2026 03:34:06 -0700 (PDT)
-Message-ID: <11cf8b66-458f-4540-a31d-8b743e15f625@redhat.com>
-Date: Wed, 11 Mar 2026 11:34:04 +0100
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1w0H8C-0001Rs-4o; Wed, 11 Mar 2026 06:49:39 -0400
+Received: from mail.maildlp.com (unknown [172.18.224.107])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fW6v12GfWzHnHMZ;
+ Wed, 11 Mar 2026 18:49:17 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id CA0D040584;
+ Wed, 11 Mar 2026 18:49:24 +0800 (CST)
+Received: from localhost (10.203.177.99) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
+ 2026 10:49:23 +0000
+Date: Wed, 11 Mar 2026 10:49:18 +0000
+To: Gustavo Romero <gustavo.romero@linaro.org>
+CC: <mst@redhat.com>, <qemu-devel@nongnu.org>, <anisinha@redhat.com>,
+ <armbru@redhat.com>, <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>,
+ <eric.auger@redhat.com>, <farman@linux.ibm.com>, <imammedo@redhat.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mtosatti@redhat.com>,
+ <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <shannon.zhaosl@gmail.com>,
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH v18 3/8] hw/arm/virt: add cache hierarchy to device tree
+Message-ID: <20260311104918.00005f11.alireza.sanaee@huawei.com>
+In-Reply-To: <02fb6914-641f-4185-96b0-c7752d8d2e3c@linaro.org>
+References: <20260220141128.789-1-alireza.sanaee@huawei.com>
+ <20260220141128.789-4-alireza.sanaee@huawei.com>
+ <02fb6914-641f-4185-96b0-c7752d8d2e3c@linaro.org>
+Organization: Huawei
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 14/32] hw/arm/tegra241-cmdqv: Emulate global CMDQV
- registers
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
- <phrdina@redhat.com>
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <20260226105056.897-15-skolothumtho@nvidia.com>
- <122fbdb7-c162-4809-89ab-d900d9845182@redhat.com>
- <CH3PR12MB75482E6B487EFC893D2EEE87AB46A@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB75482E6B487EFC893D2EEE87AB46A@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: TfWL90sBXBgI4LvD_meKLgwl7oJtS89th8q-eHDW9SI_1773225248
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Originating-IP: [10.203.177.99]
+X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,438 +73,635 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Thu, 5 Mar 2026 03:16:46 -0300
+Gustavo Romero <gustavo.romero@linaro.org> wrote:
 
+Hi Gustavo,
 
-On 3/10/26 12:37 PM, Shameer Kolothum Thodi wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 09 March 2026 16:33
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
->> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
->> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
->> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; Krishnakant Jaju
->> <kjaju@nvidia.com>; phrdina@redhat.com
->> Subject: Re: [PATCH v3 14/32] hw/arm/tegra241-cmdqv: Emulate global
->> CMDQV registers
->>
->> External email: Use caution opening links or attachments
->>
->>
->> Hi Shameer,
->>
->> On 2/26/26 11:50 AM, Shameer Kolothum wrote:
->>> From: Nicolin Chen <nicolinc@nvidia.com>
->>>
->>> Tegra241 CMDQV defines a set of global control and status registers
->>> used to configure virtual command queue allocation and interrupt
->>> behavior.
->>>
->>> Add read/write emulation for the global CMDQV register page
->>> (offset 0x00000), backed by a simple register cache. This includes
->>> CONFIG, PARAM, STATUS, VI error and interrupt maps, CMDQ allocation
->>> map and the VINTF0 related registers defined in the global CMDQV
->>> register space.
->>>
->>> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
->>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->>> ---
->>>  hw/arm/tegra241-cmdqv.h | 108
->> +++++++++++++++++++++++++++++++++++
->>>  hw/arm/tegra241-cmdqv.c | 121
->> +++++++++++++++++++++++++++++++++++++++-
->>>  2 files changed, 228 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
->>> index 46aa9e8a9f..50bcecee9d 100644
->>> --- a/hw/arm/tegra241-cmdqv.h
->>> +++ b/hw/arm/tegra241-cmdqv.h
->>> @@ -10,6 +10,9 @@
->>>  #ifndef HW_ARM_TEGRA241_CMDQV_H
->>>  #define HW_ARM_TEGRA241_CMDQV_H
->>>
->>> +#include "hw/core/registerfields.h"
->>> +#include "smmuv3-accel.h"
->>> +
->>>  #define TEGRA241_CMDQV_VERSION             1
->>>  #define TEGRA241_CMDQV_NUM_CMDQ_LOG2       1
->>>  #define TEGRA241_CMDQV_MAX_CMDQ            (1U <<
->> TEGRA241_CMDQV_NUM_CMDQ_LOG2)
->>> @@ -31,8 +34,113 @@ typedef struct Tegra241CMDQV {
->>>      SMMUv3AccelState *s_accel;
->>>      MemoryRegion mmio_cmdqv;
->>>      qemu_irq irq;
->>> +
->>> +    /* Register Cache */
->>> +    uint32_t config;
->>> +    uint32_t param;
->>> +    uint32_t status;
->>> +    uint32_t vi_err_map[2];
->>> +    uint32_t vi_int_mask[2];
->>> +    uint32_t cmdq_err_map[4];
->>> +    uint32_t cmdq_alloc_map[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vintf_config;
->>> +    uint32_t vintf_status;
->>> +    uint32_t vintf_sid_match[16];
->>> +    uint32_t vintf_sid_replace[16];
->>> +    uint32_t vintf_cmdq_err_map[4];
->>>  } Tegra241CMDQV;
->>>
->>> +/* Global CMDQV MMIO registers (offset 0x00000) */
->>> +REG32(CONFIG, 0x0)
->>> +FIELD(CONFIG, CMDQV_EN, 0, 1)
->>> +FIELD(CONFIG, CMDQV_PER_CMD_OFFSET, 1, 3)
->>> +FIELD(CONFIG, CMDQ_MAX_CLK_BATCH, 4, 8)
->>> +FIELD(CONFIG, CMDQ_MAX_CMD_BATCH, 12, 8)
->>> +FIELD(CONFIG, CONS_DRAM_EN, 20, 1)
->>> +
->>> +REG32(PARAM, 0x4)
->>> +FIELD(PARAM, CMDQV_VER, 0, 4)
->>> +FIELD(PARAM, CMDQV_NUM_CMDQ_LOG2, 4, 4)
->>> +FIELD(PARAM, CMDQV_NUM_VM_LOG2, 8, 4)
->> this is called CMDQV_NUM_VI_LOG2 in the spec I have access to
->> VI = virtual interface
->> I guess there is 1-1 mapping vetween VI and VM but I would keep spec
->> naming
->>> +FIELD(PARAM, CMDQV_NUM_SID_PER_VM_LOG2, 12, 4)
->> same here s/VM/VI
->>> +
->>> +REG32(STATUS, 0x8)
->>> +FIELD(STATUS, CMDQV_ENABLED, 0, 1)
->>> +
->> I would add "SMMU_CMDQV_VI_ERR_MAP_0/1 definitions"
->>> +#define A_VI_ERR_MAP 0x14
->> _0?
->>> +#define A_VI_ERR_MAP_1 0x18
->>> +#define V_VI_ERR_MAP_NO_ERROR (0)
->>> +#define V_VI_ERR_MAP_ERROR (1)
->>> +
->> same SMMU_CMDQV_VI_ING_MASK0/1
->>> +#define A_VI_INT_MASK 0x1c
->>> +#define A_VI_INT_MASK_1 0x20
->>> +#define V_VI_INT_MASK_NOT_MASKED (0)
->>> +#define V_VI_INT_MASK_MASKED (1)
->>> +
->> SMMU_CMDQV_CMDQ_ERR_MAP0-3
->>> +#define A_CMDQ_ERR_MAP 0x24
->>> +#define A_CMDQ_ERR_MAP_1 0x28
->>> +#define A_CMDQ_ERR_MAP_2 0x2c
->>> +#define A_CMDQ_ERR_MAP_3 0x30
->>> +
->>> +/* i = [0, 1] */
->>> +#define A_CMDQ_ALLOC_MAP_(i)
->> why A_? Since you rely on the REG macros, A_ should prefix the address
->> offset
->> Can't we call that SMMU_CMDQV_CMDQ_ALLOC_MAP_() as it is refered to in
->> the spec?
-> I will incorporate all suggestions related to naming etc and will make it same as
-> used in the spec.
->
->>>               \
->>> +    REG32(CMDQ_ALLOC_MAP_##i, 0x200 + i * 4) \
->>> +    FIELD(CMDQ_ALLOC_MAP_##i, ALLOC, 0, 1)   \
->>> +    FIELD(CMDQ_ALLOC_MAP_##i, LVCMDQ, 1, 7)  \
->>> +    FIELD(CMDQ_ALLOC_MAP_##i, VIRT_INTF_INDX, 15, 6)
->>> +
->> Please explain why we only expose 2 of those regs among 128?
-> QEMU currently models only two VCMDQs as we expose that by setting
-> TEGRA241_CMDQV_NUM_CMDQ_LOG2 = 1 via SMMU_CMDQV_PARAM_0.
-> Therefore, only the corresponding CMDQ allocation map entries are
-> implemented. I will add a comment to make it explicit here.
->
->>> +A_CMDQ_ALLOC_MAP_(0)
->>> +A_CMDQ_ALLOC_MAP_(1)
->>> +
->>> +
->>> +/* i = [0, 0] */
->>> +#define A_VINTFi_CONFIG(i)
->> again why don't we use the spec terminology
->> SMMU_CMDQV_VINTF0_CONFIG_0
->>>                   \
->>> +    REG32(VINTF##i##_CONFIG, 0x1000 + i * 0x100) \
->>> +    FIELD(VINTF##i##_CONFIG, ENABLE, 0, 1)       \
->>> +    FIELD(VINTF##i##_CONFIG, VMID, 1, 16)        \
->>> +    FIELD(VINTF##i##_CONFIG, HYP_OWN, 17, 1)
->>> +
->>> +A_VINTFi_CONFIG(0)
->>> +
->>> +#define A_VINTFi_STATUS(i)                       \
->>> +    REG32(VINTF##i##_STATUS, 0x1004 + i * 0x100) \
->>> +    FIELD(VINTF##i##_STATUS, ENABLE_OK, 0, 1)    \
->>> +    FIELD(VINTF##i##_STATUS, STATUS, 1, 3)       \
->>> +    FIELD(VINTF##i##_STATUS, VI_NUM_LVCMDQ, 16, 8)
->>> +
->>> +A_VINTFi_STATUS(0)
->>> +
->>> +#define V_VINTF_STATUS_NO_ERROR (0 << 1)
->>> +#define V_VINTF_STATUS_VCMDQ_EROR (1 << 1)
->> Nit: the spec also contains the typo but I would rather fix it in the code
->>
->> Explicitly state we only expose 1 VINTF
->>> +
->>> +/* i = [0, 0], j = [0, 15] */
->> does that mean that we can have a max 16 SIDs per VM?
->>> +#define A_VINTFi_SID_MATCH_(i, j)
->> if matched vi, I would prefer vi
->>>                               \
->>> +    REG32(VINTF##i##_SID_MATCH_##j, 0x1040 + j * 4 + i * 0x100) \
->>> +    FIELD(VINTF##i##_SID_MATCH_##j, ENABLE, 0, 1)               \
->>> +    FIELD(VINTF##i##_SID_MATCH_##j, VIRT_SID, 1, 20)
->>> +
->>> +A_VINTFi_SID_MATCH_(0, 0)
->>> +/* Omitting [0][1~14] as not being directly called */
->>> +A_VINTFi_SID_MATCH_(0, 15)
->>> +
->>> +/* i = [0, 0], j = [0, 15] */
->> vint = 0, 16 identical register entries
->>> +#define A_VINTFi_SID_REPLACE_(i, j)                               \
->>> +    REG32(VINTF##i##_SID_REPLACE_##j, 0x1080 + j * 4 + i * 0x100) \
->>> +    FIELD(VINTF##i##_SID_REPLACE_##j, PHYS_SID, 0, 19)
->> s/19/20
->>> +
->>> +A_VINTFi_SID_REPLACE_(0, 0)
->>> +/* Omitting [0][1~14] as not being directly called */
->>> +A_VINTFi_SID_REPLACE_(0, 15)
->>> +
->>> +/* i = [0, 0], j = [0, 3] */
->> vi = 0, 4 identical regs
->>> +#define A_VINTFi_LVCMDQ_ERR_MAP_(i, j)                               \
->>> +    REG32(VINTF##i##_LVCMDQ_ERR_MAP_##j, 0x10c0 + j * 4 + i * 0x100) \
->>> +    FIELD(VINTF##i##_LVCMDQ_ERR_MAP_##j, LVCMDQ_ERR_MAP, 0, 32)
->>> +
->>> +A_VINTFi_LVCMDQ_ERR_MAP_(0, 0)
->>> +/* Omitting [0][1~2] as not being directly called */
->> I don't get this comment
-> the hardware defines four registers ([0..3]). They are handled using
-> the range based switch case,
->
-> case A_VINTF0_LVCMDQ_ERR_MAP_0 ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->
-> And the index to arary is calculated using:
-> i = (offset - A_VINTF0_LVCMDQ_ERR_MAP_0) / 4
->
-> I will reword the comment something like:
->
-> Only the first and last offsets are declared explicitly since the
-> intermediate registers are handled via the range based switch case.
-> The register index is derived as:
->    (offset - A_VINTF0_LVCMDQ_ERR_MAP_0) / 4
->
->>> +A_VINTFi_LVCMDQ_ERR_MAP_(0, 3)
->>> +
->>>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
->>>
->>>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
->>> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
->>> index d487612ba2..a3830a02d6 100644
->>> --- a/hw/arm/tegra241-cmdqv.c
->>> +++ b/hw/arm/tegra241-cmdqv.c
->>> @@ -8,19 +8,138 @@
->>>   */
->>>
->>>  #include "qemu/osdep.h"
->>> +#include "qemu/log.h"
->>>
->>>  #include "hw/arm/smmuv3.h"
->>>  #include "smmuv3-accel.h"
->>>  #include "tegra241-cmdqv.h"
->>>
->>> +static uint64_t tegra241_cmdqv_read_vintf(Tegra241CMDQV *cmdqv,
->> hwaddr offset)
->>> +{
->>> +    int i;
->>> +
->>> +    switch (offset) {
->>> +    case A_VINTF0_CONFIG:
->>> +        return cmdqv->vintf_config;
->>> +    case A_VINTF0_STATUS:
->>> +        return cmdqv->vintf_status;
->>> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
->>> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
->>> +        return cmdqv->vintf_sid_match[i];
->>> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
->>> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
->>> +        return cmdqv->vintf_sid_replace[i];
->>> +    case A_VINTF0_LVCMDQ_ERR_MAP_0 ...
->> A_VINTF0_LVCMDQ_ERR_MAP_3:
->>> +        i = (offset - A_VINTF0_LVCMDQ_ERR_MAP_0) / 4;
->>> +        return cmdqv->vintf_cmdq_err_map[i];
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%"
->> PRIx64 "\n",
->>> +                      __func__, offset);
->>> +        return 0;
->>> +    }
->>> +}
->>> +
->>>  static uint64_t tegra241_cmdqv_read(void *opaque, hwaddr offset,
->> unsigned size)
->>>  {
->>> -    return 0;
->>> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
->>> +
->>> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
->>> +        qemu_log_mask(LOG_UNIMP,
->>> +                      "%s offset 0x%" PRIx64 " off limit (0x50000)\n", __func__,
->>> +                      offset);
->> If all those regs belong to the Global CMDQV registers page this shall
->> be within the first 64KB
-> Yes, in this patch that is the case. However, subsequent patches in the
-> series will add support for the other page windows as well. Hence the
-> full MMIO range check here.
->
->>> +        return 0;
->>> +    }
->>> +
->>> +    switch (offset) {
->>> +    case A_CONFIG:
->>> +        return cmdqv->config;
->>> +    case A_PARAM:
->>> +        return cmdqv->param;
->>> +    case A_STATUS:
->>> +        return cmdqv->status;
->>> +    case A_VI_ERR_MAP ... A_VI_ERR_MAP_1:
->>> +        return cmdqv->vi_err_map[(offset - A_VI_ERR_MAP) / 4];
->>> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
->>> +        return cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4];
->>> +    case A_CMDQ_ERR_MAP ... A_CMDQ_ERR_MAP_3:
->>> +        return cmdqv->cmdq_err_map[(offset - A_CMDQ_ERR_MAP) / 4];
->>> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
->>> +        return cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) /
->> 4];
->>> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->>> +        return tegra241_cmdqv_read_vintf(cmdqv, offset);
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%"
->> PRIx64 "\n",
->>> +                      __func__, offset);
->>> +        return 0;
->>> +    }
->>> +}
->>> +
->>> +static void tegra241_cmdqv_write_vintf(Tegra241CMDQV *cmdqv, hwaddr
->> offset,
->>> +                                       uint64_t value)
->>> +{
->>> +    int i;
->>> +
->>> +    switch (offset) {
->>> +    case A_VINTF0_CONFIG:
->>> +        /* Strip off HYP_OWN setting from guest kernel */
->>> +        value &= ~R_VINTF0_CONFIG_HYP_OWN_MASK;
->> Can you explain why this needed?
-> The HYP_OWN bit is not guest controllable. It is owned by the host
-> kernel/hypervisor and is wired to zero when running in guest kernel.
->
-> Please see tegra241_vintf_hw_init() in kernel,
-> drivers/iommu/arm/arm-smmu-v3/tegra241-cmdqv.c
->
-> The guest cannot enable this bit and the effective value seen by the
-> guest remains zero.
-Well nothing in the spec tells you you cannot set this bit from a guest.
+Thanks for the nice comments! I agree with all of this except for a tiny bit. please look inline.
+> Hi Alireza,
+> 
+> On 2/20/26 11:11, Alireza Sanaee wrote:
+> > Specify which level (core/cluster/socket) caches found at in the CPU
+> > topology. Updating cache topology to device tree (spec v0.4).
+> > Example:
+> > 
+> > For example, 2 sockets (packages), and 2 clusters, 4 cores and 2 threads
+> > created, in aggregate 2*2*4*2 logical cores. In the smp-cache object,
+> > cores will have L1d and L1i.  However, extending this is not difficult.
+> > The clusters will share a unified L2 level cache, and finally sockets
+> > will share L3. In this patch, threads will share L1 caches by default,
+> > but this can be adjusted if case required.
+> > 
+> > Only three levels of caches are supported.  The patch does not
+> > allow partial declaration of caches. In other words, the topology level
+> > of every cache must be specified if that of any level is.
+> > 
+> > ./qemu-system-aarch64 \
+> >      -machine virt,\
+> >           smp-cache.0.cache=l1i,smp-cache.0.topology=core,\
+> >           smp-cache.1.cache=l1d,smp-cache.1.topology=core,\
+> >           smp-cache.2.cache=l2,smp-cache.2.topology=cluster,\
+> >           smp-cache.3.cache=l3,smp-cache.3.topology=socket\
+> >      -cpu max \
+> >      -m 2048 \
+> >      -smp sockets=2,clusters=2,cores=4,threads=1 \
+> >      -kernel ./Image.gz \
+> >      -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+> >      -initrd rootfs.cpio.gz \
+> >      -bios ./edk2-aarch64-code.fd \
+> >      -nographic
+> > 
+> > For instance, following device tree will be generated for a scenario
+> > where we have 2 sockets, 2 clusters, 2 cores and 2 threads, in total 16
+> > PEs. L1i and L1d are private to each thread, and L2 and L3 are shared at
+> > socket level as an example.
+> > 
+> > Limitation: SMT cores cannot share L1 cache for now. This
+> > problem does not exist in PPTT tables.
+> > 
+> > Co-developed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> > Signed-off-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+> > ---
+> >   hw/arm/virt.c         | 364 +++++++++++++++++++++++++++++++++++++++++-
+> >   include/hw/arm/virt.h |  17 +-
+> >   include/hw/core/cpu.h |  12 ++
+> >   3 files changed, 391 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 50865e8115..0e1877b667 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -92,6 +92,7 @@
+> >   #include "hw/virtio/virtio-md-pci.h"
+> >   #include "hw/virtio/virtio-iommu.h"
+> >   #include "hw/char/pl011.h"
+> > +#include "hw/core/cpu.h"
+> >   #include "hw/cxl/cxl.h"
+> >   #include "hw/cxl/cxl_host.h"
+> >   #include "qemu/guest-random.h"
+> > @@ -282,6 +283,86 @@ static bool ns_el2_virt_timer_present(void)
+> >           arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu);
+> >   }
+> >   
+> > +void set_cpu_cache(CPUCoreCaches *cpu_cache, enum CacheType cache_type,
+> > +                   int cache_level, bool is_i_cache0)
+> > +{
+> > +    int bank_index = ((cache_level - 1) * 2) | is_i_cache0;
+> > +    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
+> > +    bool ccidx = cpu_isar_feature(any_ccidx, armcpu);
+> > +
+> > +    if (ccidx) {
+> > +        *cpu_cache = (CPUCoreCaches){
+> > +            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+> > +                                         CCIDX_LINESIZE) + 4),
+> > +            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+> > +                                        CCIDX_ASSOCIATIVITY) + 1,
+> > +            .sets = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+> > +                               CCIDX_NUMSETS) + 1,
+> > +        };
+> > +    } else {
+> > +        *cpu_cache = (CPUCoreCaches){
+> > +            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+> > +                                         LINESIZE) + 4),
+> > +            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+> > +                                        ASSOCIATIVITY) + 1,
+> > +            .sets =
+> > +                FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1, NUMSETS) + 1,
+> > +        };
+> > +    }
+> > +    cpu_cache->type = cache_type;
+> > +    cpu_cache->level = cache_level;
+> > +    cpu_cache->size = cpu_cache->associativity *
+> > +                             cpu_cache->sets *
+> > +                             cpu_cache->linesize;
+> > +
+> > +    return;
+> > +}
+> > +
+> > +unsigned int virt_get_caches(const VirtMachineState *vms, CPUCoreCaches *caches)
+> > +{
+> > +    int num_cache = 0;
+> > +    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0)); /* assume homogeneous CPUs */
+> > +    ARMISARegisters *isar = &armcpu->isar;
+> > +    uint32_t clidr = GET_IDREG(isar, CLIDR);
+> > +
+> > +    for (int cache_level = 1; cache_level <= CLIDR_CTYPE_MAX_CACHE_LEVEL;
+> > +         cache_level++) {
+> > +        uint8_t ctype =
+> > +            (clidr >> (3 * (cache_level - 1))) & CLIDR_CTYPE_MAX_CACHE_LEVEL;
+> > +
+> > +        if (ctype == CLIDR_CTYPE_NO_CACHE) {
+> > +            /*
+> > +             * If a "No cache" cache type is found it means no manageable caches
+> > +             * exist at further-out levels of hierarchy, so ignore them.
+> > +             */
+> > +            break;
+> > +        } else if (ctype == CLIDR_CTYPE_SEPARATE_I_D_CACHES) {
+> > +            /*
+> > +             * Create separate D and I caches. D-cache is stored first.
+> > +             */
+> > +            enum CacheType cache_type;
+> > +            for (cache_type = DATA_CACHE; cache_type <= INSTRUCTION_CACHE;
+> > +                 cache_type++) {
+> > +                set_cpu_cache(&caches[num_cache++], cache_type, cache_level,
+> > +                              cache_type == INSTRUCTION_CACHE ? true : false);
+> > +            }
+> > +        } else if (ctype == CLIDR_CTYPE_UNIFIED_CACHE) {
+> > +            set_cpu_cache(&caches[num_cache++], UNIFIED_CACHE, cache_level,
+> > +                          false);
+> > +        } else if (ctype == CLIDR_CTYPE_D_CACHE) {
+> > +            set_cpu_cache(&caches[num_cache++], DATA_CACHE, cache_level, false);
+> > +        } else if (ctype == CLIDR_CTYPE_I_CACHE) {
+> > +            set_cpu_cache(&caches[num_cache++], INSTRUCTION_CACHE, cache_level,
+> > +                          true);
+> > +        } else {
+> > +            error_setg(&error_abort, "Unrecognized cache type");
+> > +            return 0;
+> > +        }
+> > +    }
+> > +
+> > +    return num_cache;
+> > +}
+> > +
+> >   static void create_fdt(VirtMachineState *vms)
+> >   {
+> >       MachineState *ms = MACHINE(vms);
+> > @@ -432,13 +513,150 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
+> >       }
+> >   }
+> >   
+> > +static void add_cache_node(void *fdt, char *nodepath, CPUCoreCaches cache,
+> > +                           uint32_t *next_level)
+> > +{
+> > +    /* Assume L2/3 are unified caches. */
+> > +
+> > +    uint32_t phandle;
+> > +
+> > +    qemu_fdt_add_path(fdt, nodepath);
+> > +    phandle = qemu_fdt_alloc_phandle(fdt);
+> > +    qemu_fdt_setprop_cell(fdt, nodepath, "phandle", phandle);
+> > +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-level", cache.level);
+> > +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-size", cache.size);
+> > +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-block-size", cache.linesize);
+> > +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-sets", cache.sets);
+> > +    qemu_fdt_setprop(fdt, nodepath, "cache-unified", NULL, 0);
+> > +    qemu_fdt_setprop_string(fdt, nodepath, "compatible", "cache");
+> > +    if (cache.level != 3) {
+> > +        /* top level cache doesn't have next-level-cache property */
+> > +        qemu_fdt_setprop_cell(fdt, nodepath, "next-level-cache", *next_level);
+> > +    }
+> > +
+> > +    *next_level = phandle;
+> > +}
+> > +
+> > +static bool add_cpu_cache_hierarchy(void *fdt, CPUCoreCaches* cache,
+> > +                                    uint32_t cache_cnt,
+> > +                                    uint32_t top_level,
+> > +                                    uint32_t bottom_level,
+> > +                                    uint32_t cpu_id,
+> > +                                    uint32_t *next_level) {
+> > +    bool found_cache = false;
+> > +
+> > +    for (int level = top_level; level >= bottom_level; level--) {
+> > +        for (int i = 0; i < cache_cnt; i++) {
+> > +            char *nodepath;
+> > +
+> > +            if (i != level) {
+> > +                continue;
+> > +            }
+> > +
+> > +            nodepath = g_strdup_printf("/cpus/cpu@%d/l%d-cache",
+> > +                                       cpu_id, level);
+> > +            add_cache_node(fdt, nodepath, cache[i], next_level);
+> > +            found_cache = true;
+> > +            g_free(nodepath);
+> > +
+> > +        }
+> > +    }
+> > +
+> > +    return found_cache;
+> > +}
+> > +
+> > +static void set_cache_properties(void *fdt, const char *nodename,
+> > +                                 const char *prefix, CPUCoreCaches cache)
+> > +{
+> > +    char prop_name[64];
+> > +
+> > +    snprintf(prop_name, sizeof(prop_name), "%s-block-size", prefix);
+> > +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.linesize);
+> > +
+> > +    snprintf(prop_name, sizeof(prop_name), "%s-size", prefix);
+> > +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.size);
+> > +
+> > +    snprintf(prop_name, sizeof(prop_name), "%s-sets", prefix);
+> > +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.sets);
+> > +}
+> > +
+> > +static int partial_cache_description(const MachineState *ms,
+> > +                                     CPUCoreCaches *caches, int num_caches)
+> > +{
+> > +    int level, c;
+> > +
+> > +    for (level = 1; level < num_caches; level++) {
+> > +        for (c = 0; c < num_caches; c++) {  
+> 
+> It doesn't look right. 'num_caches' is the number of "cache level and
+> type", which starts from 0, so it's kind is being used as "cache level"
+> (L1, L2 and L3) and so being forced to start from 1.
+> 
+> Why this function can't be simplified by something like:
+> 
+> static bool partial_cache_description(const MachineState *ms,
+>                                        int num_caches)
+> {
+>    assert(num_caches < CACHE_LEVEL_AND_TYPE__MAX);
+I believe this has to be assert(num_caches - 1 < CACHE_LEVEL_AND_TYPE__MAX);
 
-When you allocate a vcmdq for passthrough to a VM you need to set that
-bit to 0 for additional checks to be done. When host is asked to prepare
-the vcmdq for assignment, on tegra241_cmdqv_init_vintf_user(), hyp_owned
-is set to false.
-
-However in usual tegra241_cmdqv_hw_reset() call, hyp_own is set to true.
-So I expect the guest to set the bit.
-
-What do I miss?
-
-Eric
-
->
->>> +
->>> +        cmdqv->vintf_config = value;
->>> +        if (value & R_VINTF0_CONFIG_ENABLE_MASK) {
->>> +            cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
->>> +        } else {
->>> +            cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
->>> +        }
->>> +        break;
->>> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
->>> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
->>> +        cmdqv->vintf_sid_match[i] = value;
->>> +        break;
->>> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
->>> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
->>> +        cmdqv->vintf_sid_replace[i] = value;
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%"
->> PRIx64 "\n",
->>> +                      __func__, offset);
->>> +        return;
->>> +    }
->>>  }
->> nit: if you can put write_vintf just after its read fellow, I think it
->> would ease the comparison/review
->>>  static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t
->> value,
->>>                                   unsigned size)
->>>  {
->>> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
->>> +
->>> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
->>> +        qemu_log_mask(LOG_UNIMP,
->>> +                      "%s offset 0x%" PRIx64 " off limit (0x50000)\n", __func__,
->>> +                      offset);
->>> +        return;
->>> +    }
->>> +
->>> +    switch (offset) {
->>> +    case A_CONFIG:
->>> +        cmdqv->config = value;
->>> +        if (value & R_CONFIG_CMDQV_EN_MASK) {
->>> +            cmdqv->status |= R_STATUS_CMDQV_ENABLED_MASK;
->>> +        } else {
->>> +            cmdqv->status &= ~R_STATUS_CMDQV_ENABLED_MASK;
->>> +        }
->>> +        break;
->>> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
->>> +        cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4] = value;
->>> +        break;
->>> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
->>> +        cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4] =
->> value;
->>> +        break;
->>> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->>> +        tegra241_cmdqv_write_vintf(cmdqv, offset, value);
->>> +        break;
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%"
->> PRIx64 "\n",
->>> +                      __func__, offset);
->>> +    }
->>>  }
->>>
->>>  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
->> At this stage of the reading it is unclear to me why we need to expose
->> all those regs to the guest. I would assume that a subset of them are
->> used by the hyp and not supposed to be accessed by the guest. For
->> instance the SID match/replace, ...
->>
->> Please could you clairfy what is absolutely needed to expose to the guest?
-> The intention here is to model the architectural register interface
-> defined by the CMDQV specification so the guest visible MMIO space
-> matches the hardware.
->
-> And some of the registers are backed by a simple register cache(like the
-> SID match/replace).  Access to the actual hardware state remains controlled
-> by QEMU, so guest writes do not necessarily translate to direct hardware
-> programming.
->
-> Thanks,
-> Shameer
+The rest looks nice and tidy.
+>    enum CpuTopologyLevel topo_level;
+>    enum CacheLevelAndType cache_level;
+> 
+>    for (cache_level = 0; cache_level < num_caches; cache_level++)
+>    {
+>        topo_level = machine_get_cache_topo_level(ms, cache_level);
+>        if (topo_level == CPU_TOPOLOGY_LEVEL_DEFAULT) {
+>            /* No topology level described for this cache level. */
+>            return true;
+>        }
+> 
+>    }
+> 
+>    return false;
+> }
+> 
+> 
+> > +            if (caches[c].level != level) {
+> > +                continue;
+> > +            }
+> > +
+> > +            switch (level) {
+> > +            case 1:
+> > +                /*
+> > +                 * L1 cache is assumed to have both L1I and L1D available.
+> > +                 * Technically both need to be checked.
+> > +                 */
+> > +                if (machine_get_cache_topo_level(ms,
+> > +                                                 CACHE_LEVEL_AND_TYPE_L1I) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            case 2:
+> > +                if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L2) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            case 3:
+> > +                if (machine_get_cache_topo_level(ms, CACHE_LEVEL_AND_TYPE_L3) ==
+> > +                    CPU_TOPOLOGY_LEVEL_DEFAULT) {
+> > +                    return level;
+> > +                }
+> > +                break;
+> > +            }
+> > +        }
+> > +    }
+> > +
+> > +    return 0;
+> > +}
+> > +
+> >   static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> >   {
+> >       int cpu;
+> >       int addr_cells = 1;
+> >       const MachineState *ms = MACHINE(vms);
+> > +    const MachineClass *mc = MACHINE_GET_CLASS(ms);
+> >       const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> >       int smp_cpus = ms->smp.cpus;
+> > +    int socket_id, cluster_id, core_id;
+> > +    uint32_t next_level = 0;
+> > +    uint32_t socket_offset = 0;
+> > +    uint32_t cluster_offset = 0;
+> > +    uint32_t core_offset = 0;
+> > +    int last_socket = -1;
+> > +    int last_cluster = -1;
+> > +    int last_core = -1;
+> > +    int top_node = 3;
+> > +    int top_cluster = 3;
+> > +    int top_core = 3;
+> > +    int bottom_node = 3;
+> > +    int bottom_cluster = 3;
+> > +    int bottom_core = 3;
+> > +    unsigned int num_cache;
+> > +    CPUCoreCaches caches[16];  
+> 
+> Use CPU_MAX_CACHES instead of 16?
+> 
+> 
+> > +    bool cache_created = false;
+> > +    bool cache_available;
+> > +    bool llevel;
+> > +
+> > +    num_cache = virt_get_caches(vms, caches);
+> > +
+> > +    if (mc->smp_props.has_caches &&
+> > +        partial_cache_description(ms, caches, num_cache)) {
+> > +        error_setg(&error_fatal, "Missing cache description");
+> > +        return;
+> > +    }
+> >   
+> >       /*
+> >        * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+> > @@ -467,9 +685,14 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> >       qemu_fdt_setprop_cell(ms->fdt, "/cpus", "#size-cells", 0x0);
+> >   
+> >       for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+> > +        socket_id = cpu / (ms->smp.clusters * ms->smp.cores * ms->smp.threads);
+> > +        cluster_id = cpu / (ms->smp.cores * ms->smp.threads) % ms->smp.clusters;
+> > +        core_id = cpu / ms->smp.threads % ms->smp.cores;
+> > +
+> >           char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+> >           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+> >           CPUState *cs = CPU(armcpu);
+> > +        const char *prefix = NULL;
+> >   
+> >           qemu_fdt_add_subnode(ms->fdt, nodename);
+> >           qemu_fdt_setprop_string(ms->fdt, nodename, "device_type", "cpu");
+> > @@ -499,6 +722,139 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+> >                                     qemu_fdt_alloc_phandle(ms->fdt));
+> >           }
+> >   
+> > +        if (!vmc->no_cpu_topology && num_cache) {
+> > +            for (uint8_t i = 0; i < num_cache; i++) {
+> > +                /* only level 1 in the CPU entry */  
+> 
+> Please try to use the form like /* Only level 1 in the CPU entry. */ in
+> for the comments.
+> 
+> 
+> > +                if (caches[i].level > 1) {
+> > +                    continue;
+> > +                }
+> > +
+> > +                if (caches[i].type == INSTRUCTION_CACHE) {
+> > +                    prefix = "i-cache";
+> > +                } else if (caches[i].type == DATA_CACHE) {
+> > +                    prefix = "d-cache";
+> > +                } else if (caches[i].type == UNIFIED_CACHE) {
+> > +                    error_setg(&error_fatal,
+> > +                               "Unified type is not implemented at level %d",
+> > +                               caches[i].level);
+> > +                    return;
+> > +                } else {
+> > +                    error_setg(&error_fatal, "Undefined cache type");
+> > +                    return;
+> > +                }
+> > +
+> > +                set_cache_properties(ms->fdt, nodename, prefix, caches[i]);
+> > +            }
+> > +        }  
+> 
+> I think that the code could be simplified if L2 and L3 nodes would
+> be created out of the cpu loop and just their phandles referred in the
+> cpu nodes. But if that's the case, no need to update it, I'm just saying
+> in case you want to send a follow up patch to improve it.
+> 
+> 
+> > +
+> > +        if (socket_id != last_socket) {
+> > +            bottom_node = top_node;
+> > +            /* this assumes socket as the highest topological level */
+> > +            socket_offset = 0;
+> > +            cluster_offset = 0;
+> > +            cache_available = machine_defines_cache_at_topo_level(ms,
+> > +                                  CPU_TOPOLOGY_LEVEL_SOCKET);
+> > +            llevel = machine_find_lowest_level_cache_at_topo_level(ms,
+> > +                        &bottom_node,
+> > +                        CPU_TOPOLOGY_LEVEL_SOCKET);
+> > +            if (cache_available && llevel) {  
+> 
+> Semantically, machine_defines_cache_at_topo_level() is like a subset of
+> machine_find_lowest_level_cache_at_topo_level() because if
+> machine_find_lowest_level_cache_at_topo_level() returns false there are
+> no cache levels specified at topology level "CPU_TOPOLOGY_LEVEL_SOCKET".
+> 
+> Hence it would suffice to use and check only the return value of
+> machine_find_lowest_level_cache_at_topo_level() here. Like:
+> 
+> cache_at_socket_topology = 
+> machine_find_lowest_level_cache_at_topo_level(..., 
+> CPU_TOPOLOGY_LEVEL_SOCKET);
+> 
+> if (cache_at_socket_topology) {
+>   ...
+> }
+> 
+> And the same for all the other occurencies of this pattern, in
+> CLUSTER and CORE below, including in the ACPI patch.
+> 
+> 
+> > +                if (bottom_node == 1 && !virt_is_acpi_enabled(vms))
+> > +                    error_setg(
+> > +                        &error_fatal,
+> > +                        "Cannot share L1 at socket_id %d."
+> > +                        "DT limiation on sharing at cache level = 1",  
+> 
+>                                     ^----- typo: limitation
+> 
+> 
+> > +                        socket_id);
+> > +
+> > +                cache_created = add_cpu_cache_hierarchy(ms->fdt, caches,
+> > +                                                        num_cache,
+> > +                                                        top_node,
+> > +                                                        bottom_node, cpu,
+> > +                                                        &socket_offset);
+> > +
+> > +                if (!cache_created) {
+> > +                    error_setg(&error_fatal,
+> > +                               "Socket: No caches at levels %d-%d",
+> > +                               top_node, bottom_node);
+> > +                    return;
+> > +                }
+> > +
+> > +                top_cluster = bottom_node - 1;
+> > +            }
+> > +
+> > +            last_socket = socket_id;
+> > +        }
+> > +
+> > +        if (cluster_id != last_cluster) {
+> > +            bottom_cluster = top_cluster;
+> > +            cluster_offset = socket_offset;
+> > +            core_offset = 0;
+> > +            cache_available = machine_defines_cache_at_topo_level(ms,
+> > +                                 CPU_TOPOLOGY_LEVEL_CLUSTER);
+> > +            llevel = machine_find_lowest_level_cache_at_topo_level(ms,
+> > +                        &bottom_cluster,
+> > +                        CPU_TOPOLOGY_LEVEL_CLUSTER);
+> > +            if (cache_available && llevel) {
+> > +                cache_created = add_cpu_cache_hierarchy(ms->fdt, caches,
+> > +                                                        num_cache,
+> > +                                                        top_cluster,
+> > +                                                        bottom_cluster, cpu,
+> > +                                                        &cluster_offset);
+> > +                if (bottom_cluster == 1 && !virt_is_acpi_enabled(vms)) {
+> > +                    error_setg(&error_fatal,
+> > +                        "Cannot share L1 at socket_id %d, cluster_id %d. "
+> > +                        "DT limitation on sharing at cache level = 1.",
+> > +                        socket_id, cluster_id);
+> > +                }
+> > +
+> > +                if (!cache_created) {
+> > +                    error_setg(&error_fatal,
+> > +                               "Cluster: No caches at levels %d-%d.",
+> > +                               top_cluster, bottom_cluster);
+> > +                    return;
+> > +                }
+> > +
+> > +                top_core = bottom_cluster - 1;
+> > +            } else if (top_cluster == bottom_node - 1) {
+> > +                top_core = bottom_node - 1;
+> > +            }
+> > +
+> > +            last_cluster = cluster_id;
+> > +        }
+> > +
+> > +        if (core_id != last_core) {
+> > +            bottom_core = top_core;
+> > +            core_offset = cluster_offset;
+> > +            cache_available = machine_defines_cache_at_topo_level(ms,
+> > +                                 CPU_TOPOLOGY_LEVEL_CORE);
+> > +            llevel = machine_find_lowest_level_cache_at_topo_level(ms,
+> > +                        &bottom_core,
+> > +                        CPU_TOPOLOGY_LEVEL_CORE);
+> > +            if (cache_available && llevel) {
+> > +                if (bottom_core == 1 && top_core > 1) {
+> > +                    bottom_core++;
+> > +                    cache_created = add_cpu_cache_hierarchy(ms->fdt,
+> > +                                                            caches,
+> > +                                                            num_cache,
+> > +                                                            top_core,
+> > +                                                            bottom_core, cpu,
+> > +                                                            &core_offset);
+> > +
+> > +                    if (!cache_created) {
+> > +                        error_setg(&error_fatal,
+> > +                                   "Core: No caches at levels %d-%d",
+> > +                                   top_core, bottom_core);
+> > +                        return;
+> > +                    }
+> > +                }
+> > +            }
+> > +
+> > +            last_core = core_id;
+> > +        }
+> > +
+> > +        next_level = core_offset;
+> > +        qemu_fdt_setprop_cell(ms->fdt, nodename, "next-level-cache",
+> > +                              next_level);
+> > +
+> >           g_free(nodename);
+> >       }
+> >   
+> > @@ -2883,7 +3239,7 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+> >   }
+> >   
+> >   
+> > -bool virt_is_acpi_enabled(VirtMachineState *vms)
+> > +bool virt_is_acpi_enabled(const VirtMachineState *vms)
+> >   {
+> >       if (vms->acpi == ON_OFF_AUTO_OFF) {
+> >           return false;
+> > @@ -3467,6 +3823,12 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+> >       hc->unplug = virt_machine_device_unplug_cb;
+> >       mc->nvdimm_supported = true;
+> >       mc->smp_props.clusters_supported = true;
+> > +
+> > +    /* Supported caches */
+> > +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1D] = true;
+> > +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1I] = true;
+> > +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L2] = true;
+> > +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L3] = true;
+> >       mc->auto_enable_numa_with_memhp = true;
+> >       mc->auto_enable_numa_with_memdev = true;
+> >       /* platform instead of architectural choice */
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index 8069422769..d738b24724 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -41,6 +41,7 @@
+> >   #include "system/kvm.h"
+> >   #include "hw/intc/arm_gicv3_common.h"
+> >   #include "qom/object.h"
+> > +#include "hw/core/cpu.h"
+> >   
+> >   #define NUM_GICV2M_SPIS       64
+> >   #define NUM_VIRTIO_TRANSPORTS 32
+> > @@ -52,6 +53,8 @@
+> >   /* GPIO pins */
+> >   #define GPIO_PIN_POWER_BUTTON  3
+> >   
+> > +#define CPU_MAX_CACHES 16
+> > +
+> >   enum {
+> >       VIRT_FLASH,
+> >       VIRT_MEM,
+> > @@ -194,7 +197,19 @@ struct VirtMachineState {
+> >   OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+> >   
+> >   void virt_acpi_setup(VirtMachineState *vms);
+> > -bool virt_is_acpi_enabled(VirtMachineState *vms);
+> > +bool virt_is_acpi_enabled(const VirtMachineState *vms);
+> > +
+> > +#define CLIDR_CTYPE_NO_CACHE 0x00
+> > +#define CLIDR_CTYPE_I_CACHE 0x01
+> > +#define CLIDR_CTYPE_D_CACHE 0x02
+> > +#define CLIDR_CTYPE_SEPARATE_I_D_CACHES 0x03
+> > +#define CLIDR_CTYPE_UNIFIED_CACHE 0x04
+> > +#define CLIDR_CTYPE_MAX_CACHE_LEVEL 7
+> > +
+> > +unsigned int virt_get_caches(const VirtMachineState *vms,
+> > +                             CPUCoreCaches *caches);
+> > +void set_cpu_cache(CPUCoreCaches *cpu_cache, enum CacheType cache_type,
+> > +                   int cache_level, bool is_i_cache);
+> >   
+> >   /* Return number of redistributors that fit in the specified region */
+> >   static uint32_t virt_redist_capacity(VirtMachineState *vms, int region)
+> > diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> > index ef20cb356a..27bd4628cf 100644
+> > --- a/include/hw/core/cpu.h
+> > +++ b/include/hw/core/cpu.h
+> > @@ -1215,4 +1215,16 @@ enum CacheType {
+> >       UNIFIED_CACHE
+> >   };
+> >   
+> > +struct CPUCoreCaches {
+> > +    enum CacheType type;
+> > +    uint32_t sets;
+> > +    uint32_t size;
+> > +    uint32_t level;
+> > +    uint16_t linesize;
+> > +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write through */
+> > +    uint8_t associativity;
+> > +};
+> > +
+> > +typedef struct CPUCoreCaches CPUCoreCaches;
+> > +
+> >   #endif  
+> 
+> Otherwise, the DT generation looks good to me.
+> 
+> 
+> Cheers,
+> Gustavo
+> 
 
 

@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4CB81125856
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:16:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B42A01125856
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:17:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0NAG-0006SY-1w; Wed, 11 Mar 2026 13:16:08 -0400
+	id 1w0NAI-0006UI-KB; Wed, 11 Mar 2026 13:16:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wei.liu@kernel.org>)
- id 1w0N1K-0000l2-IA; Wed, 11 Mar 2026 13:06:54 -0400
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+ id 1w0N72-0005BI-2N; Wed, 11 Mar 2026 13:12:49 -0400
+Received: from sea.source.kernel.org ([172.234.252.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wei.liu@kernel.org>)
- id 1w0N1I-0001sz-VE; Wed, 11 Mar 2026 13:06:54 -0400
+ id 1w0N6y-0003Ua-C1; Wed, 11 Mar 2026 13:12:47 -0400
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id E123E6183B;
- Wed, 11 Mar 2026 17:06:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6FF26C19421;
- Wed, 11 Mar 2026 17:06:49 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id F0E8243C4D;
+ Wed, 11 Mar 2026 17:12:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A008AC4CEF7;
+ Wed, 11 Mar 2026 17:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1773248809;
- bh=6do/x3nSHARoGumEr/ygC4hXYhlUITBqSvKCMz+BPHY=;
+ s=k20201202; t=1773249161;
+ bh=DhyJ46ud/A5fNoWRab1FMxcDxnSoM8mhTOmKLC6hVD0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ne+p/bTaJnVDH2b1ykwhCbETpzfuq0S5wTy902sUkOpZw8edIPsVcO0Jf4CAH8EnX
- l3hKEdyChM9SR3rZA/hOMlbBkttjPDKj7QcU9o0DbAduBTBl21IJzCK9t1hQyYcs8r
- Dyl9GQ53yE0k4m5za9PTtUtBm6UDzQ4fie4bTbITUwvs+XWBLPlY29SeX/LEYjsYpf
- Q01lYBSf+WxVarf0aBfafyOYWLp8Q0pp3/onfboIFsnEMEBMgM1ayoCnO246+Q4hzy
- wFUSFM6qU1ivdJ5NwZfoW7J7tYR088tXyxnz4OwCzfkYYu0TRX0vW/y0KjxrBNpFP1
- 0GDLAx2MFkwzg==
-Date: Wed, 11 Mar 2026 17:06:48 +0000
+ b=tVap41pg6pnZqY0O5pO5QtBduY1MA/YBLjTwQ/izREpf9QkKWNuJRQhBuzOHeIyEG
+ HF8/fceL2iWs++572T19xz3LhZgWfnGUMTKcDX9DzDc+LxWB3RpBVieZxv6PgbrXck
+ ossJDZUWbwUzZO2ycYf8ybCbKzqvqUV7nG0GPojRLvciZlOTQIhWjg21/koS/vgUVd
+ uI7sjrgnJ/7IwGsOfp0ACVNNHTyWG0EbwKHNFk+x0fMjTQlYRQ3+F7BDQljgG+BxNL
+ w6cDE4bFCTcFYeLR/6FvM1GUNVG0sRO4+ggNBI1tcRmF8Q3JLEDYfoMvVKrymCRZCy
+ tWadiB1xjxoRw==
+Date: Wed, 11 Mar 2026 17:12:40 +0000
 From: Wei Liu <wei.liu@kernel.org>
-To: Anirudh Rayabharam <anirudh@anirudhrb.com>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+ "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>,
+ qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
  Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
  =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ =?iso-8859-1?Q?=22Daniel_P=2E_Berrang=E9=22?= <berrange@redhat.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 02/14] accel/mshv: move msr.c to target/i386
-Message-ID: <20260311170648.GA3612627@liuwe-devbox-debian-v2.local>
+Subject: Re: [PATCH 00/14] Add ARM64 support for MSHV accelerator
+Message-ID: <20260311171240.GB3612627@liuwe-devbox-debian-v2.local>
 References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
- <20260311-mshv_accel_arm64_supp-v1-2-c31699b7bc1f@anirudhrb.com>
+ <877brii9wq.fsf@draig.linaro.org>
+ <9D4583F5-0591-473F-8FFA-1EDF416AF447@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260311-mshv_accel_arm64_supp-v1-2-c31699b7bc1f@anirudhrb.com>
-Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
- envelope-from=wei.liu@kernel.org; helo=tor.source.kernel.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9D4583F5-0591-473F-8FFA-1EDF416AF447@unpredictable.fr>
+Received-SPF: pass client-ip=172.234.252.31; envelope-from=wei.liu@kernel.org;
+ helo=sea.source.kernel.org
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 11 Mar 2026 13:15:59 -0400
+X-Mailman-Approved-At: Wed, 11 Mar 2026 13:16:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,13 +80,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Mar 11, 2026 at 03:15:29PM +0000, Anirudh Rayabharam wrote:
-> From: Aastha Rawat <aastharawat@linux.microsoft.com>
+On Wed, Mar 11, 2026 at 06:02:26PM +0100, Mohamed Mediouni wrote:
 > 
-> This file has x86 specific implementations. Move this file to i386
-> folder in preparation for ARM64 MSHV support.
 > 
-> Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> > On 11. Mar 2026, at 17:54, Alex Bennée <alex.bennee@linaro.org> wrote:
+> > 
+> > "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com> writes:
+> > 
+> >> This series adds ARM64 guest support to the MSHV (Microsoft Hypervisor)
+> >> accelerator, enabling QEMU to run aarch64 VMs on Microsoft's hypervisor
+> >> using the mshv Linux kernel module.
+> > 
+> > Does GitLab (or anything we plug into it) support runners on Arm64 with
+> > HyperV and a Linux Dom0?
+> > 
+> > I looks like we would need a dedicated runner to defend the
+> > functionality on CI.
+> 
+> 
+> The MSHV license doesn’t allow for any use outside of Azure Kubernetes Service,
+> despite MSHV (for x86) being public.
+> 
+> And Dom0 is technically not required as there’s L1VH, but that’s even less documented to
+> the outside and not set up for more local use - but hopefully will make its way to Windows 
+> client at some point :/
 
-Acked-by: Wei Liu <wei.liu@kernel.org>
+Direct Virtualization (the marketing name for L1VH) will become
+generally available on Azure at some point (hopefully within this
+calendar year). I am not sure about Windows client though.
+
+Thanks,
+Wei
 

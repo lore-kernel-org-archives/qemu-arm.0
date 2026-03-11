@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 324CD1125847
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:24:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA03F1125847
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 15:24:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0LOn-0000W4-45; Wed, 11 Mar 2026 11:23:01 -0400
+	id 1w0LOn-0000Wo-Dq; Wed, 11 Mar 2026 11:23:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w0LIT-00084B-Ce; Wed, 11 Mar 2026 11:16:31 -0400
+ id 1w0LJt-0000PV-Nt; Wed, 11 Mar 2026 11:18:00 -0400
 Received: from sender4-of-o54.zoho.com ([136.143.188.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w0LIR-0000QV-85; Wed, 11 Mar 2026 11:16:29 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1773242174; cv=none; 
+ id 1w0LJr-0000nn-1f; Wed, 11 Mar 2026 11:17:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1773242191; cv=none; 
  d=zohomail.com; s=zohoarc; 
- b=BKS8tkW1+MhgLeTfchmF86Fi0ufPK3DH++LM6ESYyX7dIZim7MfmniNOQqlvcXwbzColuIkaRCXuuKh19mhIE9M5migAxPFtV94Ucybba8jrBERjT1dwSfcNedy7kAkL/A2cbcQC2L5M1w9EF9/OY9+ilCAtQH+q5c6SK8Pn04g=
+ b=K9ZEe/COHh+kYbqB86pMU0V+0ZL83lD2oMPoy3voVYd2U8N/I3xfCCMEZJiKqMS0PRUBih8kp7L4lPyE+Zw8blyyBkt9KawKpnj7bIAJQ/zMolvBG/TH5+ocQRo5dtsI5xWSC5LCs7Ae0257Z1p14hgfZy3qpICkn/z26hGTITM=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1773242174;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=EdsQt9XAkhr3J9fJ/2sTgcnnBkZM2wyLclrl9WyqDG4=; 
- b=aJalXG8D7MRxX1AuZUjkRoGpns+5HKa7PfYWesNFA5NWojXE9SMOSnCy3OOFP7Egc8Ktg9WeyHkmGNb1MRb71VGg7PdJh1sgruMLM6hed9OVTc3VVBs9cz2mayt0nn+CFGCfiI5OMsqm24fzv7K9eCWzf/j2JkcC7YaDVEXt0F4=
+ s=zohoarc; t=1773242191;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=NTRwQprmaWvdzPDBjKmpFbbwJfCwmByLtqIQGr/R/H0=; 
+ b=KlRluhII3kxOi0UfWaixuQa75jdkXRNnJ9wIs6fWX/FdCimqiTQwUDcuJOJdfyBQ6lJupxBtiD+p6WzOcqXdW9JpVKJGirGB7lPjP1ofEPyZDyXxW19T7ibaK2806N2ULZE2BHVDXUlpFJ+/wJg0gbDY5QwgsKoQq+lD56tKgUA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
  dkim=pass  header.i=anirudhrb.com;
  spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
  dmarc=pass header.from=<anirudh@anirudhrb.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773242174; 
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773242191; 
  s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
- h=From:From:Subject:Subject:Date:Date:Message-Id:Message-Id:MIME-Version:Content-Type:Content-Transfer-Encoding:To:To:Cc:Cc:Reply-To;
- bh=EdsQt9XAkhr3J9fJ/2sTgcnnBkZM2wyLclrl9WyqDG4=;
- b=ArY5FdC+Z1HudFTEsqAumIPDnWKF+nD3RQQhdpin0ZFGbz/sqFQLqemtwssf1iwx
- 025iKSfKYuJCoYXjnp4eeTKLQMnMcysGFm6dZWfzU5BEQb/i8n2nJlGdL/SYpV/mOQz
- NVwNWrM/sl9UAvmJET56DkQ2mEBkkmnplXz+P+6E=
-Received: by mx.zohomail.com with SMTPS id 1773242172116262.8075739050563;
- Wed, 11 Mar 2026 08:16:12 -0700 (PDT)
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
-Subject: [PATCH 00/14] Add ARM64 support for MSHV accelerator
-Date: Wed, 11 Mar 2026 15:15:27 +0000
-Message-Id: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
+ h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+ bh=NTRwQprmaWvdzPDBjKmpFbbwJfCwmByLtqIQGr/R/H0=;
+ b=Jn2tPs3TmwhTa78C5KkZAD0NSD4KL/bxFV0bapaEWzrqwPjSkxTFAJ1dj5YYc+SM
+ fIg7ouD+t9UKKs7RThU3j1RP5TD2BZNJWDcEaXNU+PXrqWKZ8PhoMzuyCW3Jp/WxwIu
+ 3LomBLaMG3113c7lB5CtDO2zfgwSWd474Ny3mh+w=
+Received: by mx.zohomail.com with SMTPS id 1773242189395760.3162595875575;
+ Wed, 11 Mar 2026 08:16:29 -0700 (PDT)
+From: Anirudh Rayabharam <anirudh@anirudhrb.com>
+Date: Wed, 11 Mar 2026 15:15:31 +0000
+Subject: [PATCH 04/14] meson, target/arm/mshv: Enable arm64 build & add
+ initial MSHV support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAA+HsWkC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDY0ND3dzijLL4xOTk1Jz4xKJcM5P44tKCAt1UC7MkAwMLo8TUVBMloN6
- CotS0zAqwudGxtbUARDakIGcAAAA=
-X-Change-ID: 20260311-mshv_accel_arm64_supp-e86b0082aee4
+Message-Id: <20260311-mshv_accel_arm64_supp-v1-4-c31699b7bc1f@anirudhrb.com>
+References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
+In-Reply-To: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
 To: qemu-devel@nongnu.org
 Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
  Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -72,7 +71,7 @@ X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 11 Mar 2026 11:21:07 -0400
+X-Mailman-Approved-At: Wed, 11 Mar 2026 11:21:20 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,85 +86,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series adds ARM64 guest support to the MSHV (Microsoft Hypervisor)
-accelerator, enabling QEMU to run aarch64 VMs on Microsoft's hypervisor
-using the mshv Linux kernel module.
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
 
-The first few patches refactor the existing x86 MSHV code to separate
-arch-specific pieces from common infrastructure: moving MSR handling to
-target/i386, extracting shared register hypercall helpers, provisioning
-host CPU features, and introducing arch-specific init hooks.
+Enable the build of the MSHV accelerator for arm64 in the Meson build
+system. Introduce initial files and stub implementations to support MSHV
+for the ARM target.
 
-The remaining patches add the ARM64 backend:
- - vCPU state get/set using hypervisor register hypercalls
- - -cpu host support by querying ID registers from the hypervisor
- - vCPU run loop with MMIO emulation via ESR_EL2 syndrome decoding
- - In-kernel vGICv3 backed by HVCALL_ASSERT_VIRTUAL_INTERRUPT
- - Interrupt control structure adjustments for arm64
-
-With this series, a standard aarch64 virt machine can be launched with:
-  qemu-system-aarch64 -accel mshv -cpu host -M virt ...
-
-Caveats:
-- Currently only direct kernel is supported. We're still debugging edk2
-  firmware boot. 
-- Live migration is not yet supported.
-
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
-Aastha Rawat (7):
-      accel/mshv: move msr.c to target/i386
-      accel/mshv: extract common CPU register helpers
-      meson, target/arm/mshv: Enable arm64 build & add initial MSHV support
-      target/arm/mshv: implement vcpu state operations for ARM64
-      target/arm/mshv: implement -cpu host for MSHV
-      accel/mshv: Add access_vp_regs synthetic proc features
-      target/arm: cpu: Mark MSHV supporting PSCI 1.3
+ meson.build                 |  7 +++---
+ target/arm/meson.build      |  1 +
+ target/arm/mshv/meson.build |  7 ++++++
+ target/arm/mshv/mshv-all.c  | 54 +++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 66 insertions(+), 3 deletions(-)
 
-Anirudh Rayabharam (Microsoft) (6):
-      accel/mshv: provision guests with the same features as host
-      accel/mshv: add arch-specific accelerator init hook
-      target/arm/mshv: add vCPU run loop
-      include/hw/hyperv: adjust hv_interrupt_control structure for arm64
-      hw/intc,target/arm/mshv: add MSHV vGICv3 implementation
-      MAINTAINERS: updates for MSHV arm64 code
+diff --git a/meson.build b/meson.build
+index ed82247111..bf12fda40f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -303,7 +303,8 @@ if cpu == 'aarch64'
+   accelerator_targets += {
+     'CONFIG_HVF': ['aarch64-softmmu'],
+     'CONFIG_NITRO': ['aarch64-softmmu'],
+-    'CONFIG_WHPX': ['aarch64-softmmu']
++    'CONFIG_WHPX': ['aarch64-softmmu'],
++    'CONFIG_MSHV': ['aarch64-softmmu'],
+   }
+ elif cpu == 'x86_64'
+   accelerator_targets += {
+@@ -855,8 +856,8 @@ if get_option('kvm').allowed() and host_os == 'linux'
+ endif
+ 
+ if get_option('mshv').allowed() and host_os == 'linux'
+-  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
+-    error('mshv accelerator requires x64_64 host')
++  if get_option('mshv').enabled() and not (host_machine.cpu() in [ 'x86_64', 'aarch64' ])
++    error('The mshv accelerator requires an x86_64 or aarch64 host')
+   endif
+   accelerators += 'CONFIG_MSHV'
+ endif
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 6e0e504a40..8aa8cac137 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -59,6 +59,7 @@ arm_common_system_ss.add(files(
+ 
+ subdir('hvf')
+ subdir('whpx')
++subdir('mshv')
+ 
+ if 'CONFIG_TCG' in config_all_accel
+    subdir('tcg')
+diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
+new file mode 100644
+index 0000000000..169643691e
+--- /dev/null
++++ b/target/arm/mshv/meson.build
+@@ -0,0 +1,7 @@
++arm_mshv_ss = ss.source_set()
++
++arm_mshv_ss.add(files(
++  'mshv-all.c',
++))
++
++arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
+diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
+new file mode 100644
+index 0000000000..1c82e2c593
+--- /dev/null
++++ b/target/arm/mshv/mshv-all.c
+@@ -0,0 +1,54 @@
++/*
++ * QEMU MSHV support
++ *
++ * Copyright Microsoft, Corp. 2026
++ *
++ * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
++ *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "system/mshv.h"
++#include "system/mshv_int.h"
++
++int mshv_load_regs(CPUState *cpu)
++{
++    return 0;
++}
++
++int mshv_arch_put_registers(const CPUState *cpu)
++{
++    return 0;
++}
++
++int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
++{
++    return 0;
++}
++
++void mshv_arch_init_vcpu(CPUState *cpu)
++{
++
++}
++
++void mshv_arch_destroy_vcpu(CPUState *cpu)
++{
++
++}
++
++void mshv_init_mmio_emu(void)
++{
++
++}
++
++void mshv_arch_amend_proc_features(
++    union hv_partition_synthetic_processor_features *features)
++{
++
++}
++
++int mshv_arch_post_init_vm(int vm_fd)
++{
++    return 0;
++}
 
-Magnus Kulke (1):
-      accel/mshv: implement cpu_thread_is_idle() hook
-
- MAINTAINERS                        |   8 +
- accel/mshv/irq.c                   |   2 +
- accel/mshv/meson.build             |   4 +-
- accel/mshv/mshv-all.c              |  73 +++-
- accel/mshv/mshv-cpu-common.c       | 151 +++++++++
- hw/arm/virt.c                      |  11 +-
- hw/intc/arm_gicv3_common.c         |   3 +
- hw/intc/arm_gicv3_mshv.c           | 180 ++++++++++
- hw/intc/meson.build                |   1 +
- include/hw/hyperv/hvgdk_mini.h     | 130 ++++++++
- include/hw/hyperv/hvhdk.h          |  97 +++++-
- include/hw/hyperv/hvhdk_mini.h     |   6 +
- include/hw/intc/arm_gicv3_common.h |   1 +
- include/system/hw_accel.h          |   3 +-
- include/system/mshv.h              |   2 +
- include/system/mshv_int.h          |   5 +
- meson.build                        |   7 +-
- target/arm/cpu.c                   |   7 +-
- target/arm/cpu64.c                 |  24 +-
- target/arm/meson.build             |   1 +
- target/arm/mshv/meson.build        |   7 +
- target/arm/mshv/mshv-all.c         | 665 +++++++++++++++++++++++++++++++++++++
- target/arm/mshv_arm.h              |  18 +
- target/i386/mshv/meson.build       |   2 +
- target/i386/mshv/mshv-all.c        |  85 +++++
- target/i386/mshv/mshv-cpu.c        | 170 +---------
- {accel => target/i386}/mshv/msr.c  |   0
- 27 files changed, 1465 insertions(+), 198 deletions(-)
----
-base-commit: 1fd5ff9d76d23ab23a68419cbc76d5ee33e8b455
-change-id: 20260311-mshv_accel_arm64_supp-e86b0082aee4
-
-Best regards,
 -- 
-Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+2.43.0
 
 

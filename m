@@ -4,148 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 156E21125865
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 18:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D951125876
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 19:23:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0OOU-0004TB-W0; Wed, 11 Mar 2026 14:34:55 -0400
+	id 1w0P96-0001AC-TL; Wed, 11 Mar 2026 15:23:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1w0OOS-0004R1-LJ; Wed, 11 Mar 2026 14:34:52 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
+ id 1w0P90-00018z-Dx
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 15:22:58 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1w0OOP-0000W2-QC; Wed, 11 Mar 2026 14:34:52 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ZQhSb6muGvdCAJZ3t3OzK7whk0WZ5kep6alyw28yYtRj5aUhJUrNcXhkkmTvLp7EKKtt2vepdDTBexSV54XDRyS3h2J7ukV+aM+tC0r2RDPCamPHh23rRK8ZcyejEqvl4JBHbuiEaeVoL4j/5SUjBbLrvMA//4u4dxxMKQNbDqIYnSdapIxw2xYqN2JFVBSDqzMzG1d73/UMyMx6BT1sygf9ICi0cERIYnlA6v7nZGF/8HgzxPO2C3Rch09cbJo3w3P9Oi/K6d3Hgzc5i3hPvEkWGbfTHFPXfE4M6ddNeSDQvqN9JpZV2G38mfCsY/g5zbFT11QLM1TDhwwNKzcHbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Y4arhF9bCQ4k3ZrWpAsmTiB1ken86azVMWu5ME1Rug0=;
- b=aaGMschKQjn0qW+bcfxVLvyLDJmr97Fovzui+vE8gaMFhGKPnHmsabDIaH8SuX0BJOkjWCij2jQrsp2YzdZuf4KakpWZ3l0XIT6b0KGxg2wrlPYoIKQ1tOSMnlCgxLiMFyyxua5+6j6tBgXoDFr7JTNUSsESft0P8WQq43C6qhMulf8DAXTJGuGHYvnzr7/v7hCiTrkoYW4YzJpWvdGnNXOj3nNjkb1iyBfKw98nHlG4vZi/EgV0sjtQyl9TU4Rj12qb2gk6xEfNzQQ10dFQiDb+Y7JgaKOh2tda3jethUx5lbvBM9srUormEQxpHbA/XCK7Xq2EPJLaSsmCHYc2DQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Y4arhF9bCQ4k3ZrWpAsmTiB1ken86azVMWu5ME1Rug0=;
- b=TfR8HaFiDFi9149pUIR/rcWNCiUPfPy9cPACOwFDZfDswJEtEy+jxmEKYh19RrDMaCCRtbW1IylUjpeZcT1WUN1KWWUlfmzvWJxXrXeqb+OVpNwSJ2ROjCiunYtA8EXMED287EtXhOqDuMkbX82V+F/PfVQTCG5AqVFqUF3IuCJOs8ALurNdehP5KWre3RcgB7cfbVUfceiuneVqgPDpdBDfrhpHLReHtiFZTujZXuxNze9DYkD2BMW4JFMiqejkXeRKMICqMYboO1hrb5tz7z3RwBXXvW4eBJr0YoeRxw+jJUavpIAp3PYlVO3lbbU0HzLe1c3Vdm8xfLgeXY5+EQ==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by DS0PR12MB6439.namprd12.prod.outlook.com (2603:10b6:8:c9::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9700.11; Wed, 11 Mar 2026 18:34:38 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9700.010; Wed, 11 Mar 2026
- 18:34:38 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
- <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
- <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
- <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
- <zhenzhong.duan@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>,
- "phrdina@redhat.com" <phrdina@redhat.com>
-Subject: RE: [PATCH v3 00/32] hw/arm/virt: Introduce Tegra241 CMDQV support
- for accelerated SMMUv3
-Thread-Topic: [PATCH v3 00/32] hw/arm/virt: Introduce Tegra241 CMDQV support
- for accelerated SMMUv3
-Thread-Index: AQHcpw3oDG8WqWxWgUa8hhn9GSra0LWpupEAgAAAwzA=
-Date: Wed, 11 Mar 2026 18:34:38 +0000
-Message-ID: <CH3PR12MB7548B7D18FA56E6F8EA657C0AB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260226105056.897-1-skolothumtho@nvidia.com>
- <254dceca-7864-4dbc-b25c-928add5a78e3@redhat.com>
-In-Reply-To: <254dceca-7864-4dbc-b25c-928add5a78e3@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DS0PR12MB6439:EE_
-x-ms-office365-filtering-correlation-id: d5b04edc-eca1-4741-9819-08de7f9cda46
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|366016|1800799024|7416014|56012099003|18002099003|22082099003|38070700021;
-x-microsoft-antispam-message-info: HvhRSSONK0GlakGbMei2nw26ikJnxgV3Xd65J4hGf75cROd3R4JAQ9TNvORTe9ZA5UFCBO1tDfamX4UomlzF9OxLdJSFEnw0/IiNW3edJS/mJ8fm5tVIlSTeVmVgwdvStCpwnqUtX7p6vMuydd4Dr/HgsY6GndVjzc8wksUYEAIjbAIvTSY0X+C5rEK4JFoZ8/wnegxh7IiRJnz9cnDllF5p8/PYY6Fm3YP4bRyCf6B6ggJb9drWXIoGSUVthP+wujUL+Q9MvoJIDBRoexC9Kf3lBe+3A2MRcHYMBuIS4TfmwxfEcdSGrLs7o7NjsvibEzfh7sKBxxKBPvBtZezd5/gh5DiqcD5tn1zmQZWl8NUBLr3LaY6I1sXFu7vsBRWGBwHyyGHZmyGazA9PQyBl3sSI2KUxExVF6unCPRP4FIrRtMTE5OJHD/MvYjNtgW/OeSlFkG3ek9tLfz+XbQBtio06b1A6mZqMsznUtLM9mQWrVFbB0k6tC/Mh+l4A6sT5oJyGWV/tvRKVW+SR38uFXa3y5JbPdm2vrgjM9/NgwD55Ul6To7TyPihCBxnfm0WGqD44A4bi14ZUT9S3pk8TSZg55MD2r6e/VXO3/rruFH4jndqPKUaFlr5DQKNpvn771JyfIOvFG2moU4c2Cb8+iz1lpf/3ZGHmKtqb2FFOiC1WZw1vlUsLRvBEFiWELf/g1AI2oLsVSbukDodXN//HVuMOSG05NYrCo+wCs2hF3swQ3ij4dwFy9Tt45TmrSLl/
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(7416014)(56012099003)(18002099003)(22082099003)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?MEVlTzRTVXo5OVVWa0k1MjZZbjIrWkRnZzJ0eWpFclZ1SzNDeTU4SUZ6QnE1?=
- =?utf-8?B?Yk5tSHhTNVRNWForYnJGUmhGb092K2Z5SHFhOHlWUFpGVEsxcVdnU3dqa1pB?=
- =?utf-8?B?N3FucWV2S25ldVVLaUtTS25YRU1JRUJxU0NzQTlwQ011cVpkc0g1N3lNdExC?=
- =?utf-8?B?N1lKaTdpRjV0SW5mY2l1amo5cFZkUEIrOXBMVGZSeGV4Y3FEcWxjWVN0VzRY?=
- =?utf-8?B?TzBHTjhoQmFJY01PWWprV1gvQWZ3L2xpVnpTeXBDTVRzaXVvMVNrOXRKMHhj?=
- =?utf-8?B?dER4Zng1b0l2U1NFTHowdGNOYnI1M2IwVTJGVkxwb3JZeUpLaklrSHI0UlhI?=
- =?utf-8?B?SkpYemZGWTg0bWdsWFdEeWFacEVVQ2VOd2NGUGNoRkNsVTduN1VBMTRoS3Bo?=
- =?utf-8?B?MU5PcjYyZlVZWVZIZ2M2WUZNbEx1MWUwZDF3bzFzeStsSTRpa0ZtOGpocHFx?=
- =?utf-8?B?ZGFKejhjbTYyaUNrL2QzRTh4Wmw4VUEyajU1SE1zeXZQaW1QMnRQc1hNVnlV?=
- =?utf-8?B?Wmg5NUN6Q3N2TUJNYmUrQWRxZjRTNElFLzJnNm1uMUVrZkVPZEloQ1B5dU9w?=
- =?utf-8?B?eEprQnp1akFWRlFjdTlQNkxmdzV1WDdpdXljQUJEU1M1UXNya1MvT3dMS2tM?=
- =?utf-8?B?bDVna0xNZGFOZ2xvNk1RYVpzMTlYajRLdVp6YzVNMG9vV0FLc2lleEdKTk9s?=
- =?utf-8?B?eTBSNldNYzRtaUNnZURtelJSOEtKa2dVSmpwazhQYi9DaVV1NlFLRUNOcWgz?=
- =?utf-8?B?SWgyZGc4dmRiVDdqMFp2dDkyWHVub2hZaDJLODVTUkdVSVJnL1BVZEp1YzV3?=
- =?utf-8?B?ZjNtVFAveUtaaHl4WjBLVmtZMG4vVWFKKzFicGwxM0lLMTJaK1MxTlFsTGFy?=
- =?utf-8?B?aHlra0cyd0IyQThjdC9rQittaFF6cU1QRDg5c08vM01OTDkrdm9aQ1h5ZmVr?=
- =?utf-8?B?SVJFQUl2QXM3YmVXemcrb2E2Wk1sM2hKZHFQUUhPTkloSUdjY2praFNTQTBH?=
- =?utf-8?B?R2hTT3drVVVrU3dab0p1NVFVanYrQzhhTGFRNk9XRTNlUGNCazh3eDZEVHJK?=
- =?utf-8?B?bkVQZ0l3RENvUVpSMGV6SzZVTExpcVIwYmp4NlNuKzdqbEpFclY0QUdhOEli?=
- =?utf-8?B?UG54OERkcFF5MUloOWlrZEdRakNuVFVwMmlLT09ta0dyU0wxeHdtWURBTXdu?=
- =?utf-8?B?aDRnd2xjS2NEZ3JkeTBiZWZHcVdVTlp4TmdkWnhUUW9DL2Vmb2xWYnZCbkVl?=
- =?utf-8?B?aU9pcE5XVlJySzhLSUNSTDJkNGl0WGlKSGdaR2lMcERDb3ZLejZTL21xV25z?=
- =?utf-8?B?Qm9BbW55b3k1Z29ra1NaazFPa1I2RW0vWnlaa2RqeHdZdmsyT3l3YnlhL0xj?=
- =?utf-8?B?b0l5a2U2eWdJMUtRcGZ5YXo3WmRBZlI2eGFKeDM2VzJlTFdUMWJhdm5HQnJB?=
- =?utf-8?B?cktNY3JmVVZuN0RjUmk5bG9xRUR2UzY1Z0d0T1hFUDZUYmx1UWtMOEZ3d2dL?=
- =?utf-8?B?S2IvTlV5QmdkSkZOeTNYWmd5ZVUxMlA5RkpMdlJZZEpNSFV4VEY4a3FTVTZI?=
- =?utf-8?B?aEs1VkIxZ2tPbzZtVG13QjRjYWxtcXhTQkxaYmptZC83OE04UHpZeS9YNWw5?=
- =?utf-8?B?UFBaQmQ3NGJ6TDdUOUZ2ckRIendFUDNpUnFTRnMyaStlS3doMi9kRXZCNTNT?=
- =?utf-8?B?MkUxdU1VcGh3MGZpbGhtWDlUMmt3L0FYMEwxbGVJeWF2QVVWTzR3SndtRnJV?=
- =?utf-8?B?bWEzRmRPbGxFNXRsc3lWdlRuVUpraitKV1dJK1A0em1iaFZtM3hGM2RPczJJ?=
- =?utf-8?B?ZUFYbFVoRjluZlJSMTduTUVFTnV4UWdvUXYvVkY3czd6bkVzMVpOcWdHelBH?=
- =?utf-8?B?OEZiV3hlUGsyMjk4bGQyU05CUEVJTUxQZjBhdHJNbHhKK0FmRzNUZWtoVDQ0?=
- =?utf-8?B?dHB0NnRMRzFJODVBQWdTQjJCc0RkMmt0V1J4UmJaekd6NUpEcDZHa1U2WGMr?=
- =?utf-8?B?U3lFRld3dEhId24xSkhta3I0TkY1eHk0dGVESzh2TWFPT2U5Q1YxMmtsSktB?=
- =?utf-8?B?dDVzTDJKT2NpQzhpaFppb1QwbFRnREErVHhIUEhVakFsWVU5VUMwY1QvNVpl?=
- =?utf-8?B?ME1YQUg3RUw3MTdZclJvNjRick1EcFg5N1ZYcEVsL1hrUWtuV1JsWnFWbmRw?=
- =?utf-8?B?N25ubnVJTlVWNm00azRCUThUUmIvanlhODNNSmo3bGhTWkViaytydk1pSVo3?=
- =?utf-8?B?aHo1SWdVMW5tR29VT1VrWWlUblJhTkpTOWhMaFZ1WjQva0FjUmYvQWZlNEVX?=
- =?utf-8?B?WkN6M3NiekNXQXlpa3pOU1dEUHcwb05WVThNV3FDSDlHeW5TcEd2Zz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <jithu.joseph@oss.qualcomm.com>)
+ id 1w0P8o-0005uT-Fr
+ for qemu-arm@nongnu.org; Wed, 11 Mar 2026 15:22:48 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 62BFopp63601223
+ for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 19:22:44 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ ExL6ov9Qre6+ieL+jRYGqTL3gXjT302tSQhc38xzhjg=; b=JI/WFS0uXWOo6C8l
+ FnUVk46LI/XV88wnHVMCNl0J0kRqHxvtSSiC4QRUDxbFGhsaiFlxxmF7zEXmqOpD
+ Cx1HxgdyjwUznkNN5W26EfljRr5lyXfkzVS5WzOclEAjlBdXlJyasbb71D6+UsQc
+ 8YpWsVOt5n9fvJx290L0031UwrEcCX+2vw23ln7pWMDL4jtGO531MkI0jVJarEGy
+ bT5mFMDCPZWPajt3nburiYsIbCuk0xi5jSxa8RSaUF/WoG863rONaOLqJ8zdCfqF
+ nGxyTFWlzx71Ky5eOxRQc/wUHW/y6MBpZ25ylHiKu8mbV9sVget+NzZ7qoHh0Xm3
+ JKBXVA==
+Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
+ [209.85.167.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cubd4rrf5-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 19:22:44 +0000 (GMT)
+Received: by mail-oi1-f197.google.com with SMTP id
+ 5614622812f47-466f55d78fdso1032925b6e.0
+ for <qemu-arm@nongnu.org>; Wed, 11 Mar 2026 12:22:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1773256964; x=1773861764; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ExL6ov9Qre6+ieL+jRYGqTL3gXjT302tSQhc38xzhjg=;
+ b=Vg3cth0t3WaB3nsTiYVHKwFFlkZpkgcGNpAtdwhHSadAbe8q4HGoloP6511TYjt8Z2
+ Buzcr36SKvtm6Bp0aQMrAXUKGkZiGux1rF9oxY+bAOdAWvrPLaxp1bZb0sAgjxYIn1iL
+ AeaFOMz377vfwfKF4g4TVHpNrEIuixbvzBsdK7FF8XYeAB2EzK4GNUeSUxT9938Vz3aA
+ qbVZSUS5C3nMrQNA46byPBXWm5xSBbbenacqHAN1ksheM//SancdxPQ2V3zGHvnB7L0l
+ rur5jyBTp2aPAfckCuHummX5D8pT3DxVbC3+3LmIsnq9jkGjF/Li7FkmFRV7OR/ovvns
+ QaSQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1773256964; x=1773861764;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ExL6ov9Qre6+ieL+jRYGqTL3gXjT302tSQhc38xzhjg=;
+ b=GT7vf8405KOSDn1pQHKC4ywVG0B4bw2P2nLQXg9IqvOTBxXQZdnOKuvSCOf9qFo4Lq
+ JGaPc6GUdH5xNxQK3VqgU1z6Jwuf97Ctt+UvYJsJnMopp+BFjsWKeLTH85RVLmsdS4sP
+ 2T4MIR/7B1vQUmHUK+6jnyWOUznvXG3+umGT1mBtmADpH6lavAAQ5HsAXY07e+7hVSg1
+ ui3Vjel3HQChDjqaakEAUnaxGGS0SlJc8mULbRjcNhkAai2qLgzYsHoCv/saIYz+yMIx
+ 0fyQ+w2WiI20glsFJXHZz8W4Am2PvB7fZCvEbkfEOoGQj+731JAZSl3AjtfLoHDEF04Z
+ y3nw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUYrBfQoqx4r2PyzuwadBVKJS/BBLYVOYYHn2JmQSF2E/vYPE66J5yXXN3pahb8c3+HAGnfUbQc+w==@nongnu.org
+X-Gm-Message-State: AOJu0YzuncVAU3Dqz3EhuzcUVjCyRsVvCCNlr5zupoCFvDkfukVhQy6K
+ IaEMPqyu294mGvzpBKc2KFavb4IihjcxJDb63H3SMw8LZGvcY0bo9sy+mx9bbQ0kdWHxMrDAuSI
+ 09EW3cEN24A7YFkEmpWup4bUXnjqgH3f9dGuVYKXMWcjJFzH092psLdY=
+X-Gm-Gg: ATEYQzxwtw9IGpMCt+7hLFcEGezAeaM6wcmUyAVIhpz0xNKGkXkXvXEUzHXUpcIPCJ6
+ Ttcf6YJu38KaYL1HuJ7JP3S8OfHbIMB4w7SoW6S8xXr3g7SY3Wke7uRSttFsGomNyFt9RonHrGh
+ DGceh/N1HPVad4BeNJh3G+gWv9rp/E1/HaXSuMRvcYxzu8emVWv/m79q4AW2t/nxG33OIeL1ono
+ UgqFmZNT0W3PcMpw4e+yfLvZrmGZ75Gu9YEgNz+IitUQ1g9ZYgQCcLEbtPCQHyeBXXE+ZoFdzFe
+ 7rUFm7175Gb6OML0HAUSS8vxLcqwOlyU3K0TtYmGNvwgZ4gfmM0XCEnzq6rmjKq2fnus2qNBueN
+ IJUbBI4V/e6vziBk3E4cKyRIZ17JAZCWOQspwVXbGBNqAaiSIywkNnlprM5M+L5K9uW+4geKmCK
+ 9kOw==
+X-Received: by 2002:a05:6808:1a24:b0:464:5f3:ed1 with SMTP id
+ 5614622812f47-4673347eda8mr1980938b6e.26.1773256963710; 
+ Wed, 11 Mar 2026 12:22:43 -0700 (PDT)
+X-Received: by 2002:a05:6808:1a24:b0:464:5f3:ed1 with SMTP id
+ 5614622812f47-4673347eda8mr1980912b6e.26.1773256963161; 
+ Wed, 11 Mar 2026 12:22:43 -0700 (PDT)
+Received: from [10.110.3.108] (i-global254.qualcomm.com. [199.106.103.254])
+ by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-4177e72b40asm2946930fac.20.2026.03.11.12.22.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Mar 2026 12:22:42 -0700 (PDT)
+Message-ID: <5a048506-dc3e-4435-a427-12bbc08c51e2@oss.qualcomm.com>
+Date: Wed, 11 Mar 2026 12:22:40 -0700
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d5b04edc-eca1-4741-9819-08de7f9cda46
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2026 18:34:38.5958 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aZwzOgI5sTNZ1/JtL0+W/i4ligQL9pjZqIFhVejHKZbzQRopRX73g0pHbiRI5XpLD/YJmYoSRaIptkaXQpXbCQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6439
-Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/i2c/aspeed: fix lost interrupts on back-to-back
+ commands
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, peter.maydell@linaro.org
+Cc: steven_lee@aspeedtech.com, leetroy@gmail.com, jamin_lin@aspeedtech.com,
+ andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, quan@os.amperecomputing.com,
+ jae.yoo@oss.qualcomm.com, Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+References: <20260311023712.2730185-1-jithu.joseph@oss.qualcomm.com>
+ <de208140-b969-4f5a-a910-6ee2788e1027@kaod.org>
+Content-Language: en-US
+From: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+In-Reply-To: <de208140-b969-4f5a-a910-6ee2788e1027@kaod.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: YeikPJjOvWZZdjgNw53VS517FxHawwvw
+X-Proofpoint-GUID: YeikPJjOvWZZdjgNw53VS517FxHawwvw
+X-Authority-Analysis: v=2.4 cv=QLBlhwLL c=1 sm=1 tr=0 ts=69b1c104 cx=c_pps
+ a=WJcna6AvsNCxL/DJwPP1KA==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=VwQbUJbxAAAA:8 a=vzhER2c_AAAA:8 a=EUspDBNiAAAA:8 a=2ESy-DqD4lkvCjyCqZwA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=_Y9Zt4tPzoBS9L09Snn2:22
+ a=0YTRHmU2iG2pZC6F1fw2:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDE2NCBTYWx0ZWRfX3mG3q0qzfHmn
+ zsENm5ggr0tmsmIF+gQicsoXBNxmq0DqWrr+EourZ7h05trfdBk23QhdeCztYubO5laWEph23p8
+ iSPhOn0apoAdn+Q5610aCGUDnx2COV2WmxNZ3LjsOOxSL/BTNbZFjx4EotU4a/MZ6ygjlFU6W98
+ dCvlhhp8bIyX5rMoAvqBTj+kK0ldu0eP90fQNaRmhQncUQeSAcFzH3hgOWzE5iM8kG9aJPrHnC+
+ 3QU0xVtXJwkte/FkBdDSChzxMECK6Pf6VvYaRcjfPgv6kHSgs97SyPA9Y8/RtltsbjA3E7yTD+1
+ t0d98BfPeE1w9gVpvT32AcY3rgQGujISOLcbFW4R5G3X4MSZwRwqinMGrUrqIqorJe9qE74bJ5y
+ 64Us6ZtKhBhSPUdq2wVP/FNR5//N+Am1AZlLi8TKss2L3b1REVjkwD7ZbeiYVC8xFO5tqjls4Tx
+ 3yPX01mcWyfSeAJRx0Q==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-11_02,2026-03-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 suspectscore=0 bulkscore=0 impostorscore=0 malwarescore=0
+ lowpriorityscore=0 adultscore=0 clxscore=1015 phishscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603110164
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=jithu.joseph@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -161,57 +158,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
-Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAxMSBNYXJjaCAyMDI2IDE4OjI1DQo+IFRvOiBT
-aGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFlbXUtDQo+
-IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFsZXhAc2hhemJvdC5vcmc7IE5pY29saW4N
-Cj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IE5hdGhhbiBDaGVuIDxuYXRoYW5jQG52aWRp
-YS5jb20+OyBNYXR0DQo+IE9jaHMgPG1vY2hzQG52aWRpYS5jb20+OyBKaWFuZGkgQW4gPGphbkBu
-dmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBlDQo+IDxqZ2dAbnZpZGlhLmNvbT47IGpvbmF0aGFu
-LmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9u
-Zy5kdWFuQGludGVsLmNvbTsgS3Jpc2huYWthbnQgSmFqdQ0KPiA8a2phanVAbnZpZGlhLmNvbT47
-IHBocmRpbmFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYzIDAwLzMyXSBody9h
-cm0vdmlydDogSW50cm9kdWNlIFRlZ3JhMjQxIENNRFFWDQo+IHN1cHBvcnQgZm9yIGFjY2VsZXJh
-dGVkIFNNTVV2Mw0KPiANCj4gRXh0ZXJuYWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlu
-a3Mgb3IgYXR0YWNobWVudHMNCj4gDQo+IA0KPiBIaSBTaGFtZWVyLA0KPiANCj4gT24gMi8yNi8y
-NiAxMTo1MCBBTSwgU2hhbWVlciBLb2xvdGh1bSB3cm90ZToNCj4gPiBIaSwNCj4gPg0KPiA+IENo
-YW5nZXMgZnJvbSB2MjoNCj4gPg0KPiA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2
-ZWwvMjAyNjAyMDYxNDQ4MjMuODA2NTUtMS0NCj4gc2tvbG90aHVtdGhvDQo+ID4gQG52aWRpYS5j
-b20vDQo+ID4NCj4gPiAgIC0gQWRkcmVzc2VkIGZlZWRiYWNrIG9uIHYyIGFuZCBwaWNrZWQgdXAg
-Ui1ieSB0YWdzLiBUaGFua3MhDQo+ID4gICAtIFJlbmFtZWQgdGhlIHByb3BlcnR5IGZyb20gInRl
-Z3JhMjQxLWNtZHF2IiB0byBhIGdlbmVyaWMgT25PZmZBdXRvDQo+ID4gICAgICJjbWRxdiIuDQo+
-ID4gICAtIEludHJvZHVjZWQgYSBwcm9iZSgpIGNhbGxiYWNrIHRvIGRldGVjdCBhbmQgaW5pdGlh
-bGl6ZSBDTURRVg0KPiA+ICAgICBzdXBwb3J0IGR1cmluZyBkZXZpY2UgYXR0YWNoIChwYXRjaCAj
-NykuDQo+ID4gICAtIFNpbmNlIENNRFFWIGluaXRpYWxpemF0aW9uIGlzIG5vdyBkZWZlcnJlZCB0
-byBkZXZpY2UgYXR0YWNoIHRpbWUsDQo+ID4gICAgIGFkZGVkIGEgaGVscGVyIHRvIGxpbmsgYW55
-IHVubWFwcGVkIE1NSU8vSVJRIHJlc291cmNlcyAocGF0Y2ggIzEyKS4NCj4gPiAgIC0gTW92ZWQg
-VklOVEYgZW5hYmxlIGhhbmRsaW5nIHRvIHRoZSBDT05GSUcgRU5BQkxFIGJpdCB3cml0ZSBwYXRo
-DQo+ID4gICAgIGluc3RlYWQgb2YgYW55IHJlYWQvd3JpdGUgYWNjZXNzIHBhdGggKHBhdGNoICMx
-NykuIEhvcGVmdWxseSB0aGlzDQo+ID4gICAgIHdvbid0IGJyZWFrIGFueSBjb3JuZXIgY2FzZXMu
-DQo+ID4gICAtIEFkZGVkIGNoZWNrcyBmb3IgVklOVEYgYW5kIENNRFFWIEVOQUJMRSBiaXRzIGJl
-Zm9yZSBhbGxvY2F0aW5nDQo+ID4gICAgIHZDTURRIEhXIHF1ZXVlcywgYW5kIGZyZWUgYW55IGFs
-bG9jYXRlZCByZXNvdXJjZXMgaWYgZGlzYWJsZWQNCj4gPiAgICAgKHBhdGNoICMxOSkuDQo+ID4g
-ICAtIEludHJvZHVjZWQgYSBjb21tb24gaGVscGVyIGZvciB2RVZFTlRRIHJlYWQgYW5kIHZhbGlk
-YXRpb24NCj4gPiAgICAgKHBhdGNoICMyMykuDQo+ID4gICAtIFVwZGF0ZWQgYmlvcy10YWJsZXMg
-dGVzdCBJT1JUIGJsb2JzIGZvciBTTU1VdjMgZGV2aWNlIGlkZW50aWZpZXINCj4gPiAgICAgY2hh
-bmdlcyAocGF0Y2ggIzI5KS4NCj4gPiAgIC0gUmViYXNpbmcgb24gdG9wIG9mIFBoaWxpcHBlJ3Mg
-Q09ORklHX0RFVklDRVMgY2xlYW51cCBzZXJpZXMgWzBdLA0KPiA+ICAgICB1c2luZyB0ZWdyYTI0
-MS1jbWRxdi1zdHVicy5jIChwYXRjaCAjNikuDQo+ID4NCj4gPiBQbGVhc2UgZmluZCB0aGUgY29t
-cGxldGUgYnJhbmNoIGhlcmU6DQo+ID4gaHR0cHM6Ly9naXRodWIuY29tL3NoYW1pYWxpMjAwOC9x
-ZW11LW1hc3Rlci90cmVlL21hc3Rlci12ZXZlbnRxLXY4LQ0KPiB2Y20NCj4gPiBkcS12Mw0KPiAN
-Cj4gd2l0aCB0aGlzIHZlcnNpb24gSSBzdGlsbCBnZXQgdGhvc2UgdHJhY2VzOg0KPiANCj4gaW9t
-bXVmZF9iYWNrZW5kX21hcF9kbWEgIGlvbW11ZmQ9MjggaW9hcz0yIGlvdmE9MHhjMGIwMDAwDQo+
-IHNpemU9MHgxMDAwMA0KPiBhZGRyPTB4ZmZmZjBiZDMwMDAwIHJlYWRvbmx5PTAgKC0xKQ0KPiBx
-ZW11LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5nOiBJT01NVV9JT0FTX01BUCBmYWlsZWQ6IEJhZCBh
-ZGRyZXNzLCBQQ0kNCj4gQkFSPw0KPiBxZW11LXN5c3RlbS1hYXJjaDY0OiB3YXJuaW5nOiB2Zmlv
-X2NvbnRhaW5lcl9kbWFfbWFwKDB4YWFhZWExMWUyODcwLA0KPiAweGMwYjAwMDAsIDB4MTAwMDAs
-IDB4ZmZmZjBiZDMwMDAwKSA9IC0xNCAoQmFkIGFkZHJlc3MpDQoNClllcy4gUGxlYXNlIHNlZSBt
-eSByZXBseSB0byBOaWNvbGluIG9uIHYyOg0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1k
-ZXZlbC9DSDNQUjEyTUI3NTQ4QzJEQ0E0RDMyMUQ3RkRFMjM3NTRBQjZDQUBDSDNQUjEyTUI3NTQ4
-Lm5hbXByZDEyLnByb2Qub3V0bG9vay5jb20vDQoNCkkgZG8gbm90IGhhdmUgYSB3YXkgdG8gc3Vw
-cHJlc3MgdGhhdCB3YXJuaW5nIGN1cnJlbnRseS4gSXQgc2hvdWxkIGJlDQpzYWZlIHRvIGlnbm9y
-ZSwgc2ltaWxhciB0byB0aGUgYmVoYXZpb3VyIGJlZm9yZSB0aGUgZG1hLWJ1ZiBzdXBwb3J0DQpz
-ZXJpZXMgZm9yIHZmaW8tcGNpIFBDSSBCQVIgbWFwcGluZ3MuDQoNClRoYW5rcywNClNoYW1lZXIN
-Cg0KDQo=
+On 3/11/2026 9:27 AM, Cédric Le Goater wrote:
+> Hello Jithu
+> 
+> On 3/11/26 03:37, Jithu Joseph wrote:
+>> QEMU executes I2C commands synchronously inside the CMD register write
+>> handler. On real hardware each command takes time on the bus, so the
+>> ISR can clear the previous interrupt status before the next completion
+>> arrives. In QEMU, when the guest ISR handles a TX_ACK and immediately
+>> issues the next command by writing to CMD, that command completes
+>> instantly — before the ISR returns to W1C-clear the first TX_ACK.
+>> Since the bit is already set, setting it again is a no-op. The ISR
+>> then clears it, wiping both completions at once. No interrupt fires
+>> for the second command and the driver stalls.
+>>
+>> This affects any multi-step I2C transaction: register reads, SMBus
+>> word reads, and PMBus device probes all fail ("Error: Read failed"
+>> from i2cget, -ETIMEDOUT from kernel drivers).
+>>
+>> The issue is exposed when the guest kernel includes commit "i2c:
+>> aspeed: Acknowledge Tx done with and without ACK irq late" [1] which
+>> defers W1C acknowledgment of TX_ACK until after the ISR has issued
+>> the next command. This means the old TX_ACK is still set when the
+>> next command completes synchronously, and the subsequent W1C wipes
+>> both completions at once.
+>>
+>> The trace below shows `i2cget -y 15 0x50 0x00` (read EEPROM register
+>> 0x00) failing without the fix. The first START+TX sets TX_ACK. The
+>> ISR handles it and issues a second TX to send the register address.
+>> That TX completes synchronously while TX_ACK is still set:
+>>
+>>    aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
+>>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
+>>    aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
+>>    aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
+>>    aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x1      # TX runs, TX_ACK already set!
+>>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # re-set is no-op
+>>    aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
+>>    aspeed_i2c_bus_read  0x10: 0x0                    # LOST — both ACKs wiped
+>>
+>> The driver sees INTR_STS=0 and never proceeds to the read phase.
+>>
+>> Fix this by tracking interrupt bits that collide with already-pending
+>> bits. Before calling aspeed_i2c_bus_handle_cmd(), save and clear
+>> INTR_STS so that only freshly set bits are visible after the call.
+>> Any overlap between the old and new bits is saved in pending_intr_sts.
+>> When the ISR later W1C-clears the old bits, re-apply the saved
+>> pending bits so the ISR sees them on its next loop iteration.
+>>
+>> With the fix, the same operation completes successfully:
+>>
+>>    aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
+>>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
+>>    aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
+>>    aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
+>>    aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x0      # INTR_STS cleared first
+>>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK freshly set
+>>    aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
+>>    aspeed_i2c_bus_read  0x10: 0x1                    # RE-DELIVERED from pending
+>>    aspeed_i2c_bus_write 0x14: 0x1b                   # ISR proceeds: START+RX
+>>    aspeed_i2c_bus_cmd cmd=0x40001b start|tx|rx|last| # read phase completes
+>>    i2c_recv recv(addr:0x50) data:0x00                # data received
+>>
+>> [1] https://lore.kernel.org/all/20231211102217.2436294-3-quan@os.amperecomputing.com/
+>>
+>> Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+> 
+> Could you please provide a Fixes: tag for this change ?
+
+The issue stems from QEMU's synchronous I2C command execution model which has been present since the initial driver introduction (1602001195dc). It is not a regression introduced by a specific commit, but rather a fundamental mismatch between QEMU's synchronous model and the temporal separation that real hardware has between command issue, command completion and ISR acknowledgment. This mismatch is exposed by the pending Linux kernel driver change [1 above] which reorders the ISR to issue the next command before W1C-clearing the current interrupt — a change needed for I2C slave mode to work correctly on real hardware.
+
+I spent a bit of time looking at the commit history for hw/i2c/aspeed_i2c.c and considered 5540cb97f711 ("aspeed/i2c: interrupts should be cleared by software only") for fixes tag,  since it seemed to make the collision more visible by correctly implementing W1C semantics (removing an initialization bus->intr_status = 0), but the underlying race I think would have existed prior to that commit as well.
+
+Happy to add Fixes: 1602001195dc ("i2c: add aspeed i2c controller") if you feel a Fixes tag is still appropriate, or drop it entirely given the fundamental nature of the issue. Your call.
+
+
+> 
+>> ---
+>> Background: A Linux kernel patch series by Quan Nguyen (Ampere) reworked
+>> the i2c-aspeed driver's interrupt handling to delay the W1C clear of
+>> TX_ACK until after the ISR has processed the completion and issued any
+>> follow-up command. The motivation was to correctly handle AST2600 and
+>> AST2500 hardware where I2C slave mode requires this ordering — the
+>> authors explicitly verified the series on both platforms. On our internal
+>> AST2600 hardware we carry this patch as a necessary fix for I2C slave
+>> mode to work correctly.
+>>
+>> The series did not make it into the upstream Linux kernel because test
+>> failures on QEMU blocked it. 
+> 
+> Oh. Good to see that QEMU is trusted (even when wrong). Time for a fix !
+
+:-)
+
+> 
+>> However, the failures are on the emulation
+>> side: QEMU executes I2C commands synchronously inside the MMIO write
+>> handler, causing a follow-up command to complete and re-raise an
+>> already-pending interrupt bit before the ISR has had a chance to
+>> W1C-clear it. On real hardware this race cannot occur since bus
+>> transactions take measurable time.
+>>
+>> Since the kernel patch reflects correct real-hardware behaviour, the
+>> right fix is to adapt QEMU's interrupt delivery to handle this ordering,
+>> rather than requiring the kernel driver to work around a QEMU-specific
+>> timing artifact. This patch does that.
+> 
+> LGTM,
+> 
+> Thanks for this detailed report.
+> 
+
+Thanks for considering and reading through
+
+
+Jithu
 

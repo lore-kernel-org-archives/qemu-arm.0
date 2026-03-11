@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9991125847
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 16:15:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 226031125852
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 16:27:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0MCs-0005BH-Gt; Wed, 11 Mar 2026 12:14:50 -0400
+	id 1w0MOz-0002om-Bv; Wed, 11 Mar 2026 12:27:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w0MCl-0005A7-GK; Wed, 11 Mar 2026 12:14:40 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w0MCe-00008M-EF; Wed, 11 Mar 2026 12:14:37 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBnb5vjlLFpXgkBCA--.1549S2;
- Thu, 12 Mar 2026 00:14:27 +0800 (CST)
-Received: from [192.168.31.181] (unknown [113.246.117.244])
- by mail (Coremail) with SMTP id AQAAf8DwwJPilLFpLMYAAA--.3354S2;
- Thu, 12 Mar 2026 00:14:26 +0800 (CST)
-Message-ID: <a8e75e56-a34b-4df0-866e-3ce5828dd472@phytium.com.cn>
-Date: Thu, 12 Mar 2026 00:14:23 +0800
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w0MOm-0002OR-TA; Wed, 11 Mar 2026 12:27:08 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w0MOk-0005QL-2Q; Wed, 11 Mar 2026 12:27:03 -0400
+Received: from mail.maildlp.com (unknown [172.18.224.107])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWGMl3WkGzJ467Y;
+ Thu, 12 Mar 2026 00:26:11 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id F009840587;
+ Thu, 12 Mar 2026 00:26:57 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
+ 2026 16:26:57 +0000
+Date: Wed, 11 Mar 2026 16:26:56 +0000
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 35/65] target/arm: GICv5 cpuif: Implement GICv5 PPI
+ active set/clear registers
+Message-ID: <20260311162656.000073b9@huawei.com>
+In-Reply-To: <20260223170212.441276-36-peter.maydell@linaro.org>
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-36-peter.maydell@linaro.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: 1774596582@qq.com
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
-Subject: Re: [PATCH v1 0/3] Fixed bugs in pl080
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwwJPilLFpLMYAAA--.3354S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQALBWmwb-oGTwAAsK
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjDUn29KB7ZKAUJUUUUU529EdanIXcx71UUUUU7KY7
- ZEXasCq-sGcSsGvfJ3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2Kfnx
- nUUI43ZEXa7xR_UUUUUUUUU==
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,24 +65,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+On Mon, 23 Feb 2026 17:01:42 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-It looks like three patches of this series were sent out-of-thread and 
-are not attached to this cover letter.
+> In the GICv5 PPI state and control lives in the CPU interface; this
+> is different from the GICv3 where this was all in the redistributor.
+> 
+> Implement the access system registers for the PPI active state; this
+> is a pair of registers, one of which has "write 1 to clear" behaviour
+> and the other of which has "write 1 to set".  In both cases, reads
+> return the current state.
+> 
+> We start here by implementing the accessors for the underlying state;
+> we don't yet attempt to do anything (e.g.  recalculating the highest
+> priority pending PPI) when the state changes.  That will come in
+> subsequent commits.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-You may want to resend the full series, or resend those patches with 
-In-Reply-To pointing to the Message-ID of this cover letter so they 
-appear in the same thread:
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-git 
-send-email --in-reply-to="tencent_1BF621A658E043C088A2681178D57ED14A09@qq.com" 
-xxxxx
-
-Thanks for working on this!
-
-Tao
 
 

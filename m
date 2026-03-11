@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 896041125857
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:29:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97AB41125854
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:32:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0NMf-0004Yo-RA; Wed, 11 Mar 2026 13:28:59 -0400
+	id 1w0NQ9-0005wk-S8; Wed, 11 Mar 2026 13:32:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0NMZ-0004Xl-Hi; Wed, 11 Mar 2026 13:28:54 -0400
+ id 1w0NQ2-0005wD-HB; Wed, 11 Mar 2026 13:32:30 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0NMV-0008Qc-89; Wed, 11 Mar 2026 13:28:49 -0400
+ id 1w0NQ0-00025v-LY; Wed, 11 Mar 2026 13:32:25 -0400
 Received: from mail.maildlp.com (unknown [172.18.224.107])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWHky4nyQzJ467Q;
- Thu, 12 Mar 2026 01:27:54 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWHqy0zs2zHnGck;
+ Thu, 12 Mar 2026 01:32:14 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 0FA5D40587;
- Thu, 12 Mar 2026 01:28:41 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 3973B40584;
+ Thu, 12 Mar 2026 01:32:22 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
- 2026 17:28:40 +0000
-Date: Wed, 11 Mar 2026 17:28:39 +0000
+ 2026 17:32:21 +0000
+Date: Wed, 11 Mar 2026 17:32:20 +0000
 To: Peter Maydell <peter.maydell@linaro.org>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 47/65] target/arm: GICv5 cpuif: Implement GICR CDIA command
-Message-ID: <20260311172839.0000691d@huawei.com>
-In-Reply-To: <20260223170212.441276-48-peter.maydell@linaro.org>
+Subject: Re: [PATCH 48/65] target/arm: GICv5 cpuif: Implement GIC CDEOI
+Message-ID: <20260311173220.000064d6@huawei.com>
+In-Reply-To: <20260223170212.441276-49-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-48-peter.maydell@linaro.org>
+ <20260223170212.441276-49-peter.maydell@linaro.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -69,13 +69,11 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:54 +0000
+On Mon, 23 Feb 2026 17:01:55 +0000
 Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> The GICR CDIA system instruction is what the guest uses to
-> acknowledge the highest priority pending interrupt.  It returns a
-> value corresponding to the HPPI for the current physical interrupt
-> domain, if any, and moves that interrupt to being Active.
+> Implement the GIC CDEOI instruction, which performs a "priority
+> drop", clearing the highest set bit in the APR register.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>

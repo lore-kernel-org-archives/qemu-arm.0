@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E7431125857
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FB751125857
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 17:51:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0NfV-00007h-9H; Wed, 11 Mar 2026 13:48:25 -0400
+	id 1w0NiW-0002Iv-Fl; Wed, 11 Mar 2026 13:51:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0NfK-0008UK-Dc; Wed, 11 Mar 2026 13:48:17 -0400
+ id 1w0NiM-00024N-MT; Wed, 11 Mar 2026 13:51:24 -0400
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1w0NfI-00052s-M7; Wed, 11 Mar 2026 13:48:14 -0400
+ id 1w0NiK-0005qS-Jf; Wed, 11 Mar 2026 13:51:22 -0400
 Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWJ9Q0x2LzJ46ZK;
- Thu, 12 Mar 2026 01:47:22 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fWJF20mPnzJ46F0;
+ Thu, 12 Mar 2026 01:50:30 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id ADE1040086;
- Thu, 12 Mar 2026 01:48:08 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id A8F8B40086;
+ Thu, 12 Mar 2026 01:51:16 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
- 2026 17:48:08 +0000
-Date: Wed, 11 Mar 2026 17:48:06 +0000
+ 2026 17:51:16 +0000
+Date: Wed, 11 Mar 2026 17:51:14 +0000
 To: Peter Maydell <peter.maydell@linaro.org>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 52/65] target/arm: Connect internal interrupt sources up
- as GICv5 PPIs
-Message-ID: <20260311174806.0000048b@huawei.com>
-In-Reply-To: <20260223170212.441276-53-peter.maydell@linaro.org>
+Subject: Re: [PATCH 53/65] target/arm: Add has_gcie property to enable
+ FEAT_GCIE
+Message-ID: <20260311175114.00000dfc@huawei.com>
+In-Reply-To: <20260223170212.441276-54-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
- <20260223170212.441276-53-peter.maydell@linaro.org>
+ <20260223170212.441276-54-peter.maydell@linaro.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -70,29 +70,21 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Feb 2026 17:01:59 +0000
+On Mon, 23 Feb 2026 17:02:00 +0000
 Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> The CPU has several interrupt sources which are exposed as GICv5
-> PPIs.  For QEMU, this means the generic timers and the PMU.
+> Add a has_gcie QOM property to the CPU which allows the board code to
+> enable FEAT_GCIE, the GICv5 CPU interface.
 > 
-> In GICv3, we implemented these as qemu_irq lines which connect up to
-> the external interrupt controller device.  In a GICv5, the PPIs are
-> handled entirely inside the CPU interface, so there are no external
-> signals.  Instead we provide a gicv5_update_ppi_state() function
-> which the emulated timer and PMU code uses to tell the CPU interface
-> about the new state of the PPI source.
+> Enabling the GICv5 CPU interface comes with a significant
+> restriction: because the GICv5 architecture is Armv9, it assumes the
+> Armv9 requirement that only EL0 (userspace) may be in AArch32.  So
+> there are no GIC control system registers defined for AArch32.  We
+> force AArch32 at ELs 1, 2 and 3 to disabled, to avoid a guest being
+> able to get into an EL where interrupts are completely broken.
 > 
-> We make the GICv5 function a no-op if there is no GICv5 present, so
-> that calling code can do both "update the old irq lines" and "update
-> the GICv5 PPI" without having to add conditionals.  (In a GICv5
-> system the old irq lines won't be connected to anything, so the
-> qemu_set_irq() will be a no-op.)
-> 
-> Updating PPIs via either mechanism is unnecessary in user-only mode;
-> we got away with not ifdeffing this away before because
-> qemu_set_irq() is built for user-only mode, but since the GICv5 cpuif
-> code is system-emulation only, we do need an ifdef now.
-
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+
 

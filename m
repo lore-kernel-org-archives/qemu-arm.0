@@ -4,63 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F4AC104C00E
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 10:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2BC41062878
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Mar 2026 12:35:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0HAT-0003wX-Ql; Wed, 11 Mar 2026 06:51:57 -0400
+	id 1w0Im7-0006vU-3f; Wed, 11 Mar 2026 08:34:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1w0HAT-0003va-Al; Wed, 11 Mar 2026 06:51:57 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1w0Im5-0006v9-9n; Wed, 11 Mar 2026 08:34:53 -0400
+Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1w0HAQ-0001uh-RZ; Wed, 11 Mar 2026 06:51:56 -0400
-Received: from mail.maildlp.com (unknown [172.18.224.150])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fW6x62V7qzJ46s9;
- Wed, 11 Mar 2026 18:51:06 +0800 (CST)
-Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 6621640571;
- Wed, 11 Mar 2026 18:51:52 +0800 (CST)
-Received: from localhost (10.203.177.99) by dubpeml500005.china.huawei.com
- (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 11 Mar
- 2026 10:51:44 +0000
-Date: Wed, 11 Mar 2026 10:51:38 +0000
-To: Gustavo Romero <gustavo.romero@linaro.org>
-CC: <mst@redhat.com>, <qemu-devel@nongnu.org>, <anisinha@redhat.com>,
- <armbru@redhat.com>, <berrange@redhat.com>, <dapeng1.mi@linux.intel.com>,
- <eric.auger@redhat.com>, <farman@linux.ibm.com>, <imammedo@redhat.com>,
- <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mtosatti@redhat.com>,
- <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
- <richard.henderson@linaro.org>, <shannon.zhaosl@gmail.com>,
- <zhao1.liu@intel.com>
-Subject: Re: [PATCH v18 6/8] hw/acpi: add cache hierarchy to pptt table
-Message-ID: <20260311105138.0000491a.alireza.sanaee@huawei.com>
-In-Reply-To: <069dbe3c-6288-4126-b869-e5bb72648064@linaro.org>
-References: <20260220141128.789-1-alireza.sanaee@huawei.com>
- <20260220141128.789-7-alireza.sanaee@huawei.com>
- <069dbe3c-6288-4126-b869-e5bb72648064@linaro.org>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1w0Im2-0004N9-SX; Wed, 11 Mar 2026 08:34:52 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=g6Z0Z7sjMLEyJkhJi+PGnijLK74cXv0YPXLlsZwuaYXrMg+oGWCVDI/Jw+Ai07gfEdBcrYzoy5e3qIkkpY0NDAnwvVLvangwTf69nayO/jNxRMrPT6xM9aYu49AS9RigTPZ+SudNhqXkMt2KQVMaTGE4PTGujDo2sVsyvXSIEW1Ly8nLtNZ2AIroMPGwKsCUV/d6zJJvoBwTWCO6uZ43GJvMDVExpsG8M73w9L0rAWgsCpYcH8cL5UuGta+kIK5goayxrpqkZ3lJhbvMaGzyYpAjnyGS4ZVnKrToQu54Gzf8tMwV72HSMS7dZ4MdRKzw02MCkILF1kZ0kMInO26WHw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LR3LJKPUCF66K7j1doa1PE5EJTuMaI7eJ/QHkeUQ96c=;
+ b=Fup+uKV/JmfH6Ev6StXvZjy/fSQHv3XiF7WwoT1qMF9F4M4C6vergIhdAexzAZG0H0RYilk5j9i500TgEyv0nC5M/MdICqkdr2B5I7jAQMzbY3B1Nn7yKueqxBQIS60Y3kl06as4ibIpA4T8eNjOW3nfmRW1TlBf9SCl8aD54N8zzkcp3ncB03T1wEYW70wy9lk3SJtQTscxZ8EsdqfXS7DMdkkn4MB5XupmrQrVX4zdMEm8ijgUVShgZCigXSltmq1lraHPC4OPMUtfAApQUu6kFvsIfH2Nsahf8mrs21OW0IpUHdh/ZkXGVv8oNL3xB3AW/ScIAIQoIrv5FWigog==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LR3LJKPUCF66K7j1doa1PE5EJTuMaI7eJ/QHkeUQ96c=;
+ b=T3UNMKAE4TsIOIGFv/EwR6/OllufbrZkuK1LmA/ZsfV57SkGXnfwP9Gjq0mTMzVISCKXdLhZK7sbYTAuFIkW8XiGb1ai26qujPJzQoSC/PWFeThqblnrSKqLD0+NCvKYd4FgzaCFi9ackjx2eOkWuq0MXcJ8dnQqY7rJ6VfWNrUn0SdVAuDJbNqPHLvptY1+hwMpwLlud3nGANY6Nxthn+DG3CqNi0ZTySR47JlS4pSJP9agn5KO9TV03Xej7726+iWu4yTIf2zaTaECjVH2uWfxZ9va241p7U0Ons+YuBXOO6jnN0VnLGKVWFdGVeLvqJqfiaQfBS/HBjReMfgbBw==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by SA5PPF5D41D38AD.namprd12.prod.outlook.com
+ (2603:10b6:80f:fc04::8cb) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.11; Wed, 11 Mar
+ 2026 12:34:42 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9700.010; Wed, 11 Mar 2026
+ 12:34:42 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
+ <zhenzhong.duan@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>,
+ "phrdina@redhat.com" <phrdina@redhat.com>
+Subject: RE: [PATCH v3 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for CMDQV
+Thread-Topic: [PATCH v3 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for
+ CMDQV
+Thread-Index: AQHcpw4RCbTPqX85HUillxSq8Ev4K7WpCqgAgAAKhZCAABnNAIAAJ8xw
+Date: Wed, 11 Mar 2026 12:34:42 +0000
+Message-ID: <CH3PR12MB7548CED599FE7D572486BD6AAB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260226105056.897-1-skolothumtho@nvidia.com>
+ <20260226105056.897-18-skolothumtho@nvidia.com>
+ <22acfd93-72cd-49ca-b2f6-a080bf66104c@redhat.com>
+ <CH3PR12MB754885F68C4F08CC39732EB2AB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <8ee0ec15-bf22-473e-85f4-96426a9e763d@redhat.com>
+In-Reply-To: <8ee0ec15-bf22-473e-85f4-96426a9e763d@redhat.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|SA5PPF5D41D38AD:EE_
+x-ms-office365-filtering-correlation-id: 53b0a1a3-12cc-4e88-5f36-08de7f6a91fa
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|1800799024|7416014|376014|38070700021|56012099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: OjKHkKmvjeIy+SoPVZAxvW28WuD2m8ATgsQLofRI6IW3e631s8TpN77vRx50i0GerW7KbWqGa2BBqZaLZHJ0M6Qwvv7BHBKrz4WG8R8YFz19/1eF7Gq2foN4wKA6/r0x1iScBUHz/HakzADsG+OecMO43ZtWf/6aN4GbM44OdbuhDjfPPBzN/j33p95TlIHpdoDecjmcDkX7NL8HZT+Y3o+rQ27epDqEfIb0XmmKmF56UQbV8wMtx9T5mqQtUQkutt7z2CuY55IxgYg8KTRS4WuW23SirbpZL8fXcpLem6vKNlrP2ike8z3oK/blSpJFllTiJbR17JKvy6vXlYRofiIWql5WHTTRizKQ/D4+tqBfno3/OOpCOsbqnqvk1kidCrA0ALVGwaeJeKvCkO1SdV2u8/vP1GEUDpOl06G/iJ38JxeC5lJ+hgWe2ejPSz3mP1vL3P41SaoSDKFka3xk4zPQRJPg+W9cfZ64igx5vzi7e3xIcuqeO+cLpt1QnFw/bNjyXhyI1zuNlDwoQaKe8j+vbZkllPig5yZtg9E3baRu7upWs9w/LuYBQpd2b/rMoknkn/HW0BQB9hOoI1qjOSic0StUWIUBPQJXJPyMcax4hjqUKLU30FuT+8377rN6yWH2qCk5qxsdoVrXsooW3IN190W9ujGVTQtgf54B87ZChUyBXn6HRC0vg+trD7ExI2/DWFfnh/r7N5fjOVVgA32TVhK10+kV8rN4XIm10edS7GXlqWRIl39eu8IVhlu+kPuwj94SBeQ1SoDlc2BDVnTOOA1G4smnx1VkHSkgRJQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014)(38070700021)(56012099003)(18002099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?L05jeVdGQkt2dkdiY2lHOHBCcDllSCtzZzIrZkErN1hzUTR3dHl5QWl2MjlV?=
+ =?utf-8?B?OFpkWnc2VmF0K1RSVWUzQnVyZDcraGMvcjVFZm50OWZhQWFEUGJnbFkxVjVS?=
+ =?utf-8?B?ZUVvRFZoaXJqY0ZPTzBIL1Y3WXV1V25MUURjWkpEQWR4cGMxODlqZUMrZHYx?=
+ =?utf-8?B?dktkK3FuMHp5UWJTbDhnUjBKQi9WcE9jQTdMWUI4MXpzY01xaXFmdVl5bkw4?=
+ =?utf-8?B?VHE5em9RMi9TWHNzNzBLQWk2MlJZUVhsZWczaHc5eXY0d1I3T01lMXRibXY0?=
+ =?utf-8?B?dHdSK2Y3aDlzMDNQS3hnZXpZU092UnFxVnljdHhYdTZGZ2xjOHhFVTc1d2pM?=
+ =?utf-8?B?aDcxSm5LQWlFYnNFMEJlTzl5aGlvSm9sV3dWSTEzWWMvVHBpMldOSjVtWDR6?=
+ =?utf-8?B?YkwrWGpGWSttb3E3VE53TGU2R0Z1YlNpR1NkSEVmWkplY0NHTW1ObnFVdFAw?=
+ =?utf-8?B?dWVadHdlam5LSUJxYnZhZGNaS1daL0ZodWpmLzVCVnpxMjRDNXdpczNyM1d3?=
+ =?utf-8?B?QWh4RWxURnhSYU1aa1lEV0FUU0tJc1ZZdEhVQ1JyaFR2S2lHb3k0YXZ2RWQr?=
+ =?utf-8?B?cGVWTUREWHlHRkVlVFlIQTliV0FOWmp4dUtGWWJDZCtkc0ROS0dOZWw1WWZT?=
+ =?utf-8?B?V1NLaTRXaEliZE93bDAydUJlYVpNblBvVGE0REdHVWRPMXlrWnV1N1NENXBj?=
+ =?utf-8?B?ajJIMWE1SDVtVzhRblB2MllOSlpJT0RoWWRYdVlXU2F2SHBSTVR1cHdEcHdZ?=
+ =?utf-8?B?MWYyTEpxa240RFRhSHNoL0UxWjlMK1JvU3JnaWZId0xBYkgwZzdXTXNkekpE?=
+ =?utf-8?B?bGJLejNab0JHcGJ0aFFSak9RU2xLVWdRUGlNaDdtWUFlS0MxVWtwVy91OTRL?=
+ =?utf-8?B?akJzd3p0azJUQXZIMUxWeHJYSW1rQzMva2lqUU1XTjM4M3J2dE9rMmN3c25B?=
+ =?utf-8?B?N1JCeklBZk8ycU5LM1JNVERlRWdpRUljL3drUlJkQkI3bnp2T0hCeHBYZDA0?=
+ =?utf-8?B?RE14K0xIOUR0L3BUL1lhRWNET2I4RGo1VDhpYTMzaEhkcFB0TUpKVlJpWWJ0?=
+ =?utf-8?B?OTRjaVh6QUZpd0Z3c2EyZStwdy9DeFg3bVVFTlQxbDhDQW8wcXpuaWpndHpZ?=
+ =?utf-8?B?ZDJYcU8yU0p6K2FxOW8yNmtVbUg5eUNpbUxLYlFFdGpxWFh0U2lTYUFBVXRR?=
+ =?utf-8?B?THZxMUhLZlh4SFRuc3hjR0MrcmxJTUYxSzRvUVQwNUNiN2xYeVlyb0VxTzE5?=
+ =?utf-8?B?aUV3MWxVTVNWYVpvSlJXYUlYQlcvenRQV01sWnN3bGw1Qk9mamhGZFEvejB3?=
+ =?utf-8?B?ZXdYYnUxeVdpb2YrVm1Va2NJWEw3QWdZV0c2ak4zZGJYcDJYU3ZDaGxSTjlB?=
+ =?utf-8?B?aUVxdlJoRG50SXZ4Tk1Icmg4QkxjbDZuQTVld0NPd0xtTE9vTm9zeDUwQ2dJ?=
+ =?utf-8?B?VEVzcXNqcGx0Znc3QlRtK1o3eVIrNGJGM3J2WEU0MnJ6bEdwUnllZnR5WFVx?=
+ =?utf-8?B?Z3BJYkVqdXFFRDgySzNuUDhhaGhpUUZIbGNLZy9DSWxDRkduVmVaOEV3azk0?=
+ =?utf-8?B?OHpHaTlDTmhiaE9DdlJkRVpGYzVzLzdINE9TUkpBU0tReFI1ejJhem5VMExl?=
+ =?utf-8?B?S214NnZvcjJJa2k4M24remtNRW9zRGhKbmcrL21PTG5vQUdyeEM1UEdaZTd1?=
+ =?utf-8?B?TmU0M3h3RXZpT3pZWWRBU2hEZGVMdFpRVEFSbm00UmU0aVJrbWZCY05oZmtq?=
+ =?utf-8?B?K0pyN2VZaERrOHVVNUE1L0ZZSWJ1R3Z5Qk5pQ2tjUkMzQmdkM0tOVDNDNjRN?=
+ =?utf-8?B?eWZrY0h4V1NaME9IMGVQSHBMcmdkVHRVRmR5RjlxWGZFTXQwOE94N0RQRWJO?=
+ =?utf-8?B?NzBzWFhkWWk4Qm0waFFIaGVVa0llcnY1MlpxQVZnV2VENEY2V2JZT08xcmdR?=
+ =?utf-8?B?RG1OVEQwSHVKZDZDWUE1Wm9rQWsyL1FVdWZ4YVhiQ1JSYTlBRlROZXNlLzMw?=
+ =?utf-8?B?N2NSMDU3cW1mL3pBYUdOQ1VEa1lmbEtQUDh1RzZOR1kzQ3lUaURlM0lNMThB?=
+ =?utf-8?B?MUJKamJWWllSMVY1SmpRMThnUzNvZWlXMjh5azBWSnBZU3BTK3UyVUpBUmpC?=
+ =?utf-8?B?RjFVdkhFUWpVdTNxTDdzdE9zTVJ0VmF3bnpqYVIxUnhEeU9aL1MwK3JTWURr?=
+ =?utf-8?B?V2paMXNHV2pWeEtXRnhXbk5Ka05zRlY2UWpZSDZYdmd2L1RyeDdTWjBnTzRL?=
+ =?utf-8?B?bjI5cFNqVzcxc24xQ09sYWZObFhaY3p5cjc1SFZKZ3pDNnhjRVgyNWxqdld4?=
+ =?utf-8?B?djlidnBvUG4rd3laS200QXpLNkVsWUp3aVZ2bk5GVGR3WEZlOUNGQT09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.99]
-X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
- dubpeml500005.china.huawei.com (7.214.145.207)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 53b0a1a3-12cc-4e88-5f36-08de7f6a91fa
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2026 12:34:42.5443 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: EsC/HiM2nRZV6LdSsEZAECWkr4SF7eqmvYD8j10lsu+jGEv4OO4YuI8AypTczaDNwA5OYhtJORKRi5/kCGXU2w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA5PPF5D41D38AD
+Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=PH7PR06CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,373 +159,166 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 5 Mar 2026 03:18:08 -0300
-Gustavo Romero <gustavo.romero@linaro.org> wrote:
-Hi Gustavo,
-
-Please look inline.
-> Hi Alireza,
-> 
-> On 2/20/26 11:11, Alireza Sanaee wrote:
-> > Add cache topology to PPTT table.
-> > 
-> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> > ---
-> >   hw/acpi/aml-build.c      | 198 +++++++++++++++++++++++++++++++++++++--
-> >   hw/arm/virt-acpi-build.c |   8 +-
-> >   include/hw/acpi/cpu.h    |  10 ++
-> >   3 files changed, 207 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > index b75aa2336e..a8de45036c 100644
-> > --- a/hw/acpi/aml-build.c
-> > +++ b/hw/acpi/aml-build.c
-> > @@ -32,6 +32,7 @@
-> >   #include "hw/pci/pci_bus.h"
-> >   #include "hw/pci/pci_bridge.h"
-> >   #include "qemu/cutils.h"
-> > +#include "hw/core/cpu.h"
-> >   
-> >   static GArray *build_alloc_array(void)
-> >   {
-> > @@ -2148,6 +2149,102 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
-> >       }
-> >       acpi_table_end(linker, &table);
-> >   }
-> > +
-> > +static void build_cache_nodes(GArray *tbl, CPUCoreCaches *cache,
-> > +                              uint32_t next_offset)
-> > +{
-> > +    const uint8_t node_length = 24;
-> > +    int start_len = tbl->len;
-> > +    int val;
-> > +
-> > +    build_append_byte(tbl, 1); /* Type 1 - cache */
-> > +    build_append_byte(tbl, node_length); /* Length */
-> > +    build_append_int_noprefix(tbl, 0, 2); /* Reserved */
-> > +    build_append_int_noprefix(tbl, 0x7f, 4); /* Flags */
-> > +    build_append_int_noprefix(tbl, next_offset, 4); /* Offset of next cache up */
-> > +    build_append_int_noprefix(tbl, cache->size, 4); /* Size */
-> > +    build_append_int_noprefix(tbl, cache->sets, 4); /* Number of sets */
-> > +    build_append_byte(tbl, cache->associativity); /* Associativity */
-> > +    val = 0x3;
-> > +    switch (cache->type) {
-> > +    case INSTRUCTION_CACHE:
-> > +        val |= (1 << 2); /* Instruction Cache */
-> > +        break;
-> > +    case DATA_CACHE:
-> > +        val |= (0 << 2); /* Data Cache */
-> > +        break;
-> > +    case UNIFIED_CACHE:
-> > +        val |= (3 << 2); /* Unified */
-> > +        break;
-> > +    }
-> > +    build_append_byte(tbl, val); /* Attributes */
-> > +    build_append_int_noprefix(tbl, cache->linesize, 2); /* Line size */
-> > +    g_assert(tbl->len == start_len + node_length);
-> > +}  
-> 
-> Please document the ACPI spec version on top of build_cache_nodes() and
-> align  the comment about the fields. See
-> build_processor_hierarchy_node(), as an example.
-> 
-> I thought "Cache ID" field was missing and length was wrong (28), but
-> then I realized that it optional/non-existent on older spec versions.
-> 
-> 
-> > +/*
-> > + * builds caches from the top level (`level_high` parameter) to the bottom
-> > + * level (`level_low` parameter).  It searches for caches found in
-> > + * systems' registers, and fills up the table. Then it updates the
-> > + * `data_offset` and `instr_offset` parameters with the offset of the data
-> > + * and instruction caches of the lowest level, respectively.
-> > + */  
-> 
-> Please, start the comment with upper case. But, more important, I don't 
-> think this comment is much helpful. I'd like to read more about the 
-> meaning and need of 'data_offset' and 'instr_offset' in the context of
-> the ACPI table.
-> 
-> 
-> > +static bool build_caches(GArray *table_data, uint32_t pptt_start,
-> > +                         int num_caches, CPUCoreCaches *caches,
-> > +                         uint8_t level_high, /* Inclusive */
-> > +                         uint8_t level_low,  /* Inclusive */
-> > +                         uint32_t *data_offset,
-> > +                         uint32_t *instr_offset)
-> > +{
-> > +    uint32_t next_level_offset_data = 0, next_level_offset_instruction = 0;
-> > +    uint32_t this_offset, next_offset = 0;
-> > +    int c, level;
-> > +    bool found_cache = false;
-> > +
-> > +    /* Walk caches from top to bottom */
-> > +    for (level = level_high; level >= level_low; level--) {
-> > +        for (c = 0; c < num_caches; c++) {
-> > +            if (caches[c].level != level) {
-> > +                continue;
-> > +            }
-> > +
-> > +            /* Assume only unified above l1 for now */
-> > +            this_offset = table_data->len - pptt_start;  
-> 
-> Is 'this_offset' an invariant that can be hoisted out of the loops?
-
-This one cannot be hoisted out because the length of the table changes every loop depending on the scenario if we build a cache node.
-
-Will apply the rest of the changes, and send a set soon.
-
-> 
-> 
-> > +            switch (caches[c].type) {
-> > +            case INSTRUCTION_CACHE:
-> > +                next_offset = next_level_offset_instruction;
-> > +                break;
-> > +            case DATA_CACHE:
-> > +                next_offset = next_level_offset_data;
-> > +                break;
-> > +            case UNIFIED_CACHE:
-> > +                /* Either is fine here */
-> > +                next_offset = next_level_offset_instruction;
-> > +                break;
-> > +            }
-> > +            build_cache_nodes(table_data, &caches[c], next_offset);
-> > +            switch (caches[c].type) {
-> > +            case INSTRUCTION_CACHE:
-> > +                next_level_offset_instruction = this_offset;
-> > +                break;
-> > +            case DATA_CACHE:
-> > +                next_level_offset_data = this_offset;
-> > +                break;
-> > +            case UNIFIED_CACHE:
-> > +                next_level_offset_instruction = this_offset;
-> > +                next_level_offset_data = this_offset;
-> > +                break;
-> > +            }
-> > +            *data_offset = next_level_offset_data;
-> > +            *instr_offset = next_level_offset_instruction;
-> > +
-> > +            found_cache = true;
-> > +        }
-> > +    }
-> > +
-> > +    return found_cache;
-> > +}
-> > +
-> >   /*
-> >    * ACPI spec, Revision 6.3
-> >    * 5.2.29 Processor Properties Topology Table (PPTT)
-> > @@ -2158,11 +2255,32 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >   {
-> >       MachineClass *mc = MACHINE_GET_CLASS(ms);
-> >       CPUArchIdList *cpus = ms->possible_cpus;
-> > -    int64_t socket_id = -1, cluster_id = -1, core_id = -1;
-> > -    uint32_t socket_offset = 0, cluster_offset = 0, core_offset = 0;
-> > +    uint32_t core_data_offset = 0;
-> > +    uint32_t core_instr_offset = 0;
-> > +    uint32_t cluster_instr_offset = 0;
-> > +    uint32_t cluster_data_offset = 0;
-> > +    uint32_t node_data_offset = 0;
-> > +    uint32_t node_instr_offset = 0;
-> > +    int top_node = 3;
-> > +    int top_cluster = 3;
-> > +    int top_core = 3;
-> > +    int bottom_node = 3;
-> > +    int bottom_cluster = 3;
-> > +    int bottom_core = 3;
-> > +    int64_t socket_id = -1;
-> > +    int64_t cluster_id = -1;
-> > +    int64_t core_id = -1;
-> > +    uint32_t socket_offset = 0;
-> > +    uint32_t cluster_offset = 0;
-> > +    uint32_t core_offset = 0;
-> >       uint32_t pptt_start = table_data->len;
-> >       uint32_t root_offset;
-> >       int n;
-> > +    uint32_t priv_rsrc[2];
-> > +    uint32_t num_priv = 0;
-> > +    bool cache_available;
-> > +    bool llevel;
-> > +
-> >       AcpiTable table = { .sig = "PPTT", .rev = 2,
-> >                           .oem_id = oem_id, .oem_table_id = oem_table_id };
-> >   
-> > @@ -2192,11 +2310,30 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >               socket_id = cpus->cpus[n].props.socket_id;
-> >               cluster_id = -1;
-> >               core_id = -1;
-> > +            bottom_node = top_node;
-> > +            num_priv = 0;
-> > +            cache_available = machine_defines_cache_at_topo_level(
-> > +                ms, CPU_TOPOLOGY_LEVEL_SOCKET);
-> > +            llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                ms, &bottom_node, CPU_TOPOLOGY_LEVEL_SOCKET);  
-> 
-> See my comment in patch 3/8 about machine_defines_cache_at_topo_level() 
-> and machine_find_lowest_level_cache_at_topo_level() similar semantics.
-> 
-> 
-> > +            if (cache_available && llevel) {
-> > +                build_caches(table_data, pptt_start, num_caches, caches,
-> > +                             top_node, bottom_node, &node_data_offset,
-> > +                             &node_instr_offset);
-> > +                priv_rsrc[0] = node_instr_offset;
-> > +                priv_rsrc[1] = node_data_offset;
-> > +                if (node_instr_offset || node_data_offset) {
-> > +                    num_priv = node_instr_offset == node_data_offset ? 1 : 2;
-> > +                }
-> > +
-> > +                top_cluster = bottom_node - 1;
-> > +            }
-> > +
-> >               socket_offset = table_data->len - pptt_start;
-> >               build_processor_hierarchy_node(table_data,
-> >                   (1 << 0) | /* Physical package */
-> >                   (1 << 4), /* Identical Implementation */
-> > -                root_offset, socket_id, NULL, 0);
-> > +                root_offset, socket_id, priv_rsrc, num_priv);
-> >           }
-> >   
-> >           if (mc->smp_props.clusters_supported && mc->smp_props.has_clusters) {
-> > @@ -2204,21 +2341,68 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >                   assert(cpus->cpus[n].props.cluster_id > cluster_id);
-> >                   cluster_id = cpus->cpus[n].props.cluster_id;
-> >                   core_id = -1;
-> > +                bottom_cluster = top_cluster;
-> > +                num_priv = 0;
-> > +                cache_available = machine_defines_cache_at_topo_level(
-> > +                    ms, CPU_TOPOLOGY_LEVEL_CLUSTER);
-> > +                llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                    ms, &bottom_cluster, CPU_TOPOLOGY_LEVEL_CLUSTER);
-> > +
-> > +                if (cache_available && llevel) {
-> > +                    build_caches(table_data, pptt_start, num_caches, caches,
-> > +                                 top_cluster, bottom_cluster,
-> > +                                 &cluster_data_offset, &cluster_instr_offset);
-> > +                    priv_rsrc[0] = cluster_instr_offset;
-> > +                    priv_rsrc[1] = cluster_data_offset;
-> > +                    if (cluster_instr_offset || cluster_data_offset) {
-> > +                        num_priv =
-> > +                            cluster_instr_offset == cluster_data_offset ? 1 : 2;
-> > +                    }
-> > +                    top_core = bottom_cluster - 1;
-> > +                } else if (top_cluster == bottom_node - 1) {
-> > +                    /* socket cache but no cluster cache */
-> > +                    top_core = bottom_node - 1;
-> > +                }
-> > +
-> >                   cluster_offset = table_data->len - pptt_start;
-> >                   build_processor_hierarchy_node(table_data,
-> >                       (0 << 0) | /* Not a physical package */
-> >                       (1 << 4), /* Identical Implementation */
-> > -                    socket_offset, cluster_id, NULL, 0);
-> > +                    socket_offset, cluster_id, priv_rsrc, num_priv);
-> >               }
-> >           } else {
-> > +            if (machine_defines_cache_at_topo_level(
-> > +                    ms, CPU_TOPOLOGY_LEVEL_CLUSTER)) {
-> > +                error_setg(&error_fatal, "Not clusters found for the cache");
-> > +                return;
-> > +            }
-> > +
-> >               cluster_offset = socket_offset;
-> > +            top_core = bottom_node - 1; /* there is no cluster */
-> > +        }
-> > +
-> > +        if (cpus->cpus[n].props.core_id != core_id) {
-> > +            bottom_core = top_core;
-> > +            num_priv = 0;
-> > +            cache_available = machine_defines_cache_at_topo_level(
-> > +                ms, CPU_TOPOLOGY_LEVEL_CORE);
-> > +            llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                ms, &bottom_core, CPU_TOPOLOGY_LEVEL_CORE);
-> > +            if (cache_available && llevel) {
-> > +                build_caches(table_data, pptt_start, num_caches, caches,
-> > +                             top_core, bottom_core, &core_data_offset,
-> > +                             &core_instr_offset);
-> > +                priv_rsrc[0] = core_instr_offset;
-> > +                priv_rsrc[1] = core_data_offset;
-> > +                num_priv = core_instr_offset == core_data_offset ? 1 : 2;
-> > +            }
-> >           }
-> >   
-> >           if (ms->smp.threads == 1) {
-> >               build_processor_hierarchy_node(table_data,
-> >                   (1 << 1) | /* ACPI Processor ID valid */
-> > -                (1 << 3),  /* Node is a Leaf */
-> > -                cluster_offset, n, NULL, 0);
-> > +                (1 << 3), /* Node is a Leaf */
-> > +                cluster_offset, n, priv_rsrc, num_priv);
-> >           } else {
-> >               if (cpus->cpus[n].props.core_id != core_id) {
-> >                   assert(cpus->cpus[n].props.core_id > core_id);
-> > @@ -2227,7 +2411,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >                   build_processor_hierarchy_node(table_data,
-> >                       (0 << 0) | /* Not a physical package */
-> >                       (1 << 4), /* Identical Implementation */
-> > -                    cluster_offset, core_id, NULL, 0);
-> > +                    cluster_offset, core_id, priv_rsrc, num_priv);
-> >               }
-> >   
-> >               build_processor_hierarchy_node(table_data,
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index a655d1e42b..a6ad8cba1b 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -1255,6 +1255,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >       unsigned dsdt, xsdt;
-> >       GArray *tables_blob = tables->table_data;
-> >       MachineState *ms = MACHINE(vms);
-> > +    CPUCoreCaches caches[CPU_MAX_CACHES];
-> > +    unsigned int num_caches;
-> > +
-> > +    num_caches = virt_get_caches(vms, caches);
-> >   
-> >       table_offsets = g_array_new(false, true /* clear */,
-> >                                           sizeof(uint32_t));
-> > @@ -1276,8 +1280,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >   
-> >       if (!vmc->no_cpu_topology) {
-> >           acpi_add_table(table_offsets, tables_blob);
-> > -        build_pptt(tables_blob, tables->linker, ms,
-> > -                   vms->oem_id, vms->oem_table_id, 0, NULL);
-> > +        build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
-> > +                   vms->oem_table_id, num_caches, caches);
-> >       }
-> >   
-> >       acpi_add_table(table_offsets, tables_blob);
-> > diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
-> > index 2809dd8a91..04c821d2b9 100644
-> > --- a/include/hw/acpi/cpu.h
-> > +++ b/include/hw/acpi/cpu.h
-> > @@ -69,6 +69,16 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-> >   
-> >   void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list);
-> >   
-> > +struct CPUPPTTCaches {
-> > +    enum CacheType type;
-> > +    uint32_t sets;
-> > +    uint32_t size;
-> > +    uint32_t level;
-> > +    uint16_t linesize;
-> > +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write through */
-> > +    uint8_t associativity;
-> > +};
-> > +
-> >   extern const VMStateDescription vmstate_cpu_hotplug;
-> >   #define VMSTATE_CPU_HOTPLUG(cpuhp, state) \
-> >       VMSTATE_STRUCT(cpuhp, state, 1, \  
-> 
-> Otherwise, the ACPI table generation looks good to me.
-> 
-> 
-> Cheers,
-> Gustavo
-> 
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
+Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAxMSBNYXJjaCAyMDI2IDEwOjA1DQo+IFRvOiBT
+aGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFlbXUtDQo+
+IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVyLm1heWRl
+bGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFsZXhAc2hhemJvdC5vcmc7IE5pY29saW4N
+Cj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47IE5hdGhhbiBDaGVuIDxuYXRoYW5jQG52aWRp
+YS5jb20+OyBNYXR0DQo+IE9jaHMgPG1vY2hzQG52aWRpYS5jb20+OyBKaWFuZGkgQW4gPGphbkBu
+dmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBlDQo+IDxqZ2dAbnZpZGlhLmNvbT47IGpvbmF0aGFu
+LmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9u
+Zy5kdWFuQGludGVsLmNvbTsgS3Jpc2huYWthbnQgSmFqdQ0KPiA8a2phanVAbnZpZGlhLmNvbT47
+IHBocmRpbmFAcmVkaGF0LmNvbQ0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHYzIDE3LzMyXSBody9h
+cm0vdGVncmEyNDEtY21kcXY6IG1tYXAgVklOVEYgUGFnZTANCj4gZm9yIENNRFFWDQo+IA0KPiBF
+eHRlcm5hbCBlbWFpbDogVXNlIGNhdXRpb24gb3BlbmluZyBsaW5rcyBvciBhdHRhY2htZW50cw0K
+PiANCj4gDQo+IE9uIDMvMTEvMjYgMTA6MjYgQU0sIFNoYW1lZXIgS29sb3RodW0gVGhvZGkgd3Jv
+dGU6DQo+ID4NCj4gPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPj4gRnJvbTogRXJp
+YyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPg0KPiA+PiBTZW50OiAxMSBNYXJjaCAyMDI2
+IDA3OjU1DQo+ID4+IFRvOiBTaGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZp
+ZGlhLmNvbT47IHFlbXUtDQo+ID4+IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5v
+cmcNCj4gPj4gQ2M6IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgY2xnQHJlZGhhdC5jb207IGFs
+ZXhAc2hhemJvdC5vcmc7IE5pY29saW4NCj4gPj4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT47
+IE5hdGhhbiBDaGVuIDxuYXRoYW5jQG52aWRpYS5jb20+OyBNYXR0DQo+ID4+IE9jaHMgPG1vY2hz
+QG52aWRpYS5jb20+OyBKaWFuZGkgQW4gPGphbkBudmlkaWEuY29tPjsgSmFzb24gR3VudGhvcnBl
+DQo+ID4+IDxqZ2dAbnZpZGlhLmNvbT47IGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNvbTsNCj4g
+Pj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9uZy5kdWFuQGludGVsLmNvbTsgS3Jp
+c2huYWthbnQgSmFqdQ0KPiA+PiA8a2phanVAbnZpZGlhLmNvbT47IHBocmRpbmFAcmVkaGF0LmNv
+bQ0KPiA+PiBTdWJqZWN0OiBSZTogW1BBVENIIHYzIDE3LzMyXSBody9hcm0vdGVncmEyNDEtY21k
+cXY6IG1tYXAgVklOVEYNCj4gUGFnZTANCj4gPj4gZm9yIENNRFFWDQo+ID4+DQo+ID4+IEV4dGVy
+bmFsIGVtYWlsOiBVc2UgY2F1dGlvbiBvcGVuaW5nIGxpbmtzIG9yIGF0dGFjaG1lbnRzDQo+ID4+
+DQo+ID4+DQo+ID4+IE9uIDIvMjYvMjYgMTE6NTAgQU0sIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6
+DQo+ID4+PiBGcm9tOiBOaWNvbGluIENoZW4gPG5pY29saW5jQG52aWRpYS5jb20+DQo+ID4+Pg0K
+PiA+Pj4gR2xvYmFsIFZDTURRIHBhZ2VzIHByb3ZpZGUgYSBWTSB3aWRlIHZpZXcgb2YgYWxsIFZD
+TURRcywgd2hpbGUgdGhlDQo+ID4+PiBWSU5URiBwYWdlcyBleHBvc2UgYSBsb2dpY2FsIHZpZXcg
+bG9jYWwgdG8gYSBnaXZlbiBWSU5URi4gQWx0aG91Z2ggcmVhbA0KPiA+Pj4gaGFyZHdhcmUgbWF5
+IHN1cHBvcnQgbXVsdGlwbGUgVklOVEZzLCB0aGUga2VybmVsIGN1cnJlbnRseSBleHBvc2VzIGEN
+Cj4gPj4+IHNpbmdsZSBWSU5URiBwZXIgVk0uDQo+ID4+Pg0KPiA+Pj4gVGhlIGtlcm5lbCBwcm92
+aWRlcyBhbiBtbWFwIG9mZnNldCBmb3IgdGhlIFZJTlRGIFBhZ2UwIHJlZ2lvbiBkdXJpbmcNCj4g
+Pj4+IHZJT01NVSBhbGxvY2F0aW9uLiBIb3dldmVyLCB0aGUgbG9naWNhbC10by1waHlzaWNhbCBh
+c3NvY2lhdGlvbiBiZXR3ZWVuDQo+ID4+PiBWQ01EUXMgYW5kIGEgVklOVEYgaXMgb25seSBlc3Rh
+Ymxpc2hlZCBhZnRlciBIV19RVUVVRSBhbGxvY2F0aW9uLiBQcmlvcg0KPiA+Pj4gdG8gdGhhdCwg
+dGhlIG1hcHBlZCBQYWdlMCBkb2VzIG5vdCBiYWNrIGFueSByZWFsIFZDTURRIHN0YXRlLg0KPiA+
+Pj4NCj4gPj4+IFdoZW4gVklOVEYgaXMgZW5hYmxlZCwgbW1hcCB0aGUga2VybmVsIHByb3ZpZGVk
+IFBhZ2UwIHJlZ2lvbiBhbmQNCj4gPj4+IHVubWFwIGl0IHdoZW4gVklOVEYgaXMgZGlzYWJsZWQu
+IFRoaXMgcHJlcGFyZXMgdGhlIFZJTlRGIG1hcHBpbmcNCj4gPj4+IGluIGFkdmFuY2Ugb2Ygc3Vi
+c2VxdWVudCBwYXRjaGVzIHRoYXQgYWRkIFZDTURRIGFsbG9jYXRpb24gc3VwcG9ydC4NCj4gPj4g
+U28gYXQgc29tZSBwb2ludCB3ZSB0cmFuc2l0aW9uIGZyb20gc29tZXRoaW5nIHRoYXQgaXMgcHVy
+ZWx5IGVtdWxhdGVkDQo+ID4+IChwYWdlIDEgZ2xvYmFsIGNtZHEpIHRvIHNvbWV0aGluZyB0aGF0
+IGlzIG1tYXBwZWQgb24gYSBob3N0IHBhZ2UuIEhvdw0KPiBkbw0KPiA+PiB3ZSB0cmFuc2ZlciB0
+aGUgc3RhdGUgb2YgdGhlIGNtZHEgZnJvbSBvbmUgdG8gdGhlIG90aGVyPw0KPiA+IFJpZ2h0LiBJ
+ZiBhIGd1ZXN0IHVzZXMgYm90aCB0aGUgIkdsb2JhbCBWQ01EUSByZWdpc3RlcnMgUGFnZTAiIGFu
+ZCB0aGUNCj4gPiAiVklOVEYwIExvZ2ljYWwgVkNNRFEgcmVnaXN0ZXJzIFBhZ2UwIiBpbnRlcmNo
+YW5nZWFibHkgKGFuZCBJIHNlZQ0KPiA+IG5vdGhpbmcgaW4gdGhlIHNwZWMgdGhhdCBmb3JiaWRz
+IHRoaXMpLCB0aGVuIHdlIG5lZWQgdG8ga2VlcCB0aGUgdHdvDQo+ID4gdmlld3MgaW4gc3luYy4N
+Cj4gDQo+IEFsc28gYXNzdW1pbmcgdGhlIGdsb2JhbCBWQ01EUXMgYXJlIGFjY2Vzc2libGUgYW5k
+IHRodXMgdXNlZCwgSSBndWVzcyB3ZQ0KPiBzaGFsbCBwcm9wZXJseSBoYW5kbGUgdGhlIGFjdHVh
+bCBjb21tYW5kcyAoZXF1aXZhbGVudCBvZg0KPiBzbW11djNfY21kcV9jb25zdW1lKCkpLCBubz8N
+Cj4gSSBkb24ndCBzZWUgaXQgZG9uZSBhdCB0aGUgbW9tZW50Lg0KPiANCj4gQnkgdGhlIHdheSwg
+ZG8gd2Ugd2FudCBzdXBwb3J0IG9mIFZDTURRcyBpbiBmdWxseSBlbXVsYXRlZCBtb2RlLiBJIGd1
+ZXNzDQo+IGl0IHdvdWxkIGJlIHNlbnNpYmxlPw0KDQpZZXMsIGNvbW1hbmQgaGFuZGxpbmcgaXMg
+bm90IGltcGxlbWVudGVkIG5vdy4NCg0KU2luY2UgdGhpcyBpcyBwYXJ0IG9mIHRoZSBhY2NlbGVy
+YXRlZCBTTU1VdjMgZmVhdHVyZSwgSSBhbSBub3Qgc3VyZSBpdA0KbWFrZXMgc2Vuc2UgdG8gaW1w
+bGVtZW50IGZ1bGwgY29tbWFuZCBoYW5kbGluZyBpbiBRRU1VIGFuZCB0aGVuIGZvcndhcmQNCnRo
+ZSBzdXBwb3J0ZWQgaW52YWxpZGF0aW9uIGNvbW1hbmRzIGJhY2sgdG8gdGhlIGhvc3QgYWdhaW4u
+DQoNClRoZSBpZGVhIGhlcmUgaXMgdG8gYWNjZWxlcmF0ZSB0aGUgQ01EUSBwcm9jZXNzaW5nIHRo
+cm91Z2ggdGhlIGhhcmR3YXJlLg0KSSBhbSBub3Qgc3VyZSBhIGd1ZXN0IHdvdWxkIGhhdmUgYSBy
+ZWFsIHVzZSBjYXNlIGZvciBWQ01EUSBpbiBhIGZ1bGx5DQplbXVsYXRlZCBtb2RlLg0KDQpUaGFu
+a3MsDQpTaGFtZWVyDQoNCj4gVGhhbmtzDQo+IA0KPiBFcmljDQo+ID4NCj4gPiBTbyB3aGVuIHRo
+ZSBtYXBwaW5nIGJldHdlZW4gYSBnbG9iYWwgVkNNRFEgYW5kIGEgbG9naWNhbCBWQ01EUSBpcw0K
+PiA+IGNyZWF0ZWQgdGhyb3VnaCB0aGUgSFdfUVVFVUUgaW9jdGwsIHdlIHNob3VsZCBzeW5jIHRo
+ZSBzdGF0ZSBiZXR3ZWVuDQo+ID4gdGhlIEdsb2JhbCBWQ01EUSBQYWdlMCBhbmQgdGhlIFZJTlRG
+MCBMb2dpY2FsIFZDTURRIFBhZ2UwLg0KPiA+DQo+ID4gSSB3aWxsIGRvdWJsZSBjaGVjayB0aGlz
+Lg0KPiA+DQo+ID4gVGhhbmtzLA0KPiA+IFNoYW1lZXINCj4gPg0KPiA+PiBUaGFua3MNCj4gPj4N
+Cj4gPj4gRXJpYw0KPiA+Pj4gU2lnbmVkLW9mZi1ieTogTmljb2xpbiBDaGVuIDxuaWNvbGluY0Bu
+dmlkaWEuY29tPg0KPiA+Pj4gU2lnbmVkLW9mZi1ieTogU2hhbWVlciBLb2xvdGh1bSA8c2tvbG90
+aHVtdGhvQG52aWRpYS5jb20+DQo+ID4+PiAtLS0NCj4gPj4+ICBody9hcm0vdGVncmEyNDEtY21k
+cXYuaCB8ICAzICsrKw0KPiA+Pj4gIGh3L2FybS90ZWdyYTI0MS1jbWRxdi5jIHwgNDQNCj4gPj4g
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0NCj4gPj4+ICAyIGZpbGVz
+IGNoYW5nZWQsIDQ1IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQo+ID4+Pg0KPiA+Pj4g
+ZGlmZiAtLWdpdCBhL2h3L2FybS90ZWdyYTI0MS1jbWRxdi5oIGIvaHcvYXJtL3RlZ3JhMjQxLWNt
+ZHF2LmgNCj4gPj4+IGluZGV4IGQzNzliODg2MGMuLjNjZTlmNTM5YWUgMTAwNjQ0DQo+ID4+PiAt
+LS0gYS9ody9hcm0vdGVncmEyNDEtY21kcXYuaA0KPiA+Pj4gKysrIGIvaHcvYXJtL3RlZ3JhMjQx
+LWNtZHF2LmgNCj4gPj4+IEBAIC0xOCw2ICsxOCw4IEBADQo+ID4+PiAgI2RlZmluZSBURUdSQTI0
+MV9DTURRVl9NQVhfQ01EUSAgICAgICAgICAgICgxVSA8PA0KPiA+PiBURUdSQTI0MV9DTURRVl9O
+VU1fQ01EUV9MT0cyKQ0KPiA+Pj4gICNkZWZpbmUgVEVHUkEyNDFfQ01EUVZfTlVNX1NJRF9QRVJf
+Vk1fTE9HMiA0DQo+ID4+Pg0KPiA+Pj4gKyNkZWZpbmUgVklOVEZfUEFHRV9TSVpFIDB4MTAwMDAN
+Cj4gPj4+ICsNCj4gPj4+ICAvKg0KPiA+Pj4gICAqIFRlZ3JhMjQxIENNRFFWIE1NSU8gbGF5b3V0
+ICg2NEtCIHBhZ2VzKQ0KPiA+Pj4gICAqDQo+ID4+PiBAQCAtMzQsNiArMzYsNyBAQCB0eXBlZGVm
+IHN0cnVjdCBUZWdyYTI0MUNNRFFWIHsNCj4gPj4+ICAgICAgU01NVXYzQWNjZWxTdGF0ZSAqc19h
+Y2NlbDsNCj4gPj4+ICAgICAgTWVtb3J5UmVnaW9uIG1taW9fY21kcXY7DQo+ID4+PiAgICAgIHFl
+bXVfaXJxIGlycTsNCj4gPj4+ICsgICAgdm9pZCAqdmludGZfcGFnZTA7DQo+ID4+Pg0KPiA+Pj4g
+ICAgICAvKiBSZWdpc3RlciBDYWNoZSAqLw0KPiA+Pj4gICAgICB1aW50MzJfdCBjb25maWc7DQo+
+ID4+PiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3RlZ3JhMjQxLWNtZHF2LmMgYi9ody9hcm0vdGVncmEy
+NDEtY21kcXYuYw0KPiA+Pj4gaW5kZXggZTFmMTU2MmM0NC4uYTM3NjdhODVhMyAxMDA2NDQNCj4g
+Pj4+IC0tLSBhL2h3L2FybS90ZWdyYTI0MS1jbWRxdi5jDQo+ID4+PiArKysgYi9ody9hcm0vdGVn
+cmEyNDEtY21kcXYuYw0KPiA+Pj4gQEAgLTE1MSw2ICsxNTEsMzkgQEAgc3RhdGljIHVpbnQ2NF90
+IHRlZ3JhMjQxX2NtZHF2X3JlYWQodm9pZA0KPiA+PiAqb3BhcXVlLCBod2FkZHIgb2Zmc2V0LCB1
+bnNpZ25lZCBzaXplKQ0KPiA+Pj4gICAgICB9DQo+ID4+PiAgfQ0KPiA+Pj4NCj4gPj4+ICtzdGF0
+aWMgYm9vbA0KPiA+Pj4gK3RlZ3JhMjQxX2NtZHF2X211bm1hcF92aW50Zl9wYWdlMChUZWdyYTI0
+MUNNRFFWICpjbWRxdiwNCj4gRXJyb3INCj4gPj4gKiplcnJwKQ0KPiA+Pj4gK3sNCj4gPj4+ICsg
+ICAgaWYgKCFjbWRxdi0+dmludGZfcGFnZTApIHsNCj4gPj4+ICsgICAgICAgIHJldHVybiB0cnVl
+Ow0KPiA+Pj4gKyAgICB9DQo+ID4+PiArDQo+ID4+PiArICAgIGlmIChtdW5tYXAoY21kcXYtPnZp
+bnRmX3BhZ2UwLCBWSU5URl9QQUdFX1NJWkUpIDwgMCkgew0KPiA+Pj4gKyAgICAgICAgZXJyb3Jf
+c2V0Z19lcnJubyhlcnJwLCBlcnJubywgIkZhaWxlZCB0byB1bm1hcCBWSU5URiBwYWdlMCIpOw0K
+PiA+Pj4gKyAgICAgICAgcmV0dXJuIGZhbHNlOw0KPiA+Pj4gKyAgICB9DQo+ID4+PiArICAgIGNt
+ZHF2LT52aW50Zl9wYWdlMCA9IE5VTEw7DQo+ID4+PiArICAgIHJldHVybiB0cnVlOw0KPiA+Pj4g
+K30NCj4gPj4+ICsNCj4gPj4+ICtzdGF0aWMgYm9vbCB0ZWdyYTI0MV9jbWRxdl9tbWFwX3ZpbnRm
+X3BhZ2UwKFRlZ3JhMjQxQ01EUVYNCj4gPj4gKmNtZHF2LCBFcnJvciAqKmVycnApDQo+ID4+PiAr
+ew0KPiA+Pj4gKyAgICBJT01NVUZEVmlvbW11ICp2aW9tbXUgPSBjbWRxdi0+c19hY2NlbC0+dmlv
+bW11Ow0KPiA+Pj4gKw0KPiA+Pj4gKyAgICBpZiAoY21kcXYtPnZpbnRmX3BhZ2UwKSB7DQo+ID4+
+PiArICAgICAgICByZXR1cm4gdHJ1ZTsNCj4gPj4+ICsgICAgfQ0KPiA+Pj4gKw0KPiA+Pj4gKyAg
+ICBpZiAoIWlvbW11ZmRfYmFja2VuZF92aW9tbXVfbW1hcCh2aW9tbXUtPmlvbW11ZmQsIHZpb21t
+dS0NCj4gPj4+IHZpb21tdV9pZCwNCj4gPj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgVklOVEZfUEFHRV9TSVpFLA0KPiA+Pj4gKyAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBjbWRxdi0+Y21kcXZfZGF0YS5vdXRfdmludGZfbW1hcF9vZmZzZXQsDQo+
+ID4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZjbWRxdi0+dmludGZf
+cGFnZTAsIGVycnApKSB7DQo+ID4+PiArICAgICAgICByZXR1cm4gZmFsc2U7DQo+ID4+PiArICAg
+IH0NCj4gPj4+ICsNCj4gPj4+ICsgICAgcmV0dXJuIHRydWU7DQo+ID4+PiArfQ0KPiA+Pj4gKw0K
+PiA+Pj4gIC8qDQo+ID4+PiAgICogV3JpdGUgYSBWQ01EUSByZWdpc3RlciB1c2luZyBWQ01EUTBf
+KiBvZmZzZXRzLg0KPiA+Pj4gICAqDQo+ID4+PiBAQCAtMjE2LDcgKzI0OSw3IEBADQo+IHRlZ3Jh
+MjQxX2NtZHF2X3dyaXRlX3ZjbWRxKFRlZ3JhMjQxQ01EUVYNCj4gPj4gKmNtZHF2LCBod2FkZHIg
+b2Zmc2V0MCwgaW50IGluZGV4LA0KPiA+Pj4gIH0NCj4gPj4+DQo+ID4+PiAgc3RhdGljIHZvaWQg
+dGVncmEyNDFfY21kcXZfd3JpdGVfdmludGYoVGVncmEyNDFDTURRViAqY21kcXYsDQo+IGh3YWRk
+cg0KPiA+PiBvZmZzZXQsDQo+ID4+PiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgdWludDY0X3QgdmFsdWUpDQo+ID4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgdWludDY0X3QgdmFsdWUsIEVycm9yICoqZXJycCkNCj4gPj4+ICB7DQo+ID4+
+PiAgICAgIGludCBpOw0KPiA+Pj4NCj4gPj4+IEBAIC0yMjcsOCArMjYwLDEwIEBAIHN0YXRpYyB2
+b2lkDQo+ID4+IHRlZ3JhMjQxX2NtZHF2X3dyaXRlX3ZpbnRmKFRlZ3JhMjQxQ01EUVYgKmNtZHF2
+LCBod2FkZHIgb2Zmc2V0LA0KPiA+Pj4gICAgICAgICAgY21kcXYtPnZpbnRmX2NvbmZpZyA9IHZh
+bHVlOw0KPiA+Pj4gICAgICAgICAgaWYgKHZhbHVlICYgUl9WSU5URjBfQ09ORklHX0VOQUJMRV9N
+QVNLKSB7DQo+ID4+PiArICAgICAgICAgICAgdGVncmEyNDFfY21kcXZfbW1hcF92aW50Zl9wYWdl
+MChjbWRxdiwgZXJycCk7DQo+ID4+PiAgICAgICAgICAgICAgY21kcXYtPnZpbnRmX3N0YXR1cyB8
+PSBSX1ZJTlRGMF9TVEFUVVNfRU5BQkxFX09LX01BU0s7DQo+ID4+PiAgICAgICAgICB9IGVsc2Ug
+ew0KPiA+Pj4gKyAgICAgICAgICAgIHRlZ3JhMjQxX2NtZHF2X211bm1hcF92aW50Zl9wYWdlMChj
+bWRxdiwgZXJycCk7DQo+ID4+PiAgICAgICAgICAgICAgY21kcXYtPnZpbnRmX3N0YXR1cyAmPSB+
+Ul9WSU5URjBfU1RBVFVTX0VOQUJMRV9PS19NQVNLOw0KPiA+Pj4gICAgICAgICAgfQ0KPiA+Pj4g
+ICAgICAgICAgYnJlYWs7DQo+ID4+PiBAQCAtMjUxLDYgKzI4Niw3IEBAIHN0YXRpYyB2b2lkIHRl
+Z3JhMjQxX2NtZHF2X3dyaXRlKHZvaWQgKm9wYXF1ZSwNCj4gPj4gaHdhZGRyIG9mZnNldCwgdWlu
+dDY0X3QgdmFsdWUsDQo+ID4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5z
+aWduZWQgc2l6ZSkNCj4gPj4+ICB7DQo+ID4+PiAgICAgIFRlZ3JhMjQxQ01EUVYgKmNtZHF2ID0g
+KFRlZ3JhMjQxQ01EUVYgKilvcGFxdWU7DQo+ID4+PiArICAgIEVycm9yICpsb2NhbF9lcnIgPSBO
+VUxMOw0KPiA+Pj4gICAgICBpbnQgaW5kZXg7DQo+ID4+Pg0KPiA+Pj4gICAgICBpZiAob2Zmc2V0
+ID49IFRFR1JBMjQxX0NNRFFWX0lPX0xFTikgew0KPiA+Pj4gQEAgLTI3Niw3ICszMTIsNyBAQCBz
+dGF0aWMgdm9pZCB0ZWdyYTI0MV9jbWRxdl93cml0ZSh2b2lkICpvcGFxdWUsDQo+ID4+IGh3YWRk
+ciBvZmZzZXQsIHVpbnQ2NF90IHZhbHVlLA0KPiA+Pj4gICAgICAgICAgY21kcXYtPmNtZHFfYWxs
+b2NfbWFwWyhvZmZzZXQgLSBBX0NNRFFfQUxMT0NfTUFQXzApIC8gNF0gPQ0KPiA+PiB2YWx1ZTsN
+Cj4gPj4+ICAgICAgICAgIGJyZWFrOw0KPiA+Pj4gICAgICBjYXNlIEFfVklOVEYwX0NPTkZJRyAu
+Li4gQV9WSU5URjBfTFZDTURRX0VSUl9NQVBfMzoNCj4gPj4+IC0gICAgICAgIHRlZ3JhMjQxX2Nt
+ZHF2X3dyaXRlX3ZpbnRmKGNtZHF2LCBvZmZzZXQsIHZhbHVlKTsNCj4gPj4+ICsgICAgICAgIHRl
+Z3JhMjQxX2NtZHF2X3dyaXRlX3ZpbnRmKGNtZHF2LCBvZmZzZXQsIHZhbHVlLCAmbG9jYWxfZXJy
+KTsNCj4gPj4+ICAgICAgICAgIGJyZWFrOw0KPiA+Pj4gICAgICBjYXNlIEFfVklfVkNNRFEwX0NP
+TlNfSU5EWCAuLi4gQV9WSV9WQ01EUTFfR0VSUk9STjoNCj4gPj4+ICAgICAgICAgIC8qIFNhbWUg
+ZGVjb2RpbmcgYXMgcmVhZCgpIGNhc2U6IFNlZSBjb21tZW50cyBhYm92ZSAqLw0KPiA+Pj4gQEAg
+LTMwMCw2ICszMzYsMTAgQEAgc3RhdGljIHZvaWQgdGVncmEyNDFfY21kcXZfd3JpdGUodm9pZA0K
+PiAqb3BhcXVlLA0KPiA+PiBod2FkZHIgb2Zmc2V0LCB1aW50NjRfdCB2YWx1ZSwNCj4gPj4+ICAg
+ICAgICAgIHFlbXVfbG9nX21hc2soTE9HX1VOSU1QLCAiJXMgdW5oYW5kbGVkIHdyaXRlIGFjY2Vz
+cyBhdCAweCUiDQo+ID4+IFBSSXg2NCAiXG4iLA0KPiA+Pj4gICAgICAgICAgICAgICAgICAgICAg
+ICBfX2Z1bmNfXywgb2Zmc2V0KTsNCj4gPj4+ICAgICAgfQ0KPiA+Pj4gKw0KPiA+Pj4gKyAgICBp
+ZiAobG9jYWxfZXJyKSB7DQo+ID4+PiArICAgICAgICBlcnJvcl9yZXBvcnRfZXJyKGxvY2FsX2Vy
+cik7DQo+ID4+PiArICAgIH0NCj4gPj4+ICB9DQo+ID4+Pg0KPiA+Pj4gIHN0YXRpYyB2b2lkIHRl
+Z3JhMjQxX2NtZHF2X2ZyZWVfdmlvbW11KFNNTVV2M1N0YXRlICpzKQ0KDQo=
 

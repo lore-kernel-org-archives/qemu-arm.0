@@ -4,122 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCBCF1067042
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 15:12:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52CD7106703C
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 15:18:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0hi0-0004NK-MD; Thu, 12 Mar 2026 11:12:21 -0400
+	id 1w0ho1-0006uA-4I; Thu, 12 Mar 2026 11:18:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1w0hhy-0004N0-Ag; Thu, 12 Mar 2026 11:12:18 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w0hnv-0006pv-Jm
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 11:18:30 -0400
+Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1w0hhw-0001ts-1M; Thu, 12 Mar 2026 11:12:18 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 62CEJCPN2583633; Thu, 12 Mar 2026 15:12:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=e31NAt
- 3gqmKIX2vVfXEPSn36cpkZcM6sm981JzqJhWo=; b=h7fSNn5VewUqq7i4El6wgm
- tAcczcYzXfn1EhVMNHyUjvFM4SMZlyAkRVV+xXUPHtxJhbLmEJSnLjku+B4Le7Ff
- 1zd7WQN0e+vgvKTHHdH4Wv+tdXqKKrCgMrAjYBl08aSYqsLZswnsB8B9vD7BqGxl
- 9ABY03mbqE+Hcmxht/dS+phzHjfsPf9se7WNW0uXW/lcotQKbYXhhRgNtPhCxIgA
- s8E9Kba5FOBVgiY3ulBOGdx9WttM1NLMh999pe5gUfONjOkvrg/6USaYHxj9lCMu
- awq4yxWPE6Z+RN5EdkhMaMK6F+rvO8bZxav0gWzlV6OQXzdsX8mzB6GmjTi5CIkw
- ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4cuh94ubyf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 12 Mar 2026 15:12:07 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 62CEYdHW025691;
- Thu, 12 Mar 2026 15:12:07 GMT
-Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4cuha8ata0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 12 Mar 2026 15:12:06 +0000
-Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com
- [10.20.54.105])
- by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 62CFC5SP44761432
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 12 Mar 2026 15:12:05 GMT
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 489742004B;
- Thu, 12 Mar 2026 15:12:05 +0000 (GMT)
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BB2D020049;
- Thu, 12 Mar 2026 15:12:04 +0000 (GMT)
-Received: from [0.0.0.0] (unknown [9.111.88.140])
- by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 12 Mar 2026 15:12:04 +0000 (GMT)
-Message-ID: <94e17bd5-e864-45eb-878b-2296d6188271@linux.ibm.com>
-Date: Thu, 12 Mar 2026 16:12:04 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w0hnr-0003Co-00
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 11:18:26 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fWrpx53vSz5x8Q;
+ Thu, 12 Mar 2026 15:18:17 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 12 Mar 2026 15:18:16 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.249.154])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4fWrpw6gfSz5vZt;
+ Thu, 12 Mar 2026 15:18:16 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.7])
+ (Authenticated sender: clg@kaod.org)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ CA0DD24038EB; Thu, 12 Mar 2026 15:18:15 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-111S005803ca4ba-89c6-4ccf-9dbe-078dcd3b2f7c,
+ A44AD0A7FA4CC2C77A0E4155D0E1898E03217822) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <588b3b38-172a-493f-a842-5a2fb5796391@kaod.org>
+Date: Thu, 12 Mar 2026 16:18:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/7] tests/docker: add gdb-multiarch to all-test-cross
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
- Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
- Kyle Evans <kevans@freebsd.org>, Paolo Bonzini <pbonzini@redhat.com>,
+Subject: Re: RE: [PATCH v4 0/4] Support HACE to AST2700 (resend)
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Warner Losh <imp@bsdimp.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20260306161728.2657486-1-alex.bennee@linaro.org>
- <20260306161728.2657486-2-alex.bennee@linaro.org>
- <78c8b024-6dd5-4f1b-a19c-c7a71c7acc9f@linaro.org>
- <7e6cdb4b-4cb8-4968-acce-56db2f0ee307@linaro.org>
- <97506340-18a4-4691-8017-110ab2fc76b8@linaro.org>
- <3c2bf09d-245c-4de7-b55d-37085ef24545@linaro.org>
- <c776bbc1-6021-45d0-a5ca-74e50d906f4f@linux.ibm.com>
- <1493fdd5-5254-4398-bb69-8c83eee8bef2@linaro.org>
- <CAPMQPEKPk1iySmCt0_Vi1=bcaG_ZkNfzYknCu14zzR2N7p-6zw@mail.gmail.com>
- <871phpi22y.fsf@draig.linaro.org>
-Content-Language: en-US
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-In-Reply-To: <871phpi22y.fsf@draig.linaro.org>
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20250225075622.305515-1-jamin_lin@aspeedtech.com>
+ <675766c2-4015-43e8-b070-d58f2cdd23e7@kaod.org>
+ <SEYPR06MB5037484B224FD0F3DE53B117FCD02@SEYPR06MB5037.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <SEYPR06MB5037484B224FD0F3DE53B117FCD02@SEYPR06MB5037.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Authority-Analysis: v=2.4 cv=QKtlhwLL c=1 sm=1 tr=0 ts=69b2d7c8 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=p0WdMEafAAAA:8
- a=KKAkSRfTAAAA:8 a=lqaRWnj7802rhjxTwGMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEyMDEyMSBTYWx0ZWRfX/k9+iMBiruAV
- NckpV9873mPJKEcYgs65kfe63e+lw+NvDTGzMrh3mcdft0Bz49SdUzI4fEe7oSxzwBLbA80LJ2s
- wXlLagLqgdzR8QZD0qf0lwzx2Z6z1xzb+W88LT3cccVHYhXuK0MIzQ71AhMt+Ct0Ujek+3VH9YI
- o7Ag2nUhPy08fmQUGyz47vSWpjTFH1HjtkPbDK39sWKzhkG2zuOVnoHz7qIhFqcif4nI/iq3to5
- 1/QQCH878gAlWgx9UXiukuaHzvHVRWb8Qswq9xrE2DwLKCQKdFrSz88s29Zkd3H96LhEdkI8/cB
- 06fI5wSCVHsDAxEBIa0fM8VrrTf4dtOGttjiPhEdd3YVP1rwNBcq9WIpHx/nUXFZJB9fG9KYrJF
- rbkqv9Osx/ymjKltcv3I4/cRuLO7kVa0X31GSWvYai+LIwqjNDYsRi5k1ysXX6MWs+sA774ltAA
- R2Lb7jOPjp3/NmXNndQ==
-X-Proofpoint-ORIG-GUID: amJS6u2fXmEJbLvh98I_hpAniKdyZZ99
-X-Proofpoint-GUID: amJS6u2fXmEJbLvh98I_hpAniKdyZZ99
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-12_01,2026-03-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0 impostorscore=0 clxscore=1015
- priorityscore=1501 bulkscore=0 adultscore=0 phishscore=0 spamscore=0
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2603050001
- definitions=main-2603120121
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+x-ovh-tracer-id: 15652260507586702347
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGZ2NyMEo3yNeSW5Yh4O0xIEVJ9XtLdyeo942UV3Dsa7j/KpJJTeTHlZv3KhjxTjJ/Z714e2ilOqSfzNTh3o/F0IZPbqMvTGELyQpjV6YuHrdGsC5L/LpcK9cio+a6unhVoumFKu0ccSaEAwgvmmK//ZWufL8tXx8yl6pBdQSotOx/vxjwcN3+ppud8995bVj9qKboo5h0X1X6TNAesi6zSBSP/3K9uu6BP0BsmOvsN3jk3X6yneipGkt+5vd2WgoJkW+9D4ei4w/kw81DjXSJ8B6MP+yavcwgemjd2nqznW3aGFiin7nCZ/4sCWptAgIitSfPKJNQONOtlpbRsME3HRfYuio/q4EYg0zpDoj8cLq2VE/nkkv6ahOMF0Uy9NxEQszTnSNAcHQRpMozH7ZJ56zO6nOcl2B87pAWLhiaYDHY3zojZMy6K3ugAu1wYoStybO64Cmj6pthI6YbHOmbBpoLn8Y3Y8xVyRoZfwTxBfkr0Toh/8hYDeDag0yNbBku0C0H/UpW/b5ATfOCCP12LKHbHJuu4nVMxS8u2jjcaG1N4vZUSkq17lFue/E7S/bEpgBx91uhW6uYotx6oF5c3rj3IoEK/YM0FLZagNoZFVWp/cIPoXXNgDbvuSrunfEUoSI9TMYZiUbLZ/SOlUu9bEkCCpKRs0R76IuEmbnL9ug
+DKIM-Signature: a=rsa-sha256; bh=bGj8kaQJB3oG9QFPWfQjULuDfoi2rP9vg/jUpRRSWPo=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1773328699; v=1;
+ b=nnO8TzyRb3qVShGd6aBQ39xPEaDsn1Ara1T6e5mKNNWAGD75LUEasj9GDeGZdr9Gv11xPp77
+ 6Iw5EQ7dM39cH5NlLZnJtc7jibxjKQYFfZ8JYyVYA6GrWOwUY7USd1QLKNQpUztXs11X6YK+7KI
+ jqflkal7va+5+yyMTrjD7XGHtQA2gIhrcGugMkr7LvY0M80z00D1hv0DRRJ8D6QBLLkdV7u1oux
+ hvIyVdC1+hAVoGRjwJ4OMYnhdVo3OfwsbZ059OMlvkRhGN5M2Sc0ECQ/ahLxglKwgdxVSILlJKj
+ TW4ZEb5ciHacMpCVZudJRBsjq/PoFAOYAYrEB9bVKkxwQ==
+Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
+ helo=10.mo533.mail-out.ovh.net
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -137,121 +136,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hello Jamin,
 
-On 3/12/26 14:56, Alex Bennée wrote:
-> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
->
->> On Thu, 12 Mar 2026 at 11:39, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>> On 12/3/26 11:11, Ilya Leoshkevich wrote:
->>>> On 3/11/26 00:28, Philippe Mathieu-Daudé wrote:
->>>>> On 11/3/26 00:22, Pierrick Bouvier wrote:
->>>>>> On 3/10/26 4:07 PM, Philippe Mathieu-Daudé wrote:
->>>>>>> On 10/3/26 23:33, Philippe Mathieu-Daudé wrote:
->>>>>>>> On 6/3/26 17:17, Alex Bennée wrote:
->>>>>>>>> This allows the gdb integration tests to be run as well.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>>>>>>>> ---
->>>>>>>>>     tests/docker/dockerfiles/debian-all-test-cross.docker | 1 +
->>>>>>>>>     tests/lcitool/refresh                                 | 1 +
->>>>>>>>>     2 files changed, 2 insertions(+)
->>>>>>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>>>>> I'm getting:
->>>>>>>
->>>>>>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
->>>>>>> address 0x45001fff
->>>>>>> Error occurred in Python: Cannot access memory at address 0x45001fff
->>>>>>> qemu-hppa: QEMU: Terminated via GDBstub
->>>>>>> make[1]: ***
->>>>>>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
->>>>>>> run-gdbstub-prot-none] Error 1
->>>>>>> make[1]: *** Waiting for unfinished jobs....
->>>>>>> qemu-hppa: QEMU: Terminated via GDBstub
->>>>>>> warning: Could not load shared library symbols for linux-vdso32.so.1.
->>>>>>> Do you need "set solib-search-path" or "set sysroot"?
->>>>>>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
->>>>>>> run-tcg-tests-hppa-linux-user] Error 2
->>>>>>>
->>>>>> To add more information, we tested it on GitHub, our machines and
->>>>>> GitLab, and for an unknown reason, it only fails on GitLab runners.
->>>>> Also we tested on our local Linux machines, where this test pass
->>>>> for all our targets ;)
->>>>>
->>>>>> Which is unfortunate since it is where QEMU run its CI.
->>>>>>
->>>>>> Regards,
->>>>>> Pierrick
->>>> FWIW it passes on my laptop as well.
->>>>
->>>> Does this test fail only for hppa, or for other architectures as well?
->>> Have a look at these job failures:
->>> https://gitlab.com/philmd/qemu/-/pipelines/2376819801
+On 3/12/25 10:32, Jamin Lin wrote:
+> Hi Cedric,
+> 
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@kaod.org>
+>> Sent: Wednesday, March 12, 2025 5:25 PM
+>> To: Jamin Lin <jamin_lin@aspeedtech.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
+>> Lee <leetroy@gmail.com>; Andrew Jeffery <andrew@codeconstruct.com.au>;
+>> Joel Stanley <joel@jms.id.au>; open list:ASPEED BMCs
+>> <qemu-arm@nongnu.org>; open list:All patches CC here
+>> <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>
+>> Subject: Re: [PATCH v4 0/4] Support HACE to AST2700 (resend)
+>>
+>> Jamin,
+>>
+>> On 2/25/25 08:56, Jamin Lin wrote:
+>>> This patch series is from
+>> https://patchwork.kernel.org/project/qemu-devel/cover/20250213033531.336
+>> 7697-1-jamin_lin@aspeedtech.com/.
+>>> To expedite the review process, I have separated the HACE patches
+>>> portion from the
+>> https://patchwork.kernel.org/project/qemu-devel/cover/20250213033531.336
+>> 7697-1-jamin_lin@aspeedtech.com/ patch series into this new patch series.
 >>>
->>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
->>> address 0x7e085b4b1fff
->>> Error occurred in Python: Cannot access memory at address 0x7e085b4b1fff
->>> qemu-aarch64: QEMU: Terminated via GDBstub
->>> make[1]: ***
->>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
->>> run-gdbstub-prot-none] Error 1
->>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
->>> run-tcg-tests-aarch64-linux-user] Error 2
+>>> v4: Support HACE to AST2700
 >>>
->>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
->>> address 0x40802fff
->>> Error occurred in Python: Cannot access memory at address 0x40802fff
->>> qemu-arm: QEMU: Terminated via GDBstub
->>> make[1]: ***
->>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
->>> run-gdbstub-prot-none] Error 1
->>> make[1]: *** Waiting for unfinished jobs....
->>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
->>> run-tcg-tests-arm-linux-user] Error 2
+>>> Jamin Lin (4):
+>>>     hw/misc/aspeed_hace: Fix coding style
+>>>     hw/misc/aspeed_hace: Add AST2700 support
+>>>     hw/arm/aspeed_ast27x0: Add HACE support for AST2700
+>>>     hw/misc/aspeed_hace: Fix boot issue in the Crypto Manager Self Test
 >>>
->>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
->>> address 0x45001fff
->>> Error occurred in Python: Cannot access memory at address 0x45001fff
->>> qemu-hppa: QEMU: Terminated via GDBstub
->>> make[1]: ***
->>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
->>> run-gdbstub-prot-none] Error 1
->>> make[1]: *** Waiting for unfinished jobs....
->>> qemu-hppa: QEMU: Terminated via GDBstub
->>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
->>> run-tcg-tests-hppa-linux-user] Error 2
+>>>    include/hw/misc/aspeed_hace.h |  2 ++
+>>>    hw/arm/aspeed_ast27x0.c       | 15 ++++++++++
+>>>    hw/misc/aspeed_hace.c         | 55
+>> ++++++++++++++++++++++++++++++++---
+>>>    3 files changed, 68 insertions(+), 4 deletions(-)
 >>>
->>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
->>> address 0x7d742025efff
->>> Error occurred in Python: Cannot access memory at address 0x7d742025efff
->>> qemu-alpha: QEMU: Terminated via GDBstub
->>> make[1]: ***
->>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
->>> run-gdbstub-prot-none] Error 1
->>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
->>> run-tcg-tests-alpha-linux-user] Error 2
->>>
->>> So at least Alpha / ARM / Aarch64 / HPPA.
->>>
->>> (I haven't checked whether the test is run for other targets).
->>>
->>> We also run these on GitHub runners where the tests pass, and apparently
->>> when running on k8s private runner on GitLab they also pass. The problem
->>> is with public runner on GitLab.
->> Also another test we ran was to pull GitLab docker image and run the same
->> tests locally within that GitLab-generated image and they passed. So we
->> believe the issue is related to some container restriction with
->> GitLab.
-> Most likely because the ptrace settings are tighter - ptrace is the
-> mechanism we use to access the memory we can't normally.
+>>
+>> The kernel reports a lot of errors when running the crypto tests on a
+>> AST2700 A1 Soc. See the functional test logs :
+>>
+>>       $ grep alg:
+>> build/tests/functional/aarch64/test_aarch64_aspeed.AST2x00MachineSDK.test
+>> _aarch64_ast2700a1_evb_sdk_v09_05/console.log
+>>
+>>       2025-03-12 10:10:42,705: [    2.206831] alg: skcipher: aspeed-ctr-tdes
+>> encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+>>       2025-03-12 10:10:42,706: [    2.207328] alg: self-tests for
+>> ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+>>       2025-03-12 10:10:42,707: [    2.207894] alg: self-tests for
+>> ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+>>       2025-03-12 10:10:42,725: [    2.219342] alg: skcipher: aspeed-ctr-des
+>> encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+>>       2025-03-12 10:10:42,725: [    2.219511] alg: self-tests for ctr(des)
+>> using aspeed-ctr-des failed (rc=-22)
+>>       2025-03-12 10:10:42,725: [    2.219651] alg: self-tests for ctr(des)
+>> using aspeed-ctr-des failed (rc=-22)
+>>       2025-03-12 10:10:42,733: [    2.224344] alg: skcipher: aspeed-ctr-aes
+>> encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+>>       2025-03-12 10:10:42,734: [    2.224775] alg: self-tests for ctr(aes)
+>> using aspeed-ctr-aes failed (rc=-22)
+>>       2025-03-12 10:10:42,734: [    2.225015] alg: self-tests for ctr(aes)
+>> using aspeed-ctr-aes failed (rc=-22)
+>>       ...
+>>
+>> What is something missing in the models ?
+>>
+> 
+> Currently, we do not implement HACE/CRYPT in aspeed_hace.c.
+> https://patchwork.kernel.org/project/qemu-devel/patch/20250225075622.305515-5-jamin_lin@aspeedtech.com/
+> 
+> Known Issue:
+> The HACE crypto and hash engine is enable by default since AST2700 A1.
+> However, aspeed_hace.c(HACE model) currently does not support the CRYPTO command.
+> To boot AST2700 A1, created a patch which temporarily resolves the
+> issue by sending an interrupt to notify the firmware that the cryptographic
+> command has completed. It is a temporary workaround to resolve the boot issue
+> in the Crypto Manager SelfTest.
+> 
+> As a result, you will encounter the following kernel warning due to the
+> Crypto Manager test failure.
+> 
+> ```
+> alg: skcipher: aspeed-ctr-tdes encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+> [    5.035966] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+> [    5.036139] ------------[ cut here ]------------
+> [    5.037188] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+> [    5.037312] WARNING: CPU: 2 PID: 109 at /crypto/testmgr.c:5936 alg_test+0x42c/0x548
+> [    5.038049] Modules linked in:
+> [    5.038302] CPU: 2 PID: 109 Comm: cryptomgr_test Tainted: G        W          6.6.52-v00.06.04-gf52a0cf7c475 #1
+> [    5.038787] Hardware name: AST2700-EVB (DT)
+> [    5.038988] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [    5.039315] pc : alg_test+0x42c/0x548
+> [    5.039505] lr : alg_test+0x42c/0x548
+> [    5.039697] sp : ffffffc0825e3d50
+> [    5.039862] x29: ffffffc0825e3df0 x28: 0000000000000004 x27: 0000000000000000
+> [    5.040226] x26: ffffffc080bcada0 x25: ffffffc081dac9d0 x24: 0000000000000004
+> [    5.040700] x23: 0000000000001285 x22: ffffff8003ded280 x21: ffffff8003ded200
+> [    5.041458] x20: 00000000ffffffff x19: 00000000ffffffea x18: ffffffffffffffff
+> [    5.041915] x17: 282064656c696166 x16: 20736564742d7274 x15: 00000000fffffffe
+> [    5.042287] x14: 0000000000000000 x13: ffffffc081ba555c x12: 65742d666c657320
+> [    5.042684] x11: 00000000fffeffff x10: ffffffc0818ff048 x9 : ffffffc0800a36e4
+> [    5.043077] x8 : 000000000017ffe8 x7 : c0000000fffeffff x6 : 000000000057ffa8
+> [    5.043461] x5 : 000000000000ffff x4 : 0000000000000000 x3 : 0000000000000000
+> [    5.043751] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffff800415e740
+> [    5.045544] Call trace:
+> [    5.045693]  alg_test+0x42c/0x548
+> [    5.045878]  cryptomgr_test+0x28/0x48
+> [    5.046052]  kthread+0x114/0x120
+> [    5.046226]  ret_from_fork+0x10/0x20
+> [    5.046413] ---[ end trace 0000000000000000 ]---
+> [    5.071510] alg: skcipher: aspeed-ctr-des encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+> [    5.072145] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=-22)
+> ```
 
+This is a bit confusing for people running the tests, since it
+might be considered as a regression in the models. I understand
+it is interesting for real HW and so, it would good to complete
+the implementation of the QEMU models too or, may be, we could
+deactivate the tests from the kernel command line ? if possible.
 
-I thought about this, but then probe_proc_self_mem() that guards the 
-test would fail.
+Thanks,
 
-I don't think cpu_memory_rw_debug() does anything in addition to what we 
-probe for.
+C.
 
-
-[...]
 
 

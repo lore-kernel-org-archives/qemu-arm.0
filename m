@@ -4,136 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B5B106ACEF
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 21:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29686106ACEA
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 21:12:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0nCR-0000u6-W5; Thu, 12 Mar 2026 17:04:08 -0400
+	id 1w0nKD-0006ld-9y; Thu, 12 Mar 2026 17:12:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w0nCM-0000rb-Ge; Thu, 12 Mar 2026 17:04:03 -0400
-Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
- ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1w0nKB-0006lI-TU; Thu, 12 Mar 2026 17:12:07 -0400
+Received: from mail-centralusazlp170110009.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::9] helo=DM5PR21CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w0nCJ-0002qm-Uj; Thu, 12 Mar 2026 17:04:02 -0400
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1w0nK9-00054r-F5; Thu, 12 Mar 2026 17:12:06 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tMeAg6yAQFlhf0qs39whqZFT84WyfXDqekkWjwuhUFBjKiUpH1ZIz/zrxDcqyHQfJPMS7W29sq4yF63V/PzGPlcQLIBNsDQMgAi/tMlzVCprtC2nqa1QKOuJlXGSVcnE/lIKNdPATjnOo0gRDFWOZ7rs4ieeaHHrf3mu4+Voq4Dt9otuGdxM1zVLG2rU7vt/4LtHbMp2ZIe2njRyUMWTow6Q67ZEdqRODxT7kbxwbMb/knttnQqJQPQ0P+9D5Bgo8ndMe09YmqcxqGnPrhNFmIAgXGbrBhXbXNSUS1o0Xyd91iA5iGhcgWpkuhQacsD5pc6JEZXb4QE72ipwgJ6iZA==
+ b=hL+HFxvZ47pNNz1IJbpAm4EdBcIXOQo7MVDQP9qtkDaDEJhoig/2MQogj0QuM41+OECqPD8Ui2goZziZPAuV+vWGjdHocFj/KdhO6v+PEBUtwIvsas0Efq+hfOt18kUO/p9lLFxd3OOzieep8q4YHHqNDHOWvKDC3c2evWqZPLyq7gsWy6ovD2mWNDVgeOhbvt8aFael39M9Q7QZNwx+aKEVQ1YFmktV2QsdMIfwPrLakXEr/XHbZ0vfADBi8GeYy6tGKuJjF0jgE6b36emU9jVgJSOVo+H45ERbhinq0goZIBjRcvJo1NKknnrmTpPgyuvLTFXYBxYE4Uqfykt1Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TxhPNaMIXGBoGfc4yN4GxlPNFt5GfT4+651NG6tdfQ0=;
- b=NDmv+mCqG/KWs/bQ8+rOO8+TBWNC/rB/X2mCypmfL7LWlNvkzwr96tevu6Q9ajhZrC1tNf1DhoFyNalp6otYfTiXXxOlg0q+8xndC60Yk23ZVXX4qMMBFgbFEGIICIBeuZPIqu/z4NKxwRs2k9EHq0ZvH2UKvKIOCGUEAxbUYFTBsObeCvHJuoOHigcwF8H6AsLm43N04IMKl10HWymg63ebr+l9wzSd/p+xp8CEfZ3xoXXptWfGtWBytEWq9r4N8q2NAGuFRdseTQvHGaIysNz9Txk2w5OF7xWLHuNBiOdoA9YM+WPCVU2QRDUE5O7Don9nW5gOrTcL+ZS4DoK2Zw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
+ bh=o/jZ6+McF+CP5On9LTINT2Qe05NBhOrc31XL7XBtpHE=;
+ b=EZxpGhSN6qlYF8I6RvPWjYHRqTXg4qIVVX6woGn33MQ7o7sHLzaXpxm1s7V0bOcT6q+IMoRvZg/kRXaUUvUeGKtowvXvGPYL/APw7laPNelO3M+DUkUJaTHn8NbfxE9yDh2GSEWuQ4CZbUnl5tJf9MAWVVKqsTrkoTdG5xKmsZ/FdVhbizz7Hhv9cJoRijxArY53xbMf6hb2YZosUYIskm01p328t2FHJ9/m7Fc4JAVg3oMTDAjFC4cIXRDntCzGYn+EPkRUxEZYDqehmexu9Xs2vw0uowlWXCL9dGuVe+NW0AxnVqgfZ4EfbBz4Z7FtMJ0yaL4OEwrVduEZop2nmw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TxhPNaMIXGBoGfc4yN4GxlPNFt5GfT4+651NG6tdfQ0=;
- b=kZrr6IV2CdcPuuWLrldGWrt6B+l8c+v0KrRrJrNoZ8YkigTABWZ+VHMlkoZclQm+rGH7oQGCxo084FHohwGRd/JIGNehVWApvgRJtwlsRLCUtiviytzSO+oCz7A0uT3jiN55Rza/ZEqlOce1zWXAeAV9txjW8NV4y0X95ad4RtHEx2K3wUFaiTnH7rxM4mYYhqi8k2Cs4Zt66GqwKxzbukZhutHclMh6Fod3gPcKaOfBgy4ydwA/vCNL1bX1IMBh271b5whdfzmA6CT1TH2COzhG1+fGUEm7E6JPXgv4N1SOKa3X7PHNANF/62i23R89jLK+jqmi/QctFhonVDw40g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
- EAYPR12MB999156.namprd12.prod.outlook.com (2603:10b6:303:2c2::9) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.4; Thu, 12 Mar
- 2026 21:03:51 +0000
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9723.004; Thu, 12 Mar 2026
- 21:03:51 +0000
-From: Nathan Chen <nathanc@nvidia.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- Nathan Chen <nathanc@nvidia.com>
-Subject: [PATCH v2 3/8] hw/arm/smmuv3-accel: Change RIL property to OnOffAuto
-Date: Thu, 12 Mar 2026 14:03:22 -0700
-Message-ID: <20260312210328.2016191-4-nathanc@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260312210328.2016191-1-nathanc@nvidia.com>
-References: <20260312210328.2016191-1-nathanc@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR05CA0014.namprd05.prod.outlook.com
- (2603:10b6:a03:33b::19) To DS2PR12MB9567.namprd12.prod.outlook.com
- (2603:10b6:8:27c::8)
+ bh=o/jZ6+McF+CP5On9LTINT2Qe05NBhOrc31XL7XBtpHE=;
+ b=U8+gJiDLYygQu4umvOsOSRc1UqQt2IEJBeF/x3JEuZ0xUX/FHzAK/PsGSnVRNk9/wRWTmzqhKgpEZlhyXSazoMN/VNO0loO+ryYNRPvcT/D2UTkvhrK5nd5ZDwyxkUmJ8QMiWo0pjbjR6PuPZFVx6f1pBg7GIp13NAIYUHbtAGlc885HKHMPkIdoG1leDE8xeBVO6tAQBYeHbHIjPWJ3CHaq1KNWyl+JixiWuYhceD7nHMvy6icZf+NNiQ73jcvXjq5ELr6pTDWPMi4FBj8uYqhayQmFfqyQzekgWDrFjAJxuv4FpbN5tGPNGzTMqt51N8DP9arOfmGtDQ++bvYIxA==
+Received: from CH0PR03CA0268.namprd03.prod.outlook.com (2603:10b6:610:e5::33)
+ by LV3PR12MB9141.namprd12.prod.outlook.com (2603:10b6:408:1a7::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.6; Thu, 12 Mar
+ 2026 21:11:56 +0000
+Received: from CH3PEPF0000000B.namprd04.prod.outlook.com
+ (2603:10b6:610:e5:cafe::13) by CH0PR03CA0268.outlook.office365.com
+ (2603:10b6:610:e5::33) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9678.28 via Frontend Transport; Thu,
+ 12 Mar 2026 21:11:53 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CH3PEPF0000000B.mail.protection.outlook.com (10.167.244.38) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9678.18 via Frontend Transport; Thu, 12 Mar 2026 21:11:56 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 12 Mar
+ 2026 14:11:35 -0700
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 12 Mar
+ 2026 14:11:35 -0700
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Thu, 12 Mar 2026 14:11:33 -0700
+Date: Thu, 12 Mar 2026 14:11:32 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
+ <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jiandi An
+ <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
+ <kjaju@nvidia.com>, "phrdina@redhat.com" <phrdina@redhat.com>
+Subject: Re: [PATCH v3 17/32] hw/arm/tegra241-cmdqv: mmap VINTF Page0 for CMDQV
+Message-ID: <abMsBC8xgCdyKp5C@Asurada-Nvidia>
+References: <20260226105056.897-1-skolothumtho@nvidia.com>
+ <20260226105056.897-18-skolothumtho@nvidia.com>
+ <22acfd93-72cd-49ca-b2f6-a080bf66104c@redhat.com>
+ <CH3PR12MB754885F68C4F08CC39732EB2AB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <8ee0ec15-bf22-473e-85f4-96426a9e763d@redhat.com>
+ <CH3PR12MB7548CED599FE7D572486BD6AAB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <641d5a7b-e487-49c5-abcd-4efce4cfd56d@redhat.com>
+ <CH3PR12MB7548AB5CBDD893E34F4542E7AB47A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <70cab06d-2114-46b6-ab56-403cbd0003e0@redhat.com>
+ <CH3PR12MB754836BEE54E39B30C7210C0AB44A@CH3PR12MB7548.namprd12.prod.outlook.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CH3PR12MB754836BEE54E39B30C7210C0AB44A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|EAYPR12MB999156:EE_
-X-MS-Office365-Filtering-Correlation-Id: c6d8bd25-424f-4804-6db7-08de807adcf0
+X-MS-TrafficTypeDiagnostic: CH3PEPF0000000B:EE_|LV3PR12MB9141:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5883825a-206f-49f8-ebbd-08de807bfe3a
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|7416014|56012099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: EyIgZWFewdXNJL82XV4bXYCbcQk0BwgnUTDpiF0I42PlWYU0w8eF0a6bglxQ6813qUA2anuvIPnYSyXAPxYaNkh54u8Nz/pPMtWJmaXT8Unrvrhdoc8woUdJs9BXybF1zoYFHzeZ23/9ynOv2tyhz/6EEeP1/p7pv4TGaRCPi2UYJaAPzt8aUGeNSbVK4+LGV4CXXjsEZWzjkPDVoir4M6Xdy0+STWqoCNAq8QJLxk5R3ZN+DN7FIP0cY30ZpbJTghUxk8cEg7O9XMDFyavmtyhZaRjd8LGmUKnBhDOINXBtY93+2GIKAVxYiF+PLFYVAzeC0bglobAG4IRw2BEegbbzVDoBaVe6RPp+mHdMrwZrnaSrHM7AxKIA3znIPv5KG5Xms9N7KaQ847CGj3U+WT+cbc9A57W9l2WU2+mVaEVruvz7aE/lLe15rsuw4Kj0i3HY1+x7fLi6584lTFnx9sKr+yzJCh4MZLf+S9BtOcGkEwKdynCGwSP1VHpXE5JPxCWLyPP2J05uCkOhnglDQIt/kx8S/+B91p2vhY8u/F3v2T3HceA/I4+6zDwIXkJbK3A33/tqYKED2g6TEkuJrhCzTIuM/emBvwphOQ+EE75yBEi5wjtdZ8y1caIyEl4r4JWpFzW5kbA4Bh5dxhqVwitG52ljbcGi4ZvJy5p0kVsBgG9TGt2Y9IDbOx3A0PLYAASHTxgGIfxS1ovR1sye3NRhj1Gm1OYBO82f6VJTP14=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(7416014)(56012099003)(22082099003)(18002099003);
+ ARA:13230040|1800799024|36860700016|376014|7416014|82310400026|22082099003|56012099003|18002099003;
+X-Microsoft-Antispam-Message-Info: a3WvZqeduDM3uJ19n5fzPNekhbiYUCgDysNA5FitMq3i5fOeqe/+Vpx6ZJUQcue7Ew90fQxhMncOfvtxz5kpAN8dYmDkB2RNk8z7oQVgbaA/CGR9Rx5/1g+0t8wEcucNt+uCWgPRGvTaD5s+YpwlhzUVzOdn8+EUcPHXUe5ykcUVs/S303u0fO9P0SkyVWIKL84ScpiGqv14XlNRjq/gyg9mzOGB7GipHdAtBqMRxhe7NStmusH+amrKCLWeC6nYrAFWbO5jzJmvMMOpLFucFwS9dBj7fgjtoWqTcSNiR5leXnKMPzc4ppWRIImXOJ7Hu1/8+V90I+41HkgJkCktHIeI6hojG5Gsbu74Wrph6zsVdhwIEfDVlNyoM+pY01RvIIMcg7EoqjNBn7P/E4/aE4G7v6l+gWTgM1XRh3d5fGSWLMiOdKUBK/Efwg6GzuVIZ9dnsj2zFmDJ+S7M4XLfL95RzmyIzuienzdBPhJ1F5B0WlP8+Nn8D3yReEg6qe1+5wouJGHTLMwqWQJE55Jk4y0dEiakPFVjbnGjmGiDwcexHdr7htWsRdRu/C/1OiM+F9acsbCcqP4MFUmVbvLQre8i25TA2k6sP68TsEy/dDJYyuTWsPhdDBxf9/WRQKFNrgcbYQ5YHimkMSCqwkgQTvmJ3MJQUdTxtGkUjWOCAhf+6mHsFxjJsjDpz+VvMqCRw+wRv6fkxjD350QO79Db1C3BuHnmXPGg0QyjUCsfCkIQgZZYbqam0X8Ifed9IVWKzTBffwzs5kQ9McaKgw9jLg==
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700016)(376014)(7416014)(82310400026)(22082099003)(56012099003)(18002099003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KX/glaUihgpRG2CAGAFQAgeYQ5P9MPe5Yf5zEyF9KR8wzGvHvooso6grGGPT?=
- =?us-ascii?Q?6x3qigAnnYJP0LxHW+WYVlLsEpcc+TQDWL6niWh90l+Hjh22Qz3LmoCua11x?=
- =?us-ascii?Q?IiXLM8ZzWYFfNA9Rcfy2L/UMubI4fvj0EIXi9vIxGdP9YBYZqXL9yYOFEFtd?=
- =?us-ascii?Q?nzY+s+uEO/mag0LZZJ1yOMd9B4fbGXQZbDvpV/N7dJPWHZlLNYuqCu5Ok6RO?=
- =?us-ascii?Q?TPQGj8NF9Ciu6kzAZdy3WIXRykm549TvyD2t8pzOubUziqvF4OEP30YZTLGT?=
- =?us-ascii?Q?pEeIb914h0jhPEMPch5VAynfmvg8wWzxj+8ciz0ayD+dib8/QscQgBm6oJVQ?=
- =?us-ascii?Q?7iTOeW5XD+f76Tk8/4o7ZMUAD3mXB4tdIGROj16o83sgYTIJNsGeKwRKf3gs?=
- =?us-ascii?Q?lEMs2bIZOgkDON9AFESolA+JxA7vD2y5c5YNy7d4HPAs69QWI2i5K1bEgHuv?=
- =?us-ascii?Q?EwfwIXnlpY+9YTaQ3JjC5qVB8hYl2gDSdWhqcBGuP4CtTn2XxY+4QtsJoWUA?=
- =?us-ascii?Q?B6hYiYTb+qmky76mhx6MgIMylg1PKL+SI+f4XKkqNM7aJQG7wYmwz7kypN+r?=
- =?us-ascii?Q?pSO5Ler2pEYR8av4kykPemV0k0C9o/sT1QLtKO6LlM6fT5xHpFu16z09ecDS?=
- =?us-ascii?Q?1fDLQdXD/wQwkMOzA7t8xL64HuvKaY2IaqhwvlZIsw85DRmNtkeHcH1iKZqY?=
- =?us-ascii?Q?N2bz2ud8o4u1MreW+8YlUges7iQeFixGwNtZ49SXDa/AJBtkOQ7ovU/pRqJB?=
- =?us-ascii?Q?i0ONvrvLEYF8r8RBm1iJGjTBXOd334A2W22syibhNgiVuMnPqCG5+LB4zGus?=
- =?us-ascii?Q?dAlW7arFhEUDp6RrE118uz2DIG/rW1xnZ2QaFXK4l+ETfr/cRIiKS3QYSNbC?=
- =?us-ascii?Q?UrTWSimMMqGDwQNVEOPrgYWkEqTe27Ic79QeAwBoKO1cnxnu2pxpNKl0doFu?=
- =?us-ascii?Q?zhIiya1RVGyD1BV8DewXbIqDGA053+0sOS7BqMfbXmGqFtKsJ2q5GIxPAciN?=
- =?us-ascii?Q?8HHLo1axpgLacatmBo824dJhnK88U3p+RtDvGl352M7qxsYc5SHHzMiBk/D9?=
- =?us-ascii?Q?hXNjPF644t5iu/MhB0t6eNiJiT7eY7s3Pd6BYDhDHJIQo9gSmkQ8/+r5RLBD?=
- =?us-ascii?Q?EREPJP0cx76mVwyYxej6cgLr6ozfoBYY0zx73GTYDqeG4wjGumZeW3cDSNRo?=
- =?us-ascii?Q?T06WQ+RMKPX1/HO4L1zBLYkOg1dJr86eKFJiwWO6UIggcCDbpRV0JMPqyy5J?=
- =?us-ascii?Q?UDYCV+TJcWtbkjcrrx1jCG3r9qIeKwVCmthZRZxbbDhOB3kIClVgkdxm1ljv?=
- =?us-ascii?Q?2DUyIo3UJSRgEvk/Fbe9KYIVesTi4Umf/81VT8W8hYuGl18l08lm1FU05cec?=
- =?us-ascii?Q?coNOvYsUt8uhSuLoFEZQWlsoAEOp/jWAc3ztw4OWas71VloUsjPu5YnwwrPq?=
- =?us-ascii?Q?5drZtlMzo4PZdE5zTA0Ci8NveYobfV5kZvuLU1ocg7DLXdJhw4E2OsB93uPM?=
- =?us-ascii?Q?CuQTlCMmoQAF59JxQbZV6rZcq0MjU4+nnpkFR5jOTi5p+viaySQz9zKi5HON?=
- =?us-ascii?Q?6gKt0rL6ce258R/2QyKuVeb4KFS8USrb90HJCM2xkRhSx1xnsW2TFDPlr7bq?=
- =?us-ascii?Q?xaegmXXPRIIK38SwZGOGCu31F/8yMeycFYXhbUQz3XAxL/Gd/Mr58T/HEY/F?=
- =?us-ascii?Q?MCvgNXcl7kkE35szy1Rsm01W6YqA5R9lnLNEndXsYkldUa7VMz/9NRQfRJ2z?=
- =?us-ascii?Q?UQpu50G4YA=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: xlQLL5Zt4YxgP1oYFq8ZSnwE0ppKg1wSgSZS8W407RJXV/N8srzIuKueVc0a+cPjJL0uAVOxEZ8nX5q8SY1hCOjsoiR1hZvlSBLaR/X6XdvCVP9RSSRsYpGInnxRUCqkFT4DZ3/Lx1u1xjqpBAIg/nzRB7EPAHXOO59DXcdQzdtx4g8fQTZlJoyD3ybl5LhuYkcoxi14Ri3tt6oOsNKZR3/Jk9MtVKYlEPpkz8WrXfJOpcMuDarZmXsio4dJHJQK4bPleQgK/VHOTLyl1nlLYReInyw3t5stnTgkx0/GKmpIfnsAVoTq23pAvQQISPPbA1EZzcxRwuzQ27xOzGZFawbwBs202YbcwKFIJkZkFu5HOBbaMyg5YJGe8gIUyR29QE8qCe06eufIfaObBP/++JCEsWym17nqllECG7uyTcb86DM1u7jLoCU3Jg+PNWOG
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c6d8bd25-424f-4804-6db7-08de807adcf0
-X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Mar 2026 21:03:51.5388 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Mar 2026 21:11:56.6078 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5883825a-206f-49f8-ebbd-08de807bfe3a
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZoHtB9irB5ciw1Jh1BHiBitWlGu49TNQ6AK50Q1E6JDcqWSfkIhWQePlOE8WMTX6VDomvU0XyS/pfB3hud3/uQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: EAYPR12MB999156
-Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
- envelope-from=nathanc@nvidia.com;
- helo=SA9PR02CU001.outbound.protection.outlook.com
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH3PEPF0000000B.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9141
+Received-SPF: permerror client-ip=2a01:111:f403:c111::9;
+ envelope-from=nicolinc@nvidia.com;
+ helo=DM5PR21CU001.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -150,75 +149,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Nathan Chen <nathanc@nvidia.com>
+On Thu, Mar 12, 2026 at 11:05:36AM -0700, Shameer Kolothum Thodi wrote:
+> > I understand. But guest works in HYP_OWN mode as it sets the HYP_OWN
+> > bit. So resetting it looks like a hack to me, not documented in any way
+> > in the spec. Besides, as tegra241_guest_vcmdq_supports_cmd() forces to
+> > send on the cmdqv cmdq only legal cmds I don't see any problem leaving
+> > the bit to 1. What is important is that the host does the check (and the
+> > host sets HYP_OWN to 0 for that cmdq). I did the trial to comment
+> >         //value &= ~R_VINTF0_CONFIG_HYP_OWN_MASK;
+> > 
+> > and it seems to work properly
+> 
+> Ah.. that’s interesting. .I was under the impression that we are toggling
+> the HYP_OWN so that guest does sets the tegra241_guest_vcmdq_supports_cmd()
+> correctly and delegates the supported cmds through that queue.
+> 
+> See, 
+>     tegra241_cmdqv_init_structures()
+>         tegra241_vintf_alloc_lvcmdq()
+>           tegra241_vcmdq_alloc_smmu_cmdq()
+>           {
+>                .... 
+>                 if (!vcmdq->vintf->hyp_own)
+>                       cmdq->supports_cmd = tegra241_guest_vcmdq_supports_cmd;
+>             
+> However, it looks like the above happens before tegra241_vintf_hw_init(),
+> which sets HYP_OWN. That may explain why toggling the bit here does not
+> make any difference.
 
-Change accel SMMUv3 RIL property from bool to OnOffAuto. Setting 'auto'
-will use the default set in smmuv3_init_id_regs(), i.e. 1 in IDR3 which
-translates to 'on'. A future patch will implement resolution of 'auto'
-value to match the host SMMUv3 RIL support.
+Well, looks like we exposed a kernel bug...
 
-Signed-off-by: Nathan Chen <nathanc@nvidia.com>
----
- hw/arm/smmuv3-accel.c   | 8 ++++++--
- hw/arm/smmuv3.c         | 4 ++--
- include/hw/arm/smmuv3.h | 2 +-
- 3 files changed, 9 insertions(+), 5 deletions(-)
+It seems that the sequence of setting hyp_own and supports_cmd got
+inverted during a rework when I got the driver upstream.
 
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 5d14abe307..6f44fd3469 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -824,8 +824,12 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
-         return;
-     }
- 
--    /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
--    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
-+    /* Only override RIL if user explicitly set ON or OFF */
-+    if (s->ril == ON_OFF_AUTO_ON) {
-+        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
-+    } else if (s->ril == ON_OFF_AUTO_OFF) {
-+        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 0);
-+    }
- 
-     /* Only override ATS if user explicitly set ON or OFF */
-     if (s->ats == ON_OFF_AUTO_ON) {
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 862ca945d5..acbd9d3ffe 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1972,7 +1972,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
- #endif
- 
-     if (!s->accel) {
--        if (!s->ril) {
-+        if (s->ril == ON_OFF_AUTO_OFF) {
-             error_setg(errp, "ril can only be disabled if accel=on");
-             return false;
-         }
-@@ -2132,7 +2132,7 @@ static const Property smmuv3_properties[] = {
-     /* GPA of MSI doorbell, for SMMUv3 accel use. */
-     DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
-     /* RIL can be turned off for accel cases */
--    DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
-+    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
-     DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
-     DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
-     DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index ce51a5b9b4..c35e599bbc 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -69,7 +69,7 @@ struct SMMUv3State {
-     struct SMMUv3AccelState *s_accel;
-     uint64_t msi_gpa;
-     Error *migration_blocker;
--    bool ril;
-+    OnOffAuto ril;
-     OnOffAuto ats;
-     uint8_t oas;
-     uint8_t ssidsize;
--- 
-2.43.0
+It turned out that both host and guest kernels sets supports_cmd to
+tegra241_guest_vcmdq_supports_cmd().. IOW, the host is sending non-
+invalidation commands to the SMMU CMDQ rather than the HYP_OWNed
+VCMDQ, although this is completely harmless and probably does not
+affect host performance at all since non-invalidation commands are
+not that frequently issued.
 
+This explains why Eric's experiment didn't fail. I'll submit a fix.
+
+With that being said, in QEMU we do need to wire HYP_OWN bit to 0.
+This is not decided by the spec, but by the host SW implementation:
+
+ 550         /*
+ 551          * Note that HYP_OWN bit is wired to zero when running in guest kernel,
+ 552          * whether enabling it here or not, as !HYP_OWN cmdq HWs only support a
+ 553          * restricted set of supported commands.
+ 554          */
+ 555         regval = FIELD_PREP(VINTF_HYP_OWN, hyp_own) | 
+ 556                  FIELD_PREP(VINTF_VMID, vintf->vsmmu.vmid);
+ 557         writel(regval, REG_VINTF(vintf, CONFIG));
+ 558
+ 559         ret = vintf_write_config(vintf, regval | VINTF_EN);
+ 560         if (ret)
+ 561                 return ret;
+ 562         /*
+ 563          * As being mentioned above, HYP_OWN bit is wired to zero for a guest
+ 564          * kernel, so read it back from HW to ensure that reflects in hyp_own
+ 565          */
+ 566         vintf->hyp_own = !!(VINTF_HYP_OWN & readl(REG_VINTF(vintf, CONFIG)));
+
+This should have been mentioned in the uAPI header. I'll submit a
+patch to add this line near IOMMU_VIOMMU_TYPE_TEGRA241_CMDQV.
+
+One thing we need to get our head around is that a guest hardware
+is different than the host hardware:
+ - Host HW is backed by a VINTF (HYP_OWN=1)
+ - Guest HW is backed by a VINTF (HYP_OWN=0)
+This is a fixed configuration, decided by the hardware and the spec
+also.
+
+Thus, the guest version of the VINTF must align with its underlying
+hardware, so QEMU cannot allow setting HYP_OWN=1.
+
+Otherwise, guest OS would have no idea this is a guest version of
+hardware and would issue unsupported commands that will fail.
+
+Nicolin
 

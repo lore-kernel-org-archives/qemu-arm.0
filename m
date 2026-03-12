@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B09A106ACEE
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 22:47:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDDA106ACEF
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 22:48:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0ooF-0002az-Fq; Thu, 12 Mar 2026 18:47:15 -0400
+	id 1w0ooN-0002fA-JL; Thu, 12 Mar 2026 18:47:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w0ooE-0002aL-Bq
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 18:47:14 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1w0ooD-0002Za-9p
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 18:47:13 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w0ooC-0003Zr-9w
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 18:47:14 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-82976220e97so911457b3a.3
- for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 15:47:11 -0700 (PDT)
+ id 1w0ooB-0003Zf-Ab
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 18:47:12 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-82a07738118so873318b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 15:47:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773355631; x=1773960431; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773355630; x=1773960430; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PFvmr/rrzoLHUjOFxspMh0UbKJXeRxAJ0yXljP/5wCg=;
- b=s9Fmy7oln6ve0b7r5FHR19LYB5J+flOt4uKyKDtV9hB4KfjHVM8Bs18nJpy+79uH31
- 2cnC1Uo3Rf1JILqKFtgpdcx0LSXlZMZO32k7wQ/GaXy+f8n6B4dvAf7oTrg+g78uTJdR
- IwrBrmpF9RdlUWGpZf8sFrVaqQxytH8p5Gc7tpXLuKNYim2Z1mACq3ALSjrLGlUbjpsY
- cu0E8wanbzuwdFygql9gPgNvtxiYxcPjPEeLsnp5y5KbtiRG7O9HWXnhK2bwo/kSrISe
- Z3V0QTeMya6jwCgA2C8lFK+zxPrrS0JXzDZfexgKEIj+u3hbbW6YTSjXT9q9ELxDwWoc
- Gd0w==
+ bh=P4R+PfrpTL44BdQWmTJI+2BTLyEiS96HpVxYoD8sVcg=;
+ b=PYSQLBZFIZOV17TPOGEVo9odIFTBddu4Wm8j2HmZLlGlv1VD6sDmWA7HaXUbs1EBr3
+ gvtILFzY5x/wQbOiAa4hMJrk+7fwmfY/Psld7CcAs38odKzUzPy404tHWgFMKPqgNIm7
+ E2QuFGDd102rE6755xXMDDcK56AXYVN+Fiio+5TDGSpx2kQddWO2Z4lI68kJKYqEgNdh
+ d3DNwqHyxvbbOR9kDiQ8864/tmQomqxunk3R+p6O0XHkiLfrVsOOJUsBSvK5ls3KoCK6
+ uE7f9EbMZKhacr6OKBulADn1KAiBpU4Xt9qF8d/6uEbeLpyWc5l8LGTrrkRXCKAzd00G
+ kQ0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773355631; x=1773960431;
+ d=1e100.net; s=20251104; t=1773355630; x=1773960430;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=PFvmr/rrzoLHUjOFxspMh0UbKJXeRxAJ0yXljP/5wCg=;
- b=dK2E9sF/CdcK+wLlT5d+WxUj1xYPycx9WrByQoF1qB0/9PQlERDLMdXIaC8ODYwXLV
- xf1B3SXRJ/q3yPkD03eGsLJ3MhhNh+tI/CfgMYwKx8MOUWoTdF62gqjM75iqopa5h0y6
- 8pw7y2fj2IT3tZZgasT2sKZvvRR36+rQmJ5+7q4S55VdM+4deb0/fyqpyUNtN2LmWAJe
- kl1E2kFN9Y5/+xdY9WV0oglLLSzppcNAOlJ5CrwmJYMh2CV9UaGDTCyhaNhmaYUULZrv
- igSljMrGOuAVYzBPsYuWJvBt8iz9nIna/O3Zzlc9x+50LPivQsnNM2/GZQUTpm6L+ArZ
- cMlg==
-X-Gm-Message-State: AOJu0YyxUWOg5uJe1gofaJJuuYXWpNFyKB46R9YnKFpyoZCIhw9aOB6l
- iuUP/kARjoO+dIida2BagEi7iAxWJslYYeXIDXoMdG3DS7PeRGcDzwz6qkWy9BwHkDU=
-X-Gm-Gg: ATEYQzylE8uuWPEVNRDziqIX4pwb9ZXzJFPahiXiidbcC9Plu3BWbTxLutb+mEkFj3x
- gXsMJUjAOD3BisnwPust2kPMdqyU2TlOwc8qJAJQxeBdS5laOEIuU6tHK4kd1htbuRWodspi/pO
- n/K13L555QpchBnAVoS8kYh9Z0B7r0GTJkgCG0HtiFxU9G5znESIqI8bapZosfGtdKLKV4h1703
- B82vmRhJ9lwwHOdx7ybkJDxd7cTt76OxQaT3GjmQiVR2o7cTH6Ful21EhasyaWp6bRWbQrABoyh
- pypef81puJMiHvLMTPi2CJufa+PXmZyNQoaenikQ2myXPHLqxhrVYIintkJkMJvInvVR7aQ3Gc8
- aAjjcQHIyeTRXz5eA3d43MeeARc+i34IFVRleg+dL1aXYIBJ53W0mxEEqQq9VBPOoDCjUwLO2ah
- cBPDoVYvQfFmQbCXhAWT53BYBkT2/3HjhXqlAnZnoMH/7eU4xvjXE8HWMSRETlgYNaYHtW2PGnw
- v0A
-X-Received: by 2002:a05:6a00:1992:b0:823:16b2:2498 with SMTP id
- d2e1a72fcca58-82a198ac1ffmr768489b3a.36.1773355630699; 
- Thu, 12 Mar 2026 15:47:10 -0700 (PDT)
+ bh=P4R+PfrpTL44BdQWmTJI+2BTLyEiS96HpVxYoD8sVcg=;
+ b=MTMLY5rRbcKYu3Y8cFUDFQLQeJtKx7AhL3Ydzb5Rkx7vANzbsmrKP3oXjQXDlTq+1n
+ x6sz6tKNIZjOPh9ugaj4PmeGRJbzmjQMlZcnk7YuA2juAoib+jS7VuG2VSqKgyqgZgnY
+ ll4bQ2D0UlMV9EU9IXA8pXB2iuPcAuED6sJlXZNVhSaPKnBUtnqT166WzpSd2yVjxAWn
+ CwQwCiQzzv2TCJSFOoaSeqeJusAd/jmmSzw9J3bAdWgELfBcksXTOTx1Pz2j9GNdVBRD
+ MUSbhmdD0Ykz744XNJgfmYJwdtIu7e3YpcmJHK80KUeVktbP42vcfxJhpff456Y+dhgN
+ yGcA==
+X-Gm-Message-State: AOJu0YyRG03ngXrZ8QqFl382wOFFMOSgevGWoigyi76XyjD9vWFspfKe
+ vRcDaIbBWTjVv7QXMIVt0aEcxCEjtcNjPeDJb2i2qz0WsCs0JCfvgCrXzHWEijd2Hq8JTMyoEPF
+ 0YIM/rsw=
+X-Gm-Gg: ATEYQzybAgzOLeHxxgPi5BhcVCMXEAIIFYXo4OpA4lMtfP0D10Wy27VepXtYbk3l5iA
+ rCFSKumHAnW5HKIftMJQHl8UKGil4bR1chFYHZ/9U7MrYQYiyJ8kHlfbDrKT0NeiAAMshHiyRPf
+ XtiXWZf+T6DmleI3o1mx3gaYKlQsSTSSVyIIxVEAKD8IxGsbD9FsN6pyFsLvPJgW/3TonGcKpDT
+ P9K5C05HSZmCV2Zt3I2dmLHfTKDnzBRuefZJLBVPYzgN9hNGWxOiz/W5fhSkyEHywmNm6CbZKG9
+ oyGLLRwuMyki8b8qozbZ8+CrXJr1Chnh4cS7NipM7zce9ald31OZOix3EbYzQkRI3PaBueOqVmC
+ wiURgnj5RiA8h0Sw7CY5lTAyexAaJrqz5XYFAnq+yI02L/+JJdMyu+dQ2zUHuukrsPIFXvnJ40K
+ Wd6mg7LAHMT/zwcq6lmYXQTjYIrDjV009CbfkOGcSlfcS0ojfY2zxBmAF7yS6ZeP8guOboPjG8+
+ fa2
+X-Received: by 2002:a05:6a00:1c9c:b0:81f:50ea:5d96 with SMTP id
+ d2e1a72fcca58-82a19701820mr929747b3a.18.1773355629849; 
+ Thu, 12 Mar 2026 15:47:09 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82a0725be23sm3992698b3a.15.2026.03.12.15.47.10
+ d2e1a72fcca58-82a0725be23sm3992698b3a.15.2026.03.12.15.47.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Mar 2026 15:47:10 -0700 (PDT)
+ Thu, 12 Mar 2026 15:47:09 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  philmd@linaro.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 2/2] hw/misc/allwinner-cpucfg.c: make compilation unit common
-Date: Thu, 12 Mar 2026 15:47:02 -0700
-Message-ID: <20260312224702.1608408-3-pierrick.bouvier@linaro.org>
+Subject: [PATCH 1/2] target/arm/cpu.h: restrict cpu-defs.h to target specific
+ code
+Date: Thu, 12 Mar 2026 15:47:01 -0700
+Message-ID: <20260312224702.1608408-2-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260312224702.1608408-1-pierrick.bouvier@linaro.org>
 References: <20260312224702.1608408-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,30 +103,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-include "target/arm/cpu.h" is needed because of:
-bool target_aa64 = arm_feature(cpu_env(target_cpu), ARM_FEATURE_AARCH64);
-
-This file is reused between various allwinner boards, including 32 and
-64 bits cpus.
+Allow to use this header from common code, which we do in next commit.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/misc/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/cpu.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 96b6705b7d0..392d30b1423 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -46,7 +46,7 @@ system_ss.add(when: 'CONFIG_ALLWINNER_SRAMC', if_true: files('allwinner-sramc.c'
- system_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
--specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
-+system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-dramc.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-sysctrl.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sid.c'))
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 657ff4ab20b..b8042f65bb4 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -25,7 +25,9 @@
+ #include "hw/core/registerfields.h"
+ #include "cpu-qom.h"
+ #include "exec/cpu-common.h"
++#ifdef COMPILING_PER_TARGET
+ #include "exec/cpu-defs.h"
++#endif
+ #include "exec/cpu-interrupt.h"
+ #include "exec/gdbstub.h"
+ #include "exec/page-protection.h"
 -- 
 2.47.3
 

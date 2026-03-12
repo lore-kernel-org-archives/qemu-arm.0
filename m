@@ -4,62 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F29C105A591
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 12:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 123711067022
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 13:56:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0fcf-0001NS-K2; Thu, 12 Mar 2026 08:58:44 -0400
+	id 1w0gWQ-0008QC-Os; Thu, 12 Mar 2026 09:56:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w0b0X-00049W-7Y; Thu, 12 Mar 2026 04:03:01 -0400
-Received: from m16.mail.163.com ([117.135.210.3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w0b0U-000305-BY; Thu, 12 Mar 2026 04:03:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=ZO
- uxEAVYNxPlsPaUykH2t4HChR6lZP1Nb89sPk0LBk4=; b=I0/k0eiul7Cth70rtu
- vqqggCFbfU+NuZiuLWmb0F5auEN3WGhY8lcAL1rQRS/C0Ms7i1jbPY0w94sxfUsJ
- ssvzRtb/sItXdCElyv9BIC3uImaiE031k3YekomYDU3gP+6tnlbCc+B7znnPlYxA
- 9QPhzgrQUDATDpFyzIEhL5z2k=
-Received: from dt-VM.localdomain (unknown [])
- by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id
- _____wBXHlMcc7JpkIIcAg--.55484S2; 
- Thu, 12 Mar 2026 16:02:36 +0800 (CST)
-From: Tao Ding <dingtao0430@163.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Tao Ding <dingtao0430@163.com>
-Subject: [PATCH v1 0/3] Fixed bugs in pl080
-Date: Thu, 12 Mar 2026 16:02:32 +0800
-Message-ID: <cover.1773301927.git.dingtao0430@163.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w0gWL-0008OV-1p
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 09:56:14 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w0gWH-0004ki-Ri
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 09:56:12 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-439b9cf8cb5so1193468f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 06:56:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773323767; x=1773928567; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PA8mhn3Pz1xs8wzDfjld8pN5y/jy18MoXVEm3yW6CSI=;
+ b=d42NWMGbK6l7mzFsckcfk+mQTPqctZjkMb6QOWc1DTxuN+l0g7vRRJjz//URRn4LpI
+ iKesv8136e5Ss36aPZh2HDE4rwBGy8hiRRWRKR7Vnyq8hHHYlYIeFwCnRD5CI/ChP09F
+ xzCO+HCmkq834tcgiAsMxTzeHRVXf2/Ak6JSD2Rh01aCOUQ1uT9ntjdQc0u2OyS95sHL
+ s2HzjU/H4cu+6Qi5nYeIkHFxli+CelOhhqIORicxXGXvaEBsTHNcDgkpl1ISWpVe5Hq8
+ NcRQkhkcF31m00/iNWiGeMg4xNsdWVK76aSt9a6xLSbW2oEYV5KTpvf6drFBKehRZhdN
+ hT0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1773323767; x=1773928567;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=PA8mhn3Pz1xs8wzDfjld8pN5y/jy18MoXVEm3yW6CSI=;
+ b=bCukkB3iPHylSanTzh1ncPK96tytQxJMizGfZLCQn+WhLwYEqMq49GrIo3Qh3VRY+6
+ qzSwTiiN+jwqSUIDYzFuA5rNCuj0spXAbxUmxLXwvbpgzwM8aKqDMyPBeW0bJ36rYiY6
+ q9Dgmn46UQl+3Jjlkq/JpeotgppAa7rVVtsN5v2BuegRZxljoqtzZWi+gei0eAZf1Z+P
+ Z999xX7P+Douf9fC9BcNn+bK0322vOLwD5b50+t7NxxFddNdgZSClQE5XidhUlV5usIX
+ 0QzYWqrcFeusV6XKSSHtexwP5Z4ZMbOkxOMU7sY96RPtR6/bpIuJiP3AO1lpf0GZoLZm
+ H30A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVV8eB146IpV6HSt5ndSvpWxkS436rSrzdigG9HTrJd/ZWHGh+VZUC0jf1t0x7ro8MzLFb4rQKyrw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy3Aa4RlxMIb8IruUzOHOCoOoCzLje9HbnVz1fmsg23bur7C/qG
+ qTPcPGf/3PhESawdkfmCGm+bGF8H9jECRrMgg9zxrD9x6uemMDSG5Hv+NZqe8KoPH9g=
+X-Gm-Gg: ATEYQzwNk6YoS6GQqzIPnDgcSJUboFR5U0lL3gUBEUhcapd9n1CzimTabjbjzs9lKxp
+ oaEtC8slg39ZvbK0ZKO80E7YklJlkq1jvQs/GgEAQaAzl89imIARFmaa9BcPavFnx88CGI7Mq10
+ 4N69kD6Hq20pyM7Uoc4MQhhiealg4c8Bcy5A/LInj5Hci1BE278z2jBsIzYuRX13b6VPNH5DU1g
+ GX5heRfIhmollzE48h06F4OBo8hcDBEKks7xwlwIeeqcN0RCpTpVElx0r70PEia/744XCE1/JtF
+ UVnWpzNdvaJdpKvj95/lZbH1SmSQKqyBXODybZjo2uxT80wfNxTigwmSci6GC3oXn2e3+mF2X67
+ 6tHyYh9l2ESXI3ZqiXnuYXnXDR6neBRRAB7Ydgig5x62hzQ5KZ+FSH1N76LkavKUJOnqj0CxeFl
+ NZeCRWgzKbwaVMNeQfajh45OKEyhqKv9jVCQ==
+X-Received: by 2002:a5d:588e:0:b0:439:c5ee:cb5b with SMTP id
+ ffacd0b85a97d-439f821de3dmr12118180f8f.40.1773323766908; 
+ Thu, 12 Mar 2026 06:56:06 -0700 (PDT)
+Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439fe19acc6sm8672703f8f.8.2026.03.12.06.56.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Mar 2026 06:56:06 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 5ACC65F7A0;
+ Thu, 12 Mar 2026 13:56:05 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>,  Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>,  qemu-devel@nongnu.org,  Brad Smith
+ <brad@comstyle.com>,  qemu-arm@nongnu.org,  Kyle Evans
+ <kevans@freebsd.org>,  Paolo Bonzini <pbonzini@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Thomas Huth <thuth@redhat.com>,  Warner Losh
+ <imp@bsdimp.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>
+Subject: Re: [PATCH 1/7] tests/docker: add gdb-multiarch to all-test-cross
+In-Reply-To: <CAPMQPEKPk1iySmCt0_Vi1=bcaG_ZkNfzYknCu14zzR2N7p-6zw@mail.gmail.com>
+ ("Philippe =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Thu, 12 Mar 2026
+ 11:41:44 +0100")
+References: <20260306161728.2657486-1-alex.bennee@linaro.org>
+ <20260306161728.2657486-2-alex.bennee@linaro.org>
+ <78c8b024-6dd5-4f1b-a19c-c7a71c7acc9f@linaro.org>
+ <7e6cdb4b-4cb8-4968-acce-56db2f0ee307@linaro.org>
+ <97506340-18a4-4691-8017-110ab2fc76b8@linaro.org>
+ <3c2bf09d-245c-4de7-b55d-37085ef24545@linaro.org>
+ <c776bbc1-6021-45d0-a5ca-74e50d906f4f@linux.ibm.com>
+ <1493fdd5-5254-4398-bb69-8c83eee8bef2@linaro.org>
+ <CAPMQPEKPk1iySmCt0_Vi1=bcaG_ZkNfzYknCu14zzR2N7p-6zw@mail.gmail.com>
+User-Agent: mu4e 1.14.0-pre2; emacs 30.1
+Date: Thu, 12 Mar 2026 13:56:05 +0000
+Message-ID: <871phpi22y.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBXHlMcc7JpkIIcAg--.55484S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrKF43Ww15Kw4fGF4fXFWrZrb_yoWxArXE9a
- 48XF92gr1fJFyvkFy5Cr1DGF90gFW8ZryrWF1qqayUGasxArs3XrWvqFWfury8Wa15Kry3
- Xr1qgrn5J3s7ZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUUl1vPUUUUU==
-X-Originating-IP: [175.152.130.74]
-X-CM-SenderInfo: pglqw3tdrqkjqq6rljoofrz/xtbC-R3qKWmycx0J1QAA3K
-Received-SPF: pass client-ip=117.135.210.3; envelope-from=dingtao0430@163.com;
- helo=m16.mail.163.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 12 Mar 2026 08:58:40 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,23 +120,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi all,
-When I tested pl080 using the existing dmatest tool in Linux, 
-I found that pl080 could not output the results correctly.
-The main issues involved are inconsistent source and destination bit widths, 
-misalignment of LLI, which can lead to incorrect data and even cause qemu crashes.
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Tao Ding (3):
-  An interrupt is generated after the DMA transfer complete.
-  The swidth and dwidth of pl080 are not equal.
-  The LLI of pl080 should be aligned with 4 bytes.
+> On Thu, 12 Mar 2026 at 11:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
+org> wrote:
+>>
+>> On 12/3/26 11:11, Ilya Leoshkevich wrote:
+>> >
+>> > On 3/11/26 00:28, Philippe Mathieu-Daud=C3=A9 wrote:
+>> >> On 11/3/26 00:22, Pierrick Bouvier wrote:
+>> >>> On 3/10/26 4:07 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> >>>> On 10/3/26 23:33, Philippe Mathieu-Daud=C3=A9 wrote:
+>> >>>>> On 6/3/26 17:17, Alex Benn=C3=A9e wrote:
+>> >>>>>> This allows the gdb integration tests to be run as well.
+>> >>>>>>
+>> >>>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> >>>>>> ---
+>> >>>>>>    tests/docker/dockerfiles/debian-all-test-cross.docker | 1 +
+>> >>>>>>    tests/lcitool/refresh                                 | 1 +
+>> >>>>>>    2 files changed, 2 insertions(+)
+>> >>>>>
+>> >>>>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> >>>>
+>> >>>> I'm getting:
+>> >>>>
+>> >>>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
+>> >>>> address 0x45001fff
+>> >>>> Error occurred in Python: Cannot access memory at address 0x45001fff
+>> >>>> qemu-hppa: QEMU: Terminated via GDBstub
+>> >>>> make[1]: ***
+>> >>>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
+>> >>>> run-gdbstub-prot-none] Error 1
+>> >>>> make[1]: *** Waiting for unfinished jobs....
+>> >>>> qemu-hppa: QEMU: Terminated via GDBstub
+>> >>>> warning: Could not load shared library symbols for linux-vdso32.so.=
+1.
+>> >>>> Do you need "set solib-search-path" or "set sysroot"?
+>> >>>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
+>> >>>> run-tcg-tests-hppa-linux-user] Error 2
+>> >>>>
+>> >>>
+>> >>> To add more information, we tested it on GitHub, our machines and
+>> >>> GitLab, and for an unknown reason, it only fails on GitLab runners.
+>> >>
+>> >> Also we tested on our local Linux machines, where this test pass
+>> >> for all our targets ;)
+>> >>
+>> >>>
+>> >>> Which is unfortunate since it is where QEMU run its CI.
+>> >>>
+>> >>> Regards,
+>> >>> Pierrick
+>> >>
+>> > FWIW it passes on my laptop as well.
+>> >
+>> > Does this test fail only for hppa, or for other architectures as well?
+>>
+>> Have a look at these job failures:
+>> https://gitlab.com/philmd/qemu/-/pipelines/2376819801
+>>
+>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
+>> address 0x7e085b4b1fff
+>> Error occurred in Python: Cannot access memory at address 0x7e085b4b1fff
+>> qemu-aarch64: QEMU: Terminated via GDBstub
+>> make[1]: ***
+>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
+>> run-gdbstub-prot-none] Error 1
+>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
+>> run-tcg-tests-aarch64-linux-user] Error 2
+>>
+>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
+>> address 0x40802fff
+>> Error occurred in Python: Cannot access memory at address 0x40802fff
+>> qemu-arm: QEMU: Terminated via GDBstub
+>> make[1]: ***
+>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
+>> run-gdbstub-prot-none] Error 1
+>> make[1]: *** Waiting for unfinished jobs....
+>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
+>> run-tcg-tests-arm-linux-user] Error 2
+>>
+>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
+>> address 0x45001fff
+>> Error occurred in Python: Cannot access memory at address 0x45001fff
+>> qemu-hppa: QEMU: Terminated via GDBstub
+>> make[1]: ***
+>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
+>> run-gdbstub-prot-none] Error 1
+>> make[1]: *** Waiting for unfinished jobs....
+>> qemu-hppa: QEMU: Terminated via GDBstub
+>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
+>> run-tcg-tests-hppa-linux-user] Error 2
+>>
+>> Python Exception <class 'gdb.MemoryError'>: Cannot access memory at
+>> address 0x7d742025efff
+>> Error occurred in Python: Cannot access memory at address 0x7d742025efff
+>> qemu-alpha: QEMU: Terminated via GDBstub
+>> make[1]: ***
+>> [/builds/philmd/qemu/tests/tcg/multiarch/Makefile.target:121:
+>> run-gdbstub-prot-none] Error 1
+>> make: *** [/builds/philmd/qemu/tests/Makefile.include:66:
+>> run-tcg-tests-alpha-linux-user] Error 2
+>>
+>> So at least Alpha / ARM / Aarch64 / HPPA.
+>>
+>> (I haven't checked whether the test is run for other targets).
+>>
+>> We also run these on GitHub runners where the tests pass, and apparently
+>> when running on k8s private runner on GitLab they also pass. The problem
+>> is with public runner on GitLab.
+>
+> Also another test we ran was to pull GitLab docker image and run the same
+> tests locally within that GitLab-generated image and they passed. So we
+> believe the issue is related to some container restriction with
+> GitLab.
 
- hw/dma/pl080.c | 45 ++++++++++++++++++++++++++++-----------------
- 1 file changed, 28 insertions(+), 17 deletions(-)
+Most likely because the ptrace settings are tighter - ptrace is the
+mechanism we use to access the memory we can't normally.
 
+>
+>>
+>> > I'm asking because it may have something to do with /proc/self/mem or
+>> > with the architecture.
+>> >
+>>
 
-base-commit: 1fd5ff9d76d23ab23a68419cbc76d5ee33e8b455
--- 
-2.43.0
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

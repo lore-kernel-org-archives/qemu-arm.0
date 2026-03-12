@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F088BFED2F0
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 08:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD87DFED2F1
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 08:52:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0bmD-0000p7-W4; Thu, 12 Mar 2026 04:52:18 -0400
+	id 1w0blt-0000fq-OB; Thu, 12 Mar 2026 04:51:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0bmB-0000o8-4y
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:52:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1w0bls-0000fT-Ck
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:51:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0bm8-00040k-Ja
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:52:14 -0400
+ id 1w0blp-0003n6-RC
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:51:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773305531;
+ s=mimecast20190719; t=1773305511;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
  bh=wE9sPJoS+PvsawByzPBkkoM8UixyCC0LDr4EX6fyKOg=;
- b=XJ6uOc5HuEGt0sCr0ZyiTz8IWGg6iv0sbuAzsvF7SZo21Rdi24045zP12i7y1f7Gpt3yt6
- l3s0KKZI+F3N8nucX8HbnNoalXz5mA+yQc5ldX+Z/HO7nlEiuaUHwSy7wps3NsfR93myhR
- kZp2hKdANFKCumlXTIKt9OWNL3W96oY=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ b=MxlqV8xJVk2FvcFJsAyqKuHazmaisl9YgToLDhmbe5OTxGg78cE7hid7GCNvuOZuQ6Ccwo
+ zJkDZtihLokk7rWKaN0Hx/fo18qaJyCIBgipxjIrLuEbrPFGGX3nKYm6J/7DlcbgEWUgiA
+ xjXAfUnB2RzWvJWVzwnQo0Qxc2Yhvqc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-344-qkg55lUOM_WIwbURcx9sng-1; Thu, 12 Mar 2026 04:52:10 -0400
-X-MC-Unique: qkg55lUOM_WIwbURcx9sng-1
-X-Mimecast-MFC-AGG-ID: qkg55lUOM_WIwbURcx9sng_1773305529
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-439c794ec8eso900641f8f.1
- for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 01:52:10 -0700 (PDT)
+ us-mta-653-mJI_ME0RPHiOTyRa7gps7Q-1; Thu, 12 Mar 2026 04:51:50 -0400
+X-MC-Unique: mJI_ME0RPHiOTyRa7gps7Q-1
+X-Mimecast-MFC-AGG-ID: mJI_ME0RPHiOTyRa7gps7Q_1773305508
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-48532df52c5so6381525e9.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 01:51:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773305529; x=1773910329;
+ d=1e100.net; s=20230601; t=1773305508; x=1773910308;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
  bh=wE9sPJoS+PvsawByzPBkkoM8UixyCC0LDr4EX6fyKOg=;
- b=vbNSJAeO5m+ak03whIKHjJRtOMxky9BNzfN2/5gNQjWo7Fuw9M3ju+ywNWhVMPxkig
- O2XUW0gmXI8o19KgjjB/jHce+i2TUcrOHnmfOVodgG+O3s0n5uJlfkZIWKnwzzoALYAn
- DN3NOatbOCXxa9Wg5ixBUbUWJWVWV3egzX5eoGVpbbTFGkkmNdOslHhaAi8m3gbgR5P4
- MIH8l+T9trMA5kE9/q2jTIewXFMkLMFJUVl7Tp3Y2T9WVuA0+YeoV+5XfW22dh38Izz+
- FRgXkD1c9hyYB8JuaKfbm1djzIn93EQnhFaGhtIf4y7XiYr+3DmbksVhRbp7eY9NBMh1
- AGeA==
+ b=RltMFmItlQkL5QvBhFJWrOYDTaPh+IgxyWhGgYBtKYcz9Iou4i7F5hYJaH4g1fQCrn
+ 53BKvhO8oJ0RLhVI+b1NIz2F0aWTqZ3jMbGH9xlhwSSOzs2J56XdR9BDfs7hE7PB2SDo
+ cMzz6e3MENbi7G4SmYuioOB+MJHQPHsTxv8ghBmgdETn4P0i0IJ2iF+zfV2bNz7BfNSj
+ Qr7Px0vcpDSmWzl1ng55xIVtv6kPHD+xXnf/u63MWFan0beuPPUVIOy4hx3eimYldaIj
+ WYKOnE8AabsaHWt7eiFTA+754PxBI5PTRgmsdSHJW9jNFKf+klp44L65E5Qw/FmXN/uB
+ 2daQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUq9x5UI1JLW9WkvcZyUGycfTwNTJgS0D67hMspI4QO5rEVbC+cQO3z0R19XLZMk+qYMGQ+9iUMKQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+3r82SrBHqhqqfST1sH9jFCz6Rs1gBw9RNhVkLolge/Odl6mk
- +XbEcOJGIyuQoALDOg0xpgUNUVy4y05HkKa5vcWyYoXC+g7CyXun9zAEvkuQhrlqVthzN7vbKvp
- HAtRXbm6kP6Zue7C7fNYA0r7LKO13IdM6rxUuD4EOQnuTS4EYS+z+Vw==
-X-Gm-Gg: ATEYQzyJ712IC/eW9Z4onxu6yfxhXl/gb+liaO/2aOmFTN92aDLNegJ7hkBJnFCMgL7
- kmH3DHnVQ3l/inSuuWYdpr0h56SUwyXJdP02gbLHCLDK0dtrFSw8pW5aC598npfOwvxTBiDnikn
- mnlHGenSezugO0okP5y65Fx5tQ85CzU2iWDyybpjyRBpdSpcX3dT73vqWQLw7l90lsUx3TKVypg
- 4zLb3JIMBqLcZInp39oY0f6brkc+9nDgnyAxHjZjDvrfQ9qm62VYUvg1Er9+sN80hCPqQQn0X5+
- s7R55AZVCC6nANpSQv5wWmTz25E1B2evSMNzJuBqKNxKvREZfKDenkvFyq0jUjq7iNQzjVnPIaJ
- 7I9XPqQCl5l4L9bCfBzeY7vnr58fe7EwcM820wxDcJRWoRz2I2EArx3MTWAI27D574VIzDg==
-X-Received: by 2002:a05:6000:2883:b0:439:c661:3232 with SMTP id
- ffacd0b85a97d-439f8200e1fmr10237769f8f.20.1773305529142; 
- Thu, 12 Mar 2026 01:52:09 -0700 (PDT)
-X-Received: by 2002:a05:6000:2883:b0:439:c661:3232 with SMTP id
- ffacd0b85a97d-439f8200e1fmr10237535f8f.20.1773305526661; 
- Thu, 12 Mar 2026 01:52:06 -0700 (PDT)
+ AJvYcCWczOgbWw1ty6iNN/KNmeFcJpexhhz+RN4O1p5tw4ofmjFGXcg4IU1/eDJIhTu2hYS7V86KiGOXbw==@nongnu.org
+X-Gm-Message-State: AOJu0YyWTzS+NBb+sJRvSDeZHxuCfrUM6MdsGgQ3DOm06kmSik4OeRZ5
+ jA+j80hjM7UahdPUzz/SoOhZ8Gbvzys9pPNn1S685cEZVBAuvzqDinaAAprKiC1w6XILHMgrGlw
+ fhUeV2hHrqYbVPMbHUUOe/mxKerN++Sa2VdXfu14Rjl3LCTwYRp+2Yw==
+X-Gm-Gg: ATEYQzx12OEVDkQ8Hiie7VLJy80nTGRuTrutxGS0nLB/O0djfWDBHxcf4Y5Ua7OVJy2
+ 5fC7sijBS1RgsKkFu36qR7ho1P0sq71WWigOtK/FkiM0caGMZ7sVxR/XEvP5xhPZKApzPkV6KYm
+ 8TG+LcqSGob6RfAlcIcN6SrTB1wrFnbmX2aDqXqfVHVj80so0FUMgqyyenMCY74ebYL3GCQRmPJ
+ DkaqPL1VWRS6FmQGawkp780dNQVieIuZ06h2EJPUw6kknmKTz0QrUDNJ4wW9Mr3DWvAgIVwVA8z
+ mOeq+cEILOXCfK/zxwpPxt6UamDKtmaMiKC6jsOvgJ2Au1mEjO3Zi9PLHwdttJT+iW+ufp19lh+
+ rVP4NF64uPM/9Af2GPSCDikznck1teaiK+m9QT9tlh7dvY58tjCdeyaLRO+9RCceXpIkejg==
+X-Received: by 2002:a05:6000:604:b0:439:df0b:2885 with SMTP id
+ ffacd0b85a97d-439f8225415mr9836529f8f.58.1773305508129; 
+ Thu, 12 Mar 2026 01:51:48 -0700 (PDT)
+X-Received: by 2002:a05:6000:604:b0:439:df0b:2885 with SMTP id
+ ffacd0b85a97d-439f8225415mr9836486f8f.58.1773305507686; 
+ Thu, 12 Mar 2026 01:51:47 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439fe1aa2c3sm4965309f8f.13.2026.03.12.01.52.05
+ ffacd0b85a97d-439fdf09abesm6148793f8f.0.2026.03.12.01.51.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Mar 2026 01:52:06 -0700 (PDT)
-Message-ID: <dc138268-2f96-4a64-9132-6b375fc53514@redhat.com>
-Date: Thu, 12 Mar 2026 09:52:04 +0100
+ Thu, 12 Mar 2026 01:51:47 -0700 (PDT)
+Message-ID: <fbf594fe-dc8d-4747-94e7-7398749f03ef@redhat.com>
+Date: Thu, 12 Mar 2026 09:51:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC PATCH 2/8] hw/arm/smmuv3-accel: Introduce _AUTO support for
@@ -102,19 +102,19 @@ References: <20260309192119.870186-1-nathanc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <87o6ktxwzn.fsf@pond.sub.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0LztW1BUFdqjXMz2LOu2Y4bQpIrcFUjLuK5W8o9Ye9I_1773305529
+X-Mimecast-MFC-PROC-ID: bUZKK1oth-kWJGoWEKDPczTsRfQPfOr6TdfC00xQcoQ_1773305508
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action

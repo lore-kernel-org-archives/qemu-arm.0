@@ -4,119 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD87DFED2F1
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 08:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F72FED2F7
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 09:13:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0blt-0000fq-OB; Thu, 12 Mar 2026 04:51:57 -0400
+	id 1w0c6c-0006CP-U3; Thu, 12 Mar 2026 05:13:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0bls-0000fT-Ck
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:51:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w0blp-0003n6-RC
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:51:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773305511;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wE9sPJoS+PvsawByzPBkkoM8UixyCC0LDr4EX6fyKOg=;
- b=MxlqV8xJVk2FvcFJsAyqKuHazmaisl9YgToLDhmbe5OTxGg78cE7hid7GCNvuOZuQ6Ccwo
- zJkDZtihLokk7rWKaN0Hx/fo18qaJyCIBgipxjIrLuEbrPFGGX3nKYm6J/7DlcbgEWUgiA
- xjXAfUnB2RzWvJWVzwnQo0Qxc2Yhvqc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-653-mJI_ME0RPHiOTyRa7gps7Q-1; Thu, 12 Mar 2026 04:51:50 -0400
-X-MC-Unique: mJI_ME0RPHiOTyRa7gps7Q-1
-X-Mimecast-MFC-AGG-ID: mJI_ME0RPHiOTyRa7gps7Q_1773305508
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48532df52c5so6381525e9.1
- for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 01:51:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773305508; x=1773910308;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w0c6N-0006Am-Rn
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 05:13:08 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w0c6J-000334-HA
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 05:13:07 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-64ad9fabd08so1043286d50.2
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 02:13:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773306782; cv=none;
+ d=google.com; s=arc-20240605;
+ b=EnZs6rl0y+d/9kJ/1z29caUBhuJxpok64xGlm3m041+52fvV8GGel+QpgSl+03vEup
+ Y/hmE1CrKwTNfbcJSkgz8JfnUWzMyX3diPA4CKqNY74PL5/4HvhdksN3vdzmrRVTWim5
+ mh+gG588BZRwCBc7r5Xjqn+MkG7BlTkqfe9RM4NQcPu7XK7J4eK+xvcPiiGJTzNc13DK
+ 2Vo+pItL2636L5K0UqXuP5GfoTWblZazsfsErpr62nCWUnVOQTN2eM6aAGagP4dKYFDN
+ l/cYIbTkLZw78pPfdBdqtC3BKYbYbUWXR7x1eDP7izHaeFZVHIIAZmK2KzPRl0NZa/WW
+ r8Fw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=gCe4XlwRhzcIv6mM5XeuDVH3HXdR7LmPtkbb/B2PBBg=;
+ fh=tLP/gRpi7Iczn5ziGL7f2zBG1RdOSHMz6mExSpHcScY=;
+ b=aUJPob+EeQkzIbDce8YfwoyFlvFyKrtySiFmQdEMOh3ExWCntS7ymBkg2tgQB5bPFi
+ QwYDXrJAbLnX4XSRYF6rXuYNRYlecW8zveFCQl1nstWWsaxxCU2IhRLGj+MIo10LNGlb
+ Hix9oDluozmyLM7gX+vpCBGTmfx8GKgCLGkLcd4RUmnOQlX+H71gNuoX7JUUHXIG9EHx
+ 9JS2pzvmn4Q56Ggq2vKRpsHV/UJb6ENtQpHQ47Z5I7JoFVdwuOezCu7k1VEAV7ViZLQD
+ o++UA9CU8ZhNfFAm2/2eeaffScw+XD2V/rOqvq2cA+N+xeOCoVm0uYgE7f7dNV71uA/Z
+ y02A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773306782; x=1773911582; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wE9sPJoS+PvsawByzPBkkoM8UixyCC0LDr4EX6fyKOg=;
- b=RltMFmItlQkL5QvBhFJWrOYDTaPh+IgxyWhGgYBtKYcz9Iou4i7F5hYJaH4g1fQCrn
- 53BKvhO8oJ0RLhVI+b1NIz2F0aWTqZ3jMbGH9xlhwSSOzs2J56XdR9BDfs7hE7PB2SDo
- cMzz6e3MENbi7G4SmYuioOB+MJHQPHsTxv8ghBmgdETn4P0i0IJ2iF+zfV2bNz7BfNSj
- Qr7Px0vcpDSmWzl1ng55xIVtv6kPHD+xXnf/u63MWFan0beuPPUVIOy4hx3eimYldaIj
- WYKOnE8AabsaHWt7eiFTA+754PxBI5PTRgmsdSHJW9jNFKf+klp44L65E5Qw/FmXN/uB
- 2daQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWczOgbWw1ty6iNN/KNmeFcJpexhhz+RN4O1p5tw4ofmjFGXcg4IU1/eDJIhTu2hYS7V86KiGOXbw==@nongnu.org
-X-Gm-Message-State: AOJu0YyWTzS+NBb+sJRvSDeZHxuCfrUM6MdsGgQ3DOm06kmSik4OeRZ5
- jA+j80hjM7UahdPUzz/SoOhZ8Gbvzys9pPNn1S685cEZVBAuvzqDinaAAprKiC1w6XILHMgrGlw
- fhUeV2hHrqYbVPMbHUUOe/mxKerN++Sa2VdXfu14Rjl3LCTwYRp+2Yw==
-X-Gm-Gg: ATEYQzx12OEVDkQ8Hiie7VLJy80nTGRuTrutxGS0nLB/O0djfWDBHxcf4Y5Ua7OVJy2
- 5fC7sijBS1RgsKkFu36qR7ho1P0sq71WWigOtK/FkiM0caGMZ7sVxR/XEvP5xhPZKApzPkV6KYm
- 8TG+LcqSGob6RfAlcIcN6SrTB1wrFnbmX2aDqXqfVHVj80so0FUMgqyyenMCY74ebYL3GCQRmPJ
- DkaqPL1VWRS6FmQGawkp780dNQVieIuZ06h2EJPUw6kknmKTz0QrUDNJ4wW9Mr3DWvAgIVwVA8z
- mOeq+cEILOXCfK/zxwpPxt6UamDKtmaMiKC6jsOvgJ2Au1mEjO3Zi9PLHwdttJT+iW+ufp19lh+
- rVP4NF64uPM/9Af2GPSCDikznck1teaiK+m9QT9tlh7dvY58tjCdeyaLRO+9RCceXpIkejg==
-X-Received: by 2002:a05:6000:604:b0:439:df0b:2885 with SMTP id
- ffacd0b85a97d-439f8225415mr9836529f8f.58.1773305508129; 
- Thu, 12 Mar 2026 01:51:48 -0700 (PDT)
-X-Received: by 2002:a05:6000:604:b0:439:df0b:2885 with SMTP id
- ffacd0b85a97d-439f8225415mr9836486f8f.58.1773305507686; 
- Thu, 12 Mar 2026 01:51:47 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439fdf09abesm6148793f8f.0.2026.03.12.01.51.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Mar 2026 01:51:47 -0700 (PDT)
-Message-ID: <fbf594fe-dc8d-4747-94e7-7398749f03ef@redhat.com>
-Date: Thu, 12 Mar 2026 09:51:45 +0100
+ bh=gCe4XlwRhzcIv6mM5XeuDVH3HXdR7LmPtkbb/B2PBBg=;
+ b=yM2MgcB7+p9iuSUxJ3wLjGnhBz+oT58l6N0XuluKm1EgYvA2X/FQQdgkHSL3lcYZn+
+ STiKHoKQ4SLovvcmIrUk3e5T2UzSL1omezMPnGC5fVOymndhGoTIGgMhBamHkcuBTYDC
+ KDR6WQ1lDQxndA+QwT7ivf5hxElDQ6pDhJHjw7TeZKucs/FBGqK5uZwg1gazHAks9w4p
+ JOjI4OFLaFEAblMPW+y3BBH1lk1wUkUkWSHgLcq2ua0HSz/7tzWwBN1EDaH3AfV8RS+U
+ zIkVBZhZEIxKeso41EPJVFq+LmQr/k1PlEEnZ8hDM6QeQ8ZphdaP15ZKgr7nf0VTNKBd
+ 5IKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1773306782; x=1773911582;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=gCe4XlwRhzcIv6mM5XeuDVH3HXdR7LmPtkbb/B2PBBg=;
+ b=MAyALMluNhwY0KsN9CtuHZrb42oL5Q0ePq44BTZtjRDXte08CCOglfBfSnpT9aiCix
+ bSwZBNNUSX8/lVy1LPeV1jInN/aZsyzNtNd0dq+wjc3+rYNLlnaqaEKCQ2xP2HcTvirg
+ 1js2KtnETB/yfrI/awkEbGYScg6a5StKv27PnvAX0dhhW3T9gEJW7w4A//2Re1eUL6z9
+ DEnrcw2m4e2FKv7fTrvQ1e+ev260Ffjq/uEF0YMM1hypUd7/lscpfG3CC4vhWLcLf1zM
+ 4eLQxnhcW59T1On/hxmR8AqMVOWg+Oie8a+J6c8so1qhdadfbRkf78i8aqsddnjxd6BX
+ MXvA==
+X-Gm-Message-State: AOJu0Yw9SIa0u2K6ogkqvvrCJq9dI6H6ZHG+zjyRGjc2DPuMkTsBg+23
+ sSUSe2JRep7Iynraqh+Oxaan2sFU6z/M1vqOgJl+6rPmQod7OWMb3DwWMPaHQMLfUnvKla1PLC+
+ 3fMLQLdxmUxggwgChNmRKrzEsvWyoM9em9Vrz7t5Rug0kba1YX/xo
+X-Gm-Gg: ATEYQzxLIWtRCwKK3BPKH2ih4YP8QRspUvav2mfXcQawIrEOCyF2JP3fLJhVwhEE9Sw
+ gEYAoz40CbMDxdbjoAlKkXCTG/+LX8HFt3cWZcbwpzGJXtC/8Sd+NEDbSEdf/zuWhcMzSMl4ej1
+ YBqoo53IW7k6otMiDz9MciyspPY0sO4xvcIffJD/4af+gbih7UUeONNX7Gohqy/kcpb742N7Ckp
+ LD+syyPWjYJdjzP/fgCUs464JfZ+vnzsq3vSaOu+n+MKkVS6K3r6OVzNOTzpT086eLke0D7w2oi
+ mOOy7mGoJfG+Pl1G40rJpPY6zetbaP/KE1uuRZMQu+NXZw9PgkBtVfRprtjuywcBzbE=
+X-Received: by 2002:a05:690e:1643:b0:64c:f871:6524 with SMTP id
+ 956f58d0204a3-64d657ec44cmr3746843d50.81.1773306781921; Thu, 12 Mar 2026
+ 02:13:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 2/8] hw/arm/smmuv3-accel: Introduce _AUTO support for
- ATS
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Nathan Chen <nathanc@nvidia.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Yi Liu <yi.l.liu@intel.com>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S . Tsirkin"
- <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?= <berrange@redhat.com>,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Eric Blake <eblake@redhat.com>
-References: <20260309192119.870186-1-nathanc@nvidia.com>
- <20260309192119.870186-3-nathanc@nvidia.com> <87pl5cnp06.fsf@pond.sub.org>
- <98e7dd71-6669-4a82-bec8-f1dae2d861c3@redhat.com>
- <0bdcf7d7-136e-42f4-9fa9-d31f6ae6e19f@nvidia.com>
- <fd34b7a2-65ac-486f-bc17-23dd4f96a3df@redhat.com>
- <87o6ktxwzn.fsf@pond.sub.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <87o6ktxwzn.fsf@pond.sub.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bUZKK1oth-kWJGoWEKDPczTsRfQPfOr6TdfC00xQcoQ_1773305508
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-56-peter.maydell@linaro.org>
+ <20260311175456.00007788@huawei.com>
+In-Reply-To: <20260311175456.00007788@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Mar 2026 09:12:50 +0000
+X-Gm-Features: AaiRm53LXM9KGJ6oRdIwk4XjtNEptJj1W4c8gWw6P6EEoFF4hxT-XAWtnXCi5V8
+Message-ID: <CAFEAcA8S3JyKRBkvNBex20M2QQn04CbXMTr-1GriqQzXcQSP2g@mail.gmail.com>
+Subject: Re: [PATCH 55/65] hw/arm/virt: Update error message for bad
+ gic-version option
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,100 +115,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Wed, 11 Mar 2026 at 17:55, Jonathan Cameron
+<jonathan.cameron@huawei.com> wrote:
+>
+> On Mon, 23 Feb 2026 17:02:02 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> > As we added different valid gic-version option settings,
+> > we forgot to update the hint in the error message produced
+> > when the user specifies an invalid value:
+> >
+> > $ qemu-system-aarch64 -M virt,help | grep gic-version
+> >   gic-version=3D<string>   - Set GIC version. Valid values are 2, 3, 4,=
+ host and max
+> > $ qemu-system-aarch64 -M virt,gic-version=3Dbang
+> > qemu-system-aarch64: Invalid gic-version value
+> > Valid values are 3, 2, host, max.
+> >
+> > Update the error string to match the one we use in the help text
+> > for the option.
+> >
+> > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> > Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Ah. I was going to say what is is this doing in here? But I see
+> you already sent a pull request with this in it.
+>
+> All good but for anyone else reading you can skip this one :)
 
+Yeah, it's only in here to avoid a conflict with the next patches
+that also adjust this string.
 
-On 3/12/26 9:39 AM, Markus Armbruster wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
->
->> On 3/11/26 6:08 PM, Nathan Chen wrote:
->>>
->>> On 3/11/2026 8:31 AM, Eric Auger wrote:
->>>> On 3/10/26 8:05 AM, Markus Armbruster wrote:
->>>>> Nathan Chen<nathanc@nvidia.com> writes:
->>>>>
->>>>>> From: Nathan Chen<nathanc@nvidia.com>
->>>>>>
->>>>>> Allow accelerated SMMUv3 Address Translation Services support property
->>>>>> to be derived from host IOMMU capabilities. Derive host values using
->>>>>> IOMMU_GET_HW_INFO, retrieving ATS capability from IDR0.
->>>>>>
->>>>>> Set the default value of ATS to auto. The default for ATS support used
->>>>>> to be set to off, but we change it to match what the host IOMMU
->>>>>> properties report.
->>>>>>
->>>>>> Add a "ats-enabled" read-only property for smmuv3 to address an
->>>>>> expected bool for the "ats" property in iort_smmuv3_devices().
->>>>>>
->>>>>> Signed-off-by: Nathan Chen<nathanc@nvidia.com>
-> [...]
->
->>>>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>>>> index 068108e49b..197ba7c77b 100644
->>>>>> --- a/hw/arm/smmuv3.c
->>>>>> +++ b/hw/arm/smmuv3.c
-> [...]
->
->>>>>> @@ -2128,7 +2134,7 @@ static const Property smmuv3_properties[] = {
->>>>>>      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
->>>>>>      /* RIL can be turned off for accel cases */
->>>>>>      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
->>>>>> -    DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
->>>>>> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
->>>>> Is property "ats" accessible via QMP or JSON command line?  If yes,
->>>>> this
->>>>> is an incompatible change: JSON values false and true no longer work.
->>>> So what do you recommend to extend the property values. I guess we had
->>>> some existing scenarios happening in the past. What is the best way to
->>>> proceed?
->>> Is it a requirement to ensure boolean values are still supported when
->>> switching to OnOffAuto? I found that the x86-iommu intremap property
->>> had a change from DEFINE_PROP_BOOL to DEFINE_PROP_ON_OFF_AUTO [0].
-> We promise to follow a certain process when changing external
-> interfaces: docs/about/deprecated.rst.
->
-> This is why I inquired about external access.  No external access, no
-> compatibility worries.
->
-> I specifically asked about JSON, because going from bool to OnOffAuto is
-> mostly compatible in key=value syntax: values "on" and "off" keep
-> working.
->
-> Mostly compatible, because qapi_bool_parse() also recognizes "yes",
-> "true", "y", "no", "false", and "n" for convenience, and these stop
-> working.  We have a knack for inventing convenience features that later
-> bite us.
->
-> JSON breaks entirely, of course: all values stop working.
->
-> Even with external access, compatibility worries start only after we
-> shipped the interface in a release.  Did we?
-those options were introduced in qemu 11.0. Fixing them in -rc is still
-an option but it is a very tight schedule
-
-Thanks
-
-Eric 
->
-> If the interface was released, we should keep our promise to follow the
-> process.  From time to time, that's so onerous and we're so certain that
-> nobody actually cares, we bend the rules.  This should not be done
-> lightly.
->
->>> Should I add a custom property setter that accepts both boolean and
->>> on/off/auto for backward compatibility, or is following the intremap
->>> precedent acceptable? I'm happy to implement either approach.
->>>
->>> [0]
->>> https://github.com/qemu/qemu/commit/a924b3d8df55a395891fd5ed341d0deb135d9aa6 
->> Maybe we also need to emphasize that libvirt integration is still under
->> work (and waiting for that conversion to happen at qemu level). So do we
->> really care about keeping the compat wrt QMP and JSON. 
-> I can explain our promise and the process to you, but I can't make the
-> decision to bend the rules for you.
->
-
+-- PMM
 

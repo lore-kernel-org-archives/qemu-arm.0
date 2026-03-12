@@ -4,100 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D54FED2DE
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 07:36:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB87FFED2EC
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Mar 2026 08:20:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0aab-0004dB-Fx; Thu, 12 Mar 2026 03:36:14 -0400
+	id 1w0bHp-00007G-Jp; Thu, 12 Mar 2026 04:20:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
- id 1w0aaZ-0004ay-Nl; Thu, 12 Mar 2026 03:36:11 -0400
-Received: from fhigh-a3-smtp.messagingengine.com ([103.168.172.154])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w0bHk-00006W-BG
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:20:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
- id 1w0aaX-0004d6-Pr; Thu, 12 Mar 2026 03:36:11 -0400
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 64FA8140024C;
- Thu, 12 Mar 2026 03:36:08 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
- by phl-compute-04.internal (MEProxy); Thu, 12 Mar 2026 03:36:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alyssa.is; h=cc
- :cc:content-type:content-type:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:subject
- :subject:to:to; s=fm3; t=1773300968; x=1773387368; bh=f47T68loaB
- NsaUfOWwH+cEMrROrgV8Uw7v2X24lMDzA=; b=eRNuF6AXU4KwlDRweLEJsSlpDM
- Hzu+KWJbR+wFcNU9jdpTDdlhOmboSWS/ICrNR3iiyRyBaNUiHC/B6ZQUfcykze4j
- NZK7TsPSPkZhwWNjd+oC5Nj77RRizJNl6L/3AbJCzpkiz+gcFNmkXKMvWs1VHqhx
- P9sPsCkQW9NUhe8OugyAeD5SWGZ7IYjDYwqNU0A2VQyAgMdzkcRGI92lQix5HnIl
- Ea/wQEcfhbKNgKdXohD3Vq6bfv+DR96zldB0xEm+3LVaqGnKwIKKqUUCFBtkdE77
- zX/Ly4qc8ctD+0dhOW+rF6bltT/RDIjveJE2jecFJvO7WCfPWjv91mhLa7Hg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1773300968; x=1773387368; bh=f47T68loaBNsaUfOWwH+cEMrROrgV8Uw7v2
- X24lMDzA=; b=DI1qXbrv8KlDVEw8L5snXDx4ysEhQh5oGhEh0xHb/iqorPqZIel
- sel8nYEIMrGrvkWfiqO3x0RLGSyU6NL+ZZQCAsJSq3jUDemnb1lBd3eTr/bKpaun
- vEyLL7AgJiEXiIMf42k08Zi/Zjdsqi+Su1bKyzpmW0bW/CZf8Fuak0o6wjsu2jQG
- 8V5DwF/j/OWQov/pt4qT40cevNaqvw0kisSdFmZSC32qSDWnRhjljKppE1MVyzUm
- /L+4LNeHnfb+OV8O0paQeyBTqRFmCb37D9gMyC4wop5hVKpdmQzZagtst73KU0xq
- euETj4UuQOz6vKN4m+7m6v5ix3y268fU1fg==
-X-ME-Sender: <xms:52yyaWJT3Q3XdnDrERKxbG_F_gxhci-Z32e645svJx4A7Dt3LfKpFA>
- <xme:52yyaQaRTJlIHMk_Zs9NkmtKSjU_HO3En5y3Cw9AkQSu4dB-RoiwBVZVN4xsP7xuh
- qQCud-SHx1DdVzJw8VA1XpdmhB8X2LS6LOa5Y7Y4OFCi7jVDTTywg>
-X-ME-Received: <xmr:52yyaY__sOBP_aO0IzjpQF6lB9Bl9T6yKOEOyPmOgFzU3SNsdkiE6_XaQAHoXRprbg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvkeeivddtucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
- gurhephffvvefujghffffkgggtsehgtderredttdejnecuhfhrohhmpeetlhihshhsrgcu
- tfhoshhsuceohhhisegrlhihshhsrgdrihhsqeenucggtffrrghtthgvrhhnpeetheevud
- fgjefghefhieejudelkeeljeegvdekueeuhffhgedvveefteevgeetieenucevlhhushht
- vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehhihesrghlhihsshgrrd
- hishdpnhgspghrtghpthhtohepjedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohep
- phgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtohepqhgvmh
- huqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhes
- nhhonhhgnhhurdhorhhgpdhrtghpthhtohepmhhighhuvghlrdhluhhishesohhrrggtlh
- gvrdgtohhmpdhrtghpthhtohepvghrihgtrdgruhhgvghrsehrvgguhhgrthdrtghomhdp
- rhgtphhtthhopehpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdhrtghpthhtohepkh
- hvmhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
-X-ME-Proxy: <xmx:52yyaRa4etl953P07VeD7CYzQGg4TFf9ppvRfHVMGcxHnQSdji3lEQ>
- <xmx:6GyyacP5oOpiuZKTZAHus4cs4O7dKAI3N1MUihX9lWKFXQg_D8wIDQ>
- <xmx:6GyyadDpADNnOCzriUzmf7-kHhC_31PapB5XA2SmT2C0Yq6BCpZHJA>
- <xmx:6GyyaTLJDunWahFdbsN1L4KJqdDikQkWQPdA-eGZmauSNmV9MVR0fw>
- <xmx:6Gyyaet4Akpu0X_HvdTIj6pUpt9Nc1go0lY00qZ97zV0R7R9TJeh6EKM>
-Feedback-ID: i12284293:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 12 Mar 2026 03:36:07 -0400 (EDT)
-Received: by fw12.qyliss.net (Postfix, from userid 1000)
- id 861028887ECA; Thu, 12 Mar 2026 08:36:04 +0100 (CET)
-From: Alyssa Ross <hi@alyssa.is>
-To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric
- Auger <eric.auger@redhat.com>, Miguel Luis <miguel.luis@oracle.com>
-Subject: Re: [PATCH] target/arm/kvm: fall back if nested unsupported
-In-Reply-To: <CABgObfavGAHLz0FZy66QTbXHTS7YqWxc_eVmEWnCWo+QBPiN1g@mail.gmail.com>
-References: <20260311095405.26297-1-hi@alyssa.is>
- <CAFEAcA8GCz2c18e3+bwFooAxYZzBrX3OjjQ58CWJOdLfTYL_dA@mail.gmail.com>
- <CABgObfavGAHLz0FZy66QTbXHTS7YqWxc_eVmEWnCWo+QBPiN1g@mail.gmail.com>
-Date: Thu, 12 Mar 2026 08:36:03 +0100
-Message-ID: <87ikb1wlcs.fsf@alyssa.is>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w0bHh-0000Q9-00
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 04:20:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773303642;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8kBCDu2W7wtZ8iuPSNqtcrXsk1GVeUMpFB9vlhOvRLM=;
+ b=FOFZ6BdsQChOo5o7fYWrRwYO6nANiM1JN7eQEE3YMdMqq1c+keAO/CPxSNl2r4jCnbQrep
+ 0xN0N6luhb6VXP7jSUsh/fyqwZQDiTLymImZPkgxxiRQU81iPkTrgG63owRNjRFJSjY+fv
+ TCE3huJ1BRHwjx6sFa5k33o3FYTQPmQ=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-685-rGEP94UcOaKCl9UTWaX0aA-1; Thu,
+ 12 Mar 2026 04:20:38 -0400
+X-MC-Unique: rGEP94UcOaKCl9UTWaX0aA-1
+X-Mimecast-MFC-AGG-ID: rGEP94UcOaKCl9UTWaX0aA_1773303636
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5084C180060D; Thu, 12 Mar 2026 08:20:36 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.12])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 41B7C30001A1; Thu, 12 Mar 2026 08:20:35 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id CC00421E681B; Thu, 12 Mar 2026 09:20:32 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+Cc: Nathan Chen <nathanc@nvidia.com>,  "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>,  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,  Yi
+ Liu <yi.l.liu@intel.com>,  Eric Auger <eric.auger@redhat.com>,  Zhenzhong
+ Duan <zhenzhong.duan@intel.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,  Igor Mammedov
+ <imammedo@redhat.com>,  Ani Sinha <anisinha@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Daniel =?utf-8?Q?P=2EBerrang=C3=A9?=
+ <berrange@redhat.com>,  Alex
+ Williamson <alex@shazbot.org>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>,  Eric Blake <eblake@redhat.com>
+Subject: Re: [RFC PATCH 1/8] hw/arm/smmuv3-accel: Add helper for resolving
+ auto parameters
+In-Reply-To: <CH3PR12MB754899F3426FCB494EA7154FAB46A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ (Shameer Kolothum Thodi's message of "Tue, 10 Mar 2026 09:01:03
+ +0000")
+References: <20260309192119.870186-1-nathanc@nvidia.com>
+ <20260309192119.870186-2-nathanc@nvidia.com>
+ <87tsuonp7r.fsf@pond.sub.org>
+ <CH3PR12MB754899F3426FCB494EA7154FAB46A@CH3PR12MB7548.namprd12.prod.outlook.com>
+Date: Thu, 12 Mar 2026 09:20:32 +0100
+Message-ID: <87v7f1xxv3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-Received-SPF: pass client-ip=103.168.172.154; envelope-from=hi@alyssa.is;
- helo=fhigh-a3-smtp.messagingengine.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: LCYoB4MjRPLZM5cR2xel5lB-NIYppDgvBgJCeAqLR3U_1773303636
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,94 +103,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---=-=-=
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Shameer Kolothum Thodi <skolothumtho@nvidia.com> writes:
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
+>> -----Original Message-----
+>> From: Markus Armbruster <armbru@redhat.com>
 
-> On Wed, Mar 11, 2026 at 6:03=E2=80=AFPM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
->>
->> On Wed, 11 Mar 2026 at 09:54, Alyssa Ross <hi@alyssa.is> wrote:
+[...]
+
+>> Nathan Chen <nathanc@nvidia.com> writes:
+>>=20
+>> > From: Nathan Chen <nathanc@nvidia.com>
 >> >
->> > If I create a machine with more CPUs than KVM supports, but specify
->> > multiple accelerator options, QEMU will fall back to the next
->> > accelerator.  This is great, because if I've explicitly specified
->> > multiple accelerators, I've told QEMU I'm fine with any of them being
->> > used to provide the machine I want.
+>> > Introduce smmuv3_accel_auto_finalise() to resolve properties
+>> > that are set to 'auto' for accelerated SMMUv3. This helper
+>> > function allows properties such as ATS, RIL, SSIDSIZE, and OAS
+>> > support to be resolved from host IOMMU values, while avoiding
+>> > triggering auto-resolved values for hot-plugged devices.
 >> >
->> > When I create a machine with nested virtualization enabled, though,
->> > this doesn't happen.  KVM often doesn't support it, but TCG always
->> > does.  The nice thing to do would be for QEMU to fall back to TCG if
->> > KVM can't provide, like it does when too many CPUs are requested.
->> > This patch adjusts the behaviour to do that.
+>> > Auto mode requires at least one cold-plugged device to retrieve
+>> > and finalise these properties, and we fail boot if that is not
+>> > the case.
 >> >
->> > This is very helpful for OS development scripts that run an OS in QEMU
->> > =E2=80=94 I want everybody to be able to run the script, always with
->> > virtualization enabled because the OS requires it, but for it to take
->> > advantage of KVM acceleration when available.
+>> > Subsequent patches will make use of this helper to set the
+>> > values when we convert the values to OnOffAuto. New auto_mode
+>> > and auto_finalised bool members are added to SMMUv3AccelState.
+>> > smmuv3_accel_init() will set auto_mode to true when 'auto' is
+>> > detected for the accel SMMUv3 properties.
+>> > smmuv3_accel_auto_finalise() will set auto_finalised to true
+>> > after all 'auto' properties are resolved, and subsequent
+>> > calls to this function will return early if auto_finalised is
+>> > set to true.
 >> >
->> > Signed-off-by: Alyssa Ross <hi@alyssa.is>
+>> > Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>> > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 >> > ---
->> >  hw/arm/virt.c    | 6 ------
->> >  target/arm/kvm.c | 8 ++++++++
->> >  2 files changed, 8 insertions(+), 6 deletions(-)
+>> >  hw/arm/smmuv3-accel.c | 38 +++++++++++++++++++++++++++++++++--
+>> ---
+>> >  hw/arm/smmuv3-accel.h |  2 ++
+>> >  2 files changed, 35 insertions(+), 5 deletions(-)
 >> >
->> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> > index 7456614d05..0b63b2eac3 100644
->> > --- a/hw/arm/virt.c
->> > +++ b/hw/arm/virt.c
->> > @@ -2372,12 +2372,6 @@ static void machvirt_init(MachineState *machine)
->> >          exit(1);
->> >      }
+>> > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+>> > index 17306cd04b..617629bacd 100644
+>> > --- a/hw/arm/smmuv3-accel.c
+>> > +++ b/hw/arm/smmuv3-accel.c
+>> > @@ -35,11 +35,34 @@ static int smmuv3_oas_bits(uint32_t oas)
+>> >      return map[oas];
+>> >  }
 >> >
->> > -    if (vms->virt && kvm_enabled() && !kvm_arm_el2_supported()) {
->> > -        error_report("mach-virt: host kernel KVM does not support pro=
-viding "
->> > -                     "Virtualization extensions to the guest CPU");
->> > -        exit(1);
->> > -    }
->> > -
->> >      if (vms->virt && !kvm_enabled() && !tcg_enabled() && !qtest_enabl=
-ed()) {
->> >          error_report("mach-virt: %s does not support providing "
->> >                       "Virtualization extensions to the guest CPU",
->>
->> I think there is a bigger problem here. The code in the virt
->> board init assumes that the accelerator has already been
->> selected: based on whether kvm_enabled() or tcg_enabled()
->> it decides things like which GIC version can be used, whether
->> "-machine gic-version=3Dhost" is valid or not, and so on.
->>
->> This bit we're deleting here is just one of multiple checks
->> we do that assume that we know the accelerator already. If
->> we actually don't know if we're going to be using TCG or KVM
->> then all this code needs to be rethought.
+>> > +static void smmuv3_accel_auto_finalise(SMMUv3State *s, PCIDevice *pde=
+v,
+>> > +                                       struct iommu_hw_info_arm_smmuv=
+3 *info) {
+>> > +    SMMUv3AccelState *accel =3D s->s_accel;
+>> > +
+>> > +    /* Return if no auto for any or finalised already */
+>> > +    if (!accel->auto_mode || accel->auto_finalised) {
+>> > +        return;
+>> > +    }
+>> > +
+>> > +    /* We can't update if device is hotplugged */
+>> > +    if (DEVICE(pdev)->hotplugged) {
+>> > +        warn_report("arm-smmuv3: 'auto' feature property detected, bu=
+t host
+>> "
+>> > +                    "value cannot be applied for hot-plugged device; =
+using "
+>> > +                    "existing value");
+>>=20
+>> Why is this warning useful?
+>>=20
+>> Does @auto's meaning depend on whether the device is cold- or
+>> hot-plugged?
 >
-> We do. This code runs at the very end of qemu_init()
-> (qmp_x_init_preconfig->qemu_init_board->machine_run_board_init).
+> If SMMUv3 accel=3Don and properties are set to "auto", we require
+> at least one cold-plugged vfio-pci device to retrieve the associated
+> host SMMUv3 information and finalise the QEMU SMMUv3 properties.
 >
-> The bug is on the KVM side, as it lets the configuration slip even
-> though it's not valid; the above KVM check should really be more of an
-> abort() if anything. (This is also why I picked it despite it touching
-> hw/arm/virt.c - from my point of view the KVM fix made the above code
-> go dead).
+> In this series, "auto_mode" is set if any accel property is specified as
+> "auto". The properties are then finalised using the first cold-plugged
+> device and "auto_finalised" is set.
+>
+> Since we later fail the guest boot(see below) in the reset phase if
+> auto_mode is set but auto_finalised is still false, the above hotplug
+> case should not really happen. In that case the VM would not boot.
 
-Yeah, the problem isn't that we don't know which accelerator is in use
-in the virt board =E2=80=94 we do.  It's that by that point it's too late to
-fall back to the next acceptable accelerator if KVM can't provide
-nested virtualization, so we need to check earlier.
+Sounds complicated.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+> So likely we can get rid of the hotplug check above. Need to do
+> a bit more testing to confirm we cover all corner cases.
+>
+>>=20
+>> > +        return;
+>> > +    }
+>> > +
+>> > +    accel->auto_finalised =3D true;
+>> > +}
 
------BEGIN PGP SIGNATURE-----
+[...]
 
-iHUEARYKAB0WIQQGoGac7QfI+H5ZtFCZddwkt31pFQUCabJs4wAKCRCZddwkt31p
-FaGsAPoClLOMTH0PFjQ+SO6LUd9RVHiVb73Qb7iZZzNthkTMAQEAjlYgpX+Tq1+A
-jEPAcpZcR/gw7MnBbL+mPkAGjriTgQ8=
-=n5cX
------END PGP SIGNATURE-----
---=-=-=--
+>> > @@ -867,8 +891,12 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s=
+, Error **errp)
+>> >
+>> >  void smmuv3_accel_reset(SMMUv3State *s)
+>> >  {
+>> > -     /* Attach a HWPT based on GBPA reset value */
+>> > -     smmuv3_accel_attach_gbpa_hwpt(s, NULL);
+>> > +    if (s->s_accel && s->s_accel->auto_mode && !s->s_accel->auto_fina=
+lised)
+>> {
+>> > +        error_report("AUTO mode specified but properties not finalise=
+d.");
+>> > +        exit(1);
+>>=20
+>> How can we get here?
+>
+> This is reached from the SMMUv3 reset handler when auto mode is
+> specified but no cold-plugged device has been attached to finalise the
+> accelerated SMMUv3 properties.
+>
+> If no such device is present, "auto_finalised" remains false and we hit
+> this path during reset.
+>
+> C=C3=A9dric mentioned that we should not exit during the reset phase. If =
+that
+> is the case, we likely need another way to handle the scenario where
+> auto mode is specified but no cold-plugged device is present.
+
+What exactly does the "auto" feature buy us?  Is it worth the
+complexity?
+
 

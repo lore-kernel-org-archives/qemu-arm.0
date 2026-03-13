@@ -4,93 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1660105F79C
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 11:30:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86074105F78C
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 11:47:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w10iS-0004ne-9r; Fri, 13 Mar 2026 07:30:04 -0400
+	id 1w10zE-00017R-UY; Fri, 13 Mar 2026 07:47:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w10iM-0004mi-D0
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 07:30:00 -0400
-Received: from ci-2001b-snip4-11.eps.apple.com ([57.103.91.23]
- helo=outbound.ci.icloud.com)
+ (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
+ id 1w10zD-00017C-3l; Fri, 13 Mar 2026 07:47:23 -0400
+Received: from fhigh-a1-smtp.messagingengine.com ([103.168.172.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w10iI-0002Ob-Dl
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 07:29:56 -0400
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-9 (Postfix) with ESMTPS id
- 7B339180041C; Fri, 13 Mar 2026 11:29:46 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773401389; x=1775993389;
- bh=ubBncClybEhK6XBrfLpa4ABehyNbDapv8hfDeikOGVk=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=cROP/b/KJeM74c1zowmZ9kCDTQXXiQ7K8YWxQSFXcWhVKREIZ5amDcs7b1+0tjD9wMXHSRePdFg92CEftAQ/xgHvXVFq41Gi8XPCT07/YqINQlwbEjmHzsgzdREtUvSicLOPBcJ7TxaRIQzKFHcqIxo1tSVz3Wz3yU3fDoIsuQwwh8yGWFSScWCiwHjRWAsmQvnrs1rMyjWxjCT0/8vskJ9qzXELL0MmVf2kFGHLG9OTLULt4e6TgRH8dOzp4k07012KK2uA4RIWnYarXt3Ut/s5hwru9XKcs1r43vlqTIcVUQIOAJf/FUCixOLa3i3FSyXQpOT5un4liDcHXB5dIg==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-9 (Postfix) with ESMTPSA id
- 42116180040B; Fri, 13 Mar 2026 11:29:44 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH 08/14] accel/mshv: Add access_vp_regs synthetic proc
- features
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260313-quaint-educational-swallow-aac6e3@anirudhrb>
-Date: Fri, 13 Mar 2026 12:29:32 +0100
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <675BD854-D0C3-4942-B32D-2684078DC4D5@unpredictable.fr>
-References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
- <20260311-mshv_accel_arm64_supp-v1-8-c31699b7bc1f@anirudhrb.com>
- <199EF957-0EBD-4E14-8453-1C5FA5B14063@unpredictable.fr>
- <20260312-lucky-cocky-whippet-2a5f3d@anirudhrb>
- <AA5B0DE1-CA87-43F6-9A52-2F9F91F3514D@unpredictable.fr>
- <20260313-quaint-educational-swallow-aac6e3@anirudhrb>
-To: Anirudh Rayabharam <anirudh@anirudhrb.com>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEzMDA5MCBTYWx0ZWRfXy7+E6qQQ4C3C
- RGNqcaOD7rOE5R1e7YCfA29CApCBnDuAdq0zrrP/5M8SyJnFP8I69PDTh9hpVCThdNFDSURDsSn
- dqDksp739CPFsZwwE0z4ixbegLJlHA2Mw1FasorO2o1X1lyhw3ZEgXcsS2pFC5nrHcxIysS8WrM
- Ny9/ypO9KlS4cKSv80jszbsh/gB6fbB7gDjbl4YaBmkxk2O/QOkPBotCqq7kLn/Hdc8cLkVMQP7
- 32LbsW1OZ9a5dUXR40mDuRuXO9FXxUJhJ0SPFoxT6Poq0PDN+xmdpSmeDyhG+KZHFHrO9za9H6h
- Q+7sv25Q3GQc92hdDoXsW+cIjuCkmfmShAee8w3bwICYAtolgxdaGQlxLGM3KU=
-X-Proofpoint-ORIG-GUID: wRCLMcfSPFtHc6-N5626WlGxrdkKdLGh
-X-Authority-Info-Out: v=2.4 cv=b72/I9Gx c=1 sm=1 tr=0 ts=69b3f52b
- cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VwQbUJbxAAAA:8 a=tFGNSmrwAAAA:8 a=yMhMjlubAAAA:8
- a=7S_PsIfMQ22EjxDurrEA:9 a=QEXdDO2ut3YA:10 a=LpD6Tdepsyerr7eS-Jg7:22
-X-Proofpoint-GUID: wRCLMcfSPFtHc6-N5626WlGxrdkKdLGh
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-13_02,2026-03-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 suspectscore=0 mlxscore=0 clxscore=1030
- mlxlogscore=949
- lowpriorityscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603130090
-X-JNJ: AAAAAAABwJoih0NZ3MBDYkDf5KIQr1rAokEbdu6n1xNnf506LE5TNepAEIduljuE9AVD022K5QYM39hnAaLB5qEgGzPZRwQxNYVTtnHPgzFKSRXVcgo6G+AtD95j4IiOmVHNcDlK/5gYfiFodtZENF5KpRyVpfQ6M9LFevBeI83uO30+u5EcOShBqNPO0OCoDt3NV399wJqWVSNYc1uY99XiTcI9LH3XKGfAZKpD2WjjI5jakWTzxgu6ef2LQPDyHB2RG3mUeUJu1TZCL4lF3W/P1K/4Ql9l56zd5IzKXbtBhOryLcuK9DGSzE3eEzNoAOtcUiTFFprDrLYLc3Py28Q5bW+k+HnH1COfQww1Sz5eI+D4jpHKcK7TxVZGqpgsu0diIryt++wCroKz+i/DbUEsytKfRFqv632Br9meOo10fX+FqclwcLB6/SVIP+rvTgHUoG+eIPJESqgwsVeWXkISmmHvU8IhzuvR6RJi+6+cF/Tg2WCY34Ew9iTU216IzpiKgumXm9lD179Mzqj4nA1FMgnXGAU+s8DslDDDNZWlCHxwtP6BwUZDaPwi+DUOMwdRhHHWgoHAid8kAmz9vELCDvquKCEg7wDiuO7bSZUs+E4wYoYj9GZ6HT9irzfIB9sJO3wTyBYRjVuS1BhqZJnpNyO/ZzdT02+JEQTzo+KsHe2hD0a+4GENmQqjOidKS/dwsvkC35syKoEkxSBCEYDdUZS/S69kiGG7bR84hD1ks4fOhUivdWsCKYU2RmL9y9uSerE53TFGVbcMb3dqmF7xPIF5cNUT4yUAAYE8wV9b5/+e5BuYjkFmqXlyPSo=
-Received-SPF: pass client-ip=57.103.91.23;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+ (Exim 4.90_1) (envelope-from <hi@alyssa.is>)
+ id 1w10zA-0006YJ-4V; Fri, 13 Mar 2026 07:47:22 -0400
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id E2E86140015D;
+ Fri, 13 Mar 2026 07:47:12 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+ by phl-compute-03.internal (MEProxy); Fri, 13 Mar 2026 07:47:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alyssa.is; h=cc
+ :cc:content-type:content-type:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:subject
+ :subject:to:to; s=fm3; t=1773402432; x=1773488832; bh=YHTDFZmCdj
+ pGgzTpFT8DScN1F9TlA0VrzlJKBZT3ZK8=; b=b54KzddjuOLH10y0aoAH3Phv/q
+ HRs1adZi/4gwHVM+y7rAqrT5R8QRTpFITcJX8IqbdkMgeQSX3jGxqigsK8efgSbD
+ LrLUQnWvpWWLUsqTskqULHelQFZ9fAYf0RkoDHJTN81bAO6DyredHX22ugMKGvVP
+ gIYM2H6arVtKPVqaxjnsy+rP/5oYTlG19t3xK8217YavXdw7OCnd+JTG71thFSPy
+ 7O5YflWxrwqrBE5O4L+yku/RFlKtCN5n7w+msqNUPcPOvMSfyGpDuwdCsOEjyXkk
+ czvg7yE/EnQjVuz6AOOBpdUz/880J967Sbt3is9vnZaOZgZvLxV1e9bYtIMg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-type:content-type:date:date
+ :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:subject:to
+ :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1773402432; x=1773488832; bh=YHTDFZmCdjpGgzTpFT8DScN1F9TlA0VrzlJ
+ KBZT3ZK8=; b=eOc/KqtsHeOw57hEAMyv6B0M771lF3tpCZUMS1yjT0SIsvZV3Dp
+ od+wIcz5rZqQFRbaeG5HM3uPbSaWKfWIZJGUj8NUb9qP8LdU9kMOaWglTmi/F2CF
+ 60uWWrEud3VY7eVi+KGugKGkSVVXHRddCHgjYZ55pwGTEl/9X5ittu/9cu3ss1Jw
+ 7QXWyhJhH+c4P5oKv17zKRX/beI8HGURF/dLU2gIXyroBJLSAG4aalUA0PYKdso3
+ 5DCSEsh2viDCs9MtbTFtzpzWoZyUjk3mRYdaQZN5lXupOmrYq5xQivpbFi7/uTvu
+ nGrKFM3JEMZs10KxmC8di3P5eH6JzzAGGYg==
+X-ME-Sender: <xms:QPmzadDGmVAyezpDNvRIxE0XgqOpKbYWAK1Uc0sv6QTT9lF4YiTf3w>
+ <xme:QPmzadyKpiD4qJJgxQDtVuRUoYMi3f4dn3sjFrPbGtqDb-peyVWx2xyKJfxEZVKER
+ LcFc2Kk_q8pTHFSt_JMwHNw-bDb_cRhWrE5E4b2c58OkziYf0_Svw>
+X-ME-Received: <xmr:QPmzaa2jvj1KKhhOUf8KldvPIVsLw6h8NObrEIpthNg3O3B6iwIDMj2RtKl-UPrKeA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvkeelheekucetufdoteggodetrf
+ dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+ rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+ gurhephffvvefujghffffkgggtsehgtderredttdejnecuhfhrohhmpeetlhihshhsrgcu
+ tfhoshhsuceohhhisegrlhihshhsrgdrihhsqeenucggtffrrghtthgvrhhnpeetheevud
+ fgjefghefhieejudelkeeljeegvdekueeuhffhgedvveefteevgeetieenucevlhhushht
+ vghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehhihesrghlhihsshgrrd
+ hishdpnhgspghrtghpthhtohepjedpmhhouggvpehsmhhtphhouhhtpdhrtghpthhtohep
+ phgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtohepqhgvmh
+ huqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhes
+ nhhonhhgnhhurdhorhhgpdhrtghpthhtohepmhhighhuvghlrdhluhhishesohhrrggtlh
+ gvrdgtohhmpdhrtghpthhtohepvghrihgtrdgruhhgvghrsehrvgguhhgrthdrtghomhdp
+ rhgtphhtthhopehpsghonhiiihhnihesrhgvughhrghtrdgtohhmpdhrtghpthhtohepkh
+ hvmhesvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:QPmzadyMZAmPefrWy1wC9wJsNW8XPC5uym53hJkhO180z3KB15G92Q>
+ <xmx:QPmzaRF24kAW0718LFeaYbjmcY6A8M5W3f4Vgg90XHZsP6sFzxqASg>
+ <xmx:QPmzaQbreP7vDmhypbZW6-PLWWDKWFZSPLaZIzIgE2W1kQGvm5tbJQ>
+ <xmx:QPmzaTDRBU4LHSM9UJkpZ4tGno8bd-SwRO_gIVMdDbHsRu7mudxk_Q>
+ <xmx:QPmzaSaycT3A_Az_75S-oyA_x3O20NXKs8t3-5ayamwIhhAXQZp_jHdf>
+Feedback-ID: i12284293:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 13 Mar 2026 07:47:12 -0400 (EDT)
+Received: by fw12.qyliss.net (Postfix, from userid 1000)
+ id D4F93888E2EA; Fri, 13 Mar 2026 12:47:08 +0100 (CET)
+From: Alyssa Ross <hi@alyssa.is>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, kvm@vger.kernel.org, Eric Auger
+ <eric.auger@redhat.com>, Miguel Luis <miguel.luis@oracle.com>
+Subject: Re: [PATCH] target/arm/kvm: fall back if nested unsupported
+In-Reply-To: <CAFEAcA8ycT250JaECAYTKF+U2a4m6jauLPLbD8PVx2atd70A7g@mail.gmail.com>
+References: <20260311095405.26297-1-hi@alyssa.is>
+ <CAFEAcA8ycT250JaECAYTKF+U2a4m6jauLPLbD8PVx2atd70A7g@mail.gmail.com>
+Date: Fri, 13 Mar 2026 12:47:07 +0100
+Message-ID: <87fr64vtms.fsf@alyssa.is>
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+Received-SPF: pass client-ip=103.168.172.152; envelope-from=hi@alyssa.is;
+ helo=fhigh-a1-smtp.messagingengine.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,90 +112,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-> On 13. Mar 2026, at 10:01, Anirudh Rayabharam <anirudh@anirudhrb.com> =
-wrote:
->=20
-> On Thu, Mar 12, 2026 at 11:45:48AM +0100, Mohamed Mediouni wrote:
->>=20
->>=20
->>> On 12. Mar 2026, at 11:32, Anirudh Rayabharam =
-<anirudh@anirudhrb.com> wrote:
->>>=20
->>> On Wed, Mar 11, 2026 at 04:35:31PM +0100, Mohamed Mediouni wrote:
->>>>=20
->>>>=20
->>>>> On 11. Mar 2026, at 16:15, Anirudh Rayabharam =
-<anirudh@anirudhrb.com> wrote:
->>>>>=20
->>>>> From: Aastha Rawat <aastharawat@linux.microsoft.com>
->>>>>=20
->>>>> Enable access_vp_regs feature for regs. In arm64, this feature bit
->>>>> allows the guest to set VP registers using hypercall. This wasn't
->>>>> required for x86 because such registers are set using wrmsr =
-instead of
->>>>> hypercall.
->>>>>=20
->>>> Hello,
->>>>=20
->>>> Could you split this into two patches? With the hvhdk.h changes in =
-another patch.
->>>=20
->>> Any reason why?
->>>=20
->>> Throughout this series we're introducing hv*dk changes along with =
-the
->>> code using them. Isn't that a good idea?
->>>=20
->> Hello,
->>=20
->> I think that because of some of the content of header updates =
-aren=E2=80=99t immediately related to the commits at hand, it=E2=80=99d =
-be better to
->> just have a single big commit at the beginning of the series for any =
-GDK/HDK updates.
->=20
-> I think that in this series all the header updates are closely related
-> to the commits they're made in. Do you see a discrepancy?
->=20
-Hello,
+> On Wed, 11 Mar 2026 at 09:54, Alyssa Ross <hi@alyssa.is> wrote:
+>>
+>> If I create a machine with more CPUs than KVM supports, but specify
+>> multiple accelerator options, QEMU will fall back to the next
+>> accelerator.  This is great, because if I've explicitly specified
+>> multiple accelerators, I've told QEMU I'm fine with any of them being
+>> used to provide the machine I want.
+>>
+>> When I create a machine with nested virtualization enabled, though,
+>> this doesn't happen.  KVM often doesn't support it, but TCG always
+>> does.  The nice thing to do would be for QEMU to fall back to TCG if
+>> KVM can't provide, like it does when too many CPUs are requested.
+>> This patch adjusts the behaviour to do that.
+>>
+>> This is very helpful for OS development scripts that run an OS in QEMU
+>> =E2=80=94 I want everybody to be able to run the script, always with
+>> virtualization enabled because the OS requires it, but for it to take
+>> advantage of KVM acceleration when available.
+>>
+>> Signed-off-by: Alyssa Ross <hi@alyssa.is>
+>> ---
+>>  hw/arm/virt.c    | 6 ------
+>>  target/arm/kvm.c | 8 ++++++++
+>>  2 files changed, 8 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 7456614d05..0b63b2eac3 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -2372,12 +2372,6 @@ static void machvirt_init(MachineState *machine)
+>>          exit(1);
+>>      }
+>>
+>> -    if (vms->virt && kvm_enabled() && !kvm_arm_el2_supported()) {
+>> -        error_report("mach-virt: host kernel KVM does not support provi=
+ding "
+>> -                     "Virtualization extensions to the guest CPU");
+>> -        exit(1);
+>> -    }
+>> -
+>>      if (vms->virt && !kvm_enabled() && !tcg_enabled() && !qtest_enabled=
+()) {
+>>          error_report("mach-virt: %s does not support providing "
+>>                       "Virtualization extensions to the guest CPU",
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index d4a68874b8..20dcc6a820 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -615,6 +615,14 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>>          ret =3D -EINVAL;
+>>      }
+>>
+>> +    if (object_property_find(OBJECT(ms), "virtualization") &&
+>> +        object_property_get_bool(OBJECT(ms), "virtualization", NULL) &&
+>> +        !kvm_arm_el2_supported()) {
+>> +        error_report("Using ARM nested virtualization with KVM requires=
+ "
+>> +                     "a host kernel with KVM_CAP_ARM_EL2");
+>> +        ret =3D -EINVAL;
+>> +    }
+>
+> Looking a bit closer at this, it's a bit awkward that we're
+> looking at a machine property in generic target/arm code.
 
-As a random example =
-https://lore.kernel.org/qemu-devel/20260312202209.GA124403@liuwe-devbox-de=
-bian-v2.local/T/#madb0f563a418a8fa1ebe35edd782aa4414893e5c ("accel/mshv: =
-Add access_vp_regs synthetic proc features=E2=80=9D) adds a bunch of =
-other bits that aren=E2=80=99t that directly related to it.
+Isn't SMP a machine property that we're looking at just above?
 
-It doesn=E2=80=99t mean that this info is not useful to have upstream - =
-that=E2=80=99s great to have - but I think that a separate commit for =
-the header updates at the beginning (combining them all) is best.
+> There is no guarantee that the machine is "virt" or that every
+> KVM-supporting machine has a "virtualization" property, and
+> the target/ code isn't really supposed to do board-specific stuff.
 
->>=20
->>=20
->> Oh also, preemptively adding some header definitions before they=E2=80=99=
-re immediately needed could be simpler for everyone
->> - especially given that WHP exists and is overlapping a lot.
->=20
-> Could you please elaborate? How would it be simpler? Do you mean =
-simpler
-> for reviewing?
->=20
-Yes.
+FWIW: there's another arm board with the same property, which I think
+would have the same requirements.  That's why I chose to just check the
+property rather than checking machine type =E2=80=94 the idea being to esta=
+blish
+the convention that machines /do/ have a virtualization property where
+it makes sense.
 
-Thank you,
--Mohamed
-> Thanks,
-> Anirudh.
->=20
->>=20
->> Also makes me think of whether it could be better to share some code =
-between WHPX and MSHV, but that=E2=80=99s a separate
->> story=E2=80=A6
->>=20
->> Thanks,
->> -Mohamed
->>=20
->>=20
+> The board-independent way to say "are we trying to enable EL2" is
+> to look at the CPU property has_el2. But the CPU isn't created at
+> this point, so it's too early to do that here.
 
+I spent a day or so trying to make something involving has_el2 work, but
+ultimately couldn't get anywhere with it.
+
+> Similar things where the early accelerator code wants information
+> from the board we have handled with a method in MachineClass,
+> like get_physical_address_range. We could do that here, but
+> maybe it's a bit over-engineered? IDK.
+
+I'll give it a go and see if I can make it work.
+
+> There are other cases also where the virt board will error
+> out for "KVM and some config we could do with TCG":
+>  * KVM + EL2 + GICv2
+>  * KVM + EL2 + kernel-irqchip=3Doff
+>  * KVM + GICv2 but host hardware doesn't support GICv2 emulation
+>  * KVM + GICv3 but host hardware doesn't support GICv3 emulation
+>  * KVM + MTE but host hardware/kernel doesn't support MTE
+>
+> The first two are "always fails", but if we're going to have
+> a mechanism for "figure out in kvm_arch_init what KVM features
+> the board is going to want to enable" then it might be nice
+> to also be able to use it for the last 3.
+
+I can try that.
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQQGoGac7QfI+H5ZtFCZddwkt31pFQUCabP5OwAKCRCZddwkt31p
+FUe+AP4wXHU1v9+cv/Z4Eg7x6u42pMaZVgpHbFLUGsvhpnpJWgEAoRK2++2ZN1AS
+f8gMqGYDRuW9K56fU0SALQXUVmii2wo=
+=UeI1
+-----END PGP SIGNATURE-----
+--=-=-=--
 

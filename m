@@ -4,144 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1F2106FD66
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 01:36:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B99E0106FD68
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 02:19:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0rRY-0001oa-64; Thu, 12 Mar 2026 21:36:01 -0400
+	id 1w0s7F-0000Qt-Li; Thu, 12 Mar 2026 22:19:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1w0rRV-0001oH-CL; Thu, 12 Mar 2026 21:35:57 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1w0rRR-0002m1-Kh; Thu, 12 Mar 2026 21:35:57 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FfVHCzcTKB/S4mRd7hvrgWJbNtpvjTNpcaCF8b0S5k5veUDPb0UkS7wSthKytVmlGyPmEsFun1+WPs0NFTQHYtFwLlz3ySYeFoE9fPwlxU7ZYrmnDj8Fm7kQepYWAze1FAScfeb57YBYe9PxitGmQtoKi6/TmqPbzCT1qA9ZbtrKZRKLvZ1er+tWop8Oz+3RL1mSml1/x+xF+V0m8H+KGkA4TMMPOZX//8KBXhpOfzaISnlQHhs7xzr26BLbv+p5sis3WIOlkqwgIp+nZsE2OsxWF7XeZOIS5V5SZ8mrPnZzUcM7Yx5G5utal1xKraudiPiTsIRlzlnAaAteDjDHAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TwgqHQK3+h440QYq+CQYtw6jCn9exvEmBZBTvPeOY+w=;
- b=fCeF3cgiTl/4C+Yvx/JEYt5KMe9oj9Ixoof2wCI9gYJA5samqVgMU4avKFGlDV1kfDWe8mpAu9ITbC/wRJ0qCJzvjyFhyWet7upcu5CakbflYEDvskT6LSjnKi+aNnvX2FO8yrgfyDpdZhFTi0I2qPIxhGAnC4C+XJ3XNSuXNmKhRBrg6xX2JN3dVBoYVN5p973ql2KbBwHFZ4Fk3QvwZZ6Pf4x4iM0AYCpo9bXrprOdoFOGW9qYDT1CntNGyf/aB2bNKSVN+rRHnYmnEyNTwiXSaEiSgWMoXydpksA7Fg1pofmonL6bxTYEhSWVPCfLNGCYlx8Pt4Uiv9PHlqrCSw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TwgqHQK3+h440QYq+CQYtw6jCn9exvEmBZBTvPeOY+w=;
- b=phNPU0InalqQS8M5WbTI4mR6qkGUOEiAe/MFSiTJnbUItJG/xvOI2NhWNm/AOfJ/lhC0n3aGVQK1N8i9bszI2Jtc5m9X5aZPtkfgGhdE1daptqj92g4X5GDdRojGsuASCVJaB9/Nf6qBYUFMwDlZX5XLkrwVcNkoO3iea8qBV0u3Z/MlP2nYT4cJzyDHjoweWY5bsf8IOznCoj1DZMibxn2HgkyuPoxh6DFJXB+3vmTiFLLSAuhLX2mh1tdP4oql8bUmkYfNWLtFn4UA+j/BWKWewLZhDdVA0C1iABguTP/xbyJSLn0QQh2iyXXqi3kjexUEBmZcrMS3HWEOF+lusw==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SI6PR06MB7145.apcprd06.prod.outlook.com (2603:1096:4:241::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.20; Fri, 13 Mar
- 2026 01:35:41 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9700.015; Fri, 13 Mar 2026
- 01:35:41 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>, Kane Chen
- <kane_chen@aspeedtech.com>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: RE: [PATCH v4 0/4] Support HACE to AST2700 (resend)
-Thread-Topic: RE: [PATCH v4 0/4] Support HACE to AST2700 (resend)
-Thread-Index: AQHcsjN54NG9CbKqIUq0Q8BBaS589LWrqIlQ
-Date: Fri, 13 Mar 2026 01:35:41 +0000
-Message-ID: <TYPPR06MB820670804B45D43A63786043FC45A@TYPPR06MB8206.apcprd06.prod.outlook.com>
-References: <20250225075622.305515-1-jamin_lin@aspeedtech.com>
- <675766c2-4015-43e8-b070-d58f2cdd23e7@kaod.org>
- <SEYPR06MB5037484B224FD0F3DE53B117FCD02@SEYPR06MB5037.apcprd06.prod.outlook.com>
- <588b3b38-172a-493f-a842-5a2fb5796391@kaod.org>
-In-Reply-To: <588b3b38-172a-493f-a842-5a2fb5796391@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SI6PR06MB7145:EE_
-x-ms-office365-filtering-correlation-id: 1cff7280-1135-4c44-85a8-08de80a0d664
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|13003099007|38070700021|22082099003|18002099003|56012099003|7142099003;
-x-microsoft-antispam-message-info: F/y0tkAOFycMHIYikdsXn7fXYcRpa+Avp3Az1Zw17zF69lVM2hT6IESCkfbu5UB9FuKtUtxgcAc5vHn/4AVOIIl1hqFVsnypiZF+D05ZicVNdZrSRkyWx/5TlmrDT6EoecNfYCa9MdHGEpcfjXIydD7aQ+5twPcPSTeoh2Fnh8i8tbCUFCM1m/GJvFMwrpa/oojJxlJi/m3wyvlRB2klj7bD6m8jcy1XCdNdZA3fsU9N6zao0hVjaCq6lMhSuUwk+jea37d4DtDNA3OqS6sTMeYdxXsey0yy/CuXtdjfjJ/Z+/hpNM+HMpBY6hIIvXDMEeLSCpyXSCSep3ouJP4c2di+dcwPDumk8MNUgveZ1jHEI6MB6EJp4LiIfgVCtFjo3mcOrSWDEDtY5Tr5RyV5EkDILz+nwVN02SHKb+e79wIAbTgvMnC5lASsrv989179cfXqUWmt21oTQJQGVM1+ycvdsoIJvwOizlUcBGzv6zI86ktHZrg1d6kumGymIrB4sSNVmjTfaYvAMkm8gmI44RLfRwxhynjfHQxxH7Y/em5OebLvcdV93UZRh3Fpw31/ymJoH1L/Z8zby6MkuFnQFRuhdWwWqFU6+Zzb5vORVjeOLn9kDLajb15BGz+gKaFGvybZI7nZJtGo5bpHTwtVe4WAD7cdsFAmAIYtAh3sRQs5YhWKDLDe9xlPw+p6UoaXYD1yIvsc3CKbq8x6NkO7Mjw6zOsiaobEMHCVE5DnqJ9r004CEfZvG5uHOBDelk2jUwBW4ZZN0cagql0MZ2/n5VXE5t46DKvVkab3iXqzwGE=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(13003099007)(38070700021)(22082099003)(18002099003)(56012099003)(7142099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WjhEUlEydmk4YmY1Y1R0aXBNUEVsVkFQdHZLTURuYzBMdWJCaS9rSnNXN0hr?=
- =?utf-8?B?RmxsTll2WmkrZHlHQ2JabFpubWM2ZURPdWdSWVljbGI5S21uRUhlMlhRWUxr?=
- =?utf-8?B?c002b21VQkJjV2d6VnVSWngvWkVuV216TzdLTmY5RUVUUUMzTXh2VG94ZUg5?=
- =?utf-8?B?RnlxbEZuREJ4VHR4dkM5RDFPc1loUHVjOEFzMklmWk4yenNLU0o4K2VqVDlm?=
- =?utf-8?B?OFpSaEIzS3dUZmtaWjV4cm5xa0MrdjFkODYxTlRkTEhMdXM3VDlFZ1YxNkJF?=
- =?utf-8?B?VzR5WWhuUVlPUXNITWxaQjdjZHhUSnhTalpkcG4weERIOWF0T21Lby9FMXk0?=
- =?utf-8?B?OGRjVVNQUW02ZWRhL1Y2ejlxK29wcmhITjM4Z3c5cStsS09pTnpxY3JMWTls?=
- =?utf-8?B?S3R1MkpOY3NOdW5WQjFhYVl5VmRLcjdwbFZmbk5PZExoWTU0ZW1GT2o3M2pJ?=
- =?utf-8?B?L2tEOHRnMDQ2VVd3cXBNVUx1WXJRQWRRRU0zWWhmNStHeStBaW4vOGp1S004?=
- =?utf-8?B?ZDVaMEhSaTVtZmJKbmZYcjFVbVd5amhvOGhnNHlZdURFRUUrS25WL1dZM2I0?=
- =?utf-8?B?YmhadmxmMjBXbWRReDNCYUs3eGcxSlQ3Zld2NTRvdzNlWklGbEY3dzNUM2FO?=
- =?utf-8?B?Mk0wY3BZaGN5Wkc4RnBWRXlDb1o0bkY1Mm9lYm9qaWE0NlI0ZUloZ2Q2Ykw1?=
- =?utf-8?B?NmZ2VllBbHRqVXVHUDZiWi94MzR3Zm1XcTBTQm5vL1ZXcFlzYTJBdHBWUDll?=
- =?utf-8?B?cHdOYjg2VzhNa2lrc1hoUTBNV21WMHVMa1A1amJaRWM3UHpJa0JuWVAzeG4v?=
- =?utf-8?B?VXJ0Mk81TW1DRlJkZE9iN1hwbnRubDhFUVRuejQzekJaZnV2c0xzU0VtenJU?=
- =?utf-8?B?Y1B4QmJMZ2gzVXl5MnJ1cXh3NHVUb1hyUUVSUXl1WnFMVXVxYzYrUzA2OWd3?=
- =?utf-8?B?Wkw5WEVBTmQ3TWExZlZzQmQ3ZWg5azR6d2cyVUtidTNQZ29ISDFHTjZJNDZJ?=
- =?utf-8?B?T0RvSitDcThnUEFJbzNGQTQ0WHNKTEh5WDd2dEhwUUFaakFRUTdISmNkUXQ0?=
- =?utf-8?B?MU5VeEp2SDdFVTVMelBUcnFTdXBoaExoVkVtT1hZemY3cWR6akdFNVhuTHhL?=
- =?utf-8?B?dUFKMGkxUzUyeXVQQmw2SlQ3TzNMeG9hSGVqbUdXeW1OZ2VYOTZhOWdMdEpQ?=
- =?utf-8?B?ZlVQd29HSXlqVVEwT3ovQVB4cUZ1WTBxc3RJWXZkd3NIZG9zT2JWcng1Y2hj?=
- =?utf-8?B?elM2M0huQlpwWlVFOXN6QkVucnc3b2pVYnY0NTZhYlRYa2svQU1PaU53OHQ4?=
- =?utf-8?B?TTJzM09hL0NGSTJRREtuK05EekFEZjAzcnVrNktFa0tXZUp5NWRDV2FFbU5R?=
- =?utf-8?B?NUl4bm9PaWdrc2t2Rk5TbitOSlRMMFV4ejFvdHZ2V1lPSmlWUFZZMS9zZVdT?=
- =?utf-8?B?YXlXTFNKT2IrY3FENWw1c09oUjVlUUZqL3V4cXhJaWQrdXNWYXFIRTR6Rmdw?=
- =?utf-8?B?aHYrNFNDNDFhRkNlMndybTNEdTNGSHRhcy8yMzNpNVRodWxIamxlaVMrRURw?=
- =?utf-8?B?TkZCTitCUnZlNjI5cVhYTDFFeU1BSHY3MjdBWTkzNXhyQWxEOFgxb3JOWkpp?=
- =?utf-8?B?YmF5Q3Fta3kzd0NKVVdtaXRIN0ZuRjg1b2hETkVZMHVwNGFBLzhzM3hHZHFy?=
- =?utf-8?B?YnZ5eHZyTmVvVGZWcTc0UTg2UUpQMkNxdzdUbnNEVGpOUzV3WnBwTXMvcE5D?=
- =?utf-8?B?UkdWc2tEeHYzZXQ4eVk3TWdTWUo5eTAxd3hqd1ZQR0pnYlBENEZJcVZTYnVo?=
- =?utf-8?B?bHpwZ2UvMUQ2cmQ3ZEdOOWZ0UGx5Y0Yrc1h0Z0RHMXEwVFM2dm02SzFhVWox?=
- =?utf-8?B?cXhNL0oxU2ZSZzBkajJvd3NiOURKZC9YZy8zNXU4OGVFOWJpY2tHenk2dVUy?=
- =?utf-8?B?Z0NLWldkakU2TXlwdXRDbm5XWXo3TjFBMVYvazBPcjhDUExWYUtLcXB3amkr?=
- =?utf-8?B?ckdmaXA1Z1dCVGcrUmE2V3BwbGw3V0dSNk5hTTNTcDV4VTR6TkJjeldCMWE5?=
- =?utf-8?B?ZnQrb291YUhMdVp1OC9MU0dFbk1HeldHSUtXNUxJaXM2QWhCek1sK29tV0Jh?=
- =?utf-8?B?TmpkYWxWVHo1UGNUek50NDNlWVkvQmwvL3c4MFZvaUE4ZlZ6QkI1b0pjdml1?=
- =?utf-8?B?R3gyZEJnOFdGK0JWU1Y0SGwzTmZwQ0doSllSck1ZWlUzc2IvWitDanFCQTZF?=
- =?utf-8?B?bW5XVktPcWZ6RXhuUlJxd0N4WGZIdXR2OUtDMjh0ejlxNmdYWEVaTkNxMTg5?=
- =?utf-8?B?d1BUNFFqTkhwOXlEb09kU1A3endFWllhVnhsdmZMWE1RQlplQ05sQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1w0s7E-0000QD-8i
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 22:19:04 -0400
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1w0s7A-00080B-5Z
+ for qemu-arm@nongnu.org; Thu, 12 Mar 2026 22:19:04 -0400
+Received: by mail-dy1-x1330.google.com with SMTP id
+ 5a478bee46e88-2b6b0500e06so2024375eec.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 19:18:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1773368339; x=1773973139; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EKe+6BgKY+nLiLRqjwf5WJqTdYg9unFiTr26RFa2JMs=;
+ b=RYCWBh1qFPrG+VKM6+dJAzCg8NZnVrr5pejRoSdyd3aqjXVgyCDZzz4501sMxSoNUs
+ L3TCAV2B4MS+oL42bNKAw/2fhQ2mMnGdqued5V9SX26EcmndAUXACVhzWR3LkgGUGBSW
+ POLQ3da22QWIqnb3wu7BSsSNeBOC1WMIvQHVurhlJ8/8eRZhU0EjF7w8wBUSRxWCuFCu
+ Nv1oKBKuauJCwFmmOa/JVD+imZ5soQLDr3piLDtEdm2AV3+SF6QU5muiCsEyWv/7R5L8
+ 7ANIDHln/bdGj0XTvCO4BvaueCRv24lwuduVDNk+YPH8w4og5zuY7smr3YrlnsNh6LYO
+ wPcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773368339; x=1773973139;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=EKe+6BgKY+nLiLRqjwf5WJqTdYg9unFiTr26RFa2JMs=;
+ b=mC5rY+c1IlvcuxNjvUAokYPm9OScy4CQq1i7SOI4FLuaa7RHltTV1oKkQbhcnjYtJ1
+ tSOr5mdPOwWyunm/SiPfPGmQB7JXP8GkuuFMDMVHP0I1VkmsiirawirhWJlJRX8/Ipzc
+ gNk9OoXBqkS8rW2DoJgoX/nYYuDwO7k+9rokoD/poOHDOWgbWXcB10af2KGYTK1SuLnl
+ UfZz8JU2uuBP3RHNKxfvjL4/3nfCHvVMl56SqvccRULFQ7SFghMLeABSZM5DeqcIyUFy
+ qe9eL97zXe9Kmj41EDUpqrk2m2RXka7nRm/ROreMAKhALrbxaUpW+xx6rzvMrPkl+oFf
+ em0Q==
+X-Gm-Message-State: AOJu0Yxxax7ju21C3sHqzf63qe9vZRCSrGrKEsIygQviVQRFbOP+GGxk
+ RMo6N5jA8CwWkaEC6cDNuPjM5j8R25WlZMtp4wygFVKp3JM9264vS+q7
+X-Gm-Gg: ATEYQzws3tBtWq90z7KvO5EUf5M+lH66khHZWeRRKb43hr8xUSNfTyYt9b0/grcvy6Q
+ D5I/65pnsJuZW7PvDWB4gOAVqSIZsyJVw++QIXoMYSXYwctGIFz3eCb9h+PPYo61EjdqOMYB8Pa
+ 0DhJ7d6kA4H3VoZvRCkKmOKK/K8cyWBnM9LXH6XuiVrlHXXqEzuw6+HcYwWFtBTCs10Nk2N5sbv
+ D38Q/WWK5vb4gVibMKj6UZqGAQhIJoPrWT0kSClT5R8Nag9dFv1Pk3wEJ1MOFqS9HzdHtsFTa30
+ ePgks7RZb8XUmP8p+HQ0AezP7u+Yta0vO/7udTrkepzCrvUUqfshxoh5AGppMhoS0bIkBZzZZVm
+ 8Q7MEtgV2FMWjiS8B2p2vwIIOdRDrHlEEbROnQJabV4q2GBXISLKpZHJxdf7LAx8SPF/J7pRYoN
+ DusGbiceBxe+uM96Yz92uABJOEX/pY05yOWPM4F3Ovb4RtvMLwpfk=
+X-Received: by 2002:a05:7300:8608:b0:2b7:2664:ae9f with SMTP id
+ 5a478bee46e88-2bea53915d5mr806553eec.1.1773368338140; 
+ Thu, 12 Mar 2026 19:18:58 -0700 (PDT)
+Received: from 192.168.0.29 ([2804:14d:4c71:86dd:588a:39d7:d008:37c2])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-2beab3eec52sm796218eec.14.2026.03.12.19.18.55
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 12 Mar 2026 19:18:57 -0700 (PDT)
+From: Lucas Amaral <lucaaamaral@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v2 1/3] target/arm: add AArch64 ISV=0 instruction emulation
+ library
+Date: Thu, 12 Mar 2026 23:18:48 -0300
+Message-ID: <20260313021850.42379-2-lucaaamaral@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260313021850.42379-1-lucaaamaral@gmail.com>
+References: <20260309214852.92545-1-lucaaamaral@gmail.com>
+ <20260313021850.42379-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: TGvO+wwiY0qqGPthMdUFeTQaYHw+Ai10Lm+UQtTFol58lor/UbLAYYq1gDYUnUhfP+FNHj0c1buUQ3tNGPcWRP6kJmEniV/cSShcmoH7faIxqW7mqk1D0fc/TlzdDodI8p2v6lus0mqB28JSjI83ijc5BanBch7Pv3Xs+n0f2d5EGsdoDTX6v+rE+zNr649pPak4gJZ8W9SOAmAK6Wt21PiBTMbhE177y65gPur+c6IFDC6AfQd9DQpbN2gKoTggUP1rUJLaMR9LNLNjhyj5cmxNgz/WUTeZSNPm14/kW1GmWTI6hUHtneR5kBYZiLnf9KtLsbf2ZLwEqx3QaKD8Jw==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1cff7280-1135-4c44-85a8-08de80a0d664
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Mar 2026 01:35:41.2952 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: NDatzy1WQ/CbbUcoaqOSoHLUwLhv9FI2yns5f052zL4nT73QnPh6inpvtwTx9D35eR/kPojyljv+p6ENw0xLUiev5v+jMbF/wq5DE34IPSo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI6PR06MB7145
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1330;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FSL_HELO_BARE_IP_2=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -158,167 +102,1166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-KyBLYW5lDQoNCkhpIENlZHJpYywNCg0KPiBTdWJqZWN0OiBSZTogUkU6IFtQQVRDSCB2NCAwLzRd
-IFN1cHBvcnQgSEFDRSB0byBBU1QyNzAwIChyZXNlbmQpDQo+IA0KPiBIZWxsbyBKYW1pbiwNCj4g
-DQo+IE9uIDMvMTIvMjUgMTA6MzIsIEphbWluIExpbiB3cm90ZToNCj4gPiBIaSBDZWRyaWMsDQo+
-ID4NCj4gPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPj4gRnJvbTogQ8OpZHJpYyBM
-ZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz4NCj4gPj4gU2VudDogV2VkbmVzZGF5LCBNYXJjaCAxMiwg
-MjAyNSA1OjI1IFBNDQo+ID4+IFRvOiBKYW1pbiBMaW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNv
-bT47IFBldGVyIE1heWRlbGwNCj4gPj4gPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz47IFN0ZXZl
-biBMZWUgPHN0ZXZlbl9sZWVAYXNwZWVkdGVjaC5jb20+Ow0KPiA+PiBUcm95IExlZSA8bGVldHJv
-eUBnbWFpbC5jb20+OyBBbmRyZXcgSmVmZmVyeQ0KPiA+PiA8YW5kcmV3QGNvZGVjb25zdHJ1Y3Qu
-Y29tLmF1PjsgSm9lbCBTdGFubGV5IDxqb2VsQGptcy5pZC5hdT47IG9wZW4NCj4gPj4gbGlzdDpB
-U1BFRUQgQk1DcyA8cWVtdS1hcm1Abm9uZ251Lm9yZz47IG9wZW4gbGlzdDpBbGwgcGF0Y2hlcyBD
-QyBoZXJlDQo+ID4+IDxxZW11LWRldmVsQG5vbmdudS5vcmc+DQo+ID4+IENjOiBUcm95IExlZSA8
-dHJveV9sZWVAYXNwZWVkdGVjaC5jb20+DQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjQgMC80
-XSBTdXBwb3J0IEhBQ0UgdG8gQVNUMjcwMCAocmVzZW5kKQ0KPiA+Pg0KPiA+PiBKYW1pbiwNCj4g
-Pj4NCj4gPj4gT24gMi8yNS8yNSAwODo1NiwgSmFtaW4gTGluIHdyb3RlOg0KPiA+Pj4gVGhpcyBw
-YXRjaCBzZXJpZXMgaXMgZnJvbQ0KPiA+PiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3By
-b2plY3QvcWVtdS1kZXZlbC9jb3Zlci8yMDI1MDIxMzAzMzUzMS4NCj4gPj4gMzM2DQo+ID4+IDc2
-OTctMS1qYW1pbl9saW5AYXNwZWVkdGVjaC5jb20vLg0KPiA+Pj4gVG8gZXhwZWRpdGUgdGhlIHJl
-dmlldyBwcm9jZXNzLCBJIGhhdmUgc2VwYXJhdGVkIHRoZSBIQUNFIHBhdGNoZXMNCj4gPj4+IHBv
-cnRpb24gZnJvbSB0aGUNCj4gPj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wcm9qZWN0
-L3FlbXUtZGV2ZWwvY292ZXIvMjAyNTAyMTMwMzM1MzEuDQo+ID4+IDMzNiA3Njk3LTEtamFtaW5f
-bGluQGFzcGVlZHRlY2guY29tLyBwYXRjaCBzZXJpZXMgaW50byB0aGlzIG5ldyBwYXRjaA0KPiA+
-PiBzZXJpZXMuDQo+ID4+Pg0KPiA+Pj4gdjQ6IFN1cHBvcnQgSEFDRSB0byBBU1QyNzAwDQo+ID4+
-Pg0KPiA+Pj4gSmFtaW4gTGluICg0KToNCj4gPj4+ICAgICBody9taXNjL2FzcGVlZF9oYWNlOiBG
-aXggY29kaW5nIHN0eWxlDQo+ID4+PiAgICAgaHcvbWlzYy9hc3BlZWRfaGFjZTogQWRkIEFTVDI3
-MDAgc3VwcG9ydA0KPiA+Pj4gICAgIGh3L2FybS9hc3BlZWRfYXN0Mjd4MDogQWRkIEhBQ0Ugc3Vw
-cG9ydCBmb3IgQVNUMjcwMA0KPiA+Pj4gICAgIGh3L21pc2MvYXNwZWVkX2hhY2U6IEZpeCBib290
-IGlzc3VlIGluIHRoZSBDcnlwdG8gTWFuYWdlciBTZWxmDQo+ID4+PiBUZXN0DQo+ID4+Pg0KPiA+
-Pj4gICAgaW5jbHVkZS9ody9taXNjL2FzcGVlZF9oYWNlLmggfCAgMiArKw0KPiA+Pj4gICAgaHcv
-YXJtL2FzcGVlZF9hc3QyN3gwLmMgICAgICAgfCAxNSArKysrKysrKysrDQo+ID4+PiAgICBody9t
-aXNjL2FzcGVlZF9oYWNlLmMgICAgICAgICB8IDU1DQo+ID4+ICsrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrLS0tDQo+ID4+PiAgICAzIGZpbGVzIGNoYW5nZWQsIDY4IGluc2VydGlvbnMo
-KyksIDQgZGVsZXRpb25zKC0pDQo+ID4+Pg0KPiA+Pg0KPiA+PiBUaGUga2VybmVsIHJlcG9ydHMg
-YSBsb3Qgb2YgZXJyb3JzIHdoZW4gcnVubmluZyB0aGUgY3J5cHRvIHRlc3RzIG9uIGENCj4gPj4g
-QVNUMjcwMCBBMSBTb2MuIFNlZSB0aGUgZnVuY3Rpb25hbCB0ZXN0IGxvZ3MgOg0KPiA+Pg0KPiA+
-PiAgICAgICAkIGdyZXAgYWxnOg0KPiA+PiBidWlsZC90ZXN0cy9mdW5jdGlvbmFsL2FhcmNoNjQv
-dGVzdF9hYXJjaDY0X2FzcGVlZC5BU1QyeDAwTWFjaGluZVNESy4NCj4gPj4gdGVzdCBfYWFyY2g2
-NF9hc3QyNzAwYTFfZXZiX3Nka192MDlfMDUvY29uc29sZS5sb2cNCj4gPj4NCj4gPj4gICAgICAg
-MjAyNS0wMy0xMiAxMDoxMDo0Miw3MDU6IFsgICAgMi4yMDY4MzFdIGFsZzogc2tjaXBoZXI6DQo+
-IGFzcGVlZC1jdHItdGRlcw0KPiA+PiBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyByZXN1
-bHQpIG9uIHRlc3QgdmVjdG9yIDAsIGNmZz0iaW4tcGxhY2UgKG9uZQ0KPiBzZ2xpc3QpIg0KPiA+
-PiAgICAgICAyMDI1LTAzLTEyIDEwOjEwOjQyLDcwNjogWyAgICAyLjIwNzMyOF0gYWxnOiBzZWxm
-LXRlc3RzIGZvcg0KPiA+PiBjdHIoZGVzM19lZGUpIHVzaW5nIGFzcGVlZC1jdHItdGRlcyBmYWls
-ZWQgKHJjPS0yMikNCj4gPj4gICAgICAgMjAyNS0wMy0xMiAxMDoxMDo0Miw3MDc6IFsgICAgMi4y
-MDc4OTRdIGFsZzogc2VsZi10ZXN0cyBmb3INCj4gPj4gY3RyKGRlczNfZWRlKSB1c2luZyBhc3Bl
-ZWQtY3RyLXRkZXMgZmFpbGVkIChyYz0tMjIpDQo+ID4+ICAgICAgIDIwMjUtMDMtMTIgMTA6MTA6
-NDIsNzI1OiBbICAgIDIuMjE5MzQyXSBhbGc6IHNrY2lwaGVyOg0KPiBhc3BlZWQtY3RyLWRlcw0K
-PiA+PiBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyByZXN1bHQpIG9uIHRlc3QgdmVjdG9y
-IDAsIGNmZz0iaW4tcGxhY2UgKG9uZQ0KPiBzZ2xpc3QpIg0KPiA+PiAgICAgICAyMDI1LTAzLTEy
-IDEwOjEwOjQyLDcyNTogWyAgICAyLjIxOTUxMV0gYWxnOiBzZWxmLXRlc3RzIGZvciBjdHIoZGVz
-KQ0KPiA+PiB1c2luZyBhc3BlZWQtY3RyLWRlcyBmYWlsZWQgKHJjPS0yMikNCj4gPj4gICAgICAg
-MjAyNS0wMy0xMiAxMDoxMDo0Miw3MjU6IFsgICAgMi4yMTk2NTFdIGFsZzogc2VsZi10ZXN0cyBm
-b3IgY3RyKGRlcykNCj4gPj4gdXNpbmcgYXNwZWVkLWN0ci1kZXMgZmFpbGVkIChyYz0tMjIpDQo+
-ID4+ICAgICAgIDIwMjUtMDMtMTIgMTA6MTA6NDIsNzMzOiBbICAgIDIuMjI0MzQ0XSBhbGc6IHNr
-Y2lwaGVyOg0KPiBhc3BlZWQtY3RyLWFlcw0KPiA+PiBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3
-cm9uZyByZXN1bHQpIG9uIHRlc3QgdmVjdG9yIDAsIGNmZz0iaW4tcGxhY2UgKG9uZQ0KPiBzZ2xp
-c3QpIg0KPiA+PiAgICAgICAyMDI1LTAzLTEyIDEwOjEwOjQyLDczNDogWyAgICAyLjIyNDc3NV0g
-YWxnOiBzZWxmLXRlc3RzIGZvciBjdHIoYWVzKQ0KPiA+PiB1c2luZyBhc3BlZWQtY3RyLWFlcyBm
-YWlsZWQgKHJjPS0yMikNCj4gPj4gICAgICAgMjAyNS0wMy0xMiAxMDoxMDo0Miw3MzQ6IFsgICAg
-Mi4yMjUwMTVdIGFsZzogc2VsZi10ZXN0cyBmb3IgY3RyKGFlcykNCj4gPj4gdXNpbmcgYXNwZWVk
-LWN0ci1hZXMgZmFpbGVkIChyYz0tMjIpDQo+ID4+ICAgICAgIC4uLg0KPiA+Pg0KPiA+PiBXaGF0
-IGlzIHNvbWV0aGluZyBtaXNzaW5nIGluIHRoZSBtb2RlbHMgPw0KPiA+Pg0KPiA+DQo+ID4gQ3Vy
-cmVudGx5LCB3ZSBkbyBub3QgaW1wbGVtZW50IEhBQ0UvQ1JZUFQgaW4gYXNwZWVkX2hhY2UuYy4N
-Cj4gPiBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvcWVtdS1kZXZlbC9wYXRj
-aC8yMDI1MDIyNTA3NTYyMi4zDQo+ID4gMDU1MTUtNS1qYW1pbl9saW5AYXNwZWVkdGVjaC5jb20v
-DQo+ID4NCj4gPiBLbm93biBJc3N1ZToNCj4gPiBUaGUgSEFDRSBjcnlwdG8gYW5kIGhhc2ggZW5n
-aW5lIGlzIGVuYWJsZSBieSBkZWZhdWx0IHNpbmNlIEFTVDI3MDAgQTEuDQo+ID4gSG93ZXZlciwg
-YXNwZWVkX2hhY2UuYyhIQUNFIG1vZGVsKSBjdXJyZW50bHkgZG9lcyBub3Qgc3VwcG9ydCB0aGUN
-Cj4gQ1JZUFRPIGNvbW1hbmQuDQo+ID4gVG8gYm9vdCBBU1QyNzAwIEExLCBjcmVhdGVkIGEgcGF0
-Y2ggd2hpY2ggdGVtcG9yYXJpbHkgcmVzb2x2ZXMgdGhlDQo+ID4gaXNzdWUgYnkgc2VuZGluZyBh
-biBpbnRlcnJ1cHQgdG8gbm90aWZ5IHRoZSBmaXJtd2FyZSB0aGF0IHRoZQ0KPiA+IGNyeXB0b2dy
-YXBoaWMgY29tbWFuZCBoYXMgY29tcGxldGVkLiBJdCBpcyBhIHRlbXBvcmFyeSB3b3JrYXJvdW5k
-IHRvDQo+ID4gcmVzb2x2ZSB0aGUgYm9vdCBpc3N1ZSBpbiB0aGUgQ3J5cHRvIE1hbmFnZXIgU2Vs
-ZlRlc3QuDQo+ID4NCj4gPiBBcyBhIHJlc3VsdCwgeW91IHdpbGwgZW5jb3VudGVyIHRoZSBmb2xs
-b3dpbmcga2VybmVsIHdhcm5pbmcgZHVlIHRvDQo+ID4gdGhlIENyeXB0byBNYW5hZ2VyIHRlc3Qg
-ZmFpbHVyZS4NCj4gPg0KPiA+IGBgYA0KPiA+IGFsZzogc2tjaXBoZXI6IGFzcGVlZC1jdHItdGRl
-cyBlbmNyeXB0aW9uIHRlc3QgZmFpbGVkICh3cm9uZyByZXN1bHQpIG9uIHRlc3QNCj4gdmVjdG9y
-IDAsIGNmZz0iaW4tcGxhY2UgKG9uZSBzZ2xpc3QpIg0KPiA+IFsgICAgNS4wMzU5NjZdIGFsZzog
-c2VsZi10ZXN0cyBmb3IgY3RyKGRlczNfZWRlKSB1c2luZyBhc3BlZWQtY3RyLXRkZXMgZmFpbGVk
-DQo+IChyYz0tMjIpDQo+ID4gWyAgICA1LjAzNjEzOV0gLS0tLS0tLS0tLS0tWyBjdXQgaGVyZSBd
-LS0tLS0tLS0tLS0tDQo+ID4gWyAgICA1LjAzNzE4OF0gYWxnOiBzZWxmLXRlc3RzIGZvciBjdHIo
-ZGVzM19lZGUpIHVzaW5nIGFzcGVlZC1jdHItdGRlcyBmYWlsZWQNCj4gKHJjPS0yMikNCj4gPiBb
-ICAgIDUuMDM3MzEyXSBXQVJOSU5HOiBDUFU6IDIgUElEOiAxMDkgYXQgL2NyeXB0by90ZXN0bWdy
-LmM6NTkzNg0KPiBhbGdfdGVzdCsweDQyYy8weDU0OA0KPiA+IFsgICAgNS4wMzgwNDldIE1vZHVs
-ZXMgbGlua2VkIGluOg0KPiA+IFsgICAgNS4wMzgzMDJdIENQVTogMiBQSUQ6IDEwOSBDb21tOiBj
-cnlwdG9tZ3JfdGVzdCBUYWludGVkOiBHDQo+IFcgICAgICAgICAgNi42LjUyLXYwMC4wNi4wNC1n
-ZjUyYTBjZjdjNDc1ICMxDQo+ID4gWyAgICA1LjAzODc4N10gSGFyZHdhcmUgbmFtZTogQVNUMjcw
-MC1FVkIgKERUKQ0KPiA+IFsgICAgNS4wMzg5ODhdIHBzdGF0ZTogNjAwMDAwMDUgKG5aQ3YgZGFp
-ZiAtUEFOIC1VQU8gLVRDTyAtRElUIC1TU0JTDQo+IEJUWVBFPS0tKQ0KPiA+IFsgICAgNS4wMzkz
-MTVdIHBjIDogYWxnX3Rlc3QrMHg0MmMvMHg1NDgNCj4gPiBbICAgIDUuMDM5NTA1XSBsciA6IGFs
-Z190ZXN0KzB4NDJjLzB4NTQ4DQo+ID4gWyAgICA1LjAzOTY5N10gc3AgOiBmZmZmZmZjMDgyNWUz
-ZDUwDQo+ID4gWyAgICA1LjAzOTg2Ml0geDI5OiBmZmZmZmZjMDgyNWUzZGYwIHgyODogMDAwMDAw
-MDAwMDAwMDAwNCB4Mjc6DQo+IDAwMDAwMDAwMDAwMDAwMDANCj4gPiBbICAgIDUuMDQwMjI2XSB4
-MjY6IGZmZmZmZmMwODBiY2FkYTAgeDI1OiBmZmZmZmZjMDgxZGFjOWQwIHgyNDoNCj4gMDAwMDAw
-MDAwMDAwMDAwNA0KPiA+IFsgICAgNS4wNDA3MDBdIHgyMzogMDAwMDAwMDAwMDAwMTI4NSB4MjI6
-IGZmZmZmZjgwMDNkZWQyODAgeDIxOg0KPiBmZmZmZmY4MDAzZGVkMjAwDQo+ID4gWyAgICA1LjA0
-MTQ1OF0geDIwOiAwMDAwMDAwMGZmZmZmZmZmIHgxOTogMDAwMDAwMDBmZmZmZmZlYSB4MTg6IGZm
-ZmZmZmZmZmZmZmZmZmYNCj4gPiBbICAgIDUuMDQxOTE1XSB4MTc6IDI4MjA2NDY1NmM2OTYxNjYg
-eDE2OiAyMDczNjU2NDc0MmQ3Mjc0IHgxNToNCj4gMDAwMDAwMDBmZmZmZmZmZQ0KPiA+IFsgICAg
-NS4wNDIyODddIHgxNDogMDAwMDAwMDAwMDAwMDAwMCB4MTM6IGZmZmZmZmMwODFiYTU1NWMgeDEy
-Og0KPiA2NTc0MmQ2NjZjNjU3MzIwDQo+ID4gWyAgICA1LjA0MjY4NF0geDExOiAwMDAwMDAwMGZm
-ZmVmZmZmIHgxMDogZmZmZmZmYzA4MThmZjA0OCB4OSA6DQo+IGZmZmZmZmMwODAwYTM2ZTQNCj4g
-PiBbICAgIDUuMDQzMDc3XSB4OCA6IDAwMDAwMDAwMDAxN2ZmZTggeDcgOiBjMDAwMDAwMGZmZmVm
-ZmZmIHg2IDoNCj4gMDAwMDAwMDAwMDU3ZmZhOA0KPiA+IFsgICAgNS4wNDM0NjFdIHg1IDogMDAw
-MDAwMDAwMDAwZmZmZiB4NCA6IDAwMDAwMDAwMDAwMDAwMDAgeDMgOg0KPiAwMDAwMDAwMDAwMDAw
-MDAwDQo+ID4gWyAgICA1LjA0Mzc1MV0geDIgOiAwMDAwMDAwMDAwMDAwMDAwIHgxIDogMDAwMDAw
-MDAwMDAwMDAwMCB4MCA6DQo+IGZmZmZmZjgwMDQxNWU3NDANCj4gPiBbICAgIDUuMDQ1NTQ0XSBD
-YWxsIHRyYWNlOg0KPiA+IFsgICAgNS4wNDU2OTNdICBhbGdfdGVzdCsweDQyYy8weDU0OA0KPiA+
-IFsgICAgNS4wNDU4NzhdICBjcnlwdG9tZ3JfdGVzdCsweDI4LzB4NDgNCj4gPiBbICAgIDUuMDQ2
-MDUyXSAga3RocmVhZCsweDExNC8weDEyMA0KPiA+IFsgICAgNS4wNDYyMjZdICByZXRfZnJvbV9m
-b3JrKzB4MTAvMHgyMA0KPiA+IFsgICAgNS4wNDY0MTNdIC0tLVsgZW5kIHRyYWNlIDAwMDAwMDAw
-MDAwMDAwMDAgXS0tLQ0KPiA+IFsgICAgNS4wNzE1MTBdIGFsZzogc2tjaXBoZXI6IGFzcGVlZC1j
-dHItZGVzIGVuY3J5cHRpb24gdGVzdCBmYWlsZWQgKHdyb25nDQo+IHJlc3VsdCkgb24gdGVzdCB2
-ZWN0b3IgMCwgY2ZnPSJpbi1wbGFjZSAob25lIHNnbGlzdCkiDQo+ID4gWyAgICA1LjA3MjE0NV0g
-YWxnOiBzZWxmLXRlc3RzIGZvciBjdHIoZGVzKSB1c2luZyBhc3BlZWQtY3RyLWRlcyBmYWlsZWQN
-Cj4gKHJjPS0yMikNCj4gPiBgYGANCj4gDQo+IFRoaXMgaXMgYSBiaXQgY29uZnVzaW5nIGZvciBw
-ZW9wbGUgcnVubmluZyB0aGUgdGVzdHMsIHNpbmNlIGl0IG1pZ2h0IGJlIGNvbnNpZGVyZWQNCj4g
-YXMgYSByZWdyZXNzaW9uIGluIHRoZSBtb2RlbHMuIEkgdW5kZXJzdGFuZCBpdCBpcyBpbnRlcmVz
-dGluZyBmb3IgcmVhbCBIVyBhbmQgc28sDQo+IGl0IHdvdWxkIGdvb2QgdG8gY29tcGxldGUgdGhl
-IGltcGxlbWVudGF0aW9uIG9mIHRoZSBRRU1VIG1vZGVscyB0b28gb3IsDQo+IG1heSBiZSwgd2Ug
-Y291bGQgZGVhY3RpdmF0ZSB0aGUgdGVzdHMgZnJvbSB0aGUga2VybmVsIGNvbW1hbmQgbGluZSA/
-IGlmDQo+IHBvc3NpYmxlLg0KPiANCj4gVGhhbmtzLA0KPiANCg0KV2UgcGxhbiB0byBpbXBsZW1l
-bnQgdGhlICJIQUNFL0NSWVBUIGNvbW1hbmRzIiwgd2hpY2ggc2hvdWxkIHJlc29sdmUgdGhlc2Ug
-a2VybmVsIHdhcm5pbmdzLg0KSG93ZXZlciwgYWNjb3JkaW5nIHRvIHRoZSBrZXJuZWwgc2VsZi10
-ZXN0IHJlcG9ydCwgdGhlIGtlcm5lbCBhdHRlbXB0cyB0byB0ZXN0IHNldmVyYWwgY3J5cHRvIG1v
-ZGVzDQoidGhhdCBhcmUgY3VycmVudGx5IG5vdCBzdXBwb3J0ZWQgYnkgUUVNVSBjcnlwdG8vY2lw
-aGVyLmMgc3VjaCBhcyBDRkIgKENpcGhlciBGZWVkYmFjaykgYW5kIE9GQihPdXRwdXQgRmVlZGJh
-Y2spIg0KDQpyb290QGFzdDI3MDAtZGVmYXVsdDp+IyBkbWVzZyB8IGdyZXAgInNlbGYtdGVzdHMi
-DQpbICAgIDUuMzEyMjMyXSBhbGc6IHNlbGYtdGVzdHMgZm9yIGN0cihkZXMpIHVzaW5nIGFzcGVl
-ZC1jdHItZGVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1LjMxNDkxM10gYWxnOiBzZWxmLXRlc3Rz
-IGZvciBjdHIoZGVzKSB1c2luZyBhc3BlZWQtY3RyLWRlcyBmYWlsZWQgKHJjPS0yMikNClsgICAg
-NS4zMTYzNDddIGFsZzogc2VsZi10ZXN0cyBmb3IgY3RyKGRlczNfZWRlKSB1c2luZyBhc3BlZWQt
-Y3RyLXRkZXMgZmFpbGVkIChyYz0tMjIpDQpbICAgIDUuMzIxMTY3XSBhbGc6IHNlbGYtdGVzdHMg
-Zm9yIGVjYihkZXMpIHVzaW5nIGFzcGVlZC1lY2ItZGVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1
-LjMyMTYyMl0gYWxnOiBzZWxmLXRlc3RzIGZvciBlY2IoZGVzKSB1c2luZyBhc3BlZWQtZWNiLWRl
-cyBmYWlsZWQgKHJjPS0yMikNClsgICAgNS4zNDM0NDNdIGFsZzogc2VsZi10ZXN0cyBmb3IgY3Ry
-KGRlczNfZWRlKSB1c2luZyBhc3BlZWQtY3RyLXRkZXMgZmFpbGVkIChyYz0tMjIpDQpbICAgIDUu
-MzU4Nzg4XSBhbGc6IHNlbGYtdGVzdHMgZm9yIGVjYihkZXMzX2VkZSkgdXNpbmcgYXNwZWVkLWVj
-Yi10ZGVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1LjM1OTI2N10gYWxnOiBzZWxmLXRlc3RzIGZv
-ciBlY2IoZGVzM19lZGUpIHVzaW5nIGFzcGVlZC1lY2ItdGRlcyBmYWlsZWQgKHJjPS0yMikNClsg
-ICAgNS41NDE0NzddIGFsZzogc2VsZi10ZXN0cyBmb3IgY2JjKGRlcykgdXNpbmcgYXNwZWVkLWNi
-Yy1kZXMgZmFpbGVkIChyYz0tMjIpDQpbICAgIDUuNTQxODg4XSBhbGc6IHNlbGYtdGVzdHMgZm9y
-IGNiYyhkZXMpIHVzaW5nIGFzcGVlZC1jYmMtZGVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1LjU2
-MTE5M10gYWxnOiBzZWxmLXRlc3RzIGZvciBjYmMoZGVzM19lZGUpIHVzaW5nIGFzcGVlZC1jYmMt
-dGRlcyBmYWlsZWQgKHJjPS0yMikNClsgICAgNS41NjE2NDVdIGFsZzogc2VsZi10ZXN0cyBmb3Ig
-Y2JjKGRlczNfZWRlKSB1c2luZyBhc3BlZWQtY2JjLXRkZXMgZmFpbGVkIChyYz0tMjIpDQpbICAg
-IDUuNjI5NzA4XSBhbGc6IHNlbGYtdGVzdHMgZm9yIGNiYyhhZXMpIHVzaW5nIGFzcGVlZC1jYmMt
-YWVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1LjYzMDIzNF0gYWxnOiBzZWxmLXRlc3RzIGZvciBj
-YmMoYWVzKSB1c2luZyBhc3BlZWQtY2JjLWFlcyBmYWlsZWQgKHJjPS0yMikNClsgICAgNS42NDAz
-NTZdIGFsZzogc2VsZi10ZXN0cyBmb3IgY3RyKGFlcykgdXNpbmcgYXNwZWVkLWN0ci1hZXMgZmFp
-bGVkIChyYz0tMjIpDQpbICAgIDUuNjQxNTQ0XSBhbGc6IHNlbGYtdGVzdHMgZm9yIGN0cihhZXMp
-IHVzaW5nIGFzcGVlZC1jdHItYWVzIGZhaWxlZCAocmM9LTIyKQ0KWyAgICA1LjY1MzUyOV0gYWxn
-OiBzZWxmLXRlc3RzIGZvciBlY2IoYWVzKSB1c2luZyBhc3BlZWQtZWNiLWFlcyBmYWlsZWQgKHJj
-PS0yMikNClsgICAgNS42NTQyMTJdIGFsZzogc2VsZi10ZXN0cyBmb3IgZWNiKGFlcykgdXNpbmcg
-YXNwZWVkLWVjYi1hZXMgZmFpbGVkIChyYz0tMjIpDQoNCkkgYXNrZWQgb3VyIEJTUCB0ZWFtIHNl
-dmVyYWwgdGltZXMgaWYgdGhleSBjb3VsZCBkaXNhYmxlIHRoZSBjcnlwdG8gc2VsZi10ZXN0cywg
-YnV0IHRoZXkgcmVqZWN0ZWQgdGhlIHJlcXVlc3QuIA0KVGhlaXIgcmVhc29uIGlzIHRoYXQgdGhl
-eSB3YW50IHRvIHZhbGlkYXRlIG91ciBoYXJkd2FyZSBjcnlwdG8gZW5naW5lIGR1cmluZyBrZXJu
-ZWwgc3RhcnR1cCBpbiB0aGUgQVNQRUVEIFNESy4NCklmIHlvdSBwcmVmZXIgbm90IHRvIHNlZSB0
-aGVzZSBrZXJuZWwgd2FybmluZ3MsIEkgY2FuIGFkZCB0aGUgZm9sbG93aW5nIGtlcm5lbCBib290
-IHBhcmFtZXRlciBpbiB0aGUgZnVuY3Rpb25hbCB0ZXN0IGVudmlyb25tZW50Og0KYm9vdGFyZ3M9
-Y29uc29sZT10dHlTMTIsMTE1MjAwbjggcm9vdD0vZGV2L3JhbSBydyBlYXJseWNvbiBjcnlwdG9t
-Z3Iubm90ZXN0cz0xDQoNClRoYW5rcywNCkphbWluDQoNCj4gQy4NCj4gDQoNCg==
+Add a shared emulation library in target/arm/emulate/ using a
+decodetree decoder (a64-ldst.decode) and a callback-based interface
+(struct arm_emul_ops) that any hypervisor backend can implement.
+
+The hypervisor cannot emulate ISV=0 data aborts without decoding the
+faulting instruction, since the ESR syndrome does not carry the access
+size or target register.
+
+Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+---
+ target/arm/emulate/a64-ldst.decode | 293 ++++++++++++
+ target/arm/emulate/arm_emulate.c   | 738 +++++++++++++++++++++++++++++
+ target/arm/emulate/arm_emulate.h   |  55 +++
+ target/arm/emulate/meson.build     |  16 +
+ target/arm/meson.build             |   1 +
+ 5 files changed, 1103 insertions(+)
+ create mode 100644 target/arm/emulate/a64-ldst.decode
+ create mode 100644 target/arm/emulate/arm_emulate.c
+ create mode 100644 target/arm/emulate/arm_emulate.h
+ create mode 100644 target/arm/emulate/meson.build
+
+diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
+new file mode 100644
+index 0000000..9a7b697
+--- /dev/null
++++ b/target/arm/emulate/a64-ldst.decode
+@@ -0,0 +1,293 @@
++# AArch64 load/store instruction patterns for ISV=0 emulation
++#
++# Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++### Argument sets
++
++# Load/store exclusive
++&stxr           rn rt rt2 rs sz lasr
++
++# Load/store pair (GPR and SIMD/FP)
++&ldstpair       rt2 rt rn imm sz sign w p
++
++# Load/store immediate (unscaled, pre/post-index, unprivileged, unsigned offset)
++# 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
++&ldst_imm       rt rn imm sz sign w p unpriv ext u
++
++# Load/store register offset
++&ldst           rm rn rt sign ext sz opt s
++
++# Atomic memory operations
++&atomic         rs rn rt a r sz
++
++# Compare-and-swap
++&cas            rs rn rt sz a r
++
++# Load with PAC (LDRAA/LDRAB, FEAT_PAuth)
++%ldra_imm       22:s1 12:9
++&ldra           rt rn imm m w
++
++### Format templates
++
++# Exclusives
++@stxr           sz:2 ...... ... rs:5 lasr:1 rt2:5 rn:5 rt:5   &stxr
++
++# Load/store pair: imm7 is signed, scaled by element size in handler
++@ldstpair       .. ... . ... . imm:s7 rt2:5 rn:5 rt:5          &ldstpair
++
++# Load/store immediate (9-bit signed)
++@ldst_imm       .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=0
++@ldst_imm_pre   .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=1
++@ldst_imm_post  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=1 w=1
++@ldst_imm_user  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=1 p=0 w=0
++
++# Load/store unsigned offset (12-bit, handler scales by << sz)
++@ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
++
++# Load/store register offset
++@ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
++
++# Atomics
++@atomic         sz:2 ... . .. a:1 r:1 . rs:5 . ... .. rn:5 rt:5   &atomic
++
++# Compare-and-swap: sz extracted by pattern (CAS) or set constant (CASP)
++@cas            .. ...... . a:1 . rs:5 r:1 ..... rn:5 rt:5        &cas
++
++# Load with PAC
++@ldra           .. ... . .. m:1 . . ......... w:1 . rn:5 rt:5     &ldra imm=%ldra_imm
++
++### Load/store exclusive
++
++# STXR / STLXR  (sz encodes 8/16/32/64-bit)
++STXR            .. 001000 000 ..... . ..... ..... .....         @stxr
++
++# LDXR / LDAXR
++LDXR            .. 001000 010 ..... . ..... ..... .....         @stxr
++
++# STXP / STLXP  (bit[31]=1, bit[30]=sf → sz=2 for 32-bit, sz=3 for 64-bit)
++STXP            10 001000 001 rs:5 lasr:1 rt2:5 rn:5 rt:5      &stxr sz=2
++STXP            11 001000 001 rs:5 lasr:1 rt2:5 rn:5 rt:5      &stxr sz=3
++
++# LDXP / LDAXP
++LDXP            10 001000 011 rs:5 lasr:1 rt2:5 rn:5 rt:5      &stxr sz=2
++LDXP            11 001000 011 rs:5 lasr:1 rt2:5 rn:5 rt:5      &stxr sz=3
++
++### Compare-and-swap
++
++# CAS / CASA / CASAL / CASL
++CAS             sz:2 001000 1 . 1 ..... . 11111 ..... .....     @cas
++
++# CASP / CASPA / CASPAL / CASPL (pair: Rt,Rt+1 and Rs,Rs+1)
++CASP            00 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=2
++CASP            01 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=3
++
++### Load/store pair — non-temporal (STNP/LDNP)
++
++# STNP/LDNP: offset only, no writeback.  Non-temporal hint ignored.
++STP             00 101 0 000 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++LDP             00 101 0 000 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++STP             10 101 0 000 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++LDP             10 101 0 000 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           00 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++LDP_v           00 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++STP_v           01 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++LDP_v           01 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           10 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++LDP_v           10 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++
++### Load/store pair — post-indexed
++
++STP             00 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
++LDP             00 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
++LDP             01 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=1 w=1
++STP             10 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
++LDP             10 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
++STP_v           00 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
++LDP_v           00 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
++STP_v           01 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
++LDP_v           01 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
++STP_v           10 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=1 w=1
++LDP_v           10 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=1 w=1
++
++### Load/store pair — signed offset
++
++STP             00 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++LDP             00 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++LDP             01 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=0 w=0
++STP             10 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++LDP             10 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           00 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++LDP_v           00 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
++STP_v           01 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++LDP_v           01 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++STP_v           10 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++LDP_v           10 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++
++### Load/store pair — pre-indexed
++
++STP             00 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
++LDP             00 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
++LDP             01 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=0 w=1
++STP             10 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
++LDP             10 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
++STP_v           00 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
++LDP_v           00 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
++STP_v           01 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
++LDP_v           01 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
++STP_v           10 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=1
++LDP_v           10 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=1
++
++### Load/store pair — STGP (store allocation tag + pair)
++
++STGP            01 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
++STGP            01 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
++STGP            01 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
++
++### Load/store register — unscaled immediate (LDUR/STUR)
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
++
++### Load/store register — post-indexed
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
++
++### Load/store register — unprivileged
++
++# GPR only (no SIMD/FP unprivileged forms)
++STR_i           sz:2 111 0 00 00 0 ......... 10 ..... .....    @ldst_imm_user sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=1
++
++### Load/store register — pre-indexed
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
++
++### PRFM — unscaled immediate: prefetch is a NOP
++
++NOP             11 111 0 00 10 0 --------- 00 ----- -----
++
++### Load/store register — unsigned offset
++
++# GPR
++STR_i           sz:2 111 0 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
++LDR_i           00 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=0
++LDR_i           01 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=1
++LDR_i           10 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=2
++LDR_i           11 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=3
++LDR_i           00 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=0
++LDR_i           01 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=1
++LDR_i           10 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=2
++LDR_i           00 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=0
++LDR_i           01 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=1
++
++# PRFM — unsigned offset
++NOP             11 111 0 01 10 ------------ ----- -----
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
++STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
++LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
++
++### Load/store register — register offset
++
++# GPR
++STR             sz:2 111 0 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++LDR             00 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=0
++LDR             01 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=1
++LDR             10 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=2
++LDR             11 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=3
++LDR             00 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=0
++LDR             01 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=1
++LDR             10 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=2
++LDR             00 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=0
++LDR             01 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=1
++
++# PRFM — register offset
++NOP             11 111 0 00 10 1 ----- -1- - 10 ----- -----
++
++# SIMD/FP
++STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
++LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
++
++### Atomic memory operations
++
++LDADD           .. 111 0 00 . . 1 ..... 0000 00 ..... .....    @atomic
++LDCLR           .. 111 0 00 . . 1 ..... 0001 00 ..... .....    @atomic
++LDEOR           .. 111 0 00 . . 1 ..... 0010 00 ..... .....    @atomic
++LDSET           .. 111 0 00 . . 1 ..... 0011 00 ..... .....    @atomic
++LDSMAX          .. 111 0 00 . . 1 ..... 0100 00 ..... .....    @atomic
++LDSMIN          .. 111 0 00 . . 1 ..... 0101 00 ..... .....    @atomic
++LDUMAX          .. 111 0 00 . . 1 ..... 0110 00 ..... .....    @atomic
++LDUMIN          .. 111 0 00 . . 1 ..... 0111 00 ..... .....    @atomic
++SWP             .. 111 0 00 . . 1 ..... 1000 00 ..... .....    @atomic
++
++### Load with PAC (FEAT_PAuth)
++
++# LDRAA (M=0) / LDRAB (M=1), offset (W=0) / pre-indexed (W=1)
++LDRA            11 111 0 00 . . 1 ......... . 1 ..... .....  @ldra
++
++### System instructions — DC cache maintenance
++
++# SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
++# On MMIO regions, cache maintenance is a harmless no-op.
++NOP             1101 0101 0000 1 --- 0111 ---- --- -----
+diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
+new file mode 100644
+index 0000000..cd8f44d
+--- /dev/null
++++ b/target/arm/emulate/arm_emulate.c
+@@ -0,0 +1,738 @@
++/*
++ * AArch64 instruction emulation for ISV=0 data aborts
++ *
++ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "arm_emulate.h"
++#include "qemu/bitops.h"
++#include "qemu/error-report.h"
++
++/* Named "DisasContext" as required by the decodetree code generator */
++typedef struct {
++    CPUState *cpu;
++    const struct arm_emul_ops *ops;
++    ArmEmulResult result;
++} DisasContext;
++
++#include "decode-a64-ldst.c.inc"
++
++/* GPR data access (Rt, Rs, Rt2) -- register 31 = XZR */
++
++static uint64_t gpr_read(DisasContext *ctx, int reg)
++{
++    if (reg == 31) {
++        return 0;  /* XZR */
++    }
++    return ctx->ops->read_gpr(ctx->cpu, reg);
++}
++
++static void gpr_write(DisasContext *ctx, int reg, uint64_t val)
++{
++    if (reg == 31) {
++        return;  /* XZR -- discard */
++    }
++    ctx->ops->write_gpr(ctx->cpu, reg, val);
++}
++
++/* Base register access (Rn) -- register 31 = SP */
++
++static uint64_t base_read(DisasContext *ctx, int rn)
++{
++    return ctx->ops->read_gpr(ctx->cpu, rn);
++}
++
++static void base_write(DisasContext *ctx, int rn, uint64_t val)
++{
++    ctx->ops->write_gpr(ctx->cpu, rn, val);
++}
++
++/* Memory access wrappers */
++
++static int mem_read(DisasContext *ctx, uint64_t va, void *buf, int size)
++{
++    int ret = ctx->ops->read_mem(ctx->cpu, va, buf, size);
++    if (ret != 0) {
++        ctx->result = ARM_EMUL_ERR_MEM;
++    }
++    return ret;
++}
++
++static int mem_write(DisasContext *ctx, uint64_t va, const void *buf, int size)
++{
++    int ret = ctx->ops->write_mem(ctx->cpu, va, buf, size);
++    if (ret != 0) {
++        ctx->result = ARM_EMUL_ERR_MEM;
++    }
++    return ret;
++}
++
++/* Sign/zero extension helpers */
++
++static uint64_t sign_extend(uint64_t val, int from_bits)
++{
++    int shift = 64 - from_bits;
++    return (int64_t)(val << shift) >> shift;
++}
++
++/* Apply sign/zero extension */
++static uint64_t load_extend(uint64_t val, int sz, int sign, int ext)
++{
++    int data_bits = 8 << sz;
++
++    if (sign) {
++        val = sign_extend(val, data_bits);
++        if (ext) {
++            /* Sign-extend to 32 bits (W register) */
++            val &= 0xFFFFFFFF;
++        }
++    } else if (ext) {
++        /* Zero-extend to 32 bits (W register) */
++        val &= 0xFFFFFFFF;
++    }
++    return val;
++}
++
++/* Register offset extension (DDI 0487 C6.2.131) */
++
++static uint64_t extend_reg(uint64_t val, int option, int shift)
++{
++    switch (option) {
++    case 0: /* UXTB */
++        val = (uint8_t)val;
++        break;
++    case 1: /* UXTH */
++        val = (uint16_t)val;
++        break;
++    case 2: /* UXTW */
++        val = (uint32_t)val;
++        break;
++    case 3: /* UXTX / LSL */
++        break;
++    case 4: /* SXTB */
++        val = (int64_t)(int8_t)val;
++        break;
++    case 5: /* SXTH */
++        val = (int64_t)(int16_t)val;
++        break;
++    case 6: /* SXTW */
++        val = (int64_t)(int32_t)val;
++        break;
++    case 7: /* SXTX */
++        break;
++    }
++    return val << shift;
++}
++
++/*
++ * Load/store pair: STP, LDP, STNP, LDNP, STGP, LDPSW
++ * (DDI 0487 C3.3.14 -- C3.3.16)
++ */
++
++static bool trans_STP(DisasContext *ctx, arg_ldstpair *a)
++{
++    int esize = 1 << a->sz;                   /* 4 or 8 bytes */
++    int64_t offset = (int64_t)a->imm << a->sz;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset; /* post-index: unmodified base */
++    uint8_t buf[16];                           /* max 2 x 8 bytes */
++
++    uint64_t v1 = gpr_read(ctx, a->rt);
++    uint64_t v2 = gpr_read(ctx, a->rt2);
++    memcpy(buf, &v1, esize);
++    memcpy(buf + esize, &v2, esize);
++
++    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDP(DisasContext *ctx, arg_ldstpair *a)
++{
++    int esize = 1 << a->sz;
++    int64_t offset = (int64_t)a->imm << a->sz;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++    uint64_t v1 = 0, v2 = 0;
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++    memcpy(&v1, buf, esize);
++    memcpy(&v2, buf + esize, esize);
++
++    /* LDPSW: sign-extend 32-bit values to 64-bit (sign=1, sz=2) */
++    if (a->sign) {
++        v1 = sign_extend(v1, 8 * esize);
++        v2 = sign_extend(v2, 8 * esize);
++    }
++
++    gpr_write(ctx, a->rt, v1);
++    gpr_write(ctx, a->rt2, v2);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/* STGP: tag operation is a NOP for emulation; data stored via STP */
++static bool trans_STGP(DisasContext *ctx, arg_ldstpair *a)
++{
++    return trans_STP(ctx, a);
++}
++
++/*
++ * SIMD/FP load/store pair: STP_v, LDP_v
++ * (DDI 0487 C3.3.14 -- C3.3.16)
++ */
++
++static bool trans_STP_v(DisasContext *ctx, arg_ldstpair *a)
++{
++    int esize = 1 << a->sz;                   /* 4, 8, or 16 bytes */
++    int64_t offset = (int64_t)a->imm << a->sz;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[32];                           /* max 2 x 16 bytes */
++
++    ctx->ops->read_fpreg(ctx->cpu, a->rt, buf, esize);
++    ctx->ops->read_fpreg(ctx->cpu, a->rt2, buf + esize, esize);
++
++    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDP_v(DisasContext *ctx, arg_ldstpair *a)
++{
++    int esize = 1 << a->sz;
++    int64_t offset = (int64_t)a->imm << a->sz;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[32];
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++
++    ctx->ops->write_fpreg(ctx->cpu, a->rt, buf, esize);
++    ctx->ops->write_fpreg(ctx->cpu, a->rt2, buf + esize, esize);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/* Load/store single -- immediate (GPR) (DDI 0487 C3.3.8 -- C3.3.13) */
++
++static bool trans_STR_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++
++    uint64_t val = gpr_read(ctx, a->rt);
++    if (mem_write(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDR_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint64_t val = 0;
++
++    if (mem_read(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    val = load_extend(val, a->sz, a->sign, a->ext);
++    gpr_write(ctx, a->rt, val);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/*
++ * Load/store single -- immediate (SIMD/FP)
++ * STR_v_i / LDR_v_i (DDI 0487 C3.3.10)
++ */
++
++static bool trans_STR_v_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++
++    ctx->ops->read_fpreg(ctx->cpu, a->rt, buf, esize);
++    if (mem_write(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    ctx->ops->write_fpreg(ctx->cpu, a->rt, buf, esize);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/*
++ * Load/store single -- register offset (GPR)
++ * STR / LDR (DDI 0487 C3.3.9)
++ */
++
++static bool trans_STR(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++
++    uint64_t val = gpr_read(ctx, a->rt);
++    mem_write(ctx, va, &val, esize);
++    return true;
++}
++
++static bool trans_LDR(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint64_t val = 0;
++
++    if (mem_read(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    val = load_extend(val, a->sz, a->sign, a->ext);
++    gpr_write(ctx, a->rt, val);
++    return true;
++}
++
++/*
++ * Load/store single -- register offset (SIMD/FP)
++ * STR_v / LDR_v (DDI 0487 C3.3.10)
++ */
++
++static bool trans_STR_v(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint8_t buf[16];
++
++    ctx->ops->read_fpreg(ctx->cpu, a->rt, buf, esize);
++    mem_write(ctx, va, buf, esize);
++    return true;
++}
++
++static bool trans_LDR_v(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint8_t buf[16];
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    ctx->ops->write_fpreg(ctx->cpu, a->rt, buf, esize);
++    return true;
++}
++
++/*
++ * Load/store exclusive: STXR, LDXR, STXP, LDXP
++ * (DDI 0487 C3.3.6)
++ *
++ * Exclusive monitors have no meaning on MMIO.  STXR always reports
++ * success (Rs=0) and LDXR does not set an exclusive monitor.
++ */
++
++static bool trans_STXR(DisasContext *ctx, arg_stxr *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t val = gpr_read(ctx, a->rt);
++
++    if (mem_write(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    /* Report success -- no exclusive monitor on emulated access */
++    gpr_write(ctx, a->rs, 0);
++    return true;
++}
++
++static bool trans_LDXR(DisasContext *ctx, arg_stxr *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t val = 0;
++
++    if (mem_read(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    gpr_write(ctx, a->rt, val);
++    return true;
++}
++
++static bool trans_STXP(DisasContext *ctx, arg_stxr *a)
++{
++    int esize = 1 << a->sz;                   /* sz=2->4, sz=3->8 */
++    uint64_t va = base_read(ctx, a->rn);
++    uint8_t buf[16];
++
++    uint64_t v1 = gpr_read(ctx, a->rt);
++    uint64_t v2 = gpr_read(ctx, a->rt2);
++    memcpy(buf, &v1, esize);
++    memcpy(buf + esize, &v2, esize);
++
++    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++
++    gpr_write(ctx, a->rs, 0);  /* success */
++    return true;
++}
++
++static bool trans_LDXP(DisasContext *ctx, arg_stxr *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint8_t buf[16];
++    uint64_t v1 = 0, v2 = 0;
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++
++    memcpy(&v1, buf, esize);
++    memcpy(&v2, buf + esize, esize);
++    gpr_write(ctx, a->rt, v1);
++    gpr_write(ctx, a->rt2, v2);
++    return true;
++}
++
++/*
++ * Atomic memory operations (DDI 0487 C3.3.2)
++ *
++ * Non-atomic read-modify-write; sufficient for MMIO.
++ * Acquire/release semantics ignored (sequentially consistent by design).
++ */
++
++typedef uint64_t (*atomic_op_fn)(uint64_t old, uint64_t operand, int bits);
++
++static uint64_t atomic_add(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old + op;
++}
++
++static uint64_t atomic_clr(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old & ~op;
++}
++
++static uint64_t atomic_eor(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old ^ op;
++}
++
++static uint64_t atomic_set(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old | op;
++}
++
++static uint64_t atomic_smax(uint64_t old, uint64_t op, int bits)
++{
++    int64_t a = sign_extend(old, bits);
++    int64_t b = sign_extend(op, bits);
++    return (a >= b) ? old : op;
++}
++
++static uint64_t atomic_smin(uint64_t old, uint64_t op, int bits)
++{
++    int64_t a = sign_extend(old, bits);
++    int64_t b = sign_extend(op, bits);
++    return (a <= b) ? old : op;
++}
++
++static uint64_t atomic_umax(uint64_t old, uint64_t op, int bits)
++{
++    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
++    return ((old & mask) >= (op & mask)) ? old : op;
++}
++
++static uint64_t atomic_umin(uint64_t old, uint64_t op, int bits)
++{
++    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
++    return ((old & mask) <= (op & mask)) ? old : op;
++}
++
++static bool do_atomic(DisasContext *ctx, arg_atomic *a, atomic_op_fn fn)
++{
++    int esize = 1 << a->sz;
++    int bits = 8 * esize;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t old = 0;
++
++    if (mem_read(ctx, va, &old, esize) != 0) {
++        return true;
++    }
++
++    uint64_t operand = gpr_read(ctx, a->rs);
++    uint64_t result = fn(old, operand, bits);
++
++    if (mem_write(ctx, va, &result, esize) != 0) {
++        return true;
++    }
++
++    /* Rt receives the old value (before modification) */
++    gpr_write(ctx, a->rt, old);
++    return true;
++}
++
++static bool trans_LDADD(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_add);
++}
++
++static bool trans_LDCLR(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_clr);
++}
++
++static bool trans_LDEOR(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_eor);
++}
++
++static bool trans_LDSET(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_set);
++}
++
++static bool trans_LDSMAX(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_smax);
++}
++
++static bool trans_LDSMIN(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_smin);
++}
++
++static bool trans_LDUMAX(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_umax);
++}
++
++static bool trans_LDUMIN(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_umin);
++}
++
++static bool trans_SWP(DisasContext *ctx, arg_atomic *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t old = 0;
++
++    if (mem_read(ctx, va, &old, esize) != 0) {
++        return true;
++    }
++
++    uint64_t newval = gpr_read(ctx, a->rs);
++    if (mem_write(ctx, va, &newval, esize) != 0) {
++        return true;
++    }
++
++    gpr_write(ctx, a->rt, old);
++    return true;
++}
++
++/* Compare-and-swap: CAS, CASP (DDI 0487 C3.3.1) */
++
++static bool trans_CAS(DisasContext *ctx, arg_cas *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t current = 0;
++
++    if (mem_read(ctx, va, &current, esize) != 0) {
++        return true;
++    }
++
++    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
++    uint64_t compare = gpr_read(ctx, a->rs) & mask;
++
++    if ((current & mask) == compare) {
++        uint64_t newval = gpr_read(ctx, a->rt) & mask;
++        if (mem_write(ctx, va, &newval, esize) != 0) {
++            return true;
++        }
++    }
++
++    /* Rs receives the old memory value (whether or not swap occurred) */
++    gpr_write(ctx, a->rs, current);
++    return true;
++}
++
++/* CASP: compare-and-swap pair (Rs,Rs+1 compared; Rt,Rt+1 stored) */
++static bool trans_CASP(DisasContext *ctx, arg_cas *a)
++{
++    /* CASP requires even register pairs; odd or r31 is UNPREDICTABLE */
++    if ((a->rs & 1) || a->rs >= 31 || (a->rt & 1) || a->rt >= 31) {
++        return false;
++    }
++
++    int esize = 1 << a->sz;                   /* per-register size */
++    uint64_t va = base_read(ctx, a->rn);
++    uint8_t buf[16];
++    uint64_t cur1 = 0, cur2 = 0;
++
++    memset(buf, 0, sizeof(buf));
++    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
++        return true;
++    }
++    memcpy(&cur1, buf, esize);
++    memcpy(&cur2, buf + esize, esize);
++
++    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
++    uint64_t cmp1 = gpr_read(ctx, a->rs) & mask;
++    uint64_t cmp2 = gpr_read(ctx, a->rs + 1) & mask;
++
++    if ((cur1 & mask) == cmp1 && (cur2 & mask) == cmp2) {
++        uint64_t new1 = gpr_read(ctx, a->rt) & mask;
++        uint64_t new2 = gpr_read(ctx, a->rt + 1) & mask;
++        memcpy(buf, &new1, esize);
++        memcpy(buf + esize, &new2, esize);
++        if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++            return true;
++        }
++    }
++
++    gpr_write(ctx, a->rs, cur1);
++    gpr_write(ctx, a->rs + 1, cur2);
++    return true;
++}
++
++/*
++ * Load with PAC: LDRAA / LDRAB (FEAT_PAuth)
++ * (DDI 0487 C6.2.121)
++ *
++ * Pointer authentication is not emulated -- the base register is used
++ * directly (equivalent to auth always succeeding).
++ */
++
++static bool trans_LDRA(DisasContext *ctx, arg_ldra *a)
++{
++    int64_t offset = (int64_t)a->imm << 3;  /* S:imm9, scaled by 8 */
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = base + offset;  /* auth not emulated */
++    uint64_t val = 0;
++
++    if (mem_read(ctx, va, &val, 8) != 0) {
++        return true;
++    }
++
++    gpr_write(ctx, a->rt, val);
++
++    if (a->w) {
++        base_write(ctx, a->rn, va);
++    }
++    return true;
++}
++
++/* PRFM, DC cache maintenance -- treated as NOP */
++static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
++{
++    (void)ctx;
++    (void)a;
++    return true;
++}
++
++/* Entry point */
++
++ArmEmulResult arm_emul_insn(CPUState *cpu, const struct arm_emul_ops *ops,
++                            uint32_t insn)
++{
++    DisasContext ctx = {
++        .cpu = cpu,
++        .ops = ops,
++        .result = ARM_EMUL_OK,
++    };
++
++    if (!decode_a64_ldst(&ctx, insn)) {
++        return ARM_EMUL_UNHANDLED;
++    }
++
++    return ctx.result;
++}
+diff --git a/target/arm/emulate/arm_emulate.h b/target/arm/emulate/arm_emulate.h
+new file mode 100644
+index 0000000..eef8a37
+--- /dev/null
++++ b/target/arm/emulate/arm_emulate.h
+@@ -0,0 +1,55 @@
++/*
++ * AArch64 instruction emulation library
++ *
++ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef ARM_EMULATE_H
++#define ARM_EMULATE_H
++
++#include "qemu/osdep.h"
++
++/*
++ * CPUState is only used as an opaque pointer (via qemu/typedefs.h).
++ * Callers that dereference CPUState include hw/core/cpu.h themselves.
++ */
++
++/**
++ * ArmEmulResult - return status from arm_emul_insn()
++ */
++typedef enum {
++    ARM_EMUL_OK,         /* Instruction emulated successfully */
++    ARM_EMUL_UNHANDLED,  /* Instruction not recognized by decoder */
++    ARM_EMUL_ERR_MEM,    /* Memory access callback failed */
++} ArmEmulResult;
++
++/**
++ * struct arm_emul_ops - hypervisor register/memory callbacks
++ *
++ * GPR reg 31 = SP (the XZR/SP distinction is handled internally).
++ * Memory callbacks use guest virtual addresses.
++ */
++struct arm_emul_ops {
++    uint64_t (*read_gpr)(CPUState *cpu, int reg);
++    void (*write_gpr)(CPUState *cpu, int reg, uint64_t val);
++
++    /* @size: access width in bytes (4, 8, or 16) */
++    void (*read_fpreg)(CPUState *cpu, int reg, void *buf, int size);
++    void (*write_fpreg)(CPUState *cpu, int reg, const void *buf, int size);
++
++    /* Returns 0 on success, non-zero on failure */
++    int (*read_mem)(CPUState *cpu, uint64_t va, void *buf, int size);
++    int (*write_mem)(CPUState *cpu, uint64_t va, const void *buf, int size);
++};
++
++/**
++ * arm_emul_insn - decode and emulate one AArch64 instruction
++ *
++ * Caller must synchronize CPU state and fetch @insn before calling.
++ */
++ArmEmulResult arm_emul_insn(CPUState *cpu, const struct arm_emul_ops *ops,
++                            uint32_t insn);
++
++#endif /* ARM_EMULATE_H */
+diff --git a/target/arm/emulate/meson.build b/target/arm/emulate/meson.build
+new file mode 100644
+index 0000000..29b7879
+--- /dev/null
++++ b/target/arm/emulate/meson.build
+@@ -0,0 +1,16 @@
++gen_a64_ldst = decodetree.process('a64-ldst.decode',
++    extra_args: ['--static-decode=decode_a64_ldst'])
++
++arm_common_system_ss.add(when: 'TARGET_AARCH64', if_true: [
++    gen_a64_ldst, files('arm_emulate.c')
++])
++
++# Static library for unit testing (links emulation code + decodetree decoder)
++arm_emulate_test_lib = static_library('arm-emulate-test',
++    sources: [files('arm_emulate.c'), gen_a64_ldst],
++    dependencies: [qemuutil],
++    include_directories: include_directories('.'))
++
++arm_emulate_test = declare_dependency(
++    link_with: arm_emulate_test_lib,
++    include_directories: include_directories('.'))
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 6e0e504..a4b2291 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -57,6 +57,7 @@ arm_common_system_ss.add(files(
+   'vfp_fpscr.c',
+ ))
+ 
++subdir('emulate')
+ subdir('hvf')
+ subdir('whpx')
+ 
+-- 
+2.52.0
+
 

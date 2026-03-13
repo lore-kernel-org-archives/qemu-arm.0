@@ -4,86 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFDA105F7AD
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 14:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E73105F7B0
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 14:39:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w133T-0002eU-OD; Fri, 13 Mar 2026 09:59:55 -0400
+	id 1w13fM-0006M0-SC; Fri, 13 Mar 2026 10:39:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w133T-0002eC-7G
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 09:59:55 -0400
-Received: from p-west3-cluster1-host11-snip4-10.eps.apple.com ([57.103.73.241]
- helo=outbound.ms.icloud.com)
+ (Exim 4.90_1) (envelope-from <osteffen@redhat.com>)
+ id 1w13YU-0004o6-2d
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 10:31:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w133R-0004Gl-4Q
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 09:59:54 -0400
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-5 (Postfix) with ESMTPS id
- CCC361800E28; Fri, 13 Mar 2026 13:59:49 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773410391; x=1776002391;
- bh=DHZFEJBviYqWw4jkkZ1Y72fV6fgSDFNyfm/jDvEMzUY=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=cKcQELfPnFyADHjbD5fcOMk9h0hSDp3Tenner9uDcva+Mq3Fs26Hq4AQ8jXOA3QBmmVSWeZcCPz/7wj/qUjRHIuEdXk6G5g7JVouiVWfLDJlrDSBM9kQeDG16Z5c+HSWa94/ZehHteJlC9KH+mbM7MgRKidp3ofj6Ugbc+SFEDnaAdEDCuIyZbpNbo5avpjYgeEc7aV8F4/rGnFdFVorVhx4BymD28Ul3kpNK8/01yQnKK/gDG/NV8TjGXtBjGIzInhfYmVcQz2BSKZNJHfYe+2NPRRueVvOKMWQ9EtIb8o91eDTMM9s/DFPFZtepxRbAWk38KxQ5djwo8U/IWoQkQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-5 (Postfix) with ESMTPSA id
- E3EEB1800E2F; Fri, 13 Mar 2026 13:59:47 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH] target/arm/kvm: fall back if nested unsupported
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA98aTmU0cKSbddQnLFwrmifNfXYaDeNsdvJR9XuB--6ew@mail.gmail.com>
-Date: Fri, 13 Mar 2026 14:59:35 +0100
-Cc: Alyssa Ross <hi@alyssa.is>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- Eric Auger <eric.auger@redhat.com>, Miguel Luis <miguel.luis@oracle.com>
+ (Exim 4.90_1) (envelope-from <osteffen@redhat.com>)
+ id 1w13YR-0003uh-G4
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 10:31:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773412313;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=xTwvEzJBWCB7RbCDEKlCHonjnrwir4x2Pvfboo8omj4=;
+ b=C6qXTOi5crxcAGlo+7PzWPUyh8hPI/dAKsSvOXWOiXrXoFuCgrPEFjkynkYO9w4LFHvhip
+ 424/8sCfq0wcJUfdE4ANZizmLCRKik20KQ6uxCKp1qahmKbYIL+YBBSGS73gnZTd9HVpEn
+ A5wrHYueSBvk8fkoln0aH1in9qz9y6Q=
+Received: from mail-yx1-f72.google.com (mail-yx1-f72.google.com
+ [74.125.224.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-116-L9UUowI-Nr2MkGg9CfWvvQ-1; Fri, 13 Mar 2026 10:31:51 -0400
+X-MC-Unique: L9UUowI-Nr2MkGg9CfWvvQ-1
+X-Mimecast-MFC-AGG-ID: L9UUowI-Nr2MkGg9CfWvvQ_1773412311
+Received: by mail-yx1-f72.google.com with SMTP id
+ 956f58d0204a3-64ad2a28349so3956953d50.3
+ for <qemu-arm@nongnu.org>; Fri, 13 Mar 2026 07:31:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773412311; x=1774017111;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=xTwvEzJBWCB7RbCDEKlCHonjnrwir4x2Pvfboo8omj4=;
+ b=GWvETX4BARJMVUmnhVBbGMMxbQa8E2b9LyylZaD2Fh0t4pzdgEBEBDpWhuRlCezjQt
+ v3MeVdQga1000ioqiuC3G0+IEakIMtWGsul1tFTzSbvFaH6Gbu/DT02IWnqffhJYSleZ
+ cuKzyRlgAH0F737Wa1EDEcZuO/EpYmS1bYdCDjGZifgdlvnT2s1rLuDxqfB4nem1/Cri
+ 5fOu1Xfit4RwxYgF+tBGOnvqhtUZKUyi2Jr0Ma+a1tJe+x8MDSL3Vp4JVfDBz7v99UNg
+ j7Y87U9rEjNPWeWu9iI1icFCgKTRoQOyrltIuv/yC+ys21gCW68+d+WwNTKfzzfvQvrJ
+ 8UXQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVah/pnhLU5eTRJ03c/zkVtqCsridMUXZApOTEJ/4CuJKw3GJJOb4DeoTqaRCG1FfFPe10yEpEYWQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz0cZiRjiIcJoN7abbRHMP7Fqi1kxAsOGERpQT2KcquWOZhcTmN
+ sxhbsHprS5m/vPSIPOdFatxZLky7GKQ0IKL0A4aarGBKX6hxM80PRXwZT2OJPdkrEo0/pYzn1z+
+ 8dqk5IrnYpSGHsXqRGx0huewN/esgKw1FWl2v9LgZSoy33hHmhd6QKHoEAcUeVztiHoHvJrukO7
+ Q1Gk9GwII7KaUdbHlgI2gpEiGI8DvL
+X-Gm-Gg: ATEYQzw3FXE/0iChnSkqnqninI9uXBVJOB8SJihlBnAojEYan7piSXCy09sKPd48fU+
+ EL5oV/AN8hHs9YnUl0bM43EfPbCeEvNRqmxT1kNS9f4XSyaRLFAbRpTbwxuSQrEkMmurY9vU3vG
+ 4XVTJGRHCclykz/v7Yb3E1pAwITxTsmp4vLfvAPccrk+pd5i/DgQpEgmOO5mLtpHdVbEWzpNF/J
+ ZhRs9BWxjFWv5ZRygS1bcXYi1HKk9vnXAWW/Q==
+X-Received: by 2002:a53:e686:0:b0:64d:60f2:8186 with SMTP id
+ 956f58d0204a3-64e62fb9a7amr2716329d50.40.1773412311262; 
+ Fri, 13 Mar 2026 07:31:51 -0700 (PDT)
+X-Received: by 2002:a53:e686:0:b0:64d:60f2:8186 with SMTP id
+ 956f58d0204a3-64e62fb9a7amr2716287d50.40.1773412310669; Fri, 13 Mar 2026
+ 07:31:50 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260311-edk2_arm_serial-v1-1-c25e237116f3@redhat.com>
+ <0b4976f9-cf83-47b4-8f00-cc68c9cf47fd@linaro.org>
+In-Reply-To: <0b4976f9-cf83-47b4-8f00-cc68c9cf47fd@linaro.org>
+From: Oliver Steffen <osteffen@redhat.com>
+Date: Fri, 13 Mar 2026 15:31:39 +0100
+X-Gm-Features: AaiRm53ZdLDBxSqfd-bzrXZ0ZZlydqUIwTqk2ogNbgqI15AVy4Qdu_vAaZjr85k
+Message-ID: <CA+bRGFpcmkX=O1+7L5dHFRGh+M3BAd3BfHbQ+TXHYmcea8_pnA@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: add serial-debug-level property for EDK2
+ firmware
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: Luigi Leonardi <leonardi@redhat.com>, qemu-devel@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Gerd Hoffmann <kraxel@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: BY54V37CDQbOmUXDCwxvoWerMscU4BwlUX-KtKbYON4_1773412311
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <03B77364-61CE-4709-BDAE-20A0F8E49972@unpredictable.fr>
-References: <20260311095405.26297-1-hi@alyssa.is>
- <CAFEAcA8ycT250JaECAYTKF+U2a4m6jauLPLbD8PVx2atd70A7g@mail.gmail.com>
- <87fr64vtms.fsf@alyssa.is>
- <CAFEAcA98aTmU0cKSbddQnLFwrmifNfXYaDeNsdvJR9XuB--6ew@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEzMDExMSBTYWx0ZWRfX9U9/VwciLL1N
- /A6cgiuOsi2GIFOrjZmrXS1u14t2frHrhceNcAR/QLe1ILNPEUOPyfq2r7jhxx/ofo4Gos/ahPG
- 2RXUO4QEr9bDhz64Z08dSLY1lxS2SrYfuiHclSbxov3uQQzCghS7SDRk4l7VRRJBw9lp06RNboS
- YcwW0DfNE48njnTaH/MDnkGzsYn8P/ti6wF2RC1AqZHzQj6KX6Shb6qTttY6mhbNhlMEqiNYIRp
- ztqqH9ssdBPsXybTyC6bYz/hCbJYzOc0VLQ6NcT17bsoEEZ2EOCL676wBkTFMJjGguDwtEHQwle
- kdeHhR7VyOsYoT9B4FH1Oydy9+QwNOm4k0YlxZuzuGxmORPUZOYZLWlk9Ry7O8=
-X-Proofpoint-ORIG-GUID: GkPl7-w7ZnSYq9G5wbqAzd24QH5DZLzK
-X-Authority-Info-Out: v=2.4 cv=b72/I9Gx c=1 sm=1 tr=0 ts=69b41856
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=Y4FzxyyIIySzoEe9l7IA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: GkPl7-w7ZnSYq9G5wbqAzd24QH5DZLzK
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-13_02,2026-03-13_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 suspectscore=0 mlxscore=0 clxscore=1030
- mlxlogscore=960
- lowpriorityscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603130111
-X-JNJ: AAAAAAABLaURqRjtpxUGBkBX3DjTjdKf6MikbuFqW3iue15NZG4HW+y6UHOCJB4KMDKyBWqJjTztose/jVA07X0p+UOtOZ9gKqhvVz5rx3jrQYxVS4oaKTxmatu8EiFuHmha1sScJ0s0jk/g7L1kIRqscNVJTP03Lg5VLHxxX3t6Dnm/TP0KghCUhLNqj435OsBxuw3EwZ6/98e9MD8+uYJlzhHvS6Xk48n+HggTSUD0TDc6b5ruKsdAq3MUZhUjawWbNZjdPQ5b55dnABZfiKSTfpFKWjgUY2pw6dqM7edvlU9fOFurhGe29EuPc9RiAOQpsvcjjknbgGqr1t0MMOcXgye4ExmReBNMaY2EILtOGt5F4SVxFb+uxjthCCU7dGvYX9l4k2VPYflvQKcAWrBUs6PtUjME78S1uNcXvnOy2fvxvGoEWzyBBwhEgwBMt9la//X6ekgWYBdxQzsd05nXer210w4PqnYCMUnZlRmXxAGmtvSla+C7NVueoDnqPOLthIAhOdxZzdoRXLndgsq07lzkRmrmhZM8p/EfpyDcRjKd4de/GRQQffiHMuG6XHryLBssVc4vrd9p5ORnobi3IKzs+3SbuKV2GdTpOni/x0dOWEiex0D97SFuNTsfM8piMRmq23hqoUTCSs1KVNhkd1wRTngGsh66gfdASpaJNGOhFFzW22F/NBq5rb7BSM56z+S1rBJZkQ==
-Received-SPF: pass client-ip=57.103.73.241;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=osteffen@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 13 Mar 2026 10:39:01 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,81 +113,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Wed, Mar 11, 2026 at 11:24=E2=80=AFPM Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> Hi Luigi,
+>
+> On 3/11/26 6:43 AM, Luigi Leonardi wrote:
+> > Add a machine property to pass a debug level to EDK2 firmware via the
+> > device tree. The value is set as an "edk2,debug-level" property on all
+> > pl011 UART nodes.
+> >
+> > This is to create a runtime parameter to set the verbosity of the debug
+> > log on the serial ports in edk2. Currently, the only way to set the
+> > verbosity is a compile-time option.
+> >
+> > DT is used because the fw_cfg interface is not yet initialized in early
+> > boot phases.
+> >
+> > Corresponding edk2 PR: https://github.com/tianocore/edk2/pull/12277
+> >
+> > Suggested-by: Gerd Hoffmann <kraxel@redhat.com>
+> > Signed-off-by: Luigi Leonardi <leonardi@redhat.com>
+> > ---
+> >   docs/system/arm/virt.rst |  6 ++++++
+> >   hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
+> >   include/hw/arm/virt.h    |  2 ++
+> >   3 files changed, 46 insertions(+)
+> >
+>
+> I am not sure if maintainer want to have bootloader specific options in
+> machine code.
+>
+> Alternatively, it's possible to dump virt dtb, modify it, and pass it.
+> $ ./build/qemu-system-aarch64 -M virt,dtb=3Dfile.dtb
 
+I am sure you meant
+qemu-system-aarch64 -M virt -machine dumpdtb=3Dfile.dtb
 
-> On 13. Mar 2026, at 13:33, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Fri, 13 Mar 2026 at 11:47, Alyssa Ross <hi@alyssa.is> wrote:
->>=20
->> Peter Maydell <peter.maydell@linaro.org> writes:
->>> Looking a bit closer at this, it's a bit awkward that we're
->>> looking at a machine property in generic target/arm code.
->>=20
->> Isn't SMP a machine property that we're looking at just above?
->=20
-> It's one of the ones in the base MachineState that exist for
-> all boards.
->=20
->>> There is no guarantee that the machine is "virt" or that every
->>> KVM-supporting machine has a "virtualization" property, and
->>> the target/ code isn't really supposed to do board-specific stuff.
->>=20
->> FWIW: there's another arm board with the same property, which I think
->> would have the same requirements.  That's why I chose to just check =
-the
->> property rather than checking machine type =E2=80=94 the idea being =
-to establish
->> the convention that machines /do/ have a virtualization property =
-where
->> it makes sense.
->>=20
->>> The board-independent way to say "are we trying to enable EL2" is
->>> to look at the CPU property has_el2. But the CPU isn't created at
->>> this point, so it's too early to do that here.
->>=20
->> I spent a day or so trying to make something involving has_el2 work, =
-but
->> ultimately couldn't get anywhere with it.
->>=20
->>> Similar things where the early accelerator code wants information
->>> from the board we have handled with a method in MachineClass,
->>> like get_physical_address_range. We could do that here, but
->>> maybe it's a bit over-engineered? IDK.
->>=20
->> I'll give it a go and see if I can make it work.
->>=20
->>> There are other cases also where the virt board will error
->>> out for "KVM and some config we could do with TCG":
->>> * KVM + EL2 + GICv2
->>> * KVM + EL2 + kernel-irqchip=3Doff
->>> * KVM + GICv2 but host hardware doesn't support GICv2 emulation
->>> * KVM + GICv3 but host hardware doesn't support GICv3 emulation
->>> * KVM + MTE but host hardware/kernel doesn't support MTE
->>>=20
->>> The first two are "always fails", but if we're going to have
->>> a mechanism for "figure out in kvm_arch_init what KVM features
->>> the board is going to want to enable" then it might be nice
->>> to also be able to use it for the last 3.
->>=20
->> I can try that.
->=20
-> Thanks, that would be helpful. I don't really have any
-> specific ideas about what kind of API might be best here.
->=20
-> There are probably similar issues with the other accelerators,
-> e.g. -accel hvf,tcg -machine virtualization=3Don
-> also ought to fall back to TCG, and similarly with "picked
-> a GIC version we can't handle with this accelerator=E2=80=9D.
-Hello,
+Yes, that works. Thanks for pointing this out.
 
-Something to note about that (with HVF and KVM) is that there=E2=80=99s
-also kernel-irqchip=3Doff/on to take into mind. For example on a =
-vGICv3-only
-system you can still run GICv2 VMs with kernel-irqchip=3Doff on KVM.
+> $ ... modify dt ...
+> $ ./build/qemu-system-aarch64 -M virt,dtb=3Dfile.dtb
+>
+> It has the advantage to be extensible to any other kind of options you
+> want to pass through dtb without needing modification on QEMU itself,
+> the downside being that it's less convenient than a command line option.
+>
+> Regards,
+> Pierrick
+>
 
-And for HVF once the hardware irqchip is merged kernel-irqchip=3Doff
-will remain there for (primarily) GICv2 usage.
-
+Regards,
+  Oliver
 
 

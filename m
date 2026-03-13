@@ -4,96 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B382A105F7A2
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 12:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B3A105F7A2
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 12:33:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w11VK-0006LQ-6n; Fri, 13 Mar 2026 08:20:34 -0400
+	id 1w11hf-0002Kd-Eh; Fri, 13 Mar 2026 08:33:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w11VD-0006Kq-W7
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:20:28 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1w11hd-0002Jq-JS
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:33:17 -0400
+Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w11VB-0000vN-Qa
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:20:27 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-64c9707fc11so1599169d50.2
- for <qemu-arm@nongnu.org>; Fri, 13 Mar 2026 05:20:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773404423; cv=none;
+ id 1w11hb-00032b-Ty
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:33:17 -0400
+Received: by mail-yx1-xb135.google.com with SMTP id
+ 956f58d0204a3-64cb577e79cso2447871d50.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Mar 2026 05:33:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773405195; cv=none;
  d=google.com; s=arc-20240605;
- b=PIiCS7oCyHfzPYFmYYzsdeDuVB6L7RnPNTytCd7OfllvvSu9oXuliG6BGZ0RzkJkqv
- uiVjMBPy9dzMipOPd+cR3JyHaxoPye2cuZ+CX/4GZO+ZwW/P+KctU+JW6uPfj/yNR/Kw
- AO8oBze5fZrPYu4L0+G2h15/JhNAskrjQgURk8VwwVgXNA0X4OKwyOsSpDskunDPh0Im
- 8Hmpl5EYRPk0Fh8AqsZDPQloktQeKPpAkM4qgh1kshGsfNnEwH4zqtlW/S1GCnr2kgg1
- pW58pZEw/1eSFpptaBOJkcMJvT8/Q36l6B+bUi4Hsz/SgK2SAwea2pbiAV0+y0omJc6q
- KyCg==
+ b=eB7cQMdsy32IV7AQ2WscI15Iir/KB66wTwpWwZwA+xXVNvSy1tyDK272rAonDN2qwI
+ vS7c2tgLaxrLgiP2ocbDQnB3+BYoZcLFPD7lp3FhDLeQWuGppyzwz45zJLi2H12LZp1m
+ zagkBw9MSVgmaaduPp29ShWs7BjZ3CvdfggCgirbCiANprmuLnbXNBzS0KiC0OyktFTo
+ jBa7YfYyXaDFa1toMqEKIbErhTnwQFR0cQfne/hsfxL0usZjK5WbXdnbT0mlfJgyqqs2
+ Ahe02dXNya/aRtjcyg1Q6wdmJcGNrGPvs7JnYzFpbPXEAnwxjsXylSZ0VKu/NBomQKDi
+ umlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=PgRWUtsedyaNPnBlBSFG0BGptSwHAXFB3vUXIJ8SexU=;
- fh=+CgVuqdux9Voya0XHFtVImPekMUs7xRTZi4jGoA4Uig=;
- b=dMjEjxC9pkWWHI7KleoIpE3HTzebuknSuv4H79ktBnxR8iiscNM5FPfE8jkChOuyHa
- 1Ioyq7FSiLr2PzdvhiMpGaGDTTQwwAybO6WQDYriCao5ko/LNqvYQRhaYMEQmzPwk/CO
- wcOeD0yeOv//Rv5hxQqR89PwGY1c9h3AV2fD3v7y75uzKzY5ydHoIYVsIVrz9B+jEYW+
- 5yllfcH1sQzWroU/tLeVr/eaxoGHmnTiVHwUwAgkbsXGwp1TIF9qqwjNSdh4EoDNTGDU
- 8Ax8ofvZ1HGzU0RA3Y20d1sMJqKmTzAWqlscAWhy3Asb7sZHfHptuuL4nnuj0jBzmSbz
- 9rxQ==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=8qpkgKKZi4M0dKGmoIqvJ6FewWUr3N/GbWr7jXlFiMc=;
+ fh=1F2iaaSa0phuO0cFy7xa1+zqaQZvgYNxxAeLV40znc0=;
+ b=feBZKXfLIokrfwmBw0wiZRXffYFaiZxgrY2b9YQPDv7TRruaElD/ivw/kQprIe6far
+ cqUHl+8PQSVtnejGux+BuXFy1rRPSbfn9Kw8z42l4AZ5Jcp+8r78Is6o4fmNMuUEV9oQ
+ mRjmfGycnqG3+GE2guZwPjHrRHUfVP7uI+P2iNMFw9AUlBH75gShGN0UH1ONvWv/9Mzr
+ QEs1VNHz11RdF+mmF5F4LEh27+4m1fAz1Q/TqnEt4vkiEdwMVnM419JdFrlanIz07FZJ
+ O6tU1RvR7bJnrRzuEXPas9rgpRdbY7IPEGDqnphXnlkWEkx01S4uu3y5Zn5EDhAFru8u
+ BSQg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773404423; x=1774009223; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PgRWUtsedyaNPnBlBSFG0BGptSwHAXFB3vUXIJ8SexU=;
- b=JhSI+jt87Ayl4GW0ni2wI7+SzPnmaTkfeT9AXHSy7FH+T6Sm57PUfrhyc4t8PxOrXD
- BHldYYZWAHxsxG6AdWKtuFYuCtbvb7opmZUQhua6FtbjkCPVauzsbDk4I+jkCtwqrbUZ
- YBaoX9vxokO5Wo7r+rx2gpZ6YPly/BRDZ0alqmqw+/UQBGbl1Reyzk1bm4i+nDPyqF1o
- QEVi8AHYzfT0cBRVMx7+XcJb+6bqIh/W5lPDnjP7QKmtW0BBRr/h3fkBaTmtsSftxqea
- pszO5jclYbU9OPpsrxY46NY3w2XmDe0F1k4M1Lj+CBj/G1I3yzVGIbu2jZire+kV9zrS
- xmUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773404423; x=1774009223;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1773405195; x=1774009995; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PgRWUtsedyaNPnBlBSFG0BGptSwHAXFB3vUXIJ8SexU=;
- b=XFcKkgo5FQYjn/FpM6lRZDDHBzdvGY+HsjaHYBEMuvnsgzfs3UDdx3LoDm8UdIW63a
- R9TNT+4Y/cC7kWsX3VtcWnNrYzYAUiS9KxxJ35QpxgfPucdSRy3wPIogVwNcBegl/RTz
- 277FUYbcmMLQ47dsa+c/2eoMmFk+5rxWGPCEhv/AaF3bUwWTr/ZCTqa2e2U2Oj/B6UND
- x4faJ2AAThTnnoc6bjKq89KFcMDf5pIw3uzYbGjpEAEqj5JP8uKFnviTn3Y9UwnCuB2W
- hZaCkxmhk9aMVvjjqMTNcY7aYxq3IHOWsr3JF2TPprT3LHWPjhD4DDsdu031zZ7+A+BB
- cCDQ==
+ bh=8qpkgKKZi4M0dKGmoIqvJ6FewWUr3N/GbWr7jXlFiMc=;
+ b=hb1HyqOu1Q0roaNzlPRBtQbuBjk71j5ChA4L2W2ipAasR87n0QRM1OBfHKmWu5FJmg
+ tl7qyZZTx+wYfWLBaiIEOx107dTbQ2D3MkoXI7xW8f6zcfRI/TnGOq+XWu3HQ/d907p/
+ sxhkEEk25Bzl6USZpjtacmKvYXamkGzq5+m6vlkOOtuKSLGSCJRxFNEpW0rqjOPb1hMY
+ yJz997hcCyfdPvo+GO41bt0S/c7Gz24ei9WhdqYQ7vg7eZwsjhWnOk/AKdBlAORGOfJY
+ qCX8ysmybW2SgbSdiNdPArOs9BSQ/KFFXMRbYwj0WvDCIAoXTulb4YwQN2C4O2qyOFET
+ a7gA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773405195; x=1774009995;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=8qpkgKKZi4M0dKGmoIqvJ6FewWUr3N/GbWr7jXlFiMc=;
+ b=AR+FKJIR/fNcZFHsxR0ptEio80R91JHy8OdHQqiwpvvuLbS6JvVidm3gPYa3fFCRO3
+ kV9jIuuNCAWoFxicIaD0WGVgJJ7l7v9iWc3xh7JQC0wzLc8OSU393dZgxa2MgJfuCbpW
+ 8PGFivtWniyHEmkn5QrHvv/B2A22YJleJS41gTghld0oKP7+sZ4VqM16eboAY8pOuk2Z
+ 9ALgBI/Flld6ecyOnffJybbCrS7vqJskHA2mTUq4UiZab8ryjBHmYxM5U/wA68TAZsQz
+ cVF/qLM3vGkUxl/gHyLc0tT5pcD/a2j8bDHm2o4Tr2eaTeUkllxP263SS/cgb0FD3cJi
+ SbzQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUzSCtAElVqxAqZFTD5cdHX3AfuNFKHDDM4uJ3BBRpLP0vuDIhsRgGAjqwBsva1B+SbLNbxaMmqMg==@nongnu.org
-X-Gm-Message-State: AOJu0YwHz4KzQHid8G+eQ/tMH+VsQQicnwtH/zDY9rBIqVsBXb2fAW6L
- DfBXJsFT0QrNmZMRg5gIxTpejeG2DkQL3f4kCCvmHTyI97p1VO6f1hQmkEikXJymboLZ8vm2uSD
- Pw7gTmau8gbpUTl+q1Tt7Mu0fOj1pvdNtHzO/5dpwcg==
-X-Gm-Gg: ATEYQzwLl1QKNRy2vzKAwEncTFOVYGlpyXUJ2hphda1dnrlWotAWvSro3omzdk5kXDN
- Z4/cJZwge2viYOzJZldsX3MEX/+eTgBxIDaBMCEDqkQaN8uj8dDM7KwZIIRL9gmHqiRl67NkhEv
- aZd4BAfMTjE+V/Zd2quRismhRU2Dps8oMHTCE9EypXlbp+HFKUjZAGj7oKKWr60YXyZV8U6qZ1T
- O7x3ML7cZ3mjg47w2UgVDUlHbYrY4bnLaoHme6RMeTTO/8/et3My8DJ13K3uYtS6YTBWKHstb5t
- GEvLVO/3SLXe3OQlcjvKlZkh24mPWRxW/mEo3O0R6w9riN1FwuDD+dmcNbbEWpFx714=
-X-Received: by 2002:a05:690e:42c1:b0:64c:bfd0:ad6f with SMTP id
- 956f58d0204a3-64e62fa057dmr2433119d50.33.1773404422795; Fri, 13 Mar 2026
- 05:20:22 -0700 (PDT)
+ AJvYcCUmUoujex+30Pa/4LUpKWna11ENLyWxR4xhFWJ6Ctg0Jgcq024cqcf4VEZP9VZ5s8uQkeifU/tsfA==@nongnu.org
+X-Gm-Message-State: AOJu0YxnfkQt3KeLUoE+Cn/vMTV+dqAD9ZI3PncEkO4gO3h7NurH5CPD
+ 95ILXcFbt+CM6zw3CqtfhFGQAk6EqZmmTyHR9jzqfsCYeLPn1OK+0BaR9efK1j1ysPUHPwQEx0f
+ EoxVGPJEQMB4O6+8/CxbGQULu0EzMYmkmKQx78MGGNA==
+X-Gm-Gg: ATEYQzzjYVFhi3BpfOec9bMc9dGt3piP1s/XuGAVkw0Hshs9834CcD028UWS7KRtsme
+ n5ResECIowIH72Gq+FIx4egaxhROJSgrcmjFvmgGoWlckfLxBBjM9WtfM0pw8tcPa02gR8S4ACZ
+ czbVk2IaXqtY1znch/1zkUfGQQJv4+pPEPCpnriZvMe/+TVVoP2g4JyF2Xko2RSuY9U5lkyFZ+W
+ SRpD/EbDiiN6b78nnqmWxSdutvOYYqN9ugNPTMcCHvZJDwtjiFlSPNSrer0Ct2ABKtdNITjm4aH
+ aFyjzsKhsIbGMmLm7IcOptkqQklRfPOV1p8h2VFO1wxVr6cZDZfDUZsCYdqM5gopfmfWon2g9DQ
+ auQ==
+X-Received: by 2002:a53:ee60:0:b0:64d:29b6:3853 with SMTP id
+ 956f58d0204a3-64e63084523mr2294434d50.62.1773405194653; Fri, 13 Mar 2026
+ 05:33:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1773301927.git.dingtao0430@163.com>
- <97c01f634c255f3787ab8a71bfe8ccc03e8d353c.1773301927.git.dingtao0430@163.com>
-In-Reply-To: <97c01f634c255f3787ab8a71bfe8ccc03e8d353c.1773301927.git.dingtao0430@163.com>
+References: <20260311095405.26297-1-hi@alyssa.is>
+ <CAFEAcA8ycT250JaECAYTKF+U2a4m6jauLPLbD8PVx2atd70A7g@mail.gmail.com>
+ <87fr64vtms.fsf@alyssa.is>
+In-Reply-To: <87fr64vtms.fsf@alyssa.is>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2026 12:20:10 +0000
-X-Gm-Features: AaiRm507PHi0Q49DBYNuHfYHkoy2xSdRcjE4eanSYety7J-Z_SJWAe1nJU7ivNQ
-Message-ID: <CAFEAcA-kBmfYzpx5WKwhy5M+zAztoMsP6NAhnoJ5S6KdxnWArQ@mail.gmail.com>
-Subject: Re: [PATCH v1 2/3] The swidth and dwidth of pl080 are not equal.
-To: Tao Ding <dingtao0430@163.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Fri, 13 Mar 2026 12:33:02 +0000
+X-Gm-Features: AaiRm524LdjNgHnlTdSFCUVAmKkaUkrny2G6lg3rMMTHEglnrcDvbVKjUJvoiPM
+Message-ID: <CAFEAcA98aTmU0cKSbddQnLFwrmifNfXYaDeNsdvJR9XuB--6ew@mail.gmail.com>
+Subject: Re: [PATCH] target/arm/kvm: fall back if nested unsupported
+To: Alyssa Ross <hi@alyssa.is>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, 
+ kvm@vger.kernel.org, Eric Auger <eric.auger@redhat.com>, 
+ Miguel Luis <miguel.luis@oracle.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,148 +123,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 12 Mar 2026 at 08:02, Tao Ding <dingtao0430@163.com> wrote:
+On Fri, 13 Mar 2026 at 11:47, Alyssa Ross <hi@alyssa.is> wrote:
 >
-> The amount of data transmitted each time is the maximum value between s and w,
-> but it should be noted that the remaining transmission amount is less than the width.
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> > Looking a bit closer at this, it's a bit awkward that we're
+> > looking at a machine property in generic target/arm code.
 >
-> Configure swidth to 1 byte, width to 4 bytes, and transfer size to 4.
+> Isn't SMP a machine property that we're looking at just above?
+
+It's one of the ones in the base MachineState that exist for
+all boards.
+
+> > There is no guarantee that the machine is "virt" or that every
+> > KVM-supporting machine has a "virtualization" property, and
+> > the target/ code isn't really supposed to do board-specific stuff.
 >
-> Configuration
->     ../configure --target-list=arm-softmmu --enable-debug
-> Reproducer
->     ./qemu-system-arm -M versatilepb -m 128M -nographic -S \
->     -device loader,addr=0x00000000,data=0x44332211,data-len=4 \
->     -device loader,addr=0x00001000,data=0x00000000,data-len=4 \
->     -device loader,addr=0x10130030,data=0x00000001,data-len=4 \
->     -device loader,addr=0x10130100,data=0x00000000,data-len=4 \
->     -device loader,addr=0x10130104,data=0x00001000,data-len=4 \
->     -device loader,addr=0x10130108,data=0x00000000,data-len=4 \
->     -device loader,addr=0x1013010C,data=0x9e47f004,data-len=4 \
->     -device loader,addr=0x10130110,data=0x0000c001,data-len=4
+> FWIW: there's another arm board with the same property, which I think
+> would have the same requirements.  That's why I chose to just check the
+> property rather than checking machine type =E2=80=94 the idea being to es=
+tablish
+> the convention that machines /do/ have a virtualization property where
+> it makes sense.
 >
-> Qemu monitor
->     (qemu) xp /1wx 0x00001000
->     00001000: 0x00002211
+> > The board-independent way to say "are we trying to enable EL2" is
+> > to look at the CPU property has_el2. But the CPU isn't created at
+> > this point, so it's too early to do that here.
 >
-> The result correctly after fixed
->     (qemu) xp /1wx 0x00001000
->     00001000: 0x44332211
+> I spent a day or so trying to make something involving has_el2 work, but
+> ultimately couldn't get anywhere with it.
 >
-> Signed-off-by: Tao Ding <dingtao0430@163.com>
-> ---
->  hw/dma/pl080.c | 32 ++++++++++++++++++++------------
->  1 file changed, 20 insertions(+), 12 deletions(-)
+> > Similar things where the early accelerator code wants information
+> > from the board we have handled with a method in MachineClass,
+> > like get_physical_address_range. We could do that here, but
+> > maybe it's a bit over-engineered? IDK.
 >
-> diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-> index 0979a687aa..4f97943b28 100644
-> --- a/hw/dma/pl080.c
-> +++ b/hw/dma/pl080.c
-> @@ -160,26 +160,34 @@ again:
+> I'll give it a go and see if I can make it work.
 >
->              /* Transfer one element.  */
->              /* ??? Should transfer multiple elements for a burst request.  */
-> -            /* ??? Unclear what the proper behavior is when source and
-> -               destination widths are different.  */
->              swidth = 1 << ((ch->ctrl >> 18) & 7);
->              dwidth = 1 << ((ch->ctrl >> 21) & 7);
-> -            for (n = 0; n < dwidth; n+= swidth) {
-> +            xsize = (dwidth < swidth) ? swidth : dwidth;
-
-I think this can be more clearly written as
-     xsize = MAX(swidth, dwidth);
-since we're editing the line anyway.
-
-> +            xsize = (xsize < size * swidth) ? xsize : (size * swidth);
-
-   xsize = MIN(xsize, size * swidth);
-
-So this is handling the case where our destination width is larger
-than the remaining amount the transfer size says we should be reading
-from the source, which is cases like
-"source width = 1, dest width = 4, transfer count not a multiple of 4".
-The TRM is unfortunately very vague about what the hardware does here.
-I think the hardware designers considered this to be a programming error:
-in the "Software considerations" section of the TRM one of the items is:
-
- * If the source width is less than the destination width, the
-   TransferSize value multiplied by the source width must be an
-   integral multiple of the destination width.
-
-> +            for (n = 0; n < xsize; n += swidth) {
->                  address_space_read(&s->downstream_as, ch->src,
->                                     MEMTXATTRS_UNSPECIFIED, buff + n, swidth);
-> -                if (ch->ctrl & PL080_CCTRL_SI)
-> +                if (ch->ctrl & PL080_CCTRL_SI) {
->                      ch->src += swidth;
-> +                }
->              }
-> -            xsize = (dwidth < swidth) ? swidth : dwidth;
-> -            /* ??? This may pad the value incorrectly for dwidth < 32.  */
-> -            for (n = 0; n < xsize; n += dwidth) {
-> -                address_space_write(&s->downstream_as, ch->dest + n,
-> -                                    MEMTXATTRS_UNSPECIFIED, buff + n, dwidth);
-> -                if (ch->ctrl & PL080_CCTRL_DI)
-> -                    ch->dest += swidth;
-> +            if (xsize < dwidth) {
-> +                address_space_write(&s->downstream_as, ch->dest,
-> +                                    MEMTXATTRS_UNSPECIFIED, buff, xsize);
-> +                if (ch->ctrl & PL080_CCTRL_DI) {
-> +                    ch->dest += dwidth;
-> +                }
-
-Here we choose to handle the "swidth and tsize say we should
-read e.g. 2 bytes from the source but dwidth is e.g. 4" case
-by performing a 2 byte write to the destination. I don't think this
-is what the hardware would do.
-
-There is this interesting bit in the "software considerations" section:
-
- * While writing, the TransferSize bit-field is like a control register
-   because it determines how many transfers the DMAC performs. However,
-   during read-back, TransferSize behaves like a status register because
-   it returns the number of remaining transfers in terms of source width.
-   So when TransferSize is read back, it returns the number of
-   destination-transfer-completed stored in a separate counter called
-   TrfSizeDst multiplied by a factor.
-
-My best guess from stuff like this is that the way the PL080 works
-internally is that for each dest-write it needs to do for the transfer
-it does the appropriate number of source-reads. If the guest
-misprograms it such that that means it reads more than
-(transferwidth * swidth) that will result in reading more data
-from the source than intended, but that would be a software bug.
-
-I would suggest doing something like that, but at any rate
-commenting and doing a LOG_GUEST_ERROR if there's a mismatch in
-swidth/dwidth/tsize such that we wouldn't have enough bytes to
-do a full destination-write.
-
-> +            } else {
-> +                for (n = 0; n < xsize; n += dwidth) {
-> +                    address_space_write(&s->downstream_as, ch->dest,
-> +                                        MEMTXATTRS_UNSPECIFIED, buff + n, dwidth);
-> +                    if (ch->ctrl & PL080_CCTRL_DI) {
-> +                        ch->dest += dwidth;
-> +                    }
-> +                }
->              }
+> > There are other cases also where the virt board will error
+> > out for "KVM and some config we could do with TCG":
+> >  * KVM + EL2 + GICv2
+> >  * KVM + EL2 + kernel-irqchip=3Doff
+> >  * KVM + GICv2 but host hardware doesn't support GICv2 emulation
+> >  * KVM + GICv3 but host hardware doesn't support GICv3 emulation
+> >  * KVM + MTE but host hardware/kernel doesn't support MTE
+> >
+> > The first two are "always fails", but if we're going to have
+> > a mechanism for "figure out in kvm_arch_init what KVM features
+> > the board is going to want to enable" then it might be nice
+> > to also be able to use it for the last 3.
 >
-> -            size--;
-> +            size -= xsize / swidth;
+> I can try that.
 
-This change is correct (the transfer size field in the control register
-is supposed to count down by 1 for each swidth-sized data unit we
-transfer, and our loop can do more than one swidth read), and probably
-the most important bugfix in this patch, because it's the one that
-matters for normal correct use of the PL080.
+Thanks, that would be helpful. I don't really have any
+specific ideas about what kind of API might be best here.
 
->              ch->ctrl = (ch->ctrl & 0xfffff000) | size;
->              if (size == 0) {
->                  /* Transfer complete.  */
-> --
-> 2.43.0
+There are probably similar issues with the other accelerators,
+e.g. -accel hvf,tcg -machine virtualization=3Don
+also ought to fall back to TCG, and similarly with "picked
+a GIC version we can't handle with this accelerator".
 
-thanks
 -- PMM
 

@@ -4,102 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCFB6105F78C
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 12:35:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFDA105F7AD
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 14:00:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w11jb-0003J8-R5; Fri, 13 Mar 2026 08:35:20 -0400
+	id 1w133T-0002eU-OD; Fri, 13 Mar 2026 09:59:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w11ja-0003IY-5F
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:35:18 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w11jY-0003Wz-KD
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 08:35:17 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-64c9707fc11so1608573d50.2
- for <qemu-arm@nongnu.org>; Fri, 13 Mar 2026 05:35:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773405315; cv=none;
- d=google.com; s=arc-20240605;
- b=PME+iNxoksr5pNytuG1wkMqOiU/EgOn/RtBt3C1oYTAyDQFAvROF6EWCvcBeAn7/T8
- 1EtpkA5dbzwGeFVgnslBlM3bqo9GcJ9zmZ1rPhdHpql/Ug5epqfhBayeHorXPpqJ88cj
- 1qPXiMjDM9EOeFPkaxkO5VkexvinX0ivOsR+6DoFPAZe1msx0w8fu9YEHWKZwc1xzzkY
- TZXVkxmlgTgIpK458t4EHvwnKFTdlj/TIUQ7yAtsKzqwp7rDRjQsvQDjjO+jciyiOtj7
- b4tvuFwd4n+UOJrkAABO3HsdSZY7AAOrKpgUP+/dUa0+pwqOTDRW/TPoIFkFY/gbbqEU
- NGWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=AlNspcE07UEWTn6y9KFkJ3h/Khw4tpNT9mIFukVluNU=;
- fh=pBjtrSB4ONhC0Hsi5b3LnVv4hnEBzjdUjnkdoSYwcAw=;
- b=cJ9HYM7sfe/E4F114D11KnxrTuOpdff82EOJO1lSdgWcn9BAdvCy466xxhzGcD948r
- jSXDNMQaRn/7womjLAiQ5+KMcIi45jzj0b7rOXhGWbbCR8MosW+PpfCpONJ3RkvLwem+
- vNK5eVF+cajc/RnBWJ796fDxrdjqFZRCFGcmQ1hbLk8lYEzxY/hOo0Q4Pxksd6rJw9in
- 495hEXb2SzGncRI2LhvQhobRYpRU63xnqsaajBvGD+NLS0g+ZIZ1WjUMz+7sOiM2/jn6
- w53KhGzzDEmyWo+x8dI2shu6tw2f4go8GoMBLrg6JoUCb8Afof80KO5VJhkVB+ThnwkG
- 3SKg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773405315; x=1774010115; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=AlNspcE07UEWTn6y9KFkJ3h/Khw4tpNT9mIFukVluNU=;
- b=fCD4/Vn66ZLVGgVvKLaUH1SHQEzfxmlTA9nfP2CVJK6kMb9nIMRtgLW2djj2gE8Cf7
- 8wB6vyg6nhJYiPQnkHNhl2wxwBPPFmmQ5iw6C4joOMKh1kuTxN1cnOve+biRiSE8hO4S
- +0+aczk0FhUTByfD4uPnLZHV8nGZsKH5AvWhaY8hO1Qakcl325CD5qiww2QonrDYv6D0
- SoxsqNwkUok2tj6GLhCnClJBy4Tr3ppd+uPUcZUEqkBrnJOzXwTE/zPSt6dPfJi1yvFG
- YpuZwmlQITcdH0FCTIDBEnESL4+LYjIfTy1q46awIpvh6R39gsnSM6SxAkNjDy2RkQ5J
- XMmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773405315; x=1774010115;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=AlNspcE07UEWTn6y9KFkJ3h/Khw4tpNT9mIFukVluNU=;
- b=ELHct7830kN4DQcTw0snw/uFk5le/S2/zXU5hfTR+SVAWbdY0ov2Yfyue1mpxbqEqV
- ouWEig3SnMcEzqCQ0dhRyQBnmowaW76/42ZxlI2+3KzXR1HOPz31RpHEr4/OrcYMamlI
- sM7zqIVgfy6GOOQPxS6Na1fy9UApOsaFhf5g40Tfr1KZvxPDuUYyi49fOwiur4ZhNtwk
- qDoUBVkyUtTDdKuJ7u3HThNCF9sfxRpsPtGyx/qISlUyuySLt1Uu53oo+5RGoM15I8rj
- rZNvp8uxdgZ0V4kd747QvaeqNA+jAfntex75J5HNAeHDdp/EdaG3gSEstYYDYmBm/Fy7
- WYXw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVM2LUJluHe9LwUSXDyfeqgegXGtDT3gVuvEuXoxVT9tgAXlAbruT8+XhMAuA+N8V3uFG9MlawMqg==@nongnu.org
-X-Gm-Message-State: AOJu0YzE6SwDflUnaU8fMSPpzAxcH6BkGankti09t2UBchRVDvI910nS
- mkTA3sV2o25Xr5gkkm8AxRVrMiF9x3yND6BEkQ++s4KvNw3LEY8mxC/gIUhoketdzTgs9Jlyqne
- L7Xn6zL6sOnrO8hEoYzPZtRfp8BiTjSEzfF6vkwKOooElIRxm6t6K
-X-Gm-Gg: ATEYQzxEg8/2vv2padxjkzb4z9QZdVl3Zr7xZbuxWfWOGiEZM81Ss1M4X44MCE7IpIc
- XTu4uCuSQ67OOdmQH+WFpBrtNJ6eSy2Mz9x+A3KfzlrNy/yY5wOZcEThNVtt/OEDOXBhgqKlVam
- v+tja7QlMKvnMaQRECCBFc9NezgqdICrgxFZyMpSm/8mzOwpVSwhn0fEdgsa71cZI6l3vrWxSdz
- 4tIlZPkNhXUpldOdH7Pz8zywY83i+LfVruOAUjol5N/FiCcBDsxuzHZtxBbl8vwuJjY09WsTnKr
- +YasfAoNj2F+Ac0qTvPEL8fV4rlK+ZFmr0yZePFL9GwbJ3R7yMbLsnp18v8v2uzLqW4=
-X-Received: by 2002:a53:a492:0:b0:64c:a2f7:b49f with SMTP id
- 956f58d0204a3-64e62fb509fmr2118771d50.35.1773405315045; Fri, 13 Mar 2026
- 05:35:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <cover.1773301927.git.dingtao0430@163.com>
-In-Reply-To: <cover.1773301927.git.dingtao0430@163.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2026 12:35:03 +0000
-X-Gm-Features: AaiRm5292AN2DxUSFlfZi0wXZ1_PsPsdIlpigTs_NmIFQVTv6buv1wqkUrcjcbA
-Message-ID: <CAFEAcA_qvAzHS6xDG5jErRxakhVD32otVgcHL4oLbK3P=NTBAQ@mail.gmail.com>
-Subject: Re: [PATCH v1 0/3] Fixed bugs in pl080
-To: Tao Ding <dingtao0430@163.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w133T-0002eC-7G
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 09:59:55 -0400
+Received: from p-west3-cluster1-host11-snip4-10.eps.apple.com ([57.103.73.241]
+ helo=outbound.ms.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w133R-0004Gl-4Q
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 09:59:54 -0400
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-100-percent-5 (Postfix) with ESMTPS id
+ CCC361800E28; Fri, 13 Mar 2026 13:59:49 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1773410391; x=1776002391;
+ bh=DHZFEJBviYqWw4jkkZ1Y72fV6fgSDFNyfm/jDvEMzUY=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=cKcQELfPnFyADHjbD5fcOMk9h0hSDp3Tenner9uDcva+Mq3Fs26Hq4AQ8jXOA3QBmmVSWeZcCPz/7wj/qUjRHIuEdXk6G5g7JVouiVWfLDJlrDSBM9kQeDG16Z5c+HSWa94/ZehHteJlC9KH+mbM7MgRKidp3ofj6Ugbc+SFEDnaAdEDCuIyZbpNbo5avpjYgeEc7aV8F4/rGnFdFVorVhx4BymD28Ul3kpNK8/01yQnKK/gDG/NV8TjGXtBjGIzInhfYmVcQz2BSKZNJHfYe+2NPRRueVvOKMWQ9EtIb8o91eDTMM9s/DFPFZtepxRbAWk38KxQ5djwo8U/IWoQkQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-100-percent-5 (Postfix) with ESMTPSA id
+ E3EEB1800E2F; Fri, 13 Mar 2026 13:59:47 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH] target/arm/kvm: fall back if nested unsupported
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA98aTmU0cKSbddQnLFwrmifNfXYaDeNsdvJR9XuB--6ew@mail.gmail.com>
+Date: Fri, 13 Mar 2026 14:59:35 +0100
+Cc: Alyssa Ross <hi@alyssa.is>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ Eric Auger <eric.auger@redhat.com>, Miguel Luis <miguel.luis@oracle.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <03B77364-61CE-4709-BDAE-20A0F8E49972@unpredictable.fr>
+References: <20260311095405.26297-1-hi@alyssa.is>
+ <CAFEAcA8ycT250JaECAYTKF+U2a4m6jauLPLbD8PVx2atd70A7g@mail.gmail.com>
+ <87fr64vtms.fsf@alyssa.is>
+ <CAFEAcA98aTmU0cKSbddQnLFwrmifNfXYaDeNsdvJR9XuB--6ew@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEzMDExMSBTYWx0ZWRfX9U9/VwciLL1N
+ /A6cgiuOsi2GIFOrjZmrXS1u14t2frHrhceNcAR/QLe1ILNPEUOPyfq2r7jhxx/ofo4Gos/ahPG
+ 2RXUO4QEr9bDhz64Z08dSLY1lxS2SrYfuiHclSbxov3uQQzCghS7SDRk4l7VRRJBw9lp06RNboS
+ YcwW0DfNE48njnTaH/MDnkGzsYn8P/ti6wF2RC1AqZHzQj6KX6Shb6qTttY6mhbNhlMEqiNYIRp
+ ztqqH9ssdBPsXybTyC6bYz/hCbJYzOc0VLQ6NcT17bsoEEZ2EOCL676wBkTFMJjGguDwtEHQwle
+ kdeHhR7VyOsYoT9B4FH1Oydy9+QwNOm4k0YlxZuzuGxmORPUZOYZLWlk9Ry7O8=
+X-Proofpoint-ORIG-GUID: GkPl7-w7ZnSYq9G5wbqAzd24QH5DZLzK
+X-Authority-Info-Out: v=2.4 cv=b72/I9Gx c=1 sm=1 tr=0 ts=69b41856
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
+ a=Y4FzxyyIIySzoEe9l7IA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: GkPl7-w7ZnSYq9G5wbqAzd24QH5DZLzK
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-13_02,2026-03-13_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ spamscore=0 suspectscore=0 mlxscore=0 clxscore=1030
+ mlxlogscore=960
+ lowpriorityscore=0 phishscore=0 bulkscore=0 adultscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603130111
+X-JNJ: AAAAAAABLaURqRjtpxUGBkBX3DjTjdKf6MikbuFqW3iue15NZG4HW+y6UHOCJB4KMDKyBWqJjTztose/jVA07X0p+UOtOZ9gKqhvVz5rx3jrQYxVS4oaKTxmatu8EiFuHmha1sScJ0s0jk/g7L1kIRqscNVJTP03Lg5VLHxxX3t6Dnm/TP0KghCUhLNqj435OsBxuw3EwZ6/98e9MD8+uYJlzhHvS6Xk48n+HggTSUD0TDc6b5ruKsdAq3MUZhUjawWbNZjdPQ5b55dnABZfiKSTfpFKWjgUY2pw6dqM7edvlU9fOFurhGe29EuPc9RiAOQpsvcjjknbgGqr1t0MMOcXgye4ExmReBNMaY2EILtOGt5F4SVxFb+uxjthCCU7dGvYX9l4k2VPYflvQKcAWrBUs6PtUjME78S1uNcXvnOy2fvxvGoEWzyBBwhEgwBMt9la//X6ekgWYBdxQzsd05nXer210w4PqnYCMUnZlRmXxAGmtvSla+C7NVueoDnqPOLthIAhOdxZzdoRXLndgsq07lzkRmrmhZM8p/EfpyDcRjKd4de/GRQQffiHMuG6XHryLBssVc4vrd9p5ORnobi3IKzs+3SbuKV2GdTpOni/x0dOWEiex0D97SFuNTsfM8piMRmq23hqoUTCSs1KVNhkd1wRTngGsh66gfdASpaJNGOhFFzW22F/NBq5rb7BSM56z+S1rBJZkQ==
+Received-SPF: pass client-ip=57.103.73.241;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,23 +98,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 12 Mar 2026 at 08:02, Tao Ding <dingtao0430@163.com> wrote:
->
-> Hi all,
-> When I tested pl080 using the existing dmatest tool in Linux,
-> I found that pl080 could not output the results correctly.
-> The main issues involved are inconsistent source and destination bit widths,
-> misalignment of LLI, which can lead to incorrect data and even cause qemu crashes.
->
-> Tao Ding (3):
->   An interrupt is generated after the DMA transfer complete.
->   The swidth and dwidth of pl080 are not equal.
->   The LLI of pl080 should be aligned with 4 bytes.
 
-Hi; I've taken patches 1 and 3 into target-arm.next (with
-some adjustments to the commit messages). I had some
-review comments on patch 2.
 
-thanks
--- PMM
+> On 13. Mar 2026, at 13:33, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Fri, 13 Mar 2026 at 11:47, Alyssa Ross <hi@alyssa.is> wrote:
+>>=20
+>> Peter Maydell <peter.maydell@linaro.org> writes:
+>>> Looking a bit closer at this, it's a bit awkward that we're
+>>> looking at a machine property in generic target/arm code.
+>>=20
+>> Isn't SMP a machine property that we're looking at just above?
+>=20
+> It's one of the ones in the base MachineState that exist for
+> all boards.
+>=20
+>>> There is no guarantee that the machine is "virt" or that every
+>>> KVM-supporting machine has a "virtualization" property, and
+>>> the target/ code isn't really supposed to do board-specific stuff.
+>>=20
+>> FWIW: there's another arm board with the same property, which I think
+>> would have the same requirements.  That's why I chose to just check =
+the
+>> property rather than checking machine type =E2=80=94 the idea being =
+to establish
+>> the convention that machines /do/ have a virtualization property =
+where
+>> it makes sense.
+>>=20
+>>> The board-independent way to say "are we trying to enable EL2" is
+>>> to look at the CPU property has_el2. But the CPU isn't created at
+>>> this point, so it's too early to do that here.
+>>=20
+>> I spent a day or so trying to make something involving has_el2 work, =
+but
+>> ultimately couldn't get anywhere with it.
+>>=20
+>>> Similar things where the early accelerator code wants information
+>>> from the board we have handled with a method in MachineClass,
+>>> like get_physical_address_range. We could do that here, but
+>>> maybe it's a bit over-engineered? IDK.
+>>=20
+>> I'll give it a go and see if I can make it work.
+>>=20
+>>> There are other cases also where the virt board will error
+>>> out for "KVM and some config we could do with TCG":
+>>> * KVM + EL2 + GICv2
+>>> * KVM + EL2 + kernel-irqchip=3Doff
+>>> * KVM + GICv2 but host hardware doesn't support GICv2 emulation
+>>> * KVM + GICv3 but host hardware doesn't support GICv3 emulation
+>>> * KVM + MTE but host hardware/kernel doesn't support MTE
+>>>=20
+>>> The first two are "always fails", but if we're going to have
+>>> a mechanism for "figure out in kvm_arch_init what KVM features
+>>> the board is going to want to enable" then it might be nice
+>>> to also be able to use it for the last 3.
+>>=20
+>> I can try that.
+>=20
+> Thanks, that would be helpful. I don't really have any
+> specific ideas about what kind of API might be best here.
+>=20
+> There are probably similar issues with the other accelerators,
+> e.g. -accel hvf,tcg -machine virtualization=3Don
+> also ought to fall back to TCG, and similarly with "picked
+> a GIC version we can't handle with this accelerator=E2=80=9D.
+Hello,
+
+Something to note about that (with HVF and KVM) is that there=E2=80=99s
+also kernel-irqchip=3Doff/on to take into mind. For example on a =
+vGICv3-only
+system you can still run GICv2 VMs with kernel-irqchip=3Doff on KVM.
+
+And for HVF once the hardware irqchip is merged kernel-irqchip=3Doff
+will remain there for (primarily) GICv2 usage.
+
+
 

@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC447106FD6F
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 03:59:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0F0106FD7E
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 05:19:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0tft-000390-6q; Thu, 12 Mar 2026 23:58:57 -0400
+	id 1w0uvh-0004xk-2B; Fri, 13 Mar 2026 01:19:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w0tfr-00038O-0K
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 23:58:55 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w0uvf-0004xP-VD
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 01:19:19 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w0tfp-0005yx-JU
- for qemu-arm@nongnu.org; Thu, 12 Mar 2026 23:58:54 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-48529c325f0so12057565e9.0
- for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 20:58:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w0uve-00056V-6n
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 01:19:19 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-48538c5956bso16745445e9.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Mar 2026 22:19:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773374331; x=1773979131; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1773379155; x=1773983955; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=wyj8VZ4FApCe9K8azkedMZkPkvropAYZl83N6J9mxIg=;
- b=jPeULR6M/KL8LdmMu4d8ethXsEvQ03rZyoJgA3Oo3GC0tTmqr8lgWz6RyMHIY5HTeQ
- J9joqRjtuUfw/9wlq/UdgCSDCQ9am8YuIJHrq5lgUsKKwRk/mZTJ31mNvRUQvvUjHnJo
- KTCOMCYyEmN+vl+ZYWcIbeHC+r6LdeXpmcMrFBruLKRRlU9/St1rcLerveq0U1VW1nBt
- nkzsTXdNuvVg3/R1fNdffC+Cguc5vVzoALMyBgK2XE+d83Mu1HZy7Npx9J5UWRKjI4/L
- X1xGUxyYOrBE4o4T2Lq86MXnLMvTV0nVnSRwJLhzADO77XIpL7/ww/gX7VWkkY3pImJ9
- 9Fug==
+ bh=ZsUrMzuE+f5PZR5bCpGksl62zlBPDohfKU1bLJRA9v8=;
+ b=QWDEJHnPG/A1uchq3dEGTvOvxQDKLzvhNt3bQoegxCbbQ6IkX0PFveVLak92qkgt0/
+ 4PbYGq6ncY4zvIT3efrH/SQsdxAP5DWad8621GeVMxVsHtlDNdNslsfU3KHgulbCsMcG
+ XghOI7z1d1EfCbkLza6VOFr+wf+8q1njegAVgEdm6plXcz5z9YNvdTywJpXgWbobFtOd
+ RPs1cx5ibpJc3kV1fnkMYVR0aA3yRvvEKphlC6uCTsGi1ZSIY74XFfHfhiFKzmqXnmX1
+ sicZZ8GTC97jz7mU38x9iC1DtupUC7O2UiauRKzfefYNV6tVEo15ayK79J0RFgykYAxS
+ gj0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773374331; x=1773979131;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20251104; t=1773379155; x=1773983955;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wyj8VZ4FApCe9K8azkedMZkPkvropAYZl83N6J9mxIg=;
- b=CaAr+uAxFye+haAn+mJbxK37UyVNsuxmPFu+663+4Z1KhXUSnlRy+0dzTu846SZfS6
- HN01FQ8W3351IZBkFZcW/rEC7uZpWyYiUk/CLMnlttB13BwsOZSrzkhYQ288esgUYP2+
- xnjuViD/JBL4rU4rHKFhKuyzzLIZnB5cDHneQ0ZpyvYP58PGSzT1ZI+A8Rymtll3kuGl
- KEPIlbq2PLJJ+fgT1HidC8EpnXgRGKh7FUlsbNJ6tWlw+/GMMlnxNX7lXWKP2jHFjNmI
- B2MZv3G0FHXf3ku9BjnwYh/qmXA4ST6Zn2JaGeHpYUoq9PjKYPRJ5LKO3rxpiMDWTaJy
- W4vA==
-X-Gm-Message-State: AOJu0YwDk6QKPXt7X4OUtiE9i0wWVsYbUAm2fkz1ALs9/rx00vixL2J9
- +ACJE/rgNooZqKzcPvUbbWDAGWk4ilMtXWdV95wXQgn1hS61npuBoRPKyK8oxArfWNo=
-X-Gm-Gg: ATEYQzyp/zISe1avSIGvGbJVerqPtcDiU5Hzkg5ghqJuU6DWWwu0xkBUjgB6wQ5ClSO
- JHWWvV2gc1X9V07HAT+cqMO9TTj/Zx3yxnlx95S8zOzPPF72mLs8V3TWd9054dq/s06HbzUdAir
- DxYTgvZyJdut+keia9xTfkNj4uljjz6icS/p9g4GHGJC/aNw81NIpmWBSLshzU6SXF6SQTV2qKM
- SlRfGFk6w+UoV0FnnUwvBFjkQG7LtbqZULh3Ni3bj0V21YK3PgNBM+p3f0Kt62DSe4Sa5Tcdepu
- eAIUUv5NlbbZhH+WSaE4sYutRKBnQ4/MQzmYAE7hGaHGtLzSlOLEYDblWdh2jemhFiO/fiYpMET
- kjXSuqTuxJVVhM8r018dKyYtX1vXSoeq+IjfY7GyTt1HKpsID3hCcqZ/JFMWypw6cgvxMkiBKBS
- eu5h3CmD9Qd+cL5LaPMvLYm/QS6p5HewwZILuyFXooSnitEuJis+aCxjgDLmMsIl0nRw==
-X-Received: by 2002:a05:600d:844f:10b0:485:40fd:8390 with SMTP id
- 5b1f17b1804b1-485567029cdmr18874805e9.26.1773374331570; 
- Thu, 12 Mar 2026 20:58:51 -0700 (PDT)
+ bh=ZsUrMzuE+f5PZR5bCpGksl62zlBPDohfKU1bLJRA9v8=;
+ b=nNvNxrU7mAEHXBQfo3CvTETXBk1PiK7xhStC7S7RKdZ8X1zYlmnIqGfIUq3CjWGV0V
+ 2GjLtNFE0g2a/sC0LJeTiVzCeYWwKiu0VWFsOeU2H1eM2xVwagaRbQvZbpbcSW8v/ID+
+ udiC1nBALEVdPoGRBytc6CKihOnH8TjlJxJ3DEhufraN4FmA2ZhDKkliCrmFtId2kD3p
+ TFQygaG7Yg+x4EhKR0FtKEVH5BTMG/dSMbUMPRf1ahDCcm6TUZchOo5B+ISsivxMJzX7
+ yNjeX9IWwHX5TcjdfpCcbma17FWslipWt1Bcn2Quxa4LnxY98KgBbduxlzHKA5T8I+kk
+ a4vA==
+X-Gm-Message-State: AOJu0Yy1iQSsuejSSPsQ0U3P0c4CGuxB5Zwc90Vol4MoxStCyaIb2Mfj
+ epiXi1h55+giKeItiyYnwIgRaMx01ccKXBlVxwJbOwlbAGWmyO0iohm6cxZg3djzwm+aG7ZgfmT
+ aGXzhmCk=
+X-Gm-Gg: ATEYQzxeVxu96+aookc9wsgrKYD1FyCrc5m0LtBpNNPCaAyPkQBKjUSIJNjF2XdK3yQ
+ wNpZgaKhlMHU4XzIX/0ciRBFzxopTp9qBVUOazer02g6bn/Uk0JGrjEqbakvRAA5g0v+HpZzhnn
+ ooQSBlbtRb97GKPykoGnj58VO57d6v0D2ERPfM6pghhCW1prFMU2E7gGI8b1DJg1wseAYpvrLF9
+ 4WSz/po4eikPbdvuDK57lJGYW42QXyP4xo+WDuGOn6/lALVQzVRZiuub6oOgJ+CNg8WnTcS46es
+ XNlQzvEz2JKt/dvCDR4sb5MTTu7IX3Y5yho/fI9jbweWLxLaM7Qlh32Zx8HnHizyaxhG+kZXlbw
+ wlz6DgUrz5DC7/pJAmZojlzWY8NMznYImis+IQimYooG93rmzhzjhALtJ0NzqHXYGG8QNuknFLT
+ /hoJnnoSY3xVIpVVcu4jx3Q2MGWCuvDHkOkxmbUeCuccrLVaooDnJpAoVV3ZsC7voTtnQs7WcaD
+ YHN
+X-Received: by 2002:a05:600c:1f0f:b0:485:3f58:da2 with SMTP id
+ 5b1f17b1804b1-48555b4b087mr31886355e9.16.1773379155420; 
+ Thu, 12 Mar 2026 22:19:15 -0700 (PDT)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4854b65fed7sm165748805e9.11.2026.03.12.20.58.50
+ 5b1f17b1804b1-4854b5e92d5sm176855735e9.1.2026.03.12.22.19.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Mar 2026 20:58:51 -0700 (PDT)
-Message-ID: <a0b3440a-6fde-44d6-95fd-88a04038cd41@linaro.org>
-Date: Fri, 13 Mar 2026 04:58:50 +0100
+ Thu, 12 Mar 2026 22:19:14 -0700 (PDT)
+Message-ID: <ff888136-bd37-407b-95c4-7b2fb41e112b@linaro.org>
+Date: Fri, 13 Mar 2026 06:19:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] target/arm/cpu.h: restrict cpu-defs.h to target
- specific code
+Subject: Re: [PATCH 2/2] hw/misc/allwinner-cpucfg.c: make compilation unit
+ common
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20260312224702.1608408-1-pierrick.bouvier@linaro.org>
- <20260312224702.1608408-2-pierrick.bouvier@linaro.org>
- <719ac842-22be-4617-8b87-02424f2b9ea5@linaro.org>
-In-Reply-To: <719ac842-22be-4617-8b87-02424f2b9ea5@linaro.org>
+ <20260312224702.1608408-3-pierrick.bouvier@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260312224702.1608408-3-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,58 +104,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 13/3/26 04:48, Philippe Mathieu-Daudé wrote:
-> On 12/3/26 23:47, Pierrick Bouvier wrote:
->> Allow to use this header from common code, which we do in next commit.
->>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>   target/arm/cpu.h | 2 ++
->>   1 file changed, 2 insertions(+)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index 657ff4ab20b..b8042f65bb4 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -25,7 +25,9 @@
->>   #include "hw/core/registerfields.h"
->>   #include "cpu-qom.h"
->>   #include "exec/cpu-common.h"
->> +#ifdef COMPILING_PER_TARGET
->>   #include "exec/cpu-defs.h"
->> +#endif
-> 
-> Since there are no other uses of COMPILING_PER_TARGET in this
-> header, this clearly mean "exec/cpu-defs.h" isn't required here
-> at all but elsewhere:
-> 
-> -- >8 --
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 657ff4ab20b..445d5a8a31d 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -25,7 +25,6 @@
->   #include "hw/core/registerfields.h"
->   #include "cpu-qom.h"
->   #include "exec/cpu-common.h"
-> -#include "exec/cpu-defs.h"
->   #include "exec/cpu-interrupt.h"
->   #include "exec/gdbstub.h"
->   #include "exec/page-protection.h"
-> diff --git a/include/exec/helper-head.h.inc b/include/exec/helper- 
-> head.h.inc
-> index 5b248fd7138..5603c9941a7 100644
-> --- a/include/exec/helper-head.h.inc
-> +++ b/include/exec/helper-head.h.inc
-> @@ -46,6 +46,7 @@
->   #define dh_ctype(t) dh_ctype_##t
-> 
->   #ifdef COMPILING_PER_TARGET
-> +# include "exec/cpu-defs.h"
->   # ifdef TARGET_LONG_BITS
->   #  if TARGET_LONG_BITS == 32
->   #   define dh_alias_tl i32
-> ---
+On 12/3/26 23:47, Pierrick Bouvier wrote:
+> include "target/arm/cpu.h" is needed because of:
 
-I'll post patches for this.
+The link with "target/arm/cpu.h" is not obvious from the diff.
+
+> bool target_aa64 = arm_feature(cpu_env(target_cpu), ARM_FEATURE_AARCH64);
+
+This is indeed simpler than my proposal of arm_cpu_has_feature():
+https://lore.kernel.org/qemu-devel/59b1ccbe-9ddb-43f0-98c4-8000a08d27b0@linaro.org/
+
+> 
+> This file is reused between various allwinner boards, including 32 and
+> 64 bits cpus.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   hw/misc/meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 96b6705b7d0..392d30b1423 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -46,7 +46,7 @@ system_ss.add(when: 'CONFIG_ALLWINNER_SRAMC', if_true: files('allwinner-sramc.c'
+>   system_ss.add(when: 'CONFIG_ALLWINNER_A10_CCM', if_true: files('allwinner-a10-ccm.c'))
+>   system_ss.add(when: 'CONFIG_ALLWINNER_A10_DRAMC', if_true: files('allwinner-a10-dramc.c'))
+>   system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-h3-ccu.c'))
+> -specific_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
+> +system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-cpucfg.c'))
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 

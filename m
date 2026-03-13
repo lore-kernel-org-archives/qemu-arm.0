@@ -4,105 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66C01105F786
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 10:01:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC7D105F794
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Mar 2026 10:36:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w0zK0-0005vA-1t; Fri, 13 Mar 2026 06:00:44 -0400
+	id 1w0zsO-0003m1-Im; Fri, 13 Mar 2026 06:36:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w0zJw-0005uZ-5W
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 06:00:40 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w0zJk-0002vW-8O
- for qemu-arm@nongnu.org; Fri, 13 Mar 2026 06:00:32 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-64ad9fabd08so2511548d50.2
- for <qemu-arm@nongnu.org>; Fri, 13 Mar 2026 03:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773396025; cv=none;
- d=google.com; s=arc-20240605;
- b=Z9jGVBAmcV8ZNJsab2FOaDRPkU1AESkcuzGz4+pndm4wvHLol8gKSvEKBIqCoyjZe9
- X0zSZUl0u5QyqhqCo2HAfHfyp+UcAk18n8AumdiM4w4CVb9mp2u52IwjBknkyGSz7pYD
- mo8mioO9/WlotQX8I8X+pAsMSGT5TrC4AK4tfwngAiZeFt4t5kTP5twe76Knx0bWq4hi
- SrOBc/xCpQqkvzN6V1DQDbj4L9O69nWIZoVqfy4qiAur9CQ+0+DjsqDJtP04Q3Pnk7Zc
- Rr75tUVLEY2jiEc1RC/RQYEsGt5Y90X/zwm78xXWG5ON/MzfrgZgO9xF+dJ+lZJlAeFU
- jrzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=jaetzaU41Uc2nilTU+E4SHhU4sPTBnFvc+ZjCcQ2Pzs=;
- fh=CB0Eibvc8ehsEGMjcdGyzMsMVWR2/24buVSsl6jW0KI=;
- b=Ji4jsF6dymnbotm//znL+plC5AVw2Kr9IPAbsLnfQYEIcdP9F5sZuT8VTeUo0pmC1z
- NsxE2dK6bauPkgMqjVcWBSwY1S4EWI1KMkRe1hea3fdlspwsyqdvnVrxZA2XXz2uLOEs
- CXE9pI7S3kUaK1hUu7iDSYOQiLXaizVlcGGMFiB6UW7rP/TyFq85ArYV5WwcH/j7D6BE
- 1+yrL/2SGMcUfH2LRogcNjWh6iOS6Ui6g+1sh01UtYXqrITfsQKvmWQmgpABPVawH8Na
- l+aWkC43xXBjqTA3tIpBbYq3Auav9FXcTp4jaLgjI/hEC+kCMBZ7Ml/YuDv/QOucZBUI
- 8E6A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773396025; x=1774000825; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jaetzaU41Uc2nilTU+E4SHhU4sPTBnFvc+ZjCcQ2Pzs=;
- b=lhqXuq2RpmbmQjQIwn0ZYnnFykZwLfVB3mM6b+DxpqmUS8hd9nPJq2NiqzZ8N0MQ7P
- UbEEzrMJQksxQDKyZtZ9M4dQ//7gGUYwwLpM0BYZjZinDDTPqjwCJ3ziNJlGxaJkDRPd
- wpdRSLffpMmZU6rts2d3Rt5Jy2BRSNejmWEiGUJ7/8XbHbe3z6v2LyeVUO39TJ32VjyG
- 04xBwxymlMLCRMPccuUQHFIG08uBSAgbKJwKpDcepg5bTjKbS+9PkyuzP3WAkEzh/9et
- qIWUGnQqGzGb8IZTsv9qGrYe1/kp05DFP5bpLMwAUw6yHR11FsioUxQkF5m4dgC0K1MK
- 43hw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773396025; x=1774000825;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=jaetzaU41Uc2nilTU+E4SHhU4sPTBnFvc+ZjCcQ2Pzs=;
- b=cIKNBsfeNkWgi1+16XYMm/WpKyLqVZRx3fW6ytESYB6qcVHPiV7dZ8CtwbAteKjuUC
- CM86sQ4jVTKTFYU3vHHgjVt/rbZfKDIWOiyJe7CiKhKShmGcz8PQjXMHK3m5qXeXZLnW
- KwGbA4ELGj2IL7HTaqWKeljsRSuuynnndTqh4Icvu6S5O4YlsNaMKCh406oXdDAqJ/EY
- uZs64ko8hw3rRNTnroXoEMgTFxQ+2NIBDYmD9XKHhXysXRdVlKETEZ8jIH0cqLWdTZmA
- JJTjqaYHsE6cN/v9jbkpCu6IZfDptJ+SxNN02zwbWFrGAHKN4BsXlcGpx3IyXAvATVXq
- Sx/A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW25ExPxsled2FYIZCY06K8iYgR8/DrWEuEf2vCeyUU9uTTiASai0RxJ/5jnOBzugy/PQe4cDG7+Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwtZUrdCvdPv9PAt1LA/IEntGtmh/8OtA9P3CdD0loUamWsfcVi
- RNFCLWMKg8LWifHwPJ1UNh/A9g0JgsNwWH4rGNj8ab+aYnJ8WJIYMZ4EyE0nwL0Hggy+JOfvZuE
- NjqFZVnVqukQ/DAQmj36L3luRUkbvOnh32T/wcCG/Mg==
-X-Gm-Gg: ATEYQzw27n9nhOLDU+2qZaRVr3JuRO2h+sX+CnBQpl52uNoQzMLXI5HtOELnvgCeN4Y
- xJhVS7a6vvvz8+htbq7NdT/DG+wqS82qmMFgWuiSpLqyaTbXRt1+sJf3MYv56h87ZCsx8NS3L1u
- h8GCBmY2Iz1c3fVoU0+fZnLRawHYc3IldMqmYGdK2Tmm1ekHllXfb72YqgE9tKiUV1xbhS1NAyn
- Kc7b2L3j+8GQR5XScBWGMwbZArwxY11oGEsucuMJTpA0swq0zyn3P1c/IBKx4MBEEjBzwVZ+3NA
- 1HxU7MqrHXWwfnZ1XCy8sIe7K++oWuLryFekeLhVOwjQHC8izl2lGOdWRXW9OgajtWM=
-X-Received: by 2002:a05:690e:24c6:b0:64c:a516:de8f with SMTP id
- 956f58d0204a3-64e63048f8emr1980606d50.47.1773396023040; Fri, 13 Mar 2026
- 03:00:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260309114651.18825-1-mohamed@unpredictable.fr>
-In-Reply-To: <20260309114651.18825-1-mohamed@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Mar 2026 10:00:11 +0000
-X-Gm-Features: AaiRm52MzBnKzqF5nCr001-EVAuRE2lULhV6b3Qj67qJOZLrL6AUrolnPaI_XhM
-Message-ID: <CAFEAcA9GctVQo_Xc7EyfhinXza-8Kw0SOxwrwpyB1=Br+XjHpQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w0zsL-0003lZ-8L
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 06:36:14 -0400
+Received: from p-west3-cluster1-host6-snip4-10.eps.apple.com ([57.103.73.191]
+ helo=outbound.ms.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w0zsG-00042c-AG
+ for qemu-arm@nongnu.org; Fri, 13 Mar 2026 06:36:11 -0400
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-10-percent-1 (Postfix) with ESMTPS id
+ 5A09E18000F1; Fri, 13 Mar 2026 10:36:04 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1773398166; x=1775990166;
+ bh=fxgfRdILvlzByfz3jxmGyrXitphNOUrqyYZui95nFSY=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=Z+miYyKwMP4uzkVofuzOdUxxcpC6Dh/DpromUjH5tfzCe9e5k5fXd8fms7kuQxUlyk6KoUcTactPEnvSvbXaS/u8vrKfN4ExlQtbhCBMbRYE5sXTTHNECaLCPQqQm1ZhJUlB5yprO7bHvMEKYgGDjSRTTqrN1rU2/gATVlK9mZCcgtZZEvPLBSf9JiAJJ62/kuS1Zfsw7e8wXWgTHI0YbsGtfpzrcJD96cPNV1waQoDzdSZfhtTgVTdKV+AUXxjeNg3lQVA7wcOARdU10EP5e6xrNmErAdVly3s7jMGUbXHkjRVuBR8+d/h6IhjkUeCDVzJdigCEa0VQTWabD3fKBw==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-10-percent-1 (Postfix) with ESMTPSA id
+ 91BCC18000B5; Fri, 13 Mar 2026 10:36:02 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
 Subject: Re: [PATCH v2] hvf: arm: fix Windows boot with kernel-irqchip=on
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA9GctVQo_Xc7EyfhinXza-8Kw0SOxwrwpyB1=Br+XjHpQ@mail.gmail.com>
+Date: Fri, 13 Mar 2026 11:35:50 +0100
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Alexander Graf <agraf@csgraf.de>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Message-Id: <4511C71E-EC35-450F-887F-6339EEBBD96E@unpredictable.fr>
+References: <20260309114651.18825-1-mohamed@unpredictable.fr>
+ <CAFEAcA9GctVQo_Xc7EyfhinXza-8Kw0SOxwrwpyB1=Br+XjHpQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzEzMDA4MyBTYWx0ZWRfX04zaEZTcq/gK
+ qaMoRdAOVc3BC8mmbb3myNwSrInY8EGsv++K0E3fiUlx0LTyPmqZW+hUU0/ZpPr0MFg9WwW9c+I
+ rTB8+2IrIi+2uJvzg7uY1zrgB4Sc4rYXJkb3f0NCb6XX5V+94KrXV6voiU4Q87p2nSJAvwuyzQG
+ +Z4/AfDWm8wVoplrmwuTeh6tJLXFUa0OGuiiRyGwVRfksvQ3ypF1w34lSTaqjD9tOqS1ZrnYjvA
+ ZGAY/d2Zl49O+uNWdOzAm9GQfFc+3mqCv4A0j+sRle3tvGfPvPuJQDv6GQBBAwGIH7YzsfyCjyY
+ /oFAn5e3imX86kUp1D69ee63A7Y+NCp612vQbKWun4b5rdOfNxCDjmdRZxTPFk=
+X-Proofpoint-GUID: NqeylhQGrrDB4-Ig_H7wwz8tl3D8oQRy
+X-Authority-Info-Out: v=2.4 cv=Yb+wJgRf c=1 sm=1 tr=0 ts=69b3e894
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
+ a=de_huAmjUc65hNcE37IA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: NqeylhQGrrDB4-Ig_H7wwz8tl3D8oQRy
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-13_02,2026-03-12_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ malwarescore=0 bulkscore=0 lowpriorityscore=0 spamscore=0 suspectscore=0
+ mlxscore=0 mlxlogscore=946 clxscore=1030 adultscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603130083
+X-JNJ: AAAAAAABD1JtkGhuTAlkVwr2VsUq13b49J5pdFmGNQLg132pCH77Ulq9ZMklC4/8yeHFrvydSduqVEgvxtlzN5HU1pdzcQhN3a9ZbF1uPAC0nxT+xnj3QBgzaY3eE34FV+laqpVc10tQ0S+OA2859FEdj1SomwB2GJtJk/0aUq7s0Be86DNUYaiL7GDu6LhY3FKUeYCr/97bqYvJdz/kk0xU8344lHU2/OTx6H5MeRGfImOaBsHSideYbnsD44RZBNKeinTR4+ZHVx4iqhwECyoT0IFZJkx+hqO14vI/Mz2DJcSX8b2XPU7VfroShL81bl6FSqUNDGfz7uzsxY/nJnDLvBbAOB+WcQlbNcg+Ejq0PLyXlSCW8f+7xfhZXI52jaodmUfPYy8rR3q3SUvMdDmcO2XfAtSt7pMNi+1ScCOtghsgcHUVoe6kvHJaFMgBfqL9Kve/fbLU/yTpSYDTfgvITNF1rsDR2RbBKYVctouHLJOPDY5cwgyUZn1dWs3JPEw6MNcyyQP2KYwkSlhHsO2Oj/bh2VnpHcawdzle2NAx46aXDSE0hTFKUGboAwZaCtOJit5hBIssWtl5JCNeqGOEPG9Y6gO6rD35/MDmxt3jfCaSQnBDgkxkj/iqAYbbtQ==
+Received-SPF: pass client-ip=57.103.73.191;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,63 +94,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 9 Mar 2026 at 11:46, Mohamed Mediouni <mohamed@unpredictable.fr> wr=
-ote:
->
-> Apple headers say:
->
-> > When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, =
-or
-> > System Instruction" exceptions. When this happens, hv_vcpu_run()=E2=80=
-=AFreturns, and the
-> > =E2=80=AFhv_vcpu_exit_t=E2=80=AFobject contains the information about t=
-his exception.
->
-> > When EL2 is enabled, the handling of PMU register accesses is determine=
-d by the PMUVer
-> > field of ID_AA64DFR0_EL1=E2=80=AFregister.
-> > If the PMUVer=E2=80=AFfield value is zero or is invalid, PMU register a=
-ccesses generate "Undefined"
-> > exceptions, which are sent to the guest.
-> > If the PMUVer=E2=80=AFfield value is non-zero and valid, PMU register a=
-ccesses are emulated by the framework.
-> > The ID_AA64DFR0_EL1=E2=80=AFregister can be modified via hv_vcpu_set_sy=
-s_reg=E2=80=AFAPI.
->
-> That documentation turns out to not be so accurate, with the determining =
-factor being whether the vGIC
-> is enabled instead of nested virtualisation. If ID_AA64DFR0_EL1.PMUVer =
-=3D 0, Hypervisor.framework doesn't
-> give us the luxury of having PMU sysreg accesses trapped to the VMM when =
-the vGIC is enabled.
->
-> As Windows really wants at least a single counter PMU, give it even when
-> using the kernel-irqchip with nested virt off.
->
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->  target/arm/hvf/hvf.c | 10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 8aa59a1f77..136761b429 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1187,8 +1187,12 @@ static bool hvf_arm_get_host_cpu_features(ARMHostC=
-PUFeatures *ahcf)
->
->      clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
->
-> -    if (hvf_nested_virt_enabled()) {
-> +    /* Windows really wants at least a single counter PMU... */
-> +    if (hvf_irqchip_in_kernel()) {
->          FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
-> +    }
 
-This comment and the code don't line up. We say "Windows wants a PMU"
-but then we only conditionally enable the PMU. If the irqchip isn't
-in the kernel then presumably the PMU is still disabled (or at least
-not advertised to the guest) and Windows still falls over ?
 
--- PMM
+> On 13. Mar 2026, at 11:00, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Mon, 9 Mar 2026 at 11:46, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>=20
+>> Apple headers say:
+>>=20
+>>> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, =
+MRS, or
+>>> System Instruction" exceptions. When this happens, =
+hv_vcpu_run()=E2=80=AFreturns, and the
+>>> =E2=80=AFhv_vcpu_exit_t=E2=80=AFobject contains the information =
+about this exception.
+>>=20
+>>> When EL2 is enabled, the handling of PMU register accesses is =
+determined by the PMUVer
+>>> field of ID_AA64DFR0_EL1=E2=80=AFregister.
+>>> If the PMUVer=E2=80=AFfield value is zero or is invalid, PMU =
+register accesses generate "Undefined"
+>>> exceptions, which are sent to the guest.
+>>> If the PMUVer=E2=80=AFfield value is non-zero and valid, PMU =
+register accesses are emulated by the framework.
+>>> The ID_AA64DFR0_EL1=E2=80=AFregister can be modified via =
+hv_vcpu_set_sys_reg=E2=80=AFAPI.
+>>=20
+>> That documentation turns out to not be so accurate, with the =
+determining factor being whether the vGIC
+>> is enabled instead of nested virtualisation. If =
+ID_AA64DFR0_EL1.PMUVer =3D 0, Hypervisor.framework doesn't
+>> give us the luxury of having PMU sysreg accesses trapped to the VMM =
+when the vGIC is enabled.
+>>=20
+>> As Windows really wants at least a single counter PMU, give it even =
+when
+>> using the kernel-irqchip with nested virt off.
+>>=20
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> ---
+>> target/arm/hvf/hvf.c | 10 +++++++---
+>> 1 file changed, 7 insertions(+), 3 deletions(-)
+>>=20
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 8aa59a1f77..136761b429 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -1187,8 +1187,12 @@ static bool =
+hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>=20
+>>     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
+>>=20
+>> -    if (hvf_nested_virt_enabled()) {
+>> +    /* Windows really wants at least a single counter PMU... */
+>> +    if (hvf_irqchip_in_kernel()) {
+>>         FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
+>> +    }
+>=20
+> This comment and the code don't line up. We say "Windows wants a PMU"
+> but then we only conditionally enable the PMU. If the irqchip isn't
+> in the kernel then presumably the PMU is still disabled (or at least
+> not advertised to the guest) and Windows still falls over ?
+>=20
+Hello,
+
+If there=E2=80=99s no Apple vGIC enabled, accesses to PMU registers are =
+routed to the VMM. Windows tries to access to the PMU registers anyway =
+in that case. And that allows to get away with (very) stub-like handling =
+that does =E2=80=9C=E2=80=9Demulate=E2=80=9D=E2=80=9D the cycle counter =
+just to boot Windows: And as that has exactly zero accuracy we don=E2=80=99=
+t want to expose it for anything else.
+
+If the Apple vGIC is enabled and there wasn=E2=80=99t an ID register =
+write made to enable the Apple vPMU, then instead of PMU writes=20
+being trappable to the VMM, what happens is that an undefined =
+instruction exception is injected to the guest. And that makes Windows =
+crash early.
+
+
 

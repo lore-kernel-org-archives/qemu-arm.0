@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2622010854B2
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Mar 2026 22:16:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7374F10854B2
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Mar 2026 22:16:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1XGp-0003yh-P0; Sat, 14 Mar 2026 18:15:43 -0400
+	id 1w1XGn-0003xL-NF; Sat, 14 Mar 2026 18:15:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w1XGo-0003xx-Rj
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:42 -0400
-Received: from p-west1-cluster3-host12-snip4-10.eps.apple.com ([57.103.66.43]
+ id 1w1XGm-0003wP-CM
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:40 -0400
+Received: from p-west1-cluster6-host11-snip4-4.eps.apple.com ([57.103.67.7]
  helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w1XGn-0001Vj-Ex
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:42 -0400
+ id 1w1XGk-0001Ux-Cb
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:40 -0400
 Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-1a-100-percent-15 (Postfix) with ESMTPS id
- E78A41800255; Sat, 14 Mar 2026 22:15:37 +0000 (UTC)
+ A1B6518000B8; Sat, 14 Mar 2026 22:15:34 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773526540; x=1776118540;
- bh=4icJ72AU1OOM5tOrqHPkWr3ogIPSAmTNwYbIOrNfOTo=;
+ s=sig1; t=1773526536; x=1776118536;
+ bh=vtyg7pEdi4erY1D9NEPdpOdl23I1WCj58Z2t4m3thg0=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=JvVclcRSUIX1c1GCSZMsinDGoD1Tki+3i+gJTDwC+ycumXpbJraY73QBItm5+mDsapGORU585PIlCZ17axvj6Dev1u0l8o0jdkWpiDsIbi4kj4GDrWr6OuiWawt//E1HTfCVd+tINUWFaf/LHnUwkeocgUsyHVZZpyG8StdKbUq1p4ArM0H4SMM0wRUBneOa2iGWGY8hLpLOBjBbTlEznTEYwLs94757BLZb03/s9h7fAyYCfl/813jFukSU7n8rLE5RT+AItlCoLHUr3Lszz7HWjcG6YCHx6QbP852MBFHccS71QPO6QnMhVd9mvbYcUSJ44ngDnaHsG0Chr/ykLw==
+ b=fVlBu3Wvr1znrna0+sCsCAcl+1HlbpohjVbwa8IAGE3c+PfkJcNiuyH9tL7oC7gVxaQGXC4Ug6p4E+exwsy7489yS6CVWqAQo+y3plJJlAnk9+fi6lKshVvI4tw0VU2g+IqZOHXfab5feczLYJQP8kbXXHVNfHYSqcEhhxxnhFfryZc1fyxjMAfwwGAo8L/2oQcDkhb1h48L0jJVlovJyeeCucx7uS7MdO2EFdUv9eIAfmwyREZbzNvBxYlQFQK/dxNX4LGELhqjF8U+t7gpL0NnMSbnFE0OQu32W8qS3RHWDyiu4wB083PoektZiKd29uVfv3HYxK8DjeBSRKt3Ww==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.56.9.36])
  by p00-icloudmta-asmtp-us-west-1a-100-percent-15 (Postfix) with ESMTPSA id
- B513E180008E; Sat, 14 Mar 2026 22:15:35 +0000 (UTC)
+ 702BB1800244; Sat, 14 Mar 2026 22:15:32 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 2/6] whpx: arm: add EC_DATAABORT assert for
- WHvRunVpExitReasonGpaIntercept/UnmappedGpa
-Date: Sat, 14 Mar 2026 23:15:25 +0100
-Message-ID: <20260314221529.47841-3-mohamed@unpredictable.fr>
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v3 0/6] whpx: arm: set of small fixes for QEMU 11.0
+Date: Sat, 14 Mar 2026 23:15:23 +0100
+Message-ID: <20260314221529.47841-1-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260314221529.47841-1-mohamed@unpredictable.fr>
-References: <20260314221529.47841-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=BM++bVQG c=1 sm=1 tr=0 ts=69b5de0a
+X-Proofpoint-ORIG-GUID: 317_j8pPJOfnGWkfyCvy7-6MoBM44Qjq
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE0MDE3NSBTYWx0ZWRfXyMjIe689JTgP
+ QAkwWxm/bDp5rjJfVyx+tAwkovh87G0Kk9Mdvs2JjSa2OOBiiZ2fTwHlJ9dRiYEVryq3Pp5njFf
+ caGizRXZhhSR4kIedhVG+nCCSwoDsOGGk+U6imIkZJczvBK6G3RiaoCJFaxkmMPQUOwdpekRy4l
+ e8vBw4uB96+CAZTrqxjN0Q4/3YRsJ2greuTkXepGQ5ylC2SZGiE8L8e5wQroXB7COcXsq2+E+YB
+ fnhfwRkKM3BUuZfuIpOqUDMick+Z1XZDlUY38v7qm5HQS0AIpM2FwLPN8JkQFTch52nkATkrasm
+ i5R1qpCec6A5ExyH08RfNyt1Due4RW54Fkt/obR13Ri8AlPZxYHZwbYkfMINs0=
+X-Proofpoint-GUID: 317_j8pPJOfnGWkfyCvy7-6MoBM44Qjq
+X-Authority-Info-Out: v=2.4 cv=aoa/yCZV c=1 sm=1 tr=0 ts=69b5de07
  cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
  a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=iF5FY4ceKisILDQj2E8A:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: voS4S5Ntgbz-7vlm17UeAzWz5fXQk98F
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE0MDE3NSBTYWx0ZWRfX/d2u2iCVjK9X
- t8VPsqklYhGnvA8wstXEaD+OmEawA3qUlmAM44Z2PN4VLVAPhfKxfja3NI1BIjE49/AJXjPT79A
- 6ptW2xvKEfc/qo2Eyesbi8wNqjsPBHAC6pbgQuxAy9HR83kRRscAE9xBjHgw9XpYgilScjIFhwD
- Nws/N2vSAB+1YE7V8uRxqAMJRQqaGOuHHqmPp0qgvDg1wsKqTDOQux+v7uZyQxkiRDMeASeFfUt
- /oIeZaXV8pW7EdE0iFLyTHQMyWnEAqVaHe628suQNTmBi2tIqAPS5tGsTZgpQnB1Z3uXQJR0m8b
- HekiZ1zCIzZYfL2BxfA1gNsNEZBY/ShutP/CQ/hlYR0ht4C9CFZqRRXaZzp7ts=
-X-Proofpoint-GUID: voS4S5Ntgbz-7vlm17UeAzWz5fXQk98F
+ a=VkNPw1HP01LnGYTKEx00:22 a=ZQo066cDFu1GxkA6GkEA:9 a=QEXdDO2ut3YA:10
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-14_06,2026-03-13_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxlogscore=660 clxscore=1030 mlxscore=0 spamscore=0 lowpriorityscore=0
- suspectscore=0 bulkscore=0 malwarescore=0 adultscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0 clxscore=1030 adultscore=0
+ mlxscore=0 phishscore=0
+ mlxlogscore=999 lowpriorityscore=0 spamscore=0 bulkscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603140175
-Received-SPF: pass client-ip=57.103.66.43;
+Received-SPF: pass client-ip=57.103.67.7;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -95,26 +90,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If we get anything else from Hyper-V there's a problem, so enforce this.
+Localised fixes for QEMU 11.0:
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/whpx/whpx-all.c | 1 +
- 1 file changed, 1 insertion(+)
+- fixes for -cpu host, including an ID_AA64MMFR2_EL1/ID_AA64MMFR3_EL1 mixup
+- add EC_DATAABORT assert for WHvRunVpExitReasonGpaIntercept/UnmappedGpa
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 513551bec1..3df60a950d 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -439,6 +439,7 @@ int whpx_vcpu_run(CPUState *cpu)
-         switch (vcpu->exit_ctx.ExitReason) {
-         case WHvRunVpExitReasonGpaIntercept:
-         case WHvRunVpExitReasonUnmappedGpa:
-+            assert(syn_get_ec(vcpu->exit_ctx.MemoryAccess.Syndrome) == EC_DATAABORT);
-             advance_pc = true;
- 
-             if (vcpu->exit_ctx.MemoryAccess.Syndrome & BIT(8)) {
+This one doesn't functionally change anything today, but is good to have and is a single-line change.
+
+- fix Hyper-V enlightenments
+
+AccessVpRegs turns out to be necessary too. Linux doesn't check for its presence and panics in an Hyper-V arm64
+configuration without it exposed.
+
+Fixing a mistake in not following the QEMU code style and having had AccessHypercallRegs included twice at the
+same time. Also add some more privileges because it looks like guests don't check for presence of each one
+systematically...
+
+- SME support shipped in Hyper-V now
+
+So remove a code comment. Another one-liner.
+
+Mohamed Mediouni (5):
+  whpx: arm: fix -cpu host
+  whpx: arm: add EC_DATAABORT assert for
+    WHvRunVpExitReasonGpaIntercept/UnmappedGpa
+  whpx: arm: enable more enlightements
+  whpx: arm: remove comment bit that is no longer accurate
+  target/arm: cpu: alter error message for host CPU type
+
+Osama Abdelkader (1):
+  whpx: arm: fix ID_AA64MMFR3_EL1 host feature register index
+
+ hw/arm/virt.c              |  2 +-
+ target/arm/cpu.c           |  4 ++--
+ target/arm/whpx/whpx-all.c | 11 +++++++----
+ 3 files changed, 10 insertions(+), 7 deletions(-)
+
 -- 
 2.50.1 (Apple Git-155)
 

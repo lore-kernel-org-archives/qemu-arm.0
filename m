@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5C6210854B1
-	for <qemu-arm@archiver.kernel.org>; Sat, 14 Mar 2026 22:05:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8DA910854B2
+	for <qemu-arm@archiver.kernel.org>; Sat, 14 Mar 2026 22:15:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1X73-0002FO-KH; Sat, 14 Mar 2026 18:05:38 -0400
+	id 1w1XGo-0003xY-HY; Sat, 14 Mar 2026 18:15:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w1X71-0002Ep-Ng
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:05:35 -0400
-Received: from p-west3-cluster1-host3-snip4-10.eps.apple.com ([57.103.73.161]
- helo=outbound.ms.icloud.com)
+ id 1w1XGn-0003wu-E9
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:41 -0400
+Received: from p-west1-cluster6-host7-snip4-10.eps.apple.com ([57.103.67.113]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w1X6z-0000TQ-Ga
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:05:35 -0400
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-10-percent-2 (Postfix) with ESMTPS id
- CC32E18000A7; Sat, 14 Mar 2026 22:05:28 +0000 (UTC)
+ id 1w1XGl-0001V6-Lo
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 18:15:41 -0400
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-15 (Postfix) with ESMTPS id
+ 392AB180026F; Sat, 14 Mar 2026 22:15:36 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1773525930; x=1776117930;
- bh=gOuSMc4Owrr6X1PeVKBpC/W7OBroDQh/ePJjuN/Ym9I=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=ANDW1zzJTCVsvJqoxa/PVlCPAx4mC+qyl/eWQgh4y5m92pS8zx/LPbFGXxwaKuhxqk1Lx0qSeVN53E9Pzr1XN12/DyGCUskY9y25zr8NmEdEuJrtjOp/5eQPrZZu3e5zJgP0vCI/+tO+06KluXFIAxJdEl/XQLPqwRapELX6axBRRtGG38wQySWZdKm8C6c5KL0gDKHwygru6Heo0AIWok5hWoAAXVUjYfpG/1lJtFJtAIBFa7arrthqlqCBQEk6ZBmNvpo15QmgQH+CEG9U9PbjpNe/l4J5qGxA1dBF1RF/Fjy2OgfMVACUiIWHAoFZSRRo5zmQin61VFYbHvPRZw==
+ s=sig1; t=1773526538; x=1776118538;
+ bh=Od9Ivr5WsbuEkXj/SEEwzm5xKEx98NRFnFm5G4zs8BY=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=G54AnILDNiMsx+b8KtzsHSrbttZTEDABaVPSD5UlgymtVakelEMQLRvuojgIpgED7H75puWQdTJnQo07EmtR0Cg1OmxD+d2j9OTG1W/ltP7KMIEwwVxBXoA/6dua1R+XTNhzVJJI6XtD+cQL5DkCHBTk/TmWVzvgUlPvUhJrUoKtwL+v2pgU3YAVcC80XnkvBJiZIpuFBIJXSdYGiMAaqRo+OEGbHB9dAtV44toinePz5ckxaQDf1lBrxaalTjaoRXGyIyv54pGtDSPdHz71pUGXYIZy1+IdROsPlluSHW7iYH1t5rCKfm+WT3mqf2fnaLjWOkqzbJF9L/6X2XvzJg==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-10-percent-2 (Postfix) with ESMTPSA id
- D9B7C18000BC; Sat, 14 Mar 2026 22:05:26 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH] whpx: arm: fix ID_AA64MMFR3_EL1 host feature register
- index
+Received: from localhost.localdomain (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-15 (Postfix) with ESMTPSA id
+ 05877180024F; Sat, 14 Mar 2026 22:15:33 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260314215613.141373-1-osama.abdelkader@gmail.com>
-Date: Sat, 14 Mar 2026 23:05:13 +0100
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
+To: qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <E81FA26F-36B1-4A72-BA5F-9E9B8D393182@unpredictable.fr>
-References: <20260314215613.141373-1-osama.abdelkader@gmail.com>
-To: Osama Abdelkader <osama.abdelkader@gmail.com>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE0MDE3NCBTYWx0ZWRfXzwhlvbpOxPFs
- iziluRio1qeRYBDyLW8VsPWhS1mNC/Xr0xGhqX1Tf5sOapStDxFtbbbQRN6pNABMNZOPdqz/3Tm
- xuPCA+41eK+/tDK6Jh6HGanBGmSokrxSQes+yP5nbPpFQ4pVV79QlxXSEqxlezgCPfll1JTp6mr
- 1LM7tG2StW8pRhn4YlfQBPy+eFsBJM84jhPB6+2TimKTbRsf1doSinN3Cf+QpMDGUjaOGJRnShH
- ae9G8QSEkQIiU/lAyv3wC4dU5dzmStMmNpz25gKTwjBw88aB3q1rYApKh2Bx/GpJtcqodqtRoGD
- 1YFPQTGqWSBvXsWrif20XoZMpP5bS0tF7JC9cO69pvkkTOUrD1YugTQHaP88KM=
-X-Proofpoint-ORIG-GUID: iJPbm_QpFgDlT_TLYRnRLnRJ5pxKEym-
-X-Authority-Info-Out: v=2.4 cv=FLEWBuos c=1 sm=1 tr=0 ts=69b5dba9
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=kj9zAlcOel0A:10
- a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8
- a=tw4iIMvr5PT-SM50NLsA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-GUID: iJPbm_QpFgDlT_TLYRnRLnRJ5pxKEym-
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 1/6] whpx: arm: fix -cpu host
+Date: Sat, 14 Mar 2026 23:15:24 +0100
+Message-ID: <20260314221529.47841-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260314221529.47841-1-mohamed@unpredictable.fr>
+References: <20260314221529.47841-1-mohamed@unpredictable.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Authority-Info-Out: v=2.4 cv=BM++bVQG c=1 sm=1 tr=0 ts=69b5de09
+ cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=78r_p1vsk4CzcvezoV0A:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: MHPtbrtrqt4-3HDXLwshijkjq9FpG5Kn
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE0MDE3NSBTYWx0ZWRfX1CcefQQGC/9H
+ M1AQFmwmPM6E4IUtAi77eqCWIHqGuiCZVLaE/IPOxu01XgMF0/OucHbOVV4nZXF9QK2xAuQS9WX
+ 1WB07UfnRvhGSKVSzKLqOiMWILz/LvzQKtpl9P5A7n3iRqZzweyyPzLLEmHOguJCtjQqyc9wsGq
+ JbLNYAJeTG09Du3PQtPGOXPyMLGCUOmDyUtXTaNcQIJ83bpIFC0L0aeEdbw0Eoxj4d5p6n4nUCw
+ M09KwGO4hhXzzubAy/DcNWXwhTgWKom6Aj5mDtXevOuqCdKZ0mrwqlayTVwrmoc8ecWPbJ+3ZNA
+ vKU3oSmgaFGqC4Puw87SwEY4uWAxuZM7PbHHGnaLsxzteq6SQH6T+vOLZmFe88=
+X-Proofpoint-GUID: MHPtbrtrqt4-3HDXLwshijkjq9FpG5Kn
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-14_06,2026-03-13_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- lowpriorityscore=0 suspectscore=0 spamscore=0
- adultscore=0 malwarescore=0
- mlxscore=0 phishscore=0 clxscore=1030 bulkscore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2603140174
-X-JNJ: AAAAAAABSst/eDqpUzs9D1PJVntLVMP6W7dm4iMnwPEVtZDrInC/7Yx/iOfXxm3htRgvsEdlZUdslHb/kQUrr2/O66kLPLvDTdainZJpOca+8vYMXKro3g/y7F4QPJkHHnPYeWo/rH/rP/3WYA62aqzs1ijqc0fhYYxIDzpOSr7DBjj33VSgwTmtD4QWaIYCRKmEUq5hPz36Cf+MfpTddGevA8bhscMqM44FoHxT/lXDpuD7Z1CSNxP2+RU1NNcLgtGlNtEtX0Pn7VFk829+mYAy8RAMP6mz4svLgf6hsuANfbO7Q2IWxigpo+/T1swXWsJ3EnCWz9IHqcqpdqcJKOcqHxjclGh5egb3sRwC/gKmISSgS1TRcZ6HCSB4t/0UWNXM7i+xTjY6EoAbWaCOQtcpgKs/9r1QguIl84o6/ac4889uysmwxoKgNyxGl558GaMth1Mgu/R7cjFno+WwyDRRhgmo6qLG0emYcynoQvtnuRmphnITbu2O/OJcDl/OulYM3IiB8wtXh139OVC6X2Fq70HqcpZBAgZyDEfTWGH4O0staRbrm/w/jjxvnmZ/e77O14VhRglScQc9orkzNSrPa+sh0diu6f3mkbwUTf6fwQbpgScsORpfj/jHZ6GVyaHIIjn7RLxAy2v1AAvxiLmWMnPiSUw4Sp6+KqF0KNfi9XHUx9pi/V0QlWLdC0rxkTuG
-Received-SPF: pass client-ip=57.103.73.161;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxlogscore=855 clxscore=1030 mlxscore=0 spamscore=0 lowpriorityscore=0
+ suspectscore=0 bulkscore=0 malwarescore=0 adultscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603140175
+Received-SPF: pass client-ip=57.103.67.113;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -96,49 +94,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+"hw/arm/virt: Register valid CPU types dynamically" went under my radar, so fix this for WHPX.
 
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> On 14. Mar 2026, at 22:56, Osama Abdelkader =
-<osama.abdelkader@gmail.com> wrote:
->=20
-> IdAa64Mmfr3El1 was stored in idregs[ID_AA64MMFR2_EL1_IDX], overwriting
-> MMFR2 and leaving MMFR3 never set. Use ID_AA64MMFR3_EL1_IDX so the =
-host
-> MMFR3 value is stored in the correct slot.
->=20
-> Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
-
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
-Thank you for this one, dunno how I did this typo :/
-
-Will include this one in the next rev of my small patch series.
-> ---
-> target/arm/whpx/whpx-all.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-> index 513551bec1..98889426d2 100644
-> --- a/target/arm/whpx/whpx-all.c
-> +++ b/target/arm/whpx/whpx-all.c
-> @@ -683,7 +683,7 @@ static bool =
-whpx_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->         { WHvArm64RegisterIdAa64Mmfr0El1, =
-&ahcf->isar.idregs[ID_AA64MMFR0_EL1_IDX] },
->         { WHvArm64RegisterIdAa64Mmfr1El1, =
-&ahcf->isar.idregs[ID_AA64MMFR1_EL1_IDX] },
->         { WHvArm64RegisterIdAa64Mmfr2El1, =
-&ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] },
-> -        { WHvArm64RegisterIdAa64Mmfr3El1, =
-&ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] }
-> +        { WHvArm64RegisterIdAa64Mmfr3El1, =
-&ahcf->isar.idregs[ID_AA64MMFR3_EL1_IDX] }
->     };
->=20
->     int i;
-> --=20
-> 2.43.0
->=20
->=20
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index bced9f67f4..af3f03ced3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3477,7 +3477,7 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
+     if (target_aarch64()) {
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a53")));
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a57")));
+-        if (kvm_enabled() || hvf_enabled()) {
++        if (kvm_enabled() || hvf_enabled() || whpx_enabled()) {
+             g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("host")));
+         }
+     }
+-- 
+2.50.1 (Apple Git-155)
 
 

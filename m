@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A5FD58B0A
-	for <qemu-arm@archiver.kernel.org>; Sun, 15 Mar 2026 03:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513CDD58B08
+	for <qemu-arm@archiver.kernel.org>; Sun, 15 Mar 2026 03:42:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1cM9-0004nH-Vm; Sat, 14 Mar 2026 23:41:34 -0400
+	id 1w1cMi-0004xT-HT; Sat, 14 Mar 2026 23:42:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1cM8-0004mP-EF
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 23:41:32 -0400
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+ id 1w1cMg-0004wQ-Fb
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 23:42:06 -0400
+Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1cM6-0003Ql-PI
- for qemu-arm@nongnu.org; Sat, 14 Mar 2026 23:41:32 -0400
-Received: by mail-dy1-x1332.google.com with SMTP id
- 5a478bee46e88-2be4781d2baso2140579eec.0
- for <qemu-arm@nongnu.org>; Sat, 14 Mar 2026 20:41:29 -0700 (PDT)
+ id 1w1cMe-0003l2-Ew
+ for qemu-arm@nongnu.org; Sat, 14 Mar 2026 23:42:06 -0400
+Received: by mail-dy1-x132e.google.com with SMTP id
+ 5a478bee46e88-2beab594d8eso3930452eec.0
+ for <qemu-arm@nongnu.org>; Sat, 14 Mar 2026 20:42:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773546089; x=1774150889; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773546123; x=1774150923; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kAyshNC7ls5ohrmw6pvTowpCpNZ/8pgu+r6HkRAfH/8=;
- b=PMTZyiOepSXXJNr4TViOrJ/lGkpipR5QEC8cV+uSIlshWf6E267/Kb4akqgQckV/pg
- IGATNfS1izfVH7H8FfCH1e6pLf+QtfW/sC6hjBmeAsOEoDdweTGD2qwDdjeIpYEx8v8E
- s4AtN9pTpIdC05lqadG4hO9+WY4QDPjPtFe/UjMOJ9viL/mjxRJM3yt+3QeOvuX07BmH
- Vvd3jGyl0flX7FGdvsAjvhvIhCIA5s3oOBkI8WK+XDioL2x1KhldlgHOp5lnErhDeWGM
- P5ZZbd+CPQWWNsfktjEKM4ZDphxMqo06J7u2KCJmoRtCnHWX9H8oSdQEAZ5cUheUl2Hk
- 7tFw==
+ bh=i/DK28lXQIwOLzrB1K190uj9fo4wlA326bvO6/LGKYk=;
+ b=a/+Fw+nRp4LfGN0l7Pood0qrrlybkxz1isOco0wIVEDDO14p25EBZnYEzrOCgdmGvH
+ g7NDjJkAPKf1dvJ3xPj0tDS8jHrKLgzhyM6OjnkhKLzmmCs18dw7izHI7/cfD9/er2R9
+ 8raXW6sIqC7UCjTK80Je+Z3GnteEon63W5fRJ68k3FVKCTnffLgxZppb/saPsArexSzL
+ eGSWNZUA7smX4L0hHRPK4EYY2hz2PVKrZzW8toy9jc9NVlUhdjYJ2NB7DuH607yJasiQ
+ JkNqcjMMANeAkdBh10RINZ4i64irP7lm5PiispbaAbLaWVCbUlYu05FlaQIZSQpf/Fq9
+ TboQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773546089; x=1774150889;
+ d=1e100.net; s=20251104; t=1773546123; x=1774150923;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=kAyshNC7ls5ohrmw6pvTowpCpNZ/8pgu+r6HkRAfH/8=;
- b=YxpWDMOmSho2zomPe3ypevm6cFzwSiL40yBCeq+DCt/KIgUWJT7ffe8i5TCDotGVib
- HZpExO1ySd7qQR50GD82TwKM0LijvdP25SBxpAKntUjLwWu46pMDF1M8awniTm/A0Hhl
- bvX+u1HbCN6nd6rvBYQIA0oyCuuO2HzR3/cuTs/jrbOMzryVM09PBKXe1WkwL9Tcb/if
- /r6K7qyrLsVk4zseuBo0fNjIL6WDDfHji+1FVHbKBJXAjjdkLg/Zh82DsVR2VbWtaHoa
- xSCvuBB/yWuSI/ieagqE2whEV0Dr7svkNakWuuDgEnKzszWHn4VGU2G+v8m2YaME4xzd
- qZlw==
-X-Gm-Message-State: AOJu0Yxx1oLQxZ+hr9UhLm36zIfmcVAKOpbBUnLsuusWlllT8OrCC+cY
- nx2uGSroYeEfu966vpvyRnUFihZeov6vc5Sx4lojegjdpVfsHxrJQHzb
-X-Gm-Gg: ATEYQzxpHNZmA7CXiBU8pB6OnInr7OFufIcmhuOiBBAqnI3X/Fa6NIFQajYXr7hkjq5
- r81Rt6fgJfoI3leFjPcG49xkPIM/v+NTyKoBZQ852orOkvngCq9gZdD6Y5g4Tw8zELfUblsECRv
- GKfPu9u8H6PgihLPLx28WlhQx0vu2/xvzP30BI4ESq018ne7Zwuki61Zfo9GJudhTAKdnDdn4/Y
- GbHznjhkPSxcBe9GYCnQzHAG+TPrf2+UQdoq33OR38608nNALVdwbtBCcXM6+wntW9z73UlzblS
- KOrLH4boelHDsXbHwjwibJR8zNJjq+T7mwS7d47rBTtslmzCIeh3r9LRNHmhxM5fqg2yERIfoPD
- 1fxlffSSBpkr/si3bN/PYx6tz7YSjdfgpTuVlYCBZlO88ItG9AUnEPNIw2wqAZkbqkSeb7fPnxJ
- T0rCpY7SNxVarwQWGAeBxWrmbfa+B6WI9qFjM8H8g=
-X-Received: by 2002:a05:7300:e208:b0:2ba:6723:5060 with SMTP id
- 5a478bee46e88-2bea55edf0emr4424939eec.31.1773546088516; 
- Sat, 14 Mar 2026 20:41:28 -0700 (PDT)
+ bh=i/DK28lXQIwOLzrB1K190uj9fo4wlA326bvO6/LGKYk=;
+ b=dr5LPtttLr01Z+tbburtYc18xR+3xnrqeXIpeuTpryjDkT3BYX+nfw2gT5q9tBmHlX
+ vjrNBGui/TcaaHsvaE/KA9NUeT2Z8DP26lVs9YR8w/rPgpfYllUwiw0HIsziPkQGTDgV
+ XCL7bda2wAZP6AOtUiXRm+CVQv9tswKV65RjGP9rWzChHGGVsOk1sT6wzOs2CTRkL45S
+ 8KNaUFLWBbeMk2vwhFaJcU/aliKkd4fKOFMQLl/YIlsGhFYMM+JDrPsjqdQUZACELIB5
+ xWK8WSiTeQm3JQN8LUX6YVT+wpi1g15KElJskU60Mz8GuRiGd7QQ3iHHebv8X5bsAIn5
+ VZgg==
+X-Gm-Message-State: AOJu0YzVv/qJaddV3wsdf1e9JKIIXL4XGxDArVznLduexMWswGWOsT7+
+ USD0NeeWjAahNrg5/Pm0bGIqDtTHzJq3J1Mx3NcLIV5n4fRA4HwsnNHvVOI6g0AU
+X-Gm-Gg: ATEYQzx6qYFw/aBcA8VehTvuoiEQsQDHZ0s4F5FwUqhvpCHui0gSo43F8wFzuXIV9h/
+ cXK3xGFGqupbZ4Le6UmkQnjkR9p0GWe5lBx+Xafs7XwLoB8SDG1MpVLLgX5SMgk5DN+bdLLK3LE
+ sAmN9qP2OxWYNsZmLJ1JR+YJAhKiOBsUMwfO10GDtAvDga/heZ0d6XIbnXRd0Vp+AeDMjLCwdy0
+ jcv3/gxuLxUQc7dZNJsxfvWSagsDb9PhDerYrCMY0tOL/k+wNtri4dqWBelP4PQf5DI4wCeg+6Y
+ vmO5KAiy+F8OIOheEwR506+GKmd7HhfxLVZGn7lFHIofzcGNwAWgquW8SQGfk40r9ons4AN199L
+ SxhMKIWTTSzvWFh5QnuS+oHLMfACnkI57zyf9Cu/qfj7vhvoj1WF1bFd245lVk75US7qLBn50WO
+ l4+iD1iJqYyxKhUNvAQrzqln+xZoUKCqC7TUdkAvw=
+X-Received: by 2002:a05:7301:d8c:b0:2b9:80c1:bb5 with SMTP id
+ 5a478bee46e88-2bea572a4aemr4005010eec.33.1773546122981; 
+ Sat, 14 Mar 2026 20:42:02 -0700 (PDT)
 Received: from 192.168.7.2 ([189.6.247.75]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2beab3eec8fsm8886424eec.13.2026.03.14.20.41.26
+ 5a478bee46e88-2beab57b2b2sm8862982eec.33.2026.03.14.20.42.00
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sat, 14 Mar 2026 20:41:28 -0700 (PDT)
+ Sat, 14 Mar 2026 20:42:02 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, agraf@csgraf.de, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v3 0/6] target/arm: ISV=0 data abort emulation library
-Date: Sun, 15 Mar 2026 00:41:17 -0300
-Message-ID: <20260315034123.41921-1-lucaaamaral@gmail.com>
+Cc: qemu-arm@nongnu.org, Lucas Amaral <lucaaamaral@gmail.com>,
+ Lucas Amaral <lucas@lucasamaral.com>
+Subject: [PATCH 2/3] accel/hvf: introduce map granule abstraction and IPA
+ property
+Date: Sun, 15 Mar 2026 00:41:53 -0300
+Message-ID: <20260315034154.41986-3-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260313021850.42379-1-lucaaamaral@gmail.com>
-References: <20260313021850.42379-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260315034154.41986-1-lucaaamaral@gmail.com>
+References: <20260311022732.64141-1-lucaaamaral@gmail.com>
+ <20260315034154.41986-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1332;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1332.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132e;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,63 +102,237 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a shared emulation library for AArch64 load/store instructions that
-cause ISV=0 data aborts under hardware virtualization, and wire it into
-HVF (macOS) and WHPX (Windows).
+Add a map granule abstraction that decouples HVF memory mapping
+alignment from the host page size.  On ARM64, Apple Silicon supports
+stage-2 translation with 4KB page granules regardless of the host OS
+page size (16KB on macOS).  This allows running guests with 4KB pages
+without interior mapping failures.
 
-When the Instruction Syndrome Valid bit is clear, the hypervisor cannot
-determine the faulting instruction's target register or access size from
-the syndrome alone.  This previously hit an assert(isv) and killed the
-VM.  The library fetches and decodes the faulting instruction using a
-decodetree-generated decoder, then emulates it directly against the vCPU
-register file and memory.
+Introduce hvf_set_map_granule()/hvf_get_map_granule() in hvf-all.c
+to replace hard-coded qemu_real_host_page_size() references in
+do_hv_vm_protect() and hvf_set_phys_mem().  When the granule is not
+explicitly configured, fall back to host page size to preserve the
+previous behaviour.
 
-As suggested in v1 review, the library uses its own a64-ldst.decode
-rather than sharing target/arm/tcg/a64.decode.  Beyond the practical
-complexity noted in review, the two have incompatible purposes: TCG's
-trans_* functions are a compiler — they emit IR ops into a translation
-block for later execution.  This library's trans_* functions are an
-interpreter — they execute directly against the vCPU register file and
-memory.  The decodetree-generated dispatcher calls trans_* by name, so
-both cannot coexist in the same translation unit.  Decode patterns are
-kept consistent with TCG's where possible.
+Add an "ipa-granule" accelerator property (auto, 4k, 16k) following
+the established kvm_arch_accel_class_init() pattern: ARM registers
+the property in hvf_arch_accel_class_init(), x86 provides an empty
+stub.  This avoids #ifdef __aarch64__ in common code while keeping
+a single hvf-all.c shared by both targets.
 
-This series wires the library into HVF (macOS) and WHPX (Windows).  KVM
-on ARM already handles ISV=0 data aborts in-kernel via
-kvm_arm_handle_dabt_nisv(), but could use this library as a userspace
-fallback in the future.
+Fix hvf_set_phys_mem() to return early for non-aligned regions instead
+of clearing the add flag, which previously fell through to an
+incorrect unmap of a region that was never mapped.
 
-Changes since v2:
-  - Split monolithic patch into 6 incremental patches: framework, then
-    one patch per coherent instruction group (Peter)
-  - Removed per-backend callback ops; library uses CPUArchState directly
-    with cpu_memory_rw_debug() for memory access (Mohamed)
-  - Removed mock unit tests (Mohamed; kvm-unit-tests is the right
-    vehicle for decoder validation)
-  - Added architectural justification for separate decode file
+Signed-off-by: Lucas Amaral <lucas@lucasamaral.com>
+---
+ accel/hvf/hvf-all.c      | 30 +++++++++++++++++++++++++++---
+ include/system/hvf.h     | 15 +++++++++++++++
+ include/system/hvf_int.h |  2 ++
+ target/arm/hvf/hvf.c     | 40 ++++++++++++++++++++++++++++++++++++++++
+ target/i386/hvf/hvf.c    |  4 ++++
+ 5 files changed, 88 insertions(+), 3 deletions(-)
 
-Lucas Amaral (6):
-  target/arm/emulate: add ISV=0 emulation library with load/store
-    immediate
-  target/arm/emulate: add load/store register offset
-  target/arm/emulate: add load/store pair
-  target/arm/emulate: add load/store exclusive
-  target/arm/emulate: add atomic, compare-and-swap, and PAC load
-  target/arm/hvf,whpx: wire ISV=0 emulation for data aborts
-
- target/arm/emulate/a64-ldst.decode | 293 +++++++++++
- target/arm/emulate/arm_emulate.c   | 747 +++++++++++++++++++++++++++++
- target/arm/emulate/arm_emulate.h   |  30 ++
- target/arm/emulate/meson.build     |   6 +
- target/arm/hvf/hvf.c               |  41 +-
- target/arm/meson.build             |   1 +
- target/arm/whpx/whpx-all.c         |  39 +-
- 7 files changed, 1153 insertions(+), 4 deletions(-)
- create mode 100644 target/arm/emulate/a64-ldst.decode
- create mode 100644 target/arm/emulate/arm_emulate.c
- create mode 100644 target/arm/emulate/arm_emulate.h
- create mode 100644 target/arm/emulate/meson.build
-
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index 5f357c6d..d745fefd 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -10,6 +10,8 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qemu/units.h"
++#include "qapi/error.h"
+ #include "accel/accel-ops.h"
+ #include "exec/cpu-common.h"
+ #include "system/address-spaces.h"
+@@ -22,6 +24,21 @@
+ 
+ bool hvf_allowed;
+ 
++static uint64_t hvf_map_granule;
++
++void hvf_set_map_granule(uint64_t size)
++{
++    hvf_map_granule = size;
++}
++
++uint64_t hvf_get_map_granule(void)
++{
++    if (!hvf_map_granule) {
++        return qemu_real_host_page_size();
++    }
++    return hvf_map_granule;
++}
++
+ const char *hvf_return_string(hv_return_t ret)
+ {
+     switch (ret) {
+@@ -53,7 +70,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+ static void do_hv_vm_protect(hwaddr start, size_t size,
+                              hv_memory_flags_t flags)
+ {
+-    intptr_t page_mask = qemu_real_host_page_mask();
++    intptr_t page_mask = -(intptr_t)hvf_get_map_granule();
+     hv_return_t ret;
+ 
+     trace_hvf_vm_protect(start, size, flags,
+@@ -83,7 +100,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+     MemoryRegion *area = section->mr;
+     bool writable = !area->readonly && !area->rom_device;
+     hv_memory_flags_t flags;
+-    uint64_t page_size = qemu_real_host_page_size();
++    uint64_t page_size = hvf_get_map_granule();
+     uint64_t gpa = section->offset_within_address_space;
+     uint64_t size = int128_get64(section->size);
+     hv_return_t ret;
+@@ -104,7 +121,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+     if (!QEMU_IS_ALIGNED(size, page_size) ||
+         !QEMU_IS_ALIGNED(gpa, page_size)) {
+         /* Not page aligned, so we can not map as RAM */
+-        add = false;
++        return;
+     }
+ 
+     if (!add) {
+@@ -186,6 +203,11 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
+     int pa_range = 36;
+     MachineClass *mc = MACHINE_GET_CLASS(ms);
+ 
++    /* Resolve ipa-granule=auto → host page size */
++    if (!s->ipa_granule) {
++        s->ipa_granule = qemu_real_host_page_size();
++    }
++    hvf_set_map_granule(s->ipa_granule);
+ 
+     if (mc->get_physical_address_range) {
+         pa_range = mc->get_physical_address_range(ms,
+@@ -223,6 +245,8 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+     ac->init_machine = hvf_accel_init;
+     ac->allowed = &hvf_allowed;
+     ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
++
++    hvf_arch_accel_class_init(oc);
+ }
+ 
+ static const TypeInfo hvf_accel_type = {
+diff --git a/include/system/hvf.h b/include/system/hvf.h
+index d3dcf088..3c4c3b89 100644
+--- a/include/system/hvf.h
++++ b/include/system/hvf.h
+@@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
+ DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
+                          TYPE_HVF_ACCEL)
+ 
++#ifdef CONFIG_HVF_IS_POSSIBLE
++/*
++ * Minimum alignment for hv_vm_map().  Returns the configured IPA granule
++ * or host page size if not set.
++ */
++void hvf_set_map_granule(uint64_t size);
++uint64_t hvf_get_map_granule(void);
++#else
++static inline void hvf_set_map_granule(uint64_t size) {}
++static inline uint64_t hvf_get_map_granule(void)
++{
++    return qemu_real_host_page_size();
++}
++#endif
++
+ #endif
+diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+index 2621164c..9589b022 100644
+--- a/include/system/hvf_int.h
++++ b/include/system/hvf_int.h
+@@ -38,6 +38,7 @@ struct HVFState {
+ 
+     hvf_vcpu_caps *hvf_caps;
+     uint64_t vtimer_offset;
++    uint32_t ipa_granule;
+     QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
+ };
+ extern HVFState *hvf_state;
+@@ -57,6 +58,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+ const char *hvf_return_string(hv_return_t ret);
+ int hvf_arch_init(void);
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
++void hvf_arch_accel_class_init(ObjectClass *oc);
+ uint32_t hvf_arch_get_default_ipa_bit_size(void);
+ uint32_t hvf_arch_get_max_ipa_bit_size(void);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bb..1ba5bbf3 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -12,6 +12,8 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
++#include "qemu/units.h"
++#include "qapi/error.h"
+ 
+ #include "system/runstate.h"
+ #include "system/hvf.h"
+@@ -1218,6 +1220,44 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+     assert_hvf_ok(ret);
+ }
+ 
++static char *hvf_get_ipa_granule(Object *obj, Error **errp)
++{
++    HVFState *s = HVF_STATE(obj);
++
++    if (s->ipa_granule == 4 * KiB) {
++        return g_strdup("4k");
++    }
++    if (s->ipa_granule == 16 * KiB) {
++        return g_strdup("16k");
++    }
++    return g_strdup("auto");
++}
++
++static void hvf_set_ipa_granule(Object *obj, const char *value, Error **errp)
++{
++    HVFState *s = HVF_STATE(obj);
++
++    if (!strcmp(value, "auto")) {
++        s->ipa_granule = 0;
++    } else if (!strcmp(value, "4k")) {
++        s->ipa_granule = 4 * KiB;
++    } else if (!strcmp(value, "16k")) {
++        s->ipa_granule = 16 * KiB;
++    } else {
++        error_setg(errp, "invalid ipa-granule: '%s' (use auto, 4k, 16k)",
++                   value);
++    }
++}
++
++void hvf_arch_accel_class_init(ObjectClass *oc)
++{
++    object_class_property_add_str(oc, "ipa-granule",
++                                  hvf_get_ipa_granule,
++                                  hvf_set_ipa_granule);
++    object_class_property_set_description(oc, "ipa-granule",
++        "IPA granule for HVF stage-2 translation (auto, 4k, 16k)");
++}
++
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+ {
+     hv_return_t ret;
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index c0d028b1..565c79b3 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -228,6 +228,10 @@ int hvf_arch_init(void)
+     return 0;
+ }
+ 
++void hvf_arch_accel_class_init(ObjectClass *oc)
++{
++}
++
+ /* 48-bit on all Intel Macs. Function currently unused. */
+ uint32_t hvf_arch_get_default_ipa_bit_size(void)
+ {
 -- 
 2.52.0
 

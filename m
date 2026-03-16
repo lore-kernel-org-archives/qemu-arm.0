@@ -4,92 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E0DF4643F
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 09:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 899A6F46441
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 10:07:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w24RK-0002SO-OS; Mon, 16 Mar 2026 05:40:46 -0400
+	id 1w24qJ-0007q2-Mo; Mon, 16 Mar 2026 06:06:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w24RI-0002Rv-Jq
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 05:40:44 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w24pv-0007hK-On
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 06:06:13 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w24RF-0006xT-U0
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 05:40:44 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6611f41eebcso5670810a12.2
- for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 02:40:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w24pm-0002Zk-AC
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 06:06:07 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-64acd19e1dfso3983594d50.0
+ for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 03:05:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773655556; cv=none;
+ d=google.com; s=arc-20240605;
+ b=hFyp3oGxXYHSSjsHM2WyiyxDdYYKw6EAocYKv2F3mA6jwi5br0qefxp2vx4TpR1NOs
+ 65DoMOiuombJDCgdSLxikxtVLJK+KYkMubP2kAdiWzrsJYukfCJtF+9iSd5Z4ypfuuaD
+ xMJyqjuSwRm6ItWOeSG/LpW6cC/YiIh9sqBV0m6X1HFzyn9UfRCgNLuE1/b2ipAMJ0aL
+ QOeSGCgGifn/oVTnw/hvXmMP/fHOZmY+wuQk9kbEWluC1qK9YPXwmKuL5vNhHyyhzrmZ
+ DN1ZJznz4dSmCYVGwP2wg+K6dDbnYFN/pZz7M0rk81P8gh9a+Mo2eyerVXNF9hht8oK0
+ xgow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=evLupH/yWp2vQEvNZgqDdfr4GAiZrF7fUPDdQWSzT8M=;
+ fh=ItMV+fwF/Wpq+l9cTHtyXGknlVV97wNn8xh6uWLJZ4U=;
+ b=JUdK/mBwWjA8/tWQnGRU3+yIDw0JlyHX/jBpu21Se/rqMfPwitZyUfsoY9UoNzaw2X
+ MkzLOKmn7wsUWklEIBF5sMJMR41pzkVsjoM3OuumQwZujabBI1d9Lyv3A039B/caqfXE
+ IdS6qMEdRzcXQAGfTxr53+J6t2KWDoQJac/4hLweK153yhoWq/QyiZyD0rPUYRLxuEhH
+ jlAGinqhosYaRSu05gnJunCEMZ+f1vXFjAoxrsrt/obGd6Nq9tEnVRkjc4+iafcuzN91
+ RyFMFcxarnQDtkmunosmBFNWez0iLCUAYqXzPHeExyQa9JTyx4kB3kPXYW1YhTMCN5Gi
+ bVnQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773654039; x=1774258839; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WkNzkMAEYb+K/91dReIcHmZW+SjDKlL9QrJ1tA5lcio=;
- b=j4edvi1OAbfV31fGWBN3pCZx9G+CUh+on3DFYdKEAGTUYbVh3Pu98/Z5HLaIHgUJF+
- kj8gDLlU+hDwske6FCOIxytH/FG/kTYZGDOBHKucaREfiEDPSSQJ2jHlR6IhnVxC9JGS
- hOeLfzJFvGNb1Z3+k4LyN4sbcxxgtjg7ICa0apmLII50EdJqp6gGK1DBdGAv6ymzSij/
- 89sDbuX6b2JxJTblDzyyiS21/O7TYryid8VztovkSMSIqegaWx1R+UV/dBZXWUid+IMa
- HGZmvm//elkhqy30xdrsg0CzW2iyT9AlL4X5G7kGEh+2F0YMbF7BIVr7hYp071NO2BCE
- UTTA==
+ d=linaro.org; s=google; t=1773655556; x=1774260356; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=evLupH/yWp2vQEvNZgqDdfr4GAiZrF7fUPDdQWSzT8M=;
+ b=ERjuZu3Qa7XyilYwKYiUlBJh817M+01YX76FE5voMqLMyLWVHiIh6Fu/6ZRoYaGmHM
+ QY9S8hdoTrmw54Nxpv/b1+BBj9IcS1ptYXUYOeqTCvkhjkypaKbI4KDvFKA1q3bCjBaI
+ bVj8rJHIW8Gu6NoAqP5F3CWxcchJoMwxa95TIFX7HqXDp9wEfD+/cHSl6dF+KDy/8WUR
+ ck8Vu8w/pjXtmNNSl4LDRfq3BTudbuE28rUqFkO7wb5C602UXE9auJ+NqZA6d2WUeKkT
+ HvmXEJ9hFz2f4CVGUP8f2c08TNanjB2EQyPmf0o/ueqyScEVPTujE16LwjgSmuD18mjm
+ k75g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773654039; x=1774258839;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WkNzkMAEYb+K/91dReIcHmZW+SjDKlL9QrJ1tA5lcio=;
- b=c0HpC6mZU6lq5XNPb6tZI8knH1TMhP/dAvelfzmI/DZL//8VvbWT97KecY3OkcksYf
- TADC42J1upPxPOi3kOA9DKtOfsKJqE6PEl3YfHd3kqPmAGrvPdgLe4be2xIBPAUOk4W+
- eUUQtirOo7dISsKRwGsQYfB05J7pb9usHezWIssNwAuXzI9n431o1ZdxZrKCU1CtnHF4
- cZbMvwAey+ZhH0FTM7fPVRCTmdpSTBsN3Y8stxzVJO+bXrKApQW6Eb/SS77l7o5dEjdm
- jfPUugan/CBmIrq+Lic0FOYmjbI+qD1tzupVe2gYH4MgHipOuphNQwtkhpjnvwrw0JcX
- a1FQ==
-X-Gm-Message-State: AOJu0Yw6kgIO099fAoVbFZv32ecTO0Ql9rKe/OvIyhedWmZ+2w0ts4En
- UfimQDB1lMvQ22jjGYeta5YrfPXoy/y0Po2eWBIE942NPUg1uhcsCdRrGIwhuxkY8AY=
-X-Gm-Gg: ATEYQzzWE04fIa9B/DIdyBC5vgha3G6ogJUeXk7+M/NpIv9HRglRwYUe9df0nsj69BJ
- IMVtzr270D6u31lWUWHGLwJVcToAysegWAQMoihe7Fc09u0vzvdaEvAT6HUSKdeFAI5zQX3lreg
- JVYKX8izdGkJz+sWvK7EQZsCTA3N6CqIM2UMCvp6jZh/xtXt+f7YDyKnbhZDrT0hFNeLHgscYyW
- cXhUOgKhqmJZoVUCroydq6mK8w8Xa7HRiRPSsifI1ZNsDytnZMh562JyTQl3kPjtxB/pGkdLa15
- hU+i/Te9gQ7i/6D+y48xcwain+UaJYQ+KhWq0QziBRCfDewrMaYOsNAdgiAh4t90eTy/T3gfsA+
- 8Y7OOEkPhYWJan4FbI0sJTr/JrAwh0QF5kgWFafF1V5bmy4xdVbrDQEZl/ZvgiayzEaKNYFjB19
- aG4EUep3JAFAG8Bj0zA+FZoCI=
-X-Received: by 2002:a17:907:3e8d:b0:b97:d126:c007 with SMTP id
- a640c23a62f3a-b97d126c3f8mr1799066b.30.1773654039386; 
- Mon, 16 Mar 2026 02:40:39 -0700 (PDT)
-Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-66350d6fe24sm4827652a12.29.2026.03.16.02.40.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Mar 2026 02:40:38 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 97B655F7E0;
- Mon, 16 Mar 2026 09:40:37 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Zenghui Yu <zenghui.yu@linux.dev>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  agraf@csgraf.de,
- peter.maydell@linaro.org
-Subject: Re: [PATCH rfc] hvf: arm: Inject SEA when executing insn in invalid
- memory range
-In-Reply-To: <20260315163840.30741-1-zenghui.yu@linux.dev> (Zenghui Yu's
- message of "Mon, 16 Mar 2026 00:38:40 +0800")
-References: <20260315163840.30741-1-zenghui.yu@linux.dev>
-User-Agent: mu4e 1.14.0-pre2; emacs 30.1
-Date: Mon, 16 Mar 2026 09:40:37 +0000
-Message-ID: <87ikawnmcq.fsf@draig.linaro.org>
+ d=1e100.net; s=20251104; t=1773655556; x=1774260356;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=evLupH/yWp2vQEvNZgqDdfr4GAiZrF7fUPDdQWSzT8M=;
+ b=ZKOgQZ3PXSjaaaIwd7OYAM3EsM5jC8nDPGF9z9IXLXFgZ8kB9V5n3txOgmVJHJQEKJ
+ dtdsZZ9/vB88kjzdO7Acf9gERYmzmi3R499eKsADNsw5GsYNorL0nbIq3MFBwZ5Mb05L
+ ZAMdZ47+6V0Q+X981lDPP63rRdRNE1UjuBS9EP7MzEFaFW2WovjB8McEVAqbGx0Gyajr
+ rsqxoeGs56QPbGblJTiTnnEiJp1lmp4rjurDiMcuW3uYq8IGKoRcEVIghmu2D2l/lBct
+ nHOkOgxoD5j/vFXjFM1wJ1e5EOLkoa6mYbV5yaL2xHKM1KiY5hbKLWamJn/vaGVfQL4s
+ FtSg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXRhnMsdoFZJjbqNyN3xLNHh3wwFFrSOkYHnnDVCWtcZEyXYSzr+Qh/u/iqPPRx3pEdzSogSq6HtQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzbsLPHWZe6R7JZBJqgvaYM0u2Q4NPmRliGKGgc33FFqH8MfZqV
+ aL4N8Ixbd+gQqXFQQ4hgMXvwDq+2LB/DI5SUHw1Gr1ryMvIO/ErqsMiOVN/z+/kbs+kLS5IHWJx
+ uHq9ZghCOJ2vyszFv9VCRG5etAUmlFl/Nx7s+65isr5PUBb2wEvbH
+X-Gm-Gg: ATEYQzz8S9NnZ1QB3Tvh0ij6k/y+zjnLtI7jnpew6DZPP4hTK88eM46ZXuf/dbaB8w9
+ c+cu5oz16ieKFMfMOb+ge3rvpYVEsCRLPMhOTmeBi8wWPQ9bnNcNG2iixSZL9tasWgyrTgYroVx
+ WZS0BSCWN79WNFbUhOSfNV2uYyrHUm6A3gCjwLm7K2TJG5ucF+oI8VsI6JvzInO5qSN0q6I2Dd2
+ xlQ3jVbcZJj8CsKUO1f9g1xUxio0qP4Y/zSRq0WWMK6EirzrHpNwDdYCEOshK8pdJuN2ldt/W42
+ y2TIEmsZm/+LL8ADJ9nm3S/4a0DUsBuSMJsMRIqCrJOcNhVOgaaymMJbnP4o6vg5iZE=
+X-Received: by 2002:a05:690e:16dc:b0:64c:a41a:3a64 with SMTP id
+ 956f58d0204a3-64e62f98e92mr8644108d50.34.1773655556106; Mon, 16 Mar 2026
+ 03:05:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+References: <20260312210328.2016191-1-nathanc@nvidia.com>
+ <a0ca818f-8e05-4756-b6bb-8f986c59cd54@redhat.com>
+In-Reply-To: <a0ca818f-8e05-4756-b6bb-8f986c59cd54@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Mar 2026 10:05:44 +0000
+X-Gm-Features: AaiRm50Pm_BrjeMMsmtJMn7c8zm8sFv0fzYVJaUiNHtBXur5nKgkk05aDdfCtUo
+Message-ID: <CAFEAcA-NjFCaZC-UAykS98J4DAEXyANj2QfAgc3bqT4eQsO=zA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/8] hw/arm/smmuv3-accel: Support AUTO properties
+To: eric.auger@redhat.com
+Cc: Nathan Chen <nathanc@nvidia.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Eric Blake <eblake@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, 
+ Nicolin Chen <nicolinc@nvidia.com>, Matt Ochs <mochs@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,115 +125,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Zenghui Yu <zenghui.yu@linux.dev> writes:
-
-> It seems that hvf doesn't deal with the abort generated when guest tries =
-to
-> execute instructions outside of the valid physical memory range, for
-> unknown reason. The abort is forwarded to userspace and QEMU doesn't hand=
-le
-> it either, which ends up with faulting on the same instruction infinitely.
+On Mon, 16 Mar 2026 at 08:08, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> This was noticed by the kvm-unit-tests/selftest-vectors-kernel failure:
+> Hi Nathan,
 >
->   timeout -k 1s --foreground 90s /opt/homebrew/bin/qemu-system-aarch64 \
->     -nodefaults -machine virt -accel hvf -cpu host \
->     -device virtio-serial-device -device virtconsole,chardev=3Dctd \
->     -chardev testdev,id=3Dctd -device pci-testdev -display none \
->     -serial stdio -kernel arm/selftest.flat -smp 1 -append
->   vectors-kernel
-
-Have you got patches for teaching kvm-unit-tests about hvf or are you
-running these all manually? I tried building on the Mac we have but it
-failed the build and the docs only mention x86.
-
+> On 3/12/26 10:03 PM, Nathan Chen wrote:
+> > Hi,
 >
->   PASS: selftest: vectors-kernel: und
->   PASS: selftest: vectors-kernel: svc
->   qemu-system-aarch64: 0xffffc000: unhandled exception ec=3D0x20
->   qemu-system-aarch64: 0xffffc000: unhandled exception ec=3D0x20
->   qemu-system-aarch64: 0xffffc000: unhandled exception ec=3D0x20
-
-I think this is running:
-
-  static bool check_pabt(void)
-  {
-          enum vector v =3D check_vector_prep();
-
-          install_exception_handler(v, ESR_EL1_EC_IABT_EL1, pabt_handler);
-
-          test_exception("adrp	x9, check_pabt_invalid_paddr\n"
-                         "add	x9, x9, :lo12:check_pabt_invalid_paddr\n"
-                         "ldr	x9, [x9]\n",
-                         "blr	x9\n",
-                         "", "x9", "x30");
-
-          install_exception_handler(v, ESR_EL1_EC_IABT_EL1, NULL);
-
-          return pabt_works;
-  }
-
-which is expecting 0x21 - instruction abort at the same exception level.
-I wonder why there is the difference.
-
-
->   [...]
+> If we want this to be taken in qemu 11.0 you need to clearly indicate
+> that in the series title:
+> using a subject prefix like "PATCH for-11.0"
 >
-> It's apparent that the guest is braindead and it's unsure what prevents h=
-vf
-> from injecting an abort directly in that case. Try to deal with the insane
-> guest in QEMU by injecting an SEA back into it in the EC_INSNABORT
-> emulation path.
+> Then you need to clearly justify what those patches are fixes for stuff
+> introduced in qemu 11.0, something like:
 >
-> Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
-> ---
->  target/arm/hvf/hvf.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
->
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index aabc7d32c1..54d6ea469c 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -2332,9 +2332,32 @@ static int hvf_handle_exception(CPUState *cpu, hv_=
-vcpu_exit_exception_t *excp)
->          bool ea =3D (syndrome >> 9) & 1;
->          bool s1ptw =3D (syndrome >> 7) & 1;
->          uint32_t ifsc =3D (syndrome >> 0) & 0x3f;
-> +        uint64_t ipa =3D excp->physical_address;
-> +        AddressSpace *as =3D cpu_get_address_space(cpu, ARMASIdx_NS);
-> +        hwaddr xlat;
-> +        MemoryRegion *mr;
-> +
-> +        cpu_synchronize_state(cpu);
->=20=20
->          trace_hvf_insn_abort(env->pc, set, fnv, ea, s1ptw, ifsc);
->=20=20
-> +        /*
-> +         * TODO: If s1ptw, this is an error in the guest os page tables.
-> +         * Inject the exception into the guest.
-> +         */
-> +        assert(!s1ptw);
-> +
-> +        mr =3D address_space_translate(as, ipa, &xlat, NULL, false,
-> +                                     MEMTXATTRS_UNSPECIFIED);
-> +        if (unlikely(!memory_region_is_ram(mr))) {
-> +            uint32_t syn;
-> +
-> +            /* inject an SEA back into the guest */
-> +            syn =3D syn_insn_abort(arm_current_el(env) =3D=3D 1, ea, fal=
-se, 0x10);
-> +            hvf_raise_exception(cpu, EXCP_PREFETCH_ABORT, syn, 1);
-> +            break;
-> +        }
-> +
->          /* fall through */
->      }
->      default:
+> In qemu 11 we introduced new options for vSMMU but feedbacks received
+> when starting the integration of layered products shows the need for
+> auto/host retrieved values. To avoid breaking JSON/QMP compat, we want
+> to fix the option types so that they can later support the auto mode. At
+> the moment the auto mode is not supported though.
 
-I need the check the exception paths for KVM and TCG. I guess for the
-KVM case it is all in the kernel?
+Yes. At the moment this is on my "look at it for 11.1" pile.
+If you want it in 11.0 then it must very clearly state the
+justfication (i.e. why it is not new feature work) and be
+as small as possible to achieve its aim.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+-- PMM
 

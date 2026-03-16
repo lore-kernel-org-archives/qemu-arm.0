@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F02F30295
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 02:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 633C1F30298
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 02:51:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1y2g-00027n-MB; Sun, 15 Mar 2026 22:50:54 -0400
+	id 1w1y32-0002Cc-Iy; Sun, 15 Mar 2026 22:51:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2e-00027W-Ti
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:50:52 -0400
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+ id 1w1y2m-00028n-F5
+ for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:02 -0400
+Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2c-0000WG-W3
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:50:52 -0400
-Received: by mail-dy1-x1330.google.com with SMTP id
- 5a478bee46e88-2ba895adfeaso3909968eec.0
- for <qemu-arm@nongnu.org>; Sun, 15 Mar 2026 19:50:50 -0700 (PDT)
+ id 1w1y2k-0000XU-Ia
+ for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:00 -0400
+Received: by mail-dy1-x132f.google.com with SMTP id
+ 5a478bee46e88-2c0bcd8f194so1134786eec.1
+ for <qemu-arm@nongnu.org>; Sun, 15 Mar 2026 19:50:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773629449; x=1774234249; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773629456; x=1774234256; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GAsSc2doTgfK1k7+3MuUQJhqHA5GPQ1JX8r2cpgADWY=;
- b=V721awQX/aGgNZQ/eAFqcykcXfAbD+cbSGkvlSNTJf+Z9nTWAGdLuj7IP/ubrI9YmC
- yDBAhk8miRAx2qvKUCFf0Yr2gZzKi0fyyLaXYlgtV5b86O9EO7RCiU6s3MAfLy7wSOlQ
- 6biahBeyaIit5Ockw9VgPI02YQ6ED/6yBG94uDKOqZlzbhk88jC+ztM1+QASa4UR2efB
- u37iXvTKyVqFgzc7DA/rPzkgukMZiirzMG5z3soclsgP/BHa/xa+/Ddq9qZj+KqxO1KG
- l/29Zo6YLJm+Fhxc8sa9N4NayYp4pOjdPwklyNl8kAc9ACK/NRgB04wveeXProq5pq6s
- UrsA==
+ bh=XUL3MdtW+tx35/EnWaKqwdzi9rS198ej4aXzJufMgC4=;
+ b=dwcj5lurtvg7pZIyRb8yoWGWyVnPlScmVZKu00xIU0R/ODUsQKK4ixlCtulAO5uCWi
+ g1eaYFEWufjLEXxE6fh8cJXzdmEZAc0GJYdHPbpHg+zci7stcbF1qPK/GMpjFUZNCjLP
+ flvA99IkQUmrZG6cCVxufs0lwINvNaxi9yiQsaaaK/JFG7v3/+eOB1BYfs5R0Yk7P2JO
+ lIWFaHR2sEJBRCz/Pq8ShB4lnuRlJ4tPkH35PVCqYEX9roXCPMwWgKM9h9o7L8QTLknp
+ TDqnmjnAhsDm4oUxVv30/Jjf6eXN11X3XXzySOeFMOqs59uP95YVNpUtLQHcAlNywF2L
+ vbNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773629450; x=1774234250;
+ d=1e100.net; s=20251104; t=1773629456; x=1774234256;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=GAsSc2doTgfK1k7+3MuUQJhqHA5GPQ1JX8r2cpgADWY=;
- b=qXQVg+BIC/ow5p+nG2ImpG7b1b/DezpYD6BX53IUOc44yEokXdsD1WT0XcbB7r2dFQ
- aqz3AM4AA09yyLLq2RrTOWsh89/GoPtQtCSJqP5WcJwWlMXbMVpoTVFFDy1K8KMSZWn0
- Vlb+P4ujAs1og3WQ4yMcqTtQJEYwoWdIFpR1uLEXj9T0B8O8ZVhJAVJzjYwXLFcYMX/0
- KS9cON0SD/GPFYsx2xremkr9eWfDReVp5IiDEl4J8fANRFcSOURB27MAQ/sRf+GiFB6R
- Swwc1qwxum7JxmawPgtDt0yckTPlFzxcuuVVoyP2kxlSeAdVTZMJdWcrKtvTp2Ypd22Z
- F6xA==
-X-Gm-Message-State: AOJu0YyY7JpkY86puph8YfjwwCbMO/bSte+mjFXsI4iMKzy7PMeBRbuT
- dy2rCYGvC8TgYEDHUehk0rwQRnt6AEJnTgmHtgpkNB7C6f4dejQ7Wfzg
-X-Gm-Gg: ATEYQzwXyj7QdmvNWkBRIm1cjBDrsYG2rHtXaQHwn4yiM7Hripbz+THeny4NTb6GtnX
- TRBAw3U0UKd0gZyEMtPr8FmADwGawrI1bbKLgDcc9unzz6UX2Ch5DbZ0tRACdeZD8G1SQUfkgVT
- 16kBwogLwNuWknM+yGL/FeSNSaOdrGj3p2GZMNbKZGzPcEkRWAShnsmvuXKNP/LtT7X7svuVHSx
- vALJMdIQRChbqInDFH3ngWQh5SGTwr58GKhpsMBka6nHiFfszjbhaBd8+rf+UOy1CG5ifCUoEeP
- Gmuul+n0IbpNizCRXpy7U0n6FnI8nbaIQHX5y5AQyddJXb7SAkrcZMyK1afz0cSCn+pGzIGtAsq
- bC0yHKLPtz+IF1NGLNQHYMJ0DpXaPljGAYs4zjXCXycA1H6ofqjMRd2BN9VTV42yRL001WouER8
- p7A9sCmNmxVun+MG3uHB7GHTVNpcGKYbJduAizD6w=
-X-Received: by 2002:a05:7300:6c27:b0:2be:aa:9a4a with SMTP id
- 5a478bee46e88-2bea51e50d3mr4119697eec.0.1773629449458; 
- Sun, 15 Mar 2026 19:50:49 -0700 (PDT)
+ bh=XUL3MdtW+tx35/EnWaKqwdzi9rS198ej4aXzJufMgC4=;
+ b=qWeyTnLdwzRCxm+UIOqaSZyDayf20/UAkLKqZvek7f3UlMmT06+Oi+9R5KsPy3os5N
+ EHU0/4vKEU2tgWylzRg6uJCXadBAh5y+MawRomhUihzma3dyEx1IU6OjNe2XlfJjbVac
+ d/6bhFk76M1MK/1Ns9buNMu3Hoy6K0Omu3MDuEs9tiu9ogUNb7wourISM2e9VMyIRo+x
+ 9DIaTPJfT5DtaRnPmyApOvY9noSq5+/3Qy6alXcBcMB8/ewq4QCrLZf45+KVoib29AhG
+ B7ggGc33tFKed54lSDh3AuYRys4VaSJD5oVANLBIoC+znalZzfyVlTxkhqzYQ141xkxv
+ ZEXg==
+X-Gm-Message-State: AOJu0YyTVh2phrqjw2DtRAHTf11urSU8j9gM/a3ePeTaMqZAKeyBUHkP
+ sxBdZua7uYW0Kw3gN1hH4aRoSPmOC91TvqhrKDLEC7lwVZTbFuL03SJa
+X-Gm-Gg: ATEYQzyszNiR37tue4a35QCIKcGbjRZ7INJcOtxbPbMChAyS9PhxvAjxiWwt0jY0eQd
+ irWNV1oizYMKgzXPgarLNvFTN8P4AI/+vLdZMbDJEHFTbIVTWnI8ZJv+oYEQrI/2q3xByx/Dy2Z
+ I3fdIBUVefnuL9SS2TPmBIOfDQH7sAd66O0ICz4ncUs7p842FcdwpyDhCiDAQ2QhH4AFLxOGNK3
+ Um6KiEFtad3+RIWirqU2bfZe0apmt6MzyZKRZm8DqHOgPY3HOVcyovyY8kLfx3YdwPZYjNqugx+
+ nx6lRy8jwzgsJGwQLUm2f4k+0hNNb/NzdTnL4DOPiBS8mGxnD7HP3ONWZZ7WKuNE1vUBkNsz+1a
+ meL/7X5bkbb/D7uBtOooutGFknX/ZNyuJpCzmfU+Br/nane39F7QRtkTYUOYlKplX9Ajf2GWtFP
+ lOEYzDeqofV6EMDGGuktS4OGektg/HWn7uPliDEFE=
+X-Received: by 2002:a05:7300:f194:b0:2bd:e892:b075 with SMTP id
+ 5a478bee46e88-2bea547ccd6mr4942131eec.9.1773629455725; 
+ Sun, 15 Mar 2026 19:50:55 -0700 (PDT)
 Received: from 192.168.7.2 ([189.6.247.75]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2beab3a12e2sm13138973eec.2.2026.03.15.19.50.46
+ 5a478bee46e88-2beab3a12e2sm13138973eec.2.2026.03.15.19.50.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 15 Mar 2026 19:50:49 -0700 (PDT)
+ Sun, 15 Mar 2026 19:50:55 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
  mohamed@unpredictable.fr, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 3/6] target/arm/emulate: add load/store pair
-Date: Sun, 15 Mar 2026 23:50:31 -0300
-Message-ID: <20260316025034.85611-4-lucaaamaral@gmail.com>
+Subject: [PATCH v4 5/6] target/arm/emulate: add atomic, compare-and-swap,
+ and PAC load
+Date: Sun, 15 Mar 2026 23:50:33 -0300
+Message-ID: <20260316025034.85611-6-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260316025034.85611-1-lucaaamaral@gmail.com>
 References: <20260315034123.41921-1-lucaaamaral@gmail.com>
@@ -77,15 +78,15 @@ References: <20260315034123.41921-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1330;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132f;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  FSL_HELO_BARE_IP_2=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,237 +102,350 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add emulation for load/store pair instructions (DDI 0487 C3.3.14 --
-C3.3.16).  All addressing modes are covered: non-temporal (STNP/LDNP),
-post-indexed, signed offset, and pre-indexed.
+Add emulation for remaining ISV=0 load/store instruction classes.
 
-Instruction coverage:
-  - STP/LDP (GPR): 32/64-bit pairs, all addressing modes
-  - STP/LDP (SIMD/FP): 32/64/128-bit pairs, all addressing modes
-  - LDPSW: sign-extending 32-bit pair load
-  - STGP: store allocation tag pair (tag operation is NOP for MMIO)
+Atomic memory operations (DDI 0487 C3.3.2):
+  - LDADD, LDCLR, LDEOR, LDSET: arithmetic/logic atomics
+  - LDSMAX, LDSMIN, LDUMAX, LDUMIN: signed/unsigned min/max
+  - SWP: atomic swap
+  Non-atomic read-modify-write, sufficient for MMIO where concurrent
+  access is not a concern.  Acquire/release semantics are ignored.
+
+Compare-and-swap (DDI 0487 C3.3.1):
+  - CAS/CASA/CASAL/CASL: single-register compare-and-swap
+  - CASP/CASPA/CASPAL/CASPL: register-pair compare-and-swap
+  CASP validates even register pairs; odd or r31 returns UNHANDLED.
+
+Load with PAC (DDI 0487 C6.2.121):
+  - LDRAA/LDRAB: pointer-authenticated load, offset/pre-indexed
+  Pointer authentication is not emulated (equivalent to auth always
+  succeeding), which is correct for MMIO since PAC is a software
+  security mechanism, not a memory access semantic.
+
+CASP uses two explicit decode patterns for the 32/64-bit size
+variants.  LDRA's offset immediate is stored raw in the decode;
+the handler scales by << 3.
 
 Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- target/arm/emulate/a64-ldst.decode |  68 ++++++++++++++++++
- target/arm/emulate/arm_emulate.c   | 111 +++++++++++++++++++++++++++++
- 2 files changed, 179 insertions(+)
+ target/arm/emulate/a64-ldst.decode |  45 ++++++
+ target/arm/emulate/arm_emulate.c   | 233 +++++++++++++++++++++++++++++
+ 2 files changed, 278 insertions(+)
 
 diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index af6babe1..f3de3f86 100644
+index fadf6fd2..9292bfdf 100644
 --- a/target/arm/emulate/a64-ldst.decode
 +++ b/target/arm/emulate/a64-ldst.decode
-@@ -10,6 +10,9 @@
- # 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
- &ldst_imm       rt rn imm sz sign w p unpriv ext u
+@@ -16,6 +16,16 @@
+ # Load/store pair (GPR and SIMD/FP)
+ &ldstpair       rt2 rt rn imm sz sign w p
  
-+# Load/store pair (GPR and SIMD/FP)
-+&ldstpair       rt2 rt rn imm sz sign w p
++# Atomic memory operations
++&atomic         rs rn rt a r sz
++
++# Compare-and-swap
++&cas            rs rn rt sz a r
++
++# Load with PAC (LDRAA/LDRAB, FEAT_PAuth)
++%ldra_imm       22:s1 12:9
++&ldra           rt rn imm m w
 +
  # Load/store register offset
  &ldst           rm rn rt sign ext sz opt s
  
-@@ -24,6 +27,9 @@
- # Load/store unsigned offset (12-bit, handler scales by << sz)
- @ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
+@@ -36,6 +46,15 @@
+ # Load/store pair: imm7 is signed, scaled by element size in handler
+ @ldstpair       .. ... . ... . imm:s7 rt2:5 rn:5 rt:5          &ldstpair
  
-+# Load/store pair: imm7 is signed, scaled by element size in handler
-+@ldstpair       .. ... . ... . imm:s7 rt2:5 rn:5 rt:5          &ldstpair
++# Atomics
++@atomic         sz:2 ... . .. a:1 r:1 . rs:5 . ... .. rn:5 rt:5   &atomic
++
++# Compare-and-swap: sz extracted by pattern (CAS) or set constant (CASP)
++@cas            .. ...... . a:1 . rs:5 r:1 ..... rn:5 rt:5        &cas
++
++# Load with PAC
++@ldra           .. ... . .. m:1 . . ......... w:1 . rn:5 rt:5     &ldra imm=%ldra_imm
 +
  # Load/store register offset
  @ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
  
-@@ -128,6 +134,68 @@ STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=
- LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
- LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
+@@ -241,6 +260,32 @@ STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=
+ LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
+ LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
  
-+### Load/store pair — non-temporal (STNP/LDNP)
++### Compare-and-swap
 +
-+# STNP/LDNP: offset only, no writeback.  Non-temporal hint ignored.
-+STP             00 101 0 000 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             00 101 0 000 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+STP             10 101 0 000 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+LDP             10 101 0 000 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           00 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+LDP_v           00 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+STP_v           01 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+LDP_v           01 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           10 101 1 000 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
-+LDP_v           10 101 1 000 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++# CAS / CASA / CASAL / CASL
++CAS             sz:2 001000 1 . 1 ..... . 11111 ..... .....     @cas
 +
-+### Load/store pair — post-indexed
++# CASP / CASPA / CASPAL / CASPL (pair: Rt,Rt+1 and Rs,Rs+1)
++CASP            00 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=2
++CASP            01 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=3
 +
-+STP             00 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
-+LDP             00 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
-+LDP             01 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=1 w=1
-+STP             10 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
-+LDP             10 101 0 001 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
-+STP_v           00 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
-+LDP_v           00 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=1 w=1
-+STP_v           01 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
-+LDP_v           01 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
-+STP_v           10 101 1 001 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=1 w=1
-+LDP_v           10 101 1 001 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=1 w=1
++### Atomic memory operations
 +
-+### Load/store pair — signed offset
++LDADD           .. 111 0 00 . . 1 ..... 0000 00 ..... .....    @atomic
++LDCLR           .. 111 0 00 . . 1 ..... 0001 00 ..... .....    @atomic
++LDEOR           .. 111 0 00 . . 1 ..... 0010 00 ..... .....    @atomic
++LDSET           .. 111 0 00 . . 1 ..... 0011 00 ..... .....    @atomic
++LDSMAX          .. 111 0 00 . . 1 ..... 0100 00 ..... .....    @atomic
++LDSMIN          .. 111 0 00 . . 1 ..... 0101 00 ..... .....    @atomic
++LDUMAX          .. 111 0 00 . . 1 ..... 0110 00 ..... .....    @atomic
++LDUMIN          .. 111 0 00 . . 1 ..... 0111 00 ..... .....    @atomic
++SWP             .. 111 0 00 . . 1 ..... 1000 00 ..... .....    @atomic
 +
-+STP             00 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             00 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+LDP             01 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=0 w=0
-+STP             10 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+LDP             10 101 0 010 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           00 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+LDP_v           00 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=0
-+STP_v           01 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+LDP_v           01 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+STP_v           10 101 1 010 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
-+LDP_v           10 101 1 010 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=0
++### Load with PAC (FEAT_PAuth)
 +
-+### Load/store pair — pre-indexed
++# LDRAA (M=0) / LDRAB (M=1), offset (W=0) / pre-indexed (W=1)
++LDRA            11 111 0 00 . . 1 ......... . 1 ..... .....  @ldra
 +
-+STP             00 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
-+LDP             00 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
-+LDP             01 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=1 p=0 w=1
-+STP             10 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
-+LDP             10 101 0 011 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
-+STP_v           00 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
-+LDP_v           00 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=2 sign=0 p=0 w=1
-+STP_v           01 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
-+LDP_v           01 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
-+STP_v           10 101 1 011 0 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=1
-+LDP_v           10 101 1 011 1 ....... ..... ..... .....        @ldstpair sz=4 sign=0 p=0 w=1
-+
-+### Load/store pair — STGP (store allocation tag + pair)
-+
-+STGP            01 101 0 001 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=1 w=1
-+STGP            01 101 0 010 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=0
-+STGP            01 101 0 011 0 ....... ..... ..... .....        @ldstpair sz=3 sign=0 p=0 w=1
-+
- ### Load/store register — register offset
+ ### System instructions — DC cache maintenance
  
- # GPR
+ # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
 diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index bf09e2a6..6c63a0d0 100644
+index 52e41703..44a559ad 100644
 --- a/target/arm/emulate/arm_emulate.c
 +++ b/target/arm/emulate/arm_emulate.c
-@@ -122,6 +122,117 @@ static uint64_t load_extend(uint64_t val, int sz, int sign, int ext)
-     return val;
+@@ -499,6 +499,239 @@ static bool trans_LDXP(DisasContext *ctx, arg_stxr *a)
+     return true;
  }
  
 +/*
-+ * Load/store pair: STP, LDP, STNP, LDNP, STGP, LDPSW
-+ * (DDI 0487 C3.3.14 -- C3.3.16)
++ * Atomic memory operations (DDI 0487 C3.3.2)
++ *
++ * Non-atomic read-modify-write; sufficient for MMIO.
++ * Acquire/release semantics ignored (sequentially consistent by design).
 + */
 +
-+static bool trans_STP(DisasContext *ctx, arg_ldstpair *a)
++typedef uint64_t (*atomic_op_fn)(uint64_t old, uint64_t operand, int bits);
++
++static uint64_t atomic_add(uint64_t old, uint64_t op, int bits)
 +{
-+    int esize = 1 << a->sz;                   /* 4 or 8 bytes */
-+    int64_t offset = (int64_t)a->imm << a->sz;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset; /* post-index: unmodified base */
-+    uint8_t buf[16];                           /* max 2 x 8 bytes */
++    (void)bits;
++    return old + op;
++}
 +
-+    uint64_t v1 = gpr_read(ctx, a->rt);
-+    uint64_t v2 = gpr_read(ctx, a->rt2);
-+    memcpy(buf, &v1, esize);
-+    memcpy(buf + esize, &v2, esize);
++static uint64_t atomic_clr(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old & ~op;
++}
 +
-+    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++static uint64_t atomic_eor(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old ^ op;
++}
++
++static uint64_t atomic_set(uint64_t old, uint64_t op, int bits)
++{
++    (void)bits;
++    return old | op;
++}
++
++static uint64_t atomic_smax(uint64_t old, uint64_t op, int bits)
++{
++    int64_t a = sign_extend(old, bits);
++    int64_t b = sign_extend(op, bits);
++    return (a >= b) ? old : op;
++}
++
++static uint64_t atomic_smin(uint64_t old, uint64_t op, int bits)
++{
++    int64_t a = sign_extend(old, bits);
++    int64_t b = sign_extend(op, bits);
++    return (a <= b) ? old : op;
++}
++
++static uint64_t atomic_umax(uint64_t old, uint64_t op, int bits)
++{
++    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
++    return ((old & mask) >= (op & mask)) ? old : op;
++}
++
++static uint64_t atomic_umin(uint64_t old, uint64_t op, int bits)
++{
++    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
++    return ((old & mask) <= (op & mask)) ? old : op;
++}
++
++static bool do_atomic(DisasContext *ctx, arg_atomic *a, atomic_op_fn fn)
++{
++    int esize = 1 << a->sz;
++    int bits = 8 * esize;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t old = 0;
++
++    if (mem_read(ctx, va, &old, esize) != 0) {
 +        return true;
 +    }
 +
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
++    uint64_t operand = gpr_read(ctx, a->rs);
++    uint64_t result = fn(old, operand, bits);
++
++    if (mem_write(ctx, va, &result, esize) != 0) {
++        return true;
 +    }
++
++    /* Rt receives the old value (before modification) */
++    gpr_write(ctx, a->rt, old);
 +    return true;
 +}
 +
-+static bool trans_LDP(DisasContext *ctx, arg_ldstpair *a)
++static bool trans_LDADD(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_add);
++}
++
++static bool trans_LDCLR(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_clr);
++}
++
++static bool trans_LDEOR(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_eor);
++}
++
++static bool trans_LDSET(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_set);
++}
++
++static bool trans_LDSMAX(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_smax);
++}
++
++static bool trans_LDSMIN(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_smin);
++}
++
++static bool trans_LDUMAX(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_umax);
++}
++
++static bool trans_LDUMIN(DisasContext *ctx, arg_atomic *a)
++{
++    return do_atomic(ctx, a, atomic_umin);
++}
++
++static bool trans_SWP(DisasContext *ctx, arg_atomic *a)
 +{
 +    int esize = 1 << a->sz;
-+    int64_t offset = (int64_t)a->imm << a->sz;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t old = 0;
++
++    if (mem_read(ctx, va, &old, esize) != 0) {
++        return true;
++    }
++
++    uint64_t newval = gpr_read(ctx, a->rs);
++    if (mem_write(ctx, va, &newval, esize) != 0) {
++        return true;
++    }
++
++    gpr_write(ctx, a->rt, old);
++    return true;
++}
++
++/* Compare-and-swap: CAS, CASP (DDI 0487 C3.3.1) */
++
++static bool trans_CAS(DisasContext *ctx, arg_cas *a)
++{
++    int esize = 1 << a->sz;
++    uint64_t va = base_read(ctx, a->rn);
++    uint64_t current = 0;
++
++    if (mem_read(ctx, va, &current, esize) != 0) {
++        return true;
++    }
++
++    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
++    uint64_t compare = gpr_read(ctx, a->rs) & mask;
++
++    if ((current & mask) == compare) {
++        uint64_t newval = gpr_read(ctx, a->rt) & mask;
++        if (mem_write(ctx, va, &newval, esize) != 0) {
++            return true;
++        }
++    }
++
++    /* Rs receives the old memory value (whether or not swap occurred) */
++    gpr_write(ctx, a->rs, current);
++    return true;
++}
++
++/* CASP: compare-and-swap pair (Rs,Rs+1 compared; Rt,Rt+1 stored) */
++static bool trans_CASP(DisasContext *ctx, arg_cas *a)
++{
++    /* CASP requires even register pairs; odd or r31 is UNPREDICTABLE */
++    if ((a->rs & 1) || a->rs >= 31 || (a->rt & 1) || a->rt >= 31) {
++        return false;
++    }
++
++    int esize = 1 << a->sz;                   /* per-register size */
++    uint64_t va = base_read(ctx, a->rn);
 +    uint8_t buf[16];
-+    uint64_t v1 = 0, v2 = 0;
++    uint64_t cur1 = 0, cur2 = 0;
 +
 +    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
 +        return true;
 +    }
-+    memcpy(&v1, buf, esize);
-+    memcpy(&v2, buf + esize, esize);
++    memcpy(&cur1, buf, esize);
++    memcpy(&cur2, buf + esize, esize);
 +
-+    /* LDPSW: sign-extend 32-bit values to 64-bit (sign=1, sz=2) */
-+    if (a->sign) {
-+        v1 = sign_extend(v1, 8 * esize);
-+        v2 = sign_extend(v2, 8 * esize);
++    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
++    uint64_t cmp1 = gpr_read(ctx, a->rs) & mask;
++    uint64_t cmp2 = gpr_read(ctx, a->rs + 1) & mask;
++
++    if ((cur1 & mask) == cmp1 && (cur2 & mask) == cmp2) {
++        uint64_t new1 = gpr_read(ctx, a->rt) & mask;
++        uint64_t new2 = gpr_read(ctx, a->rt + 1) & mask;
++        memcpy(buf, &new1, esize);
++        memcpy(buf + esize, &new2, esize);
++        if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++            return true;
++        }
 +    }
 +
-+    gpr_write(ctx, a->rt, v1);
-+    gpr_write(ctx, a->rt2, v2);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
++    gpr_write(ctx, a->rs, cur1);
++    gpr_write(ctx, a->rs + 1, cur2);
 +    return true;
-+}
-+
-+/* STGP: tag operation is a NOP for emulation; data stored via STP */
-+static bool trans_STGP(DisasContext *ctx, arg_ldstpair *a)
-+{
-+    return trans_STP(ctx, a);
 +}
 +
 +/*
-+ * SIMD/FP load/store pair: STP_v, LDP_v
-+ * (DDI 0487 C3.3.14 -- C3.3.16)
++ * Load with PAC: LDRAA / LDRAB (FEAT_PAuth)
++ * (DDI 0487 C6.2.121)
++ *
++ * Pointer authentication is not emulated -- the base register is used
++ * directly (equivalent to auth always succeeding).
 + */
 +
-+static bool trans_STP_v(DisasContext *ctx, arg_ldstpair *a)
++static bool trans_LDRA(DisasContext *ctx, arg_ldra *a)
 +{
-+    int esize = 1 << a->sz;                   /* 4, 8, or 16 bytes */
-+    int64_t offset = (int64_t)a->imm << a->sz;
++    int64_t offset = (int64_t)a->imm << 3;  /* S:imm9, scaled by 8 */
 +    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+    uint8_t buf[32];                           /* max 2 x 16 bytes */
++    uint64_t va = base + offset;  /* auth not emulated */
++    uint64_t val = 0;
 +
-+    fpreg_read(ctx, a->rt, buf, esize);
-+    fpreg_read(ctx, a->rt2, buf + esize, esize);
-+
-+    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
++    if (mem_read(ctx, va, &val, 8) != 0) {
 +        return true;
 +    }
 +
++    gpr_write(ctx, a->rt, val);
++
 +    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
++        base_write(ctx, a->rn, va);
 +    }
 +    return true;
 +}
 +
-+static bool trans_LDP_v(DisasContext *ctx, arg_ldstpair *a)
-+{
-+    int esize = 1 << a->sz;
-+    int64_t offset = (int64_t)a->imm << a->sz;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+    uint8_t buf[32];
-+
-+    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
-+        return true;
-+    }
-+
-+    fpreg_write(ctx, a->rt, buf, esize);
-+    fpreg_write(ctx, a->rt2, buf + esize, esize);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
-+    return true;
-+}
-+
- /* Load/store single -- immediate (GPR) (DDI 0487 C3.3.8 -- C3.3.13) */
- 
- static bool trans_STR_i(DisasContext *ctx, arg_ldst_imm *a)
+ /* PRFM, DC cache maintenance -- treated as NOP */
+ static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
+ {
 -- 
 2.52.0
 

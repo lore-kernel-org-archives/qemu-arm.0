@@ -4,88 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DA4F30295
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 02:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED24EFCBBB
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 07:32:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1y2d-000273-Vi; Sun, 15 Mar 2026 22:50:52 -0400
+	id 1w22RC-0000cq-GL; Mon, 16 Mar 2026 03:32:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2c-000263-83
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:50:50 -0400
-Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2a-0000VI-2e
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:50:49 -0400
-Received: by mail-dy1-x1331.google.com with SMTP id
- 5a478bee46e88-2be1b5fe11cso6159341eec.0
- for <qemu-arm@nongnu.org>; Sun, 15 Mar 2026 19:50:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773629447; x=1774234247; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
- b=cSLUTL2Lq+XMApG3xJ9Kd1NNVdyQ2Dd94yl524bJqAw5S9pc4kUa2G3HaHklYwo1bw
- 7NiX0BBGX5zoZqnA1TcbeyqR2b+AYENzM3NcMf9T16ut5A/wvtkYfjiLtuc300i6ceY6
- RTne/yCupjwCC3um8gKroVeiuFXpW4yLFGulFZ4jvl3H01Vj/tEmOwyjGFVWLXYf2d4j
- XOBsp2pSBBrxmUOT5QsDFeJZzrTuWbADkit3Ed5kgTsKIxG06SJIHHmdBHPfM5TSpFrC
- 1d0AsvSTzrbLTiWkI8ON23v7Br5XvDgyDuxoD8yesJ6IJZ/X3UkUK6alBpULKQAiKeFh
- 6K7g==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w22R5-0000cP-DI
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:32:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w22R2-0002WE-NY
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:32:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773646335;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CPpac4uw5QrTsHWMhi00oGUv1rgw3Ge7wuT6TDLT/+E=;
+ b=M+w+kHvlAz0mkjDU32rqAMNxfL00JvKE9fpwBRmwvDf4GAwgFkn9mGLTfOaRcljQD6xTqY
+ cU+D2eD0XRnJEINSNwpxma2yR4wI8+68WdQ34V4bkJ5mAw1onujVGDq/Zxw1w0eXgtOZtB
+ /H+4gEdeqLQlimYnhFPL/MWN1MTbyaI=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-138-_mI0N5-0O-OI7u_tzt5ITw-1; Mon, 16 Mar 2026 03:32:14 -0400
+X-MC-Unique: _mI0N5-0O-OI7u_tzt5ITw-1
+X-Mimecast-MFC-AGG-ID: _mI0N5-0O-OI7u_tzt5ITw_1773646333
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-43b3e0a73f8so1615859f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 00:32:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773629447; x=1774234247;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
- b=nUPWJJ0e1EbspDvMCqC53rRsZ/uloEpgyWGvfFK2UcbfntO8YiFhmIz6zehCg1Gpve
- u0gKkEU39zIyIo8Wt0NlpF2rWJcAQWig2vSG0LvoTpc8nSDQj/5/TbeCP2QJZQS9pxSm
- HOqr9xKzAsHb9Ze8kaRGLXRPnGY30K4IXSqT1MkXlca7SNHwEyDFKHK0SvboXaJqKBO4
- iSyO2xHPF8j4JxKjhnPi1cooNP1pCtBB4F68BCVX4HRu3nBJmejuVJ/B9vCHAiCGWDd3
- GShXHcSQXqOOGSnDZaPJH71mSFHm4EwN4Ezr8EA4hD/gH2aI1UsAhYdZMyltDaHnHF6E
- /7/w==
-X-Gm-Message-State: AOJu0Yxe5nddQrx5fFX9Qkt1WwnPyazCwrsa/LFxruCpSLcd8bObQMLb
- v+zY5fEO0Ysuy0W1VoEiuDARXmL9mQo1IOZ4AS+qbg0Shhk6Fqcu0rxL
-X-Gm-Gg: ATEYQzwBlIyYU6YoRlVFjkmIYy3VIVydo/G472N/GAI66sT6EcvEFYcfMf5oEy8avra
- HptVEXeGyyyVGdMyG9bLzlJAfpDcY92gTMY7kOngzzoIudTCf+eHwuAnVNMm+273EdfCdhPvbwc
- i7Xjx+TCTb8k+pxdqtO6j0ji8evehWMYQvgypVr0Hi9NQq2acGf8cWOtC7NIVwZgSpT0phfqPJQ
- 7ZvxGYGavSr2Q+lejOABz2iLhjh+MxuBWcs6ZjzNlO+HrJpEPEqf3Y4RLAC4L17gl4LGGK1Daf2
- WlZt3VeSavfMiGZScBdxIEE5EFbHvvpgl0yChyx8p8hzTkbaYqitOA6Z4dgNYbJ82JXDJsqBxnm
- CGQe87v6AUWHtN1qOQjFs7ys7IJVEJzjMKSYfjjQEGBtxnPKP4+ndbks7X575W9f21Je0ATfw9j
- sIg+PxxmEgC6OuaXUIL5u0VLnuhHWdKnGMoLrC5cU=
-X-Received: by 2002:a05:7301:d0f:b0:2be:ca4:e10b with SMTP id
- 5a478bee46e88-2bea55915eemr5065970eec.35.1773629446448; 
- Sun, 15 Mar 2026 19:50:46 -0700 (PDT)
-Received: from 192.168.7.2 ([189.6.247.75]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2beab3a12e2sm13138973eec.2.2026.03.15.19.50.43
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 15 Mar 2026 19:50:46 -0700 (PDT)
-From: Lucas Amaral <lucaaamaral@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- mohamed@unpredictable.fr, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 2/6] target/arm/emulate: add load/store register offset
-Date: Sun, 15 Mar 2026 23:50:30 -0300
-Message-ID: <20260316025034.85611-3-lucaaamaral@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260316025034.85611-1-lucaaamaral@gmail.com>
-References: <20260315034123.41921-1-lucaaamaral@gmail.com>
- <20260316025034.85611-1-lucaaamaral@gmail.com>
+ d=1e100.net; s=20251104; t=1773646333; x=1774251133;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CPpac4uw5QrTsHWMhi00oGUv1rgw3Ge7wuT6TDLT/+E=;
+ b=aK6tsVTAw/xiT0AaNMJrjxAn1Fgua/X0uptJG/weZB4QjkOieb6rCViDnrmoquwSce
+ mkn72VZqS8MXZRo3SmQ3shrz3frOh7Se5LGetcxdV7MZppuzAn5C7MfsMjMvUoomfW9+
+ sE184ZMuht1LCXC5RZ4lsge59Jyas2NsBOZeo1FnC7FjTNdD5hPvAGODB3hIN0kKlyBE
+ woPwKyD5iUPpF9K7tCac0I35Vfs7wxvPeVhzpLVQiBXZ8gwpQNn3dsfGDK8L+5HDVXR8
+ m+OKqJRkIblaWk5xOKLbwAqdfwjmt+mMlGpewiU616Ngby81GBc8fqzxXvLnN6TVjguA
+ SzIA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX/lkB7NvR8hOM4fHBlsyNqXC4y7WOwHbxkmrJSok2hKl8YyXhqLeQ5VsJxKHhVsxKiB0GsANQcUg==@nongnu.org
+X-Gm-Message-State: AOJu0YxXPkyY3/30DviX8504hLYryu/i27jaUN/TuoNovfXYwzyxTfL3
+ 21fC1b0yvh07YAhal7uyrv0tVdogVmmivyc7Y9ftRcyilgqxIoFoepD41K++pe3xo1MImsTcADC
+ kvRIdQOCHMEKQfekEtM1JD1Ev9jUHBHv6k39R6YSpSBdLJTiXsf6mzw==
+X-Gm-Gg: ATEYQzypXxp1AMbBFv6wih18U2NkmF24RdbvTpiDoqmCzlPoXLeARCD3T9AEAh9xX5h
+ pRJR82XXdqa/8qFSiijCFmj7KRS99PEgYOMu0cRfqvRb3nRHzSSqvN6lEqvNVfCTrLmiYt9Xcg5
+ NX9/Ts4LcuruqKLqCaMdM8NXJ/H//jZku/b2KmJM8f/wP0TqAbZHUJmDBVoMpo6RnFAVuqMqY+E
+ EJAFOJ3YqgwxQUZDYFZeIf2QX6yJiGcc0aLhySSh+28pWIFX1dlpDxHgUez7r/rd7KmfU/WmLTd
+ 5eOI0oAO5y1LAjFHuciB02j98M8795gRkw7xgoPUwMzH1atLG5KL14jNg0Vw3k8E7j8JlFAFkYf
+ umiSWI1km0x2USESk05e1jRmHyJrLUPwr9PKWqsxF65abRwuvvPDaG2ZySZmJOwEoYNrE0g==
+X-Received: by 2002:a05:6000:1acd:b0:439:ddc0:4bf1 with SMTP id
+ ffacd0b85a97d-43a04dcbf4cmr21432868f8f.55.1773646332997; 
+ Mon, 16 Mar 2026 00:32:12 -0700 (PDT)
+X-Received: by 2002:a05:6000:1acd:b0:439:ddc0:4bf1 with SMTP id
+ ffacd0b85a97d-43a04dcbf4cmr21432826f8f.55.1773646332530; 
+ Mon, 16 Mar 2026 00:32:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439fe20b899sm39019297f8f.23.2026.03.16.00.32.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Mar 2026 00:32:11 -0700 (PDT)
+Message-ID: <6ec20b09-e64b-4d78-927b-80feabf9adbf@redhat.com>
+Date: Mon, 16 Mar 2026 08:32:10 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/8] hw/arm/smmuv3-accel: Check ATS compatibility
+ between host and guest
+To: Nathan Chen <nathanc@nvidia.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Matt Ochs <mochs@nvidia.com>
+References: <20260312210328.2016191-1-nathanc@nvidia.com>
+ <20260312210328.2016191-2-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260312210328.2016191-2-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: apTThb06ZB9i5NOwrjrXeA-oiOrhr_mO5GBbcXIpxP4_1773646333
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1331;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FSL_HELO_BARE_IP_2=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,194 +125,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add emulation for load/store register offset addressing mode
-(DDI 0487 C3.3.9).  The offset register value is extended via
-UXTB/UXTH/UXTW/UXTX/SXTB/SXTH/SXTW/SXTX and optionally
-shifted by the element size.
+Hi Nathan, 
 
-Instruction coverage:
-  - STR/LDR (GPR): register offset with extend, all sizes
-  - STR/LDR (SIMD/FP): register offset with extend, 8-128 bit
-  - PRFM register offset: NOP
+On 3/12/26 10:03 PM, Nathan Chen wrote:
+> From: Nathan Chen <nathanc@nvidia.com>
+>
+> Compare the host SMMUv3 ATS support bit with the guest SMMUv3 ATS support
+> bit in IDR0 and fail the compatibility check if ATS support is opted as
+> enabled on the guest SMMUv3 when it is not supported on host SMMUv3.
 
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
----
- target/arm/emulate/a64-ldst.decode |  29 ++++++++
- target/arm/emulate/arm_emulate.c   | 103 +++++++++++++++++++++++++++++
- 2 files changed, 132 insertions(+)
+Miss
+Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+> ---
+>  hw/arm/smmuv3-accel.c | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 17306cd04b..fe78ce69a5 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -101,6 +101,13 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+>                     smmuv3_oas_bits(FIELD_EX32(s->idr[5], IDR5, OAS)));
+>          return false;
+>      }
+> +    /* Check ATS value opted is compatible with Host SMMUv3 */
+> +    if (FIELD_EX32(info->idr[0], IDR0, ATS) <
+> +                FIELD_EX32(s->idr[0], IDR0, ATS)) {
+> +        error_setg(errp, "Host SMMUv3 doesn't support Address Translation"
+> +                   " Services");
+I think you can keep it on the same line. Checkpatch will just issue a
+warning.
+> +        return false;
+> +    }
+>  
+>      /* QEMU SMMUv3 supports GRAN4K/GRAN16K/GRAN64K translation granules */
+>      if (FIELD_EX32(info->idr[5], IDR5, GRAN4K) !=
+Otherwise
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index c887dcba..af6babe1 100644
---- a/target/arm/emulate/a64-ldst.decode
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -10,6 +10,9 @@
- # 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
- &ldst_imm       rt rn imm sz sign w p unpriv ext u
- 
-+# Load/store register offset
-+&ldst           rm rn rt sign ext sz opt s
-+
- ### Format templates
- 
- # Load/store immediate (9-bit signed)
-@@ -21,6 +24,9 @@
- # Load/store unsigned offset (12-bit, handler scales by << sz)
- @ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
- 
-+# Load/store register offset
-+@ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
-+
- ### Load/store register — unscaled immediate (LDUR/STUR)
- 
- # GPR
-@@ -122,6 +128,29 @@ STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=
- LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
- LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
- 
-+### Load/store register — register offset
-+
-+# GPR
-+STR             sz:2 111 0 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR             00 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=0
-+LDR             01 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=1
-+LDR             10 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=2
-+LDR             11 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=3
-+LDR             00 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=0
-+LDR             01 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=1
-+LDR             10 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=2
-+LDR             00 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=0
-+LDR             01 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=1
-+
-+# PRFM — register offset
-+NOP             11 111 0 00 10 1 ----- -1- - 10 ----- -----
-+
-+# SIMD/FP
-+STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+
- ### System instructions — DC cache maintenance
- 
- # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index 02fefc30..bf09e2a6 100644
---- a/target/arm/emulate/arm_emulate.c
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -211,6 +211,109 @@ static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
-     return true;
- }
- 
-+/* Register offset extension (DDI 0487 C6.2.131) */
-+
-+static uint64_t extend_reg(uint64_t val, int option, int shift)
-+{
-+    switch (option) {
-+    case 0: /* UXTB */
-+        val = (uint8_t)val;
-+        break;
-+    case 1: /* UXTH */
-+        val = (uint16_t)val;
-+        break;
-+    case 2: /* UXTW */
-+        val = (uint32_t)val;
-+        break;
-+    case 3: /* UXTX / LSL */
-+        break;
-+    case 4: /* SXTB */
-+        val = (int64_t)(int8_t)val;
-+        break;
-+    case 5: /* SXTH */
-+        val = (int64_t)(int16_t)val;
-+        break;
-+    case 6: /* SXTW */
-+        val = (int64_t)(int32_t)val;
-+        break;
-+    case 7: /* SXTX */
-+        break;
-+    }
-+    return val << shift;
-+}
-+
-+/*
-+ * Load/store single -- register offset (GPR)
-+ * STR / LDR (DDI 0487 C3.3.9)
-+ */
-+
-+static bool trans_STR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+
-+    uint64_t val = gpr_read(ctx, a->rt);
-+    mem_write(ctx, va, &val, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, esize) != 0) {
-+        return true;
-+    }
-+
-+    val = load_extend(val, a->sz, a->sign, a->ext);
-+    gpr_write(ctx, a->rt, val);
-+    return true;
-+}
-+
-+/*
-+ * Load/store single -- register offset (SIMD/FP)
-+ * STR_v / LDR_v (DDI 0487 C3.3.10)
-+ */
-+
-+static bool trans_STR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    fpreg_read(ctx, a->rt, buf, esize);
-+    mem_write(ctx, va, buf, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    if (mem_read(ctx, va, buf, esize) != 0) {
-+        return true;
-+    }
-+
-+    fpreg_write(ctx, a->rt, buf, esize);
-+    return true;
-+}
-+
- /* PRFM, DC cache maintenance -- treated as NOP */
- static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
- {
--- 
-2.52.0
+Eric
 
 

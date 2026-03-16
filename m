@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 633C1F30298
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 02:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF24DF30298
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 02:51:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w1y32-0002Cc-Iy; Sun, 15 Mar 2026 22:51:16 -0400
+	id 1w1y32-0002CU-HJ; Sun, 15 Mar 2026 22:51:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2m-00028n-F5
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:02 -0400
-Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
+ id 1w1y2o-00028t-EZ
+ for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:04 -0400
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w1y2k-0000XU-Ia
- for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:00 -0400
-Received: by mail-dy1-x132f.google.com with SMTP id
- 5a478bee46e88-2c0bcd8f194so1134786eec.1
- for <qemu-arm@nongnu.org>; Sun, 15 Mar 2026 19:50:57 -0700 (PDT)
+ id 1w1y2m-0000Xn-J4
+ for qemu-arm@nongnu.org; Sun, 15 Mar 2026 22:51:02 -0400
+Received: by mail-dy1-x1335.google.com with SMTP id
+ 5a478bee46e88-2c0bcd8f194so1134812eec.1
+ for <qemu-arm@nongnu.org>; Sun, 15 Mar 2026 19:51:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773629456; x=1774234256; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773629459; x=1774234259; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XUL3MdtW+tx35/EnWaKqwdzi9rS198ej4aXzJufMgC4=;
- b=dwcj5lurtvg7pZIyRb8yoWGWyVnPlScmVZKu00xIU0R/ODUsQKK4ixlCtulAO5uCWi
- g1eaYFEWufjLEXxE6fh8cJXzdmEZAc0GJYdHPbpHg+zci7stcbF1qPK/GMpjFUZNCjLP
- flvA99IkQUmrZG6cCVxufs0lwINvNaxi9yiQsaaaK/JFG7v3/+eOB1BYfs5R0Yk7P2JO
- lIWFaHR2sEJBRCz/Pq8ShB4lnuRlJ4tPkH35PVCqYEX9roXCPMwWgKM9h9o7L8QTLknp
- TDqnmjnAhsDm4oUxVv30/Jjf6eXN11X3XXzySOeFMOqs59uP95YVNpUtLQHcAlNywF2L
- vbNQ==
+ bh=VoJVdciZFaewroq0cySKl+vu/S+aD/kerrA4/hB7jSw=;
+ b=m8zq+Rx1Lv5r07qV6BcwN8l9DHgPlK/CLE8L2eaU1sYF5QCkCyCPfOMF9krQVdO8QH
+ UkyAsOMuwrwV0zGs+VdJUW8Tf+Z/Y6D8Oi2uuOks9god0Prd6GfPpf0W+ZjpspxVJlZM
+ s4WwPIER2Q79B4RYUbDlv4rObq6AWeu9k5YvHS5awEwj/fSBPdKnV9wbx7iwIRDB15W0
+ YLW3l4uNrEBPauP6S3FCSE4DtHO5HpsZkerB9cN6Pc/A+VG0z2sAtUmESe9DLji05xgQ
+ eaS9eVi1DDENbdcrMiBWDfGnxwbDtijBYhupOuEnIWOHo+ie4VyYcHRJaTsnbla5Ut+h
+ L2lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773629456; x=1774234256;
+ d=1e100.net; s=20251104; t=1773629459; x=1774234259;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=XUL3MdtW+tx35/EnWaKqwdzi9rS198ej4aXzJufMgC4=;
- b=qWeyTnLdwzRCxm+UIOqaSZyDayf20/UAkLKqZvek7f3UlMmT06+Oi+9R5KsPy3os5N
- EHU0/4vKEU2tgWylzRg6uJCXadBAh5y+MawRomhUihzma3dyEx1IU6OjNe2XlfJjbVac
- d/6bhFk76M1MK/1Ns9buNMu3Hoy6K0Omu3MDuEs9tiu9ogUNb7wourISM2e9VMyIRo+x
- 9DIaTPJfT5DtaRnPmyApOvY9noSq5+/3Qy6alXcBcMB8/ewq4QCrLZf45+KVoib29AhG
- B7ggGc33tFKed54lSDh3AuYRys4VaSJD5oVANLBIoC+znalZzfyVlTxkhqzYQ141xkxv
- ZEXg==
-X-Gm-Message-State: AOJu0YyTVh2phrqjw2DtRAHTf11urSU8j9gM/a3ePeTaMqZAKeyBUHkP
- sxBdZua7uYW0Kw3gN1hH4aRoSPmOC91TvqhrKDLEC7lwVZTbFuL03SJa
-X-Gm-Gg: ATEYQzyszNiR37tue4a35QCIKcGbjRZ7INJcOtxbPbMChAyS9PhxvAjxiWwt0jY0eQd
- irWNV1oizYMKgzXPgarLNvFTN8P4AI/+vLdZMbDJEHFTbIVTWnI8ZJv+oYEQrI/2q3xByx/Dy2Z
- I3fdIBUVefnuL9SS2TPmBIOfDQH7sAd66O0ICz4ncUs7p842FcdwpyDhCiDAQ2QhH4AFLxOGNK3
- Um6KiEFtad3+RIWirqU2bfZe0apmt6MzyZKRZm8DqHOgPY3HOVcyovyY8kLfx3YdwPZYjNqugx+
- nx6lRy8jwzgsJGwQLUm2f4k+0hNNb/NzdTnL4DOPiBS8mGxnD7HP3ONWZZ7WKuNE1vUBkNsz+1a
- meL/7X5bkbb/D7uBtOooutGFknX/ZNyuJpCzmfU+Br/nane39F7QRtkTYUOYlKplX9Ajf2GWtFP
- lOEYzDeqofV6EMDGGuktS4OGektg/HWn7uPliDEFE=
-X-Received: by 2002:a05:7300:f194:b0:2bd:e892:b075 with SMTP id
- 5a478bee46e88-2bea547ccd6mr4942131eec.9.1773629455725; 
- Sun, 15 Mar 2026 19:50:55 -0700 (PDT)
+ bh=VoJVdciZFaewroq0cySKl+vu/S+aD/kerrA4/hB7jSw=;
+ b=qmXW6LmTG5Og9jCU/K6u2MW1m2hAUSZEoAQXZ5v+1C6GtNxP8A+b/8B4tfiIRb0YME
+ eed8kC97sYK9DyRiPTzEZNLXhXKc7ju248Z8g+qNgLkQ8RNHLE+qnuLNwzGaCvZgXzfq
+ /EKA/lRot1I2NJ0G7wL3zc/54j7kWxa4fwa1M+HYD1rOPfc2NocQxYhk94lBhA4afLRL
+ ZjT9iFFGQaxd2vR7Jcn227DYIShOxuA301HmgJtRomo7JrbL5e53ou6O7cn0oV0Lxmig
+ Kg+aWx6b1xOwHJQlqJh1Uteu3AdOxDVzVDX/BNxyf6zzG7SCifDDjgT4brCwMBdzY0hL
+ FulA==
+X-Gm-Message-State: AOJu0YzANaOi3wOlvpK63BSCQhIfqEST2CEUWNVv87DbEKnR+QSoJc31
+ Fc5n04pVwF9Ft2WivHQMOpTaFYjA5h9flfR/TXgyOHCL6bry0KNCx/VwBbA/7voW
+X-Gm-Gg: ATEYQzyRZMRhtaeeZRQyMhY6pgKY+xIRYYlpzpCgV0S5YNgCwJvJhCskTmyoehx3p8F
+ 4koRqfujhtAlfKnM+/CuWRvRueXi8wAIQgjBjz02R4oySrZ6bAjFoZhEUPAeVk4XBdHE2fwYhRr
+ 529wPRzNkfpOx2uUspncTRW9OT5L2VAKkb9YXy9t3813R53LS3xVCvUxn9vIZTMRolDmu9GqRX4
+ jSDnK838Al5AN0lnAokn3wS7jFhgbDK5U7XQf1RYU476pfiA4AaIjNTInAyWcZrdKFvnSEGl1v+
+ zlBl2RSNWTyA01qp0nRF2jx2MU8pX3s+7aRHXat+v2Of/D6IaKrFyUalDQbvdn2uA7jzyKmJCt9
+ uHaAMDtKVl+4LqgnlgEu7HgVlDPHD/f0HcLcNXFzVieOOVT+MSk15IIvMfwZPRxupQETDAZ4ktK
+ 6HqWxZucZd28NxAId1iYNV4c7i1/bFGsEww0RCPbLuftay+umPRA==
+X-Received: by 2002:a05:693c:3113:b0:2b7:fdb6:ccf6 with SMTP id
+ 5a478bee46e88-2bea547ecd8mr4693975eec.14.1773629458994; 
+ Sun, 15 Mar 2026 19:50:58 -0700 (PDT)
 Received: from 192.168.7.2 ([189.6.247.75]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2beab3a12e2sm13138973eec.2.2026.03.15.19.50.53
+ 5a478bee46e88-2beab3a12e2sm13138973eec.2.2026.03.15.19.50.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 15 Mar 2026 19:50:55 -0700 (PDT)
+ Sun, 15 Mar 2026 19:50:58 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
  mohamed@unpredictable.fr, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 5/6] target/arm/emulate: add atomic, compare-and-swap,
- and PAC load
-Date: Sun, 15 Mar 2026 23:50:33 -0300
-Message-ID: <20260316025034.85611-6-lucaaamaral@gmail.com>
+Subject: [PATCH v4 6/6] target/arm/hvf,
+ whpx: wire ISV=0 emulation for data aborts
+Date: Sun, 15 Mar 2026 23:50:34 -0300
+Message-ID: <20260316025034.85611-7-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260316025034.85611-1-lucaaamaral@gmail.com>
 References: <20260315034123.41921-1-lucaaamaral@gmail.com>
  <20260316025034.85611-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132f;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1335;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  FSL_HELO_BARE_IP_2=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,350 +101,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add emulation for remaining ISV=0 load/store instruction classes.
+When a data abort with ISV=0 occurs during MMIO emulation, the
+syndrome register does not carry the access size or target register.
+Previously this hit an assert(isv) and killed the VM.
 
-Atomic memory operations (DDI 0487 C3.3.2):
-  - LDADD, LDCLR, LDEOR, LDSET: arithmetic/logic atomics
-  - LDSMAX, LDSMIN, LDUMAX, LDUMIN: signed/unsigned min/max
-  - SWP: atomic swap
-  Non-atomic read-modify-write, sufficient for MMIO where concurrent
-  access is not a concern.  Acquire/release semantics are ignored.
+Replace the assert with instruction fetch + decode + emulate using the
+shared library in target/arm/emulate/.  The faulting instruction is read
+from guest memory via cpu_memory_rw_debug(), decoded by the decodetree-
+generated decoder, and emulated against the vCPU register file.
 
-Compare-and-swap (DDI 0487 C3.3.1):
-  - CAS/CASA/CASAL/CASL: single-register compare-and-swap
-  - CASP/CASPA/CASPAL/CASPL: register-pair compare-and-swap
-  CASP validates even register pairs; odd or r31 returns UNHANDLED.
+Both HVF (macOS) and WHPX (Windows Hyper-V) use the same pattern:
+  1. cpu_synchronize_state() to flush hypervisor registers
+  2. Fetch 4-byte instruction at env->pc
+  3. arm_emul_insn(env, insn)
+  4. On success, advance PC past the emulated instruction
 
-Load with PAC (DDI 0487 C6.2.121):
-  - LDRAA/LDRAB: pointer-authenticated load, offset/pre-indexed
-  Pointer authentication is not emulated (equivalent to auth always
-  succeeding), which is correct for MMIO since PAC is a software
-  security mechanism, not a memory access semantic.
+If the instruction is unhandled or a memory error occurs, a synchronous
+external abort is injected into the guest via syn_data_abort_no_iss()
+with fnv=1 and fsc=0x10, matching the syndrome that KVM uses in
+kvm_inject_arm_sea().  The guest kernel's fault handler then reports
+the error through its normal data abort path.
 
-CASP uses two explicit decode patterns for the 32/64-bit size
-variants.  LDRA's offset immediate is stored raw in the decode;
-the handler scales by << 3.
+WHPX adds a whpx_inject_data_abort() helper and adjusts the
+whpx_handle_mmio() return convention so the caller skips PC advancement
+when an exception has been injected.
 
 Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- target/arm/emulate/a64-ldst.decode |  45 ++++++
- target/arm/emulate/arm_emulate.c   | 233 +++++++++++++++++++++++++++++
- 2 files changed, 278 insertions(+)
+ target/arm/hvf/hvf.c       | 46 ++++++++++++++++++++++++++--
+ target/arm/whpx/whpx-all.c | 61 +++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 103 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index fadf6fd2..9292bfdf 100644
---- a/target/arm/emulate/a64-ldst.decode
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -16,6 +16,16 @@
- # Load/store pair (GPR and SIMD/FP)
- &ldstpair       rt2 rt rn imm sz sign w p
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bb..000e54bd 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -32,6 +32,7 @@
+ #include "arm-powerctl.h"
+ #include "target/arm/cpu.h"
+ #include "target/arm/internals.h"
++#include "emulate/arm_emulate.h"
+ #include "target/arm/multiprocessing.h"
+ #include "target/arm/gtimer.h"
+ #include "target/arm/trace.h"
+@@ -2175,10 +2176,49 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         assert(!s1ptw);
  
-+# Atomic memory operations
-+&atomic         rs rn rt a r sz
+         /*
+-         * TODO: ISV will be 0 for SIMD or SVE accesses.
+-         * Inject the exception into the guest.
++         * ISV=0: syndrome doesn't carry access size/register info.
++         * Fetch and emulate via target/arm/emulate/.
+          */
+-        assert(isv);
++        if (!isv) {
++            ARMCPU *arm_cpu = ARM_CPU(cpu);
++            CPUARMState *env = &arm_cpu->env;
++            uint32_t insn;
++            ArmEmulResult r;
 +
-+# Compare-and-swap
-+&cas            rs rn rt sz a r
++            cpu_synchronize_state(cpu);
 +
-+# Load with PAC (LDRAA/LDRAB, FEAT_PAuth)
-+%ldra_imm       22:s1 12:9
-+&ldra           rt rn imm m w
++            if (cpu_memory_rw_debug(cpu, env->pc,
++                                    (uint8_t *)&insn, 4, false) != 0) {
++                bool same_el = arm_current_el(env) == 1;
++                uint32_t esr = syn_data_abort_no_iss(same_el,
++                    1, 0, 0, 0, iswrite, 0x10);
 +
- # Load/store register offset
- &ldst           rm rn rt sign ext sz opt s
++                error_report("HVF: cannot read insn at pc=0x%" PRIx64,
++                             (uint64_t)env->pc);
++                env->exception.vaddress = excp->virtual_address;
++                hvf_raise_exception(cpu, EXCP_DATA_ABORT, esr, 1);
++                break;
++            }
++
++            r = arm_emul_insn(env, insn);
++            if (r == ARM_EMUL_UNHANDLED || r == ARM_EMUL_ERR_MEM) {
++                bool same_el = arm_current_el(env) == 1;
++                uint32_t esr = syn_data_abort_no_iss(same_el,
++                    1, 0, 0, 0, iswrite, 0x10);
++
++                error_report("HVF: ISV=0 %s insn 0x%08x at "
++                             "pc=0x%" PRIx64 ", injecting data abort",
++                             r == ARM_EMUL_UNHANDLED ? "unhandled"
++                                                     : "memory error",
++                             insn, (uint64_t)env->pc);
++                env->exception.vaddress = excp->virtual_address;
++                hvf_raise_exception(cpu, EXCP_DATA_ABORT, esr, 1);
++                break;
++            }
++
++            advance_pc = true;
++            break;
++        }
  
-@@ -36,6 +46,15 @@
- # Load/store pair: imm7 is signed, scaled by element size in handler
- @ldstpair       .. ... . ... . imm:s7 rt2:5 rn:5 rt:5          &ldstpair
+         /*
+          * Emulate MMIO.
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 513551be..0c04073e 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -29,6 +29,7 @@
+ #include "syndrome.h"
+ #include "target/arm/cpregs.h"
+ #include "internals.h"
++#include "emulate/arm_emulate.h"
  
-+# Atomics
-+@atomic         sz:2 ... . .. a:1 r:1 . rs:5 . ... .. rn:5 rt:5   &atomic
-+
-+# Compare-and-swap: sz extracted by pattern (CAS) or set constant (CASP)
-+@cas            .. ...... . a:1 . rs:5 r:1 ..... rn:5 rt:5        &cas
-+
-+# Load with PAC
-+@ldra           .. ... . .. m:1 . . ......... w:1 . rn:5 rt:5     &ldra imm=%ldra_imm
-+
- # Load/store register offset
- @ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
- 
-@@ -241,6 +260,32 @@ STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=
- LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
- LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
- 
-+### Compare-and-swap
-+
-+# CAS / CASA / CASAL / CASL
-+CAS             sz:2 001000 1 . 1 ..... . 11111 ..... .....     @cas
-+
-+# CASP / CASPA / CASPAL / CASPL (pair: Rt,Rt+1 and Rs,Rs+1)
-+CASP            00 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=2
-+CASP            01 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=3
-+
-+### Atomic memory operations
-+
-+LDADD           .. 111 0 00 . . 1 ..... 0000 00 ..... .....    @atomic
-+LDCLR           .. 111 0 00 . . 1 ..... 0001 00 ..... .....    @atomic
-+LDEOR           .. 111 0 00 . . 1 ..... 0010 00 ..... .....    @atomic
-+LDSET           .. 111 0 00 . . 1 ..... 0011 00 ..... .....    @atomic
-+LDSMAX          .. 111 0 00 . . 1 ..... 0100 00 ..... .....    @atomic
-+LDSMIN          .. 111 0 00 . . 1 ..... 0101 00 ..... .....    @atomic
-+LDUMAX          .. 111 0 00 . . 1 ..... 0110 00 ..... .....    @atomic
-+LDUMIN          .. 111 0 00 . . 1 ..... 0111 00 ..... .....    @atomic
-+SWP             .. 111 0 00 . . 1 ..... 1000 00 ..... .....    @atomic
-+
-+### Load with PAC (FEAT_PAuth)
-+
-+# LDRAA (M=0) / LDRAB (M=1), offset (W=0) / pre-indexed (W=1)
-+LDRA            11 111 0 00 . . 1 ......... . 1 ..... .....  @ldra
-+
- ### System instructions — DC cache maintenance
- 
- # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index 52e41703..44a559ad 100644
---- a/target/arm/emulate/arm_emulate.c
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -499,6 +499,239 @@ static bool trans_LDXP(DisasContext *ctx, arg_stxr *a)
-     return true;
+ #include "system/whpx-internal.h"
+ #include "system/whpx-accel-ops.h"
+@@ -352,6 +353,27 @@ static void whpx_set_gp_reg(CPUState *cpu, int rt, uint64_t val)
+     whpx_set_reg(cpu, reg, reg_val);
  }
  
 +/*
-+ * Atomic memory operations (DDI 0487 C3.3.2)
-+ *
-+ * Non-atomic read-modify-write; sufficient for MMIO.
-+ * Acquire/release semantics ignored (sequentially consistent by design).
++ * Inject a synchronous external abort (data abort) into the guest.
++ * Used when ISV=0 instruction emulation fails.  Matches the syndrome
++ * that KVM uses in kvm_inject_arm_sea().
 + */
-+
-+typedef uint64_t (*atomic_op_fn)(uint64_t old, uint64_t operand, int bits);
-+
-+static uint64_t atomic_add(uint64_t old, uint64_t op, int bits)
++static void whpx_inject_data_abort(CPUState *cpu, bool iswrite)
 +{
-+    (void)bits;
-+    return old + op;
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    bool same_el = arm_current_el(env) == 1;
++    uint32_t esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, iswrite, 0x10);
++
++    cpu->exception_index = EXCP_DATA_ABORT;
++    env->exception.target_el = 1;
++    env->exception.syndrome = esr;
++
++    bql_lock();
++    arm_cpu_do_interrupt(cpu);
++    bql_unlock();
 +}
 +
-+static uint64_t atomic_clr(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old & ~op;
-+}
-+
-+static uint64_t atomic_eor(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old ^ op;
-+}
-+
-+static uint64_t atomic_set(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old | op;
-+}
-+
-+static uint64_t atomic_smax(uint64_t old, uint64_t op, int bits)
-+{
-+    int64_t a = sign_extend(old, bits);
-+    int64_t b = sign_extend(op, bits);
-+    return (a >= b) ? old : op;
-+}
-+
-+static uint64_t atomic_smin(uint64_t old, uint64_t op, int bits)
-+{
-+    int64_t a = sign_extend(old, bits);
-+    int64_t b = sign_extend(op, bits);
-+    return (a <= b) ? old : op;
-+}
-+
-+static uint64_t atomic_umax(uint64_t old, uint64_t op, int bits)
-+{
-+    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
-+    return ((old & mask) >= (op & mask)) ? old : op;
-+}
-+
-+static uint64_t atomic_umin(uint64_t old, uint64_t op, int bits)
-+{
-+    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
-+    return ((old & mask) <= (op & mask)) ? old : op;
-+}
-+
-+static bool do_atomic(DisasContext *ctx, arg_atomic *a, atomic_op_fn fn)
-+{
-+    int esize = 1 << a->sz;
-+    int bits = 8 * esize;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t old = 0;
-+
-+    if (mem_read(ctx, va, &old, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t operand = gpr_read(ctx, a->rs);
-+    uint64_t result = fn(old, operand, bits);
-+
-+    if (mem_write(ctx, va, &result, esize) != 0) {
-+        return true;
-+    }
-+
-+    /* Rt receives the old value (before modification) */
-+    gpr_write(ctx, a->rt, old);
-+    return true;
-+}
-+
-+static bool trans_LDADD(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_add);
-+}
-+
-+static bool trans_LDCLR(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_clr);
-+}
-+
-+static bool trans_LDEOR(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_eor);
-+}
-+
-+static bool trans_LDSET(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_set);
-+}
-+
-+static bool trans_LDSMAX(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_smax);
-+}
-+
-+static bool trans_LDSMIN(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_smin);
-+}
-+
-+static bool trans_LDUMAX(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_umax);
-+}
-+
-+static bool trans_LDUMIN(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_umin);
-+}
-+
-+static bool trans_SWP(DisasContext *ctx, arg_atomic *a)
-+{
-+    int esize = 1 << a->sz;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t old = 0;
-+
-+    if (mem_read(ctx, va, &old, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t newval = gpr_read(ctx, a->rs);
-+    if (mem_write(ctx, va, &newval, esize) != 0) {
-+        return true;
-+    }
-+
-+    gpr_write(ctx, a->rt, old);
-+    return true;
-+}
-+
-+/* Compare-and-swap: CAS, CASP (DDI 0487 C3.3.1) */
-+
-+static bool trans_CAS(DisasContext *ctx, arg_cas *a)
-+{
-+    int esize = 1 << a->sz;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t current = 0;
-+
-+    if (mem_read(ctx, va, &current, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
-+    uint64_t compare = gpr_read(ctx, a->rs) & mask;
-+
-+    if ((current & mask) == compare) {
-+        uint64_t newval = gpr_read(ctx, a->rt) & mask;
-+        if (mem_write(ctx, va, &newval, esize) != 0) {
-+            return true;
-+        }
-+    }
-+
-+    /* Rs receives the old memory value (whether or not swap occurred) */
-+    gpr_write(ctx, a->rs, current);
-+    return true;
-+}
-+
-+/* CASP: compare-and-swap pair (Rs,Rs+1 compared; Rt,Rt+1 stored) */
-+static bool trans_CASP(DisasContext *ctx, arg_cas *a)
-+{
-+    /* CASP requires even register pairs; odd or r31 is UNPREDICTABLE */
-+    if ((a->rs & 1) || a->rs >= 31 || (a->rt & 1) || a->rt >= 31) {
-+        return false;
-+    }
-+
-+    int esize = 1 << a->sz;                   /* per-register size */
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint8_t buf[16];
-+    uint64_t cur1 = 0, cur2 = 0;
-+
-+    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
-+        return true;
-+    }
-+    memcpy(&cur1, buf, esize);
-+    memcpy(&cur2, buf + esize, esize);
-+
-+    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
-+    uint64_t cmp1 = gpr_read(ctx, a->rs) & mask;
-+    uint64_t cmp2 = gpr_read(ctx, a->rs + 1) & mask;
-+
-+    if ((cur1 & mask) == cmp1 && (cur2 & mask) == cmp2) {
-+        uint64_t new1 = gpr_read(ctx, a->rt) & mask;
-+        uint64_t new2 = gpr_read(ctx, a->rt + 1) & mask;
-+        memcpy(buf, &new1, esize);
-+        memcpy(buf + esize, &new2, esize);
-+        if (mem_write(ctx, va, buf, 2 * esize) != 0) {
-+            return true;
-+        }
-+    }
-+
-+    gpr_write(ctx, a->rs, cur1);
-+    gpr_write(ctx, a->rs + 1, cur2);
-+    return true;
-+}
-+
-+/*
-+ * Load with PAC: LDRAA / LDRAB (FEAT_PAuth)
-+ * (DDI 0487 C6.2.121)
-+ *
-+ * Pointer authentication is not emulated -- the base register is used
-+ * directly (equivalent to auth always succeeding).
-+ */
-+
-+static bool trans_LDRA(DisasContext *ctx, arg_ldra *a)
-+{
-+    int64_t offset = (int64_t)a->imm << 3;  /* S:imm9, scaled by 8 */
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = base + offset;  /* auth not emulated */
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, 8) != 0) {
-+        return true;
-+    }
-+
-+    gpr_write(ctx, a->rt, val);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, va);
-+    }
-+    return true;
-+}
-+
- /* PRFM, DC cache maintenance -- treated as NOP */
- static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
+ static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT *ctx)
  {
+     uint64_t syndrome = ctx->Syndrome;
+@@ -366,7 +388,40 @@ static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT *ctx)
+     uint64_t val = 0;
+ 
+     assert(!cm);
+-    assert(isv);
++
++    /*
++     * ISV=0: syndrome doesn't carry access size/register info.
++     * Fetch and decode the faulting instruction via the emulation library.
++     */
++    if (!isv) {
++        ARMCPU *arm_cpu = ARM_CPU(cpu);
++        CPUARMState *env = &arm_cpu->env;
++        uint32_t insn;
++        ArmEmulResult r;
++
++        cpu_synchronize_state(cpu);
++
++        if (cpu_memory_rw_debug(cpu, env->pc,
++                                (uint8_t *)&insn, 4, false) != 0) {
++            error_report("WHPX: cannot read insn at pc=0x%" PRIx64,
++                         (uint64_t)env->pc);
++            whpx_inject_data_abort(cpu, iswrite);
++            return 1;
++        }
++
++        r = arm_emul_insn(env, insn);
++        if (r == ARM_EMUL_UNHANDLED || r == ARM_EMUL_ERR_MEM) {
++            error_report("WHPX: ISV=0 %s insn 0x%08x at "
++                         "pc=0x%" PRIx64 ", injecting data abort",
++                         r == ARM_EMUL_UNHANDLED ? "unhandled"
++                                                 : "memory error",
++                         insn, (uint64_t)env->pc);
++            whpx_inject_data_abort(cpu, iswrite);
++            return 1;
++        }
++
++        return 0;
++    }
+ 
+     if (iswrite) {
+         val = whpx_get_gp_reg(cpu, srt);
+@@ -451,6 +506,10 @@ int whpx_vcpu_run(CPUState *cpu)
+             }
+ 
+             ret = whpx_handle_mmio(cpu, &vcpu->exit_ctx.MemoryAccess);
++            if (ret > 0) {
++                advance_pc = false;
++                ret = 0;
++            }
+             break;
+         case WHvRunVpExitReasonCanceled:
+             cpu->exception_index = EXCP_INTERRUPT;
 -- 
 2.52.0
 

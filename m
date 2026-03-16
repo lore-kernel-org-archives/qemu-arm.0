@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80E73F013C4
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 07:41:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B16CAEFCBD4
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 07:47:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w22a3-0002pk-Ta; Mon, 16 Mar 2026 03:41:39 -0400
+	id 1w22eq-0004VC-Qj; Mon, 16 Mar 2026 03:46:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w22a2-0002oh-07
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:41:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1w22ej-0004TU-E6
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:46:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w22Zz-0003ky-NZ
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:41:37 -0400
+ id 1w22eg-0004di-NP
+ for qemu-arm@nongnu.org; Mon, 16 Mar 2026 03:46:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773646894;
+ s=mimecast20190719; t=1773647184;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wtMYXrBa6J3JvksFjNHT5TmbtzMJB16I0jV3di2ysTc=;
- b=hcL9zzRL5QhIcEcjWoa7f1bwRQAXbW1GiuYlFsCf6iCly628veri04g2jN2BfoTnImFsGV
- Xo5P+U+IqLtTpl47+RfH/0f6lB4n7dTxNkTSjmyWcPQG2E1aAeliGEihYjc11JNenlXgfm
- Nl3s4T6qbLA+E8JbcCtnbksKtfYOTOY=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=XMSXco3fuZJ+bg4maUAtmdN8ZUo2kYW7tF/TtoYWC+Q=;
+ b=QEViQ0cC8a/POvM0kHQ6WUQXaStjGtLdTvQPb14PM2JisN0Zv/FYr95MsRb2F8KpMRA7Xh
+ R0pC/xGnw0ImuZKAi3jIxP++aOohG4BZbEg1mX2fip7ABhgc2xIA+HaB+RClZKuB5DhHFk
+ viNYZyPBR8OdaVPlFTcEUttgMRytC/A=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-209-bGQK5MjBN0yACzrnt_mqmQ-1; Mon, 16 Mar 2026 03:41:32 -0400
-X-MC-Unique: bGQK5MjBN0yACzrnt_mqmQ-1
-X-Mimecast-MFC-AGG-ID: bGQK5MjBN0yACzrnt_mqmQ_1773646892
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48542d5aa9eso34873885e9.0
- for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 00:41:32 -0700 (PDT)
+ us-mta-122-gc53Nn3oOJ2wRbhU_tD7lA-1; Mon, 16 Mar 2026 03:46:23 -0400
+X-MC-Unique: gc53Nn3oOJ2wRbhU_tD7lA-1
+X-Mimecast-MFC-AGG-ID: gc53Nn3oOJ2wRbhU_tD7lA_1773647182
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-439c112b1a4so2716590f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 00:46:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773646892; x=1774251692;
+ d=1e100.net; s=20251104; t=1773647181; x=1774251981;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wtMYXrBa6J3JvksFjNHT5TmbtzMJB16I0jV3di2ysTc=;
- b=YdtnKziY2fmr7gzucam6f6J5XROpM1Z+csn2itp9dDSiU8L7OI2oGfQd+mIaJLU54y
- Rb3gIMgxxh0EHffQCfjug1gL6cQzXwgj9QMP5R3qLqLKLXDalQpsgKm2ckybHZ8uNKdu
- 771Gn6UCqN6efdc9HaaUsT4mKT5H1HDlT682ZzlUcVYxX+co7+E3HWUfWbfaxtN55NCW
- QTTnOqnmfDx2xmStXQPUVBEKmxJDzihWxzLs4egIE4mvtspsOFE973wa6/t1KeMSj35l
- krIg2zhHz/h7cpaAFEIWLnaxPt0joVTxR6CXyTOfL764HCUnS/6HCuZpyuGTM8Zn7nC4
- lPWQ==
+ bh=XMSXco3fuZJ+bg4maUAtmdN8ZUo2kYW7tF/TtoYWC+Q=;
+ b=Wqp+Zr6KbnvROzhfkVQGoLrhwc+vVuN+TgEWa131WWmGCLr+MTJICrt94YBv6yXDC5
+ hEpndzJAdIE9EyMIMSLR8Ph8gw8fZNcyuQa8l1Vm8aiaXufNONI1a1wAyqmfw9LyCphh
+ KwSjt1FwZOU/5Dn5BpcdIZk+3T0QcM7z01swSMu97ze+8UfGz74V7sA8XImziQ41GxN9
+ If7MutmqtiGJ2IHjuic+Bhjw8EAh8qyuelDw6aCtVVGKhHNj0cL05bq/kN4huERII6Lv
+ Cz+ivsgVN/aGco1zlB38KrjerzEsZQ3yO0/+gXyyGGfPd5UvXYFInF82Vs8wW9OyFYLF
+ Kufg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX3zGdrozX8xrurSlwibY0QLYpfJ68DyyFlJ+qmlx3/AFnwCoCJqjG8PEi7tyiPa2r2gwIQGQtK9w==@nongnu.org
-X-Gm-Message-State: AOJu0YyqCeACdTot67FLaA8xxs1AHlxDmYK3Gb07vk7IwqO76GkVckMr
- xZX/Tdse3hyC24Z1EaoBgPWQXFZg/wd2djmvS+tGHenIKgXQ/dz2oqeOIhP+BoWJ3+4lyrksBzt
- XZtAnpdONl5pn9JpgWoNEc4RIJXEe4dXtLcqwhX48W7MZOmAIbo/GjA==
-X-Gm-Gg: ATEYQzw15efRLYYsOXwg3ZqvBr4J2Ajy9rtrxwXLI7RGVB2Kn9pd1cxuGDvWTfmVsSE
- ZGCLb3mhU3TJsFfsAl1UuctbKcGlzWQ6IK9VTt0dppUlFhbMfHSWSaQUbC9MMuhJbGkcV4Di4G/
- uvN+r/+fXOSQifJGyUfkPPywFO2kES3p4c3mkwXKtRueTVyftCPJqzVL/WwgEm39CanBvhXziBB
- Dcp9e1XcvAZDCuKjCXX6N5vkCIw2PgkN+gY0RWyREzj9kXyBBJs1/eHpJXWSy9XtDovBsVw0mtS
- A0bwiDwt70HkJ8Xq3p+kxlcKwx5WNm4um0xwAis0CsLWonSkpNwsQvidJ0szh9MLnRXX0U5CN6Z
- pdeKFKTX9pik4J8i50YaWRd+Kija10kgYT1/4/QgKdoFuTjH2E1TAlDOSOH1+jDWyXOc/TQ==
-X-Received: by 2002:a05:600c:4752:b0:485:3dfc:569 with SMTP id
- 5b1f17b1804b1-48556700c54mr198167345e9.16.1773646891629; 
- Mon, 16 Mar 2026 00:41:31 -0700 (PDT)
-X-Received: by 2002:a05:600c:4752:b0:485:3dfc:569 with SMTP id
- 5b1f17b1804b1-48556700c54mr198166985e9.16.1773646891201; 
- Mon, 16 Mar 2026 00:41:31 -0700 (PDT)
+ AJvYcCXRJq77PsCr0fxFJEqJ49SkVVdbXLTN4qACNIADMGfZRB2LGJTF8DZw4AoCZafo3YIoBAEjmVlx3A==@nongnu.org
+X-Gm-Message-State: AOJu0YwSMNgvkInoGucpu0D43JoXZJNduo4VNtnDlYWkBwM9JNoSE1/p
+ Nwbo6Z3HxoxMUNpZC+VMJveGqbITLIt9pKrcitYVNzXoalI5e8FgQtYBFVad7d3WCow/eHKKb/K
+ wpj3s/OLMXY5TzRam5wUZzhdHt2+us6i+/Z0Ph4lNYspqWbvDapRnxA==
+X-Gm-Gg: ATEYQzxW5PFLrhxStVb4NBNtLgFZx8VF3bHZIzgTtx0p+GCPYLPh1k/Fmb2NYVAwJDX
+ z4+bG+yVigBl81dKLuoTPnKOzfQQxm40QIAGWlLaLXeB38bT4WtgcS5tuYmyp70G1WuamoLCYM4
+ JCwshNUyZ7AMQsQf+iTKAgICEgrs3q8xXuXTgpvloYup4wCpTF/EBppZMIRRkmnkxfWixVPrhqM
+ x8Sj+rI6f8FNoZ1fZFxJXBKaLDrffcsZ1LgZ2OImqcGGPJuqhURWiRVidt+eAG4xCzZsrtGZxHM
+ tgZvzHXYcBvcBy/Vjj/RZJEKaTpJ42GF3Fs2DPs6KnaF4lzSsnbSNU7lEz3tW6BBHPNcoelaVu5
+ 9ivLOVXPihPppdc3NiVdWJZAf0IVcIQrqdEMz0wW2xQrV6GPJ2OGaecq9KPPXxL83UMQcLQ==
+X-Received: by 2002:a05:6000:2283:b0:436:3707:2bf0 with SMTP id
+ ffacd0b85a97d-43a04db7556mr22330085f8f.35.1773647180723; 
+ Mon, 16 Mar 2026 00:46:20 -0700 (PDT)
+X-Received: by 2002:a05:6000:2283:b0:436:3707:2bf0 with SMTP id
+ ffacd0b85a97d-43a04db7556mr22330039f8f.35.1773647180264; 
+ Mon, 16 Mar 2026 00:46:20 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4854b6756e4sm469142155e9.15.2026.03.16.00.41.29
+ ffacd0b85a97d-43b46b41eb2sm2550932f8f.1.2026.03.16.00.46.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Mar 2026 00:41:30 -0700 (PDT)
-Message-ID: <2bc83190-9e8d-4d3d-b0f9-9831a8d9783a@redhat.com>
-Date: Mon, 16 Mar 2026 08:41:29 +0100
+ Mon, 16 Mar 2026 00:46:19 -0700 (PDT)
+Message-ID: <15d35160-2f11-4821-80cb-42f76e6de00b@redhat.com>
+Date: Mon, 16 Mar 2026 08:46:18 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/8] hw/arm/smmuv3-accel: Change RIL property to
- OnOffAuto
+Subject: Re: [PATCH v2 4/8] qdev: Add a SsidSizeMode property
 To: Nathan Chen <nathanc@nvidia.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -94,23 +93,23 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Shameer Kolothum <skolothumtho@nvidia.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Matt Ochs <mochs@nvidia.com>
 References: <20260312210328.2016191-1-nathanc@nvidia.com>
- <20260312210328.2016191-4-nathanc@nvidia.com>
+ <20260312210328.2016191-5-nathanc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260312210328.2016191-4-nathanc@nvidia.com>
+In-Reply-To: <20260312210328.2016191-5-nathanc@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tstGyZcKze5l6WySdLcexenuUL5zSVAYAmdqinsci2I_1773646892
+X-Mimecast-MFC-PROC-ID: o6YAxXLCJ8ze1diYLnSSCjqnZKD7a33wNKc918gQCxQ_1773647182
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -129,82 +128,116 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Nathan,
+
 
 On 3/12/26 10:03 PM, Nathan Chen wrote:
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Change accel SMMUv3 RIL property from bool to OnOffAuto. Setting 'auto'
-> will use the default set in smmuv3_init_id_regs(), i.e. 1 in IDR3 which
-> translates to 'on'. A future patch will implement resolution of 'auto'
-> value to match the host SMMUv3 RIL support.
-
-Please a check to test the AUTO value is not set at the moment.
-
-Add the Fixes tag too. Otherwise looks good.
+> Introduce a new enum type property allowing to set a Substream ID size
+> for HW-accelerated smmuv3. Values are auto and 0..20. The auto value
+> allows SSID size property to be derived from host IOMMU capabilities.
+> A value of 0 disables SubstreamID, while non-zero values specify the
+> SSID size in bits.
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Eric
 >
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/arm/smmuv3-accel.c   | 8 ++++++--
->  hw/arm/smmuv3.c         | 4 ++--
->  include/hw/arm/smmuv3.h | 2 +-
->  3 files changed, 9 insertions(+), 5 deletions(-)
+>  hw/core/qdev-properties-system.c         | 14 ++++++++++++++
+>  include/hw/core/qdev-properties-system.h |  3 +++
+>  qapi/misc-arm.json                       | 16 ++++++++++++++++
+>  qapi/pragma.json                         |  1 +
+>  4 files changed, 34 insertions(+)
 >
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 5d14abe307..6f44fd3469 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -824,8 +824,12 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->          return;
->      }
+> diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+> index a402321f42..4aca1d4326 100644
+> --- a/hw/core/qdev-properties-system.c
+> +++ b/hw/core/qdev-properties-system.c
+> @@ -18,6 +18,7 @@
+>  #include "qapi/qapi-types-block.h"
+>  #include "qapi/qapi-types-machine.h"
+>  #include "qapi/qapi-types-migration.h"
+> +#include "qapi/qapi-types-misc-arm.h"
+>  #include "qapi/qapi-visit-virtio.h"
+>  #include "qapi/qmp/qerror.h"
+>  #include "qemu/ctype.h"
+> @@ -723,6 +724,19 @@ const PropertyInfo qdev_prop_zero_page_detection = {
+>      .set_default_value = qdev_propinfo_set_default_value_enum,
+>  };
 >  
-> -    /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
-> -    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
-> +    /* Only override RIL if user explicitly set ON or OFF */
-> +    if (s->ril == ON_OFF_AUTO_ON) {
-> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
-> +    } else if (s->ril == ON_OFF_AUTO_OFF) {
-> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 0);
-> +    }
+> +/* --- SsidSizeMode --- */
+> +
+> +QEMU_BUILD_BUG_ON(sizeof(SsidSizeMode) != sizeof(int));
+> +
+> +const PropertyInfo qdev_prop_ssidsize_mode = {
+> +    .type = "SsidSizeMode",
+> +    .description = "ssidsize mode: auto, 0-20",
+> +    .enum_table = &SsidSizeMode_lookup,
+> +    .get = qdev_propinfo_get_enum,
+> +    .set = qdev_propinfo_set_enum,
+> +    .set_default_value = qdev_propinfo_set_default_value_enum,
+> +};
+> +
+>  /* --- Reserved Region --- */
 >  
->      /* Only override ATS if user explicitly set ON or OFF */
->      if (s->ats == ON_OFF_AUTO_ON) {
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 862ca945d5..acbd9d3ffe 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1972,7 +1972,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->  #endif
->  
->      if (!s->accel) {
-> -        if (!s->ril) {
-> +        if (s->ril == ON_OFF_AUTO_OFF) {
->              error_setg(errp, "ril can only be disabled if accel=on");
->              return false;
->          }
-> @@ -2132,7 +2132,7 @@ static const Property smmuv3_properties[] = {
->      /* GPA of MSI doorbell, for SMMUv3 accel use. */
->      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
->      /* RIL can be turned off for accel cases */
-> -    DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
-> +    DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
->      DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
->      DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
->      DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index ce51a5b9b4..c35e599bbc 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -69,7 +69,7 @@ struct SMMUv3State {
->      struct SMMUv3AccelState *s_accel;
->      uint64_t msi_gpa;
->      Error *migration_blocker;
-> -    bool ril;
-> +    OnOffAuto ril;
->      OnOffAuto ats;
->      uint8_t oas;
->      uint8_t ssidsize;
+>  /*
+> diff --git a/include/hw/core/qdev-properties-system.h b/include/hw/core/qdev-properties-system.h
+> index ec21732ce5..4708885164 100644
+> --- a/include/hw/core/qdev-properties-system.h
+> +++ b/include/hw/core/qdev-properties-system.h
+> @@ -14,6 +14,7 @@ extern const PropertyInfo qdev_prop_multifd_compression;
+>  extern const PropertyInfo qdev_prop_mig_mode;
+>  extern const PropertyInfo qdev_prop_granule_mode;
+>  extern const PropertyInfo qdev_prop_zero_page_detection;
+> +extern const PropertyInfo qdev_prop_ssidsize_mode;
+>  extern const PropertyInfo qdev_prop_losttickpolicy;
+>  extern const PropertyInfo qdev_prop_blockdev_on_error;
+>  extern const PropertyInfo qdev_prop_bios_chs_trans;
+> @@ -61,6 +62,8 @@ extern const PropertyInfo qdev_prop_virtio_gpu_output_list;
+>  #define DEFINE_PROP_ZERO_PAGE_DETECTION(_n, _s, _f, _d) \
+>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_zero_page_detection, \
+>                         ZeroPageDetection)
+> +#define DEFINE_PROP_SSIDSIZE_MODE(_n, _s, _f, _d) \
+> +    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_ssidsize_mode, SsidSizeMode)
+>  #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+>      DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
+>                          LostTickPolicy)
+> diff --git a/qapi/misc-arm.json b/qapi/misc-arm.json
+> index f921d740f1..76ea0a09fa 100644
+> --- a/qapi/misc-arm.json
+> +++ b/qapi/misc-arm.json
+> @@ -45,3 +45,19 @@
+>  #                     { "version": 3, "emulated": false, "kernel": true } ] }
+>  ##
+>  { 'command': 'query-gic-capabilities', 'returns': ['GICCapability'] }
+> +
+> +##
+> +# @SsidSizeMode:
+> +#
+> +# SMMUv3 SubstreamID size configuration mode.
+> +#
+> +# @auto: derive from host IOMMU capabilities
+> +#
+> +# Values 0-20: SSIDSIZE value in bits.  0 disables SubstreamID.
+> +#
+> +# Since: 11.0
+> +##
+> +{ 'enum': 'SsidSizeMode',
+> +  'data': [ 'auto', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+> +            '10', '11', '12', '13', '14', '15', '16', '17', '18',
+> +            '19', '20' ] } # order matters, see ssid_size_mode_auto()
+> diff --git a/qapi/pragma.json b/qapi/pragma.json
+> index 193bc39059..24aebbe8f5 100644
+> --- a/qapi/pragma.json
+> +++ b/qapi/pragma.json
+> @@ -68,6 +68,7 @@
+>          'S390CpuEntitlement',
+>          'S390CpuPolarization',
+>          'S390CpuState',
+> +        'SsidSizeMode',
+>          'String',
+>          'StringWrapper',
+>          'SysEmuTarget',
 
 

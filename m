@@ -4,71 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95EC9F3380A
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 07:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C7BF33812
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 08:45:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2Ort-0006gj-5z; Tue, 17 Mar 2026 03:29:33 -0400
+	id 1w2Q3W-0003yW-RP; Tue, 17 Mar 2026 04:45:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w2OrZ-0006b7-5P; Tue, 17 Mar 2026 03:29:13 -0400
-Received: from sender4-of-o54.zoho.com ([136.143.188.54])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1w2Q3U-0003vc-FX
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:45:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
- id 1w2OrV-0001DU-Ic; Tue, 17 Mar 2026 03:29:12 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1773732531; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=W+DyPI+TK1dz7NGSmxRAfepmecOK6T/0Q19STushHlSPF7IHIs06zuO19iMaY161Hz4e49aQXvqW1j6/4b72ufstPYEhf3/C9wdOG58ZXBkuxsATWxmD++172X2gxurOJ7RzuC0ocbryeNoGEzB/ZsxNkviBPerBSW9j+AcprOs=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1773732531;
- h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=ctGBz/mZo+EX0eZhP1zxdHoJeQiVjASwQXCYiN2OiZ4=; 
- b=mqNCdjX1TfjKLf9WGj3j+LcaRxAsLphS4GuwfJAG4hg4UIikQ7N1uP4Xn00m0OvzSXbtC0evKAEGEflYBoPYZjBPPJaxFoxl/QIE+vev5js9zpTGCI1TKj3xeNkxO/gwfLcH435Mka4rG+2k/ZUL/GKLLrt04aVptXM0XylDiDA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- dkim=pass  header.i=anirudhrb.com;
- spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
- dmarc=pass header.from=<anirudh@anirudhrb.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773732531; 
- s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
- h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
- bh=ctGBz/mZo+EX0eZhP1zxdHoJeQiVjASwQXCYiN2OiZ4=;
- b=zOAAsV/80W6HYtVrs5SkNO+y7BBRM6cx+SByvypXCYYxTD7Mh0f2IJPCmrPMU+2I
- +77mkMhWW+ZXRBJbzVRHXlqVJtBQ6Ap7BmcQkHZdVE38C3vf4/Vd1OhuO0qrJquriBV
- vpPoDg+qpBVfp9lxMKA7eLL5920Asmj13zjxcHDg=
-Received: by mx.zohomail.com with SMTPS id 1773732523854139.5036936920675;
- Tue, 17 Mar 2026 00:28:43 -0700 (PDT)
-Date: Tue, 17 Mar 2026 07:28:38 +0000
-From: Anirudh Rayabharam <anirudh@anirudhrb.com>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- =?iso-8859-1?Q?=22Daniel_P=2E_Berrang=E9=22?= <berrange@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH 11/14] target/arm/mshv: add vCPU run loop
-Message-ID: <20260317-crimson-pillbug-of-strength-daf7ea@anirudhrb>
-References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
- <20260311-mshv_accel_arm64_supp-v1-11-c31699b7bc1f@anirudhrb.com>
- <DBA9B933-08E0-4599-AF36-AED339598F75@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1w2Q3S-0006wf-RJ
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:45:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773737132;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=tlieGdi6ZOkCHyp2ldI/32JlToohy+mEtd9XgegbTkM=;
+ b=ThF9LRf2K3RaAKnQniC8KjzoCMNoRge0rdCQuudhU5LGvoIZjC6Vbox3nL7er7OlvPA9Tn
+ RNPYu2jqx0ybJe8kyug8TZVYl4y/wev8hIS6KSlSYIVLz+qSpNY6sHa66cANDxBxrkzcxH
+ a/yCpd5Du2+EgW31kcXSrEWskzMxaNo=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-490-WLTBxXUEOqeMYuenHkm9lg-1; Tue,
+ 17 Mar 2026 04:45:29 -0400
+X-MC-Unique: WLTBxXUEOqeMYuenHkm9lg-1
+X-Mimecast-MFC-AGG-ID: WLTBxXUEOqeMYuenHkm9lg_1773737128
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 719E919560B9; Tue, 17 Mar 2026 08:45:28 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.45.224.114])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BC4481800361; Tue, 17 Mar 2026 08:45:27 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 924181800634; Tue, 17 Mar 2026 09:45:25 +0100 (CET)
+Date: Tue, 17 Mar 2026 09:45:25 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: Luigi Leonardi <leonardi@redhat.com>, qemu-devel@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Oliver Steffen <osteffen@redhat.com>,
+ qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/arm/virt: add serial-debug-level property for EDK2
+ firmware
+Message-ID: <abkPy4Xzf6YT6g5Y@sirius.home.kraxel.org>
+References: <20260311-edk2_arm_serial-v1-1-c25e237116f3@redhat.com>
+ <0b4976f9-cf83-47b4-8f00-cc68c9cf47fd@linaro.org>
 MIME-Version: 1.0
+In-Reply-To: <0b4976f9-cf83-47b4-8f00-cc68c9cf47fd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: rVkjQbHtHNInKAtWiIWU3f9Pn_tBfGBvfHXIxxrk7Lw_1773737128
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <DBA9B933-08E0-4599-AF36-AED339598F75@unpredictable.fr>
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.54;
- envelope-from=anirudh@anirudhrb.com; helo=sender4-of-o54.zoho.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,328 +89,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Mar 11, 2026 at 04:58:28PM +0100, Mohamed Mediouni wrote:
+On Wed, Mar 11, 2026 at 03:24:04PM -0700, Pierrick Bouvier wrote:
+> Hi Luigi,
 > 
-> 
-> > On 11. Mar 2026, at 16:15, Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com> wrote:
+> On 3/11/26 6:43 AM, Luigi Leonardi wrote:
+> > Add a machine property to pass a debug level to EDK2 firmware via the
+> > device tree. The value is set as an "edk2,debug-level" property on all
+> > pl011 UART nodes.
 > > 
-> > Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
+> > This is to create a runtime parameter to set the verbosity of the debug
+> > log on the serial ports in edk2. Currently, the only way to set the
+> > verbosity is a compile-time option.
 > > 
-> > Handle MMIO exits by emulating the instruction using the syndrome
-> > information from ESR_EL2.
+> > DT is used because the fw_cfg interface is not yet initialized in early
+> > boot phases.
 > > 
-> > Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+> > Corresponding edk2 PR: https://github.com/tianocore/edk2/pull/12277
+> > 
+> > Suggested-by: Gerd Hoffmann <kraxel@redhat.com>
+> > Signed-off-by: Luigi Leonardi <leonardi@redhat.com>
 > > ---
-> > include/hw/hyperv/hvgdk_mini.h |  44 +++++++++
-> > target/arm/mshv/mshv-all.c     | 198 +++++++++++++++++++++++++++++++++++++++++
-> > 2 files changed, 242 insertions(+)
-> > 
-> Hello,
-> 
-> GDK updates in separate patches from the rest please. Maybe even combine them together.
-
-The header updates are closely related to what this patch is doing.
-
-> 
-> And more comments below...
-> 
-> > diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-> > index d56be0d70f..84b3c6af5f 100644
-> > --- a/include/hw/hyperv/hvgdk_mini.h
-> > +++ b/include/hw/hyperv/hvgdk_mini.h
-> > @@ -750,6 +750,50 @@ struct hv_x64_memory_intercept_message {
-> >     uint8_t instruction_bytes[16];
-> > };
-> > 
-> > +union hv_arm64_vp_execution_state {
-> > +    uint16_t as_uint16;
-> > +    struct {
-> > +        uint16_t cpl:2;
-> > +        uint16_t debug_active:1;
-> > +        uint16_t interruption_pending:1;
-> > +        uint16_t vtl:4;
-> > +        uint16_t virtualization_fault_active:1;
-> > +        uint16_t reserved:7;
-> > +    };
-> > +};
-> > +
-> > +struct hv_arm64_intercept_message_header {
-> > +    uint32_t vp_index;
-> > +    uint8_t instruction_length;
-> > +    uint8_t intercept_access_type;
-> > +    union hv_arm64_vp_execution_state execution_state;
-> > +    uint64_t pc;
-> > +    uint64_t cpsr;
-> > +};
-> > +
-> > +union hv_arm64_memory_access_info {
-> > +    uint8_t as_uint8;
-> > +    struct {
-> > +        uint8_t gva_valid:1;
-> > +        uint8_t gva_gpa_valid:1;
-> > +        uint8_t hypercall_output_pending:1;
-> > +        uint8_t reserved:5;
-> > +    };
-> > +};
-> > +
-> > +struct hv_arm64_memory_intercept_message {
-> > +    struct hv_arm64_intercept_message_header header;
-> > +    uint32_t cache_type; /* enum hv_cache_type */
-> > +    uint8_t instruction_byte_count;
-> > +    union hv_arm64_memory_access_info memory_access_info;
-> > +    uint16_t reserved1;
-> > +    uint8_t instruction_bytes[4];
-> > +    uint32_t reserved2;
-> > +    uint64_t guest_virtual_address;
-> > +    uint64_t guest_physical_address;
-> > +    uint64_t syndrome;
-> > +};
-> > +
-> > union hv_message_flags {
-> >     uint8_t asu8;
-> >     struct {
-> > diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-> > index 2b983845d3..b0649ba10b 100644
-> > --- a/target/arm/mshv/mshv-all.c
-> > +++ b/target/arm/mshv/mshv-all.c
-> > @@ -166,8 +166,206 @@ int mshv_arch_put_registers(const CPUState *cpu)
-> >     return 0;
-> > }
-> > 
-> > +static int set_memory_info(const struct hyperv_message *msg,
-> > +                           struct hv_arm64_memory_intercept_message *info)
-> > +{
-> > +    if (msg->header.message_type != HVMSG_GPA_INTERCEPT
-> > +            && msg->header.message_type != HVMSG_UNMAPPED_GPA
-> > +            && msg->header.message_type != HVMSG_UNACCEPTED_GPA) {
-> > +        error_report("invalid message type");
-> > +        return -1;
-> > +    }
-> > +    memcpy(info, msg->payload, sizeof(*info));
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > +typedef union {
-> > +    uint64_t raw;
-> > +    struct {
-> > +        uint32_t iss:25;
-> > +        uint32_t il:1;
-> > +        uint32_t ec:6;
-> > +        uint32_t iss2:5;
-> > +        uint32_t _rsvd:27;
-> > +    } QEMU_PACKED;
-> > +} EsrEl2;
-> > +
-> > +typedef union {
-> > +    uint32_t raw;
-> > +    struct {
-> > +        uint32_t dfsc:6;
-> > +        uint32_t wnr:1;
-> > +        uint32_t s1ptw:1;
-> > +        uint32_t cm:1;
-> > +        uint32_t ea:1;
-> > +        uint32_t fnv:1;
-> > +        uint32_t set:2;
-> > +        uint32_t vncr:1;
-> > +        uint32_t ar:1;
-> > +        uint32_t sf:1;
-> > +        uint32_t srt:5;
-> > +        uint32_t sse:1;
-> > +        uint32_t sas:2;
-> > +        uint32_t isv:1;
-> > +        uint32_t _unused:7;
-> > +    } QEMU_PACKED;
-> > +} IssDataAbort;
-> Think this is better suited for common code somewhere...
-> > +
-> > +typedef enum {
-> > +    data_abort_lower = 36,
-> > +    data_abort = 37,
-> > +} ExceptionClass;
-> > +
-> > +int mshv_store_regs(CPUState *cpu)
-> > +{
-> > +    int ret;
-> > +
-> > +    ret = set_standard_regs(cpu);
-> > +    if (ret < 0) {
-> > +        error_report("Failed to store standard registers");
-> > +        return -1;
-> > +    }
-> > +
-> > +    /* TODO: should store special registers? the equivalent hvf code doesn't */
-> WHPX does handle this via state levels, but what HVF does via a separate function is also workable.
-
-Yeah, we'll add more registers in a later series. I think I'll get rid of
-this TODO.
-
-> 
-> > +    return 0;
-> > +}
-> > +
-> > +static int emulate_with_syndrome(CPUState *cpu,
-> > +                                 struct hv_arm64_memory_intercept_message *info)
-> > +{
-> > +    ARMCPU *arm_cpu = ARM_CPU(cpu);
-> > +    CPUARMState *env = &arm_cpu->env;
-> > +    int ret;
-> > +    EsrEl2 syndrome = { 0 };
-> > +    IssDataAbort iss = { 0 };
-> > +    uint64_t gpa = info->guest_physical_address;
-> > +    uint64_t len, reg_index;
-> > +    bool sign_extend;
-> > +
-> > +    syndrome.raw = info->syndrome;
-> > +
-> > +    if (!(syndrome.ec == data_abort_lower || syndrome.ec == data_abort)) {
-> > +        error_report("Unknown exception class 0x%x", syndrome.ec);
-> > +        return -1;
-> > +    }
-> > +
-> > +    iss.raw = syndrome.iss;
-> > +    if (!iss.isv) {
-> > +        error_report("Invalid ESR EL2 ISV field");
-> > +        return -1;
-> > +    }
-> > +
-> > +    len = 1ULL << iss.sas;
-> > +    sign_extend = iss.sse;
-> > +    reg_index = iss.srt;
-> > +
-> > +    ret = mshv_load_regs(cpu);
-> > +    if (ret < 0) {
-> > +        error_report("Failed to load registers");
-> > +        return -1;
-> > +    }
-> > +
-> > +    if (iss.wnr) {
-> > +        uint8_t data[8];
-> > +        uint64_t val = reg_index < 31 ? env->xregs[reg_index] : 0ULL;
-> > +
-> > +        val = cpu_to_le64(val);
-> > +
-> > +        memcpy(data, &val, sizeof(val));
-> > +        ret = mshv_guest_mem_write(gpa, data, len, false);
-> > +        if (ret < 0) {
-> > +            error_report("Failed to write guest memory");
-> > +            return -1;
-> > +        }
-> > +    } else {
-> > +        uint8_t data[8] = { 0 };
-> > +
-> > +        ret = mshv_guest_mem_read(gpa, data, len, false, false);
-> > +        if (ret < 0) {
-> > +            error_report("Failed to read guest memory");
-> > +            return -1;
-> > +        }
-> > +
-> > +        uint64_t val;
-> > +        memcpy(&val, data, sizeof(val));
-> > +
-> > +        val = le64_to_cpu(val);
-> > +
-> > +        if (sign_extend) {
-> > +            uint64_t shift = 64 - (len * 8);
-> > +            val = (((int64_t)val << shift) >> shift);
-> > +            if (!iss.sf) {
-> > +                val &= 0xffffffff;
-> > +            }
-> > +        }
-> > +
-> > +        env->xregs[reg_index] = val;
-> > +    }
-> > +
-> > +    env->pc += (syndrome.il == 1) ? 4 : 2;
-> > +
-> > +    ret = mshv_store_regs(cpu);
-> > +    if (ret < 0) {
-> > +        error_report("failed to store registers");
-> > +        return -1;
-> > +    }
-> > +
-> > +    return 0;
-> > +}
-> 
-> I think this deserves to go to common code somewhere at this point :)
-
-Do you have any ideas as to where this code can go?
-
-> 
-> > +
-> > +static int handle_unmapped_mem(int vm_fd, CPUState *cpu,
-> > +                               const struct hyperv_message *msg,
-> > +                               MshvVmExit *exit_reason)
-> > +{
-> > +    struct hv_arm64_memory_intercept_message info = { 0 };
-> > +    int ret;
-> > +
-> > +    ret = set_memory_info(msg, &info);
-> > +    if (ret < 0) {
-> > +        error_report("failed to convert message to memory info");
-> > +        return -1;
-> > +    }
-> > +
-> > +    ret = emulate_with_syndrome(cpu, &info);
-> > +    if (ret < 0) {
-> > +        error_report("Failed to emulate with syndrome");
-> > +        return -1;
-> > +    }
-> > +
-> > +    *exit_reason = MshvVmExitIgnore;
-> > +
-> > +    return 0;
-> > +}
-> > +
-> > int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
-> > {
-> > +    int ret;
-> > +    int cpu_fd = mshv_vcpufd(cpu);
-> > +
-> > +    ret = ioctl(cpu_fd, MSHV_RUN_VP, msg);
-> > +    if (ret < 0) {
-> > +        *exit = MshvVmExitShutdown;
-> > +        return ret;
-> > +    }
-> > +
-> > +    switch (msg->header.message_type) {
-> > +    case HVMSG_UNRECOVERABLE_EXCEPTION:
-> > +        *exit = MshvVmExitShutdown;
-> > +        break;
-> > +    case HVMSG_UNMAPPED_GPA:
-> At least as observed on WHPX you also need to handle GpaIntercept the same way
-> for EDK2 to be happy
-
-Interesting, because Cloud Hypervisor doesn't handle GPA_INTERCEPT at
-all for arm64 and still works fine with EDK2.
-
-Anyway, I tried adding it but EDK2 still isn't happy. There seems to be
-some other issue potentially related to the mshv driver in the kernel.
-
-Thanks,
-Anirudh.
-
-> > 
-> > 
-> > +        ret = handle_unmapped_mem(vm_fd, cpu, msg, exit);
-> > +        if (ret < 0) {
-> > +            error_report("failed to handle mmio");
-> > +            return -1;
-> > +        }
-> > +        break;
-> > +    default:
-> > +        error_report("Unhandled message type: 0x%x", msg->header.message_type);
-> > +        return -1;
-> > +    }
-> > +
-> >     return 0;
-> > }
-> > 
-> > 
-> > -- 
-> > 2.43.0
-> > 
+> >   docs/system/arm/virt.rst |  6 ++++++
+> >   hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
+> >   include/hw/arm/virt.h    |  2 ++
+> >   3 files changed, 46 insertions(+)
 > > 
 > 
-> 
+> I am not sure if maintainer want to have bootloader specific options in
+> machine code.
+
+Does that mean "yes" or "no" or "maybe" ?
+
+Some background:  Traditionally firmware logging in edk2/ArmVirtPkg is a
+compile time option, so typically distributions ship two builds, one
+with logging turned on and one with logging turned off.
+
+Last year edk2 got support for logging to a memory buffer which can be
+accessed from the booted OS or via qemu monitor.  Ideally we have this
+always enabled, but without also spamming the serial console with the
+firmware log (by default).  While working on that it would be nice to
+also get rid of the two builds by moving from a compile time to a
+runtime switch for the serial debug log.
+
+> Alternatively, it's possible to dump virt dtb, modify it, and pass it.
+> $ ./build/qemu-system-aarch64 -M virt,dtb=file.dtb
+> $ ... modify dt ...
+> $ ./build/qemu-system-aarch64 -M virt,dtb=file.dtb
+
+I'd like to have something more convenient than that to turn on firmware
+debug logging.
+
+On x86 we have a dedicated device for firmware logging (isa-debugcon),
+so logging can be easily enabled on the qemu command line by adding that
+device.
+
+So the idea here is to have a dt property added to serial port to
+setup firmware logging, so we have something roughly comparable to the
+x86 functionality ...
+
+take care,
+  Gerd
+
 

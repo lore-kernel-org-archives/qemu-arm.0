@@ -4,144 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F3E6FED9EA
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 16:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5FC8FED9F6
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:48:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2XBD-0005Su-4v; Tue, 17 Mar 2026 12:22:03 -0400
+	id 1w2YWo-0003Oy-HQ; Tue, 17 Mar 2026 13:48:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w2XB1-0005Rb-RJ; Tue, 17 Mar 2026 12:21:51 -0400
-Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w2XB0-0004kJ-07; Tue, 17 Mar 2026 12:21:51 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=gTxlcZhXNdf16LsXQu31brVDN2uQbjXuMG9GF21EdxxViSssMeOdnvD0g/zT9uTjZ+AZwF0wMXQiOIZuEdzd4d58DmiUReJN3ptC00j70aupaYejfhsjhVXbRGTFQR46pBGioMlUEXpixWWCd0uEK8lscQNxMFsxK7FQDx5SMDdold0RwbosdhGG0BPjvfW23JQ6ULlX+XzhX60WknAO0cIuj2fTTGso6WrDT5lr+euRseeSjOe6OFeBmUEJNfbPxSO37WQa0rElpPhif0q2YNUD+Uhdj/plpugDTcXbKM0/AwhXT0yoCMW7zNAETSHmIAKBacJw4wzCx77GzrvzvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4NSoN6xsqOX1C71Ye7IA5XHiCea6JnQxPKs32SHAoDA=;
- b=bU0AalVOGvS7o6EoNgxmDUcec05ZaSnyzHOZLtikuaGMvDwphLftMbqAoRBRHmBdAqCZbJwULf4FDkM9V3SXfIYijnncrk4u+Hb/XeOoGwsQebyHCbAPMwq8cHk8g4V1pF29wL4nJ3zKRgLswozLS2yS1QS4ZHnjLbdiVFR9HQbaxqVCUddVM68+qzW91ipOJwdz81piHHZtTnn3L8iaMiPPtmyQLiAHShxwVTUuxBBSlVIsqvMCI9+23lZjFuE8hY32bbh3z9UUA6bOfRVdOBZ+eNYvWisU4wD1dfgH3tyZWEC+SJMTHvl/q2QU6yxLrWNpR7W+9/GD3BeCxC/k5A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4NSoN6xsqOX1C71Ye7IA5XHiCea6JnQxPKs32SHAoDA=;
- b=Nrw7QYHyCAiEZk8TCpXOOVB8x7pFL3Q1TG8x5GdFUnW1aE+6eocQcMjS9jIlG+Ffpp5tZBE7s1xdfzX96HX8+xtU1swHz8vGAm8URJXI7g7Y2QHV1ZZOJSgynqFAnXhhjAR3wvkGi75byEALfgBlgfywqEOYKQNhsTbSpBG9pLQdf6Us6x37+tW+k12UJu2kaNHhTbTFaKvaqJKfxzVLLgBrNET1u7bWWPL5zcXSnLU5K1VpG1kp1lbW0EFcJwA1tuMX6g+v8g8Yh5fGSgoZTLMY2JVw3RFPvylzmAvkTHsVwpkEtzpBTuo+DEwxemjFP+EQbKzLVLkjK47CdPGWJQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
- MW4PR12MB7335.namprd12.prod.outlook.com (2603:10b6:303:22b::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Tue, 17 Mar
- 2026 16:21:43 +0000
-Received: from DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
- ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9723.018; Tue, 17 Mar 2026
- 16:21:43 +0000
-Message-ID: <9b7178f1-fe7f-440c-811b-2ac2661b5f50@nvidia.com>
-Date: Tue, 17 Mar 2026 09:21:41 -0700
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/8] hw/arm/smmuv3-accel: Support AUTO properties
-To: Peter Maydell <peter.maydell@linaro.org>, eric.auger@redhat.com
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Matt Ochs <mochs@nvidia.com>
-References: <20260312210328.2016191-1-nathanc@nvidia.com>
- <a0ca818f-8e05-4756-b6bb-8f986c59cd54@redhat.com>
- <CAFEAcA-NjFCaZC-UAykS98J4DAEXyANj2QfAgc3bqT4eQsO=zA@mail.gmail.com>
-Content-Language: en-US
-From: Nathan Chen <nathanc@nvidia.com>
-In-Reply-To: <CAFEAcA-NjFCaZC-UAykS98J4DAEXyANj2QfAgc3bqT4eQsO=zA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SJ0PR03CA0129.namprd03.prod.outlook.com
- (2603:10b6:a03:33c::14) To DS2PR12MB9567.namprd12.prod.outlook.com
- (2603:10b6:8:27c::8)
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1w2YWF-0003Le-Nv
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:47:52 -0400
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1w2YWD-0006xl-R8
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:47:51 -0400
+Received: by mail-dl1-x1229.google.com with SMTP id
+ a92af1059eb24-128d2e3082eso502381c88.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:47:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1773769667; x=1774374467; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=R8sGN3pUZfb1jPFD6m9bHWDlQGgRDF8SFG+PAv18Xgc=;
+ b=LRaY72vx1y5PFhBszqS/QUbuiZYelmj8uVsWHocRcJPuw5wb2x0TVZlfyX2yethV8E
+ LsSeb0hS6uDEKwkUCqe0TgFbVQ35R1YLyEWPe61mgiz5WogORQM9XspK3IR3UkjQENCz
+ 8Qgi2lpgYRV3K5a1zCbYWGslmptbbNnp2VlEkkyDGA1SzJSJNU6Ar7j4SX5pP5mMDlDx
+ as9nPdzOhMPmquu2tPNEhP1AQgZW+CDmVFrYqGJYPzFCtn6xvlnKPFakbqnoMo3kdjmT
+ jyC1i61PdBXUCQgqL97Filj1oGxPIQpkcBz0zryGuTn1GTh1XwOwDID18vZyiPRUWHAh
+ bR5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773769667; x=1774374467;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=R8sGN3pUZfb1jPFD6m9bHWDlQGgRDF8SFG+PAv18Xgc=;
+ b=JxsCojGCTscylvuotOka3uCul3WabUreXFev3NWdjen1Zl9NhW8KUmdHvSK819ZzWd
+ JSabAnmScytCABlgwtXlXqesrEHydcb2xF7izTaI4mnpquzQ/PgVPtd8R+oGBT71bN+w
+ B9/anQtg5GaZs+q8an+DuInMG/OhKIg+KvvucplSkXeqLMhN/kuDK1Gi3wWn6klemnSp
+ F15+SUMwTOmk0SiPbGWmTDrrzRBrvx7n2vN3PNXIJRjF2PNrQysCyhS8Ovj28pnmxr0R
+ tHRhIukei/Lv6Y1kaTc1DIm1jeL7tmEEMQrC+0C5XFjICPoTtu3tVG0w5OYMpbkzkGze
+ JibA==
+X-Gm-Message-State: AOJu0YxLVrpiqux2convcmIfZqpkP1mqQDyMkV3oVp6xlo6VUho/tR2F
+ nVlT3sVOuxDF9wyzEbpuE/3qO302nmaamRsvfipEGmJgrRuZCGZcVNeb
+X-Gm-Gg: ATEYQzwk1mtO03r5nzY2scywfcGPk3kFFOpW1llX/P2v37AZnk3zEZD/8GYuQw6ukki
+ A8gHvFnSxHg1tQMAeiFzY3obo0CFwurqms4U2LSfnZ3xfgDqi4IItNJiAVXnqWNak3AEYsHsyKe
+ lnElImiHox4xDBQ5AWJjK7S0dUWs5Hpj9QN8fGD4tKk9S+53Daushal8O1iz6Y8hqsRCQi5e0/O
+ R2YHp53VkVzqAiHQL0hWDEVWY0IvHoK2EUVBSA5Lq75lZgl1qWzhBI2JmUNgXcs72wlIif9By5F
+ NDx7XyoDrChkUnjsb+98qvv5SU4D+spxPqXIk3v9gZkeCXRuc8vExkbEcHbO6IEkwx+xWM+CnvD
+ fCNNn43iz9q31ixB1XRoq5UPbLHpenBH71eAtWFUMCgjrVnEMXiChxzcqf+WmK9okh9pBmO8Lx1
+ FVOG5I1ld4A6WRetGG4jfaObLAvaum829/kyrRs6yvoF7re2vutjMe
+X-Received: by 2002:a05:7022:6085:b0:128:d202:883 with SMTP id
+ a92af1059eb24-1299ba11ebdmr241545c88.3.1773769667229; 
+ Tue, 17 Mar 2026 10:47:47 -0700 (PDT)
+Received: from localhost.localdomain ([143.54.78.51])
+ by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-129b4147522sm281844c88.15.2026.03.17.10.47.44
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 17 Mar 2026 10:47:46 -0700 (PDT)
+From: Lucas Amaral <lucaaamaral@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ mohamed@unpredictable.fr, alex.bennee@linaro.org,
+ Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v5 0/6] target/arm: ISV=0 data abort emulation library
+Date: Tue, 17 Mar 2026 14:47:34 -0300
+Message-ID: <20260317174740.31674-1-lucaaamaral@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|MW4PR12MB7335:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a7ea022-642e-42f2-45c5-08de8441470d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|7416014|376014|1800799024|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: wUnCafGYJA52+zs3CpJKB3JfboIrTlv1aurey7Lthpu21kMwA76u68rk3KZZGHQKxFUUSblWTSLAifBCMlKmx7jHT82Jx4rZudplt8co8WxCcy5y7tZW6H4L0EVa8uyPuTZ08x2+U+lwu6yl9P7gz/RCqQyEDU2CKsu1MY35skIvBVmYwjN6hn1EbIYaWUAY4af9wB916NFSW9hjd6ZPRa0JoAJOLPpK1tv1zu2JJrIAZgpMDfPiolb5BF18iEqSS57YX8ISWxy+4TKG4tY1ttCGqGgdRHkLh2GjPFga5+Kjxz27FJilpse7tpCT7lQFk6iNGB7rU0vpUHwaENvX7ExvOyx2t7qs6tCG9isdTG6Dn0fSMluFctm06kL+kxs5QuijdyPCkHSk5i8RAaqpYQ84kXgT1gVIbXk9pwzsGPweAgs9Vp1+ejrsC2OAuJTN5cBAGVbw9Hellj3lr/amqGwdEWP72g2o+ppmwTMox1BQ7HDiQH4bm8wClxpwf/xplaRFIFaif5X2diQvkKUu3vRBwrSpDL8LM8G30hVuqFJ0SoLH+3DKwQ/jCf1yMMnfj/gBlmX0SYFpK8Ua496hR5slLhUDUalqvC0dmud+2GCbhDWoST2dCMW4hVQBSUuK8fDRDQAydcb/8O1nFtvNUrDJurxbqOg9B40+hSHLURQyAa23aqQexi2brvP43ef4mixjWg32P6eKRu7F373AFPlPzkifAbHQHJ4ot7pKx3U=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(376014)(1800799024)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?KzcrMWF3UEgxek9oTTIrR05DTE1sQVhCM1YrTG1PVXhPYlNoV3EzOFdzSHBt?=
- =?utf-8?B?eENGN1lDQmE3RW5FcGNMWDBvNGlOaUlyamErdmlFaUQxdkFiYnJMQWk2SW9u?=
- =?utf-8?B?RWxtNnErUlJjL0xzZHozSDcwSmtzZm5wVk5pazRDQTBVbXZkNVNuU3UxNkdq?=
- =?utf-8?B?czJkTmpuOWU3WS9ZVjNnNHF0eEtBemk5MmZKUmVLSjBZMGdJdlZsVzVrZTll?=
- =?utf-8?B?ZmNENStNQnJSRytjUnNXKy9JK0oybHNTd2JaUFh4Wm1aUnFhcHREaG0ycy9N?=
- =?utf-8?B?czlmL28yemcxUUFwenNnZ0ZyTldJNXpLV0Y1SDB6ZmQ5blBqTnBWaXIrREU0?=
- =?utf-8?B?bnZ0c2FBek5hWlhMdEMzRUplS1BFeTRUQWI2eTEwd2xtMm1wZ0RvNnpKY0ZG?=
- =?utf-8?B?THdESHRZRXdBVVg5K3lmai9YaXovdGZEdXBxemtyVnBNeDdFVi9pNlZRSno4?=
- =?utf-8?B?SllGVzlMM3ViQjgwejVDSjNVTFZ6emo5QkZHT0x3SEJ2VzhUUkVVcnhJSktS?=
- =?utf-8?B?MGtUVzR2cDRYYVUya3RPNUVmaGxkYlJVQlMyYS80aENGOUdhZXpHVzM4ZzIz?=
- =?utf-8?B?b2t5NHJiSVU1NTNqZVViWmd0a3NHRXBFeWIvenpXLzJQYjhudXRkakNUQWp0?=
- =?utf-8?B?NlRZTkoybjZtYWF0TTF4dnZyRXVhQ2FBNWs3NGVNWkR0d1U1ZHIyblgvcVFj?=
- =?utf-8?B?RlI0QUJPZnEzUDAxWnFMU3FhZGxxalpHcE5MR3JrVjFQcURJenBEblVHc0xX?=
- =?utf-8?B?MEc4SDFvQ3JZSHo2VUZ1ZFU4aTNnU2VtdUV5V1VwaU9LSk4wTkc4RDlPeXhB?=
- =?utf-8?B?d2RqcEcyN0hkMk1qV1IyditjbER6OTlpTlZ3TEEySlVub29NZ0RCOXBVSXhm?=
- =?utf-8?B?Rm02bnNuNDhJcWdRV1BYTitxWkoxVitKOHBJZnMyOTZuRTlSTUxzTEZMcWNm?=
- =?utf-8?B?eGkzY3M0djI0MDlVVlBySEZXeEFucE54bXhVK2M3dnFPbStFY2c3U3A0aUFG?=
- =?utf-8?B?UkpyUUozM1RSY0tLelhoZUNHVGNpTmdzWWw4U1BWMTEwUnA4Wlo2QTZjOHdL?=
- =?utf-8?B?TGhaWHJDWkFyb0pFVE1MK3BVdDEwRE1ZK2YvZm5LU1NrNDNQVWtzM3FIYTBn?=
- =?utf-8?B?RDBlRE9sUmdBV2xKZlVpNFZYd2p1eVd6SzcyZU5UNi9zL0JibGxDZDN3KzNi?=
- =?utf-8?B?M1JlVjE0RnFSbXprdC8xazZNOHEvWmRtdHpuMk9FeUllNWF4M3VEVytId0FR?=
- =?utf-8?B?YU9senRHb1FySkoreGJhelJoUTBHRE9odVcwU2trdWlCTTg4ZVlIcnJhOUpP?=
- =?utf-8?B?Y2FnaE1xRGprQWdLVUlndG15OGpoQ3ljVTY0Nzg0RElVZUhWSkJDZCsza2U0?=
- =?utf-8?B?SWFKejFlN1lHZ3had2tJS0FjWUxTVC94WHJHank5ZDYxL2JsVG9GcWZ3RWgr?=
- =?utf-8?B?WkI1cDh3QmJPa2Z3ZEdVQTN2TFRvakp6d1FNK2tXcXNpWDc1OUkwckErdkpK?=
- =?utf-8?B?U3dTMnFSRHppU3g4L1VVclFFajQyRjFvTWZ3ekM3cllpMnlScDFSVENTdm9W?=
- =?utf-8?B?MEJIbjQ2K0lwc1VPQ0ZmRVVwVHo3c2FxL1I4QXExeURUbGRHRnB6SEs3NldP?=
- =?utf-8?B?OFVDM0JZZWtIVHFhMzl1a1NRTm5wUkRiRFpySFJUTDBNNk93SW1QRWJLZ0hl?=
- =?utf-8?B?UlhzckpreEN1TGVoV052WkgvQ3k5TkYzQ1d1Sk1Ja1Qvd3JTVXl1eVEvM2Zm?=
- =?utf-8?B?R3I3eEVkaS9mOTdpUFV5UDBWWWZvQ25wTUdkQkpOdnZTR1RkM3pOUGhYQzh2?=
- =?utf-8?B?Sk13UVE5UXl6aVY3NFRycjZLREV5cG5WRWI4alBWK0YxamU3a1FkKzVxRWlt?=
- =?utf-8?B?UnJERnhTUVBxbVgvanIvNjFaSGRjY0V3Vkp1cmFiZHFSZVFEeGMwWFZ5S1gx?=
- =?utf-8?B?eU94eWs2cTlYSkhsTHUvVVFWQ3h6c1FOYnlULzlya1NGYWhmUnllRC9OM1c1?=
- =?utf-8?B?eEJ6WnRQdTc1Vzk5UkRsRWRkQ0hKMDJkZDRFWHU0UWxTSmxvaVRZN25vTThT?=
- =?utf-8?B?Rjh5cnpQdEtXODVnT2VjeXRJRXY4SDl1QVB3VEFzUEVEMS9qQXpQWWhjQTNG?=
- =?utf-8?B?YjNRaXVLcVBqUkJmR3FJRXRsdlord013NmVvcENmZG81ZEQxcTVCRU5MK3lY?=
- =?utf-8?B?ZnM5eGtUU2tJamRFU255aDJIaFZCUHZTNHFjc0JBMFMrc3FXWUx0bzFSY0lY?=
- =?utf-8?B?VUF2OTRCanVFcTlWd3JjTzdQUFliQUQzRzQwT1Fmblh6eS9OSWd1ajlwSWRS?=
- =?utf-8?B?aGtmSzVhais0bFA3aXF6cG9MRUhqU1d6dWF4RXdCa3cxSUlqWUJiQT09?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a7ea022-642e-42f2-45c5-08de8441470d
-X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2026 16:21:43.4368 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZLawgtaBMcvo55eSQ4m+T5LogYm9BC8UaMGb4QaJ3xzGxoDffUegZ215MJ8LHA3C/a4fIDaRPSiV2CygI63vTw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7335
-Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
- envelope-from=nathanc@nvidia.com;
- helo=PH8PR06CU001.outbound.protection.outlook.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x1229.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,35 +99,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Add a shared emulation library for AArch64 load/store instructions that
+cause ISV=0 data aborts under hardware virtualization, and wire it into
+HVF (macOS) and WHPX (Windows).
 
-On 3/16/2026 3:05 AM, Peter Maydell wrote:
-> On Mon, 16 Mar 2026 at 08:08, Eric Auger<eric.auger@redhat.com> wrote:
->> Hi Nathan,
->>
->> On 3/12/26 10:03 PM, Nathan Chen wrote:
->>> Hi,
->> If we want this to be taken in qemu 11.0 you need to clearly indicate
->> that in the series title:
->> using a subject prefix like "PATCH for-11.0"
->>
->> Then you need to clearly justify what those patches are fixes for stuff
->> introduced in qemu 11.0, something like:
->>
->> In qemu 11 we introduced new options for vSMMU but feedbacks received
->> when starting the integration of layered products shows the need for
->> auto/host retrieved values. To avoid breaking JSON/QMP compat, we want
->> to fix the option types so that they can later support the auto mode. At
->> the moment the auto mode is not supported though.
-> Yes. At the moment this is on my "look at it for 11.1" pile.
-> If you want it in 11.0 then it must very clearly state the
-> justfication (i.e. why it is not new feature work) and be
-> as small as possible to achieve its aim.
+When the Instruction Syndrome Valid bit is clear, the hypervisor cannot
+determine the faulting instruction's target register or access size from
+the syndrome alone.  This previously hit an assert(isv) and killed the
+VM.  The library fetches and decodes the faulting instruction using a
+decodetree-generated decoder, then emulates it directly against the vCPU
+register file and memory.
 
-I see, I will send out another revision today with the correct prefix 
-and justification for belonging in 11.0. I will keep these guidelines in 
-mind for the future.
+The library uses its own a64-ldst.decode rather than sharing
+target/arm/tcg/a64.decode — TCG's trans_* functions emit IR into a
+translation block, while this library's execute directly.  Decode
+patterns are kept consistent with TCG's where possible; differences
+are noted in the relevant commit messages.
 
-Thanks,
-Nathan
+Changes since v4:
+  - Rebased onto current master
+  - Add SPDX license identifier to new meson.build
+  - Resent as new top-level thread (Alex Bennée)
+
+Changes since v3:
+  - Document decodetree pattern differences from TCG in commit
+    messages for patches 1/6 and 5/6.
+
+Changes since v2:
+  - Inject synchronous external abort (matching kvm_inject_arm_sea()
+    syndrome) on unhandled instruction or memory error, instead of
+    silently advancing PC or returning an error.
+  - Fix WHPX advance_pc bug: error paths no longer advance PC.
+  - Add page-crossing guard in mem_read/mem_write to prevent partial
+    side effects from cpu_memory_rw_debug().
+
+Changes since v1:
+  - Split monolithic patch into 6 incremental patches: framework, then
+    one patch per coherent instruction group (Peter)
+  - Removed per-backend callback ops; library uses CPUArchState directly
+    with cpu_memory_rw_debug() for memory access (Mohamed)
+  - Removed mock unit tests (Mohamed; kvm-unit-tests is the right
+    vehicle for decoder validation)
+  - Added architectural justification for separate decode file
+
+Lucas Amaral (6):
+  target/arm/emulate: add ISV=0 emulation library with load/store
+    immediate
+  target/arm/emulate: add load/store register offset
+  target/arm/emulate: add load/store pair
+  target/arm/emulate: add load/store exclusive
+  target/arm/emulate: add atomic, compare-and-swap, and PAC load
+  target/arm/hvf,whpx: wire ISV=0 emulation for data aborts
+
+ target/arm/emulate/a64-ldst.decode | 293 +++++++++++
+ target/arm/emulate/arm_emulate.c   | 758 +++++++++++++++++++++++++++++
+ target/arm/emulate/arm_emulate.h   |  30 ++
+ target/arm/emulate/meson.build     |   8 +
+ target/arm/hvf/hvf.c               |  46 +-
+ target/arm/meson.build             |   1 +
+ target/arm/whpx/whpx-all.c         |  61 ++-
+ 7 files changed, 1193 insertions(+), 4 deletions(-)
+ create mode 100644 target/arm/emulate/a64-ldst.decode
+ create mode 100644 target/arm/emulate/arm_emulate.c
+ create mode 100644 target/arm/emulate/arm_emulate.h
+ create mode 100644 target/arm/emulate/meson.build
+
+-- 
+2.52.0
+
 

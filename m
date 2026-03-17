@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 899FFF3381E
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 08:59:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1EDCF33826
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 09:31:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2QGO-0007cL-Qv; Tue, 17 Mar 2026 04:58:58 -0400
+	id 1w2Qlg-0004Hj-P3; Tue, 17 Mar 2026 05:31:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QGF-0006hb-BW
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:58:47 -0400
-Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2Qlf-0004GG-13
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 05:31:15 -0400
+Received: from 6.mo533.mail-out.ovh.net ([54.36.140.181])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QGB-00080y-IG
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:58:46 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fZm8b2ct2z64gm;
- Tue, 17 Mar 2026 08:58:39 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 17 Mar 2026 08:58:39 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.205])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4fZm8Z6w8Sz1y4M; Tue, 17 Mar 2026 08:58:38 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2Qlc-0007bD-9G
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 05:31:14 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fZmt52nVTz64cl;
+ Tue, 17 Mar 2026 09:31:09 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 17 Mar 2026 09:31:09 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.160])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4fZmt51JNcz1xsZ; Tue, 17 Mar 2026 09:31:09 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id CD2341B43925;
- Tue, 17 Mar 2026 08:58:37 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A1B371B43922;
+ Tue, 17 Mar 2026 09:31:07 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0029bf3a782-2855-4cc1-b452-b7c29ff01ba8,
+ (GARM-110S00458bc19fd-0850-4d93-984c-ec23235a0a37,
  4AC1E9A3EE45423C0527B61D87123FAFA3CB088F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a99787fe-5171-436c-808c-b69c8520c720@kaod.org>
-Date: Tue, 17 Mar 2026 09:58:37 +0100
+Message-ID: <aa66c11a-7595-4155-a94e-44368e593a1b@kaod.org>
+Date: Tue, 17 Mar 2026 10:31:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/i2c/aspeed: fix lost interrupts on back-to-back
@@ -95,20 +95,20 @@ Autocrypt: addr=clg@kaod.org; keydata=
 In-Reply-To: <20260311023712.2730185-1-jithu.joseph@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 1711086385790626838
+x-ovh-tracer-id: 2259962592113830934
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFGSJ4XsvfnuAlYggMfIdrVL37Fq/jfK6AHLkczxrDaw0C2p/BuwZ2tyijwNj8MXbsk7kfsnfFDrD7oFDbos4XZMfX3pa0gVKQThBUO769xB/F8V1r1w4omnGjgi5BeXLq/Xp4bSIqYJDu15F59T4LgL0IVTLsvvmPTCjiTXFZgOAINE6Z9S8Up7oIxoR7O66xqXCeYh9bfwY3SshxbK9CqQuXZqUc6X4Rl60ugUAgxEjKrisTBgZIL4A6NRYapZFWeB1udPKxZp1mUSL53fUqyrzvv5qaT14aMSgEAlV6IHcs3iDtoryvn3m3Aa1A9zrnVE/ysEko+DVY5zbc3VPkniux693uwChUM6EB/T4bV9R7YkdVkxap/SRnZ7gHZeo75NEOX/zgdOf5M750Pyh6ijhhY5C4AJ/k/aOJFqz1PIX2cYC4hBYkqj4FpyedSCr8W0pTFmMjIXfLDsCnskuMG4v4HMig/chacoBnf9r8oeZyjTVSfjwh4vQoIt0xh3p6UGqF5eXAPJE59TIj83WzC+Bpxbm4GrClvjND8PUNDBfhSNz5GHNRbDUEFT290uxsqofoFXXHwXUa5dBcyMcpHUiyHOdEGFDv6Xc6xLPXpkBFJmGHHJ8duZYb0naGThcGURgntpYj//X+xcikm+pooFqknXT7KbBKZLNR4dy9Cjg
-DKIM-Signature: a=rsa-sha256; bh=n7cyRUD/QPGL/V5KMfPhe3fq6ngXd+yi15teWViehQg=; 
+X-VR-SPAMCAUSE: dmFkZTEzBMi5H3lunFtC+DY6Bmf8y+4WK/Euuea+ACxtFQcOwxgTLJyIAncf3J6xI25DOhux+VXILLvpcA5Dw3H9G1iok7ZUSXomiLD4FCw9uF6R8ltik96AYO8o7ICji96iSkatE8HJkYnCkkrzHSrxkg2wcVOTTVlNif6Uq9+b1ehWYoT3U2ovgo9vQaQpufQhsLuJbhXRN18E9em0JPWquNipaNfmsi9nqSMRSpNeZjWKY4MijjRcrIPiUJ4ZGahmiAwaRXF61P4Q1rTY7htu9zu3BeEEiVOE/+sXdCm6DiGKnN6/PXcXU1TxFaBDdyzpIgVW0vCp6WwDJZ5F6Miu30FjMkd0tVMCJSPmB+jLlRuOXwC7Ixek+5nArfWbVkVNY5Lrl18v7wbvMPiJHFqbxHx5aiIbkWVPvO/UAL+kGv1KHAmkLTlaoXsw4GGmKBEf17smi7jd2jZ+9PD530D3fqRSa/j3rzfhc/TdD0MqLMx1jtNJmbJ08Jdw8i6xq2o0jAWWrkSwlbSR3/nIBJNtOVTEPDG1sNEEOb0gYp4cYe6AQWpGoouJV3GclFt4KRpEr0vaQYiIta1sMvY025AAWtRneCuGrVkx9eRl2wV47Fmr9U0scBEJwp7PHFH3xg0XcN/VFDzV5yCnBOx9kxR4JSS6J/FJ586DJpFm/rc94iWfEA
+DKIM-Signature: a=rsa-sha256; bh=HtwDKE9YETmbtUEz0h7rybsHzgWTqaiBHdJL6L74dLA=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1773737920; v=1;
- b=H3viSaxMqZcJJ10DXP/IWaW5AlWj6myXoPpog91gKYwRqIdtRq9Jni3/KmCZbYTwlPEfhIFv
- IIg5j7SFYLjVHQ9/eTvAWGYsnfLQ/YVGzPMhXU1IdW2HwbvpOFhs/S4wFnmvjYifuPG40xteG8I
- odYdHRgxxKVAJLsAimSyX/dCArdtwEDbuyIU+A5s10JBapM/OalsYGFIQcIIreYgu4jHoYvsWVN
- MDqrSo8pLLepSfoBfzzTP5v+xhWD4N5a9qHA2pYzxNlMJzvyIfxx59yvDtt24N1SG8Jcindt3e5
- 3Mg+pjHEyq5uBccbbieFbIdMbOXoQ2S1QzMCizfdTIRaw==
-Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
- helo=10.mo533.mail-out.ovh.net
+ t=1773739870; v=1;
+ b=MHidOQvw7RcRKtLDBenVFrOXYl3MCrPBKDW05umQOtsG9th2dXQp8IvesJblFlbSxWo8bYeq
+ V9AAVJcF+owiBsLOz7oQTELMNYwUYfsKPdtXY+Tb3tA4EK0rAjc4QPiTcgPL99Vs/jF1ScHCMAX
+ niflypd4s3tVj0udiX997eiBzWqzLNUuMzOFGGMHLeJWd1gUVebwEfy5+p/Jl96waqGOwapif0W
+ Ifl7/A1OhYNVHLGD6d1L68lBAZo8G3WKR5JiYSy/V9J1V+9/dubq9oIc9/KgiqVQauuGplINrYx
+ 87GrvfqjNSkVzkscUX4+zrFOJAmHc4ySeD4/6hbGalMFQ==
+Received-SPF: pass client-ip=54.36.140.181; envelope-from=clg@kaod.org;
+ helo=6.mo533.mail-out.ovh.net
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
@@ -194,17 +194,6 @@ On 3/11/26 03:37, Jithu Joseph wrote:
 > [1] https://lore.kernel.org/all/20231211102217.2436294-3-quan@os.amperecomputing.com/
 > 
 > Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-
-Fixes: 1602001195dc ("i2c: add aspeed i2c controller")
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-
 > ---
 > Background: A Linux kernel patch series by Quan Nguyen (Ampere) reworked
 > the i2c-aspeed driver's interrupt handling to delay the W1C clear of
@@ -338,5 +327,11 @@ C.
 >           aspeed_i2c_bus_raise_interrupt(bus);
 >           break;
 >       case A_I2CD_DMA_ADDR:
+
+Applied to aspeed-next.
+
+Thanks,
+
+C.
 
 

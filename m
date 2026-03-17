@@ -4,78 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30ED8FED9F6
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:51:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BD7FED9F6
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:52:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2YXl-0004kB-Nz; Tue, 17 Mar 2026 13:49:25 -0400
+	id 1w2YX6-0003Ui-85; Tue, 17 Mar 2026 13:48:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXj-0004d3-Ly
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:23 -0400
-Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
+ id 1w2YWZ-0003Nb-07
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:18 -0400
+Received: from mail-dl1-x122e.google.com ([2607:f8b0:4864:20::122e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXi-000786-3B
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:23 -0400
-Received: by mail-dl1-x122d.google.com with SMTP id
- a92af1059eb24-128d7db88b9so7296639c88.0
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:21 -0700 (PDT)
+ id 1w2YWV-0006zN-MS
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:09 -0400
+Received: by mail-dl1-x122e.google.com with SMTP id
+ a92af1059eb24-127380532eeso802686c88.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:48:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773769761; x=1774374561; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=CVb13IlLEU7TKn2JosjxQ7mvXY+2jkay+xSWdWBH5Zk=;
- b=CD5syXUmjgfY3nZw627NU+SfoYPFDi0sZQ34rioV5HYU6dBBVdwLIiKtpn59uup5YB
- wewmGa3cXeJ/tvBT9cxzSx7RBT0Vt/JDZ7Wkk2ICfQQUVvtrKhaRuK0fKTh+aA1ESmSa
- 5m8NLKe5l3fGa9hJrdImXRYPSKndnfwljS+aSch+WJHytRpSn2Cfi8TiJgw3G7YL705C
- G/h8ZS28ga4dZInbRMoht4bVneGJNej3f7FWA4rkGqbGQhjytxalhUZrAc04AATkbC5n
- y3z0PuROMBY4qZHEJr41vrmg7VAaXXUjG2DU19weVtLHUKWj3451MXJFzfuHdVm/OC+q
- f+8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773769761; x=1774374561;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1773769686; x=1774374486; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CVb13IlLEU7TKn2JosjxQ7mvXY+2jkay+xSWdWBH5Zk=;
- b=DrbuTu1j2MjVbMvH9zOnBQsCSfYLxRN3LC55uaSJ4uaTdNpVgAbxAxyHY5h2TWK33J
- B+I2M7/om2sVoBg7/TfMH2K1CnOMwVqLQOnU3S8RpAYkqthg/iO7L+GvJsx4vmZ5jQOi
- bCAK9VyphiAyiYNXQVMd5SceohYv1dtjia9MxcDd6J0vhTDwzyZY5FmGVjcpujIcLL77
- iutij8Ugz1eV5Wy4/02rUdW+QmQbkmkzHxcsInSnqnIu/3YA0TYUtYrvt5fAiLMnfH9e
- BjEgf16D92bLQZZku7Zr0++QdcclLrJqilefxHnrnFMQXjnLQklwqbYZJw74arGKbuZk
- 1AFw==
-X-Gm-Message-State: AOJu0Ywd2lrosDQyMYSNbSLcpnhi2fudfywfC3CoSMhFNmtTjE9Z365Z
- o6m37jnnNYYQoeXY7mIEsN7QA4EX7QIG7XmSEYAed9PkFy77gbplezdBoRupD6SQ
-X-Gm-Gg: ATEYQzyHgVlVgXN/orxYV7bhc7LAkx1Y9g7giWXbkIaPWABwE38Uf5Fj0U4luxbndnW
- AE4WYDdCPqIn6l8t1FEzocV33CG9qOPrBPciR8uMZC0l9xLawdefdzHbFTIxLDFPjG2OYU1NS7C
- ICE25AoNs1zK5/9m1zH6S6+tBZV1yWp6Fl/tb+iLS7zm8NsHz6SaXGx3glummhe3wyUKsajgodM
- IsNLv9gI9we0d9XjNmasBP4gf4WED4iIUzg90Ug0Q5jxvJ2P8E8kUOZ18y+vBbsOyz+Dg376ug2
- aHs62iCD/1e3xD+NptHvocq2cZbDKvQymV3WOB4/pxYZApPmyRjZsafwr88yvHUAHpeC9trZPbJ
- +yg8qG6whzuJmCEMORzubdKTCa6jcFSi8veOG3ahhOZyxMrA51uQMwjcbP7PSwhpqw/Yqktc2Qc
- zWMhD4kD9gUvgy9HtoC5U+8CnSjyr+qY7cqq821OF2eS9w2Pb+6RSDz8z758R0fgs=
-X-Received: by 2002:a05:7301:168f:b0:2be:aa:9a4a with SMTP id
- 5a478bee46e88-2c0e4e5c708mr167357eec.0.1773769760576; 
- Tue, 17 Mar 2026 10:49:20 -0700 (PDT)
+ bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
+ b=gy5vc7i+dX01o5EmThHVeMQ0foW3M9hb8vZf6KPkNHm0oJU7Xjtqn6Jf3nnHacdqqT
+ zcDzoVte/RSBRHppxgeIAQN8LMHwXYC9i7jkwAUiVC2huxSr24RUpRPkr55xsKTwcT5d
+ 6vYFMOLrrr9VzTn38mi7+lTsMtKY4VAGBVvo1lFEUWMbdDldCz90UiikjkpF9jky8N4r
+ 6GN1UwBTtFppIeaRXiydLZ8FWNBpsTG5FG0e8Fr/STNBxBI+5bf+pV7q/3rsC1vrLzoM
+ odUPIyIFeCUkqpJ5d8hUEqnKnm9vrL7NVf60ALT6xITQuvi0l3PpoBkHv/9wWg6MjaAQ
+ HfYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773769686; x=1774374486;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
+ b=PSay6YNIF3FaxItbyLKGS16URMxj6PNUQS3SHbnXF95jVAJE+4h5HSAuJc4uILD92g
+ 9OuTFD+CsDzjNLUNx5VFjRqBCKDDOQt8FRHpLYdV5+ywSZajsNvA5g1DoNtkp7HJ1fUY
+ MH2ZGm1ZamIAWd3xJu+9+c683xyIK8agQ1W5g4Wwir9ZDxh6/ypZ5OqSn0MFzgRdee/m
+ JVydpzEcshvLUojuo0/b+O1jPYMU1aiZcpKFPda9ab4PhLb9gg5AI+d72GX3ff2/67ni
+ HZwyZmpuZ7q3f7hUSJhJlaNyR/pLlP4sh9zJ/HAYK7vabzCu5K1I7Uqqxl4c9UZrWase
+ ueWw==
+X-Gm-Message-State: AOJu0YxIZ1C6BbpbhUM0WOktFta/oMQ7Divrz157nynx573R9rHfeGJP
+ 8Ut5MErDRwlCvxRG+meQ5MBTJteQRlcJ7PF1WHL0dwsoXuEfxi4Xtxg1
+X-Gm-Gg: ATEYQzz31ueCdBcA+14UKl1qkUkQgQ1DqyIkt9IM240e/BotlDZmNGitF2MvoW010PM
+ uzaHgpfzZey1whN6gFpMVMrcrMBlXa/kVgCxXtnjnayMrPwDaEOuPFXuBt9F0VWJfnK221ia32r
+ UaA2sIpAhxhnBcAEQBrkyjQS5pAbRNv991QIff2keeh4aHpJNmfzIwC9Aq84DTQw1Z8cd+HD9IJ
+ 8wdYtHOYqFcbJESau13Q5SQ3D0FEkswdAvdWkI5fqJg64wWzrtUPk78Pr0kQCafcKvrI2H/pZYk
+ 3iyFQ9ZvjNMqUAcvqcBq21SJabMMzoHxnryWEmfFCZViKcQqEBrVrRgrchTDw83QugIHleV1TpK
+ 6/PSaxDPQ/kAybkW7Xx5Ncoo5/MrqX8Bizcb0CldSL58IH12cTXDFWfn2rt/BOs/gCwcViiagOl
+ 0tr8zFonFvz6+gW50s8pIz/TxuSEyWN7d0b8jAuONN6MKKp0EV4y9J
+X-Received: by 2002:a05:7022:6085:b0:128:d202:883 with SMTP id
+ a92af1059eb24-1299ba11ebdmr242073c88.3.1773769685544; 
+ Tue, 17 Mar 2026 10:48:05 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.51])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c0e536896csm282115eec.3.2026.03.17.10.49.18
+ a92af1059eb24-129b4147522sm281844c88.15.2026.03.17.10.47.55
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Mar 2026 10:49:20 -0700 (PDT)
+ Tue, 17 Mar 2026 10:48:05 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
- marcandre.lureau@redhat.com, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 0/4] virtio-gpu: enable Venus/Vulkan without OpenGL display
-Date: Tue, 17 Mar 2026 14:49:11 -0300
-Message-ID: <20260317174915.31829-1-lucaaamaral@gmail.com>
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ mohamed@unpredictable.fr, alex.bennee@linaro.org,
+ Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v5 2/6] target/arm/emulate: add load/store register offset
+Date: Tue, 17 Mar 2026 14:47:36 -0300
+Message-ID: <20260317174740.31674-3-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260317174740.31674-1-lucaaamaral@gmail.com>
+References: <20260317174740.31674-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122e;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,42 +102,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Decouple Venus from CONFIG_OPENGL so it works on hosts with no GL
-display (e.g. macOS with MoltenVK). 2D display commands fall back to
-pixman; 3D/Vulkan goes through the render server as usual.
+Add emulation for load/store register offset addressing mode
+(DDI 0487 C3.3.9).  The offset register value is extended via
+UXTB/UXTH/UXTW/UXTX/SXTB/SXTH/SXTW/SXTX and optionally
+shifted by the element size.
 
-v3 -> v4:
-  - Rebased onto current master (conflict resolved in virtio-gpu.c
-    with new upstream drm feature check)
-  - Split Linux header changes into dedicated patch (checkpatch)
-  - Fix line-over-80 warnings
-  - Resent as new top-level thread (Alex Bennée)
+Instruction coverage:
+  - STR/LDR (GPR): register offset with extend, all sizes
+  - STR/LDR (SIMD/FP): register offset with extend, 8-128 bit
+  - PRFM register offset: NOP
 
-v2 -> v3:
-  - Rebased onto current master
-  - Fixed line-over-80 warnings
+Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+---
+ target/arm/emulate/a64-ldst.decode |  29 ++++++++
+ target/arm/emulate/arm_emulate.c   | 103 +++++++++++++++++++++++++++++
+ 2 files changed, 132 insertions(+)
 
-v1 -> v2:
-  - Remove hvf_get_map_granule() safety check (moved to hvf-map-granule)
-  - Extract GRAPHIC_FLAGS_VK into its own patch
-  - Fold standard-headers addition into blob_alignment patch
-
-Lucas Amaral (4):
-  ui: introduce GRAPHIC_FLAGS_VK for Vulkan scanout
-  virtio-gpu: decouple Venus from CONFIG_OPENGL
-  virtio-gpu: add VIRTIO_GPU_F_BLOB_ALIGNMENT header definitions
-  virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
-
- hw/display/meson.build                      |  8 +-
- hw/display/virtio-gpu-base.c                | 15 +++-
- hw/display/virtio-gpu-gl.c                  |  6 +-
- hw/display/virtio-gpu-virgl.c               | 85 ++++++++++++++++++---
- hw/display/virtio-gpu.c                     |  8 ++
- include/standard-headers/linux/virtio_gpu.h |  6 ++
- include/ui/console.h                        |  2 +
- ui/console.c                                |  7 ++
- 8 files changed, 121 insertions(+), 16 deletions(-)
-
+diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
+index c887dcba..af6babe1 100644
+--- a/target/arm/emulate/a64-ldst.decode
++++ b/target/arm/emulate/a64-ldst.decode
+@@ -10,6 +10,9 @@
+ # 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
+ &ldst_imm       rt rn imm sz sign w p unpriv ext u
+ 
++# Load/store register offset
++&ldst           rm rn rt sign ext sz opt s
++
+ ### Format templates
+ 
+ # Load/store immediate (9-bit signed)
+@@ -21,6 +24,9 @@
+ # Load/store unsigned offset (12-bit, handler scales by << sz)
+ @ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
+ 
++# Load/store register offset
++@ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
++
+ ### Load/store register — unscaled immediate (LDUR/STUR)
+ 
+ # GPR
+@@ -122,6 +128,29 @@ STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=
+ LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
+ LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
+ 
++### Load/store register — register offset
++
++# GPR
++STR             sz:2 111 0 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++LDR             00 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=0
++LDR             01 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=1
++LDR             10 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=2
++LDR             11 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=3
++LDR             00 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=0
++LDR             01 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=1
++LDR             10 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=2
++LDR             00 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=0
++LDR             01 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=1
++
++# PRFM — register offset
++NOP             11 111 0 00 10 1 ----- -1- - 10 ----- -----
++
++# SIMD/FP
++STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
++LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
++LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
++
+ ### System instructions — DC cache maintenance
+ 
+ # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
+diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
+index 02fefc30..bf09e2a6 100644
+--- a/target/arm/emulate/arm_emulate.c
++++ b/target/arm/emulate/arm_emulate.c
+@@ -211,6 +211,109 @@ static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
+     return true;
+ }
+ 
++/* Register offset extension (DDI 0487 C6.2.131) */
++
++static uint64_t extend_reg(uint64_t val, int option, int shift)
++{
++    switch (option) {
++    case 0: /* UXTB */
++        val = (uint8_t)val;
++        break;
++    case 1: /* UXTH */
++        val = (uint16_t)val;
++        break;
++    case 2: /* UXTW */
++        val = (uint32_t)val;
++        break;
++    case 3: /* UXTX / LSL */
++        break;
++    case 4: /* SXTB */
++        val = (int64_t)(int8_t)val;
++        break;
++    case 5: /* SXTH */
++        val = (int64_t)(int16_t)val;
++        break;
++    case 6: /* SXTW */
++        val = (int64_t)(int32_t)val;
++        break;
++    case 7: /* SXTX */
++        break;
++    }
++    return val << shift;
++}
++
++/*
++ * Load/store single -- register offset (GPR)
++ * STR / LDR (DDI 0487 C3.3.9)
++ */
++
++static bool trans_STR(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++
++    uint64_t val = gpr_read(ctx, a->rt);
++    mem_write(ctx, va, &val, esize);
++    return true;
++}
++
++static bool trans_LDR(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint64_t val = 0;
++
++    if (mem_read(ctx, va, &val, esize) != 0) {
++        return true;
++    }
++
++    val = load_extend(val, a->sz, a->sign, a->ext);
++    gpr_write(ctx, a->rt, val);
++    return true;
++}
++
++/*
++ * Load/store single -- register offset (SIMD/FP)
++ * STR_v / LDR_v (DDI 0487 C3.3.10)
++ */
++
++static bool trans_STR_v(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint8_t buf[16];
++
++    fpreg_read(ctx, a->rt, buf, esize);
++    mem_write(ctx, va, buf, esize);
++    return true;
++}
++
++static bool trans_LDR_v(DisasContext *ctx, arg_ldst *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int shift = a->s ? a->sz : 0;
++    uint64_t rm_val = gpr_read(ctx, a->rm);
++    uint64_t offset = extend_reg(rm_val, a->opt, shift);
++    uint64_t va = base_read(ctx, a->rn) + offset;
++    uint8_t buf[16];
++
++    if (mem_read(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    fpreg_write(ctx, a->rt, buf, esize);
++    return true;
++}
++
+ /* PRFM, DC cache maintenance -- treated as NOP */
+ static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
+ {
 -- 
 2.52.0
 

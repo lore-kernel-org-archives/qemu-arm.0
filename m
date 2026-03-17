@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DEC1FED9F6
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:50:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02123FED9FE
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:50:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2YYk-0005rj-7C; Tue, 17 Mar 2026 13:50:27 -0400
+	id 1w2YXa-0003pz-7d; Tue, 17 Mar 2026 13:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXw-0004zx-0p
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:36 -0400
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+ id 1w2YXR-0003ds-SJ
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:07 -0400
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXu-0007A6-Jt
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:35 -0400
-Received: by mail-dy1-x1330.google.com with SMTP id
- 5a478bee46e88-2c0c1e03405so82872eec.0
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:34 -0700 (PDT)
+ id 1w2YXO-00075v-E5
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:04 -0400
+Received: by mail-dy1-x132b.google.com with SMTP id
+ 5a478bee46e88-2c0d36f3888so1897096eec.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773769773; x=1774374573; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773769740; x=1774374540; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5MzRVprj61Gyv11VqdvdVphNrBFaUcy37KCZX6QpUas=;
- b=i7B5wQ3KU2T3Y3YFx/bvTaVtG6kjTHYgprJHTquQuynMis0JeRf9Hxg2plSrBVP0Mk
- U4bKmUdron1GUHE2EQ0RZ0SG7zPLkV4YIcgZhvESv/9oyr2LYhldBQljHjF5MUR4xxOI
- 4nfXMRS9N75rpE+DqcpQaZg9KEfOzCskq5lSCIj5hkMBtg4BYiKss/cDBerXrhgYVNxM
- 1RKle0qgxo86AoMOkgNOphA0KX2mpM5MTVlwMHRihUk2Rtnjg0lZZ7sndTXA2jpHjvIY
- QHjV/4J5S8VHfWvgMpzCkOl6hMFC6F0ERugjiE8ELjD8+VzlYmEPeGEB93VYeN20LnU5
- yOwA==
+ bh=hUSbLOobWbo0z0ehlzPpMYjcHrg09tA0492KwnfG5oI=;
+ b=GQI6GNbLMrFKDfjxUD1Ph94a1PfNT6fn7m9K6bgtz+BzO0fMGLbuSWw2+3VWWF9gqX
+ aMJxxG9pRRd4rJPSc8jvYt7bSX6IegliJAsR4id/4M0azQMZNpVx1R8iLG5Hm4Rcg58M
+ 5tL2mgz8pgDe2VcbOPAOm+Xk8HrTvxNE/eMBZecPjauzpbZJVm7S5k2wJnedAKavVIrr
+ nbcph28qqZloZ646G5cNXj6XDOCjSpHqGJAhBWzV1zHj9dHTVITCfQriUeyPdOFCQJ/N
+ P0OwFaJPGzxKhHPVvrB3kp9xG08dylmPxxHDnRDrBPqNiuplWDVbcbZf5X8HJt5WXxcq
+ 24Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773769773; x=1774374573;
+ d=1e100.net; s=20251104; t=1773769740; x=1774374540;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=5MzRVprj61Gyv11VqdvdVphNrBFaUcy37KCZX6QpUas=;
- b=ZzSJEAK8VTLtMO9GGJkwy5ydTn8PArbEeZJ+jXLXMMiTTu43+FQYLLPl2FqI+rm6Y2
- QMbfA0N4cQfT3kWe9jZ17ddFD0FgavfDUEW2gavwSzvavroyubZKE1V5vo997OPdXqIV
- aBAlz+EOxRR2Oxj0QytKUVlSliVwH8afSHYAMaiTt2O4yNd1AGFj/W4NE0EtKXexBkHK
- Lqv0iM20VvniJGuAs31c1kepWnQNFWUdsUhk//ubziET3kfziGGzU0xhnxWMeskrkXW3
- MQDg5Vnni8Hl4Q+PhFp5W2UV8An9BKv6M2ZMoItRhg5Rathjq6CcsRHXdegEQa5gDMRj
- IyHQ==
-X-Gm-Message-State: AOJu0YyPT2UgoJVerXl+HT3Q4jLZTGkSj5FLEnb0bD0PWsO+Y1QjIIX7
- gaBcqR2cDfen1a/t5phBNsVKl9c2j2KNo3qlw6ehppybuAoHo5DXOfSY
-X-Gm-Gg: ATEYQzxhkVrSAMoRCWhyQV3ICr3jG9VeVC3w2spOeJn3HPsdPbt9hCTAGZ+uLyZOObL
- iz17JlR9v4J7drxhdzN/ULh7dZdcRTAPYclYRUxYJFoRWfWQURNotVe4dpChama66tVpp4jpm1D
- X18stsRL8awVQu4dV/e8IImRRlNBVfGJt63flCfsxsVsiQuBJBTSRyExo1083taZOtXNfoGQinl
- 7H6X+CU1IENWZ1r8xBr/aHEfwZNoAwDIonzSudr9FRdZdpSZS3utgK4vhwi7Q8GfZR8SMETuk1g
- AJ5dKaT4IXo7TqRXbiHS2NEbqPfo8yy/MfatYuzASP2llDNgd6GIw9ZGmoerxx4vAIPtdZyn8w5
- K9HMeE2+FmQasHXQcnkKKuewST57KCNAjBefa0L57IJK8tuy3iZ/z02sD9oesh7potR9TNY6S6T
- hd8N393ubbtyGovcg4ic6xkgqnu2VIkV6HOa3k64pAzYc6XCfjwUQt
-X-Received: by 2002:a05:7300:7fa8:b0:2c0:ca48:3107 with SMTP id
- 5a478bee46e88-2c0d5248965mr1601952eec.15.1773769773222; 
- Tue, 17 Mar 2026 10:49:33 -0700 (PDT)
+ bh=hUSbLOobWbo0z0ehlzPpMYjcHrg09tA0492KwnfG5oI=;
+ b=XdjstKpBZn4aY/JusdgO9WTVj9A27JM/LNUzYUNPEnDvyBXQ/uhClpzpU18n9oO/Q/
+ 0avSnsFNmL+0wn9v/naEEIwoSYrmJ71Dkh5ObBYiJ53KPgeSQvxOQZgHlgVK99k/bnWi
+ LUpwdyVShrZB3Sq1jQzQV2uTJ6fEeVeZe+qPYo51I0SBUHr7HyPoVSHEnQAneL2Lj8D+
+ RTIOb5utxMS5w4/CVWzwTv4ytq7Iegyuh6p+wZ1+BjJcbI0r92gyf2RkaVzFDd2Kik+o
+ Y4+1KVMvL0bKygFf7iDYiJ6yFN52Vf/wicitWFo5vB4OZ9VMriiIXctsTiMPkOf3Lv6Q
+ 6PMg==
+X-Gm-Message-State: AOJu0YzU+5NZzNgDW6AiJhjbWrRiNE8E9+RKk/VlBkOnXJGiQOeHzVmi
+ nli/2aBMpkb5o1I9XOCQelk8Nx4t4EBnEh8P9vtnlvHDTv5d+6+eJdk1
+X-Gm-Gg: ATEYQzwbuUv8AKqXvpGa7AJszoejhJI13qaeMtI2QLcYRklnTZgWI3AUe2XXJay36fc
+ RVaZ4ZEqXXA+Six94CEZciA1TRwzmwMu4i+82onAwOdVdYZ1IoTwVeijxZJYMCygalpF4kOR4EZ
+ iokYKc5Pgk8veZEMABWKzMAJ7OrMhSF2gBDAKkhSmSlNW2nuJ5eXjJUuxnqh8ctiqnYPqfI1Uby
+ QSXylD7QFndYBctM1cMJnsrjZoUxAl65yNV5VgNGymNNwv9dgVJpX9ojtDjy4GuDSFmAw7CSFxA
+ cNVKH817JnLRj8qj2fpiptlaL/ziKdBrRAzs5xZ46szSWFBlPuUCx4ZBDgjwNCWEyZoLeVFwiIb
+ yI4e8pQR+dEar9UttU5xXbHbnVKu+Qdr9yqSKTDAIxJLFjbxl6UHsKoPqbyJ2zdHIVnSK8Nb1nY
+ F0TrSyOLZIbSWqBR1N9XeW9DiTBLuTgn34ead+6pACVyDUK/hGQ1t2
+X-Received: by 2002:a05:693c:3011:b0:2c0:c55c:1574 with SMTP id
+ 5a478bee46e88-2c0e51930cbmr117430eec.21.1773769740308; 
+ Tue, 17 Mar 2026 10:49:00 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.51])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c0e536896csm282115eec.3.2026.03.17.10.49.30
+ 5a478bee46e88-2c0e5583533sm190487eec.18.2026.03.17.10.48.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Mar 2026 10:49:33 -0700 (PDT)
+ Tue, 17 Mar 2026 10:49:00 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
- marcandre.lureau@redhat.com, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 4/4] virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
-Date: Tue, 17 Mar 2026 14:49:15 -0300
-Message-ID: <20260317174915.31829-5-lucaaamaral@gmail.com>
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ mohamed@unpredictable.fr, Lucas Amaral <lucaaamaral@gmail.com>,
+ Lucas Amaral <lucas@lucasamaral.com>
+Subject: [PATCH v4 3/3] target/arm/hvf: configure IPA granule on macOS 26
+Date: Tue, 17 Mar 2026 14:48:45 -0300
+Message-ID: <20260317174845.31768-4-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317174915.31829-1-lucaaamaral@gmail.com>
-References: <20260317174915.31829-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260317174845.31768-1-lucaaamaral@gmail.com>
+References: <20260317174845.31768-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1330;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,37 +101,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set blob_alignment to the host page size so the guest kernel can
-align blob BAR offsets accordingly, avoiding alignment mismatches
-with the VMM's memory mapping API (e.g., hv_vm_map on macOS).
+Read the ipa-granule property (set by hvf_accel_init) and configure
+the HVF stage-2 translation granule via hv_vm_config_set_ipa_granule()
+on macOS 26+.  When ipa-granule=4k, use HV_IPA_GRANULE_4KB to allow
+HVF to map memory at 4KB granularity, matching 4KB-page guests on
+hosts with larger page sizes.
 
-Guest-side kernel support (drm_mm alignment) is pending upstream
-Linux merge.
+If macOS < 26 and a sub-host-page granule was requested, warn and
+fall back to the host page size.
 
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+Signed-off-by: Lucas Amaral <lucas@lucasamaral.com>
 ---
- hw/display/virtio-gpu.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ target/arm/hvf/hvf.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-index de7a86a7..44ae5034 100644
---- a/hw/display/virtio-gpu.c
-+++ b/hw/display/virtio-gpu.c
-@@ -1532,6 +1532,14 @@ void virtio_gpu_device_realize(DeviceState *qdev, Error **errp)
- #endif
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 1ba5bbf3..e3b1e3e1 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1269,6 +1269,38 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
      }
+     chosen_ipa_bit_size = pa_range;
  
 +    /*
-+     * TODO: guest-side F_BLOB_ALIGNMENT support pending upstream Linux merge
-+     * (Sergio Lopez's patches, Nov 2025). Until merged, the guest won't
-+     * negotiate this feature. The host advertises it per OASIS virtio spec.
++     * Configure IPA granule from the ipa-granule property.
++     * hvf_get_map_granule() was set by hvf_accel_init() before this call.
 +     */
-+    g->parent_obj.virtio_config.blob_alignment =
-+        cpu_to_le32(qemu_real_host_page_size());
++    {
++        uint64_t granule = hvf_get_map_granule();
++        bool granule_set = false;
 +
-     if (!virtio_gpu_base_device_realize(qdev,
-                                         virtio_gpu_handle_ctrl_cb,
-                                         virtio_gpu_handle_cursor_cb,
++#if defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && \
++    (__MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_26_0)
++        if (__builtin_available(macOS 26, *)) {
++            hv_ipa_granule_t hv_gran = (granule <= 4 * KiB)
++                ? HV_IPA_GRANULE_4KB : HV_IPA_GRANULE_16KB;
++            ret = hv_vm_config_set_ipa_granule(config, hv_gran);
++            if (ret != HV_SUCCESS) {
++                error_report("HVF: failed to set IPA granule: %s",
++                             hvf_return_string(ret));
++                goto cleanup;
++            }
++            granule_set = true;
++        }
++#endif
++
++        if (!granule_set && granule < qemu_real_host_page_size()) {
++            warn_report("HVF: ipa-granule=%zuKB requested but macOS < 26; "
++                        "falling back to host page size (%zuKB)",
++                        (size_t)(granule / KiB),
++                        (size_t)(qemu_real_host_page_size() / KiB));
++            hvf_set_map_granule(qemu_real_host_page_size());
++        }
++    }
++
+     ret = hv_vm_create(config);
+ 
+ cleanup:
 -- 
 2.52.0
 

@@ -4,83 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9582FED9F6
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF2F7FED9FE
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:50:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2YX1-0003Sb-2j; Tue, 17 Mar 2026 13:48:39 -0400
+	id 1w2YXo-0004mK-IV; Tue, 17 Mar 2026 13:49:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YWn-0003OQ-SM
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:26 -0400
-Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
+ id 1w2YXm-0004lZ-PS
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:26 -0400
+Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YWh-00070a-AJ
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:23 -0400
-Received: by mail-dl1-x1236.google.com with SMTP id
- a92af1059eb24-126ea4b77adso7369847c88.1
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:48:17 -0700 (PDT)
+ id 1w2YXl-00078b-93
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:26 -0400
+Received: by mail-dy1-x132c.google.com with SMTP id
+ 5a478bee46e88-2c0bcd8f194so4131812eec.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773769696; x=1774374496; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773769764; x=1774374564; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1mi5fHub76Brx7fYisPysAjGTUbFqaDrmY/Z5I6JcUc=;
- b=gOmi9kTF15pZVM3n93Msob56bca5J9fXCdwkYmACznNlIsgVy361pGYz/uysSxegeO
- 1KEUXGv3tuhA/CCrPlk6XNdNjsn+TXn/3qlKhCeJvJCQ16+ETJSCi4OtoHTNQdqP++hC
- j2Qm5SEpkD2jzai3sVELFBScRTPM6PGFORv09Odqjqz6Hz8obkm8CatHj5/MgoWya9pm
- zgwP/X2pKBB2YJiXmUiEqBucce69L9pnjWPVU/2acFmy4YNAN3PIYbRrqJWeq9wftBkx
- 5QdJqPoNJT88Ol7QTQ4w86NY8nrHoroG4IFEetJGvQMZLswgt5E08T2GTZiDK8lpZE2V
- Ghzg==
+ bh=530Uj1XxFv4n0VaFgxJ0F6ngR3XyAeVR0aKHfSOSPFg=;
+ b=A6gath4Kc9Ecd1NYiYwsYR87R3HJAxSWAUfn3LM6Pc10y2zR53oSaEr4JNWuEif24i
+ K5vYCGBftdKdfkigJxepznml37MhBolLdoSz65uqHAZUVx9iWLxkwAQsPiBq/Fuzp7g+
+ xlDImdeT+hkZpT/ECKT59zMLJkWxruc9gNYlPD7GoY+kl4bFJzuwpZEmTibiQp+Mrc0z
+ CRNhcK81e2Hhcoi9YewRyoCEvrQ5G8OWUDrsPBJYO3hG6c0wqoFSj9lbvb+tQgVk49pP
+ xfw8N4SgNeDItnC11eIZgGaczvzGwI7WthvFYBby3poV7dJFdrELmEGy0vcx4fYhFKye
+ ZKzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773769696; x=1774374496;
+ d=1e100.net; s=20251104; t=1773769764; x=1774374564;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1mi5fHub76Brx7fYisPysAjGTUbFqaDrmY/Z5I6JcUc=;
- b=Ie2RDsjw5LWMo1nUiqjkGuztgL4MVz8b38YMQ3sbV719waZSgreCbPvEWCZhd+mBC/
- wAY6VfSJHbhy3IWwVrUHxm/dcYbQlFxLSqDJyqtCFSAmvJj78uSu6P9CRFIhSiQLKWQt
- 4OPi2UHDopIZ60+ZjRQHT4P1h8u28D5ymn66WPucnwiq4SuBCcfox1CxTOejFfFqh2sA
- 4O+4X8JDYzUDnQcD1yZKaGp4+uvY62nuxYHh4A41D+2VhcY+8AwumoVeVwm4r8WxDoNd
- +/dyIGEnmFBp4YVlxqIAAsRZ9H52lWB5KtVPM/Z3DE7bTEcPk0CwwVrbyfW1h6escySg
- vUmQ==
-X-Gm-Message-State: AOJu0YwFqA9ZfoeZOM/e+p0TJShaH/MVxu0gJW9tqA2IjLPXPYlNdvrC
- FStdCn8jTA23AzckFBAyqFrXrmH7b/9j1ir4Kd4E3FNeCaOosJ4PgNo2yp/3oisR
-X-Gm-Gg: ATEYQzwWJaXpG4jynlNwyl2HCF5G+uY1Y5J4enk5RJVgaIanH3av1z7GSJcWxOVIjHL
- 8pES6JGG09b7CNzuLdvGEzPBwCYvIGyDjut++LPg/7pNUoHhwG+zaUtWuf6J6C8i1o8oBXgjRZO
- pmdGKQgBF1M0hCRjcgNWFhsfqM+gqEL2/mGv5SnMaXMqOsxCjkytokRKSewGoxGvsScGJ4fPTTR
- fSCZRO8QRW/wmh09ZH5GdGLFa6bc/X4DfPLw1xaDNe7OR9fayH25Bs56mEmWopLE3OS0iepB5wz
- 8DK0+xf9Alt+btKgiq45BUOSUhVcE/ub8TWEyYBBT22Oa9NrNJdZD7MHCXBYIXesvKx+El8s86y
- qwTfRDhGCfxWfKtXff2z2NKlmLDwHMyWezDBGnB/z07GEu7nqTjP/vPESp2gIFUoqrRRO8Iqa/1
- Cg59NWNihQWgNDj1YRW2slV+iMzgHL4sqLK7Lpu65kmdzCiz8bjdT8
-X-Received: by 2002:a05:7022:6993:b0:128:d202:87b with SMTP id
- a92af1059eb24-129a719e498mr179552c88.40.1773769695633; 
- Tue, 17 Mar 2026 10:48:15 -0700 (PDT)
+ bh=530Uj1XxFv4n0VaFgxJ0F6ngR3XyAeVR0aKHfSOSPFg=;
+ b=aDw/XIMbQ4HUHMoywvNSv+m9EXovzymE7f5FCObgxAVpQEyRxyJtO+kEQfDpPrWRPy
+ CKdau/NTXA1xZBpOPUuBC9ikyvP0YZ+VZRuFkNCvhdhfrnf7mDMJ1wBvgalKZNRVgJw9
+ oNfpFId3mU0o5rGyI2d1CPwuDS+KEh1UnCR1d6n+fy6YyKGR+JlgBu6mT93aznVJGSGC
+ wZopvLZeFUgDl+ZfAbtF+F4bB3vqeUduTjm7Q8mt0e/Y01i76jiM7ufOIQb0W1eMCqWg
+ +RL+QDse9svjljZ9gE6o28zs1amW52mVTNzWbCYRoSPUpqeRFMKKVRPvoFxSPSGlUxCL
+ XNRg==
+X-Gm-Message-State: AOJu0Yw7EBGDE7xgTM9eSB7h131ClqKy6+YDprK3JBUtIbtyMS9I0KqX
+ Zvr6mhOXY6b92laCGk1QyC2Y252SHO+ieUvfDEw7xi9fltJvBpg5yYWw
+X-Gm-Gg: ATEYQzwSyo9Ht65u4YflPX67s1fkwbV96tRETbeg0s0oiZoR+Dyd8SBABE6oRrPRVyS
+ J1fbYHKqGddIAwNy26m8F4R6QxUeRvEwYx/IM3C6LAGMyBEVIO2Zr5t7ZapJ2Pw/AbQBOJLUhFx
+ aHCh+SZlenHM/xBCPdIJW/smFEZebUj1Nt5UfVAMeRuU3kYI8w4f8YEHiXvgJbJRQCVpZLslURF
+ NxrVQRXdMgpkSWWG2ipHrQBb8TXygD3VpvjTBV69ZJky5IZDVpvqYnJgtbGaAOSxQtlZejKT7Oi
+ 0fnXY28y3UHJi/4PR8rTOFaomD6iELlha7tPHS+X9vkl/hkHScyevUHCdyiJSlwmoHJL/d+3JtF
+ UgijxRJfMD0jvPYDQ3I6cE/DQBzCsqbzH/Pn7dT5tQQ7FVt8g67FvxykvsNDZ8hUP8V79AJaIML
+ qf5iF/kn7IObPCk+l1dYA/gNQN8s7GIqgRXVjNDgBPxBdKeRFiNoibZs44vLTXYy0=
+X-Received: by 2002:a05:7301:168b:b0:2be:ca4:e13f with SMTP id
+ 5a478bee46e88-2c0e5085f7fmr121739eec.23.1773769763843; 
+ Tue, 17 Mar 2026 10:49:23 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.51])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-129b4147522sm281844c88.15.2026.03.17.10.48.12
+ 5a478bee46e88-2c0e536896csm282115eec.3.2026.03.17.10.49.21
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Mar 2026 10:48:15 -0700 (PDT)
+ Tue, 17 Mar 2026 10:49:23 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- mohamed@unpredictable.fr, alex.bennee@linaro.org,
- Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v5 5/6] target/arm/emulate: add atomic, compare-and-swap,
- and PAC load
-Date: Tue, 17 Mar 2026 14:47:39 -0300
-Message-ID: <20260317174740.31674-6-lucaaamaral@gmail.com>
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
+ marcandre.lureau@redhat.com, Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v4 1/4] ui: introduce GRAPHIC_FLAGS_VK for Vulkan scanout
+Date: Tue, 17 Mar 2026 14:49:12 -0300
+Message-ID: <20260317174915.31829-2-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317174740.31674-1-lucaaamaral@gmail.com>
-References: <20260317174740.31674-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260317174915.31829-1-lucaaamaral@gmail.com>
+References: <20260317174915.31829-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1236;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x1236.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132c;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,359 +100,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add emulation for remaining ISV=0 load/store instruction classes.
+Define GRAPHIC_FLAGS_VK (bit 2) in the console flags for future
+Vulkan scanout support.  The compatibility check currently returns
+an error indicating the feature is not yet implemented.
 
-Atomic memory operations (DDI 0487 C3.3.2):
-  - LDADD, LDCLR, LDEOR, LDSET: arithmetic/logic atomics
-  - LDSMAX, LDSMIN, LDUMAX, LDUMIN: signed/unsigned min/max
-  - SWP: atomic swap
-  Non-atomic read-modify-write, sufficient for MMIO where concurrent
-  access is not a concern.  Acquire/release semantics are ignored.
-
-Compare-and-swap (DDI 0487 C3.3.1):
-  - CAS/CASA/CASAL/CASL: single-register compare-and-swap
-  - CASP/CASPA/CASPAL/CASPL: register-pair compare-and-swap
-  CASP validates even register pairs; odd or r31 returns UNHANDLED.
-
-Load with PAC (DDI 0487 C6.2.121):
-  - LDRAA/LDRAB: pointer-authenticated load, offset/pre-indexed
-  Pointer authentication is not emulated (equivalent to auth always
-  succeeding), which is correct for MMIO since PAC is a software
-  security mechanism, not a memory access semantic.
-
-Decodetree differences from TCG:
-  - %ldra_imm extracts the raw S:imm9 field; the handler scales by
-    << 3.  TCG applies !function=times_8 in the formatter.
-  - @ldra uses wildcards for fixed opcode bits that TCG locks down
-    (bits 31:30, bit 20, bit 11); the fixed bits are matched by the
-    instruction pattern instead.
-  - @cas is an explicit format template; TCG uses inline field
-    extraction.
-
-CASP uses two explicit decode patterns for the 32/64-bit size
-variants.  LDRA's offset immediate is stored raw in the decode;
-the handler scales by << 3.
+This prepares the display framework for direct Vulkan scanout
+alongside the existing GL and DMABUF paths.
 
 Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- target/arm/emulate/a64-ldst.decode |  45 ++++++
- target/arm/emulate/arm_emulate.c   | 233 +++++++++++++++++++++++++++++
- 2 files changed, 278 insertions(+)
+ include/ui/console.h | 2 ++
+ ui/console.c         | 7 +++++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index fadf6fd2..9292bfdf 100644
---- a/target/arm/emulate/a64-ldst.decode
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -16,6 +16,16 @@
- # Load/store pair (GPR and SIMD/FP)
- &ldstpair       rt2 rt rn imm sz sign w p
+diff --git a/include/ui/console.h b/include/ui/console.h
+index 3677a9d3..19ac06e0 100644
+--- a/include/ui/console.h
++++ b/include/ui/console.h
+@@ -361,6 +361,8 @@ enum {
+     GRAPHIC_FLAGS_GL       = 1 << 0,
+     /* require a console/display with DMABUF import */
+     GRAPHIC_FLAGS_DMABUF   = 1 << 1,
++    /* TODO: require a console/display with Vulkan scanout */
++    GRAPHIC_FLAGS_VK       = 1 << 2,
+ };
  
-+# Atomic memory operations
-+&atomic         rs rn rt a r sz
-+
-+# Compare-and-swap
-+&cas            rs rn rt sz a r
-+
-+# Load with PAC (LDRAA/LDRAB, FEAT_PAuth)
-+%ldra_imm       22:s1 12:9
-+&ldra           rt rn imm m w
-+
- # Load/store register offset
- &ldst           rm rn rt sign ext sz opt s
+ typedef struct GraphicHwOps {
+diff --git a/ui/console.c b/ui/console.c
+index f445db11..424ee195 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -594,6 +594,13 @@ static bool console_compatible_with(QemuConsole *con,
+         return false;
+     }
  
-@@ -36,6 +46,15 @@
- # Load/store pair: imm7 is signed, scaled by element size in handler
- @ldstpair       .. ... . ... . imm:s7 rt2:5 rn:5 rt:5          &ldstpair
- 
-+# Atomics
-+@atomic         sz:2 ... . .. a:1 r:1 . rs:5 . ... .. rn:5 rt:5   &atomic
-+
-+# Compare-and-swap: sz extracted by pattern (CAS) or set constant (CASP)
-+@cas            .. ...... . a:1 . rs:5 r:1 ..... rn:5 rt:5        &cas
-+
-+# Load with PAC
-+@ldra           .. ... . .. m:1 . . ......... w:1 . rn:5 rt:5     &ldra imm=%ldra_imm
-+
- # Load/store register offset
- @ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
- 
-@@ -241,6 +260,32 @@ STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=
- LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
- LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
- 
-+### Compare-and-swap
-+
-+# CAS / CASA / CASAL / CASL
-+CAS             sz:2 001000 1 . 1 ..... . 11111 ..... .....     @cas
-+
-+# CASP / CASPA / CASPAL / CASPL (pair: Rt,Rt+1 and Rs,Rs+1)
-+CASP            00 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=2
-+CASP            01 001000 0 . 1 ..... . 11111 ..... .....       @cas sz=3
-+
-+### Atomic memory operations
-+
-+LDADD           .. 111 0 00 . . 1 ..... 0000 00 ..... .....    @atomic
-+LDCLR           .. 111 0 00 . . 1 ..... 0001 00 ..... .....    @atomic
-+LDEOR           .. 111 0 00 . . 1 ..... 0010 00 ..... .....    @atomic
-+LDSET           .. 111 0 00 . . 1 ..... 0011 00 ..... .....    @atomic
-+LDSMAX          .. 111 0 00 . . 1 ..... 0100 00 ..... .....    @atomic
-+LDSMIN          .. 111 0 00 . . 1 ..... 0101 00 ..... .....    @atomic
-+LDUMAX          .. 111 0 00 . . 1 ..... 0110 00 ..... .....    @atomic
-+LDUMIN          .. 111 0 00 . . 1 ..... 0111 00 ..... .....    @atomic
-+SWP             .. 111 0 00 . . 1 ..... 1000 00 ..... .....    @atomic
-+
-+### Load with PAC (FEAT_PAuth)
-+
-+# LDRAA (M=0) / LDRAB (M=1), offset (W=0) / pre-indexed (W=1)
-+LDRA            11 111 0 00 . . 1 ......... . 1 ..... .....  @ldra
-+
- ### System instructions — DC cache maintenance
- 
- # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index 52e41703..44a559ad 100644
---- a/target/arm/emulate/arm_emulate.c
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -499,6 +499,239 @@ static bool trans_LDXP(DisasContext *ctx, arg_stxr *a)
-     return true;
- }
- 
-+/*
-+ * Atomic memory operations (DDI 0487 C3.3.2)
-+ *
-+ * Non-atomic read-modify-write; sufficient for MMIO.
-+ * Acquire/release semantics ignored (sequentially consistent by design).
-+ */
-+
-+typedef uint64_t (*atomic_op_fn)(uint64_t old, uint64_t operand, int bits);
-+
-+static uint64_t atomic_add(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old + op;
-+}
-+
-+static uint64_t atomic_clr(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old & ~op;
-+}
-+
-+static uint64_t atomic_eor(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old ^ op;
-+}
-+
-+static uint64_t atomic_set(uint64_t old, uint64_t op, int bits)
-+{
-+    (void)bits;
-+    return old | op;
-+}
-+
-+static uint64_t atomic_smax(uint64_t old, uint64_t op, int bits)
-+{
-+    int64_t a = sign_extend(old, bits);
-+    int64_t b = sign_extend(op, bits);
-+    return (a >= b) ? old : op;
-+}
-+
-+static uint64_t atomic_smin(uint64_t old, uint64_t op, int bits)
-+{
-+    int64_t a = sign_extend(old, bits);
-+    int64_t b = sign_extend(op, bits);
-+    return (a <= b) ? old : op;
-+}
-+
-+static uint64_t atomic_umax(uint64_t old, uint64_t op, int bits)
-+{
-+    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
-+    return ((old & mask) >= (op & mask)) ? old : op;
-+}
-+
-+static uint64_t atomic_umin(uint64_t old, uint64_t op, int bits)
-+{
-+    uint64_t mask = (bits == 64) ? UINT64_MAX : (1ULL << bits) - 1;
-+    return ((old & mask) <= (op & mask)) ? old : op;
-+}
-+
-+static bool do_atomic(DisasContext *ctx, arg_atomic *a, atomic_op_fn fn)
-+{
-+    int esize = 1 << a->sz;
-+    int bits = 8 * esize;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t old = 0;
-+
-+    if (mem_read(ctx, va, &old, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t operand = gpr_read(ctx, a->rs);
-+    uint64_t result = fn(old, operand, bits);
-+
-+    if (mem_write(ctx, va, &result, esize) != 0) {
-+        return true;
-+    }
-+
-+    /* Rt receives the old value (before modification) */
-+    gpr_write(ctx, a->rt, old);
-+    return true;
-+}
-+
-+static bool trans_LDADD(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_add);
-+}
-+
-+static bool trans_LDCLR(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_clr);
-+}
-+
-+static bool trans_LDEOR(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_eor);
-+}
-+
-+static bool trans_LDSET(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_set);
-+}
-+
-+static bool trans_LDSMAX(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_smax);
-+}
-+
-+static bool trans_LDSMIN(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_smin);
-+}
-+
-+static bool trans_LDUMAX(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_umax);
-+}
-+
-+static bool trans_LDUMIN(DisasContext *ctx, arg_atomic *a)
-+{
-+    return do_atomic(ctx, a, atomic_umin);
-+}
-+
-+static bool trans_SWP(DisasContext *ctx, arg_atomic *a)
-+{
-+    int esize = 1 << a->sz;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t old = 0;
-+
-+    if (mem_read(ctx, va, &old, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t newval = gpr_read(ctx, a->rs);
-+    if (mem_write(ctx, va, &newval, esize) != 0) {
-+        return true;
-+    }
-+
-+    gpr_write(ctx, a->rt, old);
-+    return true;
-+}
-+
-+/* Compare-and-swap: CAS, CASP (DDI 0487 C3.3.1) */
-+
-+static bool trans_CAS(DisasContext *ctx, arg_cas *a)
-+{
-+    int esize = 1 << a->sz;
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint64_t current = 0;
-+
-+    if (mem_read(ctx, va, &current, esize) != 0) {
-+        return true;
-+    }
-+
-+    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
-+    uint64_t compare = gpr_read(ctx, a->rs) & mask;
-+
-+    if ((current & mask) == compare) {
-+        uint64_t newval = gpr_read(ctx, a->rt) & mask;
-+        if (mem_write(ctx, va, &newval, esize) != 0) {
-+            return true;
-+        }
-+    }
-+
-+    /* Rs receives the old memory value (whether or not swap occurred) */
-+    gpr_write(ctx, a->rs, current);
-+    return true;
-+}
-+
-+/* CASP: compare-and-swap pair (Rs,Rs+1 compared; Rt,Rt+1 stored) */
-+static bool trans_CASP(DisasContext *ctx, arg_cas *a)
-+{
-+    /* CASP requires even register pairs; odd or r31 is UNPREDICTABLE */
-+    if ((a->rs & 1) || a->rs >= 31 || (a->rt & 1) || a->rt >= 31) {
++    if (flags & GRAPHIC_FLAGS_VK) {
++        /* TODO: check for Vulkan scanout support in display backend */
++        error_setg(errp,
++                   "Vulkan scanout not yet implemented");
 +        return false;
 +    }
 +
-+    int esize = 1 << a->sz;                   /* per-register size */
-+    uint64_t va = base_read(ctx, a->rn);
-+    uint8_t buf[16];
-+    uint64_t cur1 = 0, cur2 = 0;
-+
-+    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
-+        return true;
-+    }
-+    memcpy(&cur1, buf, esize);
-+    memcpy(&cur2, buf + esize, esize);
-+
-+    uint64_t mask = (esize == 8) ? UINT64_MAX : (1ULL << (8 * esize)) - 1;
-+    uint64_t cmp1 = gpr_read(ctx, a->rs) & mask;
-+    uint64_t cmp2 = gpr_read(ctx, a->rs + 1) & mask;
-+
-+    if ((cur1 & mask) == cmp1 && (cur2 & mask) == cmp2) {
-+        uint64_t new1 = gpr_read(ctx, a->rt) & mask;
-+        uint64_t new2 = gpr_read(ctx, a->rt + 1) & mask;
-+        memcpy(buf, &new1, esize);
-+        memcpy(buf + esize, &new2, esize);
-+        if (mem_write(ctx, va, buf, 2 * esize) != 0) {
-+            return true;
-+        }
-+    }
-+
-+    gpr_write(ctx, a->rs, cur1);
-+    gpr_write(ctx, a->rs + 1, cur2);
-+    return true;
-+}
-+
-+/*
-+ * Load with PAC: LDRAA / LDRAB (FEAT_PAuth)
-+ * (DDI 0487 C6.2.121)
-+ *
-+ * Pointer authentication is not emulated -- the base register is used
-+ * directly (equivalent to auth always succeeding).
-+ */
-+
-+static bool trans_LDRA(DisasContext *ctx, arg_ldra *a)
-+{
-+    int64_t offset = (int64_t)a->imm << 3;  /* S:imm9, scaled by 8 */
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = base + offset;  /* auth not emulated */
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, 8) != 0) {
-+        return true;
-+    }
-+
-+    gpr_write(ctx, a->rt, val);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, va);
-+    }
-+    return true;
-+}
-+
- /* PRFM, DC cache maintenance -- treated as NOP */
- static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
- {
+     return true;
+ }
+ 
 -- 
 2.52.0
 

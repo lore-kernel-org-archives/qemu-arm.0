@@ -4,100 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE60AF013FA
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Mar 2026 21:23:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B0EFFB5EA8
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 03:17:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2FOq-0000HJ-Uh; Mon, 16 Mar 2026 17:22:57 -0400
+	id 1w2KwB-0004gD-4c; Mon, 16 Mar 2026 23:17:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w2FOp-0000G2-56
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 17:22:55 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w2FOn-0004SJ-7X
- for qemu-arm@nongnu.org; Mon, 16 Mar 2026 17:22:54 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-64c9707fc11so3595668d50.2
- for <qemu-arm@nongnu.org>; Mon, 16 Mar 2026 14:22:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773696171; cv=none;
- d=google.com; s=arc-20240605;
- b=VI9341mOCgAyNBIJn2k2RGUNX0yK5uxCX+Yvb0VbwJ3f6hQgieWA+V6sN4q+BWBLPp
- FYnn3Oy195+w1XzBSzEQw8Kkbf/5S6bDFK2EJ+yffR+EFefEUK91GZAJx57y6stkGqFU
- D8P3qjs9qIzKau+8e0vgH/xw/BuZHobUingRCpqIFR+BcdCB+e1jwb489ALnRNhHOxM6
- NTW42P4CM8dTJBp0zX7vVwZxd210SQstv2MVfQxRmO87dnsC46pc7zprY81aCZVWBPa0
- RkRh6CEp8nSLf3YyikRwMfuP3H1Kn8cChMEMz2k0Slhvb12DIr4R/jL9cBIzrfDZkqZ0
- uxfg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=+X0IXf58U41dGziQe90BMcC1pKBa41yxLUF7DHnpQNU=;
- fh=MOJybTXgRXwDDWiJy4gllsgSkO1Ctg6d77r/sbe1fes=;
- b=duNYjQ0uw1s/BjirXaODrjL2gFtR7heJXkvprIlQQavHf/bRekOpqISNBhCsJeOy0Z
- VzDJ04xkWzl4SLmumgaIJZeS40j/MGnVHBtarwVZWdS2bfJjnc+0P0iLQ58+eisyLZ8s
- nF1JfoVkSOrgydf9A5lRHXK3YhLWvNPFarHYTJ37JrSnKc1nVOEy2Tj8DFtE1jzAn8SW
- nmNEB/hqo9yyN+a5NUNi5Ymop8LzIHDLT+ZBMOaLN3WeDl6uKNJqEKliYXBGQoGGMfhu
- M6lAcGTsu0vKMWflelGKnUwjl8NeWzCkOmjBJmlyZD59wUxAh5Z0NjG+pVttLHJe+H2j
- fylA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773696171; x=1774300971; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+X0IXf58U41dGziQe90BMcC1pKBa41yxLUF7DHnpQNU=;
- b=ru7i1XIrT9JW78XWNi1E47hZdFw5os6wN9U5V7gAvnGhMGDYvXW+5Lumldrb70sD+V
- PkTsP6Bsp0N+F1eZ8kvypOR+mg1HtUudWveKBTdpOcHkJBgclERES6yTBMFSpRflNWWT
- CHAGg3es5OpymrBRfnkpvVbnilswvjXoUHTkCL0Ha49oLTV0n+P290DyA96z6Zzfbd5O
- p1B2NlYc9GjvbWk0GyFYercGWc89lIseH4XI2fu9GRUfVRNeMF0R+L5P9mwgIvSgw5tG
- XKld10pqVUv6xHjufkgIMWkKntww41sbXLybL+s6ybL7r+HbzR7xOdVhbJA6/yEniBns
- jQKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773696171; x=1774300971;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+X0IXf58U41dGziQe90BMcC1pKBa41yxLUF7DHnpQNU=;
- b=IRinQnQdPPFlHZCkvh0pI961g37rCIJmRNQ9XL8ToqiZXwR06cnsbNl1TFl+3IaYK/
- R4J8ljzTbjQgGjYEy4BUq9X3oLkh/eXtfM06Vf3pIF/wEoVMAI7cq+ASvgFZW4G1chSN
- GMcyn8qjyGJxQeeJwIU7EAZdjrIC+rbCvkCgKjNtVkNHUD1/HIDmmALzEKtwL3JrRhHE
- 5lHuhCJjUPqrznK71t1qNmj3L2ne18gmlMG0UKYU1R0UOcFcmt9jgHFpj3x68IRRaKHA
- TIGGaG0jeIpT2ZYLAJ7aplfU/tzZ0CuYV7JWZVYoDLFDgGuQI5hgfZJ4g3jq3gNtx1L2
- YEwQ==
-X-Gm-Message-State: AOJu0YysMI0J74Ucoxp5/rPt0W/9eWZl9YRjs3MJ6BdVCMu7iGm79SL6
- 4VH9HDe4UyoQ/5y3MS+SUsUQxKA8Da/64ICppLSZbNkRW7jzakWo+Hge7zDv6ZcEYJ9mOy+7tgh
- WewYBGI7vxl+cKJ0FfAYbszvOgRIhbR7OM9jCds6KVg==
-X-Gm-Gg: ATEYQzynrVKTFzXj8/+jYD6eD/ZLoK62l+A1bvSH/YCq0b3IqqrwWVTTkV6PQnahXfu
- KsKKYnEfRpdafyUzUyepjar8v/TkVZ0SkVEfBPoyhEav2fLU0WVuKtS+246PQmfOvAlKMJnQf5v
- DbUbdYMZKMA/7mvkFuj3l7TxH8QmCI59xBrtV2hrhu6tXttATLM6HgavIU/J/bi0rKoo9wvrOW0
- 72FDoqhxVTsxz4sBkmX12HY38/6/BVFt03FUNOcKVuf4kLKDvfFPnJQ8+TJLUy+IqOdK4YlIpkj
- SoBB7W8J+dqM8T1p5lR543VzqRP+6ZUSbgzMKgRtcAXAXsh6TciZM9MKAo6r46U1yOk=
-X-Received: by 2002:a53:a78d:0:b0:64c:a4ab:e4d8 with SMTP id
- 956f58d0204a3-64e62f725d9mr10564270d50.20.1773696171149; Mon, 16 Mar 2026
- 14:22:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w2Kw9-0004fQ-MU; Mon, 16 Mar 2026 23:17:41 -0400
+Received: from sender4-of-o54.zoho.com ([136.143.188.54])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w2Kw6-0007Be-SC; Mon, 16 Mar 2026 23:17:41 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1773717440; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=j6oMuKTgQZKmEyHv8vkCVjgYKHTwVKdKrVVGjNNmAfFaqys7TTb9oFjARE9kci6/C0jjJalmMJ5sWZVHQPnOBfQoTXwiQrEY0+7L0KJb8eL1lHmUXOKN2ldpTtIKhD0ioaTNaJ8cK31T29Fk0vM8A9Ah7N0bcXTcP2mWlOsD3dU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1773717440;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=BCTgZPbeuwCSIW0YwDR4f/hxrjvQulLTxikELw+DMTA=; 
+ b=C/T3GyTaydCnefQTOKNcw+gOB+o3YoYnXCJnvalXp+W/Y1DOYS/kMgQvXyVOfWBecF5zONBCWuy3Q0RY04rSt2aO2hXkI/AmTKyiE8cHzkTfA9KI7bt6Huh/iOn0NSzplLmstWOy7gRmn7fS6GOQOLaFfeLvtaSasi+yWwpt/ok=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=anirudhrb.com;
+ spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
+ dmarc=pass header.from=<anirudh@anirudhrb.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773717440; 
+ s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
+ h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Message-Id:Reply-To;
+ bh=BCTgZPbeuwCSIW0YwDR4f/hxrjvQulLTxikELw+DMTA=;
+ b=gPHXyUWpN0NdvZSD8/TRHjpu9ZoyhS+iLgeV1Oxe81eIiRVojLPOfeKmuk5xxBqy
+ X8Jlz1izsDJ4MTMf/udEmp29Dm6I0HD2KecbYdJqNu5jcjGuoW/AxibMF7R0kSgaeFR
+ 8hPDxwAU/Tpqt4weagQfqskQ93hc9uRVfMGWHbFI=
+Received: by mx.zohomail.com with SMTPS id 1773717437578911.6185304809283;
+ Mon, 16 Mar 2026 20:17:17 -0700 (PDT)
+Date: Tue, 17 Mar 2026 03:17:09 +0000
+From: Anirudh Rayabharam <anirudh@anirudhrb.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ =?iso-8859-1?Q?=22Daniel_P=2E_Berrang=E9=22?= <berrange@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 08/14] accel/mshv: Add access_vp_regs synthetic proc
+ features
+Message-ID: <20260317-mighty-toad-of-domination-af8e6e@anirudhrb>
+References: <20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com>
+ <20260311-mshv_accel_arm64_supp-v1-8-c31699b7bc1f@anirudhrb.com>
+ <199EF957-0EBD-4E14-8453-1C5FA5B14063@unpredictable.fr>
+ <20260312-lucky-cocky-whippet-2a5f3d@anirudhrb>
+ <AA5B0DE1-CA87-43F6-9A52-2F9F91F3514D@unpredictable.fr>
+ <20260313-quaint-educational-swallow-aac6e3@anirudhrb>
+ <675BD854-D0C3-4942-B32D-2684078DC4D5@unpredictable.fr>
 MIME-Version: 1.0
-References: <CA+npmebHwcuek2M_Rx=raez9LNQu-gPA=Trn2rmSyK0SJxXozA@mail.gmail.com>
-In-Reply-To: <CA+npmebHwcuek2M_Rx=raez9LNQu-gPA=Trn2rmSyK0SJxXozA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Mar 2026 21:22:39 +0000
-X-Gm-Features: AaiRm52rB1gsM7r-5D2pkC7FMW5wPabEi6AzcMuBx0raGpfsX3tEhWaWIwGc5UE
-Message-ID: <CAFEAcA9z9Cb8q9oRWV=4gxiab2BOvaTTLGPDWg7hQ7ORJr6wcA@mail.gmail.com>
-Subject: Re: Question about ARM condexec_bits
-To: Piou Piou <fuzztheworld@gmail.com>
-Cc: qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <675BD854-D0C3-4942-B32D-2684078DC4D5@unpredictable.fr>
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.54;
+ envelope-from=anirudh@anirudhrb.com; helo=sender4-of-o54.zoho.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,91 +90,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 16 Mar 2026 at 20:34, Piou Piou <fuzztheworld@gmail.com> wrote:
-> I have a bug on unicorn that uses an old qemu version (https://github.com/unicorn-engine/unicorn/issues/2309)
-> I thought I might fix it by looking at how qemu evolved since then.
-> Unfortunately, I did not see any fix.
-> And the more I looked at it, the more it looked like a qemu bug that would still be here.
->
-> Code
-> The bug happens with an IT block containing a conditional load (executed) and a branch (called) in it or just afterwards.
-> For instance, I have the following arm code (with thumb mode):
-> ```c
-> 0x72   93 bf           iteet      ls              // The originating itt
-> 0x74   00 68           ldr.ls     r0,[r0,#0x0]    // executed
-> 0x76   80 68           ldr.hi     r0,[r0,#0x8]    // skipped
-> 0x78   28 39           sub.hi     r1,#0x28        // skipped
-> 0x7a   2c f0 93 b9     b.ls.w     <some_func> // called
-> 0x7e   2c f0 79 ba     b.w        <other_func>
-> ```
-> The IT block is finely translated.
-> Then, the first ldr at 0x74 is executed. In unicorn a restore_state() call is forced on that point as I use hooks on memory reads.
-> But I guess it would be the same if the load led to a data abort (as hinted by the comment in function arm_tr_tb_start())
->
-> Bug
-> This restore_state() call restores in the env the condexec_bits of instruction 0x74, so a value of 0x93 meaning we are inside and at the beginning of the IT block.
-> Then this condexec_bits is passed through cpu_get_tb_cp_state_arm(), then arm_tr_init_disas_context() and turned into condexec_mask and condexec_cond that are put in the current dc.
+On Fri, Mar 13, 2026 at 12:29:32PM +0100, Mohamed Mediouni wrote:
+> 
+> 
+> > On 13. Mar 2026, at 10:01, Anirudh Rayabharam <anirudh@anirudhrb.com> wrote:
+> > 
+> > On Thu, Mar 12, 2026 at 11:45:48AM +0100, Mohamed Mediouni wrote:
+> >> 
+> >> 
+> >>> On 12. Mar 2026, at 11:32, Anirudh Rayabharam <anirudh@anirudhrb.com> wrote:
+> >>> 
+> >>> On Wed, Mar 11, 2026 at 04:35:31PM +0100, Mohamed Mediouni wrote:
+> >>>> 
+> >>>> 
+> >>>>> On 11. Mar 2026, at 16:15, Anirudh Rayabharam <anirudh@anirudhrb.com> wrote:
+> >>>>> 
+> >>>>> From: Aastha Rawat <aastharawat@linux.microsoft.com>
+> >>>>> 
+> >>>>> Enable access_vp_regs feature for regs. In arm64, this feature bit
+> >>>>> allows the guest to set VP registers using hypercall. This wasn't
+> >>>>> required for x86 because such registers are set using wrmsr instead of
+> >>>>> hypercall.
+> >>>>> 
+> >>>> Hello,
+> >>>> 
+> >>>> Could you split this into two patches? With the hvhdk.h changes in another patch.
+> >>> 
+> >>> Any reason why?
+> >>> 
+> >>> Throughout this series we're introducing hv*dk changes along with the
+> >>> code using them. Isn't that a good idea?
+> >>> 
+> >> Hello,
+> >> 
+> >> I think that because of some of the content of header updates aren’t immediately related to the commits at hand, it’d be better to
+> >> just have a single big commit at the beginning of the series for any GDK/HDK updates.
+> > 
+> > I think that in this series all the header updates are closely related
+> > to the commits they're made in. Do you see a discrepancy?
+> > 
+> Hello,
+> 
+> As a random example https://lore.kernel.org/qemu-devel/20260312202209.GA124403@liuwe-devbox-debian-v2.local/T/#madb0f563a418a8fa1ebe35edd782aa4414893e5c ("accel/mshv: Add access_vp_regs synthetic proc features”) adds a bunch of other bits that aren’t that directly related to it.
 
-That's correct, because that's what you want for "a TB that starts
-at 0x74" (which is where the PC and other CPU state should be
-at for the "first load hit a data abort" case).
+Sure, there are some additional fields but they must be added along with
+the commit to preserve the correct layout of the struct. So, I would
+argue that in spite of the additional fields this header update belongs
+in this commit.
 
-> Those condexec_mask and condexec_cond are then used when translating
->the instruction pointed by the branch at 0x7a (new TB), leading to bad
-> emulation as those instructions are out of the IT block.
+In general, I do agree that if the header updates are completely
+unrelated or if they're massive they should be in a commit of their own.
+But IMO the updates in this patch series don't fall into either category
 
-But why are we translating a TB starting at 0x7a ? We just took
-an exception on the load, so the next place we will be executing
-is either:
- (1) the entrypoint to the exception handler (which we will do
-     with the guest CPU state updated by the usual exception-entry
-     handling, which includes saving the condexec state to SPSR
-     and clearing the condexec bits in CPSR)
- (2) 0x74, retrying the load (this happens if the reason we
-     abandoned the TB was something like icount mode saying
-     "this is a non-RAM load that needs to be at the end of a TB")
+Thanks,
+Anirudh.
 
-Neither of those are 0x7a.
-
-> Explanation
-> There is a very explanatory comment at the beginning of arm_tr_tb_start which says that the condexec_bits at reset at the beginning of a tb.
-> The case described above is explained as:
-> ```c
-> /*
->      * (3) if we leave the TB unexpectedly (eg a data abort on a load)
->      * then the CPUARMState will be wrong and we need to reset it.
->      * This is handled in the same way as restoration of the
->      * PC in these situations; we save the value of the condexec bits
->      * for each PC via tcg_gen_insn_start(), and restore_state_to_opc()
->      * then uses this to restore them after an exception.
-> */
-> ```
-> But once this is done, the condexec_bits remain and are used to translate the basic block pointed by the next branch if it is close enough.
->
-> Solution
-> The only solutions I see are:
-> 1) Remove the restoration of condexec_bits in restore_state_to_opc
-> 2) Maybe do something similar to arm_tr_tb_start() when restoring an instruction.
-> 3) Decrease the condexec_mask at every executed instruction.
-
-If you clear the condexec_bits in restore_state_to_opc then
-you will break the case of "an instruction faulted and we need
-to fix up the state to what it would be at the start of that
-instruction".
-
-I'm not familiar with the internals of Unicorn, but looking
-quickly at the bug report you reference, it looks like the
-problem is that you or Unicorn are assuming that
-"restore_state_to_opc" is a kind of synchronizing function
-that you can call to update the state, and that you can then
-continue executing within the same TB that you were called from.
-You can't do that -- if you call restore_state_to_opc() then
-you must abandon execution of that TB, and later on generate
-a new TB starting from the CPU state that you now have.
-(Put another way, restore_state_to_opc() is a key part of
-that "abandon this TB" process, and is not designed to be
-used outside that.)
-
-thanks
--- PMM
+> 
+> It doesn’t mean that this info is not useful to have upstream - that’s great to have - but I think that a separate commit for the header updates at the beginning (combining them all) is best.
+> 
+> >> 
+> >> 
+> >> Oh also, preemptively adding some header definitions before they’re immediately needed could be simpler for everyone
+> >> - especially given that WHP exists and is overlapping a lot.
+> > 
+> > Could you please elaborate? How would it be simpler? Do you mean simpler
+> > for reviewing?
+> > 
+> Yes.
+> 
+> Thank you,
+> -Mohamed
+> > Thanks,
+> > Anirudh.
+> > 
+> >> 
+> >> Also makes me think of whether it could be better to share some code between WHPX and MSHV, but that’s a separate
+> >> story…
+> >> 
+> >> Thanks,
+> >> -Mohamed
+> >> 
+> >> 
+> 
+> 
 

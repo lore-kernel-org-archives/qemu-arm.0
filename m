@@ -4,78 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 142A9FED9EF
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:51:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30ED8FED9F6
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:51:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2YYR-0005Sf-Vx; Tue, 17 Mar 2026 13:50:13 -0400
+	id 1w2YXl-0004kB-Nz; Tue, 17 Mar 2026 13:49:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXt-0004yu-OU
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:33 -0400
+ id 1w2YXj-0004d3-Ly
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:23 -0400
 Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YXr-00079O-VO
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:33 -0400
+ id 1w2YXi-000786-3B
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:23 -0400
 Received: by mail-dl1-x122d.google.com with SMTP id
- a92af1059eb24-1271195d2a7so1196492c88.0
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:31 -0700 (PDT)
+ a92af1059eb24-128d7db88b9so7296639c88.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:49:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773769771; x=1774374571; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=GQQWpfCkfhdY6LwJcgzOBI0ARhYIsLB8CNzLDt0g+Qg=;
- b=Xf/hqRvfyGQU15sCBNIZMp9Aln9uYj4cYLUMpbuFQmOMxk2DltGrpaxygAZhxghMUR
- eNQ5TLuq+VHXOt0idS4BWN2M8yQycU4qA0vZQxFs3v2tg7pXZIXMowj0bXYk+zHD7roC
- Xc3J8Abylpyh3L0MvXLdRrAQaEiE2U0bcGQmhbVxVwel+wkWiaMaECsk7zcv+J3r77bf
- 97Cd/gpBYWgZjpphL8rJjUmoqRLdsXwIaovE5iCyB0EZlto7aegc/GFVJDG8cRaF+NES
- CZg1Uvh15bl9B4VYm1diYBA8qvqm380LeL4Ed5cHI+oZR71XIR4pMWKZmMHiCa27sP+3
- 3UtQ==
+ d=gmail.com; s=20230601; t=1773769761; x=1774374561; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CVb13IlLEU7TKn2JosjxQ7mvXY+2jkay+xSWdWBH5Zk=;
+ b=CD5syXUmjgfY3nZw627NU+SfoYPFDi0sZQ34rioV5HYU6dBBVdwLIiKtpn59uup5YB
+ wewmGa3cXeJ/tvBT9cxzSx7RBT0Vt/JDZ7Wkk2ICfQQUVvtrKhaRuK0fKTh+aA1ESmSa
+ 5m8NLKe5l3fGa9hJrdImXRYPSKndnfwljS+aSch+WJHytRpSn2Cfi8TiJgw3G7YL705C
+ G/h8ZS28ga4dZInbRMoht4bVneGJNej3f7FWA4rkGqbGQhjytxalhUZrAc04AATkbC5n
+ y3z0PuROMBY4qZHEJr41vrmg7VAaXXUjG2DU19weVtLHUKWj3451MXJFzfuHdVm/OC+q
+ f+8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773769771; x=1774374571;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=GQQWpfCkfhdY6LwJcgzOBI0ARhYIsLB8CNzLDt0g+Qg=;
- b=okpwXddEw0yFZ1jEHsDUWPJURLCq4Axn0gWEdSd0frkpvGcQ7AD8Kddxbf3XORGm4r
- ePrR+RQ6ipVbycMxY/WUSwwmzJ4Mv+QathmOJPH5CAwLPPlhLL7pe/cjFe2ESJ+46V0C
- w+0OQi+ZgZsmq/aV/9I4BjlK9/5MJZnjalK/ovYda8eyrjbs9NTcwcpRILi0odalaNbh
- PuIqasqGirWLvcvp9NIpTR4M0quYx1Nl3iJ09AAkmrhkP8SIpvV+R/sJmV+Wn0B/cLtK
- hSXPr0gDDyD5UNXVpRtavZy+fWs6AZoH2EztkbugPdFhrONsU9UXBhpVUIGYEFAf6anF
- ECDw==
-X-Gm-Message-State: AOJu0YzerYUIrOoOazpI34uM37kLU0r9HHnfOEG42Z9WBbODRk5tvv4i
- FCMe/mbU7eh1/nAkGhEzM4mVVqEx7HlX9Ze2VOCPpTEBR/CuDfo28Iju
-X-Gm-Gg: ATEYQzzaYDmUQ0zVzZDZK/Vzedvu39znFNZl7hM+HkgxdUQsjb3t1p0mrycWm++Oh++
- LxZ6GyPqfXkgXf9cwAo+xQ11Vnhfc0c4CT1BLxly37ZMIfBWDaMf9ASw2VEHkBfjMRo5HWqydCs
- slmkVpINPHXbTAp98E5IoGel2Oysnp1dj/nht23+k6VvHEf3/OuRHe6t0Nxm8nSlqRez+yvQjp9
- tDzmElxBWiA9mx6FZq8+ig/ky7BIDyxph1PCYFrLh0rPex07VR+u5L2BA3AHCacoRfoqS7Wy9/I
- 5zMpeFOVrYAVVd2bYvC+h6ijqKIhvuQDcYag9bidqZh5U0pysCuPmo11MfWo8raCOPmmIhKKu1v
- lwtmcFqhkIt6ZXA9vTLmbbao2zMfxKJuGp+WYj3KnvdZwZJTeCJAxOsC2SRpKa7YGzcMklNEq3W
- EwWkK9qIpJhAqOnJxIqavCMdakcSiQXtSDngev5AA3YUco+p621WlA
-X-Received: by 2002:a05:7022:394:b0:11d:c91e:3b58 with SMTP id
- a92af1059eb24-129a71b0413mr185894c88.39.1773769770357; 
- Tue, 17 Mar 2026 10:49:30 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1773769761; x=1774374561;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CVb13IlLEU7TKn2JosjxQ7mvXY+2jkay+xSWdWBH5Zk=;
+ b=DrbuTu1j2MjVbMvH9zOnBQsCSfYLxRN3LC55uaSJ4uaTdNpVgAbxAxyHY5h2TWK33J
+ B+I2M7/om2sVoBg7/TfMH2K1CnOMwVqLQOnU3S8RpAYkqthg/iO7L+GvJsx4vmZ5jQOi
+ bCAK9VyphiAyiYNXQVMd5SceohYv1dtjia9MxcDd6J0vhTDwzyZY5FmGVjcpujIcLL77
+ iutij8Ugz1eV5Wy4/02rUdW+QmQbkmkzHxcsInSnqnIu/3YA0TYUtYrvt5fAiLMnfH9e
+ BjEgf16D92bLQZZku7Zr0++QdcclLrJqilefxHnrnFMQXjnLQklwqbYZJw74arGKbuZk
+ 1AFw==
+X-Gm-Message-State: AOJu0Ywd2lrosDQyMYSNbSLcpnhi2fudfywfC3CoSMhFNmtTjE9Z365Z
+ o6m37jnnNYYQoeXY7mIEsN7QA4EX7QIG7XmSEYAed9PkFy77gbplezdBoRupD6SQ
+X-Gm-Gg: ATEYQzyHgVlVgXN/orxYV7bhc7LAkx1Y9g7giWXbkIaPWABwE38Uf5Fj0U4luxbndnW
+ AE4WYDdCPqIn6l8t1FEzocV33CG9qOPrBPciR8uMZC0l9xLawdefdzHbFTIxLDFPjG2OYU1NS7C
+ ICE25AoNs1zK5/9m1zH6S6+tBZV1yWp6Fl/tb+iLS7zm8NsHz6SaXGx3glummhe3wyUKsajgodM
+ IsNLv9gI9we0d9XjNmasBP4gf4WED4iIUzg90Ug0Q5jxvJ2P8E8kUOZ18y+vBbsOyz+Dg376ug2
+ aHs62iCD/1e3xD+NptHvocq2cZbDKvQymV3WOB4/pxYZApPmyRjZsafwr88yvHUAHpeC9trZPbJ
+ +yg8qG6whzuJmCEMORzubdKTCa6jcFSi8veOG3ahhOZyxMrA51uQMwjcbP7PSwhpqw/Yqktc2Qc
+ zWMhD4kD9gUvgy9HtoC5U+8CnSjyr+qY7cqq821OF2eS9w2Pb+6RSDz8z758R0fgs=
+X-Received: by 2002:a05:7301:168f:b0:2be:aa:9a4a with SMTP id
+ 5a478bee46e88-2c0e4e5c708mr167357eec.0.1773769760576; 
+ Tue, 17 Mar 2026 10:49:20 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.51])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c0e536896csm282115eec.3.2026.03.17.10.49.27
+ 5a478bee46e88-2c0e536896csm282115eec.3.2026.03.17.10.49.18
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Mar 2026 10:49:30 -0700 (PDT)
+ Tue, 17 Mar 2026 10:49:20 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
  marcandre.lureau@redhat.com, Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v4 3/4] virtio-gpu: add VIRTIO_GPU_F_BLOB_ALIGNMENT header
- definitions
-Date: Tue, 17 Mar 2026 14:49:14 -0300
-Message-ID: <20260317174915.31829-4-lucaaamaral@gmail.com>
+Subject: [PATCH v4 0/4] virtio-gpu: enable Venus/Vulkan without OpenGL display
+Date: Tue, 17 Mar 2026 14:49:11 -0300
+Message-ID: <20260317174915.31829-1-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317174915.31829-1-lucaaamaral@gmail.com>
-References: <20260317174915.31829-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::122d;
  envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122d.google.com
@@ -101,39 +98,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Define VIRTIO_GPU_F_BLOB_ALIGNMENT (feature bit 5) and the
-blob_alignment field in virtio_gpu_config per the OASIS virtio
-specification.
+Decouple Venus from CONFIG_OPENGL so it works on hosts with no GL
+display (e.g. macOS with MoltenVK). 2D display commands fall back to
+pixman; 3D/Vulkan goes through the render server as usual.
 
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
----
- include/standard-headers/linux/virtio_gpu.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+v3 -> v4:
+  - Rebased onto current master (conflict resolved in virtio-gpu.c
+    with new upstream drm feature check)
+  - Split Linux header changes into dedicated patch (checkpatch)
+  - Fix line-over-80 warnings
+  - Resent as new top-level thread (Alex Bennée)
 
-diff --git a/include/standard-headers/linux/virtio_gpu.h b/include/standard-headers/linux/virtio_gpu.h
-index 00cd3f04..252704e7 100644
---- a/include/standard-headers/linux/virtio_gpu.h
-+++ b/include/standard-headers/linux/virtio_gpu.h
-@@ -64,6 +64,11 @@
-  * context_init and multiple timelines
-  */
- #define VIRTIO_GPU_F_CONTEXT_INIT        4
-+/*
-+ * VIRTIO_GPU_F_BLOB_ALIGNMENT: device advertises blob_alignment
-+ * in virtio_gpu_config (OASIS virtio-spec feature bit 5)
-+ */
-+#define VIRTIO_GPU_F_BLOB_ALIGNMENT      5
- 
- enum virtio_gpu_ctrl_type {
- 	VIRTIO_GPU_UNDEFINED = 0,
-@@ -365,6 +370,7 @@ struct virtio_gpu_config {
- 	uint32_t events_clear;
- 	uint32_t num_scanouts;
- 	uint32_t num_capsets;
-+	uint32_t blob_alignment;
- };
- 
- /* simple formats for fbcon/X use */
+v2 -> v3:
+  - Rebased onto current master
+  - Fixed line-over-80 warnings
+
+v1 -> v2:
+  - Remove hvf_get_map_granule() safety check (moved to hvf-map-granule)
+  - Extract GRAPHIC_FLAGS_VK into its own patch
+  - Fold standard-headers addition into blob_alignment patch
+
+Lucas Amaral (4):
+  ui: introduce GRAPHIC_FLAGS_VK for Vulkan scanout
+  virtio-gpu: decouple Venus from CONFIG_OPENGL
+  virtio-gpu: add VIRTIO_GPU_F_BLOB_ALIGNMENT header definitions
+  virtio-gpu: advertise VIRTIO_GPU_F_BLOB_ALIGNMENT
+
+ hw/display/meson.build                      |  8 +-
+ hw/display/virtio-gpu-base.c                | 15 +++-
+ hw/display/virtio-gpu-gl.c                  |  6 +-
+ hw/display/virtio-gpu-virgl.c               | 85 ++++++++++++++++++---
+ hw/display/virtio-gpu.c                     |  8 ++
+ include/standard-headers/linux/virtio_gpu.h |  6 ++
+ include/ui/console.h                        |  2 +
+ ui/console.c                                |  7 ++
+ 8 files changed, 121 insertions(+), 16 deletions(-)
+
 -- 
 2.52.0
 

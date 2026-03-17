@@ -4,53 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118F1F3381F
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 08:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 899FFF3381E
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 08:59:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2QF6-00016j-Uh; Tue, 17 Mar 2026 04:57:37 -0400
+	id 1w2QGO-0007cL-Qv; Tue, 17 Mar 2026 04:58:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QEt-0000PJ-Ev
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:57:24 -0400
-Received: from 7.mo533.mail-out.ovh.net ([54.36.140.182])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QGF-0006hb-BW
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:58:47 -0400
+Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QEp-0007iS-TS
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:57:23 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [51.68.80.175])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fZm6q46t8z64XC;
- Tue, 17 Mar 2026 08:57:06 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 17 Mar 2026 08:57:06 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.110])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4fZm6p4VQFz6XNp; Tue, 17 Mar 2026 08:57:06 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w2QGB-00080y-IG
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 04:58:46 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fZm8b2ct2z64gm;
+ Tue, 17 Mar 2026 08:58:39 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 17 Mar 2026 08:58:39 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.205])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4fZm8Z6w8Sz1y4M; Tue, 17 Mar 2026 08:58:38 +0000 (UTC)
 Received: from kaod.org (unknown [10.1.6.0])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 7E08B9414F4; 
- Tue, 17 Mar 2026 08:57:05 +0000 (UTC)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id CD2341B43925;
+ Tue, 17 Mar 2026 08:58:37 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003ee386953-cf8f-4b69-8b36-571b871d4820,
+ (GARM-98R0029bf3a782-2855-4cc1-b452-b7c29ff01ba8,
  4AC1E9A3EE45423C0527B61D87123FAFA3CB088F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1f27f0f5-63de-4b7e-ab72-f1b5d3c41110@kaod.org>
-Date: Tue, 17 Mar 2026 09:57:04 +0100
+Message-ID: <a99787fe-5171-436c-808c-b69c8520c720@kaod.org>
+Date: Tue, 17 Mar 2026 09:58:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] tests/functional/aarch64/test_aspeed: Disable kernel
- crypto self-tests in AST2700 boot tests
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20260316081549.1279841-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH] hw/i2c/aspeed: fix lost interrupts on back-to-back
+ commands
+To: Jithu Joseph <jithu.joseph@oss.qualcomm.com>, peter.maydell@linaro.org
+Cc: steven_lee@aspeedtech.com, leetroy@gmail.com, jamin_lin@aspeedtech.com,
+ andrew@codeconstruct.com.au, joel@jms.id.au, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, quan@os.amperecomputing.com, jae.yoo@oss.qualcomm.com
+References: <20260311023712.2730185-1-jithu.joseph@oss.qualcomm.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -95,23 +92,23 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260316081549.1279841-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260311023712.2730185-1-jithu.joseph@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 1684909210632760331
+x-ovh-tracer-id: 1711086385790626838
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGLrzsRrRc43bn3wx7Oo/VVNVx3J1DoyymiLN3lOowarytUSUOJd6aDEULgiYv7Dbd2aBvbzHN08SlG0Os9dXfDc9ICLj7ByjGZq/PvXWTxBBiBGuRVgIoFdFvwxWbU4cNx1Z4rU3EMluvoyrKf5M2WhcD/uctxjFcyZunaOPAN12XTfg67fEyQTLLemNZmQXLAcuR0K0X//SLM53p91VMvccZWn+pi1KQNnBFwRoyPrNS0aw5Hku+lcEg1FKbzOoL9wj/nrIJacrCK75K6vX+zK+rlku3j3BT007KZOit7kwdgQ1gt7t1hFsAmm6SIS62wk9rn2+GkFuOStFSzp5upc4ilIBbtOCuiPI7pXLuxaeu+1rZzVoKDHwoWKWlxS82Hk9MQQi4nf91zJCMm3cuvC3W9/+/IpQJ9QL3fpDc93a458xmGA3BToC9vkmDKbhlsTJMzf6EaFjjSqnxzpE59FIzSA4fZZc6qHkGgM9MfkA5quJcAmEKZgU56llgD04rOb+T0IjHZu3yqUxYX4oI5H2W5JXflU8g35X67VLEtITyimKZA6sBx+YA/hYiIZtWiaezw+KWNh19vZTZNOhKXJlvPGkGi1c8CCkMuFwBBp6roPAZJiJPoOohxEYr1G86mOiLReHz/HmTRk1Gr/JdpyJqEY2Xxm0ZulIMXbCes/w
-DKIM-Signature: a=rsa-sha256; bh=AtGt2Vk2GIctoiiqVSrZsVHjRm4QZqNJ4AAmT1NOnrw=; 
+X-VR-SPAMCAUSE: dmFkZTFGSJ4XsvfnuAlYggMfIdrVL37Fq/jfK6AHLkczxrDaw0C2p/BuwZ2tyijwNj8MXbsk7kfsnfFDrD7oFDbos4XZMfX3pa0gVKQThBUO769xB/F8V1r1w4omnGjgi5BeXLq/Xp4bSIqYJDu15F59T4LgL0IVTLsvvmPTCjiTXFZgOAINE6Z9S8Up7oIxoR7O66xqXCeYh9bfwY3SshxbK9CqQuXZqUc6X4Rl60ugUAgxEjKrisTBgZIL4A6NRYapZFWeB1udPKxZp1mUSL53fUqyrzvv5qaT14aMSgEAlV6IHcs3iDtoryvn3m3Aa1A9zrnVE/ysEko+DVY5zbc3VPkniux693uwChUM6EB/T4bV9R7YkdVkxap/SRnZ7gHZeo75NEOX/zgdOf5M750Pyh6ijhhY5C4AJ/k/aOJFqz1PIX2cYC4hBYkqj4FpyedSCr8W0pTFmMjIXfLDsCnskuMG4v4HMig/chacoBnf9r8oeZyjTVSfjwh4vQoIt0xh3p6UGqF5eXAPJE59TIj83WzC+Bpxbm4GrClvjND8PUNDBfhSNz5GHNRbDUEFT290uxsqofoFXXHwXUa5dBcyMcpHUiyHOdEGFDv6Xc6xLPXpkBFJmGHHJ8duZYb0naGThcGURgntpYj//X+xcikm+pooFqknXT7KbBKZLNR4dy9Cjg
+DKIM-Signature: a=rsa-sha256; bh=n7cyRUD/QPGL/V5KMfPhe3fq6ngXd+yi15teWViehQg=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1773737830; v=1;
- b=XRX0sZGPNQRc6OW/zqxSn0tqrhgzap/0oBHNAUrhThAY+C9YEfaKvJeKwZbIIj4YDpyLGynP
- iLJXGoWwUqy5X2L6EL9y+47xzctpTeTO9tCh/TgEBWlCH3hQhEts49xmpPdxbtHbXBA/XiKE4zY
- GmJfzVwnCQrHfWbV97rKijW2/oF4h5jjwgY4M+pr/KGqXffN3X91iwQeSaHD5MXnS40dOuBSO30
- AfQ4WY5NyRvlCjGTcixWYg1KYjoES7jWdLPHe7zSBTbcZmcn/z3ACOyaHY0Dxk3UClq+tBOuDj9
- utd5f4gyusca+Jx5sdk1G5iyN59FjX/cwtmGLYIRDbBsg==
-Received-SPF: pass client-ip=54.36.140.182; envelope-from=clg@kaod.org;
- helo=7.mo533.mail-out.ovh.net
+ t=1773737920; v=1;
+ b=H3viSaxMqZcJJ10DXP/IWaW5AlWj6myXoPpog91gKYwRqIdtRq9Jni3/KmCZbYTwlPEfhIFv
+ IIg5j7SFYLjVHQ9/eTvAWGYsnfLQ/YVGzPMhXU1IdW2HwbvpOFhs/S4wFnmvjYifuPG40xteG8I
+ odYdHRgxxKVAJLsAimSyX/dCArdtwEDbuyIU+A5s10JBapM/OalsYGFIQcIIreYgu4jHoYvsWVN
+ MDqrSo8pLLepSfoBfzzTP5v+xhWD4N5a9qHA2pYzxNlMJzvyIfxx59yvDtt24N1SG8Jcindt3e5
+ 3Mg+pjHEyq5uBccbbieFbIdMbOXoQ2S1QzMCizfdTIRaw==
+Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
+ helo=10.mo533.mail-out.ovh.net
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
@@ -135,44 +132,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/16/26 09:15, Jamin Lin wrote:
-> Disable the kernel crypto self-tests in the AST2700 functional tests by
-> appending "cryptomgr.notests=1" to the U-Boot bootargs before booting
-> the kernel.
+On 3/11/26 03:37, Jithu Joseph wrote:
+> QEMU executes I2C commands synchronously inside the CMD register write
+> handler. On real hardware each command takes time on the bus, so the
+> ISR can clear the previous interrupt status before the next completion
+> arrives. In QEMU, when the guest ISR handles a TX_ACK and immediately
+> issues the next command by writing to CMD, that command completes
+> instantly — before the ISR returns to W1C-clear the first TX_ACK.
+> Since the bit is already set, setting it again is a no-op. The ISR
+> then clears it, wiping both completions at once. No interrupt fires
+> for the second command and the driver stalls.
 > 
-> The ASPEED SDK enables crypto self-tests during kernel startup to
-> validate the hardware crypto engine. However, the current QEMU
-> implementation of the AST2700 HACE/crypto engine is still incomplete.
-> As a result, the kernel crypto self-tests trigger multiple warnings
-> during boot when running under QEMU.
+> This affects any multi-step I2C transaction: register reads, SMBus
+> word reads, and PMBus device probes all fail ("Error: Read failed"
+> from i2cget, -ETIMEDOUT from kernel drivers).
 > 
-> Typical examples observed in the kernel log include failures for
-> several cipher modes such as DES/TDES/AES in ECB/CBC/CTR modes:
+> The issue is exposed when the guest kernel includes commit "i2c:
+> aspeed: Acknowledge Tx done with and without ACK irq late" [1] which
+> defers W1C acknowledgment of TX_ACK until after the ISR has issued
+> the next command. This means the old TX_ACK is still set when the
+> next command completes synchronously, and the subsequent W1C wipes
+> both completions at once.
 > 
-> alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=-22)
-> alg: self-tests for ecb(des3_ede) using aspeed-ecb-tdes failed (rc=-22)
-> alg: self-tests for cbc(aes) using aspeed-cbc-aes failed (rc=-22)
-> ...
+> The trace below shows `i2cget -y 15 0x50 0x00` (read EEPROM register
+> 0x00) failing without the fix. The first START+TX sets TX_ACK. The
+> ISR handles it and issues a second TX to send the register address.
+> That TX completes synchronously while TX_ACK is still set:
 > 
-> To reduce noise in the functional test logs, the tests now append
-> the following parameter to the kernel bootargs:
+>    aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
+>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
+>    aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
+>    aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
+>    aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x1      # TX runs, TX_ACK already set!
+>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # re-set is no-op
+>    aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
+>    aspeed_i2c_bus_read  0x10: 0x0                    # LOST — both ACKs wiped
 > 
->    cryptomgr.notests=1
+> The driver sees INTR_STS=0 and never proceeds to the read phase.
 > 
-> This disables the kernel crypto self-tests when running the functional
-> tests under QEMU.
+> Fix this by tracking interrupt bits that collide with already-pending
+> bits. Before calling aspeed_i2c_bus_handle_cmd(), save and clear
+> INTR_STS so that only freshly set bits are visible after the call.
+> Any overlap between the old and new bits is saved in pending_intr_sts.
+> When the ISR later W1C-clears the old bits, re-apply the saved
+> pending bits so the ISR sees them on its next loop iteration.
 > 
-> For validating the HACE implementation, we should instead rely on the
-> dedicated QEMU unit tests located in:
+> With the fix, the same operation completes successfully:
 > 
->    tests/qtest/ast2700-hace-test.c
+>    aspeed_i2c_bus_cmd cmd=0x3 start|tx| intr=0x0    # START+TX, clean
+>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK set
+>    aspeed_i2c_bus_read  0x10: 0x1                    # ISR reads TX_ACK
+>    aspeed_i2c_bus_write 0x14: 0x2                    # ISR issues TX cmd
+>    aspeed_i2c_bus_cmd cmd=0x400002 tx| intr=0x0      # INTR_STS cleared first
+>    aspeed_i2c_bus_raise_interrupt intr=0x1 ack|      # TX_ACK freshly set
+>    aspeed_i2c_bus_write 0x10: 0x1                    # ISR W1C clears TX_ACK
+>    aspeed_i2c_bus_read  0x10: 0x1                    # RE-DELIVERED from pending
+>    aspeed_i2c_bus_write 0x14: 0x1b                   # ISR proceeds: START+RX
+>    aspeed_i2c_bus_cmd cmd=0x40001b start|tx|rx|last| # read phase completes
+>    i2c_recv recv(addr:0x50) data:0x00                # data received
 > 
-> Once the QEMU implementation of the ASPEED HACE/crypto model has
-> progressed further and supports the missing crypto modes, we can
-> reassess whether enabling the kernel crypto self-tests again in the
-> functional tests is appropriate.
+> [1] https://lore.kernel.org/all/20231211102217.2436294-3-quan@os.amperecomputing.com/
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
+
+Fixes: 1602001195dc ("i2c: add aspeed i2c controller")
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
@@ -183,102 +206,137 @@ C.
 
 
 > ---
->   tests/functional/aarch64/test_aspeed_ast2700a1.py | 11 +++++++++--
->   tests/functional/aarch64/test_aspeed_ast2700a2.py | 11 +++++++++--
->   tests/functional/aarch64/test_aspeed_ast2700fc.py |  9 +++++++--
->   3 files changed, 25 insertions(+), 6 deletions(-)
+> Background: A Linux kernel patch series by Quan Nguyen (Ampere) reworked
+> the i2c-aspeed driver's interrupt handling to delay the W1C clear of
+> TX_ACK until after the ISR has processed the completion and issued any
+> follow-up command. The motivation was to correctly handle AST2600 and
+> AST2500 hardware where I2C slave mode requires this ordering — the
+> authors explicitly verified the series on both platforms. On our internal
+> AST2600 hardware we carry this patch as a necessary fix for I2C slave
+> mode to work correctly.
 > 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700a1.py b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> index 5c0c4b0ed5..b0c08854da 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> @@ -51,9 +51,11 @@ def verify_vbootrom_firmware_flow(self):
->           wait_for_console_pattern(self, 'pass')
->           wait_for_console_pattern(self, 'Jumping to BL31 (Trusted Firmware-A)')
+> The series did not make it into the upstream Linux kernel because test
+> failures on QEMU blocked it. However, the failures are on the emulation
+> side: QEMU executes I2C commands synchronously inside the MMIO write
+> handler, causing a follow-up command to complete and re-raise an
+> already-pending interrupt bit before the ISR has had a chance to
+> W1C-clear it. On real hardware this race cannot occur since bus
+> transactions take measurable time.
+> 
+> Since the kernel patch reflects correct real-hardware behaviour, the
+> right fix is to adapt QEMU's interrupt delivery to handle this ordering,
+> rather than requiring the kernel driver to work around a QEMU-specific
+> timing artifact. This patch does that.
+> 
+>   include/hw/i2c/aspeed_i2c.h |  1 +
+>   hw/i2c/aspeed_i2c.c         | 46 +++++++++++++++++++++++++++++++++++++
+>   2 files changed, 47 insertions(+)
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 53a9dba71b07..d42cb4865aa5 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -256,6 +256,7 @@ struct AspeedI2CBus {
+>       qemu_irq irq;
 >   
-> +    def disable_kernel_crypto_selftest(self):
-> +         exec_command_and_wait_for_pattern(self,
-> +            'setenv bootargs "${bootargs} cryptomgr.notests=1"', '=>')
-> +
->       def enable_ast2700_pcie2(self):
-> -        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> -        exec_command_and_wait_for_pattern(self, '\012', '=>')
->           exec_command_and_wait_for_pattern(self,
->               'cp 100420000 403000000 900000', '=>')
->           exec_command_and_wait_for_pattern(self,
-> @@ -67,8 +69,13 @@ def enable_ast2700_pcie2(self):
+>       uint32_t regs[ASPEED_I2C_NEW_NUM_REG];
+> +    uint32_t pending_intr_sts;
+>       uint8_t pool[ASPEED_I2C_BUS_POOL_SIZE];
+>       uint64_t dma_dram_offset;
+>   };
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 8022938f3478..ad6342bec0d4 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -628,6 +628,8 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
+>       bool handle_rx;
+>       bool w1t;
+> +    uint32_t old_intr;
+> +    uint32_t cmd_intr;
 >   
->       def verify_openbmc_boot_start(self, enable_pcie=True):
->           wait_for_console_pattern(self, 'U-Boot 2023.10')
-> +        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> +        exec_command_and_wait_for_pattern(self, '\012', '=>')
-> +        self.disable_kernel_crypto_selftest()
->           if enable_pcie:
->               self.enable_ast2700_pcie2()
-> +        else:
-> +            exec_command(self, 'boot')
->           wait_for_console_pattern(self, 'Linux version ')
+>       trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
 >   
->       def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> index cc62a915b5..ed414999f4 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> @@ -51,9 +51,11 @@ def verify_vbootrom_firmware_flow(self):
->           wait_for_console_pattern(self, 'pass')
->           wait_for_console_pattern(self, 'Jumping to BL31 (Trusted Firmware-A)')
+> @@ -665,6 +667,17 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>               break;
+>           }
+>           bus->regs[R_I2CM_INTR_STS] &= ~(value & 0xf007f07f);
+> +        /*
+> +         * Re-apply interrupts lost due to synchronous command completion.
+> +         * When a command completes instantly during an MMIO write, the new
+> +         * interrupt status bits collide with already-pending bits. After
+> +         * the ISR clears them, re-apply the saved bits so the ISR can
+> +         * process the new completion.
+> +         */
+> +        if (bus->pending_intr_sts) {
+> +            bus->regs[R_I2CM_INTR_STS] |= bus->pending_intr_sts;
+> +            bus->pending_intr_sts = 0;
+> +        }
+>           if (!bus->regs[R_I2CM_INTR_STS]) {
+>               bus->controller->intr_status &= ~(1 << bus->id);
+>               qemu_irq_lower(aic->bus_get_irq(bus));
+> @@ -708,7 +721,17 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+>               bus->regs[R_I2CM_CMD] = value;
+>           }
 >   
-> +    def disable_kernel_crypto_selftest(self):
-> +         exec_command_and_wait_for_pattern(self,
-> +            'setenv bootargs "${bootargs} cryptomgr.notests=1"', '=>')
-> +
->       def enable_ast2700_pcie2(self):
-> -        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> -        exec_command_and_wait_for_pattern(self, '\012', '=>')
->           exec_command_and_wait_for_pattern(self,
->               'cp 100420000 403000000 900000', '=>')
->           exec_command_and_wait_for_pattern(self,
-> @@ -67,8 +69,13 @@ def enable_ast2700_pcie2(self):
+> +        old_intr = bus->regs[R_I2CM_INTR_STS];
+> +        bus->regs[R_I2CM_INTR_STS] = 0;
+>           aspeed_i2c_bus_handle_cmd(bus, value);
+> +        /*
+> +         * cmd_intr has only the bits handle_cmd freshly set.
+> +         * Overlap with old_intr means the same bit was re-fired
+> +         * and would be lost when the ISR W1C-clears the old one.
+> +         */
+> +        cmd_intr = bus->regs[R_I2CM_INTR_STS];
+> +        bus->regs[R_I2CM_INTR_STS] = cmd_intr | old_intr;
+> +        bus->pending_intr_sts |= old_intr & cmd_intr;
+>           aspeed_i2c_bus_raise_interrupt(bus);
+>           break;
+>       case A_I2CM_DMA_TX_ADDR:
+> @@ -845,6 +868,8 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+>   {
+>       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
+>       bool handle_rx;
+> +    uint32_t old_intr;
+> +    uint32_t cmd_intr;
 >   
->       def verify_openbmc_boot_start(self, enable_pcie=True):
->           wait_for_console_pattern(self, 'U-Boot 2023.10')
-> +        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> +        exec_command_and_wait_for_pattern(self, '\012', '=>')
-> +        self.disable_kernel_crypto_selftest()
->           if enable_pcie:
->               self.enable_ast2700_pcie2()
-> +        else:
-> +            exec_command(self, 'boot')
->           wait_for_console_pattern(self, 'Linux version ')
+>       trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
 >   
->       def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> index f68f40a1bf..df889134ed 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> @@ -27,9 +27,11 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
+> @@ -868,6 +893,17 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+>           handle_rx = SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CD_INTR_STS, RX_DONE)
+>                       && SHARED_FIELD_EX32(value, RX_DONE);
+>           bus->regs[R_I2CD_INTR_STS] &= ~(value & 0x7FFF);
+> +        /*
+> +         * Re-apply interrupts lost due to synchronous command completion.
+> +         * When a command completes instantly during an MMIO write, the new
+> +         * interrupt status bits collide with already-pending bits. After
+> +         * the ISR clears them, re-apply the saved bits so the ISR can
+> +         * process the new completion.
+> +         */
+> +        if (bus->pending_intr_sts) {
+> +            bus->regs[R_I2CD_INTR_STS] |= bus->pending_intr_sts;
+> +            bus->pending_intr_sts = 0;
+> +        }
+>           if (!bus->regs[R_I2CD_INTR_STS]) {
+>               bus->controller->intr_status &= ~(1 << bus->id);
+>               qemu_irq_lower(aic->bus_get_irq(bus));
+> @@ -915,7 +951,17 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+>           bus->regs[R_I2CD_CMD] &= ~0xFFFF;
+>           bus->regs[R_I2CD_CMD] |= value & 0xFFFF;
 >   
->           self.vm.launch()
->   
-> +    def disable_kernel_crypto_selftest(self):
-> +         exec_command_and_wait_for_pattern(self,
-> +            'setenv bootargs "${bootargs} cryptomgr.notests=1"', '=>')
-> +
->       def enable_ast2700_pcie2(self):
-> -        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> -        exec_command_and_wait_for_pattern(self, '\012', '=>')
->           exec_command_and_wait_for_pattern(self,
->               'cp 100420000 403000000 900000', '=>')
->           exec_command_and_wait_for_pattern(self,
-> @@ -43,6 +45,9 @@ def enable_ast2700_pcie2(self):
->   
->       def verify_openbmc_boot_and_login(self, name):
->           wait_for_console_pattern(self, 'U-Boot 2023.10')
-> +        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
-> +        exec_command_and_wait_for_pattern(self, '\012', '=>')
-> +        self.disable_kernel_crypto_selftest()
->           self.enable_ast2700_pcie2()
->           wait_for_console_pattern(self, 'Starting kernel ...')
->   
+> +        old_intr = bus->regs[R_I2CD_INTR_STS];
+> +        bus->regs[R_I2CD_INTR_STS] = 0;
+>           aspeed_i2c_bus_handle_cmd(bus, value);
+> +        /*
+> +         * cmd_intr has only the bits handle_cmd freshly set.
+> +         * Overlap with old_intr means the same bit was re-fired
+> +         * and would be lost when the ISR W1C-clears the old one.
+> +         */
+> +        cmd_intr = bus->regs[R_I2CD_INTR_STS];
+> +        bus->regs[R_I2CD_INTR_STS] = cmd_intr | old_intr;
+> +        bus->pending_intr_sts |= old_intr & cmd_intr;
+>           aspeed_i2c_bus_raise_interrupt(bus);
+>           break;
+>       case A_I2CD_DMA_ADDR:
 
 

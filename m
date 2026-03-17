@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BD7FED9F6
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F4CFED9EF
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 17:52:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2YX6-0003Ui-85; Tue, 17 Mar 2026 13:48:44 -0400
+	id 1w2YXa-0003uT-K6; Tue, 17 Mar 2026 13:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YWZ-0003Nb-07
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:18 -0400
-Received: from mail-dl1-x122e.google.com ([2607:f8b0:4864:20::122e])
+ id 1w2YXN-0003cc-9D
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:49:01 -0400
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1w2YWV-0006zN-MS
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:09 -0400
-Received: by mail-dl1-x122e.google.com with SMTP id
- a92af1059eb24-127380532eeso802686c88.1
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:48:06 -0700 (PDT)
+ id 1w2YXH-00075C-LJ
+ for qemu-arm@nongnu.org; Tue, 17 Mar 2026 13:48:57 -0400
+Received: by mail-dy1-x1335.google.com with SMTP id
+ 5a478bee46e88-2beab594d8eso646011eec.0
+ for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 10:48:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773769686; x=1774374486; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773769734; x=1774374534; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
- b=gy5vc7i+dX01o5EmThHVeMQ0foW3M9hb8vZf6KPkNHm0oJU7Xjtqn6Jf3nnHacdqqT
- zcDzoVte/RSBRHppxgeIAQN8LMHwXYC9i7jkwAUiVC2huxSr24RUpRPkr55xsKTwcT5d
- 6vYFMOLrrr9VzTn38mi7+lTsMtKY4VAGBVvo1lFEUWMbdDldCz90UiikjkpF9jky8N4r
- 6GN1UwBTtFppIeaRXiydLZ8FWNBpsTG5FG0e8Fr/STNBxBI+5bf+pV7q/3rsC1vrLzoM
- odUPIyIFeCUkqpJ5d8hUEqnKnm9vrL7NVf60ALT6xITQuvi0l3PpoBkHv/9wWg6MjaAQ
- HfYg==
+ bh=Okui3+LoiEw6Ead0/iU3+dwFPXpVpxuXn0Pb9e4RdJE=;
+ b=Srkct72KVBpskW4PenA7z/KmiMedFK3gMmdf1rvjwjDF8dtoTgPVCrMjd/KcL1QxV0
+ g0nODKKjV7DYV6o3hCZnIuVqTwzPtQ5xARGDGKE5WIGHaAV7fHE1Hrm7ejHjvsACTneB
+ sGsF95WvE7GE/xt4+6Ud6lsCw/C71wlSs6dGCmkBBv3JRllPZSjkh9X9ZtT1AdQ5/MM/
+ NdC5kpdD3FMFWal+VcGndlhhTRuwNTw087l2beA1q3sn3GH+lB/r1A5+7zy42j3ZDtos
+ 8rp2SL8Wez4PIPM7xtxSB5KDLatezjOGLJZS/npQ3imi3eTZnXMRiWqB4upss+VCDnn+
+ MXpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773769686; x=1774374486;
+ d=1e100.net; s=20251104; t=1773769734; x=1774374534;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=sMIe4BH1dC23aKjJXdUIHsVXt5i12Nl20FH16xA6kBU=;
- b=PSay6YNIF3FaxItbyLKGS16URMxj6PNUQS3SHbnXF95jVAJE+4h5HSAuJc4uILD92g
- 9OuTFD+CsDzjNLUNx5VFjRqBCKDDOQt8FRHpLYdV5+ywSZajsNvA5g1DoNtkp7HJ1fUY
- MH2ZGm1ZamIAWd3xJu+9+c683xyIK8agQ1W5g4Wwir9ZDxh6/ypZ5OqSn0MFzgRdee/m
- JVydpzEcshvLUojuo0/b+O1jPYMU1aiZcpKFPda9ab4PhLb9gg5AI+d72GX3ff2/67ni
- HZwyZmpuZ7q3f7hUSJhJlaNyR/pLlP4sh9zJ/HAYK7vabzCu5K1I7Uqqxl4c9UZrWase
- ueWw==
-X-Gm-Message-State: AOJu0YxIZ1C6BbpbhUM0WOktFta/oMQ7Divrz157nynx573R9rHfeGJP
- 8Ut5MErDRwlCvxRG+meQ5MBTJteQRlcJ7PF1WHL0dwsoXuEfxi4Xtxg1
-X-Gm-Gg: ATEYQzz31ueCdBcA+14UKl1qkUkQgQ1DqyIkt9IM240e/BotlDZmNGitF2MvoW010PM
- uzaHgpfzZey1whN6gFpMVMrcrMBlXa/kVgCxXtnjnayMrPwDaEOuPFXuBt9F0VWJfnK221ia32r
- UaA2sIpAhxhnBcAEQBrkyjQS5pAbRNv991QIff2keeh4aHpJNmfzIwC9Aq84DTQw1Z8cd+HD9IJ
- 8wdYtHOYqFcbJESau13Q5SQ3D0FEkswdAvdWkI5fqJg64wWzrtUPk78Pr0kQCafcKvrI2H/pZYk
- 3iyFQ9ZvjNMqUAcvqcBq21SJabMMzoHxnryWEmfFCZViKcQqEBrVrRgrchTDw83QugIHleV1TpK
- 6/PSaxDPQ/kAybkW7Xx5Ncoo5/MrqX8Bizcb0CldSL58IH12cTXDFWfn2rt/BOs/gCwcViiagOl
- 0tr8zFonFvz6+gW50s8pIz/TxuSEyWN7d0b8jAuONN6MKKp0EV4y9J
-X-Received: by 2002:a05:7022:6085:b0:128:d202:883 with SMTP id
- a92af1059eb24-1299ba11ebdmr242073c88.3.1773769685544; 
- Tue, 17 Mar 2026 10:48:05 -0700 (PDT)
+ bh=Okui3+LoiEw6Ead0/iU3+dwFPXpVpxuXn0Pb9e4RdJE=;
+ b=T6CznNN4rwmFiLlMvr2aOU2SNlRRIfLxFGFQKEXg0xRLAQhOvCd1H3XendOfI/6Zla
+ /kSSYAMihRtqUueMXcBo2Astj1hRq7BGHiZQ4eeDay7bjq5/kZsoPdkdluVItICmoZzO
+ 0v14oxQoy8wcWfF3BSlNSIoaqGgGXSvROLTAouoGTEuuI3BUFwOT4I6KxA/Iojz9Vw3s
+ WLarrtSEugEAooi/5XWkTEH3CXBkH3GHeJb6UrUpmCvH9og5QXWditXLfOKgZHEFLCdY
+ GIn+aPD80hhSt6YIFGygQiWGIbYIxzC8gFCJrz877+/qFHD2th5p1vQZVEq60ly/C4in
+ QacQ==
+X-Gm-Message-State: AOJu0YyITLmfONOFrx/w9KtztxZVXaPxnCm/dxZJkACtRlmrzPF5YJEI
+ VGAjQYTGHju4ObGYqbLZgyx4MgmODPcuoDjAaeLsdDXx4WAAPwLzGUOh
+X-Gm-Gg: ATEYQzzIXT9bXhzopBfHcxPPCaEx1Ps5CvC9DXdgzh+7XUdcKm8PtX7rFs3UeYHX27x
+ qu56G/eydrM+/3AOgPsUJrFXkt/SQZkrPut1rZMipFvBsQdwAd65zfse89uLVKKOpH9hi6Qlnno
+ 4qpgoierVZnXKElDnvRF8Iiv0kbJuYzcMTVf68K0yJnLMXaCPcYqggOiOfwfCJKiV2dQw7Dr0qM
+ ZKfjlWw6nzVaBI7AXz8De6IiRWM0zA1h+qUnk2PHZq5+47ZO5ttOxtvzuSJKV2v8ekBi3UdB2ZJ
+ gZjylBa24aLxwAHs02M8q+nH/9SYVmAinLMZL68G524Cx8OnrrOsKr+L25ANG6uY4QdIR7kngcE
+ XznOwkdvvQNVrj0hKSOYaWwv52IUud+qPV38a8pT9gWhwr3hb8blifueWgFZ1y5YPe0Hd2I46uA
+ VvJcGZuqHFTOtKIElUO/Gsty1Ejqihh5g5xKE6GN8jqIw+3O9ZSy8o
+X-Received: by 2002:a05:7301:1691:b0:2bd:c8a2:954 with SMTP id
+ 5a478bee46e88-2c0e5041a17mr182287eec.24.1773769734014; 
+ Tue, 17 Mar 2026 10:48:54 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.51])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-129b4147522sm281844c88.15.2026.03.17.10.47.55
+ 5a478bee46e88-2c0e5583533sm190487eec.18.2026.03.17.10.48.51
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 17 Mar 2026 10:48:05 -0700 (PDT)
+ Tue, 17 Mar 2026 10:48:53 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- mohamed@unpredictable.fr, alex.bennee@linaro.org,
- Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [PATCH v5 2/6] target/arm/emulate: add load/store register offset
-Date: Tue, 17 Mar 2026 14:47:36 -0300
-Message-ID: <20260317174740.31674-3-lucaaamaral@gmail.com>
+ mohamed@unpredictable.fr, Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v4 1/3] virtio-gpu: validate host page alignment for MAP_FIXED
+ blobs
+Date: Tue, 17 Mar 2026 14:48:43 -0300
+Message-ID: <20260317174845.31768-2-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317174740.31674-1-lucaaamaral@gmail.com>
-References: <20260317174740.31674-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260317174845.31768-1-lucaaamaral@gmail.com>
+References: <20260317174845.31768-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122e;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1335;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,190 +101,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add emulation for load/store register offset addressing mode
-(DDI 0487 C3.3.9).  The offset register value is extended via
-UXTB/UXTH/UXTW/UXTX/SXTB/SXTH/SXTW/SXTX and optionally
-shifted by the element size.
+Commit 4eb0aace ("virtio-gpu: Support mapping hostmem blobs with
+map_fixed") uses mmap(MAP_FIXED) to map blob resources into a
+pre-allocated hostmem region.  Both the offset and size passed to
+mmap must be aligned to the host page size, but the code does not
+validate this.
 
-Instruction coverage:
-  - STR/LDR (GPR): register offset with extend, all sizes
-  - STR/LDR (SIMD/FP): register offset with extend, 8-128 bit
-  - PRFM register offset: NOP
+On hosts where qemu_real_host_page_size() exceeds the guest's page
+size (e.g. ARM64 with 16KB or 64KB pages, macOS ARM64), the guest
+may provide blob offsets aligned to its own page size (4KB) but not
+to the host's.  This causes mmap(MAP_FIXED) to fail with EINVAL,
+and the subsequent unmap (which also uses mmap MAP_FIXED) fails the
+same way, producing:
 
+  virtio_gpu_virgl_unmap_resource_blob: failed to unmap(fixed)
+  virgl resource: Invalid argument
+
+Add an alignment check before attempting MAP_FIXED.  When the offset
+or blob size is not host-page-aligned, skip the MAP_FIXED path and
+fall through to the existing subregion method, which handles any
+alignment.
+
+Fixes: 4eb0aace ("virtio-gpu: Support mapping hostmem blobs with map_fixed")
 Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
 ---
- target/arm/emulate/a64-ldst.decode |  29 ++++++++
- target/arm/emulate/arm_emulate.c   | 103 +++++++++++++++++++++++++++++
- 2 files changed, 132 insertions(+)
+ hw/display/virtio-gpu-virgl.c | 45 +++++++++++++++++++++--------------
+ 1 file changed, 27 insertions(+), 18 deletions(-)
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index c887dcba..af6babe1 100644
---- a/target/arm/emulate/a64-ldst.decode
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -10,6 +10,9 @@
- # 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
- &ldst_imm       rt rn imm sz sign w p unpriv ext u
+diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+index b7a2d160..f6583b48 100644
+--- a/hw/display/virtio-gpu-virgl.c
++++ b/hw/display/virtio-gpu-virgl.c
+@@ -185,25 +185,34 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+         return -EBUSY;
+     }
  
-+# Load/store register offset
-+&ldst           rm rn rt sign ext sz opt s
+-    ret = virgl_renderer_resource_map_fixed(res->base.resource_id,
+-                                            gl->hostmem_mmap + offset);
+-    switch (ret) {
+-    case 0:
+-        res->map_fixed = gl->hostmem_mmap + offset;
+-        return 0;
+-
+-    case -EOPNOTSUPP:
+-        /*
+-         * MAP_FIXED is unsupported by this resource.
+-         * Mapping falls back to a blob subregion method in that case.
+-         */
+-        break;
++    /*
++     * MAP_FIXED requires host-page-aligned offset and size.  Hosts with
++     * page sizes larger than the guest's (e.g. 16KB on ARM64) may receive
++     * non-aligned blob offsets.  Fall through to the subregion method when
++     * alignment requirements are not met.
++     */
++    if (QEMU_IS_ALIGNED(offset, qemu_real_host_page_size()) &&
++        QEMU_IS_ALIGNED(res->base.blob_size, qemu_real_host_page_size())) {
++        ret = virgl_renderer_resource_map_fixed(res->base.resource_id,
++                                                gl->hostmem_mmap + offset);
++        switch (ret) {
++        case 0:
++            res->map_fixed = gl->hostmem_mmap + offset;
++            return 0;
 +
- ### Format templates
++        case -EOPNOTSUPP:
++            /*
++             * MAP_FIXED is unsupported by this resource.
++             * Mapping falls back to a blob subregion method in that case.
++             */
++            break;
  
- # Load/store immediate (9-bit signed)
-@@ -21,6 +24,9 @@
- # Load/store unsigned offset (12-bit, handler scales by << sz)
- @ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
+-    default:
+-        qemu_log_mask(LOG_GUEST_ERROR,
+-                      "%s: failed to map(fixed) virgl resource: %s\n",
+-                      __func__, strerror(-ret));
+-        return ret;
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: failed to map(fixed) virgl resource: %s\n",
++                          __func__, strerror(-ret));
++            return ret;
++        }
+     }
+ #endif
  
-+# Load/store register offset
-+@ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
-+
- ### Load/store register — unscaled immediate (LDUR/STUR)
- 
- # GPR
-@@ -122,6 +128,29 @@ STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=
- LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
- LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
- 
-+### Load/store register — register offset
-+
-+# GPR
-+STR             sz:2 111 0 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR             00 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=0
-+LDR             01 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=1
-+LDR             10 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=2
-+LDR             11 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=3
-+LDR             00 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=0
-+LDR             01 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=1
-+LDR             10 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=2
-+LDR             00 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=0
-+LDR             01 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=1
-+
-+# PRFM — register offset
-+NOP             11 111 0 00 10 1 ----- -1- - 10 ----- -----
-+
-+# SIMD/FP
-+STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+
- ### System instructions — DC cache maintenance
- 
- # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index 02fefc30..bf09e2a6 100644
---- a/target/arm/emulate/arm_emulate.c
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -211,6 +211,109 @@ static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
-     return true;
- }
- 
-+/* Register offset extension (DDI 0487 C6.2.131) */
-+
-+static uint64_t extend_reg(uint64_t val, int option, int shift)
-+{
-+    switch (option) {
-+    case 0: /* UXTB */
-+        val = (uint8_t)val;
-+        break;
-+    case 1: /* UXTH */
-+        val = (uint16_t)val;
-+        break;
-+    case 2: /* UXTW */
-+        val = (uint32_t)val;
-+        break;
-+    case 3: /* UXTX / LSL */
-+        break;
-+    case 4: /* SXTB */
-+        val = (int64_t)(int8_t)val;
-+        break;
-+    case 5: /* SXTH */
-+        val = (int64_t)(int16_t)val;
-+        break;
-+    case 6: /* SXTW */
-+        val = (int64_t)(int32_t)val;
-+        break;
-+    case 7: /* SXTX */
-+        break;
-+    }
-+    return val << shift;
-+}
-+
-+/*
-+ * Load/store single -- register offset (GPR)
-+ * STR / LDR (DDI 0487 C3.3.9)
-+ */
-+
-+static bool trans_STR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+
-+    uint64_t val = gpr_read(ctx, a->rt);
-+    mem_write(ctx, va, &val, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, esize) != 0) {
-+        return true;
-+    }
-+
-+    val = load_extend(val, a->sz, a->sign, a->ext);
-+    gpr_write(ctx, a->rt, val);
-+    return true;
-+}
-+
-+/*
-+ * Load/store single -- register offset (SIMD/FP)
-+ * STR_v / LDR_v (DDI 0487 C3.3.10)
-+ */
-+
-+static bool trans_STR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    fpreg_read(ctx, a->rt, buf, esize);
-+    mem_write(ctx, va, buf, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    if (mem_read(ctx, va, buf, esize) != 0) {
-+        return true;
-+    }
-+
-+    fpreg_write(ctx, a->rt, buf, esize);
-+    return true;
-+}
-+
- /* PRFM, DC cache maintenance -- treated as NOP */
- static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
- {
 -- 
 2.52.0
 

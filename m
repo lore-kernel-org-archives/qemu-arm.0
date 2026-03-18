@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0142F103E160
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 10:49:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91929103E161
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 10:49:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2oQm-0003ax-J8; Wed, 18 Mar 2026 06:47:16 -0400
+	id 1w2oQl-0003aN-8O; Wed, 18 Mar 2026 06:47:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w2oQj-0003Z8-Sx
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:13 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1w2oQg-0003XQ-Pp
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:12 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w2oQh-0003NO-Pl
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:13 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4852a9c6309so56025085e9.0
- for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 03:47:11 -0700 (PDT)
+ id 1w2oQf-0003Ml-1P
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:10 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-485409ab264so5822915e9.1
+ for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 03:47:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773830830; x=1774435630; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773830827; x=1774435627; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cdLYTX5XCu0aJDUj9OehAyMtHZ53fPtprEnUaqi5uyI=;
- b=MmLlMUgr7h0HzJdiQc5LY0LyXhN7XSPEFk19SYVebhHZ3OGC8MZ36I1A3b85fmOCPZ
- /iK17AxS9n6/jV2f/Osun2/vBG9u/e3MNyi+1zk/IjghlXJl82P9DSRwETBfGEPz/Gen
- UwsxU/YSEX64mgdmadKMz1fPlKanJ/mV3OWjEMnZbkTQxLf9jZ5cyQNlU9mYhAbKypTW
- JAfRIfR396/4OsFlW1JvfNfnaXGiifXPwV1clAuiBZ2Ku2HeZroN8w+xjtmwjsxGRX+z
- cMUfZ7WnXgfQmXYrrnajwpdHKex8NZ/sasXAwnMgq7iW6iQTwm86OMgVKpBdR2jaZ0yd
- +rtA==
+ bh=RXbm6LZc46i8z/YUVSg+0qi3TRX5Dk3YHcYXiwqEKZc=;
+ b=aRWPH/SL1bZzMeqyPSW4wr70fLn6HSOw82IstzcKCR5whYnieMiMZgTOqBRaECbgB4
+ JuWP1+u2ldiVUPwG8eN6v3Vl+GpI+vsqE7CerEEcno2NglDtnN0qMMdp+Mto6GTnRomI
+ cd/kv/PjwQdLQa6iBrNUjOX/pS9fDGY7azZXXUX4y9RaW7iUtvqepknecLln4z28kvFt
+ NdzFzXG1YFh5tAm7AgI/6NHmKE9os7scGCrQ2fFdFp9oe3z12PW7YRd9bdD+kOLHlfag
+ +mRFqsbImRvjDnhSNlojqoDAmlKiSp1e5aRyFVrRM5Zq5vwZ6ThYghhmujUFl09kTo9W
+ FLgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773830830; x=1774435630;
+ d=1e100.net; s=20251104; t=1773830827; x=1774435627;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=cdLYTX5XCu0aJDUj9OehAyMtHZ53fPtprEnUaqi5uyI=;
- b=kFgoKSQPJsFcl2EJnYBfqM/sZbZlNQIwR+n7IlcRZp23ahr4fqueNEhlOTrrblsDU8
- a1B2aA9unQkgI6lZbTGMt5nMDzfF/HUymVmJAXFVkXn4looA3sTq9PcvyNjNe/i3PQu3
- p4IKYPGyGkfkR6DEYcdyd1ege7zA/X1Y9s4weEFesLODiqpBeQzrT/DuAI/mTBDnzWUU
- MhisDLVjadRt5LTxTluBJ3ucm9VM5Sy+CZmQL2dhfZ57sXp0EMwxdwnrRkQKBNitZlvx
- le8uz8OoBxfHXqAy90uRdDZiiCGvmzVlDPNAtMG1eZf1qtSI/cArWiiVEkjF6msMsXDg
- 22Ow==
-X-Gm-Message-State: AOJu0YzdNiF4MQOwzbJ82HhtqIEjcO4K2BsSNmckG5HTbAzy+sFsyHUO
- ZKH7rW2m5jlu12W6qOqRGb8qA9DKg8BsOLJ4coqCEfxMeAKICHzJOD6a
-X-Gm-Gg: ATEYQzxIZp041XRjYySN58B3C9DxJ7ZLL5WLoy+iJKINazIgHYRPCRuzXbOZTNKPTmf
- 1uvxdeXhIZ/Sy4hYfIv/sNiaf4wnP3n6a6LRInXTerQiiMz1vt0pIoJPfNGNmy1XsbLiW4uPcjn
- 1ExHcr6oDs21Y9925HsuWosHuj3Z3IkPAleBSEQ2wwaFlV+jdAp1Pow/KSwRdwICql5bGrqnGnj
- nCMKv7Lnf9TNVkEccZX63fb31ammzSGWCOQT8gGM3e6y0VBFCsWH4oB91XRq9n1bGbT2SVLzFJU
- iga9TzzoFputEER4mfiNHRigoTNsnUFGRGSkL4VBAt79GDaw3K38CAiKwCXSEP7dOF5BlpGwhBk
- sg6moTdIF4CHvyYcpGplqlhd7lJhHkVFetAkZIinaxgU5AV+XXQi9nYBup64bZAJqfdm22kwYuN
- gJtzuo6grfbpC0LX9XWJ6fCta2mlJJ8Oohh/Tvqz/dORmfOJC6u7cbh+H9GEpsEXeyqg==
-X-Received: by 2002:a05:600c:1d0b:b0:485:45fb:3472 with SMTP id
- 5b1f17b1804b1-486f441bacdmr48347585e9.7.1773830830190; 
- Wed, 18 Mar 2026 03:47:10 -0700 (PDT)
+ bh=RXbm6LZc46i8z/YUVSg+0qi3TRX5Dk3YHcYXiwqEKZc=;
+ b=KmVM6FHw/Yswj4W2AJhBoY4Wa4djv0CNtMvpdvSoHWJOh0gBK9ioiQca8WNqR1/Gcj
+ Bnz8q93h/aQ2g+0e4z3ls0jJaQG6RoeP5Hn0/fDAduQLnChpQWbjqZSF2arwhJCFYVjW
+ ro59qePBTfTTuF51q4GXX4Y4m28SDGc06QyoU7YMXZarGGtSVDObA7/FhzYJKJs6pmGG
+ VVVxIlYOaz7et0JikUEklIqmppem93kZpS8odKq7AXovkGHm1Kb9fjnwGFP1whMlSk69
+ oH6dbIBhSg51tQMqPl4eDr8vn3ubMCF/TzhtTjKrgjzvBuOwJ4OOtgJbdXsGHmIRfaHT
+ Ozwg==
+X-Gm-Message-State: AOJu0YxVy7ncJsjjjDsbGQOagsZPLVuZ8b5w+dWU5GA+WbCwFFSnmIAz
+ 3RJ9ZPcNei/PukUVFTr6kUN30y3c3rMRk6AWS5AY4hxynuV7txSkIM36
+X-Gm-Gg: ATEYQzwHJq4q3ECKF1GU3IcDCEtzv5y7vTLXA+bGtDRGl3Z9ogP2tlQeb7hz6S9OzFg
+ 8z3oRlIYfSUxh/oQrorBWhFjCYcixKe5BksOm2CslRxlZXOS7WGl2zeM7cilGE9grlboPGDNu7+
+ ofW946pesL/5/QuMq/2NBCoW6mjjTTLuIv1remVyT6Pq5ISRnOiVQPs5lXTdPKAHWrxniynsybe
+ uWYhFqDdohy/XdN2SEtiIXAuQScrwgTDHHFfodrPvABBQkRVX4Z0d6wxjv2M+kFtmFW+YWNYPK9
+ lEBbOXpTJaHxcrO1TUEdSbVeIUZIuAwZhyRINsh9YJIeX5Ahj11dJbz5WNBYrk6JmgwVyf2Jdjd
+ VQlrE7wfAYIEHlAvUBqr/wJl758htVRQgkurybuQhDjmx1hOMGQEGXUPZkRtfHdQ9Nk2XlDvoOk
+ vlD/vw87t6Ur5G/BgUDd8TbtvzVmlP2UgZO4JvvHRMoluJtNhRjGQOpW72eiVtzR8HPXhtYIxFU
+ 02l
+X-Received: by 2002:a05:600c:314c:b0:485:3989:b3e4 with SMTP id
+ 5b1f17b1804b1-486f40ab752mr45145435e9.6.1773830827346; 
+ Wed, 18 Mar 2026 03:47:07 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-80-194.adsl.net.t-com.hr.
  [93.143.80.194]) by smtp.googlemail.com with ESMTPSA id
- 5b1f17b1804b1-486f420de8asm56471095e9.3.2026.03.18.03.47.08
+ 5b1f17b1804b1-486f420de8asm56471095e9.3.2026.03.18.03.47.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Mar 2026 03:47:09 -0700 (PDT)
+ Wed, 18 Mar 2026 03:47:06 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  alex.bennee@linaro.org, peter.maydell@linaro.org,
  pierrick.bouvier@linaro.org, philmd@linaro.org, Ruslan_Ruslichenko@epam.com
-Subject: [RFC PATCH 9/9] docs: Add description of fault-injection plugin and
- subsystem
-Date: Wed, 18 Mar 2026 11:46:40 +0100
-Message-ID: <20260318104640.239752-10-ruslichenko.r@gmail.com>
+Subject: [RFC PATCH 7/9] hw/arm/smmuv3: Add plugin fault handler for CMDQ
+ errors
+Date: Wed, 18 Mar 2026 11:46:38 +0100
+Message-ID: <20260318104640.239752-8-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260318104640.239752-1-ruslichenko.r@gmail.com>
 References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,132 +105,95 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch introduce documentation for newly added Fault Injection
-plugin and subsystem.
+Register custom 'smmu_gerror_cmdq' handler within plugin subsystem.
+
+This enables external plugins to dynamically inject Command Queue
+errors and trigger GERROR interrupts.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- docs/fault-injection.txt | 111 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
- create mode 100644 docs/fault-injection.txt
+ hw/arm/smmuv3.c | 54 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
-diff --git a/docs/fault-injection.txt b/docs/fault-injection.txt
-new file mode 100644
-index 0000000000..05cbd48136
---- /dev/null
-+++ b/docs/fault-injection.txt
-@@ -0,0 +1,111 @@
-+QEMU FAULT INJECTION PLUGIN DOCUMENTATION
-+=========================================
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index c08d58c579..e80b80e843 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -27,6 +27,8 @@
+ #include "hw/pci/pci.h"
+ #include "cpu.h"
+ #include "exec/target_page.h"
++#include "qemu/plugin.h"
++#include "qom/object.h"
+ #include "trace.h"
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
+@@ -42,6 +44,55 @@
+                                         ((ptw_info).stage == SMMU_STAGE_2 && \
+                                         (cfg)->s2cfg.record_faults))
+ 
++static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
++                               uint32_t gerror_mask);
 +
-+OVERVIEW
-+--------
-+The Fault Injection (FI) plugin is a testing tool for guest operating systems running in QEMU. It allows you to test how a guest OS or driver handles hardware-level errors. Currently, only AArch64 (ARM64) guest systems are supported.
++typedef struct {
++    uint64_t base_addr;
++    Object *found_obj;
++} SMMUSearchArgs;
 +
-+Errors (faults) can be injected in two ways:
-+1. Statically using a configuration file when QEMU starts.
-+2. Dynamically using a UNIX socket while the system is running.
++static int smmu_match_addr_cb(Object *obj, void *opaque)
++{
++    SMMUSearchArgs *args = (SMMUSearchArgs *)opaque;
 +
++    if (object_dynamic_cast(obj, TYPE_ARM_SMMUV3)) {
++        SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
 +
-+USAGE
-+-----
-+To use the plugin, add the "-plugin" option to the QEMU command.
++        if (sbd->mmio[0].addr == args->base_addr) {
++            args->found_obj = obj;
++            return 1;
++        }
++    }
 +
-+Command Line Examples:
++    return 0;
++}
 +
-+1. Using a static XML config file:
-+qemu-system-aarch64 -machine virt -cpu cortex-a57 -plugin ./contrib/plugins/libfault_injection.so,config=faults.xml
++static void smmu_inject_gerror_cmdq(void *target_data, void *fault_data)
++{
++    uint64_t base_address = *(uint64_t *)target_data;
++    SMMUCmdError cmd_error = *(SMMUCmdError*)fault_data;
++    Object *obj = NULL;
 +
-+2. Using a dynamic UNIX socket:
-+qemu-system-aarch64 -machine virt -cpu cortex-a57 -plugin ./contrib/plugins/libfault_injection.so,socket=/tmp/fi_socket.sock
++    if (base_address) {
++        SMMUSearchArgs args = { .base_addr = base_address, .found_obj = NULL };
++        object_child_foreach_recursive(object_get_root(), smmu_match_addr_cb, &args);
 +
-+3. Using both at the same time:
-+qemu-system-aarch64 -machine virt -cpu cortex-a57 -plugin ./contrib/plugins/libfault_injection.so,config=faults.xml,socket=/tmp/fi_socket.sock
++        obj = args.found_obj;
++    } else {
++        obj = object_resolve_path_type("", TYPE_ARM_SMMUV3, NULL);
++    }
 +
-+To send a dynamic fault over the socket while QEMU is running, an XML string can be sent directly to the socket file.
++    if (!obj) {
++        return;
++    }
 +
++    SMMUv3State *s = ARM_SMMUV3(obj);
 +
-+CORE CONCEPTS
-+-------------
-+A fault configuration has two main parts:
-+- Trigger: When should the fault happen? (Example: when the CPU reaches a specific address).
-+- Target: What should be corrupted or injected? (Example: change a CPU register).
++    smmu_write_cmdq_err(s, cmd_error);
++    smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
++}
 +
-+SUPPORTED TRIGGERS:
-+- PC      : Triggers when the CPU executes an instruction at a specific Virtual Address.
-+- SYS_REG : Triggers when the guest reads a specific System Register (like cntvct_el0).
-+- RAM     : Triggers when the guest accesses a specific Virtual Address in memory.
-+- MMIO    : Triggers when the guest reads from a hardware device at a Physical Address.
-+- TIMER   : Triggers at a specific guest virtual time (in nanoseconds).
+ /**
+  * smmuv3_trigger_irq - pulse @irq if enabled and update
+  * GERROR register in case of GERROR interrupt
+@@ -2130,6 +2181,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+     dc->hotpluggable = false;
+     dc->user_creatable = true;
+ 
++    plugin_register_custom_fault("smmu_gerror_cmdq",
++                              smmu_inject_gerror_cmdq);
 +
-+SUPPORTED TARGETS:
-+- CPU_REG : Changes a CPU register (x0 to x30).
-+- RAM     : Overwrites physical memory with a fake value.
-+- MMIO    : Modifies a hardware device read with a fake value.
-+- IRQ     : Injects a hardware interrupt into the primary INTC.
-+- EXCP    : Injects a CPU exception (like an SError).
-+- CUSTOM  : Triggers a custom device error (custom handler registered by device model).
-+
-+
-+XML CONFIGURATION FORMAT
-+------------------------
-+The plugin uses a simple XML format. Each fault is defined by a <Fault /> tag. Multiple fault tags can be added inside one file by wrapping them in a <Faults> block.
-+
-+The following attributes can be used in the tag:
-+- trigger           : The event that starts the fault (PC, TIMER, etc.).
-+- trigger_condition : The value needed to activate the trigger (Address, Time, or System Register Name).
-+- target            : The system part to corrupt (CPU_REG, IRQ, etc.). This is optional for RAM and MMIO triggers.
-+- target_data       : The specific ID or address of the target.
-+- fault_data        : The corrupted value to inject.
-+- size              : (Optional) Size in bytes for memory operations. Default is 8.
-+- cpu               : (Optional) CPU index for IRQs. Default is 0.
-+- irq_type          : (Optional) For IRQs. Can be SPI, PPI, or SGI. Default is SPI.
-+- fault_name        : (Optional) Required only for CUSTOM targets (string with the name of the custom fault).
-+
-+
-+EXAMPLES
-+--------
-+
-+Example 1: Corrupt a CPU Register on a Specific Instruction
-+This changes register x1 to 0 when the CPU executes the instruction at virtual address 0xa00002e7714.
-+
-+<Faults>
-+    <Fault trigger="PC" trigger_condition="0xa00002e7714" target="CPU_REG" target_data="1" fault_data="0" />
-+</Faults>
-+
-+
-+Example 2: Modify an MMIO Read
-+When the guest OS tries to read a hardware device at physical address 0x0800FFE8, the plugin ignores the real hardware and returns the fake value 0x0.
-+
-+<Faults>
-+    <Fault trigger="MMIO" trigger_condition="0x0800FFE8" fault_data="0" />
-+</Faults>
-+
-+
-+Example 3: Inject a Hardware Interrupt using a Timer
-+This injects SPI interrupt number 77 into CPU 0 after 10s of virtual guest time and modifies the results of MMIO reads starting at this time.
-+
-+<Faults>
-+    <Fault trigger="TIMER" trigger_condition="10000000000" target="IRQ" target_data="77" fault_data="0" />
-+    <Fault trigger="TIMER" trigger_condition="10000000000" target="MMIO" target_data="0x09050060" fault_data="0x180" />
-+    <Fault trigger="TIMER" trigger_condition="10000000000" target="MMIO" target_data="0x09050064" fault_data="0x0" />
-+</Faults>
-+
-+
-+Example 4: Trigger a Custom SMMUv3 Command Queue Error
-+After 10s of guest virtual time, this injects a custom SMMUv3 Command Queue error into the SMMU device located at 0x09050000.
-+
-+<Faults>
-+    <Fault trigger="TIMER" trigger_condition="10000000000" target="CUSTOM" fault_name="smmu_gerror_cmdq" target_data="0x09050000" fault_data="1" />
-+</Faults>
-+
-+
-+Example 5: Inject a CPU Exception (SError)
-+This injects a Virtual SError (Exception Index 24) when the CPU executes the instruction at 0xffff8000802dfed0. The syndrome register is set to the value 0xbf000002.
-+
-+<Faults>
-+    <Fault trigger="PC" trigger_condition="0xffff8000802dfed0" target="EXCP" target_data="24" fault_data="0xbf000002" />
-+</Faults>
+     object_class_property_set_description(klass, "accel",
+         "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
+         "configured in nested mode for vfio-pci dev assignment");
 -- 
 2.43.0
 

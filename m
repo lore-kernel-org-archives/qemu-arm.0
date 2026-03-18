@@ -4,137 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44AC510854DB
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 09:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED0210706E8
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 10:32:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2nYs-0006tW-8r; Wed, 18 Mar 2026 05:51:34 -0400
+	id 1w2oBk-0001Rv-BJ; Wed, 18 Mar 2026 06:31:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1w2nYl-0006oC-U9; Wed, 18 Mar 2026 05:51:30 -0400
-Received: from mail-eastusazlp170120007.outbound.protection.outlook.com
- ([2a01:111:f403:c101::7] helo=BL0PR03CU003.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1w2nYj-0008JN-V8; Wed, 18 Mar 2026 05:51:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LQ1S7DZfETcFD3UIq4cS7axsS9+uol3GhKDqwHZm2dbPIW0f5bbOyCs0DxOFv7whOIErM00/eG+mz6Pmw8tqnJTJe8C3V6E+HeLWCSLSMbkTn39hoWY1RrgD2q1MAN4hc3xiMbvy9FCGJnyOa/SPPb5lUzOW/b28eL8T9YwZpY6F/GZ5tPpW/PQ5rgsBcRA/+R0CfZaCQQ3iZ6l1/BJSrG+/EezJvRLodmmGhcqmVDqWJkzbDadptW7ejDUjBS52QYlLe1ZxFmwNGKVcFZoN/J8no2IKse9aVA2hwoF68KW3z1wjJ6VZ6r2otj3yn/6fmaxUrfQpIOYwxFfaio3ZfA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=e45tOubEV1Nm3ciW1PyqLWvGd5stQHFAWx1VUL5gJks=;
- b=uHjyfI536rpzvOr0x8d2SIDQYHoRnnv2fF6r9VY8mYKj/0PXpvS28D7uzSHuZrM6Qh8LjUtYlVYglpYgt24meOMMcRfSz3p9B5Ql4ZXh0Vfq4op588Z2kVP1eskHKT9Na5UW/cVqpO4IP4a81BIyjQJ1qiB3DspWt+qV5+/WLAwfhnkViugEKtnwXgt7suqE/41O6Nrice9GCJCS51b6SN/qcK6O43Yq/MjZO9X5I5XpGk/h1NnQE+QPI58+kDFsuaC0bhl8HbQOkPTHZo2CknEvwjL6LjzDMsOjr/5nFx+IXymGsVsSlifLgi614aWbaE/dsunq3LUsvLKbkV5vDw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=e45tOubEV1Nm3ciW1PyqLWvGd5stQHFAWx1VUL5gJks=;
- b=erKfbNxq7i7wKSsTnwd8bVL+Rsv3NTamo5hXNE97o1v6zLSyafq9OgJ7x/GhyYilIhLsgIole3mQ7iwNzh1hvs1nXi1NtSdQl3ENJjE/FnoB1iLKP+QLDjZOIl8gHCHA2VC4xpXgfr2vP3f+tp+beMNIq4MYSRj7HGQuma6lXB72Y0fSONDB69vEQcor7XA/szikG0KKMX+tXi6XBUUKCUBQEC5e1c8yoH0qLPK+BcHkdyISBYo+Nk/xtEMa3EB4CnEDQbYcsSgnk6DrnqcmoE6ZJvK1RSeBHpGvMkR06WWYomCo4K7Rh3tooDF6QKPEShhpiwHrtLut8E/rA63kag==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by LV2PR12MB5944.namprd12.prod.outlook.com (2603:10b6:408:14f::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Wed, 18 Mar
- 2026 09:51:19 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9745.007; Wed, 18 Mar 2026
- 09:51:19 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Nathan Chen <nathanc@nvidia.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-CC: Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael
- S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, Eric Blake
- <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Matt Ochs
- <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
-Subject: RE: [PATCH v3 7/8] hw/arm/smmuv3-accel: Change OAS property to OasMode
-Thread-Topic: [PATCH v3 7/8] hw/arm/smmuv3-accel: Change OAS property to
- OasMode
-Thread-Index: AQHctj1H5Tr6dpomt02YpwDXaaDf6LW0DOTg
-Date: Wed, 18 Mar 2026 09:51:19 +0000
-Message-ID: <CH3PR12MB75483F53015873AA0497F3DFAB4EA@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260317183755.3721625-1-nathanc@nvidia.com>
- <20260317183755.3721625-8-nathanc@nvidia.com>
-In-Reply-To: <20260317183755.3721625-8-nathanc@nvidia.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|LV2PR12MB5944:EE_
-x-ms-office365-filtering-correlation-id: d6def2e5-8bc5-46fa-e5e9-08de84d3e794
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|38070700021|7053199007|22082099003|18002099003|56012099003;
-x-microsoft-antispam-message-info: WXM2vki4Wf5PBDaImehTOudM7hD3fIgkjpBY8SAlgQSo1iBUUTjh6umnqZ1wVjdW6fzxWEQRgF5fdU5HMl7jaQ3299fgxg3RtD8Ii6sSCkCO4JkEeet/JDUMoswQ3dAX5+WkyMsXFWNd210S8PNZpyWyczhcpRfXGZ0knbaK12UC7ndehhk1apF+g8XO80m0aNYxCz+N9Ym0NAegpTpDOmX6AjBqYIIP4w1YtXGQ0+Edu4BxzwF7PEtZLgk0vPB476wahEV/gT940wutJpX3vnBOwv35lu9y1hVwWEFA4YQ9pE6ijgE1Pvyc6AXeVjwz99QKYJtDBmTsgVvRxP+kiCmLtRzhZGQfscNAy8YyCvH/UYwe0EowEXPXtkJCuCnIkxm5SOvp/VR56+GpN/F/3XH+CQ5YC72eutHKnZ+CC4ucY7z8T5urbMZPwvjN4zol+7clxWZTEpstCdSYrg3ICrC0xPs18G/Y/l94SBOJNWsj3bilAlhJnT9eMtdBx6O5eMsy+bFG3KFPM0l0RSsqiMLajX3giYPbhpuhNIusrS3aVeEgeWNYASQkZN58I8GYX2gJ0J9dIA0PM3k+X0MXfWyb7zbrdQRG+F/a0UcpKbewLhwsYS2t2bgt3fa16n5mCiUat3GFJcbM6VNymMpByVQFZIxST9H1poINuSM6a0zv306G+JomUYrgJbVxPsSQmQCKR4h+ykD8YUYLEJI/9xe7xXon0yYWBOU9j6hpRY2cwCPvfl2M1EiLbaB3YdEU9ZeDt8cCrm4hKLAFIHjqPkrDcTEjIZ8wLPUGa116meE=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(38070700021)(7053199007)(22082099003)(18002099003)(56012099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?3QlDGb3ohmv3iTwhtChf6ob9sRcjcPhJpuGEbgjTDZiTtaYoZ1ZGpuc/0P?=
- =?iso-8859-1?Q?iaC7PDe4OTWkmEAa0sGvcZ324SsG4EjkC/uDMy/U6uNLuRDbYN0F9AYLx3?=
- =?iso-8859-1?Q?fUPlTSaysMOcejzJNkTw5fWFIAHrQUcVu7zQXib9fy7+sk426IhE4CPEsN?=
- =?iso-8859-1?Q?EwtK7bCk9OLa63ZYXe3sz+DsWgsg9V63qZ5hVbJsNxWqzoKiGUsHblfJeG?=
- =?iso-8859-1?Q?2BRDhIuBKano2WjZNcH/r8MQ5F5Jhccs3+aCjXwq28qs0596LoJsNd9ZEJ?=
- =?iso-8859-1?Q?+5HPEYuCoa4VH790WXTUY/w1ZsFnxWCFxmza7sjMPBDWyvMe98vqao8h6y?=
- =?iso-8859-1?Q?OSOzS/YirsOV4hCXUfHBDUDXbBQ2P7p+9TtiYpf8ILuLGN+BN/88McQWOE?=
- =?iso-8859-1?Q?IPcqPkWyJJhGif8J5r9JgFlM38YRJWPm0hTWSXFcqol7XpliV0sHIKzORJ?=
- =?iso-8859-1?Q?9PQ9pHO/0WEivdWhcLT8IxvZbF+F7xMZ99z8RTkJuk7fXASrhlOUNdOr5j?=
- =?iso-8859-1?Q?oiU2KfYQZebz09rPtFOLCZ3xz+32WHIYat9tNYyxx7W8W1I8NBFHa+8iYX?=
- =?iso-8859-1?Q?lUtFEL6X7lBh/omYT+EiyrKcJNiLKnk7Yxa8BxZo/1FfYut9pJuIxIPcbZ?=
- =?iso-8859-1?Q?FP3ES8fegs5hBRED7k14ZdGrv0BYgcWT4KKCXKu70sWyr/Zr5aVdUwAw/i?=
- =?iso-8859-1?Q?OGxqMZoAnH1OfY5mbfxwlFmvGVCA+DQV5asrZ1sWAC807VZNm+mN6Kt/xd?=
- =?iso-8859-1?Q?u1vLQG4JlhVJqfVTuPVlgSXk9UVxevYSmAOWfDoj91CPJt2drGKhV24Kh1?=
- =?iso-8859-1?Q?VNsJoppBd8v1PcFGKU1++1+a4vyP85mFLqwW8lmPylPUUnM2ZOPPEIcLIM?=
- =?iso-8859-1?Q?HMOFbrE5Fnpcx6F3r0MQ6RMecvP/J2A2aWfo/EOjT+ZUHTgxUacBF31anY?=
- =?iso-8859-1?Q?avZC8SkWOIcjvsljPDeinwEyagqa1hovP7OtkEaUYBfwR/mQ+tTzOjfmkc?=
- =?iso-8859-1?Q?MKlLg5DfkIxtFDU1U9FPtNiRED8lVVqRcy95i5k/mp2gV8RzRpmeLXG/f2?=
- =?iso-8859-1?Q?/nhUePPY7mpdPVQPxXVXrdzZuMalI4TJEt4vJsjpqLqZG/GJRlmxeZPu1A?=
- =?iso-8859-1?Q?lK2Qaj+Ey5lxI1XLZHZzwdt2l/ngxmXFGdvdtKFUcv2uz5a9+9zEXRxjBS?=
- =?iso-8859-1?Q?dhPr8X0u0fT1jezB76zdBkD+C6sngkMYlTrGkhcUQ4fmZJdCHj6tAqLy+b?=
- =?iso-8859-1?Q?vW1B5RmH0jwCHh6cTTTfsaJ22PjZh5/u/fTW+iFYCm15evdmSw0O+RRAt/?=
- =?iso-8859-1?Q?5vizYpejRKuoNUaA6XxKEUvWLo8NAvrlMn/UEWJyDybo0wImBUeAGFy+5/?=
- =?iso-8859-1?Q?u8p2ej4dTYtP4c2To/QMX6TLPe4eDDHIbKJgWlVxnuz52yYzP7M69pdee6?=
- =?iso-8859-1?Q?DaU367aIfXBuooyrqEyYwluPnoS1CiJIYtTHw90JkdqCscWCMySk/X3XAA?=
- =?iso-8859-1?Q?tL+bN45FPSet9bdM7jZnYKLpfYjPBrDHLl0BBQfeQgHv6gi8VrTVfr7DWZ?=
- =?iso-8859-1?Q?pDS/G6fX0+I/dMNANEtcsHj4gb3tlbKoKdRhnBwgEK6ukxFDcbktXgjMtV?=
- =?iso-8859-1?Q?m6aZ08YkJRaK3QZoUb3SBnf0y58UkRDqZVr7ZUfWp/SVAX4iQa5plN5qPl?=
- =?iso-8859-1?Q?sWbYzL5bGbuoKwO6xTNBQx0dytD/qDeIyaEUZAGlHoXry3zi5AvI4Mn0bJ?=
- =?iso-8859-1?Q?ZIfKSI7z1p1fJsz9p3KB5Lf2EYhKpPv37lVTVhwRikhA0YO3zUDJar1A/V?=
- =?iso-8859-1?Q?IsMhcUDPqw=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2oBe-0001QH-T7
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:31:40 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2oBa-0001dh-3G
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:31:37 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4852b81c73aso60762345e9.3
+ for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 03:31:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773829892; x=1774434692; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9m3lV3ME2W//2gUlABuyu3FspRWa1EzICjXujSbCOe0=;
+ b=ffNd3l6oxlbluOwjjk1qNv+4gy+aC/be3kuupvXakeC8JM6zrCVzgB0xGyW18luFLo
+ G/8D+uFo982ndiRiviLYFtCB1jqNCbr72AuMoJeoH3e6/QfTF833lsrllqVWTo4uK4qA
+ d/bdc/gpA9Xe19m9V0gA24FGK3mQOSwHlMJgquAnxlDDu0+ID7Q7uH4qk5phJLrTqtHN
+ dFQhY2KBwBQd5Rfpl3uHfxdT160BN9/DeCX5elCcwokaRGykkxRSKfG6Qpihlp8tYP8s
+ +AOG13lH37gh7zFuJkOfx7YStWW2DiUYqpiiqfH/1TmXU7UUxiXtqg7uIei6kdWgx7WS
+ RI0w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773829892; x=1774434692;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=9m3lV3ME2W//2gUlABuyu3FspRWa1EzICjXujSbCOe0=;
+ b=XqAUWaGoSThCaM/N6MpJ4jY4RVYhruZSqW+/adhF85gPaVExm5Q/G5xJ1uyqZGaZO7
+ pDdQ+Td37yJjrB/Ld3r6tKK/QcKSmvnHeT0b+MmXUEzZG5KiYOmgFwHnGqX6Mn6UK4/j
+ COvL/yPZpM7FpIgBm0w+kBgcVSMr2V2SowSgBrc5mHm3Yfn0Yl/158+oe2XqGvElCi3m
+ TSVvBEL+ska7z2Cr0iC6nLJq5QZQtuKFM+SnYZ9oW03tWTzlxiVDX1dCwPVn6/b2v0k6
+ dq4ECZW0H+ZLuUgwtcwjlLJrLNsU8aGbhJtiizbdJ9XerfCK6w4G6DpMcNdf+S/DOx9N
+ RvNg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUN9NiG5YjnblbeB3VXRQu68LZw2RA3OUGBP08i5H76PPB64ppO8GXOMmnqAYPXQqv7M/290SLiZg==@nongnu.org
+X-Gm-Message-State: AOJu0YzMOKcpYptmUNIOczuX/zoV6PhNJskSp2iFU+/xkoQ+x/KwQeDw
+ h/VMmU1L4p4Fq8eEfq/uBMxsENaeTnv8pIZChC0qZ9cAMNTsakRkT2Cx+AqBxfhjj3k=
+X-Gm-Gg: ATEYQzwguzJPeU0yHAvnEcGaFL3COsdsAaJpLPzyd+quBYOKKqGB9M50V1FfEEEk+iI
+ XxfG2fQv8GBv0cNmHALpUqdSQhC5WmXi1dE5WAOJn0Yf3esu/Ui4wYicpDg0vqasIF1pdmHCP4G
+ L+D9mNo08qHEu5rzqYHap/aneDQTZI7OBTbIFxOCynL2+fDoiN1/ofevcKJ0UN4cU5BKyyyAHUR
+ /QFlV2UBKa6EUTPS6YpWtk9fFAFavTRzrrcsYKZ2M0i3KwLA23Cpp1+mVBehvimxYSk65h3wOF6
+ S/xdBOvT2ZmiqiZJoePvdKDQzkiruyQZy32yThoxReWNpwvNetps59QxgBFnhkIp8BaItCPnNxd
+ Ffb62azKxrtZlbBYg7x4/0/CmTD6Tk3Esvx+D9soKOJVRY7AAMfD+UWRhhxUUk+vB4xKiqsZg9e
+ Ncp9vh34HPdp3HNZ1N4mpEZ2VYiIQZc6BOUJHqnRjvoHppxYihtl0gu6kvvpjnVCk50hc0vVTf
+X-Received: by 2002:a05:600c:4e49:b0:485:4136:99a8 with SMTP id
+ 5b1f17b1804b1-486f4441072mr40432815e9.22.1773829892293; 
+ Wed, 18 Mar 2026 03:31:32 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4856ea8fad1sm236021045e9.1.2026.03.18.03.31.30
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 18 Mar 2026 03:31:31 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Weiwei Li <liwei1518@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Warner Losh <imp@bsdimp.com>, =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20P=C3=A9trot?=
+ <frederic.petrot@univ-grenoble-alpes.fr>, 
+ Vijai Kumar K <vijai@behindbytes.com>, Anton Johansson <anjo@rev.ng>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-riscv@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Djordje Todorovic <Djordje.Todorovic@htecgroup.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org
+Subject: [PATCH-for-11.1 01/16] hw/riscv: Mark RISC-V specific peripherals as
+ little-endian
+Date: Wed, 18 Mar 2026 11:31:06 +0100
+Message-ID: <20260318103122.97244-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260318103122.97244-1-philmd@linaro.org>
+References: <20260318103122.97244-1-philmd@linaro.org>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d6def2e5-8bc5-46fa-e5e9-08de84d3e794
-X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Mar 2026 09:51:19.0995 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: WXN4Tpp76S5udT6v+1K3TlgX2JPB68CY9RwgmeQTFwI3zv/+hRLkgdLsmPCAr4FWEHzQUtJ0STpKx4Lc9vH/DQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5944
-Received-SPF: permerror client-ip=2a01:111:f403:c101::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=BL0PR03CU003.outbound.protection.outlook.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,111 +116,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+These devices are only used by the RISC-V targets, which are
+only built as little-endian. Therefore the DEVICE_NATIVE_ENDIAN
+definition expand to DEVICE_LITTLE_ENDIAN (besides, the
+DEVICE_BIG_ENDIAN case isn't tested). Simplify directly
+using DEVICE_LITTLE_ENDIAN.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/char/ibex_uart.c     | 2 +-
+ hw/char/shakti_uart.c   | 2 +-
+ hw/char/sifive_uart.c   | 2 +-
+ hw/misc/sifive_e_aon.c  | 2 +-
+ hw/misc/sifive_e_prci.c | 2 +-
+ hw/misc/sifive_u_otp.c  | 2 +-
+ hw/misc/sifive_u_prci.c | 2 +-
+ hw/riscv/riscv-iommu.c  | 2 +-
+ hw/sd/cadence_sdhci.c   | 2 +-
+ hw/timer/ibex_timer.c   | 2 +-
+ hw/timer/sifive_pwm.c   | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
 
-> -----Original Message-----
-> From: Nathan Chen <nathanc@nvidia.com>
-> Sent: 17 March 2026 18:38
-> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
-> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
-> <peter.maydell@linaro.org>; Shannon Zhao <shannon.zhaosl@gmail.com>;
-> Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
-> <imammedo@redhat.com>; Ani Sinha <anisinha@redhat.com>; Paolo Bonzini
-> <pbonzini@redhat.com>; Daniel P . Berrang=E9 <berrange@redhat.com>; Eric
-> Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>;
-> Shameer Kolothum Thodi <skolothumtho@nvidia.com>; Matt Ochs
-> <mochs@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan Chen
-> <nathanc@nvidia.com>
-> Subject: [PATCH v3 7/8] hw/arm/smmuv3-accel: Change OAS property to
-> OasMode
->=20
-> From: Nathan Chen <nathanc@nvidia.com>
->=20
-> Change accel SMMUv3 OAS property from uint8_t to OasMode. The
-> 'auto' value is not implemented, as this commit is meant to
-> set the property to the correct type and avoid breaking JSON/QMP
-> when the auto mode is introduced. A future patch will implement
-> resolution of 'auto' value to match the host SMMUv3 OAS value.
->=20
-> Fixes: a015ac990fd3 ("hw/arm/smmuv3-accel: Add property to specify OAS
-> bits")
-> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
-> ---
->  hw/arm/smmuv3-accel.c   | 2 +-
->  hw/arm/smmuv3.c         | 6 +++---
->  include/hw/arm/smmuv3.h | 2 +-
->  3 files changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index c90fa9f5bb..08a4e2a1c8 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -850,7 +850,7 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->      }
->=20
->      /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits).=
- */
-> -    if (s->oas =3D=3D SMMU_OAS_48BIT) {
-> +    if (s->oas =3D=3D OAS_MODE_48) {
->          s->idr[5] =3D FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48)=
-;
->      }
->=20
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index e7fec7a69e..5b85247606 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1981,7 +1981,7 @@ static bool
-> smmu_validate_property(SMMUv3State *s, Error **errp)
->              error_setg(errp, "ats can only be enabled if accel=3Don");
->              return false;
->          }
-> -        if (s->oas !=3D SMMU_OAS_44BIT) {
-> +        if (s->oas > OAS_MODE_44) {
->              error_setg(errp, "OAS must be 44 bits when accel=3Doff");
->              return false;
->          }
-> @@ -2014,7 +2014,7 @@ static bool
-> smmu_validate_property(SMMUv3State *s, Error **errp)
->          return false;
->      }
->=20
-> -    if (s->oas !=3D SMMU_OAS_44BIT && s->oas !=3D SMMU_OAS_48BIT) {
-> +    if (s->oas !=3D OAS_MODE_44 && s->oas !=3D OAS_MODE_48) {
-
-Same here. We can get rid of SMMU_OAS_44BIT/_48BIT defines.
-
-Thanks,
-Shameer
-
->          error_setg(errp, "OAS can only be set to 44 or 48 bits");
->          return false;
->      }
-> @@ -2145,7 +2145,7 @@ static const Property smmuv3_properties[] =3D {
->      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril,
-> ON_OFF_AUTO_ON),
->      DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats,
-> ON_OFF_AUTO_OFF),
-> -    DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
-> +    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_44),
->      DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
->                                SSID_SIZE_MODE_0),
->  };
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index ddf472493d..82f18eb090 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -72,7 +72,7 @@ struct SMMUv3State {
->      Error *migration_blocker;
->      OnOffAuto ril;
->      OnOffAuto ats;
-> -    uint8_t oas;
-> +    OasMode oas;
->      SsidSizeMode ssidsize;
->  };
->=20
-> --
-> 2.43.0
+diff --git a/hw/char/ibex_uart.c b/hw/char/ibex_uart.c
+index 127d219df3c..26ed1aea140 100644
+--- a/hw/char/ibex_uart.c
++++ b/hw/char/ibex_uart.c
+@@ -470,7 +470,7 @@ static void fifo_trigger_update(void *opaque)
+ static const MemoryRegionOps ibex_uart_ops = {
+     .read = ibex_uart_read,
+     .write = ibex_uart_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl.min_access_size = 4,
+     .impl.max_access_size = 4,
+ };
+diff --git a/hw/char/shakti_uart.c b/hw/char/shakti_uart.c
+index 2d1bc9cb8e2..d38920a03a0 100644
+--- a/hw/char/shakti_uart.c
++++ b/hw/char/shakti_uart.c
+@@ -103,7 +103,7 @@ static void shakti_uart_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps shakti_uart_ops = {
+     .read = shakti_uart_read,
+     .write = shakti_uart_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl = {.min_access_size = 1, .max_access_size = 4},
+     .valid = {.min_access_size = 1, .max_access_size = 4},
+ };
+diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
+index af17cf9a6ce..4e31842df5c 100644
+--- a/hw/char/sifive_uart.c
++++ b/hw/char/sifive_uart.c
+@@ -206,7 +206,7 @@ static void fifo_trigger_update(void *opaque)
+ static const MemoryRegionOps sifive_uart_ops = {
+     .read = sifive_uart_read,
+     .write = sifive_uart_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/misc/sifive_e_aon.c b/hw/misc/sifive_e_aon.c
+index e78f4f56725..ff2a7c18235 100644
+--- a/hw/misc/sifive_e_aon.c
++++ b/hw/misc/sifive_e_aon.c
+@@ -250,7 +250,7 @@ sifive_e_aon_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps sifive_e_aon_ops = {
+     .read = sifive_e_aon_read,
+     .write = sifive_e_aon_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/misc/sifive_e_prci.c b/hw/misc/sifive_e_prci.c
+index 400664aabae..a4a60e7b406 100644
+--- a/hw/misc/sifive_e_prci.c
++++ b/hw/misc/sifive_e_prci.c
+@@ -75,7 +75,7 @@ static void sifive_e_prci_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps sifive_e_prci_ops = {
+     .read = sifive_e_prci_read,
+     .write = sifive_e_prci_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/misc/sifive_u_otp.c b/hw/misc/sifive_u_otp.c
+index 7205374bc39..cececd4f7a8 100644
+--- a/hw/misc/sifive_u_otp.c
++++ b/hw/misc/sifive_u_otp.c
+@@ -187,7 +187,7 @@ static void sifive_u_otp_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps sifive_u_otp_ops = {
+     .read = sifive_u_otp_read,
+     .write = sifive_u_otp_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/misc/sifive_u_prci.c b/hw/misc/sifive_u_prci.c
+index f51588623ab..4674d5925ea 100644
+--- a/hw/misc/sifive_u_prci.c
++++ b/hw/misc/sifive_u_prci.c
+@@ -112,7 +112,7 @@ static void sifive_u_prci_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps sifive_u_prci_ops = {
+     .read = sifive_u_prci_read,
+     .write = sifive_u_prci_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
+index 98345b1280b..ef5d7df2385 100644
+--- a/hw/riscv/riscv-iommu.c
++++ b/hw/riscv/riscv-iommu.c
+@@ -2375,7 +2375,7 @@ static MemTxResult riscv_iommu_mmio_read(void *opaque, hwaddr addr,
+ static const MemoryRegionOps riscv_iommu_mmio_ops = {
+     .read_with_attrs = riscv_iommu_mmio_read,
+     .write_with_attrs = riscv_iommu_mmio_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl = {
+         .min_access_size = 4,
+         .max_access_size = 8,
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+index d576855a1a8..8476baf67fb 100644
+--- a/hw/sd/cadence_sdhci.c
++++ b/hw/sd/cadence_sdhci.c
+@@ -122,7 +122,7 @@ static void cadence_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+ static const MemoryRegionOps cadence_sdhci_ops = {
+     .read = cadence_sdhci_read,
+     .write = cadence_sdhci_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl = {
+         .min_access_size = 4,
+         .max_access_size = 4,
+diff --git a/hw/timer/ibex_timer.c b/hw/timer/ibex_timer.c
+index ee186521893..0f12531934d 100644
+--- a/hw/timer/ibex_timer.c
++++ b/hw/timer/ibex_timer.c
+@@ -234,7 +234,7 @@ static void ibex_timer_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps ibex_timer_ops = {
+     .read = ibex_timer_read,
+     .write = ibex_timer_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .impl.min_access_size = 4,
+     .impl.max_access_size = 4,
+ };
+diff --git a/hw/timer/sifive_pwm.c b/hw/timer/sifive_pwm.c
+index 780eaa50799..4f4f566cd4b 100644
+--- a/hw/timer/sifive_pwm.c
++++ b/hw/timer/sifive_pwm.c
+@@ -388,7 +388,7 @@ static void sifive_pwm_reset(DeviceState *dev)
+ static const MemoryRegionOps sifive_pwm_ops = {
+     .read = sifive_pwm_read,
+     .write = sifive_pwm_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const VMStateDescription vmstate_sifive_pwm = {
+-- 
+2.53.0
 
 

@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F570107BCF4
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 10:47:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C688107BCF4
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 10:48:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2oQj-0003Z5-P9; Wed, 18 Mar 2026 06:47:13 -0400
+	id 1w2oQk-0003Zv-Vt; Wed, 18 Mar 2026 06:47:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w2oQY-0003VO-WC
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:04 -0400
+ id 1w2oQd-0003X6-Se
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:08 -0400
 Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w2oQX-0003KK-DW
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:02 -0400
+ id 1w2oQc-0003Lt-8u
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 06:47:07 -0400
 Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-48540d21f7dso75623335e9.0
- for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 03:47:00 -0700 (PDT)
+ 5b1f17b1804b1-486b9675d36so14104115e9.0
+ for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 03:47:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773830819; x=1774435619; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773830825; x=1774435625; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VSwkM0P/J5XAoRgFils81Qyg6RKqLdXdbIdwNlenliE=;
- b=KrYM7EiX1BSTm06EvQPeyTT1n/uA1T+7AhBxugn3+duAsA+p2xelXlnNUuC5AoWZR5
- /FMM4OgzfqiW+IzFs+8R05vbDxUZx1feKKa66W4YemmOohmU/0hzk1XsQsIP1nWaWup5
- wM4qbj75ZL6IZ//siMoROpUUkL6iMbxWC72cG5OpyZiVa8iDVE7J0B3t0hJhCFw1VNxQ
- HqCD2/eKwfCenxzMeG6kCOOr/RTsYnW0naVIXJJOQN7wewfdR6IIqcq8Hx5oMDTHze2s
- 8AG2xrhb17rJHz4Q/1iZ1DSjPssqEloVSl7/8J6B9LXVMwITwCNEwVRPJHUNFh+AVRtD
- bJGQ==
+ bh=mwNzQtxUIpOJ3mykV9HQnVdMQ33xK3MaNnp/Zcfgj3c=;
+ b=f5brf6l4LsXP9WOi9BpcG7FIC0yWtqOz5WKnz8TCB7WssKcq/di+qsJjBPFNI8jpAE
+ DUkCnWRGJzM9vdIUGKJbIsukBgECOdiDwgYkkAFnFUDTcmUnHSBLRPn206yFrteEjldY
+ P7QSeiGFktloqs1IWgKW/XariEsp3XRWAWeWOtHN0qkXRmR47wDV+85CVt/IXVdwJ4Rn
+ 7MwvyCDGhaGO686sohv1oDnO1oWr58kGy9wNfyeAA3+fv4bBA37kKud6NE8/yV562VCX
+ hBChJ3kEYtaU4XRDui6Dyt4/pKzPIHPCYJzZzKwiXA/NSexLioCgs+VZx2xHCVF3ZJdd
+ 9XsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773830819; x=1774435619;
+ d=1e100.net; s=20251104; t=1773830825; x=1774435625;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=VSwkM0P/J5XAoRgFils81Qyg6RKqLdXdbIdwNlenliE=;
- b=oTI5gSEvNkkfGzmTOM2hP5Onl6ctlPqZohLOP+f39Iyhn4Aa4OSxTc4XWAyZ+y762Y
- qr5OoTP7s9Fz8yD28THTDm7j0J8/99rev3Z3aq5TOelgBtMN5650gur6GBOtl3mWuGay
- Jn1z+6eEWGA9iw4kapPJUwHj8U89EybQoI5m0ySyLlYsXN1/wQzlO5flcLPHp5BwN4eJ
- BtAZlyJkApiPnW7zehNue4hDQlCApDrlWhzt8il7Q0TUqb7t6RogsqkqhSYbXwTz0zg0
- 2VtCK3xBQG1ekiepjOadmQPU6k6KiJV8CGoxQq4OBuCDXx7I9CVKgrSWtEnwRHlYbPlt
- ESOA==
-X-Gm-Message-State: AOJu0YxpK5w1TfC6Yr8RPCxfav/PDwFDRyNq1dUHQ8lofOjO16yHRt1i
- ULi8wCMZx0hqB88I2JKQ89Alx7uca0fOARpKNBy3lwrGFQgVUDTvGyMQoRsuiBD5
-X-Gm-Gg: ATEYQzyxPvOFKNDjyFx87lJvXcrPUkg0+50N18SMuLKFVxRE2z3YuhSQXS1wCiUKhpC
- 11Qf3G2Eq0LHYt8pR+vxwl6DXApqU0tK1QD2M6rr480TuRiTX/3Jz/bJa/Kgs1zfp+ES0ywYvyX
- sTaJZh4Tujl22+mGkAX6rwbY/9O0Idhi7W0re+9Z6HFntOTjnglatR9Yw16w8xzXTx6/O0lAEHC
- KimBk9pIzp/ub/6pqxqFVr7Y3DklAgH10x2IrXgbOm8xaKGDYfmmInuo5334oqTUUZlMq3MhMBo
- z+aKk/3jSAHJbx+f0dco7Q+2KtnGXSi0zyaCbScF4rtXyVNIFjJF6PEf+/z9+9OL0MLSUyNnB18
- GJm7VagZQ//Yrgrawt10pGozznYW0Gn2SkHz279hC4gEQWAF2R/nFKcx8O38GxCchoY6m8JmNWQ
- Fq591Tq5o2JGGP09Y81SProEX6lTxqGXipCnuUoFXqj1AKqtZvXPK+0v8OKF7/hNfyhg==
-X-Received: by 2002:a05:600c:4585:b0:485:39d4:2dd9 with SMTP id
- 5b1f17b1804b1-486f45708e5mr49754255e9.33.1773830819279; 
- Wed, 18 Mar 2026 03:46:59 -0700 (PDT)
+ bh=mwNzQtxUIpOJ3mykV9HQnVdMQ33xK3MaNnp/Zcfgj3c=;
+ b=qGrf2vPRWAKX16wEh8lE1V01m5HNjGSFvjs5HR0PMndQ4vzeqNLSTL+FkN1lJYqFKG
+ PPNL8FprL4omFPCFiRB1p4SqAyR6zRTIvVdlXxETBoYNlFeruHz5Tsd5qkjMPMA5bJkA
+ M8c+dLqQgTlaKbebjfc5mlXPkHcbBla2f6Hr0tCVTdtMeN1qPe2le60sZ5fu5hTOCNKX
+ dCey1HoeX/2aBfm1PCMqK0sK8eum7DSOjRZ/eMqUvT3TvaUcr6UvQbzzsqMOAZMgQGEM
+ Pi/StrFEGL8JbpWWbJClfYmZgj9dx5K/vLnRVxWyib+cgR9YdiqD8CkyF+QWjRJh1gih
+ 6A5g==
+X-Gm-Message-State: AOJu0Yy0NVZ4S/VD3ljpXet2ikJ8KpZT80eh1QodMIHdcOFk4CcnNbIH
+ lHE/HA4+ndDGnTcdaBh/AB53jy10oPHN40qRWlpLKpuO8sqAsBdrDe5M
+X-Gm-Gg: ATEYQzyLP+ms50GY1VozWbHM1ZXYbW3wZPVuZWmLQEGiU7s8WRJUb3Do9ayfhP4GbhC
+ RIKQz8MCyAw6sgqMrijm8bOQWk7UBgXZF30J08O7AV8QzBPfx6K42Q786geNEaVY/4rix4IuQHX
+ xqEdS0CfvBWS4Y6w03S0egE9U6TNsXwvZh1QUl4v1vRKwBfYCfSs/irbAyVtBN3jUfw2RmOUpGb
+ J1pY+YuVCVjY3IKWNO0+aD8UBJcTjT4d+1xRA443/GFwRh4FkkHRWGyrimVtXrqSejUDrF04lxI
+ 9bksTvdVlDXp1tEROTFq5ky0xHy3O4e+W0cis42ufhYqx+wVKi1FirnYriWiS8s3q/hxnzEcHDT
+ 3JbGv6IKVLRa9X63gThBnbxCvTGPwVfPdSDulzuVL1iMxpQqlsjrnz+VZbfyJpispd5ymYZuXzh
+ dRBdCJafPoHLaeM9EQFUxN/OAUcUDRIZNEE8S9F+5PvV+7SLrOVNRTHh6jea//ZD3oEQ==
+X-Received: by 2002:a05:600c:a4b:b0:485:3f17:425 with SMTP id
+ 5b1f17b1804b1-486f444863emr42876605e9.21.1773830824761; 
+ Wed, 18 Mar 2026 03:47:04 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-80-194.adsl.net.t-com.hr.
  [93.143.80.194]) by smtp.googlemail.com with ESMTPSA id
- 5b1f17b1804b1-486f420de8asm56471095e9.3.2026.03.18.03.46.58
+ 5b1f17b1804b1-486f420de8asm56471095e9.3.2026.03.18.03.47.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Mar 2026 03:46:58 -0700 (PDT)
+ Wed, 18 Mar 2026 03:47:04 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  alex.bennee@linaro.org, peter.maydell@linaro.org,
  pierrick.bouvier@linaro.org, philmd@linaro.org, Ruslan_Ruslichenko@epam.com
-Subject: [RFC PATCH 1/9] target/arm: Add API for dynamic exception injection
-Date: Wed, 18 Mar 2026 11:46:32 +0100
-Message-ID: <20260318104640.239752-2-ruslichenko.r@gmail.com>
+Subject: [RFC PATCH 5/9] system/memory: Add plugin callbacks to intercept MMIO
+ accesses
+Date: Wed, 18 Mar 2026 11:46:36 +0100
+Message-ID: <20260318104640.239752-6-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260318104640.239752-1-ruslichenko.r@gmail.com>
 References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
@@ -103,93 +104,49 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Implement arm_cpu_inject_exception() to allow external clients,
-such as QEMU plugins or asynchronous timers, to inject exceptions
-into the ARM guest.
+Add plugin callback to dispatch memory_region_dispath_read/write,
+allowing plugins to intercept MMIO operations before they reach
+device models, which enable to spoof read values and drop write
+accesses.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- target/arm/cpu.h    |  4 ++++
- target/arm/helper.c | 55 +++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 59 insertions(+)
+ system/memory.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 657ff4ab20..f1d2d6e240 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2680,4 +2680,8 @@ extern const uint64_t pred_esz_masks[5];
- #define LOG2_TAG_GRANULE 4
- #define TAG_GRANULE      (1 << LOG2_TAG_GRANULE)
+diff --git a/system/memory.c b/system/memory.c
+index c51d0798a8..67a59f6e0a 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -35,6 +35,7 @@
+ #include "hw/core/boards.h"
+ #include "migration/vmstate.h"
+ #include "system/address-spaces.h"
++#include "qemu/plugin.h"
  
-+#ifndef CONFIG_USER_ONLY
-+void arm_cpu_inject_exception(int excp_index, uint32_t syndrome);
-+#endif
+ #include "memory-internal.h"
+ 
+@@ -1448,6 +1449,10 @@ static MemTxResult memory_region_dispatch_read1(MemoryRegion *mr,
+ {
+     *pval = 0;
+ 
 +
- #endif
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8c5769477c..73df3a9e6e 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10241,4 +10241,59 @@ ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
-         return ARMSS_NonSecure;
-     }
- }
++    if (plugin_mmio_override_cb_invoke(mr->addr + addr, size, false, pval))
++        return MEMTX_OK;
 +
-+typedef struct {
-+    int excp_index;
-+    uint32_t syndrome;
-+}  FIExcpAsync;
+     if (mr->ops->read) {
+         return access_with_adjusted_size(addr, pval, size,
+                                          mr->ops->impl.min_access_size,
+@@ -1533,6 +1538,9 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
+ 
+     adjust_endianness(mr, &data, op);
+ 
++    if (plugin_mmio_override_cb_invoke(mr->addr + addr, size, true, &data))
++        return MEMTX_OK;
 +
-+static void fi_setup_exception(CPUState *cs, int excp_index, uint32_t syndrome)
-+{
-+    CPUARMState *env = cpu_env(cs);
-+
-+    cs->exception_index = excp_index;
-+    env->exception.syndrome = syndrome;
-+    env->exception.vaddress = env->pc;
-+
-+    if (excp_index == EXCP_VSERR) {
-+        /* Serror syndrome constructed from vsesr_el2 */
-+        env->cp15.vsesr_el2 = syndrome;
-+    }
-+
-+    env->exception.target_el = arm_current_el(env);
-+}
-+
-+static void arm_cpu_inject_exception_async(CPUState *cs, run_on_cpu_data data)
-+{
-+    FIExcpAsync *excp_data = (FIExcpAsync *)data.host_ptr;
-+
-+    fi_setup_exception(cs, excp_data->excp_index, excp_data->syndrome);
-+
-+    g_free(excp_data);
-+}
-+
-+void arm_cpu_inject_exception(int excp_index, uint32_t syndrome)
-+{
-+    CPUState *cs = current_cpu;
-+
-+    if (!cs) {
-+        /* If we called outside CPU thread (timer callback, etc) schedule async */
-+        run_on_cpu_data async_data;
-+        CPUState *cs0 = qemu_get_cpu(0);
-+
-+        FIExcpAsync *excp_data = g_new0(FIExcpAsync, 1);
-+
-+        excp_data->excp_index = excp_index;
-+        excp_data->syndrome = syndrome;
-+
-+        async_data.host_ptr = excp_data;
-+
-+        async_run_on_cpu(cs0, arm_cpu_inject_exception_async, async_data);
-+        return;
-+    }
-+
-+    fi_setup_exception(cs, excp_index, syndrome);
-+
-+    cpu_loop_exit(cs);
-+}
- #endif /* !CONFIG_USER_ONLY */
+     /*
+      * FIXME: it's not clear why under KVM the write would be processed
+      * directly, instead of going through eventfd.  This probably should
 -- 
 2.43.0
 

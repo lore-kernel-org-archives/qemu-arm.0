@@ -4,175 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95A6103E169
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 12:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2856FCD0C4
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 13:39:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2pga-00028N-7j; Wed, 18 Mar 2026 08:07:40 -0400
+	id 1w2r6a-0005oz-Ju; Wed, 18 Mar 2026 09:38:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yi.l.liu@intel.com>)
- id 1w2pgV-00027V-Sw; Wed, 18 Mar 2026 08:07:35 -0400
-Received: from mgamail.intel.com ([198.175.65.12])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w2r6Y-0005oU-DA
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 09:38:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yi.l.liu@intel.com>)
- id 1w2pgS-00079B-9s; Wed, 18 Mar 2026 08:07:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773835652; x=1805371652;
- h=message-id:date:subject:from:to:cc:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=p3wl6R+m005uwEjAXYBva4FzbUpKzKrqG7V03moB9rg=;
- b=QvSf4UPWEO+HROVYJB5jezJEou734+QOn+zjOKWsuesbBx/tnwwvF5Pf
- E1scIbr7quJAWlxMYrufRFcfCcY099TUJma5+O4u0H9KitD3+i9Io5Sfb
- 5PwyVZZfC/HY2tU1VAeYs5H9AwSipCT4pn+OQnrTdg8iGzZ62rEpSNrq9
- JmAdQ0E2k/gNHt8V2V/jYTbs82wEt41rcDk7x+9SXHo8UzyiYIRc3ymWZ
- 0pxDL1RKhSnuRFB0j6yqGx/mCTXbx+Qr/lnIl3T8Pg7X7ZGPDGPQc9kTh
- vRAkGng15T11g3u7kTJrcgTGex5dDGtOjzPrzodlXD/gz1MvC4rhh2n8H Q==;
-X-CSE-ConnectionGUID: KQ04lsKPRMiUQe1+c2q6sw==
-X-CSE-MsgGUID: FXUjXB06R4uA15tSZlu7Ug==
-X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="86360124"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="86360124"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 05:07:28 -0700
-X-CSE-ConnectionGUID: AKtPF2MuTLy7NWNppS0bjA==
-X-CSE-MsgGUID: hyvE/8FMS/yDlYGwMwSIyQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="218187994"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
- by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 05:07:28 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 18 Mar 2026 05:07:27 -0700
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Wed, 18 Mar 2026 05:07:27 -0700
-Received: from BL0PR03CU003.outbound.protection.outlook.com (52.101.53.68) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 18 Mar 2026 05:07:26 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JzrFyMMYoPGLCDKJ/EChc6/BDnC9SgHBGVucYmZzVRFErBgBq6q7SK38xelX8qn738v3YdnkoBuJ/lxflNdhA7EYh3hi1iy7kPaxv9jsR1fR//jnzlAq8h77dc5z41LdkJarvCfzqpMc7WhKIGYEJZGIEq3yWEbbyE7Xra1yC1ippFUx4VRSmiXmB1v6/uVf/JrPSQPHCpFyYb0OA5hDtRDNqgkEcIzptjC1UrX8bVb9gApMxLsn03cpW0y44dvovvT3da0IS2jsO2aAx7SR8RWNi5DE92pIyhmwUvi3A61p5BGCAXQP12LPlGzmM3gPExeZDfhXsI/3uonR8EWOhA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pBpTeCRCK2LAYn/z9TW5fXHcey7Z5TXiavB8lMoNwoU=;
- b=mxnJh44SjI2flwsdEO8wIl+esR8cUi3ZqrqLeTR5j8CUV2Di1CT3072yyS0+VQgGlGY2Yq/JRCcsve4zAGfdX1VaC9ez7o8R2I+KCIC2UalOfh9Lagju+dF+TfKF+ZBE7dEs4/4wNRhZ5sXM3hrtHLytu9GhdOjbwWPx1S5mUIJGhKdFw3Gc2O8O1O37yfweRDx/D/CCxIMfwrjz1UfmxVyV7ptryQ38Bc0hepQv7j8w7F+sRL6Dw2El3NBHLkk04gIPEyCB/2fifTrS3fcifadHLt+BPT4l0hpHswZwzVgqeqPTDKX34Kypy5O0QbtXAOAkKVP1NakpKowiDeHutQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from LV8PR11MB8509.namprd11.prod.outlook.com (2603:10b6:408:1e6::15)
- by PH0PR11MB5207.namprd11.prod.outlook.com (2603:10b6:510:32::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.17; Wed, 18 Mar
- 2026 12:07:23 +0000
-Received: from LV8PR11MB8509.namprd11.prod.outlook.com
- ([fe80::f5bd:4dde:4f2f:20b7]) by LV8PR11MB8509.namprd11.prod.outlook.com
- ([fe80::f5bd:4dde:4f2f:20b7%5]) with mapi id 15.20.9723.018; Wed, 18 Mar 2026
- 12:07:23 +0000
-Message-ID: <8954d521-64c5-4495-a3cd-dd2ceb4c26ad@intel.com>
-Date: Wed, 18 Mar 2026 20:15:06 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 02/13] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-From: Yi Liu <yi.l.liu@intel.com>
-To: Zhenzhong Duan <zhenzhong.duan@intel.com>, <qemu-devel@nongnu.org>
-CC: <alex@shazbot.org>, <clg@redhat.com>, <eric.auger@redhat.com>,
- <mst@redhat.com>, <jasowang@redhat.com>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <skolothumtho@nvidia.com>,
- <joao.m.martins@oracle.com>, <clement.mathieu--drif@eviden.com>,
- <kevin.tian@intel.com>, <xudong.hao@intel.com>, <qemu-arm@nongnu.org>
-References: <20260306034409.184873-1-zhenzhong.duan@intel.com>
- <20260306034409.184873-3-zhenzhong.duan@intel.com>
- <5bd68a1d-ee61-4ef6-92b4-f893373250a0@intel.com>
-Content-Language: en-US
-In-Reply-To: <5bd68a1d-ee61-4ef6-92b4-f893373250a0@intel.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TP0P295CA0037.TWNP295.PROD.OUTLOOK.COM (2603:1096:910:4::9)
- To LV8PR11MB8509.namprd11.prod.outlook.com
- (2603:10b6:408:1e6::15)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w2r6S-0004r4-HK
+ for qemu-arm@nongnu.org; Wed, 18 Mar 2026 09:38:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773841105;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CHy74zBcUtTjGuG/fZ3x8LvEm/fw1yoO28Qai5WOdaM=;
+ b=TROxiBrt/l8Ld1isINZxi/+DUf6aM2Sgx2qr2C4oTCkWXM0GP045wv68vtoaChJ0/SVU5A
+ 7nifVNTSWUxNkA+/RD8Df5cCK3vON7vGe5FIW0bQjv1cSg5km/IWkQurjj8wUNzDcXsyLp
+ tmhi4Un2Ol9PpOJp4VfO3BcZrLLUuCg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-441-c-seOBzaOJK8hFAG6wvsIw-1; Wed, 18 Mar 2026 09:38:21 -0400
+X-MC-Unique: c-seOBzaOJK8hFAG6wvsIw-1
+X-Mimecast-MFC-AGG-ID: c-seOBzaOJK8hFAG6wvsIw_1773841101
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-43b53023d60so180070f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 06:38:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773841100; x=1774445900;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CHy74zBcUtTjGuG/fZ3x8LvEm/fw1yoO28Qai5WOdaM=;
+ b=FB0l+wOwriJ5zu9xxDfE7ki60vIXHmSLYkoxSilh7gukS1c28cL4bkwCQWE16YFLJg
+ RL42njnclqzXRjpaPdf6p/fkWEOsmFFKGxv9hAhHcwtNfxBU/bLtVYsCWb/Ald9zKvWZ
+ CglnN5GiaBO7GwFLxVXhiZb/DqL8WMpgK/oPOvfQ6QzfKceO3yU4eovlO+lIOOJarzV+
+ W8UISgYAMqnXGxJSS3kdMhI4PVoX4wVZAsOVXZoN/K82Qq7xPVl2ineC/h3t++jjPocH
+ XwVA1MZZ3yTyA8hgVxtQs6+rE/lHGQyfip2sHBNKYNkqRLVoaVpXkiOyD+6BowESGL8v
+ llKA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUNR3SzFDnLYCFu3nEB9cJoK1Y0kk06JpDN1PHYg9E09SC0XzVb1yQI31LuZ6vVf/qgKF+qW2k3dA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw4I2iD28rYtcOSdX5DkFr/QZ8pLn20XYtM8C0sNtksLtJPa5z8
+ /UDcR8ogPFVMpYDLxYCoyJIuCT3sMXnOGkRQZUVAFshc25jE5mRGPVyqlamI11qWZR3FTLVsbm6
+ cY7TT77cHqJ3rtt7BGXUe3bVjSL54pvcFJJsLZ3lGbwANXpn0Asr5ag==
+X-Gm-Gg: ATEYQzy5Fg2McqYz/7vU+lMqvVCY9t0yxhJCCG5k2JwV44PchK9C6r3X4fv/cls2y/z
+ 0zAkfGnbpiHOk3eDo17fzT7uJ/u2Z/nHUTnH6XAojkekJenrIqgZHFLw74nTio1UlUme4kIiLkZ
+ Ydq7yGIkqRq5bQcipDvKZNYK+O43airxiVFA+T6tlqNH9J/amwZwUER2h5+9LVbl/FL3PfH3o11
+ SNb2NkKokKQG/DatZW4zMDE2MZn+S5SPSdWXn9+nSY7y6/82UnB2osbik/M2AIXDz6wzxDsRlql
+ m8x1PMVTDj0HLuq7nll5cogRi5ACn/b3unp4qjIrjuxKwSAccTwdpfJhy7MALvoD858eIjmTzOM
+ tU+eCpseKeFy25TsaPuuXeOL97I8B09IsBEGSuDKaGWUU9JVF/usVTAI25tU+s8k7jgxMnw==
+X-Received: by 2002:a05:6000:40ce:b0:439:beee:43b5 with SMTP id
+ ffacd0b85a97d-43b5279c886mr5735851f8f.3.1773841100501; 
+ Wed, 18 Mar 2026 06:38:20 -0700 (PDT)
+X-Received: by 2002:a05:6000:40ce:b0:439:beee:43b5 with SMTP id
+ ffacd0b85a97d-43b5279c886mr5735812f8f.3.1773841099961; 
+ Wed, 18 Mar 2026 06:38:19 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43b518986fcsm7433751f8f.26.2026.03.18.06.38.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 18 Mar 2026 06:38:19 -0700 (PDT)
+Message-ID: <de9279e9-3404-45b6-8df6-fbda6488bfbe@redhat.com>
+Date: Wed, 18 Mar 2026 14:38:17 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV8PR11MB8509:EE_|PH0PR11MB5207:EE_
-X-MS-Office365-Filtering-Correlation-Id: ffdb2321-682b-44bc-f353-08de84e6e98b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|42112799006|376014|1800799024|366016|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: HDuXeU2fhXYO9GlNdFMyV+rSq8SNhHohyQJxAgdN/I1I9vMjWSmRsxP6lE0rA7wqIk3pwGHxrMWUmfKuPNPkOdJuQugi6KzAKTY4S6uCpNK0ceakAVdtTdJ2x7m62Mt8zlfEstGKHBfBaSm0BoRFNHIqmiUvTS78pWdjwknODNQESZD+EmOayQxy9q0jZh7bv65D8HSiHaXn25XWvrXjLn3vj4fzJg7qeAJt1SxGyYTFZCtl2EPs5mFHXKl7y8uGQ4PCURlEnraIeMOabsaHQrLvdc3dJ4URWINww91An588dtPnTwnMLl3Nxaj5yzPOZl2yCpXxQzIRzP5cS6lRxDjHSX4FTLZtImSZd3YjMpkihDUJH/QZJDdBtHQOJehULUapzXSFOHnQHnl9JmXi8OqS5D+kYrLsq1pYGJpuaIhXx1B58eJmMcRLqsRdaY0gpuoe0wUYg58HJ8ka2cYNgRyAvSdzCRzuNON4rRUhBfZsrC0YGNnefn/oTl6A5EhhRbKHL5K2ZtinlBJsJR4KL7pI0GUz527n7QyKx4rPvpc0A6YOTOxTGDm1Ztz4q/ofRNalLoG65f0xVjSI150eFyViIAWgu5KTi+3JYxc0hSSsR02V/paX2VE+1zN3/1fJmwMsxE4G+xZBItewBaAcFxi7FLysUYVjJ5zwbeQL1ZcPTmbCQWosZG7wGd0JePjMuktZPWoRrgULYnZp3k0IQgeTmFzvwKWyXbDKW/at7GQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV8PR11MB8509.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(42112799006)(376014)(1800799024)(366016)(22082099003)(56012099003)(18002099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MHp1M0srRUtRQzArdkFiT3VVbXhnVG9jYVFOYmRiVzV4ekdQNUVXYWNnaGsw?=
- =?utf-8?B?b3haSm42bEVIL2pVQTZEWEt6M292aTF5c2xTNUI2Y0lEWkZlVk5TS0RqODQz?=
- =?utf-8?B?ZGhEZ3VyUjhVaExwS29vQjdDNTYwbHBVR2tHNEwrQnBvL3pEK0x2Ym5kOFFw?=
- =?utf-8?B?YW1jTmlQeWxSZjZEdlZUbHdkVEE3SGRKaHNXcUZPSndZMkptRGtIR3dwK0V4?=
- =?utf-8?B?eGJ1b1ZLT2xZNXRlK25EbWIydktONG1NL2NTVVkxOUZ4dEg0d0g0NmRjMzQy?=
- =?utf-8?B?anNXME1jcGl6aElDbSsvWWRtRk9mTHdnV3ZlZ1NZZTVQOXR1TFFJRFQzaiti?=
- =?utf-8?B?U2hBeHRIQ2REN01vcUpEMWZXQzExdnFPUXdXSXFoRWZmdkg1NHl1dVlUamts?=
- =?utf-8?B?Zml2a3N2aGtqYXZQWmxacElJclhxcklJSFhYaGxtMkRwbTNjWVYwWnhOL0hz?=
- =?utf-8?B?dHRmT3lIYzl2VzVaclc4bHg2UFd1NG1lbVFHTzhwMnUrc1VEc210VGo3MWd0?=
- =?utf-8?B?aVNiby9ucnVUTUFZbVZnUXNqS2RrazdENEZHc1htTlRnUExDTVl5WlRtOEdR?=
- =?utf-8?B?eWdsUWVRcTB1UzBFYjNFRHYreHNjeGxIV1dtK3hjM0dOOGU3aXdrbTlFUFBu?=
- =?utf-8?B?a3A3ZUNyUEtKS0FnaU1VV3VVbjBzSXl0YXhTSWcxdW1jQkg1RWtxVlVJZVZS?=
- =?utf-8?B?NXIxeW1Sam5YR01kWitDYTN3NkZzdmtlN0JFdllDdEFUalJ3VWxrb0xQL3NQ?=
- =?utf-8?B?OG9xL2N0VTNQY1JlQW90c0dCOGJaSG96cTcwZXdsMVBDbk1YTVZrUHhNRk1k?=
- =?utf-8?B?VHBjZTNNTkx3NmJFVDk4eStEMDE3L2JDRGpMSUNjeUoxeUxZOFNaL2xIZXZp?=
- =?utf-8?B?R0xGZmZSRjVhOGc5Y2NYYmZiZndHS2YvRm0xb2ZXcWN4OWQzNDYweERmcWJj?=
- =?utf-8?B?NlZUMlIzYzZxbUxNenkwK29qc1lkek1WZDBpbzdmaEFhYjJBci8yaUNBbFZt?=
- =?utf-8?B?TWhSZXdIUFp2SzRJazIvVzJ0NnBaUE8rUTJMOGIrZUpVT2J2UWtPT3EyOUZz?=
- =?utf-8?B?enFESDkwbkR5T0JWUUFjWmp6RDBPV0VqVk0rejVYWCsweEhHR1pRRDNlS3hK?=
- =?utf-8?B?MXdKTmVKYVVmS0tHM0Fmdlp1VVRXTlppVzFzOEFucFoyVitXNGVOQ0t4TFND?=
- =?utf-8?B?Z2V0UDkvMWZlYU0wMG1LdDB0WFVIdjhQYnhqQkNKY3BERkpMR0N0SlZ0SlBr?=
- =?utf-8?B?WUk1OTZGdWl1WlU0YkVLV2d5Qm1UQ092MlVVZlRxU3ZMcGVUQTVWWnUzQng0?=
- =?utf-8?B?bm4waEd0VTZWSzNsNE9rMklETlVrdDdWbGpVS3MydnFZbUVrNnJhbjNOUnVx?=
- =?utf-8?B?MWVHQlB6ZFR6ZDliNmxUMEpzbC8rSWdoblIvM2lDTlZKRlIwbFdEd1dJa2dR?=
- =?utf-8?B?aTRNZWVkTVpGZjRsNkI0V0p6dW5OQktTaGg5Z2IvNEduM2NnR1gxSkVMZml6?=
- =?utf-8?B?ZzMrSWJmdEtDY1JqZVdWamRNNzhGMUNQcDBldlJGQ2JHOFFyd2MvRkFqZXE4?=
- =?utf-8?B?WFZ6a2VqdDlmbkVKT2xEdzVzdlJ3bVpUQjFDaDdVcnFaV1hZQ0FnajFBd2lJ?=
- =?utf-8?B?SUt0dUgySVRDVW05ampHWlB4R3FoV21TUHZVK0lRWVRVSnovYnRFdzRYTU9h?=
- =?utf-8?B?UUQ2RnI0UGRHOFUxY0Nvb2hJb25aOUpFR01WZUZwYnhrbkxaQVhaWVFzRHlJ?=
- =?utf-8?B?bWlNWGxQQU1uMHR0TjJ0bUFPVzU4d0hHK2NKVmlENlU5VVBqVE5STnBkTk1G?=
- =?utf-8?B?Rit6MThSMmdHTE9zZHp5RjJNcUhoSHdwdktCV1EvRVZ6MG5yZGR6SFliTS9Z?=
- =?utf-8?B?M3Z2VGtUMlVjVCsvcTB5a200azh1S2FzYk5sbklsbkptRXZlQjBLRmZQZjVS?=
- =?utf-8?B?RUZieXNiMmlLUlhjaFc1MHBnazljZzJ6NVNuWmt5NS9TMzZqZFFsUnlpM1Bq?=
- =?utf-8?B?TnhJR1Q2YnRFYTgvSDZyaEdXS1RzckF4WHd2MzJOM04xdTduRk5ZekQ2aElI?=
- =?utf-8?B?c2ZMLytBUG9iZkVhajNnVGgxamVEZExzc3gzdmtZcEs2UTVpM2pDR2ZpVUht?=
- =?utf-8?B?L213U3pWdVRISHBxZjBnNVliV1hpbHpMVjJ6UHBwaGh3NGhuR3ZoM05EY0Vi?=
- =?utf-8?B?UkdrYTBKY2lram5yU0dsdUxwUCs0eVZnMmRCSXdZb29RWlI4NXpxMUh1SFpZ?=
- =?utf-8?B?NHdrUitIOG5GbE9BQ0ttUFVjRmVLbW5CVXk5TFYzSHJ6UXYrT1BGM0hRY1hv?=
- =?utf-8?B?TXBqT2N6bzJwZWdRM3NLekVqUFJHcGF2YzRLMW1PemtMQmkzLzh2dz09?=
-X-Exchange-RoutingPolicyChecked: liS0jV76XSrnpsW7CzyhcgRhWV3iUkrnLIpcM4rubrHXNCFH6nB2nniQDonJ3lJ1kvS7MloEqGQcJR2I1F0As6YtNqzuqWfmNsa1r/ZuBMImATqFT1Q8Y/8d5qqyUu9ICYTtKK5h8EKrR6KjizqMDaINUyg7fcFeV1aOV+oNNdM60ITls4rUVdZbIYv+67aoHoV0WN33JZa/3RbNK5dSqEcF0TaUo1huW5pL1UpCayxztbteqLMGAKEA8KgqFHuALqQYVrbhpjx70EmiDGMw6qMSkIVCANk94zAgDlciyC42Pi/dMB3i2tPzE47rQDg91f7wY+HaRZ7BpSTV+KSpag==
-X-MS-Exchange-CrossTenant-Network-Message-Id: ffdb2321-682b-44bc-f353-08de84e6e98b
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR11MB8509.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2026 12:07:23.2667 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: i+EH3bXFYfg8SQ7fQUZhrwImrUiVWzx3CrkdVyQ34LI6WRLIgsudzJFVkucwYtXYQcBXjr2iO0oNHSd1xk81pg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5207
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=198.175.65.12; envelope-from=yi.l.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/8] hw/arm/smmuv3-accel: Change ATS property to
+ OnOffAuto
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Nathan Chen <nathanc@nvidia.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+References: <20260317183755.3721625-1-nathanc@nvidia.com>
+ <20260317183755.3721625-3-nathanc@nvidia.com>
+ <CH3PR12MB7548D2B0E4C731983EFC8EFBAB4EA@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB7548D2B0E4C731983EFC8EFBAB4EA@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LnHeAUA8yxAvuPprA5Zp4fwo3HKZxE34ceMNwSEzUZc_1773841101
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -185,38 +126,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/18/26 20:03, Yi Liu wrote:
-> On 3/6/26 11:43, Zhenzhong Duan wrote:
->> Same for the two wrappers and their call sites.
->>
->> Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
->> Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
->> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
->> ---
->>   include/system/iommufd.h    | 16 +++++++++++-----
->>   backends/iommufd.c          |  9 +++++----
->>   hw/arm/smmuv3-accel.c       | 12 ++++++++----
->>   hw/i386/intel_iommu_accel.c |  8 +++++---
->>   hw/vfio/iommufd.c           | 10 +++++-----
->>   5 files changed, 34 insertions(+), 21 deletions(-)
->>
->> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
->> index 80d72469a9..80c8423654 100644
->> --- a/include/system/iommufd.h
->> +++ b/include/system/iommufd.h
->> @@ -124,14 +124,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
->>        *
->>        * @idev: host IOMMU device backed by IOMMUFD backend.
->>        *
->> +     * @pasid: pasid of host IOMMU device.
-> 
-> this comment is a bit misleading although I know what you mean. Perhaps
-> "pasid of AS" or "target pasid of attach". Other parts LGTM.
-> 
 
-Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+
+On 3/18/26 10:31 AM, Shameer Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Nathan Chen <nathanc@nvidia.com>
+>> Sent: 17 March 2026 18:38
+>> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+>> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Shannon Zhao <shannon.zhaosl@gmail.com>;
+>> Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
+>> <imammedo@redhat.com>; Ani Sinha <anisinha@redhat.com>; Paolo Bonzini
+>> <pbonzini@redhat.com>; Daniel P . Berrangé <berrange@redhat.com>; Eric
+>> Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>;
+>> Shameer Kolothum Thodi <skolothumtho@nvidia.com>; Matt Ochs
+>> <mochs@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan Chen
+>> <nathanc@nvidia.com>
+>> Subject: [PATCH v3 2/8] hw/arm/smmuv3-accel: Change ATS property to
+>> OnOffAuto
+>>
+>> From: Nathan Chen <nathanc@nvidia.com>
+>>
+>> Change accel SMMUv3 ATS property from bool to OnOffAuto. The 'auto'
+>> value is not implemented, as this commit is meant to set the property
+>> to the correct type and avoid breaking JSON/QMP when the auto mode is
+>> introduced. A future patch will implement resolution of the 'auto'
+>> value to match the host SMMUv3 ATS support.
+>>
+>> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+>> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+>> ---
+>>  hw/arm/smmuv3-accel.c    |  6 ++++--
+>>  hw/arm/smmuv3.c          | 14 ++++++++++++--
+>>  hw/arm/virt-acpi-build.c |  2 +-
+>>  include/hw/arm/smmuv3.h  |  4 +++-
+>>  4 files changed, 20 insertions(+), 6 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+>> index 2bb142c47f..621ac531a5 100644
+>> --- a/hw/arm/smmuv3-accel.c
+>> +++ b/hw/arm/smmuv3-accel.c
+>> @@ -826,8 +826,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
+>>      /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
+>>      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
+>>
+>> -    /* QEMU SMMUv3 has no ATS. Advertise ATS if opt-in by property */
+>> -    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, s->ats);
+>> +    /* Only override ATS if user explicitly set ON */
+>> +    if (s->ats == ON_OFF_AUTO_ON) {
+>> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 1);
+>> +    }
+> Nit: I think we can keep the original comment.
+>
+>>      /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
+>>      if (s->oas == SMMU_OAS_48BIT) {
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index 068108e49b..3dead0bcd3 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -317,6 +317,11 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
+>>      smmuv3_accel_idr_override(s);
+>>  }
+>>
+>> +bool smmuv3_ats_enabled(SMMUv3State *s)
+>> +{
+>> +    return FIELD_EX32(s->idr[0], IDR0, ATS);
+>> +}
+>> +
+>>  static void smmuv3_reset(SMMUv3State *s)
+>>  {
+>>      s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
+>> @@ -1971,7 +1976,7 @@ static bool
+>> smmu_validate_property(SMMUv3State *s, Error **errp)
+>>              error_setg(errp, "ril can only be disabled if accel=on");
+>>              return false;
+>>          }
+>> -        if (s->ats) {
+>> +        if (s->ats == ON_OFF_AUTO_ON) {
+>>              error_setg(errp, "ats can only be enabled if accel=on");
+>>              return false;
+>>          }
+>> @@ -1993,6 +1998,11 @@ static bool
+>> smmu_validate_property(SMMUv3State *s, Error **errp)
+>>          return false;
+>>      }
+>>
+>> +    if (s->ats == ON_OFF_AUTO_AUTO) {
+>> +        error_setg(errp, "ats cannot be set to auto");
+>> +        return false;
+>> +    }
+>  Nit: Is "ats auto mode not supported" better? 
+>
+> Also, should we do this before the if (!s->accel)  check above?
+> Otherwise, I think it will carry on for non-accel smmuv3 cases like,
+>
+> -device arm-smmuv3,primary-bus=pcie.1,accel=off,ats=auto
+>
+> I think this applies to other properties in this series as well.
+>
+>>      if (s->oas != SMMU_OAS_44BIT && s->oas != SMMU_OAS_48BIT) {
+>>          error_setg(errp, "OAS can only be set to 44 or 48 bits");
+>>          return false;
+>> @@ -2128,7 +2138,7 @@ static const Property smmuv3_properties[] = {
+>>      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
+>>      /* RIL can be turned off for accel cases */
+>>      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
+>> -    DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
+>> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats,
+>> ON_OFF_AUTO_OFF),
+> I think we should update the description in object_class_property_set_description
+> to mention auto not supported.
+
+I agree with Shameer wrt all above comments
+
+Eric
+>
+> Thanks,
+> Shameer
+>
+>>      DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
+>>      DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
+>>  };
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 719d2f994e..591cfc993c 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -402,7 +402,7 @@ static int iort_smmuv3_devices(Object *obj, void
+>> *opaque)
+>>
+>>      bus = PCI_BUS(object_property_get_link(obj, "primary-bus",
+>> &error_abort));
+>>      sdev.accel = object_property_get_bool(obj, "accel", &error_abort);
+>> -    sdev.ats = object_property_get_bool(obj, "ats", &error_abort);
+>> +    sdev.ats = smmuv3_ats_enabled(ARM_SMMUV3(obj));
+>>      pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
+>>      sbdev = SYS_BUS_DEVICE(obj);
+>>      sdev.base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+>> index 26b2fc42fd..ce51a5b9b4 100644
+>> --- a/include/hw/arm/smmuv3.h
+>> +++ b/include/hw/arm/smmuv3.h
+>> @@ -70,7 +70,7 @@ struct SMMUv3State {
+>>      uint64_t msi_gpa;
+>>      Error *migration_blocker;
+>>      bool ril;
+>> -    bool ats;
+>> +    OnOffAuto ats;
+>>      uint8_t oas;
+>>      uint8_t ssidsize;
+>>  };
+>> @@ -91,6 +91,8 @@ struct SMMUv3Class {
+>>      ResettablePhases parent_phases;
+>>  };
+>>
+>> +bool smmuv3_ats_enabled(struct SMMUv3State *s);
+>> +
+>>  #define TYPE_ARM_SMMUV3   "arm-smmuv3"
+>>  OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+>>
+>> --
+>> 2.43.0
 
 

@@ -4,93 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903BAFF6E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Mar 2026 21:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E5010854D8
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 09:10:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2bY5-0004TI-ME; Tue, 17 Mar 2026 17:01:57 -0400
+	id 1w2muw-0002J3-Iv; Wed, 18 Mar 2026 05:10:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <visitorckw@gmail.com>)
- id 1w2YuW-0008Ic-Fu
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 14:12:58 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <visitorckw@gmail.com>)
- id 1w2YuS-0004TO-MH
- for qemu-arm@nongnu.org; Tue, 17 Mar 2026 14:12:55 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-35a04d6aeb0so3710106a91.0
- for <qemu-arm@nongnu.org>; Tue, 17 Mar 2026 11:12:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773771170; x=1774375970; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=1WJD5wVdjDJkiEZrU/yWZ7Qx+oL3g1iyYYzXZ9pndhw=;
- b=DtCX+kA5j0JxEQdWXC75bufdKOKPrVK71hc7Ph4nFUaK0NjF39m8DXEps4u6At+YBX
- JCgRIBuno1cW6NA27/pAR2C6jORf8Zt189qO9WDGCQm1J/JZCcdq1GiHPzXFP2YpGKne
- AKZ2NUptGCAGwGyRg55E/HJ3G/e1IHqc09nqE33hTMCh/TdxJIHWF78LiZuShpVQLlj6
- 0OJTAgtSjhkCF+hwDFmjGJ/5wsDGXCppZHKuWmWixMAGFlRVQbSdJc+/AMB/aq+Gb5ww
- 6PZ14eqYnCM6/c/rNuTtPony9c21+23qyvs91ONxyHo7lq+eIz7eqrB2ZwzSE6GofESi
- VOHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773771170; x=1774375970;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1WJD5wVdjDJkiEZrU/yWZ7Qx+oL3g1iyYYzXZ9pndhw=;
- b=OI25Hs7NNj6DDPsKiNrVvy74Cz3OF58UrxpDmBx6CWNZ/O+2OSdWEsfZQAukgehDjR
- n9I93ZzPPn24HZZZQR+ZxxaKdZhDyoPN6nLBySJGhnLUk+ME8BH0W9p3fnoxvzoUloNy
- plQ0t4nU3iRS5HNGMonrR0PRNWOfC3b7m44Ohc69/rnaH57FZJxsuF8QjIGE+ZR0L9l6
- V/uUo9F9Ol4YAUDPdxkg7layJckXNoo5DaIlUwnc4zgoapkRfr1Q3QjAu+LtNCMEWN3h
- TUPMT37kJF3ZRWVvi97x2FwKW+cxHpwYBSoTJFSIH6Scvhvk91gZh2pBoUfmN56imAn2
- deVw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/c9CG0yYE+UR1i82J0BwI4IdFFmXyGf+af0rgQdQFLsB7okLSFgp1Y8xqyXm5VH0qt2yuG7GMWA==@nongnu.org
-X-Gm-Message-State: AOJu0YxPLA6Q2fUo8JGdD+n0s8BDS2ytTKtN4a5VzjgOPGIKkdLSzh5F
- T1CRUPgjKGEvsrtZxg3kI9GCquP1ZQ7pRoMUZ6Y451BUcFkqnJpSBW6C
-X-Gm-Gg: ATEYQzxty9wBsq49vLgcxpIVOTgW9Pd6/NqtjMPX63bTBcLIhSUxS1nP0B5IDF08yaB
- jek8A0dpAapfSgJUOwpXoDG3MljzjcpdlsnCi17Po4tixtQhFlH21TcKS79fyDY9qcxZ1r+IAAr
- /r0d8E+Z4YrFgsLZPiI8fD/5pGMzOJzvmmsdQqLOTfrkXwXEziBFnAWXjDho2HFCsFo7Uaf6GUa
- jKuSmDEbGoTuojpupK8QB2h4stssudFVwq3biJ1ASi+W9Jhn3OpCGPwswR8AJanqSQ+1gTy47pA
- WFWFGs8L9qBXPQYBY810ADd+CG4HBYnvBB4e3OPUj6+v26JIgShX5MuONUmXV9V3jAItPxHff7f
- /gEwfRkBZwdUBKd0i+jxGrKw1vs2w8dWDKAxwZNsbLSLlLT42B1wqUe48BiMYceE4CLpZk8142L
- e2tR8N8mNxfQxWoOzlAtvGyr0TBWZ4CN7FqalgKAK7+zdDAg==
-X-Received: by 2002:a17:90b:1848:b0:35b:a1b6:5bf5 with SMTP id
- 98e67ed59e1d1-35bb9f2c3ffmr328257a91.31.1773771169905; 
- Tue, 17 Mar 2026 11:12:49 -0700 (PDT)
-Received: from google.com ([2402:7500:a44:85b:33eb:25ae:8a8a:6a70])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c741e0d4b10sm276112a12.10.2026.03.17.11.12.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Mar 2026 11:12:49 -0700 (PDT)
-Date: Wed, 18 Mar 2026 02:12:45 +0800
-From: Kuan-Wei Chiu <visitorckw@gmail.com>
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org,
- dmitry.osipenko@collabora.com, marcandre.lureau@redhat.com
-Subject: Re: [PATCH v4 2/4] virtio-gpu: decouple Venus from CONFIG_OPENGL
-Message-ID: <abmZnVdAH3pbIGFs@google.com>
-References: <20260317174915.31829-1-lucaaamaral@gmail.com>
- <20260317174915.31829-3-lucaaamaral@gmail.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1w2muv-0002IX-20; Wed, 18 Mar 2026 05:10:17 -0400
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1w2mut-0002PC-5h; Wed, 18 Mar 2026 05:10:16 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Ff9qEyZ7Zxv+fnncWxK8IZkHzdomNZRHGPiIzAN469E8M12RjFhRm94yB0P4ElvZi/YEb4RHD2KtsXfICC5pAjrUcPwuy0Emcsablv3KwG5LuCm/28e/g9qzfMzcMjU5bQIDsMuWzH4NpDCltlsbm8UFmlEA3hidYIDZjZ3jRXPXYrs0SD5ZzEOmAqyk6f+A34l1X75+d0l6QK0qPAaA/KYBZnQgXsWK+A8HBQwI9XFXrMpqeSFzPN1pekLI9+WH+yfLWKYhNydCIz0bsWhbMLe/cIMskdr4/L6b2KsdzC4fbIO+YeenbM/iKdU2cKpQHhWQ9d8iTf38U6nI1S7qcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=+SpI4Fr+QYW/NplyKfQfgZ+YLNxdKTBeVFBADaNsSdA=;
+ b=pLpSbfOzAAET5fE34GG2zWZE6Eciiuv6OZM3QQTOQms7u1K/2j7jm4FoNLuHH4NM//wCC1nFyvt7rLyNYdzkwYC/AQqPf7yWBXVIPR+Xs66BC180oWT2U39NRVF9lcUtYJiJzO6IFYIexUXHb/R40Zj4fxrVCwdRbwOS0A3rEWdwRwfM66Q+cW2++h6P30mjzhIz/FQ3KmJm6YGnKdb2hEN7u09PeuLbqfIOyM/xbW0imqPwVIV80Cahy4NDzCXxTFWqSat1qzfR47ftWfvOMM6TPWjxUiJF9AYCVO0UTicEEb6MmKCqTrWCLfaHmmFLLguwfb8xdDPvhOmtzvz+2A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=+SpI4Fr+QYW/NplyKfQfgZ+YLNxdKTBeVFBADaNsSdA=;
+ b=mRGGEzytFLUbjECXF/0XxEKKxGVEAiEZbjmHTobyWTHZW0nkW38WaPJXes9Qczes1DxiQ+oScm0nTPEP0DvDfymApyGvkcf5KBo3pCq3sxnfwC9+f5ZAwQZ1qzi7Au9a+lXYFejYRG+6vFFP+lvrkg9FftdO2zfu16ii7c9gocx14MBPuhX/iTHI99HeGrj+xJWsMEHRc9rx4+3qRt7wyRc8g5zcxhWJFNbxwalekMGon0dAOAeFRAhjO0UzhR8jJ7NdImYpo3frjQX3MnXvfCeOxxY3YNk628+OMWTOel81ZBwKf3UBDzv7+Pk9LkjMwvtX07+sd6WSPVQxXtqLaA==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CY8PR12MB8196.namprd12.prod.outlook.com (2603:10b6:930:78::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Wed, 18 Mar
+ 2026 09:10:07 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9745.007; Wed, 18 Mar 2026
+ 09:10:07 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Nathan Chen <nathanc@nvidia.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+CC: Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael
+ S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Matt Ochs
+ <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+Subject: RE: [PATCH v3 1/8] hw/arm/smmuv3-accel: Check ATS compatibility
+ between host and guest
+Thread-Topic: [PATCH v3 1/8] hw/arm/smmuv3-accel: Check ATS compatibility
+ between host and guest
+Thread-Index: AQHctj0+CkSbs9/TNU+sHpuWsshrU7W0AKQQ
+Date: Wed, 18 Mar 2026 09:10:06 +0000
+Message-ID: <CH3PR12MB7548DD2E34492D7E73376999AB4EA@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260317183755.3721625-1-nathanc@nvidia.com>
+ <20260317183755.3721625-2-nathanc@nvidia.com>
+In-Reply-To: <20260317183755.3721625-2-nathanc@nvidia.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CY8PR12MB8196:EE_
+x-ms-office365-filtering-correlation-id: 241d372a-6920-48a3-8e29-08de84ce2623
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|7416014|376014|38070700021|22082099003|56012099003|18002099003|7053199007;
+x-microsoft-antispam-message-info: OJOkfZYTIgihWvS474kHTvlaKUSszimEojn5FW4vXILpJ2Jdm4Rnw6L+ystc2639kqOd9Pp4wFiVnlxYYb/xaMBvBLXSYE1puTx9R3LcEiBoySeYAvtDjRt+Pzu84O37AuSYrOUI+eNaTJvnV2PpArV7uhpbo8jt3cydT+rJzIcMz3X32ZUDsSlRWiQ8ePxiYltz1SMuTOnq95pO11COROUF+YCd0yx4W0Ovvlu8zKkWtZzq7RnaiWzFfIv3BVHiII/KaTyE2rMa3WwDQyGfFl9P/Y0tjNI3kH2/TGZYGkBGp6ZRUqzaaFp/3WBwEG0nvWc6sMsFEoPGfOtGN8WXbiDiAAq/GBRpKuoyEQnri8/pFyt1vzRy/U7A7LPX2a//WUDuHsRhf3jfpkdvHiZPdPxmpHiQ4nvaV2tVgS8hB8BngL6rfRSTyFV2hwJnYnViL75cUcBcDKodQ5f1taF+hE+q6zcIexhmI3aeiZixXSFEImbNo0PYx/lNV4NrT15Z23xqYUU9ArWFF2p/J6kfP2v4PLH1GBosNaW0iabOoWPkjc1CO8TzBIdRVxU+t+Gz9QYruTZu4B/Sr9kGuiSvHKrgJW/2QGjFOtZqDonIzW14Q41bcHZW0gfxGqccST/QVpaubaDdF3S0A5Rd4fXHUMUqPFC26XMlUjtray5BREFqrTg7LV0VkqKEY205b97972EVoAm1l1Djz9dUbRlkRzi7V5M98CnQaEuGGvDJbSFRPpC4EbV6ICWbvq+19ZpYQ16lx2yRwoVioTFJBYtrnfoQk94QhwrqY0jYhAnbMrQ=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700021)(22082099003)(56012099003)(18002099003)(7053199007);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?3H95xl0kjaOfLErhBVvJXm9ml3wdC1ZzW0oKSRux+kxWNEOLaWX18XoNJ2?=
+ =?iso-8859-1?Q?HVWTvH4e5E+IOYRFNq8bz+tabVziDm9T93+eZ6LVJUoyktsQFGkzYf4xDT?=
+ =?iso-8859-1?Q?XRkWYMSgFXYLku5Q4Vw52tyf46FNaDr+QKpAdnj2tivKcSqC91yqGpBNi8?=
+ =?iso-8859-1?Q?Omqu1Zs2eIyVUWuLL2RpP1YKJf1iQ+0g42OcUQH8ILtm+ox5pe2affNPca?=
+ =?iso-8859-1?Q?E5cJPojaaL3CbK6IFr0QbpkMxbDaMrk87sbeVZKjFyfQI8uq0FGNpwI2Z8?=
+ =?iso-8859-1?Q?rZHwLMhH0Ov1MWNL20KM1mbPbCgAnbA4Okrf3z5XTsKqYOCQHm/qOjItYK?=
+ =?iso-8859-1?Q?BazEoCULKIYFQxTZM0jGCQPc8HILyuQysVLcwZcf5y1tpTtXUZkJUFdgi2?=
+ =?iso-8859-1?Q?yyZPZ8PZ5UzxKZU8F2e+AnTXWAoSVVpNdr6sN9JIv03KFVI1FnmGCDasbz?=
+ =?iso-8859-1?Q?3x+fF0xsyCIxvllY2zYDLh3mLZ7JeyzQACTIZOcV0gNCFynkzQurqxjKxs?=
+ =?iso-8859-1?Q?/Hl4ur8JBgQEjGgq01tjtxTxpUYJ+c6c233POknAQ0XAiFo4OI0FgxoeHy?=
+ =?iso-8859-1?Q?8sWMsNkkrnlZMrBnUdBVhJLm6a0uOvUriTf4SKKoFKV3zhTSTAxL679rq8?=
+ =?iso-8859-1?Q?9eR4anb3Ylh/5lUEbmZBLb706dk8NCyjFFN2A4n5fuy+jI1If3ssWRHLZi?=
+ =?iso-8859-1?Q?NOCqFodju3OeT3/8Bdopbbi/i3POXKyjyPtFX6rxxY69hAm5yvHvxGN84D?=
+ =?iso-8859-1?Q?V8LwHGYK9ETcvvnUvK21DDQos+ORb9Afiui8CXF73BCsd+Cnu2DtKRoz34?=
+ =?iso-8859-1?Q?xcVXv0TBOJ/fop3pReRnXTlqgz5OM+1eyWwuMi2VwPgMCDP75xT6RQdUCc?=
+ =?iso-8859-1?Q?q81c5jnZg+i1I8y3eWL1GU77EWK0adSpFqgcOEwDxGYsF/Z6u3zaYjsDD7?=
+ =?iso-8859-1?Q?jEuDKggH6T5OixMQNwe3QXhnpLB6WS7kMOJ6siA7tB1J48jB2HPv6R+EPy?=
+ =?iso-8859-1?Q?P9t3spCl5+/RV7FxXZR9ju+P2kUvoaAnjx9EwzlNJBlFnHLtdqKmnwulVY?=
+ =?iso-8859-1?Q?zXCMujoFpowx3b4DV+Q9F+PkydSJcFY/IRF8LJTtitOhPw+3AdTPEpBQ6s?=
+ =?iso-8859-1?Q?cbQFfHzKIiIIsSBgnOlTc0P7iJ9SM9XDse0jPkDZxY+UD+SBqevYKrVWRK?=
+ =?iso-8859-1?Q?Ky6zzxN+UAmnmmfo3yqH34Iq8YbeLWur/8eiRPi70LOGItH0pq6o0a7jVI?=
+ =?iso-8859-1?Q?G62ThVrR1o4bVCtcr/ice48wNnYJahhg5kWAAC6Hngu3mpTgj1Q8PzMZ1P?=
+ =?iso-8859-1?Q?f+eYr9sc8Cvcj0Yxlwa6iFvPNrvuOA+GGm9dP/hKSBHhRldoPySyRvUeCi?=
+ =?iso-8859-1?Q?TBYvxjViNsku7ETiT1Ce0BduzSy0JMDq5VhTPy0zYWF/5HPDkK0TxA1PcU?=
+ =?iso-8859-1?Q?VRpYtl97gcP690ehXi5GSJ/hsUPUA3oDy94PfpSDgTBFL7AmUqcv+0tcPB?=
+ =?iso-8859-1?Q?pCJ7EC967MHFMumAsCf9l8c7e89E2o+TPywAqji1e9htaYaC+8aHDt5Ldq?=
+ =?iso-8859-1?Q?pnGM9gm4V7TsL+yp5NTn+udHqkqz/Zt3oE7TZHHRBX8ldy6D/LQDDI3zFo?=
+ =?iso-8859-1?Q?gM7qwVWHVD5mxq7ZdcRaBbjnL1Rltrzex0kHuwhrkQK4MRIKfQsoPr3N4C?=
+ =?iso-8859-1?Q?wTJzXczqBpK3bvlXMltlARwIECFRFg/QNF7UDNEcKYFfUVIIHwQJ53SrBJ?=
+ =?iso-8859-1?Q?kb2gU2oGalCZeDDvC4EosoEGwYtDv4zBD/gbYrYSelxMyYilSMbuw/qtRI?=
+ =?iso-8859-1?Q?GB8Tz2UgSg=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260317174915.31829-3-lucaaamaral@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=visitorckw@gmail.com; helo=mail-pj1-x102c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 241d372a-6920-48a3-8e29-08de84ce2623
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Mar 2026 09:10:07.0555 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Qhng5Th1Mws8wDQ+BR5lf19LhOlDQjr4Mpkvc+l+UIk6GFh/7SFDrvOsRRjINcJGJL5HApkCJhDqlVGXvWyllw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8196
+Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH1PR05CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 17 Mar 2026 17:01:56 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,293 +151,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Lucas,
 
-On Tue, Mar 17, 2026 at 02:49:13PM -0300, Lucas Amaral wrote:
-> Venus (virtio-gpu Vulkan context) currently requires an OpenGL
-> display backend due to build-time and runtime coupling.  On macOS,
-> no OpenGL display backend exists.
-> 
-> Remove the opengl.found() build requirement for the virtio-gpu-gl
-> module; virglrenderer provides Venus independently of OpenGL.
-> 
-> Gate GL-specific code paths behind CONFIG_OPENGL and display_opengl:
-> - Only advertise VIRGL/VIRGL2 capsets when display_opengl is set
-> - Only pass VIRGL_RENDERER_NO_VIRGL when !display_opengl with Venus
-> - Null out GL context callbacks when no GL display is available
-> - Route 2D display commands to the software renderer (pixman) when
->   Venus runs without GL (venus no-GL mode)
-> - Allow Venus to bypass the OpenGL display check at device realize
-> 
-> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+
+> -----Original Message-----
+> From: Nathan Chen <nathanc@nvidia.com>
+> Sent: 17 March 2026 18:38
+> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
+> <peter.maydell@linaro.org>; Shannon Zhao <shannon.zhaosl@gmail.com>;
+> Michael S . Tsirkin <mst@redhat.com>; Igor Mammedov
+> <imammedo@redhat.com>; Ani Sinha <anisinha@redhat.com>; Paolo Bonzini
+> <pbonzini@redhat.com>; Daniel P . Berrang=E9 <berrange@redhat.com>; Eric
+> Blake <eblake@redhat.com>; Markus Armbruster <armbru@redhat.com>;
+> Shameer Kolothum Thodi <skolothumtho@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; Nathan Chen
+> <nathanc@nvidia.com>
+> Subject: [PATCH v3 1/8] hw/arm/smmuv3-accel: Check ATS compatibility
+> between host and guest
+>=20
+> From: Nathan Chen <nathanc@nvidia.com>
+>=20
+> Compare the host SMMUv3 ATS support bit with the guest SMMUv3 ATS
+> support bit in IDR0 and fail the compatibility check if ATS support is op=
+ted as
+> enabled on the guest SMMUv3 when it is not supported on host SMMUv3.
+>=20
+> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/display/meson.build        |  8 ++--
->  hw/display/virtio-gpu-base.c  | 15 ++++++-
->  hw/display/virtio-gpu-gl.c    |  6 ++-
->  hw/display/virtio-gpu-virgl.c | 85 ++++++++++++++++++++++++++++++-----
->  4 files changed, 98 insertions(+), 16 deletions(-)
-> 
-> diff --git a/hw/display/meson.build b/hw/display/meson.build
-> index 90e6c041..509479e7 100644
-> --- a/hw/display/meson.build
-> +++ b/hw/display/meson.build
-> @@ -76,9 +76,9 @@ if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
->    virtio_gpu_ss.add(when: 'CONFIG_VHOST_USER_GPU', if_true: files('vhost-user-gpu.c'))
->    hw_display_modules += {'virtio-gpu': virtio_gpu_ss}
->  
-> -  if virgl.found() and opengl.found()
-> +  if virgl.found()
->      virtio_gpu_gl_ss = ss.source_set()
-> -    virtio_gpu_gl_ss.add(when: ['CONFIG_VIRTIO_GPU', virgl, opengl],
-> +    virtio_gpu_gl_ss.add(when: ['CONFIG_VIRTIO_GPU', virgl],
->                           if_true: [files('virtio-gpu-gl.c', 'virtio-gpu-virgl.c'), pixman, virgl])
->      hw_display_modules += {'virtio-gpu-gl': virtio_gpu_gl_ss}
->    endif
-> @@ -99,9 +99,9 @@ if config_all_devices.has_key('CONFIG_VIRTIO_PCI')
->                          if_true: files('vhost-user-gpu-pci.c'))
->    hw_display_modules += {'virtio-gpu-pci': virtio_gpu_pci_ss}
->  
-> -  if virgl.found() and opengl.found()
-> +  if virgl.found()
->      virtio_gpu_pci_gl_ss = ss.source_set()
-> -    virtio_gpu_pci_gl_ss.add(when: ['CONFIG_VIRTIO_GPU', 'CONFIG_VIRTIO_PCI', virgl, opengl],
-> +    virtio_gpu_pci_gl_ss.add(when: ['CONFIG_VIRTIO_GPU', 'CONFIG_VIRTIO_PCI', virgl],
->                               if_true: [files('virtio-gpu-pci-gl.c'), pixman])
->      hw_display_modules += {'virtio-gpu-pci-gl': virtio_gpu_pci_gl_ss}
->    endif
-> diff --git a/hw/display/virtio-gpu-base.c b/hw/display/virtio-gpu-base.c
-> index cb76302e..cc9704cd 100644
-> --- a/hw/display/virtio-gpu-base.c
-> +++ b/hw/display/virtio-gpu-base.c
-> @@ -18,6 +18,7 @@
->  #include "qapi/error.h"
->  #include "qemu/error-report.h"
->  #include "hw/display/edid.h"
-> +#include "system/system.h"
->  #include "trace.h"
->  #include "qapi/qapi-types-virtio.h"
->  
-> @@ -157,7 +158,18 @@ virtio_gpu_get_flags(void *opaque)
->      VirtIOGPUBase *g = opaque;
->      int flags = GRAPHIC_FLAGS_NONE;
->  
-> -    if (virtio_gpu_virgl_enabled(g->conf)) {
-> +    if (virtio_gpu_venus_enabled(g->conf)) {
-> +        /* TODO: set GRAPHIC_FLAGS_VK for direct Vulkan scanout */
+>  hw/arm/smmuv3-accel.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+>=20
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c index
+> 17306cd04b..2bb142c47f 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -101,6 +101,12 @@
+> smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+>                     smmuv3_oas_bits(FIELD_EX32(s->idr[5], IDR5, OAS)));
+>          return false;
+>      }
+> +    /* Check ATS value opted is compatible with Host SMMUv3 */
+> +    if (FIELD_EX32(info->idr[0], IDR0, ATS) <
+> +                FIELD_EX32(s->idr[0], IDR0, ATS)) {
+> +        error_setg(errp, "Host SMMUv3 doesn't support Address Translatio=
+n
+> Services");
+> +        return false;
 > +    }
-> +
-> +    /*
-> +     * TODO: virtio_gpu_virgl_enabled() checks VIRTIO_GPU_FLAG_VIRGL_ENABLED
-> +     * which is set for both OpenGL (VIRGL) and Vulkan (Venus) backends.
-> +     * This condition should ideally use a dedicated OpenGL-only flag. For
-> +     * now, display_opengl correctly gates GL scanout since Venus leaves it
-> +     * at 0.
-> +     */
-> +    if (virtio_gpu_virgl_enabled(g->conf) && display_opengl) {
->          flags |= GRAPHIC_FLAGS_GL;
->      }
->  
-> @@ -273,6 +285,7 @@ virtio_gpu_base_get_features(VirtIODevice *vdev, uint64_t features,
->      }
->      if (virtio_gpu_blob_enabled(g->conf)) {
->          features |= (1 << VIRTIO_GPU_F_RESOURCE_BLOB);
-> +        features |= (1 << VIRTIO_GPU_F_BLOB_ALIGNMENT);
 
-Thanks for the patch.
+Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-You are using VIRTIO_GPU_F_BLOB_ALIGNMENT here in patch2, but the macro
-isn't actually defined until Patch 3. This breaks git bisect because
-the project will fail to compile if someone checks out this specific
-commit.
+Thanks,
+Shameer
 
-Here is the build error it causes:
-
-../hw/display/virtio-gpu-base.c: In function ‘virtio_gpu_base_get_features’:
-../hw/display/virtio-gpu-base.c:288:27: error: ‘VIRTIO_GPU_F_BLOB_ALIGNMENT’ undeclared (first use in this function); did you mean ‘VIRTIO_GPU_BLOB_MEM_GUEST’?
-  288 |         features |= (1 << VIRTIO_GPU_F_BLOB_ALIGNMENT);
-      |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-      |                           VIRTIO_GPU_BLOB_MEM_GUEST
-
-Regards,
-Kuan-Wei
-
->      }
->      if (virtio_gpu_context_init_enabled(g->conf)) {
->          features |= (1 << VIRTIO_GPU_F_CONTEXT_INIT);
-> diff --git a/hw/display/virtio-gpu-gl.c b/hw/display/virtio-gpu-gl.c
-> index 2b7a41c4..1a95e6a7 100644
-> --- a/hw/display/virtio-gpu-gl.c
-> +++ b/hw/display/virtio-gpu-gl.c
-> @@ -124,7 +124,9 @@ static void virtio_gpu_gl_device_realize(DeviceState *qdev, Error **errp)
->          return;
->      }
->  
-> -    if (!display_opengl) {
-> +    if (virtio_gpu_venus_enabled(g->parent_obj.conf)) {
-> +        /* Venus uses Vulkan in the render server, no GL needed */
-> +    } else if (!display_opengl) {
->          error_setg(errp,
->                     "The display backend does not have OpenGL support enabled");
->          error_append_hint(errp,
-> @@ -245,4 +247,6 @@ static void virtio_register_types(void)
->  type_init(virtio_register_types)
->  
->  module_dep("hw-display-virtio-gpu");
-> +#ifdef CONFIG_OPENGL
->  module_dep("ui-opengl");
-> +#endif
-> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
-> index b7a2d160..2f9700e0 100644
-> --- a/hw/display/virtio-gpu-virgl.c
-> +++ b/hw/display/virtio-gpu-virgl.c
-> @@ -19,8 +19,10 @@
->  #include "hw/virtio/virtio-gpu.h"
->  #include "hw/virtio/virtio-gpu-bswap.h"
->  #include "hw/virtio/virtio-gpu-pixman.h"
-> -
-> +#include "system/system.h"
-> +#ifdef CONFIG_OPENGL
->  #include "ui/egl-helpers.h"
-> +#endif
->  
->  #include <virglrenderer.h>
->  
-> @@ -50,6 +52,16 @@ struct virtio_gpu_virgl_resource {
->      void *map_fixed;
->  };
->  
-> +/*
-> + * Venus no-GL mode: Venus is enabled but no OpenGL display is available.
-> + * Display commands use software (pixman) rendering; Venus/3D commands
-> + * go through the virglrenderer render server.
-> + */
-> +static bool virtio_gpu_venus_nogl(VirtIOGPU *g)
-> +{
-> +    return virtio_gpu_venus_enabled(g->parent_obj.conf) && !display_opengl;
-> +}
-> +
->  static struct virtio_gpu_virgl_resource *
->  virtio_gpu_virgl_find_resource(VirtIOGPU *g, uint32_t resource_id)
->  {
-> @@ -63,7 +75,7 @@ virtio_gpu_virgl_find_resource(VirtIOGPU *g, uint32_t resource_id)
->      return container_of(res, struct virtio_gpu_virgl_resource, base);
->  }
->  
-> -#if VIRGL_RENDERER_CALLBACKS_VERSION >= 4
-> +#if VIRGL_RENDERER_CALLBACKS_VERSION >= 4 && defined(CONFIG_OPENGL)
->  static void *
->  virgl_get_egl_display(G_GNUC_UNUSED void *cookie)
->  {
-> @@ -1032,6 +1044,45 @@ void virtio_gpu_virgl_process_cmd(VirtIOGPU *g,
->  
->      VIRTIO_GPU_FILL_CMD(cmd->cmd_hdr);
->  
-> +    /*
-> +     * Venus no-GL mode: route 2D display commands to the base software
-> +     * renderer (pixman). The guest kernel always uses 2D commands for
-> +     * display framebuffers even with VIRGL enabled; Venus/3D commands
-> +     * go through the virglrenderer render server as usual.
-> +     */
-> +    if (virtio_gpu_venus_nogl(g)) {
-> +        switch (cmd->cmd_hdr.type) {
-> +        case VIRTIO_GPU_CMD_RESOURCE_CREATE_2D:
-> +        case VIRTIO_GPU_CMD_SET_SCANOUT:
-> +        case VIRTIO_GPU_CMD_RESOURCE_FLUSH:
-> +        case VIRTIO_GPU_CMD_TRANSFER_TO_HOST_2D:
-> +        case VIRTIO_GPU_CMD_GET_DISPLAY_INFO:
-> +        case VIRTIO_GPU_CMD_GET_EDID:
-> +            virtio_gpu_simple_process_cmd(g, cmd);
-> +            return;
-> +        case VIRTIO_GPU_CMD_RESOURCE_UNREF:
-> +        case VIRTIO_GPU_CMD_RESOURCE_ATTACH_BACKING:
-> +        case VIRTIO_GPU_CMD_RESOURCE_DETACH_BACKING: {
-> +            /*
-> +             * Both 2D (simple) and blob (virgl) resources share g->reslist.
-> +             * Check if virglrenderer owns the resource to pick
-> +             * the right handler.
-> +             */
-> +            struct virtio_gpu_resource_unref hdr;
-> +            struct virgl_renderer_resource_info info;
-> +            VIRTIO_GPU_FILL_CMD(hdr);
-> +            if (virgl_renderer_resource_get_info(hdr.resource_id, &info)) {
-> +                /* Not in virglrenderer — it's a 2D software resource */
-> +                virtio_gpu_simple_process_cmd(g, cmd);
-> +                return;
-> +            }
-> +            break; /* virglrenderer owns it — fall through */
-> +        }
-> +        default:
-> +            break;
-> +        }
-> +    }
-> +
->      virgl_renderer_force_ctx_0();
->      switch (cmd->cmd_hdr.type) {
->      case VIRTIO_GPU_CMD_CTX_CREATE:
-> @@ -1433,6 +1484,7 @@ static int virtio_gpu_virgl_init(VirtIOGPU *g)
->      uint32_t flags = 0;
->      VirtIOGPUGL *gl = VIRTIO_GPU_GL(g);
->  
-> +#ifdef CONFIG_OPENGL
->  #if VIRGL_RENDERER_CALLBACKS_VERSION >= 4
->      if (qemu_egl_display) {
->          virtio_gpu_3d_cbs.version = 4;
-> @@ -1450,9 +1502,14 @@ static int virtio_gpu_virgl_init(VirtIOGPU *g)
->          flags |= VIRGL_RENDERER_D3D11_SHARE_TEXTURE;
->      }
->  #endif
-> +#endif /* CONFIG_OPENGL */
->  #if VIRGL_VERSION_MAJOR >= 1
->      if (virtio_gpu_venus_enabled(g->parent_obj.conf)) {
-> -        flags |= VIRGL_RENDERER_VENUS | VIRGL_RENDERER_RENDER_SERVER;
-> +        flags |= VIRGL_RENDERER_VENUS
-> +               | VIRGL_RENDERER_RENDER_SERVER;
-> +        if (!display_opengl) {
-> +            flags |= VIRGL_RENDERER_NO_VIRGL;
-> +        }
->      }
->      if (virtio_gpu_drm_enabled(g->parent_obj.conf)) {
->          flags |= VIRGL_RENDERER_DRM;
-> @@ -1475,6 +1532,12 @@ static int virtio_gpu_virgl_init(VirtIOGPU *g)
->      }
->  #endif
->  
-> +    if (!display_opengl) {
-> +        virtio_gpu_3d_cbs.create_gl_context = NULL;
-> +        virtio_gpu_3d_cbs.destroy_gl_context = NULL;
-> +        virtio_gpu_3d_cbs.make_current = NULL;
-> +    }
-> +
->      ret = virgl_renderer_init(g, flags, &virtio_gpu_3d_cbs);
->      if (ret != 0) {
->          error_report("virgl could not be initialized: %d", ret);
-> @@ -1546,14 +1609,16 @@ GArray *virtio_gpu_virgl_get_capsets(VirtIOGPU *g)
->  
->      capset_ids = g_array_new(false, false, sizeof(uint32_t));
->  
-> -    /* VIRGL is always supported. */
-> -    virtio_gpu_virgl_add_capset(capset_ids, VIRTIO_GPU_CAPSET_VIRGL);
-> +    /* OpenGL: VIRGL/VIRGL2 require a GL display backend */
-> +    if (display_opengl) {
-> +        virtio_gpu_virgl_add_capset(capset_ids, VIRTIO_GPU_CAPSET_VIRGL);
->  
-> -    virgl_renderer_get_cap_set(VIRTIO_GPU_CAPSET_VIRGL2,
-> -                               &capset_max_ver,
-> -                               &capset_max_size);
-> -    if (capset_max_ver) {
-> -        virtio_gpu_virgl_add_capset(capset_ids, VIRTIO_GPU_CAPSET_VIRGL2);
-> +        virgl_renderer_get_cap_set(VIRTIO_GPU_CAPSET_VIRGL2,
-> +                                   &capset_max_ver,
-> +                                   &capset_max_size);
-> +        if (capset_max_ver) {
-> +            virtio_gpu_virgl_add_capset(capset_ids, VIRTIO_GPU_CAPSET_VIRGL2);
-> +        }
->      }
->  
->      if (virtio_gpu_venus_enabled(g->parent_obj.conf)) {
-> -- 
-> 2.52.0
-> 
-> 
-> 
 

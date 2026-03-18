@@ -4,127 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3071710775EA
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 17:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D7C10775FE
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Mar 2026 18:22:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w2uVd-0007OP-Rz; Wed, 18 Mar 2026 13:16:43 -0400
+	id 1w2vXB-00056b-Ly; Wed, 18 Mar 2026 14:22:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w2uVa-0007NT-3k
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 13:16:38 -0400
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w2uVY-0007Oc-7o
- for qemu-arm@nongnu.org; Wed, 18 Mar 2026 13:16:37 -0400
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-82a124f3a5bso150855b3a.0
- for <qemu-arm@nongnu.org>; Wed, 18 Mar 2026 10:16:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773854194; x=1774458994; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=/Ru9uZ7RVjHY6f0f/wOmmSCBlhl3W/TsW1sGUtThduk=;
- b=dEyKaFGQW/LLBOSoCCCAvTNC8M/rGy4utDIUwkk2fpM3SdbU5N15i5bSYatL3IRyH8
- 7Ki7KhHfTXmN7rsxnaJK+uaH9BIbYJThpsSVBm5xWcp2b09t4VqwlaXo4wGQLqlIpA5m
- U72MGlhQJ4nOX1x5iIwJ48lV503H163m1/VxpZ4VxL695Jnzq2eENMufVqi4g67tvmBr
- keNAUuIcRy+ZNBrFEabu9Qzmmevt3WCcYr28CWHgKi4TSmlycVb1Hu5z2jVvZ82Tv3uj
- D0HcdH6v4i4sqVX3obnlNsRXSJOzrH0n8POVXvO+D+ylSLfchZVQKn1mOaVaTQgRuWgQ
- cuJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773854194; x=1774458994;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/Ru9uZ7RVjHY6f0f/wOmmSCBlhl3W/TsW1sGUtThduk=;
- b=WTExIAD2URcDBQctxqbyk3UZ78y3PJLKLi/yRr42y+c46LLUeO4K9nWOrsY4V73mf3
- ZI19AZajC2UiRlrxb3SZFG6XSY7nQ7fWvKRjRg85hQRoDw8ixhNqhgYwE+NUQboERT2x
- jLu9XkfOrnvs6UNUnFDmRMdXFBy3RuSblQV7pLzWVs4zGWtJUVb63K6UtGLWdrdSgwLv
- 6g9jw/rAJ27QFfWMH/y2Q6TdGQMsB4wagNAKjY2PCcCB54X86tnak7KfECsg0kbDe2+n
- jRj7dd/1w52Ogtyb/ZRPj0KXTQVlzHmyGe/6gKVzXROjOscqzdI9XahCBBvAjln9YxVW
- o06g==
-X-Gm-Message-State: AOJu0YzNcjMSsPVIAU/LJmobk56D+LXeyIRdoEaKA6TzsxnEpgbhpq47
- jSfKi9Sz4PnovUVLUzyZZ83mJq6enUtxogrQSJGRxpx0pPve2J/di2E1Sax18wLOpiU=
-X-Gm-Gg: ATEYQzyyrE4jSVc5SMWGtm0zbxlaIXC1uno2ofpvIhQ/7E0+vH3bWVXxC/DOPwkgVHm
- P1fclm7dxeUi1skHBCkQOHqdZgpMzNQAysHqrPxAtk9a3LeXyw/kdZdIUeUmAkWJ8aC/7m22IRd
- BfS624XeIGph4Xo7ExAxtllp/V1CwuqyvNqFyapHzEMbi3qz+sny/JLvlxiE/H8/JmuM2fo/mZC
- ZRcILc+uVbuqECJzflxlnUhZzMhbNe3sBtP69p0CapkGs5MZ9yXQQ5Y+wg3XZ9SEbqXiKcwffLQ
- Tzd5gR+xqMOL+/IbKsJfsP+LAMr8mJsY+C2shlvvsxq026/x8JUDS6wO3PIlPldqpNZ+KsMNG39
- LbGL6c+v1ApDSkT0vSk32lH53vxAsaieDeEEYjtWWUh3oOICYicRRQZetfRfeEHXBz6EofIy6ZL
- Ffha1uyNDWkon2BNGwFbMWLf2GCWh+1z5VAtZziNc2t1iyggPc7wuHc1rptRk0I+3ZAxfSSWPnp
- c4AG3I=
-X-Received: by 2002:a05:6a00:66d9:b0:82a:6de8:fa4d with SMTP id
- d2e1a72fcca58-82a6de8fc37mr2928570b3a.14.1773854193976; 
- Wed, 18 Mar 2026 10:16:33 -0700 (PDT)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82a6bbb2f41sm3117178b3a.33.2026.03.18.10.16.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Mar 2026 10:16:33 -0700 (PDT)
-Message-ID: <4e8f4e6e-e9d2-4457-af3d-755ced6d2a45@linaro.org>
-Date: Wed, 18 Mar 2026 10:16:32 -0700
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w2vXA-00055t-6k; Wed, 18 Mar 2026 14:22:20 -0400
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w2vX6-0000ey-9x; Wed, 18 Mar 2026 14:22:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KwDDVosGGtpojpeAtE1J0Wyh0zagFA1ZHkDbWRtnKAaB77t98b+o1DvNjPYIeaGBp3WUPWMjKdrPuNyTnGQLmqOi44rH+1jX08ZFhGPRmKpg58v1kmmTtVakUyAFIutWJwQXBoY9G5My4c2X2QHtd/4QsHbZos2ZCCdaKIeDS9hPubj0SMWMnCahbpLYp73P8KlxhRHdhXV3iF+tfZeTR6ZkwUdyu0nD8S7K/9ccLDwKFm7cv2xVX05e/Y5wjUSWNURc3yxNR+3nRe2r/M+KtVZkUYnofJrsz216NDQnQm6QToLTJPAYC1WpxBrQT6A4/YHyumdVK8uGGET3EuVDfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oN9solVxaEfe9PzeZMdfZpPr4QtmiibJRp8UVfJ91S8=;
+ b=Fqc3yjEYC6LGq9xqimZzSWiymSM4XGP7+CnumLJGBgByemuv6aaSgyOmZ0StDoMGcpmw/RlASZ0qLC5zssyIb3cqAoowddYOS1DYb/4bPnaCgqYjB4YsC+IJycShWhyq2ipm377XWwmbzWagWtSQF9VUh9xCgjECwovXc2hdUmjxqtmKE+OZtJFi5howiEjQpEfAreO0EO98YxiX13h8akev5LUNwepve+5nqDw5JVFYs85NAV7VbqYuvkPipOV23Q0ya6yUCPbRy5JbTReCxP6WVjDpNoFlIEXIZIy4alTBmO65zZYgX7KRozrctOlTsCCgIFOWTmhGqeiTuz/NlQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oN9solVxaEfe9PzeZMdfZpPr4QtmiibJRp8UVfJ91S8=;
+ b=nuEDkD52SIFlmoAsgv8Pat+FfWAadyaPmSApS849ZZ2I6Rs4vzDfnUTJa83P6YiR2Vhvt+9MHCTy1SKAaKYa5SMr6AWodp4zrsHB0spDHmnZNz0PZHi3OLVxORxwHBempbYYHJS1oSZfmBYbVK2PlPi9DlZQ2KFuLnDivJrR+SJQNKdLVbmSXmIzcZSH1DjnZ8BRBezCPBH+RNWZNfhADkdy/zfNAsMagaU/nVQKiKX9SHkpt/5JrWNbkNL2F1dmLJ2gf8wC2+SGFi/kETvkwz6ETDYhJGvsN5KWAxpPBfa2TtLBVtcGc//M2mDCJrDvl1EmUj0lWvOZL0bOX3hzuw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from CY3PR12MB9555.namprd12.prod.outlook.com (2603:10b6:930:10a::14)
+ by CYYPR12MB9013.namprd12.prod.outlook.com (2603:10b6:930:c2::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Wed, 18 Mar
+ 2026 18:22:06 +0000
+Received: from CY3PR12MB9555.namprd12.prod.outlook.com
+ ([fe80::fdb2:266d:ee2b:8d1e]) by CY3PR12MB9555.namprd12.prod.outlook.com
+ ([fe80::fdb2:266d:ee2b:8d1e%6]) with mapi id 15.20.9745.007; Wed, 18 Mar 2026
+ 18:22:06 +0000
+Message-ID: <a7e1bda5-f4cf-4761-b847-f07de996a12f@nvidia.com>
+Date: Wed, 18 Mar 2026 11:22:04 -0700
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/9] plugins: Introduce Fault Injection framework and
- API extensions
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- alex.bennee@linaro.org, peter.maydell@linaro.org, philmd@linaro.org,
- Ruslan_Ruslichenko@epam.com
-References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: Re: [PATCH v3 2/8] hw/arm/smmuv3-accel: Change ATS property to
+ OnOffAuto
+To: eric.auger@redhat.com, Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+References: <20260317183755.3721625-1-nathanc@nvidia.com>
+ <20260317183755.3721625-3-nathanc@nvidia.com>
+ <CH3PR12MB7548D2B0E4C731983EFC8EFBAB4EA@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <de9279e9-3404-45b6-8df6-fbda6488bfbe@redhat.com>
 Content-Language: en-US
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260318104640.239752-1-ruslichenko.r@gmail.com>
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <de9279e9-3404-45b6-8df6-fbda6488bfbe@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x432.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR13CA0166.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c7::21) To CY3PR12MB9555.namprd12.prod.outlook.com
+ (2603:10b6:930:10a::14)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY3PR12MB9555:EE_|CYYPR12MB9013:EE_
+X-MS-Office365-Filtering-Correlation-Id: 31113309-d11d-492d-d0d7-08de851b42b9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|376014|7416014|1800799024|56012099003|18002099003|22082099003|7053199007;
+X-Microsoft-Antispam-Message-Info: gg3at+14k4w8n2wh9EZ2Tt1VYEcBI223JZSvWUlzaNWW4J74HUBcdy75YV7Dkt7BDaJ9nHckS5NdS/SPzf0T0HSsVU8axUl+5/NsR1rK+yVZtiqGlBqpGCvMgBCF85wsE1tKuOhEh1Ck0L4m2SjEVxpISq+goE5FcwSpz2p5sZbpJHwYeDfMvSS3rKeHFflo1CeE6yfwib6SZ9EEOVJkTH+k/Y88YFUx03Fh9fGBj7jrMfSROvj3KVFsdhWl83MQhL3ngSfRtIDhdID7n+xvj2IPuT1bRyu1n0HGfnPiLY5SBI+MNOa0Fiqg74S2k96gFsqQbaNDLzKK58T1V5hsHYXUEaMUny8IXC2Y3awOIDzGq51eEh2i0S5U/NwiiGxRtRzbTJLXHMQTXhJk3KBPZCwF93Dc5CbzkWdqr+KENVE/mwUi5Ek2mJyDL5R82z9QKl8puphKtEQJVcq9EgJmSdiSu4jzogkYQ3rgGyaunH2II7amfIBFKbDnYyluZa7NZhi4dbjwDFfeQ2IRU3NNBqXHyT9q12D+MoKyXaPcS3D1rQlephgT3ojYDkoeR6KK7D/pBNzueS5DbixXw9nyFhaqTEl3siyuSywAy5tQOSwa4P5FW9s52Q+A7BJ04Lt+PUCHq5Ewb2f5HwFDvFlnYvXT0HU5WGRUs/6JtgWa1P4ZlpwsgqMo59YChkgBSD6ZacMwrKl+MuN5+gc5Q7pglNsRCwJJwH9tzDtvF80pSuE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY3PR12MB9555.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(7416014)(1800799024)(56012099003)(18002099003)(22082099003)(7053199007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c2M2UDN6bDBGNjI2c25oeHQxdFJXUWVER0RMcVhtUWN1QmhqdXh2ZWo3VnBs?=
+ =?utf-8?B?K2F4aUJ3bVFnTFNDQ2ZvUjc3RTZKMUR2MjQ4dWVRY1R0elZEYzZKMDVLUGRO?=
+ =?utf-8?B?N2dKcFYwTjlWSWhmQkpibzN5WjZMTHVka2RsbFVQQzE5VjlYeEZzRGZOVmpT?=
+ =?utf-8?B?alJyR3VpREFpMW9wbDlTT1JGZm9ydDJUZ0RrZCtMNy9GWU5ObTNqSXYvRExJ?=
+ =?utf-8?B?ZzZJYXV5Q1RNdnFKRXlzUXN5Q2JJalpvMEI2YU9YY1JhQ3UzZjYvVi9OdDNr?=
+ =?utf-8?B?eStvRExrcE1OVnVoMWcyWHQ3Yy8zbTRJTm9sbTl2VXpoby9CbHVKcS8vYUJF?=
+ =?utf-8?B?VjhVWlFSazAwMUN2YjBCdTRmbWQxdEtEeWRLMHVUQnI0L3NNZzcwcmdGWUNN?=
+ =?utf-8?B?RWIvZ2lFZEZtNmFWUGJncnQ4Mi9IOHFmNGNBTlR4UTBvVDRBN1hBeDJSTDV3?=
+ =?utf-8?B?YjUrYWY5OE44Qi85eDEyVFdiMllodGFPckxxbHlUczhhNHRpb1RHL1I5cmxi?=
+ =?utf-8?B?M2NaV0ZJWU1yWmxBSTFCQzNXcTBDYjl3ak10dzR3cUhLaHFoam5rYzNuWFhZ?=
+ =?utf-8?B?Z0pFM01YVkk3MHZ2U3ZwR2hSSTBLSzE4NWxGTmRaOFYrU2FEMXZTM09laGFi?=
+ =?utf-8?B?UVd6amVyUWRmbjlvSUNiSmYxWTRGVzU3Nm1ZMy9oL2Y0Y01aZWhZMlRaUUVu?=
+ =?utf-8?B?cU1HQnJCeXl0MW82YW5UK1oxSk5WbUpsSEJzR1oycmhjL1ZCcVkrUWsxRHAx?=
+ =?utf-8?B?MG9QSG5zdXA1bkVvVTEzb1dMVmIwaGdQSzNGWlN6ekZ0MUcyM3NPdlY1V3Vr?=
+ =?utf-8?B?YmtJSkZLTGxmRXFaK0RaRTBueUdsUXFEbGFTZG5FYTZTcGtJVWV3UVQ2NGIw?=
+ =?utf-8?B?QTZMODc2QVJHckRHQW51RGFuMjBYWnFlTG8vL2k4N0dDdTEyY3NvYVNNTDNx?=
+ =?utf-8?B?S3ZodmxrU1ZmNnpnNEhjdzFnTWh0SGVnMi90T3FFR3o1V09VcjVTOTRJZXRG?=
+ =?utf-8?B?OWZoaU8zRUxOK0JuVG5wNXlaYVZtQUZyRG0zR25ucGtaS3JkNEFTaDg1N0ZS?=
+ =?utf-8?B?SSs0NDNEdVZWbExxK0xjMHc1Wit5aWkvUTRZb1J5QWRMTzRUZ1VaeGp0ZHdQ?=
+ =?utf-8?B?UE8wKzJ6dEtIQUFZMko1eVRnYnZ6Y29MZm94MzdJaDRKTVByRG1LZUo0NXFl?=
+ =?utf-8?B?ampJSTNFcFhVSEw0MG5WZ0p0ZXJXVnpodE13bS9IKzlCdVRzdTZna2YxTFBt?=
+ =?utf-8?B?endpMHBlRHRVYU1WbWUrS01GRGNTNUFaWlFOaU1QNitYQ05KWGo3UXN0QXJD?=
+ =?utf-8?B?cG9RYXB3QWFRbmwxY2R4SG9hZVk0U3pvYm9PMjJvZ2Q3OFF3ck9NQTdXVlZ3?=
+ =?utf-8?B?ZjNmc1NHenRIZXRGbXhaNndaQi9uOFhxVEY0c054YXZ5bTdQUFBheFQwZlcv?=
+ =?utf-8?B?QWk3SzRRd0tQUGxQOGQ3Tnp6aFRFUlp0aXZsZmVNdm9rR1hxTkROQ1JrRUFr?=
+ =?utf-8?B?VVVSdFRIQ3pnb2dnTEtGYUNzWERxRDMyZ3FONWFhRnB2ZmN5c3dXcngwNjRl?=
+ =?utf-8?B?aWgxcjVmTnEzMk9aTWYvZXhTbDRIbThoUXRJYmtQODVBdHdialhXUHFNTkNL?=
+ =?utf-8?B?d2QrRmt2WE1tOFBOZlpGeWRJaCtrTWJWUjdOdVBqalNyQmFLcmYxRWRZdU82?=
+ =?utf-8?B?aXVtN3NvT3RxV0FNWFpjNXc2ajYxTG5vOEtocEx4SlBFUlo1RTFPTmJ5Y0I4?=
+ =?utf-8?B?WFNCeUhRdlpiMkdJT3JoU2hySU05bzZpMmlMTlBlVkNVOTFLdnNLKzdaMVly?=
+ =?utf-8?B?UTlEZXBCcWJYL3d6WTFETVp5UC9lbnNJYVBpZXN5UE1uK2pKTXBjTVlqZzMr?=
+ =?utf-8?B?NWphVXdOdVNSVllJdjdCTGtzSEpyQ0dwRWl4a04yQ1hLM0ZlL2tCWG1udi85?=
+ =?utf-8?B?TGJpWVdqZUM4VktqSHFEVXdoUnl6TW96bndrdkRocGNnSnVZZnkvRDRNeXZR?=
+ =?utf-8?B?dWZLU0czaGVkc0tZUEFhQUhIcXgyTnoxNmtENE9ZT3JPVlRUaTJNYjRRcTkz?=
+ =?utf-8?B?STVyakJIS1VSaS9McnNuL3djU2l0YTVVcncyMHRsU0VreDlUVm9xTEUyQjBN?=
+ =?utf-8?B?dTlXWkxLcWZvcThTekdaTXo4NVlnN2Z3dG94UXNBcmNRRjhpZUcwS3pqM2t4?=
+ =?utf-8?B?RGNLSTJRU3FxRjkra2x0UjUzcW50VFcvWFBFaE1hMjd2S0dkc0lFMi9jVjVG?=
+ =?utf-8?B?cTJpU1NVWjl5QWVUeVJhWE84RTlLNkhXQ0RzK1NVdTU5N3drOW42ZVlTeGc0?=
+ =?utf-8?B?Y2dPRytHMzNtREswWm92YzRONnBoaS8yWTlOS1Q4dTNYQWxGZ0lrZz09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 31113309-d11d-492d-d0d7-08de851b42b9
+X-MS-Exchange-CrossTenant-AuthSource: CY3PR12MB9555.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2026 18:22:06.5214 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ModXfjVqlsQ0WqH305bD+Rm8Z5N8PbaAQ78LcPuZgH/63ZSVST4KC6DC/J5fci3y6/NXrZ6ZycB6qylTeANEBA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR12MB9013
+Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
+ envelope-from=nathanc@nvidia.com;
+ helo=BYAPR05CU005.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,112 +160,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Ruslan,
 
-On 3/18/26 3:46 AM, Ruslan Ruslichenko wrote:
-> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
-> 
-> This patch series is submitted as an RFC to gather early feedback on a Fault Injection (FI) framework built on top of the QEMU TCG plugin subsystem.
-> 
-> Motivation
-> 
-> Testing guest operating systems, hypervisors (like Xen), and low-level drivers against unexpected hardware failures can be difficult.
-> This series provides an interface to inject faults dynamically without altering QEMU's core emulation source code for every test case.
-> 
-> Architecture & Key Features
-> 
-> The series introduces the core API extensions and implements a fault injection plugin (contrib/plugins/fault_injection.c) targeting AArch64.
-> The plugin can be controlled statically via XML configurations on boot, or dynamically at runtime via a UNIX socket (enabling integration with automated testing frameworks via Python or GDB).
-> 
-> New Plugin API Capabilities:
-> 
-> MMIO Interception: Allows plugins to hook into memory_region_dispatch_read/write to modify hardware register reads or drop writes.
-> Asynchronous Timers: Exposes QEMU_CLOCK_VIRTUAL to plugins, allowing callbacks to be scheduled based on guest virtual time.
-> TB Cache Flushing: Exposes qemu_plugin_flush_tb_cache() so plugins can force re-translation when applying dynamic PC-based hooks.
-> Interrupt & Exception Injection: Exposes APIs to raise/pulse hardware IRQs on the primary INTC and inject CPU exceptions (e.g., SErrors).
-> Custom Device Faults: Introduces a registry where device models (e.g., SMMUv3) can expose specific fault handlers (like CMDQ errors) to be triggered externally by plugins.
-> 
-> Patch Summary
-> Patch 1 (target/arm): Adds support for asynchronous CPU exception injection.
-> Patch 2-3 (plugins/api): Exposes virtual clock timers and TB cache flushing to the public plugin API.
-> Patch 4 (plugins): Introduces the core fault injection subsystem, IRQ/Exception routing, and the Custom Fault registry.
-> Patch 5 (system/memory): Adds the MMIO override hooks into the memory dispatch path.
-> Patch 6 (hw/intc): Registers the ARM GIC (v2/v3) with the plugin subsystem to enable direct hardware IRQ injection.
-> Patch 7 (hw/arm): Registers the SMMUv3 with the custom fault registry to demonstrate how device models can expose specific errors (like CMDQ faults) to plugins.
-> Patch 8 (contrib/plugins): Implements the actual fault_injection plugin using the new APIs.
-> Patch 9 (docs): Adds documentation and usage examples for the plugin.
-> 
-> Request for Comments & Feedback
-> 
-> Any suggestions on improvements, potential edge cases, or issues with the current design are highly welcome.
-> 
-> Ruslan Ruslichenko (9):
->    target/arm: Add API for dynamic exception injection
->    plugins/api: Expose virtual clock timers to plugins
->    plugins: Expose Transaction Block cache flush API to plugins
->    plugins: Introduce fault injection API and core subsystem
->    system/memory: Add plugin callbacks to intercept MMIO accesses
->    hw/intc/arm_gic: Register primary GIC for plugin IRQ injection
->    hw/arm/smmuv3: Add plugin fault handler for CMDQ errors
->    contrib/plugins: Add fault injection plugin
->    docs: Add description of fault-injection plugin and subsystem
-> 
->   contrib/plugins/fault_injection.c | 772 ++++++++++++++++++++++++++++++
->   contrib/plugins/meson.build       |   1 +
->   docs/fault-injection.txt          | 111 +++++
->   hw/arm/smmuv3.c                   |  54 +++
->   hw/intc/arm_gic.c                 |  28 ++
->   hw/intc/arm_gicv3.c               |  28 ++
->   include/plugins/qemu-plugin.h     |  28 ++
->   include/qemu/plugin.h             |  39 ++
->   plugins/api.c                     |  62 +++
->   plugins/core.c                    |  11 +
->   plugins/fault.c                   | 116 +++++
->   plugins/meson.build               |   1 +
->   plugins/plugin.h                  |   2 +
->   system/memory.c                   |   8 +
->   target/arm/cpu.h                  |   4 +
->   target/arm/helper.c               |  55 +++
->   16 files changed, 1320 insertions(+)
->   create mode 100644 contrib/plugins/fault_injection.c
->   create mode 100644 docs/fault-injection.txt
->   create mode 100644 plugins/fault.c
-> 
 
-first, thanks for posting your series!
+On 3/18/2026 6:38 AM, Eric Auger wrote:
+> 
+> On 3/18/26 10:31 AM, Shameer Kolothum Thodi wrote:
+>>> -----Original Message-----
+>>> From: Nathan Chen<nathanc@nvidia.com>
+>>> Sent: 17 March 2026 18:38
+>>> To:qemu-devel@nongnu.org;qemu-arm@nongnu.org
+>>> Cc: Eric Auger<eric.auger@redhat.com>; Peter Maydell
+>>> <peter.maydell@linaro.org>; Shannon Zhao<shannon.zhaosl@gmail.com>;
+>>> Michael S . Tsirkin<mst@redhat.com>; Igor Mammedov
+>>> <imammedo@redhat.com>; Ani Sinha<anisinha@redhat.com>; Paolo Bonzini
+>>> <pbonzini@redhat.com>; Daniel P . Berrangé<berrange@redhat.com>; Eric
+>>> Blake<eblake@redhat.com>; Markus Armbruster<armbru@redhat.com>;
+>>> Shameer Kolothum Thodi<skolothumtho@nvidia.com>; Matt Ochs
+>>> <mochs@nvidia.com>; Nicolin Chen<nicolinc@nvidia.com>; Nathan Chen
+>>> <nathanc@nvidia.com>
+>>> Subject: [PATCH v3 2/8] hw/arm/smmuv3-accel: Change ATS property to
+>>> OnOffAuto
+>>>
+>>> From: Nathan Chen<nathanc@nvidia.com>
+>>>
+>>> Change accel SMMUv3 ATS property from bool to OnOffAuto. The 'auto'
+>>> value is not implemented, as this commit is meant to set the property
+>>> to the correct type and avoid breaking JSON/QMP when the auto mode is
+>>> introduced. A future patch will implement resolution of the 'auto'
+>>> value to match the host SMMUv3 ATS support.
+>>>
+>>> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+>>> Signed-off-by: Nathan Chen<nathanc@nvidia.com>
+>>> ---
+>>>   hw/arm/smmuv3-accel.c    |  6 ++++--
+>>>   hw/arm/smmuv3.c          | 14 ++++++++++++--
+>>>   hw/arm/virt-acpi-build.c |  2 +-
+>>>   include/hw/arm/smmuv3.h  |  4 +++-
+>>>   4 files changed, 20 insertions(+), 6 deletions(-)
+>>>
+>>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+>>> index 2bb142c47f..621ac531a5 100644
+>>> --- a/hw/arm/smmuv3-accel.c
+>>> +++ b/hw/arm/smmuv3-accel.c
+>>> @@ -826,8 +826,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
+>>>       /* By default QEMU SMMUv3 has RIL. Update IDR3 if user has disabled it */
+>>>       s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, s->ril);
+>>>
+>>> -    /* QEMU SMMUv3 has no ATS. Advertise ATS if opt-in by property */
+>>> -    s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, s->ats);
+>>> +    /* Only override ATS if user explicitly set ON */
+>>> +    if (s->ats == ON_OFF_AUTO_ON) {
+>>> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, 1);
+>>> +    }
+>> Nit: I think we can keep the original comment.
+>>
+>>>       /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
+>>>       if (s->oas == SMMU_OAS_48BIT) {
+>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>>> index 068108e49b..3dead0bcd3 100644
+>>> --- a/hw/arm/smmuv3.c
+>>> +++ b/hw/arm/smmuv3.c
+>>> @@ -317,6 +317,11 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
+>>>       smmuv3_accel_idr_override(s);
+>>>   }
+>>>
+>>> +bool smmuv3_ats_enabled(SMMUv3State *s)
+>>> +{
+>>> +    return FIELD_EX32(s->idr[0], IDR0, ATS);
+>>> +}
+>>> +
+>>>   static void smmuv3_reset(SMMUv3State *s)
+>>>   {
+>>>       s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
+>>> @@ -1971,7 +1976,7 @@ static bool
+>>> smmu_validate_property(SMMUv3State *s, Error **errp)
+>>>               error_setg(errp, "ril can only be disabled if accel=on");
+>>>               return false;
+>>>           }
+>>> -        if (s->ats) {
+>>> +        if (s->ats == ON_OFF_AUTO_ON) {
+>>>               error_setg(errp, "ats can only be enabled if accel=on");
+>>>               return false;
+>>>           }
+>>> @@ -1993,6 +1998,11 @@ static bool
+>>> smmu_validate_property(SMMUv3State *s, Error **errp)
+>>>           return false;
+>>>       }
+>>>
+>>> +    if (s->ats == ON_OFF_AUTO_AUTO) {
+>>> +        error_setg(errp, "ats cannot be set to auto");
+>>> +        return false;
+>>> +    }
+>>   Nit: Is "ats auto mode not supported" better?
+>>
+>> Also, should we do this before the if (!s->accel)  check above?
+>> Otherwise, I think it will carry on for non-accel smmuv3 cases like,
+>>
+>> -device arm-smmuv3,primary-bus=pcie.1,accel=off,ats=auto
+>>
+>> I think this applies to other properties in this series as well.
+>>
+>>>       if (s->oas != SMMU_OAS_44BIT && s->oas != SMMU_OAS_48BIT) {
+>>>           error_setg(errp, "OAS can only be set to 44 or 48 bits");
+>>>           return false;
+>>> @@ -2128,7 +2138,7 @@ static const Property smmuv3_properties[] = {
+>>>       DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
+>>>       /* RIL can be turned off for accel cases */
+>>>       DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
+>>> -    DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
+>>> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats,
+>>> ON_OFF_AUTO_OFF),
+>> I think we should update the description in object_class_property_set_description
+>> to mention auto not supported.
+> I agree with Shameer wrt all above comments
 
-About the general approach.
-As you noticed, this is exposing a lot of QEMU internals, and it's 
-something we tend to avoid to do. As well, it's very architecture 
-specific, which is another pattern we try to avoid.
+Yes, I will make these changes for the next refresh.
 
-For some of your needs (especially IRQ injection and timer injection), 
-did you consider writing a custom ad-hoc device and timer generating those?
-There is nothing preventing you from writing a plugin that can 
-communicate with this specific device (through a socket for instance), 
-to request specific injections. I feel that it would scale better than 
-exposing all this to QEMU plugins API.
-
-For SMMU, this is trickier. Tao recently (6ce361b02c82) an iommu test 
-device, associated to qtest to unit test the smmu implementation. We 
-could maybe see to leverage that on a full machine, associated with the 
-communication method mentioned above, to generate specific operations at 
-runtime, all triggered via a plugin.
-
-Exposing qemu_plugin_flush_tb_cache is a hint we are missing something 
-on QEMU side. Better to fix it than expose this very internal function.
-The associated TRIGGER_ON_PC is very similar to existing inline 
-operations. They could be enhanced to support writing to a given 
-register, all the bricks are there. For TRIGGER_ON_SYSREG it's a bit 
-more complex, but we might enhance inline operations also to support 
-hooks on specific register writes.
-
-For MMIO override, the current approach you have is good, and it's 
-definitely something we could integrate.
-
-What are you toughts about this? (especially the device based approach 
-in case that you maybe tried first).
-
-Regards,
-Pierrick
+Thanks,
+Nathan
 

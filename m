@@ -4,94 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3DCA1091910
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 19:54:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CD081091929
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 22:29:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3JRM-0008Uj-SS; Thu, 19 Mar 2026 15:53:56 -0400
+	id 1w3Lrt-0002rz-OG; Thu, 19 Mar 2026 18:29:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1w3Ion-0004Uw-LY
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 15:14:10 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1w3Lrs-0002rq-T5
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 18:29:28 -0400
+Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1w3Ioi-0000mC-2K
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 15:14:01 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-439b9cf8cb5so1653888f8f.0
- for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 12:13:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1w3Lrq-00053i-A5
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 18:29:28 -0400
+Received: by mail-ot1-x331.google.com with SMTP id
+ 46e09a7af769-7d556c1a79eso1490002a34.3
+ for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 15:29:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773959365; cv=none;
+ d=google.com; s=arc-20240605;
+ b=U2yM56rj32iv+gDOBiSO81wfStcSufE9IQvUVuftBWGKRm3NE20INMW2GkR6vzm4Lt
+ VRuLdWixFFWO56AVrGBPGwVzr54iuotdjrhRH3P/i8BtAMf42MMvzJLJmecW99z3LtWF
+ sNChGFIZgIOHwQfBzLgxXhBasop/O0DFOuSOiKrl4ty+M763zEvzAxKe27uFZW/LFYEH
+ SxA+VW54Q4eW6NMzcqm1M6TmeJVM50sF1JaWD6Vd3/70jWJrvlfiNhGEhlrWNkD94ZHI
+ cSNneJMDlZIis9K9FeJklhFgX84kWVCc3HtwPbwjbSi+vUid8c1eQdZceIL3O2GHOQKd
+ AN1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=zSo8NjxK1kjRVJe+MMsvA1/YI76pZtWxBrvNv1Slaxo=;
+ fh=6zFhzDPStZt4Qp2w7noSeSFAlSqXOXKJm1SvsIbZFRw=;
+ b=O3NEQJdJIuK7C5do1YSVIFhtl/8MgWVahu38Q48Y4+O48CIJD7e6zVMnmWZyweshmd
+ 1Pc7pQ9AcADBRO1trSB93lX7AC0PLS6oookk++XyoHzv7OaUQ5UHV/N9Ba3s/fahO/bZ
+ H72RMLF5UdgeGgoP1GCiHGU1NDnXAiePIIoJazI/aPV2imdsKRpK8pxV24TFPzYNbslL
+ 3tCXPkXFNFBvl1uj+ZjDTlUhumUHQPN9ZPhl7NXLIDojRnjSwy5QZ7wyAfKb4ttPdz6Y
+ dHNfWViOG9G5kn0HesOl/pAy93QnGqQUFelZZNAuIRvCJTOXszJW3N2dB/WS3iw0+AFb
+ f91w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773947638; x=1774552438; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1773959365; x=1774564165; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jZQIAqd1C3za4aw1XWQN0FNbaHnNMI3gmGgywrKY80E=;
- b=gYOQNZZnup090ELmGiuVYn5GDnOmqyvPuZNSgu1zT8QF9PjCrvoygpr/HW9ARezDDR
- t4MYaBqPS0uHMJqqHiJftDiWTFvzohgrTD7po37oQcrCu5F+H1y2qmSz9c/ud3vFvjxy
- Q7lcLx2DMVSplOcdOMbxxkQvTLaNpyhxzVqRiNTgOeNt/OnxJtxrkP9e6Qb1nwgZ3B3l
- CERXIJK7hk4qfvqErriIsz5CtQmbJU30uhbRneRCbqIY6seZA97S02sgmNcm0v2cXE0r
- xCkGyNSC2Uo0ZAIQQ1I5vH4XQOEYiSqVWfFiHs0av9wd/8u80cjauF7dm3HgygW+csmV
- iW9A==
+ bh=zSo8NjxK1kjRVJe+MMsvA1/YI76pZtWxBrvNv1Slaxo=;
+ b=ZxPSWwqM/LS8rvu+BbmQ35DBo+/YPj3w3x+1sAHYmPqx4ca8FZGnV2Dx4PJfZnAKw6
+ yyW9u4g5+czImb3d7jlMQl9QYB/+zXp1Dh+JmLrS/B6oPTv2GSyv5kugd2MoFzDS0tXj
+ TZBYS85hPTbVvn0hArAlVqKRYDJ/Lsap1tpeB1HzF+Mxu8EMyKMklUoMg725UcMk70N1
+ Jnbltrp5/tUiG8dPuzFTtKRzRD4PK+Gcft/Se/B9qgk3D7Gsb7n/jbqXlbpmC1H5GGtO
+ 4tIYjL7SkBjlo52hQectscU3QHqqFZ45gfS17/B7V6qA+VmqeCrg/yFWKtDo87nqbnQI
+ I5BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773947638; x=1774552438;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20251104; t=1773959365; x=1774564165;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=jZQIAqd1C3za4aw1XWQN0FNbaHnNMI3gmGgywrKY80E=;
- b=FfTdH3ZP3Rp1qOuUr8beKGxdYfhyS1PlMmRhtjhALmJ7uyKQB6yAE8AyODP9dGBYWi
- 5QgvUBwM5x+lDNRP520ujimgf+xBpvibrwetOvbkMxfPD86cVCgbLRAKrwzyrjT0Lpqw
- y7mRYzFYp4WDFTgG2VrD/Bvbm9VGwBeupaynkDbTy+C7ah772fr2pibkI5wZN0u+rjw3
- WxI8HKNapfOP2LsvkB6eJzPsgWdlLLzDpEWPfo7bOQw4/ISLVIrTC0vFAiqRC4GCet97
- he35gEXNBUZvROh32PtPt8R1piUAFTboinM+2jhc9XuxVUWXCzN/0WbQySLlbBrjS1tb
- HENg==
-X-Gm-Message-State: AOJu0Yx7qjfd4DygHqo5mzhLoLG4jQGUYA4xeF0hITCQ5NdMownnzsGk
- t9ZafZhwwUQVj6DpG3vhUdRmbEMBt6+nhG+uctdY0668+btm089inqgh
-X-Gm-Gg: ATEYQzyrdO4VFn4k0Eb04rbO6EdYY/piNTuYbuSrz0+jR0ayOKmWasYZFHDp7MQkI7u
- zPH0/pUrVL58rYNmx9tcISZT0cqHYyP2Ha5Zbd9YpOhpBLNFfdzH+zhGJHQFSkV/+gl9t1nDLY3
- Kah4ILXj1ABi6p4likbBrPRY2xHIP8rZfOM6t/BC/Q4lGknKh4SHU5S3W1Ld/HyTp72MjmHFde+
- zbCiSHzW/Wnm6iJ2YI6PwgOb/z/3xusNKXFtxHqW1caCRBjS1yJcw0e8V2oyO4iX6ZJCO0ceO0A
- Y4bM1Vd1qV/HckAD0Wko2+vpE97AyjG08KfyXwbriCsYX51DojkhKVFWkGYLbyrkPAuRALV53vp
- 6dpmGiIT+vZ3ei8IIqne+L6j1rXIftgR/fWDKMjRnL0n/icvjBU7IsxkwvWDFcgc2rIviTqvL6X
- d8KHqYqr76vKW/uRBSeUI1h4DiWXNYQxMetRz+YAGVF4wPp+BqTBwgUw==
-X-Received: by 2002:a05:6000:2407:b0:439:b3d2:3766 with SMTP id
- ffacd0b85a97d-43b6423fc13mr980808f8f.19.1773947638294; 
- Thu, 19 Mar 2026 12:13:58 -0700 (PDT)
-Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b64714e2esm635921f8f.32.2026.03.19.12.13.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2026 12:13:57 -0700 (PDT)
-From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-Subject: [PATCH v2 2/7] hw/arm/sabrelite: Introduce class SabreliteMachineState
-Date: Thu, 19 Mar 2026 20:13:09 +0100
-Message-ID: <6b21c46dde0f562eba1a5e2dfd9dc8635daaedf1.1773866323.git.matyas.bobek@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <cover.1773866323.git.matyas.bobek@gmail.com>
-References: <cover.1773866323.git.matyas.bobek@gmail.com>
+ bh=zSo8NjxK1kjRVJe+MMsvA1/YI76pZtWxBrvNv1Slaxo=;
+ b=QtRzPsXlv1SWE0VCBBZrrF+3ANnbOnPuhkmDXVqOKCvQt1ACm9axclo+7KYmedrIP9
+ DfNiPm+Oh35JdbNllDz7NiG9ODswt1GTLCnwJJRTYA6z+//CtZZ6hA4OyRdnSsvsFLqg
+ ZI8bS5yDYDnz/8NzuEWycP9t+l76lQAwfsxYxft13+5OLzQQGta15zGGBMH6GDoK2Lfe
+ rBauP8Y19q5IX164ik8j3OMvgcuj2h2REi7aoUwVl0NtmO0w6R2gEiUUqShVvInT07/a
+ MLy/SbrbgGTORYsyjfgaCtdOzt5/x/bc4PVJE3YRRDpkRdJ78c77YzHUUuscmzRE8Ps7
+ Lcmw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVuLKSo2JgHT+yPjeCOlVMTBuKw94RdcuXFbG7UHakIro5OQyRaui2Pz/Du1w6XL3wlINYWGazoYg==@nongnu.org
+X-Gm-Message-State: AOJu0YxJnt9xXGqoI9tH6LURAYqsgMLp5ISa2Us+P+GsPCt9LtNoGa18
+ Bjwp/ktEu9ewxzjCZbq1ZwZVbVxqNh9rgTb5w672pelBPKtmOn7NHONAtsV/Yx59BbQGPDFdpj7
+ lAWe8g0IUgole6LujKcw6GwgEZRctKqM=
+X-Gm-Gg: ATEYQzxrSWd7Bs8sfxL/k44GTu0n+myi3UjPmt73tr0UIy4Obmd3YnrCs+PwGctmVGI
+ ov3wEXY3KrhlMG865DMfljLRSLA/JiQpG3ZK+pwXJXB+IExt8hkGWb5qhTGTjzYAj9SNwurksJR
+ dwivvVKO/V1YDwknThgnNU7TbQ+arvbFmywJTgz+xARse3l0AISyZY5odTwydkrjgfa0GZQ8vJa
+ RhsBZbBffTjeN7u8enHqql7tm7uySXxMZxKeknGRFf5sLFA6ymXfiFcuFuT+J1yOX507g94Y4/y
+ UvmGWVH6
+X-Received: by 2002:a05:6830:7107:b0:7d7:e8e6:b8b4 with SMTP id
+ 46e09a7af769-7d7eb033576mr765049a34.34.1773959364768; Thu, 19 Mar 2026
+ 15:29:24 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=matyas.bobek@gmail.com; helo=mail-wr1-x42d.google.com
+References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
+ <4e8f4e6e-e9d2-4457-af3d-755ced6d2a45@linaro.org>
+ <CAN-aV1FER7w1rqw0zM=L2z7MT_RKsBhFg7m6NijxyQa6t5JNqw@mail.gmail.com>
+ <4d2d16df-0047-4b96-8312-46489ba0f1bf@linaro.org>
+In-Reply-To: <4d2d16df-0047-4b96-8312-46489ba0f1bf@linaro.org>
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Date: Thu, 19 Mar 2026 23:29:13 +0100
+X-Gm-Features: AaiRm50wvdoYSXCGkD2fSP9lcr5PhsU8m0dcoMn6A9vp9AVygfxHIB4cV7xgB5E
+Message-ID: <CAN-aV1F6O3dv5F1946wEugdLxkYDp0BW6QZPxwye02A5-HYz9g@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/9] plugins: Introduce Fault Injection framework and
+ API extensions
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com, 
+ volodymyr_babchuk@epam.com, alex.bennee@linaro.org, peter.maydell@linaro.org, 
+ philmd@linaro.org, Ruslan_Ruslichenko@epam.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::331;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ot1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 19 Mar 2026 15:53:55 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,122 +123,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Create full class SabreliteMachineState extending MachineState.
+On Thu, Mar 19, 2026 at 8:04=E2=80=AFPM Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> On 3/19/26 11:20 AM, Ruslan Ruslichenko wrote:
+> > Hi Pierrick,
+> >
+> > Thank you for the feedback and review!
+> >
+> > Our current plan is to put this plugin through our internal workflows t=
+o gather
+> > more data on its limitations and performance.
+> > Based on results, we may consider extending or refining the implementat=
+ion
+> > in the future.
+> >
+> > Any further feedback on potential issues is highly appreciated.
+> >
+>
+> By design, the approach of modifying QEMU internals to allow to inject
+> IRQ, set a timer, or trigger SMMU has very few chances to be integrated
+> as it is. At least, it should be discussed with the concerned
+> maintainers, and see if they would be open to it or not.
+>
+> It's not wrong in itself, if you want a downstream solution, but it does
+> not scale upstream if we have to consider and accept everyone's needs.
+> The plugin API in itself can accept the burden for such things, but it's
+> harder to justify for internal stuff.
+>
+> I believe it would be better to rely on ad hoc devices generating this,
+> with the advantage that even if they don't get accepted upstream, it
+> will be more easy for you to maintain them downstream compared to more
+> intrusive patches.
+>
+> > On Wed, Mar 18, 2026 at 6:16=E2=80=AFPM Pierrick Bouvier
+> > <pierrick.bouvier@linaro.org> wrote:
+> >>
+> >> Hi Ruslan,
+> >>
+> >> On 3/18/26 3:46 AM, Ruslan Ruslichenko wrote:
+> >>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> >>>
+> >>> This patch series is submitted as an RFC to gather early feedback on =
+a Fault Injection (FI) framework built on top of the QEMU TCG plugin subsys=
+tem.
+> >>>
+> >>> Motivation
+> >>>
+> >>> Testing guest operating systems, hypervisors (like Xen), and low-leve=
+l drivers against unexpected hardware failures can be difficult.
+> >>> This series provides an interface to inject faults dynamically withou=
+t altering QEMU's core emulation source code for every test case.
+> >>>
+> >>> Architecture & Key Features
+> >>>
+> >>> The series introduces the core API extensions and implements a fault =
+injection plugin (contrib/plugins/fault_injection.c) targeting AArch64.
+> >>> The plugin can be controlled statically via XML configurations on boo=
+t, or dynamically at runtime via a UNIX socket (enabling integration with a=
+utomated testing frameworks via Python or GDB).
+> >>>
+> >>> New Plugin API Capabilities:
+> >>>
+> >>> MMIO Interception: Allows plugins to hook into memory_region_dispatch=
+_read/write to modify hardware register reads or drop writes.
+> >>> Asynchronous Timers: Exposes QEMU_CLOCK_VIRTUAL to plugins, allowing =
+callbacks to be scheduled based on guest virtual time.
+> >>> TB Cache Flushing: Exposes qemu_plugin_flush_tb_cache() so plugins ca=
+n force re-translation when applying dynamic PC-based hooks.
+> >>> Interrupt & Exception Injection: Exposes APIs to raise/pulse hardware=
+ IRQs on the primary INTC and inject CPU exceptions (e.g., SErrors).
+> >>> Custom Device Faults: Introduces a registry where device models (e.g.=
+, SMMUv3) can expose specific fault handlers (like CMDQ errors) to be trigg=
+ered externally by plugins.
+> >>>
+> >>> Patch Summary
+> >>> Patch 1 (target/arm): Adds support for asynchronous CPU exception inj=
+ection.
+> >>> Patch 2-3 (plugins/api): Exposes virtual clock timers and TB cache fl=
+ushing to the public plugin API.
+> >>> Patch 4 (plugins): Introduces the core fault injection subsystem, IRQ=
+/Exception routing, and the Custom Fault registry.
+> >>> Patch 5 (system/memory): Adds the MMIO override hooks into the memory=
+ dispatch path.
+> >>> Patch 6 (hw/intc): Registers the ARM GIC (v2/v3) with the plugin subs=
+ystem to enable direct hardware IRQ injection.
+> >>> Patch 7 (hw/arm): Registers the SMMUv3 with the custom fault registry=
+ to demonstrate how device models can expose specific errors (like CMDQ fau=
+lts) to plugins.
+> >>> Patch 8 (contrib/plugins): Implements the actual fault_injection plug=
+in using the new APIs.
+> >>> Patch 9 (docs): Adds documentation and usage examples for the plugin.
+> >>>
+> >>> Request for Comments & Feedback
+> >>>
+> >>> Any suggestions on improvements, potential edge cases, or issues with=
+ the current design are highly welcome.
+> >>>
+> >>> Ruslan Ruslichenko (9):
+> >>>     target/arm: Add API for dynamic exception injection
+> >>>     plugins/api: Expose virtual clock timers to plugins
+> >>>     plugins: Expose Transaction Block cache flush API to plugins
+> >>>     plugins: Introduce fault injection API and core subsystem
+> >>>     system/memory: Add plugin callbacks to intercept MMIO accesses
+> >>>     hw/intc/arm_gic: Register primary GIC for plugin IRQ injection
+> >>>     hw/arm/smmuv3: Add plugin fault handler for CMDQ errors
+> >>>     contrib/plugins: Add fault injection plugin
+> >>>     docs: Add description of fault-injection plugin and subsystem
+> >>>
+> >>>    contrib/plugins/fault_injection.c | 772 ++++++++++++++++++++++++++=
+++++
+> >>>    contrib/plugins/meson.build       |   1 +
+> >>>    docs/fault-injection.txt          | 111 +++++
+> >>>    hw/arm/smmuv3.c                   |  54 +++
+> >>>    hw/intc/arm_gic.c                 |  28 ++
+> >>>    hw/intc/arm_gicv3.c               |  28 ++
+> >>>    include/plugins/qemu-plugin.h     |  28 ++
+> >>>    include/qemu/plugin.h             |  39 ++
+> >>>    plugins/api.c                     |  62 +++
+> >>>    plugins/core.c                    |  11 +
+> >>>    plugins/fault.c                   | 116 +++++
+> >>>    plugins/meson.build               |   1 +
+> >>>    plugins/plugin.h                  |   2 +
+> >>>    system/memory.c                   |   8 +
+> >>>    target/arm/cpu.h                  |   4 +
+> >>>    target/arm/helper.c               |  55 +++
+> >>>    16 files changed, 1320 insertions(+)
+> >>>    create mode 100644 contrib/plugins/fault_injection.c
+> >>>    create mode 100644 docs/fault-injection.txt
+> >>>    create mode 100644 plugins/fault.c
+> >>>
+> >>
+> >> first, thanks for posting your series!
+> >>
+> >> About the general approach.
+> >> As you noticed, this is exposing a lot of QEMU internals, and it's
+> >> something we tend to avoid to do. As well, it's very architecture
+> >> specific, which is another pattern we try to avoid.
+> >>
+> >> For some of your needs (especially IRQ injection and timer injection),
+> >> did you consider writing a custom ad-hoc device and timer generating t=
+hose?
+> >> There is nothing preventing you from writing a plugin that can
+> >> communicate with this specific device (through a socket for instance),
+> >> to request specific injections. I feel that it would scale better than
+> >> exposing all this to QEMU plugins API.
+> >>
+> >> For SMMU, this is trickier. Tao recently (6ce361b02c82) an iommu test
+> >> device, associated to qtest to unit test the smmu implementation. We
+> >> could maybe see to leverage that on a full machine, associated with th=
+e
+> >> communication method mentioned above, to generate specific operations =
+at
+> >> runtime, all triggered via a plugin.
+> >>
+> >> Exposing qemu_plugin_flush_tb_cache is a hint we are missing something
+> >> on QEMU side. Better to fix it than expose this very internal function=
+.
+> >
+> > The reason this was needed is that the plugin may receive PC trigger
+> > configuration
+> > dynamically and need to register instruction callback at runtime.
+> > If the TB for that PC is already translated and cached, our newly regis=
+tered
+> > callback might not be executed.
+> >
+> > If there is a more proper way to force QEMU to re-translate a specific
+> > TB or attach
+> > a callback to cached TB it would be great to reduce the complexity here=
+.
+> >
+>
+> I understand better. QEMU plugin current implementation is too limited
+> for this, and everything has to be done/known at translation time.
+> What is your use case for receiving PC trigger after translation? Do you
+> have some mechanism to communicate with the plugin for this?
 
-Previously, Sabrelite board MachineState was declared indirectly by the
-DEFINE_MACHINE_ARM macro. FslIMX6State was only instantiated in the
-sabrelite_init function. For FlexCAN device, machine properties
-will be used to select QEMU CAN buses. A custom class is therefore
-required, so the CanBusState "connections" can then be added as fields.
+Yes, exactly. If the guest has already executed the target code, the newly
+added trigger will be ignored, as the TB is cached.
 
-Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
----
- hw/arm/sabrelite.c | 39 +++++++++++++++++++++------------------
- 1 file changed, 21 insertions(+), 18 deletions(-)
+For runtime configuration, the plugin spawns a background thread that liste=
+ns
+on a socket. External Python test script connects to this socket to send
+dynamically generated XML faults.
 
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 40ee8196ac..7e036e6388 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -20,6 +20,15 @@
- #include "qemu/error-report.h"
- #include "system/qtest.h"
- 
-+struct SabreliteMachineState {
-+    MachineState parent_obj;
-+
-+    FslIMX6State soc;
-+};
-+
-+#define TYPE_SABRELITE_MACHINE MACHINE_TYPE_NAME("sabrelite")
-+OBJECT_DECLARE_SIMPLE_TYPE(SabreliteMachineState, SABRELITE_MACHINE)
-+
- static struct arm_boot_info sabrelite_binfo = {
-     /* DDR memory start */
-     .loader_start = FSL_IMX6_MMDC_ADDR,
-@@ -41,7 +50,7 @@ static void sabrelite_reset_secondary(ARMCPU *cpu,
- 
- static void sabrelite_init(MachineState *machine)
- {
--    FslIMX6State *s;
-+    SabreliteMachineState *s = SABRELITE_MACHINE(machine);
- 
-     /* Check the amount of memory is compatible with the SOC */
-     if (machine->ram_size > FSL_IMX6_MMDC_SIZE) {
-@@ -50,13 +59,12 @@ static void sabrelite_init(MachineState *machine)
-         exit(1);
-     }
- 
--    s = FSL_IMX6(object_new(TYPE_FSL_IMX6));
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-+    object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX6);
- 
-     /* Ethernet PHY address is 6 */
--    object_property_set_int(OBJECT(s), "fec-phy-num", 6, &error_fatal);
-+    object_property_set_int(OBJECT(&s->soc), "fec-phy-num", 6, &error_fatal);
- 
--    qdev_realize(DEVICE(s), NULL, &error_fatal);
-+    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
-                                 machine->ram);
-@@ -70,7 +78,7 @@ static void sabrelite_init(MachineState *machine)
-         /* Add the sst25vf016b NOR FLASH memory to first SPI */
-         Object *spi_dev;
- 
--        spi_dev = object_resolve_path_component(OBJECT(s), "spi1");
-+        spi_dev = object_resolve_path_component(OBJECT(&s->soc), "spi1");
-         if (spi_dev) {
-             SSIBus *spi_bus;
- 
-@@ -89,7 +97,7 @@ static void sabrelite_init(MachineState *machine)
-                 qdev_realize_and_unref(flash_dev, BUS(spi_bus), &error_fatal);
- 
-                 cs_line = qdev_get_gpio_in_named(flash_dev, SSI_GPIO_CS, 0);
--                qdev_connect_gpio_out(DEVICE(&s->gpio[2]), 19, cs_line);
-+                qdev_connect_gpio_out(DEVICE(&s->soc.gpio[2]), 19, cs_line);
-             }
-         }
-     }
-@@ -100,12 +108,14 @@ static void sabrelite_init(MachineState *machine)
-     sabrelite_binfo.secondary_cpu_reset_hook = sabrelite_reset_secondary;
- 
-     if (!qtest_enabled()) {
--        arm_load_kernel(&s->cpu[0], machine, &sabrelite_binfo);
-+        arm_load_kernel(&s->soc.cpu[0], machine, &sabrelite_binfo);
-     }
- }
- 
--static void sabrelite_machine_init(MachineClass *mc)
-+static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
- {
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-     mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex-A9)";
-     mc->init = sabrelite_init;
-     mc->max_cpus = FSL_IMX6_NUM_CPUS;
-@@ -114,18 +124,11 @@ static void sabrelite_machine_init(MachineClass *mc)
-     mc->auto_create_sdcard = true;
- }
- 
--static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--
--    sabrelite_machine_init(mc);
--}
--
- static const TypeInfo sabrelite_machine_init_typeinfo = {
--    .name          = MACHINE_TYPE_NAME("sabrelite"),
-+    .name          = TYPE_SABRELITE_MACHINE,
-     .parent        = TYPE_MACHINE,
-     .class_init    = sabrelite_machine_class_init,
--    .instance_size = sizeof(MachineState),
-+    .instance_size = sizeof(SabreliteMachineState),
-     .abstract      = false,
-     .interfaces    = arm_machine_interfaces,
- };
--- 
-2.53.0
+There are several scenarios where this might be needed, mainly for faults t=
+hat
+are difficult to define statically at boot time.
+Examples include injecting faults after specific chain of events, freezing =
+or
+overriding system registers values at specific execution points (since this
+is currently implemented via PC triggers). Supporting environments with KAS=
+LR
+enabled might be one more case.
 
+>
+> >> The associated TRIGGER_ON_PC is very similar to existing inline
+> >> operations. They could be enhanced to support writing to a given
+> >> register, all the bricks are there. For TRIGGER_ON_SYSREG it's a bit
+> >> more complex, but we might enhance inline operations also to support
+> >> hooks on specific register writes.
+> >
+> > TRIGGER_ON_PC may also be used for generating other faults too. For exa=
+mple,
+> > one use-case is to trigger CPU exceptions on specific instructions.
+> > Supporting TRIGGER_ON_SYSREG as an inline operation sounds like a
+> > really interesting
+> > direction to explore.
+> >
+>
+> In general, having inline operations support on register read/writes
+> would be a very nice thing to have (though might be tricky to implement
+> correctly), and more efficient that the existing approach that requires
+> to check their value everytime.
+>
+> >>
+> >> For MMIO override, the current approach you have is good, and it's
+> >> definitely something we could integrate.
+> >>
+> >> What are you toughts about this? (especially the device based approach
+> >> in case that you maybe tried first).
+> >
+> > I agree such an approach can work well for IRQ's and Timers, and would =
+be
+> > more clean way to implement this.
+> >
+> > However, for SMMU and similar cases, triggering internal state errors i=
+s not
+> > easy and requires accessing internal logic. So for those specific cases=
+,
+> > a different approach may be needed.
+> >
+>
+> Thus the iommu-testdev I mentioned, that could be extended to support thi=
+s.
+>
+> >>
+> >> Regards,
+> >> Pierrick
+> >
+> > BR,
+> > Ruslan
+>
+> Regards,
+> Pierrick
 

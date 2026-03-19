@@ -4,113 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1263E107528B
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 09:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108831075292
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 10:00:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3A2x-0005S1-BQ; Thu, 19 Mar 2026 05:52:07 -0400
+	id 1w3AAM-00072I-Ia; Thu, 19 Mar 2026 05:59:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w3A2v-0005RR-Kt
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 05:52:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1w3A2t-0002ya-Iy
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 05:52:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773913922;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kn4kZnZGVOHmLZP7ZfKCvV0EIEJGEFBn3r/O2PtU5oU=;
- b=hHZiq3g8iBseSRFmr3/Y+vFHjO3m5L4V4MRGCKYDQ0yKTsE5avYaHlCC4T59MU3TpecQQM
- 38v2LOJmq5be/Fs15cH8KhflFaz/TOe4Ufeuvzs+dh5WMfXM0Y6DObllsQLGEzbe/L+iG0
- n1su6IMWam9mPtg/tsp4q8gn/aszgxQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-472-3XLD_R93NIivY1Q9Kaibiw-1; Thu, 19 Mar 2026 05:52:00 -0400
-X-MC-Unique: 3XLD_R93NIivY1Q9Kaibiw-1
-X-Mimecast-MFC-AGG-ID: 3XLD_R93NIivY1Q9Kaibiw_1773913919
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4836abfc742so9106745e9.0
- for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 02:52:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w3AAL-00071v-72
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 05:59:45 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w3AAJ-0004um-SM
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 05:59:44 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-64d5a7926cfso891833d50.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 02:59:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773914382; cv=none;
+ d=google.com; s=arc-20240605;
+ b=MNHSigYqCzNA5jj3H03QoO+UfHs6d1wKhQY+wK+5yAkpXF9S8RpCna3Y/bLYdEAWlE
+ wD3xqYAYx6KLnCpNn1HCipP+LLBMdOOXPaZwaH7j1qj3LkIGnQDksjZl/741NMx9a8AJ
+ r8eTepvCh3M5N9rG64oVTnb0lBvzSYYnFAchxdT+DmsJ6AfzBMuyve0/VnA+Xeju7owt
+ AJX5y+VHgCPMklc1b4oFADnswx3bIwI/KylM+ryYeadNK19byj0l89CvwOwm5Zo7xyMe
+ DTpCNCkwmnPlSWbsRL7LHAI43r+TmrJd2oTg7DddOllQx6kcscoNKihhIdceDOIcwRxX
+ uGDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=l9tqgiVeDF2QTwXIY1oClhARxh/7nCn4FvukClUXyxU=;
+ fh=tLP/gRpi7Iczn5ziGL7f2zBG1RdOSHMz6mExSpHcScY=;
+ b=AjXXpBCpPjFiySjCGORcoN0LR/tv1tHQygLbjXNrEtsGKfmYy6B+Jz6FImGNTfLEK+
+ O0U7tGbX3/TjEp6n0i/YEcydv48OjhLzBkM9zMWsXJKCx9QrYsNR53nAzJVv9WGgozoE
+ +phgjE1XmDrUkU7tXbIeGOXSM2tQbuStO+IqaeqX41sTTZxhcKXTH9E17NE6VcZiKUdr
+ sv6+LWdISZV4oSY9dl50HSKQRvR3hu79djtwzvySXONhxgelm6Fgmmn285s+xu6XHV4H
+ +UoeiKtJQ/YKBs4S7ACOEwCAIQt3bkGS9vTouaimjKGp/6/tengUQwg1HEr45HVrVrHu
+ In2w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773914382; x=1774519182; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=l9tqgiVeDF2QTwXIY1oClhARxh/7nCn4FvukClUXyxU=;
+ b=SUQ65/oHDXeNKoW7i3X7c8Sg7svVAv+B36R2G5cF8inWVhwH0/8z7qwM/yf1Hv13o3
+ xZkh/eWgKrUgVK066yXbDqyX1xmISS6Rv88Usx6gszB4CTXl7YNeg9S43oZEDO73kUpG
+ 6uXNx6RpoSpXBq/nLXzs2vijQ0oNxc+VfzZgfC4yfUn0FJW5lKH2l8uQY9Yx9viPZ36f
+ UabI77VBYpZkmyHD5Sp11glZUUrgHTwpzplCWlM5UEhuwpw/vqGkxxEiZfsO5V+7+gbL
+ 1TDGuTlYoraSgoVnowGZulRw7cZJMDhjOj+hPfoZARIx5+s3wlNNkLdNG/Njw9QHMv3K
+ TC+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773913919; x=1774518719;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1773914382; x=1774519182;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kn4kZnZGVOHmLZP7ZfKCvV0EIEJGEFBn3r/O2PtU5oU=;
- b=kmxuBqWBl0RpI84wnR1uuadpX6wPWtl+fnLrAo5Goq9S8CY5qETjIEiXjU/f8RxzLw
- AFiuu3OvGYuEtnVOqVezgz7u7bMoNOP70Se7QbBf3R6PMlOq7AMTy1duBsHpLe8TbSUs
- mRFuOG4ks3NZjdSuEfKi6QzzI1uiRMuR3WE9jn8hUhO2bs7XhL3xhanPDDfmaDNHFaA/
- hJMfwxXotMXAwOwhCAoxZ1tRbletCsb57tn1gcrxOIp0boBoC+i8bFfcpk4aEUxGbPkI
- gNJC1a/M8B4pf7Jx6sp+VJreqyATFGYhX0uJ7gKVki8d4mVKYeHqCtF6zXiRHu0fT4rR
- xbpA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXEYulUV5r8McTYoUFkHGxQqj7hrhO3hlY1BDvB50E856GIA0xoSTK30rgkrDbTu5BKpvSx3m9seQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyF+ssiCbrVE23RQSnCXkEuPdQHbwgK4BaYvG1squWbPwE92vad
- 5XInq/CdDoB1fJkdxHKFPLXrwNIWuGxcrxD80b8G+WHzjKaMgPln/c9SdQ56Q+Cldej9+qjU19w
- 9bYlNJr+mzlw1kV/xsFX0yPCi7vlCoXdBTmwZROKJGX4jfWCo9oO8AA==
-X-Gm-Gg: ATEYQzyKN0xROM2VBnowSahWNvlsXMeCvo/Yh7cm8xdQ3iXg38tZFmdZ2D4etZROcKQ
- y/NE/WAM/6pETi9ZjCnRyuayzr9rPjqMssiNn6gYXZMlnCwa5sOUVGc3UYJANTMzmtWKUx9ZMrd
- 3AgENgMVizH4WWvuo9tL49yfGoiDzrl/64TaefqLUZ6Dc8P2HpHxxwGKDz1PjNLqZ6X4Gg25oJd
- LxRE9LUycYldWZ5f9eyTuvdsUnECiWuWj5uViOY6JX2joEOWNI0AzsvTHRXYiJicTYLv3J7ULOf
- 0r7erH/p6Cm+n72ZapUvQjLXusEX4nq3IMLvXoGNImycSbOChVC67bb+0I/fH/+V7rpwh6YDvEm
- 6Vi+5l/cld3k3rXKF4i4bH4nsDWr0k6T1e+TWs7rsClzQCvnMdKHywUa7y8yONySpfbKcFA==
-X-Received: by 2002:a05:600c:8a6:b0:485:35ee:f836 with SMTP id
- 5b1f17b1804b1-486f4422104mr68953145e9.2.1773913919326; 
- Thu, 19 Mar 2026 02:51:59 -0700 (PDT)
-X-Received: by 2002:a05:600c:8a6:b0:485:35ee:f836 with SMTP id
- 5b1f17b1804b1-486f4422104mr68952905e9.2.1773913918798; 
- Thu, 19 Mar 2026 02:51:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-486f8c4aa85sm44356135e9.12.2026.03.19.02.51.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Mar 2026 02:51:58 -0700 (PDT)
-Message-ID: <5d9a0c0d-fd74-4e71-9117-2bafbdb36fcc@redhat.com>
-Date: Thu, 19 Mar 2026 10:51:56 +0100
+ bh=l9tqgiVeDF2QTwXIY1oClhARxh/7nCn4FvukClUXyxU=;
+ b=etNuUV7Sf+dMqqtxzhTrBMR0EjjbpZNVmEgjUlAoL06veeNgr77bO731lc8fwX4xJy
+ GZICodXWd/heFf5Qy56tmU35eXIaPQ7RcFfVnmBKSo1lg+zAJTFoI2XeYr9wXkqrIMZH
+ 2lCWsbUCnB4ee4sJmBUxM7w5EvER753gnPwTE5yjPOtKEeKmvOPGyTHbx6s6tbgMtdSb
+ WwqLkAfMTWlKcj9VVSHSc/PRAsJiPvJUbPGkxw+xWYK8p42eJIujVy9ou1Y1hXrszXdV
+ VDlCNMYZY1L+imyUE1cGWpPrqxx2Xc+J7Tu8qKW1XXfIzEqxR5GSjh76KMwve3SfEc1V
+ dX1Q==
+X-Gm-Message-State: AOJu0YzMXoSFGW7XcX7JOjCYeUouUyNqxNX2CX/A3/oxFyhB/btaG1Qz
+ dGa8H/H0h8uxuO6V4aUAD9+vs6hbOzEzAGZ4vB7X/as6n7bc0MaYoUDoGOk3O/y/Ffrd0QXuH9O
+ z0UFnwAbL7aaXryWPDMwX829QAC5qa/M2bXrK8DJT1w==
+X-Gm-Gg: ATEYQzzOIfZ7ovPJltqTNcVqUAjeFrjnAyXtyoLy2FffOzrjxA7Q3Gtnin4UoHgiPhP
+ g886k+SY59zOfJOrmGfhL5+HWeLlJ5XPs61Arvun8o+XSPj5DKLUjnV7/2DyquF2RR6xX8lPgX9
+ KvMtRZ3l6YGJsQbwwQfgKy38WAINZRXlhRZlc/JhwQzz4iAFx5EPWWL+eOWHSiKC+em4Kj/MzVR
+ Zt63PHiqrVvtG9c9006BD9h4t9KDqvi01mlzjLREbv4pVYE1RnXR7kTzF1nMK9XtAnjaSx6R7Bc
+ 6wMAbhbk4r7CNi7z4PYhREhVu9P8YFPVPSNgMI24tzQFRRd9G8c2kW9Xsm4Y6wHVSrK1F7vUGpH
+ DsQ==
+X-Received: by 2002:a53:e1a1:0:b0:640:cccb:1fd2 with SMTP id
+ 956f58d0204a3-64e9146c49cmr5090061d50.33.1773914382196; Thu, 19 Mar 2026
+ 02:59:42 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 7/8] hw/arm/smmuv3-accel: Change OAS property to OasMode
-To: Nathan Chen <nathanc@nvidia.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- Nicolin Chen <nicolinc@nvidia.com>
-References: <20260318184907.4060030-1-nathanc@nvidia.com>
- <20260318184907.4060030-8-nathanc@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260318184907.4060030-8-nathanc@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -gCJxq7UY9L235xU4tD860zoBE8l2kVlP7_SbyHAguM_1773913919
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-21-peter.maydell@linaro.org>
+ <20260311141537.00003ce9@huawei.com>
+In-Reply-To: <20260311141537.00003ce9@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Mar 2026 09:59:31 +0000
+X-Gm-Features: AaiRm50a1o3pKLIyazQ4KykB8ogHiUaaVsfnUZUtHi95PI9cNp5LRFGjv5DOhCU
+Message-ID: <CAFEAcA-Pjbu+2u+xg7xbrsgq94yU+yYubf=iqE=YvYMGzgPyCQ@mail.gmail.com>
+Subject: Re: [PATCH 20/65] hw/intc/arm_gicv5: Implement remaining set-config
+ functions
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,127 +114,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 3/18/26 7:49 PM, Nathan Chen wrote:
-> From: Nathan Chen <nathanc@nvidia.com>
+On Wed, 11 Mar 2026 at 14:15, Jonathan Cameron
+<jonathan.cameron@huawei.com> wrote:
 >
-> Change accel SMMUv3 OAS property from uint8_t to OasMode. The
-> 'auto' value is not implemented, as this commit is meant to
-> set the property to the correct type and avoid breaking JSON/QMP
-> when the auto mode is introduced. A future patch will implement
-> resolution of 'auto' value to match the host SMMUv3 OAS value.
+> On Mon, 23 Feb 2026 17:01:27 +0000
+> Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Fixes: a015ac990fd3 ("hw/arm/smmuv3-accel: Add property to specify OAS bits")
-> Tested-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> > Implement the GICv5 functions corresponding to the stream protocol
+> > SetEnabled, SetPending, SetHandling, and SetTarget commands.  These
+> > work exactly like SetPriority: the IRS looks up the L2TE and updates
+> > the corresponding field in it with the new value.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Trivial formatting and naming comments only.
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
-Eric
-> ---
->  hw/arm/smmuv3-accel.c          |  2 +-
->  hw/arm/smmuv3.c                | 16 ++++++++--------
->  include/hw/arm/smmuv3-common.h |  2 --
->  include/hw/arm/smmuv3.h        |  2 +-
->  4 files changed, 10 insertions(+), 12 deletions(-)
+> > +void gicv5_set_handling(GICv5Common *cs, uint32_t id,
 >
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index bc6cbfebc2..65c2f44880 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -850,7 +850,7 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->      }
->  
->      /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
-> -    if (s->oas == SMMU_OAS_48BIT) {
-> +    if (s->oas == OAS_MODE_48) {
->          s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48);
->      }
->  
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 79018f8d66..c67819d6f2 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1984,6 +1984,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->          error_setg(errp, "ssidsize auto mode is not supported");
->          return false;
->      }
-> +    if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48) {
-> +        error_setg(errp, "OAS can only be set to 44 or 48 bits");
-> +        return false;
-> +    }
->  
->      if (!s->accel) {
->          if (s->ril == ON_OFF_AUTO_OFF) {
-> @@ -1994,7 +1998,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->              error_setg(errp, "ats can only be enabled if accel=on");
->              return false;
->          }
-> -        if (s->oas != SMMU_OAS_44BIT) {
-> +        if (s->oas > OAS_MODE_44) {
->              error_setg(errp, "OAS must be 44 bits when accel=off");
->              return false;
->          }
-> @@ -2012,11 +2016,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->          return false;
->      }
->  
-> -    if (s->oas != SMMU_OAS_44BIT && s->oas != SMMU_OAS_48BIT) {
-> -        error_setg(errp, "OAS can only be set to 44 or 48 bits");
-> -        return false;
-> -    }
-> -
->      return true;
->  }
->  
-> @@ -2143,7 +2142,7 @@ static const Property smmuv3_properties[] = {
->      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
->      DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
-> -    DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
-> +    DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_44),
->      DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
->                                SSID_SIZE_MODE_0),
->  };
-> @@ -2180,7 +2179,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->          "supported.");
->      object_class_property_set_description(klass, "oas",
->          "Specify Output Address Size (for accel=on). Supported values "
-> -        "are 44 or 48 bits. Defaults to 44 bits");
-> +        "are 44 or 48 bits. Defaults to 44 bits. oas=auto is not "
-> +        "supported.");
->      object_class_property_set_description(klass, "ssidsize",
->          "Number of bits used to represent SubstreamIDs (SSIDs). "
->          "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
-> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-> index 7f0f992dfd..4609975edf 100644
-> --- a/include/hw/arm/smmuv3-common.h
-> +++ b/include/hw/arm/smmuv3-common.h
-> @@ -342,8 +342,6 @@ REG32(IDR5,                0x14)
->       FIELD(IDR5, VAX,        10, 2);
->       FIELD(IDR5, STALL_MAX,  16, 16);
->  
-> -#define SMMU_OAS_44BIT 44
-> -#define SMMU_OAS_48BIT 48
->  #define SMMU_IDR5_OAS_44 4
->  #define SMMU_IDR5_OAS_48 5
->  
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index ddf472493d..82f18eb090 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -72,7 +72,7 @@ struct SMMUv3State {
->      Error *migration_blocker;
->      OnOffAuto ril;
->      OnOffAuto ats;
-> -    uint8_t oas;
-> +    OasMode oas;
->      SsidSizeMode ssidsize;
->  };
->  
+> Might be worth throwing _mode in there as set_handling almost
+> feels like 'set that it is being handled'  Also aligns better
+> with the HM naming in the spec.
 
+These functions are named to align with the stream protocol
+command names in the spec. I agree that "set_handling_mode"
+would be a nicer name, but the spec calls this command SetHandling...
+
+thanks
+-- PMM
 

@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58707108E1FD
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 12:13:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2FC7108E1FD
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 12:14:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3CFo-0000I7-JT; Thu, 19 Mar 2026 08:13:32 -0400
+	id 1w3CFq-0000Iy-Ax; Thu, 19 Mar 2026 08:13:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1w3CFm-0000Hg-FD
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 08:13:30 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1w3CFo-0000I1-CS
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 08:13:32 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1w3CFj-000652-7c
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 08:13:29 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4853aec185aso4482225e9.1
- for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 05:13:23 -0700 (PDT)
+ id 1w3CFk-00065U-A5
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 08:13:31 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-486507134e4so10542065e9.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 05:13:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773922402; x=1774527202; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4lIRVs2anaFfNV5x5FomJeDL/767SmLRDSOPyojh0+E=;
- b=pSHMh/n+IrVoNyyGPss/9xowRyr1Cc0SaFj6i2eD1gj1ZjQGh8+fC78GAB1TPgevkF
- AtWvDQBFBChHmUgNZt6V3eaDK8IIXd2xxvyNYdmDXJSftoOEucZEKS0LeSe47EPXr+UP
- 9QZWBdTdr7yBN6HE63AV/i1nNI/iBFPMXilZ6pZ1dHuzkkayLMwbCZTAzRYHda/0qhfO
- J+K7yS1xQxj6RbmwR/qAG9B/axBAOgabqq8ZqNoFckgJEL8Hm8aKibSSgjxObkuqtMg7
- bZ8+RMSwwEJwsEpVZ5cRlhG64FjZ+lpweI4Da40fad0jOxkfN6thqM00X0Snavh4Ywnh
- h2Kg==
+ d=linaro.org; s=google; t=1773922404; x=1774527204; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=hrTNnlv+Qesh+/MOn/n9/9dKMB5JdqsCHfK1xvrwPWU=;
+ b=ZTocrx5rEJCVZeie377pCtkX7o81wMxVubK3k4eTBugJVHm7z1pJMiHxofwTKGW+Jj
+ glLTxVno/XrsPJXp1/7LXt3decWiglyJXhzPx2tef2/B3uIt9jZJlOwN87Osvoa+Mlvy
+ 81GQFs1joBTxcNW8KUiuWD61RdP6OzUJHY9qzxpCONHT+Vabu1rclWh3EDWJkox/I70j
+ qdceSWQHckT+HXfqEuMsoZJcQmXxh9tOpIYKHAclZnwTRuGiG6Ea9q4wZYtP7rMfXQug
+ VHgHPgUpWEcbsUN+qpR0c3EwfyIM96jorjjb7tGtFKef+sZz/r1fvvSpyqCgvL9J2xfO
+ G9kQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773922402; x=1774527202;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4lIRVs2anaFfNV5x5FomJeDL/767SmLRDSOPyojh0+E=;
- b=ICablHEAfPRnEOciB3DNvpqNKo5CT4PPJ0NI3Rbx6yIs0ZxqkzhmASswyDtNbPHTGP
- /km/jJVszLxyU7FMb5G5mIvgsFm11CDB32tuZHbjolG8439h/w8U1JkCLwFOFvrQYYKX
- apzJsVgFlskfNR9tedDNdjxRPxwZPEnOQwM4xGkyiXvg87QQD0S28tZOXW2AYWCGbThJ
- FMe6qfEgeMciLmkH4kpmEdhmXbEeXAutoqidnPwhaL2u3ik91mV7m4C0ETHFTspIauE4
- SN+BBe5l2dR3qzdIqwPZOuBE/c7FvVoPGAcDLX3wOi/aspBO7Cl0PL7Kgmbh4PMU1Sa7
- 03xA==
+ d=1e100.net; s=20251104; t=1773922404; x=1774527204;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=hrTNnlv+Qesh+/MOn/n9/9dKMB5JdqsCHfK1xvrwPWU=;
+ b=TfSX2aKh1j24NwXh/9uMhxAeaouVmIkQ9RahVwcffvxMKsTCcP4I6kmedxKzZBBXsd
+ 1RXFplZtAJ/mNDuGepF277iHmvDefB4YMwLktr+jOZPR6MS4nM8eq6yMu7CYMISN1oby
+ YToBJMVwwVLRs9adWckCfG1+FavJns7OIMcnNZ2qL09ctRTcAV99jGGa5uYQ/hO9GlPn
+ zlJFE4dizTBTfbhmKFLVeo0Pi1zywBnAq/umi+nMIKEGU7V+GFwy7Xze8KtKaXvNxzws
+ 8wCbt0g9I8ZRItDy2pZTJN4tIMHuTWvOsWYfx0QyICVe6pf3m8QczNwLLvkDQHDMqR7P
+ yX0A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+ld6DvYbWKF/ubQs3dyXshm+cQz/x92FqYlNglkfQ9k5MJ9DKRkno3Y74Wvee04wChkM8qwsMnA==@nongnu.org
-X-Gm-Message-State: AOJu0YzEekWBSSMFTxZIo2kyVTnM47UsylBEmgc/1Cmfs7GDlyuLP7J7
- MdYQy3xKutqSL8r+R/T60gLkx+AtQrZoaULqdvgllALvJ5Krr3vAVQyOLAB4dD6CvVxdcHEysT0
- 119KT
-X-Gm-Gg: ATEYQzzpx1r//cXj++90s8/Hia67W4q8Ez9aP2SAsfyeoAkhh49PiHhFGZtyYK2bQyZ
- gDvqJQ35/NSjs2Z8qvJDpI0ugzbVI834Uo1Zz9PdFkNGctEQNgMo6U9/MqXIXa9ZO89QzHOL4jL
- L7gLodfemfugFxfvHm4GzN2/t9yJ4spDhj9EULKUCL7W26TNLOJmCqohoYZa0r9wJHjJFtJkUE3
- lw6qz/H4VRsQtgrUIaQwvlwI/bdcpu3F7WU3AdhJIrDkTA67vGkmiIC4SZJPoN2k+zPPCUG4VlN
- b5UpUbilDpk38lKZfe8B5KxccnieBL0TzWbU3zKZEVLdwYbS/Hyf/s3ONHUcl/L8/ilH7FEqv8i
- xWE31AramVFa7okPXC5cajXANHi5LdDXpW1YlZV1URHR2NgSxuiR3sJaae2e1clEk7U+Ul8kmoi
- 2miwACZYplov9xta6J3DrByeHGvlo=
-X-Received: by 2002:a05:600c:3b14:b0:480:2521:4d92 with SMTP id
- 5b1f17b1804b1-486f445e260mr111034075e9.24.1773922402129; 
- Thu, 19 Mar 2026 05:13:22 -0700 (PDT)
+ AJvYcCVN0dEc4gJetlJVmnuk9tsPHuB0GwQqdhXFHKAKOTZLhnz2v+z4uYsUaI/hgnTZmgJdGQ4rF/gf6g==@nongnu.org
+X-Gm-Message-State: AOJu0YzyBsdmrUT9a7OSRuNkyQNMBj1784boSsHBxUV1n1PrvWf74CMX
+ aqG32EXLx3d6XuShfh9c6qL+QwaWT5F7V40AZ3k5dTmJOxJSR5dYiGSjPEjAF4OpsDnp4vzRro9
+ eGyLV
+X-Gm-Gg: ATEYQzwYZkO4wGKU528cEub2nt6AuMBr/FRoGHy8xe3m0YJPB3Zn4Z62YNeDWFZsQ2N
+ 9HJQM8EWXS+WnCUAcZsnGPOBajtNhKdd14T6uYTazcCpy0B1czkVf///WvoqV8q1VSxyraeEcp4
+ 1RmiHiSLPrtn9B4A9VWcS8S6B4vgcr4ZPNK22YvW4/EIqgltjNRCoEhLwywZHL8UqOHRnx42kHV
+ 8MkiFaTbUNWmH2QAuBEEYuU2vC3INXz27SdUeF1GnE7JiU0maEsXSiykIXwAkkQo8gr00njgcQK
+ Pe0rCGdlvAcGpWz8Sq24b6/mM8WEl8xHT8WlNCFobuVUqS0D9kOY5xq9xUMNRwt21evLTrPcKP7
+ RSq/rhfZei/2eu0LEL3RdRtWCuz+uDhOHqOlg0Bve1oxdsXoYJjL7RJ2CVuwMoYMeo2HB/vTiVN
+ VX3moutHqwdAgpS04wSIW5kriZmY0=
+X-Received: by 2002:a05:600d:b:b0:486:fcc7:d6a with SMTP id
+ 5b1f17b1804b1-486fcc70e4bmr15156415e9.13.1773922403512; 
+ Thu, 19 Mar 2026 05:13:23 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:5dd6:71c1:29c2:4a3a])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-486fd9575ffsm2456215e9.7.2026.03.19.05.13.21
+ 5b1f17b1804b1-486fd9575ffsm2456215e9.7.2026.03.19.05.13.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2026 05:13:21 -0700 (PDT)
+ Thu, 19 Mar 2026 05:13:23 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH RFC 0/2] Replace aarch64 TCG instruction formats with more
- meaningful names
-Date: Thu, 19 Mar 2026 12:12:40 +0000
-Message-Id: <20260319-aarch64-tcg-instruction-format-rename-v1-0-8a13bf98f8ff@linaro.org>
+Date: Thu, 19 Mar 2026 12:12:42 +0000
+Subject: [PATCH RFC 2/2] tcg/aarch64/tcg-target.c.inc: Manual replace of
+ I3310, I3313
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIADjou2kC/x2NMQ6DMAwAv4I8YwloQkVXJB7QFXVwgwEPBOQEh
- IT4e6OON9zdBYFVOMAru0D5kCCrT1DmGbiZ/MQoQ2KoiqouHmWDROrm2mB0E4oPUXcXk4Pjqgt
- FVPa0MDZknmZga77WQmptyqOc/08P766Fz33/AAqWYMF8AAAA
+Message-Id: <20260319-aarch64-tcg-instruction-format-rename-v1-2-8a13bf98f8ff@linaro.org>
+References: <20260319-aarch64-tcg-instruction-format-rename-v1-0-8a13bf98f8ff@linaro.org>
+In-Reply-To: <20260319-aarch64-tcg-instruction-format-rename-v1-0-8a13bf98f8ff@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
  Jim MacArthur <jim.macarthur@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,79 +104,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-tcg/aarch64/tcg-target.c.inc contains a lot of numbered instruction formats
-called "I3XXX" in the enum AArch64Insn, named for the original section in the
-Arm documentation which described those formats.
-
-This patch aims to give them more meaningful names, for example, I3314 becomes
-Ildstpair. Where possible, these names match those used in
-target/arm/tcg/a64.decode.
-
-For convenience, here is a list of the replacements.
-
-* Automatic changes, made by passing the values in the enum to a modified
-  version of the code produced by scripts/decodetree.py:
-3206 => branch
-3305 => ldlit
-3306 => stxp
-3312 => ldst_imm
-3314 => ldstpair
-3401 => addsub_imm
-3402 => bitfield_32
-3404 => logic_imm_32
-3405 => movw_32
-3406 => pcrel
-3501 => addsub_ext
-3502 => addsub_shift
-3503 => rrr_sf
-3507 => rr_sf
-3508 => rrr
-3509 => rrrr
-3510 => logic_shift
-3611 => rrr_e
-
-* Manual changes, still matching names given in a64.decode but found in that
-  file manually:
-3201 => cbz
-3205 => tbz
-3207 => bcond_reg
-3303 => simd_load_replicate
-3403 => extract
-3616 => qrrr_e
-3617 => qrr_e
-
-* Names invented by me, where a64.decode does not have a meaningful name:
-3202 => bcond_imm
-3506 => csel
-3605 => simd_copy
-3606 => simd_imm
-3609 => q_shift
-3612 => simd_rr
-3614 => simd_shift_imm
-3502S => addsub_realshift
-
-This is marked RFC partly because there is also a possibility to extract names
-from the machine-readable instruction descriptions given by Arm. These would
-likely give different names to the ones in a64.decode, which means there is a
-good argument for changing the names in a64.decode as well. This requires more
-investigation. If we do decide to use Arm's provided instruction format names,
-it would likely only change the names used and not the structure of this
-change.
+These are not formats in themselves, but extra constants to OR in with
+the existing ldst_imm format.
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
-Jim MacArthur (2):
-      tcg/aarch64/tcg-target.c.inc: Replacement of I3XXX names
-      tcg/aarch64/tcg-target.c.inc: Manual replace of I3310, I3313
+ tcg/aarch64/tcg-target.c.inc | 64 +++++++++++++++++++++++++-------------------
+ 1 file changed, 36 insertions(+), 28 deletions(-)
 
- tcg/aarch64/tcg-target.c.inc | 994 ++++++++++++++++++++++---------------------
- 1 file changed, 510 insertions(+), 484 deletions(-)
----
-base-commit: 5a68a3add61208aad34d47134fdcfd3f407d2ce4
-change-id: 20260319-aarch64-tcg-instruction-format-rename-9a474de54b55
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index e9f86176d2..1f59d40a77 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -458,8 +458,9 @@ typedef enum {
+     Ildst_imm_LDRVQ  = 0x3c000000 | 3 << 22 | 0 << 30,
+     Ildst_imm_STRVQ  = 0x3c000000 | 2 << 22 | 0 << 30,
+ 
+-    Ildst_imm_TO_I3310 = 0x00200800,
+-    Ildst_imm_TO_I3313 = 0x01000000,
++    /* Additions to the ldst_imm format */
++    ldst_imm_to_sign_extend = 0x00200800,
++    ldst_imm_to_uimm        = 0x01000000,
+ 
+     /* Load/store register pair instructions.  */
+     Ildstpair_LDP    = 0x28400000,
+@@ -880,12 +881,12 @@ static void tcg_out_insn_qrr_e(TCGContext *s, AArch64Insn insn, bool q,
+               | (rn & 0x1f) << 5 | (rd & 0x1f));
+ }
+ 
+-static void tcg_out_insn_3310(TCGContext *s, AArch64Insn insn,
+-                              TCGReg rd, TCGReg base, TCGType ext,
+-                              TCGReg regoff)
++static void tcg_out_insn_ldst_sign_extend(TCGContext *s, AArch64Insn insn,
++                                          TCGReg rd, TCGReg base, TCGType ext,
++                                          TCGReg regoff)
+ {
+     /* Note the AArch64Insn constants above are for C3.3.12.  Adjust.  */
+-    tcg_out32(s, insn | Ildst_imm_TO_I3310 | regoff << 16 |
++    tcg_out32(s, insn | ldst_imm_to_sign_extend | regoff << 16 |
+               0x4000 | ext << 13 | base << 5 | (rd & 0x1f));
+ }
+ 
+@@ -895,11 +896,11 @@ static void tcg_out_insn_ldst_imm(TCGContext *s, AArch64Insn insn,
+     tcg_out32(s, insn | (offset & 0x1ff) << 12 | rn << 5 | (rd & 0x1f));
+ }
+ 
+-static void tcg_out_insn_3313(TCGContext *s, AArch64Insn insn,
+-                              TCGReg rd, TCGReg rn, uintptr_t scaled_uimm)
++static void tcg_out_insn_ldst_uimm(TCGContext *s, AArch64Insn insn,
++                                   TCGReg rd, TCGReg rn, uintptr_t scaled_uimm)
+ {
+     /* Note the AArch64Insn constants above are for C3.3.12.  Adjust.  */
+-    tcg_out32(s, insn | Ildst_imm_TO_I3313 | scaled_uimm << 10
++    tcg_out32(s, insn | ldst_imm_to_uimm | scaled_uimm << 10
+               | rn << 5 | (rd & 0x1f));
+ }
+ 
+@@ -1203,9 +1204,6 @@ static void tcg_out_addi_ptr(TCGContext *s, TCGReg rd, TCGReg rs,
+     g_assert_not_reached();
+ }
+ 
+-/* Define something more legible for general use.  */
+-#define tcg_out_ldst_r  tcg_out_insn_3310
+-
+ static void tcg_out_ldst(TCGContext *s, AArch64Insn insn, TCGReg rd,
+                          TCGReg rn, intptr_t offset, int lgsize)
+ {
+@@ -1214,7 +1212,7 @@ static void tcg_out_ldst(TCGContext *s, AArch64Insn insn, TCGReg rd,
+     if (offset >= 0 && !(offset & ((1 << lgsize) - 1))) {
+         uintptr_t scaled_uimm = offset >> lgsize;
+         if (scaled_uimm <= 0xfff) {
+-            tcg_out_insn_3313(s, insn, rd, rn, scaled_uimm);
++            tcg_out_insn_ldst_uimm(s, insn, rd, rn, scaled_uimm);
+             return;
+         }
+     }
+@@ -1227,7 +1225,7 @@ static void tcg_out_ldst(TCGContext *s, AArch64Insn insn, TCGReg rd,
+ 
+     /* Worst-case scenario, move offset to temp register, use reg offset.  */
+     tcg_out_movi(s, TCG_TYPE_I64, TCG_REG_TMP0, offset);
+-    tcg_out_ldst_r(s, insn, rd, rn, TCG_TYPE_I64, TCG_REG_TMP0);
++    tcg_out_insn_ldst_sign_extend(s, insn, rd, rn, TCG_TYPE_I64, TCG_REG_TMP0);
+ }
+ 
+ static bool tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
+@@ -1764,28 +1762,34 @@ static void tcg_out_qemu_ld_direct(TCGContext *s, MemOp memop, TCGType ext,
+ {
+     switch (memop & MO_SSIZE) {
+     case MO_UB:
+-        tcg_out_ldst_r(s, Ildst_imm_LDRB, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_LDRB, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_SB:
+-        tcg_out_ldst_r(s, ext ? Ildst_imm_LDRSBX : Ildst_imm_LDRSBW,
+-                       data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s,
++                                      ext ? Ildst_imm_LDRSBX : Ildst_imm_LDRSBW,
++                                      data_r, h.base, h.index_ext, h.index);
+         break;
+     case MO_UW:
+-        tcg_out_ldst_r(s, Ildst_imm_LDRH, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_LDRH, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_SW:
+-        tcg_out_ldst_r(s, (ext ? Ildst_imm_LDRSHX : Ildst_imm_LDRSHW),
+-                       data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s,
++                                      ext ? Ildst_imm_LDRSHX : Ildst_imm_LDRSHW,
++                                      data_r, h.base, h.index_ext, h.index);
+         break;
+     case MO_UL:
+-        tcg_out_ldst_r(s, Ildst_imm_LDRW, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_LDRW, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_SL:
+-        tcg_out_ldst_r(s, Ildst_imm_LDRSWX, data_r, h.base, h.index_ext,
+-                       h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_LDRSWX, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_UQ:
+-        tcg_out_ldst_r(s, Ildst_imm_LDRX, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_LDRX, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     default:
+         g_assert_not_reached();
+@@ -1797,16 +1801,20 @@ static void tcg_out_qemu_st_direct(TCGContext *s, MemOp memop,
+ {
+     switch (memop & MO_SIZE) {
+     case MO_8:
+-        tcg_out_ldst_r(s, Ildst_imm_STRB, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_STRB, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_16:
+-        tcg_out_ldst_r(s, Ildst_imm_STRH, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_STRH, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_32:
+-        tcg_out_ldst_r(s, Ildst_imm_STRW, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_STRW, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     case MO_64:
+-        tcg_out_ldst_r(s, Ildst_imm_STRX, data_r, h.base, h.index_ext, h.index);
++        tcg_out_insn_ldst_sign_extend(s, Ildst_imm_STRX, data_r, h.base,
++                                      h.index_ext, h.index);
+         break;
+     default:
+         g_assert_not_reached();
 
-Best regards,
 -- 
-Jim MacArthur <jim.macarthur@linaro.org>
+2.43.0
 
 

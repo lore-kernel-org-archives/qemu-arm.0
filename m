@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70BC4108E1F9
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 11:55:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB2C108E1F9
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Mar 2026 11:55:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3Bxd-0002RV-Q0; Thu, 19 Mar 2026 07:54:46 -0400
+	id 1w3By9-0002kL-6c; Thu, 19 Mar 2026 07:55:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3Bxb-0002RA-IZ
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 07:54:43 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3By7-0002jo-V8
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 07:55:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3BxZ-0002Aw-Pb
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 07:54:43 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3By6-0002PT-H7
+ for qemu-arm@nongnu.org; Thu, 19 Mar 2026 07:55:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773921278;
+ s=mimecast20190719; t=1773921313;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=a/xcFBk0fWVWEOD8nncLaFul5HL+UZkPiRTkFoKnjJE=;
- b=HIAlxmA2cLv+biaOi64YvplzQN8Vw6Z3lN1WQ3zUg9QKuMUcju1BIr2qy22vb961i/IN/i
- b8hIpk379QymqC+0cEWcCrd8ilzRr3pr3OHo+rw79GxRNvqkbkFMC6IbjAkNUnguT4XKJj
- S1abPprCUdrmAhYUwotKFNvtFxX63HQ=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=cghQw2wZlYWTnUyhIggiIgbgwEbKW06jE0Cc1GCWpzA=;
+ b=g82BgF6jQoTftYyYcYBHnVzegzJ/uIsRsse4XzCGuBBVI6QJcxczJYO1FxCDdEddsZQK5e
+ w7lvwsIEfzreqLKTXcUlfewXz5nxfh+R4TkTLNKL48zYrSNgCxcLOo6mTKdqjbLmITmn6/
+ vwptpO7ZlH8r4ALIJOl8qgCiXHFgQkM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-403-HKwObAnkOaWip12JJVhtOQ-1; Thu,
- 19 Mar 2026 07:54:35 -0400
-X-MC-Unique: HKwObAnkOaWip12JJVhtOQ-1
-X-Mimecast-MFC-AGG-ID: HKwObAnkOaWip12JJVhtOQ_1773921274
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-599-yhNzkXyxOOiuNylzPeZOqA-1; Thu,
+ 19 Mar 2026 07:55:09 -0400
+X-MC-Unique: yhNzkXyxOOiuNylzPeZOqA-1
+X-Mimecast-MFC-AGG-ID: yhNzkXyxOOiuNylzPeZOqA_1773921307
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DC518195609D; Thu, 19 Mar 2026 11:54:33 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AA2471944F05; Thu, 19 Mar 2026 11:55:07 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4167730002DD; Thu, 19 Mar 2026 11:54:33 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 45D211955F21; Thu, 19 Mar 2026 11:55:07 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id D373821E6937; Thu, 19 Mar 2026 12:54:30 +0100 (CET)
+ id D6E0521E6937; Thu, 19 Mar 2026 12:55:04 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Nathan Chen <nathanc@nvidia.com>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Eric Auger
@@ -56,18 +56,18 @@ Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Eric Auger
  P . =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Eric Blake
  <eblake@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,  Matt Ochs
  <mochs@nvidia.com>,  Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [PATCH v4 2/8] hw/arm/smmuv3-accel: Change ATS property to
+Subject: Re: [PATCH v4 3/8] hw/arm/smmuv3-accel: Change RIL property to
  OnOffAuto
-In-Reply-To: <20260318184907.4060030-3-nathanc@nvidia.com> (Nathan Chen's
- message of "Wed, 18 Mar 2026 11:49:01 -0700")
+In-Reply-To: <20260318184907.4060030-4-nathanc@nvidia.com> (Nathan Chen's
+ message of "Wed, 18 Mar 2026 11:49:02 -0700")
 References: <20260318184907.4060030-1-nathanc@nvidia.com>
- <20260318184907.4060030-3-nathanc@nvidia.com>
-Date: Thu, 19 Mar 2026 12:54:30 +0100
-Message-ID: <87wlz89gqx.fsf@pond.sub.org>
+ <20260318184907.4060030-4-nathanc@nvidia.com>
+Date: Thu, 19 Mar 2026 12:55:04 +0100
+Message-ID: <87se9w9gpz.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: ov0Zr2GtBhb223p8-_203BLu0_pD7kArWhq1pk4LCLw_1773921274
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: 5IyUu0RxQqoaWp0r7om-_ticPBobvBH03J4Mw2V_-2c_1773921307
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
@@ -99,18 +99,18 @@ Nathan Chen <nathanc@nvidia.com> writes:
 
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Change accel SMMUv3 ATS property from bool to OnOffAuto. The 'auto'
+> Change accel SMMUv3 RIL property from bool to OnOffAuto. The 'auto'
 
-Incompatible change; okay because property "ats" is new in this release.
+Incompatible change; okay because property "ril" is new in this release.
 Spelling such things out in the commit message helps reviewers.  Not
 worth a respin.
 
 > value is not implemented, as this commit is meant to set the property
 > to the correct type and avoid breaking JSON/QMP when the auto mode is
 > introduced. A future patch will implement resolution of the 'auto'
-> value to match the host SMMUv3 ATS support.
+> value to match the host SMMUv3 RIL support.
 >
-> Fixes: f7f5013a55a3 ("hw/arm/smmuv3-accel: Add support for ATS")
+> Fixes: bd715ff5bda9 ("hw/arm/smmuv3-accel: Add a property to specify RIL support")
 > Tested-by: Eric Auger <eric.auger@redhat.com>
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 

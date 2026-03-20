@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 869601098783
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:17:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31BA11098781
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:17:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3Zi6-00067u-7J; Fri, 20 Mar 2026 09:16:18 -0400
+	id 1w3Zi4-00066Y-Bb; Fri, 20 Mar 2026 09:16:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhv-0005yh-5P
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:08 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1w3Zho-0005ug-DM
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:05 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhr-0000MH-AR
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:05 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-b976536806cso303970266b.0
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:16:02 -0700 (PDT)
+ id 1w3Zhm-0000LD-2Z
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:15:59 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-667f8794e97so3510282a12.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:15:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774012561; x=1774617361; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774012556; x=1774617356; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=D07oMhuWTwLxwANSJgDlzLINm06uozRFFDE1WuQsKhw=;
- b=qOB2SWVn6vWqI+boKVaeQyrdKCRoCMZ4rFIDGZ9MvPIBOljcVDwdOG0/KTNpPTb5lp
- g1SYTne0xMfy7zUKWZP0U7DU34adANindCIQVXFxVd0dXcT6aDWv0pHOdHuyruzkmPsG
- jY3gXWYzgQqLiklrl+1FwYU3yiikR7OhyNCYJh3DAxty+3E1dVuYUEuLkpzpUrD3tjcr
- Rwjk+NeRNCkhXu175OEPiwDB/zK0GVwSyQ6qoLKnLLwEu13fTb30TqZ9NRI5SrRmvi1q
- Cy76fuc4f9oRBFhWGsgGgrGR3H8H104nz3iuw90mOunnGsaZw9JgcVUcP59Sg2akGdP6
- L3Tg==
+ bh=kbg/XjaS6+MPWBcOfNuHiSkOYAA/xRfptxmMgNfQPiI=;
+ b=BPj7O80IPK0kdkKc2rYnQBNXb9s5feQCBoyak5nHfWQsto3rWXFsfa1txw8zkRd35P
+ 2ocH6xN/cYJA/rUk4RrUlvWI3OTmGj6YwqP28nN8ZTeEqtbOvlzTZMj0De40/dfnWHnm
+ X5xRi1BxCFOomJ/q6nfNy9KwuGU4krzm7ft4R+zu9+U1nfFzSlBXaD9cSSf7ezb3a1j/
+ AtYKhTfHTBr3+91KBIKUbNfjvRtjzItJOgTmS3HZVZfmhAMvKTeMvYOIT1qvGAZVZnXs
+ tUAZK36npro849b2D6ZIn9uFEE2DXfawC1NiXzkg6K9la15wVie/CiXjtSVAn8oXbboD
+ Wk0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774012561; x=1774617361;
+ d=1e100.net; s=20251104; t=1774012556; x=1774617356;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=D07oMhuWTwLxwANSJgDlzLINm06uozRFFDE1WuQsKhw=;
- b=bsHNolgjdTiH9w6LRjRmmNEuzhw6Lrt+eh/2CHBxe4f+NXVMUGH3f5IwH/m/HF5C9d
- RtGV5rvWAeLnZVpaEO2A+3tH0wW7uG9MGJ8ZAosGzXEXngh0fJgbcVsXY3hnOVW66pkI
- e6zMNI5WJB2pSX0fIXJ9lV55Hv+lawpXHl9Xf9O4yCRn+/2U7wc58ONinxn2GnI01YA+
- d+cLfKW2F8FDdys6pzzle+B0XCUYK0U0LmCECwsgtAajazW1SXr/OWNTncC7Gy//nxrH
- d9SxwNFH9F4BnsgBpvr6FPlBVtBWxroiEY9Rv1wUZPjqY2NqnC9S5hPB36YOBxVKZ8gt
- IjdA==
+ bh=kbg/XjaS6+MPWBcOfNuHiSkOYAA/xRfptxmMgNfQPiI=;
+ b=X0Yk5CtSgd7gTT2IfKMAasM2t5dq89GauoSG578HMKkvrkl6QAbrPNN60Uk5vPLfEC
+ aZI0Iuu6d6nU+nTaaWzzyC9DlxyeAMBDAfAzvfsA38sV8BI7YoLogSDPxv4q3CJdJw1U
+ Y9MoRzmC5NZD8aMc/DcJ7lSexGCU+XtWc9f8x9sPFvm+mepbZxd+Z6kvkRTTQo1RkIv2
+ EbjP+GooYEpQrXw+V6eaViKLziDyph8VaNa0sy6b1lEzId2yb/oAurnOhhC673FurAP2
+ HmuisosRRR3vkV1nlRqi1937GrEIehRFq0drBKlpy49BMN9x+4wZN3R/izLrlS0mlpBf
+ E6EA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV6pR50JHcW38oL6SwqcdNJelp23riKSWb2BDNsQ+fvsyBpQ3rKG9PZA+NjI5nBtGSRPRp9oBJX4w==@nongnu.org
-X-Gm-Message-State: AOJu0YxSDnirqD5xM1l+ZF8Juh9jehSv9N7zKP9J2XNa0of2Ihgd0NE9
- YXBKvWj/FbBJorrmOafd6I67Buo2fsr4MrfLzfbuLmGDjgGBd/zDlAo+OwtfN/XyY4M=
-X-Gm-Gg: ATEYQzwH7emAb/4y5xpJn5p5tthBShJ732gDMyaph58RmJhi0mfp15wxm8rKTXHQMfi
- KY4Lg1MUWDq9xLoK67V4o+X4EV1AiLnveCZU+pjnzATur0LhK7CynwJj7swcCNzwog5l7B2BqqN
- CRNnq5xBDwgval8ekTJrPcAoMqpibGbLtpLgU0aBgW+vA2AuJn1DWKzu7gtxrBksNvGQjeSp6VX
- 7flFUqiE0HD8bAn3NBC8nQNTQtFFcNoyVtasLZ3a7MivNt1y4FPOplkQbPwiBKCGXnnFaPguaYU
- vGhXgO1QN3vaLzP1QFea2fUbOrLI+8FSVP6kouB/nvhznV5WJJmGMTSO9I4yu3uxE3ywcP2ojgP
- AItcPSb5frH7rtjarEyCkaIn2US+icqXReRGLxBAUFQXICx7W2dhcDVdr+KVwX6pcdyNgkkcPYx
- r7zM1NFOpMSrmZtjwSbflFS6E=
-X-Received: by 2002:a17:906:2092:b0:b97:c5dd:c661 with SMTP id
- a640c23a62f3a-b982f3d6e2bmr150366366b.45.1774012560679; 
- Fri, 20 Mar 2026 06:16:00 -0700 (PDT)
+ AJvYcCWxvt9p4CDQEqF/cDaPD+3LV02vEV7jsynQSSw0JWyFOHbY1fyUslHWT/FJW4hb/qDTRvY67fD4ww==@nongnu.org
+X-Gm-Message-State: AOJu0YzDArl5P9jamWl7+wUvAh3sT+8DYj6wD8y+Xg8kkBSPwhnVGDfD
+ 5OBnjor0k8vwWuSH5+dD3RHHG/8SECFkeGNNEgvfjGeQxX2+be/j6RO7tO3NpErQ80U=
+X-Gm-Gg: ATEYQzxKoLfJSjOiEi68uLsHqb78EVuUIV2czhWW4d7PLquZO4zA5yQ7vjcgslZRJGM
+ Ib6ewHZj+zXb+fDK+N6GJ7g6/FUG58RVpGjiGVQel/jbo90oomuH+nKQCzfNCUKzg7LPZ+4QlWb
+ c7jAtplg5t1+DdRSVM0CN7SbNdyyUtvaoQiYBP6ulfg50WDq3p0jLtIa+QRicjygNYjbPyTy5F8
+ YR/8Cha+JNk2PNMzVP/or4Cc4cYjXzQnZwKjNHRiWIFoj3a5usJRZ1yuQ7c3ge+eOiNHF34cT8f
+ Rs8pZHVkjZZwEg9/TFod5piXf9Y/VqnsamqLSAXXgZw4AIZEV3JuUBch3fN8yV4PUX30c4PUTNP
+ frGvoy4K4+Be3IpK03Szc7x6rFzuxbo7orPEreAqxYVeUVs8OEO5+Hwk+mtgzTVKR2txjlIfF+a
+ Vub9LE2C7p6DCJgQdEyMwa6gE=
+X-Received: by 2002:a17:907:d307:b0:b87:965:9079 with SMTP id
+ a640c23a62f3a-b982f1ec9cdmr220292466b.3.1774012555972; 
+ Fri, 20 Mar 2026 06:15:55 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9832f8dc51sm157048166b.22.2026.03.20.06.15.56
+ a640c23a62f3a-b9832beecf4sm163503866b.0.2026.03.20.06.15.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:15:58 -0700 (PDT)
+ Fri, 20 Mar 2026 06:15:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 76EFE5FA14;
- Fri, 20 Mar 2026 13:06:09 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 9FE115FAF0;
+ Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 22/35] target/arm: remove old syndrome defines
-Date: Fri, 20 Mar 2026 13:05:53 +0000
-Message-ID: <20260320130607.2071996-23-alex.bennee@linaro.org>
+Subject: [RFC PATCH 33/35] tests/tcg: split stage 1 between devices and RAM
+Date: Fri, 20 Mar 2026 13:06:04 +0000
+Message-ID: <20260320130607.2071996-34-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,35 +107,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now everything is defined with registerfields we can drop the old
-defines.
+All the -M virt devices live in the first GB of address space. Add a
+1Gb block mapping for devices and continue pointing the second block
+at stage 2 and adjust appropriately.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/syndrome.h | 10 ----------
- 1 file changed, 10 deletions(-)
+ tests/tcg/aarch64/system/boot.S | 43 ++++++++++++++++++++-------------
+ 1 file changed, 26 insertions(+), 17 deletions(-)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 4fbc35ce7b0..1887467b719 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -106,16 +106,6 @@ typedef enum {
-     GCS_IT_GCSPOPX = 9,
- } GCSInstructionType;
+diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
+index 8bfa4e4efc7..03a5bad2ab0 100644
+--- a/tests/tcg/aarch64/system/boot.S
++++ b/tests/tcg/aarch64/system/boot.S
+@@ -248,29 +248,34 @@ at_testel:
+ 	msr	ttbr0_el1, x0
  
--#define ARM_EL_EC_LENGTH 6
--#define ARM_EL_EC_SHIFT 26
--#define ARM_EL_IL_SHIFT 25
--#define ARM_EL_ISV_SHIFT 24
--#define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
--#define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
--
--/* In the Data Abort syndrome */
--#define ARM_EL_VNCR (1 << 13)
--
- static inline uint32_t syn_get_ec(uint32_t syn)
- {
-     return FIELD_EX32(syn, SYNDROME, EC);
+ 	/*
+-	 * Setup a flat address mapping page-tables. Stage one simply
+-	 * maps RAM to the first Gb. The stage2 tables have two 2mb
+-	 * translation block entries covering a series of adjacent
+-	 * 4k pages.
++	 * Setup a flat address mapping page-tables.
++	 *
++	 * ttb (Level 1):
++	 *   - Entry 0 [0 - 1GB]: 1GB Device block (for GIC and other H/W)
++	 *   - Entry 1 [1GB - 2GB]: Table entry pointing to ttb_stage2 (for RAM)
+ 	 */
+ 
+-	/* Stage 1 entry: indexed by IA[38:30] */
+-	adr	x1, .				/* phys address */
+-	bic	x1, x1, #(1 << 30) - 1		/* 1GB alignment*/
+-	add	x2, x0, x1, lsr #(30 - 3)	/* offset in l1 page table */
++	/* Entry 0: 1GB Device block mapping at 0x0 */
++	ldr	x1, =0x401 | (1 << 2)		/* AF=1, block, AttrIndx=Attr1 (Device) */
++	str	x1, [x0]
+ 
+-	/* point to stage 2 table [47:12] */
+-	adrp	x0, ttb_stage2
+-	orr 	x1, x0, #3 			/* ptr to stage 2 */
+-	str	x1, [x2]
++	/* Entry 1: Table entry pointing to ttb_stage2 */
++	adrp	x1, ttb_stage2
++	orr 	x1, x1, #3 			/* ptr to table (type=3) */
++	str	x1, [x0, #8]
+ 
+-	/* Stage 2 entries: indexed by IA[29:21] */
++	/* Stage 2 entries: indexed by IA[29:21] (within 1GB-2GB range) */
++	adrp	x0, ttb_stage2
++	add	x0, x0, :lo12:ttb_stage2
+ 	ldr	x5, =(((1 << 9) - 1) << 21)
+ 
+ 	/* First block: .text/RO/execute enabled */
+ 	adr	x1, .				/* phys address */
+ 	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment	*/
+-	and	x4, x1, x5			/* IA[29:21] */
++	/* Note: we assume RAM is in the 1GB-2GB range, so IA[30] is 1 */
++	mov	x4, x1
++	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
++	and	x4, x4, x5			/* IA[29:21] */
+ 	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
+ 	ldr	x3, =0x401			/* attr(AF, block) */
+ 	orr	x1, x1, x3
+@@ -280,7 +285,9 @@ at_testel:
+ 	adrp	x1, .data
+ 	add	x1, x1, :lo12:.data
+ 	bic	x1, x1, #(1 << 21) - 1		/* 2mb block alignment */
+-	and	x4, x1, x5			/* IA[29:21] */
++	mov	x4, x1
++	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
++	and	x4, x4, x5			/* IA[29:21] */
+ 	add	x2, x0, x4, lsr #(21 - 3)	/* offset in l2 page table */
+ 	ldr	x3, =(3 << 53) | 0x401		/* attr(AF, NX, block) */
+ 	orr	x1, x1, x3
+@@ -290,7 +297,9 @@ at_testel:
+ 	adrp	x1, mte_page
+ 	add	x1, x1, :lo12:mte_page
+ 	bic	x1, x1, #(1 << 21) - 1
+-	and 	x4, x1, x5
++	mov	x4, x1
++	bic	x4, x4, #(1 << 30)		/* remove 1GB offset for L2 index */
++	and 	x4, x4, x5
+ 	add	x2, x0, x4, lsr #(21 - 3)
+ 	/* attr(AF, NX, block, AttrIndx=Attr1) */
+ 	ldr	x3, =(3 << 53) | 0x401 | (1 << 2)
+@@ -317,7 +326,7 @@ at_testel:
+ 	ldr	x0, = (2 << 32) | 25 | (3 << 10) | (3 << 8)
+ 	msr	tcr_el1, x0
+ 
+-	mov	x0, #0xee			/* Inner/outer cacheable WB */
++	ldr	x0, =0x04ee			/* Attr1: Device-nGnRE, Attr0: Normal WB */
+ 	msr	mair_el1, x0
+ 	isb
+ 
 -- 
 2.47.3
 

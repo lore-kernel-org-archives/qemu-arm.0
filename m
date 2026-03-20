@@ -4,96 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D371093168
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 02:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23BB41093183
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 07:54:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3Q4Q-00067H-Fm; Thu, 19 Mar 2026 22:58:42 -0400
+	id 1w3UgL-0005XZ-2W; Fri, 20 Mar 2026 03:54:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w3Q4O-00066Q-6U
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 22:58:40 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w3Q4M-00012G-G8
- for qemu-arm@nongnu.org; Thu, 19 Mar 2026 22:58:39 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-2b056b7f783so7583525ad.1
- for <qemu-arm@nongnu.org>; Thu, 19 Mar 2026 19:58:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773975517; x=1774580317; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Z5SvTX3VRqAYRS2DN3kXBkguLjeK6qqREEbgUZ9bFnI=;
- b=SX/ltNX8fMaW1yHZhHQ9XT1zoik+Xlvp47oDHZPQ0ob97IbyifUlLhowXGRAnzO8Cv
- p2stlLlYkgUFWn9GKv5GbjSI/CZF7GqNXnSdXlEJtYIV/L6lNgUW9xm6DtLVpI8b0CAt
- 5L6PcLY6acoT6acsmIy2nTw2Okst0jxQaZlPukIHYVPElfiuO36uMs/2sd1YXovLHILU
- n1Tua4GXx2wMuPrX82upVSAMYwX9kTi+uhimXZJOrBLIWnRRGq27lmj9wtAszTROTs2E
- 7lAgYIsbk3y7JLBPcAdtRIFeB9oaXbKjq5j3g4VRHFgg+sHT+ciYh1FaEd7xOKHhNpGw
- To4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773975517; x=1774580317;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Z5SvTX3VRqAYRS2DN3kXBkguLjeK6qqREEbgUZ9bFnI=;
- b=OJ3PMqWHhF1yXfUshz3zE8UozXBKr4Xuet0XU/ftdu3HUjTsNxO0Y8foI712ypx+cz
- hqMeHUPDcMdEiSMUKg/FzEkYIZ8yP+aTuik0Qvaqqd0j9EQiGMPTXptf/U5nDPZLt6AD
- J20qd3z0WpwfPPRsx2MS5FOqsayqZEqD87lE1YNiJQEsqucwicrnQWadEgfHibfWY/08
- V3tf2roxTz258XO52k9E3ZcAgXfBeW5yEoZRpjRkRQL84yTflpCM3xZkMozB1cW7kk7c
- XdWPkEImtK/Bf0GjdkgY+BCCziXo1QNozP1HLUj45ugBdJzP1QJKv1UdEhlIFWowOsnc
- M0VA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWPa/3y4diQ7pe0Cq0n5UZRdIcVnhHpQuODqPm57hggPsW2jXbVjoARH4oKDAbJCoXwkpe1JxHhbA==@nongnu.org
-X-Gm-Message-State: AOJu0YxDNd146cTwpuDmwSQBcZfOyAzvmGtGdDuH53q1HHDRHK7SBfEk
- YZncSSv9gxj9dwJDtYqWXg1Pp3ctguLc5KZcfWAMhBJPfLywwOwpwi/k1sBojlmRkuA=
-X-Gm-Gg: ATEYQzyHMS/Vxlw+OQmWvxe6YaqgRPwya89rt9stCuVcn6+Qp9jAGsdJGRhRJerBPRq
- 9TZAWpTjOctqGrlUZO+E18OuzD0IABkA8WNPO8bUzpYY0s7qDquJdvL1pHkuMS8FmOwpLCjq4rj
- nyXn3T13pQSJdwtm2+Ud6edd74Q13grDs953o5/qCy9jRfY46F+lHkcpJ/2vgBlqwQWZUK/cL+d
- 5ph7Ywgo9pAHnfgsYly5mIGr4qKKZDJffy6IUhnSfTYXQzSUs8NKakyDY2t7WFglsP/BzXm/mmb
- NpizaR4Cx7e8mNe/NhmuB48ANlwuOwtOS2IkoU21IbXhBgmhYw0adot+iAgIxAvIzJDpLrHFV2H
- S98fj5hUV5nqePE18CfrLGhJP6Uie0Qx6UZuGkVP944dYlE+0royO1dKU5X4fxU5Gbsgu1Z2rkP
- BaztYWj3oqUVApcWyaw+ZIV6ND4LswMa25F9mc/Z7BQR3dRw==
-X-Received: by 2002:a17:902:ceca:b0:2b0:4d7d:fb9a with SMTP id
- d9443c01a7336-2b0828642abmr11954525ad.26.1773975516735; 
- Thu, 19 Mar 2026 19:58:36 -0700 (PDT)
-Received: from [10.5.0.209] ([114.23.167.13]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b08369617dsm6970715ad.71.2026.03.19.19.58.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Mar 2026 19:58:36 -0700 (PDT)
-Message-ID: <1ab57650-a410-4796-b7d1-b193a48e2c4b@linaro.org>
-Date: Fri, 20 Mar 2026 15:58:30 +1300
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3UgJ-0005XI-MN
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 03:54:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3UgH-0005gg-I4
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 03:54:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1773993244;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=4B+tu9jbDyQXpklx1Jdq79ejng5F7HGDu14WuZ/5zxM=;
+ b=MzDF2gy6ewe+tTZYxwXE1PsMug9zQLPb16VMGCudGj3h/ycM8sRSheRxVH9NJdCz0TrwGj
+ CEB2Hzk6pbciRmgkKarWZta+ooWQWJyOJM7MQA6x8AkqzJQsqorFo4ISA+EVeEmrQn5zd6
+ tpFsHx66ydsR00tHh07YSQUh0pUaTPg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-614-K3bpfZRQOumUttOjtABDGA-1; Fri,
+ 20 Mar 2026 03:54:00 -0400
+X-MC-Unique: K3bpfZRQOumUttOjtABDGA-1
+X-Mimecast-MFC-AGG-ID: K3bpfZRQOumUttOjtABDGA_1773993239
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D784D19560B5; Fri, 20 Mar 2026 07:53:58 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 936611800765; Fri, 20 Mar 2026 07:53:58 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 34CAB21E6937; Fri, 20 Mar 2026 08:53:56 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Nathan Chen <nathanc@nvidia.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Eric Auger
+ <eric.auger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,  Igor Mammedov
+ <imammedo@redhat.com>,  Ani Sinha <anisinha@redhat.com>,  Shannon Zhao
+ <shannon.zhaosl@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel
+ =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,  Eric Blake
+ <eblake@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,  Matt Ochs
+ <mochs@nvidia.com>,  Nicolin Chen <nicolinc@nvidia.com>
+Subject: Re: [PATCH v4 7/8] hw/arm/smmuv3-accel: Change OAS property to OasMode
+In-Reply-To: <654cb406-93fd-4c20-8dec-d01fc7d245ee@nvidia.com> (Nathan Chen's
+ message of "Thu, 19 Mar 2026 09:57:34 -0700")
+References: <20260318184907.4060030-1-nathanc@nvidia.com>
+ <20260318184907.4060030-8-nathanc@nvidia.com>
+ <87pl5080zl.fsf@pond.sub.org>
+ <654cb406-93fd-4c20-8dec-d01fc7d245ee@nvidia.com>
+Date: Fri, 20 Mar 2026 08:53:56 +0100
+Message-ID: <874imbj5rf.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 08/84] target/arm: Skip AF and DB updates for
- AccessType_AT
-To: Zenghui Yu <zenghui.yu@linux.dev>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20250830054128.448363-1-richard.henderson@linaro.org>
- <20250830054128.448363-9-richard.henderson@linaro.org>
- <c805cd6f-e69c-4cf1-8773-0a45bfb677f8@linux.dev>
- <a865e4fc-04a9-42d3-9793-f1d7242565b0@linaro.org>
- <d99e9f3d-509f-4531-b45a-db33902778f0@linux.dev>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <d99e9f3d-509f-4531-b45a-db33902778f0@linux.dev>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: 8pdBYxCzfo1xuY3BUt9eHxMVaR_-CaELsrNoIB9-k9w_1773993239
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,47 +96,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/16/26 04:14, Zenghui Yu wrote:
-> Hi Richard,
-> 
-> On 2/27/26 11:01 AM, Richard Henderson wrote:
->> On 2/27/26 04:12, Zenghui Yu wrote:
->>>> +    /*
->>>> +     * For AccessType_AT, DB is not updated (AArch64.SetDirtyFlag),
->>>> +     * and it is IMPLEMENTATION DEFINED whether AF is updated
->>>> +     * (AArch64.SetAccessFlag; qemu chooses to not update).
->>>> +     */
->>>> +    if (likely(!ptw->in_at)) {
->>>>            /*
->>>>             * Access flag.
->>>>             * If HA is enabled, prepare to update the descriptor below.
->>>
->>> |            * Otherwise, pass the access fault on to software.
->>> |            */
->>> |           if (!(descriptor & (1 << 10))) {
->>> |               if (param.ha) {
->>> |                   new_descriptor |= 1 << 10; /* AF */
->>> |               } else {
->>> |                   fi->type = ARMFault_AccessFlag;
->>> |                   goto do_fault;
->>>
->>> This also skips the access flag fault which could be generated by an AT
->>> instruction. Is this an expected change?
+Nathan Chen <nathanc@nvidia.com> writes:
+
+> On 3/19/2026 5:20 AM, Markus Armbruster wrote:
+
+[...]
+
+>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>>> index 79018f8d66..c67819d6f2 100644
+>>> --- a/hw/arm/smmuv3.c
+>>> +++ b/hw/arm/smmuv3.c
+>>> @@ -1984,6 +1984,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>>>           error_setg(errp, "ssidsize auto mode is not supported");
+>>>           return false;
+>>>       }
+>>> +    if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48) {
+>>> +        error_setg(errp, "OAS can only be set to 44 or 48 bits");
+>>> +        return false;
+>>> +    }
 >>
->> Yes.  As mentioned right there in the comment, the access flag fault is
->> IMPLEMENTATION DEFINED.
-> 
-> The comment says that "it is IMPLEMENTATION DEFINED whether AF is
-> updated" which matches R_XQSMX. I'm fine with it.
-> 
-> I was concerning about whether an access flag fault should be generated
-> by the AT instruction, if !param.ha. Could you please point out the
-> description in the specification regarding "the access flag fault is
-> IMPLEMENTATION DEFINED"?
+>> So, OasMode values other than 44 and 48 are currently useless.  Correct?
+>
+> Yes, in an earlier version we had only implemented auto, 44, and 48 for OasMode, but we included the other OasMode values according to the SMMUv3 spec after receiving feedback to do so.
 
-You're right; there are only 4 exceptions that are to be passed on listed in J1.1.3.10 
-AArch64.AT.
+I'm not sure that's a good idea.  Not an objection, mind.  I'm just
+giving you something to consider.
 
+If we define exactly the values that work, query-qmp-schema can tell
+management applications which values work.  Whether that's useful I
+can't say.
 
-r~
+It falls apart as soon as different devices implement different values.
+Do we expect that to happen?
+
+If we stick to defining all values, maybe rephrase the error message to
+express it's an implementation restriction?  Entirely up to you.
+
 

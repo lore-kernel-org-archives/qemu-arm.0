@@ -4,83 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23BB41093183
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 07:54:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01F9E1093194
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 09:16:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3UgL-0005XZ-2W; Fri, 20 Mar 2026 03:54:09 -0400
+	id 1w3VxY-0002K7-Nk; Fri, 20 Mar 2026 05:16:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3UgJ-0005XI-MN
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 03:54:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3UgH-0005gg-I4
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 03:54:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773993244;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=4B+tu9jbDyQXpklx1Jdq79ejng5F7HGDu14WuZ/5zxM=;
- b=MzDF2gy6ewe+tTZYxwXE1PsMug9zQLPb16VMGCudGj3h/ycM8sRSheRxVH9NJdCz0TrwGj
- CEB2Hzk6pbciRmgkKarWZta+ooWQWJyOJM7MQA6x8AkqzJQsqorFo4ISA+EVeEmrQn5zd6
- tpFsHx66ydsR00tHh07YSQUh0pUaTPg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-614-K3bpfZRQOumUttOjtABDGA-1; Fri,
- 20 Mar 2026 03:54:00 -0400
-X-MC-Unique: K3bpfZRQOumUttOjtABDGA-1
-X-Mimecast-MFC-AGG-ID: K3bpfZRQOumUttOjtABDGA_1773993239
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D784D19560B5; Fri, 20 Mar 2026 07:53:58 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 936611800765; Fri, 20 Mar 2026 07:53:58 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 34CAB21E6937; Fri, 20 Mar 2026 08:53:56 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Nathan Chen <nathanc@nvidia.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Eric Auger
- <eric.auger@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,  Igor Mammedov
- <imammedo@redhat.com>,  Ani Sinha <anisinha@redhat.com>,  Shannon Zhao
- <shannon.zhaosl@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel
- =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,  Eric Blake
- <eblake@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,  Matt Ochs
- <mochs@nvidia.com>,  Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [PATCH v4 7/8] hw/arm/smmuv3-accel: Change OAS property to OasMode
-In-Reply-To: <654cb406-93fd-4c20-8dec-d01fc7d245ee@nvidia.com> (Nathan Chen's
- message of "Thu, 19 Mar 2026 09:57:34 -0700")
-References: <20260318184907.4060030-1-nathanc@nvidia.com>
- <20260318184907.4060030-8-nathanc@nvidia.com>
- <87pl5080zl.fsf@pond.sub.org>
- <654cb406-93fd-4c20-8dec-d01fc7d245ee@nvidia.com>
-Date: Fri, 20 Mar 2026 08:53:56 +0100
-Message-ID: <874imbj5rf.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w3VxR-0002IS-Bv
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 05:15:54 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w3VxM-0004Lk-Oj
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 05:15:51 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-64c31ca77b4so409570d50.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 02:15:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773998147; cv=none;
+ d=google.com; s=arc-20240605;
+ b=RWocUdCXpvmGyOrZePMCWRbw81Q83hit5Df2XVlVLUQCqQiz19i26ZG34eTzZVyJVx
+ yStdSxUAQBcNEkBnyk/3chf74jcv+jUgii55pv5aQeOKf3xag0bKlXbvBdKjbfOq6s/0
+ d0AV2oXZpEWUHsF+RN++qVp3kwY4Dk4a6+F2aBapYeq7Bk4/1MQeMs2M1OC2EZ2gowwT
+ jWEQN72NMpk93UIxHMM7bQmGjtReHPrq5UHlfq0AnUncEJuke2qZIqZ3WhRUDvaC9enT
+ hxoAvdaoxRcTm9MAYcxLE0JglEkXRXo6FoRsOjgYMXgl2c0g9Oy7Q4K2mur8VdFtBRrB
+ xYHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=xvbAbu4dMgvGESlCuQajDMiqKKtL32Q9bNx4dGp3Nfk=;
+ fh=6pva960Ed1883vrAM+SgImlMfQiiJ9krm9/7iu14A+s=;
+ b=Mi3YonvDIx93x9iuKZ2bs+Ai17f7twL+DklYfgeGn0v8vbjssHwHIUcjAhXXidRvzD
+ t/Xn4DQzko/1MGEIB4VWRfLP/nOclG4KNcCivoJYCB8BAy9KvwGcC2rlGBJEhNA+C/0C
+ i9U1CLvGavoBLBenfK0YsPkC4YLceN+CUZc+fP+EDBY/jy+LdygeMrY0OHdDJ5NYLvT/
+ wteKCUKd/dMRmAMt0tXWycxDrdYsoWWShBDlexKmBgaFmR+NLE8eGGE2xbA1JLvoY3Tn
+ Xbo4P+wAhPVgax1u7yd3ihVds+60ogI+2Iej0BNqt5JbNlNQDj6uHzk/Pw2UH34y9h4s
+ dm+g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773998147; x=1774602947; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xvbAbu4dMgvGESlCuQajDMiqKKtL32Q9bNx4dGp3Nfk=;
+ b=B0XubGYh3jCz2LqywfONlu1rFNxlQhd2hfAPurHlX/eXrlutLH/Zsepaf6zbQMtEqi
+ ubxOijU1Ifw9t7cngcqgqAys1s23//vG2RhE7qxy8yRyk7DhBZRg5QkNjqse1NV2S/Fv
+ lBNrZLgTp4Y5Kke8OH9y8LZ8lnEMNyRHcnxADQR4VTKa8ZmX9xqdYqBswSciYY+5TXQ1
+ 4t11E3GtbExurOT0D8pte1dihYKZIKWgeRvxnp1J2LBnpWy9XrGs8PmJuxtk76PHNroR
+ h51hPWqb7Ff96UyfOCHHDV9/jsh9tQq9yj/YFItX7JRGLWVWL7H6PwvbOC1Ucc1T2kSW
+ j7CA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773998147; x=1774602947;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xvbAbu4dMgvGESlCuQajDMiqKKtL32Q9bNx4dGp3Nfk=;
+ b=TDsmGmW2mPJaGXxkKf+JY2DD2lT8oNm05uf/TP/MnRmVBQZlBJJcOAFx3M+fSlXhOY
+ bN4m/LeWtMbGi23CszI/rWVmYfwodhOqyxQhJbNG+3zrIzHFSPSPVljWcJvqKOjoEc6g
+ /H4dxDRANYoN8tSZV25aGkeuLKgbXACTe431/lwxs3Lg+fSHp5GPlIkcNZiZgYjVkVfD
+ 3G/DH0mZygEk8eQIb6i1CBGlP/PqccIOCKgxVWlsZFbABAQgf3XM5Y3aO/EX6HbKpIIZ
+ XZEGeOLe5FKJBAvqjaRhIcY9G/PXAh5C6gi0r6GuRAYSNHbX7QEaM8HB6vptGaiLymPP
+ ZxdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVzgezYpTUnAMFrrsnjjiuIvIQ5tLMua5qMHZjj17uo54Zp9q0c7aoLV0IViKJLymqpau65Sdbp5w==@nongnu.org
+X-Gm-Message-State: AOJu0Yz9T+J2IbnJSnSTZpx+Dw+HYBOyz9Oy1vLEuZtsZv6/ZbKTF8Zk
+ VhIrG5Fdd9HHwFYU3gqYCMGjGGSCcXXcK13MlhjNIMNGkSHQvabbziGmy33OocI4Guh6+w5PfUZ
+ AfgeB5aXj8ktQQvAvkfeida+VRMkTvrYtzxNQHf9bkQ==
+X-Gm-Gg: ATEYQzwSqQ4tDrl9cGaHnYXo9a+2c7nn3wCYqXSVjncRShDrQcil4+lad/Jzw/NexN7
+ 34D19v8WlcBPYGwrMaTX3x0liCpO5dE3l9m1ZAmntwHSjR7x0GwDknPhiBE3vg2VWIbu8/KuVez
+ GiXvsYmu/ZuPBYWFayDJ31mXRlWJEIlP/3LlSc7OThxouR/bZE9CN9n/keuFi0ZTA5XUpOTYoBc
+ ipCtIgUghMEHmsf5YNhwNlZMlgSvnfrB770nc0OvIxd4YlvbfPZeX9fHg4Bz5odFYbQgsG+qu9Z
+ uh441QAQbHrATXER2MQNiT/zm1kVPKXukGSZKYAFLnFWmyZWqxW+rD6HWvmC6WegTs4=
+X-Received: by 2002:a53:d786:0:b0:649:e546:62e2 with SMTP id
+ 956f58d0204a3-64eaa7b630cmr1712151d50.44.1773998147305; Fri, 20 Mar 2026
+ 02:15:47 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 8pdBYxCzfo1xuY3BUt9eHxMVaR_-CaELsrNoIB9-k9w_1773993239
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260319183453.100545-1-sw@weilnetz.de>
+In-Reply-To: <20260319183453.100545-1-sw@weilnetz.de>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 20 Mar 2026 09:15:35 +0000
+X-Gm-Features: AaiRm52Fvg_cJmMP4ysqAEFDoenflm5VgYoBeXreXaBQdPTgtKQsso7DZjlREB8
+Message-ID: <CAFEAcA8dzqPVUyt-bC4r8QxZtJ6dBacgeMG71JEsCsUoGgDsSg@mail.gmail.com>
+Subject: Re: [PATCH for-11.0] Fix several typos in documentation (found by
+ codespell)
+To: Stefan Weil <sw@weilnetz.de>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, 
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Eric Blake <eblake@redhat.com>, 
+ Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, 
+ John Snow <jsnow@redhat.com>, qemu-arm@nongnu.org, qemu-block@nongnu.org, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,40 +123,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Nathan Chen <nathanc@nvidia.com> writes:
-
-> On 3/19/2026 5:20 AM, Markus Armbruster wrote:
-
-[...]
-
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index 79018f8d66..c67819d6f2 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -1984,6 +1984,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->>>           error_setg(errp, "ssidsize auto mode is not supported");
->>>           return false;
->>>       }
->>> +    if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48) {
->>> +        error_setg(errp, "OAS can only be set to 44 or 48 bits");
->>> +        return false;
->>> +    }
->>
->> So, OasMode values other than 44 and 48 are currently useless.  Correct?
+On Thu, 19 Mar 2026 at 18:34, Stefan Weil <sw@weilnetz.de> wrote:
 >
-> Yes, in an earlier version we had only implemented auto, 44, and 48 for OasMode, but we included the other OasMode values according to the SMMUv3 spec after receiving feedback to do so.
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+>
+> These typos are part of the generated documentation.
+> Therefore they should be fixed in the new release.
+>
+> More typos can be found in the remaining code, mostly in comments.
 
-I'm not sure that's a good idea.  Not an objection, mind.  I'm just
-giving you something to consider.
 
-If we define exactly the values that work, query-qmp-schema can tell
-management applications which values work.  Whether that's useful I
-can't say.
+> diff --git a/qapi/block-core.json b/qapi/block-core.json
+> index f8d446b3d6..e8adaaea34 100644
+> --- a/qapi/block-core.json
+> +++ b/qapi/block-core.json
 
-It falls apart as soon as different devices implement different values.
-Do we expect that to happen?
+> @@ -5086,14 +5086,14 @@
+>  ##
+>  # @blockdev-set-active:
+>  #
+> -# Activate or inactivate a block device.  Use this to manage the
+> +# Activate or deactivate a block device.  Use this to manage the
+>  # handover of block devices on migration with qemu-storage-daemon.
+>  #
+>  # Activating a node automatically activates all of its child nodes
+>  # first.  Inactivating a node automatically inactivates any of its
 
-If we stick to defining all values, maybe rephrase the error message to
-express it's an implementation restriction?  Entirely up to you.
+We should also change these to "Deactivating" and "deactivates"
+for consistency.
 
+>  # child nodes that are not in use by a still active node.
+>  #
+> -# @node-name: Name of the graph node to activate or inactivate.  By
+> +# @node-name: Name of the graph node to activate or deactivate.  By
+>  #     default, all nodes are affected by the operation.
+>  #
+>  # @active: true if the nodes should be active when the command returns
+
+
+
+>      ``param=string``
+>           ``string`` will be passed to passt has a command line parameter,
+
+should this be "as a command line parameter" ?
+
+> -         we can have multiple occurences of the ``param`` parameter to
+> +         we can have multiple occurrences of the ``param`` parameter to
+>           pass multiple parameters to passt.
+>
+>           For instance, to pass ``--trace --log=trace.log``:
+> --
+
+thanks
+-- PMM
 

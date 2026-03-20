@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADF21098783
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:12:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE7201098782
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:12:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZYf-00034H-Ks; Fri, 20 Mar 2026 09:06:33 -0400
+	id 1w3ZYf-000345-1T; Fri, 20 Mar 2026 09:06:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYY-0002wP-Bt
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:26 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1w3ZYU-0002uJ-RM
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYU-00063v-CY
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:24 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-6644a3029b3so2766251a12.0
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:21 -0700 (PDT)
+ id 1w3ZYS-00062u-Im
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-668abc98923so1095726a12.3
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011980; x=1774616780; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774011979; x=1774616779; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4oPB471eXj4owIYL5CBF7Q395nZGbkHiFon/ZP2/K+k=;
- b=IHYHI5EX6VKTy4l4e8G7hG34T1PWQ6+Ug5744yot++EMWTz/5sUeoTuy/rNStKqfp8
- ikdfkNTVviPT7bv+9zpVCRfmc8CHNfgp4Uo9ZYhuZLPOR1RF0yUpDPY3dIc8e/VC3QU+
- V5S7aYZsv4pFbxJsQGFLP6TqGezYV9p7BgzrRMvxy+WMP+G4hyV4zb5tmrQ7Aqrd6Brk
- suVqVuIHTcBTfMioJiIyDVRuswiRjuLs7XT4yZ9cYcJJ9xdWwxVwlovsWrRXh1OpvuL/
- a4K3jpMwj8vk52Ji8OvbP1IJV5fz4w3TzvJ1oK77UZrOo9fM/FUeJCsuzENqSdJSksjH
- A9lw==
+ bh=YX0j0axZ/RBp77GoaFkpFK0DcOPDM4tK+si3g6SlcZI=;
+ b=MaDbjkF1uCgp9jobx3VNjHvK5FI4eeJpGjE25c9noHdw833vZjN0uRfYT+FiMECn2I
+ ewVcR/xtQFpvsgrFFQh5jboM6sAlq4RyaevJkgrAwmwbT56KuWoMUhsJo6Qtf1HyZo5C
+ GzyfrD7zYUPYDC5PJsX2OQM4dSoF7OihOq7fhF2EOIv4YNIlKgb/YaTSsCxj7+0CAfRA
+ zFCoix1abd7Mt8FxnM091DJKmJ+vRTf7DTuia7Rq27WPYVn5GB7Ca9Rv98FGeVMK2dH1
+ bSuOxnlehqzwsb9GwlgQOBMQLobOLh2lbuy/Yf6YC3KzBK7iPJ/mHaapXvoix16OJjq/
+ PIGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011980; x=1774616780;
+ d=1e100.net; s=20251104; t=1774011979; x=1774616779;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=4oPB471eXj4owIYL5CBF7Q395nZGbkHiFon/ZP2/K+k=;
- b=Ttx4n31fku/sp6kM+TuWVynsH2dl6jtr9pXgFTd9uBRHs0fb8oHARF1iHE7/i06vk2
- xhkcSyLGvOJbb94flri8SKotr6KE46wbHnt4rc8dhwinZwSqmgeSB0VvsopmoMObZDCR
- Oo7JVFmmnhOAktuUVYH5ni9/i5nHeB1iOz4HXYYhHvlPYV5oU7YElBiICj4oiM8nZxku
- JlLa0+Ra23hL1niBvHABqpOw1QnAeRJjFVhuY7g/MZ9MYlLYVcVRW9XaWMOVMevAPwVD
- NebW6YROhVE/QDUESByTR0x72XoDoB6qfLX4InRvQbaEGYlFF4HWbeEsJg6ZyWU5NRss
- GLwg==
+ bh=YX0j0axZ/RBp77GoaFkpFK0DcOPDM4tK+si3g6SlcZI=;
+ b=G8G1XGQXcaaxqe5J8/6a5g5Tq93Ky+TewjgMJPB8T/vq4G+bWvGFCr+KUlxS/IR5gG
+ 4h5F/3PP/JqPrFEue+QrEXpMmYv00g2zKvUqkOblQZkASB0PhQn+XRGZD/SiaP6HPiIS
+ LISWtQ5RF4HKMMJOd8oLOWNIFNVNzejyBXAmxCvSQs2Z4hkuYIUNC0l2uvbC7jxCsOvY
+ +IhLh/V8U0moh+x4E6IBAaeLzHKOxlh/rLJ26eifSLRKKGggep53X8twg1rbf3HR7MXs
+ JG3JroDIPtO/JgWSnQR4PkTVxwWSTj2lntCTavW0GWxp70SwR3BKZOY1SWd6grzmL/hV
+ uElA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWJ7pDsmfFo30Y9zuEQavQ03J1xTwRxINeN7/3cK/CClT09esIlhXHhM4iVbdJ9nwpeFVZ50QCp0g==@nongnu.org
-X-Gm-Message-State: AOJu0Yz4txq7AAVhy6HVaHh7B4cDAQ0tXCnBGVbFRdXn96gx4wD/Z0v9
- XqlruMmFy7l0aKggIsTqTtcy2U3haeLeFrSWYRTBROzzDTOWdTQAu/wCUzVpY8VOPrE=
-X-Gm-Gg: ATEYQzyU3Vub3P2rqgzfYH8Kb5QnzNIZPVQt91HzgUTiEn9QbOb0501zkFTcw/pHXXI
- T9w0KLxP6pJQefOkq9KQIQZ3FQiHFK8nCx882f2Vo6SNLkNr1pW6F4/BBrginZ69qvYwa51ReFE
- MGd43JgQY6Rxskz7fFui2yBPdd2DmMTE2G+x1OZELRf4aeUNY1u/dgnVpwaH+c7tGr0qGTzCzFr
- jlccRQmZg0FxSbZbd3msJR87aSQRpBm+p36iWjTFrlWbEzxmLuvgJ2AJPbWLz7TjRGVVapwA8eX
- Wmh4cnxrKnCijc1iubm1zt8ke/c3xlF+jNu4hNxckZDr/3iW4fZ/c0XPwmPbL6nAAXSgJ4KmZNz
- wZWqElwXeQkQDYHxwUg2fRW7kv8EuUsM1JWk1O8cbFMqofIjJ8a+j0WPuT7DgUdD4GPC7ZK1HdI
- MUVJdwK8JMnvFlQogK7DxVwuQ=
-X-Received: by 2002:a05:6402:5289:b0:666:ebb7:1232 with SMTP id
- 4fb4d7f45d1cf-668c8f0492bmr2439429a12.6.1774011980404; 
- Fri, 20 Mar 2026 06:06:20 -0700 (PDT)
+ AJvYcCWL6HnivTgpP4ZdpQ5timrU+D6aDsj2/snkQ6F2by3ZXqPwzcrD4za+DefVatelOE4K3TMtaLH0qQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx3z1gylhRFPdaZ0PwCX7SrSYNPSzKZTIjdUHP5a1u/3d3QeiXt
+ HrPLorDlVYpXryNczyfwLWLkQh2YWK+HSy06qE7rJX0VOJxJEFO/moUKpIVvzKZcodI=
+X-Gm-Gg: ATEYQzw8mT0RBZO3/HiIMSijzEkE86mOIfDR72C8w9JQG91BmYDKCsV1aAdmZ4ZkRzC
+ jpn1jGYm3lDk1XEzuwcSRf6WmMxeA3PXSwYlUmivKLMmxyJrThV+vgKlrmRnHfOQDufgKyLYc3b
+ VsWgklpXO939Q8NPESzZCfwGxAqbHdYVSvHHfF2pTHhAvAS8oPAAx11zLGH6fwlJyb9kSiVEAzo
+ GtjyxLkd6zyzgmKwOdLlrQEEuQLesEHr0L0mOrFIJCBBF8wQXTV1zQxeJ53b4H+6EC49hOeP0he
+ 6RpT6gm/mC7TTQVuJXG/KuluKSB/Y6UEMsJQ0RSDdKV9OJ18lt9fU3BYMxXnNGJEF0GuMD772XP
+ rAvBw4FZgU5d0GDTQaoE9Bka8uPjt5FecFlno5mFYyJdlYlLxQIa+FhPTEhUSVtxWudimjiSDLk
+ fl5BG4UeePKwoYXOMrDbiVUeRGCey/N7jW7Q==
+X-Received: by 2002:a05:6402:3593:b0:661:3f3c:400d with SMTP id
+ 4fb4d7f45d1cf-668c9c52289mr1939771a12.26.1774011978838; 
+ Fri, 20 Mar 2026 06:06:18 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-668d1cc8a17sm1340445a12.18.2026.03.20.06.06.16
+ 4fb4d7f45d1cf-668cf7e4048sm1334074a12.9.2026.03.20.06.06.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
+ Fri, 20 Mar 2026 06:06:17 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6E90C5FAEB;
- Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id C7AE85FA3D;
+ Fri, 20 Mar 2026 13:06:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 31/35] target/arm: enable event stream on WFE instructions
-Date: Fri, 20 Mar 2026 13:06:02 +0000
-Message-ID: <20260320130607.2071996-32-alex.bennee@linaro.org>
+Subject: [RFC PATCH 25/35] target/arm: redefine event stream fields
+Date: Fri, 20 Mar 2026 13:05:56 +0000
+Message-ID: <20260320130607.2071996-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,101 +107,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we can calculate when the next event stream event is we can re-use
-the wfxt_timer and configure it to fire as we enter a WFE that is
-going to sleep. Reverse the M-profile logic so we can enter a sleep
-state in both profiles.
+The event stream control bits are the same for both CNTHCTL and
+CNTKCTL so rather than duplicating the definitions rename them to be
+useful in both cases.
+
+We will need these in a later commit when we start implementing event
+streams.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/cpu.h           |  2 ++
- target/arm/cpu.c           |  5 +++++
- target/arm/tcg/op_helper.c | 37 ++++++++++++++++++-------------------
- 3 files changed, 25 insertions(+), 19 deletions(-)
+ target/arm/internals.h | 11 +++++++----
+ target/arm/helper.c    |  8 ++++----
+ 2 files changed, 11 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9c25b60ae83..6a7d92d73db 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -967,6 +967,8 @@ struct ArchCPU {
-     QEMUTimer *pmu_timer;
-     /* Timer used for WFxT timeouts */
-     QEMUTimer *wfxt_timer;
-+    /* Are we in a WFE */
-+    bool waiting_for_event;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 8ec27508473..2296ac9cfb6 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -263,14 +263,17 @@ FIELD(VSTCR, SA, 30, 1)
+  * have different bit definitions, and EL1PCTEN might be
+  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
+  * disambiguate if necessary.
++ *
++ * The event stream bits (EVN*) are in the same position for
++ * CNTKCTL_EL1/CTNKCTL.
+  */
+ FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
+ FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
+ FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
+-FIELD(CNTHCTL, EVNTEN, 2, 1)
+-FIELD(CNTHCTL, EVNTDIR, 3, 1)
+-FIELD(CNTHCTL, EVNTI, 4, 4)
++FIELD(CNTxCTL, EVNTEN, 2, 1)
++FIELD(CNTxCTL, EVNTDIR, 3, 1)
++FIELD(CNTxCTL, EVNTI, 4, 4)
+ FIELD(CNTHCTL, EL0VTEN, 8, 1)
+ FIELD(CNTHCTL, EL0PTEN, 9, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
+@@ -280,7 +283,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
+ FIELD(CNTHCTL, EL1TVCT, 14, 1)
+ FIELD(CNTHCTL, EL1NVPCT, 15, 1)
+ FIELD(CNTHCTL, EL1NVVCT, 16, 1)
+-FIELD(CNTHCTL, EVNTIS, 17, 1)
++FIELD(CNTxCTL, EVNTIS, 17, 1)
+ FIELD(CNTHCTL, CNTVMASK, 18, 1)
+ FIELD(CNTHCTL, CNTPMASK, 19, 1)
  
-     /* GPIO outputs for generic timer */
-     qemu_irq gt_timer_outputs[NUM_GTIMERS];
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d51599dfdab..a0569f74cd5 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -780,6 +780,11 @@ static void arm_wfxt_timer_cb(void *opaque)
-     ARMCPU *cpu = opaque;
-     CPUState *cs = CPU(cpu);
- 
-+    if (cpu->waiting_for_event) {
-+        CPUARMState *env = &cpu->env;
-+        env->event_register.as_bool = true;
-+    }
-+
-     /*
-      * We expect the CPU to be halted; this will cause arm_cpu_is_work()
-      * to return true (so we will come out of halt even with no other
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index d513045269c..fbe160ab70a 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -494,31 +494,30 @@ void HELPER(wfe)(CPUARMState *env)
- #else
-     /*
-      * WFE (Wait For Event) is a hint instruction.
--     * For Cortex-M (M-profile), we implement the strict architectural behavior:
-+     *
-      * 1. Check the Event Register (set by SEV or SEVONPEND).
-      * 2. If set, clear it and continue (consume the event).
-      */
--    if (arm_feature(env, ARM_FEATURE_M)) {
--        CPUState *cs = env_cpu(env);
-+    CPUState *cs = env_cpu(env);
-+    ARMCPU *cpu = ARM_CPU(cs);
- 
--        if (env->event_register.as_bool) {
--            env->event_register.as_bool = false;
--            return;
--        }
-+    if (env->event_register.as_bool) {
-+        env->event_register.as_bool = false;
-+        return;
-+    }
- 
--        cs->exception_index = EXCP_HLT;
--        cs->halted = 1;
--        cpu_loop_exit(cs);
--    } else {
--        /*
--         * For A-profile and others, we rely on the existing "yield" behavior.
--         * Don't actually halt the CPU, just yield back to top
--         * level loop. This is not going into a "low power state"
--         * (ie halting until some event occurs), so we never take
--         * a configurable trap to a different exception level
--         */
--        HELPER(yield)(env);
-+    /* For A-profile we also can be woken by the event stream */
-+    if (arm_feature(env, ARM_FEATURE_AARCH64) && cpu->wfxt_timer) {
-+        int64_t next_event = gt_calc_next_event_stream(env);
-+        if (next_event > 0) {
-+            cpu->waiting_for_event = true;
-+            timer_mod(cpu->wfxt_timer, next_event);
-+        }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5ee79f7564f..ba6db46d453 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1746,9 +1746,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint32_t valid_mask =
+         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
+         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
+-        R_CNTHCTL_EVNTEN_MASK |
+-        R_CNTHCTL_EVNTDIR_MASK |
+-        R_CNTHCTL_EVNTI_MASK |
++        R_CNTxCTL_EVNTEN_MASK |
++        R_CNTxCTL_EVNTDIR_MASK |
++        R_CNTxCTL_EVNTI_MASK |
+         R_CNTHCTL_EL0VTEN_MASK |
+         R_CNTHCTL_EL0PTEN_MASK |
+         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
+@@ -1763,7 +1763,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+             R_CNTHCTL_EL1TVCT_MASK |
+             R_CNTHCTL_EL1NVPCT_MASK |
+             R_CNTHCTL_EL1NVVCT_MASK |
+-            R_CNTHCTL_EVNTIS_MASK;
++            R_CNTxCTL_EVNTIS_MASK;
      }
-+
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
- #endif
- }
- 
+     if (cpu_isar_feature(aa64_ecv, cpu)) {
+         valid_mask |= R_CNTHCTL_ECV_MASK;
 -- 
 2.47.3
 

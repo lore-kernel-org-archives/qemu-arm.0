@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BBF81098797
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 15:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1461A1098797
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 15:53:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3c8H-0007cc-UW; Fri, 20 Mar 2026 11:51:30 -0400
+	id 1w3c8A-0007ac-Ud; Fri, 20 Mar 2026 11:51:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3c82-0007WX-Gk
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:14 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1w3c83-0007XR-Nz
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:15 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3c7z-0005VX-S8
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:14 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-6686d06c411so3314058a12.3
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 08:51:11 -0700 (PDT)
+ id 1w3c80-0005Vx-Vx
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:15 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b9358dd7f79so128669366b.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 08:51:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774021870; x=1774626670; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774021871; x=1774626671; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1gpxMBpssTBiyClKYiW1/NzisCMEhju5aJAH+eV1EPU=;
- b=boBEDiipWOUGU6wT0er29xAj2wRNeX0Re5TCmnKhWt4LNsp7QBt0en6n+SKyXmPrQU
- 9LycfEuiOjNCJrNkFhmYF8gLHlRGYQYPBR1igl2ZklNw3TbIe5N1hrEyiau2KCNUstcg
- OwSNLMc97jWzPuYLFbkDg76jHThQaJYe9MUWReA/sYY92v6oQvFWgOulkhxlspRK7uYg
- 0wwQjvM7L2JQPgqVPbsOAxklqJ7lA3/MIKO89YGy7j2bjD9T3/LIFSzbuFJPMXS0Dqm+
- xM9HO9ZLcbDNgwlW3RrdqVm+SNaX2Ymnv9DnGzgVHZumzG/FsQi7DtYXNZU+XqL97sKI
- zKJg==
+ bh=Re1Z7KTF6pGt06r2qKUhhUG6rRUM2+jHUzT54RyU8Vo=;
+ b=ONLR23h2OB3+66OF7Xx3ksY71yKh1fkffBSlRn0WYzlcGGVv6S301KIgJa3TZ/AnEB
+ WdQyMjPNP+QVbbQfhnVVdKVBEcA4IN7+sH3BKVhtks/F2ymr/iihnhdO5+ZR8dY26H0+
+ ZtdMvmnWmVe6bYwP0z2N+OeagcGNTkLu1XZL2k77lqOFgPAJir0piEwMfZCdETBchXaP
+ bGFgv6TVWIcjqOytNvTYFizRJ4VGOAiE2BW7y0j4qlpfIcHkKUDtNW8YDPi3OaTYrljh
+ CMt33nYSsePhh1zTdvbYZzUJ93yZG1RMYS3W4WI3/J9kn6MA+dSgozzmvvUbgWgfMxOO
+ V/aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774021870; x=1774626670;
+ d=1e100.net; s=20251104; t=1774021871; x=1774626671;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1gpxMBpssTBiyClKYiW1/NzisCMEhju5aJAH+eV1EPU=;
- b=Zm2N4Dms5enyudYMw04SzlTgHaZcCMfk1nTwSry06eBZknFDdww4jlCVFP1XWEB8XH
- mgsPGCKkd9j/7vFzB4o3iDxykKwgcfPyno3qD/AJR05GX/Qx1HAwbHZ0M22Au56AS2/j
- cP07BiC+RTbSRWpsUAvzSG/o2lhJ0ibwGYYAROHqc0pHtp2OQ0Kj4Y6phEk1ngcM5EYQ
- aLKCUTUSztu191TSTAiiPMdoXZXe76FcM7qo7gA0xj9ZzAq/Ptu7MqwuhOeRWlEc00zs
- 3zCRsQFmuKfZoLTtKId6F9Vvh2fGTSHT5ND6SPnchXH8JzT8p1exAb/SrmtceXQGMLzf
- yV/w==
+ bh=Re1Z7KTF6pGt06r2qKUhhUG6rRUM2+jHUzT54RyU8Vo=;
+ b=HjyENFq32Px6UO4vtXzLBbPT8VP2i7RBtuOsKQ1TnUpG6ZKN8d9aNEIYjHB8QwfBcu
+ ccDSrJKmbySjtmwJMpnwNrjj90o62WNSV3dhw855BT2fqpxNlkIH2ybQMb151wdNgwk5
+ 5tYhQTM0UWvwaX0eA/Y7Zncm/wcbkrFhr3yypXpf1omDwLC5w6YLHceFEfeojvPr8/Uc
+ Vu4mRooD36+pkljiZnobNQstMX1deELG98TJx2tdqVgKbfuwzf9BbIqgGQIGn5gFjjxH
+ aZ6q+5l4pl1g0/TOjjy2oD9d+hZGqv2FMlk0vuqctuSchwZTcCzhUvUVeRbHvqQ/L73W
+ ktmQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWXfDD40RdpOo3J4Q47baXWhzuR2+6Is9bcFFCvaGpshZH37x3n6YeLPeM7DD2ZqtPfrbCFaCo9Cw==@nongnu.org
-X-Gm-Message-State: AOJu0YxpF3r/0HryekI7ESHJr0xog5KxUmVT6613p643BmGhEUl4lhn4
- DkTaQ3Niod6mVOCIeQjNx9OfV/p+8BjDGOqD6hw+dcQQjoK++9nQwu1jJrlbA1mNGJQ=
-X-Gm-Gg: ATEYQzz7pxMhrgVnin0AZ2kBjTdmDm053BeDyOMNlUyh3/d5Jd5S+R+WWYKavwEc0yA
- ZsPNciB3vEPV70kxIFwQdMHZd5T5ERajRlfZJqLDU7eNi3eJXxP72SuCSkmL83RZsfFxPMPz68C
- efLBv0dxeYR98rpGIY7QtjMWCWIA8SO1dZMT2brtCun6O4sTO5vmipnUObloDBYn+ngS85g/ABV
- kCSnD5zQV8jwM8ZFGvpOzhsWyjmZI5y9Tc7UtEoJrVrzoMF1HB3y6HUX/Fv7vDIzY4gU0i2WnOO
- JRCAoCrYq+8v5LUtQ8TZ5At3gcQwDhBpFR9kk/fy4fQ9BwRnlbzIaJ34llbaJcIeSKyC38tsLkf
- H1cqKfxm73BtYjC+DS1V6CJ/jh6cRzBOck6UZaj3HzRZcaWqqQ+QYoOMc7+cBfd5Hc6b3eBLUAS
- +iUC2P8upQwpdvV+I1e/LWU+Q=
-X-Received: by 2002:a17:907:a807:b0:b96:e3db:9e04 with SMTP id
- a640c23a62f3a-b982f4faea3mr248933266b.53.1774021869964; 
- Fri, 20 Mar 2026 08:51:09 -0700 (PDT)
+ AJvYcCURKxIh/PpT98PXyFbvuokRZ7lNWJT2KsiNP5/WaxY7C9tlrYk/eErbXqKB2PDR5UYMv/gNmwR/mQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzw9/dNIbeRESjWwUMnU+bt1QFNhdU54ic4Gko9PYkri1DRY23V
+ fVFNzUlJpfn/5eysPvJq78SljCprV1GTneJI+Nz4G21SQ0DmBn4wbAwioHujygfwQlI=
+X-Gm-Gg: ATEYQzzfiV4xd54xkVi/hrOFYiM4mHXnWDf7bUR1H1UIECSC+B0wJuAqHsU/v+ui+yq
+ np2Ab6829nD0a0HxrQ0Jy6AyOtT4DUszm8gBepdSYek8liRix/FigPR+q4QYD+7FQJBefu5eSIM
+ 0Kr9pUU0hn8Dn652CJYzJOKVAUcO++Xd94OycbAFJ229tGoVx7lYpqvPYp8CMlB+6MhQLBv1Fi+
+ v2rxh0i/t2cTc4Nh9k7vvtFj2zc8DaB1TxewVduK6rnc4CwYWaI+nafKDPqNm6P4drRyeARdxru
+ QA6bl3q1+8lKYL+OC9NrTjBvfIRq+8kkuZJrYvH4VujKMdWNtXtHw1RAElH2pqVAvNnqxQyFPQ9
+ jTXHaMDAqRlgc2UQyaNAfOetRaMculgymsxrReauRPgdhO5iOmMl4SerysnM9EFkbzQqemGFW/P
+ 1Ar7lA1y2/QGJYNF5wzG0adbc=
+X-Received: by 2002:a17:907:1604:b0:b97:edc1:f9c4 with SMTP id
+ a640c23a62f3a-b982f1ed7b2mr288505466b.1.1774021871186; 
+ Fri, 20 Mar 2026 08:51:11 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9832f42f0dsm172731966b.12.2026.03.20.08.51.08
+ a640c23a62f3a-b9832f8dc51sm169939766b.22.2026.03.20.08.51.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 20 Mar 2026 08:51:08 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id D1A7D5F909;
- Fri, 20 Mar 2026 15:51:07 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 0C8535F911;
+ Fri, 20 Mar 2026 15:51:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Kyle Evans <kevans@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -80,17 +80,18 @@ Cc: Kyle Evans <kevans@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 1/8] tests/tcg: allow filtering of TCG tests
-Date: Fri, 20 Mar 2026 15:51:00 +0000
-Message-ID: <20260320155107.2143191-2-alex.bennee@linaro.org>
+Subject: [PATCH v3 3/8] tests/functional: allow tests to define decompression
+ target
+Date: Fri, 20 Mar 2026 15:51:02 +0000
+Message-ID: <20260320155107.2143191-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320155107.2143191-1-alex.bennee@linaro.org>
 References: <20260320155107.2143191-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,76 +114,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We have a lot of TCG tests now which can be fiddly if we just want to
-check one particular test type across the targets. Introduce
-TCG_TEST_FILTER to allow this:
-
-  make check-tcg TCG_TEST_FILTER=gdb
-
-to run all the gdb tests across the suites.
+When dealing with multi-stage decompression we want to specify the
+target file name lest we just overload the cache name. It also allows
+for something is little more friendly than the cache hash.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/Makefile.include    |  8 +++++---
- tests/tcg/Makefile.target | 12 +++++++++++-
- 2 files changed, 16 insertions(+), 4 deletions(-)
+ tests/functional/qemu_test/testcase.py | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index 59b9a4b9220..f257288194d 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -16,9 +16,11 @@ check-help:
- 	@echo " $(MAKE) check-tracetool               Run tracetool generator tests"
- 	@echo " $(MAKE) check-block                   Run block tests"
- ifneq ($(filter $(all-check-targets), check-softfloat),)
--	@echo " $(MAKE) check-tcg                     Run TCG tests"
- 	@echo " $(MAKE) check-softfloat               Run FPU emulation tests"
--	@echo " $(MAKE) run-tcg-tests-TARGET-softmmu  Run TCG tests for a given target"
-+	@echo " $(MAKE) check-tcg                     Run TCG tests"
-+	@echo " $(MAKE) run-tcg-tests-TARGET          Run TCG tests for a given target"
-+	@echo
-+	@echo "The variable TCG_TEST_FILTER will select the subset of matching tests."
- endif
- 	@echo
- 	@echo " $(MAKE) check-report.junit.xml        Generates an aggregated XML test report"
-@@ -64,7 +66,7 @@ $(TCG_TESTS_TARGETS:%=build-tcg-tests-%): build-tcg-tests-%: $(BUILD_DIR)/tests/
- .PHONY: $(TCG_TESTS_TARGETS:%=run-tcg-tests-%)
- $(TCG_TESTS_TARGETS:%=run-tcg-tests-%): run-tcg-tests-%: build-tcg-tests-%
- 	$(call quiet-command, \
--           $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) run, \
-+           $(MAKE) -C tests/tcg/$* $(SUBDIR_MAKEFLAGS) SPEED=$(SPEED) TCG_TEST_FILTER=$(TCG_TEST_FILTER) run, \
-         "RUN", "$* guest-tests")
+diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+index c2c916f6077..eaec1bea138 100644
+--- a/tests/functional/qemu_test/testcase.py
++++ b/tests/functional/qemu_test/testcase.py
+@@ -35,7 +35,7 @@
  
- .PHONY: $(TCG_TESTS_TARGETS:%=clean-tcg-tests-%)
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index af72903f898..1b83824ff4e 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -254,8 +254,15 @@ endif
- gdb-%: %
- 	gdb --args $(QEMU) $(QEMU_OPTS) $<
+ class QemuBaseTest(unittest.TestCase):
  
-+# Filter tests based on TCG_TEST_FILTER if set
-+ifdef TCG_TEST_FILTER
-+FILTERED_RUN_TESTS=$(foreach test,$(RUN_TESTS),$(if $(findstring $(TCG_TEST_FILTER),$(test)),$(test)))
-+else
-+FILTERED_RUN_TESTS=$(RUN_TESTS)
-+endif
-+
- .PHONY: run
--run: $(RUN_TESTS)
-+run: $(FILTERED_RUN_TESTS)
+-    def uncompress(self, compressed, format=None):
++    def uncompress(self, compressed, target=None, format=None):
+         '''
+         @params compressed: filename, Asset, or file-like object to uncompress
+         @params format: optional compression format (gzip, lzma)
+@@ -52,8 +52,11 @@ def uncompress(self, compressed, format=None):
+         if isinstance(compressed, Asset):
+             compressed.fetch()
  
- clean:
- 	rm -f $(TESTS) *.o $(CLEANFILES)
-@@ -269,3 +276,6 @@ help:
- 	@echo "Built with $(CC)"
- 	@echo "Available tests:"
- 	@$(foreach t,$(RUN_TESTS),echo "  $t";)
-+	@echo ""
-+	@echo "Environment variables:"
-+	@echo "  TCG_TEST_FILTER=<pattern>  Filter tests matching pattern"
+-        (name, _ext) = os.path.splitext(str(compressed))
+-        uncompressed = self.scratch_file(os.path.basename(name))
++        if target is not None:
++            uncompressed = self.scratch_file(target)
++        else:
++            (name, _ext) = os.path.splitext(str(compressed))
++            uncompressed = self.scratch_file(os.path.basename(name))
+ 
+         uncompress(compressed, uncompressed, format)
+ 
 -- 
 2.47.3
 

@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A411098784
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:16:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 561901098781
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:16:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3Zi0-00062c-Ku; Fri, 20 Mar 2026 09:16:13 -0400
+	id 1w3Zi2-00065F-4X; Fri, 20 Mar 2026 09:16:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhv-0005yj-5i
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:08 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1w3Zhs-0005v0-Hs
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:05 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhs-0000Mt-8R
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:06 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b79f8f7ea43so310354366b.2
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:16:03 -0700 (PDT)
+ id 1w3Zhp-0000Lc-6i
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:03 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b97a06d7629so237061866b.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774012562; x=1774617362; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774012558; x=1774617358; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TCn4yIRAW7auCouuSuI90vgrmDQjVUO1b3NvJqSyDqU=;
- b=WNN1UmQl3PL5PKcAMnmoG5cV6yQLwkq5FIpzdAZ54nOj35Ea3RSwfVbEJA3nWo21+X
- CDP7QoR9hvAfNHXf6nkYkAoMIq+T4KSy6pYioc4jK5guKQFEgH5AOnP0S4hdLs362ry0
- BgSzUgVvBkJYjvAz33avSV84z69u8o1LVDPEx63bxj8uzK8mCHvu/WRDl/NIGQTJncky
- QrKiinRnE4SyQJSyPOIWsfEBC4LdyYYLJidy+MpzbKRcrbULOchXJA6bWol4uFoZqlyd
- cVejnXcG008yStXpk1bDRlCOsn79WxHoViSWIZ8oTEEc+mLVonLlpruQrlkqbshGpz87
- WL2A==
+ bh=ox09lJlrIlX36nSOA8lgaot7ry6qFt0dJt6CN6nPMoA=;
+ b=sU4T0j5rQj+oBfkRNHDvtITvBCKkewC10WuPK0PZ8UwtHmGiUtLpKYCpP575Xp4JES
+ V6rJ6SCxtFxvJ9rP0moxYYatgkAcKdTrzr+4dG6yKqG6oxHUOscSgg7cImQNXmN0NbYR
+ R9fgtwd/nrtK3aTCytvMtCKHVFQyAr/xohL6LJ+D9xEe8MMxDuh/s+DxW+miycjKncc3
+ jjnB3Goa7iTT4+lxEnxPkLGLmeAh7ZesoYZHksrmttfrsqQgeBKq0urZbmFJDYCAd+7F
+ rtROuEYxgNycP+l3JioXUlB/lx/PfEIrIeStdoirwruh+7+fXq2MDZV/5Uj5Bdj1myVk
+ QPEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774012562; x=1774617362;
+ d=1e100.net; s=20251104; t=1774012558; x=1774617358;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=TCn4yIRAW7auCouuSuI90vgrmDQjVUO1b3NvJqSyDqU=;
- b=I1dKyU2W4LEvdnMhuOcxV0lnyaicUoklNkdhaBEcmUmVRJkLs4+goQ8vbDRayU+98p
- yDrInS9D7w6WivovB7fXmLEw4SGl7lM0zI/hSMRF5NZX3PmwJnD/P8qAC7PmvandwUtZ
- dCz+APJxZDyWq+ivYnZfi49mvHSxMbHyU9ZRNDSunx16Eueeq4S4qqk6JbHIgvWM+pXz
- 7ePYEcqpX1knKECRmnDisPnSLIHfFB4CoGoWsvX4xtpnXm6s8B/9dqEwMjQl+5kPmQRf
- EqSktINue64gDsDMHSMjLF1pSfl9oCerKE8N5hfSSPV5HoosnencdJXmOiDzFEynMsaQ
- 2wNA==
+ bh=ox09lJlrIlX36nSOA8lgaot7ry6qFt0dJt6CN6nPMoA=;
+ b=a4FdHLR9aV5Bgolcyl83o2ds5dW4Ud8ov1UwcE5HCh89saUoM7T+FqEVGleCxk1txJ
+ OZgtmWjy8XKjvoIuRr3LSWykipCFeaeKu1InoQp/Yn64iuuaL7+i9WM+zLpUvEaaV5pU
+ N5BigL2Y3u9vHTJS1jcIH2UdaRz7a5h4iNx/pN2LuZzO2ghcJ9XqfAmZTnUa2sHU1oja
+ ToXNJTqkzKkiiZKpStxJTbH1fmu3/txlrJ1OZe1qGAqI0QHEqQNbK7aUSNCPni4QEQLY
+ EbJq4q3pckaNXNVVWNWYetyLjJUxN+GV/XhEPbdCIaMOZsbVLKvCyGbkpH1kRByuc4PZ
+ ZW1A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXCGkjsuDhlHbJRZCWoeohMx9Dm2eceiK5TkhyxyhM2lVY+SGMWtyoQB8qohqgM4+2E7xhTsuyajQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzRDf2EPRAJj0X5Jp1+AIad0TFqyJVcq4t7BGBHLvOFNyCiJPy8
- /j/r9V4F4DDcNVTKMhQZ5pHqwRna4VUeNRm4siw3zLbYDa+xrBbGcMf6byE17snN0Bo=
-X-Gm-Gg: ATEYQzz0knSpBfX0WHsIp9U1kDXiEZ5yab5qOXONJFwwp6OT7Ve+7NeKMmhgUGQI9Oj
- MQF5wn8lxLZaUvimug2eHa/4241OtJh6WDRcS0W2Bp37FnE35/aiarrvn8W77AytHkNhX9d0RkB
- 1crIa/7dtMEOzrMlL9c8v5TbJz9SygRl5MNCvurFchDENGOWB70tU5pZHwt1Ly5/gJugfV6xPYE
- j05LXV0+NJLOflYPN/NGOuwXp4yls/qsv4I2SbooT+rKnwciwUic/v70Gdd+r30eoqoRhXZsADW
- ZsoXL46dhRJdQOEBF0awiRhc9fy3jFCv6SosAaWLxAYRzuOoD6EM0QDXbWTQJeXW0lucZvTOFyB
- b7A/Wlc4hrxUSZC/dIsXFkgeqrsEZ8nuH4EKAdogTECsFuIiaTvtDFmRGS3cRFIHj3FYoQNiQ5h
- 9+halPT+wVHajHMj8x7c46ZeI=
-X-Received: by 2002:a17:906:2746:b0:b97:a128:926a with SMTP id
- a640c23a62f3a-b982f4ecb3cmr179153966b.44.1774012562475; 
- Fri, 20 Mar 2026 06:16:02 -0700 (PDT)
-Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b98335de1d6sm158565666b.30.2026.03.20.06.15.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AJvYcCUZK6PyR3g9iTkoFNcsEvW6Ks6s0PScRfGU4+EUYlId9vCws8UCxSCYyOABwkE5mzyxV+KnqkmpnA==@nongnu.org
+X-Gm-Message-State: AOJu0YyAlcIbJZljQ2TA1UqREhZY1BRVoNP8PO/V1yZ0rToiMRjqODs1
+ Dh9itDfFk6ysBC94IgkIax65IiMkK3vLTHSBwv/eQ/sBTx4AzasE/TrnDpBeyWkacqc=
+X-Gm-Gg: ATEYQzyww4fQqOGPIR3c6cOr1MKCUNF2ry2BelhetCxElHgwNSkglbLqTv+byUpc1AZ
+ hdY8h9RkY0WwIqN5MyTUHDAxxdfPUmxISypi9NyS1cHL8gs9ariAabnMSbWI3MqJx2E88IzfHWm
+ hFfYnIGUjP56/zWF/bNKYo6DWNcleDDUst6Vi+en5s1WGk4MjdGgtBAcAo433bdkKIJcxbzS8na
+ JKYJIT8Gbdfw/zOirH0qpmm8FoUAW65/pFPKE4DaVJjgN4PeIVhlR6q7XdtXrVZxzikzq8LFbzL
+ qPSCOT85t3wqlFVD1mO9cZr9e4bTuIU6qWKFTdoGiqQRH+hZGKvo0t0Q0w7wLraok3xGozitndr
+ iJS4OVdRKV6PoAMl553QPyDMjI0+Ra4jGngQzV1N4MLiaSPPIaBqvTyKxZ29svxL0fC74gzwmgy
+ 01c4aHtdJsB94FHmCcS2QNUd4=
+X-Received: by 2002:a17:906:8406:b0:b93:99a8:c366 with SMTP id
+ a640c23a62f3a-b982f3df9d1mr182055366b.55.1774012558228; 
  Fri, 20 Mar 2026 06:15:58 -0700 (PDT)
+Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b9832f8db2fsm163039866b.23.2026.03.20.06.15.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Mar 2026 06:15:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BB9495F9CB;
- Fri, 20 Mar 2026 13:06:08 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 20F0E5F9E2;
+ Fri, 20 Mar 2026 13:06:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 14/35] target/arm: migrate memory op syndromes to
- registerfields
-Date: Fri, 20 Mar 2026 13:05:45 +0000
-Message-ID: <20260320130607.2071996-15-alex.bennee@linaro.org>
+Subject: [RFC PATCH 18/35] target/arm: make whpx use syndrome helpers for
+ decode
+Date: Fri, 20 Mar 2026 13:05:49 +0000
+Message-ID: <20260320130607.2071996-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,58 +108,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Rather than open coding a bunch of shifts and masks we can use the
+syndrome definitions. While we are at it assert it really is a
+EC_DATAABORT.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/syndrome.h | 33 +++++++++++++++++++++++++++++----
- 1 file changed, 29 insertions(+), 4 deletions(-)
+ target/arm/whpx/whpx-all.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 76f66b3beef..2e3121aec9c 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -743,14 +743,39 @@ static inline uint32_t syn_serror(uint32_t extra)
-     return res;
- }
- 
-+/*
-+ * ISS encoding for an exception from the Memory Copy and Memory Set
-+ * instructions.
-+ */
-+FIELD(MOP_ISS, SIZEREG, 0, 5)
-+FIELD(MOP_ISS, SRCREG, 5, 5)
-+FIELD(MOP_ISS, DESTREG, 10, 5)
-+FIELD(MOP_ISS, FORMATOPT, 16, 2)
-+FIELD(MOP_ISS, OPT_A, 16, 1)
-+FIELD(MOP_ISS, WRONG_OPT, 17, 1)
-+FIELD(MOP_ISS, EPILOGUE, 18, 1)
-+FIELD(MOP_ISS, OPTIONS, 19, 4)
-+FIELD(MOP_ISS, IS_SETG, 23, 1)
-+FIELD(MOP_ISS, MEMINST, 24, 1)
-+
- static inline uint32_t syn_mop(bool is_set, bool is_setg, int options,
-                                bool epilogue, bool wrong_option, bool option_a,
-                                int destreg, int srcreg, int sizereg)
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 513551bec1b..f5646e7127e 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -356,15 +356,16 @@ static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT *ctx)
  {
--    return (EC_MOP << ARM_EL_EC_SHIFT) | ARM_EL_IL |
--        (is_set << 24) | (is_setg << 23) | (options << 19) |
--        (epilogue << 18) | (wrong_option << 17) | (option_a << 16) |
--        (destreg << 10) | (srcreg << 5) | sizereg;
-+    uint32_t res = syn_set_ec(0, EC_MOP);
-+    res = FIELD_DP32(res, SYNDROME, IL, 1);
-+
-+    res = FIELD_DP32(res, MOP_ISS, MEMINST, is_set);
-+    res = FIELD_DP32(res, MOP_ISS, IS_SETG, is_setg);
-+    res = FIELD_DP32(res, MOP_ISS, OPTIONS, options);
-+    res = FIELD_DP32(res, MOP_ISS, EPILOGUE, epilogue);
-+    res = FIELD_DP32(res, MOP_ISS, WRONG_OPT, wrong_option);
-+    res = FIELD_DP32(res, MOP_ISS, OPT_A, option_a);
-+    res = FIELD_DP32(res, MOP_ISS, DESTREG, destreg);
-+    res = FIELD_DP32(res, MOP_ISS, SRCREG, srcreg);
-+    res = FIELD_DP32(res, MOP_ISS, SIZEREG, sizereg);
-+
-+    return res;
- }
+     uint64_t syndrome = ctx->Syndrome;
  
+-    bool isv = syndrome & ARM_EL_ISV;
+-    bool iswrite = (syndrome >> 6) & 1;
+-    bool sse = (syndrome >> 21) & 1;
+-    uint32_t sas = (syndrome >> 22) & 3;
++    bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
++    bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
++    bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
++    uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
+     uint32_t len = 1 << sas;
+-    uint32_t srt = (syndrome >> 16) & 0x1f;
+-    uint32_t cm = (syndrome >> 8) & 0x1;
++    uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
++    uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
+     uint64_t val = 0;
+ 
++    assert(syn_get_ec(syndrome) == EC_DATAABORT);
+     assert(!cm);
+     assert(isv);
  
 -- 
 2.47.3

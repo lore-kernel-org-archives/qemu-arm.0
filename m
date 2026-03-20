@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE7201098782
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:12:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE45E1098782
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:12:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZYf-000345-1T; Fri, 20 Mar 2026 09:06:33 -0400
+	id 1w3ZYm-000392-Gr; Fri, 20 Mar 2026 09:06:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYU-0002uJ-RM
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1w3ZYb-000316-Iw
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:29 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYS-00062u-Im
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-668abc98923so1095726a12.3
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
+ id 1w3ZYY-00066B-SE
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:29 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-66847de014aso3207031a12.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011979; x=1774616779; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774011985; x=1774616785; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YX0j0axZ/RBp77GoaFkpFK0DcOPDM4tK+si3g6SlcZI=;
- b=MaDbjkF1uCgp9jobx3VNjHvK5FI4eeJpGjE25c9noHdw833vZjN0uRfYT+FiMECn2I
- ewVcR/xtQFpvsgrFFQh5jboM6sAlq4RyaevJkgrAwmwbT56KuWoMUhsJo6Qtf1HyZo5C
- GzyfrD7zYUPYDC5PJsX2OQM4dSoF7OihOq7fhF2EOIv4YNIlKgb/YaTSsCxj7+0CAfRA
- zFCoix1abd7Mt8FxnM091DJKmJ+vRTf7DTuia7Rq27WPYVn5GB7Ca9Rv98FGeVMK2dH1
- bSuOxnlehqzwsb9GwlgQOBMQLobOLh2lbuy/Yf6YC3KzBK7iPJ/mHaapXvoix16OJjq/
- PIGA==
+ bh=JIk29T9DhqqlbPhNrWYQVA1tgjm08zB9Z2xOKW4fUVs=;
+ b=zZwOG00pawGtJxtpb+yTXpaSJwnwY3MKoSnwzeCcgVgyd4bDo2UJlZUpcZDX1WpxIu
+ ZxXcZ9OXxzxCt4SB8TRorkMCVPqnrUV3yq3TFpnTAciot+TPZf2uHNCnGy7NVIwva9i7
+ 7gz9/jFkcgEUsqcCjhVuEdszDPuuBrnt281mcXlpB+V47xGpQqMjuQDydFMZfpCx/oM2
+ oCvzIe7Ocsrxx0rHaYarxZkY0Tpmscunt9qmYvbAyhtuowk3rqULsrBVsb8TG22WeSsL
+ XjXSygGcdNFthkobhpoqAwg6AeoiZwrx7OtJGYBiJGS626JQe5rzOBxNITeRK1wR2++N
+ fmlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011979; x=1774616779;
+ d=1e100.net; s=20251104; t=1774011985; x=1774616785;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=YX0j0axZ/RBp77GoaFkpFK0DcOPDM4tK+si3g6SlcZI=;
- b=G8G1XGQXcaaxqe5J8/6a5g5Tq93Ky+TewjgMJPB8T/vq4G+bWvGFCr+KUlxS/IR5gG
- 4h5F/3PP/JqPrFEue+QrEXpMmYv00g2zKvUqkOblQZkASB0PhQn+XRGZD/SiaP6HPiIS
- LISWtQ5RF4HKMMJOd8oLOWNIFNVNzejyBXAmxCvSQs2Z4hkuYIUNC0l2uvbC7jxCsOvY
- +IhLh/V8U0moh+x4E6IBAaeLzHKOxlh/rLJ26eifSLRKKGggep53X8twg1rbf3HR7MXs
- JG3JroDIPtO/JgWSnQR4PkTVxwWSTj2lntCTavW0GWxp70SwR3BKZOY1SWd6grzmL/hV
- uElA==
+ bh=JIk29T9DhqqlbPhNrWYQVA1tgjm08zB9Z2xOKW4fUVs=;
+ b=n3c4ZNmmp5caOvr0bGF5hJcQvJMlkPCBDL2lGedjeAq4JVh0ITlmh5wk+O9w0mVtgY
+ eArCEP1fq3pu/Ggpm0uIRNDH8AKkUGhJHmVOUCArydzdbuKLUaw71UkaBCvfr5iitFBx
+ nyRrX+oDfcAXZuuJVlBRx0qayTfpfozw1PUSdH2vfLArDml/31Fif1RHMA+BIpiAiVOc
+ R4p0srEp/T/maDgKY3X10XDyz+NYIMNBCVjbEhzBRPvtbu5GJz7xiq7F9o381kAl45z7
+ HUhgC8nJdltKw9hlvTL8ZuBzmSkQFO4DDkDQllLFt3Sp5lJYgqUH7oHXjWofKndN6iJg
+ Vu6g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWL6HnivTgpP4ZdpQ5timrU+D6aDsj2/snkQ6F2by3ZXqPwzcrD4za+DefVatelOE4K3TMtaLH0qQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3z1gylhRFPdaZ0PwCX7SrSYNPSzKZTIjdUHP5a1u/3d3QeiXt
- HrPLorDlVYpXryNczyfwLWLkQh2YWK+HSy06qE7rJX0VOJxJEFO/moUKpIVvzKZcodI=
-X-Gm-Gg: ATEYQzw8mT0RBZO3/HiIMSijzEkE86mOIfDR72C8w9JQG91BmYDKCsV1aAdmZ4ZkRzC
- jpn1jGYm3lDk1XEzuwcSRf6WmMxeA3PXSwYlUmivKLMmxyJrThV+vgKlrmRnHfOQDufgKyLYc3b
- VsWgklpXO939Q8NPESzZCfwGxAqbHdYVSvHHfF2pTHhAvAS8oPAAx11zLGH6fwlJyb9kSiVEAzo
- GtjyxLkd6zyzgmKwOdLlrQEEuQLesEHr0L0mOrFIJCBBF8wQXTV1zQxeJ53b4H+6EC49hOeP0he
- 6RpT6gm/mC7TTQVuJXG/KuluKSB/Y6UEMsJQ0RSDdKV9OJ18lt9fU3BYMxXnNGJEF0GuMD772XP
- rAvBw4FZgU5d0GDTQaoE9Bka8uPjt5FecFlno5mFYyJdlYlLxQIa+FhPTEhUSVtxWudimjiSDLk
- fl5BG4UeePKwoYXOMrDbiVUeRGCey/N7jW7Q==
-X-Received: by 2002:a05:6402:3593:b0:661:3f3c:400d with SMTP id
- 4fb4d7f45d1cf-668c9c52289mr1939771a12.26.1774011978838; 
- Fri, 20 Mar 2026 06:06:18 -0700 (PDT)
+ AJvYcCU8+mXUPc7d7xRDxhGraZv+5wLbsuk7zjUA24uXMo+hIYGzmcLDuA7tyz3UWJUj5te0BIrVAY7vgg==@nongnu.org
+X-Gm-Message-State: AOJu0YwPUdlXtE6JVCdzk/+lxWgys3TAWjA46hlnvIBq960WlVwES0X4
+ aP5ofYXoe8AHN5PBYBgIcsD9zWXs4zbtoh486Cp/RgPQzykDEX9P7Ss7Xwk7OCE+OCf/8hQiAYu
+ Looi2r3k=
+X-Gm-Gg: ATEYQzwmluncPThaHlbSWZG9RTuladqXqWziOC0nnR/suRBtZRhZ+EoZCbgEzmgImt/
+ 5ugAiXeeMtZlraN32eJ0Dy8AkexO6snJ3Nq9YpHnkK9TAtPhsyBrssY5YAdgHv3sdypSKm8PGBD
+ kySG3vzcTLjvz88wv2uA7mX7JEzmq6xXsOR9fvvsW+5M++IAw38TqmJBATdDUyd2GXIaFjylL1M
+ WxG1WgDb3q0AWkLmMY57PC9ViBgFq7/Nyym8TxcA3cW7UTS6vE/30yi6HY/a1rNwYErqs/9pBwP
+ 62marft1NfSFNUUU8WVxKZLJRbH65Bxl5f+wDyMYJGuRVTHup/hNRJzPDCcYn3m+tyuTjfOr8/E
+ POGS8kPEH4sA0xhpnvRPsKPsvSYmeDSzeCKP8cqHaL5v6yxWEP8HgfyhgNF7PzRspHe54+9bdEC
+ ikzvq7aCiF5QT5d+1WpKWEq0A=
+X-Received: by 2002:a17:907:cb89:b0:b93:51df:dd23 with SMTP id
+ a640c23a62f3a-b982f1ecb62mr218938766b.16.1774011985297; 
+ Fri, 20 Mar 2026 06:06:25 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-668cf7e4048sm1334074a12.9.2026.03.20.06.06.15
+ a640c23a62f3a-b9832f42c8fsm152962266b.9.2026.03.20.06.06.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:06:17 -0700 (PDT)
+ Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C7AE85FA3D;
- Fri, 20 Mar 2026 13:06:09 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 573325FAE2;
+ Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 25/35] target/arm: redefine event stream fields
-Date: Fri, 20 Mar 2026 13:05:56 +0000
-Message-ID: <20260320130607.2071996-26-alex.bennee@linaro.org>
+Subject: [RFC PATCH 30/35] target/arm: implement global monitor events
+Date: Fri, 20 Mar 2026 13:06:01 +0000
+Message-ID: <20260320130607.2071996-31-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,79 +108,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The event stream control bits are the same for both CNTHCTL and
-CNTKCTL so rather than duplicating the definitions rename them to be
-useful in both cases.
+Moving from Exclusive to Open Access should generate event stream
+events. Technically a non-exclusive store to any address range covered
+by the global monitor should also trigger such an event but we can
+only detect that after the event by seeing if memory doesn't match
+cpu_exclusive_val when processing the eventual store exclusive.
 
-We will need these in a later commit when we start implementing event
-streams.
+The CLREX instruction has the same effect as do other operations
+clearing the exclusive state (such as eret).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/internals.h | 11 +++++++----
- target/arm/helper.c    |  8 ++++----
- 2 files changed, 11 insertions(+), 8 deletions(-)
+ target/arm/internals.h         | 1 +
+ target/arm/tcg/translate-a64.c | 8 ++++++++
+ 2 files changed, 9 insertions(+)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 8ec27508473..2296ac9cfb6 100644
+index 2296ac9cfb6..2e59d58f3d0 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -263,14 +263,17 @@ FIELD(VSTCR, SA, 30, 1)
-  * have different bit definitions, and EL1PCTEN might be
-  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
-  * disambiguate if necessary.
-+ *
-+ * The event stream bits (EVN*) are in the same position for
-+ * CNTKCTL_EL1/CTNKCTL.
-  */
- FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
- FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
- FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
--FIELD(CNTHCTL, EVNTEN, 2, 1)
--FIELD(CNTHCTL, EVNTDIR, 3, 1)
--FIELD(CNTHCTL, EVNTI, 4, 4)
-+FIELD(CNTxCTL, EVNTEN, 2, 1)
-+FIELD(CNTxCTL, EVNTDIR, 3, 1)
-+FIELD(CNTxCTL, EVNTI, 4, 4)
- FIELD(CNTHCTL, EL0VTEN, 8, 1)
- FIELD(CNTHCTL, EL0PTEN, 9, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
-@@ -280,7 +283,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
- FIELD(CNTHCTL, EL1TVCT, 14, 1)
- FIELD(CNTHCTL, EL1NVPCT, 15, 1)
- FIELD(CNTHCTL, EL1NVVCT, 16, 1)
--FIELD(CNTHCTL, EVNTIS, 17, 1)
-+FIELD(CNTxCTL, EVNTIS, 17, 1)
- FIELD(CNTHCTL, CNTVMASK, 18, 1)
- FIELD(CNTHCTL, CNTPMASK, 19, 1)
+@@ -690,6 +690,7 @@ void arm_handle_psci_call(ARMCPU *cpu);
+ static inline void arm_clear_exclusive(CPUARMState *env)
+ {
+     env->exclusive_addr = -1;
++    env->event_register.as_bool = true;
+ }
  
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 5ee79f7564f..ba6db46d453 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1746,9 +1746,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     uint32_t valid_mask =
-         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
-         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
--        R_CNTHCTL_EVNTEN_MASK |
--        R_CNTHCTL_EVNTDIR_MASK |
--        R_CNTHCTL_EVNTI_MASK |
-+        R_CNTxCTL_EVNTEN_MASK |
-+        R_CNTxCTL_EVNTDIR_MASK |
-+        R_CNTxCTL_EVNTI_MASK |
-         R_CNTHCTL_EL0VTEN_MASK |
-         R_CNTHCTL_EL0PTEN_MASK |
-         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
-@@ -1763,7 +1763,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-             R_CNTHCTL_EL1TVCT_MASK |
-             R_CNTHCTL_EL1NVPCT_MASK |
-             R_CNTHCTL_EL1NVVCT_MASK |
--            R_CNTHCTL_EVNTIS_MASK;
-+            R_CNTxCTL_EVNTIS_MASK;
-     }
-     if (cpu_isar_feature(aa64_ecv, cpu)) {
-         valid_mask |= R_CNTHCTL_ECV_MASK;
+ /**
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index c25ff9351b4..38a51eb3600 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2270,6 +2270,7 @@ static bool trans_CHKFEAT(DisasContext *s, arg_CHKFEAT *a)
+ static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
+ {
+     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
++    gen_event_reg();
+     return true;
+ }
+ 
+@@ -3336,6 +3337,13 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
+     TCGv_i64 tmp, clean_addr;
+     MemOp memop;
+ 
++    /*
++     * All StoreExcl operations will transition the global monitor
++     * from Exclusive to Open Access and at that point generate an
++     * Event.
++     */
++    gen_event_reg();
++
+     /*
+      * FIXME: We are out of spec here.  We have recorded only the address
+      * from load_exclusive, not the entire range, and we assume that the
 -- 
 2.47.3
 

@@ -4,106 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D048B109319C
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 09:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 252CA1091936
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 09:32:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3Vzq-0003Ca-2s; Fri, 20 Mar 2026 05:18:23 -0400
+	id 1w3WCy-0006d4-7O; Fri, 20 Mar 2026 05:31:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w3Vzj-0003Bj-B5
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 05:18:15 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w3Vzg-00051e-Oj
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 05:18:15 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-64e8ae85700so358202d50.1
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 02:18:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773998291; cv=none;
- d=google.com; s=arc-20240605;
- b=TNvkqz46+epTSnCFQWgwVxJrIdDz5Ziz3X/WxvtHXHp/M6OhDFFvlfY9ieByIkl+q8
- W1WmIe5SN2F4mrD+S9si4o5NCqN2bOCMU1eaitRgFtqDlZlrDlFu21PAlI8U1rW7od7s
- wwtNph3bw7nseoVaIE6kbA2KuWZlxaCd8s5XA8nWVqZtKqzQ4GIEgfOT9M89gZPofBPv
- NP1Sde5kH4W6hWGpiX7d8J0oxjDl12L3CAOoohaHeJ+5KcLRRESbMOiM/cHYpvBOtGsY
- i8GFbQ7lGeXXO2zZkx9rwMCg6jmjO7dPoUjduuGNKGdvBALjnnh9GkPKhJfRctFEcgJq
- m+AA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=l4Z7aNuRjzUBmRND1DHS7Om+q5WS6ASYWfNDtxCuz/g=;
- fh=OWdsZA9hRnwY1gGXFKrfvScBwB84RBFKpS2fNzZ5urM=;
- b=XtYXeytHfuN75Juz0jiqL+OxP4/t2ryV+9pGRRYw+IJkLbGGoDM4j+I9BdZ87gvMiT
- Uco6NeVGPF6jifo20CtSwQpjJ3Z8sKcf/m5h8fUCCcpxYnGnLbzeab3ga2PIsMK/QmVI
- LDrFQ7+zgHrYdbv9h2I3NWff21C7Nq1Vzmsjnr9OJL1alQ5kQX+GJtjUJ/zaVl8qc+n0
- YhlX31JIu+AtMoiKQOSo+CsVLdoVn+KgmHXW3/yL8zYxhB3OS6hOEzj7kl+4U0qi0tAj
- 4ILJvDprYg5LFBlbLXFMaBxH1LV0ra3kwVOgw1CGL89W/ULaX2sLyFJjw3W0Euad/SeN
- WKnQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773998291; x=1774603091; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=l4Z7aNuRjzUBmRND1DHS7Om+q5WS6ASYWfNDtxCuz/g=;
- b=DZwEtEj0pJc/tfmGaOZ3dQhwW1xBEIyLTHE3WsoyyTrYYUEr1ZMTyc20Ew1ZsYkCm7
- junaKwjXh0IGMiQBtz9YPSKp3iOr80gsoXAoDK0qDVxo/nW2PbKTheZYMR4UrHwJaq1W
- y3Kf+b7a9LBoE4lsyxPJjc4OEn2cKxcf5Vmi8qs+fvJ2urrhhybGvtU1fyREtouutR/t
- JPIUSQX1FEt7MCU1trIU8Kz1gYqOT0ssjFp4Pyl5zTe1vcg2XvsiNFnRTOAirYLNeyqt
- nNYtU9RO4UK6skSqe3L3kwXqMMbBtbWFE+kY2SvVXt9Ca2olwNmx1ktwrOk3ven4zCu9
- mvFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773998291; x=1774603091;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=l4Z7aNuRjzUBmRND1DHS7Om+q5WS6ASYWfNDtxCuz/g=;
- b=XqXVRsR4kG0SQCQ/CcqFS7F3Q4Z0fwSzB4uYFz93euM7LKQVbyk0lK9OGWU+AQTlRI
- qP2YmW6pbQZP0/mygMlFRyWGkfDVWxFPT267kydwKji1nZA8aqhWDGSFu4OCXETK9V5e
- ZvnrtOpkadSLSk46xxM1og825l4BAoeDopnoy5UDr6CtBUN2SN/sEB1qMnw0qvoAy91c
- nSD12j6rK1t0OFU4oucWa3/FBVOBiE0W2mjEz3ws6waNLv7jyrNBhFyf0xIw/EedQF9V
- hxCqMLKwTK3C6Bv3/22sSLAhTfeM25209KaXNbvKT2/evfaR3oYViDxGTXAvF21VOda1
- 9asQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWGeKpP/fQ5HRQxneUldqVO001Xj/Eo6+JPANKN93mgq3hW9VtBDhFTU+tH5Ay5nfsAhCWFz4JDww==@nongnu.org
-X-Gm-Message-State: AOJu0YySrgGfw49UtPMUOBerUa44qiuUhDyX7Sc8e/ukj4C+QAjiSSnt
- x4jCWs9tDm7eiiVvuniy5hpanCKdo/jtvKenoc8MAgBnzeAoz+KehsyzRJCh8lQjNDJFN6vVIoc
- wtMOSCVTaFh/W/or9rJj8q6UDT+M1RTz3dOfynkkpgf2i9hBN4pBirm4=
-X-Gm-Gg: ATEYQzwN1f6RRMWscJUtWNZMNGc6vp8JAptW+WtIWNK/TClGbB9M5aLRZAw4/l8d8QD
- +iAbDXRjMjPyIJ+9wAok6GaH+ttWOd2NF8jOBLQ7jaMPpNPewOwooEzUAYwuzHsS0B2zlktYaxH
- KOFNP4wqqbL1f0/DW8+4zR8N+gzk+RQmn5SbbRYLLhZ79MQ+Zf21NxXHWwRiz6jZL9Cg67AzGDm
- RqZaWi4iBnqHLx5f4dkA3n7mCs6lmPFrzvfT7v+LzMvUByc/rrXmQ7jdMvW15bniO/s+xcbLSqE
- LolBWffXICjBBPrffWZln107bS765vutxQRIbK768cwV8cW3MmxVzcaKmKIBZis5PY4=
-X-Received: by 2002:a53:da51:0:b0:64e:885b:412f with SMTP id
- 956f58d0204a3-64eaa86cf57mr1833154d50.74.1773998291472; Fri, 20 Mar 2026
- 02:18:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w3WCw-0006cl-3z; Fri, 20 Mar 2026 05:31:54 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1w3WCs-0007Oz-Fn; Fri, 20 Mar 2026 05:31:53 -0400
+Received: from mail.maildlp.com (unknown [172.18.224.107])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fcckw6nYHzHnH8T;
+ Fri, 20 Mar 2026 17:31:20 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id 2B7CF40584;
+ Fri, 20 Mar 2026 17:31:46 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
+ (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 20 Mar
+ 2026 09:31:45 +0000
+Date: Fri, 20 Mar 2026 09:31:45 +0000
+To: Gustavo Romero <gustavo.romero@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <alex.bennee@linaro.org>,
+ <peter.maydell@linaro.org>
+Subject: Re: [RFC PATCH 5/7] hw/arm/virt: Add machine option 'mec'
+Message-ID: <20260320093145.000020e1@huawei.com>
+In-Reply-To: <c04a5077-e122-4784-91ad-259055c0f63b@linaro.org>
+References: <20260319022335.22523-1-gustavo.romero@linaro.org>
+ <20260319022335.22523-6-gustavo.romero@linaro.org>
+ <20260319094642.00007696@huawei.com>
+ <c04a5077-e122-4784-91ad-259055c0f63b@linaro.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-References: <20260314221529.47841-1-mohamed@unpredictable.fr>
- <20260314221529.47841-4-mohamed@unpredictable.fr>
- <CAFEAcA8v59wSwRvig6NRjWHyvBGY=gPhWFN1B_jD9k+aXqo9Ng@mail.gmail.com>
- <4387E53A-E140-48E9-80C3-721F9C0B9A9D@unpredictable.fr>
-In-Reply-To: <4387E53A-E140-48E9-80C3-721F9C0B9A9D@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 20 Mar 2026 09:17:59 +0000
-X-Gm-Features: AaiRm52U5H1VAFgWENUse7TnvPutr7-mdKyQN69nWTB1e3TKSviiyWfJY2RaKG4
-Message-ID: <CAFEAcA_wVD+mMFhwzDyHx1pY_aMtBvdHjZqQoFoniM_JUCcceA@mail.gmail.com>
-Subject: Re: [PATCH v3 3/6] whpx: arm: enable more enlightements
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml500011.china.huawei.com (7.191.174.215) To
+ dubpeml500005.china.huawei.com (7.214.145.207)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,49 +68,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 19 Mar 2026 at 18:50, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->
->
-> > On 19. Mar 2026, at 19:13, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Sat, 14 Mar 2026 at 22:15, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Thu, 19 Mar 2026 14:27:57 -0300
+Gustavo Romero <gustavo.romero@linaro.org> wrote:
+
+> Hi Jonathan,
+> 
+> On 3/19/26 06:46, Jonathan Cameron wrote:
+> > On Wed, 18 Mar 2026 23:23:33 -0300
+> > Gustavo Romero <gustavo.romero@linaro.org> wrote:
+> >   
+> >> Add new machine option 'mec' that enables and sets the memory used by
+> >> FEAT_MEC.
 > >>
-> >> Linux uses AccessVpRegs without checking availability and panics if it's not there. Expose it unconditionally.
-> >
-> > The commit message subject says we're enabling enlightenments...
-> >
-> >> @@ -953,13 +953,15 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-> >>     synthetic_features.Bank0.AccessPartitionReferenceTsc = 1;
-> >>     synthetic_features.Bank0.AccessHypercallRegs = 1;
-> >>     synthetic_features.Bank0.AccessVpIndex = 1;
-> >> -    synthetic_features.Bank0.AccessHypercallRegs = 1;
-> >
-> > ...but the code change seems to be removing one as well as
-> > adding the three new ones. Intentional?
-> Hello,
->
-> The AccessHypercallRegs bit was set twice - with the first one being two
-> lines earlier - removed a spurious one of the two.
+> >> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>  
+> > 
+> > Drive by comments only. I'm curious enough to read the patches
+> > but no idea if this is how people would like to see this implemented!  
+> 
+> Thanks for taking a look at it and for you comments.
+> 
+> In which sense do you mean exactly? Do mind to elaborate a bit more on 
+> it? If it's about the whole implementation, would it be about not
+> really encrypting data or something else? Please help me to understand it :)
+> 
+> I'm not sure if you're talking about just this patch or the whole 
+> FEAT_MEC design.
 
-Ah, right. How about this for a commit message ?
+I was failing to express that this is fine for me but out of my area of expertise
+wrt to QEMU so would leave the questions of 'is this the best way to do it?'
+for others!
 
+> 
+> 
+> Cheers,
+> Gustavo
+> 
+> > Jonathan
+> >   
+> >>   static void create_secure_ram(VirtMachineState *vms,
+> >>                                 MemoryRegion *secure_sysmem,
+> >>                                 MemoryRegion *secure_tag_sysmem)
+> >> @@ -2267,6 +2288,8 @@ static void machvirt_init(MachineState *machine)
+> >>       MemoryRegion *secure_sysmem = NULL;
+> >>       MemoryRegion *tag_sysmem = NULL;
+> >>       MemoryRegion *secure_tag_sysmem = NULL;
+> >> +    MemoryRegion *pseudo_encrypted_page = NULL;
+> >> +    MemoryRegion *tuple_memory = NULL;
+> >>       int n, virt_max_cpus;
+> >>       bool firmware_loaded;
+> >>       bool aarch64 = true;
+> >> @@ -2495,6 +2518,28 @@ static void machvirt_init(MachineState *machine)
+> >>               }
+> >>           }
+> >>   
+> >> +        if (vms->mec) {
+> >> +            if (tcg_enabled()) {
+> >> +                if (tuple_memory == NULL) {
+> >> +                    /* XXX(gromero): Add object_property_find(cpuobj, "tuple-memory", ...) here. */
+> >> +
+> >> +                    tuple_memory = g_new(MemoryRegion, 1);
+> >> +                    memory_region_init(tuple_memory, OBJECT(machine), "mec", UINT64_MAX / 32);
+> >> +
+> >> +                    pseudo_encrypted_page = g_new(MemoryRegion, 1);
+> >> +                    memory_region_init(pseudo_encrypted_page, OBJECT(machine), "mec-page", 4 * 1024 /* 4 KiB */);
+> >> +                }
+> >> +
+> >> +                object_property_set_link(cpuobj, "mec",  OBJECT(tuple_memory), &error_abort);
+> >> +                object_property_set_link(cpuobj, "mec-page",  OBJECT(pseudo_encrypted_page), &error_abort);  
+> > Trivial but some bonus spaces.
+> >   
+> >> +
+> >> +                } else {  
+> > 
+> > Indent seems off.
+> >   
+> >> +                    /* Check for other accels here. */
+> >> +                    error_report("MEC requested, but not supported");
+> >> +                    exit(1);
+> >> +                }
+> >> +        }
+> >> +
+> >>           qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
+> >>           object_unref(cpuobj);
+> >>       }  
+> > 
+> >   
+> 
+> 
 
-    whpx: arm: enable more enlightenments
-
-    Unconditionally enable some more enlightenments for whpx. In
-    particular, linux uses AccessVpRegs without checking availability and
-    panics if it's not there, so it's important to expose it.
-
-    We also had a duplicate line where we set AccessHypercallRegs = 1
-    twice; remove the duplicate.
-
-
-If you have more rationale/info about the other two we're enabling,
-that would also be nice to include.
-
-thanks
--- PMM
 

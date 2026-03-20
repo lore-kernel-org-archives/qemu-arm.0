@@ -4,87 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3408D1098783
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5469D10987A1
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 15:51:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZiK-0006Qw-2i; Fri, 20 Mar 2026 09:16:32 -0400
+	id 1w3c89-0007a3-KW; Fri, 20 Mar 2026 11:51:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhp-0005ui-Jr
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:05 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1w3c84-0007XY-7Y
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:16 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3Zhm-0000LH-Ee
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:16:01 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b982d56dac4so10787366b.3
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:15:58 -0700 (PDT)
+ id 1w3c81-0005W8-HI
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 11:51:15 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-65c0891f4e9so1091109a12.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 08:51:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774012556; x=1774617356; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774021872; x=1774626672; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KXkEIWSkkfTa0uGz005fdTwbnhJNC0icQNS5LfaBmDg=;
- b=aI6tFbfUZF+7Jdvpb2zkE0KyAMS7Vji56ePjwMEDqEDPyezLKasQWaB/0a1BHARpKT
- rDnaddlvvokKypbt4roBUcOBMWwnl9uG3hRo7WoisJu6x6AyteCvDZEMLA4AKRxMw9lS
- GOOjBwR5GBJWMWhUlw/gRHEFrYwoifhm/OAm1h4h10dcra+CN/Ib7IG+H/rmaaB6lo97
- pFhDa1JTiYVj0lV1h9pMrf4+1B7bCWm63aHry5CWaOLT9m8dXg3wo09+7dOVH2uT9VhG
- ZKTrL6HXV/+7yo9Gg7ZRLvWQVLjiY0La7z/ExTXGVsuneY+tflN0x0r9cCH+aV2K1jq3
- d/2w==
+ bh=S0fhuaBJdOuUGUkX7QYGpAS75ZDvg8jajU+pZxhAjHw=;
+ b=Xae5ASASezCM2JtqVkX0Ug3c81SijJraeivF3nFZfN51mSNV5x+agS2nY6adjtAKY9
+ 14/tgekZ/tg0YBBYGcett/nIOLWp6gKM8QeNI6YZQQuiT3cqFg3wRFZNZ8Ya6wBIlt5o
+ 7Oq9SKaqAStwlo05CMlOhZiHIkpwWzdF3Oyej3QtawUc8CH2LtBgD+dmlplVv7wQbkwS
+ qubgUrT+0qct1fukkYfUPYRaUylBfqv81HqWcFz76BFcDHmZOgZmnEtFrk3w1ws0J8MX
+ l/Bq241SRIdlzH6Nn0XNkspJjXu3nA35/kdGyvq6GNb3nzxM+b9F11tFenH3HNQCVNhC
+ UxpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774012556; x=1774617356;
+ d=1e100.net; s=20251104; t=1774021872; x=1774626672;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=KXkEIWSkkfTa0uGz005fdTwbnhJNC0icQNS5LfaBmDg=;
- b=dwutYHoAFbNlYDFx0f+BgoGJ4mJwvQ1YR7eMWNdVdXicwWS8N6t+yQv+S/81v73VZk
- AtrSXWYeoBkBJDfCBUGzOhO/1UC5Ho9Tqm/qAp32yJBe+nU/WDeB1ZRmAhDOC1W+5bCG
- +aMiGEKSdzkbZ5UC4Ov7j67VqfRZrgtFDmSkK+iB71zyfDyUEciwWzGxTnRE2esIW3sj
- DEQDxWoGtfzwtziGvPLz3+wLi8B5EEfujkZqcjLwO+pLQGqjlKcq3MxmiHrSLI4LASRp
- /aFElQEowgkkSjq2oW3smYaj0EjlphC72Z6lJlschKRMbMbmDKpaorooVe0jYGyGqy5y
- bnDw==
+ bh=S0fhuaBJdOuUGUkX7QYGpAS75ZDvg8jajU+pZxhAjHw=;
+ b=bQWEpW0F8R/LVa6OUi8jl34zaJtaSCVshG7e5xv3b+sAn9N0SKepixTMik4Lqt0F9P
+ LQcWX+d+7SMJIhFcMtqOiqg+6rSMd2Gk8lml6J5p4sIRfRlFCz1LIGH5SJttZhrCa521
+ /BaxeXiMbwBfP40h4TCr16HetRwxrPNFPMv/i+oS4euFuGXd7/4Jfku771OGgWDzX3uu
+ i8Qi8CRpZSMqpctS/5XlMUjmuV31+qAP6gZMR7ytyMngt0iLqGXDYlpRDB9/ytKtZCCB
+ /kQ4aMS+S8mLep8QS5iD7a0I+FGSyM7Ot3uAszdDscAjsK12v6bDkZNtMCjWUbvY0FXZ
+ YuGw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXkjyPpgRxfqxurW0g2x59BYCQKBWZH8hIXkrKqldL0c4OZcyyUwufyI0wi+nBTGYYBBNFn6NeITg==@nongnu.org
-X-Gm-Message-State: AOJu0YzV+5e8zP6GULAbQYz2BigrTktdXc99ETEX71TS61JW9nRM9T1l
- 6hK99nS191uxPruZaHmgktDnQLk4wTKqww2f7r60khu+OiZFXMliRo2aY+C+cuHoQw0=
-X-Gm-Gg: ATEYQzzQqavdWKzXHnCgbNXWa/oYMqymaiXcCH39OQzCm7dX6B0cxVOLiu0DVeG3zSl
- v+nc0MFXWDkpcczbd3UhRBC4J0UWj4ve1Pm+I4utmsv16c1kc7H0Keqh/mTBvj7kHBR2Zt4PBfb
- N/soCTxeR83v32zhB/ayliqOx/hhQ7mOqTubb71ltZhnpMXLjQeIKYl+BizwsrCo1w9cAl+N81K
- XggY6S3dIJ2DLT8cHvcpmUyrq0RiOUqQQsDyZVxEXscRh0aCn+gCfhYCOaZ/l0kzmozABtXxgcs
- VGoBs7srQ2CvJiTDpjzPWVltEpgYNeu4+O0FNEenH5FZ7YZXTX1rDxKbzYhbNzZI0IBOOjrO4k4
- k74z3QOH4j9pD+CLKL9a33nQEpCdGzO6TKYDrEzRfHFPSq2LflArFmMKfVvozQI6rSgZNpmuGWs
- mxqCk+EJ7tckYjFYYuPmweQ1Y=
-X-Received: by 2002:a17:907:1805:b0:b98:13a:c92e with SMTP id
- a640c23a62f3a-b982f20c399mr203464366b.2.1774012556337; 
- Fri, 20 Mar 2026 06:15:56 -0700 (PDT)
+ AJvYcCV3EwOuRpw7MeJEJJtZaDUGBz9Cw9j28GNZ1Tg9Q9D4JU0Tr7vHb5oIYereyhsE3o8ljZsB+k2B8Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yy2uv7gW3XeRuTCtX+Ymwy4pkIERb0y8XUjlUNKRfRC7ICeeB8/
+ DI7xDa2TUduWs81raoqFW87oC1gboN7ghiIyxJUCkXIOcU46nyAvr6w4Xj9nSVbWbxo=
+X-Gm-Gg: ATEYQzwZ/acrhWQn2QqY2CJswRxmE64o9aOns9JXJyPee2+/ftKenIgjCDdExZPhrKb
+ 9jDoNVo79DLsW70iIG0QyXOyBXdlKTv/zITTVy2F/ynyp0aMDru12L213357SRkVhgv54uLKMo3
+ 4gQzpjfu9p0nqESKclroVsx+FePQQZlrfxrBp/LPOeqgAX0fItmyQo+UBbUmYvkeWjio/OcnKqm
+ HJ8XKviPXlIbc/OeITUAQAMn0v7UxAijKMOBL6dY2RVCm/MEoOc7e+ssNC/jUF+ZNLAyj7U0Q+7
+ VuJbC18GfrI9yknENKgZ2ChFzkuP5zPy9YXxmmYRD0sFPoI/xTb+VOZC8/DafC3DwFJeVfZsKk4
+ jfAMpg97VZ3dWHI8jScEmEnwrUA3x8QG4PgTSuo5GZgWo/L2+ya/V1vswA/ePMDx97k6qrY8d2C
+ Gc9fJLvBXh2Y3mNv+Z579yXqc=
+X-Received: by 2002:a05:6402:5287:b0:65f:81be:e7a5 with SMTP id
+ 4fb4d7f45d1cf-668c9c3f203mr2833499a12.23.1774021871872; 
+ Fri, 20 Mar 2026 08:51:11 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9832f8db2fsm163039966b.23.2026.03.20.06.15.55
+ 4fb4d7f45d1cf-668d1cc5f1dsm1453278a12.14.2026.03.20.08.51.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:15:55 -0700 (PDT)
+ Fri, 20 Mar 2026 08:51:09 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 887F55FAED;
- Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 252745F91F;
+ Fri, 20 Mar 2026 15:51:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 32/35] target/arm: implement WFET
-Date: Fri, 20 Mar 2026 13:06:03 +0000
-Message-ID: <20260320130607.2071996-33-alex.bennee@linaro.org>
+Cc: Kyle Evans <kevans@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Warner Losh <imp@bsdimp.com>, qemu-arm@nongnu.org,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Brad Smith <brad@comstyle.com>,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 4/8] tests/functional: add VBSA linux tests
+Date: Fri, 20 Mar 2026 15:51:03 +0000
+Message-ID: <20260320155107.2143191-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
-References: <20260320130607.2071996-1-alex.bennee@linaro.org>
+In-Reply-To: <20260320155107.2143191-1-alex.bennee@linaro.org>
+References: <20260320155107.2143191-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,146 +113,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we have the event stream and SEV/SEVL implemented we can finally
-enable WFET for Aarch64.
+This extends the VBSA test to run the linux tests. The sysarch-acs
+test suite does provide some pre-built images which is good because
+the tests require a patched kernel. However due to the structure of
+the image we need to jump one or two hoops to get something useful:
 
+  - download and double decompress (zip then xz) the image
+  - navigate grub to launch the Linux Execution Environment
+  - shutdown the system once tests are done
+  - extract the logs from the MSDOS file system and parse them
+
+It does make the code a bit ugly but it works for me at least. So far
+the subset of tests run is limited but that might be solved by adding
+some more devices to the PCIe bus to exercise the SMMU behaviour.
+
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/op_helper.c     | 80 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c | 15 ++++---
- 3 files changed, 89 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index a05f2258f29..31ffcbc6448 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -56,6 +56,7 @@ DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
- DEF_HELPER_2(wfit, void, env, i32)
-+DEF_HELPER_2(wfet, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index fbe160ab70a..8b917b344c9 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -521,6 +521,86 @@ void HELPER(wfe)(CPUARMState *env)
- #endif
- }
+---
+v2
+  - dropped unused imports
+  - use archive_extract for the zip step
+  - drop virtuilization=on and smmu=max lines from config
+  - use utf8 encodings for file access
+  - don't use f"" strings when not needed
+  - hack grub.cfg rather than using key presses
+---
+ tests/functional/aarch64/test_virt_vbsa.py | 122 +++++++++++++++++++--
+ 1 file changed, 111 insertions(+), 11 deletions(-)
+
+diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
+index 1dd4cecde1e..57bfe5d7af2 100755
+--- a/tests/functional/aarch64/test_virt_vbsa.py
++++ b/tests/functional/aarch64/test_virt_vbsa.py
+@@ -10,7 +10,8 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
-+void HELPER(wfet)(CPUARMState *env, uint32_t rd)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * As for WFIT make it NOP here, because trying to raise EXCP_HLT
-+     * would trigger an abort.
-+     */
-+    return;
-+#else
-+    ARMCPU *cpu = env_archcpu(env);
-+    CPUState *cs = env_cpu(env);
-+    uint32_t excp;
-+    int target_el = check_wfx_trap(env, false, &excp);
-+    /* The WFET should time out when CNTVCT_EL0 >= the specified value. */
-+    uint64_t cntval = gt_get_countervalue(env);
-+    uint64_t timeout = env->xregs[rd];
-+    /*
-+     * We want the value that we would get if we read CNTVCT_EL0 from
-+     * the current exception level, so the direct_access offset, not
-+     * the indirect_access one. Compare the pseudocode LocalTimeoutEvent(),
-+     * which calls VirtualCounterTimer().
-+     */
-+    uint64_t offset = gt_direct_access_timer_offset(env, GTIMER_VIRT);
-+    uint64_t cntvct = cntval - offset;
-+    uint64_t nexttick;
-+    int64_t next_event;
-+
-+    /*
-+     * As for WFE if the event register is already set we can consume
-+     * the event and return immediately.
-+     */
-+    if (env->event_register.as_bool) {
-+        env->event_register.as_bool = false;
-+        return;
-+    }
-+
-+
-+    if (cpu_has_work(cs) || cntvct >= timeout) {
-+        /*
-+         * Don't bother to go into our "low power state" if
-+         * we would just wake up immediately.
-+         */
-+        return;
-+    }
-+
-+    /* We might sleep, so now we check to see if we should trap */
-+    if (target_el) {
-+        env->pc -= 4;
-+        raise_exception(env, excp, syn_wfx(1, 0xe, rd, 1, 2, false), target_el);
-+    }
-+
-+    /*
-+     * Finally work out if the timeout or event stream will kick in
-+     * earlier.
-+     */
-+    if (uadd64_overflow(timeout, offset, &nexttick)) {
-+        nexttick = UINT64_MAX;
-+    }
-+    if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-+        nexttick = INT64_MAX;
-+    }
-+
-+    next_event = gt_calc_next_event_stream(env);
-+    if (next_event > 0 && next_event < nexttick) {
-+        cpu->waiting_for_event = true;
-+        timer_mod(cpu->wfxt_timer, next_event);
-+    } else {
-+        if (nexttick == INT64_MAX) {
-+            timer_mod_ns(cpu->wfxt_timer, INT64_MAX);
-+        } else {
-+            timer_mod(cpu->wfxt_timer, nexttick);
-+        }
-+    }
-+
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
-+#endif
-+}
-+
- void HELPER(yield)(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 38a51eb3600..f7d33ac2310 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2110,14 +2110,15 @@ static bool trans_WFET(DisasContext *s, arg_WFET *a)
-         return false;
-     }
+ import shutil
+-from subprocess import check_call, DEVNULL
++import re
++from subprocess import check_call, check_output, DEVNULL
  
--    /*
--     * We rely here on our WFE implementation being a NOP, so we
--     * don't need to do anything different to handle the WFET timeout
--     * from what trans_WFE does.
--     */
--    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--        s->base.is_jmp = DISAS_WFE;
-+    if (s->ss_active) {
-+        /* Act like a NOP under architectural singlestep */
-+        return true;
-     }
-+
-+    gen_a64_update_pc(s, 4);
-+    gen_helper_wfet(tcg_env, tcg_constant_i32(a->rd));
-+    /* Go back to the main loop to check for interrupts */
-+    s->base.is_jmp = DISAS_EXIT;
-     return true;
- }
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import get_qemu_img, skipIfMissingCommands
+@@ -28,6 +29,20 @@ def wait_for_console_pattern(self, success_message, vm=None):
+                                  failure_message='FAILED',
+                                  vm=vm)
  
++    def append_firmware_blobs(self):
++        """
++        Setup QEMU firmware blobs for boot.
++        """
++        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
++        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
++        vars_path = self.scratch_file('vars.fd')
++        shutil.copy(vars_source, vars_path)
++
++        self.vm.add_args('-drive',
++                         f'if=pflash,format=raw,readonly=on,file={code_path}')
++        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++
++
+     ASSET_VBSA_EFI = Asset(
+         'https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
+         '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
+@@ -45,20 +60,12 @@ def test_aarch64_vbsa_uefi_tests(self):
+ 
+         self.vm.set_console()
+ 
+-        # virt machine wi
++        # virt machine
+         self.set_machine('virt')
+         self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
+         self.vm.add_args('-cpu', 'max', '-m', '1024')
+ 
+-        # We will use the QEMU firmware blobs to boot
+-        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
+-        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
+-        vars_path = self.scratch_file('vars.fd')
+-        shutil.copy(vars_source, vars_path)
+-
+-        self.vm.add_args('-drive',
+-                         f'if=pflash,format=raw,readonly=on,file={code_path}')
+-        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++        self.append_firmware_blobs()
+ 
+         # Build an EFI FAT32 file-system for the UEFI tests
+         vbsa_efi = self.ASSET_VBSA_EFI.fetch()
+@@ -102,5 +109,98 @@ def test_aarch64_vbsa_uefi_tests(self):
+         self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
+ 
+ 
++    ASSET_SYSREADY_IMAGE = Asset(
++        'https://github.com/ARM-software/arm-systemready/'
++        'releases/download/v25.10_SR_3.1.0/systemready_acs_live_image.img.xz.zip',
++        'df2c359de15784b1da6a8e6f3c98a053ee38ac0b3f241ccea62e17db092eb03a')
++
++    ROOT_PROMPT = '/ # '
++
++    @skipIfMissingCommands("sfdisk", "jq", "sed")
++    def test_aarch64_vbsa_linux_tests(self):
++        """
++        Launch the Linux based VBSA test from the ACS prebuilt images.
++
++        We can use the pre-built images and then trigger the Linux
++        build and run the tests. We then need to slurp the results
++        from the partition.
++        """
++
++        self.vm.set_console()
++
++        # Plain virt machine
++        self.set_machine('virt')
++        self.vm.add_args('-M', 'virt,gic-version=max')
++        self.vm.add_args('-cpu', 'max', '-m', '1024', '-smp', '4')
++
++        self.append_firmware_blobs()
++
++        # First fetch, decompress (twice) and prepare the disk image
++        # on an NVME device (the kernel only has drivers for that).
++        self.archive_extract(self.ASSET_SYSREADY_IMAGE, format="zip")
++        disk_image_xz = self.scratch_file("systemready_acs_live_image.img.xz")
++        disk_image = self.uncompress(disk_image_xz)
++
++        self.vm.add_args('-device',
++                         'nvme,drive=hd,serial=QEMU_ROOT_SSD')
++        self.vm.add_args('-blockdev',
++                         f'driver=raw,node-name=hd,file.driver=file,file.filename={disk_image}')
++
++        # Tweak grub.cfg default to avoid manually navigating grub
++        grub_cfg = self.scratch_file("grub.cfg")
++        offset = int(check_output(f"sfdisk --json {disk_image} |"
++                                  "jq '.partitiontable.partitions[0].start * 512'",
++                                  shell=True))
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::/EFI/BOOT/grub.cfg", grub_cfg])
++
++        with open(grub_cfg, 'a', encoding="utf8") as f:
++            f.write("set default='Linux Execution Enviroment'")
++
++        check_call(["mcopy", "-D", "o",  "-i", f"{disk_image}@@{offset}",
++                    grub_cfg, "::/EFI/BOOT/grub.cfg"])
++
++        # Launch QEMU and wait for grub and select the "Linux
++        # Execution Environment" so we can launch the test.
++
++        self.vm.launch()
++        self.wait_for_console_pattern(self.ROOT_PROMPT)
++        ec_and_wait(self, "/usr/bin/bsa.sh --skip "
++                    "B_REP_1,B_IEP_1,B_PCIe_11,B_MEM_06",
++                    self.ROOT_PROMPT)
++
++        # Now we can shutdown
++        ec_and_wait(self, "halt -f", "reboot: System halted")
++        self.vm.shutdown()
++
++        # and extract the test logs
++        bsa_app_res = self.scratch_file("BsaResultsApp.log")
++        bsa_kern_res = self.scratch_file("BsaResultsKernel.log")
++
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::acs_results/Linux/BsaResultsApp.log", bsa_app_res])
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::acs_results/Linux/BsaResultsKernel.log", bsa_kern_res])
++
++        # for now just check the kernel log for the result summary
++        test_result_re = re.compile(r"\[.*\]\s+(.+): Result:\s+(\w+)")
++        summary_re = re.compile(r"Total Tests Run =\s*(\d+), Tests Passed =\s*(\d+), Tests Failed =\s*(\d+)")
++
++        with open(bsa_kern_res, 'r', encoding="utf8") as f:
++            for line in f:
++                test_match = test_result_re.search(line)
++                if test_match:
++                    desc = test_match.group(1)
++                    status = test_match.group(2)
++                    self.log.info(f"Test: {desc} status: {status}")
++
++                match = summary_re.search(line)
++                if match:
++                    total, passed, failed = match.groups()
++
++                    if int(failed) > 0:
++                        self.fail(f"{failed} tests failed ({total})")
++
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.47.3
 

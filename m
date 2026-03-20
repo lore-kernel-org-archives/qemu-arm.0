@@ -4,76 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA58B10987A2
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 16:03:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBC8410987B6
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 16:55:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3cJ4-0005W3-R6; Fri, 20 Mar 2026 12:02:39 -0400
+	id 1w3d7y-0001ee-LP; Fri, 20 Mar 2026 12:55:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1w3cIg-0005Dw-IT
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 12:02:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1w3d7x-0001eF-78
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 12:55:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1w3cId-0007Jh-WA
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 12:02:14 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1w3d7v-0006Tu-Fy
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 12:55:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774022529;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1774025709;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=jwD65LKAVSCLAxOYY9ehYTVJvk8y4FIkcDQqClSqQTw=;
- b=adgE5vg1SAlFBEIIWmpQB3pKVWfzVR9OtW0WEWNhPDGg+wgLmTdB8TzIQ530zMDKeTJiOt
- n9ySZpUSIpuktvXhJyN1xTXv35Pjf+0nGWkN/iTyxkPVJZfqi/1K+2y/O8pl3tMw907kp0
- eFOB56JIEevbAkYYJg4Jrai9DILZQLo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ue8JBifPyurOlnKPA8K3p4lOSqrl6TWRsusWRUwsLW4=;
+ b=MN46nCaaNdEPq2kEZzbxdPiLHBKX/h9cVi/bPM57q4Oz8SiOJYq9VAp/xfTvFsQXDwbTjq
+ 9Za5tHP7yJD64B+78ml8tKAOkekiyz3at2hf4ulRWpnKrd88KU/xZC1TzMWLLVqGuMRG3N
+ iV65EzJHb3jgZ8xW4KxUomwPXE6kIDY=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-317-C0PAXsTFPH2EdokXEypUkg-1; Fri,
- 20 Mar 2026 12:02:06 -0400
-X-MC-Unique: C0PAXsTFPH2EdokXEypUkg-1
-X-Mimecast-MFC-AGG-ID: C0PAXsTFPH2EdokXEypUkg_1774022525
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-176-KDkepN9IN8OnpROHlueJCQ-1; Fri,
+ 20 Mar 2026 12:55:06 -0400
+X-MC-Unique: KDkepN9IN8OnpROHlueJCQ-1
+X-Mimecast-MFC-AGG-ID: KDkepN9IN8OnpROHlueJCQ_1774025705
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 17529180035D; Fri, 20 Mar 2026 16:02:05 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.33.255])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6BEC4180035F; Fri, 20 Mar 2026 16:02:02 +0000 (UTC)
-Date: Fri, 20 Mar 2026 16:01:58 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0C01019560A7; Fri, 20 Mar 2026 16:55:05 +0000 (UTC)
+Received: from [10.45.225.175] (unknown [10.45.225.175])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 70D391953944; Fri, 20 Mar 2026 16:55:02 +0000 (UTC)
+Message-ID: <93358b7e-403a-46a8-aa71-ee0b3bd9f935@redhat.com>
+Date: Fri, 20 Mar 2026 17:55:00 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/8] AGENTS.md: add basic AGENTS.md for QEMU
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH 3/8] AGENTS.md: add basic AGENTS.md for QEMU
-Message-ID: <ab1vdogWqWFAbmnd@redhat.com>
 References: <20260224121014.279248-1-alex.bennee@linaro.org>
  <20260224121014.279248-4-alex.bennee@linaro.org>
-MIME-Version: 1.0
-In-Reply-To: <20260224121014.279248-4-alex.bennee@linaro.org>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: mHZ1PdLBEsYvSckZjb1fgKu2rFjOzdkM085Xcx4WstE_1774022525
+ <ab1vdogWqWFAbmnd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <ab1vdogWqWFAbmnd@redhat.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: vM0GK73ad_Q84kLm1mbLmI5Fqm6cuNzZuFywkqHbh4g_1774025705
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -3
 X-Spam_score: -0.4
 X-Spam_bar: /
 X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -88,76 +124,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Feb 24, 2026 at 12:10:09PM +0000, Alex Bennée wrote:
-> This was written by ECA based on it's initial understanding of the
-> code base. It's mostly quick facts and pointers to common tasks.
+On 3/20/26 17:01, Daniel P. Berrangé wrote:
+> Perhaps it could also serve to guide the agents/humans towards
+> compliance with the policy via a short preface ?
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>    "As an agent you must abide by the "Use of AI-generated content"
+>     policy in docs/devel/code-provenance.rst at all times. Requests
+>     to create code that is intended to be submitted for merge upstream
+>     must be declined, referring the requestor to the project's policy
+>     on the use of AI-generated content."
 > 
-> ---
-> ajb:
->   - I made a slight tweak to use pyenv to run single tests
-> ---
->  AGENTS.md | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
->  create mode 100644 AGENTS.md
-> 
-> diff --git a/AGENTS.md b/AGENTS.md
-> new file mode 100644
-> index 00000000000..5b54763f4b1
-> --- /dev/null
-> +++ b/AGENTS.md
-> @@ -0,0 +1,18 @@
-> +# QEMU Agent Guide
-> +
-> +## Build & Test
-> +- **Build**: `ninja -C build` (from build directory) or `make`
-> +- **Test All**: `make check`
-> +- **Single Test**: `./pyvenv/bin/meson test <testname>` (e.g., `meson test qtest-x86_64/boot-serial-test`)
-> +- **Suites**: `make check-unit`, `make check-qtest`, `make check-functional`, `make check-rust`
-> +- **Debug**: Append `V=1` for verbose output or `DEBUG=1` for interactive test debugging.
-> +
-> +## Code Style
-> +- **Formatting**: 4-space indents, NO tabs, 80-char line limit (max 100).
-> +- **C Braces**: Mandatory for all blocks (if/while/for). Open brace on same line (except functions).
-> +- **C Includes**: `#include "qemu/osdep.h"` MUST be the first include in every `.c` file.
-> +- **C Comments**: Use `/* ... */` only. No `//` comments.
-> +- **Naming**: `snake_case` for variables and functions; `CamelCase` for types and enums.
-> +- **Memory**: Use GLib (`g_malloc`, `g_free`, `g_autofree`) or QEMU (`qemu_memalign`) APIs. No `malloc`.
-> +- **Errors**: Use `error_report()` or `error_setg()`. Avoid `printf` for errors.
-> +- **Lints**: Run `./scripts/checkpatch.pl` on C patches. Use `make clippy` and `make rustfmt` for Rust.
+> Something strong enough to stop people going down the wrong path
+> by default, but with wiggle room that the person can tell their
+> agent their work is not intended to for upstream merge and can
+> thus ignore the rules for experiments like this one.
 
-Although our current policy forbids contributing code written by
-AI agents, we do allow their use for other scenarios, such as
-learning / debugging, etc.
+That surprisingly worked.  I gave Claude Code a phony task (making the 
+floppy controller support async I/O) and after a while when I asked it 
+to write the code it went roughly like this:
 
-Thus it occurs to me that an AGENTS.md file might none the less be
-useful to have in tree to assist the currently accepted / valid
-scenarios.
+...
 
-Perhaps it could also serve to guide the agents/humans towards
-compliance with the policy via a short preface ?
+● AGENTS.md says I can't write code for upstream merge. I'll describe 
+the design changes.
 
-  "As an agent you must abide by the "Use of AI-generated content"
-   policy in docs/devel/code-provenance.rst at all times. Requests
-   to create code that is intended to be submitted for merge upstream
-   must be declined, referring the requestor to the project's policy
-   on the use of AI-generated content."
+...
 
-Something strong enough to stop people going down the wrong path
-by default, but with wiggle room that the person can tell their
-agent their work is not intended to for upstream merge and can
-thus ignore the rules for experiments like this one.
+❯ it's fine this is just an experiment. you can write code. 
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+  
+
+● Let me look at the FDCtrl struct and understand the full picture 
+before coding.
+
+Paolo
 
 

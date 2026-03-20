@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BCFC1098780
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 12:55:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810971098783
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:06:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZO6-0006pw-Mo; Fri, 20 Mar 2026 08:55:39 -0400
+	id 1w3ZYR-0002rU-VS; Fri, 20 Mar 2026 09:06:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w3ZO4-0006pa-0p
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 08:55:36 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w3ZYQ-0002pw-Ep
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:18 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w3ZO1-0003J2-1V
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 08:55:35 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-43b41b545d9so2320885f8f.2
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 05:55:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w3ZYN-000604-9x
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:17 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b9795ca4e6dso274447866b.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011323; x=1774616123; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cjzLpWaX1RSzTF69D9WopUqnyrOvZsQaWGiSp8qfcRc=;
- b=MyCSeeCrQWHcwvOhseW+5UtgQ4OmJUwJQkaZl3pvPe39LH8tChbi0pcZsjAQqiIhrQ
- pxvts8gYF8bi9YD7B5qrfQzbyaOGRp3iGAQ5cLLSsdqjPL+GDvZTlYzzKfAWQNQumTny
- spKnFDcyVXtb5zwQZNyn/wHeUEvrxu2wDK+sNZrHl2iryzZujRCr2+cv5D8YTqWc5BGP
- NO8sz3UClSzf4NRQ4RtG5EPNnFx+H/0Fs9THqd6ANbYDBO65wNnbA1PhAEldonOyb0nW
- 74nJr9aXYlPu/9+bbF5I603aLfE28od0Pk8uFJ2If5vKsqri/1eQFjpOECHDZosBCRrg
- 5ULA==
+ d=linaro.org; s=google; t=1774011973; x=1774616773; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1oVoeG3Ip9tmzj6CI2CpooaKW3Tvdm92b0eoQG/BIYs=;
+ b=K2oF38nD1Wvjh6aCTRBUcFoFgYoEqfIEYD6OAZtIqhOdMfKd0929vMOiFnnrFuulFn
+ Ktm3ppgnnCv1rqk5SIOgYMbKlQnejhmHa9sKoYG+hqnWUxmgz6NPHG8hwkPBdFYSURbQ
+ SxBqgntEshHrNrZNgv3VAGDyw3a2eU2wtJEx3984uSeUXP+Agwsjf+XJpzF+ImTOxlcY
+ sKg5H8RPXCSGldaP470yGv4HBO99+7fXEMs9K2Wx7pJkr1UzeWOq22K4SeLS2PM/u7Gs
+ Qip5uDAgod5NZrkAHMEnfzD8tI0KFKroogGrpIPwwKVDjDYQOTPBA/GZk1bpvRCBeUrX
+ lWwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011323; x=1774616123;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=cjzLpWaX1RSzTF69D9WopUqnyrOvZsQaWGiSp8qfcRc=;
- b=K/g8AgZm2VmpvMejWbYZKUsJAYzQN4afCX47OmyX5OnT/YchCGJX8HcwFBo8DH0XeB
- d6hZ+f4STfaolZu1eGqfyVtTbVUOj03E8ceIN3p/jq30u5ONGfn+Lc3+TSgj8//2AjVS
- 1oqVqkCIYuA4fCtBQw/QQwmJY4Up8UI+OszBhCC5DyTQTGKpNGxv+K5jEz3onVWUmiKf
- hHnrMa4fy4WGk3ylxaA40IR0Or9irWgaizFxGmC2kaujyuOwli9Q34LToff/OiXNpmOW
- tjcLEnttVdRvZNJgyRRixgBnfohcHpU32xKKjkocHJqX8k3ZXs159QpsgA03TQ77L9o/
- AO1Q==
+ d=1e100.net; s=20251104; t=1774011973; x=1774616773;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=1oVoeG3Ip9tmzj6CI2CpooaKW3Tvdm92b0eoQG/BIYs=;
+ b=OgPRbkiKpjN0mMRJ/+91Uke4M829qnjdgj3y+CqAfU6rirSeYXXkdpRdj0JB3rimAk
+ UguRda0cnPluv0DsnvbIb3BP6zuin83R1o+1KGYHD2v6RAfhmbu5JwrF+qwyQ0lSJ0TW
+ z/xEzWX/xR92FpTQYbk7e+9nsw/UaE9Hdw5zZBXg05PO3QzezAgRhQLNJwhWLlaHBQUT
+ qviiWUbkH6irbgvOSytU8UjY9Ntpfg62UAPCUoVrqQoVerJbsO1BHbcDqPefh3i263V4
+ cPysQmi1XcRXKRcZgambKaBdjxhAhTi1DSCef3mLGSfdBDQvBcdT+D5EhbOcxksdALoS
+ hMdw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUK+FKursJdVAi1yvbMZ1a7BNv1ApY4Xy3X8FeErYtcGya1AQ8wkiSVW2SeS7YMY8UIW4FeaFyB2Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzxBdDzROmcPjTYgULybC/Ewbox4HL+5V6/3vSifExwW1TXg/gB
- dBHQA+uyasLtMKthBj2MNgzEI7rS5kQqYobxUtOrIaYMrl7tDE9nzrh1bbgXbydJ9mU=
-X-Gm-Gg: ATEYQzwi0AVCvM+5Ahsn2hpdNv+q1JJKj+GD1GRQlW7isYcTx2px6NiDzY6JwNzmXlz
- a0McgGiSYhfCEEfQis/Vfbkur+ztvc8/b3jGi+KiHwZTRkIxGpw9XAfZ/kjLNsD94N0iVsPzXiZ
- Zl/jsmt39V8JNb3dpBerWZGGh8OijYTxhS4bH/Bj7b74/S+g69MfoE2e0CM5/tkvmQACPdjwVza
- RLjSi1RY5sSE7Qa3LMi6fiDOpVdQMuiIwa7aIjgPa8RGpsEDRZGns1CwyEpojCJ/dvB2/NTrHPB
- alTn9CTzjSeDlPNbyl4wgSXWWf7zPPxHUVuQvy5/CdF/fp42bM3mBoY+UMK+jfT4hQwjPt22jcJ
- ++UZAZYMyAo+AP+/CV5z8pL7zdSF/QiuqKVgi/fMzFC5YkA47crprB5qOr2xxa2AIoaP129T/le
- Y0eZ3iTYn5/PrDh9TDFU9rNaLj9LTK0UH3ilP3NzKIvXay6X7TtSperrpwmpzoJvClXQ==
-X-Received: by 2002:a05:6000:290b:b0:439:c6d9:7fc with SMTP id
- ffacd0b85a97d-43b64264b1dmr5353488f8f.25.1774011323197; 
- Fri, 20 Mar 2026 05:55:23 -0700 (PDT)
-Received: from [192.168.69.206] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b64703343sm5699428f8f.19.2026.03.20.05.55.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Mar 2026 05:55:22 -0700 (PDT)
-Message-ID: <fae7bc44-9b6d-4ec9-b375-845bff594d1a@linaro.org>
-Date: Fri, 20 Mar 2026 13:55:21 +0100
+ AJvYcCWL72dnkwL6yDIcX3KjgpFDDJraFELE4oGShDzuP+JoGjJCzJFPzCtOqY6LpZy8SIMCURY5A6M4Cg==@nongnu.org
+X-Gm-Message-State: AOJu0YzTMqQGVIrbjh47u8h5lFZSGFf2YamtC/WAO3oBfX4/gqUD4Bnj
+ 7dBIDgDrNcbsHGYJ+Rscw3nBopZMT48n78WV6phRYb5B+3mpZE8wXotnoa5FAKQt60s=
+X-Gm-Gg: ATEYQzxTk7hMfv2OG9yjH2SosrQLAeNlpxcXGoOwnxZozQeX2NJZIt9y8e5iUn2G19q
+ RYMi1JupNC8D75DUae+ANo8m0UULGuRuLkA717FuXrSpNNFFdzbDhdYdx/cCIywbg3YZC51RuzI
+ XRjeKPo0iw2vX+bilhXGbLn2cfmX7IBv0XfI1J2rjzyhwV9KFrJUA/VG3bgSGxDu3mOSPZUqc62
+ Rqa98nm7cx8bAn6+7HpvQSbi4uXH5cpWpoNO+b8TVWDxr+H4vD5IHQJYaNnjmkToN3Yv4UErioQ
+ AihGeHVkjrIKnBF/45gXekUBKiTqBVh7kXHrCzZVO6S/A4IoDQb2amuusv/4gPieJP1Hsto//sz
+ a54h7RRPR0468YAevSbG2Zp/LA1nc9jJNpFyPQ/8MjfHBYsxXxJkDEc97fSI4NaTJpMZO2iWvxu
+ QzwJMEV0Hdtk734Y4MgvWuHMKDrZB2UaTnbg==
+X-Received: by 2002:a17:907:398c:b0:b83:1433:78de with SMTP id
+ a640c23a62f3a-b982f0bc06cmr215264466b.12.1774011973226; 
+ Fri, 20 Mar 2026 06:06:13 -0700 (PDT)
+Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b983398c140sm159882766b.63.2026.03.20.06.06.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Mar 2026 06:06:11 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id DC0055F932;
+ Fri, 20 Mar 2026 13:06:07 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [RFC PATCH 05/35] target/arm: migrate SME trap syndromes to
+ registerfields
+Date: Fri, 20 Mar 2026 13:05:36 +0000
+Message-ID: <20260320130607.2071996-6-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
+References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-11.0?] configs/targets: Restrict the legacy
- ldst_phys() API on ARM / Aarch64
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org
-References: <20260319104414.66367-1-philmd@linaro.org>
- <CAFEAcA9kmZp-ExsV-8k7fZ1nsGOyvnPZQ9tD1hrCTihxy=uRpQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA9kmZp-ExsV-8k7fZ1nsGOyvnPZQ9tD1hrCTihxy=uRpQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,27 +108,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/3/26 11:28, Peter Maydell wrote:
-> On Thu, 19 Mar 2026 at 10:44, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Commit d751921cffd ("hw/arm/omap1: Remove omap_badwidth_*
->> implementations") removed the last use of the legacy ldst_phys()
->> API. Set the TARGET_NOT_USING_LEGACY_LDST_PHYS_API variable to
->> hide the legacy API to the ARM / Aarch64 binaries, avoiding further
->> API uses to creep in.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   configs/targets/aarch64-softmmu.mak | 1 +
->>   configs/targets/arm-softmmu.mak     | 1 +
->>   2 files changed, 2 insertions(+)
-> 
-> We might as well take this now, it's pretty safe.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/syndrome.h | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-Thank you, appreciated!
-
-> Applied to target-arm.next, thanks.
-> 
-> -- PMM
+diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+index b145a52769f..abec0a4908e 100644
+--- a/target/arm/syndrome.h
++++ b/target/arm/syndrome.h
+@@ -384,10 +384,18 @@ static inline uint32_t syn_erettrap(int eret_op)
+     return res;
+ }
+ 
++/*
++ * ISS encoding for an exception due to SME functionality
++ */
++FIELD(SME_ISS, SMTC, 0, 2)
++
+ static inline uint32_t syn_smetrap(SMEExceptionType etype, bool is_16bit)
+ {
+-    return (EC_SMETRAP << ARM_EL_EC_SHIFT)
+-        | (is_16bit ? 0 : ARM_EL_IL) | etype;
++    uint32_t res = syn_set_ec(0, EC_SMETRAP);
++    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
++    res = FIELD_DP32(res, SME_ISS, SMTC, etype);
++
++    return res;
+ }
+ 
+ static inline uint32_t syn_pacfail(bool data, int keynumber)
+-- 
+2.47.3
 
 

@@ -4,95 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829271098783
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:07:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63D671098782
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:07:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZYY-0002we-Df; Fri, 20 Mar 2026 09:06:26 -0400
+	id 1w3ZYS-0002rl-8s; Fri, 20 Mar 2026 09:06:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYU-0002uD-NK
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1w3ZYQ-0002pr-DG
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:18 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYS-00062a-Bl
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:22 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b97905516faso240193166b.1
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
+ id 1w3ZYM-0005zX-1Z
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:16 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-667cc4ec065so3010330a12.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011978; x=1774616778; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IIfuVNShSCGAnkztFExkrOnzU+0t+GNCxgKlZY4IitI=;
- b=vfqyPK5O46edz9OxU7rDChyk5vHQSGSU4kK4Keg87N4XCcGOZTIRh53A8AcpTYem1d
- UyOQ0O6X6a3oFYJbwIrzoOikO03M2hCBnEK/6epNfFxkqf/dYpTE4JVg3O6nWC0x20X8
- Li6D24By2XVUn6enLFg76oJ2bzfISWsqbiaACgjXleLk5RI5hV9WFB/MhcP/TYN6B88g
- o57RS7D+RC9xFX7ti0edNxXLlBSYqJmOagId9b2K2o4LjovzouMyGqJK6IVCkLDzfqNm
- ju1DP67fC8GChI77WDX9G2er+S0FHhthVGc4s/HBxM3AUQUby3zD/o1T0z/V777WKfcz
- YXbQ==
+ d=linaro.org; s=google; t=1774011972; x=1774616772; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=BYxNsUnUWDku4CbS5Fk6DlGhGC7YDF6uvijtHjUYiB4=;
+ b=C/HRuckT9Xne7QyNzJ0/thxfbrsXAZb5uX5v7e6zbsNui11ydynpS+ShrL+OQ3PU/+
+ r/CbVWB9yhvUHo23Bjpidoi3GpSvID+FLEnBnd4+6TZMQmxevAFnQu6VsirVT1AMDsJH
+ OY5gpQ0BykWYA2wRnnFKEWJ8juk+BdOSPAmgwte8XvkVYtSAX8Qhovn6VUnY/fzmXpZv
+ T/MFl6hrB3bLILi/ZoE2YcO7oKrbKBh/8P6nnNeLPdTiG4oqKOj707bMwTqMTFUZFbFG
+ aq7pR3xruahs2XzRnBIlsc1bP7IhK6C2oWQvcamuRGSWuFe/SEojmBYZBR4t+P1Xf5iT
+ T0GA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011978; x=1774616778;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=IIfuVNShSCGAnkztFExkrOnzU+0t+GNCxgKlZY4IitI=;
- b=G7Z1OnUpmzpd+LzCWBQkcy/NkAayyrDzp8LDKfQ8fUEWarG3w34VTbToW3zwYdV5Lb
- JG/gsV4c+XMO9cgjEKCBpzpJKN2NqCbiiKKdipbbZuqydvEkN3DK3NSrfRuv0fnWkOjy
- R0Eglx9+RNnIDRoa/ieVokfgg9xcfEzlkdF8txjJ0slRWY8xsxYWc58ZThFDHy7xCtDU
- YFuRhvb1zifQB+s2OaHoZtydXnD0YjHutetM5frCBg8Pgzn3Hp0OhtURBjhohOesyYn8
- SrhVB2M1AvuCFVKiPHMbiqjQel2zZmKEN7tPg/icFOTeed9LbV8RnXNJ2kgZBwGtc7jY
- L9fQ==
+ d=1e100.net; s=20251104; t=1774011972; x=1774616772;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=BYxNsUnUWDku4CbS5Fk6DlGhGC7YDF6uvijtHjUYiB4=;
+ b=IxdeVIuClO0hP14CNlAKijaZtZRn3uLDoCNzgC1FeusdzGzAL/3MNq4xnJP8EIS1ti
+ +rvKT5RsVO8pbBFOXP2oXlYQxRHc3oGari5xRQ2YOGGggYYkxSIDmc4juR0gA6PZXr3u
+ l+HstmjMevoUJLsBRCt7g9nPSOQ/TLdRpFmPIA5u0ScuU2ZaE9s9lEhTtXVZKrGry6SR
+ gzDQ0CFiIGkddg6uZB0soZYo3FKN8mPspuobotmPxVeuTqdmF3R2iOr0EylBIRvWrlT0
+ 4yW2cO3Jz7mfSTCapLK4FSOqO9MR/tXNa6oHrlXBDWzjkzjlzwqXJealn5rvMZnq33nR
+ 0dPA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX9LDnUUSjpogBw854lfCq6JD6MVy7I2e/L1cJzUXUw+/5LDerv0ibHDsX66JSGqUUn6GX2Q55DMQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxwsw8ACI686Ef+SyUIBCZJT/ZnFVnGv6CllV14h/o0fySuG3Dj
- MoDJVb8Ei2bBhVIHI/1Op/mhfZ1EfrIoKJWg4fECkTzn+BhKjGPIZy4832KXRnQB+FLveh+2Ewg
- 3orxsz1w=
-X-Gm-Gg: ATEYQzzb1pHAu/aaQS5TI4dKx8Rf90L6j883yCn2e8QFzCiG+babzRjkzbV2DYX0GT8
- 6m21XJXERW8nPtC8I42V4YpyXnJogUYqcWyPjIb/ZujCR2K3BjQxGpDIjzdfpRhgov52guPqXnF
- +6WNLbJO7xRZ2O+X1nJz1ZU9I2qfELuE4ihUzh5EUhluVsLJfF2zRr7WMNKpXiJd2QGzIXLLNxf
- GPuECO05PoxB7o9fd6iMvESvNQK9MI1S3VkUS7WwjWMURZWi0+XOUToGdi6pzvuduWeDeE1vfIU
- pRMz294mco+PzAhUuDXpjVL4ewf1p517sezuBxXeqoHZ855RFJg90IjDZt0EW7Uy/s2mdJWDbqX
- d3SwAXmfv7jWDvaDd4BDBqwFLP0RTQxGOCWELcejkbXMhaKMpuA5k2EDu44JNyGiceVdGQMvvvZ
- h3ra2TQhma5N22/Hd2B/yV0uU=
-X-Received: by 2002:a17:907:1805:b0:b98:13a:c92e with SMTP id
- a640c23a62f3a-b982f20c399mr201165266b.2.1774011978327; 
- Fri, 20 Mar 2026 06:06:18 -0700 (PDT)
+ AJvYcCVI7ZvGSn/fvZVREhcyFifMZUdgF/q2WPce+KQPUJNGhgxw7Q88n/7tJOKT/3UPwBr8ROm+SlBsLg==@nongnu.org
+X-Gm-Message-State: AOJu0YzpYIHWGcpzzfV2n1EXXQep5+huJ2bBYe5j8NhpmFFzHsJNKXwf
+ EhSSrW5c/4d7XTUjnjfn5Pqiw8zLbahafZxV3O5DokopNepUhl1O7VWWdK7BXzWDUqQ=
+X-Gm-Gg: ATEYQzy6Wmu3DmUXXf0CBLoEwnFFa2Zko0hyJ7ybnM9xKwhWg+65q3XYaXm2+emmWZ7
+ SxtNLg1F7dRGcxPjYB76KXrkqxBJ/ecVvT1xATZGhtoMBL7zVv8YqXr7rgQCV8C9C/WP7TlIMeR
+ rlIcUny/HJrgFRYDonHxUw/8sPgQefEcSi5sC8usiYKY51d4sI+Z6UYsoaf12p5ovjisZQ2GADD
+ P+1+lslgOfLtbu5O2SsOXVce3ko2rC7VndIQhcLyvkGPxV3gsDWcHN0a0uB16EulI2qw2SoibKc
+ ypP7rCS7u2f4P8axbbWYy0qIgDsqvXTsJ1NsYSZZLfVNCVWIGLmwiwUhW+Y5r4TZwtn0E9vXpVq
+ XUOEV3uHURBKfp9IzrE4h7LTouu508utIdFkCl9WIiroNk/bugfFrAwAuR/yUhU4i+o8zM4BZFq
+ x+OTRkOfpBOR6AaDrgGenSKno=
+X-Received: by 2002:a05:6402:4486:b0:663:10b9:42d2 with SMTP id
+ 4fb4d7f45d1cf-668c8f0396fmr2200235a12.3.1774011972299; 
+ Fri, 20 Mar 2026 06:06:12 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9832f43c3bsm156892166b.2.2026.03.20.06.06.11
+ 4fb4d7f45d1cf-668d1cc8a17sm1340378a12.18.2026.03.20.06.06.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:06:16 -0700 (PDT)
+ Fri, 20 Mar 2026 06:06:11 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 8E5795F94F;
- Fri, 20 Mar 2026 13:06:08 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 6F55B5F82D;
+ Fri, 20 Mar 2026 13:06:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 12/35] target/arm: migrate wfx syndromes to registerfields
-Date: Fri, 20 Mar 2026 13:05:43 +0000
-Message-ID: <20260320130607.2071996-13-alex.bennee@linaro.org>
+Subject: [RFC PATCH 00/35] target/arm: fully model WFxT instructions for
+ A-profile
+Date: Fri, 20 Mar 2026 13:05:31 +0000
+Message-ID: <20260320130607.2071996-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
-References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,46 +105,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This will help later when we expand the fields we report.
+This series fully models the behaviour of WFxT instructions. We
+already had support for WFE for M-profile but we left off A-profile as
+it has more potential sources of wake-ups. The main one is the event
+stream which includes events from significant bits of the timer
+ticking over.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/syndrome.h | 20 +++++++++++++++++---
- 1 file changed, 17 insertions(+), 3 deletions(-)
+The series starts with some refactoring of the syndrome register
+helpers to use registerfields. We then expand the WFIT trap handling
+to report the register used. We then implement the event stream events
+for SEV, global monitor and the timer related ones before enabling WFE
+for A-profile and then finally WFET.
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 3bd98a30367..503b19b5d02 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -655,11 +655,25 @@ static inline uint32_t syn_breakpoint(int same_el)
-     return res;
- }
- 
-+/*
-+ * ISS encoding for an exception from a WF* instruction
-+ */
-+FIELD(WFX_ISS, TI, 0, 2)
-+FIELD(WFX_ISS, RV, 2, 1)
-+FIELD(WFX_ISS, RN, 5, 5)
-+FIELD(WFX_ISS, COND, 20, 4)
-+FIELD(WFX_ISS, CV, 24, 1)
-+
- static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
- {
--    return (EC_WFX_TRAP << ARM_EL_EC_SHIFT) |
--           (is_16bit ? 0 : (1 << ARM_EL_IL_SHIFT)) |
--           (cv << 24) | (cond << 20) | ti;
-+    uint32_t res = syn_set_ec(0, EC_WFX_TRAP);
-+    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
-+
-+    res = FIELD_DP32(res, WFX_ISS, CV, cv);
-+    res = FIELD_DP32(res, WFX_ISS, COND, cond);
-+    res = FIELD_DP32(res, WFX_ISS, TI, ti);
-+
-+    return res;
- }
- 
- static inline uint32_t syn_illegalstate(void)
+Note on AI usage. As an experiment I previously posted a series with
+the help of Gemini. This series however is a ground up
+re-implementation which takes some different approaches on modelling
+the event stream. In particular rather than running multiple timers we
+use the same wxft timer and just compute if the timeout or timer event
+will come first.
+
+The only bits that remain from the Gemini experiment are the tests at
+the end of the series. I've split up the patches and audited the
+boot.S changes but I've still to go through the mini-GIC library and
+the test case itself.
+
+Alex.
+
+Alex Bennée (35):
+  target/arm: migrate basic syndrome helpers to registerfields
+  target/arm: migrate system/cp trap syndromes to registerfields
+  target/arm: migrate FP/SIMD trap syndromes to registerfields
+  target/arm: migrate eret trap syndromes to registerfields
+  target/arm: migrate SME trap syndromes to registerfields
+  target/arm: migrate PAC trap syndromes to registerfields
+  target/arm: migrate BTI trap syndromes to registerfields
+  target/arm: migrate BXJ trap syndromes to registerfields
+  target/arm: migrate Granule Protection traps to registerfields
+  target/arm: migrate fault syndromes to registerfields
+  target/arm: migrate debug syndromes to registerfields
+  target/arm: migrate wfx syndromes to registerfields
+  target/arm: migrate gcs syndromes to registerfields
+  target/arm: migrate memory op syndromes to registerfields
+  target/arm: migrate check_hcr_el2_trap to use syndrome helper
+  target/arm: use syndrome helpers in arm_cpu_do_interrupt_aarch32_hyp
+  target/arm: use syndrome helpers to set SAME_EL EC bit
+  target/arm: make whpx use syndrome helpers for decode
+  target/arm: make hvf use syndrome helpers for decode
+  target/arm: use syndrome helpers in merge_syn_data_abort
+  target/arm: use syndrome helpers to query VNCR bit
+  target/arm: remove old syndrome defines
+  target/arm: report register in WFIT syndromes
+  target/arm: remove event_register check from arm_cpu_has_work
+  target/arm: redefine event stream fields
+  target/arm: add gt_calc_next_event_stream
+  target/arm: wrap event_register in a union
+  target/arm: ensure aarch64 DISAS_WFE will exit
+  target/arm: implements SEV/SEVL for all modes
+  target/arm: implement global monitor events
+  target/arm: enable event stream on WFE instructions
+  target/arm: implement WFET
+  tests/tcg: split stage 1 between devices and RAM
+  tests/tcg: create a mini-gic3 library
+  tests/tcg: add basic test for aarch64 wf[ie][t] insns
+
+ target/arm/cpu.h                          |  21 +-
+ target/arm/internals.h                    |  12 +-
+ target/arm/syndrome.h                     | 587 ++++++++++++++++++----
+ target/arm/tcg/helper-defs.h              |   3 +-
+ tests/tcg/aarch64/system/lib/gicv3.h      |  56 +++
+ target/arm/tcg/a32.decode                 |   5 +-
+ target/arm/tcg/a64.decode                 |   5 +-
+ target/arm/tcg/t16.decode                 |   4 +-
+ target/arm/tcg/t32.decode                 |   4 +-
+ hw/intc/armv7m_nvic.c                     |   2 +-
+ target/arm/cpu.c                          |  11 +-
+ target/arm/helper.c                       |  97 +++-
+ target/arm/hvf/hvf.c                      |  14 +-
+ target/arm/machine.c                      |   4 +-
+ target/arm/tcg/debug.c                    |   2 +-
+ target/arm/tcg/m_helper.c                 |   4 +-
+ target/arm/tcg/op_helper.c                | 122 ++++-
+ target/arm/tcg/tlb_helper.c               |   6 +-
+ target/arm/tcg/translate-a64.c            |  60 ++-
+ target/arm/tcg/translate.c                |  19 +-
+ target/arm/tcg/vfp_helper.c               |   5 +-
+ target/arm/whpx/whpx-all.c                |  13 +-
+ tests/tcg/aarch64/system/lib/gicv3.c      |  77 +++
+ tests/tcg/aarch64/system/wfx.c            | 126 +++++
+ tests/tcg/aarch64/Makefile.softmmu-target |  15 +-
+ tests/tcg/aarch64/system/boot.S           |  55 +-
+ 26 files changed, 1116 insertions(+), 213 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.h
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.c
+ create mode 100644 tests/tcg/aarch64/system/wfx.c
+
 -- 
 2.47.3
 

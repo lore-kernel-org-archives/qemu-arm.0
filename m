@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE45E1098782
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:12:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA141098784
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:13:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZYm-000392-Gr; Fri, 20 Mar 2026 09:06:40 -0400
+	id 1w3ZYZ-0002yO-1Z; Fri, 20 Mar 2026 09:06:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYb-000316-Iw
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:29 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ id 1w3ZYT-0002ss-9j
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:21 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYY-00066B-SE
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:29 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-66847de014aso3207031a12.2
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:26 -0700 (PDT)
+ id 1w3ZYR-000622-6k
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:20 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b93698bb57aso398585066b.0
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011985; x=1774616785; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774011977; x=1774616777; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JIk29T9DhqqlbPhNrWYQVA1tgjm08zB9Z2xOKW4fUVs=;
- b=zZwOG00pawGtJxtpb+yTXpaSJwnwY3MKoSnwzeCcgVgyd4bDo2UJlZUpcZDX1WpxIu
- ZxXcZ9OXxzxCt4SB8TRorkMCVPqnrUV3yq3TFpnTAciot+TPZf2uHNCnGy7NVIwva9i7
- 7gz9/jFkcgEUsqcCjhVuEdszDPuuBrnt281mcXlpB+V47xGpQqMjuQDydFMZfpCx/oM2
- oCvzIe7Ocsrxx0rHaYarxZkY0Tpmscunt9qmYvbAyhtuowk3rqULsrBVsb8TG22WeSsL
- XjXSygGcdNFthkobhpoqAwg6AeoiZwrx7OtJGYBiJGS626JQe5rzOBxNITeRK1wR2++N
- fmlw==
+ bh=8STStOoYQOEp/cfPPvlXjVBa3GE+wDGGrfV/kvX1ag8=;
+ b=boAPTB9eSQnVr5ES+YGqhk6SBBc8NN6Ro7rVZq5//F7DqlEF2IqNGcOWnBfxJx9V/T
+ Ctx1OtEvfYMobng9LpyV/Q+aPODn3C/aBMdrUWFxSRsNJBTmB/V1A/VjIvMx5hWHgo9X
+ XsDXtKlXK1ujbdOep0L1M4Poqqd401/znnFOpKPzIneNYBREFWVphYoH5uL5YwpLofxg
+ Ruuf+b6Vu16xnkV0VvPs2wWTPWusaf1z20tMYH3DGAhDE/IpocwdEU705qLxQ1GY1QGl
+ Ehs7JLbiEYwZjSdp0uMBrwZ9GVPVQkQNn3LpFAQehgk6wf+vR/tOkzav7ms0Hi2x5+bA
+ xlzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011985; x=1774616785;
+ d=1e100.net; s=20251104; t=1774011977; x=1774616777;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=JIk29T9DhqqlbPhNrWYQVA1tgjm08zB9Z2xOKW4fUVs=;
- b=n3c4ZNmmp5caOvr0bGF5hJcQvJMlkPCBDL2lGedjeAq4JVh0ITlmh5wk+O9w0mVtgY
- eArCEP1fq3pu/Ggpm0uIRNDH8AKkUGhJHmVOUCArydzdbuKLUaw71UkaBCvfr5iitFBx
- nyRrX+oDfcAXZuuJVlBRx0qayTfpfozw1PUSdH2vfLArDml/31Fif1RHMA+BIpiAiVOc
- R4p0srEp/T/maDgKY3X10XDyz+NYIMNBCVjbEhzBRPvtbu5GJz7xiq7F9o381kAl45z7
- HUhgC8nJdltKw9hlvTL8ZuBzmSkQFO4DDkDQllLFt3Sp5lJYgqUH7oHXjWofKndN6iJg
- Vu6g==
+ bh=8STStOoYQOEp/cfPPvlXjVBa3GE+wDGGrfV/kvX1ag8=;
+ b=eG4FF556tk2py7FdLmU1z0SxHa+w0Prc192/2mGHcWLQAwSAKApXFTaDoIYywkCb8B
+ EPv3In3NCTtzTEzhx4abiB0gCe7lCW2EWXUICTFIhHrH9UEj0w/nwbE0UTpEKy1VFJ/P
+ ccJVNOHXQbYbHl9L634wa67Txfy43DF9Tj2429eepZauCpQvmXoLIk/Z0HRrSlwSc+z5
+ cWNzUc+ct/T6j4CsnxyjEux7ALY2vJdu25BOOfLcMbBqHOfNjcoN9pdeYwuvip4HnLPE
+ E5O9l16NlAMux12+4+P3anV8/egkyseFxFCpRrDKwm2+l5TN4DZwnQSpqf5lBZNs+NVd
+ jOuQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU8+mXUPc7d7xRDxhGraZv+5wLbsuk7zjUA24uXMo+hIYGzmcLDuA7tyz3UWJUj5te0BIrVAY7vgg==@nongnu.org
-X-Gm-Message-State: AOJu0YwPUdlXtE6JVCdzk/+lxWgys3TAWjA46hlnvIBq960WlVwES0X4
- aP5ofYXoe8AHN5PBYBgIcsD9zWXs4zbtoh486Cp/RgPQzykDEX9P7Ss7Xwk7OCE+OCf/8hQiAYu
- Looi2r3k=
-X-Gm-Gg: ATEYQzwmluncPThaHlbSWZG9RTuladqXqWziOC0nnR/suRBtZRhZ+EoZCbgEzmgImt/
- 5ugAiXeeMtZlraN32eJ0Dy8AkexO6snJ3Nq9YpHnkK9TAtPhsyBrssY5YAdgHv3sdypSKm8PGBD
- kySG3vzcTLjvz88wv2uA7mX7JEzmq6xXsOR9fvvsW+5M++IAw38TqmJBATdDUyd2GXIaFjylL1M
- WxG1WgDb3q0AWkLmMY57PC9ViBgFq7/Nyym8TxcA3cW7UTS6vE/30yi6HY/a1rNwYErqs/9pBwP
- 62marft1NfSFNUUU8WVxKZLJRbH65Bxl5f+wDyMYJGuRVTHup/hNRJzPDCcYn3m+tyuTjfOr8/E
- POGS8kPEH4sA0xhpnvRPsKPsvSYmeDSzeCKP8cqHaL5v6yxWEP8HgfyhgNF7PzRspHe54+9bdEC
- ikzvq7aCiF5QT5d+1WpKWEq0A=
-X-Received: by 2002:a17:907:cb89:b0:b93:51df:dd23 with SMTP id
- a640c23a62f3a-b982f1ecb62mr218938766b.16.1774011985297; 
- Fri, 20 Mar 2026 06:06:25 -0700 (PDT)
+ AJvYcCULpf0iGd5fkwpxOJrZU92MQgC1ke6mas/2LZwtFUIzBQJK5ag3gDHMZsc6sOKhfHGSkGS8bKb0gQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyXnTCxdFePqXQOu1FExgKV/v5S+Fvz7Ny0nd8VGPIb0aNYUlKM
+ Dhn09TEreAMuo3xXwD8pvkkPClZ9PIilRDIgayE9pUwX7HZhL8t8Iie4mwqkBtALFnU=
+X-Gm-Gg: ATEYQzzw37easZbZTiUb2tvXqoskD9FndzZyMjVmMs63Jzb7ZmpyhDTHYXq0S2LY8zu
+ MpDur5QOem37ESDUGkdhWt+Om7ggqE24/H1WBTYG+DQKUjDXDp9q+z4prd/PBv58cEFitTwPKGy
+ SkXS8Bbfqqcm2UqiUDpdk16f/VMkl2pnuBApafCqixdxR2o/sz30ULFR1t9hyIoXtvbYOgC9hAD
+ rihYZo+gqpqpZRF/SfCKwcbxKVKsV5v4nCMi9TaNL1txxU2OEOq3ES3TfXjNsstvA53YgJDouz6
+ yT3RkalAoxFJfH0JRpg+LBsz+2k7FzLXuikVhX1Ndhx9ciDnQ5AF7vIqb7WN928d9CvNHut1yDO
+ SUmUeptByzzfTDB5Yit4zkSOwjDVaKHTXgTzjQFnDhiRbtl9ndHuBq1VFmMxci6692849JSmsqM
+ hENcWeouBBYebcSoFpkJ4X24g=
+X-Received: by 2002:a17:907:7f86:b0:b98:654:d9eb with SMTP id
+ a640c23a62f3a-b980fa92acamr415061866b.22.1774011977490; 
+ Fri, 20 Mar 2026 06:06:17 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9832f42c8fsm152962266b.9.2026.03.20.06.06.16
+ a640c23a62f3a-b983387085fsm155870666b.52.2026.03.20.06.06.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:06:19 -0700 (PDT)
+ Fri, 20 Mar 2026 06:06:16 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 573325FAE2;
- Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id D59F15F9CE;
+ Fri, 20 Mar 2026 13:06:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 30/35] target/arm: implement global monitor events
-Date: Fri, 20 Mar 2026 13:06:01 +0000
-Message-ID: <20260320130607.2071996-31-alex.bennee@linaro.org>
+Subject: [RFC PATCH 15/35] target/arm: migrate check_hcr_el2_trap to use
+ syndrome helper
+Date: Fri, 20 Mar 2026 13:05:46 +0000
+Message-ID: <20260320130607.2071996-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,59 +108,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Moving from Exclusive to Open Access should generate event stream
-events. Technically a non-exclusive store to any address range covered
-by the global monitor should also trigger such an event but we can
-only detect that after the event by seeing if memory doesn't match
-cpu_exclusive_val when processing the eventual store exclusive.
-
-The CLREX instruction has the same effect as do other operations
-clearing the exclusive state (such as eret).
+It shares the same COPROC_ISS encoding as the other CP traps although
+not all the fields are used.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/internals.h         | 1 +
- target/arm/tcg/translate-a64.c | 8 ++++++++
- 2 files changed, 9 insertions(+)
+ target/arm/syndrome.h       | 16 ++++++++++++++++
+ target/arm/tcg/vfp_helper.c |  5 +----
+ 2 files changed, 17 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 2296ac9cfb6..2e59d58f3d0 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -690,6 +690,7 @@ void arm_handle_psci_call(ARMCPU *cpu);
- static inline void arm_clear_exclusive(CPUARMState *env)
- {
-     env->exclusive_addr = -1;
-+    env->event_register.as_bool = true;
- }
+diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+index 2e3121aec9c..4fbc35ce7b0 100644
+--- a/target/arm/syndrome.h
++++ b/target/arm/syndrome.h
+@@ -251,6 +251,22 @@ FIELD(COPROC_ISS, OP2, 17, 3)
+ FIELD(COPROC_ISS, COND, 20, 4)
+ FIELD(COPROC_ISS, CV, 24, 1)
  
- /**
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index c25ff9351b4..38a51eb3600 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2270,6 +2270,7 @@ static bool trans_CHKFEAT(DisasContext *s, arg_CHKFEAT *a)
- static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
- {
-     tcg_gen_movi_i64(cpu_exclusive_addr, -1);
-+    gen_event_reg();
-     return true;
- }
- 
-@@ -3336,6 +3337,13 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
-     TCGv_i64 tmp, clean_addr;
-     MemOp memop;
- 
-+    /*
-+     * All StoreExcl operations will transition the global monitor
-+     * from Exclusive to Open Access and at that point generate an
-+     * Event.
-+     */
-+    gen_event_reg();
++static inline uint32_t syn_cp10_rt_trap(int cv, int cond, int opc1,
++                                        int crn, int rt, int isread)
++{
++    uint32_t res = syn_set_ec(0, EC_FPIDTRAP);
++    res = FIELD_DP32(res, SYNDROME, IL, 1);
 +
-     /*
-      * FIXME: We are out of spec here.  We have recorded only the address
-      * from load_exclusive, not the entire range, and we assume that the
++    res = FIELD_DP32(res, COPROC_ISS, CV, cv);
++    res = FIELD_DP32(res, COPROC_ISS, COND, cond);
++    res = FIELD_DP32(res, COPROC_ISS, OP1, opc1);
++    res = FIELD_DP32(res, COPROC_ISS, CRN, crn);
++    res = FIELD_DP32(res, COPROC_ISS, RT, rt);
++    res = FIELD_DP32(res, COPROC_ISS, ISREAD, isread);
++
++    return res;
++}
++
+ static inline uint32_t syn_cp14_rt_trap(int cv, int cond, int opc1, int opc2,
+                                         int crn, int crm, int rt, int isread,
+                                         bool is_16bit)
+diff --git a/target/arm/tcg/vfp_helper.c b/target/arm/tcg/vfp_helper.c
+index 45f2eb0930f..e692bc568bd 100644
+--- a/target/arm/tcg/vfp_helper.c
++++ b/target/arm/tcg/vfp_helper.c
+@@ -1359,10 +1359,7 @@ void HELPER(check_hcr_el2_trap)(CPUARMState *env, uint32_t rt, uint32_t reg)
+         g_assert_not_reached();
+     }
+ 
+-    syndrome = ((EC_FPIDTRAP << ARM_EL_EC_SHIFT)
+-                | ARM_EL_IL
+-                | (1 << 24) | (0xe << 20) | (7 << 14)
+-                | (reg << 10) | (rt << 5) | 1);
++    syndrome = syn_cp10_rt_trap(1, 0xe, 7, reg, rt, 1);
+ 
+     raise_exception(env, EXCP_HYP_TRAP, syndrome, 2);
+ }
 -- 
 2.47.3
 

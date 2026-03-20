@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1360F1098783
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:06:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 823C71098783
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Mar 2026 13:07:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3ZYa-0002zb-DL; Fri, 20 Mar 2026 09:06:28 -0400
+	id 1w3ZYe-000344-Pc; Fri, 20 Mar 2026 09:06:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYY-0002wM-Au
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:26 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1w3ZYb-00030M-0j
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:29 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w3ZYS-00063A-P7
- for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:23 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-66847de014aso3206889a12.2
- for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:20 -0700 (PDT)
+ id 1w3ZYX-000659-To
+ for qemu-arm@nongnu.org; Fri, 20 Mar 2026 09:06:28 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-b980b35534eso351058666b.1
+ for <qemu-arm@nongnu.org>; Fri, 20 Mar 2026 06:06:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774011979; x=1774616779; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774011982; x=1774616782; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HI5bsg6gI1dq5e33RiLLzAmqut1VQt7v+7lGbNwBtkY=;
- b=omSix8FM5u5OljAKjZ+/eBcp7139xPoGWbSvAI91L4KOeINbVvDWMTMHQnTu7XOOhg
- CVrdrxef9nybu7mVTqqhQ/pQblv/48omJo7qVa16zlGXIUF++zk+qEdA5ebxJCXJoxtT
- M5etfFmt8qgJcTURwehq+IpQRPG4zzRkiXG0GR+QBiSUWZ2libR1gx0HEVIyUxY26lek
- tGOxnxAb+gWZCHgGu/DTR1MAPA6FC2gkIVN6HVqI2ZJxqvWDgWUws9/gbATJQ68rr0Hq
- NRX7qGXUpGhgqlmTtQXQqqJIO3QxTtMMZNF88WbyG2GW4AesIloD4xTLwskGc0tAybdj
- ziWg==
+ bh=cAlPlaT/8Hy9mK47F+22fBNn4gCuZDEOegCdhpCflck=;
+ b=lRSjh4uiGKeKuksfm9SRg7D9i01jipHJGKnFOczUGAjlaMfE3crb5Aq7TW9pc5Ugma
+ YIc+7Pon8ebZFGT7nmtGSQa7I4KongQFiXwOYX9Z805YnLDk/rrBGiC4vTkh6NgLOpAW
+ /Q76ak4ZFZlcPEi/w3Df69dn2DotN5cNWUf0vAAsZdt6xguwVGGR9qUIr8ANDTxIfNbc
+ KeTjyCHs8SKDAL/sOOvg1I11DZ4n6psw08w9JG8D1Iir+FvL9fqrIXktOPinl2Gl9jIL
+ N3eEidp/QmvJFLwD2x71mjjCjOs/CG6qWahYdtobmcZz7dEEym2t/o/fdooBwWOwiNbC
+ bfAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774011979; x=1774616779;
+ d=1e100.net; s=20251104; t=1774011982; x=1774616782;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=HI5bsg6gI1dq5e33RiLLzAmqut1VQt7v+7lGbNwBtkY=;
- b=E7NoCuTqhoTXDSr7bJWL9rcoxTx+EpcygEKP4dETs5tElb+Ty+k5r6hmyHmboONslo
- /pn3mZSnBHSNajei2DXVimVlt2WaF/K3KYODG5kIEwscRna2YaVPxPT+IeCuLKgC4Ag9
- wQnzwxR7qBX2UyziZydyK6poiUO3Ubq0ExXz8ECHMrjI1RIaRaUHoCwMBfgDtcdcVOQP
- rBy6VfnM6+ITkPk03CGgUNXCmg/uGr2Jss/RDa9OuyXMF9CCKa6Oxdrn6bPLtFOPGTWn
- RrJN4C9uaRMNsH9tfPVMKoto9nMPmcAEOFcTGIlCrD+KORNQ8MexjRrEIAQvGzAqJdD/
- vHWg==
+ bh=cAlPlaT/8Hy9mK47F+22fBNn4gCuZDEOegCdhpCflck=;
+ b=oL7kE1MLiWhjrjDRdoHq+zO5srYOzqUTpXYclXDXtjaBRIjpzlWprJpnM5N+BZ8/Pw
+ GugICcrt432OKawT46CbqjkOkYSz/VPt5D07b6frO3+9luFu1ovKzORzRhZ+WvKalq+G
+ L6lutXTc4+JGLnladRH9PBP5Wl5T4NFvnZq+Hs1vvv8nnY0/LpfgXnnFMjQXsBW7UK65
+ BvImlIzHSa6n9wPHp/AsZw5dSrK8L+9ZQQwhvwqQPtKhe/cUrMPWcgaTupz0sNzUTDou
+ nUHG8l+b/fuVcds8TbAJdEce3vCgLFSK27ICTD3f0m5KzPtr+3zYcNOBMqPb1835LBKE
+ IAsg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWhZPCJY2A3Hk4hh5tPn0wVVe+WPlvsrcvtlL4mZ4LNQ0d351MBQZKcpH4ph0RiyXpCGWYu4rIIIA==@nongnu.org
-X-Gm-Message-State: AOJu0YyxI+Cl3FGrO9eNK+68LSJ+h/K+UiGuQ7hBTk+33PU8f8vwtIho
- 8utgHxadZ95J9gVIeKV0U/PBAOTjLbwvNq4mfrnBSetzL8Vqg/kjBHzY0KLRmUgWsYY=
-X-Gm-Gg: ATEYQzy0kGhvkSLaYfKY68QZJp8Z6ggn2uj4m3/kk+7e0OnxyEL8m/a4bwvBfkNw0mC
- MnXCcbRma4VTXIRob/QPq6MBl12mgt5zyFpIIMzhn5woyesIB9SprBE8hTX0pm3wyEoRV7KguOH
- NMqVtcza3FhZ4IXwXJlIbZYEBaekoX4F9xRxxG7hBZKlf2EZuTc7XbxfFYaruK/8WZUaeSeclud
- ixFSP2rqcMkBurPEJ8ESt+UTenaQpU1Gns4w0JhTrw4MA7QKMpza9WD07xr/51KWUZW4WQguM8i
- DY5HiHDGZ4wHFu6hyigKlNdsvvmD13waKlEEnRbjIY+JLST2063zC5CRdoMpJ4Hg6FVJTdoV1Xo
- r1CDUcZs4iQCP37/YT1Eu0osAA8kTg4GL5GUwfNeDeEitKuCkLY7bR5wCX6Pr0Hvzn27+SJek5H
- pF4Jrh6qL1qjviOwoxfDXvZlJOCsRlyaug1w==
-X-Received: by 2002:a05:6402:358f:b0:668:599e:103a with SMTP id
- 4fb4d7f45d1cf-668c91005famr2219464a12.8.1774011978920; 
- Fri, 20 Mar 2026 06:06:18 -0700 (PDT)
+ AJvYcCVG/PnhdzYtOHB828owK+scgOS7XvA/iFDlhHP1WQX7Y1Ve5jMcVbsT28cqBQPfXdk0YXeYa+kMqA==@nongnu.org
+X-Gm-Message-State: AOJu0YzUdVGqkb2mixxvcbD5Wwl8HA127us0rB6ImtNyAwumM5VuDCp/
+ +frLUR5fv7lCtPdHwrI0JFQ3JcPyIDgr/dq2SgfVezXNdgUv/q2bsp5mOQJUoauHzbk=
+X-Gm-Gg: ATEYQzzt5rZnD6CW1tWmAYUhOVtILXGUVbcw5r3jesvLJrsLILgT/mCn7AxVOZ8j+Xi
+ flPmhmkf+Vt+Foy9GXBMytKx2auqXvJ+2hEQpY+7LZmIRCwpRIYo3qN5kBlXZhhpbEWfM5T7N3D
+ RjcIzpGBkzuwm+1YD+CleevRKxIYGOTWehFBv7x6sBhhKAEkzv/eaXhcrE2Q45k2x0sE7hWtPIM
+ gf2CqNNEYzXF72qXjjncxnw5tP/PXqQQoUinRKAaXC6MGpwPjawvqXbIXmVzO8BCC37yPYMIiC7
+ TuTcvYJ8gr1dugb/FzMUOwJovHzf9ZWE97Q6fS957SfbFUMzrJEYTIv17l7MlGJHEBFSrGGaZOj
+ 8nUhZcuBadjBQCGgvtIBwOuQOkcqM3F+xcJQ+U26AJrbRXcquHzXvCCEYuVLevQfJqEEPXW/WxK
+ FdImMWlMHcyfzxrBaVzZxrtek=
+X-Received: by 2002:a17:906:f2d4:b0:b8f:c684:db37 with SMTP id
+ a640c23a62f3a-b982f39b0a4mr163030866b.9.1774011981969; 
+ Fri, 20 Mar 2026 06:06:21 -0700 (PDT)
 Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-668d1cc5f1dsm1356965a12.14.2026.03.20.06.06.12
+ a640c23a62f3a-b983365f607sm154760966b.50.2026.03.20.06.06.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Mar 2026 06:06:16 -0700 (PDT)
+ Fri, 20 Mar 2026 06:06:17 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A65445F954;
- Fri, 20 Mar 2026 13:06:08 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id B8E605FAF9;
+ Fri, 20 Mar 2026 13:06:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 13/35] target/arm: migrate gcs syndromes to registerfields
-Date: Fri, 20 Mar 2026 13:05:44 +0000
-Message-ID: <20260320130607.2071996-14-alex.bennee@linaro.org>
+Subject: [RFC PATCH 34/35] tests/tcg: create a mini-gic3 library
+Date: Fri, 20 Mar 2026 13:06:05 +0000
+Message-ID: <20260320130607.2071996-35-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260320130607.2071996-1-alex.bennee@linaro.org>
 References: <20260320130607.2071996-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,72 +107,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Added a little comment to explain the RADDR<->ra mismatch.
+Just enough GIC to trigger timer interrupts.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/syndrome.h | 38 +++++++++++++++++++++++++++++++++-----
- 1 file changed, 33 insertions(+), 5 deletions(-)
+ tests/tcg/aarch64/system/lib/gicv3.h      | 56 +++++++++++++++++
+ tests/tcg/aarch64/system/lib/gicv3.c      | 77 +++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.softmmu-target |  7 ++-
+ 3 files changed, 138 insertions(+), 2 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.h
+ create mode 100644 tests/tcg/aarch64/system/lib/gicv3.c
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 503b19b5d02..76f66b3beef 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -690,21 +690,49 @@ static inline uint32_t syn_pcalignment(void)
-     return res;
- }
- 
+diff --git a/tests/tcg/aarch64/system/lib/gicv3.h b/tests/tcg/aarch64/system/lib/gicv3.h
+new file mode 100644
+index 00000000000..9a1268937c6
+--- /dev/null
++++ b/tests/tcg/aarch64/system/lib/gicv3.h
+@@ -0,0 +1,56 @@
 +/*
-+ * ISS encoding for a GCS exception
++ * GICv3 Helper Library
 + *
-+ * Field validity depends on EXTYPE
++ * Copyright (c) 2024 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+FIELD(GCS_ISS, IT, 0, 5)
-+FIELD(GCS_ISS, RN, 5, 5) /* only for non EXLOCK exceptions */
-+FIELD(GCS_ISS, RADDR, 10, 5) /* only for GCSSTR/GCSSTTR traps */
-+FIELD(GCS_ISS, EXTYPE, 20, 4)
 +
- static inline uint32_t syn_gcs_data_check(GCSInstructionType it, int rn)
- {
--    return ((EC_GCS << ARM_EL_EC_SHIFT) | ARM_EL_IL |
--            (GCS_ET_DataCheck << 20) | (rn << 5) | it);
-+    uint32_t res = syn_set_ec(0, EC_GCS);
-+    res = FIELD_DP32(res, SYNDROME, IL, 1);
++#ifndef GICV3_H
++#define GICV3_H
 +
-+    res = FIELD_DP32(res, GCS_ISS, EXTYPE, GCS_ET_DataCheck);
-+    res = FIELD_DP32(res, GCS_ISS, RN, rn);
-+    res = FIELD_DP32(res, GCS_ISS, IT, it);
++#include <stdint.h>
 +
-+    return res;
- }
++/* Virt machine GICv3 base addresses */
++#define GICD_BASE       0x08000000  /* c.f. VIRT_GIC_DIST */
++#define GICR_BASE       0x080a0000  /* c.f. VIRT_GIC_REDIST */
++
++/* Distributor registers */
++#define GICD_CTLR       (GICD_BASE + 0x0000)
++#define GICD_TYPER      (GICD_BASE + 0x0004)
++#define GICD_IIDR       (GICD_BASE + 0x0008)
++
++/* Redistributor registers (per-CPU) */
++#define GICR_SGI_OFFSET 0x00010000
++
++#define GICR_CTLR       0x0000
++#define GICR_WAKER      0x0014
++#define GICR_IGROUPR0   (GICR_SGI_OFFSET + 0x0080)
++#define GICR_ISENABLER0 (GICR_SGI_OFFSET + 0x0100)
++#define GICR_IPRIORITYR0 (GICR_SGI_OFFSET + 0x0400)
++
++/* GICD_CTLR bits */
++#define GICD_CTLR_ARE_NS (1U << 4)
++#define GICD_CTLR_ENA_G1NS (1U << 1)
++#define GICD_CTLR_ENA_G0 (1U << 0)
++
++/* GICR_WAKER bits */
++#define GICR_WAKER_ChildrenAsleep (1U << 2)
++#define GICR_WAKER_ProcessorSleep (1U << 1)
++
++/**
++ * gicv3_init:
++ *
++ * Initialize GICv3 distributor and the redistributor for the current CPU.
++ */
++void gicv3_init(void);
++
++/**
++ * gicv3_enable_irq:
++ * @irq: The IRQ number to enable
++ *
++ * Enable the specified IRQ (SPI or PPI).
++ */
++void gicv3_enable_irq(unsigned int irq);
++
++#endif /* GICV3_H */
+diff --git a/tests/tcg/aarch64/system/lib/gicv3.c b/tests/tcg/aarch64/system/lib/gicv3.c
+new file mode 100644
+index 00000000000..a09a0e430e6
+--- /dev/null
++++ b/tests/tcg/aarch64/system/lib/gicv3.c
+@@ -0,0 +1,77 @@
++/*
++ * GICv3 Helper Library Implementation
++ *
++ * Copyright (c) 2024 Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "gicv3.h"
++
++#define write_sysreg(r, v) do {                     \
++        uint64_t __val = (uint64_t)(v);             \
++        asm volatile("msr " #r ", %x0"              \
++                 : : "rZ" (__val));                 \
++} while (0)
++
++#define isb() asm volatile("isb" : : : "memory")
++
++static inline void write_reg(uintptr_t addr, uint32_t val)
++{
++    *(volatile uint32_t *)addr = val;
++}
++
++static inline uint32_t read_reg(uintptr_t addr)
++{
++    return *(volatile uint32_t *)addr;
++}
++
++void gicv3_init(void)
++{
++    uint32_t val;
++
++    /* 1. Enable Distributor ARE and Group 1 NS */
++    val = read_reg(GICD_CTLR);
++    val |= GICD_CTLR_ARE_NS | GICD_CTLR_ENA_G1NS;
++    write_reg(GICD_CTLR, val);
++
++    /* 2. Wake up Redistributor 0 */
++    /* Clear ProcessorSleep */
++    val = read_reg(GICR_BASE + GICR_WAKER);
++    val &= ~GICR_WAKER_ProcessorSleep;
++    write_reg(GICR_BASE + GICR_WAKER, val);
++
++    /* Wait for ChildrenAsleep to be cleared */
++    while (read_reg(GICR_BASE + GICR_WAKER) & GICR_WAKER_ChildrenAsleep) {
++        /* spin */
++    }
++
++    /* 3. Enable CPU interface */
++    /* Set Priority Mask to allow all interrupts */
++    write_sysreg(ICC_PMR_EL1, 0xff);
++    /* Enable Group 1 Non-Secure interrupts */
++    write_sysreg(ICC_IGRPEN1_EL1, 1);
++    isb();
++}
++
++void gicv3_enable_irq(unsigned int irq)
++{
++    if (irq < 32) {
++        /* PPI: use GICR_ISENABLER0 */
++        uintptr_t addr;
++
++        /* Set Group 1 */
++        addr = GICR_BASE + GICR_IGROUPR0;
++        write_reg(addr, read_reg(addr) | (1U << irq));
++
++        /* Set priority (0xa0) */
++        addr = GICR_BASE + GICR_IPRIORITYR0 + irq;
++        *(volatile uint8_t *)addr = 0xa0;
++
++        /* Enable it */
++        addr = GICR_BASE + GICR_ISENABLER0;
++        write_reg(addr, 1U << irq);
++    } else {
++        /* SPI: not implemented yet */
++    }
++}
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index f7a7d2b800f..c0939a0eeca 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -4,8 +4,9 @@
  
- static inline uint32_t syn_gcs_exlock(void)
- {
--    return (EC_GCS << ARM_EL_EC_SHIFT) | ARM_EL_IL | (GCS_ET_EXLOCK << 20);
-+    uint32_t res = syn_set_ec(0, EC_GCS);
-+    res = FIELD_DP32(res, SYNDROME, IL, 1);
-+
-+    res = FIELD_DP32(res, GCS_ISS, EXTYPE, GCS_ET_EXLOCK);
-+
-+    return res;
- }
+ AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
+ AARCH64_SYSTEM_SRC=$(AARCH64_SRC)/system
++AARCH64_SYSTEM_LIB_SRC=$(AARCH64_SYSTEM_SRC)/lib
  
- static inline uint32_t syn_gcs_gcsstr(int ra, int rn)
- {
--    return ((EC_GCS << ARM_EL_EC_SHIFT) | ARM_EL_IL |
--            (GCS_ET_GCSSTR_GCSSTTR << 20) | (ra << 10) | (rn << 5));
-+    uint32_t res = syn_set_ec(0, EC_GCS);
-+    res = FIELD_DP32(res, SYNDROME, IL, 1);
-+
-+    res = FIELD_DP32(res, GCS_ISS, EXTYPE, GCS_ET_GCSSTR_GCSSTTR);
-+    /* when ExType == 0b0010 RADDR is the data register */
-+    res = FIELD_DP32(res, GCS_ISS, RADDR, ra);
-+    res = FIELD_DP32(res, GCS_ISS, RN, rn);
-+
-+    return res;
- }
+-VPATH+=$(AARCH64_SYSTEM_SRC)
++VPATH+=$(AARCH64_SYSTEM_SRC) $(AARCH64_SYSTEM_LIB_SRC)
  
- static inline uint32_t syn_serror(uint32_t extra)
+ # These objects provide the basic boot code and helper functions for all tests
+ CRT_OBJS=boot.o
+@@ -24,7 +25,7 @@ LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
+ LDFLAGS=-Wl,-T$(LINK_SCRIPT)
+ TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
+ EXTRA_RUNS+=$(MULTIARCH_RUNS)
+-CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
++CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC) -I$(AARCH64_SYSTEM_LIB_SRC)
+ LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+ 
+ config-cc.mak: Makefile
+@@ -102,6 +103,8 @@ run-pauth-3:
+ 	$(call skip-test, "RUN of pauth-3", "not built")
+ endif
+ 
++gicv3.o: gicv3.c gicv3.h
++	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c $< -o $@
+ ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+ QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
+ QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
 -- 
 2.47.3
 

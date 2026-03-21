@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BC71094486
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 15:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 725EC1094489
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 17:10:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3yXx-00038H-WE; Sat, 21 Mar 2026 11:47:30 -0400
+	id 1w3zpy-0006Y9-RF; Sat, 21 Mar 2026 13:10:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w3yXv-00036e-7M; Sat, 21 Mar 2026 11:47:27 -0400
-Received: from m16.mail.163.com ([117.135.210.5])
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1w3zpx-0006Xw-5v; Sat, 21 Mar 2026 13:10:09 -0400
+Received: from out-173.mta0.migadu.com ([2001:41d0:1004:224b::ad])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w3yXr-0003JT-3a; Sat, 21 Mar 2026 11:47:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=MO
- W1hNfAfn57B9gVKObv9M+ctxXe6YQiGWq7CTF+mIw=; b=BlzFhGVKhbwLdK0LZq
- e7f1RpIHEZe7uaEmsXRy/IpxzaX/9teJxz/VQ+oHhw1HMjwchRELcAfhbIfIrBhG
- mNSeWp+4DWiqhWkcMaMwQ8rEfEDxDdaYUjk9+l0ycRf9H0RMZfOTKRLFx6MGmkDO
- jfXHTol1cxZhdNW667NpoqT+w=
-Received: from dt-VM.localdomain (unknown [])
- by gzsmtp5 (Coremail) with SMTP id QCgvCgAH9XF2vb5p1YbwTQ--.2111S3;
- Sat, 21 Mar 2026 23:47:04 +0800 (CST)
-From: Tao Ding <dingtao0430@163.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Tao Ding <dingtao0430@163.com>
-Subject: [PATCH v1 1/5] Fixed the PL011 FIFO level bug
-Date: Sat, 21 Mar 2026 23:46:56 +0800
-Message-ID: <53bae159845bae966f620b42e7873b7f24404284.1774099044.git.dingtao0430@163.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1774099044.git.dingtao0430@163.com>
-References: <cover.1774099044.git.dingtao0430@163.com>
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1w3zpt-0000XH-95; Sat, 21 Mar 2026 13:10:08 -0400
+Message-ID: <7c4ce7f4-7a50-40e3-b80f-e776eaac4984@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1774112999;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CfMUkxEIRNh0tPbSS5ioPEQH7Id9RaRMDb59lAXqzO0=;
+ b=GxIAb+TkeWZb2bjig9S5KyugH0jz82kqmIyj1trUD86LGRN3Pi0IORVVkX4SkFkW4I+pKS
+ qiDNa/c2z+P2zooZ4veWzVNER9qxjUUT+9iAl2fCWTPcdfEJ6DcKHpBPgX6V6415yj0u+N
+ dREiEm5kKQNZABd3YjbaUajrxoQUKRY=
+Date: Sun, 22 Mar 2026 01:09:53 +0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: QCgvCgAH9XF2vb5p1YbwTQ--.2111S3
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Kw4rur48Jry7ur4rKr15Jwb_yoW8Cw47pF
- na93W5Kas7CF1rXr4rA3WDJr4avFn2qFW2yrWxuFWFva43JrnYgrn2kay2g347WFWSv3yU
- uF43Xr4UJr17uaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zR-18kUUUUU=
-X-Originating-IP: [101.204.36.117]
-X-CM-SenderInfo: pglqw3tdrqkjqq6rljoofrz/xtbC-RmX1Wm+vXkX8gAA3Q
-Received-SPF: pass client-ip=117.135.210.5; envelope-from=dingtao0430@163.com;
- helo=m16.mail.163.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
+Subject: Re: [PATCH rfc] hvf: arm: Inject SEA when executing insn in invalid
+ memory range
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, agraf@csgraf.de
+References: <20260315163840.30741-1-zenghui.yu@linux.dev>
+ <CAFEAcA_kj1eRpjMYDF4b6hD1_P0+PazzdHFfTJFj=Hn231DBGA@mail.gmail.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Zenghui Yu <zenghui.yu@linux.dev>
+In-Reply-To: <CAFEAcA_kj1eRpjMYDF4b6hD1_P0+PazzdHFfTJFj=Hn231DBGA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=2001:41d0:1004:224b::ad;
+ envelope-from=zenghui.yu@linux.dev; helo=out-173.mta0.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,73 +68,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-According to TRM, PL011 generate a burst or a single DMA request based on the FIFO level
+Hi Peter,
 
-The FlowCntrl field description is as follows:
-     Receive interrupt FIFO level select. 
-     b000 = Receive FIFO becomes >= 1/8 full
-     b001 = Receive FIFO becomes >= 1/4 full
-     b010 = Receive FIFO becomes >= 1/2 full
-     b011 = Receive FIFO becomes >= 3/4 full
-     b100 = Receive FIFO becomes >= 7/8 full
-     b101-b111 = reserved
+On 3/20/26 6:52 PM, Peter Maydell wrote:
+> On Sun, 15 Mar 2026 at 16:39, Zenghui Yu <zenghui.yu@linux.dev> wrote:
+> >
+> > It seems that hvf doesn't deal with the abort generated when guest tries to
+> > execute instructions outside of the valid physical memory range, for
+> > unknown reason. The abort is forwarded to userspace and QEMU doesn't handle
+> > it either, which ends up with faulting on the same instruction infinitely.
+> >
+> > This was noticed by the kvm-unit-tests/selftest-vectors-kernel failure:
+> >
+> >   timeout -k 1s --foreground 90s /opt/homebrew/bin/qemu-system-aarch64 \
+> >     -nodefaults -machine virt -accel hvf -cpu host \
+> >     -device virtio-serial-device -device virtconsole,chardev=ctd \
+> >     -chardev testdev,id=ctd -device pci-testdev -display none \
+> >     -serial stdio -kernel arm/selftest.flat -smp 1 -append vectors-kernel
+> >
+> >   PASS: selftest: vectors-kernel: und
+> >   PASS: selftest: vectors-kernel: svc
+> >   qemu-system-aarch64: 0xffffc000: unhandled exception ec=0x20
+> >   qemu-system-aarch64: 0xffffc000: unhandled exception ec=0x20
+> >   qemu-system-aarch64: 0xffffc000: unhandled exception ec=0x20
+> >   [...]
+> >
+> > It's apparent that the guest is braindead and it's unsure what prevents hvf
+> > from injecting an abort directly in that case. Try to deal with the insane
+> > guest in QEMU by injecting an SEA back into it in the EC_INSNABORT
+> > emulation path.
+> 
+> Shouldn't that be an AddressSize fault, not an external abort?
 
-Only the read_trigger of rx has been changed, and there is no need to set a trigger for tx 
-because write tx data always completes in a blocking manner. That means tx FIFO is empty.
+I should have described this problem more clearly, see below.
 
-Signed-off-by: Tao Ding <dingtao0430@163.com>
----
- hw/char/pl011.c | 21 ++++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+> My guess would be that hvf is handing us the EC_INSNABORT
+> cases for the same reason it hands us EC_DATABORT cases --
+> we might have some ability to emulate the access. We probably
+> also get this for cases like "guest tries to execute out of
+> an MMIO device".
+> 
+> What happens for a data access to this kind of
+> out-of-the-physical-memory-range address? Does hvf
+> pass it back to us, or handle it internally?
+> 
+> Is the problem here a bogus virtual address from the guest's
+> point of view, or a valid virtual address that the guest's
+> page tables have translated to an invalid (intermediate)
+> physical address ?
 
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index cb12c3e224..c96a706da1 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -129,6 +129,14 @@ static const uint32_t irqmask[] = {
-     INT_E,
- };
- 
-+static const uint32_t fifo_level[] = {
-+    PL011_FIFO_DEPTH / 8,
-+    PL011_FIFO_DEPTH / 4,
-+    PL011_FIFO_DEPTH / 2,
-+    PL011_FIFO_DEPTH * 3 / 4,
-+    PL011_FIFO_DEPTH * 7 / 8,
-+};
-+
- static void pl011_update(PL011State *s)
- {
-     uint32_t flags;
-@@ -344,17 +352,24 @@ static uint64_t pl011_read(void *opaque, hwaddr offset,
-     return r;
- }
- 
-+static uint32_t pl011_decode_fifo_level(uint32_t val)
-+{
-+    if (val > 4) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "pl011: invalid fifo level field\n");
-+        return 1;
-+    }
-+    return fifo_level[val];
-+}
-+
- static void pl011_set_read_trigger(PL011State *s)
- {
--#if 0
-     /* The docs say the RX interrupt is triggered when the FIFO exceeds
-        the threshold.  However linux only reads the FIFO in response to an
-        interrupt.  Triggering the interrupt when the FIFO is non-empty seems
-        to make things work.  */
-     if (s->lcr & LCR_FEN)
--        s->read_trigger = (s->ifl >> 1) & 0x1c;
-+        s->read_trigger = pl011_decode_fifo_level(extract32(s->ifl, 3, 3));
-     else
--#endif
-         s->read_trigger = 1;
- }
- 
--- 
-2.43.0
+After adding `--trace "hvf_vm_map" --trace "hvf_vm_unmap"` to the
+testing command line, I got:
 
+hvf_vm_map paddr:0x0000000000000000 size:0x04000000 vaddr:0x112a34000
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000004000000 size:0x04000000 vaddr:0x116a38000
+flags:0x05/R-X
+hvf_vm_map paddr:0x0000000040000000 size:0x08000000 vaddr:0x10aa30000
+flags:0x07/RWX
+
+The guest then maps a VA 0xffffc000 to IPA 0x48000000 (an IPA that
+hasn't been "registered" to hvf by hv_vm_map(), and I imprecisely refer
+to it as an insn in invalid memory range) and sets PC to 0xffffc000,
+expecting to receive an insn abort with IFSC equals to 0x10 (i.e., an
+SEA). So the problem here is "a valid virtual address that the guest's
+page tables have translated to an invalid (intermediate) physical
+address".
+
+This is what check_vectors()/check_pabt_init()/check_pabt() have tested,
+if you can be bothered to have a look at kvm-unit-tests. ;-)
+
+As for the AddressSize fault, I checked that on M1, we expose
+ID_AA64MMFR0_EL1.PARange as 0b0001 to guest, so the advertised PA size
+is 36bits (i.e., 64GB).
+
+After hacking KUT to let the guest map a VA to IPA 0x1000000000 (an IPA
+right after 64GB) and execute an insn on that VA, the guest receives an
+insn abort with IFSC equals to 0x03 (Hello, AddressSize fault!). We can
+_infer_ from that that the AddressSize fault is injected internally by
+hvf.
+
+I haven't tried the "data access" side, sorry. Without some docs
+describing which syndromes can be forwarded to userspace, and more
+importantly, given my limited understanding of hvf, I think I'd better
+stop making incomplete hacks (like this patch) to hvf. :-)
+
+> > Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+> > ---
+> >  target/arm/hvf/hvf.c | 23 +++++++++++++++++++++++
+> >  1 file changed, 23 insertions(+)
+> >
+> > diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> > index aabc7d32c1..54d6ea469c 100644
+> > --- a/target/arm/hvf/hvf.c
+> > +++ b/target/arm/hvf/hvf.c
+> > @@ -2332,9 +2332,32 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+> >          bool ea = (syndrome >> 9) & 1;
+> >          bool s1ptw = (syndrome >> 7) & 1;
+> >          uint32_t ifsc = (syndrome >> 0) & 0x3f;
+> > +        uint64_t ipa = excp->physical_address;
+> > +        AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
+> > +        hwaddr xlat;
+> > +        MemoryRegion *mr;
+> > +
+> > +        cpu_synchronize_state(cpu);
+> >
+> >          trace_hvf_insn_abort(env->pc, set, fnv, ea, s1ptw, ifsc);
+> >
+> > +        /*
+> > +         * TODO: If s1ptw, this is an error in the guest os page tables.
+> > +         * Inject the exception into the guest.
+> > +         */
+> > +        assert(!s1ptw);
+> > +
+> > +        mr = address_space_translate(as, ipa, &xlat, NULL, false,
+> > +                                     MEMTXATTRS_UNSPECIFIED);
+> > +        if (unlikely(!memory_region_is_ram(mr))) {
+> 
+> This doesn't look like the right kind of check, given the
+> stated problem. Addresses can be in range but not have RAM.
+> 
+> > +            uint32_t syn;
+> > +
+> > +            /* inject an SEA back into the guest */
+> > +            syn = syn_insn_abort(arm_current_el(env) == 1, ea, false, 0x10);
+> > +            hvf_raise_exception(cpu, EXCP_PREFETCH_ABORT, syn, 1);
+> > +            break;
+> > +        }
+> > +
+> >          /* fall through */
+> 
+> This "fall through" remains not correct, I think, and it's kind
+> of a big part of the problem here -- if we get an EC_INSNABORT
+> handed to us by hvf, then we could:
+>  * stop execution, exiting QEMU (as a "situation we can't
+>    handle and don't know what to do with")
+>  * advance the PC over the insn (questionable...)
+>  * feed some kind of exception into the guest
+> 
+> but "continue execution of the guest without changing PC at all"
+> is definitely wrong. A fix for this problem ought to involve
+> changing the EC_INSNABORT case so that it no lenger does that
+> "fall through to default" at all.
+
+I completely agree with this. Thanks for your suggestion, Peter!
+
+Zenghui
 

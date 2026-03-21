@@ -4,75 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DBA1094471
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 12:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAF401094480
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 15:42:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3vFp-0007u8-Nk; Sat, 21 Mar 2026 08:16:34 -0400
+	id 1w3ySw-0001cs-T7; Sat, 21 Mar 2026 11:42:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1w3vFo-0007tr-CE; Sat, 21 Mar 2026 08:16:32 -0400
-Received: from smtpx.feld.cvut.cz ([2001:718:2:1516::210:153]
- helo=smtpx.fel.cvut.cz)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1w3vFm-0008E9-2q; Sat, 21 Mar 2026 08:16:32 -0400
-Received: from localhost (unknown [192.168.200.27])
- by smtpx.fel.cvut.cz (Postfix) with ESMTP id 929131D3E8;
- Sat, 21 Mar 2026 13:16:20 +0100 (CET)
-X-Virus-Scanned: IMAP STYX AMAVIS
-Authentication-Results: cerokez-250.feld.cvut.cz (amavis);
- dkim=pass (2048-bit key) header.d=fel.cvut.cz
-Received: from smtpx.fel.cvut.cz ([192.168.200.2])
- by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
- with ESMTP id 24d0DMBMfDQ4; Sat, 21 Mar 2026 13:16:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
- s=felmail; t=1774095379;
- bh=lrWJrmvDOvPhQqfjMIj8/1gXYs+NrU6uWZYqUUj9WTc=;
- h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
- b=bXFKaOPPGDS1aBr2VmuidLzV8A0PTT0iGqZ+6Vhsg4PHDDe2id+S8MuXsIHDFesH6
- SrLj+J5ILmRh+WzBq+CdM+uAbCoakbX2p1EvEKSqeLmgQ4pZ+tI7D1xjBG0X9STOSd
- VVBpspnwQ+vdW3+W69Z2IKM2gwQ+8ikRD9Z89IF2etLZ7Bc18JVW5UHQ1xR/wmySGM
- kjkrOGpoAup3lnwf6AuSJjDZP8J9LFABvHSNpNsCMSHLV/ATYZ9aVe0sdiMR7Z+AIa
- lC5a3XzUnLkAur+/w927R8eaCQXmxvyQSszBQ3yVYzNPEMsYx5NW4IursorNjW9rGX
- 7rizcWmFGyc3Q==
-Received: from baree.pikron.com (static-84-242-78-234.bb.vodafone.cz
- [84.242.78.234])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pisa)
- by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id B87D31D4AF;
- Sat, 21 Mar 2026 13:16:18 +0100 (CET)
-From: Pavel Pisa <pisa@fel.cvut.cz>
-To: =?utf-8?q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- "Marc Kleine-Budde" <mkl@pengutronix.de>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 4/7] hw/net/can/flexcan: NXP FlexCAN core emulation
-Date: Sat, 21 Mar 2026 13:16:18 +0100
-User-Agent: KMail/1.9.10
-Cc: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>
-References: <cover.1773866323.git.matyas.bobek@gmail.com>
- <e790990bfaaebf2c1dd884c2c2f4eab5de6d4076.1773866323.git.matyas.bobek@gmail.com>
-In-Reply-To: <e790990bfaaebf2c1dd884c2c2f4eab5de6d4076.1773866323.git.matyas.bobek@gmail.com>
-X-KMail-QuotePrefix: > 
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w3ySv-0001cQ-0S
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2026 11:42:17 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w3ySs-0001q0-Fj
+ for qemu-arm@nongnu.org; Sat, 21 Mar 2026 11:42:16 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4838c15e3cbso23131325e9.3
+ for <qemu-arm@nongnu.org>; Sat, 21 Mar 2026 08:42:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1774107732; x=1774712532; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:cc:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=W4n0xpnHYyCtYB7qxOzXV4IUeVHVaEKMq0frjrxJ2yI=;
+ b=EXNESwvWJVY/QGejLV+EMzLq6LXiOqzWb1VYLzi6nHXuGCE/DVWzu+hmkn27WXDYaW
+ TYSttuI7lZe6P8nKYQTI8hbE/e8mPbcEdWyZ6xeEKggioqrroBMTOs7l6NOZp/i2u3O+
+ X70MzEuedWcJuNM4mGST3M+m2kujC66/kaxPlShvZgcRUlpsW0JB9NVDPW8dOnG+OafA
+ 7yQ0Eft/ViTY6gR8n6a3mmjBuFo5uy/rCgeU9WStHmN1jQSdhQ2C74oAWfmxZ/TptDYG
+ XuURxs1sgcsPa9e28PNZtK4b5yCJ0XXexwiWfmsy3AdqkvmVGKGdqrV6s2AdsG9xotwF
+ wTxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774107732; x=1774712532;
+ h=content-transfer-encoding:in-reply-to:cc:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=W4n0xpnHYyCtYB7qxOzXV4IUeVHVaEKMq0frjrxJ2yI=;
+ b=pGrqn+pUpnECfDDFwdvnqHAleRQQZm9NfYAmjZfvhwpS/bDG1tOWvpTK1KS+Ubx3xt
+ yxD+FUV9hnKdGeQH8XSYmIzqtOwTqJf//kDGLMDH5oJTc/SMItZlGbzTR19JRmTEjUGB
+ cnUu1OhNTNcupcyr6mEeS5hoMedGXzm4lpKebqiMJ0ppaTBUG6S3g2lDM0ShwH0NocGU
+ d3xX8AUshYkNn1V0RuBQKizR+/jZTvMuacH6/KttHQGG/2J/a7PKJeHXrJSyOR8FnL2A
+ uq9K6rox8st6yGR8WPU51Mex+8REw/6EhT/HO7MCQu5fDNjwHBLjY+EcKk/YjR4nq7Az
+ jIBQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU1rTCRRaTUsVp95ETB1WsJ+7VZAJLtJgSQM7HJlMKposDvQmmywuKDpu1kxwhwzi9Ko3FI0Afzfg==@nongnu.org
+X-Gm-Message-State: AOJu0YzbDCpYaBejMyMson1clRCkzmqhhzHsIRc11mFT4D2N1nECgwHB
+ TH9/Cvlnu4vtqzNIki94QEDMvlbaKU1WhOqR0Y9TCV6H5S4Aatx2snfth5GW0vHtpMU=
+X-Gm-Gg: ATEYQzw5IagYbe/qYrpM7Yunb+Hj+BwhVqBAR0Wp6pq52IsjnRFw0dpguqHonxrU86W
+ wo0NU2Bg2zUStNEILHOXAHGuPJF+uLkkdICBkK2R/pf9T3XvUz60UI8lGoNqiWtMV37xafVEOGt
+ g34kICO1CQqKxAZpaTitQlhQ7gYBegR5qOi4mYGkca4hOjGYZKgDlR7Nrzcc16Eo7wBvFo7R7Ql
+ fkelSOqV0nrIVl4jw3GmTrcjRlJ65QAp9/KyQjwH8j4TIvFfrLkHp8ojBmrWMJsUX8AF8ucm6Hx
+ A7esJa/xeCF+2p/j1ov+zmkVJhkZejhgQiM0qsay0gDDUFj9tqTjZDTsfda5TdREON+sCFIN7iU
+ bCpC1aonv4Y5rVODsJsxLGqZW1uAhAozwMxqTm4CwqWDvUzlby10vYME+nWAvocwxuaDZPlM8qi
+ UpmUGA1ASlBrpMmIQcUD/j5h/lf0RlMt3ryJbKeLpJgEuxbgpBgyY9pz8zyjiqFVxrQQ==
+X-Received: by 2002:a05:600c:a112:b0:485:3ff1:d5c5 with SMTP id
+ 5b1f17b1804b1-486febb5904mr72884425e9.7.1774107732051; 
+ Sat, 21 Mar 2026 08:42:12 -0700 (PDT)
+Received: from [192.168.69.206] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-486f8b1fe65sm204545555e9.5.2026.03.21.08.42.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 21 Mar 2026 08:42:11 -0700 (PDT)
+Message-ID: <8a696b3a-f55d-4c9b-ba0b-34c5391de28b@linaro.org>
+Date: Sat, 21 Mar 2026 16:42:09 +0100
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Message-Id: <202603211316.18181.pisa@fel.cvut.cz>
-Received-SPF: pass client-ip=2001:718:2:1516::210:153;
- envelope-from=pisa@fel.cvut.cz; helo=smtpx.fel.cvut.cz
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-2.101, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/65] hw/core: Permit devices to define an array of link
+ properties
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260223170212.441276-1-peter.maydell@linaro.org>
+ <20260223170212.441276-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Kevin Wolf <kwolf@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+In-Reply-To: <20260223170212.441276-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -89,52 +106,352 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Dear QEMU maintainers and developers,
+(+Kevin / Markus / Mark for previous discussions)
 
-please review the code.
+On 23/2/26 18:01, Peter Maydell wrote:
+> Currently we allow devices to define "link properties" with
+> DEFINE_PROP_LINK(): these are a way to give a device a pointer to
+> another QOM object.  (Under the hood this is done by handing it the
+> canonical QOM path for the object.)
+> 
+> We also allow devices to define "array properties" with
+> DEFINE_PROP_ARRAY(): these are a way to give a device a
+> variable-length array of properties.
+> 
+> However, there is no way to define an array of link properties.  If
+> you try to do it by passing qdev_prop_link as the arrayprop argument
+> to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
+> does not provide the .set and .get methods in its PropertyInfo
+> struct.
+> 
+> This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
+> a device you can use it like this:
+> 
+> struct MyDevice {
+>      ...
+>      uint32_t num_cpus;
+>      ARMCPU **cpus;
+> }
+> 
+> and in your Property array:
+>      DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
+>                             TYPE_ARM_CPU, ARMCPU *),
+> 
+> The array property code will fill in s->num_cpus, allocate memory in
+> s->cpus, and populate it with pointers.
+> 
+> On the device-creation side you set the property in the same way as
+> the existing array properties, using the new qlist_append_link()
+> function to append to the QList:
+> 
+>      QList *cpulist = qlist_new();
+>      for (int i = 0; i < cpus; i++) {
+>          qlist_append_link(cpulist, OBJECT(cpu[i]));
+>      }
+>      qdev_prop_set_array(mydev, "cpus", cpulist);
+> 
+> The implementation is mostly in the provision of the .set and
+> .get methods to the qdev_prop_link PropertyInfo struct. The
+> code of these methods parallels the code in
+> object_set_link_property() and object_get_link_property().  We can't
+> completely share the code with those functions because of differences
+> in where we get the information like the target QOM type, but I have
+> pulled out a new function object_resolve_and_typecheck() for the
+> shared "given a QOM path and a type, give me the object or an error"
+> code.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I want this specifically for the GICv5 interrupt controller device
+> I'm working on.  I'd like to be able to pass in links to the CPUs
+> connected to the GIC, so that we don't have to have the code assume
+> that it's connected to CPU numbers 0,1,2... the way the current
+> GICv3 code does.
+> 
+> I think Phil also had a proposed series a while back that wanted
+> to do something similar with one of the existing devices.
 
-On Thursday 19 of March 2026 20:13:11 Maty=C3=A1=C5=A1 Bobek wrote:
-> Added the FlexCAN2 emulator implementation core, with
-> CAN_FLEXCAN Kconfig flag and MAINTAINERS entry.
->
-> FlexCAN2 version can be found in i.MX6 SoCs and others.
->
-> More information about the implementation can be found in [1].
->
-> [1]
-> http://dspace.cvut.cz/bitstream/handle/10467/122654/F3-BP-2025-Bobek-Maty=
-as
->-BP_Bobek_FlexCAN_final_4.pdf
->
-> Signed-off-by: Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.com>
+FTR previous discussions:
 
-Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
-Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
-Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
+https://lore.kernel.org/qemu-devel/47615329-9ae4-f9e0-117d-f7d4300bfdf1@ilande.co.uk/
+https://lore.kernel.org/qemu-devel/CAFEAcA9FT+QMyQSLCeLjd7tEfaoS9JazmkYWQE++s1AmF7Nfvw@mail.gmail.com/
 
-I have tested the series final result as I have already
-confirmed in reply to the cover letter.
+> 
+> I figured I'd post this early for review, though obviously it's a
+> little unmotivated until I have my new GICv5 code into enough shape
+> to submit. This is tested, but with my work-in-progress code.
+> ---
+>   hw/core/qdev-properties.c         | 78 +++++++++++++++++++++++++++++++
+>   include/hw/core/qdev-properties.h | 40 ++++++++++++++++
+>   include/qom/object.h              | 19 ++++++++
+>   qom/object.c                      | 42 ++++++++++-------
+>   4 files changed, 161 insertions(+), 18 deletions(-)
+> 
+> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> index ba8461e9a4..f8181b0d91 100644
+> --- a/hw/core/qdev-properties.c
+> +++ b/hw/core/qdev-properties.c
+> @@ -669,6 +669,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
+>            * being inside the device struct.
+>            */
+>           .offset = (uintptr_t)elem - (uintptr_t)obj,
+> +        .link_type = parent_prop->link_type,
+>       };
+>   }
+>   
+> @@ -950,6 +951,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
+>       qobject_unref(values);
+>   }
+>   
+> +void qlist_append_link(QList *qlist, Object *obj)
+> +{
+> +    g_autofree char *path = object_get_canonical_path(obj);
+> +    qlist_append_str(qlist, path);
+> +}
+> +
+>   static GPtrArray *global_props(void)
+>   {
+>       static GPtrArray *gp;
+> @@ -1059,9 +1066,80 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
+>                                             OBJ_PROP_LINK_STRONG);
+>   }
+>   
+> +/*
+> + * The logic in these get_link() and set_link() functions is similar
+> + * to that used for single-element link properties in the
+> + * object_get_link_property() and object_set_link_property() functions.
+> + * The difference is largely in how we get the expected type of the
+> + * link: for us it is in the Property struct, and for a single link
+> + * property it is part of the property name on the object.
+> + */
+> +static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
+> +                     Error **errp)
+> +{
+> +    const Property *prop = opaque;
+> +    Object **targetp = object_field_prop_ptr(obj, prop);
+> +    g_autofree char *path = NULL;
+> +
+> +    if (*targetp) {
+> +        path = object_get_canonical_path(*targetp);
+> +        visit_type_str(v, name, &path, errp);
+> +    } else {
+> +        path = g_strdup("");
+> +        visit_type_str(v, name, &path, errp);
+> +    }
+> +}
+> +
+> +static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
+> +                     Error **errp)
+> +{
+> +    const Property *prop = opaque;
+> +    Object **targetp = object_field_prop_ptr(obj, prop);
+> +    g_autofree char *path = NULL;
+> +    Object *new_target, *old_target = *targetp;
+> +
+> +    ERRP_GUARD();
+> +
+> +    /* Get the path to the object we want to set the link to */
+> +    if (!visit_type_str(v, name, &path, errp)) {
+> +        return;
+> +    }
+> +
+> +    /* Now get the pointer to the actual object */
+> +    if (*path) {
+> +        new_target = object_resolve_and_typecheck(path, prop->name,
+> +                                                  prop->link_type, errp);
+> +        if (!new_target) {
+> +            return;
+> +        }
+> +    } else {
+> +        new_target = NULL;
+> +    }
+> +
+> +    /*
+> +     * Our link properties are always OBJ_PROP_LINK_STRONG and
+> +     * have the allow_set_link_before_realize check.
+> +     */
+> +    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
+> +    if (*errp) {
+> +        return;
+> +    }
+> +
+> +    *targetp = new_target;
+> +    object_ref(new_target);
+> +    object_unref(old_target);
+> +}
+> +
+>   const PropertyInfo qdev_prop_link = {
+>       .type = "link",
+>       .create = create_link_property,
+> +    /*
+> +     * Since we have a create method, the get and set are used
+> +     * only in get_prop_array() and set_prop_array() for the case
+> +     * where we have an array of link properties.
+> +     */
+> +    .get = get_link,
+> +    .set = set_link,
+>   };
+>   
+>   void qdev_property_add_static(DeviceState *dev, const Property *prop)
+> diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
+> index d8745d4c65..936d06023a 100644
+> --- a/include/hw/core/qdev-properties.h
+> +++ b/include/hw/core/qdev-properties.h
+> @@ -168,6 +168,31 @@ extern const PropertyInfo qdev_prop_link;
+>       DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
+>                   .link_type  = _type)
+>   
+> +/**
+> + * DEFINE_PROP_LINK_ARRAY:
+> + * @_name: name of the array
+> + * @_state: name of the device state structure type
+> + * @_field: uint32_t field in @_state to hold the array length
+> + * @_arrayfield: field in @_state (of type '@_arraytype *') which
+> + *               will point to the array
+> + * @_linktype: QOM type name of the link type
+> + * @_arraytype: C type of the array elements
+> + *
+> + * Define device properties for a variable-length array _name of links
+> + * (i.e. this is the array version of DEFINE_PROP_LINK).
+> + * The array is represented as a list of QStrings in the visitor interface,
+> + * where each string is the QOM path of the object to be linked.
+> + */
+> +#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
+> +                               _linktype, _arraytype)                   \
+> +    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
+> +                .set_default = true,                                    \
+> +                .defval.u = 0,                                          \
+> +                .arrayinfo = &qdev_prop_link,                           \
+> +                .arrayfieldsize = sizeof(_arraytype),                   \
+> +                .arrayoffset = offsetof(_state, _arrayfield),           \
+> +                .link_type = _linktype)
+> +
+>   #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
+>       DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
+>   #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
+> @@ -219,6 +244,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+>   /* Takes ownership of @values */
+>   void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
+>   
+> +/**
+> + * qlist_append_link: Add a QOM object to a QList of link properties
+> + * @qlist: list to append to
+> + * @obj: object to append
+> + *
+> + * This is a helper function for constructing a QList to pass to
+> + * qdev_prop_set_array() when the qdev property array is an array of link
+> + * properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
+> + *
+> + * The object is encoded into the list as a QString which is the
+> + * canonical path of the object; this is the same encoding that
+> + * object_set_link_property() and object_get_link_property() use.
+> + */
+> +void qlist_append_link(QList *qlist, Object *obj);
+> +
+>   void *object_field_prop_ptr(Object *obj, const Property *prop);
+>   
+>   void qdev_prop_register_global(GlobalProperty *prop);
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index 26df6137b9..48fdbf353e 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -1750,6 +1750,25 @@ ObjectProperty *object_class_property_add_link(ObjectClass *oc,
+>                                               Object *val, Error **errp),
+>                                 ObjectPropertyLinkFlags flags);
+>   
+> +
+> +/**
+> + * object_resolve_and_typecheck:
+> + * @path: path to look up
+> + * @name: name of property we are resolving for (used only in error messages)
+> + * @target_type: QOM type we expect @path to resolve to
+> + * @errp: error
+> + *
+> + * Look up the object at @path and return it. If it does not have
+> + * the correct type @target_type, return NULL and set @errp.
+> + *
+> + * This is similar to object_resolve_path_type(), but it insists on
+> + * a non-ambiguous path and it produces error messages that are specialised
+> + * to the use case of setting a link property on an object.
+> + */
+> +Object *object_resolve_and_typecheck(const char *path,
+> +                                     const char *name,
+> +                                     const char *target_type, Error **errp);
+> +
+>   /**
+>    * object_property_add_str:
+>    * @obj: the object to add a property to
+> diff --git a/qom/object.c b/qom/object.c
+> index ff8ede8a32..90b8f3461e 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -1895,26 +1895,13 @@ static void object_get_link_property(Object *obj, Visitor *v,
+>       }
+>   }
+>   
+> -/*
+> - * object_resolve_link:
+> - *
+> - * Lookup an object and ensure its type matches the link property type.  This
+> - * is similar to object_resolve_path() except type verification against the
+> - * link property is performed.
+> - *
+> - * Returns: The matched object or NULL on path lookup failures.
+> - */
+> -static Object *object_resolve_link(Object *obj, const char *name,
+> -                                   const char *path, Error **errp)
+> +Object *object_resolve_and_typecheck(const char *path,
+> +                                     const char *name,
+> +                                     const char *target_type, Error **errp)
+>   {
+> -    const char *type;
+> -    char *target_type;
+>       bool ambiguous = false;
+>       Object *target;
+>   
+> -    /* Go from link<FOO> to FOO.  */
+> -    type = object_property_get_type(obj, name, NULL);
+> -    target_type = g_strndup(&type[5], strlen(type) - 6);
+>       target = object_resolve_path_type(path, target_type, &ambiguous);
+>   
+>       if (ambiguous) {
+> @@ -1931,11 +1918,30 @@ static Object *object_resolve_link(Object *obj, const char *name,
+>           }
+>           target = NULL;
+>       }
+> -    g_free(target_type);
+> -
+>       return target;
+>   }
+>   
+> +/*
+> + * object_resolve_link:
+> + *
+> + * Lookup an object and ensure its type matches the link property type.  This
+> + * is similar to object_resolve_path() except type verification against the
+> + * link property is performed.
+> + *
+> + * Returns: The matched object or NULL on path lookup failures.
+> + */
+> +static Object *object_resolve_link(Object *obj, const char *name,
+> +                                   const char *path, Error **errp)
+> +{
+> +    const char *type;
+> +    g_autofree char *target_type = NULL;
+> +
+> +    /* Go from link<FOO> to FOO.  */
+> +    type = object_property_get_type(obj, name, NULL);
+> +    target_type = g_strndup(&type[5], strlen(type) - 6);
+> +    return object_resolve_and_typecheck(path, name, target_type, errp);
+> +}
+> +
+>   static void object_set_link_property(Object *obj, Visitor *v,
+>                                        const char *name, void *opaque,
+>                                        Error **errp)
 
-I have gone through all commit and tested that the QEMU
-build without errors even for all intermediate states.
+Nitpicking, I'd add object_resolve_and_typecheck() in a preliminary
+patch. Otherwise patch LGTM!
 
-Mark, please, look at the header definition license
-as Matyas Bobek has expressed and I have already
-announced as pleas by e-mail during FOSDEM.
-=20
-Best wishes,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-                Pavel Pisa
-    phone:      +420 603531357
-    e-mail:     pisa@cmp.felk.cvut.cz
-    Department of Control Engineering FEE CVUT
-    Karlovo namesti 13, 121 35, Prague 2
-    university: http://control.fel.cvut.cz/
-    personal:   http://cmp.felk.cvut.cz/~pisa
-    social:     https://social.kernel.org/ppisa
-    projects:   https://www.openhub.net/accounts/ppisa
-    CAN related:http://canbus.pages.fel.cvut.cz/
-    RISC-V education: https://comparch.edu.cvut.cz/
-    Open Technologies Research Education and Exchange Services
-    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
 

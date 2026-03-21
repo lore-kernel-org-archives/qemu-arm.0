@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF966109448A
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 15:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CBA71094489
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 15:48:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3yY8-0003BX-D9; Sat, 21 Mar 2026 11:47:40 -0400
+	id 1w3yXx-00038E-NF; Sat, 21 Mar 2026 11:47:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w3yY5-0003Ae-9F; Sat, 21 Mar 2026 11:47:37 -0400
+ id 1w3yXv-00036d-6H; Sat, 21 Mar 2026 11:47:27 -0400
 Received: from m16.mail.163.com ([220.197.31.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
- id 1w3yY3-0003Lf-CX; Sat, 21 Mar 2026 11:47:37 -0400
+ id 1w3yXq-0003JR-T5; Sat, 21 Mar 2026 11:47:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=cP
- vkD9l8vo5ePWISaGJTwNeqok2VlUfjWRVPVugfjSI=; b=piT+ybwstmT2vak6Ld
- J8L52PF52ehEjQEoRbI91lWdQt46AESl4lHjl1R1kB7iLRXccHhLp74ek0IbTEG8
- JHNMD/JcQsPsYtRwQ9TIcTHs1x/vWKPwSr/HdC3q3fM2B7e9CUJLiUbj9I/hIEGb
- VOouXPg7UM9L/Ap+yCDe12iyY=
+ s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=z5
+ ePYzr5dc8VqIY13zZ5UM75pHZbjpDXm6VJI6eKyJw=; b=Edv2XNgJgDm3hagTOe
+ 3m7SIuSWyF8eG70buPIbVK2NErD7+0kH89oLAXMVAOKeNI8sjJOIBMS0bR/Z03ei
+ 9sUiXfHTm4ETho7UeaB2Qx2XujSf497OAzcAlB5pPCF1DkZhhtknGicPsl7TFjNH
+ J21QP0KsIHHpIGXHY08XjJUt0=
 Received: from dt-VM.localdomain (unknown [])
- by gzsmtp5 (Coremail) with SMTP id QCgvCgAH9XF2vb5p1YbwTQ--.2111S6;
+ by gzsmtp5 (Coremail) with SMTP id QCgvCgAH9XF2vb5p1YbwTQ--.2111S4;
  Sat, 21 Mar 2026 23:47:05 +0800 (CST)
 From: Tao Ding <dingtao0430@163.com>
 To: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	Tao Ding <dingtao0430@163.com>
-Subject: [PATCH v1 4/5] Run pl080_run in main loop
-Date: Sat, 21 Mar 2026 23:46:59 +0800
-Message-ID: <97fc49242d026d0784ee31816a3561dc6b316c8e.1774099044.git.dingtao0430@163.com>
+Subject: [PATCH v1 2/5] PL011 generate receive timeout interrupt
+Date: Sat, 21 Mar 2026 23:46:57 +0800
+Message-ID: <3411a43d161ef59db3db1d7ed0f84839d50ceb33.1774099044.git.dingtao0430@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1774099044.git.dingtao0430@163.com>
 References: <cover.1774099044.git.dingtao0430@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: QCgvCgAH9XF2vb5p1YbwTQ--.2111S6
-X-Coremail-Antispam: 1Uf129KBjvJXoW7uF4xuw4DCrWrZr4kWw47CFg_yoW8urW8pr
- WkuF15uFWUtF1UGa90kw1xKF15Jan7WrW5ZFWfC3sayrZ0yF1kAFykX343KrWxJrZ7Zr45
- urWYqFW7GF4jvr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U3Ma5UUUUU=
+X-CM-TRANSID: QCgvCgAH9XF2vb5p1YbwTQ--.2111S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7KFWrWr1ktw4fAw48KFyUWrg_yoW8GFy5pr
+ ZY9Fy5Gwn7Kr18Zr4ayw4kXF13Zr1vvayjkry8A34UZas8Gw1rXr9rAayag3y2kFWft3yj
+ vFnIqr1UZF929aUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uga9hUUUUU=
 X-Originating-IP: [101.204.36.117]
-X-CM-SenderInfo: pglqw3tdrqkjqq6rljoofrz/xtbC4hmX1Wm+vXnWVAAA3o
+X-CM-SenderInfo: pglqw3tdrqkjqq6rljoofrz/xtbC4hmX1Wm+vXnWTgAA3y
 Received-SPF: pass client-ip=220.197.31.2; envelope-from=dingtao0430@163.com;
  helo=m16.mail.163.com
 X-Spam_score_int: 0
@@ -74,83 +74,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Accessing MMIO in QEMU will trigger pl080_run. If it is a memory to memory data transfer, 
-it is generally faster, so it will not significantly block vCPU. But when dealing with peripherals, 
-time is uncontrollable because it is unknown when the peripherals will generate data. 
-This will result in continuous blocking of vCPU. 
+After changing the read_trigger, no interrupt will be generated when the data 
+in the rx FIFO of pl011 does not reach the FIFO level. This will cause input 
+in the console to have no effect in Linux, until data input exceeds the FIFO level.
 
-Due to the presence of BQL in qemu, mmio access and bh callbacks are safty.
+But UART will generate an interrupt after a timeout period after RX receives the data. 
+The relevant description of this in TRM : 
+    *The receive timeout interrupt is asserted when the receive FIFO is not empty, and no 
+    more data is received during a 32-bit period.
+
+To simplify this operation, pl011 immediately generates an RT interrupt upon receiving data, 
+which means the period is triggered instantly. (QEMUTimer triggering is also optional)
 
 Signed-off-by: Tao Ding <dingtao0430@163.com>
 ---
- hw/dma/pl080.c         | 11 +++++++++--
- include/hw/dma/pl080.h |  3 +++
- 2 files changed, 12 insertions(+), 2 deletions(-)
+ hw/char/pl011.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
-index 627ccbbd81..3596739854 100644
---- a/hw/dma/pl080.c
-+++ b/hw/dma/pl080.c
-@@ -232,6 +232,12 @@ again:
-     pl080_update(s);
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index c96a706da1..58803f0fc2 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -200,6 +200,9 @@ static void pl011_fifo_rx_put(void *opaque, uint32_t value)
+     }
+     if (s->read_count == s->read_trigger) {
+         s->int_level |= INT_RX;
++    }
++    if (s->read_count) {
++        s->int_level |= INT_RT;
+         pl011_update(s);
+     }
  }
- 
-+static void pl080_run_cb(void *opaque)
-+{
-+    PL080State *s = PL080(opaque);
-+    pl080_run(s);
-+}
-+
- static uint64_t pl080_read(void *opaque, hwaddr offset,
-                            unsigned size)
- {
-@@ -326,7 +332,7 @@ static void pl080_write(void *opaque, hwaddr offset,
-             break;
-         case 4: /* Configuration */
-             s->chan[i].conf = value;
--            pl080_run(s);
-+            qemu_bh_schedule(s->bh);
-             break;
-         }
-         return;
-@@ -351,7 +357,7 @@ static void pl080_write(void *opaque, hwaddr offset,
-             qemu_log_mask(LOG_UNIMP,
-                           "pl080_write: Big-endian DMA not implemented\n");
-         }
--        pl080_run(s);
-+        qemu_bh_schedule(s->bh);
-         break;
-     case 13: /* Sync */
-         s->sync = value;
-@@ -405,6 +411,7 @@ static void pl080_init(Object *obj)
-     sysbus_init_irq(sbd, &s->interr);
-     sysbus_init_irq(sbd, &s->inttc);
-     s->nchannels = 8;
-+    s->bh = qemu_bh_new(pl080_run_cb, s);
- }
- 
- static void pl080_realize(DeviceState *dev, Error **errp)
-diff --git a/include/hw/dma/pl080.h b/include/hw/dma/pl080.h
-index 6635cd8e93..397417aa06 100644
---- a/include/hw/dma/pl080.h
-+++ b/include/hw/dma/pl080.h
-@@ -31,6 +31,7 @@
- 
- #include "hw/core/sysbus.h"
- #include "qom/object.h"
-+#include "qemu/main-loop.h"
- 
- #define PL080_MAX_CHANNELS 8
- 
-@@ -68,6 +69,8 @@ struct PL080State {
- 
-     MemoryRegion *downstream;
-     AddressSpace downstream_as;
-+
-+    QEMUBH *bh;
- };
- 
- #endif
+@@ -281,6 +284,7 @@ static uint32_t pl011_read_rxdata(PL011State *s)
+     }
+     if (s->read_count == 0) {
+         s->flags |= PL011_FLAG_RXFE;
++        s->int_level &= ~INT_RT;
+     }
+     if (s->read_count == s->read_trigger - 1) {
+         s->int_level &= ~INT_RX;
 -- 
 2.43.0
 

@@ -4,110 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D5FC108B8FF
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 05:51:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DBA1094471
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 12:16:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w3pEg-0000y4-31; Sat, 21 Mar 2026 01:50:58 -0400
+	id 1w3vFp-0007u8-Nk; Sat, 21 Mar 2026 08:16:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1w3pEa-0000xI-Ue; Sat, 21 Mar 2026 01:50:54 -0400
-Received: from fout-a4-smtp.messagingengine.com ([103.168.172.147])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1w3pEX-0007BS-70; Sat, 21 Mar 2026 01:50:52 -0400
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
- by mailfout.phl.internal (Postfix) with ESMTP id A0D0EEC0113;
- Sat, 21 Mar 2026 01:50:44 -0400 (EDT)
-Received: from phl-imap-18 ([10.202.2.89])
- by phl-compute-02.internal (MEProxy); Sat, 21 Mar 2026 01:50:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
- cc:cc:content-transfer-encoding:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm3; t=1774072244;
- x=1774158644; bh=RRtfR5e2ZlMbp50vZXrBUCW0kymEC/MrW4PG2X1HoKM=; b=
- VFYAWh7wQ+t4dsNVDkN6Iw+BwNf38B4qFDy9GjPdggYBuH7knI5LjSmUp7KvPNok
- D2GnjiYe+FIu1MYU18VrR2hN7kdtcaNNm3GHXx2tmKwHVWu4C7vnOmw8pmYsmve8
- kV0lZU/NgfN9Oy83TGAgA02LC2NRcp5jXsgW6aTqvRDHG6l7fM07lVJEZzASnDxP
- yq+5QnTONQklHWOKMcfVTG1UUGJwSg1C5dq1bsVyYxDd4m/a1aMA3ANrb0j3nChH
- 1OjllUW4TfXD4ryOQgwpI/SaUIg7ruN14tPixR9KoiZ+4JIQZVdVobaSDMTqee84
- Jxi/oEUk0YVqcC2qz4qVKA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1774072244; x=
- 1774158644; bh=RRtfR5e2ZlMbp50vZXrBUCW0kymEC/MrW4PG2X1HoKM=; b=2
- +3bruGF/uIoj9ur2whpKKRLcxqPUeh8IyDS7oKms+6eDl5xHUYRuewmLtN9nuf90
- gkXfoSAQz+vkVbHPukNlWZ14wYrlF1KsM0eViTCJE7oxx8Wk4eu+BU5P5wVsZfZy
- rFLLpfYeADvYyt18vODQy+wBbU0IUkBUFCKynI3mws8DIOVF0e6tD6IFfKGKphId
- b0O+vUaLPNkXRXx4PK/uODWetftRUW8gthI9PQHK+Rn3olSkWSwlYOUv5OAJMaq3
- fKgdEHQ02slaBe5qEFZdc4RUDMX5dZAfT7mUmyScqcpUjc29avHRx5LnpDi0CT1Q
- BuY8wfYjSlQx1ZfLXauBA==
-X-ME-Sender: <xms:sjG-aYCtAu6tX5TAPP-xlBsp6dZZhRhoHmv4Z25Hd5ELHSEuppVX2A>
- <xme:sjG-aVWzk4y73Qwkkzxm89Hb4ey6uWaAjWuhX3iMLeQYTikNJbhSusJGSpvoKH876
- EkbWs6xX1nTMZ_e5hH30XZTxRU08EpWdJq5i46q1fq4bsCns2EicQc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdefuddvtddvucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
- gurhepofggfffhvfevkfgjfhfutgfgsehtjeertdertddtnecuhfhrohhmpedftehlvgig
- ucghihhllhhirghmshhonhdfuceorghlvgigsehshhgriigsohhtrdhorhhgqeenucggtf
- frrghtthgvrhhnpefgfeeflefggfffveffteetiedvtedtgfdvieevfeejfeefffevteej
- tedufffgveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpegrlhgvgiesshhhrgiisghothdrohhrghdpnhgspghrtghpthhtohepudefpdhmohgu
- vgepshhmthhpohhuthdprhgtphhtthhopegrrhhnugesrghrnhgusgdruggvpdhrtghpth
- htohepghgvvghrthdorhgvnhgvshgrshesghhlihguvghrrdgsvgdprhgtphhtthhopehl
- rghnughonhgtlhhiphhpsehgmhgrihhlrdgtohhmpdhrtghpthhtohepmhgrghhnuhhsrd
- gurghmmhesghhmrghilhdrtghomhdprhgtphhtthhopehlrghurhgvnhhtrdhpihhntghh
- rghrthesihguvggrshhonhgsohgrrhgurdgtohhmpdhrtghpthhtohepphgvthgvrhdrmh
- grhiguvghllheslhhinhgrrhhordhorhhgpdhrtghpthhtoheprhgvnhigihgrohhfsehl
- ihhnuhigrdhvnhgvthdrihgsmhdrtghomhdprhgtphhtthhopehqvghmuhdqrghrmhesnh
- honhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdr
- ohhrgh
-X-ME-Proxy: <xmx:sjG-aUy-oYcGoovuYKPKnQM_po2oS_CnaTvadegDVPvPXsub5R28eg>
- <xmx:sjG-ab9BrAQIcdsVsATWyPXypUxRsnCp_xcZ_mFfxroIAsHdJBvusw>
- <xmx:sjG-ae_l9MXNq132DL2chdiHIV6ikHr1thGkuJ5lhxlAuFHtVBV0mg>
- <xmx:sjG-aT7orrrDgeRMYF4_nI2qZCjKQ3b86ikJEme2EiJMXXfL6HlTBg>
- <xmx:tDG-aXqCjn3gbMnei31EhyAoc0qBGRO3h5t51wc_6Dxogn8m4SA1ACv8>
-Feedback-ID: i03f14258:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
- id C274215C008C; Sat, 21 Mar 2026 01:50:42 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+ (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
+ id 1w3vFo-0007tr-CE; Sat, 21 Mar 2026 08:16:32 -0400
+Received: from smtpx.feld.cvut.cz ([2001:718:2:1516::210:153]
+ helo=smtpx.fel.cvut.cz)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
+ (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
+ id 1w3vFm-0008E9-2q; Sat, 21 Mar 2026 08:16:32 -0400
+Received: from localhost (unknown [192.168.200.27])
+ by smtpx.fel.cvut.cz (Postfix) with ESMTP id 929131D3E8;
+ Sat, 21 Mar 2026 13:16:20 +0100 (CET)
+X-Virus-Scanned: IMAP STYX AMAVIS
+Authentication-Results: cerokez-250.feld.cvut.cz (amavis);
+ dkim=pass (2048-bit key) header.d=fel.cvut.cz
+Received: from smtpx.fel.cvut.cz ([192.168.200.2])
+ by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
+ with ESMTP id 24d0DMBMfDQ4; Sat, 21 Mar 2026 13:16:19 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
+ s=felmail; t=1774095379;
+ bh=lrWJrmvDOvPhQqfjMIj8/1gXYs+NrU6uWZYqUUj9WTc=;
+ h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
+ b=bXFKaOPPGDS1aBr2VmuidLzV8A0PTT0iGqZ+6Vhsg4PHDDe2id+S8MuXsIHDFesH6
+ SrLj+J5ILmRh+WzBq+CdM+uAbCoakbX2p1EvEKSqeLmgQ4pZ+tI7D1xjBG0X9STOSd
+ VVBpspnwQ+vdW3+W69Z2IKM2gwQ+8ikRD9Z89IF2etLZ7Bc18JVW5UHQ1xR/wmySGM
+ kjkrOGpoAup3lnwf6AuSJjDZP8J9LFABvHSNpNsCMSHLV/ATYZ9aVe0sdiMR7Z+AIa
+ lC5a3XzUnLkAur+/w927R8eaCQXmxvyQSszBQ3yVYzNPEMsYx5NW4IursorNjW9rGX
+ 7rizcWmFGyc3Q==
+Received: from baree.pikron.com (static-84-242-78-234.bb.vodafone.cz
+ [84.242.78.234])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pisa)
+ by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id B87D31D4AF;
+ Sat, 21 Mar 2026 13:16:18 +0100 (CET)
+From: Pavel Pisa <pisa@fel.cvut.cz>
+To: =?utf-8?q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
+ "Marc Kleine-Budde" <mkl@pengutronix.de>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH v2 4/7] hw/net/can/flexcan: NXP FlexCAN core emulation
+Date: Sat, 21 Mar 2026 13:16:18 +0100
+User-Agent: KMail/1.9.10
+Cc: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Oliver Hartkopp <socketcan@hartkopp.net>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>
+References: <cover.1773866323.git.matyas.bobek@gmail.com>
+ <e790990bfaaebf2c1dd884c2c2f4eab5de6d4076.1773866323.git.matyas.bobek@gmail.com>
+In-Reply-To: <e790990bfaaebf2c1dd884c2c2f4eab5de6d4076.1773866323.git.matyas.bobek@gmail.com>
+X-KMail-QuotePrefix: > 
 MIME-Version: 1.0
-X-ThreadId: AC0Qvsrv4yKJ
-Date: Fri, 20 Mar 2026 23:50:22 -0600
-From: "Alex Williamson" <alex@shazbot.org>
-To: "Landon Clipp" <landonclipp@gmail.com>,
- "Geert Uytterhoeven" <geert+renesas@glider.be>
-Cc: "Peter Maydell" <peter.maydell@linaro.org>,
- "Auger Eric" <eric.auger@redhat.com>,
- "Xiao Feng Ren" <renxiaof@linux.vnet.ibm.com>,
- "Arnd Bergmann" <arnd@arndb.de>, "Alexander Graf" <agraf@suse.de>,
- "Magnus Damm" <magnus.damm@gmail.com>,
- "Laurent Pinchart" <laurent.pinchart@ideasonboard.com>,
- "Wolfram Sang" <wsa+renesas@sang-engineering.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, linux-renesas-soc@vger.kernel.org
-Message-Id: <3b8c2bbe-72dc-4425-8381-c0323c692933@app.fastmail.com>
-In-Reply-To: <DH807PW5SQCW.3AA422QQRGVAH@gmail.com>
-References: <1518189456-2873-1-git-send-email-geert+renesas@glider.be>
- <1518189456-2873-5-git-send-email-geert+renesas@glider.be>
- <20180209085024.004b6f9e@w520.home> <DH807PW5SQCW.3AA422QQRGVAH@gmail.com>
-Subject: Re: [Qemu-arm] [PATCH/RFC 4/5] vfio: No-IOMMU mode support
-Content-Type: text/plain
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=103.168.172.147; envelope-from=alex@shazbot.org;
- helo=fout-a4-smtp.messagingengine.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: Text/Plain;
+  charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+Message-Id: <202603211316.18181.pisa@fel.cvut.cz>
+Received-SPF: pass client-ip=2001:718:2:1516::210:153;
+ envelope-from=pisa@fel.cvut.cz; helo=smtpx.fel.cvut.cz
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-2.101, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,62 +89,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Mar 20, 2026, at 5:38 PM, Landon Clipp wrote:
-> On Fri Feb 9, 2018 at 9:50 AM CST, Alex Williamson wrote:
->> On Fri,  9 Feb 2018 16:17:35 +0100
->> Geert Uytterhoeven <geert+renesas@glider.be> wrote:
->>
->>> From: Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
->>> 
->>> Add qemu support for the newly introduced VFIO No-IOMMU driver.
->>> 
->>> We need to add special handling for:
->>> - Group character device is /dev/vfio/noiommu-$GROUP.
->>> - No-IOMMU does not rely on a memory listener.
->>> - No IOMMU will be set for its group, so no need to call
->>>   vfio_kvm_device_add_group.
->>> 
->>> Signed-off-by: Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>
->>> [geert: Rebase]
->>> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
->>> ---
->>>  hw/vfio/common.c              | 61 ++++++++++++++++++++++++++++++++++---------
->>>  include/hw/vfio/vfio-common.h |  2 ++
->>>  2 files changed, 50 insertions(+), 13 deletions(-)
->>
->> NAK.  I'm opposed to no-iommu support in QEMU in general, but accepting
->> vfio devices with no-iommu (which provide no DMA translation!!!)
->> transparently as if they might actually work like a regular vfio device
->> is absolutely unacceptable.  Without DMA translation and isolation, you
->> might want to think about another interface, I'm not keen on the idea
->> of corrupting vfio support in order to blink some LEDs.  Thanks,
->>
->> Alex
->>
+Dear QEMU maintainers and developers,
+
+please review the code.
+
+On Thursday 19 of March 2026 20:13:11 Maty=C3=A1=C5=A1 Bobek wrote:
+> Added the FlexCAN2 emulator implementation core, with
+> CAN_FLEXCAN Kconfig flag and MAINTAINERS entry.
 >
-> 8 years later, I was wondering if we could revisit this. I found myself in a
-> need to use enable_unsafe_noiommu_mode due to some systems I'm using not having
-> a usable IOMMU. QEMU is being used as part of a single-tenant workload
-> sandboxing environment, and given the specific circumstances, both the users and
-> the administrators understand that enabling the noiommu mode is unsafe and
-> cannot be used where security matters. Regardless, it's still something we want.
+> FlexCAN2 version can be found in i.MX6 SoCs and others.
 >
-> As the administrator of my system, it's under my control whether VFIO is put
-> into this mode, and if it is, I would expect the remaning software components
-> to respect that decision. As is, the system is unusable because of a lack of
-> support in QEMU.
+> More information about the implementation can be found in [1].
 >
-> I'm happy to elucidate more of my use-case if it is helpful, but I 
-> first wanted to
-> gauge your willingness to reconsider this under a different context.
+> [1]
+> http://dspace.cvut.cz/bitstream/handle/10467/122654/F3-BP-2025-Bobek-Maty=
+as
+>-BP_Bobek_FlexCAN_final_4.pdf
+>
+> Signed-off-by: Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.com>
 
-I'm not aware of anything that's improved the chances of accepting something like this.
+Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
+Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
+Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
 
-In fact, a vfio-platform motivated feature is arguably on worse footing now.
+I have tested the series final result as I have already
+confirmed in reply to the cover letter.
 
-More importantly, QEMU now has support for vfio-user, so I believe you can already do this.  The model would be a vfio-noiommu userspace driver that exposes a vfio-user interface for QEMU.
+I have gone through all commit and tested that the QEMU
+build without errors even for all intermediate states.
 
-All of the previous issues with security and virtualization still remain with implementing this support directly in QEMU.  Providing a DMA capable no-iommu device to a QEMU sandbox negates any isolation it might otherwise provide.  With the vfio-user no-iommu driver model, you take on the security burden to use only non-DMA capable devices, or mediate the access, rather than asking the QEMU community to assume that risk.  Thanks,
+Mark, please, look at the header definition license
+as Matyas Bobek has expressed and I have already
+announced as pleas by e-mail during FOSDEM.
+=20
+Best wishes,
 
-Alex
+                Pavel Pisa
+    phone:      +420 603531357
+    e-mail:     pisa@cmp.felk.cvut.cz
+    Department of Control Engineering FEE CVUT
+    Karlovo namesti 13, 121 35, Prague 2
+    university: http://control.fel.cvut.cz/
+    personal:   http://cmp.felk.cvut.cz/~pisa
+    social:     https://social.kernel.org/ppisa
+    projects:   https://www.openhub.net/accounts/ppisa
+    CAN related:http://canbus.pages.fel.cvut.cz/
+    RISC-V education: https://comparch.edu.cvut.cz/
+    Open Technologies Research Education and Exchange Services
+    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
 

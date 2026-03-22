@@ -4,86 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7156109449E
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Mar 2026 23:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F833FC72C2
+	for <qemu-arm@archiver.kernel.org>; Sun, 22 Mar 2026 10:53:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w45bH-0002z2-V0; Sat, 21 Mar 2026 19:19:25 -0400
+	id 1w4GQj-00038x-UC; Sun, 22 Mar 2026 06:53:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <josemartins90@gmail.com>)
- id 1w45bG-0002yO-Si
- for qemu-arm@nongnu.org; Sat, 21 Mar 2026 19:19:22 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <josemartins90@gmail.com>)
- id 1w45bF-0002L1-8S
- for qemu-arm@nongnu.org; Sat, 21 Mar 2026 19:19:22 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-439af7d77f0so2172720f8f.0
- for <qemu-arm@nongnu.org>; Sat, 21 Mar 2026 16:19:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1774135159; x=1774739959; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=taN5i5PqZqqZVzFggF/Qi/FgD648VkuyzwYuJ2FNeCg=;
- b=Rd5Eav4ZUby/GihHQyVAey3mKNhzYZnKhUSjn1qyvo61QeXwi/QOrmiKq/vE6H6/Ue
- M4Fk8ySg0IwtJcQI8P0pYrGC9uC0DFoQJxRCV9fmU71z2TKF7h+UnJpZwj/wItaeaI1I
- bYH61TNhw2N1/qQ9AtJ86lsMhhQYZZx3DJtHn0Hap1+p3LvWAYB3tieOhRA+26bRmddy
- UZNb8B0+xBHA4OdEKkBu/TZBO5NVyQKPV4wZ6bw4AHf1ZdGLGbxoM4P3NqnOigTe5Hz+
- L+/P2SG7ezbbcxDyHGmROW/YpDC3E0rDmNKC0L1iPWzbH72rSVdzMSMr84PfxzGfzOFe
- rwzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774135159; x=1774739959;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=taN5i5PqZqqZVzFggF/Qi/FgD648VkuyzwYuJ2FNeCg=;
- b=CBU8LJgGe5ewHIPgrL8c4D+2AVeVK7nWzS4+SfLVrRS2UpjqqM8ZZAa3F1sxabeRix
- GklPXyWUjlKlQOmJko/G9zBRfxpLpVUNQ5/Gu5fLe5MAieJ3A2gTtcIMb/QNZSRexAAS
- oulnSGQCvaaBe+uratHT8fua9z7FiwDWqGWPmkITDlCXhUT6E50cEmOyEyeesWB5LY9/
- /iZTQNLHgjI4b9yndCqNWocCfWLK/tOGXFgKw1JDhOtA2MMJfc1mH8OUT4fKmTwMi3Zu
- 6zAESrLWtq2s9cDVcZMxeE+PDHzbYfGYZ3bCF1x0ioMtql007a6FYN6p6GAwshBCQRT1
- 07yA==
-X-Gm-Message-State: AOJu0Yx87ZCQdMFDriklExq75PWNVNp9FK6WYGKfRejws/UkYsCI0dJp
- XVSw5u54Ph4+kPVLg7V3IyWy0QIZybXpabirv4Ics/6mXllsnrr2D6+OyMVClg==
-X-Gm-Gg: ATEYQzzGnSUM6wYDjS2at6K3Fmn7unpOQupcwTKsMq2RQIPzPKKVULZ7oYGZzS1oywx
- fBnnseK9tWvvG7mGGx7KiZIu0Ec4D+uSVYuFEsr6/yqJybmRZi/cpbHoQcUdzmVjxO0b44RBNTu
- meOxcdzUaCMDxpinbQ8Y5C/MK+yVH7UBOq0PKiU5NvADICku952bxMz/oFsBYYsJSuBGch5CBlz
- bu6zk6U3OUEW8kDUMadrUtbfQAANR1M9DKlNCqZiOZPF2UbkuEuI0NHtCkOFmq6d8xUfPR+66pF
- 2ieka2WM5TCvRIVICArBLVFc/L2WHJ+/ojjpoKMPdawlCYS1POz9Hy/xowefUT30MR5Iar6oZoM
- ajddM75Uz9DLjBGb7Thw24Qb3A1hVry32ktaeQqR7/unjIg2TIaHa684eutN7CYOLhTNdEvgbf2
- iiHu0IPwiuOlGPZAtAJ85hF7ncRB8dgmknHO65cR/BPeKjoIej1BY1h7itH80mrIUOURrV
-X-Received: by 2002:a05:6000:184d:b0:43b:5762:2989 with SMTP id
- ffacd0b85a97d-43b6427b212mr12005836f8f.49.1774135159222; 
- Sat, 21 Mar 2026 16:19:19 -0700 (PDT)
-Received: from josecm-msi (a89-153-207-214.cpe.netcabo.pt. [89.153.207.214])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b644bd923sm20264431f8f.12.2026.03.21.16.19.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 Mar 2026 16:19:18 -0700 (PDT)
-From: Jose Martins <josemartins90@gmail.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org,
- Jose Martins <josemartins90@gmail.com>
-Subject: [PATCH 1/1] target/arm: fix s2prot not set for two-stage PMSA
- translations
-Date: Sat, 21 Mar 2026 23:19:16 +0000
-Message-ID: <20260321231916.2852653-1-josemartins90@gmail.com>
-X-Mailer: git-send-email 2.53.0
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1w4GQi-00038b-QN; Sun, 22 Mar 2026 06:53:12 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1w4GQg-00057u-DY; Sun, 22 Mar 2026 06:53:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1774176769; bh=mX9iGIz8dQmdaIijCO31Op+aL9t1Rr1H1xGlKZ1ek+M=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=k3xcYMnF30aRChNELgN2bXgwFitMEQ6duCHQcKv7BdVesPbQeExuVXf19rHensAcT
+ 3UUsPGHWLkxFGQ+ina7GrFYJbdGMWnkdCBfWRkjJdMk5PKAf06UWx5AlTv8OTLlnCU
+ Rj6Lj9MSuuSlgBdNcP81qOVs37K8jeZYz/779XeZEYbpFtKTfk8SUQTVhrppprI0Fy
+ 2X0MK9WZ06htnJTn84uxs0vEmyJCuKXD9A/N0FSC0oQa5g7U0ReizoXqUbg4i+ShqN
+ Q94J+LfS4l1VLUtCB56VGnO4IzcgATukDO/EcVM339DzgkY/YKuHHqe518co0urbwm
+ nUSrDsAX2hg6w==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8D4AB1963E9;
+ Sun, 22 Mar 2026 13:52:49 +0300 (MSK)
+Message-ID: <b8f6ec6d-60ba-4620-93ee-f4053d368c85@tls.msk.ru>
+Date: Sun, 22 Mar 2026 13:53:04 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=josemartins90@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.0] Fix several typos in documentation (found by
+ codespell)
+To: Stefan Weil <sw@weilnetz.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <20260319183453.100545-1-sw@weilnetz.de>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260319183453.100545-1-sw@weilnetz.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,64 +118,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-commit 015cefc0ed65 ("target/arm: Add in_prot_check to S1Translate")
-changed get_phys_addr_twostage() to combine stage 1 and stage 2
-permissions using the new s2prot field:
+On 19.03.2026 21:34, Stefan Weil via wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> 
+> These typos are part of the generated documentation.
+> Therefore they should be fixed in the new release.
+> 
+> More typos can be found in the remaining code, mostly in comments.
+> 
+> Regards,
+> Stefan
+> 
+> ---
 
-  result->f.prot = s1_prot & result->s2prot;
+Missing s-o-b?
 
-The LPAE stage 2 path sets result->s2prot explicitly, but the PMSA
-stage 2 path (get_phys_addr_pmsav8) only sets result->f.prot, leaving
-s2prot at zero. This causes the combined permission to be zero,
-resulting in addr_read being set to -1 in the TLB entry and triggering
-an assertion in atomic_mmu_lookup() when the guest executes an atomic
-instruction on a two-stage PMSA platform (e.g. Cortex-R52 with EL2).
+I can fold changes suggested by Peter to this patch, but without S-o-b
+it's not good.
 
-Set s2prot from f.prot after the PMSA stage 2 lookup, consistent with
-what the LPAE path does.
+Thanks,
 
-Fixes: 015cefc0ed65 ("target/arm: Add in_prot_check to S1Translate")
-Signed-off-by: Jose Martins <josemartins90@gmail.com>
----
-This issue was found while running a Bao hypervisor [1] demo on the
-mps3-an536 machine, which features a Cortex-R52 with virtualization
-support (PMSAv8 with EL2). Bao uses the stage 2 PMSA MPU to partition
-memory between guest VMs. With QEMU >= 10.2.0 the demo crashes
-immediately after the first guest VCPU is scheduled, when the guest
-executes its first atomic instruction:
+/mjt
 
-  ERROR:../accel/tcg/cputlb.c:1848:atomic_mmu_lookup: \
-      code should not be reached
-
-To reproduce, clone the bao-demos repository [2] and follow the
-instructions for the mps3-an536 platform and baremetal demo. With this
-patch applied, the demo boots successfully.
-
-[1] https://github.com/bao-project/bao-hypervisor
-[2] https://github.com/bao-project/bao-demos
-
- target/arm/ptw.c | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 8b8dc09e72..e289f88124 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3200,6 +3200,13 @@ static bool get_phys_addr_pmsav8(CPUARMState *env,
- 
-     ret = pmsav8_mpu_lookup(env, address, access_type, ptw->in_prot_check,
-                             mmu_idx, secure, result, fi, NULL);
-+    /*
-+     * For two-stage PMSA translations, s2prot holds the stage 2
-+     * permissions to be combined with stage 1 in get_phys_addr_twostage().
-+     */
-+    if (regime_is_stage2(mmu_idx)) {
-+        result->s2prot = result->f.prot;
-+    }
-     if (sattrs.subpage) {
-         result->f.lg_page_size = 0;
-     }
--- 
-2.53.0
 
 

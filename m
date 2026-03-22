@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F5BED58CA1
-	for <qemu-arm@archiver.kernel.org>; Sun, 22 Mar 2026 21:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29E42D58CAA
+	for <qemu-arm@archiver.kernel.org>; Sun, 22 Mar 2026 21:58:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4Qnu-0003gX-0D; Sun, 22 Mar 2026 17:57:50 -0400
+	id 1w4Qo0-0003iL-RY; Sun, 22 Mar 2026 17:57:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4Qnr-0003fk-EI
- for qemu-arm@nongnu.org; Sun, 22 Mar 2026 17:57:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4Qnw-0003gz-4A
+ for qemu-arm@nongnu.org; Sun, 22 Mar 2026 17:57:52 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4Qnp-00073I-J5
- for qemu-arm@nongnu.org; Sun, 22 Mar 2026 17:57:47 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4Qnu-00074g-Nv
+ for qemu-arm@nongnu.org; Sun, 22 Mar 2026 17:57:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774216662;
+ s=mimecast20190719; t=1774216670;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=9gozPB7CdKRYxYQWRTF2Ereajk/w8h6m2h36wRhuI28=;
- b=b/zO1LDJIFDHenQATba2e2yp9PS20+gYPu0dWqSVrKIOTy43QicZDg+2MP1nK2l6Wmtn03
- xANN6WUyshE85Q1XxPywk/7+wgY1mXDaaI8ARV6PJLJw0BOHsu7KQ2LJgl5XMLhmRdgfy5
- +ayBJmsq6z2cmJHDgY8wMMg/OqDudh4=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=w+zR4CHZKqEzE6EWL7+Cb/iO18yqfAa7R5SdF4FE98I=;
+ b=TMfbnJ2OBVo3aBO2kfmDPUjEOLrDpdC89EpdqAHTjHcUS7+dSoZMKDhJinYBqIISEGjIdZ
+ ooM6r29+amp4xoQVTQ3IRejWRuJJKIHAcyRgkPC4dRu+1nqEb9GLt7wOJKlAX9NlF5h+HA
+ Ya5UEJ3rbqUQEqFqgMRt/pqhQMVKkl8=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-282-nIF-9F5iPli60K6yiH7u2A-1; Sun,
- 22 Mar 2026 17:57:39 -0400
-X-MC-Unique: nIF-9F5iPli60K6yiH7u2A-1
-X-Mimecast-MFC-AGG-ID: nIF-9F5iPli60K6yiH7u2A_1774216658
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-215-fkfgBn5lOLmpknpw40_tTg-1; Sun,
+ 22 Mar 2026 17:57:46 -0400
+X-MC-Unique: fkfgBn5lOLmpknpw40_tTg-1
+X-Mimecast-MFC-AGG-ID: fkfgBn5lOLmpknpw40_tTg_1774216665
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7FE561956089; Sun, 22 Mar 2026 21:57:37 +0000 (UTC)
+ id 68202195608B; Sun, 22 Mar 2026 21:57:45 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.42])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B185F19560B7; Sun, 22 Mar 2026 21:57:34 +0000 (UTC)
+ id 665D019560B7; Sun, 22 Mar 2026 21:57:43 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 0/3] aspeed: Improve error handling and fix DMA issues
-Date: Sun, 22 Mar 2026 22:57:29 +0100
-Message-ID: <20260322215732.387383-1-clg@redhat.com>
+Subject: [PATCH 3/3] hw/i2c/aspeed_i2c: Remove assert
+Date: Sun, 22 Mar 2026 22:57:32 +0100
+Message-ID: <20260322215732.387383-4-clg@redhat.com>
+In-Reply-To: <20260322215732.387383-1-clg@redhat.com>
+References: <20260322215732.387383-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: woTJ-BGYIvKPcOUW0Bjw1aLrRU-3cmgUHEiM6FdIgmE_1774216658
+X-Mimecast-MFC-PROC-ID: WiShhFHx2h2E5OhIjz7SCgi6wIgj9KrYo0H8fIN2MpY_1774216665
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -83,41 +86,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+According to the Aspeed datasheet, the RX_BUF_LEN_W1T and
+TX_BUF_LEN_W1T bits of the A_I2CS_DMA_LEN (0x2c) register allow
+firmware to program the TX and RX DMA length (TX_BUF_LEN and
+RX_BUF_LEN fields of the same register) separately without the need to
+read/modify/write the value.  If RX_BUF_LEN_W1T and TX_BUF_LEN_W1T
+bits are 0, then both TX and RX DMA length will be written.
 
-This series addresses several error handling issues in Aspeed device
-models that could lead to guest-triggerable denial of service or
-incorrect behavior.
+When setting the RX_BUF_LEN field, the TX_BUF_LEN field being set is
+not an invalid condition. Remove the assert.
 
-The first two patches improve DMA error handling by properly
-propagating memory transaction errors to the guest. The aspeed_smc
-patch converts memory operations to use read/write_with_attrs to
-return MEMTX_ERROR on invalid conditions, while the ftgmac100 patch
-checks DMA operation return values.
-
-The third patch fixes an incorrect assertion in the aspeed_i2c model
-that could be triggered when firmware uses the RX_BUF_LEN_W1T bit to
-program DMA length fields separately, which is valid per the Aspeed
-datasheet.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3335
 Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3315
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/i2c/aspeed_i2c.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Thanks,
-
-C. 
-
-Cédric Le Goater (3):
-  hw/ssi/aspeed_smc: Convert mem ops to read/write_with_attrs for error
-    handling
-  ftgmac100: Improve DMA error handling
-  hw/i2c/aspeed_i2c: Remove assert
-
- hw/i2c/aspeed_i2c.c |  1 -
- hw/net/ftgmac100.c  | 10 ++++++--
- hw/ssi/aspeed_smc.c | 58 ++++++++++++++++++++++++++-------------------
- 3 files changed, 42 insertions(+), 27 deletions(-)
-
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index ad6342bec0d4..5d18f8d49ea4 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -780,7 +780,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CS_DMA_RX_ADDR] = value;
+         break;
+     case A_I2CS_DMA_LEN:
+-        assert(FIELD_EX32(value, I2CS_DMA_LEN, TX_BUF_LEN) == 0);
+         if (FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN_W1T)) {
+             ARRAY_FIELD_DP32(bus->regs, I2CS_DMA_LEN, RX_BUF_LEN,
+                              FIELD_EX32(value, I2CS_DMA_LEN, RX_BUF_LEN));
 -- 
 2.53.0
 

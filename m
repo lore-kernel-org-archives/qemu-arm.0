@@ -4,94 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06C5F4613C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 15:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D590F4613F
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 15:58:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4heP-0005MB-3N; Mon, 23 Mar 2026 11:57:09 -0400
+	id 1w4hfO-0006WS-Ul; Mon, 23 Mar 2026 11:58:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w4he3-0005Eh-A7
- for qemu-arm@nongnu.org; Mon, 23 Mar 2026 11:56:50 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w4he0-0007tH-C7
- for qemu-arm@nongnu.org; Mon, 23 Mar 2026 11:56:47 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-b980b35534eso710338666b.1
- for <qemu-arm@nongnu.org>; Mon, 23 Mar 2026 08:56:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774281402; x=1774886202; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=L4sVo7ipM3ZjIyISVk1iGmWS/zTxx2pGnjJAKAGfU5o=;
- b=McPDaYw9FqfR1O4HsI1de5DkJM+wfOcGgv0A+FbiX3PCGNehhhSl60wKOyorI58dts
- cpO/6kMl9CQGhPH0B2oECcRRL0pynzebE10ba6l11XSQTcrE6Abuc9Q3oSVJXqPO3cfT
- hUxwhEg7m8KE7jpVn/nDtfM7I6326FQmbBFtkxlkZ2raXXDIA6Tn2wTmjyr1e9+rbLq/
- +AstBaj4QpMaDI319xMyG7qhE9iFp7rclHv0p9u2O9k8MvGVS/J0qkUeGe5in5s3jHGP
- J7MuhTSLnt3oYwaD0mtIGj0g9P+bVuWFvUUqNBTT6THztMFcdsgs2aVrAkuUSmSmktKv
- c7ew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774281402; x=1774886202;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=L4sVo7ipM3ZjIyISVk1iGmWS/zTxx2pGnjJAKAGfU5o=;
- b=EdjYXwxstooz/R0kflLi0gKdauBctQFh2FugPp7ppizbn5eEf58msXKkp1BcskDPNG
- ZwhXH4gJbM3zDg0896LRCJ3fbZh5iamMyR+hPjQ6wswTqZuWucaKvXh/QZcvEWz78iTj
- ox9i+Ntkk1Mr2e425PpGLSj+bjKS4u2dF4SeP08F9rqhiaqmt8LBX4nUVefqg/SPtsfY
- 3NRZLBidLERQFmsyuDBqBm2qmqWF0qnw36A4OIPnjUJXEeICNk+1mtBBueVFtKw7SUFE
- x5qsOvP9zgQlvFjsucT0jm/TKf0QGXg6a0x/FqSk6tu/DuV9BJv0D31GRWXontviIKLg
- HHBw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX6DXvqZwXzeyL7M6vcVV/LPkAV8ySiJf1Z7cKkS81sYKHagjflEcwF1T7i8ZYh8WJOE/ETJol67g==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2F7YDkLyTObPmxjlsZAha1m5H3d7hrXKlmbm7OIFWUJGNTBAM
- 5iWnhe6Tpzooare3I/uo6vgN7oecMUQgKx0zgcUyj5lKb8ErbtCINJZzRx6+r7PmRl8=
-X-Gm-Gg: ATEYQzxnm63zZlpyygK2V09HtfDrc9dE/+THnzR2w1pgrnZVmA9xbs5S+6SsMm4pcVo
- xodUagJQujP5/zlYsxsoNASI9ti3OxuVTtRnvYUqmrgw9jR5WuYTjraapT44krjLOSrmNS9oMwq
- 4i3Pq242XqHrC4ABK1o65mqTR3MEpBIzz6+t1jX2aYKBgogM/CydCNQIfcPZgJz0Sih0XfudZJb
- n+LI2M3MH3QlaArt8lvof7QJfYjq+2oIyfhPnE6dh+7aiwAtO2Ku5MT38fV0O+g4qu9D60oLJYm
- aEbRQTrB95f+Sp0qa772l5SX1OsV7TkRGQen47kMu8Y5E7L1dIftoMIAEajsSUSXBwnuIvFHS6i
- N9Nu7amsqrtIdfFxya0TZqkNEy2tZq6ODuvJKZwdIo9hMdg7us8+9r8FUupcRuEUwNLhBXdYYL+
- +S3lvvVwN4YInri8RTtzKNPbU=
-X-Received: by 2002:a17:907:5c8:b0:b98:3293:ebb3 with SMTP id
- a640c23a62f3a-b988641045amr5649466b.26.1774281401635; 
- Mon, 23 Mar 2026 08:56:41 -0700 (PDT)
-Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9833663137sm520102566b.49.2026.03.23.08.56.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Mar 2026 08:56:38 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 389C95F878;
- Mon, 23 Mar 2026 15:56:38 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL 4/8] tests/functional: add VBSA linux tests
-Date: Mon, 23 Mar 2026 15:56:33 +0000
-Message-ID: <20260323155637.145015-5-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260323155637.145015-1-alex.bennee@linaro.org>
-References: <20260323155637.145015-1-alex.bennee@linaro.org>
+ (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
+ id 1w4hfE-00064d-77; Mon, 23 Mar 2026 11:58:00 -0400
+Received: from m16.mail.163.com ([220.197.31.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dingtao0430@163.com>)
+ id 1w4hf6-0007z1-OA; Mon, 23 Mar 2026 11:57:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Content-Type:Message-ID:Date:MIME-Version:Subject:
+ To:From; bh=NBd5CC8iIWClqebrf+oO0dCEhOq9QvIxqIi2dsxBFIc=; b=fsIR
+ rKRa3lylr+wi9ezZdwnMxx9bNi+4rIO1a+V5+voIVqODJpxx2IIhCHWnupFXknlR
+ 8zDGDHNp/7IeHamQnW3IWTyDyG8Nj8G5G+TzIc8hS8Z/xygZ3AEBRoRtcQXfAabv
+ u3Ogze4Tm6VPNrs82n0UvZ7M+fa8NueHSZhdjOg=
+Received: from [IPV6:2408:8266:ba01:2dde:d488:e165:11a4:9190] (unknown [])
+ by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id
+ _____wBXvg7YYsFpiNTxAw--.1738S2; 
+ Mon, 23 Mar 2026 23:57:12 +0800 (CST)
+Content-Type: multipart/alternative;
+ boundary="------------Rk41Iv0XiaB600HD5c7aTA0S"
+Message-ID: <6f0e0760-296c-4720-a542-03732e4735e9@163.com>
+Date: Mon, 23 Mar 2026 23:57:14 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 5/5] PL080 add transfer memory and peripheral
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <cover.1774099044.git.dingtao0430@163.com>
+ <6ade608e668d8fb9e720639333a48120bb814d41.1774099044.git.dingtao0430@163.com>
+ <CAFEAcA97JFytdf1ZZfoMX-Rt92kfOgq304WahUWD2tQY6WsW+w@mail.gmail.com>
+From: Tao Ding <dingtao0430@163.com>
+In-Reply-To: <CAFEAcA97JFytdf1ZZfoMX-Rt92kfOgq304WahUWD2tQY6WsW+w@mail.gmail.com>
+X-CM-TRANSID: _____wBXvg7YYsFpiNTxAw--.1738S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7tFWDur17Wr47WF43CryDZFb_yoW8XryDpa
+ yaka1vkw1kXa4Ivwn7Cw4xtFyrCw1fJrsIyrZ8tr4DAwn8JrWFyry7Kw1YvFWkCws3u3W7
+ Cw4jva4UWa1qvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07U9SdkUUUUU=
+X-Originating-IP: [2408:8266:ba01:2dde:d488:e165:11a4:9190]
+X-CM-SenderInfo: pglqw3tdrqkjqq6rljoofrz/xtbC4RiZ12nBYtiriQAA3H
+Received-SPF: pass client-ip=220.197.31.5; envelope-from=dingtao0430@163.com;
+ helo=m16.mail.163.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,182 +75,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This extends the VBSA test to run the linux tests. The sysarch-acs
-test suite does provide some pre-built images which is good because
-the tests require a patched kernel. However due to the structure of
-the image we need to jump one or two hoops to get something useful:
+This is a multi-part message in MIME format.
+--------------Rk41Iv0XiaB600HD5c7aTA0S
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-  - download and double decompress (zip then xz) the image
-  - navigate grub to launch the Linux Execution Environment
-  - shutdown the system once tests are done
-  - extract the logs from the MSDOS file system and parse them
+Hi, Thanks for the review and the historical context. I don't have a 
+strong use case for peripheral DMA transfers at the moment, so I'll drop 
+that part for now and focus on the bug fixes first. 1.handling the "last 
+transfer is short" case 2.fixing the transfer size register decrement 
+I'll send the updated patches shortly. Thanks, Tao
 
-It does make the code a bit ugly but it works for me at least. So far
-the subset of tests run is limited but that might be solved by adding
-some more devices to the PCIe bus to exercise the SMMU behaviour.
+> On Sat, 21 Mar 2026 at 15:47, Tao Ding<dingtao0430@163.com> wrote:
+>> On the interface, 0~15 represents single request, 16~31 represents burst request.
+>> Access peripheral data based on the validity of the request. For the convenience,
+>> we only respond to single requests. The number of data read from the source and written
+>> to the destination is always equal, with a value of max(swidth, dwidth).
+>>
+>> Due to the lack of data preparation by the peripheral, it is necessary to cache data separately
+>> for each channel until the peripheral is ready for processing.
+>>
+>> The width of peripherals perhaps not possible to process all data at once,
+>> so continuous processing is required. Read from source is achieved through "continue",
+>> while writing to destination is achieved through "goto".
+> This has tangled up the original bugs we were trying to fix
+> (that we weren't handling the "last transfer is short" case,
+> and we weren't decrementing the transfer size register by the
+> right amount) with the DMA transfer code.
+>
+> Can you start the patch series with the bug fixes, and then
+> if you want the DMA transfer implementation do that second,
+> please?
+>
+> thanks
+> -- PMM
+--------------Rk41Iv0XiaB600HD5c7aTA0S
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20260320155107.2143191-5-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF=
+-8">
+  </head>
+  <body>
+    <pre><span
+data-slate-fragment=3D"JTVCJTdCJTIydHlwZSUyMiUzQSUyMnBhcmFncmFwaCUyMiUyQy=
+UyMmNoaWxkcmVuJTIyJTNBJTVCJTdCJTIyaWQlMjIlM0ElMjJ2eHdXZzBvMHd6JTIyJTJDJTI=
+ycGFyYUlkeCUyMiUzQTAlMkMlMjJzcmMlMjIlM0ElMjJJJTIwd2lsbCUyMHByaW9yaXRpemUl=
+MjBmaXhpbmclMjBidWdzJTIwaW4lMjBwbDA4MCUyMGFuZCUyMHRlbXBvcmFyaWx5JTIwcHV0J=
+TIwdGhlJTIwcGVyaXBoZXJhbCUyMHRyYW5zZmVyJTIwZnVuY3Rpb24lMjBvbiUyMGhvbGQlMj=
+IlMkMlMjJkc3QlMjIlM0ElMjIlRTYlODglOTElRTUlQjAlODYlRTQlQkMlOTglRTUlODUlODg=
+lRTQlQkYlQUUlRTUlQTQlOERwbDA4MCVFNCVCOCVBRCVFNyU5QSU4NCVFOSU5NCU5OSVFOCVB=
+RiVBRiVFRiVCQyU4QyVFNSVCOSVCNiVFNiU5QSU4MiVFNiU5NyVCNiVFNiU5MCU4MSVFNyVCR=
+CVBRSVFNSVBNCU5NiVFNSU5QiVCNCVFNCVCQyVBMCVFOCVCRSU5MyVFNSU4QSU5RiVFOCU4My=
+VCRCUyMiUyQyUyMm1ldGFkYXRhJTIyJTNBJTIyJTIyJTJDJTIybWF0Y2hlcyUyMiUzQW51bGw=
+lMkMlMjJ0cmFuc2xhdGVkQnklMjIlM0FudWxsJTJDJTIybWV0YURhdGElMjIlM0ElNUIlNUQl=
+MkMlMjJ0ZXh0JTIyJTNBJTIySSUyMHdpbGwlMjBwcmlvcml0aXplJTIwZml4aW5nJTIwYnVnc=
+yUyMGluJTIwcGwwODAlMjBhbmQlMjB0ZW1wb3JhcmlseSUyMHB1dCUyMHRoZSUyMHBlcmlwaG=
+VyYWwlMjB0cmFuc2ZlciUyMGZ1bmN0aW9uJTIwb24lMjBob2xkJTIyJTdEJTVEJTdEJTVE"
+    style=3D"white-space: pre;">Hi,
 
-diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
-index 1dd4cecde1e..57bfe5d7af2 100755
---- a/tests/functional/aarch64/test_virt_vbsa.py
-+++ b/tests/functional/aarch64/test_virt_vbsa.py
-@@ -10,7 +10,8 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import shutil
--from subprocess import check_call, DEVNULL
-+import re
-+from subprocess import check_call, check_output, DEVNULL
- 
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import get_qemu_img, skipIfMissingCommands
-@@ -28,6 +29,20 @@ def wait_for_console_pattern(self, success_message, vm=None):
-                                  failure_message='FAILED',
-                                  vm=vm)
- 
-+    def append_firmware_blobs(self):
-+        """
-+        Setup QEMU firmware blobs for boot.
-+        """
-+        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
-+        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
-+        vars_path = self.scratch_file('vars.fd')
-+        shutil.copy(vars_source, vars_path)
-+
-+        self.vm.add_args('-drive',
-+                         f'if=pflash,format=raw,readonly=on,file={code_path}')
-+        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
-+
-+
-     ASSET_VBSA_EFI = Asset(
-         'https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
-         '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
-@@ -45,20 +60,12 @@ def test_aarch64_vbsa_uefi_tests(self):
- 
-         self.vm.set_console()
- 
--        # virt machine wi
-+        # virt machine
-         self.set_machine('virt')
-         self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
-         self.vm.add_args('-cpu', 'max', '-m', '1024')
- 
--        # We will use the QEMU firmware blobs to boot
--        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
--        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
--        vars_path = self.scratch_file('vars.fd')
--        shutil.copy(vars_source, vars_path)
--
--        self.vm.add_args('-drive',
--                         f'if=pflash,format=raw,readonly=on,file={code_path}')
--        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
-+        self.append_firmware_blobs()
- 
-         # Build an EFI FAT32 file-system for the UEFI tests
-         vbsa_efi = self.ASSET_VBSA_EFI.fetch()
-@@ -102,5 +109,98 @@ def test_aarch64_vbsa_uefi_tests(self):
-         self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
- 
- 
-+    ASSET_SYSREADY_IMAGE = Asset(
-+        'https://github.com/ARM-software/arm-systemready/'
-+        'releases/download/v25.10_SR_3.1.0/systemready_acs_live_image.img.xz.zip',
-+        'df2c359de15784b1da6a8e6f3c98a053ee38ac0b3f241ccea62e17db092eb03a')
-+
-+    ROOT_PROMPT = '/ # '
-+
-+    @skipIfMissingCommands("sfdisk", "jq", "sed")
-+    def test_aarch64_vbsa_linux_tests(self):
-+        """
-+        Launch the Linux based VBSA test from the ACS prebuilt images.
-+
-+        We can use the pre-built images and then trigger the Linux
-+        build and run the tests. We then need to slurp the results
-+        from the partition.
-+        """
-+
-+        self.vm.set_console()
-+
-+        # Plain virt machine
-+        self.set_machine('virt')
-+        self.vm.add_args('-M', 'virt,gic-version=max')
-+        self.vm.add_args('-cpu', 'max', '-m', '1024', '-smp', '4')
-+
-+        self.append_firmware_blobs()
-+
-+        # First fetch, decompress (twice) and prepare the disk image
-+        # on an NVME device (the kernel only has drivers for that).
-+        self.archive_extract(self.ASSET_SYSREADY_IMAGE, format="zip")
-+        disk_image_xz = self.scratch_file("systemready_acs_live_image.img.xz")
-+        disk_image = self.uncompress(disk_image_xz)
-+
-+        self.vm.add_args('-device',
-+                         'nvme,drive=hd,serial=QEMU_ROOT_SSD')
-+        self.vm.add_args('-blockdev',
-+                         f'driver=raw,node-name=hd,file.driver=file,file.filename={disk_image}')
-+
-+        # Tweak grub.cfg default to avoid manually navigating grub
-+        grub_cfg = self.scratch_file("grub.cfg")
-+        offset = int(check_output(f"sfdisk --json {disk_image} |"
-+                                  "jq '.partitiontable.partitions[0].start * 512'",
-+                                  shell=True))
-+        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
-+                    "::/EFI/BOOT/grub.cfg", grub_cfg])
-+
-+        with open(grub_cfg, 'a', encoding="utf8") as f:
-+            f.write("set default='Linux Execution Enviroment'")
-+
-+        check_call(["mcopy", "-D", "o",  "-i", f"{disk_image}@@{offset}",
-+                    grub_cfg, "::/EFI/BOOT/grub.cfg"])
-+
-+        # Launch QEMU and wait for grub and select the "Linux
-+        # Execution Environment" so we can launch the test.
-+
-+        self.vm.launch()
-+        self.wait_for_console_pattern(self.ROOT_PROMPT)
-+        ec_and_wait(self, "/usr/bin/bsa.sh --skip "
-+                    "B_REP_1,B_IEP_1,B_PCIe_11,B_MEM_06",
-+                    self.ROOT_PROMPT)
-+
-+        # Now we can shutdown
-+        ec_and_wait(self, "halt -f", "reboot: System halted")
-+        self.vm.shutdown()
-+
-+        # and extract the test logs
-+        bsa_app_res = self.scratch_file("BsaResultsApp.log")
-+        bsa_kern_res = self.scratch_file("BsaResultsKernel.log")
-+
-+        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
-+                    "::acs_results/Linux/BsaResultsApp.log", bsa_app_res])
-+        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
-+                    "::acs_results/Linux/BsaResultsKernel.log", bsa_kern_res])
-+
-+        # for now just check the kernel log for the result summary
-+        test_result_re = re.compile(r"\[.*\]\s+(.+): Result:\s+(\w+)")
-+        summary_re = re.compile(r"Total Tests Run =\s*(\d+), Tests Passed =\s*(\d+), Tests Failed =\s*(\d+)")
-+
-+        with open(bsa_kern_res, 'r', encoding="utf8") as f:
-+            for line in f:
-+                test_match = test_result_re.search(line)
-+                if test_match:
-+                    desc = test_match.group(1)
-+                    status = test_match.group(2)
-+                    self.log.info(f"Test: {desc} status: {status}")
-+
-+                match = summary_re.search(line)
-+                if match:
-+                    total, passed, failed = match.groups()
-+
-+                    if int(failed) > 0:
-+                        self.fail(f"{failed} tests failed ({total})")
-+
-+
- if __name__ == '__main__':
-     QemuSystemTest.main()
--- 
-2.47.3
+Thanks for the review and the historical context.
+I don't have a strong use case for peripheral DMA transfers at the moment=
+,=20
+so I'll drop that part for now and focus on the bug fixes first.
+
+  1.handling the "last transfer is short" case
+  2.fixing the transfer size register decrement
+
+I'll send the updated patches shortly.
+
+Thanks,
+Tao</span></pre>
+    <blockquote type=3D"cite"
+cite=3D"mid:CAFEAcA97JFytdf1ZZfoMX-Rt92kfOgq304WahUWD2tQY6WsW+w@mail.gmai=
+l.com">
+      <pre wrap=3D"" class=3D"moz-quote-pre">On Sat, 21 Mar 2026 at 15:47=
+, Tao Ding <a class=3D"moz-txt-link-rfc2396E" href=3D"mailto:dingtao0430@=
+163.com">&lt;dingtao0430@163.com&gt;</a> wrote:
+</pre>
+      <blockquote type=3D"cite">
+        <pre wrap=3D"" class=3D"moz-quote-pre">
+On the interface, 0~15 represents single request, 16~31 represents burst =
+request.
+Access peripheral data based on the validity of the request. For the conv=
+enience,
+we only respond to single requests. The number of data read from the sour=
+ce and written
+to the destination is always equal, with a value of max(swidth, dwidth).
+
+Due to the lack of data preparation by the peripheral, it is necessary to=
+ cache data separately
+for each channel until the peripheral is ready for processing.
+
+The width of peripherals perhaps not possible to process all data at once=
+,
+so continuous processing is required. Read from source is achieved throug=
+h "continue",
+while writing to destination is achieved through "goto".
+</pre>
+      </blockquote>
+      <pre wrap=3D"" class=3D"moz-quote-pre">
+This has tangled up the original bugs we were trying to fix
+(that we weren't handling the "last transfer is short" case,
+and we weren't decrementing the transfer size register by the
+right amount) with the DMA transfer code.
+
+Can you start the patch series with the bug fixes, and then
+if you want the DMA transfer implementation do that second,
+please?
+
+thanks
+-- PMM
+</pre>
+    </blockquote>
+  </body>
+</html>
+
+--------------Rk41Iv0XiaB600HD5c7aTA0S--
 
 

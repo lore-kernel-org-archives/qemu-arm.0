@@ -4,105 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4059DEC01D4
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 11:53:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D28F46100
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 12:56:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4dpv-00074O-FZ; Mon, 23 Mar 2026 07:52:47 -0400
+	id 1w4epM-0000A8-1l; Mon, 23 Mar 2026 08:56:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w4dpt-00070B-JD
- for qemu-arm@nongnu.org; Mon, 23 Mar 2026 07:52:45 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w4dpr-0002ae-P2
- for qemu-arm@nongnu.org; Mon, 23 Mar 2026 07:52:45 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-794719afcd4so33474357b3.1
- for <qemu-arm@nongnu.org>; Mon, 23 Mar 2026 04:52:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774266763; cv=none;
- d=google.com; s=arc-20240605;
- b=WQai7XFh9aa/GOV52gVI9j/iFfN4zUWiIp7DDKhjlt7mwV513JlCx20aEzfAN6NTrg
- E6LBknKYU3I1jQruqltC0/TUgPFWxUBViYdRFVoUpTWpjHOafevcpLLYsh2m3FQtvOif
- Atevm/c59WU6+3xKjAC6tzW4mJL/iBQno4LNd+qfE8kN4uicnVNuwipFwBXMy+tiOkPF
- 3Q6pGz5vEPx3yl2Onaxt1jfj/LJEKYgIsvdDqyjJ/wBFktAfF2fG0IB+H+m2hYyBQVOa
- 1u0arOwpHhRlEZ7agQ+lv7sTg0xSGdu12zMW5Lf/uJe+CCVG3CXV1iDS0+Fz91micTJK
- nfww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=gGqQMEt2AfULCoaSIfJ77Iq8a7/3Li/Hgp3I9lr/Jf4=;
- fh=HfUzUDJ6+4k3aJ2R0vOBBFDPGHn2bxcHRgMvOmphbl8=;
- b=DeccwiVGN+aGS7eQ61RTI1Jl9k5a47piOBGQBBRBEHkunkEtdycQ+PNb4H7emQI1bx
- yV9dAL8YFpmm9PY7KpH0AKRggjorD8DkOLCHs6g9Dxhwm7lL6EINrSs5AI4EORucof6B
- I5zSthHn35v7Xb3011im18mlI9WsNp8spbBIVauYBLgPE7tPUDImFvzBxJYOGM7Sw52r
- Coel+Qg9EBWBt3o0LJowxsLnX4azFhVQUT3wkg/pQ2x3IXr3881Y1YXGiqsyfFpOiDTa
- 34rAf7mrGTBeurVa4IE/w47LttGBK5PKgLBZl1XfKLVAag3DQuheCtyN1qeBijIbI+Hn
- 3nKA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774266763; x=1774871563; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=gGqQMEt2AfULCoaSIfJ77Iq8a7/3Li/Hgp3I9lr/Jf4=;
- b=rUi+liPw81kgOR7umV3zZZBspGztcLJO/08Jq+39pfTxiViPg80VLddK6/Z85yYyxZ
- sLY0Ivm9FU2nuon3OZ72RW2uHkc8TOL9WGQgiNqZHRhsvHjyDaadNVnjLXG9J17J6YhQ
- 0ILHMrSmvhGWD5g6XD+Sou3T5t8PcRx/6gycSTaF3XDJHqeK4VXCjvldQbF42IwL6iVs
- NtjRwJQsArCVkFKKaS8E6zkSuqKRCO7ANWq6BseQeTNv0aQeDD2V+FNmzN2Q8UKgVIcA
- FUhRuBvc/Zu/2vnI+K+S9HBsNQFxSeeTUSzdoa3286OjUt9oqbcKkVA5cWEQL+ZF3qbF
- D1dQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774266763; x=1774871563;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gGqQMEt2AfULCoaSIfJ77Iq8a7/3Li/Hgp3I9lr/Jf4=;
- b=SArE7oGl0DitzhkYfqRjom5+AqZpSJGBoDLL9JHzNErg9E4DY1GbgopM/zyW540oga
- YkCncSrjus5gUMnKfC4F9de4gEzHvsFl6dgyJ8z9jp+dFhUwC1p1NLDOkHFxJTgbaSEd
- g64GScrW5iEGxlxvjUPI9hSfendy9zNKCtTmRNXHUCk/Fg4SlcAj93eTggR9hZlXt6uG
- IZKuZhUUYW5xCM7J48Icl/ogpvabZuCYOY75Ho5U+nkMZW7UBJyPRgXKDwkTmOQvv2C2
- RlRRnt8xz+TbRQhX+WjmUwPgY4mLh7HB6WPmtsADaLHvNqBxvlGfJuBN/W9BNP6Ug774
- PbWQ==
-X-Gm-Message-State: AOJu0Yx06UPlavFT9mCZome4f4F18Zc+qZgvkFi2ul+GBjUsu8WRLpoV
- HQWk45ZdhXhFnkK7hBm+/hzQgPj0witxplpIe9I3BVeibA3TEPaQcDk7/jTJXX+bX0+c2TYpqqK
- pDnc50SxvkXkYjirGx8nQuiJRQAez/AE+m0fMGxiHFg==
-X-Gm-Gg: ATEYQzwcJgmg7wbbjkBSjeX0lkhAmvMfD7LkbB7hfbjSvXH5p2i4DNgDbUr64SBIgBy
- IU+4kzOBpZayh37H1HVHBT7rV1krGwbEABLs4yjXFGlN4eZRlKAH/0Jp1N0AANm6Jx729jYib1d
- mLAogcSbO74d/FH/eu2/APRxNG6tZgI/nIrO/oIRz1CHU7rh1pW92Aveq8kqY+oxICUBOAJmc3K
- BJjIai4PFzIOATJ0/yl1wC4VVt0wrkSTgjJCuR6BdyCXex8uVTbnNcP2D2ozpVncGOywjgxcwvf
- 0cnBbBclRmU/pveid6oJU66zmb3e/tUlgkLVFjMfSgwLmMvzUN0PVXE1n8eXWbg24uenr59ElXF
- 48Q==
-X-Received: by 2002:a05:690c:348a:b0:79a:668a:b6e8 with SMTP id
- 00721157ae682-79a90c567f1mr122755107b3.61.1774266762655; Mon, 23 Mar 2026
- 04:52:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4ep6-0008RQ-4X
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2026 08:56:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w4ep4-00062T-3n
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2026 08:55:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1774270555;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8J5p7UensCSbhBhuPmiSrG4FNeXOqDUZipi1LscYnLM=;
+ b=T9skZg3fA/r+ShpxTiUmiFuoS/afIYcHZ6/tpj8ZVLoJ4ZW9BycvbG6ohW62Sj97w4ezlD
+ B+LD3hel3bUxJMYhh38G1OK3Nn40/oQIMkJrKB73jIfLEEEITxs0iafTCVvo/T9AELUPW4
+ 3u/p7YYFnemyenXnCJ9vKZ5BwBaaDF4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-6-B9REFdwvPQegPFuII5QMpg-1; Mon,
+ 23 Mar 2026 08:55:52 -0400
+X-MC-Unique: B9REFdwvPQegPFuII5QMpg-1
+X-Mimecast-MFC-AGG-ID: B9REFdwvPQegPFuII5QMpg_1774270551
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F3012180035D; Mon, 23 Mar 2026 12:55:50 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.45.224.42])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 232A819560B7; Mon, 23 Mar 2026 12:55:47 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2 0/3] aspeed: Improve error handling and fix DMA issues
+Date: Mon, 23 Mar 2026 13:55:42 +0100
+Message-ID: <20260323125545.577653-1-clg@redhat.com>
 MIME-Version: 1.0
-References: <20260321231916.2852653-1-josemartins90@gmail.com>
- <CAFEAcA8N4kMYW1zNmSpiMPXG-MUjh2awiZbZuFtOnqzRW+ir=w@mail.gmail.com>
- <CAC41xo14hePcRU_=FMug5tCfJjygo052EZc88MzBEukfcMxUyA@mail.gmail.com>
-In-Reply-To: <CAC41xo14hePcRU_=FMug5tCfJjygo052EZc88MzBEukfcMxUyA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Mar 2026 11:52:30 +0000
-X-Gm-Features: AaiRm51umNr6rLDPvUu6ZQ15F3-mpRe7_Cv-jpPhu2Gh-38BEMxr0jJD4Egl5JY
-Message-ID: <CAFEAcA9Ntz=9_K00JtAz-JYUzBZfQxphgtG-iNanCXjvAeZvcA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: fix s2prot not set for two-stage PMSA
- translations
-To: Jose Martins <josemartins90@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org, 
- qemu-stable@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: U_F7Ev1PYjmDGkXIBgq2r8gRGNW42DIE2haI85G-rF4_1774270551
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,19 +83,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Mar 2026 at 11:33, Jose Martins <josemartins90@gmail.com> wrote:
->
-> > Hmm? That commit doesn't add the s2prot field or touch the
-> > get_phys_addr_twostage() function. I guess you mean
-> > a811c5dafb7 ("target/arm: Implement get_S2prot_indirect") ?
->
-> Yes, sorry about the confusion.
->
-> > The code change looks correct:
->
-> Perfect. Any other actions points on my side?
+Hello,
 
-Nope; I'll pick the bugfix up to go into the 11.0 release.
+This series addresses several error handling issues in Aspeed device
+models that could lead to guest-triggerable denial of service or
+incorrect behavior.
 
--- PMM
+The first two patches improve DMA error handling by properly
+propagating memory transaction errors to the guest. The aspeed_smc
+patch converts memory operations to use read/write_with_attrs to
+return MEMTX_ERROR on invalid conditions, while the ftgmac100 patch
+checks DMA operation return values.
+
+The third patch fixes an incorrect assertion in the aspeed_i2c model
+that could be triggered when firmware uses the RX_BUF_LEN_W1T bit to
+program DMA length fields separately, which is valid per the Aspeed
+datasheet.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3335
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3315
+
+Thanks,
+
+C. 
+
+Changes in v2:
+
+- v1 was taking into account patch : 
+  https://lore.kernel.org/all/20260224065556.3847942-14-jamin_lin@aspeedtech.com
+  Rebased on upstream 
+
+Cédric Le Goater (3):
+  hw/ssi/aspeed_smc: Convert mem ops to read/write_with_attrs for error
+    handling
+  ftgmac100: Improve DMA error handling
+  hw/i2c/aspeed_i2c: Remove assert
+
+ hw/i2c/aspeed_i2c.c |  1 -
+ hw/net/ftgmac100.c  | 10 +++++++--
+ hw/ssi/aspeed_smc.c | 49 ++++++++++++++++++++++++++-------------------
+ 3 files changed, 36 insertions(+), 24 deletions(-)
+
+-- 
+2.53.0
+
 

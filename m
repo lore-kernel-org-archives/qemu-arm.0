@@ -4,60 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E044EF46101
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 13:33:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06C5F4613C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 15:57:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4fPA-00015I-2o; Mon, 23 Mar 2026 09:33:17 -0400
+	id 1w4heP-0005MB-3N; Mon, 23 Mar 2026 11:57:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w4fOS-0000YM-Kl; Mon, 23 Mar 2026 09:32:32 -0400
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w4fOO-00028g-W4; Mon, 23 Mar 2026 09:32:32 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAHD2PgQMFpmE9sCA--.1789S2;
- Mon, 23 Mar 2026 21:32:16 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwwZLcQMFp0nsEAA--.10052S5;
- Mon, 23 Mar 2026 21:32:15 +0800 (CST)
-From: Tao Tang <tangtao1634@phytium.com.cn>
-To: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Chen Baozi <chenbaozi@phytium.com.cn>,
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w4he3-0005Eh-A7
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2026 11:56:50 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w4he0-0007tH-C7
+ for qemu-arm@nongnu.org; Mon, 23 Mar 2026 11:56:47 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-b980b35534eso710338666b.1
+ for <qemu-arm@nongnu.org>; Mon, 23 Mar 2026 08:56:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1774281402; x=1774886202; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=L4sVo7ipM3ZjIyISVk1iGmWS/zTxx2pGnjJAKAGfU5o=;
+ b=McPDaYw9FqfR1O4HsI1de5DkJM+wfOcGgv0A+FbiX3PCGNehhhSl60wKOyorI58dts
+ cpO/6kMl9CQGhPH0B2oECcRRL0pynzebE10ba6l11XSQTcrE6Abuc9Q3oSVJXqPO3cfT
+ hUxwhEg7m8KE7jpVn/nDtfM7I6326FQmbBFtkxlkZ2raXXDIA6Tn2wTmjyr1e9+rbLq/
+ +AstBaj4QpMaDI319xMyG7qhE9iFp7rclHv0p9u2O9k8MvGVS/J0qkUeGe5in5s3jHGP
+ J7MuhTSLnt3oYwaD0mtIGj0g9P+bVuWFvUUqNBTT6THztMFcdsgs2aVrAkuUSmSmktKv
+ c7ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774281402; x=1774886202;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=L4sVo7ipM3ZjIyISVk1iGmWS/zTxx2pGnjJAKAGfU5o=;
+ b=EdjYXwxstooz/R0kflLi0gKdauBctQFh2FugPp7ppizbn5eEf58msXKkp1BcskDPNG
+ ZwhXH4gJbM3zDg0896LRCJ3fbZh5iamMyR+hPjQ6wswTqZuWucaKvXh/QZcvEWz78iTj
+ ox9i+Ntkk1Mr2e425PpGLSj+bjKS4u2dF4SeP08F9rqhiaqmt8LBX4nUVefqg/SPtsfY
+ 3NRZLBidLERQFmsyuDBqBm2qmqWF0qnw36A4OIPnjUJXEeICNk+1mtBBueVFtKw7SUFE
+ x5qsOvP9zgQlvFjsucT0jm/TKf0QGXg6a0x/FqSk6tu/DuV9BJv0D31GRWXontviIKLg
+ HHBw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX6DXvqZwXzeyL7M6vcVV/LPkAV8ySiJf1Z7cKkS81sYKHagjflEcwF1T7i8ZYh8WJOE/ETJol67g==@nongnu.org
+X-Gm-Message-State: AOJu0Yw2F7YDkLyTObPmxjlsZAha1m5H3d7hrXKlmbm7OIFWUJGNTBAM
+ 5iWnhe6Tpzooare3I/uo6vgN7oecMUQgKx0zgcUyj5lKb8ErbtCINJZzRx6+r7PmRl8=
+X-Gm-Gg: ATEYQzxnm63zZlpyygK2V09HtfDrc9dE/+THnzR2w1pgrnZVmA9xbs5S+6SsMm4pcVo
+ xodUagJQujP5/zlYsxsoNASI9ti3OxuVTtRnvYUqmrgw9jR5WuYTjraapT44krjLOSrmNS9oMwq
+ 4i3Pq242XqHrC4ABK1o65mqTR3MEpBIzz6+t1jX2aYKBgogM/CydCNQIfcPZgJz0Sih0XfudZJb
+ n+LI2M3MH3QlaArt8lvof7QJfYjq+2oIyfhPnE6dh+7aiwAtO2Ku5MT38fV0O+g4qu9D60oLJYm
+ aEbRQTrB95f+Sp0qa772l5SX1OsV7TkRGQen47kMu8Y5E7L1dIftoMIAEajsSUSXBwnuIvFHS6i
+ N9Nu7amsqrtIdfFxya0TZqkNEy2tZq6ODuvJKZwdIo9hMdg7us8+9r8FUupcRuEUwNLhBXdYYL+
+ +S3lvvVwN4YInri8RTtzKNPbU=
+X-Received: by 2002:a17:907:5c8:b0:b98:3293:ebb3 with SMTP id
+ a640c23a62f3a-b988641045amr5649466b.26.1774281401635; 
+ Mon, 23 Mar 2026 08:56:41 -0700 (PDT)
+Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b9833663137sm520102566b.49.2026.03.23.08.56.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Mar 2026 08:56:38 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 389C95F878;
+ Mon, 23 Mar 2026 15:56:38 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Chao Liu <chao.liu.zevorn@gmail.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v3 2/4] tests/qtest: Add libqtest attrs helpers for memory
- accesses
-Date: Mon, 23 Mar 2026 21:32:08 +0800
-Message-Id: <20260323133210.1523868-3-tangtao1634@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
-References: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PULL 4/8] tests/functional: add VBSA linux tests
+Date: Mon, 23 Mar 2026 15:56:33 +0000
+Message-ID: <20260323155637.145015-5-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260323155637.145015-1-alex.bennee@linaro.org>
+References: <20260323155637.145015-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwwZLcQMFp0nsEAA--.10052S5
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQADBWnAQfgOxgABse
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvAXoWfZw1xtw1kAw17Zw1xJrW5KFg_yoW8try5Go
- WrtF1jq34DXwnxZrW09ryxGr9rXw47Cr15Xwn8t3WUKas3Grn09a13KanxZa4j9F1rGrWU
- XFZ7XrW5WrWIyFZ7n29KB7ZKAUJUUUU5529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
- J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
- UUUUUUU==
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,766 +107,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Expose libqtest APIs for qtest memory commands with optional attrs:
-- qtest_{read,write}{b,w,l,q}_attrs()
-- qtest_mem{read,write,set}_attrs()
-- qtest_buf{read,write}_attrs()
+This extends the VBSA test to run the linux tests. The sysarch-acs
+test suite does provide some pre-built images which is good because
+the tests require a patched kernel. However due to the structure of
+the image we need to jump one or two hoops to get something useful:
 
-Keep the existing libqtest memory access helpers as wrappers passing
-NULL attrs, so current users remain unchanged.
+  - download and double decompress (zip then xz) the image
+  - navigate grub to launch the Linux Execution Environment
+  - shutdown the system once tests are done
+  - extract the logs from the MSDOS file system and parse them
 
-Also add matching libqtest-single shortcut wrappers for the *_attrs
-helpers.
+It does make the code a bit ugly but it works for me at least. So far
+the subset of tests run is limited but that might be solved by adding
+some more devices to the PCIe bus to exercise the SMMU behaviour.
 
-Refactor libqtest response parsing by splitting qtest_rsp_args() into a
-raw tokenizing helper, qtest_rsp_words(), and the existing OK-checking
-wrapper. Add qtest_raw_cmd() on top of qtest_rsp_words() so tests can
-send raw qtest protocol commands and inspect non-OK responses such as
-ERR and FAIL.
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <20260320155107.2143191-5-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- tests/qtest/libqtest-single.h | 156 +++++++++++++++++++++
- tests/qtest/libqtest.c        | 246 ++++++++++++++++++++++++++--------
- tests/qtest/libqtest.h        | 177 ++++++++++++++++++++++++
- 3 files changed, 524 insertions(+), 55 deletions(-)
-
-diff --git a/tests/qtest/libqtest-single.h b/tests/qtest/libqtest-single.h
-index 851724cbcb..2812b86bd4 100644
---- a/tests/qtest/libqtest-single.h
-+++ b/tests/qtest/libqtest-single.h
-@@ -291,6 +291,162 @@ static inline void memwrite(uint64_t addr, const void *data, size_t size)
-     qtest_memwrite(global_qtest, addr, data, size);
- }
+diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
+index 1dd4cecde1e..57bfe5d7af2 100755
+--- a/tests/functional/aarch64/test_virt_vbsa.py
++++ b/tests/functional/aarch64/test_virt_vbsa.py
+@@ -10,7 +10,8 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
-+/**
-+ * writeb_attrs:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes an 8-bit value to guest memory with optional transaction attributes.
-+ */
-+static inline void writeb_attrs(uint64_t addr, uint8_t value, const char *attrs)
-+{
-+    qtest_writeb_attrs(global_qtest, addr, value, attrs);
-+}
-+
-+/**
-+ * writew_attrs:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 16-bit value to guest memory with optional transaction attributes.
-+ */
-+static inline void writew_attrs(uint64_t addr, uint16_t value,
-+                                const char *attrs)
-+{
-+    qtest_writew_attrs(global_qtest, addr, value, attrs);
-+}
-+
-+/**
-+ * writel_attrs:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 32-bit value to guest memory with optional transaction attributes.
-+ */
-+static inline void writel_attrs(uint64_t addr, uint32_t value,
-+                                const char *attrs)
-+{
-+    qtest_writel_attrs(global_qtest, addr, value, attrs);
-+}
-+
-+/**
-+ * writeq_attrs:
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 64-bit value to guest memory with optional transaction attributes.
-+ */
-+static inline void writeq_attrs(uint64_t addr, uint64_t value,
-+                                const char *attrs)
-+{
-+    qtest_writeq_attrs(global_qtest, addr, value, attrs);
-+}
-+
-+/**
-+ * readb_attrs:
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads an 8-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+static inline uint8_t readb_attrs(uint64_t addr, const char *attrs)
-+{
-+    return qtest_readb_attrs(global_qtest, addr, attrs);
-+}
-+
-+/**
-+ * readw_attrs:
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 16-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+static inline uint16_t readw_attrs(uint64_t addr, const char *attrs)
-+{
-+    return qtest_readw_attrs(global_qtest, addr, attrs);
-+}
-+
-+/**
-+ * readl_attrs:
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 32-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+static inline uint32_t readl_attrs(uint64_t addr, const char *attrs)
-+{
-+    return qtest_readl_attrs(global_qtest, addr, attrs);
-+}
-+
-+/**
-+ * readq_attrs:
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 64-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+static inline uint64_t readq_attrs(uint64_t addr, const char *attrs)
-+{
-+    return qtest_readq_attrs(global_qtest, addr, attrs);
-+}
-+
-+/**
-+ * memread_attrs:
-+ * @addr: Guest address to read from.
-+ * @data: Pointer to where memory contents will be stored.
-+ * @size: Number of bytes to read.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Read guest memory into a buffer with optional transaction attributes.
-+ */
-+static inline void memread_attrs(uint64_t addr, void *data, size_t size,
-+                                 const char *attrs)
-+{
-+    qtest_memread_attrs(global_qtest, addr, data, size, attrs);
-+}
-+
-+/**
-+ * memwrite_attrs:
-+ * @addr: Guest address to write to.
-+ * @data: Pointer to the bytes that will be written to guest memory.
-+ * @size: Number of bytes to write.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Write a buffer to guest memory with optional transaction attributes.
-+ */
-+static inline void memwrite_attrs(uint64_t addr, const void *data, size_t size,
-+                                  const char *attrs)
-+{
-+    qtest_memwrite_attrs(global_qtest, addr, data, size, attrs);
-+}
-+
-+/**
-+ * memset_attrs:
-+ * @addr: Guest address to write to.
-+ * @pattern: Byte pattern to fill the guest memory region with.
-+ * @size: Number of bytes to write.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Write a pattern to guest memory with optional transaction attributes.
-+ */
-+static inline void memset_attrs(uint64_t addr, uint8_t pattern, size_t size,
-+                                const char *attrs)
-+{
-+    qtest_memset_attrs(global_qtest, addr, pattern, size, attrs);
-+}
-+
- /**
-  * clock_step_next:
-  *
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 051faf31e1..b67786f1ad 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -747,11 +747,10 @@ static GString *qtest_client_socket_recv_line(QTestState *s)
-     return line;
- }
+ import shutil
+-from subprocess import check_call, DEVNULL
++import re
++from subprocess import check_call, check_output, DEVNULL
  
--static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+static gchar **qtest_rsp_words(QTestState *s)
- {
-     GString *line;
-     gchar **words;
--    int i;
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import get_qemu_img, skipIfMissingCommands
+@@ -28,6 +29,20 @@ def wait_for_console_pattern(self, success_message, vm=None):
+                                  failure_message='FAILED',
+                                  vm=vm)
  
- redo:
-     line = s->ops.recv_line(s);
-@@ -781,6 +780,15 @@ redo:
-     }
++    def append_firmware_blobs(self):
++        """
++        Setup QEMU firmware blobs for boot.
++        """
++        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
++        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
++        vars_path = self.scratch_file('vars.fd')
++        shutil.copy(vars_source, vars_path)
++
++        self.vm.add_args('-drive',
++                         f'if=pflash,format=raw,readonly=on,file={code_path}')
++        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++
++
+     ASSET_VBSA_EFI = Asset(
+         'https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
+         '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
+@@ -45,20 +60,12 @@ def test_aarch64_vbsa_uefi_tests(self):
  
-     g_assert(words[0] != NULL);
-+
-+    return words;
-+}
-+
-+static gchar **qtest_rsp_args(QTestState *s, int expected_args)
-+{
-+    gchar **words = qtest_rsp_words(s);
-+    int i;
-+
-     g_assert_cmpstr(words[0], ==, "OK");
+         self.vm.set_console()
  
-     for (i = 0; i < expected_args; i++) {
-@@ -790,6 +798,21 @@ redo:
-     return words;
- }
+-        # virt machine wi
++        # virt machine
+         self.set_machine('virt')
+         self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
+         self.vm.add_args('-cpu', 'max', '-m', '1024')
  
-+gchar **qtest_raw_cmd(QTestState *s, const char *fmt, ...)
-+{
-+    va_list ap;
-+    gchar *str;
-+
-+    va_start(ap, fmt);
-+    str = g_strdup_vprintf(fmt, ap);
-+    va_end(ap);
-+
-+    s->ops.send(s, str);
-+    g_free(str);
-+
-+    return qtest_rsp_words(s);
-+}
-+
- static void qtest_rsp(QTestState *s)
- {
-     gchar **words = qtest_rsp_args(s, 0);
-@@ -1232,66 +1255,44 @@ uint32_t qtest_inl(QTestState *s, uint16_t addr)
-     return qtest_big_endian(s) ? bswap32(v) : v;
- }
- 
--static void qtest_write(QTestState *s, const char *cmd, uint64_t addr,
--                        uint64_t value)
--{
--    qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 "\n", cmd, addr, value);
--    qtest_rsp(s);
--}
+-        # We will use the QEMU firmware blobs to boot
+-        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
+-        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
+-        vars_path = self.scratch_file('vars.fd')
+-        shutil.copy(vars_source, vars_path)
 -
- void qtest_writeb(QTestState *s, uint64_t addr, uint8_t value)
- {
--    qtest_write(s, "writeb", addr, value);
-+    qtest_writeb_attrs(s, addr, value, NULL);
- }
+-        self.vm.add_args('-drive',
+-                         f'if=pflash,format=raw,readonly=on,file={code_path}')
+-        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
++        self.append_firmware_blobs()
  
- void qtest_writew(QTestState *s, uint64_t addr, uint16_t value)
- {
--    qtest_write(s, "writew", addr, value);
-+    qtest_writew_attrs(s, addr, value, NULL);
- }
+         # Build an EFI FAT32 file-system for the UEFI tests
+         vbsa_efi = self.ASSET_VBSA_EFI.fetch()
+@@ -102,5 +109,98 @@ def test_aarch64_vbsa_uefi_tests(self):
+         self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
  
- void qtest_writel(QTestState *s, uint64_t addr, uint32_t value)
- {
--    qtest_write(s, "writel", addr, value);
-+    qtest_writel_attrs(s, addr, value, NULL);
- }
  
- void qtest_writeq(QTestState *s, uint64_t addr, uint64_t value)
- {
--    qtest_write(s, "writeq", addr, value);
--}
--
--static uint64_t qtest_read(QTestState *s, const char *cmd, uint64_t addr)
--{
--    gchar **args;
--    int ret;
--    uint64_t value;
--
--    qtest_sendf(s, "%s 0x%" PRIx64 "\n", cmd, addr);
--    args = qtest_rsp_args(s, 2);
--    ret = qemu_strtou64(args[1], NULL, 0, &value);
--    g_assert(!ret);
--    g_strfreev(args);
--
--    return value;
-+    qtest_writeq_attrs(s, addr, value, NULL);
- }
- 
- uint8_t qtest_readb(QTestState *s, uint64_t addr)
- {
--    return qtest_read(s, "readb", addr);
-+    return qtest_readb_attrs(s, addr, NULL);
- }
- 
- uint16_t qtest_readw(QTestState *s, uint64_t addr)
- {
--    return qtest_read(s, "readw", addr);
-+    return qtest_readw_attrs(s, addr, NULL);
- }
- 
- uint32_t qtest_readl(QTestState *s, uint64_t addr)
- {
--    return qtest_read(s, "readl", addr);
-+    return qtest_readl_attrs(s, addr, NULL);
- }
- 
- uint64_t qtest_readq(QTestState *s, uint64_t addr)
- {
--    return qtest_read(s, "readq", addr);
-+    return qtest_readq_attrs(s, addr, NULL);
- }
- 
- static int hex2nib(char ch)
-@@ -1309,23 +1310,7 @@ static int hex2nib(char ch)
- 
- void qtest_memread(QTestState *s, uint64_t addr, void *data, size_t size)
- {
--    uint8_t *ptr = data;
--    gchar **args;
--    size_t i;
--
--    if (!size) {
--        return;
--    }
--
--    qtest_sendf(s, "read 0x%" PRIx64 " 0x%zx\n", addr, size);
--    args = qtest_rsp_args(s, 2);
--
--    for (i = 0; i < size; i++) {
--        ptr[i] = hex2nib(args[1][2 + (i * 2)]) << 4;
--        ptr[i] |= hex2nib(args[1][2 + (i * 2) + 1]);
--    }
--
--    g_strfreev(args);
-+    qtest_memread_attrs(s, addr, data, size, NULL);
- }
- 
- uint64_t qtest_rtas_call(QTestState *s, const char *name,
-@@ -1390,23 +1375,58 @@ void qtest_add_data_func(const char *str, const void *data,
- }
- 
- void qtest_bufwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
-+{
-+    qtest_bufwrite_attrs(s, addr, data, size, NULL);
-+}
++    ASSET_SYSREADY_IMAGE = Asset(
++        'https://github.com/ARM-software/arm-systemready/'
++        'releases/download/v25.10_SR_3.1.0/systemready_acs_live_image.img.xz.zip',
++        'df2c359de15784b1da6a8e6f3c98a053ee38ac0b3f241ccea62e17db092eb03a')
 +
-+void qtest_bufread(QTestState *s, uint64_t addr, void *data, size_t size)
-+{
-+    qtest_bufread_attrs(s, addr, data, size, NULL);
-+}
++    ROOT_PROMPT = '/ # '
 +
-+void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
-+{
-+    qtest_memwrite_attrs(s, addr, data, size, NULL);
-+}
++    @skipIfMissingCommands("sfdisk", "jq", "sed")
++    def test_aarch64_vbsa_linux_tests(self):
++        """
++        Launch the Linux based VBSA test from the ACS prebuilt images.
 +
-+void qtest_memset(QTestState *s, uint64_t addr, uint8_t pattern, size_t size)
-+{
-+    qtest_memset_attrs(s, addr, pattern, size, NULL);
-+}
++        We can use the pre-built images and then trigger the Linux
++        build and run the tests. We then need to slurp the results
++        from the partition.
++        """
 +
-+static bool qtest_has_attrs(const char *attrs)
-+{
-+    return attrs && attrs[0];
-+}
++        self.vm.set_console()
 +
-+void qtest_bufwrite_attrs(QTestState *s, uint64_t addr, const void *data,
-+                          size_t size, const char *attrs)
- {
-     gchar *bdata;
- 
-     bdata = g_base64_encode(data, size);
-     qtest_sendf(s, "b64write 0x%" PRIx64 " 0x%zx ", addr, size);
-     s->ops.send(s, bdata);
-+    if (qtest_has_attrs(attrs)) {
-+        s->ops.send(s, " ");
-+        s->ops.send(s, attrs);
-+    }
-     s->ops.send(s, "\n");
-     qtest_rsp(s);
-     g_free(bdata);
- }
- 
--void qtest_bufread(QTestState *s, uint64_t addr, void *data, size_t size)
-+void qtest_bufread_attrs(QTestState *s, uint64_t addr, void *data, size_t size,
-+                         const char *attrs)
- {
-     gchar **args;
-     size_t len;
- 
--    qtest_sendf(s, "b64read 0x%" PRIx64 " 0x%zx\n", addr, size);
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "b64read 0x%" PRIx64 " 0x%zx %s\n", addr, size, attrs);
-+    } else {
-+        qtest_sendf(s, "b64read 0x%" PRIx64 " 0x%zx\n", addr, size);
-+    }
-     args = qtest_rsp_args(s, 2);
- 
-     g_base64_decode_inplace(args[1], &len);
-@@ -1420,7 +1440,111 @@ void qtest_bufread(QTestState *s, uint64_t addr, void *data, size_t size)
-     g_strfreev(args);
- }
- 
--void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
-+static void qtest_write_attrs(QTestState *s, const char *cmd,
-+                              uint64_t addr, uint64_t value,
-+                              const char *attrs)
-+{
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 " %s\n",
-+                    cmd, addr, value, attrs);
-+    } else {
-+        qtest_sendf(s, "%s 0x%" PRIx64 " 0x%" PRIx64 "\n", cmd, addr, value);
-+    }
-+    qtest_rsp(s);
-+}
++        # Plain virt machine
++        self.set_machine('virt')
++        self.vm.add_args('-M', 'virt,gic-version=max')
++        self.vm.add_args('-cpu', 'max', '-m', '1024', '-smp', '4')
 +
-+static uint64_t qtest_read_attrs(QTestState *s, const char *cmd,
-+                                 uint64_t addr, const char *attrs)
-+{
-+    gchar **args;
-+    int ret;
-+    uint64_t value;
++        self.append_firmware_blobs()
 +
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "%s 0x%" PRIx64 " %s\n", cmd, addr, attrs);
-+    } else {
-+        qtest_sendf(s, "%s 0x%" PRIx64 "\n", cmd, addr);
-+    }
-+    args = qtest_rsp_args(s, 2);
-+    ret = qemu_strtou64(args[1], NULL, 0, &value);
-+    g_assert(!ret);
-+    g_strfreev(args);
++        # First fetch, decompress (twice) and prepare the disk image
++        # on an NVME device (the kernel only has drivers for that).
++        self.archive_extract(self.ASSET_SYSREADY_IMAGE, format="zip")
++        disk_image_xz = self.scratch_file("systemready_acs_live_image.img.xz")
++        disk_image = self.uncompress(disk_image_xz)
 +
-+    return value;
-+}
++        self.vm.add_args('-device',
++                         'nvme,drive=hd,serial=QEMU_ROOT_SSD')
++        self.vm.add_args('-blockdev',
++                         f'driver=raw,node-name=hd,file.driver=file,file.filename={disk_image}')
 +
-+void qtest_writeb_attrs(QTestState *s, uint64_t addr, uint8_t value,
-+                        const char *attrs)
-+{
-+    qtest_write_attrs(s, "writeb", addr, value, attrs);
-+}
++        # Tweak grub.cfg default to avoid manually navigating grub
++        grub_cfg = self.scratch_file("grub.cfg")
++        offset = int(check_output(f"sfdisk --json {disk_image} |"
++                                  "jq '.partitiontable.partitions[0].start * 512'",
++                                  shell=True))
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::/EFI/BOOT/grub.cfg", grub_cfg])
 +
-+void qtest_writew_attrs(QTestState *s, uint64_t addr, uint16_t value,
-+                        const char *attrs)
-+{
-+    qtest_write_attrs(s, "writew", addr, value, attrs);
-+}
++        with open(grub_cfg, 'a', encoding="utf8") as f:
++            f.write("set default='Linux Execution Enviroment'")
 +
-+void qtest_writel_attrs(QTestState *s, uint64_t addr, uint32_t value,
-+                        const char *attrs)
-+{
-+    qtest_write_attrs(s, "writel", addr, value, attrs);
-+}
++        check_call(["mcopy", "-D", "o",  "-i", f"{disk_image}@@{offset}",
++                    grub_cfg, "::/EFI/BOOT/grub.cfg"])
 +
-+void qtest_writeq_attrs(QTestState *s, uint64_t addr, uint64_t value,
-+                        const char *attrs)
-+{
-+    qtest_write_attrs(s, "writeq", addr, value, attrs);
-+}
++        # Launch QEMU and wait for grub and select the "Linux
++        # Execution Environment" so we can launch the test.
 +
-+uint8_t qtest_readb_attrs(QTestState *s, uint64_t addr, const char *attrs)
-+{
-+    return qtest_read_attrs(s, "readb", addr, attrs);
-+}
++        self.vm.launch()
++        self.wait_for_console_pattern(self.ROOT_PROMPT)
++        ec_and_wait(self, "/usr/bin/bsa.sh --skip "
++                    "B_REP_1,B_IEP_1,B_PCIe_11,B_MEM_06",
++                    self.ROOT_PROMPT)
 +
-+uint16_t qtest_readw_attrs(QTestState *s, uint64_t addr, const char *attrs)
-+{
-+    return qtest_read_attrs(s, "readw", addr, attrs);
-+}
++        # Now we can shutdown
++        ec_and_wait(self, "halt -f", "reboot: System halted")
++        self.vm.shutdown()
 +
-+uint32_t qtest_readl_attrs(QTestState *s, uint64_t addr, const char *attrs)
-+{
-+    return qtest_read_attrs(s, "readl", addr, attrs);
-+}
++        # and extract the test logs
++        bsa_app_res = self.scratch_file("BsaResultsApp.log")
++        bsa_kern_res = self.scratch_file("BsaResultsKernel.log")
 +
-+uint64_t qtest_readq_attrs(QTestState *s, uint64_t addr, const char *attrs)
-+{
-+    return qtest_read_attrs(s, "readq", addr, attrs);
-+}
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::acs_results/Linux/BsaResultsApp.log", bsa_app_res])
++        check_call(["mcopy", "-i", f"{disk_image}@@{offset}",
++                    "::acs_results/Linux/BsaResultsKernel.log", bsa_kern_res])
 +
-+void qtest_memread_attrs(QTestState *s, uint64_t addr, void *data,
-+                         size_t size, const char *attrs)
-+{
-+    uint8_t *ptr = data;
-+    gchar **args;
-+    size_t i;
++        # for now just check the kernel log for the result summary
++        test_result_re = re.compile(r"\[.*\]\s+(.+): Result:\s+(\w+)")
++        summary_re = re.compile(r"Total Tests Run =\s*(\d+), Tests Passed =\s*(\d+), Tests Failed =\s*(\d+)")
 +
-+    if (!size) {
-+        return;
-+    }
++        with open(bsa_kern_res, 'r', encoding="utf8") as f:
++            for line in f:
++                test_match = test_result_re.search(line)
++                if test_match:
++                    desc = test_match.group(1)
++                    status = test_match.group(2)
++                    self.log.info(f"Test: {desc} status: {status}")
 +
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "read 0x%" PRIx64 " 0x%zx %s\n", addr, size, attrs);
-+    } else {
-+        qtest_sendf(s, "read 0x%" PRIx64 " 0x%zx\n", addr, size);
-+    }
-+    args = qtest_rsp_args(s, 2);
++                match = summary_re.search(line)
++                if match:
++                    total, passed, failed = match.groups()
 +
-+    for (i = 0; i < size; i++) {
-+        ptr[i] = hex2nib(args[1][2 + (i * 2)]) << 4;
-+        ptr[i] |= hex2nib(args[1][2 + (i * 2) + 1]);
-+    }
++                    if int(failed) > 0:
++                        self.fail(f"{failed} tests failed ({total})")
 +
-+    g_strfreev(args);
-+}
 +
-+void qtest_memwrite_attrs(QTestState *s, uint64_t addr, const void *data,
-+                          size_t size, const char *attrs)
- {
-     const uint8_t *ptr = data;
-     size_t i;
-@@ -1436,14 +1560,26 @@ void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
-         sprintf(&enc[i * 2], "%02x", ptr[i]);
-     }
- 
--    qtest_sendf(s, "write 0x%" PRIx64 " 0x%zx 0x%s\n", addr, size, enc);
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "write 0x%" PRIx64 " 0x%zx 0x%s %s\n",
-+                    addr, size, enc, attrs);
-+    } else {
-+        qtest_sendf(s, "write 0x%" PRIx64 " 0x%zx 0x%s\n", addr, size, enc);
-+    }
-     qtest_rsp(s);
-     g_free(enc);
- }
- 
--void qtest_memset(QTestState *s, uint64_t addr, uint8_t pattern, size_t size)
-+void qtest_memset_attrs(QTestState *s, uint64_t addr, uint8_t pattern,
-+                        size_t size, const char *attrs)
- {
--    qtest_sendf(s, "memset 0x%" PRIx64 " 0x%zx 0x%02x\n", addr, size, pattern);
-+    if (qtest_has_attrs(attrs)) {
-+        qtest_sendf(s, "memset 0x%" PRIx64 " 0x%zx 0x%02x %s\n",
-+                    addr, size, pattern, attrs);
-+    } else {
-+        qtest_sendf(s, "memset 0x%" PRIx64 " 0x%zx 0x%02x\n",
-+                    addr, size, pattern);
-+    }
-     qtest_rsp(s);
- }
- 
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 9c118c89ca..cee74cf2a4 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -239,6 +239,19 @@ void qtest_qmp_send(QTestState *s, const char *fmt, ...)
- void qtest_qmp_send_raw(QTestState *s, const char *fmt, ...)
-     G_GNUC_PRINTF(2, 3);
- 
-+/**
-+ * qtest_raw_cmd:
-+ * @s: #QTestState instance to operate on.
-+ * @fmt: raw qtest protocol text to send, formatted like sprintf().
-+ *
-+ * Sends a raw qtest command and returns the response split on spaces.
-+ * The response is not required to start with ``OK``; callers can inspect
-+ * ``args[0]`` for ``OK``, ``ERR``, or ``FAIL`` and must free the returned
-+ * vector with g_strfreev().
-+ */
-+gchar **qtest_raw_cmd(QTestState *s, const char *fmt, ...)
-+    G_GNUC_PRINTF(2, 3);
-+
- /**
-  * qtest_socket_server:
-  * @socket_path: the UNIX domain socket path
-@@ -671,6 +684,20 @@ uint64_t qtest_csr_call(QTestState *s, const char *name,
-  */
- void qtest_bufread(QTestState *s, uint64_t addr, void *data, size_t size);
- 
-+/**
-+ * qtest_bufread_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @data: Pointer to where memory contents will be stored.
-+ * @size: Number of bytes to read.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Read guest memory into a buffer and receive using a base64 encoding with
-+ * optional transaction attributes.
-+ */
-+void qtest_bufread_attrs(QTestState *s, uint64_t addr, void *data, size_t size,
-+                         const char *attrs);
-+
- /**
-  * qtest_memwrite:
-  * @s: #QTestState instance to operate on.
-@@ -694,6 +721,21 @@ void qtest_memwrite(QTestState *s, uint64_t addr, const void *data, size_t size)
- void qtest_bufwrite(QTestState *s, uint64_t addr,
-                     const void *data, size_t size);
- 
-+/**
-+ * qtest_bufwrite_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @data: Pointer to the bytes that will be written to guest memory.
-+ * @size: Number of bytes to write.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Write a buffer to guest memory and transmit using a base64 encoding with
-+ * optional transaction attributes.
-+ */
-+void qtest_bufwrite_attrs(QTestState *s, uint64_t addr,
-+                          const void *data, size_t size,
-+                          const char *attrs);
-+
- /**
-  * qtest_memset:
-  * @s: #QTestState instance to operate on.
-@@ -705,6 +747,141 @@ void qtest_bufwrite(QTestState *s, uint64_t addr,
-  */
- void qtest_memset(QTestState *s, uint64_t addr, uint8_t patt, size_t size);
- 
-+/**
-+ * qtest_writeb_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes an 8-bit value to guest memory with optional transaction attributes.
-+ */
-+void qtest_writeb_attrs(QTestState *s, uint64_t addr, uint8_t value,
-+                        const char *attrs);
-+
-+/**
-+ * qtest_writew_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 16-bit value to guest memory with optional transaction attributes.
-+ */
-+void qtest_writew_attrs(QTestState *s, uint64_t addr, uint16_t value,
-+                        const char *attrs);
-+
-+/**
-+ * qtest_writel_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 32-bit value to guest memory with optional transaction attributes.
-+ */
-+void qtest_writel_attrs(QTestState *s, uint64_t addr, uint32_t value,
-+                        const char *attrs);
-+
-+/**
-+ * qtest_writeq_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @value: Value being written.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Writes a 64-bit value to guest memory with optional transaction attributes.
-+ */
-+void qtest_writeq_attrs(QTestState *s, uint64_t addr, uint64_t value,
-+                        const char *attrs);
-+
-+/**
-+ * qtest_readb_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads an 8-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+uint8_t qtest_readb_attrs(QTestState *s, uint64_t addr, const char *attrs);
-+
-+/**
-+ * qtest_readw_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 16-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+uint16_t qtest_readw_attrs(QTestState *s, uint64_t addr, const char *attrs);
-+
-+/**
-+ * qtest_readl_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 32-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+uint32_t qtest_readl_attrs(QTestState *s, uint64_t addr, const char *attrs);
-+
-+/**
-+ * qtest_readq_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Reads a 64-bit value from guest memory with optional transaction attributes.
-+ *
-+ * Returns: Value read.
-+ */
-+uint64_t qtest_readq_attrs(QTestState *s, uint64_t addr, const char *attrs);
-+
-+/**
-+ * qtest_memread_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to read from.
-+ * @data: Pointer to where memory contents will be stored.
-+ * @size: Number of bytes to read.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Read guest memory into a buffer with optional transaction attributes.
-+ */
-+void qtest_memread_attrs(QTestState *s, uint64_t addr, void *data, size_t size,
-+                         const char *attrs);
-+
-+/**
-+ * qtest_memwrite_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @data: Pointer to the bytes that will be written to guest memory.
-+ * @size: Number of bytes to write.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Write a buffer to guest memory with optional transaction attributes.
-+ */
-+void qtest_memwrite_attrs(QTestState *s, uint64_t addr, const void *data,
-+                          size_t size, const char *attrs);
-+
-+/**
-+ * qtest_memset_attrs:
-+ * @s: #QTestState instance to operate on.
-+ * @addr: Guest address to write to.
-+ * @patt: Byte pattern to fill the guest memory region with.
-+ * @size: Number of bytes to write.
-+ * @attrs: Optional transaction attributes string.
-+ *
-+ * Write a pattern to guest memory with optional transaction attributes.
-+ */
-+void qtest_memset_attrs(QTestState *s, uint64_t addr, uint8_t patt, size_t size,
-+                        const char *attrs);
-+
- /**
-  * qtest_clock_step_next:
-  * @s: #QTestState instance to operate on.
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
-2.34.1
+2.47.3
 
 

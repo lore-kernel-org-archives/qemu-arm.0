@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A034F483D7
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 18:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B280EF483E4
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 18:27:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4jyK-00025p-Il; Mon, 23 Mar 2026 14:25:52 -0400
+	id 1w4jyL-00027T-Hk; Mon, 23 Mar 2026 14:25:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w4jxs-0001vd-V7; Mon, 23 Mar 2026 14:25:27 -0400
+ id 1w4jxv-0001yC-Fa; Mon, 23 Mar 2026 14:25:35 -0400
 Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
- id 1w4jxp-0004GC-Pw; Mon, 23 Mar 2026 14:25:24 -0400
+ id 1w4jxt-0004GC-Gn; Mon, 23 Mar 2026 14:25:26 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Mv+LkOxzjy3nE2B7Fem3m/ljlMyIGw3zOHIQy9svIpiuZ4YW19ZdjJNd9wwEwhqgHtJqm14RQx4F+dSZLw3HLYo2lYinCFGgCnc2prknHaDv+ikMYt/wHwZ0rGW8MhhgC0T9Jvr/FrZ0IrgP5iZVPZA5LsDwez+B2AqKzfdZJ/8UiQlhSYzsGIvMAGpRp+OURfqSFb63FiCyTYHK9fvAoPYIu1YziSRhfICJQo9+s2DW+opjqi9XKZ8HfhRrFdpI0gjVeq84wvgGkaXC9nDK1mbWcfeVLI1Neu1u4GTzB6c2vG/KgftB+0j3jS/ub9JTmPTQAmhXReBbY9eUcHYMEg==
+ b=LbUJdS05iWiLQXtUob0EN5YCU/5qT6z71IEhCoeCvOAAPYR9K3yNISQ0zEbmuNz3Ec80toY9sG3nM34zW4g5OOKjFgcq7eMFmsL6/kqH35cuS4WGmR1DCx1uySxzWsT7slCpiy0wFyjRndPoY4O1ZrJEF85w+8fNeg6d5EOPbVQImKQeZaUEYKhVowHb8sIn2HHci23mRN8ilEtKnxSKJs8JE3qIyE5IR3ycEaXgnAAb837miHNW77WV8HL3DzLzgvQ9Jth3Hhg13jlgwXqvvkOupKBCGrxCktlPCT8Bng1VD9UpYM36n7kmkrr1oOILroyaKSQatJ4lhy4mI83XUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vgsWL05e0lLKLZNf3USWh+C8WL7E9gD3Uj1DErbGrjg=;
- b=bbDxEX1PxZ5uuHFlIHPDCY4msH1D2h3Ls7Sj5qGTIYIXaRpzEg6Mjkj+nTAVUUw0sWsJfvj+FNtySUySUFBlSqfitTbYXGkQWyAx62BbHaHdCUVvdeP/U4voSbnNx13TL0azaAMyVMP0tTJ4Hxjtl43g5kzfXJS2vd9xkpGRkfuk6bXJ+ZXuLDVYvz/KOsjbrM2A3mW48LT3VmQR97VSwEn+IO2lsV3PbSSZk8+qSbBSbjgOkCm9++IX5vAVd5C9N0zQ3uWJcNbdxmEBO9i5xwVP5ItJgwXPckz6vGY80OecF1++SieAYchPrCGqT7W1yG+98CTCQm0hmyB4qMkEJQ==
+ bh=S+H+6Z52paFu/N0+YZuWPj+Ko4oZe1Z+S9ri4XOlRAk=;
+ b=CUgoMu+lrMEmLGffxZ/fqskm6ySZxs8R8+46Z+sH53hmoOGp7omLJcXrFvHbHG1UOUdBXHSMLS4TgberoI5XzyqN1fd3LSsBiqjTY+mWeBexyzx48/OEWEh82pskQmdYtz2YTtqO6DpPkALxbLAns6XP9u3WHSyNx4xW99LEOIIpt0ZkU6ICHg2jGvH3xLu51hfjUJ6Lj20NGBLc5WJd3fHzluM4PQuWwamCAa8J5UzTADVBSPqNU9vdN+KfmSntl/j+EYakb5+k6+Zqu3bTIzdULrXqAZUKglJBcMh1Ab8TL5dIhl0ZNp5UuN8tNaztLPJNAfV3T7oejZtEG3w6WA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vgsWL05e0lLKLZNf3USWh+C8WL7E9gD3Uj1DErbGrjg=;
- b=CkWQqt9VA9F/nOmVnaTwHfk67kmH8CKwWBstUL3tiItb11ee6KhKn7uCd0UVYjsTFWJo5h9ecC9BuMwSYe5+9mJ3sZyxIMpE2pqC9kXQIjpTYFZFfHDXIDMFM++0yKvL3S/jgDT6/3pPwY/yj9c3YPz/2OZZmIwldZ/R2wiqH4TDR/tvL4Drf2AEQFADIY0+Sc+fJDnQs+bFf9zjCmI/iaWTtNi8SZu6cZ/XNq803kG4Bk9QaIgdFPDcxjr3mbTJ1tAfIrn27/3w85XrAJUEvWyCA9YtgWyJhwgRKxxf4tnPek0oieU7AnsR7Hmxj6ZlWMrhwuWIwGakwNP83Jmj/w==
+ bh=S+H+6Z52paFu/N0+YZuWPj+Ko4oZe1Z+S9ri4XOlRAk=;
+ b=OQLCzCzlu276iDPYahDp50ZCbtR37HaPN/MPTM3IqlKFEUbnqct9DiLDa+XwabSfDvXzOX2D2uEkM19h4v0jPDs+c+Y2RueYaAVt2K3mRWbntkFq6cO4awgqkmJ441Ro0hwHIPXGIwmjlf5Hie5IyvMWKUAckJFInPO7RmvrTPnUk14H6ngZXcMGpHyVKH7nBvzWdST4E0/cbPeN95uleCXw/5CvOrfy/Ri5tKDR9fPt0XCvihP91mMGQmlKMxeswsAHUC+8gq7EbxO+sjjsyV/TRFTW1vw4jKxPLpXYU2uixY5lUUITdBBkZwFEqTBwUEi6S1x8/a3W4mjgI56pwA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
  IA0PPF12042BF6F.namprd12.prod.outlook.com (2603:10b6:20f:fc04::bc8)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.8; Mon, 23 Mar
- 2026 18:25:12 +0000
+ 2026 18:25:15 +0000
 Received: from DS2PR12MB9567.namprd12.prod.outlook.com
  ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
  ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9745.012; Mon, 23 Mar 2026
- 18:25:12 +0000
+ 18:25:15 +0000
 From: Nathan Chen <nathanc@nvidia.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -58,71 +58,70 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
  Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>
-Subject: [PATCH v5 5/8] hw/arm/smmuv3-accel: Change "ssidsize" property type
- to SsidSizeMode
-Date: Mon, 23 Mar 2026 11:24:51 -0700
-Message-ID: <20260323182454.1416110-6-nathanc@nvidia.com>
+Subject: [PATCH v5 6/8] qdev: Add an OasMode property type
+Date: Mon, 23 Mar 2026 11:24:52 -0700
+Message-ID: <20260323182454.1416110-7-nathanc@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260323182454.1416110-1-nathanc@nvidia.com>
 References: <20260323182454.1416110-1-nathanc@nvidia.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR05CA0209.namprd05.prod.outlook.com
- (2603:10b6:a03:330::34) To DS2PR12MB9567.namprd12.prod.outlook.com
+X-ClientProxiedBy: BYAPR21CA0011.namprd21.prod.outlook.com
+ (2603:10b6:a03:114::21) To DS2PR12MB9567.namprd12.prod.outlook.com
  (2603:10b6:8:27c::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|IA0PPF12042BF6F:EE_
-X-MS-Office365-Filtering-Correlation-Id: a66b9cfb-a4f3-4279-8918-08de89098513
+X-MS-Office365-Filtering-Correlation-Id: f3806120-666d-4137-7b5b-08de89098705
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|7416014|1800799024|376014|366016|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: CH2VpICTsEUXZnli7I10M6Qv8O+QHnEc8T+a1mnhlvX3e6K39Z5BgY0BhomrmUhke21QTtGRuo12FxKYPUJDNMEqv84XPcgBynXcWF/Pc3UZsYO01NsZwdApKjWDlMoyHD5NiwyJXGd7ri9lP37uN09pm/8s9t54a+vR0ewzR3ZxQXOyN2zMOhBMeFNss7LoLNMyxt4XDKtAal8FJznsp06kY6kpsqv0sBOq+QBgxjrWr8pSHifHTlWKex8Fth5qNyqx1AjAQG0LV+YhqsspJtSQWEtrVOxHy4o7t2T05S30DL3E3HV9l3j4VnCyKfiUPcmMQNeODmT0geAw8pTWL5WAMses79DZUnnewc+8SSo0ZX1FU8QmhiEQH72lbSFy9fQceBaoIe0yEcttc19nO16A9zxl20GE9isOacnGSttssGfnr6jrCa9zf0TezQiNspWk5V8H+xQrqqemyE29FqGDrNCKQsddN7N8AGalFUPcrc7Xh15JlSOmdv3bt/fxMlt0BKc+eRlG98ZUgUZTBJfyyIRCFs5vAqutv72H0aBp3H+SoGKSU4+zeDUpRvIkD6IORAfYqiSMNAmVajfFtp/ezrcKrwe11f1bgscvihdYTt8orJZ4pqUacdxUzCtB7v+TlPb8OxGKDOr2taIJ97yUbuZiTLwxFxYNderbst72R8VFcOOlGbAIJMKDzdmsRMs0/AHo08BYgBJqp0g15EnGRMsWZgfwedyL4P57j/c=
+X-Microsoft-Antispam-Message-Info: sZVLFCgB9YCDpLgrmewfBb84W4kTZQadkIAqlOSXpfeQrv6vaV2SRlUexqAGQaZVHLmfy9KRqG9dfhRgTiuuFhkpldfQ1AXmpioJygQiaYQ/3YtJYQbh0lIR9mnm9+iFgXtNGziDoiFnbjtS+g7yM57p4pDdoWSENK7qJ1PAssjFTkvFvTkK93lqCAGnY3c0F+kfLbbDRHcdkyCA047p/VTyoC+/Pp7bf+XNVR8XuddoqfYXFW+qtWEoRe/U3R7BSthEvk1bngR3tFn9ezZSOTY6jA4tmD6j/LgKBkeNEUMbYdt2AuhqeT7OL1EoNHK01rKmoO9axZzMlqojWKyCMqqOHTFpn5JFC4p3wIZmSVBliHCSef+Q+tK0Ord6zj3Fm9DgPMSNPa9naRihbjGYHPEjL+QkV1OUwCkcc+8+iaeIaiVsOcRM29etrd8SSLStOmbU4ekZK0a/wl8BdJt0lhan3VFgMBPe8oc3lezQBj6w+PsyxaeZaVCAgB1dkIv0DUNM/8ac+AqJ5GbtVNC/97t/aycZ9wyciVAtqjZha7avy0Gs9lBURapS6w6W+2lY89or4LjVvZa0QKJTBm9PKEDoIm5wb4C7RUiEk2Tz0dnck0tSNiN+xG53I9tWLpi6MFIqSdJ5oD99g6gagjvWWYrKyInV44FvukrO7IpWwCctM9a84irpskcrLjftev4ubdamkjHQ+api+nGinoxOe5CJ6Forl58lYJE0A6AEjdE=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(7416014)(1800799024)(376014)(366016)(18002099003)(22082099003)(56012099003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9c4Ivg0oK1g1+Q0sg+766Pkzq2x4DPZc2aKuq93QRGubYbxZYtVtKzQPXzLe?=
- =?us-ascii?Q?p1ZjyzWw1YXMNYK0jJxnnHt8CJnPNdQe90t2lU5qZfloW8vu0pbv4a9vcnCf?=
- =?us-ascii?Q?x8thxjBQtqqlqWiE5yKq3Pfz7Zsl9WmpWgewoqG7hbY06yVrGJd0zkMrKgHQ?=
- =?us-ascii?Q?oEVV+Npsjsx9k6mR3qzR08i+8PHM1nJa6tP870+ud9oDfW45APIzbA/d7JNU?=
- =?us-ascii?Q?pQDr18Ia94sS6IkabdIc96bnoW5aWMJK8y2iHGNzEoViPdmVHetM/Pqgr7lm?=
- =?us-ascii?Q?8pW/cCeLnYuo14Xgcyc8vqt5RK3JyR7qwptKe7wHm1tIDUs+zFz2I8vTkKD2?=
- =?us-ascii?Q?ObKWJWr1LCaeWsl0kO238MXrmH3O58O23/WkmtfB7KGz93X/SZMteLF8FCPT?=
- =?us-ascii?Q?38S7KOXaT9bf9KWjy7k0+FVwj41ZQ0c9WzKwjEFNb3kNDujn4SiATN2FOnl+?=
- =?us-ascii?Q?BEUYCzowhIWmhEOO1+BCnUPZq58K2Lmell2N4TL6p36XnqXAM45ChQkcoT8g?=
- =?us-ascii?Q?E8zgp+zziVMen84MoBqDjdLpvp5En0ngLkFVoOg0LAFtkJFMVljm1Sr0FqgM?=
- =?us-ascii?Q?9WzVXvngZ6IXGI481pzHzcO2iFeGKquQHYYpM4sk+c+1es2nN7G3IhyRp1WF?=
- =?us-ascii?Q?LC+DthIpGNItMEmHZNgqw1RN49UckRCU6IYJGgrKHLk52gx1UllKsVPMeiPq?=
- =?us-ascii?Q?AdXv7w9hqTuB8syRxHKEdYnHirygf86WOBfSq/Ua2+8FtBA78RHbXO/vk06K?=
- =?us-ascii?Q?0KQk3QPczg1xeV/ymvT5RIgzPj/UTy1LODG9RGXuvxRwdu5k55aJW56IZdPW?=
- =?us-ascii?Q?ZXLEg/sPXy6Y5oxoEF1wXA7KrAYXKjmcNFq9nBgCoWBFb5SMZ6GFy9Rx9OhU?=
- =?us-ascii?Q?4HmUbb24AjFiD2lZMcabBVDsjeMdUUY1Z8nEYsGNZhp6UCLqt9hIl1pkQpEg?=
- =?us-ascii?Q?DwfSm/M1cbl7RwG+SMqmUbHyVIxXckEo8gDz2HDXRNaWdbbPd2aE+XA/aYcB?=
- =?us-ascii?Q?n94cq/AM3zSILt+2eMzM7aeMNgYG3BJ27GYrUNRpkEkCOWoHcmgyTCD1OCNF?=
- =?us-ascii?Q?DdSYmrzbU2iS/n3viA5lvlMxJE5DxS71ACqJb6NLOUJ0UbiapyGR7jN5+KvR?=
- =?us-ascii?Q?3uUwwpv8wgUBNmEmSJXwflJXIcKMJ5oNkKi3pRMNgXBnaGcfUGw97yx4Nxr1?=
- =?us-ascii?Q?HA5tRte3D0RMTrlpaiRigQmYZUdAgIgSYSmK0eczjfENUg/r+ORzsgcliH5e?=
- =?us-ascii?Q?usd906WtMCjcKX8zSgjC8rLrGLkZUWdXT/AI7biN8cjEY1N4JAYvrgidJLTk?=
- =?us-ascii?Q?NW9p/Dm8qTcOPQmEl9Ok6XS2JnrkMU+RPLoiyqUwgKnygHhU7SunjpD7XBcZ?=
- =?us-ascii?Q?ZbWjy6uWrJy09eWtHFT9yivsu/jpRLvZbzwa+LYMW4wlPr/HL75kSa+ybGtf?=
- =?us-ascii?Q?WJ8dxR6A6uOf2jHPJphZeUKqE/4Te0J6VWqtonFp1LJCbVWUN87Z8m+JlBa2?=
- =?us-ascii?Q?+ZIfJ/i9RV4sWc8QNYAQQYHsrlrceXPQrEBqZ7OpZhO38dUDN0lonih0j0wX?=
- =?us-ascii?Q?VmZkBz9mQtdXG3Mt0ZfIePDpDrZHRQtkXUhI+O1b676w3bCKeqBvxcg5Y3Rg?=
- =?us-ascii?Q?6kNcz8ml9G7qXTnjFhT7Ms/qiEGvdwdmClvOcwXm+FppAd6Otp/DspUF0qEB?=
- =?us-ascii?Q?gDP1eYeYRioYz2RiQOjUTF7TH8rzeczZWmY/0Q1uixXIqFa7DLhzrozu30By?=
- =?us-ascii?Q?E7twmSMzHg=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/tmhpgQY/G1FPuEvF9SDgT9UvGN3teELBNVlKGjqG73PHb2dJHxCGmu2wbWA?=
+ =?us-ascii?Q?Zb6fxMAHkGwokpTGBEhgGgJnEXBwfw0sBBK0ZapXnVCUNwzDuZDxfLyBSpOR?=
+ =?us-ascii?Q?LZkbeckwnBrMnzNVsadoUV45A9AdGwRZRCoHLSrtU5ip+bs9Gmj3fj9dxr3o?=
+ =?us-ascii?Q?3LEHtswxhrLl617YoEQtUZi32ZbJH3IOUdauo19NNc2ahJS7OXa4fpk+tR90?=
+ =?us-ascii?Q?0SmnrQUZWyf9CUnBb8PEdhLXgqxxOg9TKcAN56BWBR2zEVs7mTzcXIcnpjMn?=
+ =?us-ascii?Q?BfNcN+YdG+2mP49ejWYJwDbHYmDfQNW2EQiq11PiDj4OF0XY2MM9/ABEwzH8?=
+ =?us-ascii?Q?tAHD1HFsi0GUjL8IDwbZBzwroVLYx2AdIyJH2qAS/lGjRtIWsXadcXi8QS0v?=
+ =?us-ascii?Q?jdfUMPkoMIe+e7qQOLJ2BjQml/UZeZWXphnTHv8na1c4aEtq6WLQz9cw4fPr?=
+ =?us-ascii?Q?KJMYT9gZMQbnrE3O0gfvr1XyyZPBOgVVy33wwyWAzIwYqNSZz4aBFPoSVFDt?=
+ =?us-ascii?Q?uRpdlAionB2ckLyXReEdOgDO5yHsRO/oggmjGgbkU9VivXYL4WyeGGdp0QEd?=
+ =?us-ascii?Q?WLL0WtUx8TlBcuiQCXUfnQXRaGIXWmc2i5/z+QEe4gfTiBFOv1cxwungO08F?=
+ =?us-ascii?Q?uG2aFkxFGarquooN59U0Jm7uWS5v/pmL41UuqRSjjOZCWRrHDxZqsPG0JPfT?=
+ =?us-ascii?Q?0ft6mokyuqaNh3IX1IIAlwZ5Ywh19b8n9apKfeGTrJP/C7YuVF9vN+OVy280?=
+ =?us-ascii?Q?NvkqtDpv78GM8SSKKsjdQbeObTmwNgRJpZGFEBR6+QMNlEynaJhYW6ujlsKA?=
+ =?us-ascii?Q?e6J2mAzvcd8fF72CdXSJcIGDhjyFrqSpiKR4LRaeh64saO2TSR5kLrp8Mjzc?=
+ =?us-ascii?Q?++0wCzTG007ofXW3JmVT6iNYbZVsRfSPeQhESBTrpHwrfNCZnv/ZH2zrs+A6?=
+ =?us-ascii?Q?lETZtOUTweJflmgKdBl/weGsKNiTVaCZapjqy4RM1icY4cSuKon9LMtqBIlZ?=
+ =?us-ascii?Q?WCzuhMf6j412CA8IMJfIbPigmDUuK1Wp4SibREIhGfbYHKxYCC6BYfU7dfVv?=
+ =?us-ascii?Q?86uHidgavVq5o6t1IN9CG7VMuqXx1l8BTO5c5XiIsZW+zpZcwmo0onPQB8lI?=
+ =?us-ascii?Q?4/3LM+k5LMV3PKzy97qMZpRFRKm4bn+i7bJVMqaL29mvcljCL3MOZ5I2wUm8?=
+ =?us-ascii?Q?9F0X66Pj37e/sWaKiDINdXdfDKMFFAZxr3/d5F0QRekhG5ez7XUeD1I7uZW9?=
+ =?us-ascii?Q?GowqanaKuuQqhVH7JMQ5T1uONoTvjNzupiShQwtKczMDKB2tuGuqYw3IqXtx?=
+ =?us-ascii?Q?qeimdDfWTt+DyKcJk4HVp9xrinjTKeHuVZubiLJQmg+BgkkeO5KfaXmiaw3E?=
+ =?us-ascii?Q?7iyslsDSqaElApR7Pf/O9sYV8MujmDQow5DmECQCBSPwlszQWttLq0oQXHoN?=
+ =?us-ascii?Q?mxZN7Q1f+XVDLJB1hg7rae/vprkdq6ad5DuDyKPuP/SQPghe6w7CjbOkx9Dm?=
+ =?us-ascii?Q?eZxPMU2ML1LY4fSW0t+M8wOE/hUzbRufrpS54w3YDwBddApI8F1ulKSvPQg2?=
+ =?us-ascii?Q?Hm5RVFz3nCajLUD/xBFQTEHvraAW1erPODxvz9/bpRtf7faa3U31wfA9uhdA?=
+ =?us-ascii?Q?v8pKlvsKL+7EiCUckA9RnZhnvYYBxzyPqzxZ7PH7LbTWAxxzm8e5EX+pCKtf?=
+ =?us-ascii?Q?R9p8ZQAPJ9zwWVVCViiuAN/EFxL1NAHg2Sd1oImCgvKoixBb7vTr5g8nMITo?=
+ =?us-ascii?Q?wTmYIRXAnw=3D=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a66b9cfb-a4f3-4279-8918-08de89098513
+X-MS-Exchange-CrossTenant-Network-Message-Id: f3806120-666d-4137-7b5b-08de89098705
 X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2026 18:25:12.1434 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Mar 2026 18:25:15.2745 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3oiK1SkwvssY35u5fRd+QrGuNHrqst6oeDpE5yyC+yuN+8bQD6+hJNDewa7R2PoC/Pver9Ii9YBd5ZJqEXQpNw==
+X-MS-Exchange-CrossTenant-UserPrincipalName: iZGfGxu/C9X59ZKWOz7lpxft6M/LjLRvVUA+7C8xBnKrK/cO61aZUF2LwUtWzIfuCa7rq7HKRwQHHRv9jCNOPg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPF12042BF6F
 Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
  envelope-from=nathanc@nvidia.com;
@@ -151,184 +150,102 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Nathan Chen <nathanc@nvidia.com>
 
-Change accel SMMUv3 SSIDSIZE property from uint8_t to SsidSizeMode.
-The 'auto' value is not implemented, as this commit is meant to set the
-property to the correct type and avoid breaking JSON/QMP when the auto
-mode is introduced. A future patch will implement resolution of 'auto'
-value to match the host SMMUv3 SSIDSIZE value.
+Introduce a new enum type property allowing to set an Output Address
+Size. Values are auto, 32, 36, 40, 42, 44, 48, 52, and 56, where a
+value of N specifies an N-bit OAS.
 
-The conversion of the "ssidsize" property type to OnOffAuto is an
-incompatible change for JSON/QMP when a uint8_t value is expected for
-"ssidsize", but this property is new in 11.0 and this patch is
-submitted as a fix to the property type.
-
-Fixes: b8c6f8a69d27 ("hw/arm/smmuv3-accel: Make SubstreamID support configurable")
-Tested-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested-by: Eric Auger <eric.auger@redhat.com>
 Tested-by: Shameer Kolothum <skolothumtho@nvidia.com>
 Acked-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 ---
- hw/arm/smmuv3-accel.c          | 23 +++++++++++++++++++++--
- hw/arm/smmuv3.c                | 19 ++++++++++---------
- include/hw/arm/smmuv3-common.h |  1 -
- include/hw/arm/smmuv3.h        |  3 ++-
- 4 files changed, 33 insertions(+), 13 deletions(-)
+ hw/core/qdev-properties-system.c         | 13 +++++++++++
+ include/hw/core/qdev-properties-system.h |  3 +++
+ qapi/misc-arm.json                       | 28 ++++++++++++++++++++++++
+ 3 files changed, 44 insertions(+)
 
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index c31b64295e..bc6cbfebc2 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -802,7 +802,7 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
-     SMMUState *bs = opaque;
-     SMMUv3State *s = ARM_SMMUV3(bs);
- 
--    if (s->ssidsize) {
-+    if (s->ssidsize > SSID_SIZE_MODE_0) {
-         flags |= VIOMMU_FLAG_PASID_SUPPORTED;
-     }
-     return flags;
-@@ -817,6 +817,22 @@ static const PCIIOMMUOps smmuv3_accel_ops = {
-     .get_msi_direct_gpa = smmuv3_accel_get_msi_gpa,
+diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
+index 4aca1d4326..a805ee2e1f 100644
+--- a/hw/core/qdev-properties-system.c
++++ b/hw/core/qdev-properties-system.c
+@@ -737,6 +737,19 @@ const PropertyInfo qdev_prop_ssidsize_mode = {
+     .set_default_value = qdev_propinfo_set_default_value_enum,
  };
  
-+/*
-+ * This returns the value of a SsidSizeMode value offset by 1 to
-+ * account for the enum values offset by 1 from actual values.
-+ *
-+ * SSID_SIZE_MODE_0 = 1, SSID_SIZE_MODE_1 = 2, etc. so return 0
-+ * if SSID_SIZE_MODE_0 is passed as input, return 1 if
-+ * SSID_SIZE_MODE_1 is passed as input, etc.
-+ */
-+static uint8_t ssidsize_mode_to_value(SsidSizeMode mode)
-+{
-+    if (mode == SSID_SIZE_MODE_AUTO) {
-+        return 0;
-+    }
-+    return mode - 1;
-+}
++/* --- OasMode --- */
 +
- void smmuv3_accel_idr_override(SMMUv3State *s)
- {
-     if (!s->accel) {
-@@ -842,7 +858,10 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
-      * By default QEMU SMMUv3 has no SubstreamID support. Update IDR1 if user
-      * has enabled it.
-      */
--    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE, s->ssidsize);
-+    if (s->ssidsize > SSID_SIZE_MODE_0) {
-+        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
-+                               ssidsize_mode_to_value(s->ssidsize));
-+    }
- }
++QEMU_BUILD_BUG_ON(sizeof(OasMode) != sizeof(int));
++
++const PropertyInfo qdev_prop_oas_mode = {
++    .type = "OasMode",
++    .description = "oas mode: auto, 32, 36, 40, 42, 44, 48, 52, 56",
++    .enum_table = &OasMode_lookup,
++    .get = qdev_propinfo_get_enum,
++    .set = qdev_propinfo_set_enum,
++    .set_default_value = qdev_propinfo_set_default_value_enum,
++};
++
+ /* --- Reserved Region --- */
  
- /* Based on SMUUv3 GPBA.ABORT configuration, attach a corresponding HWPT */
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ea285bdf64..79018f8d66 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -20,6 +20,7 @@
- #include "qemu/bitops.h"
- #include "hw/core/irq.h"
- #include "hw/core/sysbus.h"
-+#include "hw/core/qdev-properties-system.h"
- #include "migration/blocker.h"
- #include "migration/vmstate.h"
- #include "hw/core/qdev-properties.h"
-@@ -625,7 +626,7 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
-     }
- 
-     /* Multiple context descriptors require SubstreamID support */
--    if (!s->ssidsize && STE_S1CDMAX(ste) != 0) {
-+    if (s->ssidsize == SSID_SIZE_MODE_0 && STE_S1CDMAX(ste) != 0) {
-         qemu_log_mask(LOG_UNIMP,
-                 "SMMUv3: multiple S1 context descriptors require SubstreamID support. "
-                 "Configure ssidsize > 0 (requires accel=on)\n");
-@@ -1979,6 +1980,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
-         error_setg(errp, "ril auto mode is not supported");
-         return false;
-     }
-+    if (s->ssidsize == SSID_SIZE_MODE_AUTO) {
-+        error_setg(errp, "ssidsize auto mode is not supported");
-+        return false;
-+    }
- 
-     if (!s->accel) {
-         if (s->ril == ON_OFF_AUTO_OFF) {
-@@ -1993,7 +1998,7 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
-             error_setg(errp, "OAS must be 44 bits when accel=off");
-             return false;
-         }
--        if (s->ssidsize) {
-+        if (s->ssidsize > SSID_SIZE_MODE_0) {
-             error_setg(errp, "ssidsize can only be set if accel=on");
-             return false;
-         }
-@@ -2011,11 +2016,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
-         error_setg(errp, "OAS can only be set to 44 or 48 bits");
-         return false;
-     }
--    if (s->ssidsize > SMMU_SSID_MAX_BITS) {
--        error_setg(errp, "ssidsize must be in the range 0 to %d",
--                   SMMU_SSID_MAX_BITS);
--        return false;
--    }
- 
-     return true;
- }
-@@ -2144,7 +2144,8 @@ static const Property smmuv3_properties[] = {
-     DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
-     DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
-     DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
--    DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
-+    DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
-+                              SSID_SIZE_MODE_0),
- };
- 
- static void smmuv3_instance_init(Object *obj)
-@@ -2185,7 +2186,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
-         "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
-         "Valid range is 0-20, where 0 disables SubstreamID support. "
-         "Defaults to 0. A value greater than 0 is required to enable "
--        "PASID support.");
-+        "PASID support. ssidsize=auto is not supported.");
- }
- 
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-index 9f78bbe89e..7f0f992dfd 100644
---- a/include/hw/arm/smmuv3-common.h
-+++ b/include/hw/arm/smmuv3-common.h
-@@ -311,7 +311,6 @@ REG32(IDR1,                0x4)
-     FIELD(IDR1, TABLES_PRESET, 30, 1)
-     FIELD(IDR1, ECMDQ,        31, 1)
- 
--#define SMMU_SSID_MAX_BITS 20
- #define SMMU_IDR1_SIDSIZE 16
- #define SMMU_CMDQS   19
- #define SMMU_EVENTQS 19
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index c35e599bbc..ddf472493d 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -21,6 +21,7 @@
- 
- #include "hw/arm/smmu-common.h"
- #include "qom/object.h"
-+#include "qapi/qapi-types-misc-arm.h"
- 
- #define TYPE_SMMUV3_IOMMU_MEMORY_REGION "smmuv3-iommu-memory-region"
- 
-@@ -72,7 +73,7 @@ struct SMMUv3State {
-     OnOffAuto ril;
-     OnOffAuto ats;
-     uint8_t oas;
--    uint8_t ssidsize;
-+    SsidSizeMode ssidsize;
- };
- 
- typedef enum {
+ /*
+diff --git a/include/hw/core/qdev-properties-system.h b/include/hw/core/qdev-properties-system.h
+index 4708885164..2cbea16d61 100644
+--- a/include/hw/core/qdev-properties-system.h
++++ b/include/hw/core/qdev-properties-system.h
+@@ -15,6 +15,7 @@ extern const PropertyInfo qdev_prop_mig_mode;
+ extern const PropertyInfo qdev_prop_granule_mode;
+ extern const PropertyInfo qdev_prop_zero_page_detection;
+ extern const PropertyInfo qdev_prop_ssidsize_mode;
++extern const PropertyInfo qdev_prop_oas_mode;
+ extern const PropertyInfo qdev_prop_losttickpolicy;
+ extern const PropertyInfo qdev_prop_blockdev_on_error;
+ extern const PropertyInfo qdev_prop_bios_chs_trans;
+@@ -64,6 +65,8 @@ extern const PropertyInfo qdev_prop_virtio_gpu_output_list;
+                        ZeroPageDetection)
+ #define DEFINE_PROP_SSIDSIZE_MODE(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_ssidsize_mode, SsidSizeMode)
++#define DEFINE_PROP_OAS_MODE(_n, _s, _f, _d) \
++    DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_oas_mode, OasMode)
+ #define DEFINE_PROP_LOSTTICKPOLICY(_n, _s, _f, _d) \
+     DEFINE_PROP_SIGNED(_n, _s, _f, _d, qdev_prop_losttickpolicy, \
+                         LostTickPolicy)
+diff --git a/qapi/misc-arm.json b/qapi/misc-arm.json
+index 416b4240e2..4dc66d00e5 100644
+--- a/qapi/misc-arm.json
++++ b/qapi/misc-arm.json
+@@ -61,3 +61,31 @@
+   'data': [ 'auto', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+             '10', '11', '12', '13', '14', '15', '16', '17', '18',
+             '19', '20' ] } # order matters, see ssidsize_mode_to_value()
++
++##
++# @OasMode:
++#
++# SMMUv3 Output Address Size configuration mode.
++#
++# @auto: derive from host IOMMU capabilities
++#
++# @32: 32-bit output address size
++#
++# @36: 36-bit output address size
++#
++# @40: 40-bit output address size
++#
++# @42: 42-bit output address size
++#
++# @44: 44-bit output address size
++#
++# @48: 48-bit output address size
++#
++# @52: 52-bit output address size
++#
++# @56: 56-bit output address size
++#
++# Since: 11.0
++##
++{ 'enum': 'OasMode',
++  'data': [ 'auto', '32', '36', '40', '42', '44', '48', '52', '56' ] }
 -- 
 2.43.0
 

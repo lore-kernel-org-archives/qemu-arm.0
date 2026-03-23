@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE69F46101
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 13:32:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0FADF46110
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Mar 2026 13:33:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4fOS-0000YJ-Hb; Mon, 23 Mar 2026 09:32:33 -0400
+	id 1w4fP9-00013H-SQ; Mon, 23 Mar 2026 09:33:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w4fOP-0000Ui-U1; Mon, 23 Mar 2026 09:32:29 -0400
+ id 1w4fOR-0000XD-56; Mon, 23 Mar 2026 09:32:31 -0400
 Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w4fOM-00028q-Pi; Mon, 23 Mar 2026 09:32:29 -0400
+ id 1w4fON-00029V-9i; Mon, 23 Mar 2026 09:32:30 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwA3KYXeQMFpg09sCA--.1129S2;
- Mon, 23 Mar 2026 21:32:14 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwA3NpLmQMFp1U9sCA--.2530S2;
+ Mon, 23 Mar 2026 21:32:22 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwwZLcQMFp0nsEAA--.10052S3;
- Mon, 23 Mar 2026 21:32:12 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwwZLcQMFp0nsEAA--.10052S7;
+ Mon, 23 Mar 2026 21:32:17 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
@@ -32,19 +32,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v3 0/4] tests/qtest: Add memory-access attributes (secure/space)
-Date: Mon, 23 Mar 2026 21:32:06 +0800
-Message-Id: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
+Subject: [RFC v3 4/4] [NOT-MERGE] tests/qtest: add q35 SMM-only x86 attrs
+ coverage
+Date: Mon, 23 Mar 2026 21:32:10 +0800
+Message-Id: <20260323133210.1523868-5-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
+References: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwwZLcQMFp0nsEAA--.10052S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQADBWnAQfgOwgAJsS
+X-CM-TRANSID: AQAAf8DwwZLcQMFp0nsEAA--.10052S7
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQADBWnAQfgOywAAsS
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3Gryrur1fXr4kJr1xWrykKrg_yoW7Xr4rpF
- ZxA3W3Kr48JF1xAw4fJa10qFyYka97C3W7XFnFyr18CFWYyFy7Zry2k34Fqr9xGrZ5Xr1Y
- 93WqyFs3Wrn8taDanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3Ar43Gw43Wry3WFykArW8JFb_yoW3Wr4xpF
+ yDAFnF9r4a9F1xZrs7Ja1xC3WYqFs7Ca48urW7GwsYkF45Crn2yryq9Fyvqr9rJrW0vw4r
+ u3WDJFZrGan8JaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=129.150.39.64;
@@ -71,131 +74,231 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is v3 of the patch series adding support for memory access attributes
-(secure / security-space selection) in the qtest framework.
+Add a q35-only test path for x86 secure attrs by introducing an optional
+test-only RAM region that is mapped only into the SMM address space.
 
-Thanks to everyone who reviewed the previous version and provided valuable
-feedback.
+The new qtest-x86-attrs-test enables this region with
+`-global mch.x-smm-test-ram=on` and verifies that accesses with the
+`secure` attribute reach the SMM-only region, while default accesses do
+not. This provides the x86 cross-verification that qtest-attrs-test does
+not cover, where normal RAM is visible from both the default and SMM
+address spaces.
 
-The main change from v2 is that the series is now structured around verifying
-that attrs select the intended AddressSpace, rather than only extending the
-qtest syntax. To make that explicit, v3 splits the implementation by layer and
-strengthens the tests around real address-space differences on both Arm and x86.
+This is a NOT-MERGE commit.
 
-The major changes from v2 include:
-
-- split the old combined protocol/libqtest change into separate qtest server
-  and libqtest helper patches
-- refactor libqtest response parsing and add qtest_raw_cmd(), so tests can
-  inspect non-OK replies directly
-- make qtest memory access failures return ERR via qtest_send_memtx_error(),
-  enabling negative testing of address-space mismatches
-- rework qtest-attrs-test on Arm to target the virt secure-only RAM window,
-  and add negative coverage for space=realm and for non-secure accesses into
-  secure-only RAM
-- switch x86 coverage to q35,smm=on and add a NOT-MERGE q35-only SMM test RAM
-  path plus a dedicated qtest-x86-attrs-test, so secure accesses can be
-  cross-checked against an address visible only in the SMM address space
-
-
-Motivation
-----------
-
-IOMMU functional testing is always stack-heavy: for example, even for the
-Non-secure Arm SMMU model, end-to-end validation can require a fairly involved
-software stack. To keep the testing loop tight and reproducible, I previously
-proposed using iommu-testdev + QTest to validate IOMMU/SMMU behaviour without
-booting a guest [1].
-
-[1] https://www.qemu.org/docs/master/specs/iommu-testdev.html
-
-However, the current QTest interface cannot tag memory accesses with MemTxAttrs,
-so it is hard to write targeted tests for security-sensitive paths. This becomes
-a bigger issue for Secure SMMU work, which is RFCing in [2], and for future Arm
-RME-DA enablement.
-
-[2] https://lore.kernel.org/qemu-devel/20260221100250.2976287-1-tangtao1634@phytium.com.cn/
-
-This series therefore extends qtest memory access commands with an optional
-attrs argument, adds matching libqtest helpers, and introduces tests that
-exercise the new APIs against address spaces that actually differ by security
-context.
-
-In particular:
-- on Arm virt,secure=on, the test now uses the secure-only RAM window so the
-  requested attrs must select the correct AddressSpace
-- on x86 q35,smm=on, the API series covers normal RAM, and an extra NOT-MERGE
-  validation patch adds an SMM-only RAM window so the secure path can be
-  cross-checked against a location not visible from the default address space
-
-
-Compatibility
--------------
-
-This series is additive for existing qtest users:
-- Existing qtest memory commands keep their current forms; attrs is an optional
-  extra argument
-- Existing libqtest memory helpers remain available and are kept as wrappers
-  passing NULL attrs
-- The first three patches are the upstreamable API and test additions
-- The fourth patch is explicitly marked NOT-MERGE and only provides extra x86
-  RFC coverage by wiring in a q35 test-only SMM RAM window
-
-One behavioural improvement is that memory access failures on the new paths are
-now reported consistently as ERR, which lets tests validate address-space
-selection failures directly.
-
-
-Testing
--------
-
-The API series was exercised with:
-
-  meson test -C build \
-      "qtest-aarch64/qtest-attrs-test" \
-      "qtest-i386/qtest-attrs-test" \
-      "qtest-x86_64/qtest-attrs-test"
-
-The extra x86 cross-check from the NOT-MERGE patch was exercised with:
-
-  meson test -C build \
-      "qtest-i386/qtest-x86-attrs-test" \
-      "qtest-x86_64/qtest-x86-attrs-test"
-
-
-Future work
------------
-
-Once the Secure SMMU series lands, I plan to build on this qtest API to extend
-iommu-testdev-based tests to cover more security contexts while still avoiding
-a full guest software stack.
-
-This series is also available in a branch below [3]:
-[3] https://gitlab.com/TaoTang/qemu/-/tree/series/qtest-secure-api-v3-6
-
-CI is all green [4]:
-[4] https://gitlab.com/TaoTang/qemu/-/pipelines/2399350916
-
-
-Tao Tang (4):
-  tests/qtest: Add attrs support to qtest server memory commands
-  tests/qtest: Add libqtest attrs helpers for memory accesses
-  tests/qtest: Add qtest-attrs-test for memory access attrs
-  [NOT-MERGE] tests/qtest: add q35 SMM-only x86 attrs coverage
-
- hw/pci-host/q35.c                  |  24 ++
- include/hw/pci-host/q35.h          |   8 +
- system/qtest.c                     | 517 ++++++++++++++++++++++++++---
- tests/qtest/libqtest-single.h      | 156 +++++++++
- tests/qtest/libqtest.c             | 246 +++++++++++---
- tests/qtest/libqtest.h             | 177 ++++++++++
- tests/qtest/meson.build            |   8 +-
- tests/qtest/qtest-attrs-test.c     | 305 +++++++++++++++++
- tests/qtest/qtest-x86-attrs-test.c | 109 ++++++
- 9 files changed, 1439 insertions(+), 111 deletions(-)
- create mode 100644 tests/qtest/qtest-attrs-test.c
+Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+---
+ hw/pci-host/q35.c                  |  24 +++++++
+ include/hw/pci-host/q35.h          |   8 +++
+ tests/qtest/meson.build            |   1 +
+ tests/qtest/qtest-x86-attrs-test.c | 109 +++++++++++++++++++++++++++++
+ 4 files changed, 142 insertions(+)
  create mode 100644 tests/qtest/qtest-x86-attrs-test.c
 
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index e85e4227b3..5c23375dd6 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -572,6 +572,11 @@ static void mch_realize(PCIDevice *d, Error **errp)
+         return;
+     }
+ 
++    if (mch->enable_smm_test_ram && !mch->has_smm_ranges) {
++        error_setg(errp, "x-smm-test-ram requires SMM support");
++        return;
++    }
++
+     /* setup pci memory mapping */
+     pc_pci_as_mapping_init(mch->system_memory, mch->pci_address_space);
+ 
+@@ -653,6 +658,23 @@ static void mch_realize(PCIDevice *d, Error **errp)
+     memory_region_add_subregion(&mch->smram, MCH_HOST_BRIDGE_SMBASE_ADDR,
+                                 &mch->smbase_window);
+ 
++    if (mch->enable_smm_test_ram) {
++        /*
++         * This is a QEMU-specific, test-only region. It is mapped only into
++         * mch->smram so qtest can verify that x86 secure attrs select the SMM
++         * address space rather than the default one.
++         */
++        memory_region_init_ram(&mch->smm_test_ram, OBJECT(mch),
++                               "smm-test-ram",
++                               MCH_HOST_BRIDGE_SMM_TEST_RAM_SIZE, errp);
++        if (*errp) {
++            return;
++        }
++        memory_region_add_subregion(&mch->smram,
++                                    MCH_HOST_BRIDGE_SMM_TEST_RAM_BASE,
++                                    &mch->smm_test_ram);
++    }
++
+     object_property_add_const_link(qdev_get_machine(), "smram",
+                                    OBJECT(&mch->smram));
+ }
+@@ -661,6 +683,8 @@ static const Property mch_props[] = {
+     DEFINE_PROP_UINT16("extended-tseg-mbytes", MCHPCIState, ext_tseg_mbytes,
+                        64),
+     DEFINE_PROP_BOOL("smbase-smram", MCHPCIState, has_smram_at_smbase, true),
++    DEFINE_PROP_BOOL("x-smm-test-ram", MCHPCIState, enable_smm_test_ram,
++                     false),
+ };
+ 
+ static void mch_class_init(ObjectClass *klass, const void *data)
+diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+index ddafc3f2e3..1ca26f0e63 100644
+--- a/include/hw/pci-host/q35.h
++++ b/include/hw/pci-host/q35.h
+@@ -49,8 +49,10 @@ struct MCHPCIState {
+     MemoryRegion smram, low_smram, high_smram;
+     MemoryRegion tseg_blackhole, tseg_window;
+     MemoryRegion smbase_blackhole, smbase_window;
++    MemoryRegion smm_test_ram;
+     bool has_smram_at_smbase;
+     bool has_smm_ranges;
++    bool enable_smm_test_ram;
+     Range pci_hole;
+     uint64_t below_4g_mem_size;
+     uint64_t above_4g_mem_size;
+@@ -99,6 +101,12 @@ struct Q35PCIHost {
+ #define MCH_HOST_BRIDGE_PCIEXBAR_SIZE          8       /* 64bit register */
+ #define MCH_HOST_BRIDGE_PCIEXBAR_DEFAULT       0xb0000000
+ #define MCH_HOST_BRIDGE_PCIEXBAR_MAX           (0x10000000) /* 256M */
++/*
++ * Optional qtest-only RAM window used to expose an address that exists only
++ * in the SMM address space, so x86 secure attrs can be cross-checked.
++ */
++#define MCH_HOST_BRIDGE_SMM_TEST_RAM_BASE      0xfef00000
++#define MCH_HOST_BRIDGE_SMM_TEST_RAM_SIZE      (64 * KiB)
+ #define MCH_HOST_BRIDGE_PCIEXBAR_ADMSK         Q35_MASK(64, 35, 28)
+ #define MCH_HOST_BRIDGE_PCIEXBAR_128ADMSK      ((uint64_t)(1 << 26))
+ #define MCH_HOST_BRIDGE_PCIEXBAR_64ADMSK       ((uint64_t)(1 << 25))
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 87aa104d23..fcdd95bf7f 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -116,6 +116,7 @@ qtests_i386 = \
+    'cpu-plug-test',
+    'migration-test',
+    'qtest-attrs-test',
++   'qtest-x86-attrs-test',
+   ]
+ 
+ if dbus_display and config_all_devices.has_key('CONFIG_VGA')
+diff --git a/tests/qtest/qtest-x86-attrs-test.c b/tests/qtest/qtest-x86-attrs-test.c
+new file mode 100644
+index 0000000000..d9a67d5309
+--- /dev/null
++++ b/tests/qtest/qtest-x86-attrs-test.c
+@@ -0,0 +1,109 @@
++/*
++ * QTest for x86 memory access with transaction attributes
++ *
++ * Verify q35 SMM address-space access with the secure attribute.
++ *
++ * Copyright (c) 2026 Phytium Technology
++ *
++ * Author:
++ *  Tao Tang <tangtao1634@phytium.com.cn>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++#define TEST_ADDR_OFFSET_NS     0x1000ULL
++#define TEST_X86_BASE           0x0ULL
++#define TEST_X86_SMM_BASE       0xfef00000ULL
++
++#define TEST_ADDR_X86           (TEST_X86_BASE + TEST_ADDR_OFFSET_NS)
++
++#define X86_MACHINE_ARGS        "-machine q35,smm=on -m 1G -accel tcg " \
++                                "-global mch.x-smm-test-ram=on"
++
++static void test_x86_scalar_attrs(void)
++{
++    QTestState *qts;
++    uint8_t val;
++
++    if (!qtest_has_machine("q35")) {
++        g_test_skip("q35 machine not available");
++        return;
++    }
++
++    qts = qtest_init(X86_MACHINE_ARGS);
++
++    qtest_writeb_attrs(qts, TEST_ADDR_X86, 0x11, NULL);
++    val = qtest_readb_attrs(qts, TEST_ADDR_X86, NULL);
++    g_assert_cmpuint(val, ==, 0x11);
++
++    qtest_writeb_attrs(qts, TEST_ADDR_X86 + 0x1, 0x22, "secure");
++    val = qtest_readb_attrs(qts, TEST_ADDR_X86 + 0x1, "secure");
++    g_assert_cmpuint(val, ==, 0x22);
++
++
++    qtest_writeb_attrs(qts, TEST_X86_SMM_BASE + 0x2, 0x33, "secure");
++    val = qtest_readb_attrs(qts, TEST_X86_SMM_BASE + 0x2, "secure");
++    g_assert_cmpuint(val, ==, 0x33);
++
++    qtest_quit(qts);
++}
++
++static void test_x86_bulk_attrs(void)
++{
++    QTestState *qts;
++    uint8_t wbuf[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };
++    uint8_t rbuf[8];
++    size_t i;
++
++    if (!qtest_has_machine("q35")) {
++        g_test_skip("q35 machine not available");
++        return;
++    }
++
++    qts = qtest_init(X86_MACHINE_ARGS);
++
++    qtest_memwrite_attrs(qts, TEST_ADDR_X86 + 0x100, wbuf, sizeof(wbuf), NULL);
++    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x100, rbuf, sizeof(rbuf), NULL);
++    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
++
++    qtest_memwrite_attrs(qts, TEST_ADDR_X86 + 0x180,
++                         wbuf, sizeof(wbuf), "secure");
++    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x180,
++                        rbuf, sizeof(rbuf), "secure");
++    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
++
++    qtest_memwrite_attrs(qts, TEST_X86_SMM_BASE + 0x100,
++                         wbuf, sizeof(wbuf), "secure");
++    qtest_memread_attrs(qts, TEST_X86_SMM_BASE + 0x100,
++                        rbuf, sizeof(rbuf), "secure");
++    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
++
++    qtest_memset_attrs(qts, TEST_X86_SMM_BASE + 0x120,
++                       0x5a, sizeof(rbuf), "secure");
++    qtest_memread_attrs(qts, TEST_X86_SMM_BASE + 0x120,
++                        rbuf, sizeof(rbuf), "secure");
++    for (i = 0; i < sizeof(rbuf); i++) {
++        g_assert_cmpuint(rbuf[i], ==, 0x5a);
++    }
++
++    qtest_bufwrite_attrs(qts, TEST_X86_SMM_BASE + 0x200,
++                         wbuf, sizeof(wbuf), "secure");
++    qtest_bufread_attrs(qts, TEST_X86_SMM_BASE + 0x200,
++                        rbuf, sizeof(rbuf), "secure");
++    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/qtest/x86/attrs/scalar", test_x86_scalar_attrs);
++    qtest_add_func("/qtest/x86/attrs/bulk", test_x86_bulk_attrs);
++
++    return g_test_run();
++}
 -- 
 2.34.1
 

@@ -4,83 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADC60F54AB8
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 13:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA8BF54AB9
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 13:38:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w51uG-00084P-Ep; Tue, 24 Mar 2026 09:34:52 -0400
+	id 1w51xj-0000hK-5Y; Tue, 24 Mar 2026 09:38:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1w51uF-000846-22
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:34:51 -0400
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w51xg-0000ge-NZ
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:38:24 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1w51uD-0003FV-Bf
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:34:50 -0400
-Received: by mail-vk1-xa44.google.com with SMTP id
- 71dfb90a1353d-56a8fdaddebso1545234e0c.0
- for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 06:34:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w51xe-00049V-OG
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:38:24 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-79a2ee65171so38931787b3.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 06:38:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774359500; cv=none;
+ d=google.com; s=arc-20240605;
+ b=G+rdNWIJW2UAiHkxvIna8oDeJtF7FU1L+ElHd/L8J1KPG2NvjIFclNZ+hyUcXGBHom
+ CQOmOOPx37I95f8/64G6J2qcgxlnbzJP2J6ZDeoN9XAzvwvnfuluqZILIlY2HTPyX+U9
+ I8ns+I70F853BxMgL2P2WCIgXc39IpXDX5F1uMRoHGrqPKoF3O/XU1wlqr7ngK3CrfiU
+ 0YtEdn8Vpr8vy8x4TAUjg1lFcqgSumNAPQgnZpIDmO6IR1c1gqASPtiOGCVtujh/RDYq
+ M9ozUZoAwlZqa16PUU5Kb2G5ls0NFmexPuv/uekSqIsIhoq8jhoKn+1h3Wku9M/4zSzq
+ 4Q2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=TPOzL2/PxgXplEfzLP4gJiOQHyowhZVV0LiuIEGPfxk=;
+ fh=y/6p8HSQVKmUOwjHSMO28jU0rx498PPD4OxiJ4HXU5s=;
+ b=VclD7KAlApH+xzfqiSfPvTOiLDoTHPWN5Voc3anYVR1rrffoJaeu55va6n7Q0V1AUR
+ 8Mv8JUUurxuHtz3scsS91ELNTmAxhxtvnEQQMJ3ZxTNWH5AAqLf8mQwyRyIeh5goiuIK
+ /qO7h4sc7u2OYlXSCjwF0e40TBsH9qc+f22T3tyd5PNRcEI2F8ZeEdkuNVEi0+s5IjPZ
+ xp/igmbJ84AiVxjrLBYIwJTrSHGx2RovJ3kz/IfkwuPrD0sCbYRzKplDIquq/zgD/Ioj
+ GA7I1fPoLsbnd/+XRfnM9INBLss0UbrRjSiblNXzxH/yWc+xwR0Jfpr3Nmea+x+btUAS
+ PIKw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774359288; x=1774964088; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=35we+WfrubkBZmvNiww3m8Pfsu7szo+HvCClejAuJBg=;
- b=glKQSKx1f8l5mjI6ULd/6OOm/7baTRL3aeefo+uVxyDjUzqy6uPdKqpdreMoqDuRSw
- wA34uoUVMAyRqKGOHkLMv47Ub0gWX0+zdGjHHYEMshCnf8dYKAOsCjTPuc2mxL+fJYuZ
- UlndythDwwbLFpcXvfKD0LLLD5ceRAq7kWbS/uj+IzzPVy/DZ1f7Dnpxnf4Ufh3epugu
- rHD5jGYMyuXXU8AoPF/fitOkofW99g380MGvFsFjw3SEqkbhE8A8QXH/GSulvHxs3+jy
- H20R1dY/xAMuIaMeTHyngdwm+dszzSSaMrdhRPS9vO1EJvpl0Ty8jbar6j1ci4oOFOrt
- Gz4A==
+ d=linaro.org; s=google; t=1774359500; x=1774964300; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=TPOzL2/PxgXplEfzLP4gJiOQHyowhZVV0LiuIEGPfxk=;
+ b=NNabnAgSN7+91VJ2m6Cf/HTC/MccxnwPPJcm23fbz4alk1K9RoZt6L9TtoZK0HrcGw
+ /BgZ0uDUGvqy0zoyxAOPgQGlmybGL+M8cWwK2vYISxGbxq4iVKGc26n+UfmHeqUVCLWI
+ U8NgIZEqc3hpDsS0bIMNpJDCgqS6fUMA9abpljMl7TT67Ue6xTD6/w/Wg0/OB2ZpNqCX
+ Z6lwwX6UIy4IkCN/ItJ/WwxynSKTvDPyGqsZMQeBLU9vxDKB1mX+v6XeNtRyHZnIb3UR
+ kWTjs3hiM3iBhCdo+2Gz8SXhx+9tPELU5yIhV4Z3CxaAImtE+6SSIzWeJKH0EXKTFuaF
+ juug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774359288; x=1774964088;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=35we+WfrubkBZmvNiww3m8Pfsu7szo+HvCClejAuJBg=;
- b=Lf1g/iePQXIQ4Nt/COtNBQah2XVpnV81Tecnx/KC3hQc0yWahU6hz02FA0YsY226JO
- CTC7iuxhtHuknm/pEtDRZ7RRrFKOEeNv0up2hthojvUOIyu7fP5l55v8YsagAA6pf1Id
- 89WjjU5ALExk/qY7d1IQjai//blBwaJl3wK8Yqvhmu6u0d8App5nBb7iI2b4fYqHxUQ3
- 4PKE0WRqvA6Y6MQJJJyXWV67NVoE0oKJP+rz0UkXRidE+4GVQbdG0ayPc+zKBQ+Tw2BS
- Lv2reRf+uKbH5Wv+ojtKqd5fDT1V6OwOtwZwARdLLglGkUWzTihQjpsFqM/M1zw4IbDH
- +hAg==
-X-Gm-Message-State: AOJu0YwKi5AqCoa0mqZlHZ2VyCPsLT/qKg++DKoyZtRQZwtBj4hrHiOW
- 40SjJCj18dtkFjwst/ALvtk07ec+rZ/kxbdUgRGM6R9VI2v6Kbgl1LTtbmD/kaO9L/4=
-X-Gm-Gg: ATEYQzx1KTy+gkywC5RjF28rOrBmW1YpsTaiQ8lnzQOCfGgu6jJTObOEu86nkDBiB9i
- 9HG3IeBDfho1uI2ihsd1hBRreBXsPjLAucSpFHcmu9MDhDLmgLicjcR3zjbBh3q+z+0DjQwsnpQ
- UUTEnE4hTX6hAhzEmG4G3Ew+SkwVVq0WIu6UqSOkz9ONELyuA4dsk08dQCwODwnb53OwwY0c61q
- nJcEhilEf1ydZRnHnTPbls1LTcaYzN946v+KYbZjJOxmbCwsfMR0FYXoG4/pXza6ZdnkR1dLV/m
- kObHyignfm/84+iqxK++7a8MI7CH0BfcrrNVU3CGCELXg/xbJ14n4pMA5p/iOzU2dEaXEFy6ZHv
- hmY/85BNbrUm6O8oReVMPz1UrArzKj/AsgOKLD4UcdQCmfi+fLYYdZ4MYl2C9VYF/y8GLeHmvwo
- GFEYtSgFWWtHc58K6tmAglFAhhaGDODeNFZvD1
-X-Received: by 2002:a05:6122:d1e:b0:56c:d59a:cfe4 with SMTP id
- 71dfb90a1353d-56cde47e3camr7644720e0c.17.1774359287810; 
- Tue, 24 Mar 2026 06:34:47 -0700 (PDT)
-Received: from [192.168.0.103] ([177.146.137.168])
- by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-56cddb94eaasm14971403e0c.8.2026.03.24.06.34.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Mar 2026 06:34:47 -0700 (PDT)
-Message-ID: <22a212da-76cb-4319-8e1d-a64524eae11c@linaro.org>
-Date: Tue, 24 Mar 2026 10:34:38 -0300
+ d=1e100.net; s=20251104; t=1774359500; x=1774964300;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TPOzL2/PxgXplEfzLP4gJiOQHyowhZVV0LiuIEGPfxk=;
+ b=s9du1QzlZUR3uQnwPRQ5NXER6hkjd/o4rhcNW7oL1RwLOvZTZJ++WR6wl/7nDiL+WX
+ /LvVIAgpbvYbT8daqfOFEj4FtP1KX2Q6GSyK8ZQ7cDbDG7+u2j14dqzg3aflMjfB659I
+ jdckp7tryDMoj19DGBONW5AusM6IaWu4pkpr5QcVUs5UgnPOlcqzxcLDbIkz6HXamcPL
+ n2kEHNo76HAgalgdCv89LfrAirJpaG1pQGrwYwqjFhvGhRcKHVSgXa+BfgnyfoS4vlJm
+ Y8bFT4F9lmbrR2tx72eCWgyiz5vibNQIowpR8cUAv9e4Mx0dei2avNffI4GFrnnT4sDe
+ nQYA==
+X-Gm-Message-State: AOJu0Yz762bKiPwprLXidZUlDjI7fk1x+kRUBquSSnlPfJQ1mBW0ppbQ
+ br8XjEdtddTdlyeRvxOl6mvjmZuuvfjCCUyq1XpdSTlfVEqqpYTWRv0D8y8KCdAcpD26gU0kNq+
+ lZCO6CW0sqSsczV0T0AOMud2OJMDWgGTPGwXZu4wMmn8W5VvkpuOJer4=
+X-Gm-Gg: ATEYQzwFXf3+t+o55yH1GG9/nPIIMaPwvvSLyD7hFX1zgnHnAsOePU/JnD9LCsjk4QR
+ W1cwyp9mTwUW+Qf39a3vlKnZb8a9xRVriDm9hyK1hdUf5PolaWV39ZrF0jtZfkZgJSBRgsZ/+BW
+ BQmW2A7w/JtTfD0wVQYVJA1RYeO2DBwvX5YwDGwm4KgFGG/ed66ZcZ+6iRuT+o+setCSUHKZm78
+ Kalg/U+vhVdbqlCyJslFSsrP6SvQhb6KsUGs7od7Jp0qRWniSdg+YTa3t++7WtpAr5OIFDcRi+B
+ uZN9gRRNZKBsz8wE5+bteiDbvjvH19N2OMt0c7f7BvJb/Tf8MwJVV5pMiohO3o7Q8Jqh6/Sb6Zu
+ Zsw==
+X-Received: by 2002:a0d:e705:0:b0:79a:c28b:b077 with SMTP id
+ 00721157ae682-79ac28bce8fmr29452717b3.37.1774359500050; Tue, 24 Mar 2026
+ 06:38:20 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] target/arm: fix s2prot not set for two-stage PMSA
- translations
-To: Jose Martins <josemartins90@gmail.com>, peter.maydell@linaro.org
+References: <20260317122517.47627-1-zenghui.yu@linux.dev>
+ <CAFEAcA9bGVuWXAPA0=EaAWXhSigm_yf5OYfnYoTjaQ8x1qXKYg@mail.gmail.com>
+In-Reply-To: <CAFEAcA9bGVuWXAPA0=EaAWXhSigm_yf5OYfnYoTjaQ8x1qXKYg@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 24 Mar 2026 13:38:08 +0000
+X-Gm-Features: AaiRm50FE7_OIbx50eS9N4iPq-PfmnGcL4qMWUg1G44_vZig7hi2R-ol00aaJQs
+Message-ID: <CAFEAcA9sovFYwoF1Jk6sN7Aheh1WXj+imAVhJ7ifpvTu7PHuFg@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Don't skip access flag fault for AccessType_AT
+To: Zenghui Yu <zenghui.yu@linux.dev>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org
-References: <20260321231916.2852653-1-josemartins90@gmail.com>
-Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <20260321231916.2852653-1-josemartins90@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a44;
- envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa44.google.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,70 +115,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Jose,
+On Thu, 19 Mar 2026 at 17:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Tue, 17 Mar 2026 at 12:25, Zenghui Yu <zenghui.yu@linux.dev> wrote:
+> >
+> > As per the pseudo code from DDI0487 M.a.a (on J1-16021) AArch64.S1Walk():
+> >
+> >   // Check descriptor AF bit
+> >   elsif (descriptor<10> == '0' && walkparams.ha == '0' &&
+> >           (!accdesc.acctype IN {AccessType_DC, AccessType_IC} ||
+> >            boolean IMPLEMENTATION_DEFINED "Generate access flag fault on IC/DC operations")) then
+> >       fault.statuscode = Fault_AccessFlag;
+> >
+> > an access flag fault should be generated for AccessType_AT, if the AF bit
+> > is 0 and !param.ha.
+>
+> Did you find this by code inspection, or because it caused
+> a guest to go wrong?
+>
+> We should probably
+>
+> Cc: qemu-stable@nongnu.org
+>
+> > Fixes: efebeec13d07 ("target/arm: Skip AF and DB updates for AccessType_AT")
+> > Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+> > ---
+> >  target/arm/ptw.c | 16 ++++++++--------
+> >  1 file changed, 8 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> > index 8b8dc09e72..572048d560 100644
+> > --- a/target/arm/ptw.c
+> > +++ b/target/arm/ptw.c
+> > @@ -2118,6 +2118,12 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+> >      descaddr &= ~(hwaddr)(page_size - 1);
+> >      descaddr |= (address & (page_size - 1));
+> >
+> > +    /* Check descriptor AF bit */
+> > +    if (!(descriptor & (1 << 10)) && !param.ha) {
+> > +        fi->type = ARMFault_AccessFlag;
+> > +        goto do_fault;
+> > +    }
+> > +
+> >      /*
+> >       * For AccessType_AT, DB is not updated (AArch64.SetDirtyFlag),
+> >       * and it is IMPLEMENTATION DEFINED whether AF is updated
+> > @@ -2127,15 +2133,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+> >          /*
+> >           * Access flag.
+> >           * If HA is enabled, prepare to update the descriptor below.
+> > -         * Otherwise, pass the access fault on to software.
+> >           */
+> > -        if (!(descriptor & (1 << 10))) {
+> > -            if (param.ha) {
+> > -                new_descriptor |= 1 << 10; /* AF */
+> > -            } else {
+> > -                fi->type = ARMFault_AccessFlag;
+> > -                goto do_fault;
+> > -            }
+> > +        if (!(descriptor & (1 << 10)) && param.ha) {
+> > +            new_descriptor |= 1 << 10; /* AF */
+> >          }
+>
+> This is definitely correct behaviour for AT insns. The only
+> thing I'm wondering about is what we should do for the
+> ptw->in_debug == true case. Before commit efebeec13d07 we
+> were checking !ptw->in_debug to skip both the testing and
+> the updating of the access flag; now we will skip the update
+> (definitely correct) but will fail debug accesses if the
+> access flag is not set.
+>
+> There's an argument that if you're doing a debugger access
+> it's not very helpful for it to not work just because the OS
+> happens to have cleared the access flag on the page table entry
+> (we also ignore permissions on debug accesses, though there
+> are some code paths where we do enforce permissions, not
+> really intentionally).
+>
+> On the other hand, we don't and I think have never suppressed
+> AccessFlag faults for the get_phys_addr_v6 short-descriptor
+> tables, so honouring them here too is at least consistent.
 
-On 3/21/26 20:19, Jose Martins wrote:
-> commit 015cefc0ed65 ("target/arm: Add in_prot_check to S1Translate")
-> changed get_phys_addr_twostage() to combine stage 1 and stage 2
-> permissions using the new s2prot field:
-> 
->    result->f.prot = s1_prot & result->s2prot;
-> 
-> The LPAE stage 2 path sets result->s2prot explicitly, but the PMSA
-> stage 2 path (get_phys_addr_pmsav8) only sets result->f.prot, leaving
-> s2prot at zero. This causes the combined permission to be zero,
-> resulting in addr_read being set to -1 in the TLB entry and triggering
-> an assertion in atomic_mmu_lookup() when the guest executes an atomic
-> instruction on a two-stage PMSA platform (e.g. Cortex-R52 with EL2).
-> 
-> Set s2prot from f.prot after the PMSA stage 2 lookup, consistent with
-> what the LPAE path does.
-> 
-> Fixes: 015cefc0ed65 ("target/arm: Add in_prot_check to S1Translate")
-> Signed-off-by: Jose Martins <josemartins90@gmail.com>
-> ---
-> This issue was found while running a Bao hypervisor [1] demo on the
-> mps3-an536 machine, which features a Cortex-R52 with virtualization
-> support (PMSAv8 with EL2). Bao uses the stage 2 PMSA MPU to partition
-> memory between guest VMs. With QEMU >= 10.2.0 the demo crashes
-> immediately after the first guest VCPU is scheduled, when the guest
-> executes its first atomic instruction:
-> 
->    ERROR:../accel/tcg/cputlb.c:1848:atomic_mmu_lookup: \
->        code should not be reached
-> 
-> To reproduce, clone the bao-demos repository [2] and follow the
-> instructions for the mps3-an536 platform and baremetal demo. With this
-> patch applied, the demo boots successfully.
-> 
-> [1] https://github.com/bao-project/bao-hypervisor
-> [2] https://github.com/bao-project/bao-demos
-> 
->   target/arm/ptw.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 8b8dc09e72..e289f88124 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -3200,6 +3200,13 @@ static bool get_phys_addr_pmsav8(CPUARMState *env,
->   
->       ret = pmsav8_mpu_lookup(env, address, access_type, ptw->in_prot_check,
->                               mmu_idx, secure, result, fi, NULL);
-> +    /*
-> +     * For two-stage PMSA translations, s2prot holds the stage 2
-> +     * permissions to be combined with stage 1 in get_phys_addr_twostage().
-> +     */
-> +    if (regime_is_stage2(mmu_idx)) {
-> +        result->s2prot = result->f.prot;
-> +    }
->       if (sattrs.subpage) {
->           result->f.lg_page_size = 0;
->       }
+Having thought about this a little more, I think we should
+continue to not raise the AccessFlag fault for in_debug = true:
+it is what we've been doing previously for LPAE, at least, and
+it is what intention of the debugger access codepath is.
 
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+Could you do a v2 of this patch that handles in_debug = true, please?
 
-
-Cheers,
-Gustavo
+thanks
+-- PMM
 

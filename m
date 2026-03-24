@@ -4,111 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32586F54AB0
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 13:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F19F54AB8
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 13:31:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w51nY-0004iU-F7; Tue, 24 Mar 2026 09:27:58 -0400
+	id 1w51qf-0006Su-R6; Tue, 24 Mar 2026 09:31:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w51nA-0004WI-Qs
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:27:36 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1w51qa-0006Qc-1H
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:31:08 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w51n9-0001n2-8k
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:27:32 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-7986e0553bdso13416617b3.2
- for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 06:27:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774358850; cv=none;
+ id 1w51qY-0002RW-Kg
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:31:03 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-79a46ebe2beso48256977b3.2
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 06:31:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774359061; cv=none;
  d=google.com; s=arc-20240605;
- b=M1OnCcxXZi0MLmBSKlYs3yEPjx5p3mANl74AborRPalLCTgCLn7SE33O3zP7Hfuz7v
- NcbRHvmo4YZZO1Uiz0RAAOCKtqUHP79v2PchquMZQpIILD+J7kQquN/OBU0F7mWk7rTm
- JIyNuLom9TpDWnbdigQ+kqKjydxn2xnLwO1vYv3zx4ctE0xMdnkQAVUUc4RDeOrgmTYZ
- Bzzl/HwFJW7H+bJKX4gHwuI9079uUuwICJM2Av26i9UMgQyQ9ArjCHtliFtyCsbWAeJv
- nRymAyPIHDBopN3ocQP7y3hChjTBpM/hGbSuWrPg/NnWN85UeKer0FNbHMpzzvcboIsb
- 0rWA==
+ b=N8cxfSAXbqtSCOdE+ml6s6+QcPqAxJQgmJaap+ICyEsXFrlsa//enkK7x/OJ/lGG/Z
+ +3/8bxcZDPKjyj0KSwWYwb/jUDnAuutrHp4/qZLpq9i58R5qCZnllhDIc0UsuiER8otI
+ iIoNUhkVDH/ohKetpN15h3S9b8WWh5vEjZqbeiMYdnIDwZducYpm/U5YSf2IuPgbyGVy
+ UzynmzrYSDMdg1BQHealT2Z5ylG6GmcJ+1TGu96oe4PnOJI3EKsqzOkEs7vj0Hfi6NQq
+ 0CBm1B830h20M/C+pmLK7HyF5bQV3rMOmPMLjDChJ7mIfAv5XwO8577Gb7QD2lPCVjpV
+ 346Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=pShKPloXeI1j6Yuqjx5wCMt8kQeJ6OpbT0kvU5q04MA=;
- fh=GbThR7VXInqOumx+ss3+o6pouLxgcp+YWUsiBqL39hs=;
- b=hIlIyKkMKwfSiVDh4Zc5XvlZIj3IbenXUsIhqvL1FA6Ldbgt6aEShGvc8KG/tMk8SY
- L3bZje0Tgh1FyObONU6SlkFtHJHZG/cN+b3ZEX70D4fisAPhdja2oebDXsbOgLGHoU9o
- mE9A0eurp5+yCMi/w+YjRYdcabEalxRe4vRfx4rg9ZfvdcDBQOABHXnY3lQ8lIhAWXwZ
- F11qs+B0mo1QmR8IQUGvyZO52rhvqJvy3Uclp8k3G4fg8mCh3OrRaGg1DUkY/BPFWYU0
- XVjHzO2McNplQ8SmvwojlSbBphRLmofFuRzqgst14n3GFUguS1VAJRPlMdeKKfCxdKnk
- ZqbQ==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=aqPQiONfmeI14EDLb1xzYRtNQJRb6bddVhHFm8fkElc=;
+ fh=jVPx2xvVbCjq1OqdR1rd/nVz3yb9PmuH/uEGNDwCmUA=;
+ b=AJ/xqO3z7MMbSX5n/d2jEt2BmLH2zZMpeT7NJbplnPHpHxVQ8hmzfnHJ0birgV5N05
+ gwq2ajmDKCX9d+dIIUUaV+L9/yeDq7696qlTrTTzGWm68J6XNVgzhdUXhFiAEuXryJWS
+ m0SKehjtZItoVmGKHEqKdE2jZJVshHO8PqWzAjSLOLJxdcIimkVRrS3u812/bBIms5nd
+ xnXB+QH0o2H73SVPozmI12DVopps2n/4GqVE03QQg4sLlZi/v+cEk4hRQtEsoEpITObe
+ qQuVlxlfMBuL4LlbSkzMjfKssz7+K598+DW0m5F/9bUqCy8NYolqjK+zuN+GbqYBcdUD
+ 54Tw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774358850; x=1774963650; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=pShKPloXeI1j6Yuqjx5wCMt8kQeJ6OpbT0kvU5q04MA=;
- b=EJxqxeCbP1Wx0/wfSyXKNKhI7dZx5x4WigllItzvAgaLN6HA3Gaz3nEO7K8UsehiyP
- PoHG+pn6S1vhZ+So7uMrCiMJtkYkkAr+RtAupD2UEDFyR6ooBAP78eE4pdNw97iVWk53
- vnfKb64bVG/expsxFIonlbi4lcYyJ8BwZl/YkKaGkuIgpBdKaIKlEnJRpl5n4hxRJfk7
- DNHMeVGlfR4cMPaEQfAL43TFntrTxE3JRn+yMANCmnJxGU6bhrMMIp3hkUJT7TXs7wD/
- BuQU4EByz0nLKie+a9VB4f0qBJPwtLlOCXj0yUbPcjAqcenM/LBzl2qi6khGoONkjGQY
- HKUw==
+ d=linaro.org; s=google; t=1774359061; x=1774963861; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=aqPQiONfmeI14EDLb1xzYRtNQJRb6bddVhHFm8fkElc=;
+ b=g3Wm3ZWBxmAwL82oywdM70ZeZzlm7eYUoitz0cikW0XLbNPANDjoO8IQj7knt5Ure5
+ WiDjAGjJ13tMUYEn47EvGCLyMjoUJp3b/PyFES9nxvfIXhAmO9PQudp1xEknGp+LqGS7
+ yxqAM8xIMcJHn8rTEM5fkmEEOqOQxfOlWCSLn0KLrFzGO8iYMtFbBkGqL3O1wuT64vqJ
+ X/fp6xRilDPUFfRlRIkDhFHQuKf+7DJj93haPQPuVielKvUq20O4ajLSX7nHC7DzAy+j
+ Zou3TEDH4uHfflvyx/XGU8HHtBPiSNJEAVItYwm8jKF2GJhXi6IeJlg4HFmORWYmRVt1
+ skCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774358850; x=1774963650;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=pShKPloXeI1j6Yuqjx5wCMt8kQeJ6OpbT0kvU5q04MA=;
- b=ron70UOjRwXetGcwojxBWVx6n2w3zo6QSTHHIP2d3kJTavVi/fGKWbuO6xho6/yXIC
- NWA+AGnio8psV4obS6Gjw8Zd/4DReURJSfdd6lKvjIo9DbLEDTO0FggQf99XcM63ugnS
- orU+QTZ4UhiZD7z7LBHId9I94663tlkdJ4SX8m280EgtlAI4vhOBpGwN2bwhqExc7f5t
- 5HiB1WAyUdvhFk7bBzYbFrBOCuQFmViVCavrG2How+qzRePP0Xnv2iX0es3SM4lvbci9
- /2NM9pcG6pAfMIzmVph38hCEaEq/K06xOh1ac0UAoRtO+V/FCc552eVHpMsH3qlgv7Zi
- myCQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV4ht2qCIfm55U/0yMNhsFeUlWbRcIGNMUyJipAR6HsDrLeeFPuawXC4Uc0VhlKzK5pD0v7ZOJ2JA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyywl5v8WOZciWMDZKTSkQr10LIGql8CrYoxkHfD1JeLHuvbGlc
- zNI/MJJfPNw5QdGqBQ3fWQ9wKg3VxC4VFZcsajlBpItz/fmtI09zfIJiw95s/BTyNZMD5XxomcG
- cM3Xac94nzK3mG4o0jLn5Mmq/VtnxcMXhiOGFdjMDB3nAkqKMMMZHB6PTtQ==
-X-Gm-Gg: ATEYQzy76qVYzzpuEdXDQ7dlFyRJ/C/LhgIQuccvcJIC2ADt2V18OV/dhmD0ejKg4Wz
- wwI5xMOd5DmZ0IFg8+z6J2WntoyfbfSLZqBI29CnHudmo9/tWtnTYmprk7HpV/v90iAytMET/NZ
- n74D6C5FNHUBJwuA/7jR1vs+NROL4TMQ7+AFMfRQGNDHqIuWb9ApY7w4S+b9GBqMGxfcWlNmKPh
- bd3Y8Pcp/63MBhwMzfsZyJJT8ghzRtN5xFNlcJfyRN/IroxgmiHr+QWRWT+gYHYMh96Q94on3fv
- o8O73brm35BvXFM0UP6kmizEnJBUgKqB1po/4SIBg60dF9PqY/GnFt6z6FcQstJzGYA=
-X-Received: by 2002:a05:690c:6d81:b0:794:6fa2:a037 with SMTP id
- 00721157ae682-79a90a92a96mr154756537b3.8.1774358850037; Tue, 24 Mar 2026
- 06:27:30 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1774359061; x=1774963861;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aqPQiONfmeI14EDLb1xzYRtNQJRb6bddVhHFm8fkElc=;
+ b=r1MnZR/ByzWSG5I/3PnQZs9x4wqaIymPqBcd8v6bcY+7HXM5sdQZ/WLbiYT7+OlAq/
+ yvWCqKPNNtZgVdb9egA7YOPDu4nDNcZUPRhaIiLZ4h/IGbFIZbMjH6gkBvDajueEFNfR
+ 9qnBmZM6hsRaWhd3J+I+VAptLztZVOFeuxZVQ602Ef2ZIsqYo9rgQ2SguldeC7El/xcr
+ GAVFZ3jufaijX0OAoAAy+JTMr8JeZHVKMeX47XeWX3/EqfcMe8CU9XARGi1VWc73tQZG
+ l84NCHbk+BZHgRiTQk8Bs7cMcMROKHtfjeYdBssNBqalOtN3J7TowxnW4Qim12Plylco
+ coig==
+X-Gm-Message-State: AOJu0Yy6Le//WbhaySVPFJZ8gsXy5gU8tTYkiIFhlvDzGAGpPwbLsrTr
+ rEoDAtxa3ME8mWpr0JJbLe2Jgp3c2lVP19cqGbIBqETupEVuxwYhboNUKUGOZChHQHwOH4dwUTT
+ ShMfdqfEAp9Xyo1WOWjzXQT2X9eq0BMuRwcowa6JBWQ==
+X-Gm-Gg: ATEYQzzTLUfBvBboMqk4SOkPKkzNTEybpwoVti+cOMRpwfbM04IolN6nuGNNKHVCqRV
+ IGH0FrdyAmwq05/2y4aSu6epaT5hCOy0xwLBWBnzrGQH2hORwU9WHTP2RzLDVTQ4NgIoLJc5Rz9
+ cXO3XNoWDwDeVWMcTdCrU/TU6iU1c/iP1YAaHaX4384Hk1+OcaUMSvZg9XhACQNGBdUS6O6nnwq
+ ts4k5W8tbHR6vOHzCjpLx/An/yF923EmuMK2xV7uprNK9SsnzZl+FyyJbl7c0Qn0DGEI1IW2yR1
+ UBdok6lBUWrBA2/cnOfj8lVCOWPw5xwmBmZX10q63GmAemCexQGjlzC6oFcQvKUUGUipYx+wOXa
+ y/Q==
+X-Received: by 2002:a05:690c:a058:b0:79a:55f5:a3f6 with SMTP id
+ 00721157ae682-79a90aeb6b5mr131105977b3.26.1774359060873; Tue, 24 Mar 2026
+ 06:31:00 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260320155107.2143191-1-alex.bennee@linaro.org>
- <20260320155107.2143191-3-alex.bennee@linaro.org>
- <f2f9f07a-4c92-4856-bcf6-7d2e0a5d43f1@tls.msk.ru>
-In-Reply-To: <f2f9f07a-4c92-4856-bcf6-7d2e0a5d43f1@tls.msk.ru>
+References: <20260323182454.1416110-1-nathanc@nvidia.com>
+In-Reply-To: <20260323182454.1416110-1-nathanc@nvidia.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Mar 2026 13:27:18 +0000
-X-Gm-Features: AaiRm52qkSfz_yGX0h-JnxaoVcChCgyRd0c-gfZ4Fll-MYuDUSyigqZywfzhuRQ
-Message-ID: <CAFEAcA--8-mRVdvgOzX+WEg3gXOH8Om3L8cebDRSP31G8-T=yQ@mail.gmail.com>
-Subject: Re: [PATCH v3 2/8] tests/tcg/multiarch/linux-test: use portable
- alternative for dirent64
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org, Kyle Evans <kevans@freebsd.org>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, Warner Losh <imp@bsdimp.com>,
- qemu-arm@nongnu.org, 
- Thomas Huth <th.huth+qemu@posteo.eu>, Peter Xu <peterx@redhat.com>, 
- Fabiano Rosas <farosas@suse.de>, Brad Smith <brad@comstyle.com>,
- Thomas Huth <thuth@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>, 
- Brian Cain <brian.cain@oss.qualcomm.com>
+Date: Tue, 24 Mar 2026 13:30:48 +0000
+X-Gm-Features: AaiRm51FmqfZYv-eQk927A0Kc0Tb7kxuT4N0ndkjz1MpqNbS8AVHaTO5_S_-354
+Message-ID: <CAFEAcA-TC8zpKivJ-Um14qHEbcrdCtT9GabkM_+m=B08esyaWQ@mail.gmail.com>
+Subject: Re: [PATCH for-11.0 v5 0/8] hw/arm/smmuv3-accel: Support AUTO
+ properties
+To: Nathan Chen <nathanc@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
+ Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>, 
+ Nicolin Chen <nicolinc@nvidia.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,41 +122,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 24 Mar 2026 at 13:15, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Mon, 23 Mar 2026 at 18:25, Nathan Chen <nathanc@nvidia.com> wrote:
 >
-> On 20.03.2026 18:51, Alex Benn=C3=A9e wrote:
-> > From: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
-> >
-> > dirent64 and readdir64 are glibc-specific and not portable to other
-> > C libraries such as musl. Define _FILE_OFFSET_BITS=3D64 instead, which
-> > portably instructs all libc implementations to use 64-bit file offsets,
-> > making readdir() and struct dirent equivalent to their 64-bit variants.
+> Hi,
 >
+> This is a follow-up to the previous series [0] that introduces support
+> for specifying 'auto' for arm-smmuv3 accelerated mode's ATS, RIL,
+> SSIDSIZE, and OAS feature properties.
 >
-> > --- a/tests/tcg/multiarch/linux/linux-test.c
-> > +++ b/tests/tcg/multiarch/linux/linux-test.c
-> > @@ -16,6 +16,7 @@
-> >    *  You should have received a copy of the GNU General Public License
-> >    *  along with this program; if not, see <http://www.gnu.org/licenses=
-/>.
-> >    */
-> > +#define _FILE_OFFSET_BITS 64
+> In QEMU 11.0 we introduced new options for vSMMU [1], but feedback received
+> when starting the integration of layered products shows the need for
+> auto/host-retrieved values. To avoid breaking JSON/QMP compat, we want
+> to fix the option types so that they can later support the auto mode. At
+> the moment the auto mode is not supported though.
 >
-> Afiacs, qemu has always been built with file_offset_bits=3D64, one way
-> or another:
->
-> meson.build:
->    '-D_GNU_SOURCE', '-D_FILE_OFFSET_BITS=3D64', '-D_LARGEFILE_SOURCE',
+> A future series will introduce support for resolving the 'auto' values
+> based on host SMMUv3 IDR values, as well as setting per-device ATS
+> capability.
 
-Those control the compiler flags for QEMU itself. This is
-a standalone test program built for the guest, and it isn't
-built directly by meson.
+Hi; I'm picking this up for target-arm.next because it looks to
+me like it's been reviewed, and it seems to me better to take it
+for rc1 and if necessary make any last minor tweaks with a
+separate patch in rc2, rather than let it sit on list for a bit
+longer and take the whole thing in rc2.
 
-> Now, with only 64bit host support, defining _FILE_OFFSET_BITS to 64
-> makes no difference, since it is already 64 by default.
-
-We still support 32-bit guests, though, and this is being built
-for the guest architecture.
+Let me know if you'd rather it wait longer.
 
 thanks
 -- PMM

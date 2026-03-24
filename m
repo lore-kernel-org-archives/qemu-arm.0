@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 616FEFEC0FC
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 20:50:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1472CFEC0FC
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 20:50:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w58h9-0000zl-Pd; Tue, 24 Mar 2026 16:49:47 -0400
+	id 1w58gm-0000nI-RW; Tue, 24 Mar 2026 16:49:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w58h2-0000ur-JW
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 16:49:41 -0400
-Received: from p-west2-cluster2-host7-snip4-10.eps.apple.com ([57.103.68.253]
+ id 1w58gl-0000mM-In
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 16:49:23 -0400
+Received: from p-west2-cluster5-host7-snip4-4.eps.apple.com ([57.103.71.67]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w58gz-0004fr-PA
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 16:49:40 -0400
+ id 1w58gj-0004dl-Kt
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 16:49:23 -0400
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-10-percent-0 (Postfix) with ESMTPS id
- 76D4C180046D; Tue, 24 Mar 2026 20:49:35 +0000 (UTC)
+ 7D8F31800143; Tue, 24 Mar 2026 20:49:19 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1774385376; x=1776977376;
- bh=Slu9+iHyMdVhlhZuw5M4rGv9gIxHstRiINTWvh1+tLk=;
+ s=sig1; t=1774385360; x=1776977360;
+ bh=FBH3qmZPf7N3qFdetPUWzmKqQjMulIkpLcLbzIqxLeM=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=g0rUetWkfuPh+krfQ0OntROUfPH+BBntQ53f0G1JqJbyVfJTqDKUyhekMVjNS5urMcvQz7Raf+aaWkAgMhVq3Cf+Koa2l5K3CFDSZBxKVeSOJ9vaB/UfGyTwZCFWoaWD9FsM+J2CthUJP1t/ihNoAS/S+HZzsysRFksYmwG1r59O6q1tOb7WI4Pu0VUtX4thOpT5bNX4gtIu1RLgjHHhhXLFq29MIv+R4TKMeQZFwCroHmRhEb55PYVg/4D5a39w1CXW+BQNF+sAAFXI60FUnE7LrYPs5T2NQAgrmK4zMGr5m4HNs8MqDqLgB6b3XFb7tLp0FHjkxzOfxiaKVYfS5A==
+ b=atUXs/6l64vYCN8ggJ0bjQtvkYbvgyohXuLNByvnySILtHliY/+Jfphi1AmKuBQVUth+HM0rVqhFT2gEA9tcop1iFRegr9DWeaUhK3lMiMjzNsappCRk9iF7S6aHveof2FsOYgq2V2q4No5rHY7gfAXkw173p3JeplsAGDMzFyuS/wBMC7y4tRW5HjEzMNfDMuyZLHXVY/JUCKoCKIzeauHC5kEiPio8q1ZxWciFHSM3XNTOmIkMPC8a6iYFqmNeSAOLbowd3XmaU+RDtH2lsVIW1uwNdPAOSmqIc0xYdpNbV84nEUYP5zq9EqSxOOqH4AZXJXA2JcAUhVhLGK6+pA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-10-percent-0 (Postfix) with ESMTPSA id
- 124C51800488; Tue, 24 Mar 2026 20:49:31 +0000 (UTC)
+ 2473C1800462; Tue, 24 Mar 2026 20:49:13 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-arm@nongnu.org,
@@ -43,44 +43,45 @@ Cc: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-arm@nongnu.org,
  Mads Ynddal <mads@ynddal.dk>, Roman Bolshakov <rbolshakov@ddn.com>,
  Alexander Graf <agraf@csgraf.de>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [RFC PATCH v7 5/7] vmapple: add gicv2m
-Date: Tue, 24 Mar 2026 21:48:53 +0100
-Message-ID: <20260324204855.29759-6-mohamed@unpredictable.fr>
+Subject: [RFC PATCH v7 1/7] vmapple: apple-gfx: make it work on the latest
+ macOS release
+Date: Tue, 24 Mar 2026 21:48:49 +0100
+Message-ID: <20260324204855.29759-2-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260324204855.29759-1-mohamed@unpredictable.fr>
 References: <20260324204855.29759-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI0MDE2MSBTYWx0ZWRfX1gPOuHeGFlRV
- U5YShwoep0alvLF1P9dl5hTva3dJ6x38NdT4AgfFjrijWwKPtXXKxVbEBnr4wMU6UKjWdsTFPXP
- AcjWKPfeb/3DPDoN/xq243MNxOux4rXQV0HSh6AR2lE0zDYDdh78qM6UcjIUyxB1n/x1LGeWVZ/
- z7lCtiaVZu0Y8eOJPTHIOZtZFhZm+/qENZoUdAAdMU09n2ToFSzeCib740oXhXshx/ZLqD+gqX4
- xQ7ZUVHSBUIhLG3LF4Zdo/4Z9aIKoN9BjBm9c4RCCvqW1DdLa3UqiRSaMMgL/hxhmSD+vMVwBIN
- 022CU/H/ryLWbpc9RKIq/xUL7vNdqMK4AB+9OOe/t7t3mqz7lLnJLvdWU4vsWU=
-X-Authority-Info-Out: v=2.4 cv=cZXfb3DM c=1 sm=1 tr=0 ts=69c2f8df
+X-Proofpoint-GUID: RNBHlEtrobwsmRWf6n1c7nr2-x4BYAUV
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI0MDE2MSBTYWx0ZWRfX7eYvnjC+1YBR
+ yq8FGl8bkeUFMNdv0PndBycSkbKyDL4g6k6kjRJ2NqTk96N3tuNjlrkSgZ6kiYNLJp/YRWSe3D1
+ RTp8NVrg1qf6fbje/7r5Tygo+kO5R9adZ2bZHUHsJ72Xw35NPcMqOj8kepDtdKxk10VLxwWemNI
+ xcmLQncNVgR9pj9Vw8nrfl9xkLeOp2JJQCvQ5Kgbd0NfetjagEOjUTIYbpJzrB9vLuU32U65j4m
+ WFb7KeqdXsmjSDcXlJoDJAzdsmPcDjgRkG/hi+C8dwA4zpioU/lESDdJAHYgRlu1rchRA0PYf3q
+ K2RsF9oJ6j/S5Vpkx7Rm0/pBYDt557QFlJm/53qddhjtVAUeAOfm+gIJV4qFG4=
+X-Authority-Info-Out: v=2.4 cv=Kt5AGGWN c=1 sm=1 tr=0 ts=69c2f8d0
  cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=sAlVIecbGMDsLuTEZI0A:9
-X-Proofpoint-ORIG-GUID: QDDtq6uyBio8YFPQ3s-IXTYtZmWlvc4p
-X-Proofpoint-GUID: QDDtq6uyBio8YFPQ3s-IXTYtZmWlvc4p
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=XaNHVGzJZ3ayr3Wv:21 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=2lQx5wYd1WNrG3klcQkA:9
+X-Proofpoint-ORIG-GUID: RNBHlEtrobwsmRWf6n1c7nr2-x4BYAUV
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-24_03,2026-03-24_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=818 lowpriorityscore=0 clxscore=1030 spamscore=0 suspectscore=0
- malwarescore=0 adultscore=0 mlxscore=0 phishscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ bulkscore=0 mlxlogscore=999 malwarescore=0 lowpriorityscore=0 suspectscore=0
+ mlxscore=0 clxscore=1030 adultscore=0 spamscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2603240161
-Received-SPF: pass client-ip=57.103.68.253;
+Received-SPF: pass client-ip=57.103.71.67;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,74 +97,229 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Follow changes in memory management introduced on macOS 15.4.
+
+The legacy memory management API has been removed for the IOSurface mapper on that macOS version.
+
+Also enable process isolation for a sandboxed GPU process when on a new OS.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- hw/vmapple/vmapple.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ hw/display/apple-gfx-mmio.m | 59 ++++++++++++++++++++++++++++---------
+ hw/display/apple-gfx.h      | 16 ++++++++++
+ hw/display/apple-gfx.m      | 41 +++++++++++++++++++++++++-
+ 3 files changed, 101 insertions(+), 15 deletions(-)
 
-diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-index 48d1ebc7d1..f2a6fda2e5 100644
---- a/hw/vmapple/vmapple.c
-+++ b/hw/vmapple/vmapple.c
-@@ -84,6 +84,7 @@ enum {
-     VMAPPLE_MEM,
-     VMAPPLE_GIC_DIST,
-     VMAPPLE_GIC_REDIST,
-+    VMAPPLE_GICV2M,
-     VMAPPLE_UART,
-     VMAPPLE_RTC,
-     VMAPPLE_PCIE,
-@@ -105,6 +106,7 @@ static const MemMapEntry memmap[] = {
+diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
+index 58beaadd1f..cc1f8cfcad 100644
+--- a/hw/display/apple-gfx-mmio.m
++++ b/hw/display/apple-gfx-mmio.m
+@@ -19,6 +19,7 @@
+ #include "hw/core/irq.h"
+ #include "apple-gfx.h"
+ #include "trace.h"
++#include "system/address-spaces.h"
  
-     [VMAPPLE_GIC_DIST] =           { 0x10000000, 0x00010000 },
-     [VMAPPLE_GIC_REDIST] =         { 0x10010000, 0x00400000 },
-+    [VMAPPLE_GICV2M] =             { 0x1FFF0000, 0x00010000 },
+ #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
  
-     [VMAPPLE_UART] =               { 0x20010000, 0x00010000 },
-     [VMAPPLE_RTC] =                { 0x20050000, 0x00001000 },
-@@ -130,6 +132,7 @@ static const int irqmap[] = {
-     [VMAPPLE_APV_GFX] = 0x11,
-     [VMAPPLE_AES_1] = 0x12,
-     [VMAPPLE_PCIE] = 0x20,
-+    [VMAPPLE_GICV2M] = 0x80
- };
+@@ -36,12 +37,19 @@ typedef bool(^IOSFCMapMemory)(uint64_t phys, uint64_t len, bool ro, void **va,
  
- #define GPEX_NUM_IRQS 16
-@@ -287,6 +290,26 @@ static void create_gic(VMAppleMachineState *vms, MemoryRegion *mem)
+ @interface PGDeviceDescriptor (IOSurfaceMapper)
+ @property (readwrite, nonatomic) bool usingIOSurfaceMapper;
++@property (readwrite, nonatomic) bool enableArgumentBuffers;
++@property (readwrite, nonatomic) bool enableProcessIsolation;
++@property (readwrite, nonatomic) bool enableProtectedContent;
++
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
+ @end
+ 
+ @interface PGIOSurfaceHostDeviceDescriptor : NSObject
+ -(PGIOSurfaceHostDeviceDescriptor *)init;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCMapMemory mapMemory;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCUnmapMemory unmapMemory;
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
++@property (readwrite, nonatomic) unsigned long long mmioLength;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCRaiseInterrupt raiseInterrupt;
+ @end
+ 
+@@ -183,19 +191,32 @@ static bool apple_gfx_mmio_unmap_surface_memory(void *ptr)
+         [PGIOSurfaceHostDeviceDescriptor new];
+     PGIOSurfaceHostDevice *iosfc_host_dev;
+ 
+-    iosfc_desc.mapMemory =
+-        ^bool(uint64_t phys, uint64_t len, bool ro, void **va, void *e, void *f) {
+-            *va = apple_gfx_mmio_map_surface_memory(phys, len, ro);
+-
+-            trace_apple_gfx_iosfc_map_memory(phys, len, ro, va, e, f, *va);
+-
+-            return *va != NULL;
+-        };
+-
+-    iosfc_desc.unmapMemory =
+-        ^bool(void *va, void *b, void *c, void *d, void *e, void *f) {
+-            return apple_gfx_mmio_unmap_surface_memory(va);
+-        };
++    /*
++     * The legacy memory management API is no longer present
++     * for the IOSurface mapper as of macOS 15.4.
++     */
++    if (@available(macOS 15.4, *)) {
++        PGMemoryMapDescriptor *memory_map_descriptor = [PGMemoryMapDescriptor new];
++        FlatView* fv = address_space_to_flatview(&address_space_memory);
++        flatview_for_each_range(fv, apple_gfx_register_memory_cb, memory_map_descriptor);
++        /* the device model defines this as a single-page MMIO region, hence 16KB */
++        iosfc_desc.mmioLength = 0x10000;
++        iosfc_desc.memoryMapDescriptor = memory_map_descriptor;
++    } else {
++        iosfc_desc.mapMemory =
++            ^bool(uint64_t phys, uint64_t len, bool ro, void **va, void *e, void *f) {
++                *va = apple_gfx_mmio_map_surface_memory(phys, len, ro);
++
++                trace_apple_gfx_iosfc_map_memory(phys, len, ro, va, e, f, *va);
++
++                return *va != NULL;
++            };
++
++        iosfc_desc.unmapMemory =
++            ^bool(void *va, void *b, void *c, void *d, void *e, void *f) {
++                return apple_gfx_mmio_unmap_surface_memory(va);
++            };
++    }
+ 
+     iosfc_desc.raiseInterrupt = ^bool(uint32_t vector) {
+         trace_apple_gfx_iosfc_raise_irq(vector);
+@@ -223,13 +244,23 @@ static void apple_gfx_mmio_realize(DeviceState *dev, Error **errp)
+         };
+ 
+         desc.usingIOSurfaceMapper = true;
+-        s->pgiosfc = apple_gfx_prepare_iosurface_host_device(s);
++        desc.enableArgumentBuffers = true;
++        /* 
++         * Process isolation needs PGMemoryMapDescriptor instead of
++         * the legacy memory management interface present in releases
++         * older than macOS 15.4.
++         */
++        if (@available(macOS 15.4, *)) {
++            desc.enableProcessIsolation = true;
++        }
+ 
+         if (!apple_gfx_common_realize(&s->common, dev, desc, errp)) {
+             [s->pgiosfc release];
+             s->pgiosfc = nil;
+         }
+ 
++        s->pgiosfc = apple_gfx_prepare_iosurface_host_device(s);
++
+         [desc release];
+         desc = nil;
      }
+diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
+index 3197bd853d..384aee0c5f 100644
+--- a/hw/display/apple-gfx.h
++++ b/hw/display/apple-gfx.h
+@@ -12,6 +12,7 @@
+ #include "system/memory.h"
+ #include "hw/core/qdev-properties.h"
+ #include "ui/surface.h"
++#include "objc/NSObject.h"
+ 
+ #define TYPE_APPLE_GFX_MMIO         "apple-gfx-mmio"
+ #define TYPE_APPLE_GFX_PCI          "apple-gfx-pci"
+@@ -23,6 +24,17 @@
+ @protocol MTLTexture;
+ @protocol MTLCommandQueue;
+ 
++typedef struct PGGuestPhysicalRange_s
++{
++    uint64_t physicalAddress;
++    uint64_t physicalLength;
++    void *hostAddress;
++} PGGuestPhysicalRange_t;
++
++@interface PGMemoryMapDescriptor : NSObject
++-(void)addRange:(PGGuestPhysicalRange_t) range;
++@end
++
+ typedef QTAILQ_HEAD(, PGTask_s) PGTaskList;
+ 
+ typedef struct AppleGFXDisplayMode {
+@@ -68,6 +80,10 @@ void *apple_gfx_host_ptr_for_gpa_range(uint64_t guest_physical,
+                                        uint64_t length, bool read_only,
+                                        MemoryRegion **mapping_in_region);
+ 
++bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
++                                  const MemoryRegion *mr,
++                                  hwaddr offset_in_region, void *opaque);
++
+ extern const PropertyInfo qdev_prop_apple_gfx_display_mode;
+ 
+ #endif
+diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
+index e0a765fcb1..213233084d 100644
+--- a/hw/display/apple-gfx.m
++++ b/hw/display/apple-gfx.m
+@@ -21,6 +21,7 @@
+ #include "system/address-spaces.h"
+ #include "system/dma.h"
+ #include "migration/blocker.h"
++#include "system/memory.h"
+ #include "ui/console.h"
+ #include "apple-gfx.h"
+ #include "trace.h"
+@@ -596,6 +597,35 @@ void apple_gfx_common_init(Object *obj, AppleGFXState *s, const char* obj_name)
+     /* TODO: PVG framework supports serialising device state: integrate it! */
  }
  
-+#define NUM_GICV2M_SPIS       128
++@interface PGDeviceDescriptor (IOSurfaceMapper)
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
++@end
 +
-+static void create_gicv2m(VMAppleMachineState *vms)
-+{
-+    int i;
-+    int irq = vms->irqmap[VMAPPLE_GICV2M];
-+    DeviceState *dev;
-+
-+    dev = qdev_new("arm-gicv2m");
-+    qdev_prop_set_uint32(dev, "base-spi", irq);
-+    qdev_prop_set_uint32(dev, "num-spi", NUM_GICV2M_SPIS);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VMAPPLE_GICV2M].base);
-+
-+    for (i = 0; i < NUM_GICV2M_SPIS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(vms->gic, irq + i));
++bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
++                                  const MemoryRegion *mr,
++                                  hwaddr offset_in_region, void *opaque) {
++    PGGuestPhysicalRange_t range;
++    PGMemoryMapDescriptor *memory_map_descriptor = opaque;
++    if (memory_access_is_direct(mr, true, MEMTXATTRS_UNSPECIFIED)) {
++        range.physicalAddress = start;
++        range.physicalLength = len;
++        range.hostAddress = memory_region_get_ram_ptr(mr);
++        [memory_map_descriptor addRange:range];
 +    }
++    return false;
 +}
 +
- static void create_uart(const VMAppleMachineState *vms, int uart,
-                         MemoryRegion *mem, Chardev *chr)
++static void apple_gfx_register_memory(AppleGFXState *s,
++                                                     PGDeviceDescriptor *desc)
++{
++    PGMemoryMapDescriptor* memoryMapDescriptor = [PGMemoryMapDescriptor new];
++
++    FlatView* fv = address_space_to_flatview(&address_space_memory);
++    flatview_for_each_range(fv, apple_gfx_register_memory_cb, memoryMapDescriptor);
++
++    desc.memoryMapDescriptor = memoryMapDescriptor;
++}
++
+ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
+                                                      PGDeviceDescriptor *desc)
  {
-@@ -497,6 +520,7 @@ static void mach_vmapple_init(MachineState *machine)
-                                 machine->ram);
+@@ -763,7 +793,16 @@ bool apple_gfx_common_realize(AppleGFXState *s, DeviceState *dev,
  
-     create_gic(vms, sysmem);
-+    create_gicv2m(vms);
-     create_bdif(vms, sysmem);
-     create_pvpanic(vms, sysmem);
-     create_aes(vms, sysmem);
+     desc.device = s->mtl;
+ 
+-    apple_gfx_register_task_mapping_handlers(s, desc);
++    /* 
++     * The legacy memory management interface doesn't allow for
++     * vGPU sandboxing. As such, always use the new interface
++     * on macOS 15.4 onwards. 
++     */
++    if (@available(macOS 15.4, *)) {
++        apple_gfx_register_memory(s, desc);
++    } else {
++        apple_gfx_register_task_mapping_handlers(s, desc);
++    }
+ 
+     s->cursor_show = true;
+ 
 -- 
 2.50.1 (Apple Git-155)
 

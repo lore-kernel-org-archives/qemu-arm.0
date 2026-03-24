@@ -4,85 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350E2F532DD
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 05:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FD8F532D4
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 07:10:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4uUa-00015H-PN; Tue, 24 Mar 2026 01:39:52 -0400
+	id 1w4vuC-0007mF-GT; Tue, 24 Mar 2026 03:10:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w4uUX-00014f-Ek
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 01:39:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w4vuB-0007ka-Rf
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 03:10:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w4uUV-0002FK-Cg
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 01:39:48 -0400
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w4vuA-00076S-Ai
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 03:10:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774330785;
+ s=mimecast20190719; t=1774336220;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=s+0YGFpQM3ulLCo5fVzKjgeZxiTy+YtVz/KSucLyu+w=;
- b=LkGDML6r7G254GZZfybQ6YDuHKV3SdlH+X1yRE5WQTdI6rrxeCTq7sx9KJAd/CsVMfhXtF
- pSfqNT8ibwxtgbhHXVgWXAI7WQTV7H9PJyYOb3907nt+ek28WbHabbQtm4MZafP5jg0YPy
- wnLPff42ubf9zjyB1n3QkQSjaS04ROk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=QvmtY2ndE20U9ZusduT+0Ynd7e7T3ItiupShUkpl02w=;
+ b=GTm32764I52dhqT19Z3TJWCz9QFwpnSCpVtsFM1SfUEL+9xmTUTop6JJgzQbM40cHq0/bZ
+ 46124Hi5Azcc2YVzeWQ8gdYGc1NVFyLcgVN2a0bROij/aVDMWI3Hb6ViqCPHE1Ijujfjdt
+ MCjEb/i55cSYC0OI305qCPdjHEQQ5PM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-461-774wtRmgNCyRAqgfsT9jcg-1; Tue,
- 24 Mar 2026 01:39:42 -0400
-X-MC-Unique: 774wtRmgNCyRAqgfsT9jcg-1
-X-Mimecast-MFC-AGG-ID: 774wtRmgNCyRAqgfsT9jcg_1774330781
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-536-UawIxxhGPeKCmg44X7FQVA-1; Tue,
+ 24 Mar 2026 03:10:15 -0400
+X-MC-Unique: UawIxxhGPeKCmg44X7FQVA-1
+X-Mimecast-MFC-AGG-ID: UawIxxhGPeKCmg44X7FQVA_1774336213
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ADD1B180047F; Tue, 24 Mar 2026 05:39:40 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 18FB9180035F; Tue, 24 Mar 2026 05:39:40 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 16CE521E6937; Tue, 24 Mar 2026 06:39:37 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Cc: Nathan Chen <nathanc@nvidia.com>,  "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>,  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Eric Auger <eric.auger@redhat.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  "Michael S . Tsirkin" <mst@redhat.com>,  Igor
- Mammedov <imammedo@redhat.com>,  Ani Sinha <anisinha@redhat.com>,  Shannon
- Zhao <shannon.zhaosl@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Daniel =?utf-8?Q?P=2EBerrang=C3=A9?= <berrange@redhat.com>,  Eric Blake
- <eblake@redhat.com>,
- Matt Ochs <mochs@nvidia.com>,  Nicolin Chen <nicolinc@nvidia.com>
-Subject: Re: [PATCH v4 5/8] hw/arm/smmuv3-accel: Change SSIDSIZE property to
- SsidSizeMode
-In-Reply-To: <CH3PR12MB7548E042617EA0BDFB34C55BAB4BA@CH3PR12MB7548.namprd12.prod.outlook.com>
- (Shameer Kolothum Thodi's message of "Mon, 23 Mar 2026 17:41:29
- +0000")
-References: <20260318184907.4060030-1-nathanc@nvidia.com>
- <20260318184907.4060030-6-nathanc@nvidia.com>
- <87341w9ftp.fsf@pond.sub.org>
- <e855b12b-5e1c-4590-8440-a29155a6c9b0@nvidia.com>
- <CH3PR12MB7548E042617EA0BDFB34C55BAB4BA@CH3PR12MB7548.namprd12.prod.outlook.com>
-Date: Tue, 24 Mar 2026 06:39:37 +0100
-Message-ID: <874im5wzty.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 68E8A1955E89; Tue, 24 Mar 2026 07:10:13 +0000 (UTC)
+Received: from mbawa-thinkpadt14gen5.bengluru.csb (unknown [10.74.88.2])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 86E0519560AB; Tue, 24 Mar 2026 07:10:07 +0000 (UTC)
+From: Mohammadfaiz Bawa <mbawa@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Mohammadfaiz Bawa <mbawa@redhat.com>
+Subject: [PATCH 0/3] hw/tpm: add PPI support to tpm-tis-device on ARM64 virt
+Date: Tue, 24 Mar 2026 12:40:00 +0530
+Message-ID: <20260324-tpm-tis-sysbus-ppi-v1-0-e59175210954@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 91iy_H5R2akxSaxbMMJSOBH_SABY1u4bJbOxXGTrg6k_1774330781
+X-Change-ID: 20260324-tpm-tis-sysbus-ppi-ef31a7d71753
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: 47ahgIEkSDGkL19B6j9mMqawsR70PLGYKIbhiasuFhY_1774336213
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mbawa@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -100,29 +88,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Shameer Kolothum Thodi <skolothumtho@nvidia.com> writes:
+The ARM virt machine's tpm-tis-device lacks Physical Presence Interface
+(PPI) support - no _DSM, _STA, or PPI operation regions in the ACPI
+namespace. This causes Windows 11 ARM64 guests logs Event ID 15
+(tpm.sys) errors after boot repeatedly.
 
->> On 3/19/2026 5:14 AM, Markus Armbruster wrote:
+This series documents the change, refactors tpm_build_ppi_acpi() to
+accept a dynamic PPI base address, then wires up PPI MMIO and ACPI
+on tpm-tis-sysbus via the platform bus.
 
-[...]
+Tested: aarch64 KVM, upstream QEMU, Win11 ARM64 25H2, swtpm.
+Event ID 15 eliminated.
 
->> > Any particular reason this is called @ssidsize and not @ssid-size?
->> 
->> I'm not sure there's a particular reason - this property was newly
->> introduced in the accel SMMUv3 series [0]. Should we include a patch to
->> change it to @ssid-size to match the format of other properties?
+Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+---
+Mohammadfaiz Bawa (3):
+      docs/specs/tpm: document PPI support on ARM64 virt
+      hw/acpi/tpm: parameterize PPI base address in tpm_build_ppi_acpi
+      hw/tpm: add PPI support to tpm-tis-device for ARM64 virt
 
-Separating words improves legibility.  docs/devel/qapi-code-gen.rst
-section "Naming rules and reserved names":
+ docs/specs/tpm.rst       | 24 ++++++++++++++++++++++++
+ hw/acpi/tpm.c            |  8 ++++----
+ hw/arm/virt-acpi-build.c |  9 ++++++++-
+ hw/tpm/tpm_tis_isa.c     |  2 +-
+ hw/tpm/tpm_tis_sysbus.c  | 11 +++++++++++
+ include/hw/acpi/tpm.h    |  3 ++-
+ 6 files changed, 50 insertions(+), 7 deletions(-)
+---
+base-commit: 8e711856d7639cbffa51405f2cc2366e3d9e3a23
+change-id: 20260324-tpm-tis-sysbus-ppi-ef31a7d71753
 
-    Command names, member names within a type, and feature names should
-    be all lower case with words separated by a hyphen.
-
-However, we have a compelling reason for @ssidsize:
-
-> I don't think we should as that name was selected to match the SMMUv3
-> IDR1 register filed name in the SMMUv3 specification.
-
-Thanks!
+Best regards,
+-- 
+Mohammadfaiz Bawa <mbawa@redhat.com>
 
 

@@ -4,57 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18DB7F54AD2
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 16:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 058AEF54AD9
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 16:47:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w54IR-000444-OY; Tue, 24 Mar 2026 12:07:59 -0400
+	id 1w54uH-0008Vy-N3; Tue, 24 Mar 2026 12:47:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1w54IP-00042r-TI
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 12:07:58 -0400
-Received: from out-177.mta0.migadu.com ([2001:41d0:1004:224b::b1])
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w54uG-0008Un-Bw; Tue, 24 Mar 2026 12:47:04 -0400
+Received: from mail-westusazlp170120002.outbound.protection.outlook.com
+ ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
- id 1w54IM-0007xY-Ug
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 12:07:57 -0400
-Message-ID: <1aeb1610-fbe6-42f6-ae36-4d512d17ed49@linux.dev>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
- t=1774368462;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=S+FDRtdWjfZ6ybQ8CFeaIJMk3z8Ddb9wddgYxze1xm4=;
- b=niT17i7Gv9p5BL2HsrXymV6QnP2bDV+i/bgh727AxLf3JeA9J39aS1scw+vPhaplNCih+o
- bIvU84SiDh61EumhD6p4IN3mbNNlJSePNMcEdoxxdbXVYlhL4+ikSkvC6zp9g5tL8/87JO
- Io6GtnFf54kiHoaF2kE088awMDOj4s0=
-Date: Wed, 25 Mar 2026 00:07:33 +0800
-MIME-Version: 1.0
-Subject: Re: [PATCH] target/arm: Don't skip access flag fault for AccessType_AT
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w54uE-0006OG-CD; Tue, 24 Mar 2026 12:47:04 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lNf9rSpJgyDwK24qSjG3+bmauKhxEHEFyK+/SpKNVCVsG7dAxnVY/tSM9AGFYa/AFuwJuHfTUAN66c8AnY4oA+CIJzdyfJxnQNqiTdL3PNd5TBzamg2djqpeKaZZ65I6RMT2GisPk0cEAAanZU8ier1Ysi7jPDHUYQ8zFpSFvl4BqDlEAHbwIn7RruavJFHgaGtkdka2YI9Gu+5JGjjDD/dwuURHoa8vygQyYvMz65Xr3d3qGs5sn7gbIlIZvrSHvFS2SheGmaeblDDeW6Pyf0XLplhf7ivTuSlXf/KXZpJJDcUL1pHY0XSpaEj+SlxyRX5IK+5U0yLyEdgIa002Ag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vtPyaaEZ5Y4uWRri9u2RsCoJH8yTqObbiqRmj1ctF9c=;
+ b=KH0JCwGBxU/j6bnwzDNiVKYneLUCzbrkJRzhKwcR7X6WxnDSRRFPoOfupxT5TfnwUh0chMVpRjXAcbszdrBalHrZqBm+DoZfG8sFtX0iEg/jDTrJflnF6Atntxaz2uXZ9+Qs3loVlUNDcBl5WjdmZNwariNgPI0fURprcyAvDnWp4zWo1QD7Se6EZsbCp5OkUJzpFOmgbVhzm3alMyQkGyDkSCYPVT1g7NqCX8oWdkNX+C7Mh1NXWKFjjvTaVzWrzUktENqMg7GuSMWQafWASv9cIu+6PZw31z9aXARIHBNlgsgwP0W59nm8QwcGI3Hp47sMs853gebMxqBeJTzXuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vtPyaaEZ5Y4uWRri9u2RsCoJH8yTqObbiqRmj1ctF9c=;
+ b=QgpEOCok84MQnQmp2iC703lZ6sDx5PYmGu0a59HBXo2BsnvKHueU8XRN0U+z3DVRBcr0OEvU5kRtdIzKEIsNSnQkDAa6EEBcCm9g6vZGHejDMkuZZC0SAX5sbwyO4S4tagEp4FbHX8wY+a7HMGBZmqSj5jFztzCzitrjag+PQPAOUFLuJX8mv2hvjbNzKR9xkFSZd8/3bH4J8lKbhVf8Pop87U0Y52wkuIUSISEvuPhVsTzfPYYwbecfD6Cjp78nH2fKHsooogVTFw7fmN4hNqXQ6Hbh+UCOS/unZrTjoEyrixALutWMx/o5nS+sorz2d5KkeyryKnm/mGFjbCtEAA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
+ IA0PPF6E99B1BC1.namprd12.prod.outlook.com (2603:10b6:20f:fc04::bd1)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.7; Tue, 24 Mar
+ 2026 16:46:56 +0000
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9745.019; Tue, 24 Mar 2026
+ 16:46:56 +0000
+Message-ID: <c09e3fa9-f942-4a18-99b1-d28116b20937@nvidia.com>
+Date: Tue, 24 Mar 2026 09:46:52 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.0 v5 0/8] hw/arm/smmuv3-accel: Support AUTO
+ properties
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, richard.henderson@linaro.org
-References: <20260317122517.47627-1-zenghui.yu@linux.dev>
- <CAFEAcA9bGVuWXAPA0=EaAWXhSigm_yf5OYfnYoTjaQ8x1qXKYg@mail.gmail.com>
- <CAFEAcA9sovFYwoF1Jk6sN7Aheh1WXj+imAVhJ7ifpvTu7PHuFg@mail.gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+References: <20260323182454.1416110-1-nathanc@nvidia.com>
+ <CAFEAcA-TC8zpKivJ-Um14qHEbcrdCtT9GabkM_+m=B08esyaWQ@mail.gmail.com>
 Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Zenghui Yu <zenghui.yu@linux.dev>
-In-Reply-To: <CAFEAcA9sovFYwoF1Jk6sN7Aheh1WXj+imAVhJ7ifpvTu7PHuFg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <CAFEAcA-TC8zpKivJ-Um14qHEbcrdCtT9GabkM_+m=B08esyaWQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Migadu-Flow: FLOW_OUT
-Received-SPF: pass client-ip=2001:41d0:1004:224b::b1;
- envelope-from=zenghui.yu@linux.dev; helo=out-177.mta0.migadu.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-ClientProxiedBy: BYAPR11CA0052.namprd11.prod.outlook.com
+ (2603:10b6:a03:80::29) To DS2PR12MB9567.namprd12.prod.outlook.com
+ (2603:10b6:8:27c::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|IA0PPF6E99B1BC1:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9696ba2a-ebbd-49ae-b2ef-08de89c4f576
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|7416014|376014|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: OHpIQ6qrUKTWR58dz33vaA7tck1JaU/BGwoVagt2SDy7+YCUXL0RxUXjwETBA/uPEwsFFQd+ljqFg5dglWwgb5cQ7Zko3Fsp3Uk/IkG+jvfZGxAtgXNU/DGhbjo3zY8lYUJtgyLkomd0EE/QdqxPF0PujuRXMP73QBgn83l6h4MIp1aEy1oK1fSAjMzPPe6gsbc0L2VhPoxsIaiw1uRWhYOm5Nkuo3pzR8Eb4qtTr/S3bH35rcyoCIDUtnTXatSw5Mn35vHR8YrI4Uy1ChCFjHXPWs/aJc0Av6GQSpZbOk2F6axHRHAghpk1jJRwWVTWEfTu/erT9bYR0RLubTE2s42D3ER8VqkBQl2hxBEP5938/161YlvH6k77ltMIrWa7u1sfOEXQQ+kcb929gG7mDAPNmuJ/m9ChiZihQzhBy8jX/i/FmGoT+ceslcq6nd/guJn8CWMHiYnyaEcJ2ZSA9wbwi6LEq39rH454SGRDy6msn3LEz3PAE3iabx9btIWT1g9uhmR7SrsajxTTywu8ApyCQW40M4NCXVFvaUkpjui7HygIGh70MaY7vl9BUcf3NcXO4IvvkTLTYULA7nqFSXGREC6kUuqHDEa0NHN1Pqcb+knanEc2LEkxRhRA7W3m9GeugKxaRVC5HIab9PGQfV8F6NjH89OhmWjp0cyw4q2NLEjXAFRVBn/KBmNqbVDJSu/OTOfX7KDUafVzVPoAo74ThPW2tqZHwgUVNMsqyCc=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(56012099003)(18002099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YUJiNnYyMlc2bVNBZ1I2VzZrTmJNUUVnTWhUZzhUZDB3TXFXeVpVV05nTVls?=
+ =?utf-8?B?WWMrc1hqMjM0cmlqMkdZd3RUUmFubVJiTkorZUpjc1Fmb3h1bEV5OTc4TVE0?=
+ =?utf-8?B?SVdndnROaGF0YkZaemNhN3poVUVoK1pWdU9NSXRtWCtCUWNQVDJMNlpiUXRH?=
+ =?utf-8?B?VGdCaDhKeFB1Q0lCT3VacVozUXBQTDNra3pJWmUrWlBYUzQ2NjZteEh1b2Nj?=
+ =?utf-8?B?UEdmQ1BzWXVNOVN0bVY0UlZKZXBpTzlEZkNjbWVGSENzY1dTQy9ZWUQyRkRG?=
+ =?utf-8?B?RkZZUHNGa1R3U2psOTErVmx3L1p2aytmczdiYU42VmswL2xHcmg1VzBPS2lG?=
+ =?utf-8?B?R1BGcUM5ZnI5QjVaVWVqS0dKN005dVlMZkpRakxvNHBsNVNNU040SHhPMUtF?=
+ =?utf-8?B?KzJqbVNsSHk0dFlxOEh0OUoxTVFWQ0dqL1EyRGdCR0xwYldPeWxEcU42dEhC?=
+ =?utf-8?B?bHlyZGRsdiszN1BEWURKYWQ4ZFowaUVjYWVRaUptcFVQWG5ySkF0M1RtcVR5?=
+ =?utf-8?B?Z29VY1Myb1k5MVFHR2Y0Um0yYU1kZW8rNkI5YTcvaXV5MkFLSmwxeXJ3eXBo?=
+ =?utf-8?B?YTdMK3RqcVZtM3Z2MGN4UEVTa0ZmQXYrdVNqVjkxSHpOVDRJZUNycys4SDRF?=
+ =?utf-8?B?NjVxWXE5NVFLc05TT2tvNjZXaE1pd1FaWUQreGoxL0dzRE56ZFBQSmxKc24w?=
+ =?utf-8?B?Um42aGRGU0xPTW5kZlVLTGdib0NCTVRyRFJmZ2FETUkxRUNGN3Z0SktMR0tP?=
+ =?utf-8?B?eTRKUjNkL0E1S1lhV2pYdWt6SW1qbi91aWxzdTYrMVp6T1pINk5tYUNtZm4y?=
+ =?utf-8?B?dFJjZlI0b2p1R2ZuNU03RzRYenMxYnh5VG81Y0lmSXp3MGt1RmpvazJsRUxP?=
+ =?utf-8?B?dEtiYktmRSs4TDUvSGljWFd0STFYa010c0RrRmdxTFR6cHZ3Qk5tN01DemNN?=
+ =?utf-8?B?UGl2VmF3cjdUQXo3dGFJb3YrZmR3ZUlMWC8raDk5RkhaclNnMXU5bS9DK24z?=
+ =?utf-8?B?aitMZlN5aEdBMk00c3AxM3RCRmRheDVPUSt5T0laVFVrZDRNYlNJZFFuZXA4?=
+ =?utf-8?B?VkZrR1ZNVHNsVGkydjBxcmNUR2RJQ3JFUVBLQ1ZPa1l6Nk0yN05uL283UVAr?=
+ =?utf-8?B?Q1FvWWtPK1Q1aGlIM3RMMjZ5bS9mdzdXUk45c2dmK0pvRW81U3o0Y2tLSVBy?=
+ =?utf-8?B?cWV6QkJ2Q2FvTElwUFpMbFZ3MDV3QkliNjY4VVJmQzVkbHlJUTMzNE8wbmMz?=
+ =?utf-8?B?Z0ZZNjNvVGdOOEpvb2s0L3lMSnFpZkpJQ0g4cERxMWtvWGxyMFA5MHVmTXpq?=
+ =?utf-8?B?QjZ4NG5jK1FzZHo5NGh6YnZmVktFbzJTUUxHZnZmcnBzeStmUDFMeENPQ0Zi?=
+ =?utf-8?B?Y1ZLbUNTRTV4WFRUUC9OUE92R2xzTXF1TDZUNFFoZ0szQlB5LythVVZPQ0Vm?=
+ =?utf-8?B?aytIcURnbWIyR0lVUGNwZzJhVVJoZDl0WlE0YnE0RmV5K1lqN0RIOXJRTCtP?=
+ =?utf-8?B?bWVydzVMVmxUQzdrL1JuMitaN3lJWVpvN1FJV0lVOGNDaFFzZExXTDVBbnRm?=
+ =?utf-8?B?dWYzUzlBYWZMRkovZVlScEU3bVV4d1RXNnpMNzkvRlVxdisvTGpjK0lHenM0?=
+ =?utf-8?B?YmJiUkM5RjZPc1ZmeE9FT2Q1bkVWOUI3Y1lDNTNRYmcwM3ZMay9sbGRwV3dm?=
+ =?utf-8?B?K2h2RExsdWFQaXFpYlVGSERHcVluQmdvM2liYUFVcWJaZEg3Yzgyc1BJZnQr?=
+ =?utf-8?B?bzhPaG91OHdVVmFLYWkwYS8raURaaEpVdTZCMXc5cU9selBDT0VDOE5wS3Bv?=
+ =?utf-8?B?eTVMbjJwQlJKUVRnS3F1bWNlSmRBcUdwSlVabld2c0ZHK0VPUmRFU1ZKd0N6?=
+ =?utf-8?B?MkxmY1ZxWkhZSVBSbTh4R1c4clVRdFpKRWg3bnhINHo2dFFIeWRMRWpQQlY3?=
+ =?utf-8?B?S1g1SE9xVnRDd1Axc2RLazcrc0tqVEJJNVNpTU9yc0hpMFkvdkNxM2diK2h6?=
+ =?utf-8?B?cnQvTGVDeHJ6ZmI3TTh2cDJPaGNjK2tMWDBYdTl6dlNINHp0K0FWTWZON1J3?=
+ =?utf-8?B?OXZaUTFsejZTRWE2NU16eUhIc0JnMHVLR1JaNENMaXVubHNyNlkzTXROVjJJ?=
+ =?utf-8?B?YkFXL0NKZzFJRGFBTDFoZ2l5TWNxbWYzb00vczB1MDU4cE9CcllhQUhwd1lh?=
+ =?utf-8?B?RmxXZWtkdmdTUzZxeC8xYjV3NW84OWRabDdTTDdSM3htNllPYUZxblBqQmpZ?=
+ =?utf-8?B?WG9lNDFrQkJiSERCVU5TRFNxajMrN2M5WExLODBqWlcvRWNYWGlKM3JuenJO?=
+ =?utf-8?B?OEt2OEhUNlFJenJRT1dtcGdjOWdvVngvN3gxM3JaSHpYZEdRY1lDQT09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9696ba2a-ebbd-49ae-b2ef-08de89c4f576
+X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Mar 2026 16:46:55.9467 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3seL7hZ9dlz/nyPC8OtblNfOHZDJeH35CK/zbkmuckL8HhpyBMsMR9ur+ZJKm3okHCxu11S8gu9/1VwsG80Ifw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPF6E99B1BC1
+Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
+ envelope-from=nathanc@nvidia.com;
+ helo=SJ2PR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,96 +158,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/24/26 9:38 PM, Peter Maydell wrote:
-> On Thu, 19 Mar 2026 at 17:17, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Tue, 17 Mar 2026 at 12:25, Zenghui Yu <zenghui.yu@linux.dev> wrote:
-> > >
-> > > As per the pseudo code from DDI0487 M.a.a (on J1-16021) AArch64.S1Walk():
-> > >
-> > >   // Check descriptor AF bit
-> > >   elsif (descriptor<10> == '0' && walkparams.ha == '0' &&
-> > >           (!accdesc.acctype IN {AccessType_DC, AccessType_IC} ||
-> > >            boolean IMPLEMENTATION_DEFINED "Generate access flag fault on IC/DC operations")) then
-> > >       fault.statuscode = Fault_AccessFlag;
-> > >
-> > > an access flag fault should be generated for AccessType_AT, if the AF bit
-> > > is 0 and !param.ha.
-> >
-> > Did you find this by code inspection, or because it caused
-> > a guest to go wrong?
-> >
-> > We should probably
-> >
-> > Cc: qemu-stable@nongnu.org
-> >
-> > > Fixes: efebeec13d07 ("target/arm: Skip AF and DB updates for AccessType_AT")
-> > > Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
-> > > ---
-> > >  target/arm/ptw.c | 16 ++++++++--------
-> > >  1 file changed, 8 insertions(+), 8 deletions(-)
-> > >
-> > > diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> > > index 8b8dc09e72..572048d560 100644
-> > > --- a/target/arm/ptw.c
-> > > +++ b/target/arm/ptw.c
-> > > @@ -2118,6 +2118,12 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-> > >      descaddr &= ~(hwaddr)(page_size - 1);
-> > >      descaddr |= (address & (page_size - 1));
-> > >
-> > > +    /* Check descriptor AF bit */
-> > > +    if (!(descriptor & (1 << 10)) && !param.ha) {
-> > > +        fi->type = ARMFault_AccessFlag;
-> > > +        goto do_fault;
-> > > +    }
-> > > +
-> > >      /*
-> > >       * For AccessType_AT, DB is not updated (AArch64.SetDirtyFlag),
-> > >       * and it is IMPLEMENTATION DEFINED whether AF is updated
-> > > @@ -2127,15 +2133,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-> > >          /*
-> > >           * Access flag.
-> > >           * If HA is enabled, prepare to update the descriptor below.
-> > > -         * Otherwise, pass the access fault on to software.
-> > >           */
-> > > -        if (!(descriptor & (1 << 10))) {
-> > > -            if (param.ha) {
-> > > -                new_descriptor |= 1 << 10; /* AF */
-> > > -            } else {
-> > > -                fi->type = ARMFault_AccessFlag;
-> > > -                goto do_fault;
-> > > -            }
-> > > +        if (!(descriptor & (1 << 10)) && param.ha) {
-> > > +            new_descriptor |= 1 << 10; /* AF */
-> > >          }
-> >
-> > This is definitely correct behaviour for AT insns. The only
-> > thing I'm wondering about is what we should do for the
-> > ptw->in_debug == true case. Before commit efebeec13d07 we
-> > were checking !ptw->in_debug to skip both the testing and
-> > the updating of the access flag; now we will skip the update
-> > (definitely correct) but will fail debug accesses if the
-> > access flag is not set.
-> >
-> > There's an argument that if you're doing a debugger access
-> > it's not very helpful for it to not work just because the OS
-> > happens to have cleared the access flag on the page table entry
-> > (we also ignore permissions on debug accesses, though there
-> > are some code paths where we do enforce permissions, not
-> > really intentionally).
-> >
-> > On the other hand, we don't and I think have never suppressed
-> > AccessFlag faults for the get_phys_addr_v6 short-descriptor
-> > tables, so honouring them here too is at least consistent.
-> 
-> Having thought about this a little more, I think we should
-> continue to not raise the AccessFlag fault for in_debug = true:
-> it is what we've been doing previously for LPAE, at least, and
-> it is what intention of the debugger access codepath is.
-> 
-> Could you do a v2 of this patch that handles in_debug = true, please?
 
-Sure, sent out now. Thanks for your suggestion!
 
-Zenghui
+On 3/24/2026 6:30 AM, Peter Maydell wrote:
+> On Mon, 23 Mar 2026 at 18:25, Nathan Chen<nathanc@nvidia.com> wrote:
+>> Hi,
+>>
+>> This is a follow-up to the previous series [0] that introduces support
+>> for specifying 'auto' for arm-smmuv3 accelerated mode's ATS, RIL,
+>> SSIDSIZE, and OAS feature properties.
+>>
+>> In QEMU 11.0 we introduced new options for vSMMU [1], but feedback received
+>> when starting the integration of layered products shows the need for
+>> auto/host-retrieved values. To avoid breaking JSON/QMP compat, we want
+>> to fix the option types so that they can later support the auto mode. At
+>> the moment the auto mode is not supported though.
+>>
+>> A future series will introduce support for resolving the 'auto' values
+>> based on host SMMUv3 IDR values, as well as setting per-device ATS
+>> capability.
+> Hi; I'm picking this up for target-arm.next because it looks to
+> me like it's been reviewed, and it seems to me better to take it
+> for rc1 and if necessary make any last minor tweaks with a
+> separate patch in rc2, rather than let it sit on list for a bit
+> longer and take the whole thing in rc2.
+> 
+> Let me know if you'd rather it wait longer.
+
+Hi, I also think it makes sense to pick it up for rc1 as all review 
+comments so far have been addressed in this refresh.
+
+Thanks,
+Nathan
 

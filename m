@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 777E3F532F0
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 08:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19666F532ED
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 08:30:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w4x6X-0001JS-3z; Tue, 24 Mar 2026 04:27:14 -0400
+	id 1w4x9A-0002AZ-IQ; Tue, 24 Mar 2026 04:29:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1w4x6T-0001Iw-88
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 04:27:09 -0400
-Received: from mail-dy1-x1341.google.com ([2607:f8b0:4864:20::1341])
+ id 1w4x99-0002AB-6k
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 04:29:55 -0400
+Received: from mail-dy1-x1344.google.com ([2607:f8b0:4864:20::1344])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1w4x6Q-0003Kr-TI
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 04:27:09 -0400
-Received: by mail-dy1-x1341.google.com with SMTP id
- 5a478bee46e88-2c10a2e2cd1so4436868eec.0
- for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 01:27:02 -0700 (PDT)
+ id 1w4x97-0003X5-2T
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 04:29:54 -0400
+Received: by mail-dy1-x1344.google.com with SMTP id
+ 5a478bee46e88-2c0ecaae7dfso8317478eec.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 01:29:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1774340822; x=1774945622; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1774340991; x=1774945791; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=VmGc1P8vISB1Cw8qfDBDBhWxCv6IIauQ7aodr9NEPBM=;
- b=Ic2N6uJnDS0+hYKEgRirF8BmP9X2bOALJ0zKO84QAYxLqjDmiulBON9WEn6qDcrKzI
- GDRQjJef+M/nXYEH8HwACmh/9XRn5bE1Fsf00bR2ElArzbiHp1X+Eyz5/cyf58Nycfrs
- Kr+ngpHHydd/sC4DoE1sAa3Rog2Q83RUNdENNscuJtnKkOWdWmp12bbiJ/PDVpEFqV8u
- 6Dp1+gmb3MhA6js2k3bsism6h7JrtJfvBZ+TUENiaVCgjV3izwD04xnus5PgH3CrIGeC
- 24+cv5nYzOdpHXNEa7vsdgBFapBDDCREjkRhhADO85W0QK23d3U/OFU+GzTcgLfuIul9
- avng==
+ bh=WzmCZnpPp3dNgOv0BjGPEHtaYYUktKoojDUIsjuiHIg=;
+ b=oBv0GLgLbSKyK1pqPG+MYmIAZBagn7B4pFQenHUHdBHmJiXsXtIHQeEbDsggdYACJc
+ QyFjD/j4N/k5SfDSY/6uJBWYtQpuqkQbDuh6j831b5qDhttB4n2Cc7FHSUegzvPaYPGe
+ J3luEuwk/pZE52FuGTwZMymbJRef6a8mKYvhtI/S1vg+0CopPOfW46J+FZH7s2OEXqeQ
+ Ksu/ZPHpPO5HYXRjAlmNYUIT7p5NmU4XGvHL5ibbaMRD7K1GyYQS/nzG7qq3tgSXRwh1
+ 4gyPyHQiq7y1r7I+Bn7bYlurGrAzVGcOsPfUCVlUD1wg6W1Gv8owA/Offj3S8oNtqVmW
+ 0V2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774340822; x=1774945622;
+ d=1e100.net; s=20251104; t=1774340991; x=1774945791;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=VmGc1P8vISB1Cw8qfDBDBhWxCv6IIauQ7aodr9NEPBM=;
- b=VfCatAyb1rdJ+8by2fFZ/uQDGhMC2oyok8OYo2QQeQVblfxzwJid3eLr7Qqd8jRAHW
- u5Io0Vvk2X1mKq2upYuJzxutzUG3Qj5+YMd8Gq+M7cZimnDJzYEKrG9nTccHmyKBbp8D
- G3/DN+gEdtcrkzjEd9K5cJDbtJOzq8y1zhIf1NojAOdlsKJGUyh5sRgVvrJK02Hhc5I2
- gr2r5iQj+ZJe7gmfow5gaf/6kUVERduz4c6YT24jcACpJ9KxVUHvIKiX5LCJPQ3i4NDh
- uK4MgXYHZepZu8zKYWzU4ovrjgCfo7JlYPSbGzwQhuV0dZQp0PCsUgvdZ+icfGUl5TLs
- lTxA==
+ bh=WzmCZnpPp3dNgOv0BjGPEHtaYYUktKoojDUIsjuiHIg=;
+ b=ZiNRC7gsQCdNqoniU4jl9FYffP0te3bML4Be82NHloHVtdsCCjoDVeOCQrZVEpscGA
+ +RvoVRF1X0039+CsHPUgP0pN8z9cDtx4WTxFpUx2f51UHoQ/lkZHFA2dD4rXgkIPw0Yq
+ HcKvQtA+D3AfIaLzZY0Gr/qKWTgT/7v/hS1YVGPN9iUXt4qK4WwI36T+evRXKzMWMak1
+ tmI94hCxTLF6nDjqvMy1T2UvlOVYDxEe86L8io21fNqE+T3f6YxGIiriwhFqTozZzH52
+ BX4mkQ46Xi+/5o4fQbcFsIVfhdrUE/O86OlUbxaZBnFZlPnrR3+fxNAadUmd5+WrgL+x
+ mWiA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXwMjEgssEJAsXbGpBlxm2Nz7xXW01K56lTJQ5F9k0kQAHbOXE/jW66mr4Gcw6frI0hNYtR+/eBrg==@nongnu.org
-X-Gm-Message-State: AOJu0YybuDwIHB+E6xpo5Ziz/MDpjT9mJp0EAzg1ueM/nfV3TJ/4s72S
- 0UpU1KjrucVhYhfXyXg0KSZtVYbA+jsqKhQZAmoBjlSrhN4SKHCbIXJL
-X-Gm-Gg: ATEYQzw///o8WTZ06rC2yM+r6dKS9wQ3AbBffSPV7E08pLibZOi6pd/RjCc15hj/dsT
- d/8oDRt053wc6SwH5gVBWeyaoyFeLXzSpbY+9zckQA2TnWr7wQHw5RsFZNu/pgHMG7/4L0GTYPy
- pVfJqtRUtyuKYVFW19UmHLE6SUspusLMfGeOJpvhiIFhbloD2l5XZBlNWZzbh7VyGXBbU6B8BAZ
- pQDqzYen8pAwLcN2L/u9GttW12V7cgLtMzGzaJVcpBB45zzgxhRTdnAOdk3kt/FgLXPTTDGpVPX
- 4ntFQSyhyGHrOxNnliVtZlYHiZTFiIGy3B9Xj6Ss+jO8SHiNrzc2hxRWbIAiJcuD2Wa28teot8h
- bUyo3hIF7Ng8CSAtOWf6gBma8yH9HSvO/1WfDv12/a5q6QT+WBmf0A/7SxzEfqeR9iKwjxrldGC
- YpqIqxqEKA0bq98kKO5yI7gqnKWwb6ZJe5wACQUCpBuZVzl+oMfKWvX0ZeNl2NlXFdw8Mx+LyVQ
- x1XTq/wTbNlVtXVSP1HCJ5f2vT0tXmmeoXE9KTfJA==
-X-Received: by 2002:a05:7300:e2cc:b0:2bd:d04c:a430 with SMTP id
- 5a478bee46e88-2c1095fd85dmr8231269eec.12.1774340821551; 
- Tue, 24 Mar 2026 01:27:01 -0700 (PDT)
+ AJvYcCXaUyfUcLn61WLhpgr2MCi+GN4qAUmYcbofXk0nyGYq2aqs3kvHNqLjtlnYGFZ48tvaE+vLYCszrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxXnwj7demiewo1eiYtYNgHL/saIyRLDkOZkaycOyXcsbHPSTtz
+ r7E1kidKysQBEhccENqG0Nd2KOEQXMD9BeMwgb5JJUDE7RYUamUS8YNB
+X-Gm-Gg: ATEYQzyKMkPJsuQDuNixM5lWaGOfuAjXZ7AfMaeYQMgN5VVqChlct7SnwXT+hWfaiQ6
+ ezYKyqPcjzgUSBv93DkrgGQEZbMfZc28H0gxWa/406VdNx97UpfqugkZPOG3Slxzj1EExwpvzfD
+ Sq6ED18d1z4I+KJ0ucKW1YgQn+o1/CZoz27JhJWc36iNrq6Z8cwvyyqDgF76twp8lp37ZeELsTm
+ YGKTxWtMn8RIXAG5wH4mCJmpt2IiBDW6IMhymcafEWduxQHbY4GDN1VZmFIoFnGgV5W1SOcynOf
+ V0l8UvwmB1C7eaqBGhf3AMeTgjYVoGHa3306NQNcYNJM9jmXJrKYKqYxPhKy5GJXRRUOdVZX26l
+ AxqotWvxyJSHsaORXf8tRpSTH7ye1IG7WsAdB8A0R3sJeDsIgzlLPUHuYX8ijAqFQekOT8QoRnF
+ L99i0jn4fAnUM2QFso2KB23eTU2SloL/LjN7qT2A12mz+4U75LlCu4MTX5ugxyfI8OdkO7xu6u6
+ 5uE+CVH5VDYHdtBNuZuy7dAsnhFt5s=
+X-Received: by 2002:a05:693c:300b:b0:2c0:c63d:e02e with SMTP id
+ 5a478bee46e88-2c109567365mr7375062eec.3.1774340991230; 
+ Tue, 24 Mar 2026 01:29:51 -0700 (PDT)
 Received: from ZEVORN-PC.localdomain ([38.95.120.198])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c10b2cf068sm14385498eec.22.2026.03.24.01.26.55
+ 5a478bee46e88-2c10b14bac4sm19594255eec.4.2026.03.24.01.29.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2026 01:26:59 -0700 (PDT)
-Date: Tue, 24 Mar 2026 16:26:41 +0800
+ Tue, 24 Mar 2026 01:29:50 -0700 (PDT)
+Date: Tue, 24 Mar 2026 16:29:33 +0800
 From: Chao Liu <chao.liu.zevorn@gmail.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Chen Baozi <chenbaozi@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: Re: [RFC v3 3/4] tests/qtest: Add qtest-attrs-test for memory access
- attrs
-Message-ID: <acJKBPwxvFa54DJM@ZEVORN-PC.localdomain>
+Subject: Re: [RFC v3 4/4] [NOT-MERGE] tests/qtest: add q35 SMM-only x86 attrs
+ coverage
+Message-ID: <acJKzHQf1AP2iUA2@ZEVORN-PC.localdomain>
 References: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
- <20260323133210.1523868-4-tangtao1634@phytium.com.cn>
+ <20260323133210.1523868-5-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260323133210.1523868-4-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1341;
- envelope-from=chao.liu.zevorn@gmail.com; helo=mail-dy1-x1341.google.com
+In-Reply-To: <20260323133210.1523868-5-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1344;
+ envelope-from=chao.liu.zevorn@gmail.com; helo=mail-dy1-x1344.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,87 +106,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Mar 23, 2026 at 09:32:09PM +0800, Tao Tang wrote:
-> Add qtest-attrs-test to exercise qtest memory access commands with attrs
-> on both aarch64 and x86.
+On Mon, Mar 23, 2026 at 09:32:10PM +0800, Tao Tang wrote:
+> Add a q35-only test path for x86 secure attrs by introducing an optional
+> test-only RAM region that is mapped only into the SMM address space.
 > 
-> The test covers:
-> - Arm virt,secure=on: scalar and bulk accesses across non-secure,
->   secure, and root spaces, plus negative coverage for realm and for
->   non-secure accesses into secure-only RAM
-> - x86 q35: normal accesses
-> - libqtest-single *_attrs shortcut wrappers
-There's a gap:
-
-patch 1 adds several parser-level ERR paths
-(invalid attrs string, space=... on non-Arm targets,
-too many arguments) but none of them are exercised
-here. Since qtest_raw_cmd() is already available from
-patch 2, it would be straightforward to add a few
-negative cases for those error strings.
-
-Thanks,
-Chao
+> The new qtest-x86-attrs-test enables this region with
+> `-global mch.x-smm-test-ram=on` and verifies that accesses with the
+> `secure` attribute reach the SMM-only region, while default accesses do
+> not. This provides the x86 cross-verification that qtest-attrs-test does
+> not cover, where normal RAM is visible from both the default and SMM
+> address spaces.
 > 
-> For negative cases, use qtest_raw_cmd() to check that accesses which
-> miss the intended AddressSpace fail with ERR responses emitted via
-> qtest_send_memtx_error().
-> 
-> On Arm, the test targets the virt machine's secure-only RAM window so
-> that the requested attrs must select the correct address space.
-> 
-> Also wire qtest-attrs-test into the aarch64 and i386/x86_64 qtest
-> builds.
+> This is a NOT-MERGE commit.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  tests/qtest/meson.build        |   7 +-
->  tests/qtest/qtest-attrs-test.c | 305 +++++++++++++++++++++++++++++++++
->  2 files changed, 310 insertions(+), 2 deletions(-)
->  create mode 100644 tests/qtest/qtest-attrs-test.c
+>  hw/pci-host/q35.c                  |  24 +++++++
+>  include/hw/pci-host/q35.h          |   8 +++
+>  tests/qtest/meson.build            |   1 +
+>  tests/qtest/qtest-x86-attrs-test.c | 109 +++++++++++++++++++++++++++++
+>  4 files changed, 142 insertions(+)
+>  create mode 100644 tests/qtest/qtest-x86-attrs-test.c
 > 
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index e85e4227b3..5c23375dd6 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -572,6 +572,11 @@ static void mch_realize(PCIDevice *d, Error **errp)
+>          return;
+>      }
+>  
+> +    if (mch->enable_smm_test_ram && !mch->has_smm_ranges) {
+> +        error_setg(errp, "x-smm-test-ram requires SMM support");
+> +        return;
+> +    }
+> +
+>      /* setup pci memory mapping */
+>      pc_pci_as_mapping_init(mch->system_memory, mch->pci_address_space);
+>  
+> @@ -653,6 +658,23 @@ static void mch_realize(PCIDevice *d, Error **errp)
+>      memory_region_add_subregion(&mch->smram, MCH_HOST_BRIDGE_SMBASE_ADDR,
+>                                  &mch->smbase_window);
+>  
+> +    if (mch->enable_smm_test_ram) {
+> +        /*
+> +         * This is a QEMU-specific, test-only region. It is mapped only into
+> +         * mch->smram so qtest can verify that x86 secure attrs select the SMM
+> +         * address space rather than the default one.
+> +         */
+> +        memory_region_init_ram(&mch->smm_test_ram, OBJECT(mch),
+> +                               "smm-test-ram",
+> +                               MCH_HOST_BRIDGE_SMM_TEST_RAM_SIZE, errp);
+> +        if (*errp) {
+> +            return;
+> +        }
+if errp is ever NULL this will crash.
+
+The safer pattern is ERRP_GUARD() at the top of mch_realize(),
+or a local Error * with error_propagate(). Even for NOT-MERGE
+code it is worth getting right since copy-paste propagates
+patterns.
+
+> +        memory_region_add_subregion(&mch->smram,
+> +                                    MCH_HOST_BRIDGE_SMM_TEST_RAM_BASE,
+> +                                    &mch->smm_test_ram);
+> +    }
+> +
+>      object_property_add_const_link(qdev_get_machine(), "smram",
+>                                     OBJECT(&mch->smram));
+>  }
+> @@ -661,6 +683,8 @@ static const Property mch_props[] = {
+>      DEFINE_PROP_UINT16("extended-tseg-mbytes", MCHPCIState, ext_tseg_mbytes,
+>                         64),
+>      DEFINE_PROP_BOOL("smbase-smram", MCHPCIState, has_smram_at_smbase, true),
+> +    DEFINE_PROP_BOOL("x-smm-test-ram", MCHPCIState, enable_smm_test_ram,
+> +                     false),
+>  };
+>  
+>  static void mch_class_init(ObjectClass *klass, const void *data)
+> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+> index ddafc3f2e3..1ca26f0e63 100644
+> --- a/include/hw/pci-host/q35.h
+> +++ b/include/hw/pci-host/q35.h
+> @@ -49,8 +49,10 @@ struct MCHPCIState {
+>      MemoryRegion smram, low_smram, high_smram;
+>      MemoryRegion tseg_blackhole, tseg_window;
+>      MemoryRegion smbase_blackhole, smbase_window;
+> +    MemoryRegion smm_test_ram;
+>      bool has_smram_at_smbase;
+>      bool has_smm_ranges;
+> +    bool enable_smm_test_ram;
+>      Range pci_hole;
+>      uint64_t below_4g_mem_size;
+>      uint64_t above_4g_mem_size;
+> @@ -99,6 +101,12 @@ struct Q35PCIHost {
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_SIZE          8       /* 64bit register */
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_DEFAULT       0xb0000000
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_MAX           (0x10000000) /* 256M */
+> +/*
+> + * Optional qtest-only RAM window used to expose an address that exists only
+> + * in the SMM address space, so x86 secure attrs can be cross-checked.
+> + */
+> +#define MCH_HOST_BRIDGE_SMM_TEST_RAM_BASE      0xfef00000
+> +#define MCH_HOST_BRIDGE_SMM_TEST_RAM_SIZE      (64 * KiB)
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_ADMSK         Q35_MASK(64, 35, 28)
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_128ADMSK      ((uint64_t)(1 << 26))
+>  #define MCH_HOST_BRIDGE_PCIEXBAR_64ADMSK       ((uint64_t)(1 << 25))
 > diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index be4fa627b5..87aa104d23 100644
+> index 87aa104d23..fcdd95bf7f 100644
 > --- a/tests/qtest/meson.build
 > +++ b/tests/qtest/meson.build
-> @@ -115,6 +115,7 @@ qtests_i386 = \
->     'drive_del-test',
+> @@ -116,6 +116,7 @@ qtests_i386 = \
 >     'cpu-plug-test',
 >     'migration-test',
-> +   'qtest-attrs-test',
+>     'qtest-attrs-test',
+> +   'qtest-x86-attrs-test',
 >    ]
 >  
 >  if dbus_display and config_all_devices.has_key('CONFIG_VGA')
-> @@ -249,7 +250,8 @@ qtests_arm = \
->    (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
->     config_all_devices.has_key('CONFIG_DM163')? ['dm163-test'] : []) + \
->    ['arm-cpu-features',
-> -   'boot-serial-test']
-> +   'boot-serial-test',
-> +   'qtest-attrs-test',]
->  
->  # TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
->  qtests_aarch64 = \
-> @@ -270,7 +272,8 @@ qtests_aarch64 = \
->    ['arm-cpu-features',
->     'numa-test',
->     'boot-serial-test',
-> -   'migration-test']
-> +   'migration-test',
-> +   'qtest-attrs-test']
->  
->  qtests_s390x = \
->    qtests_filter + \
-> diff --git a/tests/qtest/qtest-attrs-test.c b/tests/qtest/qtest-attrs-test.c
+> diff --git a/tests/qtest/qtest-x86-attrs-test.c b/tests/qtest/qtest-x86-attrs-test.c
 > new file mode 100644
-> index 0000000000..85eb77344d
+> index 0000000000..d9a67d5309
 > --- /dev/null
-> +++ b/tests/qtest/qtest-attrs-test.c
-> @@ -0,0 +1,305 @@
+> +++ b/tests/qtest/qtest-x86-attrs-test.c
+> @@ -0,0 +1,109 @@
 > +/*
-> + * QTest for memory access with transaction attributes
+> + * QTest for x86 memory access with transaction attributes
 > + *
-> + * Verify optional attrs argument support for qtest memory commands.
+> + * Verify q35 SMM address-space access with the secure attribute.
 > + *
 > + * Copyright (c) 2026 Phytium Technology
 > + *
@@ -198,213 +245,15 @@ Chao
 > +
 > +#include "qemu/osdep.h"
 > +#include "libqtest.h"
-> +#include "libqtest-single.h"
 > +
-> +/*
-> + * The Arm virt test uses both the default non-secure RAM at 0x4000_0000 and
-> + * the secure-only RAM window at 0x0e00_0000. The x86 q35 test only exercises
-> + * regular RAM that is visible from both the default and SMM address spaces.
-> + */
 > +#define TEST_ADDR_OFFSET_NS     0x1000ULL
-> +#define TEST_ADDR_OFFSET_S      0xe000000ULL
-> +#define TEST_ARM_SEC_BASE       0x0ULL
-> +#define TEST_ARM_NS_BASE        0x40000000ULL
 > +#define TEST_X86_BASE           0x0ULL
+> +#define TEST_X86_SMM_BASE       0xfef00000ULL
 > +
-> +#define TEST_ADDR_ARM_S         (TEST_ARM_SEC_BASE + TEST_ADDR_OFFSET_S)
-> +#define TEST_ADDR_ARM_NS        (TEST_ARM_NS_BASE + TEST_ADDR_OFFSET_NS)
 > +#define TEST_ADDR_X86           (TEST_X86_BASE + TEST_ADDR_OFFSET_NS)
 > +
-> +#define ARM_MACHINE_ARGS        "-machine virt,secure=on -accel tcg"
-> +#define X86_MACHINE_ARGS        "-machine q35,smm=on -m 1G -accel tcg"
-> +
-> +static void G_GNUC_PRINTF(2, 3) assert_qtest_error(QTestState *qts,
-> +                                                   const char *fmt, ...)
-> +{
-> +    va_list ap;
-> +    g_autofree gchar *cmd = NULL;
-> +    g_auto(GStrv) response = NULL;
-> +
-> +    va_start(ap, fmt);
-> +    cmd = g_strdup_vprintf(fmt, ap);
-> +    va_end(ap);
-> +
-> +    response = qtest_raw_cmd(qts, "%s", cmd);
-> +    g_assert_cmpstr(response[0], ==, "ERR");
-> +}
-> +
-> +static void test_arm_scalar_attrs(void)
-> +{
-> +    QTestState *qts;
-> +    uint8_t val;
-> +
-> +    if (!qtest_has_machine("virt")) {
-> +        g_test_skip("virt machine not available");
-> +        return;
-> +    }
-> +
-> +    qts = qtest_init(ARM_MACHINE_ARGS);
-> +
-> +    qtest_writeb_attrs(qts, TEST_ADDR_ARM_NS, 0x11, NULL);
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_NS, NULL);
-> +    g_assert_cmpuint(val, ==, 0x11);
-> +
-> +    qtest_writeb_attrs(qts, TEST_ADDR_ARM_NS + 0x1, 0x22, "space=non-secure");
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_NS + 0x1, "space=non-secure");
-> +    g_assert_cmpuint(val, ==, 0x22);
-> +
-> +    qtest_writeb_attrs(qts, TEST_ADDR_ARM_S + 0x2, 0x33, "secure");
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_S + 0x2, "secure");
-> +    g_assert_cmpuint(val, ==, 0x33);
-> +
-> +    assert_qtest_error(qts, "writeb 0x%" PRIx64 " 0x44 space=realm\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x3));
-> +    assert_qtest_error(qts, "readb 0x%" PRIx64 " space=realm\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x3));
-> +
-> +    qtest_writeb_attrs(qts, TEST_ADDR_ARM_S + 0x4, 0x55, "space=root");
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_S + 0x4, "space=root");
-> +    g_assert_cmpuint(val, ==, 0x55);
-> +
-> +    qtest_writeb_attrs(qts, TEST_ADDR_ARM_S + 0x5, 0x66, "space=secure");
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_S + 0x5, "space=secure");
-> +    g_assert_cmpuint(val, ==, 0x66);
-> +
-> +    qtest_writeb(qts, TEST_ADDR_ARM_NS + 0x6, 0x77);
-> +    val = qtest_readb(qts, TEST_ADDR_ARM_NS + 0x6);
-> +    g_assert_cmpuint(val, ==, 0x77);
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_ARM_NS + 0x6, "space=non-secure");
-> +    g_assert_cmpuint(val, ==, 0x77);
-> +
-> +    assert_qtest_error(qts, "writeb 0x%" PRIx64 " 0x77 space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x7));
-> +    assert_qtest_error(qts, "readb 0x%" PRIx64 " space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x7));
-> +
-> +    qtest_quit(qts);
-> +}
-> +
-> +static void test_arm_bulk_attrs(void)
-> +{
-> +    QTestState *qts;
-> +    uint8_t wbuf[16] = {
-> +        0x00, 0x11, 0x22, 0x33,
-> +        0x44, 0x55, 0x66, 0x77,
-> +        0x88, 0x99, 0xaa, 0xbb,
-> +        0xcc, 0xdd, 0xee, 0xff,
-> +    };
-> +    uint8_t rbuf[16];
-> +    size_t i;
-> +
-> +    if (!qtest_has_machine("virt")) {
-> +        g_test_skip("virt machine not available");
-> +        return;
-> +    }
-> +
-> +    qts = qtest_init(ARM_MACHINE_ARGS);
-> +
-> +    qtest_memwrite_attrs(qts, TEST_ADDR_ARM_NS + 0x100,
-> +                         wbuf, sizeof(wbuf), NULL);
-> +    qtest_memread_attrs(qts, TEST_ADDR_ARM_NS + 0x100,
-> +                        rbuf, sizeof(rbuf), NULL);
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_memwrite_attrs(qts, TEST_ADDR_ARM_NS + 0x200,
-> +                         wbuf, sizeof(wbuf), "space=non-secure");
-> +    qtest_memread_attrs(qts, TEST_ADDR_ARM_NS + 0x200,
-> +                        rbuf, sizeof(rbuf), "space=non-secure");
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_memwrite_attrs(qts, TEST_ADDR_ARM_S + 0x300,
-> +                         wbuf, sizeof(wbuf), "secure");
-> +    qtest_memread_attrs(qts, TEST_ADDR_ARM_S + 0x300,
-> +                        rbuf, sizeof(rbuf), "secure");
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_memset_attrs(qts, TEST_ADDR_ARM_S + 0x400,
-> +                       0xa5, sizeof(rbuf), "space=root");
-> +    qtest_memread_attrs(qts, TEST_ADDR_ARM_S + 0x400,
-> +                        rbuf, sizeof(rbuf), "space=root");
-> +    for (i = 0; i < sizeof(rbuf); i++) {
-> +        g_assert_cmpuint(rbuf[i], ==, 0xa5);
-> +    }
-> +
-> +    qtest_bufwrite_attrs(qts, TEST_ADDR_ARM_NS + 0x500,
-> +                         wbuf, sizeof(wbuf), "space=non-secure");
-> +    qtest_bufread_attrs(qts, TEST_ADDR_ARM_NS + 0x500,
-> +                        rbuf, sizeof(rbuf), "space=non-secure");
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_bufwrite_attrs(qts, TEST_ADDR_ARM_S + 0x600,
-> +                         wbuf, sizeof(wbuf), "secure");
-> +    qtest_bufread_attrs(qts, TEST_ADDR_ARM_S + 0x600,
-> +                        rbuf, sizeof(rbuf), "secure");
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_memwrite(qts, TEST_ADDR_ARM_NS + 0x700, wbuf, 4);
-> +    qtest_memread(qts, TEST_ADDR_ARM_NS + 0x700, rbuf, 4);
-> +    g_assert(memcmp(wbuf, rbuf, 4) == 0);
-> +
-> +    qtest_memset(qts, TEST_ADDR_ARM_NS + 0x710, 0xa5, 4);
-> +    qtest_memread(qts, TEST_ADDR_ARM_NS + 0x710, rbuf, 4);
-> +    for (i = 0; i < 4; i++) {
-> +        g_assert_cmpuint(rbuf[i], ==, 0xa5);
-> +    }
-> +
-> +    qtest_bufwrite(qts, TEST_ADDR_ARM_NS + 0x720, wbuf, 4);
-> +    qtest_bufread(qts, TEST_ADDR_ARM_NS + 0x720, rbuf, 4);
-> +    g_assert(memcmp(wbuf, rbuf, 4) == 0);
-> +
-> +    assert_qtest_error(qts, "write 0x%" PRIx64 " 0x%zx 0x00112233 "
-> +                       "space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x730),
-> +                       (size_t)4);
-> +    assert_qtest_error(qts, "read 0x%" PRIx64 " 0x%zx space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x730), (size_t)4);
-> +    assert_qtest_error(qts, "memset 0x%" PRIx64 " 0x%zx 0xa5 "
-> +                       "space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x740),
-> +                       (size_t)4);
-> +    assert_qtest_error(qts, "b64write 0x%" PRIx64 " 0x%zx AQIDBA== "
-> +                       "space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x750),
-> +                       (size_t)4);
-> +    assert_qtest_error(qts, "b64read 0x%" PRIx64 " 0x%zx space=non-secure\n",
-> +                       (uint64_t)(TEST_ADDR_ARM_S + 0x750), (size_t)4);
-> +
-> +    qtest_quit(qts);
-> +}
-> +
-> +static void test_arm_single_shortcuts_attrs(void)
-> +{
-> +    uint8_t val;
-> +    uint8_t wbuf[4] = { 0x10, 0x20, 0x30, 0x40 };
-> +    uint8_t rbuf[4];
-> +
-> +    if (!qtest_has_machine("virt")) {
-> +        g_test_skip("virt machine not available");
-> +        return;
-> +    }
-> +
-> +    qtest_start(ARM_MACHINE_ARGS);
-> +
-> +    writeb_attrs(TEST_ADDR_ARM_S + 0x700, 0x5a, "secure");
-> +    val = readb_attrs(TEST_ADDR_ARM_S + 0x700, "secure");
-> +    g_assert_cmpuint(val, ==, 0x5a);
-> +
-> +    writel_attrs(TEST_ADDR_ARM_S + 0x704,
-> +                 0xa5a5a5a5, "space=root");
-> +    g_assert_cmphex(readl_attrs(TEST_ADDR_ARM_S + 0x704, "space=root"), ==,
-> +                    0xa5a5a5a5U);
-> +
-> +    memwrite_attrs(TEST_ADDR_ARM_NS + 0x708,
-> +                   wbuf, sizeof(wbuf), "space=non-secure");
-> +    memread_attrs(TEST_ADDR_ARM_NS + 0x708,
-> +                  rbuf, sizeof(rbuf), "space=non-secure");
-> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
-> +
-> +    qtest_end();
-> +}
+> +#define X86_MACHINE_ARGS        "-machine q35,smm=on -m 1G -accel tcg " \
+> +                                "-global mch.x-smm-test-ram=on"
 > +
 > +static void test_x86_scalar_attrs(void)
 > +{
@@ -421,14 +270,28 @@ Chao
 > +    qtest_writeb_attrs(qts, TEST_ADDR_X86, 0x11, NULL);
 > +    val = qtest_readb_attrs(qts, TEST_ADDR_X86, NULL);
 > +    g_assert_cmpuint(val, ==, 0x11);
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_X86, "secure");
-> +    g_assert_cmpuint(val, ==, 0x11);
 > +
 > +    qtest_writeb_attrs(qts, TEST_ADDR_X86 + 0x1, 0x22, "secure");
 > +    val = qtest_readb_attrs(qts, TEST_ADDR_X86 + 0x1, "secure");
 > +    g_assert_cmpuint(val, ==, 0x22);
-> +    val = qtest_readb_attrs(qts, TEST_ADDR_X86 + 0x1, NULL);
-> +    g_assert_cmpuint(val, ==, 0x22);
+> +
+> +
+nit: extra blank line.
+
+> +    qtest_writeb_attrs(qts, TEST_X86_SMM_BASE + 0x2, 0x33, "secure");
+> +    val = qtest_readb_attrs(qts, TEST_X86_SMM_BASE + 0x2, "secure");
+> +    g_assert_cmpuint(val, ==, 0x33);
+The commit message says "secure accesses reach the
+SMM-only region, while default accesses do not", but
+the test only checks the secure-can-access half. It
+would strengthen the coverage to also verify that a
+default (non-secure) read of TEST_X86_SMM_BASE returns
+different data or an ERR, confirming the address-space
+isolation actually works. Without that, a bug where
+both address spaces map the region would pass silently.
+
+Thanks,
+Chao
 > +
 > +    qtest_quit(qts);
 > +}
@@ -448,27 +311,32 @@ Chao
 > +    qts = qtest_init(X86_MACHINE_ARGS);
 > +
 > +    qtest_memwrite_attrs(qts, TEST_ADDR_X86 + 0x100, wbuf, sizeof(wbuf), NULL);
-> +    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x100,
-> +                        rbuf, sizeof(rbuf), "secure");
+> +    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x100, rbuf, sizeof(rbuf), NULL);
 > +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
 > +
 > +    qtest_memwrite_attrs(qts, TEST_ADDR_X86 + 0x180,
 > +                         wbuf, sizeof(wbuf), "secure");
 > +    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x180,
-> +                        rbuf, sizeof(rbuf), NULL);
+> +                        rbuf, sizeof(rbuf), "secure");
 > +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
 > +
-> +    qtest_memset_attrs(qts, TEST_ADDR_X86 + 0x200,
-> +                       0x3c, sizeof(rbuf), "secure");
-> +    qtest_memread_attrs(qts, TEST_ADDR_X86 + 0x200,
-> +                        rbuf, sizeof(rbuf), NULL);
+> +    qtest_memwrite_attrs(qts, TEST_X86_SMM_BASE + 0x100,
+> +                         wbuf, sizeof(wbuf), "secure");
+> +    qtest_memread_attrs(qts, TEST_X86_SMM_BASE + 0x100,
+> +                        rbuf, sizeof(rbuf), "secure");
+> +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
+> +
+> +    qtest_memset_attrs(qts, TEST_X86_SMM_BASE + 0x120,
+> +                       0x5a, sizeof(rbuf), "secure");
+> +    qtest_memread_attrs(qts, TEST_X86_SMM_BASE + 0x120,
+> +                        rbuf, sizeof(rbuf), "secure");
 > +    for (i = 0; i < sizeof(rbuf); i++) {
-> +        g_assert_cmpuint(rbuf[i], ==, 0x3c);
+> +        g_assert_cmpuint(rbuf[i], ==, 0x5a);
 > +    }
 > +
-> +    qtest_bufwrite_attrs(qts, TEST_ADDR_X86 + 0x280,
-> +                         wbuf, sizeof(wbuf), NULL);
-> +    qtest_bufread_attrs(qts, TEST_ADDR_X86 + 0x280,
+> +    qtest_bufwrite_attrs(qts, TEST_X86_SMM_BASE + 0x200,
+> +                         wbuf, sizeof(wbuf), "secure");
+> +    qtest_bufread_attrs(qts, TEST_X86_SMM_BASE + 0x200,
 > +                        rbuf, sizeof(rbuf), "secure");
 > +    g_assert(memcmp(wbuf, rbuf, sizeof(wbuf)) == 0);
 > +
@@ -479,10 +347,6 @@ Chao
 > +{
 > +    g_test_init(&argc, &argv, NULL);
 > +
-> +    qtest_add_func("/qtest/arm/attrs/scalar", test_arm_scalar_attrs);
-> +    qtest_add_func("/qtest/arm/attrs/bulk", test_arm_bulk_attrs);
-> +    qtest_add_func("/qtest/arm/attrs/single_shortcuts",
-> +                   test_arm_single_shortcuts_attrs);
 > +    qtest_add_func("/qtest/x86/attrs/scalar", test_x86_scalar_attrs);
 > +    qtest_add_func("/qtest/x86/attrs/bulk", test_x86_bulk_attrs);
 > +

@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46CF4F54AB0
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 13:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA452F54AC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 14:26:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w52B6-0006PX-Dv; Tue, 24 Mar 2026 09:52:17 -0400
+	id 1w52ho-0003AA-DZ; Tue, 24 Mar 2026 10:26:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1w52Ar-0006DO-Eo
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:52:04 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w52hX-00031k-26
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:25:49 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1w52Ap-0006pz-3z
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 09:52:00 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-43b4f48c47cso2884063f8f.0
- for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 06:51:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w52hV-0004mR-2F
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:25:46 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-486b9675d36so44833055e9.0
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 07:25:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1774360315; x=1774965115; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=bNxcHylGEJrRuXK5LOihueLekjFUA3Rcv2HHQr54vi8=;
- b=sBgOExK/za+F9lHR+X3RHkr+bIGdXPQcgR6g9TWlzDbqI4NFiFikU/xVI3oAjsJnO9
- hIAPxIQd5VKvo59kzxNYr8+oVZFHaiP8aKuDj3uzwx8EynckdSvcCYfdvmAa8CQEOA6+
- wyuaFG6rL9H452sHTs7gtJkm516FFj3XlWYNQtOUNwfbKM8n+HmpdOPIJ2VcW12L1Fpq
- jIdLY3GTEqrkdYiiG2MDMarBAsFqof7xLC25d8PVRlnsd03o4c+hE0ZJfpKvM7UVSB67
- xoH0rnadzngk0VYcm8eBMM2j1Oa96HPEwYoQP55QzyicRJiMM389WqaxzIuqLOpxFHye
- tdeQ==
+ d=linaro.org; s=google; t=1774362342; x=1774967142; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=m/tTx04MnKP3+IW0DzP9IvJRG7ff4bR9Q3P6/VdKyQM=;
+ b=XTUogMQQI48tmNti3Vxp1aA9bCi7C9nP3xZXbKnNC0z68a27qTVwP0uT0BEwlgEqyr
+ CHjN2cjsxq60Pqm59qh7Sw+JoF7i8u/YfUV6cp+mHyP6Avyv/2QSa2NZipKjv53xxyCX
+ W1F/hAbfNfKYQWTsgnlPZSwGIWInc6hWViqH8rkABD4YT4tt2NDTfmK6c0vU6pmmi73k
+ jbB/o3e5aUGFEbtwag3QAoA24cABuw4jLYqxiFcvrP+wUx/XVsdu6LBVPVIbqNG7N2ip
+ +6wMkwjwvQfoFQ0vwqfcMEQ2yeBVev2tHX1QBeYrJ20TDtaTnOeklppLUGCTIUoD8/uj
+ sk4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774360315; x=1774965115;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=bNxcHylGEJrRuXK5LOihueLekjFUA3Rcv2HHQr54vi8=;
- b=hseOYs1eD6GolvWx1neJZ5TJfuFdQw/W3nEavDHI58YN5FoGMcfu1hxzmMr2AK2JCS
- wLafnL+va9kfOS9F7Igx6ZdDBl3YKxMd/1QOrfevJqFICjaQ/fh+S+pWB8fAMTYqRPTb
- mAjBkl0Uizbr1XInXizPUfj+ehmbEvLbh890hJt13lniToVm7gZQdnsgmUb7WYkakx+T
- i8Eskoy8o7znxkImbJsak2G1SL/FKE9RbM8K6/7hZhLfo5LC+LAW1CIyQ3sZM2nYYdqX
- J1eoqi77k8XaxJNwVtsWMd4Rej4jM+9DARnWLbIXpctt1mOAx8LqrUdx7DXLgQqcgfVW
- LQhg==
-X-Gm-Message-State: AOJu0Yz5x1SIW2vStHKCqrxGgUhDyRcV4PWKR0E0Qeb2Sw9yG5a1TwAg
- D0eC8R7ZzAco7znyLmyQ2Cebf+s2Y1u1Xb3ZxFfh5fsQbBUy+N+p8Ozz
-X-Gm-Gg: ATEYQzyadQN2I6x1xb6izGMKtjNOingPgTp6rLDIM5xit9aXM/rcNABv27ah0Bw0EzV
- uLBJoiXbl+HHFtCF76Msv3/ofsEnpf/QPp+BzArQic28yREZ0esYIeDMU932shSXqFckkqw1k9Q
- wCPKYoGKfWU+Ri+SQ949SDeEMtWxsJqRsrjDtAmwpjLp+BN4krtMCRw/A1QSfLin0A3sNNOAI07
- 9rFKvffvgS/QQskZg5jfQrtgaCnhNObUaQ22GCt9KMMpnSdXGX5XxuhzZYqRcLI+eYnhyUyhUwd
- C8FlXS92JmOsVTD13GWkPuSKP7C7rxE0nuv8qeewH+OR65T6WutQzLoTbFsiC4ftIBoi0V7bHea
- FRx/Bjw79U87WXePHQLyZGsbFgkj0Qg9rCRIZ6wNF98yJcF7bOyvApXKw7yb/6L6wbGlvXbRVX7
- dAaLEmxuqDcncQVzA0myDSu60TdbG1tQ==
-X-Received: by 2002:a05:6000:2384:b0:43b:41b5:e021 with SMTP id
- ffacd0b85a97d-43b64243115mr26366044f8f.2.1774360314736; 
- Tue, 24 Mar 2026 06:51:54 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([90.187.110.129])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b644bdaf8sm43784652f8f.13.2026.03.24.06.51.53
+ d=1e100.net; s=20251104; t=1774362342; x=1774967142;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=m/tTx04MnKP3+IW0DzP9IvJRG7ff4bR9Q3P6/VdKyQM=;
+ b=Y6bJ4I4Du5lpglhOE65J1ws+4xAY7PnH6ipx1XXBm5pAO9OPE3HTNKohXOnNMoqdPR
+ R/8a35WRQs4e7tPR1emPxW0hp2rhnDntqeocSZMT5s9XaJEuiAb/LG1VLP/MeF1CMWHz
+ D8x+Jg/uJw0mvWQlE8z5LE9oyoBBOEcpw0W3ZJ/kfEr0rRBE/cJKKxXjK3PN6gumRX6E
+ 6hDjtmpkqXBz4uv4pt1Aac9pv7LERtBWRPfc7/VxOlnsyKQln/4gY5aH8l1CcYLCrRoy
+ ObizyACz+uRHKwUty2N+or5PUaHzZGrKCSoOBhSwBg/UfohRH0NY1iJlXIQhdcBVKb+f
+ s0Og==
+X-Gm-Message-State: AOJu0Yxq8R2BLobqpyudAsLRA6wGoJXe8pC5hx3QEETA65nV/v0flmv9
+ f7OL2YSuAS3UBqJcnd1XlX+pWIhIU0l88/krFvcDqJrFqKLUzirIG/VbOMUIdRNV2m8=
+X-Gm-Gg: ATEYQzxWfIuoZRHPCkzRhYPfIqN71+wI6T4wkELKGCiTHAmo9pR/PcbGsqn+8+28UzQ
+ fJ95pi0oV+AI1+kFNLcd8w+aENpYdGuRPa/ylGOKH3avuJUN07GdD1VNV+qxkzKv+2sq1lCFS7v
+ RpjVGAWrIWmRvhg2VhkcveQcLb8M6PTMo32dqNDKUHfLdw1hYpBMegvAqitMLU3VNkBJyNbrCbM
+ 7C959WUGvHVdej4b34YUmf7rA4ZauqrV1S4Sew8pqo6TYCZwH2tpTcTW0ZkO8GvybubY/bFirO8
+ IHJNe0EB4C7wkCKjgYSMXNGrbuPcOHQjH/RZmKCvILFt4EIdzwVe+lteK0b8Awha13h+ZRE6bPi
+ 0OEqZYhVEel2wuOaR7cuG7DGMCPNBuMqIPPtPTg8c17bctzjxb0ZE5P6/wObLcpAaxKNSsB/gRs
+ C91z3uN3oQJ0+8F42I8BZN+1u2EqqCfawWVuuknpzQ+boRfI3oIhC0FXNBTGD9kHFUXg==
+X-Received: by 2002:a05:600c:19d3:b0:487:1114:d431 with SMTP id
+ 5b1f17b1804b1-4871114d548mr40196815e9.18.1774362342456; 
+ Tue, 24 Mar 2026 07:25:42 -0700 (PDT)
+Received: from [192.168.69.206] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48714bc9ef9sm11244255e9.5.2026.03.24.07.25.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Mar 2026 06:51:54 -0700 (PDT)
-Date: Tue, 24 Mar 2026 11:11:51 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?UTF-8?Q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>
-CC: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_2/7=5D_hw/arm/sabrelite=3A_?=
- =?US-ASCII?Q?Introduce_class_SabreliteMachineState?=
-In-Reply-To: <6b21c46dde0f562eba1a5e2dfd9dc8635daaedf1.1773866323.git.matyas.bobek@gmail.com>
-References: <cover.1773866323.git.matyas.bobek@gmail.com>
- <6b21c46dde0f562eba1a5e2dfd9dc8635daaedf1.1773866323.git.matyas.bobek@gmail.com>
-Message-ID: <1C02DA1C-F933-4C4D-9518-FB1A5FDC1CF5@gmail.com>
+ Tue, 24 Mar 2026 07:25:41 -0700 (PDT)
+Message-ID: <8f1052be-a018-4e3e-ad5d-7a5943a0357c@linaro.org>
+Date: Tue, 24 Mar 2026 15:25:40 +0100
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x431.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 4/5] Run pl080_run in main loop
+Content-Language: en-US
+To: Tao Ding <dingtao0430@163.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <cover.1774099044.git.dingtao0430@163.com>
+ <97fc49242d026d0784ee31816a3561dc6b316c8e.1774099044.git.dingtao0430@163.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <97fc49242d026d0784ee31816a3561dc6b316c8e.1774099044.git.dingtao0430@163.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,139 +102,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Tao,
 
+On 21/3/26 16:46, Tao Ding wrote:
+> Accessing MMIO in QEMU will trigger pl080_run. If it is a memory to memory data transfer,
+> it is generally faster, so it will not significantly block vCPU. But when dealing with peripherals,
+> time is uncontrollable because it is unknown when the peripherals will generate data.
+> This will result in continuous blocking of vCPU.
+> 
+> Due to the presence of BQL in qemu, mmio access and bh callbacks are safty.
+> 
+> Signed-off-by: Tao Ding <dingtao0430@163.com>
+> ---
+>   hw/dma/pl080.c         | 11 +++++++++--
+>   include/hw/dma/pl080.h |  3 +++
+>   2 files changed, 12 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/dma/pl080.c b/hw/dma/pl080.c
+> index 627ccbbd81..3596739854 100644
+> --- a/hw/dma/pl080.c
+> +++ b/hw/dma/pl080.c
+> @@ -232,6 +232,12 @@ again:
+>       pl080_update(s);
+>   }
+>   
+> +static void pl080_run_cb(void *opaque)
+> +{
+> +    PL080State *s = PL080(opaque);
+> +    pl080_run(s);
+> +}
+> +
+>   static uint64_t pl080_read(void *opaque, hwaddr offset,
+>                              unsigned size)
+>   {
+> @@ -326,7 +332,7 @@ static void pl080_write(void *opaque, hwaddr offset,
+>               break;
+>           case 4: /* Configuration */
+>               s->chan[i].conf = value;
+> -            pl080_run(s);
+> +            qemu_bh_schedule(s->bh);
+>               break;
+>           }
+>           return;
+> @@ -351,7 +357,7 @@ static void pl080_write(void *opaque, hwaddr offset,
+>               qemu_log_mask(LOG_UNIMP,
+>                             "pl080_write: Big-endian DMA not implemented\n");
+>           }
+> -        pl080_run(s);
+> +        qemu_bh_schedule(s->bh);
 
-Am 19=2E M=C3=A4rz 2026 19:13:09 UTC schrieb "Maty=C3=A1=C5=A1 Bobek" <mat=
-yas=2Ebobek@gmail=2Ecom>:
->Create full class SabreliteMachineState extending MachineState=2E
->
->Previously, Sabrelite board MachineState was declared indirectly by the
->DEFINE_MACHINE_ARM macro=2E FslIMX6State was only instantiated in the
->sabrelite_init function=2E For FlexCAN device, machine properties
->will be used to select QEMU CAN buses=2E A custom class is therefore
->required, so the CanBusState "connections" can then be added as fields=2E
->
->Signed-off-by: Maty=C3=A1=C5=A1 Bobek <matyas=2Ebobek@gmail=2Ecom>
->---
-> hw/arm/sabrelite=2Ec | 39 +++++++++++++++++++++------------------
-> 1 file changed, 21 insertions(+), 18 deletions(-)
->
->diff --git a/hw/arm/sabrelite=2Ec b/hw/arm/sabrelite=2Ec
->index 40ee8196ac=2E=2E7e036e6388 100644
->--- a/hw/arm/sabrelite=2Ec
->+++ b/hw/arm/sabrelite=2Ec
->@@ -20,6 +20,15 @@
-> #include "qemu/error-report=2Eh"
-> #include "system/qtest=2Eh"
->=20
->+struct SabreliteMachineState {
->+    MachineState parent_obj;
->+
->+    FslIMX6State soc;
->+};
->+
->+#define TYPE_SABRELITE_MACHINE MACHINE_TYPE_NAME("sabrelite")
->+OBJECT_DECLARE_SIMPLE_TYPE(SabreliteMachineState, SABRELITE_MACHINE)
->+
-> static struct arm_boot_info sabrelite_binfo =3D {
->     /* DDR memory start */
->     =2Eloader_start =3D FSL_IMX6_MMDC_ADDR,
->@@ -41,7 +50,7 @@ static void sabrelite_reset_secondary(ARMCPU *cpu,
->=20
-> static void sabrelite_init(MachineState *machine)
-> {
->-    FslIMX6State *s;
->+    SabreliteMachineState *s =3D SABRELITE_MACHINE(machine);
->=20
->     /* Check the amount of memory is compatible with the SOC */
->     if (machine->ram_size > FSL_IMX6_MMDC_SIZE) {
->@@ -50,13 +59,12 @@ static void sabrelite_init(MachineState *machine)
->         exit(1);
->     }
->=20
->-    s =3D FSL_IMX6(object_new(TYPE_FSL_IMX6));
->-    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
->+    object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IM=
-X6);
->=20
->     /* Ethernet PHY address is 6 */
->-    object_property_set_int(OBJECT(s), "fec-phy-num", 6, &error_fatal);
->+    object_property_set_int(OBJECT(&s->soc), "fec-phy-num", 6, &error_fa=
-tal);
->=20
->-    qdev_realize(DEVICE(s), NULL, &error_fatal);
->+    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
->=20
->     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
->                                 machine->ram);
->@@ -70,7 +78,7 @@ static void sabrelite_init(MachineState *machine)
->         /* Add the sst25vf016b NOR FLASH memory to first SPI */
->         Object *spi_dev;
->=20
->-        spi_dev =3D object_resolve_path_component(OBJECT(s), "spi1");
->+        spi_dev =3D object_resolve_path_component(OBJECT(&s->soc), "spi1=
-");
->         if (spi_dev) {
->             SSIBus *spi_bus;
->=20
->@@ -89,7 +97,7 @@ static void sabrelite_init(MachineState *machine)
->                 qdev_realize_and_unref(flash_dev, BUS(spi_bus), &error_f=
-atal);
->=20
->                 cs_line =3D qdev_get_gpio_in_named(flash_dev, SSI_GPIO_C=
-S, 0);
->-                qdev_connect_gpio_out(DEVICE(&s->gpio[2]), 19, cs_line);
->+                qdev_connect_gpio_out(DEVICE(&s->soc=2Egpio[2]), 19, cs_=
-line);
->             }
->         }
->     }
->@@ -100,12 +108,14 @@ static void sabrelite_init(MachineState *machine)
->     sabrelite_binfo=2Esecondary_cpu_reset_hook =3D sabrelite_reset_secon=
-dary;
->=20
->     if (!qtest_enabled()) {
->-        arm_load_kernel(&s->cpu[0], machine, &sabrelite_binfo);
->+        arm_load_kernel(&s->soc=2Ecpu[0], machine, &sabrelite_binfo);
->     }
-> }
->=20
->-static void sabrelite_machine_init(MachineClass *mc)
->+static void sabrelite_machine_class_init(ObjectClass *oc, const void *da=
-ta)
-> {
->+    MachineClass *mc =3D MACHINE_CLASS(oc);
->+
->     mc->desc =3D "Freescale i=2EMX6 Quad SABRE Lite Board (Cortex-A9)";
->     mc->init =3D sabrelite_init;
->     mc->max_cpus =3D FSL_IMX6_NUM_CPUS;
->@@ -114,18 +124,11 @@ static void sabrelite_machine_init(MachineClass *mc=
-)
->     mc->auto_create_sdcard =3D true;
-> }
->=20
->-static void sabrelite_machine_class_init(ObjectClass *oc, const void *da=
-ta)
->-{
->-    MachineClass *mc =3D MACHINE_CLASS(oc);
->-
->-    sabrelite_machine_init(mc);
->-}
+If transfers are scheduled, they need to be cancelled when the
+device resets. See docs/devel/reset.rst:
 
-Let's do the merge in the previous commit, as explained there=2E
+   DMA capable devices are expected to cancel all outstanding DMA
+   operations during either 'enter' or 'hold' phases. IOMMUs are
+   expected to reset during the 'exit' phase and this sequencing
+   makes sure no outstanding DMA request will fault.
 
->-
-> static const TypeInfo sabrelite_machine_init_typeinfo =3D {
->-    =2Ename          =3D MACHINE_TYPE_NAME("sabrelite"),
->+    =2Ename          =3D TYPE_SABRELITE_MACHINE,
->     =2Eparent        =3D TYPE_MACHINE,
->     =2Eclass_init    =3D sabrelite_machine_class_init,
->-    =2Einstance_size =3D sizeof(MachineState),
->+    =2Einstance_size =3D sizeof(SabreliteMachineState),
->     =2Eabstract      =3D false,
->     =2Einterfaces    =3D arm_machine_interfaces,
-> };
-
-With the above:
-Reviewed-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>           break;
+>       case 13: /* Sync */
+>           s->sync = value;
+> @@ -405,6 +411,7 @@ static void pl080_init(Object *obj)
+>       sysbus_init_irq(sbd, &s->interr);
+>       sysbus_init_irq(sbd, &s->inttc);
+>       s->nchannels = 8;
+> +    s->bh = qemu_bh_new(pl080_run_cb, s);
+>   }
 

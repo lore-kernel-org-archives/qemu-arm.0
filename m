@@ -4,147 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5749CF54ACB
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 14:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85575F54AD7
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 16:04:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w534o-0007vS-VH; Tue, 24 Mar 2026 10:49:52 -0400
+	id 1w54FD-00032Y-Qo; Tue, 24 Mar 2026 12:04:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w534m-0007ux-Ta
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:49:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1w54FB-00031T-SD
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 12:04:37 -0400
+Received: from out-172.mta1.migadu.com ([95.215.58.172])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w534h-0000sE-OC
- for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:49:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774363782;
+ (Exim 4.90_1) (envelope-from <zenghui.yu@linux.dev>)
+ id 1w54FA-00070F-1M
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 12:04:37 -0400
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1774368232;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=42rfXHUhkoO+9n7mi+skumEq8We0Ou5LmnwZqMb3WxM=;
- b=NEdVSBvH14BDf56nSASIW012IDPlC1X7paJlhDL8SwU57Rf3IUY0+O5qrQLB8Z6qGcx8/o
- RJ5XC2YAe155GdIqWm+eCKcZwTSW5wI4+I2CaIogPMV7NwEBPjZ5jNFLJTVD98IBPB6C59
- /61DKLf/l8wPOeO1JyiY3WPK6RGqnAM=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-274-Vl1kF3XxPKGRJPvJUPlwhQ-1; Tue, 24 Mar 2026 10:49:40 -0400
-X-MC-Unique: Vl1kF3XxPKGRJPvJUPlwhQ-1
-X-Mimecast-MFC-AGG-ID: Vl1kF3XxPKGRJPvJUPlwhQ_1774363779
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-439f5c57c52so986142f8f.1
- for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 07:49:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774363778; x=1774968578;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=42rfXHUhkoO+9n7mi+skumEq8We0Ou5LmnwZqMb3WxM=;
- b=akFwHp2kuPdF2w8EaBaGHsSzTmk153OQgqcfnXFM73IVF3vskrIS00zaVaJ/G3mnwg
- wPAwMf2CNQmm/3x32MXwqns/kDUX8ZA222kyriMjJiFFaWmMtmWvFVexmAmYE82JmbBy
- XC7JtV8jGXG5yn+vWUOMhGVfkZ0VvBNLMCJD/LE1bFTkr8EYnTPEsaRLXx3rP8zWXSsL
- XsU5fFdddhxwhVpwXZ9MXG/uzf9neF6uQxdbK7Tz5NM9XITPRsQGwoC8y9YFLgSBzF5n
- sjHIvchrkik40FHNIDXkThvUgb0TQN+UPgjW7yB90cbvez8MpyZ1glDZpwkboSM4q6s3
- Cl6g==
-X-Gm-Message-State: AOJu0YyM7x5AaICwuCO9VJdvkbQxH4WXqtYi4hKo7bGlX+0qS4LgRH1Z
- AwtyPev8UZ+66aLY+fr6iUKZqG8uF+OOgFs949QlcuAmxmB8rh7XXsVlCzL6SPR2sUhDSpL96o2
- D7Y1cHLdV4E+PZvLqw3RauvC+SzBXYl6hlNHy3Csy5BpHqH+Hbx+2cA==
-X-Gm-Gg: ATEYQzxpyRVMbBQUs/EsdNJGGAMgP8Dpa/Tg+/E5xYrJgOs982GWzx/hNzDflFvzsHB
- 12wopp4J2iAzCSH/2TCWf3h4J8+AMQAVlD/o++mrloOoYn9hn11spBde9P0ofgpkMEov6b2CYB7
- m5NQumvbpgN/MHCIdy/eoQBSZnBN8RYIWdoPQ5hYo+eH5506AzzvbpbyJNvv+0hgM98RASMaWQi
- L1Xq4Q8I4WjkFIcJmoz6CEN0nPKJpB+MQYEe8Ek4RbrRQsYHUoiQMjhK3a1QMr4F9lrueRxL2+n
- mAKnyTMLjLLITLcOX2UGHJaYdvzyAbkd13SYzR3+Dsnw9Y5ZxbRSN8h53jDPvDg4RXxJG+oTngl
- UnCdGXRTQm8xDWjiRp2WRls9U1ZghYpJbGXnBclbXhB72zGWIuBz59qCSYR5d
-X-Received: by 2002:a05:6000:26d2:b0:43b:3d4f:e18d with SMTP id
- ffacd0b85a97d-43b64287044mr25834284f8f.39.1774363778460; 
- Tue, 24 Mar 2026 07:49:38 -0700 (PDT)
-X-Received: by 2002:a05:6000:26d2:b0:43b:3d4f:e18d with SMTP id
- ffacd0b85a97d-43b64287044mr25834251f8f.39.1774363777925; 
- Tue, 24 Mar 2026 07:49:37 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b86fbb195sm2212716f8f.14.2026.03.24.07.49.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 24 Mar 2026 07:49:37 -0700 (PDT)
-Message-ID: <db70df33-a60c-4439-9717-c6c8acafa9c5@redhat.com>
-Date: Tue, 24 Mar 2026 15:49:36 +0100
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=tggIhwU4ah+M7xrWWbu3SutZ4qjR8wO0kzZh129W/Js=;
+ b=IKDmyoIa9QUZtM10EJ0f+1rxICSGldx9DDwzlgsIO4nRsWhHRfeOVxIcBP/jmAwcpCu7I6
+ udf4tIRVlR6EAuB4J5Kv6ksq90pr3x7s6GuPhlEAv1zWh90WU2JT/ItMk4Zzxa54VD9x4Q
+ jGSSCFCtqBWH/QttQR6uCBNf7VDZIsE=
+From: Zenghui Yu <zenghui.yu@linux.dev>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ Zenghui Yu <zenghui.yu@linux.dev>
+Subject: [PATCH v2] target/arm: Don't skip access flag fault for AccessType_AT
+Date: Wed, 25 Mar 2026 00:03:21 +0800
+Message-ID: <20260324160321.96347-1-zenghui.yu@linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] ftgmac100: Improve DMA error handling
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-stable <qemu-stable@nongnu.org>
-References: <20260323125545.577653-1-clg@redhat.com>
- <20260323125545.577653-3-clg@redhat.com>
- <112ff466-cf09-4fe5-9945-7871683cb7a4@tls.msk.ru>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <112ff466-cf09-4fe5-9945-7871683cb7a4@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 1Qz0mePwyDtTbwvGNDm_or3Mec6NVdE8Kn4g-tbq26U_1774363779
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=95.215.58.172; envelope-from=zenghui.yu@linux.dev;
+ helo=out-172.mta1.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,41 +66,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Michael,
+As per the pseudo code from DDI0487 M.a.a (on J1-16021) AArch64.S1Walk():
 
-On 3/24/26 15:45, Michael Tokarev wrote:
-> On 23.03.2026 15:55, Cédric Le Goater wrote:
->> Currently, DMA memory operation errors in the ftgmac100 model are not
->> all tested and this can lead to a guest-triggerable denial of service
->> as described in https://gitlab.com/qemu-project/qemu/-/work_items/3335.
->>
->> To fix this, check the return value of ftgmac100_write_bd() in the TX
->> path and exit the TX loop on error to prevent further processing. In
->> the event of a DMA error, also set FTGMAC100_INT_AHB_ERR interrupt
->> flag as appropriate.
->>
->> The FTGMAC100_INT_AHB_ERR interrupt status bit only applies to the
->> AST2400 SoC; on newer Aspeed SoCs, it is a reserved bit.
->> Nevertheless, since it is supported by the Linux driver and it should
->> be safe to use in the QEMU implementation across all SoCs.
->>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3335
->> Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
->> Link: https://lore.kernel.org/qemu-devel/20260322215732.387383-3-clg@redhat.com
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> 
-> Shouldn't this be picked up for current qemu stable series?
+  // Check descriptor AF bit
+  elsif (descriptor<10> == '0' && walkparams.ha == '0' &&
+          (!accdesc.acctype IN {AccessType_DC, AccessType_IC} ||
+           boolean IMPLEMENTATION_DEFINED "Generate access flag fault on IC/DC operations")) then
+      fault.statuscode = Fault_AccessFlag;
 
-It should be safe to do so.
+an access flag fault should be generated for AccessType_AT, if the AF bit
+is 0 and !param.ha.
 
-The overall fix for the reported issue needs :
+Besides, we should continue to not raise the access flag fault for
+in_debug = true which is what we've been doing previously (before commit
+efebeec13d07) for LPAE and is what intention of the debugger access
+codepath is.
 
-   https://lore.kernel.org/qemu-devel/20260324124131.1053711-5-clg@redhat.com/T/#u
+Fixes: efebeec13d07 ("target/arm: Skip AF and DB updates for AccessType_AT")
+Signed-off-by: Zenghui Yu <zenghui.yu@linux.dev>
+---
+* From v1 [1]:
+  - handles in_debug = true (Peter)
 
-Thanks,
+[1] https://lore.kernel.org/r/20260317122517.47627-1-zenghui.yu@linux.dev
 
-C.
+ target/arm/ptw.c | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
 
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 8b8dc09e72..fa6db9e5a2 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2118,6 +2118,14 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+     descaddr &= ~(hwaddr)(page_size - 1);
+     descaddr |= (address & (page_size - 1));
+ 
++    if (likely(!ptw->in_debug)) {
++        /* Check descriptor AF bit */
++        if (!(descriptor & (1 << 10)) && !param.ha) {
++            fi->type = ARMFault_AccessFlag;
++            goto do_fault;
++        }
++    }
++
+     /*
+      * For AccessType_AT, DB is not updated (AArch64.SetDirtyFlag),
+      * and it is IMPLEMENTATION DEFINED whether AF is updated
+@@ -2127,15 +2135,9 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+         /*
+          * Access flag.
+          * If HA is enabled, prepare to update the descriptor below.
+-         * Otherwise, pass the access fault on to software.
+          */
+-        if (!(descriptor & (1 << 10))) {
+-            if (param.ha) {
+-                new_descriptor |= 1 << 10; /* AF */
+-            } else {
+-                fi->type = ARMFault_AccessFlag;
+-                goto do_fault;
+-            }
++        if (!(descriptor & (1 << 10)) && param.ha) {
++            new_descriptor |= 1 << 10; /* AF */
+         }
+ 
+         /*
+-- 
+2.53.0
 
 

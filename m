@@ -4,101 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94918F54AC6
-	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 14:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5749CF54ACB
+	for <qemu-arm@archiver.kernel.org>; Tue, 24 Mar 2026 14:50:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w531G-0005ow-Mv; Tue, 24 Mar 2026 10:46:12 -0400
+	id 1w534o-0007vS-VH; Tue, 24 Mar 2026 10:49:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w530T-0005Ps-Nv; Tue, 24 Mar 2026 10:45:38 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w534m-0007ux-Ta
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:49:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w530R-0008N7-6E; Tue, 24 Mar 2026 10:45:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1774363495; bh=Bt0VjhcpGHTmPA4HeVZrgLYZLhxszuXfgbRpzanWRsk=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=Z2HCbDNDw1YQ989r7G/RAcr1ib8XnC0P1bLOuNi3rUMbiwpPJl9Yr8TEYg9eMy/Hv
- bL5rFLO4nWVtDrcgfIIB3+RlAcBRsHY3DIKipOas/9+Xxhf0uhdHMFKrFEWAXr1Rqv
- +BWQmOu5k8UTIPIYhIKPozvCOeY+9+dO7eR7JvwnKEWwuuIE62wokO0xosOhW4ToKF
- +AnnPjVnF8kGNFldasWgyXUeVVPJ+jAF6dwKyStcfblKgL4tlVz8Bn0/AaTN+xz7R1
- o4d/bVqwLczSpVfO3fwXW2E30/sKaodIX8Ww0h3jPId+nUDwX8XSKU8f5poJgzN7DX
- 9dB7CE0qBmQJQ==
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by isrv.corpit.ru (Postfix) with ESMTP id 33F35197101;
- Tue, 24 Mar 2026 17:44:55 +0300 (MSK)
-Message-ID: <112ff466-cf09-4fe5-9945-7871683cb7a4@tls.msk.ru>
-Date: Tue, 24 Mar 2026 17:45:14 +0300
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w534h-0000sE-OC
+ for qemu-arm@nongnu.org; Tue, 24 Mar 2026 10:49:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1774363782;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=42rfXHUhkoO+9n7mi+skumEq8We0Ou5LmnwZqMb3WxM=;
+ b=NEdVSBvH14BDf56nSASIW012IDPlC1X7paJlhDL8SwU57Rf3IUY0+O5qrQLB8Z6qGcx8/o
+ RJ5XC2YAe155GdIqWm+eCKcZwTSW5wI4+I2CaIogPMV7NwEBPjZ5jNFLJTVD98IBPB6C59
+ /61DKLf/l8wPOeO1JyiY3WPK6RGqnAM=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-274-Vl1kF3XxPKGRJPvJUPlwhQ-1; Tue, 24 Mar 2026 10:49:40 -0400
+X-MC-Unique: Vl1kF3XxPKGRJPvJUPlwhQ-1
+X-Mimecast-MFC-AGG-ID: Vl1kF3XxPKGRJPvJUPlwhQ_1774363779
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-439f5c57c52so986142f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 24 Mar 2026 07:49:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774363778; x=1774968578;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=42rfXHUhkoO+9n7mi+skumEq8We0Ou5LmnwZqMb3WxM=;
+ b=akFwHp2kuPdF2w8EaBaGHsSzTmk153OQgqcfnXFM73IVF3vskrIS00zaVaJ/G3mnwg
+ wPAwMf2CNQmm/3x32MXwqns/kDUX8ZA222kyriMjJiFFaWmMtmWvFVexmAmYE82JmbBy
+ XC7JtV8jGXG5yn+vWUOMhGVfkZ0VvBNLMCJD/LE1bFTkr8EYnTPEsaRLXx3rP8zWXSsL
+ XsU5fFdddhxwhVpwXZ9MXG/uzf9neF6uQxdbK7Tz5NM9XITPRsQGwoC8y9YFLgSBzF5n
+ sjHIvchrkik40FHNIDXkThvUgb0TQN+UPgjW7yB90cbvez8MpyZ1glDZpwkboSM4q6s3
+ Cl6g==
+X-Gm-Message-State: AOJu0YyM7x5AaICwuCO9VJdvkbQxH4WXqtYi4hKo7bGlX+0qS4LgRH1Z
+ AwtyPev8UZ+66aLY+fr6iUKZqG8uF+OOgFs949QlcuAmxmB8rh7XXsVlCzL6SPR2sUhDSpL96o2
+ D7Y1cHLdV4E+PZvLqw3RauvC+SzBXYl6hlNHy3Csy5BpHqH+Hbx+2cA==
+X-Gm-Gg: ATEYQzxpyRVMbBQUs/EsdNJGGAMgP8Dpa/Tg+/E5xYrJgOs982GWzx/hNzDflFvzsHB
+ 12wopp4J2iAzCSH/2TCWf3h4J8+AMQAVlD/o++mrloOoYn9hn11spBde9P0ofgpkMEov6b2CYB7
+ m5NQumvbpgN/MHCIdy/eoQBSZnBN8RYIWdoPQ5hYo+eH5506AzzvbpbyJNvv+0hgM98RASMaWQi
+ L1Xq4Q8I4WjkFIcJmoz6CEN0nPKJpB+MQYEe8Ek4RbrRQsYHUoiQMjhK3a1QMr4F9lrueRxL2+n
+ mAKnyTMLjLLITLcOX2UGHJaYdvzyAbkd13SYzR3+Dsnw9Y5ZxbRSN8h53jDPvDg4RXxJG+oTngl
+ UnCdGXRTQm8xDWjiRp2WRls9U1ZghYpJbGXnBclbXhB72zGWIuBz59qCSYR5d
+X-Received: by 2002:a05:6000:26d2:b0:43b:3d4f:e18d with SMTP id
+ ffacd0b85a97d-43b64287044mr25834284f8f.39.1774363778460; 
+ Tue, 24 Mar 2026 07:49:38 -0700 (PDT)
+X-Received: by 2002:a05:6000:26d2:b0:43b:3d4f:e18d with SMTP id
+ ffacd0b85a97d-43b64287044mr25834251f8f.39.1774363777925; 
+ Tue, 24 Mar 2026 07:49:37 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43b86fbb195sm2212716f8f.14.2026.03.24.07.49.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 24 Mar 2026 07:49:37 -0700 (PDT)
+Message-ID: <db70df33-a60c-4439-9717-c6c8acafa9c5@redhat.com>
+Date: Tue, 24 Mar 2026 15:49:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 2/3] ftgmac100: Improve DMA error handling
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-stable <qemu-stable@nongnu.org>
 References: <20260323125545.577653-1-clg@redhat.com>
  <20260323125545.577653-3-clg@redhat.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20260323125545.577653-3-clg@redhat.com>
+ <112ff466-cf09-4fe5-9945-7871683cb7a4@tls.msk.ru>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <112ff466-cf09-4fe5-9945-7871683cb7a4@tls.msk.ru>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1Qz0mePwyDtTbwvGNDm_or3Mec6NVdE8Kn4g-tbq26U_1774363779
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,30 +160,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 23.03.2026 15:55, Cédric Le Goater wrote:
-> Currently, DMA memory operation errors in the ftgmac100 model are not
-> all tested and this can lead to a guest-triggerable denial of service
-> as described in https://gitlab.com/qemu-project/qemu/-/work_items/3335.
-> 
-> To fix this, check the return value of ftgmac100_write_bd() in the TX
-> path and exit the TX loop on error to prevent further processing. In
-> the event of a DMA error, also set FTGMAC100_INT_AHB_ERR interrupt
-> flag as appropriate.
-> 
-> The FTGMAC100_INT_AHB_ERR interrupt status bit only applies to the
-> AST2400 SoC; on newer Aspeed SoCs, it is a reserved bit.
-> Nevertheless, since it is supported by the Linux driver and it should
-> be safe to use in the QEMU implementation across all SoCs.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3335
-> Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Link: https://lore.kernel.org/qemu-devel/20260322215732.387383-3-clg@redhat.com
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Hello Michael,
 
-Shouldn't this be picked up for current qemu stable series?
+On 3/24/26 15:45, Michael Tokarev wrote:
+> On 23.03.2026 15:55, Cédric Le Goater wrote:
+>> Currently, DMA memory operation errors in the ftgmac100 model are not
+>> all tested and this can lead to a guest-triggerable denial of service
+>> as described in https://gitlab.com/qemu-project/qemu/-/work_items/3335.
+>>
+>> To fix this, check the return value of ftgmac100_write_bd() in the TX
+>> path and exit the TX loop on error to prevent further processing. In
+>> the event of a DMA error, also set FTGMAC100_INT_AHB_ERR interrupt
+>> flag as appropriate.
+>>
+>> The FTGMAC100_INT_AHB_ERR interrupt status bit only applies to the
+>> AST2400 SoC; on newer Aspeed SoCs, it is a reserved bit.
+>> Nevertheless, since it is supported by the Linux driver and it should
+>> be safe to use in the QEMU implementation across all SoCs.
+>>
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3335
+>> Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> Link: https://lore.kernel.org/qemu-devel/20260322215732.387383-3-clg@redhat.com
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> 
+> Shouldn't this be picked up for current qemu stable series?
+
+It should be safe to do so.
+
+The overall fix for the reported issue needs :
+
+   https://lore.kernel.org/qemu-devel/20260324124131.1053711-5-clg@redhat.com/T/#u
 
 Thanks,
 
-/mjt
+C.
+
+
 

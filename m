@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A963FEA83E
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Mar 2026 11:12:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7590103A9AC
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Mar 2026 11:21:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w5M9l-0002Us-78; Wed, 25 Mar 2026 07:12:13 -0400
+	id 1w5MIm-0006Dl-Fd; Wed, 25 Mar 2026 07:21:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1w5M9g-0002RB-MJ; Wed, 25 Mar 2026 07:12:09 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w5MIg-00067I-SE
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2026 07:21:28 -0400
+Received: from p-east2-cluster1-host9-snip4-8.eps.apple.com ([57.103.76.111]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1w5M9d-0003QR-1E; Wed, 25 Mar 2026 07:12:08 -0400
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62PBBipP089583
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 25 Mar 2026 20:11:44 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=DwQZgWYO+lfkraRGuO+n63GxyjOYJesnFSUlCgbcPNs=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1774437104; v=1;
- b=pk8LNZ1dhm2/xFTbs244gRnnnD5Z/FMv7neiAvKRx7yiBEYzG10q7yOioPO3ZW3n
- TgjtxMoG2hxwvvP6JFRfYl4mp1B7zIFpW6ZXfOWKDZLSYSSOU8BDzm3phdUNReuv
- Rwwwf2BcdcjwuLpt7KdndCz9zNAG44KMbG2CrcrOoxeIYnSgAvcB28IOpwotkCFD
- wOcPdqUc+rjxN/sTTcrBF1pXFp6WISJl21G8rsWKk/GeMGBo6qb4/yoBgGLOnLwP
- Y+xR2UNoMeDQEmk+PmeDvhEGr7b+9i43aj/D/GyJrLeScz51QQfGXTGk77TC1cVs
- AADUiLX5DGaDEzam3YJsHg==
-Message-ID: <f7c84a25-2f78-48ef-8901-2b752ead8900@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 25 Mar 2026 20:11:43 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 0/7] vmapple: making it work on the latest macOS
- host releases
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Phil Dennis-Jordan
- <phil@philjordan.eu>, Peter Xu <peterx@redhat.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w5MIa-0008Dp-Sb
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2026 07:21:23 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-6 (Postfix) with ESMTPS id
+ DB3611800BFB; Wed, 25 Mar 2026 11:21:15 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1774437678; x=1777029678;
+ bh=bJA+iuHctjTO9s1GECU57d6RXVIn/v7fG5rhnfeDQ6c=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=BkUOZPYaR6wRUDuWAxey4+2NNFcebSgEdjjBzZJmeW1z7EcfldHtWWFooZCL0nRfN7juzxdMXoRGR55sMduxxj2OTMA6oi2H64GzWpWdeAngM/rbrnVit2GBC0agdmyHIoQxwDdEqBqwJDyoAGqNHv5rjYa5JAPLZRUOIqIMh9VL2ueDUNlef7tUkS/NJ1MZlco56z+Zr3JIF+36YDzsWwFORpDqA1xMyRO8b6VKjBeGFQv+yaKdaUpT0BE/23+BvI4WakPW8ZCIGOMJj3mKMdNKZ1MOdJy13qTG7sWb/fElbuaxZOHlG2MB1FWYoxu1FC2Z/ffNcUj5UtlwALvWyg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-6 (Postfix) with ESMTPSA id
+ F2DBC1800E8C; Wed, 25 Mar 2026 11:21:13 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [RFC PATCH v7 7/7] hvf: do not merge: enable private ISA
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <9cf3d5c9-32eb-4944-8fbf-4775e1cccecb@rsg.ci.i.u-tokyo.ac.jp>
+Date: Wed, 25 Mar 2026 12:21:01 +0100
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Peter Xu <peterx@redhat.com>,
  Mads Ynddal <mads@ynddal.dk>, Roman Bolshakov <rbolshakov@ddn.com>,
  Alexander Graf <agraf@csgraf.de>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <78785F86-CA85-4187-93A6-1D9852263964@unpredictable.fr>
 References: <20260324204855.29759-1-mohamed@unpredictable.fr>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260324204855.29759-1-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <20260324204855.29759-8-mohamed@unpredictable.fr>
+ <9cf3d5c9-32eb-4944-8fbf-4775e1cccecb@rsg.ci.i.u-tokyo.ac.jp>
+To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Authority-Info-Out: v=2.4 cv=II8PywvG c=1 sm=1 tr=0 ts=69c3c52c
+ cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=ADnFLmdGAAAA:20 a=bWGPkEa5fn51Ohx-lacA:9
+ a=QEXdDO2ut3YA:10 a=bA3UWDv6hWIuX7UZL3qL:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI1MDA4MCBTYWx0ZWRfX+iqnFjnXmpeM
+ 6nCtyxReJ02bxm/CF6vpVAr8JTaL4/kHxneAJnrTI2UCiWA7hKzFJgQ65h47JCqX+5r0GdyCw9A
+ LugWT3BHyPTtqlWbMiYM1WyRZCN3sTgi+Bu8ODV2fbWVl2tTreEz6aiWgCi3UEP5KbvnemZvnte
+ QSWExMBwsaU4TvaGSL7Ooyf4AlNcSJxcMIWG9m4YV24xyV6cxWrCXMrnm3Q5fmhnEpTR2N0QmGi
+ BXED7m1Cm4FtEiXps8SDEwt1SFAPEqkCIwjQyPMfzdr/o3ow6Jxy0wwgtoG3uSVuv0vCA/E14Dt
+ 12ueoTqtzfJJDFaXBGZ8Kq2kkiBs4VXme7ZcIzotYEN0GnoSLF90eZCvH68dqA=
+X-Proofpoint-GUID: 3IxXWuu204Ri1zXLTvM1fnOTaWdetOUW
+X-Proofpoint-ORIG-GUID: 3IxXWuu204Ri1zXLTvM1fnOTaWdetOUW
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-25_03,2026-03-24_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=719
+ mlxscore=0 phishscore=0 bulkscore=0 spamscore=0
+ lowpriorityscore=0
+ clxscore=1030 suspectscore=0 adultscore=0 malwarescore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2603250080
+Received-SPF: pass client-ip=57.103.76.111;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,61 +100,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/03/25 5:48, Mohamed Mediouni wrote:
-> v7:
-> 
-> Support for newer guest OSes.
-> 
-> Added not mergable patch for private ISA enablement.
-> 
-> Not grabbing a memory reference and still using flatview_for_each_range
-> for this one, which works fine as live migration is disallowed anyway.
 
-I prefer the other solutions suggested earlier. My preference order:
-- Use a listener or change flatview_for_each_range() to remove const.
-- Casting away const.
-- Avoid grabbing memory references (this version)
+> On 25. Mar 2026, at 12:07, Akihiko Odaki =
+<odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+>=20
+> On 2026/03/25 5:48, Mohamed Mediouni wrote:
+>> Booting macOS Tahoe.
+>> There in the series to show that's all it takes, but not
+>> mergable as is. Testing this requires SIP to be disabled
+>> and AMFI to be bypassed to be able to launch the executable.
+>=20
+>=20
+> This is interesting. Do you have any idea what is the private ISA?
+>=20
+> Regards,
+> Akihiko Odaki
 
-Regards,
-Akihiko Odaki
+Hello,
 
-> 
-> v6:
-> Rework the patches a bit, with making sure that there's no compiler warnings
-> 
-> v5:
-> Address review comments and rebase.
-> 
-> v4:
-> Rebase and resend without the RFC tag as I didn't get feedback.
-> Drop patch 1 (version I posted was incomplete anyways). Last patch isn't worth it too tbh.
-> 
-> v2->v3:
-> Remove the Apple M4 support workaround part for now, to be part of another patchset perhaps
-> Address comments
-> 
-> v1->v2:
-> Remove some lines that shouldn't have been present...
-> 
-> Mohamed Mediouni (7):
->    vmapple: apple-gfx: make it work on the latest macOS release
->    hw/vmapple: aes: convert MAX_LEN to a #define
->    vmapple: declare it as an AArch64-compatible machine
->    Revert "hw/arm: Do not build VMapple machine by default"
->    vmapple: add gicv2m
->    vmapple, gicv2m: add macOS compat quirk
->    hvf: do not merge: enable private ISA
-> 
->   accel/hvf/entitlements.plist                |  2 +-
->   configs/devices/aarch64-softmmu/default.mak |  1 -
->   hw/display/apple-gfx-mmio.m                 | 59 ++++++++++++++++-----
->   hw/display/apple-gfx.h                      | 16 ++++++
->   hw/display/apple-gfx.m                      | 41 +++++++++++++-
->   hw/intc/arm_gicv2m.c                        |  5 ++
->   hw/vmapple/aes.c                            |  3 +-
->   hw/vmapple/vmapple.c                        | 27 ++++++++++
->   target/arm/hvf/hvf.c                        |  8 +++
->   9 files changed, 144 insertions(+), 18 deletions(-)
-> 
+For the macOS vmapple target:
+
+Apple PAC is paravirtualised and not trappable by the VMM without
+patching the =E2=80=9Chvc #0=E2=80=9D to something else.
+
+That=E2=80=99s the only private ISA bit being used there needed for =
+boot.
+
+The documentation for those HVCs:
+https://github.com/matteyeux/darwin-xnu/blob/master/doc/vmapple_pac.md
+
+Apple briefly pushed that there, and open-source XNU has that code =
+present.
+
+When private ISA is disabled, instead of the VMM being able to process =
+those
+HVCs, they return an error code and the guest dutifully goes into a =
+infinite
+loop.
+
+For the vresearch1 target used for PCC VRE and iOS:
+
+Bunch of private ISA used there, including GXF. Private ISA level 3 =
+isn=E2=80=99t
+enough to boot those, it wants private ISA level 4.
+
+Thanks,
 
 

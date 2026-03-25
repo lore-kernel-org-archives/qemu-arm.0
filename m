@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B24A103A9A9
-	for <qemu-arm@archiver.kernel.org>; Wed, 25 Mar 2026 11:07:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A963FEA83E
+	for <qemu-arm@archiver.kernel.org>; Wed, 25 Mar 2026 11:12:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w5M5P-0000TP-1E; Wed, 25 Mar 2026 07:07:45 -0400
+	id 1w5M9l-0002Us-78; Wed, 25 Mar 2026 07:12:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1w5M5L-0000RA-Pl; Wed, 25 Mar 2026 07:07:40 -0400
+ id 1w5M9g-0002RB-MJ; Wed, 25 Mar 2026 07:12:09 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1w5M5I-0002Ij-TH; Wed, 25 Mar 2026 07:07:39 -0400
+ id 1w5M9d-0003QR-1E; Wed, 25 Mar 2026 07:12:08 -0400
 Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
  (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62PB78JM033078
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62PBBipP089583
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 25 Mar 2026 20:07:09 +0900 (JST)
+ Wed, 25 Mar 2026 20:11:44 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=+n/kMAvjcvgBrn5kSKBwYwfoozOlrY0QV86bOUd6KA0=; 
+DKIM-Signature: a=rsa-sha256; bh=DwQZgWYO+lfkraRGuO+n63GxyjOYJesnFSUlCgbcPNs=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1774436829; v=1;
- b=bizTiWDJBJfb4r3Av5wvnkGtJqozxnt0HYH8nLYiEATkH7/pbQwcr2YDwwQ6H9EV
- nVXqK+uhFuXXuPXmWgDErogJlQbxHYfoMJ10nfExKo22+bClQYrAMp1fxRZHzt4O
- mNV6qEQoWpsSyC0P+q9Iy6iyTYPeQzeN/O+TYp7zUfNHu9M6MSo576cWY5ptuM7d
- fy68+N/OyKJUMUT2oRheZt+8sr9Dq7jTGaJEgV/gPjes+biWjAgnMhjTh3onbdk7
- d+4XyRF5CRRD1ajjoysADVpX8LOqGBQ1g5VSrRWV+NTmq2+IsODHVPmkwpvBcrOx
- 4DD/i0OnNwcTuWdMiAQsVQ==
-Message-ID: <9cf3d5c9-32eb-4944-8fbf-4775e1cccecb@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 25 Mar 2026 20:07:08 +0900
+ s=rs20250326; t=1774437104; v=1;
+ b=pk8LNZ1dhm2/xFTbs244gRnnnD5Z/FMv7neiAvKRx7yiBEYzG10q7yOioPO3ZW3n
+ TgjtxMoG2hxwvvP6JFRfYl4mp1B7zIFpW6ZXfOWKDZLSYSSOU8BDzm3phdUNReuv
+ Rwwwf2BcdcjwuLpt7KdndCz9zNAG44KMbG2CrcrOoxeIYnSgAvcB28IOpwotkCFD
+ wOcPdqUc+rjxN/sTTcrBF1pXFp6WISJl21G8rsWKk/GeMGBo6qb4/yoBgGLOnLwP
+ Y+xR2UNoMeDQEmk+PmeDvhEGr7b+9i43aj/D/GyJrLeScz51QQfGXTGk77TC1cVs
+ AADUiLX5DGaDEzam3YJsHg==
+Message-ID: <f7c84a25-2f78-48ef-8901-2b752ead8900@rsg.ci.i.u-tokyo.ac.jp>
+Date: Wed, 25 Mar 2026 20:11:43 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 7/7] hvf: do not merge: enable private ISA
+Subject: Re: [RFC PATCH v7 0/7] vmapple: making it work on the latest macOS
+ host releases
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -47,10 +48,9 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Mads Ynddal <mads@ynddal.dk>, Roman Bolshakov <rbolshakov@ddn.com>,
  Alexander Graf <agraf@csgraf.de>
 References: <20260324204855.29759-1-mohamed@unpredictable.fr>
- <20260324204855.29759-8-mohamed@unpredictable.fr>
 Content-Language: en-US
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260324204855.29759-8-mohamed@unpredictable.fr>
+In-Reply-To: <20260324204855.29759-1-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=49.212.243.89;
@@ -59,8 +59,8 @@ X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
 X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -78,69 +78,60 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2026/03/25 5:48, Mohamed Mediouni wrote:
-> Booting macOS Tahoe.
+> v7:
 > 
-> There in the series to show that's all it takes, but not
-> mergable as is. Testing this requires SIP to be disabled
-> and AMFI to be bypassed to be able to launch the executable.
+> Support for newer guest OSes.
+> 
+> Added not mergable patch for private ISA enablement.
+> 
+> Not grabbing a memory reference and still using flatview_for_each_range
+> for this one, which works fine as live migration is disallowed anyway.
 
-
-This is interesting. Do you have any idea what is the private ISA?
+I prefer the other solutions suggested earlier. My preference order:
+- Use a listener or change flatview_for_each_range() to remove const.
+- Casting away const.
+- Avoid grabbing memory references (this version)
 
 Regards,
 Akihiko Odaki
 
 > 
-> Note that macOS Tahoe uses ISV=0, and the corresponding series
-> is needed too.
+> v6:
+> Rework the patches a bit, with making sure that there's no compiler warnings
 > 
-> The script to do so:
-> https://gist.githubusercontent.com/zhaofengli/1df11ae3f0dd4e2c872a12ef849f7371/raw/b0ef43f2168600e8810d35a3e70d9a1eb39929e2/amfid-allow.py
+> v5:
+> Address review comments and rebase.
 > 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   accel/hvf/entitlements.plist | 2 +-
->   target/arm/hvf/hvf.c         | 8 ++++++++
->   2 files changed, 9 insertions(+), 1 deletion(-)
+> v4:
+> Rebase and resend without the RFC tag as I didn't get feedback.
+> Drop patch 1 (version I posted was incomplete anyways). Last patch isn't worth it too tbh.
 > 
-> diff --git a/accel/hvf/entitlements.plist b/accel/hvf/entitlements.plist
-> index 154f3308ef..b1a25a2319 100644
-> --- a/accel/hvf/entitlements.plist
-> +++ b/accel/hvf/entitlements.plist
-> @@ -2,7 +2,7 @@
->   <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
->   <plist version="1.0">
->   <dict>
-> -    <key>com.apple.security.hypervisor</key>
-> +    <key>com.apple.private.hypervisor</key>
->       <true/>
->   </dict>
->   </plist>
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 000e54bd16..5d23aa8ae4 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -1219,6 +1219,8 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->       assert_hvf_ok(ret);
->   }
->   
-> +hv_return_t _hv_vm_config_set_isa(hv_vm_config_t cfg, int isa);
-> +
->   hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
->   {
->       hv_return_t ret;
-> @@ -1230,6 +1232,12 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
->       }
->       chosen_ipa_bit_size = pa_range;
->   
-> +    ret = _hv_vm_config_set_isa(config, 3);
-> +    if (ret != HV_SUCCESS) {
-> +        error_report("error setting private ISA");
-> +        goto cleanup;
-> +    }
-> +
->       ret = hv_vm_create(config);
->   
->   cleanup:
+> v2->v3:
+> Remove the Apple M4 support workaround part for now, to be part of another patchset perhaps
+> Address comments
+> 
+> v1->v2:
+> Remove some lines that shouldn't have been present...
+> 
+> Mohamed Mediouni (7):
+>    vmapple: apple-gfx: make it work on the latest macOS release
+>    hw/vmapple: aes: convert MAX_LEN to a #define
+>    vmapple: declare it as an AArch64-compatible machine
+>    Revert "hw/arm: Do not build VMapple machine by default"
+>    vmapple: add gicv2m
+>    vmapple, gicv2m: add macOS compat quirk
+>    hvf: do not merge: enable private ISA
+> 
+>   accel/hvf/entitlements.plist                |  2 +-
+>   configs/devices/aarch64-softmmu/default.mak |  1 -
+>   hw/display/apple-gfx-mmio.m                 | 59 ++++++++++++++++-----
+>   hw/display/apple-gfx.h                      | 16 ++++++
+>   hw/display/apple-gfx.m                      | 41 +++++++++++++-
+>   hw/intc/arm_gicv2m.c                        |  5 ++
+>   hw/vmapple/aes.c                            |  3 +-
+>   hw/vmapple/vmapple.c                        | 27 ++++++++++
+>   target/arm/hvf/hvf.c                        |  8 +++
+>   9 files changed, 144 insertions(+), 18 deletions(-)
+> 
 
 

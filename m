@@ -4,91 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175B2109E53E
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Mar 2026 02:59:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91CD2109C047
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Mar 2026 07:28:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w5awb-0003my-PI; Wed, 25 Mar 2026 22:59:37 -0400
+	id 1w5f8Y-0006Yo-Oa; Thu, 26 Mar 2026 03:28:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5awa-0003mg-Q1
- for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:59:36 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5awZ-0006xb-2Q
- for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:59:36 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2b0603ee486so3033725ad.0
- for <qemu-arm@nongnu.org>; Wed, 25 Mar 2026 19:59:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774493973; x=1775098773; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=m1i7pRLeFLeE1svmsj8MHRCyvRzAt2KXbp3Nf8GJ1hU=;
- b=KwQ2PqCXfRKsvlHyi4GH6+eF7RfzdmLHjp6TYAUQ6X7f+sVPTCBXQZjrTwOelSCAdx
- snTzANMA0eiaRJeDSMiQsZ4XaKEjW3DsahxcWOUBrprGenYQQHs+ynqz+F8Hy4LEp4ed
- 3zSG/sq2ev4j9DkYfkDFnA4OXqTzFOXrJnEwbkaCTFzePSSWW37ytRLPgR2cRGFvmuWx
- gGJ0EyxhvRETbWXeq1CV9JvSbzYFH6b9O4beeLVJSjg3hCwlvr1NU8c49c8huzi/riWG
- DF/i9v74gfhdODqM2hExOIj+ykVIwZPIamkE42Mf0IpiihCxyZAP2NdDrMGvcVz0n+ef
- hfsQ==
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w5f8X-0006YX-U9
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2026 03:28:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w5f8W-0005CN-7J
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2026 03:28:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1774510088;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=skfkRrlJIzl/sVe+1N8j0cWXw5Ey1N8CqF/FoAstlRc=;
+ b=gXin9px3LBbMh3bxpl4webnvyz9ypcI3FyMnbgVWok14ruZpxT5jUZ3TuvS5SeHqIkzO/Y
+ OZBN1EFLDGdcgxDYPre7iOBlR2qpTjwMVvWJ/FSivjM1clp/KJjSMNkf1DjpMi+XwUhxGl
+ Y8AIeJoyA7neoNQynBw/HqX+PINaJaQ=
+Received: from mail-ot1-f72.google.com (mail-ot1-f72.google.com
+ [209.85.210.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-343-bf_UvI7UO8-hKCoWfYgoqg-1; Thu, 26 Mar 2026 03:28:06 -0400
+X-MC-Unique: bf_UvI7UO8-hKCoWfYgoqg-1
+X-Mimecast-MFC-AGG-ID: bf_UvI7UO8-hKCoWfYgoqg_1774510086
+Received: by mail-ot1-f72.google.com with SMTP id
+ 46e09a7af769-7d7e0787438so781040a34.2
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2026 00:28:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774493973; x=1775098773;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=m1i7pRLeFLeE1svmsj8MHRCyvRzAt2KXbp3Nf8GJ1hU=;
- b=WCVTgp7auA3PZtg76SkT7DuAyffUvIiB69rYb0/4VECAW/3JC9/GTBngM95BF/cgEa
- RgUl8rwV+vRqJGLiUQIxF2LZHaDWCyFrhfiOJQOqY0Da00GKE79uzpnLLDbhQ2AkGqyj
- UCE9+0vx19LC4lyrrwITtt8042VELdXD7iimQmpd2pA+IA6Y4W7PxhKQ9lcQLzzNF3Th
- n++8QIQtVE0FdmUS0s6+mWA0C3anXiOg/GYI19O2tD4yDcGhavrT1tdK3b9xtXjmk1FU
- VFNUnBwojglNL4f7gbwy12kl2LnymvwWQVeonY8NTBYN3lLes+D4T6dQlfOgY+5SLvoS
- jX0w==
-X-Gm-Message-State: AOJu0Yxz/1yRXGxGBDH68ob9ILE4JRxKoGQ4jxOvF2bnzH8fTfZGmfPJ
- eTGEzMzJAMuBoLSpBRQNoS+BK4Tsm9SWpFvFgCPFD0M/Ynd0MjFKDnSQhduj6PB3g1U=
-X-Gm-Gg: ATEYQzxEFtdMTYLPaqF1TUES462rdXghZnyM3N2tYC8Jwx0Trgga5D+YLRcGDcmXEYx
- vogeoKaT2K6O+BXvTvL/RvQXWCIPHOBauuiV4JyJS+92L09UKD+U9375zztW/xtQ2MsNlPuZtff
- dNSGanMTcYDpR3Ls/zvMh95kiXPRkqimctFGmxVPZBnccXvhil87Dmc+VlZeO9RaJG9ilaG8qpD
- E8LvjF27LTWabWOGToPcBZl+nayBarpwSpTtu67inKkWljbJjXkwjKIbYoFe0MVo8CC2zKeb5dS
- zUkJZ6nAGxST8RGnjZ9lFUEQ7mxLp6iHx8qcZpC+AYbeyC1DtJnS9O5ZRKPebQLHYCmi5FblsO4
- /KCsSq3TIj0rfB4z1wLsOxbFkgAo+DgZcXoIdUG48LbZl+OpcgqyaTan9wnTbtPqwzJukjBI1q/
- zqkxPNPb92VreSlfTfm81sI1nh0ed3GAVMC8jhpZ0j6A==
-X-Received: by 2002:a17:902:d48c:b0:2aa:d60c:d48a with SMTP id
- d9443c01a7336-2b0b09a08d7mr64319245ad.7.1774493973212; 
- Wed, 25 Mar 2026 19:59:33 -0700 (PDT)
-Received: from [172.16.11.156] ([103.100.225.140])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b0bc7c26b8sm12546915ad.35.2026.03.25.19.59.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Mar 2026 19:59:32 -0700 (PDT)
-Message-ID: <8019fdfe-3c32-4b81-84b9-eb961dbabf6f@linaro.org>
-Date: Thu, 26 Mar 2026 12:59:24 +1000
+ d=1e100.net; s=20251104; t=1774510086; x=1775114886;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=skfkRrlJIzl/sVe+1N8j0cWXw5Ey1N8CqF/FoAstlRc=;
+ b=N5Ci8cqL8PZR28s7C8XsELpoyj9YkX8nPcbzDzIfd1yj3xRLPeq7pUKHR/cwDgA+lr
+ d+0wQkBVE9nH6RMkVUWi00RLW6BIPVA2/IL34i4xSuVZScFkv1FPC/inD5850r136WIU
+ lbP2m7Xst2hxrU7Fx2vFFxMdLdwDleQLwiMiBH0u2f//e/cOth9PpzrqkEZVAGrmjm62
+ /Sk8mFbvVKnY+v4N3OGuZZ5pjdA6bpEQz9ExPvz5gc7AtUxYRMZPhKYlxqbnT6ikLDVF
+ zzeQA+cxvLfQfLAOlld3XSNBTemiFLbB3JgBFRc1PMRYm6KQeXegvGjHSsK7z5lbvQ+H
+ DL2w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU5O3E6lZJDxDOT2wFtTF7fBxwkYeOx5Rfjsdx9kBcX0bwG/fZAvmxtIibt3z2fpxS8gKpuZ8FnjQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwtbMo1XfGRfVgzi71sGhaz3nKUGgBA5YEABFI7bO3jId4u0rky
+ S6XHm2/Oxf1DQsrY3ymixomQWsa/Z397CZL174kTmtNaQSc8VennawQ+lVM4ljEytrS0b0klr83
+ jlQ39WK94LDHix4n64gO9Hz5KIFzo9iOL2f1GWogxDEfmCfGIJch4G9TDz/5NNVM5g6OCMmvdAs
+ +8h3CEWxSWHoQh7hgTK3wVeot9gKUa
+X-Gm-Gg: ATEYQzxT0XTHz0S/1K7jPSphXIPQhvL4PJHDnsf6PP4jVjq+N6JSce0RmpneF3W1swK
+ bjn+nFoHxV57fnH4G/zJohMC+4v7Sd+aensE07LoNkAm3Oi6AAeZ6xvEcPXvCxDTWvlhGZJuwSl
+ 6vWCNWi4nSuyfkH/atu0ipJJ38myKx8AY8Yh8IfcgxuWSK6dHZXVepVOJS6T2YoyMyI4GzUVp1l
+ xrhR0ZP6a8Zhf5LT34javy9wwZ//9OiDgM19nU=
+X-Received: by 2002:a05:6820:16a4:b0:67d:2cb:207a with SMTP id
+ 006d021491bc7-67dff5701c6mr3252392eaf.55.1774510085676; 
+ Thu, 26 Mar 2026 00:28:05 -0700 (PDT)
+X-Received: by 2002:a05:6820:16a4:b0:67d:2cb:207a with SMTP id
+ 006d021491bc7-67dff5701c6mr3252380eaf.55.1774510085219; Thu, 26 Mar 2026
+ 00:28:05 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 3/6] target/arm/emulate: add load/store pair
-To: Lucas Amaral <lucaaamaral@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- mohamed@unpredictable.fr, alex.bennee@linaro.org
-References: <20260317174740.31674-1-lucaaamaral@gmail.com>
- <20260317174740.31674-4-lucaaamaral@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260317174740.31674-4-lucaaamaral@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
+References: <20260324-tpm-tis-sysbus-ppi-v1-0-e59175210954@redhat.com>
+ <20260324-tpm-tis-sysbus-ppi-v1-1-e59175210954@redhat.com>
+ <c6830a19-c275-4a83-bb17-4430680b3d54@linux.ibm.com>
+ <A2BD2FA0-6D5F-47DC-BF2B-017ABE5F31AB@unpredictable.fr>
+ <07ff064e-bea4-4beb-811a-f5f3485836d6@linux.ibm.com>
+In-Reply-To: <07ff064e-bea4-4beb-811a-f5f3485836d6@linux.ibm.com>
+From: Mohammadfaiz Bawa <mbawa@redhat.com>
+Date: Thu, 26 Mar 2026 12:57:48 +0530
+X-Gm-Features: AQROBzByYSjBQi1uP80mfH_YCddiU-SfdoGBt0CPDqgyTHCes9HpLFg4hc9MXuk
+Message-ID: <CAJg9Kky1q=5DFDPkh-i1hyxCKmpuEnR02hrHN-ncewY2VO0LQA@mail.gmail.com>
+Subject: Re: [PATCH 1/3] docs/specs/tpm: document PPI support on ARM64 virt
+To: Stefan Berger <stefanb@linux.ibm.com>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 064rmgw0zw0Y_MUtCYoZCWLgIFw6Q02bJMrDpOy63Y4_1774510086
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,72 +114,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/18/26 03:47, Lucas Amaral wrote:
-> +/*
-> + * Load/store pair: STP, LDP, STNP, LDNP, STGP, LDPSW
-> + * (DDI 0487 C3.3.14 -- C3.3.16)
-> + */
-> +
-> +static bool trans_STP(DisasContext *ctx, arg_ldstpair *a)
-> +{
-> +    int esize = 1 << a->sz;                   /* 4 or 8 bytes */
-> +    int64_t offset = (int64_t)a->imm << a->sz;
-> +    uint64_t base = base_read(ctx, a->rn);
-> +    uint64_t va = a->p ? base : base + offset; /* post-index: unmodified base */
-> +    uint8_t buf[16];                           /* max 2 x 8 bytes */
-> +
-> +    uint64_t v1 = gpr_read(ctx, a->rt);
-> +    uint64_t v2 = gpr_read(ctx, a->rt2);
-> +    memcpy(buf, &v1, esize);
-> +    memcpy(buf + esize, &v2, esize);
-> +
-> +    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
-> +        return true;
-> +    }
-> +
-> +    if (a->w) {
-> +        base_write(ctx, a->rn, base + offset);
-> +    }
-> +    return true;
-> +}
-> +
-> +static bool trans_LDP(DisasContext *ctx, arg_ldstpair *a)
-> +{
-> +    int esize = 1 << a->sz;
-> +    int64_t offset = (int64_t)a->imm << a->sz;
-> +    uint64_t base = base_read(ctx, a->rn);
-> +    uint64_t va = a->p ? base : base + offset;
-> +    uint8_t buf[16];
-> +    uint64_t v1 = 0, v2 = 0;
-> +
-> +    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
-> +        return true;
-> +    }
-> +    memcpy(&v1, buf, esize);
-> +    memcpy(&v2, buf + esize, esize);
-> +
-> +    /* LDPSW: sign-extend 32-bit values to 64-bit (sign=1, sz=2) */
-> +    if (a->sign) {
-> +        v1 = sign_extend(v1, 8 * esize);
-> +        v2 = sign_extend(v2, 8 * esize);
-> +    }
-> +
-> +    gpr_write(ctx, a->rt, v1);
-> +    gpr_write(ctx, a->rt2, v2);
-> +
-> +    if (a->w) {
-> +        base_write(ctx, a->rn, base + offset);
-> +    }
-> +    return true;
-> +}
+On Thu, Mar 26, 2026 at 2:01=E2=80=AFAM Stefan Berger <stefanb@linux.ibm.co=
+m> wrote:
+>
+>
+>
+> On 3/25/26 4:22 PM, Mohamed Mediouni wrote:
+> >
+> >> On 25. Mar 2026, at 20:31, Stefan Berger <stefanb@linux.ibm.com> wrote=
+:
+> >>
+> >>
+> >> I remember having played around with TPM for QEMU on ARM64 (Raspberry =
+5(?)) a while ago and had the impression that there was something related t=
+o caching that prevented the MMIO interface from working correctly and Pete=
+r may have confirmed this back then on IRC .. I am not sure what exactly it=
+ was that didn't work correctly when run natively on ARM hardware. It worke=
+d well when run in CPU emulation on x86_64 for example. So I am wondering w=
+hether there is a minimum requirement for an ARM CPU or ARM CPU features re=
+lated to caching that someone needs to know about to be able to use TPM TIS=
+ successfully? If so, it would probably be good to mention it here as well.=
+ If you know.
+> >>
+> >> Otherwise this looks good to me.
+> >
+> > Hi,
+> >
+> > There are two things here:
+> >
+> > - For Windows guests it=E2=80=99s a bit complicated
+> >
+> > Windows guests LDP accesses on the TPM register range which doesn=E2=80=
+=99t match ISV=3D1
+>
+> oh, yes, right ldp instruction.
+>
+> > syndrome requirements and needs a workaround in current QEMU.
+> >
+> > I _think_ the QEMU-side workaround described below went in, which is:
+> >
+> > If we map the TPM register range as read directly, trap on write to wor=
+karound
+> > usage of LDP then we hit...
+> >
+> > - FEAT_S2FWB
+> >
+> > This is part of Armv8.4 onwards officially* and allows KVM to force a d=
+evice
+> > memory type read to be promoted to write-back.
+>  > > That allows the (easiest) workaround for (1) to work.
+> >
+> > However that=E2=80=99s not the _only_ workaround, you can remove it and=
+ include
+> > https://patchew.org/QEMU/20260317174740.31674-1-lucaaamaral@gmail.com/ =
+instead.
+> >
+> > That works fine and removes reliance on FEAT_S2FWB.
+> >
+> > * some older Arm chips implement equivalent semantics without signallin=
+g it, but
+> > that might depend on SoC-level integration.
+>
+>
+> It would be good to mention in the docs what the user needs to know
+> about CPU requirements, if anything, so that it can actually work. If
+> these recent modifications/patches make the TIS work on any processor,
+> then there's nothing to mention...
+>
+> >
+> > Thanks,
+> > -Mohamed
+> >
 
-The copy into v1 and v2 is dodgy.  While I expect that we'll never support big-endian 
-aarch64 as a host, this can be written in a non-dodgy way.
+Thanks Stefan, Mohamed
 
-The assignment into rt and rt2 must take the *guest* endianness into consideration, and 
-that is something that we support.
+I wasn't aware of the LDP / S2FWB angle, appreciate the context.
 
+Looking into it, the FEAT_S2FWB requirement is for TPM TIS MMIO access
+in general on ARM64 and predates this series. The PPI region we're
+adding is RAM-backed (memory_region_init_ram_device_ptr), so it
+shouldn't be affected by that issue.
+and for our testing we used an Ampere Altra Max M128-30 (Neoverse N1
+r3p1, MIDR 0x413fd0c1). TPM TIS works correctly with Windows 11 ARM64
+guests with this fix.
 
-r~
+Regards,
+Faiz
 
 

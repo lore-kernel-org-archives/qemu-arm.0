@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66965109E53E
-	for <qemu-arm@archiver.kernel.org>; Thu, 26 Mar 2026 02:40:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 175B2109E53E
+	for <qemu-arm@archiver.kernel.org>; Thu, 26 Mar 2026 02:59:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w5adn-0007aq-Gg; Wed, 25 Mar 2026 22:40:11 -0400
+	id 1w5awb-0003my-PI; Wed, 25 Mar 2026 22:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5adj-0007a2-Ka
- for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:40:07 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ id 1w5awa-0003mg-Q1
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:59:36 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5adh-0008NH-0i
- for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:40:07 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-35c1a131946so394953a91.0
- for <qemu-arm@nongnu.org>; Wed, 25 Mar 2026 19:40:00 -0700 (PDT)
+ id 1w5awZ-0006xb-2Q
+ for qemu-arm@nongnu.org; Wed, 25 Mar 2026 22:59:36 -0400
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-2b0603ee486so3033725ad.0
+ for <qemu-arm@nongnu.org>; Wed, 25 Mar 2026 19:59:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774492799; x=1775097599; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774493973; x=1775098773; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=zPUupSoInTblWIDl+s9YUqmGGv2qr+0VOrRoWptHI6Q=;
- b=HVS0pbYxgh4n2jKJc7K/DNb2F7+3SFytOWJ2ve9B04SU49K1vXemoTEH/ITGqAL27Y
- AicTx9PpK3UMfY+OOk0ddl07U1y8gqRnVMz/An90V7J983woN0aSDoSfYwUgpg5wL/Lq
- W6vV/lBAAz2m+XfuL/OLdLk3FGUQv9C/abSm53Ap4Fz8hFzd4aREe6scgPKG/+URIuFk
- +7idHjC7usyRVpKfXH/jTfIUhv7kOwx3fhNUBcxrisNqWD5w04r8X+SW9wKNqUIsjR0+
- 3T+EGFFd2PTuQ1iJrRrhCOD7AmdoIFm+7RxZwDosCNfVMcEN8I1bDCoWHGTdnmsMta8s
- zeFw==
+ bh=m1i7pRLeFLeE1svmsj8MHRCyvRzAt2KXbp3Nf8GJ1hU=;
+ b=KwQ2PqCXfRKsvlHyi4GH6+eF7RfzdmLHjp6TYAUQ6X7f+sVPTCBXQZjrTwOelSCAdx
+ snTzANMA0eiaRJeDSMiQsZ4XaKEjW3DsahxcWOUBrprGenYQQHs+ynqz+F8Hy4LEp4ed
+ 3zSG/sq2ev4j9DkYfkDFnA4OXqTzFOXrJnEwbkaCTFzePSSWW37ytRLPgR2cRGFvmuWx
+ gGJ0EyxhvRETbWXeq1CV9JvSbzYFH6b9O4beeLVJSjg3hCwlvr1NU8c49c8huzi/riWG
+ DF/i9v74gfhdODqM2hExOIj+ykVIwZPIamkE42Mf0IpiihCxyZAP2NdDrMGvcVz0n+ef
+ hfsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774492799; x=1775097599;
+ d=1e100.net; s=20251104; t=1774493973; x=1775098773;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=zPUupSoInTblWIDl+s9YUqmGGv2qr+0VOrRoWptHI6Q=;
- b=ohYS9QwaSd0vprQFfpHHGacEHlXDMTwg3RFL5PV2CeUbF4lWLS3deAaXltHlgZ76DT
- kWTL2Ha0NSzkzTkVpaIXC0ERG25Gs5QZsRfsidFz+iHG/eI1Di4Rd6t+rQjMgHx1h9dE
- KNpzHbRIekCzfNnSl/gJbVCfbCT+SLVDNqNhPhjrQVuyPpL1WngZVchiJ0YtFz/TqE49
- 4EGAB63uDg2evTaDod7+oMAxQ3TwQENiQANtI6uGyM2kRMDteIwKpe4ulr30PFcx0A+8
- XMHf+xGY7H8tc7YVKpkgYqOEBo2zNK8NisBAYN/dioFDyZjOL+um5RvJddhRlIgunLLe
- E0IQ==
-X-Gm-Message-State: AOJu0Yz+T4gdjCqJtzTbeZFCG0m2vBJ87c9Mw0IfrKxv3bGlSn3ii0at
- mGVx8wfSRA3aHLNIhOmH85PMcfKS6LKeLu6Jq0pAtDBmMXxgUpBsWdNt7iZWgfAWb/w=
-X-Gm-Gg: ATEYQzwAcrk+XSDG6JEUvK16ujCVFrtj8yqQ5qTQX7IqrSia4m/nvUoimnwEFjGouIk
- FE/qHkDysiBzZMP6lr/s0Ny5U/LYCMrrOln4eOxxdi81CEIuQKHf2cRuU9izjRh8tLZ1qt4vKYu
- 9zVW/DBgnyOOpsWmXCPkOOFgJR4lcktHRwbLcIpUumKiISgI0jXwu4FA8KXI4TkdI6Bbxl5iyvo
- q94ULLB2MBtVTG5NU1SjGYF02PophrlwbZ65W6JFI7P9Y7vgpjjDYCEusyLNwgICzxMxC9xqOJ6
- lD5pgLZn6K3dyW04iuFAAdCOXYSA8utezIhjHjT9WXcC+HQO532eGHDiDipYJALS8Rn0qlF7u7M
- Dag8T14vX4tOvpULCz13SA3Pj2uOGK7ehxYx1H3eYMiRCexMCJ421f2rgHjOkUhXVZzmui1MNX+
- DB1JCQxtxZ4FISAdVNZEFIE/QgE8+FwlDfdUrbYXVtLQ==
-X-Received: by 2002:a17:90b:5350:b0:359:8957:7285 with SMTP id
- 98e67ed59e1d1-35c0d100146mr5084680a91.3.1774492799247; 
- Wed, 25 Mar 2026 19:39:59 -0700 (PDT)
+ bh=m1i7pRLeFLeE1svmsj8MHRCyvRzAt2KXbp3Nf8GJ1hU=;
+ b=WCVTgp7auA3PZtg76SkT7DuAyffUvIiB69rYb0/4VECAW/3JC9/GTBngM95BF/cgEa
+ RgUl8rwV+vRqJGLiUQIxF2LZHaDWCyFrhfiOJQOqY0Da00GKE79uzpnLLDbhQ2AkGqyj
+ UCE9+0vx19LC4lyrrwITtt8042VELdXD7iimQmpd2pA+IA6Y4W7PxhKQ9lcQLzzNF3Th
+ n++8QIQtVE0FdmUS0s6+mWA0C3anXiOg/GYI19O2tD4yDcGhavrT1tdK3b9xtXjmk1FU
+ VFNUnBwojglNL4f7gbwy12kl2LnymvwWQVeonY8NTBYN3lLes+D4T6dQlfOgY+5SLvoS
+ jX0w==
+X-Gm-Message-State: AOJu0Yxz/1yRXGxGBDH68ob9ILE4JRxKoGQ4jxOvF2bnzH8fTfZGmfPJ
+ eTGEzMzJAMuBoLSpBRQNoS+BK4Tsm9SWpFvFgCPFD0M/Ynd0MjFKDnSQhduj6PB3g1U=
+X-Gm-Gg: ATEYQzxEFtdMTYLPaqF1TUES462rdXghZnyM3N2tYC8Jwx0Trgga5D+YLRcGDcmXEYx
+ vogeoKaT2K6O+BXvTvL/RvQXWCIPHOBauuiV4JyJS+92L09UKD+U9375zztW/xtQ2MsNlPuZtff
+ dNSGanMTcYDpR3Ls/zvMh95kiXPRkqimctFGmxVPZBnccXvhil87Dmc+VlZeO9RaJG9ilaG8qpD
+ E8LvjF27LTWabWOGToPcBZl+nayBarpwSpTtu67inKkWljbJjXkwjKIbYoFe0MVo8CC2zKeb5dS
+ zUkJZ6nAGxST8RGnjZ9lFUEQ7mxLp6iHx8qcZpC+AYbeyC1DtJnS9O5ZRKPebQLHYCmi5FblsO4
+ /KCsSq3TIj0rfB4z1wLsOxbFkgAo+DgZcXoIdUG48LbZl+OpcgqyaTan9wnTbtPqwzJukjBI1q/
+ zqkxPNPb92VreSlfTfm81sI1nh0ed3GAVMC8jhpZ0j6A==
+X-Received: by 2002:a17:902:d48c:b0:2aa:d60c:d48a with SMTP id
+ d9443c01a7336-2b0b09a08d7mr64319245ad.7.1774493973212; 
+ Wed, 25 Mar 2026 19:59:33 -0700 (PDT)
 Received: from [172.16.11.156] ([103.100.225.140])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35c1dd38118sm688167a91.3.2026.03.25.19.39.55
+ d9443c01a7336-2b0bc7c26b8sm12546915ad.35.2026.03.25.19.59.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Mar 2026 19:39:58 -0700 (PDT)
-Message-ID: <c85ef3e0-d3c8-401f-b425-95a42bac17ef@linaro.org>
-Date: Thu, 26 Mar 2026 12:39:50 +1000
+ Wed, 25 Mar 2026 19:59:32 -0700 (PDT)
+Message-ID: <8019fdfe-3c32-4b81-84b9-eb961dbabf6f@linaro.org>
+Date: Thu, 26 Mar 2026 12:59:24 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/6] target/arm/emulate: add ISV=0 emulation library
- with load/store immediate
+Subject: Re: [PATCH v5 3/6] target/arm/emulate: add load/store pair
 To: Lucas Amaral <lucaaamaral@gmail.com>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
  mohamed@unpredictable.fr, alex.bennee@linaro.org
 References: <20260317174740.31674-1-lucaaamaral@gmail.com>
- <20260317174740.31674-2-lucaaamaral@gmail.com>
+ <20260317174740.31674-4-lucaaamaral@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260317174740.31674-2-lucaaamaral@gmail.com>
+In-Reply-To: <20260317174740.31674-4-lucaaamaral@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,49 +105,71 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 3/18/26 03:47, Lucas Amaral wrote:
-> +/* Memory access wrappers */
+> +/*
+> + * Load/store pair: STP, LDP, STNP, LDNP, STGP, LDPSW
+> + * (DDI 0487 C3.3.14 -- C3.3.16)
+> + */
 > +
-> +static int mem_read(DisasContext *ctx, uint64_t va, void *buf, int size)
+> +static bool trans_STP(DisasContext *ctx, arg_ldstpair *a)
 > +{
-> +    if (((va & ~TARGET_PAGE_MASK) + size) > TARGET_PAGE_SIZE) {
-> +        ctx->result = ARM_EMUL_ERR_MEM;
-> +        return -1;
-> +    }
-> +    int ret = cpu_memory_rw_debug(ctx->cpu, va, buf, size, false);
-> +    if (ret != 0) {
-> +        ctx->result = ARM_EMUL_ERR_MEM;
-> +    }
-> +    return ret;
-> +}
-
-This is not implementing access for a debugger, but emulating an insn.
-Thus *_debug is the wrong interface to use.
-
-There is no direct interface for you to use here, because the ones we have at present will 
-raise an exception and jump back to an emulation loop that doesn't exist here.  You'd need 
-to translate the virtual address manually, recognize any exception raised, perform the 
-access to the physical address, and recognize any hw exception raised.
-
-> +/* Sign/zero extension helpers */
+> +    int esize = 1 << a->sz;                   /* 4 or 8 bytes */
+> +    int64_t offset = (int64_t)a->imm << a->sz;
+> +    uint64_t base = base_read(ctx, a->rn);
+> +    uint64_t va = a->p ? base : base + offset; /* post-index: unmodified base */
+> +    uint8_t buf[16];                           /* max 2 x 8 bytes */
 > +
-> +static uint64_t sign_extend(uint64_t val, int from_bits)
-> +{
-> +    int shift = 64 - from_bits;
-> +    return (int64_t)(val << shift) >> shift;
+> +    uint64_t v1 = gpr_read(ctx, a->rt);
+> +    uint64_t v2 = gpr_read(ctx, a->rt2);
+> +    memcpy(buf, &v1, esize);
+> +    memcpy(buf + esize, &v2, esize);
+> +
+> +    if (mem_write(ctx, va, buf, 2 * esize) != 0) {
+> +        return true;
+> +    }
+> +
+> +    if (a->w) {
+> +        base_write(ctx, a->rn, base + offset);
+> +    }
+> +    return true;
 > +}
-
-This is sextract64.
-
-> +/* PRFM, DC cache maintenance -- treated as NOP */
-> +static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
+> +
+> +static bool trans_LDP(DisasContext *ctx, arg_ldstpair *a)
 > +{
-> +    (void)ctx;
-> +    (void)a;
+> +    int esize = 1 << a->sz;
+> +    int64_t offset = (int64_t)a->imm << a->sz;
+> +    uint64_t base = base_read(ctx, a->rn);
+> +    uint64_t va = a->p ? base : base + offset;
+> +    uint8_t buf[16];
+> +    uint64_t v1 = 0, v2 = 0;
+> +
+> +    if (mem_read(ctx, va, buf, 2 * esize) != 0) {
+> +        return true;
+> +    }
+> +    memcpy(&v1, buf, esize);
+> +    memcpy(&v2, buf + esize, esize);
+> +
+> +    /* LDPSW: sign-extend 32-bit values to 64-bit (sign=1, sz=2) */
+> +    if (a->sign) {
+> +        v1 = sign_extend(v1, 8 * esize);
+> +        v2 = sign_extend(v2, 8 * esize);
+> +    }
+> +
+> +    gpr_write(ctx, a->rt, v1);
+> +    gpr_write(ctx, a->rt2, v2);
+> +
+> +    if (a->w) {
+> +        base_write(ctx, a->rn, base + offset);
+> +    }
 > +    return true;
 > +}
 
-You don't need the (void) expressions.
+The copy into v1 and v2 is dodgy.  While I expect that we'll never support big-endian 
+aarch64 as a host, this can be written in a non-dodgy way.
+
+The assignment into rt and rt2 must take the *guest* endianness into consideration, and 
+that is something that we support.
 
 
 r~
+
 

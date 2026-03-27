@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A38DA10ED67E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1FD10ED679
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:49:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67UD-0005hC-DN; Fri, 27 Mar 2026 09:44:29 -0400
+	id 1w67Vt-0007p6-BF; Fri, 27 Mar 2026 09:46:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67UC-0005gC-11
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:28 -0400
+ id 1w67VP-0006oQ-7K
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:45 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67UA-00066F-KV
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:27 -0400
+ id 1w67VN-0006bq-1z
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619065;
+ s=mimecast20190719; t=1774619140;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7tcxKslIn6LU9r2hkVjCtK7yULes57vCUXv6/td3HUM=;
- b=Nhby8ioZmjwnwVS1Wyc5ypoVmIFxOGOmcCknswlrWdKLpqsI/mq8cDoVFlnK0B2zZM7bSt
- VgfLNfgHXbwhuO+6ow68CN9SWG3HfAYY935Rufa9neFzMvXGi6z1AN/tzLgYbXtDSo9RAW
- xjLU2jNaaW9qs5jJcTq1c7rPb/kWDoc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=9JzUxiWgZKU4O9M4M3xcPRJsDXu15tLrDMHHzBytk4Q=;
+ b=Hsu2nGJ279Y2jqZlok1kSU8kfm6qX+oBP+lrhkBC9TTC6z5aXaGjk/7JOeJbDzwG2802C2
+ TE2AgH0BX0Nh1H69qY1ug9Jl5fLcIDBLut2qMc0igeXgxY/UFazuct1hBukF/vSPNTwqtN
+ YaCqL9Bx6XAcvdOs5KfUyDNyKuB1uxs=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-570-Z6RWgCS5N9ebqJHyzjf_2Q-1; Fri,
- 27 Mar 2026 09:44:22 -0400
-X-MC-Unique: Z6RWgCS5N9ebqJHyzjf_2Q-1
-X-Mimecast-MFC-AGG-ID: Z6RWgCS5N9ebqJHyzjf_2Q_1774619060
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-616-_BZLUMrgO5OwUxmnCD4LLQ-1; Fri,
+ 27 Mar 2026 09:45:37 -0400
+X-MC-Unique: _BZLUMrgO5OwUxmnCD4LLQ-1
+X-Mimecast-MFC-AGG-ID: _BZLUMrgO5OwUxmnCD4LLQ_1774619134
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C18F41955F18; Fri, 27 Mar 2026 13:44:19 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 31BC0195609D; Fri, 27 Mar 2026 13:45:34 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8CAC8180075C; Fri, 27 Mar 2026 13:44:12 +0000 (UTC)
+ id 8A55C180036E; Fri, 27 Mar 2026 13:45:27 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,14 +66,14 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 01/15] meson: Use stddef.h instead of unistd.h
-Date: Fri, 27 Mar 2026 15:43:47 +0200
-Message-ID: <20260327134401.270186-2-kkostiuk@redhat.com>
+Subject: [PATCH v2 11/15] osdep: Remove unused strings.h
+Date: Fri, 27 Mar 2026 15:43:57 +0200
+Message-ID: <20260327134401.270186-12-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: S9GYtIARdOMB3SnneFqwTOmouiuFM1iTgXfhgR5yikY_1774619060
+X-Mimecast-MFC-PROC-ID: 5iUICq1NEsrXMfR73iAVYcZwdjDafUmJ6tVIzemxfsA_1774619134
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -102,28 +102,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-POSIX says stddef.h provides size_t, which is the only thing
-we care about here. unistd.h can be missing in non-POSIX runtimes,
-so include stddef.h instead.
+We don't use strcasecmp/strncasecmp anymore. Also, we don't
+use any other strings.h function. So this include is no more
+needed.
 
 Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 ---
- meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/qemu/osdep.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/meson.build b/meson.build
-index 6c712f8b0d..1087e8c106 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1057,7 +1057,7 @@ endif
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 92856decd4..3718fae351 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -114,7 +114,6 @@ QEMU_EXTERN_C int daemon(int, int);
+ #include <stdio.h>
  
- if not cc.compiles('''
-   #include <glib.h>
--  #include <unistd.h>
-+  #include <stddef.h>
- 
-   #define QEMU_BUILD_BUG_ON(x) \
-   typedef char qemu_build_bug_on[(x)?-1:1] __attribute__((unused));
+ #include <string.h>
+-#include <strings.h>
+ #include <inttypes.h>
+ #include <limits.h>
+ /* Put unistd.h before time.h as that triggers localtime_r/gmtime_r
 -- 
 2.52.0
 

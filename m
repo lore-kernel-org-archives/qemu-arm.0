@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D04810ED674
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:48:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0457010ED674
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:48:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67VA-0006ZB-Ly; Fri, 27 Mar 2026 09:45:28 -0400
+	id 1w67UK-0005kZ-CP; Fri, 27 Mar 2026 09:44:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67V3-0006S9-35
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:22 -0400
+ id 1w67UJ-0005iZ-4J
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:35 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67V1-0006X8-LS
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:20 -0400
+ id 1w67UH-00069c-Oq
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619119;
+ s=mimecast20190719; t=1774619073;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+AC/Rs5aGm9ogD74hTmTObfS5j9a2nU8YQlkEq3pZSM=;
- b=ceUeCbWdzbMX6DQQS/r7wh0EoDYQKR8ooaToEUlFIHhDIKCgrvZIraLxyMWqYpQkcsbELA
- kSjfboDu9OXZYZ0VSjZjHZF94EnVlHs83TgrLFq3Vq6HgY7WKjdX2KgvseoZBIE2thMtVD
- WqUN1uS1FFdIs5sTIZwslDNwOsnN82c=
+ bh=wK++K2CoaU+1nBZXDiwSJy/xa8eFj9BxrAie3nEs+A0=;
+ b=JnNui0au4clkvxfgz8CashKos/C9fhc9+ZNIWo/Vg6Y83Rtuhrxq0KjFnckeqRmQtzMVVA
+ MubnVtCzNR1BPRkadvXsdyqpc3trQs8W4iR//y7veQPRiFf/bjNYG4WTovjCgvYrdCxLqL
+ zNdayqvkmKWuK7t9/OrnzM/0Zng2xbo=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-332-UrDfc_izNpWZCPWGhX6nXA-1; Fri,
- 27 Mar 2026 09:45:16 -0400
-X-MC-Unique: UrDfc_izNpWZCPWGhX6nXA-1
-X-Mimecast-MFC-AGG-ID: UrDfc_izNpWZCPWGhX6nXA_1774619112
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-418-eKE_EECHOjGuccS_QI1DOg-1; Fri,
+ 27 Mar 2026 09:44:31 -0400
+X-MC-Unique: eKE_EECHOjGuccS_QI1DOg-1
+X-Mimecast-MFC-AGG-ID: eKE_EECHOjGuccS_QI1DOg_1774619068
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A8F9218002DD; Fri, 27 Mar 2026 13:45:12 +0000 (UTC)
+ id 99DDD18002C9; Fri, 27 Mar 2026 13:44:28 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A04871800671; Fri, 27 Mar 2026 13:45:04 +0000 (UTC)
+ id 37D081800671; Fri, 27 Mar 2026 13:44:20 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,15 +66,14 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 08/15] target/ppc: Use glib2 instead of
- strcasecmp/strncasecmp
-Date: Fri, 27 Mar 2026 15:43:54 +0200
-Message-ID: <20260327134401.270186-9-kkostiuk@redhat.com>
+Subject: [PATCH v2 02/15] qom: Use g_ascii_strcasecmp instead of strcasecmp
+Date: Fri, 27 Mar 2026 15:43:48 +0200
+Message-ID: <20260327134401.270186-3-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: dxegEuuaH5pifzSQZJxED_iKbyBK8oGoA_f-DCH5HRg_1774619112
+X-Mimecast-MFC-PROC-ID: 4M4eQ1eqwX6R795rGaRWem81avaWjvbOym4CpzStZnw_1774619068
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -107,25 +106,31 @@ This is a change in semantics. g_ascii_strcasecmp() doesn't honour
 locale but strcasecmp() does. But this is OK for at least one reason:
  (1) QEMU always runs with the C locale so there's not an actual
      behaviour change here
+ (2) we want the comparison on class names to be a plain ASCII
+     one, not to do weird things with "I" in Turkish locales,
+     so g_ascii_strcasecmp() is better as it's explicit about that
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 ---
- target/ppc/kvm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qom/object.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 41bd03ec2a..25c28ad089 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -2653,7 +2653,7 @@ static int kvm_ppc_register_host_cpu_type(void)
-      */
-     dc = DEVICE_CLASS(ppc_cpu_get_family_class(pvr_pcc));
-     for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
--        if (strcasecmp(ppc_cpu_aliases[i].alias, dc->desc) == 0) {
-+        if (g_ascii_strcasecmp(ppc_cpu_aliases[i].alias, dc->desc) == 0) {
-             char *suffix;
+diff --git a/qom/object.c b/qom/object.c
+index ff8ede8a32..e5c0c2f53e 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1193,8 +1193,8 @@ GSList *object_class_get_list(const char *implements_type,
  
-             ppc_cpu_aliases[i].model = g_strdup(object_class_get_name(oc));
+ static gint object_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
+ {
+-    return strcasecmp(object_class_get_name((ObjectClass *)a),
+-                      object_class_get_name((ObjectClass *)b));
++    return g_ascii_strcasecmp(object_class_get_name((ObjectClass *)a),
++                              object_class_get_name((ObjectClass *)b));
+ }
+ 
+ GSList *object_class_get_list_sorted(const char *implements_type,
 -- 
 2.52.0
 

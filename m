@@ -4,83 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D72A10F2867
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 18:14:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF2A10F2865
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 18:18:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6Bhr-0006gO-6b; Fri, 27 Mar 2026 14:14:52 -0400
+	id 1w6BlL-0007lH-Qu; Fri, 27 Mar 2026 14:18:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6Bhn-0006fr-Iu
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:14:48 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1w6Bl6-0007gs-Oe
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:18:18 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6Bhk-0003cT-Ca
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:14:46 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-35c1a131946so1634622a91.0
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 11:14:43 -0700 (PDT)
+ id 1w6Bl2-0004Js-St
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:18:11 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-c6e2355739dso1061986a12.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 11:18:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774635282; x=1775240082; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ d=linaro.org; s=google; t=1774635484; x=1775240284; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+ :from:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=UpUlpBMrO0Xp5fBIArcey0F2IowdIlSjZ1XWu7eFzrw=;
- b=hG/3krcs9frBBRKlAzyHlvo1RfyBpDIhuh9Gz9u8zX+nO0qWNPD5nqLdcLkaC9n2dF
- znZ4Z1E0xJ+cLqjUr8l/oJ/97iE6BNlcleR5LzbOMXpFntQf7oO8nRwy7h0hZD3124tI
- ++6fzRbpR9ZglPkRmJxEzCiLDxh4N76IHDYD+iVvlTT8pKcXuPz1OTneow/DcmIIvRsU
- UHTkWOw0/W4+zeq6QU65pNaAKhlRZXu1SdlypEej9hCjHCP0fMpiEat1Tfk0BOO1qlS/
- iCXvi5xyWRdvvQrDyKjrcFHLq4HPsAE2BMTDHPMyhmiXuZUJt/knwSHzlTBBJw300rm4
- nVGg==
+ bh=DI62CKUeerbl7nsL7wtkGEa0ArXEH8fdjMwvOc+cnCQ=;
+ b=Rh41D363M5Bz8SPmu7ow2gsoid2O/yB6JZgC0hQsR3Dw/Q6Zi/KcEuC8OkaW0A+sR5
+ 6P2+/WT7udf+on280MB6ynacIcE6N/uOpwSFwTJ89UpHAJTy4svckvm0hDx4x+0e42mA
+ UEfk3A1hidZKkzYTm/lyh1aU59fiwQdBwW2ZHTsx1uQCdxweMejmcbDv4lDR/hXvGWbY
+ XIKyk1VmUcJ8TPwO9U8T4ejNah6YuKEs9ukY1nCwV+zkhtcMo+D+/LOKzVedJTut6udq
+ SQHFHmCZkz3dyG1q9xrTb6appo2UIcHsFKfYgBM/s44RHXZQbmC5GrI0gfuyt/eTfjj0
+ k+EA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774635282; x=1775240082;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ d=1e100.net; s=20251104; t=1774635484; x=1775240284;
+ h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
+ :from:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UpUlpBMrO0Xp5fBIArcey0F2IowdIlSjZ1XWu7eFzrw=;
- b=MkSxG3vCoxwHlNZySizvAHmYMpIKy+0eQIlxBYsYNDftcYpJJSrE3FScAq4Es/mlc+
- nmQ9JMJMK5jjjlDdNTmQmMM57lLbvYVVcHrnme/ae1Du4wYZN+wa3wCF41NM992GL4iv
- XBFhbjfYUy3GMYEQtB6BfTltHr/sa2vm6+IwkoelfkNf7fSaZzFW4UKeNpW4pXp4TkWM
- NoIXvv7koMpM6vOguq/8YoDd1coEWX8MCizbcf/2YhdaP2pMz1Tn7Ljg2E3qVdIOVEB/
- i9vyf8uMFUpgGUrySER1hSuJGTIG+0zensHZqlb7GE+C7wL1FFvYAQ+mSZ4MV9aG04kv
- e3xw==
-X-Gm-Message-State: AOJu0Yz2URqKOT/n+UrYqD1PzH5HpyyBZIWX3x63Rlx/HLokqtQ8udlW
- XgPIn9tTU2WQ51R4yiF64a+ayf5P0FZ5jJ8fTcbPiVMWyxBEsOlVMY4jWd0+9e8jZxM=
-X-Gm-Gg: ATEYQzxJpOO34R104XyleeAfPIx12GMfJvsjIh25yqDmdLPahVmAhQIcHndquL+lxNI
- EoJd1uUvTzDfRPBF+g8yy8PGL2KOWersfGUIUAjNVrIjXu6WRom1So6ckW/Kjk55a1efoJXtg49
- AKjITtVGbMYrKya8j6wonH5LD05yhtkktA5ka/cKFfzpWa20Y/Opw9Vaot7jct94DV9FhzEzFTa
- YdDkFuIjr3lJhLyLGB/AQApo9v5MXiviKljvt1bmSP3tD++3j96tjxCyMwgiMBqRG7brzYHpzxi
- 1MVmOTR8qxOn/DzcXESTVmlelrBamLyFkCgJkyc2q7Ld+qJmGT3RLxPV2oQR92batlMOmu7fNsC
- pdNgY3+9VrycCPeuGaQkDvlRs8sOtkKOwFhQjqXs36/vHgqy9sVAufPHuOAstHU+N3gb//CTSx9
- ULKrI6ifOwtIlggZTPHWgfczEwojGm8p1IGc8meRCTYpLGnShMVhkgV03WsCMw22UcmCzZ
-X-Received: by 2002:a17:90b:3d81:b0:35b:952c:43ab with SMTP id
- 98e67ed59e1d1-35c30bb5f2amr2655461a91.4.1774635282483; 
- Fri, 27 Mar 2026 11:14:42 -0700 (PDT)
+ bh=DI62CKUeerbl7nsL7wtkGEa0ArXEH8fdjMwvOc+cnCQ=;
+ b=aTQ4fn9dGOcihK0a6TmItECbElbiDF+51wtreRAUw/x/EFYlRWEP6qkodoBWet8ZaS
+ VcqmjosnWKHjwfrQZc+sgbQHaub1Zdtqb/S7SPOSsXMCZJNgZN4rZuELhxKN6jC+ZFIi
+ Ru2K/63m4snm9nhhYXvBpXEUQBBhvRRLFmacw2xrZ40OqvsUpl1/ZYxxY3PG6c/x2j9+
+ f/jvMHErm5eNKWHSCGNl8S2Wo5lny4RXCHTFxPsVKsaJcuGkJdGVMcmP7/rkI/zfTxHk
+ H9s+P/1pjjOzFsaCwrSvaH00Pgo5DCxXoNnbSn5gsyjxdEhx5G94XknJ0YkHEN/hILIB
+ oZpA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX/GlzB40FKeO/r1aFh5SqCuzrX/ikd4nothXUuq89UDGP7+2UsaNW/C/ZK5OEXRP98OHso3usw9w==@nongnu.org
+X-Gm-Message-State: AOJu0Ywu6WS3eTvy2i1H94hk4Lbg4o49T1STN2mRLUmjH3yh6/G9NZkq
+ mL9DOMHj6HTDDvEvKdZ0bmeQHjJ4znFIFF7bfjnNp49MtnWd83EPuGQ/WXmBQ4qMX6c=
+X-Gm-Gg: ATEYQzwe9k4UK3y/zA883+ikmiyrBL8eRo/yY7IQxXNGI4LoMN5UhsHEW8RCKANoXqo
+ JVOr1Q3qYkHgcvFlJhzFhP1fcl8/DxMZAGjSMGytv2ieUi3NYHj/RFcTo7bKS1+GajnQwfLZ6VO
+ cP7aKIIt4Ti/B+dwMpMWKCFiIhUgpTBsqYo1quawY2Iu74xlVsoGq+/8mOqbnM8loqBqm78pYbh
+ R5XgyPyeVRPRym6hWL9HeTYRrudFiOZNuE0uOSecushNe+SitPmHqSJiTVuRTL1RU4Agu8FFyVt
+ rrvxI/eOhPuxrJu0gvq3aOCdjpRi8VN1EJqgp67y8XQIbGlDzFR0h0yLKgpjK6mGzNy1xHI0WKY
+ DzRupa/jTOW94svHPSGWt6A/vtojdI0R4FFjg2M3JNgny0NBhS8B31FlQ5LzpSeH3U8wSuxjMZK
+ XH7uxGakCUZVX8vjlh7jQqXqJuPYMvqF459KYzl53xhTtMzJ6WVmq1m82qcl+/XwLal6oW
+X-Received: by 2002:a05:6a20:3c8e:b0:398:ae03:722f with SMTP id
+ adf61e73a8af0-39c87bcf187mr3867245637.45.1774635484042; 
+ Fri, 27 Mar 2026 11:18:04 -0700 (PDT)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35c22d09573sm5485994a91.16.2026.03.27.11.14.41
+ 41be03b00d2f7-c767382c2a6sm5229292a12.12.2026.03.27.11.18.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Mar 2026 11:14:42 -0700 (PDT)
-Message-ID: <086310e3-2d6e-4b9e-86f6-75b7fe936d81@linaro.org>
-Date: Fri, 27 Mar 2026 11:14:41 -0700
+ Fri, 27 Mar 2026 11:18:03 -0700 (PDT)
+Message-ID: <88a91611-2d27-4c6d-bcad-09ff32f71d97@linaro.org>
+Date: Fri, 27 Mar 2026 11:18:02 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 12/12] target/arm/tcg/translate.c: replace target_ulong
- with uint32_t
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org
-References: <20260327165042.604105-1-pierrick.bouvier@linaro.org>
- <20260327165042.604105-13-pierrick.bouvier@linaro.org>
- <9a7be223-0b30-44e0-b6da-fcf614a1a052@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: Re: [RFC PATCH 0/9] plugins: Introduce Fault Injection framework and
+ API extensions
 Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
+ peter.maydell@linaro.org, philmd@linaro.org, Ruslan_Ruslichenko@epam.com,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
+ <4e8f4e6e-e9d2-4457-af3d-755ced6d2a45@linaro.org>
+ <CAN-aV1FER7w1rqw0zM=L2z7MT_RKsBhFg7m6NijxyQa6t5JNqw@mail.gmail.com>
+ <4d2d16df-0047-4b96-8312-46489ba0f1bf@linaro.org>
+ <CAN-aV1F6O3dv5F1946wEugdLxkYDp0BW6QZPxwye02A5-HYz9g@mail.gmail.com>
+ <79fca2cf-7618-4a35-a915-e2bf1811a851@linaro.org>
+ <CAN-aV1HRZPxuS_U4mHYhnobbKkq2G5T9P2cJ2=LahT3TzGsC6A@mail.gmail.com>
+ <005aa40d-4749-44d5-a65c-8f59cbd06d0c@linaro.org>
+ <87a4vu3jcn.fsf@draig.linaro.org>
+ <ebb0227f-87c1-4436-b48b-10f5dc150884@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
  eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
@@ -115,18 +124,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <9a7be223-0b30-44e0-b6da-fcf614a1a052@linaro.org>
+In-Reply-To: <ebb0227f-87c1-4436-b48b-10f5dc150884@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,42 +151,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/27/26 10:30 AM, Philippe Mathieu-Daudé wrote:
-> On 27/3/26 17:50, Pierrick Bouvier wrote:
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    target/arm/tcg/translate.c | 4 ++--
->>    1 file changed, 2 insertions(+), 2 deletions(-)
+On 3/26/26 8:59 AM, Pierrick Bouvier wrote:
+>>> One thing that could be considered on API side is to add a possibility
+>>> to invalidate a specific hardware address (not all tb), based on
+>>> tb_invalidate_phys_range. The problem is that plugin now need to keep
+>>> track of all physical addresses matching virtual ones you want to
+>>> invalidate, which is not convenient.
+>>>
+>>> Else, the easiest way to solve all this is to expose tb_flush, like
+>>> you did, but keep this patch downstream for now.
+>>> If your final plugin will stay downstream (which I expect, given it
+>>> has its own protocol for injecting faults and no source for it), it's
+>>> really the cheapest solution.
+>>>
+>>> The current design is built around the assumption that instrumentation
+>>> is made at translation time (and not later). So changing it by
+>>> instrumenting after translation brings new constraints we can't solve
+>>> at the moment without exposing internal details.
 >>
->> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
->> index 4546bbeeeff..204f9657993 100644
->> --- a/target/arm/tcg/translate.c
->> +++ b/target/arm/tcg/translate.c
->> @@ -6450,7 +6450,7 @@ static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
->>         * fields here.
->>         */
->>        uint32_t condexec_bits;
->> -    target_ulong pc_arg = dc->base.pc_next;
->> +    uint32_t pc_arg = dc->base.pc_next;
->>    
->>        if (tb_cflags(dcbase->tb) & CF_PCREL) {
->>            pc_arg &= ~TARGET_PAGE_MASK;
->> @@ -6612,7 +6612,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->>        bool is_16bit;
->>        /* TCG op to rewind to if this turns out to be an invalid ECI state */
->>        TCGOp *insn_eci_rewind = NULL;
->> -    target_ulong insn_eci_pc_save = -1;
->> +    uint32_t insn_eci_pc_save = -1;
->>    
->>        /* Misaligned thumb PC is architecturally impossible. */
->>        assert((dc->base.pc_next & 1) == 0);
+>> We should certainly consider automatically triggering tb_flush() on each
+>> qemu_plugin_register_vcpu_tb_trans_cb() so at least the case of
+>> dynamically loading a plugin doesn't miss previous translations.
+>>
 > 
-> I'd have expected vaddr, but uint32_t is correct enough.
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
+> Sounds fair yes, but not sure it covers the current use case.
+> It would require the plugin to register several tb_trans to achieve the
+> desired effect, which I'm not sure is a good idea. At this point, maybe
+> we just accept to expose tb_flush through plugin API and call it a day.
+>
 
-While it works, semantically, in this case, we know this addr is 32-bit 
-only, even when compiling for aarch64-softmmu target.
+@Ruslan:
+
+After looking at it again, this is already covered with:
+```
+void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb)
+```
+
+which performs a tb_flush as expected, and calls cb once the reset is 
+asynchronously done.
+In the callback cb, you can reinstall your trans_cb, and it should do 
+exactly what you expect.
+
 

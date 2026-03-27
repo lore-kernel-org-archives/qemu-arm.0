@@ -4,87 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA7D010F284F
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 16:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354B710F284B
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 16:49:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6ALs-0000sc-Vr; Fri, 27 Mar 2026 12:48:06 -0400
+	id 1w6ALg-0000af-OU; Fri, 27 Mar 2026 12:47:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6AJ8-0006gt-Tb
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:15 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1w6AJ6-0006fU-QM
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:14 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6AJ1-0003AN-7t
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:14 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-2aae146b604so14098495ad.3
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 09:45:03 -0700 (PDT)
+ id 1w6AJ1-0003MA-8m
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:12 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2ad617d5b80so16455415ad.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 09:45:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774629902; x=1775234702; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774629905; x=1775234705; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=76pt2dDyK109O4DclIsLAZjjAPxT8fp7+YkgIE/RghQ=;
- b=Ey1X83cdOMlCPM4H5iNWELb/lkeqRZ3D5AHy4S50D0OGsZEhA2d0+O5sXv7yVlQsCS
- GiC3l4Go2wvFdGEXW5MfFKJuuXWDIIcywBQpNyOAGXUhXU547rMuLfzlMVxih8QawbZz
- +OQA2J74fUNdxuQlBCCPCUuQaCnMGUYKE3eUCE+VPbx5POM5/ZpeoEMWR9ltq9ai24e0
- gK9TVwoQz+5bCs8elUw/1IAaIGSfimt9kRl9C2wz8GWmRetI1XZfoOV0xXFAr/jHHBNk
- xal5+uYsb4vhfwzCnegVqdPdXWwe3l+VdTVJkKDJBkQqcF7ZIWa33H1n4oP92O8jl8/8
- LWkA==
+ bh=/IALcLXX/d7LO0liU9vJMgW15Lrt2XEwGveOJyMimkI=;
+ b=uCFGFBFAhd4dv8nHuXPmYkciY60drEdi7ljK7iAigYuY1ixV7v2B1FHBkbVcwnJqH5
+ 6ROzLYZb+REDYh1IiWBToZ+a18F7vaAlB1rQhQKBSxannaWUnnwgLOjW8/9L89Q4FHK8
+ URkBoSOabaiJ53iPDxpW4fVmN/tUGHaurVKN6UoPxexQuWCfF5GIMwLxS5u5Yl+MraTC
+ OyuFOsjbWzdmckq0yB86UasjAcfY1doYwDkBvWwr67pDSogFQozzrFP/AbP3wE7KAUs1
+ sHoj0M5qw8Mn45guvJ+CUJZb88eecwzfQv087nde9oEggPYOo3/zHhJSsrRaRjUXvE8N
+ l7/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774629902; x=1775234702;
+ d=1e100.net; s=20251104; t=1774629905; x=1775234705;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=76pt2dDyK109O4DclIsLAZjjAPxT8fp7+YkgIE/RghQ=;
- b=IGsRkIVxXnpCIpjknTb2qdeFeySr7gkYh0ehPg5VCFKUaBgHeu8e6RhnrM5Epqk4d1
- qaUGQhy1l4RkJy3CjNg3/xI+wBd/Fz57tz8oxdNZzZQDzLvW3/HL8QwBATx9NxqeME09
- 1XCVEkohB/lcQ17mIG2sEtvwO2JheHOjfw1lz7Vg2XfjD1ADnhPYWul4mvT0OVsqIUZl
- /9yxPtx3ga1ySt6Q5ceRXZTTayzhNr0qi3TSky8BT0ng8DRy/q+Hq7cZJ1g5AXetLG+0
- xYgxiIpEODsjzXl349K3LMN8I+RdIABImxR0z4slfi/9ZCQDe0V5+gRoJMTh9R1ECxFj
- QpHg==
+ bh=/IALcLXX/d7LO0liU9vJMgW15Lrt2XEwGveOJyMimkI=;
+ b=QGQCv8Hvt9+O7utJV2cCd9vyWV6ZMhL5E6sQ7x/tTjNAF7FI+41g5Ts5I2m4NOpJuE
+ sD7ehm/jEBMvSLbX9H95u4VSrx9+udyySX64QjDCbS2kI+e4U7UCDzcs5aQpY07co2EW
+ cgIb8rRFvxJ47+6JOqe8Kf0aDX+OWrVLbrusn/7ZkPFmeRE88L7JqCcGEvt/PpWcDOXQ
+ sornvyzqHqTS6ujvLMXMvhZaSMSIdiQnECpjrmh77V0HLbvjAv2T+GPVOqxr2P6wEF71
+ LxgR8wTbirkWLpPNVch+aSFWBNru8mPltN09+ibooQspgFhiEIxXjoqjgP0SXDy2Hp7r
+ fCUA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUlyVTbbKCsiqmCyVTwFANBsDPXgC65vpnYdZ70OcqtAFFUVda250MlVZCQaSf0ILABNedBu24TEQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzHD+1uXJh+ALkXCVAMzzc4ywE0jpUVxim+hFczXmytXyIXIyK5
- a3Hw/9TtbXvOGilBPMtgQDWh/z7Y4u4ZwK8hee+lldwStaG0WwPhZfMnxiSir8JfRVs=
-X-Gm-Gg: ATEYQzx5f3DNdbrQ9aqlSSaDgjLo9niNGxWqoEOfEo3CSyF2maFW0rE3EBV8pNylY7p
- 7Gq/JS/TT04geHFtvMdxJXX+r6eDe6zU9/uzLbUJKC3kjDIzRnAH7XUolpZ0FRSP1Zh6+JsnZPM
- gJIBdkmXjiVy3c6xeKvd4AXm6zngG3xTwB1g7K3LOdCp+cPIfoyKY4zf/ahIt9PoK844IN+Ztf8
- bQVVSkHvIXne32oyS2i4WwPCIQEfFvZUbGszyJfXXJzVfcSHqD1AzBPIfsoW8E74PgQWH6V4rua
- WVVMp8grVINzNvh32pR1dvFdJc7gAMLkN4ZAyfjd8gGGMFlgzxRDcAXjlNixbrkiMYcWJ4f2X2T
- izRauj4BJ1oN5URLZ3umf7M1GryavhtZ7NHEzdXl+WDMIjWjDW9bKOkyNbbBeVuwuMCV+tQJWkI
- 1CC3RCZgmjMZoOUbtvMrYT7TbfKRUvko4jJw6SQTzRyU7VR7oYvoKhyrrSGrSS4oHdVHhP7UVlf
- 0GJ
-X-Received: by 2002:a17:902:fc4b:b0:2aa:d67b:ef96 with SMTP id
- d9443c01a7336-2b0cdcaa72dmr35335915ad.31.1774629902165; 
- Fri, 27 Mar 2026 09:45:02 -0700 (PDT)
+ AJvYcCX5+1TRKlQr9t8/4c4ZQKGjNFYx/3DZVH9+JIjHcuqcFSL8TVyaZ252YeAd8KWscvdY/e8X7uIVrA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9y6FiSCgwxYYHxKZFZkdX53Rv7ASJH3+A7ugdbfx4uOY6UHfy
+ qofD2J0SLUA3voN6jdS4Wb/42bR2vAKqT9HnR6H8b87VtgRX6CR9JTG1rp3JlEfw/c0=
+X-Gm-Gg: ATEYQzwvkGeo+42HbedKW2sGnSnkKIrMmfd70WsT7Z+XXe4H1EELgApfgbdxiOkunmn
+ VlqFKleODlOpruROZdph7Vwge82vo733ZjR3EJb4q/HM9aHyYwcJSA8tcWs68rToXqWycpkgixC
+ gcEohBIug/FzEPUOZEY1+y5TP9UV07fUtlIcNyHTiJWBpn0sigetZGvbLJk4B/c3V9MttQLoTRE
+ g714S0CK0J3CqbP5mei44jGOLmGZUHBSysbiOLvF8EK9Bl7YvkEzZqwlYBfj8jGIyEPW3O2z+K9
+ DTCpae7D+mW4JNuZem5hGJ4LGzNhISHwoIFQXRnmUlIPLTiW2zOzUok5NNTTUfysrnDcysHg/PO
+ OzNGKxGn+kuQySaZzXitPDljTUhTCWjYfiib977HsaunjU03OYw+FrbImsqhAiuWDIXhJifiRjC
+ ILg+eV7NIzFu7Qx1GLsIIRN2d0mgiu7HIn6eHpXOHMWZNtUKLD1GmLK9i59FXG4z/PBiEjJrsn3
+ GUu
+X-Received: by 2002:a17:902:e883:b0:2b0:4a57:e480 with SMTP id
+ d9443c01a7336-2b0cdd21003mr37122195ad.45.1774629905249; 
+ Fri, 27 Mar 2026 09:45:05 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b0bc882339sm63890655ad.43.2026.03.27.09.45.01
+ d9443c01a7336-2b0bc882339sm63890655ad.43.2026.03.27.09.45.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 09:45:01 -0700 (PDT)
+ Fri, 27 Mar 2026 09:45:04 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, jim.macarthur@linaro.org,
  qemu-arm@nongnu.org, philmd@linaro.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 08/12] target/arm/tcg/translate-m-nocp.c: make compilation
- unit common
-Date: Fri, 27 Mar 2026 09:44:45 -0700
-Message-ID: <20260327164449.596767-9-pierrick.bouvier@linaro.org>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-stable@nongnu.org
+Subject: [PATCH 11/12] target/arm/tcg/translate.c: remove MO_TE usage
+Date: Fri, 27 Mar 2026 09:44:48 -0700
+Message-ID: <20260327164449.596767-12-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260327164449.596767-1-pierrick.bouvier@linaro.org>
 References: <20260327164449.596767-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,47 +106,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+dc->be_data is already set just above in the same function:
+```
+    dc->be_data = EX_TBFLAG_ANY(tb_flags, BE_DATA) ? MO_BE : MO_LE;
+```
+
+Cc: qemu-stable@nongnu.org
+Fixes: a729a46b05a ("target/arm: Add wrapper macros for accessing tbflags")
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/tcg/meson.build | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 1e9c147e4d2..eb87eb63c1b 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -27,7 +27,6 @@ arm_ss.add(files(
-   'cpu32.c',
-   'gengvec.c',
-   'translate.c',
--  'translate-m-nocp.c',
-   'm_helper.c',
-   'mve_helper.c',
-   'op_helper.c',
-@@ -58,6 +57,7 @@ arm_common_ss.add(files(
- ))
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 56ef1e0eb59..4546bbeeeff 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -6344,7 +6344,6 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
  
- arm_common_system_ss.add(
-+  decodetree.process('m-nocp.decode', extra_args: '--decode=disas_m_nocp'),
-   decodetree.process('mve.decode', extra_args: '--decode=disas_mve'),
-   decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
-   decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
-@@ -72,6 +72,7 @@ arm_common_system_ss.add(
-   'psci.c',
-   'tlb_helper.c',
-   'tlb-insns.c',
-+  'translate-m-nocp.c',
-   'translate-mve.c',
-   'translate-neon.c',
-   'translate-vfp.c',
-@@ -83,6 +84,7 @@ arm_user_ss.add(files(
-   'hflags.c',
-   'neon_helper.c',
-   'tlb_helper.c',
-+  'translate-m-nocp.c',
-   'translate-mve.c',
-   'translate-neon.c',
-   'translate-vfp.c',
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         dc->vfp_enabled = 1;
+-        dc->be_data = MO_TE;
+         dc->v7m_handler_mode = EX_TBFLAG_M32(tb_flags, HANDLER);
+         dc->v8m_secure = EX_TBFLAG_M32(tb_flags, SECURE);
+         dc->v8m_stackcheck = EX_TBFLAG_M32(tb_flags, STACKCHECK);
 -- 
 2.47.3
 

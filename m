@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98E9210ED674
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8475E10ED661
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:46:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67UZ-0005vT-R4; Fri, 27 Mar 2026 09:44:53 -0400
+	id 1w67WJ-00019j-9x; Fri, 27 Mar 2026 09:46:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67UU-0005tF-1G
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:46 -0400
+ id 1w67Vn-0007Qb-Gw
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67UR-0006E3-Qh
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:44:45 -0400
+ id 1w67Vi-0006g7-VB
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619083;
+ s=mimecast20190719; t=1774619161;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CchJGhUuuvvblu2UT/R6MNYAdi5C/aV9FBoBW6aVsYY=;
- b=X8YU8TPotuA63ufmIbL9vR+naCMQYiNPfBQN8MQkX77VTRQphc9uOo+ocT4pMSaWF+DFLu
- cuS+5MXdENEfdT8t8uSKz9Vms6EbpI9DYRcfvJ4I3CxqgQHWE1G/ajdgPd2h0KhxTngR9S
- bJpSG3LgLZvCnILE2Ff5tjgS/yKQJ8I=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ozMMMbc5i4osCd27yTtYVpRq0NefVxtoYxUcTIpyOtQ=;
+ b=fjqpq7pUG9FCkYgXAaELOivkvwU1kpXEpRTy8pGS7GZFa7kWIxhyHJNE1x6v9NmDGfPAgR
+ FINsFGKqT1T9aW/LpoVEJQMXh1Z5F+C+Kzycdh0Gm8j82HJG57NxVcr4BpuhFbiHt2twJs
+ fQGmVyR7aj3E8loSZMZQ10SewpAKYB8=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-21-w73SYVBfPsmpuZQBgO4lYg-1; Fri,
- 27 Mar 2026 09:44:38 -0400
-X-MC-Unique: w73SYVBfPsmpuZQBgO4lYg-1
-X-Mimecast-MFC-AGG-ID: w73SYVBfPsmpuZQBgO4lYg_1774619076
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-13-Oq34NabwP6-24Tg-o-cfLg-1; Fri,
+ 27 Mar 2026 09:45:57 -0400
+X-MC-Unique: Oq34NabwP6-24Tg-o-cfLg-1
+X-Mimecast-MFC-AGG-ID: Oq34NabwP6-24Tg-o-cfLg_1774619155
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BCDDB195608C; Fri, 27 Mar 2026 13:44:35 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1A42818005B0; Fri, 27 Mar 2026 13:45:55 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 129BC1800673; Fri, 27 Mar 2026 13:44:28 +0000 (UTC)
+ id 7719A1800673; Fri, 27 Mar 2026 13:45:48 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,14 +66,15 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 03/15] block: Use glib2 instead of strcasecmp/strncasecmp
-Date: Fri, 27 Mar 2026 15:43:49 +0200
-Message-ID: <20260327134401.270186-4-kkostiuk@redhat.com>
+Subject: [PATCH v2 14/15] storage-daemon: use same link arguments as other
+ tools
+Date: Fri, 27 Mar 2026 15:44:00 +0200
+Message-ID: <20260327134401.270186-15-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: aqoMq9NIsYZA8SycrJ7QkdwhvAwujBQdwPdwYJnd0VI_1774619076
+X-Mimecast-MFC-PROC-ID: 62oW4YpGBDlb7mAOv77B7PoIYlMrFbRwWUR-lPhykv0_1774619155
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -86,7 +87,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,34 +103,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a change in semantics. g_ascii_strcasecmp() doesn't honour
-locale but strcasecmp() does. But this is OK for at least one reason:
- (1) QEMU always runs with the C locale so there's not an actual
-     behaviour change here
- (2) we want the comparison on url prefix and it should be a plain ASCII
-     one, not to do weird things with "I" in Turkish locales,
-     so g_ascii_strcasecmp() is better as it's explicit about that
+From: Paolo Bonzini <pbonzini@redhat.com>
 
-Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Reviewed-by: Kevin Wolf <kwolf@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- block/curl.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ meson.build                |  8 ++++----
+ storage-daemon/meson.build | 16 ++++++++--------
+ 2 files changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/block/curl.c b/block/curl.c
-index 66aecfb20e..bb72962d25 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -871,8 +871,8 @@ static int curl_open(BlockDriverState *bs, QDict *options, int flags,
-         goto out;
-     }
+diff --git a/meson.build b/meson.build
+index 1087e8c106..4a3fc306b7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4507,15 +4507,15 @@ if xkbcommon.found()
+ endif
  
--    if ((!strncasecmp(s->url, "http://", strlen("http://"))
--        || !strncasecmp(s->url, "https://", strlen("https://")))
-+    if ((!g_ascii_strncasecmp(s->url, "http://", strlen("http://"))
-+        || !g_ascii_strncasecmp(s->url, "https://", strlen("https://")))
-         && !s->accept_range) {
-         pstrcpy(state->errmsg, CURL_ERROR_SIZE,
-                 "Server does not support 'range' (byte ranges).");
+ if have_tools
+-  link_args = enable_modules ? ['@block.syms'] : []
++  tools_link_args = enable_modules ? ['@block.syms'] : []
+   qemu_img = executable('qemu-img', [files('qemu-img.c'), hxdep],
+-             link_args: link_args, link_depends: block_syms,
++             link_args: tools_link_args, link_depends: block_syms,
+              dependencies: [authz, block, crypto, io, qom, qemuutil], install: true)
+   qemu_io = executable('qemu-io', files('qemu-io.c'),
+-             link_args: link_args, link_depends: block_syms,
++             link_args: tools_link_args, link_depends: block_syms,
+              dependencies: [block, qemuutil], install: true)
+   qemu_nbd = executable('qemu-nbd', files('qemu-nbd.c'),
+-               link_args: link_args, link_depends: block_syms,
++               link_args: tools_link_args, link_depends: block_syms,
+                dependencies: [blockdev, qemuutil, selinux],
+                install: true)
+ 
+diff --git a/storage-daemon/meson.build b/storage-daemon/meson.build
+index 5e61a9d1bd..fc088cbea7 100644
+--- a/storage-daemon/meson.build
++++ b/storage-daemon/meson.build
+@@ -1,14 +1,14 @@
++assert(have_tools)
++
+ qsd_ss = ss.source_set()
+ qsd_ss.add(files('qemu-storage-daemon.c'))
+ qsd_ss.add(blockdev, chardev, qmp, qom, qemuutil)
+ 
+ subdir('qapi')
+ 
+-if have_tools
+-  qsd_ss = qsd_ss.apply({})
+-  qsd = executable('qemu-storage-daemon',
+-                   qsd_ss.sources(),
+-                   link_args: '@block.syms', link_depends: block_syms,
+-                   dependencies: qsd_ss.dependencies(),
+-                   install: true)
+-endif
++qsd_ss = qsd_ss.apply({})
++qsd = executable('qemu-storage-daemon',
++                 qsd_ss.sources(),
++                 link_args: tools_link_args, link_depends: block_syms,
++                 dependencies: qsd_ss.dependencies(),
++                 install: true)
 -- 
 2.52.0
 

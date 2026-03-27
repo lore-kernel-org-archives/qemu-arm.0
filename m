@@ -4,84 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D4D810ED65E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2071210ED663
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:19:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Bh-0006Ny-B1; Fri, 27 Mar 2026 07:17:13 -0400
+	id 1w65CU-0007SA-Gq; Fri, 27 Mar 2026 07:18:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Bc-0006LH-DS
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:08 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1w65CH-00076B-JR
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:49 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65BZ-0007WS-UJ
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:08 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-43b40fb7f95so1730652f8f.3
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:05 -0700 (PDT)
+ id 1w65CE-0008MW-BD
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:49 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-48704db565eso28468105e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610224; x=1775215024; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610265; x=1775215065; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4YrZovDto6t0FqJWMN8zdd2dG3ackVIujvm5OvxbxII=;
- b=w+4rZU36cxBSdOuKiyZPG6BP273oRmume/ZPlRiGRLvwJWtEHoOpOv7g/BxdierTbk
- bpMFji5hO6xdXFDtYrcqeMm27SyfnnSec8UfDLW87sFnmY8sBsXkGxwz7beaRU19PJVh
- ISbvki48l3wFm34ADYII8HyAx/W7+0GgNkhIoRbMkJoaCIwoPAenH9gloECf6zPifIii
- p0ouKPjz7Klcpkw9UvCQFWIY3y9QcxAKc+mRdnxIlv/G96zL0+XAmjZIXOMHcxYQ3PVX
- Tuvt+P5ijrFwtRNCPSEnPjCGAzgCugucE1wtSzUh4SGxpr5Q7cwwL4LKfmQ59ySZLRoo
- YmJQ==
+ bh=6tWi/PxhtvKJwY9Kw34JP97te2WZJQugRjJr7g9GzB4=;
+ b=T19M62nSIxLA8vb3BA9UygT5FTiQTAqbPFe+G3EUX1Yu3Pc2INuMZsOt9NMiP8tsOa
+ wazcdrqknnuu6ga8aLq87F9cbd1lq3FVvCVfa2UD/PolxDGvtJRwoVSSkot5xV9mO2aj
+ vufN52Z8pLaMizyJJ6K/eN3j/Te2M/jFepu3i4F3RyT6Rj90TSC4CS+qb16DPTam8TqH
+ g+F8tCXXnBqYcjAbNeT8Z8uEoipiVGEr51VDS37+5EYf8sWnuJTIxRVtAjcH4x4JfQPU
+ fcyEl+gRH8lrEpfi7Y9S79hgyYo7yrFbPmKI3ICCEoeIcChZQJMVUi391dU1bSySQzNP
+ zMZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610224; x=1775215024;
+ d=1e100.net; s=20251104; t=1774610265; x=1775215065;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=4YrZovDto6t0FqJWMN8zdd2dG3ackVIujvm5OvxbxII=;
- b=RJPxcufOcrwDS3KV7iDFkVnBYy6muMTNj2NQNog3vXZLmh7BeEu/ylV7epcWZcBxtJ
- 7DRgyx1T+0gzOXO1iYdV3kbQb0r3lxVBpeku/cpj1a+hzy1QeuOCBgYdrgawPxVwLe7V
- XL+pRQ8QGP/w5rlNw5XrQfpICv5Tb+D68cP0ngEhA78x/4BYHKa0caI2dS9+kocHLwNL
- CE1XLbfifJ16S5HN9RtYB4jEqsi36rD2eWaK6JeTMs8W1NVqh0UVU4ekII3S4ICEE4L6
- bnxhHdrMsEFzyUt9N2sBnHhb55dGlifVN09DszoMgA1YMbBgPTSJ8rNnMs/PW2qs5yTy
- c4Bg==
-X-Gm-Message-State: AOJu0YyeUKjSFCXNwDWIMM8TAiNyYjB8bJicqMf+9obXM3kifFbSNmNt
- 0abDCnMaoubKc1NNyhV8C0Vk18sZfwvpLrgD/n9AbAZF+7hmBfGxOoA4HbwRyFxP1tlTW8vZDnd
- LAhVvu+g=
-X-Gm-Gg: ATEYQzwdUY8gyIbObBnHcQJRkbs2PJGI481tGST1xTctX8k4sUItnAibQo/UaZXI7uK
- p8T4x/LYPIWYg9HqF907gKo7Nj/4iWlml/Iw4B0VSlqV0eVsMYs2QZaj7+GPmZldqcE7x1zjAe0
- +GvH6nSsqxjizB0gJUxyE+yb8/mTHVtaEvFw6BaClU3kcpc+Oh7rY8mkDcSFCxTJa9UPOsxev+y
- SZ9GXuB8JOm/r4jZdm/J56CmpNyfdCm8yIvrfZBaX0QM/HES0X2q6kSc+Ku1L7hhRPaf0gzIxok
- 6LHV5//z03/97Gyzs8UPqurIjsPe1CAkPITfmMv++3v+kVzQn3L3oetNHPZrzTWYl4VPV6INkCA
- aH1RdBzRldkXjNqmXl6lo+rpEofgPH1osStjVgiD0xQ2eet8zrUAbqsHDFYsyLrgx2rkzPlqXpU
- qiK/cPkCDqRmcWTRLyGv9DqYrN9G/m7exFS7Ntbex2z/wXxd5krxaDg5WtJoNGqDrTa1Pd942tl
- VwQU8qaUd8nQ7clJnOW5Kc7pDIIKUk=
-X-Received: by 2002:a05:6000:22c2:b0:439:b3bb:2777 with SMTP id
- ffacd0b85a97d-43b9e9eb148mr3219353f8f.22.1774610223787; 
- Fri, 27 Mar 2026 04:17:03 -0700 (PDT)
+ bh=6tWi/PxhtvKJwY9Kw34JP97te2WZJQugRjJr7g9GzB4=;
+ b=YM9g6wnZTCaVQXlTVswKibCMGc+ydD4PH0Q4sntZdWxHg2Bm+45rlnsE1fLeJ8E1eC
+ k7epRxDLJ7piaXdOSLwuGXc4VP2MxuxtNV4qQLmVhVKz8BcZjy3qgPJBvn121S0BIdBr
+ /QsfBkJn3js6b72G7Ss/vcw1XeoCHNrYa2eg+JER4KtZY9i1O73LfCwckXYEhtBmFCb2
+ GSltvLtKOgnxNXjrn+uxPFb5EiJPhrPgwO8X17GbeOlbUVzQ1qliIbdEEaMDw4RgDpOq
+ PlnjzxzKr9Xqro7Irh02imA/d1PdlU+IpsMrveDokQdRSj7/P/aEiW3dtnEMmEZQBKVi
+ Ik1A==
+X-Gm-Message-State: AOJu0YycTAD6j5PKkQv/AU72A2DpDIFYAVkRSSBeCMd31K5jPG7yJYIm
+ debaYb6RDd5I4QoxNULyjVZ/d0OqW2B5nyZ/sUPoZkRwCu1aDCGK0JEdfP+jwsTXGF8JUVHRvgD
+ QDsjFs/A=
+X-Gm-Gg: ATEYQzzECjBjj5iSQINpuDS0tT4WJpxRLc7tl4E73Z9cdP768e8xRXvfECK31XmMFGA
+ Y1YJCgl/Trpcoxt9MODx+rU8sp40OuhfXC5EoUFzQWx8ph7kO8GEz1eQOVJeFBXWIBt+sSHFWVo
+ Xb1r85UaLQjH9YlLVf2PvnJUz/JRqtFg7ma1XexbxVguujPY2FesrCPS3gN9rCcRA+KV5s3eXH3
+ G/8V7aHPPtbwbr1wPtof8+PbXmupSypW9F9QM180g5w8UZvNT7xAmHAsTtddpZFmqvSiSAinW/+
+ WOEJRMhZ8tphlfDBxYE+clBIFnLlh2P1PMdE/AM1TommNoo3Qrv2Os7xelLJ55Jg39AP09c0eUr
+ p5ShZHNHSdfNeL7/nFvP/ZKgZ0n6TQRw3c+vl9egB++coYAUoagcbsRLAkFUC6mkJqAhP5fMoed
+ P2AG1+Z86cexzRN23Yo/u9bqOC7W/vqODL5ChDeQg0b+6E1Vj2fZopB1MA9t/cPji6c7d8Gpc1n
+ U6vNTwZKDX9M+XUOfVFChDjEJE5auw=
+X-Received: by 2002:a05:600c:1f11:b0:480:1d0b:2d32 with SMTP id
+ 5b1f17b1804b1-48727d638efmr33451065e9.12.1774610262990; 
+ Fri, 27 Mar 2026 04:17:42 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.02
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:03 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:42 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 02/65] hw/core: Permit devices to define an array of link
- properties
-Date: Fri, 27 Mar 2026 11:15:57 +0000
-Message-ID: <20260327111700.795099-3-peter.maydell@linaro.org>
+Subject: [PATCH v2 43/65] hw/intc/arm_gicv5: Calculate HPPI in the IRS
+Date: Fri, 27 Mar 2026 11:16:38 +0000
+Message-ID: <20260327111700.795099-44-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,229 +102,513 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently we allow devices to define "link properties" with
-DEFINE_PROP_LINK(): these are a way to give a device a pointer to
-another QOM object.  (Under the hood this is done by handing it the
-canonical QOM path for the object.)
+The IRS is required to present the highest priority pending interrupt
+that it has for each domain for each cpu interface.  We implement
+this in the irs_recalc_hppi() function, which we call at every point
+where some relevant IRS state changes.
 
-We also allow devices to define "array properties" with
-DEFINE_PROP_ARRAY(): these are a way to give a device a
-variable-length array of properties.
+This function calls gicv5_forward_interrupt() to do the equivalent of
+the GICv5 stream protocol Forward and Recall commands.  For the
+moment we simply record the HPPI on the CPU interface side without
+trying to process it; the handling of the HPPI in the cpuif will be
+added in subsequent commits.
 
-However, there is no way to define an array of link properties.  If
-you try to do it by passing qdev_prop_link as the arrayprop argument
-to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
-does not provide the .set and .get methods in its PropertyInfo
-struct.
-
-This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
-a device you can use it like this:
-
-struct MyDevice {
-    ...
-    uint32_t num_cpus;
-    ARMCPU **cpus;
-}
-
-and in your Property array:
-    DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
-                           TYPE_ARM_CPU, ARMCPU *),
-
-The array property code will fill in s->num_cpus, allocate memory in
-s->cpus, and populate it with pointers.
-
-On the device-creation side you set the property in the same way as
-the existing array properties, using the new qlist_append_link()
-function to append to the QList:
-
-    QList *cpulist = qlist_new();
-    for (int i = 0; i < cpus; i++) {
-        qlist_append_link(cpulist, OBJECT(cpu[i]));
-    }
-    qdev_prop_set_array(mydev, "cpus", cpulist);
-
-The implementation is mostly in the provision of the .set and
-.get methods to the qdev_prop_link PropertyInfo struct. The
-code of these methods parallels the code in
-object_set_link_property() and object_get_link_property().  We can't
-completely share the code with those functions because of differences
-in where we get the information like the target QOM type, but I have
-pulled out a new function object_resolve_and_typecheck() for the
-shared "given a QOM path and a type, give me the object or an error"
-code.
+There are some cases where we could skip doing the full HPPI
+recalculation, e.g.  when the guest changes the config of an
+interrupt that is disabled; we expect that the guest will only do
+interrupt config at startup, so we don't attempt to optimise this.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- hw/core/qdev-properties.c         | 78 +++++++++++++++++++++++++++++++
- include/hw/core/qdev-properties.h | 41 ++++++++++++++++
- 2 files changed, 119 insertions(+)
+ hw/intc/arm_gicv5.c                | 202 +++++++++++++++++++++++++++++
+ hw/intc/trace-events               |   2 +
+ include/hw/intc/arm_gicv5.h        |   3 +
+ include/hw/intc/arm_gicv5_stream.h |  24 ++++
+ target/arm/tcg/gicv5-cpuif.c       |   9 ++
+ 5 files changed, 240 insertions(+)
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index ba8461e9a4..f8181b0d91 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -669,6 +669,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
-          * being inside the device struct.
-          */
-         .offset = (uintptr_t)elem - (uintptr_t)obj,
-+        .link_type = parent_prop->link_type,
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 989492d4b6..12cbf9c51e 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -376,6 +376,157 @@ static MemTxAttrs irs_txattrs(GICv5Common *cs, GICv5Domain domain)
      };
  }
  
-@@ -950,6 +951,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
-     qobject_unref(values);
- }
- 
-+void qlist_append_link(QList *qlist, Object *obj)
++/* Data we need to pass through to lpi_cache_get_hppi() */
++typedef struct GetHPPIUserData {
++    GICv5PendingIrq *best;
++    uint32_t iaffid;
++} GetHPPIUserData;
++
++static void lpi_cache_get_hppi(gpointer key, gpointer value, gpointer user_data)
 +{
-+    g_autofree char *path = object_get_canonical_path(obj);
-+    qlist_append_str(qlist, path);
-+}
++    uint64_t id = GPOINTER_TO_INT(key);
++    uint64_t l2_iste = *(uint64_t *)value;
++    uint32_t prio, iaffid;
++    GetHPPIUserData *ud = user_data;
 +
- static GPtrArray *global_props(void)
- {
-     static GPtrArray *gp;
-@@ -1059,9 +1066,80 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
-                                           OBJ_PROP_LINK_STRONG);
- }
- 
-+/*
-+ * The logic in these get_link() and set_link() functions is similar
-+ * to that used for single-element link properties in the
-+ * object_get_link_property() and object_set_link_property() functions.
-+ * The difference is largely in how we get the expected type of the
-+ * link: for us it is in the Property struct, and for a single link
-+ * property it is part of the property name on the object.
-+ */
-+static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
-+                     Error **errp)
-+{
-+    const Property *prop = opaque;
-+    Object **targetp = object_field_prop_ptr(obj, prop);
-+    g_autofree char *path = NULL;
-+
-+    if (*targetp) {
-+        path = object_get_canonical_path(*targetp);
-+        visit_type_str(v, name, &path, errp);
-+    } else {
-+        path = g_strdup("");
-+        visit_type_str(v, name, &path, errp);
-+    }
-+}
-+
-+static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
-+                     Error **errp)
-+{
-+    const Property *prop = opaque;
-+    Object **targetp = object_field_prop_ptr(obj, prop);
-+    g_autofree char *path = NULL;
-+    Object *new_target, *old_target = *targetp;
-+
-+    ERRP_GUARD();
-+
-+    /* Get the path to the object we want to set the link to */
-+    if (!visit_type_str(v, name, &path, errp)) {
++    if ((l2_iste & (R_L2_ISTE_PENDING_MASK | R_L2_ISTE_ACTIVE_MASK | R_L2_ISTE_ENABLE_MASK))
++        != (R_L2_ISTE_PENDING_MASK | R_L2_ISTE_ENABLE_MASK)) {
 +        return;
 +    }
++    prio = FIELD_EX32(l2_iste, L2_ISTE, PRIORITY);
++    iaffid = FIELD_EX32(l2_iste, L2_ISTE, IAFFID);
++    if (iaffid == ud->iaffid && prio < ud->best->prio) {
++        id = FIELD_DP32(id, INTID, TYPE, GICV5_LPI);
++        ud->best->intid = id;
++        ud->best->prio = prio;
++    }
++}
 +
-+    /* Now get the pointer to the actual object */
-+    if (*path) {
-+        new_target = object_resolve_and_typecheck(path, prop->name,
-+                                                  prop->link_type, errp);
-+        if (!new_target) {
-+            return;
++static int irs_cpuidx_from_iaffid(GICv5Common *cs, uint32_t iaffid)
++{
++    for (int i = 0; i < cs->num_cpus; i++) {
++        if (cs->cpu_iaffids[i] == iaffid) {
++            return i;
 +        }
-+    } else {
-+        new_target = NULL;
 +    }
++    return -1;
++}
 +
++static void irs_recalc_hppi(GICv5 *s, GICv5Domain domain, uint32_t iaffid)
++{
 +    /*
-+     * Our link properties are always OBJ_PROP_LINK_STRONG and
-+     * have the allow_set_link_before_realize check.
++     * Recalculate the highest priority pending interrupt for the
++     * specified domain and cpuif.  HPPI candidates must be pending,
++     * inactive and enabled.
 +     */
-+    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
-+    if (*errp) {
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++    int cpuidx = irs_cpuidx_from_iaffid(cs, iaffid);
++    ARMCPU *cpu = cpuidx >= 0 ? cs->cpus[cpuidx] : NULL;
++    GICv5PendingIrq best;
++
++    best.intid = 0;
++    best.prio = PRIO_IDLE;
++
++    if (!cpu) {
++        /* Nothing happens for iaffids targeting nonexistent CPUs */
++        trace_gicv5_irs_recalc_hppi_fail(domain_name[domain], iaffid,
++                                         "IAFFID doesn't match any CPU");
 +        return;
 +    }
 +
-+    *targetp = new_target;
-+    object_ref(new_target);
-+    object_unref(old_target);
++    if (!FIELD_EX32(cs->irs_cr0[domain], IRS_CR0, IRSEN)) {
++        /* When the IRS is disabled we don't forward HPPIs */
++        trace_gicv5_irs_recalc_hppi_fail(domain_name[domain], iaffid,
++                                         "IRS_CR0.IRSEN is zero");
++        return;
++    }
++
++    if (s->phys_lpi_config[domain].valid) {
++        GetHPPIUserData ud;
++
++        ud.best = &best;
++        ud.iaffid = iaffid;
++        g_hash_table_foreach(s->phys_lpi_config[domain].lpi_cache,
++                             lpi_cache_get_hppi, &ud);
++    }
++
++    /*
++     * OPT: consider also caching the SPI interrupt information,
++     * similarly to how we handle LPIs, if iterating through the whole
++     * SPI array every time is too expensive.
++     */
++    for (int i = 0; i < cs->spi_irs_range; i++) {
++        GICv5SPIState *spi = &cs->spi[i];
++
++        if (spi->active || !spi->pending || !spi->enabled) {
++            continue;
++        }
++        if (spi->domain != domain || spi->iaffid != iaffid) {
++            continue;
++        }
++        if (spi->priority < best.prio) {
++            uint32_t intid = 0;
++            intid = FIELD_DP32(intid, INTID, ID, i);
++            intid = FIELD_DP32(intid, INTID, TYPE, GICV5_SPI);
++            best.intid = intid;
++            best.prio = spi->priority;
++        }
++    }
++
++    trace_gicv5_irs_recalc_hppi(domain_name[domain], iaffid,
++                                best.intid, best.prio);
++
++    s->hppi[domain][cpuidx] = best;
++    /*
++     * Now present the HPPI to the cpuif. In the real hardware stream
++     * protocol, the connection between IRS and cpuif is asynchronous,
++     * and so both ends track their idea of the current HPPI, with a
++     * back-and-forth sequence so they stay in sync and more
++     * interaction when the cpuif resets.  For QEMU, we are strictly
++     * synchronous and the cpuif asking the IRS for data is a cheap
++     * function call, so we simplify this:
++     *  - the IRS knows what the current HPPI is
++     *  - s->hppi[][] is a cache we can recalculate
++     *  - the IRS merely tells the cpuif "something changed", and
++     *    the cpuif asks for the current HPPI when it needs it
++     *  - the cpuif does not cache the HPPI on its end
++     */
++    gicv5_forward_interrupt(cpu, domain);
 +}
 +
- const PropertyInfo qdev_prop_link = {
-     .type = "link",
-     .create = create_link_property,
++static void irs_recalc_hppi_all_cpus(GICv5 *s, GICv5Domain domain)
++{
 +    /*
-+     * Since we have a create method, the get and set are used
-+     * only in get_prop_array() and set_prop_array() for the case
-+     * where we have an array of link properties.
++     * Recalculate the HPPI for every CPU for this domain.  This is
++     * not as efficient as it could be because we will scan through
++     * the LPI cached hash table and the SPI array for each CPU rather
++     * than doing a single combined scan, but we only need to do this
++     * very rarely, when the guest enables or disables the IST, so we
++     * implement this the simple way.
 +     */
-+    .get = get_link,
-+    .set = set_link,
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++    for (int i = 0; i < cs->num_cpus; i++) {
++        irs_recalc_hppi(s, domain, cs->cpu_iaffids[i]);
++    }
++}
++
++static void irs_recall_hppis(GICv5 *s, GICv5Domain domain)
++{
++    /*
++     * The IRS was just disabled -- we must recall any pending HPPIs
++     * we have sent to the CPU interfaces. For us this means that we
++     * clear our cached HPPI data and tell the cpuif that it has
++     * changed.
++     */
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++
++    for (int i = 0; i < cs->num_cpus; i++) {
++        s->hppi[domain][i].intid = 0;
++        s->hppi[domain][i].prio = PRIO_IDLE;
++        gicv5_forward_interrupt(cs->cpus[i], domain);
++    }
++}
++
+ static hwaddr l1_iste_addr(GICv5Common *cs, const GICv5ISTConfig *cfg,
+                            uint32_t id)
+ {
+@@ -575,6 +726,7 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id, uint8_t priority,
+                         GICv5Domain domain, GICv5IntType type, bool virtual)
+ {
+     GICv5 *s = ARM_GICV5(cs);
++    uint32_t iaffid;
+ 
+     trace_gicv5_set_priority(domain_name[domain], inttype_name(type), virtual,
+                              id, priority);
+@@ -598,6 +750,7 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id, uint8_t priority,
+             return;
+         }
+         *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, PRIORITY, priority);
++        iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
+         put_l2_iste(cs, cfg, &h);
+         break;
+     }
+@@ -612,6 +765,7 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id, uint8_t priority,
+         }
+ 
+         spi->priority = priority;
++        iaffid = spi->iaffid;
+         break;
+     }
+     default:
+@@ -619,12 +773,15 @@ void gicv5_set_priority(GICv5Common *cs, uint32_t id, uint8_t priority,
+                       "priority of bad interrupt type %d\n", type);
+         return;
+     }
++
++    irs_recalc_hppi(s, domain, iaffid);
+ }
+ 
+ void gicv5_set_enabled(GICv5Common *cs, uint32_t id, bool enabled,
+                        GICv5Domain domain, GICv5IntType type, bool virtual)
+ {
+     GICv5 *s = ARM_GICV5(cs);
++    uint32_t iaffid;
+ 
+     trace_gicv5_set_enabled(domain_name[domain], inttype_name(type), virtual,
+                             id, enabled);
+@@ -645,6 +802,7 @@ void gicv5_set_enabled(GICv5Common *cs, uint32_t id, bool enabled,
+             return;
+         }
+         *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, ENABLE, enabled);
++        iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
+         put_l2_iste(cs, cfg, &h);
+         break;
+     }
+@@ -659,6 +817,7 @@ void gicv5_set_enabled(GICv5Common *cs, uint32_t id, bool enabled,
+         }
+ 
+         spi->enabled = true;
++        iaffid = spi->iaffid;
+         break;
+     }
+     default:
+@@ -666,12 +825,15 @@ void gicv5_set_enabled(GICv5Common *cs, uint32_t id, bool enabled,
+                       "enable state of bad interrupt type %d\n", type);
+         return;
+     }
++
++    irs_recalc_hppi(s, domain, iaffid);
+ }
+ 
+ void gicv5_set_pending(GICv5Common *cs, uint32_t id, bool pending,
+                        GICv5Domain domain, GICv5IntType type, bool virtual)
+ {
+     GICv5 *s = ARM_GICV5(cs);
++    uint32_t iaffid;
+ 
+     trace_gicv5_set_pending(domain_name[domain], inttype_name(type), virtual,
+                             id, pending);
+@@ -692,6 +854,7 @@ void gicv5_set_pending(GICv5Common *cs, uint32_t id, bool pending,
+             return;
+         }
+         *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, PENDING, pending);
++        iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
+         put_l2_iste(cs, cfg, &h);
+         break;
+     }
+@@ -706,6 +869,7 @@ void gicv5_set_pending(GICv5Common *cs, uint32_t id, bool pending,
+         }
+ 
+         spi->pending = true;
++        iaffid = spi->iaffid;
+         break;
+     }
+     default:
+@@ -713,6 +877,8 @@ void gicv5_set_pending(GICv5Common *cs, uint32_t id, bool pending,
+                       "pending state of bad interrupt type %d\n", type);
+         return;
+     }
++
++    irs_recalc_hppi(s, domain, iaffid);
+ }
+ 
+ void gicv5_set_handling(GICv5Common *cs, uint32_t id,
+@@ -767,6 +933,7 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+                       GICv5IntType type, bool virtual)
+ {
+     GICv5 *s = ARM_GICV5(cs);
++    uint32_t old_iaffid;
+ 
+     trace_gicv5_set_target(domain_name[domain], inttype_name(type), virtual,
+                            id, iaffid, irm);
+@@ -800,6 +967,7 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+          * L2_ISTE.IRM is RES0.  We never read it, and we can skip
+          * explicitly writing it to zero here.
+          */
++        old_iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
+         *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, IAFFID, iaffid);
+         put_l2_iste(cs, cfg, &h);
+         break;
+@@ -814,6 +982,7 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+             return;
+         }
+ 
++        old_iaffid = spi->iaffid;
+         spi->iaffid = iaffid;
+         break;
+     }
+@@ -822,6 +991,9 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+                       "target of bad interrupt type %d\n", type);
+         return;
+     }
++
++    irs_recalc_hppi(s, domain, old_iaffid);
++    irs_recalc_hppi(s, domain, iaffid);
+ }
+ 
+ static uint64_t l2_iste_to_icsr(GICv5Common *cs, const GICv5ISTConfig *cfg,
+@@ -942,6 +1114,12 @@ static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+     if (res != MEMTX_OK) {
+         goto txfail;
+     }
++    /*
++     * It's CONSTRAINED UNPREDICTABLE to make an L2 IST valid when
++     * some of its entries have Pending already set, so we don't need
++     * to go through looking for Pending bits and pulling them into
++     * the cache, and we don't need to recalc our HPPI.
++     */
+     return;
+ 
+ txfail:
+@@ -999,6 +1177,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+                                                IRS_IST_BASER, VALID, valid);
+         s->phys_lpi_config[domain].valid = false;
+         trace_gicv5_ist_invalid(domain_name[domain]);
++        irs_recalc_hppi_all_cpus(s, domain);
+         return;
+     }
+     cs->irs_ist_baser[domain] = value;
+@@ -1068,6 +1247,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+         cfg->valid = true;
+         trace_gicv5_ist_valid(domain_name[domain], cfg->base, cfg->id_bits,
+                               cfg->l2_idx_bits, cfg->istsz, cfg->structure);
++        irs_recalc_hppi_all_cpus(s, domain);
+     }
+ }
+ 
+@@ -1223,6 +1403,11 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     case A_IRS_CR0:
+         /* Enabling is instantaneous for us so IDLE is always 1 */
+         *data = cs->irs_cr0[domain] | R_IRS_CR0_IDLE_MASK;
++        if (FIELD_EX32(cs->irs_cr0[domain], IRS_CR0, IRSEN)) {
++            irs_recalc_hppi_all_cpus(s, domain);
++        } else {
++            irs_recall_hppis(s, domain);
++        }
+         return true;
+     case A_IRS_CR1:
+         *data = cs->irs_cr1[domain];
+@@ -1311,6 +1496,7 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                 } else if (spi->level) {
+                     spi->pending = false;
+                 }
++                irs_recalc_hppi(s, spi->domain, spi->iaffid);
+             }
+         }
+         return true;
+@@ -1320,7 +1506,12 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             /* this is RAZ/WI except for the EL3 domain */
+             GICv5SPIState *spi = spi_for_selr(cs, domain);
+             if (spi) {
++                GICv5Domain old_domain = spi->domain;
+                 spi->domain = FIELD_EX32(data, IRS_SPI_DOMAINR, DOMAIN);
++                if (spi->domain != old_domain) {
++                    irs_recalc_hppi(s, old_domain, spi->iaffid);
++                    irs_recalc_hppi(s, spi->domain, spi->iaffid);
++                }
+             }
+         }
+         return true;
+@@ -1331,6 +1522,7 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+ 
+         if (spi) {
+             spi_sample(spi);
++            irs_recalc_hppi(s, spi->domain, spi->iaffid);
+         }
+         trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
+         return true;
+@@ -1499,6 +1691,7 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
+ {
+     /* These irqs are all SPIs; the INTID is irq + s->spi_base */
+     GICv5Common *cs = ARM_GICV5_COMMON(opaque);
++    GICv5 *s = ARM_GICV5(cs);
+     uint32_t spi_id = irq + cs->spi_base;
+     GICv5SPIState *spi = gicv5_raw_spi_state(cs, spi_id);
+ 
+@@ -1511,6 +1704,8 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
+     spi->level = level;
+     spi_sample(spi);
+     trace_gicv5_spi_state(spi_id, spi->level, spi->pending, spi->active);
++
++    irs_recalc_hppi(s, spi->domain, spi->iaffid);
+ }
+ 
+ static void gicv5_reset_hold(Object *obj, ResetType type)
+@@ -1591,6 +1786,7 @@ static void gicv5_set_idregs(GICv5Common *cs)
+ 
+ static void gicv5_realize(DeviceState *dev, Error **errp)
+ {
++    GICv5 *s = ARM_GICV5(dev);
+     GICv5Common *cs = ARM_GICV5_COMMON(dev);
+     GICv5Class *gc = ARM_GICV5_GET_CLASS(dev);
+     Error *migration_blocker = NULL;
+@@ -1618,6 +1814,12 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
+ 
+     gicv5_set_idregs(cs);
+     gicv5_common_init_irqs_and_mmio(cs, gicv5_set_spi, config_frame_ops);
++
++    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
++        if (gicv5_domain_implemented(cs, i)) {
++            s->hppi[i] = g_new0(GICv5PendingIrq, cs->num_cpus);
++        }
++    }
+ }
+ 
+ static void gicv5_init(Object *obj)
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 4c55af2780..6475ba5959 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -242,6 +242,8 @@ gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t
+ gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
+ gicv5_request_config(const char *domain, const char *type, bool virtual, uint32_t id, uint64_t icsr) "GICv5 IRS RequestConfig %s %s virtual:%d ID %u ICSR 0x%" PRIx64
+ gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
++gicv5_irs_recalc_hppi_fail(const char *domain, uint32_t iaffid, const char *reason) "GICv5 IRS %s IAFFID %u: no HPPI: %s"
++gicv5_irs_recalc_hppi(const char *domain, uint32_t iaffid, uint32_t id, uint8_t prio) "GICv5 IRS %s IAFFID %u: new HPPI ID 0x%x prio %u"
+ 
+ # arm_gicv5_common.c
+ gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
+diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
+index fb13de0d01..b8baf003ad 100644
+--- a/include/hw/intc/arm_gicv5.h
++++ b/include/hw/intc/arm_gicv5.h
+@@ -37,6 +37,9 @@ struct GICv5 {
+ 
+     /* This is the info from IRS_IST_BASER and IRS_IST_CFGR */
+     GICv5ISTConfig phys_lpi_config[NUM_GICV5_DOMAINS];
++
++    /* We cache the HPPI for each CPU for each domain here */
++    GICv5PendingIrq *hppi[NUM_GICV5_DOMAINS];
  };
  
- void qdev_property_add_static(DeviceState *dev, const Property *prop)
-diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
-index d8745d4c65..58527e62d5 100644
---- a/include/hw/core/qdev-properties.h
-+++ b/include/hw/core/qdev-properties.h
-@@ -168,6 +168,32 @@ extern const PropertyInfo qdev_prop_link;
-     DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
-                 .link_type  = _type)
+ struct GICv5Class {
+diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
+index 136b6339ee..60c470b84c 100644
+--- a/include/hw/intc/arm_gicv5_stream.h
++++ b/include/hw/intc/arm_gicv5_stream.h
+@@ -151,4 +151,28 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+ uint64_t gicv5_request_config(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+                               GICv5IntType type, bool virtual);
  
 +/**
-+ * DEFINE_PROP_LINK_ARRAY:
-+ * @_name: name of the array
-+ * @_state: name of the device state structure type
-+ * @_field: uint32_t field in @_state to hold the array length
-+ * @_arrayfield: field in @_state (of type '@_arraytype *') which
-+ *               will point to the array
-+ * @_linktype: QOM type name of the link type
-+ * @_arraytype: C type of the array elements
++ * gicv5_forward_interrupt
++ * @cpu: CPU interface to forward interrupt to
++ * @domain: domain this interrupt is for
 + *
-+ * Define device properties for a variable-length array _name of links
-+ * (i.e. this is the array version of DEFINE_PROP_LINK).
++ * Tell the CPU interface that the highest priority pending interrupt
++ * that the IRS has available for it has changed.  This is the
++ * equivalent of the stream protocol's Forward packet, and also of its
++ * Recall packet.
 + *
-+ * The array is represented as a list of QStrings in the visitor interface,
-+ * where each string is the QOM path of the object to be linked.
++ * The stream protocol makes this asynchronous, allowing two Forward
++ * packets to be in flight and requiring an acknowledge, because the
++ * cpuif might be about to activate the previous forwarded interrupt
++ * while we are trying to tell it about a new one. But for QEMU we
++ * hold the BQL, so we know the vcpu might be executing guest code but
++ * it cannot be in the middle of changing cpuif state. So we can just
++ * synchronously tell it that a new HPPI exists (which might cause it
++ * to assert IRQ or FIQ to itself); this works as if the cpuif gave us
++ * a Release for the old HPPI.  The cpuif will ask the IRS for the
++ * HPPI info via a function call, so we do not need to pass it across
++ * here.
 + */
-+#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
-+                               _linktype, _arraytype)                   \
-+    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
-+                .set_default = true,                                    \
-+                .defval.u = 0,                                          \
-+                .arrayinfo = &qdev_prop_link,                           \
-+                .arrayfieldsize = sizeof(_arraytype),                   \
-+                .arrayoffset = offsetof(_state, _arrayfield),           \
-+                .link_type = _linktype)
++void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain);
 +
- #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
-     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
- #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
-@@ -219,6 +245,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
- /* Takes ownership of @values */
- void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
+ #endif
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index 6f8062ba17..ed7c30c07c 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -157,6 +157,15 @@ static void gic_recalc_ppi_hppi(CPUARMState *env)
+     }
+ }
  
-+/**
-+ * qlist_append_link: Add a QOM object to a QList of link properties
-+ * @qlist: list to append to
-+ * @obj: object to append
-+ *
-+ * This is a helper function for constructing a QList to pass to
-+ * qdev_prop_set_array() when the qdev property array is an array of
-+ * link properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
-+ *
-+ * The object is encoded into the list as a QString which is the
-+ * canonical path of the object; this is the same encoding that
-+ * object_set_link_property() and object_get_link_property() use.
-+ */
-+void qlist_append_link(QList *qlist, Object *obj);
++void gicv5_forward_interrupt(ARMCPU *cpu, GICv5Domain domain)
++{
++    /*
++     * For now, we do nothing. Later we will recalculate the overall
++     * HPPI by combining the IRS HPPI with the PPI HPPI, and possibly
++     * signal IRQ/FIQ.
++     */
++}
 +
- void *object_field_prop_ptr(Object *obj, const Property *prop);
- 
- void qdev_prop_register_global(GlobalProperty *prop);
+ static void gic_cddis_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
+ {
 -- 
 2.43.0
 

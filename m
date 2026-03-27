@@ -4,112 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F06A10AB830
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 14:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59C810ED67F
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 14:50:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6822-0006AD-HM; Fri, 27 Mar 2026 10:19:26 -0400
+	id 1w68W2-0006k6-Cs; Fri, 27 Mar 2026 10:50:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w681x-00068P-Mw
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:19:21 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ id 1w68Vw-0006jR-PA
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:50:23 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w681q-0007S6-2B
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:19:21 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-64e9f9226a7so2379014d50.2
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 07:19:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774621150; cv=none;
- d=google.com; s=arc-20240605;
- b=TSXZoHfLurShuGzrq8Sp4HcIAjF+eJjzD6R5cU/a2Fr2optbOVpip4THYJ8iFTxiFO
- 9C/AW3JDNRK1wCX1Mqefz1DRxQuuGRsUwnYxnYepJyJTM23hO3qTLjkfHQnN4vcpZNmI
- inoOSZq3nF1TUi9hNxyvFiXbYWHOEBuPzvqQpB0He/Qc4O8Sr0a3ALoKt2P9WiVtZwzF
- G/Msz+dMWEKPPbWY95sS9+zinSDwKUKZnKuU9Dlf2mWA+NuQ2PVDFTG3lT2b0ztguI4l
- ri9+5fQdUt1Aw2f01AutstzEwJtxBh2NBIwhOZsEW32q6n1krYgh55m4PtSvpAfnR0LM
- r7Kg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=XHqKNwchX9pcFRNbqu4Pgrl3e/KIoiPTpQ/JU0j/py4=;
- fh=a4BClCWGn89zL17gT7ZHQb0nTYgaZN/3ZsgdH5FCJck=;
- b=LDJ2YDA7TieIy6ZjaQktGvRrevYJ60SM3ZCN35b9Zn0MbmyslhEl0TbR/tCL/HPnvg
- pmXc9mnYXR1N/A9tsuFLGOOElwymMiqN0Gw+2yhzXtSOSHdS1w9owHWm3mi+8G6mGWir
- INniYcL+FVwjR8ENnbarhj86/vVqSGmaUXujHXJN9oU9D+l+Rnx/7ZuwPVLVqWspR/FO
- C37APQpwqtDLgH2S4qv6jCQh3xT3r6IKhXmUc7gj5oe/Y3L0YUrNB/tadw1aopUoWvLf
- RLkjs/rDgD0/e0Fa3xJGGHWN1oPG4+c162pzq3xanXozgGrdHDW+SmxtifYSguH6/DDv
- UwjA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1w68Vr-0005U1-KU
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:50:17 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-486fe36cfabso16975485e9.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 07:50:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774621150; x=1775225950; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=XHqKNwchX9pcFRNbqu4Pgrl3e/KIoiPTpQ/JU0j/py4=;
- b=k5Rg2VuvDSiL7c1RdZDP6+bSx/fem5gKWm9LkNQ5bjjEcB67c0joJht0KxrWc1HTKB
- odU/GG0aEgB+vWXF7DXA5bBKd2HCnNBa60QXzpAMeBNmMDpSVgEKBRdIKxJRpFrMAFIG
- ozj4EMxrfVZMesoZ+9fgPCduCEx+iFaZV6ncM6TBsXsg62qz6hXBJh4utuojIrGP5FD1
- OibhRhvMATcHnVqSc2q/00GrH94J2TADvr6Z+FknmHadmr9cv8WZCILzI+R7w70uCcgr
- Nru6QESKIyL8nWp6iS+AjZVCS67USb/uRm5Jd9x4AJFLYdnXc2/yXyRMzYFOn++jSP5k
- 2Rww==
+ d=linaro.org; s=google; t=1774623013; x=1775227813; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=R+HW13UG3MLKGMw2KjovNJw38Kv1EGF+VIWRguG2wFE=;
+ b=rcynbq2WZME1G2pqlX5PrsAuknudV8jFiumzjv/531/4R0STiLgMJrVCJWrI1RJqLw
+ Jwu6iuKDts72pnGIFwJbi4cqnVej5ldu5+1e7Jvj3uoj4+S76fEa/q1ZNRv3WFmUn4mE
+ XGlKgEZCcFm4eZcjTJz7FAaIkWrwa8X4GqSV3iNkpwbKfwSQGbEEl+l0K/BCdVwnpEhD
+ 7PrfGPdli6afZLr+/w8I4wsa+WFl3+rQJmaGivM9ul+rTsnT6aCn0l9Bo64wI63LJiz3
+ NCPLGmxU6xQz/cVT6sFkXnsnEjZE/unt6l2v4FKZskESkUlGGRIUz7Jst0W3vxI7tbEq
+ 7XZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774621150; x=1775225950;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1774623013; x=1775227813;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XHqKNwchX9pcFRNbqu4Pgrl3e/KIoiPTpQ/JU0j/py4=;
- b=n0ZefqHpUh6xvQHi28zQcd+xv0l/x7eoFBYOPgs/C34IHbj9fT2PZ90905o65OFhSP
- Acs9ws43bFwrrbeaRxifLeg9A1Zq2Q1AB0OKjPu4ENZEx66OF2nro+fL/BuZiiUxxgep
- NUZoTvescfBksNj63pnpXtNX7g+jvoF33fpuZKmbUT714mEG6knYV9+IDWNEKY5MNHdm
- SH1/7i+rY0fBiOyfV5t0T1XiNySXeR/Lu//9lGsw06O/bMsKK8A92K3HUjWH5QEfjG26
- hi/aFmv9RXyZtK258a2pK8yPBC+a+vT8ZMPcgFEBRIqa41b0TRbJ/C3KFTYUR92j/bNf
- OOwQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXyXf8TlHBpDm/kIDH23MfUTxxAGqj0kqtw2huWKKxmFze1YTNosfeuOvqRA9tFPbaxZxjvJt+77A==@nongnu.org
-X-Gm-Message-State: AOJu0Yxb1K4ZhyN+KcLp1eNKSBY7aIgmi8klpIR15DEFX4KuAlJcJsNa
- SPOoifEOYPItHXG0xcdep8fLZunM+wkPebM29/l5M2aLgUyS60pXwibP+Dw/0g9rdkrkKu2BkZZ
- Rue59TivjXB+fN247ajUriisHQ9aWBB9luTMlSP7+Fg==
-X-Gm-Gg: ATEYQzxTyZJk7jpe/PuIMu7sZc0LYT1MlmSm2ZZe8sIpDcXkZOmTWWKiECLuH1s3YyI
- zb4oBHM+ujNii7qVJvTP7NfRJfKGWmwaXOK57bEVuqS8duDdfxF7SLWiz90tcEUEwTQ8uUdy4OB
- Cubs94KVzmN8tn6/FSIP+WI4guF0/xA0X+oTRsi9k5BvgWB5e3GQEy/pZarApSmgJQq2ro9YrTG
- 6j92xvXFOVHeSEvU6tx4X9Vpx0jaXSJTE2L7SiJrJWClnlwLZZbX/pcXRy6pUiKOBeHsZZE0osn
- MjHGvoRkdrjJmelV2K3eX5+m+t2DZltx0jBZzdwIqzJxWaSIG/4GXu26u5UZr3qbeVU=
-X-Received: by 2002:a05:690e:484d:b0:64e:a215:11de with SMTP id
- 956f58d0204a3-64ff71af9ccmr2449912d50.15.1774621150217; Fri, 27 Mar 2026
- 07:19:10 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260327134401.270186-1-kkostiuk@redhat.com>
- <20260327134401.270186-11-kkostiuk@redhat.com>
-In-Reply-To: <20260327134401.270186-11-kkostiuk@redhat.com>
+ bh=R+HW13UG3MLKGMw2KjovNJw38Kv1EGF+VIWRguG2wFE=;
+ b=YejuzzECnlXdWQKI40iRwnjxfwOxuIyG4/8gykSr2TREi/9PujLb7CCqvE6AwILr0Z
+ N/6fMnbbgT1D1ByK+6+tJNCV3rsmBAaWwQLG/Thkv8Ll4mCEHFz6jxem35Wwi3EIj5Jz
+ qBwwVsNP7WhCMbqaXMlTIhL4rmH9e7SLABwRzhpOpuCDCrSI5NytxhO7uOQMEjqtaXBO
+ 3mm64z4HuA6Npq/3e9AWegl1uxcHca5W+ZRONZY0DLcWOQ2VuXlQ+7YW/fcM6c5+rX5m
+ ObLseQ4KSFcUTwwcH10u5DU8kWshNtjwoLBLMWl2c2BO2ztppMpcaLCg8cJbTCJpaCU1
+ xS6A==
+X-Gm-Message-State: AOJu0YweYppvV0NEOuIq2mU6SPws2kuLH48HbEaKpf/88yqbLzoq5/ip
+ RYzlOvrleb2QG7vpGqBWAWFFaauL39VUVfX3oftP7/jItQ6QBMbxqVh9E0pEciqs2hUFo8u0ci5
+ A2Vtprgg=
+X-Gm-Gg: ATEYQzyiuy0PeK66RKHdi2F3kW/X63NTKNEQGRcf7R3CZnXWCCQPWGC+Zzf1ivYkV/F
+ fk6LzCHWwnw5prYdBOTGucDdYrlpu+85wcPrVsg2ipD2HRosuFduzSjUFc2wxF9Lf65eoZRx18D
+ 8T1x5K+cjmsNpuIVQapwnhdi11fSAy+i7Ubwjj5D8WeG2UJi9MlCFERWhlNp+ekSevMlx/men1X
+ yFOset4MhtM9ZFQvtEey04ulyKD+s2nHBCFg6GbJ0ptAR5bkd8fiWjnWHnMCVYDPEx00RcIvXlT
+ SJxMdZEZh5qeB6cUoR9BWoxWT/rI0Vchj9ymy/qf4CknIaBxFLUTh+yQe+mcek1+0qWHGNQfHCN
+ xtn69ppVsIBIi81StMJ8/Fw/z25gYTLB8/FLLm8HWA5K+mY/bswIx6+76dga14MfmDGwas/TwMi
+ 7HwryrUt21ARkCToiqRM+ekCGdclzMWhRVT+BJlPGx9dNg2I5TYwaof6hRQJSAQ3JB4TOVjzXRC
+ yLvm8BuXC2sM9/18LlNeFp5qfbgv5g3wgo5j/Vcow==
+X-Received: by 2002:a05:600c:792:b0:485:4f11:aabc with SMTP id
+ 5b1f17b1804b1-48722bf80d6mr46936765e9.15.1774623013401; 
+ Fri, 27 Mar 2026 07:50:13 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43b919cf1c4sm15509537f8f.23.2026.03.27.07.50.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 27 Mar 2026 07:50:12 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Mar 2026 14:18:58 +0000
-X-Gm-Features: AQROBzBHLUrurUIL4GpoENhHthPYnPAJkGXERrAC4hbNeIBZKWENmbOHRY_hW5g
-Message-ID: <CAFEAcA-v4E0kYu=aebegjaO3wU_en9peLUb5SubLSE1H-EV5TQ@mail.gmail.com>
-Subject: Re: [PATCH v2 10/15] hw/ppc: Use glib2 instead of
- strcasecmp/strncasecmp
-To: Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Nicholas Piggin <npiggin@gmail.com>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Subject: [PATCH] hw/arm/xilinx_zynq: Use strcasecmp to parse boot-mode option
+ values
+Date: Fri, 27 Mar 2026 14:50:12 +0000
+Message-ID: <20260327145012.907264-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,17 +102,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 27 Mar 2026 at 13:45, Kostiantyn Kostiuk <kkostiuk@redhat.com> wrote:
->
-> This is a change in semantics. g_ascii_strcasecmp() doesn't honour
-> locale but strcasecmp() does. But this is OK for at least one reason:
->  (1) QEMU always runs with the C locale so there's not an actual
->      behaviour change here
->
-> Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
+In zynq_set_boot_mode() where we parse the string the user has set
+the boot-mode option to, we use strncasecmp(str, "qspi", 4) and so
+on.  This is wrong, because it means that we will ignore any trailing
+junk on the end of the option string, and handle
+ -machine boot-mode=sdXYZZY
+the same as
+ -machine boot-mode=sd
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+In the documentation we say:
+ Supported values are ``jtag``, ``sd``, ``qspi`` and ``nor``.
+and that's obviously what we meant to implement.
 
-thanks
--- PMM
+The correct tool for this job is a simple strcasecmp operation.
+Switch to that.
+
+We use the g_ascii_strcasecmp() rather than plain strcasecmp()
+because we're comparing ASCII strings here and don't want the
+potentially locale-specific behaviour that strcasecmp() implies (and
+we're trying to standardize on the glib function for this kind of
+string comparison).
+
+Fixes: 7df3747c92d13 ("hw/arm/xilinx_zynq: Add boot-mode property")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Kostiantyn: I sent this patch out while it was on my mind, but
+don't worry about conflicts with your series -- assuming your
+patchset goes in first I'll fix this one up later.
+---
+ hw/arm/xilinx_zynq.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index d43f36b718..9dcded9219 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -186,13 +186,13 @@ static void zynq_set_boot_mode(Object *obj, const char *str,
+     ZynqMachineState *m = ZYNQ_MACHINE(obj);
+     uint8_t mode = 0;
+ 
+-    if (!strncasecmp(str, "qspi", 4)) {
++    if (!g_ascii_strcasecmp(str, "qspi")) {
+         mode = 1;
+-    } else if (!strncasecmp(str, "sd", 2)) {
++    } else if (!g_ascii_strcasecmp(str, "sd")) {
+         mode = 5;
+-    } else if (!strncasecmp(str, "nor", 3)) {
++    } else if (!g_ascii_strcasecmp(str, "nor")) {
+         mode = 2;
+-    } else if (!strncasecmp(str, "jtag", 4)) {
++    } else if (!g_ascii_strcasecmp(str, "jtag")) {
+         mode = 0;
+     } else {
+         error_setg(errp, "%s boot mode not supported", str);
+-- 
+2.43.0
+
 

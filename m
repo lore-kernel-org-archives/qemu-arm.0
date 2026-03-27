@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9429E10ED65E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D6310ED660
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:23:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Ck-0007zv-QR; Fri, 27 Mar 2026 07:18:25 -0400
+	id 1w65Dk-0001Bl-J6; Fri, 27 Mar 2026 07:19:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CJ-00076x-Mp
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:51 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1w65Ca-0007ju-Be
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:08 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CH-0008OP-8q
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:51 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-439cd6b09f8so1307656f8f.3
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:48 -0700 (PDT)
+ id 1w65CX-0000GJ-4J
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:07 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-439bcec8613so1482531f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:18:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610268; x=1775215068; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610280; x=1775215080; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nYwEiR5/cYmqAxk5dlNZzaCEtoWpF8rqG2y/FpqcXSc=;
- b=JCH9gFCFPEy4VuWh1899XvNAZINxowNoATyhfl94gR2KUiMRdu/r/e6RTzBkzvv7WH
- qrn7tBrtCvddveAVFPbLrEoOci10QyU0H5/C/bl+H6plp2dj6iSfK9PG71dKCEwt+nBi
- axO+9vCFQidAI01ve+PHstIKK++0SlGB+x084n3pIeyAnelVXb5lEEHRkOhL32cxsIcN
- pYLXEDk8K0opmoaslGkLavfkm8VFy6OHQHvOHOk3yo1R43Mlk3eP/9gJM5IHmtIhYDna
- /hWDcfFXLDP0KKbYk96MouxH0B2FKkpy0uKWLKyvvq1uphQQsQ9ixk2pvPcCoc4atZjF
- nkjQ==
+ bh=1bFuTPS3UTloN9GePWn+4uta9cNIKepddcVURPyhzcE=;
+ b=g9HJU6ypSgFWlnmGM2ZZPHM/GqKKagifzBykiBZP2fBtXpWDnsDc9FDvEn13QTaozP
+ OKckfMzX3uIyQLh9fs7r1nKEKxmUs4089DQ3YFyIPjfylId/srojm9YBgVUys0Cb8gAG
+ U2UDqxW+kmCFyGypKexteakJsY2EsaIdfgdMid9NS4LYnbbd1SkyGQskeVdzSGmd13iH
+ KbIgcq+wPlZB6RzrpAFseYf/58diqmCcoPFb81uR6t3hk19BqmivgwzV+RsFYpQ1k5s+
+ AgoKtBJNnwfBiC0lHpCb7JE1BPlVWCS59pXOW2FyUcwntNSg3BHyiBFsi2Q9Naug5lZj
+ NTLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610268; x=1775215068;
+ d=1e100.net; s=20251104; t=1774610280; x=1775215080;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=nYwEiR5/cYmqAxk5dlNZzaCEtoWpF8rqG2y/FpqcXSc=;
- b=G5+3VOnL2jWpNioNdMFu5TXCLUB0zodJvlvrjLSrN2ST5roPwRkDMU+kPwzPbY4BkM
- WHdLmxVo3sqFjYBNeep2VymymXJ+Goc7T0Krdm+6s5Wjei6y0g6DnS7659j/rWeiEgFf
- dq2avIfY9+L3C+kNot94FHMKtClTFm3eHY2BpBLtGex1DsPI9DkVVTUdzWGFkTmBnHqP
- gSjo1E2iui+m5W5fdH9SyPzqMkoCJYfK23cmGS6Gx6Cgq4HNDpLMGsIJ7SpbOnr6bR9U
- ttLOMsQZziuCVbtYQQC2HNcBQ8LmQK70YXJ33j4hb7Bv013YNL/UJXGwOMa9M+PPi4ZC
- D/bQ==
-X-Gm-Message-State: AOJu0YyHiuAGJmpzDbwFsdwCZDow154pHnhdS7pfP39gJiiAUSZQCyaw
- TWmUbqP/zsMvKLCzGOASgA9Ca/YBiEjY7J9bjkXUeOpcMxbrpdOtVDjIuLVJ5cc/VjSP09Rj1r7
- hQ/Mwdrk=
-X-Gm-Gg: ATEYQzxF4Yj9XNnKDVXZzAbzUFynPtZycmYzMpz3XNRXQ5orFVyJ7lsy3arhgNMuYlX
- Qt6W7y+KFOqZ75W+2ubAI6eZEbjZrc/oEj2dXAVByiimp4BFUMWBtDRZZxHajih+F+DSC49zKOi
- Yh5pk3/4AVEcv1uRwAiq6GdFbRLhHF/6hfx/hlZ8BYqb8dEByXkjnfRSFq+FuTk0iuqDOkzUdSD
- sMpiFo02drm1GCI/U9rqk7WMhLuyjTwd7S5zh0OOE5dDDm/Q2CPTA0+ENefFr36lNsYrmyL6lwP
- siMJWTzNgu23R4dtB3hCqckY+6AcHWAoakodZRCF5st/Ih+wIYME4r8aQotgoLREmrPtEfatOrP
- UwJUqfGQ8M9NMrYJ+HOW4xYgV2b617cwPlC5+MToUFDNztXVa0OzuAsK98xoB/koMGp3XhLLilZ
- kgOg9mB6gvQrba8N0+FNG30Z3E+EodB/hKl6+yrYBxGJvFgzWZxVUPYMWtPpy7QFjvBVdtuu4DA
- HYmkTXX3I9w5uDUt4FpX64XlAmB9Yw=
-X-Received: by 2002:a05:6000:2382:b0:43b:4757:cc5 with SMTP id
- ffacd0b85a97d-43b9e9e8e21mr2881679f8f.19.1774610267561; 
- Fri, 27 Mar 2026 04:17:47 -0700 (PDT)
+ bh=1bFuTPS3UTloN9GePWn+4uta9cNIKepddcVURPyhzcE=;
+ b=BeejZhO9Pup/Lj3sajfsOEtw6Lg5a3IMViM/WkKV6PVAImAAVUcIGpqCrilPNtIWTe
+ kaWU0F9oLGJ/VT6OwKhBhGlszgzG30Rgufr7yeDA0yeQ/RgEDo5qmzc+kLRBgT8QOnyQ
+ z40SPjIcTPpL1/mE+OlhDJRPahk4tUPg2zjMMXO0Lcv6E7qrUp/mGPItNKGJe4rEGLGL
+ WKW3Uuv75cAdtG81i0R3f7SOrcsP2mL/01brBGNtyZB5b6KoVlc/IITIYtGvRooBz7Vg
+ d2RHbd1MSgmJ8/feU6HjfWB0rFiCTrLJI6/bsZXeyFdV1120uaZybZ5D8nqQ3qiHn4KC
+ gd6g==
+X-Gm-Message-State: AOJu0YyBpefKbWiWZf2brJ0hVjRntY3sL7ObrzvuitRwSO+VulwYRr7e
+ UyTIAn41eYQnK0CyABPs+xqvCSJWxwdMpFcHpaHlqxWuAzc4urh1OBG1lFlh/9InqeeIZ9PIBdK
+ yPaaO8hA=
+X-Gm-Gg: ATEYQzy+NGb6jvAkcYeIan8PeUsqFz76JpVx7dxhPhijpy5yloaKcZpgL65pQtLijXz
+ s6PNPlHziMo2TPseGESnc1H7aX1oO+wasVL9TlWluNvRlfJ7wmazOZJDicxjaF4Z1TjHoCLil6v
+ yWY7zGMghHPnHS4BEqr2DezvLu28zyvvXFhB+ApiaNhyel1UXuD/kaD/ZYEG+F/8SHKwQmKSOfS
+ 6pDLaL5a6bS3XWOxlQmvJ8FFHQalGi0xUq/ez0Eu+nTT0aN71/bIPZDg7+EO1HMMPaddwNz1FSH
+ fkk+2MM7b9ujjGD55iyyrtu8PgqZZqidCEw0RXOvAbEmBCqPrEb+6BbYaPTdHlZT86gBxU6qTeT
+ DvajJPNdaH2mm2/W4jgL5n5icmCfo4pN3ExItcQIqt19wYGOdVOUSkDHU1O62TJ12Ws0Dm4Bt7c
+ ZSVnvQXUKw0HM+57ojltku8CbagbH6ZuTmXOgi91lzsZn2RPC7os5xb6eQQuwnYhSs3ESpLdTkQ
+ FpubaXE6unxJm9RZ9jPDMGbbQ1Fx6Y=
+X-Received: by 2002:a5d:64e4:0:b0:43a:16aa:1448 with SMTP id
+ ffacd0b85a97d-43b9e9e8f13mr3404046f8f.22.1774610280282; 
+ Fri, 27 Mar 2026 04:18:00 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.46
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:46 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 48/65] target/arm: GICv5 cpuif: Implement GICR CDIA command
-Date: Fri, 27 Mar 2026 11:16:43 +0000
-Message-ID: <20260327111700.795099-49-peter.maydell@linaro.org>
+Subject: [PATCH v2 61/65] hw/arm/virt: Advertise GICv5 in the DTB
+Date: Fri, 27 Mar 2026 11:16:56 +0000
+Message-ID: <20260327111700.795099-62-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,154 +102,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICR CDIA system instruction is what the guest uses to
-acknowledge the highest priority pending interrupt.  It returns a
-value corresponding to the HPPI for the current physical interrupt
-domain, if any, and moves that interrupt to being Active.
+Advertise the GICv5 in the DTB. This binding is final as it is in
+the upstream Linux kernel as:
+Documentation/devicetree/bindings/interrupt-controller/arm,gic-v5.yaml
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- target/arm/tcg/gicv5-cpuif.c | 101 +++++++++++++++++++++++++++++++++++
- target/arm/tcg/trace-events  |   2 +
- 2 files changed, 103 insertions(+)
+ hw/arm/virt.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 68 insertions(+)
 
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index 36bbb70c4a..09870e0b09 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -39,6 +39,10 @@ FIELD(GIC_CDHM, HM, 32, 1)
- FIELD(GIC_CDRCFG, ID, 0, 24)
- FIELD(GIC_CDRCFG, TYPE, 29, 3)
- 
-+FIELD(GICR_CDIA, ID, 0, 24)
-+FIELD(GICR_CDIA, TYPE, 29, 3)
-+FIELD(GICR_CDIA, VALID, 32, 1)
-+
- FIELD(ICC_IDR0_EL1, ID_BITS, 0, 4)
- FIELD(ICC_IDR0_EL1, PRI_BITS, 4, 4)
- FIELD(ICC_IDR0_EL1, GCIE_LEGACY, 8, 4)
-@@ -463,6 +467,93 @@ static uint64_t gic_icc_hppir_el1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return hppi.intid;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b6a04f868b..7a34af766a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -794,6 +794,72 @@ static void create_v2m(VirtMachineState *vms)
+     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
  }
  
-+static bool gic_hppi_is_nmi(CPUARMState *env, GICv5PendingIrq hppi,
-+                            GICv5Domain domain)
++static void fdt_add_gicv5_node(VirtMachineState *vms)
 +{
++    MachineState *ms = MACHINE(vms);
++    const char *nodename = "/intc";
++    g_autofree char *irsnodename = NULL;
++    g_autofree uint32_t *cpu_phandles = g_new(uint32_t, ms->smp.cpus);
++    g_autofree uint16_t *iaffids = g_new(uint16_t, ms->smp.cpus);
++
++    vms->gic_phandle = qemu_fdt_alloc_phandle(ms->fdt);
++    qemu_fdt_setprop_cell(ms->fdt, "/", "interrupt-parent", vms->gic_phandle);
++
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", vms->gic_phandle);
++    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible", "arm,gic-v5");
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 3);
++    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-controller", NULL, 0);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#address-cells", 0x2);
++    qemu_fdt_setprop_cell(ms->fdt, nodename, "#size-cells", 0x2);
++    qemu_fdt_setprop(ms->fdt, nodename, "ranges", NULL, 0);
++
++    /* The IRS node is a child of the top level /intc node */
++    irsnodename = g_strdup_printf("%s/irs@%" PRIx64,
++                                  nodename,
++                                  vms->memmap[VIRT_GICV5_IRS_NS].base);
++    qemu_fdt_add_subnode(ms->fdt, irsnodename);
++    qemu_fdt_setprop_string(ms->fdt, irsnodename, "compatible",
++                            "arm,gic-v5-irs");
 +    /*
-+     * For GICv5 an interrupt is an NMI if it is signaled with
-+     * Superpriority and SCTLR_ELx.NMI for the current EL is 1.  GICR
-+     * CDIA/CDNMIA always work on the current interrupt domain, so we
-+     * do not need to consider preemptive interrupts. This means that
-+     * the interrupt has Superpriority if and only if it has priority 0.
++     * "reg-names" describes the frames whose address/size is in "reg";
++     * at the moment we have only the NS config register frame.
 +     */
-+    return hppi.prio == 0 && arm_sctlr(env, arm_current_el(env)) & SCTLR_NMI;
-+}
-+
-+static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    /* Acknowledge HPPI in the current interrupt domain */
-+    GICv5Common *gic = gicv5_get_gic(env);
-+    GICv5Domain domain = gicv5_current_phys_domain(env);
-+    GICv5PendingIrq hppi = gic_hppi(env, domain);
-+    GICv5IntType type = FIELD_EX64(hppi.intid, INTID, TYPE);
-+    uint32_t id = FIELD_EX64(hppi.intid, INTID, ID);
-+
-+    bool cdnmia = ri->opc2 == 1;
-+
-+    if (!hppi.intid) {
-+        /* No interrupt available to acknowledge */
-+        trace_gicv5_gicr_cdia_fail(domain,
-+                                   "no available interrupt to acknowledge");
-+        return 0;
-+    }
-+    assert(hppi.prio != PRIO_IDLE);
-+
-+    if (gic_hppi_is_nmi(env, hppi, domain) != cdnmia) {
-+        /* GICR CDIA only acknowledges non-NMI; GICR CDNMIA only NMI */
-+        trace_gicv5_gicr_cdia_fail(domain,
-+                                   cdnmia ? "CDNMIA but HPPI is not NMI" :
-+                                   "CDIA but HPPI is NMI");
-+        return 0;
-+    }
-+
-+    trace_gicv5_gicr_cdia(domain, hppi.intid);
++    qemu_fdt_setprop_string(ms->fdt, irsnodename, "reg-names", "ns-config");
++    qemu_fdt_setprop_sized_cells(ms->fdt, irsnodename, "reg",
++                                 2, vms->memmap[VIRT_GICV5_IRS_NS].base,
++                                 2, vms->memmap[VIRT_GICV5_IRS_NS].size);
++    qemu_fdt_setprop_cell(ms->fdt, irsnodename, "#address-cells", 0x2);
++    qemu_fdt_setprop_cell(ms->fdt, irsnodename, "#size-cells", 0x2);
++    qemu_fdt_setprop(ms->fdt, irsnodename, "ranges", NULL, 0);
 +
 +    /*
-+     * The interrupt becomes Active. If the handling mode of the
-+     * interrupt is Edge then we also clear the pending state.
++     * The "cpus" property is an array of phandles to the CPUs, and
++     * "iaffids" is an array of uint16 IAFFIDs. For virt, our IAFFIDs
++     * are the CPU indexes.  This function is called after
++     * fdt_add_cpu_nodes(), which allocates the cpu_phandles array.
 +     */
-+
-+    /*
-+     * Set the appropriate bit in the APR to track active priorities.
-+     * We do this now so that when gic_recalc_ppi_hppi() or
-+     * gicv5_activate() cause a re-evaluation of HPPIs they use the
-+     * right (new) running priority.
-+     */
-+    env->gicv5_cpuif.icc_apr[domain] |= (1 << hppi.prio);
-+    switch (type) {
-+    case GICV5_PPI:
-+    {
-+        uint32_t ppireg, ppibit;
-+
-+        assert(id < GICV5_NUM_PPIS);
-+        ppireg = id / 64;
-+        ppibit = 1 << (id % 64);
-+
-+        env->gicv5_cpuif.ppi_active[ppireg] |= ppibit;
-+        if (!(env->gicv5_cpuif.ppi_hm[ppireg] & ppibit)) {
-+            /* handling mode is Edge: clear pending */
-+            env->gicv5_cpuif.ppi_pend[ppireg] &= ~ppibit;
-+        }
-+        gic_recalc_ppi_hppi(env);
-+        break;
-+    }
-+    case GICV5_LPI:
-+    case GICV5_SPI:
++    assert(vms->cpu_phandles);
++    for (int i = 0; i < ms->smp.cpus; i++) {
 +        /*
-+         * Send an Activate command to the IRS, which, despite the
-+         * name of the stream command, does both "set Active" and
-+         * "maybe set not Pending" as a single atomic action.
++         * We have to byteswap each element here because we're setting the
++         * whole property value at once as a lump of raw data, not via a
++         * helper like qemu_fdt_setprop_cell() that does the swapping for us.
 +         */
-+        gicv5_activate(gic, id, domain, type, false);
-+        break;
-+    default:
-+        g_assert_not_reached();
++        cpu_phandles[i] = cpu_to_be32(vms->cpu_phandles[i]);
++        iaffids[i] = cpu_to_be16(i);
 +    }
++    qemu_fdt_setprop(ms->fdt, irsnodename, "cpus", cpu_phandles,
++                     ms->smp.cpus * sizeof(*cpu_phandles));
++    qemu_fdt_setprop(ms->fdt, irsnodename, "arm,iaffids", iaffids,
++                     ms->smp.cpus * sizeof(*iaffids));
 +
-+    return hppi.intid | R_GICR_CDIA_VALID_MASK;
++    /*
++     * When we implement the GICv5 IRS, it gets a DTB node which is a
++     * child of the IRS node.
++     */
 +}
 +
- static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-     /*
-      * Barrier: wait until the effects of a cpuif system register
-@@ -520,6 +611,16 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-         .writefn = gic_cdhm_write,
-     },
-+    {   .name = "GICR_CDIA", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 3, .opc2 = 0,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .readfn = gicr_cdia_read,
-+    },
-+    {   .name = "GICR_CDNMIA", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 3, .opc2 = 1,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .readfn = gicr_cdia_read,
-+    },
-     {   .name = "ICC_IDR0_EL1", .state = ARM_CP_STATE_AA64,
-         .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 2,
-         .access = PL1_R, .type = ARM_CP_CONST | ARM_CP_NO_RAW,
-diff --git a/target/arm/tcg/trace-events b/target/arm/tcg/trace-events
-index 7dc5f781c5..13e15cfcfc 100644
---- a/target/arm/tcg/trace-events
-+++ b/target/arm/tcg/trace-events
-@@ -3,3 +3,5 @@
+ static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
+ {
+     MachineState *ms = MACHINE(vms);
+@@ -835,6 +901,8 @@ static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
+      * that information is communicated directly between a GICv5 IRS and
+      * the GICv5 CPU interface via our equivalent of the stream protocol.
+      */
++
++    fdt_add_gicv5_node(vms);
+ }
  
- # gicv5-cpuif.c
- gicv5_recalc_ppi_hppi(int domain, uint32_t id, uint8_t prio) "domain %d new PPI HPPI id 0x%x prio %u"
-+gicv5_gicr_cdia_fail(int domain, const char *reason) "domain %d CDIA attempt failed: %s"
-+gicv5_gicr_cdia(int domain, uint32_t id) "domain %d CDIA acknowledge of interrupt 0x%x"
+ /*
 -- 
 2.43.0
 

@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EA7310ED65C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3137910ED662
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:49:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65gK-0006rw-VY; Fri, 27 Mar 2026 07:48:53 -0400
+	id 1w65gS-0006v5-TF; Fri, 27 Mar 2026 07:49:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gI-0006rE-W6
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:51 -0400
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gE-0006qW-UN
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gH-0000Mu-94
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:50 -0400
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gD-0000MK-Eg
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774612128;
+ s=mimecast20190719; t=1774612123;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dvogLia3c1ViymgIXbXa1aDkmcVZpBH2hoZ4U3I42KI=;
- b=CDILMMyxwfkatlCFA3jsqUTD0jeRK8W8R9eibThxZKY7Qk1qTlL8xPOhgfBDDuBLwMVA06
- VhCNcvILWcjLU9v34sMm3o3GE8Kdzsr8ZMv6nMfhmjU+8mcWiyq4GEWSp65kNSpnGCqzTH
- wf+VR5XuK9MHyVCmP1ewGPOPI+8+8ec=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=R+UShz0ocf2lXLj47f99T6mQvINGjIfIkVdm8+t1xMQ=;
+ b=Ml1LYOJDwSYm+tr6irTPvo8Cxp78CWx1StIwVH+hBH61VmGX85owD2d4kqX1Eg9mBpGPqN
+ MoDXSk6puWpriHHydeUiRjJjteB8ykqZMMjoBfZ/say/tjgXPAfxAe98B6rYthmKUY2TMT
+ sbEA6AxLiK6FmsUrSolRP6V/stNWBIc=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-146-_wgW-klzPE-WOoRSNXGCug-1; Fri,
- 27 Mar 2026 07:48:47 -0400
-X-MC-Unique: _wgW-klzPE-WOoRSNXGCug-1
-X-Mimecast-MFC-AGG-ID: _wgW-klzPE-WOoRSNXGCug_1774612125
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-450-zbAWsZbtO9ydtA8XHEmXww-1; Fri,
+ 27 Mar 2026 07:48:40 -0400
+X-MC-Unique: zbAWsZbtO9ydtA8XHEmXww-1
+X-Mimecast-MFC-AGG-ID: zbAWsZbtO9ydtA8XHEmXww_1774612118
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 393ED18005BB; Fri, 27 Mar 2026 11:48:45 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 72323195608B; Fri, 27 Mar 2026 11:48:38 +0000 (UTC)
 Received: from mbawa-thinkpadt14gen5.bengluru.csb (unknown [10.74.88.10])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2728D19560B1; Fri, 27 Mar 2026 11:48:38 +0000 (UTC)
+ id 8869219560B1; Fri, 27 Mar 2026 11:48:32 +0000 (UTC)
 From: Mohammadfaiz Bawa <mbawa@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: stefanb@linux.vnet.ibm.com, pierrick.bouvier@linaro.org,
  "Michael S . Tsirkin" <mst@redhat.com>, imammedo@redhat.com,
  anisinha@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
  qemu-arm@nongnu.org, mohamed@unpredictable.fr,
- Mohammadfaiz Bawa <mbawa@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PATCH v2 1/3] docs/specs/tpm: document PPI support on ARM64 virt
-Date: Fri, 27 Mar 2026 17:18:22 +0530
-Message-ID: <20260327-tpm-tis-sysbus-ppi-v2-1-d8ec84d25dbc@redhat.com>
-In-Reply-To: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
-References: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
+ Mohammadfaiz Bawa <mbawa@redhat.com>
+Subject: [PATCH v2 0/3] hw/tpm: add PPI support to tpm-tis-device on ARM64 virt
+Date: Fri, 27 Mar 2026 17:18:21 +0530
+Message-ID: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
 MIME-Version: 1.0
+X-Change-ID: 20260324-tpm-tis-sysbus-ppi-ef31a7d71753
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: uqtRQZumWR-cGVs4S4IrgeNa5dcFd-NOqXTUQzpHncY_1774612125
+X-Mimecast-MFC-PROC-ID: y_ZZ8r6N5OpMN7otNze_kQGlrarlmcZWd_Vg5kJ7kNg_1774612118
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -72,7 +70,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,58 +86,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Document that tpm-tis-device on the ARM virt machine supports PPI
-with dynamically allocated MMIO via the platform bus, unlike x86
-where PPI is at the fixed address 0xFED45000.
+The ARM virt machine's tpm-tis-device lacks Physical Presence Interface
+(PPI) support - no _DSM, _STA, or PPI operation regions in the ACPI
+namespace. This causes Windows 11 ARM64 guests to log Event ID 15
+(tpm.sys) errors per boot.
 
-Also add hw/arm/virt-acpi-build.c and hw/acpi/tpm.c to the list
-of files related to TPM ACPI tables.
+This series documents the change, refactors tpm_build_ppi_acpi() to
+accept a dynamic PPI base address, then wires up PPI MMIO and ACPI
+on tpm-tis-sysbus via the platform bus.
 
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Tested: aarch64 KVM, upstream QEMU, Win11 ARM64 25H2, swtpm.
+Event ID 15 eliminated.
+
+Changes in v2:
+- Moved tpm.rst documentation hunk from patch 3 into patch 1 (Stefan)
+- Added Reviewed-by tags
+
 Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
 ---
- docs/specs/tpm.rst | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+Mohammadfaiz Bawa (3):
+      docs/specs/tpm: document PPI support on ARM64 virt
+      hw/acpi/tpm: parameterize PPI base address in tpm_build_ppi_acpi
+      hw/tpm: add PPI support to tpm-tis-device for ARM64 virt
 
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index b630a351b4f77a8d2512f22446d00a4d674c7777..ba2b0d726745fdf8ebc4c73c9c42e1ff8047a9db 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -187,8 +187,32 @@ The location of the table is given by the fw_cfg ``tpmppi_address``
- field.  The PPI memory region size is 0x400 (``TPM_PPI_ADDR_SIZE``) to
- leave enough room for future updates.
- 
-+PPI on ARM64 virt
-+-----------------
-+
-+The ARM virt machine supports PPI for ``tpm-tis-device`` as defined
-+in the `PPI specification`_.
-+
-+Unlike the x86 TIS device where the PPI memory region is mapped at
-+the fixed address ``0xFED45000`` (within the TIS MMIO range), the
-+ARM64 sysbus device registers PPI memory as a second MMIO region
-+on the platform bus. The platform bus assigns the guest physical
-+address dynamically at device plug time. The ACPI ``_DSM`` method
-+and PPI operation regions reference this dynamically resolved
-+address.
-+
-+PPI is controlled by the ``ppi`` property (default ``on``)::
-+
-+    -device tpm-tis-device,tpmdev=tpm0,ppi=on
-+
-+Without PPI, guest operating systems such as Windows 11
-+ARM64 will log errors when attempting to query TPM Physical
-+Presence capabilities via the ACPI ``_DSM`` method.
-+
- QEMU files related to TPM ACPI tables:
-  - ``hw/i386/acpi-build.c``
-+ - ``hw/arm/virt-acpi-build.c``
-+ - ``hw/acpi/tpm.c``
-  - ``include/hw/acpi/tpm.h``
- 
- TPM backend devices
+ docs/specs/tpm.rst       | 24 ++++++++++++++++++++++++
+ hw/acpi/tpm.c            |  8 ++++----
+ hw/arm/virt-acpi-build.c |  9 ++++++++-
+ hw/tpm/tpm_tis_isa.c     |  2 +-
+ hw/tpm/tpm_tis_sysbus.c  | 11 +++++++++++
+ include/hw/acpi/tpm.h    |  3 ++-
+ 6 files changed, 50 insertions(+), 7 deletions(-)
+---
+base-commit: 8e711856d7639cbffa51405f2cc2366e3d9e3a23
+change-id: 20260324-tpm-tis-sysbus-ppi-ef31a7d71753
 
+Best regards,
 -- 
-2.53.0
+Mohammadfaiz Bawa <mbawa@redhat.com>
 
 

@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB4F10ED659
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F4DA10ED65E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65CP-0007Fx-FO; Fri, 27 Mar 2026 07:17:57 -0400
+	id 1w65E7-00038M-Js; Fri, 27 Mar 2026 07:19:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CH-00075T-3J
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:49 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1w65Cb-0007qW-QW
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:09 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CE-0008Mk-IU
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:48 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-487035181a7so12305505e9.2
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:46 -0700 (PDT)
+ id 1w65CX-0000JZ-RY
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:09 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-439b9b1900bso1171606f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:18:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610265; x=1775215065; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610284; x=1775215084; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SXyrPHrNeuNNGz1d/8IK0Sz1v5blPipkCHt4LvQFUGQ=;
- b=HqKr8RpycMwHJTiydBjRkSsLu16gqDwVlY1zhgcV+5YWkFFKwnxptMDdddvEU1qp1p
- D7HrIipZnBQPqp9i6ZWGCisET0L9iOId39HBy8VkGPD4lB0IQknkOdx6BMWKf3Igyh2t
- /D4MOQ9b/Brrqp+0ZKO1N6Z/EXWJCQvuegvn+KbEiGGpi2ZP6KuX/rB8PzG1NAOzQEH2
- sHm0tsxRI8NbNL66G92DfsoHDC4SSfFlZPTZ822yZBYfsw5EaOaIOF2VjA84cWPkpGcY
- IcLA+WIS+XBR8pT+NOTZ889VBAW1iNmSSCD+oIxX8OmKZR04hrRvrClwca3UQsNKf6Mi
- ZG+Q==
+ bh=9Sc6A8mUH5H33CEhbJhf4m2nOob0B+CIV382Sacc+zU=;
+ b=CQWhW8mxpojBqTu4WsPGMT5aR6KideQbgdCncVkUgpeKqR6zEC946GZI3vVoaPgKW9
+ LiHr5Wuy/qat/pjyN7vj1Z+i0vryOq7KOtTtf3dMFE3TV2m5VNzoLy6Njg+eXfLR+cIx
+ LBhxaeq7s8Uzbc7efWXqfKfrmO5B8uLxXeKRgxegO4SFbcUQ0emPXpYW6C5lO19YwfLl
+ DsQkd86rz0JmZemcQ/QBzY/06Mq7OilmTGEncalKDpWUZpN7fOEBpyAfOz2ZBoe3ssMs
+ 8Oi1TraPLN39ZFaQYFFLUP7lPT8dJAg7j42JbsX8bIoOO2qUNfLFEZUg0J9+9LAxNYmn
+ lvhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610265; x=1775215065;
+ d=1e100.net; s=20251104; t=1774610284; x=1775215084;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=SXyrPHrNeuNNGz1d/8IK0Sz1v5blPipkCHt4LvQFUGQ=;
- b=Hl30hwSDgtJ3UEy0EspVj3MzrSXLAP5/lnMp5S7xV28BOasIEu6Qnakiv8BAFHKSI/
- lC2JaYZfw6tGSBWmh1J9lFxi8X065AcaLy/Rk9YkmQHYZXckuxULqaWgguLjKtY2z8K5
- uFq7mKNHn2Jjg9l1cOv2zBCywPqsuqZstBa8iqkLvDz9Q38/wmP++bu8jEwYaIdMz0bn
- hYRIjZK89EdxZJOmdKMdpcEyJXxB0PLNY3gBxvNLvcwnAHURWUNnnvPgc+hbfHk/zc7N
- kIgVkIGBmm8gJfOM+IfCZhOlDKax3lTvJJZnjklDJ9hdRJlY8qn2xRkD52uzgCs+BpRt
- 5RWQ==
-X-Gm-Message-State: AOJu0YyoUi7C8ifvJ5bO3IJ0pb3U7tyu4QbFyXqzDNE/7X11Fio7NxmG
- vphPJiUpF8BKX/vxNqwoyjuzyHkUjN/sgeICm8+9nQ1xCvXUcCAPQYv0EEs+VybjKsxhua4DQS+
- HoewH13M=
-X-Gm-Gg: ATEYQzxB/NmCr5unWG5e8wxxMP3BJR/WNJhRykQI7oFbYKCnlQLQw/NRSSv8TvHU6b1
- ELE5+Gqe9xmCKtsA0St/cODFbYN0yfCi/kjFyTa3LhxU9C341n9gxpQoW7EIS8z3bjcJEX9r0co
- aVT8xB6BNQUJccRgvWJPUyRG36Y9/5kz6cd4x7U7vc6FUId9OmkH0xeMjMl+Mgg14/5nvSpknVg
- Oor6G6EvemFfSZDLAdbKKIT9/bJYNSCD0rs6+iZVJkzSpN34Md8+ZouF34jMyFwY2g8abkIwjBk
- 9/CeljacWAj644y7S5X1KnZbTzrH7WC0LwO5Hu9mhNVi5VkaBpTAxl04QKQqoUVhIpd6luk1aGP
- Bi4C7rFppJWC1uWzUo+b77mx2c8Xdmgd6YozaCJboF8vq+yb45zxB6snR8d3w/z/V9+7jodFOuC
- 68Kzg06hfd/z7+nWr+f5KvkYDEFwrvGndsbvqTxq3wewbuTkCWma4prmGHOcfzEolfncACDwnVn
- t8gs0sZPYT/Ip9FI8EFGxX4XatR7a0=
-X-Received: by 2002:a05:600c:3586:b0:487:1fbf:e0bb with SMTP id
- 5b1f17b1804b1-48727d5a17cmr37323865e9.6.1774610264855; 
- Fri, 27 Mar 2026 04:17:44 -0700 (PDT)
+ bh=9Sc6A8mUH5H33CEhbJhf4m2nOob0B+CIV382Sacc+zU=;
+ b=YWG7Z9kQjluN4o/wrgnfWG+bI1hvyaCIE/pCQWKddPthYu/deygWJFumoMio0+mAOh
+ VMHjNuOdQ7CqrGLPYw7C52GK7cQ39HMKja2RMHkhI0zPXIsbQlLur0FW9VQUN6zeCs3o
+ XYWlu6ak9n3He8Sg+myFGWuz7u465BKMGwia0TW2F6ZLneISUw5Vsvs95kgbgLQosVvI
+ gtKnCA7nM9LGYgiAGMK3jJOMz70uwxM0r8PlhOqEJ+fNqafvX9QwGdYMkJSTV2gmARCB
+ MoVv9wR06IYRQseuYlULzvc/qHCaMjUDYpeu0oqpLLCv/xfTlssSiqPv6R6UXrxSeBM/
+ zxkA==
+X-Gm-Message-State: AOJu0Yy8+hPy1SjSDzG7tw4x8RKkDSvMNlOuR14/1d0fesXPNsiVTq6s
+ WGkLfxlAJJyiSLqEjtMUCUl1BieQ0Vnbs41VPFEm+CPx20v7O1JpjOJDTNi8WduGf6k7WpiwNP8
+ FgXzU2ws=
+X-Gm-Gg: ATEYQzydHnqs3BnQFhqJR9vKGWYom5EqnIy214l0EialmL/V7uoVhMsU0QgsObLloWX
+ rft71UxqJmU3TwtJBYfr2zuSdUW329nqKigPSPJNuFxRZR6gWS+DlIDRmMA37MrCp6QRqMNpTgb
+ TQjMqmc9qY55hFpwlq1KUSeimmJkuUtZSHmA4gyCWg+sLJolbEDEfvYxqPMmeAnnG57WDEtJKQg
+ HBGjQUCHKY3MhiD95p1K/ZpVOO0An908VryR1lch02WwRQlvK1/BhjNqYf7RHllmqcwE1eLhgqg
+ Hvt932k/kX0ln/xwc2AK1ClNqXSF+ZBd4V6vQvsFORC+/NstoSz/JKdb6VvCK1O1dYCMKjReYhq
+ bCqvX/6UcPPw9gcVaQPh7xSzL4aNj92/EpzPF6KPhJPRR8u8BcaMbmVTBjhv3PinEITK1dIJO9M
+ useW4GDds1F2B96sHqwaw/vyVcKAUTEjqzS45RTT29woV0KCDcHt3HM4NjpWoG5eAQ9RRDC372+
+ 3GYSYmCW1T/0TVyPiYSekOtpXQKiyleidou8lwLGg==
+X-Received: by 2002:a5d:5f42:0:b0:439:de1d:74ae with SMTP id
+ ffacd0b85a97d-43b9e9fa204mr3373603f8f.22.1774610283900; 
+ Fri, 27 Mar 2026 04:18:03 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.44
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.18.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:44 -0700 (PDT)
+ Fri, 27 Mar 2026 04:18:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 45/65] target/arm: GICv5 cpuif: Implement ICC_PCR_EL1
-Date: Fri, 27 Mar 2026 11:16:40 +0000
-Message-ID: <20260327111700.795099-46-peter.maydell@linaro.org>
+Subject: [PATCH v2 65/65] hw/arm/virt: Allow user to select GICv5
+Date: Fri, 27 Mar 2026 11:17:00 +0000
+Message-ID: <20260327111700.795099-66-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,86 +102,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement the ICC_PCR_* registers.  These hold the physical priority
-mask for each interrupt domain -- an HPPI is only sufficiently high
-priority to preempt if it is higher priority than this mask value.
-Here we just implement the access to this data.
+Allow the user to select a GICv5 via '-machine gic-version=x-5', and
+document this.  The 'x-' prefix indicates that the emulation is still
+in an "experimental" state as far as QEMU is concerned; the
+documentation describes what "experimental" means for the user and
+what parts are not yet implemented.
+
+We do not make 'gic-version=max' enable GICv5 here because:
+
+ * the GICv5 architectural spec is still at the EAC level and could
+   have minor changes between now and its final version; only users
+   who specifically want to start working with the GICv5 should
+   select it
+ * QEMU's implementation here is still not fully featured, and
+   selecting it instead of GICv3 will mean losing functionality such
+   as MSIs
+ * the GICv5 is not backwards compatible with the GICv3/GICv4 for
+   system software, so silently "upgrading" an existing command line
+   to GICv5 is just going to break existing guest kernels
+
+The last one in particular suggests that even when the emulation
+moves out of "experimental" status we will probably not want to
+change "max".
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- target/arm/cpu.h             |  1 +
- target/arm/tcg/gicv5-cpuif.c | 31 +++++++++++++++++++++++++++++++
- 2 files changed, 32 insertions(+)
+ docs/system/arm/virt.rst | 19 +++++++++++++++++++
+ hw/arm/virt.c            | 11 ++++++++---
+ 2 files changed, 27 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 1263841a1d..651fccd59b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -606,6 +606,7 @@ typedef struct CPUArchState {
-         uint64_t icc_icsr_el1;
-         uint64_t icc_apr[NUM_GICV5_DOMAINS];
-         uint64_t icc_cr0[NUM_GICV5_DOMAINS];
-+        uint64_t icc_pcr[NUM_GICV5_DOMAINS];
-         /* Most PPI registers have 1 bit per PPI, so 64 PPIs to a register */
-         uint64_t ppi_active[GICV5_NUM_PPIS / 64];
-         uint64_t ppi_hm[GICV5_NUM_PPIS / 64];
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index 50aa81d74f..b44b0d5398 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -49,6 +49,8 @@ FIELD(ICC_CR0, LINK_IDLE, 2, 1)
- FIELD(ICC_CR0, IPPT, 32, 6)
- FIELD(ICC_CR0, PID, 38, 1)
- 
-+FIELD(ICC_PCR, PRIORITY, 0, 5)
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index fbe3ca9e12..f811e662d6 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -161,6 +161,25 @@ gic-version
+     GICv3. This allows up to 512 CPUs.
+   ``4``
+     GICv4. Requires ``virtualization`` to be ``on``; allows up to 317 CPUs.
++  ``x-5``
++    GICv5 (experimental). This is an experimental emulation of the GICv5,
++    based on the EAC release of the GICv5 architecture specification.
++    Experimental means:
 +
- /*
-  * We implement 24 bits of interrupt ID, the mandated 5 bits of priority,
-  * and no legacy GICv3.3 vcpu interface (yet)
-@@ -383,6 +385,28 @@ static void gic_icc_cr0_el1_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++    - guest-visible behaviour may change when the final version of
++      the specification is released and QEMU implements it
++    - migration support is not yet implemented
++    - the GICv5 is not exposed to the guest via ACPI tables, only via DTB
++    - the way the interrupt controller is exposed to the guest and the
++      command line syntax for enabling it may change
++
++    The current implementation supports only an EL1 guest (no EL2 or
++    EL3 and no Realm support), and does not implement the ITS (no
++    MSI support).
++
++    Note that as the GICv5 is an Armv9 feature, enabling it will
++    automatically disable support for AArch32 at all exception levels
++    except for EL0 (userspace).
+   ``host``
+     Use the same GIC version the host provides, when using KVM
+   ``max``
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0aff58bc3c..0064491063 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -3223,6 +3223,9 @@ static char *virt_get_gic_version(Object *obj, Error **errp)
+     const char *val;
+ 
+     switch (vms->gic_version) {
++    case VIRT_GIC_VERSION_5:
++        val = "x-5";
++        break;
+     case VIRT_GIC_VERSION_4:
+         val = "4";
+         break;
+@@ -3240,7 +3243,9 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+-    if (!strcmp(value, "4")) {
++    if (!strcmp(value, "x-5")) {
++        vms->gic_version = VIRT_GIC_VERSION_5;
++    } else if (!strcmp(value, "4")) {
+         vms->gic_version = VIRT_GIC_VERSION_4;
+     } else if (!strcmp(value, "3")) {
+         vms->gic_version = VIRT_GIC_VERSION_3;
+@@ -3252,7 +3257,7 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+         vms->gic_version = VIRT_GIC_VERSION_MAX; /* Will probe later */
+     } else {
+         error_setg(errp, "Invalid gic-version value");
+-        error_append_hint(errp, "Valid values are 2, 3, 4, host, and max.\n");
++        error_append_hint(errp, "Valid values are 2, 3, 4, x-5, host, and max.\n");
      }
  }
  
-+static uint64_t gic_icc_pcr_el1_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    GICv5Domain domain = gicv5_logical_domain(env);
-+    return env->gicv5_cpuif.icc_pcr[domain];
-+}
-+
-+static void gic_icc_pcr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    GICv5Domain domain = gicv5_logical_domain(env);
-+
-+    value &= R_ICC_PCR_PRIORITY_MASK;
-+    env->gicv5_cpuif.icc_pcr[domain] = value;
-+}
-+
-+static void gic_icc_pcr_el1_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    for (int i = 0; i < ARRAY_SIZE(env->gicv5_cpuif.icc_pcr); i++) {
-+        env->gicv5_cpuif.icc_pcr[i] = 0;
-+    }
-+}
-+
- static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-     /*
-      * Barrier: wait until the effects of a cpuif system register
-@@ -548,6 +572,13 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .writefn = gic_icc_cr0_el1_write,
-         .resetfn = gic_icc_cr0_el1_reset,
-     },
-+    {   .name = "ICC_PCR_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 1, .crn = 12, .crm = 0, .opc2 = 2,
-+        .access = PL1_RW, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .readfn = gic_icc_pcr_el1_read,
-+        .writefn = gic_icc_pcr_el1_write,
-+        .resetfn = gic_icc_pcr_el1_reset,
-+    },
-     {   .name = "ICC_HAPR_EL1", .state = ARM_CP_STATE_AA64,
-         .opc0 = 3, .opc1 = 1, .crn = 12, .crm = 0, .opc2 = 3,
-         .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+@@ -3827,7 +3832,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                   virt_set_gic_version);
+     object_class_property_set_description(oc, "gic-version",
+                                           "Set GIC version. "
+-                                          "Valid values are 2, 3, 4, host and max");
++                                          "Valid values are 2, 3, 4, x-5, host and max");
+ 
+     object_class_property_add_str(oc, "iommu", virt_get_iommu, virt_set_iommu);
+     object_class_property_set_description(oc, "iommu",
 -- 
 2.43.0
 

@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C13410ED65C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46F7510ED65C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Dq-0001yw-Qy; Fri, 27 Mar 2026 07:19:27 -0400
+	id 1w65Dv-0002PT-7i; Fri, 27 Mar 2026 07:19:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CT-0007Rb-QP
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:03 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1w65Cb-0007o3-6V
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:09 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CO-00005L-Ca
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:59 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-439b7c2788dso1186421f8f.1
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:55 -0700 (PDT)
+ id 1w65CX-0000Hx-Rt
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:08 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-43b4f48c47cso1441204f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:18:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610274; x=1775215074; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610283; x=1775215083; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1a+4VgJGkwP3gKjTiIhrHr9y9Q94+K/thWEGPABWjoI=;
- b=tQ0U+vZkkrdFzQFVLB0RMBI1PpqQvChnbYcyX5ug+8eeaJqUuMwgI+meUH+ZNMa0f0
- IKlHVJfLYTC0J9AIIpMYp2YS+JMdBAOIbAOgTXUtkgTMHS+QzCw/iqfdGCWiJGebZgJi
- uUTE3LK9IIk/2s/nuo3EQ5zPiyhsRNtv3MnzEeQ2XEb+987HvtpJNFDkT+oLCc7sDie5
- fWk4q2mYnkMsvSWcM43COkWqQqq+I59twTkrrv4wGw3ivfnGgFJxIyhcn944FP6GFm3J
- QL/VvpeHTkR4IRfr4Z+gzXnUO2Av3oefjkbJizPTz63juh0P9Pbhaq1CsRDlDr1YkLTl
- UUZA==
+ bh=EDzfZGwv6v+8VJK0QWkKKZpbO/PDYJBzFKBjYptKlhY=;
+ b=jBJfJM+cdsS+djCG/pTKKCu+KlCme/vky/2zMcZGqCqHt3fBKW8+yidO9bow/GAQim
+ TfAiV3I9edLOcWuPMAIuA+0Lt3driiIl65FYmP/UkXbgEm655zndeqhKc8P0B+o6Iiok
+ W+cs1kCJFEX34m1S9dLAijIBfQYKap4qZOUcoyt/rVzfpQtk1cYOrM5Yn/H2ONjXX0ci
+ gVDqpf0SlS5ILVzhBiwVh0r6qwAlhlH8pzQVGQmFjrkbxghFX0TrhpsiVbgw6OOTZRGI
+ yx8aAetRHH23+4uH9zaQotolM6obuNnyAmY6d1WfQvfBYXBrljVEJl2q16nAusqZP6dn
+ 8OgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610274; x=1775215074;
+ d=1e100.net; s=20251104; t=1774610283; x=1775215083;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1a+4VgJGkwP3gKjTiIhrHr9y9Q94+K/thWEGPABWjoI=;
- b=NOk2CGapj6zIAfjuyvB+HkagVwLcgCvxDENkHJifVK6HqOX7BojeHBjMIGMSOAppuk
- ls9HuLMjya89MIITprQ8VuPLDYiJESESt0h4uFt0vCNY8GkGM/UGymZzcx/IBxjIU5Zn
- +FaKC3/M84Wuq7vSH6MQfwgx2cJXHZ+CVxNYMd9MoBLarbg6H/+Zmzje8f/OqtRaW2Dt
- UfEifC9QTeXiWkyWHM9ALr9CLf7FnSzcxO5GzyiJXaT2AVMN+hLyAL5TNE0BvsThjoOw
- q9kZkceWj2jQ+YNcezj1eU55xOsAyjJmst7rAY3TP9utV8Rb7QE8bgRucunb0z4cYIDE
- 2Xhg==
-X-Gm-Message-State: AOJu0YzEUDpLPSJFdaaYpOimqAMVdOnrcsa7BUT9NWJisQDkU68grMqD
- /9KqRVb6UIM/MkNTzNZT0ZYGcfZdCyihLHP9ei/BVkPTRnJJ8QTNrmbe9RNcG/K5ovgYytmRxru
- oFj1GZEs=
-X-Gm-Gg: ATEYQzzriQrE48GhjUuXf7yHsyNJ1GSahO7SM89qqCs7efxb6ZtrZ6DkLp2Ey/LvuDO
- zO/AjJvcHgFrQGw1mKNvqZuLxRgN9F2qdn2N/v2HCI2FF/koFccGYX5Gk6eAxdEwX1/6xsshuXg
- FqzN9ppNuKDcDMCTTyryb6Abohicjlu08skF04C1QpMVDnU+ZUv4y7SUj64JQWO0BgEZU1Rxk1g
- 9AcPC+A65zxRoV6M/4YVAXQ0/QjRFzuziCX6Hs08eX4o8MQUNKYul1ZIbwJqNm55w3G3XiWv5Op
- ItZ8Ka//ZlfSrqspUMrQ8Gewqt/rwYqbgLDT7kbi/GaCrJ3DPGYdDyxhNgZOppbKvjzUuouShbo
- 2Y0tOzOg2Uc8m3z7f9JBCQdmaE1psufr0MY+220g8pSUL90DAhV5eSAEFSKPe0S5+YXLiDOD/cJ
- Gm7cM423Rv08RbYila7iWgiYdv5mD6JH3Ykspoyre40OrciNyd9IT2zUN0uyXcu5fR4FSAbMVLN
- 405leXAm/9LJLpw7/KX9OJhs7gi/Sc=
-X-Received: by 2002:a05:6000:2dc3:b0:43b:9986:2fbe with SMTP id
- ffacd0b85a97d-43b9ea76342mr2999444f8f.49.1774610274349; 
- Fri, 27 Mar 2026 04:17:54 -0700 (PDT)
+ bh=EDzfZGwv6v+8VJK0QWkKKZpbO/PDYJBzFKBjYptKlhY=;
+ b=imu7uMg5NBdkiDPfvXseDgO7Ga87/x82IuDjo+nd3Qiawd7RAMjVOh9b38G+ZPw6bQ
+ vgLjcPxJe0uzJSbSzutKfrXA4oZkESpZ3UbD14c/Mmb8addllWvLtbJVZSLUZfP8GWtE
+ k4Frbi5bWBeLXFVt0slrABMoxvIgGgPHAdYtfaOUBMAAhAics9WdxLgLkWHlIjHw+8fI
+ c4t8gHy8kU0DcsQhyuStC4wBpjm/iTWZsNeJ+Ht8VjsC4PzI7JmlQrQArX9tDK3QpZpe
+ oNm7EFYFllOJZ88jTAzskN1pq1+jCbS7yDnxBzxrnLt1nTpXfR9yt3YiHDxgrryoEAJG
+ d8GQ==
+X-Gm-Message-State: AOJu0YyjahklqCUFS90cEjSwYecbcXYfDvNBNCQDK081TWvPeB8GIsYj
+ C5r1SKaoAt0jar3JhUhw88TZ209/0IHvqnhPpIOd3UwAef8jj2hjH8fWhoe5TNp/eY+uCZIArd+
+ MOYO0Bos=
+X-Gm-Gg: ATEYQzyn2JCg3E3jO+yAbr2DBdgPC/wn8x1PoLYeycUWY1nprZSiM+11UqFhyv2yLcv
+ GfVxnW+CJyi5kbjS37xExU2rRPBDjrEpZWptgc2BiSag8TvZJMMuWVVjylalbbHNXySGNwul09N
+ 8XUb3zrygu1wjAnwVN0Mws1ERynDVK677L0S9vMu6dllc6QqTxSIyumZuRy/FUQCNGbDDEJpFP+
+ MfypkRONVhsEs0nOpWMgeNxGAKlX4k7KP10Zryzr/OGYR4QCYrBXlGaOK04e+Nzik4nhMDwH/9+
+ yHcR4dt2zk0GSP11w2oNaAd0BqCn32ku1UcDedCO4dkGH4xjVFvj0MJssbdedV34oWd6cTnKrCp
+ tNu5TITw0bAbGoGsoVI13r21YJIbO+oo3w/bM08BZftPhq7CDzcGoXDTWpe7c+n/5n7n3QEZCb4
+ qntCoM+oSRGb+tOeDd8/0sp2jwASu50TtoU3pjDjMzpac/9GJe2BCVkhXt4izM0fBGARBsFIwP5
+ j7ntOyBM8ZDSLWUrGyNdg6pkfQV0Kc=
+X-Received: by 2002:a5d:5f96:0:b0:439:d769:ec56 with SMTP id
+ ffacd0b85a97d-43b9e76a760mr3065581f8f.0.1774610282995; 
+ Fri, 27 Mar 2026 04:18:02 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.53
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.18.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:53 -0700 (PDT)
+ Fri, 27 Mar 2026 04:18:02 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 55/65] hw/intc/arm_gicv3_cpuif: Don't allow GICv3 if CPU
- has GICv5 cpuif
-Date: Fri, 27 Mar 2026 11:16:50 +0000
-Message-ID: <20260327111700.795099-56-peter.maydell@linaro.org>
+Subject: [PATCH v2 64/65] hw/arm/virt: Enable GICv5 CPU interface when using
+ GICv5
+Date: Fri, 27 Mar 2026 11:16:59 +0000
+Message-ID: <20260327111700.795099-65-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,85 +103,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv3 and GICv5 CPU interfaces are not compatible, and a CPU will
-only implement either one or the other.  If we find that we're trying
-to connect a GICv3 to a CPU that implements FEAT_GCIE, fail.  This
-will only happen if the board code has a bug and doesn't configure
-its CPUs and its GIC consistently.
+If we are using the GICv5 in the virt board, we need to set the
+has_gcie property on the CPU objects to tell them to implement the
+cpu interface part of GICv5.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- hw/intc/arm_gicv3.c       |  2 +-
- hw/intc/arm_gicv3_cpuif.c | 14 +++++++++++++-
- hw/intc/gicv3_internal.h  |  2 +-
- 3 files changed, 15 insertions(+), 3 deletions(-)
+ hw/arm/virt.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 542f81ea49..e93c1df5b4 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -449,7 +449,7 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 15d833ad8f..0aff58bc3c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2675,6 +2675,14 @@ static void machvirt_init(MachineState *machine)
+             object_property_set_bool(cpuobj, "lpa2", false, NULL);
+         }
  
-     gicv3_init_irqs_and_mmio(s, gicv3_set_irq, gic_ops);
- 
--    gicv3_init_cpuif(s);
-+    gicv3_init_cpuif(s, errp);
- }
- 
- static void arm_gicv3_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index eaf1e512ed..73e06f87d4 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -16,6 +16,7 @@
- #include "qemu/bitops.h"
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
-+#include "qapi/error.h"
- #include "trace.h"
- #include "gicv3_internal.h"
- #include "hw/core/irq.h"
-@@ -3016,7 +3017,7 @@ static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
-     gicv3_cpuif_virt_irq_fiq_update(cs);
- }
- 
--void gicv3_init_cpuif(GICv3State *s)
-+void gicv3_init_cpuif(GICv3State *s, Error **errp)
- {
-     /* Called from the GICv3 realize function; register our system
-      * registers with the CPU
-@@ -3027,6 +3028,17 @@ void gicv3_init_cpuif(GICv3State *s)
-         ARMCPU *cpu = ARM_CPU(qemu_get_cpu(s->first_cpu_idx + i));
-         GICv3CPUState *cs = &s->cpu[i];
- 
-+        if (cpu_isar_feature(aa64_gcie, cpu)) {
-+            /*
-+             * Attempt to connect GICv3 to a CPU with GICv5 cpuif
-+             * (almost certainly a bug in the board code)
-+             */
-+            error_setg(errp,
-+                       "Cannot connect GICv3 to CPU %d which has GICv5 cpuif",
-+                       i);
-+            return;
++        if (vms->gic_version == VIRT_GIC_VERSION_5) {
++            if (!object_property_find(cpuobj, "has_gcie")) {
++                error_report("Using GICv5 but guest CPU does not support it");
++                exit(1);
++            }
++            object_property_set_bool(cpuobj, "has_gcie", true, NULL);
 +        }
 +
-         /*
-          * If the CPU doesn't define a GICv3 configuration, probably because
-          * in real hardware it doesn't have one, then we use default values
-diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
-index 880dbe52d8..c01be70464 100644
---- a/hw/intc/gicv3_internal.h
-+++ b/hw/intc/gicv3_internal.h
-@@ -722,7 +722,7 @@ void gicv3_redist_mov_vlpi(GICv3CPUState *src, uint64_t src_vptaddr,
- void gicv3_redist_vinvall(GICv3CPUState *cs, uint64_t vptaddr);
- 
- void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
--void gicv3_init_cpuif(GICv3State *s);
-+void gicv3_init_cpuif(GICv3State *s, Error **errp);
- 
- /**
-  * gicv3_cpuif_update:
+         if (object_property_find(cpuobj, "reset-cbar")) {
+             object_property_set_int(cpuobj, "reset-cbar",
+                                     vms->memmap[VIRT_CPUPERIPHS].base,
 -- 
 2.43.0
 

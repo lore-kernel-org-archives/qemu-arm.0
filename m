@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A6B210ED65E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:26:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EE810ED659
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:26:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Dp-0001n0-0e; Fri, 27 Mar 2026 07:19:25 -0400
+	id 1w65By-0006hK-P8; Fri, 27 Mar 2026 07:17:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Ca-0007kM-Bq
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:08 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1w65Bu-0006Zi-K1
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:26 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CV-00008r-8x
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:08 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-43b41b545d9so2037332f8f.2
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:58 -0700 (PDT)
+ id 1w65Bs-0007wf-Lw
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:26 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43b40fb7f95so1730885f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610277; x=1775215077; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610243; x=1775215043; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NrTKpprv3zreT1hOn+OhcK5Z8pr1JULBMiSX0Lhf8qo=;
- b=U3nCnWRKW3kq8bx7ryJoOUxa9S/K5or52bNiDk6ns/8jR7zZ1+WF4/8ISAm1yBDc3v
- +590L9kP8nHRAWHP+ColAoo4q6oL4TMVqRYOnfzLq6V5x5HPfdCNGZI7XC+lIym0Uew6
- /P9BjkLrLn9zWiJzBVm4/M3ijD6tGhBXnevyJGgYgT4ufPX/xVqI5QxOL9MpALfhQmR+
- Rt1+Z3a/sdRzYGq9I4bysvchO1U7n8HqKllilhtm1fQiIIg6MsoE2fKN1w3EbJxH0vcC
- AyI6SFlMguVLVANlwsF36+8ZhoLmKZZz7qKctbDxSsxTkThXb0R2J4lwUJ1x1OS60wvw
- FH+g==
+ bh=mSHOw0ePxFClS8VZTB3TfGftr7NcOYKm+ePZhUgk940=;
+ b=TGnF7eNsFnoe819AkskCup9UCZ+xJ0B19aHNyQj+KzhHxY5mJjErZY71/ybs461ipv
+ 7ibyVtRlY/yoTarPcmbP7zXnxxeLSLkllt0XNTG92wQo+bbwW91dIC2wfLCTR2w9/xAl
+ EJuMB8TXP+EypuKdDzKg61PUFPIL4F5eFsOWFZgCudgdpjwyJyl7aXIEwDueN5caROjn
+ ZNQeEsgbxWUqynqg1O76OGuOLewsjk+OiMzmIcxIq3zfOWWXLw0MgKn3oB9J8piEdEhn
+ PKSyN5ZWNkpg4obVMfXBlcPKr9+yGlGEQsNofQA8DB/3qAiFBi3mMngktSth094jWTUD
+ Q39w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610277; x=1775215077;
+ d=1e100.net; s=20251104; t=1774610243; x=1775215043;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=NrTKpprv3zreT1hOn+OhcK5Z8pr1JULBMiSX0Lhf8qo=;
- b=Lu+yQRR/r6jTj9IQ6f+AibcqOOFp0IbBLwHacDK6YWF29kO6TeJKc/g5HSVpwRyLpF
- rjJXK/n+v8XQ9AHl4mA408h2m+qIKDrqDKvF7W1pYQq2HRKg7FoPxtJY1PoQ7g0sVRQm
- xgVE2SynzycoedAyfKuXhDErEZok/++BIS8jnbBg+qahmTrT9el5KRKjo4+IpoUIpWWM
- Vn97S/nU2qydjdRuFtbRgVx1eca1JIkz7sXEGl5aAN6sboHVqp/GSFE9RYSsyQ9pkNCR
- T2OIRF/IP8OwbFtoxkRdNra+3qk5NnPP/a4s+Z2mkEY1M9NuzjT2Zq73iNrbX19zt+bb
- t6mQ==
-X-Gm-Message-State: AOJu0Yx5ekDKt1BtX+kp4yFotT6MsdcS8WKw4uYR7VdHeOwCzIHjm0Wf
- G/koP9B9oH4E/Q/vryT/gtD24eBFS0C9fHyJybWwXnoUgYCF3EI6Zi9i0WLq1tJEnRejYIzgTKR
- NkeIZGmQ=
-X-Gm-Gg: ATEYQzxwv9z7Q8KhSe2gtqp+zoeSfWIqbZtc0C5LLR+weBxvTNdDgcyXuuEqVC/ec8O
- MWgFUkEIzUPUFC2HMjYkapsyjbDvQHKw4CW4775Rq9J7jPxAPagQ7MJjU9NHhk6xBarUXcj/bQ8
- zEyMvmhX8IPxlJQi15/RUZrBZvBsIz7nBEgmpk+aMlR7FR99KkocOyiAeppdI6/5q1PXAPz239p
- PAKg+JxFtSVFoZDc1CTq4y+oW/lbh9nzdFowHUpJOyh/MofMQR81ZZeSRT/33QZikDcwvtRWx+E
- vty8Gp53AQs2AVaQEQfBsw/24OJT3h1DOeyeEypKwAxgscCKF4wBUqxI20OCI9cNyQcLCnItXJM
- aaiBNNoBUX9/SDPPTZTPF4do6rpxuV5JPWw8e1dDUWvz9NUwwsMEFn780cuaGjXYBqqVoMl4aVD
- OXO+J719ZkAunNwN3RSaMeTrDPJz2eTaU5Lj7p43rWek4WmC2mDSDPDxBOuZvuvTnurEjiV9mCJ
- wo1jRyId+1ZbJ90l2lijJVbfLCCr00=
-X-Received: by 2002:a05:6000:3105:b0:43b:5672:efe with SMTP id
- ffacd0b85a97d-43b9e9db098mr2947888f8f.9.1774610276779; 
- Fri, 27 Mar 2026 04:17:56 -0700 (PDT)
+ bh=mSHOw0ePxFClS8VZTB3TfGftr7NcOYKm+ePZhUgk940=;
+ b=oUIvB/Ca6lsp9N8nP5J+yVqUTh+y5vw8KYGZwt51MfA6bvewEpmImO32gE+/RxpHQU
+ L7cGNucZyupOB06sYeMVl5cBaxzl7pafTH9gg5343gLPVrp9MxauVrvI6n90/HV08j5C
+ nQulVDdHrUAvBtvFQJerywoL8V7bQPNfue+YgoAhAYlzJ1e4ijnOqpJ7NUYSS6R9MpXh
+ QN89k8XiD5XFHYS7kJmt3HIrgQ0ObIxJZH9N7VMdZ5Aw49NivbEFife9w81gG1o5eFAp
+ RhKVb4Zlnhapk/t+yc4RF9qvYsmN+GW5VyU2mucUdv8qhnCwyQB80dvETllw2ackVERH
+ GuJw==
+X-Gm-Message-State: AOJu0YyrSJtXQ4dpGs7gSZUmikXaBFK9f/YirH/zhhrNEHX3jtrJlBdH
+ Y1Rs+frBFzqHsPMUZHeqCwofzsM3Xoynkv1D+L31J1Eytnqt5ZWEl1t/tbSyGarnEom1ubkSYgQ
+ UJp0GgJo=
+X-Gm-Gg: ATEYQzzrZT57A2HFSRt0XkftrlGAWp38vqoh2LADXfe4VvLVada3b9zNgib2tKPnvWd
+ LjavqARYcBl3XG8bALclR5sNc5DAAy6ogs7j3VO2EHdYgf3Y+zBbH4y5iaw71twiK8hsUlDvjci
+ L38+cI6wdy1RKjlt8pGFgS8M5v58jXzflKRd98keU676K9LRj5c/q/6zXOGUMUK1dJC2pKg04hX
+ h0ichc0lQkU8Am7DKCXc96FmYeDozCMiBp4/y0bUd0mlr92wAch8OWcHwTrx1pN5yn8bx3Rcjth
+ 9+VM4DXCnWBK/cLkJaPtLv22a5ThCxxwNVzGAoWIX9VsGbUuJYaczoyryG2kXMhmg5tfj3pgNV4
+ nlhOy92C3Pnp/83LUrqx/QB58x2hiPrfcTM+jOSxMsfO4alKIEcpeGpNF+HaqCC5DzSqKUnCxds
+ Pa90C9SOu/Y5+GH0BV/YMIkmkTB84gRU62SbPSAHffk9E/6lg7Sq22oxVubbFWV2UvyI97gvMBR
+ ZXfXC+FUK5E2LPQNAg7yqa06oALurk=
+X-Received: by 2002:a05:6000:250d:b0:439:bf55:f5ec with SMTP id
+ ffacd0b85a97d-43b9ea77b12mr3260198f8f.50.1774610242563; 
+ Fri, 27 Mar 2026 04:17:22 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.56
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:56 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:21 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 58/65] hw/arm/virt: Pull "wire CPU interrupts" out of
- create_gic()
-Date: Fri, 27 Mar 2026 11:16:53 +0000
-Message-ID: <20260327111700.795099-59-peter.maydell@linaro.org>
+Subject: [PATCH v2 22/65] target/arm: GICv5 cpuif: Implement GIC CD* insns for
+ setting config
+Date: Fri, 27 Mar 2026 11:16:17 +0000
+Message-ID: <20260327111700.795099-23-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,169 +103,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-create_gic() is quite long and mixes GICv2 and GICv3 even though
-they're mostly different in their creation.  As a preliminary to
-splitting it up, pull out the "wire the CPU interrupts to the GIC PPI
-inputs" code out into its own function.  This is a long and
-self-contained piece of code that is the main thing that we need to
-do basically the same way for GICv2 and GICv3.
+Implement the GIC CDDIS, GIC CDEN, GIC CDAFF, GIC CDPEND and GIC CDHM
+system instructions.  These are all simple wrappers around the
+equivalent gicv5_set_* functions, like GIC CDPRI.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- hw/arm/virt.c | 126 +++++++++++++++++++++++++++-----------------------
- 1 file changed, 68 insertions(+), 58 deletions(-)
+ target/arm/tcg/gicv5-cpuif.c | 108 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 108 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 544605244b..5a2cb81919 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -794,13 +794,79 @@ static bool gicv3_nmi_present(VirtMachineState *vms)
-            (vms->gic_version != VIRT_GIC_VERSION_2);
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index 0c2bba5ce9..0c4349f8a7 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -16,6 +16,25 @@ FIELD(GIC_CDPRI, ID, 0, 24)
+ FIELD(GIC_CDPRI, TYPE, 29, 3)
+ FIELD(GIC_CDPRI, PRIORITY, 35, 5)
+ 
++FIELD(GIC_CDDIS, ID, 0, 24)
++FIELD(GIC_CDDIS, TYPE, 29, 3)
++
++FIELD(GIC_CDEN, ID, 0, 24)
++FIELD(GIC_CDEN, TYPE, 29, 3)
++
++FIELD(GIC_CDAFF, ID, 0, 24)
++FIELD(GIC_CDAFF, IRM, 28, 1)
++FIELD(GIC_CDAFF, TYPE, 29, 3)
++FIELD(GIC_CDAFF, IAFFID, 32, 16)
++
++FIELD(GIC_CDPEND, ID, 0, 24)
++FIELD(GIC_CDPEND, TYPE, 29, 3)
++FIELD(GIC_CDPEND, PENDING, 32, 1)
++
++FIELD(GIC_CDHM, ID, 0, 24)
++FIELD(GIC_CDHM, TYPE, 29, 3)
++FIELD(GIC_CDHM, HM, 32, 1)
++
+ static GICv5Common *gicv5_get_gic(CPUARMState *env)
+ {
+     return env->gicv5state;
+@@ -51,6 +70,30 @@ static GICv5Domain gicv5_current_phys_domain(CPUARMState *env)
+     return gicv5_logical_domain(env);
  }
  
-+static void gic_connect_ppis(VirtMachineState *vms)
++static void gic_cddis_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                            uint64_t value)
 +{
-+    /*
-+     * Wire the outputs from each CPU's generic timer and the GICv3
-+     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI/VINMI interrupt outputs to the
-+     * CPU's inputs.
-+     */
-+    MachineState *ms = MACHINE(vms);
-+    unsigned int smp_cpus = ms->smp.cpus;
-+    SysBusDevice *gicbusdev = SYS_BUS_DEVICE(vms->gic);
++    GICv5Common *gic = gicv5_get_gic(env);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDDIS, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDDIS, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
 +
-+    for (int i = 0; i < smp_cpus; i++) {
-+        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-+        int intidbase = NUM_IRQS + i * GIC_INTERNAL;
-+        /*
-+         * Mapping from the output timer irq lines from the CPU to the
-+         * GIC PPI inputs we use for the virt board.
-+         */
-+        const int timer_irq[] = {
-+            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-+            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-+            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-+            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
-+            [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
-+            [GTIMER_S_EL2_PHYS] = ARCH_TIMER_S_EL2_IRQ,
-+            [GTIMER_S_EL2_VIRT] = ARCH_TIMER_S_EL2_VIRT_IRQ,
-+        };
-+
-+        for (unsigned irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
-+            qdev_connect_gpio_out(cpudev, irq,
-+                                  qdev_get_gpio_in(vms->gic,
-+                                                   intidbase + timer_irq[irq]));
-+        }
-+
-+        if (vms->gic_version != VIRT_GIC_VERSION_2) {
-+            qemu_irq irq = qdev_get_gpio_in(vms->gic,
-+                                            intidbase + ARCH_GIC_MAINT_IRQ);
-+            qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
-+                                        0, irq);
-+        } else if (vms->virt) {
-+            qemu_irq irq = qdev_get_gpio_in(vms->gic,
-+                                            intidbase + ARCH_GIC_MAINT_IRQ);
-+            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
-+        }
-+
-+        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
-+                                    qdev_get_gpio_in(vms->gic, intidbase
-+                                                     + VIRTUAL_PMU_IRQ));
-+
-+        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-+        sysbus_connect_irq(gicbusdev, i + smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-+        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
-+        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
-+
-+        if (vms->gic_version != VIRT_GIC_VERSION_2) {
-+            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
-+                               qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
-+            sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
-+                               qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
-+        }
-+    }
++    gicv5_set_enabled(gic, id, false, domain, type, virtual);
 +}
 +
- static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
++static void gic_cden_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    GICv5Common *gic = gicv5_get_gic(env);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDEN, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDEN, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
++
++    gicv5_set_enabled(gic, id, true, domain, type, virtual);
++}
++
+ static void gic_cdpri_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                             uint64_t value)
  {
-     MachineState *ms = MACHINE(vms);
-     /* We create a standalone GIC */
-     SysBusDevice *gicbusdev;
-     const char *gictype;
--    int i;
-     unsigned int smp_cpus = ms->smp.cpus;
-     uint32_t nb_redist_regions = 0;
-     int revision;
-@@ -899,63 +965,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-         }
-     }
- 
--    /* Wire the outputs from each CPU's generic timer and the GICv3
--     * maintenance interrupt signal to the appropriate GIC PPI inputs,
--     * and the GIC's IRQ/FIQ/VIRQ/VFIQ/NMI/VINMI interrupt outputs to the
--     * CPU's inputs.
--     */
--    for (i = 0; i < smp_cpus; i++) {
--        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
--        int intidbase = NUM_IRQS + i * GIC_INTERNAL;
--        /* Mapping from the output timer irq lines from the CPU to the
--         * GIC PPI inputs we use for the virt board.
--         */
--        const int timer_irq[] = {
--            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
--            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
--            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
--            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
--            [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
--            [GTIMER_S_EL2_PHYS] = ARCH_TIMER_S_EL2_IRQ,
--            [GTIMER_S_EL2_VIRT] = ARCH_TIMER_S_EL2_VIRT_IRQ,
--        };
--
--        for (unsigned irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
--            qdev_connect_gpio_out(cpudev, irq,
--                                  qdev_get_gpio_in(vms->gic,
--                                                   intidbase + timer_irq[irq]));
--        }
--
--        if (vms->gic_version != VIRT_GIC_VERSION_2) {
--            qemu_irq irq = qdev_get_gpio_in(vms->gic,
--                                            intidbase + ARCH_GIC_MAINT_IRQ);
--            qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
--                                        0, irq);
--        } else if (vms->virt) {
--            qemu_irq irq = qdev_get_gpio_in(vms->gic,
--                                            intidbase + ARCH_GIC_MAINT_IRQ);
--            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
--        }
--
--        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
--                                    qdev_get_gpio_in(vms->gic, intidbase
--                                                     + VIRTUAL_PMU_IRQ));
--
--        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
--        sysbus_connect_irq(gicbusdev, i + smp_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
--        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
--        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
--                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
--
--        if (vms->gic_version != VIRT_GIC_VERSION_2) {
--            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
--                               qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
--            sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
--                               qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
--        }
--    }
-+    gic_connect_ppis(vms);
- 
-     fdt_add_gic_node(vms);
+@@ -64,6 +107,46 @@ static void gic_cdpri_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     gicv5_set_priority(gic, id, priority, domain, type, virtual);
  }
+ 
++static void gic_cdaff_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                            uint64_t value)
++{
++    GICv5Common *gic = gicv5_get_gic(env);
++    uint32_t iaffid = FIELD_EX64(value, GIC_CDAFF, IAFFID);
++    GICv5RoutingMode irm = FIELD_EX64(value, GIC_CDAFF, IRM);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDAFF, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDAFF, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
++
++    gicv5_set_target(gic, id, iaffid, irm, domain, type, virtual);
++}
++
++static void gic_cdpend_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                             uint64_t value)
++{
++    GICv5Common *gic = gicv5_get_gic(env);
++    bool pending = FIELD_EX64(value, GIC_CDPEND, PENDING);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDPEND, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDPEND, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
++
++    gicv5_set_pending(gic, id, pending, domain, type, virtual);
++}
++
++static void gic_cdhm_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                           uint64_t value)
++{
++    GICv5Common *gic = gicv5_get_gic(env);
++    GICv5HandlingMode hm = FIELD_EX64(value, GIC_CDHM, HM);
++    GICv5IntType type = FIELD_EX64(value, GIC_CDAFF, TYPE);
++    uint32_t id = FIELD_EX64(value, GIC_CDAFF, ID);
++    bool virtual = false;
++    GICv5Domain domain = gicv5_current_phys_domain(env);
++
++    gicv5_set_handling(gic, id, hm, domain, type, virtual);
++}
++
+ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+     /*
+      * Barrier: wait until the effects of a cpuif system register
+@@ -86,11 +169,36 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
+         .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 0, .opc2 = 1,
+         .access = PL1_W, .type = ARM_CP_NOP,
+     },
++    {   .name = "GIC_CDDIS", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 0,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cddis_write,
++    },
++    {   .name = "GIC_CDEN", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 1,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cden_write,
++    },
+     {   .name = "GIC_CDPRI", .state = ARM_CP_STATE_AA64,
+         .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 2,
+         .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
+         .writefn = gic_cdpri_write,
+     },
++    {   .name = "GIC_CDAFF", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 3,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdaff_write,
++    },
++    {   .name = "GIC_CDPEND", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 4,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdpend_write,
++    },
++    {   .name = "GIC_CDHM", .state = ARM_CP_STATE_AA64,
++        .opc0 = 1, .opc1 = 0, .crn = 12, .crm = 2, .opc2 = 1,
++        .access = PL1_W, .type = ARM_CP_IO | ARM_CP_NO_RAW,
++        .writefn = gic_cdhm_write,
++    },
+ };
+ 
+ void define_gicv5_cpuif_regs(ARMCPU *cpu)
 -- 
 2.43.0
 

@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E26C410ED67E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D04810ED674
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:48:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67Vp-0007Sb-55; Fri, 27 Mar 2026 09:46:10 -0400
+	id 1w67VA-0006ZB-Ly; Fri, 27 Mar 2026 09:45:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67VB-0006cE-Pq
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:29 -0400
+ id 1w67V3-0006S9-35
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67VA-0006Ys-4Z
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:29 -0400
+ id 1w67V1-0006X8-LS
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619125;
+ s=mimecast20190719; t=1774619119;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=i84rNdfgM/w8ABJ8HnJy4pqINDmLOPX/1RnRroOZru8=;
- b=DVgVteTPtbRkJOQojdFuy1CzvhttUtaqjjmRHWVfpYbqbQDOqloNKKpYWJ5+8/ul29n2b1
- IC+dSD2dYFJ2OX+3kbwHgYxqgtfNwrPcX3prvK1y0mTmC0Gj7CYwkW/tFVyQCa38wI1KEQ
- GGSt3cX+kYX/DzlsM06dmtyGezo6CuA=
+ bh=+AC/Rs5aGm9ogD74hTmTObfS5j9a2nU8YQlkEq3pZSM=;
+ b=ceUeCbWdzbMX6DQQS/r7wh0EoDYQKR8ooaToEUlFIHhDIKCgrvZIraLxyMWqYpQkcsbELA
+ kSjfboDu9OXZYZ0VSjZjHZF94EnVlHs83TgrLFq3Vq6HgY7WKjdX2KgvseoZBIE2thMtVD
+ WqUN1uS1FFdIs5sTIZwslDNwOsnN82c=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-676-Z_076GK5MCGHZmv2dVLcfQ-1; Fri,
- 27 Mar 2026 09:45:22 -0400
-X-MC-Unique: Z_076GK5MCGHZmv2dVLcfQ-1
-X-Mimecast-MFC-AGG-ID: Z_076GK5MCGHZmv2dVLcfQ_1774619119
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-332-UrDfc_izNpWZCPWGhX6nXA-1; Fri,
+ 27 Mar 2026 09:45:16 -0400
+X-MC-Unique: UrDfc_izNpWZCPWGhX6nXA-1
+X-Mimecast-MFC-AGG-ID: UrDfc_izNpWZCPWGhX6nXA_1774619112
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8E2ED180044D; Fri, 27 Mar 2026 13:45:19 +0000 (UTC)
+ id A8F9218002DD; Fri, 27 Mar 2026 13:45:12 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2232F180036E; Fri, 27 Mar 2026 13:45:12 +0000 (UTC)
+ id A04871800671; Fri, 27 Mar 2026 13:45:04 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,15 +66,15 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 09/15] target/xtensa: Use glib2 instead of
+Subject: [PATCH v2 08/15] target/ppc: Use glib2 instead of
  strcasecmp/strncasecmp
-Date: Fri, 27 Mar 2026 15:43:55 +0200
-Message-ID: <20260327134401.270186-10-kkostiuk@redhat.com>
+Date: Fri, 27 Mar 2026 15:43:54 +0200
+Message-ID: <20260327134401.270186-9-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 1gbXhbmlRsMB-aS3OZcv6w9VRfDAfjDc7y-i86VVLtU_1774619119
+X-Mimecast-MFC-PROC-ID: dxegEuuaH5pifzSQZJxED_iKbyBK8oGoA_f-DCH5HRg_1774619112
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -110,31 +110,22 @@ locale but strcasecmp() does. But this is OK for at least one reason:
 
 Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 ---
- target/xtensa/xtensa-isa.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/ppc/kvm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/xtensa/xtensa-isa.c b/target/xtensa/xtensa-isa.c
-index 630b4f9da1..c564af340f 100644
---- a/target/xtensa/xtensa-isa.c
-+++ b/target/xtensa/xtensa-isa.c
-@@ -370,7 +370,7 @@ int xtensa_isa_name_compare(const void *v1, const void *v2)
-     xtensa_lookup_entry *e1 = (xtensa_lookup_entry *)v1;
-     xtensa_lookup_entry *e2 = (xtensa_lookup_entry *)v2;
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 41bd03ec2a..25c28ad089 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -2653,7 +2653,7 @@ static int kvm_ppc_register_host_cpu_type(void)
+      */
+     dc = DEVICE_CLASS(ppc_cpu_get_family_class(pvr_pcc));
+     for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
+-        if (strcasecmp(ppc_cpu_aliases[i].alias, dc->desc) == 0) {
++        if (g_ascii_strcasecmp(ppc_cpu_aliases[i].alias, dc->desc) == 0) {
+             char *suffix;
  
--    return strcasecmp(e1->key, e2->key);
-+    return g_ascii_strcasecmp(e1->key, e2->key);
- }
- 
- 
-@@ -513,7 +513,7 @@ xtensa_format xtensa_format_lookup(xtensa_isa isa, const char *fmtname)
-     }
- 
-     for (fmt = 0; fmt < intisa->num_formats; fmt++) {
--        if (strcasecmp(fmtname, intisa->formats[fmt].name) == 0) {
-+        if (g_ascii_strcasecmp(fmtname, intisa->formats[fmt].name) == 0) {
-             return fmt;
-         }
-     }
+             ppc_cpu_aliases[i].model = g_strdup(object_class_get_name(oc));
 -- 
 2.52.0
 

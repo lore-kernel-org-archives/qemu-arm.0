@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8475E10ED661
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBC3D10ED674
 	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:46:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67WJ-00019j-9x; Fri, 27 Mar 2026 09:46:41 -0400
+	id 1w67Vz-00007z-73; Fri, 27 Mar 2026 09:46:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67Vn-0007Qb-Gw
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:09 -0400
+ id 1w67Vs-0007iF-KT
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67Vi-0006g7-VB
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:05 -0400
+ id 1w67Vp-0006iA-T3
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619161;
+ s=mimecast20190719; t=1774619169;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ozMMMbc5i4osCd27yTtYVpRq0NefVxtoYxUcTIpyOtQ=;
- b=fjqpq7pUG9FCkYgXAaELOivkvwU1kpXEpRTy8pGS7GZFa7kWIxhyHJNE1x6v9NmDGfPAgR
- FINsFGKqT1T9aW/LpoVEJQMXh1Z5F+C+Kzycdh0Gm8j82HJG57NxVcr4BpuhFbiHt2twJs
- fQGmVyR7aj3E8loSZMZQ10SewpAKYB8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=E5I4/G72hvVsFtElipL0UZ7WDqmWzfz7Df4ICX/cOls=;
+ b=VQnMreT6QPRJjmCAs9FCmZ+L3SfIWzrNCakZPLzBshHTU5hNUbqzebS7V2soWUOuQz2eOM
+ BiBiiEmFn+Q5j4009p7/u/3yXkOssUZcz3HkDBL6d//iTpEeGd045L1Rhr8DKxQuH1uMdS
+ YWRa9zA5GA+G5917g1r72TuspYQL9OU=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-13-Oq34NabwP6-24Tg-o-cfLg-1; Fri,
- 27 Mar 2026 09:45:57 -0400
-X-MC-Unique: Oq34NabwP6-24Tg-o-cfLg-1
-X-Mimecast-MFC-AGG-ID: Oq34NabwP6-24Tg-o-cfLg_1774619155
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-B3v5Nm5sNkuoJ7zD4fQKiQ-1; Fri,
+ 27 Mar 2026 09:46:05 -0400
+X-MC-Unique: B3v5Nm5sNkuoJ7zD4fQKiQ-1
+X-Mimecast-MFC-AGG-ID: B3v5Nm5sNkuoJ7zD4fQKiQ_1774619163
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1A42818005B0; Fri, 27 Mar 2026 13:45:55 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C5067195608E; Fri, 27 Mar 2026 13:46:02 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7719A1800673; Fri, 27 Mar 2026 13:45:48 +0000 (UTC)
+ id 86AA8180075C; Fri, 27 Mar 2026 13:45:55 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,15 +66,14 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 14/15] storage-daemon: use same link arguments as other
- tools
-Date: Fri, 27 Mar 2026 15:44:00 +0200
-Message-ID: <20260327134401.270186-15-kkostiuk@redhat.com>
+Subject: [PATCH v2 15/15] meson: Don't require nm for non-modular builds
+Date: Fri, 27 Mar 2026 15:44:01 +0200
+Message-ID: <20260327134401.270186-16-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 62oW4YpGBDlb7mAOv77B7PoIYlMrFbRwWUR-lPhykv0_1774619155
+X-Mimecast-MFC-PROC-ID: RNUbSMm6QZTn3w7RAargLPSydeUwzK_hm8kYPItSy4g_1774619163
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -87,7 +86,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,66 +102,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+In the MSVC build environment, nm is missing; at the same time,
+scripts/undefsym.py exits with code 0 at the beginning
+for non-modular builds.
 
-Reviewed-by: Kevin Wolf <kwolf@redhat.com>
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+So, this change is harmless because it already didn't do anything
+in non-modular builds, but remove the additional tool requirements.
+
+Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 ---
- meson.build                |  8 ++++----
- storage-daemon/meson.build | 16 ++++++++--------
- 2 files changed, 12 insertions(+), 12 deletions(-)
+ meson.build | 25 ++++++++++++++-----------
+ 1 file changed, 14 insertions(+), 11 deletions(-)
 
 diff --git a/meson.build b/meson.build
-index 1087e8c106..4a3fc306b7 100644
+index 4a3fc306b7..cc9e9784e9 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -4507,15 +4507,15 @@ if xkbcommon.found()
- endif
+@@ -3908,6 +3908,9 @@ modinfo_generate = find_program('scripts/modinfo-generate.py')
+ modinfo_files = []
+ audio_modinfo_files = []
  
- if have_tools
--  link_args = enable_modules ? ['@block.syms'] : []
-+  tools_link_args = enable_modules ? ['@block.syms'] : []
-   qemu_img = executable('qemu-img', [files('qemu-img.c'), hxdep],
--             link_args: link_args, link_depends: block_syms,
-+             link_args: tools_link_args, link_depends: block_syms,
-              dependencies: [authz, block, crypto, io, qom, qemuutil], install: true)
-   qemu_io = executable('qemu-io', files('qemu-io.c'),
--             link_args: link_args, link_depends: block_syms,
-+             link_args: tools_link_args, link_depends: block_syms,
-              dependencies: [block, qemuutil], install: true)
-   qemu_nbd = executable('qemu-nbd', files('qemu-nbd.c'),
--               link_args: link_args, link_depends: block_syms,
-+               link_args: tools_link_args, link_depends: block_syms,
-                dependencies: [blockdev, qemuutil, selinux],
-                install: true)
- 
-diff --git a/storage-daemon/meson.build b/storage-daemon/meson.build
-index 5e61a9d1bd..fc088cbea7 100644
---- a/storage-daemon/meson.build
-+++ b/storage-daemon/meson.build
-@@ -1,14 +1,14 @@
-+assert(have_tools)
++block_syms = []
++qemu_syms = []
 +
- qsd_ss = ss.source_set()
- qsd_ss.add(files('qemu-storage-daemon.c'))
- qsd_ss.add(blockdev, chardev, qmp, qom, qemuutil)
- 
- subdir('qapi')
- 
--if have_tools
--  qsd_ss = qsd_ss.apply({})
--  qsd = executable('qemu-storage-daemon',
--                   qsd_ss.sources(),
--                   link_args: '@block.syms', link_depends: block_syms,
--                   dependencies: qsd_ss.dependencies(),
--                   install: true)
+ block_mods = []
+ system_mods = []
+ emulator_modules = []
+@@ -4023,18 +4026,18 @@ if enable_modules
+   if emulator_modules.length() > 0
+     alias_target('modules', emulator_modules)
+   endif
 -endif
-+qsd_ss = qsd_ss.apply({})
-+qsd = executable('qemu-storage-daemon',
-+                 qsd_ss.sources(),
-+                 link_args: tools_link_args, link_depends: block_syms,
-+                 dependencies: qsd_ss.dependencies(),
-+                 install: true)
+ 
+-nm = find_program('nm')
+-undefsym = find_program('scripts/undefsym.py')
+-block_syms = custom_target('block.syms', output: 'block.syms',
+-                             input: [libqemuutil, block_mods],
+-                             capture: true,
+-                             command: [undefsym, nm, '@INPUT@'])
+-qemu_syms = custom_target('qemu.syms', output: 'qemu.syms',
+-                             input: [libqemuutil, system_mods],
+-                             capture: true,
+-                             command: [undefsym, nm, '@INPUT@'])
++  nm = find_program('nm')
++  undefsym = find_program('scripts/undefsym.py')
++  block_syms = custom_target('block.syms', output: 'block.syms',
++                              input: [libqemuutil, block_mods],
++                              capture: true,
++                              command: [undefsym, nm, '@INPUT@'])
++  qemu_syms = custom_target('qemu.syms', output: 'qemu.syms',
++                              input: [libqemuutil, system_mods],
++                              capture: true,
++                              command: [undefsym, nm, '@INPUT@'])
++endif
+ 
+ authz_ss = authz_ss.apply({})
+ libauthz = static_library('authz', authz_ss.sources() + genh,
 -- 
 2.52.0
 

@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D532110F284E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 16:48:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA7D010F284F
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 16:48:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6AJs-00074z-48; Fri, 27 Mar 2026 12:46:00 -0400
+	id 1w6ALs-0000sc-Vr; Fri, 27 Mar 2026 12:48:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6AJ3-0006ea-Aq
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:11 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1w6AJ8-0006gt-Tb
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:15 -0400
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6AIz-00038m-FB
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:09 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2b0c30b517aso8739075ad.3
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 09:44:59 -0700 (PDT)
+ id 1w6AJ1-0003AN-7t
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 12:45:14 -0400
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2aae146b604so14098495ad.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 09:45:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774629898; x=1775234698; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774629902; x=1775234702; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=r2jhG0JdJkpzPMpSo2GG9wEa3WbWFhcOQfxGH9DnApU=;
- b=zAzmJm0V2T8Gz/bPfqtsoEEBaGwx0nBVgTx/vv2I+zixhtoj3+CyUEFDHSSLAmpize
- t9UBA4wG7YtlQuRK4LA5whnnFv3X3Q778Pxw+f8YenhV0slVhC+tqYTAga6cfUaTnLd6
- vko/C7+QHTqfo1DlqLtJs8kH1kXjncbB25WdK3kvG3Do+I7rkaHf2lPoNf0MQH4N+DCU
- vy54hQRqj95jamhRxsUytEUgHUm4sNAvjhFAMrA08USEOijIxiFSLl4nDJYvXaliltXA
- 8P8Eja/eFBvMXoWBXoTpocbfG2irAn1MplhIgpcPYIjvLz956PewKLHrR7/2ImlRg5tX
- C/Rw==
+ bh=76pt2dDyK109O4DclIsLAZjjAPxT8fp7+YkgIE/RghQ=;
+ b=Ey1X83cdOMlCPM4H5iNWELb/lkeqRZ3D5AHy4S50D0OGsZEhA2d0+O5sXv7yVlQsCS
+ GiC3l4Go2wvFdGEXW5MfFKJuuXWDIIcywBQpNyOAGXUhXU547rMuLfzlMVxih8QawbZz
+ +OQA2J74fUNdxuQlBCCPCUuQaCnMGUYKE3eUCE+VPbx5POM5/ZpeoEMWR9ltq9ai24e0
+ gK9TVwoQz+5bCs8elUw/1IAaIGSfimt9kRl9C2wz8GWmRetI1XZfoOV0xXFAr/jHHBNk
+ xal5+uYsb4vhfwzCnegVqdPdXWwe3l+VdTVJkKDJBkQqcF7ZIWa33H1n4oP92O8jl8/8
+ LWkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774629898; x=1775234698;
+ d=1e100.net; s=20251104; t=1774629902; x=1775234702;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=r2jhG0JdJkpzPMpSo2GG9wEa3WbWFhcOQfxGH9DnApU=;
- b=HIKu+3EY2R5JFfsdCj1eWgOkGPyGfohu9YpzcwxAHIQzX9M4iHnv4TANWtSNDxg55j
- HHTng/zHAi2UJMhPtobyt1am8rDaU2P92w/tp5IgC5NhFEdyRyL+UnLEs3Y0bHO5S31y
- VedHYO2p0tmaaLrLsxS3gg/WxOueXuZrrdeLesmRs1K2lVCXciTEQbho3RYZkjtGM2rX
- mildo0otd46fq/IYhaCQBg3c5sgfPgRIKD9FtS/F7b3/yci5h6CvP9IcGUcFQG4bcik+
- TmzM7/BrtAgY+fmVUlMtigapCKeO4WnQHNqtM5vfvW3W/JRh7AkgPM9m2jy8z8glLBFP
- Ok5g==
+ bh=76pt2dDyK109O4DclIsLAZjjAPxT8fp7+YkgIE/RghQ=;
+ b=IGsRkIVxXnpCIpjknTb2qdeFeySr7gkYh0ehPg5VCFKUaBgHeu8e6RhnrM5Epqk4d1
+ qaUGQhy1l4RkJy3CjNg3/xI+wBd/Fz57tz8oxdNZzZQDzLvW3/HL8QwBATx9NxqeME09
+ 1XCVEkohB/lcQ17mIG2sEtvwO2JheHOjfw1lz7Vg2XfjD1ADnhPYWul4mvT0OVsqIUZl
+ /9yxPtx3ga1ySt6Q5ceRXZTTayzhNr0qi3TSky8BT0ng8DRy/q+Hq7cZJ1g5AXetLG+0
+ xYgxiIpEODsjzXl349K3LMN8I+RdIABImxR0z4slfi/9ZCQDe0V5+gRoJMTh9R1ECxFj
+ QpHg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU61DBuj+O5Bg1ZP0Za4U22Iu7RdZFhdbUQtGzQUpg3RQXOaUTrZA53lBzgTaKVGD+BVJlJ5x7nqw==@nongnu.org
-X-Gm-Message-State: AOJu0YzdjQPSAMKR1CtZIIkCh/Bg/ZW4fbB+KEQyPG+rOZaFAB7bzIJk
- kCXUCQoUNB//vSKVqI3WcFd4F6rj4+4KjvEnD6ZkoAOOmdHwSp69Wiq5Y6u0pkFe99qVFDosZIV
- 3HlBxpfE=
-X-Gm-Gg: ATEYQzxRN0gMJvn1EkpurN14fiDzFShIgEvl5SNq+c5fpnMmziadPAzDZwN9VwAmJHq
- kmtqlUbeoimBCt/0EkoxdCMmNabp8G/R8rTX9jNsCbf2kfYbfRKDgBMRaQ0M/7AW0stmLb6QYdC
- 9EHCBLX+G+CPNW/tNvslp/y65ouZOAECbVEjkT8VR3p5xVu+uvn+3Z2BqlV1aik9IxCuc3ONjFV
- 81m/qOzQSq3H0RF5Gy6ePrpqiGMeEsj/CvylOgz4ncnogzN8C9I7+PHlPX2TNyDgXzqGxC0ExrU
- 1xAS0Zq0/kTUpbaVj0tcKcxcwrWjnCzKEqX3PXY3ZayLfabkTYplqiGoCjydXqSh5Lmu1dm+Y+9
- WXJM9Juxn9DYIr8D2lPae1bYZqQ3deFrfMgYeIatNuLiiRVWmMqXT9BiDJy+zwrpt4Wxhd7EbJ1
- UElIccX16mgNOv8Wb/ZDusIt48J5BLHDj1LlLFevGjstK9u2x1roDwzIuFVGXswoLSyptigq35o
- R90
-X-Received: by 2002:a17:902:da83:b0:2b0:bed1:46db with SMTP id
- d9443c01a7336-2b0cdd97682mr36381145ad.45.1774629898181; 
- Fri, 27 Mar 2026 09:44:58 -0700 (PDT)
+ AJvYcCUlyVTbbKCsiqmCyVTwFANBsDPXgC65vpnYdZ70OcqtAFFUVda250MlVZCQaSf0ILABNedBu24TEQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzHD+1uXJh+ALkXCVAMzzc4ywE0jpUVxim+hFczXmytXyIXIyK5
+ a3Hw/9TtbXvOGilBPMtgQDWh/z7Y4u4ZwK8hee+lldwStaG0WwPhZfMnxiSir8JfRVs=
+X-Gm-Gg: ATEYQzx5f3DNdbrQ9aqlSSaDgjLo9niNGxWqoEOfEo3CSyF2maFW0rE3EBV8pNylY7p
+ 7Gq/JS/TT04geHFtvMdxJXX+r6eDe6zU9/uzLbUJKC3kjDIzRnAH7XUolpZ0FRSP1Zh6+JsnZPM
+ gJIBdkmXjiVy3c6xeKvd4AXm6zngG3xTwB1g7K3LOdCp+cPIfoyKY4zf/ahIt9PoK844IN+Ztf8
+ bQVVSkHvIXne32oyS2i4WwPCIQEfFvZUbGszyJfXXJzVfcSHqD1AzBPIfsoW8E74PgQWH6V4rua
+ WVVMp8grVINzNvh32pR1dvFdJc7gAMLkN4ZAyfjd8gGGMFlgzxRDcAXjlNixbrkiMYcWJ4f2X2T
+ izRauj4BJ1oN5URLZ3umf7M1GryavhtZ7NHEzdXl+WDMIjWjDW9bKOkyNbbBeVuwuMCV+tQJWkI
+ 1CC3RCZgmjMZoOUbtvMrYT7TbfKRUvko4jJw6SQTzRyU7VR7oYvoKhyrrSGrSS4oHdVHhP7UVlf
+ 0GJ
+X-Received: by 2002:a17:902:fc4b:b0:2aa:d67b:ef96 with SMTP id
+ d9443c01a7336-2b0cdcaa72dmr35335915ad.31.1774629902165; 
+ Fri, 27 Mar 2026 09:45:02 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b0bc882339sm63890655ad.43.2026.03.27.09.44.57
+ d9443c01a7336-2b0bc882339sm63890655ad.43.2026.03.27.09.45.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 09:44:57 -0700 (PDT)
+ Fri, 27 Mar 2026 09:45:01 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, jim.macarthur@linaro.org,
@@ -75,16 +74,17 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, jim.macarthur@linaro.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 03/12] target/arm/tcg/translate.h: remove tcg-op-gvec.h include
-Date: Fri, 27 Mar 2026 09:44:40 -0700
-Message-ID: <20260327164449.596767-4-pierrick.bouvier@linaro.org>
+Subject: [PATCH 08/12] target/arm/tcg/translate-m-nocp.c: make compilation
+ unit common
+Date: Fri, 27 Mar 2026 09:44:45 -0700
+Message-ID: <20260327164449.596767-9-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260327164449.596767-1-pierrick.bouvier@linaro.org>
 References: <20260327164449.596767-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,27 +107,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Include tcg-op-gvec-common.h instead.
-No target/arm code rely on target specifics for gvec ops.
-
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/tcg/translate.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/tcg/meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 6d52606f9b7..e28eac54afb 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -3,7 +3,7 @@
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 1e9c147e4d2..eb87eb63c1b 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -27,7 +27,6 @@ arm_ss.add(files(
+   'cpu32.c',
+   'gengvec.c',
+   'translate.c',
+-  'translate-m-nocp.c',
+   'm_helper.c',
+   'mve_helper.c',
+   'op_helper.c',
+@@ -58,6 +57,7 @@ arm_common_ss.add(files(
+ ))
  
- #include "cpu.h"
- #include "tcg/tcg-op-common.h"
--#include "tcg/tcg-op-gvec.h"
-+#include "tcg/tcg-op-gvec-common.h"
- #include "exec/translator.h"
- #include "exec/translation-block.h"
- #include "helper.h"
+ arm_common_system_ss.add(
++  decodetree.process('m-nocp.decode', extra_args: '--decode=disas_m_nocp'),
+   decodetree.process('mve.decode', extra_args: '--decode=disas_mve'),
+   decodetree.process('neon-shared.decode', extra_args: '--decode=disas_neon_shared'),
+   decodetree.process('neon-dp.decode', extra_args: '--decode=disas_neon_dp'),
+@@ -72,6 +72,7 @@ arm_common_system_ss.add(
+   'psci.c',
+   'tlb_helper.c',
+   'tlb-insns.c',
++  'translate-m-nocp.c',
+   'translate-mve.c',
+   'translate-neon.c',
+   'translate-vfp.c',
+@@ -83,6 +84,7 @@ arm_user_ss.add(files(
+   'hflags.c',
+   'neon_helper.c',
+   'tlb_helper.c',
++  'translate-m-nocp.c',
+   'translate-mve.c',
+   'translate-neon.c',
+   'translate-vfp.c',
 -- 
 2.47.3
 

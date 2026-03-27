@@ -4,152 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B305109E544
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 09:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A5F10ED64F
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 10:09:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w63a0-0005UE-Fx; Fri, 27 Mar 2026 05:34:12 -0400
+	id 1w647f-0003zz-1u; Fri, 27 Mar 2026 06:08:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w63Zy-0005Te-SR
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 05:34:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w647c-0003zJ-7o
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 06:08:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w63Zx-0006LL-5X
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 05:34:10 -0400
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w647a-000775-Bs
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 06:08:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774604047;
+ s=mimecast20190719; t=1774606133;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=D6RUq/LuPHszX24GjhleHuoK61e9FoFCgBQAfa85XEQ=;
- b=X/TvMZbTLQLkfgmx78FkitAVzqmmxXXNzPeZAaJOBR5ieqP42yijx85zLgMWzkriAG4G88
- 76x9rN5hbQXeveBDd9dkW1ReC7GVoTF3CcFhaVEuv76xw5cEO00N2cyTbdtOG9ikqo8nX5
- Fr8KgxLvUQyinP4sJxPomul5RQ19c0Q=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=4sl/ucF0z92wYCfZMh5MMcZ9XqzhtmdFwlz4nBSYCgs=;
+ b=hh8Fl9XJz6mFKB6/x4fAZyUTETXRFUe3gg3j208BHhfSko7mmnBgsNVI2AZO6gpLPgaD7Y
+ 3gzrsNrbjY0ocx3dNjl4h1kmp9BD61BxfmTS7SVwA40x0WbOmL3lJS6KvvW+MWUMsC7wMl
+ 4Ty7Fio7iKaXzowrnzj6R8UdeHvKkJM=
+Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
+ [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-674-coFRXTzjNS6kdi9rl8K7QQ-1; Fri, 27 Mar 2026 05:34:06 -0400
-X-MC-Unique: coFRXTzjNS6kdi9rl8K7QQ-1
-X-Mimecast-MFC-AGG-ID: coFRXTzjNS6kdi9rl8K7QQ_1774604045
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-43b95f9f837so1682021f8f.0
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 02:34:05 -0700 (PDT)
+ us-mta-319-Ir_JWOkEOrWLazInaiTxsw-1; Fri, 27 Mar 2026 06:08:49 -0400
+X-MC-Unique: Ir_JWOkEOrWLazInaiTxsw-1
+X-Mimecast-MFC-AGG-ID: Ir_JWOkEOrWLazInaiTxsw_1774606129
+Received: by mail-oo1-f69.google.com with SMTP id
+ 006d021491bc7-67de56b5bd4so5831284eaf.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 03:08:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774604045; x=1775208845;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=D6RUq/LuPHszX24GjhleHuoK61e9FoFCgBQAfa85XEQ=;
- b=JksFpSZpTNFP+rqLLoyfdB3R+Yjiapj/nTndohT5aaWkdHuyskna/atCKJLqsmEV0j
- w5ckTLFvUY35TyFP4PcocLRt8lHoFCFlgEHAA3AMo/4mwO+pVxDBTjtpe4c/Lx0Tjqxv
- Lo0XX7hMyVvNBsBbkgiITNHJyFLs1A8iAaOeVwRsp64MsttrJtMr1WJbP9S1GXD2NtH4
- WXgqB0UvgTvomifPK2OBNgqpy3TgvykmBlirXCTjMeeCYmLlAQMtucV3estO9IvJXa1k
- zv7mcqa1+wTNTCGNNP60CngWsFvx7rCVeJ6Yl1SoqMdlqG+VewBPrWhBXzMcHHik4uPW
- l+IA==
+ d=1e100.net; s=20251104; t=1774606129; x=1775210929;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=4sl/ucF0z92wYCfZMh5MMcZ9XqzhtmdFwlz4nBSYCgs=;
+ b=UjK2TAtzzzwYTTibtK4SqvOkxTouZudPj/07ppYIydsq2Q8rBVjN7WxCgDmarZgzcB
+ XbZyqgH7mHtIdF87Gg+JVWy2Jnpv/kCH6UB7/ZVnIVax0TuT5ocgdDiNJgTekGm2ekql
+ BNH9LeyV9BafvfZKCWcAhYKG5SsBpVggU/zoKuZvrYLvhTZSjbMuwUGTUBi+twyJKitm
+ JD8HFSEHgLgueGCxZzJLYZu1DrmgkmHAyrKOC5udK9UvT4bTkC/m19jwH63ka0WPOhmX
+ zExBqhVk1oq01vl2rD+5/eJGfK5dbNnyknObMg2O5OuvWiloViFw/AI0NlWu3ongVzsY
+ deJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWw3fQExdXQV3aGQHp35S1UPU1WQOudue5kSVS8slJAUiEbU+fFK2HlKDM5fkRuvP3Un1/apDglRw==@nongnu.org
-X-Gm-Message-State: AOJu0YwS7Dp0y5EOOT9n11Bhu6LvIq/jNuSNU5esGUJ2tO8Jw5rAu+hC
- 1AMH8yYvrstvC2hFnI57kfd5zmnf2B5fKsbO/MSNDZ4gWi7j8Tb9uJvuGaqOhbo+MwMrNZ6DuR7
- kKPSZ0KrqnYz47NReWqMTz2ORZC4dGwjU0Vdjp1wcV4aKtZsDfdlqGg==
-X-Gm-Gg: ATEYQzz1rIAiAAGZoFuDq6eb3cjeJyyIPuJ7j2+yOd3mHmVwFWsxkDxmiroEFsC7Ynd
- hr/s4Hmoxll1lXP2wbX3zGhB0nreC/aOA2bYDaRnxnPriIocE7+PBBvZ7CVDMClr72AV3v0ie4B
- 1HgERXSTCzKzzeaUUQevyEbDndQoR73Ig3Pd6PyCxp8z+8hSulfLuM+c34XrCuKKTQOqY5wykFI
- C20b6soHOQSITrJkA3BvfAvqzf4mKZrtWXat/DzX+n5CLy6lnAq6LzckvsxWTswsJBRKMkwuhVm
- 54G84zux0IjdyOgMnHzI/7xOBqVbbnFjGZ3B1ZTEQQ1xdskXvC3lA6N9O3xBmxKXs8AHgNQQ2v5
- jS5pVL6DoCMXgWt2y1fSkBaaVHdmSc517q1zqy3KxoI6jdr/ogiMYJ1Wz+2my
-X-Received: by 2002:a05:600c:46c5:b0:485:39d1:b4dd with SMTP id
- 5b1f17b1804b1-48727ef0bcemr28252845e9.10.1774604044616; 
- Fri, 27 Mar 2026 02:34:04 -0700 (PDT)
-X-Received: by 2002:a05:600c:46c5:b0:485:39d1:b4dd with SMTP id
- 5b1f17b1804b1-48727ef0bcemr28252205e9.10.1774604044122; 
- Fri, 27 Mar 2026 02:34:04 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-487270dd790sm25040405e9.5.2026.03.27.02.34.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Mar 2026 02:34:03 -0700 (PDT)
-Message-ID: <e97aec85-c9f0-449c-99e9-bc4b4f2d33d8@redhat.com>
-Date: Fri, 27 Mar 2026 10:34:01 +0100
+ AJvYcCVjT0VVQSY6ejv81PkrfflBDaPkFiKMOB3R2v3yTZH0dItWBrEdgJSZ/6qRRAPXR0Rla0ij0P7zrQ==@nongnu.org
+X-Gm-Message-State: AOJu0YygFqixXQs+L1GJpjbZlnzufik5A1PRvgARRFiip0lkiRar4TZY
+ 58+RpauACm+wV4OFJhyql8RTB3Oqs9IizJKuBSTaM5nt6k/YYWFunCfrve4VfbOVrlQyAPDNSK3
+ X5/4bBD1SjyLKPhnjqwMCPxbH87+BG1iw2Q61bwU3nVX37eeaulLwisT5PRgVemzqpwTpItBa0M
+ M6BPKJtm8+11AmmXLWTqbPfx1XrFBQ
+X-Gm-Gg: ATEYQzzxgc6zDTNJLYi/9lHKs0TnYCHShTwCN4uEYkbDDxfzC3z82DD3v1NbfqGy0JF
+ jjcgKQohTWjeth8atgPBhi4D+Dz+2uJeT4CyfC5tDbjDu7KNvKK5gJRuYWbWL0FIIiZOXMFC1kH
+ N/+RAHpFSLX8cv9JUrRQURpLZOkmlAwsx2uZ6XxrF3caRk8Y2xJ7jYcQTKfcDVvMG/mp5lHsf3k
+ b8BULASBScPc/Hf/2Ofmak/F6x7J9C/fhO/Vd0=
+X-Received: by 2002:a05:6820:1b19:b0:67e:10a0:8267 with SMTP id
+ 006d021491bc7-67e1863c3e4mr994119eaf.22.1774606128849; 
+ Fri, 27 Mar 2026 03:08:48 -0700 (PDT)
+X-Received: by 2002:a05:6820:1b19:b0:67e:10a0:8267 with SMTP id
+ 006d021491bc7-67e1863c3e4mr994098eaf.22.1774606128430; Fri, 27 Mar 2026
+ 03:08:48 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-To: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- Nicolin Chen <nicolinc@nvidia.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "alex@shazbot.org" <alex@shazbot.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "mst@redhat.com" <mst@redhat.com>, "jasowang@redhat.com"
- <jasowang@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "joao.m.martins@oracle.com" <joao.m.martins@oracle.com>,
- "clement.mathieu--drif@bull.com" <clement.mathieu--drif@bull.com>,
- "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
- "Hao, Xudong" <xudong.hao@intel.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <20260326091130.321483-1-zhenzhong.duan@intel.com>
- <20260326091130.321483-3-zhenzhong.duan@intel.com>
- <acWwwzfNEzBg4n96@nvidia.com>
- <IA3PR11MB9136FC71017C3B05CE3C881D9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
- <acX9/RjKaO0bBI/d@nvidia.com>
- <IA3PR11MB9136D9DAD0B8698841CEF4429257A@IA3PR11MB9136.namprd11.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <IA3PR11MB9136D9DAD0B8698841CEF4429257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+References: <20260324-tpm-tis-sysbus-ppi-v1-0-e59175210954@redhat.com>
+ <20260324-tpm-tis-sysbus-ppi-v1-1-e59175210954@redhat.com>
+ <c6830a19-c275-4a83-bb17-4430680b3d54@linux.ibm.com>
+ <A2BD2FA0-6D5F-47DC-BF2B-017ABE5F31AB@unpredictable.fr>
+ <07ff064e-bea4-4beb-811a-f5f3485836d6@linux.ibm.com>
+ <CAJg9Kky1q=5DFDPkh-i1hyxCKmpuEnR02hrHN-ncewY2VO0LQA@mail.gmail.com>
+ <EAD6E043-B77B-478E-91D6-863B0E185CFC@unpredictable.fr>
+In-Reply-To: <EAD6E043-B77B-478E-91D6-863B0E185CFC@unpredictable.fr>
+From: Mohammadfaiz Bawa <mbawa@redhat.com>
+Date: Fri, 27 Mar 2026 15:38:32 +0530
+X-Gm-Features: AQROBzDrLMiyVVPf09jCChXIjpZB8bJHYGMQRB2k0QDCjS1ynthDpgeoOgxA6aE
+Message-ID: <CAJg9KkwznOFSzcme_6A44Er7dd6Ae+szWF+Fwh4dw=Hyv3BWVg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] docs/specs/tpm: document PPI support on ARM64 virt
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Stefan Berger <stefanb@linux.ibm.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: irNC-LNRD9CnmIL7ZgHdQWcNv8bka336NxQmfiD4qbU_1774604045
+X-Mimecast-MFC-PROC-ID: 6fI0HaR7jFSHGu4K06XQfMVb1cWFu_1NdcPgLis4gV0_1774606129
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -158,7 +100,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -174,46 +116,143 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/27/26 07:44, Duan, Zhenzhong wrote:
-> 
-> 
->> -----Original Message-----
->> From: Nicolin Chen <nicolinc@nvidia.com>
->> Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks to
->> support pasid
->>
->> On Fri, Mar 27, 2026 at 02:32:57AM +0000, Duan, Zhenzhong wrote:
->>>> -----Original Message-----
->>>> From: Nicolin Chen <nicolinc@nvidia.com>
->>>> Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks
->> to
->>>> support pasid
->>>>
->>>> On Thu, Mar 26, 2026 at 05:11:16AM -0400, Zhenzhong Duan wrote:
->>>>> @@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
->>>>>        *
->>>>>        * @idev: host IOMMU device backed by IOMMUFD backend.
->>>>
->>>> Not commenting against this patch, but I just found the "host IOMMU
->>>> device" and the "HostIOMMUDeviceIOMMUFD" a bit ambiguous. It's not
->>>> an "IOMMU device" right? Perhaps somebody can help me understand :)
->>>
->>> A host device under host IOMMU?
->>
->> "host device" would make sense, not "host IOMMU device", right?
-> 
-> We want to emphasize that it's a "host device" backed by "host IOMMU",
-> "host device" is not enough, I think.
-Yes. These are related to the Host IOMMU device backends :
+On Thu, Mar 26, 2026 at 4:59=E2=80=AFPM Mohamed Mediouni
+<mohamed@unpredictable.fr> wrote:
+>
+>
+> > On 26. Mar 2026, at 08:27, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
+> >
+> > On Thu, Mar 26, 2026 at 2:01=E2=80=AFAM Stefan Berger <stefanb@linux.ib=
+m.com> wrote:
+> >>
+> >>
+> >>
+> >> On 3/25/26 4:22 PM, Mohamed Mediouni wrote:
+> >>>
+> >>>> On 25. Mar 2026, at 20:31, Stefan Berger <stefanb@linux.ibm.com> wro=
+te:
+> >>>>
+> >>>>
+> >>>> I remember having played around with TPM for QEMU on ARM64 (Raspberr=
+y 5(?)) a while ago and had the impression that there was something related=
+ to caching that prevented the MMIO interface from working correctly and Pe=
+ter may have confirmed this back then on IRC .. I am not sure what exactly =
+it was that didn't work correctly when run natively on ARM hardware. It wor=
+ked well when run in CPU emulation on x86_64 for example. So I am wondering=
+ whether there is a minimum requirement for an ARM CPU or ARM CPU features =
+related to caching that someone needs to know about to be able to use TPM T=
+IS successfully? If so, it would probably be good to mention it here as wel=
+l. If you know.
+> >>>>
+> >>>> Otherwise this looks good to me.
+> >>>
+> >>> Hi,
+> >>>
+> >>> There are two things here:
+> >>>
+> >>> - For Windows guests it=E2=80=99s a bit complicated
+> >>>
+> >>> Windows guests LDP accesses on the TPM register range which doesn=E2=
+=80=99t match ISV=3D1
+> >>
+> >> oh, yes, right ldp instruction.
+> >>
+> >>> syndrome requirements and needs a workaround in current QEMU.
+> >>>
+> >>> I _think_ the QEMU-side workaround described below went in, which is:
+> >>>
+> >>> If we map the TPM register range as read directly, trap on write to w=
+orkaround
+> >>> usage of LDP then we hit...
+> >>>
+> >>> - FEAT_S2FWB
+> >>>
+> >>> This is part of Armv8.4 onwards officially* and allows KVM to force a=
+ device
+> >>> memory type read to be promoted to write-back.
+> >>>> That allows the (easiest) workaround for (1) to work.
+> >>>
+> >>> However that=E2=80=99s not the _only_ workaround, you can remove it a=
+nd include
+> >>> https://patchew.org/QEMU/20260317174740.31674-1-lucaaamaral@gmail.com=
+/ instead.
+> >>>
+> >>> That works fine and removes reliance on FEAT_S2FWB.
+> >>>
+> >>> * some older Arm chips implement equivalent semantics without signall=
+ing it, but
+> >>> that might depend on SoC-level integration.
+> >>
+> >>
+> >> It would be good to mention in the docs what the user needs to know
+> >> about CPU requirements, if anything, so that it can actually work. If
+> >> these recent modifications/patches make the TIS work on any processor,
+> >> then there's nothing to mention...
+> >>
+> >>>
+> >>> Thanks,
+> >>> -Mohamed
+> >>>
+> >
+> > Thanks Stefan, Mohamed
+> >
+> > I wasn't aware of the LDP / S2FWB angle, appreciate the context.
+> >
+> Hello,
+>
+> > Looking into it, the FEAT_S2FWB requirement is for TPM TIS MMIO access
+> > in general on ARM64 and predates this series.
+>
+> Yes, it was added as a workaround for baseline Windows support.
+>
+> > The PPI region we're
+> > adding is RAM-backed (memory_region_init_ram_device_ptr), so it
+> > shouldn't be affected by that issue.
+>
+> FEAT_S2FWB is for the case where the guest tries to access as MMIO
+> while the memory region is RAM-backed.
+>
+> From a quick look at the Linux kernel driver it does a
+> devm_ioremap_resource which assumes MMIO in drivers/char/tpm/tpm_tis.c
+>
+> Hence relying (further) on FEAT_S2FWB.
+>
 
-   - VFIO IOMMU Type1, a.k.a legacy backend
-   - IOMMUFD,
+that makes sense I was thinking about it from the host side.
 
-There are other implementations. VFIO IOMMU Type1 is versioned and
-a ppc flavor exists.
+> > and for our testing we used an Ampere Altra Max M128-30 (Neoverse N1
+> > r3p1, MIDR 0x413fd0c1).
+>
+> Neoverse N1 systems with the Arm CMN fabric aren=E2=80=99t exactly the ri=
+ght
+> system to test this. They don=E2=80=99t advertise FEAT_S2FWB but technica=
+lly
+> have equivalent semantics.
+>
+> Once the ISV =3D 0 syndrome support patches get in, there=E2=80=99ll be a=
+ nicer
+> way than relying on undocumented support for those semantics or relying
+> on FEAT_S2FWB without querying it, by switching those away from RAM-backe=
+d
+> to an MMIO trap.
+>
+> Thanks,
+> -Mohamed
+>
+>
 
-Thanks,
+For v2, I see a few options for the docs and wanted to get your take:
 
-C.
+-Add a note in the PPI section mentioning the FEAT_S2FWB requirement
+for TPM TIS on ARM64
+-Add it as a separate general "TPM TIS on ARM64" note since the
+requirement predates PPI and applies to the TIS MMIO region as a whole
+-Hold off until the ISV=3D0 syndrome support patches land, since they'd
+remove the FEAT_S2FWB dependency and make any note we add now outdated
+
+I'm also testing on additional hardware - Marvell ThunderX2 (Armv8.1,
+no FEAT_S2FWB) and Nvidia Grace (Neoverse V2, Armv9, has FEAT_S2FWB)
+-- to get proper coverage across the spectrum. Happy to report
+results.
 
 

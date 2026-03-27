@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F4DA10ED65E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974C910ED65C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:25:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65E7-00038M-Js; Fri, 27 Mar 2026 07:19:45 -0400
+	id 1w65CP-0007F5-Ab; Fri, 27 Mar 2026 07:17:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Cb-0007qW-QW
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:09 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1w65CI-00076u-KC
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:51 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CX-0000JZ-RY
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:09 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-439b9b1900bso1171606f8f.1
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:18:04 -0700 (PDT)
+ id 1w65CG-0008Nd-7S
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:50 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-43b9144790dso1094994f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610284; x=1775215084; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610267; x=1775215067; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9Sc6A8mUH5H33CEhbJhf4m2nOob0B+CIV382Sacc+zU=;
- b=CQWhW8mxpojBqTu4WsPGMT5aR6KideQbgdCncVkUgpeKqR6zEC946GZI3vVoaPgKW9
- LiHr5Wuy/qat/pjyN7vj1Z+i0vryOq7KOtTtf3dMFE3TV2m5VNzoLy6Njg+eXfLR+cIx
- LBhxaeq7s8Uzbc7efWXqfKfrmO5B8uLxXeKRgxegO4SFbcUQ0emPXpYW6C5lO19YwfLl
- DsQkd86rz0JmZemcQ/QBzY/06Mq7OilmTGEncalKDpWUZpN7fOEBpyAfOz2ZBoe3ssMs
- 8Oi1TraPLN39ZFaQYFFLUP7lPT8dJAg7j42JbsX8bIoOO2qUNfLFEZUg0J9+9LAxNYmn
- lvhg==
+ bh=S+NND+DC3ZaHttRrG8gV6nmrowvOqHZWCsPNgUWAPHg=;
+ b=IQT3bag1kNwaqchKmpNUPhjQ6ymAqdcSw0PXJkfBOBu1TvYIc2dfNXFDaFjuznCpWp
+ Z54CBCGey0omDvkgtSLzC1DIgptbtQbsvnTPdDcL31oOakt90iVCwscRLyzWkhLRm1RQ
+ 2Y6kfc0UqGtb5wG1kHOt/UYiPPRPna9P8vbuivM+MfMVSP9tx+G1s70F8ohP4FJh33u8
+ voYeVean2WhohpzHgCzh2AFvFAz5oT3C6fqXCDcl2F6v8anEN6XWt2IqtqCHrI949HNZ
+ /zfPRUegFy++pRqNL7kQthPXOPsoHJICMlH79ku0nXV3j0N3j9NfgidzjE5PGzANC9ju
+ wwwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610284; x=1775215084;
+ d=1e100.net; s=20251104; t=1774610267; x=1775215067;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=9Sc6A8mUH5H33CEhbJhf4m2nOob0B+CIV382Sacc+zU=;
- b=YWG7Z9kQjluN4o/wrgnfWG+bI1hvyaCIE/pCQWKddPthYu/deygWJFumoMio0+mAOh
- VMHjNuOdQ7CqrGLPYw7C52GK7cQ39HMKja2RMHkhI0zPXIsbQlLur0FW9VQUN6zeCs3o
- XYWlu6ak9n3He8Sg+myFGWuz7u465BKMGwia0TW2F6ZLneISUw5Vsvs95kgbgLQosVvI
- gtKnCA7nM9LGYgiAGMK3jJOMz70uwxM0r8PlhOqEJ+fNqafvX9QwGdYMkJSTV2gmARCB
- MoVv9wR06IYRQseuYlULzvc/qHCaMjUDYpeu0oqpLLCv/xfTlssSiqPv6R6UXrxSeBM/
- zxkA==
-X-Gm-Message-State: AOJu0Yy8+hPy1SjSDzG7tw4x8RKkDSvMNlOuR14/1d0fesXPNsiVTq6s
- WGkLfxlAJJyiSLqEjtMUCUl1BieQ0Vnbs41VPFEm+CPx20v7O1JpjOJDTNi8WduGf6k7WpiwNP8
- FgXzU2ws=
-X-Gm-Gg: ATEYQzydHnqs3BnQFhqJR9vKGWYom5EqnIy214l0EialmL/V7uoVhMsU0QgsObLloWX
- rft71UxqJmU3TwtJBYfr2zuSdUW329nqKigPSPJNuFxRZR6gWS+DlIDRmMA37MrCp6QRqMNpTgb
- TQjMqmc9qY55hFpwlq1KUSeimmJkuUtZSHmA4gyCWg+sLJolbEDEfvYxqPMmeAnnG57WDEtJKQg
- HBGjQUCHKY3MhiD95p1K/ZpVOO0An908VryR1lch02WwRQlvK1/BhjNqYf7RHllmqcwE1eLhgqg
- Hvt932k/kX0ln/xwc2AK1ClNqXSF+ZBd4V6vQvsFORC+/NstoSz/JKdb6VvCK1O1dYCMKjReYhq
- bCqvX/6UcPPw9gcVaQPh7xSzL4aNj92/EpzPF6KPhJPRR8u8BcaMbmVTBjhv3PinEITK1dIJO9M
- useW4GDds1F2B96sHqwaw/vyVcKAUTEjqzS45RTT29woV0KCDcHt3HM4NjpWoG5eAQ9RRDC372+
- 3GYSYmCW1T/0TVyPiYSekOtpXQKiyleidou8lwLGg==
-X-Received: by 2002:a5d:5f42:0:b0:439:de1d:74ae with SMTP id
- ffacd0b85a97d-43b9e9fa204mr3373603f8f.22.1774610283900; 
- Fri, 27 Mar 2026 04:18:03 -0700 (PDT)
+ bh=S+NND+DC3ZaHttRrG8gV6nmrowvOqHZWCsPNgUWAPHg=;
+ b=pVqsoPTiZhc/oOPoIEE+3lo8AhOAV2h8bS2zDJm9XLQvpwm6/AtirF8DPdFjQXhrYB
+ IVzCX3HV2VzUiE4dO6WSZiPQKOj0LuA/OkRgwPjb0NZjX4kU42MhLPws//PNVmysxXUQ
+ qjmSLnoL4Z4zLV1m84eEPGU5o1R/vSBMXy4DETAjaz6O8P3CsYB5M1OybGsWMBvjhVkP
+ nzLL8JI2664WuTNyXNDlJUxaMEd79TNouxpKgi+WJydpnKrZHar5XHGFtAW4m604M8Cp
+ j5ctKTEx5nFA7lgpwW9jT3/JsxgrjKt3fOhrSZmVw4vzDUmPPpskRC1Ct8t2fnCP3ZhF
+ 77aA==
+X-Gm-Message-State: AOJu0YwmpbzmayaQbIoV1rBftw6ScgwZfpUH66wgdPKxwZPxRCbEDmCr
+ s+YyBkvxw3Tz9uli58ZHuYW9smwBePePnzCh0+ITijCCiyj+9r/RHV2Yq0Vk62vP0R+UPOXSPJB
+ bu6yYGFw=
+X-Gm-Gg: ATEYQzx/M8qnh7d9qOidLOVvkIms/Xskp5YhsV/A9TnoGKtiE04x43bpGxl03au3wln
+ 5qq+3Iy/rIpOHf91DmTQ7Nl9aMgmX3/SeWjtoNa0lN1OveY0gqnuhtoL9aa5tmNZEJjxGZctMtW
+ 3umZ+z7WQt2hLVLw6P5lKMN7wxQLH5hB10BO4UumH+D3dZF7lDZkqh3/koMp0sMacDW+C+yCrDd
+ DTSSLgD3/el9UzHsvlRhO3DyLoGlA6m5u9xXNH1CRPZSUEeiPQXHAb+GcpuUCmYXhm/jsvrcSe5
+ v4SKps3Y2COnSVZh8CVPkFJnw/6s9LXrBEAwvHWge2S9r53VkSH/N7/bBcGcPuBM/WeLXOQd5aA
+ P4IUT7bflHFXR0rDxQur//YUqAGrq1al6pKkVVjC1ob396Lmpp6x7PYZb5GIsPx0OcDOEg/1IQt
+ F4a9Gpaq9YcHMsnYC6O5X16Q4pTUJDv1UHd4kiUhPSwHUVAHzdbwJdrOPyE1n892WdUdkd1ITfc
+ y7q9bPlZY+1iq9yYgaoliG//klC+pw=
+X-Received: by 2002:a05:6000:1448:b0:43b:4f0c:aefd with SMTP id
+ ffacd0b85a97d-43b9e9a0c82mr2934674f8f.23.1774610266525; 
+ Fri, 27 Mar 2026 04:17:46 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.18.03
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:18:03 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:46 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 65/65] hw/arm/virt: Allow user to select GICv5
-Date: Fri, 27 Mar 2026 11:17:00 +0000
-Message-ID: <20260327111700.795099-66-peter.maydell@linaro.org>
+Subject: [PATCH v2 47/65] hw/intc/arm_gicv5: Implement Activate command
+Date: Fri, 27 Mar 2026 11:16:42 +0000
+Message-ID: <20260327111700.795099-48-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,109 +102,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow the user to select a GICv5 via '-machine gic-version=x-5', and
-document this.  The 'x-' prefix indicates that the emulation is still
-in an "experimental" state as far as QEMU is concerned; the
-documentation describes what "experimental" means for the user and
-what parts are not yet implemented.
-
-We do not make 'gic-version=max' enable GICv5 here because:
-
- * the GICv5 architectural spec is still at the EAC level and could
-   have minor changes between now and its final version; only users
-   who specifically want to start working with the GICv5 should
-   select it
- * QEMU's implementation here is still not fully featured, and
-   selecting it instead of GICv3 will mean losing functionality such
-   as MSIs
- * the GICv5 is not backwards compatible with the GICv3/GICv4 for
-   system software, so silently "upgrading" an existing command line
-   to GICv5 is just going to break existing guest kernels
-
-The last one in particular suggests that even when the emulation
-moves out of "experimental" status we will probably not want to
-change "max".
+Implement the equivalent of the GICv5 stream protocol's Activate
+command, which lets the cpuif tell the IRS to move its current
+highest priority pending interrupt into the Active state, and to
+clear the Pending state for an Edge handling mode interrupt.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- docs/system/arm/virt.rst | 19 +++++++++++++++++++
- hw/arm/virt.c            | 11 ++++++++---
- 2 files changed, 27 insertions(+), 3 deletions(-)
+ hw/intc/arm_gicv5.c                | 58 ++++++++++++++++++++++++++++++
+ hw/intc/trace-events               |  1 +
+ include/hw/intc/arm_gicv5_stream.h | 23 ++++++++++++
+ 3 files changed, 82 insertions(+)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index fbe3ca9e12..f811e662d6 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -161,6 +161,25 @@ gic-version
-     GICv3. This allows up to 512 CPUs.
-   ``4``
-     GICv4. Requires ``virtualization`` to be ``on``; allows up to 317 CPUs.
-+  ``x-5``
-+    GICv5 (experimental). This is an experimental emulation of the GICv5,
-+    based on the EAC release of the GICv5 architecture specification.
-+    Experimental means:
-+
-+    - guest-visible behaviour may change when the final version of
-+      the specification is released and QEMU implements it
-+    - migration support is not yet implemented
-+    - the GICv5 is not exposed to the guest via ACPI tables, only via DTB
-+    - the way the interrupt controller is exposed to the guest and the
-+      command line syntax for enabling it may change
-+
-+    The current implementation supports only an EL1 guest (no EL2 or
-+    EL3 and no Realm support), and does not implement the ITS (no
-+    MSI support).
-+
-+    Note that as the GICv5 is an Armv9 feature, enabling it will
-+    automatically disable support for AArch32 at all exception levels
-+    except for EL0 (userspace).
-   ``host``
-     Use the same GIC version the host provides, when using KVM
-   ``max``
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0aff58bc3c..0064491063 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3223,6 +3223,9 @@ static char *virt_get_gic_version(Object *obj, Error **errp)
-     const char *val;
- 
-     switch (vms->gic_version) {
-+    case VIRT_GIC_VERSION_5:
-+        val = "x-5";
-+        break;
-     case VIRT_GIC_VERSION_4:
-         val = "4";
-         break;
-@@ -3240,7 +3243,9 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
--    if (!strcmp(value, "4")) {
-+    if (!strcmp(value, "x-5")) {
-+        vms->gic_version = VIRT_GIC_VERSION_5;
-+    } else if (!strcmp(value, "4")) {
-         vms->gic_version = VIRT_GIC_VERSION_4;
-     } else if (!strcmp(value, "3")) {
-         vms->gic_version = VIRT_GIC_VERSION_3;
-@@ -3252,7 +3257,7 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-         vms->gic_version = VIRT_GIC_VERSION_MAX; /* Will probe later */
-     } else {
-         error_setg(errp, "Invalid gic-version value");
--        error_append_hint(errp, "Valid values are 2, 3, 4, host, and max.\n");
-+        error_append_hint(errp, "Valid values are 2, 3, 4, x-5, host, and max.\n");
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 605cf6fd6f..942f3eba2e 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -1095,6 +1095,64 @@ uint64_t gicv5_request_config(GICv5Common *cs, uint32_t id, GICv5Domain domain,
      }
  }
  
-@@ -3827,7 +3832,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                   virt_set_gic_version);
-     object_class_property_set_description(oc, "gic-version",
-                                           "Set GIC version. "
--                                          "Valid values are 2, 3, 4, host and max");
-+                                          "Valid values are 2, 3, 4, x-5, host and max");
++void gicv5_activate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
++                    GICv5IntType type, bool virtual)
++{
++    GICv5 *s = ARM_GICV5(cs);
++    uint32_t iaffid;
++
++    trace_gicv5_activate(domain_name[domain], inttype_name(type), virtual, id);
++
++    if (virtual) {
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_activate: tried to "
++                      "activate a virtual interrupt\n");
++        return;
++    }
++
++    switch (type) {
++    case GICV5_LPI:
++    {
++        const GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
++        L2_ISTE_Handle h;
++        uint32_t *l2_iste_p = get_l2_iste(cs, cfg, id, &h);
++
++        if (!l2_iste_p) {
++            return;
++        }
++        *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, ACTIVE, true);
++        if (FIELD_EX32(*l2_iste_p, L2_ISTE, HM) == GICV5_EDGE) {
++            *l2_iste_p = FIELD_DP32(*l2_iste_p, L2_ISTE, PENDING, false);
++        }
++        iaffid = FIELD_EX32(*l2_iste_p, L2_ISTE, IAFFID);
++        put_l2_iste(cs, cfg, &h);
++        break;
++    }
++    case GICV5_SPI:
++    {
++        GICv5SPIState *spi = gicv5_spi_state(cs, id, domain);
++
++        if (!spi) {
++            qemu_log_mask(LOG_GUEST_ERROR, "gicv5_activate: tried to "
++                          "activate unreachable SPI %d\n", id);
++            return;
++        }
++
++        spi->active = true;
++        if (spi->hm == GICV5_EDGE) {
++            spi->pending = false;
++        }
++        iaffid = spi->iaffid;
++        break;
++    }
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "gicv5_activate: tried to "
++                      "activate bad interrupt type %d\n", type);
++        return;
++    }
++
++    irs_recalc_hppi(s, domain, iaffid);
++}
++
+ static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+ {
+     GICv5Common *cs = ARM_GICV5_COMMON(s);
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 6475ba5959..636c598970 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -241,6 +241,7 @@ gicv5_set_pending(const char *domain, const char *type, bool virtual, uint32_t i
+ gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t id, int handling) "GICv5 IRS SetHandling %s %s virtual:%d ID %u handling %d"
+ gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
+ gicv5_request_config(const char *domain, const char *type, bool virtual, uint32_t id, uint64_t icsr) "GICv5 IRS RequestConfig %s %s virtual:%d ID %u ICSR 0x%" PRIx64
++gicv5_activate(const char *domain, const char *type, bool virtual, uint32_t id) "GICv5 IRS Activate %s %s virtual:%d ID %u"
+ gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
+ gicv5_irs_recalc_hppi_fail(const char *domain, uint32_t iaffid, const char *reason) "GICv5 IRS %s IAFFID %u: no HPPI: %s"
+ gicv5_irs_recalc_hppi(const char *domain, uint32_t iaffid, uint32_t id, uint8_t prio) "GICv5 IRS %s IAFFID %u: new HPPI ID 0x%x prio %u"
+diff --git a/include/hw/intc/arm_gicv5_stream.h b/include/hw/intc/arm_gicv5_stream.h
+index cc1c7cc438..7ac24f0f09 100644
+--- a/include/hw/intc/arm_gicv5_stream.h
++++ b/include/hw/intc/arm_gicv5_stream.h
+@@ -151,6 +151,29 @@ void gicv5_set_target(GICv5Common *cs, uint32_t id, uint32_t iaffid,
+ uint64_t gicv5_request_config(GICv5Common *cs, uint32_t id, GICv5Domain domain,
+                               GICv5IntType type, bool virtual);
  
-     object_class_property_add_str(oc, "iommu", virt_get_iommu, virt_set_iommu);
-     object_class_property_set_description(oc, "iommu",
++/**
++ * gicv5_activate
++ * @cs: GIC IRS to send command to
++ * @id: interrupt ID
++ * @domain: interrupt domain to act on
++ * @type: interrupt type (LPI or SPI)
++ * @virtual: true if this is a virtual interrupt
++ *
++ * Activate the IRS's highest priority pending interrupt; matches the
++ * stream interface's Activate command.
++ *
++ * In the stream interface, the command has only the domain and
++ * virtual fields, because both the IRS and the CPUIF keep track of
++ * the IRS's current HPPI. In QEMU, we also have arguments here for
++ * @id and @type which are telling the IRS something that in hardware
++ * it already knows. This is because we have them to hand in the cpuif
++ * code, and it means we don't need to pass in an iaffid argument to
++ * tell the IRS which CPU we are so it can find the right element in
++ * its hppi[][] array.
++ */
++void gicv5_activate(GICv5Common *cs, uint32_t id, GICv5Domain domain,
++                    GICv5IntType type, bool virtual);
++
+ /**
+  * gicv5_forward_interrupt
+  * @cpu: CPU interface to forward interrupt to
 -- 
 2.43.0
 

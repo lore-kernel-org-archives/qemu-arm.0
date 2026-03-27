@@ -4,76 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4017F10F2861
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 17:33:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D72A10F2867
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 18:14:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6B3G-0006kB-4r; Fri, 27 Mar 2026 13:32:58 -0400
+	id 1w6Bhr-0006gO-6b; Fri, 27 Mar 2026 14:14:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w6B3D-0006d3-Fo
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 13:32:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w6B3A-0007zZ-Sf
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 13:32:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774632768;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pN4OiFiCaqsGj9lyQmbZVPazjyuFfOnaBFT4eYnbIuU=;
- b=QifcFki0gJ+zduAK7o7KqcuLGxQkCWETxxxTUmT1nkqN+G0OPHZpdjQJcWMqfMdXetzAek
- kq6LTnJcxKq9MjqAbj7QFHtK1kv4tyr6loOR3OODx1yjnyqNOmbUBQvNK+SFwQ1PCYnIkH
- exxNTJA4mEF0kPBe4OrrGxCCkL+Yz2E=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-SDElpmZlPJeI79AtHzENaA-1; Fri,
- 27 Mar 2026 13:32:44 -0400
-X-MC-Unique: SDElpmZlPJeI79AtHzENaA-1
-X-Mimecast-MFC-AGG-ID: SDElpmZlPJeI79AtHzENaA_1774632763
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B62C3195608E; Fri, 27 Mar 2026 17:32:42 +0000 (UTC)
-Received: from mbawa-thinkpadt14gen5.bengluru.csb (unknown [10.74.88.2])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1C4C53000223; Fri, 27 Mar 2026 17:32:36 +0000 (UTC)
-From: Mohammadfaiz Bawa <mbawa@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: stefanb@linux.vnet.ibm.com, pierrick.bouvier@linaro.org,
- "Michael S . Tsirkin" <mst@redhat.com>, imammedo@redhat.com,
- anisinha@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, mohamed@unpredictable.fr, philmd@linaro.org,
- Mohammadfaiz Bawa <mbawa@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
-Subject: [PATCH v3 3/3] hw/tpm: add PPI support to tpm-tis-device for ARM64
- virt
-Date: Fri, 27 Mar 2026 23:02:09 +0530
-Message-ID: <20260327173209.148180-4-mbawa@redhat.com>
-In-Reply-To: <20260327173209.148180-1-mbawa@redhat.com>
-References: <20260327173209.148180-1-mbawa@redhat.com>
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1w6Bhn-0006fr-Iu
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:14:48 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1w6Bhk-0003cT-Ca
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:14:46 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-35c1a131946so1634622a91.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 11:14:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1774635282; x=1775240082; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=UpUlpBMrO0Xp5fBIArcey0F2IowdIlSjZ1XWu7eFzrw=;
+ b=hG/3krcs9frBBRKlAzyHlvo1RfyBpDIhuh9Gz9u8zX+nO0qWNPD5nqLdcLkaC9n2dF
+ znZ4Z1E0xJ+cLqjUr8l/oJ/97iE6BNlcleR5LzbOMXpFntQf7oO8nRwy7h0hZD3124tI
+ ++6fzRbpR9ZglPkRmJxEzCiLDxh4N76IHDYD+iVvlTT8pKcXuPz1OTneow/DcmIIvRsU
+ UHTkWOw0/W4+zeq6QU65pNaAKhlRZXu1SdlypEej9hCjHCP0fMpiEat1Tfk0BOO1qlS/
+ iCXvi5xyWRdvvQrDyKjrcFHLq4HPsAE2BMTDHPMyhmiXuZUJt/knwSHzlTBBJw300rm4
+ nVGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774635282; x=1775240082;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=UpUlpBMrO0Xp5fBIArcey0F2IowdIlSjZ1XWu7eFzrw=;
+ b=MkSxG3vCoxwHlNZySizvAHmYMpIKy+0eQIlxBYsYNDftcYpJJSrE3FScAq4Es/mlc+
+ nmQ9JMJMK5jjjlDdNTmQmMM57lLbvYVVcHrnme/ae1Du4wYZN+wa3wCF41NM992GL4iv
+ XBFhbjfYUy3GMYEQtB6BfTltHr/sa2vm6+IwkoelfkNf7fSaZzFW4UKeNpW4pXp4TkWM
+ NoIXvv7koMpM6vOguq/8YoDd1coEWX8MCizbcf/2YhdaP2pMz1Tn7Ljg2E3qVdIOVEB/
+ i9vyf8uMFUpgGUrySER1hSuJGTIG+0zensHZqlb7GE+C7wL1FFvYAQ+mSZ4MV9aG04kv
+ e3xw==
+X-Gm-Message-State: AOJu0Yz2URqKOT/n+UrYqD1PzH5HpyyBZIWX3x63Rlx/HLokqtQ8udlW
+ XgPIn9tTU2WQ51R4yiF64a+ayf5P0FZ5jJ8fTcbPiVMWyxBEsOlVMY4jWd0+9e8jZxM=
+X-Gm-Gg: ATEYQzxJpOO34R104XyleeAfPIx12GMfJvsjIh25yqDmdLPahVmAhQIcHndquL+lxNI
+ EoJd1uUvTzDfRPBF+g8yy8PGL2KOWersfGUIUAjNVrIjXu6WRom1So6ckW/Kjk55a1efoJXtg49
+ AKjITtVGbMYrKya8j6wonH5LD05yhtkktA5ka/cKFfzpWa20Y/Opw9Vaot7jct94DV9FhzEzFTa
+ YdDkFuIjr3lJhLyLGB/AQApo9v5MXiviKljvt1bmSP3tD++3j96tjxCyMwgiMBqRG7brzYHpzxi
+ 1MVmOTR8qxOn/DzcXESTVmlelrBamLyFkCgJkyc2q7Ld+qJmGT3RLxPV2oQR92batlMOmu7fNsC
+ pdNgY3+9VrycCPeuGaQkDvlRs8sOtkKOwFhQjqXs36/vHgqy9sVAufPHuOAstHU+N3gb//CTSx9
+ ULKrI6ifOwtIlggZTPHWgfczEwojGm8p1IGc8meRCTYpLGnShMVhkgV03WsCMw22UcmCzZ
+X-Received: by 2002:a17:90b:3d81:b0:35b:952c:43ab with SMTP id
+ 98e67ed59e1d1-35c30bb5f2amr2655461a91.4.1774635282483; 
+ Fri, 27 Mar 2026 11:14:42 -0700 (PDT)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-35c22d09573sm5485994a91.16.2026.03.27.11.14.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Mar 2026 11:14:42 -0700 (PDT)
+Message-ID: <086310e3-2d6e-4b9e-86f6-75b7fe936d81@linaro.org>
+Date: Fri, 27 Mar 2026 11:14:41 -0700
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: RHugsikMPekRUonSbmAoeZqih7zlvoqw4Fmk216fr0E_1774632763
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 12/12] target/arm/tcg/translate.c: replace target_ulong
+ with uint32_t
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org
+References: <20260327165042.604105-1-pierrick.bouvier@linaro.org>
+ <20260327165042.604105-13-pierrick.bouvier@linaro.org>
+ <9a7be223-0b30-44e0-b6da-fcf614a1a052@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <9a7be223-0b30-44e0-b6da-fcf614a1a052@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,95 +142,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add PPI memory region and ACPI _STA, _DSM to tpm-tis-sysbus so
-Windows 11 ARM64 guests no longer log Event ID 15 errors from
-tpm.sys on every boot.
+On 3/27/26 10:30 AM, Philippe Mathieu-Daudé wrote:
+> On 27/3/26 17:50, Pierrick Bouvier wrote:
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>    target/arm/tcg/translate.c | 4 ++--
+>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+>> index 4546bbeeeff..204f9657993 100644
+>> --- a/target/arm/tcg/translate.c
+>> +++ b/target/arm/tcg/translate.c
+>> @@ -6450,7 +6450,7 @@ static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
+>>         * fields here.
+>>         */
+>>        uint32_t condexec_bits;
+>> -    target_ulong pc_arg = dc->base.pc_next;
+>> +    uint32_t pc_arg = dc->base.pc_next;
+>>    
+>>        if (tb_cflags(dcbase->tb) & CF_PCREL) {
+>>            pc_arg &= ~TARGET_PAGE_MASK;
+>> @@ -6612,7 +6612,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>>        bool is_16bit;
+>>        /* TCG op to rewind to if this turns out to be an invalid ECI state */
+>>        TCGOp *insn_eci_rewind = NULL;
+>> -    target_ulong insn_eci_pc_save = -1;
+>> +    uint32_t insn_eci_pc_save = -1;
+>>    
+>>        /* Misaligned thumb PC is architecturally impossible. */
+>>        assert((dc->base.pc_next & 1) == 0);
+> 
+> I'd have expected vaddr, but uint32_t is correct enough.
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
 
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
----
- hw/arm/virt-acpi-build.c |  9 ++++++++-
- hw/tpm/tpm_tis_sysbus.c  | 11 +++++++++++
- 2 files changed, 19 insertions(+), 1 deletion(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 591cfc993c..5b5ac551f8 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -240,7 +240,8 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
-     Aml *dev = aml_device("TPM0");
-     aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-     aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device")));
--    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
-+    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
- 
-     Aml *crs = aml_resource_template();
-     aml_append(crs,
-@@ -248,6 +249,12 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
-                                   (uint32_t)memory_region_size(sbdev_mr),
-                                   AML_READ_WRITE));
-     aml_append(dev, aml_name_decl("_CRS", crs));
-+
-+    hwaddr ppi_base = platform_bus_get_mmio_addr(pbus, sbdev, 1);
-+    if (ppi_base != -1) {
-+        ppi_base += pbus_base;
-+        tpm_build_ppi_acpi(TPM_IF(sbdev), dev, ppi_base);
-+    }
-     aml_append(scope, dev);
- }
- #endif
-diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
-index dd30344d5a..6bec30c36f 100644
---- a/hw/tpm/tpm_tis_sysbus.c
-+++ b/hw/tpm/tpm_tis_sysbus.c
-@@ -30,6 +30,7 @@
- #include "hw/core/sysbus.h"
- #include "tpm_tis.h"
- #include "qom/object.h"
-+#include "qemu/memalign.h"
- 
- struct TPMStateSysBus {
-     /*< private >*/
-@@ -99,6 +100,7 @@ static void tpm_tis_sysbus_initfn(Object *obj)
- {
-     TPMStateSysBus *sbdev = TPM_TIS_SYSBUS(obj);
-     TPMState *s = &sbdev->state;
-+    size_t host_page_size = qemu_real_host_page_size();
- 
-     memory_region_init_io(&s->mmio, obj, &tpm_tis_memory_ops,
-                           s, "tpm-tis-mmio",
-@@ -106,6 +108,12 @@ static void tpm_tis_sysbus_initfn(Object *obj)
- 
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-     sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
-+
-+    s->ppi.buf = qemu_memalign(host_page_size,
-+                                ROUND_UP(TPM_PPI_ADDR_SIZE, host_page_size));
-+    memory_region_init_ram_device_ptr(&s->ppi.ram, obj, "tpm-ppi",
-+                                      TPM_PPI_ADDR_SIZE, s->ppi.buf);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->ppi.ram);
- }
- 
- static void tpm_tis_sysbus_realizefn(DeviceState *dev, Error **errp)
-@@ -122,6 +130,8 @@ static void tpm_tis_sysbus_realizefn(DeviceState *dev, Error **errp)
-         error_setg(errp, "'tpmdev' property is required");
-         return;
-     }
-+
-+    vmstate_register_ram(&s->ppi.ram, dev);
- }
- 
- static void tpm_tis_sysbus_class_init(ObjectClass *klass, const void *data)
-@@ -132,6 +142,7 @@ static void tpm_tis_sysbus_class_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, tpm_tis_sysbus_properties);
-     dc->vmsd  = &vmstate_tpm_tis_sysbus;
-     tc->model = TPM_MODEL_TPM_TIS;
-+    tc->ppi_enabled = true;
-     dc->realize = tpm_tis_sysbus_realizefn;
-     device_class_set_legacy_reset(dc, tpm_tis_sysbus_reset);
-     tc->request_completed = tpm_tis_sysbus_request_completed;
--- 
-2.53.0
-
+While it works, semantically, in this case, we know this addr is 32-bit 
+only, even when compiling for aarch64-softmmu target.
 

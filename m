@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3118610ED679
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 476C110ED674
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 13:47:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67VA-0006aB-Vq; Fri, 27 Mar 2026 09:45:29 -0400
+	id 1w67W1-0000MT-2T; Fri, 27 Mar 2026 09:46:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67Ux-0006OG-BT
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:16 -0400
+ id 1w67Vi-0007IO-JW
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:46:03 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1w67Uu-0006Um-Iq
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:15 -0400
+ id 1w67VY-0006ec-Oy
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 09:45:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774619110;
+ s=mimecast20190719; t=1774619152;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ca4K08Noqjd4qeO37YQnqMAg5xrqZUVUykdWTjWe6W4=;
- b=TsCsDZco+6jrEG7si+srgiTzaHhVMZcGqhL32l52tVPW/cGPnw4OzEhVivNGvxlRn7+whU
- gld9CezwWyXJMxX3sqz58fptwHrhbQ8KN4RpsYEti0ITKgCV+VFNlO+4e+KeypNRILfqlI
- wwbWZIUEyUtpGeYpEqnl3ghYlXSIKCM=
+ bh=ad41TAA6YD+wE+pjIIDI/pzYRaxv7ZiF31pSiHV1SGM=;
+ b=ZzZXdMjh3c0Qk9C7boeslgsTlO/zRaFBotegphfjRp/bx8XXX2fM3XEpBA41ZwlSLkd+Kv
+ XEuJ8oKrzfzP+SoE9aJHpXX/TV/dJHfu+xtoQji6Ipovso7kSebDwiz8xXZp7++Gldz16B
+ a1EnWyINHt7mrkCkOgVGx8dljYkJSb0=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-VWg1GV-OOK6OoqH5vzTEiQ-1; Fri,
- 27 Mar 2026 09:45:07 -0400
-X-MC-Unique: VWg1GV-OOK6OoqH5vzTEiQ-1
-X-Mimecast-MFC-AGG-ID: VWg1GV-OOK6OoqH5vzTEiQ_1774619104
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-677-eeEIbjuLNOCEFgbMnnTnVg-1; Fri,
+ 27 Mar 2026 09:45:46 -0400
+X-MC-Unique: eeEIbjuLNOCEFgbMnnTnVg-1
+X-Mimecast-MFC-AGG-ID: eeEIbjuLNOCEFgbMnnTnVg_1774619141
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B872F180034E; Fri, 27 Mar 2026 13:45:04 +0000 (UTC)
+ id 161B518002EE; Fri, 27 Mar 2026 13:45:41 +0000 (UTC)
 Received: from srv1.redhat.com (unknown [10.44.32.150])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BF26C1800673; Fri, 27 Mar 2026 13:44:57 +0000 (UTC)
+ id 9CDD1180036E; Fri, 27 Mar 2026 13:45:34 +0000 (UTC)
 From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 To: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org
@@ -66,15 +66,14 @@ Cc: Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 07/15] target/riscv: Use glib2 instead of
- strcasecmp/strncasecmp
-Date: Fri, 27 Mar 2026 15:43:53 +0200
-Message-ID: <20260327134401.270186-8-kkostiuk@redhat.com>
+Subject: [PATCH v2 12/15] util: Remove unused dirent.h
+Date: Fri, 27 Mar 2026 15:43:58 +0200
+Message-ID: <20260327134401.270186-13-kkostiuk@redhat.com>
 In-Reply-To: <20260327134401.270186-1-kkostiuk@redhat.com>
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: DK3EMVmL2TKeeTh3DU2PZmUPnDAlcAoyFwcHay5RTzg_1774619104
+X-Mimecast-MFC-PROC-ID: nbe3SCFOQuWDKLvkayb2UDNSGmBBvpxVEUDSIT5ug10_1774619141
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -103,38 +102,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a change in semantics. g_ascii_strcasecmp() doesn't honour
-locale but strcasecmp() does. But this is OK for at least one reason:
- (1) QEMU always runs with the C locale so there's not an actual
-     behaviour change here
+This one is OK to drop, because the rewrite of path.c in
+commit f3a8bdc1d5b26 removed the uses of the dirent.h functions.
 
 Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 ---
- target/riscv/monitor.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ util/path.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
-index a9d3111444..bca04a7580 100644
---- a/target/riscv/monitor.c
-+++ b/target/riscv/monitor.c
-@@ -303,7 +303,7 @@ static bool reg_is_vreg(const char *name)
-     }
- 
-     for (int i = 0; i < 32; i++) {
--        if (strcasecmp(name, riscv_rvv_regnames[i]) == 0) {
-+        if (g_ascii_strcasecmp(name, riscv_rvv_regnames[i]) == 0) {
-             return true;
-         }
-     }
-@@ -358,7 +358,7 @@ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
-             continue;
-         }
- 
--        if (strcasecmp(csr_ops[csrno].name, name) != 0) {
-+        if (g_ascii_strcasecmp(csr_ops[csrno].name, name) != 0) {
-             continue;
-         }
- 
+diff --git a/util/path.c b/util/path.c
+index 8e174eb436..72a255890e 100644
+--- a/util/path.c
++++ b/util/path.c
+@@ -5,7 +5,6 @@
+ */
+ #include "qemu/osdep.h"
+ #include <sys/param.h>
+-#include <dirent.h>
+ #include "qemu/cutils.h"
+ #include "qemu/path.h"
+ #include "qemu/thread.h"
 -- 
 2.52.0
 

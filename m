@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA0010ED662
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:19:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D4D810ED65E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:19:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65CB-0006zj-0U; Fri, 27 Mar 2026 07:17:43 -0400
+	id 1w65Bh-0006Ny-B1; Fri, 27 Mar 2026 07:17:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65C9-0006vl-0X
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:41 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1w65Bc-0006LH-DS
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:08 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65C7-0008Cd-67
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:40 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-486fb112c09so19843525e9.1
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:38 -0700 (PDT)
+ id 1w65BZ-0007WS-UJ
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:08 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-43b40fb7f95so1730652f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610258; x=1775215058; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610224; x=1775215024; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=22dNZBfMp70lJSs9tv9FQMfyO2cJBi2NY6IZf7t/OiY=;
- b=gUdcvKvXm4fBcAtzJLGSWsUZAg39DNLd9/C9pLboWIVW6iZ2vJU3ul9q2DPFRfIOYv
- 8sMvmxcX94PDK+TdqU9Xe2bfWWl5HWhIzb0SdWmf9c1GRxo/roJ6w7J/qJto/hAD4elp
- BFSKCdLs9eJzCSy2O+FCK+7Aa/8tXOT7WdGe6Ib5JCw5OncMNuInY2By+VBWsdCfWOQp
- dY8lcwW3U5xmec+0Kn2jXJEtFv3b4lHRoNV4tVOBGMm/J6cgmvcLHXmLpEj9fzKfJs6t
- +gcW0XHeaJ0sDxpC4fE4q9zwtVkGcMmUCGRqOZtTt0qgbIGQZco13SFOdGKfT8mggEXQ
- ga8Q==
+ bh=4YrZovDto6t0FqJWMN8zdd2dG3ackVIujvm5OvxbxII=;
+ b=w+4rZU36cxBSdOuKiyZPG6BP273oRmume/ZPlRiGRLvwJWtEHoOpOv7g/BxdierTbk
+ bpMFji5hO6xdXFDtYrcqeMm27SyfnnSec8UfDLW87sFnmY8sBsXkGxwz7beaRU19PJVh
+ ISbvki48l3wFm34ADYII8HyAx/W7+0GgNkhIoRbMkJoaCIwoPAenH9gloECf6zPifIii
+ p0ouKPjz7Klcpkw9UvCQFWIY3y9QcxAKc+mRdnxIlv/G96zL0+XAmjZIXOMHcxYQ3PVX
+ Tuvt+P5ijrFwtRNCPSEnPjCGAzgCugucE1wtSzUh4SGxpr5Q7cwwL4LKfmQ59ySZLRoo
+ YmJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610258; x=1775215058;
+ d=1e100.net; s=20251104; t=1774610224; x=1775215024;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=22dNZBfMp70lJSs9tv9FQMfyO2cJBi2NY6IZf7t/OiY=;
- b=MDeMLACz1GFzvijufFscJKVgeAoYSdq5lVLOqDBo56Z4CQ30aX2OgV1HToCJXegdXb
- 5ga626CJCkAyoStvfjtzdbg3ZBaeV7EgTT8tvA0aT4dSRheE64hYaa4pRmeZzvDa5Pol
- JoYyM+loa6Eik5JRVlvCCkNN3fPe8K4KsCymZm7m78VpkPEwNy8TU7MZMrfgYmoTvKHH
- fuJtE3fjWaoluzO9WydLNLFR0UfWbDdlS05qUZUdAi0XSZDNcO0Hkie8NyjUBVMpaXML
- wZO2kHqvXohIsFAaQX/puIL5lKSRdwwhVdX5XZSZqGf4vysxQ12o6sAXkIQ5BgYQzMGo
- 3jaw==
-X-Gm-Message-State: AOJu0YxLcjeP5ROgJCWEL4N/K2ZeKCj4vn0FAn25kCn4Z28yjiU6Hs8R
- Ocoi62AO5cP/Psql1QfqVDIyWZFlsVKEcVPXevksX40VW9hx46rSdWRSj3AmVx/GM5P/wVMQiKp
- h7uthFBM=
-X-Gm-Gg: ATEYQzwTXVQjdRXnfEKBT7qptwIfA7q2sp9zibQd7eI21QNAp5CA5YMMePEP14i0wLH
- wuRKLwT7d5KPzrqmi+FTH6LzRNpcVYQ0R6B4EFepgimBd23ka2ruML71wLMNbXo4orOgxGycsAQ
- QlfR1Jc4lxDI2+iaBhX9ds1AwEyOCYWyVXmoxwKCLONW3hA9O/mFmaQXbY8SPQkytpGjEtAnPXL
- ONTm/VQ1/RbPQkaKR0PYQb5AYowbCY81jVY3WjmHnZX8mslDTkjRHOuFNS0as7QfsTNe3L66aUX
- kI/W1a2HpI74ndRcWjWj6/1aRQwhbyFb39bqP6rJIrlbVYeph4NClVeFvjp3FN4ERhNSj1m4DBl
- IV/XwL/aeI91vWPBFNs5Ls/SvGdBK4NbhxHR6rxHREIEJdssO/irjcz0kiFJiIJ+vyn7mxleVmj
- B5ISdi2UjgqDaZ5h5/7rioS+JuwI9GxLhFmU2dCafLSQ1A+lW0AhOY3x6Mnj2NnSpyEk9J9vOzi
- hZux9JHY6mnCm97oqrCJcYXbw0kG8Q=
-X-Received: by 2002:a05:600c:1d15:b0:485:ae14:8191 with SMTP id
- 5b1f17b1804b1-48727ee99f6mr32789585e9.5.1774610257609; 
- Fri, 27 Mar 2026 04:17:37 -0700 (PDT)
+ bh=4YrZovDto6t0FqJWMN8zdd2dG3ackVIujvm5OvxbxII=;
+ b=RJPxcufOcrwDS3KV7iDFkVnBYy6muMTNj2NQNog3vXZLmh7BeEu/ylV7epcWZcBxtJ
+ 7DRgyx1T+0gzOXO1iYdV3kbQb0r3lxVBpeku/cpj1a+hzy1QeuOCBgYdrgawPxVwLe7V
+ XL+pRQ8QGP/w5rlNw5XrQfpICv5Tb+D68cP0ngEhA78x/4BYHKa0caI2dS9+kocHLwNL
+ CE1XLbfifJ16S5HN9RtYB4jEqsi36rD2eWaK6JeTMs8W1NVqh0UVU4ekII3S4ICEE4L6
+ bnxhHdrMsEFzyUt9N2sBnHhb55dGlifVN09DszoMgA1YMbBgPTSJ8rNnMs/PW2qs5yTy
+ c4Bg==
+X-Gm-Message-State: AOJu0YyeUKjSFCXNwDWIMM8TAiNyYjB8bJicqMf+9obXM3kifFbSNmNt
+ 0abDCnMaoubKc1NNyhV8C0Vk18sZfwvpLrgD/n9AbAZF+7hmBfGxOoA4HbwRyFxP1tlTW8vZDnd
+ LAhVvu+g=
+X-Gm-Gg: ATEYQzwdUY8gyIbObBnHcQJRkbs2PJGI481tGST1xTctX8k4sUItnAibQo/UaZXI7uK
+ p8T4x/LYPIWYg9HqF907gKo7Nj/4iWlml/Iw4B0VSlqV0eVsMYs2QZaj7+GPmZldqcE7x1zjAe0
+ +GvH6nSsqxjizB0gJUxyE+yb8/mTHVtaEvFw6BaClU3kcpc+Oh7rY8mkDcSFCxTJa9UPOsxev+y
+ SZ9GXuB8JOm/r4jZdm/J56CmpNyfdCm8yIvrfZBaX0QM/HES0X2q6kSc+Ku1L7hhRPaf0gzIxok
+ 6LHV5//z03/97Gyzs8UPqurIjsPe1CAkPITfmMv++3v+kVzQn3L3oetNHPZrzTWYl4VPV6INkCA
+ aH1RdBzRldkXjNqmXl6lo+rpEofgPH1osStjVgiD0xQ2eet8zrUAbqsHDFYsyLrgx2rkzPlqXpU
+ qiK/cPkCDqRmcWTRLyGv9DqYrN9G/m7exFS7Ntbex2z/wXxd5krxaDg5WtJoNGqDrTa1Pd942tl
+ VwQU8qaUd8nQ7clJnOW5Kc7pDIIKUk=
+X-Received: by 2002:a05:6000:22c2:b0:439:b3bb:2777 with SMTP id
+ ffacd0b85a97d-43b9e9eb148mr3219353f8f.22.1774610223787; 
+ Fri, 27 Mar 2026 04:17:03 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.36
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:37 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 37/65] target/arm: GICv5 cpuif: Implement PPI handling mode
- register
-Date: Fri, 27 Mar 2026 11:16:32 +0000
-Message-ID: <20260327111700.795099-38-peter.maydell@linaro.org>
+Subject: [PATCH v2 02/65] hw/core: Permit devices to define an array of link
+ properties
+Date: Fri, 27 Mar 2026 11:15:57 +0000
+Message-ID: <20260327111700.795099-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,69 +104,229 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the GICv5 the handling mode of a PPI is not software configurable;
-it is reported via read-only CPU interface registers ICC_PPI_HMR0_EL1
-and ICC_PPI_HMR1_EL1.
+Currently we allow devices to define "link properties" with
+DEFINE_PROP_LINK(): these are a way to give a device a pointer to
+another QOM object.  (Under the hood this is done by handing it the
+canonical QOM path for the object.)
+
+We also allow devices to define "array properties" with
+DEFINE_PROP_ARRAY(): these are a way to give a device a
+variable-length array of properties.
+
+However, there is no way to define an array of link properties.  If
+you try to do it by passing qdev_prop_link as the arrayprop argument
+to DEFINE_PROP_ARRAY() you will get a crash because qdev_prop_link
+does not provide the .set and .get methods in its PropertyInfo
+struct.
+
+This patch implements a new DEFINE_PROP_LINK_ARRAY(). In
+a device you can use it like this:
+
+struct MyDevice {
+    ...
+    uint32_t num_cpus;
+    ARMCPU **cpus;
+}
+
+and in your Property array:
+    DEFINE_PROP_LINK_ARRAY("cpus", MyDevice, num_cpus, cpus,
+                           TYPE_ARM_CPU, ARMCPU *),
+
+The array property code will fill in s->num_cpus, allocate memory in
+s->cpus, and populate it with pointers.
+
+On the device-creation side you set the property in the same way as
+the existing array properties, using the new qlist_append_link()
+function to append to the QList:
+
+    QList *cpulist = qlist_new();
+    for (int i = 0; i < cpus; i++) {
+        qlist_append_link(cpulist, OBJECT(cpu[i]));
+    }
+    qdev_prop_set_array(mydev, "cpus", cpulist);
+
+The implementation is mostly in the provision of the .set and
+.get methods to the qdev_prop_link PropertyInfo struct. The
+code of these methods parallels the code in
+object_set_link_property() and object_get_link_property().  We can't
+completely share the code with those functions because of differences
+in where we get the information like the target QOM type, but I have
+pulled out a new function object_resolve_and_typecheck() for the
+shared "given a QOM path and a type, give me the object or an error"
+code.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/cpu.h             |  1 +
- target/arm/tcg/gicv5-cpuif.c | 22 ++++++++++++++++++++++
- 2 files changed, 23 insertions(+)
+ hw/core/qdev-properties.c         | 78 +++++++++++++++++++++++++++++++
+ include/hw/core/qdev-properties.h | 41 ++++++++++++++++
+ 2 files changed, 119 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index dd4dc12feb..4574f7005d 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -605,6 +605,7 @@ typedef struct CPUArchState {
-         uint64_t icc_icsr_el1;
-         /* Most PPI registers have 1 bit per PPI, so 64 PPIs to a register */
-         uint64_t ppi_active[GICV5_NUM_PPIS / 64];
-+        uint64_t ppi_hm[GICV5_NUM_PPIS / 64];
-     } gicv5_cpuif;
+diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+index ba8461e9a4..f8181b0d91 100644
+--- a/hw/core/qdev-properties.c
++++ b/hw/core/qdev-properties.c
+@@ -669,6 +669,7 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
+          * being inside the device struct.
+          */
+         .offset = (uintptr_t)elem - (uintptr_t)obj,
++        .link_type = parent_prop->link_type,
+     };
+ }
  
-     struct {
-diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index 6672cda37f..e65bd56b3d 100644
---- a/target/arm/tcg/gicv5-cpuif.c
-+++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -50,6 +50,16 @@ FIELD(ICC_IDR0_EL1, GCIE_LEGACY, 8, 4)
-     ((4 << R_ICC_IDR0_EL1_PRI_BITS_SHIFT) |     \
-      (1 << R_ICC_IDR0_EL1_ID_BITS_SHIFT))
+@@ -950,6 +951,12 @@ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values)
+     qobject_unref(values);
+ }
+ 
++void qlist_append_link(QList *qlist, Object *obj)
++{
++    g_autofree char *path = object_get_canonical_path(obj);
++    qlist_append_str(qlist, path);
++}
++
+ static GPtrArray *global_props(void)
+ {
+     static GPtrArray *gp;
+@@ -1059,9 +1066,80 @@ static ObjectProperty *create_link_property(ObjectClass *oc, const char *name,
+                                           OBJ_PROP_LINK_STRONG);
+ }
  
 +/*
-+ * PPI handling modes are fixed and not software configurable.
-+ * R_CFSKX defines them for the architected PPIs: they are all Level,
-+ * except that PPI 24 (CTIIRQ) is IMPDEF and PPI 3 (SW_PPI) is Edge.
-+ * For unimplemented PPIs the field is RES0.  The PPI register bits
-+ * are 1 for Level and 0 for Edge.
++ * The logic in these get_link() and set_link() functions is similar
++ * to that used for single-element link properties in the
++ * object_get_link_property() and object_set_link_property() functions.
++ * The difference is largely in how we get the expected type of the
++ * link: for us it is in the Property struct, and for a single link
++ * property it is part of the property name on the object.
 + */
-+#define PPI_HMR0_RESET (~(1ULL << GICV5_PPI_SW_PPI))
-+#define PPI_HMR1_RESET (~0ULL)
++static void get_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
 +
- static GICv5Common *gicv5_get_gic(CPUARMState *env)
- {
-     return env->gicv5state;
-@@ -292,6 +302,18 @@ static const ARMCPRegInfo gicv5_cpuif_reginfo[] = {
-         .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_active[1]),
-         .writefn = gic_ppi_sactive_write,
-     },
-+    {   .name = "ICC_PPI_HMR0_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 0,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_hm[0]),
-+        .resetvalue = PPI_HMR0_RESET,
-+    },
-+    {   .name = "ICC_PPI_HMR1_EL1", .state = ARM_CP_STATE_AA64,
-+        .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 10, .opc2 = 1,
-+        .access = PL1_R, .type = ARM_CP_IO | ARM_CP_NO_RAW,
-+        .fieldoffset = offsetof(CPUARMState, gicv5_cpuif.ppi_hm[1]),
-+        .resetvalue = PPI_HMR1_RESET,
-+    },
++    if (*targetp) {
++        path = object_get_canonical_path(*targetp);
++        visit_type_str(v, name, &path, errp);
++    } else {
++        path = g_strdup("");
++        visit_type_str(v, name, &path, errp);
++    }
++}
++
++static void set_link(Object *obj, Visitor *v, const char *name, void *opaque,
++                     Error **errp)
++{
++    const Property *prop = opaque;
++    Object **targetp = object_field_prop_ptr(obj, prop);
++    g_autofree char *path = NULL;
++    Object *new_target, *old_target = *targetp;
++
++    ERRP_GUARD();
++
++    /* Get the path to the object we want to set the link to */
++    if (!visit_type_str(v, name, &path, errp)) {
++        return;
++    }
++
++    /* Now get the pointer to the actual object */
++    if (*path) {
++        new_target = object_resolve_and_typecheck(path, prop->name,
++                                                  prop->link_type, errp);
++        if (!new_target) {
++            return;
++        }
++    } else {
++        new_target = NULL;
++    }
++
++    /*
++     * Our link properties are always OBJ_PROP_LINK_STRONG and
++     * have the allow_set_link_before_realize check.
++     */
++    qdev_prop_allow_set_link_before_realize(obj, prop->name, new_target, errp);
++    if (*errp) {
++        return;
++    }
++
++    *targetp = new_target;
++    object_ref(new_target);
++    object_unref(old_target);
++}
++
+ const PropertyInfo qdev_prop_link = {
+     .type = "link",
+     .create = create_link_property,
++    /*
++     * Since we have a create method, the get and set are used
++     * only in get_prop_array() and set_prop_array() for the case
++     * where we have an array of link properties.
++     */
++    .get = get_link,
++    .set = set_link,
  };
  
- void define_gicv5_cpuif_regs(ARMCPU *cpu)
+ void qdev_property_add_static(DeviceState *dev, const Property *prop)
+diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
+index d8745d4c65..58527e62d5 100644
+--- a/include/hw/core/qdev-properties.h
++++ b/include/hw/core/qdev-properties.h
+@@ -168,6 +168,32 @@ extern const PropertyInfo qdev_prop_link;
+     DEFINE_PROP(_name, _state, _field, qdev_prop_link, _ptr_type,     \
+                 .link_type  = _type)
+ 
++/**
++ * DEFINE_PROP_LINK_ARRAY:
++ * @_name: name of the array
++ * @_state: name of the device state structure type
++ * @_field: uint32_t field in @_state to hold the array length
++ * @_arrayfield: field in @_state (of type '@_arraytype *') which
++ *               will point to the array
++ * @_linktype: QOM type name of the link type
++ * @_arraytype: C type of the array elements
++ *
++ * Define device properties for a variable-length array _name of links
++ * (i.e. this is the array version of DEFINE_PROP_LINK).
++ *
++ * The array is represented as a list of QStrings in the visitor interface,
++ * where each string is the QOM path of the object to be linked.
++ */
++#define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
++                               _linktype, _arraytype)                   \
++    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
++                .set_default = true,                                    \
++                .defval.u = 0,                                          \
++                .arrayinfo = &qdev_prop_link,                           \
++                .arrayfieldsize = sizeof(_arraytype),                   \
++                .arrayoffset = offsetof(_state, _arrayfield),           \
++                .link_type = _linktype)
++
+ #define DEFINE_PROP_UINT8(_n, _s, _f, _d)                       \
+     DEFINE_PROP_UNSIGNED(_n, _s, _f, _d, qdev_prop_uint8, uint8_t)
+ #define DEFINE_PROP_UINT16(_n, _s, _f, _d)                      \
+@@ -219,6 +245,21 @@ void qdev_prop_set_enum(DeviceState *dev, const char *name, int value);
+ /* Takes ownership of @values */
+ void qdev_prop_set_array(DeviceState *dev, const char *name, QList *values);
+ 
++/**
++ * qlist_append_link: Add a QOM object to a QList of link properties
++ * @qlist: list to append to
++ * @obj: object to append
++ *
++ * This is a helper function for constructing a QList to pass to
++ * qdev_prop_set_array() when the qdev property array is an array of
++ * link properties (i.e. one defined with DEFINE_PROP_LINK_ARRAY).
++ *
++ * The object is encoded into the list as a QString which is the
++ * canonical path of the object; this is the same encoding that
++ * object_set_link_property() and object_get_link_property() use.
++ */
++void qlist_append_link(QList *qlist, Object *obj);
++
+ void *object_field_prop_ptr(Object *obj, const Property *prop);
+ 
+ void qdev_prop_register_global(GlobalProperty *prop);
 -- 
 2.43.0
 

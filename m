@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 897A610ED67F
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 14:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6869310A88E5
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 14:12:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w67ue-0008FY-3Y; Fri, 27 Mar 2026 10:11:48 -0400
+	id 1w67vJ-0000nv-Do; Fri, 27 Mar 2026 10:12:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w67uc-0008Dt-39
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:11:46 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1w67vE-0000Y7-0a
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:12:24 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w67uZ-00069I-Sr
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:11:45 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-64edb56b70cso1971578d50.1
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 07:11:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774620703; cv=none;
+ id 1w67vC-0006Es-90
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 10:12:23 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-64ad9fabd08so2328111d50.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 07:12:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774620741; cv=none;
  d=google.com; s=arc-20240605;
- b=bxD5OHP7OmxNaWDvYWvWO93/PZefdvVp+QxvBb90sbylSk9h87kjcJ0jgrKvH/bqLq
- +8Qn9zsosCe0a1pldKIOU4JBp/zTM8gLsG3uoJDYp1jkob9Ian+LHid8DHV925dl3uzB
- v4Q9Lo+pVBRJ3ln+2O0IubMfPJYoQg29auSoAtpxOYkNT+ROvY0nwFKh93XCyto8U5H7
- HNrShSi0qTTQMu54vorwituUGPmh6QN+Xb5APmsi24SddomKoAlgKA9uCAJzBK7JVuAr
- jXQKOLwJxUr8R7+wkZyVykoYJMoR4PNEQuqCMu+njMxh55Sbd56z+Lc0fLijZ56O1LS7
- wBhw==
+ b=SRYc3MdaMgs+zsfhUyLiOMRbhuIB5qQ1c7kn6Z9ekXGmB/WB12VMxq77BKRs0ilUzv
+ GvQ56h3J9zBAd0rSwo9ENZ+AytJwqA36lU1Gav8WFIZNuwl9YlyZDekTc61E4B2P4v/l
+ 0B4UTb1LNsOyuh0fXzx0/J0YI6YzDNgTcUSXSU2jpl8+kcZxVWau2HbTpSQb18AvpbPO
+ kwEWwTQDLHQVjdCOsXtKm0masrvg+vNAZfbSnsSSBdD2OQ3ijF719a6qG4X6sNJDY7Iz
+ mkD5jpvenfV1+nOJ5lMcijH7XVI0EiCJrPpZDCvaPZATCdU5uYxEy+nGJ4Oi2XT45Kco
+ AKVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=inifQfQgIY2IYfSgHyyln8KaB3fVOElqWi8O4mM7icU=;
- fh=xBNf1atHIltaf/cmWdNFu0S0FtEhp6lxOZfe/Rk3Cko=;
- b=GGlCY4LKuBPzgJM7BRHX/OsqBf6ztGts467C/6Q9IR0XdkT2y1dOumQdhAyBNXt6Uw
- TzP0t4NL2noaAsoDhSUA4MJcY43jMipNhQurxNvyiF4GtPh35ElCs8PXrUAGAL0e5qYq
- VX28woVS3CZDvmdR8wQpd6R8RIZDpO1ZBDuDHVlBltHL2qpi7+aq4tl8PlbGKCF7x8NJ
- TT2JbuoV+pmKXg+tLIPBj6w8BxE0vgJM2rGiAPwpJ2hnlk/j4clqzq28WRawGdCl64pR
- 2yqKUyKGmyn+N5vS3MyX76VUwoqNokwRjTg9CyWe+UXZsFWjlGHCvqZ00FdUPdlByXQd
- zpwg==; darn=nongnu.org
+ bh=DwmiyYtGoJqAEUhTtMs4TtwNly6jB9R+afoAutyJvhI=;
+ fh=FCLojbACFJL3C5V8bQZtCn5T6trBhIIaSrfGeB7l6iM=;
+ b=ieq8hYv1bkvfriKfB2ckxnEmU4PRxZqTKv1qwRtq3at74IJHrYFFvNGJ80g7SPJ1GS
+ mfKoVQuEmjuGpgiHTK+nO8rNmnWgYyyqSJy9v+ZgEopW9bcXba4jSfdhtYS1q4jp2h1r
+ CDysYDn2+pjc0UFeSlNraFsLGLAYUFD/jVUcY9ddCL0K59NjkWdxHzAGM7CeTFGPKg3i
+ C+9MznodELejbLDecrAaTDvtANa9vGaRcSkvFsVaDS8ysi/4ocUR87iyQl8XLm911ocH
+ u2ovNymOS411+ejAIYvjbhaBuXbpELwlD76tRzDh2LHVUh1xKkd2Dzd4noxqcgtg0SDl
+ Ps0g==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774620702; x=1775225502; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774620741; x=1775225541; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=inifQfQgIY2IYfSgHyyln8KaB3fVOElqWi8O4mM7icU=;
- b=P+xVbmovlhjv6g/sDtSzKdUD6QyCva4EObkdh56z4cSgeC9Ks8kSmIVapBT4RhoKOp
- zVhoR6OgUlUxf0jSV/yhzgUKMMFG0oLLdkxRa9tlQskM5ERpiUpya/xzSwTHhamQwmNs
- T4S23egkcPbjFWlysu7qeQpja4oU/fduuaJwIj5ABYJflbzatPvj3zuWnd3aT9z6k4u0
- s3GEdIbwuN5rGt9Nlm1aDb8lW+2y0TdoUVoHqwQrS8UViXfw4GBLWYtRRUF0UA/urs2w
- jbTO4csb/Qaf3m66JCKzRA8kTN+n+ElSNLf5+NsimlYwj3fudXiMC86C0I5s4tx98T8r
- nPRg==
+ bh=DwmiyYtGoJqAEUhTtMs4TtwNly6jB9R+afoAutyJvhI=;
+ b=RC9iQvzARgxaRSZYXfAq/IKsJzf6+1eDthrnF/Hj7wibRLnJxxWzWKGCnH33YpJq+y
+ 85AAX1IaV/1bfjw05EmA7Zsd9JA/UlxGjSm/sN8p0sivOeVwIvAGjXYhezWynTbUK7dL
+ CNiVkvzcTDe89z5rjaG2j7eduSjftXtux7Hi1Ly03JvsPLMN4omReSerNj4TUlsccQny
+ IakZOEEnAXuBZIpDQYwFslvlwhrayBs3gfNPBTPMCGD6c6UF39L23x8SWtSo+5jsmbPK
+ 2HWIEvwREjh9uz8UALLnaEPysCY0pqIFWxGHnBphlDonirjYG3q3nW2rUmL1a2yrVz51
+ bhGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774620703; x=1775225503;
+ d=1e100.net; s=20251104; t=1774620741; x=1775225541;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=inifQfQgIY2IYfSgHyyln8KaB3fVOElqWi8O4mM7icU=;
- b=IY1ttknsl8FHh1K57U2lbYALkwpQpcSPxGUhSWOCmh0EMX+tRUgeAqvfDJXbuD57D0
- hPIEz51TiU3oaVZqrnBW28cKIH7wQ6KShnf5iRPWhjqp//I3DopwSi3HXh/iHMBjqwbf
- GpmA/taQVHvZv+1t8crTcyNXkufUXSUNjpjdn/T/igD9u3HtCdeEGmWG7qew69o5h3kz
- xmMyYfV3G3tOAJlMWjHx4UNAan8g6QUFbm3brgVUxTkKeJ1co/slxVeSJKBuD2S/x+Mi
- 4wQfqHg4dr1CDYJ8euzKYvByxb+HFWMOdMbKXNZTzu4TyyUKO3SCvW8uryZT2Whs8rR1
- U2wA==
+ bh=DwmiyYtGoJqAEUhTtMs4TtwNly6jB9R+afoAutyJvhI=;
+ b=YaDBLMSQLrpTRGmoQGKs3Sx5iQ4kfD5u/wZSpNeuHoQHSijm1jwofqishq6fVr+IlR
+ DbikwUSSHn2DrLrBUR2RLE0lQ35Y1p5WZsbapt78M5wzjmy0xS8WhgDfCyd4dju/n8rb
+ vjwBffq09z0/Xicj+ulofR+U5fPOVCu5lj+hVIxGinYoapp0Jfnkz/el2tkB7pYnIAs3
+ eXE3nNfAsISZADiNoe2B0dPnbIGABNS+NuLdTBIAWJctHPueq6cNaGRg4Dpll4ixQyr5
+ 0+fKbOv/VwBhNBWF4yhJOntfmRTQBoprgzB5oUafMCCyCLvTgvaDLDOCBjbpmy29Bw7Y
+ oO4Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXs+P4MsGzDiXJ0Qln74Fq11xsdUtcBNwb+HAxWUm1CmQ63pAdVdrJI4+SHtjY1sO7lTBPYJLdOmg==@nongnu.org
-X-Gm-Message-State: AOJu0YybQAACNy95bkCts9zV/RWq+3txwyjhgxbULa+40eWp4meTsVVy
- tyjVAIcOL4+un3jhyqy4nrbqjaHyr80H9prm5Op5yTVWkNhwwWaB6bSXyZ/eVNJYw6+qmls7AOP
- bFsh9Ge8ydOvqTVgZ4uBVkh+/seL4RZ1W4EoPYN5OTQ==
-X-Gm-Gg: ATEYQzyIVaYv9HNRdp5ZuP6vbj1Z2yxwgXaB6/tj8grllL7yfAx0gA0jYfHRVz0MiU/
- 8P/XoHoFcCZ+pjXsy8vXkQ8GUE+lxc9ua2U9m78daqIf8IueOktJzkDXsk5qM0iOy21t7xfFl3f
- do8S4EheERB95Ono/ozAH3Zokd8q8ivDopkokurD2tUuSNkhYYKgAtdVKAwNHvU2RFUk4cJfbJ1
- NQL80CevdUgChkkBgBId+K5Q9jn3prlsimVZfVKQHVVrUnLhav+2MMFaXr95AAxPYFlT26JU1pz
- sGppq+7CFpVlY/BpamBbs/7pLOTEFMi5tGNGwiJ94igvr3SHYgWsnSDnBrO9r3wZ7qc=
-X-Received: by 2002:a53:e101:0:b0:64e:f106:60f0 with SMTP id
- 956f58d0204a3-64ff73cb80amr2139268d50.51.1774620702415; Fri, 27 Mar 2026
- 07:11:42 -0700 (PDT)
+ AJvYcCUwlMoIIKZ8cbqI8D4YjOCjO5lmQInUhiSQ0+WSvjuS+k6nXC3YZNzMBxwPLzGUZWP4zZCwm7r15A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1M1NpllVFE0UMZEgPkbWLR8uJ02P65G0AtTdGLK33GXkezlWP
+ /H9CVPp/yN35E3B8qmJmmSmvNxSvnUpeRe0Wqig+FhUuVLCF/88owhcssq+xNJsSwzbhFPouehu
+ DE3oMrPvslnjoHZxLoI+w0aBQ22sN2zXyH0TrrikaNw==
+X-Gm-Gg: ATEYQzwx+cVsMK0XGmrA/9Yj/w91PWQ6zBzddyi0ywpLy7SoD9nzPjJ4iysryWOQJz8
+ GRNK6qSj1kLOhLB95jaByTjzoNX+dW+0FENoGsibW9arVLgNDHTTxryUYmciGoNYwSWRNKNcuuh
+ nF0o77h0Rp1jiP1H7XNvgsAQqJdsEMi4X+OJb9/fxq9JxuSDGdCi+n8HAyBq6nFujsoVOGa2TQH
+ wc+ziHbIRVmpsAS3ODAv4sym4zzsEP+0IrEP4drtRUTpiefFefyCCClVGtztegDFLoXYxq24UxU
+ 5hlbop4phK0khuSa/p/p1vLFQoci7pyVXHNp7ursSSs5+wJTuCFKxf0G8CpDN01nph0=
+X-Received: by 2002:a53:d005:0:b0:64f:fd17:806d with SMTP id
+ 956f58d0204a3-64ffd17b4cbmr1492710d50.64.1774620741030; Fri, 27 Mar 2026
+ 07:12:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260327134401.270186-1-kkostiuk@redhat.com>
- <20260327134401.270186-4-kkostiuk@redhat.com>
-In-Reply-To: <20260327134401.270186-4-kkostiuk@redhat.com>
+ <20260327134401.270186-5-kkostiuk@redhat.com>
+In-Reply-To: <20260327134401.270186-5-kkostiuk@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 27 Mar 2026 14:11:31 +0000
-X-Gm-Features: AQROBzC-GF76seJ-pj6gXNfAn4m1CsFefNOgqbZYHJStea0S2XWUlyeb6quiHgw
-Message-ID: <CAFEAcA-41M=AbGfk1Puxz_Tu9_mD2G1H-1h5ConJvcS4KCbOPw@mail.gmail.com>
-Subject: Re: [PATCH v2 03/15] block: Use glib2 instead of
- strcasecmp/strncasecmp
+Date: Fri, 27 Mar 2026 14:12:09 +0000
+X-Gm-Features: AQROBzC0Po7v_TD4hj1ivk19f6IZ_jZkws9bNEFEW5yubspfFBco_Aru46Dv7U4
+Message-ID: <CAFEAcA-7mgMk8oqoL2teS8Phd6Eif0d7HX65VAXXCOZTWndO6w@mail.gmail.com>
+Subject: Re: [PATCH v2 04/15] io: Use glib2 instead of strcasecmp/strncasecmp
 To: Kostiantyn Kostiuk <kkostiuk@redhat.com>
 Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org, 
@@ -108,8 +107,8 @@ Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,12 +137,11 @@ On Fri, 27 Mar 2026 at 13:44, Kostiantyn Kostiuk <kkostiuk@redhat.com> wrote:
 > locale but strcasecmp() does. But this is OK for at least one reason:
 >  (1) QEMU always runs with the C locale so there's not an actual
 >      behaviour change here
->  (2) we want the comparison on url prefix and it should be a plain ASCII
->      one, not to do weird things with "I" in Turkish locales,
+>  (2) we want the comparison data in HTTP header and it should be a plain
+>      ASCII one, not to do weird things with "I" in Turkish locales,
 >      so g_ascii_strcasecmp() is better as it's explicit about that
 >
 > Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
-> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

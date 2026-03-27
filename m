@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D6310ED660
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:23:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3139910ED65E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:23:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Dk-0001Bl-J6; Fri, 27 Mar 2026 07:19:20 -0400
+	id 1w65Bq-0006Va-W4; Fri, 27 Mar 2026 07:17:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Ca-0007ju-Be
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:08 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1w65Bp-0006Tf-8v
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:21 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65CX-0000GJ-4J
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:18:07 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-439bcec8613so1482531f8f.3
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:18:01 -0700 (PDT)
+ id 1w65Bm-0007u0-TN
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:20 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-43b9f43a1feso353018f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610280; x=1775215080; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610237; x=1775215037; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1bFuTPS3UTloN9GePWn+4uta9cNIKepddcVURPyhzcE=;
- b=g9HJU6ypSgFWlnmGM2ZZPHM/GqKKagifzBykiBZP2fBtXpWDnsDc9FDvEn13QTaozP
- OKckfMzX3uIyQLh9fs7r1nKEKxmUs4089DQ3YFyIPjfylId/srojm9YBgVUys0Cb8gAG
- U2UDqxW+kmCFyGypKexteakJsY2EsaIdfgdMid9NS4LYnbbd1SkyGQskeVdzSGmd13iH
- KbIgcq+wPlZB6RzrpAFseYf/58diqmCcoPFb81uR6t3hk19BqmivgwzV+RsFYpQ1k5s+
- AgoKtBJNnwfBiC0lHpCb7JE1BPlVWCS59pXOW2FyUcwntNSg3BHyiBFsi2Q9Naug5lZj
- NTLQ==
+ bh=Bo1tMGJjf8413y4VWnCIE2KG4+bnE/ZHqBVrYM1R3f8=;
+ b=MDXy222SaSW1Cb3UqWQ5rcghnYh5QMkTGQn79/3WxAtmUt01K6HILkXsY4ht6pw7GC
+ f04m6ulQisNGczXB7/EulGqGCjUtuzu3YKJMmac/nYBfsNA6KfrH4o4KTnh2pG9Xpen2
+ LwecPOVzQOFM16W9Vy6U1uMd0ILFAD/SngoKVPhsGNFViiORU8Ny+PGlQD5X1Ep/QwAf
+ YQlX4Zt2L93emM6+MkxbdTZMAWhwDe4S8thFX9NnuIqLieeujkD8vGOIPTdD+atXo+5f
+ Qmhs0hTMDOxwTnV4n9ETKyMF+7a/9I2L2iHU/qL/WzdrqNdsLOxrJgogCr5IQF3lOO6O
+ s2nQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610280; x=1775215080;
+ d=1e100.net; s=20251104; t=1774610237; x=1775215037;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1bFuTPS3UTloN9GePWn+4uta9cNIKepddcVURPyhzcE=;
- b=BeejZhO9Pup/Lj3sajfsOEtw6Lg5a3IMViM/WkKV6PVAImAAVUcIGpqCrilPNtIWTe
- kaWU0F9oLGJ/VT6OwKhBhGlszgzG30Rgufr7yeDA0yeQ/RgEDo5qmzc+kLRBgT8QOnyQ
- z40SPjIcTPpL1/mE+OlhDJRPahk4tUPg2zjMMXO0Lcv6E7qrUp/mGPItNKGJe4rEGLGL
- WKW3Uuv75cAdtG81i0R3f7SOrcsP2mL/01brBGNtyZB5b6KoVlc/IITIYtGvRooBz7Vg
- d2RHbd1MSgmJ8/feU6HjfWB0rFiCTrLJI6/bsZXeyFdV1120uaZybZ5D8nqQ3qiHn4KC
- gd6g==
-X-Gm-Message-State: AOJu0YyBpefKbWiWZf2brJ0hVjRntY3sL7ObrzvuitRwSO+VulwYRr7e
- UyTIAn41eYQnK0CyABPs+xqvCSJWxwdMpFcHpaHlqxWuAzc4urh1OBG1lFlh/9InqeeIZ9PIBdK
- yPaaO8hA=
-X-Gm-Gg: ATEYQzy+NGb6jvAkcYeIan8PeUsqFz76JpVx7dxhPhijpy5yloaKcZpgL65pQtLijXz
- s6PNPlHziMo2TPseGESnc1H7aX1oO+wasVL9TlWluNvRlfJ7wmazOZJDicxjaF4Z1TjHoCLil6v
- yWY7zGMghHPnHS4BEqr2DezvLu28zyvvXFhB+ApiaNhyel1UXuD/kaD/ZYEG+F/8SHKwQmKSOfS
- 6pDLaL5a6bS3XWOxlQmvJ8FFHQalGi0xUq/ez0Eu+nTT0aN71/bIPZDg7+EO1HMMPaddwNz1FSH
- fkk+2MM7b9ujjGD55iyyrtu8PgqZZqidCEw0RXOvAbEmBCqPrEb+6BbYaPTdHlZT86gBxU6qTeT
- DvajJPNdaH2mm2/W4jgL5n5icmCfo4pN3ExItcQIqt19wYGOdVOUSkDHU1O62TJ12Ws0Dm4Bt7c
- ZSVnvQXUKw0HM+57ojltku8CbagbH6ZuTmXOgi91lzsZn2RPC7os5xb6eQQuwnYhSs3ESpLdTkQ
- FpubaXE6unxJm9RZ9jPDMGbbQ1Fx6Y=
-X-Received: by 2002:a5d:64e4:0:b0:43a:16aa:1448 with SMTP id
- ffacd0b85a97d-43b9e9e8f13mr3404046f8f.22.1774610280282; 
- Fri, 27 Mar 2026 04:18:00 -0700 (PDT)
+ bh=Bo1tMGJjf8413y4VWnCIE2KG4+bnE/ZHqBVrYM1R3f8=;
+ b=PpsodEa59G/nlzDL8H99ESrGdTO28AHn8IQmLqZ76afguQS9OiZ4lTm3cu3VTvqDqq
+ UhIdVlKx4airho7OPLWCuz4BuGTwhodOG6VuRsIozr63EetQkhpxdZeMgvXNguABsUeC
+ vAdOGGmHenwkz5MruAAdTxaBUVYC/espwjgQfxvbUtgz2c21pxyzCDO1MdDi0cOiwqJV
+ gKMYBz3B0NwCmIC2vdJ6ri8xOB4nraVcfCbwcnRGlS17Zv0QiZaMw2LkiHKFkswRxm5G
+ aAMFLbSj3EpJnMAokZXn8WuxfuzlZCNfnkQ1I7xSlECtWZGYrmOM7MMgp3Cd50k+/R08
+ fGKA==
+X-Gm-Message-State: AOJu0Yx8cNhz5fem0Rs7E9xDoZLlowQFZ65D4Yk3We3Cazto8P0M8Inq
+ J+bGIuYyHV5Cd35a00JQAmMKGDpzSXlVPAncdBaXNmQ5AcWclhzrqlehT5d0IJfdHBrZnlAnKne
+ M5UYQ4oU=
+X-Gm-Gg: ATEYQzzLfh63j05OQhpk0PH0IOeSf2o0E324XEhIeKjcY6DBwZRUcb86+fdtJ4DUukp
+ TyXamwKrU6wwZYX8K2YPJ11/5FjsfEAKgOq8GN5AjaDJ3MFNqS1XZ+rA8iwZm7tTcEc0gQjg5CY
+ E7cweG+yaoa28KUxZML9YsF1bY8V7Qa5fjRkkDipdFbgYI/8Vd0jecMhaUWdXGUegVSkoHeLq2T
+ OV9KZ6ARjmlZCC5pdvXlGeWYnb05YdNAk+gJtuNI5J1b0YyLd1uOHm+4S03F85QV0oQ60T0w92q
+ 5mKSu+qMOJHXJVV6BgiP5pgcQKxR93WJfu5thY26bWRinOPQtq/+INFc5MZ/Y7V+5MeYbgKZeap
+ 7SlKyWQhUaK+uQKA1aY8kI/8thJ4alcZBsmYPj5bbGteDrU+4kbLV+c9b1Buhqd8uLCO42BB8SX
+ nM9G4hZuF1PZtCYXzRiGmytUR8Ykj39XswdQJfbStieNVxKeKk37BkDquGiRJlAebir8a0m0Jg0
+ EeGrtPWU2XzZgfwfxK3kDu/kTwrEs8=
+X-Received: by 2002:a05:6000:2207:b0:439:b7c9:2ef1 with SMTP id
+ ffacd0b85a97d-43b9e9ea728mr3197231f8f.20.1774610237142; 
+ Fri, 27 Mar 2026 04:17:17 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.59
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:59 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 61/65] hw/arm/virt: Advertise GICv5 in the DTB
-Date: Fri, 27 Mar 2026 11:16:56 +0000
-Message-ID: <20260327111700.795099-62-peter.maydell@linaro.org>
+Subject: [PATCH v2 16/65] hw/intc/arm_gicv5: Implement IRS_IST_{BASER, STATUSR,
+ CFGR}
+Date: Fri, 27 Mar 2026 11:16:11 +0000
+Message-ID: <20260327111700.795099-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,102 +103,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Advertise the GICv5 in the DTB. This binding is final as it is in
-the upstream Linux kernel as:
-Documentation/devicetree/bindings/interrupt-controller/arm,gic-v5.yaml
+Implement the three registers that handle configuration of the
+interrupt status table for physical LPIs:
+
+ * IRS_IST_BASER holds the base address of the table, and
+   has the VALID bit that tells the IRS to start using the config
+ * IRS_IST_CFGR has all the other config data for the table
+ * IRS_IST_STATUSR has the IDLE bit that tells software when
+   updates to IRS_IST_BASER have taken effect
+
+Implement these registers.  Note that neither BASER nor CFGR can be
+written when VALID == 1, except to clear the VALID bit.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- hw/arm/virt.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 68 insertions(+)
+ hw/intc/arm_gicv5.c                | 74 ++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv5_common.c         |  4 ++
+ include/hw/intc/arm_gicv5_common.h |  3 ++
+ 3 files changed, 81 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b6a04f868b..7a34af766a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -794,6 +794,72 @@ static void create_v2m(VirtMachineState *vms)
-     vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
- }
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 250925f004..cbb35c0270 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -265,6 +265,24 @@ REG64(IRS_SWERR_SYNDROMER0, 0x3c8)
+ REG64(IRS_SWERR_SYNDROMER1, 0x3d0)
+     FIELD(IRS_SWERR_SYNDROMER2, ADDR, 3, 53)
  
-+static void fdt_add_gicv5_node(VirtMachineState *vms)
++static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
 +{
-+    MachineState *ms = MACHINE(vms);
-+    const char *nodename = "/intc";
-+    g_autofree char *irsnodename = NULL;
-+    g_autofree uint32_t *cpu_phandles = g_new(uint32_t, ms->smp.cpus);
-+    g_autofree uint16_t *iaffids = g_new(uint16_t, ms->smp.cpus);
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
 +
-+    vms->gic_phandle = qemu_fdt_alloc_phandle(ms->fdt);
-+    qemu_fdt_setprop_cell(ms->fdt, "/", "interrupt-parent", vms->gic_phandle);
-+
-+    qemu_fdt_add_subnode(ms->fdt, nodename);
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "phandle", vms->gic_phandle);
-+    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible", "arm,gic-v5");
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 3);
-+    qemu_fdt_setprop(ms->fdt, nodename, "interrupt-controller", NULL, 0);
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "#address-cells", 0x2);
-+    qemu_fdt_setprop_cell(ms->fdt, nodename, "#size-cells", 0x2);
-+    qemu_fdt_setprop(ms->fdt, nodename, "ranges", NULL, 0);
-+
-+    /* The IRS node is a child of the top level /intc node */
-+    irsnodename = g_strdup_printf("%s/irs@%" PRIx64,
-+                                  nodename,
-+                                  vms->memmap[VIRT_GICV5_IRS_NS].base);
-+    qemu_fdt_add_subnode(ms->fdt, irsnodename);
-+    qemu_fdt_setprop_string(ms->fdt, irsnodename, "compatible",
-+                            "arm,gic-v5-irs");
-+    /*
-+     * "reg-names" describes the frames whose address/size is in "reg";
-+     * at the moment we have only the NS config register frame.
-+     */
-+    qemu_fdt_setprop_string(ms->fdt, irsnodename, "reg-names", "ns-config");
-+    qemu_fdt_setprop_sized_cells(ms->fdt, irsnodename, "reg",
-+                                 2, vms->memmap[VIRT_GICV5_IRS_NS].base,
-+                                 2, vms->memmap[VIRT_GICV5_IRS_NS].size);
-+    qemu_fdt_setprop_cell(ms->fdt, irsnodename, "#address-cells", 0x2);
-+    qemu_fdt_setprop_cell(ms->fdt, irsnodename, "#size-cells", 0x2);
-+    qemu_fdt_setprop(ms->fdt, irsnodename, "ranges", NULL, 0);
-+
-+    /*
-+     * The "cpus" property is an array of phandles to the CPUs, and
-+     * "iaffids" is an array of uint16 IAFFIDs. For virt, our IAFFIDs
-+     * are the CPU indexes.  This function is called after
-+     * fdt_add_cpu_nodes(), which allocates the cpu_phandles array.
-+     */
-+    assert(vms->cpu_phandles);
-+    for (int i = 0; i < ms->smp.cpus; i++) {
-+        /*
-+         * We have to byteswap each element here because we're setting the
-+         * whole property value at once as a lump of raw data, not via a
-+         * helper like qemu_fdt_setprop_cell() that does the swapping for us.
-+         */
-+        cpu_phandles[i] = cpu_to_be32(vms->cpu_phandles[i]);
-+        iaffids[i] = cpu_to_be16(i);
++    if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
++        /* If VALID is set, ADDR is RO and we can only update VALID */
++        bool valid = FIELD_EX64(value, IRS_IST_BASER, VALID);
++        if (valid) {
++            /* Ignore 1->1 transition */
++            return;
++        }
++        cs->irs_ist_baser[domain] = FIELD_DP64(cs->irs_ist_baser[domain],
++                                               IRS_IST_BASER, VALID, valid);
++        return;
 +    }
-+    qemu_fdt_setprop(ms->fdt, irsnodename, "cpus", cpu_phandles,
-+                     ms->smp.cpus * sizeof(*cpu_phandles));
-+    qemu_fdt_setprop(ms->fdt, irsnodename, "arm,iaffids", iaffids,
-+                     ms->smp.cpus * sizeof(*iaffids));
-+
-+    /*
-+     * When we implement the GICv5 IRS, it gets a DTB node which is a
-+     * child of the IRS node.
-+     */
++    cs->irs_ist_baser[domain] = value;
 +}
 +
- static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
+ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                          uint64_t *data, MemTxAttrs attrs)
  {
-     MachineState *ms = MACHINE(vms);
-@@ -835,6 +901,8 @@ static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
-      * that information is communicated directly between a GICv5 IRS and
-      * the GICv5 CPU interface via our equivalent of the stream protocol.
-      */
+@@ -325,6 +343,26 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     case A_IRS_AIDR:
+         *data = cs->irs_aidr;
+         return true;
 +
-+    fdt_add_gicv5_node(vms);
++    case A_IRS_IST_BASER:
++        *data = extract64(cs->irs_ist_baser[domain], 0, 32);
++        return true;
++
++    case A_IRS_IST_BASER + 4:
++        *data = extract64(cs->irs_ist_baser[domain], 32, 32);
++        return true;
++
++    case A_IRS_IST_STATUSR:
++        /*
++         * For QEMU writes to IRS_IST_BASER and IRS_MAP_L2_ISTR take effect
++         * instantaneously, and the guest can never see the IDLE bit as 0.
++         */
++        *data = R_IRS_IST_STATUSR_IDLE_MASK;
++        return true;
++
++    case A_IRS_IST_CFGR:
++        *data = cs->irs_ist_cfgr[domain];
++        return true;
+     }
+ 
+     return false;
+@@ -333,18 +371,54 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                           uint64_t data, MemTxAttrs attrs)
+ {
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++
++    switch (offset) {
++    case A_IRS_IST_BASER:
++        irs_ist_baser_write(s, domain,
++                            deposit64(cs->irs_ist_baser[domain], 0, 32, data));
++        return true;
++    case A_IRS_IST_BASER + 4:
++        irs_ist_baser_write(s, domain,
++                            deposit64(cs->irs_ist_baser[domain], 32, 32, data));
++        return true;
++    case A_IRS_IST_CFGR:
++        if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "guest tried to write IRS_IST_CFGR for %s config frame "
++                          "while IST_BASER.VALID set\n", domain_name[domain]);
++        } else {
++            cs->irs_ist_cfgr[domain] = data;
++        }
++        return true;
++    }
++
+     return false;
  }
  
- /*
+ static bool config_readll(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                           uint64_t *data, MemTxAttrs attrs)
+ {
++    GICv5Common *cs = ARM_GICV5_COMMON(s);
++
++    switch (offset) {
++    case A_IRS_IST_BASER:
++        *data = cs->irs_ist_baser[domain];
++        return true;
++    }
++
+     return false;
+ }
+ 
+ static bool config_writell(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                            uint64_t data, MemTxAttrs attrs)
+ {
++    switch (offset) {
++    case A_IRS_IST_BASER:
++        irs_ist_baser_write(s, domain, data);
++        return true;
++    }
++
+     return false;
+ }
+ 
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index 54d75db014..44909d1b05 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -62,6 +62,10 @@ void gicv5_common_init_irqs_and_mmio(GICv5Common *cs,
+ 
+ static void gicv5_common_reset_hold(Object *obj, ResetType type)
+ {
++    GICv5Common *cs = ARM_GICV5_COMMON(obj);
++
++    memset(cs->irs_ist_baser, 0, sizeof(cs->irs_ist_baser));
++    memset(cs->irs_ist_cfgr, 0, sizeof(cs->irs_ist_cfgr));
+ }
+ 
+ static void gicv5_common_init(Object *obj)
+diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+index 88e1b4d73d..9bfafcebfc 100644
+--- a/include/hw/intc/arm_gicv5_common.h
++++ b/include/hw/intc/arm_gicv5_common.h
+@@ -62,6 +62,9 @@ struct GICv5Common {
+ 
+     MemoryRegion iomem[NUM_GICV5_DOMAINS];
+ 
++    uint64_t irs_ist_baser[NUM_GICV5_DOMAINS];
++    uint32_t irs_ist_cfgr[NUM_GICV5_DOMAINS];
++
+     /* Bits here are set for each physical interrupt domain implemented */
+     uint8_t implemented_domains;
+ 
 -- 
 2.43.0
 

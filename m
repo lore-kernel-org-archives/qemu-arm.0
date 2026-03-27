@@ -4,98 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE6A10ED65E
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EA7310ED65C
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:49:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65LO-0000Oc-4x; Fri, 27 Mar 2026 07:27:14 -0400
+	id 1w65gK-0006rw-VY; Fri, 27 Mar 2026 07:48:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65LI-0008Jv-8v
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:27:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gI-0006rE-W6
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65LF-0003XZ-Sz
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:27:07 -0400
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65gH-0000Mu-94
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:48:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774610824;
+ s=mimecast20190719; t=1774612128;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=x26TZNRg43BFa3dggwrpI++2QPL80Q+hZB52X2e3BuU=;
- b=DmP8Ns+br02/647yKDZ9/CdadjjtboOYAvfrJtK5G5hhYPmEre6p9A+not9wNHLj4U7CQE
- 3bxMxu5f9lx0nqjcEt8JlilGuE9gdKx21fjIykHHgvMcnO+/ofo1dM6hWpDXP5jdJPUiaZ
- N8nYwp/cfnDbdxfunBfUiVikR9W+n3M=
-Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
- [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-107-jqH0MHWQOlyn45qq_hxOcA-1; Fri, 27 Mar 2026 07:27:03 -0400
-X-MC-Unique: jqH0MHWQOlyn45qq_hxOcA-1
-X-Mimecast-MFC-AGG-ID: jqH0MHWQOlyn45qq_hxOcA_1774610822
-Received: by mail-oo1-f69.google.com with SMTP id
- 006d021491bc7-67e1cbc56abso644439eaf.0
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:27:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610822; x=1775215622;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=x26TZNRg43BFa3dggwrpI++2QPL80Q+hZB52X2e3BuU=;
- b=NI3m6euyNdVqO1Cvljz3e4mYsrtyQnJT8xEih77R0y4DR7Pqu1b9l3mdlj3oK57cTX
- AnVy349pMJ4ek1mmb15bMIwvzzBtisZsda0oZhZAptZdyHax94rVHdFnabRqwX/cj1ia
- /tboNHGbn74h4Ia+88ppQ1JUOeP548WeNANdT9nNfuuxlmc8SSNVx4u67XWBA/s29+Ew
- B/kmj1/3MeHNA3uo5To3FIBhQOGYzwrRDa2vpjBp2rxDtxR2krUyF34lFHD0YMml5w+7
- nuec77j8ZQ+xf8BjBIAZS/ysLKvnGIKz8q1YDp1TxqvzMk5sVKsEBvBquH5abqlvzEgd
- Vdrw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVaq82ICIJ8HARt9l9uitKZU3hpkQcLpcBLF+KlbyyknYCk7Hm5DrSyzmFur9VmnTR0cDNtrZ63ZQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyRGCVreYizj1JHYs2rJ+GXi9G1zu5DOWJr4PkI0i5AZwaaBeQ9
- BygUGxAD7tDJdiU+GlA5KGiUSlwtKvw0djSeEqHnJQ9ob8MFDerAf0/aCpcT834PCWBtO7UPoKL
- pFrdMw3THNE+pPMjktBvY3C9w/d15rXlNQFo2HB2lz51YTIXGu8oZqCpHaN9IV+2VcvmamRBIbZ
- 8dTi/Hu59hs54mjcA7hlrqUgQCTG2i
-X-Gm-Gg: ATEYQzwGiw+nVtQcOzfjstMLTAQ9YWoGYLkCS79kFkYOqHnThj44jsiXGiirmW/ga6k
- p1uldjc5QXrKYoPOMPPuBnXr0kdkgyryg8Fk3xwaqp8z5HRrtzcP7hUQNcE9Zq6QpAMDobqes0u
- u3CUwK6DuGZXM5z73aQFkptsYGH91JcoDWydoeBpLass5r0CBWk5BhVAbKj99STV0AG/e++6Wv/
- 8EBgDhnqWmnu/PsOQ9ug42RxKzgW+ysfqnaU60=
-X-Received: by 2002:a05:6820:c84:b0:67c:f9c:ad29 with SMTP id
- 006d021491bc7-67e18708f87mr964102eaf.43.1774610822500; 
- Fri, 27 Mar 2026 04:27:02 -0700 (PDT)
-X-Received: by 2002:a05:6820:c84:b0:67c:f9c:ad29 with SMTP id
- 006d021491bc7-67e18708f87mr964086eaf.43.1774610822154; Fri, 27 Mar 2026
- 04:27:02 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260324-tpm-tis-sysbus-ppi-v1-0-e59175210954@redhat.com>
- <20260324-tpm-tis-sysbus-ppi-v1-1-e59175210954@redhat.com>
- <c6830a19-c275-4a83-bb17-4430680b3d54@linux.ibm.com>
- <A2BD2FA0-6D5F-47DC-BF2B-017ABE5F31AB@unpredictable.fr>
- <07ff064e-bea4-4beb-811a-f5f3485836d6@linux.ibm.com>
- <CAJg9Kky1q=5DFDPkh-i1hyxCKmpuEnR02hrHN-ncewY2VO0LQA@mail.gmail.com>
- <EAD6E043-B77B-478E-91D6-863B0E185CFC@unpredictable.fr>
- <CAJg9KkwznOFSzcme_6A44Er7dd6Ae+szWF+Fwh4dw=Hyv3BWVg@mail.gmail.com>
- <CAFEAcA85B5g0xRExvicBZwW=bADBj+dQFFeA3ihg+=bTYJNZCA@mail.gmail.com>
-In-Reply-To: <CAFEAcA85B5g0xRExvicBZwW=bADBj+dQFFeA3ihg+=bTYJNZCA@mail.gmail.com>
+ bh=dvogLia3c1ViymgIXbXa1aDkmcVZpBH2hoZ4U3I42KI=;
+ b=CDILMMyxwfkatlCFA3jsqUTD0jeRK8W8R9eibThxZKY7Qk1qTlL8xPOhgfBDDuBLwMVA06
+ VhCNcvILWcjLU9v34sMm3o3GE8Kdzsr8ZMv6nMfhmjU+8mcWiyq4GEWSp65kNSpnGCqzTH
+ wf+VR5XuK9MHyVCmP1ewGPOPI+8+8ec=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-146-_wgW-klzPE-WOoRSNXGCug-1; Fri,
+ 27 Mar 2026 07:48:47 -0400
+X-MC-Unique: _wgW-klzPE-WOoRSNXGCug-1
+X-Mimecast-MFC-AGG-ID: _wgW-klzPE-WOoRSNXGCug_1774612125
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 393ED18005BB; Fri, 27 Mar 2026 11:48:45 +0000 (UTC)
+Received: from mbawa-thinkpadt14gen5.bengluru.csb (unknown [10.74.88.10])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2728D19560B1; Fri, 27 Mar 2026 11:48:38 +0000 (UTC)
 From: Mohammadfaiz Bawa <mbawa@redhat.com>
-Date: Fri, 27 Mar 2026 16:56:46 +0530
-X-Gm-Features: AQROBzAiTh9upMXPgQPDsPlYRixn6GrVkTap4MwT60CKSJpWg8Mmr45JpCEZ7RQ
-Message-ID: <CAJg9KkxsqQotGX_0n+ne8LMQB9ckBcuEo56fCapVw2cA60JKGw@mail.gmail.com>
-Subject: Re: [PATCH 1/3] docs/specs/tpm: document PPI support on ARM64 virt
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
- Stefan Berger <stefanb@linux.ibm.com>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, 
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: cx-Gqx9rET_oPhT0B9QBCOyoPRMqfuJsnM84LMop7BA_1774610822
+To: qemu-devel@nongnu.org
+Cc: stefanb@linux.vnet.ibm.com, pierrick.bouvier@linaro.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, imammedo@redhat.com,
+ anisinha@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, mohamed@unpredictable.fr,
+ Mohammadfaiz Bawa <mbawa@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PATCH v2 1/3] docs/specs/tpm: document PPI support on ARM64 virt
+Date: Fri, 27 Mar 2026 17:18:22 +0530
+Message-ID: <20260327-tpm-tis-sysbus-ppi-v2-1-d8ec84d25dbc@redhat.com>
+In-Reply-To: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
+References: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: uqtRQZumWR-cGVs4S4IrgeNa5dcFd-NOqXTUQzpHncY_1774612125
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mbawa@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -104,7 +72,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,49 +88,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Mar 27, 2026 at 3:56=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Fri, 27 Mar 2026 at 10:08, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
-> > For v2, I see a few options for the docs and wanted to get your take:
-> >
-> > -Add a note in the PPI section mentioning the FEAT_S2FWB requirement
-> > for TPM TIS on ARM64
-> > -Add it as a separate general "TPM TIS on ARM64" note since the
-> > requirement predates PPI and applies to the TIS MMIO region as a whole
-> > -Hold off until the ISV=3D0 syndrome support patches land, since they'd
-> > remove the FEAT_S2FWB dependency and make any note we add now outdated
->
-> We could in theory have QEMU check for whether the host has
-> FEAT_S2FWB and actively warn/error about enabling the TPM
-> in that setup. But if we're going to land ISV=3D0 emulation soon
-> that might not be worth the effort.
->
-> -- PMM
->
+Document that tpm-tis-device on the ARM virt machine supports PPI
+with dynamically allocated MMIO via the platform bus, unlike x86
+where PPI is at the fixed address 0xFED45000.
 
-Thanks, Peter. Agreed
-no point adding a runtime check if ISV=3D0 emulation is around the corner.
+Also add hw/arm/virt-acpi-build.c and hw/acpi/tpm.c to the list
+of files related to TPM ACPI tables.
 
-I went ahead and tested across a few different ARM64 hosts to get a
-clearer picture:
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+---
+ docs/specs/tpm.rst | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-*Nvidia Grace (Neoverse V2, Armv9) - Win11 ARM64 installed cleanly, no
-Event ID 15. This one has FEAT_S2FWB.
-*Ampere Altra Max (Neoverse N1, Armv8.2) - Also works fine. N1 doesn't
-advertise FEAT_S2FWB but has equivalent semantics as Mohamed
-mentioned.
-*Marvell ThunderX2 (CN9980, Armv8.1) - Hangs in TianoCore as soon as
-TPM is enabled. Boots fine without TPM. This is Armv8.1 with no
-FEAT_S2FWB at all.
+diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
+index b630a351b4f77a8d2512f22446d00a4d674c7777..ba2b0d726745fdf8ebc4c73c9c42e1ff8047a9db 100644
+--- a/docs/specs/tpm.rst
++++ b/docs/specs/tpm.rst
+@@ -187,8 +187,32 @@ The location of the table is given by the fw_cfg ``tpmppi_address``
+ field.  The PPI memory region size is 0x400 (``TPM_PPI_ADDR_SIZE``) to
+ leave enough room for future updates.
+ 
++PPI on ARM64 virt
++-----------------
++
++The ARM virt machine supports PPI for ``tpm-tis-device`` as defined
++in the `PPI specification`_.
++
++Unlike the x86 TIS device where the PPI memory region is mapped at
++the fixed address ``0xFED45000`` (within the TIS MMIO range), the
++ARM64 sysbus device registers PPI memory as a second MMIO region
++on the platform bus. The platform bus assigns the guest physical
++address dynamically at device plug time. The ACPI ``_DSM`` method
++and PPI operation regions reference this dynamically resolved
++address.
++
++PPI is controlled by the ``ppi`` property (default ``on``)::
++
++    -device tpm-tis-device,tpmdev=tpm0,ppi=on
++
++Without PPI, guest operating systems such as Windows 11
++ARM64 will log errors when attempting to query TPM Physical
++Presence capabilities via the ACPI ``_DSM`` method.
++
+ QEMU files related to TPM ACPI tables:
+  - ``hw/i386/acpi-build.c``
++ - ``hw/arm/virt-acpi-build.c``
++ - ``hw/acpi/tpm.c``
+  - ``include/hw/acpi/tpm.h``
+ 
+ TPM backend devices
 
-So the ThunderX2 result confirms exactly what Mohamed described - TPM
-TIS MMIO needs FEAT_S2FWB (or equivalent) on the host. The PPI patches
-don't change that requirement.
-
-Will send v2 shortly with the doc hunk move Stefan asked for.
-
-Thanks,
-Faiz
+-- 
+2.53.0
 
 

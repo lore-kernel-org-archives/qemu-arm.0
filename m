@@ -4,92 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF2A10F2865
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 18:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15D9710F2865
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 18:32:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6BlL-0007lH-Qu; Fri, 27 Mar 2026 14:18:27 -0400
+	id 1w6ByN-0003F9-Rt; Fri, 27 Mar 2026 14:31:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6Bl6-0007gs-Oe
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:18:18 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+ id 1w6ByM-0003El-7x
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:31:54 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w6Bl2-0004Js-St
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:18:11 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id
- 41be03b00d2f7-c6e2355739dso1061986a12.2
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 11:18:05 -0700 (PDT)
+ id 1w6ByK-0007R1-IQ
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 14:31:53 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-35a1f549e7eso1551433a91.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 11:31:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774635484; x=1775240284; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=DI62CKUeerbl7nsL7wtkGEa0ArXEH8fdjMwvOc+cnCQ=;
- b=Rh41D363M5Bz8SPmu7ow2gsoid2O/yB6JZgC0hQsR3Dw/Q6Zi/KcEuC8OkaW0A+sR5
- 6P2+/WT7udf+on280MB6ynacIcE6N/uOpwSFwTJ89UpHAJTy4svckvm0hDx4x+0e42mA
- UEfk3A1hidZKkzYTm/lyh1aU59fiwQdBwW2ZHTsx1uQCdxweMejmcbDv4lDR/hXvGWbY
- XIKyk1VmUcJ8TPwO9U8T4ejNah6YuKEs9ukY1nCwV+zkhtcMo+D+/LOKzVedJTut6udq
- SQHFHmCZkz3dyG1q9xrTb6appo2UIcHsFKfYgBM/s44RHXZQbmC5GrI0gfuyt/eTfjj0
- k+EA==
+ d=linaro.org; s=google; t=1774636310; x=1775241110; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=D9agshjLojojl89dNdGYibGqaA3mdVvSoSELyds6Ar4=;
+ b=cAVMQWyzmYMpInqJ1Zo+MhJwUQ8icITgxHKYsCAzz2fYDUclVLU4iTVLr200vFWPeh
+ qSq3xdiCc/nrupaMTfNi40SFMIGEzecHz8owVeS3+mi5MICfrpsXVQ7BDDKy0fr86XZD
+ /JqkHG3swf/d6iRBWelvXn3ryglhWTXhMECO2J73Q4pnHgHESpKl7kJT3ehbM301o4lz
+ jbhKe6N4v3ocG3YUbP1WPrd4k8yiADwgMI9NeZtK9XGQSHeHCFs9H9GpeIedhPf2mH6O
+ MTByerVLgexsW/YzsBCCMFW/cdGhVGEujQeJYyAMnsOJMiDchbB7/bBw3B+8XUxvNzzT
+ tNew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774635484; x=1775240284;
- h=content-transfer-encoding:in-reply-to:autocrypt:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DI62CKUeerbl7nsL7wtkGEa0ArXEH8fdjMwvOc+cnCQ=;
- b=aTQ4fn9dGOcihK0a6TmItECbElbiDF+51wtreRAUw/x/EFYlRWEP6qkodoBWet8ZaS
- VcqmjosnWKHjwfrQZc+sgbQHaub1Zdtqb/S7SPOSsXMCZJNgZN4rZuELhxKN6jC+ZFIi
- Ru2K/63m4snm9nhhYXvBpXEUQBBhvRRLFmacw2xrZ40OqvsUpl1/ZYxxY3PG6c/x2j9+
- f/jvMHErm5eNKWHSCGNl8S2Wo5lny4RXCHTFxPsVKsaJcuGkJdGVMcmP7/rkI/zfTxHk
- H9s+P/1pjjOzFsaCwrSvaH00Pgo5DCxXoNnbSn5gsyjxdEhx5G94XknJ0YkHEN/hILIB
- oZpA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX/GlzB40FKeO/r1aFh5SqCuzrX/ikd4nothXUuq89UDGP7+2UsaNW/C/ZK5OEXRP98OHso3usw9w==@nongnu.org
-X-Gm-Message-State: AOJu0Ywu6WS3eTvy2i1H94hk4Lbg4o49T1STN2mRLUmjH3yh6/G9NZkq
- mL9DOMHj6HTDDvEvKdZ0bmeQHjJ4znFIFF7bfjnNp49MtnWd83EPuGQ/WXmBQ4qMX6c=
-X-Gm-Gg: ATEYQzwe9k4UK3y/zA883+ikmiyrBL8eRo/yY7IQxXNGI4LoMN5UhsHEW8RCKANoXqo
- JVOr1Q3qYkHgcvFlJhzFhP1fcl8/DxMZAGjSMGytv2ieUi3NYHj/RFcTo7bKS1+GajnQwfLZ6VO
- cP7aKIIt4Ti/B+dwMpMWKCFiIhUgpTBsqYo1quawY2Iu74xlVsoGq+/8mOqbnM8loqBqm78pYbh
- R5XgyPyeVRPRym6hWL9HeTYRrudFiOZNuE0uOSecushNe+SitPmHqSJiTVuRTL1RU4Agu8FFyVt
- rrvxI/eOhPuxrJu0gvq3aOCdjpRi8VN1EJqgp67y8XQIbGlDzFR0h0yLKgpjK6mGzNy1xHI0WKY
- DzRupa/jTOW94svHPSGWt6A/vtojdI0R4FFjg2M3JNgny0NBhS8B31FlQ5LzpSeH3U8wSuxjMZK
- XH7uxGakCUZVX8vjlh7jQqXqJuPYMvqF459KYzl53xhTtMzJ6WVmq1m82qcl+/XwLal6oW
-X-Received: by 2002:a05:6a20:3c8e:b0:398:ae03:722f with SMTP id
- adf61e73a8af0-39c87bcf187mr3867245637.45.1774635484042; 
- Fri, 27 Mar 2026 11:18:04 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1774636310; x=1775241110;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=D9agshjLojojl89dNdGYibGqaA3mdVvSoSELyds6Ar4=;
+ b=tZqlm5SjvRH1BmmFKvFFzjU0zZe0zkUUzUXFykJiaM7/lomI5vB3Xjgf4d46tyScyI
+ jX3dfCDeYiReEYcRzGDDzTNsjCvu4BfH0dMAMW5Tb1AEUtHoHujlpyic/nfk2KsDuI1k
+ y9RJLyAH3bzO/DeWfSuR9O9mTlbhUGPeA74cSD7y3PSOu8QOK0KMyQ6+xu6dTG8ukWID
+ FFMHGoJpYulAKQelefP65IF3OOqZHtKI8x6thW9XhCQttue11v0HZcH09cgui/eo8ib9
+ iYYVfU8MR0sigqR7u5BP9x4BAtHXe/szlHj+iKdQn4i0NaP37F7BgQv+V2LBj3yd0S+k
+ VjVA==
+X-Gm-Message-State: AOJu0YxZoZnxYEabm+MhW9tBUpzDVN3P7HKk8kA3dGapkGpS44uj9tif
+ QTfeXmp0JGNQzjjL3vPWAjJZ9a5rhZwz+r7/UbDDCm+ZGWjBjwh7vpt4TM1BKbZO3Yk=
+X-Gm-Gg: ATEYQzwRq8qtV3wvIZqFLS60wmqKmBdws+unm09bwFMUTz/lMhmnxtnftW7OorKOFUl
+ egnp+v2XGhCJJLFb+qucX45u86LmkZqzsH33MRCUpjQX+Lxod3xX5jtwn1rrG9TgXINtcJDEGW0
+ FFfiaquXS9q2HVNMCePrkRoA79dYHF9hGMkXILJeiqIFii7cQmbtKb7BDKw8PhQfbcBVG9PIpR6
+ Vf0Q1v/5lDT2YW6ArU611mi72txLdi6DXVE02om/C6j8/lTEMwHQntMIihaGjkVc6cuVgPYz+JF
+ 83N6496ETWCw2qpDhV0J4x4aLyfwa+nENiVnkxcsBx7Gwgn2NTJWaCpgKy8zU0RTBgGUkbPro+P
+ koxdktJn/2SR7JEG6gTWKaMXtE1FCYHxMG2TP1qKn0H4HVV8JQCoj9C5qiH5wlaAF/fdG0gzZdu
+ xxAnEZmn1dqGHbo/Cm6A8rmYc9iLad7pNtDMcZY0dZVZADHXiwfW9fD3xYmgnOz2xE1jLS
+X-Received: by 2002:a17:90b:3fcb:b0:35b:9958:4edd with SMTP id
+ 98e67ed59e1d1-35c300bd7f6mr3831517a91.30.1774636310315; 
+ Fri, 27 Mar 2026 11:31:50 -0700 (PDT)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c767382c2a6sm5229292a12.12.2026.03.27.11.18.02
+ 98e67ed59e1d1-35c2eb708c8sm1323010a91.5.2026.03.27.11.31.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Mar 2026 11:18:03 -0700 (PDT)
-Message-ID: <88a91611-2d27-4c6d-bcad-09ff32f71d97@linaro.org>
-Date: Fri, 27 Mar 2026 11:18:02 -0700
+ Fri, 27 Mar 2026 11:31:49 -0700 (PDT)
+Message-ID: <2737926f-7834-4e64-be9e-d58561e7f4ef@linaro.org>
+Date: Fri, 27 Mar 2026 11:31:49 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/9] plugins: Introduce Fault Injection framework and
- API extensions
+Subject: Re: [PATCH v5 04/12] target/arm/tcg/translate.h: remove TARGET_AARCH64
 Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org
+References: <20260327165042.604105-1-pierrick.bouvier@linaro.org>
+ <20260327165042.604105-5-pierrick.bouvier@linaro.org>
+ <36d7e3d6-3907-484b-8a58-f05a9ef6cae4@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- peter.maydell@linaro.org, philmd@linaro.org, Ruslan_Ruslichenko@epam.com,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
- <4e8f4e6e-e9d2-4457-af3d-755ced6d2a45@linaro.org>
- <CAN-aV1FER7w1rqw0zM=L2z7MT_RKsBhFg7m6NijxyQa6t5JNqw@mail.gmail.com>
- <4d2d16df-0047-4b96-8312-46489ba0f1bf@linaro.org>
- <CAN-aV1F6O3dv5F1946wEugdLxkYDp0BW6QZPxwye02A5-HYz9g@mail.gmail.com>
- <79fca2cf-7618-4a35-a915-e2bf1811a851@linaro.org>
- <CAN-aV1HRZPxuS_U4mHYhnobbKkq2G5T9P2cJ2=LahT3TzGsC6A@mail.gmail.com>
- <005aa40d-4749-44d5-a65c-8f59cbd06d0c@linaro.org>
- <87a4vu3jcn.fsf@draig.linaro.org>
- <ebb0227f-87c1-4436-b48b-10f5dc150884@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
  eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
@@ -124,11 +114,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <ebb0227f-87c1-4436-b48b-10f5dc150884@linaro.org>
+In-Reply-To: <36d7e3d6-3907-484b-8a58-f05a9ef6cae4@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -151,45 +141,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/26/26 8:59 AM, Pierrick Bouvier wrote:
->>> One thing that could be considered on API side is to add a possibility
->>> to invalidate a specific hardware address (not all tb), based on
->>> tb_invalidate_phys_range. The problem is that plugin now need to keep
->>> track of all physical addresses matching virtual ones you want to
->>> invalidate, which is not convenient.
->>>
->>> Else, the easiest way to solve all this is to expose tb_flush, like
->>> you did, but keep this patch downstream for now.
->>> If your final plugin will stay downstream (which I expect, given it
->>> has its own protocol for injecting faults and no source for it), it's
->>> really the cheapest solution.
->>>
->>> The current design is built around the assumption that instrumentation
->>> is made at translation time (and not later). So changing it by
->>> instrumenting after translation brings new constraints we can't solve
->>> at the moment without exposing internal details.
+On 3/27/26 10:26 AM, Philippe Mathieu-Daudé wrote:
+> On 27/3/26 17:50, Pierrick Bouvier wrote:
+>> We need to stub a64_translate_init and gen_a64_update_pc.
+>> At this point, we don't need to do anything for aarch64_translator_ops
+>> since it's just an external symbol.
 >>
->> We should certainly consider automatically triggering tb_flush() on each
->> qemu_plugin_register_vcpu_tb_trans_cb() so at least the case of
->> dynamically loading a plugin doesn't miss previous translations.
+>> We can now include target/arm/tcg/translate.h from common code, since
+>> all target specific bits have been removed, or can be specialized with
+>> specific defines.
 >>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>    target/arm/tcg/translate.h | 10 ----------
+>>    target/arm/tcg/stubs32.c   | 17 +++++++++++++++++
+>>    target/arm/tcg/meson.build |  1 +
+>>    3 files changed, 18 insertions(+), 10 deletions(-)
+>>    create mode 100644 target/arm/tcg/stubs32.c
 > 
-> Sounds fair yes, but not sure it covers the current use case.
-> It would require the plugin to register several tb_trans to achieve the
-> desired effect, which I'm not sure is a good idea. At this point, maybe
-> we just accept to expose tb_flush through plugin API and call it a day.
->
+> 
+>> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+>> index 5f591560551..3e96c77df73 100644
+>> --- a/target/arm/tcg/meson.build
+>> +++ b/target/arm/tcg/meson.build
+>> @@ -21,6 +21,7 @@ gen_a32 = [
+>>    
+>>    arm_ss.add(gen_a32)
+>>    arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
+>> +arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
+> 
+> Add via stub_ss[]?
 
-@Ruslan:
+Unfortunately, libqemuutil is declared before iterating on targets, so 
+stub_ss is not what you expect at this point.
 
-After looking at it again, this is already covered with:
-```
-void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb)
-```
+stub_ss = stub_ss.apply({})
+It changes its type from source_set to source_configuration.
+Even if we used a new variable name, further changes to stub_ss would be 
+ignored.
 
-which performs a tb_flush as expected, and calls cb once the reset is 
-asynchronously done.
-In the callback cb, you can reinstall your trans_cb, and it should do 
-exactly what you expect.
+I will write a patch for it, but it's definitely out of the scope of 
+this series, so I'll leave the current patch as it is for now.
 
+Regards,
+Pierrick
 

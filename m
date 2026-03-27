@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 532F510ED65C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6808A10ED65E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:21:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Bm-0006R1-SN; Fri, 27 Mar 2026 07:17:19 -0400
+	id 1w65C3-0006oF-PQ; Fri, 27 Mar 2026 07:17:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Bf-0006Mh-3N
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:11 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1w65C0-0006jy-Uc
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:32 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Bd-0007ey-79
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:10 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-487012ce896so12264875e9.0
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:08 -0700 (PDT)
+ id 1w65By-00080V-Lr
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:32 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-439b611274bso1042783f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610228; x=1775215028; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774610249; x=1775215049; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=amX7qN1Oe+nF222PYlnbVwaAHtsoUnvlRllsmPM1bzc=;
- b=o+CcN3n3r7uF5mB/W1o5vP6DRlP+E0jdPUBSYX6JwiztFPj0MODTitCOsNVEPqrs2g
- GUbTdAe1ADSta6g0T57hqd6fcZGW2xLMQsfvszZ9raT/36YfRJxUA1Kvq7H4/2cclMnw
- WRibOg/AgagdlD+lY0kCPbfA1E7O/UypBp5LzrQIhyabUumKX+RZJ4ITxeysAt4sFwZH
- OwFkNNO/sKszGtZsFGD46iriRrxpZLF9k7epEmoI+YPvDasEkxK2DJl43dLygOy8gOxT
- mtDrlQD5HVO7r1M21ROOyzWCirNkxZ6tFjplrVZR+1WnuXylQ+dhAB8P51BCJE3Cyf5e
- OVdw==
+ bh=xoyJziqdU/nken6or35eJw+c9H0GsrA0zPSsjs/9kKo=;
+ b=wfEpRQj4+ZOWYQ/QpxkjZZo21umgPIEahwTvgyCVul4CY72Y1FKsDaIHW8FCQCBfYm
+ THzE4jrJmrcrx4XS84j0ecrmmSXPeEypgW/5LGia0sADvV1J1TFoWeLSYT3cvDXrzPkF
+ WSIJ6lWlskUr9jqLAZ5CQQND10SXbe8CJE5hjY3R4WHftGLK8274CiURaEWmVx73p6w3
+ hOF3VVdxja0xF1K4cJon+39PNachpbWzwBSguvxfDxcI64P77LwHZDxaum6jGmOFahjX
+ 6RgI6jcyUNdQzhlpUtWk7hmxzUlh34ZiDd+meEiuxq3fG+eph15quS29e30+c0ugjuwR
+ FEww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610228; x=1775215028;
+ d=1e100.net; s=20251104; t=1774610249; x=1775215049;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=amX7qN1Oe+nF222PYlnbVwaAHtsoUnvlRllsmPM1bzc=;
- b=hr3Js5bUNxw00IyxCmyJZyQKPRIo9IzxEJkOpYOgJt6qg3XEYLLHxep0K0kaRudGzv
- Lj3NinV8W/YR7bC09ceL2/zokaoC8rSCC/Tn6KtzDIVlW6e2UAIDknQMkgK1M0crJdvB
- OYDqP29dvQmhrjBVlE5Kg6HoXQ46TZxNSTOLAObF/NR7LnvGxTrQyKLYiVfDarb2+/BB
- BRN/+CdCSOVxbQ0VZJebjl7tgdCicuwnotb9np06O0B/ocNif0VqaYQFCLWfuvX3rXof
- 5aLj39dUqSMtsLtK7rAgTcVa2y637C4O6HniKIux1SLdgLhAt2s+zY38kIHp80umW7gy
- /qKQ==
-X-Gm-Message-State: AOJu0YxH9jswcQqI3qDqgZcxF2l4H3elzRe6A7GUqyp9MQmySCXXrxku
- WmaZHA3f6ZFq9zaTwJXdKWYh9hWSUIRAgn6DIimzhAwp/9YiDEOs/C8Zv9VAKO+UJudMuanwh+T
- Ycjs6/Po=
-X-Gm-Gg: ATEYQzzePupRFwim56bQM0hJ729XNawkbK+Zy+GBXp1WupF6BThPrgbE9YEOgjibDBI
- j5HyT82Dmohiiu33NUFYhJmMvk0oKm/q/N3d5Nko2ArKWg4FfSjOpjODV3yJF+lxnDwFT0Bz8ws
- cHjG3rla9VKu7cJiAecG/rBX/agLBrsNUEn7SKXmFcrwdeWtLX1lYLrxkDqaReK5PYQo87HPGR2
- t6Ka8Y8aN7NNCSDBZc2aeMt0sY0RbLQhYWhX+g6kNnk/F2PdxN5QyfLqfVVlQ0f0Ad0zd/Dy9Jr
- AEbLi9DK6UIScKzbwgIx6M3zs+SZ6NAqnH2tQEGfzZVv7Rf0HPomycM8hqJ6R+O2jx/JUviXMF6
- LOeeaiAgzBk/4QwKn66+LorrzdHsgQVn5RqnATiyQUaHp0jeUwQOOJADiDFWP0krSvBRFKriVWj
- XmkXI64nPdK+neuA31Y27b5atOWQtBgm0twT1PY/DHneSXFjBDoFLAmG+evfTscWt6yXs1T7jsz
- Zu9STsz0P500cKHL7rLwAApLU/tHoI=
-X-Received: by 2002:a05:600c:4f91:b0:486:f634:ef1 with SMTP id
- 5b1f17b1804b1-48727eda549mr35026215e9.17.1774610227580; 
- Fri, 27 Mar 2026 04:17:07 -0700 (PDT)
+ bh=xoyJziqdU/nken6or35eJw+c9H0GsrA0zPSsjs/9kKo=;
+ b=idrdjik/qH60+KC37S1s/5L7n4WyBj/k178nOgNXt6nL7sA71Est8bclsz2gdlzdoz
+ OA0W6noGJ+/ZiYWHPxs5JV+usEPnKuNUJ9lFnuPfjVOU7EVB0Fy5aQ1oUwjtjJb00AG+
+ ZNTFLPlS4Rw6EFThm3QGPmIFWL2hhM6w0LHZa+snhTsPZlVXCkwBb5REIrl1IW4MbUHN
+ VemdAyO4msjTLzq0fseSAklwx3MY600TxzG3QKcpIl1j9N1Hnx/yqjVHVsNpJtXV0LMZ
+ 11VQMwSmw6kaOwh8X9db6tDEx6IVtgx45tFGd0rECuk6Zvm8FJvpsVtsLmthvZt6jcFx
+ sePg==
+X-Gm-Message-State: AOJu0Yzieu75TGtOPAVmrWrS7HtijASkzNsHvnx/Av7QKWG3PJIqqfcF
+ EPuFncG0ggKxKFJbgZR53yHZUzXLeP6ElA57coqSoybeLZDbG9/XNIu2CKoOIZ9WBeIRjRDO3iG
+ gpJ2RMAQ=
+X-Gm-Gg: ATEYQzw5/3eZl/aXQEBNGoGzkLgxQ9xT8FqWEVuYk3Nwp959Rxt91Ux9/tqjDL4zzL0
+ TuUM56Blil/FSA0HopHx9kApl/TBsBwoRSPlDyfmeY6HTWwboAuR0w6LlnbJxRl+QaS+JeryCwP
+ QYUAbkNefR/S2h9iJBpp8kkdbAVzoVkut/WtBsATYiQ9P2aOWEPQIN2TgnXik+5ta9l8PK4TJhi
+ UQGrq/l84KrdnA/tYNY2qTZhIlsB10AaqmSqO0s31F8lXaEBjN0yuXm/1q/toL2jN4HseeKwrcD
+ uFZZnCln5ikkCoOhrdWzefC7zfXn9NJIuBnTJ2asuY+bY+rbVcbs0iSV6EQk1CcnDs4z8SDHRKT
+ GAFnSxPvfpTMzshXmydbZy3au9ApItJDTIYL225feto55XZkkC3R0pidmPPYl/ER4+pM8lf7Owj
+ 2yHRaxEB2RhyYZ57TNFmIbzJr4HJTCmUQqNoP/cVVZFthM4CejtxA3xGEPf3430bGywNwfHYY5+
+ NV0BsHXXu7oPSW/+OjrF3LkvoVaMbSGB251QP/riw==
+X-Received: by 2002:a05:6000:220c:b0:439:ca7b:f4b with SMTP id
+ ffacd0b85a97d-43b9ea77996mr3253924f8f.50.1774610248816; 
+ Fri, 27 Mar 2026 04:17:28 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.06
+ ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:06 -0700 (PDT)
+ Fri, 27 Mar 2026 04:17:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 06/65] hw/intc/arm_gicv5: Add migration blocker
-Date: Fri, 27 Mar 2026 11:16:01 +0000
-Message-ID: <20260327111700.795099-7-peter.maydell@linaro.org>
+Subject: [PATCH v2 28/65] hw/intc/arm_gicv5: Update SPI state for CLEAR/SET
+ events
+Date: Fri, 27 Mar 2026 11:16:23 +0000
+Message-ID: <20260327111700.795099-29-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,59 +103,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This initial version of the GICv5 will not support migration:
+When an SPI irq line changes level, this causes what the spec
+describes as SET_LEVEL, SET_EDGE or CLEAR events.  These also happen
+when the trigger mode is reconfigured, or when software requests a
+manual resample via the IRS_SPI_RESAMPLER register.
 
- * the spec is still only at EAC level, so the data to be
-   migrated might in theory change before it is finalised
- * when we add support for missing features like EL2/EL3/Realm
-   we might find we want to refactor the data structures we use
- * I still need to check against the proposed KVM GICv5
-   handling to see if there are any awkward mismatches
-   that might affect how we want to store the data
- * it's experimental, so for pragmatic reasons I'm skipping
-   it to get the initial version done faster
-
-Install a migration blocker to enforce this.
+SET_LEVEL and SET_EDGE events make the interrupt pending, and update
+its handler mode to match its trigger mode.  CLEAR events make the
+interrupt no longer pending.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- hw/intc/arm_gicv5.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ hw/intc/arm_gicv5.c  | 59 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/intc/trace-events |  1 +
+ 2 files changed, 60 insertions(+)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 3a9d566924..64bec16bdd 100644
+index 6ff3a79745..bc887233f5 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -11,6 +11,7 @@
- #include "qapi/error.h"
- #include "qemu/log.h"
- #include "trace.h"
-+#include "migration/blocker.h"
+@@ -946,6 +946,28 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+     }
+ }
  
- OBJECT_DEFINE_TYPE(GICv5, gicv5, ARM_GICV5, ARM_GICV5_COMMON)
- 
-@@ -173,6 +174,7 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
++static void spi_sample(GICv5SPIState *spi)
++{
++    /*
++     * Sample the state of the SPI input line; this generates
++     * SET_EDGE, SET_LEVEL or CLEAR events which update the SPI's
++     * pending state and handling mode per R_HHKMN.  The logic is the
++     * same for "the input line changed" (R_QBXXV) and "software asked
++     * us to resample" (R_DMTFM).
++     */
++    if (spi->level) {
++        /*
++         * SET_LEVEL or SET_EDGE: interrupt becomes pending, and the
++         * handling mode is updated to match the trigger mode.
++         */
++        spi->pending = true;
++        spi->hm = spi->tm == GICV5_TRIGGER_EDGE ? GICV5_EDGE : GICV5_LEVEL;
++    } else if (spi->tm == GICV5_TRIGGER_LEVEL) {
++        /* falling edges only trigger a CLEAR event for level-triggered */
++        spi->pending = false;
++    }
++}
++
+ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                          uint64_t *data, MemTxAttrs attrs)
  {
-     GICv5Common *cs = ARM_GICV5_COMMON(dev);
-     GICv5Class *gc = ARM_GICV5_GET_CLASS(dev);
-+    Error *migration_blocker = NULL;
- 
-     ERRP_GUARD();
- 
-@@ -181,6 +183,12 @@ static void gicv5_realize(DeviceState *dev, Error **errp)
-         return;
+@@ -1096,7 +1118,24 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     {
+         GICv5SPIState *spi = spi_for_selr(cs, domain);
+         if (spi) {
++            GICv5TriggerMode old_tm = spi->tm;
+             spi->tm = FIELD_EX32(data, IRS_SPI_CFGR, TM);
++            if (spi->tm != old_tm) {
++                /*
++                 * R_KBPXL: updates to SPI trigger mode can generate CLEAR or
++                 * SET_LEVEL events. This is not the same logic as spi_sample().
++                 */
++                if (spi->tm == GICV5_TRIGGER_LEVEL) {
++                    if (spi->level) {
++                        spi->pending = true;
++                        spi->hm = GICV5_LEVEL;
++                    } else {
++                        spi->pending = false;
++                    }
++                } else if (spi->level) {
++                    spi->pending = false;
++                }
++            }
+         }
+         return true;
+     }
+@@ -1109,6 +1148,17 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+             }
+         }
+         return true;
++    case A_IRS_SPI_RESAMPLER:
++    {
++        uint32_t id = FIELD_EX32(data, IRS_SPI_RESAMPLER, SPI_ID);
++        GICv5SPIState *spi = gicv5_spi_state(cs, id, domain);
++
++        if (spi) {
++            spi_sample(spi);
++        }
++        trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
++        return true;
++    }
      }
  
-+    error_setg(&migration_blocker,
-+               "Live migration disabled: not yet supported by GICv5");
-+    if (migrate_add_blocker(&migration_blocker, errp)) {
+     return false;
+@@ -1259,8 +1309,17 @@ static void gicv5_set_spi(void *opaque, int irq, int level)
+     /* These irqs are all SPIs; the INTID is irq + s->spi_base */
+     GICv5Common *cs = ARM_GICV5_COMMON(opaque);
+     uint32_t spi_id = irq + cs->spi_base;
++    GICv5SPIState *spi = gicv5_raw_spi_state(cs, spi_id);
++
++    if (!spi || spi->level == level) {
 +        return;
 +    }
+ 
+     trace_gicv5_spi(spi_id, level);
 +
-     /*
-      * When we implement support for more than one interrupt domain,
-      * we will provide some QOM properties so the board can configure
++    spi->level = level;
++    spi_sample(spi);
++    trace_gicv5_spi_state(spi_id, spi->level, spi->pending, spi->active);
+ }
+ 
+ static void gicv5_reset_hold(Object *obj, ResetType type)
+diff --git a/hw/intc/trace-events b/hw/intc/trace-events
+index 409935e15a..4c55af2780 100644
+--- a/hw/intc/trace-events
++++ b/hw/intc/trace-events
+@@ -241,6 +241,7 @@ gicv5_set_pending(const char *domain, const char *type, bool virtual, uint32_t i
+ gicv5_set_handling(const char *domain, const char *type, bool virtual, uint32_t id, int handling) "GICv5 IRS SetHandling %s %s virtual:%d ID %u handling %d"
+ gicv5_set_target(const char *domain, const char *type, bool virtual, uint32_t id, uint32_t iaffid, int irm) "GICv5 IRS SetTarget %s %s virtual:%d ID %u IAFFID %u routingmode %d"
+ gicv5_request_config(const char *domain, const char *type, bool virtual, uint32_t id, uint64_t icsr) "GICv5 IRS RequestConfig %s %s virtual:%d ID %u ICSR 0x%" PRIx64
++gicv5_spi_state(uint32_t spi_id, bool level, bool pending, bool active) "GICv5 IRS SPI ID %u now level %d pending %d active %d"
+ 
+ # arm_gicv5_common.c
+ gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
 -- 
 2.43.0
 

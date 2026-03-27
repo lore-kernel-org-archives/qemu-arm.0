@@ -4,89 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6EB910ED65C
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE6A10ED65E
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 11:27:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w65Bt-0006Yg-CC; Fri, 27 Mar 2026 07:17:25 -0400
+	id 1w65LO-0000Oc-4x; Fri, 27 Mar 2026 07:27:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Bq-0006Uo-Cf
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:22 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w65Bo-0007uB-3I
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:17:22 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-43b40003d13so1406228f8f.2
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:17:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774610238; x=1775215038; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UVAmX36WyzAF1fCLFRuGTaHddS58v5EdzHxjHOa4pQM=;
- b=ZqI88ilJONvoJpyVu1m5IqDy4awVJZ2f5AyRrRtbXUSjw7dJcPOSdCDXn51GjMvG9d
- XpKY2X4VkMn43+0HKXgURllVwDwTrUWTg1HXLGeDJUUkOISn1TqFFh9idT7WCQIJKJ55
- g5eSS3NYcWhNGEtA+7QhxL1LU+3U9esfWvhBaVOyXQfJiI9Goj2m4wO6FzM73ha+gpAE
- 8XzOIcp3qS7yYihUUQ01JWXQXKGtF3sDTN63k7+U8WnArBX5uPJlYQtiBgiaGyBxGTFD
- hS5nRxGDtQa9nunhNcfJerMGdsO+ReJBL/a2miP/HMaL0Mp/huw6HssKRgzGndfXkmlR
- o9Mw==
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65LI-0008Jv-8v
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:27:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w65LF-0003XZ-Sz
+ for qemu-arm@nongnu.org; Fri, 27 Mar 2026 07:27:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1774610824;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=x26TZNRg43BFa3dggwrpI++2QPL80Q+hZB52X2e3BuU=;
+ b=DmP8Ns+br02/647yKDZ9/CdadjjtboOYAvfrJtK5G5hhYPmEre6p9A+not9wNHLj4U7CQE
+ 3bxMxu5f9lx0nqjcEt8JlilGuE9gdKx21fjIykHHgvMcnO+/ofo1dM6hWpDXP5jdJPUiaZ
+ N8nYwp/cfnDbdxfunBfUiVikR9W+n3M=
+Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com
+ [209.85.161.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-107-jqH0MHWQOlyn45qq_hxOcA-1; Fri, 27 Mar 2026 07:27:03 -0400
+X-MC-Unique: jqH0MHWQOlyn45qq_hxOcA-1
+X-Mimecast-MFC-AGG-ID: jqH0MHWQOlyn45qq_hxOcA_1774610822
+Received: by mail-oo1-f69.google.com with SMTP id
+ 006d021491bc7-67e1cbc56abso644439eaf.0
+ for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 04:27:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774610238; x=1775215038;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20251104; t=1774610822; x=1775215622;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=UVAmX36WyzAF1fCLFRuGTaHddS58v5EdzHxjHOa4pQM=;
- b=jPCF3vTYX8zlthPCkCdQ74/+soA39rpPkZ+ySGdzJZjWN92vIiL8F9YPAq3dJkGjtb
- /OY0J3KFDdgHQDW0cBfKFsfJGCSovFjJ5+tO9m5pvWwd+D30ENPM9RU3y7ColHIB69Cu
- JQQg8mgoOIV2ab/lr6hYOvIuHgeCNCwihGdwkZkFCJWB9CWioGx4LNAVIfmZURSq98rr
- pGALHNVeIRtr6CDVOc4WCxrEOqjnKtO6Wf6zjoLWS1BZbSCfJ0FufK+CLSog86ulybEw
- O46V3zdy9/d4SdYsS3k67xo1RQSsTLGVbJTpyXkHOnfEbICzppW1r388Gw9bR6lvDoBj
- HERw==
-X-Gm-Message-State: AOJu0Yx9wsv9drqHO1ghDiCtHI+GQiCzcGgh+P3WHPte6B2Nz2nFiWvL
- AmboPSnYhNi3F4SeSee6YeQ35br3sMnQtaeddjnWvlzm78KmsmI21Ogxgl+Yq2eb7URKT12DCaX
- kWHsYXn0=
-X-Gm-Gg: ATEYQzwFFAGz0mkqcFj+wFMHbQZZooMpDnBrJPRSNE3S/SVjXY4/mE/LSHDL6TJgDLv
- jKJFxxhIhHFX5wbonofTA/d2wzN5whK3S8ynn0WutkYXaRFbVr69EdBFqmLQLGmP5Hy4+CARCdI
- 0czmKGwAL9rThPNENGoVrrxEJ6MBLBKNRcsAeEAg6AvXuWm/igUhK8lfASKOh6QyX+8uQW8EF3F
- kYWbkqsuoCd8HYMztu6nqP1rJuAdY9ySGh8tEoTkfI7HmH/P1L+DCGxzS54muKjn0m3ChZt0j8O
- LpSRIZW7cuW3L297ObsEM2R5w18yBsioupJBMu4CGJdTaf2Oksq5io+2faJ+X96n1QBZJEqi0Xj
- 5pljdzHwtzphIRdzqJXP7S66Pjn2xDctyoObaaC7KlPAV9HeCwO0smmc29JofevqcXVsGtqfVqs
- uZ0tgNh4cPJKAAu5puHLMlUz6RnPqTdwTvVfo/Uty1LWBsRr9E8OoKJYDkzHiALFSHqI8IhfaKu
- fCzML6MbqdpuXFtMHjYfbaiL3qpNTU=
-X-Received: by 2002:a5d:584b:0:b0:439:c040:cc8a with SMTP id
- ffacd0b85a97d-43b9ea4660bmr3122838f8f.32.1774610238037; 
- Fri, 27 Mar 2026 04:17:18 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43b919cf2b2sm15484227f8f.18.2026.03.27.04.17.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 04:17:17 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-Subject: [PATCH v2 17/65] hw/intc/arm_gicv5: Cache LPI IST config in a struct
-Date: Fri, 27 Mar 2026 11:16:12 +0000
-Message-ID: <20260327111700.795099-18-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
-References: <20260327111700.795099-1-peter.maydell@linaro.org>
+ bh=x26TZNRg43BFa3dggwrpI++2QPL80Q+hZB52X2e3BuU=;
+ b=NI3m6euyNdVqO1Cvljz3e4mYsrtyQnJT8xEih77R0y4DR7Pqu1b9l3mdlj3oK57cTX
+ AnVy349pMJ4ek1mmb15bMIwvzzBtisZsda0oZhZAptZdyHax94rVHdFnabRqwX/cj1ia
+ /tboNHGbn74h4Ia+88ppQ1JUOeP548WeNANdT9nNfuuxlmc8SSNVx4u67XWBA/s29+Ew
+ B/kmj1/3MeHNA3uo5To3FIBhQOGYzwrRDa2vpjBp2rxDtxR2krUyF34lFHD0YMml5w+7
+ nuec77j8ZQ+xf8BjBIAZS/ysLKvnGIKz8q1YDp1TxqvzMk5sVKsEBvBquH5abqlvzEgd
+ Vdrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVaq82ICIJ8HARt9l9uitKZU3hpkQcLpcBLF+KlbyyknYCk7Hm5DrSyzmFur9VmnTR0cDNtrZ63ZQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyRGCVreYizj1JHYs2rJ+GXi9G1zu5DOWJr4PkI0i5AZwaaBeQ9
+ BygUGxAD7tDJdiU+GlA5KGiUSlwtKvw0djSeEqHnJQ9ob8MFDerAf0/aCpcT834PCWBtO7UPoKL
+ pFrdMw3THNE+pPMjktBvY3C9w/d15rXlNQFo2HB2lz51YTIXGu8oZqCpHaN9IV+2VcvmamRBIbZ
+ 8dTi/Hu59hs54mjcA7hlrqUgQCTG2i
+X-Gm-Gg: ATEYQzwGiw+nVtQcOzfjstMLTAQ9YWoGYLkCS79kFkYOqHnThj44jsiXGiirmW/ga6k
+ p1uldjc5QXrKYoPOMPPuBnXr0kdkgyryg8Fk3xwaqp8z5HRrtzcP7hUQNcE9Zq6QpAMDobqes0u
+ u3CUwK6DuGZXM5z73aQFkptsYGH91JcoDWydoeBpLass5r0CBWk5BhVAbKj99STV0AG/e++6Wv/
+ 8EBgDhnqWmnu/PsOQ9ug42RxKzgW+ysfqnaU60=
+X-Received: by 2002:a05:6820:c84:b0:67c:f9c:ad29 with SMTP id
+ 006d021491bc7-67e18708f87mr964102eaf.43.1774610822500; 
+ Fri, 27 Mar 2026 04:27:02 -0700 (PDT)
+X-Received: by 2002:a05:6820:c84:b0:67c:f9c:ad29 with SMTP id
+ 006d021491bc7-67e18708f87mr964086eaf.43.1774610822154; Fri, 27 Mar 2026
+ 04:27:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+References: <20260324-tpm-tis-sysbus-ppi-v1-0-e59175210954@redhat.com>
+ <20260324-tpm-tis-sysbus-ppi-v1-1-e59175210954@redhat.com>
+ <c6830a19-c275-4a83-bb17-4430680b3d54@linux.ibm.com>
+ <A2BD2FA0-6D5F-47DC-BF2B-017ABE5F31AB@unpredictable.fr>
+ <07ff064e-bea4-4beb-811a-f5f3485836d6@linux.ibm.com>
+ <CAJg9Kky1q=5DFDPkh-i1hyxCKmpuEnR02hrHN-ncewY2VO0LQA@mail.gmail.com>
+ <EAD6E043-B77B-478E-91D6-863B0E185CFC@unpredictable.fr>
+ <CAJg9KkwznOFSzcme_6A44Er7dd6Ae+szWF+Fwh4dw=Hyv3BWVg@mail.gmail.com>
+ <CAFEAcA85B5g0xRExvicBZwW=bADBj+dQFFeA3ihg+=bTYJNZCA@mail.gmail.com>
+In-Reply-To: <CAFEAcA85B5g0xRExvicBZwW=bADBj+dQFFeA3ihg+=bTYJNZCA@mail.gmail.com>
+From: Mohammadfaiz Bawa <mbawa@redhat.com>
+Date: Fri, 27 Mar 2026 16:56:46 +0530
+X-Gm-Features: AQROBzAiTh9upMXPgQPDsPlYRixn6GrVkTap4MwT60CKSJpWg8Mmr45JpCEZ7RQ
+Message-ID: <CAJg9KkxsqQotGX_0n+ne8LMQB9ckBcuEo56fCapVw2cA60JKGw@mail.gmail.com>
+Subject: Re: [PATCH 1/3] docs/specs/tpm: document PPI support on ARM64 virt
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Stefan Berger <stefanb@linux.ibm.com>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cx-Gqx9rET_oPhT0B9QBCOyoPRMqfuJsnM84LMop7BA_1774610822
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,158 +120,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The IRS has multiple ISTs, for different contexts:
- * physical LPIs (separately for each interrupt domain)
- * virtual LPIs
- * virtual SPIs
+On Fri, Mar 27, 2026 at 3:56=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> On Fri, 27 Mar 2026 at 10:08, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
+> > For v2, I see a few options for the docs and wanted to get your take:
+> >
+> > -Add a note in the PPI section mentioning the FEAT_S2FWB requirement
+> > for TPM TIS on ARM64
+> > -Add it as a separate general "TPM TIS on ARM64" note since the
+> > requirement predates PPI and applies to the TIS MMIO region as a whole
+> > -Hold off until the ISV=3D0 syndrome support patches land, since they'd
+> > remove the FEAT_S2FWB dependency and make any note we add now outdated
+>
+> We could in theory have QEMU check for whether the host has
+> FEAT_S2FWB and actively warn/error about enabling the TPM
+> in that setup. But if we're going to land ISV=3D0 emulation soon
+> that might not be worth the effort.
+>
+> -- PMM
+>
 
-The config information for physical LPIs is in the IRS_IST_BASER and
-IRS_IST_CFGR registers; for virtual LPIs and virtual SPIs it will be
-in the L2_VMTE VM table entry.  We would like to be able to write
-generic code that can manipulate any of these ISTs.  Define a struct
-which captures the config information for an IST, and cache the
-IRS_IST_CFGR/IRS_IST_BASER data into this format when the guest sets
-the VALID bit.
+Thanks, Peter. Agreed
+no point adding a runtime check if ISV=3D0 emulation is around the corner.
 
-This also allows us to enforce the correct handling of reserved and
-out-of-range values, and expand the encodings of sizes into a more
-convenient format for later use.
+I went ahead and tested across a few different ARM64 hosts to get a
+clearer picture:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
----
- hw/intc/arm_gicv5.c         | 64 +++++++++++++++++++++++++++++++++++++
- hw/intc/trace-events        |  2 ++
- include/hw/intc/arm_gicv5.h | 12 +++++++
- 3 files changed, 78 insertions(+)
+*Nvidia Grace (Neoverse V2, Armv9) - Win11 ARM64 installed cleanly, no
+Event ID 15. This one has FEAT_S2FWB.
+*Ampere Altra Max (Neoverse N1, Armv8.2) - Also works fine. N1 doesn't
+advertise FEAT_S2FWB but has equivalent semantics as Mohamed
+mentioned.
+*Marvell ThunderX2 (CN9980, Armv8.1) - Hangs in TianoCore as soon as
+TPM is enabled. Boots fine without TPM. This is Armv8.1 with no
+FEAT_S2FWB at all.
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index cbb35c0270..172c5be0d4 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -278,9 +278,68 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-         }
-         cs->irs_ist_baser[domain] = FIELD_DP64(cs->irs_ist_baser[domain],
-                                                IRS_IST_BASER, VALID, valid);
-+        s->phys_lpi_config[domain].valid = false;
-+        trace_gicv5_ist_invalid(domain_name[domain]);
-         return;
-     }
-     cs->irs_ist_baser[domain] = value;
-+
-+    if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
-+        /*
-+         * If the guest just set VALID then capture data into config struct,
-+         * sanitize the reserved values, and expand fields out into byte counts.
-+         */
-+        GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
-+        uint8_t istbits, l2bits, l2_idx_bits;
-+        uint8_t id_bits = FIELD_EX64(cs->irs_ist_cfgr[domain],
-+                                     IRS_IST_CFGR, LPI_ID_BITS);
-+        id_bits = MIN(MAX(id_bits, QEMU_GICV5_MIN_LPI_ID_BITS), QEMU_GICV5_ID_BITS);
-+
-+        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, ISTSZ)) {
-+        case 0:
-+        case 3: /* reserved: acts like the minimum required size */
-+            istbits = 2;
-+            break;
-+        case 1:
-+            istbits = 3;
-+            break;
-+        case 2:
-+            istbits = 4;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        switch (FIELD_EX64(cs->irs_ist_cfgr[domain], IRS_IST_CFGR, L2SZ)) {
-+        case 0:
-+        case 3: /* reserved; CONSTRAINED UNPREDICTABLE */
-+            l2bits = 12; /* 4K: 12 bits */
-+            break;
-+        case 1:
-+            l2bits = 14; /* 16K: 14 bits */
-+            break;
-+        case 2:
-+            l2bits = 16; /* 64K: 16 bits */
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        /*
-+         * Calculate how many bits of an ID index the L2 table
-+         * (e.g. if we need 14 bits to index each byte in a 16K L2 table,
-+         * but each entry is 4 bytes wide then we need 14 - 2 = 12 bits
-+         * to index an entry in the table).
-+         */
-+        l2_idx_bits = l2bits - istbits;
-+        cfg->base = cs->irs_ist_baser[domain] & R_IRS_IST_BASER_ADDR_MASK;
-+        cfg->id_bits = id_bits;
-+        cfg->istsz = 1 << istbits;
-+        cfg->l2_idx_bits = l2_idx_bits;
-+        cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
-+                                    IRS_IST_CFGR, STRUCTURE);
-+        cfg->valid = true;
-+        trace_gicv5_ist_valid(domain_name[domain], cfg->base, cfg->id_bits,
-+                              cfg->l2_idx_bits, cfg->istsz, cfg->structure);
-+    }
- }
- 
- static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
-@@ -553,6 +612,11 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
-     if (c->parent_phases.hold) {
-         c->parent_phases.hold(obj, type);
-     }
-+
-+    /* IRS_IST_BASER and IRS_IST_CFGR reset to 0, clear cached info */
-+    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
-+        s->phys_lpi_config[i].valid = false;
-+    }
- }
- 
- static void gicv5_set_idregs(GICv5Common *cs)
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 0797a23c1a..80fc47794b 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -233,6 +233,8 @@ gicv5_badread(const char *domain, uint64_t offset, unsigned size) "GICv5 IRS %s
- gicv5_write(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- gicv5_badwrite(const char *domain, uint64_t offset, uint64_t data, unsigned size) "GICv5 IRS %s config frame write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u: error"
- gicv5_spi(uint32_t id, int level) "GICv5 SPI ID %u asserted at level %d"
-+gicv5_ist_valid(const char *domain, uint64_t base, uint8_t id_bits, uint8_t l2_idx_bits, uint8_t istsz, bool structure) "GICv5 IRS %s IST now valid: base 0x%" PRIx64 " id_bits %u l2_idx_bits %u IST entry size %u 2-level %d"
-+gicv5_ist_invalid(const char *domain) "GICv5 IRS %s IST no longer valid"
- 
- # arm_gicv5_common.c
- gicv5_common_realize(uint32_t irsid, uint32_t num_cpus, uint32_t spi_base, uint32_t spi_irs_range, uint32_t spi_range) "GICv5 IRS realized: IRS ID %u, %u CPUs, SPI base %u, SPI IRS range %u, SPI range %u"
-diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
-index 42ccef8474..f6ecd9c323 100644
---- a/include/hw/intc/arm_gicv5.h
-+++ b/include/hw/intc/arm_gicv5.h
-@@ -17,11 +17,23 @@
- 
- OBJECT_DECLARE_TYPE(GICv5, GICv5Class, ARM_GICV5)
- 
-+typedef struct GICv5ISTConfig {
-+    hwaddr base; /* Base address */
-+    uint8_t id_bits; /* number of bits in an ID for this table */
-+    uint8_t l2_idx_bits; /* number of ID bits that index into L2 table */
-+    uint8_t istsz; /* L2 ISTE size in bytes */
-+    bool structure; /* true if using 2-level table */
-+    bool valid; /* true if this table is valid and usable */
-+} GICv5ISTConfig;
-+
- /*
-  * This class is for TCG-specific state for the GICv5.
-  */
- struct GICv5 {
-     GICv5Common parent_obj;
-+
-+    /* This is the info from IRS_IST_BASER and IRS_IST_CFGR */
-+    GICv5ISTConfig phys_lpi_config[NUM_GICV5_DOMAINS];
- };
- 
- struct GICv5Class {
--- 
-2.43.0
+So the ThunderX2 result confirms exactly what Mohamed described - TPM
+TIS MMIO needs FEAT_S2FWB (or equivalent) on the host. The PPI patches
+don't change that requirement.
+
+Will send v2 shortly with the doc hunk move Stefan asked for.
+
+Thanks,
+Faiz
 
 

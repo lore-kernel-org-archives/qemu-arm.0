@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07A110AB832
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 00:11:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 263CD10AB838
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 01:29:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w5ume-0002VI-Q9; Thu, 26 Mar 2026 20:10:40 -0400
+	id 1w5w0Y-00014u-2V; Thu, 26 Mar 2026 21:29:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5umd-0002Uz-E0
- for qemu-arm@nongnu.org; Thu, 26 Mar 2026 20:10:39 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ id 1w5w0V-00014Y-QV
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2026 21:29:03 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w5umb-0007Td-Uf
- for qemu-arm@nongnu.org; Thu, 26 Mar 2026 20:10:39 -0400
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-c73a5473bbdso672813a12.2
- for <qemu-arm@nongnu.org>; Thu, 26 Mar 2026 17:10:37 -0700 (PDT)
+ id 1w5w0T-0001TE-0B
+ for qemu-arm@nongnu.org; Thu, 26 Mar 2026 21:29:03 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-8298fad2063so915812b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 26 Mar 2026 18:29:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774570236; x=1775175036; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774574939; x=1775179739; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=lmKWOKyL4qUDAkZ+KUmhT+D2iG2E4/iCW9Xv6sanwNw=;
- b=QBTRY8/R77WdFrwlt4bqTQBSegLoVk6J8jYPssGHfzbUDgeGL67wCjpN1Us5SiEqAS
- /qpZc04oOk1IFn1SOYd/imE0nW7umGjVo5hx3ol0Lac1yt3QZdFmH38KvTO7SemzxFU3
- 2tyYRNx3WiQW2URo3f2wxlXMb6hIPee2Wkr72i0rzeyCuyMufCKG9J+5Jl7Av44PdXbA
- mi5SWGREw2nlEl9cG4laRboPF0nCUBjubtfJqMeM4+/OX96ZhwVXO15pW2m2maoh134r
- iPWUcgN+fubLmeG2yjPmbCEM2uvM1Vzk012QD6jo5LmYJv0FZDrZUr02xKzUq0FDVTVU
- 4xjw==
+ bh=BMNlIgsvROGWOoM6qVpmLoL2na6ymGKPAu9yLCoBnFs=;
+ b=I5AX71OJ34V67YSVCvpv3Ib9QD2fxFDQYjh7K4qmhF9+C3hmcWC5mhHZtBT72mlU/u
+ BV5usKSev+GJysQN1vkZyp9Xu6NqSmqFkGo/N72iYB3fvwNjRtG70nc5jLGcC+en/5gV
+ hpTjKm3VlrRVLZgdn0niX6dJa/j8ZNi+SDV1Zr3aWnOJFjFB4+hCGEVuMiBAL7aSem9g
+ XcussLAPJJIHLQBmXUDQnr9pcHkNYSHLeM4uDDZ3G6kzhGAwjYJz7Ypof/4iyx8MryiG
+ S2RN3dVeI9F7U3m/OYeLHEmgJzjvb2Fp+m8bdZiy2zhxiSDXp9DZ2KTNWeqrCpxy14lv
+ UL4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774570236; x=1775175036;
+ d=1e100.net; s=20251104; t=1774574939; x=1775179739;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=lmKWOKyL4qUDAkZ+KUmhT+D2iG2E4/iCW9Xv6sanwNw=;
- b=Rn0s985X79EBKbNtYh+h/4K3DvroxmiuTQKaHarRastv74+Q6kejFxDaMMwgHGiRvU
- jKsa7qcaODS9tCFML1fygM7HX5Lk3Bv56YmCyexi5B/8zVNCOh4ZjjzderI1McsDfkFC
- 0xTJr/XthFe9irGPWpEMLTCCLUHJgD6zrEj6/EIualUuA0RErdKN4gVUDouRWWa/qx6T
- ko/71Lgisq5gnnJLPHijlNlbp4pSWGAMfWynH5pwwfEJ5q/cgJLoaoiGkWvkRHrpDHXP
- bfokw6EPz0I9aMLbJQ6+Ckv1SOCOF/3pK3wh3iDvkpRoXzNJzLsUZ5dwXg2FeFZO3KTd
- P63Q==
+ bh=BMNlIgsvROGWOoM6qVpmLoL2na6ymGKPAu9yLCoBnFs=;
+ b=Txt4N/WA6+xI7nF7LznfvdsmiwEqKkrilju8Psx88alE065kT3YLLnKAvMX8hXpSae
+ Bx+3lV6HCUjgteekne8mvgK1TG9KCkwc3b50GRj2+xkl2Qs6Pe/L8/NeH8KV0P5jj/wj
+ 9DHtajrMws2y/HEHOp0iUKoly/2iBDHq/9qI7PmQpR4ODqHCJ+oBy4usKZdelrh1R+u6
+ 8exO/JERFe1jCs0VwLmuTq/IjU/npSLtbwJF7S6S9XwMGl1l5k5G6sUXQFWz/nTalR05
+ EqZUwvt6UTcoeD9EmWj/S5vLSo8wZyB4W5/utfw4cRgaNbiOZPsMUKaqMGtGCaiqMoGI
+ 3U5Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVaTfFENXqxsJZGu1feOFF0J4pwFw+UTlaX1tW11MRe/7G1tAgOzZZVK6Ch/y3PaIh/bql5eSq+yg==@nongnu.org
-X-Gm-Message-State: AOJu0YzsnSshWD3Y+oqltD3xW2Mc3cza6KufpqZtevf03wuZ5jozIGHo
- 214yptIZmHu5JeGM/1z/BPBssUChz3f01Y7ueNrUnma/0IemedPoJFnn8UxrPm9a2k4=
-X-Gm-Gg: ATEYQzzefDX6XO6Q+AZq6amiZL9gj1v4pa4eTsOf2P3eff3RaYHIOUunE3OxW/SElSK
- 1tzxAOZcTlEXvk6W9e6CtMp71fI8yztbyXV1pxzdtUS+jHUbwTITTLTP9Hx2/5TRW/NeBmPkxCo
- Sb68CSY6lMwzLXD17Updi6VRkrI7PU2ErPb3zE4gC7TA3DwkZIl2NQOPEnkuMMGuj0L4Fabo9oR
- ckhddXCqpDcQeNxErWaYrcVuB3XGv7Nd+zWLVTnXSLjUfpT3EanNbHGWDG/nf6vgh+oJRle7/qp
- LPPcRldRpNBxzeUX/DSp+In60yJduqEI0ZzmcFS/IgERrbMqH8kYs/vhHXjvQx1bbgo55SoWPuz
- tOzCeIdMdIRPBltwsLbPGE69dF3giiyvrngduc66n6EjS3LAr4TVNmj5J9QMtecKr0YKORiA8qz
- i9nWh0eIwrMRfOXDMCpWcva9H5rnEZiyyiVtj87cuLAQ==
-X-Received: by 2002:a17:902:f549:b0:2b0:7d3d:756a with SMTP id
- d9443c01a7336-2b0cdcd1de2mr5720805ad.35.1774570236120; 
- Thu, 26 Mar 2026 17:10:36 -0700 (PDT)
+ AJvYcCXY2A3COT5dpqlz0B06y9OTSkwWNK+T2WtL5P9gYNY96UAC0dw1rvrwtV9XhIqtnOqhKeJzD0iBJA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/5EYq8wV3UlaQFt/ZUy2uSWUNY2GuYZyGR7I646kGuS8TFowU
+ C+gVl8NPrcutq5cwVwXZ2gEtPZH58lWcU/MUchlcolkgKdpHPzJJJ60Iet8MzPSGchw=
+X-Gm-Gg: ATEYQzxyWKRtMTTyBPHTTQ/BWBCkOUDoAPqujpb9aO2C7yWNW5fW4dyIcgUmJgBJIGI
+ En5HEXL+t5Demkb5/7t5SncTwwhtNjn+bTUWaOUPCnX8guX4EBkuXj5D4S7EK7OVSiOgcbeI4YI
+ jsdAux5YM/sxxpzQ4bMbw/fPQ4v5/dpRwx/z7biwEggtoJhn+tM/QT4I/StS73AoFJhAVBzQxzx
+ kVhyxL6Lqvi7p4J04MebygNynYzHEvRc8DV+w904/KkQZbev0D7N7GUefSyDLdDmulD/VV9KeqY
+ r5uAf4bF/T22h/DfiuWuk7aqSaQNTbvO+kQj0Y+9K5IJ03te81ULTuTuD4XFVoAOfbC4zqfRISB
+ Arb7qNOBsBUDyDRn1cC4QDbNMyT8a6J8iMNcG/kx9ncJqYkMvXoRzvxg4E1ATqxKMHeygYKBVVh
+ hJPVsvrEstgqfQu+s1zB0KCq4yI53/iJvtV8fQwXQxeA==
+X-Received: by 2002:a05:6a00:2d98:b0:7f1:7b2a:ab5b with SMTP id
+ d2e1a72fcca58-82c95e7b2aamr518087b3a.27.1774574938763; 
+ Thu, 26 Mar 2026 18:28:58 -0700 (PDT)
 Received: from [172.16.11.156] ([103.100.225.140])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b0bc76ba80sm42093385ad.2.2026.03.26.17.10.32
+ d2e1a72fcca58-82c7f5461c5sm3433479b3a.8.2026.03.26.18.28.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Mar 2026 17:10:35 -0700 (PDT)
-Message-ID: <e3ab0758-3c9b-4fad-a03f-d319e3753eee@linaro.org>
-Date: Fri, 27 Mar 2026 10:10:29 +1000
+ Thu, 26 Mar 2026 18:28:58 -0700 (PDT)
+Message-ID: <91a286a9-be2c-4f38-b04f-96ee55cf6dfc@linaro.org>
+Date: Fri, 27 Mar 2026 11:28:51 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 5/7] hw/arm/virt: Add machine option 'mec'
+Subject: Re: [RFC PATCH 6/7] target/arm/ptw: Add MECID checks
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: alex.bennee@linaro.org, peter.maydell@linaro.org
 References: <20260319022335.22523-1-gustavo.romero@linaro.org>
- <20260319022335.22523-6-gustavo.romero@linaro.org>
+ <20260319022335.22523-7-gustavo.romero@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260319022335.22523-6-gustavo.romero@linaro.org>
+In-Reply-To: <20260319022335.22523-7-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,54 +107,293 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 3/19/26 12:23, Gustavo Romero wrote:
-> Add new machine option 'mec' that enables and sets the memory used by
-> FEAT_MEC.
+> Add MECID checks. The MECID registers were introduced before and this
+> commit uses them to perform the proper MECID checks, which is part of
+> FEAT_MEC implementation.
+> 
+> On MECID mismatches (wrong MECID) we return a substitute encrypted page
+> instead of the real encrypted page, which doesn't hurt performance on
+> memory accesses and behaves like FEAT_MEC design on the physical
+> hardware.
 > 
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->   hw/arm/virt.c         | 76 +++++++++++++++++++++++++++++++++++++++++++
->   include/hw/arm/virt.h |  1 +
->   2 files changed, 77 insertions(+)
+>   target/arm/internals.h |   2 +
+>   target/arm/ptw.c       | 215 ++++++++++++++++++++++++++++++++++++++++-
+>   2 files changed, 216 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index cab2e21e8a..7d127a4205 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1762,6 +1762,27 @@ static void create_tag_ram(MemoryRegion *tag_sysmem,
->       memory_region_add_subregion(tag_sysmem, base / 32, tagram);
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 8ec2750847..d668948949 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1473,6 +1473,8 @@ typedef struct GetPhysAddrResult {
+>        * with the stage1 protection.
+>        */
+>       int s2prot;
+> +    /* FEAT_MEC AMEC found in Block or Page descriptor. */
+> +    bool amec;
+>   } GetPhysAddrResult;
+>   
+>   /**
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 8b8dc09e72..aacc32ba33 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -2090,6 +2090,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>           goto do_fault;
+>       }
+>   
+> +    /*
+> +     * XXX(gromero): Add checks for NS bit and AMEC0/1 bits, generating the due
+> +     * fault in case AMEC0/1 = 0 and AMEC bit is 1. So far we just get the AMEC
+> +     * bit directly in case of a Block or Page descriptor.
+> +     *
+> +     */
+> +    if (((level == 1 || level == 2) && (extract64(descriptor, 0, 2) == 1)) ||
+> +        level == 3) {
+
+This test is exactly ...
+
+> +        result->amec = extract64(descriptor, 63, 1);
+> +    }
+> +
+>       if ((descriptor & 2) && (level < 3)) {
+
+... the inverse of this one.  Notice the comment that directly follows:
+
+     /*
+      * Block entry at level 1 or 2, or page entry at level 3.
+      * These are basically the same thing, although the number
+
+So move the assignment of amec later, with no additional test.
+
+>           /*
+>            * Table entry. The top five bits are attributes which may
+> @@ -3766,6 +3777,208 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+>       }
 >   }
 >   
-> +static void create_mec_ram(MemoryRegion *tag_sysmem,
-> +                           hwaddr base, hwaddr size,
-> +                           const char *name)
+> +static uint32_t *get_mecid_ptr(CPUARMState *env, hwaddr pa)
 > +{
-> +    memory_region_init_ram(tag_sysmem, NULL, name, size / 32, &error_fatal);
+> +    MemoryRegion *mr;
+> +    AddressSpace *mec_as;
+> +    hwaddr mec_paddr, xlat;
+> +    MemTxAttrs memattrs = { 0x0 };
+> +
+> +    /* Find out the page number to use it as an offset in mec AS. */
+> +    mec_paddr = pa >> TARGET_PAGE_BITS;
+> +    mec_paddr *= 4; /* Assume MECID maximum size is 4 bytes. */
+> +    /* MECIDs are kept in their own Address Space. */
+> +    mec_as = cpu_get_address_space(env_cpu(env), ARMASIdx_MEC);
+> +    mr = address_space_translate(mec_as, mec_paddr, &xlat, NULL, true, memattrs);
+> +
+> +    /*
+> +     * Return pointer in the mec AS associated to physical address 'pa', which
+> +     * is used to store the MECID.
+> +     */
+> +    return memory_region_get_ram_ptr(mr) + xlat;
 > +}
 
-The "32" divisor in create_tag_ram is "2 * TAG_GRANULE", but due to placement that 
-constant isn't actually visible in virt.c.  That could certainly be fixed.
+In allocation_tag_mem_probe, where we're performing a similar function, I test 
+memory_region_is_ram and log an error.  In addition, we have to manually mark these ram 
+pages dirty for migration.
 
-Here, you want "size / TARGET_PAGE_SIZE * sizeof(mec data)", so that you store 1 "mec 
-data" per page.  (IIRC the mecid is 8 bits?)
+Alternately...
 
-> @@ -2495,6 +2518,28 @@ static void machvirt_init(MachineState *machine)
->               }
->           }
->   
-> +        if (vms->mec) {
-> +            if (tcg_enabled()) {
-> +                if (tuple_memory == NULL) {
-> +                    /* XXX(gromero): Add object_property_find(cpuobj, "tuple-memory", ...) here. */
 > +
-> +                    tuple_memory = g_new(MemoryRegion, 1);
-> +                    memory_region_init(tuple_memory, OBJECT(machine), "mec", UINT64_MAX / 32);
+> +static uint32_t get_mecid(CPUARMState *env, hwaddr pa)
+> +{
+> +    return *get_mecid_ptr(env, pa);
+> +}
+> +
+> +static void set_mecid(CPUARMState *env, hwaddr pa, uint32_t mecid)
+> +{
+> +    *get_mecid_ptr(env, pa) = mecid;
+> +}
 
-What is UINT64_MAX / 32?
-Tuple memory should be tied to ram, so this should be the size of ram.
+... drop the direct use of pointers and use address_space_{ldl,stl} instead.
 
-> +					  "Memory Encryption Extention");
+For MTE, there was the additional complication of user-only, which doesn't have these 
+separate address spaces, as well as dealing with larger blocks of tag memory.
 
-Extension.
+For MEC, you're only ever touching one entry at a time.
+
+> +
+> +/*
+> + * Returns 'false' on MECID mismatch and 'true' on MECID match (success).
+> + */
+> +static bool mecid_check(CPUARMState *env, S1Translate *ptw, hwaddr va,
+> +                        MMUAccessType access_type, GetPhysAddrResult *result,
+> +                        ARMMMUIdx s1_mmu_idx)
+> +{
+> +    ARMSecuritySpace ss = ptw->out_space;
+> +    /* Final physical address after translation. */
+> +    hwaddr pa = result->f.phys_addr;
+> +
+> +    switch (s1_mmu_idx) {
+> +    case ARMMMUIdx_Phys_S:
+> +    case ARMMMUIdx_Phys_NS:
+> +    case ARMMMUIdx_Phys_Root:
+> +    case ARMMMUIdx_Phys_Realm:
+> +    case ARMMMUIdx_Stage2:
+> +    case ARMMMUIdx_Stage2_S:
+> +    /* In the middle of a translation, so result->f.phys_addr has no PA yet. */
+> +        return true;
+> +        break;
+> +    default:
+> +        /* Pass */
+> +        break;
+> +    }
+
+Why do you need to test s1_mmu_idx?
+Surely the ptw->in_mmu_idx test below is better?
+
+> +
+> +    /* Find out which EL controls EMEC for Stage 1 translations. */
+> +    uint32_t el = regime_el(s1_mmu_idx) < 3 ? 2 : 3;
+> +
+> +    /* XXX(gromero): Do we need to check for SCR_EL3.SCTLR2En when el == 2? */
+> +    if (!(cpu_isar_feature(aa64_mec, env_archcpu(env)) &&
+> +        (env->cp15.sctlr2_el[el] & SCTLR2_EMEC))) {
+> +        /* FEAT_MEC is disabled. */
+> +        return true;
+> +    }
+> +
+> +    if (ss != ARMSS_Realm) {
+> +        /*
+> +         * GPT checks are already done, so if SS is Root here MECIDs are
+> +         * irrelevants for EL3 accesses. If SS is Secure or NonSecure that's not
+> +         * pertinent to FEAT_MEC. Hence, only proceed with MECID checks if SS is
+> +         * Realm.
+> +         */
+> +        return true;
+> +    }
+
+Sort these tests in order of likelyhood and simplicity.
+
+For instance, ss == Realm is least likely and is a trivial test.
+
+In addition, ss == Realm implies ARM_FEATURE_AARCH64, which you have forgotten to test 
+before testing isar feature aa64_mec.
+
+> +
+> +    bool amec = result->amec;
+> +    bool varange_lower = extract64(va, 55, 1) ? false : true;
+
+Use "!" not "?:".
+
+But extracting varange_upper instead would simplify merging E2 with E2&0 regimes, like so:
+
+     varange_upper = regime_has_2_ranges(idx) && extract64(va, 55, 1)
+
+> +    /* MECID in register set given a translation regime. */
+> +    uint32_t mecid;
+> +
+> +    /* ARMMMUIdx after full ptw (all stages). */
+> +    ARMMMUIdx ptw_mmu_idx = ptw->in_mmu_idx;
+> +
+> +    switch (ptw_mmu_idx) {
+> +    case ARMMMUIdx_Stage2:
+> +    case ARMMMUIdx_Stage2_S:
+> +    /* In the middle of a two stage translation, so result->f.phys_addr has no PA yet. */
+> +        return true;
+> +        break;
+> +    default:
+> +        /* Pass */
+> +        break;
+> +    }
+> +
+> +    /*
+> +     * NB: No MECID is used for the ptw itself, i.e., used for the level
+> +     * lookups, so AArch64.S1TTWalkMECID() and AArch64.S2TTWalkMECID() are not
+> +     * relevant for our FEAT_MEC implementation.
+> +     */
+> +    bool is_pa_from_s2 = regime_is_stage2(ptw_mmu_idx);
+
+You just rejected the stage2 mmu indexes.
+
+> +    bool is_mmu_disabled = regime_translation_disabled(env, ptw_mmu_idx, ss);
+> +    if (is_pa_from_s2) { /* PA from Stage 2. */
+> +        /* As per AArch64.S2OutputMECID(). */
+> +        mecid = amec ? env->cp15.vmecid_a_el2 : env->cp15.vmecid_p_el2;
+
+So this isn't reachable.
+This suggests the switch above is wrong?
+
+> +
+> +    } else { /* PA from Stage 1. */
+> +        if (is_mmu_disabled) { /* PA from Stage 1 and MMU is disabled. */
+> +            /* As per AArch64.S1DisabledOutputMECID(). */
+> +            switch (s1_mmu_idx) {
+> +            case ARMMMUIdx_E3:
+> +                /* MECID = 0 (default), so return without any check. */
+> +                return true;
+> +                break;
+
+Unreachable break.
+
+> +            case ARMMMUIdx_E2:
+> +            case ARMMMUIdx_E20_0:
+> +            case ARMMMUIdx_E20_2:
+> +            case ARMMMUIdx_E20_2_PAN:
+> +                mecid = env->cp15.mecid_p0_el2;
+> +                break;
+> +            case ARMMMUIdx_E10_0:
+> +            case ARMMMUIdx_E10_1:
+> +                mecid = env->cp15.vmecid_p_el2;
+> +                break;
+
+There are lots of these you've missed.
+Better to test regime_el instead.
+
+> +            default:
+> +                g_assert_not_reached();
+> +            }
+> +
+> +        } else { /* PA from Stage 1 and MMU is enabled. */
+> +            /* As per AArch64.S1OutputMECID(). */
+> +            switch (s1_mmu_idx) {
+> +            case ARMMMUIdx_E3:
+> +                mecid = env->cp15.mecid_rl_a_el3;
+> +                break;
+> +            case ARMMMUIdx_E2:
+> +                mecid = amec ? env->cp15.mecid_a0_el2 : env->cp15.mecid_p0_el2;
+> +                break;
+> +            case ARMMMUIdx_E20_0:
+> +            case ARMMMUIdx_E20_2:
+> +            case ARMMMUIdx_E20_2_PAN:
+> +                if (varange_lower) {
+> +                    mecid = amec ? env->cp15.mecid_a0_el2 : env->cp15.mecid_p0_el2;
+> +                } else {
+> +                    mecid = amec ? env->cp15.mecid_a1_el2 : env->cp15.mecid_p1_el2;
+> +                }
+> +                break;
+
+E2 and E20_* can be merged with varange_upper, per above.
+
+> +static bool get_phys_addr_mec(CPUARMState *env, S1Translate *ptw,
+> +                              vaddr address,
+> +                              MMUAccessType access_type, MemOp memop,
+> +                              GetPhysAddrResult *result,
+> +                              ARMMMUFaultInfo *fi)
+> +
+> +{
+> +    /*
+> +     * After 'address' is resolved by get_phys_addr_nogpc(), ptw->in_mmu_idx can
+> +     * change depending on the translation stages, hence stash it.
+> +     */
+> +    ARMMMUIdx s1_mmu_idx = ptw->in_mmu_idx;
+> +
+> +    if (get_phys_addr_gpc(env, ptw, address, access_type, memop, result, fi)) {
+> +        return true; /* Translation fault. */
+> +    }
+> +    if (!mecid_check(env, ptw, address, access_type, result, s1_mmu_idx)) {
+> +        return true; /* MECID mismatch. */
+> +    }
+
+MECID mismatch does *not* raise an exception, therefore returning true is incorrect.
+
+Thus the return value from mecid_check is really unused.
 
 
 r~

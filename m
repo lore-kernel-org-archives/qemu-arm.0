@@ -4,107 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1868C10F2840
-	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 15:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAD610F2840
+	for <qemu-arm@archiver.kernel.org>; Fri, 27 Mar 2026 15:34:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w692M-0005gl-K2; Fri, 27 Mar 2026 11:23:50 -0400
+	id 1w69Bu-0007pQ-4S; Fri, 27 Mar 2026 11:33:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1w6924-0005de-CT
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 11:23:33 -0400
-Received: from mail-dy1-x1344.google.com ([2607:f8b0:4864:20::1344])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <chao.liu.zevorn@gmail.com>)
- id 1w6920-0006Ji-FW
- for qemu-arm@nongnu.org; Fri, 27 Mar 2026 11:23:31 -0400
-Received: by mail-dy1-x1344.google.com with SMTP id
- 5a478bee46e88-2bd9a485bd6so4218803eec.1
- for <qemu-arm@nongnu.org>; Fri, 27 Mar 2026 08:23:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1774625006; x=1775229806; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=PzJcmu/U65FU4wQTMalP+dP1gUaMd8JFyXaRRb0LPKo=;
- b=OofQAQRWVprCDkZ98kqt4LWTVLuqdlJSbc8BahfMER4WSlmzY/U+eN9fK9eVt1VUcB
- RvDCs1DPfpG1bcOGmC7d+CScnAU3nZfZM5ZwC1FfQTR/Yti2S1pzOo7TfsTYYOKVswSw
- /SBNR4Y309fdHsnpL5SzgneoQn0e3MePhIePy2byzKBJ0zC9EvHcvYpWNdeLJzCPPVa7
- YcIu6aXIIhtM3cO+Od7RwRTsGt6Lt+sf3NNIJPBp9UAEpifKR7dqNSfhFxsest8rfvd3
- OPLhjfZVyfB3sp/1eid9YPNKxwE7D30z0OhhPqmd9JgYIiewHCCxXBQaieNcct542Eqh
- JiFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774625006; x=1775229806;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PzJcmu/U65FU4wQTMalP+dP1gUaMd8JFyXaRRb0LPKo=;
- b=EmZ7G6tgbAy92M9rE2Qbzu4SWJHq+fCFTPGS4pZlQvnjjialF5D215IlCcvWIX+Z5U
- uXL7V61mQGgcRIxFYYbjWhJgaBSB+9bfB9veEpzXXm2teEABQ2zm2nvVLITPPxBBfBow
- 05T3aD2FgybTxSWy2KrlZ1cqS1CLXz6csySFI+IAvSiazKwfbhDSdkX9ZNv2tuEXEW2L
- JdiNu//KxyRmGYY31OfSVAbZF6EtV4gt42qIAv71ryZ74GSDII3ux/KmShlvsYJbCsBz
- Eap6VA3unSfxyngvKY7F0KZ96ScDS1YwY0HnTx6zqLFnEkDY1zsD+zZUEhVV439f5S+N
- rMew==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXQF3zvaglJNxH/V5aq1FMj5OGDy+IQvMx+X6AoBVb+y1a2wqv825LxwCPM2dlw11pI46WMg8/h1w==@nongnu.org
-X-Gm-Message-State: AOJu0YycL/rLmAj3PVVAhLqVyJW+8Zaey4zBvlwf157CrBAbhIBDtH+a
- QpFd6VocJjDVL3ojZkUgyOv+bMfysCzgWUBPm/VB35xmKuzrz+JmqHa5
-X-Gm-Gg: ATEYQzxdgBSRPEV59d6LvjWPYYnn7NAl0KkT6kglQmR3oAhMyGpUB0TuS88l7V3g+9A
- AofIM5p7bFg2gIrEhh95fTPGvgPEZ8wBywx1hSJm2Zq3O0PgYIhNEGyf0UPr5XAscIS6lA+lCt0
- o/PMgxpIXkgRlB6wgK41EWP0vK0po0Qz4WRIU3BIpzU2CY5XQxmE40RAvse9LyK2dDbTPUjjLdn
- LA7L0Dynabk8izJz5brjZLEcmnRuGvdcQD2MbgVbvSkK5cT+/OJxjqBRCKKP7IM0bd2EuzJg0BR
- WA8OSDE/ckpn8yrOQPt0RShciTHzTTpx9mtVcbHONEr10ZrmsMgLE155iA3GiKHOhx80szUkvu7
- RFEurAK9+u9Uv5/bVuQzkGeXTnhVgYMeTv/Y5ydIrXrHX3fkej86u6ujVY2Fms1i33pJurHw9f8
- Bnv9Afa/A8tgW2EkjujPf0m9nWz/J0jwIV2L/qp8Enh5X+W34yF8cx2NUbGAcRfZPzM8OZcdERT
- QltDBanuhc7NPBtjyxt7dJoYK84kKw=
-X-Received: by 2002:a05:7300:3254:b0:2c0:d92c:2c68 with SMTP id
- 5a478bee46e88-2c185fad9e0mr1793181eec.31.1774625006061; 
- Fri, 27 Mar 2026 08:23:26 -0700 (PDT)
-Received: from ZEVORN-PC.localdomain ([38.95.120.198])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c16ec4934asm5319735eec.8.2026.03.27.08.23.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Mar 2026 08:23:25 -0700 (PDT)
-Date: Fri, 27 Mar 2026 23:22:49 +0800
-From: Chao Liu <chao.liu.zevorn@gmail.com>
-To: Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- qemu-ppc@nongnu.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin <npiggin@gmail.com>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5nw6k=?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Chinmay Rath <rathc@linux.ibm.com>, 
- Glenn Miles <milesg@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: Re: [PATCH v2 07/15] target/riscv: Use glib2 instead of
- strcasecmp/strncasecmp
-Message-ID: <acagsTxLwZYmZaf-@ZEVORN-PC.localdomain>
-References: <20260327134401.270186-1-kkostiuk@redhat.com>
- <20260327134401.270186-8-kkostiuk@redhat.com>
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1w69Bs-0007oh-Kp; Fri, 27 Mar 2026 11:33:40 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1w69Bq-0008R2-Nr; Fri, 27 Mar 2026 11:33:40 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 62RF0ISr3850414; Fri, 27 Mar 2026 15:33:33 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=/YZ0Ly
+ 4c4KrV1x9rNR9OAW3uMj5iYre+VmmbyihamrA=; b=PcJ2fkq8ES8Ix/Ra+fj7nI
+ Dd8HUdl2jnZCZGNcB9IYWv5wRihUSNrFUGSHCBljy1XMJPGn47okGQnkMrb6uMaY
+ QPopf6y3N3BXuGYfTPFy0lkdmBQ6jmJ0G7JskOMMrxlYAPrvKTpRTlTZbq7dwA6Q
+ jgzdIZYibOIiaIa/+dsELjcZIAORcwXOlhlKK9lBY5C8Gbrjx1CTE7/mUmgBU1BZ
+ 5dUr/30dWyzWrHC22cBK45JnzC98TrdP1KAwFYcEJ56E+AALmqS9NoFHqfdnkhfC
+ Xc1F/7/5HvZOUmNu+RRz1qKzPdJV70s/kZjqqwqv09P8t/trdFQpBi7CI5pPDPXw
+ ==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4d1kxqtx9f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 27 Mar 2026 15:33:32 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 62REs4qB031583;
+ Fri, 27 Mar 2026 15:33:31 GMT
+Received: from smtprelay07.wdc07v.mail.ibm.com ([172.16.1.74])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4d25nt860q-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 27 Mar 2026 15:33:31 +0000
+Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
+ [10.241.53.103])
+ by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 62RFXUnt28770966
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 27 Mar 2026 15:33:30 GMT
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 2B09A5805E;
+ Fri, 27 Mar 2026 15:33:30 +0000 (GMT)
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 689FE58052;
+ Fri, 27 Mar 2026 15:33:29 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 27 Mar 2026 15:33:29 +0000 (GMT)
+Message-ID: <59933dce-f3b9-4eee-b694-15bb894c3f26@linux.ibm.com>
+Date: Fri, 27 Mar 2026 11:33:28 -0400
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260327134401.270186-8-kkostiuk@redhat.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1344;
- envelope-from=chao.liu.zevorn@gmail.com; helo=mail-dy1-x1344.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 2/3] hw/acpi/tpm: parameterize PPI base address in
+ tpm_build_ppi_acpi
+To: Mohammadfaiz Bawa <mbawa@redhat.com>, qemu-devel@nongnu.org
+Cc: stefanb@linux.vnet.ibm.com, pierrick.bouvier@linaro.org,
+ "Michael S . Tsirkin" <mst@redhat.com>, imammedo@redhat.com,
+ anisinha@redhat.com, peter.maydell@linaro.org,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, mohamed@unpredictable.fr
+References: <20260327-tpm-tis-sysbus-ppi-v2-0-d8ec84d25dbc@redhat.com>
+ <20260327-tpm-tis-sysbus-ppi-v2-2-d8ec84d25dbc@redhat.com>
+Content-Language: en-US
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20260327-tpm-tis-sysbus-ppi-v2-2-d8ec84d25dbc@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-ORIG-GUID: QsCJO1kGmO2tfiGhPqaOM_JQUwUq2-vh
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI3MDEwNSBTYWx0ZWRfX4Xi6DJdYbM7g
+ bi/fbt96fxRkOZawgoec9RgV4jmXBE+cxv3s/7Mtc6dlMRPpM1/VhfkW99q/MhJStfitXayCjsb
+ QEegeeooOe5jvNkgVH0KeR+k0bBMaK7YWzMux1erR68qOAgRjpEVBjbTMyB+3uFixM2HKHqd6Qx
+ hXx/4XUQISFPq9JLdtCnBiisJax66Tp7mLyS9CqA90MkO/4Kjmuu7HjyX1WUXWob2NmYDAjXK/V
+ qtIhky9W5Iyz/5QBcAwJQoPQTj2VsrIyQhLvlO46hv3DoLc4UKXpWp+WNHQVe+mUwaiCyoowPXE
+ GJHgz7owMj3YHXTKWEFjqni3cboIXR72fk3CLCFCdjxFrz6ZE7ghV2cCOPVilxX1RXxq+/tTeoQ
+ xDgSmzJ+slILU+SltlceCBKtj/ae/0L6vxkXwoLfw7AFHYCBpVXs2YD3luRqTuh9GBFfmsatzdt
+ EFBToI3P+PZMNl0c9iQ==
+X-Authority-Analysis: v=2.4 cv=bLEb4f+Z c=1 sm=1 tr=0 ts=69c6a34c cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8
+ a=20KFwNOVAAAA:8 a=ODhlqupQsFDcI_HUKJIA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: R_sjn1WpLxJ8U7pn7RAWlhnIzlB2_5tD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-26_04,2026-03-26_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 adultscore=0 clxscore=1015 phishscore=0 impostorscore=0
+ malwarescore=0 lowpriorityscore=0 suspectscore=0 bulkscore=0
+ priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2603050001
+ definitions=main-2603270105
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,45 +127,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Mar 27, 2026 at 03:43:53PM +0200, Kostiantyn Kostiuk wrote:
-> This is a change in semantics. g_ascii_strcasecmp() doesn't honour
-> locale but strcasecmp() does. But this is OK for at least one reason:
->  (1) QEMU always runs with the C locale so there's not an actual
->      behaviour change here
-Reviewed-by: Chao Liu <chao.liu.zevorn@gmail.com>
 
-Thanks,
-Chao
+
+On 3/27/26 7:48 AM, Mohammadfaiz Bawa wrote:
+> Add a ppi_base parameter to tpm_build_ppi_acpi() instead of
+> hardcoding TPM_PPI_ADDR_BASE. This prepares for ARM64 support where
+> PPI memory is dynamically allocated by the platform bus and the
+> address is not known at compile time.
 > 
-> Signed-off-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
+> Update the x86 ISA TIS caller to pass TPM_PPI_ADDR_BASE explicitly.
+> No behavioral change.
+> 
+> Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+
+You need to adapt this call as well.
+
+../hw/i386/acpi-build.c: In function ‘build_dsdt’:
+../hw/i386/acpi-build.c:1222:9: error: too few arguments to function 
+‘tpm_build_ppi_acpi’; expected 3, have 2
+  1222 |         tpm_build_ppi_acpi(tpm, dev);
+       |         ^~~~~~~~~~~~~~~~~~
+In file included from ../hw/i386/acpi-build.c:45:
+/home/stefanb/dev/qemu-tpm/include/hw/acpi/tpm.h:254:6: note: declared here
+   254 | void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev, hwaddr ppi_base);
+       |      ^~~~~~~~~~~~~~~~~~
+
+
+
 > ---
->  target/riscv/monitor.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/acpi/tpm.c         | 8 ++++----
+>   hw/tpm/tpm_tis_isa.c  | 2 +-
+>   include/hw/acpi/tpm.h | 3 ++-
+>   3 files changed, 7 insertions(+), 6 deletions(-)
 > 
-> diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
-> index a9d3111444..bca04a7580 100644
-> --- a/target/riscv/monitor.c
-> +++ b/target/riscv/monitor.c
-> @@ -303,7 +303,7 @@ static bool reg_is_vreg(const char *name)
->      }
->  
->      for (int i = 0; i < 32; i++) {
-> -        if (strcasecmp(name, riscv_rvv_regnames[i]) == 0) {
-> +        if (g_ascii_strcasecmp(name, riscv_rvv_regnames[i]) == 0) {
->              return true;
->          }
->      }
-> @@ -358,7 +358,7 @@ int target_get_monitor_def(CPUState *cs, const char *name, uint64_t *pval)
->              continue;
->          }
->  
-> -        if (strcasecmp(csr_ops[csrno].name, name) != 0) {
-> +        if (g_ascii_strcasecmp(csr_ops[csrno].name, name) != 0) {
->              continue;
->          }
->  
-> -- 
-> 2.52.0
+> diff --git a/hw/acpi/tpm.c b/hw/acpi/tpm.c
+> index cdc022753659af102e56ea4148423b94de1531f6..c4ff2f8cb836c16b00f70865bf55781d5c402aa2 100644
+> --- a/hw/acpi/tpm.c
+> +++ b/hw/acpi/tpm.c
+> @@ -20,7 +20,7 @@
+>   #include "qapi/error.h"
+>   #include "hw/acpi/tpm.h"
+>   
+> -void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev)
+> +void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev, hwaddr ppi_base)
+>   {
+>       Aml *method, *field, *ifctx, *ifctx2, *ifctx3, *func_mask,
+>           *not_implemented, *pak, *tpm2, *tpm3, *pprm, *pprq, *zero, *one;
+> @@ -40,7 +40,7 @@ void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev)
+>        */
+>       aml_append(dev,
+>                  aml_operation_region("TPP2", AML_SYSTEM_MEMORY,
+> -                                    aml_int(TPM_PPI_ADDR_BASE + 0x100),
+> +                                    aml_int(ppi_base + 0x100),
+>                                       0x5A));
+>       field = aml_field("TPP2", AML_ANY_ACC, AML_NOLOCK, AML_PRESERVE);
+>       aml_append(field, aml_named_field("PPIN", 8));
+> @@ -56,7 +56,7 @@ void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev)
+>       aml_append(dev,
+>                  aml_operation_region(
+>                      "TPP3", AML_SYSTEM_MEMORY,
+> -                   aml_int(TPM_PPI_ADDR_BASE +
+> +                   aml_int(ppi_base +
+>                              0x15a /* movv, docs/specs/tpm.rst */),
+>                              0x1));
+>       field = aml_field("TPP3", AML_BYTE_ACC, AML_NOLOCK, AML_PRESERVE);
+> @@ -78,7 +78,7 @@ void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev)
+>   
+>           aml_append(method,
+>               aml_operation_region("TPP1", AML_SYSTEM_MEMORY,
+> -                aml_add(aml_int(TPM_PPI_ADDR_BASE), op, NULL), 0x1));
+> +                aml_add(aml_int(ppi_base), op, NULL), 0x1));
+>           field = aml_field("TPP1", AML_BYTE_ACC, AML_NOLOCK, AML_PRESERVE);
+>           aml_append(field, aml_named_field("TPPF", 8));
+>           aml_append(method, field);
+> diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
+> index 61e95434f5b824fa99f0a2aff7f151e87ea631ed..e30bef49558673f4c857c02dae059ce3361a1bc7 100644
+> --- a/hw/tpm/tpm_tis_isa.c
+> +++ b/hw/tpm/tpm_tis_isa.c
+> @@ -162,7 +162,7 @@ static void build_tpm_tis_isa_aml(AcpiDevAmlIf *adev, Aml *scope)
+>        */
+>       /* aml_append(crs, aml_irq_no_flags(isadev->state.irq_num)); */
+>       aml_append(dev, aml_name_decl("_CRS", crs));
+> -    tpm_build_ppi_acpi(ti, dev);
+> +    tpm_build_ppi_acpi(ti, dev, TPM_PPI_ADDR_BASE);
+>       aml_append(scope, dev);
+>   }
+>   
+> diff --git a/include/hw/acpi/tpm.h b/include/hw/acpi/tpm.h
+> index d2bf6637c5424b92ad99f5baa938fd6cea3520bf..2ab186a7455593df205a7ffecbea2abdfdbd11d5 100644
+> --- a/include/hw/acpi/tpm.h
+> +++ b/include/hw/acpi/tpm.h
+> @@ -20,6 +20,7 @@
+>   #include "hw/core/registerfields.h"
+>   #include "hw/acpi/aml-build.h"
+>   #include "system/tpm.h"
+> +#include "exec/hwaddr.h"
+>   
+>   #ifdef CONFIG_TPM
+>   
+> @@ -250,7 +251,7 @@ REG32(CRB_DATA_BUFFER, 0x80)
+>    */
+>   #define TPM_I2C_INT_ENABLE_MASK   0x0
+>   
+> -void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev);
+> +void tpm_build_ppi_acpi(TPMIf *tpm, Aml *dev, hwaddr ppi_base);
+>   
+>   #endif /* CONFIG_TPM */
+>   
 > 
-> 
+
 

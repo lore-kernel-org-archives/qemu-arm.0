@@ -4,100 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527EC10F3DCE
-	for <qemu-arm@archiver.kernel.org>; Sat, 28 Mar 2026 13:24:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B9C4F3D60A
+	for <qemu-arm@archiver.kernel.org>; Sun, 29 Mar 2026 14:37:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w6Teg-0001Hy-27; Sat, 28 Mar 2026 09:24:46 -0400
+	id 1w6rGa-000213-Lz; Sun, 29 Mar 2026 10:37:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w6Tee-0001HJ-Gu
- for qemu-arm@nongnu.org; Sat, 28 Mar 2026 09:24:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1w6Tec-0005wa-Tw
- for qemu-arm@nongnu.org; Sat, 28 Mar 2026 09:24:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774704281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fflB0LoqGT5rH5FdMcYQPoW4h2hRiuEbN2Gfb5ipuvA=;
- b=FV1SqLGqtvU8Gag5+JvDHO9Dhl6pVyuafWVCBx4YBkGjS6qYjPOfNZwj7Q8u55etg5MnAV
- 8H6wyC5on5lpkaeZ8dHgrwgrAt35QqcRDPaQcVmjerQYWzUZK21OPRQ4RxJBqoh7T3kVN2
- b4XuLSnpA4OyHkTMI5lxTxc3IJJZl84=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-86-SkUrrxa5PVGaIrZQ8kHgCg-1; Sat, 28 Mar 2026 09:24:39 -0400
-X-MC-Unique: SkUrrxa5PVGaIrZQ8kHgCg-1
-X-Mimecast-MFC-AGG-ID: SkUrrxa5PVGaIrZQ8kHgCg_1774704273
-Received: by mail-ot1-f70.google.com with SMTP id
- 46e09a7af769-7d4c7afa9e0so8334189a34.0
- for <qemu-arm@nongnu.org>; Sat, 28 Mar 2026 06:24:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774704272; x=1775309072;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=fflB0LoqGT5rH5FdMcYQPoW4h2hRiuEbN2Gfb5ipuvA=;
- b=AMzHYnbwMByIzNCra4+2rD74d2pyq+MszL21ISQL1d/2zEahU76Puo6t88rgZacaJG
- RUqwY7sjocM+za6s/JZKt4J9SUgthr19NDeKDqHRQah+CzNptgCo/s5X6auEdrwHKGZh
- yHsXM8eS7cyyclbEq7UV1unITqXnOdod3y7ncPES5ellsS8h+//mrcNUyY43iPg9KIA3
- Px+ufyE3LAdFvUAjVru5ceeiR9iBEtlfkfg6uIG6ZyY0UI32sUfdKtY6jHu/BGrCETiK
- bSGp3hLPAjm6Fbnp0/jnBA8mXjBpV7a5j3msw4h/1ah/tcL36swPNDz/xo4QNXBZj7vQ
- MwUw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUUi2FWeqwfpYcjp9UcArZhh7Jpk0VPjKHn0uaWn3k7pZwxzPExhmVoNJa1BljN2cFsFARHscpXpA==@nongnu.org
-X-Gm-Message-State: AOJu0YwZ4sAm1WOtQDbo8IdwAt8ugsq/QYhieFN+gPBs4EfQo9xxYjio
- v476Z6iSiZQOTVm7i4ZKEEPC/T7DaHxpAhr6KJWG8gVos+7j/2uADH5jevMNdxH5v8SRag3z3aY
- TnXldA6hfArm+o2oeqSJAX8AcUoPSp0apUPSUSYkDgvPXd0zMd/HBwShnBpzcVt6ECTpyun8cYT
- PdxFcoiqAzPGtIV1Xf/nWOoMGDRCwd
-X-Gm-Gg: ATEYQzxe03fIoZeAV9r7k1VtSPOm0VPEtE7dw2N7l2VjoewJXTsDLF4BgRaBm9drQ+X
- x8Af2sKAfNau9htXOgl/IkCdyyGcWQndWkoc7dXbE872oE72NXSxXWDY1OQQLnR+P97+DArqVti
- Ay63GuN+dG/n77B6kO8PEACcPzZ7F5rGt+iaCIukTbD/EgSTtjlhftrguy53YVeMYmnwJB3O9Jc
- PaV2nqjn8bf9tX3mr1pRKBwA9Qn36djKSHd+rc=
-X-Received: by 2002:a05:6820:99c:b0:67b:c9fa:c310 with SMTP id
- 006d021491bc7-67e187726b3mr3236780eaf.68.1774704272630; 
- Sat, 28 Mar 2026 06:24:32 -0700 (PDT)
-X-Received: by 2002:a05:6820:99c:b0:67b:c9fa:c310 with SMTP id
- 006d021491bc7-67e187726b3mr3236762eaf.68.1774704272205; Sat, 28 Mar 2026
- 06:24:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1w6rGU-0001tP-8f; Sun, 29 Mar 2026 10:37:22 -0400
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1w6rGO-0006xu-4B; Sun, 29 Mar 2026 10:37:21 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBHTaENOclpfukyAA--.17438S2;
+ Sun, 29 Mar 2026 22:37:01 +0800 (CST)
+Received: from [192.168.31.176] (unknown [222.244.183.215])
+ by mail (Coremail) with SMTP id AQAAf8Dw0pILOclpE0YHAA--.16065S2;
+ Sun, 29 Mar 2026 22:36:59 +0800 (CST)
+Message-ID: <63e1cb8a-4653-483e-a87d-ace0c241b185@phytium.com.cn>
+Date: Sun, 29 Mar 2026 22:36:58 +0800
 MIME-Version: 1.0
-References: <20260327173209.148180-1-mbawa@redhat.com>
- <20260327173209.148180-4-mbawa@redhat.com>
- <6cb600f2-5f0a-4b77-a972-967deee93698@linaro.org>
-In-Reply-To: <6cb600f2-5f0a-4b77-a972-967deee93698@linaro.org>
-From: Mohammadfaiz Bawa <mbawa@redhat.com>
-Date: Sat, 28 Mar 2026 18:54:16 +0530
-X-Gm-Features: AQROBzBmSFlATYcnLAcRiQFiM4WP6_UUedUQsRD0g6DmrsirwT9xV1se8F0Ej2c
-Message-ID: <CAJg9KkybpR9X3xELr6mM5j1VMAC_61wPfq=dUS7Ug_xSqvd7uQ@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] hw/tpm: add PPI support to tpm-tis-device for
- ARM64 virt
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, stefanb@linux.vnet.ibm.com, 
- pierrick.bouvier@linaro.org, "Michael S . Tsirkin" <mst@redhat.com>,
- imammedo@redhat.com, 
- anisinha@redhat.com, peter.maydell@linaro.org, shannon.zhaosl@gmail.com, 
- qemu-arm@nongnu.org, mohamed@unpredictable.fr, 
- Stefan Berger <stefanb@linux.ibm.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CTZj0fJs3aSbF1LjJWElvEjU3Qi_RD4pIW7e8s1llgs_1774704273
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mbawa@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v3 1/4] tests/qtest: Add attrs support to qtest server
+ memory commands
+To: Chao Liu <chao.liu.zevorn@gmail.com>
+Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20260323133210.1523868-1-tangtao1634@phytium.com.cn>
+ <20260323133210.1523868-2-tangtao1634@phytium.com.cn>
+ <acH32HUGWnbF2_PY@ZEVORN-PC.localdomain>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <acH32HUGWnbF2_PY@ZEVORN-PC.localdomain>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CM-TRANSID: AQAAf8Dw0pILOclpE0YHAA--.16065S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAJBWnIKvkb-QAAsZ
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3GF1DZr1xAF4DKrykuFW3ZFb_yoW7Kry3pr
+ 47AF15XFs8tF18ua4xKr13Wa43K39agr1UGr9xtF92yrn0kFn3Wr1fuw15Cr1DGry7t3ZY
+ 9w47J3y3C3Z8Ga7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H3=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,73 +76,282 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Mar 28, 2026 at 5:17=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Hi,
->
-> On 27/3/26 18:32, Mohammadfaiz Bawa wrote:
-> > Add PPI memory region and ACPI _STA, _DSM to tpm-tis-sysbus so
-> > Windows 11 ARM64 guests no longer log Event ID 15 errors from
-> > tpm.sys on every boot.
-> >
-> > Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
-> > Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
-> > ---
-> >   hw/arm/virt-acpi-build.c |  9 ++++++++-
-> >   hw/tpm/tpm_tis_sysbus.c  | 11 +++++++++++
-> >   2 files changed, 19 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 591cfc993c..5b5ac551f8 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -240,7 +240,8 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachi=
-neState *vms)
-> >       Aml *dev =3D aml_device("TPM0");
-> >       aml_append(dev, aml_name_decl("_HID", aml_string("MSFT0101")));
-> >       aml_append(dev, aml_name_decl("_STR", aml_string("TPM 2.0 Device"=
-)));
-> > -    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
-> > +    aml_append(dev, aml_name_decl("_UID", aml_int(1)));
-> > +    aml_append(dev, aml_name_decl("_STA", aml_int(0xF)));
-> >
-> >       Aml *crs =3D aml_resource_template();
-> >       aml_append(crs,
-> > @@ -248,6 +249,12 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMach=
-ineState *vms)
-> >                                     (uint32_t)memory_region_size(sbdev_=
-mr),
-> >                                     AML_READ_WRITE));
-> >       aml_append(dev, aml_name_decl("_CRS", crs));
-> > +
-> > +    hwaddr ppi_base =3D platform_bus_get_mmio_addr(pbus, sbdev, 1);
-> > +    if (ppi_base !=3D -1) {
-> > +        ppi_base +=3D pbus_base;
-> > +        tpm_build_ppi_acpi(TPM_IF(sbdev), dev, ppi_base);
->
-> Matter of style, I'd rather:
->
->             tpm_build_ppi_acpi(TPM_IF(sbdev), dev, pbus_base + ppi_base);
->
-> > +    }
-> >       aml_append(scope, dev);
-> >   }
-> >   #endif
->
-> Hmm I see in tests/qtest/bios-tables-test.c that test_acpi_tcg_tpm()
-> only tests X86 (Q35). Could you see how to add coverage for Aarch64
-> virt machine? (It could be a patch on top, no need to repost a v4).
->
-> Otherwise,
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
+Hi Chao,
 
-Noted, and I'll look into adding tests aarch64 virt coverage as a follow-up=
-.
+On 3/24/2026 10:40 AM, Chao Liu wrote:
+> On Mon, Mar 23, 2026 at 09:32:07PM +0800, Tao Tang wrote:
+>> Extend qtest memory access commands to accept an optional attrs argument.
+>>
+>> Supported attrs:
+>> - secure (x86/Arm)
+>> - space=non-secure|secure|root|realm (Arm-only)
+>>
+>> For memory commands, parse attrs, select the corresponding AddressSpace
+>> with cpu_asidx_from_attrs(), and issue accesses with the matching
+>> MemTxAttrs.
+>>
+>> Cover scalar and bulk memory commands, including:
+>> - read{b,w,l,q} / write{b,w,l,q}
+>> - read / write
+>> - b64read / b64write
+>> - memset
+>>
+>> Also reject invalid attrs and excessive arguments, and document the new
+>> command forms in qtest.c, and use qtest_send_memtx_error() to return
+>> ERR for memory access failures.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   system/qtest.c | 517 +++++++++++++++++++++++++++++++++++++++++++------
+>>   1 file changed, 463 insertions(+), 54 deletions(-)
+>>
+>> diff --git a/system/qtest.c b/system/qtest.c
+>> index cf90cd53ad..30c2a95020 100644
+>> --- a/system/qtest.c
+>> +++ b/system/qtest.c
+>> @@ -22,6 +22,7 @@
+>>   #include "hw/core/qdev.h"
+>>   #include "hw/core/irq.h"
+>>   #include "hw/core/cpu.h"
+>> +#include "hw/arm/arm-security.h"
+>>   #include "qemu/accel.h"
+>>   #include "system/cpu-timers.h"
+>>   #include "qemu/config-file.h"
+>> @@ -113,6 +114,14 @@ static void *qtest_server_send_opaque;
+>>    * PIO and memory access:
+>>    * """"""""""""""""""""""
+>>    *
+>> + * Memory access commands allow specifying memory transaction attributes,
+>> + * which is useful for testing devices that behave differently based on
+>> + * security state (e.g., Arm TrustZone/CCA or System Management Mode in x86).
+>> + *
+>> + * Only the following attributes are supported by the qtest server:
+>> + * ``secure`` sets MemTxAttrs.secure=1 (x86/Arm).
+>> + * ``space=...`` is Arm-specific and accepts: non-secure, secure, root, realm.
+>> + *
+>>    * .. code-block:: none
+>>    *
+>>    *  > outb ADDR VALUE
+>> @@ -150,13 +159,42 @@ static void *qtest_server_send_opaque;
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > writeb ADDR VALUE secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writeb ADDR VALUE space=realm
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > writew ADDR VALUE
+>>    *  < OK
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > writew ADDR VALUE secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writew ADDR VALUE space=realm
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > writel ADDR VALUE
+>>    *  < OK
+>> + * .. code-block:: none
+>> + *
+>> + *  > writel ADDR VALUE secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writel ADDR VALUE space=root
+>> + *  < OK
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> @@ -165,49 +203,147 @@ static void *qtest_server_send_opaque;
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > writeq ADDR VALUE secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > writeq ADDR VALUE space=non-secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > readb ADDR
+>>    *  < OK VALUE
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > readb ADDR secure
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > readb ADDR space=root
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > readw ADDR
+>>    *  < OK VALUE
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > readw ADDR secure
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > readw ADDR space=root
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > readl ADDR
+>>    *  < OK VALUE
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > readl ADDR secure
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > readl ADDR space=root
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > readq ADDR
+>>    *  < OK VALUE
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > readq ADDR secure
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > readq ADDR space=root
+>> + *  < OK VALUE
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > read ADDR SIZE
+>>    *  < OK DATA
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > read ADDR SIZE secure
+>> + *  < OK DATA
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > read ADDR SIZE space=root
+>> + *  < OK DATA
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > write ADDR SIZE DATA
+>>    *  < OK
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > write ADDR SIZE DATA secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > write ADDR SIZE DATA space=root
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > b64read ADDR SIZE
+>>    *  < OK B64_DATA
+>>    *
+>>    * .. code-block:: none
+>>    *
+>> + *  > b64read ADDR SIZE secure
+>> + *  < OK B64_DATA
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > b64read ADDR SIZE space=root
+>> + *  < OK B64_DATA
+>> + *
+>> + * .. code-block:: none
+>> + *
+>>    *  > b64write ADDR SIZE B64_DATA
+>>    *  < OK
+>> + * .. code-block:: none
+> There are a few places where the blank line before
+> ``.. code-block:: none`` is missing (around writel and
+> b64write sections). RST requires a blank ``*`` line
+> before every directive, otherwise the doc build will
+> break or silently mis-render.
 
-Thanks,
-Faiz
+
+Thanks for the review.
+
+
+I'll add the missing line in V4.
+
+>
+>> + *
+>> + *  > b64write ADDR SIZE B64_DATA secure
+>> + *  < OK
+>> + * .. code-block:: none
+>> + *
+>> + *  > b64write ADDR SIZE B64_DATA space=root
+>> + *  < OK
+>>    *
+>>    * .. code-block:: none
+>>    *
+>>    *  > memset ADDR SIZE VALUE
+>>    *  < OK
+>>    *
+>> + * .. code-block:: none
+>> + *
+>> + *  > memset ADDR SIZE VALUE secure
+>> + *  < OK
+>> + *
+>> + * .. code-block:: none
+>> + *
+>> + *  > memset ADDR SIZE VALUE space=root
+>> + *  < OK
+> The documentation is very thorough but also very
+> repetitive -- every command x every attrs variant gets
+> its own code-block. It might be worth consolidating
+> this into a single description of the attrs syntax
+> followed by a note that it applies to all memory
+> commands. That would cut ~80 lines while keeping the
+> same information.
+
+
+I agree the attrs examples can be trimmed a bit. So I would prefer a 
+lighter cleanup here rather than collapsing everything into a single 
+generic block after an additional comment like "The optional attrs 
+argument applies to all memory access commands listed below."
+
+
+> Thanks,
+> Chao
+
+Best regards,
+
+Tao
 
 

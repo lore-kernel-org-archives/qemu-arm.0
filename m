@@ -4,121 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4B7FF492D
-	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 02:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D24BFF4934
+	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 03:47:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w72Se-0007cA-Ka; Sun, 29 Mar 2026 22:34:40 -0400
+	id 1w73ad-0004w7-90; Sun, 29 Mar 2026 23:46:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w72Sd-0007aK-Ac
- for qemu-arm@nongnu.org; Sun, 29 Mar 2026 22:34:39 -0400
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1w73ab-0004vm-EC
+ for qemu-arm@nongnu.org; Sun, 29 Mar 2026 23:46:57 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w72Sb-0002Xf-IK
- for qemu-arm@nongnu.org; Sun, 29 Mar 2026 22:34:39 -0400
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-3591cc98871so1664837a91.3
- for <qemu-arm@nongnu.org>; Sun, 29 Mar 2026 19:34:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1w73aZ-0005as-S1
+ for qemu-arm@nongnu.org; Sun, 29 Mar 2026 23:46:57 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-82a62714fe6so1566738b3a.0
+ for <qemu-arm@nongnu.org>; Sun, 29 Mar 2026 20:46:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774838075; x=1775442875; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=pytuaqpZSS2QZ94hZSYd2nnaT+jk/UNtp4eSjS8Lv6U=;
- b=sP21zbR4wT4NcMrMq5eqNf0KXuiNlJuyn2aY46jZ/gIIi/vrZRxPV0ybRN8AXXAKmh
- 63Udwff8Sp0kW57pPrBKhBRCFr9NTQMG118hqXDhWBza5x17+Z10nrwG23OvU6sxQlQb
- 6Y+lkKgnBh/D2+QskJ2pYh9Iidck5t3CpLw3g++HGYy0EvoZn4dJ4UYsHCq8WxKsI6Yk
- m2W5ujO0pjs8dDK986Lb88Pqr2HdM/cGo2Ery80Hq108u6iReQXbIPUC6ccRWWmjhhPa
- IyhnLcEqR48SevuzIM7NujACTbd9F9dWn+MA888MW94hJ7sr0gcnqvK0lxhzUBB/DrZu
- ISog==
+ d=linaro.org; s=google; t=1774842414; x=1775447214; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YiQamVYxlcFGZQfv9meeF2jjjsQSs82NLF9lQ4MzMpk=;
+ b=yzkQ2T0Qfoonb3inZRCLilmo4dLlMGvu29BcwmpemIRNQvkTu+3iC7jqCZwLjOACgH
+ 7lwT/GeeKppLdTYXpN2gdNMFcsA9njJFukw0yBW45x8fzJRTAVhA3jdCbI+rRljnEUv9
+ zzrFUId1sKmctgmqUrQq81aporbvPY0liO0/txvL+fao0rbeN0ZXHG9UH9twHHOc3WMb
+ GCGssR6fAgClY1KgBTslxizt4z4Y2G5KnMTXbifd3lPru0nBsBvT/GHP6/uoIiD2Sjgh
+ 3cF2hl27en8X/zeDNKAkFFVdr6pWKI4at0dKon2NlDR3nUWE7p6nldmx8sxdSBaQkTwc
+ L3sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774838075; x=1775442875;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=pytuaqpZSS2QZ94hZSYd2nnaT+jk/UNtp4eSjS8Lv6U=;
- b=bfeiD9rFFFEtYXfXpksFdiRFDqFhQt46rwoGEo0+GgH+gn/lDPwE/Co7X5QKDGyKAh
- AvOvR9freK99fhzWzyGJG9t5p9Jm7BOprxgDE/xK49IlC10t/a/vcFTj+jzW7GBK9ZxZ
- Yrn1JM0ZDTyP20tEoRbMX7c9MnpQWHkLRJqFTKj88cexzusJ7BcLPB4mRMJzBNZb6d6l
- yZCc8mu+2FVy1IGuq3Ji9+NxlOxSEC/EOi2Cm55C1pmqCyOe0TtN+NJyEO+ogBXEnhU/
- JD15IwDRgc8n4wGvQ5ItgffIqBpCNw4Dg34UvqfjsC3BGlTLS4Mk9bwd47CX/r1/0iC9
- zgsQ==
-X-Gm-Message-State: AOJu0YwJjak4jOl7+vub4WLRnwGZvMsDHVjm3qxbPZxJJLks+d21e0Gj
- GLBerjjXsoPGlSqqwOrAaMydEfb8G6YFVCMTUxPSxb7GAsRU67bCxBDcXPsJcae+sIA=
-X-Gm-Gg: ATEYQzyUcWxAMJhEzR99loSuH4tsW44V+E0F+1qQjubmnvT+54h1tgU6vvEn4TcmLtO
- 4osWAidbcq4hpMGKzU25j8AAoM9dKI9fUizfS3nbJfXXOblpiJekJCxMbiAsbGl39lOXYcfV+LM
- ezKEuyvvdinrjj8uwA4eq4IGZKdvOP0jj+qEkU/a3qUPbzv4dEZwBNDxuGCPACnscGZkajOp0xT
- /kSHZNQoaNUOasAhUillCsHEeCZy7efhbyCllxW1v5a3hNjcu64lw5n9c8GIah974XZlNoPSI27
- aYsuRUFjKxrc00aOom3yGl4LE3ZLDyPKF3D6Cnm3nkuICdkE4Tvj6TYB/c0pffkvhbWBqb6Js+7
- O+c3PO+9SWBlRusVAMRGJ+j6Lqd1vflceTWEc9R279i7gphMSYMSvEr46Djl7yxhZShIQ+MmU1I
- d+VxfiYCr25wcXSEbriHHjMNHkJya0L9bszqVPb4kRPN4TQ8hon7gUiJWrVq/tvrEv+3k3
-X-Received: by 2002:a17:90b:3d4e:b0:359:f0e1:f8c9 with SMTP id
- 98e67ed59e1d1-35c2ff50663mr10821258a91.6.1774838075474; 
- Sun, 29 Mar 2026 19:34:35 -0700 (PDT)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ d=1e100.net; s=20251104; t=1774842414; x=1775447214;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=YiQamVYxlcFGZQfv9meeF2jjjsQSs82NLF9lQ4MzMpk=;
+ b=hmIZvLHzL+VOuChKNqcpBcppSfBVD14LL7tnzK0zaYdpesNR81+XLThuEw++owS2Ci
+ 4ofyNqlCMytDbpN4yEilrNlkWzShLY28IkXWR32i0Zll1uFh0MBG/OVUw2EBIskxk5w8
+ Lzdpe04s3to3YgCEyaMlagQwwBwFctBzaVYRECgQYX+NF3zzix+XUT6iuObZ/Ni6F9Pj
+ CeIvgsfv9EW2Zynh/lWWDXUjvZza0ckQnu7176jqraS59m2xiotySKlRefQ9Wa7veLcU
+ CwyR0YJHXCkQ7gGmmXVhIFRkglqFdXDX03GP7aZ3U4x+fViMUMciil0f3pM9/Clnbl3n
+ sUZw==
+X-Gm-Message-State: AOJu0YxRN/bLhzj8PJ2scPDClnkSJZPT3I9ciIox9GzOWVaRSY6so0ai
+ mczkNfHwz980ysw84weC4XftwpfL+9EGRNsDV8oXspXdKnrkEWI+mDa6X5IqD+wccO8=
+X-Gm-Gg: ATEYQzy9BomnNrtfppWCojiZi9NVL/kapsSnR9WoNdGl4E4cmn3rDp56Dh9b1FKsibP
+ kIkiqIsqO5CdVNWcxUbifBR6B+fG4wh9OocdWJq5z4/dMHAZtx6CWPk8h7rR51ngoqOujkXCukX
+ C1EbaeJ46funUujAyj5NOhECX1bbmZTpnHzjNRrk+/koJB2wckndHAH7577zd5Jy+T0lI/+FalF
+ cWTrnxq12j9bg9teojBqk03HiKIULTWdLqBr2crkq8+xOF2rZxcJ63uKsCB0aKfjlvrtVcz6KSn
+ Yhle+QCK/0uWz/HkABLEFz1kCsKtikAtq+71gb86nV/Hd5K94Lk0Hx3QxzZJTodLV8fzmyHKxkS
+ ZKrmxmqWbg43O2XqROUa+1vU25lxTByVKtx+BaHPR49PtiJCabcQ5OVoIxjvpSI9tb09POGuYD6
+ fSoTqVok4NEdR4SF40FiNqLRjUzLRs4H0fSgayDC4=
+X-Received: by 2002:a05:6a00:3c93:b0:82a:14db:68d1 with SMTP id
+ d2e1a72fcca58-82c86a54bdamr12103630b3a.33.1774842413933; 
+ Sun, 29 Mar 2026 20:46:53 -0700 (PDT)
+Received: from [192.168.4.112] ([103.73.85.111])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35d9caadaacsm1843601a91.4.2026.03.29.19.34.34
+ d2e1a72fcca58-82ca85fc6e9sm6424691b3a.46.2026.03.29.20.46.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 29 Mar 2026 19:34:34 -0700 (PDT)
-Message-ID: <1c34141c-7b26-4e15-885e-27c15382ac07@linaro.org>
-Date: Sun, 29 Mar 2026 19:34:34 -0700
+ Sun, 29 Mar 2026 20:46:53 -0700 (PDT)
+Message-ID: <8e71cd16-7938-487e-91b9-2863f1eef15f@linaro.org>
+Date: Mon, 30 Mar 2026 13:46:44 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 05/12] target/arm/tcg/translate-vfp.c: make compilation
  unit common
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, philmd@linaro.org,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, jim.macarthur@linaro.org
 References: <20260327165042.604105-1-pierrick.bouvier@linaro.org>
  <20260327165042.604105-6-pierrick.bouvier@linaro.org>
  <b6895297-c24b-4605-8d2a-a8566dfd3604@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ <1c34141c-7b26-4e15-885e-27c15382ac07@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <b6895297-c24b-4605-8d2a-a8566dfd3604@linaro.org>
+In-Reply-To: <1c34141c-7b26-4e15-885e-27c15382ac07@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,56 +108,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/29/26 6:09 PM, Richard Henderson wrote:
-> On 3/28/26 02:50, Pierrick Bouvier wrote:
->> Generated decode files must be duplicated between user and system, as
->> they are generated in private folders per libs, and can't be included
->> otherwise, as meson does not give control on output folder.
->> Indeed, meson generator is a different approach than custom_target, and
->> this is a limitation by design.
+On 3/30/26 12:34, Pierrick Bouvier wrote:
+>>> -arm_common_system_ss.add(files(
+>>> +arm_common_system_ss.add(
+>>> +  decodetree.process('vfp.decode', extra_args: '--decode=disas_vfp'),
+>>> +  decodetree.process('vfp-uncond.decode', extra_args: '--decode=disas_vfp_uncond'),
 >>
->> They were already duplicated between arch variants anyway, so nothing
->> new here.
+>> How are you not removing the other decodetree invocations at the top of the file?
 >>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    target/arm/tcg/meson.build | 8 ++++++--
->>    1 file changed, 6 insertions(+), 2 deletions(-)
->>
->> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
->> index 3e96c77df73..46bf4a6d76b 100644
->> --- a/target/arm/tcg/meson.build
->> +++ b/target/arm/tcg/meson.build
->> @@ -30,7 +30,6 @@ arm_ss.add(files(
->>      'translate-m-nocp.c',
->>      'translate-mve.c',
->>      'translate-neon.c',
->> -  'translate-vfp.c',
->>      'm_helper.c',
->>      'mve_helper.c',
->>      'op_helper.c',
->> @@ -60,7 +59,10 @@ arm_common_ss.add(files(
->>      'crypto_helper.c',
->>    ))
->>    
->> -arm_common_system_ss.add(files(
->> +arm_common_system_ss.add(
->> +  decodetree.process('vfp.decode', extra_args: '--decode=disas_vfp'),
->> +  decodetree.process('vfp-uncond.decode', extra_args: '--decode=disas_vfp_uncond'),
 > 
-> How are you not removing the other decodetree invocations at the top of the file?
->
+> They are still needed for user binaries.
+> As explained in commit message, we don't have control in which folder those .c.inc are 
+> produced, so we have to duplicate them to make them visible for system_common code. Since 
+> they are not proper compilation units but templated C, we don't really have a choice here.
+> 
+> The only alternative, if you prefer it, is to remove them from gen_a32 array, and add them 
+> to arm_user_ss. In all cases, duplication is still needed.
 
-They are still needed for user binaries.
-As explained in commit message, we don't have control in which folder 
-those .c.inc are produced, so we have to duplicate them to make them 
-visible for system_common code. Since they are not proper compilation 
-units but templated C, we don't really have a choice here.
+Maybe I'm wrong about how meson works, but does invoking .process() twice result in two 
+executions of decodetree, two different file objects, possibly with identical names?
 
-The only alternative, if you prefer it, is to remove them from gen_a32 
-array, and add them to arm_user_ss. In all cases, duplication is still 
-needed.
+If you want to share these, do we need one invocation, storing the file object in a local 
+variable?  Akin to
 
-Pierrick
+vfp_d = decodetree.process('vfp.decode', extra_args: '--decode=disas_vfp')
+
+gen_a32 = [
+   ...
+   vfp_d,
+   ...
+]
+
+arm_common_system_ss.add(
+   vfp_d,
+   ...
+)
+
+
+r~
 

@@ -4,58 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9630710D14A4
-	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 11:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F15810D14A4
+	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 12:10:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7B7f-0002Oi-De; Mon, 30 Mar 2026 07:49:41 -0400
+	id 1w7BRw-0004JD-Nq; Mon, 30 Mar 2026 08:10:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7K-0002Kh-Dr
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 07:49:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7BRf-0004C3-GV
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 08:10:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7G-0005bt-M3
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 07:49:13 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7BRU-0001uv-7t
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 08:10:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774871341;
+ s=mimecast20190719; t=1774872599;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=4jE+ZYiBrnOR0/wEXwh1m8IxQyar2F5yvKNyUAoO6L0=;
- b=BNC+RGmU+F3v9pt3LItIF3uaBQmlhfcq46DkRvh2IaOwXxPYYepoYAjODElCY1h8Gt8UkX
- PSv4hAtahAi+3gJWQt/AyVAgoqgiW/Y/InqPgHKcmJuYMgX5hao1bwr0+0cKFtCRkoaley
- C+R1xgDgAWOcUMdJ82a/b6azOkUACts=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-LyNTwu3oMZafzkVwBLkd1g-1; Mon,
- 30 Mar 2026 07:48:57 -0400
-X-MC-Unique: LyNTwu3oMZafzkVwBLkd1g-1
-X-Mimecast-MFC-AGG-ID: LyNTwu3oMZafzkVwBLkd1g_1774871337
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E42531800BEA; Mon, 30 Mar 2026 11:48:56 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.32.47])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 815021800361; Mon, 30 Mar 2026 11:48:55 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 0/2] aspeed queue
-Date: Mon, 30 Mar 2026 13:48:51 +0200
-Message-ID: <20260330114853.638753-1-clg@redhat.com>
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=bsnUaQg3LhmHfs9GIGrqPORbGbPBN6TH4AVpLin2XeE=;
+ b=JUKhmMOkKxBKR1vMYFI/TZJYDxjNlAl42+hzFkZ6LgyTLcAgqz+QJtDBgkGp+XOYWAAojz
+ xKh4B0E3QT7Uf55ggsK0DvKZRPWC5SF5AH8S406YwZWhHEMzNNz17KjkF4MOtQ2mRONAcn
+ lTYeJs5Y+3IUu8OdG4mwbcElhWJqE40=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-37-HBCj1vVBPCCg6FO2EiNUFA-1; Mon, 30 Mar 2026 08:09:57 -0400
+X-MC-Unique: HBCj1vVBPCCg6FO2EiNUFA-1
+X-Mimecast-MFC-AGG-ID: HBCj1vVBPCCg6FO2EiNUFA_1774872596
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-486f830f4e4so29935765e9.1
+ for <qemu-arm@nongnu.org>; Mon, 30 Mar 2026 05:09:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774872596; x=1775477396;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bsnUaQg3LhmHfs9GIGrqPORbGbPBN6TH4AVpLin2XeE=;
+ b=tPIzPOrBUFJJ4g5MNo9gk556nliywZwVFyt77aWZqEibh5WQj5HwGGeJWWwOaOzLVs
+ SM+NiXF1uScuAkop5hoGoFtfeMslKdtkcFHTFbuKX8Y8+GofRidZkNbT2buvVWn7M98o
+ PUkU5ryjoEbX6LIvFqGIT7LQRkc/C96p69w8cp0DhoHXIMFb1icNWmBFaY4iQvX8zByI
+ /jsaQRz8RzB79fXzydybF5G/IdqJLQE1T8YZF+zgvm3V3qWGVhMGUobe5puTzKcUzEGV
+ SvihnY1q7NnjTH2pNX8Lho6qBA1Y8iRlx9KJEHPqgZtGpgbnqnyMZgo/BGRxoAVDXpqo
+ 6hkQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXK/CM9cRP9k8frdJLM0iRjJ3wzx0I1MRIMiBgQ8xV0KwUa3fjS7pA8QKciYIs7XGptoGgypNl8uA==@nongnu.org
+X-Gm-Message-State: AOJu0YxvuLkM2CXXGue79Zm3GtUfxkLC05Iof5ZDOtZcWiJM/ibH37kW
+ LH6vQnnvVYvm9eZw1VyCJvLo1jpLfbjLLhvcpWP1/9bOJ0JS46XhALM4nARrwNCoDWHriv9aOZI
+ tw05T3CEUYmWQeFLBi+S/XtoZNitn19t3wla1YGqpUvNWd+7Bh0pJ7g==
+X-Gm-Gg: ATEYQzw1nEL7DevBPRyqTw56UYIv7qSaBsz6KYlsUBfwvLax/cUpRa2xwzH02Uerjwt
+ Z+WxzSWAqalxlRjBuubT8l4wO+2sIy9lW5r0IXGBstZnsV20C7eIh1ERJYIjdDvaT0YudKZJQ88
+ CmTZ8g0BktYTU9pPWbofVkPPpcVcdyYA2QyHMhtQ6gpJUux+f35URFHpur2DRtSuMozfsbA7LJ0
+ Grzh+sZqi1VaU5EK9y2VAXOMpaOdh5GD4f2JxaXAdN+tCUWkYF2FoEzPTTBzgZ8rPsoC5zQG0xB
+ ZFGV+eu4NhuWp+8sK3ReL/juya7Z7+iYoxy20SiGljWZhlmnwIxD7I39z2mgKv7VLHHQDIzeNji
+ 0CJm4jHUroPy0wCELDlVPbuNEiH0iWiH+6X9hb0qAqxahT4UouhvBqJfNk8hs
+X-Received: by 2002:a05:600c:4744:b0:485:2a4b:7bc3 with SMTP id
+ 5b1f17b1804b1-48727d5d6femr201691935e9.4.1774872596070; 
+ Mon, 30 Mar 2026 05:09:56 -0700 (PDT)
+X-Received: by 2002:a05:600c:4744:b0:485:2a4b:7bc3 with SMTP id
+ 5b1f17b1804b1-48727d5d6femr201691485e9.4.1774872595627; 
+ Mon, 30 Mar 2026 05:09:55 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48722d236a9sm485466015e9.11.2026.03.30.05.09.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Mar 2026 05:09:54 -0700 (PDT)
+Message-ID: <ac9f2403-c5d7-46ad-baa0-7ab33d50c446@redhat.com>
+Date: Mon, 30 Mar 2026 14:09:53 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: d3F_98pETc3vXUVpLOD96QBQl9U3i6WjF4_UGHO7ijk_1774871337
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks to
+ support pasid
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "alex@shazbot.org" <alex@shazbot.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "mst@redhat.com" <mst@redhat.com>, "jasowang@redhat.com"
+ <jasowang@redhat.com>, "jgg@nvidia.com" <jgg@nvidia.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "joao.m.martins@oracle.com" <joao.m.martins@oracle.com>,
+ "clement.mathieu--drif@bull.com" <clement.mathieu--drif@bull.com>,
+ "Tian, Kevin" <kevin.tian@intel.com>, "Liu, Yi L" <yi.l.liu@intel.com>,
+ "Hao, Xudong" <xudong.hao@intel.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+References: <20260326091130.321483-1-zhenzhong.duan@intel.com>
+ <20260326091130.321483-3-zhenzhong.duan@intel.com>
+ <acWwwzfNEzBg4n96@nvidia.com>
+ <IA3PR11MB9136FC71017C3B05CE3C881D9257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <acX9/RjKaO0bBI/d@nvidia.com>
+ <IA3PR11MB9136D9DAD0B8698841CEF4429257A@IA3PR11MB9136.namprd11.prod.outlook.com>
+ <e97aec85-c9f0-449c-99e9-bc4b4f2d33d8@redhat.com>
+ <acbt8FaZwzDaXtmT@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <acbt8FaZwzDaXtmT@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: oV9wt9-7YX1xxzPai8-ukIYKVne7oenOm1a8VeNnZYA_1774872596
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
@@ -82,33 +176,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The following changes since commit 91f6a9cb1b0f11afa74ef7fb20d5579d9dfbe020:
+On 3/27/26 21:52, Nicolin Chen wrote:
+> On Fri, Mar 27, 2026 at 10:34:01AM +0100, Cédric Le Goater wrote:
+>> On 3/27/26 07:44, Duan, Zhenzhong wrote:
+>>>
+>>>
+>>>> -----Original Message-----
+>>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>>> Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks to
+>>>> support pasid
+>>>>
+>>>> On Fri, Mar 27, 2026 at 02:32:57AM +0000, Duan, Zhenzhong wrote:
+>>>>>> -----Original Message-----
+>>>>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>>>>> Subject: Re: [PATCH v2 02/14] iommufd: Extend attach/detach_hwpt callbacks
+>>>> to
+>>>>>> support pasid
+>>>>>>
+>>>>>> On Thu, Mar 26, 2026 at 05:11:16AM -0400, Zhenzhong Duan wrote:
+>>>>>>> @@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
+>>>>>>>         *
+>>>>>>>         * @idev: host IOMMU device backed by IOMMUFD backend.
+>>>>>>
+>>>>>> Not commenting against this patch, but I just found the "host IOMMU
+>>>>>> device" and the "HostIOMMUDeviceIOMMUFD" a bit ambiguous. It's not
+>>>>>> an "IOMMU device" right? Perhaps somebody can help me understand :)
+>>>>>
+>>>>> A host device under host IOMMU?
+>>>>
+>>>> "host device" would make sense, not "host IOMMU device", right?
+>>>
+>>> We want to emphasize that it's a "host device" backed by "host IOMMU",
+>>> "host device" is not enough, I think.
+>> Yes. These are related to the Host IOMMU device backends :
+>>
+>>    - VFIO IOMMU Type1, a.k.a legacy backend
+>>    - IOMMUFD,
+>>
+>> There are other implementations. VFIO IOMMU Type1 is versioned and
+>> a ppc flavor exists.
+> 
+> But the @idev here is a passthrough device (VFIO/PCI)?
+> 
+> "IOMMU device" would be SMMU, VT-d...
 
-  Merge tag 'qga-pull-2026-03-27' of https://github.com/kostyanf14/qemu into staging (2026-03-27 18:41:05 +0000)
+The 'idev' above is for a 'host IOMMU device backed by IOMMUFD backend'
+AFAICT.
 
-are available in the Git repository at:
+  
+> Especially we are adding @pasid parameter. Relating it to SMMU or
+> VT-d sounds weird.
+host IOMMU device variables are usually named 'hiod' and the class 'hiodc'.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20260330
+Thanks,
 
-for you to fetch changes up to 9160305d92d2750e6ca3ada8f048305c9290f03c:
+C.
 
-  net/ftgmac100: preserve full VLAN TCI in TX tag insertion (2026-03-30 07:36:25 +0200)
 
-----------------------------------------------------------------
-aspeed queue:
-
-* Complete lost interrupts fix in the Aspeed I2C model
-* Fix a vlan tag insertion issue in the ftgmac100 model
-
-----------------------------------------------------------------
-GuoHan Zhao (1):
-      hw/i2c/aspeed_i2c: reset and migrate pending_intr_sts
-
-linhuang (1):
-      net/ftgmac100: preserve full VLAN TCI in TX tag insertion
-
- hw/i2c/aspeed_i2c.c | 4 +++-
- hw/net/ftgmac100.c  | 2 +-
- 2 files changed, 4 insertions(+), 2 deletions(-)
 
 

@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB171061B0A
-	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 15:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A256B1061B0A
+	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 15:41:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7EhB-0004gn-NA; Mon, 30 Mar 2026 11:38:29 -0400
+	id 1w7Eju-0005nk-Ty; Mon, 30 Mar 2026 11:41:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7EhA-0004gR-Oj
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 11:38:28 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1w7Ejr-0005mb-Fo
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 11:41:16 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7Eh8-0006Op-PL
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 11:38:28 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-82c28f0a4ecso3280430b3a.3
- for <qemu-arm@nongnu.org>; Mon, 30 Mar 2026 08:38:25 -0700 (PDT)
+ id 1w7Ejp-00074X-TM
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 11:41:15 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-35d932cc948so1452060a91.2
+ for <qemu-arm@nongnu.org>; Mon, 30 Mar 2026 08:41:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774885105; x=1775489905; darn=nongnu.org;
+ d=linaro.org; s=google; t=1774885272; x=1775490072; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=gpxabWmEMaK2M+zPDPE44PqFVUiw2En+VUqwLw1gCoU=;
- b=XTk+9RwhXFpCgoGr0TEHDVSHU0QoRUjg5VbXKjs9hnBAhNmXvCUpAtpVV4jjYwdweG
- IWl/NBt7De5TH/d0839tKahON/TExJXXeJhppMfJ2H191REnja/dHAMXIWadeJD+eQXb
- lZbmSmpgQYKF5CqEkcbbE7JTGeRoY47PlIKeNdKfWVwbu5UTmhnDyChfENoKwZdN3ta0
- PGhhzMMAl2Z63dfj8ZgsilzGmBxlU04ybW9eb8LAhimGqjmWFnCappTHgL1DRg8Zykpk
- HPV4tWWnUDKml7XeCJWEqYCa12H/sUFY0nTU4afFsMCXHHn8DHP8xVSF8yryUFMelQw1
- QTOg==
+ bh=jqn8h5li9SUttpZO5zkrQKWbsbi6Lktn+ZvEoww31Hw=;
+ b=htmQ7x+bFtWVXf9KfvHWqw3sKvZj6lginc/Ex+s4vy6/+JQiFjzPOnPyFsp6VkdOWs
+ v8nwe1cdSwdIdQfEz0HJHfZCRtKNTytzz2SSHy0YFijATqJ4mc2ZeLxgd0tY4F7G9Xny
+ iwP4PUI/qu3eLrM4NPFqlik3OW/8njhMOk20kXtMKSXIhzJ4qKkaReV40aiE8A3e9g1r
+ 6H8gOEHiqyhoGD/aux+bMjbcqvcETgb23cjrDqtM7GSN/wOumCtLRm+AIlW9cVoXytD4
+ q+f/YkzBddulN2ngtTpW9FfZDiDyQn3Ajnoc/l4jPoEFK1IJgUszTJZjmYp8i3xH4evF
+ hP1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774885105; x=1775489905;
+ d=1e100.net; s=20251104; t=1774885272; x=1775490072;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=gpxabWmEMaK2M+zPDPE44PqFVUiw2En+VUqwLw1gCoU=;
- b=XDX8AD/USvQsoF7n+3DIA5CB+52EbHyKa1FAY4VAhIotNS4T6menOvaGPncbcmhb6k
- OAFHtW5QBYNRnEYX7iAQQPDxnp7aIF0+77zXZCS3RkZmJKWGV331Iemvu/xqCn6Qp+82
- g2bXHBK1TS2V4S9mHy0pyemdVVxgn42+jXpXCfAVL6BdWLANb3nGlBvII8n6cpyanNwg
- V9fsL5saViGkWlQqZ2HYBWgx2fNsEFlK6I39XpF2+9b4ITVW4lbT1PoHCwblEgVH4G7p
- JoVTztnyDrEPQA9DZZiPyKoeTqE2k75mURRpuXhqbMoMtO8y0uUgLXRJREy8Fl43Dd7s
- OviA==
-X-Gm-Message-State: AOJu0YzhCDj76UzkALwAFUSZPRca6CvVMrBSjfwsK9nSEtgBut4n7Biu
- FEbsHc7V65JO7l7SAquTruAolr4zvlxHij9sdaFG1AZZDpcpRYYygxhpykkQta+vLww=
-X-Gm-Gg: ATEYQzwYAMHbs36jP4X9B2uaqouR6g/qqWM3KFvxj5FhKvVMWG8UlxTBfy2iZBKByoZ
- UE0J+R9R7YQRZFGl/3d/MOWOgZLXe+Etrr6Ie8R3pgkh3aXinC083+431h2em+xzqOCpaIeUIQm
- FdEETJObglPmX/XeHZnRCe4+CiM8t0ESMm5gCtGHlbFA2XUBJaNKZq9/sJVcK8DfXQ2TR580y1A
- s4zlpjLRSYJcwntB/yb0oeosG/SQOM1QxiVJHPtqu4X1RidMy+Tkyeg8rDp0WNw1652InTioXuR
- XnLPaAwyX1Jw+Qfy1aFxbhU2DwZcMxhnK6RzmyqfoSwFMK+zQyA8putQd8ql4BHmQBMcNeGqDF6
- EiOUuoIOHDaDEhUvxpE22UjWsNkz4x7+YaCeWpSqRXKfUTxmvZ4vFqQnlO/TEq9YN1d7uQYVUUT
- zBfPZchf2HCX3tQbmq1aTcp1ksMMy9R9+bRLMGljwJzjdnD5hkatzXu3Oxk1RMgcxC28TP
-X-Received: by 2002:a05:6a00:299a:b0:82c:28e8:a009 with SMTP id
- d2e1a72fcca58-82c9601c031mr12735185b3a.51.1774885104397; 
- Mon, 30 Mar 2026 08:38:24 -0700 (PDT)
+ bh=jqn8h5li9SUttpZO5zkrQKWbsbi6Lktn+ZvEoww31Hw=;
+ b=kgmQXaZIvwWmuNWOFdpo3eVSU1uiW8dwbs+vG8PMdaLPHoWEIctR09sF4U6tptSRNK
+ n1b1yytb9lFm4EKSmkPYucM9926yIP5VDuBt1r7AKTsWTDpska5h1HBK0zH7kFoMUD0e
+ JzwKhqwke47gONlyjTgVkXF85IU03BPbdcV75YpsrcuSweq8BPHCGopn4/J4SBqzbGv9
+ ChvvyF71AONSCBty7tehtHrB8T3Ix55/C1zYCBfLoQUAHulsq/m0TTmwdvInRhcZH7sx
+ YU5MEFWv09y+bxgrGt6vKWeAajYKy01GxQ0TnRwNWrJwvsHbaBWIRipkzmii1it184nI
+ i1Wg==
+X-Gm-Message-State: AOJu0Yw1EYttFUPZkPrzt2jO/UaYZSI9KSUXiGHOcPGmVT7Azv2kppP7
+ JaKLTi7hEL/el7Z/jE/HRrP989usMWx8lz7TR/VZ0ckYvMcC1FDfocoxxRoXM26Izds=
+X-Gm-Gg: ATEYQzzWI4oSrB0LE2g4293RyW7eLiQ6J2NT/sI6h3tGHtgiEve+y+5garckG5TR5pw
+ 9LqRzyzSxzTJwbN6J4ybjHENNY5e/zZ/itui1+guu9cFV15uqv1YIxNBHFBsIXDLhuVDUvmQFKm
+ lETBy5rmsuVhGvsq2LplkoXJU6Or3UShX/DX6aVsA7w4reFL8ZrySLajHZ4b8nYovt2Th9VTsGs
+ zkagM/79MPr9ouXinuOPG4VLOp9Gd6/ECEUtGipXVjn/wPSRPQpDi/Z3SQYa+dFxJRkNPsEPoaO
+ nqR8PIOvwQeRfKNxDfSaKl8Ra2cBKbn9GpUHDKmhZufHyBgB9kl0TQjWD40C7mmWpgsIt4Vw1HF
+ ONxI9BZo767W4oDxmACwFiZAYEjppAvL5J0XYo7/thmPjv9VMeIT8nRlFoqI9kjnnLmKpwk3Q24
+ Amio2OO3Fm7PV40xI5CdglKlU21DAOfhpsdWRB+XdYjqaiCxXwPBqx3YZBIMup1VF5fgbC
+X-Received: by 2002:a17:90a:e7cb:b0:35d:a84d:e281 with SMTP id
+ 98e67ed59e1d1-35da84de7f8mr4471891a91.30.1774885272241; 
+ Mon, 30 Mar 2026 08:41:12 -0700 (PDT)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82ca85eeea8sm7603543b3a.41.2026.03.30.08.38.23
+ 98e67ed59e1d1-35d94d289f5sm11033978a91.5.2026.03.30.08.41.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Mar 2026 08:38:23 -0700 (PDT)
-Message-ID: <c94c2f42-812d-48fc-a971-fe5bb7379a06@linaro.org>
-Date: Mon, 30 Mar 2026 08:38:23 -0700
+ Mon, 30 Mar 2026 08:41:11 -0700 (PDT)
+Message-ID: <bea8028e-39dd-4faa-8c55-f2cac9ccf144@linaro.org>
+Date: Mon, 30 Mar 2026 08:41:11 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 05/12] target/arm/tcg/translate-vfp.c: make compilation
@@ -119,8 +119,8 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
 In-Reply-To: <8e71cd16-7938-487e-91b9-2863f1eef15f@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -163,7 +163,11 @@ On 3/29/26 8:46 PM, Richard Henderson wrote:
 > 
 > Maybe I'm wrong about how meson works, but does invoking .process() twice result in two
 > executions of decodetree, two different file objects, possibly with identical names?
-> 
+>
+
+Don't forget we don't produce file objects (that's the issue here), but 
+.c.inc that gets included later.
+
 > If you want to share these, do we need one invocation, storing the file object in a local
 > variable?  Akin to
 > 
@@ -179,27 +183,12 @@ On 3/29/26 8:46 PM, Richard Henderson wrote:
 >     vfp_d,
 >     ...
 > )
-> 
+>
+
+For information, it's already duplicated today, since it's generated per 
+target.
+
 > 
 > r~
 
-Yes, your idea works. It will still result in duplicated .c.inc though.
-
-We can't have a single invocation of the generator, since the result 
-will be private to a specific binary/library.
-
-You can see it by inspecting build.ninja directly:
-
-$ grep 'decodetree.py.*decode-vfp.c.inc' build/build.ninja
-... -o libsystem_arm.a.p/decode-vfp.c.inc
-... -o libqemu-aarch64-linux-user.a.p/decode-vfp.c.inc
-...
-
-As you see, the output folder is releated to the final library (or 
-executable) that will include it, and not to where we are in terms in 
-source folder.
-build/libsystem_arm.a.p is only included for common-system-arm code 
-while libqemu-aarch64-linux-user.a.p is only visible for arm-user code.
-
-Pierrick
 

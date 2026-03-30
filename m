@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FFBC10D14A4
-	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 11:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B00310D14A7
+	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 11:50:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7B7d-0002Ne-8L; Mon, 30 Mar 2026 07:49:34 -0400
+	id 1w7B7Y-0002Mk-BU; Mon, 30 Mar 2026 07:49:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7K-0002Ki-Dt
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 07:49:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7K-0002Kg-DP
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 07:49:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7G-0005c5-Md
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w7B7G-0005c9-MK
  for qemu-arm@nongnu.org; Mon, 30 Mar 2026 07:49:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774871343;
+ s=mimecast20190719; t=1774871344;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KqY1BVTm6BQJn+AOMdZdl0mYqUF4UwJ578C3nCdZE5M=;
- b=TkLaWBAlEqVmvMmDt/R7XhV4Oiv/D9FF7Y4gvluM8Rl+Rp/iZEstMOWbyTZMWYHTGgqQcG
- WNBgUPjL//A6d9SsFM2TEWqVRBumS44QfdPkNx2NTxwl0Nm84vguDMEKLQ7EQ87Qhy/cha
- TvdseeRy3xuMrHW06eaCoRk5LATSrTQ=
+ bh=DAJj8ZslZgsOIkvnpDadAqH4+KJQwmg5EMAcBGW7ihY=;
+ b=ZpJdPt9zvnvoimiAUQjZ+0ug/FQy9wvZ2OJlORfMuP4kcwKSG08UZ2fiTtx4MNe8UqqGpD
+ 064F+06KDuXtdQqV7J/O8rTZy2y8DGC8gNwZBA6+F3fZh5kdo27hjuhtpUkCJ/+WdPXi0G
+ lyS3LbolN4jdv+W/qhc/KqUkR/SnOZ4=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-538-9JJoGNZbNd69j6G8-km4yQ-1; Mon,
- 30 Mar 2026 07:49:00 -0400
-X-MC-Unique: 9JJoGNZbNd69j6G8-km4yQ-1
-X-Mimecast-MFC-AGG-ID: 9JJoGNZbNd69j6G8-km4yQ_1774871339
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-582-K7dyrpZNN9WcygoxjbJ20Q-1; Mon,
+ 30 Mar 2026 07:49:02 -0400
+X-MC-Unique: K7dyrpZNN9WcygoxjbJ20Q-1
+X-Mimecast-MFC-AGG-ID: K7dyrpZNN9WcygoxjbJ20Q_1774871341
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 617961956094; Mon, 30 Mar 2026 11:48:59 +0000 (UTC)
+ id 7CC2819560A2; Mon, 30 Mar 2026 11:49:01 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.32.47])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 62B4F1800351; Mon, 30 Mar 2026 11:48:57 +0000 (UTC)
+ id D46911800351; Mon, 30 Mar 2026 11:48:59 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: GuoHan Zhao <zhaoguohan@kylinos.cn>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Jithu Joseph <jithu.joseph@oss.qualcomm.com>
-Subject: [PULL 1/2] hw/i2c/aspeed_i2c: reset and migrate pending_intr_sts
-Date: Mon, 30 Mar 2026 13:48:52 +0200
-Message-ID: <20260330114853.638753-2-clg@redhat.com>
+Cc: linhuang <linhuang@ruijie.com.cn>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 2/2] net/ftgmac100: preserve full VLAN TCI in TX tag insertion
+Date: Mon, 30 Mar 2026 13:48:53 +0200
+Message-ID: <20260330114853.638753-3-clg@redhat.com>
 In-Reply-To: <20260330114853.638753-1-clg@redhat.com>
 References: <20260330114853.638753-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: DJg2NxWXR7uKeYwb3ntiUWLBNwqUSGa6tJwpnZQFYU0_1774871339
+X-Mimecast-MFC-PROC-ID: tAktKblY6fYctdc1rV8uY2FZ1Q393LGQssQ0_JJU_l0_1774871341
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,55 +86,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: GuoHan Zhao <zhaoguohan@kylinos.cn>
+From: linhuang <linhuang@ruijie.com.cn>
 
-Commit 7e82393ed058 ("hw/i2c/aspeed: fix lost interrupts on
-back-to-back commands") introduced pending_intr_sts to preserve
-interrupt bits that collide with already pending status bits.
+The VLAN tag insertion helper took vlan_tci as an 8-bit value, while
+the descriptor provides a 16-bit VLAN TCI. This truncated egress tags
+and caused VLAN ID corruption (for example, 4088/0x0ff8 became
+248/0x00f8 at the receiver).
 
-That deferred interrupt state is consumed later when the guest clears
-INTR_STS, but it is not reset in aspeed_i2c_bus_reset() and it is not
-part of the bus migration state. A reset can therefore leave stale
-deferred bits behind, and migration can silently drop them.
+Change vlan_tci to uint16_t in the TX VLAN insertion path so the full
+802.1Q TCI is preserved and transmitted correctly.
 
-Clear pending_intr_sts on reset and include it in VMState while keeping
-compatibility with older migration streams.
-
-Fixes: 7e82393ed058 ("hw/i2c/aspeed: fix lost interrupts on back-to-back commands")
-Signed-off-by: GuoHan Zhao <zhaoguohan@kylinos.cn>
-Link: https://lore.kernel.org/qemu-devel/20260325085450.126595-1-zhaoguohan@kylinos.cn
+Fixes: c2ab73fcbe79 ("ftgmac100: Fix integer overflow in ftgmac100_do_tx()")
+Signed-off-by: linhuang <linhuang@ruijie.com.cn>
+Link: https://lore.kernel.org/qemu-devel/1471e413d3589b6734819bda2b59b725b74f273a.d551129b.99fc.47f6.86dc.0759227268a2@feishu.cn
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Jithu Joseph <jithu.joseph@oss.qualcomm.com>
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i2c/aspeed_i2c.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/net/ftgmac100.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 5d18f8d49ea4..90f83a03fd4f 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1134,10 +1134,11 @@ static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
- 
- static const VMStateDescription aspeed_i2c_bus_vmstate = {
-     .name = TYPE_ASPEED_I2C,
--    .version_id = 6,
-+    .version_id = 7,
-     .minimum_version_id = 6,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
-+        VMSTATE_UINT32_V(pending_intr_sts, AspeedI2CBus, 7),
-         VMSTATE_UINT8_ARRAY(pool, AspeedI2CBus, ASPEED_I2C_BUS_POOL_SIZE),
-         VMSTATE_UINT64(dma_dram_offset, AspeedI2CBus),
-         VMSTATE_END_OF_LIST()
-@@ -1510,6 +1511,7 @@ static void aspeed_i2c_bus_reset(DeviceState *dev)
-     AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
- 
-     memset(s->regs, 0, sizeof(s->regs));
-+    s->pending_intr_sts = 0;
-     i2c_end_transfer(s->bus);
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 2f05bba11d01..b3da48c343c7 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -498,7 +498,7 @@ static int ftgmac100_write_bd(FTGMAC100Desc *bd, dma_addr_t addr)
  }
  
+ static int ftgmac100_insert_vlan(FTGMAC100State *s, int frame_size,
+-                                  uint8_t vlan_tci)
++                                 uint16_t vlan_tci)
+ {
+     uint8_t *vlan_hdr = s->frame + (ETH_ALEN * 2);
+     uint8_t *payload = vlan_hdr + sizeof(struct vlan_header);
 -- 
 2.53.0
 

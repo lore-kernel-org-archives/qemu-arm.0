@@ -4,107 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE70FF493A
-	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 04:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7190FF4947
+	for <qemu-arm@archiver.kernel.org>; Mon, 30 Mar 2026 05:42:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w74IO-0002rx-T5; Mon, 30 Mar 2026 00:32:12 -0400
+	id 1w75O5-0006EP-UZ; Mon, 30 Mar 2026 01:42:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1w74IN-0002rG-H0
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 00:32:11 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1w74IL-0005hv-UQ
- for qemu-arm@nongnu.org; Mon, 30 Mar 2026 00:32:11 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-b93698bb57aso735240566b.0
- for <qemu-arm@nongnu.org>; Sun, 29 Mar 2026 21:32:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774845128; cv=none;
- d=google.com; s=arc-20240605;
- b=Kt/7xVLXZYl2xhfiRnOI8tpQKshWoYpHJPG56/F6S0INe/2EdN6U3OT3S2J4rOLk79
- 6p0xmjVdj6V4cGrg6SLOuIUztRgXlQ4NYWwjuiL2eUeGFPgSRQZDR6V6mqbb3NQon/V9
- L1obUDuvdfeMN3rqMGnnJd93d8sr+4CDACfGcolfJYGgIPzTdq1vhVPHNX2T7IacIkSv
- K7MlppK0eiU6QuGTsrK4xgfQzvtiQzisaJaAClHNr9sQl+k2PrBV1DrDXEOBWCMp4vTb
- FSozPt/m5QqSZTbQYbwk6kGhnhTxlxnW72yct9IRjGPxwjaOjNb6CLtyItCsh0RnmtrR
- Ozxg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=HUxknrcLJxiaIaqDvu9lU6L2M21SLrou8EajFFXcWPQ=;
- fh=3Q0qFgRTCrHwamKh8WMoGJttjfCB3kxcEU5DSWM4Fq8=;
- b=BbNZn5d2usBKZKZRygNvCaMnyOMf5ZVysgOpouL9LZHzkVcTa++yggsR3BONs6dqsn
- HirMZP0kcA/SvbFMe8JrJ+xb4MnLbGEIctKivoHJQCEVoC1xvPh09U6GmHt1ybkBYf6M
- fSUcVByOzRHxfv4JoKIKx2UDYbJ/wUxJzABgny9aMF8HvLziERWp3Q7g/uvaRcfE66id
- 5jRlz8Pkja6a/MioS6KWgo4/sVWKs6ZMfOdVvu8+EEsyfbjb9ZYvNfgmInM1nz+5SUVs
- ss2ORwx1a7kopLY+BpUig9A2Zcdz8dg6kfqir0q6oUJQLpjMkjBYNe9QyoXYdgzuJPGb
- GBZQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1774845128; x=1775449928; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=HUxknrcLJxiaIaqDvu9lU6L2M21SLrou8EajFFXcWPQ=;
- b=aYynbLEVX/F2hpqf8H/VlZuELvs1zli5pM/mfD0PkpR3gKTfe3sBeT5C24djLijJhJ
- +uTpLRLUolFMpuwNGGlznGzGrt76s6Tz0ZGfMA6ef1zwraD1nhti2ocCJaL/w1OQjPB3
- DQaj0CuWAkJ4LYv+hGNukwiWbn74aSR7LLwChhdB4iaOouqVYsLYXqUZDvp4ytuQMi1A
- VqJRQf+tIRnK3byGJpyeBN+XTGCbwXXufjg92YHJsX99fyJyjKSE2WSU5lZSkEXg9RN0
- IS/qXrSxZpXgmlSZidQtMw6LC0y/TYcPnoolNxJGd6K9lop3KFBilciu5RlmRodplhwS
- kkIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774845128; x=1775449928;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=HUxknrcLJxiaIaqDvu9lU6L2M21SLrou8EajFFXcWPQ=;
- b=D1M086v4zFGusv+OvLXbDHCNLkRnf3ScQEWLxD0qfNMIYm7d5Wxaa9Fmhex/Ld/nIf
- RrG1LdhdFxdIMu4QGccp7ERq/Ok0GpCwrZaHELttFoUiWAmun0C8EaeJ1cr7QyMLoZRM
- DZUTlDdeYq0v1iuA/Jb3SeDKb9K0q4r5DWreFeekBb2yaxEWZ0EN+HR+TW4A4gY3bbY4
- oWZ8Adp5zysZHoScPmfgfHG2chHu0iZVfPeQHljFWHSDRF+bmlrblF+QIeoG64rY4DCK
- bb8qWY4shNwrf6EJlI+SIUj2LtdGbLl1gv+Sx+jLLlL+yPgM7VH8DSyBls3oh8U7SM1L
- yf+Q==
-X-Gm-Message-State: AOJu0Ywn0MtPQWPUBjWyWMZKwa1of3Eb6RSNFUn25WHEdVljd5EZyhCn
- EZuVl1jQfgWLgPq6wWu9HXb1N5u1OsAP/jyfxPTdFAEnR2ZIEXFabPKgvbyY1wRt7POmwuRCp8A
- xMFpcxx1WVdLIHKYepBZX8PQe1SGWX3o=
-X-Gm-Gg: ATEYQzzk+Z8xqlHJVw1EIb4o2YYWlm3z7i1okjUpQGklv3hwYXiqWUztW9GTcS9+2KD
- eHKjoqTTW71drTeMQrZt8vKAQ9PMDkVH5cI/VbNG1hN/FPXgp2vG6YKI7I+Z99F3gGTdK4RG38z
- D9IRlXzCzt1a+H5q1hVz3jXPsr+XkxebWLyEHs6UW722sVAb2nslnP5sl6W/cg0ewDm2tL8ahKp
- 5o3A22UH0+tyCfAOlmSGqKWfVqJReb0yUbJzVkcYBWXIsrW3YAktNjtPKo2gKM7tlTPIx0acEdt
- jG7p7G5ahZj9Y6T8CS3ILcttGIESOKZjHWiILw==
-X-Received: by 2002:a17:907:3dac:b0:b98:14e:32c0 with SMTP id
- a640c23a62f3a-b9b2e5e6da4mr780864766b.14.1774845127653; Sun, 29 Mar 2026
- 21:32:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w75O2-0006Dt-0K
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 01:42:07 -0400
+Received: from 12.mo533.mail-out.ovh.net ([178.33.248.79])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1w75Nz-0000Ss-OU
+ for qemu-arm@nongnu.org; Mon, 30 Mar 2026 01:42:05 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fkg9d68vRz5w1w;
+ Mon, 30 Mar 2026 05:41:57 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 30 Mar 2026 05:41:57 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.121])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4fkg9d17JCz5vcx; Mon, 30 Mar 2026 05:41:57 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 0CF65941574; 
+ Mon, 30 Mar 2026 05:41:56 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G00230b7952a-f3f7-4917-8935-328f9af28683,
+ 7D556D2DDFF67F75045F04EBDED03CA4E39E484C) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <5483de6e-6bc9-4267-8371-15fc3f748ee6@kaod.org>
+Date: Mon, 30 Mar 2026 07:41:55 +0200
 MIME-Version: 1.0
-References: <20260327145012.907264-1-peter.maydell@linaro.org>
-In-Reply-To: <20260327145012.907264-1-peter.maydell@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 30 Mar 2026 14:31:40 +1000
-X-Gm-Features: AQROBzDHnQetwKvhJmhU56mAsxFqJ47B6DALJ8v3qewDB70SpyuLfbCm6tH3coQ
-Message-ID: <CAKmqyKMUaHQ2uiqVnT7M98AFenmZOGJd5AAShgtKt5RgDo8APg@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/xilinx_zynq: Use strcasecmp to parse boot-mode
- option values
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=alistair23@gmail.com; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/i2c/aspeed_i2c: reset and migrate pending_intr_sts
+To: GuoHan Zhao <zhaoguohan@kylinos.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260325085450.126595-1-zhaoguohan@kylinos.cn>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260325085450.126595-1-zhaoguohan@kylinos.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 947163299149229067
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGLFD9Zh5VsOcL9uqYoQ4sZ750kGI1mZJbQY/UR6SUQfcAV93EzPxzb9paIP6+C1lHhNuwGuttx04zrsQWo012a4PuPa5yFuDkT+2J0fKg1ekWq9W7mmdFV+q9vqYSdAH2KKfnIBJq4Okl+h0RhNpVhujnFGRfSWEFDbvQnIKID/ZVLMizg9Ylwm0QfWGkjBLJsX4bG+SEy2axo/Qy6pb+y68Z/A0uGRXFDKCiabNfB90V9QvFW7kkUvPjy5nHUqJrGQYNXnfscqfpQrzZsc6Msw9787XfG9ETd8LDbZnOD7oL/G+WXqDFeop0rnP+L8Q3C5m5nj50NyWF97OFMPU6hgTTajXuMXzrJS0Ce+IqYhBpc2+OX5F3P7kvUi8xZkc6fGITV1GyVDF2r1buEfwHR97pWM0xVbKrUdtSRZRxb4yAqZr7e0yVMcp83jju+L3Sx4B67uEbztbmSqc1vO4XYQ0++dfq/+7LoYiHCcVMjQG4Ezo11+us4WYN7XNXYx4c50UxivG93/uLkq2+akGjlq9nHdB7CNrxPwoyA1Z949PeRkng6PG1cAlaseB9sGSphYbB+4EonvmOQliOxRV+TVdcbJcaz+pQGg+MeDrVv3JQEaRw9De8Tag+4lpTUS4YP+aWexIHaCOutFslXClx0k/dhpmi8z4lOzouBtxyWzA
+DKIM-Signature: a=rsa-sha256; bh=s4IHBSo4pLjvZNu50zRkqteOFW6eot0lc4BEU48dW1o=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1774849319; v=1;
+ b=I5DOddVYlj1mOEp+9I8Ad1M1kmUMx+op+U4NygZjAav67QSVgNf97OmtYTaPNBdnrh0c7Fsi
+ oWqx2by2cZRFAYWzo51rx2QhYb4wEPpxH/C2i2MPOIJp2D7r4WnlA4nCs1f9AoZDqjWKyviea2f
+ f9dEN6UvgtMO0ymdtq1Twto33UZGKHHppZaMXVX1mDteX1Q8wamku80i12aYiYtNK9lewTnG0kX
+ P8BrNMMAPnyLNe21nJVFyv57zdWuivRxRHaSKq/3HZa65mfKf/RgPwB653d1gC68L/Vda5m0BAR
+ g27SJf63Es37XyndnTWkbC01tUoIzrPu2XyDTjlxFLkZw==
+Received-SPF: pass client-ip=178.33.248.79; envelope-from=clg@kaod.org;
+ helo=12.mo533.mail-out.ovh.net
+X-Spam_score_int: 0
+X-Spam_score: -0.1
+X-Spam_bar: /
+X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,70 +133,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Mar 28, 2026 at 12:51=E2=80=AFAM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
->
-> In zynq_set_boot_mode() where we parse the string the user has set
-> the boot-mode option to, we use strncasecmp(str, "qspi", 4) and so
-> on.  This is wrong, because it means that we will ignore any trailing
-> junk on the end of the option string, and handle
->  -machine boot-mode=3DsdXYZZY
-> the same as
->  -machine boot-mode=3Dsd
->
-> In the documentation we say:
->  Supported values are ``jtag``, ``sd``, ``qspi`` and ``nor``.
-> and that's obviously what we meant to implement.
->
-> The correct tool for this job is a simple strcasecmp operation.
-> Switch to that.
->
-> We use the g_ascii_strcasecmp() rather than plain strcasecmp()
-> because we're comparing ASCII strings here and don't want the
-> potentially locale-specific behaviour that strcasecmp() implies (and
-> we're trying to standardize on the glib function for this kind of
-> string comparison).
->
-> Fixes: 7df3747c92d13 ("hw/arm/xilinx_zynq: Add boot-mode property")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
+On 3/25/26 09:54, GuoHan Zhao wrote:
+> Commit 7e82393ed058 ("hw/i2c/aspeed: fix lost interrupts on
+> back-to-back commands") introduced pending_intr_sts to preserve
+> interrupt bits that collide with already pending status bits.
+> 
+> That deferred interrupt state is consumed later when the guest clears
+> INTR_STS, but it is not reset in aspeed_i2c_bus_reset() and it is not
+> part of the bus migration state. A reset can therefore leave stale
+> deferred bits behind, and migration can silently drop them.
+> 
+> Clear pending_intr_sts on reset and include it in VMState while keeping
+> compatibility with older migration streams.
+> 
+> Fixes: 7e82393ed058 ("hw/i2c/aspeed: fix lost interrupts on back-to-back commands")
+> Signed-off-by: GuoHan Zhao <zhaoguohan@kylinos.cn>
 > ---
-> Kostiantyn: I sent this patch out while it was on my mind, but
-> don't worry about conflicts with your series -- assuming your
-> patchset goes in first I'll fix this one up later.
-> ---
->  hw/arm/xilinx_zynq.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index d43f36b718..9dcded9219 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -186,13 +186,13 @@ static void zynq_set_boot_mode(Object *obj, const c=
-har *str,
->      ZynqMachineState *m =3D ZYNQ_MACHINE(obj);
->      uint8_t mode =3D 0;
->
-> -    if (!strncasecmp(str, "qspi", 4)) {
-> +    if (!g_ascii_strcasecmp(str, "qspi")) {
->          mode =3D 1;
-> -    } else if (!strncasecmp(str, "sd", 2)) {
-> +    } else if (!g_ascii_strcasecmp(str, "sd")) {
->          mode =3D 5;
-> -    } else if (!strncasecmp(str, "nor", 3)) {
-> +    } else if (!g_ascii_strcasecmp(str, "nor")) {
->          mode =3D 2;
-> -    } else if (!strncasecmp(str, "jtag", 4)) {
-> +    } else if (!g_ascii_strcasecmp(str, "jtag")) {
->          mode =3D 0;
->      } else {
->          error_setg(errp, "%s boot mode not supported", str);
-> --
-> 2.43.0
->
->
+>   hw/i2c/aspeed_i2c.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 5d18f8d49ea4..90f83a03fd4f 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1134,10 +1134,11 @@ static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
+>   
+>   static const VMStateDescription aspeed_i2c_bus_vmstate = {
+>       .name = TYPE_ASPEED_I2C,
+> -    .version_id = 6,
+> +    .version_id = 7,
+>       .minimum_version_id = 6,
+>       .fields = (const VMStateField[]) {
+>           VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
+> +        VMSTATE_UINT32_V(pending_intr_sts, AspeedI2CBus, 7),
+>           VMSTATE_UINT8_ARRAY(pool, AspeedI2CBus, ASPEED_I2C_BUS_POOL_SIZE),
+>           VMSTATE_UINT64(dma_dram_offset, AspeedI2CBus),
+>           VMSTATE_END_OF_LIST()
+> @@ -1510,6 +1511,7 @@ static void aspeed_i2c_bus_reset(DeviceState *dev)
+>       AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
+>   
+>       memset(s->regs, 0, sizeof(s->regs));
+> +    s->pending_intr_sts = 0;
+>       i2c_end_transfer(s->bus);
+>   }
+>   
+
+Applied to aspeed-next.
+
+Thanks,
+
+C.
+
 

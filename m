@@ -4,64 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A91610F92E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 16:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E0BFF60F4
+	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 18:00:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7bhL-00018E-3f; Tue, 31 Mar 2026 12:12:12 -0400
+	id 1w7dNh-00054R-Fz; Tue, 31 Mar 2026 14:00:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w7bhK-00017y-Ac; Tue, 31 Mar 2026 12:12:10 -0400
-Received: from zg8tmtyylji0my4xnjeumjiw.icoremail.net ([162.243.161.220])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w7bhH-0003do-Sf; Tue, 31 Mar 2026 12:12:10 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAnLaFP8stp4AxCAA--.22358S2;
- Wed, 01 Apr 2026 00:11:59 +0800 (CST)
-Received: from [192.168.31.119] (unknown [222.244.182.203])
- by mail (Coremail) with SMTP id AQAAf8DwW5JI8stpr9UHAA--.16737S2;
- Wed, 01 Apr 2026 00:11:53 +0800 (CST)
-Message-ID: <2b776067-fbcc-429a-ac47-dd17350f504a@phytium.com.cn>
-Date: Wed, 1 Apr 2026 00:11:50 +0800
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w7dNO-00050V-JQ
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 13:59:45 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w7dNK-0002D6-GI
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 13:59:41 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-43cf906b007so1642151f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 10:59:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1774979976; x=1775584776; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/qS+cREq1W+RKiBSVyZFuDdd6d5V1toNRsD4H7dDYCw=;
+ b=IigPJroyVtZf6XBgDUUZ0/eey5FNzGmHcd+vPHxKFDTix+upKisy6v++RhQLwvMwnY
+ ugK09Os2ArgJFT2kfcGH+3MYi/z74vEHcXWoSmyErn3UVhZOIvR5lEtMHMbDwwg9VaqK
+ SHR5963eN5ymdFNJfurgd/5ueYElr2Xl7vDXBdn1i3g+yEoY4yi2r8nDXYZGjWuvI7Su
+ 0kj5BZ1nCV4a7ONpPMcoxY026WOJfkVZPlFSMoHF/g8CE3j8ur/UnqHG9chGMYyWSZz7
+ d7QKlA5onsoBrqujCm0Mn0UrVukwfzzPl07X/SZSV9/XbpjPTJmJRQlaPHXt2s2XVnPJ
+ dMSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774979976; x=1775584776;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/qS+cREq1W+RKiBSVyZFuDdd6d5V1toNRsD4H7dDYCw=;
+ b=q7Sz4XX3GZkzy0749OE3Yhu5VFju1uGh6OH/2Scd0Vd0nhuux69NfvcK+7DH12IT04
+ tpunZXEl7H6npv9vRv7a83r0tX3OPkBdg0xVm9kDjhPf82BQc9XmKuztMjTeoYkVsAww
+ lVYvEBRcOcvegdIUQVaA1l0KM9B8TXq2yUUcLLsNmBsxOTfJ1+hkXIe78AFbdXsmpojz
+ J/YjDF+YHXnNW4yt9IBFzg0BbvKprwBVTRFonhw+xHc3gFsnuLReIiC++qs3xrEosbqe
+ 4WhTkK0tdoZJia9lkzNNdIYU7z5ERKLIGcGck0jFjw6/Wz8K7Vb/4OSNH7zOQhZeuzwM
+ DayQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWVIlQ8OAx7PBrcOy80dl2QoAQOAjdVqD7y+UvOdyKq1/XPxY9QmGjVpzD5uRbUpFSieN006hGxyQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxs0wNHPPKMY6aRQOMcHYQU+Y8lnbe2f2+beGFQ5VqFyEDgyiud
+ FMkdo9lWg+SDDeD3UJ+nHDktYQYkJ66Yh5zCNwQ5T9FKJM/EIKfp80LKe0IxktwYpSC6EVbtxzQ
+ boYujwCo=
+X-Gm-Gg: ATEYQzxRX02c/8V0OvYZf2+8PerQG/nPOYPjcUEKuELTTKjb4UYMFLI/YuZgTAlfkt+
+ rpq3EgkTs8VDvhaItUsvPKo8e5ePIVP97SJTVg2/0X4NkrYOfqohJl1aPhA7um412SqUMK6zvOn
+ MVxSYdZfa84yhWE+6aOiKUPtyB+dhUs2pM1WQI98mEIjzrcF4fwvlOWC2sSLKhiumi+7SEUaGUy
+ mCFmeU5Cerghy06WGWkxvf8VvCUuE+NN38VdG0Ccg7SJUK6z1gSasBYmpRpakTJntuMOL+Bpufz
+ ntwNdD1UAJ60S5IIUJHmkKZP6+g92J4VrRgKQk5r4e0UzHylNSRmS4/dI9usQgevK8ujAm+UP9U
+ hRdWLEVHraGmFhfOmxzxkeZRM9582wfpFCPeiV++5aj3pDIScEsZuvorQA6UEYuvafzGOnCvIMq
+ rGbD7t78vXMpkHmoLr/3BwXiM7T5Gx/XggvCxV/BjAEUgo79MZwnIqtrHhVE1uM4Ye6w==
+X-Received: by 2002:a05:6000:4008:b0:43d:714:34de with SMTP id
+ ffacd0b85a97d-43d150f1b6fmr926070f8f.45.1774979975869; 
+ Tue, 31 Mar 2026 10:59:35 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43cf245e2f6sm29929612f8f.18.2026.03.31.10.59.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Mar 2026 10:59:35 -0700 (PDT)
+Message-ID: <de8a5eb2-b7e0-48c2-a83e-2d1d4f1e94fb@linaro.org>
+Date: Tue, 31 Mar 2026 19:59:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] tests/qtest: Add qtest-attrs-test for memory access
- attrs
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Chao Liu <chao.liu.zevorn@gmail.com>
-References: <20260331040659.401397-1-tangtao1634@phytium.com.cn>
- <20260331040659.401397-4-tangtao1634@phytium.com.cn>
- <CAFEAcA_h+eK3TZSipQCKEFEEqZA1dFPFxYT-V2MK5h57wPDQwA@mail.gmail.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <CAFEAcA_h+eK3TZSipQCKEFEEqZA1dFPFxYT-V2MK5h57wPDQwA@mail.gmail.com>
+Subject: Re: [PATCH] hw/pci/pci: Enforce pci_setup_iommu_per_bus() is called
+ only once per bus
+Content-Language: en-US
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, skolothumtho@nvidia.com, nicolinc@nvidia.com,
+ nathanc@nvidia.com
+References: <20260323183024.4069032-1-eric.auger@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260323183024.4069032-1-eric.auger@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwW5JI8stpr9UHAA--.16737S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQALBWnKzfEFuwACss
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxCrWDWrWUAF1xJrWrGw1xXwb_yoW5XFWrpF
- Z5Xana9F4DXFyxJayIqw4Uu3WYvws3ArnFvr4qq3WUArs8CryaqFWjk3W5Wr97u397X34F
- 9w4qqr9rXF1qqaDanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.161.220;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjeumjiw.icoremail.net
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,90 +106,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
-
-On 2026/3/31 18:36, Peter Maydell wrote:
-> On Tue, 31 Mar 2026 at 05:07, Tao Tang <tangtao1634@phytium.com.cn> wrote:
->> Add qtest-attrs-test to exercise qtest memory access commands with attrs
->> on both aarch64 and x86.
->>
->> The test covers:
->> - Arm virt,secure=on: scalar and bulk accesses across non-secure,
->>    secure, and root spaces, plus negative coverage for realm and for
->>    non-secure accesses into secure-only RAM
->> - x86 q35: normal accesses
->> - libqtest-single *_attrs shortcut wrappers
->>
->> For negative cases, use qtest_raw_cmd() to check that accesses which
->> miss the intended AddressSpace fail with ERR responses emitted via
->> qtest_send_memtx_error().
->>
->> On Arm, the test targets the virt machine's secure-only RAM window so
->> that the requested attrs must select the correct address space.
->>
->> Also wire qtest-attrs-test into the aarch64 and i386/x86_64 qtest
->> builds.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->
->> +static void G_GNUC_PRINTF(3, 4) assert_qtest_response(QTestState *qts,
->> +                                                      const char *expected,
->> +                                                      const char *fmt, ...)
->> +{
->> +    va_list ap;
->> +    g_autofree gchar *cmd = NULL;
->> +    g_autofree gchar *line = NULL;
->> +    g_auto(GStrv) response = NULL;
->> +
->> +    va_start(ap, fmt);
->> +    cmd = g_strdup_vprintf(fmt, ap);
->> +    va_end(ap);
->> +
->> +    response = qtest_raw_cmd(qts, "%s", cmd);
->> +    line = g_strjoinv(" ", response);
->> +    g_assert_cmpstr(line, ==, expected);
->> +}
->> +
->> +static void G_GNUC_PRINTF(2, 3) assert_qtest_error_prefix(QTestState *qts,
->> +                                                          const char *fmt, ...)
->> +{
->> +    va_list ap;
->> +    g_autofree gchar *cmd = NULL;
->> +    g_auto(GStrv) response = NULL;
->> +
->> +    va_start(ap, fmt);
->> +    cmd = g_strdup_vprintf(fmt, ap);
->> +    va_end(ap);
->> +
->> +    response = qtest_raw_cmd(qts, "%s", cmd);
->> +    g_assert_cmpstr(response[0], ==, "ERR");
->> +}
-> These seem more generally useful and not specific to this test.
-> If this is the API we want for "send a qtest command we expect
-> might fail and check what it told us the error was", then we
-> should define these in libqtest.
-
-Thanks for the feedback.
-
-These two generic error-response checking helpers will be moved to 
-libqtest in V5.
+On 23/3/26 19:30, Eric Auger wrote:
+> Currently it is possible to attach several arm-smmuv3 devices to the
+> same bus although it is a wrong setup.
+> 
+> Change the prototype of pci_setup_iommu_per_bus to pass an error
+> handle. This latter is set when iommu_per_bus is already set and
+> used by the single caller (smmu_base_realize) to report a useful
+> error to the end-user.
+> 
+> While at it document pci_setup_iommu_per_bus callback in the header.
+> 
+> Fixes: 66d2f665e163 ("hw/arm/virt: Allow user-creatable SMMUv3 dev instantiation")
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   include/hw/pci/pci.h | 16 +++++++++++++++-
+>   hw/arm/smmu-common.c |  2 +-
+>   hw/pci/pci.c         |  9 +++++++--
+>   3 files changed, 23 insertions(+), 4 deletions(-)
 
 
-> More generally, if a test case is having to use qtest_raw_cmd()
-> to directly send a qtest command and parse the response for
-> something, that suggests that we don't have the API for
-> the "non-raw" qtest functions right.
->
-> -- PMM
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 58c4452b1f5..a3aeb5a8796 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -981,7 +981,7 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+>           }
+>   
+>           if (s->smmu_per_bus) {
+> -            pci_setup_iommu_per_bus(pci_bus, s->iommu_ops, s);
+> +            pci_setup_iommu_per_bus(pci_bus, s->iommu_ops, s, errp);
 
+Should we return if the caller returned false? More code could be added
+at the end of this function.
 
-I'll add libqtest negative helpers for memory commands with attrs, so 
-tests can check expected ERR paths without open-coding raw qtest 
-protocol str, and keep qtest_raw_cmd() available for the few 
-protocol-level cases that the structured API can't express.
-
-Thanks again for your time on this series.
-
-Tao
-
+>           } else {
+>               pci_setup_iommu(pci_bus, s->iommu_ops, s);
+>           }
 

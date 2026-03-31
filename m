@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300FA109B492
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 15:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A91610F92E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 16:12:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7bRq-0001Oj-61; Tue, 31 Mar 2026 11:56:10 -0400
+	id 1w7bhL-00018E-3f; Tue, 31 Mar 2026 12:12:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w7bRn-0001NS-VN; Tue, 31 Mar 2026 11:56:08 -0400
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ id 1w7bhK-00017y-Ac; Tue, 31 Mar 2026 12:12:10 -0400
+Received: from zg8tmtyylji0my4xnjeumjiw.icoremail.net ([162.243.161.220])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1w7bRk-0001Of-BF; Tue, 31 Mar 2026 11:56:07 -0400
+ id 1w7bhH-0003do-Sf; Tue, 31 Mar 2026 12:12:10 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwC3vqKM7stpiP1BAA--.22084S2;
- Tue, 31 Mar 2026 23:55:56 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAnLaFP8stp4AxCAA--.22358S2;
+ Wed, 01 Apr 2026 00:11:59 +0800 (CST)
 Received: from [192.168.31.119] (unknown [222.244.182.203])
- by mail (Coremail) with SMTP id AQAAf8DwJ5OK7stp9NQHAA--.18267S2;
- Tue, 31 Mar 2026 23:55:55 +0800 (CST)
-Message-ID: <6ad7c0a0-3b6f-42e3-a4f2-0817ab3343e7@phytium.com.cn>
-Date: Tue, 31 Mar 2026 23:55:54 +0800
+ by mail (Coremail) with SMTP id AQAAf8DwW5JI8stpr9UHAA--.16737S2;
+ Wed, 01 Apr 2026 00:11:53 +0800 (CST)
+Message-ID: <2b776067-fbcc-429a-ac47-dd17350f504a@phytium.com.cn>
+Date: Wed, 1 Apr 2026 00:11:50 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/4] tests/qtest: Add libqtest attrs helpers for memory
- accesses
+Subject: Re: [PATCH 3/4] tests/qtest: Add qtest-attrs-test for memory access
+ attrs
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
@@ -37,31 +37,31 @@ Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>
 References: <20260331040659.401397-1-tangtao1634@phytium.com.cn>
- <20260331040659.401397-3-tangtao1634@phytium.com.cn>
- <CAFEAcA9-=VKiGYMxYMTPhnKovWxYyEcTGp3+Yw3Cy0H1pDTv=g@mail.gmail.com>
+ <20260331040659.401397-4-tangtao1634@phytium.com.cn>
+ <CAFEAcA_h+eK3TZSipQCKEFEEqZA1dFPFxYT-V2MK5h57wPDQwA@mail.gmail.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <CAFEAcA9-=VKiGYMxYMTPhnKovWxYyEcTGp3+Yw3Cy0H1pDTv=g@mail.gmail.com>
+In-Reply-To: <CAFEAcA_h+eK3TZSipQCKEFEEqZA1dFPFxYT-V2MK5h57wPDQwA@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwJ5OK7stp9NQHAA--.18267S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQALBWnKzfEFuwABsv
+X-CM-TRANSID: AQAAf8DwW5JI8stpr9UHAA--.16737S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQALBWnKzfEFuwACss
 Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvdXoWrKw1rAF1UGrW7trW8tF4kXrb_yoWkGFg_Za
- 1UtryDWw4jvF4ftay8Kan0vrZ0kFy8WFsIqw18Xa17GF18ZF93Wrn7tr93Ja1rWw1rXws2
- krn0934rtFnIkjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
- Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
- UUUU=
-Received-SPF: pass client-ip=209.97.181.73;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxCrWDWrWUAF1xJrWrGw1xXwb_yoW5XFWrpF
+ Z5Xana9F4DXFyxJayIqw4Uu3WYvws3ArnFvr4qq3WUArs8CryaqFWjk3W5Wr97u397X34F
+ 9w4qqr9rXF1qqaDanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.161.220;
  envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -8
-X-Spam_score: -0.9
+ helo=zg8tmtyylji0my4xnjeumjiw.icoremail.net
+X-Spam_score_int: -5
+X-Spam_score: -0.6
 X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,38 +79,88 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Peter,
 
-On 2026/3/31 18:26, Peter Maydell wrote:
+On 2026/3/31 18:36, Peter Maydell wrote:
 > On Tue, 31 Mar 2026 at 05:07, Tao Tang <tangtao1634@phytium.com.cn> wrote:
->> Expose libqtest APIs for qtest memory commands with optional attrs:
->> - qtest_{read,write}{b,w,l,q}_attrs()
->> - qtest_mem{read,write,set}_attrs()
->> - qtest_buf{read,write}_attrs()
+>> Add qtest-attrs-test to exercise qtest memory access commands with attrs
+>> on both aarch64 and x86.
 >>
->> Keep the existing libqtest memory access helpers as wrappers passing
->> NULL attrs, so current users remain unchanged.
+>> The test covers:
+>> - Arm virt,secure=on: scalar and bulk accesses across non-secure,
+>>    secure, and root spaces, plus negative coverage for realm and for
+>>    non-secure accesses into secure-only RAM
+>> - x86 q35: normal accesses
+>> - libqtest-single *_attrs shortcut wrappers
 >>
->> Also add matching libqtest-single shortcut wrappers for the *_attrs
->> helpers.
-> This part is fine.
+>> For negative cases, use qtest_raw_cmd() to check that accesses which
+>> miss the intended AddressSpace fail with ERR responses emitted via
+>> qtest_send_memtx_error().
+>>
+>> On Arm, the test targets the virt machine's secure-only RAM window so
+>> that the requested attrs must select the correct address space.
+>>
+>> Also wire qtest-attrs-test into the aarch64 and i386/x86_64 qtest
+>> builds.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 >
->> Refactor libqtest response parsing by splitting qtest_rsp_args() into a
->> raw tokenizing helper, qtest_rsp_words(), and the existing OK-checking
->> wrapper. Add qtest_raw_cmd() on top of qtest_rsp_words() so tests can
->> send raw qtest protocol commands and inspect non-OK responses such as
->> ERR and FAIL.
-> This is a separate thing and shouldn't be in the same patch.
+>> +static void G_GNUC_PRINTF(3, 4) assert_qtest_response(QTestState *qts,
+>> +                                                      const char *expected,
+>> +                                                      const char *fmt, ...)
+>> +{
+>> +    va_list ap;
+>> +    g_autofree gchar *cmd = NULL;
+>> +    g_autofree gchar *line = NULL;
+>> +    g_auto(GStrv) response = NULL;
+>> +
+>> +    va_start(ap, fmt);
+>> +    cmd = g_strdup_vprintf(fmt, ap);
+>> +    va_end(ap);
+>> +
+>> +    response = qtest_raw_cmd(qts, "%s", cmd);
+>> +    line = g_strjoinv(" ", response);
+>> +    g_assert_cmpstr(line, ==, expected);
+>> +}
+>> +
+>> +static void G_GNUC_PRINTF(2, 3) assert_qtest_error_prefix(QTestState *qts,
+>> +                                                          const char *fmt, ...)
+>> +{
+>> +    va_list ap;
+>> +    g_autofree gchar *cmd = NULL;
+>> +    g_auto(GStrv) response = NULL;
+>> +
+>> +    va_start(ap, fmt);
+>> +    cmd = g_strdup_vprintf(fmt, ap);
+>> +    va_end(ap);
+>> +
+>> +    response = qtest_raw_cmd(qts, "%s", cmd);
+>> +    g_assert_cmpstr(response[0], ==, "ERR");
+>> +}
+> These seem more generally useful and not specific to this test.
+> If this is the API we want for "send a qtest command we expect
+> might fail and check what it told us the error was", then we
+> should define these in libqtest.
+
+Thanks for the feedback.
+
+These two generic error-response checking helpers will be moved to 
+libqtest in V5.
+
+
+> More generally, if a test case is having to use qtest_raw_cmd()
+> to directly send a qtest command and parse the response for
+> something, that suggests that we don't have the API for
+> the "non-raw" qtest functions right.
 >
-> thanks
 > -- PMM
 
 
-I’ll split the qtest response-parsing refactor and qtest_raw_cmd() into 
-a separate preparatory patch in the next version.
+I'll add libqtest negative helpers for memory commands with attrs, so 
+tests can check expected ERR paths without open-coding raw qtest 
+protocol str, and keep qtest_raw_cmd() available for the few 
+protocol-level cases that the structured API can't express.
 
-
-Thanks,
+Thanks again for your time on this series.
 
 Tao
-
 
 

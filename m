@@ -4,82 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21415109B46F
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 14:05:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCC02109B47B
+	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 15:06:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7Zhs-0008JJ-Bv; Tue, 31 Mar 2026 10:04:36 -0400
+	id 1w7afi-0007Ik-Et; Tue, 31 Mar 2026 11:06:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1w7Zhm-0008DR-B4
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 10:04:31 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w7aff-0007IA-Te
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 11:06:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1w7Zhj-00038v-C7
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 10:04:30 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1w7afd-0003B5-VH
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 11:06:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774965865;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=cfmxl1TfHUDqDhNgICFFXmlWc+KtIbgnxWzssvtwMjw=;
- b=AqJ60a7/gx4dEU9KN3jPSot/w+YLypfhPCZBEi6comuaDKFRWTP23I+mIOQZsIZa8EICBR
- kjoInpDNUslZudXN535JKOFGxuCjrMwxr+hiRxbPXrHbQdlF1TF1Kx8xPwY668fGyjGFz7
- FQL+U6cvVnQIhdueTay9FKt+lYexbkM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-45-vqLBhffrPV-CvWz5qN6ufw-1; Tue,
- 31 Mar 2026 10:04:19 -0400
-X-MC-Unique: vqLBhffrPV-CvWz5qN6ufw-1
-X-Mimecast-MFC-AGG-ID: vqLBhffrPV-CvWz5qN6ufw_1774965847
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9A1E0195609F; Tue, 31 Mar 2026 14:04:06 +0000 (UTC)
-Received: from gondolin.redhat.com (unknown [10.67.32.150])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5D2F630001A1; Tue, 31 Mar 2026 14:03:53 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-11.1] hw: add compat machines for 11.1
-Date: Tue, 31 Mar 2026 16:03:47 +0200
-Message-ID: <20260331140347.653404-1-cohuck@redhat.com>
+ s=mimecast20190719; t=1774969579;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2gryvpOsyuTGg3mo1MKJLcyqv19wF5b49hWrsT2skrY=;
+ b=LyNJcaB7ckvwkuxDhWERz+aZ2EggbiFhf0y9spWPzBjuOtqsAiHvdUi6Z8dM1G4vIyyqHT
+ lCWQb8SHgvHo6hLWjjaqxMv/LY9pp4l+PsVEtx6Qw3Joqt+kHMk4dXoc3pGQR6yvEGz2wB
+ DSgZXbj/Amqu2xkJrLdFHnSZdeIWf1A=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-1-YC95ZTHVNbmNt5aE2XsgrQ-1; Tue, 31 Mar 2026 11:06:17 -0400
+X-MC-Unique: YC95ZTHVNbmNt5aE2XsgrQ-1
+X-Mimecast-MFC-AGG-ID: YC95ZTHVNbmNt5aE2XsgrQ_1774969576
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-48535f4d5e1so62988835e9.0
+ for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 08:06:17 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1774969576; x=1775574376;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2gryvpOsyuTGg3mo1MKJLcyqv19wF5b49hWrsT2skrY=;
+ b=CEtLxkNSYloeJxUREmITrBOlNhzXFqgnpQev4pRLWukEgLhBm8nwrAv/det3Rt+oR1
+ VqpevoLA2DqJ/D2Bee6pZ66iPtVwMSlkPVP3VW2AvpuX2yUk6e0mrPd41TbdVXhl4ZB9
+ M5ZFQhqLO3yhuEkT0ixEuWsg2tN/8lbIoJkrHr7YMqMXP3/30vHLA+QEUwMxGd3vDFN6
+ p5zcdmynI0sgdxAl04P22KuwVOOWkVNBNRTTCbbyj+lt9MxRZcIehfh+zQI5DXG+RBoB
+ 45gszTcNayCkm+t/RrEsP4NuZxJPCdV5/r6xcXg8jyXh8/xs3T6bepjDDnC56NUP2h8o
+ +6Ug==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXrBZ/GfF19Alous4gZpmHrVDAfqD7C2J4Patv6dPF9b739YdktuXISVEvSGm1FaHlg+qtnpPa1Yg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyqi9zzkbbRtA64OzaQsX26QiBZdkEPNTY9si2bZfAPboOzzps6
+ hdIf8xr9p8okBqmYy9L7QiVC/uyAlhQWgXHhJ2+XoIEy+QBJT0t2w0VrRIZN/T/KZi8/qk++ON9
+ zFfcNCXEgTXD4PN1+0myG4swfvKbF/HdpgT0avwuX1mAdGEPAhOUYKg==
+X-Gm-Gg: ATEYQzzNg29iEPzr2YgMXiFNcUr+q9uygTcw7H+HfecdSDHyAkBWOlvu8TTnV/LGn7r
+ FvMI2Bi/sNJ4GqNWyhM3Af+kUfdYG98dfeXjkMoeCMXjqoJfaJACNlMu0870j4pUTIs7kcNrCAw
+ 0mWP39NDIm4IWPboYQQA2hq4xhj5aMzopO9qMuXsZNINylu1SSnF9QGoLo5EuKoF/YMxUClhhbN
+ SeaAkj/S8kDWGBJ9eG7nmRYOqjal7G3jzqZtLaQ3IvicueM61C55h/QxjJK6psGSo4jMImajc0F
+ lDnrq+h9TWFxWl4iMolQ1/LpIVBpi3KnZJvJfHw0inUiwSqFjzVsjZbwfsdRmvNKdZ9wmLHU3Pu
+ URS+cL/ThpKh7CpYYTZWCptE66OWPN5BZdNeCiWuiiZltToAoJgxa/NCPGfiwiCIPRbLSWw==
+X-Received: by 2002:a05:600c:6c8:b0:488:7ff5:2c67 with SMTP id
+ 5b1f17b1804b1-4887ff52e31mr18568725e9.12.1774969575999; 
+ Tue, 31 Mar 2026 08:06:15 -0700 (PDT)
+X-Received: by 2002:a05:600c:6c8:b0:488:7ff5:2c67 with SMTP id
+ 5b1f17b1804b1-4887ff52e31mr18568255e9.12.1774969575443; 
+ Tue, 31 Mar 2026 08:06:15 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4887e7e9786sm40892595e9.3.2026.03.31.08.06.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 31 Mar 2026 08:06:14 -0700 (PDT)
+Message-ID: <5ccbdd38-e63f-4a4a-8d28-9621bf8883fe@redhat.com>
+Date: Tue, 31 Mar 2026 17:06:13 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: c2TtyJ5TqVDRB7W1x-pwf8cjuoiHjpVsO_d7iovh8-E_1774965847
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/pci/pci: Enforce pci_setup_iommu_per_bus() is called
+ only once per bus
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, skolothumtho@nvidia.com,
+ nathanc@nvidia.com
+References: <20260323183024.4069032-1-eric.auger@redhat.com>
+ <aco9ECUbZ1+QvbOR@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aco9ECUbZ1+QvbOR@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: XUp7dVlGw6z2Bz2zun9l42-NaP_wFcT9cStNo0vz5RY_1774969576
 X-Mimecast-Originator: redhat.com
-Content-type: text/plain
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 27
-X-Spam_score: 2.7
-X-Spam_bar: ++
-X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,249 +118,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add 11.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/arm/virt.c              |  9 ++++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 13 +++++++++++--
- hw/i386/pc_q35.c           | 13 +++++++++++--
- hw/m68k/virt.c             |  9 ++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/core/boards.h   |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 10 files changed, 76 insertions(+), 9 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ec0d8475ca40..d7e68d42ce02 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3719,10 +3719,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_11_1_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)
-+
- static void virt_machine_11_0_options(MachineClass *mc)
- {
-+    virt_machine_11_1_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)
-+DEFINE_VIRT_MACHINE(11, 0)
- 
- static void virt_machine_10_2_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 0aa77a57e956..1abc8ae73739 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -38,6 +38,9 @@
- #include "hw/acpi/generic_event_device.h"
- #include "qemu/audio.h"
- 
-+GlobalProperty hw_compat_11_0[] = {};
-+const size_t hw_compat_11_0_len = G_N_ELEMENTS(hw_compat_11_0);
-+
- GlobalProperty hw_compat_10_2[] = {
-     { "scsi-block", "migrate-pr", "off" },
-     { "isa-cirrus-vga", "global-vmstate", "true" },
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4b53b5be4a96..2ecad3c503fb 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -73,6 +73,9 @@
- #include "hw/xen/xen-bus.h"
- #endif
- 
-+GlobalProperty pc_compat_11_0[] = {};
-+const size_t pc_compat_11_0_len = G_N_ELEMENTS(pc_compat_11_0);
-+
- GlobalProperty pc_compat_10_2[] = {};
- const size_t pc_compat_10_2_len = G_N_ELEMENTS(pc_compat_10_2);
- 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 4d71e0d51a28..82457bdb167a 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -428,12 +428,21 @@ static void pc_i440fx_machine_options(MachineClass *m)
-                      pc_piix_compat_defaults, pc_piix_compat_defaults_len);
- }
- 
--static void pc_i440fx_machine_11_0_options(MachineClass *m)
-+static void pc_i440fx_machine_11_1_options(MachineClass *m)
- {
-     pc_i440fx_machine_options(m);
- }
- 
--DEFINE_I440FX_MACHINE_AS_LATEST(11, 0);
-+DEFINE_I440FX_MACHINE_AS_LATEST(11, 1);
-+
-+static void pc_i440fx_machine_11_0_options(MachineClass *m)
-+{
-+    pc_i440fx_machine_11_1_options(m);
-+    compat_props_add(m->compat_props, hw_compat_11_0, hw_compat_11_0_len);
-+    compat_props_add(m->compat_props, pc_compat_11_0, pc_compat_11_0_len);
-+}
-+
-+DEFINE_I440FX_MACHINE(11, 0);
- 
- static void pc_i440fx_machine_10_2_options(MachineClass *m)
- {
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index cb23322f5a44..972dd9275f68 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -364,12 +364,21 @@ static void pc_q35_machine_options(MachineClass *m)
-                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);
- }
- 
--static void pc_q35_machine_11_0_options(MachineClass *m)
-+static void pc_q35_machine_11_1_options(MachineClass *m)
- {
-     pc_q35_machine_options(m);
- }
- 
--DEFINE_Q35_MACHINE_AS_LATEST(11, 0);
-+DEFINE_Q35_MACHINE_AS_LATEST(11, 1);
-+
-+static void pc_q35_machine_11_0_options(MachineClass *m)
-+{
-+    pc_q35_machine_11_1_options(m);
-+    compat_props_add(m->compat_props, hw_compat_11_0, hw_compat_11_0_len);
-+    compat_props_add(m->compat_props, pc_compat_11_0, pc_compat_11_0_len);
-+}
-+
-+DEFINE_Q35_MACHINE(11, 0);
- 
- static void pc_q35_machine_10_2_options(MachineClass *m)
- {
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index ffe6e234155b..96c0fb73fea5 100644
---- a/hw/m68k/virt.c
-+++ b/hw/m68k/virt.c
-@@ -367,10 +367,17 @@ type_init(virt_machine_register_types)
- #define DEFINE_VIRT_MACHINE(major, minor) \
-     DEFINE_VIRT_MACHINE_IMPL(false, major, minor)
- 
-+static void virt_machine_11_1_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)
-+
- static void virt_machine_11_0_options(MachineClass *mc)
- {
-+    virt_machine_11_1_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)
-+DEFINE_VIRT_MACHINE(11, 0)
- 
- static void virt_machine_10_2_options(MachineClass *mc)
- {
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 0ab39dfea6b8..428b491a7df1 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4760,15 +4760,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
- #define DEFINE_SPAPR_MACHINE(major, minor) \
-     DEFINE_SPAPR_MACHINE_IMPL(false, major, minor)
- 
-+/*
-+ * pseries-11.1
-+ */
-+static void spapr_machine_11_1_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE_AS_LATEST(11, 1);
-+
- /*
-  * pseries-11.0
-  */
- static void spapr_machine_11_0_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_11_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
- }
- 
--DEFINE_SPAPR_MACHINE_AS_LATEST(11, 0);
-+DEFINE_SPAPR_MACHINE(11, 0);
- 
- /*
-  * pseries-10.2
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 3ef009463d11..cc768daeb04c 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -907,14 +907,26 @@ static const TypeInfo ccw_machine_info = {
-     DEFINE_CCW_MACHINE_IMPL(false, major, minor)
- 
- 
-+static void ccw_machine_11_1_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_11_1_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE_AS_LATEST(11, 1);
-+
- static void ccw_machine_11_0_instance_options(MachineState *machine)
- {
-+    ccw_machine_11_1_instance_options(machine);
- }
- 
- static void ccw_machine_11_0_class_options(MachineClass *mc)
- {
-+    ccw_machine_11_1_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len);
- }
--DEFINE_CCW_MACHINE_AS_LATEST(11, 0);
-+DEFINE_CCW_MACHINE(11, 0);
- 
- static void ccw_machine_10_2_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
-index b8dad0a1074d..db83fe92922b 100644
---- a/include/hw/core/boards.h
-+++ b/include/hw/core/boards.h
-@@ -798,6 +798,9 @@ struct MachineState {
-         } \
-     } while (0)
- 
-+extern GlobalProperty hw_compat_11_0[];
-+extern const size_t hw_compat_11_0_len;
-+
- extern GlobalProperty hw_compat_10_2[];
- extern const size_t hw_compat_10_2_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 22325324d094..85a74363b52e 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -208,6 +208,9 @@ void pc_system_parse_ovmf_flash(uint8_t *flash_ptr, size_t flash_size);
- /* sgx.c */
- void pc_machine_init_sgx_epc(PCMachineState *pcms);
- 
-+extern GlobalProperty pc_compat_11_0[];
-+extern const size_t pc_compat_11_0_len;
-+
- extern GlobalProperty pc_compat_10_2[];
- extern const size_t pc_compat_10_2_len;
- 
--- 
-2.53.0
+On 3/30/26 11:06 AM, Nicolin Chen wrote:
+> On Mon, Mar 23, 2026 at 07:30:20PM +0100, Eric Auger wrote:
+>> @@ -3307,11 +3307,16 @@ void pci_setup_iommu(PCIBus *bus, const PCIIOMMUOps *ops, void *opaque)
+>>   * IOMMU ops are returned, avoiding the use of the parent’s IOMMU when
+>>   * it's not appropriate.
+>>   */
+>> -void pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops,
+>> -                             void *opaque)
+>> +bool pci_setup_iommu_per_bus(PCIBus *bus, const PCIIOMMUOps *ops,
+>> +                             void *opaque, Error **errp)
+>>  {
+>> +    if (bus->iommu_per_bus) {
+>> +        error_setg(errp, "An iommu is already attached to this bus");
+>> +        return false;
+>> +    }
+>>      pci_setup_iommu(bus, ops, opaque);
+>>      bus->iommu_per_bus = true;
+>> +    return true;
+> Do we need the same check in pci_setup_iommu()?
+
+For machine wide IOMMU the check is handled in machine code (at least in
+arm virt).
+
+Nevertheless a more generic solution could be to check in
+pci_setup_iommu() that bus->iommu_ops is not already set. If set, return
+an error, cascaded up through pci_setup_iommu() and
+pci_setup_iommu_per_bus().
+However the change is much more invasive and impacts several archs. What
+do you think?
+
+I don't think this can be a valid use case to call pci_setup_iommu()
+several times on the same bus?
+>
+> Apart from this question,
+>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+
+Thanks
+
+Eric
+>
 
 

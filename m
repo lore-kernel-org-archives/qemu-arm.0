@@ -4,101 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59957FF60E7
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 08:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48ECFF60EE
+	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 09:23:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7UKA-0001Su-7k; Tue, 31 Mar 2026 04:19:48 -0400
+	id 1w7VJZ-0004gM-CU; Tue, 31 Mar 2026 05:23:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w7UK5-0001SR-7L
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 04:19:43 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1w7VJX-0004f4-J2
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 05:23:11 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w7UK3-0003TT-Rh
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 04:19:40 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-6501d242e3fso3584283d50.0
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 01:19:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774945176; cv=none;
- d=google.com; s=arc-20240605;
- b=CJPrOH3WhYxn7cX/5/MP3QcZzKzIiaviNcYNC8lJTTvHT8jjwFZxu7NYf+l9G5uCla
- 606yzUONdUOwWyUacRNH9T7Q0uEUYS5ZYSbsBlFCjZe53hzie09h+ph2lS83avpW6LPF
- u89RTVsu6ODc8xPXjuMf5h+g8mbPoOMLNO/H50n2LZJ5KA0KCa4w172SEZcwmwU7MKMJ
- BLuSIZW7P8FwLJsu21WuEMQ+er5sxkhckz4/laAYbaGsjtqRYUXzxVYj/57Zla2PmI+3
- MlBbdDy5PTE/0jZNNkVMw9ZtXH5+boa0ncDEwRF28Te+LtND1nosGfTZTMXH12EmaWSD
- o+lw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ZJLhuz8Mi4qYBbJljsmWW7v/SyDPWBk4EE+2g9THPAE=;
- fh=X8pn77QmT4wMefDS9i/JxpY39IO0Eq2Pu57Zg2/oVAE=;
- b=SXEXPOpiYQZ+NHe56FoMnLMJuYh240zxV5ohLDdTSvi23bYM3s7QLd8w7zMfQ6KBXY
- x9ngfOjyl7vSnbqe0NRoTnZLvx3GHDGtVU3vZ0VObrH/hdlhSkfY/GO3mptve5d9+ZJX
- /EDkWvJHV5SGtiNEkGbrUWuvGHSlpSV5oFn46/yPy08Rxa4lvODVVBDinZOD63jXWai+
- NM6DEo7Rgt0V1aHPKHUuKFStOSGO0d6cgFQKSZdWJS37obApG6ukLtF+iOmsVfaEavnW
- N/LxSJ7OAByZu6hbfI0OTofjnz7qak1M+hftG3PiAL/IHrd7BTjMJQXhpZh3+suy4Wyu
- v97g==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1w7VJV-0003vN-2e
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 05:23:11 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-43b9d3ebed5so3985957f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 02:23:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774945176; x=1775549976; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZJLhuz8Mi4qYBbJljsmWW7v/SyDPWBk4EE+2g9THPAE=;
- b=MLtCs7X+XspjjQzZqg8YI5FovH4wijxKWemKjvqoLtybQJycSvlZWO2dUXk7OLKjjN
- hpyPirDcj1RuwkhTD2w0MBeX4xe7PAtezKnIDynU3N6qeQnypru2ZzqRvCckdahqiGyj
- lOqI7TvPOmvvJEJecESvaT/zxzl9ON6QDP1HAzKsf8LNiidWyJlSwKUTV4MseoK9YLE1
- DXyBYR0ZWZ0AC6nCxPrDKmy/bO0+VXvqYB3QMqBdWDyL5J294J+K+HYW7TI7e8x2aFfd
- JSSQWhJ3aSoO1OmJgosWoD4aP24ffn9IwoTcXPoAVJCn57SzRBLlihkwCFERwZWknXY+
- MnWg==
+ d=linaro.org; s=google; t=1774948986; x=1775553786; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=wP+GI1GA2esVBEcdv2LEdQJ+EKOQrpQMHXtB4e3u7TU=;
+ b=uuF5tiyJtl6NyKA3FiAhGWMXajshZ9x7EGb1BlnYVoG9/8cJFemM6HC/xdSi7JFmPV
+ PAECsZ8rndEoIjT7El1mVj2+Qwy5p7Nmvq+/O9e0wkH0zCDePxzukmY2fJwEs0prTJ+K
+ GfHy8sGHw8UOLQhpu0CpsXSC1BWbG0HretAQqxjVdgyuEjmths/sogPTwTFxb1io2cC7
+ ThfTgoV/PHT4FWlgd8oXJlsyopOARyJt65orkwKFNCAzeXpuAll3sZVJcK7caeIqEMaV
+ hNwbAQGIEfjiaybWRpEO16vujjzZrVVIHbXU5wSSW0ElQBBqncY1hp8aZjNRPslg+qt4
+ Rosw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774945176; x=1775549976;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1774948986; x=1775553786;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZJLhuz8Mi4qYBbJljsmWW7v/SyDPWBk4EE+2g9THPAE=;
- b=QpXrYj8ETGpZcDZ7v6NVlH5yaFGoOXFjqk19Ql2njO8UJLCE/LzTOwcsro6Sspe5B0
- HUVY2nxek34Il966IYGJJKMZV/Z0ibMzKP9vRvmUTo79vfGj4sI9PUQckIBrqCTUORHm
- Ne0GNFl5xS8t2Qhmfg4nITiDjkCtIOUCTNZbUO0k7A1WKPdeHaTa/E7N64wFISgK7ZYo
- izRgTX3ZVMavNdPI94rVyeK2i0Gs6fqM05sG2NsdHSXwZSfinDpU35bPHw1+PWyuAwFD
- mjoz1UUq9+FWG49zmRz152PHP+BUJ3buURW/vFwtiR6M+tiaSLHUB0X6puZa22o9kYPw
- z+4g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXGI02Be9vaFLbz23PWrSNukNkkcwjkQWMqXvByR6mfqp0TWp8HWVY1m/7qpXis/WJsSMtCy/SjZg==@nongnu.org
-X-Gm-Message-State: AOJu0YzG6y7Sd9lnr5BcSi6k+zO72xLnBudHbp49tkmd9/5KXMa9jFcV
- awwqNVmwdHSNdsCNSF5aKLvKxsVyd2qJfFtNnPupFsf4nZgYffsr6lIvl7/DcUBPdY3RpMn/qJo
- cE3sqbNZmM1g3DN8hVeg8uOWhpVOq3Mju+f89KjZK7g==
-X-Gm-Gg: ATEYQzx9vZkIpznr3kivcCtizoaZQbYq3awCtO86hr5XosOvm2EVggJjHT+7gY5ATk4
- LlCPpIMsLpmI8WbJZNa9SGDqWRAyXs+veVs3jho8vZhfVHMPVHRiWs5t4FLDFJnwkfACIt1geR1
- kCr97u1teLdNWIy6zX8J9Dmi8d++E2o+xhvxuexywFESeXR8b8ANGMbmSN0Z7J4PsUMzp4xxIA1
- vJESJvVqDZMZ2EVTQJ46Q0+nle8Vgn6L4XrQIk/HervEsrt3ZAX5LJclzlbyIqLJmivvLepW4lR
- Rd1HPIVqCctSigUlvgArCMHYhv//J3TI36ln+1Poow/vq3qheCnSPO16UJ8VhcTLy8Q=
-X-Received: by 2002:a05:690e:d55:b0:64f:ff90:4d56 with SMTP id
- 956f58d0204a3-64fff904dffmr13391095d50.61.1774945175877; Tue, 31 Mar 2026
- 01:19:35 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260331040659.401397-1-tangtao1634@phytium.com.cn>
- <20260331040659.401397-2-tangtao1634@phytium.com.cn>
-In-Reply-To: <20260331040659.401397-2-tangtao1634@phytium.com.cn>
+ bh=wP+GI1GA2esVBEcdv2LEdQJ+EKOQrpQMHXtB4e3u7TU=;
+ b=Pc8yqpTj2ZLAfs3JBKKqZZ+ccbRsH/mqcFX81gIqBGi39NYNEQEf234tdD65cGi8KE
+ ohp2EhMqb/44yyUbp9jdoyaW7bNlXbQIrnLMjQz9GAkRwJS2cmyJ77ARYiFWF2ZdhKsw
+ Y3R5GSnf06kip1ZnqmlTqV7cjUBuJr8mDGijss8IunevHrAtQy6SVNm6xmK8sGKWlAY5
+ J4CnMAvuLEWWGDdNwNVHPJBiVOlh81hBSxSEKBrRBU0LcEd5JPH7wwM0hQYAQfyEGGfr
+ 5pL74DgPzuqbdcZBTRZDwjCBMGXacDQYdqTIVgOrGyW8h4XlNrdY8ZSPa6A6Ehn8qTha
+ jXjg==
+X-Gm-Message-State: AOJu0YwPRnwUPbUm/xpB81osROa9citeVPp3P1FbfB6+x+JzwZm3AIJt
+ msGo1e3uAZJwl+xkUO9hAKZ7DBTUCEn1IU4eDj3Rkr6EQuqJZkeBQHnljpe23cufh02ygH3AYTt
+ IwIqNw3U=
+X-Gm-Gg: ATEYQzyFksyBxG5n57Av4mMJXOCMhkXvEH7mrJlJUb84BFt49dGhmHn8NxWuzjDIz3w
+ Yl6BbBKsNVBy4oqj/F62c2FLVGovfkBEXplWGVB3VAfDzPy014Ki/SyAqSF1s/LGHfaOOR7JbyK
+ tkmGzjr6xaYOxBfiZYDVtdz6PQrxAu+YYQ1Lynr3IguLnAwd1rcrqZfivYOALBUcGnvtAHwFoGz
+ b+znj/JIMszBfz33SoE3AJ7DTRf1o3SJJ7+5kH5UGa0C+bNwrRZllVavdr6b8WuY8aWlf5TQYI8
+ NqtYUeTZ2vBQH/rpnYZ+eS42jV01OrArAAhJYmlB4F5GtVoLiS7OdIdK01n4sEKhEnb9mX6X+Aa
+ lBezYnH8Wg8+ajgQy09F09FVhCj8aSmG1uOzsTu23ckU9x4LsUyKihbsgbQy6y2zoIId1/Yz5y7
+ skzlDSw8upydxJuEIzlO3oRonwlJDeVcChDS0LYmK0YmixG07pgvnbFfTyE2S+DVtcUESBZHNay
+ K4bo4tk4WIiI53tNOnkttWIh4i3HP0=
+X-Received: by 2002:a5d:64e6:0:b0:439:b858:1d28 with SMTP id
+ ffacd0b85a97d-43b9ea9aef9mr25655034f8f.26.1774948986461; 
+ Tue, 31 Mar 2026 02:23:06 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43cf257b72dsm25928298f8f.34.2026.03.31.02.23.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 31 Mar 2026 02:23:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 31 Mar 2026 09:19:23 +0100
-X-Gm-Features: AQROBzCpdSc0PNi8CPN_7ZA8RISCWlS__jTbV8_4vCM12Mgnryb4Ykq9xFUFYJ0
-Message-ID: <CAFEAcA-mePyVgVMUy6LDC3E=3HqCyFZVWP78=gY=h_x+_nocVg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] tests/qtest: Add attrs support to qtest server memory
- commands
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
- Chao Liu <chao.liu.zevorn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH] target/arm: do_ats_write(): avoid assertion when ptw failed
+Date: Tue, 31 Mar 2026 10:23:05 +0100
+Message-ID: <20260331092305.2062580-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,67 +99,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 31 Mar 2026 at 05:07, Tao Tang <tangtao1634@phytium.com.cn> wrote:
->
-> Extend qtest memory access commands to accept an optional attrs argument.
->
-> Supported attrs:
-> - secure (x86/Arm)
-> - space=non-secure|secure|root|realm (Arm-only)
->
-> For memory commands, parse attrs, select the corresponding AddressSpace
-> with cpu_asidx_from_attrs(), and issue accesses with the matching
-> MemTxAttrs.
->
-> Cover scalar and bulk memory commands, including:
-> - read{b,w,l,q} / write{b,w,l,q}
-> - read / write
-> - b64read / b64write
-> - memset
->
-> Also reject invalid attrs and excessive arguments, and document the new
-> command forms in qtest.c, and use qtest_send_memtx_error() to return
-> ERR for memory access failures.
->
-> Preserve legacy no-attrs semantics for compatibility: those commands
-> continue to ignore MemTxResult and return OK.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+In do_ats_write() we try to assert that the cacheattrs from
+get_phys_addr_for_at() are in the form we expect:
 
-> @@ -510,33 +684,38 @@ static void qtest_process_command(CharFrontend *chr, gchar **words)
->                 strcmp(words[0], "writeq") == 0) {
->          uint64_t addr;
->          uint64_t value;
-> +        bool has_attrs;
-> +        MemTxResult result;
-> +        MemTxAttrs attrs;
-> +        AddressSpace *as;
->          int ret;
->
->          g_assert(words[1] && words[2]);
-> +        if (words[3] && words[4]) {
-> +            qtest_send(chr, "ERR too many arguments\n");
-> +            return;
-> +        }
->          ret = qemu_strtou64(words[1], NULL, 0, &addr);
->          g_assert(ret == 0);
->          ret = qemu_strtou64(words[2], NULL, 0, &value);
->          g_assert(ret == 0);
-> +        has_attrs = words[3] != NULL;
-> +        if (!has_attrs) {
-> +            qtest_write_sized(first_cpu->as, addr,
-> +                              MEMTXATTRS_UNSPECIFIED,
-> +                              value, words[0][5]);
-> +            qtest_send(chr, "OK\n");
-> +            return;
-> +        }
+    /*
+     * ATS operations only do S1 or S1+S2 translations, so we never
+     * have to deal with the ARMCacheAttrs format for S2 only.
+     */
+    assert(!res.cacheattrs.is_s2_format);
 
-You don't need has_attrs and this if() statement at all:
-you've written qtest_parse_mem_attrs() to correctly return
-MEMTXATTRS_UNSPECIFIED for the "attrs argument is a NULL pointer"
-case, so the codepath below will handle that correctly. Similarly
-for all the other similar places below.
+However, the GetPhysAddrResult struct documents that its fields are
+only valid when the page table walk succeeded.  For a two stage page
+table walk which fails during stage two, we will return early from
+get_phys_addr_twostage() and depending on the fault type the
+res.cacheattrs may have been initialized with the stage 2 cache attr
+information in stage 2 format.  In this case we will incorrectly
+assert here.
 
-thanks
--- PMM
+Fix the assertion to not look at the res fields if the lookup failed.
+
+Note for stable backports: the do_ats_write() function is in
+target/arm/helper.c in older QEMU versions, but the change to the
+assert line is the same.
+
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3328
+Fixes: 9f225e607f21 ("target/arm: Postpone interpretation of stage 2 descriptor attribute bits")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Not a regression, but it's a very safe fix, so this will probably
+get into 11.0.
+
+ target/arm/tcg/cpregs-at.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
+index 0e8f229aa7..53dd67375d 100644
+--- a/target/arm/tcg/cpregs-at.c
++++ b/target/arm/tcg/cpregs-at.c
+@@ -37,8 +37,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+     /*
+      * ATS operations only do S1 or S1+S2 translations, so we never
+      * have to deal with the ARMCacheAttrs format for S2 only.
++     * (Note that res fields are only valid on ptw success.)
+      */
+-    assert(!res.cacheattrs.is_s2_format);
++    assert(ret || !res.cacheattrs.is_s2_format);
+ 
+     if (ret) {
+         /*
+-- 
+2.43.0
+
 

@@ -4,86 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E48ECFF60EE
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 09:23:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CA7B1061B21
+	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 10:26:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7VJZ-0004gM-CU; Tue, 31 Mar 2026 05:23:13 -0400
+	id 1w7WIr-0006Sc-3j; Tue, 31 Mar 2026 06:26:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w7VJX-0004f4-J2
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 05:23:11 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1w7WIf-0006M9-Jn
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 06:26:24 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w7VJV-0003vN-2e
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 05:23:11 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-43b9d3ebed5so3985957f8f.1
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 02:23:08 -0700 (PDT)
+ id 1w7WId-0003xd-KD
+ for qemu-arm@nongnu.org; Tue, 31 Mar 2026 06:26:20 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-64eb84d1e37so6544138d50.2
+ for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 03:26:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774952778; cv=none;
+ d=google.com; s=arc-20240605;
+ b=MazRodOHlW3hPw2lH4LrM2r/zaicrJ7m7+auByIaMRD63LoBRPj+UbP+jwIhVpOYp1
+ mD26sY/wPKT1LBbEbAkHnr7rpIc55+PziAy7W+w555VtjnTtcXaPmanlN2WTcV0QzCXe
+ ztvRf+DYuZPBZ4WvPnreOCjlRUjihWd4QQf1YMMkQdUH/VtgH4v1a3bcuEUd9zH0v+7d
+ MFNchM/0xWG2pLyptSWMan+VOMsc5x5oV++HZsUaVbL17XGyS1LJRm+wusYvnGdUk9kw
+ a/NQmyozwIi9sdZVm+QauFIMOOOJ3abk1ZEjHHCrAgUtCPtIwpcUx51eLtEZxv6vhtMy
+ Ov5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=OGJakI5/s4cFR4SR+pv32nqtOZb2B8bhCrtZ7SmTN6s=;
+ fh=64wi3nL/qkDsVdEJoazbgMLHAf18DeeqKcFqnUHQ6Mw=;
+ b=F9fewD7r22LuS6CRtbJBPIlp6WjhgHImKVmZWxkje3Nhtg0vs9XpJ7WRrdbFqZQASN
+ VSGeYxUyDg8g9lPm2blMI+VBo5n4X5l28W/KW738zuFVv7MdJANVG47wFYBwkvrOHSV3
+ B634iWfbK0/6BX2FekUdMg49LkBSD8nH5j+bf0uRAyyp1uQi7+NEVKh0adhEgsL56E1d
+ H6IBgdZ3lm4kdaLj2IpKQAhuQ+yZne4pEddKRCt2iLM0sS9sNNHdL0V3W6fiWOimSpu3
+ sG69dAotOMxqji63MYxz0MM+Y6Gx5UJ3ijsSRj5Eh+r3OFgBzUSyAA2vFq2PSUH/+PqM
+ wnmg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774948986; x=1775553786; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=wP+GI1GA2esVBEcdv2LEdQJ+EKOQrpQMHXtB4e3u7TU=;
- b=uuF5tiyJtl6NyKA3FiAhGWMXajshZ9x7EGb1BlnYVoG9/8cJFemM6HC/xdSi7JFmPV
- PAECsZ8rndEoIjT7El1mVj2+Qwy5p7Nmvq+/O9e0wkH0zCDePxzukmY2fJwEs0prTJ+K
- GfHy8sGHw8UOLQhpu0CpsXSC1BWbG0HretAQqxjVdgyuEjmths/sogPTwTFxb1io2cC7
- ThfTgoV/PHT4FWlgd8oXJlsyopOARyJt65orkwKFNCAzeXpuAll3sZVJcK7caeIqEMaV
- hNwbAQGIEfjiaybWRpEO16vujjzZrVVIHbXU5wSSW0ElQBBqncY1hp8aZjNRPslg+qt4
- Rosw==
+ d=linaro.org; s=google; t=1774952778; x=1775557578; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=OGJakI5/s4cFR4SR+pv32nqtOZb2B8bhCrtZ7SmTN6s=;
+ b=HzXQrk+KgscWNPHhVwt/PlO6CFzXBCpC9VxMwrNrMEPXtgjBNjAHQ/Tc/v1Iqb0VxO
+ LaW+Sm3VI/vJkkWhzhrdcMe7XPWilqH0s2dnMwLYymzs9UrAc349+iA+o3Jlupem0OmY
+ hqaLcn3W62vx0ED/k1uWCLlOdDJYxTk451hkhfeGNQKyZdvE8ijbsv6BlEuP2zQrHZT8
+ GfFBd8No6tOy9SEB+WSZByZFTpmH5mK4TMDvSJBCL2peivvP2EBasoGgMPtwzbaWDESi
+ 2BPkehW52cM4iS0eDoyCFMd7cxre1Ll9E4yq35nCzdc6DekJ3p2JsYXQ5UZZ3Z+VFWrG
+ 2H1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774948986; x=1775553786;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1774952778; x=1775557578;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wP+GI1GA2esVBEcdv2LEdQJ+EKOQrpQMHXtB4e3u7TU=;
- b=Pc8yqpTj2ZLAfs3JBKKqZZ+ccbRsH/mqcFX81gIqBGi39NYNEQEf234tdD65cGi8KE
- ohp2EhMqb/44yyUbp9jdoyaW7bNlXbQIrnLMjQz9GAkRwJS2cmyJ77ARYiFWF2ZdhKsw
- Y3R5GSnf06kip1ZnqmlTqV7cjUBuJr8mDGijss8IunevHrAtQy6SVNm6xmK8sGKWlAY5
- J4CnMAvuLEWWGDdNwNVHPJBiVOlh81hBSxSEKBrRBU0LcEd5JPH7wwM0hQYAQfyEGGfr
- 5pL74DgPzuqbdcZBTRZDwjCBMGXacDQYdqTIVgOrGyW8h4XlNrdY8ZSPa6A6Ehn8qTha
- jXjg==
-X-Gm-Message-State: AOJu0YwPRnwUPbUm/xpB81osROa9citeVPp3P1FbfB6+x+JzwZm3AIJt
- msGo1e3uAZJwl+xkUO9hAKZ7DBTUCEn1IU4eDj3Rkr6EQuqJZkeBQHnljpe23cufh02ygH3AYTt
- IwIqNw3U=
-X-Gm-Gg: ATEYQzyFksyBxG5n57Av4mMJXOCMhkXvEH7mrJlJUb84BFt49dGhmHn8NxWuzjDIz3w
- Yl6BbBKsNVBy4oqj/F62c2FLVGovfkBEXplWGVB3VAfDzPy014Ki/SyAqSF1s/LGHfaOOR7JbyK
- tkmGzjr6xaYOxBfiZYDVtdz6PQrxAu+YYQ1Lynr3IguLnAwd1rcrqZfivYOALBUcGnvtAHwFoGz
- b+znj/JIMszBfz33SoE3AJ7DTRf1o3SJJ7+5kH5UGa0C+bNwrRZllVavdr6b8WuY8aWlf5TQYI8
- NqtYUeTZ2vBQH/rpnYZ+eS42jV01OrArAAhJYmlB4F5GtVoLiS7OdIdK01n4sEKhEnb9mX6X+Aa
- lBezYnH8Wg8+ajgQy09F09FVhCj8aSmG1uOzsTu23ckU9x4LsUyKihbsgbQy6y2zoIId1/Yz5y7
- skzlDSw8upydxJuEIzlO3oRonwlJDeVcChDS0LYmK0YmixG07pgvnbFfTyE2S+DVtcUESBZHNay
- K4bo4tk4WIiI53tNOnkttWIh4i3HP0=
-X-Received: by 2002:a5d:64e6:0:b0:439:b858:1d28 with SMTP id
- ffacd0b85a97d-43b9ea9aef9mr25655034f8f.26.1774948986461; 
- Tue, 31 Mar 2026 02:23:06 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43cf257b72dsm25928298f8f.34.2026.03.31.02.23.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 31 Mar 2026 02:23:05 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH] target/arm: do_ats_write(): avoid assertion when ptw failed
-Date: Tue, 31 Mar 2026 10:23:05 +0100
-Message-ID: <20260331092305.2062580-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=OGJakI5/s4cFR4SR+pv32nqtOZb2B8bhCrtZ7SmTN6s=;
+ b=SzLw2XOf+srs0tuZwsNH8Gt/Ug0zwqxnh5RCqHNMEtaxaxtTjMUi4kSbERYfA9J5Hl
+ IY9tCFZ4jivY6YgIdFDmkE6m5U6A+EJNEgrBJkeBTq7pvwbsdmTY2cbrcpWHv+CPjukC
+ DN7SP3gqQIlZB8WElx59Bc7Mre8yH7/IFR0bpmXVVNRBdCSGXak1JySTxlGMBmpBL2BV
+ kDr8PHXzyb5s9HUmlKlOWNwn9CnphBVBTymG/suWe8FLcFcSbe9nB63bJpcNtP1muMBM
+ 2onlJWZZxXt/rPbSiivObx5mxcdoFz6m2XVHrsUZq83Z8QjQM3j+wxNAK5JHGQNy5Lyp
+ gs4w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUTD66QPRq2gWwB9uzaA5NLk4+Vy76PBhUCLdgM1KhaEFhnEtyBKpSIEvx4wnt8z68aquHavRBYQA==@nongnu.org
+X-Gm-Message-State: AOJu0YyR/lpKlio08mSElOAimvivNSZ9AvoV5N3wxdQDTXrAU7z8o6zS
+ ONtVlYY58tGxHHwmIhD4Ecf1QuSnlqrQ7+kzrNCIbZgYo3LqEEQ1K78gVXncdS2qJpvx43zLBbr
+ oyNIoRNuDj3U/px0ejF5zqRBxuXAaLJGgf9hin+hx7g==
+X-Gm-Gg: ATEYQzzarn/cOl4UGEdq+AcNT6ngjhjYkGGJS7XyZRf4z2+vUerKsain4bmDM6ke0lS
+ 7ijhirHvfLZDuXuq9bQUkwdABDm7P9vSLzQ/LnokYfQSsILPo1P25I7m8eyMx7CT54GfOyAkY6h
+ zGZDsbmlDqD1BrfnuGbpsPswHB4nLxbhIumHsfKEYe69f17rKvLjbOGgswE0DMEjyrgMnIo+ts2
+ I5gGMCkyrujUMLdhwAfp0QNycHLcjNPvHGrJkyMc0vefIfAqi8grWnk7Bszb1Z7xyLD/Ebpd5Ob
+ 5d81N4m1FXcYik6YfhmNeoUWjyhjhoT3VwDpwh4ctNt/awbhtT7H8Q+Pt9HjRT3fc7o=
+X-Received: by 2002:a53:c1cb:0:b0:64e:a1d0:1140 with SMTP id
+ 956f58d0204a3-64ff7417a45mr12048245d50.61.1774952778436; Tue, 31 Mar 2026
+ 03:26:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+References: <20260331040659.401397-1-tangtao1634@phytium.com.cn>
+ <20260331040659.401397-3-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260331040659.401397-3-tangtao1634@phytium.com.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 31 Mar 2026 11:26:05 +0100
+X-Gm-Features: AQROBzB6Gq1PMrYoBpiPk_DUeRVKsPx7U8027JPTsJNNntCxqNxqNp_-3j_RT4o
+Message-ID: <CAFEAcA9-=VKiGYMxYMTPhnKovWxYyEcTGp3+Yw3Cy0H1pDTv=g@mail.gmail.com>
+Subject: Re: [PATCH 2/4] tests/qtest: Add libqtest attrs helpers for memory
+ accesses
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+ Chao Liu <chao.liu.zevorn@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,56 +121,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In do_ats_write() we try to assert that the cacheattrs from
-get_phys_addr_for_at() are in the form we expect:
+On Tue, 31 Mar 2026 at 05:07, Tao Tang <tangtao1634@phytium.com.cn> wrote:
+>
+> Expose libqtest APIs for qtest memory commands with optional attrs:
+> - qtest_{read,write}{b,w,l,q}_attrs()
+> - qtest_mem{read,write,set}_attrs()
+> - qtest_buf{read,write}_attrs()
+>
+> Keep the existing libqtest memory access helpers as wrappers passing
+> NULL attrs, so current users remain unchanged.
+>
+> Also add matching libqtest-single shortcut wrappers for the *_attrs
+> helpers.
 
-    /*
-     * ATS operations only do S1 or S1+S2 translations, so we never
-     * have to deal with the ARMCacheAttrs format for S2 only.
-     */
-    assert(!res.cacheattrs.is_s2_format);
+This part is fine.
 
-However, the GetPhysAddrResult struct documents that its fields are
-only valid when the page table walk succeeded.  For a two stage page
-table walk which fails during stage two, we will return early from
-get_phys_addr_twostage() and depending on the fault type the
-res.cacheattrs may have been initialized with the stage 2 cache attr
-information in stage 2 format.  In this case we will incorrectly
-assert here.
+> Refactor libqtest response parsing by splitting qtest_rsp_args() into a
+> raw tokenizing helper, qtest_rsp_words(), and the existing OK-checking
+> wrapper. Add qtest_raw_cmd() on top of qtest_rsp_words() so tests can
+> send raw qtest protocol commands and inspect non-OK responses such as
+> ERR and FAIL.
 
-Fix the assertion to not look at the res fields if the lookup failed.
+This is a separate thing and shouldn't be in the same patch.
 
-Note for stable backports: the do_ats_write() function is in
-target/arm/helper.c in older QEMU versions, but the change to the
-assert line is the same.
-
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3328
-Fixes: 9f225e607f21 ("target/arm: Postpone interpretation of stage 2 descriptor attribute bits")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Not a regression, but it's a very safe fix, so this will probably
-get into 11.0.
-
- target/arm/tcg/cpregs-at.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
-index 0e8f229aa7..53dd67375d 100644
---- a/target/arm/tcg/cpregs-at.c
-+++ b/target/arm/tcg/cpregs-at.c
-@@ -37,8 +37,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-     /*
-      * ATS operations only do S1 or S1+S2 translations, so we never
-      * have to deal with the ARMCacheAttrs format for S2 only.
-+     * (Note that res fields are only valid on ptw success.)
-      */
--    assert(!res.cacheattrs.is_s2_format);
-+    assert(ret || !res.cacheattrs.is_s2_format);
- 
-     if (ret) {
-         /*
--- 
-2.43.0
-
+thanks
+-- PMM
 

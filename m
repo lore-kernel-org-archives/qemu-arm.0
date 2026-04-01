@@ -4,88 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88A5E10F931D
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 04:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396E41076371
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 05:40:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7mvx-0000oR-9c; Wed, 01 Apr 2026 00:12:01 -0400
+	id 1w7oJ4-000111-Hq; Wed, 01 Apr 2026 01:39:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w7mvw-0000oB-Aq
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 00:12:00 -0400
-Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
+ id 1w7oJ3-00010e-8n
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 01:39:57 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w7mvu-0001kg-E1
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 00:12:00 -0400
-Received: by mail-pj1-x1036.google.com with SMTP id
- 98e67ed59e1d1-35d971fb6f1so3199450a91.0
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 21:11:57 -0700 (PDT)
+ id 1w7oJ1-0003dn-Kz
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 01:39:57 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-82c28f0a4ecso4530837b3a.3
+ for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 22:39:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775016716; x=1775621516; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775021994; x=1775626794; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=wTUvG2bQYKBmkEgKHomLI08q5jTinJyVh+PH1aAcKQw=;
- b=LuJHBu7nJv1v9ZjV6FPmQHbh4BfOgxzNudkxXZ4PVOdljmv8qIOWc1jpgeqsOsAno1
- DIkt75HnYTS4T6Ad9CHICUvZ6jQQjN+hYlZJx0rmcvp55uRlcZD3kD/N5H3RnXDCW9ge
- CVdflZlEe/E6HenhUA9fylgJnnnspO2iETq0QymtDTCDCP9rJ/0pz3qcJkYr6hlQFZ6+
- IWbszcNBIl0JaBVevFM5SaYeiKxUzqQ0QzSs6/gSBaRcRvBEZDP8p/XSfLJF3Wnr3Q6I
- JnkOIx8omw4E0nKlNna48LfK4/wtJONGO31qp8e9E4JUB4a24MQT4A/4fQ+xqSee/Ev+
- vVaw==
+ bh=XqueuQwqQtL5mX0BN5SGNY61bqH8nYM8SRr+yt9YG+4=;
+ b=vdY4tnB9qluH2xPM4AuTyyE564t1+GqyF5OhT9/H34TIs9/PM3YONuMEV2j+3Eofll
+ X5UZMeFfnvQWUMgo1FbPzSuQGshNf+72sG+mX+6jAhTBNjYblCBACPg6Rfx4lZybnOy6
+ vil1LcvqQGX0NsJGhAr2hqBm7oSuPiTxjfNseyoWPHc6RP5C9Iawv14b4dtinD9j9XTN
+ wgVHi7N4BLp6pjc7efYhlWBhxD+McNFSO6mlztkeToHL0+v5K3iN0y6nrMfj9EwtuOv5
+ DD/v9Og6i2pF2Iuy4j2vBLKy8HgZvYsJWb/W3DsRs3X3d/TaM4SVvpmS5LJY/eJH60rK
+ 7UGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775016716; x=1775621516;
+ d=1e100.net; s=20251104; t=1775021994; x=1775626794;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wTUvG2bQYKBmkEgKHomLI08q5jTinJyVh+PH1aAcKQw=;
- b=q2bzPsRYWVyQ17Hu7UO1jcpTjF1Zy+h0PCqHwE+f/tu8jVrGoW/xrfr2OQxq3l48Kv
- jCFoTcJXkdOcOYWRkjOq76DWYJDlzJkIRcGyQUNU0cAjh46okTfnTXXPMz9uHEDrZogZ
- JTvVB3Kv/QuKduZlHkI0pA6Wozz7bQyNlj2RQfr6vdwCpZKpG/2rLwpDAmEYtkEQwN7i
- waz/DYfLu9aMwlekDYgjYVfRN0U6gx2kmqAeTTPzVAmC4nGJ9CC+qHQ8ck9W1shQRSay
- +1UHRBxiQORdqSKSGlLR9kOygEpGubvC+6bUKWfTD8FbNtxfz+g9+M8TWoBx/JaiYh1r
- ILIQ==
+ bh=XqueuQwqQtL5mX0BN5SGNY61bqH8nYM8SRr+yt9YG+4=;
+ b=hBPwKnp1P+jsXrU28PwB3OwZefRRNQa+xGehoXnDlnQbJHwBT40TOy2ni7L8BaUBel
+ x9TIOlZK8MigzSDj2OAqGxzZlhbt0sc1biTyzNFMOQleMVdnsdLYn6nUGJxtzHKElcd3
+ dCUJ6N7tc41Q/eZwAjLi3SGYTfS63d7cz7KnlJFrQABzLrWb9CeDDQjF0u2t9DuF8nYC
+ 1CndmBprq43KnBrhZNphgNFPY+1x8vmnuyBGeLn96BnFuC1WLUigNTZZblvdm7U3NcmZ
+ L//tfu0jh1eJusbA/AQXLivxhYUVoB1lZTrlKEGSenkrM2IDueCPKUpD/j88WvpMP2v/
+ Le1w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXfWM5po/kPSUUffFII+qcGBxIeN9wev+3GPM+Ouo4GAyG5F3KSXNcEfEX9rVh+URhTdeZYVRS7kA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9sXmOVVJof/FKm1nktdHKmj7WRB+1P5xuwT5k0gXqwU1DeyRu
- LHm9vlLZrbowoCIKRBHGqHFFDVf4jo0Z2nEUgr2q2HrqpA7iRJs+suM/srRtz/9L1mMpdHTYBq/
- w053D1So=
-X-Gm-Gg: ATEYQzyLGrhPsSTa+obhPX5xaSr7ib8bk7v8VNoy9+Bp2B84A0mtn/rrqM40PPhzmjc
- xEIJ9o0VDRnc9eYMCHomrqq5pta3ZlWGjFE1YNyj0M0OAxPqKWDClJzvxcoInD8dwlSJW5Ar4N0
- zVU2gOYuvw6tgJuXRaZ9bl5VxJWK/TJWfu3mUsEylyOZpWkOez4yCQShZkJm+wz8B00HP8dhVmp
- 1fkVBl3Obh/dGw9L8EfGMIYt/LwPrIHjEwjLYxIZcZU4W6N6HoSTSDwluQLMRDtSwKCr3n1wOGc
- E12iM2icteQNRCrEl1TNEQL/jBTtUK9+0CoNCEJCUMZmg2inmuMkEHKMEM8jXi9rQkiFa//pW9Z
- RwFuNcUVZgtGdWu4XerMSFNkAv34ESjfXBdci4dOnej76/ia/J1PUYG4I8CjP8qcxWkC870Gjp2
- wYbKhBKUwknfz4XNKsE6ReSwg0tMFqSHIsNO1lr0Kwv8m60cwdjklwLltYQjM2HHZQnvkLFeOAt
- 6W4gVdfBtxZbg==
-X-Received: by 2002:a17:90b:3d92:b0:35d:a557:e44 with SMTP id
- 98e67ed59e1d1-35dc6e7ab5cmr1989326a91.6.1775016716199; 
- Tue, 31 Mar 2026 21:11:56 -0700 (PDT)
-Received: from [192.168.68.76] (122-150-206-170.dyn.ip.vocus.au.
- [122.150.206.170]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35dbb883465sm1621007a91.5.2026.03.31.21.11.52
+ AJvYcCUvWBT3lq8TcTRwcbCGTjAXPUzgPMUR0tV54hhyUjgBqePrztBDE4ohdkxADhoPcd94QWeHzfwwCg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxs00BOKEfqYHuld4Y5KxcFuSGtaaIEFlhTbjEBzBbYZqdVz2Zp
+ IFX/3kSrT8+seZ+qTsnK4H9xaP0Q/l9ekQgiteJT0iJYB1RKum+AA5iLqmjRQ25/JlU=
+X-Gm-Gg: ATEYQzzOdu9uufKw8bjqnAyIl4VUcb+KugBbAixkub5sJfEzaVuZKQDx/2hNXyT5Y/r
+ 63u7+xmwrMDMrMsMomzhmQSuD4jyk7kmSGUy/zUZi2TQnw2qWlY0zSc8CU2HjDAoqJ/9qNo0jQz
+ e3ebAnfdFsKgEqAbJRcKfP3s0cFpq8/g5qpkxO1RflfihbiZa8c9qJ4MwdcTlv0srGYuOqVaEx5
+ 6A25QoJhgigr/WAMuTivVCAqUL+BLCnHDk6JIafV17SLUtSjwKGEc3l7+kSV9OitGgQVZA6ZN2v
+ /eNo2Ndh4Rha2HF/cbLJs172rYMMKKxuK+yCwiEbqerdviONy2ekK5d4aj+jQnDtjzsoOy0t0XJ
+ kZ4tFn37IOnsQZV+Qgi0jtw8pSzSH9YrUiWwbIZ8e3GGV3sgKuIoD7GfeH3C/aYO7aCWs0s+TFw
+ tDIBg4SOYLX4nx8DX0EX59pYkl2Sf86SpOpyUlTf7FsQJ3fsW9CjZUytSHjSBRYt5OjbbosQea2
+ i4=
+X-Received: by 2002:a05:6a00:278a:b0:82c:68f6:a18 with SMTP id
+ d2e1a72fcca58-82ce89b58cdmr2456807b3a.34.1775021993955; 
+ Tue, 31 Mar 2026 22:39:53 -0700 (PDT)
+Received: from [192.168.68.76] (122-150-206-208.dyn.ip.vocus.au.
+ [122.150.206.208]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-82cec36da5fsm1537393b3a.2.2026.03.31.22.39.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Mar 2026 21:11:55 -0700 (PDT)
-Message-ID: <b29dca1f-dde3-4e70-ae08-750d162e1b7d@linaro.org>
-Date: Wed, 1 Apr 2026 14:11:47 +1000
+ Tue, 31 Mar 2026 22:39:53 -0700 (PDT)
+Message-ID: <ce24436b-ce06-4f15-bcb9-4c7a7ee10c94@linaro.org>
+Date: Wed, 1 Apr 2026 15:39:44 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: do_ats_write(): avoid assertion when ptw
- failed
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Subject: Re: [RFC PATCH 02/35] target/arm: migrate system/cp trap syndromes to
+ registerfields
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <20260331092305.2062580-1-peter.maydell@linaro.org>
+Cc: Alexander Graf <agraf@csgraf.de>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20260320130607.2071996-1-alex.bennee@linaro.org>
+ <20260320130607.2071996-3-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260331092305.2062580-1-peter.maydell@linaro.org>
+In-Reply-To: <20260320130607.2071996-3-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,61 +111,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/31/26 19:23, Peter Maydell wrote:
-> In do_ats_write() we try to assert that the cacheattrs from
-> get_phys_addr_for_at() are in the form we expect:
-> 
->      /*
->       * ATS operations only do S1 or S1+S2 translations, so we never
->       * have to deal with the ARMCacheAttrs format for S2 only.
->       */
->      assert(!res.cacheattrs.is_s2_format);
-> 
-> However, the GetPhysAddrResult struct documents that its fields are
-> only valid when the page table walk succeeded.  For a two stage page
-> table walk which fails during stage two, we will return early from
-> get_phys_addr_twostage() and depending on the fault type the
-> res.cacheattrs may have been initialized with the stage 2 cache attr
-> information in stage 2 format.  In this case we will incorrectly
-> assert here.
-> 
-> Fix the assertion to not look at the res fields if the lookup failed.
-> 
-> Note for stable backports: the do_ats_write() function is in
-> target/arm/helper.c in older QEMU versions, but the change to the
-> assert line is the same.
-> 
-> Cc: qemu-stable@nongnu.org
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3328
-> Fixes: 9f225e607f21 ("target/arm: Postpone interpretation of stage 2 descriptor attribute bits")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Not a regression, but it's a very safe fix, so this will probably
-> get into 11.0.
-> 
->   target/arm/tcg/cpregs-at.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
-> index 0e8f229aa7..53dd67375d 100644
-> --- a/target/arm/tcg/cpregs-at.c
-> +++ b/target/arm/tcg/cpregs-at.c
-> @@ -37,8 +37,9 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
->       /*
->        * ATS operations only do S1 or S1+S2 translations, so we never
->        * have to deal with the ARMCacheAttrs format for S2 only.
-> +     * (Note that res fields are only valid on ptw success.)
->        */
-> -    assert(!res.cacheattrs.is_s2_format);
-> +    assert(ret || !res.cacheattrs.is_s2_format);
->   
->       if (ret) {
->           /*
+On 3/20/26 23:05, Alex Bennée wrote:
+>   static inline uint32_t syn_cp14_rt_trap(int cv, int cond, int opc1, int opc2,
+>                                           int crn, int crm, int rt, int isread,
+>                                           bool is_16bit)
+>   {
+> -    return (EC_CP14RTTRAP << ARM_EL_EC_SHIFT)
+> -        | (is_16bit ? 0 : ARM_EL_IL)
+> -        | (cv << 24) | (cond << 20) | (opc2 << 17) | (opc1 << 14)
+> -        | (crn << 10) | (rt << 5) | (crm << 1) | isread;
+> +    uint32_t res = syn_set_ec(0, EC_CP14RTTRAP);
+> +    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
 
-The assert could plausibly be moved somewhere !ret is already tested.  E.g. just before 
-the only use of cacheattrs.  That said,
+!is_16bit.
 
+> +    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
+...
+> +    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
+...
+> +    res = FIELD_DP32(res, SYNDROME, IL, is_16bit ? 0 : 1);
+
+Likewise.
+
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
 
 r~
 

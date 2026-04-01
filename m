@@ -4,140 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C188110F9302
-	for <qemu-arm@archiver.kernel.org>; Tue, 31 Mar 2026 21:25:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2657410F92EC
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 01:02:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7gZh-0002qC-O9; Tue, 31 Mar 2026 17:24:37 -0400
+	id 1w7jys-0007hj-Vt; Tue, 31 Mar 2026 21:02:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7gZf-0002pa-Ma
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 17:24:35 -0400
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7gZc-0005c9-S5
- for qemu-arm@nongnu.org; Tue, 31 Mar 2026 17:24:35 -0400
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-c70bfef17a4so4534934a12.2
- for <qemu-arm@nongnu.org>; Tue, 31 Mar 2026 14:24:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774992271; x=1775597071; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fGMk+g4Br1otK56LRFzJyhZSA6q3OaAR/PGP0G1XEhU=;
- b=eR47fHB8wYF61FHQL7KTZqPMgWwxTe4kuREcvTX0r4D85LXN7jZKP1hR6EleEvdoWN
- VlmbZ2a3hsGuJMfcysJu9j0+hCOwrK9WrIN+d0y2wZaB3xrpd5oqLftfLDCEA3ZndxBV
- nrn5ettQlUGudYJj1MQYcIBy1jEJ7+Sv3A9h1AlcFN+O+BUDB2A4yHwfAzt6q+F7Q/Bv
- rZH1d5+ajrLdiYIZ0ONUyJYCmNG9dTWlxyhKY2cO9uDeYXNkYMwDGC1IMQ6Q9kYlAFLg
- bLbAY2U0iJLCD5aFaWhCB5DW4p38v+sRpKpyOAGfEopm8uVqUpHx/N/l4zv1XeRS/864
- hARQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774992271; x=1775597071;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fGMk+g4Br1otK56LRFzJyhZSA6q3OaAR/PGP0G1XEhU=;
- b=kytX5xiZEkOOc2Dl5y1z72mx/ev1Qf6jEIF+G5HcBsOMHsyaVRJ9l9/SB0mKo3PVs3
- NUEXDaZssGanb0xRWZXQIgPmt5YohWZWG3Bv8pNVN0vYS8ssrZYOR5BxGKGjGNrfB0Qc
- VSYEAGwFpxz9AwbLkpulRL1UsrD8f+9JaHgbBTjpkbtrvl+CWowCCsUTGwAU3jcHX1K3
- r5G0LM6dSUN/ErC1/N/0lEV1xy0lg/RodlwwPaJmbb8P7rcX+rgJrWWq/TGWNwsHRDbV
- k14Wk+pIJU+nM1H41E7McT7D8qcVl9j+jms6iRkXmfgoowWENvYxjSz+J7PM1E1vdPML
- fr6g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVOF+CTBeutDh6NyeqVLYrnvOnzc276ffpv+ooTuSRzxrxXf3GBl4s0suTe92mpFMp/h5Z4gtc5yw==@nongnu.org
-X-Gm-Message-State: AOJu0YzzAjQ8GsP9L6EsfMhSE1Zl40cctfouG6mmgDUo8P1bITfFlmQn
- hep06kzh52d5RIySkPov3QykufBPS6/jZXIRu54NEnTYKqDs4ON7+WpUNHP1C0PXrfE=
-X-Gm-Gg: ATEYQzxRcrgBxPEgUTGFxY9kAiW3z1f+ogaA/5k+rYlhFL5G2JtfaTbJ5+e2YHTANpX
- Jm634a8JkKH+XuR4glQcqBGtr3g7NQl0lpm+X7GA9nsX7nr/0BncawbkUWa084MZ2knWokIERvR
- WQKvcFnOl5B2dC7zZCQMR4tKvdk/qjYSKrNNuvggWAb4a1FwQ5kESZOGmj2nre7+9+Wu0R7kkYn
- A1+ycH6hZR7pA6QWkEeFVGg5362LxMPlKQrR+ZFt9AMjlDzBAgYrzwMVgUvn+WCT+E5suNsPdgn
- YrLp4fNA/iCUxzgulXLaOE+pNtnAAzbigNX51kF5LLjpKV7j1I7ru1J8Mv8ECHzNdyI61C55Wbp
- NrWaCVs5sTL43HN0tB7WQfdlqXrmDjFulsUQxOJPrtq+rXuIYBLfFCD9RU2ANtd1GJLzDRt6wxf
- ffFoXJYr+bkWkOQsu+eJkN7fElrAyqG4X9G24Qa8QCIRlVe7QmrXMXPi1VFpYzQFqTC+Df
-X-Received: by 2002:a05:6a21:998a:b0:39c:1f90:284e with SMTP id
- adf61e73a8af0-39ef798a34emr692857637.53.1774992270664; 
- Tue, 31 Mar 2026 14:24:30 -0700 (PDT)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c769179e497sm9892033a12.21.2026.03.31.14.24.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 31 Mar 2026 14:24:29 -0700 (PDT)
-Message-ID: <68b72c53-dec9-4d37-8e5d-888f05cdb1ea@linaro.org>
-Date: Tue, 31 Mar 2026 14:24:29 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/9] plugins: Introduce Fault Injection framework and
- API extensions
-Content-Language: en-US
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com,
- volodymyr_babchuk@epam.com, peter.maydell@linaro.org, philmd@linaro.org,
- Ruslan_Ruslichenko@epam.com, Richard Henderson <richard.henderson@linaro.org>
-References: <20260318104640.239752-1-ruslichenko.r@gmail.com>
- <4e8f4e6e-e9d2-4457-af3d-755ced6d2a45@linaro.org>
- <CAN-aV1FER7w1rqw0zM=L2z7MT_RKsBhFg7m6NijxyQa6t5JNqw@mail.gmail.com>
- <4d2d16df-0047-4b96-8312-46489ba0f1bf@linaro.org>
- <CAN-aV1F6O3dv5F1946wEugdLxkYDp0BW6QZPxwye02A5-HYz9g@mail.gmail.com>
- <79fca2cf-7618-4a35-a915-e2bf1811a851@linaro.org>
- <CAN-aV1HRZPxuS_U4mHYhnobbKkq2G5T9P2cJ2=LahT3TzGsC6A@mail.gmail.com>
- <005aa40d-4749-44d5-a65c-8f59cbd06d0c@linaro.org>
- <87a4vu3jcn.fsf@draig.linaro.org>
- <ebb0227f-87c1-4436-b48b-10f5dc150884@linaro.org>
- <88a91611-2d27-4c6d-bcad-09ff32f71d97@linaro.org>
- <CAN-aV1Hu_erYqJFpxbm_x3WxTVhuUCFcUVpMWZw3emz7GU-B1Q@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <CAN-aV1Hu_erYqJFpxbm_x3WxTVhuUCFcUVpMWZw3emz7GU-B1Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w7jyq-0007gM-G1; Tue, 31 Mar 2026 21:02:49 -0400
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1w7jyn-0007bB-Md; Tue, 31 Mar 2026 21:02:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UrhM9IKuXe8bBeyiyAipH3e79ZzP4QP0t9QgacYAoWKcGXfD4jk/V2SjnCigbUaZxOn+CSAuxzo88uqwXO2060hIECthT3M0G3OCD7MVIlbgrnNkhH1usaZZ8h39hmlrx28M7Doe/xnbBQCePnV3AcZ7uQjebcP9KoQg6WyHG6u+DJklLVtXZiamCL4dL5V6vzGe5i0GNHoA0L7ciofTstuPeKKr9nMx9GymOPfc4dTgRCtBf/hsuOH6hDTZoPW4P6cvRDSK7HgWf7qW45WuW5LnBliFGG6i8Afxv2RCxfTVUlcLoYw9YBD3xrfmYOU0RV22kWxnJyAGMVTPmNN15A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YBzZ2Eo6p1Dl0vN5H0RBSs0vCydnH4L9+TGgAvbIJIE=;
+ b=kwFbirfZHkg1X6kLHBurmCVV11qPKSO6v+3UvCGdbNQUs2kjPULcpl/1TetzqksQm68wQ9QODJ+2GIOJZXFoGTmyn3mc2ten1v8+t9/HGehJIP6Ao7hCXTut07pPxCqi5OGLQKYRd+KGI2fKc8FVdYBjLKbTRQOqae6rw7Z5dXb8t8ZQg9DO+QZ77UEfFS344M6ldocmVM4H/k+wC9CxUNyhatE1gDcZlYxfTHE7NPGISWD7p7u5HO7+vowGhtVX0BGiMoza+ygflF2D/Y/9zU93DT/palJy4mU5alVRTc7qcXElZOqeIwdF37rF596mvbKHS8jFz4b9HLdA9UVY+g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YBzZ2Eo6p1Dl0vN5H0RBSs0vCydnH4L9+TGgAvbIJIE=;
+ b=ewUWGR7EWCkaeo2tFil7giY8upuwOeqp65xb2I7CrHEyhe0ESuuQhooDHAzYukIsWl6dd19Ecb36bPQC9u5sfgLB+9c4/fEFatcnCCdUL/J7ZIKYBtzZf8b2Q511k7gakX/PcpMMaUZqtM4T4rYmHvHF2lNuficCXlL1JtFsILefUng2IMs78S+ClOcB3l5mhv7CRJ2DPKFKrNiBGUblV+kPHCfLlUlQy48EMlYrc4yuJtxWivbS/2Zdk0cQF/vTkwwCedzN+0sg3aTdHBnu95x4sJ99J+lEwhAqgyaKS06/HW4065Jglj5KFGIkjsdUZ+bDipoRztJaPuuJf0NpQw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
+ CH1PR12MB9647.namprd12.prod.outlook.com (2603:10b6:610:2b0::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.17; Wed, 1 Apr
+ 2026 01:02:34 +0000
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5%3]) with mapi id 15.20.9769.015; Wed, 1 Apr 2026
+ 01:02:34 +0000
+From: Nathan Chen <nathanc@nvidia.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Yi Liu <yi.l.liu@intel.com>, Eric Auger <eric.auger@redhat.com>,
+ Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Alex Williamson <alex@shazbot.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>
+Subject: [PATCH 00/11] hw/arm/smmuv3-accel: Resolve AUTO properties
+Date: Tue, 31 Mar 2026 18:02:20 -0700
+Message-ID: <20260401010231.4166776-1-nathanc@nvidia.com>
+X-Mailer: git-send-email 2.43.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-ClientProxiedBy: SJ0PR13CA0184.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c3::9) To DS2PR12MB9567.namprd12.prod.outlook.com
+ (2603:10b6:8:27c::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|CH1PR12MB9647:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1011bd58-4a0a-4fe5-81f7-08de8f8a5bbb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|7416014|18002099003|56012099003; 
+X-Microsoft-Antispam-Message-Info: +uU1uCwnlHwXSQjRmzdoj4FmMUy5EonjB1zv/eC/duYcF27JjZAgOxfUjzp4XroNKI95zpaZEQyhNExCLyKygk4CEFwKPmoHTIqbaK5QK8uqURkTqo1LMeeA2xIychEQtY7F285Ndecz89A37SFJi3NwKixtF+paPAhcJ2PR5hbkCDB9cCHgRarKnwdPW4jlTH3XP8pVVL0MDeKd84AqdPgqCpZpGwATxKWfsswHmtAqppf+90w6lM+Q2LgBDqiNza2ln2xGuo7mF6+60TzTR3tgV7AdscwCury/ifl4Uk6ReBboYlmF536vdQ479+JhTt1MVdOAFuQjhXJrR85Uq5K55IvejNqWq7jORulLkOLiDK0NArKgZAUfYCAsIjUyxaAJyWMBuI+UjCsqVtNxTkY242Jyo9gpKyXm/VLhZ7VTKrpPSeYJg/EZMsN/ywMTiIp8Kiz/Pwog4NNpxRXL382G5cmjClJ+Lm//xxdXgqkNxFw7d+dDVB5HFP3PgzJXLlAwoA37THX+AhR43tezX36S6ekwOMqLaSy1BSQxJOVUFEazt38ekR+Hcbwo3u/6hARJ1nNRpAvF2zPrbUWj4y5GOH7QyP2n+YlcsqGs898Tv0qYjimdAw0PqR9t6lpTLr52xriizoC3XPN8QKypBRW9xxpSbK4o+Uh5volbKEJ5ilt8yKZ45eSVUKw2BLF52yDregSg2E7LpWoI0na/9xuOpkxgYbORlpGcrHCw3IU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(18002099003)(56012099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?VmPB3DSfkKrNsTfGKlOKEkmFf1VpWHw51XqQ0lpqLM8e8C+1/vOJQ+3R2soT?=
+ =?us-ascii?Q?mHnvyXtYLRuuedzftHxBkjm9VRL8p0/ud+smrTHbeJjTjZuS50RUn/0xrXDX?=
+ =?us-ascii?Q?ahVjhJ4om5vicyWjH9gOEVlOAxH+ZihU/KwWkFafor/nz2oiJA//twxKi9px?=
+ =?us-ascii?Q?T17pnhc7lHplc5Pn7FjTSFAxuXUi4T3rjGgq5WepXRP00ZHVd1+9wxqsYI0o?=
+ =?us-ascii?Q?tEJxzJu1VoKjxU2uQn5JLlxmfknfA6XvbAWmOzqi3JbkHoi0DNvrrU/bu44e?=
+ =?us-ascii?Q?+tkbIBJkmFP4cAW2NJydEvb2Nm01VqWkfKvvPt3nwlmM6F5lXmZwTcWTzqoV?=
+ =?us-ascii?Q?koBgBbWtGvBw9h79gvlZowsVRCnCziaxeOfiQN8jzYZRTRTWLprxd6OyQEEw?=
+ =?us-ascii?Q?54+59uDqKZ/TjCnRcuRYRS5i2Hygz+lwg22UgpYah1TwV5ZcK88PQGIg9mQn?=
+ =?us-ascii?Q?FscqnslLPgMil4buVqRKd3WryTi9D0qYditQv+X/jo8lyx5O123pjNh7LvXW?=
+ =?us-ascii?Q?yczItuI5Gm4siLAkY6poxFqFL2VeF0S8jxAWiuYDS5Z0o/0DLHUa0PklxJCi?=
+ =?us-ascii?Q?c0/WeqNTWZBA48S3B8wKm81sNvq82kJalHfGKw600oLjUueHv4kWuEzkirdD?=
+ =?us-ascii?Q?xFYu8a4ve6JlZSfIfkFa5kGp77yLjsDvZoLKhzMjodpKTFp7Qhbm4lvhNC3Z?=
+ =?us-ascii?Q?c3AfQpkEYWVkzRO59AgAMV7fAJEyfh3Yh9o+ZO/b/hyNNF9cZ6e343NA49z9?=
+ =?us-ascii?Q?qjE59Uk6PgLqJFJjoSfPcCmqf0kWeRzoej7hcDWk/35AwohT7+WezM7ZlQhd?=
+ =?us-ascii?Q?dg7kkqi9Ne39mdA7f1ZiqOKXcpUG6W5OIG8+jDtNZZztO0KDC66ma/pL37NR?=
+ =?us-ascii?Q?nmVB3lmmdcg1pOF4OpRByCYselmLcYvAyrgpocINIeI9ouxIMuzM+EgmfP7R?=
+ =?us-ascii?Q?ZYnUGl17iJ2vNyyXRn8GgzOo0tIF8eC6ehihSfwV3LlIg/+mwteG+or4TigQ?=
+ =?us-ascii?Q?KLm0vrMjH/7hzNZRTT6sYshZ1su9rMGUkplCnDeT1Kj8Sza2EJ/n8JfdiCnb?=
+ =?us-ascii?Q?VZZqOLsE2SiqUSsJ2JmOJHVV7zAxrejU1ngvdq8WYqSUeVj+TEQvBHuDI63o?=
+ =?us-ascii?Q?Xu2mvvckRPY/ODzmn5Qpu4JfeqPCsfjqEgqf4ubQ7rGVDWVp3XVotBhuCs+q?=
+ =?us-ascii?Q?isIk9swt7E1xSfSq7Po87TqCw8RiAW24XSkFr4SfhkJjWL10pWFOiSOE9/60?=
+ =?us-ascii?Q?bIheSDSJ+kvyZlkgy3wS5+svFTASfyEdXhk1a5cTbUVr+64zSCwofvKGW+p3?=
+ =?us-ascii?Q?a834soW5SaG334YVMjWue0qVcL9yYlASU41DOSM3D75UfamLlq3eaFaIjH05?=
+ =?us-ascii?Q?sDcdS8RihEm9XnxDDGGEm7yOehKtK9XRl5+zQhpusHXYSh2zuOEVyao9CiOA?=
+ =?us-ascii?Q?pJYdF8Jsko3NyHOel+uydnxw09/5FNtj4tr+KAM4ohN53nx4cBToEEKLmmQV?=
+ =?us-ascii?Q?F9+5T+2lLfgLNROLTX7WXHT4/n+xzkMMXB2w6J192LwYvaLVbzu5zPvfwaqS?=
+ =?us-ascii?Q?ERz697c2Mo2frb/hFgEXEs+jtcLM/Iu7hHRIP9R12SQkTvm9eISYw9Ro3FP5?=
+ =?us-ascii?Q?Nn9kYlaAZ9MZafmNRViRdZcnknQGeUwjGhvw0P+aJxxp1THVLPB1uoe2Tb43?=
+ =?us-ascii?Q?zFBNqTUszWs00t9ED8yW8Fp1sQyWiM0CdhGrBX05BMQqToJfPs3WexEJBPXb?=
+ =?us-ascii?Q?E2GzZWhPOw=3D=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1011bd58-4a0a-4fe5-81f7-08de8f8a5bbb
+X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Apr 2026 01:02:34.2251 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: nmIos/nJiLSjltJTpGVTXxSwzXQtP/mZODP3YQeJWtNP6ufW8VIL9Fl6bBWB3dHTMR2KxVYkGomFT9XFqg+MeQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PR12MB9647
+Received-SPF: permerror client-ip=2a01:111:f403:c111::5;
+ envelope-from=nathanc@nvidia.com;
+ helo=DM1PR04CU001.outbound.protection.outlook.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,107 +146,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/31/26 1:23 PM, Ruslan Ruslichenko wrote:
-> On Fri, Mar 27, 2026 at 7:18 PM Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> On 3/26/26 8:59 AM, Pierrick Bouvier wrote:
->>>>> One thing that could be considered on API side is to add a possibility
->>>>> to invalidate a specific hardware address (not all tb), based on
->>>>> tb_invalidate_phys_range. The problem is that plugin now need to keep
->>>>> track of all physical addresses matching virtual ones you want to
->>>>> invalidate, which is not convenient.
->>>>>
->>>>> Else, the easiest way to solve all this is to expose tb_flush, like
->>>>> you did, but keep this patch downstream for now.
->>>>> If your final plugin will stay downstream (which I expect, given it
->>>>> has its own protocol for injecting faults and no source for it), it's
->>>>> really the cheapest solution.
->>>>>
->>>>> The current design is built around the assumption that instrumentation
->>>>> is made at translation time (and not later). So changing it by
->>>>> instrumenting after translation brings new constraints we can't solve
->>>>> at the moment without exposing internal details.
->>>>
->>>> We should certainly consider automatically triggering tb_flush() on each
->>>> qemu_plugin_register_vcpu_tb_trans_cb() so at least the case of
->>>> dynamically loading a plugin doesn't miss previous translations.
->>>>
->>>
->>> Sounds fair yes, but not sure it covers the current use case.
->>> It would require the plugin to register several tb_trans to achieve the
->>> desired effect, which I'm not sure is a good idea. At this point, maybe
->>> we just accept to expose tb_flush through plugin API and call it a day.
->>>
->>
->> @Ruslan:
->>
->> After looking at it again, this is already covered with:
->> ```
->> void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb)
->> ```
->>
->> which performs a tb_flush as expected, and calls cb once the reset is
->> asynchronously done.
->> In the callback cb, you can reinstall your trans_cb, and it should do
->> exactly what you expect.
->>
-> 
-> Hi Pierrick,
-> 
-> Thank you for the suggestion!
-> 
-> I have tried the qemu_plugin_reset() approach, but unfortunately, it
-> seems to have the same threading limitation: the TB cache flush will only
-> be performed if it is called from a CPU thread.
-> 
-> Under the hood, plugin_reset_uninstall() checks current_cpu, which is a
-> thread-local variable specific to vCPU threads. So when called from
-> background thread current_cpu is NULL and it skips async_safe_run_on_cpu().
-> 
-> Here is the relevant snippet:
-> 
-> void plugin_reset_uninstall(qemu_plugin_id_t id,
->                              qemu_plugin_simple_cb_t cb,
->                              bool reset)
-> ....
->      /*
->       * Only flush the code cache if the vCPUs have been created. If so,
->       * current_cpu must be non-NULL.
->       */
->      if (current_cpu) {
->          async_safe_run_on_cpu(current_cpu, plugin_flush_destroy,
->                                RUN_ON_CPU_HOST_PTR(data));
->      } else {
->          /*
->           * If current_cpu isn't set, then we don't have yet any vCPU threads
->           * and we therefore can remove the callbacks synchronously.
->           */
->          plugin_reset_destroy(data);
->      }
-> ...
-> }
->
+Hi,
 
-Indeed, a lot of complications comes from the fact there is an external 
-thread trying to control instrumentation with the current design.
+This series introduces support for resolving 'auto' for arm-smmuv3
+accelerated mode's ATS, RIL, SSIDSIZE, and OAS feature properties
+based on host IOMMU capabilities. This is dependent on the series [1]
+for changing these property types to accept 'auto' values.
 
-In this case, you will need to queue that reset call on one of the vcpu, 
-by either:
-- using a tb_exec callback
-- wait for a new block to be translated if you don't want any overhead 
-at runtime
+Accelerated SMMUv3 Address Translation Services support is derived
+from IDR0, Range Invalidation support is derived from IDR3, Substream
+ID size is derived from IDR1, and output address space is derived from
+IDR5.
 
-I don't think we really have a choice since we can't force an exclusive 
-section (i.e. stopping all vcpus) from an external thread using 
-start_exclusive/end_exclusive. We need to execute this from a given 
-vcpu, which is what async_safe_run_on_cpu does (run on vcpu from 
-exclusive section).
+Additionally, an OnOffAuto "ats" property is added for vfio-pci devices,
+where setting 'auto' detects the per-device presence of
+IOMMU_HW_CAP_PCI_ATS_NOT_SUPPORTED from the kernel, and the ATS cap can
+be advertised or hidden by setting 'on' or 'off'. This is dependent
+on Shameer's recent kernel series for reporting effective ATS support
+status [2].
 
-> --
-> BR,
-> Ruslan
+The default values are set to 'auto' for all properties.
 
-Regards,
-Pierrick
+A complete branch can be found here:
+https://github.com/NathanChenNVIDIA/qemu/tree/smmuv3-accel-auto-resolve
+
+Please take a look and let me know your feedback.
+
+Thanks,
+Nathan
+
+[0] https://lore.kernel.org/qemu-devel/20260309192119.870186-1-nathanc@nvidia.com/
+[1] https://lore.kernel.org/qemu-arm/20260323182454.1416110-1-nathanc@nvidia.com/
+[2] https://lore.kernel.org/all/20260317111603.101456-1-skolothumtho@nvidia.com/
+
+Example usage:
+qemu-system-aarch64 \
+  -object iommufd,id=iommufd0 \
+  -machine virt,accel=kvm,gic-version=3,ras=on,highmem-mmio-size=4T \
+  -cpu host -smp cpus=4 -m size=16G -nographic \
+  -object memory-backend-ram,size=16G,id=m0 \
+  -numa node,memdev=m0,cpus=0-3,nodeid=0 \
+  -numa node,nodeid=1 -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
+  -numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 -numa node,nodeid=8 \
+  -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_node=0 \
+  -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1,accel=on,ats=auto,ssidsize=auto,ril=auto,oas=auto \
+  -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,io-reserve=0 \
+  -device vfio-pci-nohotplug,host=0009:06:00.0,bus=pcie.port1,rombar=0,id=dev0,iommufd=iommufd0,ats=auto \
+  -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=1 \
+  -object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=2 \
+  -object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=3 \
+  -object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=4 \
+  -object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=5 \
+  -object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=6 \
+  -object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=7 \
+  -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=8 \
+  -bios /usr/share/AAVMF/AAVMF_CODE.fd \
+  -device nvme,drive=nvme0,serial=deadbeaf1,bus=pcie.0 \
+  -drive file=/var/lib/libvirt/images/guest.qcow2,index=0,media=disk,format=qcow2,if=none,id=nvme0 \
+  -device e1000,romfile=/usr/local/share/qemu/efi-e1000.rom,netdev=net0,bus=pcie.0 \
+  -netdev user,id=net0,hostfwd=tcp::5558-:22,hostfwd=tcp::5586-:5586
+
+Testing:
+Basic sanity testing was performed on an NVIDIA Grace platform with GPU
+device assignment and running CUDA test apps on the guest. Observed the
+feature properties being set based on host IOMMU capabilities and the
+ATS capability for a vfio-pci device reported based on what was reported
+from the host. Verified that the VM boot will fail without a cold-plugged
+device, and that a hot-plugged device re-uses the resolved values from
+the initial cold-plug. Additional testing and feedback are welcome.
+
+Nathan Chen (11):
+  hw/arm/smmuv3-accel: Add helper for resolving auto parameters
+  hw/arm/smmuv3-accel: Implement "auto" value for "ats"
+  hw/arm/smmuv3: Change the default ats support to match the host
+  vfio/pci: Add ats property and mask ATS cap when not exposed
+  hw/arm/smmuv3-accel: Implement "auto" value for "ril"
+  hw/arm/smmuv3: Change the default ril support to match the host
+  hw/arm/smmuv3-accel: Implement "auto" value for "ssidsize"
+  hw/arm/smmuv3: Change the default ssidsize to match the host
+  hw/arm/smmuv3-accel: Implement "auto" value for "oas"
+  hw/arm/smmuv3: Change the default oas to match the host
+  qemu-options.hx: Support "auto" for accel SMMUv3 properties
+
+ backends/iommufd.c                 | 15 +++++++
+ hw/arm/smmuv3-accel.c              | 50 +++++++++++++++++++++++-
+ hw/arm/smmuv3-accel.h              |  2 +
+ hw/arm/smmuv3.c                    | 61 +++++++++++++++++------------
+ hw/core/machine.c                  |  8 ++++
+ hw/vfio/pci.c                      | 63 ++++++++++++++++++++++++++++++
+ hw/vfio/pci.h                      |  1 +
+ include/hw/arm/smmuv3.h            |  2 +
+ include/system/host_iommu_device.h | 10 +++++
+ qemu-options.hx                    |  1 -
+ 10 files changed, 185 insertions(+), 28 deletions(-)
+
+-- 
+2.43.0
+
 

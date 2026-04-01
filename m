@@ -4,127 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 511CB10F6FB9
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 14:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3ACE10F6FD9
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 16:45:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w7x11-0000fA-LE; Wed, 01 Apr 2026 10:57:56 -0400
+	id 1w7yga-0000C0-Fe; Wed, 01 Apr 2026 12:44:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7x0v-0000dv-02
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 10:57:49 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w7x0t-00036j-Bv
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 10:57:48 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-3585ec417f6so403022a91.1
- for <qemu-arm@nongnu.org>; Wed, 01 Apr 2026 07:57:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775055465; x=1775660265; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7zY+WJBmQZnfgg+bU6mIxK5hOsuQA0UDPUojGKP5t2Q=;
- b=CATXyYb9uctyXkRG6iq3fcvrBVo/1q8sniTs/dzjNawFGKEWV0Tsu0FVO3qshXOfAn
- amOImnvOgGXZFpsUfai1i3SaM9wKndmnNo39DzTH3n157R+W3MiK2Ry2J594NcqmIxcY
- 1m2b/crABgDA27L3d7QXdVfVKkRYV7IOtItJ25iTdR4ZkJIuAYVSZS9uEOw3NUcp6lxP
- ie+zEN6VKx3eyViPyD+TZk0kdEi/OOtJ9adRRxViTe1bdt4xXTlCcQSkGDombzZTotcB
- BN4aWWFMDpawNYeghXl+Eltq0032aS1Hj+XVO7Y0ucUvFlBlfjSo+cHac7UGW3Y/29AQ
- QGKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775055465; x=1775660265;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7zY+WJBmQZnfgg+bU6mIxK5hOsuQA0UDPUojGKP5t2Q=;
- b=l5+yAO/8p5AkU+TPmpAHhhhP7ukOkojL+boVEbUUuCrvPCLTa2H4K7+/eN2BXF1PVc
- ufoP4tes0xqAv249Xn9qGQroX8OQFbLznh4fNe0P6OPYP/On363m7Gkjn8glNoINSSkm
- nboyo0n4XKTNZZfKo6a7YmlB3mTtF40TWcQzvMyqerBnhZ47JPXiX1F4c+R8rbpQf8Be
- lZV6PH0+DF2/c/iLZRH/VsQkN2MyZmEn5LmFHyToNV/f1njJPHPwKTNcHn/fqE+nU8He
- Ivd5yB3qZ9uUrHJpLFyPo+9Q5SuZAXE9Qax5pqOJ2nqdiSw/6X7dewFx3j7cohTvyK3U
- 74sw==
-X-Gm-Message-State: AOJu0YzscFF9MIVvPoQ/paQznvkM89CoUGD9ozAkSzlmhqpaCFnr8/+z
- fOZdpU82iRuEjBtR6gRKibFWEddswV3grS+1qB59A17eHdh1NqFYpDyU8wzuZ2Eahqo=
-X-Gm-Gg: ATEYQzxHjW6lzeORv/lEw9D0HXEnfx3sIXTVaOurDK/cwoKOExt070uWwvOqmxq214Y
- fsSej32kKsZ6Yo3VvaeTj7hG6Sz5ZMNAHd2Y3pGzXMAlz7L+UmZO6+mFIGXQhPjguPNMGYtu+nX
- oJPkF80hgBHpsLoXno91FcWtBw8gjmXymISCOt3zAGoQ0ppBRbbE64q5EpP2d+5G9IFUWR+UvrT
- vppKIuAU49F6aQbN0aRYVPKSiAGUtcY1gSYkUSO5VvaNKTmgdPl93EgxKJ4W5gitwjApj7cGM/S
- 4ujsoVnwz0pUU6M4ns/5pVsZjNMztZenz9NAE0ieFpswEaTrlLy+/Un3k37YanR4NDSGfm0RiLo
- fx514eVhFnh73Wv8oIJd+JV78QKTtETH0d2fGKi9qwuVZhF/OY7k1VQh3uqkxO+E8S8gdbfKMlw
- 4wFX6pRYS+hzBothCyEiaXtwInEkmI57OzTXobSde1KNLU0UDkmkyAWcli/Y1Zw4Pm3qJCPc7XH
- eCMS5I=
-X-Received: by 2002:a17:90b:2d8b:b0:35d:aa02:d776 with SMTP id
- 98e67ed59e1d1-35dc6e7b196mr3470275a91.2.1775055464688; 
- Wed, 01 Apr 2026 07:57:44 -0700 (PDT)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35dbe5e5127sm6974158a91.1.2026.04.01.07.57.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 01 Apr 2026 07:57:44 -0700 (PDT)
-Message-ID: <d9ebb776-59c7-4ee2-8aad-dd38d14baae6@linaro.org>
-Date: Wed, 1 Apr 2026 07:57:43 -0700
+ (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
+ id 1w7yg2-0008OL-Dr; Wed, 01 Apr 2026 12:44:22 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
+ id 1w7yfz-0004vw-Ut; Wed, 01 Apr 2026 12:44:22 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 631CM24E460345; Wed, 1 Apr 2026 16:44:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=U+cUyn
+ UJ+n0LkrxjpQ1fcg6TWm5heDAt5hnKCuJZ3iE=; b=XPdjGd27ynp5BpR0yMo6T6
+ WmsSsfE3ctdF4vNZUioPWL85Ft6uGlzatuFwpc1CB7IZLKokNaJCmu+vxEdiN8cz
+ osqytHiinjxg9P3IbkC5hevROdJKU1OMwfBnvGe0UmNUw8czewAR/sC04s1bwRky
+ xEZ4X8EZJOLovEd+FlOAWYV6CviREn/K4Wj79BlcELqX8jWg9fPWb7qtPzwhYJ5V
+ zSg6KdJWXReSoO85Fl9RIvktBs/dxzQ5FVSS4wwh9eFXPizZY9QPYNz5ng+V3tFi
+ ZxiJ2uHk20O72kVmrfkqvSiT6X1+/AOgLsUN/KzTP4l1zn1UA4ALA5oMH5mtl+4Q
+ ==
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4d66g217cc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 01 Apr 2026 16:44:06 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 631GHcC1022217;
+ Wed, 1 Apr 2026 16:44:05 GMT
+Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4d6tan6f21-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 01 Apr 2026 16:44:05 +0000
+Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
+ [10.241.53.105])
+ by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 631Gi3Es58786160
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 1 Apr 2026 16:44:03 GMT
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 735BB5805E;
+ Wed,  1 Apr 2026 16:44:03 +0000 (GMT)
+Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 868FC58059;
+ Wed,  1 Apr 2026 16:44:01 +0000 (GMT)
+Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown
+ [9.61.97.105]) by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed,  1 Apr 2026 16:44:01 +0000 (GMT)
+Message-ID: <31fab9d2b8f8e5f3bc6e7a92c3b32171099011c0.camel@linux.ibm.com>
+Subject: Re: [PATCH for-11.1] hw: add compat machines for 11.1
+From: Eric Farman <farman@linux.ibm.com>
+To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Marcel Apfelbaum	
+ <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=	
+ <philmd@linaro.org>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu	
+ <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora	 <harshpb@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Ilya Leoshkevich	
+ <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>
+Date: Wed, 01 Apr 2026 12:44:01 -0400
+In-Reply-To: <20260331140347.653404-1-cohuck@redhat.com>
+References: <20260331140347.653404-1-cohuck@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-11.1] target/arm: Replace target_ulong -> vaddr in
- guarded_page_br()
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20260401143456.79843-1-philmd@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
- eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
- CJmXbVYQgL5e6rsXoMlwFWuGrBY3Ig8YhEqpuYDkRXj2idO11CiDBT/b8A2aGixnpWV/s+AD
- gUyEVjHU6Z8UervvuNKlRUNE0rUfc502Sa8Azdyda8a7MAyrbA/OI0UnSL1m+pXXCxOxCvtU
- qOlipoCOycBjpLlzjj1xxRci+ssiZeOhxdejILf5LO1gXf6pP+ROdW4ySp9L3dAWnNDcnj6U
- 2voYk7/RpRUTpecvkxnwiOoiIQ7BatjkssFy+0sZOYNbOmoqU/Gq+LeFqFYKDV8gNmAoxBvk
- L6EtXUNfTBjiMHyjA/HMMq27Ja3/Y73xlFpTVp7byQoTwF4p1uZOOXjFzqIyW25GvEekDRF8
- IpYd6/BomxHzvMZ2sQ/VXaMAEQEAAc0uUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91
- dmllckBsaW5hcm8ub3JnPsLBDgQTAQoAOBYhBGa5lOyhT38uWroIH3+QVA0KHNAPBQJivXYM
- AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEH+QVA0KHNAPX58L/1DYzrEO4TU9ZhJE
- tKcw/+mCZrzHxPNlQtENJ5NULAJWVaJ/8kRQ3Et5hQYhYDKK+3I+0Tl/tYuUeKNV74dFE7mv
- PmikCXBGN5hv5povhinZ9T14S2xkMgym2T3DbkeaYFSmu8Z89jm/AQVt3ZDRjV6vrVfvVW0L
- F6wPJSOLIvKjOc8/+NXrKLrV/YTEi2R1ovIPXcK7NP6tvzAEgh76kW34AHtroC7GFQKu/aAn
- HnL7XrvNvByjpa636jIM9ij43LpLXjIQk3bwHeoHebkmgzFef+lZafzD+oSNNLoYkuWfoL2l
- CR1mifjh7eybmVx7hfhj3GCmRu9o1x59nct06E3ri8/eY52l/XaWGGuKz1bbCd3xa6NxuzDM
- UZU+b0PxHyg9tvASaVWKZ5SsQ5Lf9Gw6WKEhnyTR8Msnh8kMkE7+QWNDmjr0xqB+k/xMlVLE
- uI9Pmq/RApQkW0Q96lTa1Z/UKPm69BMVnUvHv6u3n0tRCDOHTUKHXp/9h5CH3xawms7AzQRi
- vXYMAQwAwXUyTS/Vgq3M9F+9r6XGwbak6D7sJB3ZSG/ZQe5ByCnH9ZSIFqjMnxr4GZUzgBAj
- FWMSVlseSninYe7MoH15T4QXi0gMmKsU40ckXLG/EW/mXRlLd8NOTZj8lULPwg/lQNAnc7GN
- I4uZoaXmYSc4eI7+gUWTqAHmESHYFjilweyuxcvXhIKez7EXnwaakHMAOzNHIdcGGs8NFh44
- oPh93uIr65EUDNxf0fDjnvu92ujf0rUKGxXJx9BrcYJzr7FliQvprlHaRKjahuwLYfZK6Ma6
- TCU40GsDxbGjR5w/UeOgjpb4SVU99Nol/W9C2aZ7e//2f9APVuzY8USAGWnu3eBJcJB+o9ck
- y2bSJ5gmGT96r88RtH/E1460QxF0GGWZcDzZ6SEKkvGSCYueUMzAAqJz9JSirc76E/JoHXYI
- /FWKgFcC4HRQpZ5ThvyAoj9nTIPI4DwqoaFOdulyYAxcbNmcGAFAsl0jJYJ5Mcm2qfQwNiiW
- YnqdwQzVfhwaAcPVABEBAAHCwPYEGAEKACAWIQRmuZTsoU9/Llq6CB9/kFQNChzQDwUCYr12
- DAIbDAAKCRB/kFQNChzQD/XaC/9MnvmPi8keFJggOg28v+r42P7UQtQ9D3LJMgj3OTzBN2as
- v20Ju09/rj+gx3u7XofHBUj6BsOLVCWjIX52hcEEg+Bzo3uPZ3apYtIgqfjrn/fPB0bCVIbi
- 0hAw6W7Ygt+T1Wuak/EV0KS/If309W4b/DiI+fkQpZhCiLUK7DrA97xA1OT1bJJYkC3y4seo
- 0VHOnZTpnOyZ+8Ejs6gcMiEboFHEEt9P+3mrlVJL/cHpGRtg0ZKJ4QC8UmCE3arzv7KCAc+2
- dRDWiCoRovqXGE2PdAW8788qH5DEXnwfzDhnCQ9Eot0Eyi41d4PWI8TWZFi9KzGXJO82O9gW
- 5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
- X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260401143456.79843-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1033.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Authority-Analysis: v=2.4 cv=Fdo6BZ+6 c=1 sm=1 tr=0 ts=69cd4b56 cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+ a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=iQ6ETzBq9ecOQQE5vZCe:22 a=20KFwNOVAAAA:8
+ a=VnNF1IyMAAAA:8 a=Vs7uO71RKhtVEPws7hkA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: mKTx7evHykHOpvoQPuG1LYcLyGDAnH-U
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAxMDE1MiBTYWx0ZWRfX5fWgHZjeIFva
+ GF69eWlA+f5rIjpSUuFnG0+SxkOu6VUSng6W77pcjoRBqiJlkrOKbrYztqectDgX86k3hhF3IEd
+ sFploIrNgbXaMmz+2Ynj48IOx3fUWEAEaHSl9ulcPhxJIGV/VqEN6HOVDWWbXzgBGN0WvtG7StT
+ juqHzCZ03PZaBbtRisntOg1VxH35TW2z+5b86fDxPy/2lH/MMbL48mXSTSW1xIRNgbh7FSg7LHY
+ TbbuRw/h+AD/xOynHGE7dhkHrM0ODrStm60eJacoM6Tqku+sQGtoCef5JRR1oWTY8w1eGGP/xmU
+ h1UOzt70HUwPvkXEvz8Dqf6Ug+uoih+q9ibU8opg1yFKZnZ/899Ykml3/CoheKRJu8BEvh5qUmQ
+ mqeSG1buSbKtypM9TKiWVW5tupFeNJX+z1MDEONbCPLLjT1HlLeR13eVKJJ81rNeA99IR9f/BYW
+ vNTF863AWDROW1gLdog==
+X-Proofpoint-GUID: XRUFaMbgnheC46xG_Fiu5rIKaTHJzYRB
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-01_04,2026-04-01_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1011 bulkscore=0 suspectscore=0 priorityscore=1501
+ adultscore=0 malwarescore=0 phishscore=0 spamscore=0 lowpriorityscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2604010152
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=farman@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,20 +130,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/1/26 7:34 AM, Philippe Mathieu-Daudé wrote:
-> Following commit 15500df3b3b ("target/arm/tcg/translate.h: replace
-> target_ulong with vaddr") change, adapt guarded_page_br().
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Tue, 2026-03-31 at 16:03 +0200, Cornelia Huck wrote:
+> Add 11.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
+>=20
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
-> I know this expands to uint64_t on Aarch64, but vaddr for $pc
-> seems clearer, since this is the type used by callees, i.e.
-> probe_access_full().
-> ---
->   target/arm/tcg/helper-a64-defs.h | 2 +-
->   target/arm/tcg/helper-a64.c      | 4 ++--
->   2 files changed, 3 insertions(+), 3 deletions(-)
-> 
+>  hw/arm/virt.c              |  9 ++++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 13 +++++++++++--
+>  hw/i386/pc_q35.c           | 13 +++++++++++--
+>  hw/m68k/virt.c             |  9 ++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/core/boards.h   |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  10 files changed, 76 insertions(+), 9 deletions(-)
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>  # s390
 

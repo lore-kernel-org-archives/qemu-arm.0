@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A981E10FCACC
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 19:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D423910FCAD0
+	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 19:23:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8185-0006fS-Fw; Wed, 01 Apr 2026 15:21:29 -0400
+	id 1w8186-0006gZ-CN; Wed, 01 Apr 2026 15:21:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w817t-0006Uv-QE
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 15:21:20 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1w817o-0006Te-WE
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 15:21:14 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w817m-0002zA-9p
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 15:21:13 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-35da1af3e10so47509a91.3
- for <qemu-arm@nongnu.org>; Wed, 01 Apr 2026 12:21:08 -0700 (PDT)
+ id 1w817j-0002yW-5P
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 15:21:10 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-3591cc98871so22520a91.3
+ for <qemu-arm@nongnu.org>; Wed, 01 Apr 2026 12:21:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775071268; x=1775676068; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775071265; x=1775676065; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BpjBN/H+zc8vKXTIC1giYotC0A5eWy62SJygmBUlOkI=;
- b=P4MUwBpSRXqj8y8v1dldHoq+Sqr3rbIEK7Nx6LZG4CUmNmTDVw7gcPyc4681GK5sLj
- 3CAGyOafon/m6m2brTPsX79m9fOpfOMAcuEAtRCL+45RO6NfwyXuN4JduDpBHxzXYmzX
- bbWku0n7rjmypQB6QuUMn2+jELGuDmfnPY6YfueLfNsRrJRBOL+N+7RJa58qb7Qxm2cB
- vHD5wAA9m28N0cJISuXqO8B+gRqgQCH6JffKjbRgKLEJoidsGLC/TjpQNExx4ng4ekVT
- Qmi8K2V0YOqI1fdH0ob/O3QV5j85otHqROWFNwpZygJUTdE593PmiibXowqpfAlZUCWi
- DBUA==
+ bh=zw7oDmqglvqKl8+MyBKQqhDwyqmly7OMJWrGEtetrjU=;
+ b=m7UAQW6sJt3RijQfpmMgKZGEqdfP/KxnA/uY7R4JWnZucAPV8/im4qVzDpRvuyQe3g
+ Wz0BBz4ym5+BrDDYwcoQ7PygYeK2iLehAN2Mfmjv9WV+nWHytK1WfpGPD68GEx5mYIzW
+ 0ctnRaH/JKo1atB2F/5ALJWGv2ntH5t1+r36IBwnq788cgO5tipi5EN9fU5+1P8ziois
+ HfuQ7yQLMk8NeJRKzu4V3YtVn5xGlsFlbZVdAYzDC0IhKfLDxbjjMJazxrUIlGxmVLyV
+ mdqV3Sy94WpO47JuE4t1DcFnmc6wFfbu0605dA6SQeTIxqdmzm1awKjTNpre9E2f3I/P
+ uOPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775071268; x=1775676068;
+ d=1e100.net; s=20251104; t=1775071265; x=1775676065;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=BpjBN/H+zc8vKXTIC1giYotC0A5eWy62SJygmBUlOkI=;
- b=Or2sEvuwtJ71UTI2KkQ/uZKfH/Oi3/TI9I5KU1+IuEWuUwlNnLe+wewz52sDF5S+Mv
- +nGn4XQATsw/z3hPj86/LdyceeEl9585khpDMjSciFc6NaZ01pYJSvNEGGziXcJ+QeFJ
- VMSk0uznsWiR1a2rwDAjYcc3ZPl0Fml4MzAvswQjkQggiEaAavW7bJABeOEJkanOLuwJ
- pNjl6/RDhbQuiBenjAfTu4hq5eMBOxADa8WiO8QTy735pg961JNT78yKQORuqniUK4fk
- L91TzISmp0M05ga7oRuSVHk2JYDU8CMVfPeVbMUsgDhJ7BJXRfS2UhN+tAY6mnJkXsQ4
- dQmA==
+ bh=zw7oDmqglvqKl8+MyBKQqhDwyqmly7OMJWrGEtetrjU=;
+ b=DVkqyQ1sEgTnaQtE3bKTji5PhVrQrzgNXZUO9PECKb4eeEfqSrsK7FFSpXgRN+OPxS
+ SBiWEPUDj3xGbzAbiSOzfrVzwjhgRbNU/MGk14wLBbegFWBNIejPicLOnmNm4zH7yfeI
+ 1whEytV15G9MuCNmMVum9+9cedZ7ZREry4PGkCnmAy8oU/MSCJx9kqUBCviwzDc5kcmV
+ pY2lvlDLFfa45MqhLX5z594JaqYzAh/lX1Zl5f6SfxASJTYLpcgFzpwe457C5sT/7CaW
+ xyCESULg6fOQwfei/UFBvD1mdgHHAnWHgRbBT98bW34axICnr0TERIXCyLbdjgnZcON1
+ VQeg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUwPZ4MV7OYxdDRcTSZY/d9N8HN4rm//iVAaM8v2INachjB4kOhaTN40sQImWU2fCgYJOVEH3d+DQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzLyk/fHh7hTm070h9MignscyS3Aw1HKPxxv8kgb4QuxVb2bv+O
- lXfLElI/p2JTNGM7fE9u3RyKEOdblGId+jVW+FKWBf2NEjRYyyvmJ5Hn11Lql9SNyoQ=
-X-Gm-Gg: ATEYQzzmmWysaHpFezUgdTCUyaogKHhi+BgXhV7Vf+iWWMvM3JkXnljVvlV5kCfU2GC
- LugKL8mBf7urp69hjyw4KrZjlV4s5Duf2a6+7+jcpKwrQXYYHqVSBWTlKC0wVw2rshr/slqtP0y
- lXZC6BEWwEH2g5ymq/5i/JUjQfpzQVeMEkboSptaig9PAcLHbV6eT8L7XBVc0wqhqCnDl9V1hOA
- MnojJxOVWBE8SB06aBjHmEc/GBeyRUM3qF7JTs8goCERSza1Mhob5FaKxPoOruDUve7b60tnLQe
- P1V/gK+p7d0/hCC43NuqOKbOdJAVBwZj8dcJRXk9hLcZ+RPHGHLYiWR8czs6U19PqurS6aRrdJb
- PQnIoWolvmF5EZbibRX+7Z6Q/hJQ/AJTXcOKWlFNsHmcaxzYLlrVCA/5/LEh8fQmNyxvpoRiEXB
- NjOuSyvzRHbdlUbFq88EHYaevsHkD3yRpmFZEW2bun2jkB6ci6aiW4ybV1thlDnx/gX0eUvhetq
- 4xP
-X-Received: by 2002:a17:90b:2d8b:b0:35c:30a8:31f with SMTP id
- 98e67ed59e1d1-35dc6e7ab92mr4887381a91.2.1775071267787; 
- Wed, 01 Apr 2026 12:21:07 -0700 (PDT)
+ AJvYcCXJUuoZ8leP+P6xXoGFkD3GkMKLKXrVBMML6ET7piTWbN2AYM3KlZyYepAAA2ckJhGTJrAei5Czrw==@nongnu.org
+X-Gm-Message-State: AOJu0YwNc8y6NXnBuAJjc5BkPJHuXKw3V0uKyGUrJwUNT/vCWROhCIKs
+ 4MEJlNEBzkZpA49LY8WCTHnKlYyqEXKCm9ew01nC5sBIqVW9CUtA0KT25Xswv279CFU=
+X-Gm-Gg: ATEYQzy8+rPM2EfIzsStz1GK+tKaYFki68kfSI/Ur4We8tze56ppScLuSsLzkTd6cdt
+ q4/aQY6/bI7zHok+sAZCjLjb9Y1VZaX8mDeCbQiyycKWlf127ffjWmVrEoZupRAIG2d6m/FNaUI
+ 5oaNZVwQH1YjdzZQa+e+aVrrsvooy0ELt9U1wKoqaEfxXYcQ7PVdGDRXjZb3HqAxPE3gB1sJoJ2
+ JjeQWN+ARH3hyab+9HVnRL4aDBZrpPviZ6kUQltZ1mIhxmYi/IaSXKQyJbxaTGq+YRyJKLYHQWv
+ Odo3o6zb4ceEUVilsj44UZ71nSulVBkk6gIMPg8jSypDwiVos5lIpax7GUoPpP2zMFPOP7c2SxU
+ +WsuPZNERyjF+w71Ndu/dNvTwTEBrxWNjLPSW1KqdX9lISy+YTcWDgZ3XQtTli1jjRmE4jf2Edj
+ DK3p9HAk4a3kiVKccoWlZTdymTyGafIFAPA4lu4FS3H95duW+/BmTxLfxRQEpuz64vsMaYoVUot
+ bhl
+X-Received: by 2002:a17:90b:1dc7:b0:35c:30a8:32a with SMTP id
+ 98e67ed59e1d1-35dd4024f2emr497386a91.9.1775071265443; 
+ Wed, 01 Apr 2026 12:21:05 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-35dbe41b11fsm5633113a91.0.2026.04.01.12.21.07
+ 98e67ed59e1d1-35dbe41b11fsm5633113a91.0.2026.04.01.12.21.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 01 Apr 2026 12:21:07 -0700 (PDT)
+ Wed, 01 Apr 2026 12:21:05 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  jim.macarthur@linaro.org, Richard Henderson <richard.henderson@linaro.org>,
  philmd@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v6 04/12] target/arm/tcg/translate.h: remove TARGET_AARCH64
-Date: Wed,  1 Apr 2026 12:20:49 -0700
-Message-ID: <20260401192057.1182724-5-pierrick.bouvier@linaro.org>
+Subject: [PATCH v6 01/12] include/tcg/tcg-op: extract memory operations to
+ tcg-op-mem.h
+Date: Wed,  1 Apr 2026 12:20:46 -0700
+Message-ID: <20260401192057.1182724-2-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260401192057.1182724-1-pierrick.bouvier@linaro.org>
 References: <20260401192057.1182724-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,83 +107,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We need to stub a64_translate_init and gen_a64_update_pc.
-At this point, we don't need to do anything for aarch64_translator_ops
-since it's just an external symbol.
+This new header defines a new type for target virtual address,
+independent from TCGv and is parameterized by a new define
+TCG_ADDRESS_BITS (name was suggested by Paolo instead of
+TARGET_ADDRESS_BITS).
 
-We can now include target/arm/tcg/translate.h from common code, since
-all target specific bits have been removed, or can be specialized with
-specific defines.
+By default, tcg-op.h include set this define to TARGET_LONG_BITS, but
+it's also possible to include only tcg-op-common.h and tcg-op-mem.h and
+set TCG_ADDRESS_BITS manually, which is what next commits will do.
 
+We preserve existing MIT license when extracting this new header.
+
+Implemented from:
+https://lore.kernel.org/qemu-devel/a68321f0-3d54-4909-864c-9793cda05b2a@linaro.org/
+
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/tcg/translate.h | 10 ----------
- target/arm/tcg/stubs32.c   | 17 +++++++++++++++++
- target/arm/tcg/meson.build |  1 +
- 3 files changed, 18 insertions(+), 10 deletions(-)
- create mode 100644 target/arm/tcg/stubs32.c
+ include/tcg/tcg-op-mem.h | 126 +++++++++++++++++++++++++++++++++++++++
+ include/tcg/tcg-op.h     | 100 +------------------------------
+ 2 files changed, 129 insertions(+), 97 deletions(-)
+ create mode 100644 include/tcg/tcg-op-mem.h
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index e28eac54afb..77fdc5f3a17 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -357,19 +357,9 @@ static inline int curr_insn_len(DisasContext *s)
- /* CPU state was modified dynamically; no need to exit, but do not chain. */
- #define DISAS_UPDATE_NOCHAIN  DISAS_TARGET_10
- 
--#ifdef TARGET_AARCH64
- void a64_translate_init(void);
- void gen_a64_update_pc(DisasContext *s, int64_t diff);
- extern const TranslatorOps aarch64_translator_ops;
--#else
--static inline void a64_translate_init(void)
--{
--}
--
--static inline void gen_a64_update_pc(DisasContext *s, int64_t diff)
--{
--}
--#endif
- 
- void arm_test_cc(DisasCompare *cmp, int cc);
- void arm_jump_cc(DisasCompare *cmp, TCGLabel *label);
-diff --git a/target/arm/tcg/stubs32.c b/target/arm/tcg/stubs32.c
+diff --git a/include/tcg/tcg-op-mem.h b/include/tcg/tcg-op-mem.h
 new file mode 100644
-index 00000000000..c5a0bc61f47
+index 00000000000..36931d1dd57
 --- /dev/null
-+++ b/target/arm/tcg/stubs32.c
-@@ -0,0 +1,17 @@
++++ b/include/tcg/tcg-op-mem.h
+@@ -0,0 +1,126 @@
++/* SPDX-License-Identifier: MIT */
 +/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Target dependent memory related functions.
++ *
++ * Copyright (c) 2008 Fabrice Bellard
 + */
 +
-+#include "qemu/osdep.h"
-+#include "target/arm/tcg/translate.h"
++#ifndef TCG_TCG_OP_MEM_H
++#define TCG_TCG_OP_MEM_H
 +
++#ifndef TCG_ADDRESS_BITS
++#error TCG_ADDRESS_BITS must be defined
++#endif
 +
-+void gen_a64_update_pc(DisasContext *s, int64_t diff)
++#if TCG_ADDRESS_BITS == 32
++typedef TCGv_i32 TCGv_va;
++#define TCG_TYPE_VA TCG_TYPE_I32
++#define tcgv_va_temp tcgv_i32_temp
++#define tcgv_va_temp_new tcg_temp_new_i32
++#elif TCG_ADDRESS_BITS == 64
++typedef TCGv_i64 TCGv_va;
++#define TCG_TYPE_VA TCG_TYPE_I64
++#define tcgv_va_temp tcgv_i64_temp
++#define tcgv_va_temp_new tcg_temp_new_i64
++#else
++#error
++#endif
++
++static inline void
++tcg_gen_qemu_ld_i32(TCGv_i32 v, TCGv_va a, TCGArg i, MemOp m)
 +{
-+    g_assert_not_reached();
++    tcg_gen_qemu_ld_i32_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
 +}
 +
-+void a64_translate_init(void)
++static inline void
++tcg_gen_qemu_st_i32(TCGv_i32 v, TCGv_va a, TCGArg i, MemOp m)
 +{
-+    /* Don't initialize for 32 bits. Call site will be fixed later. */
++    tcg_gen_qemu_st_i32_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
 +}
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 5f591560551..3e96c77df73 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -21,6 +21,7 @@ gen_a32 = [
++
++static inline void
++tcg_gen_qemu_ld_i64(TCGv_i64 v, TCGv_va a, TCGArg i, MemOp m)
++{
++    tcg_gen_qemu_ld_i64_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
++}
++
++static inline void
++tcg_gen_qemu_st_i64(TCGv_i64 v, TCGv_va a, TCGArg i, MemOp m)
++{
++    tcg_gen_qemu_st_i64_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
++}
++
++static inline void
++tcg_gen_qemu_ld_i128(TCGv_i128 v, TCGv_va a, TCGArg i, MemOp m)
++{
++    tcg_gen_qemu_ld_i128_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
++}
++
++static inline void
++tcg_gen_qemu_st_i128(TCGv_i128 v, TCGv_va a, TCGArg i, MemOp m)
++{
++    tcg_gen_qemu_st_i128_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
++}
++
++#define DEF_ATOMIC2(N, S)                                               \
++    static inline void N##_##S(TCGv_##S r, TCGv_va a, TCGv_##S v,       \
++                               TCGArg i, MemOp m)                       \
++    { N##_##S##_chk(r, tcgv_va_temp(a), v, i, m, TCG_TYPE_VA); }
++
++#define DEF_ATOMIC3(N, S)                                               \
++    static inline void N##_##S(TCGv_##S r, TCGv_va a, TCGv_##S o,       \
++                               TCGv_##S n, TCGArg i, MemOp m)           \
++    { N##_##S##_chk(r, tcgv_va_temp(a), o, n, i, m, TCG_TYPE_VA); }
++
++DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i32)
++DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i64)
++DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i128)
++
++DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i32)
++DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i64)
++DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i128)
++
++DEF_ATOMIC2(tcg_gen_atomic_xchg, i32)
++DEF_ATOMIC2(tcg_gen_atomic_xchg, i64)
++DEF_ATOMIC2(tcg_gen_atomic_xchg, i128)
++
++DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i128)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i128)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i64)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i32)
++DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i64)
++
++DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i64)
++DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i32)
++DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i64)
++
++#undef DEF_ATOMIC2
++#undef DEF_ATOMIC3
++
++#endif /* TCG_TCG_OP_MEM_H */
+diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
+index 7024be938e6..96a5af1a298 100644
+--- a/include/tcg/tcg-op.h
++++ b/include/tcg/tcg-op.h
+@@ -16,6 +16,9 @@
+ #error must include QEMU headers
+ #endif
  
- arm_ss.add(gen_a32)
- arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
-+arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
++#define TCG_ADDRESS_BITS TARGET_LONG_BITS
++#include "tcg/tcg-op-mem.h"
++
+ #if TARGET_LONG_BITS == 32
+ # define TCG_TYPE_TL  TCG_TYPE_I32
+ #elif TARGET_LONG_BITS == 64
+@@ -46,103 +49,6 @@ typedef TCGv_i64 TCGv;
+ #error Unhandled TARGET_LONG_BITS value
+ #endif
  
- arm_ss.add(files(
-   'cpu32.c',
+-static inline void
+-tcg_gen_qemu_ld_i32(TCGv_i32 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_ld_i32_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-static inline void
+-tcg_gen_qemu_st_i32(TCGv_i32 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_st_i32_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-static inline void
+-tcg_gen_qemu_ld_i64(TCGv_i64 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_ld_i64_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-static inline void
+-tcg_gen_qemu_st_i64(TCGv_i64 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_st_i64_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-static inline void
+-tcg_gen_qemu_ld_i128(TCGv_i128 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_ld_i128_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-static inline void
+-tcg_gen_qemu_st_i128(TCGv_i128 v, TCGv a, TCGArg i, MemOp m)
+-{
+-    tcg_gen_qemu_st_i128_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
+-}
+-
+-#define DEF_ATOMIC2(N, S)                                               \
+-    static inline void N##_##S(TCGv_##S r, TCGv a, TCGv_##S v,          \
+-                               TCGArg i, MemOp m)                       \
+-    { N##_##S##_chk(r, tcgv_tl_temp(a), v, i, m, TCG_TYPE_TL); }
+-
+-#define DEF_ATOMIC3(N, S)                                               \
+-    static inline void N##_##S(TCGv_##S r, TCGv a, TCGv_##S o,          \
+-                               TCGv_##S n, TCGArg i, MemOp m)           \
+-    { N##_##S##_chk(r, tcgv_tl_temp(a), o, n, i, m, TCG_TYPE_TL); }
+-
+-DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i32)
+-DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i64)
+-DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i128)
+-
+-DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i32)
+-DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i64)
+-DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i128)
+-
+-DEF_ATOMIC2(tcg_gen_atomic_xchg, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_xchg, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_xchg, i128)
+-
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i128)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i128)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i64)
+-
+-DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i64)
+-DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i32)
+-DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i64)
+-
+-#undef DEF_ATOMIC2
+-#undef DEF_ATOMIC3
+-
+ #if TARGET_LONG_BITS == 64
+ #define tcg_gen_movi_tl tcg_gen_movi_i64
+ #define tcg_gen_mov_tl tcg_gen_mov_i64
 -- 
 2.47.3
 

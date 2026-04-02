@@ -4,41 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C377AD3942B
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 993F9D3942B
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:51:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8IKx-0007VQ-JG; Thu, 02 Apr 2026 09:43:55 -0400
+	id 1w8ILM-0008Vc-Nf; Thu, 02 Apr 2026 09:44:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8IKt-0004lE-La; Thu, 02 Apr 2026 09:43:51 -0400
+ id 1w8IKx-0006PC-Gk; Thu, 02 Apr 2026 09:43:55 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8HYD-0008T0-GI; Thu, 02 Apr 2026 08:53:36 -0400
+ id 1w8HXl-0008Q3-JN; Thu, 02 Apr 2026 08:53:08 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id D146620B6F08;
- Thu,  2 Apr 2026 05:53:06 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D146620B6F08
+ by linux.microsoft.com (Postfix) with ESMTPSA id DC6DA20B710C;
+ Thu,  2 Apr 2026 05:52:57 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com DC6DA20B710C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1775134386;
- bh=6q4UfRU/uNzF6gX/u55VyAfKGDcltvG8skg+piojXoU=;
- h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=EbER5pjnPA3lYo+NEwudBLBmWlXPG6KrZsYC09xfVDhHNRyZSaPerOGwDdBkatNUV
- nRZEVbDte/vcTm28OaNJf3F/8Bhfcb3+ukdkan1n18VwPqSFnC4Eg1nuiUa2jSHKzu
- Ms5j5lT3Y6haFz+bjcsuRuSQk7uyiSGMgOefRIuA=
+ s=default; t=1775134377;
+ bh=ciWqbJQHaMZ9JDFQBzQShbdz0x+tl19N8g1dqTntw7M=;
+ h=From:Subject:Date:To:Cc:From;
+ b=pOfYCuJtThrzHbfJi2gcs81c6K+G3+MlEbUFjtleoZgm8MntSvPMNu/ZzSTKfy4w/
+ C0xQw32xeyvuWm9sKhKiYFfbJF5IFLZyWUY0HmFDmP1EOVFviZZe5D74DwV3fsY+3H
+ 5/C3DFZ0X+h5DrQbVUeN6BzAK3ZI/TNfALNd3Sn8=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Thu, 02 Apr 2026 12:52:39 +0000
-Subject: [PATCH v2 12/14] include/hw/hyperv: adjust hv_interrupt_control
- structure for arm64
+Subject: [PATCH v2 00/14] Add ARM64 support for MSHV accelerator
+Date: Thu, 02 Apr 2026 12:52:27 +0000
+Message-Id: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260402-mshv_accel_arm64_supp-v2-12-754895c15e9e@linux.microsoft.com>
-References: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
-In-Reply-To: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
+X-B4-Tracking: v=1; b=H4sIAIxmzmkC/4WNWwqDMBBFtyLz3ZQkSqr96j6KSBLHZqA+mNTQI
+ u69qRvo5zlwz90gIhNGuBYbMCaKNE8Z9KkAH+z0QEF9ZtBSG1kqJcYYUme9x2dneTRVF9dlEVg
+ bJ2WtLWIFebswDvQ+uvc2c6D4mvlz3CT1s/+KSQkpfKlM07iL82q42Yl47QO7s59HaPd9/wKZN
+ nfXvgAAAA==
+X-Change-ID: 20260311-mshv_accel_arm64_supp-e86b0082aee4
 To: qemu-devel@nongnu.org
 Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
  Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -76,101 +78,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+This series adds ARM64 guest support to the MSHV (Microsoft Hypervisor)
+accelerator, enabling QEMU to run aarch64 VMs on Microsoft's hypervisor
+using the mshv Linux kernel module.
 
-Add the arm64 specific fields to the hv_interrupt_control struct and
-adjust the existing usage accordingly. mshv_request_interrupt is only
-needed only for x86 so compile it out entirely for arm64.
+The first few patches refactor the existing x86 MSHV code to separate
+arch-specific pieces from common infrastructure: moving MSR handling to
+target/i386, extracting shared register hypercall helpers, provisioning
+host CPU features, and introducing arch-specific init hooks.
 
-Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+The remaining patches add the ARM64 backend:
+ - vCPU state get/set using hypervisor register hypercalls
+ - -cpu host support by querying ID registers from the hypervisor
+ - vCPU run loop with MMIO emulation via ESR_EL2 syndrome decoding
+ - In-kernel vGICv3 backed by HVCALL_ASSERT_VIRTUAL_INTERRUPT
+ - Interrupt control structure adjustments for arm64
+
+With this series, a standard aarch64 virt machine can be launched with:
+  qemu-system-aarch64 -accel mshv -cpu host -M virt ...
+
+Caveats:
+- Currently only direct kernel is supported. We're still debugging edk2
+  firmware boot.
+- Live migration is not yet supported.
+
 ---
- accel/mshv/irq.c               |  2 ++
- include/hw/hyperv/hvgdk_mini.h | 25 +++++++++++++++++++++++++
- include/system/mshv.h          |  2 ++
- 3 files changed, 29 insertions(+)
+Changes in v2:
+- Removed PATCH: "accel/mshv: provision guests with the same features as host".
+- Extracted common MMIO emulation logic for hvf, whpx and mshv to a
+  common place.
+- Fixed checkpatch errors/warnings.
+- Picked up reviewed-by tags.
+- Link to v1: https://lore.kernel.org/qemu-devel/20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com
 
-diff --git a/accel/mshv/irq.c b/accel/mshv/irq.c
-index 3c238c33c3..a391d7db86 100644
---- a/accel/mshv/irq.c
-+++ b/accel/mshv/irq.c
-@@ -310,6 +310,7 @@ int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev)
-     return 0;
- }
- 
-+#if defined(__x86_64__)
- int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-                            uint32_t vp_index, bool logical_dest_mode,
-                            bool level_triggered)
-@@ -346,6 +347,7 @@ int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint3
-     }
-     return 0;
- }
-+#endif
- 
- void mshv_irqchip_commit_routes(void)
- {
-diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-index 84b3c6af5f..eb766734d6 100644
---- a/include/hw/hyperv/hvgdk_mini.h
-+++ b/include/hw/hyperv/hvgdk_mini.h
-@@ -506,13 +506,38 @@ typedef struct hv_input_set_vp_registers {
-     struct hv_register_assoc elements[];
- } hv_input_set_vp_registers;
- 
-+enum hv_interrupt_type {
-+#if defined(__x86_64__)
-+    HV_X64_INTERRUPT_TYPE_FIXED             = 0x0000,
-+    HV_X64_INTERRUPT_TYPE_LOWESTPRIORITY    = 0x0001,
-+    HV_X64_INTERRUPT_TYPE_SMI               = 0x0002,
-+    HV_X64_INTERRUPT_TYPE_REMOTEREAD        = 0x0003,
-+    HV_X64_INTERRUPT_TYPE_NMI               = 0x0004,
-+    HV_X64_INTERRUPT_TYPE_INIT              = 0x0005,
-+    HV_X64_INTERRUPT_TYPE_SIPI              = 0x0006,
-+    HV_X64_INTERRUPT_TYPE_EXTINT            = 0x0007,
-+    HV_X64_INTERRUPT_TYPE_LOCALINT0         = 0x0008,
-+    HV_X64_INTERRUPT_TYPE_LOCALINT1         = 0x0009,
-+    HV_X64_INTERRUPT_TYPE_MAXIMUM           = 0x000A,
-+#elif defined(__aarch64__)
-+    HV_ARM64_INTERRUPT_TYPE_FIXED           = 0x0000,
-+    HV_ARM64_INTERRUPT_TYPE_MAXIMUM         = 0x0008,
-+#endif
-+};
-+
- union hv_interrupt_control {
-     uint64_t as_uint64;
-     struct {
-         uint32_t interrupt_type; /* enum hv_interrupt type */
-+#if defined(__x86_64__)
-         uint32_t level_triggered:1;
-         uint32_t logical_dest_mode:1;
-         uint32_t rsvd:30;
-+#elif defined(__aarch64__)
-+        uint32_t rsvd1:2;
-+        uint32_t asserted:1;
-+        uint32_t rsvd2:29;
-+#endif
-     };
- };
- 
-diff --git a/include/system/mshv.h b/include/system/mshv.h
-index 75286baf16..0db18fcee9 100644
---- a/include/system/mshv.h
-+++ b/include/system/mshv.h
-@@ -47,10 +47,12 @@ extern bool mshv_allowed;
- typedef struct MshvState MshvState;
- extern MshvState *mshv_state;
- 
-+#if defined(__x86_64__)
- /* interrupt */
- int mshv_request_interrupt(MshvState *mshv_state, uint32_t interrupt_type, uint32_t vector,
-                            uint32_t vp_index, bool logical_destination_mode,
-                            bool level_triggered);
-+#endif
- 
- int mshv_irqchip_add_msi_route(int vector, PCIDevice *dev);
- int mshv_irqchip_update_msi_route(int virq, MSIMessage msg, PCIDevice *dev);
+---
+Aastha Rawat (8):
+      accel/mshv: move msr.c to target/i386
+      accel/mshv: extract common CPU register helpers
+      meson, target/arm/mshv: Enable arm64 build & add initial MSHV support
+      target/arm/mshv: implement vcpu state operations for ARM64
+      target/arm/mshv: implement -cpu host for MSHV
+      accel/mshv: Add access_vp_regs synthetic proc features
+      target/arm: cpu: Mark MSHV supporting PSCI 1.3
+      target/arm: extract MMIO emulation logic for HVF & WHPX
 
--- 
-2.45.4
+Anirudh Rayabharam (Microsoft) (5):
+      accel/mshv: add arch-specific accelerator init hook
+      target/arm/mshv: add vCPU run loop
+      include/hw/hyperv: adjust hv_interrupt_control structure for arm64
+      hw/intc,target/arm/mshv: add MSHV vGICv3 implementation
+      MAINTAINERS: updates for MSHV arm64 code
+
+Magnus Kulke (1):
+      accel/mshv: implement cpu_thread_is_idle() hook
+
+ MAINTAINERS                        |   8 +
+ accel/mshv/irq.c                   |   2 +
+ accel/mshv/meson.build             |   4 +-
+ accel/mshv/mshv-all.c              |  26 +-
+ accel/mshv/mshv-cpu-common.c       | 151 ++++++++++
+ hw/arm/virt.c                      |  11 +-
+ hw/intc/arm_gicv3_common.c         |   3 +
+ hw/intc/arm_gicv3_mshv.c           | 181 ++++++++++++
+ hw/intc/meson.build                |   1 +
+ include/hw/hyperv/hvgdk_mini.h     | 130 +++++++++
+ include/hw/hyperv/hvhdk.h          | 101 ++++++-
+ include/hw/hyperv/hvhdk_mini.h     |   6 +
+ include/hw/intc/arm_gicv3_common.h |   1 +
+ include/system/hw_accel.h          |   3 +-
+ include/system/mshv.h              |   2 +
+ include/system/mshv_int.h          |   5 +
+ meson.build                        |   7 +-
+ target/arm/cpu.c                   |   8 +-
+ target/arm/cpu64.c                 |  24 +-
+ target/arm/helper.c                |  60 ++++
+ target/arm/helper.h                |   5 +
+ target/arm/hvf/hvf.c               |  64 +++--
+ target/arm/meson.build             |   1 +
+ target/arm/mshv/meson.build        |   7 +
+ target/arm/mshv/mshv-all.c         | 566 +++++++++++++++++++++++++++++++++++++
+ target/arm/mshv_arm.h              |  18 ++
+ target/arm/syndrome.h              |  37 +++
+ target/arm/whpx/whpx-all.c         |  62 +---
+ target/i386/mshv/meson.build       |   2 +
+ target/i386/mshv/mshv-all.c        |  85 ++++++
+ target/i386/mshv/mshv-cpu.c        | 170 +----------
+ {accel => target/i386}/mshv/msr.c  |   0
+ 32 files changed, 1479 insertions(+), 272 deletions(-)
+---
+base-commit: f429c4276c8349f2cc94fb4e46a2a7918bec95c3
+change-id: 20260311-mshv_accel_arm64_supp-e86b0082aee4
+
+Best regards,
+--  
+Aastha Rawat <aastharawat@linux.microsoft.com>
 
 

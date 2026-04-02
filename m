@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97CB4D6AB16
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97CEAD6AB17
 	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:00:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q23-0008GZ-VL; Thu, 02 Apr 2026 17:56:55 -0400
+	id 1w8Q3A-0001A3-W0; Thu, 02 Apr 2026 17:58:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q22-0008Fy-QM
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:54 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1w8Q2l-0000IX-VT
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:40 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q21-00074H-7n
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:54 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-66bf6aa4858so2412687a12.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:56:52 -0700 (PDT)
+ id 1w8Q2i-0007HJ-LO
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:38 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-b9bff57cb62so224476766b.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167012; x=1775771812; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167055; x=1775771855; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S9c0Pnh/0o6ZwLnjL42VohEGpoZWx1Y/0tXtC4CKsYA=;
- b=Dz32pvxwQNO3chVdb0X4trFzEVoauhIIPZPfFHhLvY+p+k+9mOIlXDovWe/vk3qW2z
- Jwlg4CJEnPKq+IQZaAs+YH1lpnnlnUUMy7lxxj6b1Msraad/WB+WFXje+QQKUlSrLFol
- 3jZ3vFHlAYD1piqB2DNucFJkdIxUGoNKwQ8ofb9lXQVygVHHzNsBrYWDX1R9VYogo4C4
- Zm+Xu/mY5bd5Cpxi36Q9qyA4hG7iT864BAgWh3oQewQyrEsRgPR4UqY3b4OTNkfGakFA
- zHenkWStIggLu7K4N3F5GqwOcb+bt6EqNzdCC5UH4DyCw817A0/BFyFvsbnAgNWgLzIp
- pX7g==
+ bh=oujEPxX53I9dv7z2k7DZb4M01rXo06zxwhP7XQBPers=;
+ b=E3QsiglyqzSGEBIUujyHcbOv9bFMgt/YeONixxn4vJG3m9vPK4FJc4GMFx5AEzaNNk
+ AXHkgx+TZBNSNkdUgoAnfvKZS1uau+sZUK6LBSrIW14a7xwLYdARC3Z4kYq1sZXQSDWz
+ KD7uobaQw0MRltFbEBgC9+d5JH/kZN8j+iQa/Q18UVCTkbX6WfrjN9eODgAXacNmduiQ
+ aVW9atAywUxMEaKzVf6YhRJ+EpXrxVOeGL7x2f0WVwSJd0+IsKpgWn1255H6B0UnZc5j
+ vV4OVSmgaygZShFUL/+nR0z3ynYB6s6gtO1QjZPmZKIYobW9EEH6BqDGyt18kcrf7FCM
+ sDPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167012; x=1775771812;
+ d=1e100.net; s=20251104; t=1775167055; x=1775771855;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=S9c0Pnh/0o6ZwLnjL42VohEGpoZWx1Y/0tXtC4CKsYA=;
- b=j/dBSnEHmo2JOpAAJBnJPsiD1sE9VZ6YiC2G8sIWtJNfmFCtS8jQmFv+lG8uT0UEyV
- pMeL+1z5sjOfnRRbA3J3nQgMAHceY6aL1KOFgjONJkClRH+tIeTdi5GtfR3CEzFWhF4q
- qYVc1biLmPAJz5tAhezWcJ7OzEZ3+vho3TQX1zkpB/0jQPTWBDCndQ7fMuUMJh0tMvkC
- 2ieZ1UbcRD/MV4Nc0SndUPjAtGJlNVNzZcX1874btHabnWjd+z4M0numQOk1bZMsUNw7
- iy2L6NKPm+Rq4yKuIm3fnM/8zCZVq+fDyF90oc07l+Qvn2xwggqE9BvKwYWWsO1LqoeU
- D/uQ==
-X-Gm-Message-State: AOJu0Ywh3OR2dYYyNwfHHOzJyPQG+LHO228i/C6oXlhEvW7BN75h428Y
- MhHuD3/Qyi2dQHygz7UV/pSNgmbgq1iyMKls/ZrkhMxItk9TbzD8H2Kg
-X-Gm-Gg: ATEYQzyPEhTqkSdSsbfdK5RYfymk9ibyG+xVtbLMXhnG4FnVT7QOrxE4ZoiKyb/1gO+
- oHyfWNhtO07fSkkzA8uDgM9EmzFDWUlEoDP+GsepoRy/TOZ96ZHJJV8Cx8TnnC2KC3KJivD/sxC
- 5bAZd0Gu914xpBEH87Uol6XdgaLBizYsd/6YMJ1kjhlNGYqDdNE+CZNyEXqlO5AcluiPz/UUIaF
- iHFniM+gdY1kfbTi68BVe22fj8C2n/YaLjLctu4WJRcLJirD54lFHddEjWBhiQjEyui2PqVUHLS
- CGGTGO1TazNQh/mdjhyJyG1CTdJXXSC0G34yLxq8jSHUH9ic1rGMv3kiK3QbHGnL0Np/Hw/rHpD
- 82VImds35T5BU51EjWgxOPmsLpaqdnzIQQN7EewBtQB3ryO+K1S5hvJDVreLpOZcwLqg/g9CKdl
- EdAvsQqiZC/aogGSx0N6FCO/eJGtRba/vuHB77zSAs2YVIHiDrAEYN9k99Px8ZFQxzqIgCMg==
-X-Received: by 2002:a17:907:3e8a:b0:b99:7462:3c57 with SMTP id
- a640c23a62f3a-b9c6754ad85mr23744666b.14.1775167011775; 
- Thu, 02 Apr 2026 14:56:51 -0700 (PDT)
+ bh=oujEPxX53I9dv7z2k7DZb4M01rXo06zxwhP7XQBPers=;
+ b=h6ljH/tbAr9mS3EU+J81Cum61ZVO4oW2NGeQf2gqR5WKw7w/XexT4C8JOP1YoCTibj
+ /Hecv/iDvuzM8CjIEVpj48V+E27olfkkSoqPQ9DgFZ0wH1AwnBbmFJe91ds3e6T88Vdr
+ R2oYz+0mrYLeift8QqFpiji83LQTSXcz9O+AezPJcCYuuq9+i1NQFVRUmaxoWbe3vDFE
+ hUZUS7R+5y7kRnkQIVOupAwxqaB1h9zGLb3oT1ANxd8a/9hcJq5cixM1rDLd01T3TWhE
+ 3Hp0U2GzO0rCKzsChHe1LkLcFTdrvRN2hxgUmS9rjlMw0bJ4r/nv/oTz9OS+11NOissx
+ 5DIQ==
+X-Gm-Message-State: AOJu0Ywwc2jWffq6akOh144vNxPg8ZQ/IaB7GWeOuYIr5ceVfQylYc6G
+ KPqmMcGIBVKuZL3uHGHZPtfeUNqxKpRQ3fubYw8I2YF68BdNm1zRcLEI
+X-Gm-Gg: ATEYQzydne03I1S1rn8eBQbX0Zw7xdVsaup67Jnkfm8mHugbbRDB6aDJCK/a4ZeCGEX
+ mjSPseI7KufToCyJZwSz1/KyyKHXfESFBAfiYEzible4QQH0aUsTU433QnTS8bgk6EQ5G59ZrtM
+ +QNoJBDpEltploKzVl14iNr+dnRXNcZbrKrmYD+Fjp4sy3cGBhxcxKf/nEIwZ3i8uiusvzJADyt
+ IfcXYrSPWfRrUQOCUrby5deR4WndlEN+I8mE79UsqlLB0o27NuVyzx6SHZvDQcz1Eq+mwoyUS9t
+ AV8TFiyQKCwSstm4bzbYuiutm1mNPlJYVyV8bQafmKTtCs0iExgbCcvqZw8QgS1AFM9pYLiAshn
+ 0jWahARHCTIPKvo4k54Ms8HHxjd2LAffC68Cp/lXsVCTFRfTQDrqgkkLLfTLKRKVq5M4podMGkF
+ KY1Bn90bUvA2RigGyheKoZ+pdSKuzf7YqALF0OZ67SfTX136M5zEDjBmqjUg+xHv0zVmkw9w==
+X-Received: by 2002:a17:907:1c13:b0:b98:4246:8e6e with SMTP id
+ a640c23a62f3a-b9c67b9c30bmr24678366b.53.1775167055104; 
+ Thu, 02 Apr 2026 14:57:35 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.56.50
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:56:51 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:34 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,16 +71,17 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 06/33] hw/core/fdt_generic: add cpu clusters management
-Date: Thu,  2 Apr 2026 23:55:51 +0200
-Message-ID: <20260402215629.745866-7-ruslichenko.r@gmail.com>
+Subject: [PATCH v3 30/33] hw/core/fdt_generic_util: Add deferred device
+ initialization support
+Date: Thu,  2 Apr 2026 23:56:15 +0200
+Message-ID: <20260402215629.745866-31-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x533.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,161 +106,102 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add support for grouping CPUs into clusters during
-FDT machine instantiation.
+Add a mechanism to defer device initialization
+until after the main FDT traversal.
 
-The clusters are automatically created if CPU parent
-is not already an existing cluster.
+This introduces a deferred queue in FDTMachineInfo.
+Devices in this queue are processed in fdt_init_deferred(),
+which handles their realization, reset registration,
+and resource parsing (interrupts and memory regions).
+
+This allows resolving initialization where devices need to
+be realized on latest stages or outside of co-routine context.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic.c         | 78 +++++++++++++++++++++++++++++++++++
- include/hw/core/fdt_generic.h | 13 ++++++
- 2 files changed, 91 insertions(+)
+ hw/core/fdt_generic_util.c    | 28 ++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic.h |  8 ++++++++
+ 2 files changed, 36 insertions(+)
 
-diff --git a/hw/core/fdt_generic.c b/hw/core/fdt_generic.c
-index da60de7a26..ded11cd6c0 100644
---- a/hw/core/fdt_generic.c
-+++ b/hw/core/fdt_generic.c
-@@ -32,6 +32,7 @@
- #include "migration/vmstate.h"
- #include "qemu/coroutine.h"
- #include "qemu/log.h"
-+#include "hw/cpu/cluster.h"
- #include "system/reset.h"
- 
- 
-@@ -158,6 +159,76 @@ void *fdt_init_get_opaque(FDTMachineInfo *fdti, const char *node_path)
-     return NULL;
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index c92b5c287b..ae54ada11d 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -93,6 +93,13 @@ static bool qemu_irq_shared_or_handler(bool *inputs, int n)
+     return false;
  }
  
-+static int get_next_cpu_cluster_id(void)
-+{
-+    static int i;
++static void fdt_parse_node_reg_prop(FDTMachineInfo *fdti, char *node_path,
++                             Object *dev);
++static void fdt_parse_node_irq_prop(FDTMachineInfo *fdti, char *node_path,
++                             Object *dev);
++static void fdt_init_device_realize(FDTMachineInfo *fdti,  char *node_path,
++                                   Object *dev);
 +
-+    return i++;
-+}
-+
-+void fdt_init_register_user_cpu_cluster(FDTMachineInfo *fdti, Object *cluster)
-+{
-+    int i = get_next_cpu_cluster_id();
-+    DeviceState *dev = DEVICE(cluster);
-+    FDTCPUCluster *cl;
-+
-+    qdev_prop_set_uint32(dev, "cluster-id", i);
-+
-+    cl = g_new0(FDTCPUCluster, 1);
-+    cl->cpu_cluster = cluster;
-+    cl->next = fdti->clusters;
-+    cl->user = true;
-+
-+    fdti->clusters = cl;
-+
-+    qemu_log_mask(LOG_FDT,
-+             "%s: Registered user-defined cpu cluster with id %d\n",
-+             object_get_canonical_path(cluster), i);
-+}
-+
-+static void *fdt_init_add_cpu_cluster(FDTMachineInfo *fdti, char *compat)
-+{
-+    FDTCPUCluster *cl = g_malloc0(sizeof(*cl));
-+    int i = get_next_cpu_cluster_id();
-+    char *name = g_strdup_printf("cluster%d", i);
-+    Object *obj;
-+
-+    obj = object_new(TYPE_CPU_CLUSTER);
-+    object_property_add_child(object_get_root(), name, OBJECT(obj));
-+    qdev_prop_set_uint32(DEVICE(obj), "cluster-id", i);
-+
-+    cl->cpu_type = g_strdup(compat);
-+    cl->cpu_cluster = obj;
-+    cl->next = fdti->clusters;
-+
-+    fdti->clusters = cl;
-+
-+    g_free(name);
-+
-+    return obj;
-+}
-+
-+void *fdt_init_get_cpu_cluster(FDTMachineInfo *fdti, Object *parent,
-+                               char *compat)
-+{
-+    FDTCPUCluster *cl = fdti->clusters;
-+
-+    if (object_dynamic_cast(parent, TYPE_CPU_CLUSTER)) {
-+        /* The direct parent of this CPU is a CPU cluster. Use it. */
-+        return parent;
-+    }
-+
-+    while (cl) {
-+        if (!cl->user && !strcmp(compat, cl->cpu_type)) {
-+            return cl->cpu_cluster;
-+        }
-+        cl = cl->next;
-+    }
-+
-+    /* No cluster found so create and return a new one */
-+    return fdt_init_add_cpu_cluster(fdti, compat);
-+}
-+
- FDTMachineInfo *fdt_init_new_fdti(void *fdt)
+ static void qemu_irq_shared_handler(void *opaque, int n, int level)
  {
-     FDTMachineInfo *fdti = g_malloc0(sizeof(*fdti));
-@@ -171,8 +242,15 @@ FDTMachineInfo *fdt_init_new_fdti(void *fdt)
- 
- void fdt_init_destroy_fdti(FDTMachineInfo *fdti)
- {
-+    FDTCPUCluster *cl = fdti->clusters;
-     FDTDevOpaque *dp;
- 
-+    while (cl) {
-+        FDTCPUCluster *tmp = cl;
-+        cl = cl->next;
-+        g_free(tmp->cpu_type);
-+        g_free(tmp);
-+    }
-     for (dp = fdti->dev_opaques; dp->node_path; dp++) {
-         g_free(dp->node_path);
+     QEMUIRQSharedState *s = opaque;
+@@ -162,6 +169,26 @@ static void fdt_init_cpu_clusters(FDTMachineInfo *fdti)
      }
+ }
+ 
++static void fdt_init_deferred(FDTMachineInfo *fdti)
++{
++    while (fdti->deferred) {
++        FDTDeferredNode *dnode = fdti->deferred;
++
++        fdt_debug("FDT: Deferred realize node: %s\n",
++                 dnode->node_path);
++
++        fdt_init_device_realize(fdti, dnode->node_path, OBJECT(dnode->dev));
++
++        fdt_parse_node_reg_prop(fdti, dnode->node_path, OBJECT(dnode->dev));
++
++        fdt_parse_node_irq_prop(fdti, dnode->node_path, OBJECT(dnode->dev));
++
++        fdti->deferred = dnode->next;
++        g_free(dnode->node_path);
++        g_free(dnode);
++    }
++}
++
+ FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
+ {
+     FDTMachineInfo *fdti = fdt_init_new_fdti(fdt);
+@@ -175,6 +202,7 @@ FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
+     while (qemu_co_enter_next(fdti->cq, NULL)) {
+         ;
+     }
++    fdt_init_deferred(fdti);
+     fdt_init_cpu_clusters(fdti);
+     fdt_init_all_irqs(fdti);
+     memory_region_transaction_commit();
 diff --git a/include/hw/core/fdt_generic.h b/include/hw/core/fdt_generic.h
-index d204ceda43..05ab07e08c 100644
+index 3961615a9c..2d507392fa 100644
 --- a/include/hw/core/fdt_generic.h
 +++ b/include/hw/core/fdt_generic.h
-@@ -18,6 +18,13 @@ typedef struct FDTDevOpaque {
-     void *opaque;
- } FDTDevOpaque;
+@@ -35,6 +35,12 @@ typedef struct FDTIRQConnection {
+     void *next;
+ } FDTIRQConnection;
  
-+typedef struct FDTCPUCluster {
-+    char *cpu_type;
-+    void *cpu_cluster;
++typedef struct FDTDeferredNode {
++    DeviceState *dev;
++    char *node_path;
 +    void *next;
-+    bool user;
-+} FDTCPUCluster;
++} FDTDeferredNode;
 +
  typedef struct FDTMachineInfo {
      /* the fdt blob */
      void *fdt;
-@@ -27,6 +34,8 @@ typedef struct FDTMachineInfo {
-     FDTDevOpaque *dev_opaques;
-     /* recheck coroutine queue */
-     CoQueue *cq;
-+    /* list of all CPU clusters */
-+    FDTCPUCluster *clusters;
+@@ -48,6 +54,8 @@ typedef struct FDTMachineInfo {
+     FDTIRQConnection *irqs;
+     /* list of all CPU clusters */
+     FDTCPUCluster *clusters;
++    /* list of devices for deferred init */
++    FDTDeferredNode *deferred;
  } FDTMachineInfo;
  
  /*
-@@ -72,6 +81,10 @@ void fdt_init_set_opaque(FDTMachineInfo *fdti, const char *node_path,
- int fdt_init_has_opaque(FDTMachineInfo *fdti, const char *node_path);
- void *fdt_init_get_opaque(FDTMachineInfo *fdti, const char *node_path);
- 
-+void *fdt_init_get_cpu_cluster(FDTMachineInfo *fdti, Object *parent,
-+                               char *compat);
-+void fdt_init_register_user_cpu_cluster(FDTMachineInfo *fdti, Object *cluster);
-+
- /* statically register a FDTInitFn as being associate with a compatibility */
- 
- #define fdt_register_compatibility_opaque(function, compat, n, opaque) \
 -- 
 2.43.0
 

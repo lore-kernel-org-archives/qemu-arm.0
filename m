@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 071A7D3942C
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666D5D3942C
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:54:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8ILH-0008NJ-O5; Thu, 02 Apr 2026 09:44:15 -0400
+	id 1w8IKr-0006k3-Ur; Thu, 02 Apr 2026 09:43:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8IKx-0004lE-O1; Thu, 02 Apr 2026 09:43:55 -0400
+ id 1w8IKp-0006PC-K6; Thu, 02 Apr 2026 09:43:47 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8HXl-0008QZ-JN; Thu, 02 Apr 2026 08:53:08 -0400
+ id 1w8HXu-0008Sr-LC; Thu, 02 Apr 2026 08:53:17 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 23C5D20B7136;
- Thu,  2 Apr 2026 05:53:00 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 23C5D20B7136
+ by linux.microsoft.com (Postfix) with ESMTPSA id 3AC7C20B6F01;
+ Thu,  2 Apr 2026 05:53:06 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 3AC7C20B6F01
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1775134380;
- bh=m0k2+p45IxRoR7EBbAy9Rxxi2hTnQ1VuZluHvqCqsIY=;
+ s=default; t=1775134386;
+ bh=HK4B0mCPYCLB2nM8rmcv3SewIkAarA4TFD6RwOvwsYU=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=mqL0UB4qvak1Chc5pYRIuja6w5Vt4dCsuZ3sCNXraeoVACXlJUOSD6acpuPH+1LMi
- DEEXUOwEyGy0vMFJmzf++Fmxv+wdlKzu5qXoDtn5IOmP5DeCpri2MVpRrP2N64MtdB
- T3W1BrbQ2ACzwzif6kQ7q7QJataszzwOnxgVybUk=
+ b=lZIpC7cALnLqVxtwWINVP+/Ni5L5SW8krxNr0m8m0aVPqiObJorS8f5axK/v/XFEt
+ SLjYCF7sqtaCKZqmcL/OE0PknIIvUUjaXl4P3xhty5RPrdO6OhL4qd3BdBBcLAqs7h
+ n8Mn4ysFI4lJLKUyDxAhRVCmOni1KzIYa4xntYdY=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Thu, 02 Apr 2026 12:52:30 +0000
-Subject: [PATCH v2 03/14] meson, target/arm/mshv: Enable arm64 build & add
- initial MSHV support
+Date: Thu, 02 Apr 2026 12:52:38 +0000
+Subject: [PATCH v2 11/14] target/arm/mshv: add vCPU run loop
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260402-mshv_accel_arm64_supp-v2-3-754895c15e9e@linux.microsoft.com>
+Message-Id: <20260402-mshv_accel_arm64_supp-v2-11-754895c15e9e@linux.microsoft.com>
 References: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
 In-Reply-To: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -76,128 +75,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Enable the build of the MSHV accelerator for arm64 in the Meson build
-system. Introduce initial files and stub implementations to support MSHV
-for the ARM target.
+From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
 
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
+
+Handle MMIO exits by emulating the instruction using the syndrome
+information from ESR_EL2.
+
+Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
 ---
- meson.build                 |  7 +++---
- target/arm/meson.build      |  1 +
- target/arm/mshv/meson.build |  7 ++++++
- target/arm/mshv/mshv-all.c  | 54 +++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 66 insertions(+), 3 deletions(-)
+ include/hw/hyperv/hvgdk_mini.h | 44 +++++++++++++++++++
+ target/arm/mshv/mshv-all.c     | 95 ++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 139 insertions(+)
 
-diff --git a/meson.build b/meson.build
-index ed82247111..bf12fda40f 100644
---- a/meson.build
-+++ b/meson.build
-@@ -303,7 +303,8 @@ if cpu == 'aarch64'
-   accelerator_targets += {
-     'CONFIG_HVF': ['aarch64-softmmu'],
-     'CONFIG_NITRO': ['aarch64-softmmu'],
--    'CONFIG_WHPX': ['aarch64-softmmu']
-+    'CONFIG_WHPX': ['aarch64-softmmu'],
-+    'CONFIG_MSHV': ['aarch64-softmmu'],
-   }
- elif cpu == 'x86_64'
-   accelerator_targets += {
-@@ -855,8 +856,8 @@ if get_option('kvm').allowed() and host_os == 'linux'
- endif
+diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
+index d56be0d70f..84b3c6af5f 100644
+--- a/include/hw/hyperv/hvgdk_mini.h
++++ b/include/hw/hyperv/hvgdk_mini.h
+@@ -750,6 +750,50 @@ struct hv_x64_memory_intercept_message {
+     uint8_t instruction_bytes[16];
+ };
  
- if get_option('mshv').allowed() and host_os == 'linux'
--  if get_option('mshv').enabled() and host_machine.cpu() != 'x86_64'
--    error('mshv accelerator requires x64_64 host')
-+  if get_option('mshv').enabled() and not (host_machine.cpu() in [ 'x86_64', 'aarch64' ])
-+    error('The mshv accelerator requires an x86_64 or aarch64 host')
-   endif
-   accelerators += 'CONFIG_MSHV'
- endif
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 6e0e504a40..8aa8cac137 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -59,6 +59,7 @@ arm_common_system_ss.add(files(
- 
- subdir('hvf')
- subdir('whpx')
-+subdir('mshv')
- 
- if 'CONFIG_TCG' in config_all_accel
-    subdir('tcg')
-diff --git a/target/arm/mshv/meson.build b/target/arm/mshv/meson.build
-new file mode 100644
-index 0000000000..169643691e
---- /dev/null
-+++ b/target/arm/mshv/meson.build
-@@ -0,0 +1,7 @@
-+arm_mshv_ss = ss.source_set()
++union hv_arm64_vp_execution_state {
++    uint16_t as_uint16;
++    struct {
++        uint16_t cpl:2;
++        uint16_t debug_active:1;
++        uint16_t interruption_pending:1;
++        uint16_t vtl:4;
++        uint16_t virtualization_fault_active:1;
++        uint16_t reserved:7;
++    };
++};
 +
-+arm_mshv_ss.add(files(
-+  'mshv-all.c',
-+))
++struct hv_arm64_intercept_message_header {
++    uint32_t vp_index;
++    uint8_t instruction_length;
++    uint8_t intercept_access_type;
++    union hv_arm64_vp_execution_state execution_state;
++    uint64_t pc;
++    uint64_t cpsr;
++};
 +
-+arm_system_ss.add_all(when: 'CONFIG_MSHV', if_true: arm_mshv_ss)
++union hv_arm64_memory_access_info {
++    uint8_t as_uint8;
++    struct {
++        uint8_t gva_valid:1;
++        uint8_t gva_gpa_valid:1;
++        uint8_t hypercall_output_pending:1;
++        uint8_t reserved:5;
++    };
++};
++
++struct hv_arm64_memory_intercept_message {
++    struct hv_arm64_intercept_message_header header;
++    uint32_t cache_type; /* enum hv_cache_type */
++    uint8_t instruction_byte_count;
++    union hv_arm64_memory_access_info memory_access_info;
++    uint16_t reserved1;
++    uint8_t instruction_bytes[4];
++    uint32_t reserved2;
++    uint64_t guest_virtual_address;
++    uint64_t guest_physical_address;
++    uint64_t syndrome;
++};
++
+ union hv_message_flags {
+     uint8_t asu8;
+     struct {
 diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-new file mode 100644
-index 0000000000..1c82e2c593
---- /dev/null
+index 8d16971c0d..c1c0291461 100644
+--- a/target/arm/mshv/mshv-all.c
 +++ b/target/arm/mshv/mshv-all.c
-@@ -0,0 +1,54 @@
-+/*
-+ * QEMU MSHV support
-+ *
-+ * Copyright Microsoft, Corp. 2026
-+ *
-+ * Authors: Aastha Rawat          <aastharawat@linux.microsoft.com>
-+ *          Anirudh Rayabharam    <anirudh@anirudhrb.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "system/mshv.h"
-+#include "system/mshv_int.h"
-+
-+int mshv_load_regs(CPUState *cpu)
+@@ -21,6 +21,7 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/internals.h"
+ #include "target/arm/mshv_arm.h"
++#include "target/arm/helper.h"
+ 
+ #include "system/mshv.h"
+ #include "system/mshv_int.h"
+@@ -166,8 +167,102 @@ int mshv_arch_put_registers(const CPUState *cpu)
+     return 0;
+ }
+ 
++static int set_memory_info(const struct hyperv_message *msg,
++                           struct hv_arm64_memory_intercept_message *info)
 +{
++    if (msg->header.message_type != HVMSG_GPA_INTERCEPT
++            && msg->header.message_type != HVMSG_UNMAPPED_GPA
++            && msg->header.message_type != HVMSG_UNACCEPTED_GPA) {
++        error_report("invalid message type");
++        return -1;
++    }
++    memcpy(info, msg->payload, sizeof(*info));
++
 +    return 0;
 +}
 +
-+int mshv_arch_put_registers(const CPUState *cpu)
++int mshv_store_regs(CPUState *cpu)
 +{
++    int ret;
++
++    ret = set_standard_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to store standard registers");
++        return -1;
++    }
++
 +    return 0;
 +}
 +
-+int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
++static int handle_unmapped_mem(int vm_fd, CPUState *cpu,
++                               const struct hyperv_message *msg,
++                               MshvVmExit *exit_reason)
 +{
++    struct hv_arm64_memory_intercept_message info = { 0 };
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++    int ret;
++    EsrEl2 syndrome;
++
++    ret = set_memory_info(msg, &info);
++    if (ret < 0) {
++        error_report("failed to convert message to memory info");
++        return -1;
++    }
++
++    syndrome.raw = info.syndrome;
++
++    ret = mshv_load_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to load registers");
++        return -1;
++    }
++
++    ret = arm_emulate_mmio(cpu, syndrome, info.guest_physical_address);
++    if (ret < 0) {
++        error_report("Failed to emulate with syndrome");
++        return -1;
++    }
++
++    env->pc += (syndrome.il == 1) ? 4 : 2;
++
++    ret = mshv_store_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to store registers");
++        return -1;
++    }
++    *exit_reason = MshvVmExitIgnore;
++
 +    return 0;
 +}
 +
-+void mshv_arch_init_vcpu(CPUState *cpu)
-+{
+ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+ {
++    int ret;
++    int cpu_fd = mshv_vcpufd(cpu);
 +
-+}
++    ret = ioctl(cpu_fd, MSHV_RUN_VP, msg);
++    if (ret < 0) {
++        *exit = MshvVmExitShutdown;
++        return ret;
++    }
 +
-+void mshv_arch_destroy_vcpu(CPUState *cpu)
-+{
++    switch (msg->header.message_type) {
++    case HVMSG_UNRECOVERABLE_EXCEPTION:
++        *exit = MshvVmExitShutdown;
++        break;
++    case HVMSG_UNMAPPED_GPA:
++        ret = handle_unmapped_mem(vm_fd, cpu, msg, exit);
++        if (ret < 0) {
++            error_report("failed to handle mmio");
++            return -1;
++        }
++        break;
++    default:
++        error_report("Unhandled message type: 0x%x", msg->header.message_type);
++        return -1;
++    }
 +
-+}
-+
-+void mshv_init_mmio_emu(void)
-+{
-+
-+}
-+
-+void mshv_arch_amend_proc_features(
-+    union hv_partition_synthetic_processor_features *features)
-+{
-+
-+}
-+
-+int mshv_arch_post_init_vm(int vm_fd)
-+{
-+    return 0;
-+}
+     return 0;
+ }
+ 
 
 -- 
 2.45.4

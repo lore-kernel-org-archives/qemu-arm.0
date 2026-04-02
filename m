@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EC0D6AB16
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BF7D6AB17
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q2n-0000L6-42; Thu, 02 Apr 2026 17:57:41 -0400
+	id 1w8Q1x-0008CP-FV; Thu, 02 Apr 2026 17:56:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2Z-00006Q-Lz
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:27 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1w8Q1u-0008AV-5R
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:46 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2W-0007DH-IX
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:26 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-66a33f61d80so2432244a12.0
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:24 -0700 (PDT)
+ id 1w8Q1r-00070z-LW
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:45 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-b9bff57cb62so224390566b.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:56:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167043; x=1775771843; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167002; x=1775771802; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OrGB8OQ0EB2XgRXWdV+EvwzSnNtuQZ55Vl1tvmUmW2w=;
- b=auKtuA1m89lxeUAXqyr9HRG/sIzSEzahQDBUAIHo8U3dmj3PpMwzs2T9YmSpe2Zllv
- wpCMyjm5SlNsYs0G4dk+T00oqJ94CnMXqxF3OnL/nBvXMwL0M82/qtmbzKn/23U8WQAp
- JltBLkVQmhPiu86mfXT7P+vjMNiNqgc1hkaEHBD3LR54z01llZzugTBnNI+wZ7WzLKgy
- wXapKxXalUI14DuHqm0jZEihwPR/fIbyHYCLOKfz5FYAlDmSOVEmxxMwgWUIgrbWeRyw
- yeDgn1d1ynUMJlb9hh3sUrLNa0ZQBQLRQEWlPr+9b73ZHS5NgI2zD662Kgt1PbzMOOr7
- hvnA==
+ bh=osWMhevUw1N3AseQErboNOG5dweWBMW0zK7zEVOFBV8=;
+ b=YJOr7YX6AYABsdsfH6OwSk8CA7jZH+blEhoGQ/n50u9qmVan71BwhXhkd7kd6ojk9F
+ VnxIwbrLDL4SCTFf3USdyBAAhZ7WhuOfyk3QkW+egZWLIA72cMc4RYWIRbzCq/2SD6bn
+ 1OHtqrgSa4NjQU5xQXQLCUnbxyClYA5K3tTbKpdk9XOI00AndoknbdKez+RWpFGCxfZj
+ f4faqv4ODucChpwWRHseYHDzD9p/gKAY0XgE3Q+JdBZ4fZf5HIMpR8S30Yr1RQWXqRRR
+ 51eOLDSMxD99y9djGCg7/bh9T2X/OcXgRyhyuJjtke06ppjkAUUy4JllDz3FI4C7dnm7
+ u8Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167043; x=1775771843;
+ d=1e100.net; s=20251104; t=1775167002; x=1775771802;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=OrGB8OQ0EB2XgRXWdV+EvwzSnNtuQZ55Vl1tvmUmW2w=;
- b=UpOhH2Uq6LCJFmXEi5mKL33VOzBboEbndi2/xK02FLm7fTeRZBiCz1lZ+KQJkydczU
- u4f+Zmqu3FGxedRgrZAWyGTC5bifQlVOIZK1IE3wF7nKkwm3sZRqfl4rayCHbsJsa6V3
- z1oAXqrSwQ0tLtRGy+0+4kPuvm1XxGxr7Xdk0rzveKifRlF1Lyu1k/P4oxVUgNonrAa0
- 4v4iQS/Y/Ih3NRgtYcPCFWKr/aJ0x/npgIkKrNsE6F8t0XJMYBb1yA3hP1110PcCGDwR
- lrJ94nh8zv0SrHG415xXVwwl7mxh1IVSc7m0pnNIhn4hbmM0L22OzSRrvBErwRHcbpDU
- jWBA==
-X-Gm-Message-State: AOJu0Yxtg/VyANvrXbF0LTKdgBYhUeFe01s6PHoRo4BtxgFeL8s2gs1z
- IMy3j+dALoxbCY18ctPxEUbaQuAUuJXklcefg9uIPKkSkXKguNcRdc8p
-X-Gm-Gg: ATEYQzwNCwvqyawi/2kVYA9qqwrIpuowW3nMusDra6/fhcMZaArB5BWhd9FENdeWwnv
- NSn6CgKEGBKTFrsbeNwoIPl4+tzT5+axYzVzhdQu8dAxChQ+HBFSbOP67YRlTeyX0h2L07H94ol
- cAtw4u8jt3S28xCfaTETByWoEi5vUbqbzYYCHx0pHcqu5OLG+pzyeUeyETc2YRp99Lartvz+hZR
- JL3yT1reuJXQTtHEcEdVksSjHtrsvhO0IvJCJzdSv0v6Omd+owvpFBEr7QmEId5ZWRec7aJjI31
- yISFe8MuwJmOJSCcz2iv5jnAz7eFkxsXOlZDwnBJ5kSl/Pa+YdaBOQb/8B3a20DrqeTrahuyAiB
- r8wVY5qlky/830ZBt6uoUlswxSQDKpwB7zRIVafF8HeBCkvhc4Cp+lnJc7nm0k+D3+vpNF0BObW
- jqzqoSWg6mEqXDh+9o7uGweYHMEThcENYXyDbav5wtZ0MtFPrfqzLrCfomwq6SerzrS62L1w==
-X-Received: by 2002:a17:907:3e9f:b0:b96:e3db:9e04 with SMTP id
- a640c23a62f3a-b9c67b5fd34mr24482966b.53.1775167042926; 
- Thu, 02 Apr 2026 14:57:22 -0700 (PDT)
+ bh=osWMhevUw1N3AseQErboNOG5dweWBMW0zK7zEVOFBV8=;
+ b=QERwI8x9d0vHlS7FV6wF538U40GEvQh9+4XTqNT3KzkWQvg4yfm3Hs2bOUdPPnNEpH
+ amcmkaySpCwbIL6Kn7zkqUiY4h2iG5f6auLWE7A2IVZb52E6qFM6zW2LU5/Gu2BTdxp7
+ LAx1JfUUivVpAhKRWQpJaoNitQ8kHf9XdxrNW6nLWwpNLOZr6a3hWWTksSN5NnZUmlgy
+ XaMU0sLLSmbz2skB2+j6dhIduvw6U4xp9wn+Nfv4vmn6MA/lmprKrTk2bTbZEgv5miPp
+ CWuY9P+FIpHYdl1ZotiryjnsoizxjChasEYL7U3uE86tvi6eoIv+tmvGNsOpA8jOnmTJ
+ 3pPA==
+X-Gm-Message-State: AOJu0Yy8EmeAfx10s+ZvUKDcHyGwwKIS7HUD5b3XrMpk/PJt5xnMox7u
+ 83bOLxN1V8EqgETbmRSd+x+RlNp8DVEr0ansxb3Qfq7ywncf0tmxxEN7
+X-Gm-Gg: ATEYQzyHpdBRs0GfcA/01DgQwWKX8BqrsQLX4xlHFgVzYAwAx8ojqSQp7zSn7VFtYGl
+ 5H/Y+I4vcdeLSZyvCEkwSSEaYnsMMb5bQAUie/rS5q7N/4gpc5sHVSXNbXuWxR512oMbqceAyrv
+ GLng5CrfJtjvn6soN8qxcnhZVhaLUWveajm0D7O3jcSOiIQdisM5FW+t6liZKTY/owGlmJR1EPq
+ 22gigkh0mQ3sKJKXRkHAsqXvQ7BElMJQfmG/iOZnUawu7+l6LfwESiNPgZ7FWUfFzfOEgoBnsFo
+ +nddSBlmojj4zkTRUpvTQpYPV9ZYY9DgnlNtu/x4/IGbrdVfDeX2hwqUMs56wB1k0dvFXCLWFaO
+ elzd0DCv3xfF2+AGXBU24NO9YmKCCDzkDcUtX2444nq4juMX/T6aIyqjLb6+Zm+abQGuQFy0btR
+ c3tA8891w0yEsfr+UdHmvuXeI+elNfaNB7lGOaVJnXjZ5gs6ATrZ7HtnDxVYu+bnltCNLd5A==
+X-Received: by 2002:a17:907:1903:b0:b95:894b:46e4 with SMTP id
+ a640c23a62f3a-b9c679adcccmr27187566b.34.1775167001790; 
+ Thu, 02 Apr 2026 14:56:41 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.21
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.56.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:22 -0700 (PDT)
+ Thu, 02 Apr 2026 14:56:41 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 23/33] hw/intc/arm_gic: implement FDT_GENERIC_INTC and fdt
- support
-Date: Thu,  2 Apr 2026 23:56:08 +0200
-Message-ID: <20260402215629.745866-24-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
+ Alistair Francis <alistair.francis@wdc.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Subject: [PATCH v3 01/33] system/device_tree: update qemu_fdt_getprop_cell
+Date: Thu,  2 Apr 2026 23:55:46 +0200
+Message-ID: <20260402215629.745866-2-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,173 +107,132 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch implements TYPE_FDT_GENERIC_INTC interface, which
-enables GIC to be instantiated and wired via the device tree
-description.
+Update 'qemu_fdt_getprop_cell' to allow accessing
+specific cells within multi-cell property array.
 
-The implemented interface method are following:
-1. 'get_irq': Parses device tree interrupt specifiers
-and return correct qemu_irq for devices which has IRQ's wired
-to GIC.
-2. 'auto_parent': Automatically connect the GIC's output signals
-to the CPU's found in current machine configuration.
+This will be used by hardware device tree parsing logic.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/intc/arm_gic.c        | 32 +++++++++++++++++++++++++
- hw/intc/arm_gic_common.c | 50 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 82 insertions(+)
+ hw/arm/boot.c                |  8 ++++----
+ hw/arm/raspi4b.c             |  8 ++++----
+ hw/arm/vexpress.c            |  4 ++--
+ include/system/device_tree.h |  5 ++---
+ system/device_tree.c         | 18 ++++++++----------
+ 5 files changed, 20 insertions(+), 23 deletions(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 4d4b79e6f3..bbe9409ef3 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -24,12 +24,15 @@
- #include "gic_internal.h"
- #include "qapi/error.h"
- #include "hw/core/cpu.h"
-+#include "hw/core/boards.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
- #include "system/kvm.h"
- #include "system/qtest.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- /* #define DEBUG_GIC */
- 
- #ifdef DEBUG_GIC
-@@ -2162,12 +2165,41 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
- 
- }
- 
-+static void arm_gic_fdt_auto_parent(FDTGenericIntc *obj, Error **errp)
-+{
-+    GICState *s = ARM_GIC(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int num_cpus = s->num_cpu;
-+    CPUState *cs;
-+    int i = 0;
-+
-+    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+        if (i >= s->num_cpu) {
-+            break;
-+        }
-+
-+        sysbus_connect_irq(sbd, i,
-+                           qdev_get_gpio_in(DEVICE(cs), 0));
-+        sysbus_connect_irq(sbd, i + num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 1));
-+        sysbus_connect_irq(sbd, i + 2 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 2));
-+        sysbus_connect_irq(sbd, i + 3 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 3));
-+        i++;
-+    }
-+
-+    /* FIXME: Add some error checking */
-+}
-+
- static void arm_gic_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ARMGICClass *agc = ARM_GIC_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
- 
-     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
-+    fgic->auto_parent = arm_gic_fdt_auto_parent;
- }
- 
- static const TypeInfo arm_gic_info = {
-diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-index 304d89cf56..04787cff79 100644
---- a/hw/intc/arm_gic_common.c
-+++ b/hw/intc/arm_gic_common.c
-@@ -28,6 +28,8 @@
- #include "migration/vmstate.h"
- #include "system/kvm.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- static int gic_pre_save(void *opaque)
- {
-     GICState *s = (GICState *)opaque;
-@@ -348,6 +350,51 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index c97d4c4e11..36fefd06d5 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -509,10 +509,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+         return 0;
      }
+ 
+-    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
+-                                   NULL, &error_fatal);
+-    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
+-                                   NULL, &error_fatal);
++    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
++                                   &error_fatal);
++    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
++                                   &error_fatal);
+     if (acells == 0 || scells == 0) {
+         fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
+         goto fail;
+diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
+index 3eeb8f447e..58ddd103b7 100644
+--- a/hw/arm/raspi4b.c
++++ b/hw/arm/raspi4b.c
+@@ -42,10 +42,10 @@ static void raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
+     uint32_t acells, scells;
+     char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
+ 
+-    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
+-                                   NULL, &error_fatal);
+-    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
+-                                   NULL, &error_fatal);
++    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
++                                   &error_fatal);
++    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
++                                   &error_fatal);
+     /* validated by arm_load_dtb */
+     g_assert(acells && scells);
+ 
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index cc6ae7d4c4..23d2d7deff 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -486,9 +486,9 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
+     const VEDBoardInfo *daughterboard = (const VEDBoardInfo *)info;
+ 
+     acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
+-                                   NULL, &error_fatal);
++                                   0, &error_fatal);
+     scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
+-                                   NULL, &error_fatal);
++                                   0, &error_fatal);
+     intc = find_int_controller(fdt);
+     if (!intc) {
+         /* Not fatal, we just won't provide virtio. This will
+diff --git a/include/system/device_tree.h b/include/system/device_tree.h
+index 49d8482ed4..5667ff9538 100644
+--- a/include/system/device_tree.h
++++ b/include/system/device_tree.h
+@@ -108,14 +108,13 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
+  * @fdt: pointer to the device tree blob
+  * @node_path: node path
+  * @property: name of the property to find
+- * @lenp: fdt error if any or -EINVAL if the property size is different from
+- *        4 bytes, or 4 (expected length of the property) upon success.
++ * @cell_id: the index of 32bit cell to retrive
+  * @errp: handle to an error object
+  *
+  * returns the property value on success
+  */
+ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+-                               const char *property, int *lenp,
++                               const char *property, int cell_id,
+                                Error **errp);
+ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+ uint32_t qemu_fdt_alloc_phandle(void *fdt);
+diff --git a/system/device_tree.c b/system/device_tree.c
+index 1ea1962984..d2db7bd355 100644
+--- a/system/device_tree.c
++++ b/system/device_tree.c
+@@ -446,24 +446,22 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
  }
  
-+static int arm_gic_common_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
-+                                      uint32_t *cells, int ncells, int max,
-+                                      Error **errp)
-+{
-+    GICState *gs = ARM_GIC_COMMON(obj);
-+    int cpu = 0;
-+    uint32_t idx;
-+
-+    if (ncells != 3) {
-+        error_setg(errp, "ARM GIC requires 3 interrupt cells, %d cells given",
-+                   ncells);
-+        return 0;
-+    }
-+    idx = cells[1];
-+
-+    switch (cells[0]) {
-+    case 0:
-+        if (idx >= gs->num_irq) {
-+            error_setg(errp, "ARM GIC SPI has maximum index of %" PRId32 ", "
-+                       "index %" PRId32 " given", gs->num_irq - 1, idx);
-+            return 0;
-+        }
-+        (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[1]);
-+        return 1;
-+    case 1: /* PPI */
-+        if (idx >= 16) {
-+            error_setg(errp, "ARM GIC PPI has maximum index of 15, "
-+                       "index %" PRId32 " given", idx);
-+            return 0;
-+        }
-+        for (cpu = 0; cpu < max && cpu < gs->num_cpu; cpu++) {
-+            if (cells[2] & 1 << (cpu + 8)) {
-+                *irqs = qdev_get_gpio_in(DEVICE(obj),
-+                                         gs->num_irq - 16 + idx + cpu * 32);
-+            }
-+            irqs++;
-+        }
-+        return cpu;
-+    default:
-+        error_setg(errp, "Invalid cell 0 value in interrupt binding: %d",
-+                   cells[0]);
-+        return 0;
-+    }
-+}
-+
- static const Property arm_gic_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
-     DEFINE_PROP_UINT32("first-cpu-index", GICState, first_cpu_index, 0),
-@@ -368,12 +415,14 @@ static void arm_gic_common_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     ARMLinuxBootIfClass *albifc = ARM_LINUX_BOOT_IF_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
+ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+-                               const char *property, int *lenp, Error **errp)
++                               const char *property, int cell_id, Error **errp)
+ {
+     int len;
+     const uint32_t *p;
  
-     rc->phases.hold = arm_gic_common_reset_hold;
-     dc->realize = arm_gic_common_realize;
-     device_class_set_props(dc, arm_gic_common_properties);
-     dc->vmsd = &vmstate_gic;
-     albifc->arm_linux_init = arm_gic_common_linux_init;
-+    fgic->get_irq = arm_gic_common_fdt_get_irq;
+-    if (!lenp) {
+-        lenp = &len;
+-    }
+-    p = qemu_fdt_getprop(fdt, node_path, property, lenp, errp);
++    p = qemu_fdt_getprop(fdt, node_path, property, &len, errp);
+     if (!p) {
+         return 0;
+-    } else if (*lenp != 4) {
+-        error_setg(errp, "%s: %s/%s not 4 bytes long (not a cell?)",
+-                   __func__, node_path, property);
+-        *lenp = -EINVAL;
++    }
++    if (len < (cell_id + 1) * 4) {
++        error_setg(errp,
++                   "%s: %s/%s is too short, need %d bytes for cell ind %d",
++                __func__, node_path, property, (cell_id + 1) * 4, cell_id);
+         return 0;
+     }
+-    return be32_to_cpu(*p);
++    return be32_to_cpu(p[cell_id]);
  }
  
- static const TypeInfo arm_gic_common_type = {
-@@ -385,6 +434,7 @@ static const TypeInfo arm_gic_common_type = {
-     .abstract = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_ARM_LINUX_BOOT_IF },
-+        { TYPE_FDT_GENERIC_INTC },
-         { },
-     },
- };
+ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
 -- 
 2.43.0
 

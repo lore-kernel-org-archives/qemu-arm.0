@@ -4,74 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2282810FCAF0
-	for <qemu-arm@archiver.kernel.org>; Wed,  1 Apr 2026 22:07:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A1E1112246
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 00:46:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w83j0-0005kv-Mg; Wed, 01 Apr 2026 18:07:47 -0400
+	id 1w86Bw-000191-E2; Wed, 01 Apr 2026 20:45:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w83im-0005Lw-N6
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 18:07:33 -0400
-Received: from p-east2-cluster5-host1-snip4-6.eps.apple.com ([57.103.79.9]
- helo=outbound.st.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1w83ik-0002RQ-Oh
- for qemu-arm@nongnu.org; Wed, 01 Apr 2026 18:07:32 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-7 (Postfix) with ESMTPS id
- A84CF1800377; Wed, 01 Apr 2026 22:07:25 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1775081247; x=1777673247;
- bh=0EBl2c3EMdJKzsEMuWPBcmVOioLhROJBtQLtLoE9Yeg=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=E4VBFS6TdtC0rk3mtvQ+89nwRZFn9C+a+jsbJmAhRlvMyqnxe373ROqz6HHVu1ZrjXyRMPRTu/JrnU1ROqPxbf8d87MWugXiQPWGLUBt4Ori9sGjJpq+MByNndUBYpPsJMZ1zh6N920Y54c9RhWTRj3KqTiHDhFjIFxPFUV9tVsKCRW0ygnpBS1mVyjTN8a2plQmYMnxLwlz5FFUOKYj/4GUzkjkkPDEOGvvrObMDRXwYabSKHe6M0w0wKrNq3mzGDlc5wCSc+fzCRyg5Lb19OJ0rTm3idF0KwLpxiKL9LrSjl8VTGC3vHDY1+xxIIvcYQi1xWkUF8TemxXbtbkYkA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-7 (Postfix) with ESMTPSA id
- 92748180058A; Wed, 01 Apr 2026 22:07:23 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH] target/arm: cpu: add HCR_E2H on reset for EL2 + !E2H0
-Date: Thu,  2 Apr 2026 00:07:20 +0200
-Message-ID: <20260401220720.19555-1-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1w86Br-00016Q-Hx
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 20:45:46 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1w86Bo-0002KK-Hx
+ for qemu-arm@nongnu.org; Wed, 01 Apr 2026 20:45:42 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-b8f9568e074so50963566b.0
+ for <qemu-arm@nongnu.org>; Wed, 01 Apr 2026 17:45:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775090739; cv=none;
+ d=google.com; s=arc-20240605;
+ b=CpzFNX/wB6bFJeyQzrdLVJnTbJkbqp3ZYER/TfuJBStWTBWhDM+b85TnDvT8TGetb+
+ almEgq1gS1ufLbYwg5BuO0RFkWEdt3tV5u/S2F0u2XmRJm/PdrhyXS+7bP2Mo8s7SV5y
+ vBJ+ZuPSvaxlSKohzD91OgTmD1qupea/nEzfEbp4cf0nlEcxdoHfGqeMYHIHT2IIjPvx
+ RfGXom8a5FoMEqni2RBtDt+ytJk9bqag+n/5tqQ86gDWhkkHvPzbFqykG3MksnJS7/SI
+ l+SAK1BnSpYq6CtP+xqiCW9ZDn2jFHVwS8vp7etaDAYCiUZIQRNiazuf7OSMa3LkTyYt
+ 7oCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=5LdM4uR5mS1ZaeLcLWrAhMvuDpyTdPvmVDGk7/JwB14=;
+ fh=DhDz1SYXo/4s3QIXEy06eYA7GMZGCvQ8vrYc7yIp10o=;
+ b=BbiQSvu3CVJwQW45cU1jz1QLGssYXnnbpldRzI0c8IemEKQpEnHDARxtIHLITdYDJK
+ YVYNvEJnFUbKsPVW1TMmPIolCG6Ki7mLMc9DIHogI6ci5QWCYWHi7aISgQE81eerGLKi
+ VarZ5NLyxMLWQ4M92gHedD0gKq2SnkopNHSO8Cgf35S2ZEAVJAnQFN3RGioOcbX3rvCM
+ /C1ifTbIxRSUB29oFia6MjyUsnDK+m+v/1W+sFQUlFy4LKKVNMbGLOyq8igCH7VbLCKq
+ pUsUU3yKOliMJiU7ng8OSR0bGmUscdlU1StFFHzOhD4AYsKm2QKcYmgT573yJqVwLlaQ
+ vAfw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1775090739; x=1775695539; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5LdM4uR5mS1ZaeLcLWrAhMvuDpyTdPvmVDGk7/JwB14=;
+ b=GXrdxNnHKp7DSfRhYpb0h3P2u9HDaGcr9iYm/ufUfEr2/VPVAHRJUcFRTMPMNbsHVt
+ yy01OM22X5uL7xksqF7yP/7Isqk84oADycbWxEVHoSt1fO34jd/ZybnSIlwpjomsVXWd
+ OlK+pDVl5PBPb68sePqip//MdmlCxuuCZMSAb/ffnS96Dh/TPTsgJscKb2AjnSKNKorr
+ oTuCMaEkO4tDJQwtUlttG535nCASUN62kP7xwhnTJ3lOvsfRFNRBhdvly8tTY6GmGkmm
+ B/14WuGsA2Z1Oztxf1yk58znfSE4zj0gWKzBTkabac4bqg7D5dPZ4e+yyJUcA9gW/B3p
+ PAjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775090739; x=1775695539;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=5LdM4uR5mS1ZaeLcLWrAhMvuDpyTdPvmVDGk7/JwB14=;
+ b=n00qQKo9jp7SbTnM/DoitF8ljwEDBL4sbckp6nn051b0ZsI4uXiTsFS41vKGMYAOnJ
+ JMOBSaoIL9Ks3bv0tAGdbNRK6AjER5ciufg6xZLPwy4R69JaBVI48gcHgHRhBGVdQp48
+ Z6i+1Ddij4sIzc6EV83a1SdIaMdLDrtcsJEjJJbhXO4LU6YzhDSq3E/rv8RPVa/7SJEI
+ /DEfrZ6CSlEOW/H5E72RiIqKjTeII8kEIDLgffaFMPb30Clra6YRdi0Lo2fn0mGsbZbD
+ /rvrTUEmxHZzaCs7uMWCFQP5ZXGafs6cVsffG5SCIWhRxQkcjOqc7xypj+rfd8NZpdED
+ LVeQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVPwESXt34UWaFWNZz7KGCJjKJPWw77hilYiSiiiDqodFUZVoHLPE5JW3jW0OcPiqTE4139/NBP3w==@nongnu.org
+X-Gm-Message-State: AOJu0YzMnX2CX9BRHH432Vll+Wafy7s9KaD1cHFRqROZXveR/HW8zTrg
+ j4ojvtwClyMuvuRvtK7x4jBc0YI0ZuiZTVf5S2TrLRvXUd3uX2ILqpXkoJqe21Yd/97E4b1LEOq
+ jH4+iwpOtcJZans/ysS44QGnC7X7iOgk=
+X-Gm-Gg: ATEYQzwy1kQV1FR1mINdpQBDWcGf0Qg4l/dYcmX8BQqToew2N/0zj1mAN0h1PKGSrru
+ H3iEEkgN2UWDtaI/+dWRLWHe7VeEv8W2xWPUWvowl1IEB6f9wj04etofRe/RRgcKx1E2pthduYM
+ 30vnx7VOy4EdzpDLYtz+DI+Xuy3Fi/D56RbNwtpqqLJEzHSL6eE2zFlo6otRsTBMe68F+9+YKQ4
+ LAJFvTsxfj+jOkhboupzw5Zlm2YqxFBRpQeEr0HykJVtlo+aNoE8lDuouMFfvoBePT2ibIz1Xfn
+ ZT7HNkMajnot3Uk4YPHl92Btyt72id0eZo9LUA==
+X-Received: by 2002:a17:906:a50:b0:b98:8d3a:7d26 with SMTP id
+ a640c23a62f3a-b9c138fa8bemr271649866b.15.1775090738694; Wed, 01 Apr 2026
+ 17:45:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: ZfBqEGIUaY7jHpVcWeoMtjwPJtpZ0y-0
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAxMDIwOSBTYWx0ZWRfXyogORmUFAd4X
- 7pQmkLEPCaO73IwFPh4nqmD1ff114HPxEEXDXIO5TWI28XbI9253A5L7zpeT7jp6iWGbFLh/jeb
- 41OQu0yVwgIlqb6MsSo0BuSd+eecxwCb5QXTL/8edGAtUzDQqwAEinI27qHL4NtNapZkkzk8yW5
- drmoY2R1ecxuJ0fgXNunSoQjwXRSjaoQCW14UsMowkA36+X6UmEn2KKpP7uaYdXYs+CZJHTMD/k
- ZdvYbUAjRAQAOYT3zNpTUtoDQybNhwXrK3rsvhLP9GuBzLPb0sBA68+QYZcK6GALHaZCRi4ChHN
- WzSIM3eD+lrEDpFjzZYhRHjZkiraFZUU5phuJIok69sQiYz425rXNkJ+cZ0+nE=
-X-Proofpoint-ORIG-GUID: ZfBqEGIUaY7jHpVcWeoMtjwPJtpZ0y-0
-X-Authority-Info-Out: v=2.4 cv=a4o9NESF c=1 sm=1 tr=0 ts=69cd971d
- cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=aH_TBEbXYK5kCjmaeM4A:9
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-01_04,2026-04-01_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- bulkscore=0 spamscore=0 phishscore=0 clxscore=1030 mlxlogscore=750
- lowpriorityscore=0 mlxscore=0 suspectscore=0 malwarescore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2604010209
-Received-SPF: pass client-ip=57.103.79.9;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20260401201753.92290-1-philmd@linaro.org>
+ <20260401201753.92290-2-philmd@linaro.org>
+In-Reply-To: <20260401201753.92290-2-philmd@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 2 Apr 2026 10:45:12 +1000
+X-Gm-Features: AQROBzCgjpsbOMdvqO6Me5z7QKdDwVgBMzoXedFW2J4bujABd0nif11HRMEEc1A
+Message-ID: <CAKmqyKM0aBzpg2E8h+HziPDTL2sDQSNdu2aZfhPfhRiFw1gf+g@mail.gmail.com>
+Subject: Re: [PATCH-for-11.1 1/8] accel/kvm: Include missing 'exec/vaddr.h'
+ header
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Eric Farman <farman@linux.ibm.com>, 
+ Alistair Francis <alistair.francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, kvm@vger.kernel.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Huacai Chen <chenhuacai@kernel.org>,
+ qemu-riscv@nongnu.org, 
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Anton Johansson <anjo@rev.ng>, 
+ Song Gao <gaosong@loongson.cn>, Weiwei Li <liwei1518@gmail.com>, 
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org, 
+ Chao Liu <chao.liu.zevorn@gmail.com>, Bibo Mao <maobibo@loongson.cn>,
+ qemu-arm@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, 
+ Zhao Liu <zhao1.liu@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=alistair23@gmail.com; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,27 +137,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/arm/cpu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+On Thu, Apr 2, 2026 at 6:18=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd@=
+linaro.org> wrote:
+>
+> Commit b67be03e3ac ("accel/kvm: Widen pc/saved_insn for
+> kvm_sw_breakpoint") used the vaddr type in the kvm_sw_breakpoint
+> structure but forgot to include the header defining it. Do it
+> now in order to avoid when refactoring unrelated headers:
+>
+>   include/system/kvm.h:404:5: error: unknown type name 'vaddr'
+>     404 |     vaddr pc;
+>         |     ^~~~~
+>   include/system/kvm.h:405:5: error: unknown type name 'vaddr'
+>     405 |     vaddr saved_insn;
+>         |     ^~~~~
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ccc47c8a9a..5ffb1e3096 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -685,6 +685,10 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
-         }
-     }
- 
-+    if (have_el2 && !cpu_isar_feature(aa64_e2h0, cpu)) {
-+        env->cp15.hcr_el2 |= HCR_E2H;
-+    }
-+
-     /* Set the CPU to the desired state */
-     if (env->aarch64) {
-         env->pstate = aarch64_pstate_mode(target_el, true);
--- 
-2.50.1 (Apple Git-155)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+Alistair
+
+> ---
+>  include/system/kvm.h | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/include/system/kvm.h b/include/system/kvm.h
+> index 5fa33eddda3..12f7fc8fb58 100644
+> --- a/include/system/kvm.h
+> +++ b/include/system/kvm.h
+> @@ -17,6 +17,7 @@
+>  #define QEMU_KVM_H
+>
+>  #include "exec/memattrs.h"
+> +#include "exec/vaddr.h"
+>  #include "qemu/accel.h"
+>  #include "qom/object.h"
+>
+> --
+> 2.53.0
+>
+>
 

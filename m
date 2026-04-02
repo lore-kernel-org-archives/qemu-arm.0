@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BF7D6AB17
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A6AD6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q1x-0008CP-FV; Thu, 02 Apr 2026 17:56:49 -0400
+	id 1w8Q2O-0008Qb-Bo; Thu, 02 Apr 2026 17:57:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q1u-0008AV-5R
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:46 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1w8Q2D-0008KV-Tl
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:06 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q1r-00070z-LW
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:45 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-b9bff57cb62so224390566b.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:56:43 -0700 (PDT)
+ id 1w8Q2C-00077N-Dw
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:05 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-b8f97c626aaso225585166b.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167002; x=1775771802; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167023; x=1775771823; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=osWMhevUw1N3AseQErboNOG5dweWBMW0zK7zEVOFBV8=;
- b=YJOr7YX6AYABsdsfH6OwSk8CA7jZH+blEhoGQ/n50u9qmVan71BwhXhkd7kd6ojk9F
- VnxIwbrLDL4SCTFf3USdyBAAhZ7WhuOfyk3QkW+egZWLIA72cMc4RYWIRbzCq/2SD6bn
- 1OHtqrgSa4NjQU5xQXQLCUnbxyClYA5K3tTbKpdk9XOI00AndoknbdKez+RWpFGCxfZj
- f4faqv4ODucChpwWRHseYHDzD9p/gKAY0XgE3Q+JdBZ4fZf5HIMpR8S30Yr1RQWXqRRR
- 51eOLDSMxD99y9djGCg7/bh9T2X/OcXgRyhyuJjtke06ppjkAUUy4JllDz3FI4C7dnm7
- u8Bw==
+ bh=ZnoM34DCC1pHSVw13BegRYuqsTlliloemYTyLqTUADg=;
+ b=aJ9AYo0q56BRZYlAr3yYFj54qEsJw02uRipwbPUQI0nB++rXp5niXpuqPZ0qaU/N3R
+ R+7SY7n7qCsOU3rbzxle2Y/kXyR+B8jKkix3++ijLbpnh4HGq9LIRtkP2upkPFgKHzdF
+ dpFwV7Y4lHVWdDLmnmbhyPUjKxeft6z4n9AUpSavisaFKsmRO35i7BKTrqU+mAO8K1zf
+ JdFXI5Qp+PVxaYBnvsFQwfvpNJiAful62lzz+iUiN54dualxeceYPyAXSMpVxQ5JppuQ
+ VajOcWUuzal/kIJOAMXkfk3esoFTJt441JcKVOQepAuoBMnQSqJ0LCMAd3l3tRg4hL84
+ 2AQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167002; x=1775771802;
+ d=1e100.net; s=20251104; t=1775167023; x=1775771823;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=osWMhevUw1N3AseQErboNOG5dweWBMW0zK7zEVOFBV8=;
- b=QERwI8x9d0vHlS7FV6wF538U40GEvQh9+4XTqNT3KzkWQvg4yfm3Hs2bOUdPPnNEpH
- amcmkaySpCwbIL6Kn7zkqUiY4h2iG5f6auLWE7A2IVZb52E6qFM6zW2LU5/Gu2BTdxp7
- LAx1JfUUivVpAhKRWQpJaoNitQ8kHf9XdxrNW6nLWwpNLOZr6a3hWWTksSN5NnZUmlgy
- XaMU0sLLSmbz2skB2+j6dhIduvw6U4xp9wn+Nfv4vmn6MA/lmprKrTk2bTbZEgv5miPp
- CWuY9P+FIpHYdl1ZotiryjnsoizxjChasEYL7U3uE86tvi6eoIv+tmvGNsOpA8jOnmTJ
- 3pPA==
-X-Gm-Message-State: AOJu0Yy8EmeAfx10s+ZvUKDcHyGwwKIS7HUD5b3XrMpk/PJt5xnMox7u
- 83bOLxN1V8EqgETbmRSd+x+RlNp8DVEr0ansxb3Qfq7ywncf0tmxxEN7
-X-Gm-Gg: ATEYQzyHpdBRs0GfcA/01DgQwWKX8BqrsQLX4xlHFgVzYAwAx8ojqSQp7zSn7VFtYGl
- 5H/Y+I4vcdeLSZyvCEkwSSEaYnsMMb5bQAUie/rS5q7N/4gpc5sHVSXNbXuWxR512oMbqceAyrv
- GLng5CrfJtjvn6soN8qxcnhZVhaLUWveajm0D7O3jcSOiIQdisM5FW+t6liZKTY/owGlmJR1EPq
- 22gigkh0mQ3sKJKXRkHAsqXvQ7BElMJQfmG/iOZnUawu7+l6LfwESiNPgZ7FWUfFzfOEgoBnsFo
- +nddSBlmojj4zkTRUpvTQpYPV9ZYY9DgnlNtu/x4/IGbrdVfDeX2hwqUMs56wB1k0dvFXCLWFaO
- elzd0DCv3xfF2+AGXBU24NO9YmKCCDzkDcUtX2444nq4juMX/T6aIyqjLb6+Zm+abQGuQFy0btR
- c3tA8891w0yEsfr+UdHmvuXeI+elNfaNB7lGOaVJnXjZ5gs6ATrZ7HtnDxVYu+bnltCNLd5A==
-X-Received: by 2002:a17:907:1903:b0:b95:894b:46e4 with SMTP id
- a640c23a62f3a-b9c679adcccmr27187566b.34.1775167001790; 
- Thu, 02 Apr 2026 14:56:41 -0700 (PDT)
+ bh=ZnoM34DCC1pHSVw13BegRYuqsTlliloemYTyLqTUADg=;
+ b=U9SJa0z0Aqr6Mhq11CfP9hWrny/hedL8QLF4rwijeXGGxtJpsCVvXUjwN0/Fk2FQa9
+ HnXkXrSrHKNdYbdtkX5iEbYkPMc0d0O6aykcVhHce/EINTxOUW5RiFgiMrlIaG/rQ8xn
+ MwH3vZdYcX3nJxsxqTXhMJrsS0sHaDER3vyMVU9Cbw23CfzfrSiZPOZpKY/+D4k15rmQ
+ FRsmrLGp6TKg9/Y3PzOj5X3kfuot0Z2j6Inj5txMB3cyS5avtDwLl10FsKHhPCOddCu6
+ 6K/9q4QPJ9QIj0CxCNUBik4rNjnMAXT0tsZONPHOp1U4mOazJrgADj0DgMXiudM+wD3S
+ S1mg==
+X-Gm-Message-State: AOJu0YwEutEn1hA5vnIL2IqHOO63Ll0QcRigRUV0nWYUX7xNY2+4Jfxw
+ WLusRzVCBvtW8BO7a6mLl67RmefA89nGpC7gjNzSJLfCJZWd8LR9rJRb
+X-Gm-Gg: ATEYQzzRoQbmfyHwTg5IYD+CxjerILgKOHvb2QQX8Bo89bQ1BmXmbbG6PbBCocJ1DUS
+ owxBHxkrBS29pR/YGoPlle8WhQ+YJkqqN+vTkPmQGyw1nRBC998SXhl45Iwmqmp6hMPnp0MFqGw
+ z5QUqWEcKt+jkEHCHwzEmka2FBMa52tvZhKFkdlTMFzvp3E8BFf7V1/ti3KUei5BEn6rPnnwZjF
+ X3D9D/yMAL9PP5sRg55S0P2sjhFfH1WCPiwNbXNaj/JcCGKO4DooAAEgBWwzpoHxmvm/rnloI/W
+ lYU8XAuxTwffcmXJltEvMPRkWRe461UnbmYhxX+/u7yolklAajX3jzz7+IIosQ4MBAXI/qiizOI
+ f+UVViXMDmJsJrtK4mTj/ztWcWgkhiSPQwUttMw9R3t2jY/pf13CfTPbwytex6BbWcSIx35ftdq
+ Yilyn6pv2LYqrWVkCDsODI63THZRmChMCLsQmdEoUtDCkJGc6wzfgrCXIknTqhFjRux4Z9JA==
+X-Received: by 2002:a17:907:a4a:b0:b9c:451b:2348 with SMTP id
+ a640c23a62f3a-b9c672e4cd2mr22057166b.6.1775167022767; 
+ Thu, 02 Apr 2026 14:57:02 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.56.40
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:56:41 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:02 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
- Alistair Francis <alistair.francis@wdc.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH v3 01/33] system/device_tree: update qemu_fdt_getprop_cell
-Date: Thu,  2 Apr 2026 23:55:46 +0200
-Message-ID: <20260402215629.745866-2-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
+Subject: [PATCH v3 12/33] hw/core/fdt_generic_util: actually realize device
+Date: Thu,  2 Apr 2026 23:55:57 +0200
+Message-ID: <20260402215629.745866-13-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,132 +105,62 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Update 'qemu_fdt_getprop_cell' to allow accessing
-specific cells within multi-cell property array.
-
-This will be used by hardware device tree parsing logic.
+Actually realize objects with TYPE_DEVICE after main
+allocations done and properties set for qdev.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/arm/boot.c                |  8 ++++----
- hw/arm/raspi4b.c             |  8 ++++----
- hw/arm/vexpress.c            |  4 ++--
- include/system/device_tree.h |  5 ++---
- system/device_tree.c         | 18 ++++++++----------
- 5 files changed, 20 insertions(+), 23 deletions(-)
+ hw/core/fdt_generic_util.c | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c97d4c4e11..36fefd06d5 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -509,10 +509,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         return 0;
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index 6f0a1e1e4b..8ae9e23073 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -540,6 +540,34 @@ static void fdt_init_parent_node(Object *dev, Object *parent, char *node_path)
      }
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
-+                                   &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
-+                                   &error_fatal);
-     if (acells == 0 || scells == 0) {
-         fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-         goto fail;
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 3eeb8f447e..58ddd103b7 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -42,10 +42,10 @@ static void raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
-     uint32_t acells, scells;
-     char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
-+                                   &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
-+                                   &error_fatal);
-     /* validated by arm_load_dtb */
-     g_assert(acells && scells);
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index cc6ae7d4c4..23d2d7deff 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -486,9 +486,9 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
-     const VEDBoardInfo *daughterboard = (const VEDBoardInfo *)info;
- 
-     acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
-+                                   0, &error_fatal);
-     scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+                                   0, &error_fatal);
-     intc = find_int_controller(fdt);
-     if (!intc) {
-         /* Not fatal, we just won't provide virtio. This will
-diff --git a/include/system/device_tree.h b/include/system/device_tree.h
-index 49d8482ed4..5667ff9538 100644
---- a/include/system/device_tree.h
-+++ b/include/system/device_tree.h
-@@ -108,14 +108,13 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-  * @fdt: pointer to the device tree blob
-  * @node_path: node path
-  * @property: name of the property to find
-- * @lenp: fdt error if any or -EINVAL if the property size is different from
-- *        4 bytes, or 4 (expected length of the property) upon success.
-+ * @cell_id: the index of 32bit cell to retrive
-  * @errp: handle to an error object
-  *
-  * returns the property value on success
-  */
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property, int *lenp,
-+                               const char *property, int cell_id,
-                                Error **errp);
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
- uint32_t qemu_fdt_alloc_phandle(void *fdt);
-diff --git a/system/device_tree.c b/system/device_tree.c
-index 1ea1962984..d2db7bd355 100644
---- a/system/device_tree.c
-+++ b/system/device_tree.c
-@@ -446,24 +446,22 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
  }
  
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property, int *lenp, Error **errp)
-+                               const char *property, int cell_id, Error **errp)
- {
-     int len;
-     const uint32_t *p;
- 
--    if (!lenp) {
--        lenp = &len;
--    }
--    p = qemu_fdt_getprop(fdt, node_path, property, lenp, errp);
-+    p = qemu_fdt_getprop(fdt, node_path, property, &len, errp);
-     if (!p) {
-         return 0;
--    } else if (*lenp != 4) {
--        error_setg(errp, "%s: %s/%s not 4 bytes long (not a cell?)",
--                   __func__, node_path, property);
--        *lenp = -EINVAL;
++static void fdt_init_device_realize(FDTMachineInfo *fdti,  char *node_path,
++                                   Object *dev)
++{
++    if (object_dynamic_cast(dev, TYPE_DEVICE)) {
++        DeviceClass *dc = DEVICE_GET_CLASS(dev);
++        const char *short_name = strrchr(node_path, '/') + 1;
++
++        /* Regular TYPE_DEVICE houskeeping */
++        fdt_debug_np("Short naming node: %s\n", short_name);
++        (DEVICE(dev))->id = g_strdup(short_name);
++
++        if (object_dynamic_cast(dev, TYPE_CPU_CLUSTER)) {
++            /*
++             * CPU clusters must be realized at the end to make sure all child
++             * CPUs are parented.
++             */
++            fdt_init_register_user_cpu_cluster(fdti, OBJECT(dev));
++        } else {
++            object_property_set_bool(OBJECT(dev), "realized", true,
++                                     &error_fatal);
++            if (dc->legacy_reset) {
++                qemu_register_reset((void (*)(void *))dc->legacy_reset,
++                                    dev);
++            }
++        }
 +    }
-+    if (len < (cell_id + 1) * 4) {
-+        error_setg(errp,
-+                   "%s: %s/%s is too short, need %d bytes for cell ind %d",
-+                __func__, node_path, property, (cell_id + 1) * 4, cell_id);
-         return 0;
-     }
--    return be32_to_cpu(*p);
-+    return be32_to_cpu(p[cell_id]);
- }
++}
++
+ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+ {
+     Object *dev, *parent;
+@@ -582,6 +610,8 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
  
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
+     fdt_init_qdev_properties(node_path, fdti, dev);
+ 
++    fdt_init_device_realize(fdti, node_path, dev);
++
+     g_free(parent_node_path);
+ 
+     return 0;
 -- 
 2.43.0
 

@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F5E6D6AB1B
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0BA6D6AB17
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q2Q-0008U0-7n; Thu, 02 Apr 2026 17:57:18 -0400
+	id 1w8Q2Z-00007F-SS; Thu, 02 Apr 2026 17:57:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2I-0008LO-H2
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:12 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1w8Q2W-000050-Ib
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:24 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2G-00078Y-J3
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:10 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b9c3a9fe80fso172430866b.3
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:08 -0700 (PDT)
+ id 1w8Q2T-0007CN-GV
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:23 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-66b2f6e983bso2260793a12.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167027; x=1775771827; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167040; x=1775771840; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IEv5arXU/isUBZYgJvgLUA50xxPvAFJsx4xFvYCWEAU=;
- b=mR21d4FOvID1MUg94nwqPuUyx2BhLE8VdN2kCpHE6bDejwOegxI8jCpUcmSQWfIoJx
- 7vciB0fXAbJDvVmvA4D2+VpCu8yTYFZVO5GfHhbT1aFmutefqX3r/OoGLKQjGICnfjbc
- /kv2KUMT4xt023Ztw/5Y6j6bqqOSdlYTgh8ZvfcINoRPkZrwA5z1yQUU/uVncU03J4nl
- eXT1BSJj5ZrvXswApqXo7IoFHTRbrIL7vZYjkWnaRRQgRaHorTN919Gex971D4GvmOZo
- +6HEyUNOG9RwUgt0w/iyb6KB1Y+9jhBbYMTc8E7Hu2W1gWlfoziulwhiImD2nLY1rIRS
- fYSw==
+ bh=Iq6P3SESs/IOCtPL61KoE1DsZM3683YfrNg3jTL5uxc=;
+ b=N3lcUhX315uXxCps8mesZsW4BlznRcdmf1RaNaShhwHw4NcLcWnZyB8E1nmZTrVpZs
+ 8mEzC3F9hlkz93b/FGEJF1eSOVK/P4AxJb1JPRIuWO6Ig4I2TF8rWpgAXnKSLNWeP2pA
+ xpj2B5BYnBfRAt+8XZkwO9ODjcE6hRW4PnggimQYJmzUvaXHxkToreyQx9n2vBk8d10G
+ CmlmNVFHFGTj0XlwBDE+Y/ZMU5vdxorUiLpvt/vH0UKQ3k6JcAgZt+PIwSpUwFEFkKcY
+ 70i4Q3cGRoJzm5aKi2PryL9FC1+88Fr+PbiOsWRTXQasQdd/bYyIDoft4jWZ5L8KicpI
+ dgbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167027; x=1775771827;
+ d=1e100.net; s=20251104; t=1775167040; x=1775771840;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=IEv5arXU/isUBZYgJvgLUA50xxPvAFJsx4xFvYCWEAU=;
- b=Ycg1Qc+kMKrDP/93ZmCFD6MiXNcjI8w6PiVf3Yd24kSEo+Q1Ufx9EKeO4NCcK1tM5D
- ujc03b7ZYkCo5fLMdv0043KGGdxHYoXpTs7URkU17E6ZEHj5E3StygGhTfyT0SQj5SRT
- tHGoTideBktjwhwsv0OmdeSOvXMrIbz+6AupeD/kqAY8anamipMUg4wFhbkIWFMige8U
- 1RsSeDTyp5qrrh8dVqY/y/7ri10Z4ePfLC9fcTxGP35HmnOLEaVR93Wn7J6G4ZM4OGPL
- 1E8lhCJVCBRaQFNgelXHoCI8RMPLvY1qsIhAb+Y8rFeIJDVurIUBMinaT/0CICtSpSXX
- wH8g==
-X-Gm-Message-State: AOJu0YzWIKR0AF4FaF/tMxbiyESEsLfSs5yYZIyzfPzm0GvzjrN9HcN4
- jnN+cE41MwHFXOWcs0SM9lzEJewttqbk+gg2aK8uv59dgFS1Nv765e4n
-X-Gm-Gg: ATEYQzwNEa5qlP2qvXwDhNmOvn4B+n5gqMWV1EaY5JvnwYHxN/VT5IOkAE90lCZa+Le
- Sl2nJz4URZxvvjILpRBsWCLBNtKR4UOohQsw5T1504jp4PnTdFS1Nx2W42aLmDoID7hHzGqMAdt
- +2/p94Np/txjlT+L716mjVN0zuz5GlbHcbFs20ICpYIR9mrMQ9ofexI4fjgkpm/UkxQGJL98b8h
- /gOqWw9nyHtgEknkVjoKkOlEiMaoAyy1Bk8rTs2tJX9cOYOHPZxPx+NTZemQ7tCNCbFdMLosWMA
- +K3rQJOQBR2ysUaw0vC9aQR4T69TuqeYi4BkkKSubUEw2/pxfFSldkMUfAlBGqtn6BRCopodt/h
- NOS16rekjLQOMKH+TF4rCULtrHmREz26B/9TZ9I4jdKwztqb6TAHoKGjNdY1K5qqANrLCUL8qxs
- 3THfqbSfLv4lFn/jMNXBp6DEtiwDpkhKQ0oSRz5fYCfE3N+C9ZRkzuEpDeq+HhuZnNzv+izQ==
-X-Received: by 2002:a17:907:86ab:b0:b99:1074:74f with SMTP id
- a640c23a62f3a-b9c67978769mr28859866b.34.1775167026951; 
- Thu, 02 Apr 2026 14:57:06 -0700 (PDT)
+ bh=Iq6P3SESs/IOCtPL61KoE1DsZM3683YfrNg3jTL5uxc=;
+ b=E1ygaQ5rXVIFjPFsFMeF0MPLknji+aQRm4TTRa+4+pK+DuysG8Tvd4ujUZX5H78rrQ
+ AEZwQjd5HXE2JBkCtXW2lSqx++QkqsAF6p/P7oKKYLH2yj99PgqQaH7c3w9e4eP1TEnB
+ wI6+W8RaYpiPBcKutT6azwXTaipyj0QYIfc32ier3PCeZYSEM1kQbBn8N8R2732b304B
+ S/v94q6Dvy9STJLOPa6tRUUVhPBY0g2sBpT9oiXcUjGXCDprOnB147DBuctGaOcmDLuf
+ MKYzj4uV7varKXcH41hJ6jetBrva5jp3xPa5y76AWUJXYfVsmSOo+fJHlkDgTzFncFaP
+ jb6w==
+X-Gm-Message-State: AOJu0Ywjn+b6E2jzsqvPjYNnnvGBHvtQCXNYWOPl2OdUI2S2ewptjzyx
+ dgQOZRxo6wWWEDl1rgnkhtWEpJwzG7WYuDJrKVPj7gsQJB/mwkWRq8VGAVVWHren
+X-Gm-Gg: AeBDietnwWpKOvFgKWac8pOyOaHxGmcDsFvYGnAUEod9xqTBQrHKJaP77saxyJRFxes
+ Qm2d5q0k+x6ipx4+56ZK+TfiVmN6rbgFroHzgHXmNPn8OWm551CIuCcrMeiVmlyxtnDNY/6g0NT
+ CVsJommGAA7Gv9uywqR/bwsTuy5gUevkvs+hEkCmnzWgY+QwdKzSqZfLBQzStogv1XLgay3xbT0
+ o0Zr3HKnzxPKo84ElxQ4XnuBPnCCnsyspPstkKZUPaNk8wuzPTh6rZ0idT5prZ9tM18XFla7VYF
+ E2w16Ri6w3wzn41+ZP2JkGR85QksRlwk6uR3dnG3yqa8NLH77SNqqLXZcdr8FFqZpUj3L4OQjH/
+ HYY1Ny9BN5h46rYPXBDbakrEuzB+Eh36zu4S1DlhO1a7zl5pujui56AKtgwnr2ryLbvCeKtDdb2
+ E/nIRxrR32aI3Dc8eicIHHdMm6tXMVpf16JiLAr5MntRhfhfwP9eKJ6Ov6kiQlCkBPMpmeHq9vM
+ yA/ZBtr
+X-Received: by 2002:a17:907:a44:b0:b9b:207c:f7b7 with SMTP id
+ a640c23a62f3a-b9c6768d2e2mr27200266b.3.1775167039942; 
+ Thu, 02 Apr 2026 14:57:19 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.05
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:06 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:19 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,16 +72,17 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 14/33] hw/core/fdt_generic_util: add TYPE_FDT_GENERIC_INTC
-Date: Thu,  2 Apr 2026 23:55:59 +0200
-Message-ID: <20260402215629.745866-15-ruslichenko.r@gmail.com>
+Subject: [PATCH v3 21/33] hw/arm/arm_generic_fdt: Add support for host-backed
+ RAM regions
+Date: Thu,  2 Apr 2026 23:56:06 +0200
+Message-ID: <20260402215629.745866-22-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,115 +107,141 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add TYPE_FDT_GENERIC_INTC class and interface to allow
-interrupt controllers to register callback which can
-be used to get IRQ's from this controller.
+Add the ability to dynamically map QEMU host memory backends to
+guest memory using configuration from the Device Tree.
 
-Optionally, interrupt controllers may also provide
-auto_parent() callabck which can be used to attach
-it to corresponding CPU's or other interrupt parent.
+To map a host memory backend, memory region nodes with the
+'qemu-memory-region' compatible string and the 'qemu,ram' property
+must specify a 'qemu,host-id' property containing the memdev name.
+
+The corresponding memory backends can be specified via the command line:
+
+...
+-object memory-backend-file,id=mem0,mem-path=memory.img,size=256M
+...
+
+If no host backend is found, the initialization will fall back to
+standard anonymous memory mapping.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         |  7 ++++
- include/hw/core/fdt_generic_util.h | 59 ++++++++++++++++++++++++++++++
- 2 files changed, 66 insertions(+)
+ hw/arm/arm_generic_fdt.c | 96 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 95 insertions(+), 1 deletion(-)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 8f91bcb66c..d816e395fd 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -617,6 +617,12 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     return 0;
- }
+diff --git a/hw/arm/arm_generic_fdt.c b/hw/arm/arm_generic_fdt.c
+index 7b50957a82..de121820e0 100644
+--- a/hw/arm/arm_generic_fdt.c
++++ b/hw/arm/arm_generic_fdt.c
+@@ -43,6 +43,98 @@ struct ARMGenericFDTState {
  
-+static const TypeInfo fdt_generic_intc_info = {
-+    .name          = TYPE_FDT_GENERIC_INTC,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(FDTGenericIntcClass),
-+};
+ OBJECT_DECLARE_SIMPLE_TYPE(ARMGenericFDTState, ARM_GENERIC_FDT_MACHINE)
+ 
++static void map_host_memdev_node(FDTMachineInfo *fdti, const char *node_path)
++{
++    int len;
++    uint64_t mr_size, backed_size;
++    Object *mem_obj;
++    Object *backend_obj;
++    MemoryRegion *mr;
++    MemoryRegion *backend_mr;
++    MemoryRegion *container;
++    HostMemoryBackend *backend_mem;
 +
- static const TypeInfo fdt_generic_mmap_info = {
-     .name          = TYPE_FDT_GENERIC_MMAP,
-     .parent        = TYPE_INTERFACE,
-@@ -625,6 +631,7 @@ static const TypeInfo fdt_generic_mmap_info = {
- 
- static void fdt_generic_register_types(void)
++    const char *compat = qemu_fdt_getprop(fdti->fdt, node_path,
++                                          "compatible", &len, NULL);
++    const char *host_id = qemu_fdt_getprop(fdti->fdt, node_path, "qemu,host-id",
++                                           &len, NULL);
++    bool is_qemu_ram = (qemu_fdt_getprop(fdti->fdt, node_path, "qemu,ram",
++                                         &len, NULL) != NULL);
++
++    if (!compat || strcmp(compat, "qemu-memory-region")) {
++        return;
++    }
++
++    if (!is_qemu_ram || !host_id) {
++        return;
++    }
++
++    mem_obj = fdt_init_get_opaque(fdti, node_path);
++    if (!mem_obj) {
++        return;
++    }
++
++    backend_obj = object_resolve_path_type(host_id, TYPE_MEMORY_BACKEND,
++                                            NULL);
++    if (!backend_obj) {
++        warn_report("No mem backend found for FDT requested host-id %s",
++                    host_id);
++        return;
++    }
++
++    backend_mem = MEMORY_BACKEND(backend_obj);
++    backend_mr = host_memory_backend_get_memory(backend_mem);
++
++    mr = MEMORY_REGION(mem_obj);
++    container = mr->container;
++    if (!container) {
++        warn_report("No parent found for requested host-id %s",
++                    host_id);
++        return;
++    }
++
++    mr_size = memory_region_size(mr);
++    backed_size = memory_region_size(backend_mr);
++
++    if (backed_size != mr_size) {
++        error_report("Unable to map host backed memory: %s, "
++                        "dts size: 0x%" PRIx64 ", but memdev size: 0x%" PRIx64,
++                        host_id, mr_size, backed_size);
++        exit(1);
++    }
++
++    hwaddr base_addr = mr->addr;
++
++    memory_region_del_subregion(container, mr);
++    memory_region_add_subregion(container, base_addr, backend_mr);
++
++    fdt_init_set_opaque(fdti, node_path, OBJECT(backend_mr));
++    object_unparent(mem_obj);
++}
++
++/* Parse device-tree starting from 'node' and attach file-backed RAM's */
++static void map_host_memdevs(FDTMachineInfo *fdti, const char *node_path)
++{
++    int i;
++    char **children;
++    int num_children = qemu_devtree_get_num_children(fdti->fdt, node_path);
++
++    if (num_children > 0) {
++        children = g_malloc0(sizeof(*children) * num_children);
++
++        num_children = qemu_devtree_get_children(fdti->fdt, node_path,
++                                      num_children, children);
++        for (i = 0; i < num_children; ++i) {
++            map_host_memdevs(fdti, children[i]);
++            g_free(children[i]);
++        }
++
++        g_free(children);
++    }
++
++    map_host_memdev_node(fdti, node_path);
++}
++
+ static void init_machine(void *fdt, ARMGenericFDTState *s)
  {
-+    type_register_static(&fdt_generic_intc_info);
-     type_register_static(&fdt_generic_mmap_info);
- }
- type_init(fdt_generic_register_types)
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index e3671990ad..c92c79dd12 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,6 +16,65 @@
+     FDTMachineInfo *fdti;
+@@ -63,7 +155,9 @@ static void init_machine(void *fdt, ARMGenericFDTState *s)
+     /* Instantiate peripherals from the FDT.  */
+     fdti = fdt_generic_create_machine(fdt, NULL);
  
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
+-    mem_area = MEMORY_REGION(object_resolve_path(node_path[0], NULL));
++    map_host_memdevs(fdti, "/");
++
++    mem_area = MEMORY_REGION(fdt_init_get_opaque(fdti, node_path[0]));
  
-+#define TYPE_FDT_GENERIC_INTC "fdt-generic-intc"
-+
-+#define FDT_GENERIC_INTC_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(FDTGenericIntcClass, (klass), TYPE_FDT_GENERIC_INTC)
-+#define FDT_GENERIC_INTC_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(FDTGenericIntcClass, (obj), TYPE_FDT_GENERIC_INTC)
-+#define FDT_GENERIC_INTC(obj) \
-+     INTERFACE_CHECK(FDTGenericIntc, (obj), TYPE_FDT_GENERIC_INTC)
-+
-+typedef struct FDTGenericIntc {
-+    /*< private >*/
-+    Object parent_obj;
-+} FDTGenericIntc;
-+
-+typedef struct FDTGenericIntcClass {
-+    /*< private >*/
-+    InterfaceClass parent_class;
-+
-+    /*< public >*/
-+    /**
-+     * get irq - Based on the FDT generic interrupt binding for this device
-+     * grab the irq(s) for the given interrupt cells description. In some device
-+     * tree bindings (E.G. ARM GIC with its PPI) a single interrupt cell-tuple
-+     * can describe more than one connection. So populates an array with all
-+     * relevant IRQs.
-+     *
-+     * @obj - interrupt controller to get irqs input for ("interrupt-parent")
-+     * @irqs - array to populate with irqs (must be >= @max length
-+     * @cells - interrupt cells values. Must be >= ncells length
-+     * @ncells - number of cells in @cells
-+     * @max - maximum number of irqs to return
-+     * @errp - Error condition
-+     *
-+     * @returns the number of interrupts populated in irqs. Undefined on error
-+     * (use errp for error checking). If it is valid for the interrupt
-+     * controller binding to specify no (or a disabled) connections it may
-+     * return 0 as a non-error.
-+     */
-+
-+    int (*get_irq)(FDTGenericIntc *obj, qemu_irq *irqs, uint32_t *cells,
-+                   int ncells, int max, Error **errp);
-+
-+    /**
-+     * auto_parent. An interrupt controller often infers its own interrupt
-+     * parent (usually a CPU or CPU cluster. This function allows an interrupt
-+     * controller to implement its own auto-connections. Is called if an
-+     * interrupt controller itself (detected via "interrupt-controller") has no
-+     * "interrupt-parent" node.
-+     *
-+     * @obj - Interrupt controller top attempt autoconnection
-+     * @errp - Error condition
-+     *
-+     * FIXME: More arguments need to be added for partial descriptions
-+     */
-+
-+    void (*auto_parent)(FDTGenericIntc *obj, Error **errp);
-+
-+} FDTGenericIntcClass;
-+
- #define TYPE_FDT_GENERIC_MMAP "fdt-generic-mmap"
- 
- #define FDT_GENERIC_MMAP_CLASS(klass) \
+     s->bootinfo.loader_start = object_property_get_int(OBJECT(mem_area),
+                                                             "addr", NULL);
 -- 
 2.43.0
 

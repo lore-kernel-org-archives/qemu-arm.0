@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB40DD6AB16
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB449D6AB17
 	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:02:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q31-0000aW-VD; Thu, 02 Apr 2026 17:57:57 -0400
+	id 1w8Q21-0008Ex-Et; Thu, 02 Apr 2026 17:56:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2d-0000BD-9x
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:32 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1w8Q1z-0008D9-E5
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:51 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2Z-0007Ei-Jh
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:30 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-b97f9587e6eso189483366b.3
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:27 -0700 (PDT)
+ id 1w8Q1x-00072y-H0
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:51 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-b8d7f22d405so207461566b.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:56:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167046; x=1775771846; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167008; x=1775771808; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=x8ZREsUktJ+jWPapDw6PB5NQmm74pQN/VTasE9D0cnk=;
- b=Dc0icwgpvpqvvpW3+72803p5YmOe0ooA2lLuA7tRXQDlx2Kj+wotv5Yw6G5+go54bW
- xThElLEWvWsDwukoJxmafyeDW3tIqTA1g+KxrlwmSJiIzC0l57XTwZDg8zXncVp5hW6s
- i1ZRRoCmqyBO3aOXj62hjTnQttftiEKeDIq+90DvjwedHnORBii1+m28P0i3mIJC1MT1
- 1Qz5h09OkllU/iV1zcC+n3E7IBqyE0lUxThLbdslRR/mS0dO9WS4f/FCGA09eO7KrLBW
- b3hHITOv+G3eypDn+fskzkv8Qp6N/pAyNSM5aXulfN//1tJf0Eom4sO8MNI3+tnK2Jyn
- TGRg==
+ bh=COppB07ZdgBSIiLPYIXUKRW1DDBdEAcH3Z/PWDGJeWs=;
+ b=XtDluCNb9W+ZBaPdofNm5Z+FphNrnu5bPHBpEorvBXcekKUACZBdVzwkdKdfKpE6sh
+ 76na9LzQDrDE/kNkiC3NhkcvN3olYrzfk7DicvwCEc0Z7UCfo2QN6niCLv94t1iFcdal
+ s1oGfp6TA+TSRoX82NRYrnJc4qw3f/u985MaWrkXJPbrBPuskwTOCP97XItliGINab2y
+ CYYznW3SJ1dLD+5d3fDlXbniFOg0X9sd0Kd8q3CKg1GP08BImpI+CVfBhsheRpz4U5cW
+ zcpascM64CRx/avuTej5Bg3lweSnRPZ/KuOxL59GO23wxlxDe8Mqbb3NGCGQcekxd3XA
+ h+9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167046; x=1775771846;
+ d=1e100.net; s=20251104; t=1775167008; x=1775771808;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=x8ZREsUktJ+jWPapDw6PB5NQmm74pQN/VTasE9D0cnk=;
- b=qObMeNtFVfrHSOtCl2A3TeRV0oenGtmbklo2K+V1CjdXfyI/fy61XJ5btaAlBsRlCS
- JMOHKyUpWSFrKpZoQ0XpXyJBkaBjXrU3vpmKdUXUti0U4mDFWIt++VBSzMcU6kjBc46J
- QfVOLAIc0XqdKFj4mks5nTBRYc+xcsE9kfRmT4+KwcgW8nMalZhNDNAqPB5ZOwYSXnOm
- LoD1cCT/ogiAbVKm+3PKZr9Bn1oBSPr4C7rkAURYV8ox+PCpehAqnGBFGbGfdKr6PT6G
- 8KrQIbz2sVbisy0gViBi3bJVvvp05AwUjLk+VtJbaDj4fihQJsGKQDJOewwWRcZymFq8
- As9Q==
-X-Gm-Message-State: AOJu0YxWqQQgQQHj20aUHlelu4W+EuhwY+Cncz8aEwfJUTkn+nmHlQup
- 5VJzkvI5y0/2XLnJ2tGp3d95oXjyvYk6bPhXwpseg/62Pyk328GTuFYP
-X-Gm-Gg: ATEYQzxIdI6AjuV3tvU4V2mwCb1IXy9jZYGl0gYKp/meVYbyiFnDHJrUVrVg6gAq2gp
- 7mqwEq5yW2SPeXNPN4SkgUU+uH3rpR2vOZDGpT2WoaRlQq6UAcpSF5sttiAifooP1zfL7n1rBFx
- AOau2L5/bDRJ5/yzJSLJnebXTH1US2tpFDMHxVf9sC3ee4h5MJ05n2hp9g/dKIv3fjVfcNXTgjA
- 033GjEJ1c73lBcdvdv5VikK9/2Ke8N/dcoM3q0OOWcAqjbCwADGCCqw2P6HGuH01wdYFH02INwr
- BM4gcag1Eeg0o6TyCJ3RkUptHXBPxD3mHAypZbhRTM8G8bio29qg0TJ/HR6oPzcvfGCYzr35FgB
- NsGng7dDJ+6myLXfAJpBie9moAtF+Uqj1g3YoaH6MQVYGZQa3zxHmbUFnYf5TZBHeg1IALryn10
- KqboSC5xPOvJv3vLTUL09mOf2XOjll1NgyekX8zTb1NO0ubr9dOnOleijU08LmqPSk/zz38cCnt
- 1/LI7VS
-X-Received: by 2002:a17:907:6093:b0:b94:858:5807 with SMTP id
- a640c23a62f3a-b9c679adc2fmr25890166b.25.1775167046059; 
- Thu, 02 Apr 2026 14:57:26 -0700 (PDT)
+ bh=COppB07ZdgBSIiLPYIXUKRW1DDBdEAcH3Z/PWDGJeWs=;
+ b=TVg6+NgqstslO7fQGayNuGVRRyQAOy0m4rRzwnPsIZ9MRSmnKGLJjpWtPl5ztfUL7j
+ DDfEAIVuRmu/JUgqknSR016cgniCWTza1zzlLbrXP6R1ad/PZKYZZtIamGTUo9j6ctqL
+ 4GacZGcw0y8zXUNSwsckJBRok5hZg9sTqRaI5gWsxN95VQIZoctRMkjLI7/63TsQBRev
+ tSsffOBLWluJXdaOKhvF+/Z1hAROr7YAYSLnS9rgNwPXYgTB0lef1Lq9aq2xMwe86gf9
+ eKyFg9me7TkwCIc2T7aGI60MXqb6MBZYBuJQshypK52+6nIkgisFobBZjKbK8RCjaZXf
+ 8caA==
+X-Gm-Message-State: AOJu0YwhwkH6q5A2U57fi05xxnHQsVQG2tzI6YaA+mSWgAy1IUfSOS4y
+ fRf1aTNAWUV6PjR/DPdVlL9Kqkc8NN8pXgp/ANNomJI/MMwsY6QIkmFJ
+X-Gm-Gg: AeBDietYZSIS69bpIxg3ZVbGkDNjlBVcd9alXdm/2x5rok7XsC/c8tyArBOWu8czMcH
+ 5NuU8eRnVxq96P7B3fSdaqowZ5ZfydC4lrZPLtpriUJbCDWk+uyVWgeTitJ0smlr7pKZPFuchy5
+ EnP7lHvlzq8LxcyNL0QdD6JtwtTuvlrcYyQLPcDdnaZt4RKQLzBrePkg6uPqkVh1Fl+uWStk4uk
+ Am8NbSZFmLldhdxhROKvfk9C7XS5kMVX0sr4ELZeRVFcrap0PeuvW3XODTleEOtgYd2EvZtnx4Y
+ VFfRHof1n0m2/vwD0n76zBg3IjleZzfgcRxFcMUWtAwbESF9y8uZ3WqnjnozMN/xYB6rQRYFWhg
+ zdugDG6wt32OOyt75u7cxw80SlfaGEKbaJFZQw9jE25tTAsBci51sntW8fqAQA1TQkeGTkgTUaX
+ LeL4jZgUm/HTdbZb2/4jdxdKMceH3NyfnwHDmi9oW+EW+Usuh8i4Zm6aWFkXDjr61SZN8CSoJd9
+ 0r3qiBO
+X-Received: by 2002:a17:907:808:b0:b9c:3ba2:2da8 with SMTP id
+ a640c23a62f3a-b9c67b83e0amr24481566b.52.1775167007568; 
+ Thu, 02 Apr 2026 14:56:47 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.24
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.56.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:25 -0700 (PDT)
+ Thu, 02 Apr 2026 14:56:47 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 25/33] system/memory: add setters for MemoryRegion
- properties
-Date: Thu,  2 Apr 2026 23:56:10 +0200
-Message-ID: <20260402215629.745866-26-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
+Subject: [PATCH v3 04/33] hw/core: introduce generic FDT device model registry
+Date: Thu,  2 Apr 2026 23:55:49 +0200
+Message-ID: <20260402215629.745866-5-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,303 +106,210 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Currently, MemoryRegion properties such as addr, size,
-priority and container are read-only and don't have setters.
+Introduce infrastructure to instantiate device models
+directly from the device tree.
 
-This patch implements the missing setters function, so that
-properties can be modified dynamically.
+This includes the registry of known device models with
+associated init functions and key API methods to
+operate it.
 
-The changes allow MemoryRegions objects to be fully configured
-via properties, which enables them be created from a device
-tree description.
+The MIT license of fdt_generic.c preserved as in original
+file from https://github.com/Xilinx/qemu.git repo.
+
+The license for fdt_generic.h derived from matching
+fdt_generic.c file.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- system/memory.c | 221 ++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 216 insertions(+), 5 deletions(-)
+ hw/core/fdt_generic.c         | 110 ++++++++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic.h |  61 +++++++++++++++++++
+ 2 files changed, 171 insertions(+)
+ create mode 100644 hw/core/fdt_generic.c
+ create mode 100644 include/hw/core/fdt_generic.h
 
-diff --git a/system/memory.c b/system/memory.c
-index 56f3225b21..cd463a3dde 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -55,6 +55,9 @@ static GHashTable *flat_views;
- 
- typedef struct AddrRange AddrRange;
- 
-+static void memory_region_update_container_subregions(MemoryRegion *subregion);
-+static void memory_region_readd_subregion(MemoryRegion *mr);
+diff --git a/hw/core/fdt_generic.c b/hw/core/fdt_generic.c
+new file mode 100644
+index 0000000000..65e3c1efa3
+--- /dev/null
++++ b/hw/core/fdt_generic.c
+@@ -0,0 +1,110 @@
++/*
++ * SPDX-License-Identifier: MIT
++ *
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ *
++ * Copyright (c) 2010 PetaLogix Qld Pty Ltd.
++ * Copyright (c) 2010 Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
- /*
-  * Note that signed integers are needed for negative offsetting in aliases
-  * (large MemoryRegion::alias_offset).
-@@ -1251,6 +1254,73 @@ void memory_region_init(MemoryRegion *mr,
-     memory_region_do_init(mr, owner, name, size);
- }
- 
-+static void memory_region_get_addr(Object *obj, Visitor *v, const char *name,
-+                                   void *opaque, Error **errp)
++#include "qemu/osdep.h"
++#include "hw/core/fdt_generic.h"
++#include "hw/core/qdev-properties.h"
++#include "qemu/log.h"
++
++
++#define FDT_GENERIC_MAX_PATTERN_LEN 1024
++
++typedef struct TableListNode {
++    struct TableListNode *next;
++    char key[FDT_GENERIC_MAX_PATTERN_LEN];
++    FDTInitFn fdt_init;
++    void *opaque;
++} TableListNode;
++
++/* add a node to the table specified by *head_p */
++
++static void add_to_table(
++        FDTInitFn fdt_init,
++        const char *key,
++        void *opaque,
++        TableListNode **head_p)
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    uint64_t value = mr->addr;
-+
-+    visit_type_uint64(v, name, &value, errp);
++    TableListNode *nn = malloc(sizeof(*nn));
++    nn->next = *head_p;
++    strcpy(nn->key, key);
++    nn->fdt_init = fdt_init;
++    nn->opaque = opaque;
++    *head_p = nn;
 +}
 +
-+static void memory_region_set_addr(Object *obj, Visitor *v, const char *name,
-+                                   void *opaque, Error **errp)
++/* FIXME: add return codes that differentiate between not found and error */
++
++/*
++ * search a table for a key string and call the fdt init function if found.
++ * Returns 0 if a match is found, 1 otherwise
++ */
++
++static int fdt_init_search_table(
++        char *node_path,
++        FDTMachineInfo *fdti,
++        const char *key, /* string to match */
++        TableListNode **head) /* head of the list to search */
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    uint64_t value;
++    TableListNode *iter;
 +
-+    visit_type_uint64(v, name, &value, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    memory_region_set_address(mr, value);
-+}
-+
-+static void memory_region_set_container(Object *obj, Visitor *v,
-+                                        const char *name, void *opaque,
-+                                        Error **errp)
-+{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    MemoryRegion *old_container = mr->container;
-+    MemoryRegion *new_container = NULL;
-+    char *path = NULL;
-+
-+    visit_type_str(v, name, &path, &local_err);
-+
-+    if (!local_err && strcmp(path, "") != 0) {
-+        new_container = MEMORY_REGION(object_resolve_link(obj, name, path,
-+                                      &local_err));
-+        while (new_container->alias) {
-+            new_container = new_container->alias;
++    for (iter = *head; iter != NULL; iter = iter->next) {
++        if (!strcmp(key, iter->key)) {
++            if (iter->fdt_init) {
++                return iter->fdt_init(node_path, fdti, iter->opaque);
++            }
++            return 0;
 +        }
 +    }
 +
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    object_ref(OBJECT(new_container));
-+
-+    memory_region_transaction_begin();
-+    memory_region_ref(mr);
-+    if (old_container) {
-+        memory_region_del_subregion(old_container, mr);
-+    }
-+    mr->container = new_container;
-+    if (new_container) {
-+        memory_region_update_container_subregions(mr);
-+    }
-+    memory_region_unref(mr);
-+    memory_region_transaction_commit();
-+
-+    object_unref(OBJECT(old_container));
++    return 1;
 +}
 +
- static void memory_region_get_container(Object *obj, Visitor *v,
-                                         const char *name, void *opaque,
-                                         Error **errp)
-@@ -1275,6 +1345,53 @@ static Object *memory_region_resolve_container(Object *obj, void *opaque,
-     return OBJECT(mr->container);
- }
- 
-+static void memory_region_set_alias(const Object *obj, const char *name,
-+                                    Object *val, Error **errp)
++TableListNode *compat_list_head;
++
++void add_to_compat_table(FDTInitFn fdt_init, const char *compat, void *opaque)
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    MemoryRegion *subregion, *next;
-+
-+    /*
-+     * Be conservative and only allow one shotting for the mo
-+     * FIXME: Use a softer error than assert
-+     */
-+    assert(!mr->alias);
-+
-+    /*
-+     * FIXME: check we don't already have subregions and
-+     * anything else that might be mutex with aliasing
-+     */
-+
-+    memory_region_transaction_begin();
-+    QTAILQ_FOREACH_SAFE(subregion, &mr->subregions, subregions_link, next) {
-+        object_property_set_link(OBJECT(subregion), "container",
-+                                 OBJECT(val), errp);
-+    }
-+    memory_region_ref(mr);
-+    mr->alias = MEMORY_REGION(val);
-+    mr->alias->mapped_via_alias++;
-+    memory_region_unref(mr);
-+    memory_region_transaction_commit();
-+    /* FIXME: add cleanup destructors etc etc */
++    add_to_table(fdt_init, compat, opaque, &compat_list_head);
 +}
 +
-+static void memory_region_set_alias_offset_prop(Object *obj, Visitor *v,
-+                                                const char *name,
-+                                                void *opaque, Error **errp)
++int fdt_init_compat(char *node_path, FDTMachineInfo *fdti, const char *compat)
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    uint64_t value;
-+
-+    visit_type_uint64(v, name, &value, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    memory_region_set_alias_offset(mr, value);
++    return fdt_init_search_table(node_path, fdti, compat, &compat_list_head);
 +}
 +
- static void memory_region_get_priority(Object *obj, Visitor *v,
-                                        const char *name, void *opaque,
-                                        Error **errp)
-@@ -1285,6 +1402,70 @@ static void memory_region_get_priority(Object *obj, Visitor *v,
-     visit_type_int32(v, name, &value, errp);
- }
- 
-+static void memory_region_set_priority(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
++TableListNode *inst_bind_list_head;
++
++void add_to_inst_bind_table(FDTInitFn fdt_init, const char *name, void *opaque)
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    int32_t value;
-+
-+    visit_type_uint32(v, name, (uint32_t *)&value, &error_abort);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    if (mr->priority != value) {
-+        mr->priority = value;
-+        memory_region_readd_subregion(mr);
-+    }
++    add_to_table(fdt_init, name, opaque, &inst_bind_list_head);
 +}
 +
-+static void memory_region_do_set_ram(MemoryRegion *mr)
++int fdt_init_inst_bind(char *node_path, FDTMachineInfo *fdti,
++        const char *name)
 +{
-+    if (mr->addr) {
-+        qemu_ram_free(mr->ram_block);
-+    }
-+    if (int128_eq(mr->size, int128_make64(0))) {
-+        return;
-+    }
-+    if (mr->ram) {
-+        mr->ram_block = qemu_ram_alloc(int128_get64(mr->size),
-+                                       RAM_SHARED, mr, &error_abort);
-+    }
++    return fdt_init_search_table(node_path, fdti, name, &inst_bind_list_head);
++}
+diff --git a/include/hw/core/fdt_generic.h b/include/hw/core/fdt_generic.h
+new file mode 100644
+index 0000000000..3d8ec2f7ff
+--- /dev/null
++++ b/include/hw/core/fdt_generic.h
+@@ -0,0 +1,61 @@
++/*
++ * SPDX-License-Identifier: MIT
++ *
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ */
++
++#ifndef FDT_GENERIC_H
++#define FDT_GENERIC_H
++
++#include "qemu/help-texts.h"
++#include "system/device_tree.h"
++
++typedef struct FDTMachineInfo FDTMachineInfo;
++
++typedef int (*FDTInitFn)(char *, FDTMachineInfo *, void *);
++
++/* associate a FDTInitFn with a FDT compatibility */
++
++void add_to_compat_table(FDTInitFn, const char *, void *);
++
++/*
++ * try and find a device model for a particular compatibility. If found,
++ * the FDTInitFn associated with the compat will be called and 0 will
++ * be returned. Returns non-zero on not found or error
++ */
++
++int fdt_init_compat(char *, FDTMachineInfo *, const char *);
++
++/* same as above, but associates with a FDT node name (rather than compat) */
++
++void add_to_inst_bind_table(FDTInitFn, const char *, void *);
++int fdt_init_inst_bind(char *, FDTMachineInfo *, const char *);
++
++/* statically register a FDTInitFn as being associate with a compatibility */
++
++#define fdt_register_compatibility_opaque(function, compat, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_compat_table(function, compat, opaque); \
 +}
 +
-+static void memory_region_set_ram(Object *obj, Visitor *v, const char *name,
-+                                  void *opaque, Error **errp)
-+{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    uint8_t value;
++#define fdt_register_compatibility_n(function, compat, n) \
++fdt_register_compatibility_opaque(function, compat, n, NULL)
 +
-+    visit_type_uint8(v, name, &value, &error_abort);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
++#define fdt_register_compatibility(function, compat) \
++fdt_register_compatibility_n(function, compat, 0)
 +
-+    mr->dirty_log_mask |= tcg_enabled() ? (1 << DIRTY_MEMORY_CODE) : 0;
-+    /* FIXME: Sanitize error handling */
-+    /* FIXME: Probably need all that transactions stuff */
-+    if (mr->ram == value) {
-+        return;
-+    }
-+
-+    mr->ram = value;
-+    mr->terminates = !!value; /*FIXME: Wrong */
-+
-+    if (int128_eq(int128_2_64(), mr->size)) {
-+        return;
-+    }
-+
-+    memory_region_do_set_ram(mr);
++#define fdt_register_instance_opaque(function, inst, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_inst_bind_table(function, inst, opaque); \
 +}
 +
- static void memory_region_get_size(Object *obj, Visitor *v, const char *name,
-                                    void *opaque, Error **errp)
- {
-@@ -1294,6 +1475,19 @@ static void memory_region_get_size(Object *obj, Visitor *v, const char *name,
-     visit_type_uint64(v, name, &value, errp);
- }
- 
-+static void memory_region_set_object_size(Object *obj, Visitor *v,
-+                                          const char *name, void *opaque,
-+                                          Error **errp)
-+{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    Error *local_err = NULL;
-+    uint64_t size;
++#define fdt_register_instance_n(function, inst, n) \
++fdt_register_instance_opaque(function, inst, n, NULL)
 +
-+    visit_type_uint64(v, name, &size, &local_err);
++#define fdt_register_instance(function, inst) \
++fdt_register_instance_n(function, inst, 0)
 +
-+    memory_region_set_size(mr, size);
-+}
-+
- static void memory_region_initfn(Object *obj)
- {
-     MemoryRegion *mr = MEMORY_REGION(obj);
-@@ -1309,19 +1503,33 @@ static void memory_region_initfn(Object *obj)
-     op = object_property_add(OBJECT(mr), "container",
-                              "link<" TYPE_MEMORY_REGION ">",
-                              memory_region_get_container,
--                             NULL, /* memory_region_set_container */
-+                             memory_region_set_container,
-                              NULL, NULL);
-     op->resolve = memory_region_resolve_container;
- 
--    object_property_add_uint64_ptr(OBJECT(mr), "addr",
--                                   &mr->addr, OBJ_PROP_FLAG_READ);
-+    object_property_add_link(OBJECT(mr), "alias", TYPE_MEMORY_REGION,
-+                             (Object **)&mr->alias,
-+                             memory_region_set_alias,
-+                             0);
-+    object_property_add(OBJECT(mr), "alias-offset", "uint64",
-+                        NULL,  /* FIXME: Add getter */
-+                        memory_region_set_alias_offset_prop,
-+                        NULL, NULL);
-+    object_property_add(OBJECT(mr), "addr", "uint64",
-+                        memory_region_get_addr,
-+                        memory_region_set_addr,
-+                        NULL, NULL);
-     object_property_add(OBJECT(mr), "priority", "uint32",
-                         memory_region_get_priority,
--                        NULL, /* memory_region_set_priority */
-+                        memory_region_set_priority,
-+                        NULL, NULL);
-+    object_property_add(OBJECT(mr), "ram", "uint8",
-+                        NULL, /* FIXME: Add getter */
-+                        memory_region_set_ram,
-                         NULL, NULL);
-     object_property_add(OBJECT(mr), "size", "uint64",
-                         memory_region_get_size,
--                        NULL, /* memory_region_set_size, */
-+                        memory_region_set_object_size,
-                         NULL, NULL);
- }
- 
-@@ -2666,6 +2874,9 @@ void memory_region_set_size(MemoryRegion *mr, uint64_t size)
-     }
-     memory_region_transaction_begin();
-     mr->size = s;
-+    if (mr->ram) {
-+        memory_region_do_set_ram(mr);
-+    }
-     memory_region_update_pending = true;
-     memory_region_transaction_commit();
- }
++#endif /* FDT_GENERIC_H */
 -- 
 2.43.0
 

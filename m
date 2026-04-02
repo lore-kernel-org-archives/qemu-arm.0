@@ -4,78 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7DCBD6AB10
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5809DD6AB17
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q39-0000oE-7y; Thu, 02 Apr 2026 17:58:03 -0400
+	id 1w8Q2Y-00005u-13; Thu, 02 Apr 2026 17:57:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2e-0000BL-Pw
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:33 -0400
+ id 1w8Q2R-0008UB-CZ
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:19 -0400
 Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2b-0007FG-Pm
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:31 -0400
+ id 1w8Q2P-0007Av-2w
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:18 -0400
 Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-66bf6aa4858so2413283a12.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:29 -0700 (PDT)
+ 4fb4d7f45d1cf-6634bb959a2so1886488a12.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167048; x=1775771848; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167035; x=1775771835; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VUnnhkK/qXiPp936orDPcoBrWF8G/ssU5VMirqtDrGI=;
- b=ZnDYAFeA/AWOv6euJNqcBkUNrwjicjQKfKe0FnLm8uWCCrsYgDPNFZezW8WFU2kIPP
- NVKUrwiHJN/27R65hDfmwPOMK5fykNf2C3j2XS1ocHVaWxrcbev9+7qkdnOSUdo6izdx
- IWsfZ2QxIhMt5QXhMbWUzjTMKCUWUFnxH8nUQ4MaK5mkbpxOh4XKCEdyyFCdTyFc+orH
- T8rxCnDxQZ0qXtD4tg07enp2QurOAakNrVPdiB53rkOTC93GI0w5ka7K+QU7Ms472VCr
- Yf7a3Glf8WNOPix5m44E1d4sshYBjHtdDAsrU0zcsOqcLxU5Xnm2Tuqwy0dxNHPC/RX4
- PGjQ==
+ bh=WLJlPZb4J5z4IvDnwriqBPXyQNO+ITQ2oYN4FJS7gQA=;
+ b=hof/Qxwtl643jA228xoUw7Y/NCHknBchTrkKyQ4j5+oY7tZx+2XjBtXywQ0idBPPW7
+ 7PWURKxJuz6tA/ZOx4TD4bYBUGZZQ6YNjUElt8nzNXkntHjb7jOHRvnba2HBQAIFBBrD
+ Pb9OWuGr5DdVsFfe5jk2KRl9Cmju8roF6tRzrGJ4ze1KlPzDgx9qe9XTJ2lL6m2I6aqz
+ CxD35M3jxOLia3tVBEfr3OzjqNrFbMRUhU9pILJY6htlHyLwNTBmulvCsbmUXa7mX3gv
+ AmBCaHEcuxMRhSY697psAmNvRxcwPwA58czx/FH41043egO4B+eqkcu5lzLDZB3ybLIV
+ ySAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167048; x=1775771848;
+ d=1e100.net; s=20251104; t=1775167035; x=1775771835;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=VUnnhkK/qXiPp936orDPcoBrWF8G/ssU5VMirqtDrGI=;
- b=UU42drKtzdeUAkP2yiG+6DLqXTmBPXhjnC2ZeYsMLZfyRd9vOrHlDGBofhfAaanZOW
- 16KZKvtDxgfQ7F4WQz3vhM5JmwPyki1Qz6jlaYbmtIvpYsi2CdFZ3BgihzfMB8bU4AQP
- BQ2IbJIcrVRAIKFVo6nleI7E2b7cni2LrroQtpMyNq3nVJiM0eaCH5C/lbCZQotYkXev
- +8cd5Pqxbe1oGRYTqnQqOU3kGrqldbIxjTlvPQl6Bm7f4ajqLkMmJkYFp9kjUT49s4QR
- Vd+QcYqKoJcOnC6fbKlzisVUay6p+WsJJc/R+bWOQrmO5MXfcBqWPTgUVSpDd6RWUQhQ
- HdbA==
-X-Gm-Message-State: AOJu0Yx9db2UQovybVHtII7jumToA1bjaRYNmRc3+VQooriegrvFFai+
- spAjPU6RvlG1I8GPV0DkQRShCOfyTNbiI3ISV7kAdn0F7az39Tb/rv0a
-X-Gm-Gg: ATEYQzzAsRqTfoSWCz/q/zwZSRJyP81pamkHcGuaSAS349FR99jmRBmfSBzyQkQGjI8
- pjldJmsQggSsfZfv3Vl23PLxPED0rVMaBBr76uRbesjkNXVaBkGgNfE2wi0Ydt3p6tnO79SeAdu
- F+OHbFofOshFzLmE3bg59OleMqLgGlnVdSeEqRfzS56hrFK4YaZ2RUfl6/dr35DtRfNZLcUSSZK
- Vnuub046hSL34zN3IAGeSF8Fr05rjcPcn4IFsEqGLeQxgAdT/UtGFm9zUccUovfMZ2DJt1Tc53v
- EV3y1M74U9Nlz+FPL4ud8zb1XZgbIoclHPqqFx+1NCgwQkiPpWMSYcywQZ1wmsDiOEk9xR6r+M1
- MSJ4J+sRaG6nmgBLbPZ17jbT9hX4re7NLYysEcZd1SJgmFGWJg1KqJ3/jDq5fDHPvLP93zmk81G
- eReiz6+/SrvIrzbSrpbY6nHo6k9nOHIHZi80ScdFFX62zSE1U/kxgvWnXo2A3QydfQcuNanw==
-X-Received: by 2002:a17:907:8b93:b0:b9c:ed9:50c8 with SMTP id
- a640c23a62f3a-b9c67979c9cmr25722466b.26.1775167047654; 
- Thu, 02 Apr 2026 14:57:27 -0700 (PDT)
+ bh=WLJlPZb4J5z4IvDnwriqBPXyQNO+ITQ2oYN4FJS7gQA=;
+ b=HPaew8KejmYOMZkMtO4D+1o6C1SJfPRt0sZxN0S4VvWsImOjulW3W/eP/4JMlf50HY
+ KohwCUZ5FILEBDXY3q1/yMjfLvVcDlgjbmwzyH0heVEy9v4437+6I5OvX69OmfRrjXX6
+ WfY4xCT75rbFMReBrI8buN9FdqABxyd3Iey7hKH2BuZfoOh+iWOecB3kp/T7M7Cjgyjz
+ U1OBWDcYfbMrIZKeQoNBOT0VloDqFChyeFa/lZSux2T/QESMqYfgnXxZDRmOvEDG5UFb
+ A3OSNciI6Zwsbd57XlLfK3HYpikQ6rZUepbjVs/zwqIfLDkYJmAsAXzQ7SbPV2EQJZH8
+ evUg==
+X-Gm-Message-State: AOJu0YzAnATUf9c3QB83vUUp48L9tHpFLLF/6hvVEMOmvsYxks7FEt0F
+ 349cVxAdBH8eXtOxQ0VyYznWuqcWKiSJ6DSgd1Z79aF4YdCWIDMHnZEQ
+X-Gm-Gg: ATEYQzw0/tB3IaE4zv0GaZhxD/D2izAqm9e8SbBL7Fin/U8uCp+HlzKJCrLTeBqAQvt
+ G/TvRX1p1ApKgx/llPIpV4462JcDi/hhir/3LSi/8ZIDmaVoqJPzsoNOdam0L+AcC0dAjCugn84
+ QkDk2NVLE9baH59f9yD/K+9Gp68jgCuWu0kFtHKuP0eF1eO7fptTMZi3av9toZQoQrXZZwxuw+b
+ U/Gjw96yR8CZ1F4OMpF68tiInRkRRendu5PPzOxTbwE2rDLBtgI+bXlU5iOUHwSlTi0Xq3oIvEh
+ ea08tE2JFUyulTAYQOWmKAI9c9HSe+L4EbcE0kOL1ILh3UEebUFTYCNi2Ld/JTOVAz5SPrq+yaT
+ TLo+YsGF6eQ4flZv1lk9xiICl0ghww31Rxs+Lx1oWYkmqriyQgubTcrsUeoo+AjER5cqmUquhxT
+ er6Xu8/lCo1aPw9Zi63WJbszg4O1hTN5j+E/1oIXi3e0q2pZ3FWU0okAxk9Vy3rl1VD4ab8A==
+X-Received: by 2002:a17:907:e107:b0:b93:56a4:d6bc with SMTP id
+ a640c23a62f3a-b9c6798d3a2mr16784266b.49.1775167035121; 
+ Thu, 02 Apr 2026 14:57:15 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.26
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:27 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:14 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 26/33] system/memory: implement FDT_GENERIC_MMAP interface
-Date: Thu,  2 Apr 2026 23:56:11 +0200
-Message-ID: <20260402215629.745866-27-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
+Subject: [PATCH v3 18/33] hw/core/fdt_generic_util: realize cpu clusters
+Date: Thu,  2 Apr 2026 23:56:03 +0200
+Message-ID: <20260402215629.745866-19-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
@@ -107,105 +105,44 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch implements TYPE_FDT_GENERIC_MMAP interface
-for the MemoryRegion class.
-
-This enables memory region objects to be automatically
-constructed by FDT parser based on the 'reg' property
-in the Device tree. The implementation parses register
-tuples and set base address, size and priority properties.
-
-Optionally parent container can be set of newly created
-memory region.
+Realize cpu clusters at the end of fdt machine creation
+process, as they need to be created after cpu's nodes
+are realized.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- system/memory.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 58 insertions(+)
+ hw/core/fdt_generic_util.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/system/memory.c b/system/memory.c
-index cd463a3dde..b3d981dc0c 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -38,6 +38,8 @@
- 
- #include "memory-internal.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- //#define DEBUG_UNASSIGNED
- 
- static unsigned memory_region_transaction_depth;
-@@ -3721,6 +3723,57 @@ static gboolean mtree_info_flatview_free(gpointer key, gpointer value,
-     return true;
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index b0e26e11bc..f3a47cbafe 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -151,6 +151,16 @@ static void fdt_init_all_irqs(FDTMachineInfo *fdti)
+     }
  }
  
-+static bool memory_region_parse_reg(FDTGenericMMap *obj,
-+    FDTGenericRegPropInfo reg, Error **errp)
++static void fdt_init_cpu_clusters(FDTMachineInfo *fdti)
 +{
-+    MemoryRegion *mr = MEMORY_REGION(obj);
-+    uint64_t base_addr = ~0ull;
-+    uint64_t total_size = 0;
-+    uint64_t max_addr = 0;
-+    int i;
++    FDTCPUCluster *cl = fdti->clusters;
 +
-+    if (!reg.n) {
-+        return false;
++    while (cl) {
++        qdev_realize(DEVICE(cl->cpu_cluster), NULL, &error_fatal);
++        cl = cl->next;
 +    }
-+
-+    for (i = 0; i < reg.n; ++i) {
-+        base_addr = MIN(base_addr, reg.a[i]);
-+        max_addr = MAX(max_addr, reg.a[i] + reg.s[i]);
-+        total_size += reg.s[i];
-+        if (reg.p[i] != reg.p[0]) {
-+            error_setg(errp, "FDT generic memory parser does not support"
-+                       "mixed priorities");
-+            return false;
-+        }
-+    }
-+
-+    if (total_size != max_addr - base_addr) {
-+        error_setg(errp, "FDT generic memory parse does not "
-+        "spport discontiguous or overlapping memory regions");
-+        return false;
-+    }
-+
-+    /*
-+     * FIXME: parent should not be optional but we need to implement
-+     * reg-extended in kernel before we can do things properly
-+     */
-+    if (reg.parents[0]) {
-+        object_property_set_link(OBJECT(mr), "container", reg.parents[0],
-+                                 &error_abort);
-+    }
-+    object_property_set_int(OBJECT(mr), "size", total_size, &error_abort);
-+    object_property_set_int(OBJECT(mr), "addr", base_addr, &error_abort);
-+    object_property_set_int(OBJECT(mr), "priority", reg.p[0], &error_abort);
-+    return false;
 +}
 +
-+static void memory_region_class_init(ObjectClass *oc, const void *data)
-+{
-+    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
-+
-+    fmc->parse_reg = memory_region_parse_reg;
-+}
-+
- static void mtree_info_flatview(bool dispatch_tree, bool owner)
+ FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
  {
-     struct FlatViewInfo fvi = {
-@@ -3941,6 +3994,11 @@ static const TypeInfo memory_region_info = {
-     .instance_size      = sizeof(MemoryRegion),
-     .instance_init      = memory_region_initfn,
-     .instance_finalize  = memory_region_finalize,
-+    .class_init         = memory_region_class_init,
-+    .interfaces         = (InterfaceInfo[]) {
-+        { TYPE_FDT_GENERIC_MMAP },
-+        { },
-+    },
- };
+     FDTMachineInfo *fdti = fdt_init_new_fdti(fdt);
+@@ -164,6 +174,7 @@ FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
+     while (qemu_co_enter_next(fdti->cq, NULL)) {
+         ;
+     }
++    fdt_init_cpu_clusters(fdti);
+     fdt_init_all_irqs(fdti);
+     memory_region_transaction_commit();
  
- static const TypeInfo iommu_memory_region_info = {
 -- 
 2.43.0
 

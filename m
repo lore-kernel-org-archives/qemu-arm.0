@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0ABED6AB16
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46EC0D6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:01:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q2P-0008TC-PW; Thu, 02 Apr 2026 17:57:17 -0400
+	id 1w8Q2n-0000L6-42; Thu, 02 Apr 2026 17:57:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2L-0008LS-8f
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:14 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1w8Q2Z-00006Q-Lz
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:27 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2I-000798-Kx
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:12 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-b7cf4a975d2so176145166b.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:10 -0700 (PDT)
+ id 1w8Q2W-0007DH-IX
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:26 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-66a33f61d80so2432244a12.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167029; x=1775771829; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167043; x=1775771843; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ti9TrcfoeyeQNd3Zl+7f/uTE9kKOziltFUJwrjRDreg=;
- b=Fr4iMmC7WwQK5xcFXq3KoWVvYw1sLpScUkAyX2dEBxAnaQ/c+DrWt/EvM7iaH95pVE
- w8eX89SdjLinq2SNiHTXiuEceo0VdjORF52Ozsj182KKD/fHrQrYCzA/2Mcj8b8LNYUF
- zks7OwlSXhlbGl3YJ9IsAs41xoPRn6lkIHaEr/+4gxWMhSR2AgXODZNABCqBOWQk7EPv
- nWmMQECFVAzn0DTo9VonLhxoj4BlYTbR40Nucit3sjvCxWET1RY0nXf7X+RvqF0aF7Y8
- yLUXYePTAXB8/NxXQYZO9W2HmRtkEb3mPzGSLXTgVmEMp89TOfiNAcZKNgy4VvtUNHGV
- EaAA==
+ bh=OrGB8OQ0EB2XgRXWdV+EvwzSnNtuQZ55Vl1tvmUmW2w=;
+ b=auKtuA1m89lxeUAXqyr9HRG/sIzSEzahQDBUAIHo8U3dmj3PpMwzs2T9YmSpe2Zllv
+ wpCMyjm5SlNsYs0G4dk+T00oqJ94CnMXqxF3OnL/nBvXMwL0M82/qtmbzKn/23U8WQAp
+ JltBLkVQmhPiu86mfXT7P+vjMNiNqgc1hkaEHBD3LR54z01llZzugTBnNI+wZ7WzLKgy
+ wXapKxXalUI14DuHqm0jZEihwPR/fIbyHYCLOKfz5FYAlDmSOVEmxxMwgWUIgrbWeRyw
+ yeDgn1d1ynUMJlb9hh3sUrLNa0ZQBQLRQEWlPr+9b73ZHS5NgI2zD662Kgt1PbzMOOr7
+ hvnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167029; x=1775771829;
+ d=1e100.net; s=20251104; t=1775167043; x=1775771843;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Ti9TrcfoeyeQNd3Zl+7f/uTE9kKOziltFUJwrjRDreg=;
- b=Vl+RMI1bOAMV6aqjRUIK0s9ZJAeVJ0kYb1BkDZ8kxxiI8Hp75FyoLzroe6iITrPg1x
- 11X+aASFvIrP+TmRyDn2hwx7JdD7GZdBW3J5NxVyfPVhm0/MFzhl629wvlrERjpQhKkl
- cH8rq+XG+ahJFbV41UPqbFMarCBhnoiaTNm67qsKkcqQ8XPDwV3p4aVWvCcyIswN+sHq
- UpNAcbkzBJSxpInUFj1zuh7ro+WZsauxRjJPFv7zqV/RaHgepZipOu5qA+xIo8vDCvpT
- C3mxQj0u8XCGDRjaqYOKU4cY5AEEgji2/mB7TH6cAF2A2Xawcyot/zwp8YNgPxXDBABl
- UUJA==
-X-Gm-Message-State: AOJu0YwQYs1jeldc90JgHBjTnagbiUWM9QJ5i2/p0wlSHcicI5F/IpnZ
- YS8qdUafGqiQnBkO8XKwKA7sbfnC84slxVx+cr6FIfYUrt350+03Ayc/
-X-Gm-Gg: ATEYQzxX7gFDklsar3HeHqHDTVo+IF4aXwKYc//21ix7ObkAfVO7qN2SaEid+FMQf+U
- zGNJyLDK+5vsLd8Y58cfqQP3pFWQZXm3MuyuoLhENnpWQcP0SUdJD/dzFde4CJ0ykP1fDQxTWLX
- +xrWJZ8L6G4n20v6C1gGk5GdSGCZEVak2EIpJZV96TnArWLHOqSPYgCiuYCK7ysWYVyIu6RyLnJ
- yfXFSq2DSciPKRMbGcGI518hvdOWmEE/kjk3zqtGNx1mC2wgEoqZ//giHLDY6UkBJBNnMSr/H8w
- GdCCwITPKeCDOBdmIznbK5ABdIYx6mmTI5qhxncx+694jPBeXhtw7Ih5tyJOggyraCn9EtsoHqP
- DFBxcHZ96mt8oijuX/isUk8czxIwkblNxg35/Ky+eaajj6uqiehkOUkIBwUCL+FHSYhZroJ/BEi
- 123E+OFIUIDkpE7M+0xHhUem9CJDzga6lSDGfimZphY4DV3AbZt67ZrvzmvTPsF/mHsF/XiA==
-X-Received: by 2002:a17:907:3f90:b0:b98:cb6:e896 with SMTP id
- a640c23a62f3a-b9c67b77b14mr24507466b.38.1775167028943; 
- Thu, 02 Apr 2026 14:57:08 -0700 (PDT)
+ bh=OrGB8OQ0EB2XgRXWdV+EvwzSnNtuQZ55Vl1tvmUmW2w=;
+ b=UpOhH2Uq6LCJFmXEi5mKL33VOzBboEbndi2/xK02FLm7fTeRZBiCz1lZ+KQJkydczU
+ u4f+Zmqu3FGxedRgrZAWyGTC5bifQlVOIZK1IE3wF7nKkwm3sZRqfl4rayCHbsJsa6V3
+ z1oAXqrSwQ0tLtRGy+0+4kPuvm1XxGxr7Xdk0rzveKifRlF1Lyu1k/P4oxVUgNonrAa0
+ 4v4iQS/Y/Ih3NRgtYcPCFWKr/aJ0x/npgIkKrNsE6F8t0XJMYBb1yA3hP1110PcCGDwR
+ lrJ94nh8zv0SrHG415xXVwwl7mxh1IVSc7m0pnNIhn4hbmM0L22OzSRrvBErwRHcbpDU
+ jWBA==
+X-Gm-Message-State: AOJu0Yxtg/VyANvrXbF0LTKdgBYhUeFe01s6PHoRo4BtxgFeL8s2gs1z
+ IMy3j+dALoxbCY18ctPxEUbaQuAUuJXklcefg9uIPKkSkXKguNcRdc8p
+X-Gm-Gg: ATEYQzwNCwvqyawi/2kVYA9qqwrIpuowW3nMusDra6/fhcMZaArB5BWhd9FENdeWwnv
+ NSn6CgKEGBKTFrsbeNwoIPl4+tzT5+axYzVzhdQu8dAxChQ+HBFSbOP67YRlTeyX0h2L07H94ol
+ cAtw4u8jt3S28xCfaTETByWoEi5vUbqbzYYCHx0pHcqu5OLG+pzyeUeyETc2YRp99Lartvz+hZR
+ JL3yT1reuJXQTtHEcEdVksSjHtrsvhO0IvJCJzdSv0v6Omd+owvpFBEr7QmEId5ZWRec7aJjI31
+ yISFe8MuwJmOJSCcz2iv5jnAz7eFkxsXOlZDwnBJ5kSl/Pa+YdaBOQb/8B3a20DrqeTrahuyAiB
+ r8wVY5qlky/830ZBt6uoUlswxSQDKpwB7zRIVafF8HeBCkvhc4Cp+lnJc7nm0k+D3+vpNF0BObW
+ jqzqoSWg6mEqXDh+9o7uGweYHMEThcENYXyDbav5wtZ0MtFPrfqzLrCfomwq6SerzrS62L1w==
+X-Received: by 2002:a17:907:3e9f:b0:b96:e3db:9e04 with SMTP id
+ a640c23a62f3a-b9c67b5fd34mr24482966b.53.1775167042926; 
+ Thu, 02 Apr 2026 14:57:22 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.07
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:08 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:22 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,17 +71,17 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 15/33] hw/core/fdt_generic_util: implement
- fdt_get_irq/_info API
-Date: Thu,  2 Apr 2026 23:56:00 +0200
-Message-ID: <20260402215629.745866-16-ruslichenko.r@gmail.com>
+Subject: [PATCH v3 23/33] hw/intc/arm_gic: implement FDT_GENERIC_INTC and fdt
+ support
+Date: Thu,  2 Apr 2026 23:56:08 +0200
+Message-ID: <20260402215629.745866-24-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,195 +106,173 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Both interfaces may be used by devices to get IRQ information
-based device tree entry.
-Both methods will identify interrupt parent for a device and
-retrieve irq entry.
+The patch implements TYPE_FDT_GENERIC_INTC interface, which
+enables GIC to be instantiated and wired via the device tree
+description.
+
+The implemented interface method are following:
+1. 'get_irq': Parses device tree interrupt specifiers
+and return correct qemu_irq for devices which has IRQ's wired
+to GIC.
+2. 'auto_parent': Automatically connect the GIC's output signals
+to the CPU's found in current machine configuration.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         | 132 +++++++++++++++++++++++++++++
- include/hw/core/fdt_generic_util.h |  17 ++++
- 2 files changed, 149 insertions(+)
+ hw/intc/arm_gic.c        | 32 +++++++++++++++++++++++++
+ hw/intc/arm_gic_common.c | 50 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 82 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index d816e395fd..51b808d9d0 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -64,6 +64,11 @@ static int fdt_generic_num_cpus;
+diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
+index 4d4b79e6f3..bbe9409ef3 100644
+--- a/hw/intc/arm_gic.c
++++ b/hw/intc/arm_gic.c
+@@ -24,12 +24,15 @@
+ #include "gic_internal.h"
+ #include "qapi/error.h"
+ #include "hw/core/cpu.h"
++#include "hw/core/boards.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+ #include "system/kvm.h"
+ #include "system/qtest.h"
  
- static int simple_bus_fdt_init(const char *bus_node_path, FDTMachineInfo *fdti);
- 
-+static void fdt_get_irq_info_from_intc(FDTMachineInfo *fdti, qemu_irq *ret,
-+                                       char *intc_node_path,
-+                                       uint32_t *cells, uint32_t num_cells,
-+                                       uint32_t max, Error **errp);
++#include "hw/core/fdt_generic_util.h"
 +
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
- {
-     FDTMachineInfo *fdti = fdt_init_new_fdti(fdt);
-@@ -229,6 +234,133 @@ static int simple_bus_fdt_init(const char *node_path, FDTMachineInfo *fdti)
-     return 0;
+ /* #define DEBUG_GIC */
+ 
+ #ifdef DEBUG_GIC
+@@ -2162,12 +2165,41 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
+ 
  }
  
-+static void fdt_get_irq_info_from_intc(FDTMachineInfo *fdti, qemu_irq *ret,
-+                                       char *intc_node_path,
-+                                       uint32_t *cells, uint32_t num_cells,
-+                                       uint32_t max, Error **errp)
++static void arm_gic_fdt_auto_parent(FDTGenericIntc *obj, Error **errp)
 +{
-+    FDTGenericIntcClass *intc_fdt_class;
-+    DeviceState *intc;
++    GICState *s = ARM_GIC(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    int num_cpus = s->num_cpu;
++    CPUState *cs;
++    int i = 0;
 +
-+    while (!fdt_init_has_opaque(fdti, intc_node_path) &&
-+           qemu_in_coroutine()) {
-+        fdt_init_yield(fdti);
-+    }
-+    intc = DEVICE(fdt_init_get_opaque(fdti, intc_node_path));
-+
-+    if (!intc) {
-+        goto fail;
-+    }
-+
-+    while (!intc->realized && qemu_in_coroutine()) {
-+        fdt_init_yield(fdti);
-+    }
-+
-+    if (!intc->realized) {
-+        goto fail;
-+    }
-+
-+    intc_fdt_class = FDT_GENERIC_INTC_GET_CLASS(intc);
-+    if (!intc_fdt_class) {
-+        goto fail;
-+    }
-+
-+    intc_fdt_class->get_irq(FDT_GENERIC_INTC(intc), ret, cells, num_cells,
-+                            max, errp);
-+
-+    return;
-+fail:
-+    error_setg(errp, "%s", __func__);
-+}
-+
-+qemu_irq *fdt_get_irq_info(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                          char *info) {
-+    void *fdt = fdti->fdt;
-+    uint32_t intc_phandle, intc_cells, cells[32];
-+    char intc_node_path[DT_PATH_LENGTH];
-+    qemu_irq *ret = NULL;
-+    int i;
-+    Error *errp = NULL;
-+
-+    intc_phandle = qemu_fdt_getprop_cell_inherited(fdt, node_path,
-+                                                   "interrupt-parent",
-+                                                   0, &errp);
-+    if (errp) {
-+        goto fail;
-+    } else {
-+        if (qemu_devtree_get_node_by_phandle(fdt, intc_node_path,
-+                                             intc_phandle)) {
-+            goto fail;
++    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
++        if (i >= s->num_cpu) {
++            break;
 +        }
 +
-+        /* Check if the device is using interrupt-maps */
-+        qemu_fdt_getprop_cell(fdt, node_path, "interrupt-map-mask", 0,
-+                              &errp);
-+        if (!errp) {
-+            error_report(
-+                 "'interrupt-map' routing is not yet supported for node %s",
-+                     node_path);
-+            goto fail;
-+        } else {
-+            error_free(errp);
-+            errp = NULL;
-+            intc_cells = qemu_fdt_getprop_cell_inherited(fdt, intc_node_path,
-+                                               "#interrupt-cells", 0,
-+                                               &errp);
-+        }
++        sysbus_connect_irq(sbd, i,
++                           qdev_get_gpio_in(DEVICE(cs), 0));
++        sysbus_connect_irq(sbd, i + num_cpus,
++                           qdev_get_gpio_in(DEVICE(cs), 1));
++        sysbus_connect_irq(sbd, i + 2 * num_cpus,
++                           qdev_get_gpio_in(DEVICE(cs), 2));
++        sysbus_connect_irq(sbd, i + 3 * num_cpus,
++                           qdev_get_gpio_in(DEVICE(cs), 3));
++        i++;
 +    }
 +
-+    if (errp) {
-+        goto fail;
-+    }
-+
-+    fdt_debug_np("%s intc_phandle: %d\n", node_path, intc_phandle);
-+
-+    for (i = 0; i < intc_cells; ++i) {
-+        cells[i] = qemu_fdt_getprop_cell(fdt, node_path, "interrupts",
-+                                        intc_cells * irq_idx + i, &errp);
-+        if (errp) {
-+            goto fail;
-+        }
-+    }
-+
-+    fdt_debug_np("Getting IRQ information: %s -> %s\n",
-+                node_path, intc_node_path);
-+
-+    ret = g_new0(qemu_irq, fdt_generic_num_cpus + 2);
-+    fdt_get_irq_info_from_intc(fdti, ret, intc_node_path, cells, intc_cells,
-+                               fdt_generic_num_cpus, &errp);
-+
-+    if (errp) {
-+        goto fail;
-+    }
-+
-+    /* FIXME: Phase out this info bussiness */
-+    if (info) {
-+        snprintf(info, DT_PATH_LENGTH, "%s", intc_node_path);
-+    }
-+
-+    return ret;
-+
-+fail:
-+    if (info) {
-+        snprintf(info, DT_PATH_LENGTH, "%s",
-+                 errp ? error_get_pretty(errp) : "(none)");
-+
-+    }
-+
-+    if (errp) {
-+        error_free(errp);
-+    }
-+
-+    return NULL;
++    /* FIXME: Add some error checking */
 +}
 +
-+qemu_irq *fdt_get_irq(FDTMachineInfo *fdti, char *node_path, int irq_idx)
-+{
-+    return fdt_get_irq_info(fdti, node_path, irq_idx, NULL);
-+}
-+
- static inline const char *trim_vendor(const char *s)
+ static void arm_gic_class_init(ObjectClass *klass, const void *data)
  {
-     /* FIXME: be more intelligent */
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index c92c79dd12..6fb0708d7a 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,6 +16,23 @@
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ARMGICClass *agc = ARM_GIC_CLASS(klass);
++    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
  
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
+     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
++    fgic->auto_parent = arm_gic_fdt_auto_parent;
+ }
  
-+/*
-+ * get an irq for a device. The interrupt parent of a device is idenitified
-+ * and the specified irq (by the interrupts device-tree property) is retrieved
-+ */
-+
-+qemu_irq *fdt_get_irq(FDTMachineInfo *fdti, char *node_path, int irq_idx);
-+
-+/*
-+ * same as above, but poulates err with non-zero if something goes wrong, and
-+ * populates info with a human readable string giving some basic information
-+ * about the interrupt connection found (or not found). Both arguments are
-+ * optional (i.e. can be NULL)
-+ */
-+
-+qemu_irq *fdt_get_irq_info(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                           char *info);
-+
- #define TYPE_FDT_GENERIC_INTC "fdt-generic-intc"
+ static const TypeInfo arm_gic_info = {
+diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
+index 304d89cf56..04787cff79 100644
+--- a/hw/intc/arm_gic_common.c
++++ b/hw/intc/arm_gic_common.c
+@@ -28,6 +28,8 @@
+ #include "migration/vmstate.h"
+ #include "system/kvm.h"
  
- #define FDT_GENERIC_INTC_CLASS(klass) \
++#include "hw/core/fdt_generic_util.h"
++
+ static int gic_pre_save(void *opaque)
+ {
+     GICState *s = (GICState *)opaque;
+@@ -348,6 +350,51 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
+     }
+ }
+ 
++static int arm_gic_common_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
++                                      uint32_t *cells, int ncells, int max,
++                                      Error **errp)
++{
++    GICState *gs = ARM_GIC_COMMON(obj);
++    int cpu = 0;
++    uint32_t idx;
++
++    if (ncells != 3) {
++        error_setg(errp, "ARM GIC requires 3 interrupt cells, %d cells given",
++                   ncells);
++        return 0;
++    }
++    idx = cells[1];
++
++    switch (cells[0]) {
++    case 0:
++        if (idx >= gs->num_irq) {
++            error_setg(errp, "ARM GIC SPI has maximum index of %" PRId32 ", "
++                       "index %" PRId32 " given", gs->num_irq - 1, idx);
++            return 0;
++        }
++        (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[1]);
++        return 1;
++    case 1: /* PPI */
++        if (idx >= 16) {
++            error_setg(errp, "ARM GIC PPI has maximum index of 15, "
++                       "index %" PRId32 " given", idx);
++            return 0;
++        }
++        for (cpu = 0; cpu < max && cpu < gs->num_cpu; cpu++) {
++            if (cells[2] & 1 << (cpu + 8)) {
++                *irqs = qdev_get_gpio_in(DEVICE(obj),
++                                         gs->num_irq - 16 + idx + cpu * 32);
++            }
++            irqs++;
++        }
++        return cpu;
++    default:
++        error_setg(errp, "Invalid cell 0 value in interrupt binding: %d",
++                   cells[0]);
++        return 0;
++    }
++}
++
+ static const Property arm_gic_common_properties[] = {
+     DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
+     DEFINE_PROP_UINT32("first-cpu-index", GICState, first_cpu_index, 0),
+@@ -368,12 +415,14 @@ static void arm_gic_common_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+     ARMLinuxBootIfClass *albifc = ARM_LINUX_BOOT_IF_CLASS(klass);
++    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
+ 
+     rc->phases.hold = arm_gic_common_reset_hold;
+     dc->realize = arm_gic_common_realize;
+     device_class_set_props(dc, arm_gic_common_properties);
+     dc->vmsd = &vmstate_gic;
+     albifc->arm_linux_init = arm_gic_common_linux_init;
++    fgic->get_irq = arm_gic_common_fdt_get_irq;
+ }
+ 
+ static const TypeInfo arm_gic_common_type = {
+@@ -385,6 +434,7 @@ static const TypeInfo arm_gic_common_type = {
+     .abstract = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_ARM_LINUX_BOOT_IF },
++        { TYPE_FDT_GENERIC_INTC },
+         { },
+     },
+ };
 -- 
 2.43.0
 

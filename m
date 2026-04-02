@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36434D6AB10
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B367D6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q39-0000tR-Lg; Thu, 02 Apr 2026 17:58:03 -0400
+	id 1w8Q2c-0000Aj-Bk; Thu, 02 Apr 2026 17:57:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2i-0000GA-7v
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:36 -0400
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1w8Q2Y-00005t-2B
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:26 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2e-0007GE-VR
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:35 -0400
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b8f9568e074so217020566b.0
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:32 -0700 (PDT)
+ id 1w8Q2V-0007Cn-AX
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:24 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-66c24b42efbso2288329a12.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167051; x=1775771851; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167042; x=1775771842; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Cm4Knrt01+q22g03cv2LHlISpCqmkMA20253kshEnnc=;
- b=Ms/btjQpogWBBhSkMEfuT5y12TPi2cVxUJSoyc7Xne2ojCeEovYXz71zyFKTz3uszA
- tpbDe8JUu7231r3c0fS1Lq7XWkRCEcovfG8A5e7VjjarKVPzPF7fecSY43yYlxQTcwXw
- XZd+keciCt1y85dLMKXt52uDYRH0Q6887mBmNP4jdDzO0PWboMj4w547lpCEBwYSPnv+
- r3u3TKhFGzzCVP7rvKvmREVWfL6L/wWrI1SDavpCLm6qgRhiWh/qQnoFhITM/t6wHZuj
- r98tY/bAOe7Dzq+5K81jvItKmH8TOWX4+hCU/ZiKfys4ATSeXZOyefQni1+Q0f0yrdDA
- rjsQ==
+ bh=7XwGSsZ5E+pHUCrk55JcghHWJX/O0i4AExLwj5l49n4=;
+ b=ZtoJCD94wsJ26HGPVVGsEid/nGX+btDysjk2W83FLG5DhYOeejn3sIO1frJWgoHvS7
+ MFJ5I1k+vdYDYZGXBT3RxLwIg1RUROgYe8WYUaxl3oV7rc5vT0ydYzSpR9C1KOF//z7K
+ mjix6TcqMTpdeRFeZbnkYOoCCpxvOhoOfDAW4+dbLgWrKWfV1q0rcTMccSqUm825Ii2H
+ aGt/wDEPw0zlxB6EjXdGrvOWdUU2rx4WoNaktqY6S8TdpKtjapNm7yH+vf6U1UY68tPT
+ MfnGJAmq84s+/BqXMmb8H4JKvxwvNoxXEeqNjQ8SEFFanS9rhOVKZ7TBUOG5mt4VLUfN
+ Ghsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167051; x=1775771851;
+ d=1e100.net; s=20251104; t=1775167042; x=1775771842;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Cm4Knrt01+q22g03cv2LHlISpCqmkMA20253kshEnnc=;
- b=bgad57ww1YrZgLoRFTonm/ZTF3EgwNCZuoSKjJ7svVzW80aPyZaf9x7c9V4AWB+wjc
- Gc4sJx9kV0ljdp37/cI2vQoecR/OGYBLxBxwDVvuU1ucw3XE5QF03bM43UyqJDbuOi8B
- HhG0MZYLUOQbmYE8q/gj3Rah5wbHG87gvduCRNKAk7LNJOkkTS+9ro+g0XDWm22AGB2q
- OYV9l/TQhB0sK9PlUPY338VZRw2n/shhr7IrFghXnccJxg9YTBettxmBHwq5bcE492i/
- Wnqx+z+AqmSjrB1Qac6aJEyDlo49wqpxlHWdZe3SFfRhSIpLm+KfU5Le8KP49lOthRy8
- mhGw==
-X-Gm-Message-State: AOJu0YxSu5i1dl0qZIdFzpAccQt8ZDRaxq4t0ZfL4fd1Hk0Xknp/+9nC
- OH/6qUhJyO+ELnvTqZbNLe9JK49M5rikAmwbTDll1wbGesiiuw6HxBNl
-X-Gm-Gg: ATEYQzxHYpnC7t0PY2ulQsuiQ5x7CyKpebyEDBrOokSJPUDjxWlLbG2sHmudK0RRuS8
- xTdOq+fZKKBvgkuIg884jUqdyJmga0aRameXboOuKizDBk0Xw30t8PQ7+0sbUpzMG0oEW1OSoDv
- hGivg0HUFa+MldXFjhyqQVFcXlpU+ZS7n2Jle66OHptSlqM3e1Ege9WvVCKxYExKXgD9TyKQ6Yn
- NGVsKGOArqt5TlvCyAjytkGIJ9/cJQo64F2FVhGLGwlujOU+EXqwYSSM/IUyQueQM5QGkK33/U9
- xFqx6VYFZcx9DOISWwRaNUSAnlfwixC59EA6f/6Ls8K3A06geIKfFiY4E4KZzU4pJudDSaa0yTR
- Segg91t3KjOIdUOEMg0Z5kda6M3PL9p33g/ON8c4hlk+5WG8B7j6Hni1yniKAiygchRqNcVrcbe
- AKcEfEBp9JG42zmzvEfpdd+WNzyilL4vLTMWXDg3DQYe7PtCIXA21qYV/XV3ZMVwAPKl4uqQ==
-X-Received: by 2002:a17:907:3e8a:b0:b99:7462:3c57 with SMTP id
- a640c23a62f3a-b9c6754ad85mr23799266b.14.1775167051283; 
- Thu, 02 Apr 2026 14:57:31 -0700 (PDT)
+ bh=7XwGSsZ5E+pHUCrk55JcghHWJX/O0i4AExLwj5l49n4=;
+ b=QV6ULgdAvyb0kMSE0+onncl6tpAPLU5abW91x3ytdTMLnJOCW9leA5f/gc/hY8VjIj
+ mCr3ZcjcWO3G8weZE/NGqtWTwct0GAIBoQ7JAeFcQ12aAMc7vBojJ9aY1463ZhhkejWj
+ lXVu9AIFzA6y9OFsD/Ycu84+CE+gfSFrCkdbnLCoxr1GwEo+GaF6nsN8XP7kQaWWZ1u4
+ 2LHY9B2lai436/UOEocYTjAO4BpaCyDhuoMBfHOQE6H/5a+wB8mI94PnMsMuCOZAKVEq
+ ybh0Tk8QZXwylnUAHcElclG6bUK1wPS4Vaa5QovkrgZGcmop04VKP2Sgb35t3W+Cv3b1
+ W7IA==
+X-Gm-Message-State: AOJu0YyqE5XeZWQwUg1i24qy6B2zPwx/5hXWhG2a22BapMcS2B+x7iV9
+ 2iejvrKc7USvjan7Px02+7wsEG2WghBV0jiUx20GcxspdHyXr8wNtHKc
+X-Gm-Gg: ATEYQzwyrB2TBzbDa86uyuMrGCoBBJ5LN4Dh12h7QUInkDmUZHCGKjLNQzSNbdGQKXd
+ E0CbYDPk4bHS6KmsB7UFVQp1bNRBbX3R92GTzYpSy1MiTHYE75MmSr6iBCnPXmpzgeGyc3B75YX
+ Rra7nI5TMHyiQenc/74q+NO3nIlnB2DbQNu2vvRC2UB67ypCB0OO1P9V8iWsbOMJwzxHXSRDDZe
+ 7RZLdkGcnZXQv9GaC7aSGXOHrIq4XWaK+r+tR+Scp4O5ikkirWMNJh0vVQfo6h5yLtQxPsDFzxd
+ UcJKyVyTBV+bnv+bzw6ZkWX6CCatyJ9dicvgBJvY/Q/u8HWhg3DtwGd3nCBcbyg7UKlUNt3GjZo
+ GLLndYw87tixZSY88t+jLoauZNH9DNKGEIBD9QKrPWNJzNNHMoI4QWZ9/yYhFg9FiQb+6SE4kcm
+ 0g89KQbyg8/5X0HTH3ZV+WiadqecVuGXOrX83AJXk2BSD1tr4CI2tC22iOUDmrB0CosnEcqRBwl
+ hmYakjD
+X-Received: by 2002:a17:906:fe0d:b0:b98:8e19:7d64 with SMTP id
+ a640c23a62f3a-b9c677fbe10mr28976766b.26.1775167041480; 
+ Thu, 02 Apr 2026 14:57:21 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.29
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:30 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:21 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,18 +72,19 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 28/33] system/memory: add QOM aliases for fdt support
-Date: Thu,  2 Apr 2026 23:56:13 +0200
-Message-ID: <20260402215629.745866-29-ruslichenko.r@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v3 22/33] hw/core/sysbus: implement FDT_GENERIC_MMAP_CLASS
+ interface
+Date: Thu,  2 Apr 2026 23:56:07 +0200
+Message-ID: <20260402215629.745866-23-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x62d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,110 +109,77 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch registers FDT compatibility handlers and
-QOM aliases of memory subsystem, so that memory
-regions can be created from a device tree model.
+The patch implements FDTGenericMMap interface for sysbus
+device class. The implementation maps device's MMIO regions
+based on 'reg' property in the Device tree.
 
-The alias 'qemu:system-memory' could be used to attach
-subregion to root address space.
-The system memory can also be attached to another
-container with other priority, which may be used
-for implementing secure memory structures.
-
-Also 'qemu-memory-region' types can be used to create
-new memory regions.
+This enables automatic memory mapping for the most QEMU
+peripherals without the need of device-specific FDT
+handling code.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- system/memory.c | 78 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 78 insertions(+)
+ hw/core/sysbus.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/system/memory.c b/system/memory.c
-index b3d981dc0c..bd8b6e06ad 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -4024,3 +4024,81 @@ static void memory_register_types(void)
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 3adf2f2faf..78b7827708 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -23,6 +23,8 @@
+ #include "monitor/monitor.h"
+ #include "system/address-spaces.h"
+ 
++#include "hw/core/fdt_generic_util.h"
++
+ static void sysbus_dev_print(Monitor *mon, DeviceState *dev, int indent);
+ static char *sysbus_get_fw_dev_path(DeviceState *dev);
+ 
+@@ -291,11 +293,32 @@ static char *sysbus_get_fw_dev_path(DeviceState *dev)
+     return g_strdup(qdev_fw_name(dev));
  }
  
- type_init(memory_register_types)
-+
-+static int sysmem_fdt_init(char *node_path, FDTMachineInfo *fdti,
-+                           void *priv)
-+{
-+    int i, ret = 0, priority = 0;
-+    uint32_t container_phandle;
-+    MemoryRegion *container;
-+    char container_node_path[DT_PATH_LENGTH];
-+    FDTGenericRegPropInfo *reg;
-+    Error *errp = NULL;
-+
-+    fdt_init_set_opaque(fdti, node_path, OBJECT(get_system_memory()));
-+
-+    /* allow to set system_memory region as subregion */
-+    container_phandle = qemu_fdt_getprop_cell(fdti->fdt, node_path,
-+                                            "container",
-+                                            0, &errp);
-+    if (errp) {
-+        /* container is an optional property */
-+        error_free(errp);
-+        return 0;
-+    }
-+
-+    if (qemu_devtree_get_node_by_phandle(fdti->fdt, container_node_path,
-+                                            container_phandle)) {
-+        error_report("failed to get container node");
-+        return -1;
-+    }
-+
-+    while (!fdt_init_has_opaque(fdti, container_node_path)) {
-+        fdt_init_yield(fdti);
-+    }
-+
-+    container = MEMORY_REGION(fdt_init_get_opaque(fdti,
-+                                                    container_node_path));
-+    reg = fdt_get_reg_info(fdti, node_path, OBJECT(get_system_memory()));
-+    if (reg && reg->n > 0) {
-+        if (reg->x[0][0] || reg->x[1][0]) {
-+            error_report("can't change sysmem address or size");
-+            ret = -1;
-+            goto out;
-+        }
-+        priority = reg->x[3][0];
-+    }
-+
-+    memory_region_add_subregion_overlap(container, 0,
-+                                        get_system_memory(), priority);
-+
-+out:
-+    if (reg) {
-+        g_free(reg->parents);
-+
-+        for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
-+            g_free(reg->x[i]);
-+        }
-+
-+        g_free(reg);
-+    }
-+    return ret;
-+}
-+
-+fdt_register_compatibility(sysmem_fdt_init, "compatible:qemu:system-memory");
-+
-+static const TypeInfo fdt_qom_aliases[] = {
-+    {   .name = "qemu-memory-region",       .parent = "memory-region"  },
-+    {   .name = "simple-bus",               .parent = "memory-region"  },
-+};
-+
-+static void fdt_memory_types(void)
++static bool sysbus_parse_reg(FDTGenericMMap *obj, FDTGenericRegPropInfo reg,
++                             Error **errp)
 +{
 +    int i;
 +
-+    for (i = 0; i < ARRAY_SIZE(fdt_qom_aliases); ++i) {
-+        type_register_static(&fdt_qom_aliases[i]);
++    for (i = 0; i < reg.n; ++i) {
++        MemoryRegion *mr_parent = (MemoryRegion *)
++            object_dynamic_cast(reg.parents[i], TYPE_MEMORY_REGION);
++        if (!mr_parent) {
++            /* evil */
++            mr_parent = get_system_memory();
++        }
++        memory_region_add_subregion_overlap(mr_parent, reg.a[i],
++                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(obj), i),
++                                 reg.p[i]);
 +    }
++    return false;
 +}
 +
-+type_init(fdt_memory_types)
+ static void sysbus_device_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *k = DEVICE_CLASS(klass);
++    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(klass);
+     k->realize = sysbus_device_realize;
+     k->bus_type = TYPE_SYSTEM_BUS;
++    fmc->parse_reg = sysbus_parse_reg;
+     /*
+      * device_add plugs devices into a suitable bus.  For "real" buses,
+      * that actually connects the device.  For sysbus, the connections
+@@ -354,6 +377,11 @@ static const TypeInfo sysbus_types[] = {
+         .abstract       = true,
+         .class_size     = sizeof(SysBusDeviceClass),
+         .class_init     = sysbus_device_class_init,
++        .interfaces = (InterfaceInfo[]) {
++        { TYPE_FDT_GENERIC_MMAP },
++        { },
++    },
++
+     },
+     {
+         .name           = TYPE_DYNAMIC_SYS_BUS_DEVICE,
 -- 
 2.43.0
 

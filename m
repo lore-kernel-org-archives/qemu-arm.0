@@ -4,90 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38AA3D3940B
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 10:03:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F72D39413
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 11:17:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8EtN-0005Gf-JI; Thu, 02 Apr 2026 06:03:13 -0400
+	id 1w8G38-0007hi-D8; Thu, 02 Apr 2026 07:17:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1w8EtM-0005Bs-Ak
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 06:03:12 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w8G32-0007gB-QJ
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 07:17:18 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1w8EtK-0002cx-G3
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 06:03:12 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-486fc4725f0so6970075e9.1
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 03:03:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w8G30-00028o-Am
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 07:17:16 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-6501c0399c4so713540d50.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 04:17:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775128632; cv=none;
+ d=google.com; s=arc-20240605;
+ b=D/AtzFkAOtoPX1U7SV3sqN824CPcEZXve/SWnmZjYmfsmciRUhNckM91z0YWYb0JkY
+ txAFdXIT7m3/7e9exhSt/+shGw8FZUA6kspUj40YuRcvIaE/QpZzknmJqWrowCDwBWYk
+ gbnyD91NAf7M0FnKuGJ3b5NOL+S9I978gzyrAcog+m+dECW+0vT5P/ibAs1Q4oGrBYsm
+ cM1OdxIVg3cZttN6u6yGcGS0eU47EEPA5rc7fFsJpFPsW+xHZ/jNdBb4jF63mZSchRBG
+ 6vxFOeyLaXAPNYsPDITlgv9F/3TIc88utzWfoTmyETJaJGuOtMCOJts0OBWI5kFT6vdz
+ 7I5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=IUVtHv9CaQTlE1ApCtPVjBKYyai83t3OO/g8dSSIlsI=;
+ fh=i4k2nxGe1fnolBtdQCZdhzxpKx6wpml93CsBDOo9WdA=;
+ b=ASNdj2pWixdDsF/S7zYL+/htiPWurZ5sLiPKnUBnXCtXvlmty1ctS5dh6zy7nngEv3
+ ZHOK77rewSAkoBFOcZfYxteTInuiFfgkSmL/w/tUltExorF/ucy69l6Ahznk+y6FPVgO
+ f/HcOuH/BGeWOb4zQdNFrzBURNLQpspSzSbhtAioDLpqXzwFG20bsstKj+2S9icJirRi
+ iZYtOAcEBgo8CcAF+eoMCndR4UFTqLddeBjR+YwK/PTs2zaF9IKdCBDIcM2X7CJrSn1K
+ 2w9dAg7g8TgfBdoofbn3SxVxvZcJ2BjaQWp8V7okiS1jQO9rUcvkkJ/A+a3ogAHWMMsZ
+ yHyg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775124188; x=1775728988; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DqqnnT4TrkCK/OHAWuLLo26XZUl9LPYdU8nqOdKZmII=;
- b=eqjpOdCfFxxnqnmo/xI7oGXnYQlTKMTWGo16ia/plR4fpja1ZJObIRMP2tCFweddlK
- imEyj3Q79E9+cd+CU6cVOiDpyoczG0+brKinbujBePrJRZqjH/Imxto+Pu3NUWghVY5e
- TxCoO3LQLg2kwaItylTfBcxRMmUpXS6HjVSADRMvCA3ePsjBPFWyowLVW7KBe4Eb5M4e
- x5W/7nx83hwPjI0197DebhQ77y6tcfCZR6g/r3Qx0rOQ0+/XSIpKeJ7ffJkl0VlLu602
- h+tHsl/ZiQWhb8fNVr8i78xUZ7H5G0eYn9g44zRPZg4fnlbkihihCjY6H5ZlLu7wuW+w
- nudg==
+ d=linaro.org; s=google; t=1775128632; x=1775733432; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=IUVtHv9CaQTlE1ApCtPVjBKYyai83t3OO/g8dSSIlsI=;
+ b=EW3/t3hJyWmVFe/eoFYGBWFuJcNUZpl8ffJigraJUN6Kxr1wti3NWvaMPxKsBcyf9P
+ lMYIO4Ix4Tl4oXov46KIVTABYp5eCnapTLtxuY947262Kk3vmjDSE0/MyOUsdYx7DD5u
+ dmDZSOMxZ3S0sFtJ4rLdp8xl+YVIxR/PK7/08BPzkd1Us4AaYy3g7qrzxv2+mZtaZneE
+ LP5uaSVAlCJcLge/8plDLWNhDsWKdfFadzOwCk/gv+HPFBO0oRsw4xVHtCYowH92XYUx
+ ZlSvforpDjXwursWwC1j/FsLA0ra2zDwjSfeBINPiEXLaxDgzYvYHkF9Yw1DsI6b6SN2
+ ZMJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775124188; x=1775728988;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=DqqnnT4TrkCK/OHAWuLLo26XZUl9LPYdU8nqOdKZmII=;
- b=jx4QCdhPu4EPLjliJm680rn/c+NcHAsJQZOIiYPO3InW3cML+KBJ35FHTDVhSG3fu7
- IMtNfrXD85Z2ZSr/TBTffHIb6MkNiqwPcWydz3Og6GRcDNsZN7MG8XVoAKPQT/sQ3CMt
- wLlxLj7fn2wJVfy3foj/3gOreFU7r741M0vWzxewHORn8k6z70CXrZAV9pujDUtQ5Nfz
- eiqpKdlxzcMmXumTaljNZcE++UylevtDDdFZh+/jieut4CT0bW1kwBkrwOm1zH4eTY0d
- Qz5uBdMXmvjy2OQ3NCwXxM3di2PvisTKx87IHcqcAESGKFUfCN4moz2qj/EPQcBMEEr7
- gZbg==
-X-Gm-Message-State: AOJu0Yz0Led6wbe+l7Uqc7+XKfa5fGu6u6Geav/tCNxovbfoLZQNwkQS
- Di2lhfJLmmaVLTYhvpbaU5FV8Ag4OaF7ClwUVWZeP3tnbrjAmOEtYckF
-X-Gm-Gg: ATEYQzx3ODMPby4Y1bZ+4/41/5dBPFd6diBi0uBmVrJSQBxkm/1cEKaVBM1SychGS7E
- CY7R/tMiaYI0FwOdCD6P77/FX3VOkMPGoC6p8pcgV9l9GpxuPrskS2/rzrnXOKsMmm0F59ltcnA
- t/5GIekevQp95+v3UwWH0Kv7iTzLnVt4cCCoBciTu88bxd3uvjJOID/wLOcgQL4nWfqvBgTEllC
- WS3+UGKqSivLZGVo0qJHNsWP0EuZ/11pwzpJkN6kH//9JJYQHQtsC0lmz0caPB4cneOQEjwKKdO
- UKzkWlZVrfzeQLNmJQnqZKm3KOadGDnPu4PUCPMJTJJs0kDPhXj/VmtG8ct/8KJ5YzdHaWWUSyp
- f0y2D/yv+TnCT6vQ3y2RgzNtp4z1jhr1uhIzcWcivo4c2z4djlKql50jygKYZORGvhMkdPU367v
- wThStlSQO9M6ucNi5dHkPWX8lL95PbvK0YUr99LLg=
-X-Received: by 2002:a05:600c:19d0:b0:477:9890:9ab8 with SMTP id
- 5b1f17b1804b1-4888e01f5c4mr25029835e9.3.1775124187552; 
- Thu, 02 Apr 2026 03:03:07 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([62.214.191.67])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4888a72baa8sm57180875e9.15.2026.04.02.03.03.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 02 Apr 2026 03:03:07 -0700 (PDT)
-Date: Thu, 02 Apr 2026 10:02:56 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?UTF-8?Q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>
-CC: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 0/7] hw/arm/sabrelite: Add FlexCAN support
-In-Reply-To: <cover.1773866323.git.matyas.bobek@gmail.com>
-References: <cover.1773866323.git.matyas.bobek@gmail.com>
-Message-ID: <D2D2A915-D9EB-40A9-921C-0DB50D4CA810@gmail.com>
+ d=1e100.net; s=20251104; t=1775128632; x=1775733432;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IUVtHv9CaQTlE1ApCtPVjBKYyai83t3OO/g8dSSIlsI=;
+ b=QVpiLn/wZUaeyvplh3clxm5NSnW33C+e1i22dEcFrFdFTKkOr1c4iBndgLqtY0gUdl
+ He3JCOiLyCPuKbIldBXdyaiclqYajdXQLCVteuRTGJhKByl7UnQzLGEVa04PkdF/++/o
+ Rhe+hwDggOWRz6aXusA7E1IFaqoePDjaZsPE+V0QZohhKj7WOngwuBoAQE2OyNEmknvE
+ o7zLG49ixxxc0mjlSfle6aNzxheNQOtTxNv5Ixm+WEXUCF/1+Khw+SRl/lAm+W8/oMgJ
+ KzoGNQB95Wn93idcb0ffU7RYzqwB1X1w/VARqKDAgV2/mDD/kqcgaprs0KCqKRSi9YzX
+ EXJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVWKJu3kr4nrmohuoOQERJVKB1bBUiJCb0uTXq3JFKdEmCwlaeCzEiSizfaqNTDRRM1j4si7s5eCA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz58hvvSIEwqz80i5QsDbDJ/FKO+P83sVVPb7AkIGoy75bfLldc
+ qqRqBVB92QvK7rkpinJWt9f0md+BtTIOC1WkVv7ZarketvRxsdlIfDgewD1NWAQDz3lVnpm4h0X
+ Us6YXL9YuExD4yry9L5Y+d22xTmoIFcVRrzcuW6e5qg==
+X-Gm-Gg: AeBDietDgzvBdxHyMNg3LykAwawvwhtAjQpNwXh1ORCcaYUu4pS+g6pQp6WflUwYdqr
+ szoSjcXv3cpD5gQ9E8bq+0w5mtTdWIOgSSruO0praC0v9KnmrxEfUvIlB4Mubwd9vduIFiMoFbR
+ wb/XZL0NlYARxCIdm4FPtSmZeo3hCIlt5p5KI2rC+MHmYae3sQjVJpNEIjeIz+EJd7ipsPHL4DK
+ 5eIRiVOrAvmB591Caevh1/A3QB5FEFAQHCz/8wDCkDV9sDnX36Bm95GNw7C+t5HQObK5u2yff4S
+ KDQBgiV+vksavps8nUUppGg+MedebIiWaDdIld89xGyX3DIjXuON+/zbn96551FEkx/TyNSIsxB
+ qtQ==
+X-Received: by 2002:a53:b4d0:0:b0:64e:e0fc:a314 with SMTP id
+ 956f58d0204a3-6502fe7bf8amr4557982d50.69.1775128632265; Thu, 02 Apr 2026
+ 04:17:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32b.google.com
+References: <20260401220720.19555-1-mohamed@unpredictable.fr>
+In-Reply-To: <20260401220720.19555-1-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 2 Apr 2026 12:17:00 +0100
+X-Gm-Features: AQROBzAV94odNk4MQPdJgImb3kgtACC_8dUyZasaiwXt9GWJXTptjuwHxnp0q0A
+Message-ID: <CAFEAcA8qchsEganwrejiqoWabUd_BmNfnS0AXzWR+tT61OsjyQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: cpu: add HCR_E2H on reset for EL2 + !E2H0
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,100 +116,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-Am 19=2E M=C3=A4rz 2026 19:13:07 UTC schrieb "Maty=C3=A1=C5=A1 Bobek" <mat=
-yas=2Ebobek@gmail=2Ecom>:
-
-Hi Maty=C3=A1=C5=A1,
-
->This series adds emulation of the FlexCAN CAN controller, version 2,
->found in NXP i=2EMX6 series SoCs=2E The controller is integrated into
->fsl-imx6 and the Sabrelite ARM board=2E
+On Wed, 1 Apr 2026 at 23:07, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
->The chip has two FlexCAN controllers, but the Linux Sabrelite
->device tree enables only one by default=2E Linux kernel with both
->controllers enabled has been tested to work properly (using a custom
->device tree)=2E
->See docs/system/devices/can=2Erst for an example of QEMU command line
->invocation=2E
->
->More information about the implementation can be found in my bachelor
->thesis [1]=2E
->
->The headers (struct FlexcanRegs and flexcan_regs=2Eh macros) were copied
->from the Linux kernel=2E Marc Kleine-Budde is the copyright holder=2E He
->has been kindly asked to provide consent, to confirm his approval for
->the inclusion of said header fragments into QEMU=2E
->
->Changes from v1:
->- removed DPRINTF (turned into traces or guest errors)
->- removed gotos and unnecessary continues
->- register memory region shortened to actual length w/o padding
->- make flexcan_* fns private
->- used DEVICE(s)->canonical_path instead of allocating new strings
->- changed DEVICE_NATIVE_ENDIAN to DEVICE_LITTLE_ENDIAN
->- removed ugly USE macro
->- used enums instead of define sequences in flexcan=2Ec
->- fixed FlexCAN KConfig conf (fixes build on non-arm-softmmu)
->- fixed style and other issues from Bernhard's review
->- better wording in docs
->- rebased onto latest master
->- Link to v1: https://lore=2Ekernel=2Eorg/qemu-devel/cover=2E1765826753=
-=2Egit=2Ematyas=2Ebobek@gmail=2Ecom
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Nice!
+This could use some rationale in the commit message:
+why do we need it, what goes wrong, etc.
 
+> ---
+>  target/arm/cpu.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >
->Thanks Bernhard Beschow for the review and his patience=2E
->I borrowed some fixes from his flexcan branch at [2]=2E
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index ccc47c8a9a..5ffb1e3096 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -685,6 +685,10 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+>          }
+>      }
+>
+> +    if (have_el2 && !cpu_isar_feature(aa64_e2h0, cpu)) {
+> +        env->cp15.hcr_el2 |= HCR_E2H;
+> +    }
+> +
+>      /* Set the CPU to the desired state */
+>      if (env->aarch64) {
+>          env->pstate = aarch64_pstate_mode(target_el, true);
+> --
+> 2.50.1 (Apple Git-155)
 
-You're welcome to do that!
-
-I'm on reviewing v2=2E Since I'm currently rather busy this will take me m=
-ore time=2E And I want to mention that I'm very much looking forward to hav=
-ing CAN support in i=2EMX devices!
-
-Best regards,
-Bernhard
-
->
->[1] http://dspace=2Ecvut=2Ecz/bitstream/handle/10467/122654/F3-BP-2025-Bo=
-bek-Matyas-BP_Bobek_FlexCAN_final_4=2Epdf
->[2] https://github=2Ecom/shentok/qemu/tree/flexcan
->
->Maty=C3=A1=C5=A1 Bobek (7):
->  hw/arm/sabrelite: Open code DEFINE_MACHINE_ARM
->  hw/arm/sabrelite: Introduce class SabreliteMachineState
->  hw/misc/imx6_ccm: Add PLL3 and CAN clock
->  hw/net/can/flexcan: NXP FlexCAN core emulation
->  hw/arm: Plug FlexCAN into FSL_IMX6 and Sabrelite
->  tests: Add qtests for FlexCAN
->  docs/arm/sabrelite: Mention FlexCAN support
->
-> MAINTAINERS                   |    9 +
-> docs/system/arm/sabrelite=2Erst |    1 +
-> docs/system/devices/can=2Erst   |   24 +
-> hw/arm/Kconfig                |    1 +
-> hw/arm/fsl-imx6=2Ec             |   29 +
-> hw/arm/sabrelite=2Ec            |   68 +-
-> hw/misc/imx6_ccm=2Ec            |   24 +
-> hw/misc/trace-events          |    2 +
-> hw/net/Kconfig                |    5 +
-> hw/net/can/flexcan=2Ec          | 1407 +++++++++++++++++++++++++++++++++
-> hw/net/can/flexcan_regs=2Eh     |  193 +++++
-> hw/net/can/meson=2Ebuild        |    1 +
-> hw/net/can/trace-events       |   18 +
-> include/hw/arm/fsl-imx6=2Eh     |    6 +
-> include/hw/misc/imx6_ccm=2Eh    |    4 +
-> include/hw/misc/imx_ccm=2Eh     |    1 +
-> include/hw/net/flexcan=2Eh      |  142 ++++
-> tests/qtest/flexcan-test=2Ec    |  424 ++++++++++
-> tests/qtest/meson=2Ebuild       |    1 +
-> 19 files changed, 2350 insertions(+), 10 deletions(-)
-> create mode 100644 hw/net/can/flexcan=2Ec
-> create mode 100644 hw/net/can/flexcan_regs=2Eh
-> create mode 100644 include/hw/net/flexcan=2Eh
-> create mode 100644 tests/qtest/flexcan-test=2Ec
->
+thanks
+-- PMM
 

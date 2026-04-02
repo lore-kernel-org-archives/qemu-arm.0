@@ -4,90 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03AE0D6AB10
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7DCBD6AB10
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q2U-0008W8-Mk; Thu, 02 Apr 2026 17:57:22 -0400
+	id 1w8Q39-0000oE-7y; Thu, 02 Apr 2026 17:58:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2G-0008LI-P4
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:10 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1w8Q2e-0000BL-Pw
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:33 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2E-00077y-Jc
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:08 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-66bd3d05e03so1445783a12.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:06 -0700 (PDT)
+ id 1w8Q2b-0007FG-Pm
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:31 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-66bf6aa4858so2413283a12.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167025; x=1775771825; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167048; x=1775771848; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LKKPXz0sjji07wp3e+Tjd0az/D2l0r8RdFJziCGOVu0=;
- b=MKUu0K4UB8wgHdpbx0M5q8i1D0wBINYz3B0/s/P0RG+UMz22FtU2wogRohLRzn8QoN
- ly8Cdl7vQZJSqtwKEr/CSUhYIRd+ZrhrUw23Jq7cXbRyLW105pmN3oXtH0TOVuLrLm1r
- b+iHcMXIPLmMFzszluezSxNrqQ71JnIZhluSLDIXYpElUJWACa7WLTEjWyDZ9/2jPqwc
- 8E16xZvEJrjygTSvuuuRBi4zNMrkyVkE4UwDMyVOFmCPgHf8HqeOq4HSB/qVANRphe9P
- VAUYkIwxkX/ZrFfDKqMLm84yYqoVZun2gQS+9hCaXnMtu17QQJET7FPZN+9Mle5L2TUx
- 7glw==
+ bh=VUnnhkK/qXiPp936orDPcoBrWF8G/ssU5VMirqtDrGI=;
+ b=ZnDYAFeA/AWOv6euJNqcBkUNrwjicjQKfKe0FnLm8uWCCrsYgDPNFZezW8WFU2kIPP
+ NVKUrwiHJN/27R65hDfmwPOMK5fykNf2C3j2XS1ocHVaWxrcbev9+7qkdnOSUdo6izdx
+ IWsfZ2QxIhMt5QXhMbWUzjTMKCUWUFnxH8nUQ4MaK5mkbpxOh4XKCEdyyFCdTyFc+orH
+ T8rxCnDxQZ0qXtD4tg07enp2QurOAakNrVPdiB53rkOTC93GI0w5ka7K+QU7Ms472VCr
+ Yf7a3Glf8WNOPix5m44E1d4sshYBjHtdDAsrU0zcsOqcLxU5Xnm2Tuqwy0dxNHPC/RX4
+ PGjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167025; x=1775771825;
+ d=1e100.net; s=20251104; t=1775167048; x=1775771848;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LKKPXz0sjji07wp3e+Tjd0az/D2l0r8RdFJziCGOVu0=;
- b=CbaoYqPtY4ZNdJpqn+ZIkegPyCBwhfythOUlPArWbU69ZCXGRqwCZPrdmIMwFuN1Z4
- YbkbPwFpc9Odt9aS63ts070rNKcnsNJ0oKfCiFBGuRhVr6TSFMfCvExuo8Qc3fc7+AFe
- 2MBaqFbmfqYmJztkF9HBr6LyQ32ci7vVtTMa6WCpExocsJXFQTOa9MQvKwhgKvomdlCz
- eEF0RP1j7EXofBgaLuZNOup5L2dhWtnDQQQcKmPUdS5FwtZeeVUMwGQimGKzGFsLnjQ1
- VGZcUPwm30JR3AAXAjZHT91uVLtRIj/FgnffssjDs8G2QaxdkFizeVVoyKNnenFyNIYq
- okjg==
-X-Gm-Message-State: AOJu0YwuYhUc7xTFEMPl63tTBKkr+lu6fpz/5L5fI29hZXQBYwKrECJQ
- zKNEqSlqSFvuRPAc9KcL04B2j3TX3c//bUNCIBXpIdZfXT5O8gvaJC73
-X-Gm-Gg: ATEYQzyUb+s4sodJEkfpNhZEhVjc1KfGjzjy+I9D9VgghnQMN6JHi4tT21ZGsaRXUd5
- p/Reyp/2g6+OsxcocyKcqr+bXe0yXxnLsRnqwdCiaIgYP1h9/egINu2kuf6oU0vQHO2jENRshIH
- y6Hpd/xcRX69MuNiKqt2e/o7noCvaETOWu35Dtxkrv2u0c8a8aX3ziG75WrJcVqlmyWVWyrsAtm
- /Wsesrx/WKp//PV1lyCwCFiVWw97XlHjCkzfQ/V/mtz3X+eTOSxJBRW//coVMVAW2CJQxBS9YHg
- dYcUKWfMP9EIZRuBWfywuD9ZOG8XUPnQS28/HY6gCdXxy67vSNWyOJCquxcyh7+47sz6Gen6NIm
- PLiRFs4nA7TRLpbaUE6UIn3WumcR+f0LWXOcLDaayJjA5ujYNUMZJfkS9WUiLjVyjNDyBPyr8DB
- Yb77X/OfIKmaSqd0dgCChLidvSIr2k9P3SoNeMK58YP96UsXyN752SCZG52nKl/6epRj0Xxw==
-X-Received: by 2002:a17:906:ba83:b0:b9c:6178:6a77 with SMTP id
- a640c23a62f3a-b9c67925198mr29744866b.25.1775167024835; 
- Thu, 02 Apr 2026 14:57:04 -0700 (PDT)
+ bh=VUnnhkK/qXiPp936orDPcoBrWF8G/ssU5VMirqtDrGI=;
+ b=UU42drKtzdeUAkP2yiG+6DLqXTmBPXhjnC2ZeYsMLZfyRd9vOrHlDGBofhfAaanZOW
+ 16KZKvtDxgfQ7F4WQz3vhM5JmwPyki1Qz6jlaYbmtIvpYsi2CdFZ3BgihzfMB8bU4AQP
+ BQ2IbJIcrVRAIKFVo6nleI7E2b7cni2LrroQtpMyNq3nVJiM0eaCH5C/lbCZQotYkXev
+ +8cd5Pqxbe1oGRYTqnQqOU3kGrqldbIxjTlvPQl6Bm7f4ajqLkMmJkYFp9kjUT49s4QR
+ Vd+QcYqKoJcOnC6fbKlzisVUay6p+WsJJc/R+bWOQrmO5MXfcBqWPTgUVSpDd6RWUQhQ
+ HdbA==
+X-Gm-Message-State: AOJu0Yx9db2UQovybVHtII7jumToA1bjaRYNmRc3+VQooriegrvFFai+
+ spAjPU6RvlG1I8GPV0DkQRShCOfyTNbiI3ISV7kAdn0F7az39Tb/rv0a
+X-Gm-Gg: ATEYQzzAsRqTfoSWCz/q/zwZSRJyP81pamkHcGuaSAS349FR99jmRBmfSBzyQkQGjI8
+ pjldJmsQggSsfZfv3Vl23PLxPED0rVMaBBr76uRbesjkNXVaBkGgNfE2wi0Ydt3p6tnO79SeAdu
+ F+OHbFofOshFzLmE3bg59OleMqLgGlnVdSeEqRfzS56hrFK4YaZ2RUfl6/dr35DtRfNZLcUSSZK
+ Vnuub046hSL34zN3IAGeSF8Fr05rjcPcn4IFsEqGLeQxgAdT/UtGFm9zUccUovfMZ2DJt1Tc53v
+ EV3y1M74U9Nlz+FPL4ud8zb1XZgbIoclHPqqFx+1NCgwQkiPpWMSYcywQZ1wmsDiOEk9xR6r+M1
+ MSJ4J+sRaG6nmgBLbPZ17jbT9hX4re7NLYysEcZd1SJgmFGWJg1KqJ3/jDq5fDHPvLP93zmk81G
+ eReiz6+/SrvIrzbSrpbY6nHo6k9nOHIHZi80ScdFFX62zSE1U/kxgvWnXo2A3QydfQcuNanw==
+X-Received: by 2002:a17:907:8b93:b0:b9c:ed9:50c8 with SMTP id
+ a640c23a62f3a-b9c67979c9cmr25722466b.26.1775167047654; 
+ Thu, 02 Apr 2026 14:57:27 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.03
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:04 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:27 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 13/33] hw/core/fdt_generic_util: add TYPE_FDT_GENERIC_MMAP
-Date: Thu,  2 Apr 2026 23:55:58 +0200
-Message-ID: <20260402215629.745866-14-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 26/33] system/memory: implement FDT_GENERIC_MMAP interface
+Date: Thu,  2 Apr 2026 23:56:11 +0200
+Message-ID: <20260402215629.745866-27-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,88 +107,105 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add new FDT_GENERIC_MMAP class and interface to allow
-devices to register own handlers for mapping memory
-regions in device tree's 'reg' property.
+The patch implements TYPE_FDT_GENERIC_MMAP interface
+for the MemoryRegion class.
+
+This enables memory region objects to be automatically
+constructed by FDT parser based on the 'reg' property
+in the Device tree. The implementation parses register
+tuples and set base address, size and priority properties.
+
+Optionally parent container can be set of newly created
+memory region.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         | 11 ++++++++
- include/hw/core/fdt_generic_util.h | 44 ++++++++++++++++++++++++++++++
- 2 files changed, 55 insertions(+)
+ system/memory.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 8ae9e23073..8f91bcb66c 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -617,3 +617,14 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     return 0;
+diff --git a/system/memory.c b/system/memory.c
+index cd463a3dde..b3d981dc0c 100644
+--- a/system/memory.c
++++ b/system/memory.c
+@@ -38,6 +38,8 @@
+ 
+ #include "memory-internal.h"
+ 
++#include "hw/core/fdt_generic_util.h"
++
+ //#define DEBUG_UNASSIGNED
+ 
+ static unsigned memory_region_transaction_depth;
+@@ -3721,6 +3723,57 @@ static gboolean mtree_info_flatview_free(gpointer key, gpointer value,
+     return true;
  }
  
-+static const TypeInfo fdt_generic_mmap_info = {
-+    .name          = TYPE_FDT_GENERIC_MMAP,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(FDTGenericMMapClass),
-+};
-+
-+static void fdt_generic_register_types(void)
++static bool memory_region_parse_reg(FDTGenericMMap *obj,
++    FDTGenericRegPropInfo reg, Error **errp)
 +{
-+    type_register_static(&fdt_generic_mmap_info);
++    MemoryRegion *mr = MEMORY_REGION(obj);
++    uint64_t base_addr = ~0ull;
++    uint64_t total_size = 0;
++    uint64_t max_addr = 0;
++    int i;
++
++    if (!reg.n) {
++        return false;
++    }
++
++    for (i = 0; i < reg.n; ++i) {
++        base_addr = MIN(base_addr, reg.a[i]);
++        max_addr = MAX(max_addr, reg.a[i] + reg.s[i]);
++        total_size += reg.s[i];
++        if (reg.p[i] != reg.p[0]) {
++            error_setg(errp, "FDT generic memory parser does not support"
++                       "mixed priorities");
++            return false;
++        }
++    }
++
++    if (total_size != max_addr - base_addr) {
++        error_setg(errp, "FDT generic memory parse does not "
++        "spport discontiguous or overlapping memory regions");
++        return false;
++    }
++
++    /*
++     * FIXME: parent should not be optional but we need to implement
++     * reg-extended in kernel before we can do things properly
++     */
++    if (reg.parents[0]) {
++        object_property_set_link(OBJECT(mr), "container", reg.parents[0],
++                                 &error_abort);
++    }
++    object_property_set_int(OBJECT(mr), "size", total_size, &error_abort);
++    object_property_set_int(OBJECT(mr), "addr", base_addr, &error_abort);
++    object_property_set_int(OBJECT(mr), "priority", reg.p[0], &error_abort);
++    return false;
 +}
-+type_init(fdt_generic_register_types)
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index 71bedb6631..e3671990ad 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,4 +16,48 @@
++
++static void memory_region_class_init(ObjectClass *oc, const void *data)
++{
++    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
++
++    fmc->parse_reg = memory_region_parse_reg;
++}
++
+ static void mtree_info_flatview(bool dispatch_tree, bool owner)
+ {
+     struct FlatViewInfo fvi = {
+@@ -3941,6 +3994,11 @@ static const TypeInfo memory_region_info = {
+     .instance_size      = sizeof(MemoryRegion),
+     .instance_init      = memory_region_initfn,
+     .instance_finalize  = memory_region_finalize,
++    .class_init         = memory_region_class_init,
++    .interfaces         = (InterfaceInfo[]) {
++        { TYPE_FDT_GENERIC_MMAP },
++        { },
++    },
+ };
  
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
- 
-+#define TYPE_FDT_GENERIC_MMAP "fdt-generic-mmap"
-+
-+#define FDT_GENERIC_MMAP_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(FDTGenericMMapClass, (klass), TYPE_FDT_GENERIC_MMAP)
-+#define FDT_GENERIC_MMAP_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(FDTGenericMMapClass, (obj), TYPE_FDT_GENERIC_MMAP)
-+#define FDT_GENERIC_MMAP(obj) \
-+     INTERFACE_CHECK(FDTGenericMMap, (obj), TYPE_FDT_GENERIC_MMAP)
-+
-+typedef struct FDTGenericMMap {
-+    /*< private >*/
-+    Object parent_obj;
-+} FDTGenericMMap;
-+
-+/*
-+ * The number of "things" in the tuple. Not to be confused with the cell length
-+ * of the tuple (which is variable based on content
-+ */
-+
-+#define FDT_GENERIC_REG_TUPLE_LENGTH 4
-+
-+typedef struct FDTGenericRegPropInfo {
-+    int n;
-+    union {
-+        struct {
-+            uint64_t *a;
-+            uint64_t *s;
-+            uint64_t *b;
-+            uint64_t *p;
-+        };
-+        uint64_t *x[FDT_GENERIC_REG_TUPLE_LENGTH];
-+    };
-+    Object **parents;
-+} FDTGenericRegPropInfo;
-+
-+typedef struct FDTGenericMMapClass {
-+    /*< private >*/
-+    InterfaceClass parent_class;
-+
-+    /*< public >*/
-+    bool (*parse_reg)(FDTGenericMMap *obj, FDTGenericRegPropInfo info,
-+                      Error **errp);
-+} FDTGenericMMapClass;
-+
- #endif /* FDT_GENERIC_UTIL_H */
+ static const TypeInfo iommu_memory_region_info = {
 -- 
 2.43.0
 

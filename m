@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33A22D6AB16
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 531B9D6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:59:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q2X-00005o-BY; Thu, 02 Apr 2026 17:57:25 -0400
+	id 1w8Q3B-0001Cf-9a; Thu, 02 Apr 2026 17:58:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2N-0008MT-2w
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:15 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ id 1w8Q2p-0000My-Nh
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:46 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2L-00079Y-0e
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:14 -0400
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-b9c04152730so204348566b.0
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:12 -0700 (PDT)
+ id 1w8Q2m-0007Ie-SP
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:42 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-b9c11eba219so168211566b.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167031; x=1775771831; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167059; x=1775771859; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5+ZNPSdOIRkRVr+Q/vKL8bV00FekXBJXM/FhoKVAOes=;
- b=CRDjOgcAh58OJ7vin24HmML8Gq+2IYTHWuOSAj2c1I7zq71oJONs358IqTplJBVtV8
- aP8b4E+eTNbvn7+9yWHvN1Pp5hrI3Pas8m3J0q+0WgmSBqIwz166SfFZ5ckDCzVyAkvE
- dbcO+h10dpQHXPUbpOgV9KSk8Hm4LbDDa/wruKjvzcicC/RMKHPO9raQg4qtQeDgAOop
- 6snYzHoie8MV39Xz13mF976NUQgyokHUXJZVd32Bq1PVseAd9jvbw6DRXYUD9R1/5ozp
- /91LOVDiYPUkLfkPt3c4eNerog/F5G9gthDYVXAyXB20eLzuE3O6U4qYA3IHQ2/Vl/UI
- CXZA==
+ bh=iL3C1pS7IifBgrlCFYdscA+wkLZ194nZOqF5fMNffCY=;
+ b=e7i3rcM/0HgRHaTVJFv272qgD4rNfsp7KVxhzd53YDbV1pUokSCLCJqnJPOw3bK+Di
+ P2VfdjsKK8GBUoEURZUYcswT0/ZDoqcEwe37JN5Z9B+jmQ57mQj2imTjz8UzvJYA8iPh
+ XsNdUm6zesFTqgZMw6Few0u8EZgb4/u3dQlR77IrVa1Rp9kyl5sVhZNsbPRAe79LJSTq
+ YBydB2T6lHzYkRqz38ULUS/FJdVKEyGlGN78dEO4N38sWw3mNDb64ujhGqffJlqEhkyO
+ yRHcB8wNcXXqRSfr+fZe4LNnwGX/ayeubEo5cfxfbu+XMlTTAQjhYMIU6NKFEwA2m9hz
+ Vkew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167031; x=1775771831;
+ d=1e100.net; s=20251104; t=1775167059; x=1775771859;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=5+ZNPSdOIRkRVr+Q/vKL8bV00FekXBJXM/FhoKVAOes=;
- b=aybKjplH1ng3+tKiXsrAfxALFnba+BjINOiI0zQmT1fxN3ACi3B+exEX7YlHcv57pS
- GLOU9mcqQC8zLPWSdOvm+eUHUZICHb25McqwLTnmxuzLk1sg0EB2KD1gaWPo+N1ATqK9
- 2mKk70pviYMCE88MaSs97KNCPBYA5BMjEbDkstjzSSgtXSvgcm0Psvog5ONtlBdcO4K6
- fpaQ7O8FrT7E5teteXH4sHjBhqA9MU4SgpXRT1FcO+dXRVMUiyhMS0bkZeezTJiE3Hl5
- qExRt8kB8/k0Vsj1xpORqeYjXuUwoA+zBgos/HUK/atQlGHrShv9hMLOHGPiYPP7wzco
- 51MA==
-X-Gm-Message-State: AOJu0YxAvZRAIZwqvBw4SIX8q4wsvjPZ/r7lIZydc72WcQX/zPp5VjTB
- 77GkSFvtP+IibtBwKkJyNpjFGqf5w/sibGqC4LLjXQuoGKQ+UCNXjiUO
-X-Gm-Gg: AeBDiestt5wWUPXmz+JrNV0B5K3L0UUIq1IHkNj3NDbg1FvCER+cT+yzjUqrslsZkoF
- 4Ye/ItICLaBg4iwFOyKCizp9JBEMZIE7rummb4+jbAWC0odQndxdmJnSPuYQFAn1WwhVO38iDcF
- kukRg9NBMDDEhOQiUTJHiB7C3lYAtmdlIq483EpmL/A5Fx7tYxIkv9l2W04nMc0VfflMXiiKdcF
- lW9uFZZDoCrKz7m/zfBJbAza322px4I7PQws8MdpIv3ccJtC9TXse9n1VzMD4I8Eel87Si/E41l
- aKBOWwzUutZH9lWOSCT3WcwIVSD9RdDcIFndyjkxOrDVJxWrEK6gVuksF2gHAiZN+LQtIAeNf45
- Sh7zzwV5+5Vhy8+Sa2e8BOCcjEnQRy1bA/ajz4Be2tGMkz9AFZSKzHsyYUUu1Izmo0fNfUYTAV5
- jeTVvt8DWWT6kkMJRM/50ygqNoqJVSCPBQNAuXYVBUkz2EWx49kajiGmdOz92gw0cTnCBePA==
-X-Received: by 2002:a17:907:984:b0:b9c:1c26:9eb with SMTP id
- a640c23a62f3a-b9c672d42afmr26531666b.10.1775167031039; 
- Thu, 02 Apr 2026 14:57:11 -0700 (PDT)
+ bh=iL3C1pS7IifBgrlCFYdscA+wkLZ194nZOqF5fMNffCY=;
+ b=MdiK2Q0jq3xtowsetiTxX4elYYc07DWG7TJ/YFBAkW5tS3fp8TwTdBKT4/8vd3Oqqf
+ b9xQqreg8VxcXneYpx+6ZIkTXLQ8HscTZy4WQr72zByPAf8lPgwyI44ar2nIFi7yhoIT
+ R5d9B6TZF1eh6yFBGJIu0iH4zbVQYvDDlLwMoberI1zri5I+iBaATI+pNwolCU3mrOr9
+ fFHJP12qCu1fQQJDTh76R1rE3U9iJITvg/ZVKypF3S/qvc6FzKCIAPkv6lkQIkiTHVVr
+ 9+tj2qVH2f0wFvDu8XN0VEqVtg/LmMLlTUkTVBed5IRMy7ulwJeYsaGMIaT/w3lE20yO
+ VvQQ==
+X-Gm-Message-State: AOJu0YxunpEduwjXcHK/4X6RzzlV268FN+TTXIV6gtXZy48WkA/oZiOX
+ 4xFgYSxPal/qRCXAn9Yh/4DfoZn3ZO1XbVL+aO02Wi9UF759v7PIfVqa
+X-Gm-Gg: AeBDiesbEdSHcT6RrSCXJTIZ/nfgTFbCetNmWDVkpi26vlM5iQlkbqYHp+foDYXjTzF
+ ls4MMqM/lXOdqe3bbjsp+cr8fRP8COXgyStqdzdkc5kk22ziE5zAwPRRYHAQ1JpzfjQEPpWBCtk
+ hA9X0T2O7yBfdPwdcJIjU+SlHV27vMyWYE6smxG+6W3OWCjo/xiEb3ePBhCsXu7USdBvxsObVud
+ W+rAnrlmZr6xmVOS9VBH0fEAUA3w2QOS5dGbVmGcdlrBCw1+kg4BNwS4lOC/pPNmfOtZ2J1ciAi
+ HobepjYQ2on12gQVteOhDqB7SQKKdm/yhdSxj4PjQ9WjXbfJfVVTqA6MAPDm5mVO6Evsf6nQ2jH
+ bnqRj5duAIp/XdE5hiUIpCTRO1EMbofrGgpHEJmIrv1flpHUyUfaPxRDPjZhaFQJVTIzj/NMJfu
+ aGSCFuGihD1h8apHdVwFUvvQhp7WhEtZxvwWgs3YDqcaiFogjakvbwhEfcjYCCv4nuEpb6WUbcj
+ QupddtP
+X-Received: by 2002:a17:907:a317:b0:b9c:4096:7893 with SMTP id
+ a640c23a62f3a-b9c67308dacmr28594166b.14.1775167059305; 
+ Thu, 02 Apr 2026 14:57:39 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.09
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:10 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:38 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 16/33] hw/core/fdt_generic_util: map device memory regions
-Date: Thu,  2 Apr 2026 23:56:01 +0200
-Message-ID: <20260402215629.745866-17-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Eric Auger <eric.auger@redhat.com>
+Subject: [PATCH v3 32/33] hw/pci-host: add gsi-irqs property array
+Date: Thu,  2 Apr 2026 23:56:17 +0200
+Message-ID: <20260402215629.745866-33-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x632.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,222 +112,56 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Parse device mmio regions provided within standard 'reg' and
-custom 'reg-extended' device tree properties.
+Add a new gsi-irqs array property to the GPEX PCI host controller.
+This enables them to be configured on realize callback.
 
-For 'reg-extended' properties, the parent phandle is extracted
-along with the standard io memory region specification, which allows
-adding these regions to specified parent memory regions.
-
-The mapping itself is delegated to the device via the
-'TYPE_FDT_GENERIC_MMAP' interface.
+This is required to init GPEX PCI host from a static configuration,
+such as Hardware device tree.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         | 158 +++++++++++++++++++++++++++++
- include/hw/core/fdt_generic_util.h |   6 ++
- 2 files changed, 164 insertions(+)
+ hw/pci-host/gpex.c         | 6 ++++++
+ include/hw/pci-host/gpex.h | 3 +++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 51b808d9d0..0b374b550d 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -403,6 +403,22 @@ static inline uint64_t get_int_be(const void *p, int len)
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index e66784ce51..6125b2c319 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -148,6 +148,10 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+         s->irq[i].irq_num = -1;
      }
- }
  
-+/* FIXME: use structs instead of parallel arrays */
++    for (i = 0; i < s->gsi_irq_num; i++) {
++        gpex_set_irq_num(s, i, s->gsi_irqs[i]);
++    }
 +
-+static const char *fdt_generic_reg_size_prop_names[] = {
-+    "#address-cells",
-+    "#size-cells",
-+    "#bus-cells",
-+    "#priority-cells",
-+};
-+
-+static const int fdt_generic_reg_cells_defaults[] = {
-+    1,
-+    1,
-+    0,
-+    0,
-+};
-+
- static void fdt_init_qdev_link_prop(Object *obj, ObjectProperty *p,
-                                     FDTMachineInfo *fdti,
-                                     const char *node_path,
-@@ -616,6 +632,146 @@ static void fdt_init_qdev_properties(char *node_path, FDTMachineInfo *fdti,
-     }
- }
+     pci->bus = pci_register_root_bus(dev, "pcie.0", gpex_set_irq,
+                                      gpex_swizzle_map_irq_fn,
+                                      s, &s->io_mmio, &s->io_ioport, 0,
+@@ -190,6 +194,8 @@ static const Property gpex_host_properties[] = {
+     DEFINE_PROP_SIZE(PCI_HOST_ABOVE_4G_MMIO_SIZE, GPEXHost,
+                      gpex_cfg.mmio64.size, 0),
+     DEFINE_PROP_UINT8("num-irqs", GPEXHost, num_irqs, PCI_NUM_PINS),
++    DEFINE_PROP_ARRAY("gsi-irqs", GPEXHost, gsi_irq_num,
++                      gsi_irqs, qdev_prop_uint32, uint32_t),
+ };
  
-+FDTGenericRegPropInfo*
-+fdt_get_reg_info(FDTMachineInfo *fdti, char *node_path, Object *dev)
-+{
-+    FDTGenericRegPropInfo *reg;
-+    Object *parent = NULL;
-+    char *parent_path = NULL;
-+    int cell_idx = 0;
-+    bool extended = true;
-+    Error *errp = NULL;
-+    int i;
-+
-+    if (!object_dynamic_cast(dev, TYPE_SYS_BUS_DEVICE) &&
-+        !object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP)) {
-+        return NULL;
-+    }
-+
-+    reg = g_new0(FDTGenericRegPropInfo, 1);
-+
-+    qemu_fdt_getprop_cell(fdti->fdt, node_path, "reg-extended", 0,
-+                            &errp);
-+    if (errp) {
-+        error_free(errp);
-+        errp = NULL;
-+        extended = false;
-+        parent_path = qemu_devtree_getparent(fdti->fdt, node_path);
-+    }
-+
-+    if (parent_path) {
-+        parent = fdt_init_get_opaque(fdti, parent_path);
-+    }
-+
-+    for (reg->n = 0;; reg->n++) {
-+        char ph_parent[DT_PATH_LENGTH];
-+        const char *pnp = parent_path;
-+
-+        reg->parents = g_renew(Object *, reg->parents, reg->n + 1);
-+        reg->parents[reg->n] = parent;
-+
-+        if (extended) {
-+            int p_ph = qemu_fdt_getprop_cell(fdti->fdt, node_path,
-+                                                "reg-extended", cell_idx++,
-+                                                &errp);
-+            if (errp) {
-+                error_free(errp);
-+                errp = NULL;
-+                goto exit_reg_parse;
-+            }
-+            if (qemu_devtree_get_node_by_phandle(fdti->fdt, ph_parent,
-+                                                    p_ph)) {
-+                goto exit_reg_parse;
-+            }
-+
-+            while (!fdt_init_has_opaque(fdti, ph_parent) &&
-+                   qemu_in_coroutine()) {
-+                fdt_init_yield(fdti);
-+            }
-+
-+            if (!fdt_init_has_opaque(fdti, ph_parent)) {
-+                goto exit_reg_parse;
-+            }
-+
-+            reg->parents[reg->n] = fdt_init_get_opaque(fdti, ph_parent);
-+            pnp = ph_parent;
-+        }
-+
-+        for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
-+            const char *size_prop_name = fdt_generic_reg_size_prop_names[i];
-+            int nc = qemu_fdt_getprop_cell_inherited(fdti->fdt, node_path,
-+                                            size_prop_name, 0, &errp);
-+            uint64_t val = 0;
-+
-+            if (errp) {
-+                int size_default = fdt_generic_reg_cells_defaults[i];
-+
-+                fdt_debug_np("WARNING: no %s for %s container, assuming "
-+                            "default of %d\n", size_prop_name, pnp,
-+                            size_default);
-+                nc = size_default;
-+                error_free(errp);
-+                errp = NULL;
-+            }
-+
-+            reg->x[i] = g_renew(uint64_t, reg->x[i], reg->n + 1);
-+            for (int j = 0; j < nc; ++j) {
-+                val <<= 32;
-+                val |= qemu_fdt_getprop_cell(fdti->fdt, node_path,
-+                                            extended ? "reg-extended"
-+                                                        : "reg",
-+                                            cell_idx + j, &errp);
-+               if (errp) {
-+                    val = 0;
-+                    break;
-+               }
-+            }
-+            reg->x[i][reg->n] = val;
-+            cell_idx += nc;
-+            if (errp) {
-+                goto exit_reg_parse;
-+            }
-+        }
-+    }
-+exit_reg_parse:
-+    if (errp) {
-+        error_free(errp);
-+    }
-+
-+    g_free(parent_path);
-+
-+    return reg;
-+}
-+
-+static void fdt_parse_node_reg_prop(FDTMachineInfo *fdti, char *node_path,
-+                            Object *dev)
-+{
-+    int i;
-+
-+    FDTGenericRegPropInfo *reg = fdt_get_reg_info(fdti, node_path, dev);
-+    if (!reg) {
-+        return;
-+    }
-+
-+    if (object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP)) {
-+        FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_GET_CLASS(dev);
-+        if (fmc->parse_reg) {
-+            while (fmc->parse_reg(FDT_GENERIC_MMAP(dev), *reg,
-+                                  &error_abort) && qemu_in_coroutine()) {
-+                fdt_init_yield(fdti);
-+            }
-+        }
-+    }
-+
-+    g_free(reg->parents);
-+
-+    for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
-+        g_free(reg->x[i]);
-+    }
-+
-+    g_free(reg);
-+}
-+
- static void fdt_init_parent_node(Object *dev, Object *parent, char *node_path)
- {
-     if (dev->parent) {
-@@ -744,6 +900,8 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+ static void gpex_host_class_init(ObjectClass *klass, const void *data)
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index 1da9c85bce..f8e9874756 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -64,6 +64,9 @@ struct GPEXHost {
+     GPEXIrq *irq;
+     uint8_t num_irqs;
  
-     fdt_init_device_realize(fdti, node_path, dev);
- 
-+    fdt_parse_node_reg_prop(fdti, node_path, dev);
++    uint32_t *gsi_irqs;
++    uint32_t gsi_irq_num;
 +
-     g_free(parent_node_path);
+     bool allow_unmapped_accesses;
  
-     return 0;
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index 6fb0708d7a..a04ded41ae 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -127,6 +127,12 @@ typedef struct FDTGenericRegPropInfo {
-     Object **parents;
- } FDTGenericRegPropInfo;
- 
-+/*
-+ * Get parsed 'reg' or 'reg-extended' properties from dts node
-+ */
-+FDTGenericRegPropInfo*
-+fdt_get_reg_info(FDTMachineInfo *fdti, char *node_path, Object *dev);
-+
- typedef struct FDTGenericMMapClass {
-     /*< private >*/
-     InterfaceClass parent_class;
+     struct GPEXConfig gpex_cfg;
 -- 
 2.43.0
 

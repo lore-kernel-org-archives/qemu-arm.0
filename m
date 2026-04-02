@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D843AD39427
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:47:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE9AD39428
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 13:47:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8ILG-0008Mh-ND; Thu, 02 Apr 2026 09:44:14 -0400
+	id 1w8ILK-0008Qs-0n; Thu, 02 Apr 2026 09:44:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8IKu-0004lE-1u; Thu, 02 Apr 2026 09:43:53 -0400
+ id 1w8IKx-0005fW-Mj; Thu, 02 Apr 2026 09:43:55 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1w8HYD-0008Sy-GI; Thu, 02 Apr 2026 08:53:34 -0400
+ id 1w8HXl-0008QE-JO; Thu, 02 Apr 2026 08:53:08 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id C5BFA20B7017;
- Thu,  2 Apr 2026 05:53:04 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C5BFA20B7017
+ by linux.microsoft.com (Postfix) with ESMTPSA id 9159820B712B;
+ Thu,  2 Apr 2026 05:52:58 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 9159820B712B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1775134384;
- bh=Lda5boUb4MXundo8aUjZAsYLSyCiH0MhXZAZjJi/qsk=;
+ s=default; t=1775134378;
+ bh=CCXg0h1LAMueZzd2AAFFLtrdzODm53KCE3V4EscmrYY=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=c9ajY54Gr6CPLnq6mcK557XFy8Rg/MLiu3HIMLWIPC+8HxPzEGrws6KLrkPzuZN8t
- wrYLKpTNyqfeweJqKgRZss8EGeFBgdfNJ7p71/dEdaU9faHhJ2tFYsEMUhFUg3f1TU
- JrtuLdfvHckeUYz0Kt+57PLkEY+D6bNWx5tvuLT4=
+ b=WFDBKD8ebYP3Dk0GsS4fzFARKVqrXNyZpOpHCmt5jS8KOfPRSyQr8n0dpjWNp0CEu
+ xBV7UpYkGSXBvHiq1UIZ4EKItnJkvIqFkzsjMo863T8K0ZC8N1/lUEWVAhsA7pp7pG
+ 8I/223WgYErxXCox+RObHcNgwtYG6AiPJsyRmwOY=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Thu, 02 Apr 2026 12:52:36 +0000
-Subject: [PATCH v2 09/14] accel/mshv: implement cpu_thread_is_idle() hook
+Date: Thu, 02 Apr 2026 12:52:28 +0000
+Subject: [PATCH v2 01/14] accel/mshv: move msr.c to target/i386
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260402-mshv_accel_arm64_supp-v2-9-754895c15e9e@linux.microsoft.com>
+Message-Id: <20260402-mshv_accel_arm64_supp-v2-1-754895c15e9e@linux.microsoft.com>
 References: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
 In-Reply-To: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -75,47 +75,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Magnus Kulke <magnuskulke@linux.microsoft.com>
+This file has x86 specific implementations. Move this file to i386
+folder in preparation for ARM64 MSHV support.
 
-In MSHV the hypervisor APIC is always used, so we to implement this hook
-to make sure the AP's vcpu thread is not blocked waiting for an INIT SIPI
-by the BSP. Without this change soft reboots with -smp cpus>=2 will
-hang.
-
-Signed-off-by: Magnus Kulke <magnuskulke@linux.microsoft.com>
+Acked-by: Wei Liu <wei.liu@kernel.org>
 Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- accel/mshv/mshv-all.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ accel/mshv/meson.build            | 1 -
+ target/i386/mshv/meson.build      | 1 +
+ {accel => target/i386}/mshv/msr.c | 0
+ 3 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index 5ce76e86db..6c0ddbf3ca 100644
---- a/accel/mshv/mshv-all.c
-+++ b/accel/mshv/mshv-all.c
-@@ -704,11 +704,23 @@ static const TypeInfo mshv_accel_type = {
-     .instance_size = sizeof(MshvState),
- };
+diff --git a/accel/mshv/meson.build b/accel/mshv/meson.build
+index c1b1787c5e..e433187cde 100644
+--- a/accel/mshv/meson.build
++++ b/accel/mshv/meson.build
+@@ -1,6 +1,5 @@
+ system_ss.add(when: 'CONFIG_MSHV', if_true: files(
+   'irq.c',
+   'mem.c',
+-  'msr.c',
+   'mshv-all.c'
+ ))
+diff --git a/target/i386/mshv/meson.build b/target/i386/mshv/meson.build
+index 49f28d4a5b..6091c21887 100644
+--- a/target/i386/mshv/meson.build
++++ b/target/i386/mshv/meson.build
+@@ -2,6 +2,7 @@ i386_mshv_ss = ss.source_set()
  
-+/*
-+ * MSHV manages the LAPIC in the hypervisor. SIPI for APs are handled
-+ * internally. Halted vCPUs must still enter mshv_cpu_exec() so that
-+ * MSHV_RUN_VP is called and the hypervisor will deliver SIPI to wake APs.
-+ */
-+
-+static bool mshv_vcpu_thread_is_idle(CPUState *cpu)
-+{
-+    return false;
-+}
-+
- static void mshv_accel_ops_class_init(ObjectClass *oc, const void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ i386_mshv_ss.add(files(
+   'mshv-cpu.c',
++  'msr.c',
+ ))
  
-     ops->create_vcpu_thread = mshv_start_vcpu_thread;
-+    ops->cpu_thread_is_idle = mshv_vcpu_thread_is_idle;
-     ops->synchronize_post_init = mshv_cpu_synchronize_post_init;
-     ops->synchronize_post_reset = mshv_cpu_synchronize_post_reset;
-     ops->synchronize_state = mshv_cpu_synchronize;
+ i386_system_ss.add_all(when: 'CONFIG_MSHV', if_true: i386_mshv_ss)
+diff --git a/accel/mshv/msr.c b/target/i386/mshv/msr.c
+similarity index 100%
+rename from accel/mshv/msr.c
+rename to target/i386/mshv/msr.c
 
 -- 
 2.45.4

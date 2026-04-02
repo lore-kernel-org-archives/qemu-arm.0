@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A09DD6AB17
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33A22D6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:58:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q39-0000rw-GA; Thu, 02 Apr 2026 17:58:03 -0400
+	id 1w8Q2X-00005o-BY; Thu, 02 Apr 2026 17:57:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2k-0000HN-86
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:39 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1w8Q2N-0008MT-2w
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:15 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2g-0007Gh-Fq
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:36 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-b9c62fc8debso42433966b.0
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:34 -0700 (PDT)
+ id 1w8Q2L-00079Y-0e
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:14 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-b9c04152730so204348566b.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167053; x=1775771853; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167031; x=1775771831; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S8jISgrMRUU7GJEHRBKA1C6CwoQWVbq4rD3s2gB8p7Y=;
- b=rMkHPGi74vNH9MsKPBN68AlX9jzepUuFTYAxC7nfm17aWFxlzjRy4gq+UKIyhqkhP2
- AADmEANNjoZEdIYI15GI7L8cBlgdkLvahOE2VFMBfZC6Q+pgqVifetpXXmhNeaSVk5nL
- qdtYMvnV1miPdPAGxEXZhaPe7ulzNqy7fDU8rW3Gxrmplg1A89v8O/uErVXBidUCg8/J
- dQclVCILromQCp5g6pVsCp50B3loiJmunt/WjjukaRJ9wKWpbGLzqy3zjbGEv63xVDDe
- 19xdszxU9T1HctSIoiaBHBf3x7FWJKdzEQsE6Qbv6dp2pXwKVJLtcqgxEcshI04Mhdvl
- 6SVQ==
+ bh=5+ZNPSdOIRkRVr+Q/vKL8bV00FekXBJXM/FhoKVAOes=;
+ b=CRDjOgcAh58OJ7vin24HmML8Gq+2IYTHWuOSAj2c1I7zq71oJONs358IqTplJBVtV8
+ aP8b4E+eTNbvn7+9yWHvN1Pp5hrI3Pas8m3J0q+0WgmSBqIwz166SfFZ5ckDCzVyAkvE
+ dbcO+h10dpQHXPUbpOgV9KSk8Hm4LbDDa/wruKjvzcicC/RMKHPO9raQg4qtQeDgAOop
+ 6snYzHoie8MV39Xz13mF976NUQgyokHUXJZVd32Bq1PVseAd9jvbw6DRXYUD9R1/5ozp
+ /91LOVDiYPUkLfkPt3c4eNerog/F5G9gthDYVXAyXB20eLzuE3O6U4qYA3IHQ2/Vl/UI
+ CXZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167053; x=1775771853;
+ d=1e100.net; s=20251104; t=1775167031; x=1775771831;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=S8jISgrMRUU7GJEHRBKA1C6CwoQWVbq4rD3s2gB8p7Y=;
- b=IB1Nmr4fteMmWabiRrsnVYpCoi80Gd8G1WNqfP3Nvg1sUrMoRKNGrZupRWiSBDKDl/
- 4HKwIX5Vz+YyCA100GP+woGwPQEsN53825ndxMYHXctV3VjjlY5zmwjtqv025DDqdFbT
- 0HEhthmgjsoQKGEBLVqbyWNv7QP5YYdZW4tkWhBSmV0XGt0L7SnnmEnEwulCOeA2H0uS
- kdkky+XDw9q2iipQKj2Nnh7Fj4ox6TrPuDISDkW9HtSKKe0LxPcobpBEmeSgNa1kzHB4
- HJI2S6WQzQiprOiGEYGCO93zFwnMp7ymP+eGirCS3vts5YIzPYGMBDyeoXKeOmZyZ4rW
- QX5g==
-X-Gm-Message-State: AOJu0YxQHhVJrQxRvy6AqlVVLJt/igp0fZns9N3o8jobmODwx6BfbGuG
- 4atAEAoGS9yE3mTu23m8ebtGsZz0JFFAxmYsZ/nmUZQCbhx5IY938J6G
-X-Gm-Gg: ATEYQzwB/YqCRuG76aptZu0GfXGaEQSq1gWgn8XONQu36hqHOHMSvD0MbHRgBxD36dP
- OuekU+edNQ4VncqjkQRMlIeBpGYLDtQMEdddCxUaha91m/7nPEC7Y1OXOTxraZVOEkHSZzsiZA7
- p+nyXlGsPIfCn3fQBDl4A0rA2OmSwKaBb6n6+fkz1g5zHmqkmE1zxBGj89WhVOL82YBuWTXBoLG
- +ECoA9D3mYXxRApMwtlPSgSUBWMDzC2NNROaHbIw+5RazHPHa9aSA0Mjn1q2cflA7uOj8X7LjkD
- xk3wWlunSBZG8JYjlBObvnKkMHg3ugxgZiTtWMqz6k+spBBAoEfCmsAUFJd2GjQ8WLpMuME0AwC
- da3O7DAhyfyaeiww+wlHGjEy5+A7IM9ryw5GaIQBAGLROF6QPfG5w8AZLDvEvd1FZgudvwqOoPp
- seWs2NOXt0Q8K2SxiIRq6qapbu1dPP8nOwfmnwjN/gxTvEvvXMnvxTOX8lU9b5hdPursZSKQ==
-X-Received: by 2002:a17:907:1c9c:b0:b98:411a:1158 with SMTP id
- a640c23a62f3a-b9c672ae615mr26790066b.5.1775167052935; 
- Thu, 02 Apr 2026 14:57:32 -0700 (PDT)
+ bh=5+ZNPSdOIRkRVr+Q/vKL8bV00FekXBJXM/FhoKVAOes=;
+ b=aybKjplH1ng3+tKiXsrAfxALFnba+BjINOiI0zQmT1fxN3ACi3B+exEX7YlHcv57pS
+ GLOU9mcqQC8zLPWSdOvm+eUHUZICHb25McqwLTnmxuzLk1sg0EB2KD1gaWPo+N1ATqK9
+ 2mKk70pviYMCE88MaSs97KNCPBYA5BMjEbDkstjzSSgtXSvgcm0Psvog5ONtlBdcO4K6
+ fpaQ7O8FrT7E5teteXH4sHjBhqA9MU4SgpXRT1FcO+dXRVMUiyhMS0bkZeezTJiE3Hl5
+ qExRt8kB8/k0Vsj1xpORqeYjXuUwoA+zBgos/HUK/atQlGHrShv9hMLOHGPiYPP7wzco
+ 51MA==
+X-Gm-Message-State: AOJu0YxAvZRAIZwqvBw4SIX8q4wsvjPZ/r7lIZydc72WcQX/zPp5VjTB
+ 77GkSFvtP+IibtBwKkJyNpjFGqf5w/sibGqC4LLjXQuoGKQ+UCNXjiUO
+X-Gm-Gg: AeBDiestt5wWUPXmz+JrNV0B5K3L0UUIq1IHkNj3NDbg1FvCER+cT+yzjUqrslsZkoF
+ 4Ye/ItICLaBg4iwFOyKCizp9JBEMZIE7rummb4+jbAWC0odQndxdmJnSPuYQFAn1WwhVO38iDcF
+ kukRg9NBMDDEhOQiUTJHiB7C3lYAtmdlIq483EpmL/A5Fx7tYxIkv9l2W04nMc0VfflMXiiKdcF
+ lW9uFZZDoCrKz7m/zfBJbAza322px4I7PQws8MdpIv3ccJtC9TXse9n1VzMD4I8Eel87Si/E41l
+ aKBOWwzUutZH9lWOSCT3WcwIVSD9RdDcIFndyjkxOrDVJxWrEK6gVuksF2gHAiZN+LQtIAeNf45
+ Sh7zzwV5+5Vhy8+Sa2e8BOCcjEnQRy1bA/ajz4Be2tGMkz9AFZSKzHsyYUUu1Izmo0fNfUYTAV5
+ jeTVvt8DWWT6kkMJRM/50ygqNoqJVSCPBQNAuXYVBUkz2EWx49kajiGmdOz92gw0cTnCBePA==
+X-Received: by 2002:a17:907:984:b0:b9c:1c26:9eb with SMTP id
+ a640c23a62f3a-b9c672d42afmr26531666b.10.1775167031039; 
+ Thu, 02 Apr 2026 14:57:11 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.31
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:32 -0700 (PDT)
+ Thu, 02 Apr 2026 14:57:10 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,16 +71,16 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 29/33] hw/intc/arm_gicv3: Implement FDTGenericIntc interface
-Date: Thu,  2 Apr 2026 23:56:14 +0200
-Message-ID: <20260402215629.745866-30-ruslichenko.r@gmail.com>
+Subject: [PATCH v3 16/33] hw/core/fdt_generic_util: map device memory regions
+Date: Thu,  2 Apr 2026 23:56:01 +0200
+Message-ID: <20260402215629.745866-17-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,199 +105,222 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-This patch implements the FDTGenericIntc interface for the
-ARM GICv3 interrupt controller.
+Parse device mmio regions provided within standard 'reg' and
+custom 'reg-extended' device tree properties.
 
-This enables the generic FDT machine infrastructure to
-automatically wire up the GIC and resolve interrupts
-defined in the Device Tree.
+For 'reg-extended' properties, the parent phandle is extracted
+along with the standard io memory region specification, which allows
+adding these regions to specified parent memory regions.
+
+The mapping itself is delegated to the device via the
+'TYPE_FDT_GENERIC_MMAP' interface.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/intc/arm_gicv3.c        | 45 +++++++++++++++++++++++++
- hw/intc/arm_gicv3_common.c | 68 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 113 insertions(+)
+ hw/core/fdt_generic_util.c         | 158 +++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic_util.h |   6 ++
+ 2 files changed, 164 insertions(+)
 
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 542f81ea49..e7e98ef9a5 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -18,9 +18,13 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qemu/module.h"
-+#include "hw/core/cpu.h"
-+#include "hw/core/boards.h"
- #include "hw/intc/arm_gicv3.h"
- #include "gicv3_internal.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- static bool irqbetter(GICv3CPUState *cs, int irq, uint8_t prio, bool nmi)
- {
-     /* Return true if this IRQ at this priority should take
-@@ -452,14 +456,55 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
-     gicv3_init_cpuif(s);
- }
- 
-+static void arm_gic_fdt_auto_parent(FDTGenericIntc *obj, Error **errp)
-+{
-+    GICv3State *s = ARM_GICV3(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int num_cpus = s->num_cpu;
-+    CPUState *cs;
-+    int i = 0;
-+
-+    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+        if (i >= s->num_cpu) {
-+            break;
-+        }
-+
-+        sysbus_connect_irq(sbd, i,
-+                           qdev_get_gpio_in(DEVICE(cs), 0));
-+        sysbus_connect_irq(sbd, i + num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 1));
-+        sysbus_connect_irq(sbd, i + 2 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 2));
-+        sysbus_connect_irq(sbd, i + 3 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 3));
-+        sysbus_connect_irq(sbd, i + 4 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 4));
-+        sysbus_connect_irq(sbd, i + 5 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 5));
-+
-+        if (s->maint_irq) {
-+            int intbase = s->num_irq - GIC_INTERNAL + i * GIC_INTERNAL;
-+            qemu_irq irq = qdev_get_gpio_in(DEVICE(sbd),
-+                                intbase + s->maint_irq);
-+            qdev_connect_gpio_out_named(DEVICE(cs),
-+                                               "gicv3-maintenance-interrupt",
-+                                                0, irq);
-+        }
-+
-+        i++;
-+    }
-+}
-+
- static void arm_gicv3_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
-     ARMGICv3Class *agc = ARM_GICV3_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
- 
-     agcc->post_load = arm_gicv3_post_load;
-     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
-+    fgic->auto_parent = arm_gic_fdt_auto_parent;
- }
- 
- static const TypeInfo arm_gicv3_info = {
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 9200671c7a..a393540825 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -34,6 +34,7 @@
- #include "system/kvm.h"
- #include "system/whpx.h"
- 
-+#include "hw/core/fdt_generic_util.h"
- 
- static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
- {
-@@ -367,6 +368,69 @@ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index 51b808d9d0..0b374b550d 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -403,6 +403,22 @@ static inline uint64_t get_int_be(const void *p, int len)
      }
  }
  
-+#define FDT_GENERIC_GICV3_TYPE_AFFINITY_ALL 0x01000000U
-+#define FDT_GENERIC_GICV3_TYPE_AFFINITY_IDX 0x02000000U
++/* FIXME: use structs instead of parallel arrays */
 +
-+static int arm_gicv3_common_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
-+                                      uint32_t *cells, int ncells, int max,
-+                                      Error **errp)
-+{
-+    GICv3State *gs = ARM_GICV3_COMMON(obj);
-+    int cpu = 0;
-+    uint32_t qemu_type;
-+    uint32_t cpu_mask;
-+    uint32_t idx;
++static const char *fdt_generic_reg_size_prop_names[] = {
++    "#address-cells",
++    "#size-cells",
++    "#bus-cells",
++    "#priority-cells",
++};
 +
-+    if (ncells != 3) {
-+        error_setg(errp, "ARM GIC requires 3 interrupt cells, %d cells given",
-+                   ncells);
-+        return 0;
-+    }
-+    idx = cells[1];
-+    qemu_type = cells[0] & 0xff000000;
++static const int fdt_generic_reg_cells_defaults[] = {
++    1,
++    1,
++    0,
++    0,
++};
 +
-+    switch (cells[0] & 0x00ffffff) {
-+    case 0:
-+        if (idx >= gs->num_irq) {
-+            error_setg(errp, "ARM GIC SPI has maximum index of %" PRId32 ", "
-+                       "index %" PRId32 " given", gs->num_irq - 1, idx);
-+            return 0;
-+        }
-+        (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[1]);
-+        return 1;
-+    case 1: /* PPI */
-+        if (idx >= 16) {
-+            error_setg(errp, "ARM GIC PPI has maximum index of 15, "
-+                       "index %" PRId32 " given", idx);
-+            return 0;
-+        }
-+        if (qemu_type == FDT_GENERIC_GICV3_TYPE_AFFINITY_IDX) {
-+            cpu = cells[2] >> 8;
-+            *irqs = qdev_get_gpio_in(DEVICE(obj),
-+                                         gs->num_irq - 16 + idx + cpu * 32);
-+            return cpu;
-+        }
-+
-+        cpu_mask = cells[2] >> 8;
-+        while ((cpu_mask || qemu_type == FDT_GENERIC_GICV3_TYPE_AFFINITY_ALL)
-+               && cpu < max && cpu < gs->num_cpu) {
-+            if ((cpu_mask & 1) ||
-+                 qemu_type == FDT_GENERIC_GICV3_TYPE_AFFINITY_ALL) {
-+                *irqs = qdev_get_gpio_in(DEVICE(obj),
-+                                         gs->num_irq - 16 + idx + cpu * 32);
-+                irqs++;
-+            }
-+            cpu_mask >>= 1;
-+            cpu++;
-+        }
-+        return cpu;
-+    default:
-+        error_setg(errp, "Invalid cell 0 value in interrupt binding: %d",
-+                   cells[0]);
-+        return 0;
-+    }
-+}
-+
- static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
- {
-     GICv3State *s = ARM_GICV3_COMMON(dev);
-@@ -624,12 +688,15 @@ static void arm_gicv3_common_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     ARMLinuxBootIfClass *albifc = ARM_LINUX_BOOT_IF_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
-+
- 
-     rc->phases.hold = arm_gicv3_common_reset_hold;
-     dc->realize = arm_gicv3_common_realize;
-     device_class_set_props(dc, arm_gicv3_common_properties);
-     dc->vmsd = &vmstate_gicv3;
-     albifc->arm_linux_init = arm_gic_common_linux_init;
-+    fgic->get_irq = arm_gicv3_common_fdt_get_irq;
+ static void fdt_init_qdev_link_prop(Object *obj, ObjectProperty *p,
+                                     FDTMachineInfo *fdti,
+                                     const char *node_path,
+@@ -616,6 +632,146 @@ static void fdt_init_qdev_properties(char *node_path, FDTMachineInfo *fdti,
+     }
  }
  
- static const TypeInfo arm_gicv3_common_type = {
-@@ -641,6 +708,7 @@ static const TypeInfo arm_gicv3_common_type = {
-     .abstract = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_ARM_LINUX_BOOT_IF },
-+        { TYPE_FDT_GENERIC_INTC },
-         { },
-     },
- };
++FDTGenericRegPropInfo*
++fdt_get_reg_info(FDTMachineInfo *fdti, char *node_path, Object *dev)
++{
++    FDTGenericRegPropInfo *reg;
++    Object *parent = NULL;
++    char *parent_path = NULL;
++    int cell_idx = 0;
++    bool extended = true;
++    Error *errp = NULL;
++    int i;
++
++    if (!object_dynamic_cast(dev, TYPE_SYS_BUS_DEVICE) &&
++        !object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP)) {
++        return NULL;
++    }
++
++    reg = g_new0(FDTGenericRegPropInfo, 1);
++
++    qemu_fdt_getprop_cell(fdti->fdt, node_path, "reg-extended", 0,
++                            &errp);
++    if (errp) {
++        error_free(errp);
++        errp = NULL;
++        extended = false;
++        parent_path = qemu_devtree_getparent(fdti->fdt, node_path);
++    }
++
++    if (parent_path) {
++        parent = fdt_init_get_opaque(fdti, parent_path);
++    }
++
++    for (reg->n = 0;; reg->n++) {
++        char ph_parent[DT_PATH_LENGTH];
++        const char *pnp = parent_path;
++
++        reg->parents = g_renew(Object *, reg->parents, reg->n + 1);
++        reg->parents[reg->n] = parent;
++
++        if (extended) {
++            int p_ph = qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                                "reg-extended", cell_idx++,
++                                                &errp);
++            if (errp) {
++                error_free(errp);
++                errp = NULL;
++                goto exit_reg_parse;
++            }
++            if (qemu_devtree_get_node_by_phandle(fdti->fdt, ph_parent,
++                                                    p_ph)) {
++                goto exit_reg_parse;
++            }
++
++            while (!fdt_init_has_opaque(fdti, ph_parent) &&
++                   qemu_in_coroutine()) {
++                fdt_init_yield(fdti);
++            }
++
++            if (!fdt_init_has_opaque(fdti, ph_parent)) {
++                goto exit_reg_parse;
++            }
++
++            reg->parents[reg->n] = fdt_init_get_opaque(fdti, ph_parent);
++            pnp = ph_parent;
++        }
++
++        for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
++            const char *size_prop_name = fdt_generic_reg_size_prop_names[i];
++            int nc = qemu_fdt_getprop_cell_inherited(fdti->fdt, node_path,
++                                            size_prop_name, 0, &errp);
++            uint64_t val = 0;
++
++            if (errp) {
++                int size_default = fdt_generic_reg_cells_defaults[i];
++
++                fdt_debug_np("WARNING: no %s for %s container, assuming "
++                            "default of %d\n", size_prop_name, pnp,
++                            size_default);
++                nc = size_default;
++                error_free(errp);
++                errp = NULL;
++            }
++
++            reg->x[i] = g_renew(uint64_t, reg->x[i], reg->n + 1);
++            for (int j = 0; j < nc; ++j) {
++                val <<= 32;
++                val |= qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                            extended ? "reg-extended"
++                                                        : "reg",
++                                            cell_idx + j, &errp);
++               if (errp) {
++                    val = 0;
++                    break;
++               }
++            }
++            reg->x[i][reg->n] = val;
++            cell_idx += nc;
++            if (errp) {
++                goto exit_reg_parse;
++            }
++        }
++    }
++exit_reg_parse:
++    if (errp) {
++        error_free(errp);
++    }
++
++    g_free(parent_path);
++
++    return reg;
++}
++
++static void fdt_parse_node_reg_prop(FDTMachineInfo *fdti, char *node_path,
++                            Object *dev)
++{
++    int i;
++
++    FDTGenericRegPropInfo *reg = fdt_get_reg_info(fdti, node_path, dev);
++    if (!reg) {
++        return;
++    }
++
++    if (object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP)) {
++        FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_GET_CLASS(dev);
++        if (fmc->parse_reg) {
++            while (fmc->parse_reg(FDT_GENERIC_MMAP(dev), *reg,
++                                  &error_abort) && qemu_in_coroutine()) {
++                fdt_init_yield(fdti);
++            }
++        }
++    }
++
++    g_free(reg->parents);
++
++    for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
++        g_free(reg->x[i]);
++    }
++
++    g_free(reg);
++}
++
+ static void fdt_init_parent_node(Object *dev, Object *parent, char *node_path)
+ {
+     if (dev->parent) {
+@@ -744,6 +900,8 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+ 
+     fdt_init_device_realize(fdti, node_path, dev);
+ 
++    fdt_parse_node_reg_prop(fdti, node_path, dev);
++
+     g_free(parent_node_path);
+ 
+     return 0;
+diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
+index 6fb0708d7a..a04ded41ae 100644
+--- a/include/hw/core/fdt_generic_util.h
++++ b/include/hw/core/fdt_generic_util.h
+@@ -127,6 +127,12 @@ typedef struct FDTGenericRegPropInfo {
+     Object **parents;
+ } FDTGenericRegPropInfo;
+ 
++/*
++ * Get parsed 'reg' or 'reg-extended' properties from dts node
++ */
++FDTGenericRegPropInfo*
++fdt_get_reg_info(FDTMachineInfo *fdti, char *node_path, Object *dev);
++
+ typedef struct FDTGenericMMapClass {
+     /*< private >*/
+     InterfaceClass parent_class;
 -- 
 2.43.0
 

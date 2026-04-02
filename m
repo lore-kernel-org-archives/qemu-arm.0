@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A677D6AAF5
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 17:06:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16207D6AAF5
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 17:06:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8LTM-0000B6-FE; Thu, 02 Apr 2026 13:04:49 -0400
+	id 1w8LTQ-0000CU-DB; Thu, 02 Apr 2026 13:04:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w8LTH-00009h-VK
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 13:04:43 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w8LTM-0000B0-5o
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 13:04:49 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w8LTD-0000em-92
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 13:04:42 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-43cfd832155so661415f8f.1
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 10:04:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w8LTJ-0000fp-Lx
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 13:04:47 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-486fe36cfabso14554005e9.1
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 10:04:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775149477; x=1775754277; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=UolboCUEZpC2bIGieZdsWjT74OHHgRoWm02qV7hCKf4=;
- b=UJdmVTOqVnqZ+Futh1Iu41fpxCuxnft9kg0n5lrSF1x6tdI6B/9d3K1paHkzM21pgO
- FRCB207GtpfMQvbCpzN9I3vi1FAe1ykPNAc0XODGJJT0TZJnpWwVSDvhOmkDdjn3ERrc
- si9ur7E3nkKa0tvRh4wxWqL/6xgWSAq2khAU6/LAJIkyfHYvboa8Do6PqVnO6KeY6FAe
- VdQk0v8fcgfQfDWasntvWyhmRq3X3dInemqiPRuUGtrj1xkWERUreVt2XcI0aod9auf+
- DprJSkbS7M/bFbrYIO8Us5OpuInF1IvZh9VqlhOdNudY4d/uA00LnJDXhSoPAhIMt6Wd
- SRaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775149477; x=1775754277;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1775149484; x=1775754284; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UolboCUEZpC2bIGieZdsWjT74OHHgRoWm02qV7hCKf4=;
- b=Fj1Q9AzI8I9oSrtq10Z1ahS2UifYB2Vjgo/5o1NtITPp7aV08/JXZzJfoqOgBkEmQu
- Q1CEs8oW8kdPL4GyZ4oCiIEMIzdsIMzW1A/M2tbVvv3OmB70TV756a1zN4ZfaT3o4Sf9
- OBcy6RSC+JZde08z08XNWuruCnFYIqx8HnHea7QRCU5YCu/FrK7Yd3Ui+NqPiUhzvi47
- mCf7RGbcu0gsiwqRCjUWny+SGQwg7stut+xwMaB5Ttz7KBWwd63YSW4XRdiGQF9LRuF/
- B4rVooRLsoelmTrD67sGjb9M7lfV0QrlxhVR5sICPntzCfE26lF16h7qFYbaZSJSy/fl
- /yhA==
+ bh=KGFFrfbr36AmEzkh74oOA4hg7tq9vtm73qaYZR3gMNw=;
+ b=ORnlcCE16QDMGw8KGUTbRCQktipHKF7L0IoRHZyRXabeTmJ6O96CdDMrGkdb06ihQU
+ clfGspQU1s2HnxgOZy+PRrZXbSTJOCb2k7KRgLb00Cs19vGqjNZjywb/kabQ34L1RgI3
+ Bu7AU7UqrawZPNDXBSIZfBCfEEfBqMMLKhnCAADHki2b63EnNKhOBuv/qyEkgzlaCqlL
+ LH3xW9uJZo+CCGeqFUksLMjlB9eWL2eVJWeiiCgqRV2yxtX935wT5jW7lABbZCOvyiec
+ lHj3mjdEdYFZsfBKObs0L88GNJHJ8jU4cA5bTmzoDhIUO/8NBWlqxLJG9R7u3umUs1D5
+ UpSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775149484; x=1775754284;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=KGFFrfbr36AmEzkh74oOA4hg7tq9vtm73qaYZR3gMNw=;
+ b=UIGexGgZJQOSIfNUOhdVmaqLefGeRtU+5s1KyqmuZyUGsbVsPDBzMcMp059u4XUk9n
+ ZSPORGk1UrGgTLU0yg+1/zeDOO6tOdeGInY87CkHWiFgRivKvEMEpSOF8sx9VbxkjJpT
+ nP9JFUVz1Y4yEC88VmkCUSOSGIr7IQzrhV7i906S99v01SJnhu92iJ9iRCpYP2FQy+sL
+ ERZG1Y9tj4kO1hplMX4NpzESsFQQZLrkzafL28VIwERUWUezP04uZ7vhbH9ewPhis7fI
+ 4HGrqgE9wSCaEFgPANTn5q5B8VVF4JNUW4Fulxx+2yGQtNikiuA7Dl0xRlJpaGVnFkGw
+ Bbeg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCSmPZg6Sy3nZa67XhoRzJKnujxzcevVv0hJxBoYJASdhrNvRGq/QoTmykrnAEnPlhn5o4vNSqKg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxfuas+gMXI52XNFJCpe8sYB/4SzczqeqBjaxQZkR/ZDAw9/cHf
- hq/2/k7W9FFBymoGY4BGjivsvyG47aU5z3VrAOM3Ggl0PWDurjNO3lWxll82WcwnavE=
-X-Gm-Gg: AeBDies7Djrut6of8pDu3p6BvI0GLz/s61t16NrCAcffNKUyT1YBhM3m0uB1WOnGm+o
- lC6lLz+dwW+UpP9fsMjEqtXO+Qtbt+C4iyD2jabagSA0/Bo+0qvf7LPJ6F53LUtnHEGEEp27Sbe
- WL4dyZfaxmuf4sIH0kbo3CZ090Nt5nKf2gtqoT2T4/ZeOgiD+rhG4tfFlpOVHmprqLRH189GWUM
- 2skQW4GLjGC0yctWPLy74rBIkmBWGrpH8krhb8QV2to99AxOF1AWI/vvcHc9olCTJZPZsLC+K7Q
- hRAo5emc7KHHTH77xkw6/RD0NYOzDT4pvW5Q80faNLKyeVnmdNIdhMU1+W3cM3gyi7vijtSGpyh
- 0W+vXLA8gJMLrZ+oAtDg7t7gvmsdLKu+VvrNATC76iOYul1xeN5ab54tyAu5aPk/1DgovaemT1i
- U4ctqSYzIq5ChP779QX97fA6CALfE6AMVXE9D3sD+huQ02VD45+WIzpJUPWNK00WhIjJtI/TXGB
- v/bo14gMuc=
-X-Received: by 2002:a05:6000:4285:b0:43c:f40f:6c92 with SMTP id
- ffacd0b85a97d-43d150429c7mr15427579f8f.8.1775149477038; 
- Thu, 02 Apr 2026 10:04:37 -0700 (PDT)
+ AJvYcCUiiep6rLsHN+JzDDDCJTcyK2MiRsS6ou59nC0O5y2pMkxiMf4bIbA30tKAvbXkcrpfPGJ5RTnE/A==@nongnu.org
+X-Gm-Message-State: AOJu0YxwMwN7AtSH7Hn5Ds6qZCsysGuIKDygNU9dNHUsYLETne/SpoZB
+ CG4TI0uPk4EuFSXEf/k2hMLUeyBO6TA0FTqBVr1XqCFPTRE7p6bTd1SLPXx/AO1YihA=
+X-Gm-Gg: ATEYQzw4vS2fO+c6YhgUyYfTYcJeFRilkiTqd6uy8PK1vRPs9piH8Cb3TmMFn2Ribxt
+ Rm1VA7PxHxE0IZ3PbwUE4WnB1dLL3Lkf65MmeUcppEzM4fSKctO9WMYIjE8aeVTy9jkRvS+vVdI
+ kkCram+KzHcH51Crgffk78Qf/+IfI0lmbMol+NrVbb3WOxwkZMlN+Cn/xd0i2v+zit/jttUboht
+ q2bOhvXsJGAGU/0e2ckJL69AUUR7l3QRTdCCctzm6C5zzXiJo5UZzPWhpRozizE7WEQbvSbFAc3
+ bkAMRzBI0WzyduwtPEAEJ7dZ2Mjof8tFEU4jyl8a9jzcH5br3fy6uBVdiDIByQg0bQi/kU3mmcU
+ h3ClQ3cN30nxaMv2bIpq9fgB1v/c/KKBoXdcToD6PhyDZB+tKOtF5LwtaJkt/27KoNF3FRzrSc2
+ eFpYaZzl6R2NMqlrH+QmZ023IAofutgLe0YXDmVkvN+9T9cb4JodMjJ81rXEo79nxrXrCtcbVTk
+ VFWCRniAb8=
+X-Received: by 2002:a05:600c:3b0a:b0:486:f893:56c6 with SMTP id
+ 5b1f17b1804b1-4888e09ba82mr46452805e9.10.1775149484030; 
+ Thu, 02 Apr 2026 10:04:44 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d214f2b63sm6044517f8f.28.2026.04.02.10.04.35
+ 5b1f17b1804b1-4888a7165aasm104469075e9.14.2026.04.02.10.04.43
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 02 Apr 2026 10:04:36 -0700 (PDT)
+ Thu, 02 Apr 2026 10:04:43 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
@@ -71,16 +72,18 @@ Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, Anton Johansson <anjo@rev.ng>,
  qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-11.1 v2 0/9] target/arm: Compile accelerator-related
- objects as common code
-Date: Thu,  2 Apr 2026 19:04:25 +0200
-Message-ID: <20260402170434.94783-1-philmd@linaro.org>
+Subject: [PATCH-for-11.1 v2 1/9] accel/kvm: Include missing
+ 'exec/cpu-common.h' header
+Date: Thu,  2 Apr 2026 19:04:26 +0200
+Message-ID: <20260402170434.94783-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260402170434.94783-1-philmd@linaro.org>
+References: <20260402170434.94783-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,47 +106,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-First drop TARGET_KVM_HAVE_GUEST_DEBUG (all targets but MIPS
-support it), then -- after minor changes -- move the ARM
-specific accelerator units to target_common_system_arch[]
-source set, allowing to remove arm_system_ss[] for good.
+kvm-all.c uses EXCP_INTERRUPT and EXCP_HLT, defined in the
+"exec/cpu-common.h" header:
 
-Since v1:
-- Include missing "exec/cpu-common.h" & "qemu/queue.h" headers
+ 17 #define EXCP_INTERRUPT  0x10000 /* async interruption */
+ 18 #define EXCP_HLT        0x10001 /* hlt instruction reached */
 
-(I plan to merge via single-binary tree)
+This header is indirectly included via "system/kvm.h" -> "cpu.h".
+Since we want to remove the latter inclusion, include it here in
+order to avoid otherwise:
 
-Philippe Mathieu-Daudé (9):
-  accel/kvm: Include missing 'exec/cpu-common.h' header
-  accel/kvm: Include missing 'exec/vaddr.h' and 'qemu/queue.h' headers
-  accel/kvm: Remove TARGET_KVM_HAVE_GUEST_DEBUG
-  accel/kvm: Expose all non-target specific declarations
-  target/arm: Compile WHPX as common object
-  target/arm: Remove target_ulong use in hvf_handle_psci_call()
-  target/arm: Compile HVF as common object
-  target/arm: Remove target_ulong cast in kvm_arm_handle_dabt_nisv()
-  target/arm: Compile KVM as common object
+  accel/kvm/kvm-all.c: In function 'kvm_handle_internal_error':
+  accel/kvm/kvm-all.c:3147:20: error: 'EXCP_INTERRUPT' undeclared (first use in this function); did you mean 'SA_INTERRUPT'?
+   3147 |             return EXCP_INTERRUPT;
+        |                    ^~~~~~~~~~~~~~
+  accel/kvm/kvm-all.c: In function 'kvm_cpu_exec':
+  accel/kvm/kvm-all.c:3436:16: error: 'EXCP_HLT' undeclared (first use in this function)
+   3436 |         return EXCP_HLT;
+        |                ^~~~~~~~
+  accel/kvm/kvm-all.c:3490:23: error: 'EXCP_INTERRUPT' undeclared (first use in this function); did you mean 'SA_INTERRUPT'?
+   3490 |                 ret = EXCP_INTERRUPT;
+        |                       ^~~~~~~~~~~~~~
 
- configs/targets/aarch64-softmmu.mak     |  1 -
- configs/targets/i386-softmmu.mak        |  1 -
- configs/targets/loongarch64-softmmu.mak |  1 -
- configs/targets/ppc-softmmu.mak         |  1 -
- configs/targets/ppc64-softmmu.mak       |  1 -
- configs/targets/riscv64-softmmu.mak     |  1 -
- configs/targets/s390x-softmmu.mak       |  1 -
- configs/targets/x86_64-softmmu.mak      |  1 -
- include/system/kvm.h                    | 14 ++------------
- include/system/kvm_int.h                |  2 --
- accel/kvm/kvm-accel-ops.c               |  4 ----
- accel/kvm/kvm-all.c                     | 14 +++-----------
- target/arm/hvf/hvf.c                    |  2 +-
- target/arm/kvm.c                        |  3 +--
- target/mips/kvm.c                       |  5 +++++
- target/arm/hvf/meson.build              |  2 +-
- target/arm/meson.build                  | 12 +++++++-----
- target/arm/whpx/meson.build             |  6 +++---
- 18 files changed, 23 insertions(+), 49 deletions(-)
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ accel/kvm/kvm-all.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 774499d34f8..5df3fb90d88 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -36,6 +36,7 @@
+ #include "system/ramblock.h"
+ #include "accel/accel-ops.h"
+ #include "qemu/bswap.h"
++#include "exec/cpu-common.h"
+ #include "exec/tswap.h"
+ #include "exec/target_page.h"
+ #include "system/memory.h"
 -- 
 2.53.0
 

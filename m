@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA6ED6AAE6
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 15:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19F9D6AAEC
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 16:29:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8KHd-0001Da-8K; Thu, 02 Apr 2026 11:48:37 -0400
+	id 1w8KvO-0003UJ-V6; Thu, 02 Apr 2026 12:29:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w8KHb-0001Bt-KQ
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 11:48:36 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w8KHW-0002Ym-N2
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 11:48:33 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-66dd0531d01so1561994a12.3
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 08:48:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775144908; x=1775749708; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=iDzFEMX8K+NDhqiWj9hSCAAXAnoaBn1FE6fzq/wKPdk=;
- b=QqPPKBrhxVSKXxzGiVLqRBJV6Xg6PzVBuRXyOkaueR90mUKL0Ye9t0K0fRVm67UUaT
- uUzQ2+or1w4H118L3P7snPJ4IrhcxLxmSBypIYDxToTlkTKMXCKpj+qWqOMmKjrIjlUc
- cNeL2LWxHr/nTV5ZG6eIZYEHhASZlawvW7gqfTgnxkbyjFOr9BVMmSWYb462uAngHyxB
- BHN+5tbtpazej18o9anbcYMraJjaFALjKcHMTL+GgrBhSK5EuGJm9oCFgG4ylMsZorBt
- rxd//USXKbwvVceoq6vmfglzHQ27bTiI7JOLljjCqZbMyjEdpoK3BK2/S9TasT42gJug
- ZWCQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775144908; x=1775749708;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=iDzFEMX8K+NDhqiWj9hSCAAXAnoaBn1FE6fzq/wKPdk=;
- b=jGrn6dThJbKdaZ3rvQZEhnP4XkWsD93mL48wH1B1RMBJKaYzL4JEtJqzb0K4mh59xm
- gUnscW68h38fK9PnjmCSmbRtfsBYnpkmuAx1TxUJGkTjs4m3EmLOMc0b06a6MYet3lgz
- DFYkmwjaJKdXdt0gqGgHQ5xj9CoXRgdX702vI4eKzYgKYnHGhURtOwNsKZWGXK3xMRJA
- Tl09OX02o1GkvaZ/FWB0REz8gM5vYHuZjxEJJyqRdapuDd95T6qZxx/pOdn3NnQqL3+X
- 0LC8xEjMJN/jvit+TfTWNxZg+kbkDVzc9XJCbkFyUIlxS5yrpFbbEv+bwyfZ8s6ErSd0
- gG6w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXR22tCvI2Ls4F3Weh2Jv6GqcsBmvugz2ukl191I5tJyS+GKH6ukFEMey5srSWwAvU64iE1n9HDIg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7WwALRo+kcBDl7jxHszM8q1k/OuYyGzsDC6Ml3miDIk6xefZL
- Zq+mTjTVZLxX4HfKomPOO11PQo1XqWCIYd1C2vvOeiXpLFIAvs32rP1/DBbHiy6wOVY=
-X-Gm-Gg: ATEYQzydENNRJDZNM1P54J9gxq+l/Pyq02LjgnW6u9yMIAE11KqfQhQbTZPkvEOxQrX
- t9NsvbmIuQsMcxESujjVb18s6aXAXCfDBamifbYjL86w345aBpkSRUn0LmZXz4uAU/K8soOKj6m
- ZdtXbj1S/1zi3zqT7zsNCJFs+B8vKrB3Wvwi4JWmjtUc9dCNrVK2+JRypVnrG60xuXSiOuAAM9b
- 1vlfsaP8uqmfdfwr87iSRq+yU8bt5K0awL9IIoO5iGwM02Shyh84cFJwFr4ADhg5zsNgZxNW2MG
- 9UW1whC1tJQZVcPBVSdGrMVvox4PTGj3PWgV9o04XEjVBZANYOIU4jT7hhy/0PA598SDSrAVhwD
- Ayks3meUZmdeKHwyO8EzAUY3hmWa/fGOqtGUUoSrbN6VgNSB91gkBfYkwD9LnsqHQJ7bdfzta9A
- 4V+5HAh0efzX3MgajAuYI3w8I=
-X-Received: by 2002:a17:906:f58d:b0:b9c:5cf3:50a6 with SMTP id
- a640c23a62f3a-b9c5cf3a94fmr54391266b.30.1775144908073; 
- Thu, 02 Apr 2026 08:48:28 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b9c3c97218esm104055266b.9.2026.04.02.08.48.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 08:48:27 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 4F1C15F8F7;
- Thu, 02 Apr 2026 16:48:26 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w8KvN-0003SD-Mg
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 12:29:41 -0400
+Received: from p-east2-cluster2-host6-snip4-3.eps.apple.com ([57.103.78.36]
+ helo=outbound.st.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w8KvL-0007GA-Kk
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 12:29:41 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-3 (Postfix) with ESMTPS id
+ B0E741800692; Thu, 02 Apr 2026 16:29:36 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1775147377; x=1777739377;
+ bh=O/Dofj7+TkM8iI43wo2UtVTTxw/tMXz4UJ/3PMH3qog=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=f/HE8ggupe6RQbCBc+ge8X2R1esQblzm+l+biOijXLIQklHVjce+spzWb5Fie94GxUZPWHUhcC3ftNBR7IjIVCS4Iyq7C3poG7EFfneOow1/yyWz0NKDRiT6eauhBVvwfgZv5hv0WbUluAEUn8cDd7KZ0xuP4WxL4NMvmYc0lj2V+YhbSouFt2u9IlbhJW2l5Bzp1zebW4wI695WvCag11vx1+Wcy7j+0wKbfohMFEWsUexdzD8kDvFMmTSyDu0H/BNRv7OjIQzhwvytdSSHgQfhRQJNEm5yofCenEgORIklkRDX0OTwLPxCaJpCHkz1eHD/uV1KQFwp7m0bBdZbsA==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-3 (Postfix) with ESMTPSA id
+ 65B9A18000B0; Thu, 02 Apr 2026 16:29:34 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v2 06/14] accel/mshv: add arch-specific accelerator init
+ hook
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260402-mshv_accel_arm64_supp-v2-6-754895c15e9e@linux.microsoft.com>
+Date: Thu, 2 Apr 2026 18:29:22 +0200
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [RFC PATCH] target/arm: always propagate s1ns state on faults
-Date: Thu,  2 Apr 2026 16:48:21 +0100
-Message-ID: <20260402154821.2340594-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52a.google.com
+ Anirudh Rayabharam <anirudh@anirudhrb.com>,
+ Magnus Kulke <magnus.kulke@linux.microsoft.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <1FF5E7B0-E916-47CC-865B-F6A87342B109@unpredictable.fr>
+References: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
+ <20260402-mshv_accel_arm64_supp-v2-6-754895c15e9e@linux.microsoft.com>
+To: Aastha Rawat <aastharawat@linux.microsoft.com>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Proofpoint-ORIG-GUID: fbuWjbXXDJEQavEW1mQFSZrT7XHKRlfX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAyMDE0OCBTYWx0ZWRfXyWMD219iVY21
+ yDGB4LW7jQGfhX/pp2wqLPzpB3RfNoRCoNFUalxo+6vcykUsBSexfNvtf/JIP+8vSdqA6DclQAH
+ YN+2D6fiZYPa42yR4btVmiKH93MGv4wjSEA0YM5SisVG59BSF7J15Ecv/JXNtt5dp8GheGUoMQm
+ GGjzVE2tIpRtbT6PqKFtHlYRZaY3nySrfAejXYDnGxYXpZ9+fZCYbPyET1+CUk7+xjeGfqlydyo
+ PnT7QYE24SR/xwPYBzhg/4qfzhrPeL85aXqMMsFSvvVAYKOVCDKw4MdWMqbH6/VCSHrNGfzEcfZ
+ v6ULxETPQyH6/6I1Qm+nc4uDyxqsS12TeKJLYzQaqHnF0qOoJ9g5PuvFa+cIDI=
+X-Proofpoint-GUID: fbuWjbXXDJEQavEW1mQFSZrT7XHKRlfX
+X-Authority-Info-Out: v=2.4 cv=KuBAGGWN c=1 sm=1 tr=0 ts=69ce9971
+ cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=kj9zAlcOel0A:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=yMhMjlubAAAA:8 a=tFGNSmrwAAAA:8
+ a=DTTB39wiqv9MXZW_aZsA:9 a=CjuIK1q_8ugA:10 a=LpD6Tdepsyerr7eS-Jg7:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-02_02,2026-04-02_04,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ clxscore=1030 spamscore=0 phishscore=0 bulkscore=0 mlxscore=0 mlxlogscore=924
+ suspectscore=0 lowpriorityscore=0 malwarescore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2604020148
+Received-SPF: pass client-ip=57.103.78.36;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,51 +101,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-According to our mmuidx documentation:
 
-  we fold together most secure and non-secure regimes for A-profile,
-  because there are no banked system registers for aarch64
 
-So we don't hold quite enough information during the table walk to
-infer we are in secure mode. When we are trying to access a
-none-secure page we get a stage 1 translation like:
+> On 2. Apr 2026, at 14:52, Aastha Rawat =
+<aastharawat@linux.microsoft.com> wrote:
+>=20
+> From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+>=20
+> Introduce mshv_arch_accel_init() as an arch-specific hook called early
+> in mshv_init(), before VM creation. This allows each architecture to
+> perform platform-specific initialization at accelerator init time.
+>=20
+> For arm64, the hook queries the hypervisor for the supported IPA bit
+> size and validates it against the guest memory map via the machine's
+> get_physical_address_range callback, following the same pattern used =
+by
+> HVF and WHPX. This also populates the memory map which comes in handy
+> later when retreiving the vGIC layout.
+>=20
+> For x86, the hook calls mshv_init_mmio_emu() which was previously =
+called
+> directly from the common init path. Also move =
+set_unimplemented_msr_action()
+> and mshv_arch_post_init_vm() from mshv-cpu.c to the new mshv-all.c, as
+> they are not vCPU-specific.
+>=20
+> Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
 
-  (rr) p ptw
-  $1 = (S1Translate *) 0x7f07479f93a0
-  (rr) p *ptw
-  $2 = {in_mmu_idx = ARMMMUIdx_Stage2, in_ptw_idx = ARMMMUIdx_Phys_S, in_space = ARMSS_NonSecure, cur_space = ARMSS_NonSecure, in_debug = false, in_at = false,
-    in_s1_is_el0 = false, in_prot_check = 1 '\001', in_nv1 = false, out_rw = true, out_be = false, out_space = ARMSS_Secure, out_virt = 1075929104, out_phys = 1075929104,
-    out_host = 0x7f0750016010}
-
-However as we only write HFPAR_EL2.NS when
-arm_is_secure_below_el3(env) && fi.s1ns we can afford to relax the
-check in fault_s1ns.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2568
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/ptw.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index d5b2ed6c99c..ccdc1ef9916 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -634,9 +634,11 @@ static bool fault_s1ns(ARMSecuritySpace space, ARMMMUIdx s2_mmu_idx)
-      * For stage 2 faults in Secure EL22, S1NS indicates
-      * whether the faulting IPA is in the Secure or NonSecure
-      * IPA space. For all other kinds of fault, it is false.
-+     *
-+     * At this point we can't actually tell we are in SEL[012] but the
-+     * actual setting of HPFAR_EL2.NS is gated by arm_is_secure_below_el3(env).
-      */
--    return space == ARMSS_Secure && regime_is_stage2(s2_mmu_idx)
--        && s2_mmu_idx == ARMMMUIdx_Stage2_S;
-+    return space == ARMSS_NonSecure && regime_is_stage2(s2_mmu_idx);
- }
- 
- /* Translate a S1 pagetable walk through S2 if needed.  */
--- 
-2.47.3
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
 

@@ -4,83 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3510D6AB17
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 21:59:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA86D6AB16
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 22:00:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Q3A-00017M-NO; Thu, 02 Apr 2026 17:58:04 -0400
+	id 1w8Q20-0008DY-08; Thu, 02 Apr 2026 17:56:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2g-0000CY-Fn
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:35 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ id 1w8Q1w-0008Bz-Sv
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:49 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1w8Q2d-0007Fm-9r
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:57:32 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-b7cf4a975d2so176168166b.2
- for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:57:30 -0700 (PDT)
+ id 1w8Q1v-00072F-El
+ for qemu-arm@nongnu.org; Thu, 02 Apr 2026 17:56:48 -0400
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b8f97c626aaso225561966b.2
+ for <qemu-arm@nongnu.org>; Thu, 02 Apr 2026 14:56:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775167050; x=1775771850; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775167006; x=1775771806; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DyNt2FM/nxiaEh/tMXSTA/gNyXQ+MKhhy7At3qeZl0Y=;
- b=M9/eZLPomGtcsugBEFR1+Mu6ESEvHI4fZ71k3pydWdqRHlTM4HdgSl1yDb7cArXMY2
- u5QxEGvu9/r45rOxVTbeJ8+UCXsOI6hNM1LT80yEFWwHl6khPzaIl7jDyjO6E3iHn6rg
- leh6REH2EB8paeQqi9DCxKzlslvpGNE2+qLKw5pRlqNXf1IL5ZweFQyuTFmGXmnL+V5x
- +paEW+16BLGf5VEkEpDRpQVx/h0yRtnn52w4Y5x8rm6UroMzaOjZRTH++t6xbkGedDG1
- YiLheaIdL37hWSV9HwHz7OhPVnYFplcksKEroL0rbO6exIpkxGkWeyXAImp+iym/RurK
- u5mQ==
+ bh=YsiOCFpX98FF4Vw1kJYQcgkoeQF3bMwWWwwrSBOoVn4=;
+ b=a78sGn8ICd4izn/gMjCWTWiixvCKW2YHcdi1R5IvzyQGA03p5HJJOL3hsalwmRLfaA
+ 2RSEeJAGi/GDd/esgI/1FvQqqGGPyJbZJHQpZlegigI/BIn/k1MzH9B/Ela/21vUXUts
+ fX5Zo8wcMxduf+UJTU2FCezw3eSfJsu6NENyZzxzr7jGe6X1D78/fO2H3cvH2VqlcmG5
+ +xvTaspeArqD975/eZrP7A4KgytV2docIp8gIDpVV8C2f47796lx7xGeQRkk+JAWy1TK
+ QwGt0CkzQmwC4w8wEc/6IneoUYet6ablHiB/9yugPIH1ppx0hLzqkcgRAsy3kUS9SrPP
+ 8etQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775167050; x=1775771850;
+ d=1e100.net; s=20251104; t=1775167006; x=1775771806;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=DyNt2FM/nxiaEh/tMXSTA/gNyXQ+MKhhy7At3qeZl0Y=;
- b=BHg+zVtV/kKCSPG71pVxw/WoIkH4jTJG4Guhm8sa4OKpcAW/Xv9ktH8D/Kd010/9UV
- 7S7nfXUUi2eaBFRtUKW9sBLYFH5HhRuaJO+XoXrMzbhAQBx2HZMgsuohdUiUb4O5B2KU
- tevABAPq0vJ7k0tD7MJqowkwrmEREEEHpd5LQI3EMmIeZyoYTBg4F5EdG0w4+axmEwle
- AJq54X6I+ClRKLBCnjnEPlcisDipGdbPQmi0k6QCP8qfjuoEmEC5BjgsiW3ihcMlu5EO
- WcZQ2f6REOpYDUHF0VauleCG+bceiI4zNGhRfz6zKpysM0nNotTqB+YFsqf/RSE0rvac
- BiJA==
-X-Gm-Message-State: AOJu0YxfJmuPFAxE0aJeNuLljJCyDIP6l21mUpMPFlTOFqhcHQ5vF7WS
- olnczNNJ/uezgh5FI+f+QniCf/VY7lrdFCMI9WIuna86X+77fex7/ZGC
-X-Gm-Gg: AeBDieu7gSy+rzMs8d0HB3RNWn3jWF42w4kCK5IS7cFmwQ+Rrjk3NZC+NsmjbT50C//
- by+PC1/0Sx/KWZenCmJgTLKL0Zt6o0X+gFYjwe4Z32MBaYR4g5oGZzeWimgZhPmONea0rxJFf3R
- ZWHae7jaTHCvAEA/FxNZPVCtbdd71WXs0TxauxQpRyycbf3JY3Cxu8c6wrIcutHjlWgKUP+ACia
- nrBEUG/nL5z0GIVFc//lag44J+Wm0TclGU+qAJMgA5jKCMLQa9DfUG23H8furVmVu3InZG4tvT/
- X+pfy9ONSxAr/24tXB4bsOK2cDD/B1mwue1WM8WpRTMfkka0loaHUQ0JZ+fG79cFQXAEJdWuwTD
- HMQ3DmPqLL/Yb2tzrd7KXAEjcvvaNjqFj+6y+QzDBdWxGHsnK7UUl38o0xk46YPMGA3SsxToObN
- iovg8Cewqoebudb6PnALAbwXmaOs74oO8MNaNJWEGmjUhiCxE/LDbOs7U4ILN6QjzZCAahRQ==
-X-Received: by 2002:a17:906:6a1e:b0:b97:feec:5e82 with SMTP id
- a640c23a62f3a-b9c67b83920mr26615266b.43.1775167049656; 
- Thu, 02 Apr 2026 14:57:29 -0700 (PDT)
+ bh=YsiOCFpX98FF4Vw1kJYQcgkoeQF3bMwWWwwrSBOoVn4=;
+ b=KNbBb5ClJr3xm6biphXZAhXJbqlnPvFqGnNzkva8By7YN4EB2gTQ9cSdqF/Xd9TIjR
+ vT/t8bdVVEFwT9MYQ5FhyYo9XdKZeANmRdDMVwRiw2DUWju84tlvTseMwrq322H4wyLp
+ 89P8JrJjM9BoRp/w1tLxF/ZzcWffzL5jGj+wkTFYzgKZdWmg7l6nT1vkXXp/N5VuNUi1
+ o3YE9eJ5+dwQKVlp5oHk+lUzBJJIdD5PKQqJmZde+I26vuhpVVnb8BJH8xXBVgoNv1yP
+ iShQ+D9ZSBR01EKq5khetGJLMacFDUVmSTFwooLYDqlPoia9Iy39s2U2IWSkClH9P323
+ lo0A==
+X-Gm-Message-State: AOJu0YxhqNaidIeBODJPX4v5MSBWu9cUrN1eMn6ngCuQIkDsMzkHBV+m
+ 6+/6fYWabg1B2H/OhB/0+npOHo5ezFU3XDQhtGmEGwRGzrfpfpyi/QQgATncp0X6
+X-Gm-Gg: AeBDieviyG+1GN2pVW9FxwtrRy0XX8UvVUnf2vVIsO7TY+htqd1tJ/PNNM5bR3fGr/o
+ 3W2h1wB0z5jeTq0i5ZgiBLVdAJ643KhXfPYnVfg0BoSobBcSqoVygn9tfRnPcQq/gKN82tTxItu
+ 8po1D1fInqHl+T9bQf11vXqIm5G9JXoapz70DqVaBNP6RMV8Xehjb2Al+nHuEiiu0c6TqSPSdTX
+ GBq8L3LNmyFi4sbuArI1wXa8ppisO+91xCjtvSN1uv3qTHYduIetS61uhxB31fLdSWqyHuxYnlU
+ f/pD2vIEUyl83o6QRh41oRF9Jy+Hg/dBH5EswRqD/kn6beMHUE1sT/05T9fyfCpG05UqU+iU1Xh
+ zyIsYYa2OYquqF8yXVv42ia54RxDM2uwPkqFiIkOH4fe/qpyErVggXhwqAGAeaXW1uapdjsI+m4
+ MVwffUx07O2Pe9pUVaUkgjm8YXWYg03MQSP3xc+ZPlMsNO5zqxLMJl2om1WIVV3YglJ4xKOA==
+X-Received: by 2002:a17:906:9fd0:b0:b97:34e7:ea87 with SMTP id
+ a640c23a62f3a-b9c67454a03mr25355866b.19.1775167005540; 
+ Thu, 02 Apr 2026 14:56:45 -0700 (PDT)
 Received: from thinkpad-t470s.. (93-143-182-244.adsl.net.t-com.hr.
  [93.143.182.244]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.57.28
+ a640c23a62f3a-b9c3cac0e1asm134009166b.27.2026.04.02.14.56.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Apr 2026 14:57:29 -0700 (PDT)
+ Thu, 02 Apr 2026 14:56:45 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v3 27/33] hw/core/fdt_generic_util: initialize serial devices
-Date: Thu,  2 Apr 2026 23:56:12 +0200
-Message-ID: <20260402215629.745866-28-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 03/33] util/log: add log entry for fdt generic utils
+Date: Thu,  2 Apr 2026 23:55:48 +0200
+Message-ID: <20260402215629.745866-4-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 References: <20260402215629.745866-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,44 +111,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch adds proper handling and registration
-for serial devices instantiated via FDT.
-
-The devices with 'chardev' properties are
-connected to serial backends, if corresponding dts
-property serial id number is set.
+Introduce dedicated log mask for hardware device
+tree processing, to selectively enable diagnostic
+for FDT-based machine creation.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ include/qemu/log.h | 1 +
+ util/log.c         | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index f3a47cbafe..c92b5c287b 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -37,6 +37,7 @@
- #include "system/system.h"
- #include "system/reset.h"
- #include "qemu/cutils.h"
-+#include "chardev/char.h"
- #include "qemu/log.h"
- #include "qemu/config-file.h"
- #include "hw/core/boards.h"
-@@ -721,6 +722,13 @@ static void fdt_init_qdev_properties(char *node_path, FDTMachineInfo *fdti,
-             continue;
-         }
+diff --git a/include/qemu/log.h b/include/qemu/log.h
+index 92956e5d0f..8d48ee332a 100644
+--- a/include/qemu/log.h
++++ b/include/qemu/log.h
+@@ -38,6 +38,7 @@ bool qemu_log_separate(void);
+ #define CPU_LOG_TB_VPU     (1u << 21)
+ #define LOG_TB_OP_PLUGIN   (1u << 22)
+ #define LOG_INVALID_MEM    (1u << 23)
++#define LOG_FDT            (1u << 24)
  
-+        /* Special case for chardevs.  */
-+        if (!strcmp(propname, "chardev") && !strcmp(p->type, "str")) {
-+            qdev_prop_set_chr(DEVICE(dev), "chardev",
-+                              serial_hd(get_int_be(value, len)));
-+            continue;
-+        }
-+
-         fdt_init_qdev_scalar_prop(dev, p, fdti, node_path,
-                                   propname, value, len);
-     }
+ /* Lock/unlock output. */
+ 
+diff --git a/util/log.c b/util/log.c
+index 7cffbc1bf8..d88a47394b 100644
+--- a/util/log.c
++++ b/util/log.c
+@@ -531,6 +531,7 @@ const QEMULogItem qemu_log_items[] = {
+       "include VPU registers in the 'cpu' logging" },
+     { LOG_INVALID_MEM, "invalid_mem",
+       "log invalid memory accesses" },
++    { LOG_FDT, "fdt", "log Device Tree info." },
+     { 0, NULL, NULL },
+ };
+ 
 -- 
 2.43.0
 

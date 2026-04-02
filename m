@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8916CC6B3E
-	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 15:19:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3330D3943C
+	for <qemu-arm@archiver.kernel.org>; Thu,  2 Apr 2026 15:33:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8JpH-0005Wt-20; Thu, 02 Apr 2026 11:19:20 -0400
+	id 1w8K35-0003mF-O3; Thu, 02 Apr 2026 11:33:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1w8JpF-0005WR-0j
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 11:19:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w8K2z-0003kp-RQ; Thu, 02 Apr 2026 11:33:30 -0400
+Received: from sender4-of-o54.zoho.com ([136.143.188.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1w8JpD-0004Mh-PR
- for qemu-arm@nongnu.org; Thu, 02 Apr 2026 11:19:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1775143154;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=h6sCJBaxJf/OZjo3HR1LJVu11JKU+l2/NN5vhYf2oxw=;
- b=YFxEZItFM+wrZaL+qeLTkU2nDX9j6AH1lEEoGkrNGPQES8cmexydLrcsah8BClrhKvLVUC
- yHIqLhdXCDrjybunLltuUyTvdT07gTfQhgLpMB1KkPpnp1ilo/EOilDjV2f5sqmqQdTCDe
- +X2OGZSlK+T1Cvt3ZVyWkyYNgjLzVXI=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-HLk3dZLzPJmlO_jYDceJWA-1; Thu,
- 02 Apr 2026 11:19:12 -0400
-X-MC-Unique: HLk3dZLzPJmlO_jYDceJWA-1
-X-Mimecast-MFC-AGG-ID: HLk3dZLzPJmlO_jYDceJWA_1775143150
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9D4891956053; Thu,  2 Apr 2026 15:19:10 +0000 (UTC)
-Received: from localhost (unknown [10.44.49.158])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2BBE119560A6; Thu,  2 Apr 2026 15:19:08 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Sebastian Ott
- <sebott@redhat.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- Alireza Sanaee <alireza.sanaee@huawei.com>
-Subject: Re: [PATCH v2 3/3] arm/kvm: get demuxed ID registers from kvm
-In-Reply-To: <ece352d8-d819-4562-b6d6-f761898a3bbf@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20260204133229.297061-1-cohuck@redhat.com>
- <20260204133229.297061-4-cohuck@redhat.com>
- <ece352d8-d819-4562-b6d6-f761898a3bbf@redhat.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Thu, 02 Apr 2026 17:19:06 +0200
-Message-ID: <87zf3lcrv9.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <anirudh@anirudhrb.com>)
+ id 1w8K2y-0008TP-8F; Thu, 02 Apr 2026 11:33:29 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1775143968; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=iUlCJwvz4jfTAnK089W05ufBh+ng18Fjba14SFCXmGpr1P3shcg4mP7hssTeZXDZaf7RP0ExmTXaLbz+s/wuTS165kgLLaOpKbblJnlgQQvWGCAWBklFAmzAfqzO+NUInmzcCi+evUIy65yaDUP3wsOm/QJfrkQwzqLgo9EJQiE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1775143968;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=XSTNriXCZzrVpa/vUtkXKE3tPoQ9sm52NLHe7sIBtTs=; 
+ b=XphmfPnuAZEVNApCM6iUN9vF2/euNuTPBuI2kE1GVj4nixR5loaPom+JPWBvE4I1mx85T+TNHc7x0f/jgrVRCzAMFsYMf8rZIX6z4XxYDHKW0turEX38o16MP8ROnBrSNmgsYhbhRt4bH6iGfzQmIHnp+cWKLgym5ylxV4XumWI=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=anirudhrb.com;
+ spf=pass  smtp.mailfrom=anirudh@anirudhrb.com;
+ dmarc=pass header.from=<anirudh@anirudhrb.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1775143968; 
+ s=zoho; d=anirudhrb.com; i=anirudh@anirudhrb.com;
+ h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:Message-Id:Reply-To;
+ bh=XSTNriXCZzrVpa/vUtkXKE3tPoQ9sm52NLHe7sIBtTs=;
+ b=Nbqgelo1k7UjBKH6rd7XfCs6N/0bhABi6eTkR/cqhdMdtRlAhYj+O9V7YTkVBD6z
+ ZhDPWtZHBuMJVT8l/7ClcqKdfCt96wL/eHlfOiTnHxNCQ/ej2BAuAx6E8BSIonop/3i
+ sjbAcYBKoB+5w0rqqeb8IDPU0aqITFY6Jc82yQ3Q=
+Received: by mx.zohomail.com with SMTPS id 1775143964040451.5148707301264;
+ Thu, 2 Apr 2026 08:32:44 -0700 (PDT)
+Date: Thu, 2 Apr 2026 15:32:37 +0000
+From: Anirudh Rayabharam <anirudh@anirudhrb.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-devel@nongnu.org,
+ Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ =?iso-8859-1?Q?=22Daniel_P=2E_Berrang=E9=22?= <berrange@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Magnus Kulke <magnus.kulke@linux.microsoft.com>,
+ qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Pedro Barbuda <pbarbuda@microsoft.com>
+Subject: Re: [PATCH v2 06/14] accel/mshv: add arch-specific accelerator init
+ hook
+Message-ID: <20260402-wealthy-limpet-of-vitality-ffb7d8@anirudhrb>
+References: <20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com>
+ <20260402-mshv_accel_arm64_supp-v2-6-754895c15e9e@linux.microsoft.com>
+ <BA3D9272-4972-4922-B6C2-26306FE19139@unpredictable.fr>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 4tgV3WzKe0HzUgyFyafgv4I1LnFxyxCsZ5sC2eKTztc_1775143150
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 7
-X-Spam_score: 0.7
-X-Spam_bar: /
-X-Spam_report: (0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.542,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <BA3D9272-4972-4922-B6C2-26306FE19139@unpredictable.fr>
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.54;
+ envelope-from=anirudh@anirudhrb.com; helo=sender4-of-o54.zoho.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,48 +89,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Apr 01 2026, Eric Auger <eric.auger@redhat.com> wrote:
+On Thu, Apr 02, 2026 at 04:26:08PM +0200, Mohamed Mediouni wrote:
+> 
+> 
+> > +/*
+> > + * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
+> > + * fault to the guest if it tries to access it. It is possible to override
+> > + * this behavior with a more suitable option i.e., ignore writes from the guest
+> > + * and return zero in attempt to read unimplemented.
+> > + */
+> 
+> Hi,
+> 
+> Is that desirable behaviour on arm64? I think it’s better to _not_
+> do this there.
 
-> On 2/4/26 2:32 PM, Cornelia Huck wrote:
->> We now have the infrastructure in place to get and save demuxed ID
-> Here we only get their values? What about the save?
+This is not for arm64. This is *existing* x86 code being moved to an
+arch-specific directory.
 
-We only get, but we could also save, if we had the right interfaces :)
-I'll try to reword it to be less confusing.
-
->> registers from kvm. Use it to get the values that kvm emulates for
->> CCSIDR_EL1.
->>
->> Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
->> Reviewed-by: Sebastian Ott <sebott@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> ---
->>  target/arm/kvm.c | 33 +++++++++++++++++++++++++++++++++
->>  1 file changed, 33 insertions(+)
->>
->> @@ -416,6 +444,11 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>               */
->>              err |= get_host_cpu_reg(fd, ahcf, ID_AA64ZFR0_EL1_IDX);
->>          }
->> +        /* grab demuxed registers */
->> +        for (i = 0; i < 14; i++) {
->> +            /* KVM only allows 0..13 */
-> where is it documented? Maybe add a comment or justification in the
-> commit msg. Use a define?
-
-Linux arch/arm64/kvm/sys_regs.c has
-
-#define CSSELR_MAX 14
-
-Not sure if there is any actual documentation.
-
->> +            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
->> +        }
->>      }
->>  
->>      kvm_arm_destroy_scratch_host_vcpu(fdarray);
-> Thanks
->
-> Eric
+Thanks,
+Anirudh.
 
 

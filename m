@@ -4,150 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32699E7E35D
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 09:35:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9DCE8536F
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 14:40:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8avq-0001BZ-0a; Fri, 03 Apr 2026 05:35:14 -0400
+	id 1w8fga-0004a1-Ir; Fri, 03 Apr 2026 10:39:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w8avm-0000wJ-V8
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 05:35:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w8avk-00015Z-K3
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 05:35:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1775208903;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=IeRLDPiTClc78EfTQbw+Zj4UU+J9GsP8qS7u3cxNpbo=;
- b=ZU+LqEkaQF9AWQN0iipj+1gnLnjcOvFeWnsjrJU7bcMxhxFCNbWq5qtK5UinGOitWkZyLb
- N7YTWTP1PSFm8g7A6AZsZEKfVLWmNJA8YGMCd1Le2xuv67d1xdotT+Bilzf/mzb32Up4LO
- JWNd5e10x+pPaTuiBbQCt60sUcqxEPI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-26-6JDZcpOePsCs888Gy1GkUg-1; Fri, 03 Apr 2026 05:34:59 -0400
-X-MC-Unique: 6JDZcpOePsCs888Gy1GkUg-1
-X-Mimecast-MFC-AGG-ID: 6JDZcpOePsCs888Gy1GkUg_1775208898
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-43d1fec59c9so1297702f8f.0
- for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 02:34:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1w8fgY-0004Zb-Ni
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 10:39:46 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1w8fgX-0003IB-83
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 10:39:46 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ 46e09a7af769-7d7422b4ff1so655929a34.3
+ for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 07:39:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775227184; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FsXTq4qq2SmKJJ55iBpVwCADQ7A2Zd6BLphwNoQ2vUCvAx+mGym8uNB2/pqsY6oPLy
+ WEN7jtTAhSS+2Mt1avfks5xgr2FarjFBkBpremfn6yaZmCbkoHZ4TU88zfRsh30s41hL
+ DgcslqRGr2xTFFG/gTKpaS2lE2CooFTfHzuJtfoSteEKAlHAhbzj1GSRJtnbs359h5hs
+ C2xvvAkGKPEnfOVteyjm4XPF289Ycs1U2Fy4PzPUp6Bsy7G8kcalffH028uASvmRnGqr
+ oNNKA9xcjKTf4afm6rNxPDvBvvIROqTiwCSMMtJ3JqXKSAwmCjCv+yaSBdnhmchk0YBM
+ TblQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+ bh=XWmjx6emSszF2gy2KB6vkQNFV+q4J6L4U/yZYz1jUl4=;
+ fh=uUh9S5BodFqmOw8/JrR+hxDdJ3kbGGIcLFY/YHe2LTg=;
+ b=jxqWkdMViQ2CwkbMJT9mbYO5VD9CIrkKz6fWb9TFnxXUmyiQgpi9SzJ1kGzlK3tuSz
+ Q8se3j4Wiud7ePt9wE3IK+SkpEww8qAt6Nm/u8lLcxlHAaQH0VCwCc0ewfIKL0oGa/ua
+ 0Y2B94gGSvyiSsFON0646UjyYQjs/EVgEICYvRj54mFxZHQcnldF+C/eAhY/k8hiYSUP
+ 5+EesQOy9cN8VVYFdHOSBRaKICHIqS+XiCnCgIaznngvlRv6lWM2edsGoo0MW10h1O44
+ ujEGXO+pu73woLvrg0XWphGj9WGjWdLDl3jJGsidIs0aNrilY0NQvFnBo25C7CNeDyxz
+ tP+Q==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1775227184; x=1775831984; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=XWmjx6emSszF2gy2KB6vkQNFV+q4J6L4U/yZYz1jUl4=;
+ b=j5SgeF/pH25myFwNXZBY2gx84eGerxAdDCypau2/X8Gcx4XKM9Khqspx94nwpRQXcY
+ ZVN5NdhxH6tH0fdj84IR2jnWU1WDIoYXhf7KigTQdUZwQQ+ylqhoa5/WpKmloCqvh3Nd
+ ZUwCcg8xLbn7qFbA7b/TH4SAcsAtbetYJuyUGw7qXZXqILKQ4+k0qcQMba3HZcqtRwZn
+ c/0d1f+lF1K7IABP98xMlZOKY7K22D4B0Zcf13lDLS2p/3aJxulQ8EwKcyfQD2Jv5b8Z
+ w1p+1xZOUI9ccIB5a7DKYWi73gq+qjWgcJZkPKUOy2D6D4wWE1Umd+hXUwarjDf/SrFr
+ KMcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775208898; x=1775813698;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IeRLDPiTClc78EfTQbw+Zj4UU+J9GsP8qS7u3cxNpbo=;
- b=XBKgafbqbtHtWPOZmpbhd4dq4eXAkh/M/uqbH2hLngKWglFHLgKGCAQ3VWsBhFzH9b
- m8jBAfXWITQJsTAejuNYyo00NehG0xnYKvGTHivmuV9MygPpxd1RsYcXhvQf+Wux2PV5
- 1n0Uhvo9/MikLy9W7AC6qULed5HUahf2jutvcoTwZuhXhBV6xvFjI5DPrsX7wG0pmaZk
- gxXYV0O2LHFv0x9GKwsHa0rRtzFhAr1I6yNRjnzOMLsYW9TDiLl5BbhEAdfh0Ow4qFC6
- pLSPUS+dK0WzpelidiOtev6/7zywoMNo/HULt5lj5dR1VwdSryDuxuwneM20UvQXzRms
- QKgA==
+ d=1e100.net; s=20251104; t=1775227184; x=1775831984;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=XWmjx6emSszF2gy2KB6vkQNFV+q4J6L4U/yZYz1jUl4=;
+ b=TRmJ/FX07St43VEg6D4gecMWKMnGx2CStDKQrIqjuAAVcgrIWdgjcci1rlNa9ax5rB
+ 1fLHBqyxK+xjXOW+nyPsGL5EmwROfhldpdln0c78YihmoS6VZtj59jzAnPfr2CcFesQh
+ Ujd9SH4tXuh0c1MIYcTd3Djh6dMbCpDfBqb8mWbKy4zhUn12jMn/NJlIE4pwfUKyrSsJ
+ Ghqa5d8b73RYeG6z8Q8dAYmcDLr8n/qItnme67yExQaOYlPGDL1jDc1STPTXUafxNKcK
+ Zzg936iuRzjpkimYseuqn8dUtMw+8el1TLSuzUt4pfU37otzbhgAdltVFWGQqAfWcoKY
+ Z0fA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWc1sVNJN2+IZcxvlaHuzKZ1x/SsW06IiGpTQ2MESJgi/o1PpYCqowLjZaczCW1dBDmivduZpS3pA==@nongnu.org
-X-Gm-Message-State: AOJu0YxbPyzQHS7XL9uC/6ed2A8uk6xrF0NEU7j+0E6TereFciLZ84H/
- PdwhDrfDghndwYLooXYHCrTlo54AW/uopXuOGMjJWBjom5FOz3aT3lASTS7rZvJD1bHq0XbioN6
- J4Hivbd+w1PERlTf0DT5JexN9Ndh+D1dWL3hZ3uTYhfcyOL+25WIPsw==
-X-Gm-Gg: AeBDiesrXYghlzlMBibgNWgJcd8IjqnuMqTPlJnjr/ie7LeXWK/IzJ5YQsS2Xwoyf9X
- jj7KOm2QUuQunDqL8YBlo5as5nBU6Z3MWzkVpKpFEupTHdXWt6rQzTPfB+q/6OqbQEdCeC2WFPS
- Mr788F6BXZ63MYUHSlHP9qhriUOhuORpfRru2NHJPclRJJvZQIzGKTUt+lR+WfGpnvQrxh1V90o
- vFvefLjTPaFHRF2PhGA0DQLx9Hj+aI4c2Ie+c0tom1cBE+6hkYoozrdYocrVGKPQgDXAQppsanw
- WrCwtnL06GJEuq1pmcJNrXFnJEzrkX34/BK/PRCfFKy0n8PBMJe38iJtzVtTw8hb4EUeDRDWYi2
- hJ9JL/a7lhIKqC48GJLMimFT8C7s3syikr7gUaTN83SDTpV4MzC0xuSpW4l3U
-X-Received: by 2002:adf:f482:0:b0:43d:2f10:511f with SMTP id
- ffacd0b85a97d-43d2f105374mr407664f8f.0.1775208898357; 
- Fri, 03 Apr 2026 02:34:58 -0700 (PDT)
-X-Received: by 2002:adf:f482:0:b0:43d:2f10:511f with SMTP id
- ffacd0b85a97d-43d2f105374mr407619f8f.0.1775208897820; 
- Fri, 03 Apr 2026 02:34:57 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d1e4f843dsm13978627f8f.37.2026.04.03.02.34.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Apr 2026 02:34:57 -0700 (PDT)
-Message-ID: <51644344-1805-4809-831d-77663d181d83@redhat.com>
-Date: Fri, 3 Apr 2026 11:34:56 +0200
+ AJvYcCUDOq6d5CGH/DvNmokJAlIaFaWcJ5HjkPNxDz7BUCOuqQmtg3NFOX0P75IwVcZkNdcijC5XiCI//A==@nongnu.org
+X-Gm-Message-State: AOJu0YxkHUov0y7JdpBolz6/NvC8x1Uel8JrrunWB5kcd0EUWb8t2xYR
+ xPqjwIJSkrXwhsh9RRUVenuqYdrZ6e2XLkc7Kbe6xzn3zhUhEcucmzBWjbGWToZqjnlFOcF3kPn
+ ohMjgdhtvS0h5fjBc8g7NWLs94pWc/vs=
+X-Gm-Gg: ATEYQzyPx9PRTp8aXWHd9kG5JfdK+j2cy4HfnOfLpQq5p8WaG/eyZexAE93y0DNPzHr
+ Um9PqZ7ZnqxDJB6pk86PhMnU2Gi9isA9OfHqGn7gGYs8ba2Wb11NDiPhvLBu/kSk+d7tBuYDM7D
+ L1jqxbUXjs7z2A4/AYpvnGFiS0ean0RXnrExfPwl/mz0W/fNSU8K9VqjC/Ol+Jqltdl8Ye3xsiT
+ eokzhs7kx1tKWRIdSmqeKIMWzj9r+9/gsWeSWsYpUvyl9K8qP5DzWCCzRnHS+ZpqgJutCazvrce
+ pfd6Zkg=
+X-Received: by 2002:a05:6830:91f:b0:7d7:4a7d:fd40 with SMTP id
+ 46e09a7af769-7dbb754e5bemr1893025a34.22.1775227183858; Fri, 03 Apr 2026
+ 07:39:43 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 02/14] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-To: Zhenzhong Duan <zhenzhong.duan@intel.com>, qemu-devel@nongnu.org
-Cc: alex@shazbot.org, eric.auger@redhat.com, mst@redhat.com,
- jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
- skolothumtho@nvidia.com, joao.m.martins@oracle.com,
- clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
- xudong.hao@intel.com, qemu-arm@nongnu.org
-References: <20260403035541.18355-1-zhenzhong.duan@intel.com>
- <20260403035541.18355-3-zhenzhong.duan@intel.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260403035541.18355-3-zhenzhong.duan@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BxMeXdLbO7gsXE9A2xqJD5_Fxps8UNZbcuTtDRi9mCQ_1775208898
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Date: Fri, 3 Apr 2026 16:39:32 +0200
+X-Gm-Features: AQROBzDDVi9VbKIpdDtRiPO-QKoRVQOb3yYWoD7q4EE8aLaP5o-M_L4UOWB7-mg
+Message-ID: <CAN-aV1EiKRh-Zpb9=77rXYPD2uT7HZmeNfvVW-wAToT+gaVC=A@mail.gmail.com>
+Subject: Question on preferred location for QEMU sample projects
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: artem_mygaiev@epam.com, takahiro.nakata.wr@renesas.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ot1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.542,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,231 +111,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/3/26 05:55, Zhenzhong Duan wrote:
-> Same for the two wrappers and their call sites.
-> 
-> Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-> Reviewed-by: Yi Liu <yi.l.liu@intel.com>
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Xudong Hao <xudong.hao@intel.com>
+Hi everyone,
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+We are currently preparing the v2 patch series for the Remote-Port
+Co-simulation protocol for interfacing with SystemC modules. The first
+revision was here:
+https://lists.nongnu.org/archive/html/qemu-devel/2026-02/msg01760.html.
 
-Thanks,
+As part of this submission, we would like to publish a sample project
+serving as a demonstration of how to connect a QEMU Remote-Port
+frontend to a SystemC backend.
 
-C.
+The sample project implements a standard SystemC IP core and uses
+several external components such as:
+- libsystemctlm-soc: https://github.com/Xilinx/libsystemctlm-soc
+- VCML Library: https://github.com/machineware-gmbh/vcml
+- SystemC Library: https://github.com/accellera-official/systemc
 
+We have a question regarding the location for this kind of project.
+Could you please suggest if there is a preferred location or some
+standard practice for hosting such a sample project?
 
-
-> ---
->   include/system/iommufd.h    | 16 +++++++++++-----
->   backends/iommufd.c          |  9 +++++----
->   hw/arm/smmuv3-accel.c       | 12 ++++++++----
->   hw/i386/intel_iommu_accel.c | 19 ++++++++++---------
->   hw/vfio/iommufd.c           | 10 +++++-----
->   5 files changed, 39 insertions(+), 27 deletions(-)
-> 
-> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-> index 2925d116ac..da98e79439 100644
-> --- a/include/system/iommufd.h
-> +++ b/include/system/iommufd.h
-> @@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
->        *
->        * @hiodi: host IOMMU device backed by IOMMUFD backend.
->        *
-> +     * @pasid: target pasid of the device to be attached.
-> +     *
->        * @hwpt_id: ID of IOMMUFD hardware page table.
->        *
->        * @errp: pass an Error out when attachment fails.
->        *
->        * Returns: true on success, false on failure.
->        */
-> -    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t hwpt_id,
-> -                        Error **errp);
-> +    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-> +                        uint32_t hwpt_id, Error **errp);
->       /**
->        * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
->        * VFIO and VDPA device can have different implementation.
-> @@ -154,15 +156,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
->        *
->        * @hiodi: host IOMMU device backed by IOMMUFD backend.
->        *
-> +     * @pasid: target pasid of the device to be detached.
-> +     *
->        * @errp: pass an Error out when attachment fails.
->        *
->        * Returns: true on success, false on failure.
->        */
-> -    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, Error **errp);
-> +    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-> +                        Error **errp);
->   };
->   
->   bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> -                                           uint32_t hwpt_id, Error **errp);
-> -bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> +                                           uint32_t pasid, uint32_t hwpt_id,
->                                              Error **errp);
-> +bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> +                                           uint32_t pasid, Error **errp);
->   #endif
-> diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index 410b044370..cfde6f2b2c 100644
-> --- a/backends/iommufd.c
-> +++ b/backends/iommufd.c
-> @@ -539,23 +539,24 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
->   }
->   
->   bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> -                                           uint32_t hwpt_id, Error **errp)
-> +                                           uint32_t pasid, uint32_t hwpt_id,
-> +                                           Error **errp)
->   {
->       HostIOMMUDeviceIOMMUFDClass *hiodic =
->           HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
->   
->       g_assert(hiodic->attach_hwpt);
-> -    return hiodic->attach_hwpt(hiodi, hwpt_id, errp);
-> +    return hiodic->attach_hwpt(hiodi, pasid, hwpt_id, errp);
->   }
->   
->   bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> -                                           Error **errp)
-> +                                           uint32_t pasid, Error **errp)
->   {
->       HostIOMMUDeviceIOMMUFDClass *hiodic =
->           HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
->   
->       g_assert(hiodic->detach_hwpt);
-> -    return hiodic->detach_hwpt(hiodi, errp);
-> +    return hiodic->detach_hwpt(hiodi, pasid, errp);
->   }
->   
->   static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 3630078751..3201bb25af 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -300,7 +300,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
->           return false;
->       }
->   
-> -    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-> +    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-> +                                               errp)) {
->           if (s1_hwpt) {
->               iommufd_backend_free_id(hiodi->iommufd, s1_hwpt->hwpt_id);
->               g_free(s1_hwpt);
-> @@ -575,7 +576,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
->   
->       /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
->       hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
-> -    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-> +    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-> +                                               errp)) {
->           goto free_veventq;
->       }
->       return true;
-> @@ -665,7 +667,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
->       hiodi = accel_dev->hiodi;
->       accel = accel_dev->s_accel;
->       /* Re-attach the default s2 hwpt id */
-> -    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id, NULL)) {
-> +    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-> +                                               hiodi->hwpt_id, NULL)) {
->           error_report("Unable to attach the default HW pagetable: hiodi devid "
->                        "0x%x", hiodi->devid);
->       }
-> @@ -879,7 +882,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
->   
->       hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
->       QLIST_FOREACH(accel_dev, &accel->device_list, next) {
-> -        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi, hwpt_id,
-> +        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi,
-> +                                                   IOMMU_NO_PASID, hwpt_id,
->                                                      &local_err)) {
->               error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
->                                 "hiodi devid %u", hwpt_id,
-> diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
-> index ed3793602b..3217a2afac 100644
-> --- a/hw/i386/intel_iommu_accel.c
-> +++ b/hw/i386/intel_iommu_accel.c
-> @@ -121,8 +121,9 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
->           }
->       }
->   
-> -    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp);
-> -    trace_vtd_device_attach_hwpt(hiodi->devid, vtd_as->pasid, hwpt_id, ret);
-> +    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-> +                                                errp);
-> +    trace_vtd_device_attach_hwpt(hiodi->devid, IOMMU_NO_PASID, hwpt_id, ret);
->       if (ret) {
->           /* Destroy old fs_hwpt if it's a replacement */
->           vtd_destroy_old_fs_hwpt(hiodi, vtd_as);
-> @@ -141,22 +142,22 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
->   {
->       HostIOMMUDeviceIOMMUFD *hiodi = HOST_IOMMU_DEVICE_IOMMUFD(vtd_hiod->hiod);
->       IntelIOMMUState *s = vtd_as->iommu_state;
-> -    uint32_t pasid = vtd_as->pasid;
->       bool ret;
->   
->       if (s->dmar_enabled && s->root_scalable) {
-> -        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, errp);
-> -        trace_vtd_device_detach_hwpt(hiodi->devid, pasid, ret);
-> +        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, IOMMU_NO_PASID,
-> +                                                    errp);
-> +        trace_vtd_device_detach_hwpt(hiodi->devid, IOMMU_NO_PASID, ret);
->       } else {
->           /*
->            * If DMAR remapping is disabled or guest switches to legacy mode,
->            * we fallback to the default HWPT which contains shadow page table.
->            * So guest DMA could still work.
->            */
-> -        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id,
-> -                                                    errp);
-> -        trace_vtd_device_reattach_def_hwpt(hiodi->devid, pasid, hiodi->hwpt_id,
-> -                                           ret);
-> +        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-> +                                                    hiodi->hwpt_id, errp);
-> +        trace_vtd_device_reattach_def_hwpt(hiodi->devid, IOMMU_NO_PASID,
-> +                                           hiodi->hwpt_id, ret);
->       }
->   
->       if (ret) {
-> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-> index f020b56208..ecabc33064 100644
-> --- a/hw/vfio/iommufd.c
-> +++ b/hw/vfio/iommufd.c
-> @@ -927,21 +927,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
->   
->   static bool
->   host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> -                                           uint32_t hwpt_id, Error **errp)
-> +                                           uint32_t pasid, uint32_t hwpt_id,
-> +                                           Error **errp)
->   {
->       VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
->   
-> -    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
-> -                                                hwpt_id, errp);
-> +    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
->   }
->   
->   static bool
->   host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-> -                                           Error **errp)
-> +                                           uint32_t pasid, Error **errp)
->   {
->       VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
->   
-> -    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
-> +    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
->   }
->   
->   static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
-
+--
+BR,
+Ruslan
 

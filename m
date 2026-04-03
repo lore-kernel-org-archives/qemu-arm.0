@@ -4,169 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA7CD730B1
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 07:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEBD5E7E358
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 09:16:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8Z27-0001fi-RW; Fri, 03 Apr 2026 03:33:36 -0400
+	id 1w8acz-0004zo-Vo; Fri, 03 Apr 2026 05:15:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1w8Z26-0001fH-LW; Fri, 03 Apr 2026 03:33:34 -0400
-Received: from mgamail.intel.com ([198.175.65.21])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w8acx-0004yr-7D
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 05:15:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1w8Z24-00072e-CH; Fri, 03 Apr 2026 03:33:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775201613; x=1806737613;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=6/06HHZbWzyCxZqSNKCwtu7oUtQhRTeLWTU+mnc2JTI=;
- b=gjGoeWRHUdPxy+Ok/NnF9sB99VuIR8HghDBfZs7Q+vFMqI0+ppB07Rfp
- POc+mIuBgl0Hxm+iF5tGinSVOUKP/c1yNt+VMuoD1zXV4SkPkopJf4Qci
- IYHdiWkGjplr7OOSD7jG7zrWxmB+OIwW50yphldNfhsUhjYXaU9umBpMW
- 9v98YvqSb6jo/rd4WA5GjQjF0nm6r/fUveshNDNtG+vvIyjYeYAff5htM
- tjap6qQDeuNTL9TS6jmnr4dHMJ+PGLg1oCODTNsurzg7CuD0hjVFl0B++
- YqRJEmVmyGqWDzN0LASaT+0iEM6Ybg5RU2QXjzZXm2/K1Mv1zasrkg8m5 g==;
-X-CSE-ConnectionGUID: O+sS6IlFTUyaLPyfH5zQ7w==
-X-CSE-MsgGUID: GaeJrYSESHyH628cW1Syiw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11747"; a="76149117"
-X-IronPort-AV: E=Sophos;i="6.23,157,1770624000"; d="scan'208";a="76149117"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Apr 2026 00:33:29 -0700
-X-CSE-ConnectionGUID: EgDESWL1Rry/nAhQ174l5w==
-X-CSE-MsgGUID: NKF7KcfBRym9qo1tKaIKkw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,157,1770624000"; d="scan'208";a="232001455"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Apr 2026 00:33:28 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 3 Apr 2026 00:33:27 -0700
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Fri, 3 Apr 2026 00:33:27 -0700
-Received: from BN1PR04CU002.outbound.protection.outlook.com (52.101.56.40) by
- edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 3 Apr 2026 00:33:26 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I0AIwiX5lJ5ciuyZpdBgTU+glxXYHMaXJI/tpC6i6DsKtLT1l1je0z8FjPUQZJD7dTAC/CCLQEtz9ldQPvNjWqIme4i9Qd4+UkTaL/7YGILv6Rp1uWlYoDYzSDjYA/GFEFT8zWnoZmxnteZOfsjiEmEpbQqjW9mxxMeGN/Ha+VnPRLQZwc/OMjN4UObBgXc21Gsb0vEgdUUs14btrE4/ZVrIZCM7rHnMkB7hDRwdH2W9yFDY01492ogHQs5vD8fwYXfPZrCi7Hhj8qg+vIMDklPhUCV++hM9VXMffiQ2dcVE94BqWmYyClHpZHrHYotSxa5HFPiGgX6TPApCDUpg2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=prMPGjR/+BcUn5EfEm5pbUQYpCoJxrNr2OVfIWTdHc4=;
- b=Sj47t+nQ03MBkW5CyN2qMPye7q7qpda7ptKEx2HB+MADRvWJ+rIKXw9/mDsQ/Bz6m4qWwjQ9THwN4eYP+agQRKa5S3hR33kkD7eE2FjdpN0ZvYiFvGtlgdiI5OQF+gn7QULQNslyomv14oCd6O1aBLcbBW0iI96v/eikNCMlImW+y6ndL9h0keZKTMhoaB7wd0w5CBqXa3nbA7TOw7JXoHiqSdV75ZKdOTFkgzZNFrX7EzR4KDBOaSCTeFZq8mImi+K2/YIFsnhnUvoTsSl/HbkBu5QBThFudX6X47m37SOFwk5YU3Uno549WPgVzesW72aNQM2wwtZWzQNakMMXIw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com (2603:10b6:208:574::12)
- by DM6PR11MB4706.namprd11.prod.outlook.com (2603:10b6:5:2a5::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.20; Fri, 3 Apr
- 2026 07:33:18 +0000
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::37b4:37a9:4f3:518b]) by IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::37b4:37a9:4f3:518b%5]) with mapi id 15.20.9769.011; Fri, 3 Apr 2026
- 07:33:18 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
- <clg@redhat.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "nathanc@nvidia.com" <nathanc@nvidia.com>, "mochs@nvidia.com"
- <mochs@nvidia.com>, "jan@nvidia.com" <jan@nvidia.com>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, "Liu,
- Yi L" <yi.l.liu@intel.com>
-Subject: RE: [PATCH] hw/vfio/iommufd: Control dirty tracking for nesting
- parent HWPT
-Thread-Topic: [PATCH] hw/vfio/iommufd: Control dirty tracking for nesting
- parent HWPT
-Thread-Index: AQHcwbPw1GepVXR9ZE+ge6WyOpzldrXM9KAQ
-Date: Fri, 3 Apr 2026 07:33:18 +0000
-Message-ID: <IA3PR11MB913645595AA06064691C7EEB925EA@IA3PR11MB9136.namprd11.prod.outlook.com>
-References: <20260401084133.56266-1-skolothumtho@nvidia.com>
-In-Reply-To: <20260401084133.56266-1-skolothumtho@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB9136:EE_|DM6PR11MB4706:EE_
-x-ms-office365-filtering-correlation-id: 9c0d286f-f3ba-4dbd-81c7-08de91534682
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|366016|1800799024|7416014|38070700021|22082099003|18002099003|56012099003;
-x-microsoft-antispam-message-info: a92eaBrsS0NME/WznVh8m86jqj3EUSRBCXihiraDHCp0dDlBs7hAgRABAPZgjOfs20Kp/UxX3i74bQ5fLUKmIwnu2cb58E8hZxaPtt10p45mrfDkS2TnsmKJHkN9m6WkSFyLtpxduxDaTLw7lJGWvczxxfsx9fCcbz7dbXObGcrTEjxO/GF0AzZbxRKz947lu6uAwsyKiKj+iOnSfrwwtIbrFdBPSgosm0ko4miXP5j4f2mt6Fm1X4LINVS/KpDZ69FPwVigORALGu3Z/d80iK8iox1H2KbbYgcVV4oDjOGpV+WgMLK7kiD3jkRWZP8iSjsoIjn2w7LmDk7Dl32MppcZVxCN2qHkPg+XJDbXlexri+GOJ4+EjDKtSd9oKYfH9AOaoymZbyHaDcksHuTUV8CalXahSdf3EICxeuSfrSEHviQ9qk35pWnizpDkSc2cVdy5OAfmRkll72WGPGitMXd5ykJopH7RpKbZeYWadn3t3g0nI6PFVB14xJzTfzE3wX0EZ244mDRTV4olmZ4atxlK8el/6PRScXoUlbjMHczS/Nrkt0zSUv6+PCNlUSEoMGfDglL6ruOBAbLyfQ3X3ZeiNEBo+gcMnXjdww8MayiJTaPBPsrcVcCIGfy/wPcLJGWxKTTKCWgMfsBr/CeVlzPw7pBtsZY4+6YjVaaawTSZk/akZnZrtmJDpQQkCJHHrgpx1tqPDltD+V7uVxSCV5sAotX7a8MacJa8QWBOhlkvNtGViJmDjE/PeU9fO1hIz0uGpaNM1fQZBewteDOK03AX7HIMGiyH0xOG+1Yya40=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB9136.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(7416014)(38070700021)(22082099003)(18002099003)(56012099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?C8oLVS5TeXQh+0X3215on+l2KZdBHdlQ/ffeo9Ed6FjriR+WL2fVubq3YBMM?=
- =?us-ascii?Q?FShSC1OjTmId+NphbgMTJ4c/WauS2/QmFwpEHVx97P2on/lDoyVbdPF8Zd7x?=
- =?us-ascii?Q?wcU6VjtBjTYbw60oI61+tKr2/0KFBQSS4i7kNZw4SWNsZYM5vfjAYjvH7i5j?=
- =?us-ascii?Q?TpHXd4w/b36PTzAviki6PjZ2MI9MASKlLjc/HK+WgGotKhrzVioKK/AgarSR?=
- =?us-ascii?Q?j0XyKzc/Bzwz+cLJBWSmR7xhO0HiEU5L83vpL44xh/XxCGgghQbxMj8Mr9sH?=
- =?us-ascii?Q?28FoKhf3uwbqRG66BAIHWphbvTH0a1t0OcxsVjsJv0/UhKC3jufMyky+B8L7?=
- =?us-ascii?Q?37qjL/7+OFDaejiLAYab0HhF6JinnkkDuuJcxPWGyouPQ4vxbD2+S/7M2het?=
- =?us-ascii?Q?UcC8ogAd1UmIc4IrMZ89PV/i52ZdK5AvoQOVCDtNSl88HpFD49nJojfd8ss1?=
- =?us-ascii?Q?TZhhJsfbmXQviQ+OUd49ojTyGBXLy11JgeoaHGoxKb6+W1qch8gi95rX7k8f?=
- =?us-ascii?Q?fSlNjYf35orQ3bOAJ39rzuOlqNg/7/hctu72cwUi+L5eFlhtCZMAIjerekLy?=
- =?us-ascii?Q?uOAKi+yDFcQWCCFKGJJyvc/T1FOSka8M+nEFsIbHCksI/17RzAqgWVqCjccH?=
- =?us-ascii?Q?MDGqqNXFcs+FzE4Iu926Or4dXSSkd3Fs64T0486IbM5rh9md6QsGSwUDNlei?=
- =?us-ascii?Q?5gpUW3n+7yHlr72yRxn/NwTvDOpYI1kcKLlQejR3uKlmsIM2vrliVzilh37O?=
- =?us-ascii?Q?2jqa7DkGg7oluOpzUI8w5F0KOMjMGQxyYmpLveXE4lCp/GBNBxDDTPeR5QUj?=
- =?us-ascii?Q?c+xAa2uefb0l0c8XuZieUZAT2iS3m4eqIwes4lR1qh0/1lz9KP/BJRT/4G9Q?=
- =?us-ascii?Q?eVofrt5uGo5bqkVu0zIC2iCl8L8xq/Q6KQ7P5vXCafLBcsaPqlaE3Q2Lk6tr?=
- =?us-ascii?Q?teUuusb81NBcFDi1+nlDTmiRJQ5UJZfIhKig/9BuvlG9+zdy5ovrFYlG0C8d?=
- =?us-ascii?Q?jKEZB7JVLZkSowIPLEaHfTs5H8ucYVR2WJvRoQVzd9kUWhYdXhtZ7GXDSoEo?=
- =?us-ascii?Q?M/W034xq8ZNbEc7bsc/eqkcQ/xFH+fBSlRDxdBXMW4AEwvG/nbbSweKx1eUF?=
- =?us-ascii?Q?6jQzm2JdTZkwBL5X0IBCBi5k67cK2YQ1Q0btnxKj6FrG0oSq72R/eiEti9n4?=
- =?us-ascii?Q?lrX/HZBt6ZmfSapu3a+EquwqAfW0o8OViGcCwKYxdSSgTg8osyx6+Slri8Id?=
- =?us-ascii?Q?6gUKZaG2s5sxh6KtV8zN61vQltWcCOXAdfDfVVQ6gYjIs0YHxq/K3TD0hzju?=
- =?us-ascii?Q?3eiM5G5Z8XOEjyRVp9rlcFDcqqZzsitef3lwgjiUC9YCwhDLicdMEjFcSBWf?=
- =?us-ascii?Q?ZSWMUE0BhavQYdlqJIW/OOmfhFYHcK8gHR/70k3wcF11tgwzvOnKAre5nxed?=
- =?us-ascii?Q?EMqJpRKyiBfbk/sP2VIj1U7Y0pA62y7JRysx9vc3J3BRVGzWJ3vG7/VL1V3l?=
- =?us-ascii?Q?1QBvpJjkTo7Agh0kpixMIvB5vXOEMjWS8McrU8zOPIyZaxWQ5n5uJidZV2z2?=
- =?us-ascii?Q?NzooR6nSdveNV370MvfzBFIzwfdQh5SlEZx9I+Gx50ShHCXvxXS+pfM5G3Xf?=
- =?us-ascii?Q?j2247uw8sL+1M0Dsf4gYlzflMmV7xVMYDTYxyniydzkBCx0dsJQLR/1cS+1S?=
- =?us-ascii?Q?kRolxgROWomie+AuXkotoPB9GY/9WUbLTV6J5tknA22vSuWKBJTykAcqIBWP?=
- =?us-ascii?Q?1+V0Oea1CQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1w8acv-0005Mv-61
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 05:15:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1775207739;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=/YVG5zEQaIXFEnuMRpB3HAGNmijTTDSxzi9qniyqcYc=;
+ b=gi5vu18FnzM5flceR0WyQjz0alPokUiZWOllLBwrVGX6y5vm1c66KRcFLWd/moPig6xKHf
+ +ne+he9nvFFsX3J6WoEu8+hjrRPeHz6gJA4sKTSOFekzpXa5Cj1T5LhJcFpgqQ+hjwVZcO
+ LOsjOnyOpCy0DNhm0uHuCcYMsgku2WE=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-627-3jNuHAKFPxWxZ6VwbU9VpA-1; Fri, 03 Apr 2026 05:15:37 -0400
+X-MC-Unique: 3jNuHAKFPxWxZ6VwbU9VpA-1
+X-Mimecast-MFC-AGG-ID: 3jNuHAKFPxWxZ6VwbU9VpA_1775207736
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-43b96365ea8so2267534f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 02:15:37 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775207736; x=1775812536;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/YVG5zEQaIXFEnuMRpB3HAGNmijTTDSxzi9qniyqcYc=;
+ b=rFx0W+GO/l85Hs6pr85NH40aG1oj2ZQnwWfViz6HbhC961oMfj/U9LXSZDjpyhhRKR
+ 9pQw28Z9AOf486dnfXnpLca9BAVdLvbCkdl/xhttVugtkvWnOmfAaZSJa/VmfmGwS9w1
+ tvjPMaVXbLo+NW+Z1wxipbs6aCjSRqnt3ocM2UI1DNSKMlF0p+YKGxmlTPJJlZtLeeYH
+ snrUj4W6YlCgh5DBchZEdWmpFZ3vxl26T/fy70BVLcH3HooAFq42E8HE6GQfysiHvVoq
+ u0tfGx7lIm141RAEls4lflg5Dv5ZeXQAQE2Y9rQkUypct8h1PEQLQB8xzLLu087FJpIz
+ n4ow==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVWwrmgDzzpu+pxiT9CSkwBxhrGiD9hmp2jCacjR4WzDXVIiDWoBFft/hXOJpIaFSfpZuufmpox0g==@nongnu.org
+X-Gm-Message-State: AOJu0YzR1gb/wTXgk5j3Lp6Xzlbpxv3H2xOelRUWrZbK4h14wG4Z6X8a
+ LJbSJebt3ShBSaxATyIcKFCL5CB+RcZ+j1uORi6E15tsf7XQAmxT/nzLm/25u8+Y3zXyhVfCE1T
+ ktxCMA6bIjVqSn4M1S5eeXOo1dTUSrUWH/pD8983939dM3p6WtOqupg==
+X-Gm-Gg: AeBDiesjh543eyLWg8yXCIk01pdKOeNslr4GobhECi4HgAx0C6cK0L3elz00gLB0RZH
+ oS9mk6+lCFeyUBEnOko9ZhnZSRxlk6AJ3KPAUsdgHqZBVvCnotNUIeitNS6XvEVja3eORrzqsnn
+ LSbetq70o0SzjAzGDlyJiUsAqpLrwbJXUkPxtFEbDgOIEKXUihwappY+Y9kLkyJWntSc4Z5d67T
+ vPPU4wieDGDNcClEOqalUdd0rGzjEv+j4wG+ir9nzWgUj4yZGoBRKZwTAWpzi9ploatDeHj2rN2
+ zuyWZizO+Epo1bL0S+unSHWLX96CUG/SpdHHF/zoxCOnDeZ2iF5y/vOIvQRup5Erstmma0GRyf2
+ YH3KLLII0QV0gdqwwY8Gr0yC7lQqpQ4WABdvUYvdKA4PidHFg2Sk2/LHLm864
+X-Received: by 2002:a05:6000:1789:b0:43c:f8ce:269 with SMTP id
+ ffacd0b85a97d-43d2927659bmr3888163f8f.2.1775207736256; 
+ Fri, 03 Apr 2026 02:15:36 -0700 (PDT)
+X-Received: by 2002:a05:6000:1789:b0:43c:f8ce:269 with SMTP id
+ ffacd0b85a97d-43d2927659bmr3888103f8f.2.1775207735715; 
+ Fri, 03 Apr 2026 02:15:35 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43d1e2a6f1esm14996648f8f.2.2026.04.03.02.15.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Apr 2026 02:15:34 -0700 (PDT)
+Message-ID: <f15d6ad1-df46-4283-a2b9-4af2b5b20213@redhat.com>
+Date: Fri, 3 Apr 2026 11:15:33 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: f77TAyWOZw51iBzCwGkEB+YnkSHmtHk0B/6RZ3dGMhpL1ryfoJua9kLtFD3sGvlSHUV6at8oev7dnV3DvipAfj6+D4uh6rg5JQOTXZlh8s26KlNHA+7SvOMsGH7fj2ITrMaWQ3CO3heoh+7p7xv5fX6CyWxK2NczMdgl/Tc81CqtCESHqCdRuLM6/eSk+IFMwe3nqjjBD3fa/9fHwuF/mXlUP1XpqPj6vzy6ni7ipmUFOX0Nq6qrkjnYkCc8geIFVlHRqjVpkfzWuh+ez8c+tlZXggRK6FWP+YR4RAMHmzeJjAUpYeK5e+hH6qOrlcdHFdkyjm6hSK2DPiKCKyJBYQ==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB9136.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9c0d286f-f3ba-4dbd-81c7-08de91534682
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Apr 2026 07:33:18.4019 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZAI1jVEk70AHyqPLxfwEXjI6ve5Guib8L/IXXMoZxyIYioLO6zAeDq5pVsepcIS1kNHaImx73UTaKUDdWPqAKa6H9LAwNI0wWvPW+CVMTec=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4706
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=198.175.65.21;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.542,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/vfio/iommufd: Control dirty tracking for nesting
+ parent HWPT
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, peter.maydell@linaro.org, nicolinc@nvidia.com,
+ nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com, jgg@nvidia.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com
+References: <20260401084133.56266-1-skolothumtho@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260401084133.56266-1-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LhCsY-C3I_ygrWgfdlGm1FkhJPztyA-UiQRFkPWStsY_1775207736
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.542,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -182,157 +161,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 4/1/26 10:41, Shameer Kolothum wrote:
+> QEMU smmuv3 accel does not support live migration yet, so dirty
+> tracking for the nesting parent HWPT is not useful.
+> 
+> Also, nested vIOMMU use cases can break on some platforms. For
+> example, SMMUv3 with HTTU may advertise dirty tracking capability,
+> but the kernel supports it only for stage-1. Requesting dirty
+> tracking for a nesting parent HWPT (stage-2) can fail.
+> 
+> Add a vIOMMU flag to explicitly request dirty tracking for the
+> nesting parent HWPT. For nested cases, dirty tracking is enabled
+> only when requested by the vIOMMU.
+> 
+> Non-nested cases and Intel vIOMMU keep the existing behavior.
+> 
+> Fixes: fc6dafb98cec ("hw/arm/smmuv3: Implement get_viommu_cap() callback")
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>   include/hw/core/iommu.h       |  2 ++
+>   include/hw/vfio/vfio-device.h |  1 +
+>   hw/i386/intel_iommu.c         |  7 +++++--
+>   hw/vfio/device.c              | 11 +++++++++++
+>   hw/vfio/iommufd.c             | 11 +++++++++--
+>   5 files changed, 28 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
+> index 86af315c15..cd59a367ce 100644
+> --- a/include/hw/core/iommu.h
+> +++ b/include/hw/core/iommu.h
+> @@ -21,6 +21,8 @@ enum viommu_flags {
+>       /* vIOMMU needs nesting parent HWPT to create nested HWPT */
+>       VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
+>       VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
+> +    /* vIOMMU needs dirty tracking on the nesting parent HWPT for nested use */
+> +    VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING = BIT_ULL(2),
+>   };
+>   
+>   /* Host IOMMU quirks. Extracted from host IOMMU capabilities */
+> diff --git a/include/hw/vfio/vfio-device.h b/include/hw/vfio/vfio-device.h
+> index 828a31c006..a95c5bf503 100644
+> --- a/include/hw/vfio/vfio-device.h
+> +++ b/include/hw/vfio/vfio-device.h
+> @@ -268,6 +268,7 @@ void vfio_device_prepare(VFIODevice *vbasedev, VFIOContainer *bcontainer,
+>   void vfio_device_unprepare(VFIODevice *vbasedev);
+>   
+>   bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev);
+> +bool vfio_device_get_viommu_flags_want_nesting_dirty(VFIODevice *vbasedev);
+>   bool vfio_device_get_host_iommu_quirk_bypass_ro(VFIODevice *vbasedev,
+>                                                   uint32_t type, void *caps,
+>                                                   uint32_t size);
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 4924aa4375..5ec5ed82d7 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -4831,9 +4831,12 @@ static void vtd_dev_unset_iommu_device(PCIBus *bus, void *opaque, int devfn)
+>   static uint64_t vtd_get_viommu_flags(void *opaque)
+>   {
+>       IntelIOMMUState *s = opaque;
+> -    uint64_t flags;
+> +    uint64_t flags = 0;
+>   
+> -    flags = s->fsts ? VIOMMU_FLAG_WANT_NESTING_PARENT : 0;
+> +    if (s->fsts) {
+> +        flags = VIOMMU_FLAG_WANT_NESTING_PARENT |
+> +                VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING;
+> +    }
+>   
+>       return flags;
+>   }
+> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+> index 973fc35b59..8f7ae919a5 100644
+> --- a/hw/vfio/device.c
+> +++ b/hw/vfio/device.c
+> @@ -522,6 +522,17 @@ void vfio_device_unprepare(VFIODevice *vbasedev)
+>       vbasedev->bcontainer = NULL;
+>   }
+>   
+> +bool vfio_device_get_viommu_flags_want_nesting_dirty(VFIODevice *vbasedev)
+> +{
+> +    VFIOPCIDevice *vdev = vfio_pci_from_vfio_device(vbasedev);
+> +
+> +    if (vdev) {
+> +        return !!(pci_device_get_viommu_flags(PCI_DEVICE(vdev)) &
+> +                  VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING);
+> +    }
+> +    return false;
+> +}
+> +
+>   bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
+>   {
+>       VFIOPCIDevice *vdev = vfio_pci_from_vfio_device(vbasedev);
+> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+> index 131612eb83..231635cdc7 100644
+> --- a/hw/vfio/iommufd.c
+> +++ b/hw/vfio/iommufd.c
+> @@ -349,6 +349,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+>       ERRP_GUARD();
+>       IOMMUFDBackend *iommufd = vbasedev->iommufd;
+>       VFIOContainer *bcontainer = VFIO_IOMMU(container);
+> +    bool viommu_nesting, viommu_nesting_dirty;
+>       uint32_t type, flags = 0;
+>       uint64_t hw_caps;
+>       VendorCaps caps;
+> @@ -402,8 +403,14 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+>           return false;
+>       }
+>   
+> +    viommu_nesting = vfio_device_get_viommu_flags_want_nesting(vbasedev);
+> +    viommu_nesting_dirty =
+> +        vfio_device_get_viommu_flags_want_nesting_dirty(vbasedev);
+> +
+>       if (hw_caps & IOMMU_HW_CAP_DIRTY_TRACKING) {
+> -        flags = IOMMU_HWPT_ALLOC_DIRTY_TRACKING;
+> +        if (!viommu_nesting || viommu_nesting_dirty) {
+> +            flags |= IOMMU_HWPT_ALLOC_DIRTY_TRACKING;
+> +        }
+>       }
+>   
+>       /*
+> @@ -411,7 +418,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+>        * force to create it so that it could be reused by vIOMMU to create
+>        * nested HWPT.
+>        */
+> -    if (vfio_device_get_viommu_flags_want_nesting(vbasedev)) {
+> +    if (viommu_nesting) {
+>           flags |= IOMMU_HWPT_ALLOC_NEST_PARENT;
+>   
+>           if (vfio_device_get_host_iommu_quirk_bypass_ro(vbasedev, type,
 
 
->-----Original Message-----
->From: Shameer Kolothum <skolothumtho@nvidia.com>
->Subject: [PATCH] hw/vfio/iommufd: Control dirty tracking for nesting paren=
-t HWPT
->
->QEMU smmuv3 accel does not support live migration yet, so dirty
->tracking for the nesting parent HWPT is not useful.
->
->Also, nested vIOMMU use cases can break on some platforms. For
->example, SMMUv3 with HTTU may advertise dirty tracking capability,
->but the kernel supports it only for stage-1. Requesting dirty
->tracking for a nesting parent HWPT (stage-2) can fail.
->
->Add a vIOMMU flag to explicitly request dirty tracking for the
->nesting parent HWPT. For nested cases, dirty tracking is enabled
->only when requested by the vIOMMU.
->
->Non-nested cases and Intel vIOMMU keep the existing behavior.
->
->Fixes: fc6dafb98cec ("hw/arm/smmuv3: Implement get_viommu_cap() callback")
->Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+Applied to vfio-next.
 
-Thanks
-Zhenzhong
+Thanks,
 
->---
-> include/hw/core/iommu.h       |  2 ++
-> include/hw/vfio/vfio-device.h |  1 +
-> hw/i386/intel_iommu.c         |  7 +++++--
-> hw/vfio/device.c              | 11 +++++++++++
-> hw/vfio/iommufd.c             | 11 +++++++++--
-> 5 files changed, 28 insertions(+), 4 deletions(-)
->
->diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
->index 86af315c15..cd59a367ce 100644
->--- a/include/hw/core/iommu.h
->+++ b/include/hw/core/iommu.h
->@@ -21,6 +21,8 @@ enum viommu_flags {
->     /* vIOMMU needs nesting parent HWPT to create nested HWPT */
->     VIOMMU_FLAG_WANT_NESTING_PARENT =3D BIT_ULL(0),
->     VIOMMU_FLAG_PASID_SUPPORTED =3D BIT_ULL(1),
->+    /* vIOMMU needs dirty tracking on the nesting parent HWPT for nested =
-use */
->+    VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING =3D BIT_ULL(2),
-> };
->
-> /* Host IOMMU quirks. Extracted from host IOMMU capabilities */
->diff --git a/include/hw/vfio/vfio-device.h b/include/hw/vfio/vfio-device.h
->index 828a31c006..a95c5bf503 100644
->--- a/include/hw/vfio/vfio-device.h
->+++ b/include/hw/vfio/vfio-device.h
->@@ -268,6 +268,7 @@ void vfio_device_prepare(VFIODevice *vbasedev,
->VFIOContainer *bcontainer,
-> void vfio_device_unprepare(VFIODevice *vbasedev);
->
-> bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev);
->+bool vfio_device_get_viommu_flags_want_nesting_dirty(VFIODevice
->*vbasedev);
-> bool vfio_device_get_host_iommu_quirk_bypass_ro(VFIODevice *vbasedev,
->                                                 uint32_t type, void *caps=
-,
->                                                 uint32_t size);
->diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
->index 4924aa4375..5ec5ed82d7 100644
->--- a/hw/i386/intel_iommu.c
->+++ b/hw/i386/intel_iommu.c
->@@ -4831,9 +4831,12 @@ static void vtd_dev_unset_iommu_device(PCIBus
->*bus, void *opaque, int devfn)
-> static uint64_t vtd_get_viommu_flags(void *opaque)
-> {
->     IntelIOMMUState *s =3D opaque;
->-    uint64_t flags;
->+    uint64_t flags =3D 0;
->
->-    flags =3D s->fsts ? VIOMMU_FLAG_WANT_NESTING_PARENT : 0;
->+    if (s->fsts) {
->+        flags =3D VIOMMU_FLAG_WANT_NESTING_PARENT |
->+                VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING;
->+    }
->
->     return flags;
-> }
->diff --git a/hw/vfio/device.c b/hw/vfio/device.c
->index 973fc35b59..8f7ae919a5 100644
->--- a/hw/vfio/device.c
->+++ b/hw/vfio/device.c
->@@ -522,6 +522,17 @@ void vfio_device_unprepare(VFIODevice *vbasedev)
->     vbasedev->bcontainer =3D NULL;
-> }
->
->+bool vfio_device_get_viommu_flags_want_nesting_dirty(VFIODevice *vbasedev=
-)
->+{
->+    VFIOPCIDevice *vdev =3D vfio_pci_from_vfio_device(vbasedev);
->+
->+    if (vdev) {
->+        return !!(pci_device_get_viommu_flags(PCI_DEVICE(vdev)) &
->+                  VIOMMU_FLAG_WANT_NESTING_DIRTY_TRACKING);
->+    }
->+    return false;
->+}
->+
-> bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
-> {
->     VFIOPCIDevice *vdev =3D vfio_pci_from_vfio_device(vbasedev);
->diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
->index 131612eb83..231635cdc7 100644
->--- a/hw/vfio/iommufd.c
->+++ b/hw/vfio/iommufd.c
->@@ -349,6 +349,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice
->*vbasedev,
->     ERRP_GUARD();
->     IOMMUFDBackend *iommufd =3D vbasedev->iommufd;
->     VFIOContainer *bcontainer =3D VFIO_IOMMU(container);
->+    bool viommu_nesting, viommu_nesting_dirty;
->     uint32_t type, flags =3D 0;
->     uint64_t hw_caps;
->     VendorCaps caps;
->@@ -402,8 +403,14 @@ static bool iommufd_cdev_autodomains_get(VFIODevice
->*vbasedev,
->         return false;
->     }
->
->+    viommu_nesting =3D vfio_device_get_viommu_flags_want_nesting(vbasedev=
-);
->+    viommu_nesting_dirty =3D
->+        vfio_device_get_viommu_flags_want_nesting_dirty(vbasedev);
->+
->     if (hw_caps & IOMMU_HW_CAP_DIRTY_TRACKING) {
->-        flags =3D IOMMU_HWPT_ALLOC_DIRTY_TRACKING;
->+        if (!viommu_nesting || viommu_nesting_dirty) {
->+            flags |=3D IOMMU_HWPT_ALLOC_DIRTY_TRACKING;
->+        }
->     }
->
->     /*
->@@ -411,7 +418,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice
->*vbasedev,
->      * force to create it so that it could be reused by vIOMMU to create
->      * nested HWPT.
->      */
->-    if (vfio_device_get_viommu_flags_want_nesting(vbasedev)) {
->+    if (viommu_nesting) {
->         flags |=3D IOMMU_HWPT_ALLOC_NEST_PARENT;
->
->         if (vfio_device_get_host_iommu_quirk_bypass_ro(vbasedev, type,
->--
->2.43.0
+C.
+
 
 

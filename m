@@ -4,90 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC99E88D6A
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 22:01:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 971D1E88D72
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 23:02:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8mZZ-0001e8-1l; Fri, 03 Apr 2026 18:01:01 -0400
+	id 1w8nXC-0007r7-6d; Fri, 03 Apr 2026 19:02:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w8mZI-0001ck-VS
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 18:00:48 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w8mZH-0007t8-75
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 18:00:44 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-c74f0c3fc16so798019a12.2
- for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 15:00:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775253640; x=1775858440; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=E5Tk5h0DBxV7WnAoGiV9hDcqtMbqZOUY9apv3ctT524=;
- b=XCX9GW7DnQ2Hmd3fXHp0/DDYJ0xctq6okM2cU+IKTwlu03ZJaisDJ+M2dgUVyp/lUX
- dKc/hSheroCeNGnOlXIrpjU5DtYvDdFt4tmMD84VU6i6ZGvaZWV5EIjK5nbdE4FxFJZJ
- 8PZaz7dYlEqDJaFlso+xx9VVghasfa1TXnBqFcQl2EvjgDvqLShL40W3AJIm3hkvCvkw
- CVFOeVCGoe6bP2NwW2hZlynaOkFM4kmipFWqi8hCtHhZMRUoivey/5kW1y4P60qYHolO
- Xv8cn9xlbVUQDrTnEXGy8y7ctTikB2JDK4/r5Zc4k4sMO9CoInT3NXuFS4HSR+D5b37D
- qV4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775253640; x=1775858440;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=E5Tk5h0DBxV7WnAoGiV9hDcqtMbqZOUY9apv3ctT524=;
- b=Ef3rDsj/971Oejt4u8wyDIOCgTXTGVN5XespK4Eh72t5i7NAJJC6JczYJURpouBpbs
- dcmAMTVAWDUPRTN0g80X4Q/waFLRvi59t/UPWMIMyYxe4cZCUljQmiM6adbYNsqaC8ov
- T2p7gK+IiVSrkUPTJ7Gd8YXShQG+/dR6t4CtzYV4Gx4EZM5wkR5TrrSqqr40/nbECKN1
- D7qzkSEjLuXzlgLOgNKRMa6ezmDE09Lcc7k2PJZMKzJGUEs4H+y9JYzog317lu92T3MO
- A0NnHQExwODkoqFnQefwAUtV8wfoAyDKALN4w5Htmaos45wrEM7sbAJzvmiVW+v5PthJ
- IOOw==
-X-Gm-Message-State: AOJu0YwMuhoTXR7O29/RFm9NUURswgztArD0Py4c69Syh72P+2KwPmWQ
- rG/4g1F0Kvdnha4QqqEpcjAOJpfiMBqZ/4YqLM3wZPgltb7HXLbltvLNZBCEwcN7SEw=
-X-Gm-Gg: ATEYQzxeJQpOrWHEb0wtuzPTwap3Or/Ckg3LmdAj9cgTCGmTNXmzAuDuEeOPVpFq3v6
- M97tZpcZQxvCyCK1GUcgCWHmDH2vkrkjyUFFaqzn6+Nz/WbMfQodpuyrzyvD5CaWxGI6710vb4M
- 7DZBV6BbJI82x/4QNgIY7nDDq/88SYDxn3wjNfUdNDH+Z46JH0mSTG5Xaf4t9qzlpkzUSxL3e6o
- l41FAEyLcIIRb6UOwcWxfX0VE7qdKOYG8YJOlnZvIzYCKOduG13VN5/kuttr+++KMxZG3rn+duL
- dkTiDl7Kep8a6oB1wMOhDVVsn5Pz3l0dRx6rscZARV9ptLFg8YXqa2b85LbxTLgiN4fHLk0C2SZ
- XI4N11TFqqV16crtL6ONWqvaaPHZw4IXCLGQUDM9lQF9qoVUKUSrdLDIrdwzy49ShrlKj7wB8E7
- cTRnk2sLjrD3cWrCW0WV2tPHryW1DfDfXS5P9Kez6irks5YYBPVj5l8y39lE38CMLH8Xw=
-X-Received: by 2002:a05:6a21:338e:b0:398:6e6b:da1f with SMTP id
- adf61e73a8af0-39f2ef20a2bmr4206898637.25.1775253639071; 
- Fri, 03 Apr 2026 15:00:39 -0700 (PDT)
-Received: from [192.168.1.105] (124-150-69-109.tpgi.com.au. [124.150.69.109])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c76c6477bbcsm5896428a12.3.2026.04.03.15.00.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Apr 2026 15:00:38 -0700 (PDT)
-Message-ID: <c52cda8d-4f38-4f2f-9b6e-8c8aa319c5bd@linaro.org>
-Date: Sat, 4 Apr 2026 08:00:32 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] Replace aarch64 TCG instruction formats with more
- meaningful names
-To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20260402-aarch64-tcg-instruction-format-rename2-v1-0-0998a08a515c@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260402-aarch64-tcg-instruction-format-rename2-v1-0-0998a08a515c@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w8nX9-0007qS-Ut
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 19:02:36 -0400
+Received: from p-west1-cluster5-host2-snip4-10.eps.apple.com ([57.103.66.191]
+ helo=outbound.pv.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w8nX7-00073s-I7
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 19:02:35 -0400
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-1 (Postfix) with ESMTPS id
+ 53A5218001BE; Fri, 03 Apr 2026 23:02:29 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1775257351; x=1777849351;
+ bh=5ZVydFP4kCNN3u4IIfy5YY0AYFONomqOn0xlyzs7jDQ=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=JXgXO3Gpcl/KFo+nDIO2ZSh8R9rTasApvGLzhhviz1LC5foJ/6C4kxJZTZ91KgFHJ2ZQJiOu6v1lIak032riSVPSMq1KE3pgWJc6Yx03hfpyk76kyhHbsKee6VJ4kcg1zBI9Jjn0595qcm7Rig8znnLmaFIwgpaRzWLjnL4WST2FH2xT+avi/iQzdZO1JCFlj+mOX9QHQDm80o90GsIyErpBGam06U+e6dyNmvgUvBqFtwMm1arV2UzV8UkeqKnjBXvUaeD05ZupZ8DQzlvEVKMt86Hnzdt2SDe5erHJH92IQR3UQntgVXJmgP8V75LoaEdsE3q0FbzMY/pAdcZnlA==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-1 (Postfix) with ESMTPSA id
+ 5F1BA1800590; Fri, 03 Apr 2026 23:02:27 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH] target/arm: cpu: add HCR_E2H on reset for EL2 + !E2H0
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <6af2abbe-2626-4401-b446-6a2f603cf1c2@linaro.org>
+Date: Sat, 4 Apr 2026 01:02:15 +0200
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <2AB1F1C8-8092-43FC-A072-15F271A54B16@unpredictable.fr>
+References: <20260401220720.19555-1-mohamed@unpredictable.fr>
+ <CAFEAcA8qchsEganwrejiqoWabUd_BmNfnS0AXzWR+tT61OsjyQ@mail.gmail.com>
+ <6af2abbe-2626-4401-b446-6a2f603cf1c2@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Authority-Info-Out: v=2.4 cv=B+u0EetM c=1 sm=1 tr=0 ts=69d04706
+ cx=c_apl:c_pps:t_out a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=tCBua7DQ6L0qMCO42SwA:9
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: NfZs-O9O3WPTOH5Ckhp4njaZq6QnJHyA
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAzMDIwNiBTYWx0ZWRfX4F8FkZIesSoV
+ SUOAe36a5QhFP7KoYFNjL61y2wqhfJ6TXacF7lkrQ3nffRC5FBxuqNEL+isyo+/QmjLn4Jm7y2A
+ sScTA/DZRdgNK1LqeJy557EGI1xWzM308Gi86amS1XeSNC6nrFxDP+tOZqftYV6yBYO3nW0kVlq
+ 5AayGi9khoOJBd1xtL8RG1NJ3bX+2r9fmPa60vG3E9SAHvrrShDa0N0ah4YKo2wKiSKxyGZHu58
+ pHKN6o94M5vVYraNhxj/ZtdFcgk0aJQ4wQEvZj1gJZVo92DOeo7AJ4L9DlmBAkzcngAgC7CPiE2
+ /WJy0IKxnVQGW+hLiVMYD0qyrvCpzDlDpbdUB3zduINhsyxIL8tmewqerTZXI4=
+X-Proofpoint-ORIG-GUID: NfZs-O9O3WPTOH5Ckhp4njaZq6QnJHyA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-03_06,2026-04-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ bulkscore=0 suspectscore=0 malwarescore=0
+ adultscore=0 phishscore=0
+ mlxscore=0 lowpriorityscore=0 spamscore=0 clxscore=1030 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2604030206
+Received-SPF: pass client-ip=57.103.66.191;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,24 +96,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/3/26 00:20, Jim MacArthur wrote:
-> tcg/aarch64/tcg-target.c.inc contains a lot of numbered instruction formats
-> called "I3XXX" in the enum AArch64Insn, named for the original section in the
-> Arm documentation which described those formats.
-> 
-> This patch aims to give them more meaningful names, for example, I3314 becomes
-> Ildstpair. Where possible, these names match those used in
-> target/arm/tcg/a64.decode.
-> 
-> Changes since the RFC version:
-> * bitfield_32, logic_imm_32, movw_32 have had the _32 suffix removed since they
->    also apply to 64 bit versions here.
-> * The I3310 mask is now ldst_imm_to_reg; the previous 'to_sign_extend' name was
->    wrong.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-I'll queue this to tcg-next for 11.1.
+> On 3. Apr 2026, at 23:53, Richard Henderson =
+<richard.henderson@linaro.org> wrote:
+>=20
+> On 4/2/26 21:17, Peter Maydell wrote:
+>> On Wed, 1 Apr 2026 at 23:07, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>>=20
+>>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> This could use some rationale in the commit message:
+>> why do we need it, what goes wrong, etc.
+>=20
+> Indeed.  I would expect this to be handled via hcr_reset and
+> a2834b853d9 ("target/arm: implement FEAT_E2H0")
+>=20
+> Specifically,
+>=20
+> +        /* Strictly E2H is RES1 unless FEAT_E2H0 relaxes the =
+requirement */
+> +        if (!cpu_isar_feature(aa64_e2h0, cpu)) {
+> +            value |=3D HCR_E2H;
+> +        }
+>=20
+>=20
+> r~
+>=20
+>=20
+Hello,
 
-r~
+That=E2=80=99s indeed the case, missed that commit.
+
+Some context: the issue is an edge case around nested virt on hardware
+without FEAT_NV2p2 where the guest cannot flip between VHE and nVHE=20
+at runtime - but the OS supports both nested virt impls.
+
+While KVM handles HCR_EL2.E2H=E2=80=99s effective value via a KVM cap,=20=
+
+that=E2=80=99s not the only option around. An HV tries to be clever
+and sets the state depending on what HCR_EL2 is read as.=
 

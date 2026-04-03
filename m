@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390A0E88D65
-	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 21:21:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7BCFE88D6A
+	for <qemu-arm@archiver.kernel.org>; Fri,  3 Apr 2026 21:53:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w8lwx-0006s9-1O; Fri, 03 Apr 2026 17:21:07 -0400
+	id 1w8mS3-0005Ie-0m; Fri, 03 Apr 2026 17:53:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w8lwu-0006j2-Fo
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 17:21:04 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1w8mS0-00055S-SU
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 17:53:13 -0400
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1w8lws-0003wu-V0
- for qemu-arm@nongnu.org; Fri, 03 Apr 2026 17:21:04 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-35d971fb6f1so1930925a91.0
- for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 14:21:02 -0700 (PDT)
+ id 1w8mRz-0006r7-CX
+ for qemu-arm@nongnu.org; Fri, 03 Apr 2026 17:53:12 -0400
+Received: by mail-pj1-x1029.google.com with SMTP id
+ 98e67ed59e1d1-35d90833cacso1350127a91.2
+ for <qemu-arm@nongnu.org>; Fri, 03 Apr 2026 14:53:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775251261; x=1775856061; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775253189; x=1775857989; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=FKQOiu8uzFuxHT2NoyVPUR27Zi5sXrhv/B5Geiv3d5M=;
- b=war1I2ZFEuR7Yz+z7XWHBGko+g+y6dFy2JXTgg0AGakKZGaqC6jjCKuWDJEJy9hj48
- RgUyRtgnnrRyM2DSaVKEplC3s6dU6lpwnQ0DI4O1YPfC8dewYSFVPbiUaPPgLrFd4SIL
- V3fBvII3JiJXgemjzyUdPKejw96QyvtXRg35sPPXJ/DKwbrojaA+Il2R9h0p9qJSqmzg
- SFaV2EEAhOX/01m0UmgEhbm38Rj8OX1m5pekP0YRCSpgMMHEPDbz1Z3nbHp66HFGHSug
- OO139NKWC/Ugc7Ruo54udxxCtUBlKCnNDKPTjJkdH3fH3vKW72cvS2Qiv/DEL7pd3wLW
- SwRg==
+ bh=oyqNi/Uf+NyuGj4uDxMxhkbq8AG4iX7BGkiZVYrqDTU=;
+ b=gzN0ygfr17toNlMbZ/1dh22nt4ZeyqDBlt3c8qSpp65NYdpIANmO+RarbeRCYXwdCP
+ 3ZQ4t7GWkhLfh8I8YdO9RfHFVd8tvIBlodj0MFqYE4XeUClwx0k2sHMsL+7ibEFS54NU
+ b8cixU8lYVsL/NH+M37YEk13lwK8RB/al+5L7Usz0LSxLLRUUPnSDzoZ9ki8noDoYhhS
+ P6Ch6+JoV/fLRsDT5uLUxgEDWLDaM1yocJzh7yGBoh39ow3C3pqCH4/XGkfVZuHgkGoh
+ CsWo3P7X113Wec15DLRrKbibSr7nQmcCegLP9AMrw9clGeusBng/A9wckil+RcTyzGqn
+ bo/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775251261; x=1775856061;
+ d=1e100.net; s=20251104; t=1775253189; x=1775857989;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=FKQOiu8uzFuxHT2NoyVPUR27Zi5sXrhv/B5Geiv3d5M=;
- b=UQl+bxxYofwappp7FQosE+ITiWHQKkj33agJFlf/DnimAX3XmWG+w8sMOrl6/4fYfq
- V6KWZ5bOiOKc6aieTNimVon6rzfmd4SMu7olZnAkm0AiZU3pJNeKjqDSde2BILE3TiEb
- nF1gt9HsG5C5XZBSsJ1JRS7U/L5Y22AGBTw11R1FqUoIZzA+u3JehnotMfe4VCuXjhJh
- hEBsz2rx5CKEYKj905Il5antoINoAbz1ombw0Ww9QxNJRtB1Mcq4zfv8n3P7XNIgJR0v
- PD3Fv6jNc3jCXp3viSb4r8ZzNiE/p27ugOm4lGLOmsFdn+920/fElyNJPga+vNs3hjPp
- /P4Q==
+ bh=oyqNi/Uf+NyuGj4uDxMxhkbq8AG4iX7BGkiZVYrqDTU=;
+ b=QP9pB4RBTLIYfpZg+yBw5Dfz1R1c8ANQ5uqa8czfrWoUL0tYDDvEJKdNkKZKwvmsZf
+ wyD7BBivabb05uxrczNKzwLMpavPCr8fig9ymT4I2HAsll8oxlixiOrjJllC/h0zs29J
+ uX6SiaYGI/9O3WCGRY7CHWN1CWtOWHFE0QBx0a60U2cLOy98SRON1OoKeThrYVIZabZ2
+ B4VIqNTxTgl8UTEO+mi/nDhsmoSm/JIoSBx0zRknRyb89M6UGSdVsV1m4xc8OxKGgHkJ
+ n7ZXxpeUgYXswlmdFBgzoWE5TaVe63uNRQI9w7lM3+IpeFxG+uzk6kaa+JLFpXhgO68z
+ oIJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX4J/dki/+SH9KbBYdkBQBovXshri4akc14Cm67HM+mUa/0t9lz57PgJlao+TqCOoNxuFkUShoMIw==@nongnu.org
-X-Gm-Message-State: AOJu0YzjNq0sL36jdJnEr+oPafUYySm/eDhak1p4qojzSDkLp9kp4upW
- MQyQqqQZ+ZspZ0NpBp+1WyvdR5fgtRtt4636KD6qQeOAcyH1I1Qbe1VcWm2jCQ4bgEM=
-X-Gm-Gg: AeBDievrEW3tUA8cSaxm91bLdvd+qGugaW5JHcw+rlqunqF+0WYqGedSLypYD1djh6i
- Hw5///jjrGSVyEiLXkCXaJZWw6hHxo7/EJ1e+fupurPUcpu26eRifjUTw7R6CFQjLFG0OlQmrvU
- oTpiSTCWNL4FzoFNTMzaPDlmVFEkNWhVqpIcEa2J2F1Ps3TUgYyxZgyBfOldj3mj/DF0djCsvsB
- FZME6WhllRatqc/+UjSPEgUN1VG6VvK+ZAJ76rvEonwEUa4PB9WON3STVPwyKmpOoG1dXkSCeCz
- NkusMUziAye3uIsGstVs/iKqJXwl7VSyMJdooTLg0BPbQgI2AdlACY7kp4z+GtimzB36kGY2LMU
- eoZ5Juzg+aykvDxVYaxACDAfB8EMQFlM2xFLPjjyDcrWqaQUOb3Z6Yk7qsNiY3RhgCMSoCsgRa3
- vYw5fJK/Q9tpa5h6C0i2g4quCq+Wh53fiRyMDVsVMvMo6L0xxx1eSAmrngMXxjVO68RbM=
-X-Received: by 2002:a17:903:1a28:b0:2b0:c90f:44b2 with SMTP id
- d9443c01a7336-2b28173548amr46198715ad.12.1775251261115; 
- Fri, 03 Apr 2026 14:21:01 -0700 (PDT)
+ AJvYcCW7BS6/gR+1/RKdNw5X5a6FP81mMW0JtET1w8Xk0oHQf4m0G1Kgr5wwBqZWtYPCVWvTpxl7GVd1UQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxl7kW/Syw2nz4fl2WpJ0CRIRv0Okp6lNsGiowtc5JlsXRAIzi2
+ DMShfDwoDOnXQv9R9OR8Lv7usXxMtDj10e+akqWRsAEx+wlHkXBMAmx6FcW2CORGsBc=
+X-Gm-Gg: AeBDies7ZUD7V18TokOir4J0F7mY8vn7msGiksimHNZZsCsu1j24qGHjxMNL+MvNm6H
+ n1adCXkt5PUu8ctlTeV2kkFC0KHIJFonfAXlQV/Yk0ORYKxoBMlclIcTDh0fAlkI7ygb4fEkRXM
+ MJH2X7wq9pCAiQ17HIwnVukrdtCLAI8ob+4lHJJ2/I5tyXyqaPsTyQNvJr1ZCrudJ5bpRHsU7md
+ ZWx32BaBoyuPzItTYWXDooYCtB8DyZEXk2GtVrympLwmY1Od7zVz0mGEtjQay7H3T2DOQMM+o6B
+ jWc43BD6TpZwivagf6lit9mGMir2RmJC2NEercGOtqQC3aZwlrn/UoX/UlcMmLUoGEFX7KF/WlA
+ c/oqd5ep/+nckz72ubBuenKJVQP0gm8n45Aom5LnFxv49RHMMoOaTYO4peoTcP5g504pES2YEUV
+ kTNwwEUGyQrLNu266C54dihll+kq79Sxr4+0AGYIwgZKf6zAuhwwjvl14YtdAi/ul1haE=
+X-Received: by 2002:a17:90b:4c8b:b0:35d:a2d3:5c44 with SMTP id
+ 98e67ed59e1d1-35de69d5567mr3818669a91.28.1775253189282; 
+ Fri, 03 Apr 2026 14:53:09 -0700 (PDT)
 Received: from [192.168.1.105] (124-150-69-109.tpgi.com.au. [124.150.69.109])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b2747530e4sm68066785ad.18.2026.04.03.14.20.57
+ 98e67ed59e1d1-35dbe9709b8sm11043320a91.16.2026.04.03.14.53.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Apr 2026 14:21:00 -0700 (PDT)
-Message-ID: <0f441ddb-d2b2-4095-b0ce-c35090133366@linaro.org>
-Date: Sat, 4 Apr 2026 07:20:53 +1000
+ Fri, 03 Apr 2026 14:53:08 -0700 (PDT)
+Message-ID: <6af2abbe-2626-4401-b446-6a2f603cf1c2@linaro.org>
+Date: Sat, 4 Apr 2026 07:53:03 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 10/12] target/arm/tcg/gengvec.c: make compilation unit
- common
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- jim.macarthur@linaro.org, philmd@linaro.org,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20260401192057.1182724-1-pierrick.bouvier@linaro.org>
- <20260401192057.1182724-11-pierrick.bouvier@linaro.org>
+Subject: Re: [PATCH] target/arm: cpu: add HCR_E2H on reset for EL2 + !E2H0
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260401220720.19555-1-mohamed@unpredictable.fr>
+ <CAFEAcA8qchsEganwrejiqoWabUd_BmNfnS0AXzWR+tT61OsjyQ@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260401192057.1182724-11-pierrick.bouvier@linaro.org>
+In-Reply-To: <CAFEAcA8qchsEganwrejiqoWabUd_BmNfnS0AXzWR+tT61OsjyQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,47 +106,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/2/26 05:20, Pierrick Bouvier wrote:
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   target/arm/tcg/meson.build | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+On 4/2/26 21:17, Peter Maydell wrote:
+> On Wed, 1 Apr 2026 at 23:07, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>>
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > 
-> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-> index 1fa26670587..0740de92c1a 100644
-> --- a/target/arm/tcg/meson.build
-> +++ b/target/arm/tcg/meson.build
-> @@ -33,7 +33,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
->   
->   arm_ss.add(files(
->     'cpu32.c',
-> -  'gengvec.c',
->     'translate.c',
->     'm_helper.c',
->     'mve_helper.c',
-> @@ -72,6 +71,7 @@ arm_common_system_ss.add(
->     'cpregs-at.c',
->     'debug.c',
->     'hflags.c',
-> +  'gengvec.c',
->     'neon_helper.c',
->     'op_helper.c',
->     'psci.c',
-> @@ -91,6 +91,7 @@ arm_user_ss.add(
->     vfp_d,
->     files(
->     'debug.c',
-> +  'gengvec.c',
->     'hflags.c',
->     'neon_helper.c',
->     'op_helper.c',
+> This could use some rationale in the commit message:
+> why do we need it, what goes wrong, etc.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Indeed.  I would expect this to be handled via hcr_reset and
+a2834b853d9 ("target/arm: implement FEAT_E2H0")
 
-With slightly more work, this one could really be compiled once, via arm_common_ss. We'd 
-need to split out the function declarations from translate.h though, because there are 
-other CONFIG_USER_ONLY uses in there.
+Specifically,
+
++        /* Strictly E2H is RES1 unless FEAT_E2H0 relaxes the requirement */
++        if (!cpu_isar_feature(aa64_e2h0, cpu)) {
++            value |= HCR_E2H;
++        }
 
 
 r~
+
+
+> 
+>> ---
+>>   target/arm/cpu.c | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>> index ccc47c8a9a..5ffb1e3096 100644
+>> --- a/target/arm/cpu.c
+>> +++ b/target/arm/cpu.c
+>> @@ -685,6 +685,10 @@ void arm_emulate_firmware_reset(CPUState *cpustate, int target_el)
+>>           }
+>>       }
+>>
+>> +    if (have_el2 && !cpu_isar_feature(aa64_e2h0, cpu)) {
+>> +        env->cp15.hcr_el2 |= HCR_E2H;
+>> +    }
+>> +
+>>       /* Set the CPU to the desired state */
+>>       if (env->aarch64) {
+>>           env->pstate = aarch64_pstate_mode(target_el, true);
+>> --
+>> 2.50.1 (Apple Git-155)
+> 
+> thanks
+> -- PMM
+> 
+
 

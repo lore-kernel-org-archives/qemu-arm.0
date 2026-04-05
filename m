@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FD6E64013
-	for <qemu-arm@archiver.kernel.org>; Sun,  5 Apr 2026 11:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E164CE9D820
+	for <qemu-arm@archiver.kernel.org>; Sun,  5 Apr 2026 21:46:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w9LbK-0007uQ-JQ; Sun, 05 Apr 2026 07:25:10 -0400
+	id 1w9VIT-0001hL-8Q; Sun, 05 Apr 2026 17:46:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w9LaX-0007cW-Sf
- for qemu-arm@nongnu.org; Sun, 05 Apr 2026 07:24:21 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1w9VIQ-0001h2-TD
+ for qemu-arm@nongnu.org; Sun, 05 Apr 2026 17:46:20 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1w9LaV-0007Nf-NI
- for qemu-arm@nongnu.org; Sun, 05 Apr 2026 07:24:21 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-66bb4d4fcb4so5847509a12.2
- for <qemu-arm@nongnu.org>; Sun, 05 Apr 2026 04:24:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1w9VIN-0006Zl-A3
+ for qemu-arm@nongnu.org; Sun, 05 Apr 2026 17:46:16 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-82cebbdab08so2457829b3a.2
+ for <qemu-arm@nongnu.org>; Sun, 05 Apr 2026 14:46:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775388258; x=1775993058; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=1v7R1AtFco+NkGTWs9tgqAhidfQ0/xG2e+uidBNqPEI=;
- b=tgcu1MsxMunqG9VImot8u8ZZIqTRh2ggU5d3q+Slek0ji9lIMwGHhdgDXLTTYw5nW/
- fCGSuSlisGRZfOA1aaYoeM+tmllLT5OvskjxF0mQGNfCoudYj+YmruAVUR3iB37SMlGI
- yPJ9w7xq2GoaPjxHXGfRO90aYzs0Q526n+ZQ/u9uHgkhtXIuFnCMlMV4TRFniI0ehd9L
- IuzD5rtu3vLwSYoVjWXssc3nUHgz6EOW5sltvHRi6DuTR69UeVH9MNOeBkyQMZWkU2zf
- TpouJNuefsvkUTAN7P7aDuvXc6LjY57IQRxHkqtYJ+LEcxKQTZobzTe53CMd4xx+aSX3
- 5Ufg==
+ d=linaro.org; s=google; t=1775425573; x=1776030373; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=LnwBYYH9Il0dGXbrZmpVTL65kvhw+6RgGJ2d+c7LBGU=;
+ b=kdgA0NRdHAGWdLkNZIIQSvJ5Cw9BAPCPVCucbx+cFQ/BIv28QbiMmAmGC04cCTZ4h5
+ DJAD6TbnjYKKyIrTUsedHA+ZiOAMJsyGr9dLK8ri2C8x/6IprBZGpK2r2LAWfpgYe93/
+ ol9kl3BlMdVK7Uk6GYx2jMekm0yywxh7zBvoM6gvouUjxlq33BQy0s0msafevYWu+U/c
+ fdZ7/o0UGWRbi028IwKDO/8eny1GQIhWZdz4m87LlxvrdUIpt+0lR/557UWFSSEOb1N5
+ XwQy9aOZ3P/Iv/Ht0xG7RZ9oYpmgBi1yacEU3Ntx28pPdlQINjm0I7syyvMUdzJ6cCof
+ R0wA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775388258; x=1775993058;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1v7R1AtFco+NkGTWs9tgqAhidfQ0/xG2e+uidBNqPEI=;
- b=rNuf3UMv0aQUs1dbxLSy5a20ZJfbjDhO34rz1O1jZ2lWDmZiGb4ga6zTp2pYs8Z+yY
- 3mKOJKBiyX2semoqaFEoB8q3hKt/jvfT53RTboQIs71jmu6rlwZovEA+xnw29rrdhIK4
- GIIWJw8FIm51g4HG9yHygrgPslbhOupNri6DrXTYxSbRT/O5L21bC9KqmpPulKm+FfD9
- 2p8fMW01FSbIOcbfG8YG35YB0q/jjG7dyvxyxnC8I9PuJH8MAxqbV91VQlH0senD0hho
- zno+Kl36k+r+ni4XpIS2dELmuammtR01mRp39h9wcnrHz8s++gJ5ygaI8dCrNoV12D9j
- 6DrA==
+ d=1e100.net; s=20251104; t=1775425573; x=1776030373;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LnwBYYH9Il0dGXbrZmpVTL65kvhw+6RgGJ2d+c7LBGU=;
+ b=FOQx7B2EFnzYAfG1V5rAgvZqTJoT5w0tqHsvPqVZM1xA7o76+HbWQg+/ycWyHuEQ5I
+ UxBwNTXjI2+yHjbna24g1985zA7BEIbwvTSyYXpS5mzsMPureXC2bq/su6tVvSTVxJwd
+ aT0P+AYVJVQwA7RdoN95dR8zr25Njvmxz2gq1o8YcQsNnutXf6H+LV51MiZhPqhjObyf
+ gVPPChPrxuhaI7zANxc6CXFCQ177Dzasi76d96FklmcgXv1iibgOrOm0PUnfacLBSjKW
+ XH/6Tzb60rQSSKyojQNkW/cjEcRTfBFbLj3T0DfM9a4Skuimt9T93EelzGCcGiF0CAh5
+ KdGw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUZkQ91axFFTXnRP87gsP3vUls1dg9tb3JowOje2L0MdGcYAMqvBiXKIVM2xdB70peDjvZwSbEQPQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw2OIsuKxCSPaqQW+1jka/8dAtYOMoUaqyj2rkSSU+lT69l/8eu
- cMa7l9XdMjp1IFwfEaCni64hUJW8yHtj3AtobBgCosaxQkcSLcRY7gqhtaFdbfsPj9w=
-X-Gm-Gg: AeBDieszxtaCLcfikFMS7GTdecx1cfnB8urKRBKWpLLsMjDhRvbQl9+GgbQ36czDAQA
- x1GCu/aSDpXJybwwxOONye4X0qYfbXlIb3qo+pgFgQhpE7vozS5GygQYUaO96klSypiIpfFbEhx
- 7X2srnEyam/7UnO0GxCqEupnHv8HgS3BpdjsivtYCXGXdw96JgWZvynb7E1AR9U31Kf+kPaeMvW
- 16zdVc425hHhHEDD0YRs6YYInQ9AJ8Id1hDWXC3b32aWzhv+wCq3YPsbcaHOevpUhcoa5PGBXTE
- 0q0VNsQsfYFwOoMRIFQyOVCJ9QBSHIlO57grIb32+m+hzRgQp7pA+lQNo4DntXtzX2pvGKMLZ+N
- DhSMa/UVuNRYPSAnfGRPFO2u1q4cdGs5Kk3BClRme3Ay4eF2q/LPye7aqEU3DvdXJALV9jf8vkf
- eMisJj8EarSjR6N/IG2vbi8QA=
-X-Received: by 2002:a05:6402:5256:b0:66b:aa56:ee5b with SMTP id
- 4fb4d7f45d1cf-66e3f85414amr4403852a12.28.1775388257695; 
- Sun, 05 Apr 2026 04:24:17 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-66e034c63ebsm2884164a12.26.2026.04.05.04.24.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 05 Apr 2026 04:24:16 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 370175F79F;
- Sun, 05 Apr 2026 12:24:15 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v2] target/arm: fix fault_s1ns for stage 2 faults
-Date: Sun,  5 Apr 2026 12:24:10 +0100
-Message-ID: <20260405112410.603223-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AJvYcCX+nbc2vQTRm+m0S/Tz2Khsr5a1va06tTpzouuhihXw3IJPvMA3T7li1Rr2HByxlk93YdOVbI1epQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyEVCJXWDXl7t99Wn4oFJ1ayO6/cvZTqxzR0U9aXazWePI3Ml2y
+ LuQTgFLHjjwpm9db1G1+EIIgHyrtlpqCUN1EDldTnGeJa3AlLp60H/fiSLA7lNQ6fvU=
+X-Gm-Gg: AeBDiesWSF3u7jmzVaWoJdb7IeJIfEhDkoQ1Ubweqh2heGqoONwu+KCvzWRw0RL9hLK
+ jbmUWxRev41P4sq8mnccVfOQE5xt/PpJ3SvEjSI/ZfKPX3jcqIwdX/VtFvl7n3OjPWJDOzNcZN0
+ Cm8mAWXYVZ0yPdcwhAi97JqCQmZMMxlhPhUdbkiOhODxO1KNayp1XHpNNxN/mLjMY1Z753SAq/7
+ sNbJ5t9Fj5C4afej8JRULgjjMYrDgYXpj36F6hu2m3xWz0j4oWsUkqyZ71YZzLgnbEueZ70kMLX
+ hChpSOAZWaaKLaYmbErqqUTYXhmQfV2VGCkEVEqgbu6sFlB3c/MFIKUMTvoGvOfxibkXIHXOfv/
+ ECj5h679G8nfoOzaLCPBXaShctbWgfuf9lU+zvCXj9sQo+I96NL3lDuCO7nrsi30lBENSatx/nG
+ qAr9cTs74fWXHroEf1Y5iiFVSugbFg0bLyKbhxMiG1d8r1KxAbXFycvdQafzYN5bGJAcw=
+X-Received: by 2002:a05:6a00:2293:b0:827:3d52:5d1a with SMTP id
+ d2e1a72fcca58-82d0d7525abmr10047342b3a.0.1775425573016; 
+ Sun, 05 Apr 2026 14:46:13 -0700 (PDT)
+Received: from [192.168.1.105] (124-150-69-109.tpgi.com.au. [124.150.69.109])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-82cf9b2714dsm14802935b3a.1.2026.04.05.14.46.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 05 Apr 2026 14:46:12 -0700 (PDT)
+Message-ID: <7be8b426-8f0d-4759-afdd-4de882748d2b@linaro.org>
+Date: Mon, 6 Apr 2026 07:46:05 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 06/13] target/arm: add canonical tag check logic
+To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20260309-feat-mte4-v4-0-daaf0375620d@gmail.com>
+ <20260309-feat-mte4-v4-6-daaf0375620d@gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260309-feat-mte4-v4-6-daaf0375620d@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,46 +108,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The computation of s1ns was simply wrong. For Stage 2 faults, it
-should indicate whether the faulting IPA is in the Non-Secure IPA
-space. Correct the logic to check for ARMSS_NonSecure and drop the
-extraneous s2_mmu_idx test. The actual writing of HPFAR_EL2.NS is
-already gated by arm_is_secure_below_el3(env).
+On 3/10/26 08:59, Gabriel Brookman wrote:
+> This feature causes tag checks to compare logical address tags against
+> their canonical form rather than against allocation tags, when the check
+> happens in a canonically tagged memory region. Described in the ARM ARM
+> section "Logical Address Tagging".
+> 
+> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+> ---
+>   target/arm/cpu-features.h      |  5 +++++
+>   target/arm/cpu.h               |  1 +
+>   target/arm/internals.h         | 31 ++++++++++++++++++++++++++++++-
+>   target/arm/tcg/hflags.c        |  4 ++++
+>   target/arm/tcg/mte_helper.c    | 21 +++++++++++++++++++++
+>   target/arm/tcg/translate-a64.c |  7 +++++++
+>   target/arm/tcg/translate.h     |  1 +
+>   7 files changed, 69 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 38fc56b52e..5e3dc5256f 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -1154,6 +1154,11 @@ static inline bool isar_feature_aa64_mte_store_only(const ARMISARegisters *id)
+>       return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTESTOREONLY) == 1;
+>   }
+>   
+> +static inline bool isar_feature_aa64_mte_mtx(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64_IDREG(id, ID_AA64PFR1, MTEX) == 1;
+> +}
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2568
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+!= 0.
 
----
-v2
-  - simplified commit message
-  - added r-b
----
- target/arm/ptw.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+> +/* Return true if Canonical Tagging is enabled. */
+> +static inline bool canonical_tagging_enabled(CPUARMState *env, bool selector)
+> +{
+> +    int mmu_idx;
+> +    uint64_t tcr, mtx_bit;
+> +
+> +    /* If mte4 is not implemented, then mtx is by definition not enabled */
+> +    if (!cpu_isar_feature(aa64_mte_mtx, env_archcpu(env))) {
+> +        return false;
+> +    }
+> +
+> +    mmu_idx = arm_mmu_idx_el(env, arm_current_el(env));
+> +    tcr = regime_tcr(env, mmu_idx);
+> +
+> +    /*
+> +     * In two-range regimes, mtx is governed by bit 60 or 61 of TCR, and in
+> +     * one-range regimes, bit 33 is used.
+> +     */
+> +    mtx_bit = regime_has_2_ranges(mmu_idx) ? 60 + selector : 33;
+> +
+> +    return extract64(tcr, mtx_bit, 1);
+> +}
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index d5b2ed6c99c..57a413b468e 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -631,12 +631,11 @@ static ARMSecuritySpace S2_security_space(ARMSecuritySpace s1_space,
- static bool fault_s1ns(ARMSecuritySpace space, ARMMMUIdx s2_mmu_idx)
- {
-     /*
--     * For stage 2 faults in Secure EL22, S1NS indicates
--     * whether the faulting IPA is in the Secure or NonSecure
--     * IPA space. For all other kinds of fault, it is false.
-+     * For stage 2 faults, S1NS indicates whether the faulting IPA is
-+     * in the Non-Secure (true) or Secure (false) IPA space. For all
-+     * other kinds of fault, it is false.
-      */
--    return space == ARMSS_Secure && regime_is_stage2(s2_mmu_idx)
--        && s2_mmu_idx == ARMMMUIdx_Stage2_S;
-+    return space == ARMSS_NonSecure && regime_is_stage2(s2_mmu_idx);
- }
- 
- /* Translate a S1 pagetable walk through S2 if needed.  */
--- 
-2.47.3
+Unused?
 
+> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+> index 1484087a19..b54fbd11c0 100644
+> --- a/target/arm/tcg/mte_helper.c
+> +++ b/target/arm/tcg/mte_helper.c
+> @@ -854,6 +854,13 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+>           mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, sizem1 + 1,
+>                                     MMU_DATA_LOAD, ra);
+>           if (!mem1) {
+> +            /*
+> +             * If mtx is enabled, then the access is MemTag_CanonicallyTagged,
+> +             * otherwise it is Untagged. See AArch64.CheckTag.
+
+CheckTag is not where this is decided, but S1DecodeMemAttrs (and similarly in 
+S1DisabledOutput).
+
+> @@ -867,6 +874,12 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+>                                     ptr_last - next_page + 1,
+>                                     MMU_DATA_LOAD, ra);
+>   
+> +        /* If either region is canonically tagged, do a canonical tag check */
+> +        if (mtx_check(desc, bit55) && (!mem1 || !mem2)
+> +            && (!tag_is_canonical(ptr_tag, bit55))) {
+> +            return 0;
+> +        }
+> +
+
+This fails to set *fault correctly for the second page.
+You need to split checks into the separate !mem1 and !mem2 tests below.
+
+> @@ -974,6 +987,7 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+>           goto done;
+>       }
+>   
+> +
+>       /*
+
+Watch the spurrious changes.
+
+The whole patch could be split into smaller parts.
+
+
+r~
 

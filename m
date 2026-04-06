@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD96FF46C66
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Apr 2026 18:26:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4513EF46C6D
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Apr 2026 18:27:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w9oen-0007Va-D8; Mon, 06 Apr 2026 14:26:41 -0400
+	id 1w9oeV-0007Ig-Bj; Mon, 06 Apr 2026 14:26:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w9oel-0007Td-Qg
- for qemu-arm@nongnu.org; Mon, 06 Apr 2026 14:26:39 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1w9oeS-0007I4-Pw
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2026 14:26:20 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w9oeh-0002Pm-R3
- for qemu-arm@nongnu.org; Mon, 06 Apr 2026 14:26:39 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-82ce0a9b41aso1529621b3a.0
- for <qemu-arm@nongnu.org>; Mon, 06 Apr 2026 11:26:34 -0700 (PDT)
+ id 1w9oeQ-0002KP-TM
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2026 14:26:20 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-35d8e548a05so4649415a91.1
+ for <qemu-arm@nongnu.org>; Mon, 06 Apr 2026 11:26:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775499993; x=1776104793; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MwdNd4FHCrq25/1aSpiuowhEqZjmmXC6pqpEfiyTzXI=;
- b=ikJ1piPV+tZYPjhgm2oMQkaIQTzcUdN1UJPD5eXeoTeg0yuM8GVqP/AtZ+BV6cVt3K
- 0iSwUaNoTERx7Idyv8XX6ShMw2h5/iREb3mQSA/NAi7PU1B9MceWlFHmBSdW8V4InAuX
- KGj5XIilzliirZ9tKQpJgnIiisFAYdQjE39EnARy7FBQDvCWt4eoNMJuw795/AXeRmDu
- xGxnXIlBDxqHm/WhfE5jYYF9o22P/emuESfzZas64cdOAeZ20gi8ALghVFs//4Z7TQra
- hOluddARnnZIMZL111vdDzI6IeLrT+g962XVZpBFHm3qquP/e0RW6OttLK8zOcfB6ThI
- mrfg==
+ d=linaro.org; s=google; t=1775499977; x=1776104777; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=M97suiVPrp1lyPoQkNqQ+dJH5bK6giyR71NuVAofqHg=;
+ b=OxNfHvYfZXxzG+aV9vD7p6arQsibchSxxSo5qLLnunk0SGGffVlo/zz9YeYBxm6WKf
+ Jj8TZkxuqWy54y1/8EITCTw9Kq0v5Sl7oV6ZLzpTyUmGh1sp44Ce2kz6CrNF5NzVOVIy
+ j3NCtd0Zr/rQi9NMBg85i8KoYvxEJUd9+DYA6AQGw2DCVVjTKWjfoza5KILIUDLJdbWg
+ XEtghhV/VoQQFs4qKZT60gHRH+wcQK9qYX/Sm3q5h3ipo8abR9XnxLZyvqSkP+0CPGX1
+ qi0sHtZGKEcj1iiK7HKep92JZZzt58BSy3h/uiNsPTQUYpn8ikDbXPVE6KBc1+T7GEfU
+ XNgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775499993; x=1776104793;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=MwdNd4FHCrq25/1aSpiuowhEqZjmmXC6pqpEfiyTzXI=;
- b=jR6qJDb08l1xxflKLck4ZxaJ67z+fv3a6TvofBw+tSm5sE9lcVTYAKNRygbWHIHoBE
- sYwRDDgdvOA94ck5vg8oHpyd8bLE/AUW5WCi1xJ1cAGAolH1CzJCh/2i7GKYJQNcR7pa
- 0TM7JFyZLdAtV+fn2QT8ZEwlR0D4wZ6jFzfBbIy4AyPJ6j6BRXW94reY4s4u82yOHqrc
- AjNYcE6d0O1Y3rN/OzhfQyuLX7//f15h5jbDL87Z7IZEOFgvwT4PHH+Kn3Zadl+rfvNv
- ElOhtj1agbEUdZtuvswt7VW5YMVB5ljKtzBNTBt3Qglna9wuH5IiuK/08+X91zM45935
- ghCQ==
+ d=1e100.net; s=20251104; t=1775499977; x=1776104777;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=M97suiVPrp1lyPoQkNqQ+dJH5bK6giyR71NuVAofqHg=;
+ b=OaFvsFuopdOVUPIAnu3LJoE875qtijm9J0STio9HPYE4A4SZDMX6cTRSSobLD/UmVu
+ EaezpXowd20/kqdJXvsO1RCrTu9JIsseZ0dbm2VmTHVQt4Ik5WlKaXVy8kGzEB48yMkC
+ 95jHdMyiqLKdWv+8JxgX+w5fyWyR1WkkXsjTBReJ2OobLgenkMXCTAvtn7rq4KOg1H/q
+ e72wvt6hOjblOcWo9o2QsxzbaJuy8/bxSq/V6nUuupBCxf42gN/QhTjc1DI2OcEM61v+
+ n30YfGj1vWgjKJKyw9QQ8RgHTR5+rg63BAte2hLHieECLLhKQflbZUoC+xUui+qIYoZl
+ O96A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXQiWFV3WPuL+zL9L42rRiQeQwxlzkMMpGwLFIfDcoMemVhttWLYtvYDRf9C7Gd35S7Rid3gtvzEg==@nongnu.org
-X-Gm-Message-State: AOJu0YxLA48NuSnCoqnxVwmfchRoZtPmUIwJ75TUSE+E8dM/mxLitVD2
- 6BdiN3lrZ651mauFa8hZZQCe54s3c6eshY3gapZvy07eUsD/wJ4pFuNQp3Q1U8V5X48=
-X-Gm-Gg: AeBDietHDUkngBRh9S2LA7XhVR4MW9D7KQQy1D4uWX8VWoOoj5jcEFJJP41ot1jiV8h
- eeCaQkEk5K7JqRhLOupsqv4zXdkWUMH5vU96YFBo3vJpqGxSSch4RPrPid0X2KERxTFYLSQX9ZY
- MKsGjcyGwUbe/JFhEl2c2EUK+cwYds3WnUwF7/kd8bau4rmAVqRsA8OKXCFy0+2T3z45RBaotjq
- 7BRtVoPM+w+o+iBNmYTnNwS8oEZVL3netHwbQKAyaQCUs65ykbeEc+fr93W7lRv1YfCYypMK0Qc
- llmOXCFz8q8slHv8eUkbpQPhTmK6Y6sCeWnGQM9Xa3WptaK+mt/lEgSMPNewfK1zV1Qzj2bwqyY
- Ek68Elh3ez7uuW4ykeaNC53+4xQVe3CfuY4q7R8WFWTWsvQcMMnzQHpqEhtmLDN4C45oDlWBf4U
- 9IMMyjrMWQpJLot6wRoAx7SvQ1CVHhwTcRJ6HX2TKunCGsQAxA1DT+b+ott/2A2ImBVt0otHjmS
- Fb9Mqn3W/PC7gA=
-X-Received: by 2002:a05:6a20:430b:b0:39b:e789:7d10 with SMTP id
- adf61e73a8af0-39f2f20dfc7mr13998709637.57.1775499993169; 
- Mon, 06 Apr 2026 11:26:33 -0700 (PDT)
+ AJvYcCV/Azu+ZAfOQdBjM0sil5prs7ElGj6xj6K3HPaj63qjpXb1uCziwdnXDDc+lLZvDa20TgPP4uMtlw==@nongnu.org
+X-Gm-Message-State: AOJu0YzS8ZCokCtC1csW/NJ3mkZnxd7nvxLXiIzHZF/ErVHsplT3DjgB
+ Y9zDqg1l8rWaPW0LqYIXEQOHR/9RcmD/sT4w9flTtkcnJ3Hs8+rsZFt4xHK36NtIGTU=
+X-Gm-Gg: AeBDiesZlY3z82wUm1wq0jLe/HH22J4lHIwCbPdx1RuhPQASXBEGpwHicJWHV87xNSh
+ sr9BXMB/v2PJPGR10eobOiiwhQC/SKm3f6DtfYZMrg6LlgBNNWo57JEe4UFAaZZXRcz25IUydP8
+ Sn62IIYweOfMmsebBWE40yUE1+8sVaFeP4oSpoUw2m+GEa3HZRBdpBgz7sJosrkSV6HoeAkImwx
+ rL4uNQi1wzx8ZfO4RhT3k7XMNyJtBfFAWNSIfSQsmLv9eiASsybZamUT0qH/9SEF/fP02Jte/2+
+ 0kF//ytfiXcSSboCilltQBT/w6zpzg0nDUriSHOporZKEockcz0FQBplVz8XFjz3Hu0xW4uVoqw
+ 1ncb6R1jqk8UINO3ZKtCL6PXrjP0gxS449pOsSybxfm6QLKKJdgz/FvJD+RPI6hpbxFHKv5Jicr
+ wa+UhqOGRx3RQWN2fvUUuVEq56vqJXIlS7uiypXlzZuEr1YxfBZy62OsOFeTK2sh2gqKocotmcq
+ JDBKgFUY0+GjUA=
+X-Received: by 2002:a05:6a20:12c5:b0:39f:24ad:ad00 with SMTP id
+ adf61e73a8af0-39f2ed758bamr14155230637.7.1775499976973; 
+ Mon, 06 Apr 2026 11:26:16 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c76c6561fe9sm12765080a12.15.2026.04.06.11.26.32
+ 41be03b00d2f7-c76c6561fe9sm12765080a12.15.2026.04.06.11.26.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2026 11:26:32 -0700 (PDT)
+ Mon, 06 Apr 2026 11:26:16 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, jim.macarthur@linaro.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, philmd@linaro.org, qemu-arm@nongnu.org
-Subject: [PATCH v8 14/20] target/arm/tcg/translate.c: replace TCGv with TCGv_va
-Date: Mon,  6 Apr 2026 11:26:03 -0700
-Message-ID: <20260406182609.193886-15-pierrick.bouvier@linaro.org>
+Subject: [PATCH v8 00/20] target/arm: single-binary
+Date: Mon,  6 Apr 2026 11:25:49 -0700
+Message-ID: <20260406182609.193886-1-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260406182609.193886-1-pierrick.bouvier@linaro.org>
-References: <20260406182609.193886-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,142 +103,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We know this file is for 32-bit runtime target, so we can set
-TCG_ADDRESS_BITS and pass the correct addr_type to translator_loop.
+This series tackles (most of) the rest of target/arm, especially tcg folder.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/tcg/translate.c | 33 +++++++++++++++++----------------
- 1 file changed, 17 insertions(+), 16 deletions(-)
+We extract tcg memory operation in a new header, with a new type representing
+virtual addresses.
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index ebcf68aea97..6ea48efbac2 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -22,7 +22,8 @@
- 
- #include "translate.h"
- #include "translate-a32.h"
--#include "tcg/tcg-op.h"
-+#define TCG_ADDRESS_BITS 32
-+#include "tcg/tcg-op-mem.h"
- #include "qemu/log.h"
- #include "arm_ldst.h"
- #include "semihosting/semihost.h"
-@@ -909,14 +910,14 @@ MemOp pow2_align(unsigned i)
-  * that the address argument is TCGv_i32 rather than TCGv.
-  */
- 
--static TCGv gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
-+static TCGv_va gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
- {
--    TCGv addr = tcg_temp_new();
--    tcg_gen_extu_i32_tl(addr, a32);
-+    TCGv_va addr = tcgv_va_temp_new();
-+    tcg_gen_mov_i32(addr, a32);
- 
-     /* Not needed for user-mode BE32, where we use MO_BE instead.  */
-     if (!IS_USER_ONLY && s->sctlr_b && (op & MO_SIZE) < MO_32) {
--        tcg_gen_xori_tl(addr, addr, 4 - (1 << (op & MO_SIZE)));
-+        tcg_gen_xori_i32(addr, addr, 4 - (1 << (op & MO_SIZE)));
-     }
-     return addr;
- }
-@@ -928,21 +929,21 @@ static TCGv gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
- void gen_aa32_ld_internal_i32(DisasContext *s, TCGv_i32 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
-     tcg_gen_qemu_ld_i32(val, addr, index, opc);
- }
- 
- void gen_aa32_st_internal_i32(DisasContext *s, TCGv_i32 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
-     tcg_gen_qemu_st_i32(val, addr, index, opc);
- }
- 
- void gen_aa32_ld_internal_i64(DisasContext *s, TCGv_i64 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
- 
-     tcg_gen_qemu_ld_i64(val, addr, index, opc);
- 
-@@ -955,7 +956,7 @@ void gen_aa32_ld_internal_i64(DisasContext *s, TCGv_i64 val,
- void gen_aa32_st_internal_i64(DisasContext *s, TCGv_i64 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
- 
-     /* Not needed for user-mode BE32, where we use MO_BE instead.  */
-     if (!IS_USER_ONLY && s->sctlr_b && (opc & MO_SIZE) == MO_64) {
-@@ -2035,7 +2036,7 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
-          * architecturally 64-bit access, but instead do a 64-bit access
-          * using MO_BE if appropriate and then split the two halves.
-          */
--        TCGv taddr = gen_aa32_addr(s, addr, opc);
-+        TCGv_va taddr = gen_aa32_addr(s, addr, opc);
- 
-         tcg_gen_qemu_ld_i64(t64, taddr, get_mem_index(s), opc);
-         tcg_gen_mov_i64(cpu_exclusive_val, t64);
-@@ -2064,7 +2065,7 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
- {
-     TCGv_i32 t0, t1, t2;
-     TCGv_i64 extaddr;
--    TCGv taddr;
-+    TCGv_va taddr;
-     TCGLabel *done_label;
-     TCGLabel *fail_label;
-     MemOp opc = size | MO_ALIGN | s->be_data;
-@@ -3791,7 +3792,7 @@ static void do_ldrd_load(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
-      */
-     int mem_idx = get_mem_index(s);
-     MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
--    TCGv taddr = gen_aa32_addr(s, addr, opc);
-+    TCGv_va taddr = gen_aa32_addr(s, addr, opc);
-     TCGv_i64 t64 = tcg_temp_new_i64();
-     TCGv_i32 tmp = tcg_temp_new_i32();
-     TCGv_i32 tmp2 = tcg_temp_new_i32();
-@@ -3846,7 +3847,7 @@ static void do_strd_store(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
-      */
-     int mem_idx = get_mem_index(s);
-     MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
--    TCGv taddr = gen_aa32_addr(s, addr, opc);
-+    TCGv_va taddr = gen_aa32_addr(s, addr, opc);
-     TCGv_i32 t1 = load_reg(s, rt);
-     TCGv_i32 t2 = load_reg(s, rt2);
-     TCGv_i64 t64 = tcg_temp_new_i64();
-@@ -4067,7 +4068,7 @@ DO_LDST(STRH, store, MO_UW)
- static bool op_swp(DisasContext *s, arg_SWP *a, MemOp opc)
- {
-     TCGv_i32 addr, tmp;
--    TCGv taddr;
-+    TCGv_va taddr;
- 
-     opc |= s->be_data;
-     addr = load_reg(s, a->rn);
-@@ -6881,6 +6882,7 @@ void arm_translate_code(CPUState *cpu, TranslationBlock *tb,
-     DisasContext dc = { };
-     const TranslatorOps *ops = &arm_translator_ops;
-     CPUARMTBFlags tb_flags = arm_tbflags_from_tb(tb);
-+    TCGType addr_type = is_a64(cpu_env(cpu)) ? TCG_TYPE_I64 : TCG_TYPE_I32;
- 
-     if (EX_TBFLAG_AM32(tb_flags, THUMB)) {
-         ops = &thumb_translator_ops;
-@@ -6891,6 +6893,5 @@ void arm_translate_code(CPUState *cpu, TranslationBlock *tb,
-     }
- #endif
- 
--    translator_loop(cpu, tb, max_insns, pc, host_pc, ops, &dc.base,
--                    tcg_default_addr_type());
-+    translator_loop(cpu, tb, max_insns, pc, host_pc, ops, &dc.base, addr_type);
- }
+Initially, I went down the way to have a dynamic definition of TCGv, which
+required much more boilerplate and runtime checks. After discussing with
+Richard, I realized it was not needed, and that could simply split 32 and 64 bit
+properly in different files instead. This approach will not work with other
+architectures, requiring something else, but it's enough for target/arm.
+
+Files left are:
+- target/arm/tcg/mve_helper.c
+- target/arm/tcg/m_helper.c
+- target/arm/tcg/cpu32.c
+
+v8
+--
+
+- make translate.c compilation unit common.
+
+v7
+--
+
+- add parameter to translator_loop to indicate address type for current tb.
+- remove TCGv from target/arm/tcg/translate.c
+
+v6
+--
+
+- meson.build: extract decode files in separate variables and explicitly include
+  them in user and system code. The duplication is now minimized: one instance
+  for all system binaries, and one per user binary.
+
+v5
+--
+
+- reimplemented what v0 did with new approach defining new tcg-op-mem header
+- reapply all straightforward patches from v0
+- only translate.c is left, but first want to validate that changes here are ok
+  for maintainers before doing more.
+
+v0
+--
+
+See original thread:
+https://lore.kernel.org/qemu-devel/20260109053158.2800705-1-pierrick.bouvier@linaro.org/#t
+
+Note about v1 -> v4
+-------------------
+
+- After v0 which was trying to do too many changes, v1 to v4 focused on smaller
+  things, and all patches have been merged already.
+  https://patchew.org/QEMU/20260219040150.2098396-1-pierrick.bouvier@linaro.org/
+
+Pierrick Bouvier (20):
+  include/tcg/tcg-op: extract memory operations to tcg-op-mem.h
+  target/arm/translate.h: remove tcg-op.h include
+  target/arm/tcg/translate.h: remove tcg-op-gvec.h include
+  target/arm/tcg/translate.h: remove TARGET_AARCH64
+  target/arm/tcg/translate-vfp.c: make compilation unit common
+  target/arm/tcg/translate-neon.c: make compilation unit common
+  target/arm/tcg/translate-mve.c: make compilation unit common
+  target/arm/tcg/translate-m-nocp.c: make compilation unit common
+  target/arm/tcg/op_helper.c: make compilation unit common
+  target/arm/tcg/gengvec.c: make compilation unit common
+  target/arm/tcg/translate.c: remove MO_TE usage
+  target/arm/tcg/translate.c: replace target_ulong with uint32_t
+  tcg/translator: add parameter to translator_loop for current addr type
+  target/arm/tcg/translate.c: replace TCGv with TCGv_va
+  target/arm/tcg/translate-a64.c: use translator_ldl_end instead of
+    arm_ldl_code
+  target/arm/tcg/arm_ldst.h: merge in translate.c
+  target/arm/tcg/translate.c: replace translator_ldl_swap with
+    translator_ldl_end
+  target/arm/tcg/translate.c: remove target_ulong
+  target/arm/tcg/translate.c: remove TARGET_AARCH64
+  target/arm/tcg/translate.c: make compilation unit common
+
+ include/exec/translator.h        |   4 +-
+ include/tcg/tcg-op-mem.h         | 126 +++++++++++++++++++++++++++++++
+ include/tcg/tcg-op.h             | 100 +-----------------------
+ include/tcg/tcg.h                |   5 ++
+ target/arm/internals.h           |   2 +
+ target/arm/tcg/arm_ldst.h        |  47 ------------
+ target/arm/tcg/translate.h       |  14 +---
+ accel/tcg/translator.c           |   4 +-
+ target/alpha/translate.c         |   3 +-
+ target/arm/tcg/op_helper.c       |   1 -
+ target/arm/tcg/stubs32.c         |  24 ++++++
+ target/arm/tcg/translate-a64.c   |  14 +++-
+ target/arm/tcg/translate-sme.c   |   1 +
+ target/arm/tcg/translate-sve.c   |   1 +
+ target/arm/tcg/translate.c       |  80 +++++++++++++-------
+ target/avr/translate.c           |   3 +-
+ target/hexagon/translate.c       |   3 +-
+ target/hppa/translate.c          |   3 +-
+ target/i386/tcg/translate.c      |   3 +-
+ target/loongarch/tcg/translate.c |   3 +-
+ target/m68k/translate.c          |   3 +-
+ target/microblaze/translate.c    |   3 +-
+ target/mips/tcg/translate.c      |   3 +-
+ target/or1k/translate.c          |   3 +-
+ target/ppc/translate.c           |   3 +-
+ target/riscv/translate.c         |   3 +-
+ target/rx/translate.c            |   3 +-
+ target/s390x/tcg/translate.c     |   3 +-
+ target/sh4/translate.c           |   3 +-
+ target/sparc/translate.c         |   3 +-
+ target/tricore/translate.c       |   3 +-
+ target/xtensa/translate.c        |   3 +-
+ target/arm/tcg/meson.build       |  57 ++++++++++----
+ 33 files changed, 312 insertions(+), 222 deletions(-)
+ create mode 100644 include/tcg/tcg-op-mem.h
+ create mode 100644 target/arm/tcg/stubs32.c
+
 -- 
 2.47.3
 

@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E040F46C45
-	for <qemu-arm@archiver.kernel.org>; Mon,  6 Apr 2026 15:05:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88BD0F46C47
+	for <qemu-arm@archiver.kernel.org>; Mon,  6 Apr 2026 15:05:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1w9lVT-0002uC-RW; Mon, 06 Apr 2026 11:04:51 -0400
+	id 1w9lVR-0002sf-OU; Mon, 06 Apr 2026 11:04:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w9lVR-0002sa-Hq
- for qemu-arm@nongnu.org; Mon, 06 Apr 2026 11:04:49 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1w9lVP-0002ru-R5
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2026 11:04:48 -0400
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w9lVN-0003qE-U7
- for qemu-arm@nongnu.org; Mon, 06 Apr 2026 11:04:49 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2addb31945aso29676255ad.1
- for <qemu-arm@nongnu.org>; Mon, 06 Apr 2026 08:04:45 -0700 (PDT)
+ id 1w9lVN-0003q8-Ap
+ for qemu-arm@nongnu.org; Mon, 06 Apr 2026 11:04:47 -0400
+Received: by mail-pg1-x52f.google.com with SMTP id
+ 41be03b00d2f7-c70f91776fcso1523888a12.0
+ for <qemu-arm@nongnu.org>; Mon, 06 Apr 2026 08:04:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775487884; x=1776092684; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zw7oDmqglvqKl8+MyBKQqhDwyqmly7OMJWrGEtetrjU=;
- b=tqUrgkHBZuTsqJQcqHZen7PvqDcYm1LoRTMz3N/qUGpNn/lKJ2EEmSlR1zoH0ew6+j
- EbeaYRImehgb3pxqu2pvFrHq+06SUXmYh280QUEAniTh2EU/G6wR2Qcf01doWWdtIZD+
- PlmEanRyvFI9ArZC98X/jQqi4lwzDLz8d1xkTJbZVT+/UwYD1rTjPt+VYXbS4m/Mfeje
- yPdZBSEOCpdmiTD6YRhJuRLrAqefe+ztKX+02KkyCGW8H0v9j4/qm0s7+Ir51IsP8wzg
- 25ID0nTelQWVkeixLavdJlYIBbP36B/cz9IUKAQbfa0bsBMvi5uLd42dZS/xid25GPAi
- Rpag==
+ d=linaro.org; s=google; t=1775487883; x=1776092683; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=xhWX4LN6/7U+l0GQfGNZYyz9ZAXayPixhHRwsoCZtho=;
+ b=qFhypsFrXCREBjfjAdLxtpvu8oLFpSKLvcgHz1RfMYihbWzO2zLpk0Xuryx+Z8VwPY
+ sh1fV4EQ+mG8RQ/RAMNhGJQDXkuHvwCU3KH5dSjYwWy8Q/R52G536QDVzpWAnzP2UE7m
+ cyr16BFhXuGhFL4AZBwPivo08zzvFDxRwSmWZyNRQ39F1fNUMPGxvz9BflpZh4Qn9+Om
+ atNbblG8Yi9Xw2gHTJSJPmt4F67Wv6SCfiUNy517mihFHPVMncVibmU4m/ivxjEYnOCQ
+ 2NmlpeXQQJe2FpTtjmhXs17gENqPihDCWEkmxZgtxxBWUKIMv8XwVINVXCJ24eCLg70R
+ EgOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775487884; x=1776092684;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=zw7oDmqglvqKl8+MyBKQqhDwyqmly7OMJWrGEtetrjU=;
- b=dLNM6amIT9cnzBijLQhsP6ZYJMWHiPJuZvsj92Y8TX0pchOCOhU3A+jEoca5EP/k2L
- gjOaPgx7+/OpBseTjUpSgJ57aSWX7+3VifkdDCqU/hG+gbnR3H4bD/2Ug+edAy3hNQbR
- BfefizZyFLEeiP5gAQGa0bbG3O9Fj2I6vjvGwhuS6rg5SK+og/pLlQBqwYESBKoTiOHk
- gNrgq3wD8XF6n2oqZ5ykLfBckxZOAWffhwqX1ly0CELw0mAZ530aMgnG810uifZvd5OF
- IAWvtl2qKI+XNk4I6GQhtuqd9ImT1aUVh8AYq1t2RNG0359AYx38PIoesEpbbkP7C591
- R/zw==
-X-Gm-Message-State: AOJu0YyngJ6lLqVJLNgubp+VkUeEPuqBd+NaAKa+K1jhOW+Zr7Ds/VTB
- 97VwzKEeFGtaak5eFHylXLrVgQS1tZQODkGGR/1akLlTtMmLmZklnyAZkNLbPtAuK/M=
-X-Gm-Gg: AeBDieuumDcYjxvn9eLwj3DaVaU0Qxkkg69IA/a7W3hj82247vchN5gIm+X/M9uloLT
- 7jPxYvdwBpDCZZJN/BCNUivA9ewbcG9ZlJmToN5TgTDoKawDUXKoIAHsGYSO883z+Ln0H28zvLe
- qAaphtR9f0eWigG0SFuh5luHNu0b50kmjxvU84qo6ROSRnqp04+aRKKKQ0KOG34vFWsTEaBH27H
- icdWDc3K0V3hzefUsHkvQ5RoQOmNZCCHVp2bvyCYKO3yarwn/KGfvG/UvnP5KV91UEriXTO0yXo
- 2JCakTyyM4UhecpWkLw7f1p4XY+U9ZSutAcSMOdE+i48mlbLNqh5WueeRAEzUWJ1RLZQjuYbm2c
- WC1GjpRQkjtD+ePzmpygRelWZllMPn0LwirUrvEkzvBXBBBdsuqBxPVRUWCWrvvLJWsKryRG9Nb
- JFHc8OEe25T7CDwMojNnDAht85zpDW7sNr7M+XJIgbIRi3kcYlT6W+akqi1e94I4KAN/6KjwTmN
- jtJ
-X-Received: by 2002:a17:902:e546:b0:2b0:5b4e:370c with SMTP id
- d9443c01a7336-2b281931aa5mr135094955ad.32.1775487884060; 
- Mon, 06 Apr 2026 08:04:44 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1775487883; x=1776092683;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xhWX4LN6/7U+l0GQfGNZYyz9ZAXayPixhHRwsoCZtho=;
+ b=bkANzpGslg0593YnWxa1ZK/9JvH968m8pECJfyvFWd7A6c6fnFUHv5l52SrjaPEVY3
+ opJtcTN/ZuH82sEC76umeYzTaNbVJAHP5xnAhl/T0hAjsj8Iotuw0xyxMD6PzsHJxBwJ
+ fbjlkVqHLWtjpuWw5buvjjFET2oGOQwe6neOwO7dGLWHI7oFP6kLolg1LgZv55BOxwkL
+ IpRziJVmTRY93GwPSWV9/MC8kqqDNUW6myMXnXjJzV5Tgy4LVgzQL4wp34Y2+ya6ioV2
+ IHhzzkp1ZKD4TFfqy7OqmsB3GPkg/eQnOKZSKeIbB07R6/rNCpS2Iqf2JM11CLs7tGUi
+ Ookw==
+X-Gm-Message-State: AOJu0YwkWxmJBuT1GIqnTuA60gyElXu37AB5CJBnkrIfJbaY+7zHuRo/
+ NiE6HgW1Ob+pZuo8BoI0Ai1Fc3ll+JwjpVWIEU1OtU3zStt+V7fBgjQRuBB601sKObQ=
+X-Gm-Gg: AeBDiespC54IX/uI0nConas4C4z4PT6dwqICst7QRq6f4UUEYJ6HR/9YrtIGEnQUJmA
+ uh15xzP5kWxVA45J7yllmAZzy1YxtC638UIvBET9n+B19Mwrz51SEOS0tu3NrBp6WgM8+z6+A98
+ IPXnT0CY/E4cOD9HbOEhRkck6cIvp/GlSnijPjwBFTimmAZTKSiUk9uaCWKzd/jeTX0YvCVCCRV
+ 0F3CTsAM0ps1uxvjmzhyZpNIizJdd9Lu29NwnYau+uTfSgTMW9ZvkgPvHfjWPo92F7mdPNMvMlE
+ fl1StAT+3iJSydfOxLwDNj9C9QKnJqZ1zUIKgE0F+NrtwOhNW9xzbPFjy8E+piYRHd7IZVlOg3W
+ rdWLEieN8FAgVzg52mOEsWvNNgDlbTld//kq7wewrkgHjZhZOhWyRvTrzloZ19Su/jpb+tWOGNK
+ 7ZWYSqQIxSpLIM6KDs1GHOH9csoBFzmdze68OJIUz+YuteW2ptBfXt0o7xC1laoTvj9FdGAiy0/
+ 0yuP5qMf5SITlM=
+X-Received: by 2002:a17:903:3804:b0:2b0:59c4:e9dc with SMTP id
+ d9443c01a7336-2b28170f376mr139020735ad.22.1775487883264; 
+ Mon, 06 Apr 2026 08:04:43 -0700 (PDT)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d72sm137770075ad.51.2026.04.06.08.04.43
+ d9443c01a7336-2b274979d72sm137770075ad.51.2026.04.06.08.04.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Apr 2026 08:04:43 -0700 (PDT)
+ Mon, 06 Apr 2026 08:04:42 -0700 (PDT)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, philmd@linaro.org,
  jim.macarthur@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v7 01/14] include/tcg/tcg-op: extract memory operations to
- tcg-op-mem.h
-Date: Mon,  6 Apr 2026 08:04:21 -0700
-Message-ID: <20260406150434.407201-2-pierrick.bouvier@linaro.org>
+Subject: [PATCH v7 00/14] target/arm: single-binary
+Date: Mon,  6 Apr 2026 08:04:20 -0700
+Message-ID: <20260406150434.407201-1-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260406150434.407201-1-pierrick.bouvier@linaro.org>
-References: <20260406150434.407201-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,281 +101,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This new header defines a new type for target virtual address,
-independent from TCGv and is parameterized by a new define
-TCG_ADDRESS_BITS (name was suggested by Paolo instead of
-TARGET_ADDRESS_BITS).
+This series tackles (most of) the rest of target/arm, especially tcg folder.
 
-By default, tcg-op.h include set this define to TARGET_LONG_BITS, but
-it's also possible to include only tcg-op-common.h and tcg-op-mem.h and
-set TCG_ADDRESS_BITS manually, which is what next commits will do.
+We extract tcg memory operation in a new header, with a new type representing
+virtual addresses.
 
-We preserve existing MIT license when extracting this new header.
+Initially, I went down the way to have a dynamic definition of TCGv, which
+required much more boilerplate and runtime checks. After discussing with
+Richard, I realized it was not needed, and that could simply split 32 and 64 bit
+properly in different files instead. This approach will not work with other
+architectures, requiring something else, but it's enough for target/arm.
 
-Implemented from:
-https://lore.kernel.org/qemu-devel/a68321f0-3d54-4909-864c-9793cda05b2a@linaro.org/
+Files left are:
+- target/arm/tcg/mve_helper.c
+- target/arm/tcg/m_helper.c
+- target/arm/tcg/cpu32.c
 
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- include/tcg/tcg-op-mem.h | 126 +++++++++++++++++++++++++++++++++++++++
- include/tcg/tcg-op.h     | 100 +------------------------------
- 2 files changed, 129 insertions(+), 97 deletions(-)
+v7
+--
+
+- add parameter to translator_loop to indicate address type for current tb.
+- remove TCGv from target/arm/tcg/translate.c
+
+v6
+--
+
+- meson.build: extract decode files in separate variables and explicitly include
+  them in user and system code. The duplication is now minimized: one instance
+  for all system binaries, and one per user binary.
+
+v5
+--
+
+- reimplemented what v0 did with new approach defining new tcg-op-mem header
+- reapply all straightforward patches from v0
+- only translate.c is left, but first want to validate that changes here are ok
+  for maintainers before doing more.
+
+v0
+--
+
+See original thread:
+https://lore.kernel.org/qemu-devel/20260109053158.2800705-1-pierrick.bouvier@linaro.org/#t
+
+Note about v1 -> v4
+-------------------
+
+- After v0 which was trying to do too many changes, v1 to v4 focused on smaller
+  things, and all patches have been merged already.
+  https://patchew.org/QEMU/20260219040150.2098396-1-pierrick.bouvier@linaro.org/
+
+Pierrick Bouvier (14):
+  include/tcg/tcg-op: extract memory operations to tcg-op-mem.h
+  target/arm/translate.h: remove tcg-op.h include
+  target/arm/tcg/translate.h: remove tcg-op-gvec.h include
+  target/arm/tcg/translate.h: remove TARGET_AARCH64
+  target/arm/tcg/translate-vfp.c: make compilation unit common
+  target/arm/tcg/translate-neon.c: make compilation unit common
+  target/arm/tcg/translate-mve.c: make compilation unit common
+  target/arm/tcg/translate-m-nocp.c: make compilation unit common
+  target/arm/tcg/op_helper.c: make compilation unit common
+  target/arm/tcg/gengvec.c: make compilation unit common
+  target/arm/tcg/translate.c: remove MO_TE usage
+  target/arm/tcg/translate.c: replace target_ulong with uint32_t
+  tcg/translator: add parameter to translator_loop for current addr type
+  target/arm/tcg/translate.c: replace TCGv with TCGv_va
+
+ include/exec/translator.h        |   4 +-
+ include/tcg/tcg-op-mem.h         | 126 +++++++++++++++++++++++++++++++
+ include/tcg/tcg-op.h             | 100 +-----------------------
+ include/tcg/tcg.h                |   5 ++
+ target/arm/tcg/translate.h       |  14 +---
+ accel/tcg/translator.c           |   4 +-
+ target/alpha/translate.c         |   3 +-
+ target/arm/tcg/op_helper.c       |   1 -
+ target/arm/tcg/stubs32.c         |  17 +++++
+ target/arm/tcg/translate-a64.c   |   1 +
+ target/arm/tcg/translate-sme.c   |   1 +
+ target/arm/tcg/translate-sve.c   |   1 +
+ target/arm/tcg/translate.c       |  36 ++++-----
+ target/avr/translate.c           |   3 +-
+ target/hexagon/translate.c       |   3 +-
+ target/hppa/translate.c          |   3 +-
+ target/i386/tcg/translate.c      |   3 +-
+ target/loongarch/tcg/translate.c |   3 +-
+ target/m68k/translate.c          |   3 +-
+ target/microblaze/translate.c    |   3 +-
+ target/mips/tcg/translate.c      |   3 +-
+ target/or1k/translate.c          |   3 +-
+ target/ppc/translate.c           |   3 +-
+ target/riscv/translate.c         |   3 +-
+ target/rx/translate.c            |   3 +-
+ target/s390x/tcg/translate.c     |   3 +-
+ target/sh4/translate.c           |   3 +-
+ target/sparc/translate.c         |   3 +-
+ target/tricore/translate.c       |   3 +-
+ target/xtensa/translate.c        |   3 +-
+ target/arm/tcg/meson.build       |  51 +++++++++----
+ 31 files changed, 255 insertions(+), 160 deletions(-)
  create mode 100644 include/tcg/tcg-op-mem.h
+ create mode 100644 target/arm/tcg/stubs32.c
 
-diff --git a/include/tcg/tcg-op-mem.h b/include/tcg/tcg-op-mem.h
-new file mode 100644
-index 00000000000..36931d1dd57
---- /dev/null
-+++ b/include/tcg/tcg-op-mem.h
-@@ -0,0 +1,126 @@
-+/* SPDX-License-Identifier: MIT */
-+/*
-+ * Target dependent memory related functions.
-+ *
-+ * Copyright (c) 2008 Fabrice Bellard
-+ */
-+
-+#ifndef TCG_TCG_OP_MEM_H
-+#define TCG_TCG_OP_MEM_H
-+
-+#ifndef TCG_ADDRESS_BITS
-+#error TCG_ADDRESS_BITS must be defined
-+#endif
-+
-+#if TCG_ADDRESS_BITS == 32
-+typedef TCGv_i32 TCGv_va;
-+#define TCG_TYPE_VA TCG_TYPE_I32
-+#define tcgv_va_temp tcgv_i32_temp
-+#define tcgv_va_temp_new tcg_temp_new_i32
-+#elif TCG_ADDRESS_BITS == 64
-+typedef TCGv_i64 TCGv_va;
-+#define TCG_TYPE_VA TCG_TYPE_I64
-+#define tcgv_va_temp tcgv_i64_temp
-+#define tcgv_va_temp_new tcg_temp_new_i64
-+#else
-+#error
-+#endif
-+
-+static inline void
-+tcg_gen_qemu_ld_i32(TCGv_i32 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_ld_i32_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+static inline void
-+tcg_gen_qemu_st_i32(TCGv_i32 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_st_i32_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+static inline void
-+tcg_gen_qemu_ld_i64(TCGv_i64 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_ld_i64_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+static inline void
-+tcg_gen_qemu_st_i64(TCGv_i64 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_st_i64_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+static inline void
-+tcg_gen_qemu_ld_i128(TCGv_i128 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_ld_i128_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+static inline void
-+tcg_gen_qemu_st_i128(TCGv_i128 v, TCGv_va a, TCGArg i, MemOp m)
-+{
-+    tcg_gen_qemu_st_i128_chk(v, tcgv_va_temp(a), i, m, TCG_TYPE_VA);
-+}
-+
-+#define DEF_ATOMIC2(N, S)                                               \
-+    static inline void N##_##S(TCGv_##S r, TCGv_va a, TCGv_##S v,       \
-+                               TCGArg i, MemOp m)                       \
-+    { N##_##S##_chk(r, tcgv_va_temp(a), v, i, m, TCG_TYPE_VA); }
-+
-+#define DEF_ATOMIC3(N, S)                                               \
-+    static inline void N##_##S(TCGv_##S r, TCGv_va a, TCGv_##S o,       \
-+                               TCGv_##S n, TCGArg i, MemOp m)           \
-+    { N##_##S##_chk(r, tcgv_va_temp(a), o, n, i, m, TCG_TYPE_VA); }
-+
-+DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i32)
-+DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i64)
-+DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i128)
-+
-+DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i32)
-+DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i64)
-+DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i128)
-+
-+DEF_ATOMIC2(tcg_gen_atomic_xchg, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_xchg, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_xchg, i128)
-+
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i128)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i128)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i64)
-+
-+DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i64)
-+DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i32)
-+DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i64)
-+
-+#undef DEF_ATOMIC2
-+#undef DEF_ATOMIC3
-+
-+#endif /* TCG_TCG_OP_MEM_H */
-diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
-index 7024be938e6..96a5af1a298 100644
---- a/include/tcg/tcg-op.h
-+++ b/include/tcg/tcg-op.h
-@@ -16,6 +16,9 @@
- #error must include QEMU headers
- #endif
- 
-+#define TCG_ADDRESS_BITS TARGET_LONG_BITS
-+#include "tcg/tcg-op-mem.h"
-+
- #if TARGET_LONG_BITS == 32
- # define TCG_TYPE_TL  TCG_TYPE_I32
- #elif TARGET_LONG_BITS == 64
-@@ -46,103 +49,6 @@ typedef TCGv_i64 TCGv;
- #error Unhandled TARGET_LONG_BITS value
- #endif
- 
--static inline void
--tcg_gen_qemu_ld_i32(TCGv_i32 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_ld_i32_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--static inline void
--tcg_gen_qemu_st_i32(TCGv_i32 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_st_i32_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--static inline void
--tcg_gen_qemu_ld_i64(TCGv_i64 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_ld_i64_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--static inline void
--tcg_gen_qemu_st_i64(TCGv_i64 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_st_i64_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--static inline void
--tcg_gen_qemu_ld_i128(TCGv_i128 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_ld_i128_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--static inline void
--tcg_gen_qemu_st_i128(TCGv_i128 v, TCGv a, TCGArg i, MemOp m)
--{
--    tcg_gen_qemu_st_i128_chk(v, tcgv_tl_temp(a), i, m, TCG_TYPE_TL);
--}
--
--#define DEF_ATOMIC2(N, S)                                               \
--    static inline void N##_##S(TCGv_##S r, TCGv a, TCGv_##S v,          \
--                               TCGArg i, MemOp m)                       \
--    { N##_##S##_chk(r, tcgv_tl_temp(a), v, i, m, TCG_TYPE_TL); }
--
--#define DEF_ATOMIC3(N, S)                                               \
--    static inline void N##_##S(TCGv_##S r, TCGv a, TCGv_##S o,          \
--                               TCGv_##S n, TCGArg i, MemOp m)           \
--    { N##_##S##_chk(r, tcgv_tl_temp(a), o, n, i, m, TCG_TYPE_TL); }
--
--DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i32)
--DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i64)
--DEF_ATOMIC3(tcg_gen_atomic_cmpxchg, i128)
--
--DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i32)
--DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i64)
--DEF_ATOMIC3(tcg_gen_nonatomic_cmpxchg, i128)
--
--DEF_ATOMIC2(tcg_gen_atomic_xchg, i32)
--DEF_ATOMIC2(tcg_gen_atomic_xchg, i64)
--DEF_ATOMIC2(tcg_gen_atomic_xchg, i128)
--
--DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_add, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_and, i128)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_or, i128)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_xor, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_smin, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_umin, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_smax, i64)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i32)
--DEF_ATOMIC2(tcg_gen_atomic_fetch_umax, i64)
--
--DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_add_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_and_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_or_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_xor_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_smin_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_umin_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_smax_fetch, i64)
--DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i32)
--DEF_ATOMIC2(tcg_gen_atomic_umax_fetch, i64)
--
--#undef DEF_ATOMIC2
--#undef DEF_ATOMIC3
--
- #if TARGET_LONG_BITS == 64
- #define tcg_gen_movi_tl tcg_gen_movi_i64
- #define tcg_gen_mov_tl tcg_gen_mov_i64
 -- 
 2.47.3
 

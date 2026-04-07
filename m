@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97DEEFF5138
-	for <qemu-arm@archiver.kernel.org>; Tue,  7 Apr 2026 19:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A0FEFF5138
+	for <qemu-arm@archiver.kernel.org>; Tue,  7 Apr 2026 19:56:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wACWS-000211-RB; Tue, 07 Apr 2026 15:55:42 -0400
+	id 1wACXW-0002lY-M7; Tue, 07 Apr 2026 15:56:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wACWQ-00020P-JR
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 15:55:38 -0400
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ id 1wACXV-0002jU-96
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2026 15:56:45 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wACWM-0006dG-Lp
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 15:55:36 -0400
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-35da9c0c007so5167722a91.2
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 12:55:34 -0700 (PDT)
+ id 1wACXT-0006p6-PO
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2026 15:56:45 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-35d971fb6f1so4706482a91.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 12:56:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775591733; x=1776196533; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775591802; x=1776196602; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QyEMqWGumRUu1pPeeU7ZcpnY3SMPn9Jtym/seu+iFA0=;
- b=xwsj91sMuy5rXBsPm/QLKwsj2R0WoxMP2NvKp+mWuBx53XTJHNtAsq39qYJHj+pEnv
- OJtbq/Z34IgrNNFitxfMRpV9CajGZIyiARt32TAhclecyf9awNk0JgjlAuCyHY1VDgMM
- 0+sNlzKdX4B/XVQNza2GHheum1HMG9aI9f6nSkX5xgHftq2GMGnL6ua6YhzVb9JLoN7z
- BDInsG+q1xaP1Z5jwxPdCVebXyxqrpX4X3kLsqXTnQEeitXkGnKxPBGSVXCQistCNCcv
- IQJeej0xmxPq0JHVl0Y46L+AU+hFvuJwt0/Uof8LFwgAkAjiKGAl+p4Pkuw0cRa3AAX/
- n6wQ==
+ bh=N6poibM2YHAi8gi1/iCNREFyz9Fc9y9F8/6NFCMksCI=;
+ b=gV5MJpXu/z1xi3dsU6Bj9yhfIr+HvVQyJEDXYBExFjYCQfDsEkbHaE6d3n5/ztJzzI
+ ca6Rnb55YY3iuz9pDqYZfwVkDQO1fpJUPIwQVBw79m8YuaVvGCOFmlB121KxCvU5mGfV
+ YFuPlUNuHoBxumWcXQl7nXeFtHcHUaiXDZR0LEfVHJoQdokeZ3BE1iKFKcL7GusgKeYu
+ WDxQYpM3LIAxa+CysPlX8+bcst1zXyhfVDrjg1X6fKaNPOOY8n2fUu27BH87hWe6g+3Z
+ 5iXRmaAY10sWBxeAg7RE581z5KqjaSemZgwxuRVXunSUTxzHqPwTeuA+I3L8Qq5t7R7N
+ XcJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775591733; x=1776196533;
+ d=1e100.net; s=20251104; t=1775591802; x=1776196602;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QyEMqWGumRUu1pPeeU7ZcpnY3SMPn9Jtym/seu+iFA0=;
- b=U13ljB+IdbFvRLFALi7wV+ID2L5Z83b9HhEn3KfvWw1eeJ1zt/9W0qqWlmcldHPUyb
- IBEHESvND7egm3r3wfS/K3EGBSRRjS7QsHbbsTCXNenxhkOm/S9SJlasp5qahZvtWgwI
- x99LzIsDRKW9bDuawMAYTc0GJPHwLWq6/SsbrKA1uJHYizUxv4XbSepiGNhH9tbNwlWb
- 2G9Wu2PtS1tJXI5CDylIVM49Xynf8q2xZfgCK2MJaoFGkaj44C6edlPemCXFMl80YPgi
- UWYLBAfMrMV2MFFDudI597maM0NpEh50DuYznj4aYNQH6XriEYPmlX1Z7bRBT8RHRNOi
- wyPA==
+ bh=N6poibM2YHAi8gi1/iCNREFyz9Fc9y9F8/6NFCMksCI=;
+ b=c0pMAhnfdkcT1d90AaxAuDaNAaJWYAAwnUoFHnsu81anyJjoEbNG7RkXBqjFqx/YOi
+ tFuskRjb1uWfuW0vtBEhTGMwoQdpZK/ymwAGZAt5qvydrDvXzl5C+N30wNUCRGCNrZFc
+ zIYFl4UHfODprd+os2smIn+CklmA300Jr2dUSx/EJ//o/r4ERMBSAdd3Q8nAUTLV7mO3
+ w3NXlnB0h9rVqcK8nsui55AWbz1fUfBUNIK+xtHJIJhNxpfa/ibusrAeVN+7zS1n1mCl
+ n1J3G1AeLku08b8ReGavOZZHWr7f2rvKdOt0yXqKbtzzCUq3N/0L6e22eZVBNORqXDg7
+ yJ1Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+wsZGCRDzIfmHTI8bcUJi95yho4GJBQiSD1Lrtml5kpdjchmTE1QVPLfyR5VtvywvSWi9m94ihg==@nongnu.org
-X-Gm-Message-State: AOJu0YwR4EUYKrExoCxAq2tfcqe7LggAhssaWXnlxT3yVAmBmDYgHHmP
- /qYSrXP6k05Mvl+t16EquoRV9+3rnNVRxJaThyUKwF5qkPTB0qj591XFDkoEESBCJBM=
-X-Gm-Gg: AeBDiesB38vwJRk9VCXFzkawTS03Ah3M/lrQUShtqdXsB6zd/88dlS8d9NQWF0fQgUp
- QxHZkycP73HmfI42v7qctKjj8FMdNGmJuCcHxeisNHS9zFtHkekTvKz4/eVGgprv+A3tyBvXpp9
- nmUtlrILCXf2lEjuz/lXBVGC43fUfO/XFmJHppPTUPQK0mCJaNX5eFVGFzrRnWSKdEdZh/K5xfT
- dMTMetA7rvZ1iX6hFl7eEFXzwBJIk/hAFykrQ+/Qac/jPw5KFGZvSpjuXlmzraV7wDUe1InxkXc
- IKX3iJoBrQ2ljGJg1iJr76UgmF2Mt+TjbWidyoC2ry0YXfFde8kzohISZE02FdWPSWV4NGgff8r
- q24YJHI8ImBEvaM20xMLD1BBLjoX8uKhIkMykxqq9sVevzzXANcb1gg/3IW1oaKpE0cmx+Qp1IS
- filU40wYrqU8ZHz/AMVElJcr64Qgn1ABHPSJzsGnvp8uwzFtqkMrQz11sgxs+mj6qMqncJTg==
-X-Received: by 2002:a17:903:185:b0:2b2:41a9:8e10 with SMTP id
- d9443c01a7336-2b2819180d1mr191112835ad.23.1775591732837; 
- Tue, 07 Apr 2026 12:55:32 -0700 (PDT)
+ AJvYcCX4i5qKUrg+F+MGLUtdSnv1m71gwO7vhUfU6AkE/vwfQeaMl7BLQftwqnwKOUX6T9kHE+7Su0AOeg==@nongnu.org
+X-Gm-Message-State: AOJu0YxsE9d6U9yl6FmEcx6pPN53MKXXkFO5ukGyuUsEqqNzN4gmB51i
+ 9zr/xeI4nudv+bA45/3jYxjqiZQiSzSRWyoifKCdJtGrF+ibxHLDnl0kKKLquc9Q+6M=
+X-Gm-Gg: AeBDietssRZHnfI49lPMMQetyF8RJvAEmKsZlUaEH7awDezGOrpARf10NngOwN/p3LM
+ /ttBak4w9jKsSs8PiMaVdS7tDKHtRMGlWQu+Nre6TaTOE8NxLjXfFPP+UAisy8flA9yHGWCCNs4
+ 4YMcdreuP8gB90GcFfCpn8t3/eD1Y6jDPjNXpHriKaRYQOcWg9JfOT6XZGzdpBP1Lu5x9Q3tBlX
+ Z8odqSTdz2xLyqUTFGvdjTmr8czcd2RylLNJmBKh6YECBwELyhuRM5G4Am4rYi2XksN11Rhp9xi
+ XHI/4fd3KWNFlUO97R0x5lYZom+qDpGwlWajB0b1OpkYJGlW+zyu1cgzdjx2bpiX2Svl4DTN0CE
+ 8t6Tzoc4u5+qGCpn94tznK0eqWVSjOJ99Ic7wzDc7NVID/OUfwol1w8+uWAx3Ad1YqOGAQr7OWR
+ KyWNB+mFxzE30ezUZPTWBeGD4b54XA3e/QUbYRyBNcmDvj710mflV+zE1P84TgOluoAaBIFw==
+X-Received: by 2002:a17:90b:1dcc:b0:35c:30a8:330 with SMTP id
+ 98e67ed59e1d1-35de66262d8mr18370197a91.0.1775591801947; 
+ Tue, 07 Apr 2026 12:56:41 -0700 (PDT)
 Received: from [192.168.1.169] (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b27475ff56sm179048305ad.22.2026.04.07.12.55.32
+ 98e67ed59e1d1-35dd35f50e9sm18113483a91.6.2026.04.07.12.56.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Apr 2026 12:55:32 -0700 (PDT)
-Message-ID: <d8d0f960-90ab-4a26-82b8-15dcd908a5fe@linaro.org>
-Date: Tue, 7 Apr 2026 12:55:31 -0700
+ Tue, 07 Apr 2026 12:56:41 -0700 (PDT)
+Message-ID: <ae93b673-7969-48be-818e-086ca39fa1e8@linaro.org>
+Date: Tue, 7 Apr 2026 12:56:40 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 16/20] target/arm/tcg/translate-a64.c: use
- translator_ldl_end instead of arm_ldl_code
+Subject: Re: [PATCH v9 19/20] target/arm/tcg/translate.c: remove target_ulong
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -81,8 +80,8 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, jim.macarthur@linaro.org,
  qemu-arm@nongnu.org
 References: <20260407022748.57629-1-pierrick.bouvier@linaro.org>
- <20260407022748.57629-17-pierrick.bouvier@linaro.org>
- <974cdf32-cd30-4267-b785-bad9abae088d@linaro.org>
+ <20260407022748.57629-20-pierrick.bouvier@linaro.org>
+ <614088dd-edfa-4cef-aef1-b697c8b4aaa2@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -118,11 +117,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <974cdf32-cd30-4267-b785-bad9abae088d@linaro.org>
+In-Reply-To: <614088dd-edfa-4cef-aef1-b697c8b4aaa2@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1035.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,35 +144,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/7/26 12:13 PM, Philippe Mathieu-Daudé wrote:
+On 4/7/26 12:16 PM, Philippe Mathieu-Daudé wrote:
 > On 7/4/26 04:27, Pierrick Bouvier wrote:
->> Allows to reduce scope of target/arm/tcg/arm_ldst.h to aarch32 only.
->>
->> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    target/arm/tcg/translate-a64.c | 5 ++---
->>    1 file changed, 2 insertions(+), 3 deletions(-)
+>> We can replace it with uint32_t, because we know it's limited to 32-bit
+>> target.
 > 
-> 
->> @@ -10812,7 +10811,7 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
->>        }
->>    
->>        s->pc_curr = pc;
->> -    insn = arm_ldl_code(env, &s->base, pc, s->sctlr_b);
->> +    insn = translator_ldl_end(env, &s->base, pc, MO_LE);
-> 
-> Maybe worth a comment /* Code is always little-endian on Aarch64 */?
+> That, or widen to vaddr for consistency and save a "why this uint32_t
+> type here?", anyway:
 >
 
-Just added it, thanks.
+It's really specifically uint32_t we want here.
 
 > Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
->>        s->insn = insn;
->>        s->base.pc_next = pc + 4;
->>    
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>    target/arm/tcg/translate.c | 4 ++--
+>>    1 file changed, 2 insertions(+), 2 deletions(-)
 > 
 
 

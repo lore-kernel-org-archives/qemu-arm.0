@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E85C10F9972
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:29:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCBA910F9972
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:30:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAYQ7-0004Mc-0O; Wed, 08 Apr 2026 15:18:35 -0400
+	id 1wAYWR-0006mz-94; Wed, 08 Apr 2026 15:25:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAXzk-000522-S3
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:51:20 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAY6z-0007SV-RY
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:58:49 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAEob-0000rR-5r
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 18:22:34 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2aaf59c4f7cso25784045ad.1
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 15:22:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAEOr-0004wg-R6
+ for qemu-arm@nongnu.org; Tue, 07 Apr 2026 17:55:59 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-48896199cbaso49943995e9.1
+ for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 14:55:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775600552; x=1776205352; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=P49JgMXtfvI/QxKp8JO4alWiNFfw7eGmQBelecFaY5M=;
- b=Qa/eSDJPdxQnBgv5MIJeCA6dZlAC0wMi8uChEDWHZrhM9J89W+Hjwr1t+mtuhxvOvR
- apqn28uUB5D9z77XeiyMsIQwrGMSiBUWAnQgq8uBPD8aPLlNFRGzcn/oM2aXYJ2jGB7B
- s8Xi0Sn2a2RM4ZxRCR/N/Dc/L78a7wHAcCcov30mZ+bSfamm2PQkLVunpjHw5i58x2N0
- eQPrhOXRen1WlhqE3NODCc7R1FfG7KHFhZrGASEjrJUYrrD6EUnDWmbhZ19JBOAdmB7B
- 2ZWWbGlbLpUHLDpBuWOMlxtskzNIk6iIsKkiGUxmrAKDUHpUWB0VrsBefDU/RB9MJUHz
- GsPQ==
+ d=linaro.org; s=google; t=1775598956; x=1776203756; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=neFvve/rUExOH07d37NMYjOGCEocWXfGOtS8mIe395I=;
+ b=RqE9+fzFRkT8Jq1JuNd94sxo2vF9HwAxRNjJ9+BVhxYHIz5WnE7miycMPw3mRaGRj9
+ cET75DvgFbP6cia2bT0QiLeW/DU2PaM/6RLBOvyEKylpd6gO5+0317SCDIfm58iAI+Xp
+ TuVKYOM38q43Tc6m327tczZDCYt7p/2U+Sos6pAmZXp5grQ+d+U8RjDhQ8I7tJbZtfdP
+ JGuLSQQvKn9D0i7S+O/FHt5obHa3py29FDjhskA0y/NWCDMQ9NRtBgX6144tvpVr9ANr
+ 5yEtN2Nhlzbs+ZUorGtGoxfA2O9umFbdS521qBzJag/gVBXaFZzHagBgtrgHWkZ9v1KC
+ fSdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775600552; x=1776205352;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=P49JgMXtfvI/QxKp8JO4alWiNFfw7eGmQBelecFaY5M=;
- b=XgWE4/Fg2jDrm4A/E9nfPgbCCWWgJ0Z+fJEk+6vF7v7Mg7tDeRozTDBwJwReI5TnVW
- /oYJ4r41Tu9OmyuV8dnlxDFs+vktb7Fm1QkyDNqH8d496WAzWssS73suHY9ueodBfZCD
- v6t8ZpsEMyd9x6nFB/7KGEsvwm30npQQAgzOtUXuNao0ONNH42Gaj0ygkc/3C/GZpMcO
- h5EqrWHWifiMcs3jXYzhqf14mpIgTq6kFUNetuPtLXBPGiullWEmZAnrDzFF2IWJyXCv
- pIjMfqfIMNvMdig6dCEUqwu/YEudlpF2B/lQXGWybIHJJhYOMQ5G6Y6Ialn6TI2+jigB
- gF2w==
+ d=1e100.net; s=20251104; t=1775598956; x=1776203756;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=neFvve/rUExOH07d37NMYjOGCEocWXfGOtS8mIe395I=;
+ b=FCvhGKEc77M9hP05J7fTK//q+bDj+vLywCAUvl5cBB25CWlDazz2iVLTi8iwDr8lRd
+ 66RvNjnhBVzhF0KlsPTrfwku/qzHGJsUuav9NBJT2UYRLuZF2tcRUwBgJZV/WaqoNYTf
+ exjmOxxNNUnLRFSPjQ3cpz3Amb/QC7ZuLw2qNiNZSdu8Q3wnjXUb2lMhkvw4qZGriE3G
+ +Vo75l7Ko1XQTofMyK5/Tox0kI7lzONtyAuJoGuRrQLp6Vkz+vmpxb3e87fcSSzOw915
+ LAAltjqZx8plNrecbX+Eovzu8cs75M6370FPvBn/isTCp1lnv78gYL8bXoc2ARMKX0ix
+ 9Dgw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVSo5ZUv07Vyjbmye/JnEY+WvoG8fT21YSZ4KhmIrvWiW3cfLLduGxc7NBVCB+3lMQyWy8g6syoqA==@nongnu.org
-X-Gm-Message-State: AOJu0YwQonZP1mMzz060fjsTVGCekXJMyaiSqEOwXT9p6eu3uoKqbS2t
- N/zBhc6vcbVEZI2aGK2+yycaBzNrwXzj0pCLpVBzEGbGZ4QPm4mHdz7YFKXkgyV5vjA=
-X-Gm-Gg: AeBDieu0JAsQO78K/UDp5CJVCacqCEEJuf1Es4n9+YJiykS57QwmdbKKDjQc8AYSGIM
- ug3Q3e67lCBW+2yGs0F6KDXqIFlyC1GBAl9VSbXkj+jfcI+DtsDgwM2TZFeNJ2cij4vrfESbgHe
- cK4UbB00KhrbGEkNCONgwsFIL4qd5MR+IY9iZVERVm/nLCejDS4lxJwXhHLfnO1xUB2MWALXAB/
- m30Nmkm9Zlwaw51hG2vx8A2c8buvvya4xPZ8YnBjdLS6mRyQ25GvzRu5yriCgpyOm89WSQZWKDx
- Sp/yF4fNRqq6A4SznyLlF548pKflVqn8fmFPY8rpzZWRb3efbwA5nA2XVznYzETp+d1N2n7sCSP
- VXtx045U3+qIzZW69X+mhn04xgSnxRl9fCwee6B8AuzgTuZRXg1WifbBImIaJ2/kcx3gnryP6hc
- liTtrhReTVuWjEF8qk7CZPEBhu8V5qceW6n0ieIP2MmpRe6rUdP2Oqtft2h1d7RPGvQzpKF/Sgm
- GTPkI99u6x03/I=
-X-Received: by 2002:a17:903:22d1:b0:2ae:a45b:42f7 with SMTP id
- d9443c01a7336-2b2817b3e21mr192446695ad.36.1775600551758; 
- Tue, 07 Apr 2026 15:22:31 -0700 (PDT)
-Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d5csm180412065ad.38.2026.04.07.15.22.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Apr 2026 15:22:30 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, jim.macarthur@linaro.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v11 15/21] target/arm/tcg/translate.c: replace TCGv with
- TCGv_va
-Date: Tue,  7 Apr 2026 15:22:02 -0700
-Message-ID: <20260407222208.271838-16-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
-References: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
+ AJvYcCWAPg3bQmfunk3lWMCJygBMZUu2Zuab3uBcOnDbTHsc4Y8DHLBbDVSb2wgY8ZravLDZnQXrtgY5Fg==@nongnu.org
+X-Gm-Message-State: AOJu0Yzh0TJOeaPqUyubcCC1qCbUQwx3+AOymk7uZnhRpyZOZRf3A3DZ
+ p1T2uipTT71NUa6KnfeNZ5tXNFnu+DKW2fW0fN76A1a2G/Gkc+sdXD+qk+TMRrawwak=
+X-Gm-Gg: AeBDieslYteaDFdYPDi+uGzdn1aPOwdaY+jvjdZhlk7di96setbbBAWZZzB2MgVoXgl
+ +eLohiGbp9q9/rV6KBsFHXy5yfEj2UMx2c9Sa6Z5iR5+e4YE6I2wlOIwH7zFHvP5pouJbHfRGas
+ 7pX3bIzTTrMLN0PutlHX/RuxSIgQl1wC+cTeSWx0LRL3GQlG2HFYoI73p3xxYDogTbvEuwavyhi
+ jJa54HMAj6fR4E5gfOntbwRdpuNDHp7RzhwBk1ZbPEyhoT+LJf72AMPjWuwTegcqb6AmdzFyorp
+ Plw4BdpclvAhxpapl+1He0drmzfr+uY/P/rLr8Gxn3/QhKApccFTwQwV+nL+OfCRbC6+nvhiKV0
+ FoYQeXAojMcWmXcT8UaBcR6XPj0dwj6fVw3bIyrSAEf2tgO/BwlXrZ3sr0MjfTYCvqMTNyI3HPB
+ yOP7QPZshu8uTuSJ81x0w1Rr76LTem1o7PnbFsXbD+UhBBmfX8+Lnz3gskmSRvwkcTbQ==
+X-Received: by 2002:a05:600c:4483:b0:488:a639:b787 with SMTP id
+ 5b1f17b1804b1-488a639f138mr108402285e9.11.1775598955741; 
+ Tue, 07 Apr 2026 14:55:55 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-488be75215dsm83496455e9.6.2026.04.07.14.55.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Apr 2026 14:55:55 -0700 (PDT)
+Message-ID: <75339585-19b3-4047-a186-06d21d05bf7b@linaro.org>
+Date: Tue, 7 Apr 2026 23:55:53 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 11/21] target/arm/tcg/translate.c: remove MO_TE usage
+Content-Language: en-US
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-stable@nongnu.org
+References: <20260407195922.196410-1-pierrick.bouvier@linaro.org>
+ <20260407195922.196410-12-pierrick.bouvier@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260407195922.196410-12-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,129 +105,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We know this file is for 32-bit runtime target, so we can set
-TCG_ADDRESS_BITS. TCG_TYPE_VA is derived accordingly and is already
-passed to translator_loop.
+On 7/4/26 21:59, Pierrick Bouvier wrote:
+> dc->be_data is already set just above in the same function:
+> ```
+>      dc->be_data = EX_TBFLAG_ANY(tb_flags, BE_DATA) ? MO_BE : MO_LE;
+> ```
+> 
+> Cc: qemu-stable@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/tcg/translate.c | 29 +++++++++++++++--------------
- 1 file changed, 15 insertions(+), 14 deletions(-)
+Why Cc stable? This is just removing pointless code, right?
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index fa4c7907dcd..0b3b4ab86be 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -22,7 +22,8 @@
- 
- #include "translate.h"
- #include "translate-a32.h"
--#include "tcg/tcg-op.h"
-+#define TCG_ADDRESS_BITS 32
-+#include "tcg/tcg-op-mem.h"
- #include "qemu/log.h"
- #include "arm_ldst.h"
- #include "semihosting/semihost.h"
-@@ -910,14 +911,14 @@ MemOp pow2_align(unsigned i)
-  * that the address argument is TCGv_i32 rather than TCGv.
-  */
- 
--static TCGv gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
-+static TCGv_va gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
- {
--    TCGv addr = tcg_temp_new();
--    tcg_gen_extu_i32_tl(addr, a32);
-+    TCGv_va addr = tcgv_va_temp_new();
-+    tcg_gen_mov_i32(addr, a32);
- 
-     /* Not needed for user-mode BE32, where we use MO_BE instead.  */
-     if (!IS_USER_ONLY && s->sctlr_b && (op & MO_SIZE) < MO_32) {
--        tcg_gen_xori_tl(addr, addr, 4 - (1 << (op & MO_SIZE)));
-+        tcg_gen_xori_i32(addr, addr, 4 - (1 << (op & MO_SIZE)));
-     }
-     return addr;
- }
-@@ -929,21 +930,21 @@ static TCGv gen_aa32_addr(DisasContext *s, TCGv_i32 a32, MemOp op)
- void gen_aa32_ld_internal_i32(DisasContext *s, TCGv_i32 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
-     tcg_gen_qemu_ld_i32(val, addr, index, opc);
- }
- 
- void gen_aa32_st_internal_i32(DisasContext *s, TCGv_i32 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
-     tcg_gen_qemu_st_i32(val, addr, index, opc);
- }
- 
- void gen_aa32_ld_internal_i64(DisasContext *s, TCGv_i64 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
- 
-     tcg_gen_qemu_ld_i64(val, addr, index, opc);
- 
-@@ -956,7 +957,7 @@ void gen_aa32_ld_internal_i64(DisasContext *s, TCGv_i64 val,
- void gen_aa32_st_internal_i64(DisasContext *s, TCGv_i64 val,
-                               TCGv_i32 a32, int index, MemOp opc)
- {
--    TCGv addr = gen_aa32_addr(s, a32, opc);
-+    TCGv_va addr = gen_aa32_addr(s, a32, opc);
- 
-     /* Not needed for user-mode BE32, where we use MO_BE instead.  */
-     if (!IS_USER_ONLY && s->sctlr_b && (opc & MO_SIZE) == MO_64) {
-@@ -2036,7 +2037,7 @@ static void gen_load_exclusive(DisasContext *s, int rt, int rt2,
-          * architecturally 64-bit access, but instead do a 64-bit access
-          * using MO_BE if appropriate and then split the two halves.
-          */
--        TCGv taddr = gen_aa32_addr(s, addr, opc);
-+        TCGv_va taddr = gen_aa32_addr(s, addr, opc);
- 
-         tcg_gen_qemu_ld_i64(t64, taddr, get_mem_index(s), opc);
-         tcg_gen_mov_i64(cpu_exclusive_val, t64);
-@@ -2065,7 +2066,7 @@ static void gen_store_exclusive(DisasContext *s, int rd, int rt, int rt2,
- {
-     TCGv_i32 t0, t1, t2;
-     TCGv_i64 extaddr;
--    TCGv taddr;
-+    TCGv_va taddr;
-     TCGLabel *done_label;
-     TCGLabel *fail_label;
-     MemOp opc = size | MO_ALIGN | s->be_data;
-@@ -3792,7 +3793,7 @@ static void do_ldrd_load(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
-      */
-     int mem_idx = get_mem_index(s);
-     MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
--    TCGv taddr = gen_aa32_addr(s, addr, opc);
-+    TCGv_va taddr = gen_aa32_addr(s, addr, opc);
-     TCGv_i64 t64 = tcg_temp_new_i64();
-     TCGv_i32 tmp = tcg_temp_new_i32();
-     TCGv_i32 tmp2 = tcg_temp_new_i32();
-@@ -3847,7 +3848,7 @@ static void do_strd_store(DisasContext *s, TCGv_i32 addr, int rt, int rt2)
-      */
-     int mem_idx = get_mem_index(s);
-     MemOp opc = MO_64 | MO_ALIGN_4 | MO_ATOM_SUBALIGN | s->be_data;
--    TCGv taddr = gen_aa32_addr(s, addr, opc);
-+    TCGv_va taddr = gen_aa32_addr(s, addr, opc);
-     TCGv_i32 t1 = load_reg(s, rt);
-     TCGv_i32 t2 = load_reg(s, rt2);
-     TCGv_i64 t64 = tcg_temp_new_i64();
-@@ -4068,7 +4069,7 @@ DO_LDST(STRH, store, MO_UW)
- static bool op_swp(DisasContext *s, arg_SWP *a, MemOp opc)
- {
-     TCGv_i32 addr, tmp;
--    TCGv taddr;
-+    TCGv_va taddr;
- 
-     opc |= s->be_data;
-     addr = load_reg(s, a->rn);
--- 
-2.47.3
+> Fixes: a729a46b05a ("target/arm: Add wrapper macros for accessing tbflags")
+
+This commit doesn't seem to be related.
+
+Do you mean commit 79cabf1f473 ("target/arm: Recover 4 bits from
+TBFLAGs")?
+
+     We had completely run out of TBFLAG bits.
+     Split A- and M-profile bits into two overlapping buckets.
+     This results in 4 free bits.
+
+     We used to initialize all of the a32 and m32 fields in DisasContext
+     by assignment, in arm_tr_init_disas_context.  Now we only initialize
+     either the a32 or m32 by assignment, because the bits overlap in
+     tbflags.  So zero the entire structure in gen_intermediate_code.
+
+Since BE_DATA is in the TBFLAG_ANY set, I don't get why it
+is set to MO_TE for M-profile.
+
+At any rate this patch description deserves a better explanation IMHO.
+
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   target/arm/tcg/translate.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+> index 56ef1e0eb59..4546bbeeeff 100644
+> --- a/target/arm/tcg/translate.c
+> +++ b/target/arm/tcg/translate.c
+> @@ -6344,7 +6344,6 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+>   
+>       if (arm_feature(env, ARM_FEATURE_M)) {
+>           dc->vfp_enabled = 1;
+> -        dc->be_data = MO_TE;
+>           dc->v7m_handler_mode = EX_TBFLAG_M32(tb_flags, HANDLER);
+>           dc->v8m_secure = EX_TBFLAG_M32(tb_flags, SECURE);
+>           dc->v8m_stackcheck = EX_TBFLAG_M32(tb_flags, STACKCHECK);
 
 

@@ -4,96 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EBBA10F9972
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:42:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E91910F9968
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:43:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAYaw-0001Lz-Os; Wed, 08 Apr 2026 15:29:46 -0400
+	id 1wAYcz-0008Bg-Jf; Wed, 08 Apr 2026 15:31:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAY8v-0000Aq-Jc
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 15:00:52 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAEoV-0000ol-4e
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 18:22:28 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2a9296b3926so31681185ad.1
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 15:22:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775600546; x=1776205346; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BgMYgINs/yOfuuVgzjug5JMD/7kH4ZvROycWlRvKO9k=;
- b=nUdxEtrI8/1koy7mY+rPz4bKYquCi/Yw0nmrxZlTboF7irP+ebjrd+JGw9MPqgnXh1
- xmEt3v+Y9E21jRQA17uRFVAZECXuYxs7iY/LEZ/TLzlL1VU/FMd4Oge+zoIBwqOns52l
- 5PYQi3e4lPxhjdT6aZUybHqkT6QJmn/Z8oDMoTnQjpv2BxVNJBf6f9MnqY3NAw/hTtXZ
- g7Nq14L+zekplhB8CJafpbcDWItc1p0a2RmS0pF9MiS1iGzxcUbAAfKr2ZD7uDVYLlvt
- hmknRnZ7dC3Lfg131ZMPXibmUKzcNdpAnaLNXk/4GnEQoE+hJyUUq3bJAga8fecEbMbc
- W5Bw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775600546; x=1776205346;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=BgMYgINs/yOfuuVgzjug5JMD/7kH4ZvROycWlRvKO9k=;
- b=nJ8tkI+9Rn+Go9RDlYiwNELt79oisFdTRi3UbfcU805/1d7Oh+6YF2AEfbmV/dA28J
- 7Z4rXipuxkHrgRHQFV+2uHROz3jCQD2GBPI80bPkJ6ZDkz9EKgcJhWhU9lTYQ4Qczh54
- ewWyLtoGqsUwVz2pItfgrBgGO4l8Ilyfdh/Pwx6hO3aJksNH/cI6dLKvmnEloRwQt2si
- Vp8k0TND08KDJ9wKa3rmuaZCmhJitKGvwoOU0ybNELFNl9/FKUNtOsbF5VBLpSMJTmZ7
- Uc1BFrgDmibq/QllYbnKFCSohnmj1jvISzXOiBRTI5AUu75n6JqK0q0fbVxVx7omxKeH
- npdQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXSoWKxeWkNXFtaWHQZ1TBWR0ftP4Z4ZeiFHpX3NtEvTjXn+ZO2mqRt9SSaU1Ay3GE3lBtBAiSAKw==@nongnu.org
-X-Gm-Message-State: AOJu0YxcoyYAggt5ZuykvodrdXLjEE7RucgTXcrdYZtyZFeNikkkhg6Q
- kmoX+rjr+LKKLaEJ83xi4ZV2r0NcO3NrCHbVldbzeu1nHah3sm5dzBo5xY1JZ0OheAY=
-X-Gm-Gg: AeBDieuv7z8TqmoILjMMSN23/6rGGnQLaaQrKE+WvZOWm1B9ipsGPpkOOq37yvqNGIZ
- 1nJxB6+0y2pi0D7IcXcTuRuPA8TYtaalbHlHrKE+nhGFccvncSZoAOcpWNw7jqHg+VEIvhOAYOb
- m1WVD9UctJCCr3m2NFHzDgjcCBU+hP/1kecrIL7+Q10SB9zt5cawacZ/4ukXaEhhW7PoWGJb2BS
- g7DMyukksviJksqFrlhKUt1Tgux/OgB6ZWwzcPqSPIhbvfvvdmnUh8G/BqDam7kdHwbx2QwpVK/
- 2nK2WB9FdXj/ipFfNhopT9xlV4JK68yYSOwzpnnj7YjiV0TpFkdeb4W66LK4n8/bRNZz2AMwPbS
- PCAlIxW4JJcQsKWre2rLw18USdNSK240n7N4DFC1QEcLF1xGdjH8taA02UHtXH5i3/K+sEvvQZB
- s1rTUkHT5vMsn+run7PrT6LMZt6CsyhHaXWCdVKTpSSQACPPITLKGYTqmyNN8CLosVqMaH4eo/F
- JJD
-X-Received: by 2002:a17:902:e551:b0:2b0:67cc:adc3 with SMTP id
- d9443c01a7336-2b28180aff8mr206878795ad.14.1775600545548; 
- Tue, 07 Apr 2026 15:22:25 -0700 (PDT)
-Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d5csm180412065ad.38.2026.04.07.15.22.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Apr 2026 15:22:24 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ (Exim 4.90_1) (envelope-from <matt@matthewpenney.net>)
+ id 1wAYGt-0004ui-LU; Wed, 08 Apr 2026 15:09:06 -0400
+Received: from mail-05.mail-europe.com ([85.9.206.169])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <matt@matthewpenney.net>)
+ id 1wAHL5-0001LR-V7; Tue, 07 Apr 2026 21:04:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=matthewpenney.net;
+ s=protonmail; t=1775610124; x=1775869324;
+ bh=axp9OvX2u/1jELssvVNz/X82F+EVXOIbQ2Ns624NQ98=;
+ h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+ b=G/Omia9pDQrucoGX9D2WymyPX7/ggOqz+4YU+1keUf+ISw9boiB1hGKNF6LWrhvGD
+ QrBt1lOycaHd2MegDn75fG1EtLks2K0QAK6xZBCm+x2n/OAMtGK6jLM+SZx7Ql/LAE
+ sQR+rFGqn1Vj897B4hMsJuIYimsQE1F3Pt0k4kWlOE2q7y8PIGvBoeCxt9cuRDRY1e
+ E9xnCJWjBYHhMa+bym9cxFI2y2bzIIN8axXL3sOybs+HTke0LtqLuvKfrtKhH9NiVR
+ irfe/blqNBGfEkg97TaDwOsAyPHNoH2iyec0yGjjF1inxcoRGGtcxZjGmg0nXTLbgn
+ QhXMmLIWDizxg==
+Date: Wed, 08 Apr 2026 01:01:58 +0000
 To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, jim.macarthur@linaro.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v11 10/21] target/arm/tcg/gengvec.c: make compilation unit
- common
-Date: Tue,  7 Apr 2026 15:21:57 -0700
-Message-ID: <20260407222208.271838-11-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
-References: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
+From: Matthew Penney <matt@matthewpenney.net>
+Cc: Matthew Penney <matt@matthewpenney.net>, peter.maydell@linaro.org,
+ marcandre.lureau@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
+ joel@jms.id.au, "Michael S. Tsirkin" <mst@redhat.com>, sam@rfc1149.net,
+ pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ "Collin L. Walling" <walling@linux.ibm.com>, cohuck@redhat.com,
+ farman@linux.ibm.com, mjrosato@linux.ibm.com, lvivier@redhat.com,
+ amit@kernel.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH 1/8] hw/char: use g_clear_handle_id() for GSource cleanup
+Message-ID: <20260408010026.4611-2-matt@matthewpenney.net>
+Feedback-ID: 185185778:user:proton
+X-Pm-Message-ID: d72ce9499a15f39196aa172ce73e39dc25ed90eb
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=85.9.206.169; envelope-from=matt@matthewpenney.net;
+ helo=mail-05.mail-europe.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 08 Apr 2026 15:31:14 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,42 +72,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/tcg/meson.build | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Use g_clear_handle_id() instead of g_source_remove() with manual ID
+checking and zeroing.
 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 1fa26670587..0740de92c1a 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -33,7 +33,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
- 
- arm_ss.add(files(
-   'cpu32.c',
--  'gengvec.c',
-   'translate.c',
-   'm_helper.c',
-   'mve_helper.c',
-@@ -72,6 +71,7 @@ arm_common_system_ss.add(
-   'cpregs-at.c',
-   'debug.c',
-   'hflags.c',
-+  'gengvec.c',
-   'neon_helper.c',
-   'op_helper.c',
-   'psci.c',
-@@ -91,6 +91,7 @@ arm_user_ss.add(
-   vfp_d,
-   files(
-   'debug.c',
-+  'gengvec.c',
-   'hflags.c',
-   'neon_helper.c',
-   'op_helper.c',
--- 
-2.47.3
+This simplifies the code and ensures consistent handling of GSource IDs,
+since g_clear_handle_id() checks for a non-zero ID before calling the
+cleanup function and zeros it afterwards.
+
+No functional change intended.
+
+Signed-off-by: Matthew Penney <matt@matthewpenney.net>
+---
+ hw/char/cmsdk-apb-uart.c  |  5 +----
+ hw/char/nrf51_uart.c      |  5 +----
+ hw/char/serial.c          |  7 ++-----
+ hw/char/stm32l4x5_usart.c |  5 +----
+ hw/char/terminal3270.c    |  5 +----
+ hw/char/virtio-console.c  | 11 +++--------
+ 6 files changed, 9 insertions(+), 29 deletions(-)
+
+diff --git a/hw/char/cmsdk-apb-uart.c b/hw/char/cmsdk-apb-uart.c
+index edb80f6181..0631821a57 100644
+--- a/hw/char/cmsdk-apb-uart.c
++++ b/hw/char/cmsdk-apb-uart.c
+@@ -236,10 +236,7 @@ buffer_drained:
+=20
+ static void uart_cancel_transmit(CMSDKAPBUART *s)
+ {
+-    if (s->watch_tag) {
+-        g_source_remove(s->watch_tag);
+-        s->watch_tag =3D 0;
+-    }
++    g_clear_handle_id(&s->watch_tag, g_source_remove);
+ }
+=20
+ static void uart_write(void *opaque, hwaddr offset, uint64_t value,
+diff --git a/hw/char/nrf51_uart.c b/hw/char/nrf51_uart.c
+index 7306923244..96f0d085fd 100644
+--- a/hw/char/nrf51_uart.c
++++ b/hw/char/nrf51_uart.c
+@@ -104,10 +104,7 @@ buffer_drained:
+=20
+ static void uart_cancel_transmit(NRF51UARTState *s)
+ {
+-    if (s->watch_tag) {
+-        g_source_remove(s->watch_tag);
+-        s->watch_tag =3D 0;
+-    }
++    g_clear_handle_id(&s->watch_tag, g_source_remove);
+ }
+=20
+ static void uart_write(void *opaque, hwaddr addr,
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index 0f3469a1e8..cfb5efed50 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -857,10 +857,7 @@ static void serial_reset(void *opaque)
+ {
+     SerialState *s =3D opaque;
+=20
+-    if (s->watch_tag > 0) {
+-        g_source_remove(s->watch_tag);
+-        s->watch_tag =3D 0;
+-    }
++    g_clear_handle_id(&s->watch_tag, g_source_remove);
+=20
+     s->rbr =3D 0;
+     s->ier =3D 0;
+@@ -913,7 +910,7 @@ static int serial_be_change(void *opaque)
+     }
+=20
+     if (s->watch_tag > 0) {
+-        g_source_remove(s->watch_tag);
++        g_clear_handle_id(&s->watch_tag, g_source_remove);
+         s->watch_tag =3D qemu_chr_fe_add_watch(&s->chr, G_IO_OUT | G_IO_HU=
+P,
+                                              serial_watch_cb, s);
+     }
+diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
+index 736f1e764e..dd1b099195 100644
+--- a/hw/char/stm32l4x5_usart.c
++++ b/hw/char/stm32l4x5_usart.c
+@@ -280,10 +280,7 @@ buffer_drained:
+=20
+ static void usart_cancel_transmit(Stm32l4x5UsartBaseState *s)
+ {
+-    if (s->watch_tag) {
+-        g_source_remove(s->watch_tag);
+-        s->watch_tag =3D 0;
+-    }
++    g_clear_handle_id(&s->watch_tag, g_source_remove);
+ }
+=20
+ static void stm32l4x5_update_params(Stm32l4x5UsartBaseState *s)
+diff --git a/hw/char/terminal3270.c b/hw/char/terminal3270.c
+index 1d857bad9b..989b6f6ee1 100644
+--- a/hw/char/terminal3270.c
++++ b/hw/char/terminal3270.c
+@@ -52,10 +52,7 @@ static int terminal_can_read(void *opaque)
+=20
+ static void terminal_timer_cancel(Terminal3270 *t)
+ {
+-    if (t->timer_tag) {
+-        g_source_remove(t->timer_tag);
+-        t->timer_tag =3D 0;
+-    }
++    g_clear_handle_id(&t->timer_tag, g_source_remove);
+ }
+=20
+ /*
+diff --git a/hw/char/virtio-console.c b/hw/char/virtio-console.c
+index efe7cd6772..4de8577c13 100644
+--- a/hw/char/virtio-console.c
++++ b/hw/char/virtio-console.c
+@@ -159,10 +159,7 @@ static void chr_event(void *opaque, QEMUChrEvent event=
+)
+         virtio_serial_open(port);
+         break;
+     case CHR_EVENT_CLOSED:
+-        if (vcon->watch) {
+-            g_source_remove(vcon->watch);
+-            vcon->watch =3D 0;
+-        }
++        g_clear_handle_id(&vcon->watch, g_source_remove);
+         virtio_serial_close(port);
+         break;
+     case CHR_EVENT_BREAK:
+@@ -188,7 +185,7 @@ static int chr_be_change(void *opaque)
+     }
+=20
+     if (vcon->watch) {
+-        g_source_remove(vcon->watch);
++        g_clear_handle_id(&vcon->watch, g_source_remove);
+         vcon->watch =3D qemu_chr_fe_add_watch(&vcon->chr,
+                                             G_IO_OUT | G_IO_HUP,
+                                             chr_write_unblocked, vcon);
+@@ -256,9 +253,7 @@ static void virtconsole_unrealize(DeviceState *dev)
+ {
+     VirtConsole *vcon =3D VIRTIO_CONSOLE(dev);
+=20
+-    if (vcon->watch) {
+-        g_clear_handle_id(&vcon->watch, g_source_remove);
+-    }
++    g_clear_handle_id(&vcon->watch, g_source_remove);
+ }
+=20
+ static void virtconsole_class_init(ObjectClass *klass, const void *data)
+--=20
+2.53.0
+
 
 

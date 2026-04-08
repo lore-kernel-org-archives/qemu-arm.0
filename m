@@ -4,95 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98B4910F9974
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:24:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A072510F9974
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:24:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAYSl-00045n-I5; Wed, 08 Apr 2026 15:21:19 -0400
+	id 1wAYV7-000360-5P; Wed, 08 Apr 2026 15:23:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAY3o-00065o-MK
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:55:32 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1wAY52-0006gC-5S
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:56:48 -0400
+Received: from va-1-111.ptr.blmpb.com ([209.127.230.111])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAEoO-0000n5-H6
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 18:22:22 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-2ad9f316d68so23172805ad.2
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 15:22:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775600539; x=1776205339; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=BpjBN/H+zc8vKXTIC1giYotC0A5eWy62SJygmBUlOkI=;
- b=qJfd5NFQbj1z7L4zI4ABhoCX+MmEHoXvORwdV7wmNSEeIFochIW9azDftkq3clxmnv
- DU5Vbz+yYnEKg+vKF69C01hlz7kNQPtjPjF/cavFLxRd4HqR0QYcniK+BHRFU+MmVWiV
- AbDQPwZtIs2plNGa423skHFalo68GoUO+iTDYle2SeJPDwXUxTt5sE3Ef+wAeXQj81mv
- DtmnW7OGCIL2NiMBlWCPh72LXxJtJiXJ10P6GWTMnnZrfL5fJLV5+osppmyfxE32meIv
- s5YUU0Dljb1XwQa0g3QDRBXt8T+2lUlLzxDoCQyy5HcDFwwywU/cbMy7myBskcaciXBD
- 2qFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775600539; x=1776205339;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=BpjBN/H+zc8vKXTIC1giYotC0A5eWy62SJygmBUlOkI=;
- b=VRdhlcCZc9LwmPs4mUgk2cH3wRJJ6LwS+zx4CD4wmh+20r+/xCREDTDte+i5wMsfww
- bTGobuxQmrr9Mfi7f8GG92iSydFL90XvjwGzwg/epTqj76+bDZp8ow4Y/2iqEqFgv+kZ
- BBq47W/aSJjPZm17OmtJkY7164Y9/ioUtoV5VfSwRNuEdoZslgvUr0rz+irO3r11wPZw
- heLQ5Wt+9/fX5rgLy9HMw+oDvWXB+CW5hbJ86uZctv1KXXRJNQiP63GYmgugmo07ydGb
- iVCA8NolwE0q4Qy31Z42//P9NQHvMK5Fn7N44mAJKDwQVYJ0TPUOFna/vi1QYWFVe8MW
- ko+g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUS+hiOi5ToS2OMhtjpExCbA98kyWH4+uZ3y093K5UQFmYquycvkoP3kyAbb4AP190qe5Vxp0teGg==@nongnu.org
-X-Gm-Message-State: AOJu0YzGoeaqkOun3Qwntx//6CaIYum8CVNsDTS0FIUJLkvOwOfHGlnA
- aXg6pRqq1auW77al1HBLOM6YGUn5pJEllaBVmizHwcK1iQp/AgB7gx7pWyTZUJfom/GrvstAw1n
- hXAXV39c=
-X-Gm-Gg: AeBDietYlEc4GZUh4hofpVWJic+BGXEr5VLtRRf7ZEzB6+78bh38WFYsjFZHF4FyotS
- o08xzHVr1qUmzAvcPLU8mt3/RbRKQTwgCyLhUZ2NXDzPxHfxpVxaY+FqW9PdvLeyboqSPVClzIA
- QkodtDdubcLyrGh8QQO8G21b+TUjjUJtsVDikha9eN3KztY5X8gXQTLlHuO7qmE9v6gvxdeDWZU
- iYs4Egi0GkwZXBkDRlnLsBgCOfUccm7As+BWyxU3pZ6A6Sh0GGfyA6C1cnd6Ns4AJA9O17++YPe
- 8VUG7UV62/ZeJrwETARQ91dw/SSv9U5PaQGVPzWtAIv89sjRE3I/8UHWrydq9sqxImapNXcQq6H
- 7if+LQpxcp07xiRYxoPP6SugUQ4rDIIdluHip6e+cZX8vPtsgO2Rm2GxRUzZ14Sw/xJ3XSVmTfi
- gRsshpR1StSHJxV47QvrWc/TOY3aKZhyAWlUnSWlzFuz8QwsR5bbIzit9gCVWxkiioRk9sRo2On
- dt2
-X-Received: by 2002:a17:902:b48c:b0:2ae:46b9:c653 with SMTP id
- d9443c01a7336-2b2817aecb1mr134979505ad.33.1775600539094; 
- Tue, 07 Apr 2026 15:22:19 -0700 (PDT)
-Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d5csm180412065ad.38.2026.04.07.15.22.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Apr 2026 15:22:17 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, jim.macarthur@linaro.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v11 04/21] target/arm/tcg/translate.h: remove TARGET_AARCH64
-Date: Tue,  7 Apr 2026 15:21:51 -0700
-Message-ID: <20260407222208.271838-5-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
-References: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1wAOmA-0002r9-4c
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 05:00:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ s=2212171451; d=bytedance.com; t=1775638839; h=from:subject:
+ mime-version:from:date:message-id:subject:to:cc:reply-to:content-type:
+ mime-version:in-reply-to:message-id;
+ bh=eUJ8ysynggBwqU6MeWf3s5qMtr/W2qn8sO1vb4zJqhg=;
+ b=d0szfWDFSYhAhlQTWQ3TVnTcc3yIiIL5k1UVgWgu6gLEWrPALqVIT0rxURvBpCMICr0ge7
+ mf48LDjZK2nB6iTSiITRTnCSK8IM6pXSsZ+es+OSUr+0M4EO4kC/DKGZ/HE/+IYAWc7RLg
+ io59FHa9TLu3udqAKsG5TkZMdITZbUCCASBsmHbV7t+TGKFq4ER/dM6kZVFcRrNgl6QWCL
+ 63R+V9oy//qXr5i4PnJwAqlnpsifNuJDQxrOiFwWRuFCcwAi2ZJkEdhCJmja4NqgQV2rL6
+ wT/ekIsXzXJReJnjim6539BZ2OxmsQNMyv9f0garoEHnm++yEDggVMjs+tjR0Q==
+X-Original-From: Jian Zhang <zhangjian.3032@bytedance.com>
+Mime-Version: 1.0
+X-Lms-Return-Path: <lba+269d61933+0cd7c5+nongnu.org+zhangjian.3032@bytedance.com>
+References: <20260408085941.3837334-1-zhangjian.3032@bytedance.com>
+To: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ "Peter Maydell" <peter.maydell@linaro.org>, 
+ "Steven Lee" <steven_lee@aspeedtech.com>, "Troy Lee" <leetroy@gmail.com>, 
+ "Jamin Lin" <jamin_lin@aspeedtech.com>, 
+ "Andrew Jeffery" <andrew@codeconstruct.com.au>, 
+ "Joel Stanley" <joel@jms.id.au>, "Paolo Bonzini" <pbonzini@redhat.com>, 
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, 
+ "Jeremy Kerr" <jk@codeconstruct.com.au>, 
+ "Matt Johnston" <matt@codeconstruct.com.au>
+From: "Jian Zhang" <zhangjian.3032@bytedance.com>
+Subject: [PATCH v1 2/2] hw/arm/aspeed: add mctp responder device for test
+Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x633.google.com
+Date: Wed,  8 Apr 2026 16:59:41 +0800
+Message-Id: <20260408085941.3837334-3-zhangjian.3032@bytedance.com>
+In-Reply-To: <20260408085941.3837334-1-zhangjian.3032@bytedance.com>
+X-Mailer: git-send-email 2.20.1
+Received-SPF: pass client-ip=209.127.230.111;
+ envelope-from=zhangjian.3032@bytedance.com; helo=va-1-111.ptr.blmpb.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,84 +75,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We need to stub a64_translate_init and gen_a64_update_pc.
-At this point, we don't need to do anything for aarch64_translator_ops
-since it's just an external symbol.
+Only for mctp test.
 
-We can now include target/arm/tcg/translate.h from common code, since
-all target specific bits have been removed, or can be specialized with
-specific defines.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Jian Zhang <zhangjian.3032@bytedance.com>
 ---
- target/arm/tcg/translate.h | 10 ----------
- target/arm/tcg/stubs32.c   | 17 +++++++++++++++++
- target/arm/tcg/meson.build |  1 +
- 3 files changed, 18 insertions(+), 10 deletions(-)
- create mode 100644 target/arm/tcg/stubs32.c
+ hw/arm/aspeed_ast2600_evb.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index e28eac54afb..77fdc5f3a17 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -357,19 +357,9 @@ static inline int curr_insn_len(DisasContext *s)
- /* CPU state was modified dynamically; no need to exit, but do not chain. */
- #define DISAS_UPDATE_NOCHAIN  DISAS_TARGET_10
+diff --git a/hw/arm/aspeed_ast2600_evb.c b/hw/arm/aspeed_ast2600_evb.c
+index c43d2687c1c..1ad3264d568 100644
+--- a/hw/arm/aspeed_ast2600_evb.c
++++ b/hw/arm/aspeed_ast2600_evb.c
+@@ -22,6 +22,8 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = bmc->soc;
+     uint8_t *eeprom_buf = g_malloc0(8 * 1024);
++    I2CSlave *mctp;
++    I2CSlave *mctp_ncsi;
  
--#ifdef TARGET_AARCH64
- void a64_translate_init(void);
- void gen_a64_update_pc(DisasContext *s, int64_t diff);
- extern const TranslatorOps aarch64_translator_ops;
--#else
--static inline void a64_translate_init(void)
--{
--}
--
--static inline void gen_a64_update_pc(DisasContext *s, int64_t diff)
--{
--}
--#endif
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
+                           eeprom_buf);
+@@ -29,6 +31,18 @@ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+     /* LM75 is compatible with TMP105 driver */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
+                      TYPE_TMP105, 0x4d);
++
++    /* MCTP over I2C responder: bus4, addr 0x1d (7-bit) */
++    mctp = i2c_slave_new("mctp-i2c-responder", 0x1d);
++    object_property_set_uint(OBJECT(mctp), "eid", 0x00, &error_abort);
++    i2c_slave_realize_and_unref(mctp, aspeed_i2c_get_bus(&soc->i2c, 4),
++                                &error_abort);
++
++    /* MCTP over I2C responder (NCSI extension): bus5, addr 0x1d (7-bit) */
++    mctp_ncsi = i2c_slave_new("mctp-i2c-responder-ncsi", 0x1d);
++    object_property_set_uint(OBJECT(mctp_ncsi), "eid", 0x00, &error_abort);
++    i2c_slave_realize_and_unref(mctp_ncsi, aspeed_i2c_get_bus(&soc->i2c, 5),
++                                &error_abort);
+ }
  
- void arm_test_cc(DisasCompare *cmp, int cc);
- void arm_jump_cc(DisasCompare *cmp, TCGLabel *label);
-diff --git a/target/arm/tcg/stubs32.c b/target/arm/tcg/stubs32.c
-new file mode 100644
-index 00000000000..c5a0bc61f47
---- /dev/null
-+++ b/target/arm/tcg/stubs32.c
-@@ -0,0 +1,17 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "target/arm/tcg/translate.h"
-+
-+
-+void gen_a64_update_pc(DisasContext *s, int64_t diff)
-+{
-+    g_assert_not_reached();
-+}
-+
-+void a64_translate_init(void)
-+{
-+    /* Don't initialize for 32 bits. Call site will be fixed later. */
-+}
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 5f591560551..3e96c77df73 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -21,6 +21,7 @@ gen_a32 = [
- 
- arm_ss.add(gen_a32)
- arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
-+arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
- 
- arm_ss.add(files(
-   'cpu32.c',
+ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
 -- 
-2.47.3
-
+2.20.1
 

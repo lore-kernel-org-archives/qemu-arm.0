@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (unknown [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909BE10F996B
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 18:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6547D10F996C
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 18:37:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAXl5-0000C1-Eo; Wed, 08 Apr 2026 14:36:11 -0400
+	id 1wAXlC-0000N1-Cm; Wed, 08 Apr 2026 14:36:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAXl3-00009Q-90
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:36:09 -0400
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1wAXl9-0000HS-Vx
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:36:16 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAEfs-0007l1-Pn
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 18:13:34 -0400
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-2aaf43014d0so38797235ad.2
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 15:13:31 -0700 (PDT)
+ id 1wAWze-0005Jp-6B
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 13:47:11 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2b23f90f53aso1437535ad.0
+ for <qemu-arm@nongnu.org>; Wed, 08 Apr 2026 10:47:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775600010; x=1776204810; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775670428; x=1776275228; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=UkGDpAXW4vSXzOoeCzuTUfHGOUGVWbJ5vqIqEfnG8HE=;
- b=rOIPaHy4p9VyNETrVyLyE3+ww2saIGjWiGs4FLsJSp3exmPuTWk69C0rJkbBMQx/wG
- vh5nzvnqm/WLHEVTT7z0+/pXI5jltgt5Ppo65p4frxM7bccIgF8zXCwHSML4EN4WdKEM
- wfTzMjNEiY5X1DbuiBnpb2piWAUZpTmrpRPvfHHRizQXEI/gL5S6T8x17gn0VbqUfEe+
- NetJmGOnIunvasAHtJiMYRCTs39Y3EFZhVvJr8yIW4KYQmpXx5SKCqp9ucRcyFM9rLjQ
- pg4gGZqKe/Y4ZwuK3xfCuuXEv1PnrVrRLztNbYL/r9GWwuQhlPQEOUJ7ryJELfYF2ziq
- qycw==
+ bh=SSFMY9hAPP8p45i4eqFEFe+x2VCzulFKH4x+n62fdHE=;
+ b=XMrtM/ohiVVDl2NajejvzGhYL2hqf4hVQevflTT4QyIVnScdJRnocRaP+eKCPkwyJg
+ b5Wu36Ile2p0+Ohgifib6Isr3Mr9hsajMiawyYrOLQBhnZdZ8aJC5dk5oHUKE6ZfUchB
+ j+z06FH2Bv0K2T2YjCjLnpFHx7Ve+0BASZX7ILGTB3AKuRIxjxFyRe4ufQSy7njnbMRx
+ 8X5vlGZZn8RYqgzCo8e2tqI5EUX0JniCvSsunfZ/Y/tjIc0zA4DL8aP8gj8JrMT7akXL
+ L+cHf98TG20NbHlOd1gHd3M0z1tlo/FWW05B+AhnSYGGumTTAlEG2wHM619Xh39evpqR
+ rv3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775600010; x=1776204810;
+ d=1e100.net; s=20251104; t=1775670428; x=1776275228;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=UkGDpAXW4vSXzOoeCzuTUfHGOUGVWbJ5vqIqEfnG8HE=;
- b=Orp/Awsjf5aL01EUZOZWBFgWzE2EiLPsz6O3MU/zIq+IRv6kxSIWoCdQq00aCqkjq3
- nRhe+SemDF+FVSH9rdTFlD0jBjfHExYVUDxBuAUq9MTwXfc9qzt+3Tu9WTOkP+tDRumN
- EB+PxrpVfKO1kcIv9NgjnC5fIFSqYZNjw69akyfG9MgrwaORIs2G4Au09Ihe1uAxgTMt
- XUQqsJTEcXTRkxkVmsEzdTQCWUF+eJQ0v02BvsIeoAdfH7c12tm0aSgp3HgsMz5Zf942
- RrFGK3Km0h09KeZhx5iZa7/jmLy9gYMEmnu5H63KQQSzAqCAbUSNj85L9+HLYpq3x6DZ
- 885w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXlhLJRlNywbiTiCDjWd1r2SaV6tpZip57WGCtJ+YIZp4eGXGnMdNZKLCykvkivV4LTo2Nbdrtt8Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxJCbF4ppl+ANvuGXyNsv6SHQj88cESA6yIV3VRxglHoCP0x3nC
- Gq2BPLvPOtplg+3Zk0WFkyrPIo2dK1Yuw8kF+LJOXAtWVBkXrC+0EPU/n1Ekgq2tO+Y=
-X-Gm-Gg: AeBDietcSFVewNT1gxtNF89olaCAwjFJQtWFh75U6uy+ojx1VJCqxHi52fwWjCEcK/k
- JMkM77QMlP9YXjvfpyzjKoVnA+yJfuqMBQxaaSYMadhz/C8OLRMqGLPgPp+tfbfYIXSvCMEoOX1
- /y/NEMr+LGKEhAKlSvIzHPFO+ozZAguqxyOaSlYXuut8hQ7tMzvmk0FNTX8HEVgpoTQo/fFAP5v
- dhEoJtu/1sisVg2aSpESHirm0fQKi03MlU0NNnSlqRTT09/TgdcmhUF9/Mjne4zIxahE0pVIa0K
- dW3tNrj4LTFiiHw3cCLbRqyq1nENRA5MWBjy/1E5BviVqpS+MpjRP8NPmW9pt7OpfpI5pM5uqWZ
- CHtw5zJeBVb6PPqEpI17UnTcTg1d1MbnQfkHvoAHVF0q8TFxG9RONVqR1/vPLXCaEoSfLFigQLa
- 7jslZXBInc4dXQsaNBBf1OrYiEG7W1Ld7qmSmt+NafpYECp2fZ/UJ3AzLBHqEonIvihYe3cZlql
- NqLPTrX
-X-Received: by 2002:a17:902:c942:b0:2b2:4e5a:9471 with SMTP id
- d9443c01a7336-2b281896db4mr213341225ad.22.1775600010353; 
- Tue, 07 Apr 2026 15:13:30 -0700 (PDT)
+ bh=SSFMY9hAPP8p45i4eqFEFe+x2VCzulFKH4x+n62fdHE=;
+ b=Ux+Qdzk1wvq03AKSbOWnjqVkALzlLZEbwAPD67UEZgJkx9RJWlKq9yZI4ajEi6wH+R
+ LhFXi58cbLMbdWYQTgpIXuKAF+Xy7X0FmegwWBRgVOSpQ7O6Z9/tx7Nh0LyL2aIaq2nX
+ llmoJN3JLQPfZeK7rt/p0bzcd/AQhTdp3VzWDcKkdPk6esIcs2H9Db74ZSJeEttO3UuM
+ u26maTLUmXQjmCfH7H+1SrvoAmovdK83LIQcBQTWn6K7/aW3BLwl2cqfbzRDWOKMNbqH
+ KmolCYsE4fjbWvLwaqp1kZr9VRSWjOQj7/TFlnSsm+HULZN3Fv0bYMbt1cslH8Q/3fOF
+ O0dg==
+X-Gm-Message-State: AOJu0Yw/Xd5JmpWgthyxnEfyz+CWMmvBSMJCiUQ6CxKCeh1D7td4RA2I
+ v7WzCLJSzT7pMlAXQQjywXDsUxhmEJmWEKtWMhK8eZVLHJWV5dZhiK9uxXi9fmUHttRPvZmgC4v
+ EHlOYRxU=
+X-Gm-Gg: AeBDieubdlUj63jYR2DDs7TbdgRCQNvUJFyNEYSKHtm1hvsDe6XACkpLNXEtxHGBil6
+ oadnZL+1v1iha4iMVkljPjdYdAufPBBl4wfa60WUGH+a+hLhqNER5ple8VJwVBXIJmHvnx3dLRe
+ 5yU1CbHMaZj9mEiprhiKEvCt1UGEAteB3K2QTBfLRQpktNHqBr2GauBFzgY5ZJgR0rEjXyXkErm
+ GcIckksa2pCdcWfZCErBRk8Ujano7GV0pAeWdgWNkmDZRh4OKZHnuW8bZC1w7MBHXpoYd2LHc2I
+ QQSH+M13WUvZUxy69YQLfbeyckatYUeEIFvkJxkRywtqKQ8F87+IMzZNfrSKtc+DZqhfVmULm++
+ BJpEkgXtOBYg6Xd7Ja2jUgP262VhGt5shC3BkDueJ+coQIxsxLdviqNHLNhtENnGUxsVSimbjrm
+ MDCIqicLNVP6aB1uM+KFlMYjhFgMuoAtcepbOcLaDOtzGRATG27+2U5ty2lak7IcT6GnlnnIEe0
+ 6FKM+F+
+X-Received: by 2002:a17:903:3903:b0:2b0:643b:41c9 with SMTP id
+ d9443c01a7336-2b28167325fmr249655905ad.9.1775670428386; 
+ Wed, 08 Apr 2026 10:47:08 -0700 (PDT)
 Received: from [192.168.1.169] (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d72sm175414305ad.51.2026.04.07.15.13.29
+ d9443c01a7336-2b2749794e8sm222775315ad.53.2026.04.08.10.47.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Apr 2026 15:13:29 -0700 (PDT)
-Message-ID: <a1d61d0c-3434-4f09-98ca-cb95e780b172@linaro.org>
-Date: Tue, 7 Apr 2026 15:13:29 -0700
+ Wed, 08 Apr 2026 10:47:07 -0700 (PDT)
+Message-ID: <5ee4f54f-307c-4188-b52c-9b63c1dd72e6@linaro.org>
+Date: Wed, 8 Apr 2026 10:47:07 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 11/21] target/arm/tcg/translate.c: remove MO_TE usage
+Subject: Re: [PATCH 2/2] target/arm: Remove bswap_code
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-stable@nongnu.org
-References: <20260407195922.196410-1-pierrick.bouvier@linaro.org>
- <20260407195922.196410-12-pierrick.bouvier@linaro.org>
- <75339585-19b3-4047-a186-06d21d05bf7b@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260408013309.56122-1-richard.henderson@linaro.org>
+ <20260408013309.56122-3-richard.henderson@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -117,18 +112,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <75339585-19b3-4047-a186-06d21d05bf7b@linaro.org>
+In-Reply-To: <20260408013309.56122-3-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,58 +139,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/7/26 2:55 PM, Philippe Mathieu-Daudé wrote:
-> On 7/4/26 21:59, Pierrick Bouvier wrote:
->> dc->be_data is already set just above in the same function:
->> ```
->>       dc->be_data = EX_TBFLAG_ANY(tb_flags, BE_DATA) ? MO_BE : MO_LE;
->> ```
->>
->> Cc: qemu-stable@nongnu.org
+On 4/7/26 6:33 PM, Richard Henderson wrote:
+> This function is no loner used.
 > 
-> Why Cc stable? This is just removing pointless code, right?
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/cpu.h | 16 ----------------
+>   1 file changed, 16 deletions(-)
 > 
->> Fixes: a729a46b05a ("target/arm: Add wrapper macros for accessing tbflags")
-> 
-> This commit doesn't seem to be related.
-> 
-> Do you mean commit 79cabf1f473 ("target/arm: Recover 4 bits from
-> TBFLAGs")?
-> 
->       We had completely run out of TBFLAG bits.
->       Split A- and M-profile bits into two overlapping buckets.
->       This results in 4 free bits.
-> 
->       We used to initialize all of the a32 and m32 fields in DisasContext
->       by assignment, in arm_tr_init_disas_context.  Now we only initialize
->       either the a32 or m32 by assignment, because the bits overlap in
->       tbflags.  So zero the entire structure in gen_intermediate_code.
-> 
-> Since BE_DATA is in the TBFLAG_ANY set, I don't get why it
-> is set to MO_TE for M-profile.
-> 
-> At any rate this patch description deserves a better explanation IMHO.
-> 
->> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    target/arm/tcg/translate.c | 1 -
->>    1 file changed, 1 deletion(-)
->>
->> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
->> index 56ef1e0eb59..4546bbeeeff 100644
->> --- a/target/arm/tcg/translate.c
->> +++ b/target/arm/tcg/translate.c
->> @@ -6344,7 +6344,6 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
->>    
->>        if (arm_feature(env, ARM_FEATURE_M)) {
->>            dc->vfp_enabled = 1;
->> -        dc->be_data = MO_TE;
->>            dc->v7m_handler_mode = EX_TBFLAG_M32(tb_flags, HANDLER);
->>            dc->v8m_secure = EX_TBFLAG_M32(tb_flags, SECURE);
->>            dc->v8m_stackcheck = EX_TBFLAG_M32(tb_flags, STACKCHECK);
-> 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 657ff4ab20..917e9919e8 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2568,22 +2568,6 @@ static inline int sme_vq(CPUARMState *env)
+>       return EX_TBFLAG_A64(env->hflags, SVL) + 1;
+>   }
+>   
+> -static inline bool bswap_code(bool sctlr_b)
+> -{
+> -#ifdef CONFIG_USER_ONLY
+> -    /* BE8 (SCTLR.B = 0, TARGET_BIG_ENDIAN = 1) is mixed endian.
+> -     * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_BIG_ENDIAN=0
+> -     * would also end up as a mixed-endian mode with BE code, LE data.
+> -     */
+> -    return TARGET_BIG_ENDIAN ^ sctlr_b;
+> -#else
+> -    /* All code access in ARM is little endian, and there are no loaders
+> -     * doing swaps that need to be reversed
+> -     */
+> -    return 0;
+> -#endif
+> -}
+> -
+>   enum {
+>       QEMU_PSCI_CONDUIT_DISABLED = 0,
+>       QEMU_PSCI_CONDUIT_SMC = 1,
 
-See:
-https://lore.kernel.org/qemu-devel/5fc9d07c-cd22-45c0-bb5e-8bf93d20f112@linaro.org/
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

@@ -4,88 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDEC610F9976
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732EA10FC440
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 21:22:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAYVs-0005AH-KZ; Wed, 08 Apr 2026 15:24:32 -0400
+	id 1wAaLi-0005xr-WE; Wed, 08 Apr 2026 17:22:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAY5s-0006tN-B9
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:57:40 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wAaLh-0005wV-GP
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 17:22:09 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1wAEoX-0000pf-Br
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 18:22:31 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-35d9f68d011so3650200a91.2
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 15:22:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wAaLe-0004ac-Uy
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 17:22:09 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-82cf636dac8so151396b3a.3
+ for <qemu-arm@nongnu.org>; Wed, 08 Apr 2026 14:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775600548; x=1776205348; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jvjSLIEXvBvChupp9bEDs+PcKLfymPb67QO+8GQ5aqk=;
- b=SWV3KPkzqq2XpdNe/o5lBvFQj8VSdNy8TD2lXoTNWcR74w4WoRG0Ts4r4qYcg+XW/w
- hHd6gA1BFe9ak7Kga73sXjBr7Bx3TeOTcOk+JimV3VcXsKoLyP2VNiMQmgwZry6sH9ic
- KgPKOpsTnMeNdwoneoKzGdQwdmQIxgAPXeOOhCdFO4+UdkVucK/3x9T+qiCL7jSqZMwk
- BkmYZ7/5UJtOZBVJQTGdr2oS092j/8aMjEqp0s1FyD6yKMBUUM0S1UI+B/mOFAgtLSRm
- 7sc0Xs+w3rZf28hpqP4nCVZhR6nByULkjWOLkQ69Sq+nOI+B8AgPBD7cD2KCNT+gxnK/
- daYQ==
+ d=linaro.org; s=google; t=1775683325; x=1776288125; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=38LV6cTloIQIKNx6vlMzcV5/CyU1yfLErDb+TIbw+ek=;
+ b=HZkZ4IWi964CcjuGtl7xdbxWqG81YYTATXTiMsUd+a6wo3LHpXDT0zC/hSWvN5h2VH
+ gSeAYag90PfRxXMXgp9G5s422JB7VRjBxZgslZvM6kJzpPDP9sxRizdvYm5ZbeInUpz0
+ rDuauGGWPbM+HJ/A/dNec4diFZcJzrhMrOHU3UTPXyv/rC29ImaK+xZhNCn9PGMfv5lU
+ YXhbj6kZDXEaKeFPgwmOgZbYQJd5Uo93V47HKAuWRAUeIDBCx6kZGat30THyM3O5H95J
+ POp/+XDup7pW+ZD9RPfrrb3J2wcwM2B1djEW3cUg2DjuO1SYVq7dJkRYr7ustp0mR/VR
+ d/Ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775600548; x=1776205348;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=jvjSLIEXvBvChupp9bEDs+PcKLfymPb67QO+8GQ5aqk=;
- b=VWlwUCgac8A9ATcAIC1x0OuoBrI2puOy/nEDVEP1Ix8euPTBIIB8FQG2GyPDO2hUdY
- NArPE5VEMuj70UHpd9QZM/RCIOZlL0euUjkgFSj/BWlB2dwy4VHS6YLTbpbN1epLivtI
- g9yoX+7LJo3Oyx4g2Z3Bz/GMsNqr5DcZN9+v+Ck0CuROGVEe2YQpalybUzKqHhKC8rbB
- 9XA0hgYSsG80kPrYRvuekwQfbjuHG3RFOsorUswZEpSreGtnVa1645gGAv2Qcsf78d2k
- hPiYZ0gmeNMG2pYv28irDBU7F/Qz3M0uk2OIhzIgTkSzDenOz6RsCMA3ftugWJ1iSuc9
- Rrnw==
+ d=1e100.net; s=20251104; t=1775683325; x=1776288125;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=38LV6cTloIQIKNx6vlMzcV5/CyU1yfLErDb+TIbw+ek=;
+ b=S8SVwuyz/t2kODVNYG1ba4QKEEPpuYLKgGl/Feaa2QOohslL95JbH72vNRLqlM5KlP
+ ViW++oEYGf5vYpYQ8jgz+sxrXcWyLAdHHqHSBgjA+PEw+nh1KWJV6bXVhVWni1xRK7Od
+ L/qpvX4z/3YrUfRO3stGui6sKWvHB7p74WIbaaOyIaCh35zo+pZf7CBr+XHQ5BnA7y6J
+ cCeyv/DwBqAenOgyMP/yk77o/DTtB96PJGhmFzQ13fxjkNokCg2tijzMwfaQI5GmboSM
+ cg73X7IpnSCnVkxISwRAMrch2Y+uCfd6J8Owo2FJg255uZ2KqSc1tds1wyXGACilwYlT
+ h+uw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVykI0/EpLKxJeVbXNko8H8WpY8otVydYnTuwFhg/oa2hlGHPNnY4aTnPEYwGZ8dW8MaCcdYiqmAw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzei1yeVp7VMhciQQlhPbtmbnvJUrRuyWgKtt0TJsdPO6Yk8TcF
- hU90BJmaP3h2Zd1zdhns8/rGoeTjj0Srfph02ntJyzpJwJ14NUeWwTMRAm16+AiETgQ=
-X-Gm-Gg: AeBDiesQqhbOXE6cC2SPHGP4t8khg4RBdzf5t3q52PPa2gKT7fh0MVhaO1TaKhandPK
- t71XMrHh6yWjZj+WhzfGYfK7DKDvN9KW+R+51Voz+H6B516RnmoDbna5V/6GFAvPolIEpTT6n4E
- RfHqB+TyOLNQCQ1oICriOsrBr2zX6alnxkRv1LlMkXCBbDcD9TKhRNWqEobicrFW5nP/88RwUWu
- qbo0bwc9Nxl5flLKIM+5Y9cacG1a5flVlMdvOFHKvBm+Kjb/gzNXW6RTPo8yqtfdZ69lRvthITw
- tb51iBWZAKpn1j3mm4EM7iDNf2qKmbdXQjGJiMnNfy9IBDO2l6tz4LyXJvjdMYf+rRHpdfZlWqB
- KQI8MtCPoKu+GImf7FI08FlwCY7RhnAle6yJ7IvGE8XziX3Pd3Qs28jjn4BXU78+a4UCAwWIR6A
- 3+gDvoH7l5TebyWboX0mnrzA7sa4dxhVJQ4FFHm5ECHUmjTZ9V2bLQ2a+B05ibMerM95bN6PACc
- oun
-X-Received: by 2002:a17:903:b8c:b0:2b0:6885:f1d4 with SMTP id
- d9443c01a7336-2b2817b5e43mr196684775ad.39.1775600547848; 
- Tue, 07 Apr 2026 15:22:27 -0700 (PDT)
-Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b274979d5csm180412065ad.38.2026.04.07.15.22.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Apr 2026 15:22:27 -0700 (PDT)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: philmd@linaro.org, jim.macarthur@linaro.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v11 12/21] target/arm/tcg/translate.c: replace target_ulong
- with uint32_t
-Date: Tue,  7 Apr 2026 15:21:59 -0700
-Message-ID: <20260407222208.271838-13-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
-References: <20260407222208.271838-1-pierrick.bouvier@linaro.org>
+ AJvYcCWtXflbXeC9nU8VhgJqLVfR/x5jSImlu0W8OV2tZOZl8kSocowwBfy8ZvJpZKNLHqoM70nc3ScvnA==@nongnu.org
+X-Gm-Message-State: AOJu0YzR9ETFNDjc4HDdznq5Qh7oSxCMChwASy1r57rchWhFquq2i3QF
+ LwnSniXyn7YRvNogamwwJG3HdbSV7IrZFV/8noe+3Sxub5tYjw7QwfzvsnQy5u/aYmw=
+X-Gm-Gg: AeBDievTk1a4jkREb/1uxPNRW+OKb4xPFC8ZIGUbgTZfNn5vnsWqEeObwjZimEJp35b
+ 3zJCmfB7l+FUfnlzq9KvGoJv1ACa8h37BNUfig28FMoKTmCpFoibPFKNApKJweMCphYy7R3GzOu
+ L+myHXMawtjAWaCWC0UwkLX7jyt9rnM8RrgwkGFckEsWpIawRE8EzFGSkLgYCGQB4IJ+axfecm0
+ PNfkKtYp8iyRniJ+IrCkoozE0DPlI+wlz7tF1WAwyu1ZKQRUDpWitAT4HFyiBnB/tqUdG+051nJ
+ wbSi5seiMsZ/m/73dQurRUqkeZpCcbl+BbNdLEJz79syCtz8Zxh39gBMisRVGolmYpws8vEQ5fe
+ 3r56je8GqXHxN3JdZd9O5uw8kq6RAEXHHGQPyYZCqvJvYT6UxyU/sXMZ+X4HvAhVm2SWlGgSBqG
+ GhqG8J279QNuLOfx44Lw75fJSoxF6uLQ85XbvlaxKV8sZqTNEC4H+UclpxpASgDmW1luI=
+X-Received: by 2002:a05:6a00:1d99:b0:82c:dc9c:e765 with SMTP id
+ d2e1a72fcca58-82dcc60c5demr1000645b3a.0.1775683324698; 
+ Wed, 08 Apr 2026 14:22:04 -0700 (PDT)
+Received: from [192.168.1.105] (124-150-69-109.tpgi.com.au. [124.150.69.109])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-82cf9c6fdd7sm21837879b3a.48.2026.04.08.14.22.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Apr 2026 14:22:04 -0700 (PDT)
+Message-ID: <fc59c646-a503-42f1-9e3b-fb73cae0b6bd@linaro.org>
+Date: Thu, 9 Apr 2026 07:21:58 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1030.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] linux-user/arm: Improve get_user_code_u32 and usage
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: pierrick.bouvier@linaro.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20260408013309.56122-1-richard.henderson@linaro.org>
+ <20260408013309.56122-2-richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260408013309.56122-2-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,36 +105,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/tcg/translate.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+On 4/8/26 11:33, Richard Henderson wrote:
+> Force a little-endian load before applying SCTLR.B.
+> Handle the BE32 swap correctly in thumb mode.  This
+> fixes a bug with its later usage in insn_is_linux_bkpt.
+> 
+> Handle lock_user failure: in one case by simply falling back
+> to the original SIGILL and the other by raising SIGSEGV.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   linux-user/arm/cpu_loop.c | 64 ++++++++++++++++++++++++---------------
+>   1 file changed, 40 insertions(+), 24 deletions(-)
+> 
+> diff --git a/linux-user/arm/cpu_loop.c b/linux-user/arm/cpu_loop.c
+> index 19874f4c72..419136fdee 100644
+> --- a/linux-user/arm/cpu_loop.c
+> +++ b/linux-user/arm/cpu_loop.c
+> @@ -29,13 +29,34 @@
+>   #include "user/page-protection.h"
+>   #include "target/arm/syndrome.h"
+>   
+> -#define get_user_code_u32(x, gaddr, env)                \
+> -    ({ abi_long __r = get_user_u32((x), (gaddr));       \
+> -        if (!__r && bswap_code(arm_sctlr_b(env))) {     \
+> -            (x) = bswap32(x);                           \
+> -        }                                               \
+> -        __r;                                            \
+> -    })
+> +static bool get_user_code_u32(uint32_t *ret, uint32_t va, CPUARMState *env)
+> +{
+> +    uint32_t insn, *hptr;
+> +
+> +    hptr = lock_user(VERIFY_READ, va, sizeof(uint32_t), 1);
+> +    if (!hptr) {
+> +        *ret = 0;
+> +        return false;
+> +    }
+> +
+> +    /* Load as little-endian by default. */
+> +    __get_user_e(insn, hptr, le);
+> +    unlock_user(hptr, va, 0);
+> +
+> +    /*
+> +     * Adjust the little-endian load for BE32 as required.
+> +     * In thumb mode, bswap both halfwords by bswap of word then
+> +     * swapping the halfwords again to restore the original order.
+> +     */
+> +    if (arm_sctlr_b(env)) {
+> +        insn = bswap32(insn);
+> +        if (env->thumb) {
+> +            insn = hswap32(insn);
+> +        }
+> +    }
+> +    *ret = insn;
+> +    return true;
+> +}
 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 4546bbeeeff..204f9657993 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -6450,7 +6450,7 @@ static void arm_tr_insn_start(DisasContextBase *dcbase, CPUState *cpu)
-      * fields here.
-      */
-     uint32_t condexec_bits;
--    target_ulong pc_arg = dc->base.pc_next;
-+    uint32_t pc_arg = dc->base.pc_next;
- 
-     if (tb_cflags(dcbase->tb) & CF_PCREL) {
-         pc_arg &= ~TARGET_PAGE_MASK;
-@@ -6612,7 +6612,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     bool is_16bit;
-     /* TCG op to rewind to if this turns out to be an invalid ECI state */
-     TCGOp *insn_eci_rewind = NULL;
--    target_ulong insn_eci_pc_save = -1;
-+    uint32_t insn_eci_pc_save = -1;
- 
-     /* Misaligned thumb PC is architecturally impossible. */
-     assert((dc->base.pc_next & 1) == 0);
--- 
-2.47.3
+This isn't right for thumb be32, at least not matching translate.c.
 
+Translate loads 2 halfwords from
+
+   va ^ 2
+   (va + 2) ^ 2
+
+Let va = A + 2, where A % 4 == 0:
+
+   (A + 2) ^ 2 == A
+   ((A + 2) + 2) ^ 2 = (A + 4) ^ 2 = A + 6
+
+We'd need to lock 8 bytes in this case, loading the first and last two.
+
+It is tempting to have translate.c store the instruction that it loaded as part of raising 
+the exception so that we don't have to think about such things again here.
+
+Peter, what do you think?
+
+
+r~
 

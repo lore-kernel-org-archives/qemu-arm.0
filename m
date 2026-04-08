@@ -4,93 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C02F10F9972
-	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:49:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F0C810F9972
+	for <qemu-arm@archiver.kernel.org>; Wed,  8 Apr 2026 19:52:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAYc0-0004RT-Pq; Wed, 08 Apr 2026 15:30:52 -0400
+	id 1wAYYx-0004JS-Iu; Wed, 08 Apr 2026 15:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAY9w-0000ak-Iw
- for qemu-arm@nongnu.org; Wed, 08 Apr 2026 15:01:54 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1wAY84-0007xs-0y
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 14:59:56 -0400
+Received: from va-2-114.ptr.blmpb.com ([209.127.231.114])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wADbV-0002PG-C6
- for qemu-arm@nongnu.org; Tue, 07 Apr 2026 17:04:59 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-488ba6366a7so19387715e9.0
- for <qemu-arm@nongnu.org>; Tue, 07 Apr 2026 14:04:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775595895; x=1776200695; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9HpQFuT0DKPaDPfbPNtPLVWuxJBPTKUXJcpXFbKe3q0=;
- b=eQUxkUIA7TLcnPPXYL3MflfClUJ0edtHH8p0zbrXGRojFM9FIlQ5fKj4/2qOj1T4TD
- 1vjAPKxJJptBdL+YrLxWtp6zFW1yt1IuetaIjY6qw5ZhK5g3tQyvjBqqZDoC8XgQjaBF
- AGaPcYspj6kT590EQUMXGwykZuWsww2ZOBStGcriVssvgEQCpHBIMcI/200IAgU99wML
- lFNY4ltqy8sGxVqfNQHSFV1lwbUM+2uNfI0xsvSH08NAuoQ1sgUSTgsdYgA0vvRgrR86
- 8vrjMMiWVE8jGFXIfT8o4+SoM7dXfSCGoNouAjdnZ0iWneOguJC3LuBk3fqX/Jn0/cee
- 4MOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775595895; x=1776200695;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9HpQFuT0DKPaDPfbPNtPLVWuxJBPTKUXJcpXFbKe3q0=;
- b=sp7ZJCUyg7specbhiL1VQWrkHOfmT6M2fgjwklgwTP/bECz6jLqv5K0xVZOflVQxuw
- wxhxHwHTOy7CJaHk6xh4lddSsw0LbhSIN8iPq1uiI3llDmhjfz3dR2sIxodDPaqwFD/+
- utiU7wqCdWolcB4KJIgfeWIqWSTO/R3bOXXzQKcvQnbq/kmYsXP63pcyhPRaJkAf0del
- x2I84NpToyQlMEUDEdp/B2/qE5LSmOe+QLxgwmIUt/VSuNJ4Kv9SEwc4y2HhdhcOWMeq
- n9QapRpK/RdR/+U5nYUSOJqXhchwONA2Szs0bvIinclS/aRg+z7ztIVerD8IBtxn/TWO
- Sd9Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXuWZzEwLgrZgGE+phgO2AlvHPYYZrYKFaiFnKrlQWh5A48DxdVP9f8uK4bPuFW3IUAqdk5B3r7iQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwrJ7fQCsqBRv+FnyxsPUXB3krpYSaPMlMJeWelS8YKSLoSWReS
- nG50phhNgWTQHVzrK4VCXCIybEUcAj5uMCshVIlY5AFPA4VuilPbKBNrDmbAvm384Kg=
-X-Gm-Gg: AeBDiesCEmPV1Z7iSr60zYbTyAI2B2Z08xmc8MFhlEPvsDctlHWitWIJM1wXhCPwuvJ
- j4IMJwNv6cFDxa2RQWXQMBHX462oBFJrEVORMdHOlAWHKwsvdPYb0y8oKAFk1WtbNb6LkZYn8+S
- HA02urefdzs4+1KTGwUrvBV4Hdgy9aZI3mPjrpOflYjj89VAqfHbbcurwNjGmMkgUwFI2FL4548
- A30OSPICIeS+sZ1pVelmjSAsNpHVNjMQycNLxVKSc/tcd+gybmmA6ab/18qy6Qcy8FeFSK4Bos9
- Ce6KbGG1XdoKC2H/evfOLkES5OeozVQ+PsKumCrkEsp1x5uE6pDJJmu9O0N1f4TF2nOVyGQC8zD
- sc/aF1aisOIHQwA1Lha4fAWsy04fDWB7jbGdlvqGEuklzoPrErDJsyZqe+uI3Dkc0QFpuaznm6w
- qLL6PQQGzoweZu2dDMrrapIdepeQH+CYTm2loLQ4cWFtQaLkKXcd669GrvZCNIxNSkSb21GGaUb
- AfX
-X-Received: by 2002:a05:600c:a47:b0:485:4eaf:eb53 with SMTP id
- 5b1f17b1804b1-48899781357mr280250015e9.19.1775595895154; 
- Tue, 07 Apr 2026 14:04:55 -0700 (PDT)
-Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488a952a03asm258729465e9.0.2026.04.07.14.04.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Apr 2026 14:04:54 -0700 (PDT)
-Message-ID: <0188d667-151f-4d82-b848-18646e1b340e@linaro.org>
-Date: Tue, 7 Apr 2026 23:04:53 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 17/21] target/arm/tcg/arm_ldst.h: merge in translate.c
-Content-Language: en-US
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, jim.macarthur@linaro.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20260407195922.196410-1-pierrick.bouvier@linaro.org>
- <20260407195922.196410-18-pierrick.bouvier@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260407195922.196410-18-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+ (Exim 4.90_1) (envelope-from <zhangjian.3032@bytedance.com>)
+ id 1wAOlk-0002ok-PF
+ for qemu-arm@nongnu.org; Wed, 08 Apr 2026 05:00:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ s=2212171451; d=bytedance.com; t=1775638799; h=from:subject:
+ mime-version:from:date:message-id:subject:to:cc:reply-to:content-type:
+ mime-version:in-reply-to:message-id;
+ bh=g+AMW+AIqcrmYYHnTNq7KzVlFfTEGsoPYwILFkuet58=;
+ b=gMGKB+v01Vw6KhsFVjgeDhRZ5F+hfB4Uh48SapBq6Ba0VuSWY5NE733Zs0+Sc8jHulkjnC
+ 4JUQ6CEcWKvzTpIp6HA20290Ng2Rt/5w/Uy95x8l3CTMskdnUFRJGb23zAzL2BR/8WU8Tg
+ rN4Lp45Su6ikx2s0OJhR0cBBQKiqOLIWyqB2fPJPOQq7IX0IeGUZN6VCaVZaU5QhMQxd3U
+ OPQ3VWkoaY1Efk+chfdhISn7ikBUGudohT8GwotCmYQj1zultH+BeM8A2K00u0yMC/1NQV
+ RCJ3CPrskerg3mTo0tevJi8/IKZeEOGB3qq188yT0+h5p8huWi8ZKGYPa/re4g==
+Date: Wed,  8 Apr 2026 16:59:39 +0800
+Content-Type: text/plain; charset=UTF-8
+To: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ "Peter Maydell" <peter.maydell@linaro.org>, 
+ "Steven Lee" <steven_lee@aspeedtech.com>, "Troy Lee" <leetroy@gmail.com>, 
+ "Jamin Lin" <jamin_lin@aspeedtech.com>, 
+ "Andrew Jeffery" <andrew@codeconstruct.com.au>, 
+ "Joel Stanley" <joel@jms.id.au>, "Paolo Bonzini" <pbonzini@redhat.com>, 
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, 
+ "Jeremy Kerr" <jk@codeconstruct.com.au>, 
+ "Matt Johnston" <matt@codeconstruct.com.au>
+X-Mailer: git-send-email 2.20.1
+X-Lms-Return-Path: <lba+269d6190d+50a160+nongnu.org+zhangjian.3032@bytedance.com>
+From: "Jian Zhang" <zhangjian.3032@bytedance.com>
+Subject: [PATCH v1 0/2] hw: introduce a lightweight MCTP-over-I2C responder
+Message-Id: <20260408085941.3837334-1-zhangjian.3032@bytedance.com>
+Mime-Version: 1.0
+X-Original-From: Jian Zhang <zhangjian.3032@bytedance.com>
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=209.127.231.114;
+ envelope-from=zhangjian.3032@bytedance.com; helo=va-2-114.ptr.blmpb.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,15 +73,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/4/26 21:59, Pierrick Bouvier wrote:
-> Only translate.c uses those functions, thus move them back to this file.
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   target/arm/tcg/arm_ldst.h  | 47 --------------------------------------
->   target/arm/tcg/translate.c | 22 +++++++++++++++++-
->   2 files changed, 21 insertions(+), 48 deletions(-)
+Hi,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+MCTP (Management Component Transport Protocol) is a DMTF-defined
+management transport protocol commonly used between BMCs and managed
+components.
+
+This series adds a lightweight MCTP implementation to QEMU. To keep the
+scope small and make the first step easier to review, the current series
+focuses only on the SMBus/I2C transport layer.
+
+Patch 1 introduces a minimal MCTP-over-I2C responder core together with
+a simple NCSI-related extension built on top of it. Patch 2 wires the
+device into the ASPEED AST2600 EVB machine for initial testing.
+
+The goal of this series is not to implement a full MCTP stack, but to
+provide a small and practical foundation for simple emulation use cases.
+
+This is my first submission to the QEMU upstream community, so any
+comments, suggestions, or corrections would be valuable.
+
+mctp spec[0]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0236_1.3.1.pdf
+mctp i2c binding[1]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0237_1.2.0.pdf
+ncsi spec[2]: https://www.dmtf.org/sites/default/files/standards/documents/DSP0222_1.2.0.pdf
+
+Jian Zhang (2):
+  hw/misc: introduce mctp I2C responder and NCSI support
+  hw/arm/aspeed: add mctp responder device for test
+
+ MAINTAINERS                          |   2 +
+ hw/arm/aspeed_ast2600_evb.c          |  14 +
+ hw/misc/Kconfig                      |   5 +
+ hw/misc/mctp-i2c-responder-ncsi.c    | 777 +++++++++++++++++++++++++++
+ hw/misc/mctp-i2c-responder.c         | 694 ++++++++++++++++++++++++
+ hw/misc/meson.build                  |   5 +
+ include/hw/misc/mctp-i2c-responder.h | 116 ++++
+ 7 files changed, 1613 insertions(+)
+ create mode 100644 hw/misc/mctp-i2c-responder-ncsi.c
+ create mode 100644 hw/misc/mctp-i2c-responder.c
+ create mode 100644 include/hw/misc/mctp-i2c-responder.h
+
+-- 
+2.20.1
 

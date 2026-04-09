@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0A70E98FDD
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 09:43:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6145EEA3C21
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 10:03:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAlvG-0004O1-A5; Thu, 09 Apr 2026 05:43:38 -0400
+	id 1wAmDd-0001E0-8w; Thu, 09 Apr 2026 06:02:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAlvC-0004HP-KT
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:43:36 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1wAmCW-0000yc-6p
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 06:01:30 -0400
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAlvA-0002oW-87
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:43:33 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-6501e465a8eso704884d50.1
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 02:43:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775727810; cv=none;
+ id 1wAmCS-0006so-45
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 06:01:27 -0400
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-64f48a5c3d8so737688d50.1
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 03:01:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775728882; cv=none;
  d=google.com; s=arc-20240605;
- b=CmKBg1XR0XELjZeJYruZ78ZIQHhIksoLeg4ZYQRCZXtnMj0WnvD2DjT92eCnX+a2W7
- IKXIJC+TYUYUOrCYXhQcmCMXHMBeKzFou4ReNtAsJ+L53DzbZvINNy9KCHGX1D+pleFz
- VK1KGuLTO7GK7G3VjAp8SdzRLePXtU/nruWZh0FOqqm68zxEY7hX4sjOXr532yDSGWn/
- ZwBWoGurcnLDK/slJG6EH0sd/J59ilowHKJqzaELAT8FYY4mlsiZYvrSYN9aAhcaSKp5
- W3FE//MXfD0fgDXW3pZzhxpbG4VCVd8tbpQIb/VjcQICht74Bqo/z7+qKVi7iMn0a2d8
- ksqg==
+ b=RkNG4b2X/fyxtPG1JWJvzxxSjMztoy1lrKD2jnT+eUO2Jsc1jGc8uWzOW+QmG3D9nK
+ oTql/6wKG+BbW0XPv/g5/xmVWuSGmV5ilL632c++KqhicaCIz9GNcPl1FC2GaujlDcOh
+ afeoD1AQe7cRImKrVGBdt/nVGEH3E0r3MmXv6crNNnjy1C+0G06Ak4qHU1/UNt1VgVSX
+ 3CJQrWJgS3LyPgJWKF1NefvzH4guuV/S33T1Vt9GEpiSfzzwL4Do3n7Egqy9IiJkZUz4
+ J46MflsEqaQghUufSFJL/RRfsFC2eawwMV8IuYL49Aq9XnidTYwfCdCQ0Vx3HvaIEQfx
+ /KNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=7DY5vgoK0OPxe5ysWxdHMOOyaxoUFNwyCJ8ueUu29KM=;
- fh=x/GR7kZshWgdrXkeMRz6+zmgheBp7B8AhLgyNptH5vs=;
- b=gqNbLiGTI8+RlHQdHvMiYD5JMi7NlanXPYiIau/5w8lhW5FV6Bx34zAB1UCUPauDMu
- Xq8XNFM44YcLgjI0GfP+ggCRYKNrsY6KULy4bhVT2X7SfKtjwkTnbB6yDYBRpfPpjHZ+
- RyVPJCMoiS1mAmxyQrdTrPwS+cAPlNuiX05OIriZntp2VScCaT9chb3GtmgvW5rFv+hV
- ugT3kygY66kfUvvvStb2+CXGAuRhYQPrZyG0kirn/iE1fBnFQRIlEvMAeWEtIkKCCLbN
- o3HCle5bJltCLePgIIwRkJB7V98WT0odJdOljMNNwxWKtxtrPliMz3uE1qbdD2bxkmg3
- LFAQ==; darn=nongnu.org
+ bh=xYdyAJ1ZBVzWNAlvsnmeiUZEob1hhv0ZSCbc1WMT93M=;
+ fh=UDHG5ge/TzXWFmSM/mH5R2s5T7KLSnyMn1tvIqJO3fU=;
+ b=ePMZoc3oMME7O7EtsNqdpPp1KRDUN8mQ6ti0Am+eY9njemvgQaijSLnfQhbpDLczEW
+ IJUVoDfg3ZOTI01cN5TbT08WgiTRxLp8wNJlTZnaqD9T9yyRHBMmgRRTpHRVhG+VZbst
+ 5BzJFPnLDZKL3+R8GCMW34xf/4OtfLT6ADqee8XuVJ57ya4MNXDoH0mJuq03zN7pGzH9
+ sGkahd+jgqFVMVVj/UQLK7IQKAyrCSSarWsg9v29wnYrsgOQaYMFNtRZkhsEemzLRYPO
+ GcmdD91pvf/eyHQSLlCP5aUjPfTmW8KaX7Bd30fQjoaTngj8Hrw/WtT6jFTtwnu/HP4J
+ McxQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775727810; x=1776332610; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775728882; x=1776333682; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7DY5vgoK0OPxe5ysWxdHMOOyaxoUFNwyCJ8ueUu29KM=;
- b=l19sUWUiIP70LX6Q7jIhe5B0YGKWALm3Ya9u7DwqIXB9WGaB75RPVGONuiYXtFsKn/
- GXxuA5LoLXsrTS8WATbB+3w9CjLr1cbbqNJ/3aDsmuEldq8e12Q60c9DJgJrPEgNTbx+
- +SZndGgp7t6OpzdGsJsWGgGkuEsVHab+Z3RL4lD4pyJYaO10HSpYdBQvoaGjeQTNIExZ
- u5JJVgKognB6kr4GxVgy3fuGchgVTnEoBS8JcXrUyrYCf5qGoxd7+rUpq0G6RdkvnBa6
- IeohjhJTb+E3d9zDPHh6JvsNuMqKvup5N2X9upIuRiZxC9pT+TTtTaPAhFDo7h86rL/M
- 9OPQ==
+ bh=xYdyAJ1ZBVzWNAlvsnmeiUZEob1hhv0ZSCbc1WMT93M=;
+ b=ITTbm/D4OFYfZ5ZVSMih36tkrBwUWTScOLBvC7mhloBUZV6aR3Kf9Hj0ZR/zUZp28j
+ O5Uw9GegU+7AqYPt1aeZE5aWh52a7lX62/cTkKXCvFcEtt6eor4LV/lOR/ButZgCGQdQ
+ qhwdYMPeG26KO0TXum60C9tUr2wRhnZinDofrNtBiM99XV5upoDMI07X/1rxywlTDbwV
+ cG0Vtemt/ADDGksiNCqdyhkQ0tE3QEskHUQ4LFfdPDfx7OV+CqieII1oCU2ibHoHAeDq
+ pbrsQ+bd32MPomk6zo/rYrGCZXwpsG6ad0WiQUH/B6F2dgsGDvFKdjgHH+ITzxhhCdW+
+ k6Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775727810; x=1776332610;
+ d=1e100.net; s=20251104; t=1775728882; x=1776333682;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7DY5vgoK0OPxe5ysWxdHMOOyaxoUFNwyCJ8ueUu29KM=;
- b=X71V2Wtccbx/BZ3sG0oWCeceqQtBiVhmplONQaFyglruhy/XW2MKBKzAV6Nh0ugqTu
- FLmOGf4JYMCAYDLe6G+WnFim4PWZVX6kKjrxsKvMiKm6LzWeZPurtY/DrB4DbhXmWEcZ
- enK7tUIwRxGG0+MSW5OS4ipUKTNDkThIYty9Bxt0QGaRlBn7iE4hi6xMEOpFhld/RDmI
- jkLr+tCu7cOBqvCe8TT5fN2o4rITyRy+Y16k/z7u7Js1r0vYaqUBQndXlXGgpZL2YF1+
- scsjjbsmNPNwNuJbLgCp6iESaxpXUQ9chBBFxSjIRTVTPC/UvgCwUZVrJcThBZHyoBg3
- S3nA==
+ bh=xYdyAJ1ZBVzWNAlvsnmeiUZEob1hhv0ZSCbc1WMT93M=;
+ b=bhwJd9U26ZGsTtjhD1caRUntoKLJLVK3Nux/lHnuYPwRSjZQepk8Ya9JHTzLvqtAnX
+ RLNxyxoIPyWFOnhvMaXmxqav9vodGesW7KaSo1XqouOmTR3mj8ImZ9Y1/ik0uv0iSeEA
+ wXE8SUNZ/6lJYksND1ZtcaFaJ24L9hT5lceGVW2MSuHgK9xFSFbonYNSmQfw4S904b9I
+ 8KeDuHfXdjBt6T9i8uN4GhBXafm3wOtyYoPPLn2DdgQ5XhFT9ztZR57T2qcqXZNhyluo
+ WqpyMdBP3ToTAs90fYr03CFetSvYO8MjUaT5GEDjsepc8TOjzapvhbO5W3SObEuVnkS8
+ /PKw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVXn2UNmUSWfvx9fhOhK4VSW4m1gZgh6uSrajFuv1A2hy9zRsPD4XPtXLz8qzckXkqtp2aor9pUvQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwSRWzxLrIQxeBVcjtGEc884Fx4GkrIt/y0+75skUO2RAPXoBns
- BuLbgakVo6jR4O/dMGDxNu7zCHI998qTZUsgQv6IJeN81PlPOx7WbqUKWwFlHOQXCTWFUb7CTdH
- D2pB+RPMZYNtuRkYR9xGeN75p4imqKcNnONxkTNd/yQ==
-X-Gm-Gg: AeBDietG55wYZdxAMqDi8pl1uc10Z8pOjKj8LOskViKtI8wDEtIU55TDTh/cCYsyRar
- /Pn8qrJS0Hc6bm0CGMr+zL4vqhbksRe7dJp2Y14iJsex/XfoSYWj3R37UNIDdLkgMHs9SwGFRpE
- cO5JpLlpzfXj70MUoQiCVAw4hFVmGirH/rl6IHX+jZ1p5M4FycplHAF4/bSj1XHzgoILSBRVcuN
- m9/42rPOnvMut2ZeRj3GOekvgG2aoU+ppUH0xsOQt+84du6cUFIJ9or6w7zWYO3y+Sn3zYyR/gk
- OGIupUXtyvn94DZPacXwYTkDbSyvEVklBRxOKQoC8gmjQkKPRwfgAyR1WC00f2JOcvg=
-X-Received: by 2002:a05:690e:1502:b0:650:26c1:ee84 with SMTP id
- 956f58d0204a3-6518714b9f5mr2069174d50.11.1775727809775; Thu, 09 Apr 2026
- 02:43:29 -0700 (PDT)
+ AJvYcCULd2Rtugvzy10dnm/BSEOL0KGGXN4bqArHw3zXVUH+IM/WTd5PeBcSDG8coc87kO8NaEDFweFuGw==@nongnu.org
+X-Gm-Message-State: AOJu0YyolTQ6JIkhgI4+qIBYr6R7hobv+Y9NXRhzHdj1TShD5OgILJAG
+ wbrWg7hB8g5uXkKj29Dr1lPbIWzP0H6gWt2M47BBz6S2sHo47ga1D3shoQIXxfmUPL7v0kLrAvl
+ zgcdE4PLlPkL4/xsw91ycn8Gy7JjbkokuT05hnc8JyQ==
+X-Gm-Gg: AeBDietA8xYnQZUD0BxrhDHXk0IiVe7mR56jdRwpBVLSOhGNNBPw77M3sqF0D+KfZGB
+ firPIyMB5uCuLcXKtsYX85QuO6DsoZmpoWETt1d86HQfY2CotgJRmvlXZ9L1ouF4QihuxZXQeBI
+ WMw9uLQcgBn02on4CaC1rPeNoNihwX9Osm/pn9VnfGZhtxJOOeZcNigb9KK1ZIe9uuGrtQHZzZX
+ RFhIP43JiqxBI9gcyHld09NFVXsoq3O5L4dlp5VTX6pxLka5a/mquITdFu2qEPOBje+tYsnXI3S
+ i6u9MFgapzwmcGxPkUJ2nv0YzXOBd26aNmHYdLgpET7t/jdKjseymfYWO53RHsFbV5E=
+X-Received: by 2002:a05:690e:1c1c:b0:650:5316:1756 with SMTP id
+ 956f58d0204a3-6505316228bmr19792260d50.57.1775728881898; Thu, 09 Apr 2026
+ 03:01:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
  <20260409-fix-unit-address-v1-1-946840930af2@iscas.ac.cn>
  <b7273509-0161-4b2e-bf4d-28b648f71209@linaro.org>
-In-Reply-To: <b7273509-0161-4b2e-bf4d-28b648f71209@linaro.org>
+ <18a3a770-9d57-47d1-9edf-ac55edccb8f9@iscas.ac.cn>
+In-Reply-To: <18a3a770-9d57-47d1-9edf-ac55edccb8f9@iscas.ac.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Apr 2026 10:43:17 +0100
-X-Gm-Features: AQROBzBTK_KqKGLcQvAFpVWYtJwjO6_0s710KQOQJSWNSOEWuGi3cV-mbZlTYvY
-Message-ID: <CAFEAcA-z1GywU7qaoWQSDCndSzkT1ZqZiKL47Wi05d430qDyMg@mail.gmail.com>
+Date: Thu, 9 Apr 2026 11:01:09 +0100
+X-Gm-Features: AQROBzCVASMzofaqQYGDV-WL1MRwPfn_32V7Z_sr4ZIpjr7tv-upq2Ck3Hldy7s
+Message-ID: <CAFEAcA-mTY3VksBcANok4+49UvVDv_w9X6ubKooQZ-kvWZ7r1Q@mail.gmail.com>
 Subject: Re: [PATCH 1/5] hw/arm: Fix unit addresses of FDT CPU nodes
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Vivian Wang <wangruikang@iscas.ac.cn>, qemu-devel@nongnu.org, 
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+To: Vivian Wang <wangruikang@iscas.ac.cn>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ qemu-arm@nongnu.org, 
  Song Gao <gaosong@loongson.cn>, Bibo Mao <maobibo@loongson.cn>, 
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Burton <paulburton@kernel.org>, 
  Aleksandar Rikalo <arikalo@gmail.com>, Jia Liu <proljc@gmail.com>,
@@ -105,8 +107,8 @@ Cc: Vivian Wang <wangruikang@iscas.ac.cn>, qemu-devel@nongnu.org,
  Chao Liu <chao.liu.zevorn@gmail.com>, qemu-riscv@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,21 +131,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Apr 2026 at 10:39, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
+On Thu, 9 Apr 2026 at 10:46, Vivian Wang <wangruikang@iscas.ac.cn> wrote:
 >
-> On 9/4/26 08:40, Vivian Wang wrote:
-> > The node unit addresses should be based on the reg value (which is in
-> > turn based on MPIDR), rather than some arbitrary number [1]. Also, they
-> > should have been in hex, not decimal, as per de facto convention [2].
-> > Fix them.
+> On 4/9/26 17:39, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 9/4/26 08:40, Vivian Wang wrote:
+> >> The node unit addresses should be based on the reg value (which is in
+> >> turn based on MPIDR), rather than some arbitrary number [1]. Also, the=
+y
+> >> should have been in hex, not decimal, as per de facto convention [2].
+> >> Fix them.
+> >>
 > >
+> > Maybe worth to add:
+> >
+> >     Cc: qemu-stable@nongnu.org
+> >
+> As Peter Maydell mentioned in other replies in this thread, most
+> software don't really care about these node names, so I don't think this
+> needs backporting to stable.
 >
-> Maybe worth to add:
->
->      Cc: qemu-stable@nongnu.org
+> I'm unsure if this is still worth fixing then. Peter expressed that it's
+> not something worth fixing.
 
-Why? What bug is this fixing?
+For the virt board, I think it depends whether the spec really says
+that the node name must have the MPIDR in it and that consumers
+can rely on that as a source of the MPIDR. I hope it does not.
+If it's just a node name, then I don't see why it matters what
+node name we generate as long as we're not generating the same
+nodename twice. We're not trying to generate DT files that are
+intended for submission upstream.
 
+There are other places where our nodenames don't match the
+conventions upstream prefers; I generally prefer not to mess with
+the existing working code in QEMU unless there's something actually
+broken about what we're doing. Thread from the last time this came up:
+
+https://lore.kernel.org/qemu-devel/CAFEAcA9OWDiWh3S=3D0Co7Z27EtOp-1B9H7FxyQ=
+y1T2sFnTyNdqA@mail.gmail.com/
+
+Essentially, the set of things that it makes sense to have a
+convention for and perhaps to validate for a hand-written DTS
+file is stricter than the set of actual requirements for a
+generated DTB, and I prefer not to potentially break some
+guest code that's looking for a particular node name purely
+to bring us in to line with conventions intended for
+hand-written DTS files.
+
+thanks
 -- PMM
 

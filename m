@@ -4,92 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7382FF364A3
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 17:54:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4105FF364AF
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 19:07:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAtYs-00084A-6A; Thu, 09 Apr 2026 13:53:02 -0400
+	id 1wAuid-0007Lo-0x; Thu, 09 Apr 2026 15:07:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wAtYq-00081i-PR
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:53:00 -0400
-Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wAuia-0007L4-U6
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 15:07:08 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wAtYp-0005jJ-Az
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:53:00 -0400
-Received: by mail-dl1-x122b.google.com with SMTP id
- a92af1059eb24-12c287eb77fso56854c88.1
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 10:52:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wAuiZ-00033m-4p
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 15:07:08 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-64d5a7926cfso1255231d50.2
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 12:07:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775761626; cv=none;
+ d=google.com; s=arc-20240605;
+ b=TEQ9QSQVPPgBhDsedW2X5TXv4kElL2tJYQq0qX/Paw5FuafkHkzrXXYEXgsZk2tZ8C
+ usZmVfO5zg0q2wvPmvbuJpuR73dbEon2J7Py6z02CpPTD77Iso+Rm8/4SLHejYb6REcO
+ lK2NAAlZDEN4+7s0l3l6zfnG8CMP6+QpapCTB5TwLx6ohcC887tOrRDSCjrR1QMf2Gv/
+ QI8kiA3UC1cmW7jCtLjP7R+h5pz8/WwW0jMmcFJ+pnIZOrZrkSffZ9DjXf9TnbbDJBDL
+ yb3K1YCUQe4glMxAGQiKzuYCZK5LI2lFjrLbISSu2XofEwxdMcRFCZ+sq4Ky6ggLH41r
+ GG2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
+ fh=hOWnywY/Ah0bwUaL64slUFKtPHQ3FQqX1Yop4XcCwPY=;
+ b=i+RYSmnrA7cT8hlykCRf4QDxVvLIhcZhn9LCigiUIAmS671soUY6VNaIcXBPImlIDJ
+ FD1jjkqbH7Thag6KqqWDaSg7laqJc0HpG/66qmFKQPVTqK+7JPDZPLbNVqHzfJcLYi2Y
+ ybu+GPMOR2zl62wqccGrjIVPRb65PYrEu0IpDel3GKZx9Ws28F5yc1mEcchgkHGW0L82
+ oICwZzBRNjjsdMKaN75iCkzICQdbKGM8o5oy+ekyyt8nIO/DpAPj9driWS1UKfAK/qJh
+ 3ZvBxaca3VoFtcIPE52BXStm/KRkIkchJBZh55eNSJ4L/qtYQo4IwGnYyoLJDkFvjAR/
+ Rwhw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775757178; x=1776361978; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7goyZ9sb61nd5DhdbjSqdoaLm4SdTVWUyhQNAskMZj8=;
- b=sabIIv9emrYvdpQqq59W/TbDNc1o6gm+CNdjGMsaCnenzShEAQMHfxFenXQ4tORwZ1
- FhG5Hlv1gdezY/C31J9g5wTQ1fFSgfQ6WLgYh13RTlzcrZXrCdxAZzVrF7HKPDc8S+xp
- Mw+8AcjapMtWGc7Udk57d8TIJrn43T8VoDdH18ZtfxfHz2GMoupcswBpTsUOOM3MRlD6
- xS+C54oWpcDdzGDAdSjf23syFKIp9zsQeak36JdBP6pc0qfjwxrRNN2j1GS1VBFg4TDy
- SJzibmTITMk7fn1Kl7tOymfY8C8fNEse9YlFA6AaKsRW8b+m5SQ2kcVkm/BoRwLGdHfD
- m0lg==
+ d=linaro.org; s=google; t=1775761626; x=1776366426; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
+ b=Xo0hcWTkS5OAZSMaZcsGOc93LOPCRdm2k3pmw158rmxsiaELhbagpIyrE15Hg6YVaD
+ nG75owccc/RfiJ1ldTfFW3p0Oazs3GyZmBRKXR7QyTC/yx3gOcEJgBaC4emzKpN3tpm5
+ yeRObIU6ENgO5xM8443aOSjDC9cuD1P2FnS1mjqi93kWrXqI9i2QGgLp42cPFza8l4Y7
+ RdTdJvh5LjF/kV/gs0bU4wgKmceiR8XCRr0FwHIUCCTav6bDlgFapShY7s9toUWue3eL
+ AmYlOm4GjpT+dI2jAvCu+VKagoS8+Ggmaaf0XUC8VZb6UokVaGZkECOe8zfjgVeJH77I
+ x/fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775757178; x=1776361978;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=7goyZ9sb61nd5DhdbjSqdoaLm4SdTVWUyhQNAskMZj8=;
- b=Xk2wZLreoFDLO18unTuxXjsA9uJHdpmLOC7xLkVZeFZQtVqLMGG1t2r77XjOnbbTfr
- Kye411oBYYlS5tiNDvCML/i2JA/ne0HHpjLBzKz45d53jVjPbjSnuK/6bTAGydKHVBft
- 7tfYZidSvyjHXaHWxKqN6HPSBF9E8wYRnZWchnuxNiikTtBSvpgNBlSwfJGW8verYYOT
- zj7w6UU4cT49G8o//HEnua5vdoTGQxVn20GFiED1zt4Qtk1CuVEqafpWlGgxrZNmzAnF
- Zwo+MrVpZ0mdFqmkMU6uCvnTawLGGxvtCLen0mnTCzxrYDzUXgXunDb8CCAq84UrXPg5
- mEUA==
+ d=1e100.net; s=20251104; t=1775761626; x=1776366426;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
+ b=bbB+HSQNTPIM9JaKNbvBDkcywvSYGkfu74rGgrQqqU1Dh5GO7XFkYTeCSxd1HHp1A7
+ NlMkua/PUfi62p1N1PfgnX98zTp/bJOSUCfEJIDV+GOAOnEJdhakS8HEq9K9h0jvq6Cr
+ KlH3s670hp4SwBFrFUC5G+DGR49Anj3wc241C9uLx4vjtjwYVq3zlm67/cABxpdeMU8D
+ EutR33cpCF9LnHcXQ1BJ0wJ88wUZ09MxqGGHoY6LYxCw15naCEFgdSLbBxqooxvgGPoM
+ eqekIY01vftd6kZL1DI/Ha/hoHi7OLCJFwVC8l5wYD+S7j2DXqgyRSWRl8qgXAIoY4Dv
+ 0i4Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWNeAgP+1TMfzeT949KcSSGRM7TuWe1MadkmDYPIv63jeAMaUp6imZSm4eJUL2CXzZ4FIf66Ca/GA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyp34plVh3eo9ALpmq6ubFvDoL3T62VvIoW+NJb1PXY6Ema12wp
- V3XR5jg06zVpNdwyAw75jaa4Hregw0KW9Koii9qqHRGf97BOudL2Skwq
-X-Gm-Gg: AeBDietunElA5kzogdM1IhWr/4m6UJjr44FbmBK2Ror/j4zb4813oG7oDK2t5DNWNwF
- mvXNqc3A4byYisQxC1bxtQ/fYraDGgvo5d6Sw+T4UkvYc9tIkOa73Qfqhu7FErMq0Ve2G2+A0Fg
- 6Aql5iHx9IPsqJK97FKOsnAIyf/1lIdhKYq9y08dT4ZeDjEg0i/sVO7qTT0d5C1aB9P4GtROW39
- AuzaRt2ygUYMRvIIAwFdIw2Aa21pWtzPxyMScr00NDDNA4SzkfyYvIShrnxlhiXI+Hr1uoaiL4o
- fpdKEJ4WuO1ugW3VNBZkNK0n5Y8jEhWtV58q+09k/36+n6DHxJVie1bpUzRIzsn6ZtG/Nxw7Od8
- PeSMT1PsbGsp8rgy5vMgUZ7jho1nbhvmAxRQ+DUhB5NalDNzUmEDrF35OlzfuxL6qEoIRlu2sNQ
- ZnzueqhCFq6wsCym0UoW8T1Tj3DLoLYhPt1FsZC/0bN62l9nQ9EEX2yA==
-X-Received: by 2002:a05:7301:6446:b0:2c5:3b87:2ff0 with SMTP id
- 5a478bee46e88-2d586992153mr41599eec.12.1775757177586; 
- Thu, 09 Apr 2026 10:52:57 -0700 (PDT)
-Received: from localhost.localdomain ([143.54.78.183])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2d55f5c69b3sm637578eec.1.2026.04.09.10.52.54
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 09 Apr 2026 10:52:57 -0700 (PDT)
-From: Lucas Amaral <lucaaamaral@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-arm@nongnu.org,
- alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
- marcandre.lureau@redhat.com
-Subject: Re: [PATCH v5 0/4] virtio-gpu: enable Venus/Vulkan without OpenGL
- display
-Date: Thu,  9 Apr 2026 14:52:52 -0300
-Message-ID: <20260409175252.40828-1-lucaaamaral@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317182049.33848-1-lucaaamaral@gmail.com>
-References: <20260317182049.33848-1-lucaaamaral@gmail.com>
+ AJvYcCU0u8qzrUcC6Vh53u1LQoRZTfrwwYVt9OYV9W02X4ANIBawkuUC/inLsR18fV4Nu7WdfWmYY2fo3w==@nongnu.org
+X-Gm-Message-State: AOJu0YwVl89ANBAZ0dW9OqgkxBxFbbf8wWMD0FZN//1A4HE0YZz5HrNb
+ IpvYR+KvUQ2V6MhYCACHSu0Ot/u6ddIfuNyUgmtNlQ3g2yssEkD3K56ja0BSjCIS9Pi/LPW0/1s
+ c2E2mOHVIP9hDn8lbo3DJSF0WvyL+38i2e8oIuwvNgg==
+X-Gm-Gg: AeBDiesnnOfBT5040lKsTXYCIe+W4k5k3mXQA07YbbgjBVz3U9Jehoy1KZNsj3GrIfm
+ K1b/skcTWXzvAnwsisCuhxRcOk/CX+DFV4/zigOqcwPPNj+nkb2hTKVHtkzeur32+9qJZ3meWzL
+ VoXjW4ne0yBEvJPUxbChdLlMhvm2d8PmErQGao4nh+LYdwDqILiK8wrGN2rG3tuxGX14eBz/Ygv
+ SkQM3sT0uAuwsQFznjgTm7spoXKHG2bC8/j5kdFJE+IKswidlGD7lT+TuNUQhXaTcHwlweL8cNG
+ k9ndpD8s793M1+lnmYp0uzzw58ux7u76++579QzES5o6/BQ4AtNUnZTLO/XpS05Nbl4=
+X-Received: by 2002:a05:690e:d5b:b0:650:7511:789 with SMTP id
+ 956f58d0204a3-65198b56614mr187656d50.32.1775761625740; Thu, 09 Apr 2026
+ 12:07:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122b.google.com
+References: <20260317175744.32469-1-lucaaamaral@gmail.com>
+ <20260409175234.40792-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260409175234.40792-1-lucaaamaral@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 9 Apr 2026 20:06:54 +0100
+X-Gm-Features: AQROBzATEW7_n-8rIJ_dlFdmJLtfB8kWhpFaZ2Te9cl9Ji6HKCB-46EM42_U7w0
+Message-ID: <CAFEAcA8rF3nuUTd7ARkcGpr-sA1DYJEJc-2E_URQt6nr8u6cGQ@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] hvf: map granule abstraction, configurable IPA,
+ and MAP_FIXED alignment fix
+To: Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, agraf@csgraf.de, 
+ mohamed@unpredictable.fr, alex.bennee@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,13 +118,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Ping.
+On Thu, 9 Apr 2026 at 18:52, Lucas Amaral <lucaaamaral@gmail.com> wrote:
+>
+> Ping.
+>
+> https://patchew.org/QEMU/20260317175744.32469-1-lucaaamaral@gmail.com/
+>
+> Mohamed gave Reviewed-by on v2 (nits addressed in v3/v4). Patches still
+> apply cleanly on current master.
 
-https://patchew.org/QEMU/20260317182049.33848-1-lucaaamaral@gmail.com/
+This is on my todo list to look at; I've been prioritizing 11.0
+work while we're in freeze.
 
-Marc-André gave Reviewed-by on patch 1/4 in v2. Patches 2-4 awaiting
-review. Series still applies cleanly on current master.
-
-Thanks,
-Lucas
+thanks
+-- PMM
 

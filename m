@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66232E98FDA
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 09:40:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7382E98FDB
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 09:41:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAlrV-0000tR-89; Thu, 09 Apr 2026 05:39:45 -0400
+	id 1wAlsr-0001av-3E; Thu, 09 Apr 2026 05:41:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAlrP-0000sY-3W
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:39:42 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAlsp-0001Xl-6E
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:41:07 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAlrM-0001JJ-4C
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:39:38 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-482f454be5bso6520795e9.0
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 02:39:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAlsm-0001e7-Kq
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 05:41:06 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-488a8ca4aadso7193625e9.3
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 02:41:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775727574; x=1776332374; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775727663; x=1776332463; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=6ELFGL2WrLDDYG6szntjODti3hgx+XgDueR1SctaY3k=;
- b=eC8YAIdB1WCTm0JNeJiXcxRRph+iAEaPh023Durdi3aw5pAMGCd8XJqeusrQEECCGM
- 6fj6/pgDciUqqTPs9vPH++KUCSkWqLQYqpYpUDiX51NMZSdBNnQuSJ5NuU+Ay3LO3OLA
- 6xMMvln/Fc35YTjTWDlaZWV46pTIz4Bvd3D5DqaTqF0TNRsFxW4OIDZkJ5ySviKj00X2
- 2DsCELAeyFQr5Ii0mNanuTVgvBdYMXDPLG0QtEk+P4/1MSgTb6m2dwSI7jDMHyYkf7oZ
- /7HETIlQsvvgXEJ7wrFbSllwdYhxmYvtIx1fZiDSD0Bd6xT3mikSG2JZydB4z4m1B53y
- y11g==
+ bh=b5nYDmYgKSlz8Cdbt2udVqydHBlMo/5r0CRBZdvjimg=;
+ b=k/mSWxj+C1Y+0e3aBmBMj/JWRF67JKHt/xk3hv0fF1US9eD8uuDKMnUXbWbVRb+Pjk
+ lPZRNcRIL7mzOT2FXNfUUN8D0EnSEGb7dHcB5xQ3zU0pk/NI9tNGmwiUF3gpjxkoSxXN
+ 4d0V1h40GQMgNQePp4/1a5eI9rOYzkTbhoSvzp1DFXCLDqF5csIimXCD0ftuYsex7A0W
+ 4zAZyxFifeFqUJ7YMJwkiaz72MEXaHKXCvuoXMN5aFnUn5zVjStT1/b+Fuqu9RUHuInj
+ yN+DZgTx2EdXcC/Ehe1xtqhxnXSyrRL2JrpaID1+I0aUgEY7eWmvQMoiQVYK3PfOBf0n
+ wewg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775727574; x=1776332374;
+ d=1e100.net; s=20251104; t=1775727663; x=1776332463;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=6ELFGL2WrLDDYG6szntjODti3hgx+XgDueR1SctaY3k=;
- b=JczSPF7uABW9Ev+1kfPbit4nAn36yWHYSwcZUB1h/1HFYEzm9UdhnN6zghlFtlKO+T
- 38T7i4exO1Q5np7st+nNpsXq7lYtg//u0+aJwC7eK+7eA7+qg7eKNKSKCfwVp9kgGkwn
- zicCdByZRozt1WkJGPtFyO5LcrywR81AD6CvWglhxN5Ty/ew64wXChTPsimGnwrx4zrF
- f2vtWobedpst9rC33z02rQ/YVeBe4ZcO6lxHSKNNaN5h03wnJNn287kPU4PZ4vWHZCDr
- A3TbesWVDEolFjOSoCTWxQ+EksFYI3zqh6887AmiLhUB3GbIIcm2pcQg2D+0oK9uw/hs
- zMHg==
+ bh=b5nYDmYgKSlz8Cdbt2udVqydHBlMo/5r0CRBZdvjimg=;
+ b=lkQE2EWY6UWZuRsUNgao3Xb+9SOFXvhGPncFjXr5GyaCPUvg+Kxls8jp7HKR++l2Gf
+ l45P0kV9mOVt4qj+keiQBeRgNPpidBrYJcvYMUJesMCJKRPiF7EujF93w/RbZOEfjv5F
+ HHhKdH9Ci8WY2DERBES3XUgfc/2tQjw3py63PiyymXPSpFdwn9LaCIZ6aAyYkEuaYBS9
+ nIBBRpaVhfJFau19HizJL8xjpjand364lB4cQmQm02uO/yoio1UZUsfqMhXchAbqqR8E
+ 7UC8zEHrcyk0EntwPpA5aIqVF8hmqpfCfZXqZcdodQBVSSVJ1SnIyyqhqKf3GfnxL6ow
+ hx2A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8OlQtRw10CGuotAwwNo/9cO6LRaQkniDxtKQK0w3toUoaiO/HXdrWUnNfPS8VOzguU+3lxLhJ8A==@nongnu.org
-X-Gm-Message-State: AOJu0YxLbKYR+xIb19+iHEJ18uU0Nra/IJSI205eYae5UqrMKfEo/I8d
- BYkWCBE12FH9MZOeN0LJ+bIkZw0nbg4cpNG1sAkyU3hugjwlz0IeiMrC3JzgUwj76uY=
-X-Gm-Gg: AeBDiesFqAZH727Y8LiGtGXba3FLZdrO6GA6x41/+r3Hvah/xuyXOqQZtled/UAVG4g
- 8o4qfhSTUKtGS/chOY5niXz5tOBoLXraRQYMtXC0xiSOKJFS/SEppAmjMwwZGkeYrIeBtN0BfGK
- ZiG5jWQaD+q21yR9LZRdgPwYB7nI8bhL7KRnwYiqT/Qxkr635Xv/jvyIkVB3yKQ3H8XmsJ0J+o0
- W2VOwvDIxZKpk1AFDRRMAoFxt521fU1ipFG43+CKUFHeyfQp/zmYBINBLmUHi1ldJM3ldhfDEyr
- JLYVdZpjJSGaFefpNkpk7W5IuIET4bADO6TdyDMaHRE0gi5Wi44XvkcgE60uNcAZHw4WARJXh5P
- 7tQZEs+3jiuzTaWRCSPr2vfhKnV96dn/cphTILRN91A0bVisHlCyJ4tJp+F4dD/WjNOhc8JZxFZ
- ETjJPS7gEAUj1CU3SihL4r+qNk3vnMKH1tNiHOuN68MisgKs4BoE09nRImrd9HFZ2gJrWzBG3ES
- 6NL
-X-Received: by 2002:a05:6000:41c2:b0:43d:184:8a89 with SMTP id
- ffacd0b85a97d-43d595eb258mr3274762f8f.30.1775727573586; 
- Thu, 09 Apr 2026 02:39:33 -0700 (PDT)
+ AJvYcCWGBZ69a+5X3y7MyWmswineSL4B3cf/Lwmp/gSIDjcbBPKg+u4FzWBHyKFEGAkoI0x96riqRdS/sQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzhZ9zlRZyZFbZYQ07sOItXunAA6PcF4JrtqEJNJsTYgbQf62GL
+ 19uouv4dHLKI4O/NAb0iNAuuriO6bOrTA0DD+zja5GAi7f7rQLw1OSUXYoKBFcdRdN0=
+X-Gm-Gg: AeBDietWKV0LReSsL7hYzaz0iqXPVpkBZroerkqeNqPqQzh8rSGO5wBdG/mzyL7fRJK
+ jL6v8k1rgxw1CHFSsYqVUeokNFH5QchI+iccPHgM48Um03erLnFTzzZl6fRaonbC2HYwRw2muXS
+ w5FH0zTfdgTNWtr8yN3E5AGkEuRyg15B4G/j+L8Wi4MHtnpyUgeGPODzAevOLHBAMORK2TxGhGi
+ dwNkvYDYg9iI2gs7DZPLBrYZBae96zqGggc3DtSnlCT+I+2FnHyr9cbvoNd6PIqbh+krj+evZyq
+ zG1PD7opW2tWtZFnvhhe3QWUfNgQYHFjx2CEWQssf1eHjCwhoqzx2ijt98ncZaRiUOrkBG9vADL
+ sg0vW8t/HR/dGWLhij0bsvcaR7vSS/TFEsRo0NgE+eF0SP787RrHPMSkHuX9XiasOIcs012/+jj
+ XniXwPeRv+ABUM4xYbueAF7MXWKy4U03L2YuUFl0vtD3YpEK1EwuL9CmE/c/i+8tBvgA==
+X-Received: by 2002:a05:600c:3492:b0:488:b14f:b8ed with SMTP id
+ 5b1f17b1804b1-488b14fb9e4mr222692255e9.0.1775727662930; 
+ Thu, 09 Apr 2026 02:41:02 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d1e4e1c27sm63442304f8f.26.2026.04.09.02.39.30
+ ffacd0b85a97d-43d1e2c50a7sm65497555f8f.15.2026.04.09.02.41.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Apr 2026 02:39:32 -0700 (PDT)
-Message-ID: <b7273509-0161-4b2e-bf4d-28b648f71209@linaro.org>
-Date: Thu, 9 Apr 2026 11:39:29 +0200
+ Thu, 09 Apr 2026 02:41:02 -0700 (PDT)
+Message-ID: <eee8b4fb-4028-46c6-9bc8-03cdb8a42b9a@linaro.org>
+Date: Thu, 9 Apr 2026 11:41:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] hw/arm: Fix unit addresses of FDT CPU nodes
+Subject: Re: [PATCH 3/5] hw/mips: Use hex unit addresses in FDT CPU nodes
 Content-Language: en-US
 To: Vivian Wang <wangruikang@iscas.ac.cn>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -85,13 +84,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Chao Liu <chao.liu.zevorn@gmail.com>, qemu-riscv@nongnu.org
 References: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
- <20260409-fix-unit-address-v1-1-946840930af2@iscas.ac.cn>
+ <20260409-fix-unit-address-v1-3-946840930af2@iscas.ac.cn>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260409-fix-unit-address-v1-1-946840930af2@iscas.ac.cn>
+In-Reply-To: <20260409-fix-unit-address-v1-3-946840930af2@iscas.ac.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,23 +114,26 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/4/26 08:40, Vivian Wang wrote:
-> The node unit addresses should be based on the reg value (which is in
-> turn based on MPIDR), rather than some arbitrary number [1]. Also, they
-> should have been in hex, not decimal, as per de facto convention [2].
-> Fix them.
+> These unit addresses should have been in hex, not decimal, as per de
+> facto convention [1]. Fix them.
 > 
-
-Maybe worth to add:
-
-     Cc: qemu-stable@nongnu.org
-
-> Link: https://github.com/devicetree-org/devicetree-specification/blob/v0.4/source/chapter2-devicetree-basics.rst#devicetree-structure-and-conventions # [1]
-> Link: https://lore.kernel.org/devicetree-spec/CAL_JsqJFv3+UJ-bjLGk0i7Wc+spsowCrqQZ_s3P4gN8r1W-Q-w@mail.gmail.com/ # [2]
+> Link: https://lore.kernel.org/devicetree-spec/CAL_JsqJFv3+UJ-bjLGk0i7Wc+spsowCrqQZ_s3P4gN8r1W-Q-w@mail.gmail.com/ # [1]
 > Signed-off-by: Vivian Wang <wangruikang@iscas.ac.cn>
 > ---
->   hw/arm/sbsa-ref.c | 4 ++--
->   hw/arm/virt.c     | 7 +++++--
->   2 files changed, 7 insertions(+), 4 deletions(-)
+>   hw/mips/boston.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+> index 4579df23eb..9ef3f6c814 100644
+> --- a/hw/mips/boston.c
+> +++ b/hw/mips/boston.c
+> @@ -542,7 +542,7 @@ static const void *create_fdt(BostonState *s,
+>       qemu_fdt_setprop_cell(fdt, "/cpus", "#address-cells", 0x1);
+>   
+>       for (cpu = 0; cpu < ms->smp.cpus; cpu++) {
+> -        name = g_strdup_printf("/cpus/cpu@%d", cpu);
+> +        name = g_strdup_printf("/cpus/cpu@%x", (unsigned)cpu);
 
+No need to cast to unsigned explicitly, otherwise:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

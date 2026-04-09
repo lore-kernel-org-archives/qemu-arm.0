@@ -4,105 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4105FF364AF
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 19:07:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE95F364C4
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 22:06:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAuid-0007Lo-0x; Thu, 09 Apr 2026 15:07:11 -0400
+	id 1wAxWA-000873-4f; Thu, 09 Apr 2026 18:06:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAuia-0007L4-U6
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 15:07:08 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wAxW9-00086n-Hy
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 18:06:29 -0400
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAuiZ-00033m-4p
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 15:07:08 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-64d5a7926cfso1255231d50.2
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 12:07:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775761626; cv=none;
- d=google.com; s=arc-20240605;
- b=TEQ9QSQVPPgBhDsedW2X5TXv4kElL2tJYQq0qX/Paw5FuafkHkzrXXYEXgsZk2tZ8C
- usZmVfO5zg0q2wvPmvbuJpuR73dbEon2J7Py6z02CpPTD77Iso+Rm8/4SLHejYb6REcO
- lK2NAAlZDEN4+7s0l3l6zfnG8CMP6+QpapCTB5TwLx6ohcC887tOrRDSCjrR1QMf2Gv/
- QI8kiA3UC1cmW7jCtLjP7R+h5pz8/WwW0jMmcFJ+pnIZOrZrkSffZ9DjXf9TnbbDJBDL
- yb3K1YCUQe4glMxAGQiKzuYCZK5LI2lFjrLbISSu2XofEwxdMcRFCZ+sq4Ky6ggLH41r
- GG2g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
- fh=hOWnywY/Ah0bwUaL64slUFKtPHQ3FQqX1Yop4XcCwPY=;
- b=i+RYSmnrA7cT8hlykCRf4QDxVvLIhcZhn9LCigiUIAmS671soUY6VNaIcXBPImlIDJ
- FD1jjkqbH7Thag6KqqWDaSg7laqJc0HpG/66qmFKQPVTqK+7JPDZPLbNVqHzfJcLYi2Y
- ybu+GPMOR2zl62wqccGrjIVPRb65PYrEu0IpDel3GKZx9Ws28F5yc1mEcchgkHGW0L82
- oICwZzBRNjjsdMKaN75iCkzICQdbKGM8o5oy+ekyyt8nIO/DpAPj9driWS1UKfAK/qJh
- 3ZvBxaca3VoFtcIPE52BXStm/KRkIkchJBZh55eNSJ4L/qtYQo4IwGnYyoLJDkFvjAR/
- Rwhw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wAxW6-0000aV-PY
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 18:06:29 -0400
+Received: by mail-dy1-x132a.google.com with SMTP id
+ 5a478bee46e88-2b4520f6b32so1432572eec.0
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 15:06:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775761626; x=1776366426; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
- b=Xo0hcWTkS5OAZSMaZcsGOc93LOPCRdm2k3pmw158rmxsiaELhbagpIyrE15Hg6YVaD
- nG75owccc/RfiJ1ldTfFW3p0Oazs3GyZmBRKXR7QyTC/yx3gOcEJgBaC4emzKpN3tpm5
- yeRObIU6ENgO5xM8443aOSjDC9cuD1P2FnS1mjqi93kWrXqI9i2QGgLp42cPFza8l4Y7
- RdTdJvh5LjF/kV/gs0bU4wgKmceiR8XCRr0FwHIUCCTav6bDlgFapShY7s9toUWue3eL
- AmYlOm4GjpT+dI2jAvCu+VKagoS8+Ggmaaf0XUC8VZb6UokVaGZkECOe8zfjgVeJH77I
- x/fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775761626; x=1776366426;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1775772385; x=1776377185; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VCDUOnUjYsgKHbUr94QqzMix7XhtwcU4xW+CD4gMNVg=;
- b=bbB+HSQNTPIM9JaKNbvBDkcywvSYGkfu74rGgrQqqU1Dh5GO7XFkYTeCSxd1HHp1A7
- NlMkua/PUfi62p1N1PfgnX98zTp/bJOSUCfEJIDV+GOAOnEJdhakS8HEq9K9h0jvq6Cr
- KlH3s670hp4SwBFrFUC5G+DGR49Anj3wc241C9uLx4vjtjwYVq3zlm67/cABxpdeMU8D
- EutR33cpCF9LnHcXQ1BJ0wJ88wUZ09MxqGGHoY6LYxCw15naCEFgdSLbBxqooxvgGPoM
- eqekIY01vftd6kZL1DI/Ha/hoHi7OLCJFwVC8l5wYD+S7j2DXqgyRSWRl8qgXAIoY4Dv
- 0i4Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU0u8qzrUcC6Vh53u1LQoRZTfrwwYVt9OYV9W02X4ANIBawkuUC/inLsR18fV4Nu7WdfWmYY2fo3w==@nongnu.org
-X-Gm-Message-State: AOJu0YwVl89ANBAZ0dW9OqgkxBxFbbf8wWMD0FZN//1A4HE0YZz5HrNb
- IpvYR+KvUQ2V6MhYCACHSu0Ot/u6ddIfuNyUgmtNlQ3g2yssEkD3K56ja0BSjCIS9Pi/LPW0/1s
- c2E2mOHVIP9hDn8lbo3DJSF0WvyL+38i2e8oIuwvNgg==
-X-Gm-Gg: AeBDiesnnOfBT5040lKsTXYCIe+W4k5k3mXQA07YbbgjBVz3U9Jehoy1KZNsj3GrIfm
- K1b/skcTWXzvAnwsisCuhxRcOk/CX+DFV4/zigOqcwPPNj+nkb2hTKVHtkzeur32+9qJZ3meWzL
- VoXjW4ne0yBEvJPUxbChdLlMhvm2d8PmErQGao4nh+LYdwDqILiK8wrGN2rG3tuxGX14eBz/Ygv
- SkQM3sT0uAuwsQFznjgTm7spoXKHG2bC8/j5kdFJE+IKswidlGD7lT+TuNUQhXaTcHwlweL8cNG
- k9ndpD8s793M1+lnmYp0uzzw58ux7u76++579QzES5o6/BQ4AtNUnZTLO/XpS05Nbl4=
-X-Received: by 2002:a05:690e:d5b:b0:650:7511:789 with SMTP id
- 956f58d0204a3-65198b56614mr187656d50.32.1775761625740; Thu, 09 Apr 2026
- 12:07:05 -0700 (PDT)
+ bh=HzcLg/55mgZkhCbHFQ8GjJiM5YvvJzpxOoFNIcHsiRY=;
+ b=GGMXY4xg90+6znECYeIkRiRlj1snzNmG3RZE6dDLpUZ+W7uoZEkU9/mdTek/wXUFp+
+ u1Vgew82ACnfuiCVoWRPBtLR7ngjDFaTtwrk9jOC7R+QOI8Hr4xTFIivx4V/22BjFtL5
+ zk5jtsgl4Sw2gEHtRRViD+20nHmBTds/UDJOJiSIbeIv/QJ07dLlhaD9GxLKnZCfwn1k
+ y6yh6i25r4X5ppjIUaNnRqFgrhlq41LqjtqPOhHLYLS2LwPS3RU7tXaerg7puZWTb0wG
+ b9xKU0FytP3wFrONT2GiKr35KkfF1FEW408wGf1OrhbGHih/60yv2p+BISOaisDfWJmX
+ 5Inw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775772385; x=1776377185;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=HzcLg/55mgZkhCbHFQ8GjJiM5YvvJzpxOoFNIcHsiRY=;
+ b=Ybb0mqM3kj/OHTRk4dmHsnFeo/FWfSy2oMxuDZcX+3csCEZbg+ZHcFQ6dDGqCYs00t
+ IfJae6c1jTV+lj/9u8yHCr/SXscRp1EgAM6FQKi3cqU4vXtfKV8r9kanPseCSw2wNvGV
+ Umb8uBZjgRNc8AcIjIsXerqz8r97zav7zVEzKc+T09o0rGHtb0dzxen2zCRBjGmWK64U
+ KSENs0h4VbElzsTnPTLV/z4RtT2qtmbUvGnfj8HDgLf0yOxpuY004z0CKH/kX0bhBpi4
+ 35HvwIh7lluowJx35J25zRYzGFEvOBMeJnbeO+uTEMf2IgfQFaDTLwai4j1QYhnWkui0
+ jqSA==
+X-Gm-Message-State: AOJu0YyuflSL1uxUQLaFV9DiXvS5e8llbsn3rDyMNqC/lcw0sn051y0E
+ 1ne70kXrCA+yn69fgZcgaeWSCcsMUO8WNEpLp7/czmc7v3WAZdr3bslf
+X-Gm-Gg: AeBDieuLT9s3tkMIVPIWMzwV7PXjY9GBbtbL1pvKxDk1wRgFImXrU3qPI7KPX0of8bZ
+ oOZ31uUJZ1Q9mZZiUphTczx0eR12W1VkZZcozBvxC6b6A6tP8ykUwNL1WBYGpXkV7iFNbWcP6JZ
+ ny04rlfer5u5o2m74ntrAUI9ffqRvzxCIq7gtMJLRiN89YHO09AtQ0s3pLyVkxGfpLOVPF5zLj6
+ w73c04pxWjSJX9w/8rKRotTlI8wGN6EHZF4F1iJR1NAszR+omuDdTOBDmDv2201RAtNHc3+lfKc
+ qchO/L7qOewbcUcXEYDnNKp3o/znJlDszGzQAgqU5qQbAEMtgnJLjYSTeoDoxapq0l/VG7xfC4D
+ HiJiW4mb1alf+tnMZyKcpPJpJ20RCkPHwwPBBloNyRVMmcpyyFvh88wYS0OZdw623O//Ly2Zd0N
+ 32LtEN1v2iK2B1cq1ApZ/YkDob4McRlJHNdJiI2cCxMUWsMd+yb20vWo1FRfSreA==
+X-Received: by 2002:a05:693c:310a:b0:2ca:2f21:64da with SMTP id
+ 5a478bee46e88-2d5841c5483mr537755eec.0.1775772385302; 
+ Thu, 09 Apr 2026 15:06:25 -0700 (PDT)
+Received: from localhost.localdomain ([2804:7f4:c030:bb40:195d:78fd:ecba:d45])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-2d561bde68bsm1534567eec.17.2026.04.09.15.06.22
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 09 Apr 2026 15:06:24 -0700 (PDT)
+From: Lucas Amaral <lucaaamaral@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ mohamed@unpredictable.fr, alex.bennee@linaro.org,
+ richard.henderson@linaro.org, Lucas Amaral <lucaaamaral@gmail.com>
+Subject: [PATCH v6 1/6] target/arm/emulate: add ISV=0 emulation library with
+ load/store immediate
+Date: Thu,  9 Apr 2026 19:06:09 -0300
+Message-ID: <20260409220614.65558-2-lucaaamaral@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260409220614.65558-1-lucaaamaral@gmail.com>
+References: <20260409220614.65558-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
-References: <20260317175744.32469-1-lucaaamaral@gmail.com>
- <20260409175234.40792-1-lucaaamaral@gmail.com>
-In-Reply-To: <20260409175234.40792-1-lucaaamaral@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Apr 2026 20:06:54 +0100
-X-Gm-Features: AQROBzATEW7_n-8rIJ_dlFdmJLtfB8kWhpFaZ2Te9cl9Ji6HKCB-46EM42_U7w0
-Message-ID: <CAFEAcA8rF3nuUTd7ARkcGpr-sA1DYJEJc-2E_URQt6nr8u6cGQ@mail.gmail.com>
-Subject: Re: [PATCH v4 0/3] hvf: map granule abstraction, configurable IPA,
- and MAP_FIXED alignment fix
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, agraf@csgraf.de, 
- mohamed@unpredictable.fr, alex.bennee@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132a;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,18 +103,547 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Apr 2026 at 18:52, Lucas Amaral <lucaaamaral@gmail.com> wrote:
->
-> Ping.
->
-> https://patchew.org/QEMU/20260317175744.32469-1-lucaaamaral@gmail.com/
->
-> Mohamed gave Reviewed-by on v2 (nits addressed in v3/v4). Patches still
-> apply cleanly on current master.
+Add a shared emulation library for AArch64 load/store instructions that
+cause ISV=0 data aborts under hardware virtualization (HVF, WHPX).
 
-This is on my todo list to look at; I've been prioritizing 11.0
-work while we're in freeze.
+When the Instruction Syndrome Valid bit is clear, the hypervisor cannot
+determine the faulting instruction's target register or access size from
+the syndrome alone.  This library fetches and decodes the instruction
+using a decodetree-generated decoder, then emulates it by accessing the
+vCPU's register file (CPUARMState) and guest memory via get_phys_addr()
+for MMU translation and address_space_read/write() for physical access.
 
-thanks
--- PMM
+This patch establishes the framework and adds load/store single with
+immediate addressing — the most common ISV=0 trigger.  Subsequent
+patches add register-offset, pair, exclusive, and atomic instructions.
+
+Instruction coverage:
+  - STR/LDR (GPR): unscaled, post-indexed, unprivileged, pre-indexed,
+    unsigned offset — all sizes (8/16/32/64-bit), sign/zero extension
+  - STR/LDR (SIMD/FP): same addressing modes, 8-128 bit elements
+  - PRFM: prefetch treated as NOP
+  - DC cache maintenance (SYS CRn=C7): NOP on MMIO
+
+This library uses its own a64-ldst.decode rather than sharing
+target/arm/tcg/a64.decode.  TCG's trans_* functions are a compiler:
+they emit IR ops into a translation block for later execution.  This
+library's trans_* functions are an interpreter: they execute directly
+against the vCPU register file and memory.  The decodetree-generated
+dispatcher calls trans_* by name, so both cannot coexist in the same
+translation unit.  Decode patterns are kept consistent with TCG's
+where possible.
+
+Decodetree differences from TCG:
+  - &ldst_imm adds a 'u' flag to distinguish 9-bit signed vs 12-bit
+    unsigned immediate forms.  TCG uses %uimm_scaled to pre-scale
+    the unsigned immediate at decode time; here imm:12 is extracted
+    raw and the handler scales it.
+
+Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+---
+ target/arm/emulate/a64-ldst.decode | 129 +++++++++++++
+ target/arm/emulate/arm_emulate.c   | 288 +++++++++++++++++++++++++++++
+ target/arm/emulate/arm_emulate.h   |  30 +++
+ target/arm/emulate/meson.build     |   8 +
+ target/arm/meson.build             |   1 +
+ 5 files changed, 456 insertions(+)
+ create mode 100644 target/arm/emulate/a64-ldst.decode
+ create mode 100644 target/arm/emulate/arm_emulate.c
+ create mode 100644 target/arm/emulate/arm_emulate.h
+ create mode 100644 target/arm/emulate/meson.build
+
+diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
+new file mode 100644
+index 00000000..c887dcba
+--- /dev/null
++++ b/target/arm/emulate/a64-ldst.decode
+@@ -0,0 +1,129 @@
++# AArch64 load/store instruction patterns for ISV=0 emulation
++#
++# Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++### Argument sets
++
++# Load/store immediate (unscaled, pre/post-index, unprivileged, unsigned offset)
++# 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
++&ldst_imm       rt rn imm sz sign w p unpriv ext u
++
++### Format templates
++
++# Load/store immediate (9-bit signed)
++@ldst_imm       .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=0
++@ldst_imm_pre   .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=1
++@ldst_imm_post  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=1 w=1
++@ldst_imm_user  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=1 p=0 w=0
++
++# Load/store unsigned offset (12-bit, handler scales by << sz)
++@ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
++
++### Load/store register — unscaled immediate (LDUR/STUR)
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
++
++### Load/store register — post-indexed
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
++
++### Load/store register — unprivileged
++
++# GPR only (no SIMD/FP unprivileged forms)
++STR_i           sz:2 111 0 00 00 0 ......... 10 ..... .....    @ldst_imm_user sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=1
++
++### Load/store register — pre-indexed
++
++# GPR
++STR_i           sz:2 111 0 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++LDR_i           00 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=0
++LDR_i           01 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=1
++LDR_i           10 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=2
++LDR_i           11 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=3
++LDR_i           00 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=0
++LDR_i           01 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=1
++LDR_i           10 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=2
++LDR_i           00 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=0
++LDR_i           01 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=1
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++STR_v_i         00 111 1 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 00 01 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
++LDR_v_i         00 111 1 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
++
++### PRFM — unscaled immediate: prefetch is a NOP
++
++NOP             11 111 0 00 10 0 --------- 00 ----- -----
++
++### Load/store register — unsigned offset
++
++# GPR
++STR_i           sz:2 111 0 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
++LDR_i           00 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=0
++LDR_i           01 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=1
++LDR_i           10 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=2
++LDR_i           11 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=3
++LDR_i           00 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=0
++LDR_i           01 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=1
++LDR_i           10 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=2
++LDR_i           00 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=0
++LDR_i           01 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=1
++
++# PRFM — unsigned offset
++NOP             11 111 0 01 10 ------------ ----- -----
++
++# SIMD/FP
++STR_v_i         sz:2 111 1 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
++STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
++LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
++LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
++
++### System instructions — DC cache maintenance
++
++# SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
++# On MMIO regions, cache maintenance is a harmless no-op.
++NOP             1101 0101 0000 1 --- 0111 ---- --- -----
+diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
+new file mode 100644
+index 00000000..bedbdb3e
+--- /dev/null
++++ b/target/arm/emulate/arm_emulate.c
+@@ -0,0 +1,288 @@
++/*
++ * AArch64 instruction emulation for ISV=0 data aborts
++ *
++ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "arm_emulate.h"
++#include "target/arm/cpu.h"
++#include "target/arm/internals.h"
++#include "exec/cpu-common.h"
++#include "system/memory.h"
++#include "exec/target_page.h"
++#include "qemu/bitops.h"
++#include "qemu/bswap.h"
++
++/* Named "DisasContext" as required by the decodetree code generator */
++typedef struct {
++    CPUState *cpu;
++    CPUARMState *env;
++    ArmEmulResult result;
++    bool be_data;
++} DisasContext;
++
++#include "decode-a64-ldst.c.inc"
++
++/* GPR data access (Rt, Rs, Rt2) -- register 31 = XZR */
++
++static uint64_t gpr_read(DisasContext *ctx, int reg)
++{
++    if (reg == 31) {
++        return 0;  /* XZR */
++    }
++    return ctx->env->xregs[reg];
++}
++
++static void gpr_write(DisasContext *ctx, int reg, uint64_t val)
++{
++    if (reg == 31) {
++        return;  /* XZR -- discard */
++    }
++    ctx->env->xregs[reg] = val;
++    ctx->cpu->vcpu_dirty = true;
++}
++
++/* Base register access (Rn) -- register 31 = SP */
++
++static uint64_t base_read(DisasContext *ctx, int rn)
++{
++    return ctx->env->xregs[rn];
++}
++
++static void base_write(DisasContext *ctx, int rn, uint64_t val)
++{
++    ctx->env->xregs[rn] = val;
++    ctx->cpu->vcpu_dirty = true;
++}
++
++/* SIMD/FP register access */
++
++static void fpreg_read(DisasContext *ctx, int reg, void *buf, int size)
++{
++    memcpy(buf, &ctx->env->vfp.zregs[reg], size);
++}
++
++static void fpreg_write(DisasContext *ctx, int reg, const void *buf, int size)
++{
++    memset(&ctx->env->vfp.zregs[reg], 0, sizeof(ctx->env->vfp.zregs[reg]));
++    memcpy(&ctx->env->vfp.zregs[reg], buf, size);
++    ctx->cpu->vcpu_dirty = true;
++}
++
++/*
++ * Memory access via guest MMU translation.
++ *
++ * Translates the virtual address through the guest page tables using
++ * get_phys_addr(), then performs the access on the resulting physical
++ * address via address_space_read/write().  Each page-sized chunk is
++ * translated independently, so accesses that span a page boundary
++ * are handled correctly even when the pages map to different physical
++ * addresses.
++ */
++
++static int mem_access(DisasContext *ctx, uint64_t va, void *buf, int size,
++                      MMUAccessType access_type)
++{
++    ARMMMUIdx mmu_idx = arm_mmu_idx(ctx->env);
++
++    while (size > 0) {
++        int chunk = MIN(size, TARGET_PAGE_SIZE - (va & ~TARGET_PAGE_MASK));
++        GetPhysAddrResult res = {};
++        ARMMMUFaultInfo fi = {};
++
++        if (get_phys_addr(ctx->env, va, access_type, 0, mmu_idx,
++                          &res, &fi)) {
++            ctx->result = ARM_EMUL_ERR_MEM;
++            return -1;
++        }
++
++        AddressSpace *as = arm_addressspace(ctx->cpu, res.f.attrs);
++        MemTxResult txr;
++
++        if (access_type == MMU_DATA_STORE) {
++            txr = address_space_write(as, res.f.phys_addr, res.f.attrs,
++                                      buf, chunk);
++        } else {
++            txr = address_space_read(as, res.f.phys_addr, res.f.attrs,
++                                     buf, chunk);
++        }
++
++        if (txr != MEMTX_OK) {
++            ctx->result = ARM_EMUL_ERR_MEM;
++            return -1;
++        }
++
++        va += chunk;
++        buf += chunk;
++        size -= chunk;
++    }
++    return 0;
++}
++
++static int mem_read(DisasContext *ctx, uint64_t va, void *buf, int size)
++{
++    return mem_access(ctx, va, buf, size, MMU_DATA_LOAD);
++}
++
++static int mem_write(DisasContext *ctx, uint64_t va, const void *buf, int size)
++{
++    return mem_access(ctx, va, (void *)buf, size, MMU_DATA_STORE);
++}
++
++/*
++ * Endian-aware GPR <-> memory buffer helpers.
++ *
++ * mem_read/mem_write transfer raw bytes between guest VA and a host buffer.
++ * mem_ld/mem_st convert between a uint64_t register value and the guest
++ * byte order in a memory buffer.
++ */
++
++static uint64_t mem_ld(DisasContext *ctx, const void *buf, int size)
++{
++    return ctx->be_data ? ldn_be_p(buf, size) : ldn_le_p(buf, size);
++}
++
++static void mem_st(DisasContext *ctx, void *buf, int size, uint64_t val)
++{
++    if (ctx->be_data) {
++        stn_be_p(buf, size, val);
++    } else {
++        stn_le_p(buf, size, val);
++    }
++}
++
++/* Apply sign/zero extension */
++static uint64_t load_extend(uint64_t val, int sz, int sign, int ext)
++{
++    int data_bits = 8 << sz;
++
++    if (sign) {
++        val = sextract64(val, 0, data_bits);
++        if (ext) {
++            /* Sign-extend to 32 bits (W register) */
++            val &= 0xFFFFFFFF;
++        }
++    } else if (ext) {
++        /* Zero-extend to 32 bits (W register) */
++        val &= 0xFFFFFFFF;
++    }
++    return val;
++}
++
++/* Load/store single -- immediate (GPR) (DDI 0487 C3.3.8 -- C3.3.13) */
++
++static bool trans_STR_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++
++    uint8_t buf[16];
++    uint64_t val = gpr_read(ctx, a->rt);
++    mem_st(ctx, buf, esize, val);
++    if (mem_write(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDR_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++
++    if (mem_read(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    uint64_t val = mem_ld(ctx, buf, esize);
++    val = load_extend(val, a->sz, a->sign, a->ext);
++    gpr_write(ctx, a->rt, val);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/*
++ * Load/store single -- immediate (SIMD/FP)
++ * STR_v_i / LDR_v_i (DDI 0487 C3.3.10)
++ */
++
++static bool trans_STR_v_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++
++    fpreg_read(ctx, a->rt, buf, esize);
++    if (mem_write(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
++{
++    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
++    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
++                          : (int64_t)a->imm;
++    uint64_t base = base_read(ctx, a->rn);
++    uint64_t va = a->p ? base : base + offset;
++    uint8_t buf[16];
++
++    if (mem_read(ctx, va, buf, esize) != 0) {
++        return true;
++    }
++
++    fpreg_write(ctx, a->rt, buf, esize);
++
++    if (a->w) {
++        base_write(ctx, a->rn, base + offset);
++    }
++    return true;
++}
++
++/* PRFM, DC cache maintenance -- treated as NOP */
++static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
++{
++    return true;
++}
++
++/* Entry point */
++
++ArmEmulResult arm_emul_insn(CPUArchState *env, uint32_t insn)
++{
++    DisasContext ctx = {
++        .cpu = env_cpu(env),
++        .env = env,
++        .result = ARM_EMUL_OK,
++        .be_data = arm_cpu_data_is_big_endian(env),
++    };
++
++    if (!decode_a64_ldst(&ctx, insn)) {
++        return ARM_EMUL_UNHANDLED;
++    }
++
++    return ctx.result;
++}
+diff --git a/target/arm/emulate/arm_emulate.h b/target/arm/emulate/arm_emulate.h
+new file mode 100644
+index 00000000..7fe29839
+--- /dev/null
++++ b/target/arm/emulate/arm_emulate.h
+@@ -0,0 +1,30 @@
++/*
++ * AArch64 instruction emulation library
++ *
++ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef ARM_EMULATE_H
++#define ARM_EMULATE_H
++
++#include "qemu/osdep.h"
++
++/**
++ * ArmEmulResult - return status from arm_emul_insn()
++ */
++typedef enum {
++    ARM_EMUL_OK,         /* Instruction emulated successfully */
++    ARM_EMUL_UNHANDLED,  /* Instruction not recognized by decoder */
++    ARM_EMUL_ERR_MEM,    /* Memory access failed */
++} ArmEmulResult;
++
++/**
++ * arm_emul_insn - decode and emulate one AArch64 instruction
++ *
++ * Caller must synchronize CPU state and fetch @insn before calling.
++ */
++ArmEmulResult arm_emul_insn(CPUArchState *env, uint32_t insn);
++
++#endif /* ARM_EMULATE_H */
+diff --git a/target/arm/emulate/meson.build b/target/arm/emulate/meson.build
+new file mode 100644
+index 00000000..e5455bd2
+--- /dev/null
++++ b/target/arm/emulate/meson.build
+@@ -0,0 +1,8 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++gen_a64_ldst = decodetree.process('a64-ldst.decode',
++    extra_args: ['--static-decode=decode_a64_ldst'])
++
++arm_common_system_ss.add(when: 'TARGET_AARCH64', if_true: [
++    gen_a64_ldst, files('arm_emulate.c')
++])
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 6e0e504a..a4b2291b 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -57,6 +57,7 @@ arm_common_system_ss.add(files(
+   'vfp_fpscr.c',
+ ))
+ 
++subdir('emulate')
+ subdir('hvf')
+ subdir('whpx')
+ 
+-- 
+2.52.0
+
 

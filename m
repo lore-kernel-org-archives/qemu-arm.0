@@ -4,111 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD92AEA3C55
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 12:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE7FEA3C5D
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 13:01:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAohA-00011V-2l; Thu, 09 Apr 2026 08:41:17 -0400
+	id 1wAp0i-0006UA-JQ; Thu, 09 Apr 2026 09:01:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAoh1-00010O-Mq
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 08:41:09 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wAogy-0001kt-Sj
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 08:41:06 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-65006c99d38so943945d50.3
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 05:41:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775738461; cv=none;
- d=google.com; s=arc-20240605;
- b=f31jOKHDCsa9Cje9GmGFhZuRF6QBcpcC7fP+R0UiFKJzwGOIssZ3cSPunVDwSL7clT
- nB5TtyH3FbgaFKcLSJYLxk6pMR0hIk+gB2hZavqMdR8LUsh+PfR3MhQmc1D75V2bT/Nu
- 0hL1Dsdj3/Q/3REN32UZei1VaBZsME1wfwxwMJrtyFs5zHsRy+qMPGSzetkFlh2tttSL
- HaMfFAWkHA4E2nbt3pUJQApkvXo7+8e+C3O18EZpuWkEr52ouU1TIUNgcCTNwd7bUNBF
- pjXV1+NRDFJLiJD/Y58Mhn15FLRqqwviD6OOsOR5VPZcIfgzG642W89HrVbVmczVX6Uh
- 7L5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=eUptSgV8Ish7bZ12PrthyWlod2roFlHWVdsxpwFUN9w=;
- fh=oGNKXGmUwRlA9y7zPXEWUVMXRCk49z4Qsz3LwiTiKR0=;
- b=DoI8zjRPGak2eyZ8BB8A2fSXc91Ai4vWdIv6nTxUj8CN08HS5079AZgKM8ewU8IzUE
- 7cXE9rYxxPlvs1CvoUy8KGrEfru82bb6pzc48lDX1SApZppUcGQCqexG7qu1LoxhavJh
- 3x/emxm8OHgXtslUoWNs/y2QExRh9dOAtzjSJwA2Hf45AZrOp7/FA8Ju7Xh5CAbFComD
- jsZgOT3Q8Y1dBvnRMf49vdH1UdMWR9MjNv03vNL6N6xqboMV3s3yjy+3uuZuLmpNot2q
- ynS59TACrjGAsXwYFF7nFwG8I/xZ05BxgJy4byHHmtLNQgTEkUTQbGH1DBzUvGU1wJm8
- LDRA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775738461; x=1776343261; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=eUptSgV8Ish7bZ12PrthyWlod2roFlHWVdsxpwFUN9w=;
- b=iN7rHHu4mthp6JktZh9JXo22IP0vsgGOkM76+IruMbhje++/ZClEzRVO52afM6av72
- fZQB9azc9zgDy+njs4/qnGy6xCSigsZAMYstNZia7sRQEaF3jJlnLbruC6KIfwRgspqq
- Mvz9pMJDlfOV9MCIaDHQam5sxWQfP2fnzKKxd48YhuAKMHA/FmQdeM6B6BeB2n9F9IOO
- MIzVAZBt7o2ubq+mmA0KW8Mxl2Zl7KZDdHymfhuECU8KaFXt6uEAIWVIQyQfrG0tfuCK
- RK0LMILUHkVvojCu5sd9ui1jMAcq3K+gxLX6PZ7xTFlDRtxSLTaJ8nJtFQiK7VwhWJIR
- qBYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775738461; x=1776343261;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eUptSgV8Ish7bZ12PrthyWlod2roFlHWVdsxpwFUN9w=;
- b=j70q/R9oj60j+X7UbOJBXDDLIlPx4kLl55i/6DoRnsdJXdaf8EE1ShyO0s5aB4WfGe
- lzXOTjzpo/ocLctBpCbtj9Ih9OVAoNU3i+HWRPHbGGckt5eEGn2L0cq0sgt5aUZ99ygS
- 2Mih4ww+GOqKP8u7AbgGe9nyHDdlH1AtOyGvI1rV9hBo9bFQbk8OIQT053gCll05S3Qk
- cIcCb0QNCP76Azz+lcS19EAhrlNawxPncOqbuDlFDdEETbbmVPIIS0etWx9w5/vVBrg9
- v71+Goo+jH+gxlds/OnV9jkCqpH7AsyrlFzw062P9Gt7aMDuHSzlRx0Z9Xoo+FVarb5A
- wScQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUU3tgNiXpdcfbB+r5Ge3CRtWNBc6FeaSHVvhsCsQHjO6sfDjYTbTf9WHP2s1iPHG3dfqGUc0HZ/w==@nongnu.org
-X-Gm-Message-State: AOJu0YySO2tYLXQsdX7x5mZjU7a/PRGoQkyIba09XKIpM70sVaF8zk9F
- VC2A/aNDjI7eGk/g7OKeWpuw7uo+TrdM0c40KF4cyk/aFBNsO1AeKd5oLG11mZX6ylLY/PMfD7a
- YrjPTQgvePOAzf+kIECR+aIqg1zH9aO9PUGfeudCgWA==
-X-Gm-Gg: AeBDiesZRBsGeeydpD7aeh3St+EfusHlGFl3+8zuVJ8pQuhpi7dVmUTGee/VPwmHaco
- l4nVTCULkaZCEMVtAaniFZe3+HjAQmb8A1W8r5w6wRdZQpnDDsVKzya+lrIeEV5gKToJYyXOMci
- Kli2uvSN4c1nyH3zQya1f2ryjt5Pi8N9u5e3lQxUr12HIAAKW9xXV+t/GLBdCQCHFb8bh2PMmFn
- /qCqaPhNqfb205vPCUeyr9cp/L7jVp0BFwTTxAC9Vvlsnske6PSmVgWENG4WnGGIV37UnouXlF4
- 12ALL3RrKRMJM1y9mZ8DnWpEnep0a95mIVdbMaJ001oHjMAbWHGUwV6YgxkbVmhFc68=
-X-Received: by 2002:a05:690e:1549:20b0:650:5316:1739 with SMTP id
- 956f58d0204a3-6518775226bmr2364724d50.35.1775738461245; Thu, 09 Apr 2026
- 05:41:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wangruikang@iscas.ac.cn>)
+ id 1wAmOF-00069K-Bo; Thu, 09 Apr 2026 06:13:35 -0400
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <wangruikang@iscas.ac.cn>)
+ id 1wAmOA-0003uG-Jc; Thu, 09 Apr 2026 06:13:33 -0400
+Received: from [10.213.22.34] (unknown [36.110.52.2])
+ by APP-01 (Coremail) with SMTP id qwCowADXfmq6e9dpZJm6DA--.7959S2;
+ Thu, 09 Apr 2026 18:13:15 +0800 (CST)
+Message-ID: <4a1718a3-aac0-47ce-a18a-8c3be6278d2c@iscas.ac.cn>
+Date: Thu, 9 Apr 2026 18:13:14 +0800
 MIME-Version: 1.0
-References: <20260311160609.358-1-alireza.sanaee@huawei.com>
- <23634eb9-95a9-494e-92c8-60615213f349@linaro.org>
-In-Reply-To: <23634eb9-95a9-494e-92c8-60615213f349@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Apr 2026 13:40:49 +0100
-X-Gm-Features: AQROBzDw2fcZJzWhmFHm8ddxbwuounVHkfkZaLpQRnkEXjCkCrsjmk2vma_-iP4
-Message-ID: <CAFEAcA_T7_xuMmw4h11dcsKBzVSFT=wEWMXipE4+PObtMJqbAQ@mail.gmail.com>
-Subject: Re: [PATCH v19 0/8] Specifying cache topology on ARM
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
- anisinha@redhat.com, 
- armbru@redhat.com, berrange@redhat.com, dapeng1.mi@linux.intel.com, 
- eric.auger@redhat.com, farman@linux.ibm.com, imammedo@redhat.com, 
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com, linuxarm@huawei.com, 
- maobibo@loongson.cn, mtosatti@redhat.com, philmd@linaro.org, 
- qemu-arm@nongnu.org, richard.henderson@linaro.org, shannon.zhaosl@gmail.com, 
- zhao1.liu@intel.com, mst@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] hw/arm: Fix unit addresses of FDT CPU nodes
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ qemu-arm@nongnu.org, Song Gao <gaosong@loongson.cn>,
+ Bibo Mao <maobibo@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Paul Burton <paulburton@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>, qemu-riscv@nongnu.org
+References: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
+ <20260409-fix-unit-address-v1-1-946840930af2@iscas.ac.cn>
+ <b7273509-0161-4b2e-bf4d-28b648f71209@linaro.org>
+ <18a3a770-9d57-47d1-9edf-ac55edccb8f9@iscas.ac.cn>
+ <CAFEAcA-mTY3VksBcANok4+49UvVDv_w9X6ubKooQZ-kvWZ7r1Q@mail.gmail.com>
+Content-Language: en-US
+From: Vivian Wang <wangruikang@iscas.ac.cn>
+In-Reply-To: <CAFEAcA-mTY3VksBcANok4+49UvVDv_w9X6ubKooQZ-kvWZ7r1Q@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-CM-TRANSID: qwCowADXfmq6e9dpZJm6DA--.7959S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Cw47tw4rJrW5ZFWrWF48Zwb_yoW8tr48pa
+ 93KF1IkFs2yr1xW34vva17Zw1Ikwn3Gr4UX3s0q342y398WF1fKF4Igryaga48Gw48GFWj
+ van0qas5JF1Fv37anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUU9Eb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26ryj6rWUM7CY07I2
+ 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+ A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xII
+ jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4
+ A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IE
+ w4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ec7CjxVAajcxG14v26r1j6r
+ 4UMcIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41l
+ FIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_GFv_Wryl42xK82IYc2Ij64vIr4
+ 1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK
+ 67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI
+ 8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAv
+ wI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14
+ v26r4UJVWxJrUvcSsGvfC2KfnxnUUI43ZEXa7IUYmksPUUUUU==
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: pzdqw2pxlnt03j6l2u1dvotugofq/
+Received-SPF: pass client-ip=159.226.251.21;
+ envelope-from=wangruikang@iscas.ac.cn; helo=cstnet.cn
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 09 Apr 2026 09:01:22 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,27 +91,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 31 Mar 2026 at 03:47, Gustavo Romero <gustavo.romero@linaro.org> wrote:
+On 4/9/26 18:01, Peter Maydell wrote:
+> On Thu, 9 Apr 2026 at 10:46, Vivian Wang <wangruikang@iscas.ac.cn> wrot=
+e:
+>> On 4/9/26 17:39, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> On 9/4/26 08:40, Vivian Wang wrote:
+>>>> The node unit addresses should be based on the reg value (which is i=
+n
+>>>> turn based on MPIDR), rather than some arbitrary number [1]. Also, t=
+hey
+>>>> should have been in hex, not decimal, as per de facto convention [2]=
+=2E
+>>>> Fix them.
+>>>>
+>>> Maybe worth to add:
+>>>
+>>>     Cc: qemu-stable@nongnu.org
+>>>
+>> As Peter Maydell mentioned in other replies in this thread, most
+>> software don't really care about these node names, so I don't think th=
+is
+>> needs backporting to stable.
+>>
+>> I'm unsure if this is still worth fixing then. Peter expressed that it=
+'s
+>> not something worth fixing.
+> For the virt board, I think it depends whether the spec really says
+> that the node name must have the MPIDR in it and that consumers
+> can rely on that as a source of the MPIDR. I hope it does not.
+> If it's just a node name, then I don't see why it matters what
+> node name we generate as long as we're not generating the same
+> nodename twice. We're not trying to generate DT files that are
+> intended for submission upstream.
 >
-> Hi,
+> There are other places where our nodenames don't match the
+> conventions upstream prefers; I generally prefer not to mess with
+> the existing working code in QEMU unless there's something actually
+> broken about what we're doing. Thread from the last time this came up:
 >
-> On 3/11/26 13:06, Alireza Sanaee wrote:
-> > Specifying the cache layout in virtual machines is useful for applications and
-> > operating systems to fetch accurate information about the cache structure and
-> > make appropriate adjustments. Enforcing correct sharing information can lead to
-> > better optimizations. Patches that allow for an interface to express caches was
-> > landed in the prior cycles. This patchset uses the interface as a foundation.
-> > Thus, the device tree and ACPI/PPTT table, and device tree are populated based
-> > on user-provided information and CPU topology.
-
-> Alireza, thanks for addressing my last comments in v18.
+> https://lore.kernel.org/qemu-devel/CAFEAcA9OWDiWh3S=3D0Co7Z27EtOp-1B9H7=
+FxyQy1T2sFnTyNdqA@mail.gmail.com/
 >
-> Peter, I have no further comments on this series. All looks good to me,
-> so feel free to take a look and pick it up when the tree reopens.
+> Essentially, the set of things that it makes sense to have a
+> convention for and perhaps to validate for a hand-written DTS
+> file is stricter than the set of actual requirements for a
+> generated DTB, and I prefer not to potentially break some
+> guest code that's looking for a particular node name purely
+> to bring us in to line with conventions intended for
+> hand-written DTS files.
 
-Thanks (and thanks also to the other reviewers). I've picked this
-series up into what will become my target-arm queue for once we
-re-open git for 11.1 development.
+Thanks for the explanation. I can understand that these DTBs don't
+really need to be held up to the same standards/pedantry as Linux
+upstream DTS files.
 
--- PMM
+Thanks,
+Vivian "dramforever" Wang
+
 

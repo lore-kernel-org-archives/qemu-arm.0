@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 117D0E98FAC
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 04:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC0BE98FAF
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 04:47:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAhHw-000857-HZ; Thu, 09 Apr 2026 00:46:45 -0400
+	id 1wAhIv-0008GH-Ep; Thu, 09 Apr 2026 00:47:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAhHv-00084j-3X
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 00:46:43 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAhIh-0008Ar-Aq
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 00:47:31 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAhHt-0003Fr-L1
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 00:46:42 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4852a9c6309so3424535e9.0
- for <qemu-arm@nongnu.org>; Wed, 08 Apr 2026 21:46:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wAhIf-0003Hw-N8
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 00:47:30 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-488afb0427eso5970845e9.1
+ for <qemu-arm@nongnu.org>; Wed, 08 Apr 2026 21:47:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775710000; x=1776314800; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1775710048; x=1776314848; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=tN4iP+/W7f9tl7+doV9oPQItuL5wrUcZi3o14We7Hfk=;
- b=F6O4Nf3T30KPeyf84cCNdElGuq6yW4JJZ/gHA7WQvr41W16om7eoMilc6SidwKKXh6
- YdyOgtfo1rDFV05WbRcjFtReyJ/brZy8KaPqMbwlETJU9Ll1UA6awtcTehuIXXlgpfoe
- 3VG+XJlcIn61PQPd1YQzoyoGrjNBD5T95Sfe/FmnlOoJ5lQuFeSPAoBCFepf5RFM84o3
- uzyW+sMMzvJceuwYXgEZd4vcpA7yso2kWb7FNQz5b/MhQifnVGePHtDQ4Gl0upLdYzxw
- V4yeQIEnZ2zAnG5QBOFqDJa8S7WpKsy4uXZJxXH92IcF9EWRA/iEEMdZBoLCgJpO+gWU
- XWJw==
+ bh=oSk0cReHSPbAkCS4mtG4ivE6Co7ywDbjBk9n4sk37R8=;
+ b=u6N28E8IZZBnreCmDBIkoyu0DxhHeuzW2CWjPGGk4tAexrGZC2dGvZFy8pUmZOEHjW
+ 8Hk9qCOKsS5l71Ioa/INwoADE/Brwok6k33WQxLExNchZhdhakokSzR3jE/jGnRKJlaJ
+ vixLMG0WIRrH/jLPMxSbjQOObIIkhzaK6TT3R86t1GIk9JGsTtwDITug90dU4S2W5/LJ
+ wXJyQVKCijsfGLfmY/2hbIHCGMbIs+eMawRjbfFoRKEn/bSqC+OTyZz2dMsOqqPGyMGm
+ nvdXRQJu2w2b+rG8P7vdH6jLIVq+atfXuNOfRJzyUJHMgz6LblLV8xWAdNuVM3dk8wNc
+ 6COg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775710000; x=1776314800;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20251104; t=1775710048; x=1776314848;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tN4iP+/W7f9tl7+doV9oPQItuL5wrUcZi3o14We7Hfk=;
- b=sUly6L6/M4DSDGkV8keXNFjSgXJKRgV2bix79Pwb08SMkygDly+whJTVZtOdO/MlHq
- me/2PyJNMVeNX6u3bFYps3ThOpD3IP7rZr//4o9nvVEbc9pW9ky/luKfj+ZUwQHTkk/A
- gNWX4XOmpoa77W8i+0rQ/kjNirXF8m/612KNmzPBSFJT7fpoDfO78BWuHPUGi/7RZyrK
- vNV5Ber5hqySZMj+ExL3SgpuavpTahEIAEPX0WNj06lYqUTRDTwDdsAVZc4eougrjOOZ
- VW2nfdG5INarTNUl/jv2ONvYcdX+JGLfOktKMiAvTzj7YdEAl/3SfpwxdJA+wDSigg1m
- iDSg==
-X-Gm-Message-State: AOJu0YzuPR8Ei36mMi6RaIMC09r43RjvmpQGNOyDo0ShfQaS6VJl+2UU
- 6b79yjMC68FojIVNHKLYnGLt3k1szic8FDt25x60CBzXwNZgsItvpBmlXbeVRLXWX4U=
-X-Gm-Gg: AeBDievIN0wm681dzyoLNy4PFK9lkq8Eq95BCsHx92DC42uLOOnwKi0suqJvJ4NlR+m
- 2xt6AZyErEEpqev6BedeDxrLnLYJO+bIWxdoo7vPhLvFlDqC9Bxoujy/UuxckoBgKCSICh0kWXi
- 0XGHOnYLuBoIUvIlZR0ZfRuyJXtf9OwOUhdE57XcdrbjNmLpnanjlQRmPYODSD01nDQLAqw7n+B
- sbgZkyvASOMtDeAs7VgueQEn6oGUyPTrwclHXAYq+qjiaOGuGnmxaxsrmVJX3IvVt9CcHtLCY2p
- dCyvqVlEKGLHGk5K9i0qi02gW+lAu7lkB13lwa7aM0G5Ap37D+F6NiT9sKD1kPLKbaQlKMJPBTp
- 5ji3AsRgmCPO366xPIcxPz4moLZrLfJmS7cbxObq5VihTgNNozXyA9rKYgYGWTOJbhNDpQsUJ3G
- d+lFLOeB1Rywm8u6TR1FyU9G9ZZh18dPVHpW77QR2LGnREbAFoCupZ6+2TfS1sbKUDXg==
-X-Received: by 2002:a05:600c:c083:b0:487:1108:48b8 with SMTP id
- 5b1f17b1804b1-488ccf4062fmr18027595e9.2.1775709999638; 
- Wed, 08 Apr 2026 21:46:39 -0700 (PDT)
+ bh=oSk0cReHSPbAkCS4mtG4ivE6Co7ywDbjBk9n4sk37R8=;
+ b=b12ItTYvUtJn0i2sat16/VNXpqcgHtcTyR0od4iVOPWeUH4SktvoxzTK2kTKvgbNed
+ vWJS79oiIcZiU58X1SZuyxhOmETPDA3OI8qx5esoakg9H+3qkjYqxsvamnfC3tl3CB78
+ VKyDEOTOjBdFQG+EHqcT6EHW3oEjwwsGbfHQLJJToJG1+sLWUsI6Nq45RcDXGAp4Mhti
+ ah6Y3kIN0vc1s3ErttmJxW2Fmg862bmY1tS10Xrrfl3aF5Qk+W2ncfUfk7acY34EE87r
+ NvgtxqEC6/rRvowZKvW4vsYg7ZVNK74+P7GEOp8/OFg/8Lu0SBNGkBghKigiVwCYqZd0
+ 68wQ==
+X-Gm-Message-State: AOJu0Yyuvgsd+funY7coPgA9lGt6bxaIPpIY+kwD/e5pJWiTPAeCeiZq
+ IeYNfM7vrgI3wckhq5ejLZQIpKzKc4IbJBU1CXm+xEpHPXmBS7pQbsq5gfbRMRWqbtI=
+X-Gm-Gg: AeBDieshZY+UXqrcyyPPwV8F/EPoWYZ3FId4YnKWOqIt3oLVZnx3gfuefU5gWV4fjLZ
+ SqrDhZe93dYzj0GBhjx7kDZ7Ab6+WXC4+hjYk+Xby3iEv96PcIefzSkr0Qy4XNWpGRo3QYIHn/E
+ LI1YB9UuaKSwiZp9dxKCtUJY9GAuKOS+z+WUUY1vjqx6DUDTFyS3eCHmhIigzbxD7X1EeDmpRxh
+ IRd4oidhzVf3MAgHRGN7s1HxSlCj21r6YJGMfxQUcpMmN+68KTIfMbYHZwVcZt/MMa2432oBUZS
+ 1UzMi3RAXGPEDOsLyTeIoBV0y9qzA3/OXT3W8t8QHP/wgaBOm9s6bEambDv4a3AZCto1jsD0y+n
+ wTJ1cXwqld6upOym6kyI2GPLwYYp2MKUpX/gw3qUe5PfdKoQ/lq2BpI/M5q56UywpHdLQLHdE7U
+ C3IJ9JVpA2wFeBM/THIJl4TPimbiQ2lGD8IfIzx1ijcKLp/xKPhRctPaCVYczbkru8hg==
+X-Received: by 2002:a05:600c:630a:b0:488:8840:e5ae with SMTP id
+ 5b1f17b1804b1-488997eed8bmr330606145e9.24.1775710048107; 
+ Wed, 08 Apr 2026 21:47:28 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488cfa75ae2sm39769365e9.14.2026.04.08.21.46.38
+ 5b1f17b1804b1-488cf9dc4e5sm23796625e9.2.2026.04.08.21.47.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Apr 2026 21:46:38 -0700 (PDT)
-Message-ID: <2e703787-96cf-4b0f-827a-81c677a9455c@linaro.org>
-Date: Thu, 9 Apr 2026 06:46:37 +0200
+ Wed, 08 Apr 2026 21:47:27 -0700 (PDT)
+Message-ID: <d304af29-092d-4140-a44c-18b64091d96d@linaro.org>
+Date: Thu, 9 Apr 2026 06:47:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/7] target/arm: Only define aarch64_untagged_addr for
- aarch64
+Subject: Re: [PATCH v2 3/7] target/arm: Segregate target-specific user-only
+ fields
+Content-Language: en-US
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, pierrick.bouvier@linaro.org, peter.maydell@linaro.org
 References: <20260409035015.132370-1-richard.henderson@linaro.org>
- <20260409035015.132370-3-richard.henderson@linaro.org>
+ <20260409035015.132370-4-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260409035015.132370-3-richard.henderson@linaro.org>
+In-Reply-To: <20260409035015.132370-4-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,10 +103,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/4/26 05:50, Richard Henderson wrote:
+> In CPUARMState, we have one field that is only used for
+> AArch32 and one that is only used for AArch64.  Use one
+> more ifdef to avoid adding both at the same time.
+> 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   target/arm/cpu.c | 28 +++++++++++++++-------------
->   1 file changed, 15 insertions(+), 13 deletions(-)
+>   target/arm/cpu.h | 9 +++++----
+>   1 file changed, 5 insertions(+), 4 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

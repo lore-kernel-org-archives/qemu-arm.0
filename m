@@ -4,83 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A7B4F364A3
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 17:53:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7382FF364A3
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 17:54:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAtYf-00080g-12; Thu, 09 Apr 2026 13:52:49 -0400
+	id 1wAtYs-00084A-6A; Thu, 09 Apr 2026 13:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wAtYd-00080K-4y
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:52:47 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ id 1wAtYq-00081i-PR
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:53:00 -0400
+Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wAtYZ-0005g6-Qo
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:52:46 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-2ba9c484e5eso1212677eec.1
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 10:52:42 -0700 (PDT)
+ id 1wAtYp-0005jJ-Az
+ for qemu-arm@nongnu.org; Thu, 09 Apr 2026 13:53:00 -0400
+Received: by mail-dl1-x122b.google.com with SMTP id
+ a92af1059eb24-12c287eb77fso56854c88.1
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 10:52:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775757161; x=1776361961; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1775757178; x=1776361978; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fGB+tosPucGXv7yICD/rFdeFUeaEw2uU78q/MBopIr4=;
- b=sZl1hAxAMJ2MsKDmjjRkYWZwtubAXx/ZUpbfht0IkWmIFDGMlNM/cbTGDaEJzS7FBx
- oCVZDRcaYrP6/Q8FQc5lMiJxE+EmOwka/R9mqADX1eKFCuH9SZV9pbvXIeMoYFowjZzW
- eONdCdBPuXn/qEOTZK3pzHKMYmiTPciUr6/Jh0yOC5aHqpKtQ0ljsFdh308l+sH/ffG5
- 5PKZQEtL8N/muVkxyRUUEJwhnGuX2jtwNpsuUFKW1VYFr4vd7jWkLNI7XXDGmFJePEO/
- fhaQccSPZ2KxkYezZ+MIpnAxd8VPEFIO/dBJl39b+mbngU9XP4rfWOhb2LIT8gbhkA/g
- WmLA==
+ bh=7goyZ9sb61nd5DhdbjSqdoaLm4SdTVWUyhQNAskMZj8=;
+ b=sabIIv9emrYvdpQqq59W/TbDNc1o6gm+CNdjGMsaCnenzShEAQMHfxFenXQ4tORwZ1
+ FhG5Hlv1gdezY/C31J9g5wTQ1fFSgfQ6WLgYh13RTlzcrZXrCdxAZzVrF7HKPDc8S+xp
+ Mw+8AcjapMtWGc7Udk57d8TIJrn43T8VoDdH18ZtfxfHz2GMoupcswBpTsUOOM3MRlD6
+ xS+C54oWpcDdzGDAdSjf23syFKIp9zsQeak36JdBP6pc0qfjwxrRNN2j1GS1VBFg4TDy
+ SJzibmTITMk7fn1Kl7tOymfY8C8fNEse9YlFA6AaKsRW8b+m5SQ2kcVkm/BoRwLGdHfD
+ m0lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775757161; x=1776361961;
+ d=1e100.net; s=20251104; t=1775757178; x=1776361978;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=fGB+tosPucGXv7yICD/rFdeFUeaEw2uU78q/MBopIr4=;
- b=OqS6tVQF6r5GXSgPEoOGfCYcJ0GuLtlCEXZIH117k6nMC3Mhs2UvTKa3SuB6GDjT15
- jj3BkPbQVs4+qCw9CVkALTFfWyjamyQOkqAP0wLsWchiH/353/LfKoBYxmALj3au+L9F
- sQYsUcoRG5Y91JK0nGFMCVz87GKcg3H5VTl0YIyM0U42wMtDhCfzt9sTGpl4ZG11CozF
- CnyM6iQlyGExQFwE4k2NqYRt+1Ikl2w8MDGCy2u1Q7BW1isR/SdurOt1ebfMUVlHMGGa
- FrCGJz/dst1dYIVbRNDfnm714cmjUA0Y2Gs3UndVofBnrwXMBhLbX2Aoa/r6PErpK8y2
- yzpA==
+ bh=7goyZ9sb61nd5DhdbjSqdoaLm4SdTVWUyhQNAskMZj8=;
+ b=Xk2wZLreoFDLO18unTuxXjsA9uJHdpmLOC7xLkVZeFZQtVqLMGG1t2r77XjOnbbTfr
+ Kye411oBYYlS5tiNDvCML/i2JA/ne0HHpjLBzKz45d53jVjPbjSnuK/6bTAGydKHVBft
+ 7tfYZidSvyjHXaHWxKqN6HPSBF9E8wYRnZWchnuxNiikTtBSvpgNBlSwfJGW8verYYOT
+ zj7w6UU4cT49G8o//HEnua5vdoTGQxVn20GFiED1zt4Qtk1CuVEqafpWlGgxrZNmzAnF
+ Zwo+MrVpZ0mdFqmkMU6uCvnTawLGGxvtCLen0mnTCzxrYDzUXgXunDb8CCAq84UrXPg5
+ mEUA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX0FV6mkvlTVBtU72jVzBFGemHtpSJLOSXdJIJo9Ec9cK7EzAXM0WwQCpyoZzIbhgxGDkR+488s+g==@nongnu.org
-X-Gm-Message-State: AOJu0YwDDsjtrS8NZK+5Y6vvDNfDaWUTdK8FoKl5wlyTMdEtBe1gjxDU
- Td+r2SbZ5hQP7++3OboRkyGgeoSROzT16TlgyY0Mf1jLSAenaZvKFNf8
-X-Gm-Gg: AeBDietWq6etJGPA1E5MlSHFlbpSBGK6TPc3aYZBG9hZNxaFjT2z5shZUoawc15yRUD
- c81IzqZKrObniL1Bstz/VcbokLz825ysl2zEDsaizkGD5jCTBE4MaGRox0bNe6vonFJwLvP1UR1
- 2uReC3rV1IVvRLOc/yBo8VuprkFnCISH8geOOa3v+Pj1HTZhI+lsIEQlngqOHrcMVCCPCgkP8N7
- 3mbsVdn2Xds9MYfI5BPMtebgQP6vRg3nyLXfojXDkriJgKiJU35l5W15KyM5EEsZET4Tyq2Tpjn
- KFtNUCPzgHphVkOSKYeVmmwLScQzxypNsAcHHp32lEKP3QpUK+MprRSXMNBjG/wOWk0eI1eFPtI
- rYjPzFGqtoa61CNTo0ETszKHxCG1E5YXQ9pkdrIqYs73djkBTcTC58YIGtgOQc5kXWqbns6g2lr
- SDxgPGzxpvIiou9CfbZdnRr07QMThheAvQ09HulT8q/2/B/VDWRYbPhw==
-X-Received: by 2002:a05:7300:7313:b0:2d2:2314:417f with SMTP id
- 5a478bee46e88-2d5888a0888mr19675eec.24.1775757161167; 
- Thu, 09 Apr 2026 10:52:41 -0700 (PDT)
+ AJvYcCWNeAgP+1TMfzeT949KcSSGRM7TuWe1MadkmDYPIv63jeAMaUp6imZSm4eJUL2CXzZ4FIf66Ca/GA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyp34plVh3eo9ALpmq6ubFvDoL3T62VvIoW+NJb1PXY6Ema12wp
+ V3XR5jg06zVpNdwyAw75jaa4Hregw0KW9Koii9qqHRGf97BOudL2Skwq
+X-Gm-Gg: AeBDietunElA5kzogdM1IhWr/4m6UJjr44FbmBK2Ror/j4zb4813oG7oDK2t5DNWNwF
+ mvXNqc3A4byYisQxC1bxtQ/fYraDGgvo5d6Sw+T4UkvYc9tIkOa73Qfqhu7FErMq0Ve2G2+A0Fg
+ 6Aql5iHx9IPsqJK97FKOsnAIyf/1lIdhKYq9y08dT4ZeDjEg0i/sVO7qTT0d5C1aB9P4GtROW39
+ AuzaRt2ygUYMRvIIAwFdIw2Aa21pWtzPxyMScr00NDDNA4SzkfyYvIShrnxlhiXI+Hr1uoaiL4o
+ fpdKEJ4WuO1ugW3VNBZkNK0n5Y8jEhWtV58q+09k/36+n6DHxJVie1bpUzRIzsn6ZtG/Nxw7Od8
+ PeSMT1PsbGsp8rgy5vMgUZ7jho1nbhvmAxRQ+DUhB5NalDNzUmEDrF35OlzfuxL6qEoIRlu2sNQ
+ ZnzueqhCFq6wsCym0UoW8T1Tj3DLoLYhPt1FsZC/0bN62l9nQ9EEX2yA==
+X-Received: by 2002:a05:7301:6446:b0:2c5:3b87:2ff0 with SMTP id
+ 5a478bee46e88-2d586992153mr41599eec.12.1775757177586; 
+ Thu, 09 Apr 2026 10:52:57 -0700 (PDT)
 Received: from localhost.localdomain ([143.54.78.183])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2d5632a64easm668106eec.31.2026.04.09.10.52.38
+ 5a478bee46e88-2d55f5c69b3sm637578eec.1.2026.04.09.10.52.54
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 09 Apr 2026 10:52:40 -0700 (PDT)
+ Thu, 09 Apr 2026 10:52:57 -0700 (PDT)
 From: Lucas Amaral <lucaaamaral@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-arm@nongnu.org, agraf@csgraf.de,
- peter.maydell@linaro.org, mohamed@unpredictable.fr, alex.bennee@linaro.org
-Subject: Re: [PATCH v4 0/3] hvf: map granule abstraction, configurable IPA,
- and MAP_FIXED alignment fix
-Date: Thu,  9 Apr 2026 14:52:34 -0300
-Message-ID: <20260409175234.40792-1-lucaaamaral@gmail.com>
+Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-arm@nongnu.org,
+ alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
+ marcandre.lureau@redhat.com
+Subject: Re: [PATCH v5 0/4] virtio-gpu: enable Venus/Vulkan without OpenGL
+ display
+Date: Thu,  9 Apr 2026 14:52:52 -0300
+Message-ID: <20260409175252.40828-1-lucaaamaral@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317175744.32469-1-lucaaamaral@gmail.com>
-References: <20260317175744.32469-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260317182049.33848-1-lucaaamaral@gmail.com>
+References: <20260317182049.33848-1-lucaaamaral@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122b;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x122b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,10 +107,10 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Ping.
 
-https://patchew.org/QEMU/20260317175744.32469-1-lucaaamaral@gmail.com/
+https://patchew.org/QEMU/20260317182049.33848-1-lucaaamaral@gmail.com/
 
-Mohamed gave Reviewed-by on v2 (nits addressed in v3/v4). Patches still
-apply cleanly on current master.
+Marc-André gave Reviewed-by on patch 1/4 in v2. Patches 2-4 awaiting
+review. Series still applies cleanly on current master.
 
 Thanks,
 Lucas

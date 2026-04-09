@@ -4,34 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B54A1E9DE60
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 08:19:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21DB8E9DE65
+	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 08:20:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAkbB-0006Gi-Tq; Thu, 09 Apr 2026 04:18:52 -0400
+	id 1wAkbQ-0006I2-UV; Thu, 09 Apr 2026 04:19:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wangruikang@iscas.ac.cn>)
- id 1wAj4N-0007qv-PY; Thu, 09 Apr 2026 02:40:52 -0400
+ id 1wAj4N-0007qy-QO; Thu, 09 Apr 2026 02:40:52 -0400
 Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
  by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <wangruikang@iscas.ac.cn>)
- id 1wAj4H-0004PU-DK; Thu, 09 Apr 2026 02:40:50 -0400
+ id 1wAj4H-0004Pl-FD; Thu, 09 Apr 2026 02:40:50 -0400
 Received: from [127.0.0.2] (unknown [36.110.52.2])
- by APP-03 (Coremail) with SMTP id rQCowABnht3aSddpeI91DQ--.34096S2;
+ by APP-03 (Coremail) with SMTP id rQCowABnht3aSddpeI91DQ--.34096S5;
  Thu, 09 Apr 2026 14:40:27 +0800 (CST)
 From: Vivian Wang <wangruikang@iscas.ac.cn>
-Subject: [PATCH 0/5] hw: Fix unit addresses of FDT CPU nodes
-Date: Thu, 09 Apr 2026 14:40:10 +0800
-Message-Id: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
+Date: Thu, 09 Apr 2026 14:40:13 +0800
+Subject: [PATCH 3/5] hw/mips: Use hex unit addresses in FDT CPU nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAMpJ12kC/y2N2wrCMBAFf6Xss1u2MXjpr0iFNF11hV7MpkUI/
- Xej9XFgzpwEykFYoS4SBF5EZRwyVLsC/MMNd0bpMoMhcyBLZ7zJG+dBIrquC6yKxnjaW3L2SCf
- Isylwdn7JS7Oxzu2Tffx2/kbg15y/4qZB65TRj30vsS6WqiqpJAzeXNMKzbp+AA5FGqimAAAA
-X-Change-ID: 20260409-fix-unit-address-22c0340a4708
+Message-Id: <20260409-fix-unit-address-v1-3-946840930af2@iscas.ac.cn>
+References: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
+In-Reply-To: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, 
  Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
@@ -47,23 +45,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Chao Liu <chao.liu.zevorn@gmail.com>, qemu-riscv@nongnu.org, 
  Vivian Wang <wangruikang@iscas.ac.cn>
 X-Mailer: b4 0.15.1
-X-CM-TRANSID: rQCowABnht3aSddpeI91DQ--.34096S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Aw4xKw18tw48Cw18KF1kAFb_yoW8CryrpF
- WxCFW5tryDKry7XanrXFsrXrWayFZ5Wa47KrnFkw4Fkw45XF17AFZak345XryYgr18GF4a
- yFnag3WkXFn5ZFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW5JVWrJwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
- 6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
- CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
- 2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJV
- W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
- Y2ka0xkIwI1lc7CjxVAaw2AFwI0_GFv_Wryl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
- 0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
- zVAF1VAY17CE14v26r4a6rW5MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF
- 4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
- CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
- nIWIevJa73UjIFyTuYvjTRZDGYDUUUU
+X-CM-TRANSID: rQCowABnht3aSddpeI91DQ--.34096S5
+X-Coremail-Antispam: 1UD129KBjvdXoW7GF4xtFWrWFW8uw4DuF4rXwb_yoWDGwbE9a
+ 9FvrnYva1DJry2gF93Zr9FyFyrJ345XF1I9an7Kr43t348ArWrA3ZY9rWDJry5XrW8Cry3
+ u3s8Xr15KanxtjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbkAFF20E14v26rWj6s0DM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28IrcIa0xkI8VA2jI8067AKxVWUWwA2048vs2IY02
+ 0Ec7CjxVAFwI0_Xr0E3s1l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xv
+ wVC0I7IYx2IY67AKxVW5JVW7JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UM2
+ 8EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oVCq3wAS
+ 0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2
+ IY67AKxVWUXVWUAwAv7VC2z280aVAFwI0_Gr0_Cr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0
+ Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2kIc2
+ xKxwCY1x0262kKe7AKxVW8ZVWrXwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWU
+ JVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67
+ kF1VAFwI0_GFv_WrylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY
+ 6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42
+ IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIev
+ Ja73UjIFyTuYvjTRuzuWDUUUU
 X-Originating-IP: [36.110.52.2]
 X-CM-SenderInfo: pzdqw2pxlnt03j6l2u1dvotugofq/
 Received-SPF: pass client-ip=159.226.251.81;
@@ -75,7 +74,7 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 09 Apr 2026 04:18:45 -0400
+X-Mailman-Approved-At: Thu, 09 Apr 2026 04:19:03 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,57 +89,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Apply some pendantry to the node unit addresses of /cpus/cpu@*:
+These unit addresses should have been in hex, not decimal, as per de
+facto convention [1]. Fix them.
 
-    / {
-        cpus {
-            cpu@??? /* <- here */ {
-                reg = <10>; /* Equivalently, <0xa> */
-            }
-        };
-    };
-
-According to de facto convention, as confirmed by DTSpec maintainers,
-these unit addresses should be in hexadecimal [2], i.e. cpu@a instead of
-cpu@10. Currently apparently everything uses decimal which is wrong.
-
-hw/arm/{sbsa-ref,virt} have an additional problem where the unit address
-doesn't match up with the reg value. Fix that also.
-
-I've tried to use the types of existing variables / return values, hence
-the slightly different patterns in these patches:
-
-  int cpu;                       -> "cpu@%x", (unsigned)cpu  [easy case]
-  uint64_t mpidr;                -> "cpu@%" PRIx64, mpidr
-  uint32_t hartid_base; int cpu; -> "cpu@%" PRIx32, hartid_base + (uint32_t)cpu
-
-[1]: https://github.com/devicetree-org/devicetree-specification/blob/v0.4/source/chapter2-devicetree-basics.rst#devicetree-structure-and-conventions
-[2]: https://lore.kernel.org/devicetree-spec/CAL_JsqJFv3+UJ-bjLGk0i7Wc+spsowCrqQZ_s3P4gN8r1W-Q-w@mail.gmail.com/
-
+Link: https://lore.kernel.org/devicetree-spec/CAL_JsqJFv3+UJ-bjLGk0i7Wc+spsowCrqQZ_s3P4gN8r1W-Q-w@mail.gmail.com/ # [1]
+Signed-off-by: Vivian Wang <wangruikang@iscas.ac.cn>
 ---
-Vivian Wang (5):
-      hw/arm: Fix unit addresses of FDT CPU nodes
-      hw/loongarch: Use hex unit addresses in FDT CPU nodes
-      hw/mips: Use hex unit addresses in FDT CPU nodes
-      hw/or1k: Use hex unit addresses in FDT CPU nodes
-      hw/riscv: Use hex unit addresses in FDT CPU nodes
+ hw/mips/boston.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- hw/arm/sbsa-ref.c             | 4 ++--
- hw/arm/virt.c                 | 7 +++++--
- hw/loongarch/virt-fdt-build.c | 4 ++--
- hw/mips/boston.c              | 2 +-
- hw/or1k/or1k-sim.c            | 2 +-
- hw/or1k/virt.c                | 2 +-
- hw/riscv/sifive_u.c           | 9 +++++----
- hw/riscv/spike.c              | 4 ++--
- hw/riscv/virt.c               | 4 ++--
- 9 files changed, 21 insertions(+), 17 deletions(-)
----
-base-commit: b6a7d06213e5d2f7d124d16418bc289c4a8a4b82
-change-id: 20260409-fix-unit-address-22c0340a4708
+diff --git a/hw/mips/boston.c b/hw/mips/boston.c
+index 4579df23eb..9ef3f6c814 100644
+--- a/hw/mips/boston.c
++++ b/hw/mips/boston.c
+@@ -542,7 +542,7 @@ static const void *create_fdt(BostonState *s,
+     qemu_fdt_setprop_cell(fdt, "/cpus", "#address-cells", 0x1);
+ 
+     for (cpu = 0; cpu < ms->smp.cpus; cpu++) {
+-        name = g_strdup_printf("/cpus/cpu@%d", cpu);
++        name = g_strdup_printf("/cpus/cpu@%x", (unsigned)cpu);
+         qemu_fdt_add_subnode(fdt, name);
+         qemu_fdt_setprop_string(fdt, name, "compatible", "img,mips");
+         qemu_fdt_setprop_string(fdt, name, "status", "okay");
 
-Best regards,
---  
-Vivian "dramforever" Wang
+-- 
+2.53.0
 
 

@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CC6E99049
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30BB4E9904A
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:37:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wB6GM-0004Bk-NM; Fri, 10 Apr 2026 03:26:46 -0400
+	id 1wB6QK-00061U-6p; Fri, 10 Apr 2026 03:37:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6GK-0004Av-NN
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:26:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wB6QI-000615-TH
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:37:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6GI-0006iL-Nb
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:26:44 -0400
+ id 1wB6QH-0008LB-9k
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:37:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1775806000;
+ s=mimecast20190719; t=1775806620;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SzWLDKBnyzNA1T5YceMswjeh4MEVICXjSAPV2kBjGzE=;
- b=ZqJ2AvY6gpYZ1C9Y+U5oc59yhP0Wa2TIGiFEOj9/1cuInq8DiX+v2jW/g/NuLzT/zHQ9yl
- RwqRrS5kwRQHLPujFkaJpfvUSE5LqlfZyAvh0q+AVx2wq9sxBqVYuKNKdokkSWvB0yep85
- v3Lu7Aw00OothJHlDAdpV0TKuQQ1NF4=
+ bh=ubV0vkvEAomTpEkTf6CuJhHEwYGUPp0mMDoCQtn74pA=;
+ b=PKDSt1jmh9ubhFfSbP371NGoZEBF49wGTCVWz1wb/Xnb9bx243OVqWAoWUt2nCEFuEj33L
+ ndYEjLEPOr4cJwepreQYhCQDEQncPcviJGyOhPZT2YJ94WhiD1gEqGV3Tdzmqc1nwVTKGL
+ MrEuwPSFIwUU7GkVO00sjJjN0/gYhrU=
 Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
  [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-447-drMQoCxtNeW-P0rA6dzBgA-1; Fri, 10 Apr 2026 03:26:39 -0400
-X-MC-Unique: drMQoCxtNeW-P0rA6dzBgA-1
-X-Mimecast-MFC-AGG-ID: drMQoCxtNeW-P0rA6dzBgA_1775805998
+ us-mta-456-HkDl-DLZMYqH2buBGxTXjA-1; Fri, 10 Apr 2026 03:36:56 -0400
+X-MC-Unique: HkDl-DLZMYqH2buBGxTXjA-1
+X-Mimecast-MFC-AGG-ID: HkDl-DLZMYqH2buBGxTXjA_1775806616
 Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-488d3eec9bcso4254625e9.3
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:26:38 -0700 (PDT)
+ 5b1f17b1804b1-488d2cd2674so8898435e9.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:36:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775805998; x=1776410798;
+ d=1e100.net; s=20251104; t=1775806615; x=1776411415;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SzWLDKBnyzNA1T5YceMswjeh4MEVICXjSAPV2kBjGzE=;
- b=jX0BJOFlPlsE6Ly3I37tGHN2X0CP7s3KlEuvpYDQLFr94gYTyH2WmQgO1OSGxInkJm
- pxu5rlwcG8MmfAuCN0zg3TpU+rN/fpzkoXt/lD1ziaUVYN3NW64++NLPvXqFny4bYk3K
- Gn1FVQU2I5VrrAbWey/x84QZcwaTQiJeeq4Ws8YsdoKVwKZC8jAEsTJO5Avl794IqTLR
- lLBmUbRtJCmAoOD7Vgtb81UPzRHCttDbZ2WNGu59xaqb15MnF8fEwXYV7KUCBwfSWXfO
- FORHo6Hsy/7UnCwifJD25yJofVG76CxqSVHagquIEZ0NX/SkdLdlcHJvN0jL+66dV7Ro
- LMKQ==
+ bh=ubV0vkvEAomTpEkTf6CuJhHEwYGUPp0mMDoCQtn74pA=;
+ b=n8nyJpS8RGt5JamKluVdS86gKbSUN87F7QDfasqeo9jYSg/mb142FGF/igfFTQnycL
+ KETfe81kJu54Qx6mfIUyO1IRNGdtLOyFRLBjq7X1O7bCQRkvMf4Nim8EGoe8/lh8ufhP
+ mrPWEZ8mnVnfpkGvpyy/XK9YrdU4F9dU30eMLwmFbj/iBwj1zVGqX16H9UZ3QfzrcWsL
+ Tr8cNJZv2W+EGJzb7AthEUSRud3rtp0NqCgDaOk2ADb4n1QGyh+nmHX01wnNnJZzaoNc
+ Ls9im+RbiI4sc1/xersbjx7N+eInLA9Bf604YXadBOxS3uf3JfcPn2TIW11MvMlS+LlC
+ +45w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV1E5f4WaH1/18SFevttjX/1iW46+3qq7Ar8ZNJHSTAE0iwN2haBezn5oaLwJ8ds0VbG66rpGQeKg==@nongnu.org
-X-Gm-Message-State: AOJu0YxuOE3y6uDixUMXt/k99ZSqI5740vcakh7h06d98IQ+8Drhn1UM
- xuxUEUDPjA6zJ4aZ2YdIuhkSAfoWvYEMpMHNFhLtnI/+GcjMpFG5mOhFpcoUFGNxhYrubETTfYj
- jRyXUEPHagVAvIVzL0eiacNtvR8T+jFhaIMPVW29uZhNJy8ISM7Cm4g==
-X-Gm-Gg: AeBDieuikbKoTFIJbOABFMPXKKxtFC8d9uc6uU9I+VQAEfQDr3NjKtxCRXFludD31Zd
- d8byGigE4Dbnfs8qiZkXa89s9HPILr9avri5yhwxIfpVCmZRJRcTNHYmZfKl6X0bSrmnEOMgIvK
- f/4K5iWXkz/EeIVgiMYK//VJcNr7TIc3OX6+PmvG92Iz1V/BzK/UXr7a66WjnfQDhYVowqRJ79R
- JGbjBqxHKSuWaRK1c+2eBERS6qJ9wDnH3Ok+LI8xLTKD8bo/oJmCcZXcqLdUt4qeoF1uvnWC9KU
- ZvIGqE1JbV/Tv+pob5hdC02sQJHAJbhMb/JgtELmk9WpuuE/60jNGQsb98YiIRbhR87oxzzqH27
- 53QwqwEUkFEsgycmosxrBWPtVriKVOBi+EFf9rxk5h3isnhSeLBpzSC9s+F8IY6Kr7rg2jg==
-X-Received: by 2002:a05:600c:1391:b0:486:fe23:1707 with SMTP id
- 5b1f17b1804b1-488d687116amr24238595e9.20.1775805997683; 
- Fri, 10 Apr 2026 00:26:37 -0700 (PDT)
-X-Received: by 2002:a05:600c:1391:b0:486:fe23:1707 with SMTP id
- 5b1f17b1804b1-488d687116amr24238045e9.20.1775805997126; 
- Fri, 10 Apr 2026 00:26:37 -0700 (PDT)
+ AJvYcCWDOB3Pr0rDc/XQ0u/LT6yO09vIAzdbARw7A9vcbEeqtFT1UjkY8zysQOIj3tXdyp2Dl9NISt8S5Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxbSHORKY489NMLxSNIoQqHv9ro8mYx2cm+51RFKeG21785psG7
+ +p8UWekKougWXbrXbQIuz4sHpCcJxtzoR6ZLXByF8pzINsXLuG59qeqGmxKkhKMUir71kPX4bC0
+ jRkqAGZ7ngvBqX+BadzQ7ZsA3B9RLkV5RS8v7A/QVxEDquNbxiE6vmQ==
+X-Gm-Gg: AeBDievM6fr8an64o1V2FSPFy43CyHFANKGgTgW2NPUMgmseL467oT+o1Q84SoT5OAk
+ /cedblAtDQ97p+xQ/eh7KXsA6zm2ISOf3tecUbKr+xRS7zSUqgw12MQ2V1OxzUcvY7RIo/tnedQ
+ yfjomq6nUd7RN6tZf2Kn36tTn73TMAKa7aPcLBeBoYfFmrnabUwh37hbvhig3Fm9MeZOUUP0O0M
+ wfWdv7s98G8Oubwpzi1MSoKmX54TZaroUjml7y1GqRs7a8tlb9R8E0Jn1lTjxISNenlMYpLr5Pc
+ B3jNE9giDXLwRusM9JtAoenwSTatGUlV0OzuGq+sDcEzhRcJMNtwDkLuacvipMxIphvtBehQJdX
+ m1EjLQVzRuJeasEqYsUMx2zbmfhLdlxbIwlcR8KefyvJ1bX443A5jqdh3LeTGUuKhSJHlFg==
+X-Received: by 2002:a05:600c:c088:b0:486:f9d0:aac8 with SMTP id
+ 5b1f17b1804b1-488d6843187mr16116415e9.18.1775806615470; 
+ Fri, 10 Apr 2026 00:36:55 -0700 (PDT)
+X-Received: by 2002:a05:600c:c088:b0:486:f9d0:aac8 with SMTP id
+ 5b1f17b1804b1-488d6843187mr16116055e9.18.1775806614974; 
+ Fri, 10 Apr 2026 00:36:54 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d53807d7sm92539365e9.10.2026.04.10.00.26.35
+ 5b1f17b1804b1-488d681ed50sm14090595e9.15.2026.04.10.00.36.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Apr 2026 00:26:36 -0700 (PDT)
-Message-ID: <10540f3f-28b6-4cbb-9736-d6e8a01bdd76@redhat.com>
-Date: Fri, 10 Apr 2026 09:26:34 +0200
+ Fri, 10 Apr 2026 00:36:54 -0700 (PDT)
+Message-ID: <46116b64-c7a7-4d9a-bd99-a6b81fd45fed@redhat.com>
+Date: Fri, 10 Apr 2026 09:36:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] hw/arm/smmuv3-accel: Add helper for resolving auto
- parameters
+Subject: Re: [PATCH 02/11] hw/arm/smmuv3-accel: Implement "auto" value for
+ "ats"
 To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
@@ -93,25 +93,25 @@ Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
  <clg@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
  Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
 References: <20260401010231.4166776-1-nathanc@nvidia.com>
- <20260401010231.4166776-2-nathanc@nvidia.com>
+ <20260401010231.4166776-3-nathanc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260401010231.4166776-2-nathanc@nvidia.com>
+In-Reply-To: <20260401010231.4166776-3-nathanc@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Rizbp5LxC5f1xx1QT-mh-t3-SAYUSAPfF4HBPOkfrYY_1775805998
+X-Mimecast-MFC-PROC-ID: n64auC5MBki0mwN8esk3aurTqjmGWATwIkGCQ9nEDJw_1775806616
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,152 +128,81 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Nathan,
+
 
 On 4/1/26 3:02 AM, Nathan Chen wrote:
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Introduce smmuv3_accel_auto_finalise() to resolve properties that are
-> set to 'auto' for accelerated SMMUv3. This helper function allows
-> properties such as ats, ril, ssidsize, and oas support to be resolved
-> from host IOMMU capabilities via IOMMU_GET_HW_INFO.
+> Allow accelerated SMMUv3 Address Translation Services support property
+> to be derived from host IOMMU capabilities. Derive host values using
+> IOMMU_GET_HW_INFO, retrieving ATS capability from IDR0.
 >
-> Auto mode requires at least one cold-plugged device to retrieve and
-> finalise these properties. Register a machine_init_done notifier to
-> verify this requirement and fail boot if it is not met.
->
-> Hot-plugged devices into an accel SMMUv3-associated bus will re-use
-> the resolved host values from the initial cold-plug.
->
-> Subsequent patches will make use of this helper to resolve 'auto' to
-> what is reported by host IOMMU capabilities.
->
-> Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/arm/smmuv3-accel.c   | 14 ++++++++++++++
->  hw/arm/smmuv3-accel.h   |  2 ++
->  hw/arm/smmuv3.c         | 20 ++++++++++++++++++++
->  include/hw/arm/smmuv3.h |  2 ++
->  4 files changed, 38 insertions(+)
+>  hw/arm/smmuv3-accel.c | 10 ++++++++++
+>  hw/arm/smmuv3.c       |  7 +------
+>  2 files changed, 11 insertions(+), 6 deletions(-)
 >
 > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 65c2f44880..a0146c8d31 100644
+> index a0146c8d31..a835c8f220 100644
 > --- a/hw/arm/smmuv3-accel.c
 > +++ b/hw/arm/smmuv3-accel.c
-> @@ -35,11 +35,25 @@ static int smmuv3_oas_bits(uint32_t oas)
->      return map[oas];
->  }
+> @@ -44,6 +44,12 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s,
+>          return;
+>      }
 >  
-> +static void smmuv3_accel_auto_finalise(SMMUv3State *s,
-> +                                       struct iommu_hw_info_arm_smmuv3 *info) {
-> +    SMMUv3AccelState *accel = s->s_accel;
-> +
-> +    /* Return if no auto for any or finalised already */
-> +    if (!accel->auto_mode || accel->auto_finalised) {
-I think you need to explain the commit message when auto_mode is going
-to be set (I guess at least once an accel  prop is set to auto mode).
-
-Also can you detail this case where smmuv3_accel_auto_finalise() would
-be called several times. Here we return directly without looking again
-at the prop values. Would it be meaningful to continue and check the
-collected info matches the ones already collected? Can it happen?
-
-An alternative would have been to fall back to default values in case no
-cold plugged host dev could be found. Can you motivate that choice in
-the commit msg?
-> +        return;
+> +    /* Update ATS if auto from info */
+> +    if (s->ats == ON_OFF_AUTO_AUTO) {
+> +        s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS,
+> +                               FIELD_EX32(info->idr[0], IDR0, ATS));
 > +    }
 > +
-> +    accel->auto_finalised = true;
-> +}
-> +
->  static bool
->  smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->                                   struct iommu_hw_info_arm_smmuv3 *info,
->                                   Error **errp)
->  {
-> +    smmuv3_accel_auto_finalise(s, info);
-> +
->      /* QEMU SMMUv3 supports both linear and 2-level stream tables */
->      if (FIELD_EX32(info->idr[0], IDR0, STLEVEL) !=
->                  FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index dba6c71de5..3c1cd55714 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -26,6 +26,8 @@ typedef struct SMMUv3AccelState {
->      uint32_t bypass_hwpt_id;
->      uint32_t abort_hwpt_id;
->      QLIST_HEAD(, SMMUv3AccelDevice) device_list;
-> +    bool auto_mode;
-> +    bool auto_finalised;
->  } SMMUv3AccelState;
+>      accel->auto_finalised = true;
+>  }
 >  
->  typedef struct SMMUS1Hwpt {
+> @@ -938,4 +944,8 @@ void smmuv3_accel_init(SMMUv3State *s)
+>      s->s_accel = g_new0(SMMUv3AccelState, 1);
+>      bs->iommu_ops = &smmuv3_accel_ops;
+>      smmuv3_accel_as_init(s);
+> +
+> +    if (s->ats == ON_OFF_AUTO_AUTO) {
+> +        s->s_accel->auto_mode = true;
+> +    }
+>  }
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 7fead1c3cf..09ea08eb18 100644
+> index 09ea08eb18..f3603554e3 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -37,6 +37,7 @@
->  #include "smmuv3-accel.h"
->  #include "smmuv3-internal.h"
->  #include "smmu-internal.h"
-> +#include "system/system.h"
+> @@ -1973,10 +1973,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>      }
+>  #endif
 >  
->  #define PTW_RECORD_FAULT(ptw_info, cfg) (((ptw_info).stage == SMMU_STAGE_1 && \
->                                          (cfg)->record_faults) || \
-> @@ -2020,6 +2021,22 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->      return true;
->  }
->  
-> +static void smmuv3_machine_done(Notifier *notifier, void *data)
-> +{
-> +    SMMUv3State *s = container_of(notifier, SMMUv3State, machine_done);
-> +    SMMUv3AccelState *accel = s->s_accel;
-> +
-> +    if (!s->accel) {
-> +        return;
-> +    }
-> +
-> +    if (accel->auto_mode && !accel->auto_finalised) {
-> +        error_report("arm-smmuv3 accel=on with 'auto' properties requires "
-> +                     "at least one cold-plugged VFIO device");
-> +        exit(1);
-> +    }
-> +}
-> +
->  static void smmu_realize(DeviceState *d, Error **errp)
->  {
->      SMMUState *sys = ARM_SMMU(d);
-> @@ -2058,6 +2075,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
->  
->      smmu_init_irq(s, dev);
->      smmuv3_init_id_regs(s);
-> +
-> +    s->machine_done.notify = smmuv3_machine_done;
-> +    qemu_add_machine_init_done_notifier(&s->machine_done);
-can't you move smmuv3_machine_done in smmuv3-accel.c and also call 
+> -    if (s->ats == ON_OFF_AUTO_AUTO) {
+> -        error_setg(errp, "ats auto mode is not supported");
+> -        return false;
+> -    }
+>      if (s->ril == ON_OFF_AUTO_AUTO) {
+>          error_setg(errp, "ril auto mode is not supported");
+>          return false;
+> @@ -2196,8 +2192,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>          "is not supported.");
+>      object_class_property_set_description(klass, "ats",
+>          "Enable/disable ATS support (for accel=on). Please ensure host "
+> -        "platform has ATS support before enabling this. ats=auto is not "
+> -        "supported.");
+I would explicitly mention that auto value is supported.
+Maybe:
+Set ATS support. Valid values are off/on/auto. If set to on, make sure
+the host platform supports ATS.
 
-qemu_add_machine_init_done_notifier from smmuv3_accel_init()?
+You have examples in hw/arm/virt.c. For instance msi option.
+
+Also note that the doc in qemu-options.hx must also be updated. 
 
 Eric
-
->  }
->  
->  static const VMStateDescription vmstate_smmuv3_queue = {
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 82f18eb090..fe0493c1aa 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -74,6 +74,8 @@ struct SMMUv3State {
->      OnOffAuto ats;
->      OasMode oas;
->      SsidSizeMode ssidsize;
-> +
-> +    Notifier machine_done;
->  };
->  
->  typedef enum {
+> +        "platform has ATS support before enabling this.");
+>      object_class_property_set_description(klass, "oas",
+>          "Specify Output Address Size (for accel=on). Supported values "
+>          "are 44 or 48 bits. Defaults to 44 bits. oas=auto is not "
 
 

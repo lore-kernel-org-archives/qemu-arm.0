@@ -4,108 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E54FF44850
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 12:31:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766B6F44872
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 14:13:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBB0e-0006wK-Aw; Fri, 10 Apr 2026 08:30:52 -0400
+	id 1wBCc9-0006KM-Ti; Fri, 10 Apr 2026 10:13:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBB0a-0006vK-GG
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 08:30:49 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ id 1wBCc8-0006Jw-Dm
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 10:13:40 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBB0X-0005Vh-9n
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 08:30:48 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-7982c3b7dfcso19640207b3.0
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 05:30:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775824244; cv=none;
+ id 1wBCc6-0004F2-LC
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 10:13:40 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-6500040ef83so1598455d50.2
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 07:13:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775830417; cv=none;
  d=google.com; s=arc-20240605;
- b=XnyyWc5X5wxAoe3wnNws7eOxhiqfKI0qEBXgoczLV0zUp7+Jlh8wcQHMY2/vANWbCl
- 9j6ZXCaDOED+HX/jjOWb679Mpph+XnhH/k04pQb5UZ/nIv83Qf9505cvWHuunn926D2k
- SEXdrV0UQrJ3NiWoYBlAMVS/k4AXoMgjua2QZu1REBcjBdZxswLnGMh1vh0EhgSnYpcV
- 4Mf5c1gOHfpxf4KfsxKuCpWTkg1x3Dk8hdkXE4q24AVWM77eN2Z1fV6B70NuYXl4mtfS
- B79xZZc9UklpK3tKkHtAao9obUD4jli+v/Hn/CyGTCk/01VWDmPSXy/nUQ2IUU1Goitc
- J1Bg==
+ b=dlvEeMbBkZVa6LDmgG1NTlqweLGRRMSL2lGq3Pz9Fjsd086nc+9p0Z6J0vZUfdEz+p
+ /8U15Z+fVroSXNtFuERpky4D9LeE4YF66rDlbpESylR/T1SFHxU44qzTV3Q5jatU06mW
+ PK49j6RAcP14aqCUaLASAd4YP21brpcrMFWAAujyKsqwwGKW2FxQrtLTHXd38ymyMXXZ
+ b4KCHjTwjDq1S8CHf8jhml6jtVOz8c/mYDqIG05XOJVsgDLVW/ty99IjjI1jLlrbtD8L
+ /GGKisztzzp9qj+YM8lpC+IjU9djLriU7JG5dV5Jyz3EyIuEUmmhxV1ndi3PmlT+D5P1
+ /2XA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=Q54P+QY5eLcs+bEYW+DP+kazlntJyFpVKynFXeKamNE=;
- fh=UM/ejAYhbo+x/Bp0E5YKes14+Nq2XGc8VRLDoum6lWQ=;
- b=QEfb7kKT9Iz2xbmCq9jMSlKFVA7G10s4+GwH5EqrY4wm35KJ/H3thRTvnrk+Ws2RAE
- ThIFgyykt5mYuTTq7WsMNnwP3H3voUAuEbxPsw9jaDgn3z13ZOUz3lGrGiOc/DvHZ/dw
- 8Vwq5IHLjnsqvNCmT+tjQkDUiREQt4VrwXSPW92z4M6UvnJQVMm7LVP5jxqeCojyR5Pu
- 7ezKr0qhhOB8Elz2bTZ0C/U6mD9ihqgkiRR71zfpXFYKxxuEz8DfZaGCovzXEsv25AxF
- BEiTHly1LSKm2Vx4EMV0DCuw75mchesZ4JE++yBV669nEd5jxRry3B7FsrSzJhKZNSLU
- 2dqg==; darn=nongnu.org
+ bh=dcFSwKB/i4h0goNEkkeG2RnmUVWnuiSUwfDCK6YZJxI=;
+ fh=JVAIGIzPaht3BKOM6xgl9MP9KsRH7oeGvQppwaxeHjg=;
+ b=i81QHkovnVNBdJfQjBiPl107sjx6BvkeWLLKpwQJKes1rElyVSEYgbBUfcx0WDwFwP
+ d/NLaKD4Cseaa2r6nrffoSCtrtSOR4RVm6qBkp0rOZUGXzGh8V2ZgZkdir0kG20RZ/ga
+ meo+EtLkxZMLL1se/yMl0xoZQpoLsLooyHepUqUa8VE9B4lOLcljP4NFTo5iFzVoLcs3
+ 74ivtbmQNLgkjVH/f/gvy19ZbOVkf1qAeFT3ZJHg/FA2pW+9fkQ6PuZk1kfoql1Nfbyr
+ BJWihEvdT9wZq+0q3JkSYZOOAfnjNfEMNREskdDE7axv1MrdAlwm4yLA7qSfECQJuyRF
+ cO3Q==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775824244; x=1776429044; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775830417; x=1776435217; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Q54P+QY5eLcs+bEYW+DP+kazlntJyFpVKynFXeKamNE=;
- b=eANSLNW9IoJAnnQHSUtHrf0FUEuTr9boiTjaNJnh551m3xSKgJTnDgE/EG/INX0OVC
- g5HcwjdrL+JAycJz+NJuTUpf39ECVMcUSjDhdsf8YB94ad9GhDLVn6uV6PxWGahAdkfW
- re5xROGsJctMjcVxlKYz+nqGY4gzpTip9RqkE10WcXQ35u/S/ah6/sPafTJA02lYilar
- NLMPiaZIGdJkh8TGZ7c+tXpKn00iQkbecT5JvpthtB2FxEdpzRZEPAgE31mSwMlZzhSX
- 8D5hUq3dUeFsl3wR0WjSQrrh2pZ/8XiGpqA/RGX/5hsDn/0h4Trlse3x2U6EUNcTfFW3
- sb2g==
+ bh=dcFSwKB/i4h0goNEkkeG2RnmUVWnuiSUwfDCK6YZJxI=;
+ b=WjpNlCmbo66wUjZU7UV1YquMiY0hs86JeTZXeH7HCXxIf0BTnd9L2JyFC8Y5cU/RDI
+ 6Xzg6spAZ/2/kX81ilj60Gz36J7eFKYJ4viZYXW3H2u82f17gLl/MJ5cJbeC5G7R7wno
+ 2BFsMmGm1x0111msQw1FnC0dhc/83cu41t214vHThVKYMyrJEVU608qCcCunep70AqdH
+ XFXGtUC6D1A50ljX25wbiv53bL3LKKOOo1AX1OO8Jc/UkWZn7yvyfe5CknaZ2X48SjRa
+ 7zT/noB6OLXrq4z75KesLGO2Cs/CqHegU1YK9y9HrA1bgt8UIYnojK0TysEkO4QUJTCa
+ H3ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775824244; x=1776429044;
+ d=1e100.net; s=20251104; t=1775830417; x=1776435217;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Q54P+QY5eLcs+bEYW+DP+kazlntJyFpVKynFXeKamNE=;
- b=kD/biCJZirUCMJdEvC5MyYElnLpW5M4Fu9Bh4WdsdJP0BXhFn1wsmC1JiT2DiyyFWe
- wYT0MVx6PFbihj0thsl+GjMxRSAMPuWGME7nJPuR0wUGMiXUqOtGj5iQEXcHsGfnZzuf
- z/rIzPdTTa4w0N1j/yazrfxIBvMV8XRWwxZbvzYdF7RT/TgH8uYkLF+ahvQZGV+GiGEh
- QCAnD7nCtAjKal2YRn2H3JqGkBYh+32i61qXW9Kr1fUzdFBiUl4OYrNmupew/n+rPDu7
- KPs6oVrpct4846yMuH3mAJQKMWXH2eVk+K4VbyKwyrU5x2IU274/xgEE+3LFAXDPckrl
- 7iXg==
+ bh=dcFSwKB/i4h0goNEkkeG2RnmUVWnuiSUwfDCK6YZJxI=;
+ b=Yg96W/Bg+7vY5bwPNwhqDcNqglh3DXBMfGAVv9S9DR0bk5xM0UgieV19snHwXHckZ/
+ jG6Jc3MTtZbHuW6F/utS9tr2tWc2oeUC8ttUxzHYj8Y9m7wDFlsLoNdmb+w/2AXmfu1h
+ tUOXRLQZ4dYgF7tF9oHSQFKBCOgFNdqGjHoZup9jViA/CqUVXs14upszS/+Cq3yEy1ee
+ HpDRv1SD5sU+8PZEc7ristGSZLYwCLmbl3fYHEO6kedO6y3SneCZ+Mu/3ZIs8eokCdDk
+ zAJANiozbFjRwfPZcccYeYVwekULC4ejOkzcjzEyJstZ/bicyx4YxV2FeWziIu/atrKM
+ M0Kg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfV40De6ePsQthB2jLTWzdDL5Y4NJCuUcrTVIN5SjoCQcVz4ekfk5zNXls/cTIIsHleUCEsl27/A==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+zL3NXbxDxzgCdfZN9fXqx0DRAaYdH+9fhJcz+e7v591n1wE8
- 6qKegqGWly5veh8RaPtBMYXXdawJKR72q4Dt5p22m8aUDL2zeQf2ScXaHAX6/8Mi2Lk0Pjgw1x0
- ft78BX5xrPngyJBv9BQtVaIpXFHfkQVKM/CTovP6StQ==
-X-Gm-Gg: AeBDievU9JhwJJrm2TPupbEPGbwSly+yGPoWyUJ09H/LrI9dBXY570zRKx9JK5+Lze4
- 8CRLfoNAo08HR3cPA+36hwrkUO4ZRZZlA/DxyOTPbZVRvCIhrUVRoYHWRdW1L6vq1qaoYOlol99
- ILX6OtClOkgxxZtpQJ9pHOkDPuVRKkfpFytWdL8xN/bxhp1O36jQRjSxETA3VMLbKVAov3zCX3o
- cH5IX/43kHF+qbzz6mMDNKBIUbTCHZdokTH8mQnAkfLLSeHNrAGOnnf4PlK7c4KmeNEXY8TKcEh
- saFTDSO/bNIy2KVu9e9kwY9HRWfD1tMIJ9Xr+jOFVbsXecf3UU3l36dSrX+QBZah8Q0=
-X-Received: by 2002:a05:690c:1d:b0:798:1636:c330 with SMTP id
- 00721157ae682-7af70f92613mr31071027b3.34.1775824243407; Fri, 10 Apr 2026
- 05:30:43 -0700 (PDT)
+ AJvYcCXB62Zi0J4eApRLkTF6xSqYcVOvo3mOwlxFPSi1PPLvI2OTE48oT4FbXepkC3+Ho5n42szSQleBgQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwSnPwNWRjMt2nOykSFHFqYlhIYu9NZnHxEH5JFV09C0zI6mmKZ
+ RLf6Sd2iyomGQTGGceTBMx6CMbT9Thk5ZY6cqLlWdl/vyGJFxm7Bz4ebdqc2iZoPl2ecoGfegYB
+ NxcP+nHOKI/GR+/xTzU76KycS/Uc3Wep2SVPxgodPiw==
+X-Gm-Gg: AeBDiesk1SjDwgrabRTix5x06hy6ba4Fia+1w39mZLkBgm6h2ep4FnDmKuy5q9gG23I
+ UomnJ2Wc15xwA3HOb+OMNSd0GIZ4zZEXffrw7gTfxyYktzqel06cTEQnz4WbOXiKsKfA9sMEXpb
+ MLyufeJ0DBGtNOhVFljo0EEUvSaPmrD7ecxrVO62e7HEWZkR3uQmUXae8ALYbGwiw15JA6izmMr
+ rNj/trkIT2hdzcbIjM+FpZmrEYMP4PtSACKER4+waoE+Yjz3a71pXsOUGROfVN9yY7JMn/aUs8v
+ gadC+o/Wr/+rEdE6bNAEPXglmZDobqL/jhTZttjDMqgEI3GkJfXg/qMlH3cBFAXLJyk=
+X-Received: by 2002:a05:690e:4805:b0:650:11b3:3f4e with SMTP id
+ 956f58d0204a3-65198b79118mr2156872d50.32.1775830416839; Fri, 10 Apr 2026
+ 07:13:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260311-edk2_arm_serial-v1-1-c25e237116f3@redhat.com>
- <0b4976f9-cf83-47b4-8f00-cc68c9cf47fd@linaro.org>
- <abkPy4Xzf6YT6g5Y@sirius.home.kraxel.org>
-In-Reply-To: <abkPy4Xzf6YT6g5Y@sirius.home.kraxel.org>
+References: <20260317175744.32469-1-lucaaamaral@gmail.com>
+ <20260409175234.40792-1-lucaaamaral@gmail.com>
+ <CAFEAcA8rF3nuUTd7ARkcGpr-sA1DYJEJc-2E_URQt6nr8u6cGQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA8rF3nuUTd7ARkcGpr-sA1DYJEJc-2E_URQt6nr8u6cGQ@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Apr 2026 13:30:32 +0100
-X-Gm-Features: AQROBzCubG18WzVTiDLxr79n2IPv6VzrMuAtq1k1JzwsujFiRd8nXOboDTBEEZE
-Message-ID: <CAFEAcA-dTkoKs0tgF+VV0PayFbDcmH_t64P6AOT18ShwEKTW_g@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: add serial-debug-level property for EDK2
- firmware
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Luigi Leonardi <leonardi@redhat.com>, 
- qemu-devel@nongnu.org, Oliver Steffen <osteffen@redhat.com>,
- qemu-arm@nongnu.org
+Date: Fri, 10 Apr 2026 15:13:25 +0100
+X-Gm-Features: AQROBzDDV4jGlHSK8JpeZCg-ImgoIv_V70hqgdKYGugzRrtjquLdfSjIzE6IZEk
+Message-ID: <CAFEAcA9587cZ+oOv2t6No6eBJdR9gxow8RFqy-JN=7OH3xk7HA@mail.gmail.com>
+Subject: Re: [PATCH v4 0/3] hvf: map granule abstraction, configurable IPA,
+ and MAP_FIXED alignment fix
+To: Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, agraf@csgraf.de, 
+ mohamed@unpredictable.fr, alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,78 +119,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 17 Mar 2026 at 08:45, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Thu, 9 Apr 2026 at 20:06, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> On Wed, Mar 11, 2026 at 03:24:04PM -0700, Pierrick Bouvier wrote:
-> > Hi Luigi,
+> On Thu, 9 Apr 2026 at 18:52, Lucas Amaral <lucaaamaral@gmail.com> wrote:
 > >
-> > On 3/11/26 6:43 AM, Luigi Leonardi wrote:
-> > > Add a machine property to pass a debug level to EDK2 firmware via the
-> > > device tree. The value is set as an "edk2,debug-level" property on all
-> > > pl011 UART nodes.
-> > >
-> > > This is to create a runtime parameter to set the verbosity of the debug
-> > > log on the serial ports in edk2. Currently, the only way to set the
-> > > verbosity is a compile-time option.
-> > >
-> > > DT is used because the fw_cfg interface is not yet initialized in early
-> > > boot phases.
-> > >
-> > > Corresponding edk2 PR: https://github.com/tianocore/edk2/pull/12277
-> > >
-> > > Suggested-by: Gerd Hoffmann <kraxel@redhat.com>
-> > > Signed-off-by: Luigi Leonardi <leonardi@redhat.com>
-> > > ---
-> > >   docs/system/arm/virt.rst |  6 ++++++
-> > >   hw/arm/virt.c            | 38 ++++++++++++++++++++++++++++++++++++++
-> > >   include/hw/arm/virt.h    |  2 ++
-> > >   3 files changed, 46 insertions(+)
-> > >
+> > Ping.
 > >
-> > I am not sure if maintainer want to have bootloader specific options in
-> > machine code.
+> > https://patchew.org/QEMU/20260317175744.32469-1-lucaaamaral@gmail.com/
+> >
+> > Mohamed gave Reviewed-by on v2 (nits addressed in v3/v4). Patches still
+> > apply cleanly on current master.
 >
-> Does that mean "yes" or "no" or "maybe" ?
->
-> Some background:  Traditionally firmware logging in edk2/ArmVirtPkg is a
-> compile time option, so typically distributions ship two builds, one
-> with logging turned on and one with logging turned off.
->
-> Last year edk2 got support for logging to a memory buffer which can be
-> accessed from the booted OS or via qemu monitor.  Ideally we have this
-> always enabled, but without also spamming the serial console with the
-> firmware log (by default).  While working on that it would be nice to
-> also get rid of the two builds by moving from a compile time to a
-> runtime switch for the serial debug log.
->
-> > Alternatively, it's possible to dump virt dtb, modify it, and pass it.
-> > $ ./build/qemu-system-aarch64 -M virt,dtb=file.dtb
-> > $ ... modify dt ...
-> > $ ./build/qemu-system-aarch64 -M virt,dtb=file.dtb
->
-> I'd like to have something more convenient than that to turn on firmware
-> debug logging.
->
-> On x86 we have a dedicated device for firmware logging (isa-debugcon),
-> so logging can be easily enabled on the qemu command line by adding that
-> device.
->
-> So the idea here is to have a dt property added to serial port to
-> setup firmware logging, so we have something roughly comparable to the
-> x86 functionality ...
+> This is on my todo list to look at; I've been prioritizing 11.0
+> work while we're in freeze.
 
-My rough rule of thumb for DT properties is "if it is a binding
-officially documented in the binding specs in the kernel with
-the relevant semantics, then OK"; but not ad-hoc bootloader
-specific stuff (we have turned down requests from u-boot for that
-in the past).
+None of these patches seem to have reviewed-by tags. Mohamed,
+Alex B, would you mind taking a look at them ?
 
-Would using the fw_cfg mechanism work here? That's intended for
-passing configuration info (and "how verbose should debug be"
-seems like configuration info), and we already have a command
-line interface for it:
- -fw_cfg name=edk2/debug-level,string=1
-(or whatever). You could also then use the same mechanism for x86.
+The question that comes to my mind is whether the two places
+changed in accel/hvf to look at hvf_get_map_granule() really
+are the only two places in the whole of QEMU where we call
+qemu_real_host_page_size() and expect it to be also the guest
+page size. The general idea of "guest page size might not be
+the same as the host page size QEMU itself gets" isn't hvf
+specific -- maybe we should have a qemu_guest_page_size()
+function ?
 
+thanks
 -- PMM
 

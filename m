@@ -4,99 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C886EF44845
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 11:59:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11233F44846
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 11:59:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBAVs-0003oy-TB; Fri, 10 Apr 2026 07:59:04 -0400
+	id 1wBAWb-0004V1-0B; Fri, 10 Apr 2026 07:59:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBAVr-0003oa-Oi
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:03 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1wBAWZ-0004US-AG
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:47 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBAVq-00049F-DW
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:03 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-65005a8840dso1953137d50.0
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 04:59:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775822341; cv=none;
+ id 1wBAWX-0004Bm-UW
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:47 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-64edf260b49so2978371d50.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 04:59:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775822384; cv=none;
  d=google.com; s=arc-20240605;
- b=HfGtHJH5502zy1wAD9jfVk0GSKJt3hK96RpJfEpFsJhdJtpY+mAxP5EiMWMCv3rtgR
- hWA6c252udLHG9ttwwsk5t2m7k+2aFDmVy3J1eKzNoVZYDXWRLP+Pqv/xRExlLvgNbUe
- QOhEYhnHDLTbDNebpNcbK8VT1XilUanh6p10i1gvi0Ylg/edMgmfasFvYbFeZ6I4LkM9
- KK29iKhk/zZC42pWUB3yR87r92Y+4hJzJjoFiPa5uiPTQpzPsPIDVuMArRrVfanNCH7U
- 3zj4RWZqFGYvqued7nzzJw0zQ4uze9R/Z5ZfA7dicy1/5MM8QAh/nOstvcpuiTI5DlF8
- ZKfQ==
+ b=OyveWqJ6WQob19W+rZANP2xTxjGLoKGjhyqBWFv9rzpY2EQD2CXMH5/1ffab3JQmYa
+ axEDCPkdmKhWGH1wkPrddetppP3Bc9ga27JNVazSYG8/jD/1Q+CbT88WfThWqBzL9FRw
+ bSKMfPDCl5D3MhQ9VNk4jlg3EJlrF6Jdle137XuUQblRAj60zWmKLEnU5ByZGQiWpwEw
+ DGb182h53fCuu2MI+JAJsP147Y+ys60dmtdmmERAXwIsCuBLgTOpM/lI4d/qxonqgiuF
+ 5NImbgIRKrvGB6n30h8D258slUnHcnbXQx5Xwfl04NokvIH9cwYN7/b6PgHM+4bCQIFD
+ k5qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
- fh=6BIEedL+cu+ik6ig294tU5OKUSSxa+f1RD1181jjF6c=;
- b=EhzH/HNbcq0A0z3qP91k0yOr83EsEvtqVOGOYzdV1HD3W37J8loGGX08onJQYHE8Tr
- 8roT+BWjzfhsIBFy+IfiQfWxoQCJcoelXGh4wx71DDOGqR7DVJyYRAAdNdKLRIe/JmiP
- RIz+yHwpbFNrvZT/cKijH6CsZT2EyDIxrSH2rYR3vIOjiZQS+LKj3TB2mBptjc/m87I+
- Ep9zyVpIybILqxVIpNpFOlvgrYAlwgLMspRfjzOlWM1TTuDS8SKeF5a4GA6HxsW1981S
- bFQsR/DrYHMRISpLY/6GaRbRn19YQyhImjQBZwQLtmmCN38ULdYjyZUvRRiyc5RrQQj4
- XGXg==; darn=nongnu.org
+ bh=3D40mIBQsPhv5w8N5dbt3L4osa2H/vn6qkOsV7LlUcw=;
+ fh=bksjQORJBCEfw0SHKa1nKgVuWJZubyxYASalQkCn4n8=;
+ b=DiG3Cb5/tWsWovNkteCe26orRy6dDld4KA8eZKxq7hT28ODUT+pCYZdgXKPf7n9j4i
+ 7P29gnBCz18fPq44+nKhRygB6XONCmoBbLuOYnm84Ec4ScEZareoVenQqmER3vxA463B
+ zj3xyxEE/oLGhn7hxwmdD79Ky808/7+tYUV9KpMSW8GaNj1cKwZcit2xn/oeTUWFf61Y
+ ukuDvYetB0Kh1D1Aqxj6gsbcsVr/0UECLP0U7/Di5QuktMhq+oJnyXKkc/jyw3ELdHPh
+ wcUxk4wqoBs/5mVOXytJeQXczfnh1U+PbeQq1j/lUDSY75t6va5suLSm/1LCgZCQoVqr
+ RHsA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775822341; x=1776427141; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775822384; x=1776427184; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
- b=EplyAS7/BPoeEETQEL0j6+XEk0d+FGJhlGAep7Q/nEpee/yidp0kSiTHACw2D3uIc3
- 63ASi6VyWOBizwyu0/j38eTR3VhCowRxLyGEQLpd/KjiL0xW0SqTv56WXZxG7G++XNUW
- VLDPHniJS45Ci+0a+YKojOLWYTDAvbO4PpsVnWvLcRi03z28dVofxRSLdMMK4eixyQtl
- UQbgmqkUnpzBT9dz0g/WIxPPEEfXKQwoxjNIXxU+k8kpV9OAq6EtFi5B1v75Xe4qNkbr
- MLznJmIGJnWYkhEnW21OBO5CMugQAUdI9gIGTFD2QChfWSR7ZDruZrxzTsd4hOuo6Nhe
- Sfrw==
+ bh=3D40mIBQsPhv5w8N5dbt3L4osa2H/vn6qkOsV7LlUcw=;
+ b=uL/ZGSwj3aXScLtfnZYsxom+5KzMiNkNVQik3o9ZGsxDdOnbxwaaOiZsvGzkO3OkVq
+ A5bUi3FI4Hm8UQ1SZKhuPcZIlgQAqUs77FkP9W8Z4IU5EHpCBtpfv1sK5QD/wHCdcMdp
+ b4BpDSYLcsUuIOECxO/T19nuMghtTyLrHPcZ162/furazzRqGByoQKjGaOCS5Y8CxIaS
+ blOQDK7rFaUZIz2PJ11Pp8Rusvhnx7p6nKK0GDQse8rvouaDV/s9gOR6SkP7nA3SLUjR
+ o28U7uVnV/jpaCy9v8l1RBJb9sCsK3fdZhLRrFCNB1l9fPiGiGiNwUkp/qAXAabXA8Mw
+ 7KHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775822341; x=1776427141;
+ d=1e100.net; s=20251104; t=1775822384; x=1776427184;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
- b=eo6WFfLqVNJtfSJQ9k9jJXjEKEqICp3SGGQss8bgCDLzjj/Pl5au6jE4MfBTtGlZNT
- VeURywdM2hvrAb2uOPflEm+yod+jcQWiohe+Nk7m9LAJZnq9QXJyGf0XT7p7M41sH4Ua
- ZlmVuKoHC5WikqEbeND7X/+892MF65XXZG7lOLuaIdmEuio5cGT8dB3c7GVSYVPY9IMG
- CkGyzLpXqauFzo/dh/6tyzIbmmZtJhqCRBvs/lxJzdqkCmwz5C+BcMzTML4dS2+YP3t7
- lx+EFGIwDKI2j9nSEApjpsCd5xu6/DURmD+88uxTtpHJZVLMh0M4DqVAksXmkSfvJiu2
- OC2w==
+ bh=3D40mIBQsPhv5w8N5dbt3L4osa2H/vn6qkOsV7LlUcw=;
+ b=lMxRxcoIIn73htEIVxjzZVkOfZSTPMUnqKwo9IpHYaT5Cp7Rv09oczaO5lkmdqNgA6
+ Ot5P+lS9nyEhYHBvdIT2Ct7y/LyY5y0UjdsBFrmYjWWCAw/v1cfCplUjCM5Rc8zFL0ss
+ nVLW6sjwQLHZXi5/T+PrLbZo1hgyqTK5BiQXvy/vncB9Dqli4MevzgXR/pdGnH5jR6QX
+ BOEat7H1x8UUuj+bRMDa4iXLlJV2UqN1pYVL7bwaL7DR0/ge7Nz9lU3CxgAtUhnFWDVU
+ Ka5xgSUmCMzYy+ouo6/Yc/Y+W4FaM3vfZ4BW3ACn10vlEob/6B3b4i/f+dTdn9FpAKCy
+ oEzA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXatK2r71eGBLAyimmOHDCNQy4spKD5xLDJXQPDA8LG1pydlYHT1DKcanzePI8dgncw5Y9RsHYCUA==@nongnu.org
-X-Gm-Message-State: AOJu0YwdpUjMzKgwCl0J5sF3j5yyp7SBVuepbpk8YNqiyJHEH/hBLA6/
- GVlMxVkocSHnkwjsCw7ZII3ceDwMC5+xBdK6xyZmNLBs4A1a7aWeDX/2l5uBtze1tKOZNawUYkw
- UhUMCL/FZlksnz777WdUszlqqnXW/DL29ox5DbYRQeg==
-X-Gm-Gg: AeBDiespMf9m0NHURzBhTWsIBmC+77q8rhThhjGxc8TGprOWW63lGQlxBbiK0LiPAxN
- S7gtTwqcHFSDkYVerk/f37Ls7TNKPagcOzJfLnTDUuApk3zOCU63C6s4wXjrQBReyffEQteBC7j
- 6TpOBLd7N8ejQD7mXJOZmBJU5OdYGv0ZzYAHVU6GSJGgvzkUxq5oMr4v8MnfmttQ0MC2tqWvP8P
- KK5AzyvsS3KZtlUsYm0en8dGxWm3/Czf7k9vwTRjAWf8F/uuIz+zkXe9iJzFm9PS29EG28tiXeg
- 9d+b9NISNLuMCXZj5ComiJReA3YokbSrbyiVwFgjteApLBuO1Jh4H04OaeVYHEG7ecQ=
-X-Received: by 2002:a05:690e:4393:b0:64e:e47b:2476 with SMTP id
- 956f58d0204a3-65198bcf642mr1703703d50.43.1775822341334; Fri, 10 Apr 2026
- 04:59:01 -0700 (PDT)
+ AJvYcCU5BGt5fHs9ZyThy5aK3FvOyZQKplRm5UbjdDluEmtYPakbBTYBIbg3lrOR2yLDA5t1axZ+SiBYdA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzgy5/1WLchANMNcpfX6nJJLQEtNUKmcwKJAkNIgJez7ibhBDXU
+ SZOFxV2NjjSVPqAdjfxbQb3EVeIBJgCLS3RSl2dmcI5wENEh2QTNNy60yhRbyTwaG/aYe9niLZT
+ gozSfRGDJP2ir+aIqUyCnO7VDyQ45QIltGNC11r8+DQ==
+X-Gm-Gg: AeBDieuqRxyTM8eT1FAKEbQGcAGT2KHentoK1T23/WQKHwGBRpwj3wS+Yu+SunVeAoV
+ 1asHx1h1Y+ce6oxcl1SJX7e9HYUs4qV+TA7s7lZUyp+0UctcbTAYQueZ0LR1F5bvFRrOjJPIug7
+ gutXpGDrA4VIV1nUM6rZIeRxL42p/TU457j4dVUIFMznbX/yHgypFbURRFcon2mi2F4GdsDjY1C
+ AfKU/DQYyrxNK7bz9yVyCrEg/1ugEywIZMkjmXqGPHZ8tpIKOSU5x4cGWvuuD7P6go9hTl0mjl6
+ h7qoJ0E+1cTxlXiCxw9mZW5lcxH8preUzq2EN4lNK5maBafneGcPFbIc2N9tE/9uCeC5kBgxSH/
+ ktw==
+X-Received: by 2002:a05:690e:c4f:b0:651:878b:d819 with SMTP id
+ 956f58d0204a3-65199058a4emr1998205d50.17.1775822384027; Fri, 10 Apr 2026
+ 04:59:44 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260306150302.203112-1-eric.auger@redhat.com>
- <20260306150302.203112-6-eric.auger@redhat.com>
-In-Reply-To: <20260306150302.203112-6-eric.auger@redhat.com>
+ <20260306150302.203112-7-eric.auger@redhat.com>
+In-Reply-To: <20260306150302.203112-7-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Apr 2026 12:58:49 +0100
-X-Gm-Features: AQROBzCe68DrKNa960VUelWx6OeNeQ_U0UpAv8Ph1hRmXTGHd4HpysiP_1n9EzA
-Message-ID: <CAFEAcA80Lb0ZskKwLxSL1tKSLT=D=CpSek7ghQnypkHmQcyZ3A@mail.gmail.com>
-Subject: Re: [PATCH v9 5/6] target/arm/helper: Define cpreg migration
- tolerance for DGBDTR_EL0
+Date: Fri, 10 Apr 2026 12:59:31 +0100
+X-Gm-Features: AQROBzCGRD1e_255lIV7RPpsBrErU3yJsmgWz6BLzMstGlZ2JBe-TbfABlhrWnI
+Message-ID: <CAFEAcA8WjE7gJOKJULcBKAu=hbmu3rx_7sj3br4n7xhxeFSatA@mail.gmail.com>
+Subject: Re: [PATCH v9 6/6] Revert "target/arm: Reinstate bogus AArch32
+ DBGDTRTX register for migration compat"
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,39 +122,16 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, 6 Mar 2026 at 15:03, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> We want to remove AArch32 DBGDTRTX which was erroneously exposed.
-> This was attempted by 655659a74a36b ("target/arm: Correct encoding
-> of Debug Communications Channel registers") but it was discovered
-> that the removal of this debug register broke forward migration on
-> TCG. Now we have the cpreg migration tolerance infrastructure, we
-> can declare one for the DBGDTRTX. This allow to revert the reinstate
-> patch.
+> This reverts commit 4f2b82f60431 ("target/arm: Reinstate bogus AArch32
+> DBGDTRTX register for migration compat). We don't need that commit
+> anymore as the AArch32 DBGDTRTX register is declared to
+> be safe to ignore in the incoming migration stream.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > Reviewed-by: Sebastian Ott <sebott@redhat.com>
 > ---
->  target/arm/helper.c | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 7389f2988c4..3cba62705dc 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6426,9 +6426,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->              .fgt = FGT_CLIDR_EL1,
->              .resetvalue = GET_IDREG(isar, CLIDR)
->          };
-> +        uint64_t dbgtr_el0_kvmidx =
-> +            cpreg_to_kvm_id(ENCODE_CP_REG(14, 0, 1, 0, 5, 3, 0));
-> +
->          define_one_arm_cp_reg(cpu, &clidr);
->          define_arm_cp_regs(cpu, v7_cp_reginfo);
->          define_debug_regs(cpu);
-> +        arm_register_cpreg_mig_tolerance(cpu, dbgtr_el0_kvmidx,
-> +                                         0, 0, ToleranceNotOnBothEnds);
 
-
-This needs a comment to explain why we're doing it.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

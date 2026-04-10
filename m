@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98EEBF45A0D
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 20:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B000CF45A0A
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 20:01:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBI21-0007P6-Po; Fri, 10 Apr 2026 16:00:47 -0400
+	id 1wBI28-0007Sz-9B; Fri, 10 Apr 2026 16:00:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI1z-0007Oj-Rm
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:43 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI27-0007SP-KS
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:51 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI1y-0006bj-9p
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:43 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-488a9033b2cso28807675e9.2
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 13:00:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI25-0006dc-Au
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:51 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-488b00ed86fso25920555e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 13:00:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775851241; x=1776456041; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775851248; x=1776456048; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Qsggwi5zbpivKYu9vxgPsRTzFrjprzvcyLLml3Oa1F4=;
- b=NGTGoFjN6Peqk52B2QhZDDzyYEDg8UuIo2fXVmlll/9aOk99btm3mTQWDga219toLo
- Zo03pJ3RQGfT5TQw3hT/8zHK93wWTJbevO97TxLfY3o87OXQIlHaTJ/bCU/14OA15qw+
- CKyk2fbe+eKAMIxpm/L+llJB+hbxLh10p6ioLo/nCL8DTtMq57pR5LUWVfo9425BSWHr
- imWFlWSYtM8BxvYu6hRTCEC6Q2PPSAqPC87vYsEfAyYIstj2u9kN+iHEo+LCaTkpedhU
- dTpzm5MXjteBc+AaZkTwE6M5FF2AaEvQKO2BVVSM4Keib+falxNUPzoec3ToYunfGZQs
- AwoA==
+ bh=L/8LV952pK5R/dwzOOVcbtAx4yBXkRtXe7hKkHgXjLA=;
+ b=DoiyVipYnVk1eOV6f9pAj8GBuz1p7BZRRDAhm8HGCjZeiyLb/wKivgP033uM6/FWGr
+ u1f/pBpSejpV0criwBvAchw3HJzy+VLpi5qtYv+RUAw/z4AFJNy2JrpO6SMrbJBSFs0O
+ unJmmyIjIhjRbm4yKm9NgcwVfHzp0FCSleyfkG3dfks45uWn2eJys+BCFC8iq43l7zRo
+ H5tBCge/hA9cmIlg8dIQM2ByZv08mNWxqo3Le0t6sOBx3S8BzckCY0ZbQK7PRhfi7hd8
+ hhOkRuwQjkgAKtp3bK/eUDSylXavl4KIPPaFdJzPXaaZ2pAOaQMFsAg7xp5n8gvnusyp
+ wbIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775851241; x=1776456041;
+ d=1e100.net; s=20251104; t=1775851248; x=1776456048;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Qsggwi5zbpivKYu9vxgPsRTzFrjprzvcyLLml3Oa1F4=;
- b=TIY87gR0PErY/GLpPDBHn70+BJQz+UI5EtiTUupx47PUyd3NekoNOyBAuXCmM7E641
- ydinazY8DfDGGdev8cPFdHazwSNRAXMS8DlHM2OGkHy8eLVUPvKdoRozlll2GIeuHqiC
- boNKLBQVt8sXxzw9Yxo581JNnPYyGkp3lFZb1LuaKzNtKqojx8WzoQT7pWuOhbRgNtc1
- QM3zM4yESiNqD+XoIaZeFiFC7RH/6iTo11o+4Z8d2+Z2wa8xG8G2vlMG1i04jhJ/2/Df
- KUl5ZFERMv8wzCtl8NnXDFeh/IhKsgVJ3J/pMCXFQayFS/cW8nghYMpFQRjj+j+YEsmn
- R9cA==
+ bh=L/8LV952pK5R/dwzOOVcbtAx4yBXkRtXe7hKkHgXjLA=;
+ b=jHyGs1mmwXIk+ODy76AB5FHZNvqfBe7OZsEEvyJlY0wPEoncjgUQOugdlZXGG2EbJr
+ bX+8Imv1faJzB2lQCxTl27wgPvhn+NrZx7V8jnraU9oLXylwFlIK+M6p18oJUoI7o2+w
+ UHGPgGNpZHoqsGXy4H0g4q8kVs3jXce3j/hLK3Wcp/jAVsCAD6bgu8tToFT1WcDIIlTy
+ gQWOSuj0Cbfz+I092PC/bJXRIN5RhRkVbbBRGXxfeHPu/04PGKCDjgFugApICqAVXybr
+ I3FYcqGL9OpKNITBoajBomrP92Ktd5EtfZ9MCloxMsgMOrXn6JGpNH18pxvJqdii6xZs
+ oF5A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWhTYdpZjItcydNz/v76HsGBG9oU6reOfyurnXObvrVudI/kMciYGSMgRZG++ccdgoh+yoQ5XNb3Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxrS48NJRHCMCwZFz9qk3kBFhhJDybzG0y6q4dIkzXJonXUZTOj
- ygAuQyOV5WOeBhUGf4eV68tZgWNSlVQCFlSobD0Q4PGvSTdZxkaDzhw4++m+hWFV8o4=
-X-Gm-Gg: AeBDiesKFLm0hMse6uzVjYcU4Y+lhhbpNw3vFGFSZ381Z0RY+nKUR3X5W7keFpR1CkN
- UuW+7GNk4x0kF1FTBN0DefvaBJ1jkeoK9lLF+N9rUUiE8aviaYb0nyBxTeUXd3ItIN260J7tSEB
- Awg6KJmm8Q4o7DgQ4rkQ7lAFXW+Dnz9W3yLDXm6Buwk1ho81DUaPkmZpKth20xJ6i8RtQXq2deo
- VKNmon8r1cqYBQU/uZCb1AHjR/UhHsttzaoVfOyRR0/H1USqNvDWHFygpxitGKNPxRD65KXsZzl
- yjUkg5bJRy/s8/cxVMoCUi6bjNqrJ+2SFF7IAn6t9g8Hy20KjlflDe2CZwSnzdVu97og9YNwe4u
- tofbDjiN/2RuPa9GkkJClSGyh+cArGceLU2QKZqZ6ibAE2NvCvIlSF3CkCUwpsBoOTCkQfnYxRN
- e34/nlPGJy2kG+LqlVotnUS57UJaq2Zktdy9ruoh8PLQroMzoEPwhn1EN+Dmm8ZfwzhbGFj22w
-X-Received: by 2002:a05:600c:1f83:b0:488:b99b:4177 with SMTP id
- 5b1f17b1804b1-488d687bf61mr56226695e9.25.1775851240522; 
- Fri, 10 Apr 2026 13:00:40 -0700 (PDT)
+ AJvYcCXA8Pr2p063awXOToRNzu7apMUWRPoqSVYs1H7X9NZj/P8m4kkul1Nst+8rqbXtQ/qhL2HQCcAVLQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzeZLxsGLTfV9ItDKs7o1cVh6M4RTRHRDKEYtL/kkJkdwO8xdQI
+ 2M7MEsgiG33dPvgwKp/j8n40UUcZ00egZQkXdt7OB9I/sxyHH0eBfY3/nt5GrNBcg8w=
+X-Gm-Gg: AeBDiev8Cmj7pDe/9O3SUOKv4wBgRehAdt7eyAYYyb28yGWtI/i+/HUfDDTUa8ehZ93
+ 7E1gLSalXTJPHPm5CmAQbs7rDzOwAAgGZRNh24dEDX4m/TSTmWlJEU8+m1/2MRsq/4Gi9BNUnwd
+ oDEYXD2RbVYgKPsXixxD/7ovN2DtceNmewElHhYE36aGFZuKTtv1ZPCqFQ+of/Ngw+CIjfUxVdm
+ 0Jdan3jPZCZ8nUYytCWMVlZMX2CDvFT4qPcWrQUloeDWRBOUPoyF2fkgFpJPjKfd4m4mXs0ZnQa
+ /PdCgVZDmBD/GKiU1+HYzrPMujtCtFnQhbhsz4K9IG0nB85mVlUXxHf3zAFXP0E9woau1k5MaS8
+ kNbDtOdAWpM9nzg6UOOxCWTImlicP3hhYw9rls50+Css9NKKX7lu63AD2lmiQ27RqwrC5x5GUp4
+ 5D7Q2iiDOpPTq3zTDp9W6GznLap2zpKcUtqRrwggycaUe8uDV7QAaRwlpsGJv/VrlPUJObsSOO
+X-Received: by 2002:a05:600c:8883:b0:488:9439:880d with SMTP id
+ 5b1f17b1804b1-488d689da95mr40570995e9.29.1775851247610; 
+ Fri, 10 Apr 2026 13:00:47 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d5b3c597sm92483685e9.12.2026.04.10.13.00.39
+ 5b1f17b1804b1-488d531f2b6sm106579495e9.2.2026.04.10.13.00.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 10 Apr 2026 13:00:39 -0700 (PDT)
+ Fri, 10 Apr 2026 13:00:46 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
  Eric Auger <eric.auger@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 1/2] hw/arm/smmuv3: Have smmuv3_accel_init() take an Error*
- parameter
-Date: Fri, 10 Apr 2026 22:00:30 +0200
-Message-ID: <20260410200031.18572-2-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH v2 2/2] hw/arm/smmuv3: Avoid including CONFIG_DEVICES in hw/
+ header
+Date: Fri, 10 Apr 2026 22:00:31 +0200
+Message-ID: <20260410200031.18572-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260410200031.18572-1-philmd@linaro.org>
 References: <20260410200031.18572-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,92 +106,159 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-By giving smmuv3_accel_init() the ability to populate an error,
-we can fail early in smmu_realize() when CONFIG_ARM_SMMUV3_ACCEL
-is not available, simplifying smmu_validate_property().
+By turning the inline functions into stubs we can avoid the
+use of target-specific CONFIG_DEVICES include in a hw/ header,
+allowing to build the source files including it as common objects.
 
-Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Co-developed-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/arm/smmuv3-accel.h |  7 +++++--
- hw/arm/smmuv3-accel.c |  3 ++-
- hw/arm/smmuv3.c       | 11 +++--------
- 3 files changed, 10 insertions(+), 11 deletions(-)
+ hw/arm/smmuv3-accel.h       | 42 ------------------------------
+ hw/arm/smmuv3-accel-stubs.c | 52 +++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |  5 ++--
+ 3 files changed, 55 insertions(+), 44 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel-stubs.c
 
 diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-index dba6c71de52..1ca2c80a933 100644
+index 1ca2c80a933..85669d0e00e 100644
 --- a/hw/arm/smmuv3-accel.h
 +++ b/hw/arm/smmuv3-accel.h
-@@ -42,7 +42,7 @@ typedef struct SMMUv3AccelDevice {
+@@ -14,7 +14,6 @@
+ #ifdef CONFIG_LINUX
+ #include <linux/iommufd.h>
+ #endif
+-#include CONFIG_DEVICES
+ 
+ /*
+  * Represents an accelerated SMMU instance backed by an iommufd vIOMMU object.
+@@ -41,7 +40,6 @@ typedef struct SMMUv3AccelDevice {
+     SMMUv3AccelState *s_accel;
  } SMMUv3AccelDevice;
  
- #ifdef CONFIG_ARM_SMMUV3_ACCEL
--void smmuv3_accel_init(SMMUv3State *s);
-+bool smmuv3_accel_init(SMMUv3State *s, Error **errp);
+-#ifdef CONFIG_ARM_SMMUV3_ACCEL
+ bool smmuv3_accel_init(SMMUv3State *s, Error **errp);
  bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
                                Error **errp);
- bool smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-@@ -54,8 +54,11 @@ void smmuv3_accel_idr_override(SMMUv3State *s);
+@@ -53,45 +51,5 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+ void smmuv3_accel_idr_override(SMMUv3State *s);
  bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
  void smmuv3_accel_reset(SMMUv3State *s);
- #else
--static inline void smmuv3_accel_init(SMMUv3State *s)
+-#else
+-#include "qapi/error.h"
+-static inline bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
+-{
+-    error_setg(errp, "accel=on support not compiled in");
+-    return false;
+-}
+-static inline bool
+-smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
+-                         Error **errp)
+-{
+-    return true;
+-}
+-static inline bool
+-smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
+-                               Error **errp)
+-{
+-    return true;
+-}
+-static inline bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
+-{
+-    return true;
+-}
+-static inline bool
+-smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+-                           Error **errp)
+-{
+-    return true;
+-}
+-static inline void smmuv3_accel_idr_override(SMMUv3State *s)
+-{
+-}
+-static inline bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+-{
+-    return true;
+-}
+-static inline void smmuv3_accel_reset(SMMUv3State *s)
+-{
+-}
+-#endif
+ 
+ #endif /* HW_ARM_SMMUV3_ACCEL_H */
+diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
+new file mode 100644
+index 00000000000..70cef66966a
+--- /dev/null
++++ b/hw/arm/smmuv3-accel-stubs.c
+@@ -0,0 +1,52 @@
++/*
++ * Stubs for accelerated SMMU instance backed by an iommufd vIOMMU object.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
 +#include "qapi/error.h"
-+static inline bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
- {
++#include "hw/arm/smmuv3.h"
++#include "hw/arm/smmuv3-accel.h"
++
++bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
++{
 +    error_setg(errp, "accel=on support not compiled in");
 +    return false;
- }
- static inline bool
- smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 65c2f44880a..ae031f1eccf 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -917,11 +917,12 @@ static void smmuv3_accel_as_init(SMMUv3State *s)
-     address_space_init(shared_as_sysmem, &root, "smmuv3-accel-as-sysmem");
- }
- 
--void smmuv3_accel_init(SMMUv3State *s)
-+bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
- {
-     SMMUState *bs = ARM_SMMU(s);
- 
-     s->s_accel = g_new0(SMMUv3AccelState, 1);
-     bs->iommu_ops = &smmuv3_accel_ops;
-     smmuv3_accel_as_init(s);
++}
++
++bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
++                              Error **errp)
++{
 +    return true;
- }
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 5570a13c8a6..5c2855c3770 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1965,13 +1965,6 @@ static void smmu_reset_exit(Object *obj, ResetType type)
- 
- static bool smmu_validate_property(SMMUv3State *s, Error **errp)
- {
--#ifndef CONFIG_ARM_SMMUV3_ACCEL
--    if (s->accel) {
--        error_setg(errp, "accel=on support not compiled in");
--        return false;
--    }
--#endif
--
-     if (s->ats == ON_OFF_AUTO_AUTO) {
-         error_setg(errp, "ats auto mode is not supported");
-         return false;
-@@ -2033,7 +2026,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
-     }
- 
-     if (s->accel) {
--        smmuv3_accel_init(s);
-+        if (!smmuv3_accel_init(s, errp)) {
-+            return;
-+        }
-         error_setg(&s->migration_blocker, "Migration not supported with SMMUv3 "
-                    "accelerator mode enabled");
-         if (migrate_add_blocker(&s->migration_blocker, errp) < 0) {
++}
++
++bool smmuv3_accel_install_ste_range(SMMUv3State *s, SMMUSIDRange *range,
++                                    Error **errp)
++{
++    return true;
++}
++
++bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
++{
++    return true;
++}
++
++bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
++                                Error **errp)
++{
++    return true;
++}
++
++void smmuv3_accel_idr_override(SMMUv3State *s)
++{
++}
++
++bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
++{
++    return true;
++}
++
++void smmuv3_accel_reset(SMMUv3State *s)
++{
++}
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index b187b946f04..3be1252c4f1 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -84,8 +84,9 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+-arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+-arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
++arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
++arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
++stub_ss.add(files('smmuv3-accel-stubs.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+ arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+ arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
 -- 
 2.53.0
 

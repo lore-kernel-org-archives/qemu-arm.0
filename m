@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 109BDE99051
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:49:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8120DE99050
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:57:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wB6bp-0004Or-8Y; Fri, 10 Apr 2026 03:48:57 -0400
+	id 1wB6ja-0005yp-Qb; Fri, 10 Apr 2026 03:56:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6bn-0004Nr-Dl
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:48:55 -0400
+ id 1wB6jZ-0005yG-Bi
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:56:57 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6bl-0000wS-LR
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:48:55 -0400
+ id 1wB6jX-0004Tz-HU
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:56:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1775807332;
+ s=mimecast20190719; t=1775807814;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NBGZ6JM/BSa0w7YId9FU+Qo7pHR2PL+YRxE/T8f8nNM=;
- b=Y31FSIthi8RR67o8ggfVyorlZ9el2T8hMpH7Vk9/8IOM1CUW6rCfbbyYJkvgAy/RIyXPF/
- OGA9o6ORjW3ekNV794YNx95TLIDCiVllJUTYpYDYxDh0rgePgI11gwKb5y/vCyDdnM3Fq3
- wisgSt65sETwpp0LNlcd91LcjI+O8kg=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=F1g0itLpK4atu/TRh/SFG6m5vAPx388SgzqIeaV3NV0=;
+ b=KzpFCHO+JWnY5TI4RWoPWi3LIfnT+5ZoZ4S9KwB14wZaAnYTeds8T0tn6orvkLXuc9JHaS
+ FSZvzhyowhhmFiG4t51u6y4U/bY/VDnqKDl13N3gmzfx4hSTu6vAayhj73aG/m7X5whAe/
+ 9bQCWUT67k5o9bCzRoDzzIyJ+Re6tQY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-588-CLC9xDeMO966XA5fioknIA-1; Fri, 10 Apr 2026 03:48:51 -0400
-X-MC-Unique: CLC9xDeMO966XA5fioknIA-1
-X-Mimecast-MFC-AGG-ID: CLC9xDeMO966XA5fioknIA_1775807330
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-43cff5bc312so1315575f8f.1
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:48:51 -0700 (PDT)
+ us-mta-546-xJQ7fXC1PHK8NPt3GeohtQ-1; Fri, 10 Apr 2026 03:56:51 -0400
+X-MC-Unique: xJQ7fXC1PHK8NPt3GeohtQ-1
+X-Mimecast-MFC-AGG-ID: xJQ7fXC1PHK8NPt3GeohtQ_1775807810
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-488c2a4e257so12473185e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:56:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775807330; x=1776412130;
+ d=1e100.net; s=20251104; t=1775807810; x=1776412610;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NBGZ6JM/BSa0w7YId9FU+Qo7pHR2PL+YRxE/T8f8nNM=;
- b=L2JMLEft7ca+1AR5PDqS8krdjZCC1qeG7y12AQ4UWeQgjb6Z2ONsJ9RY0dacU+PHrv
- htM9GjsopP1hVf8Jj+mbVgMfaQEFzsHDsRI6DtdhvSO48x6JCzd646tV+trSmMFXPCyC
- HMzavhY123SyEL0hATz32NOvfLklAxVSacCoeishKvah335N8ExcjJ196is0lIzNB15D
- vXZ/VApT2JtHeEiyXuCtqhIgEGcMEtwbb/drQDPU/i4EZDWZ3sZI4PsLx7fXT2dbVp+9
- VHuxhZ7p7Td2GXnMDGTaoM1oOtZ2H/NJ9y4OkiQOlT3i4oixePexNmKjAf5v0A/fjgi4
- Ipmg==
+ bh=F1g0itLpK4atu/TRh/SFG6m5vAPx388SgzqIeaV3NV0=;
+ b=OftrJ+DJQNBe/YQsuKH1Zyy76NzYWCRgxfbrfFjYwofeUBdyHSlVfLeSUVbEWnnp0v
+ 8ICP8I66WNEWcD01U9tlKgL1njGK+dBrI53U52whsSKYhbtiBlKK9mJsoOHfDHe+E+G1
+ 4S4fhfl/XBYMkvSjjGbbnIPRkPOLpG/nDFqh2+8QncdxJW5NH15NvesLms0HLYUrpC0h
+ FuyGciiK031MvmeUDNAvAXBV0WppjgTVUNbVACIoSoTEgWXfRbj5jBx8MAMY3okgAiJE
+ FQK7Q5luCIbuc9wGL3tdXwnDZV6sh6qOUzkMBjLmmfDQ0K/iHSzq+XAnDx0ZjN4aQrXf
+ cRtg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWRFejhrzo5rGdyZFupyhiKV4Vq6VCxMO0O+/KTUsfvt75d5czk03bYJOI5bTPnNpO2d83VHSIhWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzHDtBki5+f/h/osRTjioJ3cRJ9dxuIuQZ20z4lEmR5as+TJGSe
- hk4LeDKmZo/1HBdRQISm6+N+24adhbkkE/S+CACSmwu9U0NKYD2FO0ipgCPzD2S79M6UaaZc9zF
- Dg5+/TAmSp0wcDYpYzYGVzyFUJHb/J3uPh8yAIIIvZu6q7u7u2Vpf2w==
-X-Gm-Gg: AeBDiesnaYcXlTVV52pIq0mY4DdDWPHn2nO/8DYYYOu5G3oHWrMMK3eL3mk8HlWSc9Y
- QrVFgymPHZq8/7Gc/R8qk7MR8RedfkUQjlUyNlvrQHhSntkH8yBWpYDpvkm/O113e8LFNhnGMM+
- OHJ95m1ZUzhYas1iQfoU4LflDLBzK1mo5GDyZYQO6bddimz5szncyJY5bS+PyfEXThLWo5br83+
- lplab7EK4ZHkfy4fwnCDl5GC9peJdvNgpPoTt2EXe+1wIPsh1uNTp7g+dD8ecLrrc6PjkH1aYdi
- BFpKP4XpWBI1JMQ4akcKarVGUY4my5WymlteC5N4665laCnkIzhJhZt3Y6JqW3xpchrYpWlYTf5
- HfDcC2NmIY9HGbnldTHNFz62MUsaVMnRrEAw2Sae57ZlYm64iHJ4h3qYqHU2dLu7Zc0ZuOQ==
-X-Received: by 2002:a05:600d:d:b0:485:4eaf:eb54 with SMTP id
- 5b1f17b1804b1-488d684b88amr18688725e9.20.1775807330017; 
- Fri, 10 Apr 2026 00:48:50 -0700 (PDT)
-X-Received: by 2002:a05:600d:d:b0:485:4eaf:eb54 with SMTP id
- 5b1f17b1804b1-488d684b88amr18688415e9.20.1775807329583; 
- Fri, 10 Apr 2026 00:48:49 -0700 (PDT)
+ AJvYcCVuwSj+crheuA+Csws7dBUDceCf7rzBx8KaRqMYutBsJ53FRed4UeNfv8dyrHbNzcxZh/EionzX8w==@nongnu.org
+X-Gm-Message-State: AOJu0YzWIxyfBqAtkF0Yb4sAljTde1D0oQl2mC00+3euUDziFf2zCHZ6
+ 718CqXxax51L/CGfd1xac+AlKqqirG/zmIA4S19Fh/ppAxBdIMlpGc4QcZIzdc7b2Lr3jff//Yn
+ 2giNdJrEz9drzcar6vEJ6+ugPIPA7+YAfaf1kCoOKczW5ApROVKE1yA==
+X-Gm-Gg: AeBDiesUvU3TguSFMMBRUQTb4LqYzYMVpndT0uc5WpdsKqjQnZNnhGi7lVshoisW9pm
+ gT3Jdf3O/R9gyIDMtzzgqy6tHEUkgAd9ALGgDXI/h+VIH5BQrTalI3lWjIFEhUplDyquNysb8ZR
+ XBsT/UhwXY0bbXR2U5+ahlVP3GzHXlQ18Sj8oMrdPjeEPMBYUKOPpLpw9gL3oMXAIUiGIxbtLZy
+ kNbajtuPXrdCK8u4qFPGLC0r6rowY2E4ABPzozUuhqXz6j72MjTSBXlBzurR3d0c3CuWCb9ZLFL
+ wgVvVM+QuzQhi11U1tOKrO8B9782Ornv5uzcKYG+GAeujjp8Be1p0NUH0OgXK1woJDeEmdh/K4O
+ wZY5WQk2SIPy8IQLJD5gvK3zwNEhMxavAXXyAOPTwBnOJMhjDklhHQGR6y2g5BzEzobAkNg==
+X-Received: by 2002:a05:600c:8907:b0:485:445a:87d1 with SMTP id
+ 5b1f17b1804b1-488d67d2cc5mr16436055e9.8.1775807810243; 
+ Fri, 10 Apr 2026 00:56:50 -0700 (PDT)
+X-Received: by 2002:a05:600c:8907:b0:485:445a:87d1 with SMTP id
+ 5b1f17b1804b1-488d67d2cc5mr16435775e9.8.1775807809783; 
+ Fri, 10 Apr 2026 00:56:49 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d67ced32sm18454905e9.7.2026.04.10.00.48.47
+ 5b1f17b1804b1-488d681ed50sm14465405e9.15.2026.04.10.00.56.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Apr 2026 00:48:49 -0700 (PDT)
-Message-ID: <c7b98752-c626-46fc-9aea-6f0c182e9940@redhat.com>
-Date: Fri, 10 Apr 2026 09:48:46 +0200
+ Fri, 10 Apr 2026 00:56:49 -0700 (PDT)
+Message-ID: <24339c4e-0654-445e-8ed4-bbe192c83523@redhat.com>
+Date: Fri, 10 Apr 2026 09:56:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/11] hw/arm/smmuv3-accel: Implement "auto" value for
- "oas"
+Subject: Re: [PATCH 07/11] hw/arm/smmuv3-accel: Implement "auto" value for
+ "ssidsize"
 To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
@@ -93,11 +93,11 @@ Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
  <clg@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
  Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
 References: <20260401010231.4166776-1-nathanc@nvidia.com>
- <20260401010231.4166776-10-nathanc@nvidia.com>
+ <20260401010231.4166776-8-nathanc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260401010231.4166776-10-nathanc@nvidia.com>
+In-Reply-To: <20260401010231.4166776-8-nathanc@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: grrLafi8O1pjvgSVSaowO3yI4B28Mrb6cEuEms20aDY_1775807330
+X-Mimecast-MFC-PROC-ID: r--PdgZgS_tAOBXIlAPM-6GGnJC39U4Spv47gct9eUw_1775807810
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -133,75 +133,96 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 4/1/26 3:02 AM, Nathan Chen wrote:
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Allow accelerated SMMUv3 OAS property to be derived from host IOMMU
-> capabilities. Derive host values using IOMMU_GET_HW_INFO, retrieving
-> OAS from IDR5.
->
-> This keeps the OAS value advertised by the virtual SMMU compatible with
-> the capabilities of the host SMMUv3, so that the intermediate physical
-> addresses (IPA) consumed by host SMMU for stage-2 translation do not
-> exceed the host's max supported IPA size.
+> Allow accelerated SMMUv3 SSID size property to be derived from host
+> IOMMU capabilities. Derive host values using IOMMU_GET_HW_INFO,
+> retrieving SSID size from IDR1. When the auto SSID size is resolved
+> to a non-zero value, PASID capability is advertised to the vIOMMU
+> and accelerated use cases such as Shared Virtual Addressing (SVA)
+> are supported.
 >
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/arm/smmuv3-accel.c | 9 ++++++++-
->  hw/arm/smmuv3.c       | 6 +++---
->  2 files changed, 11 insertions(+), 4 deletions(-)
+>  hw/arm/smmuv3-accel.c | 14 ++++++++++++--
+>  hw/arm/smmuv3.c       | 11 +++++------
+>  2 files changed, 17 insertions(+), 8 deletions(-)
 >
 > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 03393fd7ba..105f6d26bf 100644
+> index 9e7ec6a930..03393fd7ba 100644
 > --- a/hw/arm/smmuv3-accel.c
 > +++ b/hw/arm/smmuv3-accel.c
-> @@ -63,6 +63,12 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s,
->                                 FIELD_EX32(info->idr[1], IDR1, SSIDSIZE));
+> @@ -56,6 +56,13 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s,
+>                                 FIELD_EX32(info->idr[3], IDR3, RIL));
 >      }
 >  
-> +    /* Update OAS if auto from info */
-> +    if (s->oas == OAS_MODE_AUTO) {
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS,
-> +                               FIELD_EX32(info->idr[5], IDR5, OAS));
+> +    /* Update SSIDSIZE if auto from info */
+> +    if (s->ssidsize == SSID_SIZE_MODE_AUTO) {
+> +        /* Store for get_viommu_flags() to determine PASID support */
+> +        s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE,
+> +                               FIELD_EX32(info->idr[1], IDR1, SSIDSIZE));
 > +    }
 > +
 >      accel->auto_finalised = true;
 >  }
 >  
-> @@ -962,7 +968,8 @@ void smmuv3_accel_init(SMMUv3State *s)
+> @@ -828,7 +835,9 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
+>      SMMUState *bs = opaque;
+>      SMMUv3State *s = ARM_SMMUV3(bs);
+>  
+> -    if (s->ssidsize > SSID_SIZE_MODE_0) {
+> +    if (s->ssidsize > SSID_SIZE_MODE_0 ||
+> +        (s->ssidsize == SSID_SIZE_MODE_AUTO &&
+maybe worth adding a short static inline helper pasid_is_supported(s)?
+
+Eric
+> +         FIELD_EX32(s->idr[1], IDR1, SSIDSIZE))) {
+>          flags |= VIOMMU_FLAG_PASID_SUPPORTED;
+>      }
+>      return flags;
+> @@ -952,7 +961,8 @@ void smmuv3_accel_init(SMMUv3State *s)
+>      smmuv3_accel_as_init(s);
 >  
 >      if (s->ats == ON_OFF_AUTO_AUTO ||
->          s->ril == ON_OFF_AUTO_AUTO ||
-> -        s->ssidsize == SSID_SIZE_MODE_AUTO) {
-> +        s->ssidsize == SSID_SIZE_MODE_AUTO ||
-> +        s->oas == OAS_MODE_AUTO) {
+> -        s->ril == ON_OFF_AUTO_AUTO) {
+> +        s->ril == ON_OFF_AUTO_AUTO ||
+> +        s->ssidsize == SSID_SIZE_MODE_AUTO) {
 >          s->s_accel->auto_mode = true;
 >      }
 >  }
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index cb14a08a66..0ab6d1e762 100644
+> index 74cc81ae32..67c499d22b 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -1976,7 +1976,8 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+> @@ -627,7 +627,10 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+>      }
+>  
+>      /* Multiple context descriptors require SubstreamID support */
+> -    if (s->ssidsize == SSID_SIZE_MODE_0 && STE_S1CDMAX(ste) != 0) {
+> +    if ((s->ssidsize == SSID_SIZE_MODE_0 ||
+> +         (s->ssidsize == SSID_SIZE_MODE_AUTO &&
+> +          !FIELD_EX32(s->idr[1], IDR1, SSIDSIZE))) &&
+> +        STE_S1CDMAX(ste) != 0) {
+>          qemu_log_mask(LOG_UNIMP,
+>                  "SMMUv3: multiple S1 context descriptors require SubstreamID support. "
+>                  "Configure ssidsize > 0 (requires accel=on)\n");
+> @@ -1973,10 +1976,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
 >      }
 >  #endif
 >  
-> -    if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48) {
-> +    if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48 &&
-> +        s->oas != OAS_MODE_AUTO) {
+> -    if (s->ssidsize == SSID_SIZE_MODE_AUTO) {
+> -        error_setg(errp, "ssidsize auto mode is not supported");
+> -        return false;
+> -    }
+>      if (s->oas != OAS_MODE_44 && s->oas != OAS_MODE_48) {
 >          error_setg(errp, "QEMU SMMUv3 model only implements 44 and 48 bit"
 >                     "OAS; other OasMode values are not supported");
-and auto mode
->          return false;
-> @@ -2189,8 +2190,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->          "platform has ATS support before enabling this.");
->      object_class_property_set_description(klass, "oas",
->          "Specify Output Address Size (for accel=on). Supported values "
-> -        "are 44 or 48 bits. Defaults to 44 bits. oas=auto is not "
-> -        "supported.");
-> +        "are 44 or 48 bits. Defaults to 44 bits.");
-see previous comments
-
-Eric
->      object_class_property_set_description(klass, "ssidsize",
->          "Number of bits used to represent SubstreamIDs (SSIDs). "
+> @@ -2197,7 +2196,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
 >          "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
+>          "Valid range is 0-20, where 0 disables SubstreamID support. "
+>          "Defaults to 0. A value greater than 0 is required to enable "
+> -        "PASID support. ssidsize=auto is not supported.");
+> +        "PASID support.");
+>  }
+>  
+>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
 
 

@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DFC2F45A0C
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 19:42:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0DBFF45A08
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 20:00:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBHkP-0004Cx-Fn; Fri, 10 Apr 2026 15:42:33 -0400
+	id 1wBI1u-0007O4-J2; Fri, 10 Apr 2026 16:00:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBHkP-0004Cp-2w
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 15:42:33 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI1s-0007Ne-UD
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:36 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBHkN-0002OB-Kr
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 15:42:32 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-43d5ec211abso1282951f8f.0
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 12:42:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI1r-0006af-Bk
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:00:36 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-488a88aeec9so31095495e9.2
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 13:00:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775850150; x=1776454950; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775851234; x=1776456034; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=CKAvcWXpbfUXyfm02WmTUpHmGf7JvGvxgw1GkwpEpH8=;
- b=Rh+2X2imowB0H90dNzVNVeVdtqnFHMfNttV3n23HPbR8XLAB/ctfWGLddeV/WJhxS4
- THGMZQti4a4Gmddbt2SHkAHzDGqCspe4JeuJrvWY6tRe15BiBgsEDwmvVKUcVlPYCJM+
- WXdb49TVBTEBli9+hQrpfXDHPd/alSVE3I5eWMenh4H0mJYWF4dbdAb7wDvskB5QFOpL
- VrnaIbN8UY7mEI1l47VGPdtakg+QS1sUiVd67p//95mvEuqOPtYy3cFa/RGoQaFKZbnH
- X9sphXFOnXlOWzTXGgFSqtj0LmRb5RDU9cV/Ta0pV1aAU7axGkl9Rz3M5L8haFR+dvP1
- QNRA==
+ bh=Cxj5AYLphBEzhwo2MazkRnd3wQFnp4YvtA7GMP+lRHQ=;
+ b=hFh/TvSeDgXk1uVBeaxe2mmbx7qsHI7aY0l2CAc6vnhVVR2YG5F8+vUkloKmRRixM6
+ FWaa50Ie5SqiwgGG+oIapGoTph+9q3Cy81mJh0AJu97SKpIy3gDMRV/lhjFLIYPrLq/+
+ CuEP16IikRkjVPphs7alLK4wNhRTlbkbY2adhsE2P8xvLPFHqInFlCoobWHSAPMv0ZoR
+ gOiSgQrCapEitmUVty/vclzPCjo+/5gLVewWNeewXUMOLlsFQAtzOLple5BolWwmBpLi
+ u9zD9sDkNMWDWYB7k4lUa2F/j52ldrUHJzD9rCVUD2QOd4G1pjoJn82XZwDpwJAcj4rV
+ 11/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775850150; x=1776454950;
+ d=1e100.net; s=20251104; t=1775851234; x=1776456034;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CKAvcWXpbfUXyfm02WmTUpHmGf7JvGvxgw1GkwpEpH8=;
- b=Ih25XJhruZpA15XoW4eMfGbyTOY6un7uf/oQ9v1jgQttmPyQicHowKktfzX4Gf8XcD
- JYP8JCwQjf1KDTfgvOJP/NTWd2OnxPmmZG0ySPW/XuHOxXsTLKG7STK+m280SKI1pGiE
- i1DemKMlA71I1g7b6kctJZIx0+NbDb0Lgtj/3wgVuLbcOi9+pin6hTkaX3VPz6jXe/Ko
- aOV4hNbeGJs039S8T4DgRN7yf49nWbBR4DycHwC25ofputVLOpUwwFQLoler/bGUaurZ
- UPa5KSfwbR7nm5TZD3ctk1MCS+TXW4WHCIYaqdd10t3CeQ8/nF9ZE3a87ujqygEAXbA/
- 1kNQ==
-X-Gm-Message-State: AOJu0YwV93DqQLLyurJPXeX98mAvMFVLtIGo7Us/6cuq5fWrQHdCaMX4
- /z1eTlgFDFDKn1PlcWkwQXqcPcmNfAllrkQAP+9ka7gye0TGBALsjdjmWsnnYHywqdo=
-X-Gm-Gg: AeBDietWAe4V1OehvUY0I9WvlCWgO+9zJ9+TS8xym5L1doZzskK9YokJYWi7iJUPACT
- ygxw+Knyi7WnBb5RF7pINW7XSfPwJyP48+vvJlVrVRyMPTPaozRgmwQ8BB25Lj1UAf9fJRY+4Jk
- Q+jtE1qGKzWShJdVhNg5ON5XL0fHAWXPJj7NizFGY5EFJQmb5m+ZfcYCUARLbfC2fsT9ueEzE8p
- EN4RkTUIJ5+WYZjCxiZn9NOaAIDG558DrIyyGVQWHs15Z73B2sCY97+AW7pesoDLEEb0ySAbCj4
- YtRk0f8iNlPRk1Pwvr016hITtuN+GiKZFvgADLP9H40vjpcj0+tSfxfGCnlLDYRG8uPS2tumMz9
- JC6L6qFUjcRACYQZDd3xS0v2FEDadATwgdWs9eKcmqtm/QcRln7O9+T116DrstGIAFAjRMrelf6
- 4Yj62z6aTBckVWwuteLoEg9c8fhzdJba/kPjVL8oz+vNINxnFvMZMoqhdn/gGHgzzA/rFXvSh3
-X-Received: by 2002:a05:6000:40c8:b0:439:b4dc:1e1e with SMTP id
- ffacd0b85a97d-43d642da6f8mr6513067f8f.29.1775850149648; 
- Fri, 10 Apr 2026 12:42:29 -0700 (PDT)
+ bh=Cxj5AYLphBEzhwo2MazkRnd3wQFnp4YvtA7GMP+lRHQ=;
+ b=ozW7CWOLA/DT34Owv12FfgHlBKx241YUvZUkXnd/K7nQmkfjOfWAwngD2hEtOBJWc1
+ L3n1FshUx3k+nfs7VLrsUnmr02wVgInybqDR4ul8nXejCD6qR0WZlU1Uq+HZKMtgasWp
+ arkWmr6/RDAY+PQ/4Sp5NUuI0H7+aGnGWvPGOK5uFXlGy9zT+QWDW/canjV2LiI+SJv/
+ DsP/edB+arJluUxA1mQxtGoIn5CmMAaADg7JUMIPF9UMzcP2yzZJivUJEyW0wUFYKrak
+ 325OukIcE7SECpjGBKl/Lefuak0/hVKcPwt/MbZRTldS2cgtgWLrqYAEgp9VNj1tl1Bt
+ hpbg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW+EfktLA5ARFOBDyTxv1bCJ2bpU0wnsYUdInKqXQWLh8XW3TiHuhPjKITzJV2XJqswfr0DaeIqfA==@nongnu.org
+X-Gm-Message-State: AOJu0YyETi9FQlixmPE6T2863F1D8Gr2MlLeVNQwJBeGDdfgZZdxrpMX
+ zHYWE0qLP4Hk8AtHrEPKwpOrru63qcvJiUAvz2yoP5Lr/RAv5DshcqXXkkrGPZElUgI=
+X-Gm-Gg: AeBDieu0yJUtMCZ/zeu6Anuj00mh4RtzCgGc5paL2z5JzCogYcGZ88nXhmcwB1XoEJO
+ dWuREtFkY8v/VmPbAot4rhP5E5VtoQz7fqaVLMMM+gGfjWtetLv1U0HGtHzk8vtXiFK49T5gZvs
+ 6ceIq+IViQlu+TGw8AsL6h6La0zq1h0gvLJub99yHdyfUc2jmudbEiGSNoUwFbdDpbllZ8RsuZ2
+ qUtDyxoVDH0RHUbGkjFvSKHfGYNlN4gG4lUiezoHXULh2aTqbMUWnNyAJ5yjC6uSAZqRmWsVclK
+ sZ24c0rQBK3OQtbp55rEdkSclRI1f51gM9s4KsNvmsOJIw3hOmaDb2xgf9SqiTsWBEHSslW9rrK
+ t0vj2MUCl/patoAqA6acwXCduUA85qc6+qlwcZsLHxXsbHyT56LAe/0kVZSkK3cQoerJIsCKAM9
+ k/KIZ76ziljlwh2C9hSJUBRVoOFMYFWOTYY3pyWJIfoajwAU8JWIe78Ak1Be3G2WSBWmGOaPNg
+X-Received: by 2002:a05:600c:a404:b0:488:bfc3:ef3 with SMTP id
+ 5b1f17b1804b1-488d6671271mr55576245e9.0.1775851233596; 
+ Fri, 10 Apr 2026 13:00:33 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d63e5062fsm9144142f8f.31.2026.04.10.12.42.28
+ 5b1f17b1804b1-488d67ced32sm38979025e9.7.2026.04.10.13.00.32
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 10 Apr 2026 12:42:29 -0700 (PDT)
+ Fri, 10 Apr 2026 13:00:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH-for-11.1 v5] target/arm: Remove target_ulong use in
- hvf_handle_psci_call()
-Date: Fri, 10 Apr 2026 21:42:27 +0200
-Message-ID: <20260410194227.16357-1-philmd@linaro.org>
+Cc: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/2] hw/arm/smmuv3: Avoid including CONFIG_DEVICES in hw/
+ header
+Date: Fri, 10 Apr 2026 22:00:29 +0200
+Message-ID: <20260410200031.18572-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,34 +102,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Similarly to commit 3580aa03547 ("target/arm/tcg/psci.c: make
-compilation unit common") which replaced the target_ulong use in
-arm_handle_psci_call(), replace the one in hvf_handle_psci_call.
+Since v2:
+- Restrict to ARM SMMUv3
+- Address Shameer review comments
 
-This could be vaddr, because entry is the start pc for the on-lining
-cpu, but we prefer uint64_t because this is what we get in param[]
-and pass to arm_set_cpu_on().
+By inlinining the stubs we can avoid the use of target-specific
+CONFIG_DEVICES include in a hw/ header, allowing to build the
+source files including it as common objects.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/hvf/hvf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Philippe Mathieu-Daudé (2):
+  hw/arm/smmuv3: Have smmuv3_accel_init() take an Error* parameter
+  hw/arm/smmuv3: Avoid including CONFIG_DEVICES in hw/ header
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5fc8f6bbbd9..678afe5c8e1 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1418,7 +1418,7 @@ static bool hvf_handle_psci_call(CPUState *cpu, int *excp_ret)
-     bool target_aarch64 = true;
-     CPUState *target_cpu_state;
-     ARMCPU *target_cpu;
--    target_ulong entry;
-+    uint64_t entry;
-     int target_el = 1;
-     int32_t ret = 0;
- 
+ hw/arm/smmuv3-accel.h       | 41 +----------------------------
+ hw/arm/smmuv3-accel-stubs.c | 52 +++++++++++++++++++++++++++++++++++++
+ hw/arm/smmuv3-accel.c       |  3 ++-
+ hw/arm/smmuv3.c             | 11 +++-----
+ hw/arm/meson.build          |  5 ++--
+ 5 files changed, 61 insertions(+), 51 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel-stubs.c
+
 -- 
 2.53.0
 

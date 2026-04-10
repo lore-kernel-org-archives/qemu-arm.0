@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8FA1E9904A
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 882AAE99050
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:47:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wB6WA-0001K6-5c; Fri, 10 Apr 2026 03:43:06 -0400
+	id 1wB6aK-0003i9-P8; Fri, 10 Apr 2026 03:47:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6W7-0001IM-V5
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:43:04 -0400
+ id 1wB6aI-0003hL-PR
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:47:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wB6W6-0000qw-8l
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:43:03 -0400
+ id 1wB6aG-00058t-VO
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:47:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1775806981;
+ s=mimecast20190719; t=1775807239;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CRfM/2uzYK3VTBfMBLk8dXqfUTctabwqWxHpKci4tIM=;
- b=KdS5NY0q+RZfJWDxZaiUGyXZeG6YvvgqCD5Av7sAFlipunupfS1mldl08fdj3dZJ/o2iey
- 4QoG+gNZY64tNVWChdBY5VBXM6uO8rG+OT0ApOyUclIMhp8vnJMXvs8d8Hz3NVB5FzlR+w
- 5m95AltzBKGMPH1RM8BUGdqvawz2GIw=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Z8274K4VyAmlrTxnjmlmyE50LY7y6DpkBzjVVD+jwXc=;
+ b=JlMBA9D2L19ktrsK/f3+i/VFrub9MwrRe3ZbjZBlwFDh6sxfMOGKSrW7DOT6mAXE1o4SnB
+ 04u3KM7JWEMOlJ7iqrsFSkZlXGP5wxNkFq/Z0hRueU7Zcj31T6qUuSK29aicpa9DWjVhij
+ 24UsRBDwyhjmXQQ7K+HhPr3m57wtACc=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-271-mAgdZb3eN-KpMo2bv8Fqug-1; Fri, 10 Apr 2026 03:42:59 -0400
-X-MC-Unique: mAgdZb3eN-KpMo2bv8Fqug-1
-X-Mimecast-MFC-AGG-ID: mAgdZb3eN-KpMo2bv8Fqug_1775806979
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-488d8deb75fso2202435e9.3
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:42:59 -0700 (PDT)
+ us-mta-467-4sXRW9SzMHCZrZ0o6C8AlA-1; Fri, 10 Apr 2026 03:47:18 -0400
+X-MC-Unique: 4sXRW9SzMHCZrZ0o6C8AlA-1
+X-Mimecast-MFC-AGG-ID: 4sXRW9SzMHCZrZ0o6C8AlA_1775807237
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-488d2cd2674so8985565e9.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:47:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775806979; x=1776411779;
+ d=1e100.net; s=20251104; t=1775807237; x=1776412037;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CRfM/2uzYK3VTBfMBLk8dXqfUTctabwqWxHpKci4tIM=;
- b=Ebqm1Bsql6y3frAhWJp+3TFwinEB1i7HG0kByIGtX1NoaM3luIidmd2JwhQZy56L9w
- pxGttWoaa2bqwrdH3nFRS40piHPvq/JocAssYLrJfuYoFd8axoU4ClrPzHZeSE1biAK8
- cLwMNbdwEYR1wfhW2DaTsSuWN2BRpBB2+zJcG0VqAFM/Ipf+QyieY9bvIIfuaowcgIVK
- /uJ431+lBHFQPZ0XH3XF227fBQ0Xhc79szNBQ7D2SYBXMlW3DCN9O/K2YgpbUPsZPyZc
- 1GhZOiY4hBvi+gII1bqAo/+2r/EGt2FCaBkws0revX20rIsJyhf2vy7YgeBDZThL7VjP
- DHlQ==
+ bh=Z8274K4VyAmlrTxnjmlmyE50LY7y6DpkBzjVVD+jwXc=;
+ b=WARe81H285a9tGlauvaszpNqp7RR8bwlg8OhWqxZGtbfE//TwD7gdhdsP9aL6BqAs/
+ s/FX5aaUExhYmU7vNS6Oe6r4i4kg2w5fEklfxOSCmgaQFosOBN27N4MUGAKvo7v1U4kc
+ PJYlGz8wAA2fIdgSQJRxAMzhYzxMobwLMs7cgnQayJ/fG0is22Famr1lHZwbXg2FQUu4
+ 2mTVVqq1ZtVphOTM5norsLx+f71tmKb/4p4haN3x5EoBPffPRqr1F0A6ck6JAujCZ23b
+ Zg3bBhnLglAMG2VmGd9EVDxqI3BN9U/tyxLhyHY9FLlWsFB5EvBnkRkWmzYWxYyBG2ud
+ mouw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWQRgBLDWKqnifPQZOud1LsK2ip4flVj4AF91HsZakkOkAjXg2GwAD210/m6DIFKZ64OUEnV13tcA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyz6qw2h5oaTJCgTnMfwRd30dBwmB9OcBUjbFvtm8EqfSD1YXyB
- pYd5ZyQU0AN1v/rDvOazGnhVg6HDC2fwm5EzoHcaH450ZvVanTPQcqTNN9jFk4ChNfILUBKrvmz
- ocN634ByTSgQcS0rZ0lel+zlSBzDurmw5njG+BbhS73uBewyERSgFsg==
-X-Gm-Gg: AeBDievAOcxIX+sUM1gQ7kXwq3Wc6pHYbpT6ZTCz+X3tIVAUNXx1+GyOO68enOvCDI5
- SWuMpPe1UpZOsgMehBlQRYO8umzt9UnKQBF2gM+RLfhNNHHENf0CgMaFDrt1oyKQI0VihMbfHPt
- 48AArsUkjOBAosn+epE5waB2qgV7ZlPddIzsJ/KZnyVr14vCbHVGpx72qe6265SNeAVlrxx7n/C
- E0rfWg82VdBiuA7mZyyVesI2seMISBy+FF83zHSnI8bk6H6uRMibYpY8OmSIdbAhVTgjyrJEQ8Z
- drBUmwlIRzgLhgyCxng5L1dYoHJI8F9fcROvII346NLFZdMW4CXX1Gj0c9wcX5kml4tMKjsBhIy
- Oz7lC/GCyPKiXpYDvu4aTHfX8cX+/Q+L6CGXy6uAdlWCSxBtiB7ZBL8mpQ7ZyvXEJNHeB7Q==
-X-Received: by 2002:a05:600c:5292:b0:486:fe39:28b7 with SMTP id
- 5b1f17b1804b1-488d67fa48emr25267005e9.9.1775806978599; 
- Fri, 10 Apr 2026 00:42:58 -0700 (PDT)
-X-Received: by 2002:a05:600c:5292:b0:486:fe39:28b7 with SMTP id
- 5b1f17b1804b1-488d67fa48emr25266695e9.9.1775806978115; 
- Fri, 10 Apr 2026 00:42:58 -0700 (PDT)
+ AJvYcCVuzcI7Y8vK+9EH5vl8MsSGGyk1OtoC0pblTIDniWNFW10/IGsyMeTgQVwPBmn6nDl/YTmdOm2Jdw==@nongnu.org
+X-Gm-Message-State: AOJu0YxstMYphNmx1/WcqUrSt/EwkjQOACFlafSLb3kqpGKkBOxnJUdY
+ Fe0nlbroBq0V/JFyLLjhWIIL6WgfLIZujtUrZM+vaZz7OHoYT8ITgQKFd4umkGt3+QOgszuCAdg
+ zfCCxxza7nvWh//YEDH84CuMVU1ReVaaUVJo4FIlwMXvjQaWuZdr2Ag==
+X-Gm-Gg: AeBDies8d4Fm8oepErNQ3/q7zc8tznkAI1NK8pLSNgRIU9wjfUsxBTwYC+CM3FaA2d4
+ L61TZTn44jUCfSX88TfKEtVATu05dIdBadiH8bFap7vm6yfuTR50MOttrlO+IGBmQPm3BcwflyB
+ Ua2z69xKjEkBkPYepHXUzauEa6zRqXiSMFmkZuSsEbiEjJ6HRYXqhWCFbd9RhvC/IGzK8ZaFeW9
+ 51Hn/D+spXmoMVv8fI3Anmknn7wVzl6MJkKFbrzXslCyMppOHMq+FhN70RFP9z5yIIdLREoGfys
+ SuWuYZAirfph1OrAJNBnxkWEhHCSxGCePbluxjmDCkt0zMt4gw/Muvs63yUjb3K/I8dt8G7FO2l
+ 7dsWOX8RE4iebwIMTaAYp6vRhFAUl6roxPp563Oo1cXeVevWpBKPQMf4QIRkzFUR2xU8gMQ==
+X-Received: by 2002:a05:600c:6990:b0:488:a2ac:a34c with SMTP id
+ 5b1f17b1804b1-488d67f5bf5mr22602035e9.12.1775807236759; 
+ Fri, 10 Apr 2026 00:47:16 -0700 (PDT)
+X-Received: by 2002:a05:600c:6990:b0:488:a2ac:a34c with SMTP id
+ 5b1f17b1804b1-488d67f5bf5mr22601605e9.12.1775807236294; 
+ Fri, 10 Apr 2026 00:47:16 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d5b3d4dbsm50551495e9.14.2026.04.10.00.42.56
+ 5b1f17b1804b1-488d681ecd5sm13917815e9.19.2026.04.10.00.47.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Apr 2026 00:42:57 -0700 (PDT)
-Message-ID: <1bdba168-e5fb-491e-a9ee-6311bc95b38d@redhat.com>
-Date: Fri, 10 Apr 2026 09:42:55 +0200
+ Fri, 10 Apr 2026 00:47:15 -0700 (PDT)
+Message-ID: <d4bd87ee-caaf-497e-9e4a-90051868d9a9@redhat.com>
+Date: Fri, 10 Apr 2026 09:47:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/11] hw/arm/smmuv3: Change the default ats support to
- match the host
+Subject: Re: [PATCH 05/11] hw/arm/smmuv3-accel: Implement "auto" value for
+ "ril"
 To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
@@ -93,11 +93,11 @@ Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
  <clg@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
  Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
 References: <20260401010231.4166776-1-nathanc@nvidia.com>
- <20260401010231.4166776-4-nathanc@nvidia.com>
+ <20260401010231.4166776-6-nathanc@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260401010231.4166776-4-nathanc@nvidia.com>
+In-Reply-To: <20260401010231.4166776-6-nathanc@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 1kpE6uzEtS3u53jgwTfBnq-_wzjCx0Hv6swgXTvhLa0_1775806979
+X-Mimecast-MFC-PROC-ID: mkh4ljIaibZF3IsXwzdblJqMMjf7kAn6Vo728OXMWng_1775807237
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -133,49 +133,72 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 4/1/26 3:02 AM, Nathan Chen wrote:
 > From: Nathan Chen <nathanc@nvidia.com>
 >
-> Set the default value of ATS to auto. The default for ATS support used
-> to be set to off, but we change it to match what the host IOMMU
-> properties report. Introduce a new compat for the changed default.
+> Allow accelerated SMMUv3 Range Invalidation support property to be
+> derived from host IOMMU capabilities. Derive host values using
+> IOMMU_GET_HW_INFO, retrieving RIL capability from IDR3.
 >
 > Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 > ---
->  hw/arm/smmuv3.c   | 2 +-
->  hw/core/machine.c | 5 +++++
->  2 files changed, 6 insertions(+), 1 deletion(-)
+>  hw/arm/smmuv3-accel.c | 9 ++++++++-
+>  hw/arm/smmuv3.c       | 7 +------
+>  2 files changed, 9 insertions(+), 7 deletions(-)
 >
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index a835c8f220..9e7ec6a930 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -50,6 +50,12 @@ static void smmuv3_accel_auto_finalise(SMMUv3State *s,
+>                                 FIELD_EX32(info->idr[0], IDR0, ATS));
+>      }
+>  
+> +    /* Update RIL if auto from info */
+not sure that kind of comment is really useful.
+> +    if (s->ril == ON_OFF_AUTO_AUTO) {
+> +        s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL,
+> +                               FIELD_EX32(info->idr[3], IDR3, RIL));
+> +    }
+> +
+>      accel->auto_finalised = true;
+>  }
+>  
+> @@ -945,7 +951,8 @@ void smmuv3_accel_init(SMMUv3State *s)
+>      bs->iommu_ops = &smmuv3_accel_ops;
+>      smmuv3_accel_as_init(s);
+>  
+> -    if (s->ats == ON_OFF_AUTO_AUTO) {
+> +    if (s->ats == ON_OFF_AUTO_AUTO ||
+> +        s->ril == ON_OFF_AUTO_AUTO) {
+>          s->s_accel->auto_mode = true;
+>      }
+>  }
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index f3603554e3..f353865187 100644
+> index f353865187..a2d2f0e3bc 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -2158,7 +2158,7 @@ static const Property smmuv3_properties[] = {
->      DEFINE_PROP_UINT64("msi-gpa", SMMUv3State, msi_gpa, 0),
->      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_ON_OFF_AUTO("ril", SMMUv3State, ril, ON_OFF_AUTO_ON),
-> -    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_OFF),
-> +    DEFINE_PROP_ON_OFF_AUTO("ats", SMMUv3State, ats, ON_OFF_AUTO_AUTO),
-see my previous comment about squashing all those patches. Besides you
-need to update qemu-options.hx where the default value is documented as
-non auto.
+> @@ -1973,10 +1973,6 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>      }
+>  #endif
+>  
+> -    if (s->ril == ON_OFF_AUTO_AUTO) {
+> -        error_setg(errp, "ril auto mode is not supported");
+> -        return false;
+> -    }
+>      if (s->ssidsize == SSID_SIZE_MODE_AUTO) {
+>          error_setg(errp, "ssidsize auto mode is not supported");
+>          return false;
+> @@ -2188,8 +2184,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>          "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
+>          "configured in nested mode for vfio-pci dev assignment");
+>      object_class_property_set_description(klass, "ril",
+> -        "Disable range invalidation support (for accel=on). ril=auto "
+> -        "is not supported.");
+> +        "Disable range invalidation support (for accel=on).");
+same comment as before. Suggesting "Set RIL value. Valid values ..."
++ qemu-options.hx updates.
 
 Eric
->      DEFINE_PROP_OAS_MODE("oas", SMMUv3State, oas, OAS_MODE_44),
->      DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
->                                SSID_SIZE_MODE_0),
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 0aa77a57e9..6796ab63cc 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -37,6 +37,11 @@
->  #include "hw/virtio/virtio-iommu.h"
->  #include "hw/acpi/generic_event_device.h"
->  #include "qemu/audio.h"
-> +#include "hw/arm/smmuv3.h"
-> +
-> +GlobalProperty hw_compat_11_0[] = {
-> +    { TYPE_ARM_SMMUV3, "ats", "off" },
-> +};
->  
->  GlobalProperty hw_compat_10_2[] = {
->      { "scsi-block", "migrate-pr", "off" },
+>      object_class_property_set_description(klass, "ats",
+>          "Enable/disable ATS support (for accel=on). Please ensure host "
+>          "platform has ATS support before enabling this.");
 
 

@@ -4,117 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16007F364D6
-	for <qemu-arm@archiver.kernel.org>; Thu,  9 Apr 2026 23:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0298DF36BAA
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 05:07:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wAyWu-0004yl-QS; Thu, 09 Apr 2026 19:11:20 -0400
+	id 1wB44n-0002jg-S5; Fri, 10 Apr 2026 01:06:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1wAyWs-0004yM-5d
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 19:11:18 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1wAyWm-00062w-4X
- for qemu-arm@nongnu.org; Thu, 09 Apr 2026 19:11:13 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-6634bb959a2so2029287a12.1
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 16:11:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775776268; cv=none;
- d=google.com; s=arc-20240605;
- b=IMUf26DPPi1MOJy6sy6NaKPn9ciNgtBx5PH5ej/jTVTNbbb0ck5gmLak3Pi9/FvcFk
- ObEmIWWLNbKBN+8ksU4+7QBiOQSzMJ4HXvKjfHIo+llN10OXLVqW9KiJROW78XiaJMXF
- 8nAZH+GsFIfpSBV/Xb3ngV3940+qiOiktm9ax5GrSb7uC0Ibs0QBoh2jtNQ0mmJ1N1dF
- XwwBduiZhuEcC6RtBbpsZgTO+BMDdh6/RxCuwyUUs8eVHGd2S0MbxIHWB55CJJ+yz05D
- Hv+fnDc3lQwHOtlvtfnPKyjYgh3p4Rw6WPDqBwkSmN6xB8k5Ho8Xp3ryys0NCbIwBrsZ
- O33Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=/KR+60lP4zq7vXYcivRUWvNT63Pne3rX1vPM0BghTmw=;
- fh=EQKtci4z7MwQbP/H4kIaFMVMfrJZp/ye+BHS9lMHvzQ=;
- b=bP8aLZ7x94WymqaT/U2kAM3vbnjV8xKPXaKxK2avov2Ma15zbi2gPHMEjRRPcjwqnX
- Dq1BGbtcqJ/qgfBS1+40BEqWA+oXhjOfwh+DAYR9OSvZaNdQit24jnVt0xGNAVd2dZUH
- Lp5fRIpJi4OaBA3OGuQX9QlupOeFWfarqGeRAizKnGAukjYMQY0UjT1DqeXYOJLRkDx0
- DNAAQGztkuop+j55K+dhyFM0K3ARKJ0hvgcFDErLfp8zVW7/87FzRMVFFLgW+7jkwair
- JdxCIn4zvjzJla0YX/N+vLRibqQ//ir8jdA61fg+PJeHsWBiR6XLapfP33lfHrKNAFMw
- VAjw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775776268; x=1776381068; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/KR+60lP4zq7vXYcivRUWvNT63Pne3rX1vPM0BghTmw=;
- b=Tu289g1wHpKBb6ioud9lBSN3QscAeQIbvYXx6Qe1Tzsd/LHsTpLcsFDJDO/VoImLJU
- u8oINkN6JWRrbA8w4vCIyxO5eHMO5UBk+dxPIWwXjL/jE9LX30fPyFgeDNJrhAhdlNa8
- l/vlZSOLl+8kh80Cif7exJ2OPSbePgzU/Ujm4p9ol7DAIMCkgCJFXyd8C/AjvUSpuIIu
- iZQpEcj1ns+Yj0KHQe/gfYDmb9l7HTs3Z3K6Jl4ZLBJgE8BjxgS+jmWeljJSejZq0nYK
- KM46FpST7BtHfxbiDt1C8Z/92yL6CIGOzX62mMQ6uaU0kF1t42q0BZ0WOHXSKtA86N7P
- ggJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775776268; x=1776381068;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=/KR+60lP4zq7vXYcivRUWvNT63Pne3rX1vPM0BghTmw=;
- b=G1vdXkHvm5u3wRIteHY2vXD9X+g3HwnpzjSsHyafh5AqJZVg7I+31jcgnY3YNFAjuY
- ESK911kAoJgTslojf1gP6RyxNVc5SrImKEc52QQVBd0xsiId8gyZO6DimBpFQef1ZS7b
- xMqiD1e/QIT66TidlkGtu44mHiOlg6Ze7BcBiBBww6eHpoS4YaPal+W9HN0yDQpY+RVN
- UtkuvuTJs9LGGKXEFixzTuESq5P0ilVBRAFOhmlTlTF0Y5794Fj6xhsfjkbOR5rBSSce
- HW42nnQHC5eKNN1h04wBvZ63nrAaIf8vPKdNPGDokN7gUOdDiPilDfpkG+yYd3raMZn+
- 0VKA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVz8xabrAngE/rjsQqEznIQSVATUgs0SAh04BZABfRBqTzor3D6xzhQdmAAAmBNNeHu4h7l+hhdsw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+oHs/Sww1om2dBI7w84YpORFAdZcAGE4GWY7O8WjjfR3t7vld
- bblbj2WftHac+xmG4GIakyH1Kw7wM23CLy8mHrZ1sCNvJLuI9Zh+0S+Wy5nlTJ0C5pXydCC4rl+
- 9qR2CPpq9RxznYFfzddc1DvcU71c6aI8=
-X-Gm-Gg: AeBDiesN9Zk6xBrBy+agYyYAv9/EsWTSUQMItsw9OGVeDPe0otCggz2cqSglhcpUelY
- Us7ZBhHLNfVJ3OFOSPrRzn4QZPIniHafAFNve7ahoFJSuqNT7eT87LFoHxQA3/Q/2sCbjLYpnoO
- EkrS7FtVYCvYLo8h79NOZLF2DLwcp+tvKK+HcLNmhaY++Haem7rDwySJo3JPqflDKjnY5v9l8/j
- L4mHczeimwnRdDyk2PDhopu6Ge2nZ1J/DXD6bWoMd4A442i5LL2OuZtcncN2xnPKcVGPDLNcNTE
- vSWvp2SON6tbu1OlAb0=
-X-Received: by 2002:a17:907:9608:b0:b9c:b88c:6364 with SMTP id
- a640c23a62f3a-b9d7249921cmr61420666b.22.1775776267420; Thu, 09 Apr 2026
- 16:11:07 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260409-fix-unit-address-v1-0-946840930af2@iscas.ac.cn>
- <20260409-fix-unit-address-v1-5-946840930af2@iscas.ac.cn>
-In-Reply-To: <20260409-fix-unit-address-v1-5-946840930af2@iscas.ac.cn>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 10 Apr 2026 09:10:40 +1000
-X-Gm-Features: AQROBzDXAHNGs9bJ86tYCUcUqXcY2fo0XK7RCn50bqQwvzx_rhA2w66un2AP4tE
-Message-ID: <CAKmqyKPO8HjaoLdC61rTiNkawFfwb6e9YtAq0c2YBcA-fTtXjQ@mail.gmail.com>
-Subject: Re: [PATCH 5/5] hw/riscv: Use hex unit addresses in FDT CPU nodes
-To: Vivian Wang <wangruikang@iscas.ac.cn>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Song Gao <gaosong@loongson.cn>, Bibo Mao <maobibo@loongson.cn>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Paul Burton <paulburton@kernel.org>, 
- Aleksandar Rikalo <arikalo@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Jia Liu <proljc@gmail.com>, Stafford Horne <shorne@gmail.com>, 
- Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu.zevorn@gmail.com>, qemu-riscv@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wB44m-0002jI-7v
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:06:40 -0400
+Received: from p-west2-cluster6-host5-snip4-1.eps.apple.com ([57.103.70.24]
+ helo=outbound.mr.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wB44j-000854-Bq
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:06:40 -0400
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-5 (Postfix) with ESMTPS id
+ E1A08180019A; Fri, 10 Apr 2026 05:06:33 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1775797594; x=1778389594;
+ bh=fFlzdLPddqiJVPIuJDZJCC+IL3keDdWnwv2Sa7Yn6v0=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=QsXvj74slMkKp13EKOo+omkKPSDdqrSSnqV+FyQ1ZHmNRPY4FGRaE07FCn8dzpRhRfosO8jHgS6e6XB+s9T6puD7MtSf1X97zHBHf+cny05lWV3CLqHPHZz+4eS+MwfU04HYsgaCc+DjhkCcLRaT4kIjXBzdUWU66Xv0Qg2ALJsPVJ8G5tD/e/3H9e47Q+z6rkV+tN78N7Jd/CZiuLAdbbE7Bmuxwu6Yz1OIne7szE8PNUovohz8v53sDkpBiP+YQ/2zela29gnVTNmAnc8g2bjtCoyomP0mvDkm0WKQlI6GDotLqOZIC7y0vffxi3xg9EjKcizRyuRPGIHV0/l5uQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.152.38])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-5 (Postfix) with ESMTPSA id
+ D5C2B1800136; Fri, 10 Apr 2026 05:06:31 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH] target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260410044726.61853-1-scottjgo@gmail.com>
+Date: Fri, 10 Apr 2026 07:06:18 +0200
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, rbolshakov@ddn.com,
+ phil@philjordan.eu, agraf@csgraf.de, peter.maydell@linaro.org
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=alistair23@gmail.com; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Message-Id: <E41FA391-ABC2-4CA9-850C-BDB3263C1E07@unpredictable.fr>
+References: <20260410044726.61853-1-scottjgo@gmail.com>
+To: "Scott J. Goldman" <scottjgo@gmail.com>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Authority-Info-Out: v=2.4 cv=Ze0Q98VA c=1 sm=1 tr=0 ts=69d8855a
+ cx=c_apl:c_pps:t_out a=9OgfyREA4BUYbbCgc0Y0oA==:117
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=kj9zAlcOel0A:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=p0WdMEafAAAA:8 a=pGLkceISAAAA:8
+ a=wG9qhmRfGSGoVh_Ie2YA:9 a=CjuIK1q_8ugA:10 a=O8hF6Hzn-FEA:10
+X-Proofpoint-GUID: bNDyCNcHHrbGMgKGnHAz24R8jL1U25C9
+X-Proofpoint-ORIG-GUID: bNDyCNcHHrbGMgKGnHAz24R8jL1U25C9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDEwMDA0NCBTYWx0ZWRfX+rqT4V4g3iYu
+ +SSX/E5ni58RvtiFXkGf4T6cpEMNLBGLAeS0M2VdDBgL01Hc03RLpPByowr9R4zU/MW/uQiK9q2
+ ki5IhMczd1lDTkZIg71K/wQnrChqiYbNh5uBsDXfouFUqXnseWx/eG66YxNAlpk67Cvvyp1N17c
+ +M9nIXeImU7EChUOP/K0rY5tp5C9Uq7X7EMPn+1Tdy2XAYvRfjC5RTNot1IGzGcNyhhVf9chjjv
+ ukVScojm0bnU/ctCO7AE3wMfnVqD6cQ4dXVcWLEkqQvKK/D3QfQT2saLIFZEwOcPTJ2QOa+J5Pa
+ KW1IMBC34F6w07bFdwXnqBcHlMb3H0B6NUEjoEgTMxk5Cwysn+ioB/0u6jquL8=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-10_01,2026-04-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ bulkscore=0 suspectscore=0 spamscore=0
+ lowpriorityscore=0 phishscore=0
+ clxscore=1030 adultscore=0 mlxlogscore=999 mlxscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2604100044
+Received-SPF: pass client-ip=57.103.70.24;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,103 +94,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Apr 9, 2026 at 4:42=E2=80=AFPM Vivian Wang <wangruikang@iscas.ac.cn=
-> wrote:
->
-> These unit addresses should have been in hex, not decimal, as per de
-> facto convention [1]. Fix them.
->
-> Link: https://lore.kernel.org/devicetree-spec/CAL_JsqJFv3+UJ-bjLGk0i7Wc+s=
-psowCrqQZ_s3P4gN8r1W-Q-w@mail.gmail.com/ # [1]
-> Signed-off-by: Vivian Wang <wangruikang@iscas.ac.cn>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
+> On 10. Apr 2026, at 06:47, Scott J. Goldman <scottjgo@gmail.com> =
+wrote:
+>=20
+> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
+> changed hvf_wfi() from blocking the vCPU thread with pselect() to
+> returning EXCP_HLT, intending QEMU's main event loop to handle the
+> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
+> always returns false and the vCPU thread spins at 100% CPU per core
+> while the guest is idle.
+>=20
+> Fix this by:
+>=20
+> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps on
+>   halt_cond in qemu_process_cpu_events().
+>=20
+> 2. Arming a host-side QEMU_CLOCK_HOST timer to fire when the guest's
+>   virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
+>   because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
+>   hv_vcpu_run(), which is not called while the CPU is halted. The
+>   timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
+>   vtimer IRQ through the GIC and marks vtimer_masked, causing the
+>   interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
+>=20
+> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
+>   indicates a pending interrupt, and cancelling the WFI timer.
+>=20
+> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/959
+> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
 
+Hi,
+
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->  hw/riscv/sifive_u.c | 9 +++++----
->  hw/riscv/spike.c    | 4 ++--
->  hw/riscv/virt.c     | 4 ++--
->  3 files changed, 9 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 7ec67b2565..54f3bcc3b2 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -168,8 +168,9 @@ static void create_fdt(SiFiveUState *s, const MemMapE=
-ntry *memmap,
->
->      for (cpu =3D ms->smp.cpus - 1; cpu >=3D 0; cpu--) {
->          int cpu_phandle =3D phandle++;
-> -        nodename =3D g_strdup_printf("/cpus/cpu@%d", cpu);
-> -        char *intc =3D g_strdup_printf("/cpus/cpu@%d/interrupt-controlle=
-r", cpu);
-> +        nodename =3D g_strdup_printf("/cpus/cpu@%x", (unsigned)cpu);
-> +        char *intc =3D g_strdup_printf("/cpus/cpu@%x/interrupt-controlle=
-r",
-> +                                     (unsigned)cpu);
->          qemu_fdt_add_subnode(fdt, nodename);
->          /* cpu 0 is the management hart that does not have mmu */
->          if (cpu !=3D 0) {
-> @@ -198,7 +199,7 @@ static void create_fdt(SiFiveUState *s, const MemMapE=
-ntry *memmap,
->      cells =3D  g_new0(uint32_t, ms->smp.cpus * 4);
->      for (cpu =3D 0; cpu < ms->smp.cpus; cpu++) {
->          nodename =3D
-> -            g_strdup_printf("/cpus/cpu@%d/interrupt-controller", cpu);
-> +            g_strdup_printf("/cpus/cpu@%x/interrupt-controller", (unsign=
-ed)cpu);
->          uint32_t intc_phandle =3D qemu_fdt_get_phandle(fdt, nodename);
->          cells[cpu * 4 + 0] =3D cpu_to_be32(intc_phandle);
->          cells[cpu * 4 + 1] =3D cpu_to_be32(IRQ_M_SOFT);
-> @@ -249,7 +250,7 @@ static void create_fdt(SiFiveUState *s, const MemMapE=
-ntry *memmap,
->      cells =3D  g_new0(uint32_t, ms->smp.cpus * 4 - 2);
->      for (cpu =3D 0; cpu < ms->smp.cpus; cpu++) {
->          nodename =3D
-> -            g_strdup_printf("/cpus/cpu@%d/interrupt-controller", cpu);
-> +            g_strdup_printf("/cpus/cpu@%x/interrupt-controller", (unsign=
-ed)cpu);
->          uint32_t intc_phandle =3D qemu_fdt_get_phandle(fdt, nodename);
->          /* cpu 0 is the management hart that does not have S-mode */
->          if (cpu =3D=3D 0) {
-> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
-> index 35c696f891..cac01ea1ff 100644
-> --- a/hw/riscv/spike.c
-> +++ b/hw/riscv/spike.c
-> @@ -105,8 +105,8 @@ static void create_fdt(SpikeState *s, const MemMapEnt=
-ry *memmap,
->          for (cpu =3D s->soc[socket].num_harts - 1; cpu >=3D 0; cpu--) {
->              cpu_phandle =3D phandle++;
->
-> -            cpu_name =3D g_strdup_printf("/cpus/cpu@%d",
-> -                s->soc[socket].hartid_base + cpu);
-> +            cpu_name =3D g_strdup_printf("/cpus/cpu@%" PRIx32,
-> +                s->soc[socket].hartid_base + (uint32_t)cpu);
->              qemu_fdt_add_subnode(fdt, cpu_name);
->              if (is_32_bit) {
->                  qemu_fdt_setprop_string(fdt, cpu_name, "mmu-type", "risc=
-v,sv32");
-> diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-> index a1c323e66d..42a83dd829 100644
-> --- a/hw/riscv/virt.c
-> +++ b/hw/riscv/virt.c
-> @@ -248,8 +248,8 @@ static void create_fdt_socket_cpus(RISCVVirtState *s,=
- int socket,
->
->          cpu_phandle =3D (*phandle)++;
->
-> -        cpu_name =3D g_strdup_printf("/cpus/cpu@%d",
-> -            s->soc[socket].hartid_base + cpu);
-> +        cpu_name =3D g_strdup_printf("/cpus/cpu@%" PRIx32,
-> +            s->soc[socket].hartid_base + (uint32_t)cpu);
->          qemu_fdt_add_subnode(ms->fdt, cpu_name);
->
->          if (satp_mode_max !=3D -1) {
->
-> --
-> 2.53.0
->
->
+> include/system/hvf_int.h |  1 +
+> target/arm/hvf/hvf.c     | 65 +++++++++++++++++++++++++++++++++++++++-
+> 2 files changed, 65 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 2621164cb2..58fb865eba 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -48,6 +48,7 @@ struct AccelCPUState {
+>     hv_vcpu_exit_t *exit;
+>     bool vtimer_masked;
+>     bool guest_debug_enabled;
+> +    struct QEMUTimer *wfi_timer;
+> #endif
+> };
+>=20
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 5fc8f6bbbd..0e737d3583 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -28,6 +28,7 @@
+> #include "hw/core/boards.h"
+> #include "hw/core/irq.h"
+> #include "qemu/main-loop.h"
+> +#include "qemu/timer.h"
+> #include "system/cpus.h"
+> #include "arm-powerctl.h"
+> #include "target/arm/cpu.h"
+> @@ -301,6 +302,8 @@ void hvf_arm_init_debug(void)
+> #define TMR_CTL_IMASK   (1 << 1)
+> #define TMR_CTL_ISTATUS (1 << 2)
+>=20
+> +static void hvf_wfi_timer_cb(void *opaque);
+> +
+> static uint32_t chosen_ipa_bit_size;
+>=20
+> typedef struct HVFVTimer {
+> @@ -1214,6 +1217,9 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+> {
+>     hv_return_t ret;
+>=20
+> +    timer_free(cpu->accel->wfi_timer);
+> +    cpu->accel->wfi_timer =3D NULL;
+> +
+>     ret =3D hv_vcpu_destroy(cpu->accel->fd);
+>     assert_hvf_ok(ret);
+> }
+> @@ -1352,6 +1358,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+>                               =
+arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
+>     assert_hvf_ok(ret);
+>=20
+> +    cpu->accel->wfi_timer =3D timer_new_ns(QEMU_CLOCK_HOST,
+> +                                          hvf_wfi_timer_cb, cpu);
+> +
+>     aarch64_add_sme_properties(OBJECT(cpu));
+>     return 0;
+> }
+> @@ -2027,8 +2036,29 @@ static uint64_t hvf_vtimer_val_raw(void)
+>     return mach_absolute_time() - hvf_state->vtimer_offset;
+> }
+>=20
+> +static void hvf_wfi_timer_cb(void *opaque)
+> +{
+> +    CPUState *cpu =3D opaque;
+> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
+> +
+> +    /*
+> +     * vtimer expired while the CPU was halted for WFI.
+> +     * =09
+> +     * interrupt and mark as masked so hvf_sync_vtimer() will
+> +     * check and unmask when the guest handles it.
+> +     *
+> +     * The interrupt delivery chain (GIC -> cpu_interrupt ->
+> +     * qemu_cpu_kick) wakes the vCPU thread from halt_cond.
+> +     */
+> +    qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
+> +    cpu->accel->vtimer_masked =3D true;
+> +}
+> +
+> static int hvf_wfi(CPUState *cpu)
+> {
+> +    uint64_t ctl, cval;
+> +    hv_return_t r;
+> +
+>     if (cpu_has_work(cpu)) {
+>         /*
+>          * Don't bother to go into our "low power state" if
+> @@ -2037,6 +2067,35 @@ static int hvf_wfi(CPUState *cpu)
+>         return 0;
+>     }
+>=20
+> +    /*
+> +     * Set up a host-side timer to wake us when the vtimer expires.
+> +     * HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
+> +     * hv_vcpu_run(), which we won't call while halted.
+> +     */
+> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, =
+HV_SYS_REG_CNTV_CTL_EL0, &ctl);
+> +    assert_hvf_ok(r);
+> +
+> +    if ((ctl & TMR_CTL_ENABLE) && !(ctl & TMR_CTL_IMASK)) {
+> +        r =3D hv_vcpu_get_sys_reg(cpu->accel->fd,
+> +                                HV_SYS_REG_CNTV_CVAL_EL0, &cval);
+> +        assert_hvf_ok(r);
+> +
+> +        uint64_t now =3D hvf_vtimer_val_raw();
+> +        if (cval <=3D now) {
+> +            /* Timer already expired, don't halt */
+> +            return 0;
+> +        }
+> +
+> +        uint64_t delta_ticks =3D cval - now;
+
+We have CNTFRQ_EL0 in cpu->gt_cntfrq_hz but this works too
+as XNU today tries to take care that host and VM run with
+the same CNTFRQ_EL0
+
+> +        mach_timebase_info_data_t timebase;
+> +        mach_timebase_info(&timebase);
+> +        int64_t delta_ns =3D delta_ticks * timebase.numer / =
+timebase.denom;
+> +        int64_t deadline =3D qemu_clock_get_ns(QEMU_CLOCK_HOST) + =
+delta_ns;
+> +
+> +        timer_mod(cpu->accel->wfi_timer, deadline);
+> +    }
+> +
+> +    cpu->halted =3D 1;
+>     return EXCP_HLT;
+> }
+>=20
+> @@ -2332,7 +2391,11 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+>     hv_return_t r;
+>=20
+>     if (cpu->halted) {
+> -        return EXCP_HLT;
+> +        if (!cpu_has_work(cpu)) {
+> +            return EXCP_HLT;
+> +        }
+> +        cpu->halted =3D 0;
+> +        timer_del(cpu->accel->wfi_timer);
+>     }
+>=20
+>     flush_cpu_state(cpu);
+> --=20
+> 2.50.1 (Apple Git-155)
+>=20
+>=20
+
 

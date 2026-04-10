@@ -4,79 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA7DF36BBF
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 06:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F08D1F36BBF
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 06:43:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wB5aP-0005PH-LS; Fri, 10 Apr 2026 02:43:25 -0400
+	id 1wB5aR-0005Pf-Fl; Fri, 10 Apr 2026 02:43:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wB3mr-00088F-W2
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 00:48:10 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ id 1wB4ld-0003pt-Ub
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:50:57 -0400
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wB3mp-0001jJ-Qd
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 00:48:09 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-2bd9a485bd6so3424530eec.1
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 21:48:06 -0700 (PDT)
+ id 1wB4lc-0006Kt-4h
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:50:57 -0400
+Received: by mail-dl1-x1229.google.com with SMTP id
+ a92af1059eb24-12c287eb77fso1402895c88.1
+ for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 22:50:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775796486; x=1776401286; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Mwb6/+4nupu7Ja3YoA04YyvuT85Zlgd+oi3tYb3mgHQ=;
- b=IyNWCiiOdZ34DC/yW+B1kPWQ1urCELKdHcopueblvAdeYvxYpf8EAIdCDxYcaaQJR9
- j4NAcH5T4m/pbYpW0Br5mV8mdM9nLgN5VqqSPq65rxLpF1TevquSOFtTkZJMwDkAg8vA
- sI8ntWMbliFGTBH2L42M2Af0TP7rUdco1RUO2xalVg+sxjNH/v77GAm2YepALbvRM52Y
- 1IUGTZjts9z0jslXyJ+IkTigzhhcHLcRAfNTHvbzsbMbgdAcReEvtU2FI1EDfZWRBNwE
- eYATKtXSVWTxgEB8T96xsQpL8uV5cceFJqbjetAAFB11VZGhrcmC4M5O3iCdQtMQxLC4
- R8kQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775796486; x=1776401286;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1775800254; x=1776405054; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Mwb6/+4nupu7Ja3YoA04YyvuT85Zlgd+oi3tYb3mgHQ=;
- b=fac7PQZLnlRxNs/aQPRU6O4e1nwBjn08i/JxHRzDM/xc2qnvcaghpq5ycJL1p49qGw
- Vj7aUPpvEyCNtNNlq3T/2Xs/01hJQ+J5Zm+mGoHJ0EkAZEYF6569f8psbuhjYebJAO4i
- nECGiYcaNROsvXydzjON0X6JErnVnATAXRVQMCbB7AHhXK79c7e8b7akznkp8C8MLXvp
- Xw16bEWHh9srCGXaH0GrJXCD5QJRGa73fsxE9rSI/D6zVSxrKoDI2179CsKESdbZMzzu
- Xmea/TuhGDXHd6O9DbbB/Up89CYX8Vvdy8BaJ1DCwlBV8U58X3KetIBI+GuaMWLxcu7C
- vCXQ==
-X-Gm-Message-State: AOJu0YxXJL3DAv//jkWowHdNw65cAr8KNSbNhCZrqzOvgoJ4cB740l9k
- 8NxXs+V9/vouxDAqZaHKQqMjGXCBJ8Cm66GwMgZ59sgyjsOTlMOQpQYU
-X-Gm-Gg: AeBDiev5yAoh1fViXrJM2c9kFA90trukwdKsnP3Gu0ZLAV4WPFK1xfcF5XIHMyAtRvJ
- ks14y5lLkB0DTCbLjnzsiUD8NzNq6N00HaRmHlhEPgUnw2P8Lrc8wV2ii1qr2vRZRE1oNSgjih0
- 8CYks5rHc72ZnLmip8X63sA0yxYRkIF+r+LoaQjnIRbVqkfoGf1hr7gR8tfrwx3rcZcikSos+2v
- 0YZXH++43inW4///v+YPhDusfV3gu3G6jdJHP2/f9B5gfumjehYg76IobaMtLfkQ2MYpiqkUw10
- 3jObTwBefnEPB8euk7hj0OMjt/DatYNobTTbsIYlvukb93Zj1ocDWAXzL7z80pRgZ0fUA6x5DuY
- fPG/r+dgofUdXOcs8AJmAWhDSavfTAhyj8y79mLOzbyX6Hhl4Lisf3FqEeyuPIXxXLETdyFujXM
- xD9p5xNkD+Y82ORNbIGjVsAzr+GI/QN3VTm62xBIq6VbtB2fEsZVcMzIApSI3jsTqLbPgvl+L3y
- KuUbgmQLlxm4upGdA2+YJKCYwk=
-X-Received: by 2002:a05:7300:8c14:b0:2c4:ec89:bd3 with SMTP id
- 5a478bee46e88-2d5898aa893mr966553eec.24.1775796485592; 
- Thu, 09 Apr 2026 21:48:05 -0700 (PDT)
+ bh=TKYjpnBzm9b6R7ZTmGA7hRa20prfMvO0wbO3fSp1aeo=;
+ b=P4gojteKrCybMWzpD5NdYyfEeIsEpZd3GPY4hctXQOt1HnLp50EQbp69TQfhei4vLf
+ wwU+eGJb+B8zup9KsK5Hvw0h/Hq4kV9+d62fCNx5hbhoaaMmXVQVTPzL06PtAhF3HZjR
+ yzmACTnwW0AtA7LtfF1vRTGQPHHSZIbDNkVZRovW79uAK/KrHEgFC6HueaVzg1nKbQuj
+ JRBel5E3Ud8O3liUPuh5ZlK4zlgZPxtAHGLmCb/Kh0D45s8j77NOaJ8hypoGR9+6pBqf
+ wbPCSgUD65X+gpzQ6HGstQBWx+Fl70/Co8Re+oT37tJQB/u0TnC04LX3AYhpUU483Elq
+ 9VaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775800254; x=1776405054;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=TKYjpnBzm9b6R7ZTmGA7hRa20prfMvO0wbO3fSp1aeo=;
+ b=aJk+52IMbsysK4C+Z6Ub5fvZLC4Af+vnEQDZ4nIotVf917oh+gMGElQOZFLLEZBDrq
+ 8QMFudsfi5qmqXpLpHKZ7StvlX2HnFbqDhQ5qwKxgxqwknYT2GR1FMXlGYnqhwAMoCeB
+ dCHHmUt2FRfdfhDmqreobLU6e599srdeUTiYh0TA2ZFYfmtgzyuKJbesEZ5vUUcs3BmG
+ wcB+wBLL09MH8mn9Pt6v3adrIKHI8aL/rkpY3T90y8Vf1iNhmTU6npUGZQrEDpZ+SMng
+ JeIEZyXyt/1JC7Jt1P04cv7JH+91fg+bzVe/IOezYyAkfSlDkIf42j1sWP6/B+HQYYqs
+ hXOQ==
+X-Gm-Message-State: AOJu0YxywL0J3UIXsFy+kIkRj4cUk9Mnv2/Jys6FHGiiws8SdoSLLDJA
+ /qjuY4gcBkurlOOPgKzdHWRMpL41gh9otfU0wrlXuUqZAde6xyjE2azE
+X-Gm-Gg: AeBDiesp0JmzqEOVvgLRiBww9bfnSRJqDtslWLqIw22n5b1ZpmPd+a3/Pav0CCualdp
+ 0+NDPSjA3JLWq1OMm2BjBEyuVUJsUZFCzB3TQkczNrueSFi6suKP1KTf78FrvR8e7NoSzVp3AHX
+ fERoz6Hw6bWb4lM6jujNgAjSZKvpwQKlppQKodtKsd/xfWs5/f3XjxKP36MxuhPtV7y7yKB7IQf
+ 9IOviZouuUoxhrCWJQkrGEUGPPr+gV1qyOHTXX71Z0b5Qz9rSzHJdJfc7M2f4k4x7Wwpsv7GGme
+ cRZ1K8riiNxQvlbwbrmAVyJ8PoOk/LDrtTM2lWlCdmtRCdiwrQ96fOQ3ynOwwhafjmyX8MAnDc5
+ wQz4p+p9UUJRMkC5SeuSMA9IvxLDAzmCoYYzxzTGjesufCXwdoWBt5NpzOxHTg5gjL6Ux0U5rdU
+ +9cOUgsqycljm8Jxz+z1mCrcFR3X7CJ0XAJje0EWhmHcn7IkSOn+g4ZF9bPovtvk1TEAlYFyrt4
+ S22ULUtWITFns4by7gFX/Hz9yc=
+X-Received: by 2002:a05:7022:6a9:b0:128:cf86:d1cb with SMTP id
+ a92af1059eb24-12c34f16faamr1215214c88.31.1775800254186; 
+ Thu, 09 Apr 2026 22:50:54 -0700 (PDT)
 Received: from localhost.localdomain ([2601:645:8200:47:ade2:73a1:54c5:e0fe])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2d562ac344csm2595695eec.25.2026.04.09.21.48.04
+ a92af1059eb24-12c346fb031sm2132117c88.13.2026.04.09.22.50.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 09 Apr 2026 21:48:04 -0700 (PDT)
+ Thu, 09 Apr 2026 22:50:53 -0700 (PDT)
 From: "Scott J. Goldman" <scottjgo@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, rbolshakov@ddn.com, phil@philjordan.eu,
  agraf@csgraf.de, peter.maydell@linaro.org,
  "Scott J. Goldman" <scottjgo@gmail.com>
-Subject: [PATCH] target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
-Date: Thu,  9 Apr 2026 21:47:26 -0700
-Message-ID: <20260410044726.61853-1-scottjgo@gmail.com>
+Subject: [PATCH v2] target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
+Date: Thu,  9 Apr 2026 22:50:26 -0700
+Message-ID: <20260410055045.63001-1-scottjgo@gmail.com>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260410044726.61853-1-scottjgo@gmail.com>
+References: <20260410044726.61853-1-scottjgo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=scottjgo@gmail.com; helo=mail-dy1-x132b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
+ envelope-from=scottjgo@gmail.com; helo=mail-dl1-x1229.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,7 +88,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Apr 2026 02:43:22 -0400
+X-Mailman-Approved-At: Fri, 10 Apr 2026 02:43:27 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,7 +127,6 @@ Fix this by:
    indicates a pending interrupt, and cancelling the WFI timer.
 
 Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/959
 Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
 ---
  include/system/hvf_int.h |  1 +
@@ -144,7 +146,7 @@ index 2621164cb2..58fb865eba 100644
  };
  
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5fc8f6bbbd..0e737d3583 100644
+index 5fc8f6bbbd..f5d7221845 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
 @@ -28,6 +28,7 @@
@@ -184,7 +186,7 @@ index 5fc8f6bbbd..0e737d3583 100644
      aarch64_add_sme_properties(OBJECT(cpu));
      return 0;
  }
-@@ -2027,8 +2036,29 @@ static uint64_t hvf_vtimer_val_raw(void)
+@@ -2027,8 +2036,30 @@ static uint64_t hvf_vtimer_val_raw(void)
      return mach_absolute_time() - hvf_state->vtimer_offset;
  }
  
@@ -208,13 +210,14 @@ index 5fc8f6bbbd..0e737d3583 100644
 +
  static int hvf_wfi(CPUState *cpu)
  {
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
 +    uint64_t ctl, cval;
 +    hv_return_t r;
 +
      if (cpu_has_work(cpu)) {
          /*
           * Don't bother to go into our "low power state" if
-@@ -2037,6 +2067,35 @@ static int hvf_wfi(CPUState *cpu)
+@@ -2037,6 +2068,34 @@ static int hvf_wfi(CPUState *cpu)
          return 0;
      }
  
@@ -238,9 +241,8 @@ index 5fc8f6bbbd..0e737d3583 100644
 +        }
 +
 +        uint64_t delta_ticks = cval - now;
-+        mach_timebase_info_data_t timebase;
-+        mach_timebase_info(&timebase);
-+        int64_t delta_ns = delta_ticks * timebase.numer / timebase.denom;
++        int64_t delta_ns = delta_ticks * NANOSECONDS_PER_SECOND
++                           / arm_cpu->gt_cntfrq_hz;
 +        int64_t deadline = qemu_clock_get_ns(QEMU_CLOCK_HOST) + delta_ns;
 +
 +        timer_mod(cpu->accel->wfi_timer, deadline);

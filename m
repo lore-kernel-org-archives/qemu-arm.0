@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DC1FF44846
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 11:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C886EF44845
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 11:59:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBAVY-0003WH-KZ; Fri, 10 Apr 2026 07:58:44 -0400
+	id 1wBAVs-0003oy-TB; Fri, 10 Apr 2026 07:59:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBAV9-0003Tm-2E
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:58:20 -0400
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1wBAVr-0003oa-Oi
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:03 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wBAV7-0003F5-FM
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:58:18 -0400
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-64f48a5c3d8so2036893d50.1
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 04:58:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775822296; cv=none;
+ id 1wBAVq-00049F-DW
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 07:59:03 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-65005a8840dso1953137d50.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 04:59:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775822341; cv=none;
  d=google.com; s=arc-20240605;
- b=DcqIXPrzco+yXAk1zWqqfAspOqTgES5BMnh5WWVVVlN/N3zmB9SFxSDYCyy+F3I7q7
- X30aTYfEmemMwOFvDdGPaDWxHiSJPPRDHPvw0cZ+CkgjbGHxsPF57R4zJu6CTM/hffva
- LlnaeZrIz79aqU4x9U5b7mG0WJyeDputfWRHWNC9gV3TIA2sEwkyjWD7n8u2EipugpvM
- TaDiwBQr0o1QHfwu+VhGahDwZHmuVO90SueAGQAQFMbN43AAq6gaoNXikcr2HhjN8JdJ
- 7LTAWhjBXrvB/Tk4c2yV85lUl+28FHl9THSCgVzmsNasUCiAueoHY8D2KCXdWzISXBmD
- sMBQ==
+ b=HfGtHJH5502zy1wAD9jfVk0GSKJt3hK96RpJfEpFsJhdJtpY+mAxP5EiMWMCv3rtgR
+ hWA6c252udLHG9ttwwsk5t2m7k+2aFDmVy3J1eKzNoVZYDXWRLP+Pqv/xRExlLvgNbUe
+ QOhEYhnHDLTbDNebpNcbK8VT1XilUanh6p10i1gvi0Ylg/edMgmfasFvYbFeZ6I4LkM9
+ KK29iKhk/zZC42pWUB3yR87r92Y+4hJzJjoFiPa5uiPTQpzPsPIDVuMArRrVfanNCH7U
+ 3zj4RWZqFGYvqued7nzzJw0zQ4uze9R/Z5ZfA7dicy1/5MM8QAh/nOstvcpuiTI5DlF8
+ ZKfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=P5M4KQf/a3YX2BTOkf+nV0Z0qPJzsFCvpoUG3BFiwhI=;
- fh=CE2lE6aXcUayuB4xKWqiFfdbqTHTPuyhykzNo3A42K8=;
- b=aTirGjsErGT5vekrWS1O6iE1xJoe0tKdeswYE8ajh6HPOd19ofKjBIVSNq4BveYGaS
- g5WWBrbVcI9tQBhwdcXohT/0EfYL6Xg4HQ9sOo0bRI1k3Nlv/jbDvsTcgqbiY8bu+jMi
- Y7Ci3gOlSnH4m+Mhk70MMgRqk4NkGLBATi/8sWaZgC079VR6cxLVZCqwAx3XEzUaSJo0
- GpTOwOFSD4SJ6gulazDk+LyADpAytO3LYrrKHl3d0a7mZLDPnBUqV0YMG//Z7IXfvArq
- EmcYVUywaVUp7WPku3BgBz2+dwL3IP7JyrUZj9gHSHchR1Z39wNqabqkuyOtyagOe8gs
- HpRg==; darn=nongnu.org
+ bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
+ fh=6BIEedL+cu+ik6ig294tU5OKUSSxa+f1RD1181jjF6c=;
+ b=EhzH/HNbcq0A0z3qP91k0yOr83EsEvtqVOGOYzdV1HD3W37J8loGGX08onJQYHE8Tr
+ 8roT+BWjzfhsIBFy+IfiQfWxoQCJcoelXGh4wx71DDOGqR7DVJyYRAAdNdKLRIe/JmiP
+ RIz+yHwpbFNrvZT/cKijH6CsZT2EyDIxrSH2rYR3vIOjiZQS+LKj3TB2mBptjc/m87I+
+ Ep9zyVpIybILqxVIpNpFOlvgrYAlwgLMspRfjzOlWM1TTuDS8SKeF5a4GA6HxsW1981S
+ bFQsR/DrYHMRISpLY/6GaRbRn19YQyhImjQBZwQLtmmCN38ULdYjyZUvRRiyc5RrQQj4
+ XGXg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775822296; x=1776427096; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775822341; x=1776427141; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=P5M4KQf/a3YX2BTOkf+nV0Z0qPJzsFCvpoUG3BFiwhI=;
- b=F6HWnD2rx/Ly5LKNTM99+WOzOH+zHxfrtXwttXDrxQ/9yYl7q4xcNF7b6wu3y3KOxP
- ou/6LvSryecsTKgD7S7okGjc2lQzQFtidBLBPFhlpwd6tBUyOhns3eaaP/fnx7UXpV6u
- Q9FOE6VO+5NWgWLm65sufw+3M+u9LJ1SqNKOYnEGxr0VFJJuDJvNskThOfawv3hRsz1C
- d8mZ8BqUyAY3QXJSyQv+C5zgLW8jRbY+H/476qcHo9ZeuQQaGvHEGYtR42n3vLS+v6O5
- Btt4zStzIDlnDnTDBKaMFpTU1A03kZ7JMeClQr45ZFJgg3dHtfr6JNTS72XtqjjdgGcK
- YRaA==
+ bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
+ b=EplyAS7/BPoeEETQEL0j6+XEk0d+FGJhlGAep7Q/nEpee/yidp0kSiTHACw2D3uIc3
+ 63ASi6VyWOBizwyu0/j38eTR3VhCowRxLyGEQLpd/KjiL0xW0SqTv56WXZxG7G++XNUW
+ VLDPHniJS45Ci+0a+YKojOLWYTDAvbO4PpsVnWvLcRi03z28dVofxRSLdMMK4eixyQtl
+ UQbgmqkUnpzBT9dz0g/WIxPPEEfXKQwoxjNIXxU+k8kpV9OAq6EtFi5B1v75Xe4qNkbr
+ MLznJmIGJnWYkhEnW21OBO5CMugQAUdI9gIGTFD2QChfWSR7ZDruZrxzTsd4hOuo6Nhe
+ Sfrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775822296; x=1776427096;
+ d=1e100.net; s=20251104; t=1775822341; x=1776427141;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=P5M4KQf/a3YX2BTOkf+nV0Z0qPJzsFCvpoUG3BFiwhI=;
- b=cHGE96hIsMwWUINVD1MGmy/UFN/DoEKr2Tz6QlLzwco2eB+DPdAP7BICxfCWVH31Fd
- QpaKOigsfbWYPHp+ydMPSEcWU/6NxYXtLYv536JJ5yqd4CZ1sSQ3jTKdYncvBzgIS9Uq
- d+V1zLJjuJPFTtxkK3doQ4IEVw3tznYJ4x61LKsUSKopqA63UPKi9mpy4LcD70kW22B+
- A38CTjZLUzsMlmUswlDKoSopHc+DRBNbDkOu8gxUHvv2GrxKiLUrrZFIxWoGwJ4CzeVr
- r3L3WPELKIWwiXXr2cxk8afx2fV0iy+wmliFxNqACy6Z2J7TLqy3y1KQmdNtIFT+GDrz
- OG4Q==
+ bh=Uq66mCbcqASreJ6ptwxhmLSaNhojTvxyaCd+23Rfjw8=;
+ b=eo6WFfLqVNJtfSJQ9k9jJXjEKEqICp3SGGQss8bgCDLzjj/Pl5au6jE4MfBTtGlZNT
+ VeURywdM2hvrAb2uOPflEm+yod+jcQWiohe+Nk7m9LAJZnq9QXJyGf0XT7p7M41sH4Ua
+ ZlmVuKoHC5WikqEbeND7X/+892MF65XXZG7lOLuaIdmEuio5cGT8dB3c7GVSYVPY9IMG
+ CkGyzLpXqauFzo/dh/6tyzIbmmZtJhqCRBvs/lxJzdqkCmwz5C+BcMzTML4dS2+YP3t7
+ lx+EFGIwDKI2j9nSEApjpsCd5xu6/DURmD+88uxTtpHJZVLMh0M4DqVAksXmkSfvJiu2
+ OC2w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqCobfBnuODN5jgeBgZ2B/Tp+y/EKTr4rKbC3kgysStV4G3PefWNVqp+0tPhuSCJsC8KSzB7DoYQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywj1/vBn1vUoRLTj/FVldY4sN3xKjYxInY8dxjmTrBFSvDAa9SM
- FlCEjMSD8m1bnIcPnXoFRuuLsO5TaLllbfQmHJBDylNy/mpuybyfx5tAZWUNqfg61Ro8aHdww3K
- MmwqKul/TE749VU3wFqrV2uTBLjVbqdKrB5sraXpxJg==
-X-Gm-Gg: AeBDieupLbd+tFN/Uu8D0yRVzvmXPr8bTAzMWomh/4ZkIgullJR6hiH7afSzDOPZgGU
- 4gj7iNrMSFBF5fHIOb79/hmDThIjdgPpXeNmVGPrnBRxc4J83nzWWdAQV5kVRC89zS2lJRXqj7W
- 2M3rR7odsHZj8Za2uQmhzMRZn0+ohlCEA6FGX5rwInfcNnp9YTrphs+u8pPez8zsN0s3hSUP0Bn
- wWTa7+P4orl+EfCTBrCPhZqSgynWB/Y+V4KqQ9hUpBIVWwxx9VmCeGqudZIxH4NmfKwVb8x4NmZ
- Mhgu6kPTbXSSTmL4jcLnMBfm2vvAOhYADCCk6nX/gWOucPbUG3KBqpQW7DQM/J7ovCg=
-X-Received: by 2002:a53:ca4b:0:b0:650:4a79:f3a9 with SMTP id
- 956f58d0204a3-65198c34dffmr1676618d50.69.1775822296268; Fri, 10 Apr 2026
- 04:58:16 -0700 (PDT)
+ AJvYcCXatK2r71eGBLAyimmOHDCNQy4spKD5xLDJXQPDA8LG1pydlYHT1DKcanzePI8dgncw5Y9RsHYCUA==@nongnu.org
+X-Gm-Message-State: AOJu0YwdpUjMzKgwCl0J5sF3j5yyp7SBVuepbpk8YNqiyJHEH/hBLA6/
+ GVlMxVkocSHnkwjsCw7ZII3ceDwMC5+xBdK6xyZmNLBs4A1a7aWeDX/2l5uBtze1tKOZNawUYkw
+ UhUMCL/FZlksnz777WdUszlqqnXW/DL29ox5DbYRQeg==
+X-Gm-Gg: AeBDiespMf9m0NHURzBhTWsIBmC+77q8rhThhjGxc8TGprOWW63lGQlxBbiK0LiPAxN
+ S7gtTwqcHFSDkYVerk/f37Ls7TNKPagcOzJfLnTDUuApk3zOCU63C6s4wXjrQBReyffEQteBC7j
+ 6TpOBLd7N8ejQD7mXJOZmBJU5OdYGv0ZzYAHVU6GSJGgvzkUxq5oMr4v8MnfmttQ0MC2tqWvP8P
+ KK5AzyvsS3KZtlUsYm0en8dGxWm3/Czf7k9vwTRjAWf8F/uuIz+zkXe9iJzFm9PS29EG28tiXeg
+ 9d+b9NISNLuMCXZj5ComiJReA3YokbSrbyiVwFgjteApLBuO1Jh4H04OaeVYHEG7ecQ=
+X-Received: by 2002:a05:690e:4393:b0:64e:e47b:2476 with SMTP id
+ 956f58d0204a3-65198bcf642mr1703703d50.43.1775822341334; Fri, 10 Apr 2026
+ 04:59:01 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260306150302.203112-1-eric.auger@redhat.com>
- <20260306150302.203112-4-eric.auger@redhat.com>
-In-Reply-To: <20260306150302.203112-4-eric.auger@redhat.com>
+ <20260306150302.203112-6-eric.auger@redhat.com>
+In-Reply-To: <20260306150302.203112-6-eric.auger@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Apr 2026 12:58:04 +0100
-X-Gm-Features: AQROBzCwi0If5Qo_L8yIdVvf835y5bsPRe4x_VJ2Fdocg-8V3ZjqR28uv2x-n2M
-Message-ID: <CAFEAcA_0GwsiEG-A_OGTCz4QAs5K2hEU2z8t1pEG7mp0MLO7nA@mail.gmail.com>
-Subject: Re: [PATCH v9 3/6] target/arm/cpu64: Mitigate migration failures due
- to spurious TCR_EL1, PIRE0_EL1 and PIR_EL1
+Date: Fri, 10 Apr 2026 12:58:49 +0100
+X-Gm-Features: AQROBzCe68DrKNa960VUelWx6OeNeQ_U0UpAv8Ph1hRmXTGHd4HpysiP_1n9EzA
+Message-ID: <CAFEAcA80Lb0ZskKwLxSL1tKSLT=D=CpSek7ghQnypkHmQcyZ3A@mail.gmail.com>
+Subject: Re: [PATCH v9 5/6] target/arm/helper: Define cpreg migration
+ tolerance for DGBDTR_EL0
 To: Eric Auger <eric.auger@redhat.com>
 Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
  alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,78 +121,39 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, 6 Mar 2026 at 15:03, Eric Auger <eric.auger@redhat.com> wrote:
 >
-> Before linux v6.13 those registers were erroneously unconditionally
-> exposed and this was fixed by commits:
-> - 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace when
->                  disabled for guests")
-> - a68cddbe47ef ("KVM: arm64: Hide S1PIE registers from userspace
->                  when disabled for guests")
-> in v6.13.
->
-> This means if we migrate from an old kernel host to a >= 6.13 kernel
-> host, migration currently fails.
->
-> Declare cpreg migration tolerance for those registers.
+> We want to remove AArch32 DBGDTRTX which was erroneously exposed.
+> This was attempted by 655659a74a36b ("target/arm: Correct encoding
+> of Debug Communications Channel registers") but it was discovered
+> that the removal of this debug register broke forward migration on
+> TCG. Now we have the cpreg migration tolerance infrastructure, we
+> can declare one for the DBGDTRTX. This allow to revert the reinstate
+> patch.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > Reviewed-by: Sebastian Ott <sebott@redhat.com>
 > ---
->  target/arm/cpu64.c | 26 ++++++++++++++++++++++++++
->  1 file changed, 26 insertions(+)
+>  target/arm/helper.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 >
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index d6feba220e8..4cfddc6e8c0 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -810,6 +810,31 @@ static void aarch64_a53_initfn(Object *obj)
->      define_cortex_a72_a57_a53_cp_reginfo(cpu);
->  }
->
-> +static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
-> +{
-> +    /*
-> +     * Registers that may be in the incoming stream and not exposed
-> +     * on the destination
-> +     */
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 7389f2988c4..3cba62705dc 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6426,9 +6426,14 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>              .fgt = FGT_CLIDR_EL1,
+>              .resetvalue = GET_IDREG(isar, CLIDR)
+>          };
+> +        uint64_t dbgtr_el0_kvmidx =
+> +            cpreg_to_kvm_id(ENCODE_CP_REG(14, 0, 1, 0, 5, 3, 0));
 > +
-> +    /*
-> +     * TCR_EL1 was erroneously unconditionnally exposed before linux v6.13.
-> +     * See commit 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace
-> +     * when disabled for guests")
-> +     */
-> +    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 2, 0, 3),
-> +                                     0, 0, ToleranceNotOnBothEnds);
-> +    /*
-> +     * PIRE0_EL1 and PIR_EL1 were erroneously unconditionnally exposed
-> +     * before linux v6.13. See commit a68cddbe47ef ("KVM: arm64: Hide
-> +     * S1PIE registers from userspace when disabled for guests")
-> +     */
-> +    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 2),
-> +                                     0, 0, ToleranceNotOnBothEnds);
-> +    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
-> +                                     0, 0, ToleranceNotOnBothEnds);
-> +}
-> +
->  static void aarch64_host_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> @@ -822,6 +847,7 @@ static void aarch64_host_initfn(Object *obj)
->  #endif
->
->  #if defined(CONFIG_KVM)
-> +    kvm_arm_set_cpreg_mig_tolerances(cpu);
->      kvm_arm_set_cpu_features_from_host(cpu);
->      aarch64_add_sve_properties(obj);
->  #elif defined(CONFIG_HVF)
+>          define_one_arm_cp_reg(cpu, &clidr);
+>          define_arm_cp_regs(cpu, v7_cp_reginfo);
+>          define_debug_regs(cpu);
+> +        arm_register_cpreg_mig_tolerance(cpu, dbgtr_el0_kvmidx,
+> +                                         0, 0, ToleranceNotOnBothEnds);
 
 
-If your only callsite for a static function is guarded by an ifdef then
-you need to also guard the function definition with the matching ifdef.
-Otherwise you get compilation errors (either clang complains but gcc
-is happy, or the other way around -- I forget which).
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This needs a comment to explain why we're doing it.
 
 thanks
 -- PMM

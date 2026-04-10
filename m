@@ -4,95 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB20F36BBF
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 06:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CC6E99049
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 07:26:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wB5aO-0005Ny-GV; Fri, 10 Apr 2026 02:43:24 -0400
+	id 1wB6GM-0004Bk-NM; Fri, 10 Apr 2026 03:26:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wB4QB-0007wg-OZ
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:28:47 -0400
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wB4Q9-0007F3-TZ
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 01:28:47 -0400
-Received: by mail-dy1-x1330.google.com with SMTP id
- 5a478bee46e88-2d5ead6a34eso252941eec.0
- for <qemu-arm@nongnu.org>; Thu, 09 Apr 2026 22:28:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1775798924; x=1776403724; darn=nongnu.org;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=//BvhHT67uK2nLwJxFUrnIe05Ect6gqGWpNnBixz1iE=;
- b=s0gY8Xdd1r1i/xzPkrrs0TwUcnq3BdYAIRLz0R1APG1EiyyS5GD2fFvf54VuCc3rL8
- humVLojKkaQm5pd9QkW8GhgtH/xSbHyuQPX/pUFqekT1TbBOEetrovoFLzapbACL7XlP
- eYx8TjSO2jWbVvhkvljr3bCMtbYcbcb257/hUJKe7RmSqpF/Tlfvw0D02h2p80f9BBW4
- yc5eYGLULcRUjG5IBJuQ+oI8FrpucvBbiu2OnjI1vFhL1NVGHFe5xiuXByld/ktEfBaF
- IJNn53/k+Yqyq1vQRO0moPmr6T7J6ggdN5EyIfd1YkpJ68P6DYqkHCuYFoJPu+kf5mCR
- E9Iw==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wB6GK-0004Av-NN
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:26:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wB6GI-0006iL-Nb
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 03:26:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1775806000;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SzWLDKBnyzNA1T5YceMswjeh4MEVICXjSAPV2kBjGzE=;
+ b=ZqJ2AvY6gpYZ1C9Y+U5oc59yhP0Wa2TIGiFEOj9/1cuInq8DiX+v2jW/g/NuLzT/zHQ9yl
+ RwqRrS5kwRQHLPujFkaJpfvUSE5LqlfZyAvh0q+AVx2wq9sxBqVYuKNKdokkSWvB0yep85
+ v3Lu7Aw00OothJHlDAdpV0TKuQQ1NF4=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-447-drMQoCxtNeW-P0rA6dzBgA-1; Fri, 10 Apr 2026 03:26:39 -0400
+X-MC-Unique: drMQoCxtNeW-P0rA6dzBgA-1
+X-Mimecast-MFC-AGG-ID: drMQoCxtNeW-P0rA6dzBgA_1775805998
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-488d3eec9bcso4254625e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 00:26:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775798924; x=1776403724;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=//BvhHT67uK2nLwJxFUrnIe05Ect6gqGWpNnBixz1iE=;
- b=hhfoOFf/7hnu7uUr4mMGG7Sql4JhM1yyppLlieM0zgBoc+EJCGlxdAJE3vD75oq4GR
- tQ1eW41VW3Eee74FiymE9Jt4vvGoLaOusSrr58WzrLWIK7OtFapSFafHyp4agvaKJD8p
- cNn+bUaBr8UPF6WqCWQMNfRHEgDgcq2VYeK7ZPa/XCnX0z3ZTPFX4H3FzKKwwY5ZC6r7
- cUHxlhwNLarFllq15AupPatDiqcWX+t8dblD62svUTZ3sa0oE9aMTlUKTouhtHJ11cyq
- HAyOQwMf9dsbCa7MYTrR5l+XzvP/9hQS4q6eU3xMzGNZuF+LYdfYsxOgSmsLaC4z6JB8
- m4aQ==
+ d=1e100.net; s=20251104; t=1775805998; x=1776410798;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SzWLDKBnyzNA1T5YceMswjeh4MEVICXjSAPV2kBjGzE=;
+ b=jX0BJOFlPlsE6Ly3I37tGHN2X0CP7s3KlEuvpYDQLFr94gYTyH2WmQgO1OSGxInkJm
+ pxu5rlwcG8MmfAuCN0zg3TpU+rN/fpzkoXt/lD1ziaUVYN3NW64++NLPvXqFny4bYk3K
+ Gn1FVQU2I5VrrAbWey/x84QZcwaTQiJeeq4Ws8YsdoKVwKZC8jAEsTJO5Avl794IqTLR
+ lLBmUbRtJCmAoOD7Vgtb81UPzRHCttDbZ2WNGu59xaqb15MnF8fEwXYV7KUCBwfSWXfO
+ FORHo6Hsy/7UnCwifJD25yJofVG76CxqSVHagquIEZ0NX/SkdLdlcHJvN0jL+66dV7Ro
+ LMKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVbDmmCT9XUmND2mf+oTtAiTWVGbM5Fo7UgUKeTuvwRU052Uz/LmyR1lxzcuW/INkeLDhlx3Fm5g==@nongnu.org
-X-Gm-Message-State: AOJu0YzTdl7k4kzdta8rD5+j+/pcFODV9O25p26UhEoFWih0PpYXbxJ7
- Rg9hQsIO7gfcbpswdVqUdswatB+LfLU/7MDmbEDuo/tC54/G8ZeMU720
-X-Gm-Gg: AeBDietC23JZD4jHdiyWOiOnM8hKOJinWLFAnAIVHf9sNy15UiukhtF4c0AI/P4X6Ag
- pVcO3lRpg7KMBJt2Ubb3R+RPBP4APw9h30qO5vOaU3bAy5R9qTvjCyYJooqa9TT7D+inWvk7FKK
- NWYWSCh0yB6KKAcN4jaatruJPjLp09BTrD07c6JBKlwLPhV1FdNNblqg6T5OElfzeQh29LqTXh8
- qMdJ1zXv/qhxTBKMP1nL53FWOvtiu8ObRQrmRoIOAZfNH7kzB2fEui5BOJnE7yr/x7HOfXYVb7h
- LynwgjPug8OFqGgxWFztxgcRyOIsnfDBXKn5sTUpKYpn6VvYnn2hSMj5rgUkhEwdHMK0mvFW55R
- SMtAtoG5+b5fm2vZWJYIXnBz/091sTJGs6FRJFVnbBSM9WU4mPa2YCy2+09JMTmu27i3S9sX3SY
- IErpu2ROBowNtT+ySQz13QzLLfWYR1MTsXv2DTAEZ4D9M6BT8+SgKBUgrC/BsVDfpvOfq5dGhoM
- 8/UpBOBtxY=
-X-Received: by 2002:a05:7301:608e:b0:2c1:6cfd:73ee with SMTP id
- 5a478bee46e88-2d589898d4cmr957712eec.24.1775798924080; 
- Thu, 09 Apr 2026 22:28:44 -0700 (PDT)
-Received: from localhost ([2601:645:8200:47:ade2:73a1:54c5:e0fe])
+ AJvYcCV1E5f4WaH1/18SFevttjX/1iW46+3qq7Ar8ZNJHSTAE0iwN2haBezn5oaLwJ8ds0VbG66rpGQeKg==@nongnu.org
+X-Gm-Message-State: AOJu0YxuOE3y6uDixUMXt/k99ZSqI5740vcakh7h06d98IQ+8Drhn1UM
+ xuxUEUDPjA6zJ4aZ2YdIuhkSAfoWvYEMpMHNFhLtnI/+GcjMpFG5mOhFpcoUFGNxhYrubETTfYj
+ jRyXUEPHagVAvIVzL0eiacNtvR8T+jFhaIMPVW29uZhNJy8ISM7Cm4g==
+X-Gm-Gg: AeBDieuikbKoTFIJbOABFMPXKKxtFC8d9uc6uU9I+VQAEfQDr3NjKtxCRXFludD31Zd
+ d8byGigE4Dbnfs8qiZkXa89s9HPILr9avri5yhwxIfpVCmZRJRcTNHYmZfKl6X0bSrmnEOMgIvK
+ f/4K5iWXkz/EeIVgiMYK//VJcNr7TIc3OX6+PmvG92Iz1V/BzK/UXr7a66WjnfQDhYVowqRJ79R
+ JGbjBqxHKSuWaRK1c+2eBERS6qJ9wDnH3Ok+LI8xLTKD8bo/oJmCcZXcqLdUt4qeoF1uvnWC9KU
+ ZvIGqE1JbV/Tv+pob5hdC02sQJHAJbhMb/JgtELmk9WpuuE/60jNGQsb98YiIRbhR87oxzzqH27
+ 53QwqwEUkFEsgycmosxrBWPtVriKVOBi+EFf9rxk5h3isnhSeLBpzSC9s+F8IY6Kr7rg2jg==
+X-Received: by 2002:a05:600c:1391:b0:486:fe23:1707 with SMTP id
+ 5b1f17b1804b1-488d687116amr24238595e9.20.1775805997683; 
+ Fri, 10 Apr 2026 00:26:37 -0700 (PDT)
+X-Received: by 2002:a05:600c:1391:b0:486:fe23:1707 with SMTP id
+ 5b1f17b1804b1-488d687116amr24238045e9.20.1775805997126; 
+ Fri, 10 Apr 2026 00:26:37 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2d55f5c69casm3396964eec.2.2026.04.09.22.28.43
+ 5b1f17b1804b1-488d53807d7sm92539365e9.10.2026.04.10.00.26.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Apr 2026 22:28:43 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+ Fri, 10 Apr 2026 00:26:36 -0700 (PDT)
+Message-ID: <10540f3f-28b6-4cbb-9736-d6e8a01bdd76@redhat.com>
+Date: Fri, 10 Apr 2026 09:26:34 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/11] hw/arm/smmuv3-accel: Add helper for resolving auto
+ parameters
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Yi Liu <yi.l.liu@intel.com>, Zhenzhong Duan <zhenzhong.duan@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@redhat.com>, Shameer Kolothum <skolothumtho@nvidia.com>,
+ Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+References: <20260401010231.4166776-1-nathanc@nvidia.com>
+ <20260401010231.4166776-2-nathanc@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260401010231.4166776-2-nathanc@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Rizbp5LxC5f1xx1QT-mh-t3-SAYUSAPfF4HBPOkfrYY_1775805998
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Date: Thu, 09 Apr 2026 22:28:42 -0700
-Message-Id: <DHP86IRPEW4G.16N17DFVR56EW@gmail.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <rbolshakov@ddn.com>,
- <phil@philjordan.eu>, <agraf@csgraf.de>, <peter.maydell@linaro.org>
-Subject: Re: [PATCH] target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
-From: "Scott J. Goldman" <scottjgo@gmail.com>
-To: "Mohamed Mediouni" <mohamed@unpredictable.fr>, "Scott J. Goldman"
- <scottjgo@gmail.com>
-X-Mailer: aerc 0.21.0
-References: <20260410044726.61853-1-scottjgo@gmail.com>
- <E41FA391-ABC2-4CA9-850C-BDB3263C1E07@unpredictable.fr>
-In-Reply-To: <E41FA391-ABC2-4CA9-850C-BDB3263C1E07@unpredictable.fr>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1330;
- envelope-from=scottjgo@gmail.com; helo=mail-dy1-x1330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Apr 2026 02:43:23 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,198 +124,156 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu Apr 9, 2026 at 10:06 PM PDT, Mohamed Mediouni wrote:
->
->
->> On 10. Apr 2026, at 06:47, Scott J. Goldman <scottjgo@gmail.com> wrote:
->>=20
->> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
->> changed hvf_wfi() from blocking the vCPU thread with pselect() to
->> returning EXCP_HLT, intending QEMU's main event loop to handle the
->> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
->> always returns false and the vCPU thread spins at 100% CPU per core
->> while the guest is idle.
->>=20
->> Fix this by:
->>=20
->> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps on
->>   halt_cond in qemu_process_cpu_events().
->>=20
->> 2. Arming a host-side QEMU_CLOCK_HOST timer to fire when the guest's
->>   virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
->>   because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->>   hv_vcpu_run(), which is not called while the CPU is halted. The
->>   timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
->>   vtimer IRQ through the GIC and marks vtimer_masked, causing the
->>   interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
->>=20
->> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
->>   indicates a pending interrupt, and cancelling the WFI timer.
->>=20
->> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/959
->> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
->
-> Hi,
->
-> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->> include/system/hvf_int.h |  1 +
->> target/arm/hvf/hvf.c     | 65 +++++++++++++++++++++++++++++++++++++++-
->> 2 files changed, 65 insertions(+), 1 deletion(-)
->>=20
->> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->> index 2621164cb2..58fb865eba 100644
->> --- a/include/system/hvf_int.h
->> +++ b/include/system/hvf_int.h
->> @@ -48,6 +48,7 @@ struct AccelCPUState {
->>     hv_vcpu_exit_t *exit;
->>     bool vtimer_masked;
->>     bool guest_debug_enabled;
->> +    struct QEMUTimer *wfi_timer;
->> #endif
->> };
->>=20
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 5fc8f6bbbd..0e737d3583 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -28,6 +28,7 @@
->> #include "hw/core/boards.h"
->> #include "hw/core/irq.h"
->> #include "qemu/main-loop.h"
->> +#include "qemu/timer.h"
->> #include "system/cpus.h"
->> #include "arm-powerctl.h"
->> #include "target/arm/cpu.h"
->> @@ -301,6 +302,8 @@ void hvf_arm_init_debug(void)
->> #define TMR_CTL_IMASK   (1 << 1)
->> #define TMR_CTL_ISTATUS (1 << 2)
->>=20
->> +static void hvf_wfi_timer_cb(void *opaque);
->> +
->> static uint32_t chosen_ipa_bit_size;
->>=20
->> typedef struct HVFVTimer {
->> @@ -1214,6 +1217,9 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->> {
->>     hv_return_t ret;
->>=20
->> +    timer_free(cpu->accel->wfi_timer);
->> +    cpu->accel->wfi_timer =3D NULL;
->> +
->>     ret =3D hv_vcpu_destroy(cpu->accel->fd);
->>     assert_hvf_ok(ret);
->> }
->> @@ -1352,6 +1358,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->>                               arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]=
-);
->>     assert_hvf_ok(ret);
->>=20
->> +    cpu->accel->wfi_timer =3D timer_new_ns(QEMU_CLOCK_HOST,
->> +                                          hvf_wfi_timer_cb, cpu);
->> +
->>     aarch64_add_sme_properties(OBJECT(cpu));
->>     return 0;
->> }
->> @@ -2027,8 +2036,29 @@ static uint64_t hvf_vtimer_val_raw(void)
->>     return mach_absolute_time() - hvf_state->vtimer_offset;
->> }
->>=20
->> +static void hvf_wfi_timer_cb(void *opaque)
->> +{
->> +    CPUState *cpu =3D opaque;
->> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
->> +
->> +    /*
->> +     * vtimer expired while the CPU was halted for WFI.
->> +     * =09
->> +     * interrupt and mark as masked so hvf_sync_vtimer() will
->> +     * check and unmask when the guest handles it.
->> +     *
->> +     * The interrupt delivery chain (GIC -> cpu_interrupt ->
->> +     * qemu_cpu_kick) wakes the vCPU thread from halt_cond.
->> +     */
->> +    qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
->> +    cpu->accel->vtimer_masked =3D true;
->> +}
->> +
->> static int hvf_wfi(CPUState *cpu)
->> {
->> +    uint64_t ctl, cval;
->> +    hv_return_t r;
->> +
->>     if (cpu_has_work(cpu)) {
->>         /*
->>          * Don't bother to go into our "low power state" if
->> @@ -2037,6 +2067,35 @@ static int hvf_wfi(CPUState *cpu)
->>         return 0;
->>     }
->>=20
->> +    /*
->> +     * Set up a host-side timer to wake us when the vtimer expires.
->> +     * HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->> +     * hv_vcpu_run(), which we won't call while halted.
->> +     */
->> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, =
-&ctl);
->> +    assert_hvf_ok(r);
->> +
->> +    if ((ctl & TMR_CTL_ENABLE) && !(ctl & TMR_CTL_IMASK)) {
->> +        r =3D hv_vcpu_get_sys_reg(cpu->accel->fd,
->> +                                HV_SYS_REG_CNTV_CVAL_EL0, &cval);
->> +        assert_hvf_ok(r);
->> +
->> +        uint64_t now =3D hvf_vtimer_val_raw();
->> +        if (cval <=3D now) {
->> +            /* Timer already expired, don't halt */
->> +            return 0;
->> +        }
->> +
->> +        uint64_t delta_ticks =3D cval - now;
->
-> We have CNTFRQ_EL0 in cpu->gt_cntfrq_hz but this works too
-> as XNU today tries to take care that host and VM run with
-> the same CNTFRQ_EL0
->
+Hi Nathan,
 
-Ah, I can post a follow-up.
+On 4/1/26 3:02 AM, Nathan Chen wrote:
+> From: Nathan Chen <nathanc@nvidia.com>
+>
+> Introduce smmuv3_accel_auto_finalise() to resolve properties that are
+> set to 'auto' for accelerated SMMUv3. This helper function allows
+> properties such as ats, ril, ssidsize, and oas support to be resolved
+> from host IOMMU capabilities via IOMMU_GET_HW_INFO.
+>
+> Auto mode requires at least one cold-plugged device to retrieve and
+> finalise these properties. Register a machine_init_done notifier to
+> verify this requirement and fail boot if it is not met.
+>
+> Hot-plugged devices into an accel SMMUv3-associated bus will re-use
+> the resolved host values from the initial cold-plug.
+>
+> Subsequent patches will make use of this helper to resolve 'auto' to
+> what is reported by host IOMMU capabilities.
+>
+> Suggested-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Nathan Chen <nathanc@nvidia.com>
+> ---
+>  hw/arm/smmuv3-accel.c   | 14 ++++++++++++++
+>  hw/arm/smmuv3-accel.h   |  2 ++
+>  hw/arm/smmuv3.c         | 20 ++++++++++++++++++++
+>  include/hw/arm/smmuv3.h |  2 ++
+>  4 files changed, 38 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 65c2f44880..a0146c8d31 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -35,11 +35,25 @@ static int smmuv3_oas_bits(uint32_t oas)
+>      return map[oas];
+>  }
+>  
+> +static void smmuv3_accel_auto_finalise(SMMUv3State *s,
+> +                                       struct iommu_hw_info_arm_smmuv3 *info) {
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +
+> +    /* Return if no auto for any or finalised already */
+> +    if (!accel->auto_mode || accel->auto_finalised) {
+I think you need to explain the commit message when auto_mode is going
+to be set (I guess at least once an accel  prop is set to auto mode).
 
->> +        mach_timebase_info_data_t timebase;
->> +        mach_timebase_info(&timebase);
->> +        int64_t delta_ns =3D delta_ticks * timebase.numer / timebase.de=
-nom;
->> +        int64_t deadline =3D qemu_clock_get_ns(QEMU_CLOCK_HOST) + delta=
-_ns;
->> +
->> +        timer_mod(cpu->accel->wfi_timer, deadline);
->> +    }
->> +
->> +    cpu->halted =3D 1;
->>     return EXCP_HLT;
->> }
->>=20
->> @@ -2332,7 +2391,11 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
->>     hv_return_t r;
->>=20
->>     if (cpu->halted) {
->> -        return EXCP_HLT;
->> +        if (!cpu_has_work(cpu)) {
->> +            return EXCP_HLT;
->> +        }
->> +        cpu->halted =3D 0;
->> +        timer_del(cpu->accel->wfi_timer);
->>     }
->>=20
->>     flush_cpu_state(cpu);
->> --=20
->> 2.50.1 (Apple Git-155)
->>=20
->>=20
+Also can you detail this case where smmuv3_accel_auto_finalise() would
+be called several times. Here we return directly without looking again
+at the prop values. Would it be meaningful to continue and check the
+collected info matches the ones already collected? Can it happen?
 
-Thanks,
--sjg
+An alternative would have been to fall back to default values in case no
+cold plugged host dev could be found. Can you motivate that choice in
+the commit msg?
+> +        return;
+> +    }
+> +
+> +    accel->auto_finalised = true;
+> +}
+> +
+>  static bool
+>  smmuv3_accel_check_hw_compatible(SMMUv3State *s,
+>                                   struct iommu_hw_info_arm_smmuv3 *info,
+>                                   Error **errp)
+>  {
+> +    smmuv3_accel_auto_finalise(s, info);
+> +
+>      /* QEMU SMMUv3 supports both linear and 2-level stream tables */
+>      if (FIELD_EX32(info->idr[0], IDR0, STLEVEL) !=
+>                  FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index dba6c71de5..3c1cd55714 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -26,6 +26,8 @@ typedef struct SMMUv3AccelState {
+>      uint32_t bypass_hwpt_id;
+>      uint32_t abort_hwpt_id;
+>      QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+> +    bool auto_mode;
+> +    bool auto_finalised;
+>  } SMMUv3AccelState;
+>  
+>  typedef struct SMMUS1Hwpt {
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 7fead1c3cf..09ea08eb18 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -37,6 +37,7 @@
+>  #include "smmuv3-accel.h"
+>  #include "smmuv3-internal.h"
+>  #include "smmu-internal.h"
+> +#include "system/system.h"
+>  
+>  #define PTW_RECORD_FAULT(ptw_info, cfg) (((ptw_info).stage == SMMU_STAGE_1 && \
+>                                          (cfg)->record_faults) || \
+> @@ -2020,6 +2021,22 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+>      return true;
+>  }
+>  
+> +static void smmuv3_machine_done(Notifier *notifier, void *data)
+> +{
+> +    SMMUv3State *s = container_of(notifier, SMMUv3State, machine_done);
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +
+> +    if (!s->accel) {
+> +        return;
+> +    }
+> +
+> +    if (accel->auto_mode && !accel->auto_finalised) {
+> +        error_report("arm-smmuv3 accel=on with 'auto' properties requires "
+> +                     "at least one cold-plugged VFIO device");
+> +        exit(1);
+> +    }
+> +}
+> +
+>  static void smmu_realize(DeviceState *d, Error **errp)
+>  {
+>      SMMUState *sys = ARM_SMMU(d);
+> @@ -2058,6 +2075,9 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>  
+>      smmu_init_irq(s, dev);
+>      smmuv3_init_id_regs(s);
+> +
+> +    s->machine_done.notify = smmuv3_machine_done;
+> +    qemu_add_machine_init_done_notifier(&s->machine_done);
+can't you move smmuv3_machine_done in smmuv3-accel.c and also call 
+
+qemu_add_machine_init_done_notifier from smmuv3_accel_init()?
+
+Eric
+
+>  }
+>  
+>  static const VMStateDescription vmstate_smmuv3_queue = {
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index 82f18eb090..fe0493c1aa 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -74,6 +74,8 @@ struct SMMUv3State {
+>      OnOffAuto ats;
+>      OasMode oas;
+>      SsidSizeMode ssidsize;
+> +
+> +    Notifier machine_done;
+>  };
+>  
+>  typedef enum {
+
 

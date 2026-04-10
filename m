@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BC29F45A0A
-	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 20:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34913F45A0A
+	for <qemu-arm@archiver.kernel.org>; Fri, 10 Apr 2026 20:08:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wBI8N-0002hx-HI; Fri, 10 Apr 2026 16:07:19 -0400
+	id 1wBI84-0002QE-KP; Fri, 10 Apr 2026 16:07:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI8I-0002Zh-Vf
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:07:16 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI7x-0002N5-V7
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:06:54 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI8G-0008RI-Mz
- for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:07:14 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-43d02a71526so1516230f8f.3
- for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 13:07:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wBI7w-0008L7-C4
+ for qemu-arm@nongnu.org; Fri, 10 Apr 2026 16:06:53 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-488ab2db91aso35760665e9.3
+ for <qemu-arm@nongnu.org>; Fri, 10 Apr 2026 13:06:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1775851631; x=1776456431; darn=nongnu.org;
+ d=linaro.org; s=google; t=1775851611; x=1776456411; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Iv4W/jisNw8kHE/OIi0IdHIgbidkqiD9gXkFmckWKQE=;
- b=T3jmL3JDIRy61lF2ZVfsmbcVSxZTCQQkVKATv43suAQosDowTe1/sEdTI2WYCQYin5
- /CImqFieB8SxiHdzgCGhFYAtBCDx3aY6Vo9Ojw2cr8kMw+4JuiP90lgSrZSd2Vkqnapp
- G93bZnln7lousTF7GbLGBOYYyH4l/YVRv1PMu+7T5NF7CTr0jslr8MPG6O9X7Zph4ieP
- dfFEYMqoxiQLGGMyReaKLRROtId1A3CfGJpsDT/wluVm+C0uEo+uAiQfgvMWNyFxqcEk
- BIh4TEjY3KfBaxRtLajIqQTX+CWSemGBJ4tSrZtM88wCkWHm3M/JDh8mKXCw/kUHVzFu
- iuwA==
+ bh=19g4LL15pWkb4dv+bZpUKR/vfD5RSE9eqoLEwRvWI9c=;
+ b=bUocy3HuX2YR9WFkCjkWgld77av6OP9/CXpJVyRmV7mqwIPOOE7EtaZDx//J4ws144
+ Ospm5ccmJA3BkLyjuNvxOZKj0KskyjOG84fWP8vpOgvhWYX8yp+D46fB1qQpg173Nlm8
+ MAObq5S/LGey33k+QcI6ZALBw958fsH9AdzeR5fvG7l5pcshD1BW5w2ePGmMPADhKfqE
+ lVv3YiTNvnIUmgVEwFMCLDiC11UHDfJPlAMor9X5AtP8BEkwKdWyBNZMLKpd/FnCDiFH
+ dIetP1tBirwZJj4+ZLfpVMOw9ClqQvtW91ekwTpGCEVM+KnHoU9q67kCLfo8oyJSpgMP
+ go2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1775851631; x=1776456431;
+ d=1e100.net; s=20251104; t=1775851611; x=1776456411;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Iv4W/jisNw8kHE/OIi0IdHIgbidkqiD9gXkFmckWKQE=;
- b=SHHTJ708qf5h6Yw+yz+DbzHmJWxPyaf5IiGEcz+JZ3GqkkKjZ2/4XL5MzzPskn2bm8
- uX5dDy5II1IP7RAH8FhhsryioemaBZN/VDd1ecyb0Lj8qXiYyXdLi1xQSYzSCWEP28/5
- /nL7f95Kv3zkGRzhtHoDhXW28TZX+tBcOu8OvuMiCyS8OtIRBSVaH/D+CSfEjyHgxitH
- UckMmvf5AZFuB0RqQM0TB4NWgbREsxrbgEuZSr+HOllkrygHbUGF/Jx3nn4lsZEEnVRL
- yan5jGKLR1vdlKhRPEhKi2ruEtG+Um1Yaz1AnVdg0WdJf4cH0lAmy33mVNRMKXnSyfGH
- h1BQ==
+ bh=19g4LL15pWkb4dv+bZpUKR/vfD5RSE9eqoLEwRvWI9c=;
+ b=sX10x3GLYGr6smKGdwl+s3DBBDf7j/r76T2YWyneOgjV51EnADwZMhq4kq74H3amve
+ rOxQs4tGWghs+oO7Ud86viUwjVUy5fU38vj2ulMAp+dMPic/Ycoq6nBSP0VUEov6rtJs
+ Ivrq/EMgsk6Zsp2FTkaQIlsaK1nX+t3MMOb9mL8eBi9YNYou6oqrdkdWm99AaGlphmv5
+ goLloJOHQBhJj1BwVTpxDZAaXOFjpb3LRoOi8bN0B6kTrC/rAIfPlan7DVdP91H0Npoz
+ MWcFo3zp7IgtNpI5Pb6xp6lyTy30t7b/MYoZsLBuIOmBMkg1b0Q62L64cHdvb9DhNJRQ
+ vHAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSi9cxcVw1qyc49bEfaZYpA7ptUbALskHLvKblM3tnBgyB/wqeTx//xM2juqlWtKiOgtmn0++AgA==@nongnu.org
-X-Gm-Message-State: AOJu0YztiB+AjOq2Lsi9EikCFemV+TCXAM8qJ3jgv+Z3cdd5/DAnZWno
- FN2WbuMW50oZJFql8bO/Qhui9EPf/uXjS5Nf8dDsH/GybBSQDIUPhGO7j3XbUtW+wRk=
-X-Gm-Gg: AeBDiev1Gg2Jr4sX2r8Lf5nrhuFFIDaqiIQVcDeufStLXJSf8rkujxqi/idDwP2LGdq
- uZCybA3Qh6uNa1vGSmDF69LYXIZKthGAeLGe307CqZ4Z+pEhwqZnY+jQfJh/x/kxtcJWXeBfZ2I
- s0osNr268V7lPEDuQnRoC3QyEzLUswsUGq7xw9WwK/Vlq19chWznTXkCtpaozGWueOoy9RPE1El
- QKmjGGnIDQpeMg775YCYYqG7oQWQrb1mNCMAp8uDU0+nrfIAjObJWJIH6aBZLNl47CoT+XEvuDl
- MBqj/HVXoTrJO0PjQ/3gpCNHIY3VVPsWnTrla/cZs2Iwgbgav93StS9gtznJ37r+exBLruAA0n1
- t418XHjaPkjysjIutDl4iNtLWt3SdHAICd/B5arM6G6UcSB5Xfofadu+pus0rTFZZMvdLBObv08
- +3pSFwpvpMuFEYwouWnE3Uzx14ag7iBDkVtLMepJ/GsxhA4yFBWCLZ54HvrbXPT1rL7XHogOdS
-X-Received: by 2002:a05:6000:26c4:b0:439:ac6b:dd38 with SMTP id
- ffacd0b85a97d-43d642ab99bmr6435897f8f.31.1775851631229; 
- Fri, 10 Apr 2026 13:07:11 -0700 (PDT)
+ AJvYcCWOBsf2VbipiarpRmZctyxmsUs3dUE1r3P/qass86qwWXv19THz4DuPvfP02D0z4ZS6TWHE+IKT6w==@nongnu.org
+X-Gm-Message-State: AOJu0YyaiJyMXJL2sGp+4GxxDQgxPb4CZ5MR/5RNpQ1/Bc8llCiaRLWt
+ 1taBUDCSZmx6XaSeMZWOIDEHKYu34wmTzo+NcHghW6OUXfFKP2+zQTudNMnbtHpEmEpUKMLP7Z+
+ Z6uX02mc=
+X-Gm-Gg: AeBDiev5UlBfjYLWyJoECBa+/WNHZRE9ZPGWhVZjRheDbw18Fv+m2eL+GS1mD17ObbQ
+ whrmiHck6XqOiV2GLZCprcNzq/Fln31s1am6wNESzPU0oZBej8wiPCo80x5yN6pZBJ0YqlSnR2C
+ 82tf2wfPXTrF8PMLgEnoCuVRo3lTiS+ZtXfPVqbsuwiuJIj1RIshpcHLrgfqUB3BNfgTlBkRVhy
+ mqMkegvRURJe5zm3MKzT4xL3fziEmP/9Pz+2RuDWVmfGJPK/+dGDfe6Vmd5h+ymDupBuDJyKdXE
+ AefnV75j+RAxDrBdD8YyNKrYzY45QfASeVZhC8Lz8rC4Opu/vKthf7jUPeUpdcjOQuwOxh3wkEQ
+ 8DQTTypkbYYPPquQBgPah9O/aN/sGOZ1+Q43pXMtq6/bB3y/+jvRktxY/URp//trJPcHIMv72Kv
+ uXP5QsCAs8t49RhpAGBCJONHi2H0cgHQnpJbbyBGvfIDwVQhfV3B/g0WtaSolgyqfg9+mYagDs
+X-Received: by 2002:a05:600c:890e:b0:488:bd79:94d8 with SMTP id
+ 5b1f17b1804b1-488d684331emr39617265e9.18.1775851610853; 
+ Fri, 10 Apr 2026 13:06:50 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d63e5061fsm9763366f8f.30.2026.04.10.13.07.10
+ 5b1f17b1804b1-488d5b3c597sm92863755e9.12.2026.04.10.13.06.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 10 Apr 2026 13:07:10 -0700 (PDT)
+ Fri, 10 Apr 2026 13:06:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/9] target/arm: Replace MO_TE -> mo_endian() for MVE helpers
-Date: Fri, 10 Apr 2026 22:06:25 +0200
-Message-ID: <20260410200628.19378-7-philmd@linaro.org>
+Subject: [PATCH 3/9] target/arm: Conceal MO_TE within mve_advance_vpt()
+Date: Fri, 10 Apr 2026 22:06:22 +0200
+Message-ID: <20260410200628.19378-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260410200628.19378-1-philmd@linaro.org>
 References: <20260410200628.19378-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,179 +105,64 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/tcg/mve_helper.c | 47 +++++++++++++++++++++++--------------
- 1 file changed, 30 insertions(+), 17 deletions(-)
+ target/arm/tcg/mve_helper.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
 diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index a5a23c97056..64ab804abcb 100644
+index cc58e0502f5..fbb64889bf7 100644
 --- a/target/arm/tcg/mve_helper.c
 +++ b/target/arm/tcg/mve_helper.c
-@@ -160,7 +160,7 @@ static void mve_advance_vpt(CPUARMState *env)
+@@ -160,7 +160,8 @@ static void mve_advance_vpt(CPUARMState *env)
          uint16_t eci_mask = mve_eci_mask(env);                          \
          unsigned b, e;                                                  \
          int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MFLAG | MO_ALIGN, \
-                                      mmu_idx);                          \
+-        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
++        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
++                                     mmu_idx);                          \
          /*                                                              \
           * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
-@@ -184,7 +184,7 @@ static void mve_advance_vpt(CPUARMState *env)
+          * beats so we don't care if we update part of the dest and     \
+@@ -183,7 +184,8 @@ static void mve_advance_vpt(CPUARMState *env)
          uint16_t mask = mve_element_mask(env);                          \
          unsigned b, e;                                                  \
          int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MFLAG | MO_ALIGN, \
-                                      mmu_idx);                          \
+-        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
++        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
++                                     mmu_idx);                          \
          for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
              if (mask & (1 << b)) {                                      \
-@@ -235,7 +235,7 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
-         unsigned e;                                                     \
-         uint32_t addr;                                                  \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MFLAG | MO_ALIGN, \
-                                      mmu_idx);                          \
-         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
-             if (!(eci_mask & 1)) {                                      \
-@@ -263,7 +263,7 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
-         unsigned e;                                                     \
-         uint32_t addr;                                                  \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MFLAG | MO_ALIGN, \
-                                      mmu_idx);                          \
-         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
-             if (!(eci_mask & 1)) {                                      \
-@@ -326,7 +326,8 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
-         unsigned e;                                                     \
-         uint32_t addr;                                                  \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (e = 0; e < 16 / 4; e++, mask >>= 4, eci_mask >>= 4) {      \
-             if (!(eci_mask & 1)) {                                      \
-                 continue;                                               \
-@@ -413,7 +414,8 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         static const uint8_t off[4] = { O1, O2, O3, O4 };               \
-         uint32_t addr, data;                                            \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -439,7 +441,8 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         int y; /* y counts 0 2 0 2 */                                   \
-         uint16_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -466,7 +469,8 @@ DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
-         uint32_t *qd;                                                   \
-         int y;                                                          \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -505,7 +509,8 @@ DO_VLD4W(vld43w, 6, 7, 8, 9)
-         uint32_t addr, data;                                            \
-         uint8_t *qd;                                                    \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -531,7 +536,8 @@ DO_VLD4W(vld43w, 6, 7, 8, 9)
-         int e;                                                          \
-         uint16_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -556,7 +562,8 @@ DO_VLD4W(vld43w, 6, 7, 8, 9)
-         uint32_t addr, data;                                            \
-         uint32_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -587,7 +594,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         static const uint8_t off[4] = { O1, O2, O3, O4 };               \
-         uint32_t addr, data;                                            \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -614,7 +622,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         int y; /* y counts 0 2 0 2 */                                   \
-         uint16_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0, y = 0; beat < 4; beat++, mask >>= 4, y ^= 2) {   \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -640,7 +649,8 @@ DO_VLD2W(vld21w, 8, 12, 16, 20)
-         uint32_t *qd;                                                   \
-         int y;                                                          \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -679,7 +689,8 @@ DO_VST4W(vst43w, 6, 7, 8, 9)
-         uint32_t addr, data;                                            \
-         uint8_t *qd;                                                    \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -706,7 +717,8 @@ DO_VST4W(vst43w, 6, 7, 8, 9)
-         int e;                                                          \
-         uint16_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
-@@ -732,7 +744,8 @@ DO_VST4W(vst43w, 6, 7, 8, 9)
-         uint32_t addr, data;                                            \
-         uint32_t *qd;                                                   \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN, mmu_idx);\
-+        MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN, \
-+                                     mmu_idx);                          \
-         for (beat = 0; beat < 4; beat++, mask >>= 4) {                  \
-             if ((mask & 1) == 0) {                                      \
-                 /* ECI says skip this beat */                           \
+                 cpu_##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC()); \
+@@ -194,23 +196,23 @@ static void mve_advance_vpt(CPUARMState *env)
+     }
+ 
+ DO_VLDR(vldrb, MO_UB, 1, uint8_t, ldb, 1, uint8_t)
+-DO_VLDR(vldrh, MO_TE | MO_UW, 2, uint16_t, ldw, 2, uint16_t)
+-DO_VLDR(vldrw, MO_TE | MO_UL, 4, uint32_t, ldl, 4, uint32_t)
++DO_VLDR(vldrh, MO_UW, 2, uint16_t, ldw, 2, uint16_t)
++DO_VLDR(vldrw, MO_UL, 4, uint32_t, ldl, 4, uint32_t)
+ 
+ DO_VSTR(vstrb, MO_UB, 1, stb, 1, uint8_t)
+-DO_VSTR(vstrh, MO_TE | MO_UW, 2, stw, 2, uint16_t)
+-DO_VSTR(vstrw, MO_TE | MO_UL, 4, stl, 4, uint32_t)
++DO_VSTR(vstrh, MO_UW, 2, stw, 2, uint16_t)
++DO_VSTR(vstrw, MO_UL, 4, stl, 4, uint32_t)
+ 
+ DO_VLDR(vldrb_sh, MO_SB, 1, int8_t, ldb, 2, int16_t)
+ DO_VLDR(vldrb_sw, MO_SB, 1, int8_t, ldb, 4, int32_t)
+ DO_VLDR(vldrb_uh, MO_UB, 1, uint8_t, ldb, 2, uint16_t)
+ DO_VLDR(vldrb_uw, MO_UB, 1, uint8_t, ldb, 4, uint32_t)
+-DO_VLDR(vldrh_sw, MO_TE | MO_SW, 2, int16_t, ldw, 4, int32_t)
+-DO_VLDR(vldrh_uw, MO_TE | MO_UW, 2, uint16_t, ldw, 4, uint32_t)
++DO_VLDR(vldrh_sw, MO_SW, 2, int16_t, ldw, 4, int32_t)
++DO_VLDR(vldrh_uw, MO_UW, 2, uint16_t, ldw, 4, uint32_t)
+ 
+ DO_VSTR(vstrb_h, MO_UB, 1, stb, 2, int16_t)
+ DO_VSTR(vstrb_w, MO_UB, 1, stb, 4, int32_t)
+-DO_VSTR(vstrh_w, MO_TE | MO_UW, 2, stw, 4, int32_t)
++DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
+ 
+ #undef DO_VLDR
+ #undef DO_VSTR
 -- 
 2.53.0
 

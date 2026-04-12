@@ -4,46 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75CDE937E6
-	for <qemu-arm@archiver.kernel.org>; Sun, 12 Apr 2026 21:03:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD5FE937E7
+	for <qemu-arm@archiver.kernel.org>; Sun, 12 Apr 2026 21:17:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wC1xb-00047E-EW; Sun, 12 Apr 2026 17:03:15 -0400
+	id 1wC2AP-0006WC-1T; Sun, 12 Apr 2026 17:16:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wC1xY-00046y-9P
- for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:03:12 -0400
-Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wC1xU-0000vd-7H
- for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:03:11 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fv30Q2H1Kz61cw;
- Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.229])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4fv30Q1CwJz7tn9; Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A4BA3941619; 
- Sun, 12 Apr 2026 21:03:00 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005233f8795-9f84-4bee-9885-d8c45fec36df,
- 24D929EF98A9C54707A36CFD348010E9E2578269) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6ae68fe4-6b54-433e-a9df-ae703a9c5f38@kaod.org>
-Date: Sun, 12 Apr 2026 23:03:00 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wC2AM-0006VG-VN
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:16:26 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wC2AL-00056E-7x
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:16:26 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-48334ee0aeaso34980875e9.1
+ for <qemu-arm@nongnu.org>; Sun, 12 Apr 2026 14:16:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1776028583; x=1776633383; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oOWlh7RaZ22fHonlFjirI4+/eY9EUZxtnzJOB/0+/dY=;
+ b=G/zeJWXczqsZMI9YpCsklLkLeolZDlCBD/sdC/my1mnfPcOUBBM9JZz/7yk0+tTEr3
+ l1RelHRt/8djWw4gXkm+6bDWubfS8RjNWnqgMSv43L0ifbc4Eq8miTP53cFfyLXSzYKP
+ zfJCsJs3AOqFoFdvw3O7ECKncoC5xufm3e1/PqZtp0ErrYZRacppqqVAyWOQpZdGb+pV
+ B81Y+33qcvRhhesLAkTS3yYm/BHfc3mxxelTxpIPQr6pl1BF0GOZJV2JsVvG6quEwcVC
+ gyem2QH6bZ3lUpD05vN9WMKp5YCvSZCv7bGqnxRQKsmm5qroV27PHvUHfdZ1CA8a2Emk
+ 9Sjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776028583; x=1776633383;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oOWlh7RaZ22fHonlFjirI4+/eY9EUZxtnzJOB/0+/dY=;
+ b=hKZ5mfP0y74XiH2BIsu05e/FcUgLXUFxTAKLHQcRdeZaBfrkzpxLs5Gq6tmCg8acOq
+ SFIUBX7WbnWiAESFAJhqca495w0g/6ZXuMNnjakTMX36twLdJYHnc5D7HjiN5pQQVffn
+ E6pDw9JwUWN9MhDXg89pgUzv89NfHw6fOXoTn1FdqDjDzLds4yTBsyuYJWXE3I2BM6hr
+ Yk+QOlpYjNGZ6zvmtoLNeXOz+AslboAYPvhSdcRYRSdlusgkS4J+xP3uXdFR1VJHIAZ3
+ vMnNBLI9jChmXK3gesSqHCFnU7DWApOcjTi3zFp7uZGNCbRwo24VKwYqPZ47ZOSD6mW4
+ 64wg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWk/W5xgJa51c98mYdpJ8mARuDJvCUly9tDoK0UKszGpfWw+qHW+aNJTgprAI38NrUQLB/6YFG6+g==@nongnu.org
+X-Gm-Message-State: AOJu0YzJi5aKvncZToS4gJFJVNgoAmqacGrDroWmAjAxXZ9YCjP8wxfb
+ NXj+Fl4wIk/Nw68EXtKaWObFT1S64raGhKx88upk7DCFXXJtE+ImkQljETVGd+4Fv20=
+X-Gm-Gg: AeBDievgowvvBRYp+ryomypohmJipkE2JMd29N4cgkROZxzypzrgj0sOREMy1APTCvn
+ k44KeGN8Xq1HrMsGB1Rrv6NTmvQEt8BoRuUN2cWc+1AwKNRlGPrhx2wSgG8ZGKj+ib7+ucHPVCO
+ epmgZFPlHpEUTat8JBWpLw/oh2oSunInPX4nwRObyZn3Fpr+ISVk+qZM87Hh07YVqtbLn8pFGVW
+ aj6lc0q9/VSj9jLAEN1EX2lj//JvoW6G4e0BShlwv3RBOhB/cuPpAp3QTAFe0z3CJ5oBTQQw/Pd
+ sMAFn3bjPcwNEHowFDxLNFVUNYUS0A0ChxJPhrnU1mYNa5eQE0jD8caq8FdomvNiHSVCb7/ZHyA
+ InMTdOo8GvU28JI6wGSwtv46M9wR6hPbIAL2pvWI7AYjjaWj+LQeD5csSlZ9zn7oigXkR7LxDCb
+ Aq/gV7u1lIAKDCHWIsCS4bj2eELidI5ydQSqdfwLrUtJmOpeNuE42PRyJPXVh8bsSGzg==
+X-Received: by 2002:a05:600c:c0da:b0:488:b043:5efd with SMTP id
+ 5b1f17b1804b1-488d682628dmr134126495e9.13.1776028583184; 
+ Sun, 12 Apr 2026 14:16:23 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-488d67ce8b7sm116612465e9.8.2026.04.12.14.16.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 12 Apr 2026 14:16:22 -0700 (PDT)
+Message-ID: <9a15c454-c904-4c16-8ba1-14352bd9b86d@linaro.org>
+Date: Sun, 12 Apr 2026 23:16:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v1 03/13] hw/usb/hcd-ehci: Change descriptor addresses to
  64-bit
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Content-Language: en-US
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -56,75 +85,20 @@ Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
 References: <20260311072614.1095587-1-jamin_lin@aspeedtech.com>
  <20260311072614.1095587-4-jamin_lin@aspeedtech.com>
  <4253d673-02a9-45cd-9781-0f03866b9703@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <4253d673-02a9-45cd-9781-0f03866b9703@linaro.org>
+ <6ae68fe4-6b54-433e-a9df-ae703a9c5f38@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <6ae68fe4-6b54-433e-a9df-ae703a9c5f38@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 614178401363864587
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGoIYK04eauWfeYO18H0rV6JXWEbYr8csS1aqfXtsWE+p7Zilf7uiGwYr9FhxrOyInqCafVJ4f+4SS4/Gd6W6wkg/CJxm1S1/OCuFeOTGUhxuqMHkhxXz6ZJkcrhqS3NzkooSLO+wD+IaMyjIHuwAijvnvLldz1YVuuewdIrvuJYMKXkdQHhqSxPQS1+Wxatuq7TJGKd9t9sA26pYjrUwxLj1b/IUWgg9W0mbKLp0ZE+78lI/0QGVUZCLhiuYRGQ1oxsSvQ0u/Uka2EZARWWx6VHM03JuYrf6W8y0MQDjzkOrOZemHpZfJ3/X4OA2MuKDwGF4MV5whUogeM9Fe7zbpRUSwzcZF6QYO0VFnUo6ArthM9cujePtPzaXrSlYOIwQ0lTDfU4TSe9jR3RU0NaFIGo7f9rax9TMPWTaWbTdJMb5DIK+ZpheuuGS/ZsxaBt+3gCmAqLCGpA1akHH0C+dMuHu1bT8bT/3ujzU3W1zsvKZsHWc2re3lXRKDC34kZHtUVdijmYQvjkQwDogQqONGqjZtqhkoQ9l8jhEHSSR0SoIgJrRRKb9Ytt8n8fkFIVqgQV++tH74Okp8QoExZgqO2cvujDznEFiMSLp1gBPU0CkZ4emQiILoeyG0L8Tnz0Sa93X8yWYKuX7V6SLZca5kPwp00reKogu5AjdgsoQf5pg
-DKIM-Signature: a=rsa-sha256; bh=Z2eJU4zUsBKBMyD96Hw8R7DEQcgxr/npxtk2QDNS1IU=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1776027784; v=1;
- b=gEs/2fI87P/UkH3oCCTbWm+lb6koi2SMrPfwz3e5mCqLaSYxEv5G0fvK75ah6xSB2iqjZ6G7
- MqRIqGhl7U0zPsNuvjlrHC+voBC6d6fWwwF1GKcn7baKD80H+oIp5VifLmnNhi//kT5XRQ44cop
- DWu//OyJ2bKZmYGUuXzDQ4cT+OF0RLVL62f0kxMh40xTjbZPkJe5NQQWQ8HtkYNmqH7syyv0wEN
- 7d4ZVL7ycQiYhhrTU3aOnU5jQbCPCI2zYvfASVszetC6jooUoS6Muw6d1uxHdfEjtYZ5FMiBqOI
- 4G+u1LHrh/45x8DIBbmzMezSyDOJRmfHkzTso6e2BH8yw==
-Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
- helo=10.mo533.mail-out.ovh.net
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,84 +114,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/12/26 22:34, Philippe Mathieu-Daudé wrote:
-> Hi Jamin,
+On 12/4/26 23:03, Cédric Le Goater wrote:
+> On 4/12/26 22:34, Philippe Mathieu-Daudé wrote:
+>> Hi Jamin,
+>>
+>> On 11/3/26 08:26, Jamin Lin wrote:
+>>> Change internal EHCI descriptor addresses from uint32_t to uint64_t.
+>>>
+>>> The following fields are updated:
+>>> - EHCIPacket::qtdaddr
+>>> - EHCIQueue::{qhaddr, qtdaddr}
+>>> - EHCIState::{a_fetch_addr, p_fetch_addr}
+>>>
+>>> Update get_dwords() and put_dwords() to take 64-bit addresses and
+>>> propagate the type change through the descriptor traversal paths.
+>>>
+>>> Adjust NLPTR_GET() to operate on 64-bit values:
+>>>
+>>>      #define NLPTR_GET(x) ((x) & ~(uint64_t)0x1f)
+>>>
+>>> so that link pointer masking works correctly when descriptor
+>>> addresses exceed 32-bit space. The previous mask (0xffffffe0)
+>>> implicitly truncated addresses to 32 bits.
+>>>
+>>> This patch does not change the on-wire descriptor layout yet.
+>>> It only removes the internal 32-bit address limit and prepares
+>>> for later patches that will add full 64-bit QH/qTD/iTD/siTD support.
+>>>
+>>> Since the type of fetch_addr changes from 32-bit to 64-bit,
+>>> bump the VMState version.
+>>>
+>>> No functional change.
+>>>
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>   hw/usb/hcd-ehci.h | 10 +++----
+>>>   hw/usb/hcd-ehci.c | 67 +++++++++++++++++++++++++----------------------
+>>>   2 files changed, 41 insertions(+), 36 deletions(-)
+>>
+>>
+>>> @@ -2484,8 +2489,8 @@ static void usb_ehci_vm_state_change(void 
+>>> *opaque, bool running, RunState state)
+>>>   const VMStateDescription vmstate_ehci = {
+>>>       .name        = "ehci-core",
+>>> -    .version_id  = 2,
+>>> -    .minimum_version_id  = 1,
+>>> +    .version_id  = 3,
+>>> +    .minimum_version_id  = 2,
+>>
+>> Since this device is used in cloud virtualized instances, we can not
+>> ignore previous migration streams and really need to implement the v2
+>> to v3 hook.
 > 
-> On 11/3/26 08:26, Jamin Lin wrote:
->> Change internal EHCI descriptor addresses from uint32_t to uint64_t.
->>
->> The following fields are updated:
->> - EHCIPacket::qtdaddr
->> - EHCIQueue::{qhaddr, qtdaddr}
->> - EHCIState::{a_fetch_addr, p_fetch_addr}
->>
->> Update get_dwords() and put_dwords() to take 64-bit addresses and
->> propagate the type change through the descriptor traversal paths.
->>
->> Adjust NLPTR_GET() to operate on 64-bit values:
->>
->>      #define NLPTR_GET(x) ((x) & ~(uint64_t)0x1f)
->>
->> so that link pointer masking works correctly when descriptor
->> addresses exceed 32-bit space. The previous mask (0xffffffe0)
->> implicitly truncated addresses to 32 bits.
->>
->> This patch does not change the on-wire descriptor layout yet.
->> It only removes the internal 32-bit address limit and prepares
->> for later patches that will add full 64-bit QH/qTD/iTD/siTD support.
->>
->> Since the type of fetch_addr changes from 32-bit to 64-bit,
->> bump the VMState version.
->>
->> No functional change.
->>
->> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->> ---
->>   hw/usb/hcd-ehci.h | 10 +++----
->>   hw/usb/hcd-ehci.c | 67 +++++++++++++++++++++++++----------------------
->>   2 files changed, 41 insertions(+), 36 deletions(-)
+> We will need :
 > 
+> +    uint32_t a_fetch_addr_hi;
+> +    uint32_t p_fetch_addr_hi;
 > 
->> @@ -2484,8 +2489,8 @@ static void usb_ehci_vm_state_change(void *opaque, bool running, RunState state)
->>   const VMStateDescription vmstate_ehci = {
->>       .name        = "ehci-core",
->> -    .version_id  = 2,
->> -    .minimum_version_id  = 1,
->> +    .version_id  = 3,
->> +    .minimum_version_id  = 2,
-> 
-> Since this device is used in cloud virtualized instances, we can not
-> ignore previous migration streams and really need to implement the v2
-> to v3 hook.
+> to be set by pre_save, and used by post_load to reconstruct
+> 64-bit addresses. This is going to be tedious ...
 
-We will need :
+Would something in those lines work?
 
-+    uint32_t a_fetch_addr_hi;
-+    uint32_t p_fetch_addr_hi;
+-- >8 --
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 57f930b0998..c228d4a8c6d 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -2439,6 +2439,10 @@ static int usb_ehci_post_load(void *opaque, int 
+version_id)
+              companion->dev = NULL;
+          }
+      }
++    if (version_id < 3) {
++        s->a_fetch_addr = s->a_fetch_addr_pre_v3;
++        s->p_fetch_addr = s->p_fetch_addr_pre_v3;
++    }
 
-to be set by pre_save, and used by post_load to reconstruct
-64-bit addresses. This is going to be tedious ...
+      return 0;
+  }
+@@ -2471,7 +2475,7 @@ static void usb_ehci_vm_state_change(void *opaque, 
+bool running, RunState state)
 
-
-C.
-
-
-
-> 
->>       .pre_save    = usb_ehci_pre_save,
->>       .post_load   = usb_ehci_post_load,
->>       .fields = (const VMStateField[]) {
->> @@ -2513,8 +2518,8 @@ const VMStateDescription vmstate_ehci = {
->>           /* schedule state */
->>           VMSTATE_UINT32(astate, EHCIState),
->>           VMSTATE_UINT32(pstate, EHCIState),
->> -        VMSTATE_UINT32(a_fetch_addr, EHCIState),
->> -        VMSTATE_UINT32(p_fetch_addr, EHCIState),
->> +        VMSTATE_UINT64(a_fetch_addr, EHCIState),
->> +        VMSTATE_UINT64(p_fetch_addr, EHCIState),
->>           VMSTATE_END_OF_LIST()
->>       }
->>   };
-> 
-
+  const VMStateDescription vmstate_ehci = {
+      .name        = "ehci-core",
+-    .version_id  = 2,
++    .version_id  = 3,
+      .minimum_version_id  = 1,
+      .pre_save    = usb_ehci_pre_save,
+      .post_load   = usb_ehci_post_load,
+@@ -2500,8 +2504,10 @@ const VMStateDescription vmstate_ehci = {
+          /* schedule state */
+          VMSTATE_UINT32(astate, EHCIState),
+          VMSTATE_UINT32(pstate, EHCIState),
+-        VMSTATE_UINT32(a_fetch_addr, EHCIState),
+-        VMSTATE_UINT32(p_fetch_addr, EHCIState),
++        VMSTATE_UINT32_TEST(a_fetch_addr_pre_v3, EHCIState, 2),
++        VMSTATE_UINT32_TEST(p_fetch_addr_pre_v3, EHCIState, 2),
++        VMSTATE_UINT64(a_fetch_addr, EHCIState),
++        VMSTATE_UINT64(p_fetch_addr, EHCIState),
+          VMSTATE_END_OF_LIST()
+      }
+  };
+---
 

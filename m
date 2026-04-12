@@ -4,76 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74DBBE93804
-	for <qemu-arm@archiver.kernel.org>; Sun, 12 Apr 2026 20:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B75CDE937E6
+	for <qemu-arm@archiver.kernel.org>; Sun, 12 Apr 2026 21:03:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wC1oM-00012C-RU; Sun, 12 Apr 2026 16:53:42 -0400
+	id 1wC1xb-00047E-EW; Sun, 12 Apr 2026 17:03:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wC1oK-000104-I4
- for qemu-arm@nongnu.org; Sun, 12 Apr 2026 16:53:40 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wC1oH-00065J-QR
- for qemu-arm@nongnu.org; Sun, 12 Apr 2026 16:53:39 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48897fd88ebso40560825e9.2
- for <qemu-arm@nongnu.org>; Sun, 12 Apr 2026 13:53:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776027216; x=1776632016; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=dlGKgcDRVNZh/ceoFaMTbHZb+tkfz+iHzXD+62lWtK4=;
- b=Je/4GR/PSs3BRhw/lKXZQIltyjWuNkprIDmfBHGR00MBbmslolwf00jaEm0Vlwxfb6
- iHY6LN520+tiW/UXoWj+EErBEkXFdSbIiSPJBIaSKiKuCcrMff5ps9tkWPtBgIzgO4pb
- /wywht5CbYYP8QffJ5fHwvy9n1pGE2rmphdvSSeWZeJbsPcngPSUQbcHT4g0In7ef6vl
- 7tcpP/zbiGHyRKzq+BKC2bvCI/NAVND3SypdDlzYTNyh13dOnCChYpfqHloUodbRfpR4
- jxSKlqBr/uoMZcC/xgFn50Z0K8BrsXd5PJpiIzW5wj6cNqY6VSnrFG/oCTlC2dpDUhpY
- GZRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776027216; x=1776632016;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=dlGKgcDRVNZh/ceoFaMTbHZb+tkfz+iHzXD+62lWtK4=;
- b=RyFZTnrmX53kB+JVPpwsYNEnvuwK+EAzkOWMWi2SvB+R/ymFjnV/lh+QnK5hbeli9F
- RAZAfMgExvFfLIwrXGjP9/BwW1KIlp6RMINuRDbnRlxGFDc6dk6ps3GO7WRYHMcH15dE
- +JqvFIJ+zjvVmpbX7WXv/k6s26OBT2X+bTOGkRZS5Wke8ckqhxbV4uI6tYTyzzRRMh4p
- IVIii3sc1LiV/4a8vRppcwjwPtIHu3vnXCC19f2+yaw5LLY1PvGD3RCbEttEiffWo5iP
- KDPcBa0NmH/dZ+/koPgcW8SAbY6gkQUuM2wAk83VUHujjQwYw/yKYs53Mie6zaHsRwb3
- M4ZA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX2zVIxnDSvvUUfB/6+Nlh2WPmaFClS9qgd9k7abtdAFxVVg74c5K3ec2oECCKJTYviImNTzwIP4w==@nongnu.org
-X-Gm-Message-State: AOJu0YxLcIrPsWM/Vr2ppMy8GC1l0edgeGKHvjjxAUnmtV/vU5wC5AOC
- UZ63+Qh6UnjJhVU3CiZvMRMa0rxMV5WzDwjs/whAukRt5ErsoKyNhSruwyNXrX3cRS4=
-X-Gm-Gg: AeBDietE3sMztCNr6l991CVbmhoUHH4BsNd0G5d+7MuS8MfAbyN6lPtwyRpfaYPoZSy
- OraKzCINhrU83tE13LDndI9WlfxAI3C9IR3ZR3+ZNGbugNC2tMBU/k0ph+0WSVYo6X8mHO2xkn9
- 7Y40+zpeu+fmbTIc8aWOTNjtX3YBcEXBTTSTULd5gB0RoTKiwC0DCS8YUzkY4xBcu2HIvEdU1LU
- YMR7evqHSoP5dPFtqhCpG9918YGmKuCEFMy7Zd0VGqVCx/Db6OEFuwK5CHB1Pjjw4c2wm9sDIlD
- +usEO5At3g5Er8nO80aeXVxeCalA+ErkSpiucAy7YHbjxtcdgnYW/qTo+RqjDIujZbnRAR2mkfP
- 2LDbJkbO1kBYrtqU9HJ1TYa3l3gFO7IzqXyYHOMt4jPA1j0/1YpV/ppBISr5Ll8ulo3y9b8oisT
- c6T1NW9yi4YMRQxHNkGxpI+Vi2jUjm56hJDUtJCb89jkZwO/oYBS6NivRx2nC5HVz1vw==
-X-Received: by 2002:a05:600c:64c4:b0:486:fbd1:9dc0 with SMTP id
- 5b1f17b1804b1-488d68c2c56mr132751815e9.22.1776027215811; 
- Sun, 12 Apr 2026 13:53:35 -0700 (PDT)
-Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d67ced32sm107711855e9.7.2026.04.12.13.53.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Apr 2026 13:53:35 -0700 (PDT)
-Message-ID: <f1f030b4-acc6-414d-a0ef-4afff50278fc@linaro.org>
-Date: Sun, 12 Apr 2026 22:53:33 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wC1xY-00046y-9P
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:03:12 -0400
+Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wC1xU-0000vd-7H
+ for qemu-arm@nongnu.org; Sun, 12 Apr 2026 17:03:11 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [51.255.22.22])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4fv30Q2H1Kz61cw;
+ Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.229])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4fv30Q1CwJz7tn9; Sun, 12 Apr 2026 21:03:02 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A4BA3941619; 
+ Sun, 12 Apr 2026 21:03:00 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005233f8795-9f84-4bee-9885-d8c45fec36df,
+ 24D929EF98A9C54707A36CFD348010E9E2578269) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <6ae68fe4-6b54-433e-a9df-ae703a9c5f38@kaod.org>
+Date: Sun, 12 Apr 2026 23:03:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 11/13] hw/usb/hcd-ehci: Add descriptor address offset
- property
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH v1 03/13] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
@@ -82,20 +54,77 @@ Cc: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  "flwu@google.com" <flwu@google.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260311072614.1095587-1-jamin_lin@aspeedtech.com>
- <20260311072614.1095587-12-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260311072614.1095587-12-jamin_lin@aspeedtech.com>
+ <20260311072614.1095587-4-jamin_lin@aspeedtech.com>
+ <4253d673-02a9-45cd-9781-0f03866b9703@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <4253d673-02a9-45cd-9781-0f03866b9703@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 614178401363864587
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGoIYK04eauWfeYO18H0rV6JXWEbYr8csS1aqfXtsWE+p7Zilf7uiGwYr9FhxrOyInqCafVJ4f+4SS4/Gd6W6wkg/CJxm1S1/OCuFeOTGUhxuqMHkhxXz6ZJkcrhqS3NzkooSLO+wD+IaMyjIHuwAijvnvLldz1YVuuewdIrvuJYMKXkdQHhqSxPQS1+Wxatuq7TJGKd9t9sA26pYjrUwxLj1b/IUWgg9W0mbKLp0ZE+78lI/0QGVUZCLhiuYRGQ1oxsSvQ0u/Uka2EZARWWx6VHM03JuYrf6W8y0MQDjzkOrOZemHpZfJ3/X4OA2MuKDwGF4MV5whUogeM9Fe7zbpRUSwzcZF6QYO0VFnUo6ArthM9cujePtPzaXrSlYOIwQ0lTDfU4TSe9jR3RU0NaFIGo7f9rax9TMPWTaWbTdJMb5DIK+ZpheuuGS/ZsxaBt+3gCmAqLCGpA1akHH0C+dMuHu1bT8bT/3ujzU3W1zsvKZsHWc2re3lXRKDC34kZHtUVdijmYQvjkQwDogQqONGqjZtqhkoQ9l8jhEHSSR0SoIgJrRRKb9Ytt8n8fkFIVqgQV++tH74Okp8QoExZgqO2cvujDznEFiMSLp1gBPU0CkZ4emQiILoeyG0L8Tnz0Sa93X8yWYKuX7V6SLZca5kPwp00reKogu5AjdgsoQf5pg
+DKIM-Signature: a=rsa-sha256; bh=Z2eJU4zUsBKBMyD96Hw8R7DEQcgxr/npxtk2QDNS1IU=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1776027784; v=1;
+ b=gEs/2fI87P/UkH3oCCTbWm+lb6koi2SMrPfwz3e5mCqLaSYxEv5G0fvK75ah6xSB2iqjZ6G7
+ MqRIqGhl7U0zPsNuvjlrHC+voBC6d6fWwwF1GKcn7baKD80H+oIp5VifLmnNhi//kT5XRQ44cop
+ DWu//OyJ2bKZmYGUuXzDQ4cT+OF0RLVL62f0kxMh40xTjbZPkJe5NQQWQ8HtkYNmqH7syyv0wEN
+ 7d4ZVL7ycQiYhhrTU3aOnU5jQbCPCI2zYvfASVszetC6jooUoS6Muw6d1uxHdfEjtYZ5FMiBqOI
+ 4G+u1LHrh/45x8DIBbmzMezSyDOJRmfHkzTso6e2BH8yw==
+Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
+ helo=10.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,42 +140,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/3/26 08:26, Jamin Lin wrote:
-> When 64-bit addressing is supported, the Linux EHCI driver programs the
-> segment register to zero. See ehci_run function:
-> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-hcd.c
+On 4/12/26 22:34, Philippe Mathieu-Daudé wrote:
+> Hi Jamin,
 > 
-> The driver comment also notes that descriptor structures allocated from
-> the DMA pool use segment zero semantics.
+> On 11/3/26 08:26, Jamin Lin wrote:
+>> Change internal EHCI descriptor addresses from uint32_t to uint64_t.
+>>
+>> The following fields are updated:
+>> - EHCIPacket::qtdaddr
+>> - EHCIQueue::{qhaddr, qtdaddr}
+>> - EHCIState::{a_fetch_addr, p_fetch_addr}
+>>
+>> Update get_dwords() and put_dwords() to take 64-bit addresses and
+>> propagate the type change through the descriptor traversal paths.
+>>
+>> Adjust NLPTR_GET() to operate on 64-bit values:
+>>
+>>      #define NLPTR_GET(x) ((x) & ~(uint64_t)0x1f)
+>>
+>> so that link pointer masking works correctly when descriptor
+>> addresses exceed 32-bit space. The previous mask (0xffffffe0)
+>> implicitly truncated addresses to 32 bits.
+>>
+>> This patch does not change the on-wire descriptor layout yet.
+>> It only removes the internal 32-bit address limit and prepares
+>> for later patches that will add full 64-bit QH/qTD/iTD/siTD support.
+>>
+>> Since the type of fetch_addr changes from 32-bit to 64-bit,
+>> bump the VMState version.
+>>
+>> No functional change.
+>>
+>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>> ---
+>>   hw/usb/hcd-ehci.h | 10 +++----
+>>   hw/usb/hcd-ehci.c | 67 +++++++++++++++++++++++++----------------------
+>>   2 files changed, 41 insertions(+), 36 deletions(-)
 > 
-> Descriptor memory is allocated using the DMA API. The platform driver
-> configures a 64-bit DMA mask so memory can be allocated above 4GB.
-> See ehci_platform_probe function:
-> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-platform.c
 > 
-> On AST2700 platforms, system DRAM is mapped above 4GB at 0x400000000.
-> As a result, descriptor addresses constructed directly from the guest
-> EHCI registers do not match the actual system address used by the
-> controller when fetching queue heads (QH) and queue element transfer
-> descriptors (qTD).
+>> @@ -2484,8 +2489,8 @@ static void usb_ehci_vm_state_change(void *opaque, bool running, RunState state)
+>>   const VMStateDescription vmstate_ehci = {
+>>       .name        = "ehci-core",
+>> -    .version_id  = 2,
+>> -    .minimum_version_id  = 1,
+>> +    .version_id  = 3,
+>> +    .minimum_version_id  = 2,
 > 
-> Introduce a descriptor-addr-offset property so platforms can provide an
-> address offset applied when constructing descriptor addresses. This
-> allows systems where DRAM resides above 4GB to correctly access EHCI
-> descriptors while keeping the default behavior unchanged for existing
-> machines.
+> Since this device is used in cloud virtualized instances, we can not
+> ignore previous migration streams and really need to implement the v2
+> to v3 hook.
 
-This is dubious. Maybe the AST2700 isn't modelled appropriately (like
-some memory region not mapped in the correct container, or some code
-path not using the correct address space).
+We will need :
+
++    uint32_t a_fetch_addr_hi;
++    uint32_t p_fetch_addr_hi;
+
+to be set by pre_save, and used by post_load to reconstruct
+64-bit addresses. This is going to be tedious ...
+
+
+C.
+
+
 
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/usb/hcd-ehci.h        | 1 +
->   hw/usb/hcd-ehci-pci.c    | 2 ++
->   hw/usb/hcd-ehci-sysbus.c | 2 ++
->   hw/usb/hcd-ehci.c        | 1 +
->   4 files changed, 6 insertions(+)
+>>       .pre_save    = usb_ehci_pre_save,
+>>       .post_load   = usb_ehci_post_load,
+>>       .fields = (const VMStateField[]) {
+>> @@ -2513,8 +2518,8 @@ const VMStateDescription vmstate_ehci = {
+>>           /* schedule state */
+>>           VMSTATE_UINT32(astate, EHCIState),
+>>           VMSTATE_UINT32(pstate, EHCIState),
+>> -        VMSTATE_UINT32(a_fetch_addr, EHCIState),
+>> -        VMSTATE_UINT32(p_fetch_addr, EHCIState),
+>> +        VMSTATE_UINT64(a_fetch_addr, EHCIState),
+>> +        VMSTATE_UINT64(p_fetch_addr, EHCIState),
+>>           VMSTATE_END_OF_LIST()
+>>       }
+>>   };
+> 
 
 

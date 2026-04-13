@@ -4,93 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02940F531DE
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:00:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13661F531CE
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:03:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQFy-0004Rz-2y; Mon, 13 Apr 2026 18:59:50 -0400
+	id 1wCQJ7-0005Ih-Oc; Mon, 13 Apr 2026 19:03:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQFv-0004RG-5s
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:59:47 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wCQJ5-0005I5-50
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:03:03 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQFt-0003qP-P5
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:59:46 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-488b0e1b870so78081405e9.2
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:59:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wCQJ1-0005AD-R5
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:03:02 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2b461310af5so5769915ad.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:02:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776121184; x=1776725984; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KTgd4LIc38fL/1sz3zMphgk6GOoXAPiOesau6BWUUIE=;
- b=bS9YrV2pUQwl7TrAAQQIb2VQP3nRgafA9Rw06IvCPYhv30ieh//+55mi8Moqqwyd3p
- 8ZMjghhuXFpJYfODAGao1v/U3k2kIDD5YsLKoAdvwukxT+UKKGvItwyEbd0V6kI6xFVo
- nyxW0aq6JUh18aOIydEDEt8A/1oTYn88GlkHnsIGFDiATnQ+cC2bG1b+AQycsjtSN6zg
- mrLQOzPkJQ/852V4jnnyLpZY46TbdF5ZfiV3HVgTtUs3d+lU6fsxk8V1ra7ldiYg/KH8
- YfBlqfq2GSU6rmHGVA970RheUPEgJt7hkdncr9LPBW3yZVR0Kjdl1o9JFoymjWdvBH7D
- XEaQ==
+ d=linaro.org; s=google; t=1776121378; x=1776726178; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=sIfbA9Xm428AoYAJwzWkfIAHFnAZAB7Jc1Vpoczc/W0=;
+ b=RUbR/sxfSu7e86gjoH9KRhxr2bHBqsZtHRl4neIjH5h/l+mARHGjVXo0y238qc7eo9
+ OqmgPTjALbj1KZBBfRxLfE6/HgN+BRkCHAQBevywpHDSA7vU3HbWfeOhjpkqxH69/MIC
+ FgkmPdPR3aoz5nVlrFBJRRffQ41TvAvXMP/l2xLYr/8f7dOr/XxlDvm92N/z6ISCisYV
+ 5Td/91HdnyUYCtqwZ+IOW5ztphwxXOrMV72d7eNDFE3zF1reWTE9HqDUoSTnay6abXCz
+ +NpmE4TGRQPOW32AQXvduaxyqSpnNTdWO/6/1qlleAmkwnAXDWyCjFD1fjWPejsczMli
+ DTlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776121184; x=1776725984;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KTgd4LIc38fL/1sz3zMphgk6GOoXAPiOesau6BWUUIE=;
- b=dCw9ctMEbNDnED+RDeQtdAKNFPklEGLXDe59d2VlMSV+Kk7ayDvPV35B5xJ74oXuH3
- U5oJVWTgXoRaFp+5W+mPU9PQiAvaAUEgz7b5polbwsWkR7Do293oo3LxaCfmhGDywTAS
- 0HaxWFh35NN9e61VtGz+oXbcFMBcOvZb23qeAY6EGyRX1iiW3m5VqpbHVrgtlVUcJ81a
- Mhw2KM5QEuknerW4+WSwFp/BjLYHzmFMNhR7t7yakAAHbELfIc17qlgSiV9q/3fcS0I8
- kk/HsAMprOaSkFS9XHUJSHOJkhBYqoyk0fmt2nkudRTrwWQsROKoWWwGl/X9yqeoPixI
- aQlA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+IdLS1/Wl1YuicLcGT1n9bpLGFN+OqKZw65dWTBxPkEc8WSclWlsHxac8pVPCYdSaqUh79KvBcHw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz9aeXQG2+wcZrghlwU+dzv4bThKvBKfH4gyqGEP0QEMN9xXmwo
- alkaRMCdQ2D6HU5gi8RJSDbjcYUgBP6VXlTULouArolel8Rue9V6DcSD5AWAjlHQXZNKL0czMFO
- h0aTapPg=
-X-Gm-Gg: AeBDievDNFR4fUJyozxsoGTKt10HSaxapei20AyVXmiezKFg74AdgrqelshNmBnhPC3
- mTpNanVok+yxW09weByst8PWkFtbnVq1BfZBaX8UlEQCWwaAmz7C40+MvUQd6v8Oly0ZmdPEkUQ
- 2m9AAI0orr2Ty4owISlERkLxaec6gdYgkPbtlVj4d7CjvvE1mmOkqzDhjxqtONbSSmtOSiGeM6f
- AAXScBt/n1BKmc/A7RSn/qj2BY2PBMXkR2CA9sUb1GqWzO0LB7mTbCrulUNinkFAJYHtz+st6dJ
- /74Pc+d4AIQ7GYvyYtP6avQZdn+aFvyQgOFsZYkGDhGq98hDnyT/Mz2eJUJt/7rWVWfZecNY83Y
- /vNGALcR4Q292YnS0aMQ7JwRE3ScCCOawHmyg+ucSMN2Tp1tYxcusD4FPvPJdfHdYUVqN+Y77z+
- 65HtiSO67zGkEQLFGD8UexTVDM8a8bD71IRWDUKjQLaUtx0KHGnG223ieGAUWnyYoxegmQbWJ8E
- J+v
-X-Received: by 2002:a05:600d:9:b0:488:b4e3:aeca with SMTP id
- 5b1f17b1804b1-488d67bf177mr163865655e9.1.1776121183881; 
- Mon, 13 Apr 2026 15:59:43 -0700 (PDT)
-Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ede24977sm1361245e9.7.2026.04.13.15.59.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 15:59:43 -0700 (PDT)
-Message-ID: <fbe299e1-6fb6-4867-b80f-eb9b44a4110d@linaro.org>
-Date: Tue, 14 Apr 2026 00:59:42 +0200
+ d=1e100.net; s=20251104; t=1776121378; x=1776726178;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sIfbA9Xm428AoYAJwzWkfIAHFnAZAB7Jc1Vpoczc/W0=;
+ b=VUHRny050hxwGgh1QtqIQbWGAbOrH2yiYoihau4BxR3UJQkMCkQJhXcX0tqpcSc5It
+ wHOw3YrE+vHDNb6mp8nqsFBP0s0GK4Qc3enOIjaOABtQKRhVElWynI+gZ4DkkmZS8oiu
+ mZh+T3uAQsEOq1foQ1Oggp/A6GUXJjulnj5YUffJtpUEv8omWwiPDe3fJvxsxxoIJT2E
+ +U1ejZbDHXz106UyiSa+cOv+Z7bPKmhrntKBs7BArz221fpFGW/UaFf0w3pfbtrZ7pzF
+ nF9aBpTHZ5VpkkAlfDX34ALAx2yWXJkndXpF80Wamo3k/YmpFk1Xu4waGvZ8fdKRVCu3
+ zvoA==
+X-Gm-Message-State: AOJu0YzPXmiGbkRoIz8CuwInlh2KxuYAbHHb3u3IuFrxttA3teU6F+l6
+ FZp8BPzW+15DZd1WHDVx4np7i9QHuRVvfOyNkGKV5sHVIobzoqT9WtIPHnSJ6Aj4PUk=
+X-Gm-Gg: AeBDiesj4Qn2GDKFgEGlNL58qmADahcbEljzv/Ze4/ZjGqwDzOpyRe3VEf4z2DbXit9
+ CS+XGv3ZrwlpEjinmiQDcDlc+TTzJqdFgjXfetUDzPBWnUI2W7Hm2nQQJ9D48LrMHCnj3kV4E2U
+ zgq1BjDEaP82zeAQSb2gzzx8qWwXYPZ5cKHDbzbeTsQOjABw7HKHh1wZW5HzOTsXYU8lZlUtZ+1
+ x1C/q1DZx3VeGLLlLJRT0LXXS1bxCaEWnlijQibUIoFrFVJjxhJDK6BP8eJcQhtxrnt/WWY++sd
+ SNUkTpPa/CZOLogyZohBRcT4X43EJXdqPdMIhPZqHrFij4XcTU23kh7iSRLt8mp3cZALalBCKED
+ ll9+VJnfHE16OmaRpoH7MK+jQJvKltN57TF+2PJMdjh5d4VtJYyk9unqO6XN92r3nHrEfQPnDpk
+ AHdofTdKl/XS3Mh/ZS72iymnyTVjPYLJUDFw==
+X-Received: by 2002:a17:902:ffd0:b0:2b0:4f16:22f7 with SMTP id
+ d9443c01a7336-2b2c73474b0mr163755095ad.16.1776121377694; 
+ Mon, 13 Apr 2026 16:02:57 -0700 (PDT)
+Received: from stoup.. ([2401:d002:dc0f:2100:377f:61ec:6edd:e205])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2b2d4db008esm120507675ad.16.2026.04.13.16.02.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Apr 2026 16:02:57 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH for-11.0? 0/3] linux-user/arm: Deprecate nwfpe
+Date: Tue, 14 Apr 2026 09:02:48 +1000
+Message-ID: <20260413230251.22537-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 65/65] hw/arm/virt: Allow user to select GICv5
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-66-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-66-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,36 +96,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 27/3/26 12:17, Peter Maydell wrote:
-> Allow the user to select a GICv5 via '-machine gic-version=x-5', and
-> document this.  The 'x-' prefix indicates that the emulation is still
-> in an "experimental" state as far as QEMU is concerned; the
-> documentation describes what "experimental" means for the user and
-> what parts are not yet implemented.
-> 
-> We do not make 'gic-version=max' enable GICv5 here because:
-> 
->   * the GICv5 architectural spec is still at the EAC level and could
->     have minor changes between now and its final version; only users
->     who specifically want to start working with the GICv5 should
->     select it
->   * QEMU's implementation here is still not fully featured, and
->     selecting it instead of GICv3 will mean losing functionality such
->     as MSIs
->   * the GICv5 is not backwards compatible with the GICv3/GICv4 for
->     system software, so silently "upgrading" an existing command line
->     to GICv5 is just going to break existing guest kernels
-> 
-> The last one in particular suggests that even when the emulation
-> moves out of "experimental" status we will probably not want to
-> change "max".
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> ---
->   docs/system/arm/virt.rst | 19 +++++++++++++++++++
->   hw/arm/virt.c            | 11 ++++++++---
->   2 files changed, 27 insertions(+), 3 deletions(-)
+Deprecate nwfpe emulation.
+But while it still exists, fix thread safety.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+r~
+
+Richard Henderson (3):
+  docs: Deprecate linux-user/arm/nwfpe
+  linux-user/arm/nwfpe: Replace user_registers with current_cpu
+  linux-user/arm/nwfpe: Use thread-local storage for qemufpa
+
+ linux-user/arm/nwfpe/fpa11.h | 25 ++++++++-----------------
+ linux-user/arm/cpu_loop.c    |  2 +-
+ linux-user/arm/nwfpe/fpa11.c | 12 ++----------
+ docs/about/deprecated.rst    | 12 ++++++++++++
+ 4 files changed, 23 insertions(+), 28 deletions(-)
+
+-- 
+2.43.0
+
 

@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFCEF531DE
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:13:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F36F531DE
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:13:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQTJ-0002se-92; Mon, 13 Apr 2026 19:13:38 -0400
+	id 1wCQTR-0002w4-Td; Mon, 13 Apr 2026 19:13:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQTH-0002rn-EY
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:13:35 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQTQ-0002vl-QW
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:13:44 -0400
 Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQTF-00014O-U2
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:13:35 -0400
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQTP-00016M-H0
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:13:44 -0400
 Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-488a8ca4aadso57923515e9.3
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:13:33 -0700 (PDT)
+ 5b1f17b1804b1-48896199cbaso53088145e9.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:13:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776122012; x=1776726812; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776122022; x=1776726822; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ts2ZbD9i00cs7EoaPmxXwe/dereLWU9IapSFE0Zgdo0=;
- b=D0sIGPQf/YDyD2R8lSto5MGKCk9uKDiwxYoNkUiYg6W9ZoYpEW4PscC1RQb8VmwtSm
- t9QAjJjz6+kADrUI5DZOaa32EhxTEX6EFfRnuC3aZTtp3ttfco/9+PCpUy8ea+sPuN6P
- aW6v7BHEZf7V1jx/3KNiY7c9Pj26H8BTsU+EaTEU65ET4Ink4UrnapqFRmP/0sS0Ez7y
- ZvpXSdgSzRk1XZfJkeXdEGl1Z91UJbAQz7cD0b2jY3zY5EJjHBsffNsi+cdg1ZoCad1z
- NocQo3crKZSg/o3yGDLvO5OplisjymUgSsQvgxl3+ZhzKmRl/EB9hVzKN4bubf/vdYma
- YUzQ==
+ bh=eBagoQCA4FTWyyGjduWY06bgHHk0SDGqbr+mNflrSnE=;
+ b=vPGU5rab73UVj2hVxP+UFQLz2mrAGssECIfRmQV2DRFGeffG57kZinyyFjY/zOBfyv
+ zmmcvE/ze1TTdZlAwlFnoBVHjSz9QIwnpuaLHxjZeh1RZoYo2WPp142ybAZVFuIlofbT
+ ZFm50Cp2A5QmjK/7929y4Swk1ZCmHbtzKTEGqrt6BAMl/lEZ4TyEZIjc0/MvWXE1xV4K
+ WjECefH+V6zcTj7olcnFL7VsQ26r9dnctgnxoBaQRZsKUcfT3N5RCfa1LnDqnxmDNNV/
+ UxS5n/2KJ066sW/xwZJblW91iyLJxIE0453khEFCAHkzyf2miVt88ko8/hwl1jVMusBc
+ 2GaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776122012; x=1776726812;
+ d=1e100.net; s=20251104; t=1776122022; x=1776726822;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ts2ZbD9i00cs7EoaPmxXwe/dereLWU9IapSFE0Zgdo0=;
- b=MdeBX69UkJWdIk3h/W9GnjSJMbwHVdcisbB+5odNWjFJ3rdJgtZ3Fu3N00oBD6wWty
- pbNDDv4pd0fu2yLV/x9AL/OuhaNb/D30rhNB2qDXENTSOCOwPM9PPfViq2H4txE5BZpY
- 3OyWNR7GF590QoqZMobyl9ZYHpKTpxpqydp8j1z0LRKQM5t+xYEnKUPqIEyyCWMBYbqH
- 4qi54r6onbeZB54LC3DR5p9/wQIeY9TLG+k2nVcp2mZHioncBkTnojjD3fv88fGMmC7D
- dDu6Xhuj+Feo/AxeuDGq3LCZJGQlLQSLJiAekhA7ELEF6aTDBo6NQ8KXWWTdphcU8lvL
- eKcQ==
+ bh=eBagoQCA4FTWyyGjduWY06bgHHk0SDGqbr+mNflrSnE=;
+ b=IuYqOcqaN3f8NaMASMAI52iI4J6ar/NCC16g7A1w3M1kBr8m4t43kNJUd8gwf87wgj
+ 7os8qv7WfF4Bxs85q27dFyRzssck361yvS21rw4TZYt0NrjYm6gl35k25dhCUxtmoSUA
+ 1TStOi8KjDEyt3sHx7mHH8M2h5yCP2zQI91DwI4cgr4Nq2adfsIqTkHRmyu19lUr6RyP
+ iUIWZfo3mnwrh6eWJY/Ftcm8GzFgREf9kFVDTFq5ixC4uU+Yer8qEFwPykkltNJfvInH
+ teTKxf6+9ZKkMt0UyyRa+W0V24Zr941BKKDCA8VG8S/wLdqPfNB5F28cFSCzjkrVakt9
+ UUug==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/xiQkIXRtMWMC6fCNOL3XK3OXFO8q2MQNKGFkcpWalotDUPi4KB8cNOOsQzebLXXCRxc5B7hbUhw==@nongnu.org
-X-Gm-Message-State: AOJu0YygLEVHbBei1+omR3F6CNZhAi+S7Hd8EzBNGua9bCXefc5gXB8y
- A2j6Tus1yDFlNk5hFYGDXVZ4Pc24CZ+WFOmRz+KLoWcg7Y2EJgoE3kw03+APxnYH4ow=
-X-Gm-Gg: AeBDietEY2fqLdCwPGcFTHzEFbANVnAgPULW/kURt3azvbtnIamL4eDPXXQxIGJm/qw
- WKigONXgiOkjynOZ1NV5prlVcsyqv+hPogh9BBoM2YOJa8ZuWH97U+k438W+xbWGf2ITKYGuVBu
- vhN7OpABBBalwsS/IkA/B1nKxjdLV0oB/MiH4IooieKn8jB3Zq/fOfwxz6Y/C1mfnxs9t0fL7Fk
- 3bIunOhik+bBT0f6CM1tBEAIS9hTwNuhlqqeKEquWwPByQLZ9TXkOW7YdzSz5lBoGZTZ7XwkwfL
- U6xlVEvRJRWFXU1ubYh1Ah1Mk69Ne4+IkfEvU9xThDchZw0MHxSmgCu9ApnhBsG7RaxVfRQgcpR
- WDM7UDmCOZHveEiER5sJDlRnsfwQVFx0xLIfDQ1uHMid2Ejb8DrehEtyLybFTsiI8iyRKxFisfE
- Cqjgb8pkgCEq2RbmWJcTep70zBTpPoPNjkAX+A/+Y3VHM980EIy0MRcDou+9JUbAVAv66lkJFK9
- JS3
-X-Received: by 2002:a05:6000:2dc6:b0:43d:7670:84d3 with SMTP id
- ffacd0b85a97d-43d76708565mr10193991f8f.0.1776122012229; 
- Mon, 13 Apr 2026 16:13:32 -0700 (PDT)
+ AFNElJ88fV1DlKbuuhVvQ+ECR77B4ML02qMlYmPXv0BQ1sujF4Gz7BLi3ERnRFwaHxbbM6Vo+9787k752g==@nongnu.org
+X-Gm-Message-State: AOJu0Yyw5q3/zqQ3QnD9Lwn2WuYGQ8Vgn91Bk8MowDP+zFgMJqjnIp0+
+ DRAZ2n3NsAqlzjObYX2zI4WjbISG1N8rF+3j4I/g6Kr0x0Lj7HA+chBzh8Mkl+LWjbs=
+X-Gm-Gg: AeBDievZ1rkw4FvikO8vQSyye99GW7Qa29pUgHPvsYCtff1/lVCP0hDhPAmGYnIOpE8
+ j/cilw3bcixIDSjmlwGOPdhCduoehMOzWofSL1Kww1nqPEi/uQaUMgx+A6vjtXsIYDP3x/5o2dP
+ ciZGqt8zb75VJGCcQJhIeb82GETfpi391lsDl5MoFsq9yCM6rvCE0CpI/Ny+VUgUMwScY/bcr0C
+ nv4h8+IcyxoLIoD+q7P6nQXK5e2kqmLgwP2D/Br1wTGu/KrpzWCLECJYik30h4nnb5LMB2iVEs8
+ 9zDtwz4yMGu5Nxfh9uF48wRcRUToVV7iBU1YiGPst1GGhtbW8/tD/N5Ydrgg+9bwH/9UetlkP6j
+ At7sqEwKbLWIZZW9zo53+lKtwNvHRrQVAZEFJc/dXUv/T+Fsa8XeJKaXFE/KR6hxPXnPR/DK/li
+ EwiEtYEkgf6ZaR+14vPXnv+ouTQqKnLOl/AUW+gV46gy21M/bSzGqQ/xEZUuKu2/8voA==
+X-Received: by 2002:a05:600c:5299:b0:487:1fb4:7e1 with SMTP id
+ 5b1f17b1804b1-488d6875f3emr201677885e9.22.1776122022176; 
+ Mon, 13 Apr 2026 16:13:42 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d63e5062fsm35269433f8f.31.2026.04.13.16.13.30
+ 5b1f17b1804b1-488ede156a1sm1979155e9.2.2026.04.13.16.13.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 16:13:31 -0700 (PDT)
-Message-ID: <aa57949d-1d83-4a47-8cd8-2128e69ee952@linaro.org>
-Date: Tue, 14 Apr 2026 01:13:30 +0200
+ Mon, 13 Apr 2026 16:13:40 -0700 (PDT)
+Message-ID: <8bdb52d1-fb04-4478-8a1e-2fb29fdc8edf@linaro.org>
+Date: Tue, 14 Apr 2026 01:13:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/65] hw/intc: Skeleton of GICv5 IRS classes
+Subject: Re: [PATCH v2 04/65] hw/arm/Kconfig: select ARM_GICV5 for ARM_VIRT
+ board
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-4-peter.maydell@linaro.org>
+ <20260327111700.795099-5-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-4-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::334;
@@ -89,7 +89,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,31 +106,18 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 27/3/26 12:15, Peter Maydell wrote:
-> This commit adds the skeleton of the classes for the GICv5 IRS
-> (Interrupt Routing Service).  Since the IRS is the main (and only
-> non-optional) part of the GICv5 outside the CPU, we call it simply
-> "GICv5", in line with how we've handled the GICv3.
+> When building the Arm "virt" board, pull in the GICv5.
 > 
-> Since we're definitely going to need to have support for KVM VMs
-> where we present the guest with a GICv5, we use the same split
-> between an abstract "common" and a concrete specific-to-TCG child
-> class that we have for the various GICv3 components.  This avoids
-> having to refactor out the base class later.
+> We haven't added support for creating or wiring up the GICv5 in that
+> board yet, but adding it to the Kconfig early means that the GICv5
+> code will be compiled and so we can have more confidence that the
+> individual commits building it up are correct (or at least compile).
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 > ---
->   hw/intc/Kconfig                    |  4 +++
->   hw/intc/arm_gicv5.c                | 39 ++++++++++++++++++++++++++++++
->   hw/intc/arm_gicv5_common.c         | 31 ++++++++++++++++++++++++
->   hw/intc/meson.build                |  4 +++
->   include/hw/intc/arm_gicv5.h        | 32 ++++++++++++++++++++++++
->   include/hw/intc/arm_gicv5_common.h | 31 ++++++++++++++++++++++++
->   6 files changed, 141 insertions(+)
->   create mode 100644 hw/intc/arm_gicv5.c
->   create mode 100644 hw/intc/arm_gicv5_common.c
->   create mode 100644 include/hw/intc/arm_gicv5.h
->   create mode 100644 include/hw/intc/arm_gicv5_common.h
+>   hw/arm/Kconfig | 1 +
+>   1 file changed, 1 insertion(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

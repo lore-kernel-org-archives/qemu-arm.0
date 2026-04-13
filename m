@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4FBFF531DE
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:09:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD1CF531DE
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:09:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQOg-0008IW-F2; Mon, 13 Apr 2026 19:08:51 -0400
+	id 1wCQPD-0008Ng-KQ; Mon, 13 Apr 2026 19:09:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQOb-0008I6-Mg
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:08:46 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQPC-0008LA-4i
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:09:22 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQOZ-0006jy-Qr
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:08:45 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-488b00ed86fso51469225e9.3
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:08:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQPA-0006xy-QP
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:09:21 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-488aa77a06eso83009905e9.0
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:09:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776121722; x=1776726522; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776121759; x=1776726559; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=kLb00s6LSPjjFGnlDXJgQ+QcEkHDEfD0TtdGwXY1fn0=;
- b=gEYKpdKrvOvDc2m9I7fW1ECK+NGgnO+/dxuFqH++3cPNjWXNQntIp9/jjIEjoGKRlL
- rV05g/Gq4aWEfHZ6cI6HF0faNNrZqBM5BLU44xOry4Z7iErCy8x5YFcKy9AOk/KolNBF
- nyZt8KuTOG7Gn8MrupDMEFqtRfd3EpkjEHUwXWBqUN2ZQaN6r+ZEnaIpG3fqDYb+ERwJ
- e2hJXNJjQmxUizBN8W6q6QvPwecja87PhTNTpnOqqEV/kc6fTos/BWO9pZ7LgQ80R3He
- ET4mFcmsIeiYL7mip85+JbaTm7aFmEW5uIDbTAxTd5bnl7ZNxwqg3N43pGBeUUig7Wlx
- 6JGQ==
+ bh=mwFZ1UB1Z24/RVCrJPQo8FdEDCjxtQvwKJkKFTsE7bg=;
+ b=HdT26UVZLsUVs0iRufgcCbY8YQHIjcmz/JVs+j0EQYNTUzymwEZHFcgcy3XB3I+IP1
+ t98MbmClL+SerZnUuQbD85p5j8CMMnWWEEGDApETrPGYeYloyC/Rh34NbIfXQxLSWahv
+ 1x/2AweZ8ZpOiqakW7Dhba9prO1mHXk57sBaRKF48XO+Xv9zjoPefZFKzz1ZADAfYRAj
+ seggs6q0sxlhAJL3uryU5QH9xyk4EZYX/ofZuXBVztamSpGwda+uEDz1oIVvv3TPYGfh
+ BN0Lp9Wcc4haXKp9xTP6toMi94Fv6mN2R9XBzjWD8R3L2DPl/8jjfLJ6vg8Lr6fPJasr
+ Llkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776121722; x=1776726522;
+ d=1e100.net; s=20251104; t=1776121759; x=1776726559;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=kLb00s6LSPjjFGnlDXJgQ+QcEkHDEfD0TtdGwXY1fn0=;
- b=pgh6Z4tdhpUTxBASIHVdTPkXo/2F7y3wNFTSAwHwAt6npNZ8EpT0iLqt4TugNkRtQ3
- H8bO7WfEK3GbcaaSENsTufRvrfNG26EMOzviFxQqkbvttJ1kqL0Qw7UDgZEWBSMXe7fJ
- idyM4U5BId5vhfkrV6vG0g3wk2fL7z1EfM3AGzITwo1xC0cFblZHWzKxUe4zVUF9S5/c
- TQxghUO9DRYy4ZP5/Fz4DTZ64sTWvAS6Cnu0tfraPYdvyXZ8SW/DJiGvEjoyZ6Lsg8oh
- 5mVWHUQ5ykPtIoy9bHPwGxVm36rnmz1E4YkD/Z2RSWJpnr2D18/OkMTN+J+4jqWHCFGI
- 3fmQ==
+ bh=mwFZ1UB1Z24/RVCrJPQo8FdEDCjxtQvwKJkKFTsE7bg=;
+ b=a+Rjj/leFFQF+9HCzFTVFvtGQMdzekZHLXn2DdU8HCMJLZivS8h7zNkAEd5CvoDSfV
+ 7ZOBYPMmIWZ+RbCCT27/f6tYzwoZimnO/i7Y1XWONvWHc337PpLhRJHOO9OWCiUHt4dx
+ f8tj73v7lvNFFOlNL7ipiHUkZTlzAkMaVqVSeyGopvnLWtf06PeUaBKKQE2FMbOs3UuG
+ TnHrrf/g0L/pIlDwQ4LgF2EA/gis65gtL6pVZ163kdZSIawRdmiy15kpTd5JoYMkelZs
+ c5vhqUkbcO9yoFgnioxiPjzI3ZEvR3J/dCQCYU7KiAS+YplS56iVKv3DKaeI599ntrGI
+ 1zIA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8K0CMgAkaIAEmMHp9SbCdp2VUEm4rvZb29U1FJbU2prcV6WmyRMV+fYeCWUW7BmUFe9l7LPNKIOA==@nongnu.org
-X-Gm-Message-State: AOJu0YwPI/aLCabzW+/OJSeQyqE/atZGdTwys0qP+I+rs8F2kxrQhHrg
- vkhu2vARvxyzdbLkrxq2pYP53RPAza4uxjAi4Q3tEeg+YuxDHUhrYmuzreAfiRXjYCc=
-X-Gm-Gg: AeBDiev+KNCcguRfsq7fpahV9nhohDkD/dKOF0MOadvHgLSfZYuLOxJ7mTqMDCVjnZg
- VA6O02+0VGgmyZsAgxcBTku4gt19KnqiYA7ErehMN3cTm/QNdNIkhjA7x0Q8IIA2VcubcBuWdvu
- 2s/3YOj9OYz1o07v+1farQxo57vKGvYLOVvLoq032r2uuAIBVTdVVb4SbC/PvlYj3TZgiTVPheH
- oQMAwM9BxIrR+vO0H5SM4LO9upuDlMDudU1JDil5hoKDBdiM5KeaAQ0mjZNmQ+sZQa4w0VhzbZd
- qoKZVlsJ2kh5pXSCdR8gtx7wAe77ZFyudMIi+LrftQzLFIpkWKRnfLu1pm2Y1Q/jpJZYOvsClpt
- J07wLC4j9uDG8ZEqJIoeqMU5CpEpmgxFB9/7grhPPxHlSp+6LmECzVaRKJW/DNsw0l87y9MTG4U
- 0rkJ7YLjiAR1n/+6/ML/LdhCiioE8uKcdtO5eeU1b4k/1qD55LBNjcHT2rettuCXsU7A==
-X-Received: by 2002:a05:600c:46d0:b0:485:40c6:f507 with SMTP id
- 5b1f17b1804b1-488d689dbfcmr210428375e9.30.1776121722155; 
- Mon, 13 Apr 2026 16:08:42 -0700 (PDT)
+ AFNElJ/SajxXhxVwzyK0G8SVWLV5cG01J8XmU1tD5OaeMSX3VqTY70kGGt83DzXo2EqpeygEAFtwvAiMQg==@nongnu.org
+X-Gm-Message-State: AOJu0YzErinOzSA68BaLaRCLjyPwDncM0i5Bb8Z+BXhCXiBvIe8Gu6Ln
+ ghzC+RLNrPEn+bP/8xJZNKBOmaMpU44ulkQ+qpoQq8w9qyyMBIu1J5AWkX66rKmV1+U=
+X-Gm-Gg: AeBDieuRdZ6nlj03gkL6CHgJxEKlywxr4rB9k8Q9nSytH2ladQ1flm/OvW7k+2Y+VcZ
+ 6lrsWUFZZk0eybt1wCfvb+a2vLO0jB6kUUB8J8sqiiQONJ2S5VovvJZLYoVaiGnh2PsX5yq6vZE
+ uIwaJW1Tzz+cu1Dpt5ORB2/WtRWve2hDpBYyOFFsJEOFIOVGDqdj1xDXrRPJ3/Nh6oINqFyA/qB
+ VrP0cmtH9OInbcZAYSqDHzLV4cUF5Gk9mkoe/WQksLvv0sPvJ2fBFG/CWCTUk5JmuO+/jBIs7af
+ F3Rbx8Z8Oe5ewAQOTVjEaj8G4AJmKvW1ebUNe3ATYUCabifCwhBQc6s3eDx6bHsmX1J52PBqXjc
+ /gxA9/WtpgFdQkVRAI7UPyuAEjoIrGwrMTiUVECJrK34ijUcU4cgwDtjfs+p/ry4xPHJTRHqLnv
+ xAbIprPRsTTI1V0rQIvu0NGYGp1wso39Ocytx4rH5F2k8EQ2SFbfSRq6R+/bMDlPHSyQ==
+X-Received: by 2002:a05:600c:1f83:b0:488:a82f:bba9 with SMTP id
+ 5b1f17b1804b1-488d6864dd2mr205247975e9.22.1776121759078; 
+ Mon, 13 Apr 2026 16:09:19 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ede1e050sm3121345e9.5.2026.04.13.16.08.40
+ 5b1f17b1804b1-488ee019e44sm2888285e9.15.2026.04.13.16.09.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 16:08:41 -0700 (PDT)
-Message-ID: <53b5f085-7a6a-4653-b287-7948c26c2c9f@linaro.org>
-Date: Tue, 14 Apr 2026 01:08:40 +0200
+ Mon, 13 Apr 2026 16:09:17 -0700 (PDT)
+Message-ID: <2fd0f178-e4a1-4e8d-b159-d1f278bb570d@linaro.org>
+Date: Tue, 14 Apr 2026 01:09:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/65] target/arm: Set up pointer to GICv5 in each CPU
+Subject: Re: [PATCH v2 13/65] hw/intc/arm_gicv5: Add defines for GICv5
+ architected PPIs
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-16-peter.maydell@linaro.org>
+ <20260327111700.795099-14-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-16-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-14-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,46 +106,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 27/3/26 12:16, Peter Maydell wrote:
-> The qdev link property array gives the IRS a pointer to each CPU that
-> is connected to it, but the CPU also needs a pointer to the IRS so
-> that it can issue commands.  Set this up in a similar way to how we
-> do it for the GICv3: have the GIC's realize function call
-> gicv5_set_gicv5state() to set a pointer in the CPUARMState.
-> 
-> The CPU will only allow this link to be made if it actually
-> implements the GICv5 CPU interface; it will be the responsibility of
-> the board code to configure the CPU to have a GICv5 cpuif if it wants
-> to connect a GICv5 to it.
+> The GICv5 defines architected numbers for the PPI sources like the
+> generic timer and the PMU; these are different from the ones
+> traditionally used by GICv2 and GICv3.  Add defines for them.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 > ---
->   hw/intc/arm_gicv5_common.c         |  9 +++++++++
->   include/hw/intc/arm_gicv5_stream.h | 32 ++++++++++++++++++++++++++++++
->   target/arm/cpu.c                   | 16 +++++++++++++++
->   target/arm/cpu.h                   |  2 ++
->   4 files changed, 59 insertions(+)
->   create mode 100644 include/hw/intc/arm_gicv5_stream.h
-
-
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 657ff4ab20..16de0ebfa8 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -812,6 +812,8 @@ typedef struct CPUArchState {
->       const struct arm_boot_info *boot_info;
->       /* Store GICv3CPUState to access from this struct */
->       void *gicv3state;
-> +    /* Similarly, for a GICv5Common */
-> +    void *gicv5state;
-
-Since there can only be a single gic state per vCPU, is it worth
-having 2 pointers?
+>   include/hw/intc/arm_gicv5_types.h | 20 ++++++++++++++++++++
+>   1 file changed, 20 insertions(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
->   #else /* CONFIG_USER_ONLY */
->       /* For usermode syscall translation.  */
->       bool eabi;
-
 

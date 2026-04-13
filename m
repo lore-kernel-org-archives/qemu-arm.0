@@ -4,84 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6B0EBFD38
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 10:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 219D4EBFD38
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 10:49:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCEqQ-0002iB-Pr; Mon, 13 Apr 2026 06:48:44 -0400
+	id 1wCEqq-0002uc-8x; Mon, 13 Apr 2026 06:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wCEqO-0002hg-7W
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 06:48:40 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wCEqj-0002oN-HH
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 06:49:03 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wCEqM-0004BQ-Bw
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 06:48:39 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-43d01d6b50cso4332822f8f.1
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 03:48:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wCEqh-0004D6-GY
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 06:49:00 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-651cfaa21e6so517803d50.0
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 03:48:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776077338; cv=none;
+ d=google.com; s=arc-20240605;
+ b=ARLAJ0+fM5qbLuTaGjb7zEu6jqKeCp0dppp04+0yZrcekPPMgxun+V5jo+MsZWaXsa
+ ILv3MKz1yEVqqSMnsczG0dWNdNweDnZWKEuxBtbBCK+0mjperqar7+ixM4pkdy9IV5z6
+ bU4prklwPfee/X46PBlq6K3BPdAxL/pfmc9HmecPRv1UtjfTS0k6jmLHrXmyjI4tHkqJ
+ Knif9I9R5uZSLu0sLqwTxa/VAOf9t7hMHeVsGAmu430i5tE449c0Lrhnojcljha3ftzQ
+ nVhG8WHo2nx+4I6B01xMa0XshS5Z7kXhvrtG6TK8uRoA2XTkPYd8LTJ1W1XfoEY1WH3w
+ fnKg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=T/1dmromYxTFvEtNo6SmDGXtOxL0QiWh3YyyT28njEA=;
+ fh=7vUCxZaMX4Ndd/cld7PV4FZ6Qa7E6ZZDIVwUz+taqmk=;
+ b=ikq+7hS7PzdOflQsYVGdPdcBL0YR5UFECmIya8NLNOCwPRN2qNQPkzmvgH3GB+iWMd
+ qppBd9H9poBaDp2E4FcKjXaOuDpGL8P7d7VHU1elHRdZB3ZFu+uc7X5hNq+5wBv2k0Jv
+ 3VlUTQQdXfl5KLUM88l9qHMiKlSHsXfuua16HF4RnxRLc5ZCoFLvd7KVRNYOjOHa00Tq
+ IbcsGlVnflFbKVgWDnSrFLAS1/6+2X1vXEbwv7cSu9zIg1eK/cYP4VxoKk40jeqytGLu
+ KMgW7nnJdjQzeP0gDVjErDmumrShNkz2IjRB/drTy/SO3XjM+prjGd6GHeSN88OQNcxV
+ Kn8Q==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776077317; x=1776682117; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=X0jSCRpjYuTTwxYlE40T1HmmVtjuccmCQemHdO1//rI=;
- b=LsFMYhZfEUTjNKUfVcjvzbLXn2q5lWDfGTBJQCRJl7EAyUbU/8OBvwuMhFqH0zcikU
- mGsyc55hy465etOttcrZwKJuUaCcZvlx7im//Ee7+QQrTt1vykynAo9zBWGkSp5ufOau
- yaD8ufJ1UUmxRbMARPj4zfvWy7vRE4ihNFvQpkesj4I4uff5Vv4M23rwW2f5zqQIzRCi
- eo3PfR2HIOQ981M6PGAesWY6mITv6M2ugE5kYZTVu0R2EgXJkd7mYww3yWHOg78GBQan
- LeUGd24sNcI1y8QT2pp+vzvJc7bzgbD0hzCgu3u+mO/x4Jg5DUB7xYRlVXO0sd8rPvhq
- w6eg==
+ d=linaro.org; s=google; t=1776077338; x=1776682138; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=T/1dmromYxTFvEtNo6SmDGXtOxL0QiWh3YyyT28njEA=;
+ b=wFqzrQ8PtMiyHRaxYHvbi/5ZQfgrCDl3rRi3Veilopx8aa1M/Wg5s598tYVOld8/9q
+ i/1zGUAiSEHWtDScoo7Snd7sHIyIM3jlexjYXiIRudkcXm66l3ujSYuuUVNu3VkvOLc/
+ wiiXdrUvmjJt3xEWm9rgIxrN6l+erZN0YXEPvNS8+rDN5l4517S//mItgiyy+OVPeRR/
+ KvTPqNqOUa0XXCq+Pj2bCoEluKdSiMTpf4u/VKQkuzTJMok5KzsjUKwD5T4gwWoT9amh
+ MxFwocVuWFNPMQIekbH/Lg9DQicx+HZY6d7eNqCgLw+92IhKjLOipo94eg39BDNH57Mj
+ cxKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776077317; x=1776682117;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=X0jSCRpjYuTTwxYlE40T1HmmVtjuccmCQemHdO1//rI=;
- b=VcrxM+J91fNrWwrS6K9yRpdy1iEsFSedNVqdTMyBXcp1OkH6CiwLr4Lb3oiFrnpAof
- 3Xd31bSj58lnDo3yceq9YWP8s5fxzkfFzJntMDHi3/tuOydXgfME2boKrUSbz4U651jx
- k7ZM+Yd7HoS2wEPx7DP1l586ojSjJpYGje6dfbt40IzZ5dfoBp110+OBukV/01uzJutE
- RrlolEaiMM5WO2IULpGinLQVCWENmoTHJLf0WHZyJsZW8ERsJRRPF5C3NlJoBNDynvYr
- xLARu6NaGHjM/7VfcpPGS05FUgpdrPKF7cROqAKv9H/PB1+uDb7a46MehBeS3Y+jiyDu
- AROA==
-X-Gm-Message-State: AOJu0YwlHDesZTUaXoIfxeTzXAIvTZldJ84T3N6+e9NXOCqrGFhzE5ji
- XHpuzxTVhZIwviMLnOHvV82Q36taNnGzvh6xIL68KhVBnihaJvmy3iDfMgeNpwdIeuU=
-X-Gm-Gg: AeBDiesgCCbOlj7FzVeC9fipw85Z7n3eQLhdQ0SxwY93729Qsm3FBB9yJgQcr/5iGbl
- /44DiiV05+80Nq1xGy4kBp1REL5F0hO+LzbfP5xa/Zym3PfbHJjBEVyXRU3KN3sqq+tqk51MGN6
- 9qCWuFTHEBFgL6FYSd/JzWX0iA+T65eW3/asWykvX+s8BLjm2W1zaCm0nyZ1ny04vpu9wj/hDMh
- 5ccID6C+qkjjCiVxUiod6vt1hVWSKrsHrX2Z/NJqF+7I0sQN+SBsBBPDqeL2ZY3VBw6LoLmK8Hk
- fAUdEmam4usBtxQzoYv2DV8sB11nF726D9bpG4S84VDyaGf2lHEyP6QR2idmNJuJWfDqqgjyq5o
- ya/iSV1WSuNsOsLL+68Pf+TjCPXtQRVn5zDUQpqMWbzw8z7TAFF51RrhkdV75RsTd0QIee5lVEa
- lmmDbY26p3fCauBxn/27sNMP0=
-X-Received: by 2002:a05:6000:400a:b0:43b:5192:894b with SMTP id
- ffacd0b85a97d-43d642c8538mr18222937f8f.23.1776077316588; 
- Mon, 13 Apr 2026 03:48:36 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d63e46a85sm32687009f8f.24.2026.04.13.03.48.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Apr 2026 03:48:36 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 141C05F864;
- Mon, 13 Apr 2026 11:48:35 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Richard Henderson
- <richard.henderson@linaro.org>
-Subject: Re: [PATCH for-11.0 ?] docs: Deprecate Arm OABI and NWFPE support
-In-Reply-To: <20260413103754.45745-1-peter.maydell@linaro.org> (Peter
- Maydell's message of "Mon, 13 Apr 2026 11:37:54 +0100")
-References: <20260413103754.45745-1-peter.maydell@linaro.org>
-User-Agent: mu4e 1.14.1-pre2; emacs 30.1
-Date: Mon, 13 Apr 2026 11:48:35 +0100
-Message-ID: <87fr4zt9to.fsf@draig.linaro.org>
+ d=1e100.net; s=20251104; t=1776077338; x=1776682138;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=T/1dmromYxTFvEtNo6SmDGXtOxL0QiWh3YyyT28njEA=;
+ b=pa/KEtCrvZgU7cKF5/bOBdtDk54hCwDFGuHRGCBVWVGnZfYmQ/ImK3y81tIrhXUv6g
+ NUfxtDJ5YEudliLu9jR8v4XEQ5edthrKQ8YBELDtlNcu3R7kmUHfA2R0NJbAFD5K8n4p
+ W2lqFUdeU01L+sC3LJeKqGB3XZYcjdJleU4VwQSNDuBnbickjlKJJUu4grAKhUOm7kb3
+ NiVHvuqN0FW50/I1PCJKAAWfDBN5yJJX4ir5B+yG8IsvlIedhKbdA/iGGXq2CTaKT8x3
+ WF0GtQSQ9YTAgwrWdJQmKG8/kx9Du66WLKNgphxXmj4WuF06nYo3gXYEjObvdARlO2Vl
+ 6Nsg==
+X-Gm-Message-State: AOJu0Yy3zYYvbubHrhBwHWAFSJqv1qh9Gm1d1tPWPYvlpYNi63sdGnNM
+ toY4lvtg9Er4UZ4mDQi2iBm4ivK8zsm88BLhErV+N+mamryYN2zpbxP8ccikIVD4TAAs6TB9zsv
+ oPxRZgvwAdn7ug5b+ie3jt0lv/JIKgIof0xk2l0x/Hw==
+X-Gm-Gg: AeBDietthNhMfkAoKrdTGkHW8TBjg4mh6GfMJtqSxv2IsEE+M6Fyxewj/K+7ZEevjEh
+ PmMlJx2J0umfQp6LMH/DVysEQtDTZKY4Y30byjuO9iG0vMZbHYFPtOcSfEeRRtHcNYfuNW2l42k
+ PqfDnXzE4nbzz9to9jefiTsNz/0190njYTXh9V7zfNRLnNEmfHr4JWqZiH/jb3uLkytJLZY3wRs
+ ovgeLUsQfi3r0mhWwcrQNeoGnPX8+kvCNMqFSPxy5T2o8LYwJ23TPgcWhwquHpfQ/PWG6dkNFev
+ YKjNtL4J72yCwFx9XDXf27xKCmv+ZNUxRCv6OrfJrm03FpjW4UUdudxIq2yjQ9JeV2E=
+X-Received: by 2002:a05:690e:1308:b0:64e:e898:10ff with SMTP id
+ 956f58d0204a3-6518726a297mr13533121d50.40.1776077338101; Mon, 13 Apr 2026
+ 03:48:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20260413103754.45745-1-peter.maydell@linaro.org>
+ <F20654A8-2ECB-477B-8B64-9688B5FA9EB6@unpredictable.fr>
+In-Reply-To: <F20654A8-2ECB-477B-8B64-9688B5FA9EB6@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Apr 2026 11:48:46 +0100
+X-Gm-Features: AQROBzA3EHEWErFX0uNKwE_BDfcwG573kit_NzKi7mycu2Ipws6rncgdJlfDD_M
+Message-ID: <CAFEAcA887dXAQ153Z2ZqjpDtUtnpGAmoBwet63CTyn=wLtn1jw@mail.gmail.com>
+Subject: Re: [PATCH for-11.0 ?] docs: Deprecate Arm OABI and NWFPE support
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,76 +115,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On Mon, 13 Apr 2026 at 11:45, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+> > On 13. Apr 2026, at 12:37, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > NWFPE floating-point emulation handles the ancient FPA11 coprocessor,
+> > which is only needed/supported with OABI.  Our implementation is old,
+> > untested and not thread-safe.
 
-> Linux for 32-bit Arm has had two major ABIs: the original OABI and
-> the more modern EABI.  OABI support was marked as obsolete in GCC 4.7
-> and dropped in GCC 4.8.  In the Linux kernel, compatibility handling
-> for OABI (OABI_COMPAT) is not generally enabled by default and is not
-> compatible with building a Thumb2 kernel.  Distros dropped OABI
-> support fifteen years or more ago.
+> Especially that this has ISA emulation code inside of linux-user (!)
 >
-> NWFPE floating-point emulation handles the ancient FPA11 coprocessor,
-> which is only needed/supported with OABI.  Our implementation is old,
-> untested and not thread-safe.
->
-> Mark OABI and NWFPE support as deprecated so we can remove it in a
-> future release.  Our main motivation here is to be able to drop the
-> 2500+ lines of NWFPE emulation code.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> If this is (unlikely) to continue to exist, it ought to be moved to
+> common code for system emulation...
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+No, because no CPU we emulate has an FPA11. What we're emulating
+here is the Linux kernel's emulation support. You can look at it
+as a set of syscalls with a very funny ABI and very specific
+behaviour :-)
 
-> ---
-> This just came up today; it's tempting to squeeze the deprecation
-> notice into 11.0 so we don't have an extra three months before
-> we can delete it, but we could just deprecate in 11.1 instead.
-
-Seems reasonable to me.
-
->
->  docs/about/deprecated.rst | 25 +++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
->
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index a6d6a71326..10de10dc23 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -452,6 +452,31 @@ It was implemented as a no-op instruction in TCG up =
-to QEMU 9.0, but
->  only with ``-cpu max`` (which does not guarantee migration compatibility
->  across versions).
->=20=20
-> +linux-user mode CPUs
-> +--------------------
-> +
-> +OABI and NWFPE support for Arm CPUs
-> +'''''''''''''''''''''''''''''''''''
-> +
-> +Linux for 32-bit Arm has had two major ABIs: the original OABI and the
-> +more modern EABI. OABI support was marked as obsolete in GCC 4.7 and
-> +dropped in GCC 4.8 (released in 2013). In the Linux kernel,
-> +compatibility handling for OABI (OABI_COMPAT) is not generally enabled
-> +by default and is not compatible with building a Thumb2
-> +kernel. Distros dropped OABI support fifteen years or more ago.
-> +
-> +The original floating-point coprocessor for 32-bit Arm was the
-> +FPA11. This was not present in many CPUs but did get baked into the
-> +OABI for how to pass floating point arguments, and so the Linux kernel
-> +has support for emulating it via the config option FPE_NWFPE; QEMU
-> +follows that. FPA11 support was also removed from GCC in GCC 4.8.
-> +
-> +QEMU's NWFPE code is old and untested and not thread-safe; the OABI
-> +ABI is long-obsolete. We are therefore deprecating both OABI support
-> +and NWFPE emulation, and they will be removed in a future QEMU
-> +release.
-> +
-> +
->  Backwards compatibility
->  -----------------------
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+-- PMM
 

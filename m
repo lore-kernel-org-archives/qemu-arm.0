@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14D61F531DC
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 22:55:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF28F531DE
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 22:58:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQBw-0003Gg-Qi; Mon, 13 Apr 2026 18:55:40 -0400
+	id 1wCQEE-0003tm-DB; Mon, 13 Apr 2026 18:58:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQBv-0003GN-Gp
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:55:39 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQED-0003tN-53
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:58:01 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQBu-0002jE-3b
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:55:39 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4852a9c6309so47013235e9.0
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:55:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQEB-0003YL-RS
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:58:00 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-48897fd88ebso52951045e9.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:57:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776120936; x=1776725736; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776121078; x=1776725878; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QEkTwuACxrjxuqfxmduq+1X6DL5EyeOxBVhKjG+AKyA=;
- b=Ggxd0ui+yjhZHqWo/Vf/2LUUREsqy3TU/+FSS5XUnksx0zAd7nJ2onuTcPQVNkZX4v
- I0hgRC0DEwtIMZtqzDtL8vcHVWDa1hMEXmtXYbgRqvXlQ9sZoDOOJddjKfiSHIPP4IzH
- FV+8lS7LVx+Oe+OTHivCrsGTw/24fsINA+NIteNwi7wKiuBKdItqwu8026bQe3L5tYZh
- R5ZSv/PdVoj4wTqQNbSDyFoHGuT7e1CPgTl46lD1gDTpk6gpO/acs4SzNXrgC84acwwq
- QUthAoOrFmVYFQzKknq77lhqtku2VNruOX4BUPdccoKOgMnaOjY+Rq8wcP0SKsgiPaot
- sExg==
+ bh=gxRgWQ43m29rANNrEq4yJIwSgTd1uHnE3QuvOp4Gjc4=;
+ b=Owz4j+aWo0edQvYQZmBQSS2ZatPEz8mznE2V+txWjcV02N1FGCnRpywh5wWDJO73rr
+ JbD3cK5a+BjT6uYweGiUv/tswG/HKJoOcmFivEmDSXJ0Bc0IjgVJ6y8gemmIV0BMsUUX
+ O2dLDdtjjrENYh0chnOb3L2RsII3yl9DsCHVBJvczVKGeXXHI/DACuhYzN1yU4fD1Pci
+ sKesrVgOIRXGlmJK3dUjG9phYalgHL2aBWZnjD4H+vjAPEmt0t9l9CYYymNFOhQGQsho
+ 3FwxIHAXU/9QJNIWsm1BAxkfNyW6/j0Fh8UjHRJiUjW0EMFBeX/Xh5XJW/3G0mFmK2J7
+ O8Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776120936; x=1776725736;
+ d=1e100.net; s=20251104; t=1776121078; x=1776725878;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QEkTwuACxrjxuqfxmduq+1X6DL5EyeOxBVhKjG+AKyA=;
- b=QuMmqhXUhJm3U5PrQDro8vuhAy31U2YAVxbgc24fBwsaSJkXXr3Ihsp9ynUWSrNSYU
- mHqtnTn3Dnghkz0GmwYMnyfxTae7HCCqzfBu+sg5pMERDUTcxGKASFnS4k8xP10wzA4S
- nHPkpA4x5nEYQmhdGtwcnDfh8658OhJ7kXfkloxk7vroUgvHwwnnaXWhIsE8mw4PWLYi
- 0Z6lqYoaHLx3pnSLraxR2xXsveUgBqA6Kj+sGhGMi+0TEP2bdNc+Ec5a+tvILU8ZLD4n
- pcvVc9f0/0VLkHHCILHhedfzw5qvoCExxAlfW1JdARhwcHAkmlE/eWVAlReMW4CsV6ZC
- y4Sg==
+ bh=gxRgWQ43m29rANNrEq4yJIwSgTd1uHnE3QuvOp4Gjc4=;
+ b=OxoIks857iwJfcX4mukbXgK8+XjeTqwja/oivhXZny1S4B+2F012H9XvrJ+Z/ik8yG
+ WJhksXnC9b49/65XZPlIwGdJ4vEyyxB8VRQqgQ93BtFYgxm5vkNnk/D+LzMIRr4Oup22
+ Qgp2Mo2GrbXi2N4ETtijGzSGTlkc+I2eBdryEBvRWeVG3zzBGqLGog0iAuem5zr1usNp
+ NSQEZcp7LbnUlWPkBq5KPkDDnAW+MxOV+frcl7pqHC4xnmIkIUmMY3eD/HiXvnetzb6y
+ rglAbT2Bykby8cpeOCiO/TqNnsljrY+/TybNIDSnR9YAaJP7WR3NS9bhMRpcTOF40VK9
+ hM7Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9Z7gONaFu5wAN3I75RB9nLJND0NoHdCeEzVPqAKECCzPbYBEK2NmgQM4gFKKnzqfhcWZbprbsgAw==@nongnu.org
-X-Gm-Message-State: AOJu0YwhhnHNLPwoYU6nk+/g662WMYeaASFSEQ+BQOMy3SgOZsM455zG
- zEnC7c2NNNp/rRkOQt4y1Qq251eEg/TFc1vqw6/LSJmpgvnxgJwWNfbJaCtzkkyweEQ=
-X-Gm-Gg: AeBDietlki+HSBwPZImRVba5qhWj4aQevkAdZMEDOSaFx5h59v5nypuT+kPG+SZslyr
- cgKVyWe7pj93dujYiGcJv6JdsBHy6jmTeqNpZe4wxk2Cd5/kX+RJ4GUr2XLL+zEN96b7usfzRjO
- wnQ9nm0tmljSt5QNyKkJOr73WJ58eW//NiQIt0dtNjMPOBPGe0P9PlI0RgSi7edWceQdlebkphW
- R3QtwDjw+aG6GdU/BIhurFMDQtAnmmlxmvc8b9cJ/OeYU8qC793BDJP0PdYoNiF5vxQq1MACKTq
- uJuwkd3CqxenisrF0/wNVKYvyqCglEXMOcFM8yNKNTJZXHT565F9l22eq7CkQmCTcnaYkzwA7Uz
- RRt3ewsg7mAZ1nxQtk4bNDCpA77vlM+Xs2k5/aVcyrYqBtDZ1tq/blnWyNaNrjpWW/oEif6DjPq
- 5O8w37QnyXrchtXFjzjOEThvrzgJNAPFlj4+XInWjnbKd/rVLQru8Z+LsnMO7QtTCTYA==
-X-Received: by 2002:a05:600c:8b38:b0:488:be58:bb77 with SMTP id
- 5b1f17b1804b1-488d6890ee3mr187095145e9.30.1776120935690; 
- Mon, 13 Apr 2026 15:55:35 -0700 (PDT)
+ AFNElJ8zGr6OlYNHQRrAI4Pf8h/chnnJ2lr2A/bcZ8AOnsYVGjmxkWvCze1fo7aBE/bnEoNiAIPwpsyPjg==@nongnu.org
+X-Gm-Message-State: AOJu0YxWKtHWhArCEMIUJABn+q7vb93LB2WGQaptdvUQHBxShLDJ0t85
+ G9EeXXKonCTzd9yCpFimz8kVUgUPtrB1hOfKd5yRJE4n4Jlm3i4g8oLvMP3nedfLOcg=
+X-Gm-Gg: AeBDieu/DCbumNGm1zZVlEGFtjKuG3Cs3a8mNUTQSr1BNXmm7UR/Y0XEPSW820IumY6
+ yvIsRY5wVQSovmvqvZnry5s0koSPXoNlZj24eto9+6u+YKUUWTlbbTcZDmQmD0NX6UWM63bzc4B
+ eaZyLj5t/82lcr3jbZVLtSAe7MDu7kAA+eo/6Zp7c+lGp+hLzlS28d1P0kY5fAKFGZemG7bpbru
+ FIZZ3kzDtriTWd0mK6Rjer1zmI9kIUGYeDjlrdeVZnFnx1gO8BnOtEGuyTEJFeumkGDs6vsGF2J
+ Zf3kcdwIGQWb3JLxM27bGGN7ogjTbEfrEXx+8L/Swugz998uwyFCm0XPCzGOZusSZrTz3OSSlBX
+ v6rbki4PCPBIyUWhnS0hZiQzD+TaGzhwOryV9CZ9ngfZ2oESxgFPDiE7VUSisCYKsPU/S7h80aG
+ QUNnYv8BydVmGoN1GEJvtGYVEfPKOQqgvNLKui44f1kxFpeLlHmDgbVh6dGGWpz4y05Q==
+X-Received: by 2002:a05:600c:3107:b0:488:8b52:f7de with SMTP id
+ 5b1f17b1804b1-488d6860930mr183623885e9.12.1776121078130; 
+ Mon, 13 Apr 2026 15:57:58 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d67b128dsm175925005e9.2.2026.04.13.15.55.34
+ 5b1f17b1804b1-488ecde5b26sm19675265e9.2.2026.04.13.15.57.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 15:55:35 -0700 (PDT)
-Message-ID: <bb73ea01-f615-49cc-af5d-8a5fee87af5e@linaro.org>
-Date: Tue, 14 Apr 2026 00:55:33 +0200
+ Mon, 13 Apr 2026 15:57:57 -0700 (PDT)
+Message-ID: <f5907e4e-c1e8-49a2-bf7d-f81a8ca64374@linaro.org>
+Date: Tue, 14 Apr 2026 00:57:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 58/65] hw/arm/virt: Pull "wire CPU interrupts" out of
- create_gic()
+Subject: Re: [PATCH v2 61/65] hw/arm/virt: Advertise GICv5 in the DTB
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-59-peter.maydell@linaro.org>
+ <20260327111700.795099-62-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-59-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-62-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,18 +105,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 27/3/26 12:16, Peter Maydell wrote:
-> create_gic() is quite long and mixes GICv2 and GICv3 even though
-> they're mostly different in their creation.  As a preliminary to
-> splitting it up, pull out the "wire the CPU interrupts to the GIC PPI
-> inputs" code out into its own function.  This is a long and
-> self-contained piece of code that is the main thing that we need to
-> do basically the same way for GICv2 and GICv3.
+> Advertise the GICv5 in the DTB. This binding is final as it is in
+> the upstream Linux kernel as:
+> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v5.yaml
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 > ---
->   hw/arm/virt.c | 126 +++++++++++++++++++++++++++-----------------------
->   1 file changed, 68 insertions(+), 58 deletions(-)
+>   hw/arm/virt.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 68 insertions(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

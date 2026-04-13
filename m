@@ -4,91 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF28F531DE
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 22:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02940F531DE
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:00:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQEE-0003tm-DB; Mon, 13 Apr 2026 18:58:02 -0400
+	id 1wCQFy-0004Rz-2y; Mon, 13 Apr 2026 18:59:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQED-0003tN-53
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:58:01 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQFv-0004RG-5s
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:59:47 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQEB-0003YL-RS
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:58:00 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-48897fd88ebso52951045e9.2
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:57:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQFt-0003qP-P5
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:59:46 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-488b0e1b870so78081405e9.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:59:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776121078; x=1776725878; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776121184; x=1776725984; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=gxRgWQ43m29rANNrEq4yJIwSgTd1uHnE3QuvOp4Gjc4=;
- b=Owz4j+aWo0edQvYQZmBQSS2ZatPEz8mznE2V+txWjcV02N1FGCnRpywh5wWDJO73rr
- JbD3cK5a+BjT6uYweGiUv/tswG/HKJoOcmFivEmDSXJ0Bc0IjgVJ6y8gemmIV0BMsUUX
- O2dLDdtjjrENYh0chnOb3L2RsII3yl9DsCHVBJvczVKGeXXHI/DACuhYzN1yU4fD1Pci
- sKesrVgOIRXGlmJK3dUjG9phYalgHL2aBWZnjD4H+vjAPEmt0t9l9CYYymNFOhQGQsho
- 3FwxIHAXU/9QJNIWsm1BAxkfNyW6/j0Fh8UjHRJiUjW0EMFBeX/Xh5XJW/3G0mFmK2J7
- O8Lg==
+ bh=KTgd4LIc38fL/1sz3zMphgk6GOoXAPiOesau6BWUUIE=;
+ b=bS9YrV2pUQwl7TrAAQQIb2VQP3nRgafA9Rw06IvCPYhv30ieh//+55mi8Moqqwyd3p
+ 8ZMjghhuXFpJYfODAGao1v/U3k2kIDD5YsLKoAdvwukxT+UKKGvItwyEbd0V6kI6xFVo
+ nyxW0aq6JUh18aOIydEDEt8A/1oTYn88GlkHnsIGFDiATnQ+cC2bG1b+AQycsjtSN6zg
+ mrLQOzPkJQ/852V4jnnyLpZY46TbdF5ZfiV3HVgTtUs3d+lU6fsxk8V1ra7ldiYg/KH8
+ YfBlqfq2GSU6rmHGVA970RheUPEgJt7hkdncr9LPBW3yZVR0Kjdl1o9JFoymjWdvBH7D
+ XEaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776121078; x=1776725878;
+ d=1e100.net; s=20251104; t=1776121184; x=1776725984;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=gxRgWQ43m29rANNrEq4yJIwSgTd1uHnE3QuvOp4Gjc4=;
- b=OxoIks857iwJfcX4mukbXgK8+XjeTqwja/oivhXZny1S4B+2F012H9XvrJ+Z/ik8yG
- WJhksXnC9b49/65XZPlIwGdJ4vEyyxB8VRQqgQ93BtFYgxm5vkNnk/D+LzMIRr4Oup22
- Qgp2Mo2GrbXi2N4ETtijGzSGTlkc+I2eBdryEBvRWeVG3zzBGqLGog0iAuem5zr1usNp
- NSQEZcp7LbnUlWPkBq5KPkDDnAW+MxOV+frcl7pqHC4xnmIkIUmMY3eD/HiXvnetzb6y
- rglAbT2Bykby8cpeOCiO/TqNnsljrY+/TybNIDSnR9YAaJP7WR3NS9bhMRpcTOF40VK9
- hM7Q==
+ bh=KTgd4LIc38fL/1sz3zMphgk6GOoXAPiOesau6BWUUIE=;
+ b=dCw9ctMEbNDnED+RDeQtdAKNFPklEGLXDe59d2VlMSV+Kk7ayDvPV35B5xJ74oXuH3
+ U5oJVWTgXoRaFp+5W+mPU9PQiAvaAUEgz7b5polbwsWkR7Do293oo3LxaCfmhGDywTAS
+ 0HaxWFh35NN9e61VtGz+oXbcFMBcOvZb23qeAY6EGyRX1iiW3m5VqpbHVrgtlVUcJ81a
+ Mhw2KM5QEuknerW4+WSwFp/BjLYHzmFMNhR7t7yakAAHbELfIc17qlgSiV9q/3fcS0I8
+ kk/HsAMprOaSkFS9XHUJSHOJkhBYqoyk0fmt2nkudRTrwWQsROKoWWwGl/X9yqeoPixI
+ aQlA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8zGr6OlYNHQRrAI4Pf8h/chnnJ2lr2A/bcZ8AOnsYVGjmxkWvCze1fo7aBE/bnEoNiAIPwpsyPjg==@nongnu.org
-X-Gm-Message-State: AOJu0YxWKtHWhArCEMIUJABn+q7vb93LB2WGQaptdvUQHBxShLDJ0t85
- G9EeXXKonCTzd9yCpFimz8kVUgUPtrB1hOfKd5yRJE4n4Jlm3i4g8oLvMP3nedfLOcg=
-X-Gm-Gg: AeBDieu/DCbumNGm1zZVlEGFtjKuG3Cs3a8mNUTQSr1BNXmm7UR/Y0XEPSW820IumY6
- yvIsRY5wVQSovmvqvZnry5s0koSPXoNlZj24eto9+6u+YKUUWTlbbTcZDmQmD0NX6UWM63bzc4B
- eaZyLj5t/82lcr3jbZVLtSAe7MDu7kAA+eo/6Zp7c+lGp+hLzlS28d1P0kY5fAKFGZemG7bpbru
- FIZZ3kzDtriTWd0mK6Rjer1zmI9kIUGYeDjlrdeVZnFnx1gO8BnOtEGuyTEJFeumkGDs6vsGF2J
- Zf3kcdwIGQWb3JLxM27bGGN7ogjTbEfrEXx+8L/Swugz998uwyFCm0XPCzGOZusSZrTz3OSSlBX
- v6rbki4PCPBIyUWhnS0hZiQzD+TaGzhwOryV9CZ9ngfZ2oESxgFPDiE7VUSisCYKsPU/S7h80aG
- QUNnYv8BydVmGoN1GEJvtGYVEfPKOQqgvNLKui44f1kxFpeLlHmDgbVh6dGGWpz4y05Q==
-X-Received: by 2002:a05:600c:3107:b0:488:8b52:f7de with SMTP id
- 5b1f17b1804b1-488d6860930mr183623885e9.12.1776121078130; 
- Mon, 13 Apr 2026 15:57:58 -0700 (PDT)
+ AFNElJ+IdLS1/Wl1YuicLcGT1n9bpLGFN+OqKZw65dWTBxPkEc8WSclWlsHxac8pVPCYdSaqUh79KvBcHw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz9aeXQG2+wcZrghlwU+dzv4bThKvBKfH4gyqGEP0QEMN9xXmwo
+ alkaRMCdQ2D6HU5gi8RJSDbjcYUgBP6VXlTULouArolel8Rue9V6DcSD5AWAjlHQXZNKL0czMFO
+ h0aTapPg=
+X-Gm-Gg: AeBDievDNFR4fUJyozxsoGTKt10HSaxapei20AyVXmiezKFg74AdgrqelshNmBnhPC3
+ mTpNanVok+yxW09weByst8PWkFtbnVq1BfZBaX8UlEQCWwaAmz7C40+MvUQd6v8Oly0ZmdPEkUQ
+ 2m9AAI0orr2Ty4owISlERkLxaec6gdYgkPbtlVj4d7CjvvE1mmOkqzDhjxqtONbSSmtOSiGeM6f
+ AAXScBt/n1BKmc/A7RSn/qj2BY2PBMXkR2CA9sUb1GqWzO0LB7mTbCrulUNinkFAJYHtz+st6dJ
+ /74Pc+d4AIQ7GYvyYtP6avQZdn+aFvyQgOFsZYkGDhGq98hDnyT/Mz2eJUJt/7rWVWfZecNY83Y
+ /vNGALcR4Q292YnS0aMQ7JwRE3ScCCOawHmyg+ucSMN2Tp1tYxcusD4FPvPJdfHdYUVqN+Y77z+
+ 65HtiSO67zGkEQLFGD8UexTVDM8a8bD71IRWDUKjQLaUtx0KHGnG223ieGAUWnyYoxegmQbWJ8E
+ J+v
+X-Received: by 2002:a05:600d:9:b0:488:b4e3:aeca with SMTP id
+ 5b1f17b1804b1-488d67bf177mr163865655e9.1.1776121183881; 
+ Mon, 13 Apr 2026 15:59:43 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ecde5b26sm19675265e9.2.2026.04.13.15.57.57
+ 5b1f17b1804b1-488ede24977sm1361245e9.7.2026.04.13.15.59.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 15:57:57 -0700 (PDT)
-Message-ID: <f5907e4e-c1e8-49a2-bf7d-f81a8ca64374@linaro.org>
-Date: Tue, 14 Apr 2026 00:57:56 +0200
+ Mon, 13 Apr 2026 15:59:43 -0700 (PDT)
+Message-ID: <fbe299e1-6fb6-4867-b80f-eb9b44a4110d@linaro.org>
+Date: Tue, 14 Apr 2026 00:59:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 61/65] hw/arm/virt: Advertise GICv5 in the DTB
+Subject: Re: [PATCH v2 65/65] hw/arm/virt: Allow user to select GICv5
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-62-peter.maydell@linaro.org>
+ <20260327111700.795099-66-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-62-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-66-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,16 +106,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 27/3/26 12:16, Peter Maydell wrote:
-> Advertise the GICv5 in the DTB. This binding is final as it is in
-> the upstream Linux kernel as:
-> Documentation/devicetree/bindings/interrupt-controller/arm,gic-v5.yaml
+On 27/3/26 12:17, Peter Maydell wrote:
+> Allow the user to select a GICv5 via '-machine gic-version=x-5', and
+> document this.  The 'x-' prefix indicates that the emulation is still
+> in an "experimental" state as far as QEMU is concerned; the
+> documentation describes what "experimental" means for the user and
+> what parts are not yet implemented.
+> 
+> We do not make 'gic-version=max' enable GICv5 here because:
+> 
+>   * the GICv5 architectural spec is still at the EAC level and could
+>     have minor changes between now and its final version; only users
+>     who specifically want to start working with the GICv5 should
+>     select it
+>   * QEMU's implementation here is still not fully featured, and
+>     selecting it instead of GICv3 will mean losing functionality such
+>     as MSIs
+>   * the GICv5 is not backwards compatible with the GICv3/GICv4 for
+>     system software, so silently "upgrading" an existing command line
+>     to GICv5 is just going to break existing guest kernels
+> 
+> The last one in particular suggests that even when the emulation
+> moves out of "experimental" status we will probably not want to
+> change "max".
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 > ---
->   hw/arm/virt.c | 68 +++++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 68 insertions(+)
+>   docs/system/arm/virt.rst | 19 +++++++++++++++++++
+>   hw/arm/virt.c            | 11 ++++++++---
+>   2 files changed, 27 insertions(+), 3 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

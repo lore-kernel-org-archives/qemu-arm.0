@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BC6F531CE
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 22:31:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0CC5F531DC
+	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 22:52:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCPo5-0006Aa-Uk; Mon, 13 Apr 2026 18:31:02 -0400
+	id 1wCQ8U-0001j4-2P; Mon, 13 Apr 2026 18:52:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1wCPnr-00068n-Jx; Mon, 13 Apr 2026 18:30:57 -0400
-Received: from smtpx.feld.cvut.cz ([147.32.210.153] helo=smtpx.fel.cvut.cz)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_CHACHA20_POLY1305:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1wCPnn-00049I-Sk; Mon, 13 Apr 2026 18:30:47 -0400
-Received: from localhost (unknown [192.168.200.27])
- by smtpx.fel.cvut.cz (Postfix) with ESMTP id 315A51D761;
- Tue, 14 Apr 2026 00:30:38 +0200 (CEST)
-X-Virus-Scanned: IMAP STYX AMAVIS
-Authentication-Results: cerokez-250.feld.cvut.cz (amavis);
- dkim=pass (2048-bit key) header.d=fel.cvut.cz
-Received: from smtpx.fel.cvut.cz ([192.168.200.2])
- by localhost (cerokez-250.feld.cvut.cz [192.168.200.27]) (amavis, port 10060)
- with ESMTP id 6pGXoF2YCln6; Tue, 14 Apr 2026 00:30:36 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
- s=felmail; t=1776119436;
- bh=ytsv3OaWJupADmi9crU4Hx02RH1WhyA+ZtWFnpTotgo=;
- h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
- b=sfP2okAo1FJRtAvxmj83iLJcFDCWv+RZuqJX/qVDbOYSsVn305XYBDoVujoGSMyO+
- t9sjtz3z+if+7woFxo7w/Lkfx/Ydj8qBNefZ7DRxX3n6KDN64hq9HQqCcAT0B5Yvu9
- 6yHkBmIXhIErjUqM/NbJuepYRS87YMAKqHUymt0d7xCozuLRQyBXqfn8TmYgli9n6o
- XY/4qIwOMQF5N2gLoFIM2Y4Q0AziQQMczVmCIi4XxCgm03OxzSLmaFNT42IZguwuQf
- rgNat2pMZLma/U2LVvokAkGSrhqtI2mb3yNK5K9u3iQXQP5EwEna/L7I+YvwN/kw8a
- FAu18vkskhYkw==
-Received: from baree.pikron.com (static-84-242-78-234.bb.vodafone.cz
- [84.242.78.234])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pisa)
- by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id 670B11D86B;
- Tue, 14 Apr 2026 00:30:36 +0200 (CEST)
-From: Pavel Pisa <pisa@fel.cvut.cz>
-To: Bernhard Beschow <shentey@gmail.com>
-Subject: Re: [PATCH v2 4/7] hw/net/can/flexcan: NXP FlexCAN core emulation
-Date: Tue, 14 Apr 2026 00:30:35 +0200
-User-Agent: KMail/1.9.10
-Cc: =?utf-8?q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- qemu-arm@nongnu.org, "Marc Kleine-Budde" <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <cover.1773866323.git.matyas.bobek@gmail.com>
- <e790990bfaaebf2c1dd884c2c2f4eab5de6d4076.1773866323.git.matyas.bobek@gmail.com>
- <9c21bd91-3732-4438-9b83-dc36e09f9ec3@gmail.com>
-In-Reply-To: <9c21bd91-3732-4438-9b83-dc36e09f9ec3@gmail.com>
-X-KMail-QuotePrefix: > 
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQ8S-0001i2-7J
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:52:04 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQ8Q-0001RG-QI
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 18:52:03 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-488a9033b2cso59985645e9.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 15:52:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1776120721; x=1776725521; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dp1GHXH81rNWu1q/QBFUnT9SH/LOjcwKwTU5lDHcEhI=;
+ b=eti+DPTwtBlyjbcQlJ8UcoKQNHa4xBJJ2gM4FLMjO4yGsf5WRmZ7HEBgYQtycSAQuK
+ rzAPd0MyvqpyHC/0rHbzS7QBaN086OvqCTES9b0cRg2aBC1tgL0YClk+sh9JJkVYEB+y
+ xhmvQJQENjReZV7L2UcSuTSMX8l0xEezO6FV6mQpF3QmlpQPX5Xj+s8YIeMHolZk9QVa
+ ZrzG6gZ+SSW09wiWiB1zEnM7R/v3bkoR3PuRJIPh6bF3tfgyRv5CJMPXzYN8yoWXitVx
+ GdIqhThRXy4ib8ud81HxQtHzZwL27LUU2TKG2fxINDrZn64hO6upMYp4fX+QZNN1WJmK
+ p8Ew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776120721; x=1776725521;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dp1GHXH81rNWu1q/QBFUnT9SH/LOjcwKwTU5lDHcEhI=;
+ b=HqljwaI5ClqInk60h8+NF8TWZ3HjmvK5mYD7oVKxULCszucKI1DdgDtC8LteJr0Yo2
+ d9Pub55qHai7CzoOQah+Q2af0egC0jNh45xuin14Og+PThNnMjDMugePHXSdYBWi7+d6
+ pmT5hUDw14a/QI36ffNAs1qvSWpNoGoVjvvlhR7uwL4FZT9zAFykkK9+NaHJilfIvQAx
+ 2/t5Yp1oJr6S7rpznRP4ja0cIpL0/5mC6uGIibODksQFfqZDP4n4Y4UITki9/Z+NBe8z
+ V2qSVwCFMqXwLHIi/0Fvuvn7Y0H/m/PipZXhr6kV1g38OHGkCQwCjIXSME/71Iwk4aws
+ OqGA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8q8Jt+7Vq9nn2zd2A02WkWzv5Mkgi9y9CFd5Q0GWWSeuh5ob4bhb8jzq1tJSNrUfrE+F21TZ5KLw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9GkuKM5IR9yUmu+EP5DV+a6LVOFcJ+bHo1ONreqkNYZ8YiLRj
+ 2rvYA+07W+NW73Lc2nDB1CX8nVHgAdMRr8j3z99iH9hOhCuIebZR2cRAACTWqUTWTdY=
+X-Gm-Gg: AeBDievgsLXHN6g1JnWSeL1LEvtBDvUMK9wbTXwiNw1RP2zsZyecAwVkKU0G/sUutmY
+ ziHxEF6VG7oyF1hKSJH/T2k5aIUpxJBt8/UJ2K3cM8Jgvutxx9Hbdn0mer0PuQnhHg0H+YtYn1s
+ KApjTzNQQe+MXkvHG383clpzFXQQxwT9cHYbkg/p8+gt8Rae+MiPz568mKmRT9EOYz5rxMe1s5b
+ JGzcjCT2ukBst4sNtGtl/Bdug1tTRAzxszpoVJiC13WmERdfAtXtNTZD3XIU3wa/7RNHrPJ/Mcr
+ fcNcFmayBqKcAJSyi4WUQesDU8spVbF8YZP7AbDa0usTETzz8FrS2na3I5zxcHOJe+t8ufB/sTH
+ 3aoctMa4S04rzkYwTkWgVf+Q3EMAbE2fU39huZ0UwIolwIN+QkbUXhmq18/GlwZhuKbvKolf6k6
+ 4hVyCNLk2IvEf1mwFWSCToxBvfKL5NS2XIlmjB4QQYAepqiObECnrL1jkZEwj1gQbPgA==
+X-Received: by 2002:a05:600c:19cd:b0:485:17a7:b9c7 with SMTP id
+ 5b1f17b1804b1-488d67e3671mr203455795e9.10.1776120721102; 
+ Mon, 13 Apr 2026 15:52:01 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-488ee019d9bsm772695e9.14.2026.04.13.15.51.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Apr 2026 15:51:59 -0700 (PDT)
+Message-ID: <9b125b69-1df7-413a-8e69-dfc6fb438c55@linaro.org>
+Date: Tue, 14 Apr 2026 00:51:57 +0200
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-Message-Id: <202604140030.35350.pisa@fel.cvut.cz>
-Received-SPF: pass client-ip=147.32.210.153; envelope-from=pisa@fel.cvut.cz;
- helo=smtpx.fel.cvut.cz
-X-Spam_score_int: -73
-X-Spam_score: -7.4
-X-Spam_bar: -------
-X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-3.135,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 24/65] hw/intc/arm_gicv5: Make gicv5_set_* update SPI
+ state
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
+References: <20260327111700.795099-1-peter.maydell@linaro.org>
+ <20260327111700.795099-25-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260327111700.795099-25-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,121 +105,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Dear Bernhard,
+On 27/3/26 12:16, Peter Maydell wrote:
+> The GIC CD* insns that update interrupt state also work for SPIs.
+> Instead of ignoring the GICV5_SPI type in gicv5_set_priority() and
+> friends, update the state in our SPI state array.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/arm_gicv5.c                | 64 ++++++++++++++++++++++++++++++
+>   include/hw/intc/arm_gicv5_common.h | 40 +++++++++++++++++++
+>   2 files changed, 104 insertions(+)
 
-thanks for time for review. I agree with all suggested
-changes except one where I express soft opinion
-to keep code as it is, see below.=20
-
-On Monday 13 of April 2026 12:56:40 Bernhard Beschow wrote:
-> Am 19. M=C3=A4rz 2026 19:13:11 UTC schrieb "Maty=C3=A1=C5=A1 Bobek"
->
-> <matyas.bobek@gmail.com>:
-> >Added the FlexCAN2 emulator implementation core, with
-> >CAN_FLEXCAN Kconfig flag and MAINTAINERS entry.
-> >
-> >FlexCAN2 version can be found in i.MX6 SoCs and others.
-> >
-> >More information about the implementation can be found in [1].
-> >
-> >[1]
-> > http://dspace.cvut.cz/bitstream/handle/10467/122654/F3-BP-2025-Bobek-Ma=
-ty
-> >as-BP_Bobek_FlexCAN_final_4.pdf
-> >
-> >Signed-off-by: Maty=C3=A1=C5=A1 Bobek <matyas.bobek@gmail.com>
-> >---
-=2E..
-> >+    flexcan_irq_update(s);
-> >+}
-> >+
-> >+static void flexcan_mem_write(void *opaque, hwaddr addr, uint64_t val,
-> >+                              unsigned size)
-> >+{
-> >+    FlexcanState *s =3D opaque;
-> >+
-> >+    flexcan_trace_mem_op(s, addr, val, size, true);
-> >+    flexcan_reg_write(s, addr, (uint32_t)val);
->
-> The contribution of this method is now only to add a trace statement. It
-> can now be merged with flexcan_reg_write(), keeping the
-> flexcan_mem_write() identifier.
->
-> Note: I suggest to call the trace function just before the switch
-> statement, i.e. after the variable declarations.
-
-I would suggest to keep names
-
-  flexcan_mem_write()
-  flexcan_mem_read()
-
-not to change one to flexcan_reg_write. The flexcan_reg_write()
-can be absorbed into flexcan_mem_write() for now but for longer term
-I would like that message boxes (user memory) writes are separated
-from  register access though overlay structure describing registers
-and in addition even reads from registers are separated from memory
-area. That would better fit newer version of FlexCAN controllers.
-=46or example on the imxRT there is FD capable FlexCAN and ranges
-
- 0x0000 to 0x007f (used up to 0x53) is range for registers
- 0x0080 to 0x047F is for up to 64 frames, data 8 byte (16 bytes each)
- 0x0880 to 0x097C is range for Rx Individual Mask Registers (RXIMR0 - RXIMR=
-63)
- 0x0BF0 to 0x0D2f is again registers area, i.e. enhanced CAN bit-timing=20
- 0x2000 to 0x204f is allocates the Enhanced Rx FIFO output
- 0x3000 to 0x31FC is enhanced Rx FIFO filter element
-
-So this is mix and may it there are even more variations between
-different versions. So in these cases I would prefer to keep registers
-block as separate structures, which needs RO/RW masks side effects
-handling and memory areas in between as more regular RAM with no
-masking and simpler side effects rules.
-
-But I consider as the priority to have basic support which passes
-review, is mainlined and can be used for imx6 developmet and CI testing
-now. When we or somebody else find somebody with interrest at university
-(i.e. final thesis, GSoC project) or some company willing to provide
-some their developers time or funding, it can be base to move forward.
-But there is no plan on my side at this moment. All my organization
-and conceive of the QEMU CAN subsystem is personal activity without any
-income and I have lot of other much higher priority projects for teaching
-and even use in the the wild including space, so I cannot promise anything
-nor predict any dates when something is ready...
-
-By the way, I have noticed that you invest time into ESP32 mainlining
-support. If you are willing to discuss that, I would open another
-therad. I have tested original Espressinf QEMU version and tried
-yours but end by segmentation-fault. May it be incorrect arguments
-to QEMU.
-
-The ESP32C3 QEMU support could be interesting for RTEMS community which
-included basic ESP32C3 support in mainline
-
-  https://users.rtems.org/t/rtems-support-for-esp32-xtensa-existing-bsp-wor=
-k/660
-
-and I have tested Michal Lenc's contributed RTEMS SJA1000 CAN driver
-with real ESP32C3 chip up to detect and configuration phase and QEMU would
-be great for CI and Espressinf and Yours QEMU already maps SJA1000/TWAI.
-The RTEMS ESP32C6 support has proposal for this year RTEMS GSoC.
-The ESP32C5 and ESP32S31 are even more interesting because they provide
-motion control, CAN FD and the last one even wired Ethernet.=20
-
-Best wishes
-
-                Pavel
-
-                Pavel Pisa
-    phone:      +420 603531357
-    e-mail:     pisa@cmp.felk.cvut.cz
-    Department of Control Engineering FEE CVUT
-    Karlovo namesti 13, 121 35, Prague 2
-    university: http://control.fel.cvut.cz/
-    personal:   http://cmp.felk.cvut.cz/~pisa
-    social:     https://social.kernel.org/ppisa
-    projects:   https://www.openhub.net/accounts/ppisa
-    CAN related:http://canbus.pages.fel.cvut.cz/
-    RISC-V education: https://comparch.edu.cvut.cz/
-    Open Technologies Research Education and Exchange Services
-    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

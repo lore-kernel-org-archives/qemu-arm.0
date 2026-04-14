@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D75AF531DC
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:55:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D83ECF531DC
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:55:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCS2u-0000cT-3W; Mon, 13 Apr 2026 20:54:28 -0400
+	id 1wCS3W-0002dx-1J; Mon, 13 Apr 2026 20:55:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2r-0000Ts-R2
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:25 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS3U-0002cE-RM
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:55:04 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2q-0000LB-6C
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:25 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-488af9fdaa7so34458295e9.1
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:54:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS3S-0000Ua-4D
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:55:04 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-43d64313c39so2759795f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:55:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776128062; x=1776732862; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776128100; x=1776732900; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ONR1+56gVpg1r3bZ3HhUvk4b2Pj6ORP2nsgYQ1YlG/g=;
- b=Lxmb+MyeW7HzOpVKOxbntf4UmDSR8yO+kW69sK4rGSA26QSfyAjbWg5PdNnM5o1zbY
- tMQbBpGAHNCloIERqaJoqwkaLCskSFonqP9xaXfy58SoNqNaY0gFmrH5B8Kph9CM9+mn
- oCvzKJF94hT1khLzNLf0exOxXEwVRZl00A2ixKO0Kry0rDu4XCe+kzlgkUq+tGWKUA3/
- tWr+H0v4QrYEcpufn4KHsweZnT0FWn2tZr4nepmzb54tWKQRw59az6AjeIfhR1o7U4qC
- CuvbFHYbxgPA8AKFwmj9dzUhhHhH4enpn5MIZ3qGWqmnyoZTpDqWUxnyqBBEOo7Q4jru
- NtDg==
+ bh=/Mx6Ba0qnLGCZm9ivJTiXzs+j5UyrF2KihtewVHI4MY=;
+ b=CzdnXXdVnukJDfKDRtKnmzap+Qk6s5Kk31K4FFtDK4E+L9xYx/fchUR7I/gpo+IU6m
+ bT/FLjozqeta56as2OA5PAdrUlEXmqpv8IqkuNvRkNKouGhRDTYLoVm9UFfPw5abU8F0
+ CSe1aYIRrOUp4xLOLZLQpqkjt1uYWhBId1sdYdmA7QATBPF+ajlMPf1+chj1sylJja5P
+ 9hKQKFWyTPprH2rNjrmeaR+RZqsM9xVpbPVeHnfQtKYfzSHrsHG+w4EE0wDWJURV28nY
+ Ewnt6CZ4Yxpafls74/LuRnBi/qwdM1tb1aeSyTB6ejb1SxZDzZ5QtZihGOzxWGrax2ln
+ 6HIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776128062; x=1776732862;
+ d=1e100.net; s=20251104; t=1776128100; x=1776732900;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ONR1+56gVpg1r3bZ3HhUvk4b2Pj6ORP2nsgYQ1YlG/g=;
- b=cCq7xPfn87CqcnkjTYLA9Tu8eHqNq0PCnnrunQJRcdP0ix17drdg4CyvaPFlRCA3bd
- wA6+j5rTvAqvd8sb+yqYp2js2EfVI4BsCt1q7oVfUZsRwg7qaS9fM8HneiciumDNulHu
- 0EE4NLA55v7Ks/gy0zQp5W7z1PCHOMrppfAYRgFSVwhzPNdEXES1AwWFdzGbkzoJoX53
- xSunPy4y2rYjTkne9LlkR1e9I8gEX9Xq9jhtbHpecLpqTj1EJnea2R/ihbSzVZsdX5/H
- XyOEQYxX9XW2RKOHBtJh8313Hnwy1J6PWmOzJWn4agQAabUNBBX7qyDPkIqlzWpNh/mR
- Yu4Q==
+ bh=/Mx6Ba0qnLGCZm9ivJTiXzs+j5UyrF2KihtewVHI4MY=;
+ b=o05MhXGj0GtoogshIxMMuIbDhu9AxaH4jDuKK1StwuhImzrmSVsWKy9al7nwnUhVCw
+ OUrquha5oH3Nu375sax8KSz7lVN0kLdhKVo21mXyCpW+QOFAamFHZwFcPSOFHGBYcf/w
+ o96IhshnEnYGaLzFjosKo3dIwHKWxdEZYhmk3wwz9E6P092ogN2HeIGu1XHfd+badzcn
+ yMOjJRgZ7bHu4LCAaPWF9eOd1yP0mc8ZqA5Auv8rghWP6T2Lkgeh3Jz1xPZu6QjwpS+x
+ /gjeZDtwv5IOTIS3lhmRBiuwpz9VXA6gJqEGR0g60EBXPHj0XxsWqykSgR+9XJlh/pW5
+ DhSA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ82csKJcivsVKmuD/1NAPaD3L34VMuv/zzcPFCWt7XStVHQ9bhW+1BuXDDBPGw6PKwRIX9u/1Q6hg==@nongnu.org
-X-Gm-Message-State: AOJu0YwYicbc1+3RPhK42H/HUkOJYNFSb2A41uE67Rddr3E4qQAni32p
- 7oB4wL/1P2lAAfZ3KnE39y9GEx0H/7n1I3ASBY1Rb11pFvnb5IzsUp1nXfWVU670cp0=
-X-Gm-Gg: AeBDieubt4azMsl7gF+PzfNCAiPsIhXIP7HggvC4OW5oJzzQuBrnTX33K7iIVor7xwE
- 3e54pMDmHC/2RmFkl8oHYTK5viUwaxsEXxoe/VLFj2jZscb1bCzdvFbrXAeA4sMEluKoH/iQBPx
- V8qRxTz3dvQvBYUV/NOxYOFQVuxUeWnJoH76jV4aDiWT1OVOFgnmqInjZM1+rRmCn9r6PKEz//9
- YQutX6BDsv3t8EO1v0aM1lHSBb+dXAMoorJfqO6EJMDy3qYh8RYVqUBsZylSJBeIWftyV136p9K
- 3T5NDS5u9pRK1in5pUxIigUzFa90ewbLHLNyp0ZWUHA8iXa19IOilgE7fCjPgLXi2bQ3IrziWmu
- VHbu/cf3H8ZWdhOT17/FdsU8/bNvZy3SeUnCKJkIoZUiRe95tUOUiUuMYsOJCwpwelWD/z1SDbr
- CoQzPjlHdfH06jte7GWQfwrSnOOIAw5ASyCZxvLWJ057K69m5gOpmDuCzTU22OJKsXpoAh2zFA
-X-Received: by 2002:a05:600c:4ecf:b0:486:fd5c:2b35 with SMTP id
- 5b1f17b1804b1-488d68685aemr219801815e9.13.1776128062444; 
- Mon, 13 Apr 2026 17:54:22 -0700 (PDT)
+ AFNElJ+NGVohgcXL3p/e/aQfX7hx6tvWWedcUuQIZbj6G7ZlW3HCUj5VWQ/jh3TJEHRYhJrLx6CNIf+bPQ==@nongnu.org
+X-Gm-Message-State: AOJu0YztoX2ZDXEmcwKkAlVPHmiM9Ua0BY6U63XdxnQk6trRQBdFhZOr
+ oZuukRaxmCjMTLOqmkETsgF1pCtmi05z9c21yrSncrLvjZxCXishBfSMGx/0jjBndd8=
+X-Gm-Gg: AeBDies0x5byIG29o7VxsxeMftEYabK2CltQ3cM64diIBe7Bz2U20mFeUZz+ggocB7K
+ KjIx+3FmOerItnpkFoYgLlvkSkDfLgVgOGSL/Mq2G4bh8w5Vf3k0lpxoS5VHg2ORZhqXwpqUoNz
+ qsmI7RSwVXnyMMrrBwHc4565OdeKtuKjDCr7orSecwNAMyUhSGyxURqBjhWO3IqKoWfWG5xjL8a
+ gtva96cMVBFXvfnUjAhLO8ky6YhteTFiT6QcDurekQCudD9bW3gRBKnQn9aqKQF/rIOr7h3lSip
+ ig6mV7KWuMLId6UOAGQbLUP/SKh1ProFrx61pB7FtMBGd/gXahXYtuYGQ27fd7l2CqhAWKrxCVs
+ itEf1fVos2A70Cea0j1llsfvkKu2ztvG/WI8i4s0PSkETWafQj7iI2FbASQuUk+F20ZnT2Yy/vr
+ pKQXso1uy/rMHkbUvt7ZGb3cpY9RSGcX8Hzsnh+8vCcJyWCKgbOHp+RMkShxTJdbEmFSH3LqZ4
+X-Received: by 2002:a5d:46c6:0:b0:43d:70de:1c6e with SMTP id
+ ffacd0b85a97d-43d70de3419mr9272418f8f.16.1776128100176; 
+ Mon, 13 Apr 2026 17:55:00 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ede1513csm7711025e9.2.2026.04.13.17.54.21
+ ffacd0b85a97d-43d63dec295sm36387347f8f.14.2026.04.13.17.54.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 13 Apr 2026 17:54:21 -0700 (PDT)
+ Mon, 13 Apr 2026 17:54:59 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 4/9] target/arm: Hoist MO_TE into MVE DO_VSTR() macro
-Date: Tue, 14 Apr 2026 02:53:43 +0200
-Message-ID: <20260414005348.4767-5-philmd@linaro.org>
+Subject: [PATCH v2 9/9] target/arm: Compile m_helper.c once
+Date: Tue, 14 Apr 2026 02:53:48 +0200
+Message-ID: <20260414005348.4767-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260414005348.4767-1-philmd@linaro.org>
 References: <20260414005348.4767-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,97 +106,51 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/mve_helper.c | 43 +++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 23 deletions(-)
+ target/arm/tcg/m_helper.c  | 2 +-
+ target/arm/tcg/meson.build | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
-index fbb64889bf7..4bea0991de9 100644
---- a/target/arm/tcg/mve_helper.c
-+++ b/target/arm/tcg/mve_helper.c
-@@ -235,7 +235,8 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
-         unsigned e;                                                     \
-         uint32_t addr;                                                  \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
-+        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+                                     mmu_idx);                          \
-         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
-             if (!(eci_mask & 1)) {                                      \
-                 continue;                                               \
-@@ -262,7 +263,8 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
-         unsigned e;                                                     \
-         uint32_t addr;                                                  \
-         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
--        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
-+        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
-+                                     mmu_idx);                          \
-         for (e = 0; e < 16 / ESIZE; e++, mask >>= ESIZE, eci_mask >>= ESIZE) { \
-             if (!(eci_mask & 1)) {                                      \
-                 continue;                                               \
-@@ -347,47 +349,42 @@ DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 1bec8e9aea3..f2059ed8b03 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -17,7 +17,7 @@
+ #include "qemu/log.h"
+ #include "exec/page-protection.h"
+ #ifdef CONFIG_TCG
+-#include "accel/tcg/cpu-ldst.h"
++#include "accel/tcg/cpu-ldst-common.h"
+ #include "semihosting/common-semi.h"
+ #endif
+ #if !defined(CONFIG_USER_ONLY)
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 95e9da151e5..02774409e56 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -32,7 +32,6 @@ arm_ss.add(when: 'TARGET_AARCH64', if_false: files('stubs32.c'))
  
- DO_VLDR_SG(vldrb_sg_sh, MO_SB, int8_t, ldb, 2, int16_t, uint16_t, ADDR_ADD, false)
- DO_VLDR_SG(vldrb_sg_sw, MO_SB, int8_t, ldb, 4, int32_t, uint32_t, ADDR_ADD, false)
--DO_VLDR_SG(vldrh_sg_sw, MO_TE | MO_SW, int16_t, ldw, 4,
--           int32_t, uint32_t, ADDR_ADD, false)
-+DO_VLDR_SG(vldrh_sg_sw, MO_SW, int16_t, ldw, 4, int32_t, uint32_t, ADDR_ADD, false)
+ arm_ss.add(files(
+   'cpu32.c',
+-  'm_helper.c',
+ ))
  
- DO_VLDR_SG(vldrb_sg_ub, MO_UB, uint8_t, ldb, 1, uint8_t, uint8_t, ADDR_ADD, false)
- DO_VLDR_SG(vldrb_sg_uh, MO_UB, uint8_t, ldb, 2, uint16_t, uint16_t, ADDR_ADD, false)
- DO_VLDR_SG(vldrb_sg_uw, MO_UB, uint8_t, ldb, 4, uint32_t, uint32_t, ADDR_ADD, false)
--DO_VLDR_SG(vldrh_sg_uh, MO_TE | MO_UW, uint16_t, ldw, 2,
--           uint16_t, uint16_t, ADDR_ADD, false)
--DO_VLDR_SG(vldrh_sg_uw, MO_TE | MO_UW, uint16_t, ldw, 4,
--           uint32_t, uint32_t, ADDR_ADD, false)
--DO_VLDR_SG(vldrw_sg_uw, MO_TE | MO_UL, uint32_t, ldl, 4,
--           uint32_t, uint32_t, ADDR_ADD, false)
-+DO_VLDR_SG(vldrh_sg_uh, MO_UW, uint16_t, ldw, 2, uint16_t, uint16_t, ADDR_ADD, false)
-+DO_VLDR_SG(vldrh_sg_uw, MO_UW, uint16_t, ldw, 4, uint32_t, uint32_t, ADDR_ADD, false)
-+DO_VLDR_SG(vldrw_sg_uw, MO_UL, uint32_t, ldl, 4, uint32_t, uint32_t, ADDR_ADD, false)
- DO_VLDR64_SG(vldrd_sg_ud, ADDR_ADD, false)
- 
--DO_VLDR_SG(vldrh_sg_os_sw, MO_TE | MO_SW, int16_t, ldw, 4,
-+DO_VLDR_SG(vldrh_sg_os_sw, MO_SW, int16_t, ldw, 4,
-            int32_t, uint32_t, ADDR_ADD_OSH, false)
--DO_VLDR_SG(vldrh_sg_os_uh, MO_TE | MO_UW, uint16_t, ldw, 2,
-+DO_VLDR_SG(vldrh_sg_os_uh, MO_UW, uint16_t, ldw, 2,
-            uint16_t, uint16_t, ADDR_ADD_OSH, false)
--DO_VLDR_SG(vldrh_sg_os_uw, MO_TE | MO_UW, uint16_t, ldw, 4,
-+DO_VLDR_SG(vldrh_sg_os_uw, MO_UW, uint16_t, ldw, 4,
-            uint32_t, uint32_t, ADDR_ADD_OSH, false)
--DO_VLDR_SG(vldrw_sg_os_uw, MO_TE | MO_UL, uint32_t, ldl, 4,
-+DO_VLDR_SG(vldrw_sg_os_uw, MO_UL, uint32_t, ldl, 4,
-            uint32_t, uint32_t, ADDR_ADD_OSW, false)
- DO_VLDR64_SG(vldrd_sg_os_ud, ADDR_ADD_OSD, false)
- 
- DO_VSTR_SG(vstrb_sg_ub, MO_UB, stb, 1, uint8_t, ADDR_ADD, false)
- DO_VSTR_SG(vstrb_sg_uh, MO_UB, stb, 2, uint16_t, ADDR_ADD, false)
- DO_VSTR_SG(vstrb_sg_uw, MO_UB, stb, 4, uint32_t, ADDR_ADD, false)
--DO_VSTR_SG(vstrh_sg_uh, MO_TE | MO_UW, stw, 2, uint16_t, ADDR_ADD, false)
--DO_VSTR_SG(vstrh_sg_uw, MO_TE | MO_UW, stw, 4, uint32_t, ADDR_ADD, false)
--DO_VSTR_SG(vstrw_sg_uw, MO_TE | MO_UL, stl, 4, uint32_t, ADDR_ADD, false)
-+DO_VSTR_SG(vstrh_sg_uh, MO_UW, stw, 2, uint16_t, ADDR_ADD, false)
-+DO_VSTR_SG(vstrh_sg_uw, MO_UW, stw, 4, uint32_t, ADDR_ADD, false)
-+DO_VSTR_SG(vstrw_sg_uw, MO_UL, stl, 4, uint32_t, ADDR_ADD, false)
- DO_VSTR64_SG(vstrd_sg_ud, ADDR_ADD, false)
- 
--DO_VSTR_SG(vstrh_sg_os_uh, MO_TE | MO_UW, stw, 2, uint16_t, ADDR_ADD_OSH, false)
--DO_VSTR_SG(vstrh_sg_os_uw, MO_TE | MO_UW, stw, 4, uint32_t, ADDR_ADD_OSH, false)
--DO_VSTR_SG(vstrw_sg_os_uw, MO_TE | MO_UL, stl, 4, uint32_t, ADDR_ADD_OSW, false)
-+DO_VSTR_SG(vstrh_sg_os_uh, MO_UW, stw, 2, uint16_t, ADDR_ADD_OSH, false)
-+DO_VSTR_SG(vstrh_sg_os_uw, MO_UW, stw, 4, uint32_t, ADDR_ADD_OSH, false)
-+DO_VSTR_SG(vstrw_sg_os_uw, MO_UL, stl, 4, uint32_t, ADDR_ADD_OSW, false)
- DO_VSTR64_SG(vstrd_sg_os_ud, ADDR_ADD_OSD, false)
- 
--DO_VLDR_SG(vldrw_sg_wb_uw, MO_TE | MO_UL, uint32_t, ldl, 4,
--           uint32_t, uint32_t, ADDR_ADD, true)
-+DO_VLDR_SG(vldrw_sg_wb_uw, MO_UL, uint32_t, ldl, 4, uint32_t, uint32_t, ADDR_ADD, true)
- DO_VLDR64_SG(vldrd_sg_wb_ud, ADDR_ADD, true)
--DO_VSTR_SG(vstrw_sg_wb_uw, MO_TE | MO_UL, stl, 4, uint32_t, ADDR_ADD, true)
-+DO_VSTR_SG(vstrw_sg_wb_uw, MO_UL, stl, 4, uint32_t, ADDR_ADD, true)
- DO_VSTR64_SG(vstrd_sg_wb_ud, ADDR_ADD, true)
- 
- /*
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+@@ -70,6 +69,7 @@ arm_common_system_ss.add(
+   'debug.c',
+   'hflags.c',
+   'gengvec.c',
++  'm_helper.c',
+   'mve_helper.c',
+   'neon_helper.c',
+   'op_helper.c',
+@@ -94,6 +94,7 @@ arm_user_ss.add(
+   'debug.c',
+   'gengvec.c',
+   'hflags.c',
++  'm_helper.c',
+   'mve_helper.c',
+   'neon_helper.c',
+   'op_helper.c',
 -- 
 2.53.0
 

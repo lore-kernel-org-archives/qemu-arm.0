@@ -4,80 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C420CF531DE
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B541F531DE
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:54:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCS2O-0000Ey-JG; Mon, 13 Apr 2026 20:53:56 -0400
+	id 1wCS2l-0000NL-HE; Mon, 13 Apr 2026 20:54:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2N-0000Ee-A2
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:53:55 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2k-0000Mv-B8
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:18 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2L-0000Ir-Q4
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:53:55 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4838c15e3cbso46411435e9.3
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:53:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2i-0000Kj-Pq
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:18 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-488afb0427eso61990915e9.1
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:54:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776128032; x=1776732832; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=BLI43CMKKgCVQgB5y9bVNRIgkIWGcbGh9bdZMwpHqyk=;
- b=w6pV0tdE4d05+S1RU4MSZHI2XEoKvP2p9rov74zA1e1aNoHaLgauLL31140so8gBHD
- lSfI5D7z7S1yIPQ9m3+vSPTJY+jlXFaa2wt8mlNQ4DlDvBRaZml4BWGrfmropVKVPW26
- bqzrs/5isM+N7DK6KaXoQNm9LidZCo2EVatCWHwQhtF0tr2vn4vpVEd1B5BWxNccDF5f
- 2G25fx1tmkxKjVVpEpw6MA+Qs0awJ5jjtN3+ACFv9Whh6z/YOpJDsDbsCRm1lRkMomn+
- 7jS3DhCdK8gT5CmjBcn+9gCCKwFJO83Gnk7F6owFQth4Uiw6a2tiwW54GPTSK4Rz3WiC
- QHVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776128032; x=1776732832;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1776128055; x=1776732855; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BLI43CMKKgCVQgB5y9bVNRIgkIWGcbGh9bdZMwpHqyk=;
- b=LyakMj+BlPgh2ejGQt4zLu9zLOOPCaRG54vfV8fqaVLiirKlQq3wt6CQTXO8LJJbQw
- 8I+O7xE9QzfgeAoq0Qep9IGWrgh7H/EXGMnq2R9u2FREjLThC6AAlEJ55gwYWIMqulHq
- r59OC7j6dl5N4Urf9Id1a9umUliqvcHRMKOCUA5GfGOplvQgIXXJun57iVNwMbsSnH9g
- ca3pjzLO4o68vKzg7hId3xjA0f4jHMBWQija5BlKz709cFI+SYgfPjVYfN25PSFpDM1/
- I2tRIixeclNb1C5SlOtaUKUR/Wme+TspFTMmY/ytZyXja0tWYd+gjLuEpIn/2w0KW5c/
- OXUA==
+ bh=NNo1mYR/V/Hb3qL4J/cDVYDlyrB6sHdhhxeBEz2vg5I=;
+ b=uHRaIq2ck0TWEQr/o0HnoCmAP++GB2Kc2v5RSMPUA6JPm7Uc/CiqHdfulQ7dlFPvyn
+ RQnwVvjc1NyC64dook4Nxc1ggXJxpivxoUHIgcPEAmkGRZC9VmhskkaZEdkd6RXsm8qh
+ ynWBm1JKHDWvYKEGXsS57/PCqXlydzn1qjVy6v/Xxvh4VVTrX7epr+Cd9GyvDd4oKInl
+ y7Lp7mCblzo0rhwy6jByGc1h3PcA/YhrcHwolbdq0u3du3oecTqmPX7OP5rBiEFsewv0
+ MQS6hCj5aB3VL4/vhhC9OoCtlKcqDF5NvUolkuyIZKdwrmzLEegY4KpVcoLAwfv4pCNI
+ pHMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776128055; x=1776732855;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=NNo1mYR/V/Hb3qL4J/cDVYDlyrB6sHdhhxeBEz2vg5I=;
+ b=fCCwxCXAWUZhOvsyvEgbSKnCmgp2jLFrqRf0s+UcfnrKE9SEV4gWANddCinBqBD/R6
+ s6PpbIxWTvCdMiYNX2F3ONn2uLKr8UuJ42vZZ9IrmeRJWdXNaxzh7MCJhYu1TzjuenDl
+ gxKg1tqnsI54SOj65JZQWEp6VSYyLGKJJ+dXBmqhDUYbw7/w7A7CNJ4A9JmI1TI22Jim
+ dULffT0gW5dWcEc9XeuKYDhrGgWyiSN1UgPLT9xGpYmUY8eS5knBcUmadL9Zrawy4gnd
+ mESLN9FF696oE833o/MqBDI2cyo/9V+TARTY8dO1sMD6PPa3zftjokSmPA4M6m6CLQGm
+ kU1Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9onnx3acEtTdewiC9cp0ovL5Jvqq+KyaqGqduDoN4mU0ru6T/xKD62tOoYrmXyXTqzvtFiuML3Mw==@nongnu.org
-X-Gm-Message-State: AOJu0YxRg3wemT7LR+cY6f+RnrjTIGu6A1EwFbZ+lpR6pOrD9fWxzZsd
- KaTiGwpU6yquwM7b/yPmhIgmjtiyRBb1Xsl8rk7q/AIAZA23aaABxFEvjyasD6x/oDU=
-X-Gm-Gg: AeBDieu01mMq5ClS5UO/CjyhdEA4btCtmgll7PsLj1UD3gfeObAK3mzeMvtSFEX+WTO
- YeZJHXiX3xZTmH/K4BY7SsSveZ3mQuLCJuJiNZrhmOkREC5ROwqF+ALQFGu8wdveZQHzAYNYa+c
- RDCrtqPbqm+N3zSE5phErGQQzMy0J1avqHNT2qlYSfsQe6edeBkP7YrBQFYiHniPu0m1IzLqSQv
- 8Lr0A/ALFE8LaLwI7qan6XrQvZCLevCbhjE2A+AquwzvNNrfjTQDPmk4YL3wsMpG1e+hdYJqBBF
- DhnXY0ZbFnY3F7iE5WZe5LJppSK6fw6IDDccRIl9iNEELVN1kJcdhBpH75V6D2yQRzt1Tv8bg+7
- I9WzZvxil84Q4dXRo+PaGKdKocNlWXlLMTiaLVHlVCJpaTyhiOXlpCsT/1k/pjilwF4SGWPeDdf
- qGpZId4L3e/YvcLcGjwRf85JpaeqAYZLV+x5wup7kLrEu9O9B+tmo44iBE+wB9E1TgA3t7jUgJm
- VAmWpmcd+8=
-X-Received: by 2002:a05:600c:8907:b0:488:c744:49b with SMTP id
- 5b1f17b1804b1-488d67d2cfcmr145831695e9.7.1776128031944; 
- Mon, 13 Apr 2026 17:53:51 -0700 (PDT)
+ AFNElJ9ou34qDY3mOP+heLrZvhAufJKVhFdrvzfWNEfw5k62RRhcqah5gea+yP4FT1wpeXmh4Uc0Yp8atw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7GzCHiTZF2uDC/T6qxZyz+QuGDQn8GpphUr4PFohmacj1741e
+ 0d/TR9WItuC716dMRby0garJSvR8nGrtkw6BwNyVMgDRzpuLDYn01pZp/Q6gQGtX7bQ=
+X-Gm-Gg: AeBDieuxlZUtod9G5c2ea7H7XX0jQA2QnlNRnPAY3MCb8e3/xLmKIsf71gR5vf12j7t
+ MaknJkI4nWy/Vmz+2Y8Lf4WoChGgwiIGsXPD8cTeTNe9jCB/zpNl1qCPx/c/yPV+bX6w/RfwFGv
+ oo3gsctPmTLcnu3Osn+aJfDNoLryX2Y7nf2EMHUtKj/nWfxJdfx/CBSSywgaK0pIvIYeLC/D2u4
+ lPL388pe2AUSePHU0u0c/pfqFgCmjL9yPG92RR2DyGVjVJNDgi3/gEmDo9SafTloEpqSK3R9ZvE
+ OdCSMoDaa1ZkRYybKVbKMMYyVqy5Xe7SDIxfWfhWi8tWWRiBNizIdayRssM9r3ZknJL92sXKawg
+ m0wjtvwv4EgaIPp92GaQD+THx8kTCeWS1HsmfBsIvigqrtQ2S9q2hec0GoGg3+YfTpij9mNU6QZ
+ rbbKemzil0o/WL50yer63BYpHGs29+5wAIuf3G7Ff8PvNmRoYdyel1AK7R68WkPy38moIbUbpLZ
+ pAs8srIgf8=
+X-Received: by 2002:a05:600c:c16d:b0:488:be21:54ae with SMTP id
+ 5b1f17b1804b1-488d66504bfmr222636215e9.0.1776128055316; 
+ Mon, 13 Apr 2026 17:54:15 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ede2ba0esm6365235e9.11.2026.04.13.17.53.49
+ 5b1f17b1804b1-488d681f28esm105872435e9.16.2026.04.13.17.54.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 13 Apr 2026 17:53:51 -0700 (PDT)
+ Mon, 13 Apr 2026 17:54:13 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 0/9] target/arm: Remove MO_TE to compile MVE/M helpers once
-Date: Tue, 14 Apr 2026 02:53:39 +0200
-Message-ID: <20260414005348.4767-1-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 3/9] target/arm: Hoist MO_TE into mve_advance_vpt()
+Date: Tue, 14 Apr 2026 02:53:42 +0200
+Message-ID: <20260414005348.4767-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260414005348.4767-1-philmd@linaro.org>
+References: <20260414005348.4767-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,29 +104,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Missing review: #5
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/mve_helper.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
-Replace build-time MO_TE definition by runtime mo_endian()
-helper, allowing to compile m_helper.c and mve_helper.c once.
-
-Philippe Mathieu-Daudé (9):
-  target/arm: Ignore endianness when setting MTE tags
-  target/arm: Explode MO_TExx -> MO_TE | MO_xx
-  target/arm: Hoist MO_TE into mve_advance_vpt()
-  target/arm: Hoist MO_TE into MVE DO_VSTR() macro
-  target/arm: Introduce mo_endian() helper
-  target/arm: Replace MO_TE -> mo_endian() for MVE helpers
-  target/arm: Compile mve_helper.c once
-  target/arm: Replace MO_TE -> mo_endian() for Cortex-M helpers
-  target/arm: Compile m_helper.c once
-
- target/arm/internals.h      |   6 +++
- target/arm/tcg/helper-a64.c |   2 +-
- target/arm/tcg/m_helper.c   |   8 +--
- target/arm/tcg/mve_helper.c | 102 +++++++++++++++++++++---------------
- target/arm/tcg/meson.build  |   6 ++-
- 5 files changed, 75 insertions(+), 49 deletions(-)
-
+diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
+index cc58e0502f5..fbb64889bf7 100644
+--- a/target/arm/tcg/mve_helper.c
++++ b/target/arm/tcg/mve_helper.c
+@@ -160,7 +160,8 @@ static void mve_advance_vpt(CPUARMState *env)
+         uint16_t eci_mask = mve_eci_mask(env);                          \
+         unsigned b, e;                                                  \
+         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
++        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
++                                     mmu_idx);                          \
+         /*                                                              \
+          * R_SXTM allows the dest reg to become UNKNOWN for abandoned   \
+          * beats so we don't care if we update part of the dest and     \
+@@ -183,7 +184,8 @@ static void mve_advance_vpt(CPUARMState *env)
+         uint16_t mask = mve_element_mask(env);                          \
+         unsigned b, e;                                                  \
+         int mmu_idx = arm_to_core_mmu_idx(arm_mmu_idx(env));            \
+-        MemOpIdx oi = make_memop_idx(MFLAG | MO_ALIGN, mmu_idx);        \
++        MemOpIdx oi = make_memop_idx(MO_TE | MFLAG | MO_ALIGN,          \
++                                     mmu_idx);                          \
+         for (b = 0, e = 0; b < 16; b += ESIZE, e++) {                   \
+             if (mask & (1 << b)) {                                      \
+                 cpu_##STTYPE##_mmu(env, addr, d[H##ESIZE(e)], oi, GETPC()); \
+@@ -194,23 +196,23 @@ static void mve_advance_vpt(CPUARMState *env)
+     }
+ 
+ DO_VLDR(vldrb, MO_UB, 1, uint8_t, ldb, 1, uint8_t)
+-DO_VLDR(vldrh, MO_TE | MO_UW, 2, uint16_t, ldw, 2, uint16_t)
+-DO_VLDR(vldrw, MO_TE | MO_UL, 4, uint32_t, ldl, 4, uint32_t)
++DO_VLDR(vldrh, MO_UW, 2, uint16_t, ldw, 2, uint16_t)
++DO_VLDR(vldrw, MO_UL, 4, uint32_t, ldl, 4, uint32_t)
+ 
+ DO_VSTR(vstrb, MO_UB, 1, stb, 1, uint8_t)
+-DO_VSTR(vstrh, MO_TE | MO_UW, 2, stw, 2, uint16_t)
+-DO_VSTR(vstrw, MO_TE | MO_UL, 4, stl, 4, uint32_t)
++DO_VSTR(vstrh, MO_UW, 2, stw, 2, uint16_t)
++DO_VSTR(vstrw, MO_UL, 4, stl, 4, uint32_t)
+ 
+ DO_VLDR(vldrb_sh, MO_SB, 1, int8_t, ldb, 2, int16_t)
+ DO_VLDR(vldrb_sw, MO_SB, 1, int8_t, ldb, 4, int32_t)
+ DO_VLDR(vldrb_uh, MO_UB, 1, uint8_t, ldb, 2, uint16_t)
+ DO_VLDR(vldrb_uw, MO_UB, 1, uint8_t, ldb, 4, uint32_t)
+-DO_VLDR(vldrh_sw, MO_TE | MO_SW, 2, int16_t, ldw, 4, int32_t)
+-DO_VLDR(vldrh_uw, MO_TE | MO_UW, 2, uint16_t, ldw, 4, uint32_t)
++DO_VLDR(vldrh_sw, MO_SW, 2, int16_t, ldw, 4, int32_t)
++DO_VLDR(vldrh_uw, MO_UW, 2, uint16_t, ldw, 4, uint32_t)
+ 
+ DO_VSTR(vstrb_h, MO_UB, 1, stb, 2, int16_t)
+ DO_VSTR(vstrb_w, MO_UB, 1, stb, 4, int32_t)
+-DO_VSTR(vstrh_w, MO_TE | MO_UW, 2, stw, 4, int32_t)
++DO_VSTR(vstrh_w, MO_UW, 2, stw, 4, int32_t)
+ 
+ #undef DO_VLDR
+ #undef DO_VSTR
 -- 
 2.53.0
 

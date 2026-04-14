@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA4A0F531DC
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8047AF531DF
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:55:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCS2V-0000G8-SB; Mon, 13 Apr 2026 20:54:03 -0400
+	id 1wCS3M-00021c-GO; Mon, 13 Apr 2026 20:54:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2U-0000Fe-9x
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:02 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS3K-0001ni-O4
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:54 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2S-0000JU-O7
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:02 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-488971db0fdso49423005e9.0
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:54:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS3J-0000RL-3i
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:54:54 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-488c21c636dso29754415e9.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:54:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776128039; x=1776732839; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776128092; x=1776732892; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S7kISm5AhX1EU2bR0bLryhHMON6XL0ZyU+Vh4s9MTrQ=;
- b=D27+WbTpCxTxcS2c7zBiZuGYC9yKaG8tZZyO/duI3hKFTl3fEQj3MtAO+iamm12VhN
- cchq2fsb/lbpFFsTczywZXefeApQLlJJDfCO9e3NEY0do9qwvYi0xbmihBNcNrQ2ikZk
- hvcYCat21KARMccdkl36XD2qc0hM9qNYDA05h1gJg9ELxv++A1q63Q5RJzIBIj0wUfFm
- WtgM6dJvRk4Nh0o70YUv9SLjuJxAvFEjV4p0aI+qxKvehq2W5Gpw1MMDfSi1SlEG3Iig
- +ODiyFvbJdGgH4EtvUruXuzDy+NVAWs0ViBH728WDt68VurGsi74REH2PrJdv2hWW5xN
- Mblw==
+ bh=cHW44GHNwYo//iL9S+vNgBtIZBRoswNn2La2YETdq+g=;
+ b=PbSCEJtjKZT+5bvc4i4kH7rPPgA7z/NaxzSesr+u6wP069oMPEn5oaKhemhaztXHK1
+ dGyTwzGm9/MX0P3wcdzQgMzfFwjYtig0RsvrUZboODOqNDgl01pfoWYq+lp45SBjjjsy
+ uQWFeQn5qHtZVWNLXzO23oNsGMqsvesGxQ+QFDNDV6cI1AJceufWvI4YzCKCurq5dXkM
+ HLaeMss8RR/DYN4s2mawiOUNHu1JqQvXJloNVwupDg7kp8bAj6Y+qycC2VtQNoypXmwH
+ wvSCMv/jHS+YlIZFMQq4Og8GfAwfzHKxMW6S/HfQ0qORnvxzFpIa1Ndq53NxJNbot2lz
+ Rg/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776128039; x=1776732839;
+ d=1e100.net; s=20251104; t=1776128092; x=1776732892;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=S7kISm5AhX1EU2bR0bLryhHMON6XL0ZyU+Vh4s9MTrQ=;
- b=TullWCbGSxRaT172k6CcHQIesiIKTDzNL81GBpH2zJPhh8njD5kAuwtgY3BdG6MoOq
- 4KTclReYIaJvfUXIT2EPXC5//v5VfP7vEMriYTTcwQ3f/T7M7+l9qZIgGKOGJPxJzZC6
- b2H+zLqa13xIQ4DL26EvTiJnMkq5ijGYboEjtKUuAXCyssF5cEe3qb8JyI6Pr6rdJnvn
- EVclQFtbQxzKKtoxXlHBty5w4S1qmAkxLz9ZH4rTqqNnjusKlZ869QHfLyJYYH1/CNWR
- kUBFynkIpD9aOFAdZspXFI0jPF+nX8Z6JuSRklXCkbb22BuLTg+eDlmokk8yHwyocH6a
- MbRA==
+ bh=cHW44GHNwYo//iL9S+vNgBtIZBRoswNn2La2YETdq+g=;
+ b=j7a2djE1A8dzj1/i1kJ6VFypaZvrY7X4Hgx7UjXHDfIg8EaaQPSa0OsNnfqi4ploYr
+ Md5uEifKUZnZW6B+z5e+EifiQ9gpp/ZZiNXWXMj97bsaTb9vPilhLSH6g3tT222ivZEd
+ I0Mb9W5PsdXvZ1vpVIbvplPBIk9gki7XoG0lMvM8L5V3GX/bgVXCDea/rSWomkY+zRTZ
+ mrnYaiUE6NF92XTSjHVpEYXbnCaRHVLb/BG5ymq16oqiJdE1D4RihXIuR309hZQnTbpq
+ r8TlqDoAxtmqFAW6GtkW040chTXhHNtfHpqgc7R7qoafbjS2q+uoPFQKYPUyMzpOwQ0/
+ 4bKA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9VRntVLCSgZ1/I9EhoqX6I+m6HioOVvxOOYBuExEGiCNX6pxOvJohL8Pree4Uc3q4/suh3pyG8vA==@nongnu.org
-X-Gm-Message-State: AOJu0YwKFLtdo7qVSY/6sjS1k80GqztvY6SblOneF2BRRWtiuz+5RaPK
- XZJvf7w+NKvcm8kF8W3OvVHeJtKaa6cY9p+AMZhrzy7VkDa/js4mhhGTIqpdYJAk+V4=
-X-Gm-Gg: AeBDievLdZm/6CB1+evWLjs7mZ8r7XZN+5xQgJLgjJ+fY+7v2xjWa+EGzsDSSWCtt59
- hVpYpomOtoXP4LpEI62j550M4UHsE4JQuoHXjCHBVhHFrzFSo8c4ZNbpPfzUDnB40Z2vrKvHJ6Z
- U/u2kaZBUPG3ISQVMEO72A3CTet2IjjCPZOujC9Ra9dXUCLJ7p3X9u8dWWyzQ1K0cRYjeWUYKop
- 2ywT4OtwMCD44UVdekKcPo5SBQJasRRzDzLH3LmybM8mMfl3UFpsdLpX2lgUI+C0ua6W0Gf7yrS
- QjsmYMTd9DmGQSKKwco5XqFTL9HWe2W4xTZU82ttqHeWSml1s0SfysgJ80DOTfW7I0ZE+PqTTju
- z/Va1g0zqz9jxATihdPk1Q/IN4Cce5maJpkfrf/s+N0eUPrTBDMA5MtmbmNmnx8xbGiILeANYlj
- c26RZrq+3iagsMXk+Loc44g3zf4CVAc8pq7RgolddZC/vjDwgb7xtcbF+tKFoZlTMmyYSWTrmR0
- Wi8hUl7bVM=
-X-Received: by 2002:a05:600c:45cd:b0:488:9ed3:1492 with SMTP id
- 5b1f17b1804b1-488d67f0bb7mr185223925e9.10.1776128039288; 
- Mon, 13 Apr 2026 17:53:59 -0700 (PDT)
+ AFNElJ+mXIA5ueK2MrEsYNgpzMsMuoMmWm2qPKJkA8goFHLsVjosFSEiReij9ADrBpvBSoLZTTDdnnYWow==@nongnu.org
+X-Gm-Message-State: AOJu0YxTtLuZRkN2RCxhHaK80RsJqO3kjiJcqJg+EvxyPRvb0WmeVwZZ
+ KxmwBY+ruC46oNxRYaPWV61jz66hgVAH7uy1LVs2PYsavofMzzEkW30J1mrXlKYgmjs=
+X-Gm-Gg: AeBDieuFR62W1ZfrX/rsk0igxCc4iwru9PRGTSkoDvxLx8cCVpBNKvrtOtZJTWYQsYQ
+ uNlOdCYNJRgLkS/G+5oxfiMLTMw9r5kbJ7Zt14GFDlbLBstYJ9pUPoczgixTIGwBItDwzyJuwyr
+ 5VCjkbTsJX/kPbS7jqnxT7ORESmV58pfMN1GnYnmD2Eaya7l/8o57PnXbvJ3aBpFyQWGrjuqyPc
+ nId806tkqL/4sg8m9YNvksawkg631GHQ1H+eJRbLsuzUbxb9kmSbt6VbQ8gOz1hPXYkM9rAcsPn
+ UR9xJ0DlnMjTXP7ti4oT/INs9QLU8I1OnxHXtf+yddk8YCoQ7FvTzlbg8a5v8JKCPPMv2Zmo+Zu
+ 7vDiuqRh22+B0D8VCqDRG4hqGMMwtYvHz72WIdpjaYEBqjx6WT4F3vKOJZRR0LuVwncRz4Rd7le
+ Mv4YNMx11LSV43xGgzNhJJXrXF7Nr7m/CdRT5lPGVpIeKH+9hLt3PEVhVfA2+jrEhPQMxGa+/NC
+ R/Q6T23b38=
+X-Received: by 2002:a05:600c:474c:b0:485:35d3:ce59 with SMTP id
+ 5b1f17b1804b1-488d68101edmr191625055e9.10.1776128091721; 
+ Mon, 13 Apr 2026 17:54:51 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488d67e7e45sm161438945e9.9.2026.04.13.17.53.57
+ 5b1f17b1804b1-488eddb9751sm12940005e9.0.2026.04.13.17.54.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 13 Apr 2026 17:53:58 -0700 (PDT)
+ Mon, 13 Apr 2026 17:54:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 1/9] target/arm: Ignore endianness when setting MTE tags
-Date: Tue, 14 Apr 2026 02:53:40 +0200
-Message-ID: <20260414005348.4767-2-philmd@linaro.org>
+Subject: [PATCH v2 8/9] target/arm: Replace MO_TE -> mo_endian() for Cortex-M
+ helpers
+Date: Tue, 14 Apr 2026 02:53:47 +0200
+Message-ID: <20260414005348.4767-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260414005348.4767-1-philmd@linaro.org>
 References: <20260414005348.4767-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,34 +105,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As mentioned by Richard in [*]:
-
-  We don't actually need any specific endianness here, because
-  every byte has the same value.  So we could simply drop MO_TE.
-  That would produce a store in host-endianness, which will be
-  fractionally more efficient on some hosts.
-
-[*] https://lore.kernel.org/qemu-devel/d64d3576-9188-4e74-afdc-3492c9feb8e0@linaro.org/
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/helper-a64.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/tcg/m_helper.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index 2dec587d386..9f0801b88b8 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -1019,7 +1019,7 @@ static uint64_t set_step_tags(CPUARMState *env, uint64_t toaddr,
-          * the page dirty and will use the fast path.
-          */
-         uint64_t repldata = data * 0x0101010101010101ULL;
--        MemOpIdx oi16 = make_memop_idx(MO_TE | MO_128, memidx);
-+        MemOpIdx oi16 = make_memop_idx(MO_128, memidx);
-         cpu_st16_mmu(env, toaddr, int128_make128(repldata, repldata), oi16, ra);
-         mte_mops_set_tags(env, toaddr, 16, *mtedesc);
-         return 16;
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index f5954ce9bf9..1bec8e9aea3 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -634,7 +634,7 @@ void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
+ 
+     /* Note that these stores can throw exceptions on MPU faults */
+     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
+-    MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN,
++    MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN,
+                                  arm_to_core_mmu_idx(mmu_idx));
+     cpu_stl_mmu(env, sp, nextinst, oi, GETPC());
+     cpu_stl_mmu(env, sp + 4, saved_psr, oi, GETPC());
+@@ -1055,7 +1055,7 @@ void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+     bool lspact = env->v7m.fpccr[s] & R_V7M_FPCCR_LSPACT_MASK;
+     uintptr_t ra = GETPC();
+     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
+-    MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN,
++    MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN,
+                                  arm_to_core_mmu_idx(mmu_idx));
+ 
+     assert(env->v7m.secure);
+@@ -1131,7 +1131,7 @@ void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+     ARMCPU *cpu = env_archcpu(env);
+     uintptr_t ra = GETPC();
+     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
+-    MemOpIdx oi = make_memop_idx(MO_TE | MO_UL | MO_ALIGN,
++    MemOpIdx oi = make_memop_idx(mo_endian(env) | MO_UL | MO_ALIGN,
+                                  arm_to_core_mmu_idx(mmu_idx));
+ 
+     /* fptr is the value of Rn, the frame pointer we load the FP regs from */
 -- 
 2.53.0
 

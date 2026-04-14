@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB91FF9D0C4
-	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 11:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89791F9D0CA
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 11:57:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCcKs-0004rd-5D; Tue, 14 Apr 2026 07:53:42 -0400
+	id 1wCcOo-0006w8-Pr; Tue, 14 Apr 2026 07:57:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCcKr-0004rO-GY
- for qemu-arm@nongnu.org; Tue, 14 Apr 2026 07:53:41 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCcOn-0006vs-VO
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2026 07:57:45 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCcKp-00025Q-93
- for qemu-arm@nongnu.org; Tue, 14 Apr 2026 07:53:41 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-48334ee0aeaso53278965e9.1
- for <qemu-arm@nongnu.org>; Tue, 14 Apr 2026 04:53:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCcOm-0002hX-7L
+ for qemu-arm@nongnu.org; Tue, 14 Apr 2026 07:57:45 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-43cf8fe9c2aso3407991f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 14 Apr 2026 04:57:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776167617; x=1776772417; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776167862; x=1776772662; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Sya6TlpsOda6KIV+hWvvYKea9jRr9NPJhmjkerfAYzQ=;
- b=w8/T8/Cwt5rdYPhXxI1NpN0dtA79eQ5qkS/hSvxGxI3BZYsBFi7XL0LiUYwmqhhD46
- Tbn1Q5G8irDLVnIaeEEgxruxUbnwy0w0J+cqXzMvhtDBjHcW+W/1rQu2yKBnI//1sBts
- mm3leVN1RWqs3xD4ziP5vwUj8e8DjGHCWTf01ORXHjJ7axQaYR97ov8Ojehxt2+AQpMQ
- c63X2v2prwR9cFJOh1Owiq82VkOAyUyhuzS2NI5oiCZdeKILA4ry/2hXh+FI3nZx7F8w
- h/puzRlQZm9cn7wuFeuDbVfxVtE2AfAgsSJQTttqL26zQaGGNIAFQl7dEQifNyT7ttB+
- Tveg==
+ bh=gQKTuwmRxA+OIOiaFfMIP1eOIxafDejRlksno/Y/2T8=;
+ b=EsCm7yygytuHNgrE/r+U+TM3FImE/DKFiK5Ghix3xih5lXHFVy5z3f9Fz13S4VhWrW
+ ansnAIRvOFAxA6RCJAU2HuUo4pX77r7FU+HJ63wIvEPDKj7/GKZEkJVN5OUE51CTq9UC
+ 23rx/CZxw9zncl4G3wqM1C12Z7MTj7P1yOjPAymG4s6DJekM8aki1md5OkMQWrQCOX3v
+ LDkMFHDf6w4ss5f6VPgiKgr2YKaOL4g8f31fspTx/TaBCVynixSf/ltVhrMs+u79Kux1
+ Ra06ieQHmBv55vyt5LEfBZXW3AF2sMbXN7jvSIj7ioJBRyHYuRjefe/L0nc/Y4NUxXAA
+ w4EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776167617; x=1776772417;
+ d=1e100.net; s=20251104; t=1776167862; x=1776772662;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Sya6TlpsOda6KIV+hWvvYKea9jRr9NPJhmjkerfAYzQ=;
- b=XS+MJbpJ4NVP35Ra8lsqlCsMYSRAtpNE+rwhZNeEyO1xVSUJfRcosdxBHyFbahGj9y
- G4Rw5Ac6eqES3gopWCOMo9pUKfYouofh2+bmIliDjfB2Z02g1aRd+JWaD3HoFnH2w3Gb
- 4X2JxxuQiRr7sS1O9B0bb9YYVGf8UKyTYpkpALW5d/ewiH7vv0c00w85WHpc1RPqJNNZ
- xX+/D4T7Rwsw7DzUXJAwd/FwMgPCCureWKiXFIkVxLvagkSVidbO9ci6SYIzfmZjGigX
- X3Tmc8xSx5hWFvwDnFCnYGQDQ9JUbp7gNbDfltp220gP4sRl+irPUhxFjAbVYQIPpmQt
- 33Pw==
+ bh=gQKTuwmRxA+OIOiaFfMIP1eOIxafDejRlksno/Y/2T8=;
+ b=cTjacaEk4zOHeuR1Mpr9fMcEO3cUvnd0PlquE+1kw2WnmKdGYaOz3A9l90iEoU+PRX
+ MY+O3NVmzxIOyGUJf/VMf0r7hXnYgChBP9LfLdKaNumWpcb2WN8GLkDyV9wbk+3y9pNc
+ WbhmivAeHwMmLqNzblM1peBsnvxe/qZyQvezmvrVeOD8CiF3obdrrXdIH7aIrUetnEMj
+ lI8zs7hbfY6JcxzN2YwKTKk7A6dENEBsrHZltAOl0SXeuA1PKhOHrgIQBsJiqNGTRlPI
+ wD/Q1WAjxRmO/ZBrO8uTNOIPN/GE3Pvx1j9JM4k4KZEzm/yRQDJGuL3Xm6x2k+l3Pn81
+ 2yuA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/mLdtM6PgEHjfNKdwSqdXvEAy9n+ggKaAhXYqN1Zid26y3uZqSc7cWkS0lpBGiCS47+lRFzZE4dQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxFu52RSP8KvNq+ueIzn0TnCuvijMFGsEoI+zI+zD/0TrYhYlzW
- v8Iihov9ayTjNcy27i3RTYo2tj5iITHCbrK/s9SGu/mtthuJCu8EK7PflecFy2crDOo=
-X-Gm-Gg: AeBDiesetmCqXpSSrm71xVKcWyBXtCsOMx7PmLsC7zuw1k+E7GEDp9LrMg+aVzP88JO
- GZTaYys50nCI1kEYQ4LQ1iaMU8O854RKQyErqbXurOYd3rRazA/arIzij064YnTiZKrAyBnWhQw
- cA7DqHnWfdCejp2nqL3xO6vfT+5LsGopeoczSGg3kD/A5ZioEZGdRrReR1zR3uBEAnrFtxZE6Q3
- VcB8rBb6L5fTJDYq52HXlGxYSpRe3g6ztwxqm/bgqju2aL5SZ+dT2jt1vxAkLlMWmJA/WQ84FQx
- zrOTrB+CoVbk+XGM9tFl1KpILElTJiY0Nyx0QbksYsplvuhLxK2fMhMgQ05dx62dA1BtTLHg4fe
- qdCTDyXn1MtbSq/Dftu7w3hGwG0pllCJ/Ur3nzsRzM7VRyMgM4hxuhzzK08XU3Hdb8pjWRw2duo
- oxC+MXwbcTnWBomgpYxJWVL9t0YOmTQl7BLCK8tnkq51KDTciNN1/K1MI9WPJClCGQjg==
-X-Received: by 2002:a05:600c:a411:b0:488:ac01:72de with SMTP id
- 5b1f17b1804b1-488d67ec72cmr187904215e9.5.1776167616992; 
- Tue, 14 Apr 2026 04:53:36 -0700 (PDT)
+ AFNElJ8pTmGNDjpJWFoVwy7T2INoprQ1hGyueXeivZvjjqEb9VEiWsk7PD5xdbZVbKnF8GEseH3Df9QmJA==@nongnu.org
+X-Gm-Message-State: AOJu0YxpiW5OhfYuhLup6an+lgVaQGW17sIdyaTxHVdNeOyOiMbtdnfo
+ LThVqZLVrps5C8FFZxn/K33bQdezQYB83CXqEzZrg756NfapdwcSuc0uN4Zw7BazXoE=
+X-Gm-Gg: AeBDiettEs7iH/Mysoeff/8MMzA8HE0xevxeB05B91VTF1P+oBbxKR3qTwJ9YY0yYhY
+ gRP4AavSUenCdrhIPNHmu8Xm2xOFMlmjHcXP596jWRowzLZ/e7ksDI036Al8s03zLyM7Aui9iXZ
+ J7/lW7kxNzJQ/ntuhsmCP5gQ5f/nrGRLfO+tDP07OwjgiwEE1UWl0Kwe2VFicVVGM21X13JAFKl
+ 4K+vNu6iI4vtbWdX3vJ2UfxoyniuNqwFphZvZ8lHYQB4LZwpvg7RbMAOlbVFDTfPsps/YuZpxjr
+ CYHSDNLwgmdeBWSSDB7DY+1xjvU83ENcXkHc5Q0KPJFtI+33Ns9EiP7BaFzFs8CPcxXrAcCUDpd
+ J9H/CmukUrZQ8BmiEyTNuS3f6pEJQOTEh8MeapDIx3b8Rp4XqQE2wWj7fKpSx/KvjmUVi/Op0j6
+ deBtagIwLXX4XsxWlcfIZkqGmZLQXWkGlVAbeL0xf5dt0OFCCAjr+ywSvdE7Ac+NSbbw==
+X-Received: by 2002:a05:6000:144a:b0:43d:78ae:b78c with SMTP id
+ ffacd0b85a97d-43d78aeb861mr11656070f8f.14.1776167862398; 
+ Tue, 14 Apr 2026 04:57:42 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488ee019e44sm78591245e9.15.2026.04.14.04.53.35
+ ffacd0b85a97d-43d63e46713sm42148734f8f.21.2026.04.14.04.57.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Apr 2026 04:53:36 -0700 (PDT)
-Message-ID: <457318b9-94a6-4b91-a963-295bbf44c7e2@linaro.org>
-Date: Tue, 14 Apr 2026 13:53:35 +0200
+ Tue, 14 Apr 2026 04:57:41 -0700 (PDT)
+Message-ID: <b763b4bc-3ec8-4815-9beb-58ed4c745a1b@linaro.org>
+Date: Tue, 14 Apr 2026 13:57:40 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 08/65] hw/intc/arm_gicv5: Create inbound GPIO lines for
- SPIs
+Subject: Re: [PATCH v2 60/65] hw/arm/virt: Create and connect GICv5
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
 References: <20260327111700.795099-1-peter.maydell@linaro.org>
- <20260327111700.795099-9-peter.maydell@linaro.org>
+ <20260327111700.795099-61-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260327111700.795099-9-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-61-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,23 +105,69 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 27/3/26 12:16, Peter Maydell wrote:
-> The GICv5 IRS may have inbound GPIO lines corresponding to SPIs
-> (shared peripheral interrupts).  Unlike the GICv3, it does not deal
-> with PPIs (private peripheral interrupts, i.e.  per-CPU interrupts):
-> in a GICv5 system those are handled entirely within the CPU
-> interface.  The inbound GPIO array is therefore a simple sequence of
-> one GPIO per SPI that this IRS handles.
+> In this commit we create and connect up the GICv5.  We do not
+> advertise it in the ACPI tables or DTB; that will be done in a
+> following commit.
 > 
-> Create the GPIO input array in gicv5_common_init_irqs_and_mmio().
+> The user-facing gic-version property still only documents and permits
+> in its setter function the existing set of possible values; we won't
+> permit the user to select a GICv5 until all the code to handle it is
+> in place.
+> 
+> Although we currently implement only the IRS, and only for EL1,
+> we reserve space in the virt board's memory map now for all the
+> register frames that the GICv5 may use. Each interrupt domain has:
+>   * one IRS config register frame
+>   * one ITS config register frame
+>   * one ITS translate register frame
+> and each of these frames is 64K in size and 64K aligned and must be
+> at a unique address (that is, it is not permitted to have all the IRS
+> config register frames at the same physical address in the different
+> S/NS/etc physical address spaces).
+> 
+> The addresses and layout of these frames are entirely up to the
+> implementation: software will be passed their addresses via firmware
+> data structures (ACPI or DTB).
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 > ---
->   hw/intc/arm_gicv5.c                | 11 ++++++++++-
->   hw/intc/arm_gicv5_common.c         |  5 +++++
->   hw/intc/trace-events               |  1 +
->   include/hw/intc/arm_gicv5_common.h |  4 ++++
->   4 files changed, 20 insertions(+), 1 deletion(-)
+>   hw/arm/virt.c         | 101 ++++++++++++++++++++++++++++++++++++++++++
+>   include/hw/arm/virt.h |  14 ++++++
+>   2 files changed, 115 insertions(+)
+
+
+> +static void create_gicv5(VirtMachineState *vms, MemoryRegion *mem)
+> +{
+> +    MachineState *ms = MACHINE(vms);
+> +    SysBusDevice *gicbusdev;
+> +    const char *gictype = gicv5_class_name();
+> +    QList *cpulist = qlist_new(), *iaffidlist = qlist_new();
+> +
+> +    vms->gic = qdev_new(gictype);
+> +    qdev_prop_set_uint32(vms->gic, "spi-range", NUM_IRQS);
+> +
+> +    object_property_set_link(OBJECT(vms->gic), "sysmem", OBJECT(mem),
+> +                             &error_fatal);
+> +
+> +    for (int i = 0; i < ms->smp.cpus; i++) {
+> +        qlist_append_link(cpulist, OBJECT(qemu_get_cpu(i)));
+
+This is OK for the virt machine; real machines should care about
+correct cluster topology.
+
+> +        /*
+> +         * GICv5 IAFFIDs must be system-wide unique across all GICs.
+> +         * For virt we make them the same as the CPU index.
+> +         */
+> +        qlist_append_int(iaffidlist, i);
+> +    }
+> +    qdev_prop_set_array(vms->gic, "cpus", cpulist);
+> +    qdev_prop_set_array(vms->gic, "cpu-iaffids", iaffidlist);
+> +
+> +    gicbusdev = SYS_BUS_DEVICE(vms->gic);
+> +    sysbus_realize_and_unref(gicbusdev, &error_fatal);
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 

@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A1A6F531DC
-	for <qemu-arm@archiver.kernel.org>; Mon, 13 Apr 2026 23:16:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C420CF531DE
+	for <qemu-arm@archiver.kernel.org>; Tue, 14 Apr 2026 00:54:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCQW3-0004Fh-IQ; Mon, 13 Apr 2026 19:16:27 -0400
+	id 1wCS2O-0000Ey-JG; Mon, 13 Apr 2026 20:53:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQW2-0004Eh-2X
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:16:26 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2N-0000Ee-A2
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:53:55 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCQW0-0001oB-I6
- for qemu-arm@nongnu.org; Mon, 13 Apr 2026 19:16:25 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-483487335c2so54395035e9.2
- for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 16:16:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wCS2L-0000Ir-Q4
+ for qemu-arm@nongnu.org; Mon, 13 Apr 2026 20:53:55 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4838c15e3cbso46411435e9.3
+ for <qemu-arm@nongnu.org>; Mon, 13 Apr 2026 17:53:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776122183; x=1776726983; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FNa31vdTTYesinZWygZld26nKJZMhIK/aY6KMecDXbM=;
- b=G+arRvwW7kLegvfH32dUlUyCvx+1o7oyiQeTZP+uqCCRzChhAZqO/nkunO5IRaxuE9
- vLCeTigoVqojd6/K9N9OPxThhEGtwtJDK0CDyd1CeHxt3LsieJi/yJbmQmBqwqTpWSHX
- 9OKLZO8LToX3vvTbjDcaW6V+yN8/VbmTqKcoRfn1X/mGrTXGFx1XqhG2Bm2BdnzgOcip
- 3fyqgvsmnW0fVWxJtgNApiskQrk/kPo/rNTljRE8LC/XvkoM0pnCMTWkOX1j1hfT5kze
- arExvgerdlOlR3nv+JnwJkAun1XgDWhsuZ8csReqnJ/A3g/D4voVV7eNpBkVVubYgkeW
- jUiQ==
+ d=linaro.org; s=google; t=1776128032; x=1776732832; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=BLI43CMKKgCVQgB5y9bVNRIgkIWGcbGh9bdZMwpHqyk=;
+ b=w6pV0tdE4d05+S1RU4MSZHI2XEoKvP2p9rov74zA1e1aNoHaLgauLL31140so8gBHD
+ lSfI5D7z7S1yIPQ9m3+vSPTJY+jlXFaa2wt8mlNQ4DlDvBRaZml4BWGrfmropVKVPW26
+ bqzrs/5isM+N7DK6KaXoQNm9LidZCo2EVatCWHwQhtF0tr2vn4vpVEd1B5BWxNccDF5f
+ 2G25fx1tmkxKjVVpEpw6MA+Qs0awJ5jjtN3+ACFv9Whh6z/YOpJDsDbsCRm1lRkMomn+
+ 7jS3DhCdK8gT5CmjBcn+9gCCKwFJO83Gnk7F6owFQth4Uiw6a2tiwW54GPTSK4Rz3WiC
+ QHVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776122183; x=1776726983;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=FNa31vdTTYesinZWygZld26nKJZMhIK/aY6KMecDXbM=;
- b=Zb1gj55avYBg0sm2SI7TTEZDjTVNi7yRCh2FsFF2MVM7Nge0j01ptxZ5bvD1/xhbIJ
- 3ZWfcCoXTJFinqU6WPSkPSDewdJqpTqkIkzvXtaEDwEmIsIJk1uOzEmcPIJp7xS9lVPh
- v/jgHg4lBgk1cvUCU25ki9JTqaumy+nj1rbrNHyVxwGYkrQqfxzQdmecZpVKjnLEnMbG
- brwy+xAR1D27/Zoi5yqLlFeU9u7xt9/kWcakalvSgjEcZ98CzxA7E/Fc4rBm8jX56HQC
- M7jhgknC7AxT/e7faQRP3NJ+uMNE4T5f0NoYvQ7JAOW6fV7/KwJg1ZNYKrg7BTAqw3Ox
- aLmg==
-X-Gm-Message-State: AOJu0Yynu7uVi1nuoBtvCYJkuKQkLk2CiJkoMooTFe18SyFd81ecqSQi
- sguEoUio97+C80AQeJHFwHtpp3Ofwa+BE1C+wnMiAjg+G0ihRVBo+iUzhGmdbHqV1o0=
-X-Gm-Gg: AeBDievFzey5idisiitLkxcqXzVjLdCjbkNNQEHGSArpBXHkk/DbYiuLBoqBB1eb5q9
- K2i4fI9xSNjEcP5VD28cD+KaXz678SKVAbFm2YO2vFw3qfWtYw+XBX2JKF3ODHsYmvQZHfIavKk
- EMNS6XHXSOxKBrL40X3KDIzELxKSswElS8YnTdvAbkaVPl98N0AjtwcPiA3KlkQqMPy1PCuKxoG
- LTgqTj7cspJUccrmDsX9b+x98qFfrByUPcyzTWVsIMkiOFxMw0MQ+imGBdaEp0lbw1YYloUFBjm
- EsteCKBoXR07wujtBA+U5y0hINJUyFsCSb5x6dVSLSvROFg6vfZ6T/CZPjn9RfMUGGbPmjLRiMm
- K+ZhAGQVlB+iT13LtfKgIOXHhkCIxvOVoj7lBgVknsMI32/k6Dn6axORtmNMyMEr9WMjpPocBZD
- GRvowAHN5278NCMs7Lj8KH80rSizmS8XGGzGUxuOL/IwjpfPGB7d2or3WSycEZIjYMeA==
-X-Received: by 2002:a05:600d:d:b0:488:d243:8da9 with SMTP id
- 5b1f17b1804b1-488d67b8cf3mr154477575e9.1.1776122182920; 
- Mon, 13 Apr 2026 16:16:22 -0700 (PDT)
-Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20251104; t=1776128032; x=1776732832;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=BLI43CMKKgCVQgB5y9bVNRIgkIWGcbGh9bdZMwpHqyk=;
+ b=LyakMj+BlPgh2ejGQt4zLu9zLOOPCaRG54vfV8fqaVLiirKlQq3wt6CQTXO8LJJbQw
+ 8I+O7xE9QzfgeAoq0Qep9IGWrgh7H/EXGMnq2R9u2FREjLThC6AAlEJ55gwYWIMqulHq
+ r59OC7j6dl5N4Urf9Id1a9umUliqvcHRMKOCUA5GfGOplvQgIXXJun57iVNwMbsSnH9g
+ ca3pjzLO4o68vKzg7hId3xjA0f4jHMBWQija5BlKz709cFI+SYgfPjVYfN25PSFpDM1/
+ I2tRIixeclNb1C5SlOtaUKUR/Wme+TspFTMmY/ytZyXja0tWYd+gjLuEpIn/2w0KW5c/
+ OXUA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9onnx3acEtTdewiC9cp0ovL5Jvqq+KyaqGqduDoN4mU0ru6T/xKD62tOoYrmXyXTqzvtFiuML3Mw==@nongnu.org
+X-Gm-Message-State: AOJu0YxRg3wemT7LR+cY6f+RnrjTIGu6A1EwFbZ+lpR6pOrD9fWxzZsd
+ KaTiGwpU6yquwM7b/yPmhIgmjtiyRBb1Xsl8rk7q/AIAZA23aaABxFEvjyasD6x/oDU=
+X-Gm-Gg: AeBDieu01mMq5ClS5UO/CjyhdEA4btCtmgll7PsLj1UD3gfeObAK3mzeMvtSFEX+WTO
+ YeZJHXiX3xZTmH/K4BY7SsSveZ3mQuLCJuJiNZrhmOkREC5ROwqF+ALQFGu8wdveZQHzAYNYa+c
+ RDCrtqPbqm+N3zSE5phErGQQzMy0J1avqHNT2qlYSfsQe6edeBkP7YrBQFYiHniPu0m1IzLqSQv
+ 8Lr0A/ALFE8LaLwI7qan6XrQvZCLevCbhjE2A+AquwzvNNrfjTQDPmk4YL3wsMpG1e+hdYJqBBF
+ DhnXY0ZbFnY3F7iE5WZe5LJppSK6fw6IDDccRIl9iNEELVN1kJcdhBpH75V6D2yQRzt1Tv8bg+7
+ I9WzZvxil84Q4dXRo+PaGKdKocNlWXlLMTiaLVHlVCJpaTyhiOXlpCsT/1k/pjilwF4SGWPeDdf
+ qGpZId4L3e/YvcLcGjwRf85JpaeqAYZLV+x5wup7kLrEu9O9B+tmo44iBE+wB9E1TgA3t7jUgJm
+ VAmWpmcd+8=
+X-Received: by 2002:a05:600c:8907:b0:488:c744:49b with SMTP id
+ 5b1f17b1804b1-488d67d2cfcmr145831695e9.7.1776128031944; 
+ Mon, 13 Apr 2026 17:53:51 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43d63e46a85sm37084974f8f.24.2026.04.13.16.16.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Apr 2026 16:16:22 -0700 (PDT)
-Message-ID: <29c46071-e19f-425a-bbeb-8dc6fbd78d4f@linaro.org>
-Date: Tue, 14 Apr 2026 01:16:20 +0200
+ 5b1f17b1804b1-488ede2ba0esm6365235e9.11.2026.04.13.17.53.49
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 13 Apr 2026 17:53:51 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/9] target/arm: Remove MO_TE to compile MVE/M helpers once
+Date: Tue, 14 Apr 2026 02:53:39 +0200
+Message-ID: <20260414005348.4767-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] linux-user/arm/nwfpe: Use thread-local storage for
- qemufpa
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-References: <20260413230251.22537-1-richard.henderson@linaro.org>
- <20260413230251.22537-4-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260413230251.22537-4-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,15 +100,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14/4/26 01:02, Richard Henderson wrote:
-> Fix the thread safety of the emulation by not storing a
-> pointer in global storage.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   linux-user/arm/nwfpe/fpa11.h | 2 +-
->   linux-user/arm/nwfpe/fpa11.c | 3 +--
->   2 files changed, 2 insertions(+), 3 deletions(-)
+Missing review: #5
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Replace build-time MO_TE definition by runtime mo_endian()
+helper, allowing to compile m_helper.c and mve_helper.c once.
+
+Philippe Mathieu-Daudé (9):
+  target/arm: Ignore endianness when setting MTE tags
+  target/arm: Explode MO_TExx -> MO_TE | MO_xx
+  target/arm: Hoist MO_TE into mve_advance_vpt()
+  target/arm: Hoist MO_TE into MVE DO_VSTR() macro
+  target/arm: Introduce mo_endian() helper
+  target/arm: Replace MO_TE -> mo_endian() for MVE helpers
+  target/arm: Compile mve_helper.c once
+  target/arm: Replace MO_TE -> mo_endian() for Cortex-M helpers
+  target/arm: Compile m_helper.c once
+
+ target/arm/internals.h      |   6 +++
+ target/arm/tcg/helper-a64.c |   2 +-
+ target/arm/tcg/m_helper.c   |   8 +--
+ target/arm/tcg/mve_helper.c | 102 +++++++++++++++++++++---------------
+ target/arm/tcg/meson.build  |   6 ++-
+ 5 files changed, 75 insertions(+), 49 deletions(-)
+
+-- 
+2.53.0
+
 

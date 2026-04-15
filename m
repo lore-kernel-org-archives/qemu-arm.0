@@ -4,81 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F13B7F433CC
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 21:56:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E1EBF433CC
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 21:57:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wD8DB-0002Bd-D4; Wed, 15 Apr 2026 17:55:53 -0400
+	id 1wD8E1-0002iC-H9; Wed, 15 Apr 2026 17:56:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8D9-000299-Su
- for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:55:51 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8Dv-0002am-Le
+ for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:56:39 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8D7-0002cf-Qc
- for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:55:51 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4887fd35e60so50876955e9.2
- for <qemu-arm@nongnu.org>; Wed, 15 Apr 2026 14:55:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8Du-0002sc-7r
+ for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:56:39 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-43d70b3e159so1870032f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 15 Apr 2026 14:56:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776290148; x=1776894948; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776290197; x=1776894997; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VuzviMl1wmLNCePSminxPRECrcBokMjkzSTP18yd1OY=;
- b=pD98zgRopECYuPYK/ack7Mbgy/S61amnk5yVpz9Z9Ic93O9pJV+Sma9oMs/Cucy9Hz
- vU4EwX+eUQP+bHzsgGnNqI7xorveQAZjJYFwsX1op2eeG7s2ktSjLpBmYfHSnUU36fDp
- s9cUjhIpMBm5ElGKZX7qw1bRLbOU4MIhTZckdZ6Xvu9RkNNYMYhGTVUIMRPAY85vacoG
- DTmYDGjXKhB0yFNm3RhgnfJDe/l0Qrikmat0nW0ftdb/U8n7qYcEnbihlJQm+j9jH/+h
- DaEqnxxvTy5bz2RxnLZwcMp4IyzlWjRegngTZBi/XTdk32SsOG65nXXqcCB9utwKxwW1
- LVnQ==
+ bh=vuIqjkDFYw/UkV0TZBDvRk6uXE3wlZHhGyuhp0aPUMA=;
+ b=RBKDgv7ximPB2GInQa14ECT1DEJGv4A/AdgyP+RbMjl8kGjtMnOc5X1JkqwqoQnmc6
+ +KomiWK1hPZ2CfXcxesobPv0clIQ1niG0i8cXGcPg2FhSZw9z9/1oeRzTQkNmVA/akW9
+ x8jvlEQEJYXX+V050irB8IiMOUEjQvxyQKLBwahmcTyKC7HKZI9mvDYPK2sgm98LPtz9
+ znWuMexzUxjTzqL1W266+8PzjcBdn52vfOlU2kHH/O9Ao29LAIu42p9CS/rTcQZlNKT6
+ 8JNz/b/tr5op9VB5E6yOGcxe0rI22BtU+hlDAHpZtpA4GeJyhcCfXmzB45rAhcaWDSYA
+ ni1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776290148; x=1776894948;
+ d=1e100.net; s=20251104; t=1776290197; x=1776894997;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=VuzviMl1wmLNCePSminxPRECrcBokMjkzSTP18yd1OY=;
- b=HdkQrTNzLV6Iu/gb484dM0LzeUNtqoQL4I+qLNv167v3VZsuMR0TBesw0GcnCWSZy5
- aUgcttQTpQZxXMaMg3Px7hExh+RRtQyZIxsDChMVLd1a9Ked8Jh4DmcA8OMSxXE61SSI
- ExdjnpJa9/t4Yo8CL/S0nSPr8s/KyunjnRjNN/xyyxq0S4xPPoRnB0kRtIjNGJDmwg+8
- fzzibH5t6qtZrHaZOgLK/2fRS8Vr1fZwMzI9NfVswLgVymRzbXQGAiH2iIhETICrar3y
- vquDxzhq6LNhLLDXPVf50M9hA9HwyTGg1aLyk5e6abb1cTiD3FVEFG1ksIEI5yPM7niH
- 1AjQ==
-X-Gm-Message-State: AOJu0YzaLd0G/Fg5UBmpKFqbtdcLs6nZFKDWPTng9PTQ/Vf2F+j0c0Qp
- OzapTgjMHvFQoZCug3bKvigM87hby3fj7S6vyWWIKBp4LEY534h9KeVrlvl5q5/i50tncVZ3IC7
- gvBjdTFQ=
-X-Gm-Gg: AeBDievjF3i9YbCFjXV4tLtRGk1gUvVfg2ZWoKD7o9wWK1U6VNjBp0a3iVrpxdkoYzs
- Xm4jPKdhfnjaq5zKctfpHVJiZSzKFR34mFX65Ft/XtVdP4CG1iJB26gnCAUYBNd0kGVZiywmzxb
- x4YPPX6vN6Cxcx5StxAO3bW1W3Le1Yr1m9Fh0n1/c4H1mxI8FbL1aMtZ3KdgxXkMj+5RZjMptR0
- uWSvSMFANR+gOvRZ/cQDKZ4kj4bkmsBvxMtU54jo2J3u9c9uh945XZk4VS5aahzRH5Tv3TD9EYV
- Ifgki6AfDz5CHzKRUrZDnIH3N8ClgpUUXN0lF8W3j2bGx8RYxd29QOqo2gYxGAd9m59sqUBG9jf
- rpNj5ECaRj3BH1UOd1o8KkaSbFPKWahdKyUaqebJvvZm0YGZu7MCwP1aGXuIIJymgt1qFxVsHjv
- iqDt9i+F5L4QZKzaRa/Kxcc7z3kpD8zojJYKp7gHB30F1H7CXA7DI8MJvhR2mYHlqiIIgSrang
-X-Received: by 2002:a05:600c:34cc:b0:485:557d:9fe with SMTP id
- 5b1f17b1804b1-488d67e65e7mr307710595e9.12.1776290148183; 
- Wed, 15 Apr 2026 14:55:48 -0700 (PDT)
+ bh=vuIqjkDFYw/UkV0TZBDvRk6uXE3wlZHhGyuhp0aPUMA=;
+ b=Lm32Yv8oNKLvmOhIqNCN7FlUFb8pNMiGvNIxaRd3a5bhnV9BykFSRYWu8kmgIcOr19
+ Z6WtYdaeluBNQKQWg7b5UlfikNru3BU9AyO7H94fpv2asEIJKJVX/FY/x+0js25ZErpC
+ 6FyIqm43ey+Mf6asb4hKTJihSZnccqGZiRbke+rZgeT1VB5M4YqQr3cS+KIF/Ooczyfl
+ tp4KsNYmerL+FpjfIJj1SVl7Nv9hbl78xu/7bFhUBLE1z4WRinGuWhuHYY10RPe+YuOH
+ O2AVp+hZsjDQEeRCo2IROH6XjO+2Wd1U4LlJIU07Vj0bQ8eyCN6iYj3ZClJ/HiZdgRf4
+ ktwQ==
+X-Gm-Message-State: AOJu0YycH3PmEvcDHz0NmLriW4EVPLSXRLaGmvoGCxRxNJ5oZ4XulRKV
+ P581bj06xu6FpIKfn4HsF0GW4DUnhmRFbHA+DqZfv9++xBxW8rq/MqM7Z0mv77rMkls=
+X-Gm-Gg: AeBDietG4ZUtyGAHNJAutcPQni5Bv5rmo/6B43FCEdvzru1ERLPBaEHFBBVgoLG21O+
+ UsjChl9h/6WD51p1/Ie9IqGU+N7kORul7kZd/g32ziDPhYWBEHH2z4AQaCiHvZvjqufNUdKEHD5
+ 0+nh72HvxrSbneMbSQXRKI9V8UEC2UZZ113hHjkZyOOfMH9YP231QLfYvmDk8+AT6m/8e/kvOcx
+ B5QKUL0Yk/gQqlgt/622lzk6NuiqesJpc1Nf0AF6fKft5qB0J4+ddJElW+kmthyZprcjjPp0eOs
+ UuOhgdkX1NdOoI41lGobd9bIqrXejjrYp7QzDEvf6874vFigcFA+u2UjG76r2MZRk4lH77iL11d
+ G9O1uB4jbTade4mEZbaEhWkymaDG+jRO1fKnzmGqtuWcnnMwL/udiJc0TXKYZ4rtzpNGcQA9fjE
+ nvQICIkUNoo+TCqkxQBWqkuserg8tI2yeMl7+DOXIVEtEBDuOh+VD5s1WrtGwCerzsquGXFdtr
+X-Received: by 2002:a5d:5f92:0:b0:43b:60f7:2283 with SMTP id
+ ffacd0b85a97d-43d64289753mr35084545f8f.22.1776290196656; 
+ Wed, 15 Apr 2026 14:56:36 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488f5813954sm651235e9.3.2026.04.15.14.55.47
+ ffacd0b85a97d-43ead3dfff3sm7480881f8f.26.2026.04.15.14.56.35
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 15 Apr 2026 14:55:47 -0700 (PDT)
+ Wed, 15 Apr 2026 14:56:35 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
  qemu-block@nongnu.org
-Subject: [PATCH 1/8] cocci: Do not initialize variable used by QLIST_FOREACH
- macro
-Date: Wed, 15 Apr 2026 23:55:32 +0200
-Message-ID: <20260415215539.92629-2-philmd@linaro.org>
+Subject: [PATCH 8/8] target/riscv: Iterate vCPUs using CPU_FOREACH() macro
+Date: Wed, 15 Apr 2026 23:55:39 +0200
+Message-ID: <20260415215539.92629-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260415215539.92629-1-philmd@linaro.org>
 References: <20260415215539.92629-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: 4
 X-Spam_score: 0.4
 X-Spam_bar: /
@@ -101,175 +99,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The QLIST_FOREACH() macro, defined in "qemu/queue.h",
-always assigns its iterator variable when entering the
-loop. Remove the pointless and possibly misleading
-assignment.
-
-Mechanical patch using the following coccinelle spatch:
-
-  @@
-  type T;
-  identifier e;
-  iterator FOREACH_MACRO =~ ".*_FOREACH.*";
-  statement S;
-  @@
-  -    T *e = ...;
-  +    T *e;
-       ... when != e
-       FOREACH_MACRO(e, ...) S
+Most code iterates over vCPUs using the CPU_FOREACH()
+macro. Prefer cpu_env(cpu) over &cpu->env.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- block/blkio.c               | 2 +-
- block/gluster.c             | 4 ++--
- hw/arm/virt-acpi-build.c    | 2 +-
- hw/i386/xen/xen-hvm.c       | 4 ++--
- hw/riscv/riscv-iommu.c      | 2 +-
- hw/vfio/cpr-legacy.c        | 2 +-
- hw/vfio/listener.c          | 4 ++--
- hw/xen/xen_pt_config_init.c | 4 ++--
- 8 files changed, 12 insertions(+), 12 deletions(-)
+ hw/riscv/boot.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/block/blkio.c b/block/blkio.c
-index 20f138a38c5..fb8bec27d71 100644
---- a/block/blkio.c
-+++ b/block/blkio.c
-@@ -124,7 +124,7 @@ blkio_do_alloc_bounce_buffer(BDRVBlkioState *s, BlkioBounceBuf *bounce,
-                              int64_t bytes)
+diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
+index e5490beda00..61e21678cd1 100644
+--- a/hw/riscv/boot.c
++++ b/hw/riscv/boot.c
+@@ -490,10 +490,11 @@ void riscv_setup_direct_kernel(hwaddr kernel_addr, hwaddr fdt_addr)
  {
-     void *addr = s->bounce_pool.addr;
--    BlkioBounceBuf *cur = NULL;
-+    BlkioBounceBuf *cur;
-     BlkioBounceBuf *prev = NULL;
-     ptrdiff_t space;
+     CPUState *cs;
  
-diff --git a/block/gluster.c b/block/gluster.c
-index 4fb25b2c6d8..279f650241c 100644
---- a/block/gluster.c
-+++ b/block/gluster.c
-@@ -251,7 +251,7 @@ static void glfs_set_preopened(const char *volume, glfs_t *fs)
- 
- static glfs_t *glfs_find_preopened(const char *volume)
- {
--    ListElement *entry = NULL;
-+    ListElement *entry;
- 
-      QLIST_FOREACH(entry, &glfs_list, list) {
-         if (strcmp(entry->saved.volume, volume) == 0) {
-@@ -265,7 +265,7 @@ static glfs_t *glfs_find_preopened(const char *volume)
- 
- static void glfs_clear_preopened(glfs_t *fs)
- {
--    ListElement *entry = NULL;
-+    ListElement *entry;
-     ListElement *next;
- 
-     if (fs == NULL) {
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 591cfc993c6..a38a835d48d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -146,7 +146,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
- {
-     int ecam_id = VIRT_ECAM_ID(vms->highmem_ecam);
-     bool cxl_present = false;
--    PCIBus *bus = vms->bus;
-+    PCIBus *bus;
-     bool acpi_pcihp = false;
- 
-     if (vms->acpi_dev) {
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index 67d3e836eb1..d3ce082e07a 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -184,7 +184,7 @@ static void xen_ram_init(PCMachineState *pcms,
- static XenPhysmap *get_physmapping(hwaddr start_addr, ram_addr_t size,
-                                    int page_mask)
- {
--    XenPhysmap *physmap = NULL;
-+    XenPhysmap *physmap;
- 
-     start_addr &= page_mask;
- 
-@@ -200,7 +200,7 @@ static hwaddr xen_phys_offset_to_gaddr(hwaddr phys_offset, ram_addr_t size,
-                                        int page_mask)
- {
-     hwaddr addr = phys_offset & page_mask;
--    XenPhysmap *physmap = NULL;
-+    XenPhysmap *physmap;
- 
-     QLIST_FOREACH(physmap, &xen_physmap, list) {
-         if (range_covers_byte(physmap->phys_offset, physmap->size, addr)) {
-diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
-index c3c9ed6469a..bdc64b70ff2 100644
---- a/hw/riscv/riscv-iommu.c
-+++ b/hw/riscv/riscv-iommu.c
-@@ -1681,7 +1681,7 @@ static void riscv_iommu_ats(RISCVIOMMUState *s,
-     IOMMUAccessFlags perm,
-     void (*trace_fn)(const char *id))
- {
--    RISCVIOMMUSpace *as = NULL;
-+    RISCVIOMMUSpace *as;
-     IOMMUNotifier *n;
-     IOMMUTLBEvent event;
-     uint32_t pid;
-diff --git a/hw/vfio/cpr-legacy.c b/hw/vfio/cpr-legacy.c
-index 033a546c301..c431d899731 100644
---- a/hw/vfio/cpr-legacy.c
-+++ b/hw/vfio/cpr-legacy.c
-@@ -212,7 +212,7 @@ void vfio_legacy_cpr_unregister_container(VFIOLegacyContainer *container)
- void vfio_cpr_giommu_remap(VFIOContainer *bcontainer,
-                            MemoryRegionSection *section)
- {
--    VFIOGuestIOMMU *giommu = NULL;
-+    VFIOGuestIOMMU *giommu;
-     hwaddr as_offset = section->offset_within_address_space;
-     hwaddr iommu_offset = as_offset - section->offset_within_region;
- 
-diff --git a/hw/vfio/listener.c b/hw/vfio/listener.c
-index 960da9e0a93..cf2f9ef5e8f 100644
---- a/hw/vfio/listener.c
-+++ b/hw/vfio/listener.c
-@@ -337,7 +337,7 @@ static void vfio_ram_discard_unregister_listener(VFIOContainer *bcontainer,
-                                                  MemoryRegionSection *section)
- {
-     RamDiscardManager *rdm = memory_region_get_ram_discard_manager(section->mr);
--    VFIORamDiscardListener *vrdl = NULL;
-+    VFIORamDiscardListener *vrdl;
- 
-     QLIST_FOREACH(vrdl, &bcontainer->vrdl_list, next) {
-         if (vrdl->mr == section->mr &&
-@@ -467,7 +467,7 @@ static void vfio_device_error_append(VFIODevice *vbasedev, Error **errp)
- VFIORamDiscardListener *vfio_find_ram_discard_listener(
-     VFIOContainer *bcontainer, MemoryRegionSection *section)
- {
--    VFIORamDiscardListener *vrdl = NULL;
-+    VFIORamDiscardListener *vrdl;
- 
-     QLIST_FOREACH(vrdl, &bcontainer->vrdl_list, next) {
-         if (vrdl->mr == section->mr &&
-diff --git a/hw/xen/xen_pt_config_init.c b/hw/xen/xen_pt_config_init.c
-index 3edaeab1e34..bbc82a2bcfa 100644
---- a/hw/xen/xen_pt_config_init.c
-+++ b/hw/xen/xen_pt_config_init.c
-@@ -62,7 +62,7 @@ static int xen_pt_hide_dev_cap(const XenHostPCIDevice *d, uint8_t grp_id)
- /*   find emulate register group entry */
- XenPTRegGroup *xen_pt_find_reg_grp(XenPCIPassthroughState *s, uint32_t address)
- {
--    XenPTRegGroup *entry = NULL;
-+    XenPTRegGroup *entry;
- 
-     /* find register group entry */
-     QLIST_FOREACH(entry, &s->reg_grps, entries) {
-@@ -80,7 +80,7 @@ XenPTRegGroup *xen_pt_find_reg_grp(XenPCIPassthroughState *s, uint32_t address)
- /* find emulate register entry */
- XenPTReg *xen_pt_find_reg(XenPTRegGroup *reg_grp, uint32_t address)
- {
--    XenPTReg *reg_entry = NULL;
-+    XenPTReg *reg_entry;
-     XenPTRegInfo *reg = NULL;
-     uint32_t real_offset = 0;
+-    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
+-        RISCVCPU *riscv_cpu = RISCV_CPU(cs);
+-        riscv_cpu->env.kernel_addr = kernel_addr;
+-        riscv_cpu->env.fdt_addr = fdt_addr;
++    CPU_FOREACH(cs) {
++        CPURISCVState *env = cpu_env(cs);
++
++        env->kernel_addr = kernel_addr;
++        env->fdt_addr = fdt_addr;
+     }
+ }
  
 -- 
 2.53.0

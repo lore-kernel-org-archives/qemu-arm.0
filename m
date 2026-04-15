@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF25FF41991
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 10:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61399F4198B
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 10:58:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCxx0-0001w6-Vi; Wed, 15 Apr 2026 06:58:31 -0400
+	id 1wCxwX-0001L8-LA; Wed, 15 Apr 2026 06:58:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wCxwp-0001eb-Uo; Wed, 15 Apr 2026 06:58:20 -0400
-Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
+ id 1wCxwT-0001CA-N9; Wed, 15 Apr 2026 06:57:58 -0400
+Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wCxwo-00049m-AN; Wed, 15 Apr 2026 06:58:19 -0400
+ id 1wCxwR-00046L-Uu; Wed, 15 Apr 2026 06:57:57 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=a72CkQUrzDDhHmeDKKggrmM7/RbNMtBPLd15xcunxl18IEqH8z2aY/QDJh/s4ihCvnCLWXs8IVm3DY0EmCHx74T53ZAa2BIoecoDGguj7khy3gTT+bmTS/sAujxVAf4QNTGUohYnhAc9g8fzIuLt19L9FWDzpSNauPpmWwVscsobKbuyTkhGtSdyh7rQjRjnj7v4opQ5h+ZEkik041zRqhmh2kTNrUadhkT7b06wrWaj1D2/LkFl/dzdqzvVMZHGDFnO9FJRg6MJEru1TUy4ghgEx7pSU8U1uJ99bVq7JEtoJ1M5Rv9ScgxQbFavWHLQXOgfSHtquvlb+Q6SbBS0zQ==
+ b=bOqG/IiK+dSU4yv8o4iTadunESkuKFAT6UkDL3IXSCYI+bx5uauYkXH2o4pCWp/QXqeRpJQODLVQoI6HUPlCasyM6GMXhsyX9xgoqqBg+y0PA7vPApQC0tkcz+5BCQVMypE7XWTZYzHOOqHCYTE3N/CRtUyHxMRRE4jF0/FawUYIcKphtQbkB6fMbEAF93/TYC8SYEDXBaIoSXMjqB/jiJYv0nmciFqJZZhdZOGHdjc2b/+cSoAzdS21KB8bux9wJWm4saysTGkzTlT7jKFogflqdZEjqB4Ql89lG37U06/2aHggVMy+AnHurLpo5SJb6Y/ArWHXZAsL4KCuTIkyZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=88lDOJP+DRVIEkOLe/8oAZrn22rYofsJhUkimrenwNs=;
- b=eQbyqJEcHAtQQlig2y5Yz+aVulw+GVW4/6qNOQsNMPzDno6pucN8hi+7fUu5vVr2BpHnOVc/Hbpvk0IRfN9re8enxIfm98TIhb550QSimZoCmQgUFMGYUUf1p/6ftE0qdC4SByVpjTnzLD2AwgjQ0OXUiCnQhT0Lb1KZAHqCWyyrB2db7ziyXfgnZZzlsGfKygrf3jLtbsK72Dm/x+4FlMbn+6u37Z3WgQ+wmpcArXK0hjmsmZ7DUp+YmI37AxOAs++J56uKaXluZe2rX4LXcJ9OkmXuA+gtZNzS3uZVkst76Ci5VbC+S44hJPI0X8sHGiYcTgnoFYjPTQ7/4n+iyw==
+ bh=Te/0XjktDMR8XmnQ+TH0yCPDRBpENHTYEk1GG9jys2U=;
+ b=NwXsKpMKN6zGwGoZIDdJlocVINT3bulHcLkEXJ84E1HLVjaMK0F3JxNMHl8xYbWQf4ivCjuH/2u86FuJw5fywhlyWTSiWD/xfawlEx81cOGTs61D3zkpBDz6W8e6LXXZGN5yZZTw53irT1i/5DNKKOwCJeP/APEjd+QFm0Ro+xZWIxwhNxRXfa9jC3vt1ns4t0Tmyu2YGOhKnmQxMv7o3PXRNeDe5bWw03Q+ubHqvGV2SxVe3SkjXx086M3uSk67PRgAt9pdFdYBu6zRYhecMUNWfXRKB1gdafAZ62zH72nf/6JL7SZe/5xQpfvIl2uIFd1ddOfVAXeKoJDpF7RESQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=88lDOJP+DRVIEkOLe/8oAZrn22rYofsJhUkimrenwNs=;
- b=LLQ6/SZ9i6cGbuk4M2ZOWgZaAsdbGeybK5A1mBDz/QR3V46ytP0hroszCw+gbTfBniXoUsGATWannA/LfsUYCRvDfxM62qCnvG7pfpy/tlf2YsspcqPSh4lkRU5MjK2rEEV7Uzso1855Y4A9bm3e5yFAjIpR+TSOP3idJ8eawbKngVUQms8gzSZjr879Ku8WzstlFDymQzkR13VilZ3CtqRgqb4ytTSxGdvbbcUc5E7hPANDXl0u8boQdPRrMKAWaDzHxHwHxpb86yqqC4Kx5r2Wjyn0o17noAspmXvpfXQhpOxKghIlwtIQ1T9x9H1PQtokSR9lX4aaCr3ynqySgQ==
-Received: from DM6PR02CA0118.namprd02.prod.outlook.com (2603:10b6:5:1b4::20)
- by DS0PR12MB7581.namprd12.prod.outlook.com (2603:10b6:8:13d::21) with
+ bh=Te/0XjktDMR8XmnQ+TH0yCPDRBpENHTYEk1GG9jys2U=;
+ b=T2ofGS+ZpVqgrwe+51yQgorLMH2i9/el1/c128U1XA24je04xP+WehE/So+e3OxRtfCTPDYBjpgtyAGqBcOq9DUseRTtiSXnC0LD+5crjiGrD3MC4n9nNTKvkBFD9mNK6JpsIQDZKr3q76PjZ9aMPb/S6aYdpa7VgttVSBduAWYGntAKUU1Us3ofYlZIPi4fqc0xRqKQAHjUfrNBSroei4ytdKcXJTNWQPro5Otzd+OzTSyw89C0y6XkCKwZEq9waI5yH4r9Kse9tPG+grISmrTsiCVrfCTLfEPVD0fIVIqniWg9JBvTuXApJczrnrQ5ckK+OdOWcTqfM0xG7nlBMw==
+Received: from DM6PR01CA0030.prod.exchangelabs.com (2603:10b6:5:296::35) by
+ LV2PR12MB5941.namprd12.prod.outlook.com (2603:10b6:408:172::21) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.48; Wed, 15 Apr
- 2026 10:58:06 +0000
-Received: from CY4PEPF0000EE3D.namprd03.prod.outlook.com
- (2603:10b6:5:1b4:cafe::4d) by DM6PR02CA0118.outlook.office365.com
- (2603:10b6:5:1b4::20) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.48 via Frontend Transport; Wed,
- 15 Apr 2026 10:58:05 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.20; Wed, 15 Apr
+ 2026 10:57:49 +0000
+Received: from CY4PEPF0000EE3B.namprd03.prod.outlook.com
+ (2603:10b6:5:296:cafe::f9) by DM6PR01CA0030.outlook.office365.com
+ (2603:10b6:5:296::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.49 via Frontend Transport; Wed,
+ 15 Apr 2026 10:57:49 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.160 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.160) by
- CY4PEPF0000EE3D.mail.protection.outlook.com (10.167.242.15) with Microsoft
+ CY4PEPF0000EE3B.mail.protection.outlook.com (10.167.242.14) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9769.17 via Frontend Transport; Wed, 15 Apr 2026 10:58:05 +0000
+ 15.20.9769.17 via Frontend Transport; Wed, 15 Apr 2026 10:57:49 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 15 Apr
- 2026 03:57:48 -0700
+ 2026 03:57:33 -0700
 Received: from NV-2Y5XW94.nvidia.com (10.126.230.37) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 15 Apr
- 2026 03:57:45 -0700
+ 2026 03:57:29 -0700
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
@@ -71,10 +71,9 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
  <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
  <jonathan.cameron@huawei.com>, <zhenzhong.duan@intel.com>,
  <kjaju@nvidia.com>, <phrdina@redhat.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
- VCMDQ backing
-Date: Wed, 15 Apr 2026 11:55:41 +0100
-Message-ID: <20260415105552.622421-21-skolothumtho@nvidia.com>
+Subject: [PATCH v4 16/31] hw/arm/tegra241-cmdqv: Emulate VCMDQ register writes
+Date: Wed, 15 Apr 2026 11:55:37 +0100
+Message-ID: <20260415105552.622421-17-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260415105552.622421-1-skolothumtho@nvidia.com>
 References: <20260415105552.622421-1-skolothumtho@nvidia.com>
@@ -86,39 +85,38 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE3D:EE_|DS0PR12MB7581:EE_
-X-MS-Office365-Filtering-Correlation-Id: e48247ac-a224-44c1-372f-08de9adddf37
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE3B:EE_|LV2PR12MB5941:EE_
+X-MS-Office365-Filtering-Correlation-Id: f4740af8-16e1-4c84-9c15-08de9addd56c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|82310400026|1800799024|376014|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: TtqaLwwEu1J8tnQX4+Pn8tj2d8ecBaHfQ5phA/vJZS1icT2vAGEftCQ6LgCe+mLZ0zwqa0vwjHBJeopwbpzwI/MaNRA9YWDWnXGi9hG1EsNARZW8ELAUYxhysU+qxVRqE6wWnXO+oVDt5rQVUGwQN+rKsOKPwLeMy2Lcg0kqpayOuYUG6EQlbb0fB34jVlWS6+1UbRnHV44K0FlFuVwx5LNQUV7ngKyKFyX0HHhsZmtuRTL1E7pUVXFl5tasLUP/Rjx1z9IPn+o16p14JynzLiEeZY8ShgM8nwFCt2yIiDKScEB2lPxX6fX8Svg44iMCN9grMiab/j6SUyhaJm6zkaL8zfVnPi0l95X7NGN3STyB5513Tk3K4lqkXWgH6lb76q6pBYmknrErAinhvAuM2XBWbRVZ7R3eTWKIEu/OdC+j95ZIdb4I3hriwgSQoOW4WKRq6elS++Ofi+kCHu0aScrpOEZNpgwcLusYIsQjTCxcOntyRteL0/B/PhohTDDq8EqxSQNYDuYTI6BsSD0FoM+xTSeJrDWpFw/ddpVzQnGpfp4jHdCJ9dFumRhqoEweWQ6p8XgEfrxyV324uUyWx5Cgx8UptD2Hy2Nl09+SvPr6qNaIoFTGEsCkIyfEC6TIZToG6uDMkQaj451bYbXmJFj2QnBVPOAMr3Yeygu54WeAz/dgOtGQNpXMbDDvqHwj82gE0lo9dAajSses1qQskuCgfx+Lb7A+PO4YoeLmnYfSZi9mUP1x1Lc/hIEo3ShwKoFG3ggjB68U/Tu9cDNqzQ==
+ ARA:13230040|36860700016|82310400026|376014|1800799024|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: usKKRnCpa548y9jgfLS8sa8mRS3Qff6pCQ4OH68dYjcR4kxjGELGQtAY/C2h5GYCRqAvnWKmIlAcMQEv0NndaD5Ve7aIM2YFCTm+TlqTEsREwUmtHF1WPZPl/YvFrApA5CvdyTy5ek2IHB+uXrQaFm7K+lj+SS5v+vk4duXeZcXHiSG9i+tvmE6Mpw/a+G073ESXMMv4Zy74zugeHWqYgxhjuhzHSV+pACLruC5A4sK2s42VqWtBINib8SzUHHogI7s5+c725VkYdp37Yys7QOAicErENaMYPwHzI6x+KEhzJBsFWvCpANFe3Feu+6BU1wvgt1NMQJmkcPNPHQVlerqkfbFwH/MB9w7Jy2JDvWHXG+9JM72k0TYKjvjU01o2GVo7fa4wjkrhuPJIGIyLn59SmYBsXuBGRHk51L5ngUYnzU4XNBindLJdaRsckDRHRrtPJTn2tQGlL4P4Zxf2tEtfKj63+hTwGU9nZfXa7Y84lgRtyGfQoHdjdwebmDuYmdFJG/Vbo7jK8tubyLttcBwdXG4n5YziU21FyB5uc0snKs2HF022S1RhJjYF5p/QuAUlQeS7xswsO3q/KkuP99mgn5Nwpv5a4OqIIEOUFUbKMQmVRz3jSFTJ005Qffqy1MlfhYC0qIxpNZ7My1fOyuwJM8/F42k3Wg3MkgcwkKc2VFdsOZkHhxsbOM+rjfXpE5NzAQojvSrZ7nDV12F9FBjj/8l9WqKaT9tqFefR+3wMF1fFAR68nZsxToxuujQUw7yKxCmaDU/Ioe9OmQLqNw==
 X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700016)(82310400026)(1800799024)(376014)(22082099003)(56012099003)(18002099003);
+ SFS:(13230040)(36860700016)(82310400026)(376014)(1800799024)(56012099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: gwdfJYpfN7gMNHzrv5qa38iEq5BPg4sPJjx2n57Ssa8ttf5iRK6LcY3nZdqbK6mZAehYtihIRRkiRrbyQyoqFUdpLzmMAQDOStFQzytKiMIPDAYAA7lY5c4c1eSfTFl7c7hQeCcpnng7RQUQjzZVrsEwSdB8BBhPmpMrkqikAnmgZ5aRxKIi8kGYdrEmEJDZaLOkHwFOV23jYvrh2zGb0QcDGdgDbGCMzMq6gIfY1eJdCpwqTZ7x2YWVxkKyakzfhOIUF6FW30ibr6MDMQQ0l1yws0vWN956mhXkRC2xgGfX0MkXwL+WRKpQxr/siFtNBCpdmFDHMCcJWbjZDg8B2wWtXnsv3h8qV3B/zNNC1eGtYd/pwo++uVsQMiSjbtcaEPhqMTd0TZbTDEYXQc4+xEqCP7ejDU1hBCEkrT058ITsaWAtLhMCfXNrKlJUeW7R
+X-MS-Exchange-AntiSpam-MessageData-0: e744lZ+WgyHXEqVywTjlfiPu9ScItBiRSFb+epN60jhMWBF3jFvhAw5FRaME3MwQtZIHEaBodmRRb9Wnc4bpammGjHobWRq5YLxCYqxcQmzWxacsTv5cf7OuzMxcgMKa9ENBNutN23KtYzNQ+j4As4CJpDbJJKyD/P3Vy7a4Q0QfZdboVUhi/LexN8VyaW9zezivOqgcOn+RTFmHrpqdT3VkRPJM+Vba9aKFKP4kKSTATd2u8eVKetIo/2RjQK1FOXdquKU1QAr418ajWb+cLpkBfNo5n06Dtazb+ofRQodCzl9HA3Bp8DQ2l9IKjNjBa0sX0BRNAFc68rQLbVqN/Sd/m+3MYDrbdK84eRCJP90hgIQxvYBoKlRWSBEbc+BoFkCWJt4IxH0fQZ5Fuwth8yB3rRrZnXJ3sf6ynXgooMm2N38gFQnOfxGZ6oB2pQMN
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2026 10:58:05.5140 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: e48247ac-a224-44c1-372f-08de9adddf37
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2026 10:57:49.0844 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f4740af8-16e1-4c84-9c15-08de9addd56c
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE3D.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE3B.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB7581
-Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5941
+Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
  envelope-from=skolothumtho@nvidia.com;
- helo=CH5PR02CU005.outbound.protection.outlook.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
+ helo=PH8PR06CU001.outbound.protection.outlook.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,132 +132,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce tegra241_cmdqv_vintf_ptr() to route VCMDQ register accesses
-through the mmap'd VINTF page0 backing once a hardware queue has been
-allocated.
+From: Nicolin Chen <nicolinc@nvidia.com>
 
-There are two QEMU trapped MMIO apertures for VCMDQ registers:
+This is the write side counterpart of the VCMDQ read emulation. Add write
+handling for both CMDQV_CMDQ_BASE and CMDQV_VI_CMDQ_BASE apertures using
+the same index decoding and VINTF-to-VCMDQ translation logic as the read
+path.
 
-  - Direct VCMDQ aperture (offset 0x10000)
-  - VINTF Page0 (offset 0x30000)
+VINTF aperture writes are translated to their CMDQV_CMDQ_BASE equivalent
+and update the same cached state. Page1 registers (BASE, CONS_INDX_BASE)
+always update the cache. Once IOMMU_HW_QUEUE_ALLOC and viommu_mmap are
+wired up in a subsequent patch, Page0 register writes will be forwarded
+to the hardware-backed mmap'd page.
 
-These are hardware aliases: they address the same underlying registers.
-A subsequent patch maps the VINTF aperture as a guest-direct RAM region;
-in this patch both remain QEMU-trapped.
-
-VCMDQ register accesses operate in one of two mutually exclusive modes,
-depending on whether a hardware queue (IOMMU_HW_QUEUE_ALLOC) has been
-allocated for the VCMDQ:
-
-Pre-alloc: vintf_ptr is NULL. Both apertures use QEMU's register
-cache. Hardware is not yet engaged;
-
-Post-alloc: vintf_ptr is valid. Both QEMU trapped apertures access
-registers directly via the mmap'd vintf_page0 pointer, bypassing
-the cache. Hardware is the single source of truth.
-
-The pre-to-post-alloc transition is triggered by the BASE register write
-that initiates IOMMU_HW_QUEUE_ALLOC. No cache-to-hardware synchronisation
-is needed at transition time. The hardware mandated init sequence requires
-BASE to be written first; PROD_INDX, CONS_INDX and CONFIG.CMDQ_EN are
-programmed only after BASE and are therefore always post-alloc.
-
-Any pre-alloc writes to those registers update only the register cache,
-which is discarded at the transition.
-
-CMDQV acceleration only becomes active once the guest enables VINTF and
-programs the VCMDQ BASE register. Until then, all VCMDQ accesses are
-served from the emulated register cache with no real hardware command
-processing. This matches the CMDQV hardware specification: if the logical
-CMDQ index does not map to any allocated Virtual CMDQ, "the access is
-dropped with no Fault/Interrupt".
-
+Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/tegra241-cmdqv.c | 48 ++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 47 insertions(+), 1 deletion(-)
+ hw/arm/tegra241-cmdqv.c | 99 +++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 99 insertions(+)
 
 diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-index b5f2f74cf2..eb619e1134 100644
+index 35e6f0bbd6..d4ba2ada92 100644
 --- a/hw/arm/tegra241-cmdqv.c
 +++ b/hw/arm/tegra241-cmdqv.c
-@@ -75,17 +75,45 @@ static bool tegra241_cmdqv_setup_vcmdq(Tegra241CMDQV *cmdqv, int index,
-     return true;
+@@ -55,6 +55,70 @@ static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+     }
  }
  
-+static inline uint32_t *tegra241_cmdqv_vintf_ptr(Tegra241CMDQV *cmdqv,
-+                                                 int index, hwaddr offset0)
++/*
++ * Write a VCMDQ register using VCMDQ0_* offsets.
++ *
++ * The caller normalizes the MMIO offset such that @offset0 always refers
++ * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
++ */
++static void tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
++                                       int index, uint64_t value,
++                                       unsigned size)
 +{
-+    if (!cmdqv->vcmdq[index] || !cmdqv->vintf_page0) {
-+        return NULL;
++    switch (offset0) {
++    case A_VCMDQ0_CONS_INDX:
++        cmdqv->vcmdq_cons_indx[index] = (uint32_t)value;
++        return;
++    case A_VCMDQ0_PROD_INDX:
++        cmdqv->vcmdq_prod_indx[index] = (uint32_t)value;
++        return;
++    case A_VCMDQ0_CONFIG:
++        if (value & R_VCMDQ0_CONFIG_CMDQ_EN_MASK) {
++            cmdqv->vcmdq_status[index] |= R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
++        } else {
++            cmdqv->vcmdq_status[index] &= ~R_VCMDQ0_STATUS_CMDQ_EN_OK_MASK;
++        }
++        cmdqv->vcmdq_config[index] = (uint32_t)value;
++        return;
++    case A_VCMDQ0_GERRORN:
++        cmdqv->vcmdq_gerrorn[index] = (uint32_t)value;
++        return;
++    case A_VCMDQ0_BASE_L:
++        if (size == 8) {
++            cmdqv->vcmdq_base[index] = value;
++        } else {
++            cmdqv->vcmdq_base[index] =
++                (cmdqv->vcmdq_base[index] & 0xffffffff00000000ULL) |
++                (value & 0xffffffffULL);
++        }
++        return;
++    case A_VCMDQ0_BASE_H:
++        cmdqv->vcmdq_base[index] =
++            (cmdqv->vcmdq_base[index] & 0xffffffffULL) |
++            ((uint64_t)value << 32);
++        return;
++    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
++        if (size == 8) {
++            cmdqv->vcmdq_cons_indx_base[index] = value;
++        } else {
++            cmdqv->vcmdq_cons_indx_base[index] =
++                (cmdqv->vcmdq_cons_indx_base[index] & 0xffffffff00000000ULL) |
++                (value & 0xffffffffULL);
++        }
++        return;
++    case A_VCMDQ0_CONS_INDX_BASE_DRAM_H:
++        cmdqv->vcmdq_cons_indx_base[index] =
++            (cmdqv->vcmdq_cons_indx_base[index] & 0xffffffffULL) |
++            ((uint64_t)value << 32);
++        return;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s unhandled write access at 0x%" PRIx64 "\n",
++                      __func__, offset0);
++        return;
 +    }
-+    return (uint32_t *)(cmdqv->vintf_page0 +
-+                        (index * CMDQV_VCMDQ_STRIDE) +
-+                        (offset0 - CMDQV_VCMDQ_PAGE0_BASE));
 +}
 +
- /*
-  * Read a VCMDQ register using VCMDQ0_* offsets.
-  *
-  * The caller normalizes the MMIO offset such that @offset0 always refers
-  * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
-  *
-- * All VCMDQ accesses return cached registers.
-+ * If the VCMDQ is allocated and VINTF page0 is mmap'd, read directly
-+ * from the VINTF page0 backing. Otherwise, fall back to cached state.
-  */
- static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
-                                           int index)
+ static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
+                                                  hwaddr offset)
  {
-+    uint32_t *ptr = tegra241_cmdqv_vintf_ptr(cmdqv, index, offset0);
-+
-+    if (ptr) {
-+        switch (offset0) {
-+        case A_VCMDQ0_CONS_INDX:
-+        case A_VCMDQ0_PROD_INDX:
-+        case A_VCMDQ0_CONFIG:
-+        case A_VCMDQ0_STATUS:
-+        case A_VCMDQ0_GERROR:
-+        case A_VCMDQ0_GERRORN:
-+            return *ptr;
-+        default:
-+            break;
-+        }
-+    }
-+
-     switch (offset0) {
-     case A_VCMDQ0_CONS_INDX:
-         return cmdqv->vcmdq_cons_indx[index];
-@@ -120,11 +148,29 @@ static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
-  *
-  * The caller normalizes the MMIO offset such that @offset0 always refers
-  * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
-+ *
-+ * If the VCMDQ is allocated and VINTF page0 is mmap'd, write directly
-+ * to the VINTF page0 backing. Otherwise, update cached state.
-  */
- static void tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
-                                        int index, uint64_t value,
-                                        unsigned size, Error **errp)
+@@ -212,6 +276,7 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+                                       uint64_t value, unsigned size)
  {
-+    uint32_t *ptr = tegra241_cmdqv_vintf_ptr(cmdqv, index, offset0);
-+
-+    if (ptr) {
-+        switch (offset0) {
-+        case A_VCMDQ0_CONS_INDX:
-+        case A_VCMDQ0_PROD_INDX:
-+        case A_VCMDQ0_CONFIG:
-+        case A_VCMDQ0_GERRORN:
-+            *ptr = (uint32_t)value;
-+            return;
-+        default:
-+            break;
-+        }
-+    }
-+
-     switch (offset0) {
-     case A_VCMDQ0_CONS_INDX:
-         cmdqv->vcmdq_cons_indx[index] = (uint32_t)value;
+     Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
++    int index;
+ 
+     if (offset >= TEGRA241_CMDQV_IO_LEN) {
+         qemu_log_mask(LOG_UNIMP,
+@@ -238,6 +303,40 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+     case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+         tegra241_cmdqv_config_vintf_write(cmdqv, offset, value);
+         break;
++    case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
++        /*
++         * VINTF Page0 registers have the same per-VCMDQ layout as the
++         * VCMDQ Page0 registers. Translate the VINTF aperture offset to the
++         * equivalent VCMDQ aperture offset, then fall through to reuse the
++         * common VCMDQ decoding logic below.
++         */
++        offset -= CMDQV_VINTF_PAGE0_BASE - CMDQV_VCMDQ_PAGE0_BASE;
++        QEMU_FALLTHROUGH;
++    case A_VCMDQ0_CONS_INDX ... A_VCMDQ1_GERRORN:
++        /*
++         * Decode a per-VCMDQ register access.
++         *
++         * The hardware supports up to 128 identical VCMDQ instances; we
++         * currently expose TEGRA241_CMDQV_MAX_CMDQ (= 2). Each VCMDQ
++         * occupies a CMDQV_VCMDQ_STRIDE-byte window within the page.
++         *
++         * Extract the VCMDQ index and normalize to the VCMDQ0_* register
++         * offset. A single helper services all instances via @index.
++         */
++        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
++        tegra241_cmdqv_write_vcmdq(cmdqv, offset - index * CMDQV_VCMDQ_STRIDE,
++                                   index, value, size);
++        break;
++    case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
++        /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above */
++        offset -= CMDQV_VINTF_PAGE1_BASE - CMDQV_VCMDQ_PAGE1_BASE;
++        QEMU_FALLTHROUGH;
++    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
++        /* Same decode logic as VCMDQ Page0 case above */
++        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
++        tegra241_cmdqv_write_vcmdq(cmdqv, offset - index * CMDQV_VCMDQ_STRIDE,
++                                   index, value, size);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+                       __func__, offset);
 -- 
 2.43.0
 

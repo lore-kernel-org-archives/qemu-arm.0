@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AF80F41991
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 11:02:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762B4F4198B
+	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 11:02:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wCxx0-0001qR-By; Wed, 15 Apr 2026 06:58:30 -0400
+	id 1wCxw0-0000cJ-Jl; Wed, 15 Apr 2026 06:57:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wCxwn-0001dT-Vf; Wed, 15 Apr 2026 06:58:19 -0400
+ id 1wCxvn-0000Y2-GG; Wed, 15 Apr 2026 06:57:15 -0400
 Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
  ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wCxwd-00048f-4I; Wed, 15 Apr 2026 06:58:17 -0400
+ id 1wCxvl-0003vf-Pb; Wed, 15 Apr 2026 06:57:15 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QK8cuxdH+IkE/gYsxRbH8sOszCsKGJPLypgwmuRP38vJatUe7Oum7Svqm6LjuicbMGY5CA33zq/iG4ILAiFNw/lSS7ysbkVQ6cw6YFklQ/tPg9up97jFHSrrD1WZ5j/pgIDwhSVE8Pa0K1iJuIJHx+nXxfKCIzBK27ij0EEv4dJMEcYh06wWamgVnusNr0wVguKlpAj28pIhyQCgp6F6bw72raEjSp0SEtuhlgU98GPJuyA1ZoYyzGHgadTy0lrcrUzuxJd4pb59n1ZAHG8UqubZmCCQtiseUdPrfluouqo4cffWxDyl+C7LNoqbpA3bFkv/i5LcS9Meyzx+nbw1NQ==
+ b=Jv39ALU7Zcs2vmdN9a3BZ2SSo5v0+aLKRlNRkMqgwKv5QJABr6SeffjGFOsoX0GKO875wnxEJISN8oUMkt91e65GrRYWqUJ1QEUr5gxS9NVy1Z5lt0y2rjy5RsKvtLGO4gRqIa22GGblvO212ztVfzBZgEd+Sf9a3IhwFLlhxW68n2+o5LzcIjaFvo/guLM7OvREEq64Pg0sglX8lfMzJ9h6OSD/VGv5MXdxOxYNu+mYpWcw0xO51uki71V4FKM9NvtoUEoFOeSUDghSN8z+CRuQXKpwRhnp00hD3aB1q5pO+PUny0Wih9X3Wvsb/qkPB14VXoPe85ZApovcZARxAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6r+Hdh0UaXe6geJ9NxCVfX1LSSSfCPXuwn11Jr7Pbqg=;
- b=cAg5MCmy9oAT+X4eYKP4SVgYzemkvcyJhXKH+M4o1qiWwt3ND0g9IsdmRdSqzEWLchgPfBMItQeGh9VWLbMzApBxpdz9qBYzI1UQDLwuq8dzbiPfBbQv87YxKue1nZSEf9v8pJbZBW9n9DKD6rGQf1hK2iyVaPVpRHGLplXdPV68sxVX02Z8pgU+2vYAkDNmUGXrwXnjJc8x7UqPnv9OWihps8zkJCws1mZvKPHzJ3hf7gnYNytGMxmZKq0JLDcchsjSnsq6sWBj7Mv0CJ0m4rCjMwwAbLmquVeqtZ3Yleb0EHzSq31nLMn66hp1yCzVQQhnqfuZZXTbRfBPA5eqxg==
+ bh=xTFoqodJfOfTYsMCcMU1Ps9i2UugVBYYZ9XiIf3D2EE=;
+ b=zRPBJvssQAdefidO3RT8UoK+xTyxTLDWDuWO2/m9plbTlhiHtCblVIjZw9RZK43Z3ACOU4ErE7shYiydX8QaHeQV3D0DwvaF43YMELkUCmSfa3YVJfeogowpZOCEn7puAWAFCA+PLQG05dLv/luWYC+BallqURUZVS4takjyxSMM+XDCuNSjQlNhgFfItjFLckfwJYSzduLFiTnCNsA+VjQFv/SfdK0Dv2zLPwSrfsQLRqOyv0G1GiSG9s/33RIqtK42UI2KsqAmV0hriXuzClBwDgJLaIhx7bQIoz2IbKOSsw86cprh5xUEmnUZ2VsV9bWmCerAZ7dbSakCWMnkMg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6r+Hdh0UaXe6geJ9NxCVfX1LSSSfCPXuwn11Jr7Pbqg=;
- b=UXtcje6cdSdMKCapTDXV/+qRzfUioiKWONtj+/Vu3ku7WvVYYGw8zBGmN2ZrUcn8Artb8lZxOLwrdckCJO2XWnRduP7+/zGZr+lM9D1U9i/lzayzensQYu027+tysWwtCqkCEIeHex3b5zId9cKbpPa6rjZQ3xniOUn6ijHgGnI+9wepn+0SmUzX4b6qjk+WPJThaNa3hBsS/44N7MCm9SUWDZviRk+Pc97z9h5U423lXmq+4aEd2otCb+74f+9ptouuqwcUHLEHtNv4YjHjWnLU0II9oQjrSZMjZD1WkgRZFYwuyVsGDNjAvc6Mr6ym7QNh8PafCU/PpOtuHNjszw==
-Received: from CY5PR15CA0211.namprd15.prod.outlook.com (2603:10b6:930:88::13)
- by DS5PPF7B9F1F8E0.namprd12.prod.outlook.com (2603:10b6:f:fc00::656)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.19; Wed, 15 Apr
- 2026 10:57:58 +0000
-Received: from CY4PEPF0000EE38.namprd03.prod.outlook.com
- (2603:10b6:930:88:cafe::5e) by CY5PR15CA0211.outlook.office365.com
- (2603:10b6:930:88::13) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.49 via Frontend Transport; Wed,
- 15 Apr 2026 10:57:58 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ bh=xTFoqodJfOfTYsMCcMU1Ps9i2UugVBYYZ9XiIf3D2EE=;
+ b=czzeUWT2VjikmvHNNQHhozDTB45kaFHLn8EIKOtI1uF1jZb6e5HguQZ6X1yvnVk7Yh4muI8HD5UpbvLiScD8eHfWMO0FXDsgRHbMyhnpZd8gcP7OcxYAFnwRPUOpK9pQjjmdVdPSSrOctfaeSqIBZpchDGcvSHMqZXRpWwO5crJpyDh0L3z/+mEfL/yc9wqOjogsivvVXx65MbOcIVsOqWkygMFE/HMc729/DeRIsP18sojRigx8mFFzefU1+1xxpqSp5gdG5z6kam2ctsnjaDMRGMp9ygXwUUiKJ0nUUfgJywTsWQzVBMVh+FaeK9BFE4Oy42wff3pSLM3TR/29+Q==
+Received: from MN0PR05CA0025.namprd05.prod.outlook.com (2603:10b6:208:52c::13)
+ by DM4PR12MB6085.namprd12.prod.outlook.com (2603:10b6:8:b3::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.20; Wed, 15 Apr
+ 2026 10:57:06 +0000
+Received: from BL02EPF00021F6A.namprd02.prod.outlook.com
+ (2603:10b6:208:52c:cafe::56) by MN0PR05CA0025.outlook.office365.com
+ (2603:10b6:208:52c::13) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9769.48 via Frontend Transport; Wed,
+ 15 Apr 2026 10:57:06 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- CY4PEPF0000EE38.mail.protection.outlook.com (10.167.242.10) with Microsoft
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BL02EPF00021F6A.mail.protection.outlook.com (10.167.249.6) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9769.17 via Frontend Transport; Wed, 15 Apr 2026 10:57:58 +0000
+ 15.20.9769.17 via Frontend Transport; Wed, 15 Apr 2026 10:57:06 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 15 Apr
- 2026 03:57:41 -0700
+ 2026 03:56:51 -0700
 Received: from NV-2Y5XW94.nvidia.com (10.126.230.37) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 15 Apr
- 2026 03:57:37 -0700
+ 2026 03:56:47 -0700
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
@@ -71,9 +71,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <clg@redhat.com>,
  <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
  <jonathan.cameron@huawei.com>, <zhenzhong.duan@intel.com>,
  <kjaju@nvidia.com>, <phrdina@redhat.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH v4 18/31] system/physmem: Add address_space_is_ram() helper
-Date: Wed, 15 Apr 2026 11:55:39 +0100
-Message-ID: <20260415105552.622421-19-skolothumtho@nvidia.com>
+Subject: [PATCH v4 05/31] system/iommufd: Remove unused viommu pointer from
+ IOMMUFDVeventq
+Date: Wed, 15 Apr 2026 11:55:26 +0100
+Message-ID: <20260415105552.622421-6-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260415105552.622421-1-skolothumtho@nvidia.com>
 References: <20260415105552.622421-1-skolothumtho@nvidia.com>
@@ -85,29 +86,29 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE38:EE_|DS5PPF7B9F1F8E0:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2fb12066-3c82-4ac7-0711-08de9adddb02
+X-MS-TrafficTypeDiagnostic: BL02EPF00021F6A:EE_|DM4PR12MB6085:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6bea79b7-06c0-4d7b-a867-08de9addbbd7
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|1800799024|36860700016|376014|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: Wm6U8FdWC39hPTNnPK2dCKIvHwv/rHSAd39dawRvC30WfJMxTtIZkvdr0sHl98d3p41J2/C+s/HvqhI7Ur+d1EN8uRYg0W4wtjNmY0t+TfC/UgWAtkRnnmaYuw1QRKOqn3vSse3wH9gp9qo9aHRwBKMGdFM3Tko7A1m/Bwv5ebq3IAiPblfz2/b5v54i8omoDYpb06/4AxS1eFFpzlfGJ4tOjbf6LBv18mY6fGbHa6Ap+jra4Oyl7cTsf7zGIOAbxX8SJkAaLzLu/vJbkq6pAnHn6BmdiyziM82952el27S9jn3ud6aYMR8cqb8zocbRgQMAihLd2wXAFqrf4e6KUZ7A/CFI57HiQT0NYf2gY0MzCPFtDHlQIZykMcIlTyv9orchFZUae1n61sohSijOtWNPhp6yUn/Bcv+vsst3e6pl+QQxLimUAnE1+ItEJI33IBjBLVTyG+rCd2ewu///pVDZdquMcM1OLKhbRiaJXlGXkjW1C2uGt2HD8KiN+L3uWyBvxXV98ou/bmtT3HXgULhc6gsdthypG0QwDoVVCGL0VGunU8H7pKr34zIZfWpixibWqvq0S9jYexJ+W3Au1Pvlr3aSkF5UDcmwWz6WaOumum1NbydGHQZj9d5dwl1Z3O99l1TKNuzCw0gqDiqBcanpmwblPcz78Nmchh9sQbGiapg1KzJBfNpX++ttCWmM8CkoVAZJ0SaiZWrj9godLO93XEHCV1WYsnG9RbIwYyn7s+ISC8iJ0E+yjLAfXauX+iQrXJV33nx3qSuZM1Y5UA==
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(1800799024)(36860700016)(376014)(18002099003)(22082099003)(56012099003);
+ ARA:13230040|1800799024|376014|36860700016|82310400026|22082099003|56012099003|18002099003;
+X-Microsoft-Antispam-Message-Info: /AEYox9sMcO2ShKt/CW716wUgdw6c07kRPYSzk5oR47YvGrj1mbHm7TscDdda9VAN83s9EXgEsIwDe2r3yTUcS4/JlfKejrRh3udtbyDLOsT4jbsRAOKcVkWGC1s509ADjqD6aRnGtAYV6RY5QXePLdwqW838VUpdKUqPOiIT6LpQnVIcK2zsoY3GF3Ew/WiDj8H5XYlCgqfZhLdAllsN/TF0WKF6TOaoYvHJR9SIU5P0rSzxB4pskJzrCCRjQXMHZuhmxrsicy6wJh7lc/6Wzw6BIB6rcxcAVtW7C8Ll4/ahmmOiUXhBUyiYKQCOwaBry2JvQQ4wGa467AXoJ22Mj9/DqCIXdPPgVwdtrv82fvLGQSGuQBqqZognca+23jrcxLW2XPUsH0pbYVnLG5VDGl5tw1QyxATC92opnV1FunqdVY/EQhEQdUZRLvvOkE+1VihSvRx7vtE4uc0uwOhR8gavSIFosl8oHaxjXLRpE7bi49RQnRzhR/sLkzm0tBYqL53rN4Cv/d6l+4NZ8BowHTTdV0czewFTF/jZ9ZO3W9mnQ4lEIzyH5eB5VBCiUK6DZt5OFHi7go5G//YRCLEsPYUX7zeagdYwGtcGiSSMIsALGmvS5CzfGvtXE067prdEumMbEL9lTtbQ2h2uqA+TGkptGsI050pZnpHOWhAsW1VK7VLUUMoCj3W5jSa6ruEr5eJnFi1tvH/mKdGapsa0xvABtkd10MBwjLYcpmoA2QBS/S/mM9wJlBw6K/8zsCMw6t1EjWk6Dl8I7mjz1ElNQ==
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(36860700016)(82310400026)(22082099003)(56012099003)(18002099003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: GI02E5FWexukPUwWccm/3NgMYjJKSDfgIl0k5W6zBgzmL1Zy7YDOlHPS37yYtJy+WBx+KfPS87lToOSctfXIasVnOr/40P/eJ4pIl+PrD1JQnCW5rS3G4PdenRZAgaasaYWXvlVZa1ZqAMHzFym1/UBOenOsNGLqjZigV7SJLgUpfBKnTgoHtJNHCaWjsZtqGI0XfGi8Y7/kKo0rNYrTE+wo0iT7CDAU3rLftT6dlUZrHutDV4Pq0yzgUoAAw7qNiGPjkChER4RVJjXfcFLaBHM7xydr3ujCH++s3IzmTIaXfUSqFSPH9CyGdeCBYAzIJrwZ7Y3Q1g30IM+OxTJbCk/HQH17WNS/+xK/zj03BDNsAtJEB57/wTDULVTMyzXR0hm072eWaMd6RVbmQGZ1OOyiuPOz8QbXNxaar1AldqFFrjATMApO7J2lUyW89By+
+X-MS-Exchange-AntiSpam-MessageData-0: 6LxoizvqTn63H/nEAZs7g51p8f9itFj3d0DM9sYVYzdy1KhTXAJLVPd820UenIvR3AunRph4yprT2uWAxcsZEOlLBpbb1GZLafZylNuX6DC/CJi0WuD9prH2GisD2Xmp7aWvOVpbY3xI4GXLP8XHYNe6iW8DybCbN67v1eK8eTZShkgjkV45mcGOFCM3dPKk0Y0qUwHoUBTxqbT6pZPemkpJPecDE+gqzU4OnmtWDf3NLteJoiS3NNZOBLV4O76L67A0AGT9OnewuWz2bxakZHwpYRMK/P5LB65yVUOG/mFASwq/+qyKBKsfiqk+7OIX5I3ZOkwhuhhp3BEvJlZDlG39VI4R0D7a8BCUoVI6wSy7zPyhfFg+Sthj890BqKSDRxGCOtkhx10dEgXghtLg+9BLlcV/BjPjaD7zGjRaQo+unfx2H7ic0SsdmctmwQoP
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2026 10:57:58.4606 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2fb12066-3c82-4ac7-0711-08de9adddb02
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2026 10:57:06.1218 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6bea79b7-06c0-4d7b-a867-08de9addbbd7
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE38.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00021F6A.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS5PPF7B9F1F8E0
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6085
 Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
  envelope-from=skolothumtho@nvidia.com;
  helo=PH7PR06CU001.outbound.protection.outlook.com
@@ -132,60 +133,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce address_space_is_ram(), a helper to determine whether
-a guest physical address resolves to a RAM-backed MemoryRegion within
-an AddressSpace.
+The viommu field is assigned but never used. Callers freeing the
+veventq already have access to the IOMMUFDViommu object through other
+references, so this field is redundant.
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Removing it also simplifies upcoming changes where veventq is
+allocated based on the viommu id before the IOMMUFDViommu object is
+created (e.g. vendor CMDQV-based veventq allocation).
+
+No functional change.
+
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- include/system/memory.h | 10 ++++++++++
- system/physmem.c        | 11 +++++++++++
- 2 files changed, 21 insertions(+)
+ include/system/iommufd.h | 1 -
+ hw/arm/smmuv3-accel.c    | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index d7b18b632d..7aed255e81 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2841,6 +2841,16 @@ bool address_space_access_valid(AddressSpace *as, hwaddr addr, hwaddr len,
-  */
- bool address_space_is_io(AddressSpace *as, hwaddr addr);
+diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+index 38cfceca84..b6599521b8 100644
+--- a/include/system/iommufd.h
++++ b/include/system/iommufd.h
+@@ -58,7 +58,6 @@ typedef struct IOMMUFDVdev {
  
-+/**
-+ * address_space_is_ram: check whether a guest physical address whithin
-+ *                       an address space is RAM.
-+ *
-+ * @as: #AddressSpace to be accessed
-+ * @addr: address within that address space
-+ */
-+
-+bool address_space_is_ram(AddressSpace *as, hwaddr addr);
-+
- /* address_space_map: map a physical memory region into a host virtual address
-  *
-  * May map a subset of the requested range, given by and returned in @plen.
-diff --git a/system/physmem.c b/system/physmem.c
-index 4e26f1a1d4..b67dde80fb 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -3674,6 +3674,17 @@ bool address_space_is_io(AddressSpace *as, hwaddr addr)
-     return !(memory_region_is_ram(mr) || memory_region_is_romd(mr));
- }
+ /* Virtual event queue interface for a vIOMMU */
+ typedef struct IOMMUFDVeventq {
+-    IOMMUFDViommu *viommu;
+     uint32_t veventq_id;
+     uint32_t veventq_fd;
+     uint32_t last_event_seq; /* Sequence number of last processed event */
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index c356ff9708..f65e654adf 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -549,7 +549,6 @@ bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+     veventq = g_new0(IOMMUFDVeventq, 1);
+     veventq->veventq_id = veventq_id;
+     veventq->veventq_fd = veventq_fd;
+-    veventq->viommu = accel->viommu;
+     accel->veventq = veventq;
  
-+bool address_space_is_ram(AddressSpace *as, hwaddr addr)
-+{
-+    MemoryRegion *mr;
-+
-+    RCU_READ_LOCK_GUARD();
-+    mr = address_space_translate(as, addr, &addr, NULL, false,
-+                                 MEMTXATTRS_UNSPECIFIED);
-+
-+    return memory_region_is_ram(mr);
-+}
-+
- static hwaddr
- flatview_extend_translation(FlatView *fv, hwaddr addr,
-                             hwaddr target_len,
+     /* Set up event handler for veventq fd */
 -- 
 2.43.0
 

@@ -4,79 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFF62F8D762
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 17:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EBFEF8D76E
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 19:45:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDQUA-0006ku-GF; Thu, 16 Apr 2026 13:26:38 -0400
+	id 1wDSeT-0002f7-QS; Thu, 16 Apr 2026 15:45:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDQU9-0006kc-Jy
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 13:26:37 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSeM-0002bF-6O
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:45:19 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDQU6-00068p-E2
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 13:26:37 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-488ab2db91aso125818955e9.3
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 10:26:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSeH-000369-V8
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:45:16 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-43d7badbd7dso2417089f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 12:45:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776360390; x=1776965190; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=dguMNu+rblwGHa+gUuLRqPdQYImX3ZlNd0zX09DdGe4=;
- b=leqm9TcFn2DWp4wNJO3Y6XUJ7/NHMnrTCZV2m69xib8+L+gqbN0Td3tJ0Sa519gzVe
- eZh9r1Ag9M0fsUL7otIGOzDFK4faNCa/MatS9ASy1b0jBNSR8neLFhkZwsVHrBQAYbZ+
- ItPYrb/ACmdcUVckHBfATC9YJu6t4AOkAo4Ci549YiTCSM75ISqmXjBO+9sa7zYNhU+O
- PBHq8Qmuj10S0u23INOYeLcIUDJZ2H/xKSXXEG5BsIoh2sFeX8Uq1+KJtU74Y4ytJG1C
- d5nbvkHE9st5+J+0SYwpKxAPkqYoH7XNReHb3HWMbdX1udh9ULhJ6XbM9nizEqOU6SRR
- Eplg==
+ d=linaro.org; s=google; t=1776368711; x=1776973511; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=tXGADF0m9fvSVjoVMvi01D2+qEpRcaU0JW8MXDn0hV8=;
+ b=Jt39y32EOg2mvB9Q1qMPFktOSkJervuz9Kx+sOUVV/MVi+AzLywc6ognZG10PBrXMR
+ qwsn8IiS05kLkVQCZmexs90sD6E5RniEEzlLl4bZnXWWdKJHUBvGYN6XSrWWXobIslu3
+ mRpbY3Mwvm7QPNfflRkC45nObBX33f58AiYiDLIM9cr/uPytVw1VbMn1nNWH/2/0uKLq
+ q4LatYn+qqBzzKrATtDKeUR7zh3U1pzw4o2XHa1i/nK/u/vuYv32ebKN6hN6jyuvJLbW
+ ZuRyN7zh1WwEUu1W/frE1F6dA9U+/BkL2hNDUMVwf/TfBXa68YjNPJD3ydDQRkr7y0nq
+ exZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776360390; x=1776965190;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20251104; t=1776368711; x=1776973511;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=dguMNu+rblwGHa+gUuLRqPdQYImX3ZlNd0zX09DdGe4=;
- b=r41ujQH4ioSPw8ZLbxnYbQb+r6sluIrAti0uAeNyg0peBsvKHORJ4Sr0J/yGOWiy3o
- 7C5m93laZL+XC3PiVmA2QpEUM/Ac6+uu9IN234sF266r8yIHymEU7x6u8TyI1QDObQyr
- 6v7pNVz+tDrnJWAPNKAUX7g9B+s5mlT5hZDkOdchAFOWsdGI6gd/I+3/gOWp+gF2AQpu
- kZX8cS8eycAc6oZJ6fnuafAgfHpNUvaRjyAOZMq0eqsCAkJvEc9VsC8BcecV2QNyagu4
- vN3hQGklfHBnedzyyMc/lmZuW+vUqhWfOYK8qc+n+yKl3d6abCHOUo/U4EjoXD8K70nQ
- vmsQ==
-X-Gm-Message-State: AOJu0YxkoD1ZB0/l0pkcIc+qpxE0Q75XLf24gHMB395izBnBCDp5bNnq
- cYV6GxglDrMpDhJo++4wTHoT4RxAykDA2jHzI93J23mrr64RAXRV62k1qhTPWUCNG41miktpiT3
- xI5GDmFg=
-X-Gm-Gg: AeBDiesUNp9dxFJ0HHrQCfpIyB6FeONuSVT0klRSGLy48Z10lgr+X14P7lit4xWzoL1
- MfkaoAnJo11aFQ9NrLyJ7DFkFA7GZvGiylCvibhS9DFzR7wT/l9EgVQJzQ+crMHrH56+X7PI1e2
- VBD4K/xqixm50gTioo+B/P/jtQCr0WaIQ7tqTJ4A3kraZdeWof+Fz0Ft5WAW5EFQHAX6pCaTgnN
- rljf3x807fYX7T10Zsyf8fPu8/5LHVS3pL5KVyOrYAKUxlwMUCiD0Mm4zkRQuYGBAtw0eOP7xLX
- +hSXwapQk4xxFFIooODOGRyk8g6emM5p7O1UWWN/weX1eWhinc+QU5SGE299GB0Ium+a6nZKHEB
- YozJ3i+Adt74CiPD/aMk31849vopIRlV36SoKaKI1ufWDtPxix3/ID1jSlZbfdpi3MP2QHsej3a
- PxGuvprq6yCc2iPxAdlwjakge4gwMCjRCSir1bonymoDVsrsfgHKDD07K6OcHX0VF+R9k35C866
- Ih2VqwPOOJ6t/brldiKd6PEd5ePIrEuoUjhzynEdw==
-X-Received: by 2002:a05:600c:c108:b0:488:c282:e78c with SMTP id
- 5b1f17b1804b1-488d684bd3amr260538165e9.19.1776360390170; 
- Thu, 16 Apr 2026 10:26:30 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fa73cbe3sm2022615e9.0.2026.04.16.10.26.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Apr 2026 10:26:28 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw: Move ARM_SYSCTL_GPIO definitions to arm sysctl specific
- header
-Date: Thu, 16 Apr 2026 18:26:27 +0100
-Message-ID: <20260416172627.690396-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=tXGADF0m9fvSVjoVMvi01D2+qEpRcaU0JW8MXDn0hV8=;
+ b=kOS4xFUvRtFIa19IyQxcOK24MEVE2iqhfxjOC5BdiIcaWdP53TOqjnQFKfHgNFXaBJ
+ qfEPu7FVfmcbLkNYjKktK6MUKKrH/GKGkoUqjIpZl6y254fZoVDmtdS1BgdSWesydV+v
+ SbsIi6AUpY61rxgJ5xZkuzrcoCY2wJvauIP6xuJNPMcZtXlXQItkeQBpgCLHVmRBvBDl
+ ghxd1TtnZ3W4X3se2YLt0fJgWFaryIgxP6MBxPnlRf3sF/vEZpm56H/rIqYIJGcq2aPu
+ lGsSPoCGtvntt7rHCm/0ONqDSs/C4qMgM3s6K0BO3wqA2TVLgslWhHx8zds+snaBxa+d
+ U6CA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9J7UjW/HiH68jAQkLSmhCi+6TDQT1uKVvmXRRhKIVbWMoy78PgUfthwYKhX5krmvuHH9DMyKwa2g==@nongnu.org
+X-Gm-Message-State: AOJu0YxL12hX7sLyDOa/eVTXfa6EAhnAU0igsmPFoGTE+4F+RtN5u7TG
+ Ii8LWsh8WAHTyUwSHOsZ3oxxJdPXzE9NnhBf1JBLZuytCJpXWIBqVkOcyhFedMy96Fk=
+X-Gm-Gg: AeBDievSVFGgKwdwhH6Jg868utmD4W0sLWscCq92j1RLbSmCJ4HXTnDAf9vuNGm37wZ
+ /cNf8zcGRpe3uSVUGaHJqsLQJCPT/ZZspojKVXfHFaLCondUChiDe7LJfszV6Zv9JhfgP+TjQYw
+ E/XYFW7JediqDDZ8V/gdpeJi8zI3losaeC7ry1SDxZftUCQg17rN6AxR80/yGfpT0UKBhHT4aMJ
+ ThIiqD6eU+VutKUJ8TjA1+oACp6ij2f1dJw295i7vw4tbaSr+LGqNMMpTIY8+dub7ZZLxhny8jD
+ y768fCMcf8kbbp7Gq56u4d7+y9Q3Myf/qPMeVf7ctAu+wFG+l8EyOvRutddsaop47e4WMttWqkO
+ TprWMgBW4grau1TBFw49bT150iI56W6hn7d3xGbTPA0C9mSoXpvyYKijE+AG64wbRxWHcgejLp7
+ wIxWgkAT+w4k4+MwdNzDAFCFl+sdjEJcpzKtYlRGlcTDPeqGqoKFRx4V1FSGjlxMNBnAUpl38aU
+ UXhZ8tSk9t0p3A=
+X-Received: by 2002:a05:6000:2586:b0:43d:9bb5:bd97 with SMTP id
+ ffacd0b85a97d-43fe0ea3d84mr1039467f8f.8.1776368711464; 
+ Thu, 16 Apr 2026 12:45:11 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43ead3d5eb4sm16469685f8f.20.2026.04.16.12.45.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Apr 2026 12:45:10 -0700 (PDT)
+Message-ID: <da07a012-cbd9-43df-b7ad-e705a67c1c43@linaro.org>
+Date: Thu, 16 Apr 2026 21:45:09 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw: Move ARM_SYSCTL_GPIO definitions to arm sysctl
+ specific header
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260416172627.690396-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260416172627.690396-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,162 +104,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-include/hw/arm/primecell.h used to be more expansive, but now the
-only thing it defines is the ARM_SYSCTL_GPIO_* constants for the GPIO
-lines for the arm-sysctl system-control device used on the Realview,
-Versatile and Versatile Express boards.
+On 16/4/26 19:26, Peter Maydell wrote:
+> include/hw/arm/primecell.h used to be more expansive, but now the
+> only thing it defines is the ARM_SYSCTL_GPIO_* constants for the GPIO
+> lines for the arm-sysctl system-control device used on the Realview,
+> Versatile and Versatile Express boards.
+> 
+> Replace it with a header file specific to that device.
+> 
+> virt.c and vmapple.c included primecell.h despite not using the
+> constants it defined; there we can simply drop the include entirely.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Trivial cleanup; I was trying out emacs eglot and it flagged
+> up that virt.c includes primecell.h unnecessarily, which led
+> me to this.
+> ---
+>   MAINTAINERS                  |  2 +-
+>   hw/arm/realview.c            |  2 +-
+>   hw/arm/vexpress.c            |  2 +-
+>   hw/arm/virt.c                |  1 -
+>   hw/misc/arm_sysctl.c         |  2 +-
+>   hw/vmapple/vmapple.c         |  1 -
+>   include/hw/arm/primecell.h   | 12 ------------
+>   include/hw/misc/arm_sysctl.h | 16 ++++++++++++++++
+>   8 files changed, 20 insertions(+), 18 deletions(-)
+>   delete mode 100644 include/hw/arm/primecell.h
+>   create mode 100644 include/hw/misc/arm_sysctl.h
 
-Replace it with a header file specific to that device.
-
-virt.c and vmapple.c included primecell.h despite not using the
-constants it defined; there we can simply drop the include entirely.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Trivial cleanup; I was trying out emacs eglot and it flagged
-up that virt.c includes primecell.h unnecessarily, which led
-me to this.
----
- MAINTAINERS                  |  2 +-
- hw/arm/realview.c            |  2 +-
- hw/arm/vexpress.c            |  2 +-
- hw/arm/virt.c                |  1 -
- hw/misc/arm_sysctl.c         |  2 +-
- hw/vmapple/vmapple.c         |  1 -
- include/hw/arm/primecell.h   | 12 ------------
- include/hw/misc/arm_sysctl.h | 16 ++++++++++++++++
- 8 files changed, 20 insertions(+), 18 deletions(-)
- delete mode 100644 include/hw/arm/primecell.h
- create mode 100644 include/hw/misc/arm_sysctl.h
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ad215eced8..7f2b34d652 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -761,7 +761,6 @@ F: hw/ssi/pl022.c
- F: include/hw/ssi/pl022.h
- F: hw/rtc/pl031.c
- F: include/hw/rtc/pl031.h
--F: include/hw/arm/primecell.h
- F: hw/timer/cmsdk-apb-timer.c
- F: include/hw/timer/cmsdk-apb-timer.h
- F: tests/qtest/cmsdk-apb-timer-test.c
-@@ -1106,6 +1105,7 @@ F: hw/*/versatile*
- F: hw/i2c/arm_sbcon_i2c.c
- F: include/hw/i2c/arm_sbcon_i2c.h
- F: hw/misc/arm_sysctl.c
-+F: include/hw/misc/arm_sysctl.h
- F: docs/system/arm/versatile.rst
- 
- Virt
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index c9558be4d4..bfcce4419a 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -12,9 +12,9 @@
- #include "cpu.h"
- #include "hw/core/sysbus.h"
- #include "hw/arm/boot.h"
--#include "hw/arm/primecell.h"
- #include "hw/arm/machines-qom.h"
- #include "hw/core/split-irq.h"
-+#include "hw/misc/arm_sysctl.h"
- #include "hw/net/lan9118.h"
- #include "hw/net/smc91c111.h"
- #include "hw/pci/pci.h"
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index cc6ae7d4c4..9db8a68ba9 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -26,8 +26,8 @@
- #include "qemu/datadir.h"
- #include "hw/core/sysbus.h"
- #include "hw/arm/boot.h"
--#include "hw/arm/primecell.h"
- #include "hw/arm/machines-qom.h"
-+#include "hw/misc/arm_sysctl.h"
- #include "hw/net/lan9118.h"
- #include "hw/i2c/i2c.h"
- #include "net/net.h"
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ec0d8475ca..16e905dca8 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -36,7 +36,6 @@
- #include "monitor/qdev.h"
- #include "hw/core/sysbus.h"
- #include "hw/arm/boot.h"
--#include "hw/arm/primecell.h"
- #include "hw/arm/virt.h"
- #include "hw/arm/machines-qom.h"
- #include "hw/block/flash.h"
-diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
-index 7b320f89c1..ebc95b9bb5 100644
---- a/hw/misc/arm_sysctl.c
-+++ b/hw/misc/arm_sysctl.c
-@@ -14,8 +14,8 @@
- #include "system/runstate.h"
- #include "qemu/bitops.h"
- #include "hw/core/sysbus.h"
-+#include "hw/misc/arm_sysctl.h"
- #include "migration/vmstate.h"
--#include "hw/arm/primecell.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qom/object.h"
-diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-index b1379eafef..607181f517 100644
---- a/hw/vmapple/vmapple.c
-+++ b/hw/vmapple/vmapple.c
-@@ -32,7 +32,6 @@
- #include "hw/core/sysbus.h"
- #include "hw/usb/usb.h"
- #include "hw/arm/boot.h"
--#include "hw/arm/primecell.h"
- #include "hw/char/pl011.h"
- #include "hw/intc/arm_gic.h"
- #include "hw/intc/arm_gicv3_common.h"
-diff --git a/include/hw/arm/primecell.h b/include/hw/arm/primecell.h
-deleted file mode 100644
-index 7337c3b3ca..0000000000
---- a/include/hw/arm/primecell.h
-+++ /dev/null
-@@ -1,12 +0,0 @@
--#ifndef PRIMECELL_H
--#define PRIMECELL_H
--
--/* Declarations for ARM PrimeCell based periperals.  */
--/* Also includes some devices that are currently only used by the
--   ARM boards.  */
--
--/* arm_sysctl GPIO lines */
--#define ARM_SYSCTL_GPIO_MMC_WPROT 0
--#define ARM_SYSCTL_GPIO_MMC_CARDIN 1
--
--#endif
-diff --git a/include/hw/misc/arm_sysctl.h b/include/hw/misc/arm_sysctl.h
-new file mode 100644
-index 0000000000..424069cd6e
---- /dev/null
-+++ b/include/hw/misc/arm_sysctl.h
-@@ -0,0 +1,16 @@
-+/*
-+ * Status and system control registers for ARM RealView/Versatile boards.
-+ *
-+ * Copyright (c) Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_MISC_ARM_SYSCTL_H
-+#define HW_MISC_ARM_SYSCTL_H
-+
-+/* arm_sysctl inbound GPIO lines */
-+#define ARM_SYSCTL_GPIO_MMC_WPROT 0
-+#define ARM_SYSCTL_GPIO_MMC_CARDIN 1
-+
-+#endif
--- 
-2.43.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

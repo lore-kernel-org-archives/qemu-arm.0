@@ -4,87 +4,138 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95ABBF433CD
-	for <qemu-arm@archiver.kernel.org>; Wed, 15 Apr 2026 21:58:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2A3FF433D4
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 01:50:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wD8Dr-0002YV-46; Wed, 15 Apr 2026 17:56:35 -0400
+	id 1wDBra-0007qm-Aq; Wed, 15 Apr 2026 21:49:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8Dp-0002Wr-5f
- for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:56:33 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wD8Dn-0002px-8T
- for qemu-arm@nongnu.org; Wed, 15 Apr 2026 17:56:32 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4852a9c6309so68195185e9.0
- for <qemu-arm@nongnu.org>; Wed, 15 Apr 2026 14:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776290190; x=1776894990; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r3cMxdZZE+yzFr7Fv4iBfref+oMD0q3gkn6aoHsy4iQ=;
- b=FCby5oxxYAvBW6aaOFdzp+GkYpF5Co8SfEZlq3D3y3XRGcqZce2pyfbx7jlTIhl3iu
- ckU0j4rdq4VdB0tGB3KI+2GBZh6yoVs0kWsF9pkFZ/LQ25GRugQid1Y/VXOMGvBWwSEJ
- NBmGIjeJELizQc1EOB5BZ0281ibKRZXS5HdQXNeD3v8rzMclMgBBTooTOW0Of/sQRPZe
- Ar0/6dgbyhhg9LJUetpDNwltRlUZk6LEyow7DelTrdDQUN10GDZAPKbeslrD0k3T3KoP
- aEhQJtkA+6d/3Vz412juo4TljdIz2zgtiJDYQBr52v3iwk4Xzu6/n5T8d3OlcRrY0wga
- 3hHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776290190; x=1776894990;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=r3cMxdZZE+yzFr7Fv4iBfref+oMD0q3gkn6aoHsy4iQ=;
- b=BZUQiaf0i3wSeTROyuGCsW/EnpC99YBAEiMI7331lfIqmm6o6018qHi7qmFgN042zB
- GKmb//it22QVkE9t/1pwIHwXl82SHYhPcBiEUknJt3WKprfOz92oadl1f9Yjvmy2d5G8
- 6IrwFvS7mmvDRCoGxqpW9qBOHYK/DAKJLsmGYTmZN7WyyfycIFi4MZe/6ctiJ9i0wN6Q
- fHfuGa9AD3kCorpDuDI6GDg4HonY4LuaNiNdVGbGquJhfX6dLAqoje+3GLY2STjzGayG
- BdcJZlCK41dp1rP/GXSP5GIOtaaJySuRwZH5TJUXOKaJMCUa00OnDji40H3K9BxBth0g
- TXHw==
-X-Gm-Message-State: AOJu0Yy0DtOCjgzoSNT/tkbzhsf18W+olNBjWcP+x3VGFZPk87mRlFdk
- t7hsnYjlb/r64z0s6i4+V8mpxQKMbynikq7sCwARCF6/RfMmDbVMwE1zULaCEX399xE=
-X-Gm-Gg: AeBDieuy06eQYaayBBe1UkPNv6pi7TWwzbLM4MY/qyg9GbGjeveHLWJ+Zsn3HZ2qRv1
- J4wdaFiy+R4WOYw86OdUWSddqUzCx4eYzv9zFG7KaHhcSOJR+ktHLgVlcQtMvLC8x3jIupq0JT4
- nChq6AFyLSj7pBA+oh1Nfq1iYtRoOzAL/CpxAF8WtLWVQ682sCSNQrtPrY9raB36rr7QWt1l2es
- XnsqUENezd3zDKAh6ZXUjc3VCqD7PD9SxteXh7YTCbirlu/SBaJNSoo/OEow8XC5wLod9+6gdiA
- mnIggHoOg0eYpH8FeV69kktGoVCWcRmL9YmOWbXVYIoHOTzVbK89DX94AEAHUsj7tqxz+MFCbu7
- saPnFvglPlff1cluMJI0o22nLoqSvNLHrI/Ct7P3ju/yKl7O0m5t+1xP9cEzhHfazcQ5XH8jEU5
- PIoezLiwUoHH/xOtg8aK0XYS7G+NxQ0xL6atobez7JGu7qJY5AVZ6UF9dcC3J1BHacHKYb80tl
-X-Received: by 2002:a5d:64e4:0:b0:43e:a638:250f with SMTP id
- ffacd0b85a97d-43ea638264cmr12924286f8f.1.1776290189684; 
- Wed, 15 Apr 2026 14:56:29 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43ead3566c4sm7805821f8f.12.2026.04.15.14.56.28
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 15 Apr 2026 14:56:28 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-block@nongnu.org
-Subject: [PATCH 7/8] target/mips: Reduce CPUState scope when used with
- CPU_FOREACH()
-Date: Wed, 15 Apr 2026 23:55:38 +0200
-Message-ID: <20260415215539.92629-8-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260415215539.92629-1-philmd@linaro.org>
-References: <20260415215539.92629-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wDBrX-0007qR-MX; Wed, 15 Apr 2026 21:49:48 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wDBrU-0007PV-IS; Wed, 15 Apr 2026 21:49:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=y6wdI/wkVuJXx6kok9oz6xOiazI9eXPPtMJ+agwUo9LXwRqjHrHYwdTJWoXxI2lhcW8rUVzCI4CFL3wI0mHmAxKxJ3ZcX+AuLzQ4WS85UgmIlGYOW9LJmI/7we9/qsubQkvnv7oWDfszPIk0dCF9tHKMVNhch+u1kp8f6P8OCQUZ5Q4UGcuD1UpJmX6rHs6E7vWYikbSn+sB79OcYhYrWNpqQLGE/diXy/FNILRVB2hSRO32Crl1K+c6LZ4JhHxR/89I5Z0Fdyg46domUoZpaVgc0ew0Y8+oReH7Qz0cQA/fddKoKMBM36O46sl0G5Ys8y1KqjIYYICRw6j2X5r4DA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1+qkXLls/pt40Z1VqrqM0+XkmKAxAHjDWMBW47cohns=;
+ b=oOu9ePvyFjgu1PV8QLqCxyuLfrHjTGSYuSgXsPgHYTykGrgO1U/SpV3bT9W2hnEbqMfTdPR4i2LMRyvsGpJKF//vTekjHyN/Liw5367qCh7FNskb3iLLp1FdamNYEziHRC6xhnQPJSd1UZh+8UqTdTvocxPSc2MiJd+krD35asW39If+HuaAj3hhIcXrQVCr5QdzQ3P9BphqQc1ufFRoXN6NPmAVsT3Y0zklWY8V07pxYIKAKQQ9ShHO8ARR69rgXeG4LWTaWuNlncbJDqKM5teEwUyb5MaNLjGOrJ0vUcvS3PCwkN+vGgWLcc+dnmgJzLKPWFp4dHO1BiFXriQHGg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1+qkXLls/pt40Z1VqrqM0+XkmKAxAHjDWMBW47cohns=;
+ b=BClpfyZRnQxXWrke9I+Y6xs+MioKWPn6Mxhpz00BmSfrUGAXUxmWezHNWYC6YfL2XMuRyyl+NOuncg2aWH1h8QZpnbPMIi06Cr4Sz//JHUsWUtGmfymwVEFYoSXXKSU3vFYJ/DoxSjh7esURhMhy+M/mnGaNQAGJ8HNWrCWlfywSBpdupR7gfRQJ0VO+yZYO6rPC3QRePZ1gJtsi37XHwsVoFm0Dy4SdiJBvU4539yuJu4LFvWGUZdD4Vuks94LYqXCYgvidRxwwEhZ44iRXbFR0Yy2zm6egG6HFA/GOIyh7W6zSrtG5QymxS/q4zdzMjbm/i1GVF6sdlG9h69JM5w==
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
+ by SEYPR06MB6202.apcprd06.prod.outlook.com (2603:1096:101:c7::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.48; Thu, 16 Apr
+ 2026 01:49:32 +0000
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9818.017; Thu, 16 Apr 2026
+ 01:49:32 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: "philmd@linaro.org" <philmd@linaro.org>,
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ "flwu@google.com" <flwu@google.com>, "nabihestefan@google.com"
+ <nabihestefan@google.com>
+Subject: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn structure
+ and dead code
+Thread-Topic: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn
+ structure and dead code
+Thread-Index: AQHczUNFhK5MCMsaPESXZcYoH3r+fA==
+Date: Thu, 16 Apr 2026 01:49:32 +0000
+Message-ID: <20260416014928.1279360-2-jamin_lin@aspeedtech.com>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SEYPR06MB6202:EE_
+x-ms-office365-filtering-correlation-id: e860cd68-55fc-4e6d-8a99-08de9b5a67c0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|1800799024|366016|38070700021|921020|18002099003|22082099003|56012099003;
+x-microsoft-antispam-message-info: OSgZZeJ2E4NF/kg8M0YFy46LB5a54f5R+pL+rMDy5D3z7DmxDR61a7JuQDHrAKueGCS3mMLcHTncT6fgl+xB5YIHrpRy+faKVbXsPZXXWmk//USPmUv208fMy+YDwe+jSAXuGFzx0BaQOx6BFcUn8AeExduIHRsb9bG0y4EnhB1JIYfzvH7t3yA8p75XQJwN/3ld3mOA7IGs6yD5Hg21jCsQkoEww3ok5TNrlQ1fGwmjctq5XI/oqEDgACd4Ht9wiCLid5xPkIzKQeStSuymn5QlFdMUjYaq4s76IrHtk+qO+5HVilqE4VQtpvRJ0+AfGPMEhYSr7PxSkK+aV81KvsXyKohzyjE9KT8mpOGv036DUPZCq6wxB+4wH0lgFBRSR6beg2bSJgwlGGTmlc0ssJMhSlbnG1QkRSKYXyclftowS8Iw9sGx5d+P3VTN/0ZjBfx/ToE8d+hheMP5wvblnnRu3lYwAX1Vy9FMMyDaU3Kq6daWwohuxZ+FXNoXd0kXaPf039tmu+lkv0n7LLldWr0TvUJ3GmA+ME7zwXJ7SPBRyulOnJEhjd1IdrQ2D5xh3Mdk5RlWQ6JePqI7aBNpWqJvHxBSOI1aDO1kXRrZGrCEdbSLSRI7LSTRdfCyelW4M9oI5jWwYw5g/4EnsGDuvK6kR/G96W/CztVKi4y7kp+HilgcB88dHmtmiCvM3y1o2gVYStfC+Vt4emiVAOq0xAslb546yDzNDrW3YDWCJNDBYyA+waItdXuBWWKV26RFK59cO+vjHJoNUeQ1BhzGDih3lGShDVRk8+GNCvCQfhdL6N0wJ2IS2VDuuGHcuHpO
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016)(38070700021)(921020)(18002099003)(22082099003)(56012099003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?UEiYYRBFxM20Ht91PB+WgjGKFV4cpY1HJY+6t2PSk62PlfaucLGi1QbEuN?=
+ =?iso-8859-1?Q?0hOMakYFrVeYVo7PzR0nILl24Dp6FInK6tmhFvJ3kC3O9UOtO1L5Q8whL/?=
+ =?iso-8859-1?Q?hP8ROtcDxxrBeRDVOK/dtQCx1la3eN3e2exXtjcdAYdE7V+AFuJgOTbj16?=
+ =?iso-8859-1?Q?9OkbST/dbzS8U/6Fgire9amjoR3kfTtTwkyPvkJt0mb9eOmACHBayVF2A1?=
+ =?iso-8859-1?Q?xD8I+AuMixPGo/dro6SBmlNgFg4d+V872fyXQmhzQE1YsSxU5u/1uz6PfL?=
+ =?iso-8859-1?Q?tapprKlGDq3pDeNpfk63DwyecFIgBUOYrCirLLjjh39vauJpwjEKqkW/wA?=
+ =?iso-8859-1?Q?wX80PadH1daXTioCt41RzI2+sRcmQPr3vGJLgQ246cBYbzmsI7tU0I+H/s?=
+ =?iso-8859-1?Q?syuWP6oMo3SPyLbdO3XhRk/6Y09tDFe/LzeS9rn7jbgY0uI5lNBsEOaovo?=
+ =?iso-8859-1?Q?3BaXRx7U4FP3ovNlvgpRJpSu/czxniwvWi7h29MdX7ATucikyOm8f1VSY/?=
+ =?iso-8859-1?Q?dx2sTvlGVAfXYrOPsLRS0+SIy4Hesv3KLvaMNN9VeWO6YJSWMOyvG4A1Pb?=
+ =?iso-8859-1?Q?uJA56vE5x9QGYZcUGE2SxHcLc9kAAZ0k+quFV2dfjOZefTQVkpszuNNjt4?=
+ =?iso-8859-1?Q?dBeJhNBtaKuIlAjeAKdZw3TqDSlf8NviupaCAL//aznbWpUjyO/waDLX83?=
+ =?iso-8859-1?Q?R+tXvXKSmT5FHvCflOV59/6hWUAtdKnIKxQdajQDSs7izbQcaBc+auMaQp?=
+ =?iso-8859-1?Q?3Z0eUK9FKbHR+djnvsCNBdKPPEiZqPmtHHbOm71WQ3rnFcSNrE9bIISfU/?=
+ =?iso-8859-1?Q?X9sQv7kjqQpyE3kRC6HJMJYQHRS6MRqRuv5yEKz8WsVhfqoWz0tFJ5LN4U?=
+ =?iso-8859-1?Q?ANIIjoan3LfzUt3kaWduPYwWOkx3a/cvGhTBMSipsXed/oIaR/cdKBtT+7?=
+ =?iso-8859-1?Q?t/xaOKfGlqcCAQfisAmjYRUJ/4Lkh/w1BMkX/oK7Oix6FPND4VSBIdkpS5?=
+ =?iso-8859-1?Q?uJlzMvEbigLS4nrt/R+wVtnShFL9Uphk8No1dkand88Eyc6PrYoqX8beCF?=
+ =?iso-8859-1?Q?i/HZkrA5fVt4ExXskZ7gW+X+YOsrkTv1gu5pif90BKB4Webhz9vaUAiuSL?=
+ =?iso-8859-1?Q?zmWBk1WTnBwVquBkhPuzRXkqf5elUa7mHGTMgmTEpKUzLpkc7/va9jlGBN?=
+ =?iso-8859-1?Q?MTBm8D9NcysgDzspCShA21FgdESswnNCmRUjlEWmKu6sGzldhB61oGd+7E?=
+ =?iso-8859-1?Q?d+1H9zLVwjP5Uwv0kPd86lXXTwqTtNvKcem1RHiqg+Tcjz9sPYAWz9Vi/J?=
+ =?iso-8859-1?Q?1jbCaz+rxi1KXHsDlGnM7ycKNBIyrvNhw1Zuw6yyd7UzO2hmejASuhRz+1?=
+ =?iso-8859-1?Q?0qPeAWKtPoY+vC1D229AiBDo9TCKioZZ86dy8ATs/+Pl+k5wn6BX5HZ08H?=
+ =?iso-8859-1?Q?mkJR4Ib7RSe85PojoKwEXCpeRVApkhgSIL+Z+7MQ9vdc+TUkTZmu2kIlfD?=
+ =?iso-8859-1?Q?Qx3kWnAaBqxS85VDewpi1AC+eccy0IBNKWJn6MNTzf6Y8qqwGTpeFk8FSK?=
+ =?iso-8859-1?Q?UE5j+Rr7mG0eQUKQl5eleCgcMy4brADJk7+ValDRDe7Ov/L48nDHkIEc2b?=
+ =?iso-8859-1?Q?P2auLwCTVPsDTmFJYR85rpLvP5m+WzdfC8XHFNw1G5aLPgF6KQSFXjnxZb?=
+ =?iso-8859-1?Q?3hFZG6BI+dT9IjXZnx6loZDaPGSwuczP5mI7MUpMGogc1PWxMsgW5TsUov?=
+ =?iso-8859-1?Q?UxkN6qfOymQ6/9cUz2LLsUeDA4nQWiC7WHnv4bOOH3+E/lzSmgMsLAccz9?=
+ =?iso-8859-1?Q?EbTMBSVchA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUSPICIOUS_RECIPS=2.51 autolearn=no autolearn_force=no
+X-Exchange-RoutingPolicyChecked: rkTR/6KmfcJhZWkVD+QYQSwpf1V8HmHYTaUpg+HvsLxyB7Ee1c/FOJzv6hDDNZw0o40Fjyew56E5ncTEe2wbSY65lC7mCI+6t+qM+SCiKtmp/AN3jylZtwEiDfd/sfondHqe+Rh1NF8SMsvY3bxqkKOxuFURRpBenH9eDRuiQxdC9zddet7/5XTMpUtSnJ8byMNzQnbialGGGEQ8wNzFQC4eIhEmQD3rM4T9AFEKSm9zB3A+ESfLBbFN9XGa/40CQe3RdEMpj4Bx83Xx8LkqvsvBEXuC9zF/jxpVVTt2bUa+tleo3emPPKD4ztB4GgLwSSC/qKNW3C9wUGyDz5EMug==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e860cd68-55fc-4e6d-8a99-08de9b5a67c0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Apr 2026 01:49:32.3080 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JFIEFf8bcb7siebkWPpmFAo3WUcQxGnMKWQi6EktfpiQRF2pg4P+i940FJSKFM4KmiPf7Z3kvrgOFK5OB6XFcrR34wRS7JrAisRmTtpUrS8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6202
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,141 +151,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When possible, reduce CPUState variable scope.
-Prefer cpu_env(cpu) over &cpu->env.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/mips/internal.h              | 11 ++++++-----
- target/mips/tcg/system/cp0_helper.c | 28 ++++++++++++++++------------
- target/mips/tcg/system/tlb_helper.c |  7 +++----
- 3 files changed, 25 insertions(+), 21 deletions(-)
-
-diff --git a/target/mips/internal.h b/target/mips/internal.h
-index c6cf69dfb6a..cc031662ef9 100644
---- a/target/mips/internal.h
-+++ b/target/mips/internal.h
-@@ -279,7 +279,7 @@ static inline int mips_vpe_active(CPUMIPSState *env)
- 
- static inline int mips_vp_active(CPUMIPSState *env)
- {
--    CPUState *other_cs;
-+    CPUState *cs;
- 
-     /* Check if the VP disabled other VPs (which means the VP is enabled) */
-     if ((env->CP0_VPControl >> CP0VPCtl_DIS) & 1) {
-@@ -287,10 +287,11 @@ static inline int mips_vp_active(CPUMIPSState *env)
-     }
- 
-     /* Check if the virtual processor is disabled due to a DVP */
--    CPU_FOREACH(other_cs) {
--        MIPSCPU *other_cpu = MIPS_CPU(other_cs);
--        if ((&other_cpu->env != env) &&
--            ((other_cpu->env.CP0_VPControl >> CP0VPCtl_DIS) & 1)) {
-+    CPU_FOREACH(cs) {
-+        CPUMIPSState *other_env = cpu_env(cs);
-+
-+        if ((other_env != env) &&
-+            ((other_env->CP0_VPControl >> CP0VPCtl_DIS) & 1)) {
-             return 0;
-         }
-     }
-diff --git a/target/mips/tcg/system/cp0_helper.c b/target/mips/tcg/system/cp0_helper.c
-index 99f43ad9e11..4ec1312f016 100644
---- a/target/mips/tcg/system/cp0_helper.c
-+++ b/target/mips/tcg/system/cp0_helper.c
-@@ -1559,12 +1559,13 @@ target_ulong helper_emt(void)
- 
- target_ulong helper_dvpe(CPUMIPSState *env)
- {
--    CPUState *other_cs;
-     target_ulong prev = env->mvp->CP0_MVPControl;
- 
-     if (env->CP0_VPEConf0 & (1 << CP0VPEC0_MVP)) {
--        CPU_FOREACH(other_cs) {
--            MIPSCPU *other_cpu = MIPS_CPU(other_cs);
-+        CPUState *cpu;
-+
-+        CPU_FOREACH(cpu) {
-+            MIPSCPU *other_cpu = MIPS_CPU(cpu);
-             /* Turn off all VPEs except the one executing the dvpe.  */
-             if (&other_cpu->env != env) {
-                 other_cpu->env.mvp->CP0_MVPControl &= ~(1 << CP0MVPCo_EVP);
-@@ -1577,12 +1578,13 @@ target_ulong helper_dvpe(CPUMIPSState *env)
- 
- target_ulong helper_evpe(CPUMIPSState *env)
- {
--    CPUState *other_cs;
-     target_ulong prev = env->mvp->CP0_MVPControl;
- 
-     if (env->CP0_VPEConf0 & (1 << CP0VPEC0_MVP)) {
--        CPU_FOREACH(other_cs) {
--            MIPSCPU *other_cpu = MIPS_CPU(other_cs);
-+        CPUState *cpu;
-+
-+        CPU_FOREACH(cpu) {
-+            MIPSCPU *other_cpu = MIPS_CPU(cpu);
- 
-             if (&other_cpu->env != env
-                 /* If the VPE is WFI, don't disturb its sleep.  */
-@@ -1599,12 +1601,13 @@ target_ulong helper_evpe(CPUMIPSState *env)
- /* R6 Multi-threading */
- target_ulong helper_dvp(CPUMIPSState *env)
- {
--    CPUState *other_cs;
-     target_ulong prev = env->CP0_VPControl;
- 
-     if (!((env->CP0_VPControl >> CP0VPCtl_DIS) & 1)) {
--        CPU_FOREACH(other_cs) {
--            MIPSCPU *other_cpu = MIPS_CPU(other_cs);
-+        CPUState *cpu;
-+
-+        CPU_FOREACH(cpu) {
-+            MIPSCPU *other_cpu = MIPS_CPU(cpu);
-             /* Turn off all VPs except the one executing the dvp. */
-             if (&other_cpu->env != env) {
-                 mips_vpe_sleep(other_cpu);
-@@ -1617,12 +1620,13 @@ target_ulong helper_dvp(CPUMIPSState *env)
- 
- target_ulong helper_evp(CPUMIPSState *env)
- {
--    CPUState *other_cs;
-     target_ulong prev = env->CP0_VPControl;
- 
-     if ((env->CP0_VPControl >> CP0VPCtl_DIS) & 1) {
--        CPU_FOREACH(other_cs) {
--            MIPSCPU *other_cpu = MIPS_CPU(other_cs);
-+        CPUState *cpu;
-+
-+        CPU_FOREACH(cpu) {
-+            MIPSCPU *other_cpu = MIPS_CPU(cpu);
-             if ((&other_cpu->env != env) && !mips_vp_is_wfi(other_cpu)) {
-                 /*
-                  * If the VP is WFI, don't disturb its sleep.
-diff --git a/target/mips/tcg/system/tlb_helper.c b/target/mips/tcg/system/tlb_helper.c
-index 680b4da29fa..8537798a53f 100644
---- a/target/mips/tcg/system/tlb_helper.c
-+++ b/target/mips/tcg/system/tlb_helper.c
-@@ -346,15 +346,14 @@ void helper_ginvt(CPUMIPSState *env, target_ulong arg, uint32_t type)
-     uint32_t invMsgVPN2 = arg & (TARGET_PAGE_MASK << 1);
-     uint8_t invMsgR = 0;
-     uint32_t invMsgMMid = env->CP0_MemoryMapID;
--    CPUState *other_cs;
-+    CPUState *cpu;
- 
- #ifdef TARGET_MIPS64
-     invMsgR = extract64(arg, 62, 2);
- #endif
- 
--    CPU_FOREACH(other_cs) {
--        MIPSCPU *other_cpu = MIPS_CPU(other_cs);
--        global_invalidate_tlb(&other_cpu->env, invMsgVPN2, invMsgR, invMsgMMid,
-+    CPU_FOREACH(cpu) {
-+        global_invalidate_tlb(cpu_env(cpu), invMsgVPN2, invMsgR, invMsgMMid,
-                               invAll, invVAMMid, invMMid, invVA);
-     }
- }
--- 
-2.53.0
-
+The EHCIfstn structure, defined according to EHCI spec section 3.7,=0A=
+is currently unused in the EHCI implementation. Remove it to reduce=0A=
+unused code and improve maintainability.=0A=
+=0A=
+Additionally, drop a block of disabled (#if 0) code in=0A=
+ehci_state_advqueue() that was never implemented. This code path=0A=
+is incomplete and has no functional impact.=0A=
+=0A=
+No functional change.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ hw/usb/hcd-ehci.h |  7 -------=0A=
+ hw/usb/hcd-ehci.c | 11 -----------=0A=
+ 2 files changed, 18 deletions(-)=0A=
+=0A=
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h=0A=
+index 0ae8c06331..3aec0e047c 100644=0A=
+--- a/hw/usb/hcd-ehci.h=0A=
++++ b/hw/usb/hcd-ehci.h=0A=
+@@ -202,13 +202,6 @@ typedef struct EHCIqh {=0A=
+ #define BUFPTR_SBYTES_SH              5=0A=
+ } EHCIqh;=0A=
+ =0A=
+-/*  EHCI spec version 1.0 Section 3.7=0A=
+- */=0A=
+-typedef struct EHCIfstn {=0A=
+-    uint32_t next;                    /* Standard next link pointer */=0A=
+-    uint32_t backptr;                 /* Standard next link pointer */=0A=
+-} EHCIfstn;=0A=
+-=0A=
+ enum async_state {=0A=
+     EHCI_ASYNC_NONE =3D 0,=0A=
+     EHCI_ASYNC_INITIALIZED,=0A=
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c=0A=
+index 57f930b099..5ea8461f70 100644=0A=
+--- a/hw/usb/hcd-ehci.c=0A=
++++ b/hw/usb/hcd-ehci.c=0A=
+@@ -1756,17 +1756,6 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int=
+ async)=0A=
+ /* Section 4.10.2 - paragraph 3 */=0A=
+ static int ehci_state_advqueue(EHCIQueue *q)=0A=
+ {=0A=
+-#if 0=0A=
+-    /* TO-DO: 4.10.2 - paragraph 2=0A=
+-     * if I-bit is set to 1 and QH is not active=0A=
+-     * go to horizontal QH=0A=
+-     */=0A=
+-    if (I-bit set) {=0A=
+-        ehci_set_state(ehci, async, EST_HORIZONTALQH);=0A=
+-        goto out;=0A=
+-    }=0A=
+-#endif=0A=
+-=0A=
+     /*=0A=
+      * want data and alt-next qTD is valid=0A=
+      */=0A=
+-- =0A=
+2.43.0=0A=
 

@@ -4,87 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E8CF8E486
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 23:12:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5FB2F8E48C
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 23:18:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDVsf-0000CP-C3; Thu, 16 Apr 2026 19:12:17 -0400
+	id 1wDVyM-00025a-8Z; Thu, 16 Apr 2026 19:18:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wDVsd-0000Bu-Pw
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 19:12:15 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1wDVyK-000257-6o
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 19:18:08 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wDVsb-0001oT-TT
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 19:12:15 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-82f37c09352so835746b3a.0
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 16:12:13 -0700 (PDT)
+ id 1wDVyI-0006Rv-N7
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 19:18:07 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-82f41fce3e6so52129b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 16:18:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776381132; x=1776985932; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776381485; x=1776986285; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=/dvvYZNuIIL0udKkQ2r0/fW6xAgZnL6SZ1paVP1amiA=;
- b=xhKbLwV481pbq04jMKmog/gJGDL3QFm3q7q0jeFsnVeARzWxu8KFemGrFo8eMYNRYP
- P6IJ6s3yVkAqYW79pl0PsmWM9hayRaYTELWEdMpwpKZpCGZkVYC9sWlepFxog/i5baAA
- 4upAoax1+qbt1A+5wOKpvizmQN3h9grsr1KzJW42+wIM+ooa8HeCoEA8KlHqt8SCdY3w
- hyVI8Hk2XtefIbJwAEAmcELm0qk+rit/TzqEU5/IJJ4kasoC2FX3HHDuKgMtoUeOPejl
- dG5Yg995NVmAfyaRG6tVwRGL1dCdN5mOjJGtFa9gfDtWFxN+roT4vboWVbx1WACjIS1M
- sAMw==
+ bh=xOvuWlfr91UKP8ZA+tGsKjHiDHp15zJ4UWQTZcws5Do=;
+ b=Nj5slFOFgcr1xfD7f1+IkyJLXxoQmrT3myvwl306sSQ4L3EtIqNG3biI68MmpaJUoU
+ mVraytzfUyTOC37tk+yLUf0CKSnIyrx5vH2h+IHasC09N0IkHF0O2Uda56gosMYvTsTy
+ Lz9pKBbVDeutp7UdNVZKovDs1tTqi56SJ0N1fIhkhOBrwmcR87fKywh6j+vgAjmqfR7z
+ 9oag6WtRX4FWrMtY4D9gxoHlB9gEDXP+FeyergGrj5TB5xYgxh+ClxV45WZP0PRVnwcT
+ Q9X/7gQ5Vpj+JDjrt2mgnCGWqd5BfnV8hZ+AK2/qEzTMlqVoWT6Rz3jx6vSMKbHbpkku
+ D5dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776381132; x=1776985932;
+ d=1e100.net; s=20251104; t=1776381485; x=1776986285;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=/dvvYZNuIIL0udKkQ2r0/fW6xAgZnL6SZ1paVP1amiA=;
- b=m1Bs+dNWVqA6pca2i5lwJUCt5HUdq1ZnJPNSDMJBuPDTRlK3WjCpLDyEeN8fVtBPHp
- uoyndaOfYw+J/hs6l7TbhMxINfwhXRpJpMJOHeDmc0MAXdUAgFX1pcDvtQTgravghpxR
- 2NZ1qi52mz7TuuwRWJEg40gFBHXjIp99CFRQ06GXCd2vylVZ2rqAnkVCl0DrcCYprjST
- ICEp9i997qYs48k2PvOrSK0j63Pv+lFsnIfIXCMMz8BCFHh4v3lshmXi90VKPJEhaQaY
- 24GY1hkdt+Gk3aBr5GMP1LkK7clEc3KqT+qGnU3XQFWtxsFgpORKOT5lvqoiirdt+d4L
- V3dg==
+ bh=xOvuWlfr91UKP8ZA+tGsKjHiDHp15zJ4UWQTZcws5Do=;
+ b=DowwkbuQ+8m8cvu5/nzpPkgNz5IC+5VPdZV0o+eLQCNcBRRrAnxrur18TFwgK5Ghhy
+ ISMdDWDk7ADYP2pI39/cTXj0i0I3UarwNB4btACkqtSnvEP5SV494dCNSycHYaIUIyZw
+ Wg5B6n3BZNbh/WAakEtVdCUZlVwNnTn1KMABE+FMZmGeOeaDcGl8rLMqmsNRuQa0HFwE
+ 42ncpWp/UBBTXu9GOh/YOrghk1KhstWfHcj0lnUYKNYSNNRfM0uXqgJSrf3oeKfh5Nju
+ sYJhFgO+MtECTPW7IzytEaJ7cFZZGy1qtz6JYc+Cwx0fqwM4ZAvT0nt4QfRpmCt7Kmee
+ 5bgA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+1cuQ9+yMYf2ydb23H8m3TQCjYPAJXJOjRltbqAhdhhwjVONju6AOIp/RyiIw/TyGdR/UFyIEXuA==@nongnu.org
-X-Gm-Message-State: AOJu0YyOUCTbCVtmJlVfX+1975byQ3y7ZctmqISwvbYk1IWKq7YKLbo8
- 2f+c6lFmQqJRZYQABHEc8ssxADN6u6cnR0S19zCD5hPuioDsEfKRcp19er3CbTS1fug=
-X-Gm-Gg: AeBDievTiDJpANypNVQE4GO2EqNme8GARcey1wO9xhzDNnIdODt2s3TyCU6SJbIclgJ
- dbnQ4KARpu4HaBLpmpwV57QB6Tg0nOZeubefFb7phEmJ/Hu8c2v5HowIIkBsUaYBJ/rTkfhCR41
- JxCOxZLy7cQNEiPXaM4jZGSLP6ZSEZorJ+eNd2HUil3ns1jJGMZbSi9Voil9Xj3t/9KprngBkt1
- ivD1KqxYvdpI3BgLPp2Y8W8rCiPuTQi/BjYmITKbBw2XSkciTG1jPW8ZLCAv5MfNurF/4OzROw9
- svb+/+FOFthv4EvWBvuCQlQpTqsw9N5UT4aVVNysjCJjrwBYoNBit9liap9/qTqvGZTcMQQGOOQ
- qkIrkcNOp3ZbUg0McGLOra09NKJ8lWC9BRpqmh+D1WmWFFBBI38U+/EMdHJHZGdYjbVnwG8Telc
- qLJXy4FDSi/tGLDuqYtZ5Hz4RFk51d8mFGwJ0pUjJCthXN2oKPT/IK6YvpsGsa
-X-Received: by 2002:a05:6a21:6d9d:b0:395:acfc:b679 with SMTP id
- adf61e73a8af0-3a08ca743d5mr302050637.18.1776381132226; 
- Thu, 16 Apr 2026 16:12:12 -0700 (PDT)
-Received: from [192.168.20.21] ([115.186.231.75])
+ AFNElJ+8JhrM4sXV9kjqb+zz50vz9ZMJ1cPkvdPTR38I6bNv/Hec+uzBL718S7WV/KIykgBL+hzYRZo4AQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxYUnOx0XHTfuIMTroZqw5X2KTgrJg3Riuf7/D3rwNEzIzVT/D0
+ 0SUU4vwlx/AYMpo8UJMDfnpiXD6wx594TgkPXn9KgtxySRUvojMvyF2ySOfYF6DcVok=
+X-Gm-Gg: AeBDietMfMXshb8oKY1XXFCHviiZbm/CbKJ+iHpkTELy3gitjfdwJWRMDXX0t1fQvjQ
+ 8ChwviSE8fJ80DKhLeLoBpYBrv4d9h03/fPYYPGQ4rz55bL4oG6hw3kswl2+skYNcnUhz0avS2W
+ P8qOg9Ln5O2zMj6tl3BFjA/tncPbDskEOw1Jnw0XSjGIr/MP/go2z8nvwEEW9jAr8U7Xy0TI5ys
+ NHD7tOja+zARsRqaXxlPiKNTNPRUi6O7nBKmg1ok4MuOlMjU6MF+SglYKG1RVURixVnTcLbE3SS
+ RptItlkMcsUVjyIkNae8nuuh5s+4WtC4OCzOhc31Cb+O1qIPyOoidAVVFh0HUVNuyZviDG+5DyP
+ 7VFGMgR8Eaoywez//vXRjQUQg2NP4LXIVA6RYrXLHg3K3+3VkPMWjd9EL7OxmhLVsr98lyRjxOv
+ DcbooCmHGj83NpQHRQOQhAxRdHRsJ8e+Bdz3+QXjOwcUMn+y2WYkOsTwaYGOdfLe8TGTfi1+Hog
+ yf0ViA8RoTR8fgVR2NBzHN20pzTFeYJvbjffjHllMmq9DZMK63gJgSL+oFaSM6VyA==
+X-Received: by 2002:a05:6a00:3cd1:b0:82f:6b3a:8281 with SMTP id
+ d2e1a72fcca58-82f8c84dfa1mr260467b3a.7.1776381484695; 
+ Thu, 16 Apr 2026 16:18:04 -0700 (PDT)
+Received: from ?IPV6:2401:d002:dc0f:2100:a60a:7c34:dd75:e66c?
+ (bg30dj02y68bx09myf73.ip6.superloop.au.
+ [2401:d002:dc0f:2100:a60a:7c34:dd75:e66c])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c79581a3020sm5576844a12.20.2026.04.16.16.12.08
+ d2e1a72fcca58-82f8cbbe9fbsm101783b3a.54.2026.04.16.16.18.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2026 16:12:11 -0700 (PDT)
-Message-ID: <8d640a27-01d1-4f74-bf6a-8acfd211ec89@linaro.org>
-Date: Fri, 17 Apr 2026 09:12:00 +1000
+ Thu, 16 Apr 2026 16:18:03 -0700 (PDT)
+Message-ID: <477648db-9ef6-4128-a9f9-f021e9c0a18e@linaro.org>
+Date: Fri, 17 Apr 2026 09:17:57 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] target/arm: Clear AArch64 ID regs from
- ARMISARegisters if AArch64 disabled
+Subject: Re: [PATCH v2 3/3] tests/functional/aarch64: Add basic test of TCG
+ aarch64=off
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
 References: <20260416165353.589569-1-peter.maydell@linaro.org>
- <20260416165353.589569-2-peter.maydell@linaro.org>
+ <20260416165353.589569-4-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260416165353.589569-2-peter.maydell@linaro.org>
+In-Reply-To: <20260416165353.589569-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,38 +111,16 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/17/26 02:53, Peter Maydell wrote:
-> If we create a normally-AArch64 CPU and configure it with
-> aarch64=off, this will by default leave all the AArch64 ID register
-> values in its ARMISARegisters struct untouched.  That in turn means
-> that tests of cpu_isar_feature(aa64_something, cpu) will return true.
-> 
-> Until now we have had a design policy that you shouldn't check an
-> aa64_ feature unless you know that the CPU has AArch64; but this is
-> quite fragile as it's easy to forget and only causes a problem in the
-> corner case where AArch64 was turned off.  In particular, when we
-> extend the ability to disable AArch64 from only KVM to also TCG there
-> are many more aa64 feature check points which we would otherwise have
-> to audit for whether they needed to be guarded with a check on
-> ARM_FEATURE_AARCH64.
-> 
-> Instead, make the CPU realize function zero out all the 64-bit ID
-> registers if a TCG CPU doesn't have AArch64; this will make aa64_
-> feature tests generally return false.
-> 
-> We only do this for TCG because only TCG really needs it, and for
-> KVM it might be confusing to have QEMU's idea of the ID registers
-> be different from KVM's.
+> Add a basic test of the TCG 'aarch64=off' functionality; this is the
+> same as our existing arm/test_virt test, but it runs the AArch32
+> guest kernel on qemu-system-aarch64 with -cpu max,aarch64=off.
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
-> v1->v2: limit scope of register clearing to TCG, as I suggested
-> after posting and testing the v1 version:
->   https://patchew.org/QEMU/20251002101648.2455374-1- 
-> peter.maydell@linaro.org/20251002101648.2455374-2-peter.maydell@linaro.org/
-> ---
->   target/arm/cpu.c | 35 +++++++++++++++++++++++++++++++++++
->   target/arm/cpu.h |  3 ++-
->   2 files changed, 37 insertions(+), 1 deletion(-)
+>   tests/functional/aarch64/meson.build          |  1 +
+>   .../aarch64/test_virt_aarch64_off.py          | 37 +++++++++++++++++++
+>   2 files changed, 38 insertions(+)
+>   create mode 100755 tests/functional/aarch64/test_virt_aarch64_off.py
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

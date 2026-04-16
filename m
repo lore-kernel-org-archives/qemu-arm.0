@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AC2F8D762
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 16:55:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88282F8D761
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 16:55:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDPyg-0006A0-OH; Thu, 16 Apr 2026 12:54:06 -0400
+	id 1wDPyi-0006Aw-Ha; Thu, 16 Apr 2026 12:54:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDPye-00068s-VK
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:04 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1wDPyh-0006A5-09
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:07 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDPyc-0007c3-I2
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:04 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-483487335c2so90497475e9.2
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 09:54:02 -0700 (PDT)
+ id 1wDPyf-0007ov-5Z
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:06 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4852b81c73aso77099295e9.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 09:54:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776358441; x=1776963241; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776358443; x=1776963243; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=f1oPHbQSPRM9BqIW/R6wbhEyiBfOJFdGBhv8oIagU3w=;
- b=Zkm0edQiNVN9NZLd/+nC44tpaY9Nt5+TybHzdzome3Dvs33dvVD7G1Wwca9bfcYXMp
- PBOM3hQcabO+///LW/pm6RpIFXpVqqV6vfvTPBMMdOES0HnRj1zK/LPHVED7kUumCWFb
- v9OqrNbdh2wAycZilXXiNZNyyrasR/eWtJbpvTxdo6GqioFA3V4LNrb37ShA8VBRj7r4
- Ksdgk/PLtQCjkTiexnjp0Xq33Jo3opGo8Q5qFcGK4Prj7b5+248ygNdoFfoFpoyYjj88
- E8MNHGrUHeUtoqAPoGn2rrqb3esz9eLyvRCXYja3PrJo+fn1hk8J5qBfp8pv/rGD7QWq
- Mlbg==
+ bh=CxoE2sQDfNJcl7sNbi2G1nRN3fSKrRDunzLrpBK4/AE=;
+ b=Oirh1zMyfH4drx6HVEBfPNQWOrUMGP1xxYNGXtRQT39JBCQqGM5oZg9KoTQHDGkApY
+ vIrxu8fxwPruZ9y0v6faOh+oVAAqdhI4J8gVXaQfzaKxKWdqXac/qNd5EAGAh4i+6t7n
+ RHHd44Gd52Ns77ofBfBPykXrnavZdDmwPVjmDml7Rv2qTd0n9r4JS5RODHdvl26pSBQp
+ ZISe1LLcgPdpdWuchE4uYsWM68qBRn6L9dafFg59uGt0lFeUdIwgzN68tYCk6frQIU42
+ zfUTyHyrTsOBakRZcyKcDG7OTjokNcI7UlDOptIm3/XDWAMWUzWTDza8x/jrtBdXFwu1
+ Iq0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776358441; x=1776963241;
+ d=1e100.net; s=20251104; t=1776358443; x=1776963243;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=f1oPHbQSPRM9BqIW/R6wbhEyiBfOJFdGBhv8oIagU3w=;
- b=VvccEygVhwnKY1LzxwZotWEHR38liS/iYVi18Y8Tq7PU/nC5pJogzIkgJWXJVJh6Nh
- zH3GiQK2NvJL2B37D5S1Xx4FziU7QSQEF7UDQFX2NYVddhH57YPJ/V7KUWsrzxhNDBD9
- cgKkbYtVOiYI1VFPHspYLetnAU2z8C+nqjM41vZaJ4mBC7+OWganyw5wLcn3aY4/pjxf
- CBd9Nyb11l2hSXvOIIc8j4YIY5pD3Cj31F1AxfItPOIzTtJ/2kd9tAodosbAJ3BqF/k8
- mO4qz9y2Mk0zytrkRJHn447ULXy9bQDjGBoenal1yn17iL/S8Vi1urFVstO348wGIvfk
- 4SsA==
-X-Gm-Message-State: AOJu0Yy0creVbl5Jaqnmw3kuFAwr8Q4D3s2kW8MEMQ2XolkuQmt3H6KF
- 5cEBhM4rn0f7wsdB/Z5BHeI5Mq9tnW/3C60WPEj+mhsy4NUf96SjKcSx+1LQnuSoc3DkXmH8R0L
- Vyd76TZY=
-X-Gm-Gg: AeBDietIo5/N7W77LDv8ixpV+Jiwvj6Ug8vIxoJU8QgxfBxvy8CvtMLH0E474HGJsDG
- N68JMS8C/GBUIHYHl2nVcn7IyRVbMGXToCTZgLMkfu3afYMok22Kwayuw8FiQRbiPCzi84mOISg
- dQ9Fcsp17n7QQlKZ1ppYfd4+n5oUtzbj+c0BdzkDuljCSnnXIw16XgItNR1yRwTysSgyp3ozsbS
- SqPEJzgTaJZ/af+cIJBTmRAmYft6sSKiEqA3sJtHULkNrPXb9BPOBJRWpoVdME7ws3JORZ+Y51y
- jlOMTwDbd6r5rp7OddYMpRWaMzuUkWvxbQhQ29WOz/2AvXXaGAXL18vD2vh5vs3Dv9uidvw/qcG
- G04GHSgmJFr2UcqoIR1VZSK/A2skF7YYMrIB7Ehy5iNCgxv254GEr7/MbXrwfkuTtdvAsFLAgPm
- YYEoMbS4V/cHNo+wiW19f19c/rl6DgMBYwA4DB6yFUy8ZuOsKd40x1KKL4pMMo2EzmUQlv//xBt
- uDzVwDYirahOBbB7oK0ajbwsUVLia2LHSXprNmtMw==
-X-Received: by 2002:a05:600c:6994:b0:485:3eba:ab96 with SMTP id
- 5b1f17b1804b1-488d67bbcbamr381815095e9.3.1776358440828; 
- Thu, 16 Apr 2026 09:54:00 -0700 (PDT)
+ bh=CxoE2sQDfNJcl7sNbi2G1nRN3fSKrRDunzLrpBK4/AE=;
+ b=OWKpDGUInFs2moPwOelufkgFoVXi1sVdQ+3vPagD2br0qWUj/zLVRg/c6P5mdLqcCK
+ XCtv0rQNJPrLSAg6Fm+bTjXzeevTUKamGljTkuFhWFiqpGpMnDNJ1FcomzSt6p+SKTAK
+ 7dAktGz72QTurwijCx3XJ6tgIhtwV8Ghq1JQjX/O1di2bBQxXVKXUT3+aTVcVZdNPX27
+ 9V/5aRMnNHVv0Her8idN7TuP69YUSN7HDFGAlZ+eMcPOG6QEzl22/diQW+2aSQ2HUeoe
+ 6BnGJGTkQg3DpHRjddz7VEhQJ72jupeAEmFiNek85itp+4FDsaTYQ86vJX9yU5kd8SQD
+ ps9g==
+X-Gm-Message-State: AOJu0Yy3ltcaLs6W6CXqzdJ7vogWHfhIP9G+Hkaom98LXIcszsaNBmOk
+ IDcI8UX67SPecFt6r5KGfSstIX0CTr9c5cXFlfeFUNeO6wPAj13xFsZMHivgdDQmj1bnoC0xkiE
+ 6L0WXwIc=
+X-Gm-Gg: AeBDietWePzj2dhc6Ep2AOMk6shwjnGccGODKpAUI3MbTaimVfxrDFJBUWj66lmxjCN
+ 3spm/Or9MnzMYPQxpEp9h/3KuO4TAWE85e19KYwwKqZ5KYbQX32i0AYr6CjtvtM/DPOrOifv7T1
+ 1ukmNVwZKcnCy69HYToyzND2j0sqINHlTIwMoN9C/LNdxXhLKkfFfr9hkdcfHNgHYmQFjfzB0vl
+ 9CnUj2giTiUjAnfFEvd/yOoptzILQZ36IZ4fo8jY3FxfsrA2Y0Gp6Y/5ek1q3bE+zmG2/qE96nX
+ KSNh6wPz2W1iJW77vIOf9EDdjtesvwznmZOppI7gO8veCSsjiVOlPbek0Us6KQ3Hv9058b3S8uN
+ AyajEktZ1JvNj5caH+b8A+Lq6WXVIkatdxai+hVwbimaFPU7A5tA65d5ObFExBtz89dwnzUYjua
+ Jkhy9yNyXKXtkp9sHhCz1rSeR4ejNHd+54lrc+fagYDgrIYj9YezAnsc4dZkcRrhwmi5HV5oBiM
+ yoPZdXogNxQUpLBA+7dHbywiR2ljJAt2cJ2QW7gRQ==
+X-Received: by 2002:a05:600c:4fcb:b0:488:c120:480a with SMTP id
+ 5b1f17b1804b1-488d6891181mr380899715e9.31.1776358443389; 
+ Thu, 16 Apr 2026 09:54:03 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fa79d476sm473035e9.1.2026.04.16.09.53.57
+ 5b1f17b1804b1-488fa79d476sm473035e9.1.2026.04.16.09.54.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Apr 2026 09:53:58 -0700 (PDT)
+ Thu, 16 Apr 2026 09:54:01 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-Subject: [PATCH v2 1/3] target/arm: Clear AArch64 ID regs from ARMISARegisters
- if AArch64 disabled
-Date: Thu, 16 Apr 2026 17:53:51 +0100
-Message-ID: <20260416165353.589569-2-peter.maydell@linaro.org>
+Subject: [PATCH v2 2/3] target/arm: Allow 'aarch64=off' to be set for TCG CPUs
+Date: Thu, 16 Apr 2026 17:53:52 +0100
+Message-ID: <20260416165353.589569-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260416165353.589569-1-peter.maydell@linaro.org>
 References: <20260416165353.589569-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,105 +104,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If we create a normally-AArch64 CPU and configure it with
-aarch64=off, this will by default leave all the AArch64 ID register
-values in its ARMISARegisters struct untouched.  That in turn means
-that tests of cpu_isar_feature(aa64_something, cpu) will return true.
+Allow the 'aarch64=off' property, which is currently KVM-only, to
+be set for TCG CPUs also.
 
-Until now we have had a design policy that you shouldn't check an
-aa64_ feature unless you know that the CPU has AArch64; but this is
-quite fragile as it's easy to forget and only causes a problem in the
-corner case where AArch64 was turned off.  In particular, when we
-extend the ability to disable AArch64 from only KVM to also TCG there
-are many more aa64 feature check points which we would otherwise have
-to audit for whether they needed to be guarded with a check on
-ARM_FEATURE_AARCH64.
-
-Instead, make the CPU realize function zero out all the 64-bit ID
-registers if a TCG CPU doesn't have AArch64; this will make aa64_
-feature tests generally return false.
-
-We only do this for TCG because only TCG really needs it, and for
-KVM it might be confusing to have QEMU's idea of the ID registers
-be different from KVM's.
+Note that we don't permit it on the qemu-aarch64 user-mode binary:
+this makes no sense as that executable can only handle AArch64
+syscalls (and it would also assert at startup since it doesn't
+compile in the A32-specific GDB xml files like arm-neon.xml).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Tested-by: Clément Chigot <chigot@adacore.com>
 ---
-v1->v2: limit scope of register clearing to TCG, as I suggested
-after posting and testing the v1 version:
- https://patchew.org/QEMU/20251002101648.2455374-1-peter.maydell@linaro.org/20251002101648.2455374-2-peter.maydell@linaro.org/
+v1->v2: slight tweak to the docs wording
 ---
- target/arm/cpu.c | 35 +++++++++++++++++++++++++++++++++++
- target/arm/cpu.h |  3 ++-
- 2 files changed, 37 insertions(+), 1 deletion(-)
+ docs/system/arm/cpu-features.rst | 10 +++++----
+ target/arm/cpu-features.h        |  5 +++++
+ target/arm/cpu.c                 | 36 ++++++++++++++++++++++++++++----
+ tests/qtest/arm-cpu-features.c   |  8 ++-----
+ 4 files changed, 45 insertions(+), 14 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ccc47c8a9a..11d3437843 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1610,6 +1610,27 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-     }
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index ce19ae6a04..10b0eff27e 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -23,10 +23,12 @@ not implement ARMv8-A, will not have the ``aarch64`` CPU property.
+ QEMU's support may be limited for some CPU features, only partially
+ supporting the feature or only supporting the feature under certain
+ configurations.  For example, the ``aarch64`` CPU feature, which, when
+-disabled, enables the optional AArch32 CPU feature, is only supported
+-when using the KVM accelerator and when running on a host CPU type that
+-supports the feature.  While ``aarch64`` currently only works with KVM,
+-it could work with TCG.  CPU features that are specific to KVM are
++disabled, enables the optional AArch32 CPU feature, can only be set to
++``off`` on the TCG and KVM accelerators, and it cannot be set to
++``off`` under KVM unless running on a host CPU type that supports
++running guests in AArch32.
++
++CPU features that are inherently specific to KVM are
+ prefixed with "kvm-" and are described in "KVM VCPU Features".
+ 
+ CPU Feature Probing
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index b683c9551a..6e5212ff6c 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1071,6 +1071,11 @@ static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL2) >= 2;
  }
  
-+static void arm_clear_aarch64_idregs(ARMCPU *cpu)
++static inline bool isar_feature_aa64_aa32_el3(const ARMISARegisters *id)
 +{
-+    /* Zero out all the AArch64 ID registers in ARMISARegisters */
-+    SET_IDREG(&cpu->isar, ID_AA64ISAR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64ISAR1, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64ISAR2, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64PFR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64PFR1, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64PFR2, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64MMFR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64MMFR1, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64MMFR2, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64MMFR3, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64DFR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64DFR1, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64AFR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64AFR1, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64ZFR0, 0);
-+    SET_IDREG(&cpu->isar, ID_AA64SMFR0, 0);
++    return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL3) >= 2;
 +}
 +
- static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+ static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
  {
-     CPUState *cs = CPU(dev);
-@@ -1737,6 +1758,20 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- #endif
- 
-+    /*
-+     * A TCG aarch64=off CPU has no AArch64 at all, so we clear out the
-+     * ID registers to avoid cpu_isar_feature(aa64_something, cpu) tests
-+     * incorrectly returning true. We don't do this for other accelerators
-+     * (which in practice means "for KVM", since no others have AArch32
-+     * guest support) because from KVM's point of view the AArch64 ID
-+     * registers still exist and must have their correct values. So we
-+     * avoid clearing them out so that we don't have QEMU and KVM with
-+     * different ideas of the ID registers.
-+     */
-+    if (tcg_enabled() && !arm_feature(env, ARM_FEATURE_AARCH64)) {
-+        arm_clear_aarch64_idregs(cpu);
-+    }
-+
- #ifdef CONFIG_USER_ONLY
-     /*
-      * User mode relies on IC IVAU instructions to catch modification of
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 657ff4ab20..ab6bacf4aa 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1080,7 +1080,8 @@ struct ArchCPU {
-      * Note that if you add an ID register to the ARMISARegisters struct
-      * you need to also update the 32-bit and 64-bit versions of the
-      * kvm_arm_get_host_cpu_features() function to correctly populate the
--     * field by reading the value from the KVM vCPU.
-+     * field by reading the value from the KVM vCPU. If it is an AArch64
-+     * ID register then you also must update arm_clear_aarch64_idregs().
+     return FIELD_EX64_IDREG(id, ID_AA64PFR0, RAS) != 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 11d3437843..347616fa5a 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1248,10 +1248,38 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+      * uniform execution state like do_interrupt.
       */
-     struct ARMISARegisters {
-         uint32_t mvfr0;
+     if (value == false) {
+-        if (!kvm_enabled() || !kvm_arm_aarch32_supported()) {
+-            error_setg(errp, "'aarch64' feature cannot be disabled "
+-                             "unless KVM is enabled and 32-bit EL1 "
+-                             "is supported");
++        if (kvm_enabled()) {
++            if (!kvm_arm_aarch32_supported()) {
++                error_setg(errp, "'aarch64' feature cannot be disabled for KVM "
++                           "because this host does not support 32-bit EL1");
++                return;
++            }
++        } else if (tcg_enabled()) {
++#ifdef CONFIG_USER_ONLY
++            error_setg(errp, "'aarch64' feature cannot be disabled for "
++                       "usermode emulator qemu-aarch64; use qemu-arm instead");
++            return;
++#else
++            bool aa32_at_highest_el;
++            if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
++                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el3, cpu);
++            } else if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
++                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el2, cpu);
++            } else {
++                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el1, cpu);
++            }
++
++            if (!aa32_at_highest_el) {
++                error_setg(errp, "'aarch64' feature cannot be disabled for "
++                           "this TCG CPU because it does not support 32-bit "
++                           "execution at its highest implemented exception "
++                           "level");
++                return;
++            }
++#endif
++        } else {
++            error_setg(errp, "'aarch64' feature cannot be disabled for "
++                       "this accelerator");
+             return;
+         }
+         unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index bbdd89a81d..cb4d01fd46 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -493,12 +493,8 @@ static void test_query_cpu_model_expansion(const void *data)
+         sve_tests_default(qts, "max");
+         pauth_tests_default(qts, "max");
+ 
+-        /* Test that features that depend on KVM generate errors without. */
+-        assert_error(qts, "max",
+-                     "'aarch64' feature cannot be disabled "
+-                     "unless KVM is enabled and 32-bit EL1 "
+-                     "is supported",
+-                     "{ 'aarch64': false }");
++        /* TCG allows us to turn off AArch64 on the 'max' CPU type */
++        assert_set_feature(qts, "max", "aarch64", false);
+     }
+ 
+     qtest_quit(qts);
 -- 
 2.43.0
 

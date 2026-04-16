@@ -4,91 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EBFEF8D76E
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 19:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41FA1F8D76E
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 19:52:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDSeT-0002f7-QS; Thu, 16 Apr 2026 15:45:25 -0400
+	id 1wDSkZ-00041U-2V; Thu, 16 Apr 2026 15:51:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSeM-0002bF-6O
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:45:19 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSkX-00040n-40
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:51:41 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSeH-000369-V8
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:45:16 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-43d7badbd7dso2417089f8f.2
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 12:45:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDSkV-0004TM-Eb
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 15:51:40 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-43d03db7f87so5268808f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 12:51:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776368711; x=1776973511; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=tXGADF0m9fvSVjoVMvi01D2+qEpRcaU0JW8MXDn0hV8=;
- b=Jt39y32EOg2mvB9Q1qMPFktOSkJervuz9Kx+sOUVV/MVi+AzLywc6ognZG10PBrXMR
- qwsn8IiS05kLkVQCZmexs90sD6E5RniEEzlLl4bZnXWWdKJHUBvGYN6XSrWWXobIslu3
- mRpbY3Mwvm7QPNfflRkC45nObBX33f58AiYiDLIM9cr/uPytVw1VbMn1nNWH/2/0uKLq
- q4LatYn+qqBzzKrATtDKeUR7zh3U1pzw4o2XHa1i/nK/u/vuYv32ebKN6hN6jyuvJLbW
- ZuRyN7zh1WwEUu1W/frE1F6dA9U+/BkL2hNDUMVwf/TfBXa68YjNPJD3ydDQRkr7y0nq
- exZA==
+ d=linaro.org; s=google; t=1776369098; x=1776973898; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kQGGhomqIL6L6Vmuy+gI2rr2SCBTHNJKM8cuxcyUo2g=;
+ b=FoA5brEzB/y1dsraxQteMN6Fn6o/FnQ/xKjxE5AuWOHwtecuHCWCn2/E6b2sjyP9hi
+ OPpeyKw0V+DvGJS0pw3A07OD65ytgDBBfl+l3o1B82oRVVOxe8PKgz0LY65glUIUvaZi
+ 6diIHqpUr1IO12uUsYwkT+2k7dNB6dpaL82Ng3vl9BDuo6R+2K2tKudUNPqsygJNX9Mh
+ ZLl0Y0DHABWE4i/UYZqFE+lSMELUH99NDV5dt/ivLx1aYrqBWpRnHm8053WT+7uBgY0t
+ MTlE3DINxKAWOorDjXCrkxcqdT5abRKs+y5Puj9gtjqgDO8ESxC+rPnW2OoGaK9wZyw+
+ hdOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776368711; x=1776973511;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20251104; t=1776369098; x=1776973898;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tXGADF0m9fvSVjoVMvi01D2+qEpRcaU0JW8MXDn0hV8=;
- b=kOS4xFUvRtFIa19IyQxcOK24MEVE2iqhfxjOC5BdiIcaWdP53TOqjnQFKfHgNFXaBJ
- qfEPu7FVfmcbLkNYjKktK6MUKKrH/GKGkoUqjIpZl6y254fZoVDmtdS1BgdSWesydV+v
- SbsIi6AUpY61rxgJ5xZkuzrcoCY2wJvauIP6xuJNPMcZtXlXQItkeQBpgCLHVmRBvBDl
- ghxd1TtnZ3W4X3se2YLt0fJgWFaryIgxP6MBxPnlRf3sF/vEZpm56H/rIqYIJGcq2aPu
- lGsSPoCGtvntt7rHCm/0ONqDSs/C4qMgM3s6K0BO3wqA2TVLgslWhHx8zds+snaBxa+d
- U6CA==
+ bh=kQGGhomqIL6L6Vmuy+gI2rr2SCBTHNJKM8cuxcyUo2g=;
+ b=nwDF4xadyWau6+W2mCIxD57yYCX0pV0Tgkk7E/z9D5Xa9dzU4HQCwZ5b7B7N8hiD33
+ AyDnThWZSE69+Pu06OVweUgQX21ND+bZVbqTM2JZiP+SWKkYz0HK/jmIqcSxwMDNVDGW
+ oiHRH4TLggQqLL0mQKLVChDOfZfQszRi5AdIumMjsGLsaIBsk0bFDxrt/82+SFqkLwJx
+ g2wvKAJpMXpCe4+vTqE7Pvv8P/Ied8vhQeFWB/byqRzM5ilNEIJI+I3GDgeYhPYJLgO6
+ gsxerMhFtBgeFkpAFqADkzZ78+oF+E3Fe1t90MW8uhUOGTmjt+UCiDnkLkq8gwBs1RGF
+ pDbw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9J7UjW/HiH68jAQkLSmhCi+6TDQT1uKVvmXRRhKIVbWMoy78PgUfthwYKhX5krmvuHH9DMyKwa2g==@nongnu.org
-X-Gm-Message-State: AOJu0YxL12hX7sLyDOa/eVTXfa6EAhnAU0igsmPFoGTE+4F+RtN5u7TG
- Ii8LWsh8WAHTyUwSHOsZ3oxxJdPXzE9NnhBf1JBLZuytCJpXWIBqVkOcyhFedMy96Fk=
-X-Gm-Gg: AeBDievSVFGgKwdwhH6Jg868utmD4W0sLWscCq92j1RLbSmCJ4HXTnDAf9vuNGm37wZ
- /cNf8zcGRpe3uSVUGaHJqsLQJCPT/ZZspojKVXfHFaLCondUChiDe7LJfszV6Zv9JhfgP+TjQYw
- E/XYFW7JediqDDZ8V/gdpeJi8zI3losaeC7ry1SDxZftUCQg17rN6AxR80/yGfpT0UKBhHT4aMJ
- ThIiqD6eU+VutKUJ8TjA1+oACp6ij2f1dJw295i7vw4tbaSr+LGqNMMpTIY8+dub7ZZLxhny8jD
- y768fCMcf8kbbp7Gq56u4d7+y9Q3Myf/qPMeVf7ctAu+wFG+l8EyOvRutddsaop47e4WMttWqkO
- TprWMgBW4grau1TBFw49bT150iI56W6hn7d3xGbTPA0C9mSoXpvyYKijE+AG64wbRxWHcgejLp7
- wIxWgkAT+w4k4+MwdNzDAFCFl+sdjEJcpzKtYlRGlcTDPeqGqoKFRx4V1FSGjlxMNBnAUpl38aU
- UXhZ8tSk9t0p3A=
-X-Received: by 2002:a05:6000:2586:b0:43d:9bb5:bd97 with SMTP id
- ffacd0b85a97d-43fe0ea3d84mr1039467f8f.8.1776368711464; 
- Thu, 16 Apr 2026 12:45:11 -0700 (PDT)
+ AFNElJ/Kj6wMQbDBhdWVfl6VxaHhJTWCjiie8XMz1TuRudF6OMn3wI4Q30CrmuSo671d86bJvIskJmJf4w==@nongnu.org
+X-Gm-Message-State: AOJu0YyBNatW9RrQx0sfZwUJHdnCQ2O3tq7Iw0zNnTX3PPElQ7umKnVU
+ 0wTW3PlxZyzEOEfc6bEaRSNCACxY0NuQf9WYdYDucVv8RS76ClQi6HnAIvgFJe9S9qE=
+X-Gm-Gg: AeBDietrotMWsH42Br5lIT38J1x6O0usFi4+xBa/Kl/UtcX/XGIhKBX27U/ezsUpUCt
+ UfaKoqc5Rb/bIJfHhcdO5yhQ7+94YOX60mdk31Wjj9xmiUBL5Ywxa6L/b6j07Tq++Mhkkpo48mA
+ W7vjceMeh/I5m+MCZrHp/25TorcU7TCGFSMcPwg3U2CZf3FtXO9lchMrJAVulEm+W9L3ZiWv646
+ FYq4EMcIpEC43X+WbRgrQsmjJ5p0L1qLryX7CDTkEIGE1VROGdT1U0VLqAbiw3jGoB+ZJsBfil9
+ X56gPflQ+0/szleqd+hWaPHQr6rjTk5/5j5q0rcefD5pcA0QECBlVtZ3832HzB27LPAWPR4WWVe
+ 3AZxGM9tOa77+3IfDsYqX0FzmsjgzejSG1WSPbpLPXCjBUHxr/HcX7/a2eqIDHQjDtl59XnLzmJ
+ 7SLo95WoF9UyA2ZYLT5v9WyNRx2O75f+4ka1SkdtaIvSOiDp+MyOSdkwQb2L51OrDns+tzvPru3
+ VL2
+X-Received: by 2002:adf:f08e:0:b0:43f:e211:1090 with SMTP id
+ ffacd0b85a97d-43fe21110dcmr468632f8f.1.1776369097485; 
+ Thu, 16 Apr 2026 12:51:37 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43ead3d5eb4sm16469685f8f.20.2026.04.16.12.45.10
+ ffacd0b85a97d-43ead2decafsm14813107f8f.0.2026.04.16.12.51.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2026 12:45:10 -0700 (PDT)
-Message-ID: <da07a012-cbd9-43df-b7ad-e705a67c1c43@linaro.org>
-Date: Thu, 16 Apr 2026 21:45:09 +0200
+ Thu, 16 Apr 2026 12:51:36 -0700 (PDT)
+Message-ID: <73d6cb95-454d-49c3-b8eb-d8711941ec2d@linaro.org>
+Date: Thu, 16 Apr 2026 21:51:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw: Move ARM_SYSCTL_GPIO definitions to arm sysctl
- specific header
+Subject: Re: [PATCH v2 3/3] tests/functional/aarch64: Add basic test of TCG
+ aarch64=off
+Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20260416172627.690396-1-peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>
+References: <20260416165353.589569-1-peter.maydell@linaro.org>
+ <20260416165353.589569-4-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260416172627.690396-1-peter.maydell@linaro.org>
+In-Reply-To: <20260416165353.589569-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,34 +107,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 16/4/26 19:26, Peter Maydell wrote:
-> include/hw/arm/primecell.h used to be more expansive, but now the
-> only thing it defines is the ARM_SYSCTL_GPIO_* constants for the GPIO
-> lines for the arm-sysctl system-control device used on the Realview,
-> Versatile and Versatile Express boards.
-> 
-> Replace it with a header file specific to that device.
-> 
-> virt.c and vmapple.c included primecell.h despite not using the
-> constants it defined; there we can simply drop the include entirely.
+On 16/4/26 18:53, Peter Maydell wrote:
+> Add a basic test of the TCG 'aarch64=off' functionality; this is the
+> same as our existing arm/test_virt test, but it runs the AArch32
+> guest kernel on qemu-system-aarch64 with -cpu max,aarch64=off.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> Trivial cleanup; I was trying out emacs eglot and it flagged
-> up that virt.c includes primecell.h unnecessarily, which led
-> me to this.
-> ---
->   MAINTAINERS                  |  2 +-
->   hw/arm/realview.c            |  2 +-
->   hw/arm/vexpress.c            |  2 +-
->   hw/arm/virt.c                |  1 -
->   hw/misc/arm_sysctl.c         |  2 +-
->   hw/vmapple/vmapple.c         |  1 -
->   include/hw/arm/primecell.h   | 12 ------------
->   include/hw/misc/arm_sysctl.h | 16 ++++++++++++++++
->   8 files changed, 20 insertions(+), 18 deletions(-)
->   delete mode 100644 include/hw/arm/primecell.h
->   create mode 100644 include/hw/misc/arm_sysctl.h
+>   tests/functional/aarch64/meson.build          |  1 +
+>   .../aarch64/test_virt_aarch64_off.py          | 37 +++++++++++++++++++
+>   2 files changed, 38 insertions(+)
+>   create mode 100755 tests/functional/aarch64/test_virt_aarch64_off.py
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

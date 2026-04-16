@@ -4,84 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88282F8D761
-	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 16:55:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFF62F8D762
+	for <qemu-arm@archiver.kernel.org>; Thu, 16 Apr 2026 17:26:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDPyi-0006Aw-Ha; Thu, 16 Apr 2026 12:54:08 -0400
+	id 1wDQUA-0006ku-GF; Thu, 16 Apr 2026 13:26:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDPyh-0006A5-09
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:07 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1wDQU9-0006kc-Jy
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 13:26:37 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDPyf-0007ov-5Z
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 12:54:06 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4852b81c73aso77099295e9.3
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 09:54:04 -0700 (PDT)
+ id 1wDQU6-00068p-E2
+ for qemu-arm@nongnu.org; Thu, 16 Apr 2026 13:26:37 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-488ab2db91aso125818955e9.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 10:26:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776358443; x=1776963243; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CxoE2sQDfNJcl7sNbi2G1nRN3fSKrRDunzLrpBK4/AE=;
- b=Oirh1zMyfH4drx6HVEBfPNQWOrUMGP1xxYNGXtRQT39JBCQqGM5oZg9KoTQHDGkApY
- vIrxu8fxwPruZ9y0v6faOh+oVAAqdhI4J8gVXaQfzaKxKWdqXac/qNd5EAGAh4i+6t7n
- RHHd44Gd52Ns77ofBfBPykXrnavZdDmwPVjmDml7Rv2qTd0n9r4JS5RODHdvl26pSBQp
- ZISe1LLcgPdpdWuchE4uYsWM68qBRn6L9dafFg59uGt0lFeUdIwgzN68tYCk6frQIU42
- zfUTyHyrTsOBakRZcyKcDG7OTjokNcI7UlDOptIm3/XDWAMWUzWTDza8x/jrtBdXFwu1
- Iq0g==
+ d=linaro.org; s=google; t=1776360390; x=1776965190; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=dguMNu+rblwGHa+gUuLRqPdQYImX3ZlNd0zX09DdGe4=;
+ b=leqm9TcFn2DWp4wNJO3Y6XUJ7/NHMnrTCZV2m69xib8+L+gqbN0Td3tJ0Sa519gzVe
+ eZh9r1Ag9M0fsUL7otIGOzDFK4faNCa/MatS9ASy1b0jBNSR8neLFhkZwsVHrBQAYbZ+
+ ItPYrb/ACmdcUVckHBfATC9YJu6t4AOkAo4Ci549YiTCSM75ISqmXjBO+9sa7zYNhU+O
+ PBHq8Qmuj10S0u23INOYeLcIUDJZ2H/xKSXXEG5BsIoh2sFeX8Uq1+KJtU74Y4ytJG1C
+ d5nbvkHE9st5+J+0SYwpKxAPkqYoH7XNReHb3HWMbdX1udh9ULhJ6XbM9nizEqOU6SRR
+ Eplg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776358443; x=1776963243;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=CxoE2sQDfNJcl7sNbi2G1nRN3fSKrRDunzLrpBK4/AE=;
- b=OWKpDGUInFs2moPwOelufkgFoVXi1sVdQ+3vPagD2br0qWUj/zLVRg/c6P5mdLqcCK
- XCtv0rQNJPrLSAg6Fm+bTjXzeevTUKamGljTkuFhWFiqpGpMnDNJ1FcomzSt6p+SKTAK
- 7dAktGz72QTurwijCx3XJ6tgIhtwV8Ghq1JQjX/O1di2bBQxXVKXUT3+aTVcVZdNPX27
- 9V/5aRMnNHVv0Her8idN7TuP69YUSN7HDFGAlZ+eMcPOG6QEzl22/diQW+2aSQ2HUeoe
- 6BnGJGTkQg3DpHRjddz7VEhQJ72jupeAEmFiNek85itp+4FDsaTYQ86vJX9yU5kd8SQD
- ps9g==
-X-Gm-Message-State: AOJu0Yy3ltcaLs6W6CXqzdJ7vogWHfhIP9G+Hkaom98LXIcszsaNBmOk
- IDcI8UX67SPecFt6r5KGfSstIX0CTr9c5cXFlfeFUNeO6wPAj13xFsZMHivgdDQmj1bnoC0xkiE
- 6L0WXwIc=
-X-Gm-Gg: AeBDietWePzj2dhc6Ep2AOMk6shwjnGccGODKpAUI3MbTaimVfxrDFJBUWj66lmxjCN
- 3spm/Or9MnzMYPQxpEp9h/3KuO4TAWE85e19KYwwKqZ5KYbQX32i0AYr6CjtvtM/DPOrOifv7T1
- 1ukmNVwZKcnCy69HYToyzND2j0sqINHlTIwMoN9C/LNdxXhLKkfFfr9hkdcfHNgHYmQFjfzB0vl
- 9CnUj2giTiUjAnfFEvd/yOoptzILQZ36IZ4fo8jY3FxfsrA2Y0Gp6Y/5ek1q3bE+zmG2/qE96nX
- KSNh6wPz2W1iJW77vIOf9EDdjtesvwznmZOppI7gO8veCSsjiVOlPbek0Us6KQ3Hv9058b3S8uN
- AyajEktZ1JvNj5caH+b8A+Lq6WXVIkatdxai+hVwbimaFPU7A5tA65d5ObFExBtz89dwnzUYjua
- Jkhy9yNyXKXtkp9sHhCz1rSeR4ejNHd+54lrc+fagYDgrIYj9YezAnsc4dZkcRrhwmi5HV5oBiM
- yoPZdXogNxQUpLBA+7dHbywiR2ljJAt2cJ2QW7gRQ==
-X-Received: by 2002:a05:600c:4fcb:b0:488:c120:480a with SMTP id
- 5b1f17b1804b1-488d6891181mr380899715e9.31.1776358443389; 
- Thu, 16 Apr 2026 09:54:03 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1776360390; x=1776965190;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dguMNu+rblwGHa+gUuLRqPdQYImX3ZlNd0zX09DdGe4=;
+ b=r41ujQH4ioSPw8ZLbxnYbQb+r6sluIrAti0uAeNyg0peBsvKHORJ4Sr0J/yGOWiy3o
+ 7C5m93laZL+XC3PiVmA2QpEUM/Ac6+uu9IN234sF266r8yIHymEU7x6u8TyI1QDObQyr
+ 6v7pNVz+tDrnJWAPNKAUX7g9B+s5mlT5hZDkOdchAFOWsdGI6gd/I+3/gOWp+gF2AQpu
+ kZX8cS8eycAc6oZJ6fnuafAgfHpNUvaRjyAOZMq0eqsCAkJvEc9VsC8BcecV2QNyagu4
+ vN3hQGklfHBnedzyyMc/lmZuW+vUqhWfOYK8qc+n+yKl3d6abCHOUo/U4EjoXD8K70nQ
+ vmsQ==
+X-Gm-Message-State: AOJu0YxkoD1ZB0/l0pkcIc+qpxE0Q75XLf24gHMB395izBnBCDp5bNnq
+ cYV6GxglDrMpDhJo++4wTHoT4RxAykDA2jHzI93J23mrr64RAXRV62k1qhTPWUCNG41miktpiT3
+ xI5GDmFg=
+X-Gm-Gg: AeBDiesUNp9dxFJ0HHrQCfpIyB6FeONuSVT0klRSGLy48Z10lgr+X14P7lit4xWzoL1
+ MfkaoAnJo11aFQ9NrLyJ7DFkFA7GZvGiylCvibhS9DFzR7wT/l9EgVQJzQ+crMHrH56+X7PI1e2
+ VBD4K/xqixm50gTioo+B/P/jtQCr0WaIQ7tqTJ4A3kraZdeWof+Fz0Ft5WAW5EFQHAX6pCaTgnN
+ rljf3x807fYX7T10Zsyf8fPu8/5LHVS3pL5KVyOrYAKUxlwMUCiD0Mm4zkRQuYGBAtw0eOP7xLX
+ +hSXwapQk4xxFFIooODOGRyk8g6emM5p7O1UWWN/weX1eWhinc+QU5SGE299GB0Ium+a6nZKHEB
+ YozJ3i+Adt74CiPD/aMk31849vopIRlV36SoKaKI1ufWDtPxix3/ID1jSlZbfdpi3MP2QHsej3a
+ PxGuvprq6yCc2iPxAdlwjakge4gwMCjRCSir1bonymoDVsrsfgHKDD07K6OcHX0VF+R9k35C866
+ Ih2VqwPOOJ6t/brldiKd6PEd5ePIrEuoUjhzynEdw==
+X-Received: by 2002:a05:600c:c108:b0:488:c282:e78c with SMTP id
+ 5b1f17b1804b1-488d684bd3amr260538165e9.19.1776360390170; 
+ Thu, 16 Apr 2026 10:26:30 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fa79d476sm473035e9.1.2026.04.16.09.54.00
+ 5b1f17b1804b1-488fa73cbe3sm2022615e9.0.2026.04.16.10.26.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Apr 2026 09:54:01 -0700 (PDT)
+ Thu, 16 Apr 2026 10:26:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>
-Subject: [PATCH v2 2/3] target/arm: Allow 'aarch64=off' to be set for TCG CPUs
-Date: Thu, 16 Apr 2026 17:53:52 +0100
-Message-ID: <20260416165353.589569-3-peter.maydell@linaro.org>
+Subject: [PATCH] hw: Move ARM_SYSCTL_GPIO definitions to arm sysctl specific
+ header
+Date: Thu, 16 Apr 2026 18:26:27 +0100
+Message-ID: <20260416172627.690396-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260416165353.589569-1-peter.maydell@linaro.org>
-References: <20260416165353.589569-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,129 +99,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow the 'aarch64=off' property, which is currently KVM-only, to
-be set for TCG CPUs also.
+include/hw/arm/primecell.h used to be more expansive, but now the
+only thing it defines is the ARM_SYSCTL_GPIO_* constants for the GPIO
+lines for the arm-sysctl system-control device used on the Realview,
+Versatile and Versatile Express boards.
 
-Note that we don't permit it on the qemu-aarch64 user-mode binary:
-this makes no sense as that executable can only handle AArch64
-syscalls (and it would also assert at startup since it doesn't
-compile in the A32-specific GDB xml files like arm-neon.xml).
+Replace it with a header file specific to that device.
+
+virt.c and vmapple.c included primecell.h despite not using the
+constants it defined; there we can simply drop the include entirely.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Clément Chigot <chigot@adacore.com>
 ---
-v1->v2: slight tweak to the docs wording
+Trivial cleanup; I was trying out emacs eglot and it flagged
+up that virt.c includes primecell.h unnecessarily, which led
+me to this.
 ---
- docs/system/arm/cpu-features.rst | 10 +++++----
- target/arm/cpu-features.h        |  5 +++++
- target/arm/cpu.c                 | 36 ++++++++++++++++++++++++++++----
- tests/qtest/arm-cpu-features.c   |  8 ++-----
- 4 files changed, 45 insertions(+), 14 deletions(-)
+ MAINTAINERS                  |  2 +-
+ hw/arm/realview.c            |  2 +-
+ hw/arm/vexpress.c            |  2 +-
+ hw/arm/virt.c                |  1 -
+ hw/misc/arm_sysctl.c         |  2 +-
+ hw/vmapple/vmapple.c         |  1 -
+ include/hw/arm/primecell.h   | 12 ------------
+ include/hw/misc/arm_sysctl.h | 16 ++++++++++++++++
+ 8 files changed, 20 insertions(+), 18 deletions(-)
+ delete mode 100644 include/hw/arm/primecell.h
+ create mode 100644 include/hw/misc/arm_sysctl.h
 
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index ce19ae6a04..10b0eff27e 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -23,10 +23,12 @@ not implement ARMv8-A, will not have the ``aarch64`` CPU property.
- QEMU's support may be limited for some CPU features, only partially
- supporting the feature or only supporting the feature under certain
- configurations.  For example, the ``aarch64`` CPU feature, which, when
--disabled, enables the optional AArch32 CPU feature, is only supported
--when using the KVM accelerator and when running on a host CPU type that
--supports the feature.  While ``aarch64`` currently only works with KVM,
--it could work with TCG.  CPU features that are specific to KVM are
-+disabled, enables the optional AArch32 CPU feature, can only be set to
-+``off`` on the TCG and KVM accelerators, and it cannot be set to
-+``off`` under KVM unless running on a host CPU type that supports
-+running guests in AArch32.
-+
-+CPU features that are inherently specific to KVM are
- prefixed with "kvm-" and are described in "KVM VCPU Features".
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ad215eced8..7f2b34d652 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -761,7 +761,6 @@ F: hw/ssi/pl022.c
+ F: include/hw/ssi/pl022.h
+ F: hw/rtc/pl031.c
+ F: include/hw/rtc/pl031.h
+-F: include/hw/arm/primecell.h
+ F: hw/timer/cmsdk-apb-timer.c
+ F: include/hw/timer/cmsdk-apb-timer.h
+ F: tests/qtest/cmsdk-apb-timer-test.c
+@@ -1106,6 +1105,7 @@ F: hw/*/versatile*
+ F: hw/i2c/arm_sbcon_i2c.c
+ F: include/hw/i2c/arm_sbcon_i2c.h
+ F: hw/misc/arm_sysctl.c
++F: include/hw/misc/arm_sysctl.h
+ F: docs/system/arm/versatile.rst
  
- CPU Feature Probing
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index b683c9551a..6e5212ff6c 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1071,6 +1071,11 @@ static inline bool isar_feature_aa64_aa32_el2(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL2) >= 2;
- }
- 
-+static inline bool isar_feature_aa64_aa32_el3(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL3) >= 2;
-+}
+ Virt
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index c9558be4d4..bfcce4419a 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -12,9 +12,9 @@
+ #include "cpu.h"
+ #include "hw/core/sysbus.h"
+ #include "hw/arm/boot.h"
+-#include "hw/arm/primecell.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/core/split-irq.h"
++#include "hw/misc/arm_sysctl.h"
+ #include "hw/net/lan9118.h"
+ #include "hw/net/smc91c111.h"
+ #include "hw/pci/pci.h"
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index cc6ae7d4c4..9db8a68ba9 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -26,8 +26,8 @@
+ #include "qemu/datadir.h"
+ #include "hw/core/sysbus.h"
+ #include "hw/arm/boot.h"
+-#include "hw/arm/primecell.h"
+ #include "hw/arm/machines-qom.h"
++#include "hw/misc/arm_sysctl.h"
+ #include "hw/net/lan9118.h"
+ #include "hw/i2c/i2c.h"
+ #include "net/net.h"
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ec0d8475ca..16e905dca8 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -36,7 +36,6 @@
+ #include "monitor/qdev.h"
+ #include "hw/core/sysbus.h"
+ #include "hw/arm/boot.h"
+-#include "hw/arm/primecell.h"
+ #include "hw/arm/virt.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/block/flash.h"
+diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
+index 7b320f89c1..ebc95b9bb5 100644
+--- a/hw/misc/arm_sysctl.c
++++ b/hw/misc/arm_sysctl.c
+@@ -14,8 +14,8 @@
+ #include "system/runstate.h"
+ #include "qemu/bitops.h"
+ #include "hw/core/sysbus.h"
++#include "hw/misc/arm_sysctl.h"
+ #include "migration/vmstate.h"
+-#include "hw/arm/primecell.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "qom/object.h"
+diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
+index b1379eafef..607181f517 100644
+--- a/hw/vmapple/vmapple.c
++++ b/hw/vmapple/vmapple.c
+@@ -32,7 +32,6 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/usb/usb.h"
+ #include "hw/arm/boot.h"
+-#include "hw/arm/primecell.h"
+ #include "hw/char/pl011.h"
+ #include "hw/intc/arm_gic.h"
+ #include "hw/intc/arm_gicv3_common.h"
+diff --git a/include/hw/arm/primecell.h b/include/hw/arm/primecell.h
+deleted file mode 100644
+index 7337c3b3ca..0000000000
+--- a/include/hw/arm/primecell.h
++++ /dev/null
+@@ -1,12 +0,0 @@
+-#ifndef PRIMECELL_H
+-#define PRIMECELL_H
+-
+-/* Declarations for ARM PrimeCell based periperals.  */
+-/* Also includes some devices that are currently only used by the
+-   ARM boards.  */
+-
+-/* arm_sysctl GPIO lines */
+-#define ARM_SYSCTL_GPIO_MMC_WPROT 0
+-#define ARM_SYSCTL_GPIO_MMC_CARDIN 1
+-
+-#endif
+diff --git a/include/hw/misc/arm_sysctl.h b/include/hw/misc/arm_sysctl.h
+new file mode 100644
+index 0000000000..424069cd6e
+--- /dev/null
++++ b/include/hw/misc/arm_sysctl.h
+@@ -0,0 +1,16 @@
++/*
++ * Status and system control registers for ARM RealView/Versatile boards.
++ *
++ * Copyright (c) Linaro Ltd
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
- static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, RAS) != 0;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 11d3437843..347616fa5a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1248,10 +1248,38 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
-      * uniform execution state like do_interrupt.
-      */
-     if (value == false) {
--        if (!kvm_enabled() || !kvm_arm_aarch32_supported()) {
--            error_setg(errp, "'aarch64' feature cannot be disabled "
--                             "unless KVM is enabled and 32-bit EL1 "
--                             "is supported");
-+        if (kvm_enabled()) {
-+            if (!kvm_arm_aarch32_supported()) {
-+                error_setg(errp, "'aarch64' feature cannot be disabled for KVM "
-+                           "because this host does not support 32-bit EL1");
-+                return;
-+            }
-+        } else if (tcg_enabled()) {
-+#ifdef CONFIG_USER_ONLY
-+            error_setg(errp, "'aarch64' feature cannot be disabled for "
-+                       "usermode emulator qemu-aarch64; use qemu-arm instead");
-+            return;
-+#else
-+            bool aa32_at_highest_el;
-+            if (arm_feature(&cpu->env, ARM_FEATURE_EL3)) {
-+                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el3, cpu);
-+            } else if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
-+                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el2, cpu);
-+            } else {
-+                aa32_at_highest_el = cpu_isar_feature(aa64_aa32_el1, cpu);
-+            }
++#ifndef HW_MISC_ARM_SYSCTL_H
++#define HW_MISC_ARM_SYSCTL_H
 +
-+            if (!aa32_at_highest_el) {
-+                error_setg(errp, "'aarch64' feature cannot be disabled for "
-+                           "this TCG CPU because it does not support 32-bit "
-+                           "execution at its highest implemented exception "
-+                           "level");
-+                return;
-+            }
++/* arm_sysctl inbound GPIO lines */
++#define ARM_SYSCTL_GPIO_MMC_WPROT 0
++#define ARM_SYSCTL_GPIO_MMC_CARDIN 1
++
 +#endif
-+        } else {
-+            error_setg(errp, "'aarch64' feature cannot be disabled for "
-+                       "this accelerator");
-             return;
-         }
-         unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
-diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
-index bbdd89a81d..cb4d01fd46 100644
---- a/tests/qtest/arm-cpu-features.c
-+++ b/tests/qtest/arm-cpu-features.c
-@@ -493,12 +493,8 @@ static void test_query_cpu_model_expansion(const void *data)
-         sve_tests_default(qts, "max");
-         pauth_tests_default(qts, "max");
- 
--        /* Test that features that depend on KVM generate errors without. */
--        assert_error(qts, "max",
--                     "'aarch64' feature cannot be disabled "
--                     "unless KVM is enabled and 32-bit EL1 "
--                     "is supported",
--                     "{ 'aarch64': false }");
-+        /* TCG allows us to turn off AArch64 on the 'max' CPU type */
-+        assert_set_feature(qts, "max", "aarch64", false);
-     }
- 
-     qtest_quit(qts);
 -- 
 2.43.0
 

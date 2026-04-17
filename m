@@ -4,87 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64EB2F43688
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 09:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE58F43688
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 09:47:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDfeN-0005Cx-Un; Fri, 17 Apr 2026 05:38:12 -0400
+	id 1wDfnc-0008Ll-0M; Fri, 17 Apr 2026 05:47:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDfeM-0005CU-Hl
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 05:38:10 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDfeK-00052g-QO
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 05:38:10 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-488af9fdaa7so3138965e9.1
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 02:38:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776418686; x=1777023486; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=A141vI3/UoGYhzPPu08TWpps2ytxzNsFg5NMoVqZZ9k=;
- b=KG0BQ8j1cwyGCHJ64ButfNJGuXYseEk5gWAaX7KVyJ4cKZaUNEt87DQJQIotzvpAEs
- cSWzC/HEw9TP6KMt7Ph0hdGFTcF0B+hB0rVNEV8WH4yH5IrZurMz2iwIjqE7GmwdIT6V
- UH+ks4gHBMvCu80w4Jg2bKkM40s/maVbWBRUqWoe/f757NtW1YowlezsCxRRz9XWoela
- tZdUVAAThU2n4AQGxCZ7klHjN9e09/cq+GUs2oudfEoma3+83rdMeM0cLVbfOlfp04fE
- 32Tbrb7DGxt1/yT9z6BYy9BSXjUBhmLsLZBLn3sC+/Jfpo6tZWrRoI8IC+eYUIW+qgPR
- htbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776418686; x=1777023486;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=A141vI3/UoGYhzPPu08TWpps2ytxzNsFg5NMoVqZZ9k=;
- b=I7RoJacgSNdRBpU/z3z0kjlhv+KIZONkSIbV5hDtJsl1KReRIV6F5sw+OhrqPZT7nK
- +y2D4K+nZKeskNAqkfEXc21cQNL8hrceHuC/n1uPRBmUPzgwn0MJO8FNwP9vRHtFvGfD
- uCEOCbYlQayfgM+q+2VWHcLeJW8aR6293dnRHxqXhi/L+d9+6zEt1ForSlMPBuyFIarn
- 8utesyKIw3Uz0elLlblC5/ZdL8cG6OvU3qqaDoWsVZcXic82HDkBkjLlS6LH/fuw+ud2
- YJluA41Xv0FAL8NmFRcD70oKSDiYLOhylCSjVEj546kk/u17MO1r/X+YIYe3l7ZoP/YM
- bNZA==
-X-Gm-Message-State: AOJu0YyGqC3u6263zeDjEcroze2fZre3jguBj5O9Lt0+LsCG52e6F5C5
- NtS6cEgU4gWYESNnLHnPCufZzZ3Ro/lWIQMRb/21zyrS+43+vlxZztYPHdeNlnEOKPyQKcgNxcQ
- +eHYWNos=
-X-Gm-Gg: AeBDiesMG/vlSQaPHkOWm1KY4Nn4gfQWKfV9LWIQTdx8i0tFWR73CEGOhENaBKp8kHJ
- wl+JVDNnaFjKym+Fm3yDNi8KTAVHJFLeRcDzbJXXMxvozkaD1lenRLIWNDmewKgqEuXzh17gZTG
- Rpo96hwb0SfNmcVYzKpxNn68q4enWlRYDHb3m/18fc5/ptMPzM2c+DOAjMfKJv1I5uLTf5Bmtea
- FQGzMTN2YqG7QjCWGAddHpT/p83WeZPPDqLpxC8nRm8MVqkvVEQ8w6c0fsNDOhjAYBaw2OPz3mI
- scvX8HJItOXvl9W32FdIWmvINhWqEtbOdPgdbyMF3H/tA5B4qc+DFrlp9X9vzLwowOiBlsWhr44
- v5PP7LzE0k4/Y7iYFI9i+SsRyGXHr8m74CH71R1/+pcgeWPA65v2dIIyFVlGXM4K/vFwcqUXjvJ
- aCl2JluDpLg1I79oI2RtxTu44PHRE/h0q+em24aiJQcPqjpcM07k+g+/k4/HoHysjMg2lWSPIo3
- 5hsjtZHa3mJffoN9EnLlGb0YM+UJXijnsZChJNepA==
-X-Received: by 2002:a05:600c:48a3:b0:488:caed:5ccf with SMTP id
- 5b1f17b1804b1-488fb8d1865mr14133525e9.16.1776418686529; 
- Fri, 17 Apr 2026 02:38:06 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc18bccfsm28611615e9.8.2026.04.17.02.38.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2026 02:38:05 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>
-Subject: [PATCH] hw/arm,
- hw/ppc: Remove unnecessary audio.h includes from board code
-Date: Fri, 17 Apr 2026 10:38:05 +0100
-Message-ID: <20260417093805.1076954-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wDfna-0008LU-Mk; Fri, 17 Apr 2026 05:47:42 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wDfnY-0007K1-18; Fri, 17 Apr 2026 05:47:42 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id B5A8D596958;
+ Fri, 17 Apr 2026 11:47:34 +0200 (CEST)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id vp9EOE1QEoKD; Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 27782596957; Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 25224596954;
+ Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
+Date: Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+cc: "philmd@linaro.org" <philmd@linaro.org>, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, 
+ Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>, 
+ "nabihestefan@google.com" <nabihestefan@google.com>
+Subject: RE: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn structure
+ and dead code
+In-Reply-To: <TYPPR06MB8206FFD9BA069A555C54A137FC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
+Message-ID: <efadd094-380a-41e4-0346-7ba296781968@eik.bme.hu>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-2-jamin_lin@aspeedtech.com>
+ <d7e9d943-fd8d-dd48-5a86-e54613c466dd@eik.bme.hu>
+ <TYPPR06MB820623725F12A9326E19B44FFC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <TYPPR06MB8206FFD9BA069A555C54A137FC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,110 +77,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Some boards (mostly arm, but also ppc/prep) include audio.h, but they
-don't need anything from it.  Drop the unnecessary include lines.
+On Fri, 17 Apr 2026, Jamin Lin wrote:
+> Hi all,
+>
+>> Subject: RE: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn
+>> structure and dead code
+>>
+>> Hi all,
+>>
+>>> Subject: Re: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn
+>>> structure and dead code
+>>>
+>>> On Thu, 16 Apr 2026, Jamin Lin wrote:
+>>>> The EHCIfstn structure, defined according to EHCI spec section 3.7,
+>>>> is currently unused in the EHCI implementation. Remove it to reduce
+>>>> unused code and improve maintainability.
+>>>>
+>>>> Additionally, drop a block of disabled (#if 0) code in
+>>>> ehci_state_advqueue() that was never implemented. This code path is
+>>>> incomplete and has no functional impact.
+>>>>
+>>>> No functional change.
+>>>>
+>>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>>> ---
+>>>> hw/usb/hcd-ehci.h |  7 -------
+>>>> hw/usb/hcd-ehci.c | 11 -----------
+>>>> 2 files changed, 18 deletions(-)
+>>>>
+>>>> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h index
+>>>> 0ae8c06331..3aec0e047c 100644
+>>>> --- a/hw/usb/hcd-ehci.h
+>>>> +++ b/hw/usb/hcd-ehci.h
+>>>> @@ -202,13 +202,6 @@ typedef struct EHCIqh {
+>>>> #define BUFPTR_SBYTES_SH              5
+>>>> } EHCIqh;
+>>>>
+>>>> -/*  EHCI spec version 1.0 Section 3.7
+>>>> - */
+>>>> -typedef struct EHCIfstn {
+>>>> -    uint32_t next;                    /* Standard next link pointer
+>> */
+>>>> -    uint32_t backptr;                 /* Standard next link pointer */
+>>>> -} EHCIfstn;
+>>>> -
+>>>> enum async_state {
+>>>>     EHCI_ASYNC_NONE = 0,
+>>>>     EHCI_ASYNC_INITIALIZED,
+>>>> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c index
+>>>> 57f930b099..5ea8461f70 100644
+>>>> --- a/hw/usb/hcd-ehci.c
+>>>> +++ b/hw/usb/hcd-ehci.c
+>>>> @@ -1756,17 +1756,6 @@ static int ehci_state_fetchsitd(EHCIState
+>>>> *ehci, int async)
+>>>> /* Section 4.10.2 - paragraph 3 */
+>>>> static int ehci_state_advqueue(EHCIQueue *q) { -#if 0
+>>>> -    /* TO-DO: 4.10.2 - paragraph 2
+>>>> -     * if I-bit is set to 1 and QH is not active
+>>>> -     * go to horizontal QH
+>>>> -     */
+>>>
+>>> Is it worth to keep the comment in case it's still valid to remind we
+>>> have something missing here?
+>>>
+>>> Regards,
+>>> BALATON Zoltan
+>>>
+>>
+>> If we decide to keep these comments as reminders for unimplemented parts,
+>> please let me know. I will resend the patch series and drop this patch.
+>>
+>> Thanks,
+>> Jamin
+>>
+>
+> Another approach:
+> We can remove the #if 0 dead code and keep only the comments as a reminder that this part is not yet implemented.
+>
+> Ex:
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -1756,16 +1756,10 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int async)
+> /* Section 4.10.2 - paragraph 3 */
+> static int ehci_state_advqueue(EHCIQueue *q)
+> {
+> -#if 0
+>     /* TO-DO: 4.10.2 - paragraph 2
+>      * if I-bit is set to 1 and QH is not active
+>      * go to horizontal QH
+>      */
+> -    if (I-bit set) {
+> -        ehci_set_state(ehci, async, EST_HORIZONTALQH);
+> -        goto out;
+> -    }
+>
+> Thanks,
+> Jamin
 
-These seem to have been introduced with commits 2b16397264a8e,
-b8ab0303de, which added the machine-default audiodev handling, but as
-far as I can tell they were unecessary right from the start, as the
-machine_add_audiodev_property() function has always been in boards.h.
+That's what I meant to leave the comment but OK the remove ineffective 
+code.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/integratorcp.c | 1 -
- hw/arm/musicpal.c     | 1 -
- hw/arm/realview.c     | 1 -
- hw/arm/versatilepb.c  | 1 -
- hw/arm/vexpress.c     | 1 -
- hw/arm/xlnx-zcu102.c  | 1 -
- hw/ppc/prep.c         | 1 -
- 7 files changed, 7 deletions(-)
-
-diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
-index 0bf519b6bb..03633f3d4f 100644
---- a/hw/arm/integratorcp.c
-+++ b/hw/arm/integratorcp.c
-@@ -27,7 +27,6 @@
- #include "hw/core/irq.h"
- #include "hw/sd/sd.h"
- #include "qom/object.h"
--#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define TYPE_INTEGRATOR_CM "integrator_core"
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index 250fdb49b6..441a11100a 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -37,7 +37,6 @@
- #include "qemu/cutils.h"
- #include "qom/object.h"
- #include "hw/net/mv88w8618_eth.h"
--#include "qemu/audio.h"
- #include "qemu/error-report.h"
- #include "target/arm/cpu-qom.h"
- 
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index c9558be4d4..e9c19e7e6e 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -30,7 +30,6 @@
- #include "hw/core/irq.h"
- #include "hw/i2c/arm_sbcon_i2c.h"
- #include "hw/sd/sd.h"
--#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define SMP_BOOT_ADDR 0xe0000000
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index 254b1610b3..c6991a52e6 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -26,7 +26,6 @@
- #include "hw/char/pl011.h"
- #include "hw/sd/sd.h"
- #include "qom/object.h"
--#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- #include "qemu/log.h"
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index cc6ae7d4c4..b178798085 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -45,7 +45,6 @@
- #include "hw/sd/sd.h"
- #include "qobject/qlist.h"
- #include "qom/object.h"
--#include "qemu/audio.h"
- #include "target/arm/cpu-qom.h"
- 
- #define VEXPRESS_BOARD_ID 0x8e0
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 3ba2736bab..4e48970274 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -26,7 +26,6 @@
- #include "system/device_tree.h"
- #include "qom/object.h"
- #include "net/can_emu.h"
--#include "qemu/audio.h"
- 
- struct XlnxZCU102 {
-     MachineState parent_obj;
-diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
-index e973b34099..2672eb9e7a 100644
---- a/hw/ppc/prep.c
-+++ b/hw/ppc/prep.c
-@@ -46,7 +46,6 @@
- #include "trace.h"
- #include "elf.h"
- #include "qemu/units.h"
--#include "qemu/audio.h"
- 
- /* SMP is not enabled, for now */
- #define MAX_CPUS 1
--- 
-2.43.0
-
+Regards,
+BALATON Zoltan
 

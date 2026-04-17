@@ -4,85 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3D9BF8E4A1
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 03:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B839EF8E4A9
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 04:54:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDaLl-0000mP-MF; Thu, 16 Apr 2026 23:58:37 -0400
+	id 1wDbDx-0002Em-RD; Fri, 17 Apr 2026 00:54:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDaLi-0000ia-Rd
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 23:58:35 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDbDt-0002Dh-M8
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 00:54:34 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDaLg-0001Jx-W1
- for qemu-arm@nongnu.org; Thu, 16 Apr 2026 23:58:34 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so2627375e9.2
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 20:58:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDbDs-0005DD-47
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 00:54:33 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4888375f735so2402445e9.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 21:54:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776398312; x=1777003112; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776401670; x=1777006470; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=1//i73+3jJSLDhQvS0mxohAJ4AYjIlkbCa6T3BwrqBw=;
- b=GrDANd2D62my3Y+CIu+Ht5wKTRnp1w3TN1QM+U96CYjbyeZCvQ7yi/8+fc0jdnBI2X
- qhZpLB4CFIg9kcqhD4sXz/B3zLHKkMkmqzWaY04+nZSbaRPybRv55nNUdQkzWtEgm+DW
- HWAn3UTqU/esh0R/Cbm519YDNc8hYHrOIAiFyDwyPrNo+Nthad7/oQa0CkQ1mFk/pv85
- tbOHy+RNAHnujB7Xvxv2IrDdlw7KHeP73vZeSBrJs/81nOD30lKr9gxsgFbEnGXXbFVp
- YF3x5EiixqpM/Lv2O3gFqlqBU+78MenRHkbO4u58EKShwsZMpLJM1+qkYoyTWOxNbyWh
- g0nA==
+ bh=RswCezjul7SiRoikcBxbY5C2ZOOnN8Qs8fMA80JbeJI=;
+ b=EilcURQhGAy/dd0ZcFV10Nd1L7RM3zhDhy5O3+cFy/qKVImH9RMjg0TmO2kB0KyUAj
+ Eg9vzhRwNj1S6A34viopr1AEtqykpPoO6BZXQhHUweOsQI0wW0V2kCS4nOQvCl1FPck3
+ MLa/WlfZkP8TAKHIIRUaagjoBYSy3hLe18GC5P5gAbsgPnZtZaYQ5U9e/8ggZxUlItMw
+ uVw5BeCTkb8aPtccfcIKzJ65FnJp0TTfZjNFJsOiaOqlgWhzuvQTUuBTzC37rqoAbpnq
+ GAEwGd7soRzs7ShehvFZ1yDyCfvHwG3yu3NokQWTXgsq39A8hwPqwZDSyzp7/lNrHAQ/
+ Zl7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776398312; x=1777003112;
+ d=1e100.net; s=20251104; t=1776401670; x=1777006470;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=1//i73+3jJSLDhQvS0mxohAJ4AYjIlkbCa6T3BwrqBw=;
- b=Vp3mOlpJIX2oDXXsP21pDru4IDCWRafutyaJyiZgGT2ejp7c1X7/8nos3V0tbv8GmR
- glFJp6dgSJauyjoA8YCHrCmx89It2QH63yT0dNjCFrGKagiP+sVovKahA8SIZylt14r5
- fms6Tl4H+SyXJ2rApBnefQKUv1AMv/91aenHaQyZTSwqJlq8vP52O+iMR2y6Kx6C08dj
- Q5ZNIV3nNRGd8FPRRe8r92o8l7HPP2NFfZ/fg57UZYeX2MC6vd6nUP5/udz3Vqj7gRg8
- SYzEQlX5x/u26HWexq5SZzAmUZhfnA1PBFxXBecTkYxExlAMciFxkja6ifbT436jV+1F
- YayA==
+ bh=RswCezjul7SiRoikcBxbY5C2ZOOnN8Qs8fMA80JbeJI=;
+ b=MkQ7MtohGMtPFrX/9mFFCMGlKvvUFl/5c9Yro2SRBF6mavCBlDtzVXSu9myfephBw7
+ p5HZKkCYxGh6V6WRZLWVHsbORAJbPPC4mOUE9+g7OV2ifUWTpWCKRK8QrlWlVlSq3rqH
+ 2Ydb8jrKLcqABucOdtr3jNbiyfiGNo/HwsinE4VOgrsL8/UX4IaRus9wjrzUUZAOU5Ux
+ +o67HsCVfGZ2iu9lHGFHlb+nzGQZGLanfhmnUwtLFeN7KYg50URiQ1sIq41dejacss2j
+ eVtBD66to9VrLA3nUB+olqItoPIHcx1sVl1lUGf0U3ofMQjsgSWhb/4OJHDbKaYeJ63F
+ fFYQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8FDHjZ45YwlPdFntvxDxq1CblMyD7/29pICZovK2/b/cSXZN6cE+nSOMSI+N9FngC0ci4GMM0mKA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywt0OFII2k7DRwt9lMdvQGMNCak0iBqmpBQeHbnTpS+5rRySPdM
- 0ce4ewi0mtBuy0cR2rBioC/qccNAlcJ2qhfcI6ALwSyO9wLe2VfiO/LKT7kxT3C/WVk=
-X-Gm-Gg: AeBDietZEL1g4vro3Mvy9+u6zLcSmhbHcSeZIPWAOfG06eaqK8FHeA1/956vAD1mQR0
- Ddtw5BwyT/VpQU4ndj85B6UU6Vz7+5bjEngFKiYrE8br9lXKA0vRvX4Bq6wds6vDapw3gNMGsB/
- 4/Ll/o/YI1eJMATuqYWWa032e0ZiWe8Owz9Oym06zVzIq2tbyKx0Xm3tuO+CUjfRDm5FuW3R3N7
- 5NHjUQ8yXtGAUZ4AlfTguk5CdkJPRGdNbOo9JuU6/Iy//EXrPqPgxIqig+w5juYTUcnBFfTr/VA
- ci3pK/f66mJrHJOFhjhFFa8IP4Ww5tesvpCpm+/OhVdVpp/+aIKEYKcrvRE+HBOmOwQrOcHzX2I
- thVYFfspWZTXr5p2r0gFAjbTJiPCxyXsuwbC06fj5hCdpkcShxBfzrF7qbibHy5mkpTnQR4wiM4
- DRyvd6A2TeyEvf5SX52N1X0wPoddx/RGrEDTJs7oplUWq14KiSuT5kA4bCnAO1pWMyRoWMalFyX
- URQ
-X-Received: by 2002:a05:600c:4e4f:b0:488:d6eb:e63c with SMTP id
- 5b1f17b1804b1-488fb778703mr14867895e9.15.1776398311660; 
- Thu, 16 Apr 2026 20:58:31 -0700 (PDT)
+ AFNElJ8QmcNz1PqzoEJ1BpImNESeRlp8Ocn1INmmEmvdJtV8ABDL6OhEXyUiAu0ToM4GTW2Y0YjNgxRIng==@nongnu.org
+X-Gm-Message-State: AOJu0YydI3VTBIwbIItxgf0kQIoG26lajYLy16tLyRUdXbvhHBxtigRm
+ oS56KzrMEqS4BSOfwS28N74pDIB3OOyn65VeVV4CU3oh8j/FpBo0FhreZFO8K3uNZf4=
+X-Gm-Gg: AeBDietOtXNnDP1nyJjiPCm3m9ORz2VcB0ZJByWI0dh6Ckr7eRgN6CxWJMKjS25QBHV
+ cQcYaRgL/S1Per8GMFRTza27BVcb02mmWjlFSZqjG4Z5qbJ0lnzeaW686/M2skJnOtZUfLfCgnr
+ InRM2lgn09EJOIvR+6nYyILkOMEmeAwy+Vm6DpXZ4HURAP320TDSnjSnWH3VROsZ+GJI0W2VZQn
+ yJ5fwLn+HPa1ZTRCT+MwU6iif948cy4OBfI2rtUlLDHi75wigje5ow2HlD/OUfMRAx+6LrKZpU9
+ RMqHZl9Sp0oMj67URKcUvBilYRf17IdwZGUexcgMfbbnGM243rsg11wiYEEcnalCnbV38D5Kbdr
+ lD4mmh0LPzH9aNeDHGa9+f0ycdfgJof67gBN783/mQtNc7n5YoEWCQ0Edo2gtUrS+2ekuqRg114
+ v+noz/5spv3fMy0jxrQPZKaI4FYdDHpzAVPT05SDfVwrL5rHMLYxEZeI1Pv9TC45OC1c0RDUb1T
+ Xyc
+X-Received: by 2002:a05:600c:c096:b0:488:af14:f1de with SMTP id
+ 5b1f17b1804b1-488fb73b27dmr11566325e9.4.1776401669998; 
+ Thu, 16 Apr 2026 21:54:29 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc16f784sm9939205e9.1.2026.04.16.20.58.30
+ ffacd0b85a97d-43fe4e4daf2sm1389605f8f.33.2026.04.16.21.54.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2026 20:58:30 -0700 (PDT)
-Message-ID: <4a4ab25c-aad9-4383-bf39-00a22cd5d287@linaro.org>
-Date: Fri, 17 Apr 2026 05:58:30 +0200
+ Thu, 16 Apr 2026 21:54:28 -0700 (PDT)
+Message-ID: <c49201c7-55ac-43ae-a8ee-3efeb804ddbc@linaro.org>
+Date: Fri, 17 Apr 2026 06:54:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/9] target/arm: Remove MO_TE to compile MVE/M helpers
- once
+Subject: Re: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20260414005348.4767-1-philmd@linaro.org>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-7-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260414005348.4767-1-philmd@linaro.org>
+In-Reply-To: <20260416014928.1279360-7-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,18 +112,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14/4/26 02:53, Philippe Mathieu-Daudé wrote:
+On 16/4/26 03:49, Jamin Lin wrote:
+> Change internal EHCI descriptor addresses from uint32_t to uint64_t.
+> 
+> The following fields are updated:
+> - EHCIPacket::qtdaddr
+> - EHCIQueue::{qhaddr, qtdaddr}
+> - EHCIState::{a_fetch_addr, p_fetch_addr}
+> 
+> Update get_dwords() and put_dwords() to take 64-bit addresses and
+> propagate the type change through the descriptor traversal paths.
+> 
+> Adjust NLPTR_GET() to operate on 64-bit values:
+> 
+>      #define NLPTR_GET(x) ((x) & ~0x1fULL)
+> 
+> so that link pointer masking works correctly when descriptor
+> addresses exceed 32-bit space. The previous mask (0xffffffe0)
+> implicitly truncated addresses to 32 bits.
+> 
+> This patch does not change the on-wire descriptor layout yet.
+> It only removes the internal 32-bit address limit and prepares
+> for later patches that will add full 64-bit QH/qTD/iTD/siTD support.
+> 
+> Update the EHCI trace-events prototypes for QH, qTD, iTD, and siTD to
+> use uint64_t for the address argument and print it with PRIx64. This
+> ensures full 64-bit addresses are shown in trace output and improves
+> debugging of queue heads and transfer descriptors.
+> 
+> Migration compatibility:
+> 
+> The fetch address fields in EHCIState are extended from 32-bit to
+> 64-bit, requiring a VMState version bump (v2 -> v3).
+> 
+> Backward compatibility is preserved by keeping the legacy 32-bit
+> fields (a_fetch_addr_pre_v3, p_fetch_addr_pre_v3) for pre-v3
+> migration streams via VMSTATE_UINT32_TEST(), and introducing new
+> 64-bit fields for v3+.
+> 
+> In post_load, pre-v3 state is promoted to the 64-bit fields.
+> 
+> No functional change.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/usb/hcd-ehci.h   | 12 +++++----
+>   hw/usb/hcd-ehci.c   | 64 +++++++++++++++++++++++++++++----------------
+>   hw/usb/trace-events | 24 ++++++++---------
+>   3 files changed, 60 insertions(+), 40 deletions(-)
 
-> Philippe Mathieu-Daudé (9):
->    target/arm: Ignore endianness when setting MTE tags
->    target/arm: Explode MO_TExx -> MO_TE | MO_xx
->    target/arm: Hoist MO_TE into mve_advance_vpt()
->    target/arm: Hoist MO_TE into MVE DO_VSTR() macro
->    target/arm: Introduce mo_endian() helper
->    target/arm: Replace MO_TE -> mo_endian() for MVE helpers
->    target/arm: Compile mve_helper.c once
->    target/arm: Replace MO_TE -> mo_endian() for Cortex-M helpers
->    target/arm: Compile m_helper.c once
-
-Series fully reviewed.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

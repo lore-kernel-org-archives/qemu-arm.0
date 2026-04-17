@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A76F8E4AD
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 06:27:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94733F8E4A7
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 06:28:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDcg7-0001xc-Qi; Fri, 17 Apr 2026 02:27:51 -0400
+	id 1wDcgL-0002CP-7d; Fri, 17 Apr 2026 02:28:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfq-0001sh-Hi
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:33 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcgE-000222-K5
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:58 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfo-0006oE-66
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:30 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so3899355e9.2
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 23:27:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcgC-0006ri-HH
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:54 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-488b8efed61so3124675e9.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 23:27:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776407245; x=1777012045; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776407271; x=1777012071; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=r1aQWtljP4T08PYKYn6pXoqGHAbzEgpMRj1mHWqy4mU=;
- b=GL0/SMsMcI8+ALM8VnLgVk8gCStL+VEncu6aYsJZO2vwa3KWvPMk+Wu8rUv9JwEzpU
- AJwHWTI9g5gHT78U4ti99Zjbe3YHrDspiD6KPwSOL9FRO5pnMlyx4fHJDuUWVBcDhlR0
- IkjR3oTINJ5g93rPAsRPZymOFcuN7SulDQ6P75DFnwngyaaLVEWK7C/zCw4aVkw2zHWv
- ExXNTnTUQhvw48dXDRP239p8jfJ/7GusIV7wXtnqSMq148WVOLocJ+klcE6ncAWNdwt+
- Oxruvc4AUrNbiu8wsUj6IrnZ4Zk++JqZijpmrOokuqP6/Iec6q2EgOQDgTqvcq48PFqh
- IPPQ==
+ bh=6eXAMPHkSnLLO7oQisWGyDJxoix+hc4FH5kyYYbpwi4=;
+ b=ZqnrZO8mfVTQwGIx8foSLFF0bmyseF76sKo54SUCvKbUJgvlZcOyGpB/Vn4wUIKFpJ
+ BhbcEVkO4kUQRGRYoR1/yEpuV6yRQhhDb914Q1vmFjhwpKBizG48gZxSlwge/qfR9jxF
+ mdSEUsZAPXBWCGIKDXjNl8/+vP5PYytcQAT4Kfu9KQKFM7FKQfiblKUVKAjRoBV1WzZv
+ i0uGFlKdw8JaUimTrdOjxaw7KZCH4s7I1Ukc7MorEB6zBu63dsBix480ywP2cLZiBWLV
+ Ng07p/en/Fx6dVpXXO1EiwsJNjwmoxhgGu2F89rsul7ANMVPU8RGBlbPf/KIyNMXaEqb
+ EfwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776407245; x=1777012045;
+ d=1e100.net; s=20251104; t=1776407271; x=1777012071;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=r1aQWtljP4T08PYKYn6pXoqGHAbzEgpMRj1mHWqy4mU=;
- b=K/SOtGkM6O0yzC7Y322ignc4eHgjYURpFmpw1Ke+m0wwju6BKbGN9Hgm+8ll3EmtTA
- JNlXIJ1jHR+FocJ/eJwpN5dGlYPypD12ekqPuc5rqf9jBsQUGYUpuMgLL2llLOOUA5yW
- kHQymx/dWr1S2ERmUW18rTQAAvg/52GFSgf/E2nwDM9RqUG8UQZ42BtA0VvfrVpCUdMd
- UBZOyFE5bRFDH+3oWk9xhzR+ruUIbvsSttZy0JCF/Ijo/xZQVIqWDf8uzr4z75zjLIHa
- PzZl81ReIitU7p+MCvjcUsQXTivQwEVtRsyw2iqUHDz/MEoF+UXBFXKDnVjZYUDe7Y+f
- dROw==
+ bh=6eXAMPHkSnLLO7oQisWGyDJxoix+hc4FH5kyYYbpwi4=;
+ b=eH+Bz6pKuHB3uV2J4zuj/8SGOjYbsF3Ntl9cUtaPS+xwmAu6hzPXmGiXQpvcTw7g3j
+ jqknby2zlXlBVm+1fSHQdRfmmX6TzfE1pOAFLvb4uzfByM7vwPEYHKD85fl3sALzaTH0
+ ctuPHqJaQIRGK/fOE62ezrLYifAgQ8Iid5vlmTZ+2CsDemuaIo1te0pnMxnIiSBnAsZD
+ vQ5RZfbc4WTTB0XnjE9chUI8I6A8sqPd7yjPbcc17ad/r6hHRBQGikdSVTQT1D5TRz5K
+ hytcwA9UjxdwfdkgpsJbcm7OqsMCogBEgCW52qHYT5sM3qglF5ghK1otVF8Gx+LTJazi
+ GMTQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+O0I1IqKHfRIhJuYKDRMMPn/ii22m4OoMx0mYzNuznBcaWdRGL2/I/hlq6PzytjuOyQh+i+WlCmw==@nongnu.org
-X-Gm-Message-State: AOJu0YyEloe6IBUW5a2XU/3ae0Og7XEz0JzNodcgd9e9c2qPRK3VRx74
- EGB1wL7mwCeEcprf1KG2V6z64ROuRB7Tfbu9f1LB/83MIrEdrzZhJI/lQ49qcxBDtXk=
-X-Gm-Gg: AeBDieuey3J7YwGMvf+BvmwP5fm8V8rYUR24yPQQV6gNDquvnP+qqQb09BO6I+nzDDJ
- HKkqSp1W0cncsrYYf2LyoBKmx+TnRNCDTYMZU6UMyiZ1CnRFgmpOuF59ZbiCGky4lmlMmfr4ABS
- QtWpm5kh7wXgkkkj0OJ74/3ZoZ5VngKQQlDp1WTtQUE/OH/0aOsLlvOh9aYt+rwbpEe6NXrEJHL
- oHTZLxEyc/lkCIXvX94pKruD3PdB20qX4dobDOJXzcvk0sgkmaIb5q0yMv8MIFcL2XMmdQCsxoM
- MW/itWy7Qj0JOXS31xUqPHSYbH0wpK2i8zk2IKsw8UFlfN4bdTJLNS61ZvFRhHIbqZRYNanfMY3
- Kej//+ou98k7avssM9BIeEXE9uMcoJtwY8y+DEwcOInAxi3LXBO6oFi663UeDaguFPZpSPbiHNJ
- LRlz27pTxycoN1LPerJK7TATiuV5GfvtXhNkEhdrCMcU+UNXWimgA0CvkAXIRcajfzboToL3K2z
- QMv
-X-Received: by 2002:a05:600c:5492:b0:488:b1c7:b432 with SMTP id
- 5b1f17b1804b1-488fb787a6fmr20210645e9.24.1776407245488; 
- Thu, 16 Apr 2026 23:27:25 -0700 (PDT)
+ AFNElJ9uOiDgHWa/R9Z7M+y7PMBx+YNN76m6zz6/eTTHe52AeyS0ABD1T8qOiexUJL52Y7ercLbuWm7d/g==@nongnu.org
+X-Gm-Message-State: AOJu0YxkJYBacx6jLZn1NUTflpxtVyNBZH1KWDvu8h+DQA8FZKe8AJO9
+ Ce+wJ44kPoMgZRuoL/tlPJwBU38OcYwHmE24jYMCxvuhBmrctLBFbBhnsAKwUv5jr7I=
+X-Gm-Gg: AeBDievTL2siQ790HtF1tlR5BcLxT4ij5eNwuOrWvqvksPK7/6BC+PSkICBlsMVv8ew
+ mxQcsH6EPrpYVarqsglqvSjuy7PcoVCgSqyLSw8D1XnJ1C1ENz1OblOfLIb2E4PjAUNHbfQ22GY
+ pV8JVA65g/AUJOF2ZpxhNawmn4s/ycRfNgIzctCZoOZTFUsCJNC62mZ386ph8pqsutWEUXn9jky
+ HJ8KOMQjn50Pl0DmnWU+wDqgAD0cxXO0QIJpP8wQUHhtgcL/zDa3anOUtENnMgZ0STz/5kQ7pJa
+ yDpEXb4bZoaH5CnyDJfPgi1UT4ui+pwYvL1NEm4nalxSqVMwPA0gmjtNnsFljWC+x7hN11tEd2M
+ KgpkmR7C/EyjMLQcG/hx289jZBiWUhHeD5Y8dpTbbdPmTgwMa13xKz7BMCwgCk2/7s5SrwvaQQY
+ 5WL4zfpC4n6/RfO2c22N+ODrRiauBNT39QwBf9OHYCH2XmRjIVKbjhV8sJnjk5bsUrEQSA2W91/
+ JsYmJLiF1db+YA=
+X-Received: by 2002:a05:600c:c167:b0:485:3428:774c with SMTP id
+ 5b1f17b1804b1-488fb889336mr17424255e9.4.1776407270900; 
+ Thu, 16 Apr 2026 23:27:50 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc0f82bbsm33007075e9.3.2026.04.16.23.27.24
+ 5b1f17b1804b1-488fc0f82bbsm33042225e9.3.2026.04.16.23.27.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2026 23:27:25 -0700 (PDT)
-Message-ID: <9908e77f-2c9e-4337-a2ed-cad837c6d845@linaro.org>
-Date: Fri, 17 Apr 2026 08:27:23 +0200
+ Thu, 16 Apr 2026 23:27:50 -0700 (PDT)
+Message-ID: <3d289236-eba5-4b94-9930-bfb0086ee66e@linaro.org>
+Date: Fri, 17 Apr 2026 08:27:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 17/17] tests/functional/aarch64/test_aspeed_ast2700:
- Add USB EHCI test for AST2700 A1/A2
+Subject: Re: [PATCH v3 12/17] hw/usb/hcd-ehci: Implement 64-bit siTD
+ descriptor addressing
 Content-Language: en-US
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,20 +83,20 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
 Cc: Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
- <20260416014928.1279360-18-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-13-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260416014928.1279360-18-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260416014928.1279360-13-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,19 +112,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 16/4/26 03:50, Jamin Lin wrote:
-> Add a functional test to verify USB EHCI support on the AST2700 A2/A1
-> by attaching a USB keyboard device and checking its
-> enumeration via lsusb.
+On 16/4/26 03:49, Jamin Lin wrote:
+> EHCI supports 64-bit control data structure addressing when the
+> 64-bit Addressing Capability bit in HCCPARAMS is set. In that mode,
+> the CTRLDSSEGMENT register provides the upper 32 bits that are
+> concatenated with 32-bit link pointer values to form full 64-bit
+> descriptor addresses (EHCI 1.0, section 2.3.5 and Appendix B).
 > 
-> This introduces a helper routine that runs lsusb in the guest
-> and validates that the emulated "QEMU USB Keyboard" is detected.
+> siTD link pointers are stored as 32-bit values and must be expanded
+> to full 64-bit descriptor addresses when 64-bit mode is enabled.
+> Update the siTD traversal path to use ehci_get_desc_addr() when
+> following link pointers.
+> 
+> Appendix B also defines high dword fields for siTD buffer pointers.
+> Add bufptr_hi[] fields to EHCIsitd and use ehci_get_buf_addr() to
+> construct full 64-bit buffer addresses from bufptr[] and bufptr_hi[]
+> when processing split isochronous transfers. This allows buffers
+> above 4GB to be handled correctly.
+> 
+> When 64-bit capability is disabled, descriptor and buffer addresses
+> remain 32-bit and existing behaviour is unchanged.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   tests/functional/aarch64/test_aspeed_ast2700a1.py | 7 +++++++
->   tests/functional/aarch64/test_aspeed_ast2700a2.py | 7 +++++++
->   2 files changed, 14 insertions(+)
+>   hw/usb/hcd-ehci.h | 1 +
+>   hw/usb/hcd-ehci.c | 2 +-
+>   2 files changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+> index af8c080c60..6406f536e8 100644
+> --- a/hw/usb/hcd-ehci.h
+> +++ b/hw/usb/hcd-ehci.h
+> @@ -109,6 +109,7 @@ typedef struct EHCIsitd {
+>   #define SITD_BUFPTR_TCNT_MASK         0x00000007
+>   
+>       uint32_t backptr;                 /* Standard next link pointer */
+> +    uint32_t bufptr_hi[2];
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Not used?
+
+>   } EHCIsitd;
+>   
+>   /*
+> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+> index 3db1c25e4d..e1d5ecbad7 100644
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -1791,7 +1791,7 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int async)
+>           warn_report("Skipping active siTD");
+>       }
+>   
+> -    ehci_set_fetch_addr(ehci, async, sitd.next);
+> +    ehci_set_fetch_addr(ehci, async, ehci_get_desc_addr(ehci, sitd.next));
+>       ehci_set_state(ehci, async, EST_FETCHENTRY);
+>       return 1;
+>   }
+
 

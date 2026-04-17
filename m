@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52588F4368E
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 11:03:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 327A0F4368D
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 11:04:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDgyZ-0005oG-VY; Fri, 17 Apr 2026 07:03:08 -0400
+	id 1wDgyb-0005pa-RS; Fri, 17 Apr 2026 07:03:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wDgyX-0005nY-73
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:05 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1wDgyb-0005ow-9E
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:09 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wDgyT-0002lf-LN
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:03 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-48374014a77so6796125e9.3
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 04:03:00 -0700 (PDT)
+ id 1wDgyZ-0002o1-RO
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:09 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-43d75312379so1074035f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 04:03:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776423780; x=1777028580; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=1Fqw+v51cfo42HTqJlkbcjWxF+GsvxvBBfYyIDWMDPg=;
- b=r1bpWHlRMti7NiQvN2f/Kukt5F+xcGSyORdogXd13eYXIEZ3s464f+7nwyEivRNuAj
- +8JTN/uVxuEgqdeDmk4u/qTGBR4QKXwKIG8cig14vnBRWaV09gQJzjKQboMHufpjogvh
- Zk891aWoZZjGK3DtwqMWEhUGaSjmCQvidDy4HQtUUeEu8Ple1oFqT1tNAj+m+1LMxWhq
- 2VLW+BX5Q396STkJ61Qf9A//keRetO+bjNKBeSzf7MegViee3576emOZJKLQ+axyR/Wb
- 1gKv4vJ9PXUPGdo1HYh+3Jbd0FtxGvJIjCcTestKN4GFf4mWxhNU/6CBdIxrtN7wCxU2
- lzpw==
+ d=linaro.org; s=google; t=1776423785; x=1777028585; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=qJ2AQaxAlhqc69Sli55vinppxUwsyZJgPbn1fvffd60=;
+ b=sfejDpwukzc/hf5ZfG+ZkIsH7lLll4cwU5mBLeFwdGGVJ6s6XcjWcgSDrwGO+xT6mG
+ 0/9o3XmfevusnVlu01ZKX/9i3zR/OFKqRuAxuY7omn/w7oxkJJyWBjd3DhEkGw9ux5dQ
+ AqGNvbSp1R6EoLM5Qp5oN6Kuo9+u6TSfMDa4WBz12xEbbO9gDjZYGkIA8OHLFx+HB7sD
+ BwqeyAwhc6FXBYqXs3M24XHvQOJLjFznq+vqdbN+bKHFEoVq+wHpoCVUkP17kn0OzmEA
+ q92jc8N23IF0D2RqVqo/YrLHLuO8AE298A5IliJxouJd06QnHJ9vwUmEH6Kd+szjTQSk
+ 4LvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776423780; x=1777028580;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1Fqw+v51cfo42HTqJlkbcjWxF+GsvxvBBfYyIDWMDPg=;
- b=TananXqPqaRckReTccPlZPzRKJRdDMq8SSvZk6GHIqtc4rwFLWCLgZmqSo0TOTcSEJ
- GEtawUQxK+IhGL8C5qneNhbjtaSZQ4sX/SfB8jaqb9GH4bmtRjdzgGX/WRJmsvN1BAyD
- ZUWw64je7g1wjs8NK8l4aelKO1IcY4haEhPa3qpPZdiYdCEFg/Uisnd+Gz28QRGXY3G6
- sKHi6kCHFb7we0vBBjjb01i9WxFo4kgJmhXG3y6vNV41I0nSoI9gclNb+HUhNxRvM1do
- Av+bjhGEXTjnGcr9U9//OlqQCGzuQNz9GX8G9OQklNGt0obFykClCEZAZCZjzB5nBphe
- J5yw==
+ d=1e100.net; s=20251104; t=1776423785; x=1777028585;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=qJ2AQaxAlhqc69Sli55vinppxUwsyZJgPbn1fvffd60=;
+ b=hJkuWxVS4VhJV0G0yLxql5rI0eCJssf2VHsDLGnjtZNTSb4+4LwiuQg7IZdjrEvPkR
+ zYljOAx2FSbM1IARkKDRoSVDi7Z3Zf7kMOD+B3W1eDnBEAtE3OA4N3b3Ct3gXOpKZB+v
+ K9RlJKf8HSaxX4o61pX2eMWFZcujAusHCvXlT949si/Bf8EP8WcBk1UB9v+6ZXUT0Jmt
+ Z5CpAarOIv5PlvDyBU8oGL4wsGDLPZ37aoDw2ZC+bqG9iPY7PrdQg16iymaK4gWH3ioB
+ nAEf/Km/2odrSqM8JtMZxY9eqTQ8tBa1qDRl4C0HWfevmIUMchKKy6rScE6al13GmaUj
+ xvVA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9zh9o8aY7K5EAfJ/iqjWzugvzAFwMZK+SKbDfswdDkAx0tw6lhH2YI7KpkUQaIgoZJzWt5i002mw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz6KXeYik1jIjYXDHHmXSB7BToSIF3vbyvPFkuvAVJbAqQF1vI1
- wXb7uwyfaIlH3BAh6oKXXlDyBVcjr7qTc8WJ/XxvWa0prTfpHwDxQJiNgcDb+IUc3hSrmT0Naf2
- q2C/t
-X-Gm-Gg: AeBDietSCae1PT07zDi3F05pwMzH/MwU44iv/MpYU6jes6s1SGA2LwuiU2gW/APGbiU
- y7mve8q0mQoRVO0m/LxhZjOEsmr2Ittdc5OrKlUq/jApbTXY5wOJx6PimMEwEnlAHfqrKkl6G7x
- +UdfOZvY2D2gqpjv2ut9rdF8Fr3cX4zsWbBidno4BOSApOWFMEZ0ef1meSUmh/Avgq3QPHEiR5k
- 5rqqpms7mVFU/lvPuvw5KAe17L0SYmC7t2HU+ePXVMnzR4di9gOKLQdLtYbQDAjGLCk+YUM7uNG
- l2ydXeCG0O8jWKFxpCNTyo1bAeYBCloPIzeVfSwpfStLJRw7OOx1KKMs0FUo4dkNkjPeYbSItXa
- S1bmYS6HqgfSbN9BT09aTMY3JsYRXVBOyzJc97R7mx9Bi6kfnP4dQhbr74xaMBPItGombwGKw38
- J9ZZTNBNFkCLojAju6J2Tez+zAfAKAr/tAlyl/ZA==
-X-Received: by 2002:a05:600c:1da1:b0:488:bc6a:528d with SMTP id
- 5b1f17b1804b1-488fb785204mr36117425e9.22.1776423779645; 
- Fri, 17 Apr 2026 04:02:59 -0700 (PDT)
+ AFNElJ8mQw8MoZ1uxhc27J/h7r0qEQwxMQSb5H54MkWPBJo2nfapYZ0fijY94DqqIHwP01TNFKsyea9EKA==@nongnu.org
+X-Gm-Message-State: AOJu0YzIljPxrMf9011clGm9j7wizYj7H7YE6Ix3e1BKL4GKFD9rrCdu
+ H9E+bRFAP7cj+P4QV37VS6Sq+kSZLqhmx25rzhDorK0uIqKF1zXTWicQWKK3b1vTZFE=
+X-Gm-Gg: AeBDieuQ+p95lqXuLyW3tnDlT4dz7+bDzcz1vYV93hTUsJZZeNuxh6neZC35WksJxZw
+ cNR7vB39WBtNawLtLLqTYnD5jvoq0ufu6W/eQjOlU+PxJ1CqOz0gVypTfYiqjMw0+1kgWaTefml
+ xcXHt6qhZzAeOaVZAnxFOa0l70ENvhX1B+IsJYsLUv+W9UmgmnZsEgcMB6UsBesaNzq6fdJNKS/
+ zv7IMuDHoVq1vUSY+dERkYEhZH2rNO3OvxlwWiRLLpfyjhYiTdVO277JxPclCHCMztuPCDxjit+
+ Hz6YvrBjvzNx09was0UbV3+lknhBEI0igo6QHfvOIkCcMVWpTJKa7kBJJxeFCNrED+4n14Mald8
+ Qlvawns2LNoFodGWPHwXeZlDFUaGt4+aZy7FWEVkaO9XqPDNzneonWPmFZRGrk+0BILjTlHGFL7
+ Nhu20dA4JrFxvf02rqyPn4LTDJfD16nG+n9ocgqg==
+X-Received: by 2002:a5d:5848:0:b0:439:bee4:8a93 with SMTP id
+ ffacd0b85a97d-43fe4073758mr3653908f8f.12.1776423785232; 
+ Fri, 17 Apr 2026 04:03:05 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:d023:c0db:d3ea:590d])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e59f97sm3811934f8f.37.2026.04.17.04.02.55
+ ffacd0b85a97d-43fe4e59f97sm3811934f8f.37.2026.04.17.04.03.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2026 04:02:58 -0700 (PDT)
+ Fri, 17 Apr 2026 04:03:03 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH v2 0/4] FEAT_RME_GDI initial work
-Date: Fri, 17 Apr 2026 12:02:52 +0100
-Message-Id: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
+Date: Fri, 17 Apr 2026 12:02:54 +0100
+Subject: [PATCH v2 2/4] target/arm/cpu.h: New GPCCR fields
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAF0T4mkC/32NQQrCMBBFr1JmbSQJ2lRX3kNKCZlpO2IbmZSil
- Nzd2AO4fA/++xskEqYE12oDoZUTx7mAPVQQRj8PpBgLg9W21idTq8fkg+rJL51M1A3Iyplg0SL
- Wzmkou5dQz++9eW8Lj5yWKJ/9YjU/+6+2GqUVXnqvXWMIz83tybOXeIwyQJtz/gIEtRjkswAAA
- A==
+Message-Id: <20260417-jmac-feat_rme_gdi-v2-2-7cf5131aeb60@linaro.org>
+References: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
+In-Reply-To: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, 
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
  Jim MacArthur <jim.macarthur@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,47 +103,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Adds FEAT_RME_GDI, some extra cases to arm_granule_protection_check,
-and a very basic TCG test to check the prerequisites of FEAT_RME_GDI:
-FEAT_RME and FEAT_RME_GPC2.
-
-FEAT_RME_GDI is not enabled yet as no functional support has been
-added; it can easily be enabled in cpu_arm_set_rme in future.
-
-In the future we should correctly set bits in the fault address
-registers such as PFAR_EL2, but I don't see any apparent support for
-these in the existing GPT mechanism. Testing this also gets tricky as
-I think this would have to be done from EL3 (e.g. by modifying
-test_rme_virt.py)
+Add SA, NSP, NA6, NA7 for GDI and GPCBW for good measure.
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
-Changes in v2:
-- arm_granule protection_check now checks SA, NSP, NA6, NA7 and
-  goes to fault_fail if set for the appropriate GDI encoding.
-- New fields for GPCCR: SA, NSP, NA6, NA7 and GPCBW
-- Since we're touching AA64MMFR4, added in all the new fields not
-  currently listed.
-- Link to v1: https://lore.kernel.org/qemu-devel/20260416-jmac-feat_rme_gdi-v1-0-d9fa0781ed58@linaro.org
+ target/arm/cpu.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
----
-Jim MacArthur (4):
-      target/arm/cpu-features.c: New fields in AA64MMFR4
-      target/arm/cpu.h: New GPCCR fields
-      target/arm/ptw.c: Add GDI spaces to the granule protection case
-      tests/tcg/aarch64/system/rme_gdi.c: Very basic test of GDI
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 657ff4ab20..1cfef02dc0 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2089,6 +2089,11 @@ FIELD(GPCCR, TBGPCD, 18, 1)
+ FIELD(GPCCR, NSO, 19, 1)
+ FIELD(GPCCR, L0GPTSZ, 20, 4)
+ FIELD(GPCCR, APPSAA, 24, 1)
++FIELD(GPCCR, SA, 25, 1)
++FIELD(GPCCR, NSP, 26, 1)
++FIELD(GPCCR, NA6, 27, 1)
++FIELD(GPCCR, NA7, 28, 1)
++FIELD(GPCCR, GPCBW, 29, 1)
+ 
+ FIELD(MFAR, FPA, 12, 40)
+ FIELD(MFAR, NSE, 62, 1)
 
- target/arm/cpu-features.h          |  8 ++++++
- target/arm/cpu.h                   |  5 ++++
- target/arm/ptw.c                   | 20 ++++++++++++++
- tests/tcg/aarch64/system/rme_gdi.c | 56 ++++++++++++++++++++++++++++++++++++++
- 4 files changed, 89 insertions(+)
----
-base-commit: da6c4fe60fee30dd77267764d55b38af9cb89d4b
-change-id: 20260416-jmac-feat_rme_gdi-71c2d2dd6770
-
-Best regards,
 -- 
-Jim MacArthur <jim.macarthur@linaro.org>
+2.43.0
 
 

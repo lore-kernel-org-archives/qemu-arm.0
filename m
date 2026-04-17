@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3150F436BF
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 17:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7286DF8DFF9
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 17:33:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDn2s-000732-IN; Fri, 17 Apr 2026 13:31:58 -0400
+	id 1wDn3A-0007Tg-1d; Fri, 17 Apr 2026 13:32:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDn2B-0006iu-N2
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:30 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1wDn2p-0006wb-8a
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:57 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDn27-00020Q-8N
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:15 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-43d01d6b50cso949705f8f.1
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 10:31:10 -0700 (PDT)
+ id 1wDn2i-0002P5-Kd
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:51 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-43d77f60944so688541f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 10:31:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776447070; x=1777051870; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776447105; x=1777051905; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EmOVB5IZY29iVKWcgfaipTD5+/SR627N344UoUCnzG0=;
- b=azfnU0aXN70ysqfyU80GuL3fTfOuOK1XaWrCc2LiI4Nklvp7PU+amYjSWcyCSk/kN9
- TFEFhv0Qunqi576v0nARKgb7ittiZE4x2JKCzUzBLxD2EuxXjQvcuFXw5TZl9/Dg9ggX
- 4NI+asxUMd0n4pNe3TShPmCjlLlvAH+4IbeK70b5QKhr2GeUC/cUNHJIw/yj3CLnx6Ag
- Vc80x9hs5B18tngbNAF+xU8N5ID8NqxvWev0Mg0sbmACJzM0StI3R5ZcjL6Yml/FqMEn
- LXN9hnFve88N6oVW7KYvm1ZAWx0dz9AnYWTqj/wcPFd5xTujzK3NHPqdW9sRQ0w4FgOK
- 82tw==
+ bh=wxY3ZiluRC3qmS1pGuPIEiJq7+uwFw+8gR7Q01pS8h0=;
+ b=NAbTLBABACARBfKk+zUKPiARfN782ku57nrh0hHwzTMR457GYg9VKywf4jhlyqUf/i
+ 3ibZPnhg3qxjntjZ8H0JREBKqorNakUPDVrt7XmuqIPAygAiQr40RAR6l955jwUZhzmJ
+ Fgdp/qqAXtiDaQbLc/JGeqhsmnUrYYtnlu2k7O5Qdjaz6x4gjmkHbW7DTfpgvsUQYh3y
+ 9irLztcHm1D/eG2J6Dl7LePfv1a+MKIwyVN5Wb09r7mM9O8C+zGGDlIK/AIMlthUW5sy
+ Yndug+GDhe8m/BtOymoZm8GmJsQDLn9zFAzIb7tk0vfqmCKAswhu4z6VGk2VTJU5omSO
+ 383Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776447070; x=1777051870;
+ d=1e100.net; s=20251104; t=1776447105; x=1777051905;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=EmOVB5IZY29iVKWcgfaipTD5+/SR627N344UoUCnzG0=;
- b=RivY9qRh516Vv4CtKhxJBPJGZzGG0XfRYxrVFEXNyc4oIAze2eu5Hv6g1EvhrkyzGR
- 1rpHcaTadwKJILipNpOcFLKFzqUikjgkQjxeUACu75a99/yWvviro41VyuD0xBXoFDJH
- 8vM3mgA0V9beao5IUQRMkjgBRytOyZuWNGFqxCBwnDVibwK2fvzq3KgrLMUpq4pM2NU7
- G0WF0dj6OIhNWxdmf+W6DKCd5DcPLevmRFK/cLAMio99qgrtjBJ3r0DfBE6Ej+27eS0Z
- 94navVoBR8FzDjSOViwyuQFJdFF3l6oII1SdYkvkqlNTponv0j4bYhaj50buzgrHsBFh
- sa4w==
-X-Gm-Message-State: AOJu0Yzk+bJCfxZMK6gjQE1aR1K+3eAb60D76LTi7NF6d6guGhZZFSBB
- ZHbAnb9cft4/MLXb8AzjLYWUQ6HGStQuRWzIbGXZsqowuRtrsbmCfk3oRkYmn8zdgObWb7HivZh
- QohDhBQQ=
-X-Gm-Gg: AeBDietcV1j/Y99zlNXjzxwdU5lEM6zYmJQ3JH8V7Lhv+E3hJIiJUGRSFv6km3hkDq9
- eGNeR1DN4byqYPyx4mSzY/WBYIj5YV066pLtib2rPP47QTqEEPQaDUsob1j8ILJSBW5ZuDNnnWm
- T2u00lZz6iTLu1FMMTUaaCJFYVAygxkjDIcjphkCctrxWMIFT/Sokkp/F0xPFWO7w+HovbFb2WX
- XF5RKyl2ngyTQDoLsxPSjGiMUjT+hDRVrKTuH8LPHjBrVX3dewQFo9tBJTYkt19RuvaJKGKidn7
- /zM7mJaQurjaa13NrP6gNkivTMgU94sJmpGjBSvlkkEk/o1rubTOIS4qF62iV9xbjux39VLjXpv
- zxosUuBt9EAmrJfIFZBoHOi+nrv3PCNWxB+1PzduEH89WAv1pAm3OzYPa7aT6mK7KBzPxPqmyFA
- UJVSzFsEfLZ/087qj5JKRv67/7GwZEe6nPJbOjZbt30G8dyRUMELCWKuR9Vda5ImnYK+dT80ALV
- fkMhdS0WhoU2EegA6QZnoJL90X+mM9NSG23b7x5ZQ==
-X-Received: by 2002:a05:6000:250f:b0:43d:1df7:ed24 with SMTP id
- ffacd0b85a97d-43fe3ddffffmr6124966f8f.21.1776447069526; 
- Fri, 17 Apr 2026 10:31:09 -0700 (PDT)
+ bh=wxY3ZiluRC3qmS1pGuPIEiJq7+uwFw+8gR7Q01pS8h0=;
+ b=hn2LDWcxPGOIWHtko42XHNu/EH7xcefiUqFeRCb+lfuLIqIJlfbgT6AIJ8Vk6pE6p9
+ 7YoCNDPxszPmHkVUismAFY9IRXZWkuTBwRlwO/xhuRdzlCuh7GyFwksjCuh33FNbZ5KR
+ /+EvzQTVXCYGbzjpG9ruOFfmKHdTdd7uaDYCkaMtpzTb1/YIV2V24mKm9H6/tnq59sKJ
+ V12LSg5E01IAUtGAMp5edB4cAG2TjcbhtCXs27wldsNEHuwhK/NiGAXMmfJTdMz7G8EY
+ Zmx6zlb5qIEXNwP7zPeFZlEB8+ksFwsuEA2rklpjKSqTx0suvkhCtEBnj0AnRekjj0w3
+ bfOQ==
+X-Gm-Message-State: AOJu0YwDk+/9bZcxugzp+i+a4Ta+f3rO3ex2wMuTmP3ulQhyBcb9duBh
+ XYCt0y3VV57xK5l7JzmMHXdbxq9CjqQZIXh6rBQLkpWQdxa90HIdIbskBsGdr+21JSRrCOcI94g
+ jVkWSb9U=
+X-Gm-Gg: AeBDiesrX34bRjkTGIgP9td1Mqgd2PvboucIxuDc5Ck5MiplBhXET+iS9IZiSv7rO8G
+ nH9cMh+bbXjtjq12aG4nOvWwQHLLAAoq1tzMUgN582ZuBFDS1Ih7OHCNc+i7LbdFgxYCUqY6l1g
+ Cap08ix7CuREtL35lyPOS07GcsfUNUxnEs61iHohC85NJYzCcc/Qs6j+iAGr4xi70tXoNUQGBp/
+ JCU7BodQjpsH/eYZ30iR5bT0n8Fkx0oEu4kkPX0kVJyAPVErkn0r96cqouf24+4vOTSSzC3brWg
+ J5N3Ak3tqMA0VgGpVuMdlsDxYAQD9HKE8rdC0d6dX/bTw9Ik8v6J3HBont88DD0jRpnjk8f8YdQ
+ ZrAXjK/7JA1sFfnB3ZfRNaVi0HCBmWXEf5W5e2vj/g9MZzB3CwyZXQS7ldJ4QzKwTQ5cuWKbPk2
+ k1N3kFJPTpwnK5ZPzTXtST4jS7BcwFhw2qRiYAkMGm2kBWNbHXHxP5CIZW7WT1MJzabVejtmly3
+ q20GRh0pxbifcZexrsQXcClnOLq9Vc9Z3KZrQGYw71jJdVbhiXx
+X-Received: by 2002:a05:6000:1868:b0:43d:7a97:78af with SMTP id
+ ffacd0b85a97d-43fe3e24bd3mr5924110f8f.42.1776447105123; 
+ Fri, 17 Apr 2026 10:31:45 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e4ffa8sm5819650f8f.35.2026.04.17.10.31.08
+ ffacd0b85a97d-43fe4e4ffa8sm5819650f8f.35.2026.04.17.10.31.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2026 10:31:08 -0700 (PDT)
+ Fri, 17 Apr 2026 10:31:44 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -91,17 +91,16 @@ Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  David Hildenbrand <david@kernel.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PATCH 01/17] target/riscv: Make get_phys_page_debug handle
- non-page-aligned addrs
-Date: Fri, 17 Apr 2026 18:30:49 +0100
-Message-ID: <20260417173105.1648172-2-peter.maydell@linaro.org>
+Subject: [PATCH 16/17] target/arm: Implement translate_for_debug
+Date: Fri, 17 Apr 2026 18:31:04 +0100
+Message-ID: <20260417173105.1648172-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260417173105.1648172-1-peter.maydell@linaro.org>
 References: <20260417173105.1648172-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,39 +123,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently our implementations of SysemuCPUOps::get_phys_page_debug
-and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
-non-page-aligned virtual address and returns the corresponding
-non-page-aligned physical address" and "only returns a page-aligned
-physical address".  This is awkward for callsites, which in practice
-all want the physical address for an arbitrary virtual address and
-have to work around the possibility of getting a page-aligned
-address, and it doesn't account for protection being possibly on a
-sub-page-sized granularity.  We want to standardize on the
-implementation having to handle non-page-aligned addresses.
+Implement the translate_for_debug method instead of the
+get_phys_addr_attrs_debug one.  This allows us to pass the caller the
+lg_page_size from our internal GetPhysAddrResult struct.
 
-The only thing in the riscv implementation that we need to fix
-is the place where we explicitly round the return value down to
-a page boundary before returning it. Drop that.
+Awkwardly, translate_for_debug's "true on success" convention
+is the opposite of the one we use internally in ptw.c, so
+we have to be careful about the sense of the return values.
+This corresponds to the way that arm_cpu_tlb_fill_align()
+also has to return true when get_phys_addr() returns false.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/riscv/cpu_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/cpu.c       |  2 +-
+ target/arm/cpu.h       |  3 ---
+ target/arm/internals.h |  4 ++++
+ target/arm/ptw.c       | 37 ++++++++++++++++++++++---------------
+ 4 files changed, 27 insertions(+), 19 deletions(-)
 
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index dd6c861a90..475e9cfd57 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -1677,7 +1677,7 @@ hwaddr riscv_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
-         }
-     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index f28c74a94b..c014375cb7 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2295,7 +2295,7 @@ static vaddr aarch64_untagged_addr(CPUState *cs, vaddr x)
  
--    return phys_addr & TARGET_PAGE_MASK;
-+    return phys_addr;
+ static const struct SysemuCPUOps arm_sysemu_ops = {
+     .has_work = arm_cpu_has_work,
+-    .get_phys_addr_attrs_debug = arm_cpu_get_phys_addr_attrs_debug,
++    .translate_for_debug = arm_cpu_translate_for_debug,
+     .asidx_from_attrs = arm_asidx_from_attrs,
+     .write_elf32_note = arm_cpu_write_elf32_note,
+     .write_elf64_note = arm_cpu_write_elf64_note,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 917e4668da..ea3c65ba1a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1231,9 +1231,6 @@ extern const VMStateDescription vmstate_arm_cpu;
+ void arm_cpu_do_interrupt(CPUState *cpu);
+ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
+ 
+-hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cpu, vaddr addr,
+-                                         MemTxAttrs *attrs);
+-
+ typedef struct ARMGranuleProtectionConfig {
+     /* GPCCR_EL3 */
+     uint64_t gpccr;
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 85980f0e69..5527c004db 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1532,6 +1532,10 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+ 
+ void arm_log_exception(CPUState *cs);
+ 
++/* Implementation of SysemuCPUOps::translate_for_debug */
++bool arm_cpu_translate_for_debug(CPUState *cs, vaddr addr,
++                                 TranslateForDebugResult *result);
++
+ #endif /* !CONFIG_USER_ONLY */
+ 
+ /*
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 8be6f243e6..ae4089a14c 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -3922,8 +3922,9 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
+                              memop, result, fi);
  }
  
- void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
+-static hwaddr arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
+-                                    MemTxAttrs *attrs, ARMMMUIdx mmu_idx)
++static bool arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
++                                  TranslateForDebugResult *result,
++                                  ARMMMUIdx mmu_idx)
+ {
+     S1Translate ptw = {
+         .in_mmu_idx = mmu_idx,
+@@ -3935,25 +3936,30 @@ static hwaddr arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
+     GetPhysAddrResult res = {};
+     ARMMMUFaultInfo fi = {};
+     bool ret = get_phys_addr_gpc(env, &ptw, addr, MMU_DATA_LOAD, 0, &res, &fi);
+-    *attrs = res.f.attrs;
+ 
+-    if (ret) {
+-        return -1;
++    if (!ret) {
++        /* translation succeeded */
++        result->physaddr = res.f.phys_addr;
++        result->attrs = res.f.attrs;
++        result->lg_page_size = res.f.lg_page_size;
+     }
+-    return res.f.phys_addr;
++    return ret;
+ }
+ 
+-hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cs, vaddr addr,
+-                                         MemTxAttrs *attrs)
++bool arm_cpu_translate_for_debug(CPUState *cs, vaddr addr,
++                                 TranslateForDebugResult *result)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
+ 
+-    hwaddr res = arm_cpu_get_phys_addr(env, addr, attrs, mmu_idx);
+-
+-    if (res != -1) {
+-        return res;
++    /*
++     * Note that this function returns true on translation success,
++     * but arm_cpu_get_phys_addr() and all the other get_phys_addr
++     * style functions in this file return true on failure.
++     */
++    if (!arm_cpu_get_phys_addr(env, addr, result, mmu_idx)) {
++        return true;
+     }
+ 
+     /*
+@@ -3964,11 +3970,12 @@ hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cs, vaddr addr,
+     switch (mmu_idx) {
+     case ARMMMUIdx_E10_1:
+     case ARMMMUIdx_E10_1_PAN:
+-        return arm_cpu_get_phys_addr(env, addr, attrs, ARMMMUIdx_E10_0);
++        return !arm_cpu_get_phys_addr(env, addr, result, ARMMMUIdx_E10_0);
+     case ARMMMUIdx_E20_2:
+     case ARMMMUIdx_E20_2_PAN:
+-        return arm_cpu_get_phys_addr(env, addr, attrs, ARMMMUIdx_E20_0);
++        return !arm_cpu_get_phys_addr(env, addr, result, ARMMMUIdx_E20_0);
+     default:
+-        return -1;
++        /* translation failed */
++        return false;
+     }
+ }
 -- 
 2.43.0
 

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA226F8E4A5
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 03:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FEE0F8E4A4
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 03:32:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDZt0-0002CL-Iq; Thu, 16 Apr 2026 23:28:54 -0400
+	id 1wDZta-0002fE-Kn; Thu, 16 Apr 2026 23:29:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wDZsw-00029o-00; Thu, 16 Apr 2026 23:28:50 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ id 1wDZtK-0002P5-7Y; Thu, 16 Apr 2026 23:29:14 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wDZst-0005ns-O2; Thu, 16 Apr 2026 23:28:49 -0400
+ id 1wDZtI-0005oG-Hi; Thu, 16 Apr 2026 23:29:13 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KbhUdSfOOn1VKPYFqPZIY84jxMwmeXBIX+eQdeiL/Jdm3UcBKim79MbMP1FIQTFlm6MPqCyKPThkFi18hW5+pa5332I1Xls34TMhXnYINtjqQJCp54FMXMScepNgB6cvlXvPS3sxWC9ukX9+4RIvVQukaqGMW765OHGX56fBQiievTfMImJwJecfg1bAc96M14B04fpMUAYJCX58SkRYyXEzypWx6NOYC4o5gCzamqliQQdRKFLOVGwAEv6Wbik44NTZkUO2V/YPZQkLywFaFGXd8w86ARZkfYC7dmCx3Z/5E7qeWbWC8x/evNMoarA8Ijs7HxfUKDFW3bOg7x8mzQ==
+ b=QCzjSWUNtIK2Z+Hrxvql4B1ySpJsuTDe+3k65k0x23CObIvo1+CT2bRLsF/2x9nA81jniukZDewujlFm2zzGhHrBVR5O0sntI9xbSAJIzF0EafOjRBJB2U1QRiyz9PFcgKBRqRGAt0uDkvpxKq/AAV2bT47GpeZmYKlEuRvN1szYCtM8AwJmBJTtX1+CwvnzQ0xXq91iGlL0KoKG60qLO5GOHLqbIS88EioDTmNURjMtmPfMTB7ToZHys+SELlC56unNIklEliEugufE5txHZDeQIQHQ/zTm0oyO/FQz6zGZj3xBqQdtfbzr8DFk1Rq5AWYD5+gze+H/LqXufEAgwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KEUjXRk4iE9d8ctmz2tCFC3e07+/K/C+t92jIjXHoRU=;
- b=ZZrKNGib0NjgrkcQOIojLYD7Wdsu52Ww9Kv0HhW0kWme8ixCdA02zhcgciuzkeQACBR53KOKq3zms0/1eBxjsERcX6dK+NXSQ3AXXCiq97L1zaXvDXgYxnqOxa2eEfKo5hXJG58lcU2JSwoF3K1y6TWDXymmYJnhWfRn9gk6UWF6lfI8JPxS9seE4ep4xdw0+0xqATl+VJcOSoXwtpzRb//pXHAVK/4YpRdXSsexdTw/KRwyXTUZZnZWJTmMBrs+mP/pbqnFpk+cZS3NTZcwYzhQ7HdWM/2uzNYgAu7gj0ev9/qIdvGSLxMd4JFc7pdPPSiXrVwv8iUXl7dCMKejVA==
+ bh=Wdn49wxih/GxlQRPCZsSv0ZU4aHVolZYhvwrQewYITs=;
+ b=Up0E0Kpc8/zxMzTGrcb1dAOPNmxNhgdg3StXvROq/+2gsG7h+SQkYZpqaONJIUWhGYIfzVSG8HtGr8M/um73R3GImC1YXKO1ur0fr/3FcIXbv2fyXcEEoXoy0K2Xj0oZslN1qsKsSmd4vx9lU3bpE+0iqNfKzh490uoLeGo+q1llNnFoOmHnW7DV+4n6s2ljum/g4oM2PaVSFyuO76swsnc1G5yeWUmnwS/qpXDpFlu0S+FxEJM/bGmQMCmzQ78+fe0Q7OOc4iUY3mRu0+iDQMNAsGtzOEcOR4lJJXzAv0XuRlKGZaM5k8/Muits+2UczpImYFB5xeJq9ZW1klVufA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KEUjXRk4iE9d8ctmz2tCFC3e07+/K/C+t92jIjXHoRU=;
- b=SLkG15UQ2HmJIwaP6zRHY1modBJdS4y+83KmLsFZdBTA3yt0netsH/IjAtJA+dIPUatcM3H9oK7ZtXiYt1/G9XayIZAbP5VK8GdOT7q/2Rv3MjfnqyFKb5C3kSFSu5aIYJ8JoorD4woiNmlaYGjwHJeep54Fv/xbsXoYL+ynq4k3QM2P6JNHHNLt4WTy1W3BZ53urOzwowaInDpj5KhujALMo9kKUbMLXsxNG8qNJPE8QiqaoGzPEWFl6HX1CQ+m/RySUqD86DGH0aBCCLH0Ad+e4z5WxVyN3uwM1D8iNGSVyN2zhLtSCyuNXEpWYoGxJy7936o69fe02YFpAFLelw==
+ bh=Wdn49wxih/GxlQRPCZsSv0ZU4aHVolZYhvwrQewYITs=;
+ b=lDfG6Xq9Tay7J5XBdLULmXLsGjMEGZrvfE5zyyUCE7tDAXpFjDHwBUaLzu9vxBPa660H/qC3i2n/o2QKtU4e/ucy5lphoYWICFX60GvLfabpEnFxG1qAc8Z+YjeKnya/x5AXGjL8XhproQFbTFJzrVZpHGUa1rP44b3+pxAxi0ggEgvczPLQUwTgZ66OuYAgYuZJ/BB9fdyqG8RAlnLP/IGcQT1vOKYIXxB5bCspBs3YlIlN00fKwB6nxurpAUQG/q0vn9KUWOdB0cWtwrjvGeQ5E8qluOvZEuEYZ+P2fHBd+mcJT79NSaIra8eJXSktckBQOtjQvC2l2BN/13cfmA==
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by KUYPR06MB8675.apcprd06.prod.outlook.com (2603:1096:d10:93::13)
+ by KL1PR06MB6299.apcprd06.prod.outlook.com (2603:1096:820:ce::14)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.25; Fri, 17 Apr
- 2026 03:28:39 +0000
+ 2026 03:28:57 +0000
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9818.023; Fri, 17 Apr 2026
- 03:28:38 +0000
+ 03:28:57 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -54,13 +54,15 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  list:All patches CC here" <qemu-devel@nongnu.org>, "open list:Block layer
  core" <qemu-block@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 00/21] Add SSP/TSP power control and DRAM remap support for
- AST2700
-Thread-Topic: [PATCH v4 00/21] Add SSP/TSP power control and DRAM remap
- support for AST2700
-Thread-Index: AQHczhpHdueeYCsr+0KxqBKmTjL7fA==
-Date: Fri, 17 Apr 2026 03:28:38 +0000
-Message-ID: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 14/21] hw/block/m25p80: Implement volatile status register
+ write enable for Winbond
+Thread-Topic: [PATCH v4 14/21] hw/block/m25p80: Implement volatile status
+ register write enable for Winbond
+Thread-Index: AQHczhpT9wtBbTDpD0ylh+liRbo2Cw==
+Date: Fri, 17 Apr 2026 03:28:57 +0000
+Message-ID: <20260417032837.2664122-15-jamin_lin@aspeedtech.com>
+References: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -68,71 +70,71 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KUYPR06MB8675:EE_
-x-ms-office365-filtering-correlation-id: 7ab94bce-6db9-47b9-4380-08de9c316a78
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KL1PR06MB6299:EE_
+x-ms-office365-filtering-correlation-id: 3a34299c-5297-4b2b-cdd9-08de9c31759b
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|366016|1800799024|18002099003|56012099003|38070700021|921020;
-x-microsoft-antispam-message-info: hZUtwKFEfnw2WEYuLp+w/IAK3iqcCR2TcuDr2EmU7bCK/XLS+LhHGYEVzxiLRgwq68slEPcaQKoO0XEsabslqjW5bCKTSd2sXMQl3DNeWEWdMSIMduFcQaJtGomDnMbQMlIEtrAdt3aa2BI1xVo6TiUoqVIQfU0zi/lvMBwIVMOmYnSJ2sNwuLEXs3iFvNqWbbyEEZuepUS6zalmWLkeorzO0klpTkiD6EIg8nOAIvrt7D/zlw0vZ87xjUrQ+g/hZ/g3uTMRegs6InJDRl8rfThvaszP29OOSLpBahMC/JA1zIO26c4qflGKa1bspIVUN6dBAvLc2H2PJ5e2om1Cxk6iUZjkbm05o1Y2Wm3jn85KQm9DjCRwsYA857STjR8gfw0XngC/7b1op9hXPqU/jYPBik5Q9A6m5hysWoT6aKK4aSpcQedpqLa5kf+NLvBkpbqszyDB1L2tARBr7BpjhHeQ6amzHWgbM/HZvxXef/dNz8j84xw84rjIwCcK709TnHu+o4YjVzTcopLNBfvrPKCnH9KrTllp1ooXE2uCLX9JC9u4mUJ1rrc8/FcTICP8z98HYRU9kYwP7h+kAZxYERvGaNnkpEoLARfpGHuXDNb6R+VD5jel+Vj0wwjtk1ZcWGeTX2Ysz0PZtmZdQRFVEOjOkhnRRyX4XYW8Rn0edcDknV7qoGnYVgG870nmJkRAg8SZq7Rj6DJr1EUKnrwn3BSMcZ3SDRGuOGxcyEZJZVYmSZoQdfkcf54uaM2eB4UrIwLK0qLI+NmTF56K4UEN13gkdToUh++bNStulZaT1KQ=
+ ARA:13230040|1800799024|376014|7416014|366016|921020|38070700021|56012099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: 8/r4B8kwKyYbi7STmS4cywDxC7AIDChQ8r12NWcukwEm6oAfB1ZMR+9d5aXTeavxTFQSXFY8FvE6Tzavn/SE6MvVelaT/YzdjKKMFWThmiX0JBNNGZI4ksRDBuX4EW4STQriMhrA199o8ww90etrbngQieZ/jh3lhlR27x85tGZpfoX1SO42/E2qZ4uPrswEh3Pw8NRU0u+vkSZam3tiY4yMUo0ttIIovCwvFDI4DORjXub4We5Iw/Gqzmh59sFw0ol6+tgUgqKyRiGSIMFi0hBFvvyrGIce9xfkHTgCjN3VdXq6/blaOk9OL4EVR8hpLqBF3CsGcSdol0lDEldk3g3yW/vSbAZXgkxTPmr01MhXUUD+18rTb70zS9Ykwn9YUv4lNTNSV+bnGEg/dGHeegvZDFf+pRauzvQT+ziaVgqIvpOO5klQDJ2RqMmppNXxMipG7ojq916DTE6MVE0KiCKw7pTLn+2nVndUnR3aihKFv3SCyrx9qjqyJWkdWXNSxiPQ+zDlmpq1iMjGqaMuQe1Q5fvHjY/xaIVMd8m/227ulGhDkxyQMatArkNT0qMEiJk5FSXxumz9LQpvAdGMAHYP46DZqW4Shbs9TGqAn+2Wgr8Z5y7hdmnpJLPPK6VQoGJ2AfAbsFYIeV4yS4trVsIo4Tof0fxtZ4knQM4RvwzQFVaQm3FkEIx/8DEFXqP3vX3qp1LQQFM6LRGXUwHCN7mqhMnp0McqRCfd/E4z/aSBtddpINF7kZM0A8uReTDPX6JVT/Wuj0fszyXk1IA8ZJJ/AW5gXbimJh84ld0YcD3efzaYEYI55478l/xXuqSP
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024)(18002099003)(56012099003)(38070700021)(921020);
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016)(921020)(38070700021)(56012099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?l/dJLl4C6kBfGy0rT0kT303vcDnxfKtt+I34bzdLqwbmIwgWr0ny1MwW5o?=
- =?iso-8859-1?Q?+7R9epUF+l77EiKqPZ0ybhdcK3mib9llU2K8m2OkH/bal0PuIyBU5W0NnK?=
- =?iso-8859-1?Q?UPotVPjUmNige8cNP1oQ/KAJDR3P5ypgpQiv/e+IhUkUMH+m3T19SmX7Vz?=
- =?iso-8859-1?Q?Ee7nsgrWCfHiJQUhJM5+BdvlaHfLD6LZRC4r0W4B9IM5dPq4iMwMOPqejd?=
- =?iso-8859-1?Q?vnWi9YDe8wJViN+H2NvZA6kj6htYq5o+r2Tv7ZJtV6sdodnsd0MYWoAxOV?=
- =?iso-8859-1?Q?p0jmolqM95AXBX2wn/ly56tdSEbVX0HWOzFJU0TfjZP1hzFoz8K4hH/M0E?=
- =?iso-8859-1?Q?y/FuxXAxeVk/jv6UIzWktZgwTcF1aTNWobeA4cDkxd4Gr/bkNmeNuGG+f8?=
- =?iso-8859-1?Q?yWVU9Xnk7zCEdlOOf5oM7XUt9cn7N9Bf7aIWtNXmllVipE+Q5sXKiOE8pt?=
- =?iso-8859-1?Q?1xJ4g69+vaVsIVWV2rJjLZxwcAT57AFBx1Y6dxZrw6IY7MSq8g0++2sb/+?=
- =?iso-8859-1?Q?TBP5yb/0fWglms97oIb23il+iim4vM9FLPg6vHNx4U1sCdyka5RIuFZPev?=
- =?iso-8859-1?Q?u09zp4MFo44z7cOfcCZno+KW1hXHcme2/A9ecU51jp75lMb3WN+D9S78PB?=
- =?iso-8859-1?Q?lXN8fgeBOW+EFMg8YV7WPdAjyvKfekrgJdxAop9YHFliNPl+fzgv8kjV4i?=
- =?iso-8859-1?Q?Iqv+TrasFHglNoCwFB+yy+7e1CC2l8+BSwlXydpnPjKJKK82sLzAxWRmfw?=
- =?iso-8859-1?Q?g9S4WetW9YMtksHhkJBNElE8OBqPaLo3Naeo/zta/tIObSjV78ZsaYH61O?=
- =?iso-8859-1?Q?6gi5+of84Q3QLEG0Bp0p3Z6DSKB7JfZe7QmLTjwzWdZYBdyNKMAJVbrix7?=
- =?iso-8859-1?Q?eZsHcizannj7aOImFpxIzSuDmTlHmLgPT53sFGta5gEK1H6SwUfuj9raMa?=
- =?iso-8859-1?Q?2ClP/DWU7mqJlZE9bxoaCaOe34GAvzr/Q5+hWK/4QYE9GRhsZ/aNRu5RD4?=
- =?iso-8859-1?Q?JRlGnXfUtHOb/2JlPoc5TDJP58cCVayETaHhCvr87gLFFlnxT/EbcTTZvX?=
- =?iso-8859-1?Q?Ii7nxgZRZ35uOCCIGe2UwMHiD6kcHyt0Ka6nUOazsa6GNlP11iUFZ2nbkq?=
- =?iso-8859-1?Q?t9meWH9jjxR0+ckGCIesgE+dZmhgyDHvR2u3nzKhe0lg29125BGOeKFoF2?=
- =?iso-8859-1?Q?Ow7bpiHek48FIlSknNvXDgKc6A+ByEDxg4yvw4ASj4xU6lkHdlJaK/F8cB?=
- =?iso-8859-1?Q?dY/MpUtDGud1DcaTn63Ry7F3V8ddJOzvc2L9c+tQVtv9cz5WBPuoxiU+Rr?=
- =?iso-8859-1?Q?wPZQ8gkI1dOwAlC8e+M3mFvooo8jjAkKB3lo1lZS0fFNXWn4PjOCXUOQbB?=
- =?iso-8859-1?Q?fpp8qRaRmpOChDL4MhcnYyqpRWjyb8w8taX5tsQTvqdWP31EQo60v7lbDu?=
- =?iso-8859-1?Q?mRNXxu/4ec9CL7XVPdI9Ib+5Ed+nAONtKqcALBY9NJjLr/1L541207vffD?=
- =?iso-8859-1?Q?lSVG5NO+yPlnBqb6qyrRZw5YZXvDc3Gq0xooa4DOo9PEIZgBT2Yln8CjQg?=
- =?iso-8859-1?Q?47f8F/067bxTukxoAck2+RTnJDbFXb4FMBwWLC8A7BwmYz6sgHMEUc85O0?=
- =?iso-8859-1?Q?OpV/s05ewg96/01UrNsIuMNuKsi8sOYhz1YbIkegt2jI/UVh2O7zfAc42r?=
- =?iso-8859-1?Q?MXpf5dr9E9ckux8Yd5mZ1NflE0r2HcaBklnxwap100+JHhG7zKPiYhNE9o?=
- =?iso-8859-1?Q?5TEiMgXp+cyleHqaDy17hGUDdJUprAk27119ZSUsy5kUZdugrMwjGxZmEz?=
- =?iso-8859-1?Q?wUjZkKhRNA=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?XEPFZGbJTGJcGLgQR5zRfF2no6H5tB1c4dy5t8s5SSzlt4LSQ7LHM2oNU/?=
+ =?iso-8859-1?Q?hq/EL8yo4MOZmgxMKjdVIwGd4wEjwehCSNWHQqDxO4qBROpr7HGPiQ6hyX?=
+ =?iso-8859-1?Q?oL0q9lY2fDZDl7ZEJKYk5z8YJ9UIQiOKCWd/Lm8inlsRJmIL+H3S9ipQJe?=
+ =?iso-8859-1?Q?KDREe1oEXlqa2F8kxlTng5VKGwdkzBCTj6SYNrSJUEBsJYiutquNJmvtli?=
+ =?iso-8859-1?Q?U/ZsicE35HNrzvkerzvdoEbQ8kK8QpOV9+6DDRmjLE4yvkCpZvUznjWPWY?=
+ =?iso-8859-1?Q?ueXzKQ8pr43YcHgX3N7IwuUoyVcsog/qUgqwZr3JWaTQp+UfsLhqKTSWXH?=
+ =?iso-8859-1?Q?WIOPVlxHSf4uAQ8z0/Ur5wy0s9/IKjwv9HxblRu/EEP4Ga8dZlaKkt8sRr?=
+ =?iso-8859-1?Q?lT4rRSMp9MaUBgP0SoNq2++eiXBMWRdtiG389jxHA7J7KWYXZeEmKyewKy?=
+ =?iso-8859-1?Q?uieRkYG9N2wdscz1M3qw7PzJutvl/pvqQ0pjGqVYTEgmW+RlRNJrNZ+BYs?=
+ =?iso-8859-1?Q?KPz1hQsM+3vYXpCf/z5PSVLhd+KnPyFb4uz8lvQYNBBPL+nwF1VcPtqHpk?=
+ =?iso-8859-1?Q?R0docJWHdY54rb7z2+6+RwlYbCgla8HcJXcDFwDaAVn3HKamyQiRJJbSVo?=
+ =?iso-8859-1?Q?4ZHJ4sIkHU4avCEaVyv6qdriDmdh7PQRF07gOJWd0PSBYvACivnEulgQd2?=
+ =?iso-8859-1?Q?slhsMfPAyaAjSYnzxINL9n6ORKXbIyGiVH04ZbNXwWi9DSHzi8IgJ7YdDq?=
+ =?iso-8859-1?Q?KBwFmw9YFcQjfXBKbgVHUMU8ywBGo5jU0PWBVFxqTAsrwSoGNDzQcFDgqx?=
+ =?iso-8859-1?Q?eK+SMeuzK/Q0EahnFO1zRyVX9kJn/m9J9NvBlxWBH/4DVScq9Un1CxhPWJ?=
+ =?iso-8859-1?Q?gwXVmGNxtaDTDAHnWJgfLlU72c9PmexNbhzUB6q8Ly7I0fvIsdYo6+DJRs?=
+ =?iso-8859-1?Q?0IPjnzCODsUOjv3WYn3JO2qVQs5Fh82Cv6q83LOpFhL16hhFUkQrL7YLkN?=
+ =?iso-8859-1?Q?dNrWIt8ENsQswgTspu0mgcruRzhKsG0I7jLhkvxez+QRTTUAohB6tEkxdb?=
+ =?iso-8859-1?Q?BMRyoIbxcQDO3GKRuAVvg2DFkJsFZfFsC5LoykpPKMZbvJGkt80S5Urrfg?=
+ =?iso-8859-1?Q?lXT6q5hgFY7VTwuYb0d50yXwVMwU5ZeOli7Fsvg8rXmLbgqT8tz4tNDoEJ?=
+ =?iso-8859-1?Q?X6biR/YgHUKSt3WZgTg3Z5VoqpWFrUSXgTuhedeSLptEHeNIfXHQeOqSWs?=
+ =?iso-8859-1?Q?0dPvdvwK4tju2RirNbwrOY+0umvFlaHEJx8xP+tw/QJk6+jTYkMofbfy4Z?=
+ =?iso-8859-1?Q?n0b7jBEFXNNj1cKWjQaepC8QflemadE3KbEGlQtJxw5gHMH83zthuhEsMK?=
+ =?iso-8859-1?Q?T35928JcHq6dMTMkRhuuRBGvxHXamVjPdwQ9dtjLPrJulaQNUCWGmhgOXv?=
+ =?iso-8859-1?Q?C7uUlFOrzRnmliqHHbDMb5ekjhnT67zwAG5laGKSEr6m+BY5Xmr8f4k+U5?=
+ =?iso-8859-1?Q?iHqNgbUJJTfIFMutnkMTcrSg/XK99yLZlFfPZq8rg5PIEsxma6TCXuXJHg?=
+ =?iso-8859-1?Q?J3hmF9USqx0hgCKA7zOG7KHYDh/jSDoUCmBpuRK34bQPUqD8YYmwJjxDkL?=
+ =?iso-8859-1?Q?Z2Vbnxpl0huVoD+FP0ba7VAfva7mUyEZeWp3/M1IeRIEdqzUSSaoD4n4li?=
+ =?iso-8859-1?Q?72Ts25T28+Gd0p4FnC3jS2mPZrVgG54ObpFCu5H8XMgCXQuvl73DS4Oi4q?=
+ =?iso-8859-1?Q?0VSMUSjAqZfhwDjVf05vvxuGg9gzqzavC71sEmh6m0uuFdrDbY/eZUUC24?=
+ =?iso-8859-1?Q?pTid2pgIZg=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: mj+77wiwZ7Q4fwzrFZ8OBAsajltM1V5nAKSFAY+NmULrhaWEjzRe9hm5XFVlO8FVYVU9LnKpPQ5jxlHCUpWA5Lvf6jQZ9e2Cq1i43ryUyD4ErWNBjpINGJM348UZoZ0D8ZWpJAfiXSiBNrKIIKu9Y0H7KpegqOcxJEc/EKv6GfqcJNfnAFlxbfi9XGj91pOSiIA9d788x+Z2Em9pWGWYTc7I5pvJsnUFYXeOenmEPo1bWCrVTZeHEBEY3cwOIa6LGOm2NgmYZIwS7xeO01AUDRk+vBv+PFGsvSwxfZiAK7mofcmqdXE0VzRQ6T3Hyo5mAnJXwul38E3pvgtJbAVkVg==
+X-Exchange-RoutingPolicyChecked: c1vBfhesbAgO/jPeh7n6RYJRalhdbXcUxZ4F8YHakTIEyqYgzNkGJyZfpd6AJrKtPGzISMXgZSuFJ9OQ3TouAvXCOB0+Do1sotJKECG8DTPLk26zNAdHyrXhH3WLqE52MnNhz+RaXYW5zfi1aYB2Pf7Vr4gkdhBr8kOQy+cW495W81ygRompjAd9aer8ARn+9RhKHUa4MwU2u1GDE6vFwAjrcuQ2WxW6On0w7dGGrKJLr0En7//1njTE/NwbU89XczS8JvYOLcKsstvHO39q+peE9IcmqYVy5vYI2HahSTG/kWdU0nztM7fGd1c0JMVUIFXpSCVq7F1Sf94jZZiSQA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7ab94bce-6db9-47b9-4380-08de9c316a78
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2026 03:28:38.6276 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a34299c-5297-4b2b-cdd9-08de9c31759b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2026 03:28:57.3111 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uZ9KRyzR+g6a/GsbyGy0sb33kO8ojPTNFWwleQFWBcfHibgVzJL1Gzj114VcmE1jehJjJJwnmiXdCylfPGS38H5RWVTug1S67NDZFud575w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUYPR06MB8675
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+X-MS-Exchange-CrossTenant-userprincipalname: uRJTjF5zs06hGXEN6/qj9vrambC7wqE+1ebJUPBTXt0sbhsBDXAIYias7PD81oH+GWzMyXshTb5L2F0GXJug6f4TK3DTfgjbx8eoSIVzf4E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6299
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,88 +151,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series improves AST2700 platform support by aligning SSP/TSP=0A=
-power and reset behavior with hardware, and enabling DRAM remapping=0A=
-required for proper firmware boot flow.=0A=
+Winbond SPI NOR flashes require the Volatile Status Register Write Enable=
 =0A=
-v1:=0A=
-  1. The changes move DRAM/SDMC initialization earlier to support memory=0A=
-aliasing, add DRAM aliases for SSP/TSP SDRAM remap, and implement=0A=
-SSP/TSP reset, power-on, and remap controls via SCU registers.=0A=
-  2. With these updates, SSP and TSP can be booted via PSP and load their=
+(VSR WREN, opcode 0x50) command to be issued before updating volatile=0A=
+status register bits, such as those accessed via the WRSR2 command.=0A=
 =0A=
-binaries from DRAM. Functional tests and documentation are updated=0A=
-accordingly.=0A=
+Currently, WRSR2 handling only checks the standard write enable latch,=0A=
+which does not fully model Winbond hardware behavior.=0A=
 =0A=
-v2:=0A=
-  Fix "make check" failure caused by both AST2700 and AST1700 realizing the=
- same=0A=
-  TYPE_AST2700_SCU model.=0A=
-  =0A=
-v3:=0A=
- 1. Drop "Move DRAM and SDMC initialization earlier to support memory alias=
-ing"=0A=
- 2. Support SPI/FMC FIFO Mode=0A=
- 3. Add unimplemented devices=0A=
+Add support for the volatile write enable mechanism by introducing a=0A=
+separate volatile_write_enable flag. For Winbond devices, WRSR2 writes=0A=
+that update volatile status register bits are gated by the VSR WREN=0A=
+command. If the volatile write enable latch is not set, such writes are=0A=
+rejected.=0A=
 =0A=
-v4:=0A=
- 1. Introduce Aspeed2700SCU subclass and separate from generic SCU.=0A=
- 2. Add separate reset handler for AST2700 SCUIO=0A=
- 3. Add AST2700 SCUIO RNG control and data registers=0A=
- 4. Share single SCUIO instance across PSP, SSP, and TSP=0A=
- 5. Fix AST2700 FC hardware strap settings=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ hw/block/m25p80.c | 36 ++++++++++++++++++++++++++++++++----=0A=
+ 1 file changed, 32 insertions(+), 4 deletions(-)=0A=
+=0A=
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c=0A=
+index b8a2543c0b..5bb8b8efa9 100644=0A=
+--- a/hw/block/m25p80.c=0A=
++++ b/hw/block/m25p80.c=0A=
+@@ -438,6 +438,11 @@ typedef enum {=0A=
+      */=0A=
+     WRSR2 =3D 0x31,=0A=
  =0A=
-Jamin Lin (21):=0A=
-  hw/misc/aspeed_scu: Introduce Aspeed2700SCU subclass and separate from=0A=
-    generic SCU=0A=
-  hw/misc/aspeed_scu: Add separate reset handler for AST2700 SCUIO=0A=
-  hw/arm/ast27x0: Start SSP in powered-off state to match hardware=0A=
-    behavior=0A=
-  hw/arm/ast27x0: Start TSP in powered-off state to match hardware=0A=
-    behavior=0A=
-  hw/arm/ast27x0: Add DRAM alias for SSP SDRAM remap=0A=
-  hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap=0A=
-  hw/misc/aspeed_scu: Implement SSP reset and power-on control via SCU=0A=
-    registers=0A=
-  hw/misc/aspeed_scu: Implement TSP reset and power-on control via SCU=0A=
-    registers=0A=
-  hw/misc/aspeed_scu: Add SCU support for SSP SDRAM remap=0A=
-  hw/misc/aspeed_scu: Add SCU support for TSP SDRAM remap=0A=
-  hw/arm/ast27x0: Share FMC controller with SSP and TSP=0A=
-  hw/arm/aspeed_ast27x0: Add unimplemented Privilege Controller MMIO=0A=
-    regions for SSP/TSP=0A=
-  hw/arm/aspeed_ast27x0: Add unimplemented OTP controller MMIO regions=0A=
-    for SSP/TSP=0A=
-  hw/block/m25p80: Implement volatile status register write enable for=0A=
-    Winbond=0A=
-  hw/ssi/aspeed_smc: Add Data FIFO-based flash access support for=0A=
-    AST2700=0A=
-  hw/misc/aspeed_scu: Drop noisy unhandled read logs for AST2700=0A=
-    SCU/SCUIO=0A=
-  hw/misc/aspeed_scu: Add AST2700 SCUIO RNG control and data registers=0A=
-  hw/arm/ast27x0: Share single SCUIO instance across PSP, SSP, and TSP=0A=
-  hw/arm/aspeed_ast27x0-fc: Fix hardware strap settings=0A=
-  tests/functional/aarch64/test_aspeed_ast2700fc: Boot SSP/TSP via PSP=0A=
-    and load binaries from DRAM=0A=
-  docs: Add support vbootrom and update Manual boot for ast2700fc=0A=
++    /*=0A=
++     * Winbond: 0x50 - Write Enable for Volatile Status Register=0A=
++     */=0A=
++    VSR_WREN =3D 0x50,=0A=
++=0A=
+     RNVCR =3D 0xB5,=0A=
+     WNVCR =3D 0xB1,=0A=
+ =0A=
+@@ -510,6 +515,7 @@ struct Flash {=0A=
+     uint8_t spansion_cr4v;=0A=
+     bool wp_level;=0A=
+     bool write_enable;=0A=
++    bool volatile_write_enable;=0A=
+     bool four_bytes_address_mode;=0A=
+     bool reset_enable;=0A=
+     bool quad_enable;=0A=
+@@ -897,6 +903,7 @@ static void reset_memory(Flash *s)=0A=
+     s->pos =3D 0;=0A=
+     s->state =3D STATE_IDLE;=0A=
+     s->write_enable =3D false;=0A=
++    s->volatile_write_enable =3D false;=0A=
+     s->reset_enable =3D false;=0A=
+     s->quad_enable =3D false;=0A=
+     s->aai_enable =3D false;=0A=
+@@ -1305,8 +1312,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)=
 =0A=
- docs/system/arm/aspeed.rst                    |  42 ++-=0A=
- include/hw/arm/aspeed_ast1700.h               |   2 +-=0A=
- include/hw/arm/aspeed_coprocessor.h           |  13 +-=0A=
- include/hw/arm/aspeed_soc.h                   |   4 +=0A=
- include/hw/misc/aspeed_scu.h                  |  10 +=0A=
- include/hw/ssi/aspeed_smc.h                   |   3 +-=0A=
- hw/arm/aspeed_ast27x0-fc.c                    |  22 +-=0A=
- hw/arm/aspeed_ast27x0-ssp.c                   |  67 +++-=0A=
- hw/arm/aspeed_ast27x0-tsp.c                   |  64 +++-=0A=
- hw/arm/aspeed_ast27x0.c                       |  22 +-=0A=
- hw/arm/aspeed_coprocessor_common.c            |   2 -=0A=
- hw/block/m25p80.c                             |  36 +-=0A=
- hw/misc/aspeed_scu.c                          | 324 +++++++++++++++++-=0A=
- hw/ssi/aspeed_smc.c                           | 113 +++++-=0A=
- .../aarch64/test_aspeed_ast2700fc.py          |  29 +-=0A=
- 15 files changed, 672 insertions(+), 81 deletions(-)=0A=
+          * combinations of the two states are called "software protected m=
+ode"=0A=
+          * (SPM), and status register writes are permitted.=0A=
+          */=0A=
+-        if ((s->wp_level =3D=3D 0 && s->status_register_write_disabled)=0A=
+-            || !s->write_enable) {=0A=
++        if (s->wp_level =3D=3D 0 && s->status_register_write_disabled) {=
 =0A=
+             qemu_log_mask(LOG_GUEST_ERROR,=0A=
+                           "M25P80: Status register 2 write is disabled!\n"=
+);=0A=
+             break;=0A=
+@@ -1314,6 +1320,17 @@ static void decode_new_cmd(Flash *s, uint32_t value)=
+=0A=
+ =0A=
+         switch (get_man(s)) {=0A=
+         case MAN_WINBOND:=0A=
++            /*=0A=
++             * Winbond requires VSR WREN (0x50) prior to updating volatile=
+=0A=
++             * status register bits. VSR WREN does not set WEL.=0A=
++             *=0A=
++             * Accept either standard WEL (0x06) or VSR WREN (0x50).=0A=
++             */=0A=
++            if (!s->write_enable && !s->volatile_write_enable) {=0A=
++                qemu_log_mask(LOG_GUEST_ERROR,=0A=
++                              "M25P80: Status register 2 write is disabled=
+!\n");=0A=
++                break;=0A=
++            }=0A=
+             s->needed_bytes =3D 1;=0A=
+             s->state =3D STATE_COLLECTING_DATA;=0A=
+             s->pos =3D 0;=0A=
+@@ -1332,6 +1349,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)=
+=0A=
+         s->write_enable =3D true;=0A=
+         break;=0A=
+ =0A=
++    case VSR_WREN:=0A=
++        switch (get_man(s)) {=0A=
++        case MAN_WINBOND:=0A=
++            s->volatile_write_enable =3D true;=0A=
++            break;=0A=
++        default:=0A=
++            break;=0A=
++        }=0A=
++        break;=0A=
++=0A=
+     case RDSR:=0A=
+         s->data[0] =3D (!!s->write_enable) << 1;=0A=
+         s->data[0] |=3D (!!s->status_register_write_disabled) << 7;=0A=
+@@ -1824,8 +1851,8 @@ static const VMStateDescription vmstate_m25p80_block_=
+protect =3D {=0A=
+ =0A=
+ static const VMStateDescription vmstate_m25p80 =3D {=0A=
+     .name =3D "m25p80",=0A=
+-    .version_id =3D 0,=0A=
+-    .minimum_version_id =3D 0,=0A=
++    .version_id =3D 1,=0A=
++    .minimum_version_id =3D 1,=0A=
+     .pre_save =3D m25p80_pre_save,=0A=
+     .pre_load =3D m25p80_pre_load,=0A=
+     .fields =3D (const VMStateField[]) {=0A=
+@@ -1837,6 +1864,7 @@ static const VMStateDescription vmstate_m25p80 =3D {=
+=0A=
+         VMSTATE_UINT8(cmd_in_progress, Flash),=0A=
+         VMSTATE_UINT32(cur_addr, Flash),=0A=
+         VMSTATE_BOOL(write_enable, Flash),=0A=
++        VMSTATE_BOOL(volatile_write_enable, Flash),=0A=
+         VMSTATE_BOOL(reset_enable, Flash),=0A=
+         VMSTATE_UINT8(ear, Flash),=0A=
+         VMSTATE_BOOL(four_bytes_address_mode, Flash),=0A=
 -- =0A=
 2.43.0=0A=
 

@@ -4,63 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE58F43688
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 09:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41797F43688
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 09:57:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDfnc-0008Ll-0M; Fri, 17 Apr 2026 05:47:44 -0400
+	id 1wDfwl-0002Px-M7; Fri, 17 Apr 2026 05:57:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1wDfna-0008LU-Mk; Fri, 17 Apr 2026 05:47:42 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1wDfnY-0007K1-18; Fri, 17 Apr 2026 05:47:42 -0400
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id B5A8D596958;
- Fri, 17 Apr 2026 11:47:34 +0200 (CEST)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id vp9EOE1QEoKD; Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 27782596957; Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 25224596954;
- Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
-Date: Fri, 17 Apr 2026 11:47:32 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-cc: "philmd@linaro.org" <philmd@linaro.org>, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, 
- Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>
-Subject: RE: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn structure
- and dead code
-In-Reply-To: <TYPPR06MB8206FFD9BA069A555C54A137FC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
-Message-ID: <efadd094-380a-41e4-0346-7ba296781968@eik.bme.hu>
-References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
- <20260416014928.1279360-2-jamin_lin@aspeedtech.com>
- <d7e9d943-fd8d-dd48-5a86-e54613c466dd@eik.bme.hu>
- <TYPPR06MB820623725F12A9326E19B44FFC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
- <TYPPR06MB8206FFD9BA069A555C54A137FC202@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDfwk-0002Oj-D9
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 05:57:10 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDfwi-0002hO-Pj
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 05:57:10 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4887ca8e529so3836465e9.0
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 02:57:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1776419827; x=1777024627; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7JBchpr8kdinAWw7FIVLCoqS6Te+38czkXVKjGON3QU=;
+ b=GiGzCcJf6LGmNzYKkv8ZwewIwwQc28xJxrOqP6IFtDn2Ke+VG0uxXkERBTavgnCQGQ
+ jGE4JiELjtoYxbQ+mPArlOHXVh+qtVZma6HPuvbpGUf/yCIluajNxEmis/9nGMHGVDg9
+ fDNWbhwyLLSX1iB2fR5Y4arU6Xh1JlTpVaHjGXHK76sVWY3Jv6pmFporWd/JCwe4w9Eh
+ 8j5OG8X4RB6TwEalNh34KDTEvZnsdKGQQbViEXaMMtfo1pWr9bMclQK5lSgDt52/Wn7y
+ gJ4A2ldb4bzVFqlezAz45xlPFyT+7pESIoyK8xYuKxtfsfRlxs87tpyuUp5eRGDxPQsj
+ fSPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776419827; x=1777024627;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7JBchpr8kdinAWw7FIVLCoqS6Te+38czkXVKjGON3QU=;
+ b=rQj6IwVfX54od9j3oRvPNTlPZu1cjkJXTOyK4ukfzCCbApLs5WXz7KQpilHo8dBKcl
+ v3KibsNZdRW2FL42QLq1UA2Y9mcQhPu3BDjyNLQ0xxv5fAlRD/GZOzU8fokFpLF9ToIk
+ 0Y5xKm936UpBM4I0j26aY221VIwnvv7DUulIyACvLijF1Fz7JF3BQGCWOoWP0AnjCgB+
+ /bmk4lv56mVjkXzRErAYPyrJjg8ZM8RqjBczsXL0aa2zl+z08lPW4YSxFKODyz4hPTNx
+ 9J1vpvVUSpa5LTGlVABCd2Wz50AB2MlgI4Rw3swLj3P0ymgKVAycdHyFI0Tb6PQoL3Cq
+ 6Ynw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+8gqbQ2imJTqxnnRUdcpni2muM6bdzZgUgA+Lg3dYn+d3P8c/cexb+1mwPngwZ9VvjC7jQexOz4w==@nongnu.org
+X-Gm-Message-State: AOJu0YyE9U8bmqAm8a5DcPjqxUGnAWz+fxjMHlTfqmTnOgkrlvBq1o3x
+ UTUZ9O1zLwrdIU3VF+h3Rmw0tNa75MBt+LdqXS0ZazNXa1uF0VYJl7xtJveHSbR0st0nUCGhfxO
+ Ciycztbk=
+X-Gm-Gg: AeBDietupb5X476wjo/qr0iIMLrPZXb3GXfgeNTEPC0Hz8W+GrnHPJ0Jrv2ng5R7H5o
+ lSgdppoeTRnaIhtbcGBE4lmMBZkHhv+gIfbPoyXfTOjTxQDfDHt78Hy52LIWDXHQd+F0XypfN9V
+ 2sIy6BFcbRJPMSr3483zCxldfInVIC9auDXOaPdJuY4/Nfv76UchAJ9C6VnRXuTOWPYHDA2olId
+ kBVH6f8qEwdM6II2Z04MYHTPHEZHzh35pNXkDQdlcXLn7gfZRqs8FF343MQvbQK2ZbFt9to6UZD
+ 23JJKBMLsSBiTBUS/QkTX45M+jckUs3tVHGaiMhDw1N9+TMzaimbYrBSeaPG/lVTTDTtTDjzlBl
+ 6SH1FaVwl/1VSmHRsuglqLGE59/optuiNnqGucPx4oCEpBmzaORQ9q79kJKgfXarm42HYA3Ni8S
+ D7GfcCdPsEl3AO6Gi/jqNuiQaEmln7zgSKNF8ya9pU+temdH0AIcCTU/fm4+p2+w6q93znINKLB
+ 6Fo
+X-Received: by 2002:a05:600c:321a:b0:488:fbf6:ea59 with SMTP id
+ 5b1f17b1804b1-488fbf6ed4amr15370805e9.12.1776419827019; 
+ Fri, 17 Apr 2026 02:57:07 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43fe4cb1682sm3311299f8f.1.2026.04.17.02.57.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Apr 2026 02:57:05 -0700 (PDT)
+Message-ID: <803470a9-5669-4c29-89fb-2c9be4656512@linaro.org>
+Date: Fri, 17 Apr 2026 11:57:04 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] target/arm/hvf: Fix WFI halting to stop idle vCPU
+ spinning
+Content-Language: en-US
+To: "Scott J. Goldman" <scottjgo@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, rbolshakov@ddn.com,
+ phil@philjordan.eu, agraf@csgraf.de, peter.maydell@linaro.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+References: <20260410044726.61853-1-scottjgo@gmail.com>
+ <20260410055045.63001-1-scottjgo@gmail.com>
+ <86D19C52-2A31-4802-ADF2-703D9AE83E75@unpredictable.fr>
+ <DHUW6DNJWPDC.1MEF4S1911AJ1@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <DHUW6DNJWPDC.1MEF4S1911AJ1@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -77,106 +110,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 17 Apr 2026, Jamin Lin wrote:
-> Hi all,
->
->> Subject: RE: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn
->> structure and dead code
->>
->> Hi all,
->>
->>> Subject: Re: [PATCH v3 01/17] hw/usb/hcd-ehci: Remove unused EHCIfstn
->>> structure and dead code
->>>
->>> On Thu, 16 Apr 2026, Jamin Lin wrote:
->>>> The EHCIfstn structure, defined according to EHCI spec section 3.7,
->>>> is currently unused in the EHCI implementation. Remove it to reduce
->>>> unused code and improve maintainability.
->>>>
->>>> Additionally, drop a block of disabled (#if 0) code in
->>>> ehci_state_advqueue() that was never implemented. This code path is
->>>> incomplete and has no functional impact.
->>>>
->>>> No functional change.
->>>>
->>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>> ---
->>>> hw/usb/hcd-ehci.h |  7 -------
->>>> hw/usb/hcd-ehci.c | 11 -----------
->>>> 2 files changed, 18 deletions(-)
->>>>
->>>> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h index
->>>> 0ae8c06331..3aec0e047c 100644
->>>> --- a/hw/usb/hcd-ehci.h
->>>> +++ b/hw/usb/hcd-ehci.h
->>>> @@ -202,13 +202,6 @@ typedef struct EHCIqh {
->>>> #define BUFPTR_SBYTES_SH              5
->>>> } EHCIqh;
->>>>
->>>> -/*  EHCI spec version 1.0 Section 3.7
->>>> - */
->>>> -typedef struct EHCIfstn {
->>>> -    uint32_t next;                    /* Standard next link pointer
->> */
->>>> -    uint32_t backptr;                 /* Standard next link pointer */
->>>> -} EHCIfstn;
->>>> -
->>>> enum async_state {
->>>>     EHCI_ASYNC_NONE = 0,
->>>>     EHCI_ASYNC_INITIALIZED,
->>>> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c index
->>>> 57f930b099..5ea8461f70 100644
->>>> --- a/hw/usb/hcd-ehci.c
->>>> +++ b/hw/usb/hcd-ehci.c
->>>> @@ -1756,17 +1756,6 @@ static int ehci_state_fetchsitd(EHCIState
->>>> *ehci, int async)
->>>> /* Section 4.10.2 - paragraph 3 */
->>>> static int ehci_state_advqueue(EHCIQueue *q) { -#if 0
->>>> -    /* TO-DO: 4.10.2 - paragraph 2
->>>> -     * if I-bit is set to 1 and QH is not active
->>>> -     * go to horizontal QH
->>>> -     */
->>>
->>> Is it worth to keep the comment in case it's still valid to remind we
->>> have something missing here?
->>>
->>> Regards,
->>> BALATON Zoltan
->>>
->>
->> If we decide to keep these comments as reminders for unimplemented parts,
->> please let me know. I will resend the patch series and drop this patch.
->>
->> Thanks,
->> Jamin
->>
->
-> Another approach:
-> We can remove the #if 0 dead code and keep only the comments as a reminder that this part is not yet implemented.
->
-> Ex:
-> --- a/hw/usb/hcd-ehci.c
-> +++ b/hw/usb/hcd-ehci.c
-> @@ -1756,16 +1756,10 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int async)
-> /* Section 4.10.2 - paragraph 3 */
-> static int ehci_state_advqueue(EHCIQueue *q)
-> {
-> -#if 0
->     /* TO-DO: 4.10.2 - paragraph 2
->      * if I-bit is set to 1 and QH is not active
->      * go to horizontal QH
->      */
-> -    if (I-bit set) {
-> -        ehci_set_state(ehci, async, EST_HORIZONTALQH);
-> -        goto out;
-> -    }
->
-> Thanks,
-> Jamin
+Hi Scott,
 
-That's what I meant to leave the comment but OK the remove ineffective 
-code.
+On 16/4/26 23:20, Scott J. Goldman wrote:
+> Philippe-- apologies for the nag here but this is a fix for a unfortunate
+> regression. Any chance you could take a look? Thanks!
+> 
+> On Thu Apr 9, 2026 at 11:18 PM PDT, Mohamed Mediouni wrote:
+>>
+>>
+>>> On 10. Apr 2026, at 07:50, Scott J. Goldman <scottjgo@gmail.com> wrote:
+>>>
+>>> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
+>>> changed hvf_wfi() from blocking the vCPU thread with pselect() to
+>>> returning EXCP_HLT, intending QEMU's main event loop to handle the
+>>> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
+>>> always returns false and the vCPU thread spins at 100% CPU per core
+>>> while the guest is idle.
+>>>
+>>> Fix this by:
+>>>
+>>> 1. Setting cpu->halted = 1 in hvf_wfi() so the vCPU thread sleeps on
+>>>    halt_cond in qemu_process_cpu_events().
+>>>
+>>> 2. Arming a host-side QEMU_CLOCK_HOST timer to fire when the guest's
+>>>    virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
+>>>    because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
+>>>    hv_vcpu_run(), which is not called while the CPU is halted. The
+>>>    timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
+>>>    vtimer IRQ through the GIC and marks vtimer_masked, causing the
+>>>    interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
+>>>
+>>> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
+>>>    indicates a pending interrupt, and cancelling the WFI timer.
+>>>
+>>> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
+>>> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
+>>
+>> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>>> ---
+>>> include/system/hvf_int.h |  1 +
+>>> target/arm/hvf/hvf.c     | 65 +++++++++++++++++++++++++++++++++++++++-
+>>> 2 files changed, 65 insertions(+), 1 deletion(-)
 
-Regards,
-BALATON Zoltan
+I haven't looked at your patch yet. While looking at commit
+b5f8f77271 I noticed the previous a14afa985e3 ("accel/hvf: Skip
+WFI if CPU has work to do") is different in my local tree, where
+I have:
+
+-- >8 --
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bbbd9..1a76c9cf402 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2037,6 +2037,11 @@ static int hvf_wfi(CPUState *cpu)
+          return 0;
+      }
+
++    if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ)) {
++        /* Interrupt pending, no need to wait */
++        return EXCP_INTERRUPT;
++    }
++
+      return EXCP_HLT;
+  }
+
+---
+
+Does that help? Now I'm really confused.
 

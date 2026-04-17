@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A455F8E4AD
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 06:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A76F8E4AD
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 06:27:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDcfo-0001rv-3f; Fri, 17 Apr 2026 02:27:28 -0400
+	id 1wDcg7-0001xc-Qi; Fri, 17 Apr 2026 02:27:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfg-0001pf-1a
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:20 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfq-0001sh-Hi
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:33 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfd-0006kE-6e
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:19 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-488b0046078so2644825e9.1
- for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 23:27:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wDcfo-0006oE-66
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 02:27:30 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-488e1a8ac40so3899355e9.2
+ for <qemu-arm@nongnu.org>; Thu, 16 Apr 2026 23:27:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776407229; x=1777012029; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776407245; x=1777012045; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=uZBK7VnQA184JDVn213bMuprP8pWfTARfJ1pC1t6qzk=;
- b=J45i7XewuHsAUzD/id32G5i9GIgxcC4Hj3t2kWvLqGHY3enc1gTxCmNpy7FjwHtf6D
- XybKErk9OW9Ww5OGOYFa3O+eiCFH03FLEcqBAU/8X6RhwA11BjIILDlewgczJujo6IdH
- 0hwUA0tF92ovJKQgZrcqxWrVqcOtOjOeH/2WgPk3zXFYGHozisMg1iXDtYTiZnoOU18V
- Xz1Ybs+vJfenTRC++ZFHh68nF6egHaI2gi3+AdMwASPhA08G5F8iGS3CPiRMzZc7hrDh
- 4iZDY3SFJEU3n8vXDhy51WFNh26FEEP1uyHA7RKknYFVa9lOoOS1InCu1puP0x4eJKjq
- YTBg==
+ bh=r1aQWtljP4T08PYKYn6pXoqGHAbzEgpMRj1mHWqy4mU=;
+ b=GL0/SMsMcI8+ALM8VnLgVk8gCStL+VEncu6aYsJZO2vwa3KWvPMk+Wu8rUv9JwEzpU
+ AJwHWTI9g5gHT78U4ti99Zjbe3YHrDspiD6KPwSOL9FRO5pnMlyx4fHJDuUWVBcDhlR0
+ IkjR3oTINJ5g93rPAsRPZymOFcuN7SulDQ6P75DFnwngyaaLVEWK7C/zCw4aVkw2zHWv
+ ExXNTnTUQhvw48dXDRP239p8jfJ/7GusIV7wXtnqSMq148WVOLocJ+klcE6ncAWNdwt+
+ Oxruvc4AUrNbiu8wsUj6IrnZ4Zk++JqZijpmrOokuqP6/Iec6q2EgOQDgTqvcq48PFqh
+ IPPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776407229; x=1777012029;
+ d=1e100.net; s=20251104; t=1776407245; x=1777012045;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=uZBK7VnQA184JDVn213bMuprP8pWfTARfJ1pC1t6qzk=;
- b=JO1Rw6ouMTf/1jWgX9AQOrm9N8QZvAlx5TQRP7oqg9zIMrQQVHbf789ckppQ+qvQsX
- NXI7VNhUkpZKKaEuDEn67BEZKpIaD707Hp150Pbp2TvLcI7KJRrnQPvxvPWq1/OKFVe7
- 7Xn6qg8LV6D5QY5CyuWsX+fReKWFi3fDCragcEaYsvtbIiKCeftY1onLN9MTOnzH6m6M
- rp6hvNsaVfrlo0z9JV+ZhmbCWovWIvvDrXHl0/Ncbqvme4Pj4QiZKUF+pZaMwZ87srDQ
- zQRls4/wK2YW30b5PPluxK/cDkSMV912KwKPraJ9zfQ95c9uDOlogjTo7wD0A8Br07DX
- qoZw==
+ bh=r1aQWtljP4T08PYKYn6pXoqGHAbzEgpMRj1mHWqy4mU=;
+ b=K/SOtGkM6O0yzC7Y322ignc4eHgjYURpFmpw1Ke+m0wwju6BKbGN9Hgm+8ll3EmtTA
+ JNlXIJ1jHR+FocJ/eJwpN5dGlYPypD12ekqPuc5rqf9jBsQUGYUpuMgLL2llLOOUA5yW
+ kHQymx/dWr1S2ERmUW18rTQAAvg/52GFSgf/E2nwDM9RqUG8UQZ42BtA0VvfrVpCUdMd
+ UBZOyFE5bRFDH+3oWk9xhzR+ruUIbvsSttZy0JCF/Ijo/xZQVIqWDf8uzr4z75zjLIHa
+ PzZl81ReIitU7p+MCvjcUsQXTivQwEVtRsyw2iqUHDz/MEoF+UXBFXKDnVjZYUDe7Y+f
+ dROw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/hYOtKKiffwYnLJDB+J81MxiFI2L9n71objZ4LA//l9HAB8Edhk6yy9nyZyUUPkNHk/tQHy+au3Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyP1OX/HAlVB2E7KH6ikoB/BvITpH7Pzms7pjDleBpnUgC1l2W5
- xJCW/JFNL7eGWAD+PyseYEtFJC90RHo2uo5bWe0l+N6IgNDxCpgASbtGVtzk5oue0Cs=
-X-Gm-Gg: AeBDievz2ze3nsSCMhLifJjzHMq1tb3ktcZ7w4cEBC8oZ9fE6Wuu22xLTj1k517bvuM
- brpuDSlMvCvdWwpy853nXGizbAd7yfFB7KPqkbzIPixUlKn65Mo3vhU1zl25NYUM62VRHJLZfBv
- epKs6UnqHD5L4bKMSiLD+GQoGR3NM+sQ09mR6UN7mJO0RjvmKyjSgzMOx7Lp4jdRKYU6My4kJXa
- Z66Gw/7IYHwJf6N/wN/3Vu9YKM2RIo0I85eYD+vBZYwon+x/VcFvge5ihls/s4lCYUbGYtlxSDl
- aJTfefy4g21255A6VLP1I+kpok8LPqPuwKV114WgwdzH/ch+jFlR+RN/MeTDERLxQXDnBc1b+B+
- ZnaZlTNqvwjykaogeUGpzEboO/BeC1ajXNc6x0f9e4HshAtEqU3xizYKRWqWfcERxoS9zWqi7pL
- fJNschCsfcoXi9EqgZNpmhAs59qq2JfoBpwnsoA6a+YrGO9/+uMXULsnfu1iF7M5AnS3lsd6vD5
- JiA
-X-Received: by 2002:a05:600c:3513:b0:488:a977:8de with SMTP id
- 5b1f17b1804b1-488fb77a3a7mr18327335e9.16.1776407229345; 
- Thu, 16 Apr 2026 23:27:09 -0700 (PDT)
+ AFNElJ+O0I1IqKHfRIhJuYKDRMMPn/ii22m4OoMx0mYzNuznBcaWdRGL2/I/hlq6PzytjuOyQh+i+WlCmw==@nongnu.org
+X-Gm-Message-State: AOJu0YyEloe6IBUW5a2XU/3ae0Og7XEz0JzNodcgd9e9c2qPRK3VRx74
+ EGB1wL7mwCeEcprf1KG2V6z64ROuRB7Tfbu9f1LB/83MIrEdrzZhJI/lQ49qcxBDtXk=
+X-Gm-Gg: AeBDieuey3J7YwGMvf+BvmwP5fm8V8rYUR24yPQQV6gNDquvnP+qqQb09BO6I+nzDDJ
+ HKkqSp1W0cncsrYYf2LyoBKmx+TnRNCDTYMZU6UMyiZ1CnRFgmpOuF59ZbiCGky4lmlMmfr4ABS
+ QtWpm5kh7wXgkkkj0OJ74/3ZoZ5VngKQQlDp1WTtQUE/OH/0aOsLlvOh9aYt+rwbpEe6NXrEJHL
+ oHTZLxEyc/lkCIXvX94pKruD3PdB20qX4dobDOJXzcvk0sgkmaIb5q0yMv8MIFcL2XMmdQCsxoM
+ MW/itWy7Qj0JOXS31xUqPHSYbH0wpK2i8zk2IKsw8UFlfN4bdTJLNS61ZvFRhHIbqZRYNanfMY3
+ Kej//+ou98k7avssM9BIeEXE9uMcoJtwY8y+DEwcOInAxi3LXBO6oFi663UeDaguFPZpSPbiHNJ
+ LRlz27pTxycoN1LPerJK7TATiuV5GfvtXhNkEhdrCMcU+UNXWimgA0CvkAXIRcajfzboToL3K2z
+ QMv
+X-Received: by 2002:a05:600c:5492:b0:488:b1c7:b432 with SMTP id
+ 5b1f17b1804b1-488fb787a6fmr20210645e9.24.1776407245488; 
+ Thu, 16 Apr 2026 23:27:25 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4cb1365sm1944840f8f.7.2026.04.16.23.27.08
+ 5b1f17b1804b1-488fc0f82bbsm33007075e9.3.2026.04.16.23.27.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Apr 2026 23:27:08 -0700 (PDT)
-Message-ID: <1738caec-dfa0-4d88-b7dd-5eabc075f5ef@linaro.org>
-Date: Fri, 17 Apr 2026 08:27:07 +0200
+ Thu, 16 Apr 2026 23:27:25 -0700 (PDT)
+Message-ID: <9908e77f-2c9e-4337-a2ed-cad837c6d845@linaro.org>
+Date: Fri, 17 Apr 2026 08:27:23 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/17] tests/functional/arm/test_aspeed_ast2600_sdk:
- Add USB EHCI test for AST2600 SDK
+Subject: Re: [PATCH v3 17/17] tests/functional/aarch64/test_aspeed_ast2700:
+ Add USB EHCI test for AST2700 A1/A2
 Content-Language: en-US
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -83,20 +83,20 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
 Cc: Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
- <20260416014928.1279360-17-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-18-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260416014928.1279360-17-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260416014928.1279360-18-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,8 +113,8 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 16/4/26 03:50, Jamin Lin wrote:
-> Add a functional test to verify USB EHCI support on the AST2600
-> SDK machine by attaching a USB keyboard device and checking its
+> Add a functional test to verify USB EHCI support on the AST2700 A2/A1
+> by attaching a USB keyboard device and checking its
 > enumeration via lsusb.
 > 
 > This introduces a helper routine that runs lsusb in the guest
@@ -122,10 +122,9 @@ On 16/4/26 03:50, Jamin Lin wrote:
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   tests/functional/arm/test_aspeed_ast2600_sdk.py | 7 +++++++
->   1 file changed, 7 insertions(+)
-
-This should be patch #1 :)
+>   tests/functional/aarch64/test_aspeed_ast2700a1.py | 7 +++++++
+>   tests/functional/aarch64/test_aspeed_ast2700a2.py | 7 +++++++
+>   2 files changed, 14 insertions(+)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

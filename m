@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6548EF4368E
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 11:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C76F4368E
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 11:03:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDgyg-0005s2-Gc; Fri, 17 Apr 2026 07:03:14 -0400
+	id 1wDgye-0005qq-0H; Fri, 17 Apr 2026 07:03:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wDgyd-0005qd-F1
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:11 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1wDgyc-0005qD-I8
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:10 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wDgyb-0002pV-Tg
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:11 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-43d74086e5bso496826f8f.0
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 04:03:09 -0700 (PDT)
+ id 1wDgya-0002ob-N4
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 07:03:10 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43fe608cb92so265697f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 04:03:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776423788; x=1777028588; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776423787; x=1777028587; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=hHF4jmysHEoMGaoQmGTkv09M59NSp+KdqlbbYIyd3Sw=;
- b=DjLR1kvuiRdUy9dXQrApIcOMUArAcQYTSRQ4ntsIHb4wmJfYQ0nrEDPs0U97megcSl
- nmbb669UbG+SoyhWu1AFoAwvHC4mZI0rgxjNi+VJY60jWA1gjBWFZlpiBsCaSLRL3swI
- qbUtQteuWV6qLwYKrz55hT7HLsggAuPQDb2EqgXV7Iv4NY72utoGsS40gVv5VarGRM76
- wlSpPTj39n7IXtlBVfQM9Z7xn2cnxdGcnhN7RDwT4QSME/zl9GJxT2TY1se6BoiQPFch
- 08EAADfBEojrPT+upW6LKKHIJ4jnI571+mqunMWgyhCKlMJp/NFTsMBEtPSqkunMN3wy
- Vwaw==
+ :reply-to; bh=UDFEW6fwmpghtmkW04MY1hCYr7BJzDg/aTfYbw5Q600=;
+ b=qQhz107s0uM/qeJdZk0JTRwE5K4w0pfvxOSHw0VSwuxKGQrasngUiBZNiYU0xyyyvI
+ 1kXsVNVwrhVGVxwa4zZ8fqQTMAU2IsXBCY2FWZBD0uPgwRp5ZiW5FG6AfOL6dyJGCZQ8
+ X0kpUySOxVWLWc9HwXKx85jTD2woNZu03HbOaognRbaDpXWMX8PmJrDAc6DfritpwtF8
+ aAqRZhxJcoC4gePP1PjpRD/3s5lD+1L6OYkF8prwMwfS8xi6LOX01CunE79KEMA1TdVF
+ hjAxULCrs1dWKntni/FPHqjMdbsShiXrqdFMMBJTpEjYGMUEY+1zQq3KoMtFvtvg1dSo
+ W+Qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776423788; x=1777028588;
+ d=1e100.net; s=20251104; t=1776423787; x=1777028587;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=hHF4jmysHEoMGaoQmGTkv09M59NSp+KdqlbbYIyd3Sw=;
- b=qAlEd5N87Uz/X1A01vzMLCM5yDOwelJ+2Rv+qRzlVqALil4XxLMMAYHy3M5KGDrltH
- zSoZ90dmRVb47ru8arlVVu+zV0bXBVPiYqsUMgWzGUPA2wkA1JQzwzi9/FjMf08z4gPP
- Yr5etWozOYnQp4Z64GHQf3oq9MHp9tuttS4VtvzWbQfaR/Nj0gbZh4ZEVJ6WJxM+uPKk
- hsDnwTLb3MemSRSgh+MppZ46tHaOvPmpHw53oRERt2Br/Q3UOgXJnPpCo3Ii48DehkPD
- ygthqQgNKTu/MIDnXmJcrlR/idtDMt8r6P/B83HeXA67D+YvSlJ6fLcqZv66myyEM64o
- D2Tg==
+ bh=UDFEW6fwmpghtmkW04MY1hCYr7BJzDg/aTfYbw5Q600=;
+ b=Fu6TWJ6Dwms+WLtkLgInCSFL7ShYPfpFjcp7K31lcYUK5gr6OsI480YtAUUSAyDpmy
+ OF9LlH7vh57/hYrN1UsAEADmrjotKy88+lmeS4iDIGykRe2X6HA8nxYTcF7TcFjG1QL9
+ Abho+duLI+lfzwGbEcmO2O0elBKBADGoKrfmv0iIaekbZhiMhR1TMy2+Mixv+a03wNRT
+ YE3+ezpt+//5vuUFxQ1Hf8Zg+kB4v/DTDePsI/ENGAKkQv3CKinn8jZz11ApmP3jIuPc
+ kFFNaxjTYebGUHHFNLUQI/N+Ws1tmfZI3lqIdsWKE0F8mKtjwTx0Cwz1vyjqCFBg0i/T
+ kffw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/MGd3rb4HZMxpyJMhPJj+YRzapp8+ar2xZp5ChzVeMaTgshYU1D4fjaG9naa4bglS/K2XSpe10jw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx6tLBZm1CUQW//KZpQFHtYKsZ6xQyKko5Q3Rm7cpzv6izSdrAx
- gD66V+c9XnQ4kufomkJthYuTfRHjSL0/PTX+bZdj/5F+JiNIKqGD95/SEf3eGZNprE4=
-X-Gm-Gg: AeBDievzfcOC15wjklj4c0aWzNs0k3FAxZzwaRC6fP71CHxYYZ6qZfDy3LXlq+XiOJl
- enkj3TO8a8FToY1pBMCOIPIFVK5e8BQZTicJ2gmWhjXiLnf0mlx9YXxJFNLxeTRtP/vvE+jkS3p
- j9RWcpdsmwRT/KJIK6XW0UdKcIKzjCncFniF0tTo5mPlLe475y0cxwLctpWVotQg7IYYgV1xxU7
- iEU0dKUhSMQsyqX4zCtQm+L6Uv/1TqLpnSNk4xlAlJegfyMJ1hNxKtWzWVcrTrcVw8zk4a+aRAj
- /tPRbVGihp1euBQdg60W5kWh+CJ2JsBl6rwn77jqkybLG18e7FlQIjJoIBJnE1BWzdmpp/z7PUc
- lzq6PllV93sQKOwlgtT/oZvTyrh/cE82dUvPDZcfNaWxqX3x/nf7CcEtG5b+PogrIO8hyk4Y3pl
- F8321RM9LHzHqGuGsvxYr/fKWb5OD9+xUQSC8++nOhNN4Ar81Z
-X-Received: by 2002:a5d:4350:0:b0:43f:e721:76b8 with SMTP id
- ffacd0b85a97d-43fe72178cbmr1166798f8f.37.1776423788029; 
- Fri, 17 Apr 2026 04:03:08 -0700 (PDT)
+ AFNElJ9FpZxp1u6+6xEMcowk0MdA4p/jECYZPsUlguBgg9no2+h1kHbkqU3OHV8tntMwywsd3bHbuum8Ug==@nongnu.org
+X-Gm-Message-State: AOJu0YxN6c9fl0eKJ+zRiPf0kcHDlFefSNoB+ngYNMcbDaAtyrKpGnVM
+ mQ1ip1uIDcajofLHYpnGoWin/euUwQfWBqAaq3Djp446OntQg4v49K9E9bnaI6tqxvw=
+X-Gm-Gg: AeBDiev6tBGxwLzVlc5ysgwEuUBtiashqVt/9ssKdLjzb7fCHmWssmRfLbEefQ1lEAJ
+ 9Sb8z8jI5j1TGCmrQXbQT8UmLL8UVSYDtbYKb55DL+/ttQpvRy234jNGJysbS9jepOpcsWemCeB
+ uXja/KARD6gn8jX2UMpzYd8pMCa5jw+0gRUobO25XAiEk5aBAqEZhVfHg9RnwqjGiYrCqfonAZd
+ P1ucCU421GElm24hKYQmLXJYyPIe7/8iKmkWfajqj/cMuwx+PUi0eCHgD3XfJQocZUS8Hv9F6wz
+ YArkqmsVcYGT1AMOz4WyMn+cU/VjsDNNt3B3/XumkfAiTSsGW0XtvheFMLPlr4QAqpenMpEbLAT
+ W6zoAcji49aLSvZ74yMbPjTBiHgV4ET1ADW4j5GuVduXDcNCbCCPMzdVB8AgGE1NKnGwcG91nj/
+ Gk3065dNDmBm0K+nOGETGcuckqsjZIBNoRXmQkxg==
+X-Received: by 2002:a05:6000:2511:b0:43e:b0b0:629a with SMTP id
+ ffacd0b85a97d-43fe3e0a1bemr3462691f8f.34.1776423786798; 
+ Fri, 17 Apr 2026 04:03:06 -0700 (PDT)
 Received: from [127.0.1.1] ([2a10:d582:31e:0:d023:c0db:d3ea:590d])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e59f97sm3811934f8f.37.2026.04.17.04.03.06
+ ffacd0b85a97d-43fe4e59f97sm3811934f8f.37.2026.04.17.04.03.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2026 04:03:07 -0700 (PDT)
+ Fri, 17 Apr 2026 04:03:05 -0700 (PDT)
 From: Jim MacArthur <jim.macarthur@linaro.org>
-Date: Fri, 17 Apr 2026 12:02:56 +0100
-Subject: [PATCH v2 4/4] tests/tcg/aarch64/system/rme_gdi.c: Very basic test
- of GDI
+Date: Fri, 17 Apr 2026 12:02:55 +0100
+Subject: [PATCH v2 3/4] target/arm/ptw.c: Add GDI spaces to the granule
+ protection case
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260417-jmac-feat_rme_gdi-v2-4-7cf5131aeb60@linaro.org>
+Message-Id: <20260417-jmac-feat_rme_gdi-v2-3-7cf5131aeb60@linaro.org>
 References: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
 In-Reply-To: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
 To: qemu-devel@nongnu.org
@@ -80,8 +80,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
  Jim MacArthur <jim.macarthur@linaro.org>
 X-Mailer: b4 0.13.0
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,76 +104,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Simply tests GDI's prerequisites; that if GDI is enabled then
-so are FEAT_RME and FEAT_RME_GPC2.
+System Agent, Non-secure Protected and two other GPI field encodings.
+
+These are explicitly denied access for any processing element when
+the relevant GPCCR bit is set, and reserved values when the relevant
+GPCCR bit is zero.
 
 Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 ---
- tests/tcg/aarch64/system/rme_gdi.c | 56 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ target/arm/ptw.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/tests/tcg/aarch64/system/rme_gdi.c b/tests/tcg/aarch64/system/rme_gdi.c
-new file mode 100644
-index 0000000000..0921b791bd
---- /dev/null
-+++ b/tests/tcg/aarch64/system/rme_gdi.c
-@@ -0,0 +1,56 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ *
-+ * FEAT_RME_GDI Feature presence and enabled bits test
-+ *
-+ * Copyright (c) 2026 Linaro Ltd
-+ *
-+ */
-+
-+#include <stdint.h>
-+#include <minilib.h>
-+
-+#define ID_AA64PFR0_EL1 "S3_0_C0_C4_0"
-+#define ID_AA64MMFR4_EL1 "S3_0_C0_C7_4"
-+
-+int main()
-+{
-+    uint64_t mmfr4;
-+    uint64_t pfr0;
-+    int rme_status;
-+    int rmegdi_status;
-+
-+    asm("mrs %[pfr0], " ID_AA64PFR0_EL1 "\n\t"
-+        : [pfr0] "=r" (pfr0));
-+
-+    /* rme_status is 1 for RME, 2 for RME + GPC2, 3 for RME+GPC3 */
-+    rme_status = (pfr0 >> 52) & 0xF;
-+
-+    asm("mrs %[mmfr4], " ID_AA64MMFR4_EL1 "\n\t"
-+        : [mmfr4] "=r" (mmfr4));
-+
-+    rmegdi_status = ((mmfr4 >> 28) & 0xF);
-+
-+    switch (rmegdi_status) {
-+    case 0:
-+        ml_printf("SKIP: GDI not implemented\n");
-+        return 0;
-+    case 1:
-+        /* GDI is implemented, so continue testing */
-+        break;
-+    default:
-+        ml_printf("FAIL: GDI status is %d, only values 0 and 1 are defined\n",
-+                  rmegdi_status);
-+        return 1;
-+    }
-+
-+    if (rmegdi_status != 0) {
-+        /* Check FEAT_RME and FEAT_RME_GPC2 also present */
-+        if (rme_status < 2) {
-+            ml_printf("FAIL: GDI is %d, but RME is %d; RME should be >= 2\n",
-+                      rmegdi_status, rme_status);
-+            return 1;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 7b993bb5b3..316e201cfe 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -510,6 +510,26 @@ bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+         break;
+     case 0b1111: /* all access */
+         return true;
++    case 0b0100: /* system agent only */
++        if (FIELD_EX64(gpccr, GPCCR, SA) == 0) {
++            goto fault_walk;
 +        }
-+    }
-+    return 0;
-+}
++        break;
++    case 0b0101: /* non-secure protected */
++        if (FIELD_EX64(gpccr, GPCCR, NSP) == 0) {
++            goto fault_walk;
++        }
++        break;
++    case 0b0110: /* reserved if NA6==0, otherwise no access */
++        if (FIELD_EX64(gpccr, GPCCR, NA6) == 0) {
++            goto fault_walk;
++        }
++        break;
++    case 0b0111: /* reserved if NA7==0, otherwise no access */
++        if (FIELD_EX64(gpccr, GPCCR, NA7) == 0) {
++            goto fault_walk;
++        }
++        break;
+     case 0b1000: /* secure */
+         if (!config.support_sel2) {
+             goto fault_walk;
 
 -- 
 2.43.0

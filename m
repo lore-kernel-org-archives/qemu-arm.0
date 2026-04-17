@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7286DF8DFF9
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 17:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F24F8DFF9
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 17:33:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDn3A-0007Tg-1d; Fri, 17 Apr 2026 13:32:16 -0400
+	id 1wDn39-0007T9-Oi; Fri, 17 Apr 2026 13:32:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDn2p-0006wb-8a
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:57 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1wDn2i-0006v6-O9
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:56 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wDn2i-0002P5-Kd
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:51 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-43d77f60944so688541f8f.3
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 10:31:46 -0700 (PDT)
+ id 1wDn2d-0002LA-6Q
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 13:31:48 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43d7605ec91so794040f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 10:31:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776447105; x=1777051905; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776447102; x=1777051902; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wxY3ZiluRC3qmS1pGuPIEiJq7+uwFw+8gR7Q01pS8h0=;
- b=NAbTLBABACARBfKk+zUKPiARfN782ku57nrh0hHwzTMR457GYg9VKywf4jhlyqUf/i
- 3ibZPnhg3qxjntjZ8H0JREBKqorNakUPDVrt7XmuqIPAygAiQr40RAR6l955jwUZhzmJ
- Fgdp/qqAXtiDaQbLc/JGeqhsmnUrYYtnlu2k7O5Qdjaz6x4gjmkHbW7DTfpgvsUQYh3y
- 9irLztcHm1D/eG2J6Dl7LePfv1a+MKIwyVN5Wb09r7mM9O8C+zGGDlIK/AIMlthUW5sy
- Yndug+GDhe8m/BtOymoZm8GmJsQDLn9zFAzIb7tk0vfqmCKAswhu4z6VGk2VTJU5omSO
- 383Q==
+ bh=q1XLnzDD++kcgvvN+mJ7kGySfBQkB+0ZpLjBuZfsQOc=;
+ b=nd3kD9WYhfSwEHrxEgF8A2n9dTYsOl8zZRb3zMzBON8DT1cgJvbydfcyPWNEeXI/OY
+ vnT3OHyhcULRGvNuDMQDsZ8fUNevFsS7MOzqGF/EX4jKz1MORgp/mIt0uvWf9Np2N7hi
+ AkQ7vLMi5FXSPCTuh+iTFBhi86r7QZOJz9Gz1zlELASMdyaxGKzW6VmHOlnZdaby18AI
+ su4rELSc+g+HaEyLgIVPaZE0ixZQOxt2jeWazpYqMIZXO10c42hMFCSprZHdbammcub3
+ /Z+HelNM8FMYwYQnsp5vIWgb4HwQTEurX4YOlKVll3r/Oz3tp+U4Om30GviMLfT/E1Yc
+ woPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776447105; x=1777051905;
+ d=1e100.net; s=20251104; t=1776447102; x=1777051902;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=wxY3ZiluRC3qmS1pGuPIEiJq7+uwFw+8gR7Q01pS8h0=;
- b=hn2LDWcxPGOIWHtko42XHNu/EH7xcefiUqFeRCb+lfuLIqIJlfbgT6AIJ8Vk6pE6p9
- 7YoCNDPxszPmHkVUismAFY9IRXZWkuTBwRlwO/xhuRdzlCuh7GyFwksjCuh33FNbZ5KR
- /+EvzQTVXCYGbzjpG9ruOFfmKHdTdd7uaDYCkaMtpzTb1/YIV2V24mKm9H6/tnq59sKJ
- V12LSg5E01IAUtGAMp5edB4cAG2TjcbhtCXs27wldsNEHuwhK/NiGAXMmfJTdMz7G8EY
- Zmx6zlb5qIEXNwP7zPeFZlEB8+ksFwsuEA2rklpjKSqTx0suvkhCtEBnj0AnRekjj0w3
- bfOQ==
-X-Gm-Message-State: AOJu0YwDk+/9bZcxugzp+i+a4Ta+f3rO3ex2wMuTmP3ulQhyBcb9duBh
- XYCt0y3VV57xK5l7JzmMHXdbxq9CjqQZIXh6rBQLkpWQdxa90HIdIbskBsGdr+21JSRrCOcI94g
- jVkWSb9U=
-X-Gm-Gg: AeBDiesrX34bRjkTGIgP9td1Mqgd2PvboucIxuDc5Ck5MiplBhXET+iS9IZiSv7rO8G
- nH9cMh+bbXjtjq12aG4nOvWwQHLLAAoq1tzMUgN582ZuBFDS1Ih7OHCNc+i7LbdFgxYCUqY6l1g
- Cap08ix7CuREtL35lyPOS07GcsfUNUxnEs61iHohC85NJYzCcc/Qs6j+iAGr4xi70tXoNUQGBp/
- JCU7BodQjpsH/eYZ30iR5bT0n8Fkx0oEu4kkPX0kVJyAPVErkn0r96cqouf24+4vOTSSzC3brWg
- J5N3Ak3tqMA0VgGpVuMdlsDxYAQD9HKE8rdC0d6dX/bTw9Ik8v6J3HBont88DD0jRpnjk8f8YdQ
- ZrAXjK/7JA1sFfnB3ZfRNaVi0HCBmWXEf5W5e2vj/g9MZzB3CwyZXQS7ldJ4QzKwTQ5cuWKbPk2
- k1N3kFJPTpwnK5ZPzTXtST4jS7BcwFhw2qRiYAkMGm2kBWNbHXHxP5CIZW7WT1MJzabVejtmly3
- q20GRh0pxbifcZexrsQXcClnOLq9Vc9Z3KZrQGYw71jJdVbhiXx
-X-Received: by 2002:a05:6000:1868:b0:43d:7a97:78af with SMTP id
- ffacd0b85a97d-43fe3e24bd3mr5924110f8f.42.1776447105123; 
- Fri, 17 Apr 2026 10:31:45 -0700 (PDT)
+ bh=q1XLnzDD++kcgvvN+mJ7kGySfBQkB+0ZpLjBuZfsQOc=;
+ b=Zliv+7Mgeh/4Gl+bps3+DQjxcBnB4k5MxaApnfwQzqaWCSfzihtu/IzjEHdFZEjZAI
+ SRyTw9lJNRbRLqJ3lb3e0pIge3cWO9mP52nx2GEjRT2tfu06c2XrHIvMneVVL3ybUc0B
+ yaXYqTNJpSJK1HjURr/jbZl+HPPPVNbDsvQ5nv7BUaQWVgQaBUn2/XLgItmTDqryKvQh
+ yWJx2d9gLSXXq1ws7wSnlu0NYQnG1+XGA9sBBn34q4FzYNpWknFstS+eZOd7u/V9eg4O
+ GupZg/X2LcPHcFRrGQ/TqoEP2NBG1ys9eRQb2V4tHoPJbGJ/N/VmgQHy9GxzQ6xkIm5u
+ psjg==
+X-Gm-Message-State: AOJu0YxVN84PeFQgSisEyzJBrcTZacUHfDHl6RW043wozHanxydXz86x
+ INWujqfklssXvU0K0DoaqXi550H/Quq4yZVmDamuI8AT9xLpiSJQXUTSrrJFEwPWoe+hBRsSq/i
+ g3BO9l04=
+X-Gm-Gg: AeBDiesWf2WHnqaa/rECyCslDeRv0SU6J/w4ssY//Zp3p9ka4JQhILuluzUP/dy5GKD
+ /kcq6ePrhOW57q8krkp5/N3zCpXEOxk0Y+9TTmlXlyt2sVNbUGP1BXOC0ksNIhAmE3B41HuM64r
+ LlwV0iXrlB3CGljbQ69KQYRpsh0SwBlaK/og6VkI/7MkT27uSRQ6p+mWfSliE/r7uWmyM5yHyPW
+ FwBgFcFfrNungBLI+GmBB7XAn7Bm+PXezAXPoDeVm7kHZ/Jhzt0X2seaPvm37FOScongKTmsMHM
+ XwjVtCvEZuGZqptsb4BDD7ImQhSH4q1GYYxKMDjLBvGvUcz8s58Z25m2BiP8rzn4Jd18WTzgNMG
+ LwxnN5D/ufCsQuikRyWuXvkdVogkRCtbgL32/v1g3IFN39bXmn6ofoC2l2Au8/uBPyQJmGgaGjM
+ 8SrkV4QMsbOWcRFYn+qkc/DEs/18wi1/7NTF/O17Gn9E6HazxDnm5TMYP5BGRvhb8hlVuyVXGal
+ /hCPJbtmp4Pjnr67+XWNL/IPbQnfSlxM48rIwVyqA==
+X-Received: by 2002:a05:6000:25c7:b0:43d:71b:204b with SMTP id
+ ffacd0b85a97d-43fe3e1433emr6138994f8f.39.1776447101514; 
+ Fri, 17 Apr 2026 10:31:41 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e4ffa8sm5819650f8f.35.2026.04.17.10.31.43
+ ffacd0b85a97d-43fe4e4ffa8sm5819650f8f.35.2026.04.17.10.31.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Apr 2026 10:31:44 -0700 (PDT)
+ Fri, 17 Apr 2026 10:31:36 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -91,16 +91,16 @@ Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  David Hildenbrand <david@kernel.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PATCH 16/17] target/arm: Implement translate_for_debug
-Date: Fri, 17 Apr 2026 18:31:04 +0100
-Message-ID: <20260417173105.1648172-17-peter.maydell@linaro.org>
+Subject: [PATCH 14/17] hw/core: Implement new cpu_translate_for_debug()
+Date: Fri, 17 Apr 2026 18:31:02 +0100
+Message-ID: <20260417173105.1648172-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260417173105.1648172-1-peter.maydell@linaro.org>
 References: <20260417173105.1648172-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,139 +123,180 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement the translate_for_debug method instead of the
-get_phys_addr_attrs_debug one.  This allows us to pass the caller the
-lg_page_size from our internal GetPhysAddrResult struct.
+In cpu_memory_rw_debug() we need to do a virtual-to-physical address
+translation for debug access.  Currently we assume that the
+translation is valid for an entire guest page, but this may not be
+true if the target implements some protection regions that have
+sub-page granularity. (Currently the only such target is the Arm
+CPUs when using an MPU, as in R-profile and M-profile.)
 
-Awkwardly, translate_for_debug's "true on success" convention
-is the opposite of the one we use internally in ptw.c, so
-we have to be careful about the sense of the return values.
-This corresponds to the way that arm_cpu_tlb_fill_align()
-also has to return true when get_phys_addr() returns false.
+For TCG's emulated accesses, we handle sub-page granularity by the
+CPU filling in the lg_page_size field of the CPUTLBEntryFull struct
+to tell us how large the region covered by the result is.  But we
+didn't extend this to the debug-access code path, with the result
+that debug accesses might incorrectly fail because they are looking
+at the mapping for the address rounded down to a page boundary.
+
+Provide a cpu_translate_for_debug() function which reports to the
+caller not just the physical address and attributes of the
+translation but also the lg_page_size for which it is valid.  The
+fallback implementation calls cpu_get_phys_addr_attrs_debug() and
+assumes target-page-sized validity.
+
+NB: the "return true on valid access, false on failure" follows
+the same convention as TCGCPUOps::tlb_fill_align() (though it
+is the opposite of what we use in some other places, e.g.
+in target/arm's get_phys_addr_* functions).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.c       |  2 +-
- target/arm/cpu.h       |  3 ---
- target/arm/internals.h |  4 ++++
- target/arm/ptw.c       | 37 ++++++++++++++++++++++---------------
- 4 files changed, 27 insertions(+), 19 deletions(-)
+ hw/core/cpu-system.c             | 32 ++++++++++++++++++++++++++++++++
+ include/hw/core/cpu.h            | 32 ++++++++++++++++++++++++++++++++
+ include/hw/core/sysemu-cpu-ops.h | 27 +++++++++++++++++++++++++--
+ 3 files changed, 89 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index f28c74a94b..c014375cb7 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2295,7 +2295,7 @@ static vaddr aarch64_untagged_addr(CPUState *cs, vaddr x)
- 
- static const struct SysemuCPUOps arm_sysemu_ops = {
-     .has_work = arm_cpu_has_work,
--    .get_phys_addr_attrs_debug = arm_cpu_get_phys_addr_attrs_debug,
-+    .translate_for_debug = arm_cpu_translate_for_debug,
-     .asidx_from_attrs = arm_asidx_from_attrs,
-     .write_elf32_note = arm_cpu_write_elf32_note,
-     .write_elf64_note = arm_cpu_write_elf64_note,
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 917e4668da..ea3c65ba1a 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1231,9 +1231,6 @@ extern const VMStateDescription vmstate_arm_cpu;
- void arm_cpu_do_interrupt(CPUState *cpu);
- void arm_v7m_cpu_do_interrupt(CPUState *cpu);
- 
--hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cpu, vaddr addr,
--                                         MemTxAttrs *attrs);
--
- typedef struct ARMGranuleProtectionConfig {
-     /* GPCCR_EL3 */
-     uint64_t gpccr;
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 85980f0e69..5527c004db 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1532,6 +1532,10 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
- 
- void arm_log_exception(CPUState *cs);
- 
-+/* Implementation of SysemuCPUOps::translate_for_debug */
-+bool arm_cpu_translate_for_debug(CPUState *cs, vaddr addr,
-+                                 TranslateForDebugResult *result);
-+
- #endif /* !CONFIG_USER_ONLY */
- 
- /*
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 8be6f243e6..ae4089a14c 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3922,8 +3922,9 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
-                              memop, result, fi);
+diff --git a/hw/core/cpu-system.c b/hw/core/cpu-system.c
+index 05c126ecb6..cab65d549a 100644
+--- a/hw/core/cpu-system.c
++++ b/hw/core/cpu-system.c
+@@ -22,6 +22,7 @@
+ #include "qapi/error.h"
+ #include "system/address-spaces.h"
+ #include "exec/cputlb.h"
++#include "exec/target_page.h"
+ #include "system/memory.h"
+ #include "qemu/target-info.h"
+ #include "hw/core/qdev.h"
+@@ -55,6 +56,37 @@ bool cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
+     return false;
  }
  
--static hwaddr arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
--                                    MemTxAttrs *attrs, ARMMMUIdx mmu_idx)
-+static bool arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
-+                                  TranslateForDebugResult *result,
-+                                  ARMMMUIdx mmu_idx)
- {
-     S1Translate ptw = {
-         .in_mmu_idx = mmu_idx,
-@@ -3935,25 +3936,30 @@ static hwaddr arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
-     GetPhysAddrResult res = {};
-     ARMMMUFaultInfo fi = {};
-     bool ret = get_phys_addr_gpc(env, &ptw, addr, MMU_DATA_LOAD, 0, &res, &fi);
--    *attrs = res.f.attrs;
- 
--    if (ret) {
--        return -1;
-+    if (!ret) {
-+        /* translation succeeded */
-+        result->physaddr = res.f.phys_addr;
-+        result->attrs = res.f.attrs;
-+        result->lg_page_size = res.f.lg_page_size;
-     }
--    return res.f.phys_addr;
-+    return ret;
- }
- 
--hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cs, vaddr addr,
--                                         MemTxAttrs *attrs)
-+bool arm_cpu_translate_for_debug(CPUState *cs, vaddr addr,
-+                                 TranslateForDebugResult *result)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
-     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
- 
--    hwaddr res = arm_cpu_get_phys_addr(env, addr, attrs, mmu_idx);
--
--    if (res != -1) {
--        return res;
-+    /*
-+     * Note that this function returns true on translation success,
-+     * but arm_cpu_get_phys_addr() and all the other get_phys_addr
-+     * style functions in this file return true on failure.
-+     */
-+    if (!arm_cpu_get_phys_addr(env, addr, result, mmu_idx)) {
++bool cpu_translate_for_debug(CPUState *cpu, vaddr addr,
++                             TranslateForDebugResult *result)
++{
++    if (cpu->cc->sysemu_ops->translate_for_debug) {
++        return cpu->cc->sysemu_ops->translate_for_debug(cpu, addr, result);
++    } else {
++        /* Fallbacks for CPUs which don't implement translate_for_debug */
++        if (cpu->cc->sysemu_ops->get_phys_addr_attrs_debug) {
++            result->physaddr =
++                cpu->cc->sysemu_ops->get_phys_addr_attrs_debug(cpu, addr,
++                                                               &result->attrs);
++        } else {
++            result->physaddr
++                = cpu->cc->sysemu_ops->get_phys_addr_debug(cpu, addr);
++            result->attrs = MEMTXATTRS_UNSPECIFIED;
++        }
++        if (result->physaddr == -1) {
++            return false;
++        }
++        /* Indicate that this is a debug access. */
++        result->attrs.debug = 1;
++        /*
++         * Assume memory access permissions are valid for the whole page.
++         * Targets where this isn't true should implement the
++         * translate_for_debug method.
++         */
++        result->lg_page_size = TARGET_PAGE_SIZE;
 +        return true;
-     }
++    }
++}
++
+ hwaddr cpu_get_phys_addr_attrs_debug(CPUState *cpu, vaddr addr,
+                                      MemTxAttrs *attrs)
+ {
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 0941757c55..084d691e6c 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -778,6 +778,38 @@ hwaddr cpu_get_phys_addr_attrs_debug(CPUState *cpu, vaddr addr,
+  */
+ hwaddr cpu_get_phys_addr_debug(CPUState *cpu, vaddr addr);
  
-     /*
-@@ -3964,11 +3970,12 @@ hwaddr arm_cpu_get_phys_addr_attrs_debug(CPUState *cs, vaddr addr,
-     switch (mmu_idx) {
-     case ARMMMUIdx_E10_1:
-     case ARMMMUIdx_E10_1_PAN:
--        return arm_cpu_get_phys_addr(env, addr, attrs, ARMMMUIdx_E10_0);
-+        return !arm_cpu_get_phys_addr(env, addr, result, ARMMMUIdx_E10_0);
-     case ARMMMUIdx_E20_2:
-     case ARMMMUIdx_E20_2_PAN:
--        return arm_cpu_get_phys_addr(env, addr, attrs, ARMMMUIdx_E20_0);
-+        return !arm_cpu_get_phys_addr(env, addr, result, ARMMMUIdx_E20_0);
-     default:
--        return -1;
-+        /* translation failed */
-+        return false;
-     }
- }
++/**
++ * TranslateForDebugResult: gives result of cpu_translate_for_debug()
++ *
++ * @physaddr: the physical address corresponding to the virtual address
++ * @attrs: the transaction attributes for this access
++ * @lg_page_size: log2 of the size of the aligned block of memory
++ * that this physaddr and attrs are valid for.
++ */
++typedef struct TranslateForDebugResult {
++    hwaddr physaddr;
++    MemTxAttrs attrs;
++    uint8_t lg_page_size;
++} TranslateForDebugResult;
++
++/**
++ * cpu_translate_for_debug:
++ * @cpu: The CPU use for the virtual-to-physical translation
++ * @addr: The virtual address
++ * @result: Struct filled in with results of translation
++ *
++ * Perform a virtual-to-physical address translation for debug accesses.
++ * Use it only for debugging because no protection checks are done.
++ *
++ * The address need not be page-aligned; the returned address in @result
++ * will be the physical address corresponding to that virtual address.
++ *
++ * Returns: false on translation failure; true on successful translation
++ * and fills in the fields of @result.
++ */
++bool cpu_translate_for_debug(CPUState *cpu, vaddr addr,
++                             TranslateForDebugResult *result);
++
+ /** cpu_asidx_from_attrs:
+  * @cpu: CPU
+  * @attrs: memory transaction attributes
+diff --git a/include/hw/core/sysemu-cpu-ops.h b/include/hw/core/sysemu-cpu-ops.h
+index a87c55d922..8625ebb564 100644
+--- a/include/hw/core/sysemu-cpu-ops.h
++++ b/include/hw/core/sysemu-cpu-ops.h
+@@ -33,19 +33,42 @@ typedef struct SysemuCPUOps {
+      * @get_phys_addr_debug: Callback for obtaining a physical address.
+      * This must be able to handle a non-page-aligned address, and will
+      * return the physical address corresponding to that address.
++     *
++     * CPUs should prefer to implement translate_for_debug instead of
++     * this (and must do so if their translations are not always valid
++     * for a complete target page or they use memory attributes).
+      */
+     hwaddr (*get_phys_addr_debug)(CPUState *cpu, vaddr addr);
+     /**
+      * @get_phys_addr_attrs_debug: Callback for obtaining a physical address
+      *       and the associated memory transaction attributes to use for the
+      *       access.
+-     * CPUs which use memory transaction attributes should implement this
+-     * instead of get_phys_addr_debug.
++     *
+      * This must be able to handle a non-page-aligned address, and will
+      * return the physical address corresponding to that address.
++     *
++     * CPUs should prefer to implement translate_for_debug instead of
++     * this (and must do so if their translations are not always valid
++     * for a complete target page).
+      */
+     hwaddr (*get_phys_addr_attrs_debug)(CPUState *cpu, vaddr addr,
+                                         MemTxAttrs *attrs);
++    /**
++     * @translate_for_debug: Callback for translating a virtual address into
++     * a physical address for debug purposes.
++     * The implementation should fill in @result with the physical address,
++     * transaction attributes, and log2 of the size of the aligned block of
++     * memory that the translation is valid for.
++     * This must be able to handle a non-page-aligned address, and will
++     * return the physical address corresponding to that address.
++     * The attributes must include the debug flag being set.
++     * Returns false on translation failure; on success returns true and
++     * fills in @result.
++     *
++     * This is the preferred method to implement for new CPUs.
++     */
++    bool (*translate_for_debug)(CPUState *cpu, vaddr addr,
++                                TranslateForDebugResult *result);
+     /**
+      * @asidx_from_attrs: Callback to return the CPU AddressSpace to use for
+      *       a memory access with the specified memory transaction attributes.
 -- 
 2.43.0
 

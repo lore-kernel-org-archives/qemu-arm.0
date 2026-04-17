@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A18C8F8E499
-	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 03:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54949F8E4A4
+	for <qemu-arm@archiver.kernel.org>; Fri, 17 Apr 2026 03:30:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDZtd-0002hy-OT; Thu, 16 Apr 2026 23:29:33 -0400
+	id 1wDZt6-0002F3-Gh; Thu, 16 Apr 2026 23:29:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wDZtX-0002Z2-Q9; Thu, 16 Apr 2026 23:29:28 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1wDZt5-0002EV-Ja; Thu, 16 Apr 2026 23:28:59 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wDZtV-0005tG-4J; Thu, 16 Apr 2026 23:29:26 -0400
+ id 1wDZt4-0005q6-4z; Thu, 16 Apr 2026 23:28:59 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=yg46N0ofErCtib0vPOBk+YWggcbVxscogAbKdckarFn8WuscT5vIWcZOFz9cD0ZQmJRgoey5a5BL+ecTRu9r4bs7DpxgaHQ07Vd+haafVC/cFDo5MEI1blNmtAnysSWSEZR+ozdaPW7PQvZVFDtwLJIWcqeozASCIwKFNpOysSnYBRBu3bVMBOeqhHDOp44oDIAt+7vR+0mmz8iOU76QkQeI886Eiw4lJAYG+Ffbv2rQirMqhQdePKlUtFZ7IizELTZbW8GsqUsltTTdyLfKTm+i6y4TbNyZLNEVBJcOXghqPg+tdOcaRV/zIFpHOsAWz7Xp6leWM2I8R7xM2ZlWCA==
+ b=TxDNnCPhBUQHfhYXDYhtEk77mQ+kT4KqiFopWm1+3dN4aafhZ5J1PSTZh+UeBwHnuaQRsujvmnxrgJ5iEi1no+cOa90+6LU9flFYCiwRmKMLkN7pjfyk5XNEYHMzwEnDaLS9UbPXtL1LkReZHJ76cNShVl6Ndo2VJI0+XM4JtiBbUMOkzYRIOFRdj0sp4T6LTabigfZOYt3++twrhSzLQ3uWw5zSi/m40KC1/ATUXQcYa6QURL5wXEAUyaDKq68DZDdw213P4SXDZCw1bazZM8rAwVf7XNSSPdZesPPX486C+E67F6lsKM+u9LRix99qf06RJKYIINlLs9I15GLEAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qjXufL4bOZ/aNBLGh8VduVIl1f0gW/C1UYPpjv9Kkcs=;
- b=lLpYMM6VCe+yPiffsjFeAZTXDV6FOnuE7rJMxbXHP+wJbBaMaqnk/7vsjjqBUI7YEKBVss8K4JMKsq3tKANbLcWo0Zxhr532TlKVqgvgBhd3Z+CRsxKRqC2u1VeOMYWXLUxHk379vDAkZNTIt0PXbUGZ9fiSorDZTJOhRfZprffV6VH/JQ+opzwQ9Ld/y8omBQ4QrlwxjScVc6dMT4PbyPhQbuKtgg3TeLbidgqSIdOrosF8UVpfZ66J1Cm34ev1uB521TF7sJipdu/tAeVQpLE2lPAtGn0z/97ugI4ONHaQlEt5W2KmWLPKB1vVUYaHN2kOTXbOEBla/okGeMoS6w==
+ bh=14vDysdaVQ5MIdNZeJNc8+7z29whl9gMON17QSCxlSM=;
+ b=Ens9sBe35iEIKWefPmwkDpQi1E6bdH51/u7ExKM9f96IVZm1nhQQp6eANoI6IN3SyFnhmk3kCMnOJJADw0PB3taeIjfrzHo4Q/1UHvWch3YDH1TVVl9GeY99pWhDiM1HYQJamMQ9g3u1tPmWBH2oteA+D9uTGUCNRN90iGADXtmOVzSpc22brHMkJ/DjRd3DdUXoGB8w+uv/tqQRUdkjzPMDskE9nQQtWcpg+OW2vvq/HOKpuw87meNQ/6nZ+I7FAcAD9L1FiE44mU/rFWFnMQ5XdXiBytXlJG+y/27iG2tJ0N4AOSgosFHVizrDbOwepsjTVoC60Gj4i3kd8Re2eQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qjXufL4bOZ/aNBLGh8VduVIl1f0gW/C1UYPpjv9Kkcs=;
- b=EFIy34jFJzjva45YMJ+XxqG5mdIgEt7YqAaVkfUi6w5fJ/7PW2fHAw17KLOwRLEz9qppFlk9hh+JUPFccRWfmZg+k3iaQkrA6jM0HbOkdOgjGUc4tJ3OrmlliOhw0GYjPMBQuNbHvEs+aJgdOwTKDCixtSK2+DaPSEPgjgFms5ybZiV/cJFgmqHlj5DO8UJ2EdBMiqWBlKm3a9wLPRDexroY6zKv7TvcghqzOIWAyIZhF1BWgIk50/DcdLp+5jMZEXjIV6gXMHWKbjcsEEjVwNDuVk1V7q8iZ538fiwgI4N0Abe2AiolTFY2LDP2fbH1tuSuRKyfIqTgD6pe+EaBIg==
+ bh=14vDysdaVQ5MIdNZeJNc8+7z29whl9gMON17QSCxlSM=;
+ b=YDImcAdI7cw781fFJNoSzm8tNcofvI4K9r1OEXvxMZI4n/FHWyQOt3ggISEnDCiS5yH6TUx7LwIyWXOt8+aJ2JEDJqoI+wt7FnujR5BOnG2mq6aVxm5rcmCTyqfMAYpmrIG6llc6+JWvmrZ5DrnuHMaibovY7H65+FEyZyWU07Nfnjuy6Ai7BDoRkBWgYSFfVNWJmH1WXLsQUbbh5XJheZXry48E1lZ1pQ6wiGuTzA80zViC0JCqu7I9q3H4UsRd9jKm+hfMCM7skt6Si8Okb8bM3nzKwhHK8Z6wz+meU8avsw3SKv+cmT+4UpJSp/gZcfBi7xuvLSE4YmNQ4zpxxQ==
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by KUZPR06MB8076.apcprd06.prod.outlook.com (2603:1096:d10:43::13)
+ by KL1PR06MB6299.apcprd06.prod.outlook.com (2603:1096:820:ce::14)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.25; Fri, 17 Apr
- 2026 03:29:06 +0000
+ 2026 03:28:45 +0000
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9818.023; Fri, 17 Apr 2026
- 03:29:06 +0000
+ 03:28:44 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -54,13 +54,13 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  list:All patches CC here" <qemu-devel@nongnu.org>, "open list:Block layer
  core" <qemu-block@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 21/21] docs: Add support vbootrom and update Manual boot
- for ast2700fc
-Thread-Topic: [PATCH v4 21/21] docs: Add support vbootrom and update Manual
- boot for ast2700fc
-Thread-Index: AQHczhpYgU9sF33JSE2MzipbaP5ntA==
-Date: Fri, 17 Apr 2026 03:29:06 +0000
-Message-ID: <20260417032837.2664122-22-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 04/21] hw/arm/ast27x0: Start TSP in powered-off state to
+ match hardware behavior
+Thread-Topic: [PATCH v4 04/21] hw/arm/ast27x0: Start TSP in powered-off state
+ to match hardware behavior
+Thread-Index: AQHczhpLpiyZnPziN0KYqhzBqDKf3g==
+Date: Fri, 17 Apr 2026 03:28:43 +0000
+Message-ID: <20260417032837.2664122-5-jamin_lin@aspeedtech.com>
 References: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260417032837.2664122-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -70,71 +70,71 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KUZPR06MB8076:EE_
-x-ms-office365-filtering-correlation-id: f1b3df71-b298-4cd7-0a82-08de9c317ad6
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KL1PR06MB6299:EE_
+x-ms-office365-filtering-correlation-id: 01636023-00fb-4f7d-04ee-08de9c316db3
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7416014|38070700021|921020|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: vT5zJST9/FzeiaJfDDnTqgWoJUYut0YNOAGL/HimzybkzGyb8N/hUZ5BqcZH3qiFHT0yg7Ssvaw0qG8X8PnndDFYVtovlkTvwdcNHcD6qDTYmzoeOSL3YEMNN16ZlHg/w0AuLykVyDf4D1jNmoPfsfz4auteH7wY3daqe2W5hcLYoxAB9fUpRtxlm0NA3eoo5I469EkVhp5+l1VjgWUxCXTuW1/pST1FFLoZGl0vnqoZStfB/4HyLtPystr5mJPQ1QtyyCg4zUFzg2kphs8S7Kz+tjkfqi+0DTmNzOlxuWMiPnOsa1Gq9Ljpr5ODHmFVgkwqlDCavREdJgAdde/SK75GETdfz2rtg2WmjHSZoOPmlLhHy2b81AZh2R60AvbDEatXnyY9WjdtyuVHQ46CGrIlTXEr+YlTiCbJCp5Su4dB6GnZMnT0PEBz/6d1xb8OxaSCdmvzo9Od9D2zt20X3FykimMjoYtCxBj/yls65tPZ9NcgU2J8b1jU3q7Qg20a1KHG+6w26GGyCdTfV3SpIAzOUTWcm2kTlPix1Y0ldk+loam9oE1DtbKv2XYKNEo56y5+rL0lp4CtFiftMgBBDZGkKEeiQznhY25GqXYiBTLBqMb01tAxrONdT4/xvI+4AX40qvhy4Y7BoZW8qHJj0In7csaDwR086qFbmKNOPU+Zy65iS+e4LwTx20MnJLdwnt4AqcLpqMbJmbLpA7dfTK738D0idjBNj4l9nBaTogcZcJdmqAgHM9TO0erelsCP8UZPDTOXf2aznqMS5QtF3w2511OMiLnPc7oi55tNr+5QDg7BvzVcYF/LfRsWisBL
+ ARA:13230040|1800799024|376014|7416014|366016|921020|38070700021|56012099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: Y5i5jw7rJH7ZVQq073ATPXc02BHLz28Q9hlSirsml+8p6J6eB+6cajqcSbwZfkn90MSxsBub8D+9L4/oBVSQ8pOo/yCar/OWWq3FXRReAU7QYMNxbKbzTPgroAMwy/RO3EP6SJYf/pntp2kklrz0IAuc0JnT9MZgsH3MRDWyH/xk6sQ1nIuJLPK1hOSPPiQsJxsIsZJP1ie0juvfTrMQr7E2zTjwT12Jk6PL9TL/LlM0VEfVYgkFlrS3kcL46wopn3s5eNg61yQmabjIXzTnNstWDpgLPoeCwuqI9CG+OwROboDofB57r3guKUKnrtV5IQBFqO5q3IfZcjM0lJfGwZlLCkyxySpFH2S38t5mAH3P+xTbVTD7pDp181DDVqk9F/WMlpiCYbzChJPGuiD9tW5YEbx9lX8uL+hjZoLMglQ+ZONPR69b/qgMhlIbxgUZ7OFDeR//J0aWVrdcW2om2Vd/PEke3dKORaKzeopc3M1N0DlXt699xrJm1VqnyYrZOP9ECZXl7beoJlgjIp1k5/BVV+YJFF0Drty9ieydonfbbB71isx049IDQ5W1xSe72ax9/h8lL1LGDXgvat76qHQ9byzNFWsiv4OeVebeO2BOmZL2nCyn6oqQWwT9gxjPKOfSTzkjR5TBWipQNC3cEdXPcXBV9Gui3uccdZwweL7MuGUx+dssBwlj4ilCIdL1+OwfB9ceStOzBpdB2rYnlhU4vAHgXEffUBf//yNQ1gdSggfiRfcqQndD6IxQDnUCCyb1IIHIYx3BGxpi6tNgUyM898gtDDjHNcnXABiis+atpCjCRI2rSiY5+0aniisA
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700021)(921020)(18002099003)(22082099003)(56012099003);
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016)(921020)(38070700021)(56012099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?oHYp0QNk+SRmFUaYz6sDFvi3T+YVbHXU3zWvS1ibgGtGGRu12PD9lW+SQN?=
- =?iso-8859-1?Q?bJKtCwMK58aFQ0Y2rOlPUJP8AMrB1iTOww8PNo5u6MHpNB+ug50365gFiy?=
- =?iso-8859-1?Q?8rbJGTyQ1v4fX+uZDEWGaBgKYpXjcz8bfn89PPfyOFBt3PBMWc4Mx4+PnL?=
- =?iso-8859-1?Q?eamZoGG2KzB1dWQhwlOCttdpeb6cdDUZoZ4RDdp2Bp9/+gdDwR/tNj2Ca8?=
- =?iso-8859-1?Q?wl1eD9SbDsMpIVJiqBEQ4lW7K6/9hY97wS9zCailU3T05ZSkUjJx6sFb0/?=
- =?iso-8859-1?Q?zWJDJHV4XcQAPSg+k0HaxkrXFvyg1HY+if3xyMJV/R+bRp5Qcx3QfTw3zN?=
- =?iso-8859-1?Q?wTZhvvs3n2/nr18qYVwncWW8Y+5QtFVnFhwQT5Ngz+mxgCgHxVZsYgxcjO?=
- =?iso-8859-1?Q?pU9KS70h20rqW536K+ZNxVFj0u2ZQNPx287qbwnHD1E8U/3XLy78CKhkPP?=
- =?iso-8859-1?Q?2LnehGOILm/4up6xhg803tIsaFHqc5saQcznif5xIA1fQpQ01MMPBGDsg2?=
- =?iso-8859-1?Q?X7rKCiO5ssJErWHXfBzgXP5OMDXSR7+Bmh+fS26RYXVxv/FchGAASaKtbI?=
- =?iso-8859-1?Q?FAsMK3K5Q0zeUgz0n/HbxST2IIpOW+E/wx7EfFBlYwmYO6MvoMoFdx6Wcp?=
- =?iso-8859-1?Q?Bs8ubYVgBkWnu/1rtul20b9/MwUP4bvXgDoOVNAKKpgBV7hiP2pXiLhgO+?=
- =?iso-8859-1?Q?juD/Dz0GpGZu7+eB0se9r8s/L2L29D9qMgqG5ZrE9O/3ooCLR4XZZ0uSql?=
- =?iso-8859-1?Q?23oEUssRatnH6uVNSCJBgRHARZ23rLL8cC4HlThgKP1uXT8T/p2xrM2wvD?=
- =?iso-8859-1?Q?tliDMy1c9KFSJbyCYv1vCu0IaPh4kL0VXWPBKpbGPx+VL6GsWsQZ9AwBYb?=
- =?iso-8859-1?Q?IdBdpp7AiWC2Ro9+G1ZmDtEQK7ivcpYTPIxqk1hA2z5/8jJeSShhepKnpM?=
- =?iso-8859-1?Q?bTOoG7Gus2fI4WfYRQI1Q4hlabhhiFO1fFD2h7NfWHzAo/H2n6TmqYyNf7?=
- =?iso-8859-1?Q?AS/pkugiLLhzo5XoxL3cZkNz6SuVzUZ7fQIrnVeBSxsF5yE9+6T8QMQoMo?=
- =?iso-8859-1?Q?YB8ooKfxf0cxjmZW+QKArl35BTkKd2GwftFjXniij7Y98FPP9DSAfaPsh6?=
- =?iso-8859-1?Q?PXwIFL9SdVJHCKOnezinG7eUyuFzb04PXbGn29RdBVXk4sUOycpz7lcxgp?=
- =?iso-8859-1?Q?Dtq48KYq85vZ70aBZS1mmV1MvoGaDJvputsztsCr8nJwYQI2rou+7o+2XJ?=
- =?iso-8859-1?Q?R3M7dxuwuo9pTc63tkWY05+tjDL03cxu9ErtbD0XWp1H519GMW/AirOgAZ?=
- =?iso-8859-1?Q?9c/vQPlut6W2RYrq2LPrcMwEXKBmKiMMfEMZmEgiJztIWvXqXPDwEtFYR5?=
- =?iso-8859-1?Q?la7gR8EEOHP+5UA6rqfzwkuLJ3vD92OWlcKX8RLkFSa/c/zl+hbu3FFuyl?=
- =?iso-8859-1?Q?T/+92vH4k79rcenLrJO3z6FOqti+njw6WHdZDQ8KRjo06RRjX1dvxjHXeQ?=
- =?iso-8859-1?Q?ECQkLissL8jYwIhVv5nP3V2eizwZysYMn1+AtX7EFXV5RxnG8n6lLd2Ek3?=
- =?iso-8859-1?Q?5UM6PZ5svHTvOfcO9mmMRyXdx/n8cyLMEc6lG4GQ5FiX2zKbvN+6rQNKp4?=
- =?iso-8859-1?Q?S59Lw/QaiUNraZ1eota6nCMyMu814gZlISgts+ekUNTocKCKbnu5Z+LS8v?=
- =?iso-8859-1?Q?MB226BiMdZPvkIY4sZhFmQWQVBSGphUUanzvUgVcrH4dZcdaJQtP/y8vJV?=
- =?iso-8859-1?Q?Dgi/zlDhEt20pYcrPGGKRD06dGZ8HSGI4aZNPZmoGk2okKu7Dv+2l7tNyw?=
- =?iso-8859-1?Q?JJApusx60w=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?1tDcxcfMWpBDA+bqIeF2ehSsV5ELaiQXKeOyVtjbyYM0HfAoUGkhDjKDWv?=
+ =?iso-8859-1?Q?XK6B/cDx+KXyzrJWreqYUyj/YwKXgyJK3+iLLNYpeCzOodPETaCAp8gqp/?=
+ =?iso-8859-1?Q?/4WZTFyuEAk0+9bA7KMobuzx9rM6tRlwomTftK91/6SsejdUmWuKN0oy3N?=
+ =?iso-8859-1?Q?rK918LnRmmYQzPjONoehW/YlgtVHH5MEMaRXm5/OwGTwe7u0WFgVnCn92B?=
+ =?iso-8859-1?Q?vLvx4jww4vbsfmITDSwUcgGOvH62sxF6JickzCkUsRYjBv9e1LcSKuxkuq?=
+ =?iso-8859-1?Q?vwvjGYXxrxCRuec23DbM6afhfIAflW4EmPejUBlligjePpz68ChwSlZXJv?=
+ =?iso-8859-1?Q?M8SuAQsxF6bOlSmigSfrGZGLfCP314xMpgVC8zNYcwYigl9jOq/FZUH9I4?=
+ =?iso-8859-1?Q?CuFeVA7VqxVgJTw4FBh8W9hcU0Pd4Dc/1BKxU21usSSxNUDMwlWrjLft7t?=
+ =?iso-8859-1?Q?HwDlF7dAuB5Q2NBFnvaVKslv5Yzo84BSaPUhHiboHKlloz5Fa3ZopDsWe9?=
+ =?iso-8859-1?Q?TB05c1OQqWPN8hilEc93b5MgY6w3i5pdyXyFoMDSejQdczbV+pjbECr7SR?=
+ =?iso-8859-1?Q?w0fT5i/Xj4d7y6oJf89/Jn7C0gbSYycfEh9o0q0bxswn6l+kAgxa/RHMKi?=
+ =?iso-8859-1?Q?hoY949YB+oKzcAJuHYHl0tyqNnWO/9/8mkvTlgiwfti5yhahSD3x5AdpBe?=
+ =?iso-8859-1?Q?p1Lok9KyH9cLqmCCiQLtEG3PcFQ1/Dhrc6AZq5hcF85ZSPGEtHFEywoPKn?=
+ =?iso-8859-1?Q?ppqFvFWA6TsGoyyXZbFe6HPu0ZOqOPFi2z8PJ5unE9tgwsAO0FZqZxCkCv?=
+ =?iso-8859-1?Q?tX78OUWgCgMGfiqXcCQUxpapQLSp3PksU4fvhDNeKtqHJyaU9AkHZClOd/?=
+ =?iso-8859-1?Q?fzh9ZD/0IbSgMMeHzpwfgVQTW7XknY/buDYzbuz+ARo96a3ntvOJDQxRrz?=
+ =?iso-8859-1?Q?KNEf6CNxhIBb4ZdDmWjI8x0Rkrve3uNItsMuovH19wXgj79U4e64zW99H/?=
+ =?iso-8859-1?Q?xkDEuHwpW491wEfCp3DAQzfoxpwiQErsKCxBMJGHUgCOZF5JtC7tNMDjhI?=
+ =?iso-8859-1?Q?HeoN91vnNlCiRL8jw5W0fVIqV64eGIUN23puTjQFDMF00I15I4n+D5hdoR?=
+ =?iso-8859-1?Q?jj0txT0D1+yDhPpb8NYnxDyUaZluvNojjZgMnsnldzl7PyNXWBJgvPId3m?=
+ =?iso-8859-1?Q?GXgLJ+OOh5HnhbW3IPrAv/uMRiFqu9aSa5Z+VhFeQqBdVQumWjLxdqdpul?=
+ =?iso-8859-1?Q?uBEx9z6+6XcL61aFFIMMp0zmcCRrhYpObZTwVY8kAexl/7VLWvHCDwieeU?=
+ =?iso-8859-1?Q?qtXnwRxMYBfPeRDMWBtIpzhbVHkRqb07MUutA0/8lgiTIqoOKs+a0imu0b?=
+ =?iso-8859-1?Q?2KIFb84TaAJwujvOV3x49nRXAI6GVtElCK+bm6lbkKwsElcCMgic56xzhD?=
+ =?iso-8859-1?Q?U73CmTxSDtmQox8fvpPSONXdibC+7fzmIo+lFEUbx7Z90prqVgrgmBvDsE?=
+ =?iso-8859-1?Q?NFDHaxdtJr52j8Vi2pkPeV0Kz+vishlQ2kON8TLkUbugZ2cH/GB91pSSpa?=
+ =?iso-8859-1?Q?KWXCQHyy6+BOajHwmAUCP5aiwQx2C4A8c1ekXt5lEpaKcbRHukLDJIyHnS?=
+ =?iso-8859-1?Q?L0WrKkDyqUNBnSL3K21TbLFeROiwTcr+W2zTUXtkaogpP9ucHr9rBOXVpQ?=
+ =?iso-8859-1?Q?Syz+1Nl2KkyVynrzX2ypbV8Il3hy7LXx7r6ahFFg3ClMvHH/MWjVzAcEtP?=
+ =?iso-8859-1?Q?LVKRf36RkAUjDBap7mzQMNDMY3VeePDjiU/42WIy1wsDAOkCRaSow4Kd/Y?=
+ =?iso-8859-1?Q?MVcXUeP0ew=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: Sd9IGpi9xmHyHs6KKhyXHTON1Vync013sD1C90eJzYfyoa1mzUkSVRw7Avt6nUapOnmGw1pO4vzJxQ2Hk21EoHvzxSmLGxRGhVZpH2nlfq7rxYbcuNOeJe+RJqbNNTg5ptUpwEohcdDysJwkQYMc1l7OO1z3iW3aopJYBPiMrINRt/kXLWCjUVJBd/1tDgwcqwf9Dzf5H8WiOqf8E/lPxuRR0GG1QQjLqxi8dYBdTgyzVQl72WD4MNAYusDdImmZEKrFzeNVVd2mnDTv94aJ1CoRzCMNLaOs8BFNe00F+/hXIbkqLaFuor0vpZ8DdZ2wN01iuHPHEb1X9T+shODIBA==
+X-Exchange-RoutingPolicyChecked: OhVzPWmSnMEdjn6y17VwehxKa1k+ifQJc9Z0mX95gGcCdEhL/yEUExHXK8kF0CGULbjc6eOWw0m/sDRAqdWukn/vE7iDHb5zPAEths0s/28FbTbHJNRkcmC7vP0jGq9GsYlPNjhCF6+SqBT2MI3d7PNa1tjMVFfupq+x4bDYvJrex8SvNQ2c3s2Efq4vSHyWpF75vVETK5P3firV0DdPSnqFtaHBSWppg7mIXXfQlTNqrNh7C8iNQhYN5CezgRZfm0QfihejQedVtRqzz4mo6VFAHMwk2Diub6rxitY4hGgg986OLmKWkouizYvYrEhSQnzekKc8lCPVXt7YtnEaNQ==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f1b3df71-b298-4cd7-0a82-08de9c317ad6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2026 03:29:06.0932 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 01636023-00fb-4f7d-04ee-08de9c316db3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Apr 2026 03:28:44.0353 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4/ydxBwz1okJYrQed7lbE0WfgGd5ktoPmsap+o3VkohIQlWIsOx8wmBhzHLWIy9ihogszQhAzDbLVwWVgI5CVfa6zSib/x+T1z/W/4UT1Jk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUZPR06MB8076
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+X-MS-Exchange-CrossTenant-userprincipalname: M2N1PknxUMDqI7mFHu+V65XtMsD/SqucOtR7N+81d+qs3ej5FEdbjQ1CUn3SY4jy6U3XqjA5QNJ781J9AXDnVS77ii1+GsdRsBUpSWUwxhg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6299
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -151,106 +151,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+In the previous design, both the PSP and TSP were started together during=
+=0A=
+SoC initialization. However, on real hardware, the TSP begins in a powered-=
+off=0A=
+state. The typical boot sequence involves the PSP powering up first, loadin=
+g=0A=
+the TSP firmware binary into shared memory via DRAM remap, and then releasi=
+ng=0A=
+the TSP reset and enabling it through SCU control registers.=0A=
+=0A=
+To more accurately model this behavior in QEMU, this commit sets the=0A=
+"start-powered-off" property for the TSP's ARMv7M core. This change ensures=
+=0A=
+the TSP remains off until explicitly enabled via the SCU, simulating the=0A=
+real-world flow where the PSP controls TSP boot through SCU interaction.=0A=
+=0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- docs/system/arm/aspeed.rst | 42 +++++++++++++++++++++++++++++++-------=0A=
- 1 file changed, 35 insertions(+), 7 deletions(-)=0A=
+ hw/arm/aspeed_ast27x0-tsp.c | 7 +++++++=0A=
+ 1 file changed, 7 insertions(+)=0A=
 =0A=
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst=0A=
-index d0054a7dbb..8454a04b13 100644=0A=
---- a/docs/system/arm/aspeed.rst=0A=
-+++ b/docs/system/arm/aspeed.rst=0A=
-@@ -389,18 +389,25 @@ Booting the ast2700fc machine=0A=
- AST2700 features four Cortex-A35 primary processors and two Cortex-M4 copr=
-ocessors.=0A=
- **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary p=
-rocessors,=0A=
- **ast2700fc** machine extends **ast2700-evb** by adding support for the tw=
-o Cortex-M4 coprocessors.=0A=
-+There are two methods to boot the ast2700fc machine.=0A=
-+=0A=
-+Manual boot using ``-device loader``:=0A=
-+=0A=
-+In this approach, users manually load firmware and assign entry points via=
- QEMU loader devices.=0A=
-+By default, the PSP begins execution at address ``0x430000000``, the load =
-address of the bl31=0A=
-+firmware. The SSP and TSP start in the powered-off state and must be expli=
-citly enabled by the=0A=
-+PSP through writes to SCU registers.=0A=
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c=0A=
+index 674307103e..b30f2afd62 100644=0A=
+--- a/hw/arm/aspeed_ast27x0-tsp.c=0A=
++++ b/hw/arm/aspeed_ast27x0-tsp.c=0A=
+@@ -166,6 +166,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState =
+*dev_soc, Error **errp)=0A=
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);=0A=
+     object_property_set_link(OBJECT(&a->armv7m), "memory",=0A=
+                              OBJECT(s->memory), &error_abort);=0A=
++    /*=0A=
++     * The TSP starts in a powered-down state and can be powered up=0A=
++     * by setting the TSP Control Register through the SCU=0A=
++     * (System Control Unit)=0A=
++     */=0A=
++    object_property_set_bool(OBJECT(&a->armv7m), "start-powered-off", true=
+,=0A=
++                             &error_abort);=0A=
+     sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);=0A=
  =0A=
- Steps to boot the AST2700fc machine:=0A=
- =0A=
--1. Ensure you have the following AST2700A1 binaries available in a directo=
-ry=0A=
-+1. Ensure you have the following AST2700 binaries available in a directory=
-=0A=
- =0A=
-- * u-boot-nodtb.bin=0A=
-- * u-boot.dtb=0A=
-+ * u-boot.bin=0A=
-  * bl31.bin=0A=
-  * optee/tee-raw.bin=0A=
-  * image-bmc=0A=
-- * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)=0A=
-- * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)=0A=
-+ * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)=0A=
-+ * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)=0A=
- =0A=
- 2. Execute the following command to start ``ast2700fc`` machine:=0A=
- =0A=
-@@ -410,6 +417,8 @@ Steps to boot the AST2700fc machine:=0A=
- =0A=
-   $ qemu-system-aarch64 -M ast2700fc \=0A=
-        -device loader,force-raw=3Don,addr=3D0x400000000,file=3D${IMGDIR}/u=
--boot.bin \=0A=
-+       -device loader,force-raw=3Don,addr=3D0x42C000000,file=3D${IMGDIR}/z=
-ephyr-aspeed-ssp.bin \=0A=
-+       -device loader,force-raw=3Don,addr=3D0x42E000000,file=3D${IMGDIR}/z=
-ephyr-aspeed-tsp.bin \=0A=
-        -device loader,force-raw=3Don,addr=3D0x430000000,file=3D${IMGDIR}/b=
-l31.bin \=0A=
-        -device loader,force-raw=3Don,addr=3D0x430080000,file=3D${IMGDIR}/o=
-ptee/tee-raw.bin \=0A=
-        -device loader,cpu-num=3D0,addr=3D0x430000000 \=0A=
-@@ -417,12 +426,31 @@ Steps to boot the AST2700fc machine:=0A=
-        -device loader,cpu-num=3D2,addr=3D0x430000000 \=0A=
-        -device loader,cpu-num=3D3,addr=3D0x430000000 \=0A=
-        -drive file=3D${IMGDIR}/image-bmc,if=3Dmtd,format=3Draw \=0A=
--       -device loader,file=3D${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=3D4 \=
-=0A=
--       -device loader,file=3D${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=3D5 \=
-=0A=
-        -serial pty -serial pty -serial pty \=0A=
-        -snapshot \=0A=
-        -S -nographic=0A=
- =0A=
-+Boot using a virtual boot ROM (-bios):=0A=
-+=0A=
-+In this method, the virtual boot ROM (vbootrom) handles the full initializ=
-ation sequence.=0A=
-+It starts the PSP, which then enables the SSP and TSP by programming the a=
-ppropriate SCU=0A=
-+registers, following the hardware behavior.=0A=
-+=0A=
-+Execute the following command to start ``ast2700fc`` machine:=0A=
-+=0A=
-+.. code-block:: bash=0A=
-+=0A=
-+  IMGDIR=3Dast2700-default=0A=
-+=0A=
-+  $ qemu-system-aarch64 -M ast2700fc \=0A=
-+      -bios ast27x0_bootrom.bin \=0A=
-+      -drive file=3D${IMGDIR}/image-bmc,if=3Dmtd,format=3Draw \=0A=
-+      -serial pty -serial pty -serial pty \=0A=
-+      -snapshot \=0A=
-+      -S -nographic=0A=
-+=0A=
-+Serial Console Redirection:=0A=
-+=0A=
- After launching QEMU, serial devices will be automatically redirected.=0A=
- Example output:=0A=
- =0A=
+     /* SDRAM */=0A=
 -- =0A=
 2.43.0=0A=
 

@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3AFF99C9C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD3A0F99C9B
 	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:35:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEEFC-0007A0-Ri; Sat, 18 Apr 2026 18:34:30 -0400
+	id 1wEEEY-00068k-Ai; Sat, 18 Apr 2026 18:33:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEt-0006OU-Vn
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:15 -0400
-Received: from p-east2-cluster1-host4-snip4-10.eps.apple.com ([57.103.76.23]
+ id 1wEEEU-00067C-Av
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:33:46 -0400
+Received: from p-east2-cluster3-host12-snip4-2.eps.apple.com ([57.103.77.183]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEs-0004zZ-Ho
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:11 -0400
+ id 1wEEES-0004tR-QE
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:33:46 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- C70BF1800231; Sat, 18 Apr 2026 22:34:05 +0000 (UTC)
+ AAF2E180022F; Sat, 18 Apr 2026 22:33:40 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776551648; x=1779143648;
- bh=tT4F++bSuONbY+c7bgtCCb6QKbPZ19v7x1ehrozqyHo=;
+ s=sig1; t=1776551623; x=1779143623;
+ bh=Dqy8GVOg6Vy5Bj3rQXQsRJvMspD1oQZRo/6wY+UsQGM=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=O8w4/47D4XZskitdcX2YOeuBuQ12/ujwKhcENAlau9q5kOEe89QzGWivavsGd0X8jWc4kVFHyY65OoqGBrHRsWDIGpSXg51tAFkcIUODPKKFr4+vwZMDr4lhJwiCz2C9QNlYHWtwy0ikKJBbLJpXWWw/Tw8vwOjaT2e4t0uqtvxonWkhcvfxNj8evmuKAeMnBZnO1RzUBCynf0vbI4OwsnFoqfNDuumYfrADZRXlU0C00A2e65eRoLl0aAzj0f8wXfKPG1NttPSTiISxW4u5XB1v+m9vxRyDrdlKhwrAmmTUn5svEhJ1WaoN9vi7NhFnzkWjfOpYuB1WFkX+rLSjIA==
+ b=cFlL6npOtaoMArzOJrhzsRLJ55oWJVe7VuNbkGuccfhQlCwVcAFE2c7G3ShrR+oVm7E4//klcIAAiR8En3sNt+1prGjmYG9OfscEzdE8wY0OPCFtg0a/zGzrrRztijw+GInfZoaxE6pRmO0MSYX6diKAcKwDikhD8972iqBb8SQG5PBPU5o5rhQ2oWa/cbXmaMk551WW+bLmz79GMw5ECE+uBMCzIGh+ah4BDCtC1kmn4AQ9TJ2OthNBdT4R0/FIWmZAKtxJAQ7zIHNqS1SDFRDI3vn2CYYUyDSoJ25B7vJ1O2rOdvqbqjcGfeQNNpwrvpxUMFHwreB6q3M11EQlVQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- A08971800219; Sat, 18 Apr 2026 22:34:01 +0000 (UTC)
+ 3C29A1800208; Sat, 18 Apr 2026 22:33:38 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -42,43 +42,42 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, Wei Liu <wei.liu@kernel.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 21/38] target: i386: HLT type that ignores EFLAGS.IF
-Date: Sun, 19 Apr 2026 00:33:03 +0200
-Message-ID: <20260418223320.51330-22-mohamed@unpredictable.fr>
+Subject: [PATCH 08/38] whpx: i386: kernel-irqchip=off fixes
+Date: Sun, 19 Apr 2026 00:32:50 +0200
+Message-ID: <20260418223320.51330-9-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260418223320.51330-1-mohamed@unpredictable.fr>
 References: <20260418223320.51330-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: a6BJh7fyF4zeEZ00KtYypgFWOSnNrQyK
-X-Proofpoint-ORIG-GUID: a6BJh7fyF4zeEZ00KtYypgFWOSnNrQyK
-X-Authority-Info-Out: v=2.4 cv=I+Bohdgg c=1 sm=1 tr=0 ts=69e406df
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX/w2avdAHS4Bz
+ T5RKAAP+wETEhoSOr8q5wDfbgHXqLcySOGCIQISVgtPX7inLJ0Lrh31E93b39T66XqILyk5NDEr
+ CkZqW9IujQpnip3w9SMQy0kAF2DCFQ9q/C/Qteo7noXm2SeGlQocgYkRp3uNeS+xy7uYsYoPVvh
+ nU1DZfpLCPG08qC8DbSsyEvH/f1LPlXr5dwu/ATFGPBe3MoD3M90uJw9JrLN9JV85do7Gf4s1bj
+ xS26lX9pNUzach8POXzkawMulpG7nEPe53uqofKvNNQw5mRtXn4QV7RVY7OhBY9SGbUO/ccJgwi
+ 4yZjp7ZXeIbo5CvL9V24Dqt3XWPspilXsEbTD6eqpvJeClKl/dd5yYammE4DYI=
+X-Authority-Info-Out: v=2.4 cv=UqJu9uwB c=1 sm=1 tr=0 ts=69e406c6
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=ZtXhj7NgbhMgH__AbsQA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX8cCnHyQ5HXSV
- Pv2GiKFlPk/Vy8eSD+8ZwY8L/6PPm+1VCUXHHCe6oOYdLqRsLuAQicHI7wNpWOspYa4hTRWh3EJ
- PsbTw2E90/PFfLYvgc9jQ7AS8LiCwzDpSfrSRGpGbTWNQq4Dq0sZl78hTlA5yi/S1pX+p/1+3Xe
- prL+mDYsB6jB+3HzsOBSlKB5Gbe3D8XPB3Y6T7JGNpeEDXg5JdiC7z5hZhb35eubryziyWO4n3K
- dr/X2chuD3hnpt/1uRXRjo3aZ9VmIABaCvik7h0//aBN+uhLX83lWpqoKyzS//VOMwd5k+jYOYh
- ra/1Cwk1vWYTaB36yexXsaN4tC85MOwoxRkRSsjI+arUoBzqhFceGAw4SboD3c=
+ a=gP1GEkNOX-MqffGxZ4oA:9
+X-Proofpoint-GUID: 0umByWHxODrtxuxgPX1rsvpRfg6LA3aB
+X-Proofpoint-ORIG-GUID: 0umByWHxODrtxuxgPX1rsvpRfg6LA3aB
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-18_06,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=959
- phishscore=0 suspectscore=0 bulkscore=0
- malwarescore=0 adultscore=0
- spamscore=0 clxscore=1030 lowpriorityscore=0 mlxscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999 phishscore=0 spamscore=0
+ clxscore=1030 mlxscore=0
+ lowpriorityscore=0 bulkscore=0 suspectscore=0 adultscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604180228
-Received-SPF: pass client-ip=57.103.76.23;
+Received-SPF: pass client-ip=57.103.77.183;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -96,68 +95,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The TLFS says:
-
-> A partition which possesses the AccessGuestIdleMsr privilege may trigger
-> entry into the virtual processor idle sleep state through a read to the
-> hypervisor-defined MSR HV_X64_MSR_GUEST_IDLE. The virtual processor will
-> be woken when an interrupt arrives, regardless of whether the interrupt
-> is enabled on the virtual processor or not.
-
-Meanwhile, Windows 24H2+ calls this MSR anyway without the privilege being set.
-
-Add the infrastructure to support it on the generic QEMU side.
+This was really... quite broken. After fixing this,
+Windows boots with kernel-irqchip=off.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/cpu.c | 10 ++++++----
- target/i386/cpu.h |  2 ++
- 2 files changed, 8 insertions(+), 4 deletions(-)
+ include/system/whpx-common.h |  1 +
+ target/i386/whpx/whpx-all.c  | 43 +++++-------------------------------
+ 2 files changed, 7 insertions(+), 37 deletions(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 0000093fa3..b18e40666e 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -10482,13 +10482,15 @@ int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request)
-                    (((env->hflags2 & HF2_VINTR_MASK) &&
-                      (env->hflags2 & HF2_HIF_MASK)) ||
-                     (!(env->hflags2 & HF2_VINTR_MASK) &&
--                     (env->eflags & IF_MASK &&
--                      !(env->hflags & HF_INHIBIT_IRQ_MASK))))) {
-+                     ((env->eflags & IF_MASK &&
-+                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
-+                        || env->hflags2 & HF2_HYPERV_HLT_MASK)))) {
-             return CPU_INTERRUPT_HARD;
-         } else if (env->hflags2 & HF2_VGIF_MASK) {
-             if((interrupt_request & CPU_INTERRUPT_VIRQ) &&
--                   (env->eflags & IF_MASK) &&
--                   !(env->hflags & HF_INHIBIT_IRQ_MASK)) {
-+                   ((env->eflags & IF_MASK &&
-+                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
-+                        || env->hflags2 & HF2_HYPERV_HLT_MASK)) {
-                         return CPU_INTERRUPT_VIRQ;
-             }
-         }
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 0b539155c4..67f508dc10 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -225,6 +225,7 @@ typedef enum X86Seg {
- #define HF2_NPT_SHIFT            6 /* Nested Paging enabled */
- #define HF2_IGNNE_SHIFT          7 /* Ignore CR0.NE=0 */
- #define HF2_VGIF_SHIFT           8 /* Can take VIRQ*/
-+#define HF2_HYPERV_HLT_SHIFT     9 /* Hyper-V HV_X64_MSR_GUEST_IDLE */
+diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
+index 04289afd97..3406c20fec 100644
+--- a/include/system/whpx-common.h
++++ b/include/system/whpx-common.h
+@@ -4,6 +4,7 @@
  
- #define HF2_GIF_MASK            (1 << HF2_GIF_SHIFT)
- #define HF2_HIF_MASK            (1 << HF2_HIF_SHIFT)
-@@ -235,6 +236,7 @@ typedef enum X86Seg {
- #define HF2_NPT_MASK            (1 << HF2_NPT_SHIFT)
- #define HF2_IGNNE_MASK          (1 << HF2_IGNNE_SHIFT)
- #define HF2_VGIF_MASK           (1 << HF2_VGIF_SHIFT)
-+#define HF2_HYPERV_HLT_MASK     (1 << HF2_HYPERV_HLT_SHIFT)
+ struct AccelCPUState {
+     bool window_registered;
++    int window_priority;
+     bool interruptable;
+     bool ready_for_pic_interrupt;
+     uint64_t tpr;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 53b59a98b9..1d99003a4a 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -22,6 +22,8 @@
+ #include "qemu/main-loop.h"
+ #include "hw/core/boards.h"
+ #include "hw/intc/ioapic.h"
++#include "hw/intc/i8259.h"
++#include "hw/i386/x86.h"
+ #include "hw/i386/apic_internal.h"
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+@@ -371,28 +373,6 @@ static int whpx_set_tsc(CPUState *cpu)
+     return 0;
+ }
  
- #define CR0_PE_SHIFT 0
- #define CR0_MP_SHIFT 1
+-/*
+- * The CR8 register in the CPU is mapped to the TPR register of the APIC,
+- * however, they use a slightly different encoding. Specifically:
+- *
+- *     APIC.TPR[bits 7:4] = CR8[bits 3:0]
+- *
+- * This mechanism is described in section 10.8.6.1 of Volume 3 of Intel 64
+- * and IA-32 Architectures Software Developer's Manual.
+- *
+- * The functions below translate the value of CR8 to TPR and vice versa.
+- */
+-
+-static uint64_t whpx_apic_tpr_to_cr8(uint64_t tpr)
+-{
+-    return tpr >> 4;
+-}
+-
+-static uint64_t whpx_cr8_to_apic_tpr(uint64_t cr8)
+-{
+-    return cr8 << 4;
+-}
+-
+ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
+ {
+     struct whpx_state *whpx = &whpx_global;
+@@ -421,7 +401,7 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
+     v86 = (env->eflags & VM_MASK);
+     r86 = !(env->cr[0] & CR0_PE_MASK);
+ 
+-    vcpu->tpr = whpx_apic_tpr_to_cr8(cpu_get_apic_tpr(x86_cpu->apic_state));
++    vcpu->tpr = cpu_get_apic_tpr(x86_cpu->apic_state);
+     vcpu->apic_base = cpu_get_apic_base(x86_cpu->apic_state);
+ 
+     idx = 0;
+@@ -692,17 +672,6 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
+                      hr);
+     }
+ 
+-    if (whpx_irqchip_in_kernel()) {
+-        /*
+-         * Fetch the TPR value from the emulated APIC. It may get overwritten
+-         * below with the value from CR8 returned by
+-         * WHvGetVirtualProcessorRegisters().
+-         */
+-        whpx_apic_get(x86_cpu->apic_state);
+-        vcpu->tpr = whpx_apic_tpr_to_cr8(
+-            cpu_get_apic_tpr(x86_cpu->apic_state));
+-    }
+-
+     idx = 0;
+ 
+     /* Indexes for first 16 registers match between HV and QEMU definitions */
+@@ -751,7 +720,7 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
+     tpr = vcxt.values[idx++].Reg64;
+     if (tpr != vcpu->tpr) {
+         vcpu->tpr = tpr;
+-        cpu_set_apic_tpr(x86_cpu->apic_state, whpx_cr8_to_apic_tpr(tpr));
++        cpu_set_apic_tpr(x86_cpu->apic_state, tpr);
+     }
+ 
+     /* 8 Debug Registers - Skipped */
+@@ -1690,7 +1659,7 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
+      }
+ 
+     /* Sync the TPR to the CR8 if was modified during the intercept */
+-    tpr = whpx_apic_tpr_to_cr8(cpu_get_apic_tpr(x86_cpu->apic_state));
++    tpr = cpu_get_apic_tpr(x86_cpu->apic_state);
+     if (tpr != vcpu->tpr) {
+         vcpu->tpr = tpr;
+         reg_values[reg_count].Reg64 = tpr;
+@@ -1737,7 +1706,7 @@ static void whpx_vcpu_post_run(CPUState *cpu)
+     if (vcpu->tpr != tpr) {
+         vcpu->tpr = tpr;
+         bql_lock();
+-        cpu_set_apic_tpr(x86_cpu->apic_state, whpx_cr8_to_apic_tpr(vcpu->tpr));
++        cpu_set_apic_tpr(x86_cpu->apic_state, vcpu->tpr);
+         bql_unlock();
+     }
+ 
 -- 
 2.50.1 (Apple Git-155)
 

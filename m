@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7D36F99C6D
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 00:09:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D86CFF99C6D
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 00:11:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wDtEy-00009M-Ut; Fri, 17 Apr 2026 20:08:53 -0400
+	id 1wDtGq-0000rj-1I; Fri, 17 Apr 2026 20:10:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wDtEt-00008V-HR
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 20:08:49 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1wDtGo-0000rL-7l
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 20:10:46 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wDtEq-000630-Ig
- for qemu-arm@nongnu.org; Fri, 17 Apr 2026 20:08:46 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-82f1bfc9b8fso557923b3a.1
- for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 17:08:43 -0700 (PDT)
+ id 1wDtGm-0006UM-NH
+ for qemu-arm@nongnu.org; Fri, 17 Apr 2026 20:10:45 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-3614826eca4so555531a91.1
+ for <qemu-arm@nongnu.org>; Fri, 17 Apr 2026 17:10:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776470922; x=1777075722; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776471043; x=1777075843; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=KnbkQGrVB7bINDJ29Y/dXFuTqXc4UOVwMIevBemqQm4=;
- b=IkskD8fnn7p9xhGojjGAZCUkQjVWb7o8FXLCkgdVmZ06xL9kIseBRr+cIkE2tBrLsJ
- 7aeFpJANQ4mpE44xIMX8HsIz2TnPQPk8ZnQt3szF95SlCk4TeRMtu1Ghk3bDZUCitJDe
- l4ik+fMUEkAKCPpI/G0IjKS5Yu9HPpJqYdQ00A9imLIYliy4fdzx4HAcYffo4FaIBstB
- dM644vFcy3cZWqyA4jAOFm/qE0w6Eh56TS6Ad6W42DICmfotvECsI5dy6avnpwiqO0hB
- tTglUVyZDgdEk+7n7EClHUc1oo88dVxig822yjHmPqdZ3OW5JDbCowBXxTrpESgbM6ug
- hD5w==
+ bh=EVpSqqubsVXSRRzeOpPlJKLYWdiJNnOqvaVFXBoOq4Q=;
+ b=ngBEoYTRgJlgiuIHg7Ntal2hmPSQAj9nJqCJA7cq7X5GrULXP67i4e4BYL/NVpTSFp
+ t37MLHHElmo3Aexd1DdolMfvdAxUgJMiQvKSZlGTn+Tm/YIlqecCSJFcFlJQmidm/iHx
+ haAtAo5BXSqcH2tu3bbB+6ww8mmqgeqr5pBvqQ2Ib+FkQBC6/uRVTOWz1iEfryXAHzhv
+ lyXiq4n01Ytd+ITEFxNqb2pOIrV0FxxnnR8rbqWY0hyL4c/arsj13BExmRvih0XYNICq
+ wcTHpCSLK4BGzfoyQfiOkwnFz5sXmv0HrBRZVSMcip2sSMlIt6y0Wfcct0FT3fLmblaK
+ GRRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776470922; x=1777075722;
+ d=1e100.net; s=20251104; t=1776471043; x=1777075843;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=KnbkQGrVB7bINDJ29Y/dXFuTqXc4UOVwMIevBemqQm4=;
- b=fUJetWoaWhM3kW+XXsDMBC1x9U/bruXSKOBzZK/xrsGUIUmyEtFpVHQ8sW5DpftsCn
- S6zm1ssw/XVDLOcBRCAFo5PWq/PMUfEAsib/WkKg+R4Ktl0eXA+qoceom54mYgt10BUm
- iE5soBe/UCcGyIZ+XTI+ugX7lWJVOY9Dokv7C1I0NPtDBbC7JitK++aR3S4zVCGfoxpk
- ZZJUdMBzCUToZlFxGyKRtvaZwW2gC9I6IPP/39kUqcJreEaTnAiy0X/+VjgT5xiShbt1
- JHvmvhcmpPY9yi0hiIgpSnuhJgGOzZlXHvq8qpSbWxJuPNc086VmSycf3FMG0EFJKKNF
- YoQA==
+ bh=EVpSqqubsVXSRRzeOpPlJKLYWdiJNnOqvaVFXBoOq4Q=;
+ b=IpQqSeYtnhgFOt0zmRcwhbL1asmrw4PqC6WttrFWRW8XO6zMl5O9wOOv9Qy+gh5unW
+ svYGil0B6380Ub/nywTKzlRFHFpiqbEcTPbt0HWeiVzRLm3kD1roFlzpEo0G4x6FKSvj
+ DZIew693h1nVaQFQ8Mfn5nwGyuU6H7TkS8d0rnnY8H6z8GW57ItStGaQLIHQXFzZWHLU
+ JQGJ0hX691kWO6kt8/Y+VAZXoU/Fos09Wsp2ifiDqsHLJf71ISwwSEGmaiBMgN3KmqXe
+ AIxt0kwSoXAnQ+/P/M/PeY2irT7yH1M96Ze97WaxE9HOg7qui+0BqMRvo4mwLbHIh6kb
+ VYWg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/MLZQVuOjR6Kr9OpXFKz7dOkc0KNxDRKWMQC363R8f4ZW/DeTS2jBRd6ciklTWQkk05qpvU2f4Kw==@nongnu.org
-X-Gm-Message-State: AOJu0YzLYHUbbZ7dM2XPlLSVOW1bCjixxK2+FhoAuIPVQFFWJIvXMJle
- CR779keHKbFraIrqgpVEMvsK4nYbZwGQRoPUFJOshwVgBMm+2X8xf1V5x1m6gGSBpv4=
-X-Gm-Gg: AeBDiesaU5pWc3U28zfCPAMry+eJYHzdBHHCMIZ3KPNO4L9fUUvCdfBiOX+lHizWAut
- BZSu3fpR/VirTaeODb9aiGER4y+X08fHiH4FmL2BPsX986t76JMFagDERQXnr3PH2PZMBDAqFwq
- xi55QDrKUY2eZS745JDaptXfLsmN4ZKi+p18gu6LH6fQQPjBfaiFtPIymIBKPFj5MqrU+a9TQjT
- 4oTy+Q1Apkfu3eJBNkBayoaKMC+pIFEnGjExj92jkvqp35b02QF+n/Ii/1c+TG61AviNjt7u64V
- ofBUdDsozlnVsgR3gw35NqUdgK5P3gt4NHOQRSrZ0EpPuCbcyoLKNERFnaBrTP6z+4hsztvlUkl
- pBLJU2sHUo0GsWdCiZqiMB8uNE/ghIZ68BURv3/GAA1KO+NTH0RaOnUC/Q/X82U/BHPE8aTtC1w
- wtLtLAQezkFIzQIxfoCpwK/ARbz6dFvJK5nSZ8MuHIhaxc38HcS7cWYEfKgGYJPdA7CL8OARc1D
- SLdZnItUnMfLGZ7qmU+Mtfh67kuO7oNZ1i5VRrHuv1FRwqdykCb2wDp5BeOQxINKw==
-X-Received: by 2002:a05:6a00:945c:b0:82f:9407:d155 with SMTP id
- d2e1a72fcca58-82f9407d4b9mr2691463b3a.40.1776470922052; 
- Fri, 17 Apr 2026 17:08:42 -0700 (PDT)
+ AFNElJ9MxYm4LwH7baj7UFqWp1fwcbPMMeg71T2IEL04ewjio1SUTpt436xQ0ynKzu9y7BQGqWdtfFTaKQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzke/sIQhyvNnln+YUdDfHbxWe+5wGDfr6PhXEDZyPRPHvCrYhY
+ Yi6+Y7YhtgkK5ugTYyRnDZmD1CxWg2a1H00F2fHRCHPhRDGuL0TX2y1DUXqn949x9x5z+JkHRO6
+ RE0sp1gU=
+X-Gm-Gg: AeBDieuWPSLRBpG6fYlbmJv+1iAwgyoCkWbbnrn6Wdo5zog+ddCgfmbTccqfpcJtKoM
+ l2qrui5q3DILUT1DRJMXsxRwR+zfhdYN9xBLCQjwFF9K2sZaG6BlWwntIXQAj7aHItwPmAMnBFV
+ pKASSf4j+Kudl6thif17771qjFsUCtlAHQ0Fq6pSS56s7chQKZ558Aufi9ph3jyvXArFBGLkDN7
+ UwtTU93BaD7nqeMYPm5WWiEO+leeLcmLklbQSToHhHMfN/gW4DjCr8G3o4BeP2xbMDd2d54I4uV
+ /82Z7gGAkqmAlyER1R1iicO8RuqtEKtwubXYPcuD7r9WSaCNVuhXO0KLkQJrZCwF1bTRCAmM/w3
+ 7vD94WdO7COUh0P7g9Sk1MzcilZY5R+FLkqszSMyDSm2nWF4Fa8Juao+479cG8PYR2GjRmUFeEt
+ TZvBRjQdtaeLJ2e2tqY6nMekdjpQpIkii+UgA5JWaejbTAxlpS/9gKZAgXPP+39WGeEGjEPf9mg
+ jxRmBHUoRXXtSIyGuyPL8l73dfOH/+Ssw8aCOfOEq56/Hm2G/lEaOLz5/wi/i+r6Q==
+X-Received: by 2002:a17:90b:5203:b0:35f:b9ea:8f9f with SMTP id
+ 98e67ed59e1d1-36140464842mr4435573a91.16.1776471042858; 
+ Fri, 17 Apr 2026 17:10:42 -0700 (PDT)
 Received: from ?IPV6:2401:d002:dc0f:2100:742f:8dfc:5be0:dc23?
  (bg30dhzyct7sk57q2zln.ip6.superloop.au.
  [2401:d002:dc0f:2100:742f:8dfc:5be0:dc23])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82f8ec04448sm3708513b3a.55.2026.04.17.17.08.39
+ d9443c01a7336-2b5fab4cc47sm32729265ad.82.2026.04.17.17.10.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Apr 2026 17:08:41 -0700 (PDT)
-Message-ID: <641cb56f-7e38-4b09-8514-5301827242c4@linaro.org>
-Date: Sat, 18 Apr 2026 10:08:33 +1000
+ Fri, 17 Apr 2026 17:10:42 -0700 (PDT)
+Message-ID: <aba8b166-ba1e-4906-b648-34950bd4b674@linaro.org>
+Date: Sat, 18 Apr 2026 10:10:34 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] target/arm/cpu-features.c: New fields in AA64MMFR4
+Subject: Re: [PATCH v2 2/4] target/arm/cpu.h: New GPCCR fields
 To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20260417-jmac-feat_rme_gdi-v2-0-7cf5131aeb60@linaro.org>
- <20260417-jmac-feat_rme_gdi-v2-1-7cf5131aeb60@linaro.org>
+ <20260417-jmac-feat_rme_gdi-v2-2-7cf5131aeb60@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260417-jmac-feat_rme_gdi-v2-1-7cf5131aeb60@linaro.org>
+In-Reply-To: <20260417-jmac-feat_rme_gdi-v2-2-7cf5131aeb60@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,38 +110,34 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/17/26 21:02, Jim MacArthur wrote:
-> Added RMEGDI for FEAT_RME_GDI and other new fields.
+> Add SA, NSP, NA6, NA7 for GDI and GPCBW for good measure.
 > 
 > Signed-off-by: Jim MacArthur <jim.macarthur@linaro.org>
 > ---
->   target/arm/cpu-features.h | 8 ++++++++
->   1 file changed, 8 insertions(+)
+>   target/arm/cpu.h | 5 +++++
+>   1 file changed, 5 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
+
 > 
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index b683c9551a..2d1a3196b7 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -346,8 +346,16 @@ FIELD(ID_AA64MMFR3, SDERR, 52, 4)
->   FIELD(ID_AA64MMFR3, ADERR, 56, 4)
->   FIELD(ID_AA64MMFR3, SPEC_FPACC, 60, 4)
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 657ff4ab20..1cfef02dc0 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2089,6 +2089,11 @@ FIELD(GPCCR, TBGPCD, 18, 1)
+>   FIELD(GPCCR, NSO, 19, 1)
+>   FIELD(GPCCR, L0GPTSZ, 20, 4)
+>   FIELD(GPCCR, APPSAA, 24, 1)
+> +FIELD(GPCCR, SA, 25, 1)
+> +FIELD(GPCCR, NSP, 26, 1)
+> +FIELD(GPCCR, NA6, 27, 1)
+> +FIELD(GPCCR, NA7, 28, 1)
+> +FIELD(GPCCR, GPCBW, 29, 1)
 >   
-> +FIELD(ID_AA64MMFR4, POPS, 0, 4)
-> +FIELD(ID_AA64MMFR4, EIESB, 4, 4)
->   FIELD(ID_AA64MMFR4, ASID2, 8, 4)
-> +FIELD(ID_AA64MMFR4, HACDBS, 12, 4)
-> +FIELD(ID_AA64MMFR4, FGWTE3, 16, 4)
-> +FIELD(ID_AA64MMFR4, NV_FRAC, 20, 4)
->   FIELD(ID_AA64MMFR4, E2H0, 24, 4)
-> +FIELD(ID_AA64MMFR4, RMEGDI, 28, 4)
-> +FIELD(ID_AA64MMFR4, E3DSE, 36, 4)
-> +FIELD(ID_AA64MMFR4, SRMASK, 44, 4)
->   
->   FIELD(ID_AA64DFR0, DEBUGVER, 0, 4)
->   FIELD(ID_AA64DFR0, TRACEVER, 4, 4)
+>   FIELD(MFAR, FPA, 12, 40)
+>   FIELD(MFAR, NSE, 62, 1)
 > 
 
 

@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57831F99C9C
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A30CDF99C95
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:25:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEE0J-0002m1-Fo; Sat, 18 Apr 2026 18:19:07 -0400
+	id 1wEE6b-000460-3K; Sat, 18 Apr 2026 18:25:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wEE0D-0002k0-R7
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:19:01 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wEE6Y-00044L-Vx
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:25:35 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wEE0A-0000Pq-BF
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:19:00 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-43cf8d550bdso1641463f8f.0
- for <qemu-arm@nongnu.org>; Sat, 18 Apr 2026 15:18:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wEE6V-0002sq-UU
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:25:34 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-43cfbd17589so1313968f8f.0
+ for <qemu-arm@nongnu.org>; Sat, 18 Apr 2026 15:25:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776550737; x=1777155537; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776551130; x=1777155930; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=KlA/U8IzlztRpTjIxKWBW7w5+tdKgQaG5Gqw3lrujRY=;
- b=HAeAT1r/yf8wup7TD03OsxvktgNnzVpK5/KAAli+biF+6kR8mkRDRL7hnqqgtu5cpL
- 0t6xnQEOm5Lu0p0gpZVlsUOWL1fb897qE/QabiNPo5DkTtlYg1r5Hib/mQX1MNXEjAP1
- AUT5vB9ENoOjhiXy8MhQ9QEU5n0J4SJKdSYwF0bkkCld6RRBtinLOe4YRY6KfusORnPX
- FMuKZI2WMQR7GnNqkFlCNUZso8KKwtYbnVFXM3E5mI3Za4siH7MfGdK/tHaumMVynj1x
- Uq5VrkWuouXMWeVv1b0lzSqmL8WoVKKTIjL1suoIN0I3UWedjaL3mHwCzzmEk2iclRXK
- IYKg==
+ bh=zbcV9wQ0sMke8oFGxVdmawqkZi5scz9u6I+J7vEifXI=;
+ b=PEO5HpLl6cvrUcVIk/auyWZQcZ5aSJmzJF6r9nkTFhRNox9RSeb22CNk7WpN0iB9ZM
+ EQElIG2Plv63A7dqi230SbSO6OUQTQG2JAfexMxZBvf/NBFLPA29Yp7XwPEdrjNyVLWT
+ VxJ6oQrZWvTx5SXb57M9+SC8tI27tYmhI0V4TYxQhZP+lzHldRhCvKy+EI4edvZJUePM
+ Hwq7iJUUS44m9u672fXCo5pDTQeSH4asc6wHqXj/e2/3AvDomNVZvcrNcF6UuS92Aztk
+ lceCWl5EcF5NxnOl/dpJDPgaf0OUPnHuRLzGxT5kJuamivLbh0H4GNp4WVHY/MJjWBDD
+ KALQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776550737; x=1777155537;
+ d=1e100.net; s=20251104; t=1776551130; x=1777155930;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=KlA/U8IzlztRpTjIxKWBW7w5+tdKgQaG5Gqw3lrujRY=;
- b=Y/dqeri11/GOrOHezEy3ENpZi84uOdvaaNFFm41cGGV6ojK547xq3/zKkn8lDtxiC+
- zuaHYYqfdqJPkSJf5GPKSfFHIoNVvgTZ/GvhKcGmHF+5BL0zwipjZZorhAWgr5phgcdJ
- UhsgDJAW61IDWZO5Jq+8Kyh1taYizHwO52mwDarpuCTY1YncOXypAg5Vu3Z9cWxJb5xg
- o/oavuzQtps9OXzUgrjVfp20U0gL9sfAgk+ncaH4BCGj/gHY4U2b0p10jalmjKVu0/Jf
- 3/0hmBhhMVsjbZLoMFZ+Yj2V+zv2zMTH6N8UsVeJhW/3djxleIl6MKPANXtiABaFpmE+
- bySg==
+ bh=zbcV9wQ0sMke8oFGxVdmawqkZi5scz9u6I+J7vEifXI=;
+ b=T+rQd1BhkusgfdFSU5Co5rYFuR9NaMeALa04OI0tcom8ueBqE84SsAYYKi17PKmlSi
+ CsxWt1NIM/jewlTa5gt4UqxNsEAVVs9UyzvtS45GlNCNYqc9HeaOQb1QJx0sQwNQRxCO
+ Nl2+zvkEN1U9uAA2VM68rwtMnPvu2GGaBqpNCkyhNgEhhx3UO/IH+yLVRPe6dBAHP48u
+ wQ96Tc5vx0T144Z547ecApIxiaueJfdx92UPzvBPfshefPcEM7McsaYK5jkv3xgG36FT
+ RTMT6Kz3+ITu8M6OYSEvX8D7Nk3uDD73ZGUrv4i/gB9/nGqp+ypwpLv6YBLgnm4oi1UE
+ /ppQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9gqkEeHOOBl4kemapGUEzPFxtFr2FOQBa2BekOsY6otf9i2ncJrw1wSJf5vJv3qqe5wuiKYe8uEw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1RHhT93W3rUwVQziVFy4tA8DKn2YV76rMpieMF3O+sDTDT1cB
- SsCAaiQTRVbBXjt9vmO5oFVs3+NXlrwjQj2taXYzpc4Oq6gHZn58al8QMiz0ifmn6Tw=
-X-Gm-Gg: AeBDiesrLeJr2MMutUYBtJ/hOjg90N8iKxMBPKDhNYgn+gYqKeCMr/NmDMN7D1/2dSv
- BhnR3y43esIRnW8Y7oqyyYttzIm9nuoEAYu6i05Z/mwqXVPzVAl8eRk/+ky/XBlFA3eY9gpnMKq
- Ty/2Gc5XdAOUAeT7mLnBrvN/6sbvXX7yQU06L4B6caSicDWn2RHXxeUKSPzggtFj84wXZANGEmr
- kkCiGgSPbWW81JWKTPbLRdowXzj6N++RE83rDD6AEd1xti6bp95pRYEPjYrIYhyK0qRymjlCkyS
- z+YTNI7+pGaEn2l47aIkJb1Jh3DXRy8JO+W1StSGFO9utPPeAcPClARhztt7+WKkJDYf+sF9szF
- ogcNyyXBiz0DAEDq1WaC7h1QFQf2mZcmsWJvERDBkODfqk+MLEVls+/91I0j9RVjp51g5h60g6j
- rtTrk4PGAyaQaX5CRF6crEEua55prJxSRVXsUIl9ve5532HDhfistnZ/TDdMhfJSv8RsKbe2jmr
- /0g
-X-Received: by 2002:a05:6000:184d:b0:43d:7633:2649 with SMTP id
- ffacd0b85a97d-43fe3e23dd9mr12771269f8f.45.1776550736636; 
- Sat, 18 Apr 2026 15:18:56 -0700 (PDT)
+ AFNElJ+R1oI42IlrEdqWZ6THKnpDqKIBBZO2b9fOQu5L0nmncXBhGXYB66PcSHd5M2EiDFR7oP9AA5gNaA==@nongnu.org
+X-Gm-Message-State: AOJu0YwSME0d1e90Zl+Lu6Y4OnhdoNWd6cZoY2ordUP9i5oQ+BxKE9DO
+ iX79panYw3j7Jvp6WoWuPR4JN0RLg5sfWva4BYQxnmcIpigRm4c4fnJveWBg29hjoI4=
+X-Gm-Gg: AeBDiesctSCwWklXSKO0c7Yozw+1YHmr/z/UVOCP7yvso1Y2LhBVoVweUdGb8iwd354
+ vUoAkl0kiuXK0bfy+kv/Syqa1V5LtsFF1UjIVsxabMLXqIAuhh5TpXSaJuBWtiWYfZYkrd4X2Pj
+ JnsPnXSWEXFkrMpc1a37hGSSx0WLLkT7JBkxzC6BaNyXVY4bgg6LnDyL5MIZMTOYL1Cw+Ikumj+
+ aLE2daDthk4GrOwb21nbClM6NFD4XFp/paok+416OihbJj4lGF/Jh5c3fAg20nqaUzu32nVjSoB
+ 2y2UyPgI1CLp/CO/pgDEmG6MUl0zoY29Sn9o4kWIuJ/a4tdBBLr4c0L1aa2WPUjGHj62xWj3Qc9
+ zD8VSlC0nzJYaNLTy6AjVtawPxqB1XSTbpHTbZVqfJka9E0KsJhTlvqujgJUjBHzGYh33NFCYXy
+ JnZ2wklEqtD0bKmwDyTvAK8Iz06E8rvwkBVOZ74IOjq3Hju1xPt8ZzDh052FgpEtQfNx6fq1mru
+ 1oI
+X-Received: by 2002:a05:6000:2f81:b0:43e:a638:2507 with SMTP id
+ ffacd0b85a97d-43fe3da64a6mr12004137f8f.8.1776551130094; 
+ Sat, 18 Apr 2026 15:25:30 -0700 (PDT)
 Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e44f69sm17077287f8f.25.2026.04.18.15.18.53
+ ffacd0b85a97d-43fe4e44f69sm17109618f8f.25.2026.04.18.15.25.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 18 Apr 2026 15:18:55 -0700 (PDT)
-Message-ID: <10de63fd-88bd-4088-ab7d-d97a722ed1f8@linaro.org>
-Date: Sun, 19 Apr 2026 00:18:52 +0200
+ Sat, 18 Apr 2026 15:25:29 -0700 (PDT)
+Message-ID: <5f593c69-e7b2-4df9-9a8f-342ba767c018@linaro.org>
+Date: Sun, 19 Apr 2026 00:25:27 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/17] target/riscv: Make get_phys_page_debug handle
- non-page-aligned addrs
+Subject: Re: [PATCH 14/17] hw/core: Implement new cpu_translate_for_debug()
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
@@ -97,13 +96,13 @@ Cc: qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>
 References: <20260417173105.1648172-1-peter.maydell@linaro.org>
- <20260417173105.1648172-2-peter.maydell@linaro.org>
+ <20260417173105.1648172-15-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260417173105.1648172-2-peter.maydell@linaro.org>
+In-Reply-To: <20260417173105.1648172-15-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,26 +125,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/4/26 19:30, Peter Maydell wrote:
-> Currently our implementations of SysemuCPUOps::get_phys_page_debug
-> and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
-> non-page-aligned virtual address and returns the corresponding
-> non-page-aligned physical address" and "only returns a page-aligned
-> physical address".  This is awkward for callsites, which in practice
-> all want the physical address for an arbitrary virtual address and
-> have to work around the possibility of getting a page-aligned
-> address, and it doesn't account for protection being possibly on a
-> sub-page-sized granularity.  We want to standardize on the
-> implementation having to handle non-page-aligned addresses.
+On 17/4/26 19:31, Peter Maydell wrote:
+> In cpu_memory_rw_debug() we need to do a virtual-to-physical address
+> translation for debug access.  Currently we assume that the
+> translation is valid for an entire guest page, but this may not be
+> true if the target implements some protection regions that have
+> sub-page granularity. (Currently the only such target is the Arm
+> CPUs when using an MPU, as in R-profile and M-profile.)
 > 
-> The only thing in the riscv implementation that we need to fix
-> is the place where we explicitly round the return value down to
-> a page boundary before returning it. Drop that.
+> For TCG's emulated accesses, we handle sub-page granularity by the
+> CPU filling in the lg_page_size field of the CPUTLBEntryFull struct
+> to tell us how large the region covered by the result is.  But we
+> didn't extend this to the debug-access code path, with the result
+> that debug accesses might incorrectly fail because they are looking
+> at the mapping for the address rounded down to a page boundary.
+> 
+> Provide a cpu_translate_for_debug() function which reports to the
+> caller not just the physical address and attributes of the
+> translation but also the lg_page_size for which it is valid.  The
+> fallback implementation calls cpu_get_phys_addr_attrs_debug() and
+> assumes target-page-sized validity.
+> 
+> NB: the "return true on valid access, false on failure" follows
+> the same convention as TCGCPUOps::tlb_fill_align() (though it
+> is the opposite of what we use in some other places, e.g.
+> in target/arm's get_phys_addr_* functions).
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/riscv/cpu_helper.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/core/cpu-system.c             | 32 ++++++++++++++++++++++++++++++++
+>   include/hw/core/cpu.h            | 32 ++++++++++++++++++++++++++++++++
+>   include/hw/core/sysemu-cpu-ops.h | 27 +++++++++++++++++++++++++--
+>   3 files changed, 89 insertions(+), 2 deletions(-)
+
+
+> +    /**
+> +     * @translate_for_debug: Callback for translating a virtual address into
+> +     * a physical address for debug purposes.
+> +     * The implementation should fill in @result with the physical address,
+> +     * transaction attributes, and log2 of the size of the aligned block of
+> +     * memory that the translation is valid for.
+> +     * This must be able to handle a non-page-aligned address, and will
+> +     * return the physical address corresponding to that address.
+> +     * The attributes must include the debug flag being set.
+> +     * Returns false on translation failure; on success returns true and
+> +     * fills in @result.
+> +     *
+> +     * This is the preferred method to implement for new CPUs.
+> +     */
+> +    bool (*translate_for_debug)(CPUState *cpu, vaddr addr,
+> +                                TranslateForDebugResult *result);
+
+Since this call shouldn't modify the internal CPU state, could
+we use 'const CPUState *cpu'? Maybe not possible due to callees
+still taking non-const. Regardless:
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 

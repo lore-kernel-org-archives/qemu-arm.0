@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8164DF99C9B
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5671F99C98
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:36:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEEFD-0007Eg-Gf; Sat, 18 Apr 2026 18:34:31 -0400
+	id 1wEEFF-0007XJ-St; Sat, 18 Apr 2026 18:34:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEz-0006Pz-V4
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:21 -0400
-Received: from p-east2-cluster1-host10-snip4-8.eps.apple.com ([57.103.76.121]
+ id 1wEEFA-0006ud-F6
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:28 -0400
+Received: from p-east2-cluster1-host7-snip4-7.eps.apple.com ([57.103.76.70]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEt-000503-P0
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:14 -0400
+ id 1wEEF8-0005Cw-Uy
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:28 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- C0861180022A; Sat, 18 Apr 2026 22:34:07 +0000 (UTC)
+ 8FECD1800223; Sat, 18 Apr 2026 22:34:25 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776551650; x=1779143650;
- bh=Sw+c1/Szq2U+GFUwZJhzpKe2Oxhd+T8qz2/AUdFCjpA=;
+ s=sig1; t=1776551666; x=1779143666;
+ bh=MdExfT43UhW0TEktVljSUoe2lp3EKCmf2xhHSOPb+jk=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=AkE4p1pvpaIP4gLHDnKRyYXSVDbd8oDIMXXZIiNGfiWk14fve8tTuJueSdqqDmXmJo56iOiBevX9k52SAJfSoccLPqksJbDxR7w+l4vmaR9bbYd3yM2gPc5WhUvDpJuoTYB5IDb6DvOY4mYd/mb8Z+sSRqhbBXmCyDDYbJTXeEW1nt/9JkEJEhamIq3l4cm2P+DUXe/fxgxnTqsseEwenL5AQqiEnkfX9Gep6RggF3v2sUNz6qo/x2LKXVI2X8x74wd3HRa6PTGVhecRbWbE/qkciOhSAIDvyKqnUiKjYkPg84DmDIcmBH5j1pmxyqHqIydURPTR+aTZ0ezvb7ILXA==
+ b=RHSeQFJXEaQc/01mwAgfszUCMPCwIBhULA4qa7hIhOPOAgTQ8uPKhui3Ktf2fa2BIQdQOWZYPaXOwyiRW+KQwtPaHFaKM4mCPqInJ7k8VmERfN2yuuLGdZNzA7nRxd9Eiw67CVg9dNG57cGAL853QhDaOAuQrhK/QudiKJhdZvGnaL0F2Qzc1AdpLLQ8b7r9o6sTvLQ83ox/0RHSocaSWPtWXQkRew6kDYh4wisBLuveWRyLCu5S5emwPUHpe6UmSQ2ge2zQpgfb7O5gsKBbyFxJtqkmIWD2IzQF+qStPpVIaI3JbTpj7Xzpy9Pz/iJRM8fxsY0tE6UJb9kEFnge8Q==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 6551C1800216; Sat, 18 Apr 2026 22:34:05 +0000 (UTC)
+ B364818000BB; Sat, 18 Apr 2026 22:34:23 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -42,36 +42,35 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, Wei Liu <wei.liu@kernel.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 23/38] whpx: i386: one more CPUID
-Date: Sun, 19 Apr 2026 00:33:05 +0200
-Message-ID: <20260418223320.51330-24-mohamed@unpredictable.fr>
+Subject: [PATCH 33/38] whpx: i386: update migration blocker message
+Date: Sun, 19 Apr 2026 00:33:15 +0200
+Message-ID: <20260418223320.51330-34-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260418223320.51330-1-mohamed@unpredictable.fr>
 References: <20260418223320.51330-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: NPMvtsQwQNLiuSPQFQxELSsZpAZe5sva
-X-Authority-Info-Out: v=2.4 cv=KIRXzVFo c=1 sm=1 tr=0 ts=69e406e1
+X-Authority-Info-Out: v=2.4 cv=OoNCCi/t c=1 sm=1 tr=0 ts=69e406f2
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=zJD0qBlfmizEQV4F3ZsA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX++qfVw00K/Qt
- Mo+YM7nZ2qbfauVuVE62E/iaMeSXzMhpJHnwxwJOV6HD/3a2MYd5iaPnHT4S9U/C7lhiOsclHL7
- wyJAk2FRkqhREmGBc6gihHaQ8H3cwlwGuVqNkGSHIfu/BaAb1M7b8Rq/No0FG3ZXuj8hyZvpF1+
- 0ROyauezEOklnlftvthdNXUyJ8QK/Qhia0XR3vRE+Sg0kmhjFXQMVbFaNn1s1Nxdj7Po22aL4np
- 8N+QESU5a8GZX5lpH0GECuG9MomiWQtPEjscl5SgM+hNJwaR0TOFsbb7XeqFQTFg5NscOOe+zsR
- wl04XUeMnDEVTiO1X+X7NSt8NMhrC1UWeL7BmyQRzE2yfbsDGPoRAZ0WyG5CK0=
-X-Proofpoint-ORIG-GUID: NPMvtsQwQNLiuSPQFQxELSsZpAZe5sva
+ a=0IeqtQ1xXW1zzRo-U5sA:9 a=ZXulRonScM0A:10
+X-Proofpoint-GUID: YM4rWn84DvxPSWo21FB10KB-tJvTSdU8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOSBTYWx0ZWRfXz6up2eHRnzXT
+ S9Npb9zDQanA/RIEDPU0XJyr+nHuZgR2svynkraNrNoZyoN/DC2A3hd8/4NYeg+cppiyT5n2eMt
+ UrPh6j56YFV9YATxrI6yYt2BNC0IcsaVwJ6YbBmYbinXP/CAeawxmmydCG6qXz7LAsiv1aB/OzW
+ m/zQy4S6GslDTsOdizW26ijrVVgYTMf3URVrmrbb1vtP8FZbAe1zDhyq2DpzsK3VEpxEcamRDPx
+ KDNtmkGJXb2F20XmPY8ycPNJ7Nz0bJJ8pIUq4p9XB2ZJ5Uqp/JeX2awlvFQ1FFvUhInwFO/ZOkk
+ ki9hf/HBvy9dNqwJ0SN8ZJT8t7e+1RmQFKOZ1Lw+RrDvMXfsiiR3e8qWI8u1Pg=
+X-Proofpoint-ORIG-GUID: YM4rWn84DvxPSWo21FB10KB-tJvTSdU8
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-18_06,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=821
- mlxscore=0 suspectscore=0 clxscore=1030
- phishscore=0 lowpriorityscore=0
- bulkscore=0 adultscore=0 spamscore=0 malwarescore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 clxscore=1030 phishscore=0 mlxscore=0 lowpriorityscore=0
+ spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=637 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2604180228
-Received-SPF: pass client-ip=57.103.76.121;
+ definitions=main-2604180229
+Received-SPF: pass client-ip=57.103.76.70;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -95,26 +94,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Trap cpuid_0xb as it has x2APIC topology information.
+Quite a part of it is from older times...
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/i386/whpx/whpx-all.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 4dc4030d87..5c2a9bb8ad 100644
+index 0f50cf098a..98b13676ba 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2527,7 +2527,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     WHV_PROCESSOR_FEATURES_BANKS processor_features;
-     WHV_PROCESSOR_PERFMON_FEATURES perfmon_features;
+@@ -2568,8 +2568,8 @@ int whpx_init_vcpu(CPUState *cpu)
+      */
+     if (whpx_migration_blocker == NULL) {
+         error_setg(&whpx_migration_blocker,
+-               "State blocked due to non-migratable CPUID feature support,"
+-               "dirty memory tracking support, and XSAVE/XRSTOR support");
++               "State blocked due to missing dirty memory tracking support,"
++               "And some system register/state save-restore ");
  
--    UINT32 cpuidExitList[] = {0x0, 0x1, 0x6, 0x7, 0x14, 0x24, 0x29, 0x1E,
-+    UINT32 cpuidExitList[] = {0x0, 0x1, 0x6, 0x7, 0xb, 0x14, 0x24, 0x29, 0x1E,
-         0x40000000, 0x40000001, 0x40000010, 0x80000000, 0x80000001,
-         0x80000002, 0x80000003, 0x80000004, 0x80000007, 0x80000008,
-         0x8000000A, 0x80000021, 0x80000022, 0xC0000000, 0xC0000001};
+         if (migrate_add_blocker(&whpx_migration_blocker, &local_error) < 0) {
+             error_report_err(local_error);
 -- 
 2.50.1 (Apple Git-155)
 

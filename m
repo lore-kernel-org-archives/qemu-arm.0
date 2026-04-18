@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDF9F99C9B
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3AFF99C9C
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:35:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEEFA-0006xD-SK; Sat, 18 Apr 2026 18:34:28 -0400
+	id 1wEEFC-0007A0-Ri; Sat, 18 Apr 2026 18:34:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEj-0006J7-I7
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:02 -0400
-Received: from p-east2-cluster3-host10-snip4-10.eps.apple.com ([57.103.77.151]
+ id 1wEEEt-0006OU-Vn
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:15 -0400
+Received: from p-east2-cluster1-host4-snip4-10.eps.apple.com ([57.103.76.23]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEEh-0004xN-RB
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:01 -0400
+ id 1wEEEs-0004zZ-Ho
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:11 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 3403F180022D; Sat, 18 Apr 2026 22:33:54 +0000 (UTC)
+ C70BF1800231; Sat, 18 Apr 2026 22:34:05 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776551638; x=1779143638;
- bh=4624USsR0p7NklevhZpyiOMKAkWt2GrauvKzkoCskVE=;
+ s=sig1; t=1776551648; x=1779143648;
+ bh=tT4F++bSuONbY+c7bgtCCb6QKbPZ19v7x1ehrozqyHo=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=RAMoMLPA3CPmVMfMZxnMGbp+KmhW7TWeoo0EiTToDYOMnduynxvaA9VyF9ONzHh8uLa3Ki744I1Q/3qGgqwSqnHcAUe7yXGWv4nd/NgXx0KL8y6VsVXQ8jZ3zoRWnnhKR3ZgqpW1U7yJSxsNOpdnxqc2oXhhkYDTNmNDOdqsx1faZ8KIy1YVPQTP68QO6G99aFjcTVcvO33hx8kC287a6aLZqb+s5oqp+fBdGBQ+i0r2gxDPMiAPmoPwEL0mFSpYG/LdhS6vzKYHwElKe+ELFUlagToC+1hoQG6xFya8wBGj2PZkIeWdJZ+ssO7bDqKnwCnT3bYLjziGlZY4agRHgw==
+ b=O8w4/47D4XZskitdcX2YOeuBuQ12/ujwKhcENAlau9q5kOEe89QzGWivavsGd0X8jWc4kVFHyY65OoqGBrHRsWDIGpSXg51tAFkcIUODPKKFr4+vwZMDr4lhJwiCz2C9QNlYHWtwy0ikKJBbLJpXWWw/Tw8vwOjaT2e4t0uqtvxonWkhcvfxNj8evmuKAeMnBZnO1RzUBCynf0vbI4OwsnFoqfNDuumYfrADZRXlU0C00A2e65eRoLl0aAzj0f8wXfKPG1NttPSTiISxW4u5XB1v+m9vxRyDrdlKhwrAmmTUn5svEhJ1WaoN9vi7NhFnzkWjfOpYuB1WFkX+rLSjIA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 9515018000DE; Sat, 18 Apr 2026 22:33:52 +0000 (UTC)
+ A08971800219; Sat, 18 Apr 2026 22:34:01 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -42,44 +42,45 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, Wei Liu <wei.liu@kernel.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 16/38] whpx: i386: set apicbase value only on success
-Date: Sun, 19 Apr 2026 00:32:58 +0200
-Message-ID: <20260418223320.51330-17-mohamed@unpredictable.fr>
+Subject: [PATCH 21/38] target: i386: HLT type that ignores EFLAGS.IF
+Date: Sun, 19 Apr 2026 00:33:03 +0200
+Message-ID: <20260418223320.51330-22-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260418223320.51330-1-mohamed@unpredictable.fr>
 References: <20260418223320.51330-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: ath6hSxmO0vdrhsd7QiH7xi9SuHyLSxy
-X-Proofpoint-GUID: ath6hSxmO0vdrhsd7QiH7xi9SuHyLSxy
-X-Authority-Info-Out: v=2.4 cv=AqXjHe9P c=1 sm=1 tr=0 ts=69e406d5
+X-Proofpoint-GUID: a6BJh7fyF4zeEZ00KtYypgFWOSnNrQyK
+X-Proofpoint-ORIG-GUID: a6BJh7fyF4zeEZ00KtYypgFWOSnNrQyK
+X-Authority-Info-Out: v=2.4 cv=I+Bohdgg c=1 sm=1 tr=0 ts=69e406df
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=uh2sygq7LFHjsVUyvz4A:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX3GdIRHfLQlUg
- xQlYg6EJS6IztzIDOzQ3z4W5Bv8AmJW4bTcgDlg36MI8SOr20lzyFtx4ur4U3sCRkp9OuWuwDOe
- HmlGsIFDcHBG92y4AGXDYuC/PzUiXuZB18nBf29qR0rRNw+jA10MYV5C1wGslkyuxdU3/87kBGy
- 7l9RPI0qdR73+YtD2Lw+Nj489MFSwL9kdYk9akamwpB0VIB5MD3lnez+A9wHfIF/Bx6qX0QB1v6
- 9vQ04p6gh9gMJdQNzX9gQjckJqo7c2JdyODOIGZOp5/wLJreohWRBnhTjwMaTJa6MQ56z7t3BF6
- /D+tsKxcf4rRy9lGKLoNbQTUEeO0PKkZWdpVnR78jFj62ohptPTX8hWGNyTkOo=
+ a=ZtXhj7NgbhMgH__AbsQA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX8cCnHyQ5HXSV
+ Pv2GiKFlPk/Vy8eSD+8ZwY8L/6PPm+1VCUXHHCe6oOYdLqRsLuAQicHI7wNpWOspYa4hTRWh3EJ
+ PsbTw2E90/PFfLYvgc9jQ7AS8LiCwzDpSfrSRGpGbTWNQq4Dq0sZl78hTlA5yi/S1pX+p/1+3Xe
+ prL+mDYsB6jB+3HzsOBSlKB5Gbe3D8XPB3Y6T7JGNpeEDXg5JdiC7z5hZhb35eubryziyWO4n3K
+ dr/X2chuD3hnpt/1uRXRjo3aZ9VmIABaCvik7h0//aBN+uhLX83lWpqoKyzS//VOMwd5k+jYOYh
+ ra/1Cwk1vWYTaB36yexXsaN4tC85MOwoxRkRSsjI+arUoBzqhFceGAw4SboD3c=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-18_06,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- lowpriorityscore=0 phishscore=0 bulkscore=0 mlxlogscore=676 mlxscore=0
- adultscore=0 malwarescore=0 suspectscore=0 clxscore=1030 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=959
+ phishscore=0 suspectscore=0 bulkscore=0
+ malwarescore=0 adultscore=0
+ spamscore=0 clxscore=1030 lowpriorityscore=0 mlxscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604180228
-Received-SPF: pass client-ip=57.103.77.151;
+Received-SPF: pass client-ip=57.103.76.23;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,26 +96,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+The TLFS says:
+
+> A partition which possesses the AccessGuestIdleMsr privilege may trigger
+> entry into the virtual processor idle sleep state through a read to the
+> hypervisor-defined MSR HV_X64_MSR_GUEST_IDLE. The virtual processor will
+> be woken when an interrupt arrives, regardless of whether the interrupt
+> is enabled on the virtual processor or not.
+
+Meanwhile, Windows 24H2+ calls this MSR anyway without the privilege being set.
+
+Add the infrastructure to support it on the generic QEMU side.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/i386/cpu.c | 10 ++++++----
+ target/i386/cpu.h |  2 ++
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index c6f4041515..0d72e93621 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -2001,8 +2001,9 @@ int whpx_vcpu_run(CPUState *cpu)
-                     int msr_ret = cpu_set_apic_base(X86_CPU(cpu)->apic_state, val);
-                     if (msr_ret < 0) {
-                         x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                    } else {
-+                        whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
-                     }
--                    whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
-                 }
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 0000093fa3..b18e40666e 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -10482,13 +10482,15 @@ int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request)
+                    (((env->hflags2 & HF2_VINTR_MASK) &&
+                      (env->hflags2 & HF2_HIF_MASK)) ||
+                     (!(env->hflags2 & HF2_VINTR_MASK) &&
+-                     (env->eflags & IF_MASK &&
+-                      !(env->hflags & HF_INHIBIT_IRQ_MASK))))) {
++                     ((env->eflags & IF_MASK &&
++                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
++                        || env->hflags2 & HF2_HYPERV_HLT_MASK)))) {
+             return CPU_INTERRUPT_HARD;
+         } else if (env->hflags2 & HF2_VGIF_MASK) {
+             if((interrupt_request & CPU_INTERRUPT_VIRQ) &&
+-                   (env->eflags & IF_MASK) &&
+-                   !(env->hflags & HF_INHIBIT_IRQ_MASK)) {
++                   ((env->eflags & IF_MASK &&
++                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
++                        || env->hflags2 & HF2_HYPERV_HLT_MASK)) {
+                         return CPU_INTERRUPT_VIRQ;
              }
+         }
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 0b539155c4..67f508dc10 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -225,6 +225,7 @@ typedef enum X86Seg {
+ #define HF2_NPT_SHIFT            6 /* Nested Paging enabled */
+ #define HF2_IGNNE_SHIFT          7 /* Ignore CR0.NE=0 */
+ #define HF2_VGIF_SHIFT           8 /* Can take VIRQ*/
++#define HF2_HYPERV_HLT_SHIFT     9 /* Hyper-V HV_X64_MSR_GUEST_IDLE */
  
+ #define HF2_GIF_MASK            (1 << HF2_GIF_SHIFT)
+ #define HF2_HIF_MASK            (1 << HF2_HIF_SHIFT)
+@@ -235,6 +236,7 @@ typedef enum X86Seg {
+ #define HF2_NPT_MASK            (1 << HF2_NPT_SHIFT)
+ #define HF2_IGNNE_MASK          (1 << HF2_IGNNE_SHIFT)
+ #define HF2_VGIF_MASK           (1 << HF2_VGIF_SHIFT)
++#define HF2_HYPERV_HLT_MASK     (1 << HF2_HYPERV_HLT_SHIFT)
+ 
+ #define CR0_PE_SHIFT 0
+ #define CR0_MP_SHIFT 1
 -- 
 2.50.1 (Apple Git-155)
 

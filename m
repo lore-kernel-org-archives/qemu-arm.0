@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 597D7F99C9B
-	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 135D1F99C98
+	for <qemu-arm@archiver.kernel.org>; Sat, 18 Apr 2026 22:38:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEEFH-0007h5-Na; Sat, 18 Apr 2026 18:34:35 -0400
+	id 1wEEF8-0006is-7K; Sat, 18 Apr 2026 18:34:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEFD-0007Fi-Sb
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:31 -0400
-Received: from p-east2-cluster1-host5-snip4-1.eps.apple.com ([57.103.76.84]
+ id 1wEEEw-0006Os-6M
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:17 -0400
+Received: from p-east2-cluster1-host11-snip4-10.eps.apple.com ([57.103.76.53]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEEFB-0005De-4V
- for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:31 -0400
+ id 1wEEEs-0004zd-JH
+ for qemu-arm@nongnu.org; Sat, 18 Apr 2026 18:34:12 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 8BCB418000E2; Sat, 18 Apr 2026 22:34:27 +0000 (UTC)
+ 105451800234; Sat, 18 Apr 2026 22:34:05 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776551668; x=1779143668;
- bh=kGhBK4LCPtYSYe6aojWD51bIwGxqBS+1pxUsdaVHLfk=;
+ s=sig1; t=1776551649; x=1779143649;
+ bh=35AwHuK3FNutlfTTq4p+Vg27ixeNuT9FvPY378EVDsQ=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=HWWz826Phui9dviZ5wpRDaIsKTOPsi6eLmN/PAta3epWjFjdLUtUGx35YdAgYTIpuTDW+PE6WCWZauRsNVjGO3J1qBbFy50fDLF5//DjUu9vDXixFFg6o4AiVN997BO+nDTIOEcyOt8AuTpm02WgRbXulGPnDtwW3wNXrtasyvqv4MbLt3GeVVbU7IiJBRxeJ315cCa9hGvAhB6nUerm1U6EgWxXGdj4GxFLgQRCm2fc6CR7KZO042RA3OCGWJoziiRYzJsM6jMvlJ1uZiNCWEHm3FTjFr/DJ6LRsXOsby6wtlcSzXFAVaZQoGDgpFmXXRBtEWLuj68PmjzIc0zRmA==
+ b=HGy6m1DhbjBukFEOW1YuZ+3TUSCKAi+4JIBtmGn/5uL/7By9TiE1gOykoaNe8PXzdRYkMZTWc9QPd/pApMcnAyUaD5m9ds35D/i3BS3qT3phzDz/RYn1gA4oGmjBC/KE8XHULdbGjSYc7lKxEjT9098phT/7HL1IdcsWoXwBMx9kPGRkzF7NhbU+YskrbnJLOs9hx/Fp9II9k9LiGSP3YJ1Da1YitgG1K4RWjsss7uqbrvH219D8FlvP1wd2qFzPZKTj3A6FGX5/p4xnWCG0fYnvxDXLRw2AcqnJ68TFtBoUfou8+Nt+1CMHLZupPhmtooPnDHZwqFUpfsycbTXJbQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 89DF71800219; Sat, 18 Apr 2026 22:34:25 +0000 (UTC)
+ 8C49D18000DE; Sat, 18 Apr 2026 22:34:03 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -42,45 +42,45 @@ Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, Wei Liu <wei.liu@kernel.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 34/38] whpx: i386: don't increment eip on MSR access raising
- GPF
-Date: Sun, 19 Apr 2026 00:33:16 +0200
-Message-ID: <20260418223320.51330-35-mohamed@unpredictable.fr>
+Subject: [PATCH 22/38] whpx: i386: add HV_X64_MSR_GUEST_IDLE when
+ !kernel-irqchip
+Date: Sun, 19 Apr 2026 00:33:04 +0200
+Message-ID: <20260418223320.51330-23-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260418223320.51330-1-mohamed@unpredictable.fr>
 References: <20260418223320.51330-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=OoNCCi/t c=1 sm=1 tr=0 ts=69e406f4
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOCBTYWx0ZWRfX1bE1zHSsZxLm
+ yGlZnC2zf7EhAcaKCQcmAQ2g1WKn94XpPMtCR12Ost5wuWqSovE+YbrplqgqZvu9e5AjjIS1AL1
+ gYe/1zyiw7BRvfFS9IwkxNphyrV3FwTT4S12BDoleCbKYt6y171nZqBFltoLyfLTB/9PkKyKFgP
+ 6Yw2tzd2y+sMxAAcG6liTzce53KiWvRPS8xkW6QgRLiIgxV1eWRsm/HMbuiWdp7X/owszuFB3Lp
+ G+Pp5mMuzjfiI74r5/ymEFWR3IK3PMmAbBm1qIw0RXlw1ULQ8wI623YoPRTFLQtpDOWPThu6s2t
+ 9vGy1Ri9gOZLGV+BAiFhRbLzb4+4YLiTVFhpxNHRGTtItEe3rug3Ug44Zc+1qQ=
+X-Proofpoint-GUID: jRXotVJqI9qHq2FwVkaH6UPAxDpP2uYB
+X-Proofpoint-ORIG-GUID: jRXotVJqI9qHq2FwVkaH6UPAxDpP2uYB
+X-Authority-Info-Out: v=2.4 cv=b9q/I9Gx c=1 sm=1 tr=0 ts=69e406df
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=N0YEvnU7VqbRQIRMxcMA:9 a=+jEqtf1s3R9VXZ0wqowq2kgwd+I=:19
-X-Proofpoint-GUID: GDJvuNSI7pJlzRThvRB8l-5JT5pKqFIe
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDE4MDIyOSBTYWx0ZWRfXxDg/Xy1RFHX0
- UIqif8DSy91Y8yqNykv0f5nAx3ixDpoUB24ozRp80wAge5tht174LiA0MS2POVLuy0CXr2VIF6R
- XGMmq4K/7YkbouBr1dw2hJO0Otbt27UAmln1DAPq9yeKu+8Cq4OvlO6kOFXwtebfNXlfy6U0jNt
- Ifx8JH9/LrKRXZFxJUuKpzkX/4HRxEbrAaEkR1IjSjPG32LEBfiRqAVpAgvOmVX9lGrdUBZ+T/A
- IvlYsDdIq24slYS5xSfwrq07Ayo30y6ZP6CUyTj9CH2gqwoUDc/TI+Rg3O0CLCMFV5w3anlu6GO
- I1llOrI+ykTb36tydkwZShmCxPaE08yme8d4qW9IUNOTfgfF2qX3orX1Lws+bE=
-X-Proofpoint-ORIG-GUID: GDJvuNSI7pJlzRThvRB8l-5JT5pKqFIe
+ a=mSEN7FZ2dYRJNo9PPvgA:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-18_06,2026-04-17_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 clxscore=1030 phishscore=0 mlxscore=0 lowpriorityscore=0
- spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=757 classifier=spam
+ adultscore=0 phishscore=0 mlxlogscore=999 malwarescore=0 mlxscore=0
+ suspectscore=0 lowpriorityscore=0 clxscore=1030 spamscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2604180229
-Received-SPF: pass client-ip=57.103.76.84;
+ definitions=main-2604180228
+Received-SPF: pass client-ip=57.103.76.53;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,69 +96,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Add support for an oddball HV_X64_MSR_GUEST_IDLE not-quite-an-HLT
+that wakes the vCPU even if EFLAGS.IF is set.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/i386/whpx/whpx-all.c | 46 ++++++++++++++++++++++++++++++++++---
+ 1 file changed, 43 insertions(+), 3 deletions(-)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 98b13676ba..de254e236b 100644
+index 3af5f936d4..4dc4030d87 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2178,6 +2178,7 @@ int whpx_vcpu_run(CPUState *cpu)
-             WHV_REGISTER_NAME reg_names[3];
-             UINT32 reg_count;
-             bool is_known_msr = 0; 
-+            bool raises_gpf = false;
-             uint64_t val;
+@@ -52,6 +52,7 @@
+ /* for kernel-irqchip=off */
+ #define HV_X64_MSR_APIC_FREQUENCY       0x40000023
+ #define HV_X64_MSR_VP_ASSIST_PAGE       0x40000073
++#define HV_X64_MSR_GUEST_IDLE           0x400000f0
  
-             if (vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
-@@ -2210,6 +2211,7 @@ int whpx_vcpu_run(CPUState *cpu)
-                 is_known_msr = 1;
-                 if (val & MSR_IA32_APICBASE_RESERVED) {
-                     x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                    raises_gpf = true;
-                 }
-                 if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
-                     /* Read path unreachable on Hyper-V */
-@@ -2219,6 +2221,7 @@ int whpx_vcpu_run(CPUState *cpu)
-                     int msr_ret = cpu_set_apic_base(X86_CPU(cpu)->apic_state, val);
-                     if (msr_ret < 0) {
-                         x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                        raises_gpf = true;
-                     } else {
-                         whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
-                     }
-@@ -2238,6 +2241,7 @@ int whpx_vcpu_run(CPUState *cpu)
-                     reg_values[1].Reg64 = val;
-                     if (msr_ret < 0) {
-                         x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                        raises_gpf = true;
-                     }
-                 } else {
-                     bql_lock();
-@@ -2245,6 +2249,7 @@ int whpx_vcpu_run(CPUState *cpu)
-                     bql_unlock();
-                     if (msr_ret < 0) {
-                         x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                        raises_gpf = true;
-                     }
+ static bool is_modern_os = true;
+ 
+@@ -1543,13 +1544,16 @@ static vaddr whpx_vcpu_get_pc(CPUState *cpu, bool exit_context_valid)
+     }
+ }
+ 
+-static int whpx_handle_halt(CPUState *cpu)
++static int whpx_handle_halt_generic(CPUState *cpu)
+ {
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++
+     int ret = 0;
+ 
+     bql_lock();
+     if (!(cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD) &&
+-          (cpu_env(cpu)->eflags & IF_MASK)) &&
++          ((cpu_env(cpu)->eflags & IF_MASK) || env->hflags2 & HF2_HYPERV_HLT_MASK)) &&
+         !cpu_test_interrupt(cpu, CPU_INTERRUPT_NMI)) {
+         cpu->exception_index = EXCP_HLT;
+         cpu->halted = true;
+@@ -1560,6 +1564,27 @@ static int whpx_handle_halt(CPUState *cpu)
+     return ret;
+ }
+ 
++static int whpx_handle_halt(CPUState *cpu)
++{
++    int ret = 0;
++
++    ret = whpx_handle_halt_generic(cpu);
++
++    return ret;
++}
++
++static int whpx_handle_hyperv_guestidle(CPUState *cpu)
++{
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++    int ret = 0;
++
++    env->hflags2 |= HF2_HYPERV_HLT_MASK;
++    ret = whpx_handle_halt_generic(cpu);
++
++    return ret;
++}
++
+ static void whpx_vcpu_kick_out_of_hlt(CPUState *cpu) 
+ {
+     WHV_REGISTER_VALUE reg;
+@@ -1763,9 +1788,10 @@ static void whpx_vcpu_process_async_events(CPUState *cpu)
+     }
+ 
+     if ((cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD) &&
+-         (env->eflags & IF_MASK)) ||
++         ((env->eflags & IF_MASK) || env->hflags2 & HF2_HYPERV_HLT_MASK)) ||
+         cpu_test_interrupt(cpu, CPU_INTERRUPT_NMI)) {
+         cpu->halted = false;
++        env->hflags2 &= ~HF2_HYPERV_HLT_MASK;
+     }
+ 
+     if (cpu_test_interrupt(cpu, CPU_INTERRUPT_SIPI)) {
+@@ -2035,6 +2061,20 @@ int whpx_vcpu_run(CPUState *cpu)
                  }
              }
-@@ -2294,6 +2299,13 @@ int whpx_vcpu_run(CPUState *cpu)
  
-             if (!is_known_msr && !whpx->ignore_unknown_msr) {
-                 x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+                raises_gpf = true;
++            /*
++             * Windows and Linux both use this MSR.
++             * Windows 11 25H2 uses it even when not advertised.
++             */
++            if (vcpu->exit_ctx.MsrAccess.MsrNumber == HV_X64_MSR_GUEST_IDLE
++                && !vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite
++                && !whpx_irqchip_in_kernel()
++                && whpx->hyperv_enlightenments_enabled) {
++                is_known_msr = 1;
++                whpx_bump_rip(cpu, &vcpu->exit_ctx);
++                ret = whpx_handle_hyperv_guestidle(cpu);
++                break;
 +            }
 +
-+            /* When a GPF is raised, do not change Rip. */
-+            if (raises_gpf) {
-+                reg_values[0].Reg64 =
-+                    vcpu->exit_ctx.VpContext.Rip;
-             }
- 
-             hr = whp_dispatch.WHvSetVirtualProcessorRegisters(
+             /*
+              * Linux tries to use it anyway even when not exposed. 
+              * Ignore the write as the VP assist page is not used.
 -- 
 2.50.1 (Apple Git-155)
 

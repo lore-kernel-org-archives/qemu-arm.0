@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 415E0F55808
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B09F5580B
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEm6M-00075d-5y; Mon, 20 Apr 2026 06:43:38 -0400
+	id 1wEm6M-00075C-0N; Mon, 20 Apr 2026 06:43:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6C-0006xb-VH
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:31 -0400
-Received: from p-west3-cluster5-host6-snip4-1.eps.apple.com ([57.103.72.54]
+ id 1wEm6B-0006x2-TN
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:27 -0400
+Received: from p-west3-cluster5-host9-snip4-10.eps.apple.com ([57.103.72.93]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6B-0000aL-Em
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:28 -0400
+ id 1wEm69-0000a1-Pi
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:27 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPS id
- 2E58F1800140; Mon, 20 Apr 2026 10:43:24 +0000 (UTC)
+ C346618000A3; Mon, 20 Apr 2026 10:43:21 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776681806; x=1779273806;
- bh=oAkt/0X2iO3/a4xMYFMpgz9ibOxymnsHVlwLVxvLdU8=;
+ s=sig1; t=1776681804; x=1779273804;
+ bh=nQndBaUP3p2GZXyo2M9Kbvf88ZtsTTUcXFr9tOFWW7A=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=gZFvQfOtTG728Aiqh3Pxs+7eq2aA57ZZU/Egy1Y+k7Ux9i+eKytga4f+WS6bmGIdbIRFog5+nqKeEw1gEKIvBpyAhQG7u4A7Kc6zrPjTxvk4B77aGecuXxijBV6MVANNnuZqst74pR57zqOywL0huNJEiUxAgiZnUOA1/dhm86wN6/vSOy+OlT0It6YfsKUIYA58grHWh9PbLsTdI1Ny7Y7YfKyIYteTG8IraDGWuQkWW+ePC/Ppr9w9KbIBIoEdSrwZcws0aj7DF7GH8SymAS7VJ4/WD9hj8IcvlvA5v+BXT7k5AfJVPes/C3zlpFxT9IuGrm/t1GTHXd+jWedu8g==
+ b=IdWxXi1zVZXv44s4zRRsjVx2FHvC9BYFG5DB70W98TBCe1Fn9J7IPKpacB8+jQfxwUwHtIYfG6BRZcLMAoosvl/hvxL+xRJ2sxOeDPtiUP90wh61FoWHggg4xbTJEDd1BIr/77+zuG7/XuqzhFkLPgxQ7z3p1XoFA5Ls/2JtrsYbGvntw3Ars5Wdqz0BWUjBZQw66gX1uS1LwFHVcZOdQk9wvRkpbu1ZF/dmlyc4/1H1Z4sOaHxszP1LrWlSam7h/bssTjwAZdwnsIwYxtojeuUI6MIylGFs69PDEFV8ZCxA6bz4MNnu0reD6l6LbPp0UcTiBe+NjYr50LbGhaf8ow==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPSA id
- 5E0FA1800442; Mon, 20 Apr 2026 10:43:21 +0000 (UTC)
+ E26C11800451; Mon, 20 Apr 2026 10:43:18 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -43,43 +43,43 @@ Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 12/38] whpx: i386: disable enlightenments and LAPIC for
- isapc
-Date: Mon, 20 Apr 2026 12:42:22 +0200
-Message-ID: <20260420104248.86702-13-mohamed@unpredictable.fr>
+Subject: [PATCH v2 11/38] whpx: i386: IO port fast path cleanup
+Date: Mon, 20 Apr 2026 12:42:21 +0200
+Message-ID: <20260420104248.86702-12-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260420104248.86702-1-mohamed@unpredictable.fr>
 References: <20260420104248.86702-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfXxjvbCepagAjn
- ZdMVIr4oj3Snew99sTCdX+R4pAd8RUzhrxURYc3GAKlwjDb6npkQeOi4ux+CRQZrldl3UY45Bhj
- 8M5ilmpJ8ayKheufeK8rEpR79gxizl7ZkahRX/gJt2euzblbYPP5hUr1IKZiUMbPu4AQmHUL7JS
- EtjY45v8xrSxYQTnjX2Aot/IBCPzTCSl4u5ilElkW6B05XmeAMocSq4Ptu1FtswIIKDOzj+4iAr
- bnHvSdQbxnJLH9G1Nw9xJO6Y6vDQuihnMT3sqO/tc5KzP3fy1N5Zf4yPbYctP2QIDz1kMaOZT0H
- T4VH0zE8Kh6qd5iuOSQlXba1jMsI7xTqE/Ao3DyDYjH34x/JmhmOcWz6hjRrGw=
-X-Authority-Info-Out: v=2.4 cv=Z+zh3XRA c=1 sm=1 tr=0 ts=69e6034d
+X-Proofpoint-GUID: w0YYqtkw1NyWm0C125HfF_BDCgCCAIVx
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX3xTYq0JAgDqw
+ 3sywa5JekA6elTiW8T8gjzu2uTO/XbFZRkgCz0hhcvEjsRcMQuAoRMhikosba4Ci3io5cV+QZi3
+ DfkdBrVakNnBUpDG3JXlc00uYmgi1qF1YP+QgaeDY5mj3mPYGlep2TS8jmKtci6qpVrAVlFMnks
+ QqKK8lOG55nd8+QghhiAA3Ygb9zWhUDfkcXu30eVUxGDNTBMFP/VebttxwcRORCYQ2H/6tcZtq2
+ FPjm/ub6TUjlDhOsaD/wverweDU/4Jh46/omxJvvXP9yv8FnGGewzMJ8Fxci38ly1oMDHPABF6D
+ aILm6TwExQ/9Qu6+AvF0GJCSN+cNSG8zs3uOfxoErTcntE0h2ZUyuWMZok8o9Q=
+X-Proofpoint-ORIG-GUID: w0YYqtkw1NyWm0C125HfF_BDCgCCAIVx
+X-Authority-Info-Out: v=2.4 cv=TtzrRTXh c=1 sm=1 tr=0 ts=69e6034b
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=kaNVauZA35-AGszze7oA:9
-X-Proofpoint-ORIG-GUID: dHfS9Sf_op2BC3kfYYMOpZIEm8yd27jN
-X-Proofpoint-GUID: dHfS9Sf_op2BC3kfYYMOpZIEm8yd27jN
+ a=VkNPw1HP01LnGYTKEx00:22 a=Vrzv6M8N8vcM0KmfSJEA:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=891 spamscore=0 phishscore=0 clxscore=1030 adultscore=0
- suspectscore=0 malwarescore=0 lowpriorityscore=0 mlxscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0 mlxscore=0 phishscore=0 spamscore=0
+ bulkscore=0
+ mlxlogscore=873 lowpriorityscore=0 adultscore=0 clxscore=1030 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604200104
-Received-SPF: pass client-ip=57.103.72.54;
+Received-SPF: pass client-ip=57.103.72.93;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,33 +95,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The isapc machine doesn't have an APIC. And Hyper-V enlightenments
-don't sound too useful to have there so disable those.
+vmport calls synchronise_state within an I/O port read.
+Support that properly.
+
+What was there before worked because of a side effect of
+whpx_get_reg synchronising context if cpu->vcpu_dirty.
+
+Remove that whpx_get_reg call in whpx_bump_rip too as it's no longer
+needed now.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ target/i386/whpx/whpx-all.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 4deeffbcfc..d38b83d274 100644
+index 4d1a151db5..4deeffbcfc 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2470,6 +2470,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
+@@ -862,7 +862,6 @@ static void handle_io(CPUState *env, uint16_t port, void *buffer,
+ static void whpx_bump_rip(CPUState *cpu, WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
+ {
+     WHV_REGISTER_VALUE reg;
+-    whpx_get_reg(cpu, WHvX64RegisterRip, &reg);
+     reg.Reg64 = exit_ctx->VpContext.Rip + exit_ctx->VpContext.InstructionLength;
+     whpx_set_reg(cpu, WHvX64RegisterRip, reg);
+ }
+@@ -890,13 +889,23 @@ static int whpx_handle_portio(CPUState *cpu,
+         } else {
+             reg.Reg64 = (uint64_t)val;
+         }
+-        whpx_bump_rip(cpu, exit_ctx);
+-        whpx_set_reg(cpu, WHvX64RegisterRax, reg);
++        /* vmport calls cpu_synchronize_state on an I/O port read */
++        if (!cpu->vcpu_dirty) {
++            whpx_bump_rip(cpu, exit_ctx);
++            whpx_set_reg(cpu, WHvX64RegisterRax, reg);
++        } else {
++            env->eip = exit_ctx->VpContext.Rip + exit_ctx->VpContext.InstructionLength;
++            env->regs[R_EAX] = reg.Reg64;
++        }
+         return 0;
+     } else if (!ctx->AccessInfo.StringOp && ctx->AccessInfo.IsWrite) {
+         RAX(env) = ctx->Rax;
+         handle_io(cpu, ctx->PortNumber, &RAX(env), 1, ctx->AccessInfo.AccessSize, 1);
+-        whpx_bump_rip(cpu, exit_ctx);
++        if (!cpu->vcpu_dirty) {
++            whpx_bump_rip(cpu, exit_ctx);
++        } else {
++            env->eip = exit_ctx->VpContext.Rip + exit_ctx->VpContext.InstructionLength;
++        }
+         return 0;
      }
  
-+    /* for isapc, disable Hyper-V enlightenments and LAPIC */
-+    if (!strcmp(MACHINE_GET_CLASS(ms)->name, "isapc")) {
-+        whpx->kernel_irqchip_allowed = false;
-+        whpx->kernel_irqchip_required = false;
-+        whpx->hyperv_enlightenments_allowed = false;
-+        whpx->hyperv_enlightenments_required = false;
-+    }
-+
-     whpx->mem_quota = ms->ram_size;
- 
-     hr = whp_dispatch.WHvGetCapability(
 -- 
 2.50.1 (Apple Git-155)
 

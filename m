@@ -4,86 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFBAF5581D
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 11:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C8EF588C4
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 13:35:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEmn9-00043w-8C; Mon, 20 Apr 2026 07:27:51 -0400
+	id 1wEomG-00067q-F7; Mon, 20 Apr 2026 09:35:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEmn4-00043R-OS
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 07:27:47 -0400
-Received: from p-west3-cluster1-host4-snip4-1.eps.apple.com ([57.103.73.162]
- helo=outbound.ms.icloud.com)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wEomF-00067i-Kr
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 09:35:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEmn1-0003vT-HX
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 07:27:45 -0400
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-5 (Postfix) with ESMTPS id
- C15791800411; Mon, 20 Apr 2026 11:27:38 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776684461; x=1779276461;
- bh=Krffpx7w2ZVSMIrNsZDbV8VgM7sYpLIn8x9ysKUuL/8=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=ZtFK0Re5/WdV1c0DJUDvM/5ty/S3DhFgBDsqDaotcthJUyXg1baJ98MrcgPIRq6mR4KjA3rKunmPuLxcDAFz9wHUDSaOI24D6F6k3l4qsqhwqDdwbX2dcKvViWimqfEWId9CuzCw3P4tDEhRvQFOrMHA+xpH6Lv8r/zAmiIDVg7Su0FDabYoQ6Bo5u8UMd57O1Sqz/6FKOHmlIM6bvVzSJACd5dHK8IIZJBEIfPKoe1YfJZBMd7Z5reyl9SPefEHUx4UZhGuO9396a+Go3KSmgKJnn1+CnCAN4W1POeXrVI0vTg/T2cy6FdWpXbMiZEGk/gm/prye8G1n5Unw9QIdg==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-5 (Postfix) with ESMTPSA id
- 5814B1800401; Mon, 20 Apr 2026 11:27:36 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
-Subject: Re: [PATCH v2 35/38] target/i386: emulate, hvf: rdmsr/wrmsr GPF
- handling
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260420104248.86702-36-mohamed@unpredictable.fr>
-Date: Mon, 20 Apr 2026 13:27:24 +0200
-Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <5D9A012C-0278-44A4-82AA-185FF61AF3D8@unpredictable.fr>
-References: <20260420104248.86702-1-mohamed@unpredictable.fr>
- <20260420104248.86702-36-mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-X-Mailer: Apple Mail (2.3864.500.181)
-X-Authority-Info-Out: v=2.4 cv=TambdBQh c=1 sm=1 tr=0 ts=69e60dab
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=U6C6HV61ui0oiVVhl9AA:9
- a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: 16tPBr9IHtOHWuoujYDLbEz0qr5Jr7Mt
-X-Proofpoint-ORIG-GUID: 16tPBr9IHtOHWuoujYDLbEz0qr5Jr7Mt
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDExMSBTYWx0ZWRfX6X4izME+gVhF
- aZ/cgfneMbFhM/cFQrnOUUtC4yUAVSVJkT3YxAHXpWi8AkTFfQcqQ3JIm6xIPgWyCEIxvzk1d4h
- 9PTaqhVG0iMO4YVzzsdDF3XmXAyemgfhtkNKNFz4TlE4BrZFFuuI84T/YxTg5/hJhJgSUA/04eT
- QBCixXSSry8prpsDxk/evjswv418Rgc5+dss2bEykg1liNQeYStL26bd4BBKtX5yeb6/McHZXYB
- LuDWZkEvmvRPZoll9uAKn41rDgjyPg0rlNc5R+Nm00HE4b+r3PxVRuhlco+vAXtuePL11BcMFr6
- qBmhD9qGGrPVkuUYOFnLaF0Hop8o52IDcypSrTA5sqBBDvQP1GwjIQPQ71iEek=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- bulkscore=0 spamscore=0 mlxscore=0 clxscore=1030
- phishscore=0
- lowpriorityscore=0 mlxlogscore=865 adultscore=0 malwarescore=0
- classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
- engine=8.22.0-2601150000 definitions=main-2604200111
-Received-SPF: pass client-ip=57.103.73.162;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wEomD-0001D9-VX
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 09:35:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1776692101;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fqk6bMsX2PsB474lKYgiEH+ZlR33fDYdf2OiMeOiJK8=;
+ b=HnwZ5b21FNw7Tq8JjHEN5nZHopzkNGiTy8fG2cd8/hzFa93CXkaToO6Cx1+eSe/4pl2SgS
+ WNi7Ui+6C4hlQo0p5/537Gkkmd/CCaZcc6x9p2bF4CE1Ed5e6PJI8zlMGx6cCp6kQpqvMT
+ hfx3Stt3f4VX4D1jzL8WQQaB09+EzfE=
+Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
+ [209.85.221.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-587-uC0Ahu7gNzaEpqdSiUkQvA-1; Mon, 20 Apr 2026 09:34:56 -0400
+X-MC-Unique: uC0Ahu7gNzaEpqdSiUkQvA-1
+X-Mimecast-MFC-AGG-ID: uC0Ahu7gNzaEpqdSiUkQvA_1776692096
+Received: by mail-vk1-f198.google.com with SMTP id
+ 71dfb90a1353d-56f71e90581so2087798e0c.3
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 06:34:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776692096; x=1777296896;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=fqk6bMsX2PsB474lKYgiEH+ZlR33fDYdf2OiMeOiJK8=;
+ b=rx6AihDfY5ySSAKvIVrA3WZhPCmICK8GHqPhWbRUy/9pmAatzGB154kIBKkA8b5R97
+ kBKMGuF8of5uXJsSZn4WoT4vyzxsYGlenjpWIlrBRs/Woy++yCxqpz02acLzQ1kXwi9b
+ 8AjcDMCRThcp8E9WwciqjrSLiqgjg8FUQxzfmb1+Ff+YENa9zRiyvbGdadVp8LE0YDGL
+ cScocsvJmQt+SAuJ6aGfLw3476i5RUW9vzcwH84qcaVgS9XQp6RbHa/t5wuoMrhEGMGd
+ J0x+DQODrNzleFJ9nikzks2rRNx+gQJrGYJEEKG1bkTPXOx8flEnjMgid1BLE3WngxWZ
+ KrJg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9f8Ylu3FBrnV1Dl1htwWe1K+wWmbbmYmW3PSdF3WgRI8UYY8j208HhmLErpv/2BBmrQS86QqA8uQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx8uvyVd+R8TqPoawxwFmZ+C58Z6ZlC6Gi7tc6r6qbIrWIOgNaV
+ qriOLeX8e2Ev6tE6TEcNZwuXnx4UsfQY/GoUy2ZgNW5KDaZaeHiXfcotnkEEN5JK1S1p7nJ0nrn
+ gZa6DHpUY9rBvBDKc4g3liZzG35u61dqpL37H62hPcTDamarCNWykSQ==
+X-Gm-Gg: AeBDiev9mDlG9IiyZjvJRbfhVv1vhIBeAix8HJ7cyl5Y/RJfc3AUpOpz/RarT6Vz6Ir
+ Muy0e320OUNMQx6QhSanr5UqguP6zEyvyRU7uOvk2cC9RajXnCAs/hEJltaHPvXcGeaViMyADWq
+ mmk4QbaTilX2+M8b6+NpwQa1cjcGGqG3+hwOrMsg++VpurYkFyTvRFEzhYOvXEVA+sZ4vfmsFpT
+ t7YTsRDuv8x8qD9m7j1FY+k5VVjmtIfCRgSQ0Ksq5rUBtWmoivi2Y9Etcz/el3DQsn6WvxFlq9K
+ VSWkaHx/MK9H75fKWlIA4+/gv/Yftg1ftl+5EY3+HMkfIeIhehtsPZOS/8gaccGWvxZEg+qVhiz
+ wlcimbirQvOmfvxGMDTslQ7wvfvzyuVH3MXqtSrWTtvIu/vkuDGhK+uG4fw==
+X-Received: by 2002:a05:6122:829e:b0:56b:8e1c:582d with SMTP id
+ 71dfb90a1353d-56fa5a76856mr5100645e0c.14.1776692095691; 
+ Mon, 20 Apr 2026 06:34:55 -0700 (PDT)
+X-Received: by 2002:a05:6122:829e:b0:56b:8e1c:582d with SMTP id
+ 71dfb90a1353d-56fa5a76856mr5100567e0c.14.1776692095007; 
+ Mon, 20 Apr 2026 06:34:55 -0700 (PDT)
+Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-8b02ae5eaf1sm77805746d6.30.2026.04.20.06.34.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Apr 2026 06:34:54 -0700 (PDT)
+Date: Mon, 20 Apr 2026 09:34:53 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>,
+ Fabiano Rosas <farosas@suse.de>
+Subject: Re: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+Message-ID: <aeYrfQuAsEaOpH_O@x1.local>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-7-jamin_lin@aspeedtech.com>
+ <3ee36a34-573e-48aa-91e3-9140244717f0@kaod.org>
+ <aeJNdLTRSZQiEiP_@x1.local>
+ <TYPPR06MB8206C244CD249505E6B543F8FC2F2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+MIME-Version: 1.0
+In-Reply-To: <TYPPR06MB8206C244CD249505E6B543F8FC2F2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: pqvmOCWm-N04binw37_IMvXK1qLvaHKqxegrgiR8iLk_1776692096
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,141 +125,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, Apr 20, 2026 at 05:56:11AM +0000, Jamin Lin wrote:
+> Hi Peter, Philippe, Cédric
 
+Hi, Jamin,
 
-> On 20. Apr 2026, at 12:42, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
-> In that case, the instruction pointer mustn't be incremented.
->=20
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
-> target/i386/emulate/x86_emu.c | 10 ++++++----
-> target/i386/emulate/x86_emu.h |  4 ++--
-> target/i386/hvf/hvf.c         |  9 +++++++--
-> 3 files changed, 15 insertions(+), 8 deletions(-)
-Hi,
+[...]
 
-Forgot to include this to the sent patch=E2=80=A6
+> > > > @@ -2501,8 +2515,12 @@ const VMStateDescription vmstate_ehci = {
+> > > >           /* schedule state */
+> > > >           VMSTATE_UINT32(astate, EHCIState),
+> > > >           VMSTATE_UINT32(pstate, EHCIState),
+> > > > -        VMSTATE_UINT32(a_fetch_addr, EHCIState),
+> > > > -        VMSTATE_UINT32(p_fetch_addr, EHCIState),
+> > > > +        VMSTATE_UINT32_TEST(a_fetch_addr_pre_v3, EHCIState,
+> > > > +                            ehci_core_is_before_version_3),
+> > > > +        VMSTATE_UINT32_TEST(p_fetch_addr_pre_v3, EHCIState,
+> > > > +                            ehci_core_is_before_version_3),
+> > > > +        VMSTATE_UINT64_V(a_fetch_addr, EHCIState, 3),
+> > > > +        VMSTATE_UINT64_V(p_fetch_addr, EHCIState, 3),
+> > 
+> > TL;DR: I feel like we still need machine type compat properties.
+> > 
+> 
+> I don't understand this: Could you please describe it in more detail?
 
-diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
-index 8c42ae6b01..b91c17e2fc 100644
---- a/target/i386/hvf/hvf-i386.h
-+++ b/target/i386/hvf/hvf-i386.h
-@@ -19,8 +19,8 @@
- uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx, int reg);
-=20
- void hvf_handle_io(CPUState *, uint16_t, void *, int, int, int);
--void hvf_simulate_rdmsr(CPUState *cpu);
--void hvf_simulate_wrmsr(CPUState *cpu);
-+bool hvf_simulate_rdmsr(CPUState *cpu);
-+bool hvf_simulate_wrmsr(CPUState *cpu);
+See hw/core/machine.c and entries added into hw_compat_*[] arrays.  IIUC,
+if this is an important device and if we want to guarantee bidirectional
+migration (I'll explain later), then we should stick with machine compat
+properties.
 
+> 
+> > Details:
+> > 
+> > When a v2 stream arrives, two _TEST()s will do the loading, then
+> > post_load() extend it to 64bits, looks fine.
+> > 
+> > When a v3 stream arrives, two _TEST()s got skipped then latter two take effect.
+> > post_load() skips.  Looks fine.
+> > 
+> > When migrating to another QEMU, due to the fact saving vmstates always take
+> > vmsd's version declared (3), I don't see how it can migrate back to a v2 stream;
+> > it didn't know about v3.
+> > 
+> > Jiamin, have you tested migrating from a new QEMU binary back to another
+> > old one?  For upstream and serious devices, we need to guarantee
+> > bi-directional migrations, back and forth.
+> > 
+> 
+> Sorry, I am not familiar with the design of QEMU migration, and I don't know how to test it.
+> I added these hook functions based on Philippe's suggestion and review.
+> Could you tell me how to test migration to ensure both version 3 and version 2 are workable?
 
-> diff --git a/target/i386/emulate/x86_emu.c =
-b/target/i386/emulate/x86_emu.c
-> index c2da1a133f..c6ea854290 100644
-> --- a/target/i386/emulate/x86_emu.c
-> +++ b/target/i386/emulate/x86_emu.c
-> @@ -792,15 +792,17 @@ void x86_emul_raise_exception(CPUX86State *env, =
-int exception_index, int error_c
->=20
-> static bool exec_rdmsr(CPUX86State *env, struct x86_decode *decode)
-> {
-> -    emul_ops->simulate_rdmsr(env_cpu(env));
-> -    env->eip +=3D decode->len;
-> +    if (!emul_ops->simulate_rdmsr(env_cpu(env))) {
-> +        env->eip +=3D decode->len;
-> +    }
->     return 0;
-> }
->=20
-> static bool exec_wrmsr(CPUX86State *env, struct x86_decode *decode)
-> {
-> -    emul_ops->simulate_wrmsr(env_cpu(env));
-> -    env->eip +=3D decode->len;
-> +    if (!emul_ops->simulate_wrmsr(env_cpu(env))) {
-> +        env->eip +=3D decode->len;
-> +    }
->     return 0;
-> }
->=20
-> diff --git a/target/i386/emulate/x86_emu.h =
-b/target/i386/emulate/x86_emu.h
-> index a8d4c93098..b985240b90 100644
-> --- a/target/i386/emulate/x86_emu.h
-> +++ b/target/i386/emulate/x86_emu.h
-> @@ -31,8 +31,8 @@ struct x86_emul_ops {
->     target_ulong (*read_cr) (CPUState *cpu, int cr);
->     void (*handle_io)(CPUState *cpu, uint16_t port, void *data, int =
-direction,
->                       int size, int count);
-> -    void (*simulate_rdmsr)(CPUState *cs);
-> -    void (*simulate_wrmsr)(CPUState *cs);
-> +    bool (*simulate_rdmsr)(CPUState *cs);
-> +    bool (*simulate_wrmsr)(CPUState *cs);
->     bool (*is_protected_mode)(CPUState *cpu);
->     bool (*is_long_mode)(CPUState *cpu);
->     bool (*is_user_mode)(CPUState *cpu);
-> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-> index c0d028b147..dfe7500010 100644
-> --- a/target/i386/hvf/hvf.c
-> +++ b/target/i386/hvf/hvf.c
-> @@ -536,7 +536,7 @@ void hvf_store_regs(CPUState *cs)
->     macvm_set_rip(cs, env->eip);
-> }
->=20
-> -void hvf_simulate_rdmsr(CPUState *cs)
-> +bool hvf_simulate_rdmsr(CPUState *cs)
-> {
->     X86CPU *cpu =3D X86_CPU(cs);
->     CPUX86State *env =3D &cpu->env;
-> @@ -557,6 +557,7 @@ void hvf_simulate_rdmsr(CPUState *cs)
->         ret =3D apic_msr_read(cpu->apic_state, index, &val);
->         if (ret < 0) {
->             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
-> +            return 1;
->         }
->=20
->         break;
-> @@ -639,9 +640,10 @@ void hvf_simulate_rdmsr(CPUState *cs)
->=20
->     RAX(env) =3D (uint32_t)val;
->     RDX(env) =3D (uint32_t)(val >> 32);
-> +    return 0;
-> }
->=20
-> -void hvf_simulate_wrmsr(CPUState *cs)
-> +bool hvf_simulate_wrmsr(CPUState *cs)
-> {
->     X86CPU *cpu =3D X86_CPU(cs);
->     CPUX86State *env =3D &cpu->env;
-> @@ -657,6 +659,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
->         r =3D cpu_set_apic_base(cpu->apic_state, data);
->         if (r < 0) {
->             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
-> +            return 1;
->         }
->=20
->         break;
-> @@ -668,6 +671,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
->         ret =3D apic_msr_write(cpu->apic_state, index, data);
->         if (ret < 0) {
->             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
-> +            return 1;
->         }
->=20
->         break;
-> @@ -746,6 +750,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
->          g_hypervisor_iface->wrmsr_handler(cs, msr, data);
->=20
->     printf("write msr %llx\n", RCX(cs));*/
-> +    return 0;
-> }
->=20
-> static int hvf_handle_vmexit(CPUState *cpu)
-> --=20
-> 2.50.1 (Apple Git-155)
->=20
+Since this patch already modified VMSDs, I believe migration test should
+have been carried out at the very minimum..  Logically if vmsd versioning
+is used, we should also have tested forward migrations, because that's only
+for that.
+
+What I'm talking about is I think backward migration will fail.
+
+Forward migration describes the case when a VM hosted by an old QEMU binary
+(e.g. QEMU v10.2.0) is migrated to a new QEMU (e.g., after this patch
+applied on top of master).
+
+Backward migration describes the case when a VM hosted by a new QEMU binary
+(e.g., after this patch applied on top of master) is migrated back to an
+old QEMU binary (e.g. QEMU v10.2.0).
+
+For different devices, we should allow different level of support on
+migration.  Any device that may be important to either upstream QEMU or
+downstreams should better allow bi-directional migration.  In this case we
+need to use machine compat properties I mentioned.  I'm not yet sure where
+EHCI controller falls e.g. v.s. XHCI.. when not sure, we can also just
+stick with machine compat properties to be on the safe side.
+
+For more info, you can also refer to:
+
+https://www.qemu.org/docs/master/devel/migration/compatibility.html
+
+Thanks,
+
+-- 
+Peter Xu
 
 

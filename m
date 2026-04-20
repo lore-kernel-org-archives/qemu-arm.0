@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C89BDF55808
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56DEEF55808
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:45:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEm6g-0007Xw-Pn; Mon, 20 Apr 2026 06:43:58 -0400
+	id 1wEm6Q-0007A0-TD; Mon, 20 Apr 2026 06:43:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6d-0007Lp-Tg
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:55 -0400
-Received: from p-west3-cluster6-host7-snip4-10.eps.apple.com ([57.103.75.53]
+ id 1wEm6M-000766-B7
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:38 -0400
+Received: from p-west3-cluster5-host12-snip4-8.eps.apple.com ([57.103.72.121]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6c-0000gc-BK
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:55 -0400
+ id 1wEm6K-0000ci-V7
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:38 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPS id
- 4AC8E1800153; Mon, 20 Apr 2026 10:43:51 +0000 (UTC)
+ 2517E1800475; Mon, 20 Apr 2026 10:43:33 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776681833; x=1779273833;
- bh=Sw+c1/Szq2U+GFUwZJhzpKe2Oxhd+T8qz2/AUdFCjpA=;
+ s=sig1; t=1776681815; x=1779273815;
+ bh=4624USsR0p7NklevhZpyiOMKAkWt2GrauvKzkoCskVE=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=B+pp0bXZBdoi9Tun0jHDKvLCzgiRbAviydrZ0/fwZ3GFLunizE0eh8VkQL0GAcsTsJUtEcr/uOC8CfChhDiHHGz05h5qf9k89DzNYqe8PUai3cdxXtF2mLRR5HoiH/ZFhRaETmvVlnYF5NoO/120vb+oZKAEmhqpl9wh29LIMSw0i2Hhgv2OYljhSSPJvc4svrFkA/fQT0GHJDkxXOreLsKkkKNeKjk+H5kmrSrQItGZLg2N5s73fSnImFg3+b15IF8UcP/Wp1Hd2Z1cWkHeqfnsDguVZyjabE5nPw5v8qVMcQlzCOI/fPCHs8qGyrR3BTP3bDrEZ/q9TR+AgESE7A==
+ b=JBz6ZtwebDTWn1xVfEGEcZ0hNkLBAd/m7ahsmQ+sD6CsAQPjJUf5x2SCeum8+/CCGBgDVayWXoaAJNUdGWxkuaPUjiGtFsPRbieIEtFUQePpb/jL6O5iJatXd+mqYb6Obr3/DsPSGwwJ+zWuLvu/mQsQezARBcbQDbpWG+gF6yEyI5wgMa18MXzhIF2BCjOCvrsR3l/KDrkLxy1pe28bCC6cujNam/6ZOJtjPg8ZDmWRBstkZwXceAG9pbNZtjvRjoDl1jVdIphJ+kqM85MsgkEcmjl3fq1yk9v3wO57LvvSFYfF59LckwULBw0A0glw9x2woQNKfiIvZZSlxBmeSw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPSA id
- A2D631800EC1; Mon, 20 Apr 2026 10:43:48 +0000 (UTC)
+ 564A518000BF; Mon, 20 Apr 2026 10:43:31 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -43,42 +43,41 @@ Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 23/38] whpx: i386: one more CPUID
-Date: Mon, 20 Apr 2026 12:42:33 +0200
-Message-ID: <20260420104248.86702-24-mohamed@unpredictable.fr>
+Subject: [PATCH v2 16/38] whpx: i386: set apicbase value only on success
+Date: Mon, 20 Apr 2026 12:42:26 +0200
+Message-ID: <20260420104248.86702-17-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260420104248.86702-1-mohamed@unpredictable.fr>
 References: <20260420104248.86702-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: TB9HfKJq5B6oZnLys3hsxi-hPRL35pjp
-X-Proofpoint-GUID: TB9HfKJq5B6oZnLys3hsxi-hPRL35pjp
-X-Authority-Info-Out: v=2.4 cv=d7D4CBjE c=1 sm=1 tr=0 ts=69e60367
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX6neWATxSasTX
+ sM0vWdIYo0ObuPKOGHYQor4CQxyZ4fXLnGz1i+3kcdnwwsgpH12+vmoMXQxt5NAnzicG94BN4+B
+ pYPMBZZq4XVSd8K3mAZ05ibfgv9FekjRDDxx1Jp6lF7ZNvVtfzRSB5zXkoQutVzXv1Ofjk3KaMw
+ ojxTxxMKVgLS6d3PEeVsmlK9Hf7A9SHPEfUFa4mv/gxmh2GxG4wfVf8hP8vbXVT819/TqPUUvbn
+ r40PcyA+9oRoLiXFOul8dhIl0tkztn1Yw8eAqjNyaogv7UtfkSUiLa0AfCjVNhO0KaEB3J1YKWc
+ a3gkN1znnoxdU5p9aAq2kyKAVpVtTvRF5wVwwBF9EEw22K0k+zcfn3YxjkV/D0=
+X-Proofpoint-GUID: qmSC2HbiSG6G-dnwftkoqlY5O-ThVt1D
+X-Authority-Info-Out: v=2.4 cv=J6enLQnS c=1 sm=1 tr=0 ts=69e60357
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=zJD0qBlfmizEQV4F3ZsA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX+vkFGbyzu0Xz
- 4yweAC2jiJUJpco9tegdk2kkdrI/AZ/UzzPD7cRPvFtFnlzOYBTyYWa3PsXTfQGyFUIl+AbRRjg
- Fi4BPxaCp+qGHRfMGzt0sg5wCIOZ1SsK8yq7HlISeaYVUpylzappXHoY8jxFZBxGlA4E97fDej4
- evnXUwZutDJlzfJw9LIJ6ZRgK/zTy9W9eClUdqF8XvjB9RM8/M1WthTf1nNQnbpGQbYgPivMmcs
- ft7dskEgXn7pSLBjYboe/Oinq5hfdeX5HlYh8dEQB2LbDW+6rgQgulh64Qwag0QHKwkRzs9hHCN
- DPwZvbDqg5Uoo6g7mCAMsoZcrhs5MgO7rCJ44DTzL8j5uZBK9JCnhm+s+JUe+Y=
+ a=VkNPw1HP01LnGYTKEx00:22 a=uh2sygq7LFHjsVUyvz4A:9
+X-Proofpoint-ORIG-GUID: qmSC2HbiSG6G-dnwftkoqlY5O-ThVt1D
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- malwarescore=0 bulkscore=0 lowpriorityscore=0 spamscore=0 mlxlogscore=821
- adultscore=0 clxscore=1030 suspectscore=0 mlxscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ mlxlogscore=676 clxscore=1030 suspectscore=0 bulkscore=0 malwarescore=0
+ spamscore=0 phishscore=0 lowpriorityscore=0 mlxscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604200104
-Received-SPF: pass client-ip=57.103.75.53;
+Received-SPF: pass client-ip=57.103.72.121;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,26 +93,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Trap cpuid_0xb as it has x2APIC topology information.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/i386/whpx/whpx-all.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 4dc4030d87..5c2a9bb8ad 100644
+index c6f4041515..0d72e93621 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2527,7 +2527,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     WHV_PROCESSOR_FEATURES_BANKS processor_features;
-     WHV_PROCESSOR_PERFMON_FEATURES perfmon_features;
+@@ -2001,8 +2001,9 @@ int whpx_vcpu_run(CPUState *cpu)
+                     int msr_ret = cpu_set_apic_base(X86_CPU(cpu)->apic_state, val);
+                     if (msr_ret < 0) {
+                         x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++                    } else {
++                        whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
+                     }
+-                    whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
+                 }
+             }
  
--    UINT32 cpuidExitList[] = {0x0, 0x1, 0x6, 0x7, 0x14, 0x24, 0x29, 0x1E,
-+    UINT32 cpuidExitList[] = {0x0, 0x1, 0x6, 0x7, 0xb, 0x14, 0x24, 0x29, 0x1E,
-         0x40000000, 0x40000001, 0x40000010, 0x80000000, 0x80000001,
-         0x80000002, 0x80000003, 0x80000004, 0x80000007, 0x80000008,
-         0x8000000A, 0x80000021, 0x80000022, 0xC0000000, 0xC0000001};
 -- 
 2.50.1 (Apple Git-155)
 

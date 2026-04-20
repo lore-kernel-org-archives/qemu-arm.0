@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 662B6F5580D
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B67F55808
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEm6N-00077n-R3; Mon, 20 Apr 2026 06:43:39 -0400
+	id 1wEm6M-00075A-0U; Mon, 20 Apr 2026 06:43:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6L-00073Q-9b
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:37 -0400
-Received: from p-west3-cluster5-host5-snip4-2.eps.apple.com ([57.103.72.45]
+ id 1wEm6E-0006xk-QZ
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:31 -0400
+Received: from p-west3-cluster5-host2-snip4-10.eps.apple.com ([57.103.72.83]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6J-0000cQ-AO
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:37 -0400
+ id 1wEm6D-0000ap-4o
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:30 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPS id
- B20691800453; Mon, 20 Apr 2026 10:43:31 +0000 (UTC)
+ 7177918000BF; Mon, 20 Apr 2026 10:43:26 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776681814; x=1779273814;
- bh=hYF1YTmYdf5ICiuf6ALK6IwLbtpP7J/JdnQnOFIIsbo=;
+ s=sig1; t=1776681807; x=1779273807;
+ bh=3V2AbGdIbRhzhb8qduzZPT33vmWH+5zkQKA9bxE3tcA=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Iv6mZeb/lN/CVrKJYpZFmxjaYyPrMFE5zfXl9c9PgI7EPoOm5cpa7sWtORFChz1SrBok+UDY/3HNtLwRUJ+uHOzxZPVEAPmsRV47Mh0dLQsIoiQXXD4FQSFqD1S7lT7D20KXF6X7512Ip6jIpvh4ODXayQNdmPTgQg5Hkv1d6Gn42ASBj3aXoYYcY/dAzdy26KzLWvECLFtmNf0mCly83pZi+lgynURoJeasCmpqaIYcq7ZwWEXKItQRWPb2IjPFeZHR2cxgGNCA4tsVVK6WEn4F+XsWj1V1BuO8ncsq4Rp05caHu6JWxhb47fFrp66GySLgRg+K+dmrNjjUotfnxg==
+ b=JgWCaSVEugXlN49xCAIBBThh2GbMf0C2o4t3BXF6rIFK64sazePCyhM+yMZQYRsW09f2xUM/ILHbd1LM9UvAE/LThGSvj83cEDL9WuSZikWtgFzAbQHpsUo1CEoewxdtIN5WCHSZZVFkKGPOSI9HjXIhnrpTGCZIW3joZBYUun2BxTUqAV7otF+adMaGE8ZXDFmD88s4kZAxOEEWWkhxdT2P5iMDAwkuvXC5E13TxFiurNScj5Zj/OTDKjUbiKW042WX6hdXVuA/+moUdRIuiQ4brl1O9nvE0zlgWnbjkczvkVWRjmNdY7ZpsJnNpnGP4QYO7SWdnVOGHk80zBCqtQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPSA id
- CF79D1800475; Mon, 20 Apr 2026 10:43:28 +0000 (UTC)
+ D3B251800453; Mon, 20 Apr 2026 10:43:23 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -43,40 +43,41 @@ Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 15/38] whpx: i386: fix CPUID[1:EDX].APIC reporting
-Date: Mon, 20 Apr 2026 12:42:25 +0200
-Message-ID: <20260420104248.86702-16-mohamed@unpredictable.fr>
+Subject: [PATCH v2 13/38] whpx: i386: interrupt priority support
+Date: Mon, 20 Apr 2026 12:42:23 +0200
+Message-ID: <20260420104248.86702-14-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260420104248.86702-1-mohamed@unpredictable.fr>
 References: <20260420104248.86702-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: gK4Fzyvc9Py-pGYvUxxz2EwOwKt40q8h
-X-Proofpoint-ORIG-GUID: gK4Fzyvc9Py-pGYvUxxz2EwOwKt40q8h
-X-Authority-Info-Out: v=2.4 cv=Ct2ys34D c=1 sm=1 tr=0 ts=69e60355
+X-Proofpoint-GUID: -SxLM4dJTJev-AiykB4STG2w6MD6DZ2D
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX3XW3xQb9Sawf
+ Tg+P5z5Rk9A7r1oWnc+UMoM6rGN9bQ8azLXr87OKJMuJa1mnJBqOW/euElhCBIHorP77aK9leJ/
+ qf/ubyItpyQfrKpi8sKTF8l0U+3k8Hmdcm83d/PsQIQPVH99rF7XgqOC8rZkva1OMSm7zJ+1Dnl
+ BndrJ6h7QV4ckod3IGuLduBDuNsxjsKMehDrOPCJX0DCTLgrY8N/8cy09/C6fEcbZn2uP0RHI48
+ vDqn2W0yv39OGfq4xKj/Hb3bp83u1GZViNsvCFQTQaYibGGL+vsiaXe2J6AWFRhKqwtcGfyVk1f
+ qyFuhohJ037yOCni4WVpllI13p7QiYkzJcDC8KNIW3ZLK7ODvA0y5xhB0jZenM=
+X-Proofpoint-ORIG-GUID: -SxLM4dJTJev-AiykB4STG2w6MD6DZ2D
+X-Authority-Info-Out: v=2.4 cv=ce7fb3DM c=1 sm=1 tr=0 ts=69e6034f
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=ljJ9V6m273jqBh-Cp98A:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX1gYefjI6ooO9
- f2HnPeK/tMaC3rLWYpu/VUZLVU3GOaPNOQJ9IgRK2CjP9TCukxk6B3MSltbPGb3QhNwRKDIo1mq
- lXYLKnYM12Bv8gf+2EmRRKf/Oghd5pFtK7cUoNIoGwUC2la/JLuaXKG/rwl+V/i6TLi6O6wIzC7
- ClJevMpDo3VYatTTsjkzMgn3Qn1jkmi+InouFwwpqTCZYnfGdWxE4TavEo63aJ0vGC6EAQOWghU
- MxS3+Y606bmg5yPXUlGDw/zDZwebXmXFUv9HISum3IqwxD3L+DhCqH0HWdoojsHNtNyhnYvAAgp
- tYgAhN+yVQbiiJOjzUaOizxg1c/PJNBXO7Xr6fPlnfcveVnaWU3k6FAzz8KBwA=
+ a=VkNPw1HP01LnGYTKEx00:22 a=NuKELtICf0aykZwt-QIA:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- mlxlogscore=922 bulkscore=0 phishscore=0 clxscore=1030 suspectscore=0
- lowpriorityscore=0 malwarescore=0 spamscore=0 adultscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ lowpriorityscore=0 malwarescore=0 mlxlogscore=687 bulkscore=0 adultscore=0
+ mlxscore=0 suspectscore=0 clxscore=1030 phishscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604200104
-Received-SPF: pass client-ip=57.103.72.45;
+Received-SPF: pass client-ip=57.103.72.83;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -93,227 +94,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hyper-V always has CPUID[1:EDX].APIC set, even when the APIC isn't enabled yet.
+Implement APIC IRR interrupt priorities.
 
-Work around this by also using the APICBASE trap for kernel-irqchip=on.
+Even with kernel-irqchip=off, Hyper-V is aware of interrupt priorities
+and implements CR8/TPR, with the InterruptPriority field being followed.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- include/system/whpx-common.h |  1 -
- target/i386/whpx/whpx-all.c  | 34 ++++++++---------
- target/i386/whpx/whpx-apic.c | 71 ++++++++++++++++++++++++++++++++++--
- 3 files changed, 84 insertions(+), 22 deletions(-)
+ target/i386/whpx/whpx-all.c | 24 ++++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
 
-diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
-index 3406c20fec..79710e2fb3 100644
---- a/include/system/whpx-common.h
-+++ b/include/system/whpx-common.h
-@@ -8,7 +8,6 @@ struct AccelCPUState {
-     bool interruptable;
-     bool ready_for_pic_interrupt;
-     uint64_t tpr;
--    uint64_t apic_base;
-     bool interruption_pending;
-     /* Must be the last field as it may have a tail */
-     WHV_RUN_VP_EXIT_CONTEXT exit_ctx;
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 930731e4bf..c6f4041515 100644
+index d38b83d274..930731e4bf 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -139,7 +139,6 @@ static const WHV_REGISTER_NAME whpx_register_names[] = {
- #ifdef TARGET_X86_64
-     WHvX64RegisterKernelGsBase,
- #endif
--    WHvX64RegisterApicBase,
-     /* WHvX64RegisterPat, */
-     WHvX64RegisterSysenterCs,
-     WHvX64RegisterSysenterEip,
-@@ -401,7 +400,6 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
-     r86 = !(env->cr[0] & CR0_PE_MASK);
+@@ -1588,6 +1588,7 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
+     UINT32 reg_count = 0;
+     WHV_REGISTER_VALUE reg_values[3];
+     WHV_REGISTER_NAME reg_names[3];
++    int irr = apic_get_highest_priority_irr(x86_cpu->apic_state);
  
-     vcpu->tpr = cpu_get_apic_tpr(x86_cpu->apic_state);
--    vcpu->apic_base = cpu_get_apic_base(x86_cpu->apic_state);
- 
-     idx = 0;
- 
-@@ -519,9 +517,6 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
-         vcxt.values[idx++].Reg64 = env->kernelgsbase;
- #endif
- 
--        assert(whpx_register_names[idx] == WHvX64RegisterApicBase);
--        vcxt.values[idx++].Reg64 = vcpu->apic_base;
--
-         /* WHvX64RegisterPat - Skipped */
- 
-         assert(whpx_register_names[idx] == WHvX64RegisterSysenterCs);
-@@ -556,6 +551,12 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
-         error_report("WHPX: Failed to set virtual processor context, hr=%08lx",
-                      hr);
+     memset(&new_int, 0, sizeof(new_int));
+     memset(reg_values, 0, sizeof(reg_values));
+@@ -1623,10 +1624,20 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
+         }
      }
-+
-+    if (level >= WHPX_LEVEL_FULL_STATE) {
-+        WHV_REGISTER_VALUE apic_base = {};
-+        apic_base.Reg64 = cpu_get_apic_base(X86_CPU(cpu)->apic_state);
-+        whpx_set_reg(cpu, WHvX64RegisterApicBase, apic_base);
+ 
++    if (irr == -1) {
++        if (isa_pic != NULL && pic_get_output(isa_pic)) {
++            /* In case it's a PIC interrupt */
++            irr = 0;
++        } else if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD)) {
++            abort();
++        }
 +    }
++
+     /* Get pending hard interruption or replay one that was overwritten */
+     if (!whpx_irqchip_in_kernel()) {
+         if (!vcpu->interruption_pending &&
+-            vcpu->interruptable && (env->eflags & IF_MASK)) {
++            vcpu->interruptable && (env->eflags & IF_MASK)
++            && (vcpu->tpr < irr || irr == 0)) {
+             assert(!new_int.InterruptionPending);
+             if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD)) {
+                 cpu_reset_interrupt(cpu, CPU_INTERRUPT_HARD);
+@@ -1683,13 +1694,17 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
+     }
+ 
+     /* Update the state of the interrupt delivery notification */
+-    if (!vcpu->window_registered &&
++    if ((!vcpu->window_registered ||
++        (vcpu->window_priority < irr && vcpu->window_priority != 0) ||
++        (irr == 0 && vcpu->window_priority != 0)) &&
+         cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD)) {
+         reg_values[reg_count].DeliverabilityNotifications =
+             (WHV_X64_DELIVERABILITY_NOTIFICATIONS_REGISTER) {
+-                .InterruptNotification = 1
++                .InterruptNotification = 1,
++                .InterruptPriority = irr >> 4
+             };
+         vcpu->window_registered = 1;
++        vcpu->window_priority = irr;
+         reg_names[reg_count] = WHvX64RegisterDeliverabilityNotifications;
+         reg_count += 1;
+     }
+@@ -1703,7 +1718,7 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
+             reg_names, reg_count, reg_values);
+         if (FAILED(hr)) {
+             error_report("WHPX: Failed to set interrupt state registers,"
+-                         " hr=%08lx", hr);
++                         " hr=%08lx, InterruptPriority=%i", hr, irr >> 4);
+         }
+     }
  }
+@@ -1919,6 +1934,7 @@ int whpx_vcpu_run(CPUState *cpu)
+         case WHvRunVpExitReasonX64InterruptWindow:
+             vcpu->ready_for_pic_interrupt = 1;
+             vcpu->window_registered = 0;
++            vcpu->window_priority = 0;
+             ret = 0;
+             break;
  
- static int whpx_get_tsc(CPUState *cpu)
-@@ -647,7 +648,7 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
-     X86CPU *x86_cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86_cpu->env;
-     struct whpx_register_set vcxt;
--    uint64_t tpr, apic_base;
-+    uint64_t tpr;
-     HRESULT hr;
-     int idx;
-     int idx_next;
-@@ -779,13 +780,6 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
-     env->kernelgsbase = vcxt.values[idx++].Reg64;
- #endif
- 
--    assert(whpx_register_names[idx] == WHvX64RegisterApicBase);
--    apic_base = vcxt.values[idx++].Reg64;
--    if (apic_base != vcpu->apic_base) {
--        vcpu->apic_base = apic_base;
--        cpu_set_apic_base(x86_cpu->apic_state, vcpu->apic_base);
--    }
--
-     /* WHvX64RegisterPat - Skipped */
- 
-     assert(whpx_register_names[idx] == WHvX64RegisterSysenterCs);
-@@ -1997,8 +1991,7 @@ int whpx_vcpu_run(CPUState *cpu)
-                 val = X86_CPU(cpu)->env.apic_bus_freq;
-             }
- 
--            if (!whpx_irqchip_in_kernel() &&
--                vcpu->exit_ctx.MsrAccess.MsrNumber == MSR_IA32_APICBASE) {
-+            if (vcpu->exit_ctx.MsrAccess.MsrNumber == MSR_IA32_APICBASE) {
-                 is_known_msr = 1;
-                 if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
-                     /* Read path unreachable on Hyper-V */
-@@ -2164,6 +2157,13 @@ int whpx_vcpu_run(CPUState *cpu)
-                 } else {
-                     reg_values[2].Reg32 &= ~CPUID_EXT_X2APIC;
-                 }
-+
-+                /* CPUID[1:EDX].APIC is dynamic */
-+                if (env->features[FEAT_1_EDX] & CPUID_APIC) {
-+                    reg_values[3].Reg32 |= CPUID_APIC;
-+                } else {
-+                    reg_values[3].Reg32 &= ~CPUID_APIC;
-+                }
-             }
- 
-             /* Dynamic depending on XCR0 and XSS, so query DefaultResult */
-@@ -2725,9 +2725,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
- 
-     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
-     prop.X64MsrExitBitmap.UnhandledMsrs = 1;
--    if (!whpx_irqchip_in_kernel()) {
--        prop.X64MsrExitBitmap.ApicBaseMsrWrite = 1;
--    }
-+    prop.X64MsrExitBitmap.ApicBaseMsrWrite = 1;
- 
-     hr = whp_dispatch.WHvSetPartitionProperty(
-             whpx->partition,
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index f26ecaf6e8..65629ca45f 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -90,9 +90,70 @@ static void whpx_get_apic_state(APICCommonState *s,
-     apic_next_timer(s, s->initial_count_load_time);
- }
- 
--static int whpx_apic_set_base(APICCommonState *s, uint64_t val)
-+static int apic_set_base_check(APICCommonState *s, uint64_t val)
- {
--    s->apicbase = val;
-+    /* Enable x2apic when x2apic is not supported by CPU */
-+    if (!cpu_has_x2apic_feature(&s->cpu->env) &&
-+        val & MSR_IA32_APICBASE_EXTD) {
-+        return -1;
-+    }
-+
-+    /*
-+     * Transition into invalid state
-+     * (s->apicbase & MSR_IA32_APICBASE_ENABLE == 0) &&
-+     * (s->apicbase & MSR_IA32_APICBASE_EXTD) == 1
-+     */
-+    if (!(val & MSR_IA32_APICBASE_ENABLE) &&
-+        (val & MSR_IA32_APICBASE_EXTD)) {
-+        return -1;
-+    }
-+
-+    /* Invalid transition from disabled mode to x2APIC */
-+    if (!(s->apicbase & MSR_IA32_APICBASE_ENABLE) &&
-+        !(s->apicbase & MSR_IA32_APICBASE_EXTD) &&
-+        (val & MSR_IA32_APICBASE_ENABLE) &&
-+        (val & MSR_IA32_APICBASE_EXTD)) {
-+        return -1;
-+    }
-+
-+    /* Invalid transition from x2APIC to xAPIC */
-+    if ((s->apicbase & MSR_IA32_APICBASE_ENABLE) &&
-+        (s->apicbase & MSR_IA32_APICBASE_EXTD) &&
-+        (val & MSR_IA32_APICBASE_ENABLE) &&
-+        !(val & MSR_IA32_APICBASE_EXTD)) {
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+static int apic_set_base(APICCommonState *s, uint64_t val)
-+{
-+    if (apic_set_base_check(s, val) < 0) {
-+        return -1;
-+    }
-+
-+    s->apicbase = (val & MSR_IA32_APICBASE_BASE) |
-+        (s->apicbase & (MSR_IA32_APICBASE_BSP | MSR_IA32_APICBASE_ENABLE));
-+    if (!(val & MSR_IA32_APICBASE_ENABLE)) {
-+        s->apicbase &= ~MSR_IA32_APICBASE_ENABLE;
-+        cpu_clear_apic_feature(&s->cpu->env);
-+    }
-+
-+    /* Transition from disabled mode to xAPIC */
-+    if (!(s->apicbase & MSR_IA32_APICBASE_ENABLE) &&
-+        (val & MSR_IA32_APICBASE_ENABLE)) {
-+        s->apicbase |= MSR_IA32_APICBASE_ENABLE;
-+        cpu_set_apic_feature(&s->cpu->env);
-+    }
-+
-+    /* Transition from xAPIC to x2APIC */
-+    if (cpu_has_x2apic_feature(&s->cpu->env) &&
-+        !(s->apicbase & MSR_IA32_APICBASE_EXTD) &&
-+        (val & MSR_IA32_APICBASE_EXTD)) {
-+        s->apicbase |= MSR_IA32_APICBASE_EXTD;
-+    }
-+
-     return 0;
- }
- 
-@@ -235,6 +296,10 @@ static void whpx_apic_mem_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps whpx_apic_io_ops = {
-     .read = whpx_apic_mem_read,
-     .write = whpx_apic_mem_write,
-+    .impl.min_access_size = 1,
-+    .impl.max_access_size = 4,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-     .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
-@@ -262,7 +327,7 @@ static void whpx_apic_class_init(ObjectClass *klass, const void *data)
- 
-     k->realize = whpx_apic_realize;
-     k->reset = whpx_apic_reset;
--    k->set_base = whpx_apic_set_base;
-+    k->set_base = apic_set_base;
-     k->set_tpr = whpx_apic_set_tpr;
-     k->get_tpr = whpx_apic_get_tpr;
-     k->post_load = whpx_apic_post_load;
 -- 
 2.50.1 (Apple Git-155)
 

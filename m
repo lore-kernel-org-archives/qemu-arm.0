@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BF19F588DF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79C24F588DE
 	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 14:08:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEpHO-0003Bh-3A; Mon, 20 Apr 2026 10:07:14 -0400
+	id 1wEpGy-000349-Ow; Mon, 20 Apr 2026 10:06:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wEpGt-00032l-Fa
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:43 -0400
+ id 1wEpGr-00031l-SQ
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wEpGr-0001TR-JW
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:42 -0400
+ id 1wEpGh-0001PO-7A
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1776693998;
+ s=mimecast20190719; t=1776693987;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HtGVpbU9D9A5ZHk/Is/GCfoppgSwhjM/X5KsFFKMQBQ=;
- b=btfToQ8GhSG3aWonwNS06Au7iwXWzUcYOKlirpHVi9ZOJpCRbdeUniCnc44yWQtotW3VfU
- rHNzu8SUGS82Rzz6bX9L8y8OfAfIKrroHGXpby8S6NZxzPJGgCN85vMlvLhNJDngPhNTLl
- IfbeOlb9/PQ7NG1yB93RumqVXkJjowY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=zipW9TCGnuReJYAATRp2/FC4DgAMWS66uVZMiYmbdf8=;
+ b=bGYeKiVPqMfhYHMGb/b52K+Xm+cOgVVU6O0D+jmksF9jD6wpUGryN2za5IQIcprrQz+UK4
+ Hbkmufwh4ir49A2d4ZYfjTeKd4hxh/R2mVxAiLJlit+LjfBXVCm4A9Mp5M1brFaJdSrvi4
+ 3VndF/7jZkoHVfM15aE2HcUl/l4mhII=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-113-fjcJ40SdON-6rFO84lnt4Q-1; Mon,
- 20 Apr 2026 10:06:33 -0400
-X-MC-Unique: fjcJ40SdON-6rFO84lnt4Q-1
-X-Mimecast-MFC-AGG-ID: fjcJ40SdON-6rFO84lnt4Q_1776693991
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-ZExSBlcjMW6ZOkZfj3gFuA-1; Mon,
+ 20 Apr 2026 10:06:24 -0400
+X-MC-Unique: ZExSBlcjMW6ZOkZfj3gFuA-1
+X-Mimecast-MFC-AGG-ID: ZExSBlcjMW6ZOkZfj3gFuA_1776693983
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 904A31800348; Mon, 20 Apr 2026 14:06:31 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2F8DF19560BA; Mon, 20 Apr 2026 14:06:23 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.74])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D858C180047F; Mon, 20 Apr 2026 14:06:27 +0000 (UTC)
+ id 1368E1800349; Mon, 20 Apr 2026 14:06:18 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v10 7/7] Revert "target/arm: Reinstate bogus AArch32 DBGDTRTX
- register for migration compat"
-Date: Mon, 20 Apr 2026 16:03:57 +0200
-Message-ID: <20260420140552.104369-8-eric.auger@redhat.com>
+Subject: [PATCH v10 5/7] target/arm/cpu64: Define cpreg migration tolerance
+ for KVM_REG_ARM_VENDOR_HYP_BMAP_2
+Date: Mon, 20 Apr 2026 16:03:55 +0200
+Message-ID: <20260420140552.104369-6-eric.auger@redhat.com>
 In-Reply-To: <20260420140552.104369-1-eric.auger@redhat.com>
 References: <20260420140552.104369-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 46pBdkRNTPpeEOfBqGTCavD4r_P-sp-PcSMllNcyFo8_1776693991
+X-Mimecast-MFC-PROC-ID: GYPvKMIN6BlsiCIpR6GYBdEqGlc4_MNNO5A2IW5Pl1M_1776693983
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -88,65 +88,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 4f2b82f60431 ("target/arm: Reinstate bogus AArch32
-DBGDTRTX register for migration compat). We don't need that commit
-anymore as the AArch32 DBGDTRTX register is declared to
-be safe to ignore in the incoming migration stream.
+KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
+from v6.15 onwards. Backward migration from a >= v6.15 to an older
+kernel would fail without cpreg migration tolerance definition
+for this register. If the register is present on source but not
+on destination, its value must be checked to make sure it matches
+the reset value, ie. 0, meaning no service is exposed to the guest,
+hence the choice of a ToleranceOnlySrcTestValue migration
+tolerance.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/debug_helper.c | 29 -----------------------------
- 1 file changed, 29 deletions(-)
 
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 352c8e5c8e7..8477ca5def6 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -171,13 +171,6 @@ static void dbgclaimclr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     env->cp15.dbgclaim &= ~(value & 0xFF);
+---
+
+v9 -> v10
+- Use ToleranceOnlySrcTestValue
+---
+ target/arm/cpu64.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index e7014022df4..a93ad2da5ad 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -834,6 +834,17 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+                                      0, 0, ToleranceNotOnBothEnds);
+     arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
+                                      0, 0, ToleranceNotOnBothEnds);
++
++    /*
++     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
++     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
++     * kernel would fail without cpreg migration tolerance definition.
++     * If the register is present on source but not on destination, make
++     * sure it has its reset value, ie. 0, meaning no service is exposed
++     * to the guest.
++     */
++    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
++                                     UINT64_MAX, 0, ToleranceOnlySrcTestValue);
  }
+ #endif
  
--static CPAccessResult access_bogus(CPUARMState *env, const ARMCPRegInfo *ri,
--                                   bool isread)
--{
--    /* Always UNDEF, as if this cpreg didn't exist */
--    return CP_ACCESS_UNDEFINED;
--}
--
- static const ARMCPRegInfo debug_cp_reginfo[] = {
-     /*
-      * DBGDRAR, DBGDSAR: always RAZ since we don't implement memory mapped
-@@ -240,28 +233,6 @@ static const ARMCPRegInfo debug_cp_reginfo[] = {
-       .opc0 = 2, .opc1 = 3, .crn = 0, .crm = 4, .opc2 = 0,
-       .access = PL0_RW, .accessfn = access_tdcc,
-       .type = ARM_CP_CONST, .resetvalue = 0 },
--    /*
--     * This is not a real AArch32 register. We used to incorrectly expose
--     * this due to a QEMU bug; to avoid breaking migration compatibility we
--     * need to continue to provide it so that we don't fail the inbound
--     * migration when it tells us about a sysreg that we don't have.
--     * We set an always-fails .accessfn, which means that the guest doesn't
--     * actually see this register (it will always UNDEF, identically to if
--     * there were no cpreg definition for it other than that we won't print
--     * a LOG_UNIMP message about it), and we set the ARM_CP_NO_GDB flag so the
--     * gdbstub won't see it either.
--     * (We can't just set .access = 0, because add_cpreg_to_hashtable()
--     * helpfully ignores cpregs which aren't accessible to the highest
--     * implemented EL.)
--     *
--     * TODO: implement a system for being able to describe "this register
--     * can be ignored if it appears in the inbound stream"; then we can
--     * remove this temporary hack.
--     */
--    { .name = "BOGUS_DBGDTR_EL0", .state = ARM_CP_STATE_AA32,
--      .cp = 14, .opc1 = 3, .crn = 0, .crm = 5, .opc2 = 0,
--      .access = PL0_RW, .accessfn = access_bogus,
--      .type = ARM_CP_CONST | ARM_CP_NO_GDB, .resetvalue = 0 },
-     /*
-      * OSECCR_EL1 provides a mechanism for an operating system
-      * to access the contents of EDECCR. EDECCR is not implemented though,
 -- 
 2.53.0
 

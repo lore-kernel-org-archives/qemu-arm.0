@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C6B1F55808
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10CCAF5580B
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEm6T-0007DD-VW; Mon, 20 Apr 2026 06:43:46 -0400
+	id 1wEm72-0008Mc-TA; Mon, 20 Apr 2026 06:44:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6R-0007AI-Or
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:43 -0400
-Received: from p-west3-cluster6-host6-snip4-10.eps.apple.com ([57.103.75.123]
+ id 1wEm72-0008MH-5f
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:44:20 -0400
+Received: from p-west3-cluster4-host2-snip4-4.eps.apple.com ([57.103.74.185]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6O-0000dk-U1
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:43:43 -0400
+ id 1wEm70-0000nD-Sr
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:44:19 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPS id
- 66B97180045A; Mon, 20 Apr 2026 10:43:36 +0000 (UTC)
+ 3856C1800151; Mon, 20 Apr 2026 10:44:16 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776681818; x=1779273818;
- bh=6dRDJ5VEmS78xsRk6kMHBpp9Wu7kQoHjBWY816Egd9Q=;
+ s=sig1; t=1776681857; x=1779273857;
+ bh=rb0GOIlqaOFPi1Yf1WKY/tBOvMMic05yErCimlciyYU=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=ZiqMaEhERnaCG8BBDaSaBRanydfmEXgOfWTwKXKrYtbhDEoGSzDKpRIjO36TBOG5pPHEJeBws2HhjHjt+uIQQ+pAV6bNFTTP0G1sa3Aw2X1lKur9SFJhx1mfJwSj4RXmi7dZlZDHg9d3/0lTKo686wTVdA7Ml8MjnoPxADNYBbax5A8GyIIVYxMdVwlzQaA3IzKoOsS+035LImh1rQF9R3jNUjUVL0wrv07aTcrMCFeOu/iI/I+HDRqtF0iHkoHNWEoBiPYIEcPYu5AFKrXK1aIAciK1z6M5ialSCxJ3lU5wrt0UbLWHkUX3qAIVHZfCcglFyIUMB/yYgQCuGzb1QQ==
+ b=VIJ6loHicV/QUogjLDzv2jEqHtGMmcwUXZjaboHXkkXFhK0xhtnEBV5QQfv6jU+OOrgTdBSZinB7fKOz/3WvOLcxd8oUOPEdEmC0PjjSAAcb8Bm20Ujf5hCr9MyeZAcVya8Wm3mqbvL7LKIDS7DwakNTDo6HRX6h29AwnEI2pXvpN0MOfxDzIkjYneSi+PPMFsMPcgdbBUHFmmfKEcEDhiFn+zT6d2vssiUBHXCJuwU7HTkRKay3eGyKpDKcitpPbrq6UpjjbAhC4rcINF7Dc6dV9pFcirF9kdggju21qA9CU3h20DjppGaHUgNNORrj0taqO8v51lE5TcTApsq4Xw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPSA id
- D21F21800478; Mon, 20 Apr 2026 10:43:33 +0000 (UTC)
+ 7E3E0180017C; Mon, 20 Apr 2026 10:44:13 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
@@ -43,43 +43,42 @@ Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 17/38] whpx: i386: unknown MSR configurability
-Date: Mon, 20 Apr 2026 12:42:27 +0200
-Message-ID: <20260420104248.86702-18-mohamed@unpredictable.fr>
+Subject: [PATCH v2 33/38] whpx: i386: update migration blocker message
+Date: Mon, 20 Apr 2026 12:42:43 +0200
+Message-ID: <20260420104248.86702-34-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260420104248.86702-1-mohamed@unpredictable.fr>
 References: <20260420104248.86702-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: PDCmDiPyhYelfMhsgCs4mxLsG49E4L6c
-X-Authority-Info-Out: v=2.4 cv=DOGCIiNb c=1 sm=1 tr=0 ts=69e60359
+X-Proofpoint-GUID: E8NtGfp6P629HAHk1EOEx-hDxvGJFgR_
+X-Proofpoint-ORIG-GUID: E8NtGfp6P629HAHk1EOEx-hDxvGJFgR_
+X-Authority-Info-Out: v=2.4 cv=GJUF0+NK c=1 sm=1 tr=0 ts=69e60381
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=9z_AL-2ZILZrMqfKHsQA:9
-X-Proofpoint-ORIG-GUID: PDCmDiPyhYelfMhsgCs4mxLsG49E4L6c
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX9Zq935l7r8mP
- vlaUDFA3GpOv4YI3ojqIp7m3nXUhBecmS38s/+K7J9Cd6QT6Es5ZaRdSsYFWtn4dQKBsUmfUQcx
- N0G4e7MnRvx2W9Zd3L7VHfMzO3o0NHiRcYo+BVtZxvUpCESjNi+79HBuFai56uMpvflSx1BtYy7
- GAqp523lUjnBh3twSWTbsBAnZzZFaf5amr8xtgkUhKbVIy9MhwH4f0lSgExvHj4zqgp6fBwNyvK
- 2RAmkN/sYGD0xd01mtV4lx92WKr0Ip6b6UsngLF7DV9wdG0k4Z0m16XFbgY30iZAPJVJwKgMgVt
- iRpQ+U+M45w73RK6+PWHifpZLCguFPukGyvcZvfu8+tmQKdUaXRJRcMTlk8T1g=
+ a=VkNPw1HP01LnGYTKEx00:22 a=0IeqtQ1xXW1zzRo-U5sA:9 a=ZXulRonScM0A:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfX/h8CLLLw0T+4
+ yd/ODz8AZaE3tNjqh7+L8MlJdPlzFu5H0gTMh5T5DCjbwjUqrp7dzF9t9GttG+uyUp7oihs37Db
+ McSMb4jPAf4Bc37gujTjaTBse2YMDdZfTenY3pSa+6f/Aq05bcbnVV7Q5xi2pnbOZqSj9KrAYHa
+ jCzVx9DxtHAoL3WFKT4tQLMyeArYjIxAasNpKDixPROf/MtpwA1aHkAL4jNCKN44YBh4fz6cZJv
+ IX+fK9FF8t6JHF2kHiqyk1FeZkIwrxDMVzUajv7vwgFsB2v8CeHFj/gYHkieYfYuzunKriYvJmb
+ 98mZP16oQxkyfDg54l++5OdNto6DxD/Blbzb5hkVC646jmawhfnytRzDb0mSz0=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- lowpriorityscore=0 mlxscore=0 spamscore=0
- malwarescore=0 phishscore=0
- adultscore=0 bulkscore=0 mlxlogscore=999 clxscore=1030 classifier=spam
+ phishscore=0 lowpriorityscore=0 mlxscore=0
+ spamscore=0 adultscore=0
+ clxscore=1030 mlxlogscore=637 bulkscore=0 malwarescore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2604200104
-Received-SPF: pass client-ip=57.103.75.123;
+Received-SPF: pass client-ip=57.103.74.185;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,108 +94,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add an option to inject back a GPF for unknown MSRs.
-
-Keep it on by default for now as Linux expects accesses to some
-AMD-specific MSRs to always succeed when on an AMD host.
+Quite a part of it is from older times...
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- accel/whpx/whpx-common.c       | 38 ++++++++++++++++++++++++++++++++++
- include/system/whpx-internal.h |  1 +
- target/i386/whpx/whpx-all.c    |  4 ++++
- 3 files changed, 43 insertions(+)
+ target/i386/whpx/whpx-all.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index 59be996aef..706871f138 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -505,6 +505,38 @@ static void whpx_set_hyperv(Object *obj, Visitor *v,
-     }
- }
- 
-+static void whpx_set_unknown_msr(Object *obj, Visitor *v,
-+                                   const char *name, void *opaque,
-+                                   Error **errp)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    OnOffAuto mode;
-+
-+    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
-+        return;
-+    }
-+
-+    switch (mode) {
-+    case ON_OFF_AUTO_ON:
-+        whpx->ignore_unknown_msr = true;
-+        break;
-+
-+    case ON_OFF_AUTO_OFF:
-+        whpx->ignore_unknown_msr = false;
-+        break;
-+
-+    case ON_OFF_AUTO_AUTO:
-+        whpx->ignore_unknown_msr = true;
-+        break;
-+    default:
-+        /*
-+         * The value was checked in visit_type_OnOffAuto() above. If
-+         * we get here, then something is wrong in QEMU.
-+         */
-+        abort();
-+    }
-+}
-+
- static void whpx_cpu_accel_class_init(ObjectClass *oc, const void *data)
- {
-     AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
-@@ -538,6 +570,11 @@ static void whpx_accel_class_init(ObjectClass *oc, const void *data)
-         NULL, NULL);
-     object_class_property_set_description(oc, "hyperv",
-         "Configure Hyper-V enlightenments");
-+    object_class_property_add(oc, "ignore-unknown-msr", "OnOffAuto",
-+        NULL, whpx_set_unknown_msr,
-+        NULL, NULL);
-+    object_class_property_set_description(oc, "ignore-unknown-msr",
-+        "Configure unknown MSR behavior");
- }
- 
- static void whpx_accel_instance_init(Object *obj)
-@@ -552,6 +589,7 @@ static void whpx_accel_instance_init(Object *obj)
-     whpx->hyperv_enlightenments_required = false;
-     /* Value determined at whpx_accel_init */
-     whpx->hyperv_enlightenments_enabled = false;
-+    whpx->ignore_unknown_msr = true;
- }
- 
- static const TypeInfo whpx_accel_type = {
-diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index cf782cf5f8..86639627b3 100644
---- a/include/system/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -47,6 +47,7 @@ struct whpx_state {
-     bool hyperv_enlightenments_required;
-     bool hyperv_enlightenments_enabled;
- 
-+    bool ignore_unknown_msr;
- };
- 
- extern struct whpx_state whpx_global;
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 0d72e93621..550f30d50a 100644
+index 208ff0c35c..f9f12484c9 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2048,6 +2048,10 @@ int whpx_vcpu_run(CPUState *cpu)
-                     vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite);
-             }
+@@ -2569,8 +2569,8 @@ int whpx_init_vcpu(CPUState *cpu)
+      */
+     if (whpx_migration_blocker == NULL) {
+         error_setg(&whpx_migration_blocker,
+-               "State blocked due to non-migratable CPUID feature support,"
+-               "dirty memory tracking support, and XSAVE/XRSTOR support");
++               "State blocked due to missing dirty memory tracking support,"
++               "And some system register/state save-restore ");
  
-+            if (!is_known_msr && !whpx->ignore_unknown_msr) {
-+                x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
-+            }
-+
-             hr = whp_dispatch.WHvSetVirtualProcessorRegisters(
-                 whpx->partition,
-                 cpu->cpu_index,
+         if (migrate_add_blocker(&whpx_migration_blocker, &local_error) < 0) {
+             error_report_err(local_error);
 -- 
 2.50.1 (Apple Git-155)
 

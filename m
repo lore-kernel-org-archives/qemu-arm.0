@@ -4,66 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3599F588CA
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 14:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 004CCF588DE
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 14:07:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEpH4-00035p-Ub; Mon, 20 Apr 2026 10:06:56 -0400
+	id 1wEpGt-00032J-9y; Mon, 20 Apr 2026 10:06:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wEpGt-00032g-F8
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:43 -0400
+ id 1wEpGP-0002yr-SA
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wEpGr-0001QX-7X
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:42 -0400
+ id 1wEpGK-0001L8-66
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 10:06:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1776693991;
+ s=mimecast20190719; t=1776693963;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0EM1XmILPw6VzQiNknH3uHKB72whXoHpWgRXJ1BwNEY=;
- b=CmX+rG5l4YF70/ORM9zk0uWd0I1kHZRi2K0Cod/azm9EUnERyVchQgKSBX4OhFcXae0m1q
- koJbr+YGsEEoREqdS0zulbLw9RrhLG4JnuvRQ8xtCK70eUBSyi1E5fC1sJacgkX0WjGSun
- YlXtwLUohjztQ3be+u6Z2xVn8PK1Sgw=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=dsucsObgYvq2jiwaIy0SjqfSzFmZVsn4y3c+ddn6E6U=;
+ b=QRuyaTkliX6q7JujfovnxA2OCQJR1Emp5sV0jOE98JqVJHfIifIYZpI97V2wye7mYY5y6H
+ rl28T3mH0yLV0gKgbB2uVRT3J/C80x9zFEgi3MwJXQBiZhDNrj7BzK46/q97FgX7x2E1OH
+ acYa1W7IkwhUxcSA24LPQYEtQZ/TG2g=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-551-3eLOvclhPVu2KyZ8aRGTYg-1; Mon,
- 20 Apr 2026 10:06:18 -0400
-X-MC-Unique: 3eLOvclhPVu2KyZ8aRGTYg-1
-X-Mimecast-MFC-AGG-ID: 3eLOvclhPVu2KyZ8aRGTYg_1776693973
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-311-5Ob1Fkd2NcGv1Gj4UHDU9g-1; Mon,
+ 20 Apr 2026 10:06:02 -0400
+X-MC-Unique: 5Ob1Fkd2NcGv1Gj4UHDU9g-1
+X-Mimecast-MFC-AGG-ID: 5Ob1Fkd2NcGv1Gj4UHDU9g_1776693961
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C14271955DE2; Mon, 20 Apr 2026 14:06:13 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 722961800659; Mon, 20 Apr 2026 14:06:00 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.74])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 15F841800349; Mon, 20 Apr 2026 14:06:09 +0000 (UTC)
+ id 6F3D3180047F; Mon, 20 Apr 2026 14:05:56 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  sebott@redhat.com, peterx@redhat.com, philmd@linaro.org,
  alex.bennee@linaro.org
-Subject: [PATCH v10 3/7] target/arm/machine: Handle ToleranceOnlySrcTestValue
- migration tolerance
-Date: Mon, 20 Apr 2026 16:03:53 +0200
-Message-ID: <20260420140552.104369-4-eric.auger@redhat.com>
-In-Reply-To: <20260420140552.104369-1-eric.auger@redhat.com>
-References: <20260420140552.104369-1-eric.auger@redhat.com>
+Subject: [PATCH v10 0/7] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+Date: Mon, 20 Apr 2026 16:03:50 +0200
+Message-ID: <20260420140552.104369-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: PxeiJp2eSP-onN2316dXgTz8Cvzo__EiI9-YuXyv06U_1776693973
+X-Mimecast-MFC-PROC-ID: HD9M-8M5CcacTbR8MlUZ53MncHfVOU6A2j9G6C_b2X4_1776693961
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -72,7 +69,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,58 +85,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pass the value of the incoming register to
-handle_cpreg_only_in_incoming_stream and check whether there is
-a matching ToleranceOnlySrcTestValue tolerance.
+This series introduces an infrastructure to explicitly tolerate
+some mismatches between cpu cpreg indexes/values on migration.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- target/arm/machine.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+We especially handle failures due to an attempt to migrate
+more registers than exposed on the destination.
 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 8a698f601c6..35f1e4327f8 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -1081,12 +1081,15 @@ static void handle_cpreg_missing_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx
-  * no cpreg mig tolerance is matched for this @kvmidx
-  * Return true if the migration should eventually fail
-  */
--static bool handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx)
-+static bool
-+handle_cpreg_only_in_incoming_stream(ARMCPU *cpu, uint64_t kvmidx, uint64_t value)
- {
-     g_autofree gchar *name = print_register_name(kvmidx);
- 
-     if (arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
--                                          0, 0, ToleranceNotOnBothEnds)) {
-+                                          0, 0, ToleranceNotOnBothEnds) ||
-+        arm_cpu_match_cpreg_mig_tolerance(cpu, kvmidx,
-+                                          value, 0, ToleranceOnlySrcTestValue)) {
-         trace_tolerate_cpreg_only_in_incoming_stream(name);
-         return false;
-     }
-@@ -1139,7 +1142,9 @@ static int cpu_post_load(void *opaque, int version_id)
-         }
-         if (cpu->cpreg_vmstate_indexes[v] < cpu->cpreg_indexes[i]) {
-             fail = handle_cpreg_only_in_incoming_stream(cpu,
--                                                        cpu->cpreg_vmstate_indexes[v++]);
-+                                                        cpu->cpreg_vmstate_indexes[v],
-+                                                        cpu->cpreg_vmstate_values[v]);
-+            v++;
-             continue;
-         }
-         /* matching register, copy the value over */
-@@ -1162,7 +1167,8 @@ static int cpu_post_load(void *opaque, int version_id)
-      */
-     for ( ; v < cpu->cpreg_vmstate_array_len; v++) {
-         fail = handle_cpreg_only_in_incoming_stream(cpu,
--                                                    cpu->cpreg_vmstate_indexes[v]);
-+                                                    cpu->cpreg_vmstate_indexes[v],
-+                                                    cpu->cpreg_vmstate_values[v]);
-     }
-     if (fail) {
-         return -1;
+Once the infrastructure is in place we can handle the following
+known issues:
+KVM:
+- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+  from v6.13 onwards. Causes forward migration failure.
+- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+  register from v6.16 onwards. Causes backward migration failure.
+TCG:
+- We can eventually remove AArch32 DBGDTRTX register which was
+  erroneously defined.
+
+The series can be found at:
+https://github.com/eauger/qemu/tree/x-kernel-mig-v10
+
+History:
+v9 -> v10:
+- main functional change consists in the introduction of a new
+  ToleranceOnlySrcTestValue migration tolerance type to handle
+  KVM_REG_ARM_VENDOR_HYP_BMAP_2
+- See individual patch diff logs for more details
+
+v8 -> v9:
+- took into account Seb's comments (fixed ->type check, rename one function)
+- collected R-bs
+
+v7 -> v8:
+- rebase on top of v3 dep
+- removal of target/arm/machine: Fix detection of unknown incoming cpregs
+  which is integrated in prerequisite series
+
+v6 -> v7
+- complete rework after Peter's comments in
+  (https://lore.kernel.org/all/20260126165445.3033335-1-eric.auger@redhat.com/)
+  Especially it does not use properties at all. Do not feature hidden regs
+  Also the initial series was split into 2.
+
+
+Eric Auger (7):
+  target/arm/cpu: Introduce the infrastructure for cpreg migration
+    tolerances
+  target/arm/machine: Handle ToleranceNotOnBothEnds migration tolerances
+  target/arm/machine: Handle ToleranceOnlySrcTestValue migration
+    tolerance
+  target/arm/cpu64: Mitigate migration failures due to spurious TCR_EL1,
+    PIRE0_EL1 and PIR_EL1
+  target/arm/cpu64: Define cpreg migration tolerance for
+    KVM_REG_ARM_VENDOR_HYP_BMAP_2
+  target/arm/helper: Define cpreg migration tolerance for DGBDTR_EL0
+  Revert "target/arm: Reinstate bogus AArch32 DBGDTRTX register for
+    migration compat"
+
+ target/arm/cpu.h          |  1 +
+ target/arm/internals.h    | 54 ++++++++++++++++++++++++++
+ target/arm/cpu.c          | 82 +++++++++++++++++++++++++++++++++++++++
+ target/arm/cpu64.c        | 39 +++++++++++++++++++
+ target/arm/debug_helper.c | 29 --------------
+ target/arm/helper.c       | 15 +++++++
+ target/arm/machine.c      | 33 +++++++++++-----
+ target/arm/trace-events   |  2 +
+ 8 files changed, 217 insertions(+), 38 deletions(-)
+
 -- 
 2.53.0
 

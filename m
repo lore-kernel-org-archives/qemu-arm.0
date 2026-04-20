@@ -4,80 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F426F5580B
-	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 10:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFBAF5581D
+	for <qemu-arm@archiver.kernel.org>; Mon, 20 Apr 2026 11:28:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wEm6t-0008E8-Q8; Mon, 20 Apr 2026 06:44:11 -0400
+	id 1wEmn9-00043w-8C; Mon, 20 Apr 2026 07:27:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6s-0008DQ-9x
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:44:10 -0400
-Received: from p-west3-cluster4-host5-snip4-8.eps.apple.com ([57.103.74.199]
+ id 1wEmn4-00043R-OS
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 07:27:47 -0400
+Received: from p-west3-cluster1-host4-snip4-1.eps.apple.com ([57.103.73.162]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wEm6p-0000jm-Mw
- for qemu-arm@nongnu.org; Mon, 20 Apr 2026 06:44:10 -0400
+ id 1wEmn1-0003vT-HX
+ for qemu-arm@nongnu.org; Mon, 20 Apr 2026 07:27:45 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPS id
- E81E01800097; Mon, 20 Apr 2026 10:44:03 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-5 (Postfix) with ESMTPS id
+ C15791800411; Mon, 20 Apr 2026 11:27:38 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776681846; x=1779273846;
- bh=FjknWeXX453ZkdimgET5qsOfRjRd950mgDj8NKv+vI4=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=WjxOkqnT6BYcEYghIml7QL5elXP1nICipH6tp0q11gTIZ5N2uiUU/1iip5tlAVK6nkK9yQaZ0r0aeDNYbadzeTki5PGUQRz0umBgz9DxQBMGirqKymceiQNLoHVgdu9TBD2gLIS2bNob5rO6gSu+oAqCyHMLPKxbFZAYPrxH7Ztln3wQFHUH36m0wGmDdLLolhypKTbjSM3on9y2axrbEw2WSGbhmh2DuhnHQxpRkvX4+v+qtIDLh86b+bSIANg4i9wMtF6F8vjhsd9EzRnaB/SulX01Ak1MG0p8+TwyhjLUDGtyNQTZiKpIeXUCQOK7Bg3CYesjqTeCS9ZGAs2SUw==
+ s=sig1; t=1776684461; x=1779276461;
+ bh=Krffpx7w2ZVSMIrNsZDbV8VgM7sYpLIn8x9ysKUuL/8=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=ZtFK0Re5/WdV1c0DJUDvM/5ty/S3DhFgBDsqDaotcthJUyXg1baJ98MrcgPIRq6mR4KjA3rKunmPuLxcDAFz9wHUDSaOI24D6F6k3l4qsqhwqDdwbX2dcKvViWimqfEWId9CuzCw3P4tDEhRvQFOrMHA+xpH6Lv8r/zAmiIDVg7Su0FDabYoQ6Bo5u8UMd57O1Sqz/6FKOHmlIM6bvVzSJACd5dHK8IIZJBEIfPKoe1YfJZBMd7Z5reyl9SPefEHUx4UZhGuO9396a+Go3KSmgKJnn1+CnCAN4W1POeXrVI0vTg/T2cy6FdWpXbMiZEGk/gm/prye8G1n5Unw9QIdg==
 mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-100-percent-1 (Postfix) with ESMTPSA id
- 117B918000BF; Mon, 20 Apr 2026 10:44:00 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-60-percent-5 (Postfix) with ESMTPSA id
+ 5814B1800401; Mon, 20 Apr 2026 11:27:36 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v2 35/38] target/i386: emulate, hvf: rdmsr/wrmsr GPF
+ handling
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
- Paolo Bonzini <pbonzini@redhat.com>,
+In-Reply-To: <20260420104248.86702-36-mohamed@unpredictable.fr>
+Date: Mon, 20 Apr 2026 13:27:24 +0200
+Cc: qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Pedro Barbuda <pbarbuda@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 28/38] whpx: i386: CPU features support for Windows 10
-Date: Mon, 20 Apr 2026 12:42:38 +0200
-Message-ID: <20260420104248.86702-29-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260420104248.86702-1-mohamed@unpredictable.fr>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <5D9A012C-0278-44A4-82AA-185FF61AF3D8@unpredictable.fr>
 References: <20260420104248.86702-1-mohamed@unpredictable.fr>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=MK9tWcZl c=1 sm=1 tr=0 ts=69e60375
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=mDV3o1hIAAAA:8 a=_S2v2Z1saO19s7bx6VoA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDEwNCBTYWx0ZWRfXwrsj3Z7EXcXk
- I9fsIzwlp0yO5cN5k2aYwiF19k+LSRfIwaxClZrkiSmwvX64gBiro/9Twh5UODQCLa9Sv10MzZH
- HU1H6Sg850six0E/KI+s288qCVw1oYmY/hCKLYfbREGK8DcqSvBCt9menXrXIiiT7reIRg86NFI
- U7DakHPEdvfw9puku6/xojJHoHfgtzWXF7uVXXeN06qk9yFWZXI54YBVJryYg6R9ttjvCov2ADt
- xuGbSHyR6aXLDaViYjIV85d3IgvTN1RuKNFPN1eV4nJNFYvAODboMSJeqr0i5nHMEWWWgHAsd4y
- Vn2IzjZWf+NnUiGSz+YP5cd0Uj5IplTijbpPAaRI5KrL2+0s2ojxRB5FePrdVM=
-X-Proofpoint-ORIG-GUID: UtvCed5Z_R3D996j83iiKzD5vQsDHJkw
-X-Proofpoint-GUID: UtvCed5Z_R3D996j83iiKzD5vQsDHJkw
+ <20260420104248.86702-36-mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Authority-Info-Out: v=2.4 cv=TambdBQh c=1 sm=1 tr=0 ts=69e60dab
+ cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=U6C6HV61ui0oiVVhl9AA:9
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: 16tPBr9IHtOHWuoujYDLbEz0qr5Jr7Mt
+X-Proofpoint-ORIG-GUID: 16tPBr9IHtOHWuoujYDLbEz0qr5Jr7Mt
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDExMSBTYWx0ZWRfX6X4izME+gVhF
+ aZ/cgfneMbFhM/cFQrnOUUtC4yUAVSVJkT3YxAHXpWi8AkTFfQcqQ3JIm6xIPgWyCEIxvzk1d4h
+ 9PTaqhVG0iMO4YVzzsdDF3XmXAyemgfhtkNKNFz4TlE4BrZFFuuI84T/YxTg5/hJhJgSUA/04eT
+ QBCixXSSry8prpsDxk/evjswv418Rgc5+dss2bEykg1liNQeYStL26bd4BBKtX5yeb6/McHZXYB
+ LuDWZkEvmvRPZoll9uAKn41rDgjyPg0rlNc5R+Nm00HE4b+r3PxVRuhlco+vAXtuePL11BcMFr6
+ qBmhD9qGGrPVkuUYOFnLaF0Hop8o52IDcypSrTA5sqBBDvQP1GwjIQPQ71iEek=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-20_02,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- spamscore=0 phishscore=0 suspectscore=0 malwarescore=0 lowpriorityscore=0
- mlxscore=0 clxscore=1030 mlxlogscore=999 adultscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2604200104
-Received-SPF: pass client-ip=57.103.74.199;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ bulkscore=0 spamscore=0 mlxscore=0 clxscore=1030
+ phishscore=0
+ lowpriorityscore=0 mlxlogscore=865 adultscore=0 malwarescore=0
+ classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2601150000 definitions=main-2604200111
+Received-SPF: pass client-ip=57.103.73.162;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,353 +99,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/i386/cpu.c                  |  18 +--
- target/i386/whpx/meson.build       |   1 +
- target/i386/whpx/whpx-all.c        |  38 ++++++-
- target/i386/whpx/whpx-cpu-legacy.c | 171 +++++++++++++++++++++++++++++
- target/i386/whpx/whpx-i386.h       |   7 ++
- 5 files changed, 215 insertions(+), 20 deletions(-)
- create mode 100644 target/i386/whpx/whpx-cpu-legacy.c
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index b18e40666e..8f090782bd 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -8092,9 +8092,6 @@ uint64_t x86_cpu_get_supported_feature_word(X86CPU *cpu, FeatureWord w)
-     } else if (whpx_enabled()) {
-         if (wi->type != CPUID_FEATURE_WORD) {
-             return 0;
--        }
--        if (whpx_is_legacy_os()) {
--            r = wi->tcg_features;
-         } else {
-             r = whpx_get_supported_cpuid(wi->cpuid.eax,
-                                         wi->cpuid.ecx,
-@@ -8182,17 +8179,10 @@ static void x86_cpu_get_supported_cpuid(uint32_t func, uint32_t index,
-         *ecx = hvf_get_supported_cpuid(func, index, R_ECX);
-         *edx = hvf_get_supported_cpuid(func, index, R_EDX);
-     } else if (whpx_enabled()) {
--        if (whpx_is_legacy_os()) {
--            *eax = 0;
--            *ebx = 0;
--            *ecx = 0;
--            *edx = 0;
--        } else {
--            *eax = whpx_get_supported_cpuid(func, index, R_EAX);
--            *ebx = whpx_get_supported_cpuid(func, index, R_EBX);
--            *ecx = whpx_get_supported_cpuid(func, index, R_ECX);
--            *edx = whpx_get_supported_cpuid(func, index, R_EDX);
--        }
-+        *eax = whpx_get_supported_cpuid(func, index, R_EAX);
-+        *ebx = whpx_get_supported_cpuid(func, index, R_EBX);
-+        *ecx = whpx_get_supported_cpuid(func, index, R_ECX);
-+        *edx = whpx_get_supported_cpuid(func, index, R_EDX);
-     } else {
-         *eax = 0;
-         *ebx = 0;
-diff --git a/target/i386/whpx/meson.build b/target/i386/whpx/meson.build
-index c3aaaff9fd..1c6a4ce377 100644
---- a/target/i386/whpx/meson.build
-+++ b/target/i386/whpx/meson.build
-@@ -1,4 +1,5 @@
- i386_system_ss.add(when: 'CONFIG_WHPX', if_true: files(
-   'whpx-all.c',
-   'whpx-apic.c',
-+  'whpx-cpu-legacy.c'
- ))
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 02235d5391..045dbdfdc8 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -270,11 +270,30 @@ typedef enum WhpxStepMode {
- static uint32_t max_vcpu_index;
- static WHV_PROCESSOR_XSAVE_FEATURES whpx_xsave_cap;
- 
--static bool whpx_has_xsave(void)
-+bool whpx_has_xsave(void)
- {
-     return whpx_xsave_cap.XsaveSupport;
- }
- 
-+bool whpx_has_xsaves(void)
-+{
-+    return whpx_xsave_cap.XsaveSupervisorSupport;
-+}
-+
-+static bool whpx_rdtsc_cap;
-+
-+bool whpx_has_rdtscp(void)
-+{
-+    return whpx_rdtsc_cap;
-+}
-+
-+static bool whpx_invpcid_cap;
-+
-+bool whpx_has_invpcid(void)
-+{
-+    return whpx_invpcid_cap;
-+}
-+
- static WHV_X64_SEGMENT_REGISTER whpx_seg_q2h(const SegmentCache *qs, int v86,
-                                              int r86)
- {
-@@ -1057,6 +1076,11 @@ uint32_t whpx_get_supported_cpuid(uint32_t func, uint32_t idx, int reg)
-     bool temp_cpu = true;
-     HRESULT hr;
- 
-+    /* Legacy OSes don't have WHvGetVirtualProcessorCpuidOutput */
-+    if (whpx_is_legacy_os()) {
-+        return whpx_get_supported_cpuid_legacy(func, idx, reg);
-+    }
-+
-     hr = whp_dispatch.WHvCreateVirtualProcessor(
-         whpx_global.partition, cpu_index, 0);
- 
-@@ -2147,7 +2171,7 @@ int whpx_vcpu_run(CPUState *cpu)
-              * just pass through what the hypervisor
-              * provides without any QEMU filtering.
-              */
--            if (whpx_is_legacy_os() || xcc->max_features) {
-+            if (xcc->max_features) {
-                 reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
-                 reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
-                 reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
-@@ -2507,11 +2531,11 @@ void whpx_cpu_instance_init(CPUState *cs)
-     host_cpu_instance_init(cpu);
-     x86_cpu_apply_props(cpu, whpx_default_props);
- 
--    if (!whpx_is_legacy_os() && xcc->max_features) {
-+    if (xcc->max_features) {
-         whpx_cpu_max_instance_init(cpu);
-     }
- 
--    if (!whpx_is_legacy_os()) {
-+    if (whpx_has_xsave()) {
-         whpx_cpu_xsave_init();
-     }
- }
-@@ -2536,7 +2560,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         0x40000000, 0x40000001, 0x40000010, 0x80000000, 0x80000001,
-         0x80000002, 0x80000003, 0x80000004, 0x80000007, 0x80000008,
-         0x8000000A, 0x80000021, 0x80000022, 0xC0000000, 0xC0000001};
--    UINT32 cpuidExitList_legacy_os[] = {1, 0x40000000, 0x40000001, 0x40000010};
- 
-     X86MachineState *x86ms = X86_MACHINE(ms);
-     bool pic_enabled = false;
-@@ -2700,6 +2723,9 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
-     }
- 
-+    whpx_rdtsc_cap = processor_features.Bank0.RdtscpSupport;
-+    whpx_invpcid_cap = processor_features.Bank0.InvpcidSupport;
-+
-     if (whpx_irqchip_in_kernel() && processor_features.Bank1.NestedVirtSupport) {
-         memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
-         prop.NestedVirtualization = 1;
-@@ -2808,7 +2834,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     hr = whp_dispatch.WHvSetPartitionProperty(
-         whpx->partition,
-         WHvPartitionPropertyCodeCpuidExitList,
--        !whpx_is_legacy_os() ? cpuidExitList : cpuidExitList_legacy_os,
-+        cpuidExitList,
-         RTL_NUMBER_OF(cpuidExitList) * sizeof(UINT32));
- 
-     if (FAILED(hr)) {
-diff --git a/target/i386/whpx/whpx-cpu-legacy.c b/target/i386/whpx/whpx-cpu-legacy.c
-new file mode 100644
-index 0000000000..477429b460
---- /dev/null
-+++ b/target/i386/whpx/whpx-cpu-legacy.c
-@@ -0,0 +1,171 @@
-+/*
-+ *  i386 CPUID helper functions
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *  Copyright (c) 2017 Google Inc.
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this program; if not, see <http://www.gnu.org/licenses/>.
-+ *
-+ * cpuid
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/cpuid.h"
-+#include "host/cpuinfo.h"
-+#include "cpu.h"
-+#include "emulate/x86.h"
-+#include "whpx-i386.h"
-+
-+static bool cached_xcr0;
-+static uint64_t supported_xcr0;
-+
-+static void cache_host_xcr0(void)
-+{
-+    if (cached_xcr0) {
-+        return;
-+    }
-+
-+    if (whpx_has_xsave()) {
-+        uint64_t host_xcr0 = xgetbv_low(0);
-+
-+        /* Only show xcr0 bits corresponding to usable features.  */
-+        supported_xcr0 = host_xcr0 & (XSTATE_FP_MASK |
-+                                      XSTATE_SSE_MASK | XSTATE_YMM_MASK |
-+                                      XSTATE_OPMASK_MASK | XSTATE_ZMM_Hi256_MASK |
-+                                      XSTATE_Hi16_ZMM_MASK);
-+        if ((supported_xcr0 & (XSTATE_FP_MASK | XSTATE_SSE_MASK)) !=
-+            (XSTATE_FP_MASK | XSTATE_SSE_MASK)) {
-+            supported_xcr0 = 0;
-+        }
-+    }
-+
-+    cached_xcr0 = true;
-+}
-+
-+uint32_t whpx_get_supported_cpuid_legacy(uint32_t func, uint32_t idx,
-+                                 int reg)
-+{
-+    uint32_t eax, ebx, ecx, edx;
-+
-+    cache_host_xcr0();
-+    host_cpuid(func, idx, &eax, &ebx, &ecx, &edx);
-+
-+    switch (func) {
-+    case 0:
-+        eax = eax < (uint32_t)0xd ? eax : (uint32_t)0xd;
-+        break;
-+    case 1:
-+        edx &= CPUID_FP87 | CPUID_VME | CPUID_DE | CPUID_PSE | CPUID_TSC |
-+             CPUID_MSR | CPUID_PAE | CPUID_MCE | CPUID_CX8 | CPUID_APIC |
-+             CPUID_SEP | CPUID_MTRR | CPUID_PGE | CPUID_MCA | CPUID_CMOV |
-+             CPUID_PAT | CPUID_PSE36 | CPUID_CLFLUSH | CPUID_MMX |
-+             CPUID_FXSR | CPUID_SSE | CPUID_SSE2 | CPUID_SS | CPUID_HT;
-+        ecx &= CPUID_EXT_SSE3 | CPUID_EXT_PCLMULQDQ | CPUID_EXT_SSSE3 |
-+             CPUID_EXT_FMA | CPUID_EXT_CX16 | CPUID_EXT_PCID |
-+             CPUID_EXT_SSE41 | CPUID_EXT_SSE42 | CPUID_EXT_MOVBE |
-+             CPUID_EXT_POPCNT | CPUID_EXT_AES |
-+             (supported_xcr0 ? CPUID_EXT_XSAVE : 0) |
-+             CPUID_EXT_AVX | CPUID_EXT_F16C | CPUID_EXT_RDRAND;
-+        ecx |= CPUID_EXT_HYPERVISOR;
-+        ecx |= CPUID_EXT_X2APIC;
-+        edx |= CPUID_HT;
-+        break;
-+    case 6:
-+        eax = CPUID_6_EAX_ARAT;
-+        ebx = 0;
-+        ecx = 0;
-+        edx = 0;
-+        break;
-+    case 7:
-+        if (idx == 0) {
-+            ebx &= CPUID_7_0_EBX_FSGSBASE | CPUID_7_0_EBX_BMI1 |
-+                    CPUID_7_0_EBX_HLE | CPUID_7_0_EBX_AVX2 |
-+                    CPUID_7_0_EBX_SMEP | CPUID_7_0_EBX_BMI2 |
-+                    CPUID_7_0_EBX_ERMS | CPUID_7_0_EBX_RTM |
-+                    CPUID_7_0_EBX_RDSEED | CPUID_7_0_EBX_ADX |
-+                    CPUID_7_0_EBX_SMAP | CPUID_7_0_EBX_AVX512IFMA |
-+                    CPUID_7_0_EBX_AVX512F | CPUID_7_0_EBX_AVX512PF |
-+                    CPUID_7_0_EBX_AVX512ER | CPUID_7_0_EBX_AVX512CD |
-+                    CPUID_7_0_EBX_CLFLUSHOPT | CPUID_7_0_EBX_CLWB |
-+                    CPUID_7_0_EBX_AVX512DQ | CPUID_7_0_EBX_SHA_NI |
-+                    CPUID_7_0_EBX_AVX512BW | CPUID_7_0_EBX_AVX512VL |
-+                    CPUID_7_0_EBX_INVPCID;
-+
-+            if (!whpx_has_invpcid()) {
-+                ebx &= ~CPUID_7_0_EBX_INVPCID;
-+            }
-+
-+            ecx &= CPUID_7_0_ECX_AVX512_VBMI | CPUID_7_0_ECX_AVX512_VPOPCNTDQ |
-+                   CPUID_7_0_ECX_RDPID;
-+            edx &= CPUID_7_0_EDX_AVX512_4VNNIW | CPUID_7_0_EDX_AVX512_4FMAPS;
-+        } else {
-+            ebx = 0;
-+            ecx = 0;
-+            edx = 0;
-+        }
-+        eax = 0;
-+        break;
-+    case 0xD:
-+        if (!supported_xcr0 || idx >= 63 ||
-+            (idx > 1 && !(supported_xcr0 & (UINT64_C(1) << idx)))) {
-+            eax = ebx = ecx = edx = 0;
-+            break;
-+        }
-+
-+        if (idx == 0) {
-+            eax = supported_xcr0;
-+        } else if (idx == 1) {
-+            eax &= CPUID_XSAVE_XSAVEOPT | CPUID_XSAVE_XGETBV1;
-+            if (!whpx_has_xsaves()) {
-+                eax &= ~CPUID_XSAVE_XSAVES;
-+            }
-+        }
-+        break;
-+    case 0x80000001:
-+        /* LM only if HVF in 64-bit mode */
-+        edx &= CPUID_FP87 | CPUID_VME | CPUID_DE | CPUID_PSE | CPUID_TSC |
-+                CPUID_MSR | CPUID_PAE | CPUID_MCE | CPUID_CX8 | CPUID_APIC |
-+                CPUID_EXT2_SYSCALL | CPUID_MTRR | CPUID_PGE | CPUID_MCA | CPUID_CMOV |
-+                CPUID_PAT | CPUID_PSE36 | CPUID_EXT2_MMXEXT | CPUID_MMX |
-+                CPUID_FXSR | CPUID_EXT2_FXSR | CPUID_EXT2_PDPE1GB | CPUID_EXT2_3DNOWEXT |
-+                CPUID_EXT2_3DNOW | CPUID_EXT2_LM | CPUID_EXT2_RDTSCP | CPUID_EXT2_NX;
-+        if (!(whpx_has_rdtscp())) {
-+            edx &= ~CPUID_EXT2_RDTSCP;
-+        }
-+        ecx &= CPUID_EXT3_LAHF_LM | CPUID_EXT3_CMP_LEG | CPUID_EXT3_CR8LEG |
-+                CPUID_EXT3_ABM | CPUID_EXT3_SSE4A | CPUID_EXT3_MISALIGNSSE |
-+                CPUID_EXT3_3DNOWPREFETCH | CPUID_EXT3_OSVW | CPUID_EXT3_XOP |
-+                CPUID_EXT3_FMA4 | CPUID_EXT3_TBM;
-+        break;
-+    case 0x80000007:
-+        edx &= CPUID_APM_INVTSC;
-+        eax = ebx = ecx = 0;
-+        break;
-+    default:
-+        return 0;
-+    }
-+
-+    switch (reg) {
-+    case R_EAX:
-+        return eax;
-+    case R_EBX:
-+        return ebx;
-+    case R_ECX:
-+        return ecx;
-+    case R_EDX:
-+        return edx;
-+    default:
-+        return 0;
-+    }
-+}
-diff --git a/target/i386/whpx/whpx-i386.h b/target/i386/whpx/whpx-i386.h
-index 6db9a75d39..9dc6837574 100644
---- a/target/i386/whpx/whpx-i386.h
-+++ b/target/i386/whpx/whpx-i386.h
-@@ -2,3 +2,10 @@
- 
- uint32_t whpx_get_supported_cpuid(uint32_t func, uint32_t idx, int reg);
- bool whpx_is_legacy_os(void);
-+
-+uint32_t whpx_get_supported_cpuid_legacy(uint32_t func, uint32_t idx,
-+                                 int reg);
-+bool whpx_has_xsave(void);
-+bool whpx_has_xsaves(void);
-+bool whpx_has_rdtscp(void);
-+bool whpx_has_invpcid(void);
--- 
-2.50.1 (Apple Git-155)
+
+> On 20. Apr 2026, at 12:42, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+>=20
+> In that case, the instruction pointer mustn't be incremented.
+>=20
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+> target/i386/emulate/x86_emu.c | 10 ++++++----
+> target/i386/emulate/x86_emu.h |  4 ++--
+> target/i386/hvf/hvf.c         |  9 +++++++--
+> 3 files changed, 15 insertions(+), 8 deletions(-)
+Hi,
+
+Forgot to include this to the sent patch=E2=80=A6
+
+diff --git a/target/i386/hvf/hvf-i386.h b/target/i386/hvf/hvf-i386.h
+index 8c42ae6b01..b91c17e2fc 100644
+--- a/target/i386/hvf/hvf-i386.h
++++ b/target/i386/hvf/hvf-i386.h
+@@ -19,8 +19,8 @@
+ uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx, int reg);
+=20
+ void hvf_handle_io(CPUState *, uint16_t, void *, int, int, int);
+-void hvf_simulate_rdmsr(CPUState *cpu);
+-void hvf_simulate_wrmsr(CPUState *cpu);
++bool hvf_simulate_rdmsr(CPUState *cpu);
++bool hvf_simulate_wrmsr(CPUState *cpu);
+
+
+> diff --git a/target/i386/emulate/x86_emu.c =
+b/target/i386/emulate/x86_emu.c
+> index c2da1a133f..c6ea854290 100644
+> --- a/target/i386/emulate/x86_emu.c
+> +++ b/target/i386/emulate/x86_emu.c
+> @@ -792,15 +792,17 @@ void x86_emul_raise_exception(CPUX86State *env, =
+int exception_index, int error_c
+>=20
+> static bool exec_rdmsr(CPUX86State *env, struct x86_decode *decode)
+> {
+> -    emul_ops->simulate_rdmsr(env_cpu(env));
+> -    env->eip +=3D decode->len;
+> +    if (!emul_ops->simulate_rdmsr(env_cpu(env))) {
+> +        env->eip +=3D decode->len;
+> +    }
+>     return 0;
+> }
+>=20
+> static bool exec_wrmsr(CPUX86State *env, struct x86_decode *decode)
+> {
+> -    emul_ops->simulate_wrmsr(env_cpu(env));
+> -    env->eip +=3D decode->len;
+> +    if (!emul_ops->simulate_wrmsr(env_cpu(env))) {
+> +        env->eip +=3D decode->len;
+> +    }
+>     return 0;
+> }
+>=20
+> diff --git a/target/i386/emulate/x86_emu.h =
+b/target/i386/emulate/x86_emu.h
+> index a8d4c93098..b985240b90 100644
+> --- a/target/i386/emulate/x86_emu.h
+> +++ b/target/i386/emulate/x86_emu.h
+> @@ -31,8 +31,8 @@ struct x86_emul_ops {
+>     target_ulong (*read_cr) (CPUState *cpu, int cr);
+>     void (*handle_io)(CPUState *cpu, uint16_t port, void *data, int =
+direction,
+>                       int size, int count);
+> -    void (*simulate_rdmsr)(CPUState *cs);
+> -    void (*simulate_wrmsr)(CPUState *cs);
+> +    bool (*simulate_rdmsr)(CPUState *cs);
+> +    bool (*simulate_wrmsr)(CPUState *cs);
+>     bool (*is_protected_mode)(CPUState *cpu);
+>     bool (*is_long_mode)(CPUState *cpu);
+>     bool (*is_user_mode)(CPUState *cpu);
+> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+> index c0d028b147..dfe7500010 100644
+> --- a/target/i386/hvf/hvf.c
+> +++ b/target/i386/hvf/hvf.c
+> @@ -536,7 +536,7 @@ void hvf_store_regs(CPUState *cs)
+>     macvm_set_rip(cs, env->eip);
+> }
+>=20
+> -void hvf_simulate_rdmsr(CPUState *cs)
+> +bool hvf_simulate_rdmsr(CPUState *cs)
+> {
+>     X86CPU *cpu =3D X86_CPU(cs);
+>     CPUX86State *env =3D &cpu->env;
+> @@ -557,6 +557,7 @@ void hvf_simulate_rdmsr(CPUState *cs)
+>         ret =3D apic_msr_read(cpu->apic_state, index, &val);
+>         if (ret < 0) {
+>             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
+> +            return 1;
+>         }
+>=20
+>         break;
+> @@ -639,9 +640,10 @@ void hvf_simulate_rdmsr(CPUState *cs)
+>=20
+>     RAX(env) =3D (uint32_t)val;
+>     RDX(env) =3D (uint32_t)(val >> 32);
+> +    return 0;
+> }
+>=20
+> -void hvf_simulate_wrmsr(CPUState *cs)
+> +bool hvf_simulate_wrmsr(CPUState *cs)
+> {
+>     X86CPU *cpu =3D X86_CPU(cs);
+>     CPUX86State *env =3D &cpu->env;
+> @@ -657,6 +659,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
+>         r =3D cpu_set_apic_base(cpu->apic_state, data);
+>         if (r < 0) {
+>             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
+> +            return 1;
+>         }
+>=20
+>         break;
+> @@ -668,6 +671,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
+>         ret =3D apic_msr_write(cpu->apic_state, index, data);
+>         if (ret < 0) {
+>             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
+> +            return 1;
+>         }
+>=20
+>         break;
+> @@ -746,6 +750,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
+>          g_hypervisor_iface->wrmsr_handler(cs, msr, data);
+>=20
+>     printf("write msr %llx\n", RCX(cs));*/
+> +    return 0;
+> }
+>=20
+> static int hvf_handle_vmexit(CPUState *cpu)
+> --=20
+> 2.50.1 (Apple Git-155)
+>=20
 
 

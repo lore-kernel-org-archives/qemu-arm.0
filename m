@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D2BF588C9
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:24:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A69F55805
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:25:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3a2-0000J2-C6; Tue, 21 Apr 2026 01:23:26 -0400
+	id 1wF3a3-0000Ti-Hr; Tue, 21 Apr 2026 01:23:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Z8-0007jr-Q2; Tue, 21 Apr 2026 01:22:34 -0400
+ id 1wF3Ye-0007ZM-Qg; Tue, 21 Apr 2026 01:22:01 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Z0-0000lF-7f; Tue, 21 Apr 2026 01:22:27 -0400
+ id 1wF3Ya-0000fc-SZ; Tue, 21 Apr 2026 01:21:59 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 3224B20B6F25;
- Mon, 20 Apr 2026 22:22:01 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 3224B20B6F25
+ by linux.microsoft.com (Postfix) with ESMTPSA id 9ACB820B6F15;
+ Mon, 20 Apr 2026 22:21:55 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 9ACB820B6F15
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1776748921;
- bh=fA+A7bqtE3RxxEmcOmCmzIZRD5MNzhA6TFdYbdUgxsE=;
+ s=default; t=1776748915;
+ bh=aq6peFJqXAk4Wdw5L6TgML9sHcjISQM3jb5y79oWVCw=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=PCwaIM+P7i1n4BZsF2HQfmvMiq3eFZiu4Ldh6AlZ4U0/bxsDd0jh+7/YLXVkWlHNa
- OKcZIGt+SHeAnroRp2N1B8435dJRRJPMSFBap87TOw+d6D7jOORxeHu1NyIusgMt6i
- iqAHjKlK8QJ/53Hbbg/Wp4VHC9OabprA+mNYrUG0=
+ b=JeOXtF85II8AVIwZZ2MrMVDkWd+BzX24GDOQJiri4l3lGCaULNwB3mksg7Il00CKD
+ O0S8xhghW4KmPJ2ff2foaFDR0HsxeAkBzLlnrgweAr+QtAIm/awaBJr8UL2dvTOH1I
+ LlT3UR+L0VSVciy5TmVjjXhZeoTaB+XSc2qu/Fp8=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Tue, 21 Apr 2026 05:21:56 +0000
-Subject: [PATCH v3 11/14] target/arm/mshv: add vCPU run loop
+Date: Tue, 21 Apr 2026 05:21:49 +0000
+Subject: [PATCH v3 04/14] target/arm/mshv: implement vcpu state operations
+ for ARM64
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-mshv_accel_arm64_supp-v3-11-469f544778ba@linux.microsoft.com>
+Message-Id: <20260421-mshv_accel_arm64_supp-v3-4-469f544778ba@linux.microsoft.com>
 References: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
 In-Reply-To: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -74,190 +75,249 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+Add support for reading and writing ARM64 CPU registers in the MSHV
+accelerator. This includes functions to set and get registers,
+initialize and destroy VCPU state, and manage register state
+synchronization between QEMU and hypervisor.
 
-Add the main vCPU run loop for MSHV using the MSHV_RUN_VP_IOCTL.
-
-Handle MMIO exits by emulating the instruction using the syndrome
-information from ESR_EL2.
-
-Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- include/hw/hyperv/hvgdk_mini.h | 44 +++++++++++++++++++
- target/arm/mshv/mshv-all.c     | 96 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 140 insertions(+)
+ include/hw/hyperv/hvgdk_mini.h |  42 +++++++++++++
+ target/arm/mshv/mshv-all.c     | 138 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 180 insertions(+)
 
 diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-index d56be0d70f..84b3c6af5f 100644
+index cb52cc9de2..dfe94050f4 100644
 --- a/include/hw/hyperv/hvgdk_mini.h
 +++ b/include/hw/hyperv/hvgdk_mini.h
-@@ -750,6 +750,50 @@ struct hv_x64_memory_intercept_message {
-     uint8_t instruction_bytes[16];
- };
+@@ -13,6 +13,46 @@ typedef enum hv_register_name {
+     /* Pending Interruption Register */
+     HV_REGISTER_PENDING_INTERRUPTION = 0x00010002,
  
-+union hv_arm64_vp_execution_state {
-+    uint16_t as_uint16;
-+    struct {
-+        uint16_t cpl:2;
-+        uint16_t debug_active:1;
-+        uint16_t interruption_pending:1;
-+        uint16_t vtl:4;
-+        uint16_t virtualization_fault_active:1;
-+        uint16_t reserved:7;
-+    };
-+};
++#if defined(__aarch64__)
++    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
++    HV_ARM64_REGISTER_X0    = 0x00020000,
++    HV_ARM64_REGISTER_X1    = 0x00020001,
++    HV_ARM64_REGISTER_X2    = 0x00020002,
++    HV_ARM64_REGISTER_X3    = 0x00020003,
++    HV_ARM64_REGISTER_X4    = 0x00020004,
++    HV_ARM64_REGISTER_X5    = 0x00020005,
++    HV_ARM64_REGISTER_X6    = 0x00020006,
++    HV_ARM64_REGISTER_X7    = 0x00020007,
++    HV_ARM64_REGISTER_X8    = 0x00020008,
++    HV_ARM64_REGISTER_X9    = 0x00020009,
++    HV_ARM64_REGISTER_X10   = 0x0002000A,
++    HV_ARM64_REGISTER_X11   = 0x0002000B,
++    HV_ARM64_REGISTER_X12   = 0x0002000C,
++    HV_ARM64_REGISTER_X13   = 0x0002000D,
++    HV_ARM64_REGISTER_X14   = 0x0002000E,
++    HV_ARM64_REGISTER_X15   = 0x0002000F,
++    HV_ARM64_REGISTER_X16   = 0x00020010,
++    HV_ARM64_REGISTER_X17   = 0x00020011,
++    HV_ARM64_REGISTER_X18   = 0x00020012,
++    HV_ARM64_REGISTER_X19   = 0x00020013,
++    HV_ARM64_REGISTER_X20   = 0x00020014,
++    HV_ARM64_REGISTER_X21   = 0x00020015,
++    HV_ARM64_REGISTER_X22   = 0x00020016,
++    HV_ARM64_REGISTER_X23   = 0x00020017,
++    HV_ARM64_REGISTER_X24   = 0x00020018,
++    HV_ARM64_REGISTER_X25   = 0x00020019,
++    HV_ARM64_REGISTER_X26   = 0x0002001A,
++    HV_ARM64_REGISTER_X27   = 0x0002001B,
++    HV_ARM64_REGISTER_X28   = 0x0002001C,
++    HV_ARM64_REGISTER_FP    = 0x0002001D,
++    HV_ARM64_REGISTER_LR    = 0x0002001E,
++    HV_ARM64_REGISTER_PC    = 0x00020022,
 +
-+struct hv_arm64_intercept_message_header {
-+    uint32_t vp_index;
-+    uint8_t instruction_length;
-+    uint8_t intercept_access_type;
-+    union hv_arm64_vp_execution_state execution_state;
-+    uint64_t pc;
-+    uint64_t cpsr;
-+};
++    /* AArch64 System Register Descriptions: General system control registers */
++    HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
++    HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
 +
-+union hv_arm64_memory_access_info {
-+    uint8_t as_uint8;
-+    struct {
-+        uint8_t gva_valid:1;
-+        uint8_t gva_gpa_valid:1;
-+        uint8_t hypercall_output_pending:1;
-+        uint8_t reserved:5;
-+    };
-+};
++#elif defined(__x86_64__)
+     /* X64 User-Mode Registers */
+     HV_X64_REGISTER_RAX     = 0x00020000,
+     HV_X64_REGISTER_RCX     = 0x00020001,
+@@ -157,6 +197,8 @@ typedef enum hv_register_name {
+     /* Other MSRs */
+     HV_X64_REGISTER_MSR_IA32_MISC_ENABLE = 0x000800A0,
+ 
++#endif
 +
-+struct hv_arm64_memory_intercept_message {
-+    struct hv_arm64_intercept_message_header header;
-+    uint32_t cache_type; /* enum hv_cache_type */
-+    uint8_t instruction_byte_count;
-+    union hv_arm64_memory_access_info memory_access_info;
-+    uint16_t reserved1;
-+    uint8_t instruction_bytes[4];
-+    uint32_t reserved2;
-+    uint64_t guest_virtual_address;
-+    uint64_t guest_physical_address;
-+    uint64_t syndrome;
-+};
-+
- union hv_message_flags {
-     uint8_t asu8;
-     struct {
+     /* Misc */
+     HV_REGISTER_GUEST_OS_ID         = 0x00090002,
+     HV_REGISTER_REFERENCE_TSC       = 0x00090017,
 diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-index 8d16971c0d..a2d07bec12 100644
+index 1c82e2c593..ad9cb267a8 100644
 --- a/target/arm/mshv/mshv-all.c
 +++ b/target/arm/mshv/mshv-all.c
-@@ -21,6 +21,7 @@
- #include "target/arm/cpu.h"
- #include "target/arm/internals.h"
- #include "target/arm/mshv_arm.h"
-+#include "target/arm/helper.h"
+@@ -9,16 +9,146 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
++
++#include "qemu/osdep.h"
++#include <sys/ioctl.h>
++
++#include "qemu/error-report.h"
++#include "qemu/memalign.h"
++
++#include "system/cpus.h"
++#include "target/arm/cpu.h"
++
  #include "system/mshv.h"
  #include "system/mshv_int.h"
-@@ -166,8 +167,103 @@ int mshv_arch_put_registers(const CPUState *cpu)
-     return 0;
- }
- 
-+static int set_memory_info(const struct hyperv_message *msg,
-+                           struct hv_arm64_memory_intercept_message *info)
++#include "hw/hyperv/hvgdk_mini.h"
++
++static enum hv_register_name STANDARD_REGISTER_NAMES[32] = {
++    HV_ARM64_REGISTER_X0,
++    HV_ARM64_REGISTER_X1,
++    HV_ARM64_REGISTER_X2,
++    HV_ARM64_REGISTER_X3,
++    HV_ARM64_REGISTER_X4,
++    HV_ARM64_REGISTER_X5,
++    HV_ARM64_REGISTER_X6,
++    HV_ARM64_REGISTER_X7,
++    HV_ARM64_REGISTER_X8,
++    HV_ARM64_REGISTER_X9,
++    HV_ARM64_REGISTER_X10,
++    HV_ARM64_REGISTER_X11,
++    HV_ARM64_REGISTER_X12,
++    HV_ARM64_REGISTER_X13,
++    HV_ARM64_REGISTER_X14,
++    HV_ARM64_REGISTER_X15,
++    HV_ARM64_REGISTER_X16,
++    HV_ARM64_REGISTER_X17,
++    HV_ARM64_REGISTER_X18,
++    HV_ARM64_REGISTER_X19,
++    HV_ARM64_REGISTER_X20,
++    HV_ARM64_REGISTER_X21,
++    HV_ARM64_REGISTER_X22,
++    HV_ARM64_REGISTER_X23,
++    HV_ARM64_REGISTER_X24,
++    HV_ARM64_REGISTER_X25,
++    HV_ARM64_REGISTER_X26,
++    HV_ARM64_REGISTER_X27,
++    HV_ARM64_REGISTER_X28,
++    HV_ARM64_REGISTER_FP,
++    HV_ARM64_REGISTER_LR,
++    HV_ARM64_REGISTER_PC,
++};
++
++static int set_standard_regs(const CPUState *cpu)
 +{
-+    if (msg->header.message_type != HVMSG_GPA_INTERCEPT
-+            && msg->header.message_type != HVMSG_UNMAPPED_GPA
-+            && msg->header.message_type != HVMSG_UNACCEPTED_GPA) {
-+        error_report("invalid message type");
++    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
++    struct hv_register_assoc *assocs;
++    int ret;
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++
++    assocs = g_new0(hv_register_assoc, n_regs);
++
++    for (size_t i = 0; i < n_regs - 1; i++) {
++        assocs[i].name = STANDARD_REGISTER_NAMES[i];
++        assocs[i].value.reg64 = env->xregs[i];
++    }
++
++    /* Last register is the program counter */
++    assocs[n_regs - 1].name = STANDARD_REGISTER_NAMES[n_regs - 1];
++    assocs[n_regs - 1].value.reg64 = env->pc;
++
++    ret = mshv_set_generic_regs(cpu, assocs, n_regs);
++    if (ret < 0) {
++        error_report("failed to set standard registers");
++        g_free(assocs);
 +        return -1;
 +    }
-+    memcpy(info, msg->payload, sizeof(*info));
++
++    g_free(assocs);
 +
 +    return 0;
 +}
 +
-+int mshv_store_regs(CPUState *cpu)
++static void populate_standard_regs(const hv_register_assoc *assocs,
++                                   CPUARMState *env)
 +{
++    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
++
++    for (size_t i = 0; i < n_regs - 1; i++) {
++        env->xregs[i] = assocs[i].value.reg64;
++    }
++
++    /* Last register is the program counter */
++    env->pc = assocs[n_regs - 1].value.reg64;
++}
+ 
+ int mshv_load_regs(CPUState *cpu)
+ {
++    int ret;
++
++    ret = mshv_get_standard_regs(cpu);
++    if (ret < 0) {
++        error_report("Failed to load standard registers");
++        return -1;
++    }
++
++    return 0;
++}
++
++int mshv_get_standard_regs(CPUState *cpu)
++{
++    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
++    struct hv_register_assoc *assocs;
++    int ret;
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
++    CPUARMState *env = &arm_cpu->env;
++
++    assocs = g_new0(hv_register_assoc, n_regs);
++    for (size_t i = 0; i < n_regs; i++) {
++        assocs[i].name = STANDARD_REGISTER_NAMES[i];
++    }
++    ret = mshv_get_generic_regs(cpu, assocs, n_regs);
++    if (ret < 0) {
++        error_report("failed to get standard registers");
++        g_free(assocs);
++        return -1;
++    }
++
++    populate_standard_regs(assocs, env);
++
++    g_free(assocs);
+     return 0;
+ }
+ 
+ int mshv_arch_put_registers(const CPUState *cpu)
+ {
 +    int ret;
 +
 +    ret = set_standard_regs(cpu);
 +    if (ret < 0) {
-+        error_report("Failed to store standard registers");
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+static int handle_unmapped_mem(int vm_fd, CPUState *cpu,
-+                               const struct hyperv_message *msg,
-+                               MshvVmExit *exit_reason)
-+{
-+    struct hv_arm64_memory_intercept_message info = { 0 };
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+    int ret;
-+    EsrEl2 syndrome;
-+
-+    ret = set_memory_info(msg, &info);
-+    if (ret < 0) {
-+        error_report("failed to convert message to memory info");
-+        return -1;
-+    }
-+
-+    syndrome.raw = info.syndrome;
-+
-+    ret = mshv_load_regs(cpu);
-+    if (ret < 0) {
-+        error_report("Failed to load registers");
-+        return -1;
-+    }
-+
-+    ret = arm_emulate_mmio(cpu, syndrome, info.guest_physical_address);
-+    if (ret < 0) {
-+        error_report("Failed to emulate with syndrome");
-+        return -1;
-+    }
-+
-+    env->pc += (syndrome.il == 1) ? 4 : 2;
-+
-+    ret = mshv_store_regs(cpu);
-+    if (ret < 0) {
-+        error_report("Failed to store registers");
-+        return -1;
-+    }
-+    *exit_reason = MshvVmExitIgnore;
-+
-+    return 0;
-+}
-+
- int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
- {
-+    int ret;
-+    int cpu_fd = mshv_vcpufd(cpu);
-+
-+    ret = ioctl(cpu_fd, MSHV_RUN_VP, msg);
-+    if (ret < 0) {
-+        *exit = MshvVmExitShutdown;
 +        return ret;
-+    }
-+
-+    switch (msg->header.message_type) {
-+    case HVMSG_UNRECOVERABLE_EXCEPTION:
-+        *exit = MshvVmExitShutdown;
-+        break;
-+    case HVMSG_GPA_INTERCEPT:
-+    case HVMSG_UNMAPPED_GPA:
-+        ret = handle_unmapped_mem(vm_fd, cpu, msg, exit);
-+        if (ret < 0) {
-+            error_report("failed to handle mmio");
-+            return -1;
-+        }
-+        break;
-+    default:
-+        error_report("Unhandled message type: 0x%x", msg->header.message_type);
-+        return -1;
 +    }
 +
      return 0;
  }
  
+@@ -29,12 +159,20 @@ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
+ 
+ void mshv_arch_init_vcpu(CPUState *cpu)
+ {
++    AccelCPUState *state = cpu->accel;
+ 
++    mshv_setup_hvcall_args(state);
+ }
+ 
+ void mshv_arch_destroy_vcpu(CPUState *cpu)
+ {
++    AccelCPUState *state = cpu->accel;
++
++    if (state->hvcall_args.base) {
++        qemu_vfree(state->hvcall_args.base);
++    }
+ 
++    state->hvcall_args = (MshvHvCallArgs){0};
+ }
+ 
+ void mshv_init_mmio_emu(void)
 
 -- 
 2.45.4

@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A69F55805
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:25:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3DFAF327B1
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 06:51:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3a3-0000Ti-Hr; Tue, 21 Apr 2026 01:23:28 -0400
+	id 1wF4xI-0003Wb-Sn; Tue, 21 Apr 2026 02:51:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Ye-0007ZM-Qg; Tue, 21 Apr 2026 01:22:01 -0400
-Received: from linux.microsoft.com ([13.77.154.182])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Ya-0000fc-SZ; Tue, 21 Apr 2026 01:21:59 -0400
-Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 9ACB820B6F15;
- Mon, 20 Apr 2026 22:21:55 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 9ACB820B6F15
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1776748915;
- bh=aq6peFJqXAk4Wdw5L6TgML9sHcjISQM3jb5y79oWVCw=;
- h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=JeOXtF85II8AVIwZZ2MrMVDkWd+BzX24GDOQJiri4l3lGCaULNwB3mksg7Il00CKD
- O0S8xhghW4KmPJ2ff2foaFDR0HsxeAkBzLlnrgweAr+QtAIm/awaBJr8UL2dvTOH1I
- LlT3UR+L0VSVciy5TmVjjXhZeoTaB+XSc2qu/Fp8=
-From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Tue, 21 Apr 2026 05:21:49 +0000
-Subject: [PATCH v3 04/14] target/arm/mshv: implement vcpu state operations
- for ARM64
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-mshv_accel_arm64_supp-v3-4-469f544778ba@linux.microsoft.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wF4xG-0003Vw-7d
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 02:51:30 -0400
+Received: from ci-2001c-snip4-3.eps.apple.com ([57.103.91.26]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wF4xD-0008Oc-GF
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 02:51:29 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-4 (Postfix) with ESMTPS id
+ 2D3C11800181; Tue, 21 Apr 2026 06:51:21 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJB01fDl4fBBdGGVUERx5dVlAEGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVIdlwHWXM1e1UEXA5dH0QATgtAdVsDRhRJBVUAUnc2CTwDXgMrRx5JClYJXghGEVsUVkNRGQxQTQFDCAoIRwNNF14yUwRfEVAW
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1776754285; x=1779346285;
+ bh=3XthME9dBU3g1tLdThMwSV0+O7ZUauHCiKnoTwCOISI=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=PYPOqDmhfigFVz3jdh/mUzH2dMM1Zl5YRDj/RaGiBxntfeAvfVdra/2U9QnqQvyAZ+AABfTmKP23a9y+l9Plby2GEIbXmnh+upyab249ILEO5oKLH/srg8iv1Zr+9VCX0dZjd6S30YXOBZQro3EoJsqkiPROoqbjHtfHB/ziK3ZkF8qo5nByKiSNzmKmZNkJKIH2sc6n2ajAR8fw3SYRRScwZYmu8Iy9iQIf8f39aZOnG08Z6PJfEeTKZoHJvil5m8k19tDWBLSHaQbAVJITIW72jO7lA5DL0/2GHM2NQq5z6h9ViMwoLkJzk66NLKOvd3tUIRHDxI6r3IGzZyBQ+g==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-4 (Postfix) with ESMTPSA id
+ 947F9180012F; Tue, 21 Apr 2026 06:51:19 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v3 10/14] target/arm: extract MMIO emulation logic for HVF
+ & WHPX
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260421-mshv_accel_arm64_supp-v3-10-469f544778ba@linux.microsoft.com>
+Date: Tue, 21 Apr 2026 08:51:07 +0200
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>,
+ Magnus Kulke <magnus.kulke@linux.microsoft.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <0E102AEB-7196-4968-B016-16879EF0D034@unpredictable.fr>
 References: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
-In-Reply-To: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
-To: qemu-devel@nongnu.org
-Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
- Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Anirudh Rayabharam <anirudh@anirudhrb.com>, 
- Aastha Rawat <aastharawat@linux.microsoft.com>, 
- Magnus Kulke <magnus.kulke@linux.microsoft.com>, qemu-arm@nongnu.org, 
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: b4 0.15.1
-Received-SPF: pass client-ip=13.77.154.182;
- envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
-X-Spam_score_int: -42
-X-Spam_score: -4.3
-X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <20260421-mshv_accel_arm64_supp-v3-10-469f544778ba@linux.microsoft.com>
+To: Aastha Rawat <aastharawat@linux.microsoft.com>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIxMDA2NSBTYWx0ZWRfX0k4yYwFCzll4
+ hepL60nEQpkz9G1Y5f6f83CW5e7KhQRnEww65h7nEf/sqLOd7Ido/tvMqdz/UDVoobYDekDIoal
+ mO5NHvasM/3fiU0saB2Zbc6Mi0TdrOCN/uT+P6nUKhIzTTeuVc3No/pP2jXtPjoqblF9gXUr9kN
+ 3//jfvULfTMeEMT93PlCVPKreecYe1M7aVgF76EKUt8fqDwV/M4SHl98brtMkjkg4NxCiZsWwbA
+ QHLYnwMYqbyK1Y9t5Hi1KSREuUsF5QnZhPL/r9SjRfBSOTEtTh0bJB6OqI6yzGk+3RSz6DC14fL
+ RZVn+MMEZF7K56cWL8z/m2udjaaPsYpyUE2DrpgOr3LrmtEAOZKKTFeRZONl9c=
+X-Proofpoint-GUID: Zoaeis1s--mCtOigi7GPAo_LV13P3CyK
+X-Authority-Info-Out: v=2.4 cv=LuGfC3dc c=1 sm=1 tr=0 ts=69e71e6c
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=yMhMjlubAAAA:8 a=dJ-s-Lo7nvDzl-0enaAA:9
+ a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: Zoaeis1s--mCtOigi7GPAo_LV13P3CyK
+Received-SPF: pass client-ip=57.103.91.26;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,251 +93,433 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add support for reading and writing ARM64 CPU registers in the MSHV
-accelerator. This includes functions to set and get registers,
-initialize and destroy VCPU state, and manage register state
-synchronization between QEMU and hypervisor.
 
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
----
- include/hw/hyperv/hvgdk_mini.h |  42 +++++++++++++
- target/arm/mshv/mshv-all.c     | 138 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 180 insertions(+)
 
-diff --git a/include/hw/hyperv/hvgdk_mini.h b/include/hw/hyperv/hvgdk_mini.h
-index cb52cc9de2..dfe94050f4 100644
---- a/include/hw/hyperv/hvgdk_mini.h
-+++ b/include/hw/hyperv/hvgdk_mini.h
-@@ -13,6 +13,46 @@ typedef enum hv_register_name {
-     /* Pending Interruption Register */
-     HV_REGISTER_PENDING_INTERRUPTION = 0x00010002,
- 
-+#if defined(__aarch64__)
-+    HV_ARM64_REGISTER_XZR   = 0x0002FFFE,
-+    HV_ARM64_REGISTER_X0    = 0x00020000,
-+    HV_ARM64_REGISTER_X1    = 0x00020001,
-+    HV_ARM64_REGISTER_X2    = 0x00020002,
-+    HV_ARM64_REGISTER_X3    = 0x00020003,
-+    HV_ARM64_REGISTER_X4    = 0x00020004,
-+    HV_ARM64_REGISTER_X5    = 0x00020005,
-+    HV_ARM64_REGISTER_X6    = 0x00020006,
-+    HV_ARM64_REGISTER_X7    = 0x00020007,
-+    HV_ARM64_REGISTER_X8    = 0x00020008,
-+    HV_ARM64_REGISTER_X9    = 0x00020009,
-+    HV_ARM64_REGISTER_X10   = 0x0002000A,
-+    HV_ARM64_REGISTER_X11   = 0x0002000B,
-+    HV_ARM64_REGISTER_X12   = 0x0002000C,
-+    HV_ARM64_REGISTER_X13   = 0x0002000D,
-+    HV_ARM64_REGISTER_X14   = 0x0002000E,
-+    HV_ARM64_REGISTER_X15   = 0x0002000F,
-+    HV_ARM64_REGISTER_X16   = 0x00020010,
-+    HV_ARM64_REGISTER_X17   = 0x00020011,
-+    HV_ARM64_REGISTER_X18   = 0x00020012,
-+    HV_ARM64_REGISTER_X19   = 0x00020013,
-+    HV_ARM64_REGISTER_X20   = 0x00020014,
-+    HV_ARM64_REGISTER_X21   = 0x00020015,
-+    HV_ARM64_REGISTER_X22   = 0x00020016,
-+    HV_ARM64_REGISTER_X23   = 0x00020017,
-+    HV_ARM64_REGISTER_X24   = 0x00020018,
-+    HV_ARM64_REGISTER_X25   = 0x00020019,
-+    HV_ARM64_REGISTER_X26   = 0x0002001A,
-+    HV_ARM64_REGISTER_X27   = 0x0002001B,
-+    HV_ARM64_REGISTER_X28   = 0x0002001C,
-+    HV_ARM64_REGISTER_FP    = 0x0002001D,
-+    HV_ARM64_REGISTER_LR    = 0x0002001E,
-+    HV_ARM64_REGISTER_PC    = 0x00020022,
-+
-+    /* AArch64 System Register Descriptions: General system control registers */
-+    HV_ARM64_REGISTER_MIDR_EL1   = 0x00040051,
-+    HV_ARM64_REGISTER_MPIDR_EL1  = 0x00040001,
-+
-+#elif defined(__x86_64__)
-     /* X64 User-Mode Registers */
-     HV_X64_REGISTER_RAX     = 0x00020000,
-     HV_X64_REGISTER_RCX     = 0x00020001,
-@@ -157,6 +197,8 @@ typedef enum hv_register_name {
-     /* Other MSRs */
-     HV_X64_REGISTER_MSR_IA32_MISC_ENABLE = 0x000800A0,
- 
-+#endif
-+
-     /* Misc */
-     HV_REGISTER_GUEST_OS_ID         = 0x00090002,
-     HV_REGISTER_REFERENCE_TSC       = 0x00090017,
-diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-index 1c82e2c593..ad9cb267a8 100644
---- a/target/arm/mshv/mshv-all.c
-+++ b/target/arm/mshv/mshv-all.c
-@@ -9,16 +9,146 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
-+
-+#include "qemu/osdep.h"
-+#include <sys/ioctl.h>
-+
-+#include "qemu/error-report.h"
-+#include "qemu/memalign.h"
-+
-+#include "system/cpus.h"
-+#include "target/arm/cpu.h"
-+
- #include "system/mshv.h"
- #include "system/mshv_int.h"
-+#include "hw/hyperv/hvgdk_mini.h"
-+
-+static enum hv_register_name STANDARD_REGISTER_NAMES[32] = {
-+    HV_ARM64_REGISTER_X0,
-+    HV_ARM64_REGISTER_X1,
-+    HV_ARM64_REGISTER_X2,
-+    HV_ARM64_REGISTER_X3,
-+    HV_ARM64_REGISTER_X4,
-+    HV_ARM64_REGISTER_X5,
-+    HV_ARM64_REGISTER_X6,
-+    HV_ARM64_REGISTER_X7,
-+    HV_ARM64_REGISTER_X8,
-+    HV_ARM64_REGISTER_X9,
-+    HV_ARM64_REGISTER_X10,
-+    HV_ARM64_REGISTER_X11,
-+    HV_ARM64_REGISTER_X12,
-+    HV_ARM64_REGISTER_X13,
-+    HV_ARM64_REGISTER_X14,
-+    HV_ARM64_REGISTER_X15,
-+    HV_ARM64_REGISTER_X16,
-+    HV_ARM64_REGISTER_X17,
-+    HV_ARM64_REGISTER_X18,
-+    HV_ARM64_REGISTER_X19,
-+    HV_ARM64_REGISTER_X20,
-+    HV_ARM64_REGISTER_X21,
-+    HV_ARM64_REGISTER_X22,
-+    HV_ARM64_REGISTER_X23,
-+    HV_ARM64_REGISTER_X24,
-+    HV_ARM64_REGISTER_X25,
-+    HV_ARM64_REGISTER_X26,
-+    HV_ARM64_REGISTER_X27,
-+    HV_ARM64_REGISTER_X28,
-+    HV_ARM64_REGISTER_FP,
-+    HV_ARM64_REGISTER_LR,
-+    HV_ARM64_REGISTER_PC,
-+};
-+
-+static int set_standard_regs(const CPUState *cpu)
-+{
-+    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
-+    struct hv_register_assoc *assocs;
-+    int ret;
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+
-+    assocs = g_new0(hv_register_assoc, n_regs);
-+
-+    for (size_t i = 0; i < n_regs - 1; i++) {
-+        assocs[i].name = STANDARD_REGISTER_NAMES[i];
-+        assocs[i].value.reg64 = env->xregs[i];
-+    }
-+
-+    /* Last register is the program counter */
-+    assocs[n_regs - 1].name = STANDARD_REGISTER_NAMES[n_regs - 1];
-+    assocs[n_regs - 1].value.reg64 = env->pc;
-+
-+    ret = mshv_set_generic_regs(cpu, assocs, n_regs);
-+    if (ret < 0) {
-+        error_report("failed to set standard registers");
-+        g_free(assocs);
-+        return -1;
-+    }
-+
-+    g_free(assocs);
-+
-+    return 0;
-+}
-+
-+static void populate_standard_regs(const hv_register_assoc *assocs,
-+                                   CPUARMState *env)
-+{
-+    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
-+
-+    for (size_t i = 0; i < n_regs - 1; i++) {
-+        env->xregs[i] = assocs[i].value.reg64;
-+    }
-+
-+    /* Last register is the program counter */
-+    env->pc = assocs[n_regs - 1].value.reg64;
-+}
- 
- int mshv_load_regs(CPUState *cpu)
- {
-+    int ret;
-+
-+    ret = mshv_get_standard_regs(cpu);
-+    if (ret < 0) {
-+        error_report("Failed to load standard registers");
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+
-+int mshv_get_standard_regs(CPUState *cpu)
-+{
-+    size_t n_regs = ARRAY_SIZE(STANDARD_REGISTER_NAMES);
-+    struct hv_register_assoc *assocs;
-+    int ret;
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-+    CPUARMState *env = &arm_cpu->env;
-+
-+    assocs = g_new0(hv_register_assoc, n_regs);
-+    for (size_t i = 0; i < n_regs; i++) {
-+        assocs[i].name = STANDARD_REGISTER_NAMES[i];
-+    }
-+    ret = mshv_get_generic_regs(cpu, assocs, n_regs);
-+    if (ret < 0) {
-+        error_report("failed to get standard registers");
-+        g_free(assocs);
-+        return -1;
-+    }
-+
-+    populate_standard_regs(assocs, env);
-+
-+    g_free(assocs);
-     return 0;
- }
- 
- int mshv_arch_put_registers(const CPUState *cpu)
- {
-+    int ret;
-+
-+    ret = set_standard_regs(cpu);
-+    if (ret < 0) {
-+        return ret;
-+    }
-+
-     return 0;
- }
- 
-@@ -29,12 +159,20 @@ int mshv_run_vcpu(int vm_fd, CPUState *cpu, hv_message *msg, MshvVmExit *exit)
- 
- void mshv_arch_init_vcpu(CPUState *cpu)
- {
-+    AccelCPUState *state = cpu->accel;
- 
-+    mshv_setup_hvcall_args(state);
- }
- 
- void mshv_arch_destroy_vcpu(CPUState *cpu)
- {
-+    AccelCPUState *state = cpu->accel;
-+
-+    if (state->hvcall_args.base) {
-+        qemu_vfree(state->hvcall_args.base);
-+    }
- 
-+    state->hvcall_args = (MshvHvCallArgs){0};
- }
- 
- void mshv_init_mmio_emu(void)
+> On 21. Apr 2026, at 07:21, Aastha Rawat =
+<aastharawat@linux.microsoft.com> wrote:
+>=20
+> - Move common MMIO emulation code from HVF and WHPX backend to
+>  arm_emulate_mmio() in helper.c.
+> - Update HVF and WHPX to use the new helper and shared types.
 
--- 
-2.45.4
+Hi,
+
+This one is a bit interesting and not sure if it=E2=80=99s ok in this =
+form.
+
+That=E2=80=99s for one reason: it causes a slowdown on WHP and HVF by =
+fetching
+state (and sometimes setting) outside of their respective shared =
+register pages.
+
+In both of those APIs, the existence of the shared register page is =
+opaque/hidden
+away, but if you aren=E2=80=99t careful about what you fetch you=E2=80=99r=
+e going to hit the slow
+path very easily.
+
+On x86 WHPX, we have a state level abstraction with a FAST_RUNTIME_STATE
+that only fetches a (sub)set accessible that is readable using only =
+information
+from the shared register page - and that is supposed to be enough for =
+the vast
+majority of MMIO - that doesn=E2=80=99t touch the FP/MMX/SSE register =
+files.
+
+And another possibility is putting it in a target/arm/emulate with =
+mimicking
+the x86_emul_ops interface with adding register callbacks to that so =
+that state
+is fetched/set dynamically.
+
+
+>=20
+> Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+> ---
+> target/arm/helper.c        | 60 =
++++++++++++++++++++++++++++++++++++++++++++
+> target/arm/helper.h        |  5 ++++
+> target/arm/hvf/hvf.c       | 64 =
+++++++++++++++++++++++++----------------------
+> target/arm/syndrome.h      | 37 +++++++++++++++++++++++++++
+> target/arm/whpx/whpx-all.c | 62 =
++++++++++++---------------------------------
+> 5 files changed, 150 insertions(+), 78 deletions(-)
+>=20
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 7389f2988c..c9457c8384 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -34,6 +34,8 @@
+> #endif
+> #include "cpregs.h"
+> #include "target/arm/gtimer.h"
+> +#include "target/arm/helper.h"
+> +#include "target/arm/syndrome.h"
+> #include "qemu/plugin.h"
+>=20
+> static void switch_mode(CPUARMState *env, int mode);
+> @@ -9130,6 +9132,64 @@ static void =
+arm_cpu_do_interrupt_aarch32(CPUState *cs)
+>     take_aarch32_exception(env, new_mode, mask, offset, addr);
+> }
+>=20
+> +/*
+> + * Emulate a data abort syndrome for MMIO/guest memory access
+> + */
+> +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa)
+> +{
+> +    CPUARMState *env =3D &ARM_CPU(cpu)->env;
+> +    int ret;
+> +    IssDataAbort iss =3D { 0 };
+> +    iss.raw =3D syndrome.iss;
+> +
+> +    if (!(syndrome.ec =3D=3D data_abort_lower || syndrome.ec =3D=3D =
+data_abort)) {
+> +        error_report("Unknown exception class 0x%x", syndrome.ec);
+> +        return -1;
+> +    }
+> +
+> +    if (!iss.isv) {
+> +        error_report("Cannot emulate MMIO. ISS not valid.");
+> +        return -1;
+> +    }
+> +
+> +    AddressSpace *as =3D cpu_get_address_space(cpu, ARMASIdx_NS);
+> +    uint64_t len =3D 1ULL << iss.sas;
+> +    bool sign_extend =3D iss.sse;
+> +    uint64_t reg_index =3D iss.srt;
+> +
+> +    if (iss.wnr) {
+> +        uint8_t data[8];
+> +        uint64_t val =3D reg_index < 31 ? env->xregs[reg_index] : =
+0ULL;
+> +        val =3D cpu_to_le64(val);
+> +        memcpy(data, &val, sizeof(val));
+> +        ret =3D address_space_write(as, gpa, MEMTXATTRS_UNSPECIFIED, =
+data, len);
+> +        if (ret !=3D MEMTX_OK) {
+> +            error_report("Failed to write guest memory");
+> +            return -1;
+> +        }
+> +    } else {
+> +        uint8_t data[8] =3D { 0 };
+> +        ret =3D address_space_read(as, gpa, MEMTXATTRS_UNSPECIFIED, =
+data, len);
+> +        if (ret !=3D MEMTX_OK) {
+> +            error_report("Failed to read guest memory");
+> +            return -1;
+> +        }
+> +        uint64_t val;
+> +        memcpy(&val, data, sizeof(val));
+> +        val =3D le64_to_cpu(val);
+> +        if (sign_extend) {
+> +            uint64_t shift =3D 64 - (len * 8);
+> +            val =3D (((int64_t)val << shift) >> shift);
+> +        }
+> +        if (!iss.sf) {
+> +            val &=3D 0xffffffff;
+> +        }
+> +        env->xregs[reg_index] =3D val;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+> static int aarch64_regnum(CPUARMState *env, int aarch32_reg)
+> {
+>     /*
+> diff --git a/target/arm/helper.h b/target/arm/helper.h
+> index b1c26c180e..3bc22595fd 100644
+> --- a/target/arm/helper.h
+> +++ b/target/arm/helper.h
+> @@ -3,8 +3,13 @@
+> #ifndef HELPER__H
+> #define HELPER__H
+>=20
+> +#include <stdint.h>
+> +#include <stdbool.h>
+> #include "exec/helper-proto-common.h"
+> #include "exec/helper-gen-common.h"
+> +#include "target/arm/syndrome.h"
+> +
+> +int arm_emulate_mmio(CPUState *cpu, EsrEl2 syndrome, uint64_t gpa);
+>=20
+> #define HELPER_H "tcg/helper-defs.h"
+> #include "exec/helper-proto.h.inc"
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 5fc8f6bbbd..9ecad6c222 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -13,6 +13,7 @@
+> #include "qemu/error-report.h"
+> #include "qemu/log.h"
+>=20
+> +#include "syndrome.h"
+> #include "system/runstate.h"
+> #include "system/hvf.h"
+> #include "system/hvf_int.h"
+> @@ -35,6 +36,7 @@
+> #include "target/arm/multiprocessing.h"
+> #include "target/arm/gtimer.h"
+> #include "target/arm/trace.h"
+> +#include "target/arm/helper.h"
+> #include "trace.h"
+> #include "migration/vmstate.h"
+>=20
+> @@ -2072,12 +2074,15 @@ static int hvf_handle_exception(CPUState *cpu, =
+hv_vcpu_exit_exception_t *excp)
+> {
+>     CPUARMState *env =3D cpu_env(cpu);
+>     ARMCPU *arm_cpu =3D env_archcpu(env);
+> -    uint64_t syndrome =3D excp->syndrome;
+> -    uint32_t ec =3D syn_get_ec(syndrome);
+> +    uint64_t syndrome;
+> +    uint32_t ec;
+>     bool advance_pc =3D false;
+>     hv_return_t r;
+>     int ret =3D 0;
+>=20
+> +    syndrome =3D excp->syndrome;
+> +    ec =3D syn_get_ec(syndrome);
+> +
+>     switch (ec) {
+>     case EC_SOFTWARESTEP: {
+>         ret =3D EXCP_DEBUG;
+> @@ -2123,29 +2128,22 @@ static int hvf_handle_exception(CPUState *cpu, =
+hv_vcpu_exit_exception_t *excp)
+>         break;
+>     }
+>     case EC_DATAABORT: {
+> -        bool isv =3D syndrome & ARM_EL_ISV;
+> -        bool iswrite =3D (syndrome >> 6) & 1;
+> -        bool s1ptw =3D (syndrome >> 7) & 1;
+> -        bool sse =3D (syndrome >> 21) & 1;
+> -        uint32_t sas =3D (syndrome >> 22) & 3;
+> -        uint32_t len =3D 1 << sas;
+> -        uint32_t srt =3D (syndrome >> 16) & 0x1f;
+> -        uint32_t cm =3D (syndrome >> 8) & 0x1;
+> -        uint64_t val =3D 0;
+> +        EsrEl2 esr_el2 =3D { .raw =3D syndrome };
+> +        IssDataAbort iss =3D { .raw =3D esr_el2.iss };
+>         uint64_t ipa =3D excp->physical_address;
+>         AddressSpace *as =3D cpu_get_address_space(cpu, ARMASIdx_NS);
+>=20
+> -        trace_hvf_data_abort(excp->virtual_address, ipa, isv,
+> -                             iswrite, s1ptw, len, srt);
+> +        trace_hvf_data_abort(excp->virtual_address, ipa, iss.isv,
+> +                             iss.wnr, iss.s1ptw, 1ULL << iss.sas, =
+iss.srt);
+>=20
+> -        if (cm) {
+> +        if (iss.cm) {
+>             /* We don't cache MMIO regions */
+>             advance_pc =3D true;
+>             break;
+>         }
+>=20
+>         /* Handle dirty page logging for ram. */
+> -        if (iswrite) {
+> +        if (iss.wnr) {
+>             hwaddr xlat;
+>             MemoryRegion *mr =3D address_space_translate(as, ipa, =
+&xlat,
+>                                                        NULL, true,
+> @@ -2172,27 +2170,31 @@ static int hvf_handle_exception(CPUState *cpu, =
+hv_vcpu_exit_exception_t *excp)
+>          * TODO: If s1ptw, this is an error in the guest os page =
+tables.
+>          * Inject the exception into the guest.
+>          */
+> -        assert(!s1ptw);
+> -
+> -        /*
+> -         * TODO: ISV will be 0 for SIMD or SVE accesses.
+> -         * Inject the exception into the guest.
+> -         */
+> -        assert(isv);
+> +        assert(!iss.s1ptw);
+>=20
+>         /*
+>          * Emulate MMIO.
+>          * TODO: Inject faults for errors.
+>          */
+> -        if (iswrite) {
+> -            val =3D hvf_get_reg(cpu, srt);
+> -            address_space_write(as, ipa, MEMTXATTRS_UNSPECIFIED, =
+&val, len);
+> -        } else {
+> -            address_space_read(as, ipa, MEMTXATTRS_UNSPECIFIED, &val, =
+len);
+> -            if (sse) {
+> -                val =3D sextract64(val, 0, len * 8);
+> -            }
+> -            hvf_set_reg(cpu, srt, val);
+> +        ret =3D hvf_arch_get_registers(cpu);
+> +        if (ret < 0) {
+> +            error_report("Failed to get registers for MMIO");
+> +                         esr_el2.raw, ipa);
+> +            return -1;
+> +        }
+> +
+> +        ret =3D arm_emulate_mmio(cpu, esr_el2, ipa);
+> +        if (ret < 0) {
+> +            error_report("Failed to emulate MMIO, syndrome=3D0x%llx, =
+gpa=3D0x%llx",
+> +                         esr_el2.raw, ipa);
+> +            return -1;
+> +        }
+> +
+> +        ret =3D hvf_arch_put_registers(cpu);
+> +        if (ret < 0) {
+> +            error_report("Failed to set registers after MMIO =
+emulation");
+> +                         esr_el2.raw, ipa);
+> +            return -1;
+>         }
+>         advance_pc =3D true;
+>         break;
+> diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
+> index bff61f052c..777d4fb975 100644
+> --- a/target/arm/syndrome.h
+> +++ b/target/arm/syndrome.h
+> @@ -101,6 +101,43 @@ typedef enum {
+>     GCS_IT_GCSPOPX =3D 9,
+> } GCSInstructionType;
+>=20
+> +typedef union {
+> +    uint64_t raw;
+> +    struct {
+> +        uint32_t iss:25;
+> +        uint32_t il:1;
+> +        uint32_t ec:6;
+> +        uint32_t iss2:5;
+> +        uint32_t _rsvd:27;
+> +    } QEMU_PACKED;
+> +} EsrEl2;
+> +
+> +typedef union {
+> +    uint32_t raw;
+> +    struct {
+> +        uint32_t dfsc:6;
+> +        uint32_t wnr:1;
+> +        uint32_t s1ptw:1;
+> +        uint32_t cm:1;
+> +        uint32_t ea:1;
+> +        uint32_t fnv:1;
+> +        uint32_t set:2;
+> +        uint32_t vncr:1;
+> +        uint32_t ar:1;
+> +        uint32_t sf:1;
+> +        uint32_t srt:5;
+> +        uint32_t sse:1;
+> +        uint32_t sas:2;
+> +        uint32_t isv:1;
+> +        uint32_t _unused:7;
+> +    } QEMU_PACKED;
+> +} IssDataAbort;
+> +
+> +typedef enum {
+> +    data_abort_lower =3D 36,
+> +    data_abort =3D 37,
+> +} ExceptionClass;
+> +
+> #define ARM_EL_EC_LENGTH 6
+> #define ARM_EL_EC_SHIFT 26
+> #define ARM_EL_IL_SHIFT 25
+> diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+> index 513551bec1..b4daeaff4d 100644
+> --- a/target/arm/whpx/whpx-all.c
+> +++ b/target/arm/whpx/whpx-all.c
+> @@ -28,6 +28,8 @@
+>=20
+> #include "syndrome.h"
+> #include "target/arm/cpregs.h"
+> +#include "target/arm/helper.h"
+> +#include "target/arm/syndrome.h"
+> #include "internals.h"
+>=20
+> #include "system/whpx-internal.h"
+> @@ -330,59 +332,25 @@ static void =
+whpx_set_global_reg(WHV_REGISTER_NAME reg, WHV_REGISTER_VALUE val)
+>     }
+> }
+>=20
+> -static uint64_t whpx_get_gp_reg(CPUState *cpu, int rt)
+> -{
+> -    assert(rt <=3D 31);
+> -    if (rt =3D=3D 31) {
+> -        return 0;
+> -    }
+> -    WHV_REGISTER_NAME reg =3D WHvArm64RegisterX0 + rt;
+> -    WHV_REGISTER_VALUE val;
+> -    whpx_get_reg(cpu, reg, &val);
+> -
+> -    return val.Reg64;
+> -}
+> -
+> -static void whpx_set_gp_reg(CPUState *cpu, int rt, uint64_t val)
+> -{
+> -    assert(rt < 31);
+> -    WHV_REGISTER_NAME reg =3D WHvArm64RegisterX0 + rt;
+> -    WHV_REGISTER_VALUE reg_val =3D {.Reg64 =3D val};
+> -
+> -    whpx_set_reg(cpu, reg, reg_val);
+> -}
+> -
+> static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT =
+*ctx)
+> {
+> -    uint64_t syndrome =3D ctx->Syndrome;
+> -
+> -    bool isv =3D syndrome & ARM_EL_ISV;
+> -    bool iswrite =3D (syndrome >> 6) & 1;
+> -    bool sse =3D (syndrome >> 21) & 1;
+> -    uint32_t sas =3D (syndrome >> 22) & 3;
+> -    uint32_t len =3D 1 << sas;
+> -    uint32_t srt =3D (syndrome >> 16) & 0x1f;
+> -    uint32_t cm =3D (syndrome >> 8) & 0x1;
+> -    uint64_t val =3D 0;
+> +    int ret =3D 0;
+> +    EsrEl2 esr =3D { .raw =3D ctx->Syndrome };
+> +    uint32_t cm =3D (esr.iss >> 8) & 0x1;
+>=20
+>     assert(!cm);
+> -    assert(isv);
+> -
+> -    if (iswrite) {
+> -        val =3D whpx_get_gp_reg(cpu, srt);
+> -        address_space_write(&address_space_memory,
+> -                            ctx->Gpa,
+> -                            MEMTXATTRS_UNSPECIFIED, &val, len);
+> -    } else {
+> -        address_space_read(&address_space_memory,
+> -                           ctx->Gpa,
+> -                           MEMTXATTRS_UNSPECIFIED, &val, len);
+> -        if (sse) {
+> -            val =3D sextract64(val, 0, len * 8);
+> -        }
+> -        whpx_set_gp_reg(cpu, srt, val);
+> +
+> +    whpx_get_registers(cpu, WHPX_LEVEL_RUNTIME_STATE);
+> +
+> +    ret =3D arm_emulate_mmio(cpu, esr, ctx->Gpa);
+> +    if (ret < 0) {
+> +        error_report("WHPX: Failed to handle MMIO, syndrome=3D0x%llx, =
+gpa=3D0x%llx",
+> +                     esr.raw, ctx->Gpa);
+> +        return -1;
+>     }
+>=20
+> +    whpx_set_registers(cpu, WHPX_LEVEL_RUNTIME_STATE);
+> +
+>     return 0;
+> }
+>=20
+>=20
+> --=20
+> 2.45.4
+>=20
+>=20
 
 

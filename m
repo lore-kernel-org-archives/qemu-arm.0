@@ -4,94 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F87BF94CB4
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 22:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B223EF94CB8
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 00:07:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFJkU-0006KP-5t; Tue, 21 Apr 2026 18:39:18 -0400
+	id 1wFL7d-0003TB-7U; Tue, 21 Apr 2026 20:07:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wFJkS-0006Jp-Bi
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 18:39:16 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
+ id 1wFKS8-0003oi-5H
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 19:24:24 -0400
+Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wFJkQ-0002NK-TN
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 18:39:16 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2ad9f316d68so21657855ad.2
- for <qemu-arm@nongnu.org>; Tue, 21 Apr 2026 15:39:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
+ id 1wFKS5-0006Uu-0j
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 19:24:23 -0400
+Received: by mail-dy1-x132c.google.com with SMTP id
+ 5a478bee46e88-2d8ffdc31d0so513790eec.0
+ for <qemu-arm@nongnu.org>; Tue, 21 Apr 2026 16:24:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776811152; x=1777415952; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=b+1Bfe0n3xmz4i8Ycm22g0rpBfwGidicljo+vzxfI14=;
- b=mIfIdVJaoArvd6KOSOQBoYxgpxOxZay7B8anqzXnR4bibao+mN3lZi0VH06K7UkgmE
- Ct9SBhLpVjR68jduGnOqBYRkABfBt+Fz/Tk/GO7OFOj04LYhH2uNYCEUVjpSgMIi1p1S
- 7M5++ywFGQRc/zhGsxm792lTvVK8Kj+CLep+UJ37zT70GWyRXkE0ZEMxcBRrvqHdcJn2
- jS4C6YqZbppXJJgIx/FitCozkktTaa5OBsx5Pg20PehOu8vQ6XjFbOt9OJohl+BUf8Hv
- KPerIaezjrtHlcyRSo7NZXnwsbWq7fZc1KE8v7RiJgLXxeFc2KzAwt5W/gcq9394XDgi
- iXXw==
+ d=gmail.com; s=20251104; t=1776813859; x=1777418659; darn=nongnu.org;
+ h=in-reply-to:references:to:from:subject:cc:message-id:date
+ :content-transfer-encoding:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6ScxLFJmTTrijIZGbaLxvISlXmaRGqu/BCc1A9gOVpw=;
+ b=N5w4IT+h7ezfMkTSWHHHCX51Bfep0lmRajKH4SiAibVWrMfgmK9S0Z7K144ns5Ioiv
+ ZtWmk2lz2uIzIrdxdQhQbcbH4KpinVIueB7CYtsuWgAF69tHM8GvWHjhLdle/MwIFwl0
+ zwidFErkHJZTTttwQBFhbqG/5swoyusdLZxW7nYJlVTn01abjOQtLhBj7jSox1ad5kwY
+ n/zcPEzmtWCM6qKhlq8BcNk7ydBJD7QD+atNqwNkVmA2JG3KWcqoW8AGLn6qwutDi02U
+ +5FmewmhIZ2SuOTK3OWJyrO1JPGpG6xReDkRNG8OQaUrENoQgdTg9BzxX7QPyqH3kepc
+ lsjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776811152; x=1777415952;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=b+1Bfe0n3xmz4i8Ycm22g0rpBfwGidicljo+vzxfI14=;
- b=F3GGr1QQwLSQXzJkVw9n4Y0F5xpsa3u4+1YCa/KktumsaWzcgLdcj5jnyP1OzY3q2t
- /wn/Xy2U2sAoLskLu5QvPXBfFQllVuu18KiSk5ps5j+/2gHskwRfqhLqAmW63psapy/S
- dODbv4S8kvze8D0v+jfi7SCxFBE/TfHjUrAKuOrgz/ptm37vp4LPDc3IeWLbhadY3Yb7
- BhDWxI0wbBLbUR/fiTeyDNRV0jBLcRlbp1rU7fToK6JiYIgL260nEWYPK/7Pko4te8aQ
- N4flmfwgEUyFFf9kLHk40A2/1iuM0IpBcT77CvSGB5k7mabA99o6rOxdS1wALC/exmSx
- +/Cg==
+ d=1e100.net; s=20251104; t=1776813859; x=1777418659;
+ h=in-reply-to:references:to:from:subject:cc:message-id:date
+ :content-transfer-encoding:mime-version:x-gm-gg:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=6ScxLFJmTTrijIZGbaLxvISlXmaRGqu/BCc1A9gOVpw=;
+ b=Nu4rZDk69rr/EJKOveYP6g1MnsN9RRnmckJvWWpdLWmyVRs6cX4m0ZTZEKciiT08Oh
+ +vdUAKCfPpE0k9zVvEIMOMRaNUV/Gp/Pp2FlfpNMGHFyUUsBs1Uu2sGLZvq6ijGH2LKd
+ cv3MUAwyHc6I9ivne6v4njR+H3pCeHufGtqMFR7boP+UJp9jHdsUOeyVFRp6YbajsSwx
+ sMKW20KaGnSDw8UYZFFHX+9sa/nyElu9qFpbp7u+0xMh6S073SsDtxGlvdqzpN+GXaEF
+ j+j07vDOsHLRFGSNW4YRDgxkNHs5Gh3KqJIzYLeLyLzsaSX+3fwCfHJU7g02fQIRc7o/
+ 3W+w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/RSnHNI9zE8y05vES8f1lEfWlGzhecwkobuhlWQ/qvLoYPl65vk+3miMmuJfffm+fQAQLyd+EPkQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxUuftknuPl5ehgl5WKRe0Ui03TPlj+LbFiJPOok5NrC6FGz2nM
- /vh2qP2LOmUTO5i+x9ZktocsO6oTzR3GyBEwEJQKW1URYpLl5VvYTOgGRow0nE3jM6w=
-X-Gm-Gg: AeBDieu1C2lYnbQdqlO4W97FcwcEBggCLz64JQ4iOvLjHa58ULyIBumsP/oUqqU1YyQ
- pdan/vTY4tFYTXvB5BHhURnaCYQ/059l2ifrArhEA9gqCarm2aSjkKqAf3y6ODMtDUfYkrMEJdA
- JMe+vUQ19M0iuouL5/IDOernb1fhlvB1VWbBVjufJZp9jdgAe4f1s/6v8yl/MCiYFK+GexVkF7V
- 1jyFZshMinPD6YDd4kmPBRyZBs9jdT1WyVdiYpqNK12qEDEUUr6AkfGLrK+dV8IINsLCf/B9gR0
- wsBF5isN5FdsVEQaWYiaFSr0C+T+lqjcEiDSAX2MgzBUhD856PtWhuE0r/Zo4zhxJwkz3ilUKX4
- B8KS3eEZVH3CToa1yuniR80h3AXqxT6w843MtlS7EuKkKDN4+PgApV+UVEygRmfuifmeiPKCmUo
- sQbnmzoHu4MQCnKDVfTkki5Uu8wnIzyMi6uPDhlOQ4lLxWKK+OSPBX
-X-Received: by 2002:a17:903:17c3:b0:2b0:708f:4dc7 with SMTP id
- d9443c01a7336-2b5f9f3b367mr220050275ad.29.1776811152335; 
- Tue, 21 Apr 2026 15:39:12 -0700 (PDT)
-Received: from [192.168.10.140] ([180.233.125.15])
+ AFNElJ9Caoirz1SfbdW3dMDWESQX2b6VbATvKj+vpX6abdBSOROiJFTVuohQl2gsN/NumaYZz7yryY7pzg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8ks0L51nakXqMQTH/cqIp6tP+B93RGU5jzS8dVYrLV0pf2iGl
+ 2akkRUcIkNN4fualW/effPMuxxgajRrkSUEBPCRU67iTdqMnsyn8LMee
+X-Gm-Gg: AeBDietaVVR3nqsV6edv4fUB/S3T3+X/i+Z6x83QKgaHhHfrdlCuPZrwmzW3iNK/UP6
+ ym6iZHa6lCELWk9KZlRaTwLgo+4ChS448PiM4FctEOTmgAGdGTsn3Fqn5XhpeGvNiGKn+C0fmoN
+ fZDVeRtWQgVBOJE7IyNmRDohFGlIoz0kM285qbNiPFeRPmaW8icbP4aFjHh/ENZpuXu7l0eO/zm
+ ocwIoYmfk5tiTlERn+zZ5z3USTi90oypeDlGZmYBN9I9AEgUamLYwpfozyc1TFVsamv9oDMUhKw
+ 7xGscOlmQ1UDoclKG4Y6OajPXuwH9xgt0NbXP+0ojNIoClKySca5hpXFEmHUECiY4jHQCTyRBMt
+ xU/Eg2jV/7LrQ6ey9zCLfqDIWxIinHLxcB2zoxBnv/9xQnhK1GK7udnC95+FmY7AKJ8wnYOUG14
+ WrlQ5f01LEAY9Cu185i7yMPPCLyi10zDB0QYyVKmZxxvbkMkv3BZm08hTqbLmhoqCHB2RBA9t++
+ b8K84Xqhrx5g25xObE=
+X-Received: by 2002:a05:693c:2b04:b0:2e1:f72:3f2a with SMTP id
+ 5a478bee46e88-2e4647d03admr10600739eec.4.1776813858561; 
+ Tue, 21 Apr 2026 16:24:18 -0700 (PDT)
+Received: from localhost ([2601:645:8200:47:44d:4684:400f:ef2])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5faa2df0asm145459655ad.26.2026.04.21.15.39.10
+ 5a478bee46e88-2e79c2954f6sm19093626eec.30.2026.04.21.16.24.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Apr 2026 15:39:11 -0700 (PDT)
-Message-ID: <66b0fb99-6783-4324-a0fe-86dc1087ada4@linaro.org>
-Date: Wed, 22 Apr 2026 08:39:06 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] tests/tcg/aarch64/system/rme_gdi.c: Very basic
- test of GDI
-To: Jim MacArthur <jim.macarthur@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-References: <20260421-jmac-feat_rme_gdi-v3-0-ecd20c77eae1@linaro.org>
- <20260421-jmac-feat_rme_gdi-v3-4-ecd20c77eae1@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260421-jmac-feat_rme_gdi-v3-4-ecd20c77eae1@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
+ Tue, 21 Apr 2026 16:24:18 -0700 (PDT)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 21 Apr 2026 16:24:16 -0700
+Message-Id: <DHZ7Y1A1LLPK.3R5MOKPN5NWPD@gmail.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <rbolshakov@ddn.com>,
+ <phil@philjordan.eu>, <agraf@csgraf.de>, <peter.maydell@linaro.org>,
+ "Mohamed Mediouni" <mohamed@unpredictable.fr>
+Subject: Re: [PATCH v2] target/arm/hvf: Fix WFI halting to stop idle vCPU
+ spinning
+From: "Scott J. Goldman" <scottjgo@gmail.com>
+To: "Scott J. Goldman" <scottjgo@gmail.com>,
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: aerc 0.21.0
+References: <20260410044726.61853-1-scottjgo@gmail.com>
+ <20260410055045.63001-1-scottjgo@gmail.com>
+ <86D19C52-2A31-4802-ADF2-703D9AE83E75@unpredictable.fr>
+ <DHUW6DNJWPDC.1MEF4S1911AJ1@gmail.com>
+ <803470a9-5669-4c29-89fb-2c9be4656512@linaro.org>
+ <DHVPR5CMUKMG.3803OP5N2C9J3@gmail.com>
+In-Reply-To: <DHVPR5CMUKMG.3803OP5N2C9J3@gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132c;
+ envelope-from=scottjgo@gmail.com; helo=mail-dy1-x132c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 21 Apr 2026 20:07:15 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,16 +113,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/22/26 00:22, Jim MacArthur wrote:
-> Simply tests GDI's prerequisites; that if GDI is enabled then
-> so are FEAT_RME and FEAT_RME_GPC2.
-> 
-> Signed-off-by: Jim MacArthur<jim.macarthur@linaro.org>
-> ---
->   tests/tcg/aarch64/system/rme_gdi.c | 46 ++++++++++++++++++++++++++++++++++++++
->   1 file changed, 46 insertions(+)
+On Fri Apr 17, 2026 at 1:30 PM PDT, Scott J. Goldman wrote:
+> On Fri Apr 17, 2026 at 2:57 AM PDT, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Hi Scott,
+>>
+>> On 16/4/26 23:20, Scott J. Goldman wrote:
+>>> Philippe-- apologies for the nag here but this is a fix for a unfortuna=
+te
+>>> regression. Any chance you could take a look? Thanks!
+>>>=20
+>>> On Thu Apr 9, 2026 at 11:18 PM PDT, Mohamed Mediouni wrote:
+>>>>
+>>>>
+>>>>> On 10. Apr 2026, at 07:50, Scott J. Goldman <scottjgo@gmail.com> wrot=
+e:
+>>>>>
+>>>>> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()"=
+)
+>>>>> changed hvf_wfi() from blocking the vCPU thread with pselect() to
+>>>>> returning EXCP_HLT, intending QEMU's main event loop to handle the
+>>>>> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle(=
+)
+>>>>> always returns false and the vCPU thread spins at 100% CPU per core
+>>>>> while the guest is idle.
+>>>>>
+>>>>> Fix this by:
+>>>>>
+>>>>> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps o=
+n
+>>>>>    halt_cond in qemu_process_cpu_events().
+>>>>>
+>>>>> 2. Arming a host-side QEMU_CLOCK_HOST timer to fire when the guest's
+>>>>>    virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
+>>>>>    because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
+>>>>>    hv_vcpu_run(), which is not called while the CPU is halted. The
+>>>>>    timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
+>>>>>    vtimer IRQ through the GIC and marks vtimer_masked, causing the
+>>>>>    interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
+>>>>>
+>>>>> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
+>>>>>    indicates a pending interrupt, and cancelling the WFI timer.
+>>>>>
+>>>>> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()"=
+)
+>>>>> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
+>>>>
+>>>> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>>>>> ---
+>>>>> include/system/hvf_int.h |  1 +
+>>>>> target/arm/hvf/hvf.c     | 65 +++++++++++++++++++++++++++++++++++++++=
+-
+>>>>> 2 files changed, 65 insertions(+), 1 deletion(-)
+>>
+>> I haven't looked at your patch yet. While looking at commit
+>> b5f8f77271 I noticed the previous a14afa985e3 ("accel/hvf: Skip
+>> WFI if CPU has work to do") is different in my local tree, where
+>> I have:
+>>
+>> -- >8 --
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 5fc8f6bbbd9..1a76c9cf402 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -2037,6 +2037,11 @@ static int hvf_wfi(CPUState *cpu)
+>>           return 0;
+>>       }
+>>
+>> +    if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIQ)=
+) {
+>> +        /* Interrupt pending, no need to wait */
+>> +        return EXCP_INTERRUPT;
+>> +    }
+>> +
+>>       return EXCP_HLT;
+>>   }
+>>
+>> ---
+>>
+>> Does that help? Now I'm really confused.
+>
+>
+> Hi Phillipe-- Appreciate your help here. The good news is the bug is
+> very easy to reproduce (start a linux VM with 1 cpu, watch the vCPU on
+> the host will always spin 100%). The bad news is I double checked my
+> bisect and you can see before b5f8f77271 there is no problem, and after
+> the commit is introduced, the problem appears. I also applied the
+> additional cpu_test_interrupt() patch you suggested and it did not
+> change the behavior.
+>
+> thanks
+> -sjg
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hi Philippe- Apologies again for bugging you, but it looks like v11 is
+about to be released and it would be a bummer if this regression went
+out with the stable version. Have you had a chance to either look at my
+patch or check if there was some other simpler fix?
 
-r~
+Also, I'm not a regular qemu contributor, so if there is some process
+here, that I'm missing, please let me know.
+
+thanks
+-sjg
 

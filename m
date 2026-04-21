@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80938EA71A4
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A29EEA7184
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:17:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3SY-0000MX-JA; Tue, 21 Apr 2026 01:15:42 -0400
+	id 1wF3S3-0008MP-9H; Tue, 21 Apr 2026 01:15:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3Rf-00084f-Jd
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:51 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1wF3RM-00080E-7z
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:34 -0400
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3Rc-0006ZJ-Jm
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:47 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-35fb0bb27e7so2460509a91.1
- for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:14:43 -0700 (PDT)
+ id 1wF3RK-0006SV-Oc
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:27 -0400
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2ab39b111b9so15582105ad.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:14:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776748482; x=1777353282; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776748465; x=1777353265; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8Ct+14ngv5gKl9pMW8z2QX17zhRqbcV0PCtNvY/bX4E=;
- b=BS5UFjQ+HrtH/SqSqEyYrai4a++46FIYvat/VA2JRt2ftKroGRahhcHyIWnk9lrEnQ
- Rq9TUcqjpBU2S8++H+etRPKfQQWq2jnuJ4LuX86a8x8WBXX1StYjQjwTMTYxTVQgU867
- nVuVsBQ1QGgXARgMo5MwVArVy9QFSi0nDw0cvNqJr2miXpIiy6qhDiNuD0AENXBCH7G5
- z1pWOgsuWUISMfRiB4+mT6vmp1P5q05MvVklbMdEpCBQFNUXMpNm/gOJVTG2nSaVljuW
- FbWKCbtmySe2MtPzj4syVKlOkiG7munVCaZFijkzkehKt+jx7lc67N/28GL9nN9J2tM4
- iHhg==
+ bh=WK09IV4jv+83fptexQw6qhQ3h5DqduadUD1Gz4A8BTk=;
+ b=S+le+dy34c0SvWCe/PKDHJzCKytZFi2BgBVr4I2Z/F866eXTTJEd4Req6o2cUH+hLh
+ 20UCn3r+vjwQyC3Dtr9MJ41mLAxHFbzAKgKJzzbKny+kxhZePLP8g4Djh7kTwn7Yt5QM
+ A2d2sIxhrxJI8ZI4r8IajN8+4RkDMyrC3ROq2qIVZkc6pR5ubq6oh7N4HH59AUs/RR7C
+ gSNsAiPvnp95zUcgzla2QWXLs3UBQU3+DRVXxi8PzuTwfmkotLrnp19eaZbbRATnSelL
+ nqj49cQtyNSFT9ahX42McY2KhhT0ChTRa1Nrt/zVCMvaQfTAwRPWxXwdLickfmETKjCj
+ z6jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776748482; x=1777353282;
+ d=1e100.net; s=20251104; t=1776748465; x=1777353265;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=8Ct+14ngv5gKl9pMW8z2QX17zhRqbcV0PCtNvY/bX4E=;
- b=novUiSrFOlmRB3JKhAJFRAiFND7Na63sd8chAjSSX5C/ZlPdwtAS6LmSMeyBw+L7Yw
- H0eZzfkkp+5DOz7hRUU+AuqX9kJOq1pyzdKojWSfKp2CBFl4oDS4kBRSW1JjM8sVxmyL
- fa3yl6+T55huBKMSaIwfDOgHnWnQlCHbybxsrhpmudId/IPqLqs7trZ26NqyrB7YBGpZ
- zW+zy8vYQ4yA8/efj6SroSzI+L5EyqOmK01Y9xgPF11cw4BVxZAtWBxfyJ9zju5Iemdk
- YEWIOfK1L8scPK+5DM27eRfGgp9LiHcJS/xGEAsjWbj13im4/O+WFXU7mHnLUSMz5e/B
- NbKg==
-X-Gm-Message-State: AOJu0YxtHeuGhbl5FSCn3ZpzRPa3ukY832w7KhBrxOCQeRTCq4gpGaEk
- gh0TjSWi8oEoxdnf1DTbEK2h2CabRXDO82iDY8iFvWEvoYUPqXBQvpA1WfrCkYrASJk=
-X-Gm-Gg: AeBDieslerO8KBouCBEa3G5w1/nszFJJ29JSgypfSxptiXZ0Hg6oDfaf39LqW4Imo+S
- QZhO6FUJdkuf6Ih0sZ8v/aCy9L9avWiKbp5/9L5U6WZCO3vsXcjvu3eUqnHOj/gXjfT9uM+mtVa
- lj2SGHzrHIr5Q4v0BypiG9X/XNsi+SIIUU9iimkOquolF3vGyw0BC5aTAgiakbpWK8+TFrWUH42
- PA2Zk6XBRfn7UzFHpROL+oCYg49+TXqgf30OA63PvJqUcFmy6xmPc8H5mLTIss1oD2Bpw4lxt/w
- HbbhWd9ojKTn6i7HGDdc3K80xXhrvE4xanxvsU44s1V+cqc4VYKnA+FUKuGXuu9YVJGVaRaV5U/
- rjZLQglbT1tWwlNMlydkt8JRm4KATHSaNuul97GlG2QpnaIDWdSo4zYlfQvjAnNTQGTukgAYfjq
- uwiE7Mqq0PBqvTCALWC/vwGYTgZjwFmcKuRbWYOri2
-X-Received: by 2002:a17:90b:5845:b0:35f:c46f:2b0 with SMTP id
- 98e67ed59e1d1-36140473f70mr16759989a91.14.1776748481742; 
- Mon, 20 Apr 2026 22:14:41 -0700 (PDT)
+ bh=WK09IV4jv+83fptexQw6qhQ3h5DqduadUD1Gz4A8BTk=;
+ b=NBVD/puRW7TGg69h+Jm83s8xHN2KSfDthR20kl5ESNlvnJeEEcpUPUemt4QRzvnMRZ
+ EihnbxLh1hamq1X4soIqazXoWlNnO8r+WmPxSsUt/7LlEaj9i+506643YwN55Os3Ir55
+ eaaLAczyo7q0qPFUZgb0LPlWvLDLVTyk/tou9BOlJKTKNtDkGcjH8PLhavYF9LTcSL+P
+ Jwmmv4Hs9lcvNJ7SMbYIRQFYlSW0pFhe0aVGVmpesBrJoOXDwHEPd5IWxmqogKfH0qiX
+ j6OCWLafwVQfdl4NvhAjbMMIo+8rIbEkMEAMZtllVo70hKwnYtDCWrl+YUriGa0fH+cW
+ 02Qw==
+X-Gm-Message-State: AOJu0YyWHn4tAdmTzO2cJq91U2ldlAvyDILbgh/y/fLr9N6EpajlDUaT
+ Ug2HXMZxIT/HtZknHsKUEmfzQx/I1bRw41NmQGirpxjrqvA2WjUgWlps3kPp1L7P9kCfwJqOZcQ
+ VLfScA1A=
+X-Gm-Gg: AeBDievzDzNiA+k1zyRnHpIPGI7TCkNyCN6VzOPWi4lluW5FjjKBiocYi4A0zMMvTpo
+ Pk5k2hVXkqlhpN3LEJCgUtkZdxTWqZzegHW6GF8de3zFHQuwAACpr3xeeNl1dPoM1AxHotZwawN
+ 5XXm39mRqjxlFRCFhR0wuIVVI3uwAcqSCI9vzmncnap4KPN5R+NGczFEU04VOFO2/pVmxRJ5Tar
+ AA8PvIS0FSetpVY76KErUTNW1vKIWX3xJXQkChmky7/o7C2CopadMsVlaFbaxDBUxBinDvhSeLm
+ c+b0/nw/n3tO7yU4sNPbzcGxTPmL5PAkPiCvnuJwLQ0RMh1G/NUbgjyVFWqvAg+g7ov8L9XdjdO
+ z20sjY/IxSsOo2qonAtjYlAHDgiVBCmFv6SpkocLCVVQWVFFcl32uzO8T+clYNUrsEueVBavx/E
+ CV61dofZbbhsb9KmCwuwIuIE27ZPSZ1Fd3lwX/ucrj
+X-Received: by 2002:a17:902:cf12:b0:2b4:460e:6fa8 with SMTP id
+ d9443c01a7336-2b5f9f61d45mr158091645ad.34.1776748465172; 
+ Mon, 20 Apr 2026 22:14:25 -0700 (PDT)
 Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.14.39
+ d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.14.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Apr 2026 22:14:41 -0700 (PDT)
+ Mon, 20 Apr 2026 22:14:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 21/37] target/arm: Split vector-type.h from cpu.h
-Date: Tue, 21 Apr 2026 15:13:30 +1000
-Message-ID: <20260421051346.41106-22-richard.henderson@linaro.org>
+Subject: [PATCH 14/37] target/arm: Enable FEAT_FPMR for -cpu max
+Date: Tue, 21 Apr 2026 15:13:23 +1000
+Message-ID: <20260421051346.41106-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260421051346.41106-1-richard.henderson@linaro.org>
 References: <20260421051346.41106-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,122 +99,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We want to be able to reference ARMVectorType etc from
-common code, so move it out of cpu.h.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h         | 38 +---------------------------------
- target/arm/vector-type.h | 44 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+), 37 deletions(-)
- create mode 100644 target/arm/vector-type.h
+ target/arm/tcg/cpu64.c        | 4 ++++
+ docs/system/arm/emulation.rst | 1 +
+ 2 files changed, 5 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e78bc1737d..c0c13d37b9 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -35,6 +35,7 @@
- #include "target/arm/gtimer.h"
- #include "target/arm/cpu-sysregs.h"
- #include "target/arm/mmuidx.h"
-+#include "target/arm/vector-type.h"
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 343536523a..40ed799fb8 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1287,6 +1287,10 @@ void aarch64_max_tcg_initfn(Object *obj)
+     t = FIELD_DP64(t, ID_AA64PFR1, GCS, 1);       /* FEAT_GCS */
+     SET_IDREG(isar, ID_AA64PFR1, t);
  
- #define EXCP_UDEF            1   /* undefined instruction */
- #define EXCP_SWI             2   /* software interrupt */
-@@ -140,43 +141,6 @@ typedef struct ARMGenericTimer {
-     uint64_t ctl; /* Timer Control register */
- } ARMGenericTimer;
- 
--/* Define a maximum sized vector register.
-- * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
-- * For 64-bit, this is a 2048-bit SVE register.
-- *
-- * Note that the mapping between S, D, and Q views of the register bank
-- * differs between AArch64 and AArch32.
-- * In AArch32:
-- *  Qn = regs[n].d[1]:regs[n].d[0]
-- *  Dn = regs[n / 2].d[n & 1]
-- *  Sn = regs[n / 4].d[n % 4 / 2],
-- *       bits 31..0 for even n, and bits 63..32 for odd n
-- *       (and regs[16] to regs[31] are inaccessible)
-- * In AArch64:
-- *  Zn = regs[n].d[*]
-- *  Qn = regs[n].d[1]:regs[n].d[0]
-- *  Dn = regs[n].d[0]
-- *  Sn = regs[n].d[0] bits 31..0
-- *  Hn = regs[n].d[0] bits 15..0
-- *
-- * This corresponds to the architecturally defined mapping between
-- * the two execution states, and means we do not need to explicitly
-- * map these registers when changing states.
-- *
-- * Align the data for use with TCG host vector operations.
-- */
--
--#define ARM_MAX_VQ    16
--
--typedef struct ARMVectorReg {
--    uint64_t d[2 * ARM_MAX_VQ] QEMU_ALIGNED(16);
--} ARMVectorReg;
--
--/* In AArch32 mode, predicate registers do not exist at all.  */
--typedef struct ARMPredicateReg {
--    uint64_t p[DIV_ROUND_UP(2 * ARM_MAX_VQ, 8)] QEMU_ALIGNED(16);
--} ARMPredicateReg;
--
- /* In AArch32 mode, PAC keys do not exist at all.  */
- typedef struct ARMPACKey {
-     uint64_t lo, hi;
-diff --git a/target/arm/vector-type.h b/target/arm/vector-type.h
-new file mode 100644
-index 0000000000..d94c0d986e
---- /dev/null
-+++ b/target/arm/vector-type.h
-@@ -0,0 +1,44 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
++    t = GET_IDREG(isar, ID_AA64PFR2);
++    t = FIELD_DP64(t, ID_AA64PFR2, FPMR, 1);      /* FEAT_FPMR */
++    SET_IDREG(isar, ID_AA64PFR2, t);
 +
-+#ifndef TARGET_ARM_VECTOR_TYPE_H
-+#define TARGET_ARM_VECTOR_TYPE_H
-+
-+/*
-+ * Define a maximum sized vector register.
-+ * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
-+ * For 64-bit, this is a 2048-bit SVE register.
-+ *
-+ * Note that the mapping between S, D, and Q views of the register bank
-+ * differs between AArch64 and AArch32.
-+ * In AArch32:
-+ *  Qn = regs[n].d[1]:regs[n].d[0]
-+ *  Dn = regs[n / 2].d[n & 1]
-+ *  Sn = regs[n / 4].d[n % 4 / 2],
-+ *       bits 31..0 for even n, and bits 63..32 for odd n
-+ *       (and regs[16] to regs[31] are inaccessible)
-+ * In AArch64:
-+ *  Zn = regs[n].d[*]
-+ *  Qn = regs[n].d[1]:regs[n].d[0]
-+ *  Dn = regs[n].d[0]
-+ *  Sn = regs[n].d[0] bits 31..0
-+ *  Hn = regs[n].d[0] bits 15..0
-+ *
-+ * This corresponds to the architecturally defined mapping between
-+ * the two execution states, and means we do not need to explicitly
-+ * map these registers when changing states.
-+ *
-+ * Align the data for use with TCG host vector operations.
-+ */
-+
-+#define ARM_MAX_VQ    16
-+
-+typedef struct ARMVectorReg {
-+    uint64_t d[2 * ARM_MAX_VQ] QEMU_ALIGNED(16);
-+} ARMVectorReg;
-+
-+/* In AArch32 mode, predicate registers do not exist at all.  */
-+typedef struct ARMPredicateReg {
-+    uint64_t p[DIV_ROUND_UP(2 * ARM_MAX_VQ, 8)] QEMU_ALIGNED(16);
-+} ARMPredicateReg;
-+
-+#endif
+     t = GET_IDREG(isar, ID_AA64MMFR0);
+     t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
+     t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 579df4c47b..fda73d3d07 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -75,6 +75,7 @@ the following architecture extensions:
+ - FEAT_FPAC (Faulting on AUT* instructions)
+ - FEAT_FPACCOMBINE (Faulting on combined pointer authentication instructions)
+ - FEAT_FPACC_SPEC (Speculative behavior of combined pointer authentication instructions)
++- FEAT_FPMR (Floating-point mode register)
+ - FEAT_FRINTTS (Floating-point to integer instructions)
+ - FEAT_FlagM (Flag manipulation instructions v2)
+ - FEAT_FlagM2 (Enhancements to flag manipulation instructions)
 -- 
 2.43.0
 

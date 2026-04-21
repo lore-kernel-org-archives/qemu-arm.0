@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385C3EA7184
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FE3EA71A4
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:18:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3Rv-0008HD-MJ; Tue, 21 Apr 2026 01:15:03 -0400
+	id 1wF3Rx-0008Ia-61; Tue, 21 Apr 2026 01:15:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3RC-0007xg-UP
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:24 -0400
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1wF3RK-0007za-FF
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:32 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3R8-0006MS-V3
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:18 -0400
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-2b4583f0a1aso23519985ad.3
- for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:14:12 -0700 (PDT)
+ id 1wF3RI-0006S4-Rn
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:26 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2b24fcc2b5dso24160565ad.1
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:14:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776748451; x=1777353251; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776748463; x=1777353263; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bQOANj7Y0pZJUmBoHVkVj+8tE/9rp7PAWdZqpVIG7Nk=;
- b=xWB4/M8Bq8Gb++OvtcFL6scYmNGcLlw86xswLecFcI3rcvTvc96+dhHxoxdDQtrs5F
- 0XD/RgcXcYq4ezXB6BD5htkcLgZl7x2BYT09H4lBm8T64bEtzye7D27lraUoc/dv0rqH
- 62NFi8sAtE+5FcE1PYJJeByhwyn2U465FmJKPjf2KkHwglJQOnKn2gkacU8QN+sZXKuF
- q5eTWOXqHqngfs04LvpaR0WWRHojJneQBUeI8IrOHdai5AAnCQZk1Z+/PD5s1oH5SjTU
- 0sAAfelaV1uYclPqmYw8rNdKtvzFlH8zYcVHXNNUpfaEY9zNroPSyGoyT5a1BeSN8iNa
- B5Cw==
+ bh=Q/eF6UxrydbmzCRXNoWVc07UBJDv6wjeDkTY/rB2YuA=;
+ b=S0O5fUqfJZc0h1mUXKbWRdu3BT9gOHU2T9Ya41lnyB+twSinZNNx310O6ysDF8LWat
+ r+uDvNjHTqXmZSrx4CDi80/XZhYPsfets2x/k76QxI0K4S2aF5lsyOQVDlbHOFBwJX7p
+ 7xAnFTqWet0yUOHGAXbB3y5gFQTUms3o68fg4PUzfiVXcHTkRKY6fvNDVe0ES2Ngj8Sr
+ T+k97HXCgJIQKNzkA892kTUk2+fN8EKrDFGzefJMe3awNlMoTh/rqwZ6XxmTYcPE/cA8
+ sCUUslPLT5jrtxE7bt86V5HU1zGECOi71Z1GiEwcrpcJoXUhoI0hpOenWWIzdnt6XZ1J
+ ajXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776748451; x=1777353251;
+ d=1e100.net; s=20251104; t=1776748463; x=1777353263;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=bQOANj7Y0pZJUmBoHVkVj+8tE/9rp7PAWdZqpVIG7Nk=;
- b=Qmwt1iYbBklJgg7mBS/vdSu56ApGZ/OnODhmDYDH0QaOU2C9UD9AVeG2n0iN7wTTW/
- KKsBro+InPlJeSQk33cdzg3zpRz17fw7P9qe1VQlOX55lv5Kbuoq+RE+tMH747Y9KYYS
- TrIyLcJ+ognETGlFj4xWFE+jLn6xxW1ioI3xwJ0ris/Oltc9Nz7CxMyeb7+XNElnzyYd
- gdnZLPWZKjcNYq+RSp/6SwbnpLKVsR/ZYP6LEZIvb49RcpED/PsOSD/C/vadS09sGSVl
- qpx8bIHL/ADEvO/ePZj0VQoJtqNAEROODrwq9nEEVvLShsVUnYvn1z4I7qIWMfTdmN5C
- CvGA==
-X-Gm-Message-State: AOJu0YzAXP2YTj/qdh/h5QvSzas8J/Xgud5JnHxw2nqMkGVT/p68exg3
- kPYkDA1m7CKuz7H/PbhzDQmHSuKMBddGue+pyi39qb/JC4DzRQIl/6/xg3WJPumQ6es=
-X-Gm-Gg: AeBDieso8YpYpdu2E07O+cXdn1nNwSKOV2iv0C43hEsse1N3kv41yHuYRcQEoSgJxBh
- Z3W8iV6W/o5KHb2PZ4og4McUzNNWhVq2yhw9u6nUx81z7qyaxqiVwsiuBvOqcbaF93Dfdcfv5nl
- dXJzIfHyscScNZ2Y8T3TpR1QsBwfQKWJ/5FstFO5y+XYr1QwIkd+/o/wOQaMVP0uU3VPdNUorzm
- Thhs6Z594UdbIu6Qp39JFDieOcDYsZEqygUNoA0YTZa568e+Ij981UAKyY/hf+oUDEQouvpjNr1
- PUWYXWsR2Ofm6kZe/N/eRgJjTgkP/++ETwl9XrIgZ/1zgYgHQfv4kIPO7j/MX+XeRlDfCeF0bEh
- chMepD5T8EX+rQ/S+ljXg+Yg6sIVqkK3RQ3PDA1Ui8wdgTdSgMZFbWnQPQEDmjxLxDWCnJDCHNM
- CvluQNUEmn8UgDdJ+BEJ5mSe1hdLkc+dnj+sO9a5YX
-X-Received: by 2002:a17:902:988a:b0:2b4:689a:e420 with SMTP id
- d9443c01a7336-2b5f9e7a9c1mr113132555ad.8.1776748451153; 
- Mon, 20 Apr 2026 22:14:11 -0700 (PDT)
+ bh=Q/eF6UxrydbmzCRXNoWVc07UBJDv6wjeDkTY/rB2YuA=;
+ b=UHB3dk7yf6GuRF0bi4H4YnQaUnd+rBhF6wIAfndlednRx4KS1QbLxA2N4GXTWqQFxr
+ GHrmChi7kk+jlw1B5ng7hB1t2xuXpDPfzPY/XZ3LPVBx2EPSotl0/P4JZtKdR5xX1M+u
+ 258Ydrc8LNX/7SVNfj1yERCelZE0Fj7ffkj35omFLepgfNGudF56G0NaYJhXjaNwfy16
+ deP+hF0w5ATHlpykzT89r3FrgsdvLxTMSLLQUDqGOcD0QoR7HQ59z35Dor1vnOlvbIcc
+ FbY/uKZLJjsA74zjGoHdUOmP1Vz50Rp+AsgeoFe4BjBHwTUQaXRuDXboT6ReADIthUYU
+ auzQ==
+X-Gm-Message-State: AOJu0YxYZIym1YZUPp2wgY7drULkebnR15HWouBQJbv7MfDASg4OlHdj
+ dS4dpTQWN2l49nc5ELWsKoa1vW4gTkXhDaSvM6muW4xc2052bCViQWy9H0sLSR+iFKE=
+X-Gm-Gg: AeBDietOxqXS7m2i0vjU9kQEueIx0esS0cClc4PG1rrlB1VNqTtbh3cNUKtGlSLS77O
+ DmkcgO9wzI2GPtFlaF3jzedYUj3yZGuveK+nPX7Vpkugtvt2UGfT92sNZM1RjwWXG+QMsclkxw+
+ yzxXP4iklLazdzQsMrnZQ6xfd+zi4ocKQ976mVZpqa2t+nTW6jkNxThptafOnjjwJvcYGvuAJ9J
+ GEIoEMOO1SNmGPAYcbkC/5uBADGgCVVTKFjGvWiu2QbP0GRWDT6BzZUiJlbj0/ZdnkgCQVC1BZs
+ sUHGyXB3ENpWH1n+0JrhIoFj0tY2OpfBmFcl6h/aiUR6jsGsHXEMMp8+JQGZ29JdPfOkjxiY/gY
+ y4YHwO7jwpVCHMsdM6jZtRT5GxasukXLzxr5IQBWj1v2pszFLjA+7VHY9ixxgqIrJz+HZF2Day7
+ 0/EN7W0wSlSXFYPlOAojsTQ4QTJ3zyRJpIOTIQWfF2
+X-Received: by 2002:a17:902:aa98:b0:2b4:5cb8:99eb with SMTP id
+ d9443c01a7336-2b5f9f8808amr126443295ad.27.1776748462900; 
+ Mon, 20 Apr 2026 22:14:22 -0700 (PDT)
 Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.14.09
+ d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.14.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Apr 2026 22:14:10 -0700 (PDT)
+ Mon, 20 Apr 2026 22:14:22 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 08/37] target/arm: Introduce FPMR
-Date: Tue, 21 Apr 2026 15:13:17 +1000
-Message-ID: <20260421051346.41106-9-richard.henderson@linaro.org>
+Subject: [PATCH 13/37] target/arm: Trap direct acceses to FPMR
+Date: Tue, 21 Apr 2026 15:13:22 +1000
+Message-ID: <20260421051346.41106-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260421051346.41106-1-richard.henderson@linaro.org>
 References: <20260421051346.41106-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,154 +98,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce the special register FPMR and its fields.
-Migrate it when present.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpregs.h       |  5 +++++
- target/arm/cpu-features.h |  5 +++++
- target/arm/cpu.h          |  1 +
- target/arm/internals.h    |  9 +++++++++
- target/arm/helper.c       | 12 +++++++++++-
- target/arm/machine.c      | 20 ++++++++++++++++++++
- 6 files changed, 51 insertions(+), 1 deletion(-)
+ target/arm/tcg/translate-a64.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index f5ec7484c1..391c0e322b 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -149,6 +149,11 @@ enum {
-      * should not trap to EL2 when HCR_EL2.NV is set.
-      */
-     ARM_CP_NV_NO_TRAP            = 1 << 22,
-+    /*
-+     * Flag: Access check for this sysreg is constrained by the
-+     * ARM pseudocode function CheckFPMREnabled().
-+     */
-+    ARM_CP_FPMR                  = 1 << 23,
- };
- 
- /*
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 03631018d7..ddef6fbeb0 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1173,6 +1173,11 @@ static inline bool isar_feature_aa64_gcs(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64PFR1, GCS) != 0;
- }
- 
-+static inline bool isar_feature_aa64_fpmr(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64PFR2, FPMR) != 0;
-+}
-+
- static inline bool isar_feature_aa64_tgran4_lpa2(const ARMISARegisters *id)
- {
-     return FIELD_SEX64_IDREG(id, ID_AA64MMFR0, TGRAN4) >= 1;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 6ec3845edf..38deea01bc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -692,6 +692,7 @@ typedef struct CPUArchState {
-          */
-         uint64_t fpsr;
-         uint64_t fpcr;
-+        uint64_t fpmr;
- 
-         uint32_t xregs[16];
- 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index b0f6bfa62c..944adc14e7 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -286,6 +286,15 @@ FIELD(CNTHCTL, EVNTIS, 17, 1)
- FIELD(CNTHCTL, CNTVMASK, 18, 1)
- FIELD(CNTHCTL, CNTPMASK, 19, 1)
- 
-+FIELD(FPMR, F8S1, 0, 3)
-+FIELD(FPMR, F8S2, 3, 3)
-+FIELD(FPMR, F8D, 6, 3)
-+FIELD(FPMR, OSM, 14, 1)
-+FIELD(FPMR, OSC, 15, 1)
-+FIELD(FPMR, LSCALE, 16, 7)
-+FIELD(FPMR, NSCALE, 24, 8)
-+FIELD(FPMR, LSCALE2, 32, 6)
-+
- /* We use a few fake FSR values for internal purposes in M profile.
-  * M profile cores don't have A/R format FSRs, but currently our
-  * get_phys_addr() code assumes A/R profile and reports failures via
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 08285b69a7..1a0673a343 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6286,6 +6286,14 @@ static const ARMCPRegInfo aie_reginfo[] = {
-       .type = ARM_CP_CONST, .resetvalue = 0 },
- };
- 
-+static const ARMCPRegInfo fpmr_reginfo[] = {
-+    { .name = "FPMR", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 4, .crm = 4, .opc2 = 2,
-+      .access = PL0_RW, .type = ARM_CP_FPU | ARM_CP_FPMR,
-+      .fieldoffset = offsetof(CPUARMState, vfp.fpmr),
-+    }
-+};
-+
- void register_cp_regs_for_features(ARMCPU *cpu)
- {
-     /* Register all the coprocessor registers based on feature bits */
-@@ -7535,10 +7543,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             define_arm_cp_regs(cpu, mec_mte_reginfo);
-         }
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index ef6038e98b..d132e051ca 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -2898,6 +2898,10 @@ static void handle_sys(DisasContext *s, bool isread,
      }
--
-     if (cpu_isar_feature(aa64_aie, cpu)) {
-         define_arm_cp_regs(cpu, aie_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_fpmr, cpu)) {
-+        define_arm_cp_regs(cpu, fpmr_reginfo);
-+    }
  
-     if (cpu_isar_feature(any_predinv, cpu)) {
-         define_arm_cp_regs(cpu, predinv_reginfo);
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index b0e499515c..11e973e504 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -960,6 +960,25 @@ static const VMStateDescription vmstate_syndrome64 = {
-     },
- };
- 
-+static bool fpmr_needed(void *opaque)
-+{
-+    ARMCPU *cpu = opaque;
-+
-+    return arm_feature(&cpu->env, ARM_FEATURE_AARCH64)
-+           && cpu_isar_feature(aa64_fpmr, cpu);
-+}
-+
-+static const VMStateDescription vmstate_fpmr = {
-+    .name = "cpu/fpmr",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = fpmr_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT64(env.vfp.fpmr, ARMCPU),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
- static int cpu_pre_save(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-@@ -1310,6 +1329,7 @@ const VMStateDescription vmstate_arm_cpu = {
-         &vmstate_syndrome64,
-         &vmstate_pstate64,
-         &vmstate_event,
-+        &vmstate_fpmr,
-         NULL
-     }
- };
+     if (!skip_fp_access_checks) {
++        if ((ri->type & ARM_CP_FPMR) && s->fpmr_el != 0) {
++            gen_exception_insn_el(s, 0, EXCP_UDEF, syndrome, s->fpmr_el);
++            return;
++        }
+         if ((ri->type & ARM_CP_FPU) && !fp_access_check_only(s)) {
+             return;
+         } else if ((ri->type & ARM_CP_SVE) && !sve_access_check(s)) {
 -- 
 2.43.0
 

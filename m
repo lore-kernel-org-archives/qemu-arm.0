@@ -4,94 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E9B3F94CA9
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 19:57:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95A9FF94CB2
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 20:58:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFHEA-0003KR-Mc; Tue, 21 Apr 2026 15:57:47 -0400
+	id 1wFIAT-0005RA-Hg; Tue, 21 Apr 2026 16:58:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wFDzk-0000hx-JO
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 12:30:43 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alexander.hansen@9elements.com>)
- id 1wFDzf-0006Cb-Cf
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 12:30:38 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-488af9fdaa7so28277985e9.1
- for <qemu-arm@nongnu.org>; Tue, 21 Apr 2026 09:30:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=9elements.com; s=google; t=1776789032; x=1777393832; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=rmD2fr0C+xT0QHazo3thP4YK4UFM87wkWrT1l4l5dvM=;
- b=SHIJ5I0H8QKYMhE+3YCG4VzPO/C889PcnaUQDCThB+qr4x9xfArnXIEqiAYOd1DlLf
- +orZV8IlgHLtcc5SL++ehgGfyZ6FecvxV8ltNhVITOLHQl+3fTFO36HCLFCCIDOevZLF
- LhQk4lqZxPZTO+R2kd5PEFHdv+DFo4szoDwCRnfdrAo73eGQGwqZj6x4x/MWt0B+y64Q
- d32zytPmjYJZPMF1xqYPvrie0DAcNTVhKb3g4dQqaMa4aSuADqDLJs8UYU4wsosf5HLo
- sFaLkKH1C+M+wR2sv24MgvC2AqjgSD3ibMqKKhfn+2290gXRLEVfDrzDrLEUbCr/z3DZ
- 2zdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776789032; x=1777393832;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rmD2fr0C+xT0QHazo3thP4YK4UFM87wkWrT1l4l5dvM=;
- b=mUYnHyB4fcS9mqTqQfBih5Q+L9R2//D6hMoc+OygBmfodU6b4dED0315BeyiFhgH7o
- JoqvIIrFeLc1vSJBZak54LjrwGd3jv2h1u9ZCBQ8CXn3ATzUoTkXF7aPW4NkrPN1iogG
- stYas0Ybc5yp5ngU+wAN2qtg2XTr66O+SzhihsVjRWkEKdMRfs+MXFQBbpFwEitC85zs
- 5LUFnLyOdnn6enic8oAkBmTuXW7WOpdkQkkJGzcqjFC+rYm0ObAOsJYWHwITsPJ8EJBq
- qfUzxWply7PM2L9C1mJnbXgmbFZAf4+CWYSDEpEnFbpXgbhfAy2RiZnJOTKXLcR8TA3z
- o/Zw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9yoNy4Gnv1t7bX8usPCQD0KWX6q0NdsIc2jd1RJp8fkvchT/zH7pJmDHIqvzWTuML5w0UfqslU+w==@nongnu.org
-X-Gm-Message-State: AOJu0YzMFKDj0mLV5ULEr1CDnh+yaJY84QlkMB4/pmVkxPe7OhFSJGZ4
- x8SrNtGRPcN9mVx8jZJK6Wn0aX+Q39AIuWAJf/ys3RU64ynD4CldYoztxV9rR2IBPqg=
-X-Gm-Gg: AeBDievU5VRhry9jsXEJapUKhDOhmnFLdLuMYvem04Ab8WbBvjjLk0g9P8GE/K37oZV
- iEqRn3aycwXZKjtH38zVyPsMfRxebpOtMhyOs9qcKRwMSy+OI0kIBovvKrBgYSQ+KLnWMox25JH
- 1xQRVIG4Jf2weJEaofmX9x3za8kDV6SKtVqDwvMdWsBG3oeGpG4Mf5Bw5eNRMDhy3SZN4fz2H9/
- RROx+5fn9mGeeW0+t0fwKdYGQTenDTYYxqK24/pYlXM2AysRM5aiuzqv/pT2cKj+vVNknXQ4/jj
- XDZRrmuET/JmGLc5oQVEdVqLcrI1Oukvsffw/JOGzouNb8u4wUllDhE3ImxFcp6g1XN1bK6Fiuj
- x4VfN4zTgEpG7/bc5DqBcG3h/7vFUHOnwTKjHscH2dZaoGiV03EuhGbleQa97AEJrDOOag2SBve
- gAzYVYSFmw1cyYYKlXQ1t7rciix96dbe/+CeZGB246oBzuA2tS7AH70y3OCJgqLXywhJRO5tG4u
- c1DR6dxJlUOUqtVPCHYz9oZyob4Eg==
-X-Received: by 2002:a05:600c:8587:b0:488:a797:f0ac with SMTP id
- 5b1f17b1804b1-488fb7880bdmr187107035e9.28.1776789032129; 
- Tue, 21 Apr 2026 09:30:32 -0700 (PDT)
-Received: from alexanderarchlinux
- (ip-078-094-000-050.um19.pools.vodafone-ip.de. [78.94.0.50])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e3a7b4sm36179057f8f.22.2026.04.21.09.30.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 21 Apr 2026 09:30:31 -0700 (PDT)
-From: Alexander Hansen <alexander.hansen@9elements.com>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFIAS-0005Qp-Bq
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 16:58:00 -0400
+Received: from ci-2006b-snip4-11.eps.apple.com ([57.103.90.151]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFIAQ-0004KB-CF
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 16:58:00 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-10-percent-1 (Postfix) with ESMTPS id
+ 75F6B1804007; Tue, 21 Apr 2026 20:57:54 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRAEwVSB11NVg1HD1geXBQXG1pDXgheH0wcHQ5YBhIATQoONgZZBV4JVgNDBTYSFF1FRgNHGVcUUBtHDFUHV15fChMAXg8PTAtIAVsHXwBBC0gGWgNSHEUMSAVdGlofHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1776805077; x=1779397077;
+ bh=AA2GyBDfQU9JiPZHjI7BgDdjKn1yOhmHMSXqZ30JiyU=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=bd0Gv01MnA+mBVjyZPqLi2pzfoqY37xR2k1AW/Q8ImbgO0XxPxD0xkRlbzq42PLKvbDb6eubgk6zCCbXyMRuA+wLyl3dwbYGplJI76L0F1TvQ0GC+RG5SKhmRbwRw1+4w6A1eBQA4WHutVJArrFLtgrG94PGS/mR2JQivWovJ8ICYXJ2rV6KTV19UnKH/sm6fCjnDN4Y0j40Cu+DTIBwFfO94lptWC29u00t7mzyyN3tlsxBuX1GUXZFLL+lRy430zQxpG7bwQGfaDbyza4bDAMqjQcKv5Ls2xzmAEa1QoimKYn3Pb5a1toCaXmU81NcHUhC1uJXJPlyXXPqoLMiMw==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-10-percent-1 (Postfix) with ESMTPSA id
+ 7F0501802247; Tue, 21 Apr 2026 20:57:52 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
-Cc: Alexander Hansen <alexander.hansen@9elements.com>,
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org
-Subject: [PATCH] hw/sensor: MAX31790 support
-Date: Tue, 21 Apr 2026 18:28:56 +0200
-Message-ID: <20260421162856.298260-1-alexander.hansen@9elements.com>
-X-Mailer: git-send-email 2.53.0
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2] whpx: i386, arm: do partition reset on boot CPU reset
+Date: Tue, 21 Apr 2026 22:57:49 +0200
+Message-ID: <20260421205749.55060-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=alexander.hansen@9elements.com; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-GUID: 7rGu11PmTAcn8WgmtzLL17amlyXhdUIa
+X-Authority-Info-Out: v=2.4 cv=e7MLiKp/ c=1 sm=1 tr=0 ts=69e7e4d3
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=KtJ61neEzk59qg8Kb1kA:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIxMDIwOCBTYWx0ZWRfX8qfa+kPDyCtz
+ tFjPIQLWlQTaBkL7bFxNKSfIwzGt0vmcQZsJBs6bIriGLplldrluF5FO086rIqxt8oNA+16iyK+
+ SynUlDJMS3mQrLySyKg6yddmgQWGaSwDtmAwKa2353+Tt1lqnvvXLoX9FWj/w7diHRrMP6Bmf+k
+ yG7ZNVeTs6dpBYqGwG2ky/OMrdqRzVbz2CxnyC8OyV4wMS02zjhSrtnP0IUWWZyqEUPK2ywab+Y
+ HdYAjfoJWXycwXBTok4+179ZdkjCojt5m4PX8N6DN9pkt9o3tx1du6/USgQc+025t1W4mEDPB9i
+ vAVu+DtGxCLJQzzM3PZdBLX8HqialoyV7ClS7BhiXJk0vIXgI6opLA4EiR17Y0=
+X-Proofpoint-ORIG-GUID: 7rGu11PmTAcn8WgmtzLL17amlyXhdUIa
+Received-SPF: pass client-ip=57.103.90.151;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 21 Apr 2026 15:57:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,657 +84,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Product: [1]
-Datasheet: [2]
+WHvResetPartition resets partition state, and is not supported on Windows 10.
 
-MAX31790 Support:
-- fan inputs are reading
-- tach reading propertional to pwm setting from linux driver
-- fans do not show any fault
-- 6 PWM registers influence 6 TACH registers
+On Arm, it's supposed to be used for reboots. The prior location of the
+WHvResetPartition call wasn't right, as other vCPUs might still have
+been running, causing the call to fail.
 
-There is intentional stub behavior in some places and various functions
-of the device are currently unsupported.
-
-MAX31790 currently unsupported:
-- slave address restriction
-- fan dynamics
-- spin-up configuration
-- fault state / failure possibility
-- rate-of-change control
-- tach mode
-- mixed layouts where number of fans != number of tachs
-- see Figure 5.9 in [2] for example of mixed layout
-
-Anyone could expand it in the future for more accurate emulation.
-
-Tested: on yosemite 4 qemu
-
-```
-root@yosemite4:~# ls /sys/class/hwmon/hwmon2/
-device	    fan2_fault   fan3_target  fan5_fault   fan6_target  pwm2	     pwm5
-fan1_enable  fan2_input   fan4_enable  fan5_input   name	pwm2_enable  pwm5_enable
-fan1_fault   fan2_target  fan4_fault   fan5_target  of_node	pwm3	     pwm6
-fan1_input   fan3_enable  fan4_input   fan6_enable  power	pwm3_enable  pwm6_enable
-fan1_target  fan3_fault   fan4_target  fan6_fault   pwm1	pwm4	     subsystem
-fan2_enable  fan3_input   fan5_enable  fan6_input   pwm1_enable  pwm4_enable  uevent
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_input
-4551
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_enable
-1
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_fault
-0
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_target
-2048
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/pwm1
-178
-root@yosemite4:~# cat /sys/class/hwmon/hwmon2/name
-max31790
-```
-
-Trace output:
-```
-max31790_realize i2c_addr: 0x20
-max31790_realize i2c_addr: 0x2f
-max31790_realize i2c_addr: 0x20
-max31790_realize i2c_addr: 0x2f
-max31790_event i2c_addr: 0x20, event: 0x01
-max31790_send i2c_addr: 0x20, data: 0x02
-max31790_event i2c_addr: 0x20, event: 0x00
-max31790_recv i2c_addr: 0x20, reg_addr: 0x02
-max31790_recv_return i2c_addr: 0x20, returns: 0x08
-...
-```
-
-References:
-[1] https://www.analog.com/en/products/MAX31790.html
-[2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf
-
-CC: Paolo Bonzini <pbonzini@redhat.com>
-CC: Peter Maydell <peter.maydell@linaro.org>
-CC: "Philippe Mathieu-Daudé" <philmd@linaro.org>
-CC: qemu-arm@nongnu.org
-CC: qemu-devel@nongnu.org
-Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- hw/arm/Kconfig               |   1 +
- hw/sensor/Kconfig            |   4 +
- hw/sensor/max31790.c         | 499 +++++++++++++++++++++++++++++++++++
- hw/sensor/meson.build        |   1 +
- hw/sensor/trace-events       |   8 +
- include/hw/sensor/max31790.h |   7 +
- 6 files changed, 520 insertions(+)
- create mode 100644 hw/sensor/max31790.c
- create mode 100644 include/hw/sensor/max31790.h
+ accel/accel-system.c       |  9 +++++++++
+ accel/whpx/whpx-common.c   | 13 +++++++++++++
+ include/accel/accel-ops.h  |  1 +
+ include/qemu/accel.h       |  3 +++
+ system/runstate.c          |  5 +++++
+ target/arm/whpx/whpx-all.c |  2 --
+ 6 files changed, 31 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 4e50fb1111..c2483e4c63 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -552,6 +552,7 @@ config ASPEED_SOC
-     select LED
-     select PMBUS
-     select MAX31785
-+    select MAX31790
-     select FSI_APB2OPB_ASPEED
-     select AT24C
-     select PCI_EXPRESS
-diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
-index bc6331b4ab..ece2f2b167 100644
---- a/hw/sensor/Kconfig
-+++ b/hw/sensor/Kconfig
-@@ -43,3 +43,7 @@ config ISL_PMBUS_VR
- config MAX31785
-     bool
-     depends on PMBUS
+diff --git a/accel/accel-system.c b/accel/accel-system.c
+index 150af05bf5..5352ccd937 100644
+--- a/accel/accel-system.c
++++ b/accel/accel-system.c
+@@ -75,6 +75,15 @@ void accel_pre_resume(MachineState *ms, bool step_pending)
+     }
+ }
+ 
++void accel_reset(MachineState *ms)
++{
++    AccelState *accel = ms->accelerator;
++    AccelClass *acc = ACCEL_GET_CLASS(accel);
++    if (acc->reset_vm) {
++        acc->reset_vm(accel);
++    }
++}
 +
-+config MAX31790
-+    bool
-+    depends on PMBUS
-diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c
-new file mode 100644
-index 0000000000..ec6bb394f4
---- /dev/null
-+++ b/hw/sensor/max31790.c
-@@ -0,0 +1,499 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
+ /* initialize the arch-independent accel operation interfaces */
+ void accel_init_ops_interfaces(AccelClass *ac)
+ {
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index 6fe44d5910..1f7b7d764d 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -205,6 +205,18 @@ static void do_whpx_cpu_synchronize_pre_loadvm(CPUState *cpu,
+     cpu->vcpu_dirty = true;
+ }
+ 
 +/*
-+ * Maxim MAX31790 PMBus 6-Channel Fan Controller
-+ *
-+ * Datasheet:
-+ * https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf
-+ *
-+ * Copyright(c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
++ * Partition support
 + */
 +
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qapi/visitor.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "trace.h"
-+#include "hw/sensor/max31790.h"
-+
-+#define MAX31790_NUM_FANS 6
-+#define MAX31790_NUM_TACHS 12
-+
-+#define MAX31790_REG_GLOBAL_CONFIG 0x00
-+#define MAX31790_REG_PWM_FREQ 0x01
-+
-+/* 0x02 to 0x07: N = 0 .. 5 */
-+#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)
-+
-+/* 0x08 to 0x0d: N = 0 .. 5 */
-+#define MAX31790_REG_FAN_DYNAMICS(N) (0x08 + N)
-+
-+#define MAX31790_REG_FAN_FAULT_STATUS_2 0x10
-+#define MAX31790_REG_FAN_FAULT_STATUS_1 0x11
-+#define MAX31790_REG_FAN_FAULT_MASK_2 0x12
-+#define MAX31790_REG_FAN_FAULT_MASK_1 0x13
-+#define MAX31790_REG_FAILED_FAN_OPT 0x14
-+
-+/* 0x18 to 0x2f: N = 0 .. 11 */
-+#define MAX31790_REG_TACH_COUNT_MSB(N) (0x18 + 2 * N)
-+#define MAX31790_REG_TACH_COUNT_LSB(N) (0x19 + 2 * N)
-+
-+/* 0x30 to 0x3b: N = 0 .. 5 */
-+#define MAX31790_REG_PWM_DUTY_CYCLE_MSB(N) (0x30 + 2 * N)
-+#define MAX31790_REG_PWM_DUTY_CYCLE_LSB(N) (0x31 + 2 * N)
-+
-+/* .. reserved registers ... */
-+
-+/* 0x40 to 0x4b: N = 0 .. 5 */
-+#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(N) (0x40 + 2 * N)
-+#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(N) (0x41 + 2 * N)
-+
-+/* ... 'User Byte' registers ... */
-+
-+/* 0x50 to 0x5b: N = 0 .. 5 */
-+#define MAX31790_REG_TACH_TARGET_COUNT_MSB(N) (0x50 + 2 * N)
-+#define MAX31790_REG_TACH_TARGET_COUNT_LSB(N) (0x51 + 2 * N)
-+
-+struct MAX31790State {
-+    I2CSlave i2c;
-+
-+    uint8_t fan_config[MAX31790_NUM_FANS];
-+    uint8_t fan_dynamics[MAX31790_NUM_FANS];
-+
-+    uint16_t pwm[MAX31790_NUM_FANS];
-+    uint16_t tach_target[MAX31790_NUM_FANS];
-+    uint16_t rpm[MAX31790_NUM_TACHS];
-+
-+    /* command buffer */
-+    uint8_t len;
-+    uint8_t buf[2];
-+
-+    /* output buffer */
-+    uint8_t outlen;
-+    uint8_t outbuf[2];
-+
-+    /* selected register for read/write operation */
-+    uint8_t pointer;
-+};
-+
-+struct MAX31790Class {
-+    I2CSlaveClass parent_class;
-+};
-+
-+OBJECT_DECLARE_TYPE(MAX31790State, MAX31790Class, MAX31790)
-+
-+static void max31790_read(MAX31790State *s)
++static void whpx_partition_reset(AccelState* as)
 +{
-+    size_t index = 0;
-+    uint8_t out0 = 0;
-+    uint8_t out1 = 0;
-+
-+    switch (s->pointer) {
-+    case MAX31790_REG_FAN_CONFIG(0):
-+    case MAX31790_REG_FAN_CONFIG(1):
-+    case MAX31790_REG_FAN_CONFIG(2):
-+    case MAX31790_REG_FAN_CONFIG(3):
-+    case MAX31790_REG_FAN_CONFIG(4):
-+    case MAX31790_REG_FAN_CONFIG(5):
-+        out0 = s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)];
-+        break;
-+    case MAX31790_REG_FAN_DYNAMICS(0):
-+    case MAX31790_REG_FAN_DYNAMICS(1):
-+    case MAX31790_REG_FAN_DYNAMICS(2):
-+    case MAX31790_REG_FAN_DYNAMICS(3):
-+    case MAX31790_REG_FAN_DYNAMICS(4):
-+    case MAX31790_REG_FAN_DYNAMICS(5):
-+        out0 = s->fan_dynamics[s->pointer - MAX31790_REG_FAN_DYNAMICS(0)];
-+        break;
-+    case MAX31790_REG_FAN_FAULT_STATUS_1:
-+    case MAX31790_REG_FAN_FAULT_STATUS_2:
-+        /* we do not have any fan fault */
-+        out0 = 0x00;
-+        out1 = 0x00;
-+        break;
-+    case MAX31790_REG_TACH_COUNT_MSB(0):
-+    case MAX31790_REG_TACH_COUNT_MSB(1):
-+    case MAX31790_REG_TACH_COUNT_MSB(2):
-+    case MAX31790_REG_TACH_COUNT_MSB(3):
-+    case MAX31790_REG_TACH_COUNT_MSB(4):
-+    case MAX31790_REG_TACH_COUNT_MSB(5):
-+    case MAX31790_REG_TACH_COUNT_MSB(6):
-+    case MAX31790_REG_TACH_COUNT_MSB(7):
-+    case MAX31790_REG_TACH_COUNT_MSB(8):
-+    case MAX31790_REG_TACH_COUNT_MSB(9):
-+    case MAX31790_REG_TACH_COUNT_MSB(10):
-+    case MAX31790_REG_TACH_COUNT_MSB(11):
-+        index = (s->pointer - MAX31790_REG_TACH_COUNT_MSB(0)) / 2;
-+        out0 = (s->rpm[index] >> 8) & 0xff;
-+        out1 = s->rpm[index] & 0xff;
-+        break;
-+
-+    case MAX31790_REG_TACH_COUNT_LSB(0):
-+    case MAX31790_REG_TACH_COUNT_LSB(1):
-+    case MAX31790_REG_TACH_COUNT_LSB(2):
-+    case MAX31790_REG_TACH_COUNT_LSB(3):
-+    case MAX31790_REG_TACH_COUNT_LSB(4):
-+    case MAX31790_REG_TACH_COUNT_LSB(5):
-+    case MAX31790_REG_TACH_COUNT_LSB(6):
-+    case MAX31790_REG_TACH_COUNT_LSB(7):
-+    case MAX31790_REG_TACH_COUNT_LSB(8):
-+    case MAX31790_REG_TACH_COUNT_LSB(9):
-+    case MAX31790_REG_TACH_COUNT_LSB(10):
-+    case MAX31790_REG_TACH_COUNT_LSB(11):
-+        index = (s->pointer - MAX31790_REG_TACH_COUNT_LSB(0)) / 2;
-+        out0 = s->rpm[index] & 0xff;
-+        break;
-+
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(0):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(1):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(2):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(3):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(4):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_MSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_MSB(0)) / 2;
-+        out0 = (s->pwm[index] >> 8) & 0xff;
-+        out1 = s->pwm[index] & 0xff;
-+        break;
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(0):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(1):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(2):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(3):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(4):
-+    case MAX31790_REG_PWM_DUTY_CYCLE_LSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_LSB(0)) / 2;
-+        out0 = s->pwm[index] & 0xff;
-+        break;
-+
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-+        out0 = (s->pwm[index] >> 8) & 0xff;
-+        out1 = s->pwm[index] & 0xff;
-+        break;
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
-+        out0 = s->pwm[index] & 0xff;
-+        break;
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-+        index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
-+        out0 = (s->tach_target[index] >> 8) & 0xff;
-+        out1 = s->tach_target[index] & 0xff;
-+        break;
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-+        index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0)) / 2;
-+        out0 = s->tach_target[index] & 0xff;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: read of register %d", __func__,
-+            s->pointer);
-+        break;
-+    }
-+
-+    s->outbuf[0] = out0;
-+    s->outbuf[1] = out1;
-+}
-+
-+static void max31790_set_rpm(MAX31790State *s, size_t index, uint16_t rpm)
-+{
-+    /* datasheet: lowest 5 bits are 0 */
-+    s->rpm[index] = rpm & ~0b11111;
-+}
-+
-+static void max31790_pwm_write(MAX31790State *s, size_t index, uint16_t value)
-+{
-+    trace_max31790_pwm_write(s->i2c.address, index, value);
-+
-+    s->pwm[index] = value;
-+
-+    /* change rpm based on pwm input */
-+    const uint16_t pwm_no_reserve = s->pwm[index] >> 7;
-+
-+    /*
-+     * This formula has magic values which model the relationship
-+     * of PWM input to a fan. Not derived from datasheet.
-+     */
-+    max31790_set_rpm(s, index, 0x1000 + (pwm_no_reserve << 3));
-+}
-+
-+static void max31790_write_2_byte(MAX31790State *s)
-+{
-+    size_t index = 0;
-+    const uint8_t value0 = s->buf[0];
-+    const uint8_t value1 = s->buf[1];
-+    switch (s->pointer) {
-+    case MAX31790_REG_FAN_CONFIG(0):
-+    case MAX31790_REG_FAN_CONFIG(1):
-+    case MAX31790_REG_FAN_CONFIG(2):
-+    case MAX31790_REG_FAN_CONFIG(3):
-+    case MAX31790_REG_FAN_CONFIG(4):
-+    case MAX31790_REG_FAN_CONFIG(5):
-+        break; /* handled by one byte write */
-+    case MAX31790_REG_FAN_DYNAMICS(0):
-+    case MAX31790_REG_FAN_DYNAMICS(1):
-+    case MAX31790_REG_FAN_DYNAMICS(2):
-+    case MAX31790_REG_FAN_DYNAMICS(3):
-+    case MAX31790_REG_FAN_DYNAMICS(4):
-+    case MAX31790_REG_FAN_DYNAMICS(5):
-+        break; /* handled by one byte write */
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-+        max31790_pwm_write(s, index, value0 << 8 | value1);
-+        break;
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-+        index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
-+        s->tach_target[index] = (value0 << 8) | value1;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: write to register %d", __func__,
-+                s->pointer);
-+        break;
++    struct whpx_state *whpx = &whpx_global;
++    if (whp_dispatch.WHvResetPartition) {
++        whp_dispatch.WHvResetPartition(whpx->partition);
 +    }
 +}
 +
-+static void max31790_write_1_byte(MAX31790State *s)
-+{
+ /*
+  * CPU support.
+  */
+@@ -622,6 +634,7 @@ static void whpx_accel_class_init(ObjectClass *oc, const void *data)
+     ac->name = "WHPX";
+     ac->init_machine = whpx_accel_init;
+     ac->pre_resume_vm = whpx_pre_resume_vm;
++    ac->reset_vm = whpx_partition_reset;
+     ac->allowed = &whpx_allowed;
+ 
+     object_class_property_add(oc, "kernel-irqchip", "on|off|split",
+diff --git a/include/accel/accel-ops.h b/include/accel/accel-ops.h
+index f46492e3fe..a1c9f3ae7b 100644
+--- a/include/accel/accel-ops.h
++++ b/include/accel/accel-ops.h
+@@ -33,6 +33,7 @@ struct AccelClass {
+     /* system related hooks */
+     void (*setup_post)(AccelState *as);
+     void (*pre_resume_vm)(AccelState *as, bool step_pending);
++    void (*reset_vm)(AccelState *as);
+     bool (*has_memory)(AccelState *accel, AddressSpace *as,
+                        hwaddr start_addr, hwaddr size);
+ 
+diff --git a/include/qemu/accel.h b/include/qemu/accel.h
+index d3638c7bfd..0e12aea7db 100644
+--- a/include/qemu/accel.h
++++ b/include/qemu/accel.h
+@@ -54,6 +54,9 @@ void accel_setup_post(MachineState *ms);
+ 
+ void accel_pre_resume(MachineState *ms, bool step_pending);
+ 
++/* Reset accelerator state. */
++void accel_reset(MachineState *ms);
 +
-+    size_t index = 0;
-+    uint16_t pwm = 0;
-+    const uint8_t value = s->buf[0];
-+    switch (s->pointer) {
-+    case MAX31790_REG_FAN_CONFIG(0):
-+    case MAX31790_REG_FAN_CONFIG(1):
-+    case MAX31790_REG_FAN_CONFIG(2):
-+    case MAX31790_REG_FAN_CONFIG(3):
-+    case MAX31790_REG_FAN_CONFIG(4):
-+    case MAX31790_REG_FAN_CONFIG(5):
-+        s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)] = value;
-+        break;
-+    case MAX31790_REG_FAN_DYNAMICS(0):
-+    case MAX31790_REG_FAN_DYNAMICS(1):
-+    case MAX31790_REG_FAN_DYNAMICS(2):
-+    case MAX31790_REG_FAN_DYNAMICS(3):
-+    case MAX31790_REG_FAN_DYNAMICS(4):
-+    case MAX31790_REG_FAN_DYNAMICS(5):
-+        s->fan_dynamics[s->pointer - MAX31790_REG_FAN_DYNAMICS(0)] = value;
-+        break;
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
-+        pwm = (value << 8) | (s->pwm[index] & 0x00ff);
-+        max31790_pwm_write(s, index, pwm);
-+        break;
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
-+    case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
-+        index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
-+        pwm = (s->pwm[index] & 0xff00) | (value & 0x00ff);
-+        max31790_pwm_write(s, index, pwm);
-+        break;
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
-+    case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
-+        index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
-+        s->tach_target[index] =
-+            (s->tach_target[index] & 0x00ff) | (value << 8);
-+        break;
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
-+    case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
-+        index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0)) / 2;
-+        s->tach_target[index] = (s->tach_target[index] & 0xff00) | value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP, "%s: write to register %d", __func__,
-+            s->pointer);
-+        break;
-+    }
-+}
-+
-+static int max31790_send(I2CSlave *i2c, uint8_t data)
-+{
-+    MAX31790State *s = MAX31790(i2c);
-+
-+    trace_max31790_send(s->i2c.address, data);
-+
-+    if (s->len == 0) {
-+        /* first byte is the register pointer for a read / write operation */
-+        s->pointer = data;
-+        s->len++;
-+        return 0;
+ /**
+  * accel_cpu_instance_init:
+  * @cpu: The CPU that needs to do accel-specific object initializations.
+diff --git a/system/runstate.c b/system/runstate.c
+index 2d4e95a216..734e3c037c 100644
+--- a/system/runstate.c
++++ b/system/runstate.c
+@@ -564,6 +564,11 @@ void qemu_system_reset(ShutdownCause reason)
+         qapi_event_send_reset(shutdown_caused_by_guest(reason), reason);
+     }
+ 
++    if (current_machine) {
++        /* Tell the accelerator that the VM is being reset. */
++        accel_reset(current_machine);
 +    }
 +
-+    if (s->len > 2) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: write too many bytes", __func__);
-+        return 1; /* NAK */
-+    }
-+
-+    /* second / third byte is the data to write */
-+    s->buf[s->len - 1] = data;
-+    s->len++;
-+
-+    if (s->len == 2) {
-+        max31790_write_1_byte(s);
-+    } else if (s->len == 3) {
-+        max31790_write_2_byte(s);
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t max31790_recv(I2CSlave *i2c)
-+{
-+    MAX31790State *s = MAX31790(i2c);
-+    trace_max31790_recv(s->i2c.address, s->pointer);
-+
-+    max31790_read(s);
-+    s->len = 0;
-+
-+    if (s->outlen >= 2) {
-+        /* error */
-+        s->outlen = 0;
-+    }
-+
-+    const uint8_t data =  s->outbuf[s->outlen++];
-+
-+    trace_max31790_recv_return(s->i2c.address, data);
-+    return data;
-+}
-+
-+static int max31790_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    MAX31790State *s = MAX31790(i2c);
-+
-+    trace_max31790_event(s->i2c.address, event);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        s->outlen = 0;
-+        break;
-+    case I2C_START_SEND:
-+        s->len = 0;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_max31790 = {
-+    .name = TYPE_MAX31790,
-+    .version_id = 0,
-+    .minimum_version_id = 0,
-+    .fields = (const VMStateField[]){
-+        VMSTATE_UINT8(len, MAX31790State),
-+        VMSTATE_UINT8_ARRAY(fan_config, MAX31790State, MAX31790_NUM_FANS),
-+        VMSTATE_UINT8_ARRAY(fan_dynamics, MAX31790State, MAX31790_NUM_FANS),
-+        VMSTATE_UINT16_ARRAY(pwm, MAX31790State, MAX31790_NUM_FANS),
-+        VMSTATE_UINT16_ARRAY(tach_target, MAX31790State, MAX31790_NUM_FANS),
-+        VMSTATE_UINT16_ARRAY(rpm, MAX31790State, MAX31790_NUM_TACHS),
-+        VMSTATE_UINT8_ARRAY(buf, MAX31790State, 2),
-+        VMSTATE_UINT8(outlen, MAX31790State),
-+        VMSTATE_UINT8_ARRAY(outbuf, MAX31790State, 2),
-+        VMSTATE_UINT8(pointer, MAX31790State),
-+        VMSTATE_I2C_SLAVE(i2c, MAX31790State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void max31790_init(Object *obj)
-+{
-+    /* Nothing to do */
-+}
-+
-+static void max31790_realize(DeviceState *dev, Error **errp)
-+{
-+    MAX31790State *s = MAX31790(dev);
-+
-+    trace_max31790_realize(s->i2c.address);
-+
-+    for (int i = 0; i < MAX31790_NUM_FANS; i++) {
-+        /* POR-State 0b 0XX0 0000 */
-+        s->fan_config[i] = 0b00000000;
-+
-+        /* same as POR-State */
-+        s->tach_target[i] = 0b0011110000000000;
-+
-+        /* same as POR-State */
-+        s->fan_dynamics[i] = 0b01001100;
-+
-+        s->pwm[i] = 0;
-+    }
-+
-+    for (int i = 0; i < MAX31790_NUM_TACHS; i++) {
-+        max31790_set_rpm(s, i, 0x4444);
-+    }
-+}
-+
-+static void max31790_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    dc->realize = max31790_realize;
-+    dc->desc = "Maxim MAX31790 6-Channel Fan Controller";
-+    dc->vmsd = &vmstate_max31790;
-+    k->event = max31790_event;
-+    k->recv = max31790_recv;
-+    k->send = max31790_send;
-+}
-+
-+static const TypeInfo max31790_info = {
-+    .name = TYPE_MAX31790,
-+    .parent = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(MAX31790State),
-+    .class_size = sizeof(MAX31790Class),
-+    .instance_init = max31790_init,
-+    .class_init = max31790_class_init,
-+};
-+
-+static void max31790_register_types(void)
-+{
-+    type_register_static(&max31790_info);
-+}
-+
-+type_init(max31790_register_types)
-diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
-index 420fdc3359..4987c3b253 100644
---- a/hw/sensor/meson.build
-+++ b/hw/sensor/meson.build
-@@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
- system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
- system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
- system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
-+system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-index a3fe54fa6d..c15c0a7e93 100644
---- a/hw/sensor/trace-events
-+++ b/hw/sensor/trace-events
-@@ -4,3 +4,11 @@
- tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
- tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
- tmp105_write_shutdown(uint8_t dev) "device: 0x%02x"
-+
-+# max31790.c
-+max31790_send(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
-+max31790_recv(uint8_t i2c_addr, uint8_t reg_addr) "i2c_addr: 0x%02x, reg_addr: 0x%02x"
-+max31790_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns: 0x%02x"
-+max31790_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
-+max31790_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
-+max31790_pwm_write(uint8_t i2c_addr, size_t index, uint16_t value) "i2c_addr: 0x%02x, index: %zu, value: 0x%04x"
-diff --git a/include/hw/sensor/max31790.h b/include/hw/sensor/max31790.h
-new file mode 100644
-index 0000000000..7ead420926
---- /dev/null
-+++ b/include/hw/sensor/max31790.h
-@@ -0,0 +1,7 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+#ifndef QEMU_MAX31790_H
-+#define QEMU_MAX31790_H
-+
-+#define TYPE_MAX31790 "max31790"
-+
-+#endif
+     /*
+      * Some boards use the machine reset callback to point CPUs to the firmware
+      * entry point.  Assume that this is not the case for boards that support
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 4019a513aa..f345fea4fe 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -472,8 +472,6 @@ int whpx_vcpu_run(CPUState *cpu)
+             if (arm_cpu->power_state != PSCI_OFF) {
+                 whpx_psci_cpu_off(arm_cpu);
+             }
+-            /* Partition-wide reset, to reset state for reboots to succeed. */
+-            whp_dispatch.WHvResetPartition(whpx->partition);
+             bql_unlock();
+             break;
+         case WHvRunVpExitReasonNone:
 -- 
-2.53.0
+2.50.1 (Apple Git-155)
 
 

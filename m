@@ -4,71 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D610EEA71A4
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E214AEA71A4
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:18:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3SZ-0000P7-Se; Tue, 21 Apr 2026 01:15:43 -0400
+	id 1wF3Sd-0000Xg-C2; Tue, 21 Apr 2026 01:15:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3Re-00083b-6j
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:51 -0400
+ id 1wF3S1-0008LB-K2
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:15:09 -0400
 Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wF3RZ-0006YD-FC
- for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:14:45 -0400
+ id 1wF3Rz-0006tD-KZ
+ for qemu-arm@nongnu.org; Tue, 21 Apr 2026 01:15:09 -0400
 Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-c795f096fa5so1515922a12.3
- for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:14:40 -0700 (PDT)
+ 41be03b00d2f7-c76c60c7502so1751784a12.0
+ for <qemu-arm@nongnu.org>; Mon, 20 Apr 2026 22:15:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776748479; x=1777353279; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776748506; x=1777353306; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3n7fQN+iJBwqx2ETIvTw92Xcf+8pXw422MS+4i6nNsM=;
- b=AwG7b1PqEY5KAEXw7my+WFv9gnV1M8AYN8ewWiw6XBBOpxCnHVIhzJo/JexnqI94c3
- dmGEmoU3Kq5hbsxbToW1Ll3T/omlcJZlP771L0d443FzKl/ZJCKMW82StoF9oILm8rad
- s25B+iLZvXh0Evh6ETu8Ow/dx43fchO6JRogIIECReg/+V1Hr5lLLFFodeKqtMuJpuQZ
- n9Mo9Gr069ujiVofgksJfVkxMA8DTryE+y7Ciq5zXI5XTLrRPxKgIT4rnYwD1JS8FKTR
- TNSIudTmJkm/PU2YlsZEVZ2TNgWu9QzXtDqfXq8akodReMcXs229JUViYgEnKxLBzhHB
- OpTw==
+ bh=GJ1VXgG74f8s4Xmso5BQZxSExdCoj+QRYM7tqnseBPw=;
+ b=gt58P+9770apCT6Tnri7nWaMCjQfzgpdyZn6kPQpzCuh6cHnHfnNZepM7GSup0U6Q3
+ ZB9TASc35EbHgb46D2cmRZVo4GGxYXe2TX0fwiFo5nlvwv7xKQn9uoxrmyUY0K9P0CRD
+ 0mz6EgKr2hzpfpZyp4llUO/3ZMLsuTfsPeC3zQlCyhRdZn4vFjL8iPe1GpiS3uh946aj
+ 5YNjOuJI5iV27IoXh25Zu3kmCASEJcR6sO7pXNKeBNXCV5d7YN0BbUXN84de12LPCY8y
+ VBo7LoE8DuLud5ukI/PeQKGX0xXeDjmzlkkMZt1E+HfwOAzPF8eUPGlLecM9ezbEvUmZ
+ D+7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776748479; x=1777353279;
+ d=1e100.net; s=20251104; t=1776748506; x=1777353306;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=3n7fQN+iJBwqx2ETIvTw92Xcf+8pXw422MS+4i6nNsM=;
- b=U1L0JQ3jhYNwpwBUvOpRIGTvuOF2MY10zqtE07MM2PLTzZuBXr/AcI/aOB3yqWsjlp
- vDvH5CMThDFZiLLtP7FWin+gdvtReMYRyOIBlm+nnHje4s1k53erpoZyscSkpxudC6t3
- KZR3XyiQQ4bh2axhcwVoPqY3WTB6XXtBxerE3brzt4PO0BsjcOZfq9eUufUQpwgYrO3e
- jXSNwQqN7ehRn41nupbr5epaLlfMmNckbW5X+dHK418hK8v8exzN3i1tuiOhWfeub/6N
- nQXF6l9V4esawARQQX1ecn/mmNZXH+nYVYQQ5iYZFQ9bxPcOqOQ2SJuD/b+QmqTNGQvw
- pEbg==
-X-Gm-Message-State: AOJu0YxBzwS/Wghbgb2hxI4SaqGanCUzGseZxufN60npCsVdviRPcKCq
- YSbgFWgjnWza7mccECsKAiI1HXcoq/YZt/NPI4MJxjwx0fr65w3XwgKyhqQDzWpM4p0=
-X-Gm-Gg: AeBDievbYAqRvol9G8iIAI9YCPOBsZLlaJhHt4wWU5kjBd5f1frKyxM9Vh84jxGrRp0
- 7WkJEZDSD9sV5kFDepfRVbH1VDrsleoWx7JONTvOj/KN1p3orDMJAnirbcV4GqpE/0CXPlVdEa2
- 9QmanisLCzOh0sG1GbviF/26bMzY5EdmwR9gqve+jlUsEpEAkDZ4jZRKrTCXP8NUc7h6Rel3JXt
- 6aDIyKxzRBCZLxz+DpxE04Zb+2RWJZ+UtT5YhvamSje1TxvxV60s7T8G6TR37xE5tmRpqKRCqf5
- pdVqdmRSKVgoIinrMXnDO9vIw0RZPOJ6acripQR5aeocXe/j+YixA5mei30BByL3xu+FBv0WXa1
- gaby/H17gVuN01dfEgcuyDVt8gDGzHTaz5KU59WqZGwLvq7Fr085N4PwgA+adf9orybpbZLUeii
- +NsbtrJ8xQns9CqGhyPDHovchfXgRUZ2pckOtVdbi7
-X-Received: by 2002:a17:90a:d40d:b0:35b:e5ce:73bb with SMTP id
- 98e67ed59e1d1-361403d61d5mr16697701a91.1.1776748479388; 
- Mon, 20 Apr 2026 22:14:39 -0700 (PDT)
+ bh=GJ1VXgG74f8s4Xmso5BQZxSExdCoj+QRYM7tqnseBPw=;
+ b=Z20WtOiv2zVNQShS3etTHBOhsEXo3R9jtQllIZL0GxP86gSrEIfft3xiDs8J1NyJuE
+ f4Y0y+VFFuTy8WXHcOWfH7u51yHDrDO11f7IVm+3MyYajLoZHYvZRqihoqMXWjN7cdpp
+ RkaeCZbljJ70Y4SkTYyJMifQmJfyPVa+WIdtT2f7WA0IZlwXG4eSk+WqnUKWbsgoAtA5
+ qpuAumbrNweybl+7/8hT4YgEwdOXJ074cFpr/4/s34hdDoq32vUQ73B7AByYj1VaMXCJ
+ 9HZe+ULzAwsCPYnbfUxJZlnBbTXky/f2pVRs0QEThyQwshJfnQLRFdlMbsB8t2cvk9tn
+ dK8Q==
+X-Gm-Message-State: AOJu0YwOhfqdZyoZSzV33Kbr6FYtksJNr9A8MYuVHkk5zmSzt5QbSPMI
+ dUESvEJ34aYeCkkVJCFVtn5SP5X0fVe+N/+z6zDUBZ+kUvDgj9zqUhUobBEruXGBuOEhK42edtA
+ UJ1eHwko=
+X-Gm-Gg: AeBDieuAllhzeBJASqRdYinndniMieFZ0DQlrzKsJBDcC+8ebpUQUdRPHBhEsP2quZz
+ R4FIkMsilYy3X0OyYLqavJTLDLRlzJpq8sPe94BuV3jhTvsstBUSEP5x7mj0yhsS5QUi3kGPZpe
+ N6OvCW1G1Pd6XazAdIcUnu2U1+HF8fBQ5t/5P9bbkAcWSAOnFlIF4kq73sdqgMa9dxrbkL2bPp7
+ cww7oc4d0v7wCx/gJkLoWMQMnzLZFAZqquiveBQZpxCqaLp7Ax8KXl28BwCqdwJO0ExPqjUoenG
+ gxCOdS9HnE/10E4nrEnxhul+AFBhw419NTBD70QG8rcUOw5L9N5/wYy2tkA+w2PVokWg2hxqzOR
+ 6tNzW1rp7GmWtM1+ugu953qApKUSmzVyUO50nkBHDMxUP+VWBVStN9TzmRO05kXO3SPvRSJsvRa
+ L16iBjLJMWz6mqsU5tCXEZZAkBwnt79ccHqONIoDCm
+X-Received: by 2002:a17:902:f541:b0:2b0:4f7a:1958 with SMTP id
+ d9443c01a7336-2b5f9efa280mr147131115ad.29.1776748505629; 
+ Mon, 20 Apr 2026 22:15:05 -0700 (PDT)
 Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.14.37
+ d9443c01a7336-2b5fab0cddfsm174631715ad.49.2026.04.20.22.15.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Apr 2026 22:14:39 -0700 (PDT)
+ Mon, 20 Apr 2026 22:15:05 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 20/37] fpu: Add conversions between float16 and float8 formats
-Date: Tue, 21 Apr 2026 15:13:29 +1000
-Message-ID: <20260421051346.41106-21-richard.henderson@linaro.org>
+Subject: [PATCH 31/37] target/arm: Implement FCVTN (16- to 8-bit fp) for
+ AdvSIMD
+Date: Tue, 21 Apr 2026 15:13:40 +1000
+Message-ID: <20260421051346.41106-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260421051346.41106-1-richard.henderson@linaro.org>
 References: <20260421051346.41106-1-richard.henderson@linaro.org>
@@ -100,101 +102,117 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/fpu/softfloat.h |  8 +++++++-
- fpu/softfloat.c         | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+), 1 deletion(-)
+ target/arm/tcg/helper-fp8-defs.h |  2 ++
+ target/arm/tcg/fp8_helper.c      | 48 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-a64.c   | 15 ++++++++++
+ target/arm/tcg/a64.decode        |  2 ++
+ 4 files changed, 67 insertions(+)
 
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 6f86848b7e..70e25fa811 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -196,16 +196,22 @@ float128 uint128_to_float128(Int128, float_status *status);
- float8_e4m3 float4_e2m1_to_float8_e4m3(float4_e2m1, float_status *status);
+diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
+index bbc8d69e28..6530d1a6da 100644
+--- a/target/arm/tcg/helper-fp8-defs.h
++++ b/target/arm/tcg/helper-fp8-defs.h
+@@ -14,3 +14,5 @@ DEF_HELPER_FLAGS_4(sme2_fcvt_hb, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_4(sme2_fcvtl_hb, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
  
- bfloat16 float8_e4m3_to_bfloat16(float8_e4m3, int scale, float_status *status);
-+float16 float8_e4m3_to_float16(float8_e4m3, int scale, float_status *status);
- float8_e4m3 bfloat16_to_float8_e4m3(bfloat16, int scale,
-                                     bool sat, float_status *status);
-+float8_e4m3 float16_to_float8_e4m3(float16, int scale,
-+                                   bool sat, float_status *status);
- float8_e4m3 float32_to_float8_e4m3(float32, int scale,
-                                    bool sat, float_status *status);
+ DEF_HELPER_FLAGS_4(sve2_bfcvtn_bh, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++
++DEF_HELPER_FLAGS_5(gvec_fcvt_bh, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, env, i32)
+diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
+index ad5a2dc64d..6241297269 100644
+--- a/target/arm/tcg/fp8_helper.c
++++ b/target/arm/tcg/fp8_helper.c
+@@ -432,3 +432,51 @@ void HELPER(sve2_bfcvtn_bh)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
  
- bfloat16 float8_e5m2_to_bfloat16(float8_e5m2, int scale, float_status *status);
-+float16 float8_e5m2_to_float16(float8_e5m2, int scale, float_status *status);
- float8_e5m2 bfloat16_to_float8_e5m2(bfloat16, int scale,
-                                     bool sat, float_status *status);
-+float8_e5m2 float16_to_float8_e5m2(float16, int scale,
-+                                   bool sat, float_status *status);
- float8_e5m2 float32_to_float8_e5m2(float32, int scale,
--                                    bool sat, float_status *status);
-+                                   bool sat, float_status *status);
- 
- /*----------------------------------------------------------------------------
- | Software half-precision conversion routines.
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index bcec7d38c8..013b6e1ee2 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -2958,6 +2958,15 @@ float8_e4m3 float4_e2m1_to_float8_e4m3(float4_e2m1 a, float_status *s)
-     return float8_e4m3_round_pack_canonical(&p, s, false);
+     fp8_finish(env, &ctx);
  }
++
++void HELPER(gvec_fcvt_bh)(void *vd, void *vn, void *vm,
++                          CPUARMState *env, uint32_t desc)
++{
++    FP8Context ctx = fp8_dst_start(env, desc);
++    uint16_t *n = vn;
++    uint16_t *m = vm;
++    uint8_t *d = vd;
++    bool osc = FIELD_EX64(env->vfp.fpmr, FPMR, OSC);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nelem = oprsz / 2;
++    ARMVectorReg scratch;
++
++    if (vd == vm) {
++        m = memcpy(&scratch, vm, oprsz);
++    }
++
++    switch (ctx.f8fmt) {
++    case OFP8_E5M2:
++        for (size_t i = 0; i < nelem; ++i) {
++            float16 e = n[H2(i)];
++            d[H1(i)] = float16_to_float8_e5m2(e, ctx.scale, osc, &ctx.stat);
++        }
++        for (size_t i = 0; i < nelem; ++i) {
++            float16 e = m[H2(i)];
++            d[H1(i) + nelem] =
++                float16_to_float8_e5m2(e, ctx.scale, osc, &ctx.stat);
++        }
++        break;
++    case OFP8_E4M3:
++        for (size_t i = 0; i < nelem; ++i) {
++            float16 e = n[H2(i)];
++            d[H1(i)] = float16_to_float8_e4m3(e, ctx.scale, osc, &ctx.stat);
++        }
++        for (size_t i = 0; i < nelem; ++i) {
++            float16 e = m[H2(i)];
++            d[H1(i) + nelem] =
++                float16_to_float8_e4m3(e, ctx.scale, osc, &ctx.stat);
++        }
++        break;
++    default:
++        float8_invalid_output(d, oprsz, &ctx.stat);
++        break;
++    }
++
++    fp8_finish(env, &ctx);
++    clear_tail(vd, oprsz, simd_maxsz(desc));
++}
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index b3fbc5f193..93c883de88 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -6521,6 +6521,21 @@ static gen_helper_gvec_3_ptr * const f_vector_fscale[3] = {
+ };
+ TRANS_FEAT(FSCALE, aa64_f8cvt, do_fp3_vector, a, 0, f_vector_fscale)
  
-+float16 float8_e4m3_to_float16(float8_e4m3 a, int scale, float_status *s)
++static bool trans_FCVTN_bh(DisasContext *s, arg_qrrr_e *a)
 +{
-+    FloatParts64 p;
-+
-+    float8_e4m3_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float16_round_pack_canonical(&p, s);
++    if (!dc_isar_feature(aa64_f8cvt, s)) {
++        return false;
++    }
++    if (fpmr_access_check(s) && fp_access_check(s)) {
++        tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
++                           vec_full_reg_offset(s, a->rn),
++                           vec_full_reg_offset(s, a->rm),
++                           tcg_env, a->q ? 16 : 8, vec_full_reg_size(s),
++                           FPST_A64 << 2, gen_helper_gvec_fcvt_bh);
++    }
++    return true;
 +}
 +
- bfloat16 float8_e4m3_to_bfloat16(float8_e4m3 a, int scale, float_status *s)
+ static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
  {
-     FloatParts64 p;
-@@ -2967,6 +2976,15 @@ bfloat16 float8_e4m3_to_bfloat16(float8_e4m3 a, int scale, float_status *s)
-     return bfloat16_round_pack_canonical(&p, s);
- }
+     if (fp_access_check(s)) {
+diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
+index 26d31d0a33..71456d44e1 100644
+--- a/target/arm/tcg/a64.decode
++++ b/target/arm/tcg/a64.decode
+@@ -1201,6 +1201,8 @@ FAMIN           0.10 1110 1.1 ..... 11011 1 ..... ..... @qrrr_sd
+ FSCALE          0.10 1110 110 ..... 00111 1 ..... ..... @qrrr_h
+ FSCALE          0.10 1110 1.1 ..... 11111 1 ..... ..... @qrrr_sd
  
-+float16 float8_e5m2_to_float16(float8_e5m2 a, int scale, float_status *s)
-+{
-+    FloatParts64 p;
++FCVTN_bh        0.00 1110 010 ..... 11110 1 ..... ..... @qrrr_h
 +
-+    float8_e5m2_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float16_round_pack_canonical(&p, s);
-+}
-+
- bfloat16 float8_e5m2_to_bfloat16(float8_e5m2 a, int scale, float_status *s)
- {
-     FloatParts64 p;
-@@ -2976,6 +2994,26 @@ bfloat16 float8_e5m2_to_bfloat16(float8_e5m2 a, int scale, float_status *s)
-     return bfloat16_round_pack_canonical(&p, s);
- }
+ ### Advanced SIMD scalar x indexed element
  
-+float8_e4m3 float16_to_float8_e4m3(float16 a, int scale,
-+                                   bool saturate, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float16_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float8_e4m3_round_pack_canonical(&p, s, saturate);
-+}
-+
-+float8_e5m2 float16_to_float8_e5m2(float16 a, int scale,
-+                                   bool saturate, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float16_unpack_canonical(&p, a, s);
-+    parts_float_to_e5m2(&p, s, scale, saturate);
-+    return float8_e5m2_round_pack_canonical(&p, s, saturate);
-+}
-+
- float32 float16_to_float32(float16 a, bool ieee, float_status *s)
- {
-     const FloatFmt *fmt16 = ieee ? &float16_params : &float16_params_ahp;
+ FMUL_si         0101 1111 00 .. .... 1001 . 0 ..... .....   @rrx_h
 -- 
 2.43.0
 

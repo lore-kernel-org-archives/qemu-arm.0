@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E0ACF55805
-	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:22:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCF01F55805
+	for <qemu-arm@archiver.kernel.org>; Tue, 21 Apr 2026 05:22:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wF3Yz-0007eY-GK; Tue, 21 Apr 2026 01:22:28 -0400
+	id 1wF3Z8-0007ig-JR; Tue, 21 Apr 2026 01:22:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Yg-0007ZY-KX; Tue, 21 Apr 2026 01:22:02 -0400
+ id 1wF3Yg-0007ZU-IA; Tue, 21 Apr 2026 01:22:02 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1wF3Ye-0000jU-Gv; Tue, 21 Apr 2026 01:22:02 -0400
+ id 1wF3Ye-0000jX-IR; Tue, 21 Apr 2026 01:22:02 -0400
 Received: from localhost (unknown [131.107.147.136])
- by linux.microsoft.com (Postfix) with ESMTPSA id 617F220B6F1F;
- Mon, 20 Apr 2026 22:21:57 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 617F220B6F1F
+ by linux.microsoft.com (Postfix) with ESMTPSA id 313B820B6F20;
+ Mon, 20 Apr 2026 22:21:58 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 313B820B6F20
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1776748917;
- bh=TMVtmh/ACGMIWBY0kUMfU5jbSQ2Sl8D1oMQaMBRtJhw=;
+ s=default; t=1776748918;
+ bh=aiVWl92e6PUYoJGvSxfSYd8qlj5urawU2dcb1f8iQJs=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=B4NFK2f12ADmWzWQJNDa+8wDK4X9MQVlYRWIweewxKncAOUWOF1MAHFZRyG9c7zdy
- 9xGF+hb9zSXa4AgEQhcO7u7bkOwCBZAs6drtsLKVcUmZKV9efbYhz5xTecMFlDqRSj
- NyoTLqV8huVeNHDGXecjfR6aAehT3txJoawbKfjU=
+ b=OX+raQ04oSqo6mcggL0Zhh4/14sg+1m1JG88/7NRaSvl82vsiHWWb5SZdt75Fj/V2
+ FKiwUkWt9JrIRxcmb/rqy/AmD+BkN6CiK2hptfMhGidXUGzyp76mkEaMat0T643GI3
+ XpAjvD/dEyBX/TBIMAoLUet1Aq5ASkCcUWRTvDzs=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Tue, 21 Apr 2026 05:21:51 +0000
-Subject: [PATCH v3 06/14] accel/mshv: add arch-specific accelerator init hook
+Date: Tue, 21 Apr 2026 05:21:52 +0000
+Subject: [PATCH v3 07/14] accel/mshv: Add access_vp_regs synthetic proc
+ features
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260421-mshv_accel_arm64_supp-v3-6-469f544778ba@linux.microsoft.com>
+Message-Id: <20260421-mshv_accel_arm64_supp-v3-7-469f544778ba@linux.microsoft.com>
 References: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
 In-Reply-To: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
 To: qemu-devel@nongnu.org
@@ -74,259 +75,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Anirudh Rayabharam (Microsoft)" <anirudh@anirudhrb.com>
+Enable access_vp_regs feature for regs. In arm64, this feature bit
+allows the guest to set VP registers using hypercall. This wasn't
+required for x86 because such registers are set using wrmsr instead of
+hypercall.
 
-Introduce mshv_arch_accel_init() as an arch-specific hook called early
-in mshv_init(), before VM creation. This allows each architecture to
-perform platform-specific initialization at accelerator init time.
-
-For arm64, the hook queries the hypervisor for the supported IPA bit
-size and validates it against the guest memory map via the machine's
-get_physical_address_range callback, following the same pattern used by
-HVF and WHPX. This also populates the memory map which comes in handy
-later when retreiving the vGIC layout.
-
-For x86, the hook calls mshv_init_mmio_emu() which was previously called
-directly from the common init path. Also move set_unimplemented_msr_action()
-and mshv_arch_post_init_vm() from mshv-cpu.c to the new mshv-all.c, as
-they are not vCPU-specific.
-
-Signed-off-by: Anirudh Rayabharam (Microsoft) <anirudh@anirudhrb.com>
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
 ---
- accel/mshv/mshv-all.c        |  5 ++-
- include/system/mshv_int.h    |  1 +
- target/arm/mshv/mshv-all.c   | 25 ++++++++++----
- target/i386/mshv/meson.build |  1 +
- target/i386/mshv/mshv-all.c  | 80 ++++++++++++++++++++++++++++++++++++++++++++
- target/i386/mshv/mshv-cpu.c  | 40 ----------------------
- 6 files changed, 105 insertions(+), 47 deletions(-)
+ accel/mshv/mshv-all.c     |  1 +
+ include/hw/hyperv/hvhdk.h | 91 ++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 91 insertions(+), 1 deletion(-)
 
 diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index 44f35a1463..6940ad9989 100644
+index 6940ad9989..5ce76e86db 100644
 --- a/accel/mshv/mshv-all.c
 +++ b/accel/mshv/mshv-all.c
-@@ -434,7 +434,10 @@ static int mshv_init(AccelState *as, MachineState *ms)
-         return -1;
-     }
+@@ -156,6 +156,7 @@ static int set_synthetic_proc_features(int vm_fd)
+     features.tb_flush_hypercalls = 1;
+     features.synthetic_cluster_ipi = 1;
+     features.direct_synthetic_timers = 1;
++    features.access_vp_regs = 1;
  
--    mshv_init_mmio_emu();
-+    ret = mshv_arch_accel_init(as, ms, mshv_fd);
-+    if (ret < 0) {
-+        return -1;
-+    }
+     mshv_arch_amend_proc_features(&features);
  
-     mshv_init_msicontrol();
+diff --git a/include/hw/hyperv/hvhdk.h b/include/hw/hyperv/hvhdk.h
+index 2e1ef80972..3807ed4302 100644
+--- a/include/hw/hyperv/hvhdk.h
++++ b/include/hw/hyperv/hvhdk.h
+@@ -94,11 +94,16 @@ union hv_partition_synthetic_processor_features {
+          */
+         uint64_t access_partition_reference_tsc:1;
  
-diff --git a/include/system/mshv_int.h b/include/system/mshv_int.h
-index ff3ab957b5..c72c91cd23 100644
---- a/include/system/mshv_int.h
-+++ b/include/system/mshv_int.h
-@@ -96,6 +96,7 @@ void mshv_arch_init_vcpu(CPUState *cpu);
- void mshv_arch_destroy_vcpu(CPUState *cpu);
- void mshv_arch_amend_proc_features(
-     union hv_partition_synthetic_processor_features *features);
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd);
- int mshv_arch_post_init_vm(int vm_fd);
- void mshv_setup_hvcall_args(AccelCPUState *state);
++#if defined(__x86_64__)
++
+         /*
+          * Partition has access to the guest idle reg. Corresponds to
+          * access_guest_idle_reg privilege.
+          */
+         uint64_t access_guest_idle_reg:1;
++#else
++        uint64_t reserved_z10:1;
++#endif
  
-diff --git a/target/arm/mshv/mshv-all.c b/target/arm/mshv/mshv-all.c
-index db1174b444..8d16971c0d 100644
---- a/target/arm/mshv/mshv-all.c
-+++ b/target/arm/mshv/mshv-all.c
-@@ -9,12 +9,13 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
+         /*
+          * Partition has access to frequency regs. corresponds to
+@@ -110,11 +115,16 @@ union hv_partition_synthetic_processor_features {
+         uint64_t reserved_z13:1; /* Reserved for access_root_scheduler_reg */
+         uint64_t reserved_z14:1; /* Reserved for access_tsc_invariant_controls */
  
--
- #include "qemu/osdep.h"
- #include <sys/ioctl.h>
++#if defined(__x86_64__)
++
+         /*
+          * Extended GVA ranges for HvCallFlushVirtualAddressList hypercall.
+          * Corresponds to privilege.
+          */
+         uint64_t enable_extended_gva_ranges_for_flush_virtual_address_list:1;
++#else
++        uint64_t reserved_z15:1;
++#endif
  
- #include "qemu/error-report.h"
- #include "qemu/memalign.h"
-+#include "hw/arm/bsa.h"
-+#include "hw/arm/virt.h"
+         uint64_t reserved_z16:1; /* Reserved for access_vsm. */
+         uint64_t reserved_z17:1; /* Reserved for access_vp_registers. */
+@@ -161,13 +171,92 @@ union hv_partition_synthetic_processor_features {
+         /* HvCallRetargetDeviceInterrupt is supported. */
+         uint64_t retarget_device_interrupt:1;
  
- #include "system/cpus.h"
- #include "target/arm/cpu.h"
-@@ -188,11 +189,6 @@ void mshv_arch_destroy_vcpu(CPUState *cpu)
-     state->hvcall_args = (MshvHvCallArgs){0};
- }
++#if defined(__x86_64__)
+         /* HvCallRestorePartitionTime is supported. */
+         uint64_t restore_time:1;
  
--void mshv_init_mmio_emu(void)
--{
--
--}
--
- void mshv_arch_amend_proc_features(
-     union hv_partition_synthetic_processor_features *features)
- {
-@@ -394,3 +390,20 @@ void mshv_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     cpu->midr = arm_host_cpu_features.midr;
-     cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
- }
-+
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    int pa_range;
-+    uint32_t ipa_size;
-+
-+    if (mc->get_physical_address_range) {
-+        ipa_size = mshv_arm_get_ipa_bit_size(mshv_fd);
-+        pa_range = mc->get_physical_address_range(ms, ipa_size, ipa_size);
-+        if (pa_range < 0) {
-+            return -EINVAL;
-+        }
-+    }
-+
-+    return 0;
-+}
-diff --git a/target/i386/mshv/meson.build b/target/i386/mshv/meson.build
-index 6091c21887..ce54e134cb 100644
---- a/target/i386/mshv/meson.build
-+++ b/target/i386/mshv/meson.build
-@@ -1,6 +1,7 @@
- i386_mshv_ss = ss.source_set()
+         /* EnlightenedVmcs nested enlightenment is supported. */
+         uint64_t enlightened_vmcs:1;
  
- i386_mshv_ss.add(files(
-+  'mshv-all.c',
-   'mshv-cpu.c',
-   'msr.c',
- ))
-diff --git a/target/i386/mshv/mshv-all.c b/target/i386/mshv/mshv-all.c
-new file mode 100644
-index 0000000000..f0b43aa86f
---- /dev/null
-+++ b/target/i386/mshv/mshv-all.c
-@@ -0,0 +1,80 @@
-+/*
-+ * QEMU MSHV support
-+ *
-+ * Copyright Microsoft, Corp. 2026
-+ *
-+ * Authors: Ziqiao Zhou   <ziqiaozhou@microsoft.com>
-+ *          Magnus Kulke  <magnuskulke@microsoft.com>
-+ *          Jinank Jain   <jinankjain@microsoft.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+-        uint64_t reserved:30;
++        uint64_t nested_debug_ctl:1;
++        uint64_t synthetic_time_unhalted_timer:1;
++        uint64_t idle_spec_ctrl:1;
 +
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "qemu/memalign.h"
++#else
++        uint64_t reserved_z31:1;
++        uint64_t reserved_z32:1;
++        uint64_t reserved_z33:1;
++        uint64_t reserved_z34:1;
++        uint64_t reserved_z35:1;
++#endif
 +
-+#include "system/mshv.h"
-+#include "system/mshv_int.h"
-+#include "system/address-spaces.h"
-+#include "linux/mshv.h"
-+#include "hw/hyperv/hvgdk.h"
-+#include "hw/hyperv/hvgdk_mini.h"
-+#include "hw/hyperv/hvhdk_mini.h"
-+#include "hw/i386/apic_internal.h"
++#if defined(__aarch64__)
++        /*
++         * Register intercepts supported in V1. As more registers are supported
++         * in future releases, new bits will be added here to prevent migration
++         * between incompatible hosts.
++         *
++         * List of registers supported in V1:
++         * 1. TPIDRRO_EL0
++         * 2. TPIDR_EL1
++         * 3. SCTLR_EL1 - Supports write intercept mask.
++         * 4. VBAR_EL1
++         * 5. TCR_EL1 - Supports write intercept mask.
++         * 6. MAIR_EL1 - Supports write intercept mask.
++         * 7. CPACR_EL1 - Supports write intercept mask.
++         * 8. CONTEXTIDR_EL1
++         * 9. PAuth keys (total 10 registers)
++         * 10. HvArm64RegisterSyntheticException
++         */
++        uint64_t register_intercepts_v1:1;
++#else
++        uint64_t reserved_z36:1;
++#endif
 +
-+#include "cpu.h"
-+#include "emulate/x86_decode.h"
-+#include "emulate/x86_emu.h"
-+#include "emulate/x86_flags.h"
++        /* HvCallWakeVps is supported */
++        uint64_t wake_vps:1;
 +
-+#include "trace-accel_mshv.h"
-+#include "trace.h"
++        /*
++         * HvCallGet/SetVpRegisters is supported.
++         * Corresponds to AccessVpRegisters privilege.
++         * This feature only affects exo partitions.
++         */
++        uint64_t access_vp_regs:1;
 +
-+#include <sys/ioctl.h>
++#if defined(__aarch64__)
++        /* HvCallSyncContext/Ex is supported. */
++        uint64_t sync_context:1;
++#else
++        uint64_t reserved_z39:1;
++#endif /* __aarch64__ */
 +
-+int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd)
-+{
-+    mshv_init_mmio_emu();
-+    return 0;
-+}
++        /*
++         * Management VTL synic support is allowed.
++         * Corresponds to the ManagementVtlSynicSupport privilege.
++         */
++        uint64_t management_vtl_synic_support:1;
 +
-+/*
-+ * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
-+ * fault to the guest if it tries to access it. It is possible to override
-+ * this behavior with a more suitable option i.e., ignore writes from the guest
-+ * and return zero in attempt to read unimplemented.
-+ */
-+static int set_unimplemented_msr_action(int vm_fd)
-+{
-+    struct hv_input_set_partition_property in = {0};
-+    struct mshv_root_hvcall args = {0};
++#if defined(__x86_64__)
++        /*
++         * Hypervisor supports guest mechanism to signal pending interrupts to
++         * paravisor.
++         */
++        uint64_t proxy_interrupt_doorbell_support:1;
++#else
++        uint64_t reserved_z41:1;
++#endif
 +
-+    in.property_code  = HV_PARTITION_PROPERTY_UNIMPLEMENTED_MSR_ACTION;
-+    in.property_value = HV_UNIMPLEMENTED_MSR_ACTION_IGNORE_WRITE_READ_ZERO;
++#if defined(__aarch64__)
++        /* InterceptSystemResetAvailable is exposed. */
++        uint64_t intercept_system_reset:1;
++#else
++        uint64_t reserved_z42:1;
++#endif
 +
-+    args.code   = HVCALL_SET_PARTITION_PROPERTY;
-+    args.in_sz  = sizeof(in);
-+    args.in_ptr = (uint64_t)&in;
++        /* Hypercalls for host MMIO operations are available. */
++        uint64_t mmio_hypercalls:1;
 +
-+    trace_mshv_hvcall_args("unimplemented_msr_action", args.code, args.in_sz);
-+
-+    int ret = mshv_hvcall(vm_fd, &args);
-+    if (ret < 0) {
-+        error_report("Failed to set unimplemented MSR action");
-+        return -1;
-+    }
-+    return 0;
-+}
-+
-+int mshv_arch_post_init_vm(int vm_fd)
-+{
-+    int ret;
-+
-+    ret = set_unimplemented_msr_action(vm_fd);
-+    if (ret < 0) {
-+        error_report("Failed to set unimplemented MSR action");
-+    }
-+
-+    return ret;
-+}
-diff --git a/target/i386/mshv/mshv-cpu.c b/target/i386/mshv/mshv-cpu.c
-index 9a80dc34d0..8325ac74a3 100644
---- a/target/i386/mshv/mshv-cpu.c
-+++ b/target/i386/mshv/mshv-cpu.c
-@@ -1482,43 +1482,3 @@ void mshv_arch_destroy_vcpu(CPUState *cpu)
-     state->hvcall_args = (MshvHvCallArgs){0};
-     g_clear_pointer(&env->emu_mmio_buf, g_free);
- }
--
--/*
-- * Default Microsoft Hypervisor behavior for unimplemented MSR is to send a
-- * fault to the guest if it tries to access it. It is possible to override
-- * this behavior with a more suitable option i.e., ignore writes from the guest
-- * and return zero in attempt to read unimplemented.
-- */
--static int set_unimplemented_msr_action(int vm_fd)
--{
--    struct hv_input_set_partition_property in = {0};
--    struct mshv_root_hvcall args = {0};
--
--    in.property_code  = HV_PARTITION_PROPERTY_UNIMPLEMENTED_MSR_ACTION;
--    in.property_value = HV_UNIMPLEMENTED_MSR_ACTION_IGNORE_WRITE_READ_ZERO;
--
--    args.code   = HVCALL_SET_PARTITION_PROPERTY;
--    args.in_sz  = sizeof(in);
--    args.in_ptr = (uint64_t)&in;
--
--    trace_mshv_hvcall_args("unimplemented_msr_action", args.code, args.in_sz);
--
--    int ret = mshv_hvcall(vm_fd, &args);
--    if (ret < 0) {
--        error_report("Failed to set unimplemented MSR action");
--        return -1;
--    }
--    return 0;
--}
--
--int mshv_arch_post_init_vm(int vm_fd)
--{
--    int ret;
--
--    ret = set_unimplemented_msr_action(vm_fd);
--    if (ret < 0) {
--        error_report("Failed to set unimplemented MSR action");
--    }
--
--    return ret;
--}
++        uint64_t reserved:20;
+     };
+ };
+ 
 
 -- 
 2.45.4

@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4AFBFA1FFC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1122F9B5F3
 	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLt-0008Qg-8K; Wed, 22 Apr 2026 17:43:21 -0400
+	id 1wFfLM-0007vU-Ea; Wed, 22 Apr 2026 17:42:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLq-0008Hc-12
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:18 -0400
-Received: from p-east2-cluster1-host11-snip4-8.eps.apple.com ([57.103.76.51]
+ id 1wFfLK-0007tu-FP
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:46 -0400
+Received: from p-east2-cluster1-host8-snip4-1.eps.apple.com ([57.103.76.74]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLo-0007Pl-39
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:17 -0400
+ id 1wFfLJ-0006yd-2b
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:46 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 7EC581800216; Wed, 22 Apr 2026 21:43:14 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkHXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ 36E4518006FB; Wed, 22 Apr 2026 21:42:39 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGl0fHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894195; x=1779486195;
- bh=fd3QXN9cMYXzSjHj8LHzGrAZcLC64tqXdSYCxl9xZqI=;
+ s=sig1; t=1776894164; x=1779486164;
+ bh=SWGvVkTUcfNdXmZWTM4NHwYFZfQcX/gulJR3Nj6SCmU=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=CEHoBpFDLRr50nyEymGArLFSWAtXFNVq2sK7lNxYl6sbH4LjRw1UHN2/c1/N3Z/dAyLkd834FDziOrEDpqER17LxDQ/T264yiyLrO6nKTI0qA2+bWR31IyWboF6wRpz+AKiLvPMfwR28qZcKT727r5MVsc9+TjwrHvgKQZ97th3W+8ip+dm6Skf4yPsXjmk6BhVffn4X/fzMGEypLxaE3ztmE8/IWkvqJatC9dh2GM6uUHGVpdg2fGYV9TtgB/dd3Vj80bzF7iWmsIY5n3Nv4snAaYIx6kA7CH8H5Eybny564s0Al5wwd7sOGoZsc8fiwLPOxY5hgiP8istvq6BNQA==
+ b=MltShFRs7LoQFjfgRl/cD6FdfBhD7SG9rXqTydIHWe7HX5MLIeP1/KQTq6ZBVjDTgQMDwlsguUj+YxZsVRc09DKYAFg1RmQdouJqMR5kVwJZTPMyISoErPzww8/JYnr/n5lShgt4m7tG9cdtkuHj2yX2R5Gh8BHOgyWrhF4DAGpDn188e6fVLy53USShZgsqKSwBBvIJBv+7gTCLVroo02+7ulTUrn8MMS0O3qS0LNKkMjFsqN5h4W8o5xrPTAcOLX6P5Lpz639n2F3hadLcs+1n/mluEa+uzrppdVnEkSNpW9wTRFgNnwyt6CmxqdCgY4LetwUXLFd4yzvbMvF1fg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- C47551800230; Wed, 22 Apr 2026 21:43:12 +0000 (UTC)
+ 90929180020C; Wed, 22 Apr 2026 21:42:37 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,34 +44,36 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 24/37] whpx: i386: set WHvX64RegisterInitialApicId
-Date: Wed, 22 Apr 2026 23:42:12 +0200
-Message-ID: <20260422214225.2242-25-mohamed@unpredictable.fr>
+Subject: [PATCH v3 05/37] whpx: i386: enable x2apic by default for user-mode
+ LAPIC
+Date: Wed, 22 Apr 2026 23:41:53 +0200
+Message-ID: <20260422214225.2242-6-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: tj2069GRXdf3nE2mzkcE3bMZ__Y9NP_j
-X-Authority-Info-Out: v=2.4 cv=QJVlhwLL c=1 sm=1 tr=0 ts=69e940f3
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfX7WdEKBMZyr9x
+ +PXY/aAkxXPPDmaA4/I7PGRHttn2Cd9D93TsAm+7Q2zQLV4ZJdISfP3VKSjONvskhy0I6PrUNAf
+ UbZcB8a1e5YBc/e/yStd9LH7nWGLYFRSE85cQwGLKQCAh2QapG7CHxY3RXbFHhScwKBwzzidw61
+ N/RNoM0ryFr+TKRwObQNIKfFCK7pZyhDllaT6JjwTX4ev7otce8HejXSOM7mOkRziwffTQ3xxOK
+ hOBYcMkkgpfvRm1lZufhQu1D7cPgjnGqdK15FPT6haqVrB7HmSvXcKKzpceHm14bhwNOjapzto2
+ ZW4VO9JAk0jG82FrVVrkm4ushuTq8aTytqRVfLAk9qY6w+FSiIwteIHZ1UXcXg=
+X-Proofpoint-GUID: naZfVawrzCuXQjXe9ezCKtYBB_xVcIPD
+X-Proofpoint-ORIG-GUID: naZfVawrzCuXQjXe9ezCKtYBB_xVcIPD
+X-Authority-Info-Out: v=2.4 cv=C4DkCAP+ c=1 sm=1 tr=0 ts=69e940d2
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=DsSKBDvzyVHF_5agjq4A:9
-X-Proofpoint-ORIG-GUID: tj2069GRXdf3nE2mzkcE3bMZ__Y9NP_j
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX18bwYTYbu1uw
- Oz0Z0DVreGWROmOARlXTK3Vr43TUQwMZNO2ztJ/fohf8JfxHkZQhr79Hl+Ps0mjzsmhz5HfoI30
- ts40DpxuAvG+pU7GNuNt64QQhecZy73vm++VuMMps8Zb03lHtndLSyIqyNkZi/w4Dce0LKe3+AW
- 464nRfnyZ7u/r6NdH7w0tjLBIO16hoMZY5emscNA5r/mldetfYchMFxXOVrpspFHFarI9XQlgDg
- MMNpsztees6L9xwbivfG2ARZRZxL2tmQjESUOAmsmHGDY57JWD/4d80g0GqAs/KnfHK+P4ujJMo
- R45Ihe1x4k9WJ4hEAPTvilLjuiluOS6eu51LZj6p0UpCBNFJ0yBblo2CoBXQHU=
-Received-SPF: pass client-ip=57.103.76.51;
+ a=uAk9FrDoCeqUxh5yT_MA:9
+Received-SPF: pass client-ip=57.103.76.74;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,29 +89,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Keep Hyper-V aware of the initial APIC ID chosen.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ target/i386/whpx/whpx-all.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index f03f5a5115..09ca7b5a53 100644
+index 8f03616cb9..4954e0557a 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2475,6 +2475,11 @@ int whpx_init_vcpu(CPUState *cpu)
-         goto error;
-     }
+@@ -2366,11 +2366,18 @@ error:
+     return ret;
+ }
  
-+    if (!whpx_irqchip_in_kernel()) {
-+        WHV_REGISTER_VALUE apic_id = {.Reg64 = x86_cpu->apic_state->initial_apic_id};
-+        whpx_set_reg(cpu, WHvX64RegisterInitialApicId, apic_id);
-+    }
++static PropValue whpx_default_props[] = {
++    { "x2apic", "on" },
++    { NULL, NULL },
++};
 +
-     /*
-      * vcpu's TSC frequency is either specified by user, or use the value
-      * provided by Hyper-V if the former is not present. In the latter case, we
++
+ void whpx_cpu_instance_init(CPUState *cs)
+ {
+     X86CPU *cpu = X86_CPU(cs);
+ 
+     host_cpu_instance_init(cpu);
++    x86_cpu_apply_props(cpu, whpx_default_props);
+ }
+ 
+ /*
 -- 
 2.50.1 (Apple Git-155)
 

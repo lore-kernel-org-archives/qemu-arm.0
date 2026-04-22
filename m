@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D823FFA1FD7
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 16:58:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06CBCFA1FD6
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 17:06:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFatn-0002Du-Ku; Wed, 22 Apr 2026 12:58:05 -0400
+	id 1wFb1s-0004KW-NA; Wed, 22 Apr 2026 13:06:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFatj-0002DB-8u
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 12:57:59 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFb1m-0004GM-Tg
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 13:06:18 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFatd-0002Dd-Nt
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 12:57:56 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-488b3f8fa2bso60010645e9.1
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 09:57:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFb1l-0004MB-57
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 13:06:18 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-48984d29fe3so49851945e9.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 10:06:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776877071; x=1777481871; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DbTeMp0F6npNH4gs60DUNZm6vpG8shzFCghJCd+tOro=;
- b=pYXhh+JqchMsCzXSwdYupdwEYdhn3WQXhghMjEuEEmRUmZFOGhdT0Hx70+HcC9vbMv
- +kLopuHlRjf8zc+eRn+UXBo9bDmxzZOnyszp4PJhoWdGISGcqp6vrV2i4/bBpHslcrlg
- 567yG6sDjs83EeyuzvWGxpXTPKbTkZ78taivZHpj/I/NNYddDGQZCoXSYaoyZEWvHSL0
- ghL2PL0eXvB8m6jUJjknqQZ4WOk72pGVv8bCVmb+6DBab0QeuL/cr1Hg7+3KZE6GP5xL
- u4IkoNKaGUcbz8iwjftE9pSP0160RsuowqQ98k4WCx0wgBFd3/yc6wk96LBRWGhnUiCK
- avuQ==
+ d=linaro.org; s=google; t=1776877575; x=1777482375; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=7DPnRZ82HSJmoMCxXWYUViYlcPAFH9IoLJRnJFoDWmI=;
+ b=pbz9If11iHjDXaOgOeP875FLjHByaAopGHenl62cav/JV1L6VQBFO/W7IIiFNBSV9c
+ dgJizDgGER4P1EeShDDoOuTNYrPxwLtXWbOXM84P4nBRX3SErHq9+OZxrL3Gc2oc5d/o
+ MurgoTOhzVAyULVVm+7dpqtsDi9Q0b3yT7CiHNyDE+HnRVrjtlSKsO3jzT0MWRTW0gZ9
+ OTWsvbW/IS57D5w8Iw9ytnoKzQGHPEhOIDd+E7UYwnAZcPWu5m2DAaGonJwc2+7xYaXg
+ PIdvas3VSG0t+bs8OraZXGmvdp7uL2JbnWkEfo+tW/1o5aRfWBdHC7z9BoOIktP643ct
+ 72rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776877071; x=1777481871;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DbTeMp0F6npNH4gs60DUNZm6vpG8shzFCghJCd+tOro=;
- b=QXFOnCBQJcSdY7KPXgXcYKPeduj+xG52McaFrDkvJxrrom3cCBBerDb1XLHZ7/Sri5
- 3TCLs0ykuFEwWNudEjSramMyJwOWfFiSCUZ9QxwRFsRM9U3KsMI/scaW9gqatzSX0eef
- udipj5BTTl55x0yehRLQv0kEQfXsQg4/OU041GOJ9Rp32c/f71MBU0nw6nTZyILLz7Hu
- EX9IUkbuISjvbEFDq9G4sPowDlV/j24/5WQV78EsRhPUDuA7XK42bQah9G9GgktbzcDy
- 3XtjCO6cw9vjZ7RHH0glepby5a9IXZmfAE4aeIipAnOKLey6k+0kdR61c7ULNqlEvL7v
- k/gQ==
+ d=1e100.net; s=20251104; t=1776877575; x=1777482375;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7DPnRZ82HSJmoMCxXWYUViYlcPAFH9IoLJRnJFoDWmI=;
+ b=h2LeNytNWb3qNn+6Z8zfC8ZFptto5KkpyrIATd3at9nxaH540Uf/oUmxTVhjtgt48i
+ s0Egw/FYvmlPLJK58hzJGb94ui/fnEzXWDhVEde6LW9QKYyvv9GEEW2legjpdM4jEqD4
+ iLbT8SQlRXuyYRcO2Jy2pQKwHsiYU72EouQBaiC/zKmEkYBJPne9W3Ag+3x1huho/o3P
+ vPFrlis1bAWAML1MzZJYooH62z6HPw4b1ocd1c4lmMl4ErY7fBBUGaAFWrxgWQprbnXr
+ 9H0TNreSaDztsMRRZPJ9dUN3P0VGAFRFR07okNzYaO2khUCng0HrkeZ+Z/JgO5OTBfdS
+ waig==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8Jvsc5m3PXtGeh58bDWuUE4EnF1HXOfaHFz5ksIEervB+3DWuketJbUdf+gM/VStFLQkPr9CQnOw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywmf/8NpBlqBvSE8YwbHVZez9osfaX9UgFRPiBCCqR9QZOIsW88
- Xs+kB7vLXYuCeOfdjJlcXChjJcUqHE3kDlgFuDRngKDr2cNw0cFVdkl0vOrpmd8PZc8=
-X-Gm-Gg: AeBDietX0Wc7aEv38e3yxBIQ8haXTLBWOkjdwk2MgLAvODzOissQByle/acqkTqP5EJ
- Sb96kYGMbLVWqOcqMfz2VZMo5ojET7fyk4ai+i5pNIjDfsx5tt0BOm/67o6rGwno1rhewGMb9nh
- WVlQr+6BboyfmtBtRctkTxWA8xUltO3QpWfmbOr3TjdkyCChy/0ScPPiVu4/lZyYM2zui1th5dj
- 5gzBwXLf0wdOSJodpP4NUUMu1w/8yWyTlV6hKNQfKQliZsDaDCJTtzu5uAqc2FHCaloWmIEPeQ1
- mN2bFB5cE9TkvFB82Cr81CV29uHb908WJUnwa0LvrI+h+t1tBc9CcCLq45KzBeBNrUwg4UsPB9W
- lvAxxbcxXR2pYTvH3kufYs3Pom4/DRpPktkzAj5Ii87TRQPrTLkaGlD+MuRsZ8bxco86WQk46IF
- aZdv4WvKC1Bk5v2WA3nGj2givPc46R6xcHjiAdMFOW14smxHcGTCy4R/18+KUChJCH4CzyBoMwX
- fyl
-X-Received: by 2002:a05:600c:3150:b0:485:3cef:d6ea with SMTP id
- 5b1f17b1804b1-488fb8b9deamr269580515e9.13.1776877070648; 
- Wed, 22 Apr 2026 09:57:50 -0700 (PDT)
+ AFNElJ84LvhOgkcZALAFvyG1XEinb/kVkffUdfQRHx4mbHp9+OUZjvBHyXkRtsDfDvE6lNaMJ70Hd0voWA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4ETP+xJ46rnKsNibmpnnXPRPt9VP9vilmEHH7id2WzBomoqiD
+ 695RGW//gAJf2vG3q4z202YiOe+CuZu3VmQf46XBnWUw665xPa9ROycLXYspOtFm9HI=
+X-Gm-Gg: AeBDiesyp3uJsNuqYLQkcbB9fs4jamvd6erU+ay784ojgxffvkGW9dEtHpObBJ7s8LW
+ kHceFZaJU31vBgOSMdQXpbxPgdZt9E9lMDxx7cDOJwsIijcygn1yvRJcKuARyOQ+jD3ZGP+Z6Zx
+ ZR498C9lY19hcvHIYU/abzc2Gg5KmEwS0cZrkfMZWiVa4YEcso/NgoQppz05TZV7FC/yewsmXl1
+ jJx7CtGIdsjp60jaF2DhcB7QcZ7U15FS3lPICbMYBd80/EfKPUoG/Ko59w3TL2+x5BrA/s/MJf7
+ DLF4vIV+uTitNLr/PLk7K6kF2rbiGcvadr1pk2qyk2KxHU40F8ndKsg3osmvVyegL/QsYffaW47
+ RzC5CafIoVN18zDIYJytQxahNMoxmpDSTbQDMXUfaiydeSNYLW731gqYWY/6d/hLFQbpL66zzie
+ NaZXFCfBH8CspT89tbvRPTqtW3/IcvoytqTw+ZZqzcTznoIGL8WbarLYMn2OY/Y3Xd/jiAHugIn
+ MKi
+X-Received: by 2002:a05:600c:899:b0:489:1a63:509c with SMTP id
+ 5b1f17b1804b1-4891a635125mr135475065e9.0.1776877575205; 
+ Wed, 22 Apr 2026 10:06:15 -0700 (PDT)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fb72d365sm229925445e9.1.2026.04.22.09.57.49
+ 5b1f17b1804b1-48a4b329542sm331350025e9.3.2026.04.22.10.06.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Apr 2026 09:57:49 -0700 (PDT)
-Message-ID: <a0835cb6-50b7-4db3-b747-bf3d5a4badd9@linaro.org>
-Date: Wed, 22 Apr 2026 18:57:48 +0200
+ Wed, 22 Apr 2026 10:06:14 -0700 (PDT)
+Message-ID: <30fb9fcc-7c34-47d0-a4b7-2e206eee714b@linaro.org>
+Date: Wed, 22 Apr 2026 19:06:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 26/32] target/arm: ensure aarch64 DISAS_WFE will exit
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>, 
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Mohamed Mediouni <mohamed@unpredictable.fr>,
- kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20260422125250.1303100-1-alex.bennee@linaro.org>
- <20260422125250.1303100-27-alex.bennee@linaro.org>
+Subject: Re: [PATCH v2] accel/hvf: fix double hv_vcpu_destroy() causing
+ teardown error on ARM
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260422125250.1303100-27-alex.bennee@linaro.org>
+To: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, slp@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, mads@ynddal.dk, brian.cain@oss.qualcomm.com,
+ mburton@qti.qualcomm.com, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <ee6f642af1dab29aaf99f86ac9254ddd25765bf8.1776172276.git.matheus.bernardino@oss.qualcomm.com>
+ <7be383bc-40f1-4da2-96c7-241946e6e52d@linaro.org>
+Content-Language: en-US
+In-Reply-To: <7be383bc-40f1-4da2-96c7-241946e6e52d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,38 +107,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 22/4/26 14:52, Alex Bennée wrote:
-> This mirrors the logic for DISAS_WFE in 32 bit world.
+On 14/4/26 15:23, Philippe Mathieu-Daudé wrote:
+> On 14/4/26 15:11, Matheus Tavares Bernardino wrote:
+>> The following callstack causes hv_vcpu_destroy() to be called twice,
+>> producing HV_BAD_ARGUMENT on the already-destroyed handler:
+>>
+>> hvf_vcpu_destroy
+>>   |
+>>   |_ hv_vcpu_destroy
+>>   |
+>>   |_ hvf_arch_vcpu_destroy
+>>       |
+>>       |_ hv_vcpu_destroy
+>>
+>> The first hv_vcpu_destroy call covers both x86 and arm. Let's remove the
+>> second one, as it is redundant.
+>>
+>> Signed-off-by: Matheus Tavares Bernardino 
+>> <matheus.bernardino@oss.qualcomm.com>
+>> ---
+>> v1: https://lore.kernel.org/qemu- 
+>> devel/70cca2a5cdde3e6531e5c8f1e399e0b584d51ad6.1776096073.git.matheus.bernardino@oss.qualcomm.com/
+>>
+>> Changed in v2: removed second call instead of first one to avoid
+>> breaking x86 (thanks Philippe!)
+>>
+>>   target/arm/hvf/hvf.c | 4 ----
+>>   1 file changed, 4 deletions(-)
 > 
-> Fixes: 252ec405768 (target-arm: implement WFE/YIELD as a yield for AArch64)
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   target/arm/tcg/translate-a64.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index 073454b9195..d79c8ab431b 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -10917,6 +10917,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
->           case DISAS_WFE:
->               gen_a64_update_pc(dc, 4);
->               gen_helper_wfe(tcg_env);
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-If we mirror the logic we can also mirror the comment,
-otherwise the description rationale isn't very helping:
-
-             /*
-              * The helper can return if the event register is set, so we
-              * must go back to the main loop to check for events.
-              */
-
-> +            tcg_gen_exit_tb(NULL, 0);
->               break;
->           case DISAS_YIELD:
->               gen_a64_update_pc(dc, 4);
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

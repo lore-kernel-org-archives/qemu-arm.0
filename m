@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E765FF9B607
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 463B4F9B607
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:19:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFUeq-0007KF-Ey; Wed, 22 Apr 2026 06:18:12 -0400
+	id 1wFUer-0007Ml-7a; Wed, 22 Apr 2026 06:18:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeM-0006yk-3s
+ id 1wFUeM-0006yt-6x
  for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:43 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeD-0002NM-Qk
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:40 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-48a563e4ef7so17340375e9.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:30 -0700 (PDT)
+ id 1wFUeD-0002Mb-Mr
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:37 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4891f625344so35480615e9.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776853050; x=1777457850; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776853046; x=1777457846; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=V9WNiVc32x9uwc9Kvl3F3IabOVkUVJfyhaJuWqhRbgs=;
- b=lpf5FT+fG4RvwdNrOLYAt5rVTc6OTeMRM5if5IFQX7ZTpGzjeeiMpcSF48dL4T8rf6
- nS9Nv/aIibuPHhOhSJLdfM2t8Kdee+dh6GERxsODMgEdshIReJiHHiBNKq+Iv0LqEy4M
- muMJeRKelFwE33Tz8vWkYVMiP/yfC0Qmbt8um8EBKKlspnsMs23Y2tXmijUThWLuxwF8
- y9VNWZWvLBdAOvGhV655rYNyBmODBjpc6OyB39dhRWItB1pTmENriOOw2f9OZnLqkbXg
- TO6QKmzA0Je7z1sQe5BbJCuQ/OarnSwCRMnPOqfBsdB0eY2IFVKRaap9jLbTo4M78yGb
- X4og==
+ bh=rop61lo3CsCy/AA+flQ6RjC7mnHYxt45F3om3vFlXxk=;
+ b=dgQmp58Fs0NsPN5cCZ9jCVqKhIuJ/Y4bg01PcHOneJGIk5Es5VqpTlbybpn2U/rseo
+ qeTfx/HLt4yCGHietOInV4eJhNwZLSUj8W3Kehe+YCpjGvxuP8CdqQSHzOk0i2RJTVuu
+ vuJ+B7mnOXeNhirJTebe5QRMsgam6Qpj+x6Bz2tnVwn3v8UiJ6eCm0qgpHjQPSv2KfNU
+ W+bVbTG3pkV2pfp5682qTCifYIjA+mTbOl2r5/qFacGCAyLVIR8ld875r+M7npndkxqY
+ R9nJ7SXZqe9qgUHVzxg8TmtMX38vLrq7MxfDnJ2CVdl5aoCcTMw4Su8FLMoxoZ9Aipw1
+ lY7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776853050; x=1777457850;
+ d=1e100.net; s=20251104; t=1776853046; x=1777457846;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=V9WNiVc32x9uwc9Kvl3F3IabOVkUVJfyhaJuWqhRbgs=;
- b=bCkANBgsFG71Umt+riltcr/E8CZwbuVUqPils+4MQYJ4io+eBJirfWa00BmNPiLR8T
- xjEbXvAYesapGvBBIDGGLdzhTzinlSGMxpwPwo2R8OAWZGHNb8YdpFoDK4brROngDJJp
- Uk1qNL8kL9wX+lPKVZzmzLWQzUuohmESKfu+0hsGUKJSnMv2pS8EkGZ59MgB3hpudQmJ
- XvZcp1Rb1t9MbV9d50tW+y4LX2N9Fd6GRQ6IAl3lYlnwBuiDRhRoYqqfauEb3Jm/kf9W
- bH4PABo9DOm9BJ8ss/ig6bGPnLcmmg/C8OL2EgVtm/FTd0hAmFZATfggcMyMCt0OWTpe
- E+TQ==
+ bh=rop61lo3CsCy/AA+flQ6RjC7mnHYxt45F3om3vFlXxk=;
+ b=o0Jh66GbHQuCPQpdHgFzQ6rGyey+ss1ThC92W2jev59RXOAAEFicLyPsdZK5394Fl3
+ TD5ooRh9PQuX1brKd+RdWnOamL3osRx+iPY1JXZZtML3CLzAeOvSZ/Ofjr19S/9xz+ko
+ GAOAXaIC8vpIKmzx4b0LourScd0UFMQfjBQx/m+UjmkyEIr8gCiDc2ZthReOhWanYiUJ
+ 1k07WxHYGfOpxNO70crl+i3mBOssnPE1UkS5KpKScK3t22WKBwpWD9+r3klWPyazEk8N
+ MINpw06nUhB75MlgECmktNXsFTr07yKuSAyVAJQ44+QqHvHxKShY9e+Pu8MBqc2TbTfL
+ soZQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9yOh8PfG+4qf1Yf0O9qz95qD8T0tCdwhy0KzgsEbeGAzqJPRTwE4I09NjcM4feSjKjg3v0g5nkrQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy3yWcihZ/QsyynZGti+sUmfGb5TpJGfV2wnLYqeYP2oP6q60M9
- 0RN96CDOi4l1NLJ0BTtHkCubwXqb8GbOVps4PD0wguvCQRAtpFVIhqKG37Ag3EqBv4U=
-X-Gm-Gg: AeBDieuaqud7DoCQlBXm9Lmu6Kvdr2K7vPpyT4yfUeyrB5HWA/AuHI3eXw4sLQk9CaC
- 0uyi56Ga7/6G/xSkInVlS957gRQ+Rqc3V3RD/6lySmhO6nEElkftn0KvkobVPuLEeXvGjKfL4+o
- Ism9bZvAqJRVGvg2KMnnji9nQjSgE/prDumqIBftBErowdAWrYWY8mDZ5P37FjpLsZb8x9g1YAA
- tbi1+TOOyzQso0MnzHGfTAlUPn/1Rx2Z7KGUnu6qI7ukddv8xmWJYc8/lMbIYRrl/s3KaJGzev1
- oIEjui8jLie+mfvIseXCtyaJnWooO/jvvbbeaNpyFQ11fOzmcWcIvxu7Hl7Scn7a5gu2YTCTnef
- pDWbtF3jAZ0CQ6SIgH64KCJCxOJT4XyAyRk7C1YtuxQ7VMpBT9Loysb/X7/FDVphVgKa/HUX0Yz
- ONwn203KWfq6o+JB2SqALv4IoXFcjuuVfmqA==
-X-Received: by 2002:a05:600c:5254:b0:488:8bdd:cfcc with SMTP id
- 5b1f17b1804b1-488fb6e62a8mr333377305e9.0.1776853049667; 
- Wed, 22 Apr 2026 03:17:29 -0700 (PDT)
+ AFNElJ8OZalkXyMQn/5R/XFVUYDJAmIZwSim8IoAdQ75cg8Vy3pGlmMxgAN52V9JvflFlhHnYbcWqFTGZQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9J8dwAuBsQye585lNFX9I6PdiuVwgXBEoIbTM5Eb95pMMAMw1
+ 93V83HBJIUIGdYplPpczuGCudJx+LeF65Enbb4Xvt96onR14ROD0aXQBzuS+rV9wLFY=
+X-Gm-Gg: AeBDiesIyUuTxuxT2vlvOjrP20MV2fup66vuJJxDpKg/IiFE9IPFrAJWEdn/H/fCqZD
+ JPI4zXEcXYZC3wA3lXM7jhZ9EUS8um515ekhPyhRxId7fgph2mtAs5oz2vxJbdl6hfJu6mh+zrh
+ 8wMlxYe+UXkWJ9zBf4NlN6KJz8nQDB7ty3tICRzykoCtoSLFEl63aDDJRE0Cs6jqNP3lOKnXhHa
+ GSiw3tknHiOOb6MKFDJ/CFn8rJinoHq7tieyixHizox90NgZUL36s4rZ5zLCCw+njPnmQP+33eR
+ R+i1W/f6gOPkmRdMr4Q9GPgAQhU/dcuDatK4IVaXBpQ8WhMK9DoMRnXKW0uNfrO5vxxHitRq5GH
+ UfbmQMRhFr+99pxHchxuhYZElAkml/AMn8RZTBV/Xmt3ydWT8nribrHU+PvzyvB7nhEfCPjAoZa
+ 7/j4use4uuO1qYwYHZQ388dUo1bW8m06qgiQ==
+X-Received: by 2002:a05:600c:570f:b0:488:a502:8955 with SMTP id
+ 5b1f17b1804b1-488fb882f13mr231449795e9.4.1776853045759; 
+ Wed, 22 Apr 2026 03:17:25 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4891c08faffsm420040875e9.1.2026.04.22.03.17.25
+ ffacd0b85a97d-43fe4e46898sm46560662f8f.27.2026.04.22.03.17.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 03:17:28 -0700 (PDT)
+ Wed, 22 Apr 2026 03:17:24 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 72EA26153F;
+ by draig.lan (Postfix) with ESMTP id 08B4E612AD;
  Wed, 22 Apr 2026 11:10:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,17 +77,18 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 25/31] target/arm: redefine event stream fields
-Date: Wed, 22 Apr 2026 11:10:36 +0100
-Message-ID: <20260422101043.1234229-26-alex.bennee@linaro.org>
+Subject: [PATCH v2 20/31] target/arm: use syndrome helpers in
+ merge_syn_data_abort
+Date: Wed, 22 Apr 2026 11:10:31 +0100
+Message-ID: <20260422101043.1234229-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org>
 References: <20260422101043.1234229-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,80 +111,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The event stream control bits are the same for both CNTHCTL and
-CNTKCTL so rather than duplicating the definitions rename them to be
-useful in both cases.
-
-We will need these in a later commit when we start implementing event
-streams.
+One more step to removing the old defines.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/internals.h | 11 +++++++----
- target/arm/helper.c    |  8 ++++----
- 2 files changed, 11 insertions(+), 8 deletions(-)
+ target/arm/tcg/tlb_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 85980f0e69a..dc593f1fec8 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -263,14 +263,17 @@ FIELD(VSTCR, SA, 30, 1)
-  * have different bit definitions, and EL1PCTEN might be
-  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
-  * disambiguate if necessary.
-+ *
-+ * The event stream bits (EVN*) are in the same position for
-+ * CNTKCTL_EL1/CTNKCTL.
-  */
- FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
- FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
- FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
--FIELD(CNTHCTL, EVNTEN, 2, 1)
--FIELD(CNTHCTL, EVNTDIR, 3, 1)
--FIELD(CNTHCTL, EVNTI, 4, 4)
-+FIELD(CNTxCTL, EVNTEN, 2, 1)
-+FIELD(CNTxCTL, EVNTDIR, 3, 1)
-+FIELD(CNTxCTL, EVNTI, 4, 4)
- FIELD(CNTHCTL, EL0VTEN, 8, 1)
- FIELD(CNTHCTL, EL0PTEN, 9, 1)
- FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
-@@ -280,7 +283,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
- FIELD(CNTHCTL, EL1TVCT, 14, 1)
- FIELD(CNTHCTL, EL1NVPCT, 15, 1)
- FIELD(CNTHCTL, EL1NVVCT, 16, 1)
--FIELD(CNTHCTL, EVNTIS, 17, 1)
-+FIELD(CNTxCTL, EVNTIS, 17, 1)
- FIELD(CNTHCTL, CNTVMASK, 18, 1)
- FIELD(CNTHCTL, CNTPMASK, 19, 1)
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 40dd070d2c1..81a07ca42d0 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1746,9 +1746,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     uint32_t valid_mask =
-         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
-         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
--        R_CNTHCTL_EVNTEN_MASK |
--        R_CNTHCTL_EVNTDIR_MASK |
--        R_CNTHCTL_EVNTI_MASK |
-+        R_CNTxCTL_EVNTEN_MASK |
-+        R_CNTxCTL_EVNTDIR_MASK |
-+        R_CNTxCTL_EVNTI_MASK |
-         R_CNTHCTL_EL0VTEN_MASK |
-         R_CNTHCTL_EL0PTEN_MASK |
-         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
-@@ -1763,7 +1763,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-             R_CNTHCTL_EL1TVCT_MASK |
-             R_CNTHCTL_EL1NVPCT_MASK |
-             R_CNTHCTL_EL1NVVCT_MASK |
--            R_CNTHCTL_EVNTIS_MASK;
-+            R_CNTxCTL_EVNTIS_MASK;
-     }
-     if (cpu_isar_feature(aa64_ecv, cpu)) {
-         valid_mask |= R_CNTHCTL_ECV_MASK;
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 565954269f9..c74d8e785a6 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -56,7 +56,7 @@ static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
+          */
+         assert(!fi->stage2);
+         syn = syn_data_abort_vncr(fi->ea, is_write, fsc);
+-    } else if (!(template_syn & ARM_EL_ISV) || target_el != 2
++    } else if (!FIELD_EX32(template_syn, DABORT_ISS, ISV) || target_el != 2
+         || fi->s1ptw || !fi->stage2) {
+         syn = syn_data_abort_no_iss(same_el, 0,
+                                     fi->ea, 0, fi->s1ptw, is_write, fsc);
 -- 
 2.47.3
 

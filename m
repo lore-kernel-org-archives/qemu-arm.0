@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8944AFA1FFF
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C0ADFA1FFC
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:46:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLo-0008Dt-O3; Wed, 22 Apr 2026 17:43:16 -0400
+	id 1wFfLr-0008OD-SW; Wed, 22 Apr 2026 17:43:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLi-00087U-61
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:10 -0400
-Received: from p-east2-cluster1-host3-snip4-7.eps.apple.com ([57.103.76.10]
+ id 1wFfLn-0008DH-JW
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:16 -0400
+Received: from p-east2-cluster1-host8-snip4-4.eps.apple.com ([57.103.76.77]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLg-0007LJ-JB
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:09 -0400
+ id 1wFfLl-0007Nr-AQ
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:15 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- B2BE11800C40; Wed, 22 Apr 2026 21:43:05 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGloLXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ BBB91180023C; Wed, 22 Apr 2026 21:43:10 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkDXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894187; x=1779486187;
- bh=6k+QVVhEedD0Xq1yy0QYax0drBFdQJ4trzLWGWmhBHQ=;
+ s=sig1; t=1776894192; x=1779486192;
+ bh=qSKqOpNTte0i6xqqaDhNVr4w7bOKGXgaVxqQVqgKXKc=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=DdpCAl293i9SOjc88khbacKPFw7pncpMBoRAj/wGWxDI/ss/sP7jc2GyDiga8zde8jtV7nhyqOmjsX1G1ppksVc8O8Iy62pBS2oqsoO/e9kn8X9iKDqDZazXoVJlV9QMmz5Amvmt1NzjZtvo374f/AYwQahuXllQo9jR1V1soQyIRjHT42354mhlFDyKUZ5sAF9olJmd23KFgzU/SDMJYQd5GodSiglJLDktnZf5R0ifIv69/Eo+Ym08Dki9EY4YiCZ7g0ZExtT4WlN+TaquWO+VuIGlCnB+60XSJOSjWRRAVnZoQSGLLom2KNk9LHA8FkwPIwIT+b0v5+lzvQbFyg==
+ b=SoiHHTzEqpyKzDW320VPR2k/hDU3F171eacAhiXahRURxOKUnF1SNGWQQ0GXgx/9a66UMmiey1KOivvQA0IZJ5KwXZPSwo80uQ91Zyd3V+nUpAzQXG4tyBuEw6nCzFNHDDwGtMJR/2XvtQi0scrwqwMft1hPZIPMSocx9APD+9xOOd7DZK50AEFu0dPywwTr9UCSr44MIrS7p3VbG0sItkuXHi0S6bgDO0Q/g0a8SCpEA0aq5sGO5s85+ax9pQ27rCvIUwoFYlt6nEvM7O2VrP2LU3kMKo+wsV+2ACZnSy/W0TVDADYjOpj9YH5PJqckpKzL/UOeGyF+nf4E+Pbg1w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- A7E28180020B; Wed, 22 Apr 2026 21:43:01 +0000 (UTC)
+ 65D7A1800950; Wed, 22 Apr 2026 21:43:05 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,27 +44,27 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 18/37] whpx: i386: enable GuestIdleReg enlightenment
-Date: Wed, 22 Apr 2026 23:42:06 +0200
-Message-ID: <20260422214225.2242-19-mohamed@unpredictable.fr>
+Subject: [PATCH v3 20/37] whpx: i386: ignore vpassist when kernel-irqchip=off
+Date: Wed, 22 Apr 2026 23:42:08 +0200
+Message-ID: <20260422214225.2242-21-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=bpRBxUai c=1 sm=1 tr=0 ts=69e940ea
+X-Proofpoint-GUID: 5cRCVzpbtauORHHMFe00oue436sL8EHP
+X-Authority-Info-Out: v=2.4 cv=QJVlhwLL c=1 sm=1 tr=0 ts=69e940ef
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=givlr1pFTcEyfNb0yRoA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX0QmNiMeW/qAE
- tI+c/FYi1FEAat5a7H8tWqK/qUgB8KzgCHTG25xLYymV612oHj4ROYF/VANI1Nr8RqtYcI7bbcg
- eNtWTKcV5eNcnP9g+XrZjX8AhLXBi8Qx8qcvjF4RupvYCt60Lo4qEiIU/wthpoqmp8IOaX/kreN
- XBgByt+GxSi7AWsXRGZ84nw8egb5pZOGfLp8M7COb1Lcd7SyntindFyy0ObswTaetkbk6o8POFz
- Yt5wPmoN7Y4A0tYAIp/AF99Z29n6TnPckbtQ2Cs085s6kH/AHHUVo3wYKTv7M4+mYF1q+Iocls6
- yblJ7Fn3MFwU8ezPYG51odS+nUf31QErhR9i+5VBCahaYdUHG6VCGrgtKUtc7k=
-X-Proofpoint-GUID: gC0gTZkBj92reTbumBd6Qu_K5PlDPMm3
-X-Proofpoint-ORIG-GUID: gC0gTZkBj92reTbumBd6Qu_K5PlDPMm3
-Received-SPF: pass client-ip=57.103.76.10;
+ a=HmN67jXOOwgiugJlUbgA:9
+X-Proofpoint-ORIG-GUID: 5cRCVzpbtauORHHMFe00oue436sL8EHP
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfXxm8kEI6dczqo
+ bb7nG8VjGgXgJZ2Eca196pXYoUZMkez8A5KT0Tk4Mo+NPm/kGwX2GfB9+/uH1ZdWz6sOtnoqQ8U
+ g5QorsPU9BCmGkWAIIDp9QYcwCShwRjf5XQlY2N7WMwCJIfLoZpqNe9CF2L61dV4tPzInZ9ulO8
+ 9Ss/oeGHEPIB/AOsFmuhM/02mCHQyrd9rhSULVXW+5u5SeXBdAp5fmgzxUQMb+uzFkUZIqBNY4z
+ jR39s8bfn57LeAcXQlDDS0DckmSYJKD3El6cIvS5o+vmp6EWh3zCPBC4D3FnuTuiGMQ8mgNkHu0
+ KD18pZABajySuX5nYAjhoLgjmV/QFKDGL2wtj8u5QfT9W/PyD+Iz/TUizJX43c=
+Received-SPF: pass client-ip=57.103.76.77;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -87,27 +87,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This corresponds to HV_X64_MSR_GUEST_IDLE (0x400000f0).
+Linux tries to set vpassist even when none of the enlightenments
+using it are available.
 
-This enlightenment is only available by the HV when using the Hyper-V LAPIC.
+So ignore the page it sets.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/i386/whpx/whpx-all.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 7f0ad6a24f..eecc7f48ed 100644
+index 521a94355d..cafcbf8bbb 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2806,6 +2806,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         synthetic_features.Bank0.AccessIntrCtrlRegs = 1;
-         synthetic_features.Bank0.SyntheticClusterIpi = 1;
-         synthetic_features.Bank0.DirectSyntheticTimers = 1;
-+        synthetic_features.Bank0.AccessGuestIdleReg = 1;
-         /*
-          * These technically work without the Hyper-V LAPIC
-          * but behave oddly for multi-core VMs.
+@@ -51,6 +51,7 @@
+ #define HYPERV_APIC_BUS_FREQUENCY      (200000000ULL)
+ /* for kernel-irqchip=off */
+ #define HV_X64_MSR_APIC_FREQUENCY       0x40000023
++#define HV_X64_MSR_VP_ASSIST_PAGE       0x40000073
+ 
+ static bool is_modern_os = true;
+ 
+@@ -2118,6 +2119,18 @@ int whpx_vcpu_run(CPUState *cpu)
+                     }
+                 }
+             }
++
++            /*
++             * Linux tries to use it anyway even when not exposed.
++             * Ignore the write as the VP assist page is not used.
++             */
++            if (vcpu->exit_ctx.MsrAccess.MsrNumber == HV_X64_MSR_VP_ASSIST_PAGE
++                && vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite
++                && !whpx_irqchip_in_kernel()
++                && whpx->hyperv_enlightenments_enabled) {
++                is_known_msr = 1;
++            }
++
+             /*
+              * For all unsupported MSR access we:
+              *     ignore writes
 -- 
 2.50.1 (Apple Git-155)
 

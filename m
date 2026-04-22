@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7447AF9B608
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:18:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DCCF9B608
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:18:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFUep-0007Ie-VP; Wed, 22 Apr 2026 06:18:12 -0400
+	id 1wFUew-0007U6-AL; Wed, 22 Apr 2026 06:18:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeM-0006ys-6n
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:43 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ id 1wFUeN-0006z2-SF
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:45 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeD-0002MV-Qd
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:41 -0400
-Received: by mail-wm1-x344.google.com with SMTP id
- 5b1f17b1804b1-488a14c31eeso41270575e9.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:26 -0700 (PDT)
+ id 1wFUeL-0002Pk-El
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:43 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-48984d29fe3so43180305e9.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776853045; x=1777457845; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776853054; x=1777457854; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=v9TGxTsXQ4q7KQiokEaw8AGBMMJRUq1ldJ+z5GAXPms=;
- b=TzAuik/PUnqDFYwFHFKKGIETYkLHGw1i072RRMtsvIBNcZLzdJ1gG6Tn/nQl1OR7o0
- 1K6jebO9egLjsQBpq0Iu4pV7XnVyEPqOoQ/S4tYzC9V9iH/bIe+ajeXhEMbuLY8BL/FL
- G87EQgK6Q0TKC6X8MpMC4FNlaWaA+OAJW9ewMQOAn6k1piIP5sYLjjsu9yg8saQc5FvE
- J8VgStHzfS9MvYnhQJydMsXzY5UM4fD/OM/hjNqHwuyed4JACPOnoPHb/OPi8M92vAz/
- NxnCdstKjdsgiWPxE+byHsR0VHy1ept2IarBYteygDE7HLe7iRjsxi6TeIXet1rzEz+W
- PHtA==
+ bh=yq/bGIVh38nrtfwG2BReGAMOSU3dNrWCtccK7bpObt0=;
+ b=R/Hnzk4LIMg5tAbF/6UzousfLH4uiWqR5BUnfAMyCjwhhdqiqSdIO/gpj8nnxuc7qx
+ CrcmzgfswyC6nBNVWsGjpAnGNYcbgRkQBBAb8l527kmFK2M/NlLxq+8U7n0E7r22xXiC
+ W7zUIGnkVOgMk2r7j4kHnqFH2cMlnKdnefDs0LYeh1uLdvKYK4DDVn6YG5pfB+VcczM7
+ 84Aw8CKY4NQhujS7lHt1eb/wk+iyuftiQ4Diei19eRrjyFgEOZyFCRBQxMZqqfx7zZRQ
+ to0EUAuim/apqZOWRd2qjiO5vShK03c10z8BnP1jNhjdH8ZJBn/7o+z032IDFwjW4b0o
+ yqYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776853045; x=1777457845;
+ d=1e100.net; s=20251104; t=1776853054; x=1777457854;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=v9TGxTsXQ4q7KQiokEaw8AGBMMJRUq1ldJ+z5GAXPms=;
- b=Y377MrwjTGAbdS9LB+3F9WbRr6AV+WpPJ7o86DR4iFLba6EXlDLIQmemyH26fy09oD
- mtzGv7FkEJp2dYkdK0e8ZEv2g4akGF3HYspYzBu6cdv1Q3I9UXSr1+ndjoZ/lva/c6Hy
- wPFt6A8fxnAQTdJB6eZJv5mCKnIbtHcMd4MBNiaHVgaJ9JxogGV7bgsoZ1u4nwuyvie0
- 9tsoglh7AgvCIIq9HoxR15r6YVoyr3kdmX0LUgnJmdeMvdmtYu32iWDjxprkDP0bvlF2
- tSpZ5P5GIjNaoiHrnEVhku3ha26er38DbJbAJNgfDqEu1fIpq31gYc4ukjdOyiQyhq83
- 10nA==
+ bh=yq/bGIVh38nrtfwG2BReGAMOSU3dNrWCtccK7bpObt0=;
+ b=QelmHCzNr6EINX9LBZgH2KgBCm6+TlPhUQZ7ErU8tq/NBEjH8b8DdDRhbNhOQbckIf
+ zbJBvCkkmE/FV6bXFvLijqGp+QqxR0pkgYvIOpxw11Emom9MMdUsD7V34D+VHBCokngp
+ BoEW+gZRw9M8C0M8P61/xwUvcyoEFuppE76rOysJ+p7xaQzjXxeYVMBQ6bYz7I5iiiMS
+ J1Dc+arxHl9AuS+SJUwYRbCrqMhQnqv0f83DYpInC3e6wQZBkchtma60HS933DT/bHBZ
+ 8w2GYjsi8hhkwHhwpMGdVYBoV73mNfK/Up6yguSa8Fne8EeLFwcvtzKAstQUSKsIdRKi
+ ySNQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+X3jqr900Jlrllwq/CqdLQZCa6OLglfViuDqajBt7iIlci4GQIr209bhZr0gD5MY1ZiSnO8eWcog==@nongnu.org
-X-Gm-Message-State: AOJu0YxD450SoyNLtjFE+m01/VyhUU1ZWmmYMt8GmA62aZXlRJ9id1Pl
- rP4jmAcQYx2VV8xZCclq1VIUm3Zw1sa57j7v90gv2Hqt9F7puZwaLa9JaX+4XGYCCxQ=
-X-Gm-Gg: AeBDieuF0qdZ5PplvDJVoYc9LhTfxzOOHxT60oQLSSuKgoVm9dYAkDj3QoQMUwqbZVf
- 5b8np/RaxJXVLB8YXd/0LzIX3Z1xjG37sQ6Lptz0HSmg8Nym6nwuyNh++iBUpHbig7PzZ9Uv+NS
- q+Zmbp/MM6HBbpJHAaNh+AhW1HJfWlZAuuuDZVNN5ZcXgqJQEOq20RT8tvLQkPYCGrNyNDC7VVd
- bOAtmMra0IQyR6EfM7S/eawnSDRnyMRZ1wMMY4oEO7Cez+VZyCtwOgY8faCNkfpwnXKteSpUxTP
- FKRkIytxGBvfra03KJxVrZ2eQg6+M3lXNR9jdR8FcluYJ183Us7eEcM1c6K7D/PnvoYKDE46niy
- X26UF54vFiAN6OSr49KevMM2v4o5bx/HP6g+4VonJvHNpfIAOcAuEZFXoRCiaZAPbbpQZuQn1WB
- tEjji5mZAD7uapqgxx6OePsfIviH0IGDT5rA==
-X-Received: by 2002:a05:600c:a31a:b0:488:b239:77ec with SMTP id
- 5b1f17b1804b1-488fb778db4mr234699655e9.17.1776853045332; 
- Wed, 22 Apr 2026 03:17:25 -0700 (PDT)
+ AFNElJ/MQvCVoWwM8OTkakt8/gfLatZvsZN6L2LOoN4ludJBXcZcr8nzU0rJvwV0Gii1dMJTbkK0dHjKmQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwnhkyE7zjgM9zzHsoYD9lkwjXxwnR3bUh8LE5loPMxbJRG3ItR
+ rW9axug1zMVrODe8U65u8D17lQ4DdibHMGuXj651rO5l4r8s4rOPU6GkE3sPrzkzn/s=
+X-Gm-Gg: AeBDievWyIT74nmDoI5aBrdhm/ExsqtZRLiN6rehxKJo4DYSDjIAexwSQQJtf2uJKRX
+ MUSpDjhQE9OvJbffQZyGbcMXRQCXAuRMjJt4IJNRK00TmTrm/JAHYawd/a4EYuebSi5/YxpbiNh
+ bvNkOgvVinm7GcE+ero2qbQJ71WkQpddtIF+S4y8/pJp0kfFjpGiGbAdR7zuRp3n71l5O8q7MXv
+ WPuoIHkwi3D9s+qfeNhBvtspy4U9JQRYL715oU4s+AMDoOp8x8D1K2JnbQXWNf8qG4rqwPs5qel
+ xojvo9KFhQadR/+GwcFW/bCdPkFnDu+S9QjbudizdQk9oRdiZjQtcAOGYyY3n3hFupG4hyfCLwy
+ eS/TJ+PBQgQrqvF31coVgmfKY6SguprxhsBKllH8cre99oU1UqvtZMhH1mQOljPmCHXLmal1ozR
+ gOBD+XGt0AYFx74wbFeY4U3V4J8pNoNBMqzA==
+X-Received: by 2002:a05:600c:c0d5:b0:488:c683:be89 with SMTP id
+ 5b1f17b1804b1-488fb74dffemr240575745e9.9.1776853053932; 
+ Wed, 22 Apr 2026 03:17:33 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a55dc9f58sm266229045e9.6.2026.04.22.03.17.24
+ 5b1f17b1804b1-48a55dc9f58sm266237205e9.6.2026.04.22.03.17.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 03:17:24 -0700 (PDT)
+ Wed, 22 Apr 2026 03:17:33 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 06F3C617D8;
- Wed, 22 Apr 2026 11:10:46 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id E967F611CD;
+ Wed, 22 Apr 2026 11:10:44 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
@@ -75,18 +75,19 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 31/31] target/arm: implement WFET
-Date: Wed, 22 Apr 2026 11:10:42 +0100
-Message-ID: <20260422101043.1234229-32-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2 19/31] target/arm: make hvf use syndrome helpers for decode
+Date: Wed, 22 Apr 2026 11:10:30 +0100
+Message-ID: <20260422101043.1234229-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org>
 References: <20260422101043.1234229-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,151 +110,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we have the event stream and SEV/SEVL implemented we can finally
-enable WFET for Aarch64.
+Rather than open coding a bunch of shifts and masks we can use the
+syndrome definitions.
 
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - fix exception syndrome by using enum value
-  - use env->halt_reason
----
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/op_helper.c     | 80 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c | 15 ++++---
- 3 files changed, 89 insertions(+), 7 deletions(-)
+ target/arm/hvf/hvf.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index a05f2258f29..31ffcbc6448 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -56,6 +56,7 @@ DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
- DEF_HELPER_2(wfit, void, env, i32)
-+DEF_HELPER_2(wfet, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 030209360e8..0c7f069a369 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -607,6 +607,86 @@ void HELPER(wfe)(CPUARMState *env)
- #endif
- }
- 
-+void HELPER(wfet)(CPUARMState *env, uint32_t rd)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * As for WFIT make it NOP here, because trying to raise EXCP_HLT
-+     * would trigger an abort.
-+     */
-+    return;
-+#else
-+    ARMCPU *cpu = env_archcpu(env);
-+    CPUState *cs = env_cpu(env);
-+    uint32_t excp;
-+    int target_el = check_wfx_trap(env, false, &excp);
-+    /* The WFET should time out when CNTVCT_EL0 >= the specified value. */
-+    uint64_t cntval = gt_get_countervalue(env);
-+    uint64_t timeout = env->xregs[rd];
-+    /*
-+     * We want the value that we would get if we read CNTVCT_EL0 from
-+     * the current exception level, so the direct_access offset, not
-+     * the indirect_access one. Compare the pseudocode LocalTimeoutEvent(),
-+     * which calls VirtualCounterTimer().
-+     */
-+    uint64_t offset = gt_direct_access_timer_offset(env, GTIMER_VIRT);
-+    uint64_t cntvct = cntval - offset;
-+    uint64_t nexttick;
-+    int64_t next_event;
-+
-+    /*
-+     * As for WFE if the event register is already set we can consume
-+     * the event and return immediately.
-+     */
-+    if (env->event_register) {
-+        env->event_register = false;
-+        return;
-+    }
-+
-+
-+    if (cpu_has_work(cs) || cntvct >= timeout) {
-+        /*
-+         * Don't bother to go into our "low power state" if
-+         * we would just wake up immediately.
-+         */
-+        return;
-+    }
-+
-+    /* We might sleep, so now we check to see if we should trap */
-+    if (target_el) {
-+        env->pc -= 4;
-+        raise_exception(env, excp, syn_wfx(1, 0xe, rd, true, WFET, false), target_el);
-+    }
-+
-+    /*
-+     * Finally work out if the timeout or event stream will kick in
-+     * earlier.
-+     */
-+    if (uadd64_overflow(timeout, offset, &nexttick)) {
-+        nexttick = UINT64_MAX;
-+    }
-+    if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-+        nexttick = INT64_MAX;
-+    }
-+
-+    next_event = gt_calc_next_event_stream(env);
-+    if (next_event > 0 && next_event < nexttick) {
-+        timer_mod(cpu->wfxt_timer, next_event);
-+    } else {
-+        if (nexttick == INT64_MAX) {
-+            timer_mod_ns(cpu->wfxt_timer, INT64_MAX);
-+        } else {
-+            timer_mod(cpu->wfxt_timer, nexttick);
-+        }
-+    }
-+
-+    env->halt_reason = HALT_WFE;
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
-+#endif
-+}
-+
- void HELPER(yield)(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index a1b0cc9508e..19e00573979 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2093,14 +2093,15 @@ static bool trans_WFET(DisasContext *s, arg_WFET *a)
-         return false;
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bbbd9..1c1c31f0b15 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2123,14 +2123,14 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         break;
      }
- 
--    /*
--     * We rely here on our WFE implementation being a NOP, so we
--     * don't need to do anything different to handle the WFET timeout
--     * from what trans_WFE does.
--     */
--    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--        s->base.is_jmp = DISAS_WFE;
-+    if (s->ss_active) {
-+        /* Act like a NOP under architectural singlestep */
-+        return true;
-     }
-+
-+    gen_a64_update_pc(s, 4);
-+    gen_helper_wfet(tcg_env, tcg_constant_i32(a->rd));
-+    /* Go back to the main loop to check for interrupts */
-+    s->base.is_jmp = DISAS_EXIT;
-     return true;
- }
- 
+     case EC_DATAABORT: {
+-        bool isv = syndrome & ARM_EL_ISV;
+-        bool iswrite = (syndrome >> 6) & 1;
+-        bool s1ptw = (syndrome >> 7) & 1;
+-        bool sse = (syndrome >> 21) & 1;
+-        uint32_t sas = (syndrome >> 22) & 3;
++        bool isv = FIELD_EX32(syndrome, DABORT_ISS, ISV);
++        bool iswrite = FIELD_EX32(syndrome, DABORT_ISS, WNR);
++        bool s1ptw = FIELD_EX32(syndrome, DABORT_ISS, S1PTW);
++        bool sse = FIELD_EX32(syndrome, DABORT_ISS, SSE);
++        uint32_t sas = FIELD_EX32(syndrome, DABORT_ISS, SAS);
+         uint32_t len = 1 << sas;
+-        uint32_t srt = (syndrome >> 16) & 0x1f;
+-        uint32_t cm = (syndrome >> 8) & 0x1;
++        uint32_t srt = FIELD_EX32(syndrome, DABORT_ISS, SRT);
++        uint32_t cm = FIELD_EX32(syndrome, DABORT_ISS, CM);
+         uint64_t val = 0;
+         uint64_t ipa = excp->physical_address;
+         AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
 -- 
 2.47.3
 

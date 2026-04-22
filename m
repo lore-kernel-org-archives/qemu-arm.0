@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BD0FA1FFC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA8FF94CC1
 	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLO-0007wx-5Y; Wed, 22 Apr 2026 17:42:50 -0400
+	id 1wFfMO-0000XQ-AE; Wed, 22 Apr 2026 17:43:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLM-0007vZ-Q2
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:48 -0400
-Received: from p-east2-cluster1-host7-snip4-4.eps.apple.com ([57.103.76.67]
+ id 1wFfMJ-0000Fo-V8
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:47 -0400
+Received: from p-east2-cluster5-host7-snip4-10.eps.apple.com ([57.103.79.33]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLL-0006z9-06
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:48 -0400
+ id 1wFfMI-0007uG-5s
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:47 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 1B131180097E; Wed, 22 Apr 2026 21:42:41 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlwfHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
+ 33EAC1800235; Wed, 22 Apr 2026 21:43:40 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlgFXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894166; x=1779486166;
- bh=hkQG6hOmkKoQQ4VfPKcZK5YN5+VU0E/MubeBjGkQBBQ=;
+ s=sig1; t=1776894225; x=1779486225;
+ bh=C5WRRvURtBayyBiG835j2KXKO2FgKSgzzKn5mAraQ9M=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=HV9zMv3So4Y0mJwBIOC7ZlYdnjGoCAdOyTv9t7dpf3LuIvvPGpP6VTuyL7n4F8ex55BDHFZtlHJJoyNl+fQ97znFqLlyvUVedPc/sNCujmek+LqYx2o6so9DuWnFd+eWPIjSeOinVZgYdiDrQiN4M4PfKXnuzN602s8L1A5s9Jd4BzzhPnv4Dl0wfGyfaJ+6QsUdjjCcj2jm+p6j2lGaHev5qNG6+NB2eq/uRWqpFSbVaZy6RuUEZIYCzlDPx1lrBrqeLfezG7imjWhrHEITZaKGp8DxGnt8Wnf2BuO+e/+5XtayprEDJOQCHf0bMTJbtVodlg4Gqupky8zbo8Ruqw==
+ b=gcjJEN+8NuwFKU7XcWiq5Nm+z5321MM2VMrr+LKzCHhTUYu6HdcWtlS0sTh0eo3Nm7E+idcNr2a2wd7RyMGTO00YDvd8gEWuV2XkPFUNN2k/emhmHdhrYDIO/kNYEAcE0hAoCAMpy4Itfi/BGq9ZAHyZLvmVe+uM1S+KfQB275iDbu7iGSeY23WSFfo3wHp2iJXdp3lm6d/q9dX6bIE0Lf3CWrQ88mpwS8C+Stf3rg22qU2aF3rqRgFWKQE/VsmlyX8tRylTDp2L0iRjCU828D0xw3Ammk8ZGeHNJcbgL6+bAYJEb6RSX3ztxZwzHJGf3d39AUFDr8g7u6GZObvy1w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 6E5F018000C7; Wed, 22 Apr 2026 21:42:39 +0000 (UTC)
+ 28FDF180023C; Wed, 22 Apr 2026 21:43:35 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,33 +44,35 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 06/37] whpx: i386: reintroduce enlightenments for Windows 10
-Date: Wed, 22 Apr 2026 23:41:54 +0200
-Message-ID: <20260422214225.2242-7-mohamed@unpredictable.fr>
+Subject: [PATCH v3 36/37] whpx: i386: add SeparateSecurityDomain flag and make
+ default
+Date: Wed, 22 Apr 2026 23:42:24 +0200
+Message-ID: <20260422214225.2242-37-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: pHMhze96HKbChHZ4pNipe3sOb9aB1OHK
-X-Authority-Info-Out: v=2.4 cv=TtLrRTXh c=1 sm=1 tr=0 ts=69e940d3
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX9oTjBs4MnP3V
+ VXfgh++ldqwJunPdVg05KdaNjofSaSc4ZGdrAbGb099el/30DS2enICL2tZQtGo5apL0v+n9weB
+ oNDLZCyGOpFpONQXfpvTsw2/1zShQrXezecSw48nIQ4GfMQyxMaZProXbigU4c/qsgSRzacIOfa
+ PVaZJbTpHR5HQSj9QoZY2ZmVta8Cnjh3tqSqrWcIvwlioNqXx+vxiKG/k5ytP4mL5bPDhaPNIml
+ Bk+AT4ofo6XHmnhvOiu5GkH0ajnMTNW9sKYYaTv4Ths9pFHDxZuEtQpyDrB1N89fPknquufNAbg
+ 7h3dKiEuNVK3alo6glLyz96sh4HEdZlhKOwrCHD9OVCFBXpTzEdGfkRHA/F9Mw=
+X-Proofpoint-GUID: r-kcIHqkpANMylvvMitAtNLeP4rw2eCh
+X-Authority-Info-Out: v=2.4 cv=Uplu9uwB c=1 sm=1 tr=0 ts=69e9410f
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=hfWBbujXMTx1PmRkPVYA:9
-X-Proofpoint-ORIG-GUID: pHMhze96HKbChHZ4pNipe3sOb9aB1OHK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfX4Y10kmJax19L
- NeAdQfEOjJhNwWwSLmU5PnJAPs1nUtZAhQw8Q+JQryNxdbQ0xP9g+s9H+bLeVVUabKxd80Pmbob
- hvi4FGiiy5wzz0h2Oo0ECrD58sPUtEnLsbByBi0SoPmAI7lwSphV8xAw4Bu+BuuH67Bx1TYB/F1
- wn6xv+focXtqLFUHajmVKeicojN/mwci1JHZB+97GjSaDubZ8YFrNY83e42DOyeJB8We7F1cmAg
- 2y/jYbTB9Ji0TCi/KdrxisZds15GgKGVjneEK+jp0u7YUrWp6drvwxv94ksHc4lDvj1djDoZDAl
- nYusF5vK/xKSobhmq/W+2GBszIdmm9Amotr2AXCqOWXpUSa/VtzUUUZw8ynKEY=
-Received-SPF: pass client-ip=57.103.76.67;
+ a=sJaswNuOvxcMbF25v3wA:9
+X-Proofpoint-ORIG-GUID: r-kcIHqkpANMylvvMitAtNLeP4rw2eCh
+Received-SPF: pass client-ip=57.103.79.33;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -87,157 +89,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Was removed in 2c08624 but it's still useful for
-Windows 10 so reintroduce it there.
-
-And this time, actually make it work by reporting
-the hypervisor bit in CPUID.
-
-Pretend to be vmware to be able to use vmport's functionality.
-
-If the vmware frequency leaf is disabled, pretend to be
-KVM, with the only capability reported being X2APIC support.
+For workloads where isolation is less important, -accel whpx,ssd=off
+will provide significantly higher MMIO performance.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- accel/whpx/whpx-common.c       |  2 ++
+ accel/whpx/whpx-common.c       |  1 +
  include/system/whpx-internal.h |  1 +
- target/arm/whpx/whpx-all.c     |  1 +
- target/i386/whpx/whpx-all.c    | 63 +++++++++++++++++++++++++++++-----
- 4 files changed, 58 insertions(+), 9 deletions(-)
+ target/i386/whpx/whpx-all.c    | 63 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 65 insertions(+)
 
 diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index b813a5d9d2..59be996aef 100644
+index 305b2ae1d0..e5dabb6bdf 100644
 --- a/accel/whpx/whpx-common.c
 +++ b/accel/whpx/whpx-common.c
-@@ -550,6 +550,8 @@ static void whpx_accel_instance_init(Object *obj)
- 
-     whpx->hyperv_enlightenments_allowed = true;
-     whpx->hyperv_enlightenments_required = false;
-+    /* Value determined at whpx_accel_init */
-+    whpx->hyperv_enlightenments_enabled = false;
+@@ -557,6 +557,7 @@ static void whpx_accel_instance_init(Object *obj)
+     whpx->ignore_unknown_msr = true;
+     whpx->intercept_msr_gp = false;
+     whpx->nested_virt_enabled = true;
++    whpx->separate_security_domain = true;
  }
  
  static const TypeInfo whpx_accel_type = {
 diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index 5902124b63..cf782cf5f8 100644
+index 4436cfe6ba..08a49706ff 100644
 --- a/include/system/whpx-internal.h
 +++ b/include/system/whpx-internal.h
-@@ -45,6 +45,7 @@ struct whpx_state {
+@@ -48,6 +48,7 @@ struct whpx_state {
+     bool hyperv_enlightenments_enabled;
  
-     bool hyperv_enlightenments_allowed;
-     bool hyperv_enlightenments_required;
-+    bool hyperv_enlightenments_enabled;
+     bool nested_virt_enabled;
++    bool separate_security_domain;
  
- };
- 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index bbf0f6be96..4019a513aa 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -968,6 +968,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-      * as they're not needed for performance.
-      */
-     if (whpx->hyperv_enlightenments_required) {
-+        whpx->hyperv_enlightenments_enabled = true;
-         hr = whp_dispatch.WHvSetPartitionProperty(
-                 whpx->partition,
-                 WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks,
+     bool ignore_unknown_msr;
+     bool intercept_msr_gp;
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 4954e0557a..f9f330c038 100644
+index d17db73cff..035a8231b7 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2168,14 +2168,57 @@ int whpx_vcpu_run(CPUState *cpu)
-                 vcpu->exit_ctx.VpContext.Rip +
-                 vcpu->exit_ctx.VpContext.InstructionLength;
+@@ -3006,6 +3006,38 @@ static void whpx_set_nested_virt(Object *obj, Visitor *v,
+     }
+ }
  
--            reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
--            reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
--            reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
--            reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
--
--            if (vcpu->exit_ctx.CpuidAccess.Rax == 1) {
--                if (cpu_has_x2apic_feature(env)) {
--                    reg_values[2].Reg64 |= CPUID_EXT_X2APIC;
-+            if (whpx_is_legacy_os()) {
-+                reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
-+                reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
-+                reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
-+                reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
-+            } else {
-+                cpu_x86_cpuid(env, vcpu->exit_ctx.CpuidAccess.Rax,
-+                    vcpu->exit_ctx.CpuidAccess.Rcx,
-+                    (UINT32 *)&reg_values[1].Reg32,
-+                    (UINT32 *)&reg_values[4].Reg32, (UINT32 *)&reg_values[2].Reg32,
-+                    (UINT32 *)&reg_values[3].Reg32);
-+            }
++static void whpx_set_ssd(Object *obj, Visitor *v,
++                                   const char *name, void *opaque,
++                                   Error **errp)
++{
++    struct whpx_state *whpx = &whpx_global;
++    OnOffAuto mode;
 +
-+            if (!whpx->hyperv_enlightenments_enabled) {
-+                switch (vcpu->exit_ctx.CpuidAccess.Rax) {
-+                case 1:
-+                    reg_values[2].Reg64 |= CPUID_EXT_HYPERVISOR;
-+                    break;
-+                case 0x40000000:
-+                    /*
-+                     * Use vmware_cpuid_freq as a proxy to report VMware.
-+                     * This is to get the TSC/APIC frequency query functionality
-+                     * provided through vmport, as Linux doesn't use leaf
-+                     * 0x40000010 for getting those frequencies.
-+                     */
-+                    if (x86_cpu->vmware_cpuid_freq) {
-+                        reg_values[1].Reg64 = 0x40000010;
-+                        reg_values[4].Reg64 = 0x61774d56;
-+                        reg_values[2].Reg64 = 0x4d566572;
-+                        reg_values[3].Reg64 = 0x65726177;
-+                    } else {
-+                        /* report KVM otherwise if that's disabled */
-+                        reg_values[1].Reg64 = 0x40000001;
-+                        reg_values[4].Reg64 = 0x4b4d564b;
-+                        reg_values[2].Reg64 = 0x564b4d56;
-+                        reg_values[3].Reg64 = 0x4d;
-+                    }
-+                    break;
-+                case 0x40000001:
-+                    if (!x86_cpu->vmware_cpuid_freq) {
-+                        /* KVM reporting of X2APIC support */
-+                        reg_values[1].Reg64 = reg_values[4].Reg64 =
-+                            reg_values[2].Reg64 = 1 << 15;
-+                    }
-+                    break;
-+                case 0x40000010:
-+                    if (x86_cpu->vmware_cpuid_freq) {
-+                        reg_values[1].Reg64 = env->tsc_khz;
-+                        reg_values[4].Reg64 = env->apic_bus_freq / 1000; /* Hz to KHz */
-+                    }
-+                    break;
-                 }
-             }
++    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
++        return;
++    }
++
++    switch (mode) {
++    case ON_OFF_AUTO_ON:
++        whpx->separate_security_domain = true;
++        break;
++
++    case ON_OFF_AUTO_OFF:
++        whpx->separate_security_domain = false;
++        break;
++
++    case ON_OFF_AUTO_AUTO:
++        whpx->separate_security_domain = true;
++        break;
++    default:
++        /*
++         * The value was checked in visit_type_OnOffAuto() above. If
++         * we get here, then something is wrong in QEMU.
++         */
++        abort();
++    }
++}
++
  
-@@ -2396,6 +2439,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     WHV_PROCESSOR_FEATURES_BANKS processor_features;
-     WHV_PROCESSOR_PERFMON_FEATURES perfmon_features;
-     UINT32 cpuidExitList[] = {1};
-+    UINT32 cpuidExitList_nohyperv[] = {1, 0x40000000, 0x40000001, 0x40000010};
+ void whpx_arch_accel_class_init(ObjectClass *oc)
+ {
+@@ -3024,6 +3056,11 @@ void whpx_arch_accel_class_init(ObjectClass *oc)
+         NULL, NULL);
+     object_class_property_set_description(oc, "intercept-msr-gp",
+         "Toggle nested virtualization off/on.");
++    object_class_property_add(oc, "ssd", "OnOffAuto",
++        NULL, whpx_set_ssd,
++        NULL, NULL);
++    object_class_property_set_description(oc, "ssd",
++        "Separate security domain");
+ }
  
-     whpx = &whpx_global;
- 
-@@ -2601,6 +2645,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+ int whpx_accel_init(AccelState *as, MachineState *ms)
+@@ -3223,6 +3260,32 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         info_report("WHPX: nested virtualisation not available");
      }
  
-     if (is_modern_os && whpx->hyperv_enlightenments_allowed) {
-+        whpx->hyperv_enlightenments_enabled = true;
-         hr = whp_dispatch.WHvSetPartitionProperty(
-                 whpx->partition,
-                 WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks,
-@@ -2653,7 +2698,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
++    /*
++     * The combination of separate security domain off
++     * and disabling specifically these features results
++     * in a significant vmexit performance improvement
++     * by skipping speculative execution mitigations.
++     */
++    if (!whpx->separate_security_domain) {
++        processor_features.Bank0.IbrsSupport = 0;
++        processor_features.Bank0.StibpSupport = 0;
++        processor_features.Bank0.IbpbSupport = 0;
++        processor_features.Bank0.SsbdSupport = 0;
++        processor_features.Bank0.IbrsAllSupport = 0;
++        processor_features.Bank1.PsfdSupport = 0;
++        memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
++        prop.SeparateSecurityDomain = 0;
++        hr = whp_dispatch.WHvSetPartitionProperty(
++            whpx->partition,
++            WHvPartitionPropertyCodeSeparateSecurityDomain,
++            &prop,
++            sizeof(WHV_PARTITION_PROPERTY));
++        if (FAILED(hr)) {
++            error_report("WHPX: failed to unset separate security domain, hr=%08lx", hr);
++            /* Some old Windows 10 releases didn't have this, so not fatal*/
++        }
++    }
++
      hr = whp_dispatch.WHvSetPartitionProperty(
-         whpx->partition,
-         WHvPartitionPropertyCodeCpuidExitList,
--        cpuidExitList,
-+        whpx->hyperv_enlightenments_enabled ? cpuidExitList : cpuidExitList_nohyperv,
-         RTL_NUMBER_OF(cpuidExitList) * sizeof(UINT32));
- 
-     if (FAILED(hr)) {
+             whpx->partition,
+             WHvPartitionPropertyCodeProcessorFeaturesBanks,
 -- 
 2.50.1 (Apple Git-155)
 

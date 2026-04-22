@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F268FA1FFF
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:44:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 486CFFA1FFC
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:44:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLm-0008Ax-Q8; Wed, 22 Apr 2026 17:43:14 -0400
+	id 1wFfLI-0007sg-41; Wed, 22 Apr 2026 17:42:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLh-00087L-Vp
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:10 -0400
-Received: from p-east2-cluster1-host12-snip4-1.eps.apple.com ([57.103.76.54]
+ id 1wFfLF-0007rA-Sr
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:41 -0400
+Received: from p-east2-cluster1-host8-snip4-6.eps.apple.com ([57.103.76.79]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLf-0007Kz-Tt
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:09 -0400
+ id 1wFfLD-0006wA-6G
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:41 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 00D1D1800C5C; Wed, 22 Apr 2026 21:43:05 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkCXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ 9BA9C180020B; Wed, 22 Apr 2026 21:42:34 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlgfHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894187; x=1779486187;
- bh=VwbCJMQOjdR/FYXB00bRp25vI47XadzN5iydMAM/HgY=;
+ s=sig1; t=1776894158; x=1779486158;
+ bh=zl2db1VwfCW29E4LtwT7zz4buZdQP1VZYTXVu1kcs+o=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=dq2FKB8mCjD9MINwWiem2Gy9aOSMlGy3TfXyFYfuIkdZLPBJlStVstYkvYYUdMVpLy5srIfsOtjszScOoSdfB0b4sYL0Wma9AXMNGKNcole7akqhoolKgxKxpOECTw0pMOkUu5X0byYS1iTY41q5ugstbtl9gROZHgpZkY/9vEq8961TQ7A6pizlwCTYvt+ZTGFElb9Rw02VJIsI6E0Xl+YjAcJZMOMnDQMSUO4cfTln8G2tM5ZgXs/a6X+DMoWTi+d6ArlkN6X82fVj0Vk/65T5P6YiNJkrTtwlQplniixKZXfF4BSYpvihjKN9IvIBzSkzM5e2j4OxjeOwJ4qO7w==
+ b=LrWNIkAJboKAkCAHpECPwIlZJaS8E+5kpnT+Qr2I2AdCQ2u7/f0qkEmAZWSwoJQ+u9DWIuhKznFRy4EButFn7vThA1bc3aigHCuLwLmNykHK7Y0KMTO+Z1yfZyAvqLD3M6oC0fUWcDIUzIMiK5A3iLL+jlkmdKg9WTovGPZx2FbLe47velB1chDcZt2Pm5kmHVXOebFTSHiTRGXJ2HE373jfCbwRDdiIxCUjBs2JKVWl/mkFSsoBNRgM0FKIFQkPbeGgGZlzVwdxmj9eSBlFXrgl8XXQKhIaLpai7AvUl7/nytu+mVCAI5c6xdj+tHTcsz1gm0OOGY5oziUkY+PB6w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 86A75180021C; Wed, 22 Apr 2026 21:43:03 +0000 (UTC)
+ F01EB18006EE; Wed, 22 Apr 2026 21:42:31 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,27 +44,27 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 19/37] whpx: i386: tighten APIC base validity check
-Date: Wed, 22 Apr 2026 23:42:07 +0200
-Message-ID: <20260422214225.2242-20-mohamed@unpredictable.fr>
+Subject: [PATCH v3 02/37] whpx: i386: x2apic emulation
+Date: Wed, 22 Apr 2026 23:41:50 +0200
+Message-ID: <20260422214225.2242-3-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfXw0+xwYuvSptF
- RAv96mFmEuKyCO1ASgtbj7m39SwICKEAVzTzAqE9p03L5MhpIwIu6xwWPgX9MlRKps4nrTJexsn
- UWkMMp3vb77Zf+qOeH5bV1dO02MLg6LIlfXx1iHtBVFDLpJ1MHXe8wynnF/9Cxp31yVXP4Htmot
- Smfy2hT1ic+sNwk+2wp41l//HY37+T84fZuov135yecu7tRIfsCFwCELGA3tz0fBxGjgBd0TutT
- 7uZM4Unr5IozBJAXGQCv4d6L3p3CLtiIjBtkyD2H5rK/MpwEq2btx3MxP35fvsNW9FN9s7u9Thv
- wdHg1uBvNqjIsgSF++N7VfPuP6N7gPhhbvazqafFZ3nFV75yp6hOBlpGYnDYuE=
-X-Proofpoint-GUID: N_YulKQGm_yuOxyLLofGd58QM7H_uqQw
-X-Proofpoint-ORIG-GUID: N_YulKQGm_yuOxyLLofGd58QM7H_uqQw
-X-Authority-Info-Out: v=2.4 cv=VuUuwu2n c=1 sm=1 tr=0 ts=69e940eb
+X-Authority-Info-Out: v=2.4 cv=JK02csKb c=1 sm=1 tr=0 ts=69e940cc
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=uh2sygq7LFHjsVUyvz4A:9
-Received-SPF: pass client-ip=57.103.76.54;
+ a=nj4AhdDZwDx412jv8JQA:9
+X-Proofpoint-ORIG-GUID: Ybs8RxuWhcrLCxZn5Wm-d4O3dnI2bRdz
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfX/V40YKqbg3jr
+ 9yENxUQAThvqn8r/6r4989XpR2oGKa4agutkmC5dxL5yUmKjIhtY+ez5I4PnZ5GoZsVrZf3klME
+ qgCwCWdLfwOgvl/cXU8GZLKHRW7KpYkdfXI47p8EFuQd7UDnzKHkFOF99YTWB5+2aZXvoE+u2O3
+ 3SoAARKG8JgfIIU9zvN2mU+Kv8fPpwmPMN6cKWcJ5KBH+yobz9StIDZPSTuBwhUWlGMAkEOyo7c
+ yrVnXI/hAI9e3AwKkTE3gEhB8VhjnX7KV5GClax5Hno+ynVh/A92nR/397fBZm+et9TilYQUKo7
+ lGnwFFyf7LZIFHbMNSQag1hcWlaM9f1cr6HJMS1Lgxevf4TNLhgrjgMbP6jDgw=
+X-Proofpoint-GUID: Ybs8RxuWhcrLCxZn5Wm-d4O3dnI2bRdz
+Received-SPF: pass client-ip=57.103.76.79;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -88,25 +88,214 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Add x2apic emulation to WHPX for the kernel-irqchip=off case.
+
+Unfortunately, it looks like there isn't a workaround available
+for proper behavior of PIC interrupts when kernel-irqchip=on
+for Windows 10. The OS is out of support outside of extended
+security updates so this will not be addressed.
+
+The performance boost is quite visible for multicore guests.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/whpx/whpx-all.c | 3 +++
- 1 file changed, 3 insertions(+)
+ target/i386/whpx/whpx-all.c | 134 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 133 insertions(+), 1 deletion(-)
 
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index eecc7f48ed..521a94355d 100644
+index e56ae2b343..4127440c0c 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2078,6 +2078,9 @@ int whpx_vcpu_run(CPUState *cpu)
+@@ -1082,6 +1082,8 @@ HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions)
+     /* Register for MSR and CPUID exits */
+     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+     prop.ExtendedVmExits.X64MsrExit = 1;
++    prop.ExtendedVmExits.X64CpuidExit = 1;
++
+     if (exceptions != 0) {
+         prop.ExtendedVmExits.ExceptionExit = 1;
+     }
+@@ -1898,6 +1900,18 @@ int whpx_vcpu_run(CPUState *cpu)
+             WHV_REGISTER_NAME reg_names[3];
+             UINT32 reg_count;
+             bool is_known_msr = 0; 
++            uint64_t val;
++
++            if (vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
++                val = ((uint32_t)vcpu->exit_ctx.MsrAccess.Rax) |
++                    ((uint64_t)(vcpu->exit_ctx.MsrAccess.Rdx) << 32);
++            } else {
++                /*
++                 * Workaround for [-Werror=maybe-uninitialized]
++                 * with GCC. Not needed with Clang.
++                 */
++                val = 0;
++            }
  
-             if (vcpu->exit_ctx.MsrAccess.MsrNumber == MSR_IA32_APICBASE) {
+             reg_names[0] = WHvX64RegisterRip;
+             reg_names[1] = WHvX64RegisterRax;
+@@ -1911,7 +1925,47 @@ int whpx_vcpu_run(CPUState *cpu)
+                 && !vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite
+                 && !whpx_irqchip_in_kernel()) {
                  is_known_msr = 1;
-+                if (val & MSR_IA32_APICBASE_RESERVED) {
-+                    x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
+-                reg_values[1].Reg32 = (uint32_t)X86_CPU(cpu)->env.apic_bus_freq;
++                val = X86_CPU(cpu)->env.apic_bus_freq;
++            }
++
++            if (!whpx_irqchip_in_kernel() &&
++                vcpu->exit_ctx.MsrAccess.MsrNumber == MSR_IA32_APICBASE) {
++                is_known_msr = 1;
++                if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
++                    /* Read path unreachable on Hyper-V */
++                    abort();
++                } else {
++                    WHV_REGISTER_VALUE reg = {.Reg64 = val};
++                    int msr_ret = cpu_set_apic_base(X86_CPU(cpu)->apic_state, val);
++                    if (msr_ret < 0) {
++                        x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++                    }
++                    whpx_set_reg(cpu, WHvX64RegisterApicBase, reg);
 +                }
-                 if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
-                     /* Read path unreachable on Hyper-V */
-                     abort();
++            }
++
++            if (!whpx_irqchip_in_kernel() &&
++                vcpu->exit_ctx.MsrAccess.MsrNumber >= MSR_APIC_START &&
++                vcpu->exit_ctx.MsrAccess.MsrNumber <= MSR_APIC_END) {
++                int index = vcpu->exit_ctx.MsrAccess.MsrNumber - MSR_APIC_START;
++                int msr_ret;
++                is_known_msr = 1;
++                if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
++                    bql_lock();
++                    msr_ret = apic_msr_read(X86_CPU(cpu)->apic_state, index, &val);
++                    bql_unlock();
++                    reg_values[1].Reg64 = val;
++                    if (msr_ret < 0) {
++                        x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++                    }
++                } else {
++                    bql_lock();
++                    msr_ret = apic_msr_write(X86_CPU(cpu)->apic_state, index, val);
++                    bql_unlock();
++                    if (msr_ret < 0) {
++                        x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++                    }
++                }
+             }
+             /*
+              * For all unsupported MSR access we:
+@@ -1921,6 +1975,11 @@ int whpx_vcpu_run(CPUState *cpu)
+             reg_count = vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite ?
+                         1 : 3;
+ 
++            if (!vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite) {
++                reg_values[1].Reg32 = (uint32_t)val;
++                reg_values[2].Reg32 = (uint32_t)(val >> 32);
++            }
++
+             if (!is_known_msr) {
+                 trace_whpx_unsupported_msr_access(vcpu->exit_ctx.MsrAccess.MsrNumber,
+                     vcpu->exit_ctx.MsrAccess.AccessInfo.IsWrite);
+@@ -1939,6 +1998,47 @@ int whpx_vcpu_run(CPUState *cpu)
+             ret = 0;
+             break;
+         }
++        case WHvRunVpExitReasonX64Cpuid: {
++            WHV_REGISTER_VALUE reg_values[5] = {0};
++            WHV_REGISTER_NAME reg_names[5];
++            UINT32 reg_count = 5;
++            X86CPU *x86_cpu = X86_CPU(cpu);
++            CPUX86State *env = &x86_cpu->env;
++
++            reg_names[0] = WHvX64RegisterRip;
++            reg_names[1] = WHvX64RegisterRax;
++            reg_names[2] = WHvX64RegisterRcx;
++            reg_names[3] = WHvX64RegisterRdx;
++            reg_names[4] = WHvX64RegisterRbx;
++
++            reg_values[0].Reg64 =
++                vcpu->exit_ctx.VpContext.Rip +
++                vcpu->exit_ctx.VpContext.InstructionLength;
++
++            reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
++            reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
++            reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
++            reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
++
++            if (vcpu->exit_ctx.CpuidAccess.Rax == 1) {
++                if (cpu_has_x2apic_feature(env)) {
++                    reg_values[2].Reg64 |= CPUID_EXT_X2APIC;
++                }
++            }
++
++            hr = whp_dispatch.WHvSetVirtualProcessorRegisters(
++                whpx->partition,
++                cpu->cpu_index,
++                reg_names, reg_count,
++                reg_values);
++
++            if (FAILED(hr)) {
++                error_report("WHPX: Failed to set CpuidAccess state "
++                             " registers, hr=%08lx", hr);
++            }
++            ret = 0;
++            break;
++        }
+         case WHvRunVpExitReasonException:
+             whpx_get_registers(cpu, WHPX_LEVEL_FULL_STATE);
+ 
+@@ -2136,6 +2236,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     WHV_PROCESSOR_FEATURES_BANKS processor_features;
+     WHV_PROCESSOR_PERFMON_FEATURES perfmon_features;
+     bool is_legacy_os = false;
++    UINT32 cpuidExitList[] = {1};
+ 
+     whpx = &whpx_global;
+ 
+@@ -2354,6 +2455,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     /* Register for MSR and CPUID exits */
+     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+     prop.ExtendedVmExits.X64MsrExit = 1;
++    prop.ExtendedVmExits.X64CpuidExit = 1;
+ 
+     hr = whp_dispatch.WHvSetPartitionProperty(
+             whpx->partition,
+@@ -2366,6 +2468,36 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
+ 
++    memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
++    prop.X64MsrExitBitmap.UnhandledMsrs = 1;
++    if (!whpx_irqchip_in_kernel()) {
++        prop.X64MsrExitBitmap.ApicBaseMsrWrite = 1;
++    }
++
++    hr = whp_dispatch.WHvSetPartitionProperty(
++            whpx->partition,
++            WHvPartitionPropertyCodeX64MsrExitBitmap,
++            &prop,
++            sizeof(WHV_PARTITION_PROPERTY));
++    if (FAILED(hr)) {
++        error_report("WHPX: Failed to set MSR exit bitmap, hr=%08lx", hr);
++        ret = -EINVAL;
++        goto error;
++    }
++
++    hr = whp_dispatch.WHvSetPartitionProperty(
++        whpx->partition,
++        WHvPartitionPropertyCodeCpuidExitList,
++        cpuidExitList,
++        RTL_NUMBER_OF(cpuidExitList) * sizeof(UINT32));
++
++    if (FAILED(hr)) {
++        error_report("WHPX: Failed to set partition CpuidExitList hr=%08lx",
++                     hr);
++        ret = -EINVAL;
++        goto error;
++    }
++
+     /*
+      * We do not want to intercept any exceptions from the guest,
+      * until we actually start debugging with gdb.
 -- 
 2.50.1 (Apple Git-155)
 

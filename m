@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F24E8F9EDC5
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 12:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA365F9EDCA
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 12:54:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFX4i-0005zG-VI; Wed, 22 Apr 2026 08:53:04 -0400
+	id 1wFX5m-0007Hh-QP; Wed, 22 Apr 2026 08:54:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX4e-0005x3-Qm
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:01 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1wFX5i-0006xF-Kc
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:54:06 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX4d-0005T6-4z
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:00 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4896c22fcbaso28287185e9.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:52:58 -0700 (PDT)
+ id 1wFX5g-0006Cn-Kw
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:54:06 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4891d7164ddso21192675e9.3
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:54:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776862377; x=1777467177; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1776862443; x=1777467243; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=OMEvstJVHgigEudV5H559dC48ky9GaKFB5z4g04o+Y4=;
- b=nfTCAJXHBB07zPe5kNdFBJgkDpSYx09+12VC9s7H7yhGxzOJoRtUHPVWE9E5j4msfW
- +g8vN3Fm6Xt6T+tatZ9IerwMQ5Vl4Y0cb6mBJSYmFQqCTO6LmgQjAFJHqbEF1FAdi1zb
- sa+TDJGyWOULOcGQX5Ej02NgH2UnjYx4gjShsMJHEb8qwEkP7beOSVmSjmnereIAmDh7
- Eb8gXQ0qVHp17FO6KAAWFS1tUlcyfJ8O5MrTlpXk2d+wUkwO/h/ObIqLRUVn467Uw4Ja
- znsThmpQQRurGSeowCcWDiIissZbOpSHYkx/FO+7FVFnTZO4Ewr78Ppwy6xn8s0pjHQm
- mKag==
+ bh=00AJ7UrUeXPy7ZqKcucMiGTlG4wrum92TpmohAq+VBM=;
+ b=yPBUgZsIdLaQU/x6QlxIdhfwtYEn6sLvFOuNq4DyLMJ1jhpxuT5xi7FxulTcbF4eeO
+ Fl8qDfl3IyqJBVoT8DPhDVf43RZyuhWkzmvHkWfRcDLm/i3k864ihv0fVrjVy14IMekt
+ 5so1hp6yUOUs3/3Fy0ZrUKx8D9F4BhsHIDk+tUYxNFLF4jfEd8zzbudAQTKHekl6OVAq
+ shoVYkY83D3RAWnZiQMAdrkU9USjXGiVv/av2VFAVfRN+zPE8tYY1Tcfc6Hsrs9eDspc
+ /fm+LmDsUXMOdvUJqE+9I/WmDF6TON9f88zzBY1VH3X6FsJoDomR3wCq5Y5h/uYoH8we
+ kjoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776862377; x=1777467177;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=OMEvstJVHgigEudV5H559dC48ky9GaKFB5z4g04o+Y4=;
- b=L+css8DaAQf0cZZDk8YoIuREYS+skkm2d1gMyRjawUrW7T4v8NtlcuTbY2j8G5zCU3
- H0oqEUfAOpqbGkdbgHST6OvFjb4+OPhCe+60/3M6z7mlR5L8ToTmkuSXGD0ukLlANTLO
- u2h6HlnNKr2B8CerfCHr0OCAJUKSlzYQiDWkGj8sWPjHBBHk1w7zr+a0vS49RYI0BKs7
- YLQiZU5+Wej/6ea1dyp7ncATA40Sk/huB4hMXGfUZoDW4T5PNtkXkiUrDozNykjFcJd8
- H8X9AYcClx/LVcV+y+75fDb/cE2gtgX6XVCHkvYOVJ6vQqoBTeuau5qPDHrZ9iV+iUaa
- Zm6g==
+ d=1e100.net; s=20251104; t=1776862443; x=1777467243;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=00AJ7UrUeXPy7ZqKcucMiGTlG4wrum92TpmohAq+VBM=;
+ b=QuAbXpSseIQWeyMPYNq+bH1sPrAt7+fKPIHblU63ZG/P4Jy8d+VbYvn7EuTC1Co2Fq
+ wZNGi6SdLo0CVu6MqBiXNklqOYy0vMDEphEuJjvIUc/0kkUPjTxsvrwM2KZwOKQSNAPh
+ FkT613JNJo684lp1GMq428xfOnAzv0wRpJEbEF0Z+AuziiV59zQP/udu6N6CqjttWNBi
+ veHgB86kgRqNOmylI9HRPZvXXL+gtClobwCXT5tD38+YVz6eVyWxiHEXqm/qGs9iDBts
+ jkvIuVlgKbqKatbYcpp4RofYHGBhhZ2hV17U5HqcbIe5gz+5eeLNZCO7mrOGXL8tUpBZ
+ Q5XA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+tafqgB4Clvp4BZHszbmldwAivTfQpZN/SUfgtNRYq34dQuPkKw9A5fNkh/PTQ4Y1ET6iwn/pSrQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzgCSslurZ5drEudyhlIN7iS8w3fHP1e4z+HTxEJ/BBgPuu3UPW
- v5EM5E8wXDOA3Q/6JjqQy5p+jOYqUnwIKHtcJifv09zQWGJoUVz+wAsiQhvnQpdIPfg=
-X-Gm-Gg: AeBDieu6+lgWQihlgsQKVMUXw4p7VrGpLZ+uQjEDpeFnluH4ycUfIfiP67ZH8jfwg+3
- 4tkkQ1BfoAGRcc2j6SvdkLHxdb9QPBgFVIss48qdd4yqG3ofml1WsvvMgochV2JQRd2q6E+o9qz
- 7AiU1tHnlMYE8DDllEm9APLSfFK7FQpLcN98UJAb5PTXp1Y+EeGBh9aw08La5ZDffqC/gTJU335
- a8uxi5I6YvWzVcS6KqFJxAnasysrHRjr9IFWKkM6toFBB2rFNKvCSe/FvhQwEaNB10/vVlpezqD
- oQ0k4nnapYppb9NfNyr1uml7tn/ArqRvRFSAyWsvN2Gq9q8LHoFX8Mdk6XspgqLQCWqhteI7yQp
- 1GCXlyXxXiPTqwXXpQhd7I19jiXYUYpA4KREUKBBCV/KKK7WHAqFo5TnINR5cMiUwQikCtAaXtO
- kWS21BkjbxenDRsY2Djk5+NUL4TYOk9WVyXQ==
-X-Received: by 2002:a05:600c:4e4c:b0:48a:58ae:9938 with SMTP id
- 5b1f17b1804b1-48a58ae9f69mr79775915e9.19.1776862377319; 
- Wed, 22 Apr 2026 05:52:57 -0700 (PDT)
+ AFNElJ/eLI96E13dj0MM0m4N+rG+9VcKvJ4q9FggOHTxq4Juvqvc/SLeUWJnRobInyQOpzn86wekqal3cg==@nongnu.org
+X-Gm-Message-State: AOJu0Yza36xE05pzN+eqHBof9J0OEX4r6Z/X1+Dva8jor0DsZx1Hsavx
+ SoJsraJyCpABWXLy32UuVD5nGxY678qFuG9n1Ce+uQESQzg/IY/6R96Sl0KgbasevWQBGIgGmBD
+ VApIYIK4=
+X-Gm-Gg: AeBDieuvUFMO9WOUepp3+ohFRMfVBlVbCxfZRtnAbFRORNodgnkzxSfFjbalPL3ITFd
+ vEG0mQ6u4qWJbllx2bH5GBKq7Pi5yVKPF0KFnJlF3cvw9UN7RQJw7VdFU97yV+zMQFvFVehY0W/
+ LwQviBdOdKxBg0xOEjgsN5P+7BgtB3UmxVv6o05L+vT6P2gwor+p2oj+wy4I9bIjJpg3tq/p0P5
+ 3I7xukJ2ZkNtKreyG/tFAiAv8St5WtAANrzVkm2fBB/j9snZfvi9ulG6mRkhlMIvLvLcg4zLXzo
+ iZibjm3uIojXgS02AUzlvBesQ7CLIjXR9bJkVtwVJQf26+WA4dtM02S79IjZVCzY2WAXZ75+D1T
+ FD3wj6rRTKc1WK13r808bj51aSo/me6Ty7u/G9eQh1pum+izNwfZG9WJrbZcv+Rj+wgXEC7xDoJ
+ wc36pNTCJYlX9hyXXamVUw/r+4wDLoWi316gb0UCSP/IUq
+X-Received: by 2002:a05:600c:4f0c:b0:489:1c1f:35e6 with SMTP id
+ 5b1f17b1804b1-4891c1f38c8mr201641885e9.6.1776862442605; 
+ Wed, 22 Apr 2026 05:54:02 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc17f642sm409465985e9.5.2026.04.22.05.52.54
+ 5b1f17b1804b1-488fc0f82bbsm753110215e9.3.2026.04.22.05.54.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 05:52:55 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id A537460ED5;
- Wed, 22 Apr 2026 13:52:51 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+ Wed, 22 Apr 2026 05:54:02 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 38A1C60342;
+ Wed, 22 Apr 2026 13:54:01 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 09/32] target/arm: migrate Granule Protection traps to
- registerfields
-Date: Wed, 22 Apr 2026 13:52:26 +0100
-Message-ID: <20260422125250.1303100-10-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260422125250.1303100-1-alex.bennee@linaro.org>
-References: <20260422125250.1303100-1-alex.bennee@linaro.org>
+Cc: Alexander Graf <agraf@csgraf.de>,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Paolo Bonzini <pbonzini@redhat.com>,  Mohamed
+ Mediouni <mohamed@unpredictable.fr>,  kvm@vger.kernel.org,  Pedro Barbuda
+ <pbarbuda@microsoft.com>
+Subject: Re: [PATCH v2 00/31] target/arm: fully model WFxT instructions for
+ A-profile
+In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org> ("Alex
+ =?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 22 Apr 2026 11:10:11 +0100")
+References: <20260422101043.1234229-1-alex.bennee@linaro.org>
+User-Agent: mu4e 1.14.1-pre3; emacs 30.1
+Date: Wed, 22 Apr 2026 13:54:01 +0100
+Message-ID: <877bpzxija.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,57 +110,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/syndrome.h | 30 +++++++++++++++++++++++++++---
- 1 file changed, 27 insertions(+), 3 deletions(-)
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 6fcf0ac7572..bc65106c61a 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -462,12 +462,36 @@ static inline uint32_t syn_bxjtrap(int cv, int cond, int rm)
-     return res;
- }
- 
-+/*
-+ * ISS encoding for a Granule Protection Check exception
-+ *
-+ * These are only reported to EL3
-+ */
-+FIELD(GPC_ISS, xFSC, 0, 6)
-+FIELD(GPC_ISS, WnR, 6, 1) /* Write not Read */
-+FIELD(GPC_ISS, S1PTW, 7, 1)
-+FIELD(GPC_ISS, CM, 8, 1)
-+FIELD(GPC_ISS, VNCR, 13, 1)
-+FIELD(GPC_ISS, GPCSC, 14, 6)
-+FIELD(GPC_ISS, InD, 20, 1) /* Instruction not Data access */
-+FIELD(GPC_ISS, S2PTW, 21, 1)
-+
- static inline uint32_t syn_gpc(int s2ptw, int ind, int gpcsc, int vncr,
-                                int cm, int s1ptw, int wnr, int fsc)
- {
--    return (EC_GPC << ARM_EL_EC_SHIFT) | ARM_EL_IL | (s2ptw << 21)
--        | (ind << 20) | (gpcsc << 14) | (vncr << 13) | (cm << 8)
--        | (s1ptw << 7) | (wnr << 6) | fsc;
-+    uint32_t res = syn_set_ec(0, EC_GPC);
-+    res = FIELD_DP32(res, SYNDROME, IL, 1);
-+
-+    res = FIELD_DP32(res, GPC_ISS, S2PTW, s2ptw);
-+    res = FIELD_DP32(res, GPC_ISS, InD, ind);
-+    res = FIELD_DP32(res, GPC_ISS, GPCSC, gpcsc);
-+    res = FIELD_DP32(res, GPC_ISS, VNCR, vncr);
-+    res = FIELD_DP32(res, GPC_ISS, CM, cm);
-+    res = FIELD_DP32(res, GPC_ISS, S1PTW, s1ptw);
-+    res = FIELD_DP32(res, GPC_ISS, WnR, wnr);
-+    res = FIELD_DP32(res, GPC_ISS, xFSC, fsc);
-+
-+    return res;
- }
- 
- static inline uint32_t syn_insn_abort(int same_el, int ea, int s1ptw, int fsc)
--- 
-2.47.3
+> This series fully models the behaviour of WFxT instructions. We
+> already had support for WFE for M-profile but we left off A-profile as
+> it has more potential sources of wake-ups. The main one is the event
+> stream which includes events from significant bits of the timer
+> ticking over.
+>
+<snip>
+>   target/arm: enable event stream on WFE instructions
+>   target/arm: implement WFET
+<snip>
 
+I've posted v3 to handle the missing WFE exception and fix a minor
+syndrome bug on the WFET exception.
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

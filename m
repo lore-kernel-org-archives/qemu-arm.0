@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C040F9B608
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC27F9B612
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:44:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFUer-0007M8-2s; Wed, 22 Apr 2026 06:18:13 -0400
+	id 1wFV4L-00019F-9E; Wed, 22 Apr 2026 06:44:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeM-0006yi-2o
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:43 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeD-0002Ms-4f
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:36 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-43d70b3e159so2645167f8f.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776853047; x=1777457847; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UF2x3LQsFVeOwuh4smvXIT3vMnoh5OJHhwB45pzXnIE=;
- b=EBhtq0Thxa3UEOH1ExBQBxahJvatpOmpfzKJM0j7Enjgt5REr0VkNqJB0/gJfqZiSW
- HJQanXenqRwRqEPLyB5YrmDtYYcD9SbDR7pOY1t9IiXBzxsSMlDBTECCGslHlItg+9WT
- 7xCrocsQ7K2fJ3zvzb8bhebSceLj1YJyPdZjTHGTvIdCApAbPtPbW6oi3/xIKHDW8K3J
- QbS3+PsnmnaZUr3q/Dy2faycyA71u/pKkgVoFc5tQJxlhjN/sPfi4DBpwoa1QOTGMk2x
- Gf6hWY8491OTlgFPO4pJ+1jHWt+LZZd8aUO50QiqMZGP51H58xAeEvL7jHVkS4E8d1P9
- a18g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776853047; x=1777457847;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=UF2x3LQsFVeOwuh4smvXIT3vMnoh5OJHhwB45pzXnIE=;
- b=SWQsSj8DLBiN0gvQzvgMRheGdTzPll7mK89OoT8GSByHi0sSDPjVwmOyHrSioR0NeR
- IfJ5uCdcJPJupmMK09v+HxFZrPT+uttNkEhdUOJ/C9dGXIgD9AGdfNmZywrryotP0MMJ
- hD0iNzZqnU1X50HIlfbc7B4adNtOwYQmwGAe5B6onXrSkzVxPxX1+sM3N6ACwZL50nAR
- JuhCTb5bDwiZdQVlO8BbHqe6i98nDN2wMVk09nzyHZR9JEyQbFOz2BTkNnp9F0vAHIgz
- uISghoi0rxYZQqxEOPJUiZTE2MvCdMiu/F+V9hLA5H7obwR7x2qmrd1w8rSP5Yok7xbV
- qJ9A==
-X-Forwarded-Encrypted: i=1;
- AFNElJ96rDwLbZUDplMIlJyOLOp5wyFQOXMjj00Xbp7cOs898ZBzNzkSWywgYhtBMZk7KRiMX8aG9HJaCg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyv6tqolKVgoI5Qegu5zf7HrVeqZ0qe+O4rbDwth5RGF8MpJdpf
- IcGsZSJf8xqJqm+Df4PYTcztMFIRs+9H91IL2d/CQEmQRRjXWkUITTgQJZ+EvZzHiWI=
-X-Gm-Gg: AeBDietPkMPBD9DaDTOXwyyIoK6yGLmLjdgIrOlZFpyzvi854nxque/BiXIlYVeEurw
- Xhga0Ne9ePCHt5wVgCwF5y6xptctbr0//CjRzh0HjBncYfo9qAKoGih3uLq6lJT3mFePvvUTalG
- kkkwJ8RBsuXr0j9/ZF6fS/z+SuxKhNVXWD7M0pQhQ1YoaKmlg2RSXYxAScQktSjDtOUoBQGV+5+
- Y6/VEbzzN0kDyIyt94ZqH8EDsWFuhkRQmXCGaL6xpqn7VNi6Xoh6JheT1oA+Bn+PJcDZkVCLcBu
- wVRTkJJaWG5Ls2yQUHCbSiTJM+4k7QRXGo3Skm6AX/Ay/8phJUbudX0On9p6Tm0exKyn9QAZYq1
- kzr21p4aXAaxX3CcfTJ3qSsxix52pr1tZ7NuGSmIP7c/igf5o7OCX7ZxRkN7Ra2XZOT2ZX5AbKs
- oFZoP1HsBx6J/96o6RZ6kH3IiUsxf4cYqNHemYiQ8cDwn4
-X-Received: by 2002:a05:6000:24c8:b0:43d:70b3:7edf with SMTP id
- ffacd0b85a97d-43fe3dc5386mr35212015f8f.12.1776853047494; 
- Wed, 22 Apr 2026 03:17:27 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e4d525sm42572233f8f.31.2026.04.22.03.17.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 03:17:24 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 2F18F614A7;
- Wed, 22 Apr 2026 11:10:45 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFV3x-0000Ty-JQ
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:44:15 -0400
+Received: from p-east2-cluster5-host7-snip4-10.eps.apple.com ([57.103.79.33]
+ helo=outbound.st.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFV3v-0003Db-OS
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:44:09 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-4 (Postfix) with ESMTPS id
+ 6CC6B1800417; Wed, 22 Apr 2026 10:44:05 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRAEwVSB11NVg1HD1geXBQXC0dDXgheH0wcHQ5YBhIATQoONgZZBV4JVgNDBTYSFF1FRgNHGVcUUBtHDFUHV15fChMAXg8PTHpABi4EKXM1FE8HWA9GBjR4SB4vBCkAXXpJAlpyWHFDDjt2VXceXABLHVcEVB9TElUdHQtFVRIEQAhWUFQeQQRWFWwJWAZTGVc=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1776854646; x=1779446646;
+ bh=UYGshsVpXsiTJgLMvkXMm2iq6dV3ukV2xgw2p6SYvPY=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=LcEs1D3V4L12SzzS6rr/YdXs/sXwHchcZ9aSZpd9u5gaY+5955olQ4K1cegS4aPjSoGy/JhoExKRN9ghVyuk7Uxcpb5ChbEgUZgo63Eea/TZJ0cjX8mmVg5xta5MlXzwpSVi1I9UbsIWJHTqjkVN7pNDn6HhjCGQGQz0zZggekLMAOmHrpiWT+Fkq27ujC+TbgPsr4cRP0S4iLaMyAYjdkp+z+t3iKGZ/jbEfWdNMn+z4lF4AfOIxGr44fD6aeehaDRmrsu5DCYG2URF+GPaPjxLiiirQwuyBAiV30i8JrhCf0RPlogaChl+ql0uqgRml5chr5pcQ+sUABxc/mA97A==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-4 (Postfix) with ESMTPSA id
+ 88CF71800097; Wed, 22 Apr 2026 10:44:01 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v2] whpx: i386, arm: do partition reset on boot CPU reset
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260421205749.55060-1-mohamed@unpredictable.fr>
+Date: Wed, 22 Apr 2026 12:43:49 +0200
+Cc: Richard Henderson <richard.henderson@linaro.org>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 22/31] target/arm: remove old syndrome defines
-Date: Wed, 22 Apr 2026 11:10:33 +0100
-Message-ID: <20260422101043.1234229-23-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org>
-References: <20260422101043.1234229-1-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-stable@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <C85C3BAE-7458-4DA0-B3B2-C117E3C37CE8@unpredictable.fr>
+References: <20260421205749.55060-1-mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Authority-Info-Out: v=2.4 cv=KoZAGGWN c=1 sm=1 tr=0 ts=69e8a676
+ cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=kj9zAlcOel0A:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=A3C6YRHjnLZ7LpmBN_kA:9 a=CjuIK1q_8ugA:10
+X-Proofpoint-GUID: JHnvgY1GcBfyXxfaVNhnI9TpW9_MBqsj
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDEwMiBTYWx0ZWRfXwdnAShNmmHzN
+ Qj4dZ3bdjFe4uSCWH4jPKppEIV3UEVQasKC0kxg/w9oWy1Q4OwD0WsomaVU1TKLEQ0RgRG5PfrY
+ mL/v2LtwGE67d8Xdu/FkzCLn3jX21hW8ATZr7xljCs8j/txue+IMTysB4ANWkmQy9+2Kahk5JJT
+ S9fcJdSO9W3kDHXLZ6J6g34q8Ze2pHHnb/E9w2rz74gFeO4q2FtFjIwbVvspZkQl1Q62QZygdlT
+ d4mJnJZFGxA/c90gtMvaNBLXV0dDN+fGEpv+ANh4Up8el5Db9r/eiLoAvIY19v+G2+dWmtyBKMJ
+ +/qXtatGXG/7bcVwW5xuORmC48ONHOu6ZeMii5Jo09HWr5/8SvzMpSNsOdu6xM=
+X-Proofpoint-ORIG-GUID: JHnvgY1GcBfyXxfaVNhnI9TpW9_MBqsj
+Received-SPF: pass client-ip=57.103.79.33;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,40 +88,149 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now everything is defined with registerfields we can drop the old
-defines.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
----
-v2
-  - remove stuff dropped earlier
----
- target/arm/syndrome.h | 9 ---------
- 1 file changed, 9 deletions(-)
+> On 21. Apr 2026, at 22:57, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+>=20
+> WHvResetPartition resets partition state, and is not supported on =
+Windows 10.
+>=20
+> On Arm, it's supposed to be used for reboots. The prior location of =
+the
+> WHvResetPartition call wasn't right, as other vCPUs might still have
+> been running, causing the call to fail.
+>=20
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+cc qemu-stable@
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index d4dfab8cd15..04a71eebcb5 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -106,15 +106,6 @@ typedef enum {
-     GCS_IT_GCSPOPX = 9,
- } GCSInstructionType;
- 
--#define ARM_EL_EC_LENGTH 6
--#define ARM_EL_IL_SHIFT 25
--#define ARM_EL_ISV_SHIFT 24
--#define ARM_EL_IL (1 << ARM_EL_IL_SHIFT)
--#define ARM_EL_ISV (1 << ARM_EL_ISV_SHIFT)
--
--/* In the Data Abort syndrome */
--#define ARM_EL_VNCR (1 << 13)
--
- static inline uint32_t syn_get_ec(uint32_t syn)
- {
-     return FIELD_EX32(syn, SYNDROME, EC);
--- 
-2.47.3
+I believe this one is a good candidate for qemu-stable too
+
+> ---
+> accel/accel-system.c       |  9 +++++++++
+> accel/whpx/whpx-common.c   | 13 +++++++++++++
+> include/accel/accel-ops.h  |  1 +
+> include/qemu/accel.h       |  3 +++
+> system/runstate.c          |  5 +++++
+> target/arm/whpx/whpx-all.c |  2 --
+> 6 files changed, 31 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/accel/accel-system.c b/accel/accel-system.c
+> index 150af05bf5..5352ccd937 100644
+> --- a/accel/accel-system.c
+> +++ b/accel/accel-system.c
+> @@ -75,6 +75,15 @@ void accel_pre_resume(MachineState *ms, bool =
+step_pending)
+>     }
+> }
+>=20
+> +void accel_reset(MachineState *ms)
+> +{
+> +    AccelState *accel =3D ms->accelerator;
+> +    AccelClass *acc =3D ACCEL_GET_CLASS(accel);
+> +    if (acc->reset_vm) {
+> +        acc->reset_vm(accel);
+> +    }
+> +}
+> +
+> /* initialize the arch-independent accel operation interfaces */
+> void accel_init_ops_interfaces(AccelClass *ac)
+> {
+> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+> index 6fe44d5910..1f7b7d764d 100644
+> --- a/accel/whpx/whpx-common.c
+> +++ b/accel/whpx/whpx-common.c
+> @@ -205,6 +205,18 @@ static void =
+do_whpx_cpu_synchronize_pre_loadvm(CPUState *cpu,
+>     cpu->vcpu_dirty =3D true;
+> }
+>=20
+> +/*
+> + * Partition support
+> + */
+> +
+> +static void whpx_partition_reset(AccelState* as)
+> +{
+> +    struct whpx_state *whpx =3D &whpx_global;
+> +    if (whp_dispatch.WHvResetPartition) {
+> +        whp_dispatch.WHvResetPartition(whpx->partition);
+> +    }
+> +}
+> +
+> /*
+>  * CPU support.
+>  */
+> @@ -622,6 +634,7 @@ static void whpx_accel_class_init(ObjectClass *oc, =
+const void *data)
+>     ac->name =3D "WHPX";
+>     ac->init_machine =3D whpx_accel_init;
+>     ac->pre_resume_vm =3D whpx_pre_resume_vm;
+> +    ac->reset_vm =3D whpx_partition_reset;
+>     ac->allowed =3D &whpx_allowed;
+>=20
+>     object_class_property_add(oc, "kernel-irqchip", "on|off|split",
+> diff --git a/include/accel/accel-ops.h b/include/accel/accel-ops.h
+> index f46492e3fe..a1c9f3ae7b 100644
+> --- a/include/accel/accel-ops.h
+> +++ b/include/accel/accel-ops.h
+> @@ -33,6 +33,7 @@ struct AccelClass {
+>     /* system related hooks */
+>     void (*setup_post)(AccelState *as);
+>     void (*pre_resume_vm)(AccelState *as, bool step_pending);
+> +    void (*reset_vm)(AccelState *as);
+>     bool (*has_memory)(AccelState *accel, AddressSpace *as,
+>                        hwaddr start_addr, hwaddr size);
+>=20
+> diff --git a/include/qemu/accel.h b/include/qemu/accel.h
+> index d3638c7bfd..0e12aea7db 100644
+> --- a/include/qemu/accel.h
+> +++ b/include/qemu/accel.h
+> @@ -54,6 +54,9 @@ void accel_setup_post(MachineState *ms);
+>=20
+> void accel_pre_resume(MachineState *ms, bool step_pending);
+>=20
+> +/* Reset accelerator state. */
+> +void accel_reset(MachineState *ms);
+> +
+> /**
+>  * accel_cpu_instance_init:
+>  * @cpu: The CPU that needs to do accel-specific object =
+initializations.
+> diff --git a/system/runstate.c b/system/runstate.c
+> index 2d4e95a216..734e3c037c 100644
+> --- a/system/runstate.c
+> +++ b/system/runstate.c
+> @@ -564,6 +564,11 @@ void qemu_system_reset(ShutdownCause reason)
+>         qapi_event_send_reset(shutdown_caused_by_guest(reason), =
+reason);
+>     }
+>=20
+> +    if (current_machine) {
+> +        /* Tell the accelerator that the VM is being reset. */
+> +        accel_reset(current_machine);
+> +    }
+> +
+>     /*
+>      * Some boards use the machine reset callback to point CPUs to the =
+firmware
+>      * entry point.  Assume that this is not the case for boards that =
+support
+> diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+> index 4019a513aa..f345fea4fe 100644
+> --- a/target/arm/whpx/whpx-all.c
+> +++ b/target/arm/whpx/whpx-all.c
+> @@ -472,8 +472,6 @@ int whpx_vcpu_run(CPUState *cpu)
+>             if (arm_cpu->power_state !=3D PSCI_OFF) {
+>                 whpx_psci_cpu_off(arm_cpu);
+>             }
+> -            /* Partition-wide reset, to reset state for reboots to =
+succeed. */
+> -            whp_dispatch.WHvResetPartition(whpx->partition);
+>             bql_unlock();
+>             break;
+>         case WHvRunVpExitReasonNone:
+> --=20
+> 2.50.1 (Apple Git-155)
+>=20
 
 

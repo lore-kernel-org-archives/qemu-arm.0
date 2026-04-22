@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B7FA1FFC
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:43:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EF3FA1FFC
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:43:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLH-0007sW-PT; Wed, 22 Apr 2026 17:42:43 -0400
+	id 1wFfLz-0008Vy-5x; Wed, 22 Apr 2026 17:43:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLF-0007r8-Qu
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:41 -0400
-Received: from p-east2-cluster1-host9-snip4-10.eps.apple.com ([57.103.76.113]
+ id 1wFfLx-0008Tv-GN
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:25 -0400
+Received: from p-east2-cluster5-host8-snip4-2.eps.apple.com ([57.103.79.35]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLD-0006vp-IY
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:41 -0400
+ id 1wFfLv-0007VY-Un
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:25 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- BDFFC18006F2; Wed, 22 Apr 2026 21:42:32 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkfHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
+ 35D781800216; Wed, 22 Apr 2026 21:43:21 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkFXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894156; x=1779486156;
- bh=jSFEY3OW57r5Gmf0SB6G349rIgUNCT10rXc1M/CBSww=;
+ s=sig1; t=1776894203; x=1779486203;
+ bh=zKgMP02e3B1vI1/Ihfo5NS9pcmEl5Ljw2zF+qf50GhQ=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=PyQTwjt7pw3pQluYudZ9pi6yjQ9CKSqwDoEslECPrQIx0HVTGZQpMUU9jLoawpNIoN5VGM6gSeYPusC5inM9X0DHzmJMqhtUsRhhCchIbT/njtpEoVFqgY1+CRTe+MZw3y6+2Xmf0UHcuAPLXp2oyP1xs0Lf13OwST4hUKZkhBIIW6Ige+5Lvrvp4YAFInUH2XqD1yh78zHX1Tai61tVci+wEDDxs+k0SPhLz6nRAKVzFmgXe4/bchO8dBWTs+x/65AdmxAaSY5eRwqm1S8Q1g0PeFMmm2Tt0oFL8/xudQ+t62CmC+Uqn0Oc5bRwfe0Gjc+hF4hkOXrgKAeUbU2LRg==
+ b=fjUPfhCXFe/HgxHMf7MxJ7pcZRgNfUpobemzVBOlv9NDaeONudRkQjmqML6VKsuWqWfYg7yUACBSKTi9OCmG0KESaIG59/JGHKWGulWm0fhH8lHf457tmSMln+keHkVh5970J1fwfFVtD9b43PRwbr2PqMu2JWGtmlhsUJ/oZK8goX1fAJOikO4svFL82r+1vMOojA87G+v5J4IrtLNb1ITQLRcs4EZYsp4vpeeCPsZpGER3Z1FjPsrLz+FJ+rb58ewCsuZSeXXlkJ5nN9/+zGv2fD9NnnxuTS5cuveDJZfO4MmSFdBTFPnBuP5e0GtAun2Ts0ZwSenBaF9gLyDqDw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 1941C1800230; Wed, 22 Apr 2026 21:42:29 +0000 (UTC)
+ 8211E1800C40; Wed, 22 Apr 2026 21:43:16 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,36 +44,36 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 01/37] target/i386: emulate: include name of unhandled
- instruction
-Date: Wed, 22 Apr 2026 23:41:49 +0200
-Message-ID: <20260422214225.2242-2-mohamed@unpredictable.fr>
+Subject: [PATCH v3 26/37] target/i386: emulate: use exception_payload for
+ fault address
+Date: Wed, 22 Apr 2026 23:42:14 +0200
+Message-ID: <20260422214225.2242-27-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=JK02csKb c=1 sm=1 tr=0 ts=69e940ca
+X-Authority-Info-Out: v=2.4 cv=H4TWAuYi c=1 sm=1 tr=0 ts=69e940f9
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=x0iqa3ucmZZh0HPruXgA:9
-X-Proofpoint-ORIG-GUID: GVe91KvhnulYeeaoO6Q_eK2KMilNniQ3
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfXwMcxJoB08nlA
- Hanp3pf7eYOTt2z1IRMR/jCzNKnkuItlXWHH4BeKYpL7dRbAtiE0R0qtEfawdtwyMU6c4ltHG67
- aON74e3LPrjB1jKgtuuZI2WqKrMgHjvvoPqDQR4R/0zq+puuXvWqJSxLP2xlh5pL1dj6Nzf0QAB
- vsKNCOQPVwUUukFmoNa0X52LIYGGIx1ZarLv+A+g02pyWzrwHi+wRezA2F2rjg/GVSGtwVxLw5G
- 85Kq3DaVLuU9yyAELojAhinsWB4lLD7CPQ2T6V2stBuvd1bDZYakqoDXvfxGwozKYg2M/iK0hUw
- yg/Hkih9442OihyckHIOi/PqP44blczh1CMsT9mgEcUKiFFoSxWULnxk97nQs0=
-X-Proofpoint-GUID: GVe91KvhnulYeeaoO6Q_eK2KMilNniQ3
-Received-SPF: pass client-ip=57.103.76.113;
+ a=YcyI-53RcdBlrF1VUN8A:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX9n/SoLoOaaS5
+ XYpo/us7gfy5iQmfejXtji3jsvMZqRS1zI0NMC3pJY2PCdISWMWBVrWnAPUXz+k01zzYPJIpwfs
+ b+f1eb/lRAl/IH1XfoqyzvG0bYC0wgYOamGRH2Du3hCEBaZQp+SxoamQ+cZdqQ1XRu4YMGWGxC1
+ oLy+8pTUDxmNiqYethFY1IPnSISRb5TuesLL3AkHmq8mxhUfbrSjjjFmQ1AT2eDk/npJQIiFL8+
+ M2o24MMj4WphqLoSgAnBiQ7pyBuxDPFbToUdOi48hew+O+3AwVZ4w73AvWtskoZPySrieuWdaUE
+ HKBa6LrbI1rKocy8zjfzJf707fxcfrUDdMDaCSq1UY0ttSHVUn4pdf2PfMdHOY=
+X-Proofpoint-GUID: FEZx6ml0LN3-x_7yjDOEaMdblcv7DaxG
+X-Proofpoint-ORIG-GUID: FEZx6ml0LN3-x_7yjDOEaMdblcv7DaxG
+Received-SPF: pass client-ip=57.103.79.35;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,28 +89,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instead of just the command number, include the instruction name to make debugging easier.
+Instead of directly putting it in cr[2], put it in exception_payload.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/emulate/x86_emu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/i386/emulate/x86_mmu.c | 3 ++-
+ target/i386/whpx/whpx-all.c   | 6 +++---
+ 2 files changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/target/i386/emulate/x86_emu.c b/target/i386/emulate/x86_emu.c
-index 55b1a68eb6..c2da1a133f 100644
---- a/target/i386/emulate/x86_emu.c
-+++ b/target/i386/emulate/x86_emu.c
-@@ -1399,8 +1399,8 @@ static void init_cmd_handler(void)
- bool exec_instruction(CPUX86State *env, struct x86_decode *ins)
- {
-     if (!_cmd_handler[ins->cmd].handler) {
--        printf("Unimplemented handler (" TARGET_FMT_lx ") for %d (%x %x)\n",
--                env->eip,
-+        printf("Unimplemented handler (" TARGET_FMT_lx ") for %s - %d (%x %x)\n",
-+                env->eip, decode_cmd_to_string(ins->cmd),
-                 ins->cmd, ins->opcode[0],
-                 ins->opcode_len > 1 ? ins->opcode[1] : 0);
-         env->eip += ins->len;
+diff --git a/target/i386/emulate/x86_mmu.c b/target/i386/emulate/x86_mmu.c
+index 007de582de..8d4371467f 100644
+--- a/target/i386/emulate/x86_mmu.c
++++ b/target/i386/emulate/x86_mmu.c
+@@ -277,7 +277,8 @@ static MMUTranslateResult x86_write_mem_ex(CPUState *cpu, void *data, target_ulo
+         translate_res = mmu_gva_to_gpa(cpu, gva, &gpa, translate_flags);
+         if (translate_res) {
+             int error_code = translate_res_to_error_code(translate_res, true, is_user(cpu));
+-            env->cr[2] = gva;
++            env->exception_has_payload = 1;
++            env->exception_payload = gva;
+             x86_emul_raise_exception(env, EXCP0E_PAGE, error_code);
+             return translate_res;
+         }
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 8e54fcc403..8d51293384 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1903,11 +1903,11 @@ static void whpx_inject_exceptions(CPUState* cpu)
+         WHV_REGISTER_VALUE reg = {};
+         reg.ExceptionEvent.EventPending = 1;
+         reg.ExceptionEvent.EventType = WHvX64PendingEventException;
+-        reg.ExceptionEvent.DeliverErrorCode = 1;
++        reg.ExceptionEvent.DeliverErrorCode = env->has_error_code;
+         reg.ExceptionEvent.Vector = env->exception_nr;
+         reg.ExceptionEvent.ErrorCode = env->error_code;
+-        if (env->exception_nr == EXCP0E_PAGE) {
+-            reg.ExceptionEvent.ExceptionParameter = env->cr[2];
++        if (env->exception_has_payload) {
++            reg.ExceptionEvent.ExceptionParameter = env->exception_payload;
+         }
+         whpx_set_reg(cpu, WHvRegisterPendingEvent, reg);
+     }
 -- 
 2.50.1 (Apple Git-155)
 

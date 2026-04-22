@@ -4,114 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CBE5F9B5E0
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 08:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A1AF9B5F1
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 09:11:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFTE1-0004FH-KG; Wed, 22 Apr 2026 04:46:26 -0400
+	id 1wFTbg-00008I-0S; Wed, 22 Apr 2026 05:10:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wFTDv-0004EL-2Z
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:46:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wFTbc-00007q-FE; Wed, 22 Apr 2026 05:10:48 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wFTDs-0004SN-FN
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:46:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1776847574;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wrQwsl89XzUazpGeyAMI3WHV90bg0/b0U9leX7R/mIg=;
- b=c8fioNDUyJBtGYxNEuPv++llFWuqAjPbpkYZ7ksNc1IGfJ4VkmfwhMRyJvumlYJrcgeoCZ
- 9KyXxOb4y24pAijhhuqzJdnIgeOdLlNRsitRiwQxRP9xyzJFdn4nhZ0+RlFd6PrTUsT39z
- wYR5QQe++BXITiu5WyKnlSMdPfJpy4g=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-635-OeBucUPqMiSLYKIp9UTXFA-1; Wed, 22 Apr 2026 04:46:12 -0400
-X-MC-Unique: OeBucUPqMiSLYKIp9UTXFA-1
-X-Mimecast-MFC-AGG-ID: OeBucUPqMiSLYKIp9UTXFA_1776847572
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4411a529bc0so2230737f8f.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 01:46:12 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776847571; x=1777452371;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wrQwsl89XzUazpGeyAMI3WHV90bg0/b0U9leX7R/mIg=;
- b=IYunX4PbkvLddQ/L1WnSYTQ900IguE/f+PR+9beUfb+I+Tv2JQIPljF6xInlky6dDl
- OvUrCcMeIO5U1AiYyY3/lAAnXaXZxjJlcymTZrPjRPYjEup6nquS57UkV/XpVP+OLe5S
- eF65EfxqKssYiolSFB/t+oc4XicSOgrAk50GIaNiFRwyfJcZgp9VKgcwDeivhIKbqxai
- 8x2m/ddOAwtYr2RqIZI3L/NW81+Mjyk6Onh4GvsLLjiUV9KJfloA9uBRHYQyEH6OBZda
- 5TMt5MbAcwh4E26jFoXSHEsmVH5xOL20jUUPxTiET/WNSiOetFKSqAU/8+QgX4Jn+NHi
- rFBg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/mFfKJtzLfxGa1PkeR2LMp80agg9f9Vf7fUueIu+s4/uciypI/PNZOoIm57tQG4FOISDNzGWGHuA==@nongnu.org
-X-Gm-Message-State: AOJu0YzNRSxFywVqj0V2ySXtpVrMUa05FVyMeIQMl+RrAMiUar8Wj3sA
- l5ArFRler4VRSACs308F8yOzQmzFTICcOWBQ/ieiJ3WBj1AEPaV0UKAx7ZTjyFRdWpwPIGiIMQF
- ihzx65YX9zLkTTAHMQVC0fKhMSvFx46ERfund21LwF/Z6uAZugfh8Ew==
-X-Gm-Gg: AeBDietPgQKiBFZ0BBkdDP9dfyPIFSP+pD+VSFRnkPeBFSWt+jeNJn2X7YBOiD6gLrH
- 05PQ+UW/dZj3nV/58NqaZrfcGTwhWrRqNhubpx/ZZQmfXf+k/myEoClDWvktoIemrYwrXEqdqHV
- dNaP0ZLKoQ9WaqDQnf06H9v/035NHpUNEaaPbLMtK+k7FZEJbkAOhXy36iukxO8vvIncjaH7+42
- 70Y4Nltr3LqSsHnRue0PTjvZrnJdaaquwx3WkfpKnara6uhZnZN/hSu9AvLBQJ0lQmVPjzRaIok
- KEUMx5oeoR+R+i3huO/hxumdVOehySLC1PkXUV2Z2CcWMuBnsP4bA70kIDVmnMF3wiipuZcs7h8
- 8CZ4Sz7NI4U8aYeITg92PNZoL2v0hNK/HSiyhprqW5hlm74UwR+O1FQ==
-X-Received: by 2002:a5d:5f92:0:b0:43b:9c73:2933 with SMTP id
- ffacd0b85a97d-43fe3dc1795mr32896692f8f.15.1776847571330; 
- Wed, 22 Apr 2026 01:46:11 -0700 (PDT)
-X-Received: by 2002:a5d:5f92:0:b0:43b:9c73:2933 with SMTP id
- ffacd0b85a97d-43fe3dc1795mr32896617f8f.15.1776847570637; 
- Wed, 22 Apr 2026 01:46:10 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-25-21.inter.net.il. [80.230.25.21])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e4d5b1sm47962589f8f.30.2026.04.22.01.46.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 01:46:10 -0700 (PDT)
-Date: Wed, 22 Apr 2026 04:46:06 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Bin Meng <bmeng.cn@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Alexander Bulekov <alxndr@bu.edu>, Stefan Hajnoczi <stefanha@redhat.com>,
- Fabiano Rosas <farosas@suse.de>,
- Darren Kenny <darren.kenny@oracle.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-block@nongnu.org
-Subject: Re: [PATCH v2 02/10] MAINTAINERS: Remove my disfunctional emails
-Message-ID: <20260422044555-mutt-send-email-mst@kernel.org>
-References: <20260422080406.62638-1-philmd@linaro.org>
- <20260422080406.62638-3-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wFTbZ-0002oZ-MU; Wed, 22 Apr 2026 05:10:48 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=eiIs/nxyov0Lp18K3PyJg9To9elT6ziSWi3A7w338grBAjMJp9hwbaixaEx4svhHq05OabvsfnNZqsAvWcb+hoNkkefMYEr6FTbqgpMaSo7WQ9y3SNXZ1X5MRfJPPBkx1Ri8UuGm3olgYYNtE3LcJTH9bzMe1sYM17mvaPEaWhnnQzjkiCCEJvFT/bNlk9fGw43BxW+fiDgz9w2EkYXajzYMUeNkZFGansawY2uFYMmhL2xuFP3kIaNR2WKkEPsq5NEbuHqUPSqHJuTDsARBE3rfmhCix7iK4T6HSXV8j5SLTNi27lPUH5uphGox9yqYV2vnUUlVUL5g+JfdZDYWbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Sg2H459451L7X+M+37D1XpjastGvVlXhft6ZAa6DlVQ=;
+ b=FsH7vnZycLL6nK+MCuUKP21KV5fAm/NJTQmeUd3EMfdebxfpVesM6C/k5ozZVH0qNtnlj6JCbkDZ4qCTc7wDqGI1ZGY51V/RWY+oxrZeWq0ZVwcxC6tdYblCUSwlJS3ZnQQF9Kg1MCUTzH5+A5BSLoV4I1xU4MXO7QFPzzfE0R3zcn58/+hOY2jdrrxX9A+Rv8UUsMh+TPF7B5+yCvRl+8Z09SXuENz/aRHd06a2+VN0CjQ/g22YrUSBUgP1Q8NVZSxo3CPFFAv9VBjI1UfSCnwuXHu5ORin+CQGae33k2i65J3Rsi0oMRz+IvTiritY4PFwbme72E3P75WHDc9UTg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Sg2H459451L7X+M+37D1XpjastGvVlXhft6ZAa6DlVQ=;
+ b=Cfz/SvUssIB8jvFScyiYXYDZcmUXhZ23VVp6eZ0WuRr/zOM+ElZdFfk8g4dyWsJrnjrec5Rcfi5ml1E3LGrXLI3t1DGLApT5XANv6OQkXthheV+BD8ql4Vn7fZzEA7xkBAPRRX7U2bf47JyL50MsJDjt0Oxhrg60sWm/RFcDclDq/HNl1BWzD91maf8AYDeeb6kbXIGUm6lZiCVkoQS3AR9jOA2/g4aHVAGm2mV+D1XGIsvdGXr6/btee++1px20/t+g/ytm2nD3WCt+vzcWQCjVdYZQEOC4B3IzAX8PZSmx9SFrUSvHW1YktccprYyRyMXw4nKTOUXWUtg993CrFw==
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
+ by KL1PR06MB6212.apcprd06.prod.outlook.com (2603:1096:820:d7::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.17; Wed, 22 Apr
+ 2026 09:10:36 +0000
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9846.017; Wed, 22 Apr 2026
+ 09:10:36 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Xu
+ <peterx@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
+ <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>, Fabiano Rosas
+ <farosas@suse.de>
+Subject: RE: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+Thread-Topic: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+Thread-Index: AQHczUNKKWmZ+R83iUmW5is8kUw4XrXi1YYAgACIrACABBnIQIAArEqAgAKwMhA=
+Date: Wed, 22 Apr 2026 09:10:35 +0000
+Message-ID: <TYPPR06MB82064F4FC063BAF8EF29C3FFFC2D2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-7-jamin_lin@aspeedtech.com>
+ <3ee36a34-573e-48aa-91e3-9140244717f0@kaod.org> <aeJNdLTRSZQiEiP_@x1.local>
+ <TYPPR06MB8206C244CD249505E6B543F8FC2F2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <0c533df3-b06c-4fc6-a4b9-6e17206525a3@kaod.org>
+In-Reply-To: <0c533df3-b06c-4fc6-a4b9-6e17206525a3@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KL1PR06MB6212:EE_
+x-ms-office365-filtering-correlation-id: 4bfeb039-3956-4a00-71fd-08dea04f03c8
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|7416014|1800799024|22082099003|56012099003|18002099003|38070700021;
+x-microsoft-antispam-message-info: 0+0bLkpExImpBtg5MmHN3ZDOQ+XB4eRifhbIdqUpJ5+yri7vC0JmbVVUse6Ir6hrsWhvxKCD3alcb9gtlYnDvPNntiw3J6JOFG9BmDGcyIL7mJi/72axE5VZ1lsNL+tV9kv1nOQLSTL+S/7Zilheac4RO6FQ9TtKNgQWhZSDwtm02qNyzKsr+uwn9gBxI8GbPIgDfQNsOF41ViUnhfq2g0g48/kLJ4q/BPeR0jP0IQ7HecK8+1V6AT9MzboGh7qTF6bJrVKYpYxqYjl9yqYIuFNI3RVDpo5QQb9IEvaD/hoc9oLfaUPFRGfmTcSEtU41sjhEfl2X5woEl4VPbwjllzEyKnbdOdvhadun8RsEX7eWS9+MZIzNwvdZ7iidA24J5sbaDPTPRIIp3lRi0XitAgXsPiBWwHWLZXr1ffPpYRPlgrg4A3xcYDUqx9DRTWKj0Mk/2OW8JWjYFU9lmVpk/6cuIyOBVZJ1G5Qt4X/DalsY/DYw+2t1h3spBYZbCidTp5VsjnxcJv9O/SDOSSOMUYHXXbBAJKBjXGhPVJ6cAoSsXqDXvqIb7q1twwui+A16pWbO/kFfQUrymhk58vx8VS4amfusmVoztv12mXrXANH9nrCIfgbXhEG85NGC9qAVziSdVDYeLqUkog0QEwMxYP1VMs/3svbcAnV7oXWeBrP0/FcbMgoooF9oRW0rvnld6Ah0xmANzYcTba0CZu6y0yNJLl4QfY4dGv7ru/Ll+a0X57bnVBVjrQIGlXQ2rZLIADT7cXGwk/OZfGGdt2JKaQDwrfvwauK2jWzdxalAQY0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(366016)(376014)(7416014)(1800799024)(22082099003)(56012099003)(18002099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RmdkdXZIREhIQko1WHgybXRZdXN6Rm5yK2RWMVViQTR6YnNJSVRmVTRLVXFY?=
+ =?utf-8?B?c2MvaVR1b0psT054MGs4RDBZL2tIYk51UFMvL0hkTSt2N2tOdjRIdWR2cGlJ?=
+ =?utf-8?B?am9lYng1TXBjSnB2akN5QkZwcjJySHZKS3U0WGs3R3RWd0I5ZmZ0QTY1TjNZ?=
+ =?utf-8?B?ZVpQNDliT0NTYlVkVjFzWnl4TXRuUGRuZEhLUGEwc0lkazFGYVIzVzg0UTZh?=
+ =?utf-8?B?WUNydFNsS294ckR1c0xiNXpHWDVaOTBTRUxRaENjY2Q1MnNHN3hHbWFKNjNQ?=
+ =?utf-8?B?YUZLUDJpNDBJRGJ0ZFFsQlZQQURZcDdjcUhURkNabTBOQkZQYnlYV0JSWEt4?=
+ =?utf-8?B?UW5FU0I2V1JSNkRuelBhVjQyU3R0RGNMNXFhb3M3SVJ4aHdJaDJmTzBzUHF6?=
+ =?utf-8?B?azBLK0pxN0E1aW5NRTJUQ2ZDUnlJZlhFQ3lXcnRDQXV4d3VId3lMdFRGQURY?=
+ =?utf-8?B?akE3WDIrcERJZkFPcU05RjVFMU9TcEV1OEZ1SXV0alAyZ1Nhb1o3cnVDZWZD?=
+ =?utf-8?B?L1VIcFhQeXBHVS9lN1QxUGlLUS91SEw2NXMyWnU1QXlHZUtYdVlxMUswbndk?=
+ =?utf-8?B?bEZJcUpBZFdheWhhL1Z4Zlo0RVBDZTRZRDl3cTVXQmQvSHJSQnluOEtGemxa?=
+ =?utf-8?B?dTJTL1Q0by8yN3ovdS9EZ0lmaXJYVFJaNlpLN0lEWDU3VVVza3BCenFsTlc3?=
+ =?utf-8?B?YVBxWnRyNmpkNXJhVmE5MFhxcHB0endmcVZzNXVmT2hzQ1UrKy9iWGdwNkZI?=
+ =?utf-8?B?TWgyTERycmk5REpqMGkyMzFLUkE5OW1OR2tTT1U3b0xzZW94THFBOW5JeHRU?=
+ =?utf-8?B?SXJlU3BDcllrd2lTR0VOTHZneTJER21IeTNDV1EyQ1JYL1dLTXdNeHBMK2RI?=
+ =?utf-8?B?aVBaZXBZM0p3bFFkaWp6NjFlZC9kVlphYnA5ZS9JWlRQSlAyNGxWVlBPVHlw?=
+ =?utf-8?B?Q3M1OWM4ZllnUVRBaTNxTjFTREVPVzd2cEVIRDZTdnNyN20wTzNFYVY4QXhm?=
+ =?utf-8?B?WVlyQ2l1dzkrSUZBY1loTENMTTJoUnppTWZwbGN2UFZValh3QkFZYy82SS80?=
+ =?utf-8?B?Q1lkMnZXcWs4SXVMQ1RRSERvWTlvb0JtQkd1ZlZjajdzWmNpNFF1OGlqVHpX?=
+ =?utf-8?B?dXJURzVMRU9UOHVmREdVY2g1QVlDY0RFbnJBclhaWkFrR0JyamkyOXFlT2o5?=
+ =?utf-8?B?cXhxdGVHcFk3K1UrT0owclRTS250c1BiK1Y0ckVKT3VHMWZCZkZtTTI2cGZP?=
+ =?utf-8?B?a09vd0lQemxRdm04TForNVJoeDBMVzlNU0kyWnBmSjVvcG9zUFM1Tm1aUGlw?=
+ =?utf-8?B?RUtaeCtZcVdoOEpnQnU0dGtLdFpvNUJwelF5Wm4zT3VjM1pVeXF4WUZqS1FU?=
+ =?utf-8?B?QWJYUmdmbXkvb3RnNmdlbVVDVkNTcDRiVURJUlRIam1vdWN2MHdnSGhTUnFW?=
+ =?utf-8?B?VTdjQkt1WjNERXpzRXY1blhlWW1YSkVWa2dLWW9ndXg4V2NxRnlIMXc5QXJx?=
+ =?utf-8?B?VllpMjZRKy9GOUs4bjVob3VGRVY5VTdZNmtYR0p2VFEzMnJpejk2V0RQckZh?=
+ =?utf-8?B?MzYzY3VrcTYwd3Vma2dxNHRxbndPMkE2Zm5QdWpIcVBGQm0rT2ZLK0Vaalpp?=
+ =?utf-8?B?dkJLc004bE04RXBaYTdVV1V2cnJTNExmZnh6eURhS2NhQjNrOFdQVEkxbzgv?=
+ =?utf-8?B?ZitPZFFNMm5VSEV5L29GcGg0bEcxUFB5a01ZY2drNGxMQ000Ry9LS2J4VUt1?=
+ =?utf-8?B?UW1KdXhpY1JSQjgzakJsakw0SHUvNzZZYTlIRXA4M21nRGs5R29IeWxxUWlN?=
+ =?utf-8?B?cjZmWHk2Qzhob3h3UCtSbkhvcEZNMnBMOHZyR1ZEVkZJYTJIVE5DNTBxUjNn?=
+ =?utf-8?B?L2FUaTUrbTRXbCs3MjU5RkZZQ2VVWFQ0WUU3TGl3UnJCY0p4dzNaYllYYVJk?=
+ =?utf-8?B?ZVlldk5zRDRvTEFhci90TGx2emM3WUJmeFhJaEJDZEt4MFJrVUFGQlpVc2xD?=
+ =?utf-8?B?WS9tN0RoaVZTVkErZXpjd2VDaFZWZ0JCU3BFTlNOQjl4QmgwY3BXWDVEZ0dl?=
+ =?utf-8?B?cTF4WWxRYkgrNFVXeDZYSDVQQklVWUVqemdRSXpKZWFxNXRZQUdKTnZHS2Rp?=
+ =?utf-8?B?L3NYTTFKREU1Y0h0OTNjM1A1VU94TzJMTEpVTUhXaTV2MVZTSjlDaWN5aWRv?=
+ =?utf-8?B?TThIbWdzRnFDK0RYeEZmajRrOE5XODBIM2wrOG1raVliMkZlVDZIMnVVbU9R?=
+ =?utf-8?B?bGFLM1F4amNFeFMrVnczWVZnUGxLekY0bWMzVDkzd3NXc3g2Z2V1aXBqQllk?=
+ =?utf-8?B?MmRoV3VKM01jSkVZeDM1THgwQVI0WUtJY1loSURNNS96T0JFMVh2Zz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-In-Reply-To: <20260422080406.62638-3-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0jwZYYcUn650q2mTq_GvvCce7PyiRnTV1QRTLF4cXVM_1776847572
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+X-Exchange-RoutingPolicyChecked: EdkeNH3yRYPjIQzU3bMmO46pL4BfS+Q5KKRFzVJYXcTYZKynBzbd5Lu+59ng3TNQron3tI9tmURx5/S5TyxjBdN6RP8/Pz7JBkxc8PH1nHbU8tD0wldESfPWMFZ+6aFrU09Mlm+ODbn6YqN6d3kDTk2pkIRZUbTt2NMgyfHnL5EAB4rZ7+qNJ8ceWGcDHnAwercoecxOj5Khdy8+mG+07qQIzd5hcQdIZLhv/vcxzqIFndJInm47BfcPlow1AdwhZDIiXctV4oTnT8ASodH7jI4sd8fezQGikl7TMGdz8Z8izvbf0PAHq8h72xrsO9ytdEfRyIBdSFOAkbuU0L34wQ==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4bfeb039-3956-4a00-71fd-08dea04f03c8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Apr 2026 09:10:35.9272 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Y3hNqs3Hv0fCnuqmfsOPt2YiLHU42L1/y+YQSI1dHBpQcDtP30zenk0mqM1QDvCy28wT6IT8Z14YQUaoKxvgazZgGxZJnj3ZbdwY7N3rvtM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6212
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,468 +164,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Apr 22, 2026 at 10:03:57AM +0200, Philippe Mathieu-Daudé wrote:
-> With retrospective, mentioning email in authorship wasn't
-> really useful, more now than these addresses are dead:
->  - f4bug@amsat.org
->  - philmd@redhat.com
-> Simply remove them.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-
-> ---
->  hw/sd/sdmmc-internal.h                      | 2 +-
->  include/crypto/tls-cipher-suites.h          | 2 +-
->  include/hw/i2c/arm_sbcon_i2c.h              | 2 +-
->  include/hw/misc/bcm2835_thermal.h           | 2 +-
->  include/hw/misc/led.h                       | 2 +-
->  include/hw/timer/bcm2835_systmr.h           | 2 +-
->  include/qemu/units.h                        | 2 +-
->  crypto/tls-cipher-suites.c                  | 2 +-
->  hw/i386/fw_cfg.c                            | 2 +-
->  hw/i386/pc_sysfw_ovmf-stubs.c               | 2 +-
->  hw/misc/bcm2835_thermal.c                   | 2 +-
->  hw/misc/led.c                               | 2 +-
->  hw/ppc/fw_cfg.c                             | 2 +-
->  hw/sd/sd.c                                  | 2 +-
->  hw/timer/bcm2835_systmr.c                   | 2 +-
->  hw/usb/bus-stub.c                           | 2 +-
->  stubs/fw_cfg.c                              | 2 +-
->  stubs/hotplug-stubs.c                       | 2 +-
->  stubs/qdev.c                                | 2 +-
->  tests/qtest/fuzz-sb16-test.c                | 2 +-
->  tests/qtest/fuzz-sdcard-test.c              | 2 +-
->  tests/qtest/sdhci-test.c                    | 2 +-
->  tests/functional/aarch64/test_raspi3.py     | 2 +-
->  tests/functional/arm/test_bflt.py           | 2 +-
->  tests/functional/arm/test_raspi2.py         | 2 +-
->  tests/functional/m68k/test_nextcube.py      | 2 +-
->  tests/functional/mips/test_malta.py         | 2 +-
->  tests/functional/mips64el/test_fuloong2e.py | 2 +-
->  tests/functional/mips64el/test_malta.py     | 2 +-
->  tests/functional/mipsel/test_malta.py       | 2 +-
->  tests/functional/ppc/test_40p.py            | 2 +-
->  tests/functional/qemu_test/tesseract.py     | 2 +-
->  32 files changed, 32 insertions(+), 32 deletions(-)
-> 
-> diff --git a/hw/sd/sdmmc-internal.h b/hw/sd/sdmmc-internal.h
-> index c115f472efe..f9282a9712d 100644
-> --- a/hw/sd/sdmmc-internal.h
-> +++ b/hw/sd/sdmmc-internal.h
-> @@ -1,7 +1,7 @@
->  /*
->   * SD/MMC cards common
->   *
-> - * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (c) 2018  Philippe Mathieu-Daudé
->   *
->   * This work is licensed under the terms of the GNU GPL, version 2 or later.
->   * See the COPYING file in the top-level directory.
-> diff --git a/include/crypto/tls-cipher-suites.h b/include/crypto/tls-cipher-suites.h
-> index 3bd2003f32d..31697a7d6de 100644
-> --- a/include/crypto/tls-cipher-suites.h
-> +++ b/include/crypto/tls-cipher-suites.h
-> @@ -3,7 +3,7 @@
->   *
->   * Copyright (c) 2018-2020 Red Hat, Inc.
->   *
-> - * Author: Philippe Mathieu-Daudé <philmd@redhat.com>
-> + * Author: Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/include/hw/i2c/arm_sbcon_i2c.h b/include/hw/i2c/arm_sbcon_i2c.h
-> index 39b99f57bfb..537de428e1f 100644
-> --- a/include/hw/i2c/arm_sbcon_i2c.h
-> +++ b/include/hw/i2c/arm_sbcon_i2c.h
-> @@ -5,7 +5,7 @@
->   *
->   * Copyright (c) 2006-2007 CodeSourcery.
->   * Copyright (c) 2012 Oskar Andero <oskar.andero@gmail.com>
-> - * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2020 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/include/hw/misc/bcm2835_thermal.h b/include/hw/misc/bcm2835_thermal.h
-> index 13ffc61c1a7..04eda5cb83f 100644
-> --- a/include/hw/misc/bcm2835_thermal.h
-> +++ b/include/hw/misc/bcm2835_thermal.h
-> @@ -1,7 +1,7 @@
->  /*
->   * BCM2835 dummy thermal sensor
->   *
-> - * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2019 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-> index 4d077a7c43e..89ccbad4660 100644
-> --- a/include/hw/misc/led.h
-> +++ b/include/hw/misc/led.h
-> @@ -1,7 +1,7 @@
->  /*
->   * QEMU single LED device
->   *
-> - * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2020 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
-> index 0674a18f12d..770e464937b 100644
-> --- a/include/hw/timer/bcm2835_systmr.h
-> +++ b/include/hw/timer/bcm2835_systmr.h
-> @@ -1,7 +1,7 @@
->  /*
->   * BCM2835 SYS timer emulation
->   *
-> - * Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (c) 2019 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/include/qemu/units.h b/include/qemu/units.h
-> index 692db3fbb26..4764e301e5b 100644
-> --- a/include/qemu/units.h
-> +++ b/include/qemu/units.h
-> @@ -2,7 +2,7 @@
->   * IEC binary prefixes definitions
->   *
->   * Copyright (C) 2015 Nikunj A Dadhania, IBM Corporation
-> - * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2018 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/crypto/tls-cipher-suites.c b/crypto/tls-cipher-suites.c
-> index d9b61d0c08a..a6566f13c9b 100644
-> --- a/crypto/tls-cipher-suites.c
-> +++ b/crypto/tls-cipher-suites.c
-> @@ -3,7 +3,7 @@
->   *
->   * Copyright (c) 2018-2020 Red Hat, Inc.
->   *
-> - * Author: Philippe Mathieu-Daudé <philmd@redhat.com>
-> + * Author: Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-> index 5670e8553ea..858e6ca9c53 100644
-> --- a/hw/i386/fw_cfg.c
-> +++ b/hw/i386/fw_cfg.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) 2019 Red Hat, Inc.
->   *
->   * Author:
-> - *   Philippe Mathieu-Daudé <philmd@redhat.com>
-> + *   Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/hw/i386/pc_sysfw_ovmf-stubs.c b/hw/i386/pc_sysfw_ovmf-stubs.c
-> index b53906a0521..42e300ddec4 100644
-> --- a/hw/i386/pc_sysfw_ovmf-stubs.c
-> +++ b/hw/i386/pc_sysfw_ovmf-stubs.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) 2021 Red Hat, Inc.
->   *
->   * Author:
-> - *   Philippe Mathieu-Daudé <philmd@redhat.com>
-> + *   Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/hw/misc/bcm2835_thermal.c b/hw/misc/bcm2835_thermal.c
-> index 0dc1be15b4a..413c4179fed 100644
-> --- a/hw/misc/bcm2835_thermal.c
-> +++ b/hw/misc/bcm2835_thermal.c
-> @@ -1,7 +1,7 @@
->  /*
->   * BCM2835 dummy thermal sensor
->   *
-> - * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2019 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/hw/misc/led.c b/hw/misc/led.c
-> index d9256aaaf56..8b758c1b76d 100644
-> --- a/hw/misc/led.c
-> +++ b/hw/misc/led.c
-> @@ -1,7 +1,7 @@
->  /*
->   * QEMU single LED device
->   *
-> - * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2020 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/hw/ppc/fw_cfg.c b/hw/ppc/fw_cfg.c
-> index a88b5c4bde2..071cf855c23 100644
-> --- a/hw/ppc/fw_cfg.c
-> +++ b/hw/ppc/fw_cfg.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) 2019 Red Hat, Inc.
->   *
->   * Author:
-> - *   Philippe Mathieu-Daudé <philmd@redhat.com>
-> + *   Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 13ea54df380..ebe6e35b15e 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -6,7 +6,7 @@
->   *
->   * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
->   * Copyright (c) 2007 CodeSourcery
-> - * Copyright (c) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (c) 2018 Philippe Mathieu-Daudé
->   *
->   * Redistribution and use in source and binary forms, with or without
->   * modification, are permitted provided that the following conditions
-> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-> index 00bcfcd05c6..06a919b1f8b 100644
-> --- a/hw/timer/bcm2835_systmr.c
-> +++ b/hw/timer/bcm2835_systmr.c
-> @@ -1,7 +1,7 @@
->  /*
->   * BCM2835 SYS timer emulation
->   *
-> - * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2019 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/hw/usb/bus-stub.c b/hw/usb/bus-stub.c
-> index a7c3909e967..7cf1b494117 100644
-> --- a/hw/usb/bus-stub.c
-> +++ b/hw/usb/bus-stub.c
-> @@ -1,7 +1,7 @@
->  /*
->   * QEMU USB device emulation stubs
->   *
-> - * Copyright (C) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (C) 2021 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/stubs/fw_cfg.c b/stubs/fw_cfg.c
-> index bb1e3c8aa95..e7a9f714f35 100644
-> --- a/stubs/fw_cfg.c
-> +++ b/stubs/fw_cfg.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) 2019 Red Hat, Inc.
->   *
->   * Author:
-> - *   Philippe Mathieu-Daudé <philmd@redhat.com>
-> + *   Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/stubs/hotplug-stubs.c b/stubs/hotplug-stubs.c
-> index 23a1678dbbc..0f592ee1391 100644
-> --- a/stubs/hotplug-stubs.c
-> +++ b/stubs/hotplug-stubs.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) Red Hat
->   *
->   * Authors:
-> - *  Philippe Mathieu-Daudé <philmd@redhat.com>,
-> + *  Philippe Mathieu-Daudé,
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/stubs/qdev.c b/stubs/qdev.c
-> index 7e957b3e524..61596de5f87 100644
-> --- a/stubs/qdev.c
-> +++ b/stubs/qdev.c
-> @@ -4,7 +4,7 @@
->   * Copyright (c) 2021 Red Hat, Inc.
->   *
->   * Author:
-> - *   Philippe Mathieu-Daudé <philmd@redhat.com>
-> + *   Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   *
-> diff --git a/tests/qtest/fuzz-sb16-test.c b/tests/qtest/fuzz-sb16-test.c
-> index fc445b18710..9995ad88685 100644
-> --- a/tests/qtest/fuzz-sb16-test.c
-> +++ b/tests/qtest/fuzz-sb16-test.c
-> @@ -1,7 +1,7 @@
->  /*
->   * QTest fuzzer-generated testcase for sb16 audio device
->   *
-> - * Copyright (c) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (c) 2021 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/tests/qtest/fuzz-sdcard-test.c b/tests/qtest/fuzz-sdcard-test.c
-> index cd134cdf556..6d8be9d1195 100644
-> --- a/tests/qtest/fuzz-sdcard-test.c
-> +++ b/tests/qtest/fuzz-sdcard-test.c
-> @@ -1,7 +1,7 @@
->  /*
->   * QTest fuzzer-generated testcase for sdcard device
->   *
-> - * Copyright (c) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Copyright (c) 2021 Philippe Mathieu-Daudé
->   *
->   * SPDX-License-Identifier: GPL-2.0-or-later
->   */
-> diff --git a/tests/qtest/sdhci-test.c b/tests/qtest/sdhci-test.c
-> index 7b32711c8f8..cde132228eb 100644
-> --- a/tests/qtest/sdhci-test.c
-> +++ b/tests/qtest/sdhci-test.c
-> @@ -1,7 +1,7 @@
->  /*
->   * QTest testcase for SDHCI controllers
->   *
-> - * Written by Philippe Mathieu-Daudé <f4bug@amsat.org>
-> + * Written by Philippe Mathieu-Daudé
->   *
->   * This work is licensed under the terms of the GNU GPL, version 2 or later.
->   * See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/aarch64/test_raspi3.py b/tests/functional/aarch64/test_raspi3.py
-> index 74f6630ed26..ae9eed3589f 100755
-> --- a/tests/functional/aarch64/test_raspi3.py
-> +++ b/tests/functional/aarch64/test_raspi3.py
-> @@ -3,7 +3,7 @@
->  # Functional test that boots a Linux kernel on a Raspberry Pi machine
->  # and checks the console
->  #
-> -# Copyright (c) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) 2020 Philippe Mathieu-Daudé
->  #
->  # SPDX-License-Identifier: GPL-2.0-or-later
->  
-> diff --git a/tests/functional/arm/test_bflt.py b/tests/functional/arm/test_bflt.py
-> index f273fc83546..835a3354a03 100755
-> --- a/tests/functional/arm/test_bflt.py
-> +++ b/tests/functional/arm/test_bflt.py
-> @@ -2,7 +2,7 @@
->  #
->  # Test the bFLT loader format
->  #
-> -# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (C) 2019 Philippe Mathieu-Daudé
->  #
->  # SPDX-License-Identifier: GPL-2.0-or-later
->  
-> diff --git a/tests/functional/arm/test_raspi2.py b/tests/functional/arm/test_raspi2.py
-> index d3c7aaa39b0..fe644f04cf4 100755
-> --- a/tests/functional/arm/test_raspi2.py
-> +++ b/tests/functional/arm/test_raspi2.py
-> @@ -3,7 +3,7 @@
->  # Functional test that boots a Linux kernel on a Raspberry Pi machine
->  # and checks the console
->  #
-> -# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) 2019 Philippe Mathieu-Daudé
->  #
->  # SPDX-License-Identifier: GPL-2.0-or-later
->  
-> diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-> index 71c160d0262..d917cf5424f 100755
-> --- a/tests/functional/m68k/test_nextcube.py
-> +++ b/tests/functional/m68k/test_nextcube.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional test that boots a VM and run OCR on the framebuffer
->  #
-> -# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) 2019 Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or
->  # later.  See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/mips/test_malta.py b/tests/functional/mips/test_malta.py
-> index e8f49f130be..7048d91a9fd 100755
-> --- a/tests/functional/mips/test_malta.py
-> +++ b/tests/functional/mips/test_malta.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional tests for the big-endian 32-bit MIPS Malta board
->  #
-> -# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) Philippe Mathieu-Daudé
->  #
->  # SPDX-License-Identifier: GPL-2.0-or-later
->  
-> diff --git a/tests/functional/mips64el/test_fuloong2e.py b/tests/functional/mips64el/test_fuloong2e.py
-> index 35e500b0221..d449e3c39a7 100755
-> --- a/tests/functional/mips64el/test_fuloong2e.py
-> +++ b/tests/functional/mips64el/test_fuloong2e.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional tests for the Lemote Fuloong-2E machine.
->  #
-> -# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) 2019 Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or later.
->  # See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
-> index bc750cb7ad6..163bbaf5ca3 100755
-> --- a/tests/functional/mips64el/test_malta.py
-> +++ b/tests/functional/mips64el/test_malta.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional tests for the little-endian 64-bit MIPS Malta board
->  #
-> -# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or later.
->  # See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/mipsel/test_malta.py b/tests/functional/mipsel/test_malta.py
-> index 59ab4a60585..25bcb33c945 100755
-> --- a/tests/functional/mipsel/test_malta.py
-> +++ b/tests/functional/mipsel/test_malta.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional tests for the little-endian 32-bit MIPS Malta board
->  #
-> -# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or later.
->  # See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/ppc/test_40p.py b/tests/functional/ppc/test_40p.py
-> index ed272147f6e..4c1c9bad6ec 100755
-> --- a/tests/functional/ppc/test_40p.py
-> +++ b/tests/functional/ppc/test_40p.py
-> @@ -2,7 +2,7 @@
->  #
->  # Functional test that boots a PReP/40p machine and checks its serial console.
->  #
-> -# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or
->  # later. See the COPYING file in the top-level directory.
-> diff --git a/tests/functional/qemu_test/tesseract.py b/tests/functional/qemu_test/tesseract.py
-> index ede6c6501e2..862faec2d2e 100644
-> --- a/tests/functional/qemu_test/tesseract.py
-> +++ b/tests/functional/qemu_test/tesseract.py
-> @@ -1,6 +1,6 @@
->  # ...
->  #
-> -# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-> +# Copyright (c) 2019 Philippe Mathieu-Daudé
->  #
->  # This work is licensed under the terms of the GNU GPL, version 2 or
->  # later. See the COPYING file in the top-level directory.
-> -- 
-> 2.53.0
-
+SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMDYvMTddIGh3L3VzYi9oY2Qt
+ZWhjaTogQ2hhbmdlIGRlc2NyaXB0b3IgYWRkcmVzc2VzIHRvDQo+IDY0LWJpdA0KPiANCj4gT24g
+NC8yMC8yNiAwNzo1NiwgSmFtaW4gTGluIHdyb3RlOg0KPiA+IEhpIFBldGVyLCBQaGlsaXBwZSwg
+Q8OpZHJpYw0KPiA+DQo+ID4+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMDYvMTddIGh3L3VzYi9o
+Y2QtZWhjaTogQ2hhbmdlIGRlc2NyaXB0b3INCj4gPj4gYWRkcmVzc2VzIHRvIDY0LWJpdA0KPiA+
+Pg0KPiA+PiBPbiBGcmksIEFwciAxNywgMjAyNiBhdCAwOTowMTozNEFNICswMjAwLCBDw6lkcmlj
+IExlIEdvYXRlciB3cm90ZToNCj4gPj4+ICsgUGV0ZXIsIEZhYmlhbm8sDQo+ID4+Pg0KPiA+Pj4g
+T24gNC8xNi8yNiAwMzo0OSwgSmFtaW4gTGluIHdyb3RlOg0KPiA+Pj4+IENoYW5nZSBpbnRlcm5h
+bCBFSENJIGRlc2NyaXB0b3IgYWRkcmVzc2VzIGZyb20gdWludDMyX3QgdG8gdWludDY0X3QuDQo+
+ID4+Pj4NCj4gPj4+PiBUaGUgZm9sbG93aW5nIGZpZWxkcyBhcmUgdXBkYXRlZDoNCj4gPj4+PiAt
+IEVIQ0lQYWNrZXQ6OnF0ZGFkZHINCj4gPj4+PiAtIEVIQ0lRdWV1ZTo6e3FoYWRkciwgcXRkYWRk
+cn0NCj4gPj4+PiAtIEVIQ0lTdGF0ZTo6e2FfZmV0Y2hfYWRkciwgcF9mZXRjaF9hZGRyfQ0KPiA+
+Pj4+DQo+ID4+Pj4gVXBkYXRlIGdldF9kd29yZHMoKSBhbmQgcHV0X2R3b3JkcygpIHRvIHRha2Ug
+NjQtYml0IGFkZHJlc3NlcyBhbmQNCj4gPj4+PiBwcm9wYWdhdGUgdGhlIHR5cGUgY2hhbmdlIHRo
+cm91Z2ggdGhlIGRlc2NyaXB0b3IgdHJhdmVyc2FsIHBhdGhzLg0KPiA+Pj4+DQo+ID4+Pj4gQWRq
+dXN0IE5MUFRSX0dFVCgpIHRvIG9wZXJhdGUgb24gNjQtYml0IHZhbHVlczoNCj4gPj4+Pg0KPiA+
+Pj4+ICAgICAgICNkZWZpbmUgTkxQVFJfR0VUKHgpICgoeCkgJiB+MHgxZlVMTCkNCj4gPj4+Pg0K
+PiA+Pj4+IHNvIHRoYXQgbGluayBwb2ludGVyIG1hc2tpbmcgd29ya3MgY29ycmVjdGx5IHdoZW4g
+ZGVzY3JpcHRvcg0KPiA+Pj4+IGFkZHJlc3NlcyBleGNlZWQgMzItYml0IHNwYWNlLiBUaGUgcHJl
+dmlvdXMgbWFzayAoMHhmZmZmZmZlMCkNCj4gPj4+PiBpbXBsaWNpdGx5IHRydW5jYXRlZCBhZGRy
+ZXNzZXMgdG8gMzIgYml0cy4NCj4gPj4+Pg0KPiA+Pj4+IFRoaXMgcGF0Y2ggZG9lcyBub3QgY2hh
+bmdlIHRoZSBvbi13aXJlIGRlc2NyaXB0b3IgbGF5b3V0IHlldC4NCj4gPj4+PiBJdCBvbmx5IHJl
+bW92ZXMgdGhlIGludGVybmFsIDMyLWJpdCBhZGRyZXNzIGxpbWl0IGFuZCBwcmVwYXJlcyBmb3IN
+Cj4gPj4+PiBsYXRlciBwYXRjaGVzIHRoYXQgd2lsbCBhZGQgZnVsbCA2NC1iaXQgUUgvcVREL2lU
+RC9zaVREIHN1cHBvcnQuDQo+ID4+Pj4NCj4gPj4+PiBVcGRhdGUgdGhlIEVIQ0kgdHJhY2UtZXZl
+bnRzIHByb3RvdHlwZXMgZm9yIFFILCBxVEQsIGlURCwgYW5kIHNpVEQNCj4gPj4+PiB0byB1c2Ug
+dWludDY0X3QgZm9yIHRoZSBhZGRyZXNzIGFyZ3VtZW50IGFuZCBwcmludCBpdCB3aXRoIFBSSXg2
+NC4NCj4gPj4+PiBUaGlzIGVuc3VyZXMgZnVsbCA2NC1iaXQgYWRkcmVzc2VzIGFyZSBzaG93biBp
+biB0cmFjZSBvdXRwdXQgYW5kDQo+ID4+Pj4gaW1wcm92ZXMgZGVidWdnaW5nIG9mIHF1ZXVlIGhl
+YWRzIGFuZCB0cmFuc2ZlciBkZXNjcmlwdG9ycy4NCj4gPj4+Pg0KPiA+Pj4+IE1pZ3JhdGlvbiBj
+b21wYXRpYmlsaXR5Og0KPiA+Pj4+DQo+ID4+Pj4gVGhlIGZldGNoIGFkZHJlc3MgZmllbGRzIGlu
+IEVIQ0lTdGF0ZSBhcmUgZXh0ZW5kZWQgZnJvbSAzMi1iaXQgdG8NCj4gPj4+PiA2NC1iaXQsIHJl
+cXVpcmluZyBhIFZNU3RhdGUgdmVyc2lvbiBidW1wICh2MiAtPiB2MykuDQo+ID4+Pj4NCj4gPj4+
+PiBCYWNrd2FyZCBjb21wYXRpYmlsaXR5IGlzIHByZXNlcnZlZCBieSBrZWVwaW5nIHRoZSBsZWdh
+Y3kgMzItYml0DQo+ID4+Pj4gZmllbGRzIChhX2ZldGNoX2FkZHJfcHJlX3YzLCBwX2ZldGNoX2Fk
+ZHJfcHJlX3YzKSBmb3IgcHJlLXYzDQo+ID4+Pj4gbWlncmF0aW9uIHN0cmVhbXMgdmlhIFZNU1RB
+VEVfVUlOVDMyX1RFU1QoKSwgYW5kIGludHJvZHVjaW5nIG5ldw0KPiA+Pj4+IDY0LWJpdCBmaWVs
+ZHMgZm9yIHYzKy4NCj4gPj4+Pg0KPiA+Pj4+IEluIHBvc3RfbG9hZCwgcHJlLXYzIHN0YXRlIGlz
+IHByb21vdGVkIHRvIHRoZSA2NC1iaXQgZmllbGRzLg0KPiA+Pj4NCj4gPj4+IFNpbmNlIGVoY2kg
+aXMgc3VwcG9ydGVkIGJ5IGRvd25zdHJlYW0sIEknZCBwcmVmZXIgdGhhdCB0aGUgbWlncmF0aW9u
+DQo+ID4+PiBtYWludGFpbmVycyBhbHNvIHZlcmlmeSB0aGUgaW1wbGVtZW50YXRpb24uDQo+ID4+
+DQo+ID4+IFRoYW5rcywgSSdsbCBvbmx5IGxvb2sgYXQgdGhlIG1pZ3JhdGlvbiBiaXRzLg0KPiA+
+Pg0KPiA+PiBbLi4uXQ0KPiA+Pg0KPiA+Pj4+IEBAIC0yNDQxLDYgKzI0NDUsMTEgQEAgc3RhdGlj
+IGludCB1c2JfZWhjaV9wb3N0X2xvYWQodm9pZCAqb3BhcXVlLA0KPiA+Pj4+IGludA0KPiA+PiB2
+ZXJzaW9uX2lkKQ0KPiA+Pj4+ICAgICAgICAgICAgfQ0KPiA+Pj4+ICAgICAgICB9DQo+ID4+Pj4g
+KyAgICBpZiAodmVyc2lvbl9pZCA8IDMpIHsNCj4gPj4+PiArICAgICAgICBzLT5hX2ZldGNoX2Fk
+ZHIgPSBzLT5hX2ZldGNoX2FkZHJfcHJlX3YzOw0KPiA+Pj4+ICsgICAgICAgIHMtPnBfZmV0Y2hf
+YWRkciA9IHMtPnBfZmV0Y2hfYWRkcl9wcmVfdjM7DQo+ID4+Pj4gKyAgICB9DQo+ID4+Pj4gKw0K
+PiA+Pj4+ICAgICAgICByZXR1cm4gMDsNCj4gPj4+PiAgICB9DQo+ID4+Pj4gQEAgLTI0NzAsOSAr
+MjQ3OSwxNCBAQCBzdGF0aWMgdm9pZCB1c2JfZWhjaV92bV9zdGF0ZV9jaGFuZ2Uodm9pZA0KPiA+
+PiAqb3BhcXVlLCBib29sIHJ1bm5pbmcsIFJ1blN0YXRlIHN0YXRlKQ0KPiA+Pj4+ICAgICAgICB9
+DQo+ID4+Pj4gICAgfQ0KPiA+Pj4+ICtzdGF0aWMgYm9vbCBlaGNpX2NvcmVfaXNfYmVmb3JlX3Zl
+cnNpb25fMyh2b2lkICpvcGFxdWUsIGludA0KPiA+Pj4+ICt2ZXJzaW9uX2lkKSB7DQo+ID4+Pj4g
+KyAgICByZXR1cm4gdmVyc2lvbl9pZCA8IDM7DQo+ID4+Pj4gK30NCj4gPj4+PiArDQo+ID4+Pj4g
+ICAgY29uc3QgVk1TdGF0ZURlc2NyaXB0aW9uIHZtc3RhdGVfZWhjaSA9IHsNCj4gPj4+PiAgICAg
+ICAgLm5hbWUgICAgICAgID0gImVoY2ktY29yZSIsDQo+ID4+Pj4gLSAgICAudmVyc2lvbl9pZCAg
+PSAyLA0KPiA+Pj4+ICsgICAgLnZlcnNpb25faWQgID0gMywNCj4gPj4+PiAgICAgICAgLm1pbmlt
+dW1fdmVyc2lvbl9pZCAgPSAxLA0KPiA+Pj4+ICAgICAgICAucHJlX3NhdmUgICAgPSB1c2JfZWhj
+aV9wcmVfc2F2ZSwNCj4gPj4+PiAgICAgICAgLnBvc3RfbG9hZCAgID0gdXNiX2VoY2lfcG9zdF9s
+b2FkLA0KPiA+Pj4+IEBAIC0yNTAxLDggKzI1MTUsMTIgQEAgY29uc3QgVk1TdGF0ZURlc2NyaXB0
+aW9uIHZtc3RhdGVfZWhjaSA9IHsNCj4gPj4+PiAgICAgICAgICAgIC8qIHNjaGVkdWxlIHN0YXRl
+ICovDQo+ID4+Pj4gICAgICAgICAgICBWTVNUQVRFX1VJTlQzMihhc3RhdGUsIEVIQ0lTdGF0ZSks
+DQo+ID4+Pj4gICAgICAgICAgICBWTVNUQVRFX1VJTlQzMihwc3RhdGUsIEVIQ0lTdGF0ZSksDQo+
+ID4+Pj4gLSAgICAgICAgVk1TVEFURV9VSU5UMzIoYV9mZXRjaF9hZGRyLCBFSENJU3RhdGUpLA0K
+PiA+Pj4+IC0gICAgICAgIFZNU1RBVEVfVUlOVDMyKHBfZmV0Y2hfYWRkciwgRUhDSVN0YXRlKSwN
+Cj4gPj4+PiArICAgICAgICBWTVNUQVRFX1VJTlQzMl9URVNUKGFfZmV0Y2hfYWRkcl9wcmVfdjMs
+IEVIQ0lTdGF0ZSwNCj4gPj4+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVoY2lfY29y
+ZV9pc19iZWZvcmVfdmVyc2lvbl8zKSwNCj4gPj4+PiArICAgICAgICBWTVNUQVRFX1VJTlQzMl9U
+RVNUKHBfZmV0Y2hfYWRkcl9wcmVfdjMsIEVIQ0lTdGF0ZSwNCj4gPj4+PiArICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIGVoY2lfY29yZV9pc19iZWZvcmVfdmVyc2lvbl8zKSwNCj4gPj4+PiAr
+ICAgICAgICBWTVNUQVRFX1VJTlQ2NF9WKGFfZmV0Y2hfYWRkciwgRUhDSVN0YXRlLCAzKSwNCj4g
+Pj4+PiArICAgICAgICBWTVNUQVRFX1VJTlQ2NF9WKHBfZmV0Y2hfYWRkciwgRUhDSVN0YXRlLCAz
+KSwNCj4gPj4NCj4gPj4gVEw7RFI6IEkgZmVlbCBsaWtlIHdlIHN0aWxsIG5lZWQgbWFjaGluZSB0
+eXBlIGNvbXBhdCBwcm9wZXJ0aWVzLg0KPiA+Pg0KPiA+DQo+ID4gSSBkb24ndCB1bmRlcnN0YW5k
+IHRoaXM6IENvdWxkIHlvdSBwbGVhc2UgZGVzY3JpYmUgaXQgaW4gbW9yZSBkZXRhaWw/DQo+ID4N
+Cj4gPj4gRGV0YWlsczoNCj4gPj4NCj4gPj4gV2hlbiBhIHYyIHN0cmVhbSBhcnJpdmVzLCB0d28g
+X1RFU1QoKXMgd2lsbCBkbyB0aGUgbG9hZGluZywgdGhlbg0KPiA+PiBwb3N0X2xvYWQoKSBleHRl
+bmQgaXQgdG8gNjRiaXRzLCBsb29rcyBmaW5lLg0KPiA+Pg0KPiA+PiBXaGVuIGEgdjMgc3RyZWFt
+IGFycml2ZXMsIHR3byBfVEVTVCgpcyBnb3Qgc2tpcHBlZCB0aGVuIGxhdHRlciB0d28gdGFrZQ0K
+PiBlZmZlY3QuDQo+ID4+IHBvc3RfbG9hZCgpIHNraXBzLiAgTG9va3MgZmluZS4NCj4gPj4NCj4g
+Pj4gV2hlbiBtaWdyYXRpbmcgdG8gYW5vdGhlciBRRU1VLCBkdWUgdG8gdGhlIGZhY3Qgc2F2aW5n
+IHZtc3RhdGVzDQo+ID4+IGFsd2F5cyB0YWtlIHZtc2QncyB2ZXJzaW9uIGRlY2xhcmVkICgzKSwg
+SSBkb24ndCBzZWUgaG93IGl0IGNhbg0KPiA+PiBtaWdyYXRlIGJhY2sgdG8gYSB2MiBzdHJlYW07
+IGl0IGRpZG4ndCBrbm93IGFib3V0IHYzLg0KPiA+Pg0KPiA+PiBKaWFtaW4sIGhhdmUgeW91IHRl
+c3RlZCBtaWdyYXRpbmcgZnJvbSBhIG5ldyBRRU1VIGJpbmFyeSBiYWNrIHRvDQo+ID4+IGFub3Ro
+ZXIgb2xkIG9uZT8gIEZvciB1cHN0cmVhbSBhbmQgc2VyaW91cyBkZXZpY2VzLCB3ZSBuZWVkIHRv
+DQo+ID4+IGd1YXJhbnRlZSBiaS1kaXJlY3Rpb25hbCBtaWdyYXRpb25zLCBiYWNrIGFuZCBmb3J0
+aC4NCj4gPj4NCj4gPg0KPiA+IFNvcnJ5LCBJIGFtIG5vdCBmYW1pbGlhciB3aXRoIHRoZSBkZXNp
+Z24gb2YgUUVNVSBtaWdyYXRpb24sIGFuZCBJIGRvbid0IGtub3cNCj4gaG93IHRvIHRlc3QgaXQu
+DQo+ID4gSSBhZGRlZCB0aGVzZSBob29rIGZ1bmN0aW9ucyBiYXNlZCBvbiBQaGlsaXBwZSdzIHN1
+Z2dlc3Rpb24gYW5kIHJldmlldy4NCj4gPiBDb3VsZCB5b3UgdGVsbCBtZSBob3cgdG8gdGVzdCBt
+aWdyYXRpb24gdG8gZW5zdXJlIGJvdGggdmVyc2lvbiAzIGFuZCB2ZXJzaW9uDQo+IDIgYXJlIHdv
+cmthYmxlPw0KPiANCj4gDQo+IE1pZ3JhdGluZyBhIHJ1bm5pbmcgZ3Vlc3QgYmFjayBhbmQgZm9y
+dGggYmV0d2VlbiBRRU1VIFsxXSBhbmQgWzJdIHNob3VsZCBiZQ0KPiBwb3NzaWJsZSA6DQo+IA0K
+PiBbMV0gcGF0aC90by9xZW11LTEwLjIvaW5zdGFsbC9iaW4vcWVtdS1zeXN0ZW0teDg2XzY0IC1N
+IHBjLXEzNS0xMC4yIFwNCj4gICAgICAuLi4gXA0KPiAgICAgIC1kZXZpY2UgdXNiLWVoY2kgXA0K
+PiAgICAgIC1kZXZpY2UgdXNiLWtiZA0KPiANCj4gWzJdIHBhdGgvdG8vbXlxZW11LXdpdGgtcGF0
+Y2hlcy9pbnN0YWxsL2Jpbi9xZW11LXN5c3RlbS14ODZfNjQgLU0NCj4gcGMtcTM1LTEwLjIgXA0K
+PiAgICAgIC4uLiBcDQo+ICAgICAgLWRldmljZSB1c2ItZWhjaSBcDQo+ICAgICAgLWRldmljZSB1
+c2Ita2JkDQo+IA0KPiBUaGlzIGlzIHJlcXVpcmVkIHRvIGd1YXJhbnRlZSBmb3J3YXJkIGFuZCBi
+YWNrd2FyZCBjb21wYXRpYmlsaXR5IG9mIFFFTVUNCj4gcGMtcTM1LTEwLjIgbWFjaGluZSBpbnN0
+YW5jZXMuDQo+IA0KPiANCg0KVGhhbmtzIGZvciB0aGUgbWlncmF0aW9uIHRlc3Qgc3RlcHMuDQpJ
+IGhhdmUgdGVzdGVkIGJvdGggZm9yd2FyZCBhbmQgYmFja3dhcmQgbWlncmF0aW9uIGZvciBFSENJ
+IGFuZCBvYnNlcnZlZCBmYWlsdXJlcyBpbiBib3RoIGRpcmVjdGlvbnMuIA0KSSB3aWxsIHJldmlz
+ZSBteSBjaGFuZ2VzIGluIGEgZm9sbG93LXVwIHBhdGNoIHRvIGFkZHJlc3MgdGhlc2UgaXNzdWVz
+IGFuZCBlbnN1cmUgdGhhdCB0aGUgbWlncmF0aW9uIHRlc3RzIHBhc3MuDQoNClRoYW5rcywNCkph
+bWluDQogDQo+IEMuDQo=
 

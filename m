@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461B5FA1FFF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E914FFA1FFC
 	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfM2-000079-V1; Wed, 22 Apr 2026 17:43:31 -0400
+	id 1wFfML-0000KO-Hn; Wed, 22 Apr 2026 17:43:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfM1-000061-6T
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:29 -0400
-Received: from p-east2-cluster5-host2-snip4-6.eps.apple.com ([57.103.79.19]
+ id 1wFfMD-0000BJ-9j
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:45 -0400
+Received: from p-east2-cluster5-host6-snip4-10.eps.apple.com ([57.103.79.103]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLy-0007Yy-EQ
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:28 -0400
+ id 1wFfM6-0007hx-B8
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:38 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 8207A1800C4C; Wed, 22 Apr 2026 21:43:22 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAE1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkLXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ 18A151800C40; Wed, 22 Apr 2026 21:43:33 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlgHXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894205; x=1779486205;
- bh=IUjKb0cE7ZzdVrzQoDPD3eOQWmDC4LH15sqwoM3HWHE=;
+ s=sig1; t=1776894213; x=1779486213;
+ bh=rh+VPyFbTbBoMCGE2E8OsoUc1C/vaCGQq7uuR+/6qVM=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=EnBOPiF1LNmmqvFEJYQyBp/cDqVcC0IxQjKi1in9troecNAT+GBzbIsy+egbV8K8InaOcyo7iqxeq5d4P/d6pvY5DJJI5ADKsdX69rXEpbBK01NAein8iJllsefTfjYDMmurgASdJ4yOQePid8bKiPGpocXS8TCQmlALUpt2BH+4RFcYCtpqp+HB0KBYVeCse+b5gduvm/B8mnqprrw8LJAKZ2WWtvGpSBhtJCFcB3KPDYNi0kAzVix9pFhAM7lfYjFiAEoOLY4cbz67sDxn7m/WThzEdwZnaYtzhB2egX0zcQD0fJLYPK5Uo0mwjBuQaMJOw+M1ZtH052fL7YjkzQ==
+ b=JyiMCAzz4NTjHlW+xo+aH+2u/znI7MxKhz1gUN3EapnMdBvSxqWllPG210A4v9Ha18V8RgJGpT+c+v3xCANUP0I4Yb1OtdZpN80+Sk9DKX7ex3D2RS7oQ/14tMCzS0KvvyUq5vwQJoNDycX8DVOFiPbzu1OrliId6mwrSX3T0pXUzV/V6YUr/7vGs2SqCp8oio7Hv2mmVr/aSWMGInesCYY2asqsbXm83Ychpqf7KC4ngMG0YQp02FiGuBCL7LxqoNME7og7OsRAm6mP2DtHo6fnGc9GlwKZrnwUno/bL11wazNWOUIaa2rGnDcZoBUAz42HYaddt4lEkjpDqQ4yFg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 403601800C44; Wed, 22 Apr 2026 21:43:20 +0000 (UTC)
+ 5F9F418000CB; Wed, 22 Apr 2026 21:43:31 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -43,35 +43,35 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>, Wei Liu <wei.liu@kernel.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Magnus Kulke <magnuskulke@linux.microsoft.com>
-Subject: [PATCH v3 28/37] target/i386: add de/compaction to xsave_helper
-Date: Wed, 22 Apr 2026 23:42:16 +0200
-Message-ID: <20260422214225.2242-29-mohamed@unpredictable.fr>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 34/37] whpx: i386: add feature to intercept #GP MSR accesses
+Date: Wed, 22 Apr 2026 23:42:22 +0200
+Message-ID: <20260422214225.2242-35-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=MK9tWcZl c=1 sm=1 tr=0 ts=69e940fb
+X-Proofpoint-ORIG-GUID: 8WqBt4xTL8QcDYoqHnaQnAaVevEzz06Y
+X-Authority-Info-Out: v=2.4 cv=J7anLQnS c=1 sm=1 tr=0 ts=69e94105
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=yMhMjlubAAAA:8 a=SWS4GvfA19jorXXodEoA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX+YRckQQLAE5k
- 0GOC7MITYx0XvAqQ0THnTON4Jz/aHukqGZuNE4SYoValx/EZFJMBTN1l9xLIPM/MsqoW/SAF81K
- 85m3lSrblBoZR/UFJ4i1wN51+JeMn4cOz9tVUX5WIUIQ34J9+b6Aq7z9XaJliFGHDnZNvniw+GE
- qgFUmUGyuzrz31MJGzJnx/krZOHDpGNUqELsV6nXLF2NyWIU2xt07nFM422OEMjl9PhoUCKx1Vl
- yDUOl1qUKfuYRxAVm5bTcD1WCiZXTPzg6y0DnYjlZJ1qOBANjOqRPONq0GwVUW+LQXzLw/v+SpX
- LxSXBgu0BnNyu44Ch0fF+m+1Y8UKP2cpI9DsaA2RXiwZg/teoMZWcDvR917Fe4=
-X-Proofpoint-ORIG-GUID: bt8x_kUW8LEaLSHFN8e-f1d_Pat8DIR2
-X-Proofpoint-GUID: bt8x_kUW8LEaLSHFN8e-f1d_Pat8DIR2
-Received-SPF: pass client-ip=57.103.79.19;
+ a=CoAbg4nstuYx8jGKVk0A:9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfXzllHvflRTjQG
+ BTIp1CeMZQOxRZCnTT5wmBJJLMKcU2LlAnHw+ziz0XXI73dTgVqJADhz4diqBVFim6DGNj5bZi1
+ LF1ct8PR24d0nGmej6n1e7IHyxCHA4mzLJ/JMV+T1+j1SzY2nip2MAxInrN3p6dXQ0Fq34TrfVd
+ 5Finb5i9RhrxfUvoBfx5/1G+tS7zXFdinnwqrN/CJ8YXZ1H+pVKdHuhbyaty+ueGCL1Yp39S0M6
+ Xtw2BGTSVvlpzgCRUWv+qTS1P5QGapoFHiXgLqXf7CRDwIBAm25EZMTCHlQTTKSJfyGQRLUOyG5
+ Uuo+sllw5pnAloakOhLtqXEWlEhwnp4ne1Z6Fbv0mczUvk5JO7uyxlx0n0gBD8=
+X-Proofpoint-GUID: 8WqBt4xTL8QcDYoqHnaQnAaVevEzz06Y
+Received-SPF: pass client-ip=57.103.79.103;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,324 +88,310 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Magnus Kulke <magnuskulke@linux.microsoft.com>
-
-HyperV use XSAVES which stores extended state in compacted format in
-which components are packed contiguously, while QEMU's internal XSAVE
-representation use the standard format in which each component is places
-at a fixed offset. Hence for this purpose we add two conversion fn's to
-the xsave helper to roundtrip XSAVE state in a migration.
-
-- decompact_xsave_area(): converts compacted format to standard.
-  XSTATE_BV is masked to host XCR0 since IA32_XSS is managed
-  by the hypervisor.
-
-- compact_xsave_area(): converts standard format back to compacted
-  format. XCOMP_BV is set from the host's CPUID 0xD.0 rather than the
-  guest's XCR0, as this is what the hypervisor expects.
-
-Both functions use the host's CPUID leaf 0xD subleaves to determine component
-sizes, offsets, and alignment requirements.
-
-There are situations when the host advertises features that we want to
-disable for the guest, e.g. AMX TILE. In this case we cannot rely on the
-host's xcr0, but instead we use the feature mask that has been generated
-in as part of the CPU realization process (x86_cpu_expand_features).
-
-Signed-off-by: Magnus Kulke <magnuskulke@linux.microsoft.com>
-
-[Fixup: made xsave_offset a size_t to fix macOS and OpenBSD builds]
+It turns out they're not that uncommon, so have
+a feature around to log those.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/cpu.h          |   2 +
- target/i386/xsave_helper.c | 256 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 258 insertions(+)
+ accel/whpx/whpx-common.c       |   1 +
+ include/system/whpx-internal.h |   1 +
+ target/i386/whpx/whpx-all.c    | 183 +++++++++++++++++++++++++++++----
+ 3 files changed, 166 insertions(+), 19 deletions(-)
 
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 0af7bdf85a..80cdc1cb2a 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -3023,6 +3023,8 @@ void x86_cpu_xrstor_all_areas(X86CPU *cpu, const void *buf, uint32_t buflen);
- void x86_cpu_xsave_all_areas(X86CPU *cpu, void *buf, uint32_t buflen);
- uint32_t xsave_area_size(uint64_t mask, bool compacted);
- void x86_update_hflags(CPUX86State* env);
-+int decompact_xsave_area(const void *buf, size_t buflen, CPUX86State *env);
-+int compact_xsave_area(CPUX86State *env, void *buf, size_t buflen);
- 
- static inline bool hyperv_feat_enabled(X86CPU *cpu, int feat)
- {
-diff --git a/target/i386/xsave_helper.c b/target/i386/xsave_helper.c
-index bab2258732..625bae103a 100644
---- a/target/i386/xsave_helper.c
-+++ b/target/i386/xsave_helper.c
-@@ -3,6 +3,7 @@
-  * See the COPYING file in the top-level directory.
-  */
- #include "qemu/osdep.h"
-+#include "qemu/error-report.h"
- 
- #include "cpu.h"
- 
-@@ -293,3 +294,258 @@ void x86_cpu_xrstor_all_areas(X86CPU *cpu, const void *buf, uint32_t buflen)
-     }
- #endif
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index 497c03138e..d846e08714 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -555,6 +555,7 @@ static void whpx_accel_instance_init(Object *obj)
+     /* Value determined at whpx_accel_init */
+     whpx->hyperv_enlightenments_enabled = false;
+     whpx->ignore_unknown_msr = true;
++    whpx->intercept_msr_gp = false;
  }
-+
-+#define XSTATE_BV_IN_HDR  offsetof(X86XSaveHeader, xstate_bv)
-+#define XCOMP_BV_IN_HDR   offsetof(X86XSaveHeader, xcomp_bvo)
-+
-+typedef struct X86XSaveAreaView {
-+    /* 512 bytes */
-+    X86LegacyXSaveArea legacy;
-+    /* 64 bytes */
-+    X86XSaveHeader     header;
-+    /* ...followed by individual xsave areas */
-+} X86XSaveAreaView;
-+
-+#define XSAVE_XSTATE_BV_OFFSET  offsetof(X86XSaveAreaView, header.xstate_bv)
-+#define XSAVE_XCOMP_BV_OFFSET   offsetof(X86XSaveAreaView, header.xcomp_bv)
-+#define XSAVE_EXT_OFFSET        (sizeof(X86LegacyXSaveArea) + \
-+                                 sizeof(X86XSaveHeader))
-+
-+/**
-+ * decompact_xsave_area - Convert compacted XSAVE format to standard format
-+ * @buf: Source buffer containing compacted XSAVE data
-+ * @buflen: Size of source buffer
-+ * @env: CPU state where the standard format buffer will be written to
-+ *
-+ * Accelerator backends like MSHV might return XSAVE state in compacted format
-+ * (XSAVEC). The state components have to be packed contiguously without gaps.
-+ * The XSAVE qemu buffers are in standard format where each component has a
-+ * fixed offset.
-+ *
-+ * Returns: 0 on success, negative errno on failure
-+ */
-+int decompact_xsave_area(const void *buf, size_t buflen, CPUX86State *env)
+ 
+ static const TypeInfo whpx_accel_type = {
+diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+index 0aae83bd7c..15027a7d52 100644
+--- a/include/system/whpx-internal.h
++++ b/include/system/whpx-internal.h
+@@ -48,6 +48,7 @@ struct whpx_state {
+     bool hyperv_enlightenments_enabled;
+ 
+     bool ignore_unknown_msr;
++    bool intercept_msr_gp;
+ };
+ 
+ extern struct whpx_state whpx_global;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 830d8acd2b..ea5d1e535c 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1008,6 +1008,27 @@ static int emulate_instruction(CPUState *cpu, const uint8_t *insn_bytes, size_t
+     return 0;
+ }
+ 
++static int emulate_msr_instruction(CPUState *cpu,
++            const uint8_t *insn_bytes, size_t insn_len)
 +{
-+    uint64_t compacted_xstate_bv, compacted_xcomp_bv, compacted_layout_bv;
-+    size_t xsave_offset;
-+    uint64_t *xcomp_bv;
-+    size_t i;
-+    uint32_t eax, ebx, ecx, edx;
-+    uint32_t size, dst_off;
-+    bool align64;
-+    uint64_t guest_xcr0, *xstate_bv;
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++    struct x86_decode decode = { 0 };
++    x86_insn_stream stream = { .bytes = insn_bytes, .len = insn_len };
 +
-+    compacted_xstate_bv = *(uint64_t *)(buf + XSAVE_XSTATE_BV_OFFSET);
-+    compacted_xcomp_bv  = *(uint64_t *)(buf + XSAVE_XCOMP_BV_OFFSET);
++    whpx_get_registers(cpu, WHPX_LEVEL_FAST_RUNTIME_STATE);
++    decode_instruction_stream(env, &decode, &stream);
 +
-+    /* This function only handles compacted format (bit 63 set) */
-+    assert((compacted_xcomp_bv >> 63) & 1);
++    if (decode.cmd != X86_DECODE_CMD_RDMSR
++        && decode.cmd != X86_DECODE_CMD_WRMSR) {
++        return 1;
++    }
 +
-+    /* Low bits of XCOMP_BV describe which components are in the layout */
-+    compacted_layout_bv = compacted_xcomp_bv & ~(1ULL << 63);
++    exec_instruction(env, &decode);
++    whpx_set_registers(cpu, WHPX_LEVEL_FAST_RUNTIME_STATE);
++    return 0;
++}
 +
-+    /* Zero out buffer, then copy legacy region (FP + SSE) and header as-is */
-+    memset(env->xsave_buf, 0, env->xsave_buf_len);
-+    memcpy(env->xsave_buf, buf, XSAVE_EXT_OFFSET);
+ static int whpx_handle_mmio(CPUState *cpu, WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
+ {
+     WHV_MEMORY_ACCESS_CONTEXT *ctx = &exit_ctx->MemoryAccess;
+@@ -1022,6 +1043,45 @@ static int whpx_handle_mmio(CPUState *cpu, WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
+     return 0;
+ }
+ 
++static int whpx_handle_msr_from_gpf(CPUState *cpu)
++{
++    WHV_VP_EXCEPTION_CONTEXT *ctx = &cpu->accel->exit_ctx.VpException;
++    int ret;
 +
-+    /*
-+     * We mask XSTATE_BV with the guest's supported XCR0 because:
-+     * 1. Supervisor state (IA32_XSS) is hypervisor-managed, we don't use
-+     *    this state for migration.
-+     * 2. Features disabled at partition creation (e.g. AMX) must be excluded
-+     */
-+    guest_xcr0 = ((uint64_t)env->features[FEAT_XSAVE_XCR0_HI] << 32) |
-+                 env->features[FEAT_XSAVE_XCR0_LO];
-+    xstate_bv = (uint64_t *)(env->xsave_buf + XSAVE_XSTATE_BV_OFFSET);
-+    *xstate_bv &= guest_xcr0;
-+
-+    /* Clear bit 63 - output is standard format, not compacted */
-+    xcomp_bv = (uint64_t *)(env->xsave_buf + XSAVE_XCOMP_BV_OFFSET);
-+    *xcomp_bv = *xcomp_bv & ~(1ULL << 63);
-+
-+    /*
-+     * Process each extended state component in the compacted layout.
-+     * Components 0 and 1 (FP and SSE) are in the legacy region, so we
-+     * start at component 2. For each component:
-+     * - Calculate its offset in the compacted source (contiguous layout)
-+     * - Get its fixed offset in the standard destination from CPUID
-+     * - Copy if the component has non-init state (bit set in XSTATE_BV)
-+     */
-+    xsave_offset = XSAVE_EXT_OFFSET;
-+    for (i = 2; i < 63; i++) {
-+        if (((compacted_layout_bv >> i) & 1) == 0) {
-+            continue;
-+        }
-+
-+        /* Query guest CPUID for this component's size and standard offset */
-+        cpu_x86_cpuid(env, 0xD, i, &eax, &ebx, &ecx, &edx);
-+
-+        size = eax;
-+        dst_off = ebx;
-+        align64 = (ecx & (1u << 1)) != 0;
-+
-+        /* Component is in the layout but unknown to the guest CPUID model */
-+        if (size == 0) {
-+            /*
-+             * The hypervisor might expose a component that has no
-+             * representation in the guest CPUID model. We query the host to
-+             * retrieve the size of the component, so we can skip over it.
-+             */
-+            host_cpuid(0xD, i, &eax, &ebx, &ecx, &edx);
-+            size = eax;
-+            align64 = (ecx & (1u << 1)) != 0;
-+            if (size == 0) {
-+                error_report("xsave component %zu: size unknown to both "
-+                             "guest and host CPUID", i);
-+                return -EINVAL;
-+            }
-+
-+            if (align64) {
-+                xsave_offset = QEMU_ALIGN_UP(xsave_offset, 64);
-+            }
-+
-+            if (xsave_offset + size > buflen) {
-+                error_report("xsave component %zu overruns source buffer: "
-+                             "offset=%zu size=%u buflen=%zu",
-+                             i, xsave_offset, size, buflen);
-+                return -E2BIG;
-+            }
-+
-+            xsave_offset += size;
-+            continue;
-+        }
-+
-+        if (align64) {
-+            xsave_offset = QEMU_ALIGN_UP(xsave_offset, 64);
-+        }
-+
-+        if ((xsave_offset + size) > buflen) {
-+            error_report("xsave component %zu overruns source buffer: "
-+                         "offset=%zu size=%u buflen=%zu",
-+                         i, xsave_offset, size, buflen);
-+            return -E2BIG;
-+        }
-+
-+        if ((dst_off + size) > env->xsave_buf_len) {
-+            error_report("xsave component %zu overruns destination buffer: "
-+                         "offset=%u size=%u buflen=%zu",
-+                         i, dst_off, size, (size_t)env->xsave_buf_len);
-+            return -E2BIG;
-+        }
-+
-+        /* Copy components marked present in XSTATE_BV to guest model */
-+        if (((compacted_xstate_bv >> i) & 1) != 0) {
-+            memcpy(env->xsave_buf + dst_off, buf + xsave_offset, size);
-+        }
-+
-+        xsave_offset += size;
++    ret = emulate_msr_instruction(cpu, ctx->InstructionBytes, ctx->InstructionByteCount);
++    if (ret == 1) {
++        /* Not an MSR instruction */
++        return 1;
 +    }
 +
 +    return 0;
 +}
 +
-+/**
-+ * compact_xsave_area - Convert standard XSAVE format to compacted format
-+ * @env: CPU state containing the standard format XSAVE buffer
-+ * @buf: Destination buffer for compacted XSAVE data (to send to hypervisor)
-+ * @buflen: Size of destination buffer
-+ *
-+ * Accelerator backends like MSHV might expect XSAVE state in compacted format
-+ * (XSAVEC). The state components are packed contiguously without gaps.
-+ * The XSAVE qemu buffers are in standard format where each component has a
-+ * fixed offset.
-+ *
-+ * This function converts from standard to compacted format, it accepts a
-+ * pre-allocated destination buffer of sufficient size, it is the
-+ * responsibility of the caller to ensure the buffer is big enough.
-+ *
-+ * Returns: total size of compacted XSAVE data written to @buf
-+ */
-+int compact_xsave_area(CPUX86State *env, void *buf, size_t buflen)
++static void whpx_inject_back_gpf(CPUState *cpu)
 +{
-+    uint64_t *xcomp_bv;
-+    size_t i;
-+    uint32_t eax, ebx, ecx, edx;
-+    uint32_t size, src_off;
-+    bool align64;
-+    size_t compact_offset;
-+    uint64_t host_xcr0_mask, guest_xcr0;
++    WHV_VP_EXCEPTION_CONTEXT *ctx = &cpu->accel->exit_ctx.VpException;
++    WHV_REGISTER_VALUE reg = {};
 +
-+    /* Zero out buffer, then copy legacy region (FP + SSE) and header as-is */
-+    memset(buf, 0, buflen);
-+    memcpy(buf, env->xsave_buf, XSAVE_EXT_OFFSET);
-+
-+    /*
-+     * Set XCOMP_BV to indicate compacted format (bit 63) and which
-+     * components are in the layout.
-+     *
-+     * We must explicitly set XCOMP_BV because x86_cpu_xsave_all_areas()
-+     * produces standard format with XCOMP_BV=0 (buffer is zeroed and only
-+     * XSTATE_BV is set in the header).
-+     *
-+     * XCOMP_BV must reflect the partition's XSAVE capability, not the
-+     * guest's current XCR0 (env->xcr0). These differ b/c:
-+     * - A guest's XCR0 is what the guest OS has enabled via XSETBV
-+     * - The partition's XCR0 mask is the hypervisor's save/restore capability
-+     *
-+     * The hypervisor uses XSAVES which saves based on its capability, so the
-+     * XCOMP_BV value in the buffer we send back must match that capability.
-+     *
-+     * We intersect the host XCR0 with the guest's supported XCR0 features
-+     * (FEAT_XSAVE_XCR0_*) so that features disabled at partition creation
-+     * (e.g. AMX) are excluded from the compacted layout.
-+     */
-+    host_cpuid(0xD, 0, &eax, &ebx, &ecx, &edx);
-+    host_xcr0_mask = ((uint64_t)edx << 32) | eax;
-+    guest_xcr0 = ((uint64_t)env->features[FEAT_XSAVE_XCR0_HI] << 32) |
-+                 env->features[FEAT_XSAVE_XCR0_LO];
-+    host_xcr0_mask &= guest_xcr0;
-+    xcomp_bv = buf + XSAVE_XCOMP_BV_OFFSET;
-+    *xcomp_bv = host_xcr0_mask | (1ULL << 63);
-+
-+    /*
-+     * Process each extended state component in the host's XCR0.
-+     * The compacted layout must match XCOMP_BV (host capability).
-+     *
-+     * For each component:
-+     * - Get its size and standard offset from host CPUID
-+     * - Apply 64-byte alignment if required
-+     * - Copy data only if guest has this component (bit set in env->xcr0)
-+     * - Always advance offset to maintain correct layout
-+     */
-+    compact_offset = XSAVE_EXT_OFFSET;
-+    for (i = 2; i < 63; i++) {
-+        if (!((host_xcr0_mask >> i) & 1)) {
-+            continue;
-+        }
-+
-+        /* Query host CPUID for this component's size and standard offset */
-+        host_cpuid(0xD, i, &eax, &ebx, &ecx, &edx);
-+        size = eax;
-+        src_off = ebx;
-+        align64 = (ecx >> 1) & 1;
-+
-+        if (size == 0) {
-+            /* Component in host xcr0 but unknown - shouldn't happen */
-+            continue;
-+        }
-+
-+        /* Apply 64-byte alignment if required by this component */
-+        if (align64) {
-+            compact_offset = QEMU_ALIGN_UP(compact_offset, 64);
-+        }
-+
-+        /*
-+         * Only copy data if guest has this component enabled in XCR0.
-+         * Otherwise the component remains zeroed (init state), but we
-+         * still advance the offset to maintain the correct layout.
-+         */
-+        if ((env->xcr0 >> i) & 1) {
-+            memcpy(buf + compact_offset, env->xsave_buf + src_off, size);
-+        }
-+
-+        compact_offset += size;
++    if (ctx->ExceptionInfo.SoftwareException) {
++        /* TODO */
++        warn_report("Was asked to inject software exception.");
++        return;
 +    }
 +
-+    return compact_offset;
++    if (ctx->ExceptionType != EXCP0D_GPF) {
++        warn_report("Was asked to inject exception other than GPF.");
++        return;
++    }
++
++    reg.ExceptionEvent.EventPending = 1;
++    reg.ExceptionEvent.EventType = WHvX64PendingEventException;
++    reg.ExceptionEvent.DeliverErrorCode = ctx->ExceptionInfo.ErrorCodeValid;
++    reg.ExceptionEvent.Vector = ctx->ExceptionType;
++    reg.ExceptionEvent.ErrorCode = ctx->ErrorCode;
++    reg.ExceptionEvent.ExceptionParameter = ctx->ExceptionParameter;
++    whpx_set_reg(cpu, WHvRegisterPendingEvent, reg);
 +}
++
+ static void handle_io(CPUState *env, uint16_t port, void *buffer,
+                   int direction, int size, int count)
+ {
+@@ -1210,13 +1270,54 @@ static target_ulong read_cr(CPUState *cpu, int cr)
+     return val.Reg64;
+ }
+ 
++static bool whpx_simulate_rdmsr(CPUState *cs)
++{
++    X86CPU *cpu = X86_CPU(cs);
++    CPUX86State *env = &cpu->env;
++    uint32_t msr = ECX(env);
++    uint64_t val = 0;
++
++    switch (msr) {
++    default:
++        error_report("WHPX: unknown msr 0x%x", msr);
++        x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++        return 1;
++        break;
++    }
++
++    RAX(env) = (uint32_t)val;
++    RDX(env) = (uint32_t)(val >> 32);
++
++    return 0;
++}
++
++static bool whpx_simulate_wrmsr(CPUState *cs)
++{
++    X86CPU *cpu = X86_CPU(cs);
++    CPUX86State *env = &cpu->env;
++    uint32_t msr = ECX(env);
++    uint64_t data = ((uint64_t)EDX(env) << 32) | EAX(env);
++
++    switch (msr) {
++    default:
++        error_report("WHPX: unknown msr 0x%x val %llx", msr, data);
++        x86_emul_raise_exception(&X86_CPU(cpu)->env, EXCP0D_GPF, 0);
++        return 1;
++        break;
++    }
++
++    return 0;
++}
++
+ static const struct x86_emul_ops whpx_x86_emul_ops = {
+     .read_segment_descriptor = read_segment_descriptor,
+     .handle_io = handle_io,
+     .is_protected_mode = is_protected_mode,
+     .is_long_mode = is_long_mode,
+     .is_user_mode = is_user_mode,
+-    .read_cr = read_cr
++    .read_cr = read_cr,
++    .simulate_rdmsr = whpx_simulate_rdmsr,
++    .simulate_wrmsr = whpx_simulate_wrmsr
+ };
+ 
+ static void whpx_init_emu(void)
+@@ -1356,6 +1457,18 @@ uint64_t whpx_get_supported_msr_feature(uint32_t index)
+     return 0;
+ }
+ 
++static UINT64 whpx_get_default_exceptions(void)
++{
++    struct whpx_state *whpx = &whpx_global;
++    UINT64 intercepts = 0;
++
++    if (whpx->intercept_msr_gp) {
++        intercepts |= 1UL << WHvX64ExceptionTypeGeneralProtectionFault;
++    }
++
++    return intercepts;
++}
++
+ /*
+  * Controls whether we should intercept various exceptions on the guest,
+  * namely breakpoint/single-step events.
+@@ -1378,7 +1491,7 @@ HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions)
+     prop.ExtendedVmExits.X64MsrExit = 1;
+     prop.ExtendedVmExits.X64CpuidExit = 1;
+ 
+-    if (exceptions != 0) {
++    if (exceptions != 0 || whpx_get_default_exceptions() != 0) {
+         prop.ExtendedVmExits.ExceptionExit = 1;
+     }
+ 
+@@ -1393,7 +1506,7 @@ HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions)
+     }
+ 
+     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+-    prop.ExceptionExitBitmap = exceptions;
++    prop.ExceptionExitBitmap = exceptions | whpx_get_default_exceptions();
+ 
+     hr = whp_dispatch.WHvSetPartitionProperty(
+         whpx->partition,
+@@ -1403,6 +1516,8 @@ HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions)
+ 
+     if (SUCCEEDED(hr)) {
+         whpx->exception_exit_bitmap = exceptions;
++    } else {
++        error_report("WHPX: Failed to set exception exit bitmap, hr=%08lx", hr);
+     }
+ 
+     return hr;
+@@ -2530,6 +2645,15 @@ int whpx_vcpu_run(CPUState *cpu)
+             break;
+         }
+         case WHvRunVpExitReasonException:
++            if (vcpu->exit_ctx.VpException.ExceptionType ==
++                WHvX64ExceptionTypeGeneralProtectionFault) {
++                if (whpx_handle_msr_from_gpf(cpu)) {
++                    whpx_inject_back_gpf(cpu);
++                }
++                ret = 0;
++                break;
++            }
++
+             whpx_get_registers(cpu, WHPX_LEVEL_FULL_STATE);
+ 
+             if ((vcpu->exit_ctx.VpException.ExceptionType ==
+@@ -2818,6 +2942,38 @@ static void whpx_set_unknown_msr(Object *obj, Visitor *v,
+     }
+ }
+ 
++static void whpx_set_intercept_msr_gp(Object *obj, Visitor *v,
++                                   const char *name, void *opaque,
++                                   Error **errp)
++{
++    struct whpx_state *whpx = &whpx_global;
++    OnOffAuto mode;
++
++    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
++        return;
++    }
++
++    switch (mode) {
++    case ON_OFF_AUTO_ON:
++        whpx->intercept_msr_gp = true;
++        break;
++
++    case ON_OFF_AUTO_OFF:
++        whpx->intercept_msr_gp = false;
++        break;
++
++    case ON_OFF_AUTO_AUTO:
++        whpx->intercept_msr_gp = false;
++        break;
++    default:
++        /*
++         * The value was checked in visit_type_OnOffAuto() above. If
++         * we get here, then something is wrong in QEMU.
++         */
++        abort();
++    }
++}
++
+ void whpx_arch_accel_class_init(ObjectClass *oc)
+ {
+     object_class_property_add(oc, "ignore-unknown-msr", "OnOffAuto",
+@@ -2825,6 +2981,11 @@ void whpx_arch_accel_class_init(ObjectClass *oc)
+         NULL, NULL);
+     object_class_property_set_description(oc, "ignore-unknown-msr",
+         "Configure unknown MSR behavior");
++    object_class_property_add(oc, "intercept-msr-gp", "OnOffAuto",
++        NULL, whpx_set_intercept_msr_gp,
++        NULL, NULL);
++    object_class_property_set_description(oc, "intercept-msr-gp",
++        "Intercept #GP to log erroring MSR accesses.");
+ }
+ 
+ int whpx_accel_init(AccelState *as, MachineState *ms)
+@@ -3079,22 +3240,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
+ 
+-    /* Register for MSR and CPUID exits */
+-    memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+-    prop.ExtendedVmExits.X64MsrExit = 1;
+-    prop.ExtendedVmExits.X64CpuidExit = 1;
+-
+-    hr = whp_dispatch.WHvSetPartitionProperty(
+-            whpx->partition,
+-            WHvPartitionPropertyCodeExtendedVmExits,
+-            &prop,
+-            sizeof(WHV_PARTITION_PROPERTY));
+-    if (FAILED(hr)) {
+-        error_report("WHPX: Failed to enable extended VM exits, hr=%08lx", hr);
+-        ret = -EINVAL;
+-        goto error;
+-    }
+-
+     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+     prop.X64MsrExitBitmap.UnhandledMsrs = 1;
+     prop.X64MsrExitBitmap.ApicBaseMsrWrite = 1;
 -- 
 2.50.1 (Apple Git-155)
 

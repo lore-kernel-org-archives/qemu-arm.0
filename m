@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 680DAFA1FFC
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24BD0FA1FFC
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfML-0000JA-G2; Wed, 22 Apr 2026 17:43:49 -0400
+	id 1wFfLO-0007wx-5Y; Wed, 22 Apr 2026 17:42:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfMG-0000BX-EF
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:45 -0400
-Received: from p-east2-cluster5-host10-snip4-3.eps.apple.com ([57.103.79.116]
+ id 1wFfLM-0007vZ-Q2
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:48 -0400
+Received: from p-east2-cluster1-host7-snip4-4.eps.apple.com ([57.103.76.67]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfMD-0007ms-Mh
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:44 -0400
+ id 1wFfLL-0006z9-06
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:48 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- EC9AC1800219; Wed, 22 Apr 2026 21:43:35 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlgEXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ 1B131180097E; Wed, 22 Apr 2026 21:42:41 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlwfHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894220; x=1779486220;
- bh=fW1u47ze30rJgld8zY70vRzg5SwPNuoMbTd0WP/7YIY=;
+ s=sig1; t=1776894166; x=1779486166;
+ bh=hkQG6hOmkKoQQ4VfPKcZK5YN5+VU0E/MubeBjGkQBBQ=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=YunTlq9UNMraO+3ivVWkrPMsgaQZEwdRkNREaLdyOxO4TleB45gNTxfLdgmftlzuq8Y17YZA/PWQw2OngXqFn9+A3UAVcA85hZrFoaXCSsaTfavMxIqxTWQOeK1yRWBQMBoBV2MEjQmlZmSAuxTGCJMMwBlM+Pyxkv+JhQHlmWdT1vHTSmO/W1X12N294Xnzs0Z8ADEA94GzOhr3pfYTZdt4gd98niNi84ha3iHO/OhYnGO/nwXfSqf8m/1lW2vF7ALYnOlkI2DDdOe8CTauN3Lkjj3xpJ0gdVnHLGLNeXIRKvZg3WT7ycrXvK6MBXk0PcKpJtcn7Sl1du0If+UFaA==
+ b=HV9zMv3So4Y0mJwBIOC7ZlYdnjGoCAdOyTv9t7dpf3LuIvvPGpP6VTuyL7n4F8ex55BDHFZtlHJJoyNl+fQ97znFqLlyvUVedPc/sNCujmek+LqYx2o6so9DuWnFd+eWPIjSeOinVZgYdiDrQiN4M4PfKXnuzN602s8L1A5s9Jd4BzzhPnv4Dl0wfGyfaJ+6QsUdjjCcj2jm+p6j2lGaHev5qNG6+NB2eq/uRWqpFSbVaZy6RuUEZIYCzlDPx1lrBrqeLfezG7imjWhrHEITZaKGp8DxGnt8Wnf2BuO+e/+5XtayprEDJOQCHf0bMTJbtVodlg4Gqupky8zbo8Ruqw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 3EC57180020A; Wed, 22 Apr 2026 21:43:33 +0000 (UTC)
+ 6E5F018000C7; Wed, 22 Apr 2026 21:42:39 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,34 +44,33 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 35/37] whpx: i386: nested virt settings
-Date: Wed, 22 Apr 2026 23:42:23 +0200
-Message-ID: <20260422214225.2242-36-mohamed@unpredictable.fr>
+Subject: [PATCH v3 06/37] whpx: i386: reintroduce enlightenments for Windows 10
+Date: Wed, 22 Apr 2026 23:41:54 +0200
+Message-ID: <20260422214225.2242-7-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=a4U9NESF c=1 sm=1 tr=0 ts=69e9410a
+X-Proofpoint-GUID: pHMhze96HKbChHZ4pNipe3sOb9aB1OHK
+X-Authority-Info-Out: v=2.4 cv=TtLrRTXh c=1 sm=1 tr=0 ts=69e940d3
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=20kCj1oTBhCq6H0YB64A:9
-X-Proofpoint-ORIG-GUID: RGN4i7LvkEGStE27k1_LBWOjRKbi_5r_
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfXznMUZpcdKttZ
- vizU05v6cQ0mxtZXjSxqOTrD6xCX/gngajIsw5+a3HoFtgdUQ4SVsaT5Ft31a+DBlF6XTdQFemc
- y8NjpZ0YIQbHKZgpB+IuUU8mdprcMK9CCQ/0CxqFVc+bod0kkQlMD572MnWZ6U7pGU9KQcXl7p7
- wCowXB8nZcAxJiTnOhOpoiKx52zQSsb1wNoDk3n8C3F45/GD01howYrmpePX1W5j0HA7ovTjiFn
- R2pO66pvE0llJSahP7WbV871Qs12c3/6bymhldsDf6LL++bj3ZbeGKazfsxZ+SvuRNt1PT0kARy
- xSsDm8hWY3015WPUOzVKpzJKxC3Q/uz6cSg/QZNKpZW89SVBEXlZ2DtySBMkhg=
-X-Proofpoint-GUID: RGN4i7LvkEGStE27k1_LBWOjRKbi_5r_
-Received-SPF: pass client-ip=57.103.79.116;
+ a=hfWBbujXMTx1PmRkPVYA:9
+X-Proofpoint-ORIG-GUID: pHMhze96HKbChHZ4pNipe3sOb9aB1OHK
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfX4Y10kmJax19L
+ NeAdQfEOjJhNwWwSLmU5PnJAPs1nUtZAhQw8Q+JQryNxdbQ0xP9g+s9H+bLeVVUabKxd80Pmbob
+ hvi4FGiiy5wzz0h2Oo0ECrD58sPUtEnLsbByBi0SoPmAI7lwSphV8xAw4Bu+BuuH67Bx1TYB/F1
+ wn6xv+focXtqLFUHajmVKeicojN/mwci1JHZB+97GjSaDubZ8YFrNY83e42DOyeJB8We7F1cmAg
+ 2y/jYbTB9Ji0TCi/KdrxisZds15GgKGVjneEK+jp0u7YUrWp6drvwxv94ksHc4lDvj1djDoZDAl
+ nYusF5vK/xKSobhmq/W+2GBszIdmm9Amotr2AXCqOWXpUSa/VtzUUUZw8ynKEY=
+Received-SPF: pass client-ip=57.103.76.67;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,146 +87,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Was removed in 2c08624 but it's still useful for
+Windows 10 so reintroduce it there.
+
+And this time, actually make it work by reporting
+the hypervisor bit in CPUID.
+
+Pretend to be vmware to be able to use vmport's functionality.
+
+If the vmware frequency leaf is disabled, pretend to be
+KVM, with the only capability reported being X2APIC support.
+
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- accel/whpx/whpx-common.c       |  1 +
- include/system/whpx-internal.h |  2 +
- target/i386/whpx/whpx-all.c    | 68 +++++++++++++++++++++++++++++++---
- 3 files changed, 66 insertions(+), 5 deletions(-)
+ accel/whpx/whpx-common.c       |  2 ++
+ include/system/whpx-internal.h |  1 +
+ target/arm/whpx/whpx-all.c     |  1 +
+ target/i386/whpx/whpx-all.c    | 63 +++++++++++++++++++++++++++++-----
+ 4 files changed, 58 insertions(+), 9 deletions(-)
 
 diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index d846e08714..305b2ae1d0 100644
+index b813a5d9d2..59be996aef 100644
 --- a/accel/whpx/whpx-common.c
 +++ b/accel/whpx/whpx-common.c
-@@ -556,6 +556,7 @@ static void whpx_accel_instance_init(Object *obj)
-     whpx->hyperv_enlightenments_enabled = false;
-     whpx->ignore_unknown_msr = true;
-     whpx->intercept_msr_gp = false;
-+    whpx->nested_virt_enabled = true;
+@@ -550,6 +550,8 @@ static void whpx_accel_instance_init(Object *obj)
+ 
+     whpx->hyperv_enlightenments_allowed = true;
+     whpx->hyperv_enlightenments_required = false;
++    /* Value determined at whpx_accel_init */
++    whpx->hyperv_enlightenments_enabled = false;
  }
  
  static const TypeInfo whpx_accel_type = {
 diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index 15027a7d52..4436cfe6ba 100644
+index 5902124b63..cf782cf5f8 100644
 --- a/include/system/whpx-internal.h
 +++ b/include/system/whpx-internal.h
-@@ -47,6 +47,8 @@ struct whpx_state {
-     bool hyperv_enlightenments_required;
-     bool hyperv_enlightenments_enabled;
+@@ -45,6 +45,7 @@ struct whpx_state {
  
-+    bool nested_virt_enabled;
-+
-     bool ignore_unknown_msr;
-     bool intercept_msr_gp;
+     bool hyperv_enlightenments_allowed;
+     bool hyperv_enlightenments_required;
++    bool hyperv_enlightenments_enabled;
+ 
  };
+ 
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index bbf0f6be96..4019a513aa 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -968,6 +968,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+      * as they're not needed for performance.
+      */
+     if (whpx->hyperv_enlightenments_required) {
++        whpx->hyperv_enlightenments_enabled = true;
+         hr = whp_dispatch.WHvSetPartitionProperty(
+                 whpx->partition,
+                 WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks,
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index ea5d1e535c..d17db73cff 100644
+index 4954e0557a..f9f330c038 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -2974,6 +2974,39 @@ static void whpx_set_intercept_msr_gp(Object *obj, Visitor *v,
-     }
- }
+@@ -2168,14 +2168,57 @@ int whpx_vcpu_run(CPUState *cpu)
+                 vcpu->exit_ctx.VpContext.Rip +
+                 vcpu->exit_ctx.VpContext.InstructionLength;
  
-+static void whpx_set_nested_virt(Object *obj, Visitor *v,
-+                                   const char *name, void *opaque,
-+                                   Error **errp)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    OnOffAuto mode;
+-            reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
+-            reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
+-            reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
+-            reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
+-
+-            if (vcpu->exit_ctx.CpuidAccess.Rax == 1) {
+-                if (cpu_has_x2apic_feature(env)) {
+-                    reg_values[2].Reg64 |= CPUID_EXT_X2APIC;
++            if (whpx_is_legacy_os()) {
++                reg_values[1].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRax;
++                reg_values[2].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRcx;
++                reg_values[3].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRdx;
++                reg_values[4].Reg64 = vcpu->exit_ctx.CpuidAccess.DefaultResultRbx;
++            } else {
++                cpu_x86_cpuid(env, vcpu->exit_ctx.CpuidAccess.Rax,
++                    vcpu->exit_ctx.CpuidAccess.Rcx,
++                    (UINT32 *)&reg_values[1].Reg32,
++                    (UINT32 *)&reg_values[4].Reg32, (UINT32 *)&reg_values[2].Reg32,
++                    (UINT32 *)&reg_values[3].Reg32);
++            }
 +
-+    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
-+        return;
-+    }
-+
-+    switch (mode) {
-+    case ON_OFF_AUTO_ON:
-+        whpx->nested_virt_enabled = true;
-+        break;
-+
-+    case ON_OFF_AUTO_OFF:
-+        whpx->nested_virt_enabled = false;
-+        break;
-+
-+    case ON_OFF_AUTO_AUTO:
-+        whpx->nested_virt_enabled = true;
-+        break;
-+    default:
-+        /*
-+         * The value was checked in visit_type_OnOffAuto() above. If
-+         * we get here, then something is wrong in QEMU.
-+         */
-+        abort();
-+    }
-+}
-+
-+
- void whpx_arch_accel_class_init(ObjectClass *oc)
- {
-     object_class_property_add(oc, "ignore-unknown-msr", "OnOffAuto",
-@@ -2986,6 +3019,11 @@ void whpx_arch_accel_class_init(ObjectClass *oc)
-         NULL, NULL);
-     object_class_property_set_description(oc, "intercept-msr-gp",
-         "Intercept #GP to log erroring MSR accesses.");
-+    object_class_property_add(oc, "nested", "OnOffAuto",
-+        NULL, whpx_set_nested_virt,
-+        NULL, NULL);
-+    object_class_property_set_description(oc, "intercept-msr-gp",
-+        "Toggle nested virtualization off/on.");
- }
++            if (!whpx->hyperv_enlightenments_enabled) {
++                switch (vcpu->exit_ctx.CpuidAccess.Rax) {
++                case 1:
++                    reg_values[2].Reg64 |= CPUID_EXT_HYPERVISOR;
++                    break;
++                case 0x40000000:
++                    /*
++                     * Use vmware_cpuid_freq as a proxy to report VMware.
++                     * This is to get the TSC/APIC frequency query functionality
++                     * provided through vmport, as Linux doesn't use leaf
++                     * 0x40000010 for getting those frequencies.
++                     */
++                    if (x86_cpu->vmware_cpuid_freq) {
++                        reg_values[1].Reg64 = 0x40000010;
++                        reg_values[4].Reg64 = 0x61774d56;
++                        reg_values[2].Reg64 = 0x4d566572;
++                        reg_values[3].Reg64 = 0x65726177;
++                    } else {
++                        /* report KVM otherwise if that's disabled */
++                        reg_values[1].Reg64 = 0x40000001;
++                        reg_values[4].Reg64 = 0x4b4d564b;
++                        reg_values[2].Reg64 = 0x564b4d56;
++                        reg_values[3].Reg64 = 0x4d;
++                    }
++                    break;
++                case 0x40000001:
++                    if (!x86_cpu->vmware_cpuid_freq) {
++                        /* KVM reporting of X2APIC support */
++                        reg_values[1].Reg64 = reg_values[4].Reg64 =
++                            reg_values[2].Reg64 = 1 << 15;
++                    }
++                    break;
++                case 0x40000010:
++                    if (x86_cpu->vmware_cpuid_freq) {
++                        reg_values[1].Reg64 = env->tsc_khz;
++                        reg_values[4].Reg64 = env->apic_bus_freq / 1000; /* Hz to KHz */
++                    }
++                    break;
+                 }
+             }
  
- int whpx_accel_init(AccelState *as, MachineState *ms)
-@@ -3166,7 +3204,8 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     whpx_rdtsc_cap = processor_features.Bank0.RdtscpSupport;
-     whpx_invpcid_cap = processor_features.Bank0.InvpcidSupport;
+@@ -2396,6 +2439,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     WHV_PROCESSOR_FEATURES_BANKS processor_features;
+     WHV_PROCESSOR_PERFMON_FEATURES perfmon_features;
+     UINT32 cpuidExitList[] = {1};
++    UINT32 cpuidExitList_nohyperv[] = {1, 0x40000000, 0x40000001, 0x40000010};
  
--    if (whpx_irqchip_in_kernel() && processor_features.Bank1.NestedVirtSupport) {
-+    if (whpx_irqchip_in_kernel() && whpx->nested_virt_enabled
-+        && processor_features.Bank1.NestedVirtSupport) {
-         memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
-         prop.NestedVirtualization = 1;
-         hr = whp_dispatch.WHvSetPartitionProperty(
-@@ -3174,11 +3213,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-             WHvPartitionPropertyCodeNestedVirtualization,
-             &prop,
-             sizeof(WHV_PARTITION_PROPERTY));
--            if (FAILED(hr)) {
--                error_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
--                ret = -EINVAL;
--                goto error;
-+        if (FAILED(hr)) {
-+            error_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
-+            ret = -EINVAL;
-+            goto error;
-         }
-+    } else if (whpx->nested_virt_enabled) {
-+        whpx->nested_virt_enabled = 0;
-+        info_report("WHPX: nested virtualisation not available");
+     whpx = &whpx_global;
+ 
+@@ -2601,6 +2645,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
      }
  
-     hr = whp_dispatch.WHvSetPartitionProperty(
-@@ -3222,6 +3264,22 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         synthetic_features.Bank0.EnableExtendedGvaRangesForFlushVirtualAddressList = 1;
-     }
- 
-+    if (whpx->nested_virt_enabled) {
-+        /* enlightened VMCS is an Intel-specific enlightenment. */
-+        hr = whp_dispatch.WHvGetCapability(
-+            WHvCapabilityCodeProcessorVendor, &whpx_cap,
-+            sizeof(whpx_cap), &whpx_cap_size);
-+        if (FAILED(hr)) {
-+            error_report("WHPX: Failed to query processor vendor, hr=%08lx", hr);
-+            ret = -ENOSPC;
-+            goto error;
-+        }
-+        if (whpx_cap.ProcessorVendor == WHvProcessorVendorIntel) {
-+            synthetic_features.Bank0.EnlightenedVmcs = 1;
-+            synthetic_features.Bank0.NestedDebugCtl = 1;
-+        }
-+    }
-+
      if (is_modern_os && whpx->hyperv_enlightenments_allowed) {
-         whpx->hyperv_enlightenments_enabled = true;
++        whpx->hyperv_enlightenments_enabled = true;
          hr = whp_dispatch.WHvSetPartitionProperty(
+                 whpx->partition,
+                 WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks,
+@@ -2653,7 +2698,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+     hr = whp_dispatch.WHvSetPartitionProperty(
+         whpx->partition,
+         WHvPartitionPropertyCodeCpuidExitList,
+-        cpuidExitList,
++        whpx->hyperv_enlightenments_enabled ? cpuidExitList : cpuidExitList_nohyperv,
+         RTL_NUMBER_OF(cpuidExitList) * sizeof(UINT32));
+ 
+     if (FAILED(hr)) {
 -- 
 2.50.1 (Apple Git-155)
 

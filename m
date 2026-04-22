@@ -4,104 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DDACF94CDF
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 08:06:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50984F94CDE
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 08:16:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFSZV-0005Cp-7M; Wed, 22 Apr 2026 04:04:33 -0400
+	id 1wFSkM-0003rj-VU; Wed, 22 Apr 2026 04:15:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFSZS-0005Br-92
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:04:30 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFSZP-000160-K6
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:04:30 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4891f625344so33622005e9.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 01:04:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776845066; x=1777449866; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=KsSqlUHdm2ll/7onn68toPEyWNaHUOhpt8rxxwvc1oM=;
- b=fIjzURZKyu78iRQPodmaNc4nziFmsSEVN7AXxYtGJXwZls1lmsVnq5X+5qHoELzs2J
- NgONh/R7LtvR4cUUuVaggtWt22sFg2+hYdwKx103WC21j9y8rObA/e9Hq00huyeDdNXV
- iofqHFyF6kPnYPKV+vrgmmW/R/+/DSag+71VnQrBSkjgzY2Jz9adWTneHo9owkfeuAKo
- rPDZm5builvvxktUErWNe2tUjjeBSFaQFbXKY2kI82xwgxspxC9bK3ugPWuue1dLN+Dv
- CcJg5vZYlvsZ5Mfl/Lf3SYgsrJB+I2yAtmS0zBHDYX1tUIdbagNUxdWeCOwGBzO9Ahnl
- v+qQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wFSkK-0003r3-ON
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:15:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wFSkJ-0004rC-7a
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 04:15:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1776845741;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=eQdyfY1jQxG4gLiI7uG4o49bJPwhFevJ5PdPg/0p38w=;
+ b=hPkWHSzg2bPksGMehdmDGysKDdwBemrMQCEn7vJi8ZSLVaqk6awVrfrBX8Npf5o/Wu04oy
+ ukq7gd457maLSYRFwprx9UiqXJaaTnd+Paw+xRynIZkWb0V5pjUbbSRS2HO4m3DHJcgGN8
+ LCfrNkZNsZoT4yeA8n29IMa/pYdYrfM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-683-DTDdl_1HNFWODa4xU1tlfQ-1; Wed, 22 Apr 2026 04:15:40 -0400
+X-MC-Unique: DTDdl_1HNFWODa4xU1tlfQ-1
+X-Mimecast-MFC-AGG-ID: DTDdl_1HNFWODa4xU1tlfQ_1776845739
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-48a589c7879so6601355e9.1
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 01:15:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776845066; x=1777449866;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=KsSqlUHdm2ll/7onn68toPEyWNaHUOhpt8rxxwvc1oM=;
- b=VW/V3uT1pmfoPqeAj+yHbAl4PGpmqNtkgdAgotaG6TlFv4rKOOCp8jeLuqMCxuOX2d
- RW8gL7YGjyl78K3sLGxtg6RgHBBoHKN0ZWCdf8Z/U159pfIF4Bl2P3hRj5LIntn8HCz2
- JVJxLhgyMbzeGN7+WIj4KpJXYz9spPIQxMljvZDRDU6kL+63O5vDbxOt0M92JshGy6PC
- Wb4/k6ycO9xnwkuuZrgU1bLSekEJxEIZOjT6KkS/BvMG0cIEK17yhjNUS83g8VkGNRuC
- BpAZMxaoySsqE+aDXmHCYXga6WAqKH9PnGJGMCy+Mwol+ks5+9nSY/BL9uWIxmqKBliD
- 01xg==
+ d=1e100.net; s=20251104; t=1776845739; x=1777450539;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eQdyfY1jQxG4gLiI7uG4o49bJPwhFevJ5PdPg/0p38w=;
+ b=KsP6OTIN3oOk8SHI+Md7Gq1LdnCTp/PTGuolIjuWmof/R6W8CWpnT7MUmjBWryRuee
+ y3iRkCnJglYNfGMI1Oxys64rFUcOB3gYKDAReMIv/+cD/YiRS8XM3ftVPl3Fmp1EUuHa
+ uVb4KmMN/qpoweHBVNVZI5fkrF7dknfEz8hROXNbQ60U1ftyPPIt/IiOu32SZWFdiN9i
+ Wd5KFFEtDuDLievjZyJr3mVCHdWtyyxhjH6QW6kihKlw5g4WVfaScCCa1WVt6Cpg5y+d
+ 9PP1r+2zJgzvRIerpI5y+hDAUDtnqCJ9IRYGC5HT/b2ky6pFYTotTU3teNAmaxYFkpRJ
+ y0EQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9vk1dx7aMWHeIwmXQKBfixZzeo5Pn8K0s8Ia9gdcm3C/AQMbtYe8lZ9LjTFvnWMO3oikLnhr7h/g==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1BziyTVqmbo85ClNfI97Q4ZHVgrenZ1p5XtvZ9QEl9a9b4hca
- XZZJrQtZX2VmYoQn4dbTLF61f+oFfg2cBhxQ63IT7aWu3j14GhwsIMcPo0VGu6ipaMg=
-X-Gm-Gg: AeBDiesPIMpxkvvIz0FZI5xmcC9syrAixDBgM9ByuI3dv+nqom0NdISD5mWzK/VgKF+
- CVbVSZttAEq6qr6QpSvWymsuzqxLLSc/bKBjU5ujGp1g1MUdvff5SWyhTae2tnAqZYYHoKVbQgM
- wMK6KoyOlNWUFwXVLmAJJPJy0EItuPV7v+pVyUgo7Y6ogBHZloH9RULlDa4M8fthl+G5pwAbO1r
- 40hzBLMgrfHCVUT97bOvfXYDH/76LDJvw7s9tcI1R1F1tMQlBUb23REHT40r7LbuhrWieJUS/7L
- bc1b987EgPCHx9D1HTJa7I3NeaZkP+4Fd1511Rl9JCRkXKIEM7O36/kYkgRfHfB4MKP56yOdzCP
- 5gu+YaCNIVCzfmEBvqLoKHQP9SiD0vPyrDoKt6PJycUY/zRJBeRzkZSQ3X5XGuZnTeeknKYuhGf
- hTa+jPI38SawKavfnJvghVy/m51B3ABGlT93JTWBLj5b4CDUhc73lF8a+vyGb67k77X9+SD6qLW
- JF52au4q+A=
-X-Received: by 2002:a05:600c:3150:b0:485:3cef:d6ea with SMTP id
- 5b1f17b1804b1-488fb8b9deamr246080555e9.13.1776845065749; 
- Wed, 22 Apr 2026 01:04:25 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fb7c0eacsm135774895e9.35.2026.04.22.01.04.23
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 22 Apr 2026 01:04:24 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ AFNElJ+9prn01Epg1k9VQVml5XhZZyOTgiT4vviTfuxpftfbzgI04Gusn+DEtoPHLCsx+2RsUt6FgYjcng==@nongnu.org
+X-Gm-Message-State: AOJu0YwW7J+gji4GW6frIUXF8031iHBzq3DLdbiE+YyPmrxsA3DzN4pg
+ 8Qm7b8RHvPU5ZJ1ACQvHouzHjwBYRqBoWlJt3MZ2UgoTp/BxbEl/eKoo/x9wfeacqheU+8U2x6b
+ GiTnpUaMgub9A2Bds4gzd0thsAUJ7dGUje/g46SanixPtMrX8E0Zd9g==
+X-Gm-Gg: AeBDievjqEWPeohHs0tt4kpfFKJyR+cOOCBdoG1X7MP1UDJf99MQbNyyKu6Ka596pQQ
+ nXaG5WSp0xQnW/yZkY/ws+ldVYGnZaV3wafKIJ07j0hfHofDD/nY8fNw36duY0iswgiGHojqOPt
+ v2fs3s6+yg2pfDBMLXlp6ly383+KqBwFTjZhbx5zParNO5z5inCTlHG+sTNFIx8mcoN1YqdxoNL
+ RvxC53jbVzvu8PsVrYKDYDjMfG072W7IPQf9dFG2q0gTjld7SpU9DyEEFFs07WDIrpLHa+QSNdd
+ gUofRc9fsu1q++n/g6TcHdxLRRgbTI+G6yLnM0V6UuaypE1qNIQuYSiDSwe2A65TsWc5iuFkkdj
+ TYhqN+cz75+WNhsExlrhAgXR03fqvCQ==
+X-Received: by 2002:a05:600c:6c8:b0:48a:5236:7f38 with SMTP id
+ 5b1f17b1804b1-48a52368058mr82988635e9.14.1776845738978; 
+ Wed, 22 Apr 2026 01:15:38 -0700 (PDT)
+X-Received: by 2002:a05:600c:6c8:b0:48a:5236:7f38 with SMTP id
+ 5b1f17b1804b1-48a52368058mr82988185e9.14.1776845738481; 
+ Wed, 22 Apr 2026 01:15:38 -0700 (PDT)
+Received: from [192.168.0.9] ([47.64.114.147])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43fe4e4d6casm39718245f8f.32.2026.04.22.01.15.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Apr 2026 01:15:37 -0700 (PDT)
+Message-ID: <6d0bca64-52f6-4e49-a065-d5e0a2c22853@redhat.com>
+Date: Wed, 22 Apr 2026 10:15:36 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 02/10] MAINTAINERS: Remove my disfunctional emails
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Bin Meng <bmeng.cn@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- Aurelien Jarno <aurelien@aurel32.net>, Huacai Chen <chenhuacai@kernel.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  Alexander Bulekov <alxndr@bu.edu>, Stefan Hajnoczi <stefanha@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Darren Kenny <darren.kenny@oracle.com>,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org
-Subject: [PATCH v2 02/10] MAINTAINERS: Remove my disfunctional emails
-Date: Wed, 22 Apr 2026 10:03:57 +0200
-Message-ID: <20260422080406.62638-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260422080406.62638-1-philmd@linaro.org>
 References: <20260422080406.62638-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20260422080406.62638-3-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20260422080406.62638-3-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2b9iKVLjUgpCEmAzyJXiid3b5cVS9b0R5g3rVhr4koU_1776845739
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,464 +168,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-With retrospective, mentioning email in authorship wasn't
-really useful, more now than these addresses are dead:
- - f4bug@amsat.org
- - philmd@redhat.com
-Simply remove them.
+On 22/04/2026 10.03, Philippe Mathieu-Daudé wrote:
+> With retrospective, mentioning email in authorship wasn't
+> really useful, more now than these addresses are dead:
+>   - f4bug@amsat.org
+>   - philmd@redhat.com
+> Simply remove them.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/sd/sdmmc-internal.h                      | 2 +-
+>   include/crypto/tls-cipher-suites.h          | 2 +-
+>   include/hw/i2c/arm_sbcon_i2c.h              | 2 +-
+>   include/hw/misc/bcm2835_thermal.h           | 2 +-
+>   include/hw/misc/led.h                       | 2 +-
+>   include/hw/timer/bcm2835_systmr.h           | 2 +-
+>   include/qemu/units.h                        | 2 +-
+>   crypto/tls-cipher-suites.c                  | 2 +-
+>   hw/i386/fw_cfg.c                            | 2 +-
+>   hw/i386/pc_sysfw_ovmf-stubs.c               | 2 +-
+>   hw/misc/bcm2835_thermal.c                   | 2 +-
+>   hw/misc/led.c                               | 2 +-
+>   hw/ppc/fw_cfg.c                             | 2 +-
+>   hw/sd/sd.c                                  | 2 +-
+>   hw/timer/bcm2835_systmr.c                   | 2 +-
+>   hw/usb/bus-stub.c                           | 2 +-
+>   stubs/fw_cfg.c                              | 2 +-
+>   stubs/hotplug-stubs.c                       | 2 +-
+>   stubs/qdev.c                                | 2 +-
+>   tests/qtest/fuzz-sb16-test.c                | 2 +-
+>   tests/qtest/fuzz-sdcard-test.c              | 2 +-
+>   tests/qtest/sdhci-test.c                    | 2 +-
+>   tests/functional/aarch64/test_raspi3.py     | 2 +-
+>   tests/functional/arm/test_bflt.py           | 2 +-
+>   tests/functional/arm/test_raspi2.py         | 2 +-
+>   tests/functional/m68k/test_nextcube.py      | 2 +-
+>   tests/functional/mips/test_malta.py         | 2 +-
+>   tests/functional/mips64el/test_fuloong2e.py | 2 +-
+>   tests/functional/mips64el/test_malta.py     | 2 +-
+>   tests/functional/mipsel/test_malta.py       | 2 +-
+>   tests/functional/ppc/test_40p.py            | 2 +-
+>   tests/functional/qemu_test/tesseract.py     | 2 +-
+>   32 files changed, 32 insertions(+), 32 deletions(-)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/sd/sdmmc-internal.h                      | 2 +-
- include/crypto/tls-cipher-suites.h          | 2 +-
- include/hw/i2c/arm_sbcon_i2c.h              | 2 +-
- include/hw/misc/bcm2835_thermal.h           | 2 +-
- include/hw/misc/led.h                       | 2 +-
- include/hw/timer/bcm2835_systmr.h           | 2 +-
- include/qemu/units.h                        | 2 +-
- crypto/tls-cipher-suites.c                  | 2 +-
- hw/i386/fw_cfg.c                            | 2 +-
- hw/i386/pc_sysfw_ovmf-stubs.c               | 2 +-
- hw/misc/bcm2835_thermal.c                   | 2 +-
- hw/misc/led.c                               | 2 +-
- hw/ppc/fw_cfg.c                             | 2 +-
- hw/sd/sd.c                                  | 2 +-
- hw/timer/bcm2835_systmr.c                   | 2 +-
- hw/usb/bus-stub.c                           | 2 +-
- stubs/fw_cfg.c                              | 2 +-
- stubs/hotplug-stubs.c                       | 2 +-
- stubs/qdev.c                                | 2 +-
- tests/qtest/fuzz-sb16-test.c                | 2 +-
- tests/qtest/fuzz-sdcard-test.c              | 2 +-
- tests/qtest/sdhci-test.c                    | 2 +-
- tests/functional/aarch64/test_raspi3.py     | 2 +-
- tests/functional/arm/test_bflt.py           | 2 +-
- tests/functional/arm/test_raspi2.py         | 2 +-
- tests/functional/m68k/test_nextcube.py      | 2 +-
- tests/functional/mips/test_malta.py         | 2 +-
- tests/functional/mips64el/test_fuloong2e.py | 2 +-
- tests/functional/mips64el/test_malta.py     | 2 +-
- tests/functional/mipsel/test_malta.py       | 2 +-
- tests/functional/ppc/test_40p.py            | 2 +-
- tests/functional/qemu_test/tesseract.py     | 2 +-
- 32 files changed, 32 insertions(+), 32 deletions(-)
-
-diff --git a/hw/sd/sdmmc-internal.h b/hw/sd/sdmmc-internal.h
-index c115f472efe..f9282a9712d 100644
---- a/hw/sd/sdmmc-internal.h
-+++ b/hw/sd/sdmmc-internal.h
-@@ -1,7 +1,7 @@
- /*
-  * SD/MMC cards common
-  *
-- * Copyright (c) 2018  Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2018  Philippe Mathieu-Daudé
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-diff --git a/include/crypto/tls-cipher-suites.h b/include/crypto/tls-cipher-suites.h
-index 3bd2003f32d..31697a7d6de 100644
---- a/include/crypto/tls-cipher-suites.h
-+++ b/include/crypto/tls-cipher-suites.h
-@@ -3,7 +3,7 @@
-  *
-  * Copyright (c) 2018-2020 Red Hat, Inc.
-  *
-- * Author: Philippe Mathieu-Daudé <philmd@redhat.com>
-+ * Author: Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/include/hw/i2c/arm_sbcon_i2c.h b/include/hw/i2c/arm_sbcon_i2c.h
-index 39b99f57bfb..537de428e1f 100644
---- a/include/hw/i2c/arm_sbcon_i2c.h
-+++ b/include/hw/i2c/arm_sbcon_i2c.h
-@@ -5,7 +5,7 @@
-  *
-  * Copyright (c) 2006-2007 CodeSourcery.
-  * Copyright (c) 2012 Oskar Andero <oskar.andero@gmail.com>
-- * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2020 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/include/hw/misc/bcm2835_thermal.h b/include/hw/misc/bcm2835_thermal.h
-index 13ffc61c1a7..04eda5cb83f 100644
---- a/include/hw/misc/bcm2835_thermal.h
-+++ b/include/hw/misc/bcm2835_thermal.h
-@@ -1,7 +1,7 @@
- /*
-  * BCM2835 dummy thermal sensor
-  *
-- * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2019 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-index 4d077a7c43e..89ccbad4660 100644
---- a/include/hw/misc/led.h
-+++ b/include/hw/misc/led.h
-@@ -1,7 +1,7 @@
- /*
-  * QEMU single LED device
-  *
-- * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2020 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
-index 0674a18f12d..770e464937b 100644
---- a/include/hw/timer/bcm2835_systmr.h
-+++ b/include/hw/timer/bcm2835_systmr.h
-@@ -1,7 +1,7 @@
- /*
-  * BCM2835 SYS timer emulation
-  *
-- * Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2019 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/include/qemu/units.h b/include/qemu/units.h
-index 692db3fbb26..4764e301e5b 100644
---- a/include/qemu/units.h
-+++ b/include/qemu/units.h
-@@ -2,7 +2,7 @@
-  * IEC binary prefixes definitions
-  *
-  * Copyright (C) 2015 Nikunj A Dadhania, IBM Corporation
-- * Copyright (C) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2018 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/crypto/tls-cipher-suites.c b/crypto/tls-cipher-suites.c
-index d9b61d0c08a..a6566f13c9b 100644
---- a/crypto/tls-cipher-suites.c
-+++ b/crypto/tls-cipher-suites.c
-@@ -3,7 +3,7 @@
-  *
-  * Copyright (c) 2018-2020 Red Hat, Inc.
-  *
-- * Author: Philippe Mathieu-Daudé <philmd@redhat.com>
-+ * Author: Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index 5670e8553ea..858e6ca9c53 100644
---- a/hw/i386/fw_cfg.c
-+++ b/hw/i386/fw_cfg.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) 2019 Red Hat, Inc.
-  *
-  * Author:
-- *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *   Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/hw/i386/pc_sysfw_ovmf-stubs.c b/hw/i386/pc_sysfw_ovmf-stubs.c
-index b53906a0521..42e300ddec4 100644
---- a/hw/i386/pc_sysfw_ovmf-stubs.c
-+++ b/hw/i386/pc_sysfw_ovmf-stubs.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) 2021 Red Hat, Inc.
-  *
-  * Author:
-- *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *   Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/hw/misc/bcm2835_thermal.c b/hw/misc/bcm2835_thermal.c
-index 0dc1be15b4a..413c4179fed 100644
---- a/hw/misc/bcm2835_thermal.c
-+++ b/hw/misc/bcm2835_thermal.c
-@@ -1,7 +1,7 @@
- /*
-  * BCM2835 dummy thermal sensor
-  *
-- * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2019 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/hw/misc/led.c b/hw/misc/led.c
-index d9256aaaf56..8b758c1b76d 100644
---- a/hw/misc/led.c
-+++ b/hw/misc/led.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU single LED device
-  *
-- * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2020 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/hw/ppc/fw_cfg.c b/hw/ppc/fw_cfg.c
-index a88b5c4bde2..071cf855c23 100644
---- a/hw/ppc/fw_cfg.c
-+++ b/hw/ppc/fw_cfg.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) 2019 Red Hat, Inc.
-  *
-  * Author:
-- *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *   Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 13ea54df380..ebe6e35b15e 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -6,7 +6,7 @@
-  *
-  * Copyright (c) 2006 Andrzej Zaborowski  <balrog@zabor.org>
-  * Copyright (c) 2007 CodeSourcery
-- * Copyright (c) 2018 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2018 Philippe Mathieu-Daudé
-  *
-  * Redistribution and use in source and binary forms, with or without
-  * modification, are permitted provided that the following conditions
-diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-index 00bcfcd05c6..06a919b1f8b 100644
---- a/hw/timer/bcm2835_systmr.c
-+++ b/hw/timer/bcm2835_systmr.c
-@@ -1,7 +1,7 @@
- /*
-  * BCM2835 SYS timer emulation
-  *
-- * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2019 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/hw/usb/bus-stub.c b/hw/usb/bus-stub.c
-index a7c3909e967..7cf1b494117 100644
---- a/hw/usb/bus-stub.c
-+++ b/hw/usb/bus-stub.c
-@@ -1,7 +1,7 @@
- /*
-  * QEMU USB device emulation stubs
-  *
-- * Copyright (C) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (C) 2021 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/stubs/fw_cfg.c b/stubs/fw_cfg.c
-index bb1e3c8aa95..e7a9f714f35 100644
---- a/stubs/fw_cfg.c
-+++ b/stubs/fw_cfg.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) 2019 Red Hat, Inc.
-  *
-  * Author:
-- *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *   Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/stubs/hotplug-stubs.c b/stubs/hotplug-stubs.c
-index 23a1678dbbc..0f592ee1391 100644
---- a/stubs/hotplug-stubs.c
-+++ b/stubs/hotplug-stubs.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) Red Hat
-  *
-  * Authors:
-- *  Philippe Mathieu-Daudé <philmd@redhat.com>,
-+ *  Philippe Mathieu-Daudé,
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/stubs/qdev.c b/stubs/qdev.c
-index 7e957b3e524..61596de5f87 100644
---- a/stubs/qdev.c
-+++ b/stubs/qdev.c
-@@ -4,7 +4,7 @@
-  * Copyright (c) 2021 Red Hat, Inc.
-  *
-  * Author:
-- *   Philippe Mathieu-Daudé <philmd@redhat.com>
-+ *   Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  *
-diff --git a/tests/qtest/fuzz-sb16-test.c b/tests/qtest/fuzz-sb16-test.c
-index fc445b18710..9995ad88685 100644
---- a/tests/qtest/fuzz-sb16-test.c
-+++ b/tests/qtest/fuzz-sb16-test.c
-@@ -1,7 +1,7 @@
- /*
-  * QTest fuzzer-generated testcase for sb16 audio device
-  *
-- * Copyright (c) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2021 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/tests/qtest/fuzz-sdcard-test.c b/tests/qtest/fuzz-sdcard-test.c
-index cd134cdf556..6d8be9d1195 100644
---- a/tests/qtest/fuzz-sdcard-test.c
-+++ b/tests/qtest/fuzz-sdcard-test.c
-@@ -1,7 +1,7 @@
- /*
-  * QTest fuzzer-generated testcase for sdcard device
-  *
-- * Copyright (c) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Copyright (c) 2021 Philippe Mathieu-Daudé
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-diff --git a/tests/qtest/sdhci-test.c b/tests/qtest/sdhci-test.c
-index 7b32711c8f8..cde132228eb 100644
---- a/tests/qtest/sdhci-test.c
-+++ b/tests/qtest/sdhci-test.c
-@@ -1,7 +1,7 @@
- /*
-  * QTest testcase for SDHCI controllers
-  *
-- * Written by Philippe Mathieu-Daudé <f4bug@amsat.org>
-+ * Written by Philippe Mathieu-Daudé
-  *
-  * This work is licensed under the terms of the GNU GPL, version 2 or later.
-  * See the COPYING file in the top-level directory.
-diff --git a/tests/functional/aarch64/test_raspi3.py b/tests/functional/aarch64/test_raspi3.py
-index 74f6630ed26..ae9eed3589f 100755
---- a/tests/functional/aarch64/test_raspi3.py
-+++ b/tests/functional/aarch64/test_raspi3.py
-@@ -3,7 +3,7 @@
- # Functional test that boots a Linux kernel on a Raspberry Pi machine
- # and checks the console
- #
--# Copyright (c) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) 2020 Philippe Mathieu-Daudé
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
-diff --git a/tests/functional/arm/test_bflt.py b/tests/functional/arm/test_bflt.py
-index f273fc83546..835a3354a03 100755
---- a/tests/functional/arm/test_bflt.py
-+++ b/tests/functional/arm/test_bflt.py
-@@ -2,7 +2,7 @@
- #
- # Test the bFLT loader format
- #
--# Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (C) 2019 Philippe Mathieu-Daudé
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
-diff --git a/tests/functional/arm/test_raspi2.py b/tests/functional/arm/test_raspi2.py
-index d3c7aaa39b0..fe644f04cf4 100755
---- a/tests/functional/arm/test_raspi2.py
-+++ b/tests/functional/arm/test_raspi2.py
-@@ -3,7 +3,7 @@
- # Functional test that boots a Linux kernel on a Raspberry Pi machine
- # and checks the console
- #
--# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) 2019 Philippe Mathieu-Daudé
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index 71c160d0262..d917cf5424f 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -2,7 +2,7 @@
- #
- # Functional test that boots a VM and run OCR on the framebuffer
- #
--# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) 2019 Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later.  See the COPYING file in the top-level directory.
-diff --git a/tests/functional/mips/test_malta.py b/tests/functional/mips/test_malta.py
-index e8f49f130be..7048d91a9fd 100755
---- a/tests/functional/mips/test_malta.py
-+++ b/tests/functional/mips/test_malta.py
-@@ -2,7 +2,7 @@
- #
- # Functional tests for the big-endian 32-bit MIPS Malta board
- #
--# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) Philippe Mathieu-Daudé
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
-diff --git a/tests/functional/mips64el/test_fuloong2e.py b/tests/functional/mips64el/test_fuloong2e.py
-index 35e500b0221..d449e3c39a7 100755
---- a/tests/functional/mips64el/test_fuloong2e.py
-+++ b/tests/functional/mips64el/test_fuloong2e.py
-@@ -2,7 +2,7 @@
- #
- # Functional tests for the Lemote Fuloong-2E machine.
- #
--# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) 2019 Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or later.
- # See the COPYING file in the top-level directory.
-diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
-index bc750cb7ad6..163bbaf5ca3 100755
---- a/tests/functional/mips64el/test_malta.py
-+++ b/tests/functional/mips64el/test_malta.py
-@@ -2,7 +2,7 @@
- #
- # Functional tests for the little-endian 64-bit MIPS Malta board
- #
--# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or later.
- # See the COPYING file in the top-level directory.
-diff --git a/tests/functional/mipsel/test_malta.py b/tests/functional/mipsel/test_malta.py
-index 59ab4a60585..25bcb33c945 100755
---- a/tests/functional/mipsel/test_malta.py
-+++ b/tests/functional/mipsel/test_malta.py
-@@ -2,7 +2,7 @@
- #
- # Functional tests for the little-endian 32-bit MIPS Malta board
- #
--# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or later.
- # See the COPYING file in the top-level directory.
-diff --git a/tests/functional/ppc/test_40p.py b/tests/functional/ppc/test_40p.py
-index ed272147f6e..4c1c9bad6ec 100755
---- a/tests/functional/ppc/test_40p.py
-+++ b/tests/functional/ppc/test_40p.py
-@@ -2,7 +2,7 @@
- #
- # Functional test that boots a PReP/40p machine and checks its serial console.
- #
--# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
-diff --git a/tests/functional/qemu_test/tesseract.py b/tests/functional/qemu_test/tesseract.py
-index ede6c6501e2..862faec2d2e 100644
---- a/tests/functional/qemu_test/tesseract.py
-+++ b/tests/functional/qemu_test/tesseract.py
-@@ -1,6 +1,6 @@
- # ...
- #
--# Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
-+# Copyright (c) 2019 Philippe Mathieu-Daudé
- #
- # This work is licensed under the terms of the GNU GPL, version 2 or
- # later. See the COPYING file in the top-level directory.
--- 
-2.53.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

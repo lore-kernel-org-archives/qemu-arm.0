@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F97CF9EDC4
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 12:53:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3612F9EDC4
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 12:53:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFX4c-0005ui-0n; Wed, 22 Apr 2026 08:52:58 -0400
+	id 1wFX4k-00060r-Cp; Wed, 22 Apr 2026 08:53:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX4a-0005tg-5b
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:52:56 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1wFX4i-0005z5-QL
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:04 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX4Y-0005RH-JE
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:52:55 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-43cf8d550bdso4796811f8f.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:52:53 -0700 (PDT)
+ id 1wFX4g-0005UR-11
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:04 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-43cfd832155so3938849f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:53:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776862373; x=1777467173; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776862380; x=1777467180; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=K6n23oz7LRRQlFUUM3gTQS/rrKewMUhskSZOvSJMe4M=;
- b=apmCZBCSxrYyZthGBc+uAQMwMicO2g5PCwX6xX9Q0Aznh7KROkEH7Bi2gnpQD87F6P
- xYhRCVZBETDn70wfm8k/MUr6UD1VuOSGV4VYQCXRg3f4nrMC0Ks6MCBCmXlU6B2OQHeo
- 8r5GCvZ7MJfkHas0vjXO8zhiMPXE3Ns3bEOsC4TbUJBYwDEnRQVTOLFXXPFDV9ioLBZj
- yIOxY8wxE993gY8cjiy987krA8xIf2/fPT3wpB+t9CIDnhdpb5wwliPUTvD/IjAKICPk
- XaEBLZi2GRc/Q3nnZIPuYKVkRKb9N9LpFYw4Q+jPyR50e7BA7uF0p6uC5ErDqD2HD7w0
- sklQ==
+ bh=rUXCf79/aCPWP+oojaJHciitYmV1hJJUoyGLuPcbhOc=;
+ b=jHMRUyFsdX4VzurLVquBXj7MaRnWqtfboT+LxS/l5hmDo5irDjH9h/v57ywQMMdXPW
+ 2Mvg8OjXqS64X0hoUswMsLFfS1IHcJXJTDjw7BrM7YJA61KrsGgmBVk5Ctj5VYtXQoCW
+ Z21i4wZLCxWMwt9FBR8Yy1aqBgSmqGHcwvFKaUo4CHmBpxQ/eOUQ6fP+CaCjxhh8xIex
+ EgybwgQ/xwcOkJ5PjdXuuUkrBIyqHoj7RvAE/kKns5Q6oWCQzvs8XjBoiXnDAxoSzWLP
+ RLPVyCsGPEcOlGI1gMYoeDjDYjn7m9MAbOl12jnH2xgAmoHleuJVGtBpoHzbFvo1c6gw
+ EdYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776862373; x=1777467173;
+ d=1e100.net; s=20251104; t=1776862380; x=1777467180;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=K6n23oz7LRRQlFUUM3gTQS/rrKewMUhskSZOvSJMe4M=;
- b=tBCTJPSr/LXJj3P9QhPsScbDrmnhmO5Ha2CHzd04vW+mlh3ii+y3INIix9Q0WPsmK3
- g37v0CXyl+J2gBtKCXVU9UNY01/1ZqfP3uc/C/s661yQkuXBNEI1YTpX8nDn0JK77z1C
- CkHEfF717OVGUrKlMbf0ey3tb9TxZBExlh388VWunjd3CUmhrrhMjtBdshaji6YlGxdJ
- wTFMq3Qbazhtdbk2rM5Ogj/W+s+2j22j5Gd3kSH7fD3gHDr56ClkJKUuioYvQIKW1B8z
- R+As6t+sdlifyx2+stOubHFJRtTqGG+fsIV+ZOjr+MtSR6aLCuoB1ypMLBtyXBq5+m9d
- L7HQ==
+ bh=rUXCf79/aCPWP+oojaJHciitYmV1hJJUoyGLuPcbhOc=;
+ b=YQv5JiMlLN+4P9Nq/90mG8TXgtY49lp17YY2dX2FE04gpTpxdlYrrdqHF92d+fx67Y
+ AV2PQ3TwXLaBwMY/ayHbu/1bO5X23sw/cw3uudnP65B2PkIpQt2OGMjouxWcUfHGdveG
+ +Kyi6wJfi9oms+KaoUcct0LaRrZTYyHU3zxfAb62cJ0qp2gO4QCQwTU+xK4ydTVM3cNq
+ LbD4OGoSPp3EizdNbw3MssOMAd6gI8qFlayxgQc9UAB9hvAOzqj+6ABoIeUcF/3yaK4c
+ 1sDPI2lVg9/HnOWvNHzH8CjOo50RDLf7ER1pmcNUdUmcBqXhY4K8xq6uuaJ4yXs0Hdwg
+ CAyw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8tvi5ZMtPaDFrw7t6GDfmitz3zK/+OiOoMvzo6hYGb3b3md1YLABH7cjpn7cXNRSjHrKkaAqoA5Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzQOf/FbHhwDFhndIYbQ46yuF3RmH+io/4UcVvcPa78NzvYCZru
- phACTlbN+ngELEkXdVZ7g3nhF++VwPYeJy3dmo4XPlWMMNWRAFChr7fBpHWsDYSOfkU=
-X-Gm-Gg: AeBDievulI9H3j1ypjQiikyujXbSKs+nmqTRFgOMj4CegnihWjsj9pGUg3g08z7K9Lm
- cA5A+UYjD4W1pmhb5rwl/8fJHpgqcqO+wW5Vvl0PX9e0b6wqOjo4smDa8X/mYFTtONWbDs3YkQc
- XUb4yMQmXWnYx18wJMqt6yJOtrkkDG/6uaU/6TL+m7hRuqP/Jzw7tfjSQHdzUsvquO/dXL7X5/P
- 5VSOsgC0fFmhDlHjkCdgyjjdX8JCsrQezwXtmg3zVVhRxO00MMOn5ZQSV5u3P8HREBSdszSqT3e
- r31SnMlkoabDmr0sBUYz5DrSRkX6t7aqlN3BzuhNVAeKsDfUJCeDZXpd7n/bCET3GQJ7rj7oTEN
- cKSPqjMPFKPsDsiSTTPAA/uqpq+a7fwOSx1pdnWID3e/aHU3O5mg0IGzmUG+Tngjo7kZv8WXPtL
- Uv3mE95REgis3CVFTvYR+1XnjPQwxOCRQ6OA==
-X-Received: by 2002:a05:6000:200c:b0:43d:77f4:7145 with SMTP id
- ffacd0b85a97d-43fe3dd407dmr34461259f8f.19.1776862372594; 
- Wed, 22 Apr 2026 05:52:52 -0700 (PDT)
+ AFNElJ/wTL+1xwX8zQjo6lLIG6vuH8wE2CWW21n+XH7Vff7pltmpdTS9zul0mGz1dsvRYlmYGqivQEie1g==@nongnu.org
+X-Gm-Message-State: AOJu0YyD8V71oVWBMl8MHXaaSM6D/qlqUBd5OqKYaEaa1Q462CkO8K5H
+ /yXIbdT+FoXiRP5DB5Fh/OhqJXHxd0mJ5iV+35zIG4+jrNNxEul4eoMYP+wjfO3yUQTyGvK/q/H
+ hlZyVADE=
+X-Gm-Gg: AeBDievWkWuNTttVNQpUCn7KggOuOXFEfrb57IC2lWNQrISgugSxZoQWPumZ+rjfmGp
+ /zVC3vB423wQvx3G65X9ZDuMzJLx0gCDNCJ50da/QXh7lxXm5gPJtag3PnxgH14HFYJ0nCzLMT0
+ Lsj+J440VCSM6ODE/DoUlTGNf1WvPDuihrARyDzTDCWCJ3CnbMdlTl/o/0BK19F3PKACvFZ8s4d
+ 8HjIcQ/myhvMAQN6iqkjvL32Clvq9YSPfzFqSldHmoOf42NBsg9ZaFqUgOIpvNVJLjKmVyVSihi
+ BlTLqkhYAW9CEds2ggtZIBDtZDEqe9JrhpaJ1XqEgGswaS12zr/LZXjWKCw5tSwXB5cwlGxj8Pd
+ wh2kXnvg5nYODZgCarqbLmaxCgLDcTX/OX4OCkxyN+nEW9ytu+7Uy5jbnyfbaQL34kzl+Tnlpz5
+ KkA3ta79nG9yT8D8OD75xVJeHEljJ3ftbY8YMp4gCfnMtW
+X-Received: by 2002:a05:6000:1788:b0:43d:1c39:593c with SMTP id
+ ffacd0b85a97d-43fe3dfbcb8mr35169488f8f.30.1776862380024; 
+ Wed, 22 Apr 2026 05:53:00 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4c221cdsm46907702f8f.0.2026.04.22.05.52.51
+ ffacd0b85a97d-43fe4e3a18csm51870727f8f.20.2026.04.22.05.52.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 05:52:51 -0700 (PDT)
+ Wed, 22 Apr 2026 05:52:55 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 330505FC04;
+ by draig.lan (Postfix) with ESMTP id 58FDF60342;
  Wed, 22 Apr 2026 13:52:51 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -77,18 +78,18 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v3 03/32] target/arm: migrate FP/SIMD trap syndromes to
+Subject: [PATCH v3 05/32] target/arm: migrate SME trap syndromes to
  registerfields
-Date: Wed, 22 Apr 2026 13:52:20 +0100
-Message-ID: <20260422125250.1303100-4-alex.bennee@linaro.org>
+Date: Wed, 22 Apr 2026 13:52:22 +0100
+Message-ID: <20260422125250.1303100-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260422125250.1303100-1-alex.bennee@linaro.org>
 References: <20260422125250.1303100-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,60 +112,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The syn_simd_access trap was never used so remove it. We should only
-see the COPROC encoding on v7 architectures.
-
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - use !is16_bit directly
+  - use !is_16bit directly
 ---
- target/arm/syndrome.h | 25 +++++++++++++++----------
- 1 file changed, 15 insertions(+), 10 deletions(-)
+ target/arm/syndrome.h | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
 diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 29462aa103c..72051443d59 100644
+index 63c8e66ea91..61053475984 100644
 --- a/target/arm/syndrome.h
 +++ b/target/arm/syndrome.h
-@@ -337,21 +337,26 @@ static inline uint32_t syn_cp15_rrt_trap(int cv, int cond, int opc1, int crm,
+@@ -384,10 +384,18 @@ static inline uint32_t syn_erettrap(int eret_op)
      return res;
  }
  
 +/*
-+ * ISS encoding for an exception from an access to a register of
-+ * instruction resulting from the FPEN or TFP traps.
++ * ISS encoding for an exception due to SME functionality
 + */
-+FIELD(FP_ISS, COPROC, 0, 4) /* ARMv7 only */
-+FIELD(FP_ISS, COND, 20, 4)
-+FIELD(FP_ISS, CV, 24, 1)
++FIELD(SME_ISS, SMTC, 0, 2)
 +
- static inline uint32_t syn_fp_access_trap(int cv, int cond, bool is_16bit,
-                                           int coproc)
+ static inline uint32_t syn_smetrap(SMEExceptionType etype, bool is_16bit)
  {
-     /* AArch32 FP trap or any AArch64 FP/SIMD trap: TA == 0 */
--    return (EC_ADVSIMDFPACCESSTRAP << ARM_EL_EC_SHIFT)
--        | (is_16bit ? 0 : ARM_EL_IL)
--        | (cv << 24) | (cond << 20) | coproc;
--}
-+    uint32_t res = syn_set_ec(0, EC_ADVSIMDFPACCESSTRAP);
+-    return (EC_SMETRAP << ARM_EL_EC_SHIFT)
+-        | (is_16bit ? 0 : ARM_EL_IL) | etype;
++    uint32_t res = syn_set_ec(0, EC_SMETRAP);
 +    res = FIELD_DP32(res, SYNDROME, IL, !is_16bit);
- 
--static inline uint32_t syn_simd_access_trap(int cv, int cond, bool is_16bit)
--{
--    /* AArch32 SIMD trap: TA == 1 coproc == 0 */
--    return (EC_ADVSIMDFPACCESSTRAP << ARM_EL_EC_SHIFT)
--        | (is_16bit ? 0 : ARM_EL_IL)
--        | (cv << 24) | (cond << 20) | (1 << 5);
-+    res = FIELD_DP32(res, FP_ISS, CV, cv);
-+    res = FIELD_DP32(res, FP_ISS, COND, cond);
-+    res = FIELD_DP32(res, FP_ISS, COPROC, coproc);
++    res = FIELD_DP32(res, SME_ISS, SMTC, etype);
 +
 +    return res;
  }
  
- static inline uint32_t syn_sve_access_trap(void)
+ static inline uint32_t syn_pacfail(bool data, int keynumber)
 -- 
 2.47.3
 

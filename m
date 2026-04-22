@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8EF3FA1FFC
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:43:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55731F94CBE
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:43:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfLz-0008Vy-5x; Wed, 22 Apr 2026 17:43:27 -0400
+	id 1wFfLS-00080A-Fp; Wed, 22 Apr 2026 17:42:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLx-0008Tv-GN
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:25 -0400
-Received: from p-east2-cluster5-host8-snip4-2.eps.apple.com ([57.103.79.35]
+ id 1wFfLP-0007xY-GI
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:51 -0400
+Received: from p-east2-cluster1-host6-snip4-1.eps.apple.com ([57.103.76.94]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfLv-0007VY-Un
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:25 -0400
+ id 1wFfLN-00073m-HL
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:42:51 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- 35D781800216; Wed, 22 Apr 2026 21:43:21 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlkFXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
+ 8467F180021C; Wed, 22 Apr 2026 21:42:48 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGloDXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894203; x=1779486203;
- bh=zKgMP02e3B1vI1/Ihfo5NS9pcmEl5Ljw2zF+qf50GhQ=;
+ s=sig1; t=1776894168; x=1779486168;
+ bh=9mILSLYmqc5xAiH5ZnQxEwcrk4EQka2pJwYrbsNFZ5I=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=fjUPfhCXFe/HgxHMf7MxJ7pcZRgNfUpobemzVBOlv9NDaeONudRkQjmqML6VKsuWqWfYg7yUACBSKTi9OCmG0KESaIG59/JGHKWGulWm0fhH8lHf457tmSMln+keHkVh5970J1fwfFVtD9b43PRwbr2PqMu2JWGtmlhsUJ/oZK8goX1fAJOikO4svFL82r+1vMOojA87G+v5J4IrtLNb1ITQLRcs4EZYsp4vpeeCPsZpGER3Z1FjPsrLz+FJ+rb58ewCsuZSeXXlkJ5nN9/+zGv2fD9NnnxuTS5cuveDJZfO4MmSFdBTFPnBuP5e0GtAun2Ts0ZwSenBaF9gLyDqDw==
+ b=Uo7oqjr0aQv697V23aBykjkY5/gNxakz1AhQIFFZu1svI3age8jxuYNVu+S3xOpCdb3CT45LwraPYQkLaZxN9ftCYxayFQNNh9+gdnAMkNYs6s/5k5fcX4Jj1C3Nng0Nwu/bxM2NwjtghsVL30dYIxWoCraQUtCsJhEIgdOulaaTzDdDedYGEYsO43O3hcxrw+DwVgNsaVlrN7CzSgQem49NLfPxAtyzz3IiB8PJew/p2hir19SRO7UlUNSSRDHyJ57wpIywS9DV7X4aVbGs+k/XFHNE9KRzvxHA1z/xpM+y3O86THBjInLMNgDieiZo8Ub32mR7CGed2XFo2zV5Yg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 8211E1800C40; Wed, 22 Apr 2026 21:43:16 +0000 (UTC)
+ D2CA91800227; Wed, 22 Apr 2026 21:42:46 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
@@ -44,28 +44,28 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 26/37] target/i386: emulate: use exception_payload for
- fault address
-Date: Wed, 22 Apr 2026 23:42:14 +0200
-Message-ID: <20260422214225.2242-27-mohamed@unpredictable.fr>
+Subject: [PATCH v3 10/37] whpx: i386: disable kernel-irqchip on Windows 10
+ when PIC enabled
+Date: Wed, 22 Apr 2026 23:41:58 +0200
+Message-ID: <20260422214225.2242-11-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=H4TWAuYi c=1 sm=1 tr=0 ts=69e940f9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfXxx17pSEF/3/3
+ GNw0NNrEqWUNGkT/TX5lB1yIDmet4YGeVRBCa9w58cwH22pj8jPOMZYmnDvrkNx3sVX6/v8vMFa
+ I51sz4nZJIy9cWFgvXEqbpKk4kEa6+ehKv1c2RUl5EWW4wFkwLeMhOTRzCi6Aq0Pomw51asGF8h
+ lCVAkFGgx1y6HxGeAo4yxMuu6I6+R7wVIs+i0dcp0xuNgCJSyK1hqVsOrj9Nrs5wSyajmINK1fR
+ +SodBfOT0Qj068NhD+Wt2NCk6BZkz8XfkUUw8qUbGugq0sFMUQ0S7HK1LwOVQOisWFIOdalbVmA
+ o/mxu3zZwy8JXbQprITwwtMba0KEWvGdgdAWHes/75uETNQzuL1Rj4DaJzQuHE=
+X-Authority-Info-Out: v=2.4 cv=f6tFxeyM c=1 sm=1 tr=0 ts=69e940d8
  cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=YcyI-53RcdBlrF1VUN8A:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMiBTYWx0ZWRfX9n/SoLoOaaS5
- XYpo/us7gfy5iQmfejXtji3jsvMZqRS1zI0NMC3pJY2PCdISWMWBVrWnAPUXz+k01zzYPJIpwfs
- b+f1eb/lRAl/IH1XfoqyzvG0bYC0wgYOamGRH2Du3hCEBaZQp+SxoamQ+cZdqQ1XRu4YMGWGxC1
- oLy+8pTUDxmNiqYethFY1IPnSISRb5TuesLL3AkHmq8mxhUfbrSjjjFmQ1AT2eDk/npJQIiFL8+
- M2o24MMj4WphqLoSgAnBiQ7pyBuxDPFbToUdOi48hew+O+3AwVZ4w73AvWtskoZPySrieuWdaUE
- HKBa6LrbI1rKocy8zjfzJf707fxcfrUDdMDaCSq1UY0ttSHVUn4pdf2PfMdHOY=
-X-Proofpoint-GUID: FEZx6ml0LN3-x_7yjDOEaMdblcv7DaxG
-X-Proofpoint-ORIG-GUID: FEZx6ml0LN3-x_7yjDOEaMdblcv7DaxG
-Received-SPF: pass client-ip=57.103.79.35;
+ a=nUl_a9z44qMLw6SsMv4A:9
+X-Proofpoint-ORIG-GUID: dEDTRDJ00G0ti5xVmv08yGFfIq_aEtIG
+X-Proofpoint-GUID: dEDTRDJ00G0ti5xVmv08yGFfIq_aEtIG
+Received-SPF: pass client-ip=57.103.76.94;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -89,47 +89,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instead of directly putting it in cr[2], put it in exception_payload.
+Move WHvCapabilityCodeProcessorPerfmonFeatures queries
+as that's how we distinguish if on a legacy OS.
+
+Now that Windows guests are booting, disable kernel-irqchip=on
+by default for Windows 10 when the PIC is enabled.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/emulate/x86_mmu.c | 3 ++-
- target/i386/whpx/whpx-all.c   | 6 +++---
- 2 files changed, 5 insertions(+), 4 deletions(-)
+ target/i386/whpx/whpx-all.c | 69 +++++++++++++++++++++----------------
+ 1 file changed, 39 insertions(+), 30 deletions(-)
 
-diff --git a/target/i386/emulate/x86_mmu.c b/target/i386/emulate/x86_mmu.c
-index 007de582de..8d4371467f 100644
---- a/target/i386/emulate/x86_mmu.c
-+++ b/target/i386/emulate/x86_mmu.c
-@@ -277,7 +277,8 @@ static MMUTranslateResult x86_write_mem_ex(CPUState *cpu, void *data, target_ulo
-         translate_res = mmu_gva_to_gpa(cpu, gva, &gpa, translate_flags);
-         if (translate_res) {
-             int error_code = translate_res_to_error_code(translate_res, true, is_user(cpu));
--            env->cr[2] = gva;
-+            env->exception_has_payload = 1;
-+            env->exception_payload = gva;
-             x86_emul_raise_exception(env, EXCP0E_PAGE, error_code);
-             return translate_res;
-         }
 diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 8e54fcc403..8d51293384 100644
+index 03c146dfb8..ab8e97787f 100644
 --- a/target/i386/whpx/whpx-all.c
 +++ b/target/i386/whpx/whpx-all.c
-@@ -1903,11 +1903,11 @@ static void whpx_inject_exceptions(CPUState* cpu)
-         WHV_REGISTER_VALUE reg = {};
-         reg.ExceptionEvent.EventPending = 1;
-         reg.ExceptionEvent.EventType = WHvX64PendingEventException;
--        reg.ExceptionEvent.DeliverErrorCode = 1;
-+        reg.ExceptionEvent.DeliverErrorCode = env->has_error_code;
-         reg.ExceptionEvent.Vector = env->exception_nr;
-         reg.ExceptionEvent.ErrorCode = env->error_code;
--        if (env->exception_nr == EXCP0E_PAGE) {
--            reg.ExceptionEvent.ExceptionParameter = env->cr[2];
-+        if (env->exception_has_payload) {
-+            reg.ExceptionEvent.ExceptionParameter = env->exception_payload;
-         }
-         whpx_set_reg(cpu, WHvRegisterPendingEvent, reg);
+@@ -2523,6 +2523,13 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         0x80000002, 0x80000003, 0x80000004, 0x80000007, 0x80000008,
+         0x8000000A, 0x80000021, 0x80000022, 0xC0000000, 0xC0000001};
+ 
++    X86MachineState *x86ms = X86_MACHINE(ms);
++    bool pic_enabled = false;
++
++    if (x86ms->pic == ON_OFF_AUTO_ON || x86ms->pic == ON_OFF_AUTO_AUTO) {
++        pic_enabled = true;
++    }
++
+     whpx = &whpx_global;
+ 
+     if (!init_whp_dispatch()) {
+@@ -2594,6 +2601,35 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
      }
+ 
++    /* Enable supported performance monitoring capabilities */
++    hr = whp_dispatch.WHvGetCapability(
++        WHvCapabilityCodeProcessorPerfmonFeatures, &perfmon_features,
++        sizeof(WHV_PROCESSOR_PERFMON_FEATURES), &whpx_cap_size);
++    /*
++     * Relying on this is a crutch to maintain Windows 10 support.
++     *
++     * WHvCapabilityCodeProcessorPerfmonFeatures and
++     * WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks
++     * are implemented starting from Windows Server 2022 (build 20348).
++     */
++    if (FAILED(hr)) {
++        warn_report("WHPX: Failed to get performance "
++                    "monitoring features, hr=%08lx", hr);
++        is_modern_os = false;
++    } else {
++        hr = whp_dispatch.WHvSetPartitionProperty(
++                whpx->partition,
++                WHvPartitionPropertyCodeProcessorPerfmonFeatures,
++                &perfmon_features,
++                sizeof(WHV_PROCESSOR_PERFMON_FEATURES));
++        if (FAILED(hr)) {
++            error_report("WHPX: Failed to set performance "
++                         "monitoring features, hr=%08lx", hr);
++            ret = -EINVAL;
++            goto error;
++        }
++    }
++
+     /*
+      * Error out if WHP doesn't support apic emulation and user is requiring
+      * it.
+@@ -2606,8 +2642,9 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
+ 
+-    if (whpx->kernel_irqchip_allowed && features.LocalApicEmulation &&
+-        whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2) {
++    if (whpx->kernel_irqchip_allowed && !(whpx_is_legacy_os() && pic_enabled
++        && !whpx->kernel_irqchip_required) && features.LocalApicEmulation
++        && whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2) {
+         WHV_X64_LOCAL_APIC_EMULATION_MODE mode =
+             WHvX64LocalApicEmulationModeX2Apic;
+         hr = whp_dispatch.WHvSetPartitionProperty(
+@@ -2669,34 +2706,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
+ 
+-    /* Enable supported performance monitoring capabilities */
+-    hr = whp_dispatch.WHvGetCapability(
+-        WHvCapabilityCodeProcessorPerfmonFeatures, &perfmon_features,
+-        sizeof(WHV_PROCESSOR_PERFMON_FEATURES), &whpx_cap_size);
+-    /*
+-     * Relying on this is a crutch to maintain Windows 10 support.
+-     *
+-     * WHvCapabilityCodeProcessorPerfmonFeatures and
+-     * WHvPartitionPropertyCodeSyntheticProcessorFeaturesBanks
+-     * are implemented starting from Windows Server 2022 (build 20348).
+-     */
+-    if (FAILED(hr)) {
+-        warn_report("WHPX: Failed to get performance "
+-                    "monitoring features, hr=%08lx", hr);
+-        is_modern_os = false;
+-    } else {
+-        hr = whp_dispatch.WHvSetPartitionProperty(
+-                whpx->partition,
+-                WHvPartitionPropertyCodeProcessorPerfmonFeatures,
+-                &perfmon_features,
+-                sizeof(WHV_PROCESSOR_PERFMON_FEATURES));
+-        if (FAILED(hr)) {
+-            error_report("WHPX: Failed to set performance "
+-                         "monitoring features, hr=%08lx", hr);
+-            ret = -EINVAL;
+-            goto error;
+-        }
+-    }
+ 
+     /* Enable synthetic processor features */
+     WHV_SYNTHETIC_PROCESSOR_FEATURES_BANKS synthetic_features;
 -- 
 2.50.1 (Apple Git-155)
 

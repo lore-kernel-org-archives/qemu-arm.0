@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA365F9EDCA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91F0EF9EDC8
 	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 12:54:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFX5m-0007Hh-QP; Wed, 22 Apr 2026 08:54:10 -0400
+	id 1wFX5e-0006do-LK; Wed, 22 Apr 2026 08:54:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX5i-0006xF-Kc
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:54:06 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wFX4r-00065y-2i
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:13 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFX5g-0006Cn-Kw
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:54:06 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4891d7164ddso21192675e9.3
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:54:03 -0700 (PDT)
+ id 1wFX4l-0005Wm-MM
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 08:53:10 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4891c0620bcso29158335e9.1
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 05:53:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776862443; x=1777467243; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1776862386; x=1777467186; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=00AJ7UrUeXPy7ZqKcucMiGTlG4wrum92TpmohAq+VBM=;
- b=yPBUgZsIdLaQU/x6QlxIdhfwtYEn6sLvFOuNq4DyLMJ1jhpxuT5xi7FxulTcbF4eeO
- Fl8qDfl3IyqJBVoT8DPhDVf43RZyuhWkzmvHkWfRcDLm/i3k864ihv0fVrjVy14IMekt
- 5so1hp6yUOUs3/3Fy0ZrUKx8D9F4BhsHIDk+tUYxNFLF4jfEd8zzbudAQTKHekl6OVAq
- shoVYkY83D3RAWnZiQMAdrkU9USjXGiVv/av2VFAVfRN+zPE8tYY1Tcfc6Hsrs9eDspc
- /fm+LmDsUXMOdvUJqE+9I/WmDF6TON9f88zzBY1VH3X6FsJoDomR3wCq5Y5h/uYoH8we
- kjoQ==
+ bh=rop61lo3CsCy/AA+flQ6RjC7mnHYxt45F3om3vFlXxk=;
+ b=WisRWG2jEcHb9a2Hb+Xmgtr6O3txfV5Ti+TO/q9XTzOWgZRHIEz6gqwAwHTc90/H0N
+ vtGPBpe7vo0KLlFxlcvft8GukwF0xiMGkKiapcGKHByZRWJG9s5X3zHBUOz1yVUTZCkb
+ m2gjvIHILjOBaUDRCT0SzvxdS4kEGN4dm4C97IEVF6SkD3Foz3CPj4XXxFtjMKQEXVkv
+ e45lr9VeOLrF30OxhyIK6VMnkBbwc86lSOEIV8fvbb5YIBcFo114vPSFBuOqMy6kL0x6
+ CcWBcGV8fEG00rKu/Aqw2aP5b9NY7d57n3gNUsUo5bDj2AhNvhvpza0Dw036YgeHGKk7
+ JXXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776862443; x=1777467243;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=00AJ7UrUeXPy7ZqKcucMiGTlG4wrum92TpmohAq+VBM=;
- b=QuAbXpSseIQWeyMPYNq+bH1sPrAt7+fKPIHblU63ZG/P4Jy8d+VbYvn7EuTC1Co2Fq
- wZNGi6SdLo0CVu6MqBiXNklqOYy0vMDEphEuJjvIUc/0kkUPjTxsvrwM2KZwOKQSNAPh
- FkT613JNJo684lp1GMq428xfOnAzv0wRpJEbEF0Z+AuziiV59zQP/udu6N6CqjttWNBi
- veHgB86kgRqNOmylI9HRPZvXXL+gtClobwCXT5tD38+YVz6eVyWxiHEXqm/qGs9iDBts
- jkvIuVlgKbqKatbYcpp4RofYHGBhhZ2hV17U5HqcbIe5gz+5eeLNZCO7mrOGXL8tUpBZ
- Q5XA==
+ d=1e100.net; s=20251104; t=1776862386; x=1777467186;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=rop61lo3CsCy/AA+flQ6RjC7mnHYxt45F3om3vFlXxk=;
+ b=QPotSQCBRck3nPcOo/tgUMtcSoSXjaDn2MoCK4ipnjQFOGaWg3HU2W/cLZVBLT9DPP
+ NFFCks8aPMkyJRPdkVvp4k3eMhv901NFkTMZJ6Z7C9ZMYJjzCHct0H02XRZCkPH4cuJF
+ boaBlJ6m394ET/I2nGxQYvsYNO+FeYNX6ZPy9Q12E9uYuvdLBOdG+xaX8EJQCW1je2Mm
+ AJdbH34UpGtDS7hrVblLTdHoJ7WVz+3Wot+EP2F4XgDj3eW4zZSVC7E8vF8wWv61cJ9q
+ OvCm1uOouzM9pAr/jqW+TI2BaplDBjo3Y4oZ4ojVJKjgBCvqkh1+ublpks21vrrb7cYa
+ xgig==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/eLI96E13dj0MM0m4N+rG+9VcKvJ4q9FggOHTxq4Juvqvc/SLeUWJnRobInyQOpzn86wekqal3cg==@nongnu.org
-X-Gm-Message-State: AOJu0Yza36xE05pzN+eqHBof9J0OEX4r6Z/X1+Dva8jor0DsZx1Hsavx
- SoJsraJyCpABWXLy32UuVD5nGxY678qFuG9n1Ce+uQESQzg/IY/6R96Sl0KgbasevWQBGIgGmBD
- VApIYIK4=
-X-Gm-Gg: AeBDieuvUFMO9WOUepp3+ohFRMfVBlVbCxfZRtnAbFRORNodgnkzxSfFjbalPL3ITFd
- vEG0mQ6u4qWJbllx2bH5GBKq7Pi5yVKPF0KFnJlF3cvw9UN7RQJw7VdFU97yV+zMQFvFVehY0W/
- LwQviBdOdKxBg0xOEjgsN5P+7BgtB3UmxVv6o05L+vT6P2gwor+p2oj+wy4I9bIjJpg3tq/p0P5
- 3I7xukJ2ZkNtKreyG/tFAiAv8St5WtAANrzVkm2fBB/j9snZfvi9ulG6mRkhlMIvLvLcg4zLXzo
- iZibjm3uIojXgS02AUzlvBesQ7CLIjXR9bJkVtwVJQf26+WA4dtM02S79IjZVCzY2WAXZ75+D1T
- FD3wj6rRTKc1WK13r808bj51aSo/me6Ty7u/G9eQh1pum+izNwfZG9WJrbZcv+Rj+wgXEC7xDoJ
- wc36pNTCJYlX9hyXXamVUw/r+4wDLoWi316gb0UCSP/IUq
-X-Received: by 2002:a05:600c:4f0c:b0:489:1c1f:35e6 with SMTP id
- 5b1f17b1804b1-4891c1f38c8mr201641885e9.6.1776862442605; 
- Wed, 22 Apr 2026 05:54:02 -0700 (PDT)
+ AFNElJ9YQmqlBrjKXriTvk8vBMlLvHvlvRzv5hEjsXlOrVQ7olfZmjv+kvgqhb5hVc+ZyEBuegmNOMFenQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx9pd+MGwC38vStMqk+RDm/hwga1H7lW9G8SnGliWlWL4abMDr3
+ eQ5+MOWmvLGfS2WFLJeSC2CjThOEubEwYyAHAmX8Uyoz+pbbj9geC4pUWhJjVoQljnk=
+X-Gm-Gg: AeBDievJC+zxAkBuB9tBN3uP8sbIx7hxwhwsOrsgleJzHyYcNVRiru4OBMrmBa2mdZD
+ kfCHdu5+CpA0+orznASfRahb1jFtHBPeeLQiGnOLpBMJ8s8+X4rhHyOBZZlJqC9AuZJdnHpRKP+
+ e+cP0bR7hEerGbzuF19Ayi9OXIcavG8aUjK3T6XOaXo7tNNn9jdQqRZx1hYf+/I+jPjAii04Ii4
+ wuxkzGZhCDqjjchtUH9SJGRHDX/AAB9mGSElHhPJ0GkGEZJbFDqK79lvUjaPAGx7NWAnAj2O6gR
+ 7B1T3zT9QspR4VPLY2STm6eaDnr4LMp+ykRjzdl859Y5ID2Rh1YecFFBImL+KNqEevl1diS50V+
+ QQbCssVbwggNKJVEPpzt8uS3NqIkvjBSBcBnEgm/vUJWb2skx3ZONaE+p6dO0XcU4IVt7lf6xdF
+ YLsdJxh9+apZ1eoptSCYN/2aG3+N1cpHEuNg==
+X-Received: by 2002:a05:600c:19d3:b0:489:1ae1:4eb9 with SMTP id
+ 5b1f17b1804b1-4891ae14f23mr179317695e9.28.1776862386147; 
+ Wed, 22 Apr 2026 05:53:06 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc0f82bbsm753110215e9.3.2026.04.22.05.54.01
+ 5b1f17b1804b1-48a52583fe7sm162310925e9.13.2026.04.22.05.52.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Apr 2026 05:54:02 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 38A1C60342;
- Wed, 22 Apr 2026 13:54:01 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+ Wed, 22 Apr 2026 05:53:02 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 8B960612AD;
+ Wed, 22 Apr 2026 13:52:52 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Paolo Bonzini <pbonzini@redhat.com>,  Mohamed
- Mediouni <mohamed@unpredictable.fr>,  kvm@vger.kernel.org,  Pedro Barbuda
- <pbarbuda@microsoft.com>
-Subject: Re: [PATCH v2 00/31] target/arm: fully model WFxT instructions for
- A-profile
-In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org> ("Alex
- =?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 22 Apr 2026 11:10:11 +0100")
-References: <20260422101043.1234229-1-alex.bennee@linaro.org>
-User-Agent: mu4e 1.14.1-pre3; emacs 30.1
-Date: Wed, 22 Apr 2026 13:54:01 +0100
-Message-ID: <877bpzxija.fsf@draig.linaro.org>
+Cc: Pedro Barbuda <pbarbuda@microsoft.com>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 20/32] target/arm: use syndrome helpers in
+ merge_syn_data_abort
+Date: Wed, 22 Apr 2026 13:52:37 +0100
+Message-ID: <20260422125250.1303100-21-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260422125250.1303100-1-alex.bennee@linaro.org>
+References: <20260422125250.1303100-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,23 +111,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+One more step to removing the old defines.
 
-> This series fully models the behaviour of WFxT instructions. We
-> already had support for WFE for M-profile but we left off A-profile as
-> it has more potential sources of wake-ups. The main one is the event
-> stream which includes events from significant bits of the timer
-> ticking over.
->
-<snip>
->   target/arm: enable event stream on WFE instructions
->   target/arm: implement WFET
-<snip>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/tcg/tlb_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I've posted v3 to handle the missing WFE exception and fix a minor
-syndrome bug on the WFET exception.
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index 565954269f9..c74d8e785a6 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -56,7 +56,7 @@ static inline uint64_t merge_syn_data_abort(uint32_t template_syn,
+          */
+         assert(!fi->stage2);
+         syn = syn_data_abort_vncr(fi->ea, is_write, fsc);
+-    } else if (!(template_syn & ARM_EL_ISV) || target_el != 2
++    } else if (!FIELD_EX32(template_syn, DABORT_ISS, ISV) || target_el != 2
+         || fi->s1ptw || !fi->stage2) {
+         syn = syn_data_abort_no_iss(same_el, 0,
+                                     fi->ea, 0, fi->s1ptw, is_write, fsc);
+-- 
+2.47.3
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

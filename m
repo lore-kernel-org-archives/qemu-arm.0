@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB333F9B609
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6811BF9B608
+	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 10:18:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFUeu-0007Sn-Js; Wed, 22 Apr 2026 06:18:16 -0400
+	id 1wFUew-0007Ur-GC; Wed, 22 Apr 2026 06:18:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeM-0006yq-6H
+ id 1wFUeM-0006ym-6Y
  for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:43 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFUeD-0002NE-Qo
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:40 -0400
-Received: by mail-wr1-x442.google.com with SMTP id
- ffacd0b85a97d-43d74086e5bso5204771f8f.0
- for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:30 -0700 (PDT)
+ id 1wFUeD-0002Nl-MF
+ for qemu-arm@nongnu.org; Wed, 22 Apr 2026 06:17:37 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-43fe3e22e33so3506156f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Apr 2026 03:17:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776853049; x=1777457849; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776853051; x=1777457851; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=reUwRDuVhNbhnF2K13EHapoGcij9kmY6U8ucQNXXySM=;
- b=NO6kdczo0uFwacby8k1t3VqM/gZIGsas+g3t/J4pJHrHs1SdT0Z2Le0Wtbf6VyUUFn
- /J3m5dLjokCu6Boal44tweRb6/SIeUotaWhc2IJkpwJD/m7D5C5HkDdfTFxTFStZu1W5
- NuI6gxoIWc2itVouyWuNQ86XPzo1EQ0nlL6pXp042M+bNkbAW9bcwY7jQCf4cLutFrnz
- P4lqh7OU/XO5EVEl3snRcYe3GlbHxpz3/xqWOz65dSzCoN8MJZnDHGgT9Oh3q5DH9Re9
- kEyDVkso/lcx42hoaHULaHXW/sZYbd7Hh3tL0T7frqK6RJmKn1RPgqKKTOW5NHeT7cen
- LjCg==
+ bh=ChBMLZB7W3RWggGvPxQhi9T29Aee3H3wmNETcHJ/8uM=;
+ b=mtqyEhjHSjE1wVWOnX40jX5ur3YCGsNHdrEYRM/0bqMJys5p5i7q/3KFHkl3mExxsc
+ DjoIP6gZt8NrL2pwrqSMgNzDCo/fN4pPKNpRvF7xWILVCWasEK5vNNbBVGfmsKjfcUZu
+ CrSv88B3G3cS7JumbBnwYqXsm+224xgvECN4X2i8x2aA9aITaVgaWs/FySstvfbQ0+bJ
+ nJJ80V3bv/udDCgCgo7ROPCc7rA+7+UfAtYQr3X0u36BMdlPqDmYE0O5xvrcwHL6581W
+ u6lJcSRr7TPGEGdChXdVVosdTEGcEozZjjppyf8OTyt8axD20XVTHTak9xE6SsUAt3KO
+ DQ+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776853049; x=1777457849;
+ d=1e100.net; s=20251104; t=1776853051; x=1777457851;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=reUwRDuVhNbhnF2K13EHapoGcij9kmY6U8ucQNXXySM=;
- b=eum6Qeb1vVH6dTRExrzTmYigQvfnuMXVBMSFgIKEFYceJztBZUzk8d6ZMIiKUfYJPZ
- 5ZhsZj+rADOVT9nHVmIHF5iBJO6svvE0wo5jU9kzbY2RMQz84LlsLZ8jUYyiiiwnJsaz
- 7LVJbSQ1JnZTVaDv4yVsYE3bkunsC2xBaKnttbOK/gwnAwnGaNMJm3mlmfExWK6BxbNh
- 6Yj8dLdCcg8rFLhf/p+WjaHN5FdIP2lNn5UuwIbzv3mgpvJELVJapocGa17GW32iW3SI
- tinfWH3BXszE7btkwmEaY5gFh7fglF1hEa6uvKifnDR3eu5evKxp1DPIUWNC5ke0PZXM
- OddQ==
+ bh=ChBMLZB7W3RWggGvPxQhi9T29Aee3H3wmNETcHJ/8uM=;
+ b=JZ7g8r9UQGrgwIBuWQa/0VV5j6RUHhaPGoFtdba9NCY5lhiCbOwxuKHMLh+/VcEGrz
+ 2IN1oHZvDe4kwiUyCYreE/zE0wEgHRxVWWaKxIopaV3y9ApWmL7DXSifKzak2vdwlWoO
+ NBPnVd74O/w3MOPmyIlJiHZSLjBHDgOv7DceviSHRCDEF9lAotNNvOIllqjpXqD4F5N+
+ lZfDCQ17gTyd0PCdnT2IdiR2pru9LSNDGxCi1Vt9Mo0rBaWPXR1a0RpAgXpu3DGU6wWL
+ 4ns2MqqTUg3RcHIXDFJ3e8GgjXYIG7iAtpgKRBr72akiqWMGQTHJ8wH2RvmE7h1F1hBT
+ Gycg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ++z3JDWtNIWFlg1D1L5bmUXSYmL/jqrY37o5kjH3pILe4BlBHMYJtFbRzsFyEa361uIwU1bR0siQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzHO2Fk+whveSJt/CzIjkgnD3MitclHxbcMPRCKpwMi/rM4+hZ6
- 1XbpWpAAzcVXQ0sHQaTqJfJnGJkZPhM9mKhkG3qN7u0zuU+B/10fHuAYeqtSpdBpBkc=
-X-Gm-Gg: AeBDies0UCnAgf32geNGIoWV75dPTNERr6XLcX0eYLuTrEh1nBsOMSTD/5YxzUeUh5m
- L2IH3EwAh30TARm3N/q3McuthlOIdDwIT3oH9Jp+dt9KsLWKbGVcO9ajLCyJL3W61LUJsfvvxr8
- +VbD/cA4i4ag1hw05w7wM/usAt69M6MlMfJQcwc3n9Mp3VBpjXGIzNBZiYk4/K/MhSzh0CJqRGC
- bUldnSHZ0RrK6pTVXiRoUAWshVyJftKzgGvFndYVAbQj1Irk/qJeoZNJUXXRzFYNqXDplFZ17hi
- B9fLhQ+C/dnQYCVn2FOgbAttFetCoJRM6a0jUc2FJWhsXUJ4wiQ/SaG+7NPXTRl7UtJbv4dA6qX
- 0u68tJfzbEVlvw8vDDa4Af3Rb/WbndNjgTV5NwgjLsXRW1pi8t78ZCPNQqRCNhpL+gX8BPMBxL8
- 8wpCvV0/2FjAVkGhIAyk7OsRVBtBwfXO4BJ9A/rpqtIDxW
-X-Received: by 2002:a05:6000:2211:b0:43f:e938:1e67 with SMTP id
- ffacd0b85a97d-43fe9381e75mr30962580f8f.38.1776853048906; 
- Wed, 22 Apr 2026 03:17:28 -0700 (PDT)
+ AFNElJ9QcAD7wTqpKxxmshIuPAKzB6LSAgKNgkkHBliF+2en+xUBcO3l/EBQzIc6ctWDgXP5v2KQX8nP4g==@nongnu.org
+X-Gm-Message-State: AOJu0Yz8f0R2gqlQWydhJscaAk1GeUDTiIKTdTQGteiFIRl35CebeUyw
+ pXaIUHePGeVmT/G8inZ2itQb8mpidHwUYQDutB7E/8Y6m0QWPI5LkpuDfgffpVG7HFM=
+X-Gm-Gg: AeBDiesyYzg3o1aRzp18kCaBrPpC6KgZZu4C0g1g7GfLG99sPe6V4lP80M0VDKRE2cU
+ VUbp56qrQnF3X4FgYNePNpGzBl/jJ8eoKvbZDAmDKssfCED5mmD2dnPxph6gzzfnYCbWt9VGgIE
+ UUJ1eRPHCEJKCk1cr6wowjhupnTlWaVoPH6RDIRT0wTpjfqxJcLen/1BUB/ldEushzmOXAy3k5u
+ ONHPWquTyk/bNWEFSZBaRRWL4Hof58T6bntajzAn7By9nJZlA3nGJGdsCRXKbw75zaT3+xznetl
+ dpKJYBw7z6GffqoUoPuP0+kosA66CJ8iDYZzVEPIe8WZBB6Hq71waq2ldnZb6TzjMsDctdTfvKu
+ 0isRx2H3nh9DOvu3kB6/bYdviuMzWFcVrY8OSE5TDpV2tcYUOIBnRSKvahBvVpSjNkkqB4vZMje
+ rTrmjbtPTfRXaHXT370Bq2x4oCQSQGS6d20A==
+X-Received: by 2002:a05:6000:1a8e:b0:43d:3004:5fef with SMTP id
+ ffacd0b85a97d-43fe3dbeaf2mr32935858f8f.7.1776853051221; 
+ Wed, 22 Apr 2026 03:17:31 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e4d112sm49087054f8f.29.2026.04.22.03.17.25
+ ffacd0b85a97d-43fe4e46898sm46561003f8f.27.2026.04.22.03.17.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Wed, 22 Apr 2026 03:17:28 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 45F47614FF;
+ by draig.lan (Postfix) with ESMTP id E594E617C4;
  Wed, 22 Apr 2026 11:10:45 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -75,26 +75,25 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 23/31] target/arm: report register in WFIT syndromes
-Date: Wed, 22 Apr 2026 11:10:34 +0100
-Message-ID: <20260422101043.1234229-24-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 30/31] target/arm: enable event stream on WFE instructions
+Date: Wed, 22 Apr 2026 11:10:41 +0100
+Message-ID: <20260422101043.1234229-31-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260422101043.1234229-1-alex.bennee@linaro.org>
 References: <20260422101043.1234229-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,119 +109,208 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pass the register number (rd) to the wfit helper and report it in the
-syndrome ISS.
+Two generic timers (K and H) are capable of generating timer event
+stream events. Provide a helper to calculate when the nearest one will
+happen.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Now we can calculate when the next event stream event is we can re-use
+the wfxt_timer and configure it to fire as we enter a WFE that is
+going to sleep. Reverse the M-profile logic so we can enter a sleep
+state in both profiles.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - drop stale TODO
-  - fixup stale commit comment (WFIT fix already merged)
-  - make rv a bool
-  - make ti a enum type
+  - merged target/arm: add gt_calc_next_event_stream
+  - update to use halt_reason
+  - made arm_wfxt_timer_cb atomically consume halt_reason
 ---
- target/arm/syndrome.h          | 11 ++++++++++-
- target/arm/tcg/helper-defs.h   |  2 +-
- target/arm/tcg/op_helper.c     |  7 ++++---
- target/arm/tcg/translate-a64.c |  2 +-
- 4 files changed, 16 insertions(+), 6 deletions(-)
+ target/arm/cpu.c           |  13 ++++
+ target/arm/tcg/op_helper.c | 129 +++++++++++++++++++++++++++++++------
+ 2 files changed, 122 insertions(+), 20 deletions(-)
 
-diff --git a/target/arm/syndrome.h b/target/arm/syndrome.h
-index 04a71eebcb5..4d1f1c529e2 100644
---- a/target/arm/syndrome.h
-+++ b/target/arm/syndrome.h
-@@ -670,7 +670,14 @@ FIELD(WFX_ISS, RN, 5, 5)
- FIELD(WFX_ISS, COND, 20, 4)
- FIELD(WFX_ISS, CV, 24, 1)
- 
--static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
-+typedef enum {
-+    WFI = 0b00,
-+    WFE = 0b01,
-+    WFIT = 0b10,
-+    WFET = 0xb11
-+} wfx_ti;
-+
-+static inline uint32_t syn_wfx(int cv, int cond, int rn, bool rv, wfx_ti ti, bool is_16bit)
- {
-     uint32_t res = syn_set_ec(0, EC_WFX_TRAP);
-     res = FIELD_DP32(res, SYNDROME, IL, !is_16bit);
-@@ -678,6 +685,8 @@ static inline uint32_t syn_wfx(int cv, int cond, int ti, bool is_16bit)
-     res = FIELD_DP32(res, WFX_ISS, CV, cv);
-     res = FIELD_DP32(res, WFX_ISS, COND, cond);
-     res = FIELD_DP32(res, WFX_ISS, TI, ti);
-+    res = FIELD_DP32(res, WFX_ISS, RN, rn);
-+    res = FIELD_DP32(res, WFX_ISS, RV, rv);
- 
-     return res;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 124be8c401e..7a6ad45ae08 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -799,10 +799,23 @@ bool arm_cpu_exec_halt(CPUState *cs)
  }
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 5a10a9fba3b..a05f2258f29 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -55,7 +55,7 @@ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_1(wfe, void, env)
--DEF_HELPER_2(wfit, void, env, i64)
-+DEF_HELPER_2(wfit, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
+ #endif
+ 
++/*
++ * Unlike almost everything else that messes with the halt_reason and
++ * event_register details the timer callbacks are not in the vCPU
++ * context.
++ *
++ * To prevent races we atomically consume a HALT_WFE and set the event
++ * register. Either way we trigger the an exit event.
++ */
+ static void arm_wfxt_timer_cb(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+     CPUState *cs = CPU(cpu);
++    CPUARMState *env = &cpu->env;
++
++    if (qatomic_cmpxchg(&env->halt_reason, HALT_WFE, NOT_HALTED)) {
++        qatomic_set(&env->event_register, true);
++    }
+ 
+     /*
+      * We expect the CPU to be halted; this will cause arm_cpu_is_work()
 diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index aa14f15eb62..652611b4313 100644
+index 6a2be85fcaa..030209360e8 100644
 --- a/target/arm/tcg/op_helper.c
 +++ b/target/arm/tcg/op_helper.c
-@@ -399,7 +399,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
-             env->regs[15] -= insn_len;
-         }
+@@ -477,6 +477,97 @@ void HELPER(sev)(CPUARMState *env)
+     arm_broadcast_event();
+ }
  
--        raise_exception(env, excp, syn_wfx(1, 0xe, 0, insn_len == 2),
-+        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false, WFI, insn_len == 2),
-                         target_el);
++#ifndef CONFIG_USER_ONLY
++/*
++ * Event Stream events don't do anything apart from wake up sleeping
++ * cores. These helpers calculate the next event stream event time so
++ * the WFE helper can decide when its next wake up tick will be.
++ */
++static int64_t gt_recalc_one_evt(CPUARMState *env, uint32_t control, uint64_t offset)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    bool evnten = FIELD_EX32(control, CNTxCTL, EVNTEN);
++
++    if (evnten) {
++        int evnti = FIELD_EX32(control, CNTxCTL, EVNTI);
++        bool evntis = FIELD_EX32(control, CNTxCTL, EVNTIS);
++        bool evntdir = FIELD_EX32(control, CNTxCTL, EVNTDIR);
++        /*
++         * To figure out when the next event timer should fire we need
++         * to calculate which bit of the counter we want to flip and
++         * which transition counts.
++         *
++         * So we calculate 1 << bit - current lower bits and then add
++         * 1 << bit if the bit needs to flip twice to meet evntdir
++         */
++        int bit = evntis ? evnti + 8 : evnti;
++        uint64_t count = gt_get_countervalue(env) - offset;
++        uint64_t target_bit = BIT_ULL(bit);
++        uint64_t lower_bits = MAKE_64BIT_MASK(0, bit - 1);
++        uint64_t next_tick = target_bit - (count & lower_bits);
++        uint64_t abstick;
++
++        /* do we need to bit flip twice? */
++        if (((count & target_bit) != 0) ^ evntdir) {
++            next_tick += target_bit;
++        }
++
++        /*
++         * Note that the desired next expiry time might be beyond the
++         * signed-64-bit range of a QEMUTimer -- in this case we just
++         * set the timer for as far in the future as possible. When the
++         * timer expires we will reset the timer for any remaining period.
++         */
++        if (uadd64_overflow(next_tick, offset, &abstick)) {
++            abstick = UINT64_MAX;
++        }
++        if (abstick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
++            return INT64_MAX;
++        } else {
++            return abstick;
++        }
++    }
++
++    return -1;
++}
++
++/*
++ * Calculate the next event stream time and return it. Returns -1 if
++ * no event streams are enabled. It is up to the WFE helpers to decide
++ * on the next time.
++ */
++static int64_t gt_calc_next_event_stream(CPUARMState *env)
++{
++    ARMCPU *cpu = env_archcpu(env);
++    uint64_t hcr = arm_hcr_el2_eff(env);
++    int64_t next_time = -1;
++    uint64_t offset;
++
++    /* Unless we are missing EL2 this can generate events */
++    if (arm_feature(env, ARM_FEATURE_EL2)) {
++        offset = gt_direct_access_timer_offset(env, GTIMER_PHYS);
++        next_time = gt_recalc_one_evt(env, env->cp15.cnthctl_el2, offset);
++    }
++
++    /* Event stream events from virtual counter enabled? */
++    if (!cpu_isar_feature(aa64_vh, cpu) ||
++        !((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE))) {
++        int64_t next_virt_time;
++        offset = gt_direct_access_timer_offset(env, GTIMER_VIRT);
++        next_virt_time = gt_recalc_one_evt(env, env->cp15.c14_cntkctl, offset);
++
++        /* is this earlier than the next physical event? */
++        if (next_virt_time > 0) {
++            if (next_time < 0 || next_virt_time < next_time) {
++                next_time = next_virt_time;
++            }
++        }
++    }
++
++    return next_time;
++}
++#endif
++
+ void HELPER(wfe)(CPUARMState *env)
+ {
+ #ifdef CONFIG_USER_ONLY
+@@ -489,32 +580,30 @@ void HELPER(wfe)(CPUARMState *env)
+ #else
+     /*
+      * WFE (Wait For Event) is a hint instruction.
+-     * For Cortex-M (M-profile), we implement the strict architectural behavior:
++     *
+      * 1. Check the Event Register (set by SEV or SEVONPEND).
+      * 2. If set, clear it and continue (consume the event).
+      */
+-    if (arm_feature(env, ARM_FEATURE_M)) {
+-        CPUState *cs = env_cpu(env);
++    CPUState *cs = env_cpu(env);
++    ARMCPU *cpu = ARM_CPU(cs);
+ 
+-        if (env->event_register) {
+-            env->event_register = false;
+-            return;
+-        }
++    if (env->event_register) {
++        env->event_register = false;
++        return;
++    }
+ 
+-        env->halt_reason = HALT_WFE;
+-        cs->exception_index = EXCP_HLT;
+-        cs->halted = 1;
+-        cpu_loop_exit(cs);
+-    } else {
+-        /*
+-         * For A-profile and others, we rely on the existing "yield" behavior.
+-         * Don't actually halt the CPU, just yield back to top
+-         * level loop. This is not going into a "low power state"
+-         * (ie halting until some event occurs), so we never take
+-         * a configurable trap to a different exception level
+-         */
+-        HELPER(yield)(env);
++    /* For A-profile we also can be woken by the event stream */
++    if (arm_feature(env, ARM_FEATURE_AARCH64) && cpu->wfxt_timer) {
++        int64_t next_event = gt_calc_next_event_stream(env);
++        if (next_event > 0) {
++            timer_mod(cpu->wfxt_timer, next_event);
++        }
      }
- 
-@@ -409,7 +409,7 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
++
++    env->halt_reason = HALT_WFE;
++    cs->exception_index = EXCP_HLT;
++    cs->halted = 1;
++    cpu_loop_exit(cs);
  #endif
  }
  
--void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
-+void HELPER(wfit)(CPUARMState *env, uint32_t rd)
- {
- #ifdef CONFIG_USER_ONLY
-     /*
-@@ -428,6 +428,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
-     int target_el = check_wfx_trap(env, false, &excp);
-     /* The WFIT should time out when CNTVCT_EL0 >= the specified value. */
-     uint64_t cntval = gt_get_countervalue(env);
-+    uint64_t timeout = env->xregs[rd];
-     /*
-      * We want the value that we would get if we read CNTVCT_EL0 from
-      * the current exception level, so the direct_access offset, not
-@@ -448,7 +449,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
- 
-     if (target_el) {
-         env->pc -= 4;
--        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
-+        raise_exception(env, excp, syn_wfx(1, 0xe, rd, true, WFIT, false), target_el);
-     }
- 
-     if (uadd64_overflow(timeout, offset, &nexttick)) {
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 5d261a5e32b..073454b9195 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2064,7 +2064,7 @@ static bool trans_WFIT(DisasContext *s, arg_WFIT *a)
-     }
- 
-     gen_a64_update_pc(s, 4);
--    gen_helper_wfit(tcg_env, cpu_reg(s, a->rd));
-+    gen_helper_wfit(tcg_env, tcg_constant_i32(a->rd));
-     /* Go back to the main loop to check for interrupts */
-     s->base.is_jmp = DISAS_EXIT;
-     return true;
 -- 
 2.47.3
 

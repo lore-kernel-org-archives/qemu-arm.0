@@ -4,95 +4,185 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A5E5FDEE40
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 18:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5EEEFDEE3F
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 18:54:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFyRX-00071O-KH; Thu, 23 Apr 2026 14:06:29 -0400
+	id 1wFzBf-0002b3-Ms; Thu, 23 Apr 2026 14:54:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFyRC-0006zy-0s
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:06:12 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wFyR6-0006HI-D0
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:06:05 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-48a3e9862f0so33168165e9.1
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 11:05:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776967557; x=1777572357; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=crPdIJHt3LhtWfSNp31s3fT9JjS2fk669onR6kL8pko=;
- b=ibC3PAVrMaVHM4407udbaJxu6VjGUoXgfaZ5p97w9tEQM0pCsevPHksUfAgPR9QM2U
- zpT527xfSFdNbCPQL70IMMeNQblQNe/7wTu12J9JWY+8gV6H6AdLsibK46yV5l/4BgzI
- hlOZopqRcb1QcPJaVISylG7imeSAnllZbqAw3w3KwmyFQRNcPkYaxJoP9TCapPEUQ7/V
- 3joXpwRy4z1TWhdRsJSH1hy45Y/arM+5n7FQe3HHl9miIviffPhV6adbgaT3xAuh1s/K
- jyoSLXTLOD/b8daCquDPDmB3c5Y2siv3EUfHL534n8uEmspeZzjvBtoRwdJ6a6Uev2q4
- rnwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776967557; x=1777572357;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=crPdIJHt3LhtWfSNp31s3fT9JjS2fk669onR6kL8pko=;
- b=Cu+dz5Qd6hQuYQ/OfQB3gEyuQ8woiIy7t3mMNvo7D51qZ4kXpFHkP2nkZptdaVU8+0
- zC0l0KdfkEeKfEauMeORZo0O3UUN6S605z7Zb8w1XfvokqqTFeZExgrOwFj0YrW/UlgE
- 8AaRBTySaD1lr1YxCa9hMtDzSSJCaZTcqu6Bp7YezXJuhvZQVjqB1FpOl6lx/8IvMBph
- dF95ObqVqHXbNA1UOQac3BPanYy0A05lk0IypHyCMiBbTAPp45VGDH1b4bgUlQ7gHoTJ
- GnBzvZ7BB8Nrgrow6HQUiHzv6gau/tjM4kqFzuFRtTAWI95P4HCBk9NN6QLjjoIG2sXU
- Xb3Q==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+nCqRnYpXjgJfETw7JU83hERsGNU3CkepHD5fD77U6k99U90HXYQBAzmjOd0pnD+TG0LQchTf9tQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxtutrEzHSqGss8dGk/gNfG8XfsOono2BKxAL//hJOlRxXEdMk+
- xdfYFHt6m9PVF2I2vZTkuo4TIvc+yW7m1XJY6GsEevEDUl6a+49lrYkGGp0sI4MjBhw=
-X-Gm-Gg: AeBDietwVTMm000sW+gr/iHvVae24FpcBfA10TPTbdvPa4hNgc/TysPRLpQ0JBmvv+G
- SrkW5MWTgqO7C8rbfjCkisvwkCoZdWe4ue7wmgKwHLOqW2y9zgNlZLiVHtgelRnzPAjdyHH3Rob
- QqAaBMVNqdWB2j+mQ22BnRIlZoKHAOtnQEpKnWEdy2/i6I4nILUwN3UqRqe4RyrzBxS32DkWwFL
- RqCH/1dNH1+WNBL2dSFZEk2i6lwPAnIv1MlrUov7Neib676NQStb6PmzvzRZDfAZcxq5qMDh4Pb
- oiNXdC/NR4R52b9ozUpZhc414tbK7gwvHgjVWBCHRpDCH/U5S92t+4PeJ4F5d4jMgtlHp8TOWEE
- jAzQsDImx11OxkSHbjlFYiJ2Jnf3ukFiQVevVO+XJ5DNuhWPed/w/vwBmUEA7hNBAi6ThyWg8rB
- D09oyIwK1XIna8pKgbFGHD3EXcZRpdcPh46btTlDaRfTAf
-X-Received: by 2002:a05:600c:570f:b0:488:a502:8955 with SMTP id
- 5b1f17b1804b1-488fb882f13mr297146205e9.4.1776967557333; 
- Thu, 23 Apr 2026 11:05:57 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4cc0d51sm54913862f8f.10.2026.04.23.11.05.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2026 11:05:56 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 830965F941;
- Thu, 23 Apr 2026 19:05:55 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  agraf@csgraf.de,
- peter.maydell@linaro.org,  mohamed@unpredictable.fr
-Subject: Re: [PATCH v4 2/3] accel/hvf: introduce map granule abstraction and
- IPA property
-In-Reply-To: <20260317175744.32469-3-lucaaamaral@gmail.com> (Lucas Amaral's
- message of "Tue, 17 Mar 2026 14:57:43 -0300")
-References: <20260317175744.32469-1-lucaaamaral@gmail.com>
- <20260317175744.32469-3-lucaaamaral@gmail.com>
-User-Agent: mu4e 1.14.1-pre3; emacs 30.1
-Date: Thu, 23 Apr 2026 19:05:55 +0100
-Message-ID: <87h5p1wnzw.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1wFzBe-0002an-Cx; Thu, 23 Apr 2026 14:54:06 -0400
+Received: from mout.gmx.net ([212.227.15.18])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <deller@gmx.de>)
+ id 1wFzBc-0008QY-32; Thu, 23 Apr 2026 14:54:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmx.de;
+ s=s31663417; t=1776970442; x=1777575242; i=deller@gmx.de;
+ bh=eFgSlvKalDeTkkDZsKFNIZ2eX6GANa3HMRpkEDCsoyA=;
+ h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+ References:From:In-Reply-To:Content-Type:
+ Content-Transfer-Encoding:cc:content-transfer-encoding:
+ content-type:date:from:message-id:mime-version:reply-to:subject:
+ to;
+ b=SsavlJUk5XTwt+jnA9ddtbl5IsnpdjRfNGLq4/8vuGQLEnA+lDa0zbxnmPYu2aU3
+ LfRwJe/UqWaHRQJtV9h0AZY3NVlCC9vTyPof1Wmjm8p2OXXyRv+0iNiSVJKeJ5HaP
+ Jff0YuW+IVD1QWrh+sIt1YCU5k0ZTlJgPx/Gh/GUufpjyAOAZXpEAugvW1sRKXKFb
+ i4xOTj0bbFtvnakuT9AYpOCGjtYOqyjLpyuVDsGwuW1+kIzNfGvPMH3gu/OHL/q0T
+ cF4ewnJzPNE0wv8ghxXsCa0iM/8wgBuHc7ZBaJbJzdVbjrATArNVYA2QvjmQGyFOy
+ bYoUV4JD+SrccxZfJw==
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from client.hidden.invalid by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MzQkE-1vTfrN3p4a-015nEj; Thu, 23
+ Apr 2026 20:54:01 +0200
+Message-ID: <9136e278-f553-4ebb-aed0-ce2e0a2e2a4f@gmx.de>
+Date: Thu, 23 Apr 2026 20:54:01 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.0? 0/3] linux-user/arm: Deprecate nwfpe
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260413230251.22537-1-richard.henderson@linaro.org>
+Content-Language: en-US
+From: Helge Deller <deller@gmx.de>
+Autocrypt: addr=deller@gmx.de; keydata=
+ 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
+In-Reply-To: <20260413230251.22537-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Provags-ID: V03:K1:YOTJ3fDC4J1wlOiFZJ81OXJ/o60HRzzbvCptalVyACyC3bRx626
+ MLfc+lVZpmD/Gd8xCP3HZuLkLCtfSGAncRosb6A7KHd//HL5PSU9mhuoD+VCrh3bkwrKofE
+ TJoptfS9GmXV7sMndGgAdsedSXnoP8qIrjstqWbz9XTlZ72SEzd2qdrf+uHWimaidPdJYuA
+ nAOvWaVbK0qGUlarkn9Sg==
+UI-OutboundReport: notjunk:1;M01:P0:Toe+ByFvfqY=;05C12J0el5B8tqSLUv2yYXJaSux
+ 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
+ x1fqcgefEdWCEeA==
+Received-SPF: pass client-ip=212.227.15.18; envelope-from=deller@gmx.de;
+ helo=mout.gmx.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,251 +198,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Lucas Amaral <lucaaamaral@gmail.com> writes:
+On 4/14/26 01:02, Richard Henderson wrote:
+> Deprecate nwfpe emulation.
+> But while it still exists, fix thread safety.
+>=20
+> r~
+>=20
+> Richard Henderson (3):
+>    docs: Deprecate linux-user/arm/nwfpe
+>    linux-user/arm/nwfpe: Replace user_registers with current_cpu
+>    linux-user/arm/nwfpe: Use thread-local storage for qemufpa
+>=20
+>   linux-user/arm/nwfpe/fpa11.h | 25 ++++++++-----------------
+>   linux-user/arm/cpu_loop.c    |  2 +-
+>   linux-user/arm/nwfpe/fpa11.c | 12 ++----------
+>   docs/about/deprecated.rst    | 12 ++++++++++++
+>   4 files changed, 23 insertions(+), 28 deletions(-)
 
-> Add a map granule abstraction that decouples HVF memory mapping
-> alignment from the host page size.  On ARM64, Apple Silicon supports
-> stage-2 translation with 4KB page granules regardless of the host OS
-> page size (16KB on macOS).  This allows running guests with 4KB pages
-> without interior mapping failures.
->
-> Introduce hvf_set_map_granule()/hvf_get_map_granule() in hvf-all.c
-> to replace hard-coded qemu_real_host_page_size() references in
-> do_hv_vm_protect() and hvf_set_phys_mem().  When the granule is not
-> explicitly configured, fall back to host page size to preserve the
-> previous behaviour.
->
-> Add an "ipa-granule" accelerator property (auto, 4k, 16k) following
-> the established kvm_arch_accel_class_init() pattern: ARM registers
-> the property in hvf_arch_accel_class_init(), x86 provides an empty
-> stub.  This avoids #ifdef __aarch64__ in common code while keeping
-> a single hvf-all.c shared by both targets.
->
-> Fix hvf_set_phys_mem() to return early for non-aligned regions instead
-> of clearing the add flag, which previously fell through to an
-> incorrect unmap of a region that was never mapped.
->
-> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
-> ---
->  accel/hvf/hvf-all.c      | 30 +++++++++++++++++++++++++++---
->  include/system/hvf.h     | 15 +++++++++++++++
->  include/system/hvf_int.h |  2 ++
->  target/arm/hvf/hvf.c     | 40 ++++++++++++++++++++++++++++++++++++++++
->  target/i386/hvf/hvf.c    |  4 ++++
->  5 files changed, 88 insertions(+), 3 deletions(-)
->
-> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-> index 5f357c6d..d745fefd 100644
-> --- a/accel/hvf/hvf-all.c
-> +++ b/accel/hvf/hvf-all.c
-> @@ -10,6 +10,8 @@
->=20=20
->  #include "qemu/osdep.h"
->  #include "qemu/error-report.h"
-> +#include "qemu/units.h"
-> +#include "qapi/error.h"
->  #include "accel/accel-ops.h"
->  #include "exec/cpu-common.h"
->  #include "system/address-spaces.h"
-> @@ -22,6 +24,21 @@
->=20=20
->  bool hvf_allowed;
->=20=20
-> +static uint64_t hvf_map_granule;
-> +
-> +void hvf_set_map_granule(uint64_t size)
-> +{
-> +    hvf_map_granule =3D size;
-> +}
-> +
-> +uint64_t hvf_get_map_granule(void)
-> +{
-> +    if (!hvf_map_granule) {
-> +        return qemu_real_host_page_size();
-> +    }
-> +    return hvf_map_granule;
-> +}
-> +
->  const char *hvf_return_string(hv_return_t ret)
->  {
->      switch (ret) {
-> @@ -53,7 +70,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *fi=
-le, unsigned int line,
->  static void do_hv_vm_protect(hwaddr start, size_t size,
->                               hv_memory_flags_t flags)
->  {
-> -    intptr_t page_mask =3D qemu_real_host_page_mask();
-> +    intptr_t page_mask =3D -(intptr_t)hvf_get_map_granule();
->      hv_return_t ret;
->=20=20
->      trace_hvf_vm_protect(start, size, flags,
-> @@ -83,7 +100,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *sect=
-ion, bool add)
->      MemoryRegion *area =3D section->mr;
->      bool writable =3D !area->readonly && !area->rom_device;
->      hv_memory_flags_t flags;
-> -    uint64_t page_size =3D qemu_real_host_page_size();
-> +    uint64_t page_size =3D hvf_get_map_granule();
->      uint64_t gpa =3D section->offset_within_address_space;
->      uint64_t size =3D int128_get64(section->size);
->      hv_return_t ret;
-> @@ -104,7 +121,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *sec=
-tion, bool add)
->      if (!QEMU_IS_ALIGNED(size, page_size) ||
->          !QEMU_IS_ALIGNED(gpa, page_size)) {
->          /* Not page aligned, so we can not map as RAM */
-> -        add =3D false;
-> +        return;
->      }
->=20=20
->      if (!add) {
-> @@ -186,6 +203,11 @@ static int hvf_accel_init(AccelState *as, MachineSta=
-te *ms)
->      int pa_range =3D 36;
->      MachineClass *mc =3D MACHINE_GET_CLASS(ms);
->=20=20
-> +    /* Resolve ipa-granule=3Dauto =E2=86=92 host page size */
-> +    if (!s->ipa_granule) {
-> +        s->ipa_granule =3D qemu_real_host_page_size();
-> +    }
-> +    hvf_set_map_granule(s->ipa_granule);
->=20=20
->      if (mc->get_physical_address_range) {
->          pa_range =3D mc->get_physical_address_range(ms,
-> @@ -223,6 +245,8 @@ static void hvf_accel_class_init(ObjectClass *oc, con=
-st void *data)
->      ac->init_machine =3D hvf_accel_init;
->      ac->allowed =3D &hvf_allowed;
->      ac->gdbstub_supported_sstep_flags =3D hvf_gdbstub_sstep_flags;
-> +
-> +    hvf_arch_accel_class_init(oc);
->  }
->=20=20
->  static const TypeInfo hvf_accel_type =3D {
-> diff --git a/include/system/hvf.h b/include/system/hvf.h
-> index d3dcf088..3c4c3b89 100644
-> --- a/include/system/hvf.h
-> +++ b/include/system/hvf.h
-> @@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
->  DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
->                           TYPE_HVF_ACCEL)
->=20=20
-> +#ifdef CONFIG_HVF_IS_POSSIBLE
-> +/*
-> + * Minimum alignment for hv_vm_map().  Returns the configured IPA granule
-> + * or host page size if not set.
-> + */
-> +void hvf_set_map_granule(uint64_t size);
-> +uint64_t hvf_get_map_granule(void);
-> +#else
-> +static inline void hvf_set_map_granule(uint64_t size) {}
-> +static inline uint64_t hvf_get_map_granule(void)
-> +{
-> +    return qemu_real_host_page_size();
-> +}
-> +#endif
-> +
->  #endif
-> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-> index 2621164c..9589b022 100644
-> --- a/include/system/hvf_int.h
-> +++ b/include/system/hvf_int.h
-> @@ -38,6 +38,7 @@ struct HVFState {
->=20=20
->      hvf_vcpu_caps *hvf_caps;
->      uint64_t vtimer_offset;
-> +    uint32_t ipa_granule;
->      QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
->  };
->  extern HVFState *hvf_state;
-> @@ -57,6 +58,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *fi=
-le, unsigned int line,
->  const char *hvf_return_string(hv_return_t ret);
->  int hvf_arch_init(void);
->  hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
-> +void hvf_arch_accel_class_init(ObjectClass *oc);
->  uint32_t hvf_arch_get_default_ipa_bit_size(void);
->  uint32_t hvf_arch_get_max_ipa_bit_size(void);
->  void hvf_kick_vcpu_thread(CPUState *cpu);
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 5fc8f6bb..1ba5bbf3 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -12,6 +12,8 @@
->  #include "qemu/osdep.h"
->  #include "qemu/error-report.h"
->  #include "qemu/log.h"
-> +#include "qemu/units.h"
-> +#include "qapi/error.h"
->=20=20
->  #include "system/runstate.h"
->  #include "system/hvf.h"
-> @@ -1218,6 +1220,44 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->      assert_hvf_ok(ret);
->  }
->=20=20
-> +static char *hvf_get_ipa_granule(Object *obj, Error **errp)
-> +{
-> +    HVFState *s =3D HVF_STATE(obj);
-> +
-> +    if (s->ipa_granule =3D=3D 4 * KiB) {
-> +        return g_strdup("4k");
-> +    }
-> +    if (s->ipa_granule =3D=3D 16 * KiB) {
-> +        return g_strdup("16k");
-> +    }
-> +    return g_strdup("auto");
-> +}
-> +
-> +static void hvf_set_ipa_granule(Object *obj, const char *value, Error **=
-errp)
-> +{
-> +    HVFState *s =3D HVF_STATE(obj);
-> +
-> +    if (!strcmp(value, "auto")) {
-> +        s->ipa_granule =3D 0;
-> +    } else if (!strcmp(value, "4k")) {
-> +        s->ipa_granule =3D 4 * KiB;
-> +    } else if (!strcmp(value, "16k")) {
-> +        s->ipa_granule =3D 16 * KiB;
-> +    } else {
-> +        error_setg(errp, "invalid ipa-granule: '%s' (use auto, 4k, 16k)",
-> +                   value);
-> +    }
+I've applied this series to the linux-user for-next git tree:
+https://gitlab.com/hdeller/qemu/-/commits/linux-user-next?ref_type=3Dheads
 
-There is a minor preference to use the glib functions here, g_strcmp0().
-
-> +}
-> +
-> +void hvf_arch_accel_class_init(ObjectClass *oc)
-> +{
-> +    object_class_property_add_str(oc, "ipa-granule",
-> +                                  hvf_get_ipa_granule,
-> +                                  hvf_set_ipa_granule);
-> +    object_class_property_set_description(oc, "ipa-granule",
-> +        "IPA granule for HVF stage-2 translation (auto, 4k, 16k)");
-> +}
-> +
->  hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
->  {
->      hv_return_t ret;
-> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-> index c0d028b1..565c79b3 100644
-> --- a/target/i386/hvf/hvf.c
-> +++ b/target/i386/hvf/hvf.c
-> @@ -228,6 +228,10 @@ int hvf_arch_init(void)
->      return 0;
->  }
->=20=20
-> +void hvf_arch_accel_class_init(ObjectClass *oc)
-> +{
-> +}
-> +
->  /* 48-bit on all Intel Macs. Function currently unused. */
->  uint32_t hvf_arch_get_default_ipa_bit_size(void)
->  {
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Thanks!
+Helge
 

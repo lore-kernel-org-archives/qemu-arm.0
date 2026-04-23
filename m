@@ -4,78 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 888DBFDEE2C
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675AFFDEE2C
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:03:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFxRJ-0000Fi-Ew; Thu, 23 Apr 2026 13:02:09 -0400
+	id 1wFxSB-0000V8-L3; Thu, 23 Apr 2026 13:03:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFxRB-0000Ej-Ee
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:03 -0400
-Received: from qs-2004f-snip4-1.eps.apple.com ([57.103.84.54]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFxR0-0004Nx-LQ
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:01:55 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPS id
- CB6B530010CD; Thu, 23 Apr 2026 17:01:44 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkIeGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVOAV4OKnZDDFVyWQVZH0R9SQRAdlMCQxRAd1QFLXZFCzsKKQ8rRx5JClYJXghGEVsUVkNRGQxQTQFDCAoIRwNNF14yUwRfEVAW
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776963708; x=1779555708;
- bh=DPbUjA6PyvA2vMFDn+Rt/m33kgPZCrx/aEUww7RyKck=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=GabXFiRCDc6763IT4tiJBeBBRrjjF+Bk+IKPWAKJCHCTv/ETqZwGCkDReMD15fWx2Rii2cHf51RC3YM27woiO/zvqXU/P/0kYKqv9DPdw6M7f02sdTOIyZPLN+cvqSX4K7EcnfCvOiu89BMAKD/bf2UWmttF5emFsssNHeM4iJkTw3OJT1deb/336MRDbid3Bs0+xkU5OZjWPEgW9kwiORRdmCE57kt+bMomVL9EvYDZovXVO0L18VknTXXqSVxS65mVj7SvmJEOQwTlyWbMm5weolDCqpdFYM/i+oYgk5lLMKWSlddxNuSLyTIYPQT5GGuQAJatMrexLJoPm7BbsA==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPSA id
- 62F833000E84; Thu, 23 Apr 2026 17:01:15 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
-Subject: Re: [PATCH v20 03/15] accel, hw/arm, include/system/hvf:
- infrastructure changes for HVF vGIC
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <07560d55-25cf-4abc-8c58-b386306546b9@linaro.org>
-Date: Thu, 23 Apr 2026 19:01:01 +0200
-Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6239AD35-A422-4D17-A803-8D92FD52C9D8@unpredictable.fr>
-References: <20260316130642.13246-1-mohamed@unpredictable.fr>
- <20260316130642.13246-4-mohamed@unpredictable.fr>
- <07560d55-25cf-4abc-8c58-b386306546b9@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-X-Mailer: Apple Mail (2.3864.500.181)
-X-Proofpoint-GUID: Nt6VQsk01Nbf2JiDgo8JCsY-BF5qzORY
-X-Authority-Info-Out: v=2.4 cv=DOGCIiNb c=1 sm=1 tr=0 ts=69ea507a
- cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=E-stxHK9gM_wDTnvQtoA:9
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: Nt6VQsk01Nbf2JiDgo8JCsY-BF5qzORY
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIzMDE2OCBTYWx0ZWRfX3tVx674JSG3z
- wi4bL+f/FGytlj6FlCwLoGT5SCiR7k1CHHQHe5CQrLzv2SO8DJ9gTXVqLL5msdbXkWWWvitO3uL
- R4S4UW5rXWIS/+HJAVaBTacLI8e77augGnrImL2BRNhTG6FkK8S1CWZ8CzSrqqHFUeGy6gaKoV8
- YOO2oTUOOoD84MvJ/njdIvYLIFMGCIFKz5vgQ1JtS5zjljh81qDIYuzu2G/K67I3K18uFgi9x+i
- XyOkilaBbtbHrf23yY/dzgJAdsoIJWI4Vr/CHxTVKN6lFnfUb8gUxy0wvspPTckMelHrawDzAvv
- tTUy/Fvk0jaBURHOwrHig1WZLvkSCvVkI+Irra2/HK8GVKLyWI2EwttInkAP1I=
-Received-SPF: pass client-ip=57.103.84.54;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRt-0000MK-1e
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:54 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRq-0004cb-EY
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:44 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-488e1a8ac40so85239075e9.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:02:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1776963761; x=1777568561; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YGkoFuEm7+jO9F5J4WaA/pQTANhW5MV3tHvArzYt2ao=;
+ b=JzWNyKd5jLVT91ecLdhSEPDPHXBHbFPjLvcqTW2hWoLSUqeXxsqjmagpH21VgAfrCS
+ wM5Axl+mmX+o1dI/MRKu2a/LFemGSWPZ/ieVcZZgrsBrg5wa9NsZwxRmuSHDUz364Qrr
+ 7pfNH6k650XNlOOIOE1tBd4Brfkn69GcVq0uBJlJDjirrDi2lJ98EHSSnsPExM05L2l0
+ JW92woBBHmb5MI6nFexVPEWHKUrsLle399jBAY+6FaTlUyHuIKPedQgQbwby7Va3qun+
+ d9M99Zn4/PxHmwnU8eHlZlpXS4XJnUVUgMdOkRM6A39rZhei3kx/ELlzBcsSaTNkKEwS
+ mHog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776963761; x=1777568561;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=YGkoFuEm7+jO9F5J4WaA/pQTANhW5MV3tHvArzYt2ao=;
+ b=oKpNgm6EbZ9x0UaEl4iVRRPoybZuMNKgaCRL+bSrLNYGvLkEX7+cGV51NULXhZPDPj
+ IFOgVvnrfQEMg0ksvDml6rpWz1PJyqDN6TLxZj2+zpSZvO5enEtHHzkwttqRlkhob2K8
+ 0ls5f/pI5U0wMegqAZTzHuuKa0XKAV43aowvUZE5BN+XKqThtdNqTBUIg3/ayFUsHg2n
+ dQfYN9sepjMjr0y0jZCPpmsJmRZ+7uyQ2dOHJJa+JAD//5TSCjjnvMi+wwiTRItRW5VP
+ cNucKpnKGWB/PA9iP2idGsUZ6YobKN3y/J1CFUWxKpr6d0ncXwetZzuMP+JG8J08ilVp
+ Pckw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8NJenZJ1r0A2Ys1Ul11om8/n5kdRuOsX8PYGUVoiwT/tHAa47ZknnE1H6cLfK8jYIPTJZNYUFeJg==@nongnu.org
+X-Gm-Message-State: AOJu0Yybb3hCcFpdY9E1yEE6GjGxQ+QLNKnl1OwLKy/XQVX/eaixT2mc
+ pTDVrkMSd4OGfIzFmK4USA8oao04qr+p9ALeIpKbawXsmWgE82hu1/m0acvV2HA/UU4=
+X-Gm-Gg: AeBDiet3j2Ta75mzeAAMlNUqxMOR728+EPXfR9Nh5gZW3X8UvOXD8MIcGkRH6FVK0GE
+ ALjWfm+xqumUEKlw8uBOqBOVVZnKIszMGGLL5TX8X33lmKfM65Sl7j8qB1cZf4ZuV/d57vda6s+
+ 3yGdUV8HfqaFMldQ6hsR3xMrY8YkyUX1YrE9VD2x4WdyaLbDmIpl1Eiq9UJNdncZzM/3WMGVhPg
+ sP5DuAkfCE7UsbR/wOQ6R4Z9bilmCWReL7N0zLVmU68vlMPwLnU9GKhnVER+YPC206vEvbBAEk1
+ 6unNMkGYPmwj6wFpMJ4ORCfn4M06qjFHM3dOAyCfliD0F39lWlq/DAHookcrDfWQ9CiVpc73hhi
+ 5qUassrhwlVImfA7LoHPdtBMexqni+g5ZQQ2iCG3vWgNgcgJbSx5z1+5ApFaUpIEfg0fEruOwL8
+ n/U5mO0Jvc+M7pPKNFldte3Qao+No8ODN+aoIVIdNB2wZY8BRku3/NCE3PrzXKdTKPmHNaWOA7F
+ g2GOh8mrjxzhUuviMkoCQ==
+X-Received: by 2002:a05:600c:3553:b0:48a:52f2:a0f1 with SMTP id
+ 5b1f17b1804b1-48a52f2a5f0mr207640535e9.18.1776963760832; 
+ Thu, 23 Apr 2026 10:02:40 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-488fc0f82bbsm912678555e9.3.2026.04.23.10.02.39
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 23 Apr 2026 10:02:40 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Roman Bolshakov <rbolshakov@ddn.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>
+Subject: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu)) expression
+Date: Thu, 23 Apr 2026 19:02:13 +0200
+Message-ID: <20260423170229.64655-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260423170229.64655-1-philmd@linaro.org>
+References: <20260423170229.64655-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,51 +109,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
+available via the ARCH_CPU() macro. Use the latter
+to avoid using &env.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/hvf/hvf.c       | 2 +-
+ target/hexagon/translate.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-> On 23. Apr 2026, at 18:10, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> On 16/3/26 14:06, Mohamed Mediouni wrote:
->> Misc changes needed for HVF vGIC enablement.
->> Note: x86_64 macOS exposes interrupt controller virtualisation since =
-macOS 12.
->> Keeping an #ifdef here in case we end up supporting that...
->> However, given that x86_64 macOS is on its way out, it'll probably =
-(?) not be supported in Qemu.
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->>  accel/hvf/hvf-all.c        | 46 =
-++++++++++++++++++++++++++++++++++++++
->>  accel/stubs/hvf-stub.c     |  1 +
->>  hw/arm/virt.c              | 23 +++++++++++++++----
->>  hw/intc/arm_gicv3_common.c |  3 +++
->>  include/system/hvf.h       |  3 +++
->>  system/vl.c                |  2 ++
->>  6 files changed, 74 insertions(+), 4 deletions(-)
->=20
->=20
->> diff --git a/accel/stubs/hvf-stub.c b/accel/stubs/hvf-stub.c
->> index 42eadc5ca9..6bd08759ba 100644
->> --- a/accel/stubs/hvf-stub.c
->> +++ b/accel/stubs/hvf-stub.c
->> @@ -10,3 +10,4 @@
->>  #include "system/hvf.h"
->>    bool hvf_allowed;
->> +bool hvf_kernel_irqchip;
->=20
-> This (along with hvf_nested_virt and
-> hvf_kernel_irqchip_override you add later)
-> should go in HVFState.
-
-Hi,
-
-Putting it in HVFState makes the existing
-*_irqchip_in_kernel() pattern as a macro
-that=E2=80=99s used by other accelerators not work.
-
-For the hvf_kernel_irqchip_override will do
-in a future revision, but for the others not
-sure it makes that much sense.
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 5fc8f6bbbd9..2fb768048b8 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+ 
+ static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
+ {
+-    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
++    ARMCPU *arm_cpu = ARM_CPU(cpu);
+     int ret = 0;
+ 
+     switch (exit->reason) {
+diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
+index 633401451d8..825b236dd24 100644
+--- a/target/hexagon/translate.c
++++ b/target/hexagon/translate.c
+@@ -978,7 +978,7 @@ static void hexagon_tr_init_disas_context(DisasContextBase *dcbase,
+                                           CPUState *cs)
+ {
+     DisasContext *ctx = container_of(dcbase, DisasContext, base);
+-    HexagonCPU *hex_cpu = env_archcpu(cpu_env(cs));
++    HexagonCPU *hex_cpu = HEXAGON_CPU(cs);
+     uint32_t hex_flags = dcbase->tb->flags;
+ 
+     ctx->mem_idx = MMU_USER_IDX;
+-- 
+2.53.0
 
 

@@ -4,139 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FC08FAD40D
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 05:21:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC2EFAD41B
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 06:59:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFmSK-0007US-KM; Thu, 23 Apr 2026 01:18:28 -0400
+	id 1wFo1m-0001c7-Ak; Thu, 23 Apr 2026 02:59:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wFmSJ-0007TT-Ex; Thu, 23 Apr 2026 01:18:27 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1wFo1g-0001bC-Qn; Thu, 23 Apr 2026 02:59:05 -0400
+Received: from mail-westus2azon11012061.outbound.protection.outlook.com
+ ([52.101.48.61] helo=MW6PR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wFmSH-0003DU-In; Thu, 23 Apr 2026 01:18:27 -0400
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1wFo1e-0004Ir-77; Thu, 23 Apr 2026 02:59:04 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=s74rHniUq4YVNp7MZ0fTBfkHg0RQtrZNZmR11oGFKC3iZLDlK8oZAMl7yWSCs/APanbwTssNIo4n9zMi9NKriESSyLAPJakDtUaLkVNYIIxjokL11G+prEDCBGi0nX63Lrcci/6hQlgstCOKnAuZJvmiVlxsZp6rJ4QqQgA9e/xLD4h6KnN3jEnpDAQWm3WQ4+dFhvcGSKLfLWc72+cLLjbaWz9Xt0iVRelILXpsAY+s4JnejANdllmTJ1HT3zrKIxT2SrjNi9gki+n8vIzJT3sFE56iqvQMOz4YtdxNvm3cNnBEHdsN+FgTA5bTDLnpdUxxrx/Wst3HGOXaJIt6Ng==
+ b=DcNzmuVQKjjeNofd1c0hnAjKCY29OKk/IZFUcHfJ0k7TDUZtmmo4SzzdSzcM4Ph/j5HlxvDIvvnHYMs8ltmSbG/A0aHcK19mk9y922d0XD/xaDSU+Jiz+WQz65WU0ZzIo+LdCfhCR0ZvAM38AHQHuBUIB8XMFERUO1kvoPNey3WJYypqqbSbiGUz8oK176d/SLiUm4FeyjCf67Ab4ySd14QOIcHO7tFy/EwTJATxv+aUqO9CyX51Yn6G0U2XeeGJfjTTO9BAaylWWo1slCDmnk1g489s5urL5oo6qMcLbxIJfzLV6sS3El4zY6bfoIlFCQMeD+CrX611SCtg5vBpMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GIY1fG4h3zp2izRpjJocKSCoNpoYrGe5n8/GcTDKgfA=;
- b=eulrvtWwS+9Hg3DFhQv5p6IM7XKLRPmYECwTyY8TAx6PJ+S8My2feZMGj4xhZyjTjGl60FdwVLQi03CaaGvzpG/ovQ2e0iXLKgGL8YiqznPljbGwmUFRssd2Z6yPVD2oufDmwkwx6v6R8FUewP57npcaN7MANnnb5PVaP4bR1qNHdvHPJDoSDQwAkcdegOOCm6pIkCxH/zDi56bDTKNSnXk4zLvKnK+7lpnVvq6uxpj/lR3DJxdxP1bJuREJnjgkqJbcLys4FA8kqKOu4Hxku1MGhQE3XQYq1YvCsLiPHKgZ+x/1EIqFQlKpE/0Qd106/hu6Zucm7jkxLs6xjGSG+Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
+ bh=LyJ9tmiHKSc2uRRfJof2iKwtdqnQQWXuQq9vvkbkSn0=;
+ b=Y2Yn1MzgPSRnaM3hScSUIjsLTVqwjnGpARNf0UhsKEJsiQagbu7GAMIoHTJiRZbt3Pi2wLmhEiHD3eynpRaM5Y8KMNs/yCoutBFrOIqfdoD4MJ3k0MZsTF1YG8EybIWQ4SmNHiUFvaDVQADtR90q8yxkdVSqV5EXiJr5Z8R/pxlotXX7uH/scvUXqtT2KxfYoM3b9QmK3E9UzuyvS3CSHMEZ5wuaSUGpGWy0TcAANxrQ4GDl2w4DXJVHqqod7/Z6Pd/W4sLE4Q4R29UF/sygphA8vyAfzMkvUQD06t9tN+i9BOVBtCfimaz6hfweLoK+jwu+Z1mRGwWeZ8oyNeekgA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=softfail (sender ip
+ is 165.204.55.251) smtp.rcpttodomain=redhat.com smtp.mailfrom=amd.com;
+ dmarc=fail (p=quarantine sp=quarantine pct=100) action=quarantine
+ header.from=amd.com; dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GIY1fG4h3zp2izRpjJocKSCoNpoYrGe5n8/GcTDKgfA=;
- b=ahHTQJTLgGjvfJqW2bdghl9molVrYjzdMG6G5cqWCpZ7w2D7ELXymBIYe+QjpZ18Hxa/sirxxAFXpQnGN1cNVy6doGRc8D+n1MI6MefMP22whv7E9pL0ox47tnM5Mi5Bk4UpKMFpIdS8ICaJBHhKr+8cbBlI5uxFXDBe/YtQro7dxJtkzr1KhdL8g5xV5n1z+jh1LPvL/grvxvmQ1aKVnEC8BJYxb7Ep70jJ5D8LvyZYDr6DF1hIZEK0hJYiZAhMHfPKU75BEHR0118o5OsGrbf4Wx0WBsic9S6BAmluGa+d5DvIcVeVYN8eAF5Y1JQdfC09+no6vYVPg8KWfCw6Pw==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by KUXPR06MB8534.apcprd06.prod.outlook.com (2603:1096:d10:9d::22)
+ bh=LyJ9tmiHKSc2uRRfJof2iKwtdqnQQWXuQq9vvkbkSn0=;
+ b=GdUZfWOGVfsQKz68bKqDiXx98af79QdQP6ra6nG1PFlV0kQm5LD+THivekhOHTK3qQBC9VPEXu9O45X9vi9rBEJdgDetaQGyeaqVDXEjUcmCQ5ZTMvxvVtfL3iDhlTZjbOci/CaTLNYFKqagmJx93biOqJxnytyFn1o1JqZ78Lo=
+Received: from CH2PR16CA0020.namprd16.prod.outlook.com (2603:10b6:610:50::30)
+ by MW3PR12MB4409.namprd12.prod.outlook.com (2603:10b6:303:2d::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.16; Thu, 23 Apr
- 2026 05:18:13 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9846.021; Thu, 23 Apr 2026
- 05:18:13 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "philmd@linaro.org" <philmd@linaro.org>, "peterx@redhat.com"
- <peterx@redhat.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
- <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
- "flwu@google.com" <flwu@google.com>, "nabihestefan@google.com"
- <nabihestefan@google.com>, "farosas@suse.de" <farosas@suse.de>
-Subject: [PATCH v4 06/17] hw/usb/hcd-ehci: Replace DPRINTF debug logs with
- trace events
-Thread-Topic: [PATCH v4 06/17] hw/usb/hcd-ehci: Replace DPRINTF debug logs
- with trace events
-Thread-Index: AQHc0uCVz4VnYYr8ekyfkX/uN+EXRg==
-Date: Thu, 23 Apr 2026 05:18:13 +0000
-Message-ID: <20260423051804.362095-7-jamin_lin@aspeedtech.com>
-References: <20260423051804.362095-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260423051804.362095-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|KUXPR06MB8534:EE_
-x-ms-office365-filtering-correlation-id: 06c8b5da-f33a-4a01-e52e-08dea0f7b7ab
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|1800799024|366016|38070700021|921020|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: ZqYcfAxVgyc0m4uFP1u7qkE7Wgc2b0QWxPzYRr1nxVBL+8BUnfKh63fziL4C9WAQMJTQnPv7boLuSEmFWE4J7qZ0QC97HV53nv4p7P1wV1AZh/hYvO0xM3IXneF9UmFXXE6Lc2S4EFxX2TP0eTCR/887qPkeYS+3PP3hBgF8oMoC2JHDGvoLlFbF1S2U1y1ZPt+jFJIh9k61nvoOyXnQEnbaeifmAgmN3TauMT/gamh6VzwUsxHSviYiw3/TL8R78b4W7FL+61U+vet6rck6Q6W/zoja/jiTimcJ//buDJYVoTbQST4pKhgOEUohbmzd5/XtOdCLct8G6T8Q5dYbxrFZnX0ohauPmXZpQJw3gItKfh1WfUtL7/Bup0uY4ITw29S1hF+VtB0/dRoLdenG5LnmRkT+eVEIMgvRa3+NLBd02hMtSPUfxZn+yv8WG8TdLRfWnOVipXEBYZOjRqNcdA5GhUVaxwA8YIVUsI3zSkd2jkAp1Xhjw8fXEWWYmZMIcGClNwMa7QfHMLZs78a4p0oV3tNyZjHx12ptxDWC8jCTBSUJztgwKQf6PdP5KmRYQa/PUhDsG5Dx0g4m79WT86aS0XUC7AftQLEi74IhzUBS0KAVtckXIxopvGiSqYk9rBURzOJ2zjIDtjQTvtIoSZGB1upwDG1WIALr9UmTyUq7S1xQLHRyNcWlFM9eh7FjWyryUUREA2r69GLRwIkt5oAH0wvJla/aZXLUTSoQ0ARBVTbd0zJfYvKJ8gEuRU+ffqhiTmwPpP3g1I8fVlrzBF16GZQtly4oXgg+LQ/k0tg5++euQm8ZQrQnpR0u/vXD
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(366016)(38070700021)(921020)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?BzTNDIoRRwINK8RaRgZ7jP211K6AbehH6s199LpFcA7TpfjfUXq203RE1m?=
- =?iso-8859-1?Q?adhSsyCMSIMKbzCkkhL9Ipa5qEcSHzg37OIbXDhtvFVSk1M4usUEuxSOmE?=
- =?iso-8859-1?Q?PWrLB3PiyHV5h3cv1y0s5brl4FGeFpnRhkQxb8CQv5pjCCtOj5ZN3N5exF?=
- =?iso-8859-1?Q?saCbmPLbnFK8DXcdN9LNF7jahlyEJvNMIFCoOYtqQag7b+sx2czim9HgwR?=
- =?iso-8859-1?Q?sGMdJ6W5VaXywztcu+ZMUv/xzUxKAOzGuZMm+nEi/10n0z/UWJtXarJ3Z+?=
- =?iso-8859-1?Q?0UfMl6mQGuSCLkl/JF0LrehgE0l0RyGz2vEBJaL7rh1Q94l1wJVX0uECYj?=
- =?iso-8859-1?Q?RHqo5Zgtg0h2jV6Od9YLI1dDAnKaxnqKaKUlZsgdv09LUkKq+ItcxBUxBY?=
- =?iso-8859-1?Q?gmD8hYiM07NOxmE/EH6/+5rZxq8PJDHBqU+GwAsJinhWMn2PqxMyVaAdeN?=
- =?iso-8859-1?Q?J8AxtLPcevUjdQ7q2WdNsWcdTgiE/5/JQMxtiYuwv30zmnK0/i/jM2Pc2S?=
- =?iso-8859-1?Q?IRZHNrOwwkdQRAfaXJ/az7mbd9RL7emWV8WWtqy7DWyaURRvAVUsQRem2X?=
- =?iso-8859-1?Q?VYQFW5AAtEnFd71/Gi0xgVs77nxUluwvPX9XZ49nZYJhvv+xCzRseCBoov?=
- =?iso-8859-1?Q?JHNphKnititNsYj6HI8g2i5UHyCa7b6YgGKZTh996Y1soRh0M3YVlO7STN?=
- =?iso-8859-1?Q?2VVbLtAKm6J+8qPnwBw8dkz2O3vz1GW01iDbJgCkE35m1JT84nxiTfFn47?=
- =?iso-8859-1?Q?Un1PHhQfhNHO5vt6qvAj13Ojehr8m6S78KYxRwz3ZFfIi5jajQO9i5wZ8x?=
- =?iso-8859-1?Q?6A1YC7qOqHI3RL5/zYExUpoSHXV0Z87ZMU0YlaZ+Uqai0/QKssHv/C/i7K?=
- =?iso-8859-1?Q?6ibk5mUF1vW4IczsMnVj5hvnZEZC11sy4GCmSn45A+67bOeDfZTRUfOU/M?=
- =?iso-8859-1?Q?9fP6pB+50HNbGX/+A8h+IHthjtmTvMnWOiASVkVfqJCCj9KHlcuc1zXzMy?=
- =?iso-8859-1?Q?4Wtaj5R6iyRwY9Yz9xD9IZlemmR7NvhSHMITswl3aULEc4pt3iwlogfSlM?=
- =?iso-8859-1?Q?N29TVHPHLO1k+QBhc5rFecy9dUegY1Z9Fxz7A97OlkTlbsgzei7nGXiycB?=
- =?iso-8859-1?Q?1QqFV/vRQPM7jIPdaVeAx2+U05DHeFVZk5uzFgUeu3N/7rqWbSj1t/zRqA?=
- =?iso-8859-1?Q?eqNxpiaxTsnR5uwFulTFJcFKTpNXgcBOvJDVkaasH/+HeSGli1caXWtSz3?=
- =?iso-8859-1?Q?aYT8214rcymVhJzIYG2sPoDFMjJKHQMT7upQzCaFGAVzcvo+K0AoWKGdC4?=
- =?iso-8859-1?Q?qvucw0EqubTJFPMrmRg18HNPRR7guC7dG2TAOxLCSMadtWFEqw5/fDbuVx?=
- =?iso-8859-1?Q?/h0xA7kETE//bjpfmIhybhTeWs5nU0wWw3JRz9TWR9z9/ncrOsHtEnKrCn?=
- =?iso-8859-1?Q?23cPzJ+/sOil/OgWEd5eDLnk2iDJiSh2J4cqnb4o97jTLP2RfJ1oZkd3Xi?=
- =?iso-8859-1?Q?ulgmBss+GI0bkxDgFVmEZKLOupf/iKQewdI6j2a9/Lnbe8KQQTz5k9T/lr?=
- =?iso-8859-1?Q?vG0hpP2zsUDJy7mfs+yE9jP8SyW7sNtzEGhMd63m9Q+jCu7ifJxpkiEC7A?=
- =?iso-8859-1?Q?2PKDSLez1pa9piZivAiuf8fqPdDJhM+GXK9pImfCoVrGQM6YffJ90ITDID?=
- =?iso-8859-1?Q?AWRbTbOm1YDn/dwtj9A7UD2UMw9mLN3pxeUQL59JK0AIT1BpcmXyYkjKg0?=
- =?iso-8859-1?Q?yzn7Aw1rYGBkLC0Jnu6E+v9o7fYvQ0NuMncClsHFwYZVMTDogA9zYimiyt?=
- =?iso-8859-1?Q?W8UtIJs3wQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.21; Thu, 23 Apr
+ 2026 06:53:53 +0000
+Received: from CH2PEPF00000146.namprd02.prod.outlook.com
+ (2603:10b6:610:50:cafe::cd) by CH2PR16CA0020.outlook.office365.com
+ (2603:10b6:610:50::30) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9791.48 via Frontend Transport; Thu,
+ 23 Apr 2026 06:53:53 +0000
+X-MS-Exchange-Authentication-Results: spf=softfail (sender IP is
+ 165.204.55.251) smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=quarantine header.from=amd.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ amd.com discourages use of 165.204.55.251 as permitted sender)
+Received: from satlexmb07.amd.com (165.204.55.251) by
+ CH2PEPF00000146.mail.protection.outlook.com (10.167.244.103) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9846.18 via Frontend Transport; Thu, 23 Apr 2026 06:53:53 +0000
+Received: from SATLEXMB04.amd.com (10.181.40.145) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.2.2562.17; Thu, 23 Apr
+ 2026 01:53:52 -0500
+Received: from satlexmb08.amd.com (10.181.42.217) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Thu, 23 Apr
+ 2026 01:53:51 -0500
+Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17 via Frontend
+ Transport; Thu, 23 Apr 2026 01:53:50 -0500
+Date: Thu, 23 Apr 2026 08:53:49 +0200
+From: Luc Michel <luc.michel@amd.com>
+To: Thomas Huth <thuth@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, Alistair Francis <alistair.francis@wdc.com>
+Subject: Re: [PATCH v3 2/6] hw/core/register: add the REGISTER_ARRAY type
+Message-ID: <aenBv7JowYFfHpMX@XFR-LUMICHEL-L2.amd.com>
+References: <20251017161809.235740-1-luc.michel@amd.com>
+ <20251017161809.235740-3-luc.michel@amd.com>
+ <86c40a92-76d0-4121-9347-929cfcd32f2a@redhat.com>
+ <9eb1d421-2183-4093-bd93-ab015414bceb@redhat.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: gJoY3g5SVn+MHArdz9cLvz1cfKXax9kmVx4c8nPrQPD4Z/D+OUbqe4BCgUaBoN7C+6oYlpO/grvQ92GPwCAeC4wzz1KjY4tyfEakQLVEm+BwYnsV7aTfwk2o0F+ppeW7IMFsUDcZk9idvDaZZXXmJtKbIHTRUXsNH6k2gQYFFsmUvZ2qZfBEA3mC4crfwRJdbfutCiRVf/3kBk3gdFZE9hsyzDhHNKKhUU1cp7gbkpQHuKW5Xoa15Bi2ab81jL24DKrc7FKHLgvBFhJQUgV8cuBnInifR5vjMK6biMh8b+KCuD5xzhLGNS83srOw2gjvixY+cVKRaYA6grB1fRPTqg==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 06c8b5da-f33a-4a01-e52e-08dea0f7b7ab
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2026 05:18:13.1975 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8kov3Z+n/7jP8pT+yU2IAKI2LhX0VULbwyIcEFNeNQpnuz0ud6bpU+YJWDfpcOBas5G0jBIWFkeIk+Haa6xO9+qc1LyQ3EZAJzJq4H+Mk0c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUXPR06MB8534
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <9eb1d421-2183-4093-bd93-ab015414bceb@redhat.com>
+Received-SPF: None (SATLEXMB04.amd.com: luc.michel@amd.com does not designate
+ permitted sender hosts)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH2PEPF00000146:EE_|MW3PR12MB4409:EE_
+X-MS-Office365-Filtering-Correlation-Id: a6a00620-7de7-41c6-2266-08dea1051520
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|36860700016|1800799024|376014|13003099007|18002099003|56012099003|22082099003;
+X-Microsoft-Antispam-Message-Info: EHTTG7cCaUrMKb+jL1vlNu62i+7uUrDjEm4KIWszFNaMKtVboLH96QzbGudVTNpJSRObiIhJcfqmEe0/cjpofRLb/eSf6b4H0RIZDa4G2rGB6Yket3aIb/83+Svum5aXxrG2txqhrZgYeIJlTM3v+VofzmOAZ8bkp1Oa6EusXdNjyt4dJl+EYHdaC3TeKlws7n61rQubFGGomhiMs6svah05bnhXpbzIreQxdqwmzUXPDcJBvhHAkOnMv0sZsEl0q1hbZEOsWduIepMO2Mh/3967p/7lV4cIkmredvd6JkNXNn6+GlQkCBHvVqf2ZbUAYQapdpdEfBLKHrdR4TK5uQa9gBPfmU5jzWDJAA62THkTNnVB/er14hv2zVMkBoCUCnA5wpDediTlah7bRnU3T9HsB+rfp5wfo+dp25ia+2hKXGBy2hxJHJIFAM+dyjjyfSco36vNZH5ezpFGRVAbxYMm86dBQAr96QvshRs1wKa+YbzyGdqLhOa7aEQrzEMloUGoe3kdqG0BugrGWxe5dAKGyXdjlL56KtxEp5tQ6i+hua8aPfs/p/VjUGa5DRkF41m4PjpKQVSqvVlQ+dw9ryelNDdoImRW0NL1SO35hvVZ+u1pYiYPa5eom0hwEvk9iRyd6jtCK/R4tXNKRoZnugy6dcgRMOR9yA/8CqWsGBNA5F6rJLhGrKxBIq9Q91FWXZUnerWdXEN6vDQvmLEXobe1hkbz5+iGLPjOwKHjxS1YgB6sRVqwGXW+CLyzc+h7TTLa9VpchlhBxrkErClxVVMXJPV6tPvrVEPHFQDHUC4=
+X-Forefront-Antispam-Report: CIP:165.204.55.251; CTRY:CA; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(82310400026)(36860700016)(1800799024)(376014)(13003099007)(18002099003)(56012099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: q549dHILmz6+aQI8fAVhfdwlc68xUQS3HNOnOpk+rMfmEIFURC1f7L297LtdN7CxlWPdYeWnqzxWxmi1ot1ZJUwUvUdq9aUq636qtUsNNPuHdF+XdX4PLQLwSoHuh6VAropPKLkwc3rpizwxfWH/0nBtAb02oHqQ060h5bfiFtpMCV2RVNyzpWefg1hkB9R2ovO32UJ6OjbT6RExrOCJ7/ceOzvitszj7FpeB5sDtH8QWyUHKAKUfGoobT9LuRr+gUpLZ7I3F3tnuuSxQ7LWrqz5qpGA7+nebC54eLdvcSn+e8AnPsXhpNEKEN+5LqySzsxWG3JBaDD+OnVGQkFsiPPiPUDifkZtIJZVuVUenIgTan/n8TS878vOfXeMbYlAiQmy3qbTsZbyzggfRss9Ko4gpAXFQTF5g7VUC0k1qZPsgEv+LzmEOqiMdNI5LBn7
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2026 06:53:53.1646 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: a6a00620-7de7-41c6-2266-08dea1051520
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.55.251];
+ Helo=[satlexmb07.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF00000146.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR12MB4409
+Received-SPF: permerror client-ip=52.101.48.61;
+ envelope-from=Luc.Michel@amd.com;
+ helo=MW6PR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -153,246 +136,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace legacy DPRINTF() debug logging in the EHCI host controller=0A=
-implementation with QEMU trace events.=0A=
-=0A=
-The EHCI_DEBUG macro and associated DPRINTF() definitions are=0A=
-removed as they are no longer needed.=0A=
-=0A=
-Trace events are added for:=0A=
-- packet submission and completion=0A=
-- queue head execution state=0A=
-- periodic schedule advancement=0A=
-- ITD error conditions=0A=
-- port state handling=0A=
-- skipped microframes=0A=
-=0A=
-No functional change.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>=0A=
----=0A=
- hw/usb/hcd-ehci.h   | 10 ---------=0A=
- hw/usb/hcd-ehci.c   | 49 +++++++++++++++++++--------------------------=0A=
- hw/usb/trace-events |  9 +++++++++=0A=
- 3 files changed, 30 insertions(+), 38 deletions(-)=0A=
-=0A=
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h=0A=
-index 736407fd52..4234591cb4 100644=0A=
---- a/hw/usb/hcd-ehci.h=0A=
-+++ b/hw/usb/hcd-ehci.h=0A=
-@@ -24,16 +24,6 @@=0A=
- #include "hw/pci/pci_device.h"=0A=
- #include "hw/core/sysbus.h"=0A=
- =0A=
--#ifndef EHCI_DEBUG=0A=
--#define EHCI_DEBUG   0=0A=
--#endif=0A=
--=0A=
--#if EHCI_DEBUG=0A=
--#define DPRINTF printf=0A=
--#else=0A=
--#define DPRINTF(...)=0A=
--#endif=0A=
--=0A=
- #define MMIO_SIZE        0x1000=0A=
- #define CAPA_SIZE        0x10=0A=
- =0A=
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c=0A=
-index 8acaedeaa9..28a60e4c1a 100644=0A=
---- a/hw/usb/hcd-ehci.c=0A=
-+++ b/hw/usb/hcd-ehci.c=0A=
-@@ -839,7 +839,7 @@ static USBDevice *ehci_find_device(EHCIState *ehci, uin=
-t8_t addr)=0A=
-     for (i =3D 0; i < EHCI_PORTS; i++) {=0A=
-         port =3D &ehci->ports[i];=0A=
-         if (!(ehci->portsc[i] & PORTSC_PED)) {=0A=
--            DPRINTF("Port %d not enabled\n", i);=0A=
-+            trace_usb_ehci_port_disable(i);=0A=
-             continue;=0A=
-         }=0A=
-         dev =3D usb_find_device(port, addr);=0A=
-@@ -1281,10 +1281,8 @@ static void ehci_execute_complete(EHCIQueue *q)=0A=
-     assert(p->async =3D=3D EHCI_ASYNC_INITIALIZED ||=0A=
-            p->async =3D=3D EHCI_ASYNC_FINISHED);=0A=
- =0A=
--    DPRINTF("execute_complete: qhaddr 0x%x, next 0x%x, qtdaddr 0x%x, "=0A=
--            "status %d, actual_length %d\n",=0A=
--            q->qhaddr, q->qh.next, q->qtdaddr,=0A=
--            p->packet.status, p->packet.actual_length);=0A=
-+    trace_usb_ehci_execute_complete(q->qhaddr, q->qh.next, q->qtdaddr,=0A=
-+                                    p->packet.status, p->packet.actual_len=
-gth);=0A=
- =0A=
-     switch (p->packet.status) {=0A=
-     case USB_RET_SUCCESS:=0A=
-@@ -1327,7 +1325,7 @@ static void ehci_execute_complete(EHCIQueue *q)=0A=
-     } else {=0A=
-         tbytes =3D 0;=0A=
-     }=0A=
--    DPRINTF("updating tbytes to %d\n", tbytes);=0A=
-+    trace_usb_ehci_qh_tbytes(tbytes);=0A=
-     set_field(&q->qh.token, tbytes, QTD_TOKEN_TBYTES);=0A=
- =0A=
-     ehci_finish_transfer(q, p->packet.actual_length);=0A=
-@@ -1392,10 +1390,9 @@ static int ehci_execute(EHCIPacket *p, const char *a=
-ction)=0A=
- =0A=
-     trace_usb_ehci_packet_action(p->queue, p, action);=0A=
-     usb_handle_packet(p->queue->dev, &p->packet);=0A=
--    DPRINTF("submit: qh 0x%x next 0x%x qtd 0x%x pid 0x%x len %zd endp 0x%x=
- "=0A=
--            "status %d actual_length %d\n", p->queue->qhaddr, p->qtd.next,=
-=0A=
--            p->qtdaddr, p->pid, p->packet.iov.size, endp, p->packet.status=
-,=0A=
--            p->packet.actual_length);=0A=
-+    trace_usb_ehci_packet_submit(p->queue->qhaddr, p->qtd.next, p->qtdaddr=
-,=0A=
-+                                 p->pid, p->packet.iov.size, endp,=0A=
-+                                 p->packet.status, p->packet.actual_length=
-);=0A=
- =0A=
-     if (p->packet.actual_length > BUFF_SIZE) {=0A=
-         qemu_log_mask(LOG_GUEST_ERROR,=0A=
-@@ -1472,7 +1469,8 @@ static int ehci_process_itd(EHCIState *ehci,=0A=
-                     usb_handle_packet(dev, &ehci->ipacket);=0A=
-                     usb_packet_unmap(&ehci->ipacket, &ehci->isgl);=0A=
-                 } else {=0A=
--                    DPRINTF("ISOCH: attempt to address non-iso endpoint\n"=
-);=0A=
-+                    trace_usb_ehci_log("ISOCH: "=0A=
-+                                       "attempt to address non-iso endpoin=
-t");=0A=
-                     ehci->ipacket.status =3D USB_RET_NAK;=0A=
-                     ehci->ipacket.actual_length =3D 0;=0A=
-                 }=0A=
-@@ -1677,24 +1675,22 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehc=
-i, int async)=0A=
-         if (ehci->usbsts & USBSTS_REC) {=0A=
-             ehci_clear_usbsts(ehci, USBSTS_REC);=0A=
-         } else {=0A=
--            DPRINTF("FETCHQH:  QH 0x%08x. H-bit set, reclamation status re=
-set"=0A=
--                       " - done processing\n", q->qhaddr);=0A=
-+            trace_usb_ehci_fetchqh_reclaim_done(q->qhaddr);=0A=
-             ehci_set_state(ehci, async, EST_ACTIVE);=0A=
-             q =3D NULL;=0A=
-             goto out;=0A=
-         }=0A=
-     }=0A=
- =0A=
--#if EHCI_DEBUG=0A=
--    if (q->qhaddr !=3D q->qh.next) {=0A=
--        DPRINTF("FETCHQH:  QH 0x%08x (h %x halt %x active %x) next 0x%08x\=
-n",=0A=
--               q->qhaddr,=0A=
--               q->qh.epchar & QH_EPCHAR_H,=0A=
--               q->qh.token & QTD_TOKEN_HALT,=0A=
--               q->qh.token & QTD_TOKEN_ACTIVE,=0A=
--               q->qh.next);=0A=
-+    if (trace_event_get_state_backends(TRACE_USB_EHCI_FETCHQH_DBG)) {=0A=
-+        if (q->qhaddr !=3D q->qh.next) {=0A=
-+            trace_usb_ehci_fetchqh_dbg(q->qhaddr,=0A=
-+                                       q->qh.epchar & QH_EPCHAR_H,=0A=
-+                                       q->qh.token & QTD_TOKEN_HALT,=0A=
-+                                       q->qh.token & QTD_TOKEN_ACTIVE,=0A=
-+                                       q->qh.next);=0A=
-+        }=0A=
-     }=0A=
--#endif=0A=
- =0A=
-     if (q->qh.token & QTD_TOKEN_HALT) {=0A=
-         ehci_set_state(ehci, async, EST_HORIZONTALQH);=0A=
-@@ -2161,7 +2157,7 @@ static void ehci_advance_async_state(EHCIState *ehci)=
-=0A=
-         /* make sure guest has acknowledged the doorbell interrupt */=0A=
-         /* TO-DO: is this really needed? */=0A=
-         if (ehci->usbsts & USBSTS_IAA) {=0A=
--            DPRINTF("IAA status bit still set.\n");=0A=
-+            trace_usb_ehci_log("IAA status bit still set.");=0A=
-             break;=0A=
-         }=0A=
- =0A=
-@@ -2226,9 +2222,7 @@ static void ehci_advance_periodic_state(EHCIState *eh=
-ci)=0A=
-         if (get_dwords(ehci, list, &entry, 1) < 0) {=0A=
-             break;=0A=
-         }=0A=
--=0A=
--        DPRINTF("PERIODIC state adv fr=3D%d.  [%08X] -> %08X\n",=0A=
--                ehci->frindex / 8, list, entry);=0A=
-+        trace_usb_ehci_periodic_state_advance(ehci->frindex / 8, list, ent=
-ry);=0A=
-         ehci_set_fetch_addr(ehci, async, entry);=0A=
-         ehci_set_state(ehci, async, EST_FETCHENTRY);=0A=
-         ehci_advance_state(ehci, async);=0A=
-@@ -2294,8 +2288,7 @@ static void ehci_work_bh(void *opaque)=0A=
-             ehci_update_frindex(ehci, skipped_uframes);=0A=
-             ehci->last_run_ns +=3D UFRAME_TIMER_NS * skipped_uframes;=0A=
-             uframes -=3D skipped_uframes;=0A=
--            DPRINTF("WARNING - EHCI skipped %"PRIu64" uframes\n",=0A=
--                    skipped_uframes);=0A=
-+            trace_usb_ehci_skipped_uframes(skipped_uframes);=0A=
-         }=0A=
- =0A=
-         for (i =3D 0; i < uframes; i++) {=0A=
-diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
-index dd04f14add..0d4318dcf1 100644=0A=
---- a/hw/usb/trace-events=0A=
-+++ b/hw/usb/trace-events=0A=
-@@ -89,6 +89,7 @@ usb_ehci_state(const char *schedule, const char *state) "=
-%s schedule %s"=0A=
- usb_ehci_qh_ptrs(void *q, uint32_t addr, uint32_t nxt, uint32_t c_qtd, uin=
-t32_t n_qtd, uint32_t a_qtd) "q %p - QH @ 0x%08x: next 0x%08x qtds 0x%08x,0=
-x%08x,0x%08x"=0A=
- usb_ehci_qh_fields(uint32_t addr, int rl, int mplen, int eps, int ep, int =
-devaddr) "QH @ 0x%08x - rl %d, mplen %d, eps %d, ep %d, dev %d"=0A=
- usb_ehci_qh_bits(uint32_t addr, int c, int h, int dtc, int i) "QH @ 0x%08x=
- - c %d, h %d, dtc %d, i %d"=0A=
-+usb_ehci_qh_tbytes(uint32_t tbytes) "updating tbytes to %d"=0A=
- usb_ehci_qtd_ptrs(void *q, uint32_t addr, uint32_t nxt, uint32_t altnext) =
-"q %p - QTD @ 0x%08x: next 0x%08x altnext 0x%08x"=0A=
- usb_ehci_qtd_fields(uint32_t addr, int tbytes, int cpage, int cerr, int pi=
-d) "QTD @ 0x%08x - tbytes %d, cpage %d, cerr %d, pid %d"=0A=
- usb_ehci_qtd_bits(uint32_t addr, int ioc, int active, int halt, int babble=
-, int xacterr) "QTD @ 0x%08x - ioc %d, active %d, halt %d, babble %d, xacte=
-rr %d"=0A=
-@@ -100,13 +101,21 @@ usb_ehci_port_reset(uint32_t port, int enable) "reset=
- port #%d - %d"=0A=
- usb_ehci_port_suspend(uint32_t port) "port #%d"=0A=
- usb_ehci_port_wakeup(uint32_t port) "port #%d"=0A=
- usb_ehci_port_resume(uint32_t port) "port #%d"=0A=
-+usb_ehci_port_disable(uint32_t port) "port #%d"=0A=
- usb_ehci_queue_action(void *q, const char *action) "q %p: %s"=0A=
- usb_ehci_packet_action(void *q, void *p, const char *action) "q %p p %p: %=
-s"=0A=
-+usb_ehci_packet_submit(uint32_t qhaddr, uint32_t next, uint32_t qtdaddr, i=
-nt pid, size_t len, int endp, int status, int actual_length) "qh=3D0x%x, ne=
-xt=3D0x%x, qtd=3D0x%x, pid=3D0x%x, len=3D%zd, endp=3D0x%x, status=3D%d, act=
-ual_length=3D%d"=0A=
- usb_ehci_irq(uint32_t level, uint32_t frindex, uint32_t sts, uint32_t mask=
-) "level %d, frindex 0x%04x, sts 0x%x, mask 0x%x"=0A=
- usb_ehci_guest_bug(const char *reason) "%s"=0A=
- usb_ehci_doorbell_ring(void) ""=0A=
- usb_ehci_doorbell_ack(void) ""=0A=
- usb_ehci_dma_error(void) ""=0A=
-+usb_ehci_execute_complete(uint32_t qhaddr, uint32_t next, uint32_t qtdaddr=
-, int status, int actual_length) "qhaddr=3D0x%x, next=3D0x%x, qtdaddr=3D0x%=
-x, status=3D%d, actual_length=3D%d"=0A=
-+usb_ehci_fetchqh_reclaim_done(uint32_t qhaddr) "QH 0x%08x H-bit set, recla=
-mation status reset - done processing"=0A=
-+usb_ehci_fetchqh_dbg(uint32_t qhaddr, uint32_t h, uint32_t halt, uint32_t =
-active, uint32_t next) "QH 0x%08x (h 0x%x halt 0x%x active 0x%x) next 0x%08=
-x"=0A=
-+usb_ehci_periodic_state_advance(uint32_t frame, uint32_t list, uint32_t en=
-try) "frame=3D%d, list=3D0x%x, entry=3D0x%x"=0A=
-+usb_ehci_skipped_uframes(uint64_t skipped_uframes) "skipped %" PRIu64 " uf=
-rames"=0A=
-+usb_ehci_log(const char *msg) "%s"=0A=
- =0A=
- # hcd-uhci.c=0A=
- usb_uhci_reset(void) "=3D=3D=3D RESET =3D=3D=3D"=0A=
--- =0A=
-2.43.0=0A=
+Hi Thomas,
+
+On 13:06 Wed 22 Apr     , Thomas Huth wrote:
+> On 22/04/2026 12.56, Thomas Huth wrote:
+> > On 17/10/2025 18.18, Luc Michel wrote:
+> > > Introduce the REGISTER_ARRAY QOM type. This type reuses the existing
+> > > RegisterInfoArray struct. When `register_init_block' is called, it creates
+> > > a REGISTER_ARRAY object and parents it to the calling device. This way
+> > > it gets finalized when the device is. The memory region is parented to
+> > > the REGISTER_ARRAY object to ensure correct finalizing order.
+> > > 
+> > > The finalize function of the REGISTER_ARRAY type performs the necessary
+> > > cleaning that used to be done by `register_finalize_block'. The latter
+> > > is left empty and will be removed when all the register API users have
+> > > been refactored.
+> > > 
+> > > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> > > Reviewed-by: Francisco Iglesias <francisco.iglesias@amd.com>
+> > > Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> > > Signed-off-by: Luc Michel <luc.michel@amd.com>
+> > > ---
+> > >   include/hw/register.h |  4 ++++
+> > >   hw/core/register.c    | 26 ++++++++++++++++++++++----
+> > >   2 files changed, 26 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/include/hw/register.h b/include/hw/register.h
+> > > index 4d13ea183c7..65c82600e06 100644
+> > > --- a/include/hw/register.h
+> > > +++ b/include/hw/register.h
+> > > @@ -81,10 +81,12 @@ struct RegisterInfo {
+> > >       const RegisterAccessInfo *access;
+> > >       void *opaque;
+> > >   };
+> > > +#define TYPE_REGISTER_ARRAY "qemu-register-array"
+> > > +OBJECT_DECLARE_SIMPLE_TYPE(RegisterInfoArray, REGISTER_ARRAY)
+> > >   /**
+> > >    * This structure is used to group all of the individual registers
+> > > which are
+> > >    * modeled using the RegisterInfo structure.
+> > >    *
+> > > @@ -94,10 +96,12 @@ struct RegisterInfo {
+> > >    *
+> > >    * @mem: optional Memory region for the register
+> > >    */
+> > >   struct RegisterInfoArray {
+> > > +    Object parent_obj;
+> > > +
+> > >       MemoryRegion mem;
+> > >       int num_elements;
+> > >       RegisterInfo **r;
+> > > diff --git a/hw/core/register.c b/hw/core/register.c
+> > > index 2553cb15aba..1612ad174f9 100644
+> > > --- a/hw/core/register.c
+> > > +++ b/hw/core/register.c
+> > > @@ -243,14 +243,20 @@ static RegisterInfoArray
+> > > *register_init_block(DeviceState *owner,
+> > >                                                 bool debug_enabled,
+> > >                                                 uint64_t memory_size,
+> > >                                                 size_t data_size_bits)
+> > >   {
+> > >       const char *device_prefix = object_get_typename(OBJECT(owner));
+> > > -    RegisterInfoArray *r_array = g_new0(RegisterInfoArray, 1);
+> > > +    Object *obj;
+> > > +    RegisterInfoArray *r_array;
+> > >       int data_size = data_size_bits >> 3;
+> > >       int i;
+> > > +    obj = object_new(TYPE_REGISTER_ARRAY);
+> > > +    object_property_add_child(OBJECT(owner), "reg-array[*]", obj);
+> > > +    object_unref(obj);
+> > > +
+> > > +    r_array = REGISTER_ARRAY(obj);
+> > >       r_array->r = g_new0(RegisterInfo *, num);
+> > >       r_array->num_elements = num;
+> > >       r_array->debug = debug_enabled;
+> > >       r_array->prefix = device_prefix;
+> > > @@ -265,11 +271,11 @@ static RegisterInfoArray
+> > > *register_init_block(DeviceState *owner,
+> > >           r->opaque = owner;
+> > >           r_array->r[i] = r;
+> > >       }
+> > > -    memory_region_init_io(&r_array->mem, OBJECT(owner), ops, r_array,
+> > > +    memory_region_init_io(&r_array->mem, OBJECT(r_array), ops, r_array,
+> > >                             device_prefix, memory_size);
+> > 
+> >   Hi,
+> > 
+> > this likely broke the xlnx-versal-ospi device, see:
+> > 
+> >   https://gitlab.com/qemu-project/qemu/-/work_items/3422
+> 
+> And also:
+> 
+>  https://gitlab.com/qemu-project/qemu/-/work_items/3421
+> and
+>  https://gitlab.com/qemu-project/qemu/-/work_items/3423
+
+Let me have a look and come back with a series to fix those.
+
+> 
+> ... I wonder why nobody noticed this before? Are these corresponding
+> machines completely unused nowadays? At least we seem to lack a proper
+> functional test for those...
+
+tests/functional/aarch64/test_xlnx_versal.py does exist but needs some
+improvements to better cover those machines.
+
+Thanks
+
+Luc
+
+> 
+>  Thomas
+> 
+
+-- 
 

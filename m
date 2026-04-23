@@ -4,75 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D496CF94CC1
-	for <qemu-arm@archiver.kernel.org>; Wed, 22 Apr 2026 21:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D30F5FAD3EC
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 01:49:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFfML-0000LZ-Mt; Wed, 22 Apr 2026 17:43:49 -0400
+	id 1wFjBS-0001Xi-Sv; Wed, 22 Apr 2026 21:48:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfM3-00007E-BW
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:32 -0400
-Received: from p-east2-cluster5-host12-snip4-10.eps.apple.com ([57.103.79.83]
- helo=outbound.st.icloud.com)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wFjBR-0001Us-6n; Wed, 22 Apr 2026 21:48:49 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wFfM0-0007af-Of
- for qemu-arm@nongnu.org; Wed, 22 Apr 2026 17:43:31 -0400
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPS id
- AE32A18006EF; Wed, 22 Apr 2026 21:43:24 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAU1fDl4fBBdGGVUERx5dVkAZGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCC0oCWQVZB14LSgdfGlgCXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1776894208; x=1779486208;
- bh=EpILGpRCcEmqUbhtfCMdpllimxOXdJsP/YnYaF9ysEo=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Y8S7hb+M1Kk+kIHxsXu7mWYlHSqeXPzJkt/EuAgT07UMjKHettJSzlK2NJ+bp/0IsOVZcrlgtSf38rlljEPVJ2rjf1nS0v8qWOPRJCz5mJM1h6LKe/glg+TmK5XwGzaFGU7HVmhJKDT2LHCjK05tjxUwWgI2Xdb3YlvfKv7jb/W92UYgpxkVgoziVkP00jsTNFWPUYxXFLH9FDcHrYbnxVFWCrcWKqDLqYPK0I2ZYbhMIIILQJx6bDYMVEleadZNPhkxFHdfAoe526NI3fiG+kwh5XsReiEseplfegzOej+iKggwhdQFEOzhw8IvW+KItZIyBWj0JRn0APutNZiJoA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-1 (Postfix) with ESMTPSA id
- 326A618000BE; Wed, 22 Apr 2026 21:43:22 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Wei Liu <wei.liu@kernel.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 29/37] whpx: xsave support
-Date: Wed, 22 Apr 2026 23:42:17 +0200
-Message-ID: <20260422214225.2242-30-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260422214225.2242-1-mohamed@unpredictable.fr>
-References: <20260422214225.2242-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wFjBN-0004bS-Pu; Wed, 22 Apr 2026 21:48:48 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rtwe4eJ8H5teQqxunKzZfGsx4BlGtDqfc8XpOOhRf06Goa69YNVqgFcwaILZ1+rjWypH9a89lYEEcjnJTe+dM8tCT/ip1CWJFw5KQkR0j2v3oba1pjo4nZNPlTIXF04vxX1aFRUSl04kLr/kfwPNNrpzM0533l6KYzT1CLwByGeSTxZyti7IRTPkV+CfmvOETMcP5KaRE4lEtqCoCMyo02sa9vj1bcjLjWzKVPyWC+SljNRN7ATxC1GlMYyxvPYELMQXcaEU7Pq7bzJaoUwptOTnucxDbtJTLOXXe4cke4lU8ZoaRhbZyL2cM8nvooQdN2/Se4mD5MT25Nc9V9qZOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=j5QMR2vt/BlxKeia1quco6/p8+2/kyZjElXbdIIoKpk=;
+ b=Sl2W4+Gezt9RBvNPiNh/RxMqCA8sgQ5JWXtsLVJoSZ+pPCaaHYZqXKsgKmRCj9+1VmMBLbdHCzraFuBqKDvYqLbx5ksir53wL10fanv7POEAQQxS5Zc/1prnEgvT03QbL677S6DCjFtek+Q9oz8ePcaTRZ2//TWSyNY+KbJ+H70q7HYTJ7G2BvPXAVGsGrZ0zCg6YbTn7r/s+8Y6EFWEuMtbM2dAHu+clpPVkjLL/Ou9PKljc6OTAvpq/KGXVPaqIgEzwRecA0vh2OQPbCfGmLx5HCj8iorMPnmrGUpWF/aG8KGTyi3JyF3qFdGT2yY4y/BHXQuTiRWMCXCFq2lG+g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=j5QMR2vt/BlxKeia1quco6/p8+2/kyZjElXbdIIoKpk=;
+ b=YxjTIjVF4MnyXGTVESF3Fw2cWfAny7YbP36oql9TVqdx2pSbZDAojfwzKtwwI4x7YCDWja1pvLJC97GKCbhZhrTf+uz6o75Jj+uLI+XBSm9rZ3dTAwZ36IveNBgc37scsRWF55vdt2XGsD13Anw4840xQcPQ2z00sRPklLActWZ9J+94wTrfu0YUF7vNQ/Sa90qNRsyS4ffNkVwqWrJQ73KRIzeDlWFJ6oD0x93h/HQo3zos4ilKPQuZ6MKG0WHmHU9HwvXN3zxgKnOnwsABcq+LWDbtWO3POdzPPOzJ4MvwnKuFdxkJ+QTgN3GH+jXloADWg7VXZTf5yyJsd/MOJQ==
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
+ by TY0PR06MB5380.apcprd06.prod.outlook.com (2603:1096:400:217::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.21; Thu, 23 Apr
+ 2026 01:48:37 +0000
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9846.021; Thu, 23 Apr 2026
+ 01:48:36 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Peter Xu <peterx@redhat.com>
+CC: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, "philmd@linaro.org"
+ <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
+ <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>, Fabiano Rosas
+ <farosas@suse.de>
+Subject: RE: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+Thread-Topic: [PATCH v3 06/17] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit
+Thread-Index: AQHczUNKKWmZ+R83iUmW5is8kUw4XrXi1YYAgACIrACABBnIQIAAgm+AgALbxRCAAFpEAIAAuN4w
+Date: Thu, 23 Apr 2026 01:48:36 +0000
+Message-ID: <TYPPR06MB820607B5BBAD8C8DC0A4D2DFFC2A2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+References: <20260416014928.1279360-1-jamin_lin@aspeedtech.com>
+ <20260416014928.1279360-7-jamin_lin@aspeedtech.com>
+ <3ee36a34-573e-48aa-91e3-9140244717f0@kaod.org> <aeJNdLTRSZQiEiP_@x1.local>
+ <TYPPR06MB8206C244CD249505E6B543F8FC2F2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <aeYrfQuAsEaOpH_O@x1.local>
+ <TYPPR06MB82066A191FB2B0AD05F7C295FC2D2@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <aejdEO2CXg-QuGcL@x1.local>
+In-Reply-To: <aejdEO2CXg-QuGcL@x1.local>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|TY0PR06MB5380:EE_
+x-ms-office365-filtering-correlation-id: 27a910ce-d9df-4408-59dc-08dea0da6f85
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|1800799024|366016|22082099003|18002099003|56012099003|38070700021;
+x-microsoft-antispam-message-info: 4LZQMYYwIk/FlSwoLDMWU/bkVGs3xZPHWch7gelQ83WpBVz8/flZjc7UfWY19wnadsEUtjvard71MqEMqH+HqHiUamqsfcyW9ZmWdMYiIuUReolLXu6nopqJXsx1v/gNyicLiW7Xsh1e9Gz7XSxbbSgoqIXV32GOfJwNFqJKzXDJrEeq/X7E2PbWoT4kvKk2Odf3lqXq2DNy1LJeoz/Tti8o5BsySZUp4ozEkboTlwYP129XlevjAknfN1+L7Tc/4wMhniGpfo0v0gZbjbs7zKbQID0su2O6IuRjd2DE8t1EmvzmGJ8VIq8JbYthLqdJi1VREnhpFhXtyjoPJFZu1ZPixPEubwo8jyaEHNv+wWhlybAhHqzDh6tHefQswmvYkXKpJknDAieZr4SWj6iR+/CmppnjUKT3H6viwHSXTbsV8pzDeF3EnHHIGMJCFVMlj4UsSK4n8YeLh64uBYFqpwmJsSu98WvkyL9SqnDLItT8Y19RzT781MCZ7dlfGKrw9jRJIrisUoMoAcB0CqGry/VZ4VdNMzKVV8ai5ziIIy0UuN7Y7+uzRzR9iRmgohce6R+EftW7CZd5wSjXOxm3FEnhAg9vRfa8lfOdaYGJqjJhV8Ra+peg9mKMdrwGe1acODJe5p4pzU3uwWztFUyWpoKLXrRliUcNPVgYl6AOr2tSKQtH3Oke+UhjMy5TV/dCszWtDWDkYbauvlnymA37lTzJ+wqfk+nqRaMCCn58Cx6NMrDXN7xRPFRkLOOtb3Lu
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(22082099003)(18002099003)(56012099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bDNpbmhHWlRzck50cUxBWEhPWS92cHRJendWMGJobUh3eEVYNXgySlVWT1hC?=
+ =?utf-8?B?TE42WFJ4ZlFDb0p3SHdUMFduVXFqV0VRb0dGZW1OdFhod2pMVS84dmpVUmkx?=
+ =?utf-8?B?bVE4K1JVVkN3Q1J2eFZjWFI4UXJMWnkwT29oK1dxanZkY0Z5UWRVdUZiOVNu?=
+ =?utf-8?B?b05OVWwwT2NJWTFaOXNmT2FqUUV2WWEweVQwOVdPUnRVMzFZSllCcStoMFp6?=
+ =?utf-8?B?M0FnUDVsLzV4N1BBQitQVmlxaWJONTNpNWlQNXVTK2U0R0hMNWVLVHgzYzJS?=
+ =?utf-8?B?ZC9hOUdNMWxkSmVpUGFjME5TdklmOXd6azh4MVUwdE90SmU3c3Z1QTI3cy9t?=
+ =?utf-8?B?Qy9nWlVzN2FYbGlOVWNuQ2taRjRsWXY4UGxiNVRNOC9pZW40UmlTaDgvUExQ?=
+ =?utf-8?B?YmFyajZ1YlZrNyt4cW9TQTg3NHp3elZ5K1dmWlg3VVBSOERERGpqZnM3N1Yr?=
+ =?utf-8?B?Mk5BSXFRT3VGWHBjY1VXVWpZOTNFbVROOW5BM2tWcnhKbmg4a25XMVlKVHFJ?=
+ =?utf-8?B?RXNWMjRSRjJYdjhMakgycGp2c3dWS0Z3eEIwQlZ5T0x4M1EwU0h5NnhCSmVZ?=
+ =?utf-8?B?amV0WUMvaWZ6amVmUHZLNlhXb29wS0FiOERMRVhtRS9TbDJjQmIvYWprWmcy?=
+ =?utf-8?B?Y1lZc1YzblNuTVp1UHFUemE5aEJtZ3JXRWEvdXV2YU1FKzdQMUg3cFV0Qmd0?=
+ =?utf-8?B?Y0k4Q2o1eStUSlVOSFNOMWpDWGI4a2FaZUpzSmlzNDd3N3VvV01BV0M4aCt3?=
+ =?utf-8?B?L1VlR3FYNmJ0Y3hTN3Q3TUlwNXd3QURjSjhRRHA2T3lic3RKYXJwZHhkZ1dU?=
+ =?utf-8?B?RzBJN0lJb3kvRVRuOHFNY0QxTVNBdnovc1NaWmdiakhIUGVtbkVPUE9KdjhT?=
+ =?utf-8?B?YUo1NDY3aWdyMkxWWE1yUWNGSXNGM0QwY1BFQk45MVR1MlQ2b1ptQUp4eXRz?=
+ =?utf-8?B?Uko5M2c0WmhaNjliS205RmtpTTFvd01UUlE2cit4ci9lcExQU2F5SVdQZ0RI?=
+ =?utf-8?B?VXI0dEhzYndwNXBuM2VpamE0dmNOQ2J0eE45UUVqeFM5UVpkRUFYL1doNmtX?=
+ =?utf-8?B?SGlsTVNKdkdyWEo2by9nRU1oS3R0S0N6SnJZZEZPWnlhQXZmU1c4c1RmTVRq?=
+ =?utf-8?B?cCtYVmFmVFVjeHFTRG5sTXZOR011Q1h5Vmd3bzJGYyttSzdaWjZCUHFqKzQ2?=
+ =?utf-8?B?UEZtbFNkVWt1N0s3am1oVjN2MXRFM2R3bEtzcmgySXkrbWE2bjd3YWZiYzdK?=
+ =?utf-8?B?Rm8rS2h4M21JcWlnZE1DS0dKZDdqN0xwaW1ORDFqKzlVZENCekRMR0ZHNGdz?=
+ =?utf-8?B?S2s0bDU3TDlOQmNkVFovdVFESENhMm1MWFVLZkgrSkFrczlaWXl5b1NhNjg5?=
+ =?utf-8?B?ckM3Tm5VU2dGWUNhaDU3UE5GT3o4M0lKUXdMK0FWdVpTUGVwTGM5bWdUNlho?=
+ =?utf-8?B?U0JPeGd1YWYvRnpuTFRtbU1kdjQ5S1pVK2FtWThvY0tsWm8rMzRhUWd6aklQ?=
+ =?utf-8?B?WFpoUU5UUkdwOFhkSlE0Qml0aUlXUWlYZEpVdEdzQTcyUHpEODBPUU1kdmtV?=
+ =?utf-8?B?emtYMW03Y3pQbEJtWFlrWEpqWSthclVIclVjN3dCdUhFL3EvdlJsMmZxRHlO?=
+ =?utf-8?B?c3JWM2VpZ2NzbU1YeElKRUlRNHJDZGtmK1FWby9zemVZSXFsSWZKUER2Yld1?=
+ =?utf-8?B?cVVEZncyRUdPNmt1SmNXTDcxc2wyUHg0d2hUMVc2SXNTeFlMWm1jeThETE1l?=
+ =?utf-8?B?aEtkSmcrMU9nOEJnd0pLQ2NkaEdCU05vZXAvNGgyaEdPVXM1Vlh5T21WVm5L?=
+ =?utf-8?B?clpHYmthRXJka2ZhSmpiYW81dlAvODR4QURWaVNKVWg2WUt4cVpjSVgzQm92?=
+ =?utf-8?B?aXhaeWd5ZzcycitDREN1ZU1ScmZkZ0dwY3J3ajd0STUwNWhLTkJsVnZ4NktC?=
+ =?utf-8?B?bk9xQ3pCUFVyV3lnUVNicFVUUElwWnBOVXlRam14NnR0OG1LazBKT2diakNi?=
+ =?utf-8?B?cHZQUUlZSm45KzJQODhqMkF5UEdKM0REam9lZDJ4R3lmRk4xNnlaOTcwTmJW?=
+ =?utf-8?B?SERHN2hOV3Q1UUlUd0Y2KzNUVGhxcFhMVTh0TU5rQ25kbUM1THdMQmxSa29t?=
+ =?utf-8?B?TExFQlAzMTVrZ244VUwzd3EvODFuaXl4b25kbkR0SGY4VEUwcmpPUndSRHpW?=
+ =?utf-8?B?bURkekVHZ21FN3BJbjRTMXBkSDVLMExtcHpEMkNXU0RaNXNVZDAxY0RDemo2?=
+ =?utf-8?B?K2F0VjgxcnVhTGpYN3k2OWMxei9BcDFUelpGV2ZHKzJ1dVV6WTVWbWhid2ph?=
+ =?utf-8?B?UXFaaFhidUFCVmFFSHlnMDdBTzBIR1BDellNaSswcGZUeUVlRkxCZz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIyMDIxMSBTYWx0ZWRfX3V+BrJz3UzlL
- MKb6BOn+H5Dc8HSAYkoEGf9hsBUz14ZVFGVRiN4lmnYMeH67anC8kJP36Dc+3a7vJpXG28Kclmd
- 247EO+2xBSqx4x5MgO+/56t/QTQ529jLgL3UgyvD0QwztW+zvFc2NwS/d9cU8ZgmQtERkfiBzbU
- Chm+gPvXqmOb7DDwfW/TyNufGTiV42e3nTVDSg6+S6jw9L+U39twZpWBidtOgVjfJAf/LI/pPZX
- mBWgt1cSy20RmXCLnXWiAoRmzmHBnY8sVzpDL8LqLb/JQW/UxDG4fCSG64X8Y7w5WZaYIjvUjOG
- tydaieO8eYoxHCSlXNc4KYHIor6BvuYuASmoDYe2o8M9jSNyYW1JC0YOhaFpbc=
-X-Proofpoint-GUID: ffHdwbxs3keGBvtJAeQSp1wQfzxu923U
-X-Authority-Info-Out: v=2.4 cv=XbuEDY55 c=1 sm=1 tr=0 ts=69e940fe
- cx=c_apl:c_pps:t_out a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=pIzSZyhXsI4QXQPOM_AA:9
-X-Proofpoint-ORIG-GUID: ffHdwbxs3keGBvtJAeQSp1wQfzxu923U
-Received-SPF: pass client-ip=57.103.79.83;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Exchange-RoutingPolicyChecked: LCeIhV+9mrWG5iJPsat1gXLVVdDcMnsBz/ZRClftGpqvS2WUe18D9+1YyeBkZpsDtxy/Am6XZeogu3hDXvxenuwrqEBmuWiVwCCdPMSZSIF5S8JZwv+z+j9VasfPV20kWpMS0jYAaENrCniQ+qryDZYpowGU9B8FnYtc+YcV4Cb2VB3Gt5JGLgy4jFrbrzMKvV2F0Irx5qTAz/FYfUY8zNYkvsQUeYld+M2aoH65S5hVnaLn5gUUn7OHtij/Wxhwhyn+igrex1dpDUhUIV+Cx2utaMmsq6/EgkASz+BcE0PjvWH9ZRlvRxnp5Y+43h8UEQMcYS8ADynzxs8FPHKWWg==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 27a910ce-d9df-4408-59dc-08dea0da6f85
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2026 01:48:36.7231 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zTmevCwaTZyBZU4+z6DijbsBJPEpQFyc7t6JZETwSZ86k44Cpda+8Ggj1JNjdVWirWkb3OA4YELNDrPhCcWQyf9NPsedNcU/Y2a88arYXNM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5380
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,509 +166,226 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- include/system/whpx-internal.h |  16 ++
- target/i386/whpx/whpx-all.c    | 379 ++++++++++++++++++++++++---------
- 2 files changed, 292 insertions(+), 103 deletions(-)
-
-diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index 86639627b3..0aae83bd7c 100644
---- a/include/system/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -99,6 +99,22 @@ void whpx_apic_get(APICCommonState *s);
-          UINT32 StateSize)) \
-   X(HRESULT, WHvResetPartition, \
-         (WHV_PARTITION_HANDLE Partition)) \
-+  X(HRESULT, WHvGetVirtualProcessorXsaveState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        PVOID Buffer, \
-+        UINT32 BufferSizeInBytes, UINT32 *BytesWritten)) \
-+  X(HRESULT, WHvSetVirtualProcessorXsaveState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        PVOID Buffer, \
-+        UINT32 BufferSizeInBytes)) \
-+  X(HRESULT, WHvGetVirtualProcessorState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
-+        UINT32 BufferSizeInBytes, UINT32 *BytesWritten)) \
-+  X(HRESULT, WHvSetVirtualProcessorState, \
-+        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
-+        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
-+        UINT32 BufferSizeInBytes)) \
-   LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL_ARCH(X)
- 
- #define WHP_DEFINE_TYPE(return_type, function_name, signature) \
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 8d51293384..3562decfaf 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -10,6 +10,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "qemu/typedefs.h"
- #include "system/address-spaces.h"
- #include "system/ioport.h"
- #include "gdbstub/helpers.h"
-@@ -20,6 +21,7 @@
- #include "system/cpus.h"
- #include "system/runstate.h"
- #include "qemu/main-loop.h"
-+#include "qemu/memalign.h"
- #include "hw/core/boards.h"
- #include "hw/intc/ioapic.h"
- #include "hw/intc/i8259.h"
-@@ -108,34 +110,6 @@ static const WHV_REGISTER_NAME whpx_register_names[] = {
-      * WHvX64RegisterDr7,
-      */
- 
--    /* X64 Floating Point and Vector Registers */
--    WHvX64RegisterXmm0,
--    WHvX64RegisterXmm1,
--    WHvX64RegisterXmm2,
--    WHvX64RegisterXmm3,
--    WHvX64RegisterXmm4,
--    WHvX64RegisterXmm5,
--    WHvX64RegisterXmm6,
--    WHvX64RegisterXmm7,
--    WHvX64RegisterXmm8,
--    WHvX64RegisterXmm9,
--    WHvX64RegisterXmm10,
--    WHvX64RegisterXmm11,
--    WHvX64RegisterXmm12,
--    WHvX64RegisterXmm13,
--    WHvX64RegisterXmm14,
--    WHvX64RegisterXmm15,
--    WHvX64RegisterFpMmx0,
--    WHvX64RegisterFpMmx1,
--    WHvX64RegisterFpMmx2,
--    WHvX64RegisterFpMmx3,
--    WHvX64RegisterFpMmx4,
--    WHvX64RegisterFpMmx5,
--    WHvX64RegisterFpMmx6,
--    WHvX64RegisterFpMmx7,
--    WHvX64RegisterFpControlStatus,
--    WHvX64RegisterXmmControlStatus,
--
-     /* X64 MSRs */
-     WHvX64RegisterEfer,
- #ifdef TARGET_X86_64
-@@ -182,6 +156,36 @@ static const WHV_REGISTER_NAME whpx_register_names_for_vmexit[] = {
-     WHvX64RegisterR15,
- };
- 
-+static const WHV_REGISTER_NAME whpx_register_names_legacy_fp[] = {
-+    /* X64 Floating Point and Vector Registers (non-xsave) */
-+    WHvX64RegisterXmm0,
-+    WHvX64RegisterXmm1,
-+    WHvX64RegisterXmm2,
-+    WHvX64RegisterXmm3,
-+    WHvX64RegisterXmm4,
-+    WHvX64RegisterXmm5,
-+    WHvX64RegisterXmm6,
-+    WHvX64RegisterXmm7,
-+    WHvX64RegisterXmm8,
-+    WHvX64RegisterXmm9,
-+    WHvX64RegisterXmm10,
-+    WHvX64RegisterXmm11,
-+    WHvX64RegisterXmm12,
-+    WHvX64RegisterXmm13,
-+    WHvX64RegisterXmm14,
-+    WHvX64RegisterXmm15,
-+    WHvX64RegisterFpMmx0,
-+    WHvX64RegisterFpMmx1,
-+    WHvX64RegisterFpMmx2,
-+    WHvX64RegisterFpMmx3,
-+    WHvX64RegisterFpMmx4,
-+    WHvX64RegisterFpMmx5,
-+    WHvX64RegisterFpMmx6,
-+    WHvX64RegisterFpMmx7,
-+    WHvX64RegisterFpControlStatus,
-+    WHvX64RegisterXmmControlStatus,
-+};
-+
- struct whpx_register_set {
-     WHV_REGISTER_VALUE values[RTL_NUMBER_OF(whpx_register_names)];
- };
-@@ -392,6 +396,123 @@ static int whpx_set_tsc(CPUState *cpu)
-     return 0;
- }
- 
-+static bool whpx_is_xsave_enabled(CPUState *cpu)
-+{
-+    CPUX86State *env = &X86_CPU(cpu)->env;
-+    return env->cr[4] & CR4_OSXSAVE_MASK;
-+}
-+
-+static size_t whpx_get_xsave_max_len(void)
-+{
-+    return whpx_get_supported_cpuid(0xd, 0, R_ECX);
-+}
-+
-+static int whpx_set_xsave_state(const CPUState *cpu)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    X86CPU *x86cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86cpu->env;
-+    HRESULT hr;
-+    void *xsavec_buf;
-+    size_t page = qemu_real_host_page_size();
-+    size_t xsavec_buf_len;
-+
-+    /* allocate and populate compacted buffer */
-+    xsavec_buf_len = whpx_get_xsave_max_len();
-+    xsavec_buf = qemu_memalign(page, xsavec_buf_len);
-+
-+    /* save registers to standard format buffer */
-+    x86_cpu_xsave_all_areas(x86cpu, env->xsave_buf, env->xsave_buf_len);
-+
-+    /* store compacted version of xsave area in xsavec_buf */
-+    compact_xsave_area(env, xsavec_buf, xsavec_buf_len);
-+
-+    if (!whpx_is_legacy_os()) {
-+        hr = whp_dispatch.WHvSetVirtualProcessorState(
-+            whpx->partition, cpu->cpu_index,
-+            WHvVirtualProcessorStateTypeXsaveState,
-+            xsavec_buf,
-+            xsavec_buf_len);
-+    } else {
-+        hr = whp_dispatch.WHvSetVirtualProcessorXsaveState(
-+            whpx->partition, cpu->cpu_index,
-+            xsavec_buf,
-+            xsavec_buf_len);
-+    }
-+
-+    qemu_vfree(xsavec_buf);
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to get virtual processor context, hr=%08lx",
-+                     hr);
-+    }
-+
-+    return 0;
-+}
-+
-+static void whpx_set_legacy_fp_registers(CPUState *cpu, WHPXStateLevel level)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+    struct whpx_register_set vcxt;
-+    HRESULT hr;
-+    int idx = 0;
-+    int i;
-+    int idx_next;
-+
-+    assert(cpu_is_stopped(cpu) || qemu_cpu_is_self(cpu));
-+
-+    /* 16 XMM registers */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterXmm0);
-+    idx_next = idx + 16;
-+    for (i = 0; i < sizeof(env->xmm_regs) / sizeof(ZMMReg); i += 1, idx += 1) {
-+        vcxt.values[idx].Reg128.Low64 = env->xmm_regs[i].ZMM_Q(0);
-+        vcxt.values[idx].Reg128.High64 = env->xmm_regs[i].ZMM_Q(1);
-+    }
-+    idx = idx_next;
-+
-+    /* 8 FP registers */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterFpMmx0);
-+    for (i = 0; i < 8; i += 1, idx += 1) {
-+        vcxt.values[idx].Fp.AsUINT128.Low64 = env->fpregs[i].mmx.MMX_Q(0);
-+        /* vcxt.values[idx].Fp.AsUINT128.High64 =
-+               env->fpregs[i].mmx.MMX_Q(1);
-+        */
-+    }
-+
-+    /* FP control status register */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterFpControlStatus);
-+    vcxt.values[idx].FpControlStatus.FpControl = env->fpuc;
-+    vcxt.values[idx].FpControlStatus.FpStatus =
-+        (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11;
-+    vcxt.values[idx].FpControlStatus.FpTag = 0;
-+    for (i = 0; i < 8; ++i) {
-+        vcxt.values[idx].FpControlStatus.FpTag |= (!env->fptags[i]) << i;
-+    }
-+    vcxt.values[idx].FpControlStatus.Reserved = 0;
-+    vcxt.values[idx].FpControlStatus.LastFpOp = env->fpop;
-+    vcxt.values[idx].FpControlStatus.LastFpRip = env->fpip;
-+    idx += 1;
-+
-+    /* XMM control status register */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterXmmControlStatus);
-+    vcxt.values[idx].XmmControlStatus.LastFpRdp = 0;
-+    vcxt.values[idx].XmmControlStatus.XmmStatusControl = env->mxcsr;
-+    vcxt.values[idx].XmmControlStatus.XmmStatusControlMask = 0x0000ffff;
-+    idx += 1;
-+
-+    hr = whp_dispatch.WHvSetVirtualProcessorRegisters(
-+        whpx->partition, cpu->cpu_index,
-+        whpx_register_names_legacy_fp,
-+        idx,
-+        &vcxt.values[0]);
-+
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to set virtual processor context, hr=%08lx",
-+                     hr);
-+    }
-+}
-+
- void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
- {
-     struct whpx_state *whpx = &whpx_global;
-@@ -491,45 +612,11 @@ void whpx_set_registers(CPUState *cpu, WHPXStateLevel level)
-          */
-         whpx_set_xcrs(cpu);
- 
--        /* 16 XMM registers */
--        assert(whpx_register_names[idx] == WHvX64RegisterXmm0);
--        idx_next = idx + 16;
--        for (i = 0; i < sizeof(env->xmm_regs) / sizeof(ZMMReg); i += 1, idx += 1) {
--            vcxt.values[idx].Reg128.Low64 = env->xmm_regs[i].ZMM_Q(0);
--            vcxt.values[idx].Reg128.High64 = env->xmm_regs[i].ZMM_Q(1);
--        }
--        idx = idx_next;
--
--        /* 8 FP registers */
--        assert(whpx_register_names[idx] == WHvX64RegisterFpMmx0);
--        for (i = 0; i < 8; i += 1, idx += 1) {
--            vcxt.values[idx].Fp.AsUINT128.Low64 = env->fpregs[i].mmx.MMX_Q(0);
--            /* vcxt.values[idx].Fp.AsUINT128.High64 =
--                       env->fpregs[i].mmx.MMX_Q(1);
--            */
--        }
--
--        /* FP control status register */
--        assert(whpx_register_names[idx] == WHvX64RegisterFpControlStatus);
--        vcxt.values[idx].FpControlStatus.FpControl = env->fpuc;
--        vcxt.values[idx].FpControlStatus.FpStatus =
--            (env->fpus & ~0x3800) | (env->fpstt & 0x7) << 11;
--        vcxt.values[idx].FpControlStatus.FpTag = 0;
--        for (i = 0; i < 8; ++i) {
--            vcxt.values[idx].FpControlStatus.FpTag |= (!env->fptags[i]) << i;
-+        if (whpx_is_xsave_enabled(cpu)) {
-+            whpx_set_xsave_state(cpu);
-+        } else {
-+            whpx_set_legacy_fp_registers(cpu, level);
-         }
--        vcxt.values[idx].FpControlStatus.Reserved = 0;
--        vcxt.values[idx].FpControlStatus.LastFpOp = env->fpop;
--        vcxt.values[idx].FpControlStatus.LastFpRip = env->fpip;
--        idx += 1;
--
--        /* XMM control status register */
--        assert(whpx_register_names[idx] == WHvX64RegisterXmmControlStatus);
--        vcxt.values[idx].XmmControlStatus.LastFpRdp = 0;
--        vcxt.values[idx].XmmControlStatus.XmmStatusControl = env->mxcsr;
--        vcxt.values[idx].XmmControlStatus.XmmStatusControlMask = 0x0000ffff;
--        idx += 1;
--
-         /* MSRs */
-         assert(whpx_register_names[idx] == WHvX64RegisterEfer);
-         vcxt.values[idx++].Reg64 = env->efer;
-@@ -662,6 +749,110 @@ static void whpx_get_registers_for_vmexit(CPUState *cpu, WHPXStateLevel level)
-     x86_update_hflags(env);
- }
- 
-+static void whpx_get_legacy_fp_registers(CPUState *cpu, WHPXStateLevel level)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+    struct whpx_register_set vcxt;
-+    HRESULT hr;
-+    int i;
-+    int idx;
-+    int idx_next;
-+
-+    assert(cpu_is_stopped(cpu) || qemu_cpu_is_self(cpu));
-+
-+    hr = whp_dispatch.WHvGetVirtualProcessorRegisters(
-+        whpx->partition, cpu->cpu_index,
-+        whpx_register_names_legacy_fp,
-+        RTL_NUMBER_OF(whpx_register_names_legacy_fp),
-+        &vcxt.values[0]);
-+
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to get virtual processor context, hr=%08lx",
-+                     hr);
-+    }
-+
-+    idx = 0;
-+    /* 16 XMM registers */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterXmm0);
-+    idx_next = idx + 16;
-+    for (i = 0; i < sizeof(env->xmm_regs) / sizeof(ZMMReg); i += 1, idx += 1) {
-+        env->xmm_regs[i].ZMM_Q(0) = vcxt.values[idx].Reg128.Low64;
-+        env->xmm_regs[i].ZMM_Q(1) = vcxt.values[idx].Reg128.High64;
-+    }
-+    idx = idx_next;
-+
-+    /* 8 FP registers */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterFpMmx0);
-+    for (i = 0; i < 8; i += 1, idx += 1) {
-+        env->fpregs[i].mmx.MMX_Q(0) = vcxt.values[idx].Fp.AsUINT128.Low64;
-+        /* env->fpregs[i].mmx.MMX_Q(1) =
-+               vcxt.values[idx].Fp.AsUINT128.High64;
-+        */
-+    }
-+
-+    /* FP control status register */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterFpControlStatus);
-+    env->fpuc = vcxt.values[idx].FpControlStatus.FpControl;
-+    env->fpstt = (vcxt.values[idx].FpControlStatus.FpStatus >> 11) & 0x7;
-+    env->fpus = vcxt.values[idx].FpControlStatus.FpStatus & ~0x3800;
-+    for (i = 0; i < 8; ++i) {
-+        env->fptags[i] = !((vcxt.values[idx].FpControlStatus.FpTag >> i) & 1);
-+    }
-+    env->fpop = vcxt.values[idx].FpControlStatus.LastFpOp;
-+    env->fpip = vcxt.values[idx].FpControlStatus.LastFpRip;
-+    idx += 1;
-+
-+    /* XMM control status register */
-+    assert(whpx_register_names_legacy_fp[idx] == WHvX64RegisterXmmControlStatus);
-+    env->mxcsr = vcxt.values[idx].XmmControlStatus.XmmStatusControl;
-+    idx += 1;
-+}
-+
-+static int whpx_get_xsave_state(CPUState *cpu)
-+{
-+    struct whpx_state *whpx = &whpx_global;
-+    X86CPU *x86cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86cpu->env;
-+    int ret;
-+    HRESULT hr;
-+    void *xsavec_buf;
-+    const size_t page = qemu_real_host_page_size();
-+    size_t xsavec_buf_len = whpx_get_xsave_max_len();
-+    UINT32 bytes_written;
-+
-+    xsavec_buf = qemu_memalign(page, xsavec_buf_len);
-+    memset(xsavec_buf, 0, xsavec_buf_len);
-+
-+    if (!whpx_is_legacy_os()) {
-+        hr = whp_dispatch.WHvGetVirtualProcessorState(
-+            whpx->partition, cpu->cpu_index,
-+            WHvVirtualProcessorStateTypeXsaveState,
-+            xsavec_buf,
-+            xsavec_buf_len, &bytes_written);
-+    } else {
-+        hr = whp_dispatch.WHvGetVirtualProcessorXsaveState(
-+            whpx->partition, cpu->cpu_index,
-+            xsavec_buf,
-+            xsavec_buf_len, &bytes_written);
-+    }
-+    if (FAILED(hr) || bytes_written == 0) {
-+        error_report("failed to get xsave state: %s", strerror(errno));
-+        return -errno;
-+    }
-+
-+    ret = decompact_xsave_area(xsavec_buf, xsavec_buf_len, env);
-+    qemu_vfree(xsavec_buf);
-+    if (ret < 0) {
-+        error_report("failed to decompact xsave area");
-+        return ret;
-+    }
-+    x86_cpu_xrstor_all_areas(x86cpu, env->xsave_buf, env->xsave_buf_len);
-+
-+    return 0;
-+}
-+
- void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
- {
-     struct whpx_state *whpx = &whpx_global;
-@@ -758,40 +949,11 @@ void whpx_get_registers(CPUState *cpu, WHPXStateLevel level)
-      */
-     whpx_get_xcrs(cpu);
- 
--    /* 16 XMM registers */
--    assert(whpx_register_names[idx] == WHvX64RegisterXmm0);
--    idx_next = idx + 16;
--    for (i = 0; i < sizeof(env->xmm_regs) / sizeof(ZMMReg); i += 1, idx += 1) {
--        env->xmm_regs[i].ZMM_Q(0) = vcxt.values[idx].Reg128.Low64;
--        env->xmm_regs[i].ZMM_Q(1) = vcxt.values[idx].Reg128.High64;
--    }
--    idx = idx_next;
--
--    /* 8 FP registers */
--    assert(whpx_register_names[idx] == WHvX64RegisterFpMmx0);
--    for (i = 0; i < 8; i += 1, idx += 1) {
--        env->fpregs[i].mmx.MMX_Q(0) = vcxt.values[idx].Fp.AsUINT128.Low64;
--        /* env->fpregs[i].mmx.MMX_Q(1) =
--               vcxt.values[idx].Fp.AsUINT128.High64;
--        */
--    }
--
--    /* FP control status register */
--    assert(whpx_register_names[idx] == WHvX64RegisterFpControlStatus);
--    env->fpuc = vcxt.values[idx].FpControlStatus.FpControl;
--    env->fpstt = (vcxt.values[idx].FpControlStatus.FpStatus >> 11) & 0x7;
--    env->fpus = vcxt.values[idx].FpControlStatus.FpStatus & ~0x3800;
--    for (i = 0; i < 8; ++i) {
--        env->fptags[i] = !((vcxt.values[idx].FpControlStatus.FpTag >> i) & 1);
-+    if (whpx_is_xsave_enabled(cpu)) {
-+        whpx_get_xsave_state(cpu);
-+    } else {
-+        whpx_get_legacy_fp_registers(cpu, level);
-     }
--    env->fpop = vcxt.values[idx].FpControlStatus.LastFpOp;
--    env->fpip = vcxt.values[idx].FpControlStatus.LastFpRip;
--    idx += 1;
--
--    /* XMM control status register */
--    assert(whpx_register_names[idx] == WHvX64RegisterXmmControlStatus);
--    env->mxcsr = vcxt.values[idx].XmmControlStatus.XmmStatusControl;
--    idx += 1;
- 
-     /* MSRs */
-     assert(whpx_register_names[idx] == WHvX64RegisterEfer);
-@@ -1586,6 +1748,9 @@ void whpx_arch_destroy_vcpu(CPUState *cpu)
-     X86CPU *x86cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86cpu->env;
-     g_free(env->emu_mmio_buf);
-+    qemu_vfree(env->xsave_buf);
-+    env->xsave_buf = NULL;
-+    env->xsave_buf_len = 0;
- }
- 
- /* Returns the address of the next instruction that is about to be executed. */
-@@ -2446,6 +2611,9 @@ int whpx_init_vcpu(CPUState *cpu)
-     Error *local_error = NULL;
-     X86CPU *x86_cpu = X86_CPU(cpu);
-     CPUX86State *env = &x86_cpu->env;
-+    X86XSaveHeader *header;
-+    size_t page_size = qemu_real_host_page_size();
-+    size_t xsave_len;
-     UINT64 freq = 0;
-     int ret;
- 
-@@ -2522,6 +2690,15 @@ int whpx_init_vcpu(CPUState *cpu)
-     qemu_add_vm_change_state_handler(whpx_cpu_update_state, env);
- 
-     env->emu_mmio_buf = g_new(char, 4096);
-+    /* Initialize XSAVE buffer page-aligned */
-+    xsave_len = whpx_get_xsave_max_len();
-+    env->xsave_buf = qemu_memalign(page_size, xsave_len);
-+    env->xsave_buf_len = xsave_len;
-+    memset(env->xsave_buf, 0, env->xsave_buf_len);
-+
-+    /* we need to set the compacted format bit in xsave header for Hyper-V */
-+    header = (X86XSaveHeader *)(env->xsave_buf + sizeof(X86LegacyXSaveArea));
-+    header->xcomp_bv = header->xstate_bv | (1ULL << 63);
- 
-     return 0;
- 
-@@ -2722,10 +2899,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         error_report("WHPX: Failed to query XSAVE capability, hr=%08lx", hr);
-     }
- 
--    if (!whpx_has_xsave()) {
--        printf("WHPX: Partition is not XSAVE capable\n");
--    }
--
-     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
-     prop.ProcessorCount = ms->smp.cpus;
-     hr = whp_dispatch.WHvSetPartitionProperty(
--- 
-2.50.1 (Apple Git-155)
-
+SGkgUGV0ZXIsDQoNCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MyAwNi8xN10gaHcvdXNiL2hjZC1l
+aGNpOiBDaGFuZ2UgZGVzY3JpcHRvciBhZGRyZXNzZXMgdG8NCj4gNjQtYml0DQo+IA0KPiBPbiBX
+ZWQsIEFwciAyMiwgMjAyNiBhdCAwOToyMTo1NUFNICswMDAwLCBKYW1pbiBMaW4gd3JvdGU6DQo+
+ID4gSGkgUGV0ZXIsIEPDqWRyaWMgYW5kIFBoaWxpcHBlDQo+ID4NCj4gPiA+IFN1YmplY3Q6IFJl
+OiBbUEFUQ0ggdjMgMDYvMTddIGh3L3VzYi9oY2QtZWhjaTogQ2hhbmdlIGRlc2NyaXB0b3INCj4g
+PiA+IGFkZHJlc3NlcyB0byA2NC1iaXQNCj4gPiA+DQo+ID4gPiBPbiBNb24sIEFwciAyMCwgMjAy
+NiBhdCAwNTo1NjoxMUFNICswMDAwLCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gPiA+IEhpIFBldGVy
+LCBQaGlsaXBwZSwgQ8OpZHJpYw0KPiA+ID4NCj4gPiA+IEhpLCBKYW1pbiwNCj4gPiA+DQo+ID4g
+PiBbLi4uXQ0KPiA+ID4NCj4gPiA+ID4gPiA+ID4gQEAgLTI1MDEsOCArMjUxNSwxMiBAQCBjb25z
+dCBWTVN0YXRlRGVzY3JpcHRpb24gdm1zdGF0ZV9laGNpDQo+ID0gew0KPiA+ID4gPiA+ID4gPiAg
+ICAgICAgICAgLyogc2NoZWR1bGUgc3RhdGUgKi8NCj4gPiA+ID4gPiA+ID4gICAgICAgICAgIFZN
+U1RBVEVfVUlOVDMyKGFzdGF0ZSwgRUhDSVN0YXRlKSwNCj4gPiA+ID4gPiA+ID4gICAgICAgICAg
+IFZNU1RBVEVfVUlOVDMyKHBzdGF0ZSwgRUhDSVN0YXRlKSwNCj4gPiA+ID4gPiA+ID4gLSAgICAg
+ICAgVk1TVEFURV9VSU5UMzIoYV9mZXRjaF9hZGRyLCBFSENJU3RhdGUpLA0KPiA+ID4gPiA+ID4g
+PiAtICAgICAgICBWTVNUQVRFX1VJTlQzMihwX2ZldGNoX2FkZHIsIEVIQ0lTdGF0ZSksDQo+ID4g
+PiA+ID4gPiA+ICsgICAgICAgIFZNU1RBVEVfVUlOVDMyX1RFU1QoYV9mZXRjaF9hZGRyX3ByZV92
+MywNCj4gRUhDSVN0YXRlLA0KPiA+ID4gPiA+ID4gPiArDQo+IGVoY2lfY29yZV9pc19iZWZvcmVf
+dmVyc2lvbl8zKSwNCj4gPiA+ID4gPiA+ID4gKyAgICAgICAgVk1TVEFURV9VSU5UMzJfVEVTVChw
+X2ZldGNoX2FkZHJfcHJlX3YzLA0KPiBFSENJU3RhdGUsDQo+ID4gPiA+ID4gPiA+ICsNCj4gZWhj
+aV9jb3JlX2lzX2JlZm9yZV92ZXJzaW9uXzMpLA0KPiA+ID4gPiA+ID4gPiArICAgICAgICBWTVNU
+QVRFX1VJTlQ2NF9WKGFfZmV0Y2hfYWRkciwgRUhDSVN0YXRlLCAzKSwNCj4gPiA+ID4gPiA+ID4g
+KyAgICAgICAgVk1TVEFURV9VSU5UNjRfVihwX2ZldGNoX2FkZHIsIEVIQ0lTdGF0ZSwgMyksDQo+
+ID4gPiA+ID4NCj4gPiA+ID4gPiBUTDtEUjogSSBmZWVsIGxpa2Ugd2Ugc3RpbGwgbmVlZCBtYWNo
+aW5lIHR5cGUgY29tcGF0IHByb3BlcnRpZXMuDQo+ID4gPiA+ID4NCj4gPiA+ID4NCj4gPiA+ID4g
+SSBkb24ndCB1bmRlcnN0YW5kIHRoaXM6IENvdWxkIHlvdSBwbGVhc2UgZGVzY3JpYmUgaXQgaW4g
+bW9yZSBkZXRhaWw/DQo+ID4gPg0KPiA+ID4gU2VlIGh3L2NvcmUvbWFjaGluZS5jIGFuZCBlbnRy
+aWVzIGFkZGVkIGludG8gaHdfY29tcGF0XypbXSBhcnJheXMuDQo+ID4gPiBJSVVDLCBpZiB0aGlz
+IGlzIGFuIGltcG9ydGFudCBkZXZpY2UgYW5kIGlmIHdlIHdhbnQgdG8gZ3VhcmFudGVlDQo+ID4g
+PiBiaWRpcmVjdGlvbmFsIG1pZ3JhdGlvbiAoSSdsbCBleHBsYWluIGxhdGVyKSwgdGhlbiB3ZSBz
+aG91bGQgc3RpY2sNCj4gPiA+IHdpdGggbWFjaGluZSBjb21wYXQgcHJvcGVydGllcy4NCj4gPiA+
+DQo+ID4gPiA+DQo+ID4gPiA+ID4gRGV0YWlsczoNCj4gPiA+ID4gPg0KPiA+ID4gPiA+IFdoZW4g
+YSB2MiBzdHJlYW0gYXJyaXZlcywgdHdvIF9URVNUKClzIHdpbGwgZG8gdGhlIGxvYWRpbmcsIHRo
+ZW4NCj4gPiA+ID4gPiBwb3N0X2xvYWQoKSBleHRlbmQgaXQgdG8gNjRiaXRzLCBsb29rcyBmaW5l
+Lg0KPiA+ID4gPiA+DQo+ID4gPiA+ID4gV2hlbiBhIHYzIHN0cmVhbSBhcnJpdmVzLCB0d28gX1RF
+U1QoKXMgZ290IHNraXBwZWQgdGhlbiBsYXR0ZXINCj4gPiA+ID4gPiB0d28gdGFrZQ0KPiA+ID4g
+ZWZmZWN0Lg0KPiA+ID4gPiA+IHBvc3RfbG9hZCgpIHNraXBzLiAgTG9va3MgZmluZS4NCj4gPiA+
+ID4gPg0KPiA+ID4gPiA+IFdoZW4gbWlncmF0aW5nIHRvIGFub3RoZXIgUUVNVSwgZHVlIHRvIHRo
+ZSBmYWN0IHNhdmluZyB2bXN0YXRlcw0KPiA+ID4gPiA+IGFsd2F5cyB0YWtlIHZtc2QncyB2ZXJz
+aW9uIGRlY2xhcmVkICgzKSwgSSBkb24ndCBzZWUgaG93IGl0IGNhbg0KPiA+ID4gPiA+IG1pZ3Jh
+dGUgYmFjayB0byBhIHYyIHN0cmVhbTsgaXQgZGlkbid0IGtub3cgYWJvdXQgdjMuDQo+ID4gPiA+
+ID4NCj4gPiA+ID4gPiBKaWFtaW4sIGhhdmUgeW91IHRlc3RlZCBtaWdyYXRpbmcgZnJvbSBhIG5l
+dyBRRU1VIGJpbmFyeSBiYWNrIHRvDQo+ID4gPiA+ID4gYW5vdGhlciBvbGQgb25lPyAgRm9yIHVw
+c3RyZWFtIGFuZCBzZXJpb3VzIGRldmljZXMsIHdlIG5lZWQgdG8NCj4gPiA+ID4gPiBndWFyYW50
+ZWUgYmktZGlyZWN0aW9uYWwgbWlncmF0aW9ucywgYmFjayBhbmQgZm9ydGguDQo+ID4gPiA+ID4N
+Cj4gPiA+ID4NCj4gPiA+ID4gU29ycnksIEkgYW0gbm90IGZhbWlsaWFyIHdpdGggdGhlIGRlc2ln
+biBvZiBRRU1VIG1pZ3JhdGlvbiwgYW5kIEkNCj4gPiA+ID4gZG9uJ3Qga25vdw0KPiA+ID4gaG93
+IHRvIHRlc3QgaXQuDQo+ID4gPiA+IEkgYWRkZWQgdGhlc2UgaG9vayBmdW5jdGlvbnMgYmFzZWQg
+b24gUGhpbGlwcGUncyBzdWdnZXN0aW9uIGFuZCByZXZpZXcuDQo+ID4gPiA+IENvdWxkIHlvdSB0
+ZWxsIG1lIGhvdyB0byB0ZXN0IG1pZ3JhdGlvbiB0byBlbnN1cmUgYm90aCB2ZXJzaW9uIDMNCj4g
+PiA+ID4gYW5kIHZlcnNpb24NCj4gPiA+IDIgYXJlIHdvcmthYmxlPw0KPiA+ID4NCj4gPiA+IFNp
+bmNlIHRoaXMgcGF0Y2ggYWxyZWFkeSBtb2RpZmllZCBWTVNEcywgSSBiZWxpZXZlIG1pZ3JhdGlv
+biB0ZXN0DQo+ID4gPiBzaG91bGQgaGF2ZSBiZWVuIGNhcnJpZWQgb3V0IGF0IHRoZSB2ZXJ5IG1p
+bmltdW0uLiAgTG9naWNhbGx5IGlmDQo+ID4gPiB2bXNkIHZlcnNpb25pbmcgaXMgdXNlZCwgd2Ug
+c2hvdWxkIGFsc28gaGF2ZSB0ZXN0ZWQgZm9yd2FyZCBtaWdyYXRpb25zLA0KPiBiZWNhdXNlIHRo
+YXQncyBvbmx5IGZvciB0aGF0Lg0KPiA+ID4NCj4gPiA+IFdoYXQgSSdtIHRhbGtpbmcgYWJvdXQg
+aXMgSSB0aGluayBiYWNrd2FyZCBtaWdyYXRpb24gd2lsbCBmYWlsLg0KPiA+ID4NCj4gPiA+IEZv
+cndhcmQgbWlncmF0aW9uIGRlc2NyaWJlcyB0aGUgY2FzZSB3aGVuIGEgVk0gaG9zdGVkIGJ5IGFu
+IG9sZCBRRU1VDQo+ID4gPiBiaW5hcnkgKGUuZy4gUUVNVSB2MTAuMi4wKSBpcyBtaWdyYXRlZCB0
+byBhIG5ldyBRRU1VIChlLmcuLCBhZnRlcg0KPiA+ID4gdGhpcyBwYXRjaCBhcHBsaWVkIG9uIHRv
+cCBvZiBtYXN0ZXIpLg0KPiA+ID4NCj4gPiA+IEJhY2t3YXJkIG1pZ3JhdGlvbiBkZXNjcmliZXMg
+dGhlIGNhc2Ugd2hlbiBhIFZNIGhvc3RlZCBieSBhIG5ldyBRRU1VDQo+ID4gPiBiaW5hcnkgKGUu
+Zy4sIGFmdGVyIHRoaXMgcGF0Y2ggYXBwbGllZCBvbiB0b3Agb2YgbWFzdGVyKSBpcyBtaWdyYXRl
+ZA0KPiA+ID4gYmFjayB0byBhbiBvbGQgUUVNVSBiaW5hcnkgKGUuZy4gUUVNVSB2MTAuMi4wKS4N
+Cj4gPiA+DQo+ID4gPiBGb3IgZGlmZmVyZW50IGRldmljZXMsIHdlIHNob3VsZCBhbGxvdyBkaWZm
+ZXJlbnQgbGV2ZWwgb2Ygc3VwcG9ydCBvbg0KPiBtaWdyYXRpb24uDQo+ID4gPiBBbnkgZGV2aWNl
+IHRoYXQgbWF5IGJlIGltcG9ydGFudCB0byBlaXRoZXIgdXBzdHJlYW0gUUVNVSBvcg0KPiA+ID4g
+ZG93bnN0cmVhbXMgc2hvdWxkIGJldHRlciBhbGxvdyBiaS1kaXJlY3Rpb25hbCBtaWdyYXRpb24u
+ICBJbiB0aGlzDQo+ID4gPiBjYXNlIHdlIG5lZWQgdG8gdXNlIG1hY2hpbmUgY29tcGF0IHByb3Bl
+cnRpZXMgSSBtZW50aW9uZWQuICBJJ20gbm90DQo+ID4gPiB5ZXQgc3VyZSB3aGVyZSBFSENJIGNv
+bnRyb2xsZXIgZmFsbHMgZS5nLiB2LnMuIFhIQ0kuLiB3aGVuIG5vdCBzdXJlLA0KPiA+ID4gd2Ug
+Y2FuIGFsc28ganVzdCBzdGljayB3aXRoIG1hY2hpbmUgY29tcGF0IHByb3BlcnRpZXMgdG8gYmUg
+b24gdGhlIHNhZmUNCj4gc2lkZS4NCj4gPiA+DQo+ID4gPiBGb3IgbW9yZSBpbmZvLCB5b3UgY2Fu
+IGFsc28gcmVmZXIgdG86DQo+ID4gPg0KPiA+ID4gaHR0cHM6Ly93d3cucWVtdS5vcmcvZG9jcy9t
+YXN0ZXIvZGV2ZWwvbWlncmF0aW9uL2NvbXBhdGliaWxpdHkuaHRtbA0KPiA+ID4NCj4gPiA+IFRo
+YW5rcywNCj4gPiA+DQo+ID4gPiAtLQ0KPiA+ID4gUGV0ZXIgWHUNCj4gPiBUaGFua3MgZm9yIHlv
+dXIgc3VwcG9ydCBhbmQgdGhlIGRldGFpbGVkIGV4cGxhbmF0aW9uLg0KPiA+IEZvbGxvd2luZyBD
+w6lkcmlj4oCZcyBjb21tZW50cywgSSBub3cgdW5kZXJzdGFuZCBob3cgdG8gcHJvcGVybHkgdGVz
+dA0KPiBtaWdyYXRpb24uIFdpdGggdGhlIGNoYW5nZXMgYmVsb3csIGJvdGggZm9yd2FyZCBhbmQg
+YmFja3dhcmQgbWlncmF0aW9uIHRlc3RzDQo+IHBhc3MuDQo+ID4gQ291bGQgeW91IHBsZWFzZSBy
+ZXZpZXcgdGhlc2UgY2hhbmdlcywgb3Igd291bGQgeW91IHByZWZlciB0aGF0IEkgcmVzZW5kDQo+
+IHRoZW0gYXMgdjQ/DQo+IA0KPiBQZXIgd2hhdCBJIHJlYWQgb24gUGhpbCdzIHJlcGx5IG9uIHRo
+ZSBjb3ZlciBsZXR0ZXIsIGhlIHByZWZlcnMgeW91IHRvIHJlc2VuZA0KPiBhbnl3YXkuICBCZXR0
+ZXIgZG8gaXQuICBDb21tZW50cyBpbmxpbmUuDQo+IA0KVGhhbmtzIGZvciB0aGUgcmV2aWV3IGFu
+ZCBzdWdnZXN0aW9uLg0KV2lsbCByZXNlbmQgdjQgc29vbiBhbmQgbG9vcCB5b3UuDQoNCj4gPg0K
+PiA+IFRoYW5rcyBhZ2FpbiBmb3IgeW91ciBndWlkYW5jZSBhbmQgc3VwcG9ydC4NCj4gPg0KPiA+
+IEphbWluDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvdXNiL2hjZC1laGNpLmggYi9ody91c2Iv
+aGNkLWVoY2kuaCBpbmRleA0KPiA+IDMxMDE4M2JiYzQuLmJkMTY1Yzc5M2MgMTAwNjQ0DQo+ID4g
+LS0tIGEvaHcvdXNiL2hjZC1laGNpLmgNCj4gPiArKysgYi9ody91c2IvaGNkLWVoY2kuaA0KPiA+
+IEBAIC0yNjQsNiArMjY0LDcgQEAgc3RydWN0IEVIQ0lTdGF0ZSB7DQo+ID4gICAgICB1aW50MzJf
+dCBtYXhmcmFtZXM7DQo+ID4gICAgICBib29sIGNhcHNfNjRiaXRfYWRkcjsNCj4gPiAgICAgIHVp
+bnQzMl90IGN0cmxkc3NlZ21lbnRfZGVmYXVsdDsNCj4gPiArICAgIGJvb2wgbWlncmF0ZV9mZXRj
+aF9hZGRyXzY0Yml0Ow0KPiA+DQo+ID4gICAgICAvKg0KPiA+ICAgICAgICogIEVIQ0kgc3BlYyB2
+ZXJzaW9uIDEuMCBTZWN0aW9uIDIuMyBAQCAtMzIxLDcgKzMyMiw5IEBAIHN0cnVjdA0KPiA+IEVI
+Q0lTdGF0ZSB7DQo+ID4gICAgICBERUZJTkVfUFJPUF9VSU5UMzIoIm1heGZyYW1lcyIsIF9zdGF0
+ZSwgZWhjaS5tYXhmcmFtZXMsIDEyOCksIFwNCj4gPiAgICAgIERFRklORV9QUk9QX0JPT0woImNh
+cHMtNjRiaXQtYWRkciIsIF9zdGF0ZSwgZWhjaS5jYXBzXzY0Yml0X2FkZHIsDQo+IGZhbHNlKSwg
+XA0KPiA+ICAgICAgREVGSU5FX1BST1BfVUlOVDMyKCJjdHJsZHNzZWdtZW50LWRlZmF1bHQiLCBf
+c3RhdGUsIFwNCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICBlaGNpLmN0cmxkc3NlZ21lbnRf
+ZGVmYXVsdCwgMCkNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICBlaGNpLmN0cmxkc3NlZ21l
+bnRfZGVmYXVsdCwgMCksIFwNCj4gPiArICAgIERFRklORV9QUk9QX0JPT0woIngtbWlncmF0ZS1m
+ZXRjaC1hZGRyLTY0Yml0IiwgX3N0YXRlLCBcDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgIGVo
+Y2kubWlncmF0ZV9mZXRjaF9hZGRyXzY0Yml0LCB0cnVlKQ0KPiANCj4gVGhlIGRpZmYgbG9va3Mg
+YSBiaXQgd2VpcmQ7IHRoaXMgY2h1bmsgaXMgbm90IHByZXNlbnQgaW4gaHcvdXNiL2hjZC1laGNp
+LmggaW4NCj4gbWFzdGVyIGJyYW5jaCwgYnV0IG1heWJlIHRoaXMgc2VyaWVzIHRvdWNoZWQgaXQu
+LiBpbiB0aGF0IGNhc2UgaXQncyBmaW5lLg0KPiANCj4gPg0KPiA+ICBleHRlcm4gY29uc3QgVk1T
+dGF0ZURlc2NyaXB0aW9uIHZtc3RhdGVfZWhjaTsNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9j
+b3JlL21hY2hpbmUuYyBiL2h3L2NvcmUvbWFjaGluZS5jIGluZGV4DQo+ID4gMGFhNzdhNTdlOS4u
+ZTc3NDAwYzdhYiAxMDA2NDQNCj4gPiAtLS0gYS9ody9jb3JlL21hY2hpbmUuYw0KPiA+ICsrKyBi
+L2h3L2NvcmUvbWFjaGluZS5jDQo+ID4gQEAgLTQxLDYgKzQxLDggQEANCj4gPiAgR2xvYmFsUHJv
+cGVydHkgaHdfY29tcGF0XzEwXzJbXSA9IHsNCj4gPiAgICAgIHsgInNjc2ktYmxvY2siLCAibWln
+cmF0ZS1wciIsICJvZmYiIH0sDQo+ID4gICAgICB7ICJpc2EtY2lycnVzLXZnYSIsICJnbG9iYWwt
+dm1zdGF0ZSIsICJ0cnVlIiB9LA0KPiA+ICsgICAgeyAic3lzYnVzLWVoY2ktdXNiIiwgIngtbWln
+cmF0ZS1mZXRjaC1hZGRyLTY0Yml0IiwgIm9mZiIgfSwNCj4gPiArICAgIHsgInBjaS1laGNpLXVz
+YiIsICJ4LW1pZ3JhdGUtZmV0Y2gtYWRkci02NGJpdCIsICJvZmYiIH0sDQo+IA0KPiBJJ20gc3Rp
+bGwgbG9va2luZyBhdCBtYXN0ZXIgYnJhbmNoLCB2bXN0YXRlX2VoY2kgaXMgcmVmZXJlbmNlZCBp
+biBib3RoDQo+ICJlaGNpLXN5c2J1cyIgKHZtc3RhdGVfZWhjaV9zeXNidXMpIGFuZCAiZWhjaSIg
+KHZtc3RhdGVfZWhjaV9wY2kpLiAgSGVyZSB5b3UNCj4gdXNlZCBkaWZmZXJlbnQgbmFtZXMsIEkn
+bSBub3Qgc3VyZSBpZiBpdCdzIHJlbGV2YW50IHRvIHlvdXIgb3RoZXIgcGF0Y2hlcywgcGxlYXNl
+DQo+IGRvdWJsZSBjaGVjay4NCj4gDQpJdCBzZWVtcyB0aGF0IHdlIG5lZWQgdG8gdXNlIHRoZSBk
+ZXZpY2UgdHlwZSBuYW1lIGhlcmUuDQpGb3IgdGhlIFBDSSBFSENJIGNvbnRyb2xsZXIsIGxvb2tp
+bmcgYXQgaGNkLWVoY2ktcGNpLmM6DQoNClRoZSBWTVN0YXRlRGVzY3JpcHRpb24gbmFtZSBpcyAi
+ZWhjaSI6DQoNCnN0YXRpYyBjb25zdCBWTVN0YXRlRGVzY3JpcHRpb24gdm1zdGF0ZV9laGNpX3Bj
+aSA9IHsNCiAgICAubmFtZSAgICAgICAgPSAiZWhjaSIsDQogICAgLnZlcnNpb25faWQgID0gMiwN
+CiAgICAubWluaW11bV92ZXJzaW9uX2lkICA9IDEsDQogICAgLmZpZWxkcyA9IChjb25zdCBWTVN0
+YXRlRmllbGRbXSkgew0KICAgICAgICBWTVNUQVRFX1BDSV9ERVZJQ0UocGNpZGV2LCBFSENJUENJ
+U3RhdGUpLA0KICAgICAgICBWTVNUQVRFX1NUUlVDVChlaGNpLCBFSENJUENJU3RhdGUsIDIsIHZt
+c3RhdGVfZWhjaSwgRUhDSVN0YXRlKSwNCiAgICAgICAgVk1TVEFURV9FTkRfT0ZfTElTVCgpDQog
+ICAgfQ0KfTsNCg0KSG93ZXZlciwgdGhlIGFjdHVhbCBkZXZpY2UgdHlwZSBuYW1lIGlzIGRlZmlu
+ZWQgdmlhIFRZUEVfUENJX0VIQ0ksDQp3aGljaCByZXNvbHZlcyB0byAicGNpLWVoY2ktdXNiIiBh
+bmQgaXMgdXNlZCB3aGVuIHJlZ2lzdGVyaW5nIHRoZSBkZXZpY2U6DQoNCnN0YXRpYyB2b2lkIGVo
+Y2lfcGNpX3JlZ2lzdGVyX3R5cGVzKHZvaWQpDQp7DQogICAgVHlwZUluZm8gZWhjaV90eXBlX2lu
+Zm8gPSB7DQogICAgICAgIC5wYXJlbnQgICAgICAgID0gVFlQRV9QQ0lfRUhDSSwNCiAgICAgICAg
+LmNsYXNzX2luaXQgICAgPSBlaGNpX2RhdGFfY2xhc3NfaW5pdCwNCiAgICB9Ow0KICAgIGludCBp
+Ow0KDQogICAgdHlwZV9yZWdpc3Rlcl9zdGF0aWMoJmVoY2lfcGNpX3R5cGVfaW5mbyk7DQoNCiAg
+ICBmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShlaGNpX3BjaV9pbmZvKTsgaSsrKSB7DQogICAg
+ICAgIGVoY2lfdHlwZV9pbmZvLm5hbWUgPSBlaGNpX3BjaV9pbmZvW2ldLm5hbWU7DQogICAgICAg
+IGVoY2lfdHlwZV9pbmZvLmNsYXNzX2RhdGEgPSBlaGNpX3BjaV9pbmZvICsgaTsNCiAgICAgICAg
+dHlwZV9yZWdpc3Rlcl9zdGF0aWMoJmVoY2lfdHlwZV9pbmZvKTsNCiAgICB9DQp9DQoNClNvIGlu
+IG1hY2hpbmUgY29tcGF0IHByb3BlcnRpZXMsIGl0IHNlZW1zIHdlIHNob3VsZCB1c2UgdGhlIGRl
+dmljZSB0eXBlDQpuYW1lICgicGNpLWVoY2ktdXNiIiksIHJhdGhlciB0aGFuIHRoZSBWTVN0YXRl
+RGVzY3JpcHRpb24gbmFtZSAoImVoY2kiKS4NCg0KSSBhbHNvIHRyaWVkIGNoYW5naW5nIGl0IHRv
+ICJlaGNpIiwgYnV0IG1pZ3JhdGlvbiBmYWlsZWQgaW4gdGhhdCBjYXNlLA0Kc28gaXQgbG9va3Mg
+bGlrZSAicGNpLWVoY2ktdXNiIiBpcyB0aGUgY29ycmVjdCBvbmUgdG8gdXNlIGhlcmUuDQoNCkNv
+dWxkIHlvdSBwbGVhc2UgY29uZmlybSBpZiB0aGlzIGlzIHRoZSBleHBlY3RlZCB1c2FnZT8NCg0K
+PiBBbHNvIGlmIHRoZXJlJ3JlIHR3byBkcml2ZXJzIGludm9sdmVkLCBJSVVDIHdlIHNob3VsZCBu
+ZWVkIHRvIGFkZCB0d28gYm9vbA0KPiBwcm9wZXJ0aWVzLi4gSSBvbmx5IHNhdyBvbmUgYWJvdmUu
+ICBBZ2Fpbiwgbm90IHN1cmUgaWYgaXQncyByZWxldmFudCB0byB3aGF0IHlvdXINCj4gcHJpb3Ig
+cGF0Y2ggZGlkLCBidXQgcGxlYXNlIGRvdWJsZSBjaGVjay4NCj4gDQo+ID4gIH07DQo+ID4gIGNv
+bnN0IHNpemVfdCBod19jb21wYXRfMTBfMl9sZW4gPSBHX05fRUxFTUVOVFMoaHdfY29tcGF0XzEw
+XzIpOw0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L3VzYi9oY2QtZWhjaS5jIGIvaHcvdXNiL2hj
+ZC1laGNpLmMgaW5kZXgNCj4gPiA5ODNiMTczMWY5Li44NzUyOGRkYzAyIDEwMDY0NA0KPiA+IC0t
+LSBhL2h3L3VzYi9oY2QtZWhjaS5jDQo+ID4gKysrIGIvaHcvdXNiL2hjZC1laGNpLmMNCj4gPiBA
+QCAtMjQ2OSw2ICsyNDY5LDkgQEAgc3RhdGljIGludCB1c2JfZWhjaV9wcmVfc2F2ZSh2b2lkICpv
+cGFxdWUpDQo+ID4gICAgICBlaGNpLT5sYXN0X3J1bl9ucyAtPSAoZWhjaS0+ZnJpbmRleCAtIG5l
+d19mcmluZGV4KSAqDQo+IFVGUkFNRV9USU1FUl9OUzsNCj4gPiAgICAgIGVoY2ktPmZyaW5kZXgg
+PSBuZXdfZnJpbmRleDsNCj4gPg0KPiA+ICsgICAgZWhjaS0+YV9mZXRjaF9hZGRyX3ByZV92MyA9
+IGVoY2ktPmFfZmV0Y2hfYWRkcjsNCj4gPiArICAgIGVoY2ktPnBfZmV0Y2hfYWRkcl9wcmVfdjMg
+PSBlaGNpLT5wX2ZldGNoX2FkZHI7DQo+IA0KPiBUaGlzIGxvb2tzIGZpbmUgaWYgeW91IGFsd2F5
+cyBwcmVwYXJlIHRoZSAzMmJpdCB2ZXJzaW9ucyBvZiB0aGUgYWRkciwgYnV0IGl0IGNhbg0KPiBh
+bHNvIGJlIHB1dCB1bmRlciBhICJpZiAoIWVoY2lfZmV0Y2hfYWRkcl82NF9uZWVkZWQoLi4uKSki
+LiAgTm90IGEgYmlnIGRlYWwuDQo+IA0KV2lsbCBhZGQNCj4gPiArDQo+ID4gICAgICByZXR1cm4g
+MDsNCj4gPiAgfQ0KPiA+DQo+ID4gQEAgLTI0ODksMTAgKzI0OTIsOCBAQCBzdGF0aWMgaW50IHVz
+Yl9laGNpX3Bvc3RfbG9hZCh2b2lkICpvcGFxdWUsIGludA0KPiB2ZXJzaW9uX2lkKQ0KPiA+ICAg
+ICAgICAgIH0NCj4gPiAgICAgIH0NCj4gPg0KPiA+IC0gICAgaWYgKHZlcnNpb25faWQgPCAzKSB7
+DQo+ID4gLSAgICAgICAgcy0+YV9mZXRjaF9hZGRyID0gcy0+YV9mZXRjaF9hZGRyX3ByZV92MzsN
+Cj4gPiAtICAgICAgICBzLT5wX2ZldGNoX2FkZHIgPSBzLT5wX2ZldGNoX2FkZHJfcHJlX3YzOw0K
+PiA+IC0gICAgfQ0KPiA+ICsgICAgcy0+YV9mZXRjaF9hZGRyID0gcy0+YV9mZXRjaF9hZGRyX3By
+ZV92MzsNCj4gPiArICAgIHMtPnBfZmV0Y2hfYWRkciA9IHMtPnBfZmV0Y2hfYWRkcl9wcmVfdjM7
+DQo+IA0KPiBUaGlzIG9uZSBsb29rcyByaXNreSwgaXQgd2lsbCBhbHNvIHJ1biBvbiBuZXcgbWFj
+aGluZSB0eXBlcywgSSB0aGluayBhICJpZg0KPiAoIWVoY2lfZmV0Y2hfYWRkcl82NF9uZWVkZWQo
+Li4uKSkiIGlzIHJlcXVpcmVkIGhlcmUgKHVubGlrZSB0aGUgcHJlX3NhdmUpLA0KPiBvdGhlcndp
+c2UgSSBzdXNwZWN0IHlvdSBtYXkgb3ZlcndyaXRlIHRoZSA2NGJpdHMgd2l0aCAzMmJpdHMgYWZ0
+ZXIgbWlncmF0aW9uLg0KPiBJdCBtYXkgZXhwbG9kZSB3aGVuIGhpZ2ggMzJiaXRzIGhhdmUgc29t
+ZXRoaW5nIG5vbnplcm8/DQo+IA0KV2lsbCBhZGQNCj4gPg0KPiA+ICAgICAgcmV0dXJuIDA7DQo+
+ID4gIH0NCj4gPiBAQCAtMjUyMywxNCArMjUyNCwyOSBAQCBzdGF0aWMgdm9pZCB1c2JfZWhjaV92
+bV9zdGF0ZV9jaGFuZ2Uodm9pZA0KPiAqb3BhcXVlLCBib29sIHJ1bm5pbmcsIFJ1blN0YXRlIHN0
+YXRlKQ0KPiA+ICAgICAgfQ0KPiA+ICB9DQo+ID4NCj4gPiAtc3RhdGljIGJvb2wgZWhjaV9jb3Jl
+X2lzX2JlZm9yZV92ZXJzaW9uXzModm9pZCAqb3BhcXVlLCBpbnQNCj4gPiB2ZXJzaW9uX2lkKQ0K
+PiA+ICtzdGF0aWMgYm9vbCBlaGNpX2ZldGNoX2FkZHJfNjRfbmVlZGVkKHZvaWQgKm9wYXF1ZSkN
+Cj4gPiAgew0KPiA+IC0gICAgcmV0dXJuIHZlcnNpb25faWQgPCAzOw0KPiA+ICsgICAgRUhDSVN0
+YXRlICpzID0gb3BhcXVlOw0KPiA+ICsNCj4gPiArICAgIHJldHVybiBzLT5taWdyYXRlX2ZldGNo
+X2FkZHJfNjRiaXQ7DQo+ID4gIH0NCj4gDQo+IFllcyB0aGlzIGlzIHRoZSB0cmFkaXRpb25hbCB3
+YXkuDQo+IA0KPiA+DQo+ID4gK3N0YXRpYyBjb25zdCBWTVN0YXRlRGVzY3JpcHRpb24gdm1zdGF0
+ZV9laGNpX2ZldGNoX2FkZHJfNjQgPSB7DQo+ID4gKyAgICAubmFtZSA9ICJlaGNpLWNvcmUvZmV0
+Y2gtYWRkcjY0IiwNCj4gPiArICAgIC52ZXJzaW9uX2lkID0gMSwNCj4gPiArICAgIC5taW5pbXVt
+X3ZlcnNpb25faWQgPSAxLA0KPiA+ICsgICAgLm5lZWRlZCA9IGVoY2lfZmV0Y2hfYWRkcl82NF9u
+ZWVkZWQsDQo+ID4gKyAgICAuZmllbGRzID0gKGNvbnN0IFZNU3RhdGVGaWVsZFtdKSB7DQo+ID4g
+KyAgICAgICAgLyogbW1pbyByZWdpc3RlcnMgKi8NCj4gPiArICAgICAgICBWTVNUQVRFX1VJTlQ2
+NChhX2ZldGNoX2FkZHIsIEVIQ0lTdGF0ZSksDQo+ID4gKyAgICAgICAgVk1TVEFURV9VSU5UNjQo
+cF9mZXRjaF9hZGRyLCBFSENJU3RhdGUpLA0KPiA+ICsgICAgICAgIFZNU1RBVEVfRU5EX09GX0xJ
+U1QoKQ0KPiA+ICsgICAgfQ0KPiA+ICt9Ow0KPiA+ICsNCldpbGwgcmVtb3ZlDQoNCj4gPiAgY29u
+c3QgVk1TdGF0ZURlc2NyaXB0aW9uIHZtc3RhdGVfZWhjaSA9IHsNCj4gPiAgICAgIC5uYW1lICAg
+ICAgICA9ICJlaGNpLWNvcmUiLA0KPiA+IC0gICAgLnZlcnNpb25faWQgID0gMywNCj4gPiArICAg
+IC52ZXJzaW9uX2lkICA9IDIsDQo+ID4gICAgICAubWluaW11bV92ZXJzaW9uX2lkICA9IDEsDQo+
+ID4gICAgICAucHJlX3NhdmUgICAgPSB1c2JfZWhjaV9wcmVfc2F2ZSwNCj4gPiAgICAgIC5wb3N0
+X2xvYWQgICA9IHVzYl9laGNpX3Bvc3RfbG9hZCwNCj4gPiBAQCAtMjU1OSwxNCArMjU3NSwxNCBA
+QCBjb25zdCBWTVN0YXRlRGVzY3JpcHRpb24gdm1zdGF0ZV9laGNpID0gew0KPiA+ICAgICAgICAg
+IC8qIHNjaGVkdWxlIHN0YXRlICovDQo+ID4gICAgICAgICAgVk1TVEFURV9VSU5UMzIoYXN0YXRl
+LCBFSENJU3RhdGUpLA0KPiA+ICAgICAgICAgIFZNU1RBVEVfVUlOVDMyKHBzdGF0ZSwgRUhDSVN0
+YXRlKSwNCj4gPiAtICAgICAgICBWTVNUQVRFX1VJTlQzMl9URVNUKGFfZmV0Y2hfYWRkcl9wcmVf
+djMsIEVIQ0lTdGF0ZSwNCj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVoY2lfY29y
+ZV9pc19iZWZvcmVfdmVyc2lvbl8zKSwNCj4gPiAtICAgICAgICBWTVNUQVRFX1VJTlQzMl9URVNU
+KHBfZmV0Y2hfYWRkcl9wcmVfdjMsIEVIQ0lTdGF0ZSwNCj4gPiAtICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIGVoY2lfY29yZV9pc19iZWZvcmVfdmVyc2lvbl8zKSwNCj4gPiAtICAgICAgICBW
+TVNUQVRFX1VJTlQ2NF9WKGFfZmV0Y2hfYWRkciwgRUhDSVN0YXRlLCAzKSwNCj4gPiAtICAgICAg
+ICBWTVNUQVRFX1VJTlQ2NF9WKHBfZmV0Y2hfYWRkciwgRUhDSVN0YXRlLCAzKSwNCj4gPiArICAg
+ICAgICBWTVNUQVRFX1VJTlQzMihhX2ZldGNoX2FkZHJfcHJlX3YzLCBFSENJU3RhdGUpLA0KPiA+
+ICsgICAgICAgIFZNU1RBVEVfVUlOVDMyKHBfZmV0Y2hfYWRkcl9wcmVfdjMsIEVIQ0lTdGF0ZSks
+DQo+ID4gICAgICAgICAgVk1TVEFURV9FTkRfT0ZfTElTVCgpDQo+ID4gLSAgICB9DQo+ID4gKyAg
+ICB9LA0KPiA+ICsgICAgLnN1YnNlY3Rpb25zID0gKGNvbnN0IFZNU3RhdGVEZXNjcmlwdGlvbiAq
+IGNvbnN0IFtdKSB7DQo+ID4gKyAgICAgICAgJnZtc3RhdGVfZWhjaV9mZXRjaF9hZGRyXzY0LA0K
+PiANCj4gSU1ITyB5b3UgZG9uJ3QgbmVlZCB0byBtYWtlIGl0IGEgc3Vic2VjdGlvbiwgeW91IGNh
+biB1c2UNCj4gVk1TVEFURV9VSU5UNjRfVEVTVCgpLg0KPiANCldpbGwgYWRkDQoNCj4gU2ltaWxh
+cmx5IHlvdSBjYW4gYWxzbyB1c2UgVk1TVEFURV9VSU5UMzJfVEVTVCgpIHRvIG9ubHkgbWlncmF0
+ZSAzMmJpdA0KPiB2ZXJzaW9ucyBpbiBvbGQgbWFjaGluZSB0eXBlcy4NCj4gDQpXaWxsIGFkZA0K
+DQo+IFdpdGggdGhvc2UgeW91IGNhbiBrZWVwIHRoZW0gdG9nZXRoZXIgYW5kIGFkZCBhIGNvbW1l
+bnQsIG1heSBsb29rIGJldHRlcg0KPiB0aGFuIHN1YnNlY3Rpb25zIHdoZXJlIHlvdSBzcGxpdCB0
+aGVtIGFwYXJ0LCBpdCdsbCBiZSBoYXJkZXIgdG8gZm9sbG93IGluIHRoZQ0KPiBmdXR1cmUuDQo+
+IA0KPiBUaGFua3MsDQo+IA0KPiA+ICsgICAgICAgIE5VTEwsDQo+ID4gKyAgICB9LA0KPiA+ICB9
+Ow0KPiA+DQo+ID4gIHZvaWQgdXNiX2VoY2lfcmVhbGl6ZShFSENJU3RhdGUgKnMsIERldmljZVN0
+YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4gDQo+IC0tDQo+IFBldGVyIFh1DQoNClRoYW5rcywN
+CkphbWluDQo=
 

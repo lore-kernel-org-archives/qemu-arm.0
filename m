@@ -4,92 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC1E5FDEE3F
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 18:04:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A5E5FDEE40
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 18:06:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFyOe-0005mb-RN; Thu, 23 Apr 2026 14:03:28 -0400
+	id 1wFyRX-00071O-KH; Thu, 23 Apr 2026 14:06:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wFyOd-0005mA-Ju
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:03:27 -0400
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wFyRC-0006zy-0s
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:06:12 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wFyOa-0005ZE-2R
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:03:27 -0400
-Received: by mail-dy1-x132c.google.com with SMTP id
- 5a478bee46e88-2de831d2b20so5455981eec.1
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 11:03:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wFyR6-0006HI-D0
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:06:05 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-48a3e9862f0so33168165e9.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 11:05:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1776967402; x=1777572202; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1776967557; x=1777572357; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A2dxn0WMrqvKqs3p8nkU2X7bmDqRObx6LQxESo5qD6I=;
- b=cGyXB/WwFhGo+57CywCcdmkQrsjfoSf7B/pMqfo/h2/bGdUm6EvUU4kXYNX6Ttizgr
- oX/2ovD809TLK3xLMIlyVoA8kuLV48RttcR9aRqB1ByWX3UKFWxfO5eFax/ohhY3Iejj
- EbL40a5KpMD53oEah4EMjXmMmE3rjn53mOnLjLp/WZo19wKdb4dQeQBX/R0sEDMRe8Wl
- truw0EyB8HAUkuoRIdHas9KdWSI/sONTUSbaBLKprSosFKqd/W59BEprZHsfALWHt/TF
- qglReisLCqLR5AQQFBIuTBpyHHMFAWApj1GaTFxyOs3KDt25MfKIXqzQBgDI+lyMVxjA
- hvQQ==
+ bh=crPdIJHt3LhtWfSNp31s3fT9JjS2fk669onR6kL8pko=;
+ b=ibC3PAVrMaVHM4407udbaJxu6VjGUoXgfaZ5p97w9tEQM0pCsevPHksUfAgPR9QM2U
+ zpT527xfSFdNbCPQL70IMMeNQblQNe/7wTu12J9JWY+8gV6H6AdLsibK46yV5l/4BgzI
+ hlOZopqRcb1QcPJaVISylG7imeSAnllZbqAw3w3KwmyFQRNcPkYaxJoP9TCapPEUQ7/V
+ 3joXpwRy4z1TWhdRsJSH1hy45Y/arM+5n7FQe3HHl9miIviffPhV6adbgaT3xAuh1s/K
+ jyoSLXTLOD/b8daCquDPDmB3c5Y2siv3EUfHL534n8uEmspeZzjvBtoRwdJ6a6Uev2q4
+ rnwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776967402; x=1777572202;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=A2dxn0WMrqvKqs3p8nkU2X7bmDqRObx6LQxESo5qD6I=;
- b=WMj2uak7WNNh9DPygqZl+9w6SeKSy+sl8b/4eF2J3HN7e0oj90CvaGiwMVgjqFBP9y
- 5QTJqYVLVV+Eisx297qwHilsC0h96/jNDUx2fehWxbUkfWW6LY8l4ZXV5nVMYwxL4zLE
- g4FKRfog8ZxdNoA9pDnRYBJpA49O3hYUrs19xpWCmavy/9tiXgJnmcJY1uMGtU6UDw3m
- VQwPldtXgFc8c5j1ogFQ8VIC9XLS2E8WaWQVRrWA9POY1Sj52qEBpBrNgdunKklCEJqr
- n9+Rk6ahou01GNeu2bq89HmefYcmzW1my6lpnL+c06aG99n2IwyBjccgESNj8CT9gtKX
- LP0g==
+ d=1e100.net; s=20251104; t=1776967557; x=1777572357;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=crPdIJHt3LhtWfSNp31s3fT9JjS2fk669onR6kL8pko=;
+ b=Cu+dz5Qd6hQuYQ/OfQB3gEyuQ8woiIy7t3mMNvo7D51qZ4kXpFHkP2nkZptdaVU8+0
+ zC0l0KdfkEeKfEauMeORZo0O3UUN6S605z7Zb8w1XfvokqqTFeZExgrOwFj0YrW/UlgE
+ 8AaRBTySaD1lr1YxCa9hMtDzSSJCaZTcqu6Bp7YezXJuhvZQVjqB1FpOl6lx/8IvMBph
+ dF95ObqVqHXbNA1UOQac3BPanYy0A05lk0IypHyCMiBbTAPp45VGDH1b4bgUlQ7gHoTJ
+ GnBzvZ7BB8Nrgrow6HQUiHzv6gau/tjM4kqFzuFRtTAWI95P4HCBk9NN6QLjjoIG2sXU
+ Xb3Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8h2te8RLRF5Lf50xD9XCchFD5z9KHZVh4+IjHFT3dhO994ksjoKcjF+fWlWi6TqlCU6s6OZwe4ug==@nongnu.org
-X-Gm-Message-State: AOJu0Yynibvy/xpavkXoVcOaddGdSuVVzOTHUyKVpBqHyn8lniopYuqq
- Nn829Mjms5jxYPUNCNUBHS3FMEMCb1Scu3D36innAEBHMzR9sAj46x52
-X-Gm-Gg: AeBDieuCBCWCgIYwE8+ISzkfLKpujVK1KFioSYNiqRtMR1UhsIDRHBY+6JQSYBTnM8B
- lDvjz8J6fRfv37zZcTKdcH/nkKmLd6Tiw2jQ+0VA4oa6rarGXK+Sidbwm26SGxGLUg23GRu70np
- kdMTvtL3Xy0UvuRb3d7S2vu5wz2mZjREX+pxj9bCSYLIEO6nSvDc9dbidrmaWlxzKU2v95MOWFJ
- 6zHhzBqJ1PgRMGFDYTPXkGfSbwsC10sHLggQGbUcaMwFZdnpehkmMItOMvREbYd0Fd7k1K5HVYb
- Wz0yuvrNfn78zEuwACXl7fChqPsgBhzz62wAWSkCeQdd+MbUTSKwLGHpKfnlpOlBqSY7L79nc8Z
- s72t7Vq9li1LzxkXd5pjjvZj66sspfuTX2K2nnTt99nVcFgFOhJ9sX7R6EAU8MiDr/easOJtV8i
- ZFXRXLyBm2HhzG2vn0X5nJMQDE9otjl9Y+5IekVOGfUH9wdk7sJXreRg3ViaOFIB1Z
-X-Received: by 2002:a05:7301:4094:b0:2da:a813:a613 with SMTP id
- 5a478bee46e88-2e478a31c4dmr15139257eec.22.1776967401760; 
- Thu, 23 Apr 2026 11:03:21 -0700 (PDT)
-Received: from localhost.localdomain ([143.54.78.177])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2e53dcb487bsm29131271eec.31.2026.04.23.11.03.19
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Apr 2026 11:03:21 -0700 (PDT)
-From: Lucas Amaral <lucaaamaral@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-arm@nongnu.org,
- alex.bennee@linaro.org, dmitry.osipenko@collabora.com,
- marcandre.lureau@redhat.com
-Subject: Re: [PATCH v5 0/4] virtio-gpu: enable Venus/Vulkan without OpenGL
- display
-Date: Thu, 23 Apr 2026 15:03:15 -0300
-Message-ID: <20260423180315.53821-1-lucaaamaral@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260317182049.33848-1-lucaaamaral@gmail.com>
-References: <20260317182049.33848-1-lucaaamaral@gmail.com>
+ AFNElJ+nCqRnYpXjgJfETw7JU83hERsGNU3CkepHD5fD77U6k99U90HXYQBAzmjOd0pnD+TG0LQchTf9tQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxtutrEzHSqGss8dGk/gNfG8XfsOono2BKxAL//hJOlRxXEdMk+
+ xdfYFHt6m9PVF2I2vZTkuo4TIvc+yW7m1XJY6GsEevEDUl6a+49lrYkGGp0sI4MjBhw=
+X-Gm-Gg: AeBDietwVTMm000sW+gr/iHvVae24FpcBfA10TPTbdvPa4hNgc/TysPRLpQ0JBmvv+G
+ SrkW5MWTgqO7C8rbfjCkisvwkCoZdWe4ue7wmgKwHLOqW2y9zgNlZLiVHtgelRnzPAjdyHH3Rob
+ QqAaBMVNqdWB2j+mQ22BnRIlZoKHAOtnQEpKnWEdy2/i6I4nILUwN3UqRqe4RyrzBxS32DkWwFL
+ RqCH/1dNH1+WNBL2dSFZEk2i6lwPAnIv1MlrUov7Neib676NQStb6PmzvzRZDfAZcxq5qMDh4Pb
+ oiNXdC/NR4R52b9ozUpZhc414tbK7gwvHgjVWBCHRpDCH/U5S92t+4PeJ4F5d4jMgtlHp8TOWEE
+ jAzQsDImx11OxkSHbjlFYiJ2Jnf3ukFiQVevVO+XJ5DNuhWPed/w/vwBmUEA7hNBAi6ThyWg8rB
+ D09oyIwK1XIna8pKgbFGHD3EXcZRpdcPh46btTlDaRfTAf
+X-Received: by 2002:a05:600c:570f:b0:488:a502:8955 with SMTP id
+ 5b1f17b1804b1-488fb882f13mr297146205e9.4.1776967557333; 
+ Thu, 23 Apr 2026 11:05:57 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43fe4cc0d51sm54913862f8f.10.2026.04.23.11.05.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Apr 2026 11:05:56 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 830965F941;
+ Thu, 23 Apr 2026 19:05:55 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  agraf@csgraf.de,
+ peter.maydell@linaro.org,  mohamed@unpredictable.fr
+Subject: Re: [PATCH v4 2/3] accel/hvf: introduce map granule abstraction and
+ IPA property
+In-Reply-To: <20260317175744.32469-3-lucaaamaral@gmail.com> (Lucas Amaral's
+ message of "Tue, 17 Mar 2026 14:57:43 -0300")
+References: <20260317175744.32469-1-lucaaamaral@gmail.com>
+ <20260317175744.32469-3-lucaaamaral@gmail.com>
+User-Agent: mu4e 1.14.1-pre3; emacs 30.1
+Date: Thu, 23 Apr 2026 19:05:55 +0100
+Message-ID: <87h5p1wnzw.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132c;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x132c.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,12 +108,251 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Ping (second). This series has been on the list since March 17 with
-no review on v5. Marc-André gave Reviewed-by on patch 1/4 in v2.
-Patches still apply cleanly on current master.
+Lucas Amaral <lucaaamaral@gmail.com> writes:
 
-https://patchew.org/QEMU/20260317182049.33848-1-lucaaamaral@gmail.com/
+> Add a map granule abstraction that decouples HVF memory mapping
+> alignment from the host page size.  On ARM64, Apple Silicon supports
+> stage-2 translation with 4KB page granules regardless of the host OS
+> page size (16KB on macOS).  This allows running guests with 4KB pages
+> without interior mapping failures.
+>
+> Introduce hvf_set_map_granule()/hvf_get_map_granule() in hvf-all.c
+> to replace hard-coded qemu_real_host_page_size() references in
+> do_hv_vm_protect() and hvf_set_phys_mem().  When the granule is not
+> explicitly configured, fall back to host page size to preserve the
+> previous behaviour.
+>
+> Add an "ipa-granule" accelerator property (auto, 4k, 16k) following
+> the established kvm_arch_accel_class_init() pattern: ARM registers
+> the property in hvf_arch_accel_class_init(), x86 provides an empty
+> stub.  This avoids #ifdef __aarch64__ in common code while keeping
+> a single hvf-all.c shared by both targets.
+>
+> Fix hvf_set_phys_mem() to return early for non-aligned regions instead
+> of clearing the add flag, which previously fell through to an
+> incorrect unmap of a region that was never mapped.
+>
+> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+> ---
+>  accel/hvf/hvf-all.c      | 30 +++++++++++++++++++++++++++---
+>  include/system/hvf.h     | 15 +++++++++++++++
+>  include/system/hvf_int.h |  2 ++
+>  target/arm/hvf/hvf.c     | 40 ++++++++++++++++++++++++++++++++++++++++
+>  target/i386/hvf/hvf.c    |  4 ++++
+>  5 files changed, 88 insertions(+), 3 deletions(-)
+>
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 5f357c6d..d745fefd 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -10,6 +10,8 @@
+>=20=20
+>  #include "qemu/osdep.h"
+>  #include "qemu/error-report.h"
+> +#include "qemu/units.h"
+> +#include "qapi/error.h"
+>  #include "accel/accel-ops.h"
+>  #include "exec/cpu-common.h"
+>  #include "system/address-spaces.h"
+> @@ -22,6 +24,21 @@
+>=20=20
+>  bool hvf_allowed;
+>=20=20
+> +static uint64_t hvf_map_granule;
+> +
+> +void hvf_set_map_granule(uint64_t size)
+> +{
+> +    hvf_map_granule =3D size;
+> +}
+> +
+> +uint64_t hvf_get_map_granule(void)
+> +{
+> +    if (!hvf_map_granule) {
+> +        return qemu_real_host_page_size();
+> +    }
+> +    return hvf_map_granule;
+> +}
+> +
+>  const char *hvf_return_string(hv_return_t ret)
+>  {
+>      switch (ret) {
+> @@ -53,7 +70,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *fi=
+le, unsigned int line,
+>  static void do_hv_vm_protect(hwaddr start, size_t size,
+>                               hv_memory_flags_t flags)
+>  {
+> -    intptr_t page_mask =3D qemu_real_host_page_mask();
+> +    intptr_t page_mask =3D -(intptr_t)hvf_get_map_granule();
+>      hv_return_t ret;
+>=20=20
+>      trace_hvf_vm_protect(start, size, flags,
+> @@ -83,7 +100,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *sect=
+ion, bool add)
+>      MemoryRegion *area =3D section->mr;
+>      bool writable =3D !area->readonly && !area->rom_device;
+>      hv_memory_flags_t flags;
+> -    uint64_t page_size =3D qemu_real_host_page_size();
+> +    uint64_t page_size =3D hvf_get_map_granule();
+>      uint64_t gpa =3D section->offset_within_address_space;
+>      uint64_t size =3D int128_get64(section->size);
+>      hv_return_t ret;
+> @@ -104,7 +121,7 @@ static void hvf_set_phys_mem(MemoryRegionSection *sec=
+tion, bool add)
+>      if (!QEMU_IS_ALIGNED(size, page_size) ||
+>          !QEMU_IS_ALIGNED(gpa, page_size)) {
+>          /* Not page aligned, so we can not map as RAM */
+> -        add =3D false;
+> +        return;
+>      }
+>=20=20
+>      if (!add) {
+> @@ -186,6 +203,11 @@ static int hvf_accel_init(AccelState *as, MachineSta=
+te *ms)
+>      int pa_range =3D 36;
+>      MachineClass *mc =3D MACHINE_GET_CLASS(ms);
+>=20=20
+> +    /* Resolve ipa-granule=3Dauto =E2=86=92 host page size */
+> +    if (!s->ipa_granule) {
+> +        s->ipa_granule =3D qemu_real_host_page_size();
+> +    }
+> +    hvf_set_map_granule(s->ipa_granule);
+>=20=20
+>      if (mc->get_physical_address_range) {
+>          pa_range =3D mc->get_physical_address_range(ms,
+> @@ -223,6 +245,8 @@ static void hvf_accel_class_init(ObjectClass *oc, con=
+st void *data)
+>      ac->init_machine =3D hvf_accel_init;
+>      ac->allowed =3D &hvf_allowed;
+>      ac->gdbstub_supported_sstep_flags =3D hvf_gdbstub_sstep_flags;
+> +
+> +    hvf_arch_accel_class_init(oc);
+>  }
+>=20=20
+>  static const TypeInfo hvf_accel_type =3D {
+> diff --git a/include/system/hvf.h b/include/system/hvf.h
+> index d3dcf088..3c4c3b89 100644
+> --- a/include/system/hvf.h
+> +++ b/include/system/hvf.h
+> @@ -36,4 +36,19 @@ typedef struct HVFState HVFState;
+>  DECLARE_INSTANCE_CHECKER(HVFState, HVF_STATE,
+>                           TYPE_HVF_ACCEL)
+>=20=20
+> +#ifdef CONFIG_HVF_IS_POSSIBLE
+> +/*
+> + * Minimum alignment for hv_vm_map().  Returns the configured IPA granule
+> + * or host page size if not set.
+> + */
+> +void hvf_set_map_granule(uint64_t size);
+> +uint64_t hvf_get_map_granule(void);
+> +#else
+> +static inline void hvf_set_map_granule(uint64_t size) {}
+> +static inline uint64_t hvf_get_map_granule(void)
+> +{
+> +    return qemu_real_host_page_size();
+> +}
+> +#endif
+> +
+>  #endif
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 2621164c..9589b022 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -38,6 +38,7 @@ struct HVFState {
+>=20=20
+>      hvf_vcpu_caps *hvf_caps;
+>      uint64_t vtimer_offset;
+> +    uint32_t ipa_granule;
+>      QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
+>  };
+>  extern HVFState *hvf_state;
+> @@ -57,6 +58,7 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *fi=
+le, unsigned int line,
+>  const char *hvf_return_string(hv_return_t ret);
+>  int hvf_arch_init(void);
+>  hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
+> +void hvf_arch_accel_class_init(ObjectClass *oc);
+>  uint32_t hvf_arch_get_default_ipa_bit_size(void);
+>  uint32_t hvf_arch_get_max_ipa_bit_size(void);
+>  void hvf_kick_vcpu_thread(CPUState *cpu);
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 5fc8f6bb..1ba5bbf3 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -12,6 +12,8 @@
+>  #include "qemu/osdep.h"
+>  #include "qemu/error-report.h"
+>  #include "qemu/log.h"
+> +#include "qemu/units.h"
+> +#include "qapi/error.h"
+>=20=20
+>  #include "system/runstate.h"
+>  #include "system/hvf.h"
+> @@ -1218,6 +1220,44 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+>      assert_hvf_ok(ret);
+>  }
+>=20=20
+> +static char *hvf_get_ipa_granule(Object *obj, Error **errp)
+> +{
+> +    HVFState *s =3D HVF_STATE(obj);
+> +
+> +    if (s->ipa_granule =3D=3D 4 * KiB) {
+> +        return g_strdup("4k");
+> +    }
+> +    if (s->ipa_granule =3D=3D 16 * KiB) {
+> +        return g_strdup("16k");
+> +    }
+> +    return g_strdup("auto");
+> +}
+> +
+> +static void hvf_set_ipa_granule(Object *obj, const char *value, Error **=
+errp)
+> +{
+> +    HVFState *s =3D HVF_STATE(obj);
+> +
+> +    if (!strcmp(value, "auto")) {
+> +        s->ipa_granule =3D 0;
+> +    } else if (!strcmp(value, "4k")) {
+> +        s->ipa_granule =3D 4 * KiB;
+> +    } else if (!strcmp(value, "16k")) {
+> +        s->ipa_granule =3D 16 * KiB;
+> +    } else {
+> +        error_setg(errp, "invalid ipa-granule: '%s' (use auto, 4k, 16k)",
+> +                   value);
+> +    }
 
-Thanks,
-Lucas
+There is a minor preference to use the glib functions here, g_strcmp0().
+
+> +}
+> +
+> +void hvf_arch_accel_class_init(ObjectClass *oc)
+> +{
+> +    object_class_property_add_str(oc, "ipa-granule",
+> +                                  hvf_get_ipa_granule,
+> +                                  hvf_set_ipa_granule);
+> +    object_class_property_set_description(oc, "ipa-granule",
+> +        "IPA granule for HVF stage-2 translation (auto, 4k, 16k)");
+> +}
+> +
+>  hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+>  {
+>      hv_return_t ret;
+> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+> index c0d028b1..565c79b3 100644
+> --- a/target/i386/hvf/hvf.c
+> +++ b/target/i386/hvf/hvf.c
+> @@ -228,6 +228,10 @@ int hvf_arch_init(void)
+>      return 0;
+>  }
+>=20=20
+> +void hvf_arch_accel_class_init(ObjectClass *oc)
+> +{
+> +}
+> +
+>  /* 48-bit on all Intel Macs. Function currently unused. */
+>  uint32_t hvf_arch_get_default_ipa_bit_size(void)
+>  {
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,104 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E509FDEE45
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 19:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA58FDEE43
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 19:07:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFzKg-0005c9-OC; Thu, 23 Apr 2026 15:03:26 -0400
+	id 1wFzOM-0006yV-EH; Thu, 23 Apr 2026 15:07:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wFzKA-0005T0-91
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 15:02:55 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wFzOJ-0006yB-ED
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 15:07:11 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wFzK8-0003Xl-Iu
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 15:02:53 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-79827d28fc4so71504497b3.1
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 12:02:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776970971; cv=none;
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wFzOF-000564-H1
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 15:07:10 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2ad617d5b80so40974175ad.1
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 12:07:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1776971224; cv=none;
  d=google.com; s=arc-20240605;
- b=FGpeUwVvd6OjczhBLUn7oV0XHtHU1orTuLabYB9XBNk399t87BdNJB/Po977xFDXKH
- JV0KwzXWFJ6yOleIWDlvF+e9Mb0ubhwxu/jCzQf7C0lV5szo4X408nkM956EkCcaA/zG
- Q/xvANa3hXoxP2iSqLah8dsrD3+JsFbWg0bz1O8E9GR/vYXT6L15No47xfGF02C8d8EZ
- F4wq4wvy6spQylvu0rmGTlZhZKF9G3rhY+pkboAgdD/cK7NCfW2VPAjpk5N1GAKleMHG
- jGHe350+qzBST6egKhQtQB04scmPxZMRtB1WNdcBG0B2cs2cu2VrxsucOx7HSl17b3Or
- 0K1w==
+ b=ehh745NzYzjIFBlY64hnchqHRvn934vfeoxdIAEqsc6k6Drp8bRJ0NJKIgCpJZxtS5
+ fwVWi7+OcoaR/ixv29AbV5w2fylefB4/bdz1Cf+jAI4Z8Sp8LfTf0wnitVWNoygm8Brw
+ RBEkiWjlllgSdPQ6wgJR0rVLEFL9a2BXNNiDZdStRbtyvTs5wfVImKJpyM4tU7nq+sL4
+ j3rNuCpeik/MOuTYVff6qQ9mNc4sgcLqyQ9qZnAnY8fPRjOaiHdLTdKCMD2o9+7BodZK
+ dK6fYrNClSvbFG82EcITKClDea4AvAqVCZ+YIK2KZpKsMq0xJTOQ5vQ5+4gAigoH2NIL
+ IYTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=CZp4zRIVLXMleEdRu4MXSsWwj+dE7/TBoBP8GARImKQ=;
- fh=Dqsp8qVTX/MUWCKmt2VKqqowYLC02g3mlQjUmj6Xc6s=;
- b=HtMNV1nTrivXeCGt+fM940s6XR5zegalsmvafqCBV3R1wWcjD/vfTjdN6QjJpM7kS4
- Y+Y++qMlGsc3xhpX7/Ig+cEIl8QLp40MuiyQ45PbleQ7Me1nolgKRHIdWFD2UrJy9Yl1
- cI/378iI+POtmEGsRFS+RFozR8C6CZoyEw6C0mc7kfVBhOsIDY02wnBXLsWexkGVlLPb
- r9X3m4RnHthWJ7auYWM66SPm7/xrDp5QJXma9F+7cFNUvXXjEqsAsYwQr0XC3n5H5MbH
- 3WMAD869vr3d+Ox1VY465Sskk9r8QEWFGRCAtED6UnoMMTnswgzWeuFnfqQCPwqaJ65u
- LWrw==; darn=nongnu.org
+ bh=RMLPa9YCz6XSMvUbc9rD0oVTb6kQ+qzbQg8vqeQXTGQ=;
+ fh=GrC7t3JuKEEgSa9VyHci0+p3xFYy9aGN8vgLB8UMMh0=;
+ b=fWk2gX37qUopK3EoqFy9NnMfIzOA45A2CKp96KjFVDLfD9tBDhpEWTOs1Xby23yELR
+ +gmddKlbNhyPBZS0eOEZCUmTUcyVcSkdzRAjG82crE9sQviPQxHIMbRRKbr6mfOm01nL
+ uPg8QchHgRzzHjTiojaJEiG/gLGS7px2lrc5Zzpbp0t2Pq8VmJezmY033UIilmACFP7x
+ /eT7cMPax81HJm0o1amcrjyWYbGH2NbF+9lS9SWAz3lAg66s6YlCxIA5ZHEFAMF7wdDW
+ J4kmhMKRlVZzXPZSM5mG031IcMf0ZhNtt2XNY0uqGHI8n0rp9Dwsfemna6NMUlBBsehy
+ UGeA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776970971; x=1777575771; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1776971224; x=1777576024; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=CZp4zRIVLXMleEdRu4MXSsWwj+dE7/TBoBP8GARImKQ=;
- b=k2owe53v85vu2yruJjrF7UGGHU0WKhXJiZxWzlE8leMMJ1M3RqIbQzlmtiVGodaj2s
- l2NDX7JBibbLPPB4zfLnfgf/2OPgGJJBBKqUh3FiKzxVjv9eXkj2aTb3clhbk5ZSFcYM
- azbhRNOvqi6HngappYn1EG20cEupR/izEk435LCOiCbHum5xzxnhAt9hjzdslFiKYRKc
- yrJ3rajoTOyBVBoLCvBP5UaA5MG924HfE6GjlVS82ig5W94sPNoBhx30HICcm452ogo0
- 61LPatH3/g4tHT2cnbh9MXaCwhGibpElV6o5AAM7CCCXb/qEPTvvwL9tcIBOpedoZKWE
- MsyA==
+ bh=RMLPa9YCz6XSMvUbc9rD0oVTb6kQ+qzbQg8vqeQXTGQ=;
+ b=oAGEMcrb6K9iMjcc2WT8bbHXNbXZBUQvcj2F+NiJWPZvIGiC5ixWPvqIvx+LhsZilw
+ r+402T9iYn/kjN7xa4uwKjcfFb127cY5rpmwi9bdrTB8wISxLwWLFaSEVaNET3Y9hhGd
+ gdhV5BtXUoSZZBaGYBVQFDN0fRoziPIdT+oKn2u75wzALIezswx8oJ5iSUsAuLnpvXN1
+ Vmy5TV7EfcaJlH7inplqgu5t0jfy94KXdL1QCF3LMWA4j21SCEmA3lfUNmR21U8lmSN7
+ +XgXuK/fGV8SysuUvpq2UYsuaq9uP5SBedZRdoOBaHubeVUVHDGkbo6Jx/8DvyImvuB4
+ eRBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776970971; x=1777575771;
+ d=1e100.net; s=20251104; t=1776971224; x=1777576024;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CZp4zRIVLXMleEdRu4MXSsWwj+dE7/TBoBP8GARImKQ=;
- b=NvR9u3XhCbOWE2W10SobPQVq0q+wTvKNUuw5mV3llwqjKEmw0MTXCwCmmPoYlSETbb
- 6Dx5qBoPXSva+IkjDLT3gPr/Qymj2wd6lIz8YqAmYMXH3emrjlX8KkzGHivG0n/Nn9fX
- RH3prPQLhqLjF1Zeuv3PEa4CbhA+/FdN2qNQS+cwR9n6dH0DP8opQ/T6pS+r0i68YF8Z
- vY7GahCZlebrv/XSMdzw0qEKY6IQf8SDSCJWFavm+QO/z5gs7ZadNxcakwmPB6I/dWcS
- NaJcrO5mSFzX5Z57yTrcNP0G5ElhP8xHatavioXr1UZHy33g0iGVLtLmIMfXMJ6tKTRz
- us2Q==
+ bh=RMLPa9YCz6XSMvUbc9rD0oVTb6kQ+qzbQg8vqeQXTGQ=;
+ b=SyuRpRpgUQSy9U4kcUhN5EEalBXyBfg8svAfclB73QntOVarpk8ocsHJ8Zv+EPmi+4
+ iid9TeyAWDps4IyGKHlgSUStTxAHWKdNYP3yxcggUID9ATbpc6XLrXR9Ry6fZ0sYoOLH
+ aZ9GlaU3LP1q0ZLrXSM6/792/WQSH9Ioh1cgwVXqjzXhrNGQOyy77jg1CMXLGZx3cb2v
+ LpkUd8MYKI4jhd6Vxq0LoTG4BKMW8YS7zDwa/TDiutiiXMYpHA0Any8h3FNBTmnTHJ69
+ rSMMeEJuuR1GMRZQCbXDC3QgMvKBDszTO/WffGdTDkguHzkdexqjgM7Hj3afwws14qzd
+ lADQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+zHvXgHbsgYebgyAHre66N4Ud3ZLcNQ4Odj7by8Y1THqvVy3YAN0DcyZkb8lst3qRRZsPMo3vkNg==@nongnu.org
-X-Gm-Message-State: AOJu0Yxt999KIwXII1O4BgH+kQiOqFaCRiXNVglyviv6PzW4x1+sIy/+
- 6hmv0gJS5PzttZuWKswEVK7Ox4st+YtF7pPkaBkE6t1x4ahNtH1X+pvamkVtSyq/nyq7SuLWrVE
- f0XzezArChr9miT265qZMlu/SlI2aZ14r50OiG07w6A==
-X-Gm-Gg: AeBDiev33n4j8JPy6JygRv6uCaUKWXDlyGWSM28a/n1teCvOFMh1/yQn3y2pzZu17lO
- X7FX9btkjFDAUqZVw+jQi8e8dQcgSj8H+m48f5Oij4xxpVd0FQpg/liDojVFIJHCBpqu1uMKuMA
- GVtBd23odeU8YSFU/wTDLQ0y13Uo/p9jEWAJmrgoS4PaqwCOT5JkThyE4bnGHQ2TBnpkuuwdbjC
- ZD0o5NAQy5GfQhuy+Rs/QtlHIvSmGySJhpzVwaxxP0aOAl+MW+DxHowJFCgqU8t1zRPp5n90vfb
- O82kiovPJ1QM1TOcVPsLWocc3zSdL5MdtMdjd0EWx1dOu07D00PHlGG+2D4uGpwb6q9aa8reOjR
- P4Q==
-X-Received: by 2002:a05:690e:204f:b0:64a:e222:d3fa with SMTP id
- 956f58d0204a3-65310b4ff1cmr20149822d50.58.1776970971431; Thu, 23 Apr 2026
- 12:02:51 -0700 (PDT)
+ AFNElJ+k5WpTsOLu5MBPN/3F2obCxLmLoma9wKuIDlqAl1lyaJzKfgcOITQWhHDepU1iwcxvzw54tkIwQw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx88YiMzgxhGzQnAi3d4qnCYOm9eLdeBiyRXI0lfzGZ8XmwEfEC
+ IZgMwxz9+PbH5aYVgvhybjCwnsKjT0vcwd4s7sacDQw3VBaChg2b8dhoG453qoYm65/Pu3jfsJb
+ Jknl8ArHseHmVfl1heWgLj2YtfeVIJsY=
+X-Gm-Gg: AeBDievUFJRGLIKM5NCk4P2SLaT3tWspWlGIKrRn4zdsvR04ehDhrR0lzuwQmDfMnKi
+ K0+F6CYsRH5bUfTHGg/YkazlI60GNGefifv3J4KJDvu5ZbNWBolAWMFI8sODlOFLFHozO/Ye2Pp
+ Cu6IIu3A/rvbN7uL/AriNtAGM5erPvs1jQ/G8DNDIp90CxxNEFElFeWXgldFbPaT5uiC9CGcZ3s
+ yz+bRbFoZ98EIZrCQ6pUM3h4kNH0SsBPfUM28qItsp0DpNETYAqmiwIB2t5fs9MokD/gdJMc0vT
+ wMG7Nuh+DwXVubAxMVUvll22oC62GGzshBKAtxhPmU+oQFzmMa0=
+X-Received: by 2002:a17:903:2ec3:b0:2b2:eae2:db38 with SMTP id
+ d9443c01a7336-2b5f9ef2317mr268394345ad.18.1776971224189; Thu, 23 Apr 2026
+ 12:07:04 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260413230251.22537-1-richard.henderson@linaro.org>
- <9136e278-f553-4ebb-aed0-ce2e0a2e2a4f@gmx.de>
-In-Reply-To: <9136e278-f553-4ebb-aed0-ce2e0a2e2a4f@gmx.de>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 23 Apr 2026 20:02:39 +0100
-X-Gm-Features: AQROBzDNqkFWLQhiyNX9UP89OABXWLAoXKncRyxB66jSobtM7ckf7eqKY1B4yYs
-Message-ID: <CAFEAcA-7PbOLT=SeMeMeUVbBfv3EEbzBuDWiLyOAgCK6jRWUkw@mail.gmail.com>
-Subject: Re: [PATCH for-11.0? 0/3] linux-user/arm: Deprecate nwfpe
-To: Helge Deller <deller@gmx.de>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+References: <20260409220614.65558-1-lucaaamaral@gmail.com>
+ <20260423180304.53789-1-lucaaamaral@gmail.com>
+ <CAFEAcA-mqtqcgMVeNgMawjN+RJF9DsfXvnLw5ncB9fRvTo2iJA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-mqtqcgMVeNgMawjN+RJF9DsfXvnLw5ncB9fRvTo2iJA@mail.gmail.com>
+From: Lucas Pereira do Amaral <lucaaamaral@gmail.com>
+Date: Thu, 23 Apr 2026 16:06:53 -0300
+X-Gm-Features: AQROBzC_bEOhWhYdNxgKuda6__I5CwuBGMuMHiO0C3q2NhcGJqtq8h4i0cE6OfM
+Message-ID: <CAFO1s2OoAe=qktioe9uWLWR5bHL+LEzrrc3DuXzremfWPQigzA@mail.gmail.com>
+Subject: Re: [PATCH v6 0/6] target/arm: ISV=0 data abort emulation library
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, agraf@csgraf.de, 
+ mohamed@unpredictable.fr, alex.bennee@linaro.org, 
+ richard.henderson@linaro.org
+Content-Type: multipart/alternative; boundary="000000000000980f8e0650255a99"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,31 +119,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Apr 2026 at 19:54, Helge Deller <deller@gmx.de> wrote:
->
-> On 4/14/26 01:02, Richard Henderson wrote:
-> > Deprecate nwfpe emulation.
-> > But while it still exists, fix thread safety.
-> >
-> > r~
-> >
-> > Richard Henderson (3):
-> >    docs: Deprecate linux-user/arm/nwfpe
-> >    linux-user/arm/nwfpe: Replace user_registers with current_cpu
-> >    linux-user/arm/nwfpe: Use thread-local storage for qemufpa
-> >
-> >   linux-user/arm/nwfpe/fpa11.h | 25 ++++++++-----------------
-> >   linux-user/arm/cpu_loop.c    |  2 +-
-> >   linux-user/arm/nwfpe/fpa11.c | 12 ++----------
-> >   docs/about/deprecated.rst    | 12 ++++++++++++
-> >   4 files changed, 23 insertions(+), 28 deletions(-)
->
-> I've applied this series to the linux-user for-next git tree:
-> https://gitlab.com/hdeller/qemu/-/commits/linux-user-next?ref_type=heads
+--000000000000980f8e0650255a99
+Content-Type: text/plain; charset="UTF-8"
 
-Please don't take patch 1 -- we put a different version of
-that into git already before 11.0 was released.
+I don't mean to be a pain, the contributor guidelines says to ping weekly
+if not reviewed, I just included that in my todo list (and doing every two
+weeks).
 
-thanks
--- PMM
+Lucas Pereira do Amaral
+
+Em qui., 23 de abr. de 2026, 16:01, Peter Maydell <peter.maydell@linaro.org>
+escreveu:
+
+> On Thu, 23 Apr 2026 at 19:03, Lucas Amaral <lucaaamaral@gmail.com> wrote:
+> >
+> > Ping. This series has Reviewed-by from Mohamed Mediouni on all 6
+> > patches and addresses all v5 review feedback from Richard Henderson.
+> > Patches still apply cleanly on current master.
+> >
+> > https://patchew.org/QEMU/20260409220614.65558-1-lucaaamaral@gmail.com/
+>
+> Yep, it's on my list to look at (along with 27 other series...):
+> I'm just waiting for my current pullreq to land before I start
+> assembling the next one.
+>
+> thanks
+> -- PMM
+>
+
+--000000000000980f8e0650255a99
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div>I don&#39;t mean to be a pain, the contributor guide=
+lines says to ping weekly if not reviewed, I just included that in my todo =
+list (and doing every two weeks).</div><div><br></div><div data-smartmail=
+=3D"gmail_signature">Lucas Pereira do Amaral</div></div><br><div class=3D"g=
+mail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">Em =
+qui., 23 de abr. de 2026, 16:01, Peter Maydell &lt;<a href=3D"mailto:peter.=
+maydell@linaro.org">peter.maydell@linaro.org</a>&gt; escreveu:<br></div><bl=
+ockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #=
+ccc solid;padding-left:1ex">On Thu, 23 Apr 2026 at 19:03, Lucas Amaral &lt;=
+<a href=3D"mailto:lucaaamaral@gmail.com" target=3D"_blank" rel=3D"noreferre=
+r">lucaaamaral@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Ping. This series has Reviewed-by from Mohamed Mediouni on all 6<br>
+&gt; patches and addresses all v5 review feedback from Richard Henderson.<b=
+r>
+&gt; Patches still apply cleanly on current master.<br>
+&gt;<br>
+&gt; <a href=3D"https://patchew.org/QEMU/20260409220614.65558-1-lucaaamaral=
+@gmail.com/" rel=3D"noreferrer noreferrer" target=3D"_blank">https://patche=
+w.org/QEMU/20260409220614.65558-1-lucaaamaral@gmail.com/</a><br>
+<br>
+Yep, it&#39;s on my list to look at (along with 27 other series...):<br>
+I&#39;m just waiting for my current pullreq to land before I start<br>
+assembling the next one.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div>
+
+--000000000000980f8e0650255a99--
 

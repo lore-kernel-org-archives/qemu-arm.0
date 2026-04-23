@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF1AFDEE2B
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62742FDEE2C
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:06:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFxU0-0003X3-2X; Thu, 23 Apr 2026 13:04:56 -0400
+	id 1wFxTi-00028o-0J; Thu, 23 Apr 2026 13:04:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxTi-0002Bn-OI
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:39 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxT9-0001Sd-AU
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:04 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxTd-0005x5-G0
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:38 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-488b0e1b870so112941665e9.2
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:04:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxT2-0005jd-SF
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:01 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-43fe3e22e33so4556537f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:03:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776963872; x=1777568672; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776963835; x=1777568635; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MqoR8+5+ajlcuLd5JxwnxOpo8CeItjayYOK0zAMELiY=;
- b=PfafYJePD/a7VyyNmEGRgNb50P1rq7nFm5dt2k5vOXQh1U4j9Lizvz8DDRGEAvYwGP
- 81V1PDiUrxsnnU1wjLzV1o7FmZAmfmrhyqulefN60ldFnih9IpKq5XVWXLvy0F1r7CPR
- 9lM2XdU+OWZ3lYndqa9yyrsSuHJdv4HoY9EGBWB7Us9u9HPS3vCV9NZYjLj+oMnuoLSa
- BLsbLwnTzxSYXkVpnhLjxvc90D+zn0nhPTcuKaLiIIP2BLfCcrItZ7EY2J3VsL8yrwXq
- MXS4YI8JWy8Y7S0vneNaEdzJIEMwS8L21e6G6y6e8beSuixwywu6snVSCkJVNKMDNr5s
- nTMA==
+ bh=ZCFQzooRNCLAU0lxbQyFXKr+3+SaXX5+jlkuAyFk6Qg=;
+ b=io4xn7R/SmxpXazT0G6JihMVClWhfblgSELzjJ2T9I6R8z72Ll3TtzUhGBHwjkhSTO
+ DpPcNEKiuC0a4WwpyNut/F94QufjFmK4D/Bs4WiLWQx2nQyF6s4fZNECGHxi3FjmCTXW
+ MConiZCjTz0YU8u5En+pK3NLsuwJ+CK4ccgm8nPGboaQkt3paLiYTk9Y+P7NdLR+/gI6
+ HMfddqwqQWiCuZiQhhEelInVV1spQZ/PGJSu3a11+gUhAH5jIzkbKrvkBWpH+X3mYrjK
+ KEKCll51CHy3EB2ziSK1lccxa1JmFUKcnyCLXtMJC2WFeTlhpb0nOmX/fCXYXhAuS0lp
+ SPbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776963872; x=1777568672;
+ d=1e100.net; s=20251104; t=1776963835; x=1777568635;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=MqoR8+5+ajlcuLd5JxwnxOpo8CeItjayYOK0zAMELiY=;
- b=UB99Rh4UwJ4TE4AfkiHzhdPvt7x9HkJ5QC/cERVt1J5XfAk0QT8pU0jBnWoUInlvGo
- xNVlTL3FA24a4x/30IPRATcubxrsEj/L8WtufUxfN1kdn2YHH9xZyXCrqUyOgF/ZQ3UW
- HhtBSJzu7kMQUpVeZiAcQVNU6xbi21gCFzdhU6gKsCOqcCzCySy0NL/xSdRFAmBeEykt
- 25UDpKmQopYxgB5G6K19TycGdqO1v5gK/VdBZrzShfvu3Asf9/VdTCnJdZ5x14BWh5yJ
- zF9dGlpgCGzYAQRoFwkbWOY8q8ufG/25RCLHE17iEv/3IC12Uhd6O6rkyeufKKbrlN6S
- ckwA==
+ bh=ZCFQzooRNCLAU0lxbQyFXKr+3+SaXX5+jlkuAyFk6Qg=;
+ b=geSnh559r02E3NfdeoDPtFMT6cRMP2NqUQaW6Yw5RM2WoY+qzsXUyXYLPVIuoIt+zB
+ wttyqqJAdDRg+ZRe8ywyWVqUksXPC9dvf7gzus2TfacwAKXhDaOs3lnr/PWEcy9q9uCH
+ 14C1yhBfuRlVIWcD2ImWIjtcIC/18sgjUROlUbKuzeotrbZhIMZ8C8CNl0oDIxJy3bKh
+ 6RAfEXmobY3YBTzQ85xEotNBM1K9BhENweCJDUNyqqKpjmgG62kH3vaIhRBFgktUS/GB
+ 1p7qa23YdJGZ8O4Q5rPnP5Lmy4ptn4pR0WdR/OywftNtSN1222JgN2OIGTljZm4PMLxV
+ 3/uQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9uenXAfGfWHAdB56E5XLjR0MOo2OaGIKDAl95jcPdcUpLBPS0H+daX2d07yuXaQvF/u5HDWS59cw==@nongnu.org
-X-Gm-Message-State: AOJu0YzxOrMfF9WGP6HNKLmrnTpRmVoRHu3UyNeTjQU1Hgn6K1KcL41v
- RSRWe9o9mR/hbwnrXla2esXbheMyA7KBI8Z62WFTNtxdmr0SAIKFsxXUOPhsAjeKluw=
-X-Gm-Gg: AeBDiet4ZFkU/JF89bmaPAV6Z84P8h1lhv0AJe0lDG269yxQ8m0vM+kzecAIjEJv1MT
- abQ3ZLJCIhnY7JEAIB4OdpWTyuXu0vHPvsmiQp1t1QpDJJOBEnj4fWmsGiGgkK2n4oee6+rbj7E
- hID/ysgZBM/If+LltXczTck0swLJIJkbq5wBrSbcpTi3kITA4rOzFhqwovziI6dCCJUn/f4JpoK
- L3G/hr6p9i2pjySYGsBqHvdwm6+MfaSWuStUoR9EUvWC4Oe1Rkz8sRYGT9M648ezYz3WGFokIbY
- apBcnYiKHbd/733tSed/Tyj7phbYczW+PWEnVFnTZQ8YfIKlFF66ajzybtnOtwLRv5sv2yfoa1A
- Kl4CG26N/qMj9YgVGlVerHb40l+aFlmy2zBQdBA4xMyAqwAxF0V94QhQuL1yHqW3KoKlRwlFAH2
- MYTii+kWXVPmPSosK4dOOc8Nj1M4BfFLiIst836Kq5bJNWbXyU31ZnNXqCxBTmGZOAwfDkbgTQu
- a2y5WF0nFA=
-X-Received: by 2002:a05:600c:3110:b0:487:2439:b7be with SMTP id
- 5b1f17b1804b1-488fb7389dfmr418371755e9.6.1776963871992; 
- Thu, 23 Apr 2026 10:04:31 -0700 (PDT)
+ AFNElJ/fFwDLbMm4k5Unx+NNk4EvyU1uII5S5SmeVHZsTF9nMsyd53wk2F9c1Tun0qCRC6qiAUvom50Rgw==@nongnu.org
+X-Gm-Message-State: AOJu0YyOFsw+xkLmj/OW/XG4Podcur8HM1BGoh3DbKCWI6p1wGXAir6W
+ QpUfiFt9CCSfvT5ZgsoYVWyGKjHPCIenhrfeMiRBOOftC9kRa6a7dourGe6qPaFizWA=
+X-Gm-Gg: AeBDievea43zXvQAA0yZRJZO0bwWSdhPM0/TB/pay/UQI4KCBqQloDCWDn/GJY8nnu/
+ fWhGkVHhBGiSOl4cwVS6kDcaMfx+RX+dX4Yvfn3A1VrVrAFCKaXrlXB8WQH7kbVfpDGg3NJ7zph
+ al2Ki4mEY/MAZNyks0prQerDMNxW//npeFvJRaR+7PeZjayUi4HNA+YN2aGn1JA/SG179bqp52r
+ xUohLYy0P15o2cZxYpPrdXEx0U/wv42obxA5HkEpxYCpfLOYYjdeLM4+RRAgb780ix+mEIHcn19
+ qcuKR9mW5X4h7H/cpPCPYzrINWL8M+OsJDrIT6pCRZF/LzqMh7Ayqexi0bkmRCZnJJuEZ3oPRs7
+ +/Q6aM91Sj6Hib8o3PEBGJ+3lrM8nVJZmCmPqRUNjE/NHnb8G9BeAcYswlaCcRnUzP7IJ0jBLlc
+ Ppemh4DwEensAjzazS6jB30JiNvc2G0JlWLf0mXoNZcnQ6GcvFLdtwqjbQOJA0/P4t3caiMGmsO
+ /O36ekGvM4NPg/8cAvhGA==
+X-Received: by 2002:a05:6000:2909:b0:43d:733f:aee6 with SMTP id
+ ffacd0b85a97d-43fe3dbecebmr42817355f8f.10.1776963835241; 
+ Thu, 23 Apr 2026 10:03:55 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e44f69sm56847463f8f.25.2026.04.23.10.04.30
+ ffacd0b85a97d-43fe4e3a174sm59920785f8f.18.2026.04.23.10.03.53
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Apr 2026 10:04:31 -0700 (PDT)
+ Thu, 23 Apr 2026 10:03:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>,
@@ -74,26 +74,26 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH 16/16] Reapply "target/arm/hvf: Sync CNTV_CTL_EL0 &
- CNTV_CVAL_EL0"
-Date: Thu, 23 Apr 2026 19:02:28 +0200
-Message-ID: <20260423170229.64655-17-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 11/16] target/arm: Only set CPU_INTERRUPT_EXITTB for TCG
+Date: Thu, 23 Apr 2026 19:02:23 +0200
+Message-ID: <20260423170229.64655-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260423170229.64655-1-philmd@linaro.org>
 References: <20260423170229.64655-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,93 +109,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 28b0ed32b32c7e5094cf2f1ec9c0645c65fad2aa.
+Commit 34c45d53026 ("target-arm: kvm - re-inject guest debug
+exceptions") removed CPU_INTERRUPT_EXITTB from KVM, but it
+also appears on HVF. Better to restrict it to TCG.
 
-Still not working...
-
-  **
-  ERROR:../../target/arm/machine.c:1045:cpu_pre_load: assertion failed: (!cpu->cpreg_vmstate_indexes)
-  Bail out! ERROR:../../target/arm/machine.c:1045:cpu_pre_load: assertion failed: (!cpu->cpreg_vmstate_indexes)
-
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20250630130937.3487-2-philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 42 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index a905d9bc370..01b2a904c3c 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -201,6 +201,9 @@ void hvf_arm_init_debug(void)
- #define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
- #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
- #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
-+
-+#define SYSREG_CNTV_CTL_EL0   SYSREG(3, 3, 14, 3, 1)
-+#define SYSREG_CNTV_CVAL_EL0  SYSREG(3, 3, 14, 3, 2)
- #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7389f2988c4..45183df4449 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9577,7 +9577,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
  
- #define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
-@@ -731,6 +734,40 @@ static bool hvf_sysreg_write_cp(CPUState *cpu, const char *cpname,
-     return false;
- }
+     arm_call_el_change_hook(cpu);
  
-+static void hvf_arch_get_vtimer(CPUState *cpu)
-+{
-+    hv_return_t r;
-+    uint64_t val;
-+    bool b;
-+
-+    r = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, &val);
-+    assert_hvf_ok(r);
-+    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, val);
-+    assert(b);
-+
-+    r = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, &val);
-+    assert_hvf_ok(r);
-+    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, val);
-+    assert(b);
-+}
-+
-+static void hvf_arch_put_vtimer(CPUState *cpu)
-+{
-+    hv_return_t r;
-+    uint64_t val;
-+    bool b;
-+
-+    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, &val);
-+    assert(b);
-+    r = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, val);
-+    assert_hvf_ok(r);
-+
-+    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, &val);
-+    assert(b);
-+    r = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, val);
-+    assert_hvf_ok(r);
-+}
-+
- int hvf_arch_get_registers(CPUState *cpu)
- {
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-@@ -767,6 +804,9 @@ int hvf_arch_get_registers(CPUState *cpu)
+-    if (!kvm_enabled()) {
++    if (tcg_enabled()) {
+         cpu_set_interrupt(cs, CPU_INTERRUPT_EXITTB);
+     }
  
-     ret = hv_vcpu_get_reg(cpu->accel->fd, HV_REG_CPSR, &val);
-     assert_hvf_ok(ret);
-+
-+    hvf_arch_get_vtimer(cpu);
-+
-     pstate_write(env, val);
- 
-     for (i = 0, n = arm_cpu->cpreg_array_len; i < n; i++) {
-@@ -929,6 +969,8 @@ int hvf_arch_put_registers(CPUState *cpu)
-     ret = hv_vcpu_set_reg(cpu->accel->fd, HV_REG_CPSR, pstate_read(env));
-     assert_hvf_ok(ret);
- 
-+    hvf_arch_put_vtimer(cpu);
-+
-     aarch64_save_sp(env, arm_current_el(env));
- 
-     assert(write_cpustate_to_list(arm_cpu, false));
 -- 
 2.53.0
 

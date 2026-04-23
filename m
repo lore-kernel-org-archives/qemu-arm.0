@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DC7FDEE51
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 22:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BA90FDEE4D
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 22:28:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wG2V1-00064r-3v; Thu, 23 Apr 2026 18:26:19 -0400
+	id 1wG2Wa-0006kJ-B8; Thu, 23 Apr 2026 18:27:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wG2Uz-00064K-LZ
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:26:17 -0400
+ id 1wG2WZ-0006js-4i
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:27:55 -0400
 Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wG2Uy-0001Q3-42
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:26:17 -0400
+ id 1wG2WX-0001n5-LJ
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:27:54 -0400
 Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-35d94f4ee36so4495196a91.3
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 15:26:15 -0700 (PDT)
+ 98e67ed59e1d1-36146ae9dd4so5791566a91.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 15:27:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776983174; x=1777587974; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776983272; x=1777588072; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=n/iigfwgrfWLAXFD3CTn0dBiOigG9aIfPf4zFLqqEFY=;
- b=jdhyfM3E8TqZpNlbsc6nbSzZhHwCNMStO48YWM8pctTfx4vpkMwW1EpFuJeIscuZ7d
- +6FwZs94b7ueFcXxD/Ahpq/kbak1Kcdp9F0zAslKn0huKJbfClP6EcNw8dKeP+7dPZnu
- RIw3Au3nA7si2ckihO0H+UEZv6hQJLs3UI45WVsNVDg3MYpcCsQKT4IHajZL6t7P4bA5
- SPWGeTdiTznefwSMujR68BrLNt4ckTgtcpTvcx/OuPTlUmCfu3LXgYNovy6awuZ6R255
- yMrZFIJzNUQJSpVFBg1unZTt7vfw01TBCTn98Wguve1HpgecwgbBII+eOVC3YjljVdnD
- v8Pg==
+ bh=R4xO++qVhRd1W4yQ95C2lw/hYxaxAJmH0o2HwH7syhE=;
+ b=sth5Hd5tbD781J7hy/68yxbC7Qo2kZHFEID9tiYe14up9znjpZtsPL+cG1YdxOiy85
+ F0E41JMS4dEPBQ7n6vzutbXIvxRYgySekW9GS2JR76KJRRT5OZkqakDvsMB48KpUWtY1
+ BHhnsRWwLisci4uNuOHutiZurXVl9YjTpQsERFmHKD/GaT7StOrQ9B+65t6zkmj7/fBT
+ cu9R64xvDGBDlqODpYt/4p97Zs9HRZO303YCsgQutEZELG2NRZqimWjhss5AcFNV2QUd
+ rrlbRrA5EQ/HGaVL/XK16zmk6Tz/J4ZwjIRAKqUgXWo70dhGNHONdTJr4l0bgFStuh7E
+ JfvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776983174; x=1777587974;
+ d=1e100.net; s=20251104; t=1776983272; x=1777588072;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=n/iigfwgrfWLAXFD3CTn0dBiOigG9aIfPf4zFLqqEFY=;
- b=ZUj8xOvKHrmGoR2wbS/JKcXtElB4tivKw99t7dtxMO59sja38Q3y6qPoO4AVmjbhDf
- eG6tIPLfjIFTUaE7IGd0+96NGHiR2+RYFYUt1DUdbpMC7ETqfmp7MWe/jWgJOM7uTBC1
- G2nePw1HSGiX1isXpnbB7yT91aQMUyJuRcAMZKOEFMXTEYKbybPaFdeSsTHQUT92JaYX
- bb4wpJtFe8pQPr730hLX6bn4JCmLD5grTsYUhWoA22wkNaElLyvIs84TDPymGOhlckmB
- +K0jMVT7Fk2QwI2Zk+j8TCc/L0KwUE5YG7OeoeORlsN75pW0uLcX7RzabAga3cc4Bah0
- 0mAQ==
+ bh=R4xO++qVhRd1W4yQ95C2lw/hYxaxAJmH0o2HwH7syhE=;
+ b=ZebozTQR6q05u8NqSl1gCwMuRCqAftwcCRbYJmjvL8AJ28dK0RiVeNswws/thex82i
+ sl6RKfXIgpFb1ejQyQsLRKY/cSGrR/5yLVSxr892NZCpYTd8Gr4cpAa3a5+4wPcO9D5M
+ tZh+35+X2uLsYIsDB9tm8O5rklIr8onxPKvuj5x6FM9gswBXs9fG4wcOWbfue73QDqX4
+ PT0YszP67fzsJE5jIZ5ETnGx89hDLS1OxfLv1Hz0rcMJX6L3Yfir8gFBiyZ1xeiug9kA
+ cBs6UiYk67+/GV8PwOMl15kHjsBk4b+GxpNCkJ+x53iwp7dMEudUaeFMCdGZ8SyrXNT2
+ qEtQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/2aJ8AbNOVEXE6voINBtP0/xQ10U/LcfapppiEPYXAV8Uat3Cx87O6ZgESu/PTO2A9qbxwt5hIDw==@nongnu.org
-X-Gm-Message-State: AOJu0YxuZyIBLX7gVfjpEYXpczp7rgUKjqrqqj2VWA/h/9CRBjDgDYCi
- bLV+tqC9GNXVNgSXe9Gnr2yOGy/o1XZK7v0hhXhHPuC9W6O/awm9wFVRQS1bqmGfLGI=
-X-Gm-Gg: AeBDievihaEgYpVZGC6KXEgPDFogAjKFgwDRSQMIZ91PEiGBrzX4j2QR6kwTA1MRvSU
- NKZ23jgC76wVX+lrI9vX1AujmoJTIqYmQ/99fE9JzU9+8mlaeO2toIykWxD9663h+keWAizAKXc
- a+bNw2IVcmwaliz7kAzZ1EDXXUsQ/KdLefkKuUzRX6h+i4S2mqU+qorKiBbVJsv6HlyYi8sym6c
- DBJdx5YvvI5VG+tdqr7rXCVReVvpcYJMeWEG6jZzCAv+RSweVAplRdeYPWS8hLTZEiq1aDqgFfD
- OOtT0EowkZiSBGaYkH/tRg9Oo8ei5quIAI8q4o7mSH5BHxGQZ1j2JgLRyy17xkn50BDgFDCMxqX
- X/JgKEsF8sceEvI3irO1nVl6GZcjJ+vkwHP/XhTnr68EA12dsNTmuiwRY8QVTaXzoM5cXnVnN1d
- g6u0BQ/SVDiVgO1M9qyG+Zi39Fge1Pu1DJ4jwARYZw1s5pDdSnyw==
-X-Received: by 2002:a17:90b:1fc4:b0:35b:e4f8:7cb0 with SMTP id
- 98e67ed59e1d1-36140491cfcmr31031374a91.21.1776983174092; 
- Thu, 23 Apr 2026 15:26:14 -0700 (PDT)
+ AFNElJ9CNJDmnioWjTKmS9q/s+WU/xJi4ui8sfenl6jFWkQ0PO0dntiK2N2cIymX4GAnXu5+HZzDY6BF9w==@nongnu.org
+X-Gm-Message-State: AOJu0YzY5fQFohlOwftaPHtTdJT7fmAltb6F7DhiOXSpIEidSKr+3nvJ
+ ey3JOU3IT4E+jaaG+gM9K4R2NX7i4vpHEs/AOCjg18GSkc7xRLYs9Ifg86ddu02UW4w=
+X-Gm-Gg: AeBDievHnJufwg0Zc9CM+sPupR8/HahRTITRf3DsTIGb3wkAg4NdtB8OKFBLjt54slL
+ aH3BEUhroX48fmcCn426V8E3/MsLe4zPIIYmeai1T3F9qXCXMInttKyAiqssz2lGIB59IPgNJXi
+ z9guAILMxhpLNk8OKHsbgOZlcX+TGQadPdFd0WLJZ8pc2aqukfr59rBSWz/eNi6XssfQeXFSINF
+ n53cYabnquBNx4++ATTpwjdBiSugcIMgj/ZHJCbN50OAjl3K636iPP6C3GneX5DK8eUMCYJ2j1L
+ vX5SJNDPq2CvWlmC7GDe+aZpljuewFvz4yJ657Q1R0wVuv0WqiS3871ZbhyqCgiOf6XSWd4rRI9
+ vQmDR1fJ60s5yjkLD9rT4JUSm77M6F0XgLfgt1tSucFda/x7nuCCE36DREJ8SnhoWkL03+YY/vg
+ J3fKqe/xKruTjSwzm0gQ+Re1cFK7tXupDiL7c0XMjoyvvh4K97Ow==
+X-Received: by 2002:a17:90a:fc45:b0:35b:e4f8:7b2b with SMTP id
+ 98e67ed59e1d1-36140468f71mr29130726a91.18.1776983271899; 
+ Thu, 23 Apr 2026 15:27:51 -0700 (PDT)
 Received: from [192.168.1.134] ([110.239.0.232])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3613fb42e25sm10353803a91.3.2026.04.23.15.26.09
+ 98e67ed59e1d1-3613faf1103sm7841476a91.8.2026.04.23.15.27.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2026 15:26:13 -0700 (PDT)
-Message-ID: <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
-Date: Fri, 24 Apr 2026 08:26:05 +1000
+ Thu, 23 Apr 2026 15:27:51 -0700 (PDT)
+Message-ID: <4388142b-c6cd-4e06-936e-c3b4b3ee7320@linaro.org>
+Date: Fri, 24 Apr 2026 08:27:43 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu))
- expression
+Subject: Re: [PATCH 02/16] hw/cxl: Define cxl_fmws_get_all_sorted() stub
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>,
@@ -81,12 +80,12 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
  <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Brian Cain <brian.cain@oss.qualcomm.com>
+ Fan Ni <fan.ni@samsung.com>
 References: <20260423170229.64655-1-philmd@linaro.org>
- <20260423170229.64655-2-philmd@linaro.org>
+ <20260423170229.64655-3-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260423170229.64655-2-philmd@linaro.org>
+In-Reply-To: <20260423170229.64655-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
@@ -114,48 +113,35 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/24/26 03:02, Philippe Mathieu-Daudé wrote:
-> env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
-> available via the ARCH_CPU() macro. Use the latter
-> to avoid using &env.
+> Add a stub for cxl_fmws_get_all_sorted() to fix building
+> a QEMU configured with the '--without-default-devices' option:
+> 
+>    Undefined symbols for architecture arm64:
+>      "_cxl_fmws_get_all_sorted", referenced from:
+>          _cxl_build_cedt in hw_acpi_cxl.c.o
+> 
+> Note, the CXL <-> ACPI Kconfig relationship is a bit convoluted.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/arm/hvf/hvf.c       | 2 +-
->   target/hexagon/translate.c | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   hw/cxl/cxl-host-stubs.c | 5 +++++
+>   1 file changed, 5 insertions(+)
 > 
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 5fc8f6bbbd9..2fb768048b8 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+> index c015baac813..9b515913ea4 100644
+> --- a/hw/cxl/cxl-host-stubs.c
+> +++ b/hw/cxl/cxl-host-stubs.c
+> @@ -18,3 +18,8 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+>   void cxl_fmws_update_mmio(void) {};
 >   
->   static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
->   {
-> -    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
-> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
->       int ret = 0;
+>   const MemoryRegionOps cfmws_ops;
+> +
+> +GSList *cxl_fmws_get_all_sorted(void)
+> +{
+> +    g_assert_not_reached();
+> +}
 
-ARM_CPU has an object_dynamic_cast_assert() inside; the env* converters do not.
-You should be making a considered choice about this change, not just "simpler".
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
-
->   
->       switch (exit->reason) {
-> diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
-> index 633401451d8..825b236dd24 100644
-> --- a/target/hexagon/translate.c
-> +++ b/target/hexagon/translate.c
-> @@ -978,7 +978,7 @@ static void hexagon_tr_init_disas_context(DisasContextBase *dcbase,
->                                             CPUState *cs)
->   {
->       DisasContext *ctx = container_of(dcbase, DisasContext, base);
-> -    HexagonCPU *hex_cpu = env_archcpu(cpu_env(cs));
-> +    HexagonCPU *hex_cpu = HEXAGON_CPU(cs);
->       uint32_t hex_flags = dcbase->tb->flags;
->   
->       ctx->mem_idx = MMU_USER_IDX;
-
 

@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 609A1FDEE50
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 21:11:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DC7FDEE51
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 22:26:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wG1KQ-0006uT-5o; Thu, 23 Apr 2026 17:11:19 -0400
+	id 1wG2V1-00064r-3v; Thu, 23 Apr 2026 18:26:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wG1KJ-0006tU-1h
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 17:11:11 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wG2Uz-00064K-LZ
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:26:17 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wG1KG-0000oz-LD
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 17:11:10 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so87685595e9.2
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 14:11:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wG2Uy-0001Q3-42
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 18:26:17 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-35d94f4ee36so4495196a91.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 15:26:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776978667; x=1777583467; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776983174; x=1777587974; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Xf4e2tPMUiv5P95Z/xnw7mO0jVJQzPQ9bRvycsodzvo=;
- b=tU6uhbFURPYZtMbswAFxLnAI/k8LlLtvndDaryh+V5bQ2h3/X17+hkuVyOshclKm2O
- va8GyyYKjqZC6PkAG+YzdR/L0fgcVuV53vuXQEIVsvNgr9GNiwn5DpKQJB3b0oDmtEqz
- Z4ioCJ/8KPUYZr0j+xLSkUKS/Jj5Z46tIZ1ZrILUHO4/Bl18yRTnxh2fuB42joPN97N5
- 7+/+TOKo5bTjq3JwzDfh2Ho4T3C8E5hBqD0dyFl4a23B+/rsusOUbRkTJyb0SqnPPLB/
- S901HB0efbgW5Nlr6Pah1SiBWp322ztvfMQd9xPQzllRYKe+vSzj776nkYAjJDN+hMJ5
- GHeQ==
+ bh=n/iigfwgrfWLAXFD3CTn0dBiOigG9aIfPf4zFLqqEFY=;
+ b=jdhyfM3E8TqZpNlbsc6nbSzZhHwCNMStO48YWM8pctTfx4vpkMwW1EpFuJeIscuZ7d
+ +6FwZs94b7ueFcXxD/Ahpq/kbak1Kcdp9F0zAslKn0huKJbfClP6EcNw8dKeP+7dPZnu
+ RIw3Au3nA7si2ckihO0H+UEZv6hQJLs3UI45WVsNVDg3MYpcCsQKT4IHajZL6t7P4bA5
+ SPWGeTdiTznefwSMujR68BrLNt4ckTgtcpTvcx/OuPTlUmCfu3LXgYNovy6awuZ6R255
+ yMrZFIJzNUQJSpVFBg1unZTt7vfw01TBCTn98Wguve1HpgecwgbBII+eOVC3YjljVdnD
+ v8Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776978667; x=1777583467;
+ d=1e100.net; s=20251104; t=1776983174; x=1777587974;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Xf4e2tPMUiv5P95Z/xnw7mO0jVJQzPQ9bRvycsodzvo=;
- b=S/Aopith6F6GoO8SNXrJ05hqFbwqXE+DGjkp9D5D9d8ZPkumVlEP4jzKc1+Ib5qJVs
- IRkEHC00mFffeeJz73Rzc8b0SlJFtYA+mm9iuHLZaLu3ypj13ahpPIAC50eAga2M13fb
- tOuFRcBhHHxKzG1eZ8RsDAbfsmjhXGF7+01eKI4JzZhUYbgast5gtsvbcC1F8oD9ZILd
- Djn1etg0cWurRbKdxs0rGvTGCcY1uwE16SxwKVb327/aFoBIgTeRdIPHaaWleHJpRlg8
- Osm+mUsEsV6wHCXyEB98tMMk+7lsh/gVUBuW2l/3evEd4PixDjKZ+jxXZsKOu932aQ2x
- 1JGA==
+ bh=n/iigfwgrfWLAXFD3CTn0dBiOigG9aIfPf4zFLqqEFY=;
+ b=ZUj8xOvKHrmGoR2wbS/JKcXtElB4tivKw99t7dtxMO59sja38Q3y6qPoO4AVmjbhDf
+ eG6tIPLfjIFTUaE7IGd0+96NGHiR2+RYFYUt1DUdbpMC7ETqfmp7MWe/jWgJOM7uTBC1
+ G2nePw1HSGiX1isXpnbB7yT91aQMUyJuRcAMZKOEFMXTEYKbybPaFdeSsTHQUT92JaYX
+ bb4wpJtFe8pQPr730hLX6bn4JCmLD5grTsYUhWoA22wkNaElLyvIs84TDPymGOhlckmB
+ +K0jMVT7Fk2QwI2Zk+j8TCc/L0KwUE5YG7OeoeORlsN75pW0uLcX7RzabAga3cc4Bah0
+ 0mAQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8+xttHn3RGX0ZxXoIs08fdiROBpUL+3b0YzlvGy7fv/AdqRoCD3EC46rkkkwnz6YPIRwIGwUDjYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyykV7QVdM108RO5E62cPsTtjMECOwFuTS3UXlt+MABWqtp3YiQ
- DncCDu/BIWonC+3eglPcwcOWLPCyhgXGzJPW4d5uFB7tv5zUG+6qm0FGOhedUdPkKac=
-X-Gm-Gg: AeBDieuV/Ri+zQW6Sn2eSi6su+8LIEjhsl0SL+w4e8SRWW/dojx49qa2d4DIS5HzL1c
- ED49I2zlToTwaS8BCUERlphCk5LJVK7g0RaY8Umh03RMhMSL2PhGSzj/Bmy2W2dYo+LoLEIFCGl
- WV/haf7pARet4AhlOxSW4cQHm6qXF+iI6cYXAtfgr0jGE+dUU1R2eqYqAHGpzYJUji7lMBvnicM
- fWyXRnPomEr32wTPArIsdY/dKUj0GDR3aqf9lzq11PeJA5VtfjbMT+gTdrZu6E+tuowoTqLCkC0
- o38q/LwBFNefqpJ0b9z8Sxc7FfmedmgDS2QREz5i0yQi//+DePmVWfV5eRLS8gh7Daa16khvkrU
- KR5QjX3FgO/FVrXGaYA/GfMOus9ONUlVS4UXMBLdcApPEsJaFSTmBJd6NC/3uDGMMxuxX5JC1Cv
- pNfr/Z+Riny1mfXYePgyossZy36VyPaeFY6sPlVtU4n8IX9BJdZ5SzdOv9QqU2314ORdeZbZEtP
- epa
-X-Received: by 2002:a05:600c:4895:b0:488:ffad:6728 with SMTP id
- 5b1f17b1804b1-488ffad67f4mr209453995e9.19.1776978666796; 
- Thu, 23 Apr 2026 14:11:06 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fb762f56sm170177185e9.15.2026.04.23.14.11.05
+ AFNElJ/2aJ8AbNOVEXE6voINBtP0/xQ10U/LcfapppiEPYXAV8Uat3Cx87O6ZgESu/PTO2A9qbxwt5hIDw==@nongnu.org
+X-Gm-Message-State: AOJu0YxuZyIBLX7gVfjpEYXpczp7rgUKjqrqqj2VWA/h/9CRBjDgDYCi
+ bLV+tqC9GNXVNgSXe9Gnr2yOGy/o1XZK7v0hhXhHPuC9W6O/awm9wFVRQS1bqmGfLGI=
+X-Gm-Gg: AeBDievihaEgYpVZGC6KXEgPDFogAjKFgwDRSQMIZ91PEiGBrzX4j2QR6kwTA1MRvSU
+ NKZ23jgC76wVX+lrI9vX1AujmoJTIqYmQ/99fE9JzU9+8mlaeO2toIykWxD9663h+keWAizAKXc
+ a+bNw2IVcmwaliz7kAzZ1EDXXUsQ/KdLefkKuUzRX6h+i4S2mqU+qorKiBbVJsv6HlyYi8sym6c
+ DBJdx5YvvI5VG+tdqr7rXCVReVvpcYJMeWEG6jZzCAv+RSweVAplRdeYPWS8hLTZEiq1aDqgFfD
+ OOtT0EowkZiSBGaYkH/tRg9Oo8ei5quIAI8q4o7mSH5BHxGQZ1j2JgLRyy17xkn50BDgFDCMxqX
+ X/JgKEsF8sceEvI3irO1nVl6GZcjJ+vkwHP/XhTnr68EA12dsNTmuiwRY8QVTaXzoM5cXnVnN1d
+ g6u0BQ/SVDiVgO1M9qyG+Zi39Fge1Pu1DJ4jwARYZw1s5pDdSnyw==
+X-Received: by 2002:a17:90b:1fc4:b0:35b:e4f8:7cb0 with SMTP id
+ 98e67ed59e1d1-36140491cfcmr31031374a91.21.1776983174092; 
+ Thu, 23 Apr 2026 15:26:14 -0700 (PDT)
+Received: from [192.168.1.134] ([110.239.0.232])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3613fb42e25sm10353803a91.3.2026.04.23.15.26.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2026 14:11:06 -0700 (PDT)
-Message-ID: <ca138704-a6cc-49eb-be1a-5811784bb8f4@linaro.org>
-Date: Thu, 23 Apr 2026 23:11:04 +0200
+ Thu, 23 Apr 2026 15:26:13 -0700 (PDT)
+Message-ID: <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
+Date: Fri, 24 Apr 2026 08:26:05 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm, hw/ppc: Remove unnecessary audio.h includes from
- board code
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Subject: Re: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu))
+ expression
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, =?UTF-8?Q?Herv=C3=A9_Poussineau?=
- <hpoussin@reactos.org>
-References: <20260417093805.1076954-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Roman Bolshakov <rbolshakov@ddn.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, Mads Ynddal
+ <mads@ynddal.dk>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Brian Cain <brian.cain@oss.qualcomm.com>
+References: <20260423170229.64655-1-philmd@linaro.org>
+ <20260423170229.64655-2-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260417093805.1076954-1-peter.maydell@linaro.org>
+In-Reply-To: <20260423170229.64655-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,25 +113,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/4/26 11:38, Peter Maydell wrote:
-> Some boards (mostly arm, but also ppc/prep) include audio.h, but they
-> don't need anything from it.  Drop the unnecessary include lines.
+On 4/24/26 03:02, Philippe Mathieu-Daudé wrote:
+> env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
+> available via the ARCH_CPU() macro. Use the latter
+> to avoid using &env.
 > 
-> These seem to have been introduced with commits 2b16397264a8e,
-> b8ab0303de, which added the machine-default audiodev handling, but as
-> far as I can tell they were unecessary right from the start, as the
-> machine_add_audiodev_property() function has always been in boards.h.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/integratorcp.c | 1 -
->   hw/arm/musicpal.c     | 1 -
->   hw/arm/realview.c     | 1 -
->   hw/arm/versatilepb.c  | 1 -
->   hw/arm/vexpress.c     | 1 -
->   hw/arm/xlnx-zcu102.c  | 1 -
->   hw/ppc/prep.c         | 1 -
->   7 files changed, 7 deletions(-)
+>   target/arm/hvf/hvf.c       | 2 +-
+>   target/hexagon/translate.c | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 5fc8f6bbbd9..2fb768048b8 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+>   
+>   static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
+>   {
+> -    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
+> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+>       int ret = 0;
 
-Patch queued, thanks.
+ARM_CPU has an object_dynamic_cast_assert() inside; the env* converters do not.
+You should be making a considered choice about this change, not just "simpler".
+
+
+r~
+
+>   
+>       switch (exit->reason) {
+> diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
+> index 633401451d8..825b236dd24 100644
+> --- a/target/hexagon/translate.c
+> +++ b/target/hexagon/translate.c
+> @@ -978,7 +978,7 @@ static void hexagon_tr_init_disas_context(DisasContextBase *dcbase,
+>                                             CPUState *cs)
+>   {
+>       DisasContext *ctx = container_of(dcbase, DisasContext, base);
+> -    HexagonCPU *hex_cpu = env_archcpu(cpu_env(cs));
+> +    HexagonCPU *hex_cpu = HEXAGON_CPU(cs);
+>       uint32_t hex_flags = dcbase->tb->flags;
+>   
+>       ctx->mem_idx = MMU_USER_IDX;
+
 

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97619F99356
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 09:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B99A0F99355
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 09:09:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFq02-0008OW-Ji; Thu, 23 Apr 2026 05:05:30 -0400
+	id 1wFq3y-00025k-K3; Thu, 23 Apr 2026 05:09:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wFq00-0008MK-VH
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 05:05:28 -0400
-Received: from 10.mo534.mail-out.ovh.net ([46.105.32.219])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wFq3o-00024M-Ep
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 05:09:24 -0400
+Received: from smtpout3.mo534.mail-out.ovh.net ([51.210.94.142])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wFpzx-0005kG-DZ
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 05:05:26 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4g1VYH6kqkz6CML;
- Thu, 23 Apr 2026 09:05:23 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 23 Apr 2026 09:05:23 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.13])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4g1VYH5gB7z1xnY; Thu, 23 Apr 2026 09:05:23 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.0])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wFq3j-0007O7-QF
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 05:09:23 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4g1Vdj6z9Kz6C7P;
+ Thu, 23 Apr 2026 09:09:13 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 23 Apr 2026 09:09:13 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.159])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4g1Vdj5XsCz5vLx; Thu, 23 Apr 2026 09:09:13 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
  (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 8A5821B43ABB;
- Thu, 23 Apr 2026 09:05:21 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 98E6912E3ABD;
+ Thu, 23 Apr 2026 09:09:11 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-113S007b95cc11f-8ffa-4faf-83d8-760c28ddf65b,
+ (GARM-99G00323dac758-f4eb-4e8c-ad42-68824b72ac4a,
  C846149266E0C9F4D826987B86006927C6E58490) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <aa626393-5757-4c43-96b3-370d8155b74d@kaod.org>
-Date: Thu, 23 Apr 2026 11:05:21 +0200
+Message-ID: <99bde91f-3fd3-4ee4-b6a0-fb87f475beb7@kaod.org>
+Date: Thu, 23 Apr 2026 11:09:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 17/17] tests/functional/aarch64/test_aspeed_ast2700:
- Add USB EHCI test for AST2700 A1/A2
+Subject: Re: [PATCH v4 05/17] hw/usb/hcd-ehci.c: Replace fprintf(stderr, ...)
+ with qemu_log_mask(LOG_GUEST_ERROR)
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "philmd@linaro.org" <philmd@linaro.org>,
  "peterx@redhat.com" <peterx@redhat.com>,
@@ -58,7 +58,7 @@ Cc: Troy Lee <troy_lee@aspeedtech.com>, "flwu@google.com" <flwu@google.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>,
  "farosas@suse.de" <farosas@suse.de>
 References: <20260423051804.362095-1-jamin_lin@aspeedtech.com>
- <20260423051804.362095-18-jamin_lin@aspeedtech.com>
+ <20260423051804.362095-6-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -103,30 +103,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260423051804.362095-18-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260423051804.362095-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 16200292288092417069
+x-ovh-tracer-id: 16265031531562839085
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGoS7NlEyFt81jSX19rro+JqLaoKKBSoNj4WVSXw8Dyn59fZrkkyTkum6T15Gw2zC52mlRUeD3jIrRqXh6rBduh8M+dlfQE/uDVBAXLg2ODbB1uiIWVXHaySBF7hbVFquuKrmsHv+oAEZkcRwpZvVrfFsxeEQ1Z0zBZpjVwykFe4Vld7dEXTNi26C+VKEG1HXXs0mJF6A7F1imIrXJiNOjZolXNMeA4hz7OdQmBaJCNzmXrONnL6RL85Du+H8iZwSssGG+O73G9tQnH6sDFwi7CGp2i98rYUuZ2XUcKtY4Oh+ao7cOXuXJT+h5e6aZ/0gRSVCOUbCPuR/VQRZq5b+pMnQtoqdTBAGgiDTncxVg7hABJowiBg1yB25577tzGUsk9xya6Q67exJlib0oLxjPA2a51LJt1xJovfOuNbwZqgdUyu9N/u7uI42ZY7USFrW+q0cWsszDQ/Oupv+5hN8DiWWsFtrcThxD/vVGdBrpp9cmhHLTuI7vvJ8ton32YlcLFhjZ2P4QsiUua+zwcMgD4lC9jyehsStfhJeMqZ6pnp+fiISXZiZ+2ySGrOmwA+jy+qMHyF/vSn8kV9bHCzCaKwtcrPPNZmyFtjY0Aq/Mk+i2EX6Pj2oJOG/q1GyK3ndv02cusTeKoPzbiTHw3OMvq2sEqJwUtXttTf2yOSWzYRg
-DKIM-Signature: a=rsa-sha256; bh=Ghe9rSHypWlyy/6XHjoUiv3G309UCLhC/Plaf5lJnm0=; 
+X-VR-SPAMCAUSE: dmFkZTF1BgfI+RMK4QQMmuVi4smpDE0Oq6a6EHDHWJYBwyVTS18sGWpDs+/4vZN1qwZX4X/pVdJX+m144wWEdCmbag8Wnl2x/cZif6VMkUPCxXUVAR0zr8YdcN4jFyw01M8SK7oV14H6ZUke/RzRgWS/RKgGXsauu39oNoXe0FB4Ro8U3naaA2v6GndaV7pYJFKn04S8GN3+pWzJbGlMvdvfw+AW5uq364vM0goQO/ViH5tMlZrivTvf4H928OplsbgDtUtW7hRNxmjQ/1K83XD0tBFY3b+3DejR2vmYL7gRBsEmv/nVA7IaewwpahKeW0ksc0vu3VnYOwrFnE8dcWIEXSPmRnG9wQvHiJ8p0E87xtINJx1hluDujKezc467Wz7e3efEK8uULsUqIGaL+eeilfPNwbv+atho/MQgHgnFCyQqDawvKpSzi3g2C0Ed6IC5bLSvRBuHkqKwYyKg2HCl4bi57Onbhzx45CMOxlPTsi7vyTX54RJ4pSWmiUiyN4hjeEiwuM3ghSoEEECfjcCKg7cPAruLb+uBOQXgTUHP2kazIm8DiwC9XtdjCitIMMiY70564l3nGrnRSn1IcvuFbS+XZKqFa7f/LxK8EgfTk4BhIcaVnsrJb7deuh22mor9Gxcu6JRTgTZTSxo1lHfdAO9r1MBtUWSXoN0lyAlMsnT9WQ
+DKIM-Signature: a=rsa-sha256; bh=TkTUP6p2Z6fnkDKBXsguBiUQ34+T7ASm+4iEVFva1Q8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1776935124; v=1;
- b=Shdu7i1S3M3qCSrRNZOrOydgU1XIPkIKwABAiZK1MccaYzV6zbNyF0Dj0OQx7p9decfeF2hX
- Iu5d+JFtR7l9Q4qVLM8AvqP4SeRJnvBOOQWs9NYMDtGrx77bhjntPrcyb9BosmFv8NeBdNuj0UO
- kB6Kz6S8SwX5BiW/GpQdmxXmPtV5UMwZTRqtY0pnlYMyF1CQdXGKMUOHuqy6S0VyTdL2tBj/RGn
- kXzZmuc01KfUYuo3jl7oRufCmJzeLmjezB5Yv5zD5A0keYT3nUs6hD5q/gcURxY2G96uexGuycN
- jMSXURuXruko28e5Px4ZhOq00cBUf0rk7+Z+/Lr850fBA==
-Received-SPF: pass client-ip=46.105.32.219; envelope-from=clg@kaod.org;
- helo=10.mo534.mail-out.ovh.net
+ t=1776935354; v=1;
+ b=SdXxV63nSZjltHKmcZXqkyF2t4PDNMVxRA35kooylwzvJN/zkyChyqkgSCbIX6GaRzOeLayh
+ 4KqORc73FOXlDA9o3828z4HY1+qYH4yuobOmgr0+vuXMnzRxB0RR3OmKdQ1hRPfAHJAmKJiNyZj
+ Tmro9ZHX4hwCfVYEzod1gFLLZlFHq/NZLopxTxMD0AkvLrsJW4BMfwVKOLw/vcjkZW/W49Pe9op
+ DWpVFK+asQNUkssMXDek+Me1ctIBe0NufjRkjaq4776YyAbA4RXr6cGQpx4Bi3iRWeDW75FymZb
+ tOXUQaUnQVyDgcvumtFFOQS0rr5kHMUSCGG+dhPHcgyig==
+Received-SPF: pass client-ip=51.210.94.142; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo534.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,78 +143,193 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/23/26 07:18, Jamin Lin wrote:
-> Add a functional test to verify USB EHCI support on the AST2700 A2/A1
-> by attaching a USB keyboard device and checking its
-> enumeration via lsusb.
+> Replace direct fprintf(stderr, ...) calls with qemu_log_mask()
+> using LOG_GUEST_ERROR in the EHCI controller implementation.
 > 
-> This introduces a helper routine that runs lsusb in the guest
-> and validates that the emulated "QEMU USB Keyboard" is detected.
+> Direct writes to stderr are discouraged in QEMU as they bypass
+> the logging framework and cannot be filtered or controlled at
+> runtime. Using qemu_log_mask() ensures that guest-visible errors
+> are properly categorized and can be managed via QEMU logging
+> options.
+> 
+> All affected messages correspond to guest-triggerable error
+> conditions, so LOG_GUEST_ERROR is used consistently.
+> 
+> This change improves integration with QEMU's logging infrastructure
+> and aligns with upstream coding guidelines.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/functional/aarch64/test_aspeed_ast2700a1.py | 7 +++++++
->   tests/functional/aarch64/test_aspeed_ast2700a2.py | 7 +++++++
->   2 files changed, 14 insertions(+)
+>   hw/usb/hcd-ehci.c | 46 +++++++++++++++++++++++++---------------------
+>   1 file changed, 25 insertions(+), 21 deletions(-)
 > 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700a1.py b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> index b0c08854da..42b8b200cf 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-> @@ -118,6 +118,11 @@ def do_ast2700_pcie_test(self):
->               'ip addr show dev eth2',
->               'inet 10.0.2.15/24')
+> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+> index 7e0b767eb9..8acaedeaa9 100644
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -36,6 +36,7 @@
+>   #include "qemu/error-report.h"
+>   #include "qemu/main-loop.h"
+>   #include "system/runstate.h"
+> +#include "qemu/log.h"
 >   
-> +    def do_ast2700_usb_ehci_test(self):
-> +        exec_command_and_wait_for_pattern(self,
-> +            'lsusb',
-> +            'QEMU QEMU USB Keyboard')
-> +
->       def start_ast2700_test(self, name, bus_id):
->           num_cpu = 4
->           load_images_list = [
-> @@ -161,10 +166,12 @@ def test_aarch64_ast2700a1_evb_sdk_v11_01(self):
->           self.archive_extract(self.ASSET_SDK_V1101_AST2700A1)
->           self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
->           self.vm.add_args('-netdev', 'user,id=net1')
-> +        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
->           self.start_ast2700_test('ast2700-a1-image', 1)
->           self.verify_openbmc_boot_and_login('ast2700-a1')
->           self.do_ast2700_i2c_test(1)
->           self.do_ast2700_pcie_test()
-> +        self.do_ast2700_usb_ehci_test()
+>   #define FRAME_TIMER_FREQ 1000
+>   #define FRAME_TIMER_NS   (NANOSECONDS_PER_SECOND / FRAME_TIMER_FREQ)
+> @@ -425,7 +426,7 @@ static int ehci_get_pid(EHCIqtd *qtd)
+>       case 2:
+>           return USB_TOKEN_SETUP;
+>       default:
+> -        fprintf(stderr, "bad token\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR, "bad token\n");
+>           return 0;
+>       }
+>   }
+> @@ -532,7 +533,7 @@ static void ehci_free_packet(EHCIPacket *p)
+>       }
+>       if (p->async == EHCI_ASYNC_FINISHED &&
+>               p->packet.status == USB_RET_SUCCESS) {
+> -        fprintf(stderr,
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+>                   "EHCI: Dropping completed packet from halted %s ep %02X\n",
+>                   (p->pid == USB_TOKEN_IN) ? "in" : "out",
+>                   get_field(p->queue->qh.epchar, QH_EPCHAR_EP));
+> @@ -1042,8 +1043,9 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
 >   
->       def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_01(self):
->           self.set_machine('ast2700a1-evb')
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> index ed414999f4..40e0ad81ed 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-> @@ -121,6 +121,11 @@ def do_ast2700_pcie_test(self):
->               'ip addr show dev eth2',
->               'inet 10.0.2.15/24')
+>           /* not supporting dynamic frame list size at the moment */
+>           if ((val & USBCMD_FLS) && !(s->usbcmd & USBCMD_FLS)) {
+> -            fprintf(stderr, "attempt to set frame list size -- value %d\n",
+> -                    (int)val & USBCMD_FLS);
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "attempt to set frame list size -- value %" PRId64
+> +                          "\n", val & USBCMD_FLS);
+>               val &= ~USBCMD_FLS;
+>           }
 >   
-> +    def do_ast2700_usb_ehci_test(self):
-> +        exec_command_and_wait_for_pattern(self,
-> +            'lsusb',
-> +            'QEMU QEMU USB Keyboard')
-> +
->       def start_ast2700_test(self, name, bus_id):
->           num_cpu = 4
->           load_images_list = [
-> @@ -164,10 +169,12 @@ def test_aarch64_ast2700a2_evb_sdk_v11_01(self):
->           self.archive_extract(self.ASSET_SDK_V1101_AST2700A2)
->           self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
->           self.vm.add_args('-netdev', 'user,id=net1')
-> +        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
->           self.start_ast2700_test('ast2700-default-image', 1)
->           self.verify_openbmc_boot_and_login('ast2700-default')
->           self.do_ast2700_i2c_test(1)
->           self.do_ast2700_pcie_test()
-> +        self.do_ast2700_usb_ehci_test()
+> @@ -1101,7 +1103,7 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
 >   
->       def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_01(self):
->           self.set_machine('ast2700a2-evb')
+>       case PERIODICLISTBASE:
+>           if (ehci_periodic_enabled(s)) {
+> -            fprintf(stderr,
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+>                 "ehci: PERIODIC list base register set while periodic schedule\n"
+>                 "      is enabled and HC is enabled\n");
+>           }
+> @@ -1109,7 +1111,7 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
+>   
+>       case ASYNCLISTADDR:
+>           if (ehci_async_enabled(s)) {
+> -            fprintf(stderr,
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+>                 "ehci: ASYNC list address register set while async schedule\n"
+>                 "      is enabled and HC is enabled\n");
+>           }
+> @@ -1200,7 +1202,7 @@ static int ehci_init_transfer(EHCIPacket *p)
+>   
+>       while (bytes > 0) {
+>           if (cpage > 4) {
+> -            fprintf(stderr, "cpage out of range (%u)\n", cpage);
+> +            qemu_log_mask(LOG_GUEST_ERROR, "cpage out of range (%u)\n", cpage);
+>               qemu_sglist_destroy(&p->sgl);
+>               return -1;
+>           }
+> @@ -1306,7 +1308,8 @@ static void ehci_execute_complete(EHCIQueue *q)
+>           break;
+>       default:
+>           /* should not be triggerable */
+> -        fprintf(stderr, "USB invalid response %d\n", p->packet.status);
+> +        qemu_log_mask(LOG_GUEST_ERROR, "USB invalid response %d\n",
+> +                      p->packet.status);
+>           g_assert_not_reached();
+>       }
+>   
+> @@ -1354,7 +1357,7 @@ static int ehci_execute(EHCIPacket *p, const char *action)
+>              p->async == EHCI_ASYNC_INITIALIZED);
+>   
+>       if (!(p->qtd.token & QTD_TOKEN_ACTIVE)) {
+> -        fprintf(stderr, "Attempting to execute inactive qtd\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR, "Attempting to execute inactive qtd\n");
+>           return -1;
+>       }
+>   
+> @@ -1395,7 +1398,8 @@ static int ehci_execute(EHCIPacket *p, const char *action)
+>               p->packet.actual_length);
+>   
+>       if (p->packet.actual_length > BUFF_SIZE) {
+> -        fprintf(stderr, "ret from usb_handle_packet > BUFF_SIZE\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "ret from usb_handle_packet > BUFF_SIZE\n");
+>           return -1;
+>       }
+>   
+> @@ -1479,8 +1483,9 @@ static int ehci_process_itd(EHCIState *ehci,
+>               case USB_RET_SUCCESS:
+>                   break;
+>               default:
+> -                fprintf(stderr, "Unexpected iso usb result: %d\n",
+> -                        ehci->ipacket.status);
+> +                qemu_log_mask(LOG_GUEST_ERROR,
+> +                              "Unexpected iso usb result: %d\n",
+> +                              ehci->ipacket.status);
+>                   /* Fall through */
+>               case USB_RET_IOERROR:
+>               case USB_RET_NODEV:
+> @@ -1584,7 +1589,8 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
+>   
+>       /* section 4.8, only QH in async schedule */
+>       if (async && (NLPTR_TYPE_GET(entry) != NLPTR_TYPE_QH)) {
+> -        fprintf(stderr, "non queue head request in async schedule\n");
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "non queue head request in async schedule\n");
+>           return -1;
+>       }
+>   
+> @@ -1606,8 +1612,10 @@ static int ehci_state_fetchentry(EHCIState *ehci, int async)
+>   
+>       default:
+>           /* TODO: handle FSTN type */
+> -        fprintf(stderr, "FETCHENTRY: entry at %X is of type %u "
+> -                "which is not supported yet\n", entry, NLPTR_TYPE_GET(entry));
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "FETCHENTRY: entry at 0x%x is of type %u "
+> +                      "which is not supported yet\n",
+> +                      entry, NLPTR_TYPE_GET(entry));
+>           return -1;
+>       }
+>   
+> @@ -2118,13 +2126,13 @@ static void ehci_advance_state(EHCIState *ehci, int async)
+>               break;
+>   
+>           default:
+> -            fprintf(stderr, "Bad state!\n");
+>               g_assert_not_reached();
+>           }
+>   
+>           if (again < 0 || itd_count > 16) {
+>               /* TODO: notify guest (raise HSE irq?) */
+> -            fprintf(stderr, "processing error - resetting ehci HC\n");
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "processing error - resetting ehci HC\n");
+>               ehci_reset(ehci);
+>               again = 0;
+>           }
+> @@ -2181,8 +2189,6 @@ static void ehci_advance_async_state(EHCIState *ehci)
+>   
+>       default:
+>           /* this should only be due to a developer mistake */
+> -        fprintf(stderr, "ehci: Bad asynchronous state %d. "
+> -                "Resetting to active\n", ehci->astate);
+>           g_assert_not_reached();
+>       }
+>   }
+> @@ -2231,8 +2237,6 @@ static void ehci_advance_periodic_state(EHCIState *ehci)
+>   
+>       default:
+>           /* this should only be due to a developer mistake */
+> -        fprintf(stderr, "ehci: Bad periodic state %d. "
+> -                "Resetting to active\n", ehci->pstate);
+>           g_assert_not_reached();
+>       }
+>   }
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

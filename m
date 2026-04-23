@@ -4,91 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F1D4FDEE29
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:22:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5E22FDEE35
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 18:01:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFxku-0005lQ-OH; Thu, 23 Apr 2026 13:22:24 -0400
+	id 1wFyMK-00053C-Iz; Thu, 23 Apr 2026 14:01:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wFxks-0005ks-IZ
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:22:22 -0400
-Received: from mail-dl1-x1230.google.com ([2607:f8b0:4864:20::1230])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wFyMA-00051e-O2
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:00:54 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
- id 1wFxkq-000106-Ep
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:22:22 -0400
-Received: by mail-dl1-x1230.google.com with SMTP id
- a92af1059eb24-12dbd0f7ecaso3936470c88.0
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:22:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wFyM8-0004Lu-JM
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 14:00:54 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-488ad135063so61864005e9.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 11:00:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1776964937; x=1777569737; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1776967248; x=1777572048; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FAqgVbViTYcb7RPsu+Jzg5lkBkP6Jlwh5uu12OLWbpU=;
- b=ao7UTEzKqIBDHJblncSFd9K+4gv2pjNFbdNG2D/7LgvkHBeHbMCG7J9Qkuw1Cd1iC1
- quo9+o6+6GI1hljI+rbn4/iartkY1uqeyRGQZFvlTSH+2OmuNsWsKcliLa7e4zD2Etji
- kU+hLUnJ2iy8EVBSYVtZBxusNjJECI4dTZtMIinrH7ksF94fmaoKU0KMVc3ORbV79YFu
- LJP0kr9zdShCynye+9sSqwCbxsldlLHGcdeL4BxrUg0a3nlK1t6XDyx4IwYeYvE6VwIj
- opmqhaCSGNFSh5pOYXsuhov23sqDMqhDFD31H2kvWJct5UE9ruxbldNg1RFMgZ7pm7bM
- SPbA==
+ bh=rT7XeBu6ci915sJOi/abBOcvlpcNLtTk7WfwADEkJvY=;
+ b=mPudgdUuOLzjS9cRtTJvmzou9R+DC8fxqA5cbsoBl7IQc1j0sSv06sFlMScJSwlq9q
+ usvANlBetmJz7P5vglHJgxeVaZ3KydZXll9zyAy98fAxH2Q78XAXABByg4jgiq0jb8Gi
+ 9fEfNkUZ/d7KoSUNGs8u1qTFFKWua+19hDqBmJJo8rqs/yVr7oRGTVefketgnUo2AwUK
+ jS28cFtaWaZxkWe6DC7+m+U77/cphN9pk4gpfrx8rYvD6XWH85entKuQ3vbFFNWjtEnA
+ /rxIbyhgIxxmLvVDwZ7HM32xUWA4GiOhpx25612SBL3sEXOsepbYaS96XCicDE3UdDjd
+ efQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776964937; x=1777569737;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=FAqgVbViTYcb7RPsu+Jzg5lkBkP6Jlwh5uu12OLWbpU=;
- b=YNF7ms6sky/zc9KqhqgNnmf5kekH5DGO9E3AFySe90DMK2UZtltezoB+77BAZcF6VH
- wYulQyZrvD2jn02o9E3IJeWo9CS2UHiAg2Kcsu5ZHl+bNDagiipfFUuwq7mpgpiycNO8
- FWy9kz0dnLhc4V6Hr0uoomuuiW/E52qR9e2ra6AmnOd1h6SfB6GQ8Or/n2qGUVjMNCgC
- RQ9KIyci7JgVXZV0Ppm3dhIAxKWD/PFSZDNd3djeDs/Ai5STlOt/26toB5hJ0C4VDqwt
- XeaXeFZJt/3pkeo85o8fLpvxo/RlVvpwCmmnEP0NDvk3XevYZcC7Nsv3CIwxKdV39hb5
- JkJA==
+ d=1e100.net; s=20251104; t=1776967248; x=1777572048;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=rT7XeBu6ci915sJOi/abBOcvlpcNLtTk7WfwADEkJvY=;
+ b=sqsCOj7ZhvuolSAUG22lzzRFHyPSGukR4u1M0OfYX0sS2RXs6eQzOyE3IMYEuLL1Vm
+ 93Ze5IYYUgF45LfwDAaCcTIZCJi9vabDDIXRnn+72vLpuO99mT95Xn2ygs3yq85n852q
+ ZGuSVfZzO7i3kNuc2pS1VqilSpxgii2fh3eRoUgcRAARf2sIi782fIxCToqeTJ9t5cnL
+ KdqVYPeprWCHSmj425q3JEj29SK4IZ0pCDEZb40H1wazNI5hvcjQcFXlNMzFVrUcBtMn
+ WZ/eaPRfHF+lqrpTqy3AtK21JC9C0slkOi21Nv35ObqPK8PwIl6AgOQpIMFWcbLWYvGt
+ wIYw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8xauLCnrX6c95KlTm8aTeeVBc2PrYvIgdjl5ZdICA2EyPw8PGLzjHoiMMrAMHS5uB2mnsyVriHzg==@nongnu.org
-X-Gm-Message-State: AOJu0YxDq+waLxmE3rIpcELhjconynj2ht4cECs8KhoJO4u/YTigJMam
- Qzhz1u5j1uG040Sb2Yau0JN0VnfKxh7mJmwhL2yXYFqtOsDWrNQU4kcC
-X-Gm-Gg: AeBDiesk0cflvSd73ykPIpCHyefbGpSYW+o4mJbsCGdoUSrYkhBa+SNZR/UtZq77jVn
- GGUCKPWMiLOd7KlQpXO8PDG940bDXSOamD6IdZkImHsMASBleYfdu4jjTgDWK2I4eV2Iid9fu5b
- u307CjF2kuUWvKtx5urOV6YS0gdG/PrMmTTRGspj45jh4s1K8aBZq0wCoV6BZvnguGIrkpSxISA
- vGomRvSJ7xgAXFDBVsIoJlZMX8Cf7mLaqHo1hMAwXNHZbU/M0zBk9QLPlzUXGGLAD7wR3g6otaO
- l+nZ9tpaJFYfoqHCf7KoId0KaZCJ8UcWn9eLm6snjV5UWRO6pU9QmFPPxcn1cphj1OADLTYMZO5
- T7OM8LiuAj7adCI17+jlYiy4gPOU7VVir+yniYeD3uRp2mw2AW4Bp2H4sSC8CyjQo5e7jUVsmAf
- xN148/Hez9JnofcvyFmObECSlV1lAtXYYyN6RWoKG3O+mYvli/qaaYdPnWsYjlnZwkg/mLULv5w
- qo=
-X-Received: by 2002:a05:7022:6b8d:b0:11f:3483:bba6 with SMTP id
- a92af1059eb24-12c73f717efmr15717435c88.13.1776964937006; 
- Thu, 23 Apr 2026 10:22:17 -0700 (PDT)
-Received: from localhost.localdomain ([143.54.78.177])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2e539fa6134sm29307962eec.3.2026.04.23.10.22.14
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Apr 2026 10:22:16 -0700 (PDT)
-From: Lucas Amaral <lucaaamaral@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, agraf@csgraf.de, mohamed@unpredictable.fr,
- alex.bennee@linaro.org
-Subject: Re: [PATCH v4 0/3] hvf: map granule abstraction, configurable IPA,
- and MAP_FIXED alignment fix
-Date: Thu, 23 Apr 2026 14:22:10 -0300
-Message-ID: <20260423172210.51760-1-lucaaamaral@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <CAFEAcA9587cZ+oOv2t6No6eBJdR9gxow8RFqy-JN=7OH3xk7HA@mail.gmail.com>
+ AFNElJ+rpDltXnvNb/J9HfXQlnfkEXNGF4nJfg/5//SgcooM1aCgZ2TRYDiNY51Fprp+xgeSreLhor4cPg==@nongnu.org
+X-Gm-Message-State: AOJu0YwbpQHQQ1sDs1Duln7ZVIPyK3Kx5BY9h+dM3Vz2dkwAaiPHrTKK
+ UZGSRTOnXlkPApruqXOCcnW5p2RRsucqMR+bstcTinr/4mgZOf4ZVnYsqcUerCaAFhg=
+X-Gm-Gg: AeBDiesIMx4mTVGRJG1obwSitVUW/IJ9en/6qGyJJJSYAMTXVF7TRMiCUMExelR/Gk1
+ elQC+FaeXlqFd4ITRNeWvJDxRamlppJCz1lBQLBBPIzfDmzXfEV8cfJ32ou6AkKJNXWQ+/gMxH9
+ 5toxwEcOJSYsYQmidAfiOsSzx8z2rkeMLmFWFI+NPIYZjWWuZvGJ/Ai0XH6T5ELbNZDJCSZQ82s
+ nSIEssC7iE2raKijgKGFHZ/oD5efy72wLgkFKHWznkecEIR+RkqjTAcn12jeb0rpQkT6OYCKuVE
+ IfvDYKL6A96f4COLGopIjW3GCaR4PX+xdp2L04oIDryJlVXTJw0PpDHZp0X9mEAHJKANchKKb0a
+ tWQxBd3DjSWLR5Mn1Go63WUXWZtBk9cpctV3xUK56W+rg7PtpI/vxY3TUB1QWefv8WaW8EPzxmx
+ uovtjzD23nEwL8n6U52w619isNHJFhKkzctQ==
+X-Received: by 2002:a05:600c:4e4f:b0:488:ab37:b442 with SMTP id
+ 5b1f17b1804b1-488fb793c6bmr412699555e9.28.1776967248299; 
+ Thu, 23 Apr 2026 11:00:48 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4412150a092sm20111411f8f.23.2026.04.23.11.00.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 23 Apr 2026 11:00:47 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 17BE15F941;
+ Thu, 23 Apr 2026 19:00:46 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  agraf@csgraf.de,
+ peter.maydell@linaro.org,  mohamed@unpredictable.fr
+Subject: Re: [PATCH v4 1/3] virtio-gpu: validate host page alignment for
+ MAP_FIXED blobs
+In-Reply-To: <20260317175744.32469-2-lucaaamaral@gmail.com> (Lucas Amaral's
+ message of "Tue, 17 Mar 2026 14:57:42 -0300")
 References: <20260317175744.32469-1-lucaaamaral@gmail.com>
- <CAFEAcA9587cZ+oOv2t6No6eBJdR9gxow8RFqy-JN=7OH3xk7HA@mail.gmail.com>
+ <20260317175744.32469-2-lucaaamaral@gmail.com>
+User-Agent: mu4e 1.14.1-pre3; emacs 30.1
+Date: Thu, 23 Apr 2026 19:00:46 +0100
+Message-ID: <87mrytwo8h.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1230;
- envelope-from=lucaaamaral@gmail.com; helo=mail-dl1-x1230.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -106,24 +108,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
+Lucas Amaral <lucaaamaral@gmail.com> writes:
 
-Thanks for the review and for asking Mohamed and Alex to take a look.
+> Commit 4eb0aace ("virtio-gpu: Support mapping hostmem blobs with
+> map_fixed") uses mmap(MAP_FIXED) to map blob resources into a
+> pre-allocated hostmem region.  Both the offset and size passed to
+> mmap must be aligned to the host page size, but the code does not
+> validate this.
+>
+> On hosts where qemu_real_host_page_size() exceeds the guest's page
+> size (e.g. ARM64 with 16KB or 64KB pages, macOS ARM64), the guest
+> may provide blob offsets aligned to its own page size (4KB) but not
+> to the host's.
 
-> The question that comes to my mind is whether the two places changed
-> in accel/hvf to look at hvf_get_map_granule() really are the only
-> two places in the whole of QEMU where we call
-> qemu_real_host_page_size() and expect it to be also the guest page
-> size. The general idea of 'guest page size might not be the same as
-> the host page size QEMU itself gets' isn't hvf specific -- maybe we
-> should have a qemu_guest_page_size() function?
+What was your test case? Is it possible to publish some images for a
+functional test?
 
-Good point. I'll audit the qemu_real_host_page_size() call sites to
-see which ones actually mean "guest page size" and whether a broader
-qemu_guest_page_size() abstraction makes sense. I'd send that as a
-follow-up series once these patches land, so the immediate HVF fix
-isn't blocked on the broader refactor.
+> This causes mmap(MAP_FIXED) to fail with EINVAL,
+> and the subsequent unmap (which also uses mmap MAP_FIXED) fails the
+> same way, producing:
+>
+>   virtio_gpu_virgl_unmap_resource_blob: failed to unmap(fixed)
+>   virgl resource: Invalid argument
+>
+> Add an alignment check before attempting MAP_FIXED.  When the offset
+> or blob size is not host-page-aligned, skip the MAP_FIXED path and
+> fall through to the existing subregion method, which handles any
+> alignment.
+>
+> Fixes: 4eb0aace ("virtio-gpu: Support mapping hostmem blobs with map_fixe=
+d")
+> Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+> ---
+>  hw/display/virtio-gpu-virgl.c | 45 +++++++++++++++++++++--------------
+>  1 file changed, 27 insertions(+), 18 deletions(-)
+>
+> diff --git a/hw/display/virtio-gpu-virgl.c b/hw/display/virtio-gpu-virgl.c
+> index b7a2d160..f6583b48 100644
+> --- a/hw/display/virtio-gpu-virgl.c
+> +++ b/hw/display/virtio-gpu-virgl.c
+> @@ -185,25 +185,34 @@ virtio_gpu_virgl_map_resource_blob(VirtIOGPU *g,
+>          return -EBUSY;
+>      }
+>=20=20
+> -    ret =3D virgl_renderer_resource_map_fixed(res->base.resource_id,
+> -                                            gl->hostmem_mmap + offset);
+> -    switch (ret) {
+> -    case 0:
+> -        res->map_fixed =3D gl->hostmem_mmap + offset;
+> -        return 0;
+> -
+> -    case -EOPNOTSUPP:
+> -        /*
+> -         * MAP_FIXED is unsupported by this resource.
+> -         * Mapping falls back to a blob subregion method in that case.
+> -         */
+> -        break;
+> +    /*
+> +     * MAP_FIXED requires host-page-aligned offset and size.  Hosts with
+> +     * page sizes larger than the guest's (e.g. 16KB on ARM64) may recei=
+ve
+> +     * non-aligned blob offsets.  Fall through to the subregion method w=
+hen
+> +     * alignment requirements are not met.
+> +     */
+> +    if (QEMU_IS_ALIGNED(offset, qemu_real_host_page_size()) &&
+> +        QEMU_IS_ALIGNED(res->base.blob_size, qemu_real_host_page_size())=
+) {
+> +        ret =3D virgl_renderer_resource_map_fixed(res->base.resource_id,
+> +                                                gl->hostmem_mmap + offse=
+t);
+> +        switch (ret) {
+> +        case 0:
+> +            res->map_fixed =3D gl->hostmem_mmap + offset;
+> +            return 0;
+> +
+> +        case -EOPNOTSUPP:
+> +            /*
+> +             * MAP_FIXED is unsupported by this resource.
+> +             * Mapping falls back to a blob subregion method in that cas=
+e.
+> +             */
+> +            break;
+>=20=20
+> -    default:
+> -        qemu_log_mask(LOG_GUEST_ERROR,
+> -                      "%s: failed to map(fixed) virgl resource: %s\n",
+> -                      __func__, strerror(-ret));
+> -        return ret;
+> +        default:
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: failed to map(fixed) virgl resource: %s\n=
+",
+> +                          __func__, strerror(-ret));
+> +            return ret;
+> +        }
+>      }
+>  #endif
 
-Thanks,
-Lucas
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

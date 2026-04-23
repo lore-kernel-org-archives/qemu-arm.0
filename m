@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675AFFDEE2C
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 028F0FDEE2B
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:03:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFxSB-0000V8-L3; Thu, 23 Apr 2026 13:03:04 -0400
+	id 1wFxS9-0000Sb-SD; Thu, 23 Apr 2026 13:03:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRt-0000MK-1e
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:54 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRq-0004cb-EY
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRm-0000LL-5h
  for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:44 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so85239075e9.2
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:02:42 -0700 (PDT)
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxRk-0004bW-Ff
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:02:37 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-48374014a77so90280305e9.3
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:02:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776963761; x=1777568561; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YGkoFuEm7+jO9F5J4WaA/pQTANhW5MV3tHvArzYt2ao=;
- b=JzWNyKd5jLVT91ecLdhSEPDPHXBHbFPjLvcqTW2hWoLSUqeXxsqjmagpH21VgAfrCS
- wM5Axl+mmX+o1dI/MRKu2a/LFemGSWPZ/ieVcZZgrsBrg5wa9NsZwxRmuSHDUz364Qrr
- 7pfNH6k650XNlOOIOE1tBd4Brfkn69GcVq0uBJlJDjirrDi2lJ98EHSSnsPExM05L2l0
- JW92woBBHmb5MI6nFexVPEWHKUrsLle399jBAY+6FaTlUyHuIKPedQgQbwby7Va3qun+
- d9M99Zn4/PxHmwnU8eHlZlpXS4XJnUVUgMdOkRM6A39rZhei3kx/ELlzBcsSaTNkKEwS
- mHog==
+ d=linaro.org; s=google; t=1776963754; x=1777568554; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JPzvlo9um4RJnn5Z0StH34yRFT3d/QW3zHx2ct8iG9g=;
+ b=R46Gu5SE9BGH64m10IW+CARvNfeh34gEZTh+SRgV6oXFHrtAsNZYPUTMhbypwP38/B
+ HEVphZnkLlt6kfowWkuoR9GkuCg+6no9fH6CqhkUZCk/tlMRjFZS0YwZUEFY9+O20E93
+ 1ajz5xDmv1FBSCTv80YvWeSo/lp8I57e5URSp/pZHPl1TUBMAxi/Uya3XcaxdF7Kv0CM
+ 4CFx2ctRcXGaaRTfpVihBBArydEvT6ezgkHmPMGNvlezMHHVxCf1vUTC+Wie8GlVzj8f
+ +D/cYqdcElZmrReu6NmXb6VvBwsOhxDubjO1xnmgetBjaKB4DrLeOZFA7X424svz9AB0
+ dvFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776963761; x=1777568561;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=YGkoFuEm7+jO9F5J4WaA/pQTANhW5MV3tHvArzYt2ao=;
- b=oKpNgm6EbZ9x0UaEl4iVRRPoybZuMNKgaCRL+bSrLNYGvLkEX7+cGV51NULXhZPDPj
- IFOgVvnrfQEMg0ksvDml6rpWz1PJyqDN6TLxZj2+zpSZvO5enEtHHzkwttqRlkhob2K8
- 0ls5f/pI5U0wMegqAZTzHuuKa0XKAV43aowvUZE5BN+XKqThtdNqTBUIg3/ayFUsHg2n
- dQfYN9sepjMjr0y0jZCPpmsJmRZ+7uyQ2dOHJJa+JAD//5TSCjjnvMi+wwiTRItRW5VP
- cNucKpnKGWB/PA9iP2idGsUZ6YobKN3y/J1CFUWxKpr6d0ncXwetZzuMP+JG8J08ilVp
- Pckw==
+ d=1e100.net; s=20251104; t=1776963754; x=1777568554;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JPzvlo9um4RJnn5Z0StH34yRFT3d/QW3zHx2ct8iG9g=;
+ b=bnVxGiiQoiLtOyzFWF9WqIb3Un/9W93gV5llhHunqa1dih4M/x4UlQfITuDGaK2AsT
+ 9+SyiW5i3B8jatoSKSc55h7eU8u3WkuBKoKdm82yN0NalJfg6o1NE6TgiydHe9xyQALa
+ V7XSTVwrQE/1mT1WaIywnEi5DJgQJwQzAnXnF8R9RH/zQMFGlMciUSSYeNRIyXirIGO4
+ xa2aL8KmI8ehJide/vUutpQ7zznuBUpHtchcG20pLxm1FlezpWN3zEjBpLF84dOqBWAk
+ X9r1LLRgwogT4Y7UwSvZ+69hHC55hTiv+sNaK9NlIIvIyoy9MOQzyNF5viwJDuLSDjkD
+ SbJw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8NJenZJ1r0A2Ys1Ul11om8/n5kdRuOsX8PYGUVoiwT/tHAa47ZknnE1H6cLfK8jYIPTJZNYUFeJg==@nongnu.org
-X-Gm-Message-State: AOJu0Yybb3hCcFpdY9E1yEE6GjGxQ+QLNKnl1OwLKy/XQVX/eaixT2mc
- pTDVrkMSd4OGfIzFmK4USA8oao04qr+p9ALeIpKbawXsmWgE82hu1/m0acvV2HA/UU4=
-X-Gm-Gg: AeBDiet3j2Ta75mzeAAMlNUqxMOR728+EPXfR9Nh5gZW3X8UvOXD8MIcGkRH6FVK0GE
- ALjWfm+xqumUEKlw8uBOqBOVVZnKIszMGGLL5TX8X33lmKfM65Sl7j8qB1cZf4ZuV/d57vda6s+
- 3yGdUV8HfqaFMldQ6hsR3xMrY8YkyUX1YrE9VD2x4WdyaLbDmIpl1Eiq9UJNdncZzM/3WMGVhPg
- sP5DuAkfCE7UsbR/wOQ6R4Z9bilmCWReL7N0zLVmU68vlMPwLnU9GKhnVER+YPC206vEvbBAEk1
- 6unNMkGYPmwj6wFpMJ4ORCfn4M06qjFHM3dOAyCfliD0F39lWlq/DAHookcrDfWQ9CiVpc73hhi
- 5qUassrhwlVImfA7LoHPdtBMexqni+g5ZQQ2iCG3vWgNgcgJbSx5z1+5ApFaUpIEfg0fEruOwL8
- n/U5mO0Jvc+M7pPKNFldte3Qao+No8ODN+aoIVIdNB2wZY8BRku3/NCE3PrzXKdTKPmHNaWOA7F
- g2GOh8mrjxzhUuviMkoCQ==
-X-Received: by 2002:a05:600c:3553:b0:48a:52f2:a0f1 with SMTP id
- 5b1f17b1804b1-48a52f2a5f0mr207640535e9.18.1776963760832; 
- Thu, 23 Apr 2026 10:02:40 -0700 (PDT)
+ AFNElJ91S3Pc+TIdR/ESEIkFMrMM6wKBVfhtn78bleeBjDwXHS9QHVlQZqwx57GK5koeXkhmLGESrTSsOg==@nongnu.org
+X-Gm-Message-State: AOJu0YxP8hyLXaYHXC7nQ9Ids+678f2raW4wMA/FteMvkMY5VNoMwYIU
+ /dNm+ysQNnPAdYy75am+6UQJMmBLiDTn+AhJnwlx53REJAWW5gH7Rd3s87DDYBPcn3k=
+X-Gm-Gg: AeBDies0WBi+wd8oK/cr3hsLaylDaQ6h5ecg8fIYgrPvsxqyGn5Nm+1VOTfVTZlTZxw
+ JYFH98lKnRYP/H2NYM9MJlEY5tKYyu7Mlayg/7RFy79CClgF7wWmVWAqpZPBzFRtGJirtQUopbU
+ CIjrfjlA2+W1hc9Ya1VBiZSHg4egXBrD8Z/CqN6ykiOpQcjglAxUJdPTXdUzjSd961eYDlmvVBL
+ Z0a/t8ELhv7oemQJE2rx+CZUTE9BV9HcTnGP7+TgBtqWHYN5q147iUd0oB/Zy6HWhCWN15DQXff
+ M0039VuclQXQQ3cFLLmrDnyXp8n8WnvltPGdaaTTRIzhBAMbN27HZxs4rM+k3KQdnEFSoNEXat+
+ lP4aZs1l+yWeZmtKKtJCmjJ/VqhsrL/B48FSrooU92gLuW4VuvfMBsm8vUvbFvZQ57rf6dduQ+E
+ KlLjtmTxtIeY+s7q8aqJJsWmc4HcCzR3uwOW2HY5nzAwhZv1HPNWa7EsgwNsKfK/NmvdRvsY16j
+ hkEIStcUes=
+X-Received: by 2002:a05:600c:8717:b0:48a:568f:ae6d with SMTP id
+ 5b1f17b1804b1-48a568faffemr173859635e9.8.1776963753609; 
+ Thu, 23 Apr 2026 10:02:33 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc0f82bbsm912678555e9.3.2026.04.23.10.02.39
+ 5b1f17b1804b1-48a52d232afsm83393205e9.31.2026.04.23.10.02.30
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Apr 2026 10:02:40 -0700 (PDT)
+ Thu, 23 Apr 2026 10:02:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>,
@@ -74,19 +73,17 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu)) expression
-Date: Thu, 23 Apr 2026 19:02:13 +0200
-Message-ID: <20260423170229.64655-2-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/16] accel/hvf: Assorted collection of patches queued before
+ v11 release
+Date: Thu, 23 Apr 2026 19:02:12 +0200
+Message-ID: <20260423170229.64655-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260423170229.64655-1-philmd@linaro.org>
-References: <20260423170229.64655-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,42 +106,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
-available via the ARCH_CPU() macro. Use the latter
-to avoid using &env.
+Various patches related to HVF I'm carrying.
+Some are already reviewed, some aren't :)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- target/arm/hvf/hvf.c       | 2 +-
- target/hexagon/translate.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Except the last one (RFC) I plan to eventually send
+a PR with them once reviewed / tested.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 5fc8f6bbbd9..2fb768048b8 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
- 
- static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
- {
--    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
-+    ARMCPU *arm_cpu = ARM_CPU(cpu);
-     int ret = 0;
- 
-     switch (exit->reason) {
-diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
-index 633401451d8..825b236dd24 100644
---- a/target/hexagon/translate.c
-+++ b/target/hexagon/translate.c
-@@ -978,7 +978,7 @@ static void hexagon_tr_init_disas_context(DisasContextBase *dcbase,
-                                           CPUState *cs)
- {
-     DisasContext *ctx = container_of(dcbase, DisasContext, base);
--    HexagonCPU *hex_cpu = env_archcpu(cpu_env(cs));
-+    HexagonCPU *hex_cpu = HEXAGON_CPU(cs);
-     uint32_t hex_flags = dcbase->tb->flags;
- 
-     ctx->mem_idx = MMU_USER_IDX;
+Matheus Tavares Bernardino (1):
+  accel/hvf: fix double hv_vcpu_destroy() causing teardown error on ARM
+
+Philippe Mathieu-Daudé (13):
+  target: Simplify env_archcpu(cpu_env(cpu)) expression
+  hw/cxl: Define cxl_fmws_get_all_sorted() stub
+  hw/arm/virt: Do not select Kconfig symbol PCI_EXPRESS
+  tests/functional/test_aarch64_kvm: Stop dumping kernel ringbuf
+  hw/core/cpu: Expose CPUState::start_powered_off docstring
+  system/cpu: Defer memory layout changes until vCPUs are realized
+  system/cpu: Reset vCPU %exception_index before resuming it
+  accel/hvf: Enforce host alignment when calling hv_vm_protect()
+  target/arm: Use generic hwaccel_enabled() to check 'host' cpu type
+  target/arm: Only set CPU_INTERRUPT_EXITTB for TCG
+  target/arm: Remove vcpu_dirty=true assigments in
+    hvf_handle_exception()
+  target/i386: Report TPR accesses to HVF
+  Reapply "target/arm/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0"
+
+Scott J. Goldman (2):
+  accel/hvf: avoid executable mappings for RAM-device memory
+  target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
+
+ include/hw/core/cpu.h                |   2 +-
+ include/system/hvf_int.h             |   1 +
+ accel/hvf/hvf-all.c                  |  12 ++-
+ hw/cxl/cxl-host-stubs.c              |   5 ++
+ system/cpus.c                        |   1 +
+ system/physmem.c                     |   8 ++
+ target/arm/arm-qmp-cmds.c            |   5 +-
+ target/arm/cpu.c                     |   5 +-
+ target/arm/helper.c                  |   2 +-
+ target/arm/hvf/hvf.c                 | 118 +++++++++++++++++++++++++--
+ target/hexagon/translate.c           |   2 +-
+ target/i386/helper.c                 |   2 +-
+ hw/arm/Kconfig                       |   1 -
+ tests/functional/aarch64/test_kvm.py |   1 +
+ 14 files changed, 147 insertions(+), 18 deletions(-)
+
 -- 
 2.53.0
 

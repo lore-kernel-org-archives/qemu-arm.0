@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72E86F589D9
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 16:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4102FC0360
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 16:08:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFwWz-0002PL-Lo; Thu, 23 Apr 2026 12:03:57 -0400
+	id 1wFwaj-0004fU-JK; Thu, 23 Apr 2026 12:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFwWw-0002Hj-IR
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 12:03:56 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFwaR-0004co-Nl
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 12:07:31 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFwWs-0007Dy-MV
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 12:03:54 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48334ee0aeaso71362755e9.1
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 09:03:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFwaM-00012i-6X
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 12:07:31 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-488a88aeec9so88012355e9.2
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 09:07:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776960229; x=1777565029; darn=nongnu.org;
+ d=linaro.org; s=google; t=1776960443; x=1777565243; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=tui3QU7lec5GZ9QoBbSAta/edat1YRWXP0zG0BdtgTg=;
- b=pvqecMl0w2LvthN4dBHPCfPPH3zeJydjTTn+tYg9CCYoNgvSoP5jE0FgLNAWB5i+1h
- m2EUCsuLHzP17CLG89MSV0D5HBoPnlG7FzG6v0aM3J6uQiKT0vEBW3XKVDcsLOqTfJUE
- uHAopoVNs564r1WIF1zti83QuM4A3UXNAgG21NzlkZ+3tjdetCGJWTbZXKIyb67/j0Rc
- xadWBsR4F+Se7UyEfl0tb2+QqUYPMioNeb5TOwhFc0xqPjbGX++K8gHJCwZjXw4VrhBr
- H1rMT3uKWqnQYNUutDQtIhEHyg7DN/jlbt1DsWym6WJiWmpykyUEh6jf0vUj13V2gpFG
- YsWg==
+ bh=yfAiObZ3/L7bbfA/Mc+v8ngsTTi9idV92oVHEVsd0y4=;
+ b=fuU5euylkvXtFkbGvX2fU3mObLjgEcbAF4i7dJke4haT0hGBTfq+APKfCb9vyeN69h
+ 7Lnq+8U9a9KWEDjpN3PQiuFLMTomS5+b9Ng3Y0Y6Z+u94kXFxkL0TJ5JhUuPzsMzpu9n
+ WB5txdzGoKRdRRoGpGmjBuohikxY/T0A5FrOTrGQRiClEvagbudEfQF9R/Ko6PotNqfH
+ gHr1RLQhpq5AV5p6ybW5ZnDFg+CrHcSYMYQJpfdC/iW6tAjhDa7ApELqjG094CGsTP6r
+ 3Qp1EWQb+9YgwOFKlp6HN37B0jZjaxh3GKtKHN2pObOG8nF1zZ/AvC8di7puBT4RfRTS
+ Vdvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776960229; x=1777565029;
+ d=1e100.net; s=20251104; t=1776960443; x=1777565243;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tui3QU7lec5GZ9QoBbSAta/edat1YRWXP0zG0BdtgTg=;
- b=bIeCNU+zDF48rHF14TxGRb1DfHeSJ0ByjMzqRkiDrTdEnQpBXbbZ0CKXYOR4x7OUnH
- YIIQ9aKkzzy4KVRli/AID7z6jIPdXzdox6c8y9TneZPPUbqoaXZhrqsuLRqRJiR4LGwp
- VK/A4nmSHRRvAODRWxMwf28Z0ifCEI43HoiZeMxD721pbA5Z1Q51it+4CbPsWpCiAx6w
- doRh2pysr1Qj7T/bX6DQUXW8wvz8jq+TqqqFSt+gudyfekqd3IgQijn4KjWyPFVNhPTa
- RJM5FSSTLT/HnLPc8aUpiQ4PCfEhYC7voAT5otvXD5zb9Cu2ysKfago9rqSMIgyt8Kus
- 1h6A==
+ bh=yfAiObZ3/L7bbfA/Mc+v8ngsTTi9idV92oVHEVsd0y4=;
+ b=Oc8ep1IGnyUUcZ80kbrvWY93d5OZB4gGra2CgLXn/lZx577JA1WO3gbjb0/VLklU3z
+ Xr9pcgn5NB1VUs029WxuBsU5/NYVcQPxvazYwaNTRyTde78HM6Glzd6UImgCyoGv57KQ
+ F4K17ONig+8hz4pqFeJzGH0YBZ53uPESMGSVj5fa/VOQ1VYRCpBzq+5ttVNJnQ9WLeUD
+ RFEU5u5IbB6VPHNVZ45T56HVh8M7et4V+rysN3rXPCjglcc+c/jsXRux9S3UHPBzshXR
+ IO8GO7BSKV9QxeHpBLxwcxTz201TH1F1k8QA8TmswElSpF9KgVQ/h3p+Qkbs7qIrVLaQ
+ kplA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+9MGgUZ5GxhhHALVE45HY8yplB00LjKAMz2qxpJai/JrxIAp2IkRw/Lj7Q7R/JRRiyynqPjQCrwA==@nongnu.org
-X-Gm-Message-State: AOJu0YzU2xrGXS1RWMPD++Iy9PMlgh81UoE+gS8T2JySvus5utLj+api
- Tl8Eucc9QkpOl6/79jWxvawNqYEXa3LKhnA+0A4mylXbvqyew9SR8mzWReuWY+fc6P4=
-X-Gm-Gg: AeBDieuz16eq2MTTmzm+hZedXqIvuN0XvYJhUnuBXdWxBjXdzbYpT4tJ82aJLfbdaWf
- KgkQvJGXaEmwemeak5J5XiFwXW+ZzoxPAqVRiX8U7CYIPdD0+BwUSeaB+oa3fY6jQ4WDOYbRjo+
- I2YxAASnY+hEwj51lubAyJi8G/viwt7Xfxr4ceQWQC8u9ZzWl2L8hW1+DBomNhS6Hf7st8yGfOG
- kGSiGxL9/H3dVRrjIVlJaICw12dbfw+ASyg8IsL9BLteN94sLlSvIbAHK1kVTH8zQiFdBjE8IeK
- JWH3Z78SOeW7NuGu1g292UkgBkgC8Rv8QpsDBCBQSZ29ZNHQIQWbdditlleCoV0Y0hab/75ECB9
- jaN9nyTwgxbZPyhfa0LvNqwT5lSetlfpkafN8S7pvuEgNfsmbZlL2fE/sfDNC+FDP+AXGu2RhaN
- IFgIWlPh85W/5HgrzGavYinIp0DeA2lBTidGPLvRSlanE1ICM5BYNV3b3Sr5Jzlgv7Q+3KTHYkm
- OCo
-X-Received: by 2002:a05:600c:a108:b0:480:69b6:dfed with SMTP id
- 5b1f17b1804b1-488fb78ba6fmr336770505e9.24.1776960228749; 
- Thu, 23 Apr 2026 09:03:48 -0700 (PDT)
+ AFNElJ8Mc7rSwA2+ZRZZA6d+p1JvHBZnVXD8C8VUvkU8k7MV+IGK310Hm5FzCrGpnGYl7hEPxkZw5dGAVw==@nongnu.org
+X-Gm-Message-State: AOJu0YzjNIr4lxjg96yrJdkmhgZWtEdmolRtkCMNdfeVz3HdqR+LBk/9
+ +gj7ekjPNnRGT0PhFYjt+pl0WFiURNp9vvXKk2QkmPQyenu5v+BEKf4dGqEVpJ+sgRo=
+X-Gm-Gg: AeBDiesCOM/Huxriy8yIl/buZV0znzthZTOxyfbHph19P8ssz2WBYZOiK3LUQugjKOl
+ J85pvgWGB8rEvmzxF9iWfEAgN2g36Lp/IrpiUFy1Xyl+EcNPAfJPZBcmYWiZ8LN0OzmNPMuaAW/
+ uFlcHPOsFLe6zVg3x+GSkLSwrvvHdBAxNiQS/xD61gQLnhr/0scV8wK61TReAS2nZNteSTR3b5p
+ XvhN0FvEYIetPN9M45briT0vHueAFxscu1JmP6678DBwq3DTsG7mrw+LAf4K77Zw3RpLOTJQ6Mo
+ F8SBrtArGZC1CCi2jtHHFSkYmM/1fBqJZhbmYeFQmQhp5hcWyglDnmcYMpRY144+nwQvH/czKKJ
+ 06LrXpbhXhERpz7LZ/AKGbWvi4UGADwNY9BjYmasn0BofNrROFk838FWNXGpK5f4CHHTz+51kts
+ 2wL7L+CG+oXi8iBztP1fHET5na4r7GCaaAEHpuB+HgRgq+SHwhKu+MHh3WMDqj/8IkfGycD7ZzN
+ otp+geCDhskvpA=
+X-Received: by 2002:a05:600c:a108:b0:488:a82f:bbb4 with SMTP id
+ 5b1f17b1804b1-488fb78a0famr339935395e9.26.1776960443293; 
+ Thu, 23 Apr 2026 09:07:23 -0700 (PDT)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a5c4b9e8dsm34136825e9.7.2026.04.23.09.03.45
+ 5b1f17b1804b1-489207ebd3asm144467295e9.6.2026.04.23.09.07.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Apr 2026 09:03:46 -0700 (PDT)
-Message-ID: <22d286a4-52bf-4f50-85de-b238ee8671dd@linaro.org>
-Date: Thu, 23 Apr 2026 18:03:45 +0200
+ Thu, 23 Apr 2026 09:07:22 -0700 (PDT)
+Message-ID: <c7fcf10d-f5d6-4ba9-8258-5e510eaaabe7@linaro.org>
+Date: Thu, 23 Apr 2026 18:07:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v20 08/15] hvf: arm: allow exposing minimal PMU when
- running with nested virt on
+Subject: Re: [PATCH v20 13/15] hvf: arm: physical timer emulation
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -81,13 +80,13 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  Phil Dennis-Jordan <phil@philjordan.eu>
 References: <20260316130642.13246-1-mohamed@unpredictable.fr>
- <20260316130642.13246-9-mohamed@unpredictable.fr>
+ <20260316130642.13246-14-mohamed@unpredictable.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260316130642.13246-9-mohamed@unpredictable.fr>
+In-Reply-To: <20260316130642.13246-14-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,13 +110,70 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 16/3/26 14:06, Mohamed Mediouni wrote:
-> When running with the Apple vGIC, a minimum PMU is exposed by Hypervisor.framework
-> if a valid PMUVer register value is set. That PMU isn't exposed otherwise.
+> Enable this through leveraging TCG's physical timer emulation.
+> This allows nested virtualisation to work with a kernel-irqchip=off + GICv2.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   target/arm/hvf/hvf.c | 19 +++++++++++++++++++
->   1 file changed, 19 insertions(+)
+>   target/arm/hvf/hvf.c | 28 +++++++++++++++++++---------
+>   1 file changed, 19 insertions(+), 9 deletions(-)
+> 
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 88d4732fbf..33fdd9705e 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -189,7 +189,9 @@ void hvf_arm_init_debug(void)
+>   #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+>   #define SYSREG_LORC_EL1       SYSREG(3, 0, 10, 4, 3)
+>   #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
+> +#define SYSREG_CNTP_TVAL_EL0   SYSREG(3, 3, 14, 2, 0)
+>   #define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
+> +#define SYSREG_CNTP_CVAL_EL0   SYSREG(3, 3, 14, 2, 2)
+>   #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+>   #define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
+>   #define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
+> @@ -1719,9 +1721,15 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
+>   
+>       switch (reg) {
+>       case SYSREG_CNTPCT_EL0:
+> -        *val = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) /
+> -              gt_cntfrq_period_ns(arm_cpu);
+> -        return 0;
+> +    case SYSREG_CNTP_CTL_EL0:
+> +    case SYSREG_CNTP_CVAL_EL0:
+> +    case SYSREG_CNTP_TVAL_EL0:
+> +        assert(!hvf_irqchip_in_kernel());
+> +        /* Call the TCG sysreg handler. */
+> +        if (hvf_sysreg_read_cp(cpu, "PTimer", reg, val)) {
+> +            return 0;
+> +        }
+> +        break;
+>       case SYSREG_OSLSR_EL1:
+>           *val = env->cp15.oslsr_el1;
+>           return 0;
+> @@ -2015,12 +2023,14 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+>           env->cp15.oslsr_el1 = val & 1;
+>           return 0;
+>       case SYSREG_CNTP_CTL_EL0:
+> -        /*
+> -         * Guests should not rely on the physical counter, but macOS emits
+> -         * disable writes to it. Let it do so, but ignore the requests.
+> -         */
+> -        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
+> -        return 0;
+> +    case SYSREG_CNTP_CVAL_EL0:
+> +    case SYSREG_CNTP_TVAL_EL0:
+> +        assert(!hvf_irqchip_in_kernel());
+> +        /* Call the TCG sysreg handler. */
+> +        if (hvf_sysreg_write_cp(cpu, "PTimer", reg, val)) {
+> +            return 0;
+> +        }
+> +        break;
+>       case SYSREG_OSDLR_EL1:
+>           /* Dummy register */
+>           return 0;
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Modulo the hvf_irqchip_in_kernel check, this reminds me of
+https://lore.kernel.org/qemu-devel/20250620130709.31073-11-philmd@linaro.org/
+;)
 

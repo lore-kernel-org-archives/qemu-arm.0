@@ -4,95 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62742FDEE2C
-	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:06:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 315D2FDEE2B
+	for <qemu-arm@archiver.kernel.org>; Thu, 23 Apr 2026 17:07:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wFxTi-00028o-0J; Thu, 23 Apr 2026 13:04:38 -0400
+	id 1wFxWT-000890-5V; Thu, 23 Apr 2026 13:07:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxT9-0001Sd-AU
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:04 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFxT2-0005jd-SF
- for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:04:01 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-43fe3e22e33so4556537f8f.0
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 10:03:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776963835; x=1777568635; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZCFQzooRNCLAU0lxbQyFXKr+3+SaXX5+jlkuAyFk6Qg=;
- b=io4xn7R/SmxpXazT0G6JihMVClWhfblgSELzjJ2T9I6R8z72Ll3TtzUhGBHwjkhSTO
- DpPcNEKiuC0a4WwpyNut/F94QufjFmK4D/Bs4WiLWQx2nQyF6s4fZNECGHxi3FjmCTXW
- MConiZCjTz0YU8u5En+pK3NLsuwJ+CK4ccgm8nPGboaQkt3paLiYTk9Y+P7NdLR+/gI6
- HMfddqwqQWiCuZiQhhEelInVV1spQZ/PGJSu3a11+gUhAH5jIzkbKrvkBWpH+X3mYrjK
- KEKCll51CHy3EB2ziSK1lccxa1JmFUKcnyCLXtMJC2WFeTlhpb0nOmX/fCXYXhAuS0lp
- SPbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776963835; x=1777568635;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ZCFQzooRNCLAU0lxbQyFXKr+3+SaXX5+jlkuAyFk6Qg=;
- b=geSnh559r02E3NfdeoDPtFMT6cRMP2NqUQaW6Yw5RM2WoY+qzsXUyXYLPVIuoIt+zB
- wttyqqJAdDRg+ZRe8ywyWVqUksXPC9dvf7gzus2TfacwAKXhDaOs3lnr/PWEcy9q9uCH
- 14C1yhBfuRlVIWcD2ImWIjtcIC/18sgjUROlUbKuzeotrbZhIMZ8C8CNl0oDIxJy3bKh
- 6RAfEXmobY3YBTzQ85xEotNBM1K9BhENweCJDUNyqqKpjmgG62kH3vaIhRBFgktUS/GB
- 1p7qa23YdJGZ8O4Q5rPnP5Lmy4ptn4pR0WdR/OywftNtSN1222JgN2OIGTljZm4PMLxV
- 3/uQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/fFwDLbMm4k5Unx+NNk4EvyU1uII5S5SmeVHZsTF9nMsyd53wk2F9c1Tun0qCRC6qiAUvom50Rgw==@nongnu.org
-X-Gm-Message-State: AOJu0YyOFsw+xkLmj/OW/XG4Podcur8HM1BGoh3DbKCWI6p1wGXAir6W
- QpUfiFt9CCSfvT5ZgsoYVWyGKjHPCIenhrfeMiRBOOftC9kRa6a7dourGe6qPaFizWA=
-X-Gm-Gg: AeBDievea43zXvQAA0yZRJZO0bwWSdhPM0/TB/pay/UQI4KCBqQloDCWDn/GJY8nnu/
- fWhGkVHhBGiSOl4cwVS6kDcaMfx+RX+dX4Yvfn3A1VrVrAFCKaXrlXB8WQH7kbVfpDGg3NJ7zph
- al2Ki4mEY/MAZNyks0prQerDMNxW//npeFvJRaR+7PeZjayUi4HNA+YN2aGn1JA/SG179bqp52r
- xUohLYy0P15o2cZxYpPrdXEx0U/wv42obxA5HkEpxYCpfLOYYjdeLM4+RRAgb780ix+mEIHcn19
- qcuKR9mW5X4h7H/cpPCPYzrINWL8M+OsJDrIT6pCRZF/LzqMh7Ayqexi0bkmRCZnJJuEZ3oPRs7
- +/Q6aM91Sj6Hib8o3PEBGJ+3lrM8nVJZmCmPqRUNjE/NHnb8G9BeAcYswlaCcRnUzP7IJ0jBLlc
- Ppemh4DwEensAjzazS6jB30JiNvc2G0JlWLf0mXoNZcnQ6GcvFLdtwqjbQOJA0/P4t3caiMGmsO
- /O36ekGvM4NPg/8cAvhGA==
-X-Received: by 2002:a05:6000:2909:b0:43d:733f:aee6 with SMTP id
- ffacd0b85a97d-43fe3dbecebmr42817355f8f.10.1776963835241; 
- Thu, 23 Apr 2026 10:03:55 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e3a174sm59920785f8f.18.2026.04.23.10.03.53
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 23 Apr 2026 10:03:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFxWR-00088j-9Y
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:07:27 -0400
+Received: from qs-2005i-snip4-11.eps.apple.com ([57.103.86.221]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wFxWP-0007aR-Fs
+ for qemu-arm@nongnu.org; Thu, 23 Apr 2026 13:07:27 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPS id
+ 795543001520; Thu, 23 Apr 2026 17:07:21 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAk1fDl4fBBdGGVUERx5dVkIeGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQU6di4AUgZEeFVxWg8qH0R9PXBAdlkLSBQ+AytyKnFIf0kBXgMrRx5JClYJXghGEVsUVkNRGQxQTQFDCAoIRwNNF14yUwRfEVAW
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1776964044; x=1779556044;
+ bh=S08Un2xA+itCNP7vCYVQ0sfBYmjC8fvQ1G2P6f8f0r0=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=fTwyBzC7xEcuOxfbJh0yZLo6c6HzF1Z45LcY9nGGxkYOxVtDMWpRKjLOP3KlUL5QkG83eHIzczQU459CaX+Q4smA9HCmX976iL9dJ6YgiWWIqx3YAC95mJJx5/5gg0GVwwaajJAFCm2JifDezweCtqfsjKn6VD0ys1iHJklOE4+MuUMhDdx84rdZwbbZTNG3wkhlZZxORQTq1lryIh3VTFQi8GSFVhS6vvWKtKbRfxxD4a/n4gT0MPrO6fGc0/3gOmY3JhWdglWiyhNa3TE1OJ0F+42zDsepQoSr86To3FXLaUCjxN47tnoDpR3H+5Z+fRUWhGChIB3711/82Qn7oA==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-10-percent-0 (Postfix) with ESMTPSA id
+ 43E4730013A3; Thu, 23 Apr 2026 17:05:40 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH 08/16] accel/hvf: Enforce host alignment when calling
+ hv_vm_protect()
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260423170229.64655-9-philmd@linaro.org>
+Date: Thu, 23 Apr 2026 19:05:27 +0200
+Cc: qemu-devel@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
  Mads Ynddal <mads@ynddal.dk>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 11/16] target/arm: Only set CPU_INTERRUPT_EXITTB for TCG
-Date: Thu, 23 Apr 2026 19:02:23 +0200
-Message-ID: <20260423170229.64655-12-philmd@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260423170229.64655-1-philmd@linaro.org>
+ Phil Dennis-Jordan <phil@philjordan.eu>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <BEC7944A-B78A-4DEC-A298-F0FEAC8F1234@unpredictable.fr>
 References: <20260423170229.64655-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20260423170229.64655-9-philmd@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Proofpoint-ORIG-GUID: DaUHq3QovYBVZaE-EkqrzOCPdyohTogM
+X-Proofpoint-GUID: DaUHq3QovYBVZaE-EkqrzOCPdyohTogM
+X-Authority-Info-Out: v=2.4 cv=OvNCCi/t c=1 sm=1 tr=0 ts=69ea51ca
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=9vKZ5dOS0OzRSC8b9IcA:9
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIzMDE2OSBTYWx0ZWRfXzXYYZpv52cCZ
+ kLRMMHfHwVDhWJ4ln0qi3js353IRcYyw8tyY+pqCrF7OfR1DcumO7c44KcgzFIvlyXgpTrXpg2X
+ Bq2EPoHQL3b2vGgP1jiokEXBqbStlYh78DUX+Z63YlklxipM5UkD2LfwJEjWiH3gdZ8nprRB5LQ
+ 9Hv0AHLLJLcCJhpTmPm6lMIsa1XpCr2e1PxHPftP09bTkf+CvMByXXgh5eBKxxXeFAzHOJnCsf6
+ gR1HDz3UbihuvZIuBuKu8oBgF2XTe22d9/1G3a34iG3s7pew4f2K3k6o6qcNmls7XegVFy/qkIh
+ VNi2XqzytTjlIDq3wh4cWYLAOu8Kvy0d0Mx9iefyLakS0Rf6/rOCLxNALmwwsg=
+Received-SPF: pass client-ip=57.103.86.221;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,33 +92,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 34c45d53026 ("target-arm: kvm - re-inject guest debug
-exceptions") removed CPU_INTERRUPT_EXITTB from KVM, but it
-also appears on HVF. Better to restrict it to TCG.
 
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20250630130937.3487-2-philmd@linaro.org>
----
- target/arm/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 7389f2988c4..45183df4449 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9577,7 +9577,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
- 
-     arm_call_el_change_hook(cpu);
- 
--    if (!kvm_enabled()) {
-+    if (tcg_enabled()) {
-         cpu_set_interrupt(cs, CPU_INTERRUPT_EXITTB);
-     }
- 
--- 
-2.53.0
+> On 23. Apr 2026, at 19:02, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+> accel/hvf/hvf-all.c | 2 ++
+> 1 file changed, 2 insertions(+)
+>=20
+> diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+> index 5f357c6d198..82cb3717750 100644
+> --- a/accel/hvf/hvf-all.c
+> +++ b/accel/hvf/hvf-all.c
+> @@ -56,6 +56,8 @@ static void do_hv_vm_protect(hwaddr start, size_t =
+size,
+>     intptr_t page_mask =3D qemu_real_host_page_mask();
+>     hv_return_t ret;
+>=20
+> +    start &=3D qemu_real_host_page_mask();
+> +    size =3D REAL_HOST_PAGE_ALIGN(size);
 
+Hi,
+
+I think the patches to support 4K IPAs (which are already
+out there) should go first and then an adaptation of this
+with that in mind afterwards.
+
+With HVF 4KB page size IPAs are supported so the check in
+this form would have to be altered anyways when that gets
+merged so...=
 

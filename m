@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FA3CFB44C8
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 08:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DAC4FB44CA
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 08:10:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGBXa-0004xN-W0; Fri, 24 Apr 2026 04:05:35 -0400
+	id 1wGBXx-0005IE-DF; Fri, 24 Apr 2026 04:05:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wGBXZ-0004u6-1v; Fri, 24 Apr 2026 04:05:33 -0400
+ id 1wGBXd-00051U-8Y; Fri, 24 Apr 2026 04:05:38 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wGBXW-0001GV-8w; Fri, 24 Apr 2026 04:05:32 -0400
+ id 1wGBXa-0001Eb-RE; Fri, 24 Apr 2026 04:05:36 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YJTYBUosmU+kvwyC3g6uExVIEy4mST7TCovrC0/MGy2HFyY7swwONxmqGVaLCOoGHRUNHwxMD/G95yhUCvuO3FWyQbPTZOfNPGYcyyomzcqDIuo5Nc17+uYHky4fxNFFjkYxNLZnctVtWzLVagVT5vVshKIUiUCYAtT3jeZox2nNZLtFN5o9uA0/gr97rVbUVrwal2m14gQgWxXr+wANwMt190D5WJPSkmkUOTak6nrHjH027Yn72wgOzk9TecAkusWaI0XyEl77mffDLm+/djajz9gzAJGY4Q05XOAKkDBGbSC9trMpt/VzapRYJGS4m4qdvnKT1ZeX+O+DFsBuLw==
+ b=HGnbn5sFb8TsxYoq3MOPbSbns1wTbiYpHfeVre+pJW/jdl+KKfpOkI4dORbBz4Z/lz/IU/pYDUFq/BRQ9YC9Al4sofC9fR7GPOK0YWmh8Q4NEOYpQsAAUcMV97SIqqHj/8RMxfMMZ1Tyomzhc2Fe+hs03cskOSAQttH0WWyI2EmcrAa7GllcoNQUgcvgJycdbAga00tOZ1WFBo/2uF1wpsOOo8JkZIYvbcnyyU/XpVwWSuUYC626yCAMIdWphuNe1BqFDFSM178906f/+3CsXAlvCCcTK3ob1u/BJB3UFe9ikwwJDCmcQGZN7brV9/bftRCA1rqCaQKm4THSKXLV4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0t876nfq1PurFy1REImxgXmZt9Yx/BFkWkH/U1x38zE=;
- b=eBSxyBYt615sKUKRAMSZ2BeV43BS0tq4STcJSgo0y7Wdgs3DPg1Gpe9VB0iGYG4/ghhTPcOGa7lPcpw3OlRMII74ScaMf8tkewGuU/WT1m8y7jFfCQsM3sF/eHcJCvUt+2pKd6cJxIf0G+2xKyC986p+1W5touusLuhAoreDVR63+LXkc7SshY1W3h2OqNZCIdpLNXgYTkxi9rxgTZHrIjYZtxaL1V/F1PW9H9p9UPbeejSs1/2+iaWloBfx5cz1st3J2BpphQ1IZDDLHHDvc5iOi9BGDbW43HPX74wgl4sRBOxbEUPI4mcYP4Dv6K0G3Ic6RP85fq6V2r1nDq0S6w==
+ bh=GIY1fG4h3zp2izRpjJocKSCoNpoYrGe5n8/GcTDKgfA=;
+ b=DvmJvFbL6wWzFPFUoPWlII2c3z8CNt/9eH0xqPRYi0Hbr8+Z15vo1y71XMpjeMWIa6NaSg7ugBSHkLHjI9r/8YI1r2ET46mprggAyvAIonrNSRQbATnYQRftHVMRXhA4XfUj750o8FWxQ8m86s/6b4ocr2FmwxCvu6NSKAEF0jbvHa4XECtGBw2G4gEXb7z4Was/nfPhQwOTM/uxIAZqdSHahp8TJkkqamdqkDfc8doPK03W3uECtPeMyMSVgv0ckLSL6kY5LyFEMomUufKrBVfPjDLzXDvJT1eJtlk5N/P3sx6GzqgrHJCuOX6/ncrGukzaQj0eocMjWSUTEl4kgA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0t876nfq1PurFy1REImxgXmZt9Yx/BFkWkH/U1x38zE=;
- b=VoKhM+Q4tIUOwVva5a4qXVefqgwNkK5n7WUUp4qr/m/9WQ2qoztNhnrAP5xPlns2sEbYlPKron7JO0varJZKpUJNYSOzdmucxgxlufJjIqWQsv5jegsMB+Z2V+kwvKMQ0FivtI0otM564tMojTegMU3FAQGfv4bBGLOwgEYy/2QBw0rJr+B1sMHyL5JggF4oEjg1PBkCXzvtzxXWUuYetgqhWLJdItcfEJOIl6h+WnZyQeZBxMVr7TCv0h9CBUk8od4ub9vJWfzaOMENs3YHcwG+7QBPlHuRRNxn+ioBpzHf4eDGgjaNwk5hjs+bIRdZPtuRLl+fyd5vjSCjJqyLxw==
+ bh=GIY1fG4h3zp2izRpjJocKSCoNpoYrGe5n8/GcTDKgfA=;
+ b=byajdaLYe6m17ORLV5VNu2U6+nLXaRnYNWzx/uTNeycbh9W9caT5GyOxlCBF/JypzneQY3dz+Us96ePBZB5k7IdiaImSdgzf+5/GZnSouKXxVr+0YgxwCsDga4Er2CEtA1bX9OLGxwTWg05l0KQ38EDp6wBm1Jl0bgv9997xbzjGJsWWxOUSmZ+zY8bIuFtjAEUZSXKRDRnHMrhGn8gUQQg7XyuleaevopF+ZOWm/DtB64+E71gR7qTvVW66Y0p5VBRyN074cY4WYBBuLvcUa1wKygKhvc/rPOOm+P1Mv8/6UoFdvQxRiVzZjVCYxjyky7xcieJW3v76EtzGSVWqdA==
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SEZPR06MB5856.apcprd06.prod.outlook.com (2603:1096:101:9e::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.18; Fri, 24 Apr
- 2026 08:05:20 +0000
+ by SEYPR06MB5790.apcprd06.prod.outlook.com (2603:1096:101:b9::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.22; Fri, 24 Apr
+ 2026 08:05:17 +0000
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9846.021; Fri, 24 Apr 2026
- 08:05:20 +0000
+ 08:05:17 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: "peterx@redhat.com" <peterx@redhat.com>, "philmd@linaro.org"
  <philmd@linaro.org>, =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
@@ -50,27 +50,28 @@ To: "peterx@redhat.com" <peterx@redhat.com>, "philmd@linaro.org"
  <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
  <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
  Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Halil Pasic
- <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
- "open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, Laurent Vivier <laurent@vivier.eu>, 
+ Nicholas Piggin <npiggin@gmail.com>, Harsh Prateek Bora
+ <harshpb@linux.ibm.com>, Ilya Leoshkevich <iii@linux.ibm.com>, David
+ Hildenbrand <david@kernel.org>, Cornelia Huck <cohuck@redhat.com>, Eric
+ Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Halil
+ Pasic <pasic@linux.ibm.com>, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, "open list:sPAPR
+ pseries" <qemu-ppc@nongnu.org>, "open list:S390 TCG CPUs"
+ <qemu-s390x@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
  "farosas@suse.de" <farosas@suse.de>, "flwu@google.com" <flwu@google.com>, 
  "nabihestefan@google.com" <nabihestefan@google.com>
-Subject: [PATCH v5 08/18] hw/core: Add 11.0 machine compatibility properties
-Thread-Topic: [PATCH v5 08/18] hw/core: Add 11.0 machine compatibility
- properties
-Thread-Index: AQHc08EYz77OLqMUiE6xORGmT3HWyA==
-Date: Fri, 24 Apr 2026 08:05:20 +0000
-Message-ID: <20260424080508.53992-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v5 06/18] hw/usb/hcd-ehci: Replace DPRINTF debug logs with
+ trace events
+Thread-Topic: [PATCH v5 06/18] hw/usb/hcd-ehci: Replace DPRINTF debug logs
+ with trace events
+Thread-Index: AQHc08EW2owNv3gcH06vbnzuE3Wtzg==
+Date: Fri, 24 Apr 2026 08:05:17 +0000
+Message-ID: <20260424080508.53992-7-jamin_lin@aspeedtech.com>
 References: <20260424080508.53992-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260424080508.53992-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -80,63 +81,63 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SEZPR06MB5856:EE_
-x-ms-office365-filtering-correlation-id: f08ba83c-cb7a-475f-f34b-08dea1d83aac
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SEYPR06MB5790:EE_
+x-ms-office365-filtering-correlation-id: 242703fe-d2e1-45c2-e7a0-08dea1d8391a
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|38070700021|921020|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: Iekyu2f5xx/mEfTM+/oitNfAJY3QXq1IXbbZFJGVxk7EehScF79Pt1G1pods+qp5r2fNxnBfEArkDtdsj9Q46HjBAUAFp7KH7zKY68gmC+gY3E7zEvaQh91a1dQpFKCXu7ESE0JXVW0O2gyADtuf2wNEF2KbRfOfySChbkFVrS3PcrJ34+1Z5KkeZEcRElo72F+efLuZ0Fy9uadz9DOHHYImtxyx141kKhikH2vpMs4l32x7F1GqFmkRtMu3CnFEU2HNXu7NgSts19pZh8p8xqfgIZyYfbeX8reKGRLdT2Ibq5xLUdMs73twgMIsgAEPpzd+gHt8WlyUgpHvulYnKHNhoHxAutixIUHBp3siWmE4tKFFITrnNQWF1jRaaX1FYqB3551Q2QL3oyzycBPkYYM2EurY91H76Q+Y35LYv5qYD3Uj5Qksg90p3DyNpcgjVGthRAjOj0QMnGUQ8EdRP6S+fCr9Th758abQaC2v2JvDkIwAYGnZ/JnthajaRIGxBz0k61aM8YMMDXXlR8XU81+3p/+TtpZ28x2tX/PI9pkBoiIlr9KrhgcC5aVgt++Op66P365+GM0wScsbE5dxcB+HquuGHwcKgAgSdX4H9iKl8BzOauP9Z9IC2CcMw8P1v8fYa4Oee4EYIXvYbi7zWto/+oTahorp9YfyLn7SYs+pclrc4aAbdY6GFN348BTwfCyLpX+1DAiX6zxBw+T3pkIdIxwvuW6vG759mrAeLFqU/8VF7ZOs6dnCZjr1fuvIecuEBmBXKnpIel2R7LxmNjRhZ7gSUOAqmeeQshwjzf+0gTA9eFBKTACMl1hmcpZH
+ ARA:13230040|1800799024|366016|376014|7416014|921020|38070700021|22082099003|18002099003|56012099003;
+x-microsoft-antispam-message-info: 3hEeS/RHMxA4s5bMJjqY0X6e/SfQWSHGzT+mjGw0oQwzVY2ndu6xrl9Kfy2yW+RnFE3dHfw/1yEbV4XlT312diLFXROr+TAcv/g7CLYXwYhAgPKdwLEFOtplmcOvlmnZpFI5bPiRrWCSE2FPi4hcdhRO9nog6obVJXE2Bo3Z6ZEwygQwGsqnJPhOqw+MtSbMdlYkSXInbqdoKAv4OwNxlm5qVnxuMVJ6D8griU3sYrIOAJCu3eB2xV5iIIbrKVdhc+KRzB2loL+F+AKYddc8V0wd7UTJ0wG94eDpK8aZAUKh++wp+a2w3HJi+gCTWZR8AZMHVFa5kVW5ttwn0Nvwp/LLluVyfmx4S5dGpawQVJf7/ABpC63zFNQSdCA2x87SSF9ia88DJfukWN4foiCxjMfgtl9vUkR+274LMmQXWCdyOdPJTP7HYZCAGweUmdDoLWuK9CtJ04WLT7iO4/KJBdGGtftrXu2MzX0zT16odiCCZSbyA/K3fLWwnMvL45oSvAAaiLO9Jl+sRXY0Hry01XhI+npr8s0WDpJOspsYmI3wrKc+7dNzV0qA2vz72+fg4gPu67mSQ51eDSx93OPk67QjGNMD76l4aiFPTte3MqNn7i8juMepGF+oR5Dkll4elF50V0FGMRUNTuBqffWN9QLmm0vBmJ2LVd0n8DDO/CyOSPNd/n8jISn4cLwHfP5WJqhnreymqx81bwKCQBSN+9H9VRSOITIeZXj8pCPnLLoUiZPwCHdaXyIzp/ggPpY6wRrY/9DnsT6LEpku4Ja5HXv8CC52aaEX7s+GEQG8R3IcP2aE0A24WeutBfmKx8pZ
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700021)(921020)(18002099003)(22082099003)(56012099003);
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(38070700021)(22082099003)(18002099003)(56012099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?O/loUQE22SkhmZp7A/6rDQe53lEdv0bdUMCSv74YiQPf9z4iRqPS3+24EA?=
- =?iso-8859-1?Q?iLouicfmzpIwhDxOKUKWkyBMiyMO7Sz9gYYSWsLV81MR46Vx28eOMmTeNC?=
- =?iso-8859-1?Q?11ABzhwsaoCpRepgacB7jaChJVpNkyK9uCiqGrHPBxb67WqmiyEVm0f90M?=
- =?iso-8859-1?Q?76xRVFtZS8vzlK1Pg12XCQCxgIlHGoPO1+T6jnNkdsGuxNelpqTEq/g107?=
- =?iso-8859-1?Q?hr/upUTdXq27L775/6zc4kn5b9dbz/oP5480Lec6aN848/yBdCQ7Mpaq0y?=
- =?iso-8859-1?Q?xLmERkIap7PCAmIKp/yA5+dV+VEgCta41mDwfWfmfDxem5ODtqEg6YhPDr?=
- =?iso-8859-1?Q?6u0vg4uV7PUArm8V/iTqddfktEhS7gcnqLEpbje9e7p5Eg52ckXRfS7tTu?=
- =?iso-8859-1?Q?G5jcq/AKlvwb/PV6yduFs2uiceT6QFom1xakfVLkAE+L/fLqasH4sgiL7D?=
- =?iso-8859-1?Q?cpON/P0RKbQOwogdijkwpWTrQl1RVZGRQiQ04SOIW39nc9Bm+r9769tuYZ?=
- =?iso-8859-1?Q?r4+nbX+wqg4131hvoP3kecudkASdFWBdXBqCdSnzAp6EAj8BMvkyA2eX3D?=
- =?iso-8859-1?Q?qWS6JfSHXX1YvIf3nGNDqtB/dELxwWhfI8M9acfPEQp4FDKcKjX+jfN3Jr?=
- =?iso-8859-1?Q?QW4qx3xnwG2J36g70UAwxiDJkDd5SRh6f3sbv6xLQt7Lyr5GwBTlsY9epD?=
- =?iso-8859-1?Q?NhBnWRaw4L9n3LNVN4ZlORozMuqwLvu444onTcYNBxu/g130pUEUvAzU7d?=
- =?iso-8859-1?Q?cnEhbrgKVpGGI3ph6c46BPpRStr04fB73nRx2oPt3nEmtpkxd4ojYVWRMQ?=
- =?iso-8859-1?Q?B2Sb+V2WKeOqOV4lH4rSgKBaQkWhzVJSlg39pi4cINs29CCfZOJROk+knr?=
- =?iso-8859-1?Q?Bj4eDfsMmZasuBIxWDMlYk2Od/1O8cIhrO7NdhGu4k2OHocLYuH46UK3/5?=
- =?iso-8859-1?Q?Glm8pB5yO5PAGWSD69/E4ZuglT1iz7ivLaeqRqOPudeDP90fktbyb6wyb/?=
- =?iso-8859-1?Q?A+5wLBBrdLNNf3S0NpLxitHnXXCQ6m0TOv8ZmOcpkKQ0pwWELdXIROYMgw?=
- =?iso-8859-1?Q?fVanTSk1L2QsztzJU2KeBOey51iBjK9lksmGkYOf7b0VSjt2CnW8+bR5S7?=
- =?iso-8859-1?Q?/L9IfuItuy4vJVO4vXm7xlTeJ5Z9WvJPd2Jj5Rj7VcTlrPIAmYv2EkFGE2?=
- =?iso-8859-1?Q?N15f+9S7fNfH/+pI+YjbYylORrqSlnJR393Vm5TAQ9pUqq2WdW4Maxfz90?=
- =?iso-8859-1?Q?Z/OvaWf8v8R7exSkqWGav4Fy2Hqba4W+6ITVmGELlzm9v2aUXXjwANf/wS?=
- =?iso-8859-1?Q?mDONVSyL+TdgNWy3Ok2L/eezZtA7yDntZaiLXpm7N3pI+sM09zHTv3lcYi?=
- =?iso-8859-1?Q?AbEmFU1vd6YRfguPDdCElE0Bh0ROBeqo1wQrINhBhtW25vLgVY4FrlNtr9?=
- =?iso-8859-1?Q?wLMy4PQ2DU9Q+mIpIlT4eDmvzuQTFSAoNX4jB8QV4fqQD7xzOow0ThxHhY?=
- =?iso-8859-1?Q?woCv/QRVpcqzU7WnnUCc4n2IZrqpDvC1Id1P+O6rUzjIA+qeCu/5V/Mdog?=
- =?iso-8859-1?Q?7x0Kyg750vcO/CADvyCPL0w771woVsMAzigujfIc7/7aR/RgMJErhD8Tqm?=
- =?iso-8859-1?Q?SA253DB1T4jjFLw3LnMNhsMgAwRPCptlhryRMhqQSOsrClyba+LQXH+lQ3?=
- =?iso-8859-1?Q?Z+tFdwRyn5Klnmp7fS3CxhlX99yj+iqmUQt7DG3Wz9BUok3RmBpEA7TV3f?=
- =?iso-8859-1?Q?usunHRKjIt88T/rLQwEqiVPCVxPr5IJXt+6Z/o1iiRl6UmS0/KVQXBXoBJ?=
- =?iso-8859-1?Q?d6z948nB6A=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?xA/1kVKT4Z1z2GDiX9HQntKBhYFEeI6wECyT+VDQM9yKc1Crb4o1zlCzSb?=
+ =?iso-8859-1?Q?obYJHUFRRku9Fa9Z67DcpMXygJGC4VmW2eTf+QX2xcFZf0atT3VIqzAJjb?=
+ =?iso-8859-1?Q?Zs+tUHEVfIE3sGn968M1T9wUIevJ40w8P4uYgckmdI5bX3c3cH+mqTbcyL?=
+ =?iso-8859-1?Q?CPSZCEQF2TPzrYmEtr9HCauNNsNNi4HwCqjt3T1Yr0Y2L5aetcdgZrRg/I?=
+ =?iso-8859-1?Q?ivzVDC+rqO8bxBAcghcLTO/ld8/NxtwFUNzJnPEMxNfx2DY50772/2FJKf?=
+ =?iso-8859-1?Q?2viNj+KN5f6Onisw522NG5LgXhU4ApL/AMk11aSWi3zIi3P57vtzxkgsey?=
+ =?iso-8859-1?Q?/ysC5ZCPpnAF1FlIZS33R2NKg/WGEVXg2/ifNNhgv/yVII29X0vpV1AjuU?=
+ =?iso-8859-1?Q?UiHDtmJQQoy/IeOiKeuizw7ine+9XfqG87cbpvtd8OVXgMtEIC0q2MTc/w?=
+ =?iso-8859-1?Q?gz3WfLbz1N6fouseJjnhSAgWs8RnnsW4shFJlzeIkT5zd+PFSmkBtcZjbE?=
+ =?iso-8859-1?Q?jm29yGv+iAmwjYvfDcXAE3iWYHkjz7vqzDWQd4LrVOoMPa9Yz7lH1HKKUR?=
+ =?iso-8859-1?Q?GUFEdPW/hfXbwMxkmkaWMVhhPc87sS60bXjM/zj3WX9JtssiAax4LaL4Qm?=
+ =?iso-8859-1?Q?kxUSKQruHQP6q7AyWWdtIiNpNnY13AEhKo8UG7Fd3MXj5c6zLnkbhrCCO9?=
+ =?iso-8859-1?Q?oKlwCdHfCqgtR3kr0vY3PXtSX3BqEcQ4GeGjTpZ3wlywfWqC9v8IJBktHd?=
+ =?iso-8859-1?Q?WbbHXJrUgXUFW1CbQWPMlMxLJvzevjqrXxORs1HbbN3no7g90S5xnLfzIu?=
+ =?iso-8859-1?Q?RQjS+sHqgPQR5253QSNKjeyI+MYiZw6UkIumJKxFRQzWItnxy9A2+bvM60?=
+ =?iso-8859-1?Q?IQq9KZzFOrljAjY4z0y01iEUJvISvizhcUBD7wBnf6KoasruDXeXKxOseH?=
+ =?iso-8859-1?Q?VQl2KU3EZajEIyOd9PH/+btbyDW7xcnE9JXcgKbptv9RLAvp3ZIJ01TbzN?=
+ =?iso-8859-1?Q?boCN+DxZ8XOY7iKj+GAFv6s6dIVFNCe3ebpvMISaQVlQ/x4qwB+crFWrnj?=
+ =?iso-8859-1?Q?mzMTvuba1+NpHqX7do9uUQPrLyOfK8dA4giC95oJLGoCgFL+7pGEpZ57DQ?=
+ =?iso-8859-1?Q?aw80sWaTMAGOx0fCfKuFTgou3NWSiIYks+3l3ePowgCi3+N6/3x1m3ZKLM?=
+ =?iso-8859-1?Q?1zRzIMnVKCSCLp9qSaqtHy33UOF0q7X9ZwLNROEQtjmLRQNiQS/5rwKkkC?=
+ =?iso-8859-1?Q?pF4fyfkzeSTNDZ0tN4ssa7iYInBIITZLva6pZPH1sUp+BbZjyQHwrZPZQB?=
+ =?iso-8859-1?Q?lX43f6zH+WiNStwIX9Bjuz5MsvZKrWVN2aJjtWerCITkQqd3XpMhnudocn?=
+ =?iso-8859-1?Q?RWxWSEPExvu2TcuDPlFWP1NajNUBEwIV7ALvEypYP8O9yZLq8XFGT6MG/5?=
+ =?iso-8859-1?Q?Lh7h/+QpAAaiRY60CQ+A0G/tSJRCdaK41ozmeKofdvggKm4gpc9h5BWhYa?=
+ =?iso-8859-1?Q?qPKlDtdUyHUiOWduSHTjM1zbyvysOfwpc5BRcRRmpatPCufeaY+61ntkY/?=
+ =?iso-8859-1?Q?16t9gLaZ/A8LFzD1A2EikwRFYvhXt2Higx0pEjWi48DeFywCFbcAv5u7Gd?=
+ =?iso-8859-1?Q?jIY9/scepoXc/x+/ZlTgnLWjJvLFB7NkUP719VEG5clGY09DPVe0ylrDFn?=
+ =?iso-8859-1?Q?Tmz5Bi1FV6mJ1IsuS/vRlGgRXl/6k0kUId9Lvb2aAnRHPvqmc5JGglXtf/?=
+ =?iso-8859-1?Q?24esdGEmf07ztoaBRuX3+txt/9Td3jy7A/gJVFsklq11xRwhjH2nER6za4?=
+ =?iso-8859-1?Q?9lOQL6Z/Sg=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: FirCX0mxlDbP5hhcCqn+Lvwfr1tOvQRonqRpnm2DtywHxVjDL9VA0mg936ZvpPhj06wlapXYAJiEKSxFWNcQ3IRKAyPwZjaraLC4470q+mXbi04a5HIR4mcHujxUlQriQ3XGL5C0csd4X6GQzB1OTxNsQCvQ9y17o8hQxKWDpEBwfi5fwA9E6zgGIaV1ZMF7m3GTq3LNCGaRbZjjU/I1I1GHZG/3NxRhA7qmqkFVGPpqV7U2DFYj1B2WC8hX303CfnoAMVu5q5S+II0BsrKnVYYG0fCa6fS271QGB/fzUBZUTGnXMmSiXOe7fQeFQ3NqRO/T292X5H69lPXDUB6afQ==
+X-Exchange-RoutingPolicyChecked: RLAYCqm28rNHUpkK5tQf/j8sE2zVDogZPRS3YI2Jkjkq6sW+DBauYbm0IB9JC2XC7nv1BevfOr91NP9HQjp2soWTWoVH+B5QCFYdXT8iCm9chlgQxGZTbmQuiEdvo/2Sh7fIOqe77fhHQjbXqAbioXewL/zBAgk+xamjW63s49BHeBTkxPNPqjHNGp/kqkASnQIQbNtcbmFmLoJN5nM2u03tRhrHrTR5y/FB6O2wuGg5oG/gB6FzwsGDsaqCaFN57M/zg/KGDZkqNzEme3Stv5wDvbK+3PiP3A2r+O6ACbzaxtoKwgOAA4cbF5dITOGptvWMrQpvclrgKbhLh4ntFQ==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f08ba83c-cb7a-475f-f34b-08dea1d83aac
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Apr 2026 08:05:20.2459 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 242703fe-d2e1-45c2-e7a0-08dea1d8391a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Apr 2026 08:05:17.6191 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pExG1yh/x0i/ZbbJae58LRiwsCPivtpW9MeRJzb4zPoN4alX5aOqR2GmgtsrbouKhrs6GKe+B0IVImwj/7CPBzJhW4kWb7D9UD1vFq2EKeM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB5856
+X-MS-Exchange-CrossTenant-userprincipalname: MNYsPucNxeil6VYzaxB+dpMEx8L9T13LbiSZTHBP5dDSRxD9LFeIyeKYvD/zAyH6ClV21bJtZfPSte4d5bqhnMNixCRJclZAY+73Hw8Un4A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB5790
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
  helo=TYDPR03CU002.outbound.protection.outlook.com
@@ -161,261 +162,246 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce hw_compat_11_0 and pc_compat_11_0 compatibility property arrays,=
+Replace legacy DPRINTF() debug logging in the EHCI host controller=0A=
+implementation with QEMU trace events.=0A=
 =0A=
-and wire them into the 11.0 machine types.=0A=
+The EHCI_DEBUG macro and associated DPRINTF() definitions are=0A=
+removed as they are no longer needed.=0A=
 =0A=
-Update all machine types so that version 11.0 inherits from 11.1 and applie=
-s=0A=
-the 11.0 compatibility properties. This follows the standard pattern where=
+Trace events are added for:=0A=
+- packet submission and completion=0A=
+- queue head execution state=0A=
+- periodic schedule advancement=0A=
+- ITD error conditions=0A=
+- port state handling=0A=
+- skipped microframes=0A=
 =0A=
-older machine types retain legacy behavior through compat properties, while=
-=0A=
-newer machine types provide updated defaults.=0A=
-=0A=
-This change allows devices to maintain migration and behavior compatibility=
-=0A=
-for the 11.0 machine type, while enabling new behavior to be introduced in=
-=0A=
-later machine versions.=0A=
+No functional change.=0A=
 =0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@linaro.org>=0A=
 ---=0A=
- include/hw/core/boards.h   |  3 +++=0A=
- include/hw/i386/pc.h       |  3 +++=0A=
- hw/arm/virt.c              |  8 ++++++++=0A=
- hw/core/machine.c          |  3 +++=0A=
- hw/i386/pc.c               |  3 +++=0A=
- hw/i386/pc_piix.c          | 11 ++++++++++-=0A=
- hw/i386/pc_q35.c           | 11 ++++++++++-=0A=
- hw/m68k/virt.c             |  7 +++++++=0A=
- hw/ppc/spapr.c             | 13 ++++++++++++-=0A=
- hw/s390x/s390-virtio-ccw.c | 11 +++++++++++=0A=
- 10 files changed, 70 insertions(+), 3 deletions(-)=0A=
+ hw/usb/hcd-ehci.h   | 10 ---------=0A=
+ hw/usb/hcd-ehci.c   | 49 +++++++++++++++++++--------------------------=0A=
+ hw/usb/trace-events |  9 +++++++++=0A=
+ 3 files changed, 30 insertions(+), 38 deletions(-)=0A=
 =0A=
-diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h=0A=
-index b8dad0a107..db83fe9292 100644=0A=
---- a/include/hw/core/boards.h=0A=
-+++ b/include/hw/core/boards.h=0A=
-@@ -798,6 +798,9 @@ struct MachineState {=0A=
-         } \=0A=
-     } while (0)=0A=
+diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h=0A=
+index 736407fd52..4234591cb4 100644=0A=
+--- a/hw/usb/hcd-ehci.h=0A=
++++ b/hw/usb/hcd-ehci.h=0A=
+@@ -24,16 +24,6 @@=0A=
+ #include "hw/pci/pci_device.h"=0A=
+ #include "hw/core/sysbus.h"=0A=
  =0A=
-+extern GlobalProperty hw_compat_11_0[];=0A=
-+extern const size_t hw_compat_11_0_len;=0A=
-+=0A=
- extern GlobalProperty hw_compat_10_2[];=0A=
- extern const size_t hw_compat_10_2_len;=0A=
+-#ifndef EHCI_DEBUG=0A=
+-#define EHCI_DEBUG   0=0A=
+-#endif=0A=
+-=0A=
+-#if EHCI_DEBUG=0A=
+-#define DPRINTF printf=0A=
+-#else=0A=
+-#define DPRINTF(...)=0A=
+-#endif=0A=
+-=0A=
+ #define MMIO_SIZE        0x1000=0A=
+ #define CAPA_SIZE        0x10=0A=
  =0A=
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h=0A=
-index 22325324d0..85a74363b5 100644=0A=
---- a/include/hw/i386/pc.h=0A=
-+++ b/include/hw/i386/pc.h=0A=
-@@ -208,6 +208,9 @@ void pc_system_parse_ovmf_flash(uint8_t *flash_ptr, siz=
-e_t flash_size);=0A=
- /* sgx.c */=0A=
- void pc_machine_init_sgx_epc(PCMachineState *pcms);=0A=
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c=0A=
+index 8acaedeaa9..28a60e4c1a 100644=0A=
+--- a/hw/usb/hcd-ehci.c=0A=
++++ b/hw/usb/hcd-ehci.c=0A=
+@@ -839,7 +839,7 @@ static USBDevice *ehci_find_device(EHCIState *ehci, uin=
+t8_t addr)=0A=
+     for (i =3D 0; i < EHCI_PORTS; i++) {=0A=
+         port =3D &ehci->ports[i];=0A=
+         if (!(ehci->portsc[i] & PORTSC_PED)) {=0A=
+-            DPRINTF("Port %d not enabled\n", i);=0A=
++            trace_usb_ehci_port_disable(i);=0A=
+             continue;=0A=
+         }=0A=
+         dev =3D usb_find_device(port, addr);=0A=
+@@ -1281,10 +1281,8 @@ static void ehci_execute_complete(EHCIQueue *q)=0A=
+     assert(p->async =3D=3D EHCI_ASYNC_INITIALIZED ||=0A=
+            p->async =3D=3D EHCI_ASYNC_FINISHED);=0A=
  =0A=
-+extern GlobalProperty pc_compat_11_0[];=0A=
-+extern const size_t pc_compat_11_0_len;=0A=
-+=0A=
- extern GlobalProperty pc_compat_10_2[];=0A=
- extern const size_t pc_compat_10_2_len;=0A=
+-    DPRINTF("execute_complete: qhaddr 0x%x, next 0x%x, qtdaddr 0x%x, "=0A=
+-            "status %d, actual_length %d\n",=0A=
+-            q->qhaddr, q->qh.next, q->qtdaddr,=0A=
+-            p->packet.status, p->packet.actual_length);=0A=
++    trace_usb_ehci_execute_complete(q->qhaddr, q->qh.next, q->qtdaddr,=0A=
++                                    p->packet.status, p->packet.actual_len=
+gth);=0A=
  =0A=
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c=0A=
-index ec0d8475ca..4855105f18 100644=0A=
---- a/hw/arm/virt.c=0A=
-+++ b/hw/arm/virt.c=0A=
-@@ -3719,8 +3719,16 @@ static void machvirt_machine_init(void)=0A=
- }=0A=
- type_init(machvirt_machine_init);=0A=
+     switch (p->packet.status) {=0A=
+     case USB_RET_SUCCESS:=0A=
+@@ -1327,7 +1325,7 @@ static void ehci_execute_complete(EHCIQueue *q)=0A=
+     } else {=0A=
+         tbytes =3D 0;=0A=
+     }=0A=
+-    DPRINTF("updating tbytes to %d\n", tbytes);=0A=
++    trace_usb_ehci_qh_tbytes(tbytes);=0A=
+     set_field(&q->qh.token, tbytes, QTD_TOKEN_TBYTES);=0A=
  =0A=
-+static void virt_machine_11_1_options(MachineClass *mc)=0A=
-+{=0A=
-+=0A=
-+}=0A=
-+DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)=0A=
-+=0A=
- static void virt_machine_11_0_options(MachineClass *mc)=0A=
- {=0A=
-+     virt_machine_11_1_options(mc);=0A=
-+     compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len=
+     ehci_finish_transfer(q, p->packet.actual_length);=0A=
+@@ -1392,10 +1390,9 @@ static int ehci_execute(EHCIPacket *p, const char *a=
+ction)=0A=
+ =0A=
+     trace_usb_ehci_packet_action(p->queue, p, action);=0A=
+     usb_handle_packet(p->queue->dev, &p->packet);=0A=
+-    DPRINTF("submit: qh 0x%x next 0x%x qtd 0x%x pid 0x%x len %zd endp 0x%x=
+ "=0A=
+-            "status %d actual_length %d\n", p->queue->qhaddr, p->qtd.next,=
+=0A=
+-            p->qtdaddr, p->pid, p->packet.iov.size, endp, p->packet.status=
+,=0A=
+-            p->packet.actual_length);=0A=
++    trace_usb_ehci_packet_submit(p->queue->qhaddr, p->qtd.next, p->qtdaddr=
+,=0A=
++                                 p->pid, p->packet.iov.size, endp,=0A=
++                                 p->packet.status, p->packet.actual_length=
 );=0A=
- }=0A=
- DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)=0A=
  =0A=
-diff --git a/hw/core/machine.c b/hw/core/machine.c=0A=
-index 0aa77a57e9..1abc8ae737 100644=0A=
---- a/hw/core/machine.c=0A=
-+++ b/hw/core/machine.c=0A=
-@@ -38,6 +38,9 @@=0A=
- #include "hw/acpi/generic_event_device.h"=0A=
- #include "qemu/audio.h"=0A=
+     if (p->packet.actual_length > BUFF_SIZE) {=0A=
+         qemu_log_mask(LOG_GUEST_ERROR,=0A=
+@@ -1472,7 +1469,8 @@ static int ehci_process_itd(EHCIState *ehci,=0A=
+                     usb_handle_packet(dev, &ehci->ipacket);=0A=
+                     usb_packet_unmap(&ehci->ipacket, &ehci->isgl);=0A=
+                 } else {=0A=
+-                    DPRINTF("ISOCH: attempt to address non-iso endpoint\n"=
+);=0A=
++                    trace_usb_ehci_log("ISOCH: "=0A=
++                                       "attempt to address non-iso endpoin=
+t");=0A=
+                     ehci->ipacket.status =3D USB_RET_NAK;=0A=
+                     ehci->ipacket.actual_length =3D 0;=0A=
+                 }=0A=
+@@ -1677,24 +1675,22 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehc=
+i, int async)=0A=
+         if (ehci->usbsts & USBSTS_REC) {=0A=
+             ehci_clear_usbsts(ehci, USBSTS_REC);=0A=
+         } else {=0A=
+-            DPRINTF("FETCHQH:  QH 0x%08x. H-bit set, reclamation status re=
+set"=0A=
+-                       " - done processing\n", q->qhaddr);=0A=
++            trace_usb_ehci_fetchqh_reclaim_done(q->qhaddr);=0A=
+             ehci_set_state(ehci, async, EST_ACTIVE);=0A=
+             q =3D NULL;=0A=
+             goto out;=0A=
+         }=0A=
+     }=0A=
  =0A=
-+GlobalProperty hw_compat_11_0[] =3D {};=0A=
-+const size_t hw_compat_11_0_len =3D G_N_ELEMENTS(hw_compat_11_0);=0A=
-+=0A=
- GlobalProperty hw_compat_10_2[] =3D {=0A=
-     { "scsi-block", "migrate-pr", "off" },=0A=
-     { "isa-cirrus-vga", "global-vmstate", "true" },=0A=
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c=0A=
-index 4b53b5be4a..2ecad3c503 100644=0A=
---- a/hw/i386/pc.c=0A=
-+++ b/hw/i386/pc.c=0A=
-@@ -73,6 +73,9 @@=0A=
- #include "hw/xen/xen-bus.h"=0A=
- #endif=0A=
+-#if EHCI_DEBUG=0A=
+-    if (q->qhaddr !=3D q->qh.next) {=0A=
+-        DPRINTF("FETCHQH:  QH 0x%08x (h %x halt %x active %x) next 0x%08x\=
+n",=0A=
+-               q->qhaddr,=0A=
+-               q->qh.epchar & QH_EPCHAR_H,=0A=
+-               q->qh.token & QTD_TOKEN_HALT,=0A=
+-               q->qh.token & QTD_TOKEN_ACTIVE,=0A=
+-               q->qh.next);=0A=
++    if (trace_event_get_state_backends(TRACE_USB_EHCI_FETCHQH_DBG)) {=0A=
++        if (q->qhaddr !=3D q->qh.next) {=0A=
++            trace_usb_ehci_fetchqh_dbg(q->qhaddr,=0A=
++                                       q->qh.epchar & QH_EPCHAR_H,=0A=
++                                       q->qh.token & QTD_TOKEN_HALT,=0A=
++                                       q->qh.token & QTD_TOKEN_ACTIVE,=0A=
++                                       q->qh.next);=0A=
++        }=0A=
+     }=0A=
+-#endif=0A=
  =0A=
-+GlobalProperty pc_compat_11_0[] =3D {};=0A=
-+const size_t pc_compat_11_0_len =3D G_N_ELEMENTS(pc_compat_11_0);=0A=
-+=0A=
- GlobalProperty pc_compat_10_2[] =3D {};=0A=
- const size_t pc_compat_10_2_len =3D G_N_ELEMENTS(pc_compat_10_2);=0A=
- =0A=
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c=0A=
-index 4d71e0d51a..19e9641246 100644=0A=
---- a/hw/i386/pc_piix.c=0A=
-+++ b/hw/i386/pc_piix.c=0A=
-@@ -428,11 +428,20 @@ static void pc_i440fx_machine_options(MachineClass *m=
-)=0A=
-                      pc_piix_compat_defaults, pc_piix_compat_defaults_len)=
-;=0A=
- }=0A=
- =0A=
--static void pc_i440fx_machine_11_0_options(MachineClass *m)=0A=
-+static void pc_i440fx_machine_11_1_options(MachineClass *m)=0A=
- {=0A=
-     pc_i440fx_machine_options(m);=0A=
- }=0A=
- =0A=
-+DEFINE_I440FX_MACHINE_AS_LATEST(11, 1);=0A=
-+=0A=
-+static void pc_i440fx_machine_11_0_options(MachineClass *m)=0A=
-+{=0A=
-+    pc_i440fx_machine_11_1_options(m);=0A=
-+    compat_props_add(m->compat_props, hw_compat_11_0, hw_compat_11_0_len);=
+     if (q->qh.token & QTD_TOKEN_HALT) {=0A=
+         ehci_set_state(ehci, async, EST_HORIZONTALQH);=0A=
+@@ -2161,7 +2157,7 @@ static void ehci_advance_async_state(EHCIState *ehci)=
 =0A=
-+    compat_props_add(m->compat_props, pc_compat_11_0, pc_compat_11_0_len);=
-=0A=
-+}=0A=
-+=0A=
- DEFINE_I440FX_MACHINE_AS_LATEST(11, 0);=0A=
+         /* make sure guest has acknowledged the doorbell interrupt */=0A=
+         /* TO-DO: is this really needed? */=0A=
+         if (ehci->usbsts & USBSTS_IAA) {=0A=
+-            DPRINTF("IAA status bit still set.\n");=0A=
++            trace_usb_ehci_log("IAA status bit still set.");=0A=
+             break;=0A=
+         }=0A=
  =0A=
- static void pc_i440fx_machine_10_2_options(MachineClass *m)=0A=
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c=0A=
-index cb23322f5a..72dd3324df 100644=0A=
---- a/hw/i386/pc_q35.c=0A=
-+++ b/hw/i386/pc_q35.c=0A=
-@@ -364,11 +364,20 @@ static void pc_q35_machine_options(MachineClass *m)=
-=0A=
-                      pc_q35_compat_defaults, pc_q35_compat_defaults_len);=
-=0A=
- }=0A=
+@@ -2226,9 +2222,7 @@ static void ehci_advance_periodic_state(EHCIState *eh=
+ci)=0A=
+         if (get_dwords(ehci, list, &entry, 1) < 0) {=0A=
+             break;=0A=
+         }=0A=
+-=0A=
+-        DPRINTF("PERIODIC state adv fr=3D%d.  [%08X] -> %08X\n",=0A=
+-                ehci->frindex / 8, list, entry);=0A=
++        trace_usb_ehci_periodic_state_advance(ehci->frindex / 8, list, ent=
+ry);=0A=
+         ehci_set_fetch_addr(ehci, async, entry);=0A=
+         ehci_set_state(ehci, async, EST_FETCHENTRY);=0A=
+         ehci_advance_state(ehci, async);=0A=
+@@ -2294,8 +2288,7 @@ static void ehci_work_bh(void *opaque)=0A=
+             ehci_update_frindex(ehci, skipped_uframes);=0A=
+             ehci->last_run_ns +=3D UFRAME_TIMER_NS * skipped_uframes;=0A=
+             uframes -=3D skipped_uframes;=0A=
+-            DPRINTF("WARNING - EHCI skipped %"PRIu64" uframes\n",=0A=
+-                    skipped_uframes);=0A=
++            trace_usb_ehci_skipped_uframes(skipped_uframes);=0A=
+         }=0A=
  =0A=
--static void pc_q35_machine_11_0_options(MachineClass *m)=0A=
-+static void pc_q35_machine_11_1_options(MachineClass *m)=0A=
- {=0A=
-     pc_q35_machine_options(m);=0A=
- }=0A=
+         for (i =3D 0; i < uframes; i++) {=0A=
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
+index dd04f14add..0d4318dcf1 100644=0A=
+--- a/hw/usb/trace-events=0A=
++++ b/hw/usb/trace-events=0A=
+@@ -89,6 +89,7 @@ usb_ehci_state(const char *schedule, const char *state) "=
+%s schedule %s"=0A=
+ usb_ehci_qh_ptrs(void *q, uint32_t addr, uint32_t nxt, uint32_t c_qtd, uin=
+t32_t n_qtd, uint32_t a_qtd) "q %p - QH @ 0x%08x: next 0x%08x qtds 0x%08x,0=
+x%08x,0x%08x"=0A=
+ usb_ehci_qh_fields(uint32_t addr, int rl, int mplen, int eps, int ep, int =
+devaddr) "QH @ 0x%08x - rl %d, mplen %d, eps %d, ep %d, dev %d"=0A=
+ usb_ehci_qh_bits(uint32_t addr, int c, int h, int dtc, int i) "QH @ 0x%08x=
+ - c %d, h %d, dtc %d, i %d"=0A=
++usb_ehci_qh_tbytes(uint32_t tbytes) "updating tbytes to %d"=0A=
+ usb_ehci_qtd_ptrs(void *q, uint32_t addr, uint32_t nxt, uint32_t altnext) =
+"q %p - QTD @ 0x%08x: next 0x%08x altnext 0x%08x"=0A=
+ usb_ehci_qtd_fields(uint32_t addr, int tbytes, int cpage, int cerr, int pi=
+d) "QTD @ 0x%08x - tbytes %d, cpage %d, cerr %d, pid %d"=0A=
+ usb_ehci_qtd_bits(uint32_t addr, int ioc, int active, int halt, int babble=
+, int xacterr) "QTD @ 0x%08x - ioc %d, active %d, halt %d, babble %d, xacte=
+rr %d"=0A=
+@@ -100,13 +101,21 @@ usb_ehci_port_reset(uint32_t port, int enable) "reset=
+ port #%d - %d"=0A=
+ usb_ehci_port_suspend(uint32_t port) "port #%d"=0A=
+ usb_ehci_port_wakeup(uint32_t port) "port #%d"=0A=
+ usb_ehci_port_resume(uint32_t port) "port #%d"=0A=
++usb_ehci_port_disable(uint32_t port) "port #%d"=0A=
+ usb_ehci_queue_action(void *q, const char *action) "q %p: %s"=0A=
+ usb_ehci_packet_action(void *q, void *p, const char *action) "q %p p %p: %=
+s"=0A=
++usb_ehci_packet_submit(uint32_t qhaddr, uint32_t next, uint32_t qtdaddr, i=
+nt pid, size_t len, int endp, int status, int actual_length) "qh=3D0x%x, ne=
+xt=3D0x%x, qtd=3D0x%x, pid=3D0x%x, len=3D%zd, endp=3D0x%x, status=3D%d, act=
+ual_length=3D%d"=0A=
+ usb_ehci_irq(uint32_t level, uint32_t frindex, uint32_t sts, uint32_t mask=
+) "level %d, frindex 0x%04x, sts 0x%x, mask 0x%x"=0A=
+ usb_ehci_guest_bug(const char *reason) "%s"=0A=
+ usb_ehci_doorbell_ring(void) ""=0A=
+ usb_ehci_doorbell_ack(void) ""=0A=
+ usb_ehci_dma_error(void) ""=0A=
++usb_ehci_execute_complete(uint32_t qhaddr, uint32_t next, uint32_t qtdaddr=
+, int status, int actual_length) "qhaddr=3D0x%x, next=3D0x%x, qtdaddr=3D0x%=
+x, status=3D%d, actual_length=3D%d"=0A=
++usb_ehci_fetchqh_reclaim_done(uint32_t qhaddr) "QH 0x%08x H-bit set, recla=
+mation status reset - done processing"=0A=
++usb_ehci_fetchqh_dbg(uint32_t qhaddr, uint32_t h, uint32_t halt, uint32_t =
+active, uint32_t next) "QH 0x%08x (h 0x%x halt 0x%x active 0x%x) next 0x%08=
+x"=0A=
++usb_ehci_periodic_state_advance(uint32_t frame, uint32_t list, uint32_t en=
+try) "frame=3D%d, list=3D0x%x, entry=3D0x%x"=0A=
++usb_ehci_skipped_uframes(uint64_t skipped_uframes) "skipped %" PRIu64 " uf=
+rames"=0A=
++usb_ehci_log(const char *msg) "%s"=0A=
  =0A=
-+DEFINE_Q35_MACHINE_AS_LATEST(11, 1);=0A=
-+=0A=
-+static void pc_q35_machine_11_0_options(MachineClass *m)=0A=
-+{=0A=
-+    pc_q35_machine_11_1_options(m);=0A=
-+    compat_props_add(m->compat_props, hw_compat_11_0, hw_compat_11_0_len);=
-=0A=
-+    compat_props_add(m->compat_props, pc_compat_11_0, pc_compat_11_0_len);=
-=0A=
-+}=0A=
-+=0A=
- DEFINE_Q35_MACHINE_AS_LATEST(11, 0);=0A=
- =0A=
- static void pc_q35_machine_10_2_options(MachineClass *m)=0A=
-diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c=0A=
-index ffe6e23415..b056ef603c 100644=0A=
---- a/hw/m68k/virt.c=0A=
-+++ b/hw/m68k/virt.c=0A=
-@@ -367,8 +367,15 @@ type_init(virt_machine_register_types)=0A=
- #define DEFINE_VIRT_MACHINE(major, minor) \=0A=
-     DEFINE_VIRT_MACHINE_IMPL(false, major, minor)=0A=
- =0A=
-+static void virt_machine_11_1_options(MachineClass *mc)=0A=
-+{=0A=
-+}=0A=
-+DEFINE_VIRT_MACHINE_AS_LATEST(11, 1)=0A=
-+=0A=
- static void virt_machine_11_0_options(MachineClass *mc)=0A=
- {=0A=
-+    virt_machine_11_1_options(mc);=0A=
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len)=
-;=0A=
- }=0A=
- DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)=0A=
- =0A=
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c=0A=
-index 0ab39dfea6..5876f97979 100644=0A=
---- a/hw/ppc/spapr.c=0A=
-+++ b/hw/ppc/spapr.c=0A=
-@@ -4760,12 +4760,23 @@ static void spapr_machine_latest_class_options(Mach=
-ineClass *mc)=0A=
- #define DEFINE_SPAPR_MACHINE(major, minor) \=0A=
-     DEFINE_SPAPR_MACHINE_IMPL(false, major, minor)=0A=
- =0A=
-+/*=0A=
-+ * pseries-11.1=0A=
-+ */=0A=
-+static void spapr_machine_11_1_class_options(MachineClass *mc)=0A=
-+{=0A=
-+    /* Defaults for the latest behaviour inherited from the base class */=
-=0A=
-+}=0A=
-+=0A=
-+DEFINE_SPAPR_MACHINE_AS_LATEST(11, 1);=0A=
-+=0A=
- /*=0A=
-  * pseries-11.0=0A=
-  */=0A=
- static void spapr_machine_11_0_class_options(MachineClass *mc)=0A=
- {=0A=
--    /* Defaults for the latest behaviour inherited from the base class */=
-=0A=
-+    spapr_machine_11_1_class_options(mc);=0A=
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len)=
-;=0A=
- }=0A=
- =0A=
- DEFINE_SPAPR_MACHINE_AS_LATEST(11, 0);=0A=
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c=0A=
-index 3ef009463d..f5b6051a67 100644=0A=
---- a/hw/s390x/s390-virtio-ccw.c=0A=
-+++ b/hw/s390x/s390-virtio-ccw.c=0A=
-@@ -906,13 +906,24 @@ static const TypeInfo ccw_machine_info =3D {=0A=
- #define DEFINE_CCW_MACHINE(major, minor) \=0A=
-     DEFINE_CCW_MACHINE_IMPL(false, major, minor)=0A=
- =0A=
-+static void ccw_machine_11_1_instance_options(MachineState *machine)=0A=
-+{=0A=
-+}=0A=
-+=0A=
-+static void ccw_machine_11_1_class_options(MachineClass *mc)=0A=
-+{=0A=
-+}=0A=
-+DEFINE_CCW_MACHINE_AS_LATEST(11, 1);=0A=
- =0A=
- static void ccw_machine_11_0_instance_options(MachineState *machine)=0A=
- {=0A=
-+    ccw_machine_11_1_instance_options(machine);=0A=
- }=0A=
- =0A=
- static void ccw_machine_11_0_class_options(MachineClass *mc)=0A=
- {=0A=
-+    ccw_machine_11_1_class_options(mc);=0A=
-+    compat_props_add(mc->compat_props, hw_compat_11_0, hw_compat_11_0_len)=
-;=0A=
- }=0A=
- DEFINE_CCW_MACHINE_AS_LATEST(11, 0);=0A=
- =0A=
+ # hcd-uhci.c=0A=
+ usb_uhci_reset(void) "=3D=3D=3D RESET =3D=3D=3D"=0A=
 -- =0A=
 2.43.0=0A=
 

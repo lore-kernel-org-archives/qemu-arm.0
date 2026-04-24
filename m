@@ -4,143 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DFB7FE51F5
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 09:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA76FE51FD
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 10:03:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGCyX-0007nG-3E; Fri, 24 Apr 2026 05:37:30 -0400
+	id 1wGDNU-0006KV-Iq; Fri, 24 Apr 2026 06:03:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wGCyO-0007mR-7F; Fri, 24 Apr 2026 05:37:20 -0400
-Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wGCyM-0004XO-M6; Fri, 24 Apr 2026 05:37:19 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=CEJU+R6nu9vu2zf4grwqNB3kW570/HIOFQiGJ7H5nkyO3yygliYXpdGc4B4cmJ+vEr4RJBJlKP2GHNLBOxry1xK1xUFBkXmQ5MHqcGW2lAbCLnve8FAepYK+qBe/yLKHxw2CiqT+qB6+KlzHfjQz8y7857t7iCRUwUkvIds5FjDU5DBm5XbQpf3Edj8E9eJBiaoL4/hSnAByl/HHL/6E0V+un38kKwyYdgYa8OzYS4K1kOAQ7tAVywX9WEaX8qbvLcAf45Ht0jrEbeb1k29BNHG1IqpnixMXunxNAxdqk9QIdaFflterfPwouRUVSysKmeL3Lq2/rRsiWmQN+cSGng==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=q57+JOqLfLv40Z1DTf1tn91/GyvFrm1QGxULx7pXOKs=;
- b=PIQPiauJNy+ZHkZ4gKE0mh8KygE6tfy894HHi8O0AOHnNScUZ3Pgo1qD2djHvbg6KQn3EDREltycGr0jqjuiSu9a2M+OQm2xxiQZ3Y0jv2Rv2rG2NnL/uq9XO63OYJx/GucrdPN9Lt4FvdrvSVwS2YQWVB8Nij+SydkX3XOzDd406NrWkK5wy3cIOk7wMdOYiwb6bmLP29vn7/MaUHEWAsRC3Fmi/g9ojxZ7v7QTYGQ4zvuD6OeelKvYSRIFnDbJu7cIM38qvI7hn/915edZhDKgYmVmxS8omeS0pKqdcC1hfPxVkYll+cV5TtGJRFqKFbogyiQI9/nIqcO5Cr3wNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
- dkim=pass header.d=axiado.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=q57+JOqLfLv40Z1DTf1tn91/GyvFrm1QGxULx7pXOKs=;
- b=bnHuP+QpdqpF5zofDW1lraFqOHeUyi4VeHYqyODDCWcSn72pOiUHUKYUIJYQFUg9ew5YtqAdfbpuAhmQ5skpLdhjDB9TmMnE8/Uvx0LuW0CD5gXhBlPpO75k7dJRfj44eYY6I3g+Acpvk18JmsX59z0ob7Ax+uyXqHT1iRU+oEF0zECX/jEOMwC+VQHJB+bjwL216bOLN/038VCDbz46ThESQkqbZ28jygRp+MGRgHH+godzbIiN4T4/EP6qWZkJtwbY2YZHJZF5oxLULGUhB/77fD0tQw7heM7NitVaEpVDDNsbMbI1MjwAd/6Yyh/YPvJ0yUwW8kpta5ZKh1gOkg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com (2603:10b6:a03:37f::19)
- by IA1PR18MB5516.namprd18.prod.outlook.com (2603:10b6:208:451::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.32; Fri, 24 Apr
- 2026 09:37:14 +0000
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::eaf4:3aec:73e:d5ba]) by SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::eaf4:3aec:73e:d5ba%3]) with mapi id 15.20.9846.021; Fri, 24 Apr 2026
- 09:37:14 +0000
-Message-ID: <efd82233-83f9-4871-982c-8cc8dac6f577@axiado.com>
-Date: Fri, 24 Apr 2026 17:37:09 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] hw/char/cadence_uart: Add BXRS register
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, pbonzini@redhat.com, marcandre.lureau@redhat.com,
- alistair@alistair23.me
-References: <20260212104432.4168886-1-kchiu@axiado.com>
- <CAFEAcA_u5B2RdVEaGycCQ6gCx1pQuT8rvGVGZpoKLTK+2s72+w@mail.gmail.com>
- <69691e3b-1605-4a5a-8ad5-0eec56ce3eed@axiado.com>
- <CAJy5ezpcvp0Qy-P9gE46oDtsxZxNO=xMV1k-GC3WF4yY3gARGw@mail.gmail.com>
- <CAFEAcA8mC4TkicLy9bcS8NYMDNcSUjsataGGmkMpViw4wBvmCA@mail.gmail.com>
- <CAJy5ezqTAMr=A3uAfmuWLepK66AdLRu4Q8AmFMh4+4q2HtDrkA@mail.gmail.com>
- <CAJy5ezogVjNxHLFVBp9wd332kwyR8peBHMEjoALg6pYfVk1q8g@mail.gmail.com>
- <cba7059c-9472-45f1-8fb2-06b26036f958@axiado.com>
- <CAFEAcA_jAyW5a2uyF7r=FBsw1dx3CCoVkU3hkxqQzAgxThYJEQ@mail.gmail.com>
-Content-Language: en-US
-From: Kuan-Jui Chiu <kchiu@axiado.com>
-In-Reply-To: <CAFEAcA_jAyW5a2uyF7r=FBsw1dx3CCoVkU3hkxqQzAgxThYJEQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TP0P295CA0041.TWNP295.PROD.OUTLOOK.COM (2603:1096:910:4::7)
- To SJ0PR18MB4479.namprd18.prod.outlook.com
- (2603:10b6:a03:37f::19)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wGDNT-0006KJ-0k
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:03:15 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wGDNQ-00054m-ND
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:03:14 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-651bc83e74aso6356680d50.2
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 03:03:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777024991; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Z4lvZU73uDpmnJWuwBUDDxtKjgL+hfkmMSgWS9rrMQNZCsYBKFD+njRN6dFEcjs/79
+ 0Zy/D/YsNMuJtRLiNyXuPk60DVxlEVV0vBp6878TJmkkuUj2jfEgH1qBuh8cMb57IE6z
+ kC5nyw9I2cpzCER7x3FuBTZQAeCPG3hgsy4MHCZxyVctswOkvovvof6cLroCHt/oYbI7
+ uq7Gl7DRXEECG9LzJ0AxATTORnhJ53/TXtgtHwWMvkj+ZK+q+q8j+wVJGFjKO1BPosBH
+ HfAWXYlS50bzFhRuYEuW4nvN/2MSAO/4qzDge5GcsCjt64C/UJV59nrLJWQq8x0hIQIp
+ Yhrg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=1LSEfkzV+GJSbZihQSXugIWNSBAouS1WVSwLXcPfgkY=;
+ fh=y6MrUtizKHMRWGRrY1qpUiq38biO2fL55FvIh3/gKmQ=;
+ b=QNkYqAvyAOtKWwelwbI+IUgIqgspRIp+JBGvFHOTLI4pD9bAvWHxfctjnvxOZIJnbD
+ zJh4ShnWqoxr7kGU+XCRHoaG90DHmVL49NzqRQlXjJAoeDpXIMuDbhaMAtG70zzcs7GM
+ a6v8V1r0gUQ5clvOVwKRpVWVE7B6zu90PkAj2XDL6uLZVN4zIuq6L6l0/daLfR0f12Rl
+ BihYhggfeuee3qr1XRFcC+SEeGG0Kmcm/5XZKwn1soDdLOzhX4EqGkQZ+9//ob84ChLS
+ r7vSSsu770UiE5WP62w2NukPWB4ujdYIfR+kQoQWAMovpMAF5/ejqTTpPIToNItFE5Lf
+ FxJA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777024991; x=1777629791; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=1LSEfkzV+GJSbZihQSXugIWNSBAouS1WVSwLXcPfgkY=;
+ b=QEEdR6Fk6rZoSto2Xxv4MRkpEoLJGmsVavqG8emTl4yFN5O0kMTHJliSPo4nN1U8D+
+ MJWn99TeLaalZdoFiBzc6FLRzQ3JKVjC+pmy0LoOCQHgMKkfQDQAZwMKVSuKOR9lo3qF
+ W0NZ2BUPE0W2xIk4fEeX/gGpO3beOOYsEe3JMkh4vji3Hqr7EjpCRtivq70yLRL66+zV
+ 6tL1aFHn5wO/TlE2u8cHNwDIb5+97j5BQ/cylx7nVHva5XMn9y0VojNp379dz2tB1wNz
+ wCZoEhbw+nfqKgSWJzbach6lkfoV71rBiiKCLF00GXOlLOT4z8r2NBlm0745LvYseIxM
+ G8jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777024991; x=1777629791;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1LSEfkzV+GJSbZihQSXugIWNSBAouS1WVSwLXcPfgkY=;
+ b=fTSgjLZnWFdt14G++NlJKMbnMsgiGxstgMP/iyYDjOkJN5JZce5gD+MvYdhtqdpPdX
+ oLhOvBnVROZ5jfmSVnTgu7qb3fJzTKv25kpP988UQVimwORM68JND8EjwaKmeJEhJ1e7
+ vTS9HgTuLyS5b3BlLjQmMvYLqeyQwChypJRN3OfRA5BZu4jKE1bMOHkCzJBcEwIlbZGZ
+ 9zDe3p2dtI7IiBIBPI9Z+rnBZL4TXMAT8bObXlZ2cTnv4opTd7ejRweqIAE56ehh/MRI
+ ZpEsBHFGXreQrYoonUVDa40MkIa85cfzENoIN4uHHzmBmd3s1C0uU5l8dUY7klhUzBM8
+ JpDA==
+X-Gm-Message-State: AOJu0YwzPrPyqK4QXvZ0B9MCrYQm2LvMmxITWdztScoRS9h3RHbDLfkW
+ w85qB5Sg0fLyvSWjM0GeJ4YHxnnz8egquMxxpjIidrx/ZRiAYDjfSbsEUgVCL1W9QOzqGtDCgZK
+ WV4NrY0Fe4soYesQ3m/5xQ0ddCdye0NCYlJvwOeN5EemdlD00SxUI
+X-Gm-Gg: AeBDievRibkdNEtHqQuIm3TrKe/wUiccpKAhwTkoLsxkLj1J6EMcRI5zklBJXeGZviZ
+ S61dlY/WrTj/vm4mGqhwFKYtRpzRZIbnVg1HbtK0PgGjMi/ylbodjlAv24DZCMW9mjoHZXPxfhS
+ IILFOrcP176hvlum5Gm6J+tZFK7l1rnoCtzZIVQWZzxe7S1yYWDXx8ao6B/FHJBJP+vlywOLKDA
+ 0RhGisjtiWoVOFF7x52KFrEO0/7NX+qmzU3gNg82LBJab9cgRIXyMmEENxMPhgBMWLcD1lehydn
+ YJI96Drrjatvt/Uj8LDaticZLdG8f/AOi5m3pSYXAwJmhYptfyJf6IHJNWUkCwkJCS5+bQaIxot
+ j5uIkdC7DK+vJ
+X-Received: by 2002:a05:690e:130e:b0:651:d634:6d32 with SMTP id
+ 956f58d0204a3-6531085f25cmr27963678d50.20.1777024990597; Fri, 24 Apr 2026
+ 03:03:10 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ0PR18MB4479:EE_|IA1PR18MB5516:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1400db19-8b89-4c07-ab11-08dea1e510d0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|22082099003|18002099003|56012099003; 
-X-Microsoft-Antispam-Message-Info: LyWT7YCHXOZrvQqrwRgTY52tIjVP67uzsuDPde+dQe3AChkcFZEeCFs/f7LIYSjkG54KTVqHJc/Aiit693PXLAnq5NAc1FWHAcY3EmnwcO8msdcGPPsvEZeHzgR1Ys3D9atQKRXQdIOzCnRBWSJcUpJv8IHglxQ1baYDgkg3W4xQ0SNJE/4ZGn+JRdpuQL6pD+/qbsr1tnEnQzEsTb7FFX/ale4C3HqL/jEEI6UBFHT3pbpa9hkWb3TYbC7wJqfQtSjoZIU3UDYjvmyvfZVk+0LxqLwxT+xcsC1h+WtP7kGw+KKAro6wPwD4bc5ogamKy+0mwUy0r+KrEQHTknWb7yXa3IgobTv8mQVVLp27gRRj510L6IN20Zt8+UMWTIzAIwCcPIKDTG7/4YOD/DoebcB7b7p2TGZswCDq/p8BnJ1FV59PXDI5XcaixiMqaDbUQqYnvL/mzhHD1rqjbCsq3LW+ASmYCCl5AijUDwyAyphigI8W9n6KEbrNpzyyuSiUR4C+81KzRCszyouXZM10oy4gDdotg922MtAYY5MeIQ4CM8Gn6u+EMUuP/LFXOEGQuqY7RGtqbDXyAf6371oMRUlqA3VIx4p4QXV/qmLFHZmR6PsC2VJ7JIqQ5Cpue4bpISJBWJ82qr0mQrzhvPJHoA8gAl25Uc2dtMtwSA3j8nBMegQgoRdcsMTHvugxonndCDwitd8vWkRQOju9x6yoFbAkqgN1qYpB3E6NUNu2LjY=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR18MB4479.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(22082099003)(18002099003)(56012099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QTR0dmU3TlFEVFVxa0I4SGF1Z25OLzBYODlQT3UwV3ZUcVpQb3prK1o1NExS?=
- =?utf-8?B?MWRhTmhrN1VNNTlDVnMreXNqQXVLR1VWdjNTVmlINVVWajAvNGVhdTBEdWJF?=
- =?utf-8?B?a05NV2plRVB0Y3VMcGJZSmQxQ003cTNyLzRNaTNwbCtCWEVZZFF2dW5ES3N3?=
- =?utf-8?B?N01IZngxTlhHSnUxVHJyYXpYMnExc25RMUYxTGh2ai9vVnkxYTJTRE1sSXJB?=
- =?utf-8?B?bDZoZkd0NEFNWHdueUFtZ2U5eHVhVW00bXlQeXNXbXdzMzU4MGZOK0tPNUU5?=
- =?utf-8?B?YWZLd3N4RjRZSml2eXBKeXVYTGdoL3lZYy9WU3VJSk8zaTU2SlBRdzBVRVVz?=
- =?utf-8?B?ZEV1MWVDRGswUE1pcFk4Vy9aakpDb3BzeVQ4TU9IajlvbE9CZjVmQy9RcTN5?=
- =?utf-8?B?a09uZVB1SmQ1bFJJT2lCbDZHeUFkZ0RzY3JLc3N5dzRGZHg4VkZNMFNEbHB4?=
- =?utf-8?B?R0RsYkNJQTNNSHIwS2FOaWQ5L2tHVmRSdW1NeUJJSGJGSmtTaUJFTVdhaEp2?=
- =?utf-8?B?NzROTFN5NnJwREcwWFc0RUovZlJvREpnOGtmSWoyajRqZTY4cUgwQmVMaStZ?=
- =?utf-8?B?b1Nmcmo1dWd6dFNmMDlwcFlsdmFSRFUwcWMyd2pwTmNoRzBpb1ErRWtTVlZs?=
- =?utf-8?B?ZVdRa25aeURmS0tkTmJYTVZxSG45S0w1dEpsNU1ZV095NjN2dDhBWEtLK1Nt?=
- =?utf-8?B?V3czbnhHL0xiN2FySFZlVnBSZGw3bmtCNDNkeWtxVVlFaTJEcXlmRUllc3dl?=
- =?utf-8?B?WkdBUCtTZVVvVGhmaGVWRHZRSFFybmJkYzVrVy9qcmhpbXpNd1Y3cHBWRTJI?=
- =?utf-8?B?ZWtpbUdHOFNPeW80enRNd0Q1U2xrOFMybEZaSTZEbjBJZHMxT1dBZzQvVURu?=
- =?utf-8?B?Rk1ZV1BKZzIrb0xEbkJVWFpTVUhtVUlpN0dHcnM1ZVJ2T21LemZlQlpsMDRN?=
- =?utf-8?B?R1lXMG1hZUwvYnI2T3gzUzZsTUFMVmZVY2tHeWZFa1U3aThDWmw0VkxESkRu?=
- =?utf-8?B?Vk91cjRSbnpMWDUxZGtqRXNja205Z2I1MC84L2NzM1NYQ3pHQW5ZSFc1bWtN?=
- =?utf-8?B?WHFEa0xrNXNzS29wMmlPbDM5Um9XTmFJaGJPY0pDRkpqQTJNbEFnaFJLUklS?=
- =?utf-8?B?djFYTXN1OXJmVkVZZVJnSHdMSk1pVGgydjl4Mk9TWndISW5sdnpKVjRGaHkw?=
- =?utf-8?B?N3M2Y2xzWlBLRFpJbm9tak11UzlHSkFhaU5FTHpEaXRrR1lNdkRMaVoveWZJ?=
- =?utf-8?B?MXY5ZFpyR21UVGd6eE8wcW1UejlEeDN0aWNBeDFpOS9NOGgweWhWa3lmR2Vq?=
- =?utf-8?B?cllrQTVHTkt2U3hJVlllQ2s2L3lFUlE0ZGtYYjZ4WWV3aWJJTFFhUURjYzl1?=
- =?utf-8?B?YXlUT2hWYk9pdFUwdGRVdUFVbmNEV213cjg3MmMwVEpmeFc3RXBKUHZPR2lO?=
- =?utf-8?B?VUpFZTBCZjZJYVk2dDkyNmFOY290RHp1UThFUXZ3MVlGOEt1aC9wSSs0M0Nm?=
- =?utf-8?B?OUg5aTdOdlRNdHVHbWUzd1BFY0c3clVGaTBrOXl3STZmanZNL3JkSHIxOElQ?=
- =?utf-8?B?L0xPRDVIK2dqODRYd3VGQUx6TWNteHJPL3RJRTJPSTdVK0gyUTZ1bUhDMWdI?=
- =?utf-8?B?MGswb2M2disxZ0tOUlUvdzMrOWJxd0lKRkQ4VCtaU1ZkektHNUhSc2NET2p3?=
- =?utf-8?B?dmdqdVo1cjhQczN4dlFyakhzWGdtWWVtRFBlREpGeTg0ci9nVGVZQ2FHSHll?=
- =?utf-8?B?RzJsSDBZUkRwT3NiSzVQQ3lEcjdxNHA2aEpCZm81OGpSYTRJYjF0aS8vL3JE?=
- =?utf-8?B?NmZiejhyMEhHRGdveGdQTW1UdG90L2NWUzRWaVhHWGRHYzRWTkxNMEszL0pJ?=
- =?utf-8?B?RkFnZnprT2ZjZTMxYkRRdms3TEdHbXA2SGw1ankzK0Q4blhOL3pWcmd6QU0r?=
- =?utf-8?B?cmVUclI5ai83akgxclZLL0hmNDlMYWFRSElUTm9VUExCT3E4VmRTNnplTHlS?=
- =?utf-8?B?Z0cwYzVBcVJQc3JkaHFXdkVjT2YvamNrR2xzQWZ2VW16NFZUSEFGMDdkZWNE?=
- =?utf-8?B?TnFjWElXV3pvYUdnYTBrN2UxQml1ODUrQ3UrMFVKaUptYnJIS0NBNnFhQ3pF?=
- =?utf-8?B?WUJ2NE9sMlF5TDhwRWVkRGducDlZSno5d3p4SC9ITytSQnFZRlRHTWhWRjFC?=
- =?utf-8?B?L1c4cSs3Q0s4YVkrdFcwK1dpR29IVVRETWRISEhFdFRlMnBBVXZOZHZmWmZ3?=
- =?utf-8?B?d1llYWNqTUxGeXZENHRZampjTVQxWjI2R0tDbytpYVZxYnRJWVlyVmtkVko5?=
- =?utf-8?B?Mk1rR2U1bUtXVzN5b0xPN1dVRmlNVURaVlRYZjRqUnNkakZRZEhNZz09?=
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1400db19-8b89-4c07-ab11-08dea1e510d0
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4479.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2026 09:37:13.7498 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Q89maaOC5ghtkzMHjf8HngMW6ggcfHkOuWRiezwLBS/HABfbN18oygC+PDmNyJdRwsQFl063bgLLzKO0dyaJNQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR18MB5516
-Received-SPF: pass client-ip=2a01:111:f403:c10d::3;
- envelope-from=kchiu@axiado.com;
- helo=SN4PR0501CU005.outbound.protection.outlook.com
+References: <20260327111700.795099-1-peter.maydell@linaro.org>
+In-Reply-To: <20260327111700.795099-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Apr 2026 11:02:59 +0100
+X-Gm-Features: AQROBzB79RFPgF_S8HuChb_5l9qnpWzxS3KKnLY0V7YeMOfvz5rts9uTHqpYqQE
+Message-ID: <CAFEAcA-6zzrzwcR3C0k5nS=4j+GugD5_Y98Y3D6cdNSsc9riSg@mail.gmail.com>
+Subject: Re: [PATCH v2 00/65] arm: Implement an emulation of GICv5 interrupt
+ controller
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -157,33 +115,207 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Edgar
+Hi -- now that 11.0 is out, gentle ping for the last bits of
+code review on this series. Philippe has reviweed patch 24,
+but 10, 25, 32 are still in need of review.
 
-Could you send me more document about the new version of Cadence UART 
-device?
-I am not familiar with zynqmp so I don't know if anything missing except 
-for BXRS register
+thanks
+-- PMM
 
-B.R.
-
-Howard
-
-Peter Maydell 於 2026/4/24 下午 04:16 寫道:
-> CAUTION: This email originated from outside of the organization. Do not click links or open attachments unless you recognize the sender and know the content is safe.
+On Fri, 27 Mar 2026 at 11:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset implements initial support of emulation of Arm's new
+> interrupt controller architecture, GICv5.
+>
+> I've incorporated the review feedback from v1, so I figured I
+> might as well send this out, though obviously there's no huge
+> rush to review given we're in freeze.
+>
+> Patches still needing review: 10 24 25 32
+>
+> Changes v1->v2:
+>  * minor tidyups to line wrap, etc, in various patches
+>  * patch 1 is split into 2 patches but otherwise unchanged
+>  * 3: define FRAME_OP_ENTRY macro to avoid duplication in writing
+>    out entries of the config_frame_ops[] array
+>  * 9: fixed IRS_IDR0 PA_RANGE field length
+>  * 10: also zero IDR0 VIRT_ONE_N field for the EL3 domain
+>  * 18, 21, 24, 25, 47, 50: use switch on IRQ type instead of if()
+>    in gicv5_set_priority() and similar functions
+>  * old 55 ("hw/arm/virt: Update error message for bad gic-version
+>    option") is now upstream, so dropped from v2
 >
 >
-> On Fri, 24 Apr 2026 at 04:08, Kuan-Jui Chiu <kchiu@axiado.com> wrote:
->> Hi
->>
->> Do I need to take further action on this patch?
-> It sounds from what Edgar says that there are multiple
-> versions of this hardware device, which suggests that
-> we ought to have the device have a "version" property
-> or something similar so we can select the right
-> behaviour for zynq and zynqmp.
+> (Everything below here is the same as from v1's cover letter;
+> repeated for context.)
 >
-> Checking whether there's anything else missing in the
-> new version of the device might also be a good idea.
+> The most recent version of the GICv5 spec (currently 00EAC0) is at:
+> https://developer.arm.com/documentation/aes0070/latest/
 >
+> The emulation is at an "experimental" level, both because the GICv5
+> specification is still at an early-access level and minor changes are
+> possible, and also because this emulation is missing some
+> functionality which I plan to add later but which would have made this
+> initial patchset even larger and later. To quote the docs patch:
+>
+>     - guest-visible behaviour may change when the final version of
+>       the specification is released and QEMU implements it
+>     - migration support is not yet implemented
+>     - the GICv5 is not exposed to the guest via ACPI tables, only via DTB
+>     - the way the interrupt controller is exposed to the guest and the
+>       command line syntax for enabling it may change
+>
+>     The current implementation supports only an EL1 guest (no EL2 or
+>     EL3 and no Realm support), and does not implement the ITS (no
+>     MSI support).
+>
+> The GICv5 is supported by the "virt" board, and can be enabled with
+> "-machine gic-version=x-5" (the 'x' standing for "experimental").
+>
+> Like the GICv3/v4, the GICv5 has both a system component part (the
+> Interrupt Routing Service, IRS), and a part in the CPU itself (the CPU
+> interface). Our GICv3 model puts both of these into code in hw/intc/,
+> and has the cpuif part install itself into an existing CPU object by
+> adding new system registers there. This works, but in retrospect I
+> feel that it's a bit awkward and we would have done better to make our
+> design a bit closer to the hardware setup, where the CPU interface is
+> really part of the CPU and talks to the system component over an
+> architected protocol. So for GICv5 I have taken that route: the IRS is
+> in hw/intc/arm_gicv5.c, and the CPU interface is in
+> target/arm/tcg/gicv5-cpuif.c. They communicate via a set of functions
+> which loosely match the "stream protocol" defined in the GICv5
+> architecture spec (with some simplifications that result from QEMU
+> being strictly synchronous because we always hold the BQL when
+> executing any GICv5 emulation code; the hardware has to handle the IRS
+> and the CPU executing in parallel and the communications channel not
+> being instantaneous transmission).
+>
+> Although the EL2/EL3/Realm functionality is not present in this
+> patchset, I have implemented some of the foundations for it where I
+> thought it made sense, to avoid having to refactor it later.
+> Similarly, the class structure makes the usual "common baseclass + TCG
+> subclass" split, as we are going to want a KVM subclass when we add
+> KVM support.
+>
+> In a few places I have noted possible opportunities for performance
+> optimisation; these are probably best left until we've done some
+> analysis that shows them to be necessary.
+>
+> This patchset is sufficient to be able to boot a Linux guest at EL1
+> (directly via -kernel): all the kernel support for GICv5 is upstream
+> as of Linux 6.19.
+>
+> thanks
 > -- PMM
+>
+> Peter Maydell (65):
+>   qom/object: Add object_resolve_and_typecheck()
+>   hw/core: Permit devices to define an array of link properties
+>   hw/intc: Skeleton of GICv5 IRS classes
+>   hw/arm/Kconfig: select ARM_GICV5 for ARM_VIRT board
+>   hw/intc/arm_gicv5: Implement skeleton code for IRS register frames
+>   hw/intc/arm_gicv5: Add migration blocker
+>   hw/intc/arm_gicv5: Create and validate QOM properties
+>   hw/intc/arm_gicv5: Create inbound GPIO lines for SPIs
+>   hw/intc/arm_gicv5: Define macros for config frame registers
+>   hw/intc/arm_gicv5: Implement IRS ID regs
+>   hw/intc/arm_gicv5: Add link property for MemoryRegion for DMA
+>   hw/intc/arm_gicv5: Implement gicv5_class_name()
+>   hw/intc/arm_gicv5: Add defines for GICv5 architected PPIs
+>   target/arm: GICv5 cpuif: Initial skeleton and GSB barrier insns
+>   target/arm: Set up pointer to GICv5 in each CPU
+>   hw/intc/arm_gicv5: Implement IRS_IST_{BASER, STATUSR, CFGR}
+>   hw/intc/arm_gicv5: Cache LPI IST config in a struct
+>   hw/intc/arm_gicv5: Implement gicv5_set_priority()
+>   target/arm: GICv5 cpuif: Implement the GIC CDPRI instruction
+>   hw/intc/arm_gicv5: Implement IRS_MAP_L2_ISTR
+>   hw/intc/arm_gicv5: Implement remaining set-config functions
+>   target/arm: GICv5 cpuif: Implement GIC CD* insns for setting config
+>   hw/intc/arm_gicv5: Create backing state for SPIs
+>   hw/intc/arm_gicv5: Make gicv5_set_* update SPI state
+>   hw/intc/arm_gicv5: Implement gicv5_request_config()
+>   target/arm: GICv5 cpuif: Implement GIC CDRCFG and ICC_ICSR_EL1
+>   hw/intc/arm_gicv5: Implement IRS_SPI_{SELR,STATUSR,CFGR,DOMAINR}
+>   hw/intc/arm_gicv5: Update SPI state for CLEAR/SET events
+>   hw/intc/arm_gicv5: Implement IRS_CR0 and IRS_CR1
+>   hw/intc/arm_gicv5: Implement IRS_SYNCR and IRS_SYNC_STATUSR
+>   hw/intc/arm_gicv5: Implement IRS_PE_{CR0,SELR,STATUSR}
+>   hw/intc/arm_gicv5: Implement CoreSight ID registers
+>   hw/intc/arm_gicv5: Cache pending LPIs in a hash table
+>   target/arm: GICv5 cpuif: Implement ICC_IAFFIDR_EL1
+>   target/arm: GICv5 cpuif: Implement ICC_IDR0_EL1
+>   target/arm: GICv5 cpuif: Implement GICv5 PPI active set/clear
+>     registers
+>   target/arm: GICv5 cpuif: Implement PPI handling mode register
+>   target/arm: GICv5 cpuif: Implement PPI pending status registers
+>   target/arm: GICv5 cpuif: Implement PPI enable register
+>   target/arm: GICv5 cpuif: Implement PPI priority registers
+>   target/arm: GICv5 cpuif: Implement ICC_APR_EL1 and ICC_HAPR_EL1
+>   target/arm: GICv5 cpuif: Calculate the highest priority PPI
+>   hw/intc/arm_gicv5: Calculate HPPI in the IRS
+>   target/arm: GICv5 cpuif: Implement ICC_CR0_EL1
+>   target/arm: GICv5 cpuif: Implement ICC_PCR_EL1
+>   target/arm: GICv5 cpuif: Implement ICC_HPPIR_EL1
+>   hw/intc/arm_gicv5: Implement Activate command
+>   target/arm: GICv5 cpuif: Implement GICR CDIA command
+>   target/arm: GICv5 cpuif: Implement GIC CDEOI
+>   hw/intc/arm_gicv5: Implement Deactivate command
+>   target/arm: GICv5 cpuif: Implement GIC CDDI
+>   target/arm: GICv5 cpuif: Signal IRQ or FIQ
+>   target/arm: Connect internal interrupt sources up as GICv5 PPIs
+>   target/arm: Add has_gcie property to enable FEAT_GCIE
+>   hw/intc/arm_gicv3_cpuif: Don't allow GICv3 if CPU has GICv5 cpuif
+>   hw/arm/virt: Remember CPU phandles rather than looking them up by name
+>   hw/arm/virt: Move MSI controller creation out of create_gic()
+>   hw/arm/virt: Pull "wire CPU interrupts" out of create_gic()
+>   hw/arm/virt: Split GICv2 and GICv3/4 creation
+>   hw/arm/virt: Create and connect GICv5
+>   hw/arm/virt: Advertise GICv5 in the DTB
+>   hw/arm/virt: Handle GICv5 in interrupt bindings for PPIs
+>   hw/arm/virt: Use correct interrupt type for GICv5 SPIs in the DTB
+>   hw/arm/virt: Enable GICv5 CPU interface when using GICv5
+>   hw/arm/virt: Allow user to select GICv5
+>
+>  docs/system/arm/virt.rst           |   19 +
+>  hw/arm/Kconfig                     |    1 +
+>  hw/arm/virt.c                      |  525 ++++++--
+>  hw/core/qdev-properties.c          |   78 ++
+>  hw/intc/Kconfig                    |    4 +
+>  hw/intc/arm_gicv3.c                |    2 +-
+>  hw/intc/arm_gicv3_cpuif.c          |   14 +-
+>  hw/intc/arm_gicv5.c                | 1962 ++++++++++++++++++++++++++++
+>  hw/intc/arm_gicv5_common.c         |  227 ++++
+>  hw/intc/gicv3_internal.h           |    2 +-
+>  hw/intc/meson.build                |    4 +
+>  hw/intc/trace-events               |   23 +
+>  include/hw/arm/fdt.h               |   10 +
+>  include/hw/arm/virt.h              |   15 +
+>  include/hw/core/qdev-properties.h  |   41 +
+>  include/hw/intc/arm_gicv5.h        |   51 +
+>  include/hw/intc/arm_gicv5_common.h |  236 ++++
+>  include/hw/intc/arm_gicv5_stream.h |  228 ++++
+>  include/hw/intc/arm_gicv5_types.h  |  110 ++
+>  include/qom/object.h               |   17 +
+>  meson.build                        |    1 +
+>  qom/object.c                       |   41 +-
+>  target/arm/cpregs-pmu.c            |    9 +-
+>  target/arm/cpu-features.h          |   11 +
+>  target/arm/cpu.c                   |   62 +
+>  target/arm/cpu.h                   |   28 +
+>  target/arm/helper.c                |   21 +
+>  target/arm/internals.h             |    9 +
+>  target/arm/tcg/gicv5-cpuif.c       |  952 ++++++++++++++
+>  target/arm/tcg/meson.build         |    1 +
+>  target/arm/tcg/trace-events        |   11 +
+>  target/arm/tcg/trace.h             |    1 +
+>  32 files changed, 4559 insertions(+), 157 deletions(-)
+>  create mode 100644 hw/intc/arm_gicv5.c
+>  create mode 100644 hw/intc/arm_gicv5_common.c
+>  create mode 100644 include/hw/intc/arm_gicv5.h
+>  create mode 100644 include/hw/intc/arm_gicv5_common.h
+>  create mode 100644 include/hw/intc/arm_gicv5_stream.h
+>  create mode 100644 include/hw/intc/arm_gicv5_types.h
+>  create mode 100644 target/arm/tcg/gicv5-cpuif.c
+>  create mode 100644 target/arm/tcg/trace-events
+>  create mode 100644 target/arm/tcg/trace.h
 

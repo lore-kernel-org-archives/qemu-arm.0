@@ -4,97 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83187FE51FB
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 10:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C3EFE5205
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 10:39:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGDTy-0008K8-To; Fri, 24 Apr 2026 06:09:58 -0400
+	id 1wGDw5-0002Yr-SX; Fri, 24 Apr 2026 06:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wGDTu-0008I6-PG
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:09:56 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGDw5-0002YU-3M
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:39:01 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wGDTq-00078F-Nq
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:09:54 -0400
-Received: by mail-wm1-x344.google.com with SMTP id
- 5b1f17b1804b1-4838c15e3cbso71554165e9.3
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 03:09:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGDw2-0001wd-94
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:39:00 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-488b3f8fa2bso76551805e9.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 03:38:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777025388; x=1777630188; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=H+DFBUat3K1iOQiAi3RopbLBsBNhzx1THy7hOvCTeHA=;
- b=D/YiYQTZfjjxsDp+Ld9KijXOVFuUl/oYfUmULpPC2I26Ag5u1kruE3BcXShI4KC7UO
- EWpAvx38pdph1gmZuwcYJaqr5u3wcAqXi7RoOgvBZFGVlljIBJZj4ZX8kCXHsUi/fw3u
- +oEaea5NkGbIraviW2gShtj2iaZdl4o4ks1jEv3FhAC2pS4Bn/GwLT7igMBpy4IQKwqK
- sX0hLijnjmjcp/TCLHivYNuD9gqQiBCrZzq/Hb/e9RqGsT94Gla40UiJw2wyA2X4zts7
- fhKT+8o38zJyTfEb3u0aaV2ZPIiYU2dRGOUdIMx0/T52ob2eqPthUp+x7tZKLhq/MSJC
- HLkw==
+ d=linaro.org; s=google; t=1777027136; x=1777631936; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=74fVi5JPTgndw28mYVNUSy9hX7KtDLK5j2RfHoUH1FQ=;
+ b=RR1m2goaRYoZzmx04dZd8t2+qjrSKgvUTXOrMd96EPkLA+6oWNfX3CP+x19fWUZSVw
+ ffVLpHp1a6MS9Im705xVzRPnsT8IZLblGPL9vDmFSuwD7vs2dtIcEBQeFiSkSXMXGbYE
+ 3mfHyrNIidJtw6slLqDlFAhzoKjKtUUJTiKP5yJy+L3w3RlpYv8SU7sB1yLlzK1hid5o
+ 63ILnILeMRfXWTyQcPUFFSC3GEvHZ1pQbsDwsGXXT0qMeMJ9yxYIMBOLZRwdsWm3Cyl5
+ IhZNhErE2V5gWPKAbMb9QVjcVm3n5BI8Dje2Ne93QRaEXw16Q8ggJ2oTHZF9Hgi5YXlR
+ vYmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777025388; x=1777630188;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=H+DFBUat3K1iOQiAi3RopbLBsBNhzx1THy7hOvCTeHA=;
- b=iaarIm5BKCEnlwm7rJ2DqgokVjlmg2Op2r3kMrLqWHrMohRIUufbvzEhDjP8GM+GoL
- 6kriImJxT07u0elbsSluOCYZwZvrAILVGP7cnejBJjaecKHNWbHAsu1TTPKX/oVGFHhq
- 8GVl6cQPVhl+DGhw7xqi6EqUsZx1RbebVH25bj+7JYmxfnZFZFdAjNZocMufIfQ7GlXL
- sk+2LdK/uJc8pg751127qOgcC2eZKApwh9rfpCKXGkGY7YvKkVg/OQxXB6fhwr3IoOEL
- /py1+Ub/tNciY8WXVJq8LgjuPvXJ9q6Dpq35PseUdrn8RhjHtK0B0u2LnVGs6bS368Ki
- ZSPQ==
+ d=1e100.net; s=20251104; t=1777027136; x=1777631936;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=74fVi5JPTgndw28mYVNUSy9hX7KtDLK5j2RfHoUH1FQ=;
+ b=WD1CjNhdrSidGQJToFrkxANySooKhZGCF5FiqErDfX68ZctDxerPoQMErQOFZ2GTnk
+ Y5U++ghZA8cjdaKU1kpMIal8JWF+6xcQtWPqdutzvam+MW8sH15sHqbce7T1vZ4rwCSP
+ 1EfqOKD8wqceCazjnKfsJTLtQ8/X0QiEWydvknYcBAZ6sW/R6Jt5RijZ1KInHIYzYtds
+ X45Ls1kSgxburSsErwgRsfaJDDQfhPoNLIMpDauJWTjnM789jZ5R2djTc94U8yueKDjl
+ XKX8Qu0mnj/L5K9lfGMpDg/86n5iDzRWk24/LXudY9zF/BnczZTWiyE8fQotwZnLQjYe
+ FLuQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ96Xom4m2UveC89s4yC4nooY7A1fDIEioaTHf9AVQaE597Un44OQqHahFzojFXGTmlSAgEcUNONKA==@nongnu.org
-X-Gm-Message-State: AOJu0YwA7aMFE0vedNv/+2KVEccKGVFXs+bmMhKTJ5q9SG67oSQdnbWQ
- 4nExwndZTkRd7EDN2BWIeatZwIhpdMk6qiv418Nngj7kwhGljukbn3N3Ewb5aFcW+Ek=
-X-Gm-Gg: AeBDietdBMbBjg3k/YKGsrz4naZkE87tE7vUB/uGRafyeoM9NMLFxDPK8mdrjVdcTju
- QrxmO1Nt0uwolANm1dD9RTyAdT9UpkNskStWv1XgakcBAysOFWT1u+OianMk/A3J0zS5gwl+uW+
- SwU5k6j7Ya14hVZFgxt2w5PKIdZeSqU5lN0Ug5iWOl0KVVAXP1w20b8UZH0u2NhDDCPa002H7FM
- fLpCM4LNwd1HlyZLwEbCuOpYNc6BhdtnkkdFdW+n62z5ApC9Ee4JbhfkYByyB42b0IYJQ0fw1an
- MGUmzhn6hPHfVv3w9oeqXe4rAaj/tnTgc8gfSKBasb+ELl8/HgTiQ95FettctTjxxiWhwOKmrI8
- WOpkXQAl0HpBG+GXFqk+OnMF/LMilkSXwbNjLpofUMDK23dHY3YDoFItTVABtcGzcv0t9daG0m/
- +GMQ5eqMt7ZfDztPnsHyHEuwLbpqHLyu6FKQ==
-X-Received: by 2002:a05:600c:19c8:b0:48a:554d:b9a2 with SMTP id
- 5b1f17b1804b1-48a554dba51mr244328085e9.6.1777025387919; 
- Fri, 24 Apr 2026 03:09:47 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc0f8188sm614591855e9.2.2026.04.24.03.09.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Apr 2026 03:09:47 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 27C8C5F943;
- Fri, 24 Apr 2026 11:09:46 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Lucas Amaral <lucaaamaral@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  peter.maydell@linaro.org,
- agraf@csgraf.de,  mohamed@unpredictable.fr
-Subject: Re: [PATCH v4 1/3] virtio-gpu: validate host page alignment for
- MAP_FIXED blobs
-In-Reply-To: <20260423234415.7753-1-lucaaamaral@gmail.com> (Lucas Amaral's
- message of "Thu, 23 Apr 2026 20:44:15 -0300")
-References: <20260317175744.32469-1-lucaaamaral@gmail.com>
- <20260317175744.32469-2-lucaaamaral@gmail.com>
- <87mrytwo8h.fsf@draig.linaro.org>
- <20260423234415.7753-1-lucaaamaral@gmail.com>
-User-Agent: mu4e 1.14.1-pre3; emacs 30.1
-Date: Fri, 24 Apr 2026 11:09:46 +0100
-Message-ID: <875x5gwtxx.fsf@draig.linaro.org>
+ AFNElJ+4BEn9AvDZDU1BQgZY15xNGN4/hg7k3NDJQd2tQSXaCkTrPXhqoBnq4YnZ0/SNqanaM9xbx73Z0w==@nongnu.org
+X-Gm-Message-State: AOJu0YxktdOKihsKU9JxV1kTq9f6ZqsyaNK53NktiIPBcW5K0JDrKaYr
+ vrnolk70NPhtoJlWkKGPlFGv82eEgTvP64PQawaL3z+afEhvAeF2gechhZ/ER4AvSIU=
+X-Gm-Gg: AeBDieu7+HAyj3FnW4aeqFP8+GDUo9H/bowewg6ulj8kHV5Yii0xaKLKdcCBT5SrerL
+ OX7P63tG8na90GpXrX2h6isZZrgXsgxjMkkaM55UL7rqLc50du+w9Uh8w2Kr4fjl2IJLCT5apWA
+ hLbEHFNV+lt9+humrv/9ODF8vM1zH4soCam5bgOTml/vS+n8BK+2F9WW+616j5qv18Iti/6+NAC
+ 94GmJwLan9QLz8a8JoO7kd7RhhIibxHg89zr2F0oQtIRWX2opoT0TQJ1sBTbvie2HirAKvLwu8K
+ nC+dBhFY3hzfWDf7NtZQBXcfmgTXleHOGpdvzCz0NXE2uZIWAa0IiMdlZ/RCWfJYhaMIwc5q10O
+ F7kxqbBziXF73ZZM3JshizzABT0JExD7nCiCy6mpry3A40eXlpQAwYssOOmOUVxeyySPtSveyKo
+ SDVHNVRdzzUU31/j8acFq5gqMWOiwcMUYkX1tpR4L6TGtgDsvN0DApIXhuHpkN8Y2OMfqkVnV68
+ Wi3
+X-Received: by 2002:a05:600c:a410:b0:48a:5821:6006 with SMTP id
+ 5b1f17b1804b1-48a5821692dmr175685265e9.4.1777027136100; 
+ Fri, 24 Apr 2026 03:38:56 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4891b46cffasm404295135e9.13.2026.04.24.03.38.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Apr 2026 03:38:55 -0700 (PDT)
+Message-ID: <06f3afc0-ffb5-42df-b800-c7d4ce112694@linaro.org>
+Date: Fri, 24 Apr 2026 12:38:54 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x344.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu))
+ expression
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: Roman Bolshakov <rbolshakov@ddn.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, Mads Ynddal
+ <mads@ynddal.dk>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+References: <20260423170229.64655-1-philmd@linaro.org>
+ <20260423170229.64655-2-philmd@linaro.org>
+ <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,73 +113,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Lucas Amaral <lucaaamaral@gmail.com> writes:
+On 24/4/26 00:26, Richard Henderson wrote:
+> On 4/24/26 03:02, Philippe Mathieu-Daudé wrote:
+>> env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
+>> available via the ARCH_CPU() macro. Use the latter
+>> to avoid using &env.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   target/arm/hvf/hvf.c       | 2 +-
+>>   target/hexagon/translate.c | 2 +-
+>>   2 files changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 5fc8f6bbbd9..2fb768048b8 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, 
+>> hv_vcpu_exit_exception_t *excp)
+>>   static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
+>>   {
+>> -    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
+>> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
+>>       int ret = 0;
+> 
+> ARM_CPU has an object_dynamic_cast_assert() inside; the env* converters 
+> do not.
+> You should be making a considered choice about this change, not just 
+> "simpler".
 
-> Hi Alex,
->
-> Thanks for looking at this.
->
->> What was your test case? Is it possible to publish some images for a
->> functional test?
->
-> The test case is running a Linux VM with virtio-gpu Venus (Vulkan
-> passthrough) on an Apple Silicon Mac:
->
->   - Host: macOS ARM64 with 16KB pages
->   - Guest: Linux ARM64 with 4KB pages
+If not calling object_dynamic_cast_assert() is what we want here, then
+maybe we could add yet another QOM cast macro with explicit name,
+otherwise at least add a comment why we don't use the same pattern.
 
-Well we at least images for the Linux side which we can use. See
-tests/functional/aarch64/test_virt_gpu.py
-
-
->   - GPU: virtio-gpu-gl with Venus/virglrenderer + MoltenVK
->
-> When the guest allocates a blob resource with a 4KB-aligned size,
-> mmap(MAP_FIXED) fails with EINVAL because the size isn't aligned to
-> the host's 16KB page boundary. Without this patch the blob resource
-> is silently unusable =E2=80=94 the guest sees no GPU output.
-
-I wonder if TCG guests will also fail?
-
->
-> Reproducing it requires the full macOS Venus stack, which includes
-> patches across multiple projects:
->
->   QEMU (this series + two others on the list):
->   - Stack A: ISV=3D0 data abort emulation (v6, R-b by Mohamed)
->     https://patchew.org/QEMU/20260409220614.65558-1-lucaaamaral@gmail.com/
->   - Stack B: this series (hvf map granule + MAP_FIXED alignment)
->   - Stack C: Venus without OpenGL (v5)
->     https://patchew.org/QEMU/20260317182049.33848-1-lucaaamaral@gmail.com/
-
-A lot of moving parts, do you have a rolled up branch I can test against?
-
->   virglrenderer (GitLab MRs):
->   - MR !1600: macOS build support (merged)
->   - MR !1601: posix_spawn worker for macOS (merged)
->   - MR !1602: Metal shared memory (R-b by Yiwei Zhang, under review)
->     https://gitlab.freedesktop.org/virgl/virglrenderer/-/merge_requests/1=
-602
->   - MR !1603: SOCK_CLOEXEC/MSG_CMSG_CLOEXEC optional (merged)
->   - MR !1607: server preparations for macOS process model (merged)
->   - MR !1608: Metal vulkan header roll (merged)
-
-Any rolled up branch for this set as well?
-
->
-> I don't think a functional test is practical for CI since it requires
-> macOS + HVF + MoltenVK + a guest image, but I'm open to suggestions.
-
-This is a bit of a challenge - we will be loosing CirrusCI soon which
-has our only real MacOS build test. Either we get someone willing to
-host a custom runner or we need to find another CI runner that we can
-plug MacOS tests into.
-
->
-> Thanks,
-> Lucas
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Having to think about hidden knowledge of such performance penalty is
+not great from an API point of view. I'd expect most new developers to
+copy/paste working patterns without looking at macro expansion
+involvments, WDYT?
 

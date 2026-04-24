@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AEECFB44BB
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 07:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A747FB44C3
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 07:30:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGAlW-0002MF-Ds; Fri, 24 Apr 2026 03:15:54 -0400
+	id 1wGAyv-0006Fd-R0; Fri, 24 Apr 2026 03:29:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wGAlQ-0002Lb-MZ
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 03:15:51 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGAyr-0006Ei-S6
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 03:29:42 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wGAlJ-0000Ki-Qr
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 03:15:46 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4852a9c6309so68880165e9.0
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 00:15:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGAyp-00022I-TC
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 03:29:41 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-488e1a8ac40so92164135e9.2
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 00:29:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777014940; x=1777619740; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=aO+pVKRE5JjEtTa4KGnF+otF0zYfiNqJ2NW6e07bi7s=;
- b=Cbh3i52pqpgEEWJXF/M9vlXJkZ7p7XEu48RMTjLb7TbsqdlFq8HKev3FymoTTLYy73
- OCe8yQAG6+WDRgs9UYHyFP7H4W5rcnaPryoGz9jxV0pnIWblbNEYGT6K02QuFnEj8Zmb
- 3Ohdr/bwwGwhIfIEhtYdSQd0TLN/DahGDu2SQbK3acZH/Ppdg1h8dhjtR3yffoZHVq4B
- tRIcTaOkvprTPnx6Xe3XYxb5tPOu4AP35Z8J5AwgqhyiMct08kanIqOusNREa9vIgOnw
- iIpfkYApQ6P3f0vWykrcSFfk2IdcWeyDLhw5SVHQLJcTVIbBtgYyrXUuZgR3I/wbK4Pa
- C4Ww==
+ d=linaro.org; s=google; t=1777015778; x=1777620578; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RSbW9Qx2dWjLtuJrhqfT7Hxo7vlzHXH21y77sugPQjM=;
+ b=oeUzaXXbNuHY8IixB9ztDm3+gVFXElWjQUiliRY7fhZpIINPbnsFoszP8TcogMeWgq
+ eWGO2R8Egk9cEZGuqlooN8TPbIzlr8Z5+5ueOrwotn2GWtppFeFlwNGDPlUoA/1wEP9/
+ kMME8rmV0vRLJnucK8Gajv79RzOW7VQ7j6JkdZWZA9sZfRqJoT/luXSdZR1TZVMsDOaQ
+ 5u/EgujkqmLH07gBhFajHDvyNBipgElMg2T4noVniXaM57bZ0+VVuK/S+Y4/vp8jg+wy
+ TBMn9rV6SBKbYh3znGDOgEHyeZVT3uyHfCdHi4YJrsUk+zCtbca+YyTO6WXqv3ThCa8x
+ ga0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777014940; x=1777619740;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=aO+pVKRE5JjEtTa4KGnF+otF0zYfiNqJ2NW6e07bi7s=;
- b=Qni+cYfkLCiBnCN6NOYfOs8iXzkknSaEKsihO0FKIRadsNLQvtTAHZ1nm/bW4bO7p1
- v2m7a16G89Fyi5wvrryOiq/XXDBXg0CR2WTjY/p1t9EjFWoj1nx87yFpXbgJj7xEJHI5
- XIXAnIU4ICk4JwPPKldL5gCL9XwUs/agEUeF1zTkpOljm24br+ggOCHLImwqiy9BoKB4
- gK6oL1IvGjZVdheIDesxP9PbjApO7lYddY5b3Rfs+0glIlCgqI2pYUc2P1B12CptRnVx
- tAPVf6/O/ptEahNHUtW8+1ZLlOcaQD9ga3/CElUMK11fRStExRUrwHEvPVO44FIDQ3Yd
- PMmA==
+ d=1e100.net; s=20251104; t=1777015778; x=1777620578;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RSbW9Qx2dWjLtuJrhqfT7Hxo7vlzHXH21y77sugPQjM=;
+ b=ZrHWgdTDXSFvQDIWjZSHtxwvBAIWfNGSFtdCpmZDNmEua5vsvLefj5TTDl5B5rEhQz
+ 6lGzTmAVwaLFnFCMBtx3W1Wp9QRmVE0E3j+g0qUM42m+xIVd1OSxBva4KT73ZLHYO2Kv
+ P5vA03I6su1XuBEGKMtxLX2+OsdI5kqkTNLajGmluGZma9D0iErV0E3ysJ5ExJGUGob2
+ r/pnCm/4Q2d/f9MWuYWw/J914YLbsszgPl0IPnMhfKbB3UgENeymSa4j7czNJt6Jv9eR
+ R64itWmJPQj2Np9iZxcAFOAcim0SKHOdG9Ia3ST30V+/T89LqIVmcVwvfhiwO2InvexQ
+ vsuA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ887fwMj5sAp1Gsi28LFqydv6QjqktwFmOEi7UH6YykRH8SxhMYz0JALg+Zr9fmq4+Ex3iV68qSzA==@nongnu.org
-X-Gm-Message-State: AOJu0YxOPJyhRnbmNHz6ahQQ0N5YSD7pCU+J3JgOe0D0OOwvqR30L0Nq
- rLzTmUDZsr7DCSEGUi/dLnKKEsSx0X0gp/erps0OXXun6J2yrtfIogspRP5iSE4uUZA=
-X-Gm-Gg: AeBDievCIKfqus9cXO5keZ1tpk1DqBgu9ZUhZDLlfQOCI59CoeD7LJ4+8H99CaNMa6T
- 8npzdm2xIqH6Km+BrF6dbSlIGdLvyEKSVodtagKZhccAM+sWzjyGnw1PY6Sx+djE84ZMcSIyzmi
- VAdGSy09gT4C3L/heeCG7G9e5IAJbCpFqs423YKU3Rlgn7kyvfN+Y4m/ehx+bEUqkbki7QrbynT
- VFglDpqsTwt51tllyyy+DPLegnPddr7ub7WxkL06mS+ilpV0+0nYAEZzMcpTUpPr5F+c70E5i5a
- qQVYqgj6F/FQUw43XamjCdLPfTJumrxtZlL/C022B56Aa4XwtIbXLdOpdquU0kEegWSxZ8FT3I6
- mom6clX0oOUHd5+egcSK3Q+yury5Ng3Mdn8xHF76Nrq0H0tDSlvX2n62sq2utStwLqG5xstn4uF
- 7dKJw8ynj4QLFAPFMNGyqAL7LQ/GmoqkEi160RF/urq0WqR4twCCjdMZcq5FiK1cqyi/Wz81Xzd
- 6oipr/XpVJiCRxek+JaUeUXyPVE6Yanj/eTu6YWlZKGxq3XcWrKz9nR2F7z/KueGthjkJwN
-X-Received: by 2002:a05:600c:890c:b0:485:3ff1:d5ed with SMTP id
- 5b1f17b1804b1-488fb739cd9mr361725705e9.1.1777014940030; 
- Fri, 24 Apr 2026 00:15:40 -0700 (PDT)
-Received: from meli-email.org (athedsl-338307.home.otenet.gr. [85.72.177.33])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-488fc1cfbf2sm590660555e9.15.2026.04.24.00.15.39
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 24 Apr 2026 00:15:39 -0700 (PDT)
-Date: Fri, 24 Apr 2026 10:15:26 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
+ AFNElJ/W6hv0uGWPHMuV1LudzVpR3RGnrC0Vmz8crKz5wPytj6oH3dvBeTFQdhtLZuu/mxHfAHKtVmblCw==@nongnu.org
+X-Gm-Message-State: AOJu0YyL/DzT8zf+8lxCkqYBPuIA7SfyvBWE498uIO7laradJNePyqIX
+ vV8KzZ/Jd3Pojg3D7FovO+opXffiFuTIbAB/ZO8xB7cfzwwE2Ky/Y4HIma8gtWD5Mik=
+X-Gm-Gg: AeBDietjq+NyCRS2Lha7F47rrdSOtQYz5aIT0KDVeCaYctCz9r0YY+xA8JWp0LzYhbz
+ ki5FJ4ZYMAyLV1rPeNPpiyj/1vsEUhfIkpyGjvj4/8eyVpa31Dl0GSCCVWaaA5P+wa4MKsx++Rp
+ HRH4JrCBL2yNYFuHe4q4mGXn5TTQ7+Jc7exEZYJsVQa5ghnOUmxjPtADnmOewFgMaAO4g/50gUe
+ ZhLArdz9sBe/3wPkGQnfWbB1dMVYQ7ctiudDWjkb8WRrBxJC02TJ/ZFeoab+x35MJRFDLjlpCED
+ HzJUFPF3VK7jzcY9FOZIO6qjkpxtzTdR8xTeKLCoeojEhl6BzIpDbybK1RxoPGsdtvkC0TWVkgW
+ toqybPEF/R7AvNcpsXK6RHxWJnteJ/AbLogoNrwEDVCu7Y2WWpSE0HWYnilLzUj1TqS4PsyyLmC
+ uz964piyJv9CDL6AoAUcGoYRQ77T7Oq2L515eWTJ5nNr52kaPpCIt6IJEaT7RAFrk25bt4LkieK
+ 9W+
+X-Received: by 2002:a05:600c:899:b0:489:1a63:509c with SMTP id
+ 5b1f17b1804b1-4891a635125mr195545065e9.0.1777015777894; 
+ Fri, 24 Apr 2026 00:29:37 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-489fec8f7cbsm292671055e9.11.2026.04.24.00.29.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Apr 2026 00:29:37 -0700 (PDT)
+Message-ID: <6db61652-5659-40c2-9800-2c335f64c66c@linaro.org>
+Date: Fri, 24 Apr 2026 09:29:35 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v20 02/15] hw/intc: arm_gicv3_hvf: save/restore Apple GIC
+ state
+Content-Language: en-US
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: Re: [PATCH v20 07/15] hvf: gate ARM_FEATURE_PMU register emulation
- when using the Apple vGIC
-User-Agent: meli/0.8.13
+ Phil Dennis-Jordan <phil@philjordan.eu>
 References: <20260316130642.13246-1-mohamed@unpredictable.fr>
- <20260316130642.13246-8-mohamed@unpredictable.fr>
-In-Reply-To: <20260316130642.13246-8-mohamed@unpredictable.fr>
-Message-ID: <tdzli2.3nqzzsd8i5ktn@linaro.org>
-MIME-Version: 1.0
+ <20260316130642.13246-3-mohamed@unpredictable.fr>
+ <tdzkzc.i0jgs6ineqnz@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <tdzkzc.i0jgs6ineqnz@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,55 +112,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 16 Mar 2026 15:06, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
->From Apple documentation:
->
->> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
->> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
->>  hv_vcpu_exit_t object contains the information about this exception.
->
->> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
->> field of ID_AA64DFR0_EL1 register.
->> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
->> exceptions, which are sent to the guest.
->> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
->> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
->
->However, despite what that documentation says this is actually gated on using the Apple vGIC
->instead of nested virtualisation per se. Apple introduced both at the same time.
->
->Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->---
+On 24/4/26 08:56, Manos Pitsidianakis wrote:
+> On Mon, 16 Mar 2026 15:06, Mohamed Mediouni <mohamed@unpredictable.fr> 
+> wrote:
+>> On HVF, some of the GIC state is in an opaque Apple-provided structure.
+>>
+>> Save/restore that state to be able to save/restore VMs that use the 
+>> hardware GIC.
+>>
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>> hw/intc/arm_gicv3_common.c         |  1 +
+>> hw/intc/arm_gicv3_hvf.c            | 95 ++++++++++++++++++++++++++++--
+>> hw/intc/arm_gicv3_hvf_stub.c       | 25 ++++++++
+>> hw/intc/meson.build                |  1 +
+>> include/hw/intc/arm_gicv3_common.h |  3 +
+>> 5 files changed, 121 insertions(+), 4 deletions(-)
+>> create mode 100644 hw/intc/arm_gicv3_hvf_stub.c
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> target/arm/hvf/hvf.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
->
->diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->index 04c4106a3e..c971aa8cce 100644
->--- a/target/arm/hvf/hvf.c
->+++ b/target/arm/hvf/hvf.c
->@@ -1601,7 +1601,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
->     ARMCPU *arm_cpu = ARM_CPU(cpu);
->     CPUARMState *env = &arm_cpu->env;
+>> diff --git a/hw/intc/arm_gicv3_hvf.c b/hw/intc/arm_gicv3_hvf.c
+>> index 55171a796b..18e5b3fe68 100644
+>> --- a/hw/intc/arm_gicv3_hvf.c
+>> +++ b/hw/intc/arm_gicv3_hvf.c
+>> @@ -13,6 +13,7 @@
+>> #include "qemu/error-report.h"
+>> #include "qemu/module.h"
+>> #include "system/runstate.h"
+>> +#include "migration/vmstate.h"
+>> #include "system/hvf.h"
+>> #include "system/hvf_int.h"
+>> #include "hvf_arm.h"
+>> @@ -34,8 +35,13 @@ struct HVFARMGICv3Class {
+>>
+>> typedef struct HVFARMGICv3Class HVFARMGICv3Class;
+>>
+>> -/* This is reusing the GICv3State typedef from ARM_GICV3_ITS_COMMON */
+>> -DECLARE_OBJ_CHECKERS(GICv3State, HVFARMGICv3Class,
+>> +typedef struct HVFGICv3State {
+>> +    GICv3State gicv3_state;
+
+s/gicv3_state/parent_obj/
+
+>> +    uint32_t size;
+>> +    void *state;
+>> +} HVFGICv3State;
+>> +
+>> +DECLARE_OBJ_CHECKERS(HVFGICv3State, HVFARMGICv3Class,
+>>                      HVF_GICV3, TYPE_HVF_GICV3);
+>>
+>> /*
+>> @@ -660,7 +666,7 @@ static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
+>> static void hvf_gicv3_realize(DeviceState *dev, Error **errp)
+>> {
+>>     ERRP_GUARD();
+>> -    GICv3State *s = HVF_GICV3(dev);
+>> +    GICv3State *s = (GICv3State *)HVF_GICV3(dev);
 > 
->-    if (arm_feature(env, ARM_FEATURE_PMU)) {
->+    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
->         switch (reg) {
->         case SYSREG_PMCR_EL0:
->             *val = env->cp15.c9_pmcr;
->@@ -1862,7 +1862,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
->                            SYSREG_OP2(reg),
->                            val);
+> Nit:     GICv3State *s = &HVF_GICV3(dev)->gicv3_state;
+> reads better and is checked
+
+No need to change the line at all.
+
 > 
->-    if (arm_feature(env, ARM_FEATURE_PMU)) {
->+    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
->         switch (reg) {
->         case SYSREG_PMCCNTR_EL0:
->             pmu_op_start(env);
->-- 
->2.50.1 (Apple Git-155)
->
->
+>>     HVFARMGICv3Class *kgc = HVF_GICV3_GET_CLASS(s);
+>>     int i;
+>>
+>> @@ -707,6 +713,87 @@ static void hvf_gicv3_realize(DeviceState *dev, 
+>> Error **errp)
+>>     }
+>> }
+
 

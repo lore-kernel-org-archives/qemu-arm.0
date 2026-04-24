@@ -4,96 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 878B7FED3F2
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 18:21:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9FFFED3F2
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 19:18:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGL8u-0007WT-4L; Fri, 24 Apr 2026 14:20:44 -0400
+	id 1wGM2g-0000H0-Hs; Fri, 24 Apr 2026 15:18:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wGL8q-0007Vs-Sb
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 14:20:40 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGM2e-0000Fc-FT
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 15:18:20 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wGL8o-0003px-Rh
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 14:20:40 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-43eb05b1875so4797655f8f.3
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 11:20:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGM2c-0006kw-GN
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 15:18:20 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-488d2079582so95640005e9.2
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 12:18:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777054837; x=1777659637; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PJ3ffUmyrezSY/rh/pt0nrkBPeHVspjmLRhtqz3CZrg=;
- b=qiDKeuLsXzd6amP1/atSU6UUn7+7zdxSSA8Q4kstQdgk3GTKvCSe2hOgWsOra2cizO
- IYvDH0t19IdLzokY100fjZLCpkFkgrFKJYY4glRcwcx1wbHEAX7nVlomfHs/Wx/DAxD8
- VukvwYrLvoy7sGsGmSjAZ82/t+erZ8zk/oZzloAuiuvRuCld4hg9Ar5wFs9+YCsBQxF/
- 3kEqNrGiUUJXIPYfixvxEHXC+IcGvuTdsCOCFnojdVVbxGjmjVy03Y7myQpXceOmkcTg
- 8C8th61DvOLxcGLLr8JkUM3empUhMZgm2HE6hV5lJTpwWoVD5BchKpVDBTbZ5F8via/z
- f+bA==
+ d=linaro.org; s=google; t=1777058297; x=1777663097; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=XrhWP5d/h7UThmqeUx8H3y6hoHc/cyemxhSIuGymrGc=;
+ b=HeQe2yElvx7EfQ9684JgiL5vARO/KXjtls5ioetw/kC7N7aJmqS8by5ByS1eaN22Ft
+ 2JILoD8uYXjbj+s6keaL40JSrv2ou+X2Q4bcwB4d668fe2ZvVLDyBj6Q1/dIdJesuOuY
+ dqlgVcE/JmfRfMcpWtFXGdH1rKIdAVeUoVy5Iq2bwmdXS4rJmQ6EWV7vAlKk2XLtLNXD
+ s3T3cnPYAw8NI6EM83TKNr0PcxSnAw2VFNi8vYVEBKI+jptDgixX6aW5s/1v9741edXI
+ NH7q90E+a59Uh0AojPSMF3YyXgW+U9d83R/U+oWV45BFWxw5ZsimoWPRrRjGo5gbu+so
+ qoDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777054837; x=1777659637;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PJ3ffUmyrezSY/rh/pt0nrkBPeHVspjmLRhtqz3CZrg=;
- b=UxKy6MugUTlYJANoXfC9k70jZXBt23NdWPIF+ggwXjwCI6ohb1BKSi7LN6g0/IBc1g
- qlQ/N+lKDJgmTrNevylnABLjA1Q3Is6dltnR43D6D4YkM9lJtr3v0gI1N4akxnmVQ6si
- YXk/fcO3nksa7teYwtkneCJVemd+rUBlkUZuynWlV+lXwVIjn34znZ/9TH6LHOOKLyZN
- xFoB+VVBGb2Yt86/xqz66DUGIl7EXzIsqmgiWO1yV64oP3AEbAgjwgDvg8HVSG/yYRWv
- WiKCQI3baeGu0BEkVFMs2o4zuwhpmaZVAsH2Be+GKn+TpAjre8ZbO5NCC1vOetKfoCRX
- 4h+w==
+ d=1e100.net; s=20251104; t=1777058297; x=1777663097;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XrhWP5d/h7UThmqeUx8H3y6hoHc/cyemxhSIuGymrGc=;
+ b=Z4qJNhepHRepXbDFVEOUrQFb0DJ4YrUMQEM62rLvYvkQFxBv1F/3JzKYHYXOcb8xp0
+ Jx2rgnqT/iPRLauZ28TAggsRAuuHa1Vfp4qeli4MhxhqnmsseSiKJOSjdTbwWwfaZHvB
+ Xslm+8jCMRsXQPgAAXnhzXCizT3dYal0l4cgIXnWwTQ4uW768/OtpQdUn2ylSGSvRuxw
+ GTomjBYcL0cE4VBnE5Aj+/WYBkxBs2yAhzJdz2id5xD7gjuC6zBOHQZyQ6/8f+nEP25t
+ pKHPq65P9hQObfTizTo3fD83orXKrP7xiiPSZtMrxME2NCmQMnXfpkj8ug8lN8R9PJdG
+ A5CQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8PsJtsXyXlvp9LlvoZRtQHPoqQfY0lxduq4GCXeLlqcsrYyZrczo94I1+UmQNblbfbbN32Ff/2Yw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw1JYUrnl+pOoYRbJu7UHx5jLORJqR1575z9JXr5FDvjfDXW+g/
- ZVHRfHj1nmBJAPihA9QkPSPv8br0FkT4cQv0ResPraqBUqwx7vm8YxmB/eJbGzN4n1Y=
-X-Gm-Gg: AeBDietf2Xa0YlTlPeVWiG7gXsUQX3nYcs2/AV9ZXC8wjHg/ly2/pPsGpwTGUI98sX/
- qP5vPOs3rCQSGtElhytX1AKZmdf0nNXPkuqw7x07SlJU8zkuFaiIdHCIY8S4F6ShRawKXRJ+goj
- K/gbJu6jbTt1lcnjF8q8mNVoIAEVPlBnokCIrEEP4hnwvQwbxGu1I/YOepohCR+A3zaQmAjq9j+
- 8LC9YT3mXFbzA64P4Z8JqOuIFJZwCeHT8GGqW34iZVe2VBglVOwg6vNootnCdfDLsSq3EhzfrzH
- QIk73OUAq0dRbGRNgXAdZMN4vpyRRepjXwr752L5t9r27xwSLr487dotmEkuhIGw5R2VLKDU/YN
- rmxS1JgVzfVOjxaRedMjzxeZRNvttvvfubBi6lx4KK+c3i8YqD5FPKGKLyDXYNFDonIkgaF3oGL
- gHirFGwSwAS7FKYAS3C66/t58aV0yRUlJUkA==
-X-Received: by 2002:a05:6000:1889:b0:43d:21a:9a3e with SMTP id
- ffacd0b85a97d-43fe3e0bd8dmr49822275f8f.32.1777054836694; 
- Fri, 24 Apr 2026 11:20:36 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4e3a7b4sm57497836f8f.22.2026.04.24.11.20.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Apr 2026 11:20:36 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0E1EF5F7C7;
- Fri, 24 Apr 2026 19:20:35 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>,  Alexander Graf
- <agraf@csgraf.de>,  Peter Maydell <peter.maydell@linaro.org>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Mohamed Mediouni
- <mohamed@unpredictable.fr>,  kvm@vger.kernel.org,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v3 00/32] target/arm: fully model WFxT instructions for
- A-profile
-In-Reply-To: <20260422125250.1303100-1-alex.bennee@linaro.org> ("Alex
- =?utf-8?Q?Benn=C3=A9e=22's?= message of "Wed, 22 Apr 2026 13:52:17 +0100")
-References: <20260422125250.1303100-1-alex.bennee@linaro.org>
-User-Agent: mu4e 1.14.1-pre3; emacs 30.1
-Date: Fri, 24 Apr 2026 19:20:34 +0100
-Message-ID: <87y0ic43v1.fsf@draig.linaro.org>
+ AFNElJ862Tp0Rt03eo2u85pOFgrMIa6YfwiAzAhI6DXNbt2wEcsalNpTsacQLdBAmvXMSP9WsDl/i2zuug==@nongnu.org
+X-Gm-Message-State: AOJu0YzWdx59l9iNMP6xuK3ADtmoh6dUgDAPO3mvEg323xBooE/DwgiD
+ 8RTphnol44qz9JP5hkKFrBNW04DmCc6VChzwCxFUn+gzneesYei4ygn/wswPzWU6S4w=
+X-Gm-Gg: AeBDievlxS29iw2TR4hrBd7z2ycWiTyNNuiDm0quDqmc4Ln2Yd+5f5sq+rEkmPNhIOT
+ y3xjO4R1lDe+ozjvkEgiaIvJKPuMN0CP1095EU7wsx6g2/o4vTkF7DtqrzbgbKwlbREO+t0upEj
+ WsVf1DNe2GI2gbrGtLDn7z5WWilTyNjrsPGlsjd/9Gx/Vb1baghIcTk+2AIBn08A1Ja+jvSi3HT
+ l/DEX5qXqxldwptq8tWWWexhh6mrhwrvx3qynU8b0BuSufJQke3JcJttn/SKQDrCOzIVrVEeI32
+ QVRWYWt1EsCh1qQFetCl6kFe4Gx+THsELwWKIp/FqJl/HnyOIJeDNBe2OBkzPSDfPEiKaYXbqxk
+ eOHLxB6Trp/i/RcKM5WXfJiC1SLI8wHqZoGhD1AzlMVA4xh1gPMHJ2VNquUIRambvSu3blXfbnW
+ xxypDsRBvlIjEPsrEpdSefiZNM9nVYs4wFSYud7awQJkKjpliAfdZcslVKjGyPNRn75bdsMgh9A
+ 9sc
+X-Received: by 2002:a05:600c:4fc7:b0:485:40fd:8390 with SMTP id
+ 5b1f17b1804b1-488fb78894bmr434250925e9.26.1777058296668; 
+ Fri, 24 Apr 2026 12:18:16 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-489201cde98sm364139775e9.7.2026.04.24.12.18.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Apr 2026 12:18:15 -0700 (PDT)
+Message-ID: <85948999-6dcb-4f36-8450-ab74ebb35e3d@linaro.org>
+Date: Fri, 24 Apr 2026 21:18:14 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for-11.1] hw: add compat machines for 11.1
+To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>
+References: <20260331140347.653404-1-cohuck@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260331140347.653404-1-cohuck@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,111 +113,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+Hi Connie,
 
-> This series fully models the behaviour of WFxT instructions. We
-> already had support for WFE for M-profile but we left off A-profile as
-> it has more potential sources of wake-ups. The main one is the event
-> stream which includes events from significant bits of the timer
-> ticking over.
->
-> The series starts with some refactoring of the syndrome register
-> helpers to use registerfields. We then expand the WFIT trap handling
-> to report the register used. We then implement the event stream events
-> for SEV, global monitor and the timer related ones before enabling WFE
-> for A-profile and then finally WFET.
->
-> Note on AI usage. As an experiment I previously posted an RFC series
-> with the help of Gemini. This series however is a ground up
-> re-implementation which takes some different approaches on modelling
-> the event stream. In particular rather than running multiple timers we
-> use the same wxft timer and just compute if the timeout or timer event
-> will come first.
->
-> v2
->   - I've kept the tests separate, see:
->
->     Message-ID: <20260417164328.1009132-1-alex.bennee@linaro.org>
->     Date: Fri, 17 Apr 2026 17:43:20 +0100
->     Subject: [PATCH 0/7] tests/tcg: more capabilities for aarch64-softmmu=
- tests
->     From: =3D?UTF-8?q?Alex=3D20Benn=3DC3=3DA9e?=3D <alex.bennee@linaro.or=
-g>
->
->   - tweaks to global monitor behaviour
->   - STLR/STL will also trigger events to avoid deadlocks
->   - see under the --- in the patches for details
->
-> v3
->   - fixed the WFE exception handling
->
-> Alex.
->
-> Alex Benn=C3=A9e (32):
->   target/arm: migrate basic syndrome helpers to registerfields
->   target/arm: migrate system/cp trap syndromes to registerfields
->   target/arm: migrate FP/SIMD trap syndromes to registerfields
->   target/arm: migrate eret trap syndromes to registerfields
->   target/arm: migrate SME trap syndromes to registerfields
->   target/arm: migrate PAC trap syndromes to registerfields
->   target/arm: migrate BTI trap syndromes to registerfields
->   target/arm: migrate BXJ trap syndromes to registerfields
->   target/arm: migrate Granule Protection traps to registerfields
->   target/arm: migrate fault syndromes to registerfields
->   target/arm: migrate debug syndromes to registerfields
->   target/arm: migrate wfx syndromes to registerfields
->   target/arm: migrate gcs syndromes to registerfields
->   target/arm: migrate memory op syndromes to registerfields
->   target/arm: migrate check_hcr_el2_trap to use syndrome helper
->   target/arm: use syndrome helpers in arm_cpu_do_interrupt_aarch32_hyp
->   target/arm: use syndrome helpers to set SAME_EL EC bit
->   target/arm: make whpx use syndrome helpers for decode
->   target/arm: make hvf use syndrome helpers for decode
->   target/arm: use syndrome helpers in merge_syn_data_abort
->   target/arm: use syndrome helpers to query VNCR bit
->   target/arm: remove old syndrome defines
->   target/arm: report register in WFIT syndromes
+On 31/3/26 16:03, Cornelia Huck wrote:
+> Add 11.1 machine types for arm/i440fx/m68k/q35/s390x/spapr.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 13 +++++++++++--
+>   hw/i386/pc_q35.c           | 13 +++++++++++--
+>   hw/m68k/virt.c             |  9 ++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/core/boards.h   |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   10 files changed, 76 insertions(+), 9 deletions(-)
 
-Peter,
+I'll take this patch in my next PR to avoid another conflict
+with your tree.
 
-Do you think you could take the patches up to here so I don't need to
-hold the re-factoring patches in the tree?
+Regards,
 
->   target/arm: teach arm_cpu_has_work about halting reasons
->   target/arm: redefine event stream fields
->   target/arm: ensure aarch64 DISAS_WFE will exit
->   target/arm: implements SEV/SEVL for all modes
->   target/arm: hoist event broadcast code into a helper
->   target/arm: implement global monitor events
->   target/arm: enable event stream on WFE instructions
->   target/arm: handle the WFE trap case
->   target/arm: implement WFET
->
->  target/arm/cpu.h               |  27 ++
->  target/arm/internals.h         |  31 +-
->  target/arm/syndrome.h          | 595 +++++++++++++++++++++++++++------
->  target/arm/tcg/helper-defs.h   |   5 +-
->  target/arm/tcg/translate.h     |  32 ++
->  target/arm/tcg/a32.decode      |   5 +-
->  target/arm/tcg/a64.decode      |   5 +-
->  target/arm/tcg/t16.decode      |   4 +-
->  target/arm/tcg/t32.decode      |   4 +-
->  target/arm/arm-powerctl.c      |   4 +-
->  target/arm/cpu.c               |  53 ++-
->  target/arm/helper.c            |  12 +-
->  target/arm/hvf/hvf.c           |  14 +-
->  target/arm/kvm.c               |   5 +-
->  target/arm/machine.c           |   2 +-
->  target/arm/tcg/debug.c         |   2 +-
->  target/arm/tcg/op_helper.c     | 231 +++++++++++--
->  target/arm/tcg/tlb_helper.c    |   6 +-
->  target/arm/tcg/translate-a64.c |  60 +++-
->  target/arm/tcg/translate.c     |  35 +-
->  target/arm/tcg/vfp_helper.c    |   5 +-
->  target/arm/whpx/whpx-all.c     |  13 +-
->  22 files changed, 946 insertions(+), 204 deletions(-)
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Phil.
 

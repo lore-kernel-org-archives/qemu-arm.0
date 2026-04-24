@@ -4,106 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0C60FED3E3
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 15:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CDE6FED3E5
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 15:47:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGIO0-0006ph-Cm; Fri, 24 Apr 2026 11:24:08 -0400
+	id 1wGIkT-0001KH-Mx; Fri, 24 Apr 2026 11:47:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGINz-0006pI-Rm
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 11:24:07 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wGIjS-0000on-8u
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 11:46:20 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGINx-0000x5-Ev
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 11:24:07 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-488e1a8ac40so97846325e9.2
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 08:24:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wGIjP-0000CB-Bl
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 11:46:18 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-6579254f996so50577d50.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 08:46:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777045573; cv=none;
+ d=google.com; s=arc-20240605;
+ b=kxfjBBwjKQ+LPPO6AvLbvGNsW85jo4AYqiuGo4k82VT57aGzpZe8BR3hUYsuLGGomk
+ u60JTAEv3wE/2qwZilRd39JxtDsppA4VDq/qIc+nKhBSudEgYB1bcuUNbWJq6kX0rENu
+ S5BXcxhf5bLD/w+MLtj+MjRA3VAgpAKVkkBDjwgmo2qCk5mylCzWewDaP5K84R28MSoT
+ DdnQONIVMa3WH5uX/MR8dpsE5/FZO0D9dQhDW7vjzhu+aAew4SNbjLeZ+orx634xYDty
+ yEqNHPOD/4hYlt6AfuxqNP1XyjUhSUx3OE/TAcavBO/Mxbz2t8w2z/BIqZOnZ/kPBez3
+ ZXgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=2cwi7wIQXzCJrOOFdS9mM1CUc5W4Lf0OpCdD9x4zH/E=;
+ fh=a+FSKGxEorurDlo+COrsLQBobHx9uyuRxf6z2iJgKe4=;
+ b=XiKkOM4NShO46jZF3y0r4kwig26XczIVY3UYgxZQ31WTwuT5E9NyNixk25Ycp7UUvs
+ m/SDvcvfWdN55CLPZ/XufR4Ydy92zuMbh8TohE5Hz7zEzjFjDJJWSuFv7BEXqkBIvlBX
+ CFjg44Fty95ZnUCJfdeSGFJytKB28YdxgowoQR9EruNeDowWOoa0zzCkfVY8nET+qPqS
+ Y85HoMMS9vBpXfk/tnBqnyO6RppmOsNAQDzDsgjfNF60Mnb+cZgSASCThDxUTjIMSp6Z
+ y/uPmlxYt2lZB2hFidGR8TpQASDBWwQKgjshh7XkvUBE+OmMieDmX+MggNEy5kIApkyE
+ 8k+g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777044243; x=1777649043; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1AU33mHcOoBqcvM7nu571k0mM8qZPnKiwu43LZRhmtM=;
- b=MoMIt0CEsAPiw2R2cvNbFhAbdVCG4Ao6jPMMYKClH4FkGF5Hl4K8wS0z/v1VI1c1rR
- CrWqOX6jHXjw0IGRFMBU97MlTOKC/ZWGN5FPAkm2LzfmUOAzgANLN5NpN+srJbrnFRmj
- A07fGDIQHyUqY0+2+oNWm0Ms0IfwuuF2U2tMK+BVjhputlkF8O3k92TtPUPSxI4RU02M
- hkTH+A009O32+PTZ0O141cJ+syeqggYy2qm0//2vIMhk+rLXe5vIIs4JHIjit20NXQl4
- 4ksc/6ErVFtrYdRQNhFI925f/K3VsyLchCoWX0pigTAOL3sIjqrxxSvBufkRNUIU1k8C
- Dk2g==
+ d=linaro.org; s=google; t=1777045573; x=1777650373; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2cwi7wIQXzCJrOOFdS9mM1CUc5W4Lf0OpCdD9x4zH/E=;
+ b=Fwlgy76cYvqmatrRJFeQG0kEMRhjDM7JdZ/i1qSDwlBAgSFSYbcyU/B4Q7d4gPtBjW
+ JyxvMLFKYEoT3LbVleb/1woSSkpgwQZeWF3kWXuCj6GRQywDwYRR1sNHb2XfJbz1YDlb
+ BRBYkW1p/2c53QQ4B2trf6iPV8yXgPsi3JEq4QT3/anXglwd7BlZE1YU2d7blGRwTreg
+ dei7vJNtRSiBGfko2a3jfYxLJegb1OGyraH1Dky3zCW5VcQba67yl/0t1ABSjc8RS6mW
+ NepMA0XC3Nqy0thY2wyai+uEw5I+AoV42AfJcYp5BgjMcl3SjJUuvCC6Pa1amMzawVNA
+ 4TDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777044243; x=1777649043;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1AU33mHcOoBqcvM7nu571k0mM8qZPnKiwu43LZRhmtM=;
- b=KC1JDrOyCx5tyT1AJ3aFpFpWybmWeey8aJrbp62hY+j1Q/7QWZyZyeJGU8Nmj4F4+X
- u0fYwjYs70pFUHo9n83UhMub1tEB21teafrITG12Sn12kUiPH5yY0BbOCQvokoavVbbI
- 2oBB/XBp+2+D1JSx+Zl7wdzSFAVUy2oG+9f8He2nNlTxzBvurEssdeMURuShKFcRty+k
- Z5zHbnIOLvyOubUw2pcO5jsnD7pd4z8PUrTyWr0iRBvOXTGz8SGX1Fc7ns/B53t57XwR
- aGtQhplLHCrs9yL+sGnRQ7mzpZvWCe6cymk6JE63k3BmMVnRJ6bdnbqcOrqSrmASM5sr
- qo4Q==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/D+PNPo+rPHB6LbrRRcyGsNWUqOj1Ro2WP5NDCHvXZw3IPrp4SrWkdD5XzHBOQAZKPG+xD7cb5VQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7GBOdnePeKDsj5AxNZBK9eAvWhtRx2ATSJyKh4Z0yQQvCy/Bu
- XgxHLITZkbBEyhBmPlyaOp1abaa4tArcEVwPus8123x/DCE+J2IqIS3AX5T3IDPBF/g=
-X-Gm-Gg: AeBDieu0zDYHe4l7o0VgDIJkPyfuaAhkNgeIaYOqNA0s0XVXzXTzBJjVBIwSKZCf+/r
- gsFzIeKqWiS0Ym0Ww8t6lUj7WQ7dd/yXr1GmMLMOZYppqu1dL+g6UGguw94aahHDVJ+iLX+BkKl
- sVRcagH88n3CYwQazyStdAXQ5UeRKZKkCLmSS5x+ek7b2fS6RZwgdrIFptl4bq9UnWNUYnPt2p8
- 7yAEKWzsdH1qjDTDP369nZHfyXPxY9gVV1euCyZa7QgBPhsM70sYSGZm/LopInzvs1H/6zkhm7R
- /p9iSrLdEReS5R6+gJ2NvTisOPmRZMEV/RoVZscnW0xrEgzZpuTsvJe20fT7JppG+PrRYfqCbgz
- 3uH1xyLt5MFOZzh80LBLkc7SGdEYgBWE83LMdQCiV2qEUBrZaDj639389/N0YANRpnodAlbGT4u
- wvt1+3mGWLBBdxvanmTweOtrJB4BAeT8xV6w9hvtQz+IzGr1Ps2F/SoY9sdP5N8Oukv9poSEPLX
- H6f
-X-Received: by 2002:a05:600c:3f0c:b0:48a:563c:c8e0 with SMTP id
- 5b1f17b1804b1-48a563cd16bmr222575785e9.1.1777044242862; 
- Fri, 24 Apr 2026 08:24:02 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43fe4cc375dsm54738446f8f.14.2026.04.24.08.24.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Apr 2026 08:24:01 -0700 (PDT)
-Message-ID: <8dcdad92-2981-4d57-b605-871c748424c9@linaro.org>
-Date: Fri, 24 Apr 2026 17:23:59 +0200
+ d=1e100.net; s=20251104; t=1777045573; x=1777650373;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=2cwi7wIQXzCJrOOFdS9mM1CUc5W4Lf0OpCdD9x4zH/E=;
+ b=D9+jySHosxgYl8CixgaxxOC3i3jyCOTOTT4LVpj+kQ0WyI5aoqtsU3QAJEsr1+BDoH
+ Z465cRx4AlsZ1g9GmDhTf6hxl6VVinbbw3QzcDVDKZa9x0q/c04f34X7DR4Fp5EYIjsz
+ Wevf3/b/eaHnchC1x/1pWdAOcdmUycoo78GZImLIycZzyxzlIpAisfVkkf5HLZwWn3xB
+ BYk6Zhbg8+u6eh79UXn5M4tz8/uLlVG8kBmR2H9c1KUBU2LB6K6gbz+keTHs9msyVzJL
+ qGxT8D2Pwne+cHFjepKrHqn8NYbRtbqYF3q7QW0turD+bban9v5qkcDOSAri0WrDTqtO
+ uwQw==
+X-Gm-Message-State: AOJu0Yz/da5LX+XAcO9//JAnul04dvRuqxZ/oC+3ZQmnA7qRpDbk469Z
+ 8/COYbA64T9TiluUG8GjuFhxdjaMMjTQh6U9MqaprKZ77h3doqkxE6GxWKu/bmbUDtYDOExVgEM
+ xqz1ydEay/evdxZs0hgqu8LM1kNKbc+bs+kNuF/GwnOIp3+gJ3Lruzds=
+X-Gm-Gg: AeBDievxkwZpi4hqdbr8gIwUtuUeMGNrJIMabq0jcdkZmv+SMtVZSbCvimfnhIxjRhx
+ R2/Vgn6Vv8qvECx9tjBrqwkibqUt/5B/eQjExO5KjPbPjbL8hY9cjMaScrEq8FKd57Q9NNPXuv5
+ GdR12Ojk5rlwzqLQ4NqEr27o5t3AVQpiYpmi2ZnZtGG2F/Vq8JassgVp3xlVnvqhyFAWIiwnVsl
+ Z250PwJovjXzrSNj28TXB6MIwdz+H8aMxPGwElmMQ4mBi3pskpzLacb44X1zAYeuwkk0B42XAZV
+ fN2pLoQ3YswEqm3Gbs49ZfBESMBNCf7RJlO8OG7J0vGUJqKEODYimflIh5FbmKu6w99F7FIzDEI
+ zew==
+X-Received: by 2002:a05:690e:b45:b0:649:b31e:8f54 with SMTP id
+ 956f58d0204a3-65310869ad1mr30026063d50.24.1777045572778; Fri, 24 Apr 2026
+ 08:46:12 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 07/18] hw/usb/hcd-ehci: Introduce common properties
- macro for sysbus and pci
-Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- "peterx@redhat.com" <peterx@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
- "flwu@google.com" <flwu@google.com>,
- "nabihestefan@google.com" <nabihestefan@google.com>
-References: <20260424080508.53992-1-jamin_lin@aspeedtech.com>
- <20260424080508.53992-8-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260424080508.53992-8-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+References: <20250929165230.797471-1-clg@redhat.com>
+ <20250929165230.797471-3-clg@redhat.com>
+In-Reply-To: <20250929165230.797471-3-clg@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Apr 2026 16:46:01 +0100
+X-Gm-Features: AQROBzBxq8UbBsZloy7nTuqIIlYXBdO-3p_ITIpSNk_ELu3vvYKymX51Yp3ZG3c
+Message-ID: <CAFEAcA8Dja4yqnaHsXc9pg6EzEAVZFR3=E0sGa9Bz4bvuf+_bA@mail.gmail.com>
+Subject: Re: [PULL 02/32] hw/misc/aspeed_sbc: Connect ASPEED OTP memory device
+ to SBC
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Kane-Chen-AS <kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,26 +119,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 24/4/26 10:05, Jamin Lin wrote:
-> EHCI properties are currently defined separately in both sysbus and
-> PCI implementations, leading to duplicated code for common fields
-> such as "maxframes".
-> 
-> Introduce DEFINE_EHCI_COMMON_PROPERTIES() to consolidate shared
-> property definitions and reuse them across both EHCISysBusState
-> and EHCIPCIState.
-> 
-> This reduces code duplication and keeps property definitions
-> consistent between different EHCI device variants.
-> 
-> No functional change.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/usb/hcd-ehci.h        | 3 +++
->   hw/usb/hcd-ehci-pci.c    | 2 +-
->   hw/usb/hcd-ehci-sysbus.c | 2 +-
->   3 files changed, 5 insertions(+), 2 deletions(-)
+On Mon, 29 Sept 2025 at 17:53, C=C3=A9dric Le Goater <clg@redhat.com> wrote=
+:
+>
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+>
+> This patch connects the aspeed.otp device to the ASPEED Secure Boot
+> Controller (SBC) model. It implements OTP memory access via the SBC's
+> command interface and enables emulation of secure fuse programming
+> flows.
+>
+> The following OTP commands are supported:
+>   - READ: reads a 32-bit word from OTP memory into internal registers
+>   - PROG: programs a 32-bit word value to the specified OTP address
+>
+> Trace events are added to observe read/program operations and command
+> handling flow.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi C=C3=A9dric -- I was just looking at this SBC OTP code for reasons
+related to unaligned access handling, and I noticed something odd:
+
+
+> +static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+> +                                   uint32_t otp_addr)
+> +{
+> +    MemTxResult ret;
+> +    AspeedOTPState *otp =3D &s->otp;
+> +    uint32_t value, otp_offset;
+> +
+> +    otp_offset =3D otp_addr << 2;
+> +    ret =3D address_space_read(&otp->as, otp_offset, MEMTXATTRS_UNSPECIF=
+IED,
+> +                             &value, sizeof(value));
+
+In the read path, we take the address from the guest (in the
+R_ADDR register) and shift it right by 2 before using it as the
+address to address_space_read(). This means that:
+ * the address is always 4-aligned
+ * the address the MemoryRegion on the other end sees is a
+   byte offset which matches the size of its memory region
+
+> +    if (ret !=3D MEMTX_OK) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Failed to read OTP memory, addr =3D %x\n",
+> +                      otp_addr);
+> +        return false;
+> +    }
+> +    s->regs[R_CAMP1] =3D value;
+> +    trace_aspeed_sbc_otp_read(otp_addr, value);
+> +
+> +    return true;
+> +}
+> +
+> +static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+> +                                   uint32_t otp_addr)
+> +{
+> +    MemTxResult ret;
+> +    AspeedOTPState *otp =3D &s->otp;
+> +    uint32_t value =3D s->regs[R_CAMP1];
+> +
+> +    ret =3D address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFI=
+ED,
+> +                        &value, sizeof(value));
+
+But here in the prog path, we use the address from the guest
+directly in the call to address_space_write. This means that the
+address the MemoryRegion in the OTP device sees is not necessarily
+4 aligned, and that it can have values that exceed the valid
+size of the OTP.
+
+The OTP device on the other end seems to try to account for
+this difference: its read function uses the offset it is
+passed as-is, whereas its write function uses
+"otp_offset =3D otp_addr << 2" to convert the offset into a
+byte offset before using it as an array index etc. But the
+write function doesn't check whether it's got an overlarge
+value, so I think it can write off the end of the storage.
+
+Is there a reason it was done this way, or could we make the
+write path also do the conversion to a byte-offset in the SBC
+and validation of the range, so it matches the read path?
+(That would let us mark the OTP device's MemoryRegion as
+not needing to deal with unaligned accesses, because then
+it would always get 4-aligned 4-byte accesses.)
+
+thanks
+-- PMM
 

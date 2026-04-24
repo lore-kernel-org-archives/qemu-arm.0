@@ -4,100 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C3EFE5205
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 10:39:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD5DFE5209
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 11:36:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGDw5-0002Yr-SX; Fri, 24 Apr 2026 06:39:02 -0400
+	id 1wGEpF-0000s9-TJ; Fri, 24 Apr 2026 07:36:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGDw5-0002YU-3M
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:39:01 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGDw2-0001wd-94
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 06:39:00 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-488b3f8fa2bso76551805e9.1
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 03:38:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777027136; x=1777631936; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=74fVi5JPTgndw28mYVNUSy9hX7KtDLK5j2RfHoUH1FQ=;
- b=RR1m2goaRYoZzmx04dZd8t2+qjrSKgvUTXOrMd96EPkLA+6oWNfX3CP+x19fWUZSVw
- ffVLpHp1a6MS9Im705xVzRPnsT8IZLblGPL9vDmFSuwD7vs2dtIcEBQeFiSkSXMXGbYE
- 3mfHyrNIidJtw6slLqDlFAhzoKjKtUUJTiKP5yJy+L3w3RlpYv8SU7sB1yLlzK1hid5o
- 63ILnILeMRfXWTyQcPUFFSC3GEvHZ1pQbsDwsGXXT0qMeMJ9yxYIMBOLZRwdsWm3Cyl5
- IhZNhErE2V5gWPKAbMb9QVjcVm3n5BI8Dje2Ne93QRaEXw16Q8ggJ2oTHZF9Hgi5YXlR
- vYmg==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wGEpE-0000rn-Sf
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 07:36:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wGEpD-0006IR-FY
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 07:36:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777030558;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zYlyk/FU8jAvtu3n9b+43GgXp9tSPuBcVYejaiINyT8=;
+ b=H5BXmgAfo7sTnkPOaTfPp5NCDdrjlikmfisjk0SAHyKPN+w8/i1w1qr2DaFNL0knqbZyZ3
+ /h4pnkRe6VCqo4GAoJsEs1jsCC60ZMhdiBV65gbXc799shx3vzvldw9C+wKE+4vrSC6J4J
+ L8OySGxvXWI18esCOL6QuTOj849y7BI=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-414-8eaPLPHrPmCgIa1BtpFYFg-1; Fri, 24 Apr 2026 07:35:51 -0400
+X-MC-Unique: 8eaPLPHrPmCgIa1BtpFYFg-1
+X-Mimecast-MFC-AGG-ID: 8eaPLPHrPmCgIa1BtpFYFg_1777030551
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-8d5b5d607d1so1519041685a.3
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 04:35:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777027136; x=1777631936;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=74fVi5JPTgndw28mYVNUSy9hX7KtDLK5j2RfHoUH1FQ=;
- b=WD1CjNhdrSidGQJToFrkxANySooKhZGCF5FiqErDfX68ZctDxerPoQMErQOFZ2GTnk
- Y5U++ghZA8cjdaKU1kpMIal8JWF+6xcQtWPqdutzvam+MW8sH15sHqbce7T1vZ4rwCSP
- 1EfqOKD8wqceCazjnKfsJTLtQ8/X0QiEWydvknYcBAZ6sW/R6Jt5RijZ1KInHIYzYtds
- X45Ls1kSgxburSsErwgRsfaJDDQfhPoNLIMpDauJWTjnM789jZ5R2djTc94U8yueKDjl
- XKX8Qu0mnj/L5K9lfGMpDg/86n5iDzRWk24/LXudY9zF/BnczZTWiyE8fQotwZnLQjYe
- FLuQ==
+ d=1e100.net; s=20251104; t=1777030551; x=1777635351;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zYlyk/FU8jAvtu3n9b+43GgXp9tSPuBcVYejaiINyT8=;
+ b=Y6/3dHViF6auvfve2zTZEttwxXl4LakoL3sr8QPfDIgT49KHoRtvKUfOptG+Slq5zf
+ +pWhOnTnZVGmGIfEGi2tInjOsIkDBr4Waxyeo4rau1yDbR+Tw2gKaYLxg8YWkRljlOX3
+ IIIjhXeBP0oM1pU2J6cCSCw+fLnXAfVpsyUX1nEj+QlLM26SIaejHz4E112dVB1zSj89
+ PzWbC3spQZQy0wJMFNgsFCwo1EMcNprJCJMjExrRwFtlhkigayeD8OI2g/TyMdOeQTir
+ 7fHNmm3nZvtlf6oZhY06QzUVjKvJZnXqBdJ6eNql09G3YVUrNTDmXJj0dYrkm19dqN+b
+ KRpA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+4BEn9AvDZDU1BQgZY15xNGN4/hg7k3NDJQd2tQSXaCkTrPXhqoBnq4YnZ0/SNqanaM9xbx73Z0w==@nongnu.org
-X-Gm-Message-State: AOJu0YxktdOKihsKU9JxV1kTq9f6ZqsyaNK53NktiIPBcW5K0JDrKaYr
- vrnolk70NPhtoJlWkKGPlFGv82eEgTvP64PQawaL3z+afEhvAeF2gechhZ/ER4AvSIU=
-X-Gm-Gg: AeBDieu7+HAyj3FnW4aeqFP8+GDUo9H/bowewg6ulj8kHV5Yii0xaKLKdcCBT5SrerL
- OX7P63tG8na90GpXrX2h6isZZrgXsgxjMkkaM55UL7rqLc50du+w9Uh8w2Kr4fjl2IJLCT5apWA
- hLbEHFNV+lt9+humrv/9ODF8vM1zH4soCam5bgOTml/vS+n8BK+2F9WW+616j5qv18Iti/6+NAC
- 94GmJwLan9QLz8a8JoO7kd7RhhIibxHg89zr2F0oQtIRWX2opoT0TQJ1sBTbvie2HirAKvLwu8K
- nC+dBhFY3hzfWDf7NtZQBXcfmgTXleHOGpdvzCz0NXE2uZIWAa0IiMdlZ/RCWfJYhaMIwc5q10O
- F7kxqbBziXF73ZZM3JshizzABT0JExD7nCiCy6mpry3A40eXlpQAwYssOOmOUVxeyySPtSveyKo
- SDVHNVRdzzUU31/j8acFq5gqMWOiwcMUYkX1tpR4L6TGtgDsvN0DApIXhuHpkN8Y2OMfqkVnV68
- Wi3
-X-Received: by 2002:a05:600c:a410:b0:48a:5821:6006 with SMTP id
- 5b1f17b1804b1-48a5821692dmr175685265e9.4.1777027136100; 
- Fri, 24 Apr 2026 03:38:56 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4891b46cffasm404295135e9.13.2026.04.24.03.38.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Apr 2026 03:38:55 -0700 (PDT)
-Message-ID: <06f3afc0-ffb5-42df-b800-c7d4ce112694@linaro.org>
-Date: Fri, 24 Apr 2026 12:38:54 +0200
+ AFNElJ9CREeAre+teSGIeEc5DQmsRwHKbZ6CN7AnUehWdG25TDE07jGBv56FbhIREE5M8QoI+6YnLZRiyA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyts+Z/CiWT5bk35aa1B0yBEwOfKZZuy0LFJy4Qv+ME5U9/K7xp
+ c5oVGAYJowDIkaa8bZ+604ay6qgGKi7FZ9Ymd5ZLsgyWM/1laKZQG0u9ocN28RAIJAnAHt5wYeB
+ 0w7NlBcGv+JjNgzJKYTd+2TnssIe51zu0AArIxq6YVuxdWKB7hWIjyg==
+X-Gm-Gg: AeBDietnNE13pdDID8g1CAOB+xNl9j5s63+rdw8YckNXMsQJUyq+UtXIUPZ+0HcObZ+
+ rDQjIDnCs1/floPN+/4Yg6r/UJ+5bOTDV0lwzai0PjLzcwMQPWAdZxKfbbFEYe56Wm57CLs17r4
+ z6xIGSOIawYxFZpA5RdjpMbK5fWLv1AtAk/MD8j+aPChaSwVdSLaG9hapaZxjY+lEULjUw/g/6C
+ DBkGjJ4KYe1zRTGwrSxN43p+2zFN+ydTfjRpvVSqUWPJw+fxvh/vJey4UVPeBV2WNn0qf4RCmB+
+ /o7Ou7xz7YfWJ4wi7Zo18Vj/btrpRhdl/aq6u2FINPnWFfsL6xMZdLln+FSIS5OqxInZQxiwDDr
+ iKCqh+BFUomOLHUpgT4z5sx3xqhh3t4eSN07z4cSKery6LDCvCOVf+85vUw==
+X-Received: by 2002:a05:620a:319c:b0:8ee:18e7:9406 with SMTP id
+ af79cd13be357-8ee18f6e17amr2519714185a.29.1777030550994; 
+ Fri, 24 Apr 2026 04:35:50 -0700 (PDT)
+X-Received: by 2002:a05:620a:319c:b0:8ee:18e7:9406 with SMTP id
+ af79cd13be357-8ee18f6e17amr2519708985a.29.1777030550418; 
+ Fri, 24 Apr 2026 04:35:50 -0700 (PDT)
+Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-8b02ae5eaf1sm186134476d6.30.2026.04.24.04.35.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Apr 2026 04:35:49 -0700 (PDT)
+Date: Fri, 24 Apr 2026 07:35:47 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: "philmd@linaro.org" <philmd@linaro.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
+ "open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
+ "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>
+Subject: Re: [PATCH v5 09/18] hw/usb/hcd-ehci: Change descriptor addresses to
+ 64-bit with migration compatibility
+Message-ID: <aetVkymHe-Gy3vBk@x1.local>
+References: <20260424080508.53992-1-jamin_lin@aspeedtech.com>
+ <20260424080508.53992-10-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/16] target: Simplify env_archcpu(cpu_env(cpu))
- expression
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Mads Ynddal
- <mads@ynddal.dk>, qemu-arm@nongnu.org,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-References: <20260423170229.64655-1-philmd@linaro.org>
- <20260423170229.64655-2-philmd@linaro.org>
- <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <03119ad8-de87-4bb4-8f73-062de85e8d6d@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+In-Reply-To: <20260424080508.53992-10-jamin_lin@aspeedtech.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: eATQBIvWOlQh7iyTPyGyCJNKEyw6djNd711UwmjFfTw_1777030551
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,41 +133,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 24/4/26 00:26, Richard Henderson wrote:
-> On 4/24/26 03:02, Philippe Mathieu-Daudé wrote:
->> env_archcpu(cpu_env(CPUState)) expands to ArchCPU,
->> available via the ARCH_CPU() macro. Use the latter
->> to avoid using &env.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   target/arm/hvf/hvf.c       | 2 +-
->>   target/hexagon/translate.c | 2 +-
->>   2 files changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 5fc8f6bbbd9..2fb768048b8 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -2303,7 +2303,7 @@ static int hvf_handle_exception(CPUState *cpu, 
->> hv_vcpu_exit_exception_t *excp)
->>   static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
->>   {
->> -    ARMCPU *arm_cpu = env_archcpu(cpu_env(cpu));
->> +    ARMCPU *arm_cpu = ARM_CPU(cpu);
->>       int ret = 0;
-> 
-> ARM_CPU has an object_dynamic_cast_assert() inside; the env* converters 
-> do not.
-> You should be making a considered choice about this change, not just 
-> "simpler".
+On Fri, Apr 24, 2026 at 08:05:21AM +0000, Jamin Lin wrote:
+>  hw/usb/hcd-ehci.h   | 17 +++++++----
+>  hw/core/machine.c   |  5 +++-
+>  hw/usb/hcd-ehci.c   | 72 ++++++++++++++++++++++++++++++++-------------
+>  hw/usb/trace-events | 24 +++++++--------
+>  4 files changed, 78 insertions(+), 40 deletions(-)
 
-If not calling object_dynamic_cast_assert() is what we want here, then
-maybe we could add yet another QOM cast macro with explicit name,
-otherwise at least add a comment why we don't use the same pattern.
+I skimmed the migration relevant bits, it looks all fine now, thanks.
 
-Having to think about hidden knowledge of such performance penalty is
-not great from an API point of view. I'd expect most new developers to
-copy/paste working patterns without looking at macro expansion
-involvments, WDYT?
+-- 
+Peter Xu
+
 

@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A4AFB44A6
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 04:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E95DFB44A4
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 04:34:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wG8Cr-0000Gt-Qs; Fri, 24 Apr 2026 00:31:57 -0400
+	id 1wG8Ci-0007qA-EZ; Fri, 24 Apr 2026 00:31:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wG8Cl-00087p-CL
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 00:31:51 -0400
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ id 1wG8CB-0006yZ-Il
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 00:31:21 -0400
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wG8Cj-00030t-8p
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 00:31:50 -0400
-Received: by mail-ot1-x32b.google.com with SMTP id
- 46e09a7af769-7dcd9061b1aso3230550a34.2
- for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 21:31:48 -0700 (PDT)
+ id 1wG8C9-0002nX-82
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 00:31:15 -0400
+Received: by mail-oa1-x2c.google.com with SMTP id
+ 586e51a60fabf-415e568a7ecso3155419fac.0
+ for <qemu-arm@nongnu.org>; Thu, 23 Apr 2026 21:31:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777005107; x=1777609907; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777005071; x=1777609871; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3n7fQN+iJBwqx2ETIvTw92Xcf+8pXw422MS+4i6nNsM=;
- b=EkJa14i6pPUh2dl/Ka0LqHrkVMuN8yncHhPwRBqpm0sRccvpbS68HNgASK/GRKKt/a
- Z/UuZ+2oaH+4bJRad1a3sUFc6srbX3gmwg6DqCJBu2jUsJ5AT2vGovjZ99i6Y2cI8fAQ
- FK1v2qeW4uhqiSsOwj8GGMqowUC0jRNXAb9bl/QSS13DPx2dXubKp3UktgVSz13CIglt
- j2HOF2RmPjWYh6jotUqP8zfU4F5QScu2SWxVaFQRP04Tbcf0Pv7vIsiMwuNNoq+ew+WL
- S3k4KQBGI/sX+tR5+858FHaicvJetnWCkiNFql5SI4hw73wSGGuZBn+XUI7Z8rB5xExA
- MS9g==
+ bh=Kor/kiazYWS2SmrFhEuLicDn7WflikUuqZMwHNLbJMA=;
+ b=DwJr6clay0WTmoKxJvtWscQAuRr1UTqufWkFZrNeHeVO1KhR/DwBI8iC7dBpCV5diP
+ hKCnQxhXlC/aw+UDz12RY7hiwuPh4i6qmjnslMVXLzlwIsbftWN9aC45rjBn/VB/4ztP
+ JwYRgKj3JbHNWJyAwNd73WbNobNxMPiZ0CZZvj80aRV3h2tSi6pl5HP53+Hp38aEdDy8
+ Utm5PSB7ftLNQafDgagOolI0uXqwcZkpcSc1652lgYXNcoyhm+GgcFln8TuMbkORsK+3
+ taDHrzcaYE5+WiLCEmaXLNKmRqur/drrLP4CkdrX8PeaXtVTklh/jt2K92vDC5Lnw/CM
+ mMCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777005107; x=1777609907;
+ d=1e100.net; s=20251104; t=1777005071; x=1777609871;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=3n7fQN+iJBwqx2ETIvTw92Xcf+8pXw422MS+4i6nNsM=;
- b=KgbdVegV1sP8YQinJ6oHyea0TDIsRtX2HTjE7JLIdLUtsNtHDOv4tfZWxEH8JbK4XC
- KGUyp8n7I+0Myx/0JkIQDt1UL+TX36qs7AGn6kAvpQ6XISZukF3nVAHCJtUxHfZ84pVh
- Y0jrirCfn5ArEZlLeWjWzc3RpPCE7SzFZYi4h8OXQVvc/RFP8UScEPjp6H+i0zrdI3Dl
- /+0/UMS1Y0v9Hwol9jPfqMrSo9fWlrWdQPJCHifx87gugub0VYDd/lRUsB72dLw8vJy1
- 0nAtl9Avj6qiBp7YOP+xaq5iYgZd6WQ2/WFj03OZmavveKCqujmNnFeP8wCgnWRpHo+W
- psXQ==
-X-Gm-Message-State: AOJu0YzqDgMRWSfIl4vS/Ug2oYSTggtzVuAX1jQWWnUkfuO+PP/bTGGW
- xWM/jRIbFULHus0P+iW92RhP0XidskRiZxqcb2r4j1EGap70ytcWOCPTGZUFaYWw/5dopQSpgTq
- HR6L3hfg=
-X-Gm-Gg: AeBDiesMdtPP+7NQpVdUUxlZ+wF2FQGYxD1U8ksOowH33Kgpcmo0bS7y2CmuWi0gGd1
- t9sHJCAQI/ClQxIZLe/WF7jmd2dPh2QHy4y2bTEIGF8T/IiglyZMHp1d5EwfNrL3opO9c3B4bci
- LzMwE52k9wB0iGXRpAYodS+d6iGimr/5e0sMjOui1fQFcyxp9fGs6WXR2Z3sRmctlvh5VL34wrd
- ABdodG6CiOEnE/FeszCvNENL9KVVIZpl5tHQNmtcl7qO37yLHug/J4J7sLbpQwn7P5S5R0i2Xll
- kD+yGv04DTkE5FjYiWYQNmb+8OPhBoieGBq7uBGUBhRDJMZRvzMMRysO1OPx24xc7/uufY7PIS2
- egzRt5ugwK7zEGjORdK22HyoPSygHMPWswt62QsKkiJ0QHWPv4L/RtVRtQb3X5+r+e21sr+dLSY
- arOKcxd9HT/vvmbZn0xeihkN6n57OXqirQbIRNsHaZUsjLsK2ENrBhd/KeNtXX+0iO6I0d8Prn
-X-Received: by 2002:a05:6830:82cd:b0:7dc:d0e3:5bc1 with SMTP id
- 46e09a7af769-7dcd0e371efmr10508695a34.13.1777005106722; 
- Thu, 23 Apr 2026 21:31:46 -0700 (PDT)
+ bh=Kor/kiazYWS2SmrFhEuLicDn7WflikUuqZMwHNLbJMA=;
+ b=hDWDM7BPT3/ZXz/Gz022dbxfDpNL7er05zOWZNsXy2Z7RJLlwpquZLxpEY9kYwU0hc
+ c6KDZs5243gUdg5RO6TaAapRalyqY8CrQSHy8p3nruEJDFvf8I6tIELI1U1PTvL+n8OE
+ NbBUx6Lutyv+d3oCY5JUr1JPlkBFcPbvVvKi4gXESCkd/7gI7V27XAjc3CYDlxUNK+pW
+ 2KQOfxrVdmgT4HD38UmNOct5wqDNDgmfvWz8gZJ106XFB0oP03p7jfvbiO2ShXYw+iRB
+ hR8mRvxHb/12YUluGw3imgAD8u2YbirslVqdYP5x/pqktwnaN+1fLDUY5AcWLR/V4ZVS
+ RnFw==
+X-Gm-Message-State: AOJu0YyUeGIsGZ1o5Z+eEB6C8JMuRe5ZVkJc405tIOTHqbNJUeaR2hx6
+ SmNlpQ0r6eDP0kwsaQj+bunkjfwOcfzzQ5PhD+TrnF9viLAP/9qM7TdJcESPlG1xHIU=
+X-Gm-Gg: AeBDiesy55gkBSNGDC5QbMuQr4qiXkykLUCcb332N5GPziysJ/IoX1TFy3ME4+B6/Z+
+ yFRQSccmGqsP0zVKH7BWaVMYOlx14nTue96NZPjSi5xPImozp9aZaZ9E2KRqYQ31ZfTWUrO4X2J
+ gXug0Rr240h0AF+NUKrGAhGDzVMGYi0Df0uy2mcv33P6MOD8LXwwpvsTC+ZgdyL8bApmQ+Z1HC5
+ PUnMtBqmQZwZEGY5XEmswND3bH4fyoPhcMk/uHLuuOSqiFqE+tIkdJe9MfUXMFw5pKkP4AG14Hp
+ eY3Q0PiTf5i3GSqvYG0wr9Fbt/UTQ9DDvLbkdHNf0BELXjz6xwFZj1ujX63Lo6cX0AbKwBETG8X
+ F9tKk1G4y5bI6ewRcNB07+e+tWqwMs9M/ql6hx/ywhuS0gUfUvuYzrBY5JbvfJDRyRls7ytwfwv
+ LUMLbBR+101UyWcnA9nl5F/sbEByb1HrLJNZKmpZ2Mt6hLUKguaAn4XiRoYnBK+g==
+X-Received: by 2002:a05:6870:2010:b0:42c:1b45:e8ba with SMTP id
+ 586e51a60fabf-42c1b468af7mr10447591fac.33.1777005070878; 
+ Thu, 23 Apr 2026 21:31:10 -0700 (PDT)
 Received: from stoup.. ([172.58.183.19]) by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-42b9ac54ec5sm18880864fac.13.2026.04.23.21.31.44
+ 586e51a60fabf-42b9ac54ec5sm18880864fac.13.2026.04.23.21.31.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Apr 2026 21:31:46 -0700 (PDT)
+ Thu, 23 Apr 2026 21:31:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 20/40] fpu: Add conversions between float16 and float8
- formats
-Date: Fri, 24 Apr 2026 14:29:54 +1000
-Message-ID: <20260424043014.46305-21-richard.henderson@linaro.org>
+Subject: [PATCH v2 11/40] target/arm: Clear FPMR on ResetSVEState
+Date: Fri, 24 Apr 2026 14:29:45 +1000
+Message-ID: <20260424043014.46305-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260424043014.46305-1-richard.henderson@linaro.org>
 References: <20260424043014.46305-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,103 +98,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+FPMR is cleared when entering or exiting Streaming Mode.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/fpu/softfloat.h |  8 +++++++-
- fpu/softfloat.c         | 38 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+), 1 deletion(-)
+ target/arm/helper.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 6f86848b7e..70e25fa811 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -196,16 +196,22 @@ float128 uint128_to_float128(Int128, float_status *status);
- float8_e4m3 float4_e2m1_to_float8_e4m3(float4_e2m1, float_status *status);
- 
- bfloat16 float8_e4m3_to_bfloat16(float8_e4m3, int scale, float_status *status);
-+float16 float8_e4m3_to_float16(float8_e4m3, int scale, float_status *status);
- float8_e4m3 bfloat16_to_float8_e4m3(bfloat16, int scale,
-                                     bool sat, float_status *status);
-+float8_e4m3 float16_to_float8_e4m3(float16, int scale,
-+                                   bool sat, float_status *status);
- float8_e4m3 float32_to_float8_e4m3(float32, int scale,
-                                    bool sat, float_status *status);
- 
- bfloat16 float8_e5m2_to_bfloat16(float8_e5m2, int scale, float_status *status);
-+float16 float8_e5m2_to_float16(float8_e5m2, int scale, float_status *status);
- float8_e5m2 bfloat16_to_float8_e5m2(bfloat16, int scale,
-                                     bool sat, float_status *status);
-+float8_e5m2 float16_to_float8_e5m2(float16, int scale,
-+                                   bool sat, float_status *status);
- float8_e5m2 float32_to_float8_e5m2(float32, int scale,
--                                    bool sat, float_status *status);
-+                                   bool sat, float_status *status);
- 
- /*----------------------------------------------------------------------------
- | Software half-precision conversion routines.
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index bcec7d38c8..013b6e1ee2 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -2958,6 +2958,15 @@ float8_e4m3 float4_e2m1_to_float8_e4m3(float4_e2m1 a, float_status *s)
-     return float8_e4m3_round_pack_canonical(&p, s, false);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 06b5fbbe55..6ebd121050 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -4913,6 +4913,7 @@ static void arm_reset_sve_state(CPUARMState *env)
+     /* Recall that FFR is stored as pregs[16]. */
+     memset(env->vfp.pregs, 0, sizeof(env->vfp.pregs));
+     vfp_set_fpsr(env, 0x0800009f);
++    env->vfp.fpmr = 0;
  }
  
-+float16 float8_e4m3_to_float16(float8_e4m3 a, int scale, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float8_e4m3_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float16_round_pack_canonical(&p, s);
-+}
-+
- bfloat16 float8_e4m3_to_bfloat16(float8_e4m3 a, int scale, float_status *s)
- {
-     FloatParts64 p;
-@@ -2967,6 +2976,15 @@ bfloat16 float8_e4m3_to_bfloat16(float8_e4m3 a, int scale, float_status *s)
-     return bfloat16_round_pack_canonical(&p, s);
- }
- 
-+float16 float8_e5m2_to_float16(float8_e5m2 a, int scale, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float8_e5m2_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float16_round_pack_canonical(&p, s);
-+}
-+
- bfloat16 float8_e5m2_to_bfloat16(float8_e5m2 a, int scale, float_status *s)
- {
-     FloatParts64 p;
-@@ -2976,6 +2994,26 @@ bfloat16 float8_e5m2_to_bfloat16(float8_e5m2 a, int scale, float_status *s)
-     return bfloat16_round_pack_canonical(&p, s);
- }
- 
-+float8_e4m3 float16_to_float8_e4m3(float16 a, int scale,
-+                                   bool saturate, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float16_unpack_canonical(&p, a, s);
-+    parts_scalbn(&p, scale, s);
-+    return float8_e4m3_round_pack_canonical(&p, s, saturate);
-+}
-+
-+float8_e5m2 float16_to_float8_e5m2(float16 a, int scale,
-+                                   bool saturate, float_status *s)
-+{
-+    FloatParts64 p;
-+
-+    float16_unpack_canonical(&p, a, s);
-+    parts_float_to_e5m2(&p, s, scale, saturate);
-+    return float8_e5m2_round_pack_canonical(&p, s, saturate);
-+}
-+
- float32 float16_to_float32(float16 a, bool ieee, float_status *s)
- {
-     const FloatFmt *fmt16 = ieee ? &float16_params : &float16_params_ahp;
+ void aarch64_set_svcr(CPUARMState *env, uint64_t new, uint64_t mask)
 -- 
 2.43.0
 

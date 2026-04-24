@@ -4,120 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CD5DFE5209
-	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 11:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72C3CFED3CD
+	for <qemu-arm@archiver.kernel.org>; Fri, 24 Apr 2026 13:54:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGEpF-0000s9-TJ; Fri, 24 Apr 2026 07:36:01 -0400
+	id 1wGGzS-0004Bu-Ai; Fri, 24 Apr 2026 09:54:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wGEpE-0000rn-Sf
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 07:36:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wGEpD-0006IR-FY
- for qemu-arm@nongnu.org; Fri, 24 Apr 2026 07:36:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777030558;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zYlyk/FU8jAvtu3n9b+43GgXp9tSPuBcVYejaiINyT8=;
- b=H5BXmgAfo7sTnkPOaTfPp5NCDdrjlikmfisjk0SAHyKPN+w8/i1w1qr2DaFNL0knqbZyZ3
- /h4pnkRe6VCqo4GAoJsEs1jsCC60ZMhdiBV65gbXc799shx3vzvldw9C+wKE+4vrSC6J4J
- L8OySGxvXWI18esCOL6QuTOj849y7BI=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-414-8eaPLPHrPmCgIa1BtpFYFg-1; Fri, 24 Apr 2026 07:35:51 -0400
-X-MC-Unique: 8eaPLPHrPmCgIa1BtpFYFg-1
-X-Mimecast-MFC-AGG-ID: 8eaPLPHrPmCgIa1BtpFYFg_1777030551
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-8d5b5d607d1so1519041685a.3
- for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 04:35:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGGzP-00049r-0t
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 09:54:40 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGGzM-0002ru-DU
+ for qemu-arm@nongnu.org; Fri, 24 Apr 2026 09:54:38 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-488ba840146so70830855e9.1
+ for <qemu-arm@nongnu.org>; Fri, 24 Apr 2026 06:54:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777038873; x=1777643673; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Ty9h+ZYk6jAUeMMG5fjohOSnEAHIpxjQWLk+t2TduXA=;
+ b=Uu23wpniZUIJe1Siwg8pBCvKg54Uq8/LRn7l3stS8wefwP8cIx6TUkAJkIAnQt4VFm
+ C6ro5TVu3y2+kL04I34o3iWj2VxVzvBj4rEul6Yl0Cjh/G13jFqX/ZFoNUw/ODcDS8dl
+ 6QIgObFJCeRqucnV5ElAPBvCgoF7Y4W/OnXvywIOv2PSizllTesnfV5VT1+ZTyjgR8e/
+ 5KYU21/QnZTDf2c5nNGTuz+sSLlx/t7sCpj6Ers0JeeeZmaPnC9JzI7KJsBFirgStRLR
+ UXp+5qeywfeMQIAfpiZmhhpiKbE5Uc58OfseXtsDWgJUjaboZDLOn05123G1ZK2yZaz3
+ kR2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777030551; x=1777635351;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zYlyk/FU8jAvtu3n9b+43GgXp9tSPuBcVYejaiINyT8=;
- b=Y6/3dHViF6auvfve2zTZEttwxXl4LakoL3sr8QPfDIgT49KHoRtvKUfOptG+Slq5zf
- +pWhOnTnZVGmGIfEGi2tInjOsIkDBr4Waxyeo4rau1yDbR+Tw2gKaYLxg8YWkRljlOX3
- IIIjhXeBP0oM1pU2J6cCSCw+fLnXAfVpsyUX1nEj+QlLM26SIaejHz4E112dVB1zSj89
- PzWbC3spQZQy0wJMFNgsFCwo1EMcNprJCJMjExrRwFtlhkigayeD8OI2g/TyMdOeQTir
- 7fHNmm3nZvtlf6oZhY06QzUVjKvJZnXqBdJ6eNql09G3YVUrNTDmXJj0dYrkm19dqN+b
- KRpA==
+ d=1e100.net; s=20251104; t=1777038873; x=1777643673;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Ty9h+ZYk6jAUeMMG5fjohOSnEAHIpxjQWLk+t2TduXA=;
+ b=Opgf7n0w42mEO6tvEO+iddu9m+9zEzdnxkGLoNVnH8sytsSkVpyfVFVmAEG9yZhl3q
+ GMPeNeq+0IibXXhWM2JIqD4OgMfJsT85GB4FNsSWfOxS4arfx8wB9sSVYDlDBkAFtTCo
+ VEibWa35Z+A5d2vzxLlRUp1IwGlsxCAhDTL8+RRp6yGjPDco+xSXDJIF4yzuZJQcEc47
+ VqYHjyilgwK7DQ0omxw4lTFtqnD/Dal/r7UrLUoXhLc8u0SOiaxNvQkng06rwrpSLxEx
+ GPcXG+JpLws8v1tYzN0BqdLhVjjMtIBKIIJlbuhAKBqO+4+aFwyqx3MPLzB27bGesJLK
+ aLyw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9CREeAre+teSGIeEc5DQmsRwHKbZ6CN7AnUehWdG25TDE07jGBv56FbhIREE5M8QoI+6YnLZRiyA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyts+Z/CiWT5bk35aa1B0yBEwOfKZZuy0LFJy4Qv+ME5U9/K7xp
- c5oVGAYJowDIkaa8bZ+604ay6qgGKi7FZ9Ymd5ZLsgyWM/1laKZQG0u9ocN28RAIJAnAHt5wYeB
- 0w7NlBcGv+JjNgzJKYTd+2TnssIe51zu0AArIxq6YVuxdWKB7hWIjyg==
-X-Gm-Gg: AeBDietnNE13pdDID8g1CAOB+xNl9j5s63+rdw8YckNXMsQJUyq+UtXIUPZ+0HcObZ+
- rDQjIDnCs1/floPN+/4Yg6r/UJ+5bOTDV0lwzai0PjLzcwMQPWAdZxKfbbFEYe56Wm57CLs17r4
- z6xIGSOIawYxFZpA5RdjpMbK5fWLv1AtAk/MD8j+aPChaSwVdSLaG9hapaZxjY+lEULjUw/g/6C
- DBkGjJ4KYe1zRTGwrSxN43p+2zFN+ydTfjRpvVSqUWPJw+fxvh/vJey4UVPeBV2WNn0qf4RCmB+
- /o7Ou7xz7YfWJ4wi7Zo18Vj/btrpRhdl/aq6u2FINPnWFfsL6xMZdLln+FSIS5OqxInZQxiwDDr
- iKCqh+BFUomOLHUpgT4z5sx3xqhh3t4eSN07z4cSKery6LDCvCOVf+85vUw==
-X-Received: by 2002:a05:620a:319c:b0:8ee:18e7:9406 with SMTP id
- af79cd13be357-8ee18f6e17amr2519714185a.29.1777030550994; 
- Fri, 24 Apr 2026 04:35:50 -0700 (PDT)
-X-Received: by 2002:a05:620a:319c:b0:8ee:18e7:9406 with SMTP id
- af79cd13be357-8ee18f6e17amr2519708985a.29.1777030550418; 
- Fri, 24 Apr 2026 04:35:50 -0700 (PDT)
-Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8b02ae5eaf1sm186134476d6.30.2026.04.24.04.35.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Apr 2026 04:35:49 -0700 (PDT)
-Date: Fri, 24 Apr 2026 07:35:47 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>
-Cc: "philmd@linaro.org" <philmd@linaro.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:sPAPR pseries" <qemu-ppc@nongnu.org>,
- "open list:S390 Virtio-ccw" <qemu-s390x@nongnu.org>,
- Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
- "flwu@google.com" <flwu@google.com>,
- "nabihestefan@google.com" <nabihestefan@google.com>
-Subject: Re: [PATCH v5 09/18] hw/usb/hcd-ehci: Change descriptor addresses to
- 64-bit with migration compatibility
-Message-ID: <aetVkymHe-Gy3vBk@x1.local>
-References: <20260424080508.53992-1-jamin_lin@aspeedtech.com>
- <20260424080508.53992-10-jamin_lin@aspeedtech.com>
+ AFNElJ/9+fNHlTYqBAqhunuXhgnOjYVjp6fTv/GMPNcXNhXaeLnJHXYswCNH4eYwk6Bi+BFCMlZeTmuFwg==@nongnu.org
+X-Gm-Message-State: AOJu0YxzOBTcmZ9vze/zzHiku3LFOgziVZ/38IU2e1uIAK0vjKNQukwx
+ Rsynx16R/P7EetsMq3+SkUDwrPBNP7otAuszCMM+QPgx4ySym+UY4lmgRsNvFOoOSS0=
+X-Gm-Gg: AeBDieuUH/7CLrz6oAaH930S0v4+Vj1ye7YHDmitseery8QGYfwUs2xr1WvYe73wNJ0
+ 2zWPFD7Taq+qaqQDtkb6t67neteczRKq7WRPAYfF6arfC45Hsn8Aqo/Eq5ADYYWEpSeu0dAOg9u
+ 30RZion8JvmuwwxYdoFBZWSo8Uh8/zDta+ti2DgtDptcja9yOrvXMJQT/5abGkyNyPMLAkSjrxa
+ 7dpoIx/kVXdN5FEjckGUrULSxisB9WOPxC/v0g7K6RdGOV/ax+SdYM1xD7rDmiFf6Yx3jD9Lgyu
+ GDlV5zz5XizhEdwKgbXBSS/i7rb7uhDekgaISJlBaYrAMqWMq5r5vvz6TQ6TFZSdi/bJqSd22DC
+ PRBub+Yvr+eKsFzSy2b1SCHI1WCjuW2vFhusvQici9ovLVj4OKfl6MP2UM0DPt5bOXxfAZ/KyqJ
+ /4feu8ANt8OEZQhGrggM2pc/0YpvPG/pAiQQOL1FHzoimbayAc1osHCYMk0BCWTBEM6DeSdTyxx
+ sAg
+X-Received: by 2002:a05:600c:890b:b0:488:a977:8d6 with SMTP id
+ 5b1f17b1804b1-488fb775a35mr336928405e9.19.1777038872614; 
+ Fri, 24 Apr 2026 06:54:32 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-488fc177dafsm719952305e9.4.2026.04.24.06.54.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 24 Apr 2026 06:54:31 -0700 (PDT)
+Message-ID: <2bf9724b-4b29-49b7-ac97-f7130056583f@linaro.org>
+Date: Fri, 24 Apr 2026 15:54:30 +0200
 MIME-Version: 1.0
-In-Reply-To: <20260424080508.53992-10-jamin_lin@aspeedtech.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eATQBIvWOlQh7iyTPyGyCJNKEyw6djNd711UwmjFfTw_1777030551
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/16] tests/functional/test_aarch64_kvm: Stop dumping
+ kernel ringbuf
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Roman Bolshakov <rbolshakov@ddn.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, Mads Ynddal
+ <mads@ynddal.dk>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>
+References: <20260423170229.64655-1-philmd@linaro.org>
+ <20260423170229.64655-5-philmd@linaro.org>
+ <4072248e-a815-4868-80bb-a241496ffc78@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <4072248e-a815-4868-80bb-a241496ffc78@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,16 +112,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Apr 24, 2026 at 08:05:21AM +0000, Jamin Lin wrote:
->  hw/usb/hcd-ehci.h   | 17 +++++++----
->  hw/core/machine.c   |  5 +++-
->  hw/usb/hcd-ehci.c   | 72 ++++++++++++++++++++++++++++++++-------------
->  hw/usb/trace-events | 24 +++++++--------
->  4 files changed, 78 insertions(+), 40 deletions(-)
+On 24/4/26 09:39, Thomas Huth wrote:
+> On 23/04/2026 19.02, Philippe Mathieu-Daudé wrote:
+>> Avoid the following kernel message to interfere our stdout parsing:
+>>
+>>    platform gpio-keys: deferred probe pending: gpio-keys: failed to 
+>> get gpio
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   tests/functional/aarch64/test_kvm.py | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/tests/functional/aarch64/test_kvm.py b/tests/functional/ 
+>> aarch64/test_kvm.py
+>> index 7545f5ed554..a03a6134626 100755
+>> --- a/tests/functional/aarch64/test_kvm.py
+>> +++ b/tests/functional/aarch64/test_kvm.py
+>> @@ -48,6 +48,7 @@ def _launch_guest(self, kvm_mode="nvhe"):
+>>           self.wait_for_console_pattern('buildroot login:')
+>>           ec_and_wait(self, 'root', '#')
+>> +        ec_and_wait(self, 'dmesg -n 1', '#')
+>>           ec_and_wait(self, f"export PS1='{self.PS1}'", self.OK_CMD)
+> 
+> In other tests, we are adding "quiet" to the kernel_command_line to 
+> avoid this problem - that way the kernel messages also cannot interfere 
+> with the login prompt. Could you check whether that works here, too? If 
+> so, I think I'd rather prefer that solution instead.
 
-I skimmed the migration relevant bits, it looks all fine now, thanks.
+I tried:
 
--- 
-Peter Xu
+-- >8 --
+          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+-                               f"console=ttyAMA0 kvm-arm.mode={kvm_mode}")
++                               f" quiet console=ttyAMA0 
+kvm-arm.mode={kvm_mode}")
 
+---
+
+but it didn't help. Anyway no worries, I'll figure that later. Dropping
+this patch for now.
 

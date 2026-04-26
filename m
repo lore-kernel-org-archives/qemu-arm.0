@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B8CEFF885D
-	for <qemu-arm@archiver.kernel.org>; Sun, 26 Apr 2026 13:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46174FF8863
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Apr 2026 13:48:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGzkJ-0000Vr-7D; Sun, 26 Apr 2026 09:42:03 -0400
+	id 1wGzjG-0007BO-B7; Sun, 26 Apr 2026 09:40:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wGzjp-0008Nf-5N
- for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:41:34 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+ id 1wGzjC-00076Y-7a
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:40:54 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wGzjn-0000FR-73
- for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:41:32 -0400
-Received: by mail-pg1-x534.google.com with SMTP id
- 41be03b00d2f7-c76bde70ec9so3669840a12.2
- for <qemu-arm@nongnu.org>; Sun, 26 Apr 2026 06:41:30 -0700 (PDT)
+ id 1wGzj9-0008RH-Ix
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:40:53 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2addb31945aso59549935ad.1
+ for <qemu-arm@nongnu.org>; Sun, 26 Apr 2026 06:40:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777210890; x=1777815690; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777210850; x=1777815650; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iVbA8u7xaM52Ozcb/NCd3ngtR9jQDG2r+JFNdlIlX4Y=;
- b=Kf2WVgWnDknlk+EuTQPl14r+k8luLcC5M2GZPb1jZB/3sZIyfrNip1I+ywI6Sz4X45
- Fv3xwGJ1AfYyo8QhBJlcTwAqoYtNWUx2jEzWR9b+hT6H6VDw93t4gXAv+qJKwqD+YzxP
- lxqHg4TPZha3e1jZ+gpIob5/L80SyL3QHJW7ryPu7BO/S4uSzNClWGeWhvEE04IBr1R1
- i6vzLjEizXXcItkepFNXcF7IiWWHbIuGAiLiWNqdBUa75afZWkiU8jCQCr/CKgqT/iGS
- OrLQNkEATnRk8KChKfn6ci2kz/o1SZZe65o1mHek+l5yswapPaHSTTTcyD+b327geRCD
- 4rCw==
+ bh=Q2IzZbTZBi1/HYn+Kd6HNy8yKoIRF/IKgPHtP/RDOts=;
+ b=iFxjp62aSy8WrjbqR6WdVEaatpL0fR3hY6zRff8fWrYnmca7BjZaHmIt+ctY3EmISq
+ t/KsgfVDTXw2tqervA4dJoBSAgn4j0du0Hsj3gmrhvtOBk/CFFSn0B9VHFeIgVaMLMXY
+ r8XA1EOcJPIRMO+Iahu5MlETqcocU76HVwPR6wb+8PbUhJDrds2NOa/sDDlqcCqbfI9/
+ Wq6QnignvH7TXx56M9SpfHdkxS2Ocs3kSwhanPSrL6F+tukwTGYk0bP1k4K94RbZwCW5
+ VBhHy0QmNi/B+gBOWD23e9baRy3OUGjAPNaoEk09ITItqdHPImdyJoz+Jb0O8WoPdsVg
+ tK8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777210890; x=1777815690;
+ d=1e100.net; s=20251104; t=1777210850; x=1777815650;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=iVbA8u7xaM52Ozcb/NCd3ngtR9jQDG2r+JFNdlIlX4Y=;
- b=YXpUBUXTNIo/q9CH9zXG/koFV7gJaIclzeZm1aBj66JzykY51WHqPySy9zE1OnRvTj
- 1EejUIuzWUuMrwXaF3NyPgX4sRBFW2jMtzcIBnDMUCCXOY4pzUqT52A1fc1gPns4qrvl
- giTE0Ncm/9yDte2wkDFIt9S/mAVZ0jcBtTrFu/xsbb6qugYCKiJJ5dymHRw0tSy8t6Zz
- f4LZdQmXJbI3eeuWFMUiCBOGZSKKN6erNGy4QqppT/BHQO5IiB3G6g92VED9YWtXjb+s
- uIAvLCfifcFCz+HfKY7Gj1Nyc5Yt/xHkzTaC0+GlMEUETdb8TUC1lRHw8f7Tf9XgleM4
- DOcg==
-X-Gm-Message-State: AOJu0YyhfUMkBoOTwInMQt3dHSTxyK3pNDvGQBKbraozvFfuCnIcwNHl
- raJ7ZpknIFyq9L02Bt2wTadAHP5RfdwbtIJ6m8RJGB+99SrJNFHf1e54zJG+g1iHTs0=
-X-Gm-Gg: AeBDievUgi89sLTu/jUObHgA3eN6g0S4YkoFUEvSD6BDIk98OkYTTeeGAN70mstWyT4
- 7pNPR9e1DtOCIEqrrdUp77YrSi4+Lh6KXV+9N4lZlV8jeCsizYQ4wqvRxHsz4Tne1aXXk+XoGHJ
- hyyW8jyfEpSYaQcyQR8o/Uz+IqdzA6abtkQKAYcDX+CmLY4qghqd6Ehv90PWvrzytNU0QynyoAZ
- 4+WcvVYjyPNBeMxYYDs+3DcZyLMvafLBbyUxB9LBcf5hGYMP2ofDO0znAK4BqFBlJkwibviiSCt
- 9EFY4gMFEaq8VSP/SD1OmxSLrvoJ31GvVDQxdApFGw44jfwq5ocvG4YPswwG/mskt8Y4Rk58O2D
- s41pemEMu+QH76J4EKRgEWUqyQnNpKjNlEaiGeDoF96CM6nM9S0jtuF2RmtJ9EPGqUE8sTRL141
- fF6ROwphU1Q2VfrO4FQicnNJJHGXZQpIJobGiFSv8k
-X-Received: by 2002:a17:903:390b:b0:2b7:ab49:3c8c with SMTP id
- d9443c01a7336-2b7ab493dffmr141444635ad.7.1777210889771; 
- Sun, 26 Apr 2026 06:41:29 -0700 (PDT)
+ bh=Q2IzZbTZBi1/HYn+Kd6HNy8yKoIRF/IKgPHtP/RDOts=;
+ b=FTzrHMwH4oQ/SCOwogqleUkaqpEZbFVGORg2Qf5KIpiZctmkknHw4J6L2F4VGx3HVr
+ uPa6BNO5tthbuuzWQaO9tyt9g1naMcDvC6J8PiJl+cYbcKY8FG1AQtouNtpVGefZejvZ
+ a6PGz2PXr8ieh2x32Lc0FVb8IIJ/T2W/dDKfpWDNWpbt1kRem0Poz+5truyyiijA+SUH
+ hSCcJEmAqKqtqNu0kUHqBNizjkwRxdb4iSLCoScmlw5Fc/tHy6gx7xP3ZBoI5jVLLkhZ
+ N8/2ddVUuDJAeqenN8nCZAv+7kPYkSO1L8yGOICFVjnW33SBtqdfBIO+EwxQsSIk+Q2Y
+ rS8g==
+X-Gm-Message-State: AOJu0Yyi5WcZVccu6sVimJrox6F6jy2Wf7jLegFxXfldpmE20FFbrwMM
+ idKdbMKRGKf8cPN3Cyqf6XRKuW1uYmOU7WtW4Vt8L3izlRD5Yysr463OZPqwZ8ADCdPoHEgIM2D
+ +SLIrFkU=
+X-Gm-Gg: AeBDietgXyZX2/hzQupzRgMIqfgQH7O9kwc5Y79Ei1f3atxgacgRyPhwZACGY5WQHST
+ rlBHFrMc+0AtGlxi4CbYRcc6wNjCAak3et7wAGR2LUqWfyT7s/yM/8Yc1JefObUj/pRauWHxcME
+ vxMoBkEEowS7wI5GkB2VSA7I1kBkUYT00kA+Q89zCx95ib60Lost3hZEapa1iL9Wih4UADbJjc2
+ rF6ScBY28vvNGRc/H/m/CS8vKUaT7qXPyRvCSdH6a4YTSVPXN9OUPqdUlfPbXQCJHVuf6y8z2MW
+ 0S0r+RkzspimAxvsF1XgraeVXUP8558VmdRvXE5XiYY8gUQBzQrCHr6kwuUUrEiZb3KpbNgdQtn
+ s5mb1HgGvKccXqzRYTxmtHgJGLueT2khB7pEpF4A6lxys6G1B5yNXJLzm3RQ2tXda/MY6tPnWsR
+ lWPJTZMtRyLovP5chOFrFDcFVfuDTIk1EIIZ1j0oInCAzWG8V4BF8=
+X-Received: by 2002:a17:903:1b45:b0:2b2:4d36:7aa with SMTP id
+ d9443c01a7336-2b5f9fb36ccmr431356495ad.35.1777210850140; 
+ Sun, 26 Apr 2026 06:40:50 -0700 (PDT)
 Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5fab30f29sm277940375ad.68.2026.04.26.06.41.27
+ d9443c01a7336-2b5fab30f29sm277940375ad.68.2026.04.26.06.40.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Apr 2026 06:41:29 -0700 (PDT)
+ Sun, 26 Apr 2026 06:40:49 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org
-Subject: [PATCH 31/84] fpu: Constify frac{64,128,256}_* inputs
-Date: Sun, 26 Apr 2026 23:39:08 +1000
-Message-ID: <20260426134002.865628-32-richard.henderson@linaro.org>
+Subject: [PATCH 16/84] fpu: Drop parts_sqrt
+Date: Sun, 26 Apr 2026 23:38:53 +1000
+Message-ID: <20260426134002.865628-17-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260426134002.865628-1-richard.henderson@linaro.org>
 References: <20260426134002.865628-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x534.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,196 +100,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Use parts{64,128}_sqrt at each call site.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- fpu/softfloat.c | 53 +++++++++++++++++++++++++++++--------------------
- 1 file changed, 31 insertions(+), 22 deletions(-)
+ fpu/softfloat.c | 20 +++++++-------------
+ 1 file changed, 7 insertions(+), 13 deletions(-)
 
 diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index e462fb7d74..6cca31af30 100644
+index 91d8e48ce4..0a6bc6d580 100644
 --- a/fpu/softfloat.c
 +++ b/fpu/softfloat.c
-@@ -774,12 +774,14 @@ static float128 QEMU_FLATTEN float128_pack_raw(const FloatParts128 *p)
-  * Helper functions for softfloat-parts.c.inc, per-size operations.
-  */
+@@ -779,12 +779,6 @@ static float128 QEMU_FLATTEN float128_pack_raw(const FloatParts128 *p)
+                   FloatParts128 *: parts128_##NAME, \
+                   FloatParts256 *: parts256_##NAME)
  
--static bool frac64_add(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
-+static bool frac64_add(FloatParts64 *r,
-+                       const FloatParts64 *a, const FloatParts64 *b)
- {
-     return uadd64_overflow(a->frac, b->frac, &r->frac);
+-static void parts64_sqrt(FloatParts64 *a, float_status *s, const FloatFmt *f);
+-static void parts128_sqrt(FloatParts128 *a, float_status *s, const FloatFmt *f);
+-
+-#define parts_sqrt(A, S, F) \
+-    PARTS_GENERIC_64_128(sqrt, A)(A, S, F)
+-
+ static bool parts64_round_to_int_normal(FloatParts64 *a, FloatRoundMode rm,
+                                         int scale, int frac_size);
+ static bool parts128_round_to_int_normal(FloatParts128 *a, FloatRoundMode r,
+@@ -4757,7 +4751,7 @@ float16 QEMU_FLATTEN float16_sqrt(float16 a, float_status *status)
+     FloatParts64 p;
+ 
+     float16_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &float16_params);
++    parts64_sqrt(&p, status, &float16_params);
+     return float16_round_pack_canonical(&p, status);
  }
  
--static bool frac128_add(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-+static bool frac128_add(FloatParts128 *r,
-+                        const FloatParts128 *a, const FloatParts128 *b)
- {
-     bool c = 0;
-     r->frac_lo = uadd64_carry(a->frac_lo, b->frac_lo, &c);
-@@ -787,7 +789,8 @@ static bool frac128_add(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-     return c;
+@@ -4767,7 +4761,7 @@ soft_f32_sqrt(float32 a, float_status *status)
+     FloatParts64 p;
+ 
+     float32_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &float32_params);
++    parts64_sqrt(&p, status, &float32_params);
+     return float32_round_pack_canonical(&p, status);
  }
  
--static bool frac256_add(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
-+static bool frac256_add(FloatParts256 *r,
-+                        const FloatParts256 *a, const FloatParts256 *b)
- {
-     bool c = 0;
-     r->frac_lo = uadd64_carry(a->frac_lo, b->frac_lo, &c);
-@@ -797,12 +800,12 @@ static bool frac256_add(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
-     return c;
+@@ -4777,7 +4771,7 @@ soft_f64_sqrt(float64 a, float_status *status)
+     FloatParts64 p;
+ 
+     float64_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &float64_params);
++    parts64_sqrt(&p, status, &float64_params);
+     return float64_round_pack_canonical(&p, status);
  }
  
--static bool frac64_addi(FloatParts64 *r, FloatParts64 *a, uint64_t c)
-+static bool frac64_addi(FloatParts64 *r, const FloatParts64 *a, uint64_t c)
- {
-     return uadd64_overflow(a->frac, c, &r->frac);
+@@ -4840,7 +4834,7 @@ float64 float64r32_sqrt(float64 a, float_status *status)
+     FloatParts64 p;
+ 
+     float64_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &float64_params);
++    parts64_sqrt(&p, status, &float64_params);
+     return float64r32_round_pack_canonical(&p, status);
  }
  
--static bool frac128_addi(FloatParts128 *r, FloatParts128 *a, uint64_t c)
-+static bool frac128_addi(FloatParts128 *r, const FloatParts128 *a, uint64_t c)
- {
-     c = uadd64_overflow(a->frac_lo, c, &r->frac_lo);
-     return uadd64_overflow(a->frac_hi, c, &r->frac_hi);
-@@ -818,14 +821,14 @@ static void frac128_allones(FloatParts128 *a)
-     a->frac_hi = a->frac_lo = -1;
+@@ -4849,7 +4843,7 @@ bfloat16 QEMU_FLATTEN bfloat16_sqrt(bfloat16 a, float_status *status)
+     FloatParts64 p;
+ 
+     bfloat16_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &bfloat16_params);
++    parts64_sqrt(&p, status, &bfloat16_params);
+     return bfloat16_round_pack_canonical(&p, status);
  }
  
--static FloatRelation frac64_cmp(FloatParts64 *a, FloatParts64 *b)
-+static FloatRelation frac64_cmp(const FloatParts64 *a, const FloatParts64 *b)
- {
-     return (a->frac == b->frac ? float_relation_equal
-             : a->frac < b->frac ? float_relation_less
-             : float_relation_greater);
+@@ -4858,7 +4852,7 @@ float128 QEMU_FLATTEN float128_sqrt(float128 a, float_status *status)
+     FloatParts128 p;
+ 
+     float128_unpack_canonical(&p, a, status);
+-    parts_sqrt(&p, status, &float128_params);
++    parts128_sqrt(&p, status, &float128_params);
+     return float128_round_pack_canonical(&p, status);
  }
  
--static FloatRelation frac128_cmp(FloatParts128 *a, FloatParts128 *b)
-+static FloatRelation frac128_cmp(const FloatParts128 *a, const FloatParts128 *b)
- {
-     uint64_t ta = a->frac_hi, tb = b->frac_hi;
-     if (ta == tb) {
-@@ -847,7 +850,7 @@ static void frac128_clear(FloatParts128 *a)
-     a->frac_hi = a->frac_lo = 0;
+@@ -4869,7 +4863,7 @@ floatx80 floatx80_sqrt(floatx80 a, float_status *s)
+     if (!floatx80_unpack_canonical(&p, a, s)) {
+         return floatx80_default_nan(s);
+     }
+-    parts_sqrt(&p, s, &floatx80_params[s->floatx80_rounding_precision]);
++    parts128_sqrt(&p, s, &floatx80_params[s->floatx80_rounding_precision]);
+     return floatx80_round_pack_canonical(&p, s);
  }
  
--static bool frac64_div(FloatParts64 *a, FloatParts64 *b)
-+static bool frac64_div(FloatParts64 *a, const FloatParts64 *b)
- {
-     uint64_t n1, n0, r, q;
-     bool ret;
-@@ -879,7 +882,7 @@ static bool frac64_div(FloatParts64 *a, FloatParts64 *b)
-     return ret;
- }
- 
--static bool frac128_div(FloatParts128 *a, FloatParts128 *b)
-+static bool frac128_div(FloatParts128 *a, const FloatParts128 *b)
- {
-     uint64_t q0, q1, a0, a1, b0, b1;
-     uint64_t r0, r1, r2, r3, t0, t1, t2, t3;
-@@ -926,22 +929,24 @@ static bool frac128_div(FloatParts128 *a, FloatParts128 *b)
-     return ret;
- }
- 
--static bool frac64_eqz(FloatParts64 *a)
-+static bool frac64_eqz(const FloatParts64 *a)
- {
-     return a->frac == 0;
- }
- 
--static bool frac128_eqz(FloatParts128 *a)
-+static bool frac128_eqz(const FloatParts128 *a)
- {
-     return (a->frac_hi | a->frac_lo) == 0;
- }
- 
--static void frac64_mulw(FloatParts128 *r, FloatParts64 *a, FloatParts64 *b)
-+static void frac64_mulw(FloatParts128 *r,
-+                        const FloatParts64 *a, const FloatParts64 *b)
- {
-     mulu64(&r->frac_lo, &r->frac_hi, a->frac, b->frac);
- }
- 
--static void frac128_mulw(FloatParts256 *r, FloatParts128 *a, FloatParts128 *b)
-+static void frac128_mulw(FloatParts256 *r,
-+                         const FloatParts128 *a, const FloatParts128 *b)
- {
-     mul128To256(a->frac_hi, a->frac_lo, b->frac_hi, b->frac_lo,
-                 &r->frac_hi, &r->frac_hm, &r->frac_lm, &r->frac_lo);
-@@ -1041,7 +1046,8 @@ static int frac256_normalize(FloatParts256 *a)
-     return ret;
- }
- 
--static void frac64_modrem(FloatParts64 *a, FloatParts64 *b, uint64_t *mod_quot)
-+static void frac64_modrem(FloatParts64 *a, const FloatParts64 *b,
-+                          uint64_t *mod_quot)
- {
-     uint64_t a0, a1, b0, t0, t1, q, quot;
-     int exp_diff = a->exp - b->exp;
-@@ -1124,7 +1130,7 @@ static void frac64_modrem(FloatParts64 *a, FloatParts64 *b, uint64_t *mod_quot)
-     a->frac = a0 | (a1 != 0);
- }
- 
--static void frac128_modrem(FloatParts128 *a, FloatParts128 *b,
-+static void frac128_modrem(FloatParts128 *a, const FloatParts128 *b,
-                            uint64_t *mod_quot)
- {
-     uint64_t a0, a1, a2, b0, b1, t0, t1, t2, q, quot;
-@@ -1353,12 +1359,14 @@ static void frac256_shrjam(FloatParts256 *a, int c)
-     a->frac_hi = a0;
- }
- 
--static bool frac64_sub(FloatParts64 *r, FloatParts64 *a, FloatParts64 *b)
-+static bool frac64_sub(FloatParts64 *r,
-+                       const FloatParts64 *a, const FloatParts64 *b)
- {
-     return usub64_overflow(a->frac, b->frac, &r->frac);
- }
- 
--static bool frac128_sub(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-+static bool frac128_sub(FloatParts128 *r,
-+                        const FloatParts128 *a, const FloatParts128 *b)
- {
-     bool c = 0;
-     r->frac_lo = usub64_borrow(a->frac_lo, b->frac_lo, &c);
-@@ -1366,7 +1374,8 @@ static bool frac128_sub(FloatParts128 *r, FloatParts128 *a, FloatParts128 *b)
-     return c;
- }
- 
--static bool frac256_sub(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
-+static bool frac256_sub(FloatParts256 *r,
-+                        const FloatParts256 *a, const FloatParts256 *b)
- {
-     bool c = 0;
-     r->frac_lo = usub64_borrow(a->frac_lo, b->frac_lo, &c);
-@@ -1376,24 +1385,24 @@ static bool frac256_sub(FloatParts256 *r, FloatParts256 *a, FloatParts256 *b)
-     return c;
- }
- 
--static void frac64_truncjam(FloatParts64 *r, FloatParts128 *a)
-+static void frac64_truncjam(FloatParts64 *r, const FloatParts128 *a)
- {
-     r->frac = a->frac_hi | (a->frac_lo != 0);
- }
- 
--static void frac128_truncjam(FloatParts128 *r, FloatParts256 *a)
-+static void frac128_truncjam(FloatParts128 *r, const FloatParts256 *a)
- {
-     r->frac_hi = a->frac_hi;
-     r->frac_lo = a->frac_hm | ((a->frac_lm | a->frac_lo) != 0);
- }
- 
--static void frac64_widen(FloatParts128 *r, FloatParts64 *a)
-+static void frac64_widen(FloatParts128 *r, const FloatParts64 *a)
- {
-     r->frac_hi = a->frac;
-     r->frac_lo = 0;
- }
- 
--static void frac128_widen(FloatParts256 *r, FloatParts128 *a)
-+static void frac128_widen(FloatParts256 *r, const FloatParts128 *a)
- {
-     r->frac_hi = a->frac_hi;
-     r->frac_hm = a->frac_lo;
 -- 
 2.43.0
 

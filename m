@@ -4,94 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC31FF885C
-	for <qemu-arm@archiver.kernel.org>; Sat, 25 Apr 2026 10:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A94AFF885D
+	for <qemu-arm@archiver.kernel.org>; Sun, 26 Apr 2026 13:40:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGZvX-0001Te-SU; Sat, 25 Apr 2026 06:07:55 -0400
+	id 1wGziq-0006uH-QX; Sun, 26 Apr 2026 09:40:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGZvN-0001Sk-Rz
- for qemu-arm@nongnu.org; Sat, 25 Apr 2026 06:07:46 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wGziX-0006iQ-Ni
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:40:14 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wGZvJ-0006KX-O9
- for qemu-arm@nongnu.org; Sat, 25 Apr 2026 06:07:42 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4891b0786beso57714905e9.1
- for <qemu-arm@nongnu.org>; Sat, 25 Apr 2026 03:07:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wGziV-0008DG-DC
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:40:12 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-c76c067bc51so3579500a12.0
+ for <qemu-arm@nongnu.org>; Sun, 26 Apr 2026 06:40:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777111657; x=1777716457; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ftWR5yxI/cTgKcnDYnZASKJgqwKT+6x8D5x68NmmD4s=;
- b=fEY/vxCOKReT/ICgFuIMsXuC8ruCWjV1LZB354Y5NeAFrHjnOSgfL+1oZYkS/5VKqA
- q5spHCJ0ktgkj+TqG1jyWED15oNKojvyLkfqEPJvuG+WGIEIeXUYi0bb+w8UJs6sDaX2
- Fv6quuKyLUnhsZFQf5lkLsot/SjSSt1v7nz4dUoT9P+s6ZMH1/VnMWBHav+UxXU1A+qu
- a9SNg1W3Zfa22YXkJ18oZu4JzjvpjBtJX5EV/R4zWfFSY0hiPags5LAAuR/KJjbRJBrA
- 3HUoLju6uh9hB9c+ZQ7mnxvw/2t1IvZcvluENBBBfzJgHwoS6Nhdd2kaEX4PS+fj701I
- G3UA==
+ d=linaro.org; s=google; t=1777210808; x=1777815608; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=FXTxN+J9no8re62AJqbCq+vPW8iZVDA6DVJLTKCpZGc=;
+ b=MLUopAK+BGPrqHaPsR3ptKHIXE4wS7ydSdaQ0NwAveONKmGEbxuDWE3Dq4qO3sw99j
+ Rwh4Doiyaljh4WKUVuHyF4Vjo/kwKwQyC0NwtxPYdwK53zJAsUPDDZJl94xp0ZLV5ItA
+ UQWy07J85QEMsviuuDTYGde7E8DkXKzdPhCCuSE0Pa2Zg74gQkngnG8/BeVVoMi8o1Ln
+ tVTwAz5d/ItdqoTEGkUXZpiwptskSbcCMZVDGnWbzwFdRxlRYqBqLBjShQoaHRzATYmf
+ pAt5HVAd3aFMQTvNCeFk1IVNXkIr0okU8dOTc+eIN/xBkG8Bfj3YUSsXz/R2UOurGRr/
+ ZyxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777111657; x=1777716457;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ftWR5yxI/cTgKcnDYnZASKJgqwKT+6x8D5x68NmmD4s=;
- b=Amj8OshgSI6DNXCsJABrRlzwNW22OEGeDtKPDK9c2/nqSVMmMshYQTlxITFyIXkamO
- j7U8Zwdi1RaK1R/aBunyVxBy3sDYYvgV8axLf/c0o72GyM8BFTl0Tzb8qALqGQxndwBP
- Y+aeteqByFjsjQ4SCIjSFXX0fjAGNv4PK5MkdbYWOxAHk7lStG3RELwoOpSTAELjAeO2
- KCbCmRow7au+K3JbFsRcE7LUg9pgmzMCksPdxDRK/pXwfL7tPeHt/olL/y3gpnUzASLe
- VzFD9qJUey1lxRFFuovNnPSHMgxqS6OYplI/7PaOZVBU9e+VFNFdn7cGTGawUb+xCF0+
- scOQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9nUSsMq8UhcUUEPSrZfGS3eZJbUuFlSTPE1QJCTas3/2lJLc7vzeRP+5WQpud7Jr7PrOdqDhwazg==@nongnu.org
-X-Gm-Message-State: AOJu0YwKDvOS9IGECnNF9ecR8/MWTr/cPprVIfagos/KOUw0wx/yL6ep
- kGUZVYpKu4OpzJurFxKY7hGvAPrLNunzUnnV33AD5TBrhQOEJoHsV4v52V+fbm8REOI=
-X-Gm-Gg: AeBDieu5fdJzSARnqnoFJSJRQJrc4n5mrVzAE5jQqxb44RogU6osPnCycUeU39Q9aEw
- kiukiMfgRGI3qVzqiFo+epnbKpVDow8SMMSSyxai//xoVPMHA7Nvl3EChE+BU/UUsq39fBc4+qk
- 5sRGc5j1dxMcF0Fv0eDPDpR6HRsT/2CsZ0UgrykVLrYjwnu8TMRBK/IHMwL1OJ2GQXrxjEemGRo
- kMLqdFPa5HS3VkxQleQrdQZr57TvSoPmpDay9kECx5lTL1MVuSnbwv4zr8I3emhNT5clhQPt5Pp
- T/pjhs/8YG+u5QaYpPCFIPl29LruBCZGu6BBu9rx8SutDSqa+6PAk6H3Uyz+jPHsB0tdiuI2iYy
- 8tA01RPcuyqKW4Ug5WwOUs76dlo5395qHS2J9nMFsLdLJuMDoqB87gWlnQzzyEyewKLMaSeKJ1k
- 6Uzoeh/okfOVq7rIizwH5xJJnY+pBWKJ5BArjvChQJm+1emhUGL4KGzoCe7Kyi1tyvSXYKLaz2I
- Zc7
-X-Received: by 2002:a05:600c:1da1:b0:488:f453:b976 with SMTP id
- 5b1f17b1804b1-488fb7844c5mr548630315e9.27.1777111656640; 
- Sat, 25 Apr 2026 03:07:36 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a6124d7e7sm250327615e9.5.2026.04.25.03.07.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 25 Apr 2026 03:07:35 -0700 (PDT)
-Message-ID: <81605e59-a916-44f7-ae68-40b64b811bd3@linaro.org>
-Date: Sat, 25 Apr 2026 12:07:34 +0200
+ d=1e100.net; s=20251104; t=1777210808; x=1777815608;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FXTxN+J9no8re62AJqbCq+vPW8iZVDA6DVJLTKCpZGc=;
+ b=rlqtneIHpneMwpetBHcpuYpx0JSjCXPYlqmIrKQkjqqbDyo3cmFuDe4oI+EjKUkkMm
+ Mj7hbMFKCAK4cHxPsf/BTVDTNL/NrY4+/1DKVKptWcmi6bVDXeaU7S3hkXx1KDhidWSw
+ F7MtJsNuFzLTB0HtI3RNSpsxz79+QMasRR6c7V1dVd/zZITVRNX5ThgCuioANr0Z5VHJ
+ yXEasaQ5ePkJtrYIV9jqkmRPy+BCUN1OkGSuElT5vWCg2/ITKf+5C5c9XbxU0k9cOyRc
+ sZaApOxZvrskyr1jK1Dv2/Gt5Jf5A9IB2iqMBjM5QZEO+uiEN1Nz52u4L8ypyw9EdPza
+ 1wKw==
+X-Gm-Message-State: AOJu0Yx/aWumB4McOjoWFYp1QPkjIbY2jSCVX9hugjDSt6YE2wdrLSjT
+ +lJR+fHRP/LVF12bpHmAnJjRmaL+AdYR6tARSavkU5XQR4cAI/FkdNFpdjD/fgEUad+HmCHT0xM
+ xvNXzX2w=
+X-Gm-Gg: AeBDietQXuh94ao0ngcYed14toyH7o+kMjLg+br2XcuWedVJ56U0BJXg2ilC62eJW6f
+ EHH0DCSr2X28zRXijqCgLTkuJfOPp5YrgNsPNesLxbUr9e1up5JxVnJscKfip/9n/3Wjj1c+WeK
+ vCPD6fqWFH/4jOqAoQeijwflsJFhoAwQgE0b+iRliL4fbjg5iOvqBPHLO4dHC5n50F9Xc9JvqVp
+ hz8ZPswpm/+w/xopIbL+zLJgs7NZvWr4PI4y/QQ6FS99dNiVrmeF74zpfjTp1Oy2zPZH633E4Ke
+ FfQoENQMpRNvbRyOKHhnyDv2ixsAOBxIMbr+TrgitO6Pf7eKXbmJ/S1Chq3q2Ul3vcXW0PzdBer
+ AZP6komG4J0tArP5T1nf8rWuTgzblFmWO4f6RKFSxanKeSryvcXAq1KOE4qKNcASVVweWyw2io7
+ OArAW2QCTOyE0x61DlY5phiuxWsFg+PigDTAL7v0Sw
+X-Received: by 2002:a17:902:f545:b0:2b4:61cc:37a8 with SMTP id
+ d9443c01a7336-2b5f9eceb9amr429362575ad.17.1777210808276; 
+ Sun, 26 Apr 2026 06:40:08 -0700 (PDT)
+Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2b5fab30f29sm277940375ad.68.2026.04.26.06.40.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 26 Apr 2026 06:40:07 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-s390x@nongnu.org
+Subject: [RFC PATCH 00/84] fpu: Export some internals for targets
+Date: Sun, 26 Apr 2026 23:38:37 +1000
+Message-ID: <20260426134002.865628-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] single-binary: add stubs for target/
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-References: <20260424230103.1579600-1-pierrick.bouvier@oss.qualcomm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260424230103.1579600-1-pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,14 +97,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 25/4/26 01:01, Pierrick Bouvier wrote:
+Expose enough softfloat infrastructure so that we can move the
+s390_divide_to_integer code back into target/s390x/, and to
+perform the Arm FPDotAdd operation without using either float64
+intermediates and round-to-odd.
 
-> Pierrick Bouvier (2):
->    meson.build: define stubs library per target base architecture
->    target/arm: define stub library
+The motivation is the Arm FP8DotAdd operation, which has up to
+8 multiplies, 9 additions, and 1 scaling operation before rounding.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Rather than export the code as-is, with functions that sometimes
+(but not always) return a pointer to one of the inputs, and may
+or may not modify one or all of them as scratch space, return a
+new structure instead.
 
-You already had these tags ;)
+This turns out to improve code as well, because we compile with
+-ftrivial-auto-var-init=zero.  A pattern such as
+
+    FloatParts t;
+    foo(&t, ...);
+
+will zero t before calling foo, whereas
+
+    FloatParts t = foo(...);
+
+will not.
+
+I have not converted everything, only enough to do the testing
+of the target/ patches at the end.  Comments?
+
+
+r~
+
+
+Richard Henderson (84):
+  fpu: Drop parts_canonicalize
+  fpu: Drop parts_uncanon
+  fpu: Drop parts_uncanon_normal
+  fpu: Drop parts_default_nan
+  fpu: Drop parts_silence_nan
+  fpu: Drop parts_return_nan
+  fpu: Drop parts_pick_nan
+  fpu: Drop parts_pick_nan_muladd
+  fpu: Reverse the order of softfloat-parts* inclusions
+  fpu: Drop parts_{add,sub}_normal
+  fpu: Drop parts_addsub
+  fpu: Drop parts_mul
+  fpu: Drop parts_muladd_scalbn
+  fpu: Drop parts_div
+  fpu: Drop parts_modrem
+  fpu: Drop parts_sqrt
+  fpu: Drop parts_round_to_int_normal
+  fpu: Drop parts_round_to_int
+  fpu: Drop parts_float_to_sint
+  fpu: Drop parts_float_to_uint
+  fpu: Drop parts_float_to_sint_modulo
+  fpu: Drop parts_sint_to_float
+  fpu: Drop parts_uint_to_float
+  fpu: Drop parts_minmax
+  fpu: Drop parts_compare
+  fpu: Drop parts_scalbn
+  fpu: Drop parts_log2
+  fpu: Drop parts_float_to_float
+  fpu: Drop PARTS_GENERIC_64_128{_256}
+  fpu: Drop FRAC_GENERIC_64_128{_256}
+  fpu: Constify frac{64,128,256}_* inputs
+  fpu: Return structure from unpack_raw64
+  fpu: Return struct from float4_e2m1_unpack_canonical
+  fpu: Return struct from float8_e4m3_unpack_canonical
+  fpu: Return struct from float8_e5m2_unpack_canonical
+  fpu: Inline float16_unpack_raw into callers
+  fpu: Return struct from float16a_unpack_canonical
+  fpu: Return struct from float16_unpack_canonical
+  fpu: Inline bfloat16_unpack_raw into callers
+  fpu: Return struct from bfloat16_unpack_canonical
+  fpu: Inline float32_unpack_raw into callers
+  fpu: Inline float64_unpack_raw into callers
+  fpu: Return struct from float{32,64}_unpack_canonical
+  fpu: Inline floatx80_unpack_raw into only caller
+  fpu: Return struct from float128_unpack_raw
+  fpu: Return struct from float128_unpack_canonical
+  fpu: Change parts_float_to_float_narrow to parts128_to_parts64
+  fpu: Change parts_float_to_float_widen to parts64_to_parts128
+  fpu: Inline float8_e4m3_pack_raw to single caller
+  fpu: Inline float8_e5m2_pack_raw into single caller
+  fpu: Inline float16_pack_raw into callers
+  fpu: Inline bfloat16_pack_raw into callers
+  fpu: Inline float32_pack_raw into callers
+  fpu: Inline float64_pack_raw into callers
+  fpu: Mark unpack_raw64 QEMU_ALWAYS_INLINE
+  fpu: Mark pack_raw64 QEMU_ALWAYS_INLINE
+  fpu: Split FloatParts{64,128} to softfloat-parts.h
+  fpu: Export FloatFmt structures
+  fpu: Export unpack_canonical and round_pack_canonical routines
+  fpu: Return struct from parts{64,128}_default_nan
+  fpu: Return struct from parts{64,128}_silence_nan
+  fpu: Return struct from parts{64,128}_return_nan
+  fpu: Sink exp_bias adjustment in float64r32_pack_raw
+  fpu: Return struct from parts{64,128}_pick_nan
+  fpu: Return struct from parts{64,128}_div
+  fpu: Return struct from parts{64,128}_round_to_int
+  fpu: Use parts64_round_to_int in parts_s390_divide_to_integer
+  fpu: Export default_nan and pick_nan routines
+  fpu: Introduce parts64_round_canonical
+  fpu: Export parts{64,128}_div
+  fpu: Export parts{64,128}_round_to_int
+  fpu: Return struct from parts{64,128}_pick_nan_muladd
+  fpu: Introduce record_denormals_used
+  fpu: Return struct from parts{64,128}_muladd_scalbn
+  fpu: Drop QEMU_FLATTEN from muladd routines
+  fpu: Export parts{64,128}_compare
+  fpu: Return struct from parts{64,128}_mul
+  fpu: Hoist nan check in partsN_addsub
+  fpu: Return struct from parts{64,128}_addsub
+  fpu: Simplify 0 +/- N case in parts_addsub
+  target/s390x: Move float{32,64}_s390_divide_to_integer
+  target/arm: Use FloatParts64 in bfdotadd_ebf
+  target/arm: Drop oddstatus from is_ebf and bfdotadd_ebf
+  target/arm: Use FloatParts64 in f16_dotadd
+
+ include/fpu/softfloat-parts.h    |  223 ++++
+ include/fpu/softfloat.h          |   11 -
+ target/arm/tcg/vec_internal.h    |   12 +-
+ fpu/softfloat.c                  | 2124 +++++++++++-------------------
+ target/arm/tcg/sme_helper.c      |  102 +-
+ target/arm/tcg/vec_helper.c      |  127 +-
+ target/s390x/tcg/fpu_helper.c    |  135 ++
+ fpu/softfloat-parts-addsub.c.inc |   22 +-
+ fpu/softfloat-parts.c.inc        |  723 ++++------
+ fpu/softfloat-specialize.c.inc   |   42 +-
+ 10 files changed, 1529 insertions(+), 1992 deletions(-)
+ create mode 100644 include/fpu/softfloat-parts.h
+
+-- 
+2.43.0
+
 

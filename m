@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9B5FF885D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BC7FF885C
 	for <qemu-arm@archiver.kernel.org>; Sun, 26 Apr 2026 13:57:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wGzpW-0007j1-0P; Sun, 26 Apr 2026 09:47:26 -0400
+	id 1wGzpW-0007rm-PM; Sun, 26 Apr 2026 09:47:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wGzo9-0005uX-GC
- for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:46:07 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ id 1wGzoI-0005wY-50
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:46:11 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wGznv-0001S9-FB
- for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:45:50 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-2b25cf1b5f0so51283795ad.3
- for <qemu-arm@nongnu.org>; Sun, 26 Apr 2026 06:45:46 -0700 (PDT)
+ id 1wGzoE-0001Vz-Bm
+ for qemu-arm@nongnu.org; Sun, 26 Apr 2026 09:46:09 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2b24fcc2b5dso58394965ad.1
+ for <qemu-arm@nongnu.org>; Sun, 26 Apr 2026 06:45:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777211146; x=1777815946; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777211151; x=1777815951; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FnOhdCDKdTLE0gzKOWv8m2ElmA3lCf51L6yu2wpzeJk=;
- b=qTOazqVWZ+ea7obniPuOA/1jYGkwM47Zn3Vhjexk1z1qbgQrdmHRcRgJWtq+RzlQzZ
- B2rxJYaB/VGCJ3sepiUEvuarEdpsxYi5xEIW2QwqgIaFVL2+tak9nydDsqGX1Hs0DY6l
- g0kFCLrDAQmnJ6MnlTOF9saSJsuBXO4GBpxslY1+r8Hxl/d4irvoLZTU3UycO5ztVioy
- KR6iEcl1Du54UDFm6JwB9pujLdW99GvxdqNba4pm9t5ElnT/jCW6gYSl78EFA4riUiyK
- VlVvwXPXRL9oM8oo7pwMWIHX0VzLhi0awujVbl1+VV1S8sgCrDYMZ3Jsjnq0wU2IwRpv
- H6Aw==
+ bh=8NNGGFXJ7ObWl7bIfWdwNZWMHdVi1ldGDKtY92ZvWpw=;
+ b=E80w3rIKvS/rOTtr3CxUGWcus2ziafgIM6bnJKJf9RYQxnvOemFO1OlvsvAlYTf08Q
+ CPK0hmtsTZnEmuMTkqIT8DRd1nI9ETy0gpb14kPnnNR0DFkaoHokWYRdCCviB0Jr25/k
+ VOnXlR4gKJPANE60G4vkqj9iV/TsPqIqEfnIgz7nwFcTvkYAwWZs3PslG1b66tWBbaiC
+ sHBLYkiijVN/VWWvc9cg7IDTp6uzVideuKyCphCjY/m/A+AnkZQo8mBDHb4D1rmPmaVt
+ FqDZatBp8Gi587Yfy6Wdg1fUWBfSuoWGkNkjLZ7wUO71B23EZ28+Oxk2tKgfTIcYGYUW
+ BO7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777211146; x=1777815946;
+ d=1e100.net; s=20251104; t=1777211151; x=1777815951;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=FnOhdCDKdTLE0gzKOWv8m2ElmA3lCf51L6yu2wpzeJk=;
- b=p4U4PAIaS+fn02enXvCDFEAYQo5bv0MFcHTwV2//PGpeBOr7iuHhhqECMbSLqAUswJ
- fuU+mJ8Dx0c1yVB52GCroyGlTyS4et6IjSRihdtM6/YNpC+YraWKfUVewGmTv39ikb/y
- SO9fmSWUbM4BpPqkuI/YGIVnLvMgT4UFE9ZWRefWnllAKf9U2Zs7Qm4jkUBJvf7KVz1k
- szTCatHJQSOMaF5nn1LC8mfuH2t9B7VQHW1/DXMgpwmwlJAN0rssoP68TrrA6/E56JWT
- eS+PIZqY+IUUVsKuDrwuBXKLxsehWlrpX+wC/QFKQf75JEnqscoIvKDuE36pdAgoo2P8
- o1AQ==
-X-Gm-Message-State: AOJu0YwQRLT6or4GLjlp2Z7K/l7mYZ5dQGERyszBD8Pxk9xjXMOWh2Bk
- kLNA/s0ZoqNX4x3BGk0F6hpFKCpkZ3Fd+0OFfSrC3YAoNg2sbfZuA+6ClhojsVporGI=
-X-Gm-Gg: AeBDievqFOfZ8IWxXh2N4ogf4WGvAb7N/2Eh+JJQCDJOaisxOMo27uqty+SOl2cd7YC
- lU+bg6MyNgQF6fzcSGQRWUEqjWBLuYp/yJwxaHb5UhtvNwa/t7JpS5lVn5OZb3OYrDNjlS5DpdR
- mK2kkvCldXsQgF5VAZ0YKjpu7b+IaOumjzsZ3fhjNYQ1l5CaKDoTCE7woQ+O/0Z7jWakdBW6kfX
- v8cbXSon7LwigOC+HKNYvcFtiUKZocriBMvUPkNovK1hAtAlGw4OQfbLRRtcIZ1rPqi/TfmQO0E
- aqltB3jJ2Fm3xTAbkXA+yaiRGo/ZsaWokNF8gjcXnrOmF0GtAkkbWDAz2z/g1LSM/zkwQTfd/st
- VghEBbsOyR1qFjDDpzZz9BCVOMYZBWrG3zyN8H6h9ebri9s/AEYwAQ5avGFPPv5l8hCuaVfbbgU
- ufMpfzy3b/wi6W6U5W+gqHRy+RmbAyvsDMGiIPi9g2
-X-Received: by 2002:a17:903:487:b0:2b2:49a7:a5bc with SMTP id
- d9443c01a7336-2b5f9f534e4mr297029925ad.39.1777211145647; 
- Sun, 26 Apr 2026 06:45:45 -0700 (PDT)
+ bh=8NNGGFXJ7ObWl7bIfWdwNZWMHdVi1ldGDKtY92ZvWpw=;
+ b=nBDxuQVfYMMutxzDr3tSX2NFIhBSTs8X3KF1fbxcJMggEZiGVje7GRaKJ3zHLTDrJE
+ OWC4Mr8XSiXY/x2qi5L4gFoBzWNPhR0YqgnLS5Hkl+elzpKg3ArCM6aTLoargFC3fNCs
+ N6+jdGOX60yqzkC4ukvZ1J7FlVrni/hPbK7MkBmgTJJiq7cgwLotHmKg/3d2Lu35hqyN
+ nn2grpIyKaFbDGmKHYN5zkJSmAar3AP12ezHn6M/+y+AbcEkA+fEydLCStKLbLDMQv8k
+ EoWJFkKqTXktKzHgFH56jIiuGWvz3oFG2Pzn8RXksgC5wnNXiqhCrP93THj9aQkUaZY2
+ ONhw==
+X-Gm-Message-State: AOJu0YwqHmfXPRE4kqWj0LCS6Row/doSKKD71tyUe609Y/BwiH8uusBt
+ frtg1kYSuL0CeYHpMsTI8gjED7UNGidLkgVi2kfOE9785hwx1HEINjHaL2S6LaiutPV5CS6h3We
+ 5jtF7EPE=
+X-Gm-Gg: AeBDieucSXsKCiituxanShQMNodId8sdo7SEItIH0ZtMwBWqAaOh5OUrye7cYQZ379G
+ tPBWQYDnIRQQPd9JQ2sId6y4wB0HFVXM/ToUdneCP4tW7EZOUhSqcC/2yM/d7HnkRvss0Gc/HX0
+ 9YSXtkbm+TaE+4IZDxOu4xufx4e+RpRFE6jQRCeCs317PGO+XDl2oQnjoLdqoQSmYAYfOwzLRZ/
+ 4gqhOQsECpCqwqWvTSIKvx/nbB5bfZLlgitOUERQh0zDSSgYearUezQLU48f3JiyuH1Ni2OAZx+
+ hKYwFhL56dEXkepV7TdD1ldz/1kfSyWGAREbho+WGpqGBQrV3gYpI9C1gM/75L9aYsHWiBEf7xz
+ 2AHK977jgNagdi5tFwKNtjz/4i/xiUXIOADlFV0DueDX0YqMRGfvw62tertpa93lbbX5G315Mb3
+ CuCDMq7fao56IG7t5yWfJtHQuQqBcp03truFCVoQQRWkSbkWm/Ytc=
+X-Received: by 2002:a17:903:b8f:b0:2b2:5857:583e with SMTP id
+ d9443c01a7336-2b5f9fc0641mr399097725ad.31.1777211150695; 
+ Sun, 26 Apr 2026 06:45:50 -0700 (PDT)
 Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b5faa34ea7sm280544085ad.34.2026.04.26.06.45.43
+ d9443c01a7336-2b5faa34ea7sm280544085ad.34.2026.04.26.06.45.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 26 Apr 2026 06:45:45 -0700 (PDT)
+ Sun, 26 Apr 2026 06:45:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-s390x@nongnu.org
-Subject: [PATCH 57/84] fpu: Split FloatParts{64,128} to softfloat-parts.h
-Date: Sun, 26 Apr 2026 23:39:34 +1000
-Message-ID: <20260426134002.865628-58-richard.henderson@linaro.org>
+Subject: [PATCH 59/84] fpu: Export unpack_canonical and round_pack_canonical
+ routines
+Date: Sun, 26 Apr 2026 23:39:36 +1000
+Message-ID: <20260426134002.865628-60-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260426134002.865628-1-richard.henderson@linaro.org>
 References: <20260426134002.865628-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,204 +101,204 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Begin exposing the intermediate representation of softfloat.
-Start with just the representation structures.
+Export the unpacking and repacking into the various formats.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/fpu/softfloat-parts.h | 88 +++++++++++++++++++++++++++++++++++
- fpu/softfloat.c               | 69 +--------------------------
- 2 files changed, 90 insertions(+), 67 deletions(-)
- create mode 100644 include/fpu/softfloat-parts.h
+ include/fpu/softfloat-parts.h | 30 ++++++++++++++++++++++
+ fpu/softfloat.c               | 47 ++++++++++++++---------------------
+ 2 files changed, 49 insertions(+), 28 deletions(-)
 
 diff --git a/include/fpu/softfloat-parts.h b/include/fpu/softfloat-parts.h
-new file mode 100644
-index 0000000000..13c1f3d2d6
---- /dev/null
+index a3ae12bb45..f631c38c79 100644
+--- a/include/fpu/softfloat-parts.h
 +++ b/include/fpu/softfloat-parts.h
-@@ -0,0 +1,88 @@
+@@ -133,4 +133,34 @@ typedef struct {
+     uint64_t frac_lo;
+ } FloatParts128;
+ 
 +/*
-+ * Floating point intermediate representation
-+ *
-+ * The code in this source file is derived from release 2a of the SoftFloat
-+ * IEC/IEEE Floating-point Arithmetic Package. Those parts of the code (and
-+ * some later contributions) are provided under that license, as detailed below.
-+ * It has subsequently been modified by contributors to the QEMU Project,
-+ * so some portions are provided under:
-+ *  the SoftFloat-2a license
-+ *  the BSD license
-+ *  GPL-v2-or-later
-+ *
-+ * Any future contributions to this file after December 1st 2014 will be
-+ * taken to be licensed under the Softfloat-2a license unless specifically
-+ * indicated otherwise.
++ * Unpack routines from a specific floating-point format.
 + */
 +
-+#ifndef SOFTFLOAT_PARTS_H
-+#define SOFTFLOAT_PARTS_H
++FloatParts64 float4_e2m1_unpack_canonical(float4_e2m1 f, float_status *s);
++FloatParts64 float8_e4m3_unpack_canonical(float8_e4m3 f, float_status *s);
++FloatParts64 float8_e5m2_unpack_canonical(float8_e5m2 f, float_status *s);
++FloatParts64 float16_unpack_canonical(float16 f, float_status *s);
++FloatParts64 bfloat16_unpack_canonical(bfloat16 f, float_status *s);
++FloatParts64 float32_unpack_canonical(float32 f, float_status *s);
++FloatParts64 float64_unpack_canonical(float64 f, float_status *s);
++FloatParts128 float128_unpack_canonical(float128 f, float_status *s);
++/* Returns false if the encoding is invalid. */
++bool floatx80_unpack_canonical(FloatParts128 *p, floatx80 f, float_status *s);
 +
 +/*
-+ * Classify a floating point number. Everything above float_class_qnan
-+ * is a NaN so cls >= float_class_qnan is any NaN.
-+ *
-+ * Note that we canonicalize denormals, so most code should treat
-+ * class_normal and class_denormal identically.
++ * Pack routines to a specific floating-point format.
 + */
 +
-+typedef enum __attribute__ ((__packed__)) {
-+    float_class_unclassified,
-+    float_class_zero,
-+    float_class_normal,
-+    float_class_denormal, /* input was a non-squashed denormal */
-+    float_class_inf,
-+    float_class_qnan,  /* all NaNs from here */
-+    float_class_snan,
-+} FloatClass;
++float8_e4m3 float8_e4m3_round_pack_canonical(FloatParts64 *p, float_status *s,
++                                             bool saturate);
++float8_e5m2 float8_e5m2_round_pack_canonical(FloatParts64 *p, float_status *s,
++                                             bool saturate);
++float16 float16_round_pack_canonical(FloatParts64 *p, float_status *s);
++bfloat16 bfloat16_round_pack_canonical(FloatParts64 *p, float_status *s);
++float32 float32_round_pack_canonical(FloatParts64 *p, float_status *s);
++float64 float64_round_pack_canonical(FloatParts64 *p, float_status *s);
++float128 float128_round_pack_canonical(FloatParts128 *p, float_status *s);
++floatx80 floatx80_round_pack_canonical(FloatParts128 *p, float_status *s);
 +
-+#define float_cmask(bit)  (1u << (bit))
-+
-+enum {
-+    float_cmask_zero    = float_cmask(float_class_zero),
-+    float_cmask_normal  = float_cmask(float_class_normal),
-+    float_cmask_denormal = float_cmask(float_class_denormal),
-+    float_cmask_inf     = float_cmask(float_class_inf),
-+    float_cmask_qnan    = float_cmask(float_class_qnan),
-+    float_cmask_snan    = float_cmask(float_class_snan),
-+
-+    float_cmask_infzero = float_cmask_zero | float_cmask_inf,
-+    float_cmask_anynan  = float_cmask_qnan | float_cmask_snan,
-+    float_cmask_anynorm = float_cmask_normal | float_cmask_denormal,
-+};
-+
-+/*
-+ * Structure holding all of the decomposed parts of a float.
-+ * The exponent is unbiased and the fraction is normalized.
-+ *
-+ * The fraction words are stored in big-endian word ordering,
-+ * so that truncation from a larger format to a smaller format
-+ * can be done simply by ignoring subsequent elements.
-+ */
-+
-+typedef struct {
-+    FloatClass cls;
-+    bool sign;
-+    int32_t exp;
-+    union {
-+        /* Routines that know the structure may reference the singular name. */
-+        uint64_t frac;
-+        /*
-+         * Routines expanded with multiple structures reference "hi" and "lo"
-+         * depending on the operation.  In FloatParts64, "hi" and "lo" are
-+         * both the same word and aliased here.
-+         */
-+        uint64_t frac_hi;
-+        uint64_t frac_lo;
-+    };
-+} FloatParts64;
-+
-+typedef struct {
-+    FloatClass cls;
-+    bool sign;
-+    int32_t exp;
-+    uint64_t frac_hi;
-+    uint64_t frac_lo;
-+} FloatParts128;
-+
-+#endif
+ #endif
 diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 8c4263bfe6..cd75df3160 100644
+index d3277e3f60..b857c13d91 100644
 --- a/fpu/softfloat.c
 +++ b/fpu/softfloat.c
-@@ -83,6 +83,7 @@ this code that are retained.
- #include <math.h>
- #include "qemu/bitops.h"
- #include "fpu/softfloat.h"
-+#include "fpu/softfloat-parts.h"
+@@ -1296,21 +1296,21 @@ static const uint16_t rsqrt_tab[128] = {
+  * Pack/unpack routines with a specific FloatFmt.
+  */
  
- /* We only need stdlib for abort() */
- 
-@@ -396,39 +397,6 @@ float64_gen2(float64 xa, float64 xb, float_status *s,
-     return soft(ua.s, ub.s, s);
+-static FloatParts64 float4_e2m1_unpack_canonical(float4_e2m1 f, float_status *s)
++FloatParts64 float4_e2m1_unpack_canonical(float4_e2m1 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&float4_e2m1_params, f);
+     parts64_canonicalize(&p, s, &float4_e2m1_params);
+     return p;
  }
  
--/*
-- * Classify a floating point number. Everything above float_class_qnan
-- * is a NaN so cls >= float_class_qnan is any NaN.
-- *
-- * Note that we canonicalize denormals, so most code should treat
-- * class_normal and class_denormal identically.
-- */
--
--typedef enum __attribute__ ((__packed__)) {
--    float_class_unclassified,
--    float_class_zero,
--    float_class_normal,
--    float_class_denormal, /* input was a non-squashed denormal */
--    float_class_inf,
--    float_class_qnan,  /* all NaNs from here */
--    float_class_snan,
--} FloatClass;
--
--#define float_cmask(bit)  (1u << (bit))
--
--enum {
--    float_cmask_zero    = float_cmask(float_class_zero),
--    float_cmask_normal  = float_cmask(float_class_normal),
--    float_cmask_denormal = float_cmask(float_class_denormal),
--    float_cmask_inf     = float_cmask(float_class_inf),
--    float_cmask_qnan    = float_cmask(float_class_qnan),
--    float_cmask_snan    = float_cmask(float_class_snan),
--
--    float_cmask_infzero = float_cmask_zero | float_cmask_inf,
--    float_cmask_anynan  = float_cmask_qnan | float_cmask_snan,
--    float_cmask_anynorm = float_cmask_normal | float_cmask_denormal,
--};
--
- /* Flags for parts_minmax. */
- enum {
-     /* Set for minimum; clear for maximum. */
-@@ -474,40 +442,7 @@ static inline bool is_anynorm(FloatClass c)
-     return float_cmask(c) & float_cmask_anynorm;
+-static FloatParts64 float8_e4m3_unpack_canonical(float8_e4m3 f, float_status *s)
++FloatParts64 float8_e4m3_unpack_canonical(float8_e4m3 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&float8_e4m3_params, f);
+     parts64_canonicalize(&p, s, &float8_e4m3_params);
+     return p;
  }
  
--/*
-- * Structure holding all of the decomposed parts of a float.
-- * The exponent is unbiased and the fraction is normalized.
-- *
-- * The fraction words are stored in big-endian word ordering,
-- * so that truncation from a larger format to a smaller format
-- * can be done simply by ignoring subsequent elements.
-- */
--
--typedef struct {
--    FloatClass cls;
--    bool sign;
--    int32_t exp;
--    union {
--        /* Routines that know the structure may reference the singular name. */
--        uint64_t frac;
--        /*
--         * Routines expanded with multiple structures reference "hi" and "lo"
--         * depending on the operation.  In FloatParts64, "hi" and "lo" are
--         * both the same word and aliased here.
--         */
--        uint64_t frac_hi;
--        uint64_t frac_lo;
--    };
--} FloatParts64;
--
--typedef struct {
--    FloatClass cls;
--    bool sign;
--    int32_t exp;
--    uint64_t frac_hi;
--    uint64_t frac_lo;
--} FloatParts128;
--
-+/* FloatParts256 is entirely internal, for parts128_mul* */
- typedef struct {
-     FloatClass cls;
-     bool sign;
+-static FloatParts64 float8_e5m2_unpack_canonical(float8_e5m2 f, float_status *s)
++FloatParts64 float8_e5m2_unpack_canonical(float8_e5m2 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&float8_e5m2_params, f);
+     parts64_canonicalize(&p, s, &float8_e5m2_params);
+@@ -1325,29 +1325,27 @@ static FloatParts64 float16a_unpack_canonical(float16 f, float_status *s,
+     return p;
+ }
+ 
+-static FloatParts64 float16_unpack_canonical(float16 f, float_status *s)
++FloatParts64 float16_unpack_canonical(float16 f, float_status *s)
+ {
+     return float16a_unpack_canonical(f, s, &float16_params);
+ }
+ 
+-static FloatParts64 bfloat16_unpack_canonical(bfloat16 f, float_status *s)
++FloatParts64 bfloat16_unpack_canonical(bfloat16 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&bfloat16_params, f);
+     parts64_canonicalize(&p, s, &bfloat16_params);
+     return p;
+ }
+ 
+-static float8_e4m3 float8_e4m3_round_pack_canonical(FloatParts64 *p,
+-                                                    float_status *s,
+-                                                    bool saturate)
++float8_e4m3 float8_e4m3_round_pack_canonical(FloatParts64 *p, float_status *s,
++                                             bool saturate)
+ {
+     parts64_uncanon(p, s, &float8_e4m3_params, saturate);
+     return pack_raw64(p, &float8_e4m3_params);
+ }
+ 
+-static float8_e5m2 float8_e5m2_round_pack_canonical(FloatParts64 *p,
+-                                                    float_status *s,
+-                                                    bool saturate)
++float8_e5m2 float8_e5m2_round_pack_canonical(FloatParts64 *p, float_status *s,
++                                             bool saturate)
+ {
+     parts64_uncanon(p, s, &float8_e5m2_params, saturate);
+     return pack_raw64(p, &float8_e5m2_params);
+@@ -1361,42 +1359,38 @@ static float16 float16a_round_pack_canonical(FloatParts64 *p,
+     return pack_raw64(p, &float16_params);
+ }
+ 
+-static float16 float16_round_pack_canonical(FloatParts64 *p,
+-                                            float_status *s)
++float16 float16_round_pack_canonical(FloatParts64 *p, float_status *s)
+ {
+     return float16a_round_pack_canonical(p, s, &float16_params);
+ }
+ 
+-static bfloat16 bfloat16_round_pack_canonical(FloatParts64 *p,
+-                                              float_status *s)
++bfloat16 bfloat16_round_pack_canonical(FloatParts64 *p, float_status *s)
+ {
+     parts64_uncanon(p, s, &bfloat16_params, false);
+     return pack_raw64(p, &bfloat16_params);
+ }
+ 
+-static FloatParts64 float32_unpack_canonical(float32 f, float_status *s)
++FloatParts64 float32_unpack_canonical(float32 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&float32_params, f);
+     parts64_canonicalize(&p, s, &float32_params);
+     return p;
+ }
+ 
+-static float32 float32_round_pack_canonical(FloatParts64 *p,
+-                                            float_status *s)
++float32 float32_round_pack_canonical(FloatParts64 *p, float_status *s)
+ {
+     parts64_uncanon(p, s, &float32_params, false);
+     return pack_raw64(p, &float32_params);
+ }
+ 
+-static FloatParts64 float64_unpack_canonical(float64 f, float_status *s)
++FloatParts64 float64_unpack_canonical(float64 f, float_status *s)
+ {
+     FloatParts64 p = unpack_raw64(&float64_params, f);
+     parts64_canonicalize(&p, s, &float64_params);
+     return p;
+ }
+ 
+-static float64 float64_round_pack_canonical(FloatParts64 *p,
+-                                            float_status *s)
++float64 float64_round_pack_canonical(FloatParts64 *p, float_status *s)
+ {
+     parts64_uncanon(p, s, &float64_params, false);
+     return pack_raw64(p, &float64_params);
+@@ -1451,23 +1445,21 @@ static float64 float64r32_round_pack_canonical(FloatParts64 *p,
+     return float64r32_pack_raw(p);
+ }
+ 
+-static FloatParts128 float128_unpack_canonical(float128 f, float_status *s)
++FloatParts128 float128_unpack_canonical(float128 f, float_status *s)
+ {
+     FloatParts128 p = float128_unpack_raw(f);
+     parts128_canonicalize(&p, s, &float128_params);
+     return p;
+ }
+ 
+-static float128 float128_round_pack_canonical(FloatParts128 *p,
+-                                              float_status *s)
++float128 float128_round_pack_canonical(FloatParts128 *p, float_status *s)
+ {
+     parts128_uncanon(p, s, &float128_params, false);
+     return float128_pack_raw(p);
+ }
+ 
+ /* Returns false if the encoding is invalid. */
+-static bool floatx80_unpack_canonical(FloatParts128 *p, floatx80 f,
+-                                      float_status *s)
++bool floatx80_unpack_canonical(FloatParts128 *p, floatx80 f, float_status *s)
+ {
+     /* Ensure rounding precision is set before beginning. */
+     switch (s->floatx80_rounding_precision) {
+@@ -1503,8 +1495,7 @@ static bool floatx80_unpack_canonical(FloatParts128 *p, floatx80 f,
+     return true;
+ }
+ 
+-static floatx80 floatx80_round_pack_canonical(FloatParts128 *p,
+-                                              float_status *s)
++floatx80 floatx80_round_pack_canonical(FloatParts128 *p, float_status *s)
+ {
+     const FloatFmt *fmt = &floatx80_params[s->floatx80_rounding_precision];
+     uint64_t frac;
 -- 
 2.43.0
 

@@ -4,110 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2BA8FF8867
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 20:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5E38FF8868
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 20:27:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHSR7-0000zR-58; Mon, 27 Apr 2026 16:20:09 -0400
+	id 1wHSXw-0002wj-Pg; Mon, 27 Apr 2026 16:27:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wHSQe-0000w4-RK; Mon, 27 Apr 2026 16:19:45 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wHSQb-000860-MJ; Mon, 27 Apr 2026 16:19:40 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 63REMnhD2648672; Mon, 27 Apr 2026 20:19:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=RRkCyPPWZQc2UQa/7gd8crIYR71gGvfkIJcPEYFWZ+I=; b=iSPwiE/Q1AJD
- CGLecZR8HY9fEHqUuYpvrBEjni1J74NZC5XTft4zHpIKhYuEIW/5whqAF/O1RmN1
- SA4bwW+DEEp1VDLZrXT4sU08ioGw+IiOORgMIq+vRLiu81g7S/BQolh8/UBkeS3E
- 48nkxJFnsDpfuz2NFxWNEZAA4p1r/f7tvOWvEy/aEDTPgmvRSNI1RhvxZ8Tiy9pb
- YQNjoNaTJlwRZERGJ2Y1tiHcGsD6pvpljwM3EIqWXgSzbPVu/U5HF8yRUvj77LeF
- o4KVC58v9yRR92+FaDjHkkwMlSRrIbQKCGA7x7GegqBpr5H7UAwdM5FekeN7S6kt
- h46R1gB9Uw==
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4drn8v9cjp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Apr 2026 20:19:34 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 63RK8kc0027686;
- Mon, 27 Apr 2026 20:19:34 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4ds8avpvsp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 27 Apr 2026 20:19:33 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (smtpav06.wdc07v.mail.ibm.com
- [10.39.53.233])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 63RKJXjQ18612968
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 27 Apr 2026 20:19:33 GMT
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0887A58056;
- Mon, 27 Apr 2026 20:19:33 +0000 (GMT)
-Received: from smtpav06.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 790DF5803F;
- Mon, 27 Apr 2026 20:19:32 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav06.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 27 Apr 2026 20:19:32 +0000 (GMT)
-Message-ID: <9b37c70b975e5633c7532fd2fe278024b01cd604.camel@linux.ibm.com>
-Subject: Re: [PATCH 30/41] hw/gpio/pca9552: fix state_str leak in
- pca955x_set_led
-From: Miles Glenn <milesg@linux.ibm.com>
-To: =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: armbru@redhat.com, qemu-ppc@nongnu.org, qemu-arm@nongnu.org
-Date: Mon, 27 Apr 2026 15:19:32 -0500
-In-Reply-To: <20260427-qom-tests-v1-30-c413f3605311@redhat.com>
-References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
- <20260427-qom-tests-v1-30-c413f3605311@redhat.com>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
-Mime-Version: 1.0
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHSXl-0002vC-Ao
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:27:02 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHSXi-0001V3-Od
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:27:00 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-488a8ca4aadso148399025e9.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 13:26:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777321606; x=1777926406; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=14z3SWAZq6VsdhfKrHZ6vAgiBGTX5CT5yX0Gz4AAiNo=;
+ b=rm93+g7+qZnEudTv/zT7zwkCyDijlLrimSSrDolS2zj04spTs/JIRl40VLIrrYJEuj
+ fVjp2o1pHBH4NS9wl5MHy4ZhCxYLxNBeHeRa4RmMx7bEj2ohZHDC1X/BFPtXeR7/jHiS
+ XJVUyUEetUIbU5jO3UauDtzupJ62xhspKCjv9dWG0+xjcrTE7Y/q98w0jM8Z/anFKyuI
+ 7psnUUpgXoX1zrrBhfTW8t9DMz4yXvBsny6cKUkQQMwER40e0c17F+K0PFPXrsas4x6y
+ vtBI3nCBGlRznpWluNHu98AUNb1XYFoWgIdCoaUv5Hb9fMe9SLl6vHiUqLNcBDeclQ+P
+ OAdQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777321606; x=1777926406;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=14z3SWAZq6VsdhfKrHZ6vAgiBGTX5CT5yX0Gz4AAiNo=;
+ b=ldrjV4sjQWmB6OadXWik+EE8AOKUVsnyGW2ecG0AsJaeSc6rk5KR9lkeIK0S4Ubh2x
+ 7huHEgMjhx+JjAbReN9xhLOzLc9XCYOU6rWYMPP39BBnX9gmznyYxm+zq6eLlEVYhIng
+ 0SuGPlFKUiAfr+TyvQlJSoSpYsC+2c2k74FQxXFV9TbTGHAaX6HmyJINNV46fkoBPCzX
+ kbBzyjLNKvedv/32KWHSF7mLokrv457ihQWpv8Tq5UkeC/pr5S/LgStjkDmkKs1HOsXK
+ 03WUW0GIKZGGIXAGHAOLBJ7BpcYXnD+CDaEVK5+xGhHSXKsiDM5Sxkf+MHCbzvqhIC9a
+ FYng==
+X-Gm-Message-State: AOJu0YzzoSWGTsvjg6t+DykaCEPN2CRFOXaH0r9UltIcIL7M1cNsCAxz
+ YmlxGfqh27ACVO8Z5HeADrVNBtzggO6EMoL9i6Lm3HU9zuakedMqq1IArr/N/L+p78w=
+X-Gm-Gg: AeBDiet2YGm/Xosa6SzOYKLYMKC9QIwDtBdv03gK0OV/J4bMRW3L6mrL1DQYUuY5yPE
+ OSH2fcPyJ69EhZaul9Cxz1d2rH9wQM39EJ8zW7AHOyXqSOckn+VLf0OmhlnDuxZWCBQ86O6loeO
+ 4+SMSL+nhAJxhwxWdf+RYXYF2UHKl8eKxDTRr5gNskdrlaAABF3N7kgQZVkygvo2YR58L6cH7B+
+ wSzwZSKwAegXU1Acfc0gfw14CXji/pERMFSKrfBAhnRmZxjq2pH/DxXa30dKdwv2Fk4GXN25wU7
+ Sg6d7sS+rJvEcoJxGXtDW7hehDssGSdX6d7t1oZJJhhMko9blg9D3p5yruub964W5wskZnOJcbI
+ PXAnJASmEcmPw/y0dejkj0+Nb0snXZy8GAj7H86h3/8oE62wEtrNbiJSo6ExK9ItkCuOjfaz58U
+ jlBkAaqY/0wx6E3TUmC7SojnW3jaGmfsN9loDBk2FsjmLM0UU2ZmSnja/lbhJzB7wc5BGt75DPm
+ Ded
+X-Received: by 2002:a05:600c:a11:b0:488:be58:bb5b with SMTP id
+ 5b1f17b1804b1-48a77b1a2camr2469075e9.24.1777321605678; 
+ Mon, 27 Apr 2026 13:26:45 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a775f776dsm2555925e9.28.2026.04.27.13.26.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Apr 2026 13:26:45 -0700 (PDT)
+Message-ID: <9c7f50c1-9116-448e-a2b7-67d646fe77f4@linaro.org>
+Date: Mon, 27 Apr 2026 22:26:44 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 09/84] fpu: Reverse the order of softfloat-parts*
+ inclusions
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+References: <20260426134002.865628-1-richard.henderson@linaro.org>
+ <20260426134002.865628-10-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260426134002.865628-10-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Authority-Analysis: v=2.4 cv=CIIamxrD c=1 sm=1 tr=0 ts=69efc4d6 cx=c_pps
- a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
- a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
- a=20KFwNOVAAAA:8 a=ecB0vJ_Esy-Zxr4yp7oA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: lLPY4Lw42v2eNeebUD1K9lCXOZIivERd
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI3MDIxNiBTYWx0ZWRfXywvXteG69D02
- JR5OpZrvOWlnF30qgmEBUhobiXmk85oFOYhJg4PDoXnxN+8LXOrL2zZ1GSkSz3vorvpzW8qfuKv
- qS7gflueCx2FRtEU/umYxgVmGeoMmgJ/ijaGRYViuhLtbrU003Ul/EVE815EIllDXL7cu4OZDSd
- HOgat7vzOV4VsMrM14JXS6s6jpTbM/saz5Z/VpTpht27Q1YPlI6hISOVu6nzPeQknmiA+Wty8OT
- rKpTcdBiovELG5w+4kgdib0cW02EXaTtLVWulvuGu2Yz6VjnhPpgPq2XsWGaRDWZ/srtfPmL23+
- 3PgKB2bSUFpsaW7HjYXj+YWgcnnEqUumX7+51YCp0yARkldpdg0EgB+1Z09UKLVvvDWoFFUl2/4
- NbHCaqdoFg6Ho/epGMnUDtU3tRkam9lsYHxWx9529M7us++J8roW4ZOTUdSNqkGQOZczRgJR84Z
- 3+2CDw743sciXMqVXaA==
-X-Proofpoint-GUID: lLPY4Lw42v2eNeebUD1K9lCXOZIivERd
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-27_04,2026-04-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 phishscore=0 malwarescore=0 suspectscore=0 adultscore=0
- impostorscore=0 lowpriorityscore=0 clxscore=1011 bulkscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2604200000
- definitions=main-2604270216
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,39 +100,18 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-
-Thanks,
-
-Glenn
-
-On Mon, 2026-04-27 at 23:42 +0400, Marc-André Lureau wrote:
-> visit_type_str() allocates state_str, but the function never frees it
-> on any code path. Use g_autofree to ensure it is freed on return.
+On 26/4/26 15:38, Richard Henderson wrote:
+> Define the widest addition primitives first, so that
+> they're already defined before being used by the
+> narrower muladd primitive.
 > 
-> Fixes: a90d8f84674d ("misc/pca9552: Add qom set and get")
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  hw/gpio/pca9552.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index dd3f1536b65..472d8ad9571 100644
-> --- a/hw/gpio/pca9552.c
-> +++ b/hw/gpio/pca9552.c
-> @@ -342,7 +342,7 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
->      PCA955xState *s = PCA955X(obj);
->      int led, rc, reg, val;
->      uint8_t state;
-> -    char *state_str;
-> +    g_autofree char *state_str = NULL;
->  
->      if (!visit_type_str(v, name, &state_str, errp)) {
->          return;
-> 
+>   fpu/softfloat.c | 9 ++++-----
+>   1 file changed, 4 insertions(+), 5 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

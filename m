@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 396B2FF8867
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB831FF886D
 	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:58:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHS5C-000339-Ld; Mon, 27 Apr 2026 15:57:30 -0400
+	id 1wHS5B-00032I-1Y; Mon, 27 Apr 2026 15:57:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wHQTR-00033J-Tn; Mon, 27 Apr 2026 14:14:26 -0400
-Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ id 1wHQTx-00036f-9L; Mon, 27 Apr 2026 14:15:05 -0400
+Received: from mail-westusazlp170120002.outbound.protection.outlook.com
+ ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wHQTP-00009d-HN; Mon, 27 Apr 2026 14:14:24 -0400
+ id 1wHQTs-0000Hy-Qn; Mon, 27 Apr 2026 14:14:55 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=mzqMsi911SrgnB5pbfl79hWhLPOUf1sgn7FS6GAEwOXV//U9+UicHEo6UY9T7XdT8eNbtWeIcCQJGtHgdBavNGperu7vs4ysOLsMrFUFQL8S70bSWJb3Qk3c2b7j2QwdI1D2EBUzhlYXzFrX2F5KoeLjbiFbppDzH36ZJmkXmFah65eAj3IujwneF9vXQrc8yF8cko+2LZcypoS+72ynGaW/3PcdWgAUHv4Tw70kr4pB0M5XTsAwPuc892f64j24TUZJXvlEFS/sp8j7uzzocuzRNareesSnnyMRr3HgqUF20JU7TRDmp4J5eG/VJ9hPbwNxSJTxHCykistFM4VNFg==
+ b=TJBsT6F89+KqCibCrbB32gHfxMrnPy/zoFXQgJpS3i/70IUl9UN6M0PIKh/32KAMBc90V62dtb3ToU5rne8Ni107CLRQNHS1XcTpvmmJlB19owIn3MlDEdt7tt0ABZ5SmFNIIyIAufdJy/4bVwpgEBZIwFFhl2FxeGndOlmnjN9ujnPw/WLcE+ECH0XZnjkxdsMqNKhH/zV8yWCeGktVTlVPkXM3NPQAzgWjD0TsH65k+fFYHOVjXFhkfJAZ6HwoTVjLjbdkhOWSAbtOl9b2TbHb/g3ErTuCd2NqrYp7/+XvgSSTTM5vAAbaSyt/Au79dtdtAqbpE8WvyVZKPmaT2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=LX1Nj7BB3BWHUjYgZUhGaqW1s17IUPGCCDQ39if0X14=;
- b=nL+LaaByKh4nG5miMFVCl1yZguMMWGHZE7bVlAyWbvRrzCuJzPbjb1STvEQbY1PHvz0ZsCAfI2+WXO/jFnfZ1+DS6DRzfQg4QkkHN9Eq+R2jfOB60VVs6VLszhzef+pIOBQ+JrorXLquxDpbx+a8scrKSbz3VkuhmzyIMYTKhXewZ6u3MiWr7q3Kpm0guV1AuGdkZdC785jkw9ZbZj4s0psl4nIeROoDmma2eTXyMmpk3ymuLIprB0iX2bFFgOF1i0SVgZ6nMZ0cRrJiMnyeiriArCbJIXvFoCDnmUd04DL2Hvx23Pt9rORrlrSwQTwZkCZLVkVuFwglMOm93gKthw==
+ bh=YbfMC/amRJsGvbjWK9+uOWFMnjrdJBePyasFxsn0gI0=;
+ b=JHF20nA9iCS0gnCbOQ1D8xm6TBA2C6Wn1TTSjuU89CLzjnfQMWfiAQaf2hAzQ+1FRbtPv2jfpKgDfymF43Wyc3LiHT00f61rsbqOQ3pubeM663f7W4AyDHrJfQnNOdBc9lMI3GJyhrggkZVuo8s3Vl1FvEHQQZHTDBVd4nkpuQJPDvpWwqK0tF+qtD92kmZu1S8qdPZW2Wq3+ZGBH1XW2w6DYJbT3e9w6LHPvCWsdfUqeRf6fCS+G+v4AdQ4wSFSkdSIMFJQtfc8LeGY+EhodqKrLN/VcbKe1c4WmJe1u6JbalQwh95jn3CjePsk3q/Vw25bTG8aMMxwcs6+fyOghQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=LX1Nj7BB3BWHUjYgZUhGaqW1s17IUPGCCDQ39if0X14=;
- b=k+pyAjzLD3EXXOzLvMs8yB+WcAq5+grDxhBsvBcVQtj6fhmKtakyjAp6YGvaqRf3bYy0BTgffgtKjP/rOc5IGVhPVZile0gDHVrLhJiBN3VQq9QddL+ERenPc9vMtUyFdLlPOMmEFgQCfpnhAryszCRhuvv2OX/nfa8gu6+WlS64fBjjRWbzJ1B+HMcfcm7ooh0KhJd/NuBoS94ky40eXbw8z2pcKC5FgB/AQXznGSkLdYW5GYP28A/zIvDBPMiy/8uTohdC6Rn+00HgsBNCVEG9t+jovBo4Tv0jbrh6GUebwZNaHmfCzNeU+n35HzlFGB5KUNV4sQS+z+s8XaMSBQ==
-Received: from BN9PR03CA0883.namprd03.prod.outlook.com (2603:10b6:408:13c::18)
- by CH3PR12MB7547.namprd12.prod.outlook.com (2603:10b6:610:147::5)
+ bh=YbfMC/amRJsGvbjWK9+uOWFMnjrdJBePyasFxsn0gI0=;
+ b=XNQU+xRe/3giSzLGsNvW9w1giLs3M84WhMmYEbQq129s/PMr3B6AsyvzIgk5gJCU/3sDlOt0pP+VHqT3GHfenB16e7KNS0hHtXz341t7AdSjZbeJTuncimvhMMPsEXXF0XJRppO4KvQE4mv3zoRydX+wbNwgxvIiu3TwRqppALaVl4CAVgG3G+qEV7mdVYXPi9jVfPyfMCFPoq+Dvi1EhkmQ82P6nnocWlzMEkLxMI3JZPfL+qD16OuabpuN26IuSgTTYINN1TEq8mZw1pV+uY3gPPZYKqeiS65fOPTXJ/CgIAlWIDYrg+29stGXSzbkd061qtKr2eZvpiFRKUKMfg==
+Received: from PH7PR10CA0019.namprd10.prod.outlook.com (2603:10b6:510:23d::27)
+ by MN0PR12MB5785.namprd12.prod.outlook.com (2603:10b6:208:374::17)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.16; Mon, 27 Apr
- 2026 18:14:07 +0000
-Received: from BL02EPF0001A0FD.namprd03.prod.outlook.com
- (2603:10b6:408:13c:cafe::b7) by BN9PR03CA0883.outlook.office365.com
- (2603:10b6:408:13c::18) with Microsoft SMTP Server (version=TLS1_3,
+ 2026 18:14:40 +0000
+Received: from CY4PEPF0000EDD3.namprd03.prod.outlook.com
+ (2603:10b6:510:23d:cafe::bd) by PH7PR10CA0019.outlook.office365.com
+ (2603:10b6:510:23d::27) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.9846.26 via Frontend Transport; Mon,
- 27 Apr 2026 18:14:07 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ 27 Apr 2026 18:14:40 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL02EPF0001A0FD.mail.protection.outlook.com (10.167.242.104) with Microsoft
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ CY4PEPF0000EDD3.mail.protection.outlook.com (10.167.241.199) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9846.18 via Frontend Transport; Mon, 27 Apr 2026 18:14:06 +0000
+ 15.20.9846.18 via Frontend Transport; Mon, 27 Apr 2026 18:14:40 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 27 Apr
- 2026 11:13:43 -0700
+ 2026 11:14:16 -0700
 Received: from nvidia-4028GR-scsim.nvidia.com (10.126.230.37) by
  rnnvmail201.nvidia.com (10.129.68.8) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Mon, 27 Apr 2026 11:13:35 -0700
+ 15.2.2562.20; Mon, 27 Apr 2026 11:14:08 -0700
 From: <mhonap@nvidia.com>
 To: <alwilliamson@nvidia.com>, <skolothumtho@nvidia.com>, <ankita@nvidia.com>, 
  <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
@@ -77,10 +77,10 @@ CC: <vsethi@nvidia.com>, <cjia@nvidia.com>, <targupta@nvidia.com>,
  <zhiw@nvidia.com>, <kjaju@nvidia.com>, <linux-cxl@vger.kernel.org>,
  <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  "Manish Honap" <mhonap@nvidia.com>
-Subject: [RFC 3/9] linux-headers: Update vfio.h for CXL Type-2 device
- passthrough
-Date: Mon, 27 Apr 2026 23:42:29 +0530
-Message-ID: <20260427181235.3003865-4-mhonap@nvidia.com>
+Subject: [RFC 7/9] hw/vfio+cxl: Program HDM decoder 0 at machine_done for
+ firmware-committed devices
+Date: Mon, 27 Apr 2026 23:42:33 +0530
+Message-ID: <20260427181235.3003865-8-mhonap@nvidia.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20260427181235.3003865-1-mhonap@nvidia.com>
 References: <20260427181235.3003865-1-mhonap@nvidia.com>
@@ -92,40 +92,41 @@ X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0001A0FD:EE_|CH3PR12MB7547:EE_
-X-MS-Office365-Filtering-Correlation-Id: c91c68aa-cc24-44e3-5072-08dea488c56a
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EDD3:EE_|MN0PR12MB5785:EE_
+X-MS-Office365-Filtering-Correlation-Id: 44d258bb-7378-4c58-20d3-08dea488d972
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700016|7416014|376014|1800799024|56012099003|22082099003|18002099003|921020;
-X-Microsoft-Antispam-Message-Info: NOirRJeu/eGYudNj1nciC3miNkxveyC/kzbA7mUla8C+PyYz3Yl8piMWRUJmzq6EB2JeDPQeK2UGoEAvWjQDi2HgVgE1BQb9MnbWPOiJ/GljAQs0gLAHLCtCHQPGDJgzswjr+T3S0oc2PHwJyzmTgYCbyIm89wrigzlh5RtZaOsVNADnmxjyIvQ0fxOYoxobQdtR/uv3pAi719GjovsWrjyX9QYABPrSEOM48ula4pnfthxhaQGtCge2532W+272jteWmSLzFmrTaL3yiExL3/eLm9f9kMyAoDyWAD5aMJpqhTcD6ZO0nghJfSkte+mnAtgNFe9yYHqphPSYC7ImanBlnt0MHCLUyb0hFk6XB0PO55+64QKKIlo/fqniOcwJiTecPnRZyv66j3COtmHwA1vO6omgBtKrSuLG/xwN6u45bP6X5UGYdfMqtlAcmh7vBnA9gpPJgNGrssMN8Mpg0jNJ2V60RrjMYqZZAD43cxYM/h5IcikYBNvn7LkADLjrmEoaEViphMIRthbkpRVjRWeILSzDC1uyFqTnbTmx9fAGs4PqdNN3BH6//s5+tfZhZWhp9WlorfQsDE399mLfo3aJ3MOtcSsFOWu6uAr71OpDjlmp0U5V00N0y8hXmlKDDlxqgAuo15z6mcw5ElsGFcxjmU+OiNkyk9i7eS/M7n4T1BLTqyw1OOjlaasB4/Qa+PeKb2qebfETuI7GTLdqguEmG72aftygUJwkn4c4Ovz1Vpa8A4BYda7ffyLfReFMPJjGAqRSg/0WKGbSZEkugPqpBXsBlaMfDs3HdXwCjYzhZGlgMe3VxpFvi+1RYL9L
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700016)(7416014)(376014)(1800799024)(56012099003)(22082099003)(18002099003)(921020);
+ ARA:13230040|36860700016|82310400026|1800799024|376014|7416014|56012099003|18002099003|22082099003|921020;
+X-Microsoft-Antispam-Message-Info: qtkB/ofjo91XNMEgtFYSmb+IzOWB6cnczaPgpYELVLx+HOcztu3AFyUbA65Z4bU7Ec47SICZ1uVAtpjHuzSgUmyIGuR84tBZzGHmWVezbB5x5IF8gQtWcATtjCpMylyUI5tkF8q4mlZZeXWxg3jk/G/TEizBiUPJ4AwaIENG+aEH7VA7bDc8xvj1ppKwLDAf23L/FNBjicThLfgbwzt9CVwtoPztCKpFCPejCAdTotqxeXMGZlQfrjYgwUT+HT6Q7DES5Eli7qAV7euZ8dZLxOokjQzABA8eSVgDanmFgQaVdP4C5FRkeKgTmUNT0s70OCwDcnA/4AA3+6ZK/nhg5x14T1PCkTXTxX9Mk2/u+YH6kMXfNBC8QPF4z/lOVfCELIdTw6VNx3sU3H0B3dHrWMNB1BmeMJIjZIdDLBwebBGIcB/StagpI6mKAv+4mCRQBCc6iCbtqcbh61Dont32386gLF7XxtPQEmle603gqUkMQXZ7uLQ9t2M3QfSRV9TIdUg5HczW4aaLQzPwWjQdXGYJ7Qc10CK+sVR/vYa2pJW3+Xx2bFk8bkoO0RUxB7Rkh+nVCeDle5dNAL3pyqXhZWlNXSTEbvKR3Ip9PmdMlr/29jHusDMKDW6QBXJuQsEAi37mmJrkxuxMBWyrqfYaO4cBZCzOn/0RZE38ZjX3zgeU+cxYXJCVuIiJgKYnvHyffN8oehTD0I2eOlkyhn9Dq55XISMQNpx2joucwvrY7ASVzvC39QDgJHwdjteIr6/7qzLNbn0wO3qPNz/nwFgefxyBtxnIejF3oyP9whxscrFVjdWThoYweeCbQHGR5sKe
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700016)(82310400026)(1800799024)(376014)(7416014)(56012099003)(18002099003)(22082099003)(921020);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: vEAypvaoCnu5fE7T0HAQvwoJf0Kl+qh0ohSGoc8kYEih9sRD+19lt4TVdG8sAGC9Mhp+kEHgO+JNSQ3P9kzoP63WV/jWkmBEzkDK1iLl0q1IMswVQe+bNu5lIRfpr+FtxAkiXXOZuvEhW+EpGNOazwopgwX1q5NjK5d3hOhvgg+7nrv8RgmQqVNqpxZr+7aL5NUvb1tMZWipxtaZXWUsbTZAMDYMncRiBNp4SHdaPG2aAYXoTKN2KJbxQZxpOnwMdlI2W+1FbR8KQkOuCa4fZK9EWz8fJ+yWF5qoszmHC4YJIc9In0UImujslkcmFNmp1Ra2hhrmlyje77JVxX4IbhPqe3ojFwXOQkIXEpOeZZiV3VqLmhU02OPsWfYBzJw+h7hIE5+NrpaAma907KZTFpBmN0qnfLJpoHkJ79bBOtR7Q07biyeKmN9BEM6K8OuA
+X-MS-Exchange-AntiSpam-MessageData-0: XNB0Pze+VV0f5q1Ysyg02DeTCC/CsyQomWCLlFCDWHNBpm/gpBqjLa2PONhR0LGmcoAB9lGLQnZqHx6z4RLGEGMlGpTtuWg0UIZgPY4RVS1fwIuVmv33M/UCOAEQXUCEoz897ckLvRAPgng3tWuT7fuyP9Ah9B8vHG3dEsuptX7/3ddi8oijSq72aHIiLRC15SjdHVQgA/6vxJ5vIdjT9KVBCcy7XzCutQVIa6iXo9KfftCAUIDO0vNSKsbujUu00SLAQGo+3qmTqS7f7WtCiN/mMHTG8D4fFNViMF/3REw23eKb3w9RUUn6x7zg0P6Un2OwgnsDsrlt7h7z3xbK8euZQSre3qb+YabujnU9D4QzdCCyjyZ8NLA/CLzy6KIRNnk5ePktR7Wcmv9RiCPWgsWgf8lSaYqcT5ZFH1YpZvBRAOxPJVMA0i4ya06b+euj
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2026 18:14:06.5928 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c91c68aa-cc24-44e3-5072-08dea488c56a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2026 18:14:40.2316 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 44d258bb-7378-4c58-20d3-08dea488d972
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A0FD.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EDD3.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7547
-Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB5785
+Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
  envelope-from=mhonap@nvidia.com;
- helo=PH8PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ helo=SJ2PR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 27 Apr 2026 15:56:56 -0400
+X-Mailman-Approved-At: Mon, 27 Apr 2026 15:57:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,76 +143,338 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Manish Honap <mhonap@nvidia.com>
 
-Sync the VFIO UAPI additions from the kernel CXL Type-2 passthrough
-series.
+setup_locked_hdm() runs as a machine_done notifier after all devices
+have been realized. It programs HDM decoder 0 with the CFMWS base
+address so the guest can fault into device memory from the first
+instruction.
 
-VFIO_DEVICE_FLAGS_CXL (bit 9) marks a device as CXL Type-2 and
-guarantees the capability chain includes a vfio_device_info_cap_cxl
-entry (cap id 6). That capability carries the BAR index holding the
-CXL component registers, flags for firmware-committed and cache-capable
-devices, the byte offset to the HDM Decoder Capability block within
-that BAR, and region indices for both the DPA memory region and the
-Component Register shadow.
+The notifier is only registered when the kernel reports the device as
+firmware-committed (VFIO_CXL_CAP_FIRMWARE_COMMITTED). The host is
+responsible for HDM decoder programming; the guest has no mechanism to
+remap host physical address mappings.
 
-Two new region subtypes:
-  VFIO_REGION_SUBTYPE_CXL (1): mmappable DPA memory
-  VFIO_REGION_SUBTYPE_CXL_COMP_REGS (2): HDM decoder shadow, r/w only
+The function uses cxl->fmws_base (set by the optional cxl-fmws-base
+device property) if non-zero; otherwise it falls back to the
+cxl_fmws_base global captured by cxl_fmws_set_memmap() during machine
+memory-map init. If neither is set, it warns and returns without
+programming anything.
 
-Note: UAPI headers are normally kept in sync via
-scripts/update-linux-headers.sh once upstream kernel changes merge.
-This patch manually adds the CXL Type-2 additions as a temporary
-measure to unblock QEMU development. It should be dropped and
-replaced with a proper header sync once the kernel series is accepted.
+If COMMIT_LOCK is set in decoder 0 CTRL at machine_done time (left-over
+from a prior FLR?), it is cleared before writing BASE so the subsequent
+write is not blocked. COMMIT_LOCK is re-set after programming so the
+hardware enforces the committed base.
+
+read_region() return is checked; failure aborts programming rather than
+leaving ctrl uninitialized. All write_region() failures are propagated.
+The function exits cleanly rather than leaving the decoder half-programmed.
+
+Add cxl_fmws_base as a hwaddr global in cxl-host.c (and a stub in
+cxl-host-stubs.c). It is set once by cxl_fmws_set_memmap() and read
+later at machine_done time.
 
 Signed-off-by: Zhi Wang <zhiw@nvidia.com>
 Signed-off-by: Manish Honap <mhonap@nvidia.com>
 ---
- linux-headers/linux/vfio.h | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ hw/cxl/cxl-host-stubs.c   |   2 +
+ hw/cxl/cxl-host.c         |   8 ++
+ hw/vfio/pci.c             | 176 +++++++++++++++++++++++++++++++++++++-
+ hw/vfio/pci.h             |   1 +
+ hw/vfio/trace-events      |   1 +
+ include/hw/cxl/cxl_host.h |  10 +++
+ 6 files changed, 196 insertions(+), 2 deletions(-)
 
-diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
-index 720edfee7a..62cd725a39 100644
---- a/linux-headers/linux/vfio.h
-+++ b/linux-headers/linux/vfio.h
-@@ -215,6 +215,7 @@ struct vfio_device_info {
- #define VFIO_DEVICE_FLAGS_FSL_MC (1 << 6)	/* vfio-fsl-mc device */
- #define VFIO_DEVICE_FLAGS_CAPS	(1 << 7)	/* Info supports caps */
- #define VFIO_DEVICE_FLAGS_CDX	(1 << 8)	/* vfio-cdx device */
-+#define VFIO_DEVICE_FLAGS_CXL	(1 << 9)	/* vfio-cxl device */
- 	__u32	num_regions;	/* Max region index + 1 */
- 	__u32	num_irqs;	/* Max IRQ index + 1 */
- 	__u32   cap_offset;	/* Offset within info struct of first cap */
-@@ -257,6 +258,19 @@ struct vfio_device_info_cap_pci_atomic_comp {
- 	__u32 reserved;
+diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+index c015baac81..0294d484c0 100644
+--- a/hw/cxl/cxl-host-stubs.c
++++ b/hw/cxl/cxl-host-stubs.c
+@@ -17,4 +17,6 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
  };
+ void cxl_fmws_update_mmio(void) {};
  
-+#define VFIO_DEVICE_INFO_CAP_CXL			6
-+struct vfio_device_info_cap_cxl {
-+	struct vfio_info_cap_header header; /* id=6, version=1 */
-+	__u8  hdm_regs_bar_index; /* PCI BAR containing CXL component registers */
-+	__u8  reserved[3];
-+	__u32 flags;             /* VFIO_CXL_CAP_* flags */
-+#define VFIO_CXL_CAP_FIRMWARE_COMMITTED (1 << 0)
-+#define VFIO_CXL_CAP_CACHE_CAPABLE      (1 << 1)
-+	__u64 hdm_regs_offset;   /* byte offset within BAR to CXL.mem register area */
-+	__u32 dpa_region_index;  /* VFIO region index for DPA memory */
-+	__u32 comp_regs_region_index; /* VFIO region index for COMP_REGS */
++hwaddr cxl_fmws_base;
++
+ const MemoryRegionOps cfmws_ops;
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index a94b893e99..f7e933f452 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -429,11 +429,19 @@ void cxl_fmws_update_mmio(void)
+     object_child_foreach_recursive(object_get_root(), cxl_fmws_mmio_map, NULL);
+ }
+ 
++/*
++ * GPA base of the first CXL Fixed Memory Window region placed in the memory
++ * map by cxl_fmws_set_memmap(). Set once at machine memory-map init time.
++ */
++hwaddr cxl_fmws_base;
++
+ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
+ {
+     GSList *cfmws_list, *iter;
+     CXLFixedWindow *fw;
+ 
++    cxl_fmws_base = base;
++
+     cfmws_list = cxl_fmws_get_all_sorted();
+     for (iter = cfmws_list; iter; iter = iter->next) {
+         fw = CXL_FMW(iter->data);
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 0270de61d2..2595229ea5 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -25,6 +25,7 @@
+ #include "hw/core/hw-error.h"
+ #include "hw/core/iommu.h"
+ #include "hw/cxl/cxl_component.h"
++#include "hw/cxl/cxl_host.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
+ #include "hw/pci/pci_bridge.h"
+@@ -3016,6 +3017,90 @@ static VFIODeviceOps vfio_pci_ops = {
+ /* HDM Decoder BASE_LO: bits [31:28] hold address bits [31:28] */
+ #define CXL_HDM_BASE_LO_ADDR_MASK       0xF0000000U
+ 
++static bool read_region(VFIORegion *region, uint32_t *val, uint64_t offset)
++{
++    VFIODevice *vbasedev = region->vbasedev;
++    uint32_t le_val;
++
++    if (pread(vbasedev->fd, &le_val, sizeof(le_val),
++              region->fd_offset + offset) != sizeof(le_val)) {
++        error_report("vfio-cxl: pread %s offset 0x%"PRIx64" failed: %m",
++                     vbasedev->name, offset);
++        return false;
++    }
++    /* CXL registers are little-endian; convert to host byte order. */
++    *val = le32_to_cpu(le_val);
++    return true;
++}
++
++static bool write_region(VFIORegion *region, uint32_t *val, uint64_t offset)
++{
++    VFIODevice *vbasedev = region->vbasedev;
++    /* CXL registers are little-endian; convert from host byte order. */
++    uint32_t le_val = cpu_to_le32(*val);
++
++    if (pwrite(vbasedev->fd, &le_val, sizeof(le_val),
++               region->fd_offset + offset) != sizeof(le_val)) {
++        error_report("vfio-cxl: pwrite %s offset 0x%"PRIx64" failed: %m",
++                     vbasedev->name, offset);
++        return false;
++    }
++    return true;
++}
++
++/*
++ * Direct pread/pwrite MemoryRegionOps for the CXL Component Register shadow.
++ *
++ * The generic vfio_region_ops routes guest MMIO through
++ * vfio_device_io_region_read() which returns EINVAL for vendor region
++ * index 10 at runtime.  The same pread() issued directly via
++ * region->fd_offset works fine, as vfio_cxl_derive_hdm_info() already does.
++ *
++ * The kernel enforces 4-byte aligned, 4-byte accesses on this region;
++ * valid and impl min/max_access_size are both set to 4 to match.
++ */
++static uint64_t vfio_cxl_comp_regs_mr_read(void *opaque, hwaddr addr,
++                                            unsigned size)
++{
++    VFIORegion *region = opaque;
++    VFIODevice *vbasedev = region->vbasedev;
++    uint32_t val = 0xFFFFFFFFU;
++
++    if (pread(vbasedev->fd, &val, size,
++              region->fd_offset + addr) != size) {
++        error_report("vfio-cxl: %s COMP_REGS read at 0x%"HWADDR_PRIx
++                     " failed: %m", vbasedev->name, addr);
++    }
++
++    val = le32_to_cpu(val);
++    trace_vfio_region_read(vbasedev->name, region->nr, addr, size, val);
++    return val;
++}
++
++static void vfio_cxl_comp_regs_mr_write(void *opaque, hwaddr addr,
++                                         uint64_t data, unsigned size)
++{
++    VFIORegion *region = opaque;
++    VFIODevice *vbasedev = region->vbasedev;
++    uint32_t val = cpu_to_le32((uint32_t)data);
++
++    if (pwrite(vbasedev->fd, &val, size,
++               region->fd_offset + addr) != size) {
++        error_report("vfio-cxl: %s COMP_REGS write at 0x%"HWADDR_PRIx
++                     " failed: %m", vbasedev->name, addr);
++    }
++
++    trace_vfio_region_write(vbasedev->name, region->nr, addr, data, size);
++}
++
++static const MemoryRegionOps vfio_cxl_comp_regs_mr_ops = {
++    .read = vfio_cxl_comp_regs_mr_read,
++    .write = vfio_cxl_comp_regs_mr_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = { .min_access_size = 4, .max_access_size = 4 },
++    .impl  = { .min_access_size = 4, .max_access_size = 4 },
 +};
 +
- /**
-  * VFIO_DEVICE_GET_REGION_INFO - _IOWR(VFIO_TYPE, VFIO_BASE + 8,
-  *				       struct vfio_region_info)
-@@ -373,6 +387,10 @@ struct vfio_region_info_cap_type {
- /* sub-types for VFIO_REGION_TYPE_GFX */
- #define VFIO_REGION_SUBTYPE_GFX_EDID            (1)
+ bool vfio_populate_vga(VFIOPCIDevice *vdev, Error **errp)
+ {
+     VFIODevice *vbasedev = &vdev->vbasedev;
+@@ -3404,6 +3489,78 @@ static bool vfio_cxl_derive_hdm_info(VFIODevice *vbasedev, VFIOCXL *cxl,
+     return false;
+ }
  
-+/* sub-types for VFIO CXL regions */
-+#define VFIO_REGION_SUBTYPE_CXL           (1) /* DPA memory region */
-+#define VFIO_REGION_SUBTYPE_CXL_COMP_REGS (2) /* HDM register shadow */
++/*
++ * setup_locked_hdm - machine_done notifier that programs HDM decoder 0 with
++ * the FMWS base address so the guest can access DPA through a stable GPA.
++ *
++ * Uses cxl->fmws_base (set by the optional cxl-fmws-base device property) if
++ * non-zero; otherwise falls back to the cxl_fmws_base global captured by
++ * cxl_fmws_set_memmap() during machine memory-map init.  If neither is set,
++ * the notifier warns and returns without programming anything.
++ */
++static void setup_locked_hdm(Notifier *notifier, void *data)
++{
++    VFIOCXL *cxl = container_of(notifier, VFIOCXL, machine_done);
++    VFIORegion *region = &cxl->comp_regs_region;
++    MemoryRegion *sys_mem = get_system_memory();
++    uint64_t hdm_base = cxl->hdm_decoder_offset;
++    uint32_t base_lo, base_hi, ctrl;
 +
- /**
-  * struct vfio_region_gfx_edid - EDID region layout.
-  *
++    if (!cxl->fmws_base) {
++        cxl->fmws_base = cxl_fmws_base;
++        if (!cxl->fmws_base) {
++            warn_report("vfio-cxl %s: CXL FMWS base not available",
++                        region->vbasedev->name);
++            return;
++        }
++    }
++
++    if (!read_region(region, &ctrl,
++                     hdm_base + CXL_HDM_DECODER0_CTRL_OFFSET(0))) {
++        error_report("vfio-cxl: %s failed to read HDM decoder 0 CTRL",
++                     region->vbasedev->name);
++        return;
++    }
++
++    /*
++     * If COMMIT_LOCK (bit 8) is still set in the virtual snapshot the kernel
++     * should have cleared it during open.  Warn and clear it here so the
++     * subsequent BASE write is not blocked.
++     */
++    if (ctrl & CXL_HDM_CTRL_COMMIT_LOCK) {
++        warn_report("vfio-cxl: COMMIT_LOCK set in HDM decoder 0 CTRL at "
++                    "machine_done; clearing before programming guest GPA");
++        ctrl &= ~CXL_HDM_CTRL_COMMIT_LOCK;
++        if (!write_region(region, &ctrl,
++                          hdm_base + CXL_HDM_DECODER0_CTRL_OFFSET(0))) {
++            return;
++        }
++    }
++
++    base_lo  = (uint32_t)(cxl->fmws_base & CXL_HDM_BASE_LO_ADDR_MASK);
++    base_hi  = (uint32_t)(cxl->fmws_base >> 32);
++    ctrl    |= CXL_HDM_CTRL_COMMIT | CXL_HDM_CTRL_COMMIT_LOCK;
++
++    if (!write_region(region, &base_lo, hdm_base +
++                      CXL_HDM_DECODER0_BASE_LOW_OFFSET(0)) ||
++        !write_region(region, &base_hi, hdm_base +
++                      CXL_HDM_DECODER0_BASE_HIGH_OFFSET(0)) ||
++        !write_region(region, &ctrl, hdm_base +
++                      CXL_HDM_DECODER0_CTRL_OFFSET(0))) {
++        error_report("vfio-cxl: %s failed to program HDM decoder 0",
++                     region->vbasedev->name);
++        return;
++    }
++
++    trace_vfio_cxl_locked_hdm(/* name */ region->vbasedev->name,
++                              cxl->fmws_base, base_lo, base_hi, ctrl);
++
++    memory_region_transaction_begin();
++    memory_region_add_subregion(sys_mem, cxl->fmws_base, cxl->region.mem);
++    memory_region_transaction_commit();
++    cxl->dpa_in_system_mem = true;
++}
++
+ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+ {
+     VFIODevice *vbasedev = &vdev->vbasedev;
+@@ -3471,8 +3628,11 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+         error_setg(errp, "vfio-cxl: failed to get COMP_REGS region info");
+         return false;
+     }
+-    ret = vfio_region_setup(OBJECT(vdev), vbasedev, &cxl->comp_regs_region,
+-                            comp_info->index, "cxl-comp-regs", errp);
++
++    ret = vfio_region_setup_with_ops(OBJECT(vdev), vbasedev,
++                                     &cxl->comp_regs_region,
++                                     comp_info->index, "cxl-comp-regs",
++                                     errp, &vfio_cxl_comp_regs_mr_ops);
+     if (ret) {
+         error_setg(errp, "vfio-cxl: failed to set up COMP_REGS region");
+         return false;
+@@ -3486,6 +3646,18 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+     trace_vfio_cxl_setup_params(vbasedev->name, cxl->hdm_regs_bar_index,
+                                  cxl->hdm_regs_offset, cxl->hdm_regs_size,
+                                  cxl->dpa_size);
++
++    /*
++     * Only pre-program the HDM decoder if the kernel reported the device as
++     * firmware-committed.  Non-committed devices need guest driver involvement
++     * to commit the decoder; registering the notifier for them would write an
++     * uncommitted BASE value that the hardware ignores.
++     */
++    if (cap->flags & VFIO_CXL_CAP_FIRMWARE_COMMITTED) {
++        cxl->machine_done.notify = setup_locked_hdm;
++        qemu_add_machine_init_done_notifier(&cxl->machine_done);
++    }
++
+     return true;
+ }
+ 
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index f3906f0c53..5667c6ec17 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -133,6 +133,7 @@ typedef struct VFIOCXL {
+     bool     dpa_in_system_mem;
+     VFIORegion region;
+     VFIORegion comp_regs_region;
++    Notifier   machine_done;
+ } VFIOCXL;
+ 
+ struct VFIOPCIDevice {
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 3bced3cebb..174e577837 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -202,3 +202,4 @@ vfio_device_detach(const char *name, int group_id) " (%s) group %d"
+ vfio_cxl_setup_params(const char *name, uint8_t bar, uint64_t hdm_off, uint64_t hdm_sz, uint64_t dpa_sz) " (%s) hdm_bar=%u hdm_regs_offset=0x%"PRIx64" hdm_regs_size=0x%"PRIx64" dpa_size=0x%"PRIx64
+ vfio_cxl_put_device(const char *name) " (%s) removing DPA region from system memory"
+ vfio_cxl_bar_subregion(const char *name, int nr, uint64_t off) " (%s) BAR%d comp_regs overlay at BAR offset 0x%"PRIx64
++vfio_cxl_locked_hdm(const char *name, uint64_t fmws, uint32_t blo, uint32_t bhi, uint32_t ctrl) " (%s) fmws_base=0x%"PRIx64" wrote decoder0 base_lo=0x%08x base_hi=0x%08x ctrl=0x%08x"
+diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+index 21619bb748..f890a5c0b9 100644
+--- a/include/hw/cxl/cxl_host.h
++++ b/include/hw/cxl/cxl_host.h
+@@ -20,6 +20,16 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr);
+ void cxl_fmws_update_mmio(void);
+ GSList *cxl_fmws_get_all_sorted(void);
+ 
++/**
++ * cxl_fmws_base - GPA base of the first CXL Fixed Memory Window region.
++ *
++ * Set by cxl_fmws_set_memmap() to the base address it receives (typically
++ * ROUND_UP(highest_gpa + 1, 256 MiB) on ARM virt). Valid after the
++ * machine memory-map init callback returns, i.e. at machine_done time.
++ * Zero when no machine has called cxl_fmws_set_memmap() (stub builds).
++ */
++extern hwaddr cxl_fmws_base;
++
+ extern const MemoryRegionOps cfmws_ops;
+ 
+ #endif
 -- 
 2.25.1
 

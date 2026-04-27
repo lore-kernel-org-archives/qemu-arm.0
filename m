@@ -4,104 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3279FFF8861
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 10:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31356FF8861
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 10:49:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHJRa-0005JP-O0; Mon, 27 Apr 2026 06:44:02 -0400
+	id 1wHJW9-0006g0-Cq; Mon, 27 Apr 2026 06:48:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHJQu-0005Fq-Gj
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 06:43:20 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1wHJVb-0006Zs-Mk
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 06:48:18 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHJQt-0001E8-2o
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 06:43:20 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-65005a8840dso8426042d50.0
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 03:43:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777286597; cv=none;
+ id 1wHJVS-0003N0-Pw
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 06:48:07 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-651bc8f864fso5394715d50.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 03:47:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777286877; cv=none;
  d=google.com; s=arc-20240605;
- b=AnBaehZSdOEqj/Oh9rSrbdGm+2V+o4BdfCGTq59aFU/WR4m8AfzPKdN6/DGnHNhmvw
- P4d7tGBjbDoO9fwT7nNCm4JTe4ygIuMwGZUxPVhzIJUStvl/Vxe7piSkfNAdUO2vSD55
- bycCPJLpqiKHbvPrCJhF0fuOp+1E6opvMwMWUV26KuvjEu8pSife7URYMKsd8HfGbPyv
- HVrk3UT9qK0dOLph3SO2Zze4EV89NvVxmtXiJdY+Xz6huhHN7JF6bcgGyI20I6FfD/Zq
- AxEoTqq5Ib0swTFmghCjksUpP+vWdSaR+tNC3ONsdGJoFgXu3C7BDbOiMb1O5hO631a7
- iRHQ==
+ b=Y0inMFBBEP19DDRGJwotU19FwBjCzU2SHziFyh15cJF6H124pV7SMB0g50nLyovG8E
+ ACGAIKqXS809U1bvJuDYZxMA067Qa/NYwWDgd3sBiIW6B0fcrL9Mw/qX13XoCVPWKUDl
+ jNayIjENy5H7Szd2uEDEHypwPqkexAw8nj+f7g+ertsu+rJmHr55nYBGqIQCSWoOXX5Z
+ asURE7CV/cGXhXRFWJzpMsJ5Tc+DSKG97oJD3tFfFx+9o0C9e6w1pZx8hDuYg+rc8F9W
+ jLEiDNC/G3xnLtU6iLcCunrEJk+HPGxwAypMCYGRb5n1fyKJXkbHpwi5enG0mqWPRNab
+ Kq4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=SA/p4WJP2E2300b7hYm1QwSr22CaEwN4z32UNz+3FuI=;
- fh=Y83ZuoXiuCy7YSjAcX3TnfmyrdbWMRs2LHjc2KbWLPA=;
- b=aAYG3mBeAPLq+wO6j1KR5Ee1LYyfds6A8+T5UijoNNqLg/sS2bkAPm9I/aVWBSRUv3
- ukziFK5wGs5QqfhgzlVKslgmMntq4pAnlp5V3dWUBwHfhonZbxDSNIJow/fzmov92T7M
- Np01kZsm/ggl3x9lot7D58lA5ILzQ1XvTl8t4t3CALmuAaDl5/DMHJ7qAT/WkUt+0bcw
- RWZlAxU2w9Y9sGuDX4g3HbA/i6n+oIsqyB8nXI5vAdl0QyErDIHAhzeg2BX8w6O/K8QU
- 50UQ3AmsliDpfIXFJyaSJg9mXkyqhBgbkc4RrEEptobAV0KJ9Pu/Qobqnl5MOlF9omyV
- 5jZg==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=z0t2lMK8mMOQqjFYJtMIq0BWSHEnCJiR8+4AnCrJmw0=;
+ fh=SiHvsRlpIgLH7ZsVUk5CXb2Ed6DqRKPQ2IullXXJHxA=;
+ b=CO6fbrXq69x3Jsvh7Y2F4CkkohPgWNHTBtgimqDWBoT0H0sYZzmYlt+xVWXsJJ0UMl
+ Q3CNNdKlBGcQpa58U7+o3ynGMytW0T/yEKsmoR+fO/FQ4UPGUMCSJ/kkcGpUk//810wY
+ 2M3Z3xkuLha350b2HRJt1zQM7PyOBdR2cMrFGLJ35ND1XQFANPGzmpZZYCU7Rn1xh8aZ
+ xO23NWwzhPC219wHQXyOjR/k5r39nnTOzlsUkdxtcz1HBBtJkGEOlx/EhkLFcxWZ22OU
+ BcbpG/2NhWK3LAdHtrVP+pNeW55PVRB+qm8dEiEzjB2mpkGID59EtkqcJIWryXfLCNRd
+ qH9Q==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777286597; x=1777891397; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=SA/p4WJP2E2300b7hYm1QwSr22CaEwN4z32UNz+3FuI=;
- b=qyj01+xgyvj5GHd8g7jGKI8xh2D3I3zYhWQFjmq5s0ERXvbZvLUL6DnYPYhXAms9FY
- z3BNmIPYuuhYtFE8qXBU2ZRjyw8vKRWZX3SFmhgkQLF70uL3o9TIMCub+fQW6HNt84NR
- 4OBgbHLtfM0+1+wGVYR/3fYGv9E0Sn5xVGe4fYipdfGyfDSuBEu7CzIr6K532nrUJVFD
- sxFdwmbEMgcCUzG70v8J9KWSmO/WdXUMmxr0Q7G2gnVrIQT1A060MVsEPlHuvumYwwUu
- XiqVljIBL+N14+fTq/BItp1JnQgjlFhuVvV5ai5n2GsqM5EEoFlJ7yuhpqnicwi9L6r4
- R+JA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777286597; x=1777891397;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777286877; x=1777891677; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SA/p4WJP2E2300b7hYm1QwSr22CaEwN4z32UNz+3FuI=;
- b=Mlio5RSRaa7TkF0quDuIgmbCWx3g+yTqKhf/knac6TCXG7JTk+tGB83f6w7Lpnbbu2
- usTMHUGa1nCcAXr4KEGRsxjNruOhN2VQkjF0W7D7xgNGAMcCAE7ygTgvQHPRWWHiyTcJ
- /esNw7GsflHF6M1soKn1h9LrKjnQJBXF3SnQoQswNvpB5XCnwrJpdUxSOI0ZLfHIYOd4
- ATzRR45f9ZHHlO/xHeuFd50kdjC3EkETx75DE9AvtjAwWkQ69lNHGAzwud48Z6ob3xkE
- acnEn1m3TO1X+QWig/1f9uScFkE50FUpYxWkQOIUlTBEbaZjAuRlRcUaQI3FBXa3W4tO
- 7ltQ==
+ bh=z0t2lMK8mMOQqjFYJtMIq0BWSHEnCJiR8+4AnCrJmw0=;
+ b=F3xHqwLkjDDIxAMxHtdqtKpMc5ffB7PCAIqKro4Nq+I5LZUuJURQoah9q64vu9WZSR
+ RGbZpIY8/43/t84J8bV31SJ8NstPENsQlF5FfF/XbS09n5CJSau69IcQ2Ny3eG7px2DP
+ YK3s5pW7PIbJlJzXVyHF8DfAi+lulIN48Iolrsbg9kibiTe9ogyqIltwQ9CDOkZVrE8w
+ DcRyl/wRCTiXrVA1azvTaw/yAe3RFSdQFVqZEQ6UQH0BUHK2Aokdbm3wRHdvCq+Qcun/
+ g5uUHqvzXfITYDvXTY89KaAQBTDM3C1euVtGzUuLIZacbC7zTrecE2q0E9A2QTXHmbu5
+ YRCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777286877; x=1777891677;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=z0t2lMK8mMOQqjFYJtMIq0BWSHEnCJiR8+4AnCrJmw0=;
+ b=Gw7dTh6BsbejSvgnEmEDK1tGf9tV0XGXwTvo4JsnAcUEPkPN0jS2JTK093AtwkMDAa
+ Jp+5pmEtG4/+SIfOdbjJGKO+k25fFkx40MA9PwWIO+xikFb25nkEbosmzB/1Lcc5ioO4
+ qbUyXQgh64kM6O5j/fAxeS7/Er++10ZmI9Z+1g3I29GWLOp2tNdqp1HvSsMofmg5GSnJ
+ UPSEe4V035r+MYlKm3ZBOEpMWlzagsXQHf5x1p7oHv/GvqsjjXmg519YQc4M7ATpD8lf
+ Nq2aR3fq9taw4bKT08n5AT2OCuy963xGd/Dayl6thSALJ1D41VNvh26F46ehgQ9vskCW
+ WYnQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/VV2lKu+a/sO/hXn0Pp0LHehDSiY3+jgtrr7QwNvkcMh4z0aWfh8cZ3OriRY7TeEfobgBkV57UCg==@nongnu.org
-X-Gm-Message-State: AOJu0YwFmV79ltW36O0EOTtpGXDf/NVo824FgMumspsf2ZG5n8Mrw12f
- gvbDuCD8vJ2PC4tqIwG/qRNsBOi44+EwzNd4CH0ILgRAXYl6/ILGxcOlnMWrWMarReQid18+wdb
- K4E/c/Vj52pkQPlJtS58Z+s2k872xOdnUvaolWe11+A==
-X-Gm-Gg: AeBDievU7ABv8YakQm5C38vBZTOr4REFwx7j8d9OJm0AAxM9wBPLbgH8zibFy9GflS7
- Q2bHYnG7cmiKlrOFj/OLcP9XVRWKfhjTg9Yqg8C5wcWjg4sbt+HiCvZ9rppLcokJrsShFutDq2f
- IoF/6aof65r+czGtMp9of1lwn19YZk/IoJZcLlFP+0/jV3Fhuir24oc3z3YBnHAs/+7P6lPHCU9
- T3VrOfJCX7s1lXUBTA7lXiarE7PvfKp6C39y/KsvDlDnjzZjPLErc38n0LyekpSSkLuyqvsZ5Ym
- vcwxK+OB42cn7I+eTlxBqnLzblESkZ4agrWuUfTtNEfgPO4AAdOx0yKfBBBGZRPsE6LL5b75xCE
- 5Zw==
-X-Received: by 2002:a05:690e:2501:20b0:650:849:db44 with SMTP id
- 956f58d0204a3-65310a13c3emr28702564d50.38.1777286597272; Mon, 27 Apr 2026
- 03:43:17 -0700 (PDT)
+ AFNElJ+IpgumPYeYtZCtmU3zjXuAhf4Zk3RImO/axgPs9ZZmT0sEOmKKALDBgs4utTx7adJMUwJCX22b/w==@nongnu.org
+X-Gm-Message-State: AOJu0YzzWpOcIEsvcig/muoRljNAq8bMyhTDV14NgN5lx+cFZKi8KKaJ
+ fZaQJvfKUqA0RhkF+w2WYDyqJQNMxInb/ze++9F/iKwWRM3aIANpAlCVG+7GbnN8SMMUUkYxXSe
+ mJyO3WFdOy/AmvLCZh8SnnSxJCYxvthq3LzdtgY7a+Q==
+X-Gm-Gg: AeBDies4wVJigjDBkLpoqH1QEhaSWBC2fl26ONjYtsr7YEIi2YPDNzrcIe4QbVRRJyf
+ wEEXs8nsUXJi993DF8R3RH+eOB8NFjK43h3n0e95/3PGCLRYL5nhaJySUufIwTIn++h79aTNMBZ
+ S39h/b6XtAPpzncoe+HDiR/Tit2ZLl5BQEBLnP1In5ejRmSH9KE04tA8EuaNCRSV/vxD2MLNs/r
+ qzItpUWutfEUL+82LH0ixbc0sATjmga0h/UHEE6eYYdYIm7HST+G3JzfAxK8HOrVqjxhLSUKl1x
+ jcyu+vVUymQMAkqmS0Z6KOguLO9ucyxe6ZkXCn+DfQjB5utZvOFW7SYPsJpnzmKMkVG7fhP+LNB
+ Gu3MSl1p29t9q
+X-Received: by 2002:a05:690e:1905:b0:657:1da9:7b36 with SMTP id
+ 956f58d0204a3-6571da98231mr10668146d50.17.1777286876891; Mon, 27 Apr 2026
+ 03:47:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260412110240.93116-1-yangyanglan718@gmail.com>
-In-Reply-To: <20260412110240.93116-1-yangyanglan718@gmail.com>
+References: <20260422125250.1303100-1-alex.bennee@linaro.org>
+ <87y0ic43v1.fsf@draig.linaro.org>
+In-Reply-To: <87y0ic43v1.fsf@draig.linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2026 11:43:03 +0100
-X-Gm-Features: AQROBzBLkDZMWh4beHsvpnVOqjj5HKT85qoUTmyXv7wJ7j_18ZlP1SkhXct8gFY
-Message-ID: <CAFEAcA-6+Qekb--xqCa49yNtkKAgkLnWLf=Q+Bf5WER9cOxmeQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] i.MX6UL LCDIF device model and SoC wiring
-To: Yucai Liu <yangyanglan718@gmail.com>
-Cc: pbonzini@redhat.com, jcd@tribudubois.net, qemu-devel@nongnu.org, 
+Date: Mon, 27 Apr 2026 11:47:44 +0100
+X-Gm-Features: AQROBzAuWfBl6vKMDHcIkxAyChVzQ7RDQMDZuaOHzbl4_ymulHU4IgwrU8kBqe4
+Message-ID: <CAFEAcA_R-B7QHzSPmR+qhdn_ZRj=hx45Z4WrWaDmjnOpPn=b7w@mail.gmail.com>
+Subject: Re: [PATCH v3 00/32] target/arm: fully model WFxT instructions for
+ A-profile
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>, 
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>, kvm@vger.kernel.org,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,31 +123,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 12 Apr 2026 at 12:02, Yucai Liu <yangyanglan718@gmail.com> wrote:
+On Fri, 24 Apr 2026 at 19:20, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> From: Yucai Liu <1486344514@qq.com>
+> Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 >
-> This series adds a basic i.MX6UL LCDIF device model under hw/display
-> and wires it into the i.MX6UL SoC.
+> > This series fully models the behaviour of WFxT instructions. We
+> > already had support for WFE for M-profile but we left off A-profile as
+> > it has more potential sources of wake-ups. The main one is the event
+> > stream which includes events from significant bits of the timer
+> > ticking over.
+> >
+> > The series starts with some refactoring of the syndrome register
+> > helpers to use registerfields. We then expand the WFIT trap handling
+> > to report the register used. We then implement the event stream events
+> > for SEV, global monitor and the timer related ones before enabling WFE
+> > for A-profile and then finally WFET.
+> >
+> > Note on AI usage. As an experiment I previously posted an RFC series
+> > with the help of Gemini. This series however is a ground up
+> > re-implementation which takes some different approaches on modelling
+> > the event stream. In particular rather than running multiple timers we
+> > use the same wxft timer and just compute if the timeout or timer event
+> > will come first.
+> >
+> > v2
+> >   - I've kept the tests separate, see:
+> >
+> >     Message-ID: <20260417164328.1009132-1-alex.bennee@linaro.org>
+> >     Date: Fri, 17 Apr 2026 17:43:20 +0100
+> >     Subject: [PATCH 0/7] tests/tcg: more capabilities for aarch64-softm=
+mu tests
+> >     From: =3D?UTF-8?q?Alex=3D20Benn=3DC3=3DA9e?=3D <alex.bennee@linaro.=
+org>
+> >
+> >   - tweaks to global monitor behaviour
+> >   - STLR/STL will also trigger events to avoid deadlocks
+> >   - see under the --- in the patches for details
+> >
+> > v3
+> >   - fixed the WFE exception handling
+> >
+> > Alex.
+> >
+> > Alex Benn=C3=A9e (32):
+> >   target/arm: migrate basic syndrome helpers to registerfields
+> >   target/arm: migrate system/cp trap syndromes to registerfields
+> >   target/arm: migrate FP/SIMD trap syndromes to registerfields
+> >   target/arm: migrate eret trap syndromes to registerfields
+> >   target/arm: migrate SME trap syndromes to registerfields
+> >   target/arm: migrate PAC trap syndromes to registerfields
+> >   target/arm: migrate BTI trap syndromes to registerfields
+> >   target/arm: migrate BXJ trap syndromes to registerfields
+> >   target/arm: migrate Granule Protection traps to registerfields
+> >   target/arm: migrate fault syndromes to registerfields
+> >   target/arm: migrate debug syndromes to registerfields
+> >   target/arm: migrate wfx syndromes to registerfields
+> >   target/arm: migrate gcs syndromes to registerfields
+> >   target/arm: migrate memory op syndromes to registerfields
+> >   target/arm: migrate check_hcr_el2_trap to use syndrome helper
+> >   target/arm: use syndrome helpers in arm_cpu_do_interrupt_aarch32_hyp
+> >   target/arm: use syndrome helpers to set SAME_EL EC bit
+> >   target/arm: make whpx use syndrome helpers for decode
+> >   target/arm: make hvf use syndrome helpers for decode
+> >   target/arm: use syndrome helpers in merge_syn_data_abort
+> >   target/arm: use syndrome helpers to query VNCR bit
+> >   target/arm: remove old syndrome defines
+> >   target/arm: report register in WFIT syndromes
 >
-> Changes in v3:
-> - merge the previous "build symbol" patch into the device patch
-> - drop the unrelated hw/arm/meson.build line-wrap-only change
-> - fix commit message formatting (use real newlines)
-> - use 16 KiB for the LCDIF MMIO region size in both device and SoC map
-> - rework register indexing/storage to match 0x10-spaced register layout
-> - apply SET/CLR/TOG semantics only to registers that have those aliases
-> - set CTRL1 reset value to 0x000f0000
-> - remove redundant 32bpp host-surface check
-> - move realize-time cleanup to unrealize
+> Peter,
 >
-> Yucai Liu (2):
->   hw/display: Add i.MX6UL LCDIF device model
->   hw/arm/fsl-imx6ul: Wire in the LCDIF device model
+> Do you think you could take the patches up to here so I don't need to
+> hold the re-factoring patches in the tree?
 
-
-
-Applied to target-arm.next, thanks.
+Sure; applied 1-23 to target-arm.next.
 
 -- PMM
 

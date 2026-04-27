@@ -4,84 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA66DFF8867
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:46:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88045FF8868
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:46:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHRu5-0002MB-VR; Mon, 27 Apr 2026 15:46:02 -0400
+	id 1wHRtb-0007PG-RQ; Mon, 27 Apr 2026 15:45:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wHRu4-0002C7-8I
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:46:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wHRtZ-00073p-Qu
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wHRu2-0000Ah-Qw
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:59 -0400
+ id 1wHRtX-0008Lo-UL
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777319158;
+ s=mimecast20190719; t=1777319127;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1c8VsTz/sTG4tzp9Faceii6mKYJmoEBKWa3DjmDQEWE=;
- b=MUDwIZ1IwPgpue3S1Lw4S6WIEuynWKLk2Ogh32PKW+I27ENosuMsGdPZt6AH//FoFpkJtx
- qwtCnKtkSVE7kI9J0BWDDi6V/q7N/IoMNaucxmyK+Opzr6x3Kw7OLUHGTk95RKYtn8xcu3
- B8/a4sBKapWcUpwoUHK6Vli1e99MONo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=oU4SNskSDPFZiif/NOcNoCJdXW+fc2i/XPbr9XUbsk0=;
+ b=GWc5XlJVVNvfYUTaEO0CPJqckvgdQDO0FlALjjO3w0vkM51yoYHqhXG8rmxArVVcbfxLaK
+ Iij5v4BvgKaSt2w+MyAYtWq74J8mLzgTD8o773PZCGpv//jq70yvowDFji/+pG0rcASzkc
+ Ru6MTvzQtWY34YziAX53pPHsu4/0AdI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-175-L27mdzMwMXW_UBxAymJhQg-1; Mon,
- 27 Apr 2026 15:45:52 -0400
-X-MC-Unique: L27mdzMwMXW_UBxAymJhQg-1
-X-Mimecast-MFC-AGG-ID: L27mdzMwMXW_UBxAymJhQg_1777319151
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-302-DZew6p90MVaRME9onTFi8Q-1; Mon,
+ 27 Apr 2026 15:45:22 -0400
+X-MC-Unique: DZew6p90MVaRME9onTFi8Q-1
+X-Mimecast-MFC-AGG-ID: DZew6p90MVaRME9onTFi8Q_1777319121
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 80B53180065B; Mon, 27 Apr 2026 19:45:51 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 64BFE1800367; Mon, 27 Apr 2026 19:45:20 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.6])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 04833195608E; Mon, 27 Apr 2026 19:45:49 +0000 (UTC)
+ id B05FA196B8FB; Mon, 27 Apr 2026 19:45:18 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 27 Apr 2026 23:42:33 +0400
-Subject: [PATCH 34/41] hw/arm/virt: free flash devices and OEM strings on
- finalization
+Date: Mon, 27 Apr 2026 23:42:28 +0400
+Subject: [PATCH 29/41] hw/fsi: move OPBus address space init to realize
 MIME-Version: 1.0
-Message-Id: <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
+Message-Id: <20260427-qom-tests-v1-29-c413f3605311@redhat.com>
 References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
 In-Reply-To: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: armbru@redhat.com, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1638;
+ Ninad Palsule <ninad@linux.ibm.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2716;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=o92YyJD/bOFOENYE87KlzSXzoL53pQjL+BGFBW2kk0s=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBp77wW48UjKTU8KoPx74n2xI5CJTczJW/EUjYlC
- R3ZW1ir2jmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCae+8FgAKCRDa6OEJdZac
- 5WoWD/9dw9rvRCWsv0ETBfKlzGEEGcrQO1E77pa4/nW2MaZjxOBMlucGXfhnDoQBBMD4PVg8I9z
- f02jLPGBD6CN8wQcbCkG24hYz42o3oxxu7fb2Vbhklx+U4aH5HnjnTPA7darMNvF6NTynKIdqXQ
- +Fdrs1fbQKScqWWRQ5Lgg/gOH2XFAKMEebv0B+2lN0pbU5/c2ju6CR+IeoL1hjtGfAsjELlTAb3
- J6u5gAIWdWRq3GsyALc3CLeWy+xAUP7q7FYXvETchMa6rkpM7BEIbW7YVnXipqwZEw19bpjrRxE
- xHs4OdrK1Ei1AeavuXn2ZDpSkWw0NVVaoYuAXENLYO74j4DbF9zPAMnXO5iFJ9X43DsaqBZOXZx
- Y6XNAcchBzGg24RQvz9YB2xlL/bMCylsdzDZFtDAvO+q98SOnh0qop2MFpTGTeSkCGPvfmFikwv
- M7cF54ulM5wpU+rYmlwekDKJezkDNw4P4psluQeDwau7v+jrQQAAdq1THoMrPr+PHh6wISNpEXc
- AOoLaO6fq2Xyeh2BSBtnhKqk6j9h1U+NAS+YkSKfkaAs/8rPh9aL3POG2rkXPWEYnLLpSlbpvDG
- wOIXVlM1Sr68v54HJVNOf0Lz9bCRYimvm1X2RpcAETQwzAKiqM3NjASLoNnRdh5sr7tB9BDH9Jl
- 9VwjIDwjIxrEeFw==
+ bh=BS8tdTzpkf4ZJcQmTy07g8mUo37sYFyz7sUGqL/kRMQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBp77wVAfCGmF7+C/wG/j5UXHa8K7V/bavziGb/I
+ 4m4DPa4chOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCae+8FQAKCRDa6OEJdZac
+ 5d44D/9oYfS6O6eLw30OBwOwiUXqwI+itdapJnwCWfu+Gi+CmBIiIyuATT/LL+x9PrTukg6/OM2
+ cBKaJT/ShE+tjzg+2g0X9oSZS2pHVV70LCBCF65nanhCL8ww4xFVXOfFd8b8Yt/lih/EeL6cA6Q
+ 8xnfNwXGo4MkpLQPyxs9ReVXyPh4KTUHeTWyP377R3YP3OQErDTigSLlJMUNXd4wVT4q+ZuflSx
+ aTTviPy4GVXih+ZHpgHhnPA/J+valLmY4Jhz0kytR/8A3UX7rrq13j5Wz6/zdbXE8HSQfi/mdJs
+ YcFLjg+pox4EZwFRDsvyupY3A4iPbq5olpCIRSWZb5lMOKHiywauRmVEuCuoh4O0rHdzPq+3hFI
+ cioO4Q8PAdQCtV1YtDEkJLpgnpnTMMBHr/ZQvAbIpU1N1LrKen/3iK+78D0dBCxAAuNwNUAGBmX
+ OTNTow+JgHX46z3uwTiH6bUX7lZRSOyVUrUa0OT+LUO1XhYW5Ni9AZ391SXwcGa+eyDDsRGceCT
+ nFAfI6kcknXxgg20qAhwCc//RjIwfmDoRFqM1BKIXDjMzeapojx6271IW04OZeKwbFCxCTNFcKb
+ GuBqVEc+W1EjLK+Jc1gaGhTtV/yiqGCkG75IFs42nCzznfeLrdUo3tirD3r+ZczAylYAlLHaP51
+ jqxPPlUnAmWD7uw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 3lfkeQUX3q3zo1S7uEoo9fDl0AJ7VkI2xs0I_sRlU1M_1777319151
+X-Mimecast-MFC-PROC-ID: M9amYC9WS-eAJ3PZLagnsaIEkd3-T6IFaW14hVvnM8M_1777319121
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -89,8 +94,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,49 +111,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Flash devices created in instance_init via qdev_new() hold an extra
-reference that is only dropped on sysbus_realize_and_unref(). When the
-machine is destroyed before realization, the flash objects leak. Also,
-the oem_id and oem_table_id strings from g_strndup() are never freed.
+The OPBus instance_init initializes an AddressSpace, registering it in
+the global address_spaces list. When a bare OPBus object is created
+and destroyed (e.g. by qom-tests), there is no finalize to remove the
+stale entry, leading to a heap-use-after-free when a subsequent
+flatviews_reset iterates the list.
 
-Fixes: 602b458201ff ("acpi: Permit OEM ID and OEM table ID fields to be changed")
+Move address_space_init to the bus realize callback and add the
+corresponding address_space_destroy in unrealize, following the
+NubusBus pattern. Also fix the memory_region_init owner from NULL to
+the OPBus object, so the MR is properly parented instead of dangling
+under the "unattached" container.
+
+Fixes: eb04c35da2c0 ("hw/fsi: Aspeed APB2OPB & On-chip peripheral bus")
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/virt.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ hw/fsi/aspeed_apb2opb.c | 31 +++++++++++++++++++++++--------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f62253e1aba..fac825ccd47 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -4032,6 +4032,19 @@ static void virt_instance_init(Object *obj)
-     cxl_machine_init(obj, &vms->cxl_devices_state);
- }
+diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
+index b9d72f3ecf6..5d1e471288b 100644
+--- a/hw/fsi/aspeed_apb2opb.c
++++ b/hw/fsi/aspeed_apb2opb.c
+@@ -282,13 +282,6 @@ static void fsi_aspeed_apb2opb_realize(DeviceState *dev, Error **errp)
+     AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
+     int i;
  
-+static void virt_instance_finalize(Object *obj)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    for (int i = 0; i < ARRAY_SIZE(vms->flash); i++) {
-+        if (vms->flash[i] && !qdev_is_realized(DEVICE(vms->flash[i]))) {
-+            object_unref(OBJECT(vms->flash[i]));
-+        }
-+    }
-+    g_free(vms->oem_id);
-+    g_free(vms->oem_table_id);
+-    /*
+-     * TODO: The OPBus model initializes the OPB address space in
+-     * the .instance_init handler and this is problematic for test
+-     * device-introspect-test. To avoid a memory corruption and a QEMU
+-     * crash, qbus_init() should be called from realize(). Something to
+-     * improve. Possibly, OPBus could also be removed.
+-     */
+     for (i = 0; i < ASPEED_FSI_NUM; i++) {
+         qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s),
+                   NULL);
+@@ -348,15 +341,37 @@ static void fsi_opb_init(Object *o)
+ {
+     OPBus *opb = OP_BUS(o);
+ 
+-    memory_region_init(&opb->mr, 0, TYPE_FSI_OPB, UINT32_MAX);
++    memory_region_init(&opb->mr, o, TYPE_FSI_OPB, UINT32_MAX);
 +}
 +
- static const TypeInfo virt_machine_info = {
-     .name          = TYPE_VIRT_MACHINE,
-     .parent        = TYPE_MACHINE,
-@@ -4040,6 +4053,7 @@ static const TypeInfo virt_machine_info = {
-     .class_size    = sizeof(VirtMachineClass),
-     .class_init    = virt_machine_class_init,
-     .instance_init = virt_instance_init,
-+    .instance_finalize = virt_instance_finalize,
-     .interfaces = (const InterfaceInfo[]) {
-          { TYPE_HOTPLUG_HANDLER },
-          { }
++static void fsi_opb_realize(BusState *bus, Error **errp)
++{
++    OPBus *opb = OP_BUS(bus);
++
+     address_space_init(&opb->as, &opb->mr, TYPE_FSI_OPB);
+ }
+ 
++static void fsi_opb_unrealize(BusState *bus)
++{
++    OPBus *opb = OP_BUS(bus);
++
++    address_space_destroy(&opb->as);
++}
++
++static void fsi_opb_class_init(ObjectClass *klass, const void *data)
++{
++    BusClass *bc = BUS_CLASS(klass);
++
++    bc->realize = fsi_opb_realize;
++    bc->unrealize = fsi_opb_unrealize;
++}
++
+ static const TypeInfo opb_info = {
+     .name = TYPE_OP_BUS,
+     .parent = TYPE_BUS,
+     .instance_init = fsi_opb_init,
+     .instance_size = sizeof(OPBus),
++    .class_init = fsi_opb_class_init,
+ };
+ 
+ static void fsi_opb_register_types(void)
 
 -- 
 2.53.0

@@ -4,102 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0461FF8861
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 09:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 596EEFF8861
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 09:10:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHHto-0003q7-I9; Mon, 27 Apr 2026 05:05:04 -0400
+	id 1wHHz7-0005Ml-T3; Mon, 27 Apr 2026 05:10:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHHtg-0003p3-Kc
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:05:02 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHHte-0007PS-Es
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:04:56 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-65318dafbcbso9654992d50.2
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 02:04:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777280691; cv=none;
- d=google.com; s=arc-20240605;
- b=QNDzBgrS/06zcCZ3fxKGCbgZJtXePT2Eo/tccYiYS9H0zHivUvtNQBquePiwkvqZWA
- CkAInoNw0DqMHeyxqg5H6V53TxmixeJQFmiU6EmvAKpN27FCc9S1/npxY1sqoF1T8kam
- gSCV7npL6UwfdhBeBWnBIAEIciqYfb6pvEUwdUVn+nOr78MHTfYiosh7JiugPWIuBrc6
- 526wIURcHxh9leUWgXVb++Wv/ExAoiOHTa16NvmirpAPJabcSjH7COvzROwLMuUkzT86
- sExZso/XmtOkJqqVvAI5vmTRkWJk9T0XQFxRcxM8M8BY+WvDFb3F+lQ0WNWKvYhOXAqt
- FmWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=LpYw5xfAKYbUjRA2dLrJ+YsP9hBfmAiCQXc93R3jdiY=;
- fh=wasvv0eGVZBy3gZNxaXj31ITBGw/CpGxqjprmPadPm0=;
- b=Ye2xDBV1gNl0Se9Cyb31+CD4lf718YAMXJamTfT2JoYwNU2IyVwKoHpKXn9dzi/zYq
- 76x+t3CJejb9XxfAmU39yD17e6nC2IlhVeDkjqYF4k92BJC52XCg0+OHgHP4XleB79Jb
- UjczjSAqJQaYcUbQs6FQej11LSk4EVPPdp2jpWjc3mRaAVv+4cIF/KavSkAEQjIgpeom
- ifPr/IsC93EbGiLuzl/wquuZsGYjEh5AmVTxf/kwXfB+V7omBsNhbUG+TvTACz77Vokq
- lbmGgLAzxBp5Nxe7u+UYNubGkFH0jzgyPZ0C+jJdRkkIeNbwgwuVe+42eFgZrsD8sXHy
- /7qw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777280691; x=1777885491; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=LpYw5xfAKYbUjRA2dLrJ+YsP9hBfmAiCQXc93R3jdiY=;
- b=GKm1PBxQGfp0sJR9ISwJ5GeFBGDneDIK48DUBmMniNkVa+zRqSi4LJ7DkHeO2vG+EK
- +RAodchHR9fFjs3fzo6STaeTEYx9ZMaYdktIOBoPQuLeOyuc7PHJnI3a0bcqDYc4BIdq
- Z9XWm2ZXhw7Db+W23NW1ETU9yKCzh92UEaKNKWZYRIddOC2VrjjbCj05grmV35erEOkY
- YUIW+LWxfyj1H/PGXByCsK8apv1Vqewey9Mtw+xkt/0kp11iZwukuKjz17ZQ/UlrvAXf
- Ql1EYd4kSxkaBz5qiBfv9IwxEBZ8M+l4kP+SHYfxEa5BYjMIxdj9qo0UK1LJLyAXrgxx
- EAKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777280691; x=1777885491;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=LpYw5xfAKYbUjRA2dLrJ+YsP9hBfmAiCQXc93R3jdiY=;
- b=QnbNDj+vuea7y7BwLPCCVU1m1Z+eHg1AWa4HCWimQLvg3Lzc56tRBN59F0iNZPtCoR
- jZ0XTaABs28ncnox+B6fr0Opv5oaPwC+wKbmuYopQoUxBv6ptfy0wzl1VgUDl5BA58qH
- zm3ELMMEPkbxJ9GFwoqWHud6IPGkfbz0WsozgwuKrSfZSDgj6sv1EaI3Xu488pgITe/R
- Gc33bznxovZWeZaxec6N9k120BtyUBefH/UxYWLrOcxlsTvLnRSSUKVw/lHNZCWexDLn
- 3FQ/qMtD0/yCHhqPrbWw3Ca3ZfHjB0ybSiUs3SrqYedUMkWkcuHPjxRfI7050zDj7c11
- fjBg==
-X-Gm-Message-State: AOJu0YyrOzQozZoOjm/MbNGemMrHBkp91WYOUon+tCy3zsSMaKvoXciE
- mRV/5W3oep42Ezf0K36zDnVd/amFA3l45LH62fiFUd0s/u++aDOM/pw0Q7P/JMRBIwShCxqLWpx
- rbEqWGwqBfmQw9FEJePNhYRu3hwH1PAFJ2Xoga0hjZQ==
-X-Gm-Gg: AeBDiesk+0r9Mpb2kLfdmBDfsBZsmvgzPYTWrkGBOSKK7fQI2SQjhDzXLHQRjnPt/KX
- sfznaPwL6pp1nBqpSjTfyHk8ikidE+wCyb5mh0OFzcllxib4P7LtZaiGtTDR628VRkM++wwnfdR
- 7L3i45qdDSytCiGMZNPnhjcNol6Uo9jjq+7SI3asqVfKpl4Gvr5mKbmez269LK61Y1KBENpzxVc
- vyRS/Mt7dvtnCXP6YXuX5Y04kKKIi7wwIQGztF5gUfzDaRvKE2t0ww4CaDrGVFoAXGGoSTawmzf
- HcJTD/aXtIdZq9s2UDDImqnVAG0ZrkiuOYDvonL3FxRUwCGccJLW75fzoR7yP0I49u+HQBhoqym
- EpoVGCH4BczYG
-X-Received: by 2002:a53:d017:0:b0:656:7c25:8927 with SMTP id
- 956f58d0204a3-6567c258f1emr8733456d50.11.1777280691143; Mon, 27 Apr 2026
- 02:04:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1wHHz5-0005L2-IA; Mon, 27 Apr 2026 05:10:32 -0400
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1wHHz2-00011q-V4; Mon, 27 Apr 2026 05:10:31 -0400
+Received: by linux.microsoft.com (Postfix, from userid 1236)
+ id 16FD620B7169; Mon, 27 Apr 2026 02:10:21 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 16FD620B7169
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1777281021;
+ bh=RfKVMs36N62/rwHGAjYb/f8kec9Pu9SZ1gBZB1dATII=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=sbM1sPhkBaTZEjF1t8NO2EIhREt+u6G/VPhl/dfAWRD+/SpkfxY8YlOORLZQarreM
+ mWdtzZguUaX6qBTSXxaN9+Zs4spLdstZPjWnPDCoOZ6szbn09DcG6c9KVldVzYJbo+
+ ATaZn3bEFDu0CHvY2fAUUaDg7slox+00ByrFxcOY=
+Date: Mon, 27 Apr 2026 02:10:21 -0700
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Wei Liu <wei.liu@kernel.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ =?iso-8859-1?Q?=22Daniel_P=2E_Berrang=E9=22?= <berrange@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anirudh Rayabharam <anirudh@anirudhrb.com>,
+ Magnus Kulke <magnus.kulke@linux.microsoft.com>,
+ qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Pedro Barbuda <pbarbuda@microsoft.com>
+Subject: Re: [PATCH v3 10/14] target/arm: extract MMIO emulation logic for
+ HVF & WHPX
+Message-ID: <ae8n/bv2HDzwfBMq@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
+References: <20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com>
+ <20260421-mshv_accel_arm64_supp-v3-10-469f544778ba@linux.microsoft.com>
+ <0E102AEB-7196-4968-B016-16879EF0D034@unpredictable.fr>
 MIME-Version: 1.0
-References: <20260420064933.64765-1-thuth@redhat.com>
-In-Reply-To: <20260420064933.64765-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2026 10:04:39 +0100
-X-Gm-Features: AQROBzAzJ-_Tfus8JWz8Rfv-y3VIBYCwlAqJFBCYhS0rJbK6xCvWyUywjPwL14A
-Message-ID: <CAFEAcA9nuHHRKjvv+o7k6Zyi2AUUea3=trrgLY-9Lwp2kjuagw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Remove hw_error() for the unimplemented
- CM_LMBUSCNT register
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <0E102AEB-7196-4968-B016-16879EF0D034@unpredictable.fr>
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,40 +75,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 20 Apr 2026 at 07:49, Thomas Huth <thuth@redhat.com> wrote:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> When writing to this register, QEMU currently aborts:
->
->  $ echo "readl 0x10000018" | ./qemu-system-arm -audiodev none,id=snd0 \
->     -M integratorcp,accel=qtest,audiodev=snd0 -display none -qtest stdio
->  [I 0.000000] OPENED
->  [R +0.001907] readl 0x10000018
->  qemu: hardware error: integratorcm_read: CM_LMBUSCNT
->  [...]
->  Aborted                    (core dumped)
->
-> This is bad, a guest should ideally never be able to kill QEMU like this.
->
-> Now, according to the "Intergrator/CP User Guide" from:
->
->  https://developer.arm.com/documentation/dui0159/b/porting-integrator-ap-and-im-pd1/registers
->
->  "The Integrator/AP CM_LMBUSCNT has been removed."
->
-> That means this register does not seem to be implemented on real CP boards
-> at all, only for older AP boards. Thus it should be fine if we simply
-> ignore this register in QEMU and handle it like all other unimplemented
-> registers in the "default" handler of the case statement.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3407
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
+On Tue, Apr 21, 2026 at 08:51:07AM +0200, Mohamed Mediouni wrote:
+> 
+> 
+> > On 21. Apr 2026, at 07:21, Aastha Rawat <aastharawat@linux.microsoft.com> wrote:
+> > 
+> > - Move common MMIO emulation code from HVF and WHPX backend to
+> >  arm_emulate_mmio() in helper.c.
+> > - Update HVF and WHPX to use the new helper and shared types.
+> 
+> Hi,
+> 
+> This one is a bit interesting and not sure if it’s ok in this form.
+> 
+> That’s for one reason: it causes a slowdown on WHP and HVF by fetching
+> state (and sometimes setting) outside of their respective shared register pages.
+> 
+> In both of those APIs, the existence of the shared register page is opaque/hidden
+> away, but if you aren’t careful about what you fetch you’re going to hit the slow
+> path very easily.
+> 
+> On x86 WHPX, we have a state level abstraction with a FAST_RUNTIME_STATE
+> that only fetches a (sub)set accessible that is readable using only information
+> from the shared register page - and that is supposed to be enough for the vast
+> majority of MMIO - that doesn’t touch the FP/MMX/SSE register files.
+> 
+> And another possibility is putting it in a target/arm/emulate with mimicking
+> the x86_emul_ops interface with adding register callbacks to that so that state
+> is fetched/set dynamically.
 
+Thanks for the review. I agree with you, the current approach fetches far 
+more state than needed for a typical MMIO access, which only touches a 
+single GP register (Xt). That would indeed bypass the shared register 
+page fast path on both HVF and WHPX.
 
+I like the suggestion of mirroring the x86_emul_ops pattern. For v4, I'll 
+rework this to introduce a struct (arm_emul_ops) with register access 
+callbacks, something along the lines of:
 
-Applied to target-arm.next, thanks.
+struct arm_emul_ops {
+    uint64_t (*get_reg)(CPUState *cpu, unsigned reg);
+    void (*set_reg)(CPUState *cpu, unsigned reg, uint64_t val);
+};
 
--- PMM
+This would use the existing backend implementation for WHPX & HVF. 
+HVF can use hvf_get_reg()/hvf_set_reg(), WHPX can go through the 
+shared register page via whpx_get_reg()/whpx_set_reg(), and MSHV 
+can access env->xregs[] directly since it already syncs state in the 
+run loop.
+
+I'll have this reworked in v4.
+
+Thanks,
+Aastha
 

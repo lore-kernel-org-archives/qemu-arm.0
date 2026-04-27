@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D543FFF8860
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 18:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B763FF8868
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 18:46:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHQud-0002il-7t; Mon, 27 Apr 2026 14:42:31 -0400
+	id 1wHQxt-0003Yu-4o; Mon, 27 Apr 2026 14:45:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wHQub-0002iS-Sk
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 14:42:29 -0400
-Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wHQxq-0003Y1-UY
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 14:45:51 -0400
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wHQuZ-00018Y-CI
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 14:42:29 -0400
-Received: by mail-dy1-x1331.google.com with SMTP id
- 5a478bee46e88-2b4520f6b32so15181306eec.0
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 11:42:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lucaaamaral@gmail.com>)
+ id 1wHQxo-0002zv-Uq
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 14:45:50 -0400
+Received: by mail-dy1-x1333.google.com with SMTP id
+ 5a478bee46e88-2bdcf5970cdso8630953eec.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 11:45:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777315345; x=1777920145; darn=nongnu.org;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1777315547; x=1777920347; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9D9752LVMe2fTIJea87T8EvGRre91VlA7lnj2zzLGng=;
- b=BDLLZ0FmCuS1omgFRPCad7kIcEfZ2JZn+QRCwQ0OA2yMuHoywJe09dcxbuQplrGTj8
- ciQvsHnAkL29cx/xsXOE4/LaKVAjS7CgKPdTERt+Fu0nAgPsLDcEnz43URFz7iYEx8Kl
- Y3mEOE6HBvzf+ufPLBOLxvc9aLAriyrEpbO4iSz5qvFD1A/f5+d3nuK7cGF9+GIoJSkk
- sNPYHPDBkPmVbbqbkCrWnq3Dzr22Kw0yJ7lJMskjyD9vOfl6pUsfdtAxIk4IaZ+SZsFa
- YbvAG0xCnECc1FOmoeM3xFFARX/AxVnhRg3JAjcTg8sQGmfEukhmXClpG14kLI8JguHe
- goqA==
+ bh=IrP8N0Kqzi52kg9uWLeb5pWndyrGgYxvvDEjOX0XXgM=;
+ b=US9YODJyidPiFpAqf93pvbfMQ2QDPwXpbJ0ZGqch/WZ94XBCbfllzwT462O4uAFW2c
+ DHAYAsQH/a7OqChtDXJ9LY8O8G1TkRjHfxiwjJ8Ivp2KIWFZDUxt/sQgiaJw6Yq6e8Bu
+ 3LsJpvjfaimAdORZH+IX0B8HsiriOLV1S/QkG9pWhjaxvaOdmAZm7k7F8zpz6drNx3dq
+ U0IxrWrcpcZKHPZPFjNmkfy9M0xk1XNVcEZACmP/WJo5O+kD544SII7sXtAsHDyFM0zL
+ ExP8KHNfY6XlIoRBKw2HMApeFcDR6h7fHnnejXvu0CpVOPiTKsM3HtEKGVOPAKcfEHqs
+ 9gvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777315345; x=1777920145;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9D9752LVMe2fTIJea87T8EvGRre91VlA7lnj2zzLGng=;
- b=Z8GSL3GjDefRunso2eivugD8emPPp8KAe+BISXIDewRkQcksOzLWqbyMigh5UY6YW9
- WbI7jHA90fEwU2B/zyDmjrrKnnAQUg1d8gRKxRJmHMDX6To1XTNJrtW0mY+I1VR2xza1
- t6HryREtv+ZVdxQ7tt6dpN0n2hUgScvAebNnMjhf4DN0oEONlQdkD7foZelcYkIhDoen
- iFryPyn6STU/rNs5LlQdSlauue10ft6mDvPSaw/4hQLnKOBlxw1IF8DmucspYdEjwOoL
- HmWXm+77+WuI7QuoF0tar/eWh4kRlNufXxp7LomhKsUPzBigR46E6lJDTS4bMPBZ0LQL
- wk0Q==
+ d=1e100.net; s=20251104; t=1777315547; x=1777920347;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=IrP8N0Kqzi52kg9uWLeb5pWndyrGgYxvvDEjOX0XXgM=;
+ b=cBjV2nq/nwouRf9+pINdCuXq5+HjVyMez9CM72ApXqf2OhoBjo1q5jvDBms/oK1snM
+ M2I/tFAZ16fwLgUY62fk2gOUmZ7SIFUajZSnYyUbwWTzN+KJtcMYDuj5rKCcxyqBRmCj
+ NNkaj2xEvb5CjLVjrvPwFonlH90t91ATR/WpuATuEmy6Qcqd7MnxpTSDlMQOcjii6OB7
+ xfrASolw0lG7KN4YQr4wGgufrXs8noukmIkguBVHUK6ectb4uR6fRu9dhPuakHSeNpb2
+ IqvVv1L68hxUsGz8b3JyAA8x/oiQSM6SOqAhJQQr1YhaVe92970S+vhlR6Ca3YZ1/+vt
+ QpqQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8BISX1FlXtc/FjVfBrWqT50O2A6zV+VHTcicH2SDALEKb6tk91qL8vtlD5UnKkomCtwGO9HEflzQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxTc4ow25tNcG7eX1vXJ9mvPeRD07QeRWd6co1D7FYSQ12lQxbr
- MH3LC729JwVDrOrJw/WgCijGywS+cbSHq68pxI1jAiZkHIG12FiVDy5L
-X-Gm-Gg: AeBDiev/S/N4vg54pZ76N4iVKCOPjpBY69WvEDcYReBRVWf9CnOMB2pK0HONGqIaTW9
- jBFitHNvUlMvS5EJUo13HRGd7AypKnYq4DPEylx+MfT/BksiM/pF2U0AFibsgLFq4LpAiKFks7L
- vkUjGZRXJtMAUWRy4eY8J8bURdPEpSEhRxaeYXDRQfEbQYEKZgW9ZmCay6JEB0KBDR17AkzBRgK
- RxFZ1am+ZwaLEbAKDkSPhlWaB8284izv2ZAnYueYrXugqXf6Bip4qbY3qoC+0iolOXNz6q9KJKy
- EDR7CpVKHf7L2neTYRa6FFQLc3uMm/FXTHYfaYcOUvlCcvmZAjWnLibIw5/YYQQGuZIssVde6Po
- u/OMLGUrw6BWbhLJJDAnlLlvM0Ur5gB30iVnlmuCxLm8al9Uxn2DUTnHmeG7OvDDLI3w3o3EmG4
- y5HPC6NS2C3LQ4Ub39vL3jGKcdArPwm0DCRERzrVzWJKWHtKJHjLnI0WicmoqneKRxyefHh6NIN
- RDlAXwKmbTj4AegRrm3vN4/TsAVzfHg
-X-Received: by 2002:a05:7301:1691:b0:2df:71f0:e5b3 with SMTP id
- 5a478bee46e88-2ed0a1403bfmr16838eec.20.1777315345223; 
- Mon, 27 Apr 2026 11:42:25 -0700 (PDT)
-Received: from localhost ([2601:645:8200:47:f4a5:bd04:3ca7:5727])
+ AFNElJ/TU1OSDxF4Iyugqd3hJQxXtN0Vpmnds2TeQXN5o657KhDa6ngvL13D0MeLl5qtOCzghg9B0EdDVw==@nongnu.org
+X-Gm-Message-State: AOJu0YzbfD2B7PZ0+Y4eMFql12YKtShZL3XeMFSStrNzZI9o8D13Bcw+
+ v8vLWPdMulycYcqJmwibyZHGhrupO6ucRP67gCXK5e9VZX72tWxdu7n1
+X-Gm-Gg: AeBDieu1UCXOM0Fr4ZG3LW3ljScaPTKHwfY8Qf0M8ztuJpnaVJY+qyDrz0TLTb68Ak9
+ aAcPMFdroG5BMX7FPboQudsEuJ+vsA+Pau2G2scG0hPVUmOHRX8EhG9Arzf5u0ibUqgRk1NBnlQ
+ yQPThk1CmIwKUMqAQ/qO9MaV63cYAYIEexY/lAky2eSoB0rBnGbbHwnyax1heKomahYMEn2Esix
+ 4XosIMYkk+GlOp5D0vvu2HMYhB1LflUA0Bj8SRRqCAT9+mvZ0Mso6pq+QxHyAddon7YcwTE+Mhf
+ WEjxR3eclWDzHhLWT3cABCeJeQuCY8YXhnY75U5NMpe63Cbi1wclRjW92FHgfNvTEZ5APzw38qp
+ SDOG5db+3DywhTIuohQ8R4o7uSEJSGOcXhnZCWkZoUFdibc7gx/yJgsualZeqMBxVQjZypjP3BF
+ +6MVzCZl9CNwwBx/KpTGJtFzdW16fkAcJiP05HNHk5cPk6kaQYzTnfQg4JBc9Yk1rRbq805XLHK
+ w==
+X-Received: by 2002:a05:7300:d70d:b0:2be:9c19:b34b with SMTP id
+ 5a478bee46e88-2ed097b91f1mr103317eec.4.1777315546820; 
+ Mon, 27 Apr 2026 11:45:46 -0700 (PDT)
+Received: from localhost.localdomain ([2804:7f4:c030:44a8:bc8a:495b:f1cd:ad63])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2ed09f8f2b2sm88182eec.1.2026.04.27.11.42.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2026 11:42:24 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+ 5a478bee46e88-2ed09fd6e19sm76230eec.13.2026.04.27.11.45.43
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 27 Apr 2026 11:45:46 -0700 (PDT)
+From: Lucas Amaral <lucaaamaral@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>
+Subject: Re: [PATCH v6 0/6] target/arm: ISV=0 data abort emulation library
+Date: Mon, 27 Apr 2026 15:45:40 -0300
+Message-ID: <20260427184540.80415-1-lucaaamaral@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <CAFEAcA-8BeBte6CxH._5F5Zsk3wvs0zJJW6+=8cNaroRTBegK-M5A@mail.gmail.com>
+References: <20260409220614.65558-1-lucaaamaral@gmail.com>
+ <CAFEAcA-8BeBte6CxH._5F5Zsk3wvs0zJJW6+=8cNaroRTBegK-M5A@mail.gmail.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Date: Mon, 27 Apr 2026 11:42:23 -0700
-Message-Id: <DI45PH4NASOO.3MQVHIFL83QFX@gmail.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <rbolshakov@ddn.com>,
- <phil@philjordan.eu>, <agraf@csgraf.de>
-Subject: Re: [PATCH v2] target/arm/hvf: Fix WFI halting to stop idle vCPU
- spinning
-From: "Scott J. Goldman" <scottjgo@gmail.com>
-To: "Peter Maydell" <peter.maydell@linaro.org>, "Scott J. Goldman"
- <scottjgo@gmail.com>
-X-Mailer: aerc 0.21.0
-References: <20260410044726.61853-1-scottjgo@gmail.com>
- <20260410055045.63001-1-scottjgo@gmail.com>
- <CAFEAcA9RHQ+7++=kLn2goJwcgzDnaqdkQtQBtxQ2Rw1-uiKY=g@mail.gmail.com>
-In-Reply-To: <CAFEAcA9RHQ+7++=kLn2goJwcgzDnaqdkQtQBtxQ2Rw1-uiKY=g@mail.gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1331;
- envelope-from=scottjgo@gmail.com; helo=mail-dy1-x1331.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1333;
+ envelope-from=lucaaamaral@gmail.com; helo=mail-dy1-x1333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,136 +108,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon Apr 27, 2026 at 4:15 AM PDT, Peter Maydell wrote:
-> On Fri, 10 Apr 2026 at 06:50, Scott J. Goldman <scottjgo@gmail.com> wrote=
-:
->>
->> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
->> changed hvf_wfi() from blocking the vCPU thread with pselect() to
->> returning EXCP_HLT, intending QEMU's main event loop to handle the
->> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
->> always returns false and the vCPU thread spins at 100% CPU per core
->> while the guest is idle.
->>
->> Fix this by:
->>
->> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps on
->>    halt_cond in qemu_process_cpu_events().
->>
->> 2. Arming a host-side QEMU_CLOCK_HOST timer to fire when the guest's
->>    virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
->>    because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->>    hv_vcpu_run(), which is not called while the CPU is halted. The
->>    timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
->>    vtimer IRQ through the GIC and marks vtimer_masked, causing the
->>    interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
+On 2026-04-27, Peter Maydell wrote:
+> looking at this I share Mohamed's question about how much of the
+> atomics/etc we really need. This is a thousand lines of code
+> handling instructions that in a lot of cases the guest really
+> ought not to be using on MMIO regions in the first place.
 >
-> A host side timer here seems a bit odd -- it will still
-> expire even if the user halts the whole VM. We only use
-> QEMU_CLOCK_HOST timers for things that are part of QEMU proper,
-> like handling timeouts in the migration networking code.
->
->> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->> index 2621164cb2..58fb865eba 100644
->> --- a/include/system/hvf_int.h
->> +++ b/include/system/hvf_int.h
->> @@ -48,6 +48,7 @@ struct AccelCPUState {
->>      hv_vcpu_exit_t *exit;
->>      bool vtimer_masked;
->>      bool guest_debug_enabled;
->> +    struct QEMUTimer *wfi_timer;
->>  #endif
->>  };
->
-> QEMUTimer objects need to be migrated. I think as it is now,
-> if you do a migration while one vCPU is in WFI we won't
-> migrate the timer state, and so on the destination it won't
-> be woken up when it should.
+> If we have real examples of this being needed, that's one thing,
+> but I'm not very enthusiastic about implementing 'doesn't actually
+> have the atomic properties' instructions otherwise.
 
-Hi Peter--
+Some empirical data first.  This series was motivated by an
+observed workload: the original Venus development capture (Ubuntu
+24.04 ARM64 + vulkaninfo + vkmark) showed ~1.8M SIMD/FP load-pair
+(vLDP) ISV=0 faults plus a few thousand other ISV=0 hits on
+LDR/LDP/STP/STR variants — guest-side accesses into virtio-gpu
+blob memory that the renderer had been forced to map via the
+subregion fallback (MAP_FIXED rejected as unaligned), trapping as
+MMIO with a syndrome that can't encode pair semantics.  Without
+this series, those 1.8M hits land on the assert(0) in HVF and the
+guest is dead.
 
-Thanks for the review here. I am going to post a follow-up patch based
-on your comments, but I did want to just flag that migration is broken
-in hvf/arm right now (segfaults in the dirty page tracking code). Of
-course, I can post fixes for that as well.
+Patches 4/6 and 5/6 (exclusives, atomics, CAS, PAC) were included
+for correctness against the ARM spec rather than to satisfy any
+observed traffic — same capture had zero hits on LDXR/STXR/STXP/
+LDXP/LDADD/LDCLR/LDEOR/LDSET/LDSMAX/LDSMIN/LDUMAX/LDUMIN/SWP/CAS/
+CASP.  The intent was to cover every load/store class the spec
+permits with ISV=0, so that paths I haven't observed (different
+device, different driver, different guest OS) don't fall through
+to assert(0) either.
 
+I instrumented every trans_*() and the HVF data-abort dispatch,
+then re-ran the same workload on top of the MAP_FIXED alignment
+fix currently in flight:
 
->
->> +static void hvf_wfi_timer_cb(void *opaque)
->> +{
->> +    CPUState *cpu =3D opaque;
->> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
->> +
->> +    /*
->> +     * vtimer expired while the CPU was halted for WFI.
->> +     * Mirror HV_EXIT_REASON_VTIMER_ACTIVATED: raise the vtimer
->> +     * interrupt and mark as masked so hvf_sync_vtimer() will
->> +     * check and unmask when the guest handles it.
->> +     *
->> +     * The interrupt delivery chain (GIC -> cpu_interrupt ->
->> +     * qemu_cpu_kick) wakes the vCPU thread from halt_cond.
->> +     */
->> +    qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
->> +    cpu->accel->vtimer_masked =3D true;
->
-> If the VM happens to be stopped by the user when the timer
-> fires, this will change the VM state, which I suspect is
-> not correct. Avoiding use of a QEMU_CLOCK_HOST timer would
-> fix this.
->
->> +}
->> +
->>  static int hvf_wfi(CPUState *cpu)
->>  {
->> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
->> +    uint64_t ctl, cval;
->> +    hv_return_t r;
->> +
->>      if (cpu_has_work(cpu)) {
->>          /*
->>           * Don't bother to go into our "low power state" if
->> @@ -2037,6 +2068,34 @@ static int hvf_wfi(CPUState *cpu)
->>          return 0;
->>      }
->>
->> +    /*
->> +     * Set up a host-side timer to wake us when the vtimer expires.
->> +     * HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->> +     * hv_vcpu_run(), which we won't call while halted.
->> +     */
->> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, =
-&ctl);
->> +    assert_hvf_ok(r);
->> +
->> +    if ((ctl & TMR_CTL_ENABLE) && !(ctl & TMR_CTL_IMASK)) {
->> +        r =3D hv_vcpu_get_sys_reg(cpu->accel->fd,
->> +                                HV_SYS_REG_CNTV_CVAL_EL0, &cval);
->> +        assert_hvf_ok(r);
->> +
->> +        uint64_t now =3D hvf_vtimer_val_raw();
->> +        if (cval <=3D now) {
->> +            /* Timer already expired, don't halt */
->> +            return 0;
->> +        }
->> +
->> +        uint64_t delta_ticks =3D cval - now;
->> +        int64_t delta_ns =3D delta_ticks * NANOSECONDS_PER_SECOND
->> +                           / arm_cpu->gt_cntfrq_hz;
->
-> As a general rule, tick-to-ns and vice-versa conversions should
-> use muldiv64() to avoid potential overflow in the intermediate value.
->
->> +        int64_t deadline =3D qemu_clock_get_ns(QEMU_CLOCK_HOST) + delta=
-_ns;
->> +
->> +        timer_mod(cpu->accel->wfi_timer, deadline);
->> +    }
->> +
->> +    cpu->halted =3D 1;
->>      return EXCP_HLT;
->>  }
->
-> thanks
-> -- PMM
+  https://patchew.org/QEMU/20260424000544.9617-1-lucaaamaral@gmail.com/
 
+Result: zero ISV=0 faults across the run (2.68M ISV=1 dispatches).
+The alignment fix resolves at source: blob now lands in mapped RAM,
+no MMIO trap, the ISV=0 path goes silent on this workload.
+
+So the question is what role this series plays going forward.  My
+intent was a defensive path covering the load/store classes that
+can legitimately fault with ISV=0 per the ARM spec, so QEMU degrades
+gracefully — emulate when meaningful, inject a clean data abort when
+not — instead of the current assert(0) the moment a guest happens to
+touch MMIO with an instruction the syndrome can't describe.  The
+same wiring covers WHPX, which has the same syndrome limitation.
+
+I want to make sure I'm addressing the right concern before
+respinning.  Two readings of your and Mohamed's comments:
+
+(a) Scope: trim instruction classes with no observed use case.
+    Smaller series, less spec coverage at decode level.
+
+(b) Correctness: keep full spec coverage at decode, but per-class
+    handlers do what's actually correct: emulate where we can
+    preserve semantics, inject a fault where we can't.  Atomics
+    (LDADD/SWP) and exclusives' store half (STXR/STXP) go to the
+    fault path — we can't honor RMW atomicity, since the read→write
+    window can be observed by other vCPUs if BQL doesn't cover it
+    continuously, and STXR claiming success without an exclusive
+    monitor lies to the guest.  Plain loads (LDXR by itself) could
+    legitimately emulate since they make no atomicity claim.
+
+If it's (a), I'd respin trimming patches 4/6 and 5/6 entirely,
+keeping framework + immediate + pair.
+
+If it's (b), I'd respin replacing the atomic/exclusive/CAS/PAC
+trans_*() bodies with `return false` (UNHANDLED → inject data
+abort).
+
+Either way the existing wiring in hvf.c already error_report()s on
+every UNHANDLED before injecting, so operator visibility is
+covered.  Happy to downgrade that to warn_report_once() so a guest
+spinning on an unsupported insn doesn't flood the host log — that
+addresses Mohamed's earlier "warn somewhere" suggestion in a place
+where it actually fires.
+
+If it's both, the (b) shape covers both — explicit fault on the
+classes you don't want emulated, framework still in place to handle
+the legitimate cases without an assert.
+
+Could you and Mohamed confirm which reading is correct?  Happy to
+respin either direction once I know.
+
+Thanks,
+Lucas
 

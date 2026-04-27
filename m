@@ -4,85 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88045FF8868
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DD2FF8868
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:47:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHRtb-0007PG-RQ; Mon, 27 Apr 2026 15:45:32 -0400
+	id 1wHRu1-0001tl-5g; Mon, 27 Apr 2026 15:45:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wHRtZ-00073p-Qu
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:30 -0400
+ id 1wHRu0-0001ld-1x
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wHRtX-0008Lo-UL
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:29 -0400
+ id 1wHRty-0000A1-JQ
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 15:45:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777319127;
+ s=mimecast20190719; t=1777319154;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oU4SNskSDPFZiif/NOcNoCJdXW+fc2i/XPbr9XUbsk0=;
- b=GWc5XlJVVNvfYUTaEO0CPJqckvgdQDO0FlALjjO3w0vkM51yoYHqhXG8rmxArVVcbfxLaK
- Iij5v4BvgKaSt2w+MyAYtWq74J8mLzgTD8o773PZCGpv//jq70yvowDFji/+pG0rcASzkc
- Ru6MTvzQtWY34YziAX53pPHsu4/0AdI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=M2PkMqAC5vaH2G5gTELChNOqj8Q/G8/EbVxLibW6cbY=;
+ b=D5TrRONtMy4g0vu/zIkMyKtwsAg3OdojISlUOJAo/Z07mFRmgPZfI2DKZ1grBw2jY2+iRy
+ UDGXMuFNPQ+Hbv+MkdVr6xfYlGxOT7sSmFbaa0FgKzqowPmN/LTjTIOlndVacOkwRFuIsa
+ fYHhyo6zOwvJHOpZSimI2Zw9OFEKhNs=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-302-DZew6p90MVaRME9onTFi8Q-1; Mon,
- 27 Apr 2026 15:45:22 -0400
-X-MC-Unique: DZew6p90MVaRME9onTFi8Q-1
-X-Mimecast-MFC-AGG-ID: DZew6p90MVaRME9onTFi8Q_1777319121
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-556-_eoWI6QNPJ-W5oCIJLgS-g-1; Mon,
+ 27 Apr 2026 15:45:49 -0400
+X-MC-Unique: _eoWI6QNPJ-W5oCIJLgS-g-1
+X-Mimecast-MFC-AGG-ID: _eoWI6QNPJ-W5oCIJLgS-g_1777319145
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 64BFE1800367; Mon, 27 Apr 2026 19:45:20 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8302A195608E; Mon, 27 Apr 2026 19:45:45 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.6])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B05FA196B8FB; Mon, 27 Apr 2026 19:45:18 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EA00330078C0; Mon, 27 Apr 2026 19:45:43 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 27 Apr 2026 23:42:28 +0400
-Subject: [PATCH 29/41] hw/fsi: move OPBus address space init to realize
+Date: Mon, 27 Apr 2026 23:42:32 +0400
+Subject: [PATCH 33/41] hw/arm/sbsa-ref: free unrealized flash devices on
+ finalization
 MIME-Version: 1.0
-Message-Id: <20260427-qom-tests-v1-29-c413f3605311@redhat.com>
+Message-Id: <20260427-qom-tests-v1-33-c413f3605311@redhat.com>
 References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
 In-Reply-To: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: armbru@redhat.com, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Ninad Palsule <ninad@linux.ibm.com>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
  Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2716;
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1629;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=BS8tdTzpkf4ZJcQmTy07g8mUo37sYFyz7sUGqL/kRMQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBp77wVAfCGmF7+C/wG/j5UXHa8K7V/bavziGb/I
- 4m4DPa4chOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCae+8FQAKCRDa6OEJdZac
- 5d44D/9oYfS6O6eLw30OBwOwiUXqwI+itdapJnwCWfu+Gi+CmBIiIyuATT/LL+x9PrTukg6/OM2
- cBKaJT/ShE+tjzg+2g0X9oSZS2pHVV70LCBCF65nanhCL8ww4xFVXOfFd8b8Yt/lih/EeL6cA6Q
- 8xnfNwXGo4MkpLQPyxs9ReVXyPh4KTUHeTWyP377R3YP3OQErDTigSLlJMUNXd4wVT4q+ZuflSx
- aTTviPy4GVXih+ZHpgHhnPA/J+valLmY4Jhz0kytR/8A3UX7rrq13j5Wz6/zdbXE8HSQfi/mdJs
- YcFLjg+pox4EZwFRDsvyupY3A4iPbq5olpCIRSWZb5lMOKHiywauRmVEuCuoh4O0rHdzPq+3hFI
- cioO4Q8PAdQCtV1YtDEkJLpgnpnTMMBHr/ZQvAbIpU1N1LrKen/3iK+78D0dBCxAAuNwNUAGBmX
- OTNTow+JgHX46z3uwTiH6bUX7lZRSOyVUrUa0OT+LUO1XhYW5Ni9AZ391SXwcGa+eyDDsRGceCT
- nFAfI6kcknXxgg20qAhwCc//RjIwfmDoRFqM1BKIXDjMzeapojx6271IW04OZeKwbFCxCTNFcKb
- GuBqVEc+W1EjLK+Jc1gaGhTtV/yiqGCkG75IFs42nCzznfeLrdUo3tirD3r+ZczAylYAlLHaP51
- jqxPPlUnAmWD7uw==
+ bh=8wpYSEdYwoIU5tUZLybA2hUuHMnCp+KlNmMB/+ET4dQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBp77wV06CFj7hU2c0ZsBhZ0KcgP4PY3RTTUXEPN
+ bRTQukYYHqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCae+8FQAKCRDa6OEJdZac
+ 5eBIEACXMPEDc3nHnUDB7r7nxHaJQV7rnZW20f4A9ijvHe1etzhDlhofGT9nPrC9rOpd1x1ZbI0
+ /82NqaELAEkcGEsU7U8xj7AYdKjPeoJG4/On99rxa3gtAptqfo84oHPEqV/PLmef1ghkA6rMDvQ
+ t5wZWe2taCU3Xztf/bgENfdp7xq1meGpXdCzvT2dNC8800yc4n903es+6DJiL1H8jJBrKQoJ/SY
+ sa26dFWazW4YkDx2pgCLtdJWt3aiK0LyVN9zlsLlHhKKV4kBLHQURLxJ1i10/oUMGLOTuEUkg0W
+ uv9loq7oSH25EGtvVMSfFGIaVi+5zB0iL2lD7OW3am56GOT5y3yEaPt3Yh3QK9ExvNnMf26wT6b
+ M0KsLYQqc3sZImyvd/VaN7uj2XXtOd3k7A52kUjr6aA1duMo/LddkHqIPTlXT3qZ5azcXPkynZc
+ kb3zaSfiKnZlI0nNS7x9GmnWG4DKiHNHmUaR9g38u5Y1kzQgnn7ZvvyeU9CJJW08F2Jf8OUgI9X
+ Ht7+Vp18PFksUIc37C2YJ4iTCJldw2WIIHMHNWkZE+f9g57DCzOpuVMqHn0EtQGJQLOVhxvKmNC
+ zdkE2e72gujIwCbvubhl+oW+paYXtWNQSy9uYt/CNPjbizGkSzn3XA9R+lxTLLK2MuPFYK0nDGu
+ dRo/021qlK179eg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: M9amYC9WS-eAJ3PZLagnsaIEkd3-T6IFaW14hVvnM8M_1777319121
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: Ypx4BAWJxMoVFk5ZaPx_T9IIExjOtm8c_qHhxemUCpk_1777319145
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -95,7 +91,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,81 +107,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The OPBus instance_init initializes an AddressSpace, registering it in
-the global address_spaces list. When a bare OPBus object is created
-and destroyed (e.g. by qom-tests), there is no finalize to remove the
-stale entry, leading to a heap-use-after-free when a subsequent
-flatviews_reset iterates the list.
+Flash devices are created with qdev_new() in instance_init and added as
+children, but the initial reference from qdev_new() is only dropped by
+sysbus_realize_and_unref() during machine init. When the machine object
+is destroyed before realization (e.g. during qtest device introspection),
+the flash devices leak.
 
-Move address_space_init to the bus realize callback and add the
-corresponding address_space_destroy in unrealize, following the
-NubusBus pattern. Also fix the memory_region_init owner from NULL to
-the OPBus object, so the MR is properly parented instead of dangling
-under the "unattached" container.
-
-Fixes: eb04c35da2c0 ("hw/fsi: Aspeed APB2OPB & On-chip peripheral bus")
+Fixes: e9fdf453240e ("hw/arm: Add arm SBSA reference machine, devices part")
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/fsi/aspeed_apb2opb.c | 31 +++++++++++++++++++++++--------
- 1 file changed, 23 insertions(+), 8 deletions(-)
+ hw/arm/sbsa-ref.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
-index b9d72f3ecf6..5d1e471288b 100644
---- a/hw/fsi/aspeed_apb2opb.c
-+++ b/hw/fsi/aspeed_apb2opb.c
-@@ -282,13 +282,6 @@ static void fsi_aspeed_apb2opb_realize(DeviceState *dev, Error **errp)
-     AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
-     int i;
- 
--    /*
--     * TODO: The OPBus model initializes the OPB address space in
--     * the .instance_init handler and this is problematic for test
--     * device-introspect-test. To avoid a memory corruption and a QEMU
--     * crash, qbus_init() should be called from realize(). Something to
--     * improve. Possibly, OPBus could also be removed.
--     */
-     for (i = 0; i < ASPEED_FSI_NUM; i++) {
-         qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s),
-                   NULL);
-@@ -348,15 +341,37 @@ static void fsi_opb_init(Object *o)
- {
-     OPBus *opb = OP_BUS(o);
- 
--    memory_region_init(&opb->mr, 0, TYPE_FSI_OPB, UINT32_MAX);
-+    memory_region_init(&opb->mr, o, TYPE_FSI_OPB, UINT32_MAX);
-+}
-+
-+static void fsi_opb_realize(BusState *bus, Error **errp)
-+{
-+    OPBus *opb = OP_BUS(bus);
-+
-     address_space_init(&opb->as, &opb->mr, TYPE_FSI_OPB);
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 52c35e10c2d..484b90053e8 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -892,6 +892,17 @@ static void sbsa_ref_instance_init(Object *obj)
+     sbsa_flash_create(sms);
  }
  
-+static void fsi_opb_unrealize(BusState *bus)
++static void sbsa_ref_instance_finalize(Object *obj)
 +{
-+    OPBus *opb = OP_BUS(bus);
++    SBSAMachineState *sms = SBSA_MACHINE(obj);
 +
-+    address_space_destroy(&opb->as);
++    for (int i = 0; i < ARRAY_SIZE(sms->flash); i++) {
++        if (sms->flash[i] && !qdev_is_realized(DEVICE(sms->flash[i]))) {
++            object_unref(OBJECT(sms->flash[i]));
++        }
++    }
 +}
 +
-+static void fsi_opb_class_init(ObjectClass *klass, const void *data)
-+{
-+    BusClass *bc = BUS_CLASS(klass);
-+
-+    bc->realize = fsi_opb_realize;
-+    bc->unrealize = fsi_opb_unrealize;
-+}
-+
- static const TypeInfo opb_info = {
-     .name = TYPE_OP_BUS,
-     .parent = TYPE_BUS,
-     .instance_init = fsi_opb_init,
-     .instance_size = sizeof(OPBus),
-+    .class_init = fsi_opb_class_init,
- };
- 
- static void fsi_opb_register_types(void)
+ static void sbsa_ref_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -930,6 +941,7 @@ static const TypeInfo sbsa_ref_info = {
+     .name          = TYPE_SBSA_MACHINE,
+     .parent        = TYPE_MACHINE,
+     .instance_init = sbsa_ref_instance_init,
++    .instance_finalize = sbsa_ref_instance_finalize,
+     .class_init    = sbsa_ref_class_init,
+     .instance_size = sizeof(SBSAMachineState),
+     .interfaces    = aarch64_machine_interfaces,
 
 -- 
 2.53.0

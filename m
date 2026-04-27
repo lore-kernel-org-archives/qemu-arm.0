@@ -4,129 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D8DFF8867
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 19:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D412FFF8868
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 20:04:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHS5D-00033H-7p; Mon, 27 Apr 2026 15:57:31 -0400
+	id 1wHSBp-0002ka-Au; Mon, 27 Apr 2026 16:04:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wHQTo-00036A-Bw; Mon, 27 Apr 2026 14:14:51 -0400
-Received: from mail-westusazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wHQTm-0000H3-Or; Mon, 27 Apr 2026 14:14:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dEfbj+3ZrFvUh13Fxrt7+HfB6KaxXXmGHfOq41ebjOZ6EYODO+jXl+YFsr0AYIXrGo5MZyCXagVL3jzxRw+3ezZ8GXDNEtKEAnJuR2dK6g9zaVE3i9hUjSVBWl0ruJwp3uGaK3U7FhaHTgQOnlzDbUQDrpXyU/6wjpE++rKLjNPLkDkA+hM4Dg4RBwj0QULI0w02LSyTFNBVjU3IgL7LBY/J7V3BZnKNvLfCcRnOUa2ZodWAqdtLH/bSk25WPUSEjqWeC76XdJyApvzUm3ACC/G7NBzhp0M7qiqJj5WKYcMlfq1HwpHU1ApqXp6YITEo3UUYlitum62XvTIocYBY9w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=jOuH+YDKH63faEyUvLuBLbWGq7H5vFgqnGnRk0DNyI0=;
- b=qQ01S1Z9a7GbA3wyOoV0mtPcc1DRD0JevB/u/tkemWRYYqrgN0Ho+/XWRUpL5oKfGzlBjv6m1+tJHrN/86DYFEYr1XSaDAEjPeGWIJON24g0RkmbhzT3JR2pKIWugb9sDc5slo5LQpyRHWnj+RvadBn4WLp+f1U+AoDZK5b6ehwIYEPkPgc3MdsfeQiXgiVt6U2854T0M0y596eznhJBdmu4Je5Eq5sOIuLqBNs6qQuX3P1xOGmWiEemlk/M6+Lw3t/Jur59Nb701epWUKyJwtm8h1IWErBU7ZB2OtNPyECEB/D2umBOzblqNlGPfn5jQVV+jd6Xar0+5crXoKbRxg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=jOuH+YDKH63faEyUvLuBLbWGq7H5vFgqnGnRk0DNyI0=;
- b=MHEPFfhrp5Ee5yUQzrbZVfK3G96BbIHYC1mRvWdIgJlXaJR2B/2hz/smxSQEaGY1S8wR+fdW6L+oyBWEommbzAdVtgnkTXU7wjcSg93qW6VsJ10zJ4uhDgmtaZQfbqv6OvnFH5pm77cSjykiCQFTqFkiNpWNRUy8KHeo7nA5gnrUzniS4ReXgCX8Rwz6RAAfwpjm0uz4gpmtVeghg5cOMNtNQbwIXrY5p1GbsSZlupDVG+DJ9DYAS9Xdgsoab+k7lyRtHPdsbKnUGKUYPtmzn0e6SRQUioTZkLjZA+GwH/ZiGUiwTtPecdImXoIvyQwJ0alcL3xNer+mhy4kUL8qOg==
-Received: from PH7PR10CA0018.namprd10.prod.outlook.com (2603:10b6:510:23d::15)
- by SA1PR12MB6680.namprd12.prod.outlook.com (2603:10b6:806:253::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.15; Mon, 27 Apr
- 2026 18:14:32 +0000
-Received: from CY4PEPF0000EDD3.namprd03.prod.outlook.com
- (2603:10b6:510:23d:cafe::60) by PH7PR10CA0018.outlook.office365.com
- (2603:10b6:510:23d::15) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9846.26 via Frontend Transport; Mon,
- 27 Apr 2026 18:14:32 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- CY4PEPF0000EDD3.mail.protection.outlook.com (10.167.241.199) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9846.18 via Frontend Transport; Mon, 27 Apr 2026 18:14:31 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 27 Apr
- 2026 11:14:08 -0700
-Received: from nvidia-4028GR-scsim.nvidia.com (10.126.230.37) by
- rnnvmail201.nvidia.com (10.129.68.8) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Mon, 27 Apr 2026 11:14:00 -0700
-From: <mhonap@nvidia.com>
-To: <alwilliamson@nvidia.com>, <skolothumtho@nvidia.com>, <ankita@nvidia.com>, 
- <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
- <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <shannon.zhaosl@gmail.com>, <jonathan.cameron@huawei.com>,
- <fan.ni@samsung.com>, <pbonzini@redhat.com>, <richard.henderson@linaro.org>,
- <marcel.apfelbaum@gmail.com>, <clg@redhat.com>, <cohuck@redhat.com>,
- <dan.j.williams@intel.com>, <dave.jiang@intel.com>,
- <alejandro.lucero-palau@amd.com>
-CC: <vsethi@nvidia.com>, <cjia@nvidia.com>, <targupta@nvidia.com>,
- <zhiw@nvidia.com>, <kjaju@nvidia.com>, <linux-cxl@vger.kernel.org>,
- <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- "Manish Honap" <mhonap@nvidia.com>
-Subject: [RFC 6/9] hw/vfio/pci: Wire CXL component-register BAR with COMP_REGS
- overlay
-Date: Mon, 27 Apr 2026 23:42:32 +0530
-Message-ID: <20260427181235.3003865-7-mhonap@nvidia.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20260427181235.3003865-1-mhonap@nvidia.com>
-References: <20260427181235.3003865-1-mhonap@nvidia.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wHSAD-00026t-9u
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:02:44 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wHSA7-0004Bg-QP
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:02:40 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-651b4d09141so14163043d50.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 13:02:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777320154; cv=none;
+ d=google.com; s=arc-20240605;
+ b=RYUBjzQtzVAQBygnpI33vfmik6TEFU5xDDx77ZFLMmfQ/zfk1DUMg4hsjiauaqg1i2
+ vbAq5Cqdu0G+dnp/X7KxVNWqpbh1auCxMZ2pLMvoKERp+c5547bX8nv6ku2cmgcwORXS
+ qYHJVBzeS9Jv54KSxTsLa/tSlNSqL0i58KqE9rU/FMWotrw9fIqIL/NppOJiJ5KVV/QF
+ GB7BKHJur2dD8P8Xnm3X7bt6EvjA/rSAZQQfCxIQwQ43pVZmUEbVjMk3He86cWcyHW4r
+ 6gU5IAAufmEH8YXz/uvES6l1g/w3GMxVe+VczgV7EpNXWTAWUDB4WwGBN+Wy4/AT8ttZ
+ L0oA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=EKBtQ/dLFO51DyLLP19cb4OzrdwBTNELtwyyHCrLOnk=;
+ fh=5N/Bs1QxV5E74raB14zT1ZpW14jBcpZzl2N9bGt8pX4=;
+ b=c+ZNttvOy3I62L8KbQhBV6TCnM7Hn6iOBoRGOY4p7EceXqg48/PyaVzhCCa9w5losF
+ R3geGigE8GSyoOX+K9dlT9z6b3HKJEapCdelddnwKFxgAzJP5FUP+jiGoj5jQBQKnCas
+ vdaQzuuEp7jVuAiOQC4NLENhoFmis14pwWySqdS+g+AKSdYS/D4j+gNl6oMkTPuVswJY
+ aaAhSojjIUMwbf36/DFfgfhFymiMTRYe26HgYtMWOa3vWdGodzWzhBzgU79t9d9NXez0
+ xcL6y0qzJ7lmSSM5lRyE7Za3E3D6bdlQic/CnoMkF0sWPspXGlLCTAriT7lmml983AvQ
+ gbkw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777320154; x=1777924954; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EKBtQ/dLFO51DyLLP19cb4OzrdwBTNELtwyyHCrLOnk=;
+ b=nGz7edE/F6jwnsRl32elAm7jx9qftqkpSDi2512neiwEHttCE5EM6k0ZQVlFKwH7XE
+ 8ZJ+pPh6x44pzbS7ekaXYdrcVl3JQ/1k7tQCby33bS6hzVB95IjadREinLKj3fe7lR0e
+ AiIqcbs1+k+io3fPlf2yXr7BcN0g30GBV0vSYHdCjm47RyW97j9L06hz1baRzjvA1HcF
+ 6OX5CoDFqhOretlfX6H8bVNgz+XVD3FkH/VP/ON6J+G9YWdcVOxsBuSDHDMVe6IGqnNB
+ B3rFc6mH/sIv/Gtf+xKp/mJMcfUKYCDGSNLE0yi/L7/Agy93EUayXvfH+HdQToCDovlB
+ TBFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777320154; x=1777924954;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=EKBtQ/dLFO51DyLLP19cb4OzrdwBTNELtwyyHCrLOnk=;
+ b=jz98lsnK+r460aBgBMU7uOOCJPU8oWwJsSTxb38tLFKgYGGK4wadG0yWyS4Q2nta6T
+ 7Qg7sKA6Y5MRkrLeaLGO/Vb/3zXDkurwRdVPj0SnuV/F9+ONEtnAoTBimda3xihp3mhv
+ 5mc9cCiZOC6SxnwDpCJCZ3n6+F/lUGwBdjIaXF8x6x1MMSKBXZQyUK4SKXiBTf+hMa1g
+ pUCZaI1AAhOpjbJbVYRpkVAtV9IDKenPB4MkssRXjrL5NEqm59phdwvA3CBotCi8o1jm
+ 4xnTWDFaAiq5la/G7/4kOHtNcC85gOjQZTHAZS7t3SUZK0vQSiTwdB5SWey3d2EyHAZ9
+ EJvQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+8oAnVwOI1UyrxlNtVP+p+LRI3N8hFE0MX/+VSybDJFp1iy13ECsWMaYu7k3J95TmhVrISFZDbCw==@nongnu.org
+X-Gm-Message-State: AOJu0YycY0qr8b2nNtBCtsqr0OqIDao+h1Y25pRPRKCiC1wxASSpcOyg
+ IoVFDjlO5bVFOHUdvk6cTY8N70N43uv+sKyyDso+x+Socd/vSZChngV4tvww2vCX0LdyzWDwMpc
+ V68GlDmIN1BPheouRenXATgR2G94cxeEl3I6KMwng4g==
+X-Gm-Gg: AeBDievvoccW3bSxxjL8jXHUNyAfp1mEAyBAo8We3yNy8eLAVEjjgg3UEWsQ2q3FKDr
+ BzG++WzOeCEj7JXugGKQ3Gqr/Qre45S5BN3KmDWQ0/ZjOAdWBK2bhctJo3LzSg6DRutYZiPUnJ9
+ 2L6BIcgY56/4PyKVO5TFrDOs8LeXl0jZXjw6wMxpEo6xq9xPB1m7TnJPFGWCZeN32KS4Y0uSMAN
+ +y4xNDJtYyyLS6IF/8R/4qOQzwHSsEu3iagkzUbvIKY5f3UALwjBbuJo4q871PYFPMx5Ga3fHjA
+ YC+od074R8wHOvdmCfEIdggLw8oKx6+x5BxOglDNxy3z9r/zYbCY1+103yN4LK9Fk2dhHEXuRDJ
+ l+54MHQTEcDNH
+X-Received: by 2002:a05:690e:e8c:b0:64a:ce57:cac4 with SMTP id
+ 956f58d0204a3-65bee7f6ab0mr73313d50.24.1777320154125; Mon, 27 Apr 2026
+ 13:02:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.230.37]
-X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EDD3:EE_|SA1PR12MB6680:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7de79a8d-4308-4b1c-ef7a-08dea488d466
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|1800799024|82310400026|7416014|376014|11006099003|56012099003|22082099003|18002099003|921020;
-X-Microsoft-Antispam-Message-Info: 1di1M7nQ6MNvqMOXuqqBBjoBg/o5lAz3K1kxDGIzBmYA+0ZgcbHLy/PORddAFgdgzDAddaOq12Gp9QCsL4KNeFHc/fxqHc3I21xg27qrmqr11s3hw0jCiMz54zd5Ae6EkdvHYQAwUfzCvQZA+JPkTn4Sr+8VjMM8OvUeW1Wb2y1gFpnHuBAr+OdCSggnyvmUSsRuKe0edx6PFOfegcafzsAEu5YELsX0NwHJyZ99AEjDUpOnucgWjVYDIgizrdygo9S6gviDsHEkigavgM9RlLdb1yKPqyu5Ybr7truOdPV6+h4KxvnGHgtZvsnnnX3JP4G15Hs7OAQTBAoCsHYvR8D6tpmNEDLmTzv0wq4qFOd67emz1HtABnUeCLJWUNly5+hgRt3gYezlQWUZHXmXw6fejAqxfYmx3K6UbY/Zj9gnPQncp5jJ/opjKsrA6TSDvtxW1hfzeglnqC0tjBJT7vlE9r6U0k5Ek/KZ8jcTIkF44jUsSfRp0Xv/1X+qPIKJzoezuQdHxqjtHPR9ObLWEx/cYNvmVy63eZ6LavLW/fjnYpuwYhm2a836A3bOSP4zcVXk4db3CkgimG277iYSow+FPXNfxRUtSftOaLFLSVcCfWZSenNsnElJDbAovguW7RaWui1rHbaN2mrQ2rfCWdAvRGKKcFzWyzTNPrC8yamo5u6ljuWW4an4D9qS9WTscJodPiUpEs3+lN8XORPChcXKbIeDUhz9Mh2esfTESqDffXR2kqM+4tvU1ns6sS2Z7pUQNoDQw1SPY7vdQieJdZQN/KX8d5lcs99bock1TWECCBZIA4Wm4RwA1Ew8A/Nq
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(36860700016)(1800799024)(82310400026)(7416014)(376014)(11006099003)(56012099003)(22082099003)(18002099003)(921020);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: YZmkcU75pTgI/mENTm4hdqpAlX/TalBuX3u9XpWnf3ChY3yfjuML8ZDcTgoEbUZUx1k71arh5cY81zGvmy0vI9QgyK/KR7JRbyw1c7fvVNS7t0eG0htgz/f2K24MGQ0CZ0P4o5E3/2LMk4P1GGBuDwrCVlnzrNSXV6nQurESdTNcEppZ0hzynvonV1Px/ZFsvurp6Wiq+81E01zBdvEMZ5ngak28w6xHO7XtMRe3ynMygfspKwgZWN+TiAHoZRPWFFRr27IZ59oAu8fR/oH13+NQz8JpbeuB4pqG92WLIFBKKnEt5kp92BT5Smzg3yr8Peyr06Oi3VK5np1VDw7eXecLYpfrcC//Q0PaRy2dc7Txz8F9XvFJ5hrPoVS1umgDdL9s2lNOv8pYKTUEOV49P01/ktp9ovfLhKDgzMrAkC7k2jTSJ7jfEKsiEME+yyjG
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2026 18:14:31.8418 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7de79a8d-4308-4b1c-ef7a-08dea488d466
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EDD3.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6680
-Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
- envelope-from=mhonap@nvidia.com;
- helo=BYAPR05CU005.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+References: <20260409220614.65558-1-lucaaamaral@gmail.com>
+ <CAFEAcA-8BeBte6CxH._5F5Zsk3wvs0zJJW6+=8cNaroRTBegK-M5A@mail.gmail.com>
+ <20260427184540.80415-1-lucaaamaral@gmail.com>
+In-Reply-To: <20260427184540.80415-1-lucaaamaral@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Apr 2026 21:02:22 +0100
+X-Gm-Features: AVHnY4Lb9mx6eC27k-lXV5h2U4iLlRGZ5z2s3Pq4pzUK3m14JNWgx1p8A7DzJUU
+Message-ID: <CAFEAcA9yGmWq--JsyZpPnOQ74i=j7JeeO0Xf6be7wWxJGbXLdg@mail.gmail.com>
+Subject: Re: [PATCH v6 0/6] target/arm: ISV=0 data abort emulation library
+To: Lucas Amaral <lucaaamaral@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 27 Apr 2026 15:57:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,102 +124,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Manish Honap <mhonap@nvidia.com>
+On Mon, 27 Apr 2026 at 19:45, Lucas Amaral <lucaaamaral@gmail.com> wrote:
+>
+> On 2026-04-27, Peter Maydell wrote:
+> > looking at this I share Mohamed's question about how much of the
+> > atomics/etc we really need. This is a thousand lines of code
+> > handling instructions that in a lot of cases the guest really
+> > ought not to be using on MMIO regions in the first place.
+> >
+> > If we have real examples of this being needed, that's one thing,
+> > but I'm not very enthusiastic about implementing 'doesn't actually
+> > have the atomic properties' instructions otherwise.
+>
+> Some empirical data first.  This series was motivated by an
+> observed workload: the original Venus development capture (Ubuntu
+> 24.04 ARM64 + vulkaninfo + vkmark) showed ~1.8M SIMD/FP load-pair
+> (vLDP) ISV=3D0 faults plus a few thousand other ISV=3D0 hits on
+> LDR/LDP/STP/STR variants =E2=80=94 guest-side accesses into virtio-gpu
+> blob memory that the renderer had been forced to map via the
+> subregion fallback (MAP_FIXED rejected as unaligned), trapping as
+> MMIO with a syndrome that can't encode pair semantics.  Without
+> this series, those 1.8M hits land on the assert(0) in HVF and the
+> guest is dead.
 
-The CXL Component Register BAR contains two types of ranges that need
-different handling:
+Isn't the problem here that we're ending up in the MMIO
+path at all? That seems to me to be what you need to fix:
+taking 1.8M faults is a problem even if we can emulate them.
 
-  - Accelerator register windows: passed through as direct hardware
-    mmaps for performance. The kernel reports the real BAR size and
-    lists mmappable windows via VFIO_REGION_INFO_CAP_SPARSE_MMAP,
-    excluding the HDM Decoder Capability block. vfio_region_mmap()
-    creates hardware-backed sub-regions for each sparse area.
+> Patches 4/6 and 5/6 (exclusives, atomics, CAS, PAC) were included
+> for correctness against the ARM spec rather than to satisfy any
+> observed traffic =E2=80=94 same capture had zero hits on LDXR/STXR/STXP/
+> LDXP/LDADD/LDCLR/LDEOR/LDSET/LDSMAX/LDSMIN/LDUMAX/LDUMIN/SWP/CAS/
+> CASP.  The intent was to cover every load/store class the spec
+> permits with ISV=3D0, so that paths I haven't observed (different
+> device, different driver, different guest OS) don't fall through
+> to assert(0) either.
+>
+> I instrumented every trans_*() and the HVF data-abort dispatch,
+> then re-ran the same workload on top of the MAP_FIXED alignment
+> fix currently in flight:
+>
+>   https://patchew.org/QEMU/20260424000544.9617-1-lucaaamaral@gmail.com/
+>
+> Result: zero ISV=3D0 faults across the run (2.68M ISV=3D1 dispatches).
+> The alignment fix resolves at source: blob now lands in mapped RAM,
+> no MMIO trap, the ISV=3D0 path goes silent on this workload.
 
-  - HDM Decoder Capability block: guest accesses must go through
-    emulated ops so QEMU can observe and program decoder state. The
-    kernel blocks direct mmap of this range.
+...so yes, that seems like the fix we want.
 
-vfio_bar_register(): after the normal mmap path, overlay the COMP_REGS
-emulation region at hdm_regs_offset with priority 1. In QEMU's
-MemoryRegion model, overlapping subregions are resolved by priority;
-the default is 0. Priority 1 ensures guest accesses to the HDM range
-always dispatch through the emulated COMP_REGS ops regardless of any
-hardware-backed sub-region at a neighbouring offset.
+> So the question is what role this series plays going forward.  My
+> intent was a defensive path covering the load/store classes that
+> can legitimately fault with ISV=3D0 per the ARM spec, so QEMU degrades
+> gracefully =E2=80=94 emulate when meaningful, inject a clean data abort w=
+hen
+> not =E2=80=94 instead of the current assert(0) the moment a guest happens=
+ to
+> touch MMIO with an instruction the syndrome can't describe.  The
+> same wiring covers WHPX, which has the same syndrome limitation.
 
-vfio_pci_bars_exit(): remove the COMP_REGS overlay before the normal
-BAR teardown path.
+We also fail in this use case for KVM, and have done for years. It
+doesn't generally seem to have been a problem particularly -- guests
+don't do this sort of "needs hypervisor to emulate" access
+typically, because it doesn't work under common hypervisors.
 
-Signed-off-by: Zhi Wang <zhiw@nvidia.com>
-Signed-off-by: Manish Honap <mhonap@nvidia.com>
----
- hw/vfio/pci.c        | 26 ++++++++++++++++++++++++++
- hw/vfio/trace-events |  1 +
- 2 files changed, 27 insertions(+)
+(Though for KVM we don't assert, we feed the guest an
+external-abort: kvm-arm_handle_dabt_nisv().)
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 49ac661eb3..0270de61d2 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -1960,6 +1960,10 @@ static void vfio_bar_register(VFIOPCIDevice *vdev, int nr)
-         return;
-     }
- 
-+    bool cxl_comp_regs_bar = (vdev->vbasedev.flags & VFIO_DEVICE_FLAGS_CXL) &&
-+                              nr == vdev->cxl.hdm_regs_bar_index &&
-+                              vdev->cxl.comp_regs_region.mem;
-+
-     bar->mr = g_new0(MemoryRegion, 1);
-     name = g_strdup_printf("%s base BAR %d", vdev->vbasedev.name, nr);
-     memory_region_init_io(bar->mr, OBJECT(vdev), NULL, NULL, name, bar->size);
-@@ -1974,6 +1978,21 @@ static void vfio_bar_register(VFIOPCIDevice *vdev, int nr)
-         }
-     }
- 
-+    if (cxl_comp_regs_bar) {
-+        /*
-+         * Overlay the COMP_REGS emulation at hdm_regs_offset with priority 1.
-+         * The kernel excludes the HDM Decoder Capability block from the
-+         * sparse-mmap list, so vfio_region_mmap() creates hardware-backed
-+         * sub-regions only for accelerator register windows. The emulated
-+         * COMP_REGS region sits above those at priority 1, ensuring guest
-+         * accesses to the HDM range always dispatch through the emulated ops.
-+         */
-+        memory_region_add_subregion_overlap(bar->mr, vdev->cxl.hdm_regs_offset,
-+                                            vdev->cxl.comp_regs_region.mem, 1);
-+        trace_vfio_cxl_bar_subregion(vdev->vbasedev.name, nr,
-+                                     vdev->cxl.hdm_regs_offset);
-+    }
-+
-     pci_register_bar(pdev, nr, bar->type, bar->mr);
- }
- 
-@@ -1993,9 +2012,16 @@ void vfio_pci_bars_exit(VFIOPCIDevice *vdev)
- 
-     for (i = 0; i < PCI_ROM_SLOT; i++) {
-         VFIOBAR *bar = &vdev->bars[i];
-+        bool use_comp_regs = (vdev->vbasedev.flags & VFIO_DEVICE_FLAGS_CXL) &&
-+                             i == vdev->cxl.hdm_regs_bar_index &&
-+                             vdev->cxl.comp_regs_region.mem;
- 
-         vfio_bar_quirk_exit(vdev, i);
-         vfio_region_exit(&bar->region);
-+        if (use_comp_regs && bar->mr) {
-+            memory_region_del_subregion(bar->mr,
-+                                        vdev->cxl.comp_regs_region.mem);
-+        }
-         if (bar->region.size) {
-             memory_region_del_subregion(bar->mr, bar->region.mem);
-         }
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index 3678481a8e..3bced3cebb 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -201,3 +201,4 @@ vfio_device_detach(const char *name, int group_id) " (%s) group %d"
- # pci.c CXL Type-2 passthrough
- vfio_cxl_setup_params(const char *name, uint8_t bar, uint64_t hdm_off, uint64_t hdm_sz, uint64_t dpa_sz) " (%s) hdm_bar=%u hdm_regs_offset=0x%"PRIx64" hdm_regs_size=0x%"PRIx64" dpa_size=0x%"PRIx64
- vfio_cxl_put_device(const char *name) " (%s) removing DPA region from system memory"
-+vfio_cxl_bar_subregion(const char *name, int nr, uint64_t off) " (%s) BAR%d comp_regs overlay at BAR offset 0x%"PRIx64
--- 
-2.25.1
+> I want to make sure I'm addressing the right concern before
+> respinning.  Two readings of your and Mohamed's comments:
+>
+> (a) Scope: trim instruction classes with no observed use case.
+>     Smaller series, less spec coverage at decode level.
 
+This is mostly what I mean. If we don't need the emulation
+functionality, don't implement it. We're not going to get
+every load and store emulated anyway (for instance this patchset
+doesn't cover SVE or SME loads and stores, which are a whole
+huge class of memory accessing instructions).
+
+I would like any memory access emulation to come with an
+attached description of what the guest workload is that
+is triggering the requirement for it, so we can check that
+it makes sense to do so. (Mohamed mentions the Windows TPM
+device, though I am still not sure what exactly is going on
+there and whether emulating the access is the right approach
+to it.)
+
+thanks
+-- PMM
 

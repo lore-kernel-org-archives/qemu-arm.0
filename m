@@ -4,92 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED731FF8867
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 20:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A05CCFF8867
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 23:23:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHSuq-0005pr-Ui; Mon, 27 Apr 2026 16:50:56 -0400
+	id 1wHVHX-0000Vh-AC; Mon, 27 Apr 2026 19:22:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHSuk-0005nd-IX
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:50:46 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
+ id 1wHVHW-0000VS-2G
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 19:22:26 -0400
+Received: from mail-dl1-x1232.google.com ([2607:f8b0:4864:20::1232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHSuj-0000FJ-24
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 16:50:46 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-488a14c31eeso88443625e9.0
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 13:50:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
+ id 1wHVHU-0004er-JH
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 19:22:25 -0400
+Received: by mail-dl1-x1232.google.com with SMTP id
+ a92af1059eb24-12dbd0f8063so1491608c88.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 16:22:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777323043; x=1777927843; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nLBjKeevaWO4Kc5sT5HN7jwz2+BINbfgfm07ZBE+LZ4=;
- b=bA+XaqUdueLZkps1z3qDay1ITJ6c+FFnvSnau9NyyBeCJx/RBh7TJlfbWCVyEKMXt3
- IDu2qUm8WLK2uLlXOszLM9AHlj6sjhAO8P1o0+yZy8YAGepQelNfyXhvl47nLKNurUe/
- 9taqPQoZ0xltTE4S7SerCHs4XjAYgk8cq5Ena9yW/FgeKpWSSZyDlZbNYjBuJgAROe5E
- FQd9R3IC6zUJZo9j46xCEowzpY3Bsr/pMWvNIuACzjW2mbhiKcFM0947k24dQwVqOG0x
- 8oZl82tgmyvo482GrCNNw2YzVV4nTSJf0FvVBKeNkseATlAskJAH09qiJawGJuORiEc0
- Pibg==
+ d=gmail.com; s=20251104; t=1777332143; x=1777936943; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=b6xf/kF/rSSXc9pPyWscRobbFDLcz+Fus8ef/OByOuc=;
+ b=B2bcS9d5fhocVTN9g7O5EghScVxcF+ahaZiGDLwlYDBRQQsFjkPA/e5vjPykwRhlHh
+ vklGSmOArl160eco+u4HmGo7HtrhCy3IlJ6RPuCr3YppVm/fWhXCLCGKS77uvPwWtfjJ
+ P3TpMa8P5Vx/0seaVvfOlH9mrNqLTKJq3Lur2nIkHSGuOS5tf35bDHbKUDRVAcwCW+NN
+ XZJBRMfDeY1+U2viljZetp9WLGRuGu0kYl/lc/DIhudaJhUjAHf9VcPqv5DEP/aguvwp
+ NFDu4oMobUoTd/XOetI9WX3rOtuhpPCpzoiANYJ2GWGRf2Qa1UIi9PfY+Iu3Fj3TxNjX
+ RRbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777323043; x=1777927843;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=nLBjKeevaWO4Kc5sT5HN7jwz2+BINbfgfm07ZBE+LZ4=;
- b=q2X8c17RpqrRQLJZ0WxbspY4+BYBg+U9GLbp59GsqBl1MiWebbo7vP6F8yPaLjUIYJ
- 0jgnc10BhSwvU2Z6ibUyUJKyf6jndMENj0iz7pmnWiVYftzpsQYppkLBTYv/OK0EsTsh
- N3vlPVc/JVWXZSOMC9QRTrJzWsyNxXQvGy5DDQibucYTGFHLsUOS2BQs64tirqR5Zymh
- Eex87DmMn5y43bkryi0wtUT8xvp3OkBXNa7Pb/HDYZuDvJAt7zciKO3Qh4Fz/Qxks+Uf
- mFRdp8CqTa6FPrLhCufbznU+LFKEa5nYQk+d46zYmPeUVPZfwnJNywdmqlMWHrKxJifb
- U8DQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+WJ8vPw9POLtbNGyka22UCtdbmN/+LyIZbFAtno2wDKYj6Lx6PtU5v7h8L2sltOMFpl8vVBe6+Yw==@nongnu.org
-X-Gm-Message-State: AOJu0YzFLYUfv+qr7p7Pf9Rputj6jGDBQvjopTOGti8QaaDqQe+I8smD
- oIdlymY0EviwAHroSBHcEdXuDLX9vLbVRh2yEtPYFwtFGihZpXf1H419T3hrgtqThHY=
-X-Gm-Gg: AeBDietgpfDenEkNzUBojastStgATWCZF6A6jA3wqFiFVEjcMfXyrJbmnlXwFoSeu37
- hKr3kZyrCFaODwGSxcBD9VLAjLtYF3zCUdanGzaBulOo+LcB1HHi4wTjOWs6taN1h6/djuotIPh
- l4bbZL/qjKnLviBFpniQUX2+jwl0fUbBZadpePezpkGZ/S0cQprEj2G0FrszEW2J1qjdIUncdGZ
- Q68P6/WKIBN4+5RNfoqoi3W78dPtxQrGX1L/dBRAORHPYrkXdpr8N79meP0mq8Nd57kK7eOGYHo
- 98C6ukZ8HiRg6j5URMPp9cp65E8csa9JNiS4YGG1LOsAnAcp1K/DX8m2undQAoZpWAv2FXnioao
- O2o7Yxc6jH4D/I3K8Q0v1g3AbEMEmDcbrlSI3FGm38mpoGCgwo14BnZfK7+J9qf/dYfZyxcSWTt
- MWknQFklUay1sq0C2rCHrYlyuI1e/+adazMuTRNqeHm1J7TLgdxqwhlAYsSD+CbPrNReA/bK6vz
- kAt
-X-Received: by 2002:a05:600c:4444:b0:488:aa33:dcbd with SMTP id
- 5b1f17b1804b1-48a77b22e4dmr3777915e9.26.1777323043529; 
- Mon, 27 Apr 2026 13:50:43 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a77aeb223sm4464845e9.3.2026.04.27.13.50.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2026 13:50:43 -0700 (PDT)
-Message-ID: <ef21c07f-1a59-4b31-8ded-aaa997a6661d@linaro.org>
-Date: Mon, 27 Apr 2026 22:50:42 +0200
+ d=1e100.net; s=20251104; t=1777332143; x=1777936943;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=b6xf/kF/rSSXc9pPyWscRobbFDLcz+Fus8ef/OByOuc=;
+ b=itaYf/wLEBiiklBbzCM8euJiDhbFz1gK1wPbShGMd9Qgbzap/l/nPkn2eRIfftm2nF
+ leNMuP+UJiPgq5WGpawam5NgJaPBzArj0+j/eBXHNRR35IQTxT/4ZMyV6czmu6fKoh1e
+ 69cEx3sLwtV8jrb6f2iQXTU7noYh0YX9qoWjbdYH0wVrzqmcVvat79U0nmPIBUDFyJF5
+ m9M2eFjK4fsBPG1Cpsdax/JLaQdWYDS+H/KQ0XMA4up0sDpDlzADFpHKnROvLcmhpL7j
+ NJt0+BAHL/kPdEW3TU1bEhxNwY1sV3u2g2SJJ0wsWisUXDDnqHH+ROuBs7in++W82n5G
+ 5urQ==
+X-Gm-Message-State: AOJu0Yxf06CgjNY+b8WyutGw2cQjf0Q37wptVu3CIQ38EINecSWWxFHd
+ boMgvmusa7KYDawI/lyXhrpX7c/9pnFBcHLyusxGaCsxh3IYF2PzlP7+
+X-Gm-Gg: AeBDies+k26iRE0X7829nR1WCWnSul2Qyv/ALAdTGF/fVX3QXibeRbhbvbJdeqXccst
+ I6Ak4/mradWX47HqzkXHjXZxyTzXBUctD947uGbIk/BRamRo10CH6bzMdp57tDovJ8IwxpdqvWz
+ ca26nnLTEfqZn147Sp6FGHIthQB7iWf+uN1liXFLOty8CZPW2j1AYVolhkipbJzK2UgKqVtlmg3
+ 4xyzFdzfr9NQEd5fvqXfAKNd5/EIkuu+4ZBKJO48Nwi7me97PC18L17Xey+UMOHVHUUcO63W0wL
+ ZI9y52n346n4ZEOk7ZzDouphPkiNbqkyzvpC5chzxjADj2Rxo7ZdreV19Ykf6OyWGkM9bN3vBas
+ zUlcWhrqepePFtYQa+CLs6MEeDm0F7eagUhNc6R+y6jlZVitEcRF0xlNYwawMoy4ksKNYI5fM7T
+ O51lrY/caBXt6jVStBRBrbuDDF8zQUHCVhbJyMzABqU/F3l/R/grARbY1QX1fVVvhUmrAQqMu6x
+ YTvFXhSlhJulMBy55CN8tk1193SPMLY2Qgcww==
+X-Received: by 2002:a05:693c:2c97:b0:2ea:5057:a32b with SMTP id
+ 5a478bee46e88-2ed0a11fd4emr512035eec.17.1777332142510; 
+ Mon, 27 Apr 2026 16:22:22 -0700 (PDT)
+Received: from localhost.localdomain ([2601:645:8200:47:f4a5:bd04:3ca7:5727])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-2ed0a0ce710sm849973eec.19.2026.04.27.16.22.20
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 27 Apr 2026 16:22:21 -0700 (PDT)
+From: "Scott J. Goldman" <scottjgo@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>, "Scott J. Goldman" <scottjg@umich.edu>
+Subject: [PATCH 0/2] target/{arm,i386}/hvf: Fix HVF migration
+Date: Mon, 27 Apr 2026 16:21:14 -0700
+Message-ID: <20260427232116.50586-1-scottjgo@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 34/41] hw/arm/virt: free flash devices and OEM strings on
- finalization
-Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
- <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1232;
+ envelope-from=scottjgo@gmail.com; helo=mail-dl1-x1232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -107,17 +102,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 27/4/26 21:42, Marc-André Lureau wrote:
-> Flash devices created in instance_init via qdev_new() hold an extra
-> reference that is only dropped on sysbus_realize_and_unref(). When the
-> machine is destroyed before realization, the flash objects leak. Also,
-> the oem_id and oem_table_id strings from g_strndup() are never freed.
-> 
-> Fixes: 602b458201ff ("acpi: Permit OEM ID and OEM table ID fields to be changed")
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->   hw/arm/virt.c | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
+From: "Scott J. Goldman" <scottjg@umich.edu>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+I've included two small HVF fixes that allow migration to work again.
+I've only tested on ARM, but beforehand, starting the migration would
+segfault immediately and now it works.
+
+Scott J. Goldman (2):
+  target/arm/hvf, target/i386/hvf: Pass MR-relative offset to
+    memory_region_set_dirty()
+  target/arm/hvf: Stop pre-allocating cpreg_vmstate arrays
+
+ target/arm/hvf/hvf.c  | 9 +--------
+ target/i386/hvf/hvf.c | 2 +-
+ 2 files changed, 2 insertions(+), 9 deletions(-)
+
+-- 
+2.50.1 (Apple Git-155)
+
 

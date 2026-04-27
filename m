@@ -4,97 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E023FF8861
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 11:23:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E91FF8861
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 11:26:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHK3G-0000yn-KT; Mon, 27 Apr 2026 07:22:59 -0400
+	id 1wHK6c-0002Ak-Fk; Mon, 27 Apr 2026 07:26:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHK38-0000tm-Gt
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 07:22:52 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1wHK6Z-00029l-Cz
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 07:26:23 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHK34-00085d-N3
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 07:22:49 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-65318dafbcbso9800250d50.2
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 04:22:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777288965; cv=none;
+ id 1wHK6W-00014n-Dc
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 07:26:21 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-650775f427eso10580541d50.2
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 04:26:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777289179; cv=none;
  d=google.com; s=arc-20240605;
- b=MI4wogkXifdhrOUxWxManY94SC2qn0ZLE6Bsv+j/4dwsb+Z+qhMUVEQXjpN6Ip7ca8
- efqeSLV0sgRIeSuyVahJPaDI0rJBBUN5biUJmQtGmP7g5zEjn2Urqot4jT9bdphuTlnl
- OTvD1GYMYvU+ECtDEdudzb4FNjFbRomkc8nPZMn+K9cspn001Z7xefskB1lkeSr8/r6T
- vTaEyIYjb6oh85JOSQsBiDBPC2OGL1DaXWSRls51Cnew/odY9Y+0X4jMEQh4+QKWbC7u
- A0dK/iDRgKSyD7n0eGY9cE5zdliUfZA+xIRBFvp1NiOcfrnUKQ03TLbmZ6NVXvujS+ef
- UU9Q==
+ b=dSTLv3LJRcWPV8suidQxxjB84shSk85CDiM3VlY/ghlRfVqb1uYKgUENDI7thjNc80
+ zl68aQsWnh2FPefViXgSW5ANcCfe6741ugOdN7LX1Gp4Ox4JvCbtV/vjICMqON2AH7P9
+ B6YPtHNyRuZ4bJvUbyB4/JTSRY4nVVRPJjzBjxTK5dAIcdNBdv3+ffZBkQU3QF4e1CvW
+ kNzJ7XMkf1vOp/h5ZDbuL89puE+q3avOh8I0jTzuKqQK9VoobPRpRCQQK7WGD99xq2AA
+ YO3ZxYwpiqwfpn7XiPfYO5/nULpsWqoUS3+B19EWmGyw+qD5tS/Q1IrZVTNl74Ew7DiW
+ 0Zbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=NKjhzn06sNkk8mjBc0Rnn3sUoHjtQBDdTSKSL9EnVqw=;
- fh=8FhWzlmNFPAV4SG4EHEEz2ct3B7ihZCpMeHR+ObKU3M=;
- b=DVljCa7yC5M1e+5wUik6WLAj7ycsQ8PHqI4h4cAEuUNOk+gn1EdzBJABJnm3kuqsMf
- a1EJ5CnoIctAhmkuJr1sZLw/0S5qJu2fp9zADKUKb8mac0GSfBmhbbrnyZ6sQ8I02duE
- HUbtpttlPo+Fihi4FgVmdeHodQNRvIVcVolhr77tYXGC7x4xob71/gX5oLW5na4HH4Fo
- xYldHzmJ0x9iwGV3O626QCkWtvOMceN01VwGir2RxZgUdoIC5f7GbdShiwAmr3G3J4dd
- Sb7YnUC+CGxtm2ZYFMLu7894EFi49q5I5ErfOIVonvRz1OzilBTpi0TB2y7nrHZ80yTW
- 4enw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=jQUSsqYVd7Cvs5s1VaZAfjWliG6udHgREMh34HOJ6vA=;
+ fh=FhtHtoUJE2XPGDBLEJ+iVno/EeVfMqEsOfrRatuUZ1A=;
+ b=dd62CTkDoaPbYuHKVNcvk8fB29qzlXTLsc3TT/RJWsTp7ZCAACdcG80eDJyacoZByv
+ 6hM0TABS+qWutpMncUHXekcirso4n8nG5n12SuUVjeARH5eZ4Zyns3MaW25315kf6Uv/
+ 42BVgt6M8aFAk+ENVRVkivFLWsysofV5pGJDTmFyeBARAEv3hMcNG8FyPR1lzeKrIxLy
+ QjMW4CTU6Ksr9HiIPt+z9ZXv+/VJqb4p7uZebcga5eCgYYVZN1IFnT5xMfA3lPgWNcVN
+ V4Ha3arU7TKD5idvlQmiYFbZmcCn6upxGZ1uTyA1nro9yugR2B7eInkpisQ4CLP8QCSN
+ 0E6g==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777288965; x=1777893765; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NKjhzn06sNkk8mjBc0Rnn3sUoHjtQBDdTSKSL9EnVqw=;
- b=wPc7xA/mbxIKfseVvwDlIQfj0eEdjjFsUcLAdd6/TBNMNxkOjAjkE0JkhkSgXOMZ3Z
- y5voXXtUz6uua+1q+xaejY89YkaTvwqxuT1QEFPLJvXZwC7V0qJUOFg3CPbkXKCNS/tB
- IbR+TTi6wmPw8Jjn7XavXl2YdXCW3bRSRdN35amSsgO8Y2b+72PffO7aDxOG6WJ7gtpL
- lwLntP1bnP1E1M2qz8BDMOd7LM2HGhWYg9eHkpajNJozV3L6Qxuemh/qoYDD06IEXWne
- EyweralRiTmoxbBqWys9glqaMBTaYRxf9bxmeIiHY3OavMGBDjaFoOZ6jZ6vfq6OKZbg
- c+Zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777288965; x=1777893765;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777289179; x=1777893979; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NKjhzn06sNkk8mjBc0Rnn3sUoHjtQBDdTSKSL9EnVqw=;
- b=shfKZG2TyXyvswfPODCpCi3KRROmry7NIRg9I800ZzMT05GM9TNI+kflUhQH/FoJLo
- Huj0o0MQ4kXwrZ8mDd3aLVIIq1X0uK1wnwtS22NM7ORCf9HgTVcCR7BVjdcteVY2r9CH
- 0Acr82EmlihzMo4mWFKtLAix2DLFlXbF4LXMMErF2h67Bh0IoMijtp5aSsOQC+JJRUX+
- aN8VbLFVuM3jJqEW+ifIqc+VPEvXbr7yli0iQRjS58GTX5vIA9IASzeVGZECigerkaJv
- +d0oM4kBPrAlpqBu4GTkE6nJ2ibpRCR8C4vy3n08aaaBiHzY3toRLq334JWW+cO4rs1C
- Bqfg==
+ bh=jQUSsqYVd7Cvs5s1VaZAfjWliG6udHgREMh34HOJ6vA=;
+ b=JA2Nc4P2DIB93d7sq92mf7zsfOXxhmBiy+nLncpwM7MD/P2wHGKuS/V1GlaPHW2amR
+ cH0MdNW7vQXq4kDCkeWGUpjtpr7rsy4DjmLZPcfbFJPkgdglpsEBeeOv1liifYgv0Wck
+ NpaFg9D048GGfdFH+bAqQFrQB4Ls9f/5NhWx0fhI/7g2SEO1fzSkc9f/U3gv7pa56pGx
+ VK26Pf44IMyThPqxiJbzdOXOnm4kDCQK6av1AM8W29zGRAGF0j4QCMtvDgoEAICXU2w3
+ orRGA8i6DVylOSdi2cdIqTtBhP30C5DvU1oZWESaHctipCMiB8c/Aa2fRLAqPcJXR7Sa
+ GuMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777289179; x=1777893979;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=jQUSsqYVd7Cvs5s1VaZAfjWliG6udHgREMh34HOJ6vA=;
+ b=kVW5yUDFxqWqnCQtbGboX+BaO2hsJEnE4uk0fWGPL9EpkjT/sWLKWPezQHaumPUaYu
+ lDmZlf8byhcgEiPesOnzQmSLnjZRoLOJd2zG6wfUNWcNll5EU7miHqweiDotmpKcOzRg
+ Bhi2mZLA8EFhGK3fcbQyz8lo00HJHJGPlPtyhYmmCIfz56vWCS8HbUJIFL/85+QutMqz
+ Ku7aYjdn4c3vKK8U0PEKOlJsrQxvRkT8m22CUnZ41PBFbxq88LFitrWugyu+ExghVrJ6
+ c8/ZnmV33bnVMY+wRannpLsIf6EFcWlQ0lOIGcC4zDl9rFYU5dTlvsnOPSzpnZljwNHA
+ y/5Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8ddWTt1iuOFilyHd+jxKpMdngfhMjm98+CDwJHwIGus4/ZFjDAIXKRaAWybPg14JOrG7fdRnlrhw==@nongnu.org
-X-Gm-Message-State: AOJu0YzZfjoge0RROCmN/tJ02ev6zPrW4DZu/ABN/823HeDykbfQkiBI
- DCQTnq2LzgaInUIlOKwg0zbzasyMKRdz22+/w5aczVPHkJxPa7kXckigF35/Ii+mqrT/R/W4mC2
- 2AaGGGS3tHmNXigavyylhbrIvoOh4amezh3NAWx/edo/0l/t9yuS9fHc=
-X-Gm-Gg: AeBDiesBMjqG9mJY4tHNdTJ1VX5GBZtX5YgbHXkoj8VrlQcpM+eLJXa4RepjIBAvPyI
- ZDu5t7cxxMAy2IuOV753vUet/Cqj0S4hEaFp+fOxSqx06TKWBDio3UQR9qCtBEFfKsI9nE8nifu
- CdkfRp3nZoyZyAeW4CpqI4uFBnvKQhJmxNTXodco9fB0Q0UBm08X9loqRmQMPrAsfOAYOxfcxt3
- /wgcM6NjoQnmiEZoAM+jg2xgKS1IVhokTJyHJE+sSNqxk3UOUs4VXtSBTD435Be5YQ8qNHqup5s
- G+zitQraoNtZeHddmUvf+0CDFW0bFbPhuBN5VCUjlI0OUi8E4hh8TL7KKs9FyaZ9mQcDXWauuZ3
- niA==
-X-Received: by 2002:a05:690e:4192:b0:652:c12f:18bc with SMTP id
- 956f58d0204a3-65310a3a628mr32618634d50.43.1777288965320; Mon, 27 Apr 2026
- 04:22:45 -0700 (PDT)
+ AFNElJ++OTGd3ywxGbDXhJ3fML4jKzttxLE4zOtdY1MUGw0rJD2yzOSSzmMffF0aOwzrcorAfXqPzOAXBw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzfem1L6dj6PcC1jHXg0F5nAquaAtshAwiyD3QcAloSNGBGlLAF
+ aNBeIV0so5/A23VVR8lhlsn+PNgJKvSgx2+MEfDZooR9og/078BuyseXDvxKX9ZN3JWe334nnLG
+ bJ6rnCIuRnk4mZ0wGfqzvYsOwfm9C5BnO/en2I6yPHg==
+X-Gm-Gg: AeBDievspIHIJq/xdNn8N2IGyYQk/woR34Ygsmnd+1p+y2CCujmTcbXEYhF55vhFmMJ
+ 97BlwHEerHP42/pCyz6QBtwFXsOlNzp5b9kVSV6stwbZHmpcf+Xt46M4NYOtcmaFnHwiCEmK55V
+ gKynV0yrMXPb2MHBDZp6ZtY6a+eTf2J1dkYA7TujIObNqaYhJxkGv3czXCoemVn018iXjJ5SPeo
+ RbyXppV5aJDSgjDIdHvQa4plDxt/uBKavQH/bJPcRhhl1Oj/Mr50xU947C32HxM/TUr4BC/AVox
+ x8agBugIFjyj96D3xfK674Bv/I3EPALCcL2PO3UGXcWgJ722w79OGQVYRQ839J8Ad0cR6in0yec
+ SKQ==
+X-Received: by 2002:a05:690e:204f:b0:64a:e222:d3fa with SMTP id
+ 956f58d0204a3-65310b4ff1cmr29494611d50.58.1777289178761; Mon, 27 Apr 2026
+ 04:26:18 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260422-arm-v1-1-106a9a9e22dd@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260422-arm-v1-1-106a9a9e22dd@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260423170229.64655-1-philmd@linaro.org>
+In-Reply-To: <20260423170229.64655-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2026 12:22:34 +0100
-X-Gm-Features: AQROBzADG4QwKVW78l2Y-krxUGH0JZTq2v5PrDXl03f_kk4zSO8vVSythrH3RFc
-Message-ID: <CAFEAcA99QzC6D=H8jet0aLrp1BByhOq9x6T8bUJ7SY6qTvoWcw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/kvm: Mark host feature cache valid last
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
+Date: Mon, 27 Apr 2026 12:26:07 +0100
+X-Gm-Features: AVHnY4JKpg_C5wnQkuVyGK1Vz1-Zobn8go7bYIwEPNotdyrFKeMgQ5BIaEdx5zM
+Message-ID: <CAFEAcA-fnfCOri8nKJ11z+xnOpfW6J+6DTOW11LxQW9Nek5Gcg@mail.gmail.com>
+Subject: Re: [PATCH 00/16] accel/hvf: Assorted collection of patches queued
+ before v11 release
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>, 
+ Jonathan Cameron <jonathan.cameron@huawei.com>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,36 +123,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 22 Apr 2026 at 13:13, Akihiko Odaki
-<odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
+On Thu, 23 Apr 2026 at 18:02, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
 >
-> kvm_arm_set_cpu_features_from_host() treats dtb_compatible as the host
-> feature cache valid bit, but kvm_arm_get_host_cpu_features() set it
-> before later register reads could fail.
+> Various patches related to HVF I'm carrying.
+> Some are already reviewed, some aren't :)
 >
-> Set target and dtb_compatible only after the feature data is complete.
->
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> ---
-> This fixes a semantic issue I found while writing the next version of [1].
-> I am not aware of any case where it manifests as a real bug.
+> Except the last one (RFC) I plan to eventually send
+> a PR with them once reviewed / tested.
 
-We're not currently consistent since we have one check that might
-return false from kvm_arm_get_host_cpu_features() before we set
-dtb_compatible and then several after. But I think that the
-right thing to do is to set dtb_compatible right at the top,
-and adjust kvm_arm_set_cpu_features_from_host() to copy
-cpu->host_cpu_probe_failed in its "populate from cache" codepath.
+>   target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
 
-That is, if we have an SMP config and we can't get the host
-CPU features the first time we call kvm_arm_get_host_cpu_features()
-there's no point in repeating that attempt over and over for
-every other CPU. We should instead treat the "host probe failed"
-indication as part of our cached data and copy that.
+I didn't notice you picked this one up in this omnibus
+patchset; I just sent some review comments on it to the v2
+thread:
 
-On the other hand, if we do that then the practical upshot will
-be that we print the error message once per CPU rather than
-just once...
+https://lore.kernel.org/qemu-devel/CAFEAcA9RHQ+7++=3DkLn2goJwcgzDnaqdkQtQBt=
+xQ2Rw1-uiKY=3Dg@mail.gmail.com/T/#u
 
 thanks
 -- PMM

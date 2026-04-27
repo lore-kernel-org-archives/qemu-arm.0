@@ -4,107 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16822FF885E
-	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 09:18:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1192FFF8861
+	for <qemu-arm@archiver.kernel.org>; Mon, 27 Apr 2026 09:24:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHI6f-0008PR-VR; Mon, 27 Apr 2026 05:18:22 -0400
+	id 1wHICw-0001ka-Ta; Mon, 27 Apr 2026 05:24:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHI6d-0008Mj-Gb
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:18:19 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHI6b-0003qX-V8
- for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:18:19 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-79a46260385so111694737b3.3
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 02:18:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777281496; cv=none;
- d=google.com; s=arc-20240605;
- b=g2wXxoNnDysiIxtrukbBewXdW5sZfrxaDEtzNQUUKcB3SywdepFVXSsgEwErMg77LR
- Afk7VR362XFKyPDf2tv7r78PQH03tNPSX8UFCaoKGjT1spmvrDWI9w36JThJTFcHR39S
- 26BfF4Mm1f7l/O2GTTnkEExQzrIL3xoM9ON2exccGxSYWPez9RL1A1I+3enIX0SeLQ+L
- ZW23EwnKBy45YAnyONxOQBAnlZ/18c1o2yQneeLLvbiU5DMF+CNAP0Kjbvf2gJx0HOzH
- JM9YVcyhs3SXYG6Hm1JpZ+D3CzhWdTHn7cT9USfl9ycodbSLXIc5lkwNv/pPFwbLRoVB
- 2zvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=4ZHD1rGHL9UN+4M1rvTNcKlJU3aVRlSVdfrxvxlbdxs=;
- fh=FaKOuisZccORqqZ7ZmiW3Uf/KPAU8K7N/VpYfUnRqWs=;
- b=b4WBjaiDH8ecA8b9JnbpkyhKyFm6CjMLPyh/Dqx93/i5GvL/ROoY6gTnLBZpUG+7ts
- rLV7wj+u4sXjlA4JC+hLZXCNbQ/TQDJRTd27XwgkdUim+FIIeEywAYlgd7JbeqUS4rWG
- n2/QYht3lF30/Q0G9jx3Cqw/QJo9sxZ54XdJu8bk4dW6LTr8T+kh0Z+NoI+c0uFhk5Au
- 6vDmStHh+fBQ/cJR8o8Ym3cv0L+0VCG+KeZZbG3DzuM6JIlcpIGLM1m4wv0K3EwEJK7j
- p4ERwcwbG620NdCyx5VL3EfVPQ5KTCnu6E+VEtz+ZaIJUE/QGwaicMoISHL7kDrjcX7l
- Il1w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777281496; x=1777886296; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=4ZHD1rGHL9UN+4M1rvTNcKlJU3aVRlSVdfrxvxlbdxs=;
- b=jU7FH2cLaKzhxubud4UN01mD+smE3fKLYUUyd1zZEhSdXGUKEWC4SwP6dAzEaP3GyO
- bJ+rOnfi3N3niuhl7EnBvqV83CyhPyz0RfSgj1oCcCDJaD9ypWVgldUGE34KTxYR7Ab3
- nb+j7uGRFSaTiY3zbUxlM5bABoMhPLWrXYx2sjcVr7gMly0rEr9xqZISc3j7q6DI30Wi
- lEHI6qgyheGPHyUDKT8bx45ANz2iAZzIWpiCPg8S5KlY4PAuSWBnn2CNsVghQ0ggO4R4
- AgChry8A5RtruiXd4Eli5RgohPnR8+quad5dWHRlLtyU35/+1h0pvUBvl4u8Np87SIru
- 2bbA==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wHICv-0001ja-35
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:24:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wHICt-0006CC-Am
+ for qemu-arm@nongnu.org; Mon, 27 Apr 2026 05:24:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777281886;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=vnrWyFixkZmF7NSNdTKBiv87sCBhY0EKh692TW1byGY=;
+ b=f4FHCdI55+0W+T8aXHwm/A7JJbHDcWdvtFgCxtUArK52dkb3MY3fvP3iPPPlz1U9XdsKEU
+ mp5tKlsb/7OsENSSjA7rNlQ8hdNfZZOKUT7BwLl0a0S0RL97SE7V8sVedzMhHDHR+DUu9H
+ K++BMUvsahWU/tA9QEwMB4WlSPQE3EQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-553-fKxkRhuDOZyB4EQ_19rIiQ-1; Mon, 27 Apr 2026 05:24:44 -0400
+X-MC-Unique: fKxkRhuDOZyB4EQ_19rIiQ-1
+X-Mimecast-MFC-AGG-ID: fKxkRhuDOZyB4EQ_19rIiQ_1777281883
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-43e52dc8a04so8711227f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 02:24:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777281496; x=1777886296;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1777281883; x=1777886683;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4ZHD1rGHL9UN+4M1rvTNcKlJU3aVRlSVdfrxvxlbdxs=;
- b=ACvbx2JHYX+ZHONk6QZLavWCi+PrfQl9VvBYQ9gmnYebq/xPMRlSgMKKVoIKt49Z5E
- GqOnWfwM5TphsLbF2a7+3vETczZyR/qor5zyp1zncobhuIwM47p+Pg5OxQ9nh3N7r2ou
- XpVu1bk918nqyzk+6JBhEwo96KXyGRf7TasEW474JCgwhS+YPXnJ7GW4/Gh5ntF6EzK/
- YsPFM226CZtjq3xLnciM+s35mGrIB/JFHf8CnkH6rnVQyFlVnRnDIkqOtXus48ewvcfd
- x7ARdSoxVX8i9yuF5LUBT/FW57V/Ee6znPDIC2XClvrTmVI0dCEvNy+Vopynj4Xxtl6E
- fUyg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/qdhuHDtBAcGWNa6XkdKvGs1ze9nNd2+tcyrdAVIBSxweY5w+AunvqhdvdkDMPqla0insaGimQKA==@nongnu.org
-X-Gm-Message-State: AOJu0YyUKF+zSyWpYZAZuSqtXL7e+2+Rd/2MtbPPERc6Z+i2JlrdAEGT
- Y3UtPwvqUGoYXNx5+8/G1DKbxjzUltlcUjHJUs2h34nXRHS4wufcwWXP4LjTiusdXzvXcgSidfq
- NzNdxXxZVUoHSSONazRcX3J3iDe12A7U263ypED7q+w==
-X-Gm-Gg: AeBDies0BY7AJZMt7u8+FuOsNa13+SPN8pr51TvLHHkUjFp3FoaePGi0iXlXQQArxDA
- a4hvDhQ6UKAdBEOfKmr7vYehujUsz95QD01vKQiE3pu8xYZdGlsyjra6+/UDG3Hk3ps/NlKiiTJ
- 4FGrNntLwBXtOtmRezBzUXWlVxnBkOo+vVWQsi4WVO5nVwNQYFVCcu67hJJ3SCJfPeqvPpwfg6R
- iRQrZJL8CZj9LOIB7+X4/eDI6PBZA4DDzqBqPAKG0MsUc/IyRCt872zvDrsGRWcDzgty7lA0rHC
- uyGalb5pusUGmarJAth3d5m0c8fVw36eY7ow+k4IXu59bcfewmC7Cp0kfiTT/A8Ed2dcIB1Ogvl
- ngfhvQVNsUSpx
-X-Received: by 2002:a05:690e:b8b:b0:652:f16e:952e with SMTP id
- 956f58d0204a3-6531080a41fmr36002187d50.14.1777281496623; Mon, 27 Apr 2026
- 02:18:16 -0700 (PDT)
+ bh=vnrWyFixkZmF7NSNdTKBiv87sCBhY0EKh692TW1byGY=;
+ b=W+wRW+Ci0adUXZRlJSRmal2SvHVQ4zW4jtP95Kp07f+s2wT+/Z1M4LPqGPhCKmnRRj
+ uwmAFn6p7tNu6hstTN2wtUTZkEPOWtaUQJ2RM6l4sKqCXXbWm4eMgriyUIHiTL/lf3PX
+ mD2ck+DFuXyiaIHkt3lgK57KZyeOdKafXQsUElvdt9eIHgzI9uqBUiX/ViozIEFeU4N0
+ R+f5kKmUk57aGRNqmFeIETnS8cbZ+X0Gk5/3+0XHwsmmCMk4nUJKYZfB8CCvhxewX6gi
+ 54sKch+9SBl7iw5gWa+txHogUdjgpd+H0e9AGdvEDmI5gX05wVzl+1MjC3ZM7yfL0dx6
+ WC6w==
+X-Gm-Message-State: AOJu0YwC8nXErkpDnMXo5JhIzn+8cvReQkjle4yehOvAra54599BbOT7
+ w1UDTbKDQ5RjxM/+b335JdP7LZFwTuKX+f0C/63g//Ksp0Kzx/7tvR6mMjt/sNzq7hBQlyGo2uA
+ PiJwxRZ64MjHA3LebaswzGS2I5fnQ+2ZlfsY1lwuF4R9U+icqTUO16w==
+X-Gm-Gg: AeBDietkD+iFbfsWZHdwuX639bt5y5wHtc8af9YLF0FlvKw3etxntSiMmnYbKHDHXBd
+ ly7AwETSjqEZXZm0tU0joQO+CW8gYj8ZnQ7KV977aimxNlh9ba5lwwQHRLUmyWEWuj0Tn4R2x9I
+ fSaFKhhkQt31q+s2CBq9Sxp6TsWgm7XHyCnGaclegzvxOMWxG3SiWz2YRg9VeCFy+qCuv42Fnb0
+ qGgDkaUDKIzL+6tCyAbNicAqhYMkikiDnacdjM8gDj47CVSZ6NMIybLWpqhdsPMSoF7fiH4aixf
+ /tK1UFOmxoMGPStz70w8+WogOmGJ4bjmHe3FAOoeBzr+qOd4Sx+yIKB4GLprEXAIwsH5c2JG5gt
+ EAtTUHcC+GGLMk8yqBAn6dVuN5DzUqeo=
+X-Received: by 2002:a05:6000:1a89:b0:43d:7125:e79f with SMTP id
+ ffacd0b85a97d-43fe3e25c89mr65889956f8f.47.1777281883097; 
+ Mon, 27 Apr 2026 02:24:43 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a89:b0:43d:7125:e79f with SMTP id
+ ffacd0b85a97d-43fe3e25c89mr65889888f8f.47.1777281882558; 
+ Mon, 27 Apr 2026 02:24:42 -0700 (PDT)
+Received: from [192.168.1.53] ([151.237.207.243])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43fe4cc0f31sm80008300f8f.12.2026.04.27.02.24.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Apr 2026 02:24:42 -0700 (PDT)
+Message-ID: <c6b6f903-2afe-4753-a522-64ffdbe427c8@redhat.com>
+Date: Mon, 27 Apr 2026 11:24:40 +0200
 MIME-Version: 1.0
-References: <20260420140552.104369-1-eric.auger@redhat.com>
- <20260420140552.104369-6-eric.auger@redhat.com>
-In-Reply-To: <20260420140552.104369-6-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Apr 2026 10:18:05 +0100
-X-Gm-Features: AVHnY4Jk2G_QaUXXF-ToRhKsty7cByPhEM1z72OjTIi4V98G6qYyhT2FKUf-ujc
-Message-ID: <CAFEAcA-HXmw8Jj2roq311B8-0VLjO+-vWO6yDpJ9UkpiztWO7Q@mail.gmail.com>
-Subject: Re: [PATCH v10 5/7] target/arm/cpu64: Define cpreg migration
- tolerance for KVM_REG_ARM_VENDOR_HYP_BMAP_2
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- cohuck@redhat.com, sebott@redhat.com, peterx@redhat.com, philmd@linaro.org, 
- alex.bennee@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 02/32] hw/misc/aspeed_sbc: Connect ASPEED OTP memory device
+ to SBC
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>
+References: <20250929165230.797471-1-clg@redhat.com>
+ <20250929165230.797471-3-clg@redhat.com>
+ <CAFEAcA8Dja4yqnaHsXc9pg6EzEAVZFR3=E0sGa9Bz4bvuf+_bA@mail.gmail.com>
+ <CAFEAcA8nyngyeWi4Vb=ZWJfxNsyFfSqFJMnWnYG2ce95xaCfPA@mail.gmail.com>
+ <SI6PR06MB76313BC0842AFB0A8C204E42F7362@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <94332917-c953-4ccf-9e9e-ccb0f2c784b8@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <94332917-c953-4ccf-9e9e-ccb0f2c784b8@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cC65vvxokiomKYHHhA0yz3L3P9a1R5Vr_8dGaN4-u9o_1777281883
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,51 +162,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 20 Apr 2026 at 15:06, Eric Auger <eric.auger@redhat.com> wrote:
->
-> KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
-> from v6.15 onwards. Backward migration from a >= v6.15 to an older
-> kernel would fail without cpreg migration tolerance definition
-> for this register. If the register is present on source but not
-> on destination, its value must be checked to make sure it matches
-> the reset value, ie. 0, meaning no service is exposed to the guest,
-> hence the choice of a ToleranceOnlySrcTestValue migration
-> tolerance.
->
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->
+On 4/27/26 10:59, Cédric Le Goater wrote:
+> On 4/27/26 05:16, Kane Chen wrote:
+>>> -----Original Message-----
+>>> From: Peter Maydell <peter.maydell@linaro.org>
+>>> Sent: Friday, April 24, 2026 11:58 PM
+>>> To: Cédric Le Goater <clg@redhat.com>
+>>> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org; Kane Chen
+>>> <kane_chen@aspeedtech.com>
+>>> Subject: Re: [PULL 02/32] hw/misc/aspeed_sbc: Connect ASPEED OTP memory
+>>> device to SBC
+>>>
+>>> On Fri, 24 Apr 2026 at 16:46, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>> But here in the prog path, we use the address from the guest directly
+>>>> in the call to address_space_write. This means that the address the
+>>>> MemoryRegion in the OTP device sees is not necessarily
+>>>> 4 aligned, and that it can have values that exceed the valid size of
+>>>> the OTP.
+>>>>
+>>>> The OTP device on the other end seems to try to account for this
+>>>> difference: its read function uses the offset it is passed as-is,
+>>>> whereas its write function uses "otp_offset = otp_addr << 2" to
+>>>> convert the offset into a byte offset before using it as an array
+>>>> index etc. But the write function doesn't check whether it's got an
+>>>> overlarge value, so I think it can write off the end of the storage.
+>>>
+>>> I found a repro which triggers a clang asan failure, so I filed a bug:
+>>>
+>>> https://gitlab.com/qemu-project/qemu/-/work_items/3436
+>>>
+>>> Would you mind having a look at it?
+> 
+> Thanks Peter. I really appreciate the simplicity of the test case.
+> 
+>>>
+>>
+>> Hi Peter,
+>>
+>> Sorry for the confusion. I plan to move the address conversion
+>>
+>> otp_offset = otp_addr << 2;
+>>
+>> from aspeed_otp_write to the upper layer (aspeed_sbc_otp_prog) to ensure
+>> consistent behavior between the read and write paths. This should help reduce
+>> confusion and align the implementation more clearly.
+>>
+>> If there are no concerns with this change, I will proceed with submitting a
+>> patch shortly.
+> 
+> Hello Kane,
+> 
+> See below.
+> 
+> https://github.com/legoater/qemu/commit/f2967c5bb6084903db178c08afe2b410dd98d3ff
+
+There is more to it. The additional shift in Aspeed OTP model should
+be removed too. With that, the memory transactions on the OTP storage
+should be safe. I think.
+
+I pushed a new version on branch aspeed-11.1
+
+Thanks,
+
+C.
+
+> However, the functional tests are broken. These tests should be using
+> real HW values preferably and not values expected by QEMU.
+> Can you please fix the tests and send the patch below ?
+> 
+> 
+> Thanks,
+> 
+> C.
+> 
+>  From f2967c5bb6084903db178c08afe2b410dd98d3ff Mon Sep 17 00:00:00 2001
+> From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+> Date: Mon, 27 Apr 2026 10:50:21 +0200
+> Subject: [PATCH] hw/misc/aspeed_sbc: Add bounds checking for OTP write
+>   operations
+> MIME-Version: 1.0
+> Content-Type: text/plain; charset=UTF-8
+> Content-Transfer-Encoding: 8bit
+> 
+> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
+> model in how the guest-provided address is handled.
+> aspeed_sbc_otp_prog() passes a word-indexed address directly
+> to address_space_write() without converting it to a byte offset,
+> whereas aspeed_otp_write() expects a byte offset and applies an
+> additional shift (otp_addr << 2). This double-shift confusion means
+> that an out-of-range word address can lead to a write beyond the
+> allocated storage.
+> 
+> Fix this by adding bounds checking on the word offset before
+> converting to byte offset and passing to address_space_write().
+> This matches the existing bounds check in aspeed_sbc_otp_read().
+> 
+> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3436
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 > ---
->
-> v9 -> v10
-> - Use ToleranceOnlySrcTestValue
-> ---
->  target/arm/cpu64.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
->
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index e7014022df4..a93ad2da5ad 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -834,6 +834,17 @@ static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
->                                       0, 0, ToleranceNotOnBothEnds);
->      arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
->                                       0, 0, ToleranceNotOnBothEnds);
+>   hw/misc/aspeed_sbc.c | 11 +++++++++--
+>   1 file changed, 9 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index 065e822e70d9..50d499f924dc 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -159,9 +159,16 @@ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+>       MemTxResult ret;
+>       AspeedOTPState *otp = &s->otp;
+>       uint32_t value = s->regs[R_CAMP1];
+> +    uint32_t otp_offset;
+> 
+> -    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
+> -                        &value, sizeof(value));
+> +    if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "Invalid OTP addr 0x%x\n", otp_addr);
+> +        return false;
+> +    }
 > +
-> +    /*
-> +     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
-> +     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
-> +     * kernel would fail without cpreg migration tolerance definition.
-> +     * If the register is present on source but not on destination, make
-> +     * sure it has its reset value, ie. 0, meaning no service is exposed
-> +     * to the guest.
-> +     */
-> +    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
-> +                                     UINT64_MAX, 0, ToleranceOnlySrcTestValue);
->  }
->  #endif
+> +    otp_offset = otp_addr << 2;
+> +    ret = address_space_write(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+> +                              &value, sizeof(value));
+>       if (ret != MEMTX_OK) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "Failed to write OTP memory, addr = %x\n",
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 

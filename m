@@ -4,96 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445CFFF885D
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 10:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F148FF8868
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 10:32:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHfe0-0007si-IW; Tue, 28 Apr 2026 06:26:20 -0400
+	id 1wHfjq-0001tg-FY; Tue, 28 Apr 2026 06:32:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHfdy-0007r4-G5
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:26:18 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1wHfjp-0001qR-6A
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:32:21 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHfdx-0004Ma-00
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:26:18 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-6501725d888so9099854d50.0
- for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 03:26:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777371976; cv=none;
+ id 1wHfjn-0006Oe-8I
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:32:20 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-79db5e18ac6so130269857b3.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 03:32:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777372338; cv=none;
  d=google.com; s=arc-20240605;
- b=QDDH7EnL6IUDFh5Ts8ajPlPyKJAbNjym/hsUzo6vpyayPoCSzmAL5e7NraI82ac6wA
- Fh6JtCvpJos46I8G/ZVYBM27SNJ5xAfA8eA1rB8DxzaGNP6am3mp3SIcM7MzbK+S334s
- VMbLBwkg6hVOrOPrRFyN5bGqipELPIf1Zm2CRZ65NobF6+PfLdmpBJYrcRNxPAXaE/Po
- BmcdcdzzVriuzEk9ST3R5w/FWBWdU3U4KwrOAPjXx3t76AaeRsi7HGdVglnz6Q5gQdYK
- PjdpdGKDLCLWkWDeX6aWlz9EX+YC/9zUiRp3006QcksSCCFtCgRL26pHWLOeH0+QK0bO
- 99ZA==
+ b=W7Kf0TVybttQNEm/f5WI3W463RHujOhtW2EI5vgY2/MZG9Rue4jN1Q2kQZ9vYcGykg
+ DY1P4j6gJZycKIP501z3i7wR+Tq00EenfqNcOWxOYsJhWV3sVK6BXh1+eg0CknmFmjHA
+ hImWTfl21SPUfWnvBsDCRzuC02UYzt44Mt6J0n1W8OaUCr+7iTL3E6Qv5Jly0fZtOlO7
+ yNiFdPNqf+CRDdMbn2O3fo2ZqJopJXw3uHYQD67TaAetIBqQmRVzClkC3S4EJ1SHNYCi
+ FC5H2A9VpV2V5auAUTRbam/xwRf4K+bT8M1VqNi0rglh4PX7r+xx38OJNAMuxm0cWIgF
+ U+xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=bNYuY+mpqB9tvsQdv75FUl/u/ykE7yH04LUmseV2WuA=;
+ bh=n0ay+AJtPdMJTtj1odWt7MgxiT+JVsqylEVLk6g39h0=;
  fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
- b=OqeA4epshgkt/6ld+muqVs5gMRUZAIQLEgu9ZEyByWQeGolvxE+YvT7aKtnUj+NnS7
- 4WtJSc1O7rHh5G35/NTFSxVlbGigsUvrfz0Cxf23fG0JliO+JYlH3SaHX1vu+Z12UUbz
- qVKo7+CCGbAmxLnsC5jLTqy9fak5LosUAV7kSVSvpddV32S226lELMgW2O3YW7e1h9ON
- XHHeAqUgyg2gLUU6rYcQAdsdC+Ykwhuito2kqv3zfnDjD11lDDYyKZK9qtJY+/sb89xq
- saIstWNmTRZrak6ae9+scEVrcssLeZzVn4vLYzdnvPtZEbT9YBHfOUO7pkgo8QK7RkTG
- Tc7Q==; darn=nongnu.org
+ b=Z0jbOQl0SHwn+hWFu1btFXd6GHqGW0RoLKjTBv6at1/GjnIzVChs3cqMndQ8F0qd2F
+ 7TaSkhCa3IjsS6jQoGX5nJoW+MygO2Y2OhrKcWnn4lu8VpIsVEg79LBWJ68ahBHYRBO7
+ 3Q+OCWI/9besKIj8pi4rh03Ssf+0WIUKqHz6/dKwQ5r8OSxG0vAcCfEU/hl2Ao3/Ebiy
+ RXBeBjHICD/HzMlbLpzV/+Semsvlnms/N3MkwGfUQiY8f1KKRk9F5qtKPqq849yvnKxU
+ /9et6NasGSVQJnVLxhiIstrY4U4MXDF1cI+bmsX/hn4Vft2mQAGUc3fsTfjDEvtHNigd
+ XQNw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777371976; x=1777976776; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777372338; x=1777977138; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=bNYuY+mpqB9tvsQdv75FUl/u/ykE7yH04LUmseV2WuA=;
- b=Ok+hUxiXN4yYoDdVO90FJc2Okdz3P8sYPXVArTttI5wyVdLKgpHq6rbXO9lfWWfKiw
- ZoAZM9DOcT1EZ0OeirT/HQ/mUp9pAhayx5bAQsy4I7WEedIiZhRx1Wh4kFAnb2NGZaiL
- TIrkioqIXpJcF6L9v1jUyeZ449ArzcRA0cCAczpPYILXmwlbv28N8tNyO0PkyEjKu933
- mHe9YyFKdFV9RtmpUoq4cNDxyAu703pL8KBJoJIzyJIvQax2fSCe74cOx8RsXOKsFy8W
- T9xAzuSv7hYbAbDvwjHcaQylZ/lYazgn1zUo6fQ9NPPGAsqtmlEbc0dp4Z39ywz9X4Df
- O+/w==
+ bh=n0ay+AJtPdMJTtj1odWt7MgxiT+JVsqylEVLk6g39h0=;
+ b=bIeByd+g9I0hNRgMvmToNlquvtSffDjlsZuTIIvciKQVm8BRe15OWrkGCIR15TMJNA
+ t1EP2DwRfIx8R0Q8yWV5+UrBN2Zt9FfQBuMCALr42YveU/NXLtkmT9jlzgo+6KJ2Tnun
+ Z7uiZJjJ5LyE6e2Tkxd6mw0I4hnP7b08NO7aPjRnoir3pCLL7qGBz+bItGif9dXUYIrn
+ gBI5JgO94bsLZBwixPvfSNEM2/3mnXUfr/fSp5kkovGsQw9C9ox9pfJ4GAI9xDe4jX5F
+ s+y968xpB5zsYhPPPSBS30xCmwID3MQSP/HniByROUZSNvKcD5ydLr570P6+kaCyskUE
+ jXug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777371976; x=1777976776;
+ d=1e100.net; s=20251104; t=1777372338; x=1777977138;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bNYuY+mpqB9tvsQdv75FUl/u/ykE7yH04LUmseV2WuA=;
- b=Ffrh7IggmTjJryzof/iYjHOT1uH0yNapSbDph1a1gjVpLILOD0Cbg/OwA4Bwjg/Hqp
- ESq3v8L7VhTomYutbimAIYoggEOfBdMo7rG22rkgHzYyl62HyH01jf6i1MPwn1oJzaDo
- 8u3oFuY8klmDPG0Q5tNnaTYexRJv7SlcS3iLIKlEUdbqlkg0yeaSXs5T+Y0CeGzm2BcE
- 3hcvz3M4YrFUwYWUXKBb+QaaYavQzwYhF/RIpTeVMcIxFfIkTsikbgB5ByTwhxvZ4NFS
- 06hZG1+2Etako/5SRIzh9phk2GmeB1LZFutSHB+vYj+Hb6U2rXVNohloX3gxVZor0FiQ
- bK4w==
-X-Gm-Message-State: AOJu0Yx5EdbQqnvsXJVuh3CTcfgfaUJzHXRD6L8K66VhiHU7vCGjYHlP
- ofjWmbGlWcH7b1gWYJ8gvpBkd2gVT2cxP19LlL6BlssWIH5yL9+ELI+sJd+Wbu/Uk3iPCUD1aMV
- jHPHSaNFZ0ycHlPfmP9IAoxjvEnaPFiSM0SdRan1+IQ==
-X-Gm-Gg: AeBDievNkjVvsViwMrMmS2IciaVI2wMcUKeBaN7o3NHZbiXLbZtLsCikJ5D60UKQ8ea
- KHP5UNlSv3HUgFqVO0aCZlx8VVjXUcqpOAgLSduaBNGrPz1PuGU5M1u0CwvxbvlJmWnlc8yeT6d
- Y7jSW//BmOLMC6pnp64suoXYbM6sF7OmJj3O0FyXLuO/CedseTRL9yMJVhT5qxW43MES9hYV5Pw
- cNV9nZh49TXyW0jmssVycvxlq0jgn4m2ioVAYo+3pDZejZlA4thkmF3Hs1S9GXDmz+MAKfBKypE
- QaQxGqfXVEYWFF6l/Pxhs9AtPyXTe8oEGFjymuJCJFAReHWwQnx6JRyxDOV8dqVWgd3yFE23TgI
- Exg==
-X-Received: by 2002:a05:690e:1406:b0:650:3e1f:907c with SMTP id
- 956f58d0204a3-65beeba511amr1996675d50.0.1777371975587; Tue, 28 Apr 2026
- 03:26:15 -0700 (PDT)
+ bh=n0ay+AJtPdMJTtj1odWt7MgxiT+JVsqylEVLk6g39h0=;
+ b=V3sb8XRH6jmDaBmhO08YyekkJzsY4tapc2yJ+bUycjYST7P2ychdk8DmSEMjPH35/U
+ 2tAI8k6JpQlnxUFzLVcXHBykxKOZZm/YHcMFrbRAiavHNV9hsFJref4X+3TDsqycoTPy
+ T/KAs7WxpqTBsVxxVDTSCjR+UZEuSdDyBOyvEM8g30k25mxY/I/qlDRDPE/jY20SqwSw
+ 88WtAWJJ3a90N5PlSWccH5bMP7+EKulhSeYte9PicyQAGTp9VtvC4DwQYHF56yrtXjvf
+ FGCerTxAtOuOWr7qvmVem+b2cwv2dYZymj0lZky43CKn4pr/hgIP0nUuvrBj8aTQiMhr
+ ji2A==
+X-Gm-Message-State: AOJu0Yxac81c02X/DGWxDL7ACYXhdLIByIvoQO4l7x2/dWxPz4jjtpdN
+ yTEvzqhH7TBwxcRMRRYO+vT0+qpmW7r3DgXa9TY/iZsEDM9QfNJWOREYOdf7RtdUngX0hS0Guzb
+ 966Ak1VmoRBvg6DWlmpucts1CglRdHvfII+IMd01d1g==
+X-Gm-Gg: AeBDiessW4PT4hfuEefiqV6HwpucsIVmdn10ITn+x008x6ruRamfM3vAytsH27t0uXP
+ gcapN0KLoZzAhWPOQ+UEObKf1vNFJL6cCqWcAA4wIbn7rCNrf1NA8Z60SlXNNq2KrD7ylcs44x0
+ xKAD3mn7JCwKjwZDPvRvRDqb895MzPBDzh2cCdqdbVw5XPS3UCcDvF0NYjpx71AOWAGbmEaKgPi
+ AAQHhV/2c0ioQFw8GxPS8jvqi4aa1Qs2Wz9zHBAYW4iwPbVXEOBK3bnIEBwtBk/P4NZo6CKnp3x
+ /KpY0srAPQD8Bh7hTifYhHNCcMQCV2jrOCUnprKsDvxovAM3sfXYS3BLItgSQzaAzlBdn0qfgsH
+ fvonKe/XAUnz/
+X-Received: by 2002:a05:690e:e8c:b0:64a:ce57:cac4 with SMTP id
+ 956f58d0204a3-65bee7f6ab0mr1691095d50.24.1777372337833; Tue, 28 Apr 2026
+ 03:32:17 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260417173105.1648172-1-peter.maydell@linaro.org>
- <20260417173105.1648172-17-peter.maydell@linaro.org>
- <44df274b-6179-4e63-aee4-1e29ad5f4b23@linaro.org>
-In-Reply-To: <44df274b-6179-4e63-aee4-1e29ad5f4b23@linaro.org>
+ <20260417173105.1648172-18-peter.maydell@linaro.org>
+ <aa013ba2-31ef-46d3-a97e-b272d43a8824@linaro.org>
+In-Reply-To: <aa013ba2-31ef-46d3-a97e-b272d43a8824@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Apr 2026 11:26:01 +0100
-X-Gm-Features: AVHnY4JOrdpIlO27eYt75ZDtPg1k4zS9uDE0SB4DBSEbiX4Ru8l4hWpH_ip6_yQ
-Message-ID: <CAFEAcA8fXkUmcLd0D09GWR66fnDEe_PdnFnUvvvctCaqma8iRQ@mail.gmail.com>
-Subject: Re: [PATCH 16/17] target/arm: Implement translate_for_debug
+Date: Tue, 28 Apr 2026 11:32:05 +0100
+X-Gm-Features: AVHnY4LqTKLHN9EN8IXQy5tlHTDdstv6ic0xLZczzDHVtwWMAPijt9Ctkq2y1rg
+Message-ID: <CAFEAcA9ACvYY-YbjDtZq0EKk7G1QkNV0+0DF+1-BO25W=8LXHQ@mail.gmail.com>
+Subject: Re: [PATCH 17/17] system/physmem: Use translate_for_debug() in
+ cpu_memory_rw_debug()
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,51 +117,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Apr 2026 at 04:12, Richard Henderson
+On Thu, 23 Apr 2026 at 04:17, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > On 4/18/26 03:31, Peter Maydell wrote:
-> > @@ -3935,25 +3936,30 @@ static hwaddr arm_cpu_get_phys_addr(CPUARMState *env, vaddr addr,
-> >       GetPhysAddrResult res = {};
-> >       ARMMMUFaultInfo fi = {};
-> >       bool ret = get_phys_addr_gpc(env, &ptw, addr, MMU_DATA_LOAD, 0, &res, &fi);
-> > -    *attrs = res.f.attrs;
+> > Currently cpu_memory_rw_debug() assumes page-granularity for translations,
+> > and it works in a loop where each iteration translates for the vaddr
+> > rounded down to a page boundary and then copies up to the end of the
+> > page boundary.
 > >
-> > -    if (ret) {
-> > -        return -1;
-> > +    if (!ret) {
-> > +        /* translation succeeded */
-> > +        result->physaddr = res.f.phys_addr;
-> > +        result->attrs = res.f.attrs;
-> > +        result->lg_page_size = res.f.lg_page_size;
-> >       }
-> > -    return res.f.phys_addr;
-> > +    return ret;
-> >   }
+> > Rewrite it to use the new cpu_translate_for_debug(): we no longer want
+> > to round down the input address, and the boundary we copy up to is now
+> > determined by the lg_page_size it returns rather than being assumed
+> > to be page-sized.
+> >
+> > This, together with the implementation of translate_for_debug for
+> > Arm targets, fixes the bug where semihosting would incorrectly
+> > fail to access parameter blocks that were in memory where the
+> > start of the 4K region they were in was inaccessible due to MPU
+> > region settings, even if the parameter block itself was readable.
+> >
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3292
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   system/physmem.c | 38 ++++++++++++++++++++++++--------------
+> >   1 file changed, 24 insertions(+), 14 deletions(-)
+> >
+> > diff --git a/system/physmem.c b/system/physmem.c
+> > index f2d9a4ff8f..45c3a926cf 100644
+> > --- a/system/physmem.c
+> > +++ b/system/physmem.c
+> > @@ -4036,28 +4036,38 @@ address_space_write_cached_slow(MemoryRegionCache *cache, hwaddr addr,
+> >   int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
+> >                           void *ptr, size_t len, bool is_write)
+> >   {
+> > -    hwaddr phys_addr;
+> > -    vaddr l, page;
+> >       uint8_t *buf = ptr;
+> >
+> >       cpu_synchronize_state(cpu);
+> >       while (len > 0) {
+> >           int asidx;
+> > -        MemTxAttrs attrs;
+> > +        TranslateForDebugResult tres;
+> >           MemTxResult res;
+> > +        hwaddr blk_base, blk_size, l;
+> >
+> > -        page = addr & TARGET_PAGE_MASK;
+> > -        phys_addr = cpu_get_phys_addr_attrs_debug(cpu, page, &attrs);
+> > -        asidx = cpu_asidx_from_attrs(cpu, attrs);
+> > -        /* if no physical page mapped, return an error */
+> > -        if (phys_addr == -1)
+> > +        if (!cpu_translate_for_debug(cpu, addr, &tres)) {
+> > +            /* Return error if no physical page mapped */
+> >               return -1;
+> > -        l = (page + TARGET_PAGE_SIZE) - addr;
+> > -        if (l > len)
+> > -            l = len;
+> > -        phys_addr += (addr & ~TARGET_PAGE_MASK);
+> > -        res = address_space_rw(cpu->cpu_ases[asidx].as, phys_addr, attrs, buf,
+> > -                               l, is_write);
+> > +        }
+> > +        asidx = cpu_asidx_from_attrs(cpu, tres.attrs);
+> > +        /*
+> > +         * Clamp the amount we read to not go beyond a page even if
+> > +         * the CPU returned a larger lg_page_size, in case this access
+> > +         * is to a memory-mapped IO region.
+> > +         */
+> > +        tres.lg_page_size = MIN(tres.lg_page_size, TARGET_PAGE_BITS);
+> > +        /*
+> > +         * Find the length in bytes from tres.physaddr to the end of the
+> > +         * block whose size is 1 << tres.lg_page_size; we will access
+> > +         * that much in one go.
+> > +         */
+> > +        blk_size = 1ULL << tres.lg_page_size;
+> > +        blk_base = ROUND_DOWN(tres.physaddr, blk_size);
+> > +        l = blk_base + blk_size - tres.physaddr;
+> > +        l = MIN(l, len);
+> > +
+> > +        res = address_space_rw(cpu->cpu_ases[asidx].as, tres.physaddr,
+> > +                               tres.attrs, buf, l, is_write);
 >
-> Inverted return value.
-> This would be obvious with s/ret/fault/.
+> Doesn't address_space_rw handle both MMIO and RAM?
 
-This function returns true on fault, matching the other
-get_phys_addr functions in this file, so "return ret" is
-what I intended here.
-
-arm_cpu_translate_for_debug() returns true on success, which
-is the opposite convention, so it does:
-
-     if (!arm_cpu_get_phys_addr(env, addr, result, mmu_idx)) {
-         return true;
-     }
-so as to return true if arm_cpu_get_phys_addr returns false
-(the successful-translation case).
-
-I agree that this is confusing, but that's why I put the comments
-in and the commit message. I had a choice of making the
-translate_for_debug() function follow the existing
-tlb_fill_align() convention or the one we use here in ptw.c,
-and I picked the former. That leaves us having to do a
-flip-the-sense-of-the-boolean somewhere, unless we want to
-redo all of ptw.c to use true-for-success instead.
+Yes, but it doesn't handle accesses that cross boundaries
+between MemoryRegions. (flatview_read() and flatview_write()
+look up the MemoryRegion once for the first address and then
+use that for all the data transfer.)
 
 -- PMM
 

@@ -4,98 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8B8FFF885D
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 09:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F6BFF885D
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 09:46:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHepA-0003OI-NW; Tue, 28 Apr 2026 05:33:48 -0400
+	id 1wHf1P-00012X-Vw; Tue, 28 Apr 2026 05:46:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHep9-0003NQ-Np
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:47 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1wHf1O-00011X-IT
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:46:26 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHep7-0007Ql-V9
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:47 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-488d2079582so132091185e9.2
- for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 02:33:45 -0700 (PDT)
+ id 1wHf1N-0004dx-6k
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:46:26 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-651cfaa21e6so9690277d50.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 02:46:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777369584; cv=none;
+ d=google.com; s=arc-20240605;
+ b=lyg8jO67AvNGFF1oh+35M8sC7v5DPwyqOPmr/Sf7sY0R3XANd9HG1KwwV8n1ChKe4W
+ AYOK9rJpyWybPPvlwLEVMLANa4ugwM1cdDzIIyizlaESgc2JYbYFUNkuk0FA+J6AXCYS
+ 9yOu8DhU5fFH2WKJgAOj/DzLKaIILgOS4iB8Dcqx33QNfhHiiasvUF1pQPaRok+JbLCh
+ SGp0wxXwk6GvuOUsyCfXJ3tHxVxx40yYcq4zG7VTdHlfPVh7R/TtIqhcWF1HPKbO4HTi
+ gbPTQxKPdmj2M9+w3h60BOcrWpSs57w/IB5SQ6Ih3WneEtt7HvJU7nj3KgdNhxXmZNeB
+ +f8A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
+ fh=rwIb3RAEmhT6+4RaD7PSTfd136qSvKnBrsCW9M+27Ks=;
+ b=kvolBj/GSQlLs+DZ+f5kmLxuthijeRKD58m3arKuyZWPU4p0SvUpVscegaXjoyy0h+
+ AjwmsLfTHVdX27FqmVsorF/969yqzRPME6FDid5YKOjIwOVVL53sSJyjrL0Wz8ui5/Wu
+ ZQsiNDF4w1M6VJQQSLJZIszi0tsOXrtAXjZHnsHSo1wmRLA+H4FIHvO2zPzJpCehZSeF
+ XCnImpZ9IHu2jsPKpOSTuot7cv8Dsbf/KsbRrrk07qOD3NcIGFnsQkYt77i6TE+m0wA0
+ Y5vu9N2MNKu+j2Atw6sG1Ljj8LOy5DBf+9pkTjRdOIEOZjTP0qe48yPaGX2UarzKL8q1
+ GtOA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777368824; x=1777973624; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WVC3itSIffFeC7Z8GlSjGgA9Tg3i0GpOS5eY/5lxrn4=;
- b=rj7zdTA8M/AZW7o8vRqn91sKKqoXjmGfBR0Pv3NXWQh4kjT5S1hNDBT9K8yhs9Quh8
- 02+Xn0ZBMYwv12pcIjRVo4fN+T8fK4UisSRsBRowVX1tPMu50lzcccMQ6yE9T8UnWf6G
- FWNYThWxIWBW0E1FX4cPndl1eVfAnNo/TQQxqzLxcbdn6vNB4oU/CrgGwWhQOMxaJduT
- KwHcb604gg+ACBDtq4iAwA5BSVNKRUd86k1SngxYnXj0EIQ4Tc+2NqZj0eNPibG+Iq9O
- jw5uquvw+AVsZoEbOZg/By9WQRUmQE67f/krqDOC2jAIYpBFoAEAGOpJhS2HZ3PUqY9P
- b1ag==
+ d=linaro.org; s=google; t=1777369584; x=1777974384; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
+ b=PDxo7T4ZvJ1I1d8yg9i/oswde+NIVjkqjGiF5zorI4hY3IF7b9aYwIZM8Eqy8QgDFQ
+ Cm4xTxdC0ShflmDEI3rn0ykqGooYZUCeAya/5NXdFBASbTqRqNiGbXX0i6at6hxXSh+B
+ DhWhcKU5KShE1sV6I3XzZxYe1XWvVVko9TR/5M7kzBzKP91kXDVtR+tVeXSO9saW+uYB
+ OxOj8xup25/Wm4ft4ga41jmn6CFOV3Lbmy02INdXNDNorbt00hjHxyE7UCsQWz8j0nQ9
+ BbBr9O8JKLn4UiPHQbKs6UlAYsUPQbW6WjB/NlDQYB9EFjYNpVigteXNDVlPUzYkWoZA
+ /PSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777368824; x=1777973624;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=WVC3itSIffFeC7Z8GlSjGgA9Tg3i0GpOS5eY/5lxrn4=;
- b=rvny8S53FUJzPZ8brj2DClpNsEE+4O/detNUJPf2YtJkbgGJISgMH2FcHXH6Xf8H0G
- HZdjkxOukUh4Wh8icIa84sDb2r5vCasBn7SuU/PxrpUtrJDZGSArTmmkvM0YPEJbgX2D
- A/PZcBluRiflyXa595jRpr09SnmMSFXJxbeWbHisdSxNs4MC9K31B5Dxe56qMdTdAIqN
- 5bo3xu3o3nfCvRP6nuPT8eJ6/WUybPn/xtdnNxLN5v2cKTkWlodUtYTo2ABYOVCLJuCi
- msEkZQWLb4j0rojlBdojsQaaeXsPArRtMkgl7UnyYRvS9W1RCjG3S7juTm5BPCpezzXK
- YYIg==
+ d=1e100.net; s=20251104; t=1777369584; x=1777974384;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
+ b=jnMakF9xTMawH2jfJsOI7+NWxfbtC/YBU+jLiLFk/mSQgRoLu2xOwHwq4FvHX5JnMH
+ rNjCe5ePTIv50q/aBKWtwV4wpY47MDw7DOgzFd8aSD/zh+WNVp37YximAT/kH5UtnPGq
+ qXWpwLTSBYkAWEtM7J+7uGfqZuU6x+P4eGed8Pfhfe3410/lwnr+rc1guazpQNSCqZ8k
+ PU7YxtkWLykDMFWc/XhviOuKuA8ugQUKSf5fkiFpR8+Pr/No0Zio0jNKKa5Zq01SGjDA
+ I6r0I+64ZCsQaFC2cKgmZvNii3loT1KFF+fnMYRbQLKQRlO/o+smR+OmJraTzVQgN4MH
+ gZrw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+7omqfJO6+iREa4hNyzZ7TUBUCHoF9Sha9IV+K6aMVQOfKyk48jtZ5xd7NcPSa2W2eJLWaKsXy+g==@nongnu.org
-X-Gm-Message-State: AOJu0Yz3yLiq7YaNK/Bmd/5zCj43QJRZ9frVFBhbnJCgKE1yhOLyBohD
- zFizBePQ458Bb/WfFlo5Z+5TvZYVtBy8GJnj56OwFIxZMuRQ2mvWanP1MXWGNoxa0Co=
-X-Gm-Gg: AeBDievmoTC1woDLEgatQls6q6ixnl/fKH2qL3ZLQNGQjYtYvJXXHozDq7h2JvjnCct
- lADPK3oe56IT+6Tar5S7jGYzU0Hw+U9vOiiHomiW3P5jQp6RBcSsnwrIc/7tsowgjfPgeNTgBhc
- Hie40bp+9587joQOdVXalh5RJDM6OjS0xeslvcN80puJdxnCr+v5XDKHBTU0Ov2KP+LDVvApR8J
- LanYdKPTi00kcNLpON7NEyE85aExcNTi5Zz1SJGzntZXUgEm2L/+Bduts6wJ64qxghL5bMPEASA
- qk/RavGIOv5sjmjnbxQ0XGHoD/8irN2d+TFzl48bPk+gqLcDmg9XGYOWAKX71lEwSi5KBf5WzFZ
- hPcczH5bP02p5gNFjImN6+dsCULqvUypcnAqKx5JkILW7cRB88Z7cwxu7QR2BqrlSDm85hhza9/
- 249TCWiTbr7f5qARC5O6W1QPbXJ5jDJUb5cq4zpz3X7SKzGXMP3Uz8dgSK+Rkv/yDAvgYA4B8df
- fGCQQlbmDCBXGebqZLOKxRBEAehQdGKhwppVyGoMw==
-X-Received: by 2002:a05:600c:6995:b0:488:a2ac:a334 with SMTP id
- 5b1f17b1804b1-48a77aee4a3mr37301045e9.3.1777368824444; 
- Tue, 28 Apr 2026 02:33:44 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a774d7a1fsm19665595e9.4.2026.04.28.02.33.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2026 02:33:43 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>, Tyrone Ting <kfting@nuvoton.com>,
- Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 2/4] hw/npcm7xx_fiu: Specify .impl for npcm7xx_fiu_flash_ops
-Date: Tue, 28 Apr 2026 10:33:37 +0100
-Message-ID: <20260428093339.2087081-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260428093339.2087081-1-peter.maydell@linaro.org>
-References: <20260428093339.2087081-1-peter.maydell@linaro.org>
+ AFNElJ977Bj+o1wY6WMg0hkYxPL70r0w4KmdfmYl+LTjBAnjqewGcy9C2tbNxgrTLQNuA426222rdmFouA==@nongnu.org
+X-Gm-Message-State: AOJu0YwP6efYqyK2OoFGRxwNG+BEsy2YkOAT3zhkDZSGhS+qeNxLfJqd
+ QXsHtPl4l+/LlEcj2z0MzlYg7WgVPqjqM6t4H6OTISMlj/RIi6WVI3EzGsfMWJoUKZ2594+M6l0
+ ViBR76pwctUgGux039fFbPtiSEutPIsjNHQOyvqlohg==
+X-Gm-Gg: AeBDievx0JhgqhEHdWKw3DMMug3DWznc6IRXyiGTivxGTXWPVFgxOlgoQkUXgZMyelU
+ qjk3IJUrCtTMMWC2hk7nOgnWLvUS5aKTDmzcFAexoQht9Wv8IN3aMrQtnsDs69AcXh0DZPVCdEL
+ D9Q29yXXPjHHPJ2XLZZqVAnVfDzgdlmN85Rt+lb6FGAx6QcfiMu3tsYNEeJUM6LhU7yK47I/I4M
+ geQOQWXO2Rv+OPbPt4JfvzgQWY6Fpuo9i4UHDWLx8bnTIsGsd1UIKTlxqC4fsWOfnZTMAm15x+b
+ iqWM/Lhn0GB9FqKmM9+p/3/O3tCfvyGyYV+8dE9fmL2Hb/+NkBKrDyCBUzV+kBodcIilrFMyr+c
+ nRg==
+X-Received: by 2002:a05:690e:b89:b0:654:99fd:4a1e with SMTP id
+ 956f58d0204a3-65bee6e075bmr1723676d50.5.1777369583702; Tue, 28 Apr 2026
+ 02:46:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+References: <20260308203516.160103-1-shentey@gmail.com>
+ <20260308203516.160103-2-shentey@gmail.com>
+In-Reply-To: <20260308203516.160103-2-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Apr 2026 10:46:11 +0100
+X-Gm-Features: AVHnY4Lp4-tZHtm8EalkPK5wy_ymIxgoTBUzDEEHaaA0m03tg5Dofjowu1o-E5U
+Message-ID: <CAFEAcA_o9_j05GmXT79TF2z_BqwxmTWeqaaapUOv+E4=P-hh-Q@mail.gmail.com>
+Subject: Re: [PATCH 1/5] hw/arm/fsl-imx8mp: Do not create redundant
+ unimplemented devices
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, 
+ qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,41 +123,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently npcm7xx_fiu_flash_ops provides no .impl substruct; this
-means that it gets the default of "implements 1, 2 and 4 byte aligned
-accesses".  This is more constrained than the device permits in its
-.valid substruct, and also narrower than the functions are written to
-handle.
+On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> The GPT devices are implemented. No need to create redundant
+> unimplemented devices.
+>
+> Fixes: f8b26121762c ("hw/arm/fsl-imx8mp: Implement general purpose
+> timers")
+> cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
 
-Add a .impl substruct matching the .valid substruct; this means that
-all guest accesses are handled directly by the read and write
-functions, and are never synthesized by the memory subsystem
-performing multiple accesses to the device (which would not behave
-correctly, as these read and write fucntions have side effects).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Based-on-a-patch-by: CJ Chen <cjchen@igel.co.jp>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/ssi/npcm7xx_fiu.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
-index 02707de350..2d5bed005a 100644
---- a/hw/ssi/npcm7xx_fiu.c
-+++ b/hw/ssi/npcm7xx_fiu.c
-@@ -250,6 +250,11 @@ static const MemoryRegionOps npcm7xx_fiu_flash_ops = {
-     .read = npcm7xx_fiu_flash_read,
-     .write = npcm7xx_fiu_flash_write,
-     .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+        .unaligned = true,
-+    },
-     .valid = {
-         .min_access_size = 1,
-         .max_access_size = 8,
--- 
-2.43.0
-
+thanks
+-- PMM
 

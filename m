@@ -4,105 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D81FF885D
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 10:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02C8FF885A
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 13:35:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHg83-0006WE-H9; Tue, 28 Apr 2026 06:57:23 -0400
+	id 1wHibJ-0005Tt-Bc; Tue, 28 Apr 2026 09:35:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHg81-0006Vy-SX
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:57:21 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHg80-0004Bs-1M
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 06:57:21 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-651bc8f864fso6166378d50.1
- for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 03:57:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777373838; cv=none;
- d=google.com; s=arc-20240605;
- b=S3M/RfksAppnjIp38nf4y1viEv/Yq0EA3p2TN2MFYu8CGlAf5kTAcjT+ySQ634YAzj
- xw8aOl6Zv8Rstyuu464Qz0bU5RkvcJ8CJ9FDNgn2zcuQe5zFsSwzmyW+g4TtTxkY+2ew
- zhGiTDtiLu5JXA5efWrhZ2DW/UGIZcRfapHnzqhqBOj7ZoEwpGf3HIF4dSpix9dwJ22V
- +pMYVGmfLPYqBAdH09f3c1LEDI3QeOlTBZJCvZiAhLSmTKJ0pGT81nDL0Gtw4cSQLAkO
- 9um+Cul3bbFQgSlMTjMr0BH+3Q87TZAyN4985kzSDSd9yBLGMi8EeWZ9kVaU7u/KQD/f
- RpKQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=OBAvmJZzvIkI3Xlg3xS7iYIU6kQ01BvEEeAFoUTxU+w=;
- fh=tmGos/+Y/lTWdub9lPkWPo77uQaU1cu32nJKaoNez7Q=;
- b=dBVoWgv/P/4TJenINmvuyQdTIAkRc19Q3+00W7tewOmLR/2k0wJ0H7kq6WTRkFr2Yh
- ChMdG9Y+FSdiZP/tvRUxH1Hbb39HBYUMfpvl6LGbc7wfqkeR68hE6CwFKYWaQS130WoY
- q/p6OhlXxxNhd2QEtqxFsKGe/QJYhH9Fa2Nz56X6zS6t6fNiPBkj6CwP1qmoeYSQZuBK
- KcyIO7zcpY/Q9p0X/gLc+ovYxeM09avDaGNpRqHhhnkzcUfNhJyOLbHDHdebJItX+nps
- tTZCo/Q1l7bETmcAZvuVKlt4n8Ho7OqYdg32F9QJjb0L8mLNVShCinoJ7yDwL+VQFI5b
- b0Zw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777373838; x=1777978638; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=OBAvmJZzvIkI3Xlg3xS7iYIU6kQ01BvEEeAFoUTxU+w=;
- b=aLwCteCHggpCBl5y1sy+5ixw29ttjkM1n5uW9VM38nnrdPX1X0gg4Kyn7JHoiwjVND
- r0kWPerFbGdcl/cHStdKtCSJNsiXw0+54NJLW9cG7nm2aWdTklL9LOtDl8/wD17YBwbE
- lwzWeYV7wTJmjlMTifAgh8pKvoMKGdW85rLyhO/tEPbpTcZ85qc+LEcMX9XBraEXGHVu
- xKit/WIVlUC8VERFc5hyBt+Ar6vZNnZdZ06TmYEOOl+UL1NSZENgIZH9iiYYi3gXsPSw
- rV40vrcrJ3dobekXU4kr/VTmh3pe7qF4liNqI1o0zWbUl2BlYIuWZTa7/21Ouu0OXMyJ
- bFAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777373838; x=1777978638;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=OBAvmJZzvIkI3Xlg3xS7iYIU6kQ01BvEEeAFoUTxU+w=;
- b=oRKabvg5KBiI5qSYwz6vEu7zmP+RbSuPebmIkru0UGT2hAQciw+VO+R4XDjb31upF7
- 8Au1mOk3Phf0uzwE89dXknmVbzhjRrzZsVHwheb6CPMXNWUiTAr2MEAh6xtBQO2jXfBB
- BbTxUDysZIWZZO341I1IRBhe74wEueSUeiicRnC6LbBy1P9iJTs34+StQt0P9dK79Vds
- bIUwSHWnXY4FmrZyvPVlu1exL0uutr/a2ABS21zW1zQcIubCGWeAZQmU2+X2Bheg3Coo
- YT64lKsh7FvtPP35GDXwWydbIoszmNKb9LXQqE+CpodmU2tmyPMgqdU7xjKvQ056Pirn
- gnQA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+2wlayYXJoa8qNy+b1Woqfv0trSbD+cSokHtqQwIhKxrJ6y8IiwIKm+8uNFI2EPh4z0DMhhnJ0YQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwhfmTEjKtKHgUZDdoSL6C+wXEbjN2/hMxmHv4wl5SjAV6/IX0u
- Wr2BS2+Y1+EVyZP+SEgLu4XEaka9wXfeduUIzxrzOqM00DBcu2xAe7RNi5HF0rcdph6lIEBYeAO
- 4OC6W23VhrkKmO2NAvUeIZ9zgPY5IlUNiZhT4br8kEw==
-X-Gm-Gg: AeBDievpvAs1sKa7wkYp5Xj7Os1nb6S2GzyrYx1UoKWX2U/ZJHxrNLWE53vyrHvzT2z
- Dr7xJAZTEw9g0uESuH3udExDhsITLMUEEJ65YoqUgeooGLoe7u1/Vz1wMD8/2FSQmJFJKIOUix+
- 9sz/Wcs0nnsdmqdVDjndHlX5Hqt6QtlGloKGJMNQv8icJOoe0ZgsXyiUlbU+p4QqV191LaEPzFi
- zVpN0DnX727MIM21OcfoWwVJcwnZQ76+aGVEOZhu/rYB7XpkcrgxvvBwlgGSWg5odUnR9KBAN7c
- wLNYCFWBUSqg784ltbwOdPvIsYi9JBPmE79Dw5ZXOTndnYsu5qK7PgN6zbeLrXg//DGdvqn/H0e
- P/7/yywXYgGmm
-X-Received: by 2002:a05:690e:1482:b0:649:e6de:8f4a with SMTP id
- 956f58d0204a3-65beee55532mr2113624d50.42.1777373838377; Tue, 28 Apr 2026
- 03:57:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ewanhai-oc@zhaoxin.com>)
+ id 1wHe1W-0006Di-JL
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:42:31 -0400
+Received: from mx2.zhaoxin.com ([61.152.208.219])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ewanhai-oc@zhaoxin.com>)
+ id 1wHe1R-0007iu-UX
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:42:28 -0400
+X-ASG-Debug-ID: 1777365730-1eb14e680f2b810001-yEWgzd
+Received: from zhaoxin.com (zxmail.zhaoxin.com [10.28.208.166]) by
+ mx2.zhaoxin.com with ESMTP id lFKtIK0Ory4J5Lyu;
+ Tue, 28 Apr 2026 16:42:10 +0800 (CST)
+X-Barracuda-Envelope-From: ewanhai-oc@zhaoxin.com
+X-Barracuda-RBL-Trusted-Forwarder: 10.28.208.166
+X-ASG-Whitelist: Client
+X-Append-Disclaimer: 1
+Received: from [127.0.0.1] ([127.0.0.1] [10.28.24.2])
+ by zhaoxin.com (8.30) with ESMTP7effe6796d32c21aaca640dcc2b7505b
+ Tue, 28 Apr 2026 16:42:08 +0800
+X-Eyou-Smtpauth: EwanHai-oc@zhaoxin.com
+X-Eyou-EnvelopeSender: ewanhai-oc@zhaoxin.com
+Message-ID: <7a515afc-7cfd-4756-a8b0-bf7a8c0e7490@zhaoxin.com>
+Date: Tue, 28 Apr 2026 16:42:07 +0800
 MIME-Version: 1.0
-References: <20260409035015.132370-1-richard.henderson@linaro.org>
-In-Reply-To: <20260409035015.132370-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Apr 2026 11:57:07 +0100
-X-Gm-Features: AVHnY4IAs_L7jY7gvXtX6WYx0bSTSZKudbd0tYKZwesq7MzoA-dFzrprx2Zz-k4
-Message-ID: <CAFEAcA-fht7aCnsScrhAvuP0=pnPAnNOJMwCTo5wqhHaU-eeaQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/7] target/arm: Remove bswap_code
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pierrick.bouvier@linaro.org, 
- philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/9] hw/core: Make CPU topology enumeration
+ arch-agnostic
+To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+ Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+ kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>
+X-ASG-Orig-Subj: Re: [PATCH v5 2/9] hw/core: Make CPU topology enumeration
+ arch-agnostic
+Cc: Yongwei Ma <yongwei.ma@intel.com>
+References: <20241101083331.340178-1-zhao1.liu@intel.com>
+ <20241101083331.340178-3-zhao1.liu@intel.com>
+From: Ewan Hai <ewanhai-oc@zhaoxin.com>
+Content-Language: en-US
+In-Reply-To: <20241101083331.340178-3-zhao1.liu@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
+X-Eyou-Sender: <ewanhai-oc@zhaoxin.com>
+X-Barracuda-Connect: zxmail.zhaoxin.com[10.28.208.166]
+X-Barracuda-Start-Time: 1777365730
+X-Barracuda-URL: https://10.28.252.36:4443/cgi-mod/mark.cgi
+X-Virus-Scanned: by bsmtpd at zhaoxin.com
+X-Barracuda-Scan-Msg-Size: 4941
+X-Barracuda-BRTS-Status: 1
+Received-SPF: pass client-ip=61.152.208.219;
+ envelope-from=ewanhai-oc@zhaoxin.com; helo=mx2.zhaoxin.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 28 Apr 2026 09:35:43 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,38 +95,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Apr 2026 at 04:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Based-on: 20260407222208.271838-1-pierrick.bouvier@linaro.org
-> ("[PATCH v11 00/21] target/arm: single-binary")
->
-> Version 2 here should probably be RFC.  This time around, all
-> instruction loading, and more decode, is done by translate.
-> A new CPUARMState field is added for passing data to EXCP_SWI
-> and EXCP_NWFPE.
->
->
-> r~
->
->
-> Richard Henderson (7):
->   linux-user/arm: Restrict regpairs_aligned
->   target/arm: Only define aarch64_untagged_addr for aarch64
->   target/arm: Segregate target-specific user-only fields
->   target/arm: Store SVC immediate for user-only
->   target/arm: Recognize linux faux BPKT
->   target/arm: Introduce EXCP_NWFPE
->   target/arm: Remove bswap_code
+WmhhbyBMaXUgd3JvdGUgb24gMTEvMS8yNCA0OjMzIFBNOj4gQ2FjaGUgdG9wb2xvZ3kg
+bmVlZHMgdG8gYmUgZGVmaW5lZCBiYXNlZCBvbiBDUFUgdG9wb2xvZ3kgbGV2ZWxzLiBU
+aHVzLD4gZGVmaW5lIENQVSB0b3BvbG9neSBlbnVtZXJhdGlvbiBpbiBxYXBpL21hY2hp
+bmUuanNvbiB0byBtYWtlIGl0IGdlbmVyaWM+IGZvciBhbGwgYXJjaGl0ZWN0dXJlcy4+
+ID4gVG8gbWF0Y2ggdGhlIGdlbmVyYWwgdG9wb2xvZ3kgbmFtaW5nIHN0eWxlLCByZW5h
+bWUgQ1BVX1RPUE9fTEVWRUxfKiB0bz4gQ1BVX1RPUE9MT0dZX0xFVkVMXyosIGFuZCBy
+ZW5hbWUgU01UIGFuZCBwYWNrYWdlIGxldmVscyB0byB0aHJlYWQgYW5kPiBzb2NrZXQu
+PiA+IEFsc28sIGVudW1lcmF0ZSBhZGRpdGlvbmFsIHRvcG9sb2d5IGxldmVscyBmb3Ig
+bm9uLWkzODYgYXJjaGVzLCBhbmQgYWRkPiBhIENQVV9UT1BPTE9HWV9MRVZFTF9ERUZB
+VUxUIHRvIGhlbHAgZnV0dXJlIHNtcC1jYWNoZSBvYmplY3QgdG8gd29yaz4gd2l0aCBj
+b21wYXRpYmlsaXR5IHJlcXVpcmVtZW50IG9mIGFyY2gtc3BlY2lmaWMgY2FjaGUgdG9w
+b2xvZ3kgbW9kZWxzLj4gPiBTaWduZWQtb2ZmLWJ5OiBaaGFvIExpdSA8emhhbzEubGl1
+QGludGVsLmNvbT4+IFRlc3RlZC1ieTogWW9uZ3dlaSBNYSA8eW9uZ3dlaS5tYUBpbnRl
+bC5jb20+PiBSZXZpZXdlZC1ieTogSm9uYXRoYW4gQ2FtZXJvbiA8Sm9uYXRoYW4uQ2Ft
+ZXJvbkBodWF3ZWkuY29tPj4gQWNrZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOp
+IDxwaGlsbWRAbGluYXJvLm9yZz4+IC0tLS4uLj4gQEAgLTM3MywxNyArMzczLDE3IEBA
+IHN0YXRpYyB2b2lkIGVuY29kZV90b3BvX2NwdWlkMWYoQ1BVWDg2U3RhdGUgKmVudiwg
+dWludDMyX3QgY291bnQsPiAgICAgIHVuc2lnbmVkIGxvbmcgbGV2ZWwsIGJhc2VfbGV2
+ZWwsIG5leHRfbGV2ZWw7PiAgICAgIHVpbnQzMl90IG51bV90aHJlYWRzX25leHRfbGV2
+ZWwsIG9mZnNldF9uZXh0X2xldmVsOz4gID4gLSAgICBhc3NlcnQoY291bnQgPD0gQ1BV
+X1RPUE9fTEVWRUxfUEFDS0FHRSk7PiArICAgIGFzc2VydChjb3VudCA8PSBDUFVfVE9Q
+T0xPR1lfTEVWRUxfU09DS0VUKTs+ICBIaSBaaGFvLFdoaWxlIGJvb3RpbmcgTGludXgg
+dW5kZXIgVENHIFFFTVUgKC1rZXJuZWwgKyByb290ZnMpIHdpdGggYSBDUFUgbW9kZWwg
+dGhhdGVuYWJsZXMgY3B1aWRfMHgxZiAoZS5nLiBTaGlqaWRhZGFvLXYyKSwgSSBoaXQg
+dGhpcyBhc3NlcnQ6IHdoZW4gdGhlIGd1ZXN0cXVlcmllcyBDUFVJRC4xRiB3aXRoIGEg
+dG9wb2xvZ3kgbGV2ZWwgZ3JlYXRlciB0aGFuIENQVV9UT1BPTE9HWV9MRVZFTF9TT0NL
+RVQsUUVNVSBhYm9ydHMuIFVuZGVyIEtWTSB0aGUgcGF0aCBpc24ndCByZWFjaGVkIChD
+UFVJRCBpcyBzZXJ2ZWQgZnJvbUtWTV9TRVRfQ1BVSUQyKSwgc28gdGhpcyBpcyBUQ0ct
+b25seSwgd2hpY2ggaXMgcHJvYmFibHkgd2h5IGl0IGhhZG4ndCBiZWVuY2F1Z2h0IGVh
+cmxpZXIuSSdtIG5vdCBzdXJlIHRoZSBhc3NlcnQgaXMgbmVjZXNzYXJ5OiB0aGUgY29k
+ZSB0aGF0IGZvbGxvd3MgYWxyZWFkeSBoYW5kbGVzdGhlICJpbnB1dCBsZXZlbCBvdXQg
+b2YgcmFuZ2UiIGNhc2UgY29ycmVjdGx5LiBmaW5kX25leHRfYml0KCkgcmV0dXJucyBT
+T0NLRVRvbmNlIHRoZSBiaXRtYXAgaXMgZXhoYXVzdGVkLCB0aGUgbG9vcCBicmVha3Mg
+d2l0aCBsZXZlbCA9IElOVkFMSUQsIGFuZCB0aGVlbmNvZGluZyBwYXRoIGJlbG93IHBy
+b2R1Y2VzIHRoZSBTRE0tZGVmaW5lZCBpbnZhbGlkLWRvbWFpbiByZXNwb25zZSAoRUFY
+PTAsRUJYPTAsIEVDWCA9IGNvdW50IHwgSU5WQUxJRF90eXBlLCBFRFggPSBhcGljX2lk
+KS5QZXIgSW50ZWwgU0RNLCBDUFVJRCBMZWFmIDFGSCBkb2VzIG5vdCBjb25zdHJhaW4g
+dGhlIGlucHV0IEVDWCB2YWx1ZSwgc28gZ3Vlc3Rzb2Z0d2FyZSBpcyBmcmVlIHRvIHF1
+ZXJ5IGFueSBzdWItbGVhZiBpbmRleC4gRGlkIHRoZSBhc3NlcnQgaW50ZW50aW9uYWxs
+eXByb3RlY3QgYW4gaW52YXJpYW50IEknbSBtaXNzaW5nLCBvciBpcyBpdCBhIGxlZnRv
+dmVyIGRlZmVuc2l2ZSBjaGVjaz9Gb3IgcmVmZXJlbmNlLCB0aGUgS1ZNIGtlcm5lbCBz
+aWRlIChhcmNoL3g4Ni9rdm0vY3B1aWQuYyBrdm1fY3B1aWQoKSkgaGFzZXhwbGljaXRs
+eSBoYW5kbGVkIG91dC1vZi1yYW5nZSAweDFGIHN1YmxlYXZlcyB0aGlzIHdheSBzaW5j
+ZSAyMDE5OiAgICB9IGVsc2UgeyAgICAgICAgKmVheCA9ICplYnggPSAqZWN4ID0gKmVk
+eCA9IDA7ICAgICAgICAvKiAgICAgICAgICogV2hlbiBsZWFmIDBCSCBvciAxRkggaXMg
+ZGVmaW5lZCwgQ0wgaXMgcGFzcy10aHJvdWdoICAgICAgICAgKiBhbmQgRURYIGlzIGFs
+d2F5cyB0aGUgeDJBUElDIElELCBldmVuIGZvciB1bmRlZmluZWQgICAgICAgICAqIHN1
+YmxlYXZlcy4gLi4uICAgICAgICAgKi8gICAgICAgIGlmIChmdW5jdGlvbiA9PSAweGIg
+fHwgZnVuY3Rpb24gPT0gMHgxZikgeyAgICAgICAgICAgIGVudHJ5ID0ga3ZtX2ZpbmRf
+Y3B1aWRfZW50cnlfaW5kZXgodmNwdSwgZnVuY3Rpb24sIDEpOyAgICAgICAgICAgIGlm
+IChlbnRyeSkgeyAgICAgICAgICAgICAgICAqZWN4ID0gaW5kZXggJiAweGZmOyAgICAg
+ICAgICAgICAgICAqZWR4ID0gZW50cnktPmVkeDsgICAgICAgICAgICB9ICAgICAgICB9
+ICAgIH1pbnRyb2R1Y2VkIGluIGNvbW1pdCA0MzU2MTEyM2FiMzcgKCJrdm06IHg4Njog
+SW1wcm92ZSBlbXVsYXRpb24gb2YgQ1BVSUQgbGVhdmVzMEJIIGFuZCAxRkgiKS4gU28g
+S1ZNLWFjY2VsZXJhdGVkIGd1ZXN0cyBhbHJlYWR5IHNlZSB0aGUgU0RNLWNvbXBsaWFu
+dCByZXNwb25zZTtvbmx5IFRDRyBhYm9ydHMuVGhhbmtzLEV3YW4+ICAgICAgLyo+ICAg
+ICAgICogRmluZCB0aGUgTm8uKGNvdW50ICsgMSkgdG9wb2xvZ3kgbGV2ZWwgaW4gYXZh
+aWxfY3B1X3RvcG8gYml0bWFwLj4gLSAgICAgKiBUaGUgc2VhcmNoIHN0YXJ0cyBmcm9t
+IGJpdCAwIChDUFVfVE9QT19MRVZFTF9TTVQpLj4gKyAgICAgKiBUaGUgc2VhcmNoIHN0
+YXJ0cyBmcm9tIGJpdCAwIChDUFVfVE9QT0xPR1lfTEVWRUxfVEhSRUFEKS4+ICAgICAg
+ICovPiAtICAgIGxldmVsID0gQ1BVX1RPUE9fTEVWRUxfU01UOz4gKyAgICBsZXZlbCA9
+IENQVV9UT1BPTE9HWV9MRVZFTF9USFJFQUQ7PiAgICAgIGJhc2VfbGV2ZWwgPSBsZXZl
+bDs+ICAgICAgZm9yIChpbnQgaSA9IDA7IGkgPD0gY291bnQ7IGkrKykgez4gICAgICAg
+ICAgbGV2ZWwgPSBmaW5kX25leHRfYml0KGVudi0+YXZhaWxfY3B1X3RvcG8sPiAtICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgQ1BVX1RPUE9fTEVWRUxfUEFDS0FHRSw+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDUFVfVE9QT0xPR1lfTEVWRUxf
+U09DS0VULD4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhc2VfbGV2ZWwp
+Oz4gID4gICAgICAgICAgLyo+IEBAIC0zOTEsMjAgKzM5MSwyMCBAQCBzdGF0aWMgdm9p
+ZCBlbmNvZGVfdG9wb19jcHVpZDFmKENQVVg4NlN0YXRlICplbnYsIHVpbnQzMl90IGNv
+dW50LD4gICAgICAgICAgICogYW5kIGl0IGp1c3QgZW5jb2RlcyB0aGUgaW52YWxpZCBs
+ZXZlbCAoYWxsIGZpZWxkcyBhcmUgMCk+ICAgICAgICAgICAqIGludG8gdGhlIGxhc3Qg
+c3VibGVhZiBvZiAweDFmLj4gICAgICAgICAgICovPiAtICAgICAgICBpZiAobGV2ZWwg
+PT0gQ1BVX1RPUE9fTEVWRUxfUEFDS0FHRSkgez4gLSAgICAgICAgICAgIGxldmVsID0g
+Q1BVX1RPUE9fTEVWRUxfSU5WQUxJRDs+ICsgICAgICAgIGlmIChsZXZlbCA9PSBDUFVf
+VE9QT0xPR1lfTEVWRUxfU09DS0VUKSB7PiArICAgICAgICAgICAgbGV2ZWwgPSBDUFVf
+VE9QT0xPR1lfTEVWRUxfSU5WQUxJRDs+ICAgICAgICAgICAgICBicmVhazs+ICAgICAg
+ICAgIH0+ICAgICAgICAgIC8qIFNlYXJjaCB0aGUgbmV4dCBsZXZlbC4gKi8+ICAgICAg
+ICAgIGJhc2VfbGV2ZWwgPSBsZXZlbCArIDE7PiAgICAgIH0+ICA+IC0gICAgaWYgKGxl
+dmVsID09IENQVV9UT1BPX0xFVkVMX0lOVkFMSUQpIHs+ICsgICAgaWYgKGxldmVsID09
+IENQVV9UT1BPTE9HWV9MRVZFTF9JTlZBTElEKSB7PiAgICAgICAgICBudW1fdGhyZWFk
+c19uZXh0X2xldmVsID0gMDs+ICAgICAgICAgIG9mZnNldF9uZXh0X2xldmVsID0gMDs+
+ICAgICAgfSBlbHNlIHs+ICAgICAgICAgIG5leHRfbGV2ZWwgPSBmaW5kX25leHRfYml0
+KGVudi0+YXZhaWxfY3B1X3RvcG8sPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICBDUFVfVE9QT19MRVZFTF9QQUNLQUdFLD4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgQ1BVX1RPUE9MT0dZX0xFVkVMX1NPQ0tFVCw+ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVsICsgMSk7PiAgICAgICAg
+ICBudW1fdGhyZWFkc19uZXh0X2xldmVsID0gbnVtX3RocmVhZHNfYnlfdG9wb19sZXZl
+bCh0b3BvX2luZm8sPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICBuZXh0X2xldmVsKTsuLi4KCgoKCuS/neWvhuWj
+sOaYjgrmnKzpgq7ku7blkKvmnInkv53lr4bmiJbkuJPmnInkv6Hmga/vvIzku4Xkvpvm
+jIflrprmlLbku7bkurrkvb/nlKjjgILkuKXnpoHlr7nmnKzpgq7ku7bmiJblhbblhoXl
+rrnlgZrku7vkvZXmnKrnu4/mjojmnYPnmoTmn6XpmIXjgIHkvb/nlKjjgIHlpI3liLbm
+iJbovazlj5HjgIIKClRoaXMgZW1haWwgY29udGFpbnMgY29uZmlkZW50aWFsIG9yIGxl
+Z2FsbHkgcHJpdmlsZWdlZCBpbmZvcm1hdGlvbiBhbmQgaXMgZm9yIHRoZSBzb2xlIHVz
+ZSBvZiBpdHMgaW50ZW5kZWQgcmVjaXBpZW50LiBBbnkgdW5hdXRob3JpemVkIHJldmll
+dywgdXNlLCBjb3B5aW5nIG9yIGZvcndhcmRpbmcgb2YgdGhpcyBlbWFpbCBvciB0aGUg
+Y29udGVudCBvZiB0aGlzIGVtYWlsIGlzIHN0cmljdGx5IHByb2hpYml0ZWQu
 
-I'm not sure about the SVC part, but I'm definitely
-not very enthusiastic about the BKPT and NWFPE pieces
-moving into target/arm. I prefer the existing split
-where (as far as reasonably feasible) target/arm is
-architectural stuff, and things that are matching behaviour
-of the Linux kernel for user-mode (nwfpe, odd bpkt insn,
-user-page helpers, etc) stay in linux-user.
-
-thanks
--- PMM
 

@@ -4,90 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7859FF885A
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 06:11:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DD47FF885D
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 08:05:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHbew-0002w1-4M; Tue, 28 Apr 2026 02:11:11 -0400
+	id 1wHdRu-0003xz-RC; Tue, 28 Apr 2026 04:05:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHbeQ-0002ZC-NQ
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 02:10:33 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wHdRr-0003vm-Nw
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:05:39 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wHbeP-0008F6-0S
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 02:10:30 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-483487335c2so106882595e9.2
- for <qemu-arm@nongnu.org>; Mon, 27 Apr 2026 23:10:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wHdRp-00040K-LH
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:05:39 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-6501c9903edso11322960d50.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 01:05:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777363536; cv=none;
+ d=google.com; s=arc-20240605;
+ b=W8fuhUQAPNvDZU326nswCJEHRZLGhth0O3sBEnYrA8jTRJ/cKcJvqqUqoHfMpwqxNm
+ 22+90irh1ETKqkci/bE/OcmhaVhT43pkjE3vvSzQBFhgkda7Lm5bvjagZdBFzX9c3ywQ
+ /Nm7I217sTvxVyM568gIqWT8F7pVUdXiX77405Sw1veDeYquHmge3f4P8IO4TGUGZH7a
+ J1t0ZfbsVT3x50vCZD0QTBwrDx1hdGdD/5X4uTxBV/16EG1Bywfz6VGzvG56A/2+qlwt
+ 47p97d9A6TLGyrdc4tG4DsN5h7cGJQYZuuE/0k9S4F22RM5Q2oWyfzYmoQNgl35fmLHV
+ agrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=3p6JM+SR761BTEBtVAwiHNtyumubWwYU22QwXID24vg=;
+ fh=1jFvyuSh4QUCitMV1IDB9F1hH+zemmEHWYjQxz55J4Y=;
+ b=ewbw9Qj6OmA2uTxNZ63XtHiCP6Au+gmAarjKCntaYbWxQ+kcpEwYA6pelDnVUZjgaq
+ 8a7P+ezoFrLEFJhyddli4K3oqSTMwJ+Jo4DQkk9bppZt7sYXMN+BhAUqkMaqIVa0BKq0
+ HwTMN75SZqDMe5h+NDd90/umGwc335OM5fDL/etnII4bIvK1qYGVVeAb6qS188hOOqii
+ HGVDW+6wOYFGIanrvCjjowdX/9HcYMEcjAQBbWLDnFy0d6a3pNEaFbkinghjZ0Dp/FJX
+ rMKaUMUtifB/k7u8gtMysxBLa2YatRpdnJlkJjpdgLnAaTIv+LA64U/b/nIsD6RSvf3i
+ sboA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777356627; x=1777961427; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FgSipo2+qlmdUmx+mOMt+/6ZHVUHxr/oXkMKbL8Lekc=;
- b=zUmgQmnx0/kxyi9kzMmfayYWU22f1SGiuOMCv42D4V/7TMAXqgQW2UnTi4h+miJ96/
- 6PsZdgF926G9uP25p3MlHbTNofs17guT+bc/PvaU2km8Lio5RiXFfaV0alfafWKVTjuL
- vvFmFL711Vm/NrqVIxqXxoSpgRLCp0TP3h0qX0XAw0fKsWnY0z0RZDQaQIUw4Hgbtg2F
- EX1TZH26JXw/BOUpkvrwi5Kwp6zcQq2pc4QOPwy06ZlS0E8+b/lUwrDDITNlFpaYP+O7
- B8RQxWkQBkxXV+UlowxNXtRxcEplIN+e+cHg+Yz+wSFW9FtFyTNoVfgv6EhyB3tBT038
- 07dg==
+ d=linaro.org; s=google; t=1777363536; x=1777968336; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3p6JM+SR761BTEBtVAwiHNtyumubWwYU22QwXID24vg=;
+ b=bnf/iXPDo+Yt0geVTbEaiJygo1UBsONQc/RHwDqQVrXkpXuO9ewLcK0G0iLzaBBZXh
+ 1ouX079Y7Vnc/yYsTpi275zCvjQf3jCaq+fHZeGt4gmj+gc41gcAphitTjlaaGKi2kVW
+ DLc9yTtiZ4/HOC8AkpbyE4I89EMCt2J1I0yLjFGVsBIYQu0BLGhd9jBS+74283wqc71G
+ 6PcPCBpNIZaHFGe+FVekdoaCoNDnuTFA3eSklZ+d1W5/g8i6GU7k0wIR50rO5odh3dqG
+ HHmNbojqEUKoMvoxJdyUUAERCLCUWa65aHybWzkxhs34HAEDhYTgIyZr05bY9bT8REOv
+ jF0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777356627; x=1777961427;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=FgSipo2+qlmdUmx+mOMt+/6ZHVUHxr/oXkMKbL8Lekc=;
- b=OPisTAneeHR/mI9rIP9wsxJ2+fU/92aguREzn7YDhz9BTHXVew45mDx3v3ld9vtt3h
- CqJR4ZDAXVSlWCUchet/dlP+d1C2C53G0Tt3P2hb7uyf3m5lXoB7Nkn+VDMZ0pM9beQy
- wsDeTmir2YgtUTcuX6i2BZaa7SMXVaeKxTDoeYhvAb7Ox2QkMDn9fmy4t1z4G5ldF5fb
- NQJ8s4vD1WvfvnebgI8TzkmoUXF7CEBPXVYn66FXIj1CztQRT+8b9zrH6xqm4jjoTEb1
- qx8RZ5ydd3e2rY97//qG/0LIVWYiB+qmmVAZMkR5R734FbwkON3otn9MxdsFim8wZhBL
- wFJA==
-X-Gm-Message-State: AOJu0Yw/x92wrbdnjhDOnlGheO7lfQsMJgA/sEWlWKR62ZuJPlglFv/d
- E8qmTlTF08IeLFccdI2a+67uSvLF5rfC/5B7NJPOLtVXSweVIAXDHfObzB9CoYUpw1cHeaGG8TP
- GgXYgGjw=
-X-Gm-Gg: AeBDieupzwzl4BGEEtFoX3DKyCqrfbZXgfGu2+H7RpzxG9Dj27QrLCIxzrGngEDnwFD
- rqd6+dVcBy5eAiEx6mUILCix3Mh/LpNu5SECcL5lZ9NnNOlCPgOj16vtM06s7KCVxjtXlrTsiwf
- l/BSYtZQTPMUSeat0uJUmB053PbnSjMndGsMBkgKvveY+LLmtTqzuQzO0Z/V4+6QhZLVifYqy/Q
- 2SNptHMzz9COSZw/BeA8Zz8nILEhTssNnDpRYDzDB4QdbjsAYPsBizNluwyDh85oWdYhpXVx4mJ
- l41ZYx/4uyCZG68bBeHm6PQVD5W0SWhrYieG+Kvn7W1DnuSUO7uWTNKIiX7e2BJMm/GHfBsEJCP
- 8QqyFgh7VUjiNQslZW4D24mCPsSMjPE38Skc7325g9PxqQaP5HGVIVegss4rv0q1bH59muOK7kh
- C2NPdSteyMzEX8bVZ68zyYKJgXz5bSkUV8iYbgEAqlmlY8FNEd0qxBqPRoXSV2sJt50qvrQteQ8
- PCS
-X-Received: by 2002:a05:600c:a405:b0:47e:e2eb:bc22 with SMTP id
- 5b1f17b1804b1-48a77ae0456mr19890625e9.5.1777356627270; 
- Mon, 27 Apr 2026 23:10:27 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a77b24035sm26684215e9.9.2026.04.27.23.10.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2026 23:10:26 -0700 (PDT)
-Message-ID: <2fccc9f7-c317-4913-aa6f-1d67c0cc04a4@linaro.org>
-Date: Tue, 28 Apr 2026 08:10:25 +0200
+ d=1e100.net; s=20251104; t=1777363536; x=1777968336;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=3p6JM+SR761BTEBtVAwiHNtyumubWwYU22QwXID24vg=;
+ b=pdECybLqQViwevV3hzmsbDpMvuDiPZwfPkDixXw3z4OaW0uGrdjeOxcVUclrO0wA3W
+ ijQhxK/SlqvynSJD9d0pH+Ph6lXBMBkws7mAxqtkkh3g1itRv+3V9v/NGsYY0NFuHSvo
+ goasL9gOBhfIbfMZ4UkDiFpK3PFXFLDUZxWrScysFNS+/7gIkThN+GpQwkY4QJ+DoauA
+ N0nURRlDXJ7TZ2kZLQw1EV5cfBsfIEi7BTg3YFurt+Q1QJNWoUFdOkY3OhDoZSUPCuf7
+ BRMlPfZ8h5ZG+g/MUwlzRfCYG0XTjrOGfQfxJARgJoCvlnBuFpbSbo4MfrGbsJSbBBYL
+ I56Q==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+6UzX1tFvj8vdHgHbIbT1QvBvS8zmtKydUDwgGXqh/YLP7h/Ph8e2sLmqb0Vco0Om8IHFlEDwIHg==@nongnu.org
+X-Gm-Message-State: AOJu0YyoK0MN2j1bEV52JRcWTO/pXt8V+18DDZFLsX+pxo3TO24gH88H
+ 47nzFaVaPz+agxhV2P3fq9bRVwzed7kD8I6yUiMoDgeNK6SmzgJEDdl7D+KWZkdQybtc7ECHYVu
+ yCKNJ0BOyI3fARyv5EdsPsCYQcJIcMdeLpi/OMEJe5Q==
+X-Gm-Gg: AeBDievVBVl/j3HkBXg+4lVLRWOwRLC7QSVFmewlw8G4Slw63yjRmTOQCVS7B+2wLuC
+ u4HuDAhCSyS8tn27nEgQBB+kFJ6Sfy/a9DqCvCR1NudIedq7muHsaX09oSAbQG4DjKE21Nu/2lp
+ L7wp4mR8QAjUvWiR6g5B7y6RURrKanRsAZ/cEKMVu+Ux+tGUlmnAzsGCbT3VU5awFDUallIizne
+ fCSrEJ5gRzXqkMzBPj//SvBaW58uukWVScw4qMq0flcgjBsc3DynHSsMAn5prXeS+OxsN4Ftib5
+ a6wZPOxYF5zOAEZVR5hOD4mAIByjqAa8GGbLf0gzAq4xicvLrbBEw0/55VxDo272Gxl1CvOw08s
+ nPyauv9TwaXrQ
+X-Received: by 2002:a05:690e:14cc:b0:654:ea8a:f2e with SMTP id
+ 956f58d0204a3-65beed3d1cemr1676384d50.3.1777363536304; Tue, 28 Apr 2026
+ 01:05:36 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 57/84] fpu: Split FloatParts{64,128} to softfloat-parts.h
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org
-References: <20260426134002.865628-1-richard.henderson@linaro.org>
- <20260426134002.865628-58-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260426134002.865628-58-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+References: <20260409220614.65558-1-lucaaamaral@gmail.com>
+ <CAFEAcA-8BeBte6CxH._5F5Zsk3wvs0zJJW6+=8cNaroRTBegK-M5A@mail.gmail.com>
+ <20260427184540.80415-1-lucaaamaral@gmail.com>
+ <CAFEAcA9yGmWq--JsyZpPnOQ74i=j7JeeO0Xf6be7wWxJGbXLdg@mail.gmail.com>
+ <8A075A86-D6D9-4C97-BE31-C94D58F796FB@unpredictable.fr>
+In-Reply-To: <8A075A86-D6D9-4C97-BE31-C94D58F796FB@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Apr 2026 09:05:25 +0100
+X-Gm-Features: AVHnY4KeGH0WyyxQvKCaRKcMnc1goi-jzR7sy7-stK8-wqpk1UqkEuC8IRmENT0
+Message-ID: <CAFEAcA_TOBD0p-Vom2f14DimmvSJMNUWZEXyg=0onjgn3OrB0g@mail.gmail.com>
+Subject: Re: [PATCH v6 0/6] target/arm: ISV=0 data abort emulation library
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Lucas Amaral <lucaaamaral@gmail.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,16 +126,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/4/26 15:39, Richard Henderson wrote:
-> Begin exposing the intermediate representation of softfloat.
-> Start with just the representation structures.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->   include/fpu/softfloat-parts.h | 88 +++++++++++++++++++++++++++++++++++
->   fpu/softfloat.c               | 69 +--------------------------
->   2 files changed, 90 insertions(+), 67 deletions(-)
->   create mode 100644 include/fpu/softfloat-parts.h
+On Mon, 27 Apr 2026 at 21:15, Mohamed Mediouni <mohamed@unpredictable.fr> w=
+rote:
+> > On 27. Apr 2026, at 22:02, Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+> > I would like any memory access emulation to come with an
+> > attached description of what the guest workload is that
+> > is triggering the requirement for it, so we can check that
+> > it makes sense to do so. (Mohamed mentions the Windows TPM
+> > device, though I am still not sure what exactly is going on
+> > there and whether emulating the access is the right approach
+> > to it.)
+> >
+> For the TPM:
+>
+> TL;DR is that currently we have a workaround in QEMU that maps the page
+> to the guest for direct read but traps writes. As it=E2=80=99s an MMIO ra=
+nge,
+> it relies on FEAT_S2FWB to keep things consistent and misbehaves on CPUs
+> without it.
+>
+> Emulating ldp is enough to get rid of that hack and instead map the TPM
+> as a regular device.
+>
+> ldp/stp are also used by recent macOS guests to the GICv2m...
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This feels to me like something that would be better fixed
+in the guest -- doing LDP/STP to hardware is just asking for
+problems under a hypervisor, and there's no good reason to
+be doing it in the first place. But being a bit more practical,
+it is a good reason for having emulation of ldp/stp I guess.
+
+-- PMM
 

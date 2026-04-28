@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC774FF885D
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 09:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8B8FFF885D
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 09:35:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHepD-0003Rc-GL; Tue, 28 Apr 2026 05:33:51 -0400
+	id 1wHepA-0003OI-NW; Tue, 28 Apr 2026 05:33:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHepA-0003OO-TA
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:48 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wHep9-0003NQ-Np
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:47 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHep8-0007RI-Uz
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:48 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-48896199cbaso110516695e9.1
- for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 02:33:46 -0700 (PDT)
+ id 1wHep7-0007Ql-V9
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:33:47 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-488d2079582so132091185e9.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 02:33:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777368825; x=1777973625; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777368824; x=1777973624; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pXWD/d404r16/lGHqQwmu63U44AcHTbqHQeSLN0NHAI=;
- b=nT+It1a1NmzL5tgvnPl0Ws9vdE+3uU38SVqRmpVigU31XRS7NnI5dFI7T24F5QwSGv
- yZQckBjx48vYaJGGWUmRJ6l4lwf0jjit4rcvMpoMWcW2VuiebF+qZEJDSRMtrXXYJg6Z
- MmDthAdQ69OoQ9LL7wYkyNUlH/HVNqjoO/rKfelwSsXVhIhHNKKA5eryY3Dj0tL9C3gP
- TuDJ9b63/x4RTlsFXyrePFXzF/JVOI4U7YUM872mBoF5u/65yTdMkNK+DToqHpYe4oDn
- ywaScH1j3fxvP44GKcisinlBpERugJzSGOoPItcFldu55J69XiA7g0ASScwjfpqVxxTx
- tdWQ==
+ bh=WVC3itSIffFeC7Z8GlSjGgA9Tg3i0GpOS5eY/5lxrn4=;
+ b=rj7zdTA8M/AZW7o8vRqn91sKKqoXjmGfBR0Pv3NXWQh4kjT5S1hNDBT9K8yhs9Quh8
+ 02+Xn0ZBMYwv12pcIjRVo4fN+T8fK4UisSRsBRowVX1tPMu50lzcccMQ6yE9T8UnWf6G
+ FWNYThWxIWBW0E1FX4cPndl1eVfAnNo/TQQxqzLxcbdn6vNB4oU/CrgGwWhQOMxaJduT
+ KwHcb604gg+ACBDtq4iAwA5BSVNKRUd86k1SngxYnXj0EIQ4Tc+2NqZj0eNPibG+Iq9O
+ jw5uquvw+AVsZoEbOZg/By9WQRUmQE67f/krqDOC2jAIYpBFoAEAGOpJhS2HZ3PUqY9P
+ b1ag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777368825; x=1777973625;
+ d=1e100.net; s=20251104; t=1777368824; x=1777973624;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=pXWD/d404r16/lGHqQwmu63U44AcHTbqHQeSLN0NHAI=;
- b=oSw3tJwijbwpTzsStvl9AyL3QztZQGtRExrdQa+uojtSAmzHxqJ9kxlAUobKjOzc2M
- nreZxaJkIif7b0PJ5JZf8GeVl3+ZnfgvG34DpQi3qYAPbFfmWJg304BawjuN1XKa/gxi
- lOzDvQJmkAR75Dw7hmDPZ5wz3knaubmnEPxi7qE+1ke8OsZn7Gu4Sq1EJbbRmKMCnJdj
- SrfHGiPnpFLObXsSOjFgnt/GVZzueIkCX26+fDiqoKGN5C8/YGzORtpGW6xWlzj3RpWE
- nQ9RlWV38zp7HHjdoM36RBcbBEG56uymNTZuBDK4JVSHUF98ZzrakUt/qAZqtFLnBYU3
- ouDQ==
+ bh=WVC3itSIffFeC7Z8GlSjGgA9Tg3i0GpOS5eY/5lxrn4=;
+ b=rvny8S53FUJzPZ8brj2DClpNsEE+4O/detNUJPf2YtJkbgGJISgMH2FcHXH6Xf8H0G
+ HZdjkxOukUh4Wh8icIa84sDb2r5vCasBn7SuU/PxrpUtrJDZGSArTmmkvM0YPEJbgX2D
+ A/PZcBluRiflyXa595jRpr09SnmMSFXJxbeWbHisdSxNs4MC9K31B5Dxe56qMdTdAIqN
+ 5bo3xu3o3nfCvRP6nuPT8eJ6/WUybPn/xtdnNxLN5v2cKTkWlodUtYTo2ABYOVCLJuCi
+ msEkZQWLb4j0rojlBdojsQaaeXsPArRtMkgl7UnyYRvS9W1RCjG3S7juTm5BPCpezzXK
+ YYIg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+AQQvJRUGkbKQZExLWCytav5e6id9sEenKNgo+cFiO3CbHQWT+t6BkR5/0U+WjCdtEJRTORlbGPg==@nongnu.org
-X-Gm-Message-State: AOJu0YyADrJUaClNs0jALav3wX+A7DNwfwTv+SgCvyflRTO/Iu8L7HtW
- 3kd2wIRWf6iRXBAWfWiijnDS7O9Yc+lyjvS9MtSQxhErVaFJOv3/0zqNxs3uqNFOOGs=
-X-Gm-Gg: AeBDievrg8yoffqS5vkWMz6q7U4XrczkoZZaJq4SBt0w68gZSalsNq5Xb42Jvj3HKz4
- Hb92oW2ZckXp07Eyv8REoFeAYiGx0/c7W1jIA9t0Pa5H9MHiEo6+DqSNWSj4w/CDQn3txUxEJpU
- NG9GljeTrSC/6PT3vCYbwMeCpB/ktHkXipFGhvnxytagfRSDzmtAOww5Pf6wket3l4awgmq4+Lc
- FqLG4O/pWyVV/uqmsv45Jg2Dm8mxxZoX0E6IJ38KoksBbE6mrsSIREavv0CWgcvGwzYe4jQGnep
- jGPpwjS2SaKb8fg+bY9+DHpnTztZwmzcSAzq46Jx7BbUnax1EcJbdSwSMZKzfMuFwhMWX0RBhd8
- zX4QCwuFfD5L67i69KjWqms9c/kxGH36j8uHwwB7hhNC4j//tB3e4WeU4KdBOIOAG/3EN8E4cGb
- Affj8oZGR+UqjvEjkrdEw4IuD3vi2n7QWc0RHGvuRn1P3rl2mxTbeESNCbsOHq3gSXaviH2jjTF
- mcLy+gOa1v3NsMhSG1doaYs9KbMSUFph98Suk79e7HeFpQbkDrm
-X-Received: by 2002:a05:600c:a311:b0:488:b749:8482 with SMTP id
- 5b1f17b1804b1-48a77ad59e2mr29036605e9.4.1777368825499; 
- Tue, 28 Apr 2026 02:33:45 -0700 (PDT)
+ AFNElJ+7omqfJO6+iREa4hNyzZ7TUBUCHoF9Sha9IV+K6aMVQOfKyk48jtZ5xd7NcPSa2W2eJLWaKsXy+g==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3yLiq7YaNK/Bmd/5zCj43QJRZ9frVFBhbnJCgKE1yhOLyBohD
+ zFizBePQ458Bb/WfFlo5Z+5TvZYVtBy8GJnj56OwFIxZMuRQ2mvWanP1MXWGNoxa0Co=
+X-Gm-Gg: AeBDievmoTC1woDLEgatQls6q6ixnl/fKH2qL3ZLQNGQjYtYvJXXHozDq7h2JvjnCct
+ lADPK3oe56IT+6Tar5S7jGYzU0Hw+U9vOiiHomiW3P5jQp6RBcSsnwrIc/7tsowgjfPgeNTgBhc
+ Hie40bp+9587joQOdVXalh5RJDM6OjS0xeslvcN80puJdxnCr+v5XDKHBTU0Ov2KP+LDVvApR8J
+ LanYdKPTi00kcNLpON7NEyE85aExcNTi5Zz1SJGzntZXUgEm2L/+Bduts6wJ64qxghL5bMPEASA
+ qk/RavGIOv5sjmjnbxQ0XGHoD/8irN2d+TFzl48bPk+gqLcDmg9XGYOWAKX71lEwSi5KBf5WzFZ
+ hPcczH5bP02p5gNFjImN6+dsCULqvUypcnAqKx5JkILW7cRB88Z7cwxu7QR2BqrlSDm85hhza9/
+ 249TCWiTbr7f5qARC5O6W1QPbXJ5jDJUb5cq4zpz3X7SKzGXMP3Uz8dgSK+Rkv/yDAvgYA4B8df
+ fGCQQlbmDCBXGebqZLOKxRBEAehQdGKhwppVyGoMw==
+X-Received: by 2002:a05:600c:6995:b0:488:a2ac:a334 with SMTP id
+ 5b1f17b1804b1-48a77aee4a3mr37301045e9.3.1777368824444; 
+ Tue, 28 Apr 2026 02:33:44 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a774d7a1fsm19665595e9.4.2026.04.28.02.33.44
+ 5b1f17b1804b1-48a774d7a1fsm19665595e9.4.2026.04.28.02.33.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2026 02:33:44 -0700 (PDT)
+ Tue, 28 Apr 2026 02:33:43 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>,
@@ -79,23 +79,23 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 3/4] hw/xtensa/mx_pic: Specify xtensa_mx_pic_ops .impl settings
-Date: Tue, 28 Apr 2026 10:33:38 +0100
-Message-ID: <20260428093339.2087081-4-peter.maydell@linaro.org>
+Subject: [PATCH 2/4] hw/npcm7xx_fiu: Specify .impl for npcm7xx_fiu_flash_ops
+Date: Tue, 28 Apr 2026 10:33:37 +0100
+Message-ID: <20260428093339.2087081-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260428093339.2087081-1-peter.maydell@linaro.org>
 References: <20260428093339.2087081-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,84 +111,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The xtensa mx-pic interrupt controller has a rather odd register
-setup, where some registers are 32 bits but are decoded at offsets
-only one apart from each other.  The QEMU implementation handles this
-correctly, but it did not set .impl.unaligned = true.  This has
-worked up til now because QEMU has entirely ignored .impl.unaligned,
-and just allowed through unaligned accesses when
-.valid.unaligned is set.
+Currently npcm7xx_fiu_flash_ops provides no .impl substruct; this
+means that it gets the default of "implements 1, 2 and 4 byte aligned
+accesses".  This is more constrained than the device permits in its
+.valid substruct, and also narrower than the functions are written to
+handle.
 
-To allow the possibility of properly implementing synthesis of
-unaligned accesses by the memory subsystem when they are valid but
-the device doesn't implement them, and for clarity of intention,
-state explicitly that this MR's read and write functions directly
-handle unaligned accesses, by setting .impl.unaligned = true.
-
-While we are adjusting the MemoryRegionOps, we set also the minimum
-and maximum allowed access sizes.  Since the only way to get at this
-device is via the CPU's RER and WER instructions, which always
-operate at 32-bit sizes (see the HELPER(rer) and HELPER(wer)
-functions in target/xtensa/op_helper.c), we know we will always get
-32-bit accesses.  Specify explicitly that that is what is valid and
-implemented for the MR.
-
-Add a comment to clarify that the hardware behaviour here is not
-"true memory-mapped registers", so the odd-looking implementation is
-correct.
+Add a .impl substruct matching the .valid substruct; this means that
+all guest accesses are handled directly by the read and write
+functions, and are never synthesized by the memory subsystem
+performing multiple accesses to the device (which would not behave
+correctly, as these read and write fucntions have side effects).
 
 Based-on-a-patch-by: CJ Chen <cjchen@igel.co.jp>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/xtensa/mx_pic.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ hw/ssi/npcm7xx_fiu.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
-index 07c3731aef..098c1aaf85 100644
---- a/hw/xtensa/mx_pic.c
-+++ b/hw/xtensa/mx_pic.c
-@@ -69,6 +69,26 @@ struct XtensaMxPic {
-     } cpu[MX_MAX_CPU];
- };
- 
-+/*
-+ * Note that decode for these registers is rather strange by the usual
-+ * MMIO standards -- the MIROUT and MIPICAUSE areas can be read and
-+ * written at 32-bit length, returning different values for each byte
-+ * offset, because the low bits of the address are treated as selecting
-+ * an IRQ or a processor:
-+ *
-+ * 00nn         0...0p..p       Interrupt Routing, route IRQ n to processor p
-+ * 01pp         0...0d..d       16 bits (d) 'ored' as single IPI to processor p
-+ *
-+ * This is because (like x86 IO port in/out accesses) the offset is
-+ * not a memory-mapped address but is really a register number,
-+ * accessed via the Xtensa RER/WER "external register" instructions.
-+ *
-+ * We set .valid and .impl to both allow unaligned = true to permit
-+ * these byte-offsets. Because this device is not a true memory mapped
-+ * device but is accessible only via the Xtensa RER/WER "external
-+ * register" interface, all accesses are guaranteed 32 bits.
-+ */
-+
- static uint64_t xtensa_mx_pic_ext_reg_read(void *opaque, hwaddr offset,
-                                            unsigned size)
- {
-@@ -267,7 +287,14 @@ static const MemoryRegionOps xtensa_mx_pic_ops = {
-     .read = xtensa_mx_pic_ext_reg_read,
-     .write = xtensa_mx_pic_ext_reg_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 02707de350..2d5bed005a 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -250,6 +250,11 @@ static const MemoryRegionOps npcm7xx_fiu_flash_ops = {
+     .read = npcm7xx_fiu_flash_read,
+     .write = npcm7xx_fiu_flash_write,
+     .endianness = DEVICE_LITTLE_ENDIAN,
 +    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
++        .min_access_size = 1,
++        .max_access_size = 8,
 +        .unaligned = true,
 +    },
      .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-         .unaligned = true,
-     },
- };
+         .min_access_size = 1,
+         .max_access_size = 8,
 -- 
 2.43.0
 

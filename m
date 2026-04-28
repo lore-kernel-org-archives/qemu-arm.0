@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C02C8FF885A
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 13:35:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5E4FF885D
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 13:36:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHibJ-0005Tt-Bc; Tue, 28 Apr 2026 09:35:46 -0400
+	id 1wHibE-0005Rz-Da; Tue, 28 Apr 2026 09:35:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ewanhai-oc@zhaoxin.com>)
- id 1wHe1W-0006Di-JL
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:42:31 -0400
-Received: from mx2.zhaoxin.com ([61.152.208.219])
+ (Exim 4.90_1) (envelope-from <gs_liugan@163.com>)
+ id 1wHdrg-00088S-46; Tue, 28 Apr 2026 04:32:20 -0400
+Received: from m16.mail.163.com ([117.135.210.3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ewanhai-oc@zhaoxin.com>)
- id 1wHe1R-0007iu-UX
- for qemu-arm@nongnu.org; Tue, 28 Apr 2026 04:42:28 -0400
-X-ASG-Debug-ID: 1777365730-1eb14e680f2b810001-yEWgzd
-Received: from zhaoxin.com (zxmail.zhaoxin.com [10.28.208.166]) by
- mx2.zhaoxin.com with ESMTP id lFKtIK0Ory4J5Lyu;
- Tue, 28 Apr 2026 16:42:10 +0800 (CST)
-X-Barracuda-Envelope-From: ewanhai-oc@zhaoxin.com
-X-Barracuda-RBL-Trusted-Forwarder: 10.28.208.166
-X-ASG-Whitelist: Client
-X-Append-Disclaimer: 1
-Received: from [127.0.0.1] ([127.0.0.1] [10.28.24.2])
- by zhaoxin.com (8.30) with ESMTP7effe6796d32c21aaca640dcc2b7505b
- Tue, 28 Apr 2026 16:42:08 +0800
-X-Eyou-Smtpauth: EwanHai-oc@zhaoxin.com
-X-Eyou-EnvelopeSender: ewanhai-oc@zhaoxin.com
-Message-ID: <7a515afc-7cfd-4756-a8b0-bf7a8c0e7490@zhaoxin.com>
-Date: Tue, 28 Apr 2026 16:42:07 +0800
+ (Exim 4.90_1) (envelope-from <gs_liugan@163.com>)
+ id 1wHdrZ-0004Ay-9Z; Tue, 28 Apr 2026 04:32:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=nd
+ INuL6QIvXx9NNGe9DLNHQgIRcEsSwATo/VEV4bvgc=; b=eOi4rsRL7Tddem8R/u
+ pAx64XiyAalnpSC/G07nFxBA+l4WOS16/fS6BZK7oz78iMK7rP/GNJgIWKjVzGmt
+ 6NKJ22IcHR8OAcSKeT0vCQCvvUdz9jeNAb+i11Am9Su0LwbHAYjoZBa7fLETuhh1
+ g8Vh7Sa9y3z82E28Xh2iNMZ1U=
+Received: from PC-YLX4Y6J2.company.local (unknown [])
+ by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id
+ _____wCHeop0cPBplDlxCA--.30779S2; 
+ Tue, 28 Apr 2026 16:31:49 +0800 (CST)
+From: liugan1 <gs_liugan@163.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ liugan1 <liugan1@lixiang.com>
+Subject: [PATCH] hw/intc/arm_gicv3: Fix NS write to ICC_AP1Rn_EL1 when prebits
+ < 7
+Date: Tue, 28 Apr 2026 16:31:18 +0800
+Message-ID: <20260428083119.1400110-1-gs_liugan@163.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/9] hw/core: Make CPU topology enumeration
- arch-agnostic
-To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Sia Jee Heng <jeeheng.sia@starfivetech.com>,
- Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
- kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>
-X-ASG-Orig-Subj: Re: [PATCH v5 2/9] hw/core: Make CPU topology enumeration
- arch-agnostic
-Cc: Yongwei Ma <yongwei.ma@intel.com>
-References: <20241101083331.340178-1-zhao1.liu@intel.com>
- <20241101083331.340178-3-zhao1.liu@intel.com>
-From: Ewan Hai <ewanhai-oc@zhaoxin.com>
-Content-Language: en-US
-In-Reply-To: <20241101083331.340178-3-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
-X-Eyou-Sender: <ewanhai-oc@zhaoxin.com>
-X-Barracuda-Connect: zxmail.zhaoxin.com[10.28.208.166]
-X-Barracuda-Start-Time: 1777365730
-X-Barracuda-URL: https://10.28.252.36:4443/cgi-mod/mark.cgi
-X-Virus-Scanned: by bsmtpd at zhaoxin.com
-X-Barracuda-Scan-Msg-Size: 4941
-X-Barracuda-BRTS-Status: 1
-Received-SPF: pass client-ip=61.152.208.219;
- envelope-from=ewanhai-oc@zhaoxin.com; helo=mx2.zhaoxin.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCHeop0cPBplDlxCA--.30779S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxJF1fGw1DWry7tw1ftFW5Jrb_yoWrAFykpF
+ s3G34fur4kt3WSvwsxtF4UZFyF9FZ5XF45CrsrK34UCrn8AF18Xw4akFyYk34jkr4DJF1a
+ qrn0vrWkuFZ8XFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jCQ6LUUUUU=
+X-Originating-IP: [220.248.55.69]
+X-CM-SenderInfo: xjvbzxhxjd0qqrwthudrp/xtbC5BbP-WnwcHZjxQAA35
+Received-SPF: pass client-ip=117.135.210.3; envelope-from=gs_liugan@163.com;
+ helo=m16.mail.163.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 28 Apr 2026 09:35:43 -0400
+X-Mailman-Approved-At: Tue, 28 Apr 2026 09:35:34 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,102 +72,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-WmhhbyBMaXUgd3JvdGUgb24gMTEvMS8yNCA0OjMzIFBNOj4gQ2FjaGUgdG9wb2xvZ3kg
-bmVlZHMgdG8gYmUgZGVmaW5lZCBiYXNlZCBvbiBDUFUgdG9wb2xvZ3kgbGV2ZWxzLiBU
-aHVzLD4gZGVmaW5lIENQVSB0b3BvbG9neSBlbnVtZXJhdGlvbiBpbiBxYXBpL21hY2hp
-bmUuanNvbiB0byBtYWtlIGl0IGdlbmVyaWM+IGZvciBhbGwgYXJjaGl0ZWN0dXJlcy4+
-ID4gVG8gbWF0Y2ggdGhlIGdlbmVyYWwgdG9wb2xvZ3kgbmFtaW5nIHN0eWxlLCByZW5h
-bWUgQ1BVX1RPUE9fTEVWRUxfKiB0bz4gQ1BVX1RPUE9MT0dZX0xFVkVMXyosIGFuZCBy
-ZW5hbWUgU01UIGFuZCBwYWNrYWdlIGxldmVscyB0byB0aHJlYWQgYW5kPiBzb2NrZXQu
-PiA+IEFsc28sIGVudW1lcmF0ZSBhZGRpdGlvbmFsIHRvcG9sb2d5IGxldmVscyBmb3Ig
-bm9uLWkzODYgYXJjaGVzLCBhbmQgYWRkPiBhIENQVV9UT1BPTE9HWV9MRVZFTF9ERUZB
-VUxUIHRvIGhlbHAgZnV0dXJlIHNtcC1jYWNoZSBvYmplY3QgdG8gd29yaz4gd2l0aCBj
-b21wYXRpYmlsaXR5IHJlcXVpcmVtZW50IG9mIGFyY2gtc3BlY2lmaWMgY2FjaGUgdG9w
-b2xvZ3kgbW9kZWxzLj4gPiBTaWduZWQtb2ZmLWJ5OiBaaGFvIExpdSA8emhhbzEubGl1
-QGludGVsLmNvbT4+IFRlc3RlZC1ieTogWW9uZ3dlaSBNYSA8eW9uZ3dlaS5tYUBpbnRl
-bC5jb20+PiBSZXZpZXdlZC1ieTogSm9uYXRoYW4gQ2FtZXJvbiA8Sm9uYXRoYW4uQ2Ft
-ZXJvbkBodWF3ZWkuY29tPj4gQWNrZWQtYnk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOp
-IDxwaGlsbWRAbGluYXJvLm9yZz4+IC0tLS4uLj4gQEAgLTM3MywxNyArMzczLDE3IEBA
-IHN0YXRpYyB2b2lkIGVuY29kZV90b3BvX2NwdWlkMWYoQ1BVWDg2U3RhdGUgKmVudiwg
-dWludDMyX3QgY291bnQsPiAgICAgIHVuc2lnbmVkIGxvbmcgbGV2ZWwsIGJhc2VfbGV2
-ZWwsIG5leHRfbGV2ZWw7PiAgICAgIHVpbnQzMl90IG51bV90aHJlYWRzX25leHRfbGV2
-ZWwsIG9mZnNldF9uZXh0X2xldmVsOz4gID4gLSAgICBhc3NlcnQoY291bnQgPD0gQ1BV
-X1RPUE9fTEVWRUxfUEFDS0FHRSk7PiArICAgIGFzc2VydChjb3VudCA8PSBDUFVfVE9Q
-T0xPR1lfTEVWRUxfU09DS0VUKTs+ICBIaSBaaGFvLFdoaWxlIGJvb3RpbmcgTGludXgg
-dW5kZXIgVENHIFFFTVUgKC1rZXJuZWwgKyByb290ZnMpIHdpdGggYSBDUFUgbW9kZWwg
-dGhhdGVuYWJsZXMgY3B1aWRfMHgxZiAoZS5nLiBTaGlqaWRhZGFvLXYyKSwgSSBoaXQg
-dGhpcyBhc3NlcnQ6IHdoZW4gdGhlIGd1ZXN0cXVlcmllcyBDUFVJRC4xRiB3aXRoIGEg
-dG9wb2xvZ3kgbGV2ZWwgZ3JlYXRlciB0aGFuIENQVV9UT1BPTE9HWV9MRVZFTF9TT0NL
-RVQsUUVNVSBhYm9ydHMuIFVuZGVyIEtWTSB0aGUgcGF0aCBpc24ndCByZWFjaGVkIChD
-UFVJRCBpcyBzZXJ2ZWQgZnJvbUtWTV9TRVRfQ1BVSUQyKSwgc28gdGhpcyBpcyBUQ0ct
-b25seSwgd2hpY2ggaXMgcHJvYmFibHkgd2h5IGl0IGhhZG4ndCBiZWVuY2F1Z2h0IGVh
-cmxpZXIuSSdtIG5vdCBzdXJlIHRoZSBhc3NlcnQgaXMgbmVjZXNzYXJ5OiB0aGUgY29k
-ZSB0aGF0IGZvbGxvd3MgYWxyZWFkeSBoYW5kbGVzdGhlICJpbnB1dCBsZXZlbCBvdXQg
-b2YgcmFuZ2UiIGNhc2UgY29ycmVjdGx5LiBmaW5kX25leHRfYml0KCkgcmV0dXJucyBT
-T0NLRVRvbmNlIHRoZSBiaXRtYXAgaXMgZXhoYXVzdGVkLCB0aGUgbG9vcCBicmVha3Mg
-d2l0aCBsZXZlbCA9IElOVkFMSUQsIGFuZCB0aGVlbmNvZGluZyBwYXRoIGJlbG93IHBy
-b2R1Y2VzIHRoZSBTRE0tZGVmaW5lZCBpbnZhbGlkLWRvbWFpbiByZXNwb25zZSAoRUFY
-PTAsRUJYPTAsIEVDWCA9IGNvdW50IHwgSU5WQUxJRF90eXBlLCBFRFggPSBhcGljX2lk
-KS5QZXIgSW50ZWwgU0RNLCBDUFVJRCBMZWFmIDFGSCBkb2VzIG5vdCBjb25zdHJhaW4g
-dGhlIGlucHV0IEVDWCB2YWx1ZSwgc28gZ3Vlc3Rzb2Z0d2FyZSBpcyBmcmVlIHRvIHF1
-ZXJ5IGFueSBzdWItbGVhZiBpbmRleC4gRGlkIHRoZSBhc3NlcnQgaW50ZW50aW9uYWxs
-eXByb3RlY3QgYW4gaW52YXJpYW50IEknbSBtaXNzaW5nLCBvciBpcyBpdCBhIGxlZnRv
-dmVyIGRlZmVuc2l2ZSBjaGVjaz9Gb3IgcmVmZXJlbmNlLCB0aGUgS1ZNIGtlcm5lbCBz
-aWRlIChhcmNoL3g4Ni9rdm0vY3B1aWQuYyBrdm1fY3B1aWQoKSkgaGFzZXhwbGljaXRs
-eSBoYW5kbGVkIG91dC1vZi1yYW5nZSAweDFGIHN1YmxlYXZlcyB0aGlzIHdheSBzaW5j
-ZSAyMDE5OiAgICB9IGVsc2UgeyAgICAgICAgKmVheCA9ICplYnggPSAqZWN4ID0gKmVk
-eCA9IDA7ICAgICAgICAvKiAgICAgICAgICogV2hlbiBsZWFmIDBCSCBvciAxRkggaXMg
-ZGVmaW5lZCwgQ0wgaXMgcGFzcy10aHJvdWdoICAgICAgICAgKiBhbmQgRURYIGlzIGFs
-d2F5cyB0aGUgeDJBUElDIElELCBldmVuIGZvciB1bmRlZmluZWQgICAgICAgICAqIHN1
-YmxlYXZlcy4gLi4uICAgICAgICAgKi8gICAgICAgIGlmIChmdW5jdGlvbiA9PSAweGIg
-fHwgZnVuY3Rpb24gPT0gMHgxZikgeyAgICAgICAgICAgIGVudHJ5ID0ga3ZtX2ZpbmRf
-Y3B1aWRfZW50cnlfaW5kZXgodmNwdSwgZnVuY3Rpb24sIDEpOyAgICAgICAgICAgIGlm
-IChlbnRyeSkgeyAgICAgICAgICAgICAgICAqZWN4ID0gaW5kZXggJiAweGZmOyAgICAg
-ICAgICAgICAgICAqZWR4ID0gZW50cnktPmVkeDsgICAgICAgICAgICB9ICAgICAgICB9
-ICAgIH1pbnRyb2R1Y2VkIGluIGNvbW1pdCA0MzU2MTEyM2FiMzcgKCJrdm06IHg4Njog
-SW1wcm92ZSBlbXVsYXRpb24gb2YgQ1BVSUQgbGVhdmVzMEJIIGFuZCAxRkgiKS4gU28g
-S1ZNLWFjY2VsZXJhdGVkIGd1ZXN0cyBhbHJlYWR5IHNlZSB0aGUgU0RNLWNvbXBsaWFu
-dCByZXNwb25zZTtvbmx5IFRDRyBhYm9ydHMuVGhhbmtzLEV3YW4+ICAgICAgLyo+ICAg
-ICAgICogRmluZCB0aGUgTm8uKGNvdW50ICsgMSkgdG9wb2xvZ3kgbGV2ZWwgaW4gYXZh
-aWxfY3B1X3RvcG8gYml0bWFwLj4gLSAgICAgKiBUaGUgc2VhcmNoIHN0YXJ0cyBmcm9t
-IGJpdCAwIChDUFVfVE9QT19MRVZFTF9TTVQpLj4gKyAgICAgKiBUaGUgc2VhcmNoIHN0
-YXJ0cyBmcm9tIGJpdCAwIChDUFVfVE9QT0xPR1lfTEVWRUxfVEhSRUFEKS4+ICAgICAg
-ICovPiAtICAgIGxldmVsID0gQ1BVX1RPUE9fTEVWRUxfU01UOz4gKyAgICBsZXZlbCA9
-IENQVV9UT1BPTE9HWV9MRVZFTF9USFJFQUQ7PiAgICAgIGJhc2VfbGV2ZWwgPSBsZXZl
-bDs+ICAgICAgZm9yIChpbnQgaSA9IDA7IGkgPD0gY291bnQ7IGkrKykgez4gICAgICAg
-ICAgbGV2ZWwgPSBmaW5kX25leHRfYml0KGVudi0+YXZhaWxfY3B1X3RvcG8sPiAtICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgQ1BVX1RPUE9fTEVWRUxfUEFDS0FHRSw+
-ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBDUFVfVE9QT0xPR1lfTEVWRUxf
-U09DS0VULD4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhc2VfbGV2ZWwp
-Oz4gID4gICAgICAgICAgLyo+IEBAIC0zOTEsMjAgKzM5MSwyMCBAQCBzdGF0aWMgdm9p
-ZCBlbmNvZGVfdG9wb19jcHVpZDFmKENQVVg4NlN0YXRlICplbnYsIHVpbnQzMl90IGNv
-dW50LD4gICAgICAgICAgICogYW5kIGl0IGp1c3QgZW5jb2RlcyB0aGUgaW52YWxpZCBs
-ZXZlbCAoYWxsIGZpZWxkcyBhcmUgMCk+ICAgICAgICAgICAqIGludG8gdGhlIGxhc3Qg
-c3VibGVhZiBvZiAweDFmLj4gICAgICAgICAgICovPiAtICAgICAgICBpZiAobGV2ZWwg
-PT0gQ1BVX1RPUE9fTEVWRUxfUEFDS0FHRSkgez4gLSAgICAgICAgICAgIGxldmVsID0g
-Q1BVX1RPUE9fTEVWRUxfSU5WQUxJRDs+ICsgICAgICAgIGlmIChsZXZlbCA9PSBDUFVf
-VE9QT0xPR1lfTEVWRUxfU09DS0VUKSB7PiArICAgICAgICAgICAgbGV2ZWwgPSBDUFVf
-VE9QT0xPR1lfTEVWRUxfSU5WQUxJRDs+ICAgICAgICAgICAgICBicmVhazs+ICAgICAg
-ICAgIH0+ICAgICAgICAgIC8qIFNlYXJjaCB0aGUgbmV4dCBsZXZlbC4gKi8+ICAgICAg
-ICAgIGJhc2VfbGV2ZWwgPSBsZXZlbCArIDE7PiAgICAgIH0+ICA+IC0gICAgaWYgKGxl
-dmVsID09IENQVV9UT1BPX0xFVkVMX0lOVkFMSUQpIHs+ICsgICAgaWYgKGxldmVsID09
-IENQVV9UT1BPTE9HWV9MRVZFTF9JTlZBTElEKSB7PiAgICAgICAgICBudW1fdGhyZWFk
-c19uZXh0X2xldmVsID0gMDs+ICAgICAgICAgIG9mZnNldF9uZXh0X2xldmVsID0gMDs+
-ICAgICAgfSBlbHNlIHs+ICAgICAgICAgIG5leHRfbGV2ZWwgPSBmaW5kX25leHRfYml0
-KGVudi0+YXZhaWxfY3B1X3RvcG8sPiAtICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICBDUFVfVE9QT19MRVZFTF9QQUNLQUdFLD4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgQ1BVX1RPUE9MT0dZX0xFVkVMX1NPQ0tFVCw+ICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVsICsgMSk7PiAgICAgICAg
-ICBudW1fdGhyZWFkc19uZXh0X2xldmVsID0gbnVtX3RocmVhZHNfYnlfdG9wb19sZXZl
-bCh0b3BvX2luZm8sPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBuZXh0X2xldmVsKTsuLi4KCgoKCuS/neWvhuWj
-sOaYjgrmnKzpgq7ku7blkKvmnInkv53lr4bmiJbkuJPmnInkv6Hmga/vvIzku4Xkvpvm
-jIflrprmlLbku7bkurrkvb/nlKjjgILkuKXnpoHlr7nmnKzpgq7ku7bmiJblhbblhoXl
-rrnlgZrku7vkvZXmnKrnu4/mjojmnYPnmoTmn6XpmIXjgIHkvb/nlKjjgIHlpI3liLbm
-iJbovazlj5HjgIIKClRoaXMgZW1haWwgY29udGFpbnMgY29uZmlkZW50aWFsIG9yIGxl
-Z2FsbHkgcHJpdmlsZWdlZCBpbmZvcm1hdGlvbiBhbmQgaXMgZm9yIHRoZSBzb2xlIHVz
-ZSBvZiBpdHMgaW50ZW5kZWQgcmVjaXBpZW50LiBBbnkgdW5hdXRob3JpemVkIHJldmll
-dywgdXNlLCBjb3B5aW5nIG9yIGZvcndhcmRpbmcgb2YgdGhpcyBlbWFpbCBvciB0aGUg
-Y29udGVudCBvZiB0aGlzIGVtYWlsIGlzIHN0cmljdGx5IHByb2hpYml0ZWQu
+From: liugan1 <liugan1@lixiang.com>
+
+The existing code uses a blanket `regno < 2` check to make
+ICC_AP1R0_EL1 and ICC_AP1R1_EL1 writes from Non-secure code WI
+(Write Ignore) when EL3 is present. This is intended to prevent
+NS code from claiming active interrupts in the Secure priority
+range, which could block Secure interrupt delivery.
+
+However, that check assumes prebits=7 (4 APR registers), where the
+NS priority range (128..255) maps entirely to AP1R2/AP1R3. Since
+commit 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of
+priority bits for the CPU", first in 7.1), all QEMU AArch64 CPUs
+are initialised with gic_pribits=5 (one APR register), so NS
+priorities map to AP1R0 bits [16:31]. Blanket WI of the entire
+AP1R0 register prevents NS code from clearing its own NS active
+priority bits. Machines using hw_compat_7_0 (e.g. virt-7.0) still
+force pribits=8 via force-8-bit-prio and are therefore unaffected.
+
+A concrete consequence observed in virtualisation scenarios: when
+a guest VM acknowledges an SPI interrupt but does not perform EOI,
+is force-killed and restarted, the new guest's attempt to clear
+the residual active state by writing ICC_AP1R0_EL1=0 is silently
+ignored. The running priority (RPR) remains stuck at the old
+interrupt's priority, preventing all equal-or-lower priority
+interrupts (including timer interrupts) from being delivered, and
+hanging the guest.
+
+Fix this by computing the exact Secure/NS boundary within the APR
+bank based on prebits. For registers entirely in the Secure range,
+keep the WI behaviour. For the register that straddles the
+boundary, preserve only the Secure bits while allowing NS bits to
+be modified. For registers entirely in the NS range, allow full
+write access.
+
+The new logic produces identical behaviour to the old code when
+prebits=7, preserving existing behaviour for machines that use
+force-8-bit-prio.
+
+Fixes: 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of priority bits for the CPU")
+Signed-off-by: liugan1 <liugan1@lixiang.com>
+---
+ hw/intc/arm_gicv3_cpuif.c | 35 +++++++++++++++++++++++++++++++++--
+ 1 file changed, 33 insertions(+), 2 deletions(-)
+
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index fcb3922fa0..921d1fdfde 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -1869,9 +1869,40 @@ static void icc_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * at a priority outside the Non-secure range (128..255), since this
+      * would otherwise allow malicious NS code to block delivery of S interrupts
+      * by writing a bad value to these registers.
++     *
++     * The NS priority range (128..255) maps to APR bits starting at
++     * aprbit = 0x80 >> (8 - prebits). Depending on prebits, this boundary
++     * may fall within AP1R0 or AP1R1, so we cannot simply WI the entire
++     * register. Instead we calculate which bits within each register
++     * correspond to the Secure range and preserve those, while allowing
++     * NS code to modify only the NS range bits.
++     *
++     *   prebits=4: num_aprs=1, NS starts at AP1R0[8]
++     *   prebits=5: num_aprs=1, NS starts at AP1R0[16]
++     *   prebits=6: num_aprs=2, NS starts at AP1R1[0]
++     *   prebits=7: num_aprs=4, NS starts at AP1R2[0]
+      */
+-    if (grp == GICV3_G1NS && regno < 2 && arm_feature(env, ARM_FEATURE_EL3)) {
+-        return;
++    if (grp == GICV3_G1NS && arm_feature(env, ARM_FEATURE_EL3)) {
++        int ns_start_bit = 0x80 >> (8 - cs->prebits);
++        int ns_start_regno = ns_start_bit / 32;
++        int ns_start_regbit = ns_start_bit % 32;
++
++        if (regno < ns_start_regno) {
++            /* This entire register is in the Secure range: WI */
++            return;
++        } else if (regno == ns_start_regno && ns_start_regbit > 0) {
++            /*
++             * This register is split: low bits are Secure, high bits are NS.
++             * Preserve the Secure bits (below ns_start_regbit) from the
++             * current value, and take the NS bits (at and above
++             * ns_start_regbit) from the written value.
++             */
++            uint32_t secure_mask = MAKE_64BIT_MASK(0, ns_start_regbit);
++
++            value = (cs->icc_apr[grp][regno] & secure_mask) |
++                    (value & ~secure_mask);
++        }
++        /* else: regno > ns_start_regno, entire register is NS: allow write */
+     }
+ 
+     if (cs->nmi_support) {
+-- 
+2.48.1
 
 

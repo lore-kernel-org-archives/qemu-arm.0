@@ -4,60 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5E4FF885D
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 13:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AB22FF885A
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Apr 2026 13:36:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wHibE-0005Rz-Da; Tue, 28 Apr 2026 09:35:41 -0400
+	id 1wHibN-0005Ue-Lb; Tue, 28 Apr 2026 09:35:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gs_liugan@163.com>)
- id 1wHdrg-00088S-46; Tue, 28 Apr 2026 04:32:20 -0400
-Received: from m16.mail.163.com ([117.135.210.3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gs_liugan@163.com>)
- id 1wHdrZ-0004Ay-9Z; Tue, 28 Apr 2026 04:32:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=nd
- INuL6QIvXx9NNGe9DLNHQgIRcEsSwATo/VEV4bvgc=; b=eOi4rsRL7Tddem8R/u
- pAx64XiyAalnpSC/G07nFxBA+l4WOS16/fS6BZK7oz78iMK7rP/GNJgIWKjVzGmt
- 6NKJ22IcHR8OAcSKeT0vCQCvvUdz9jeNAb+i11Am9Su0LwbHAYjoZBa7fLETuhh1
- g8Vh7Sa9y3z82E28Xh2iNMZ1U=
-Received: from PC-YLX4Y6J2.company.local (unknown [])
- by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id
- _____wCHeop0cPBplDlxCA--.30779S2; 
- Tue, 28 Apr 2026 16:31:49 +0800 (CST)
-From: liugan1 <gs_liugan@163.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- liugan1 <liugan1@lixiang.com>
-Subject: [PATCH] hw/intc/arm_gicv3: Fix NS write to ICC_AP1Rn_EL1 when prebits
- < 7
-Date: Tue, 28 Apr 2026 16:31:18 +0800
-Message-ID: <20260428083119.1400110-1-gs_liugan@163.com>
-X-Mailer: git-send-email 2.50.1
+ (Exim 4.90_1) (envelope-from <ewandevelop@gmail.com>)
+ id 1wHeyg-0000In-94
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:43:39 -0400
+Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ewandevelop@gmail.com>)
+ id 1wHeye-0003Ok-G7
+ for qemu-arm@nongnu.org; Tue, 28 Apr 2026 05:43:38 -0400
+Received: by mail-dl1-x122a.google.com with SMTP id
+ a92af1059eb24-12c6df0b9bbso2687962c88.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Apr 2026 02:43:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1777369414; x=1777974214; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=E+2aQrESKSPjXIMgAlPSq2BTaZgqO5ydTBn6YvPyGsg=;
+ b=eZhHxGmi+60vkcJ0zBylLbBYEZQW+9Nt1vTzNHNUGvg81UTunlKMvk/o3gsfmyLPCo
+ wzT85c1i42Jf9D2jcv2b/b9d4RdBzIJO2I82SM4xhRAn10GAJZ/NBZwQndf2tWPPA3zo
+ gdFRRdOvSTBdsDHAP0Qnk04Pi68P8aKzjbPdB8csNdxEcxPYW6sNmVnV0WeBeHW9RJ4e
+ X84X/l8qg+d0NGfaspnd/NCR9t3ucXFTP3pHHRHPV+jQXSBYHeh3X4PVxw6AaCau7rhg
+ RT3CNWaboSltGXguYUUoGStobXSdy1VR2S2iWAm/MT2mP5wLD8as3xIUdrIjGKQXNnKP
+ T9wQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777369414; x=1777974214;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=E+2aQrESKSPjXIMgAlPSq2BTaZgqO5ydTBn6YvPyGsg=;
+ b=jU/bbheMRp2K6jgIGb4EV605nABGrYbZNVvE2EM91TU2duMFqC8p+7jSzM22V2wFpM
+ yrKqDdHCAlyLxFauBcaCFLvuMHO0K2R10q4H2esvZaJAJQSkWsCxyp9Yv8+zKtUls4mU
+ NituoGkLuDIz1reSQhaKAjzAye8KK/W3MDyg0aDG7q0hq2AYYWLd8lecqwKL3F551Y/F
+ hDm+l5OnoTm5bEjtMev+t73UGB08gN8C7U0qWgnjKEQrbYTbUwLE+Q4K1U1F9kukohg7
+ l1vEyN4SbH3HZVa0PB6uBadcGsFp6naP+KkRn872zPsm+YGIGRpNdy5bSAT0pA/LpOUH
+ QjYA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+u2YbEhGtU17CKENsMitjMYOSrVkwvDRxUAQ8mkpMPfC+LKWyA3tO28xDbjekOK/rQQzkQP5oZTg==@nongnu.org
+X-Gm-Message-State: AOJu0YyxFse7wEf/0BGWg94xlfAc7NLDDwuvfIRiZ36Inp1p1Gk1OEMA
+ meRQzkHQAefFmTmNMtahtQL3kxMMkw9LAGL7zfn8uZQes/uWMaatYmbN
+X-Gm-Gg: AeBDieuy3VonO8IvwjAis1g2XuJP7QvKZ4THsf7HPUV8Q0/5UbnYZSQwe2MZHnWmoWM
+ Ur1QqmAbSJHk1B90MEhUsUG41kQzP0+bo+2ExOfLv6kPyjL/xD+j9dLZgsK/hs8uNWcgyhq6IjO
+ iP2LpBl8UtCfr+SfVo/xyoegEpDJGGEzzi7KhCI0jL+JTry37hUSwLSwZURXd3ZRa+KT8RWAxeS
+ 7cXurZThMJhnG8qE1NSmGhMMM6qDcg46iW57wz+TGM+ePo5+JvL6Jx9gsqj+fbj6mThrOAqFyhB
+ 4vMVhfm1rkyl4yhrE1pZS+4MZDe1CpHvVdFXRaZzBjq4cmjqAS91CEtUcTadlqbF1ceinp2bFLF
+ EcJEZr4ZHxY+xsf2Zam622pnzdH+poWQJts3ooIr2q3TiKs5MdHh1IJCLHikQGcJzm3ktECVQkc
+ dbaYlaLKIYkgVv1oyi3+jUZWhG9NKvfawynHNy
+X-Received: by 2002:a05:7022:621:b0:119:e56b:957b with SMTP id
+ a92af1059eb24-12ddd90e40amr1289308c88.0.1777369413478; 
+ Tue, 28 Apr 2026 02:43:33 -0700 (PDT)
+Received: from [198.18.0.1] ([154.26.185.247])
+ by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12ddd9be1f9sm1811919c88.15.2026.04.28.02.43.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Apr 2026 02:43:33 -0700 (PDT)
+Message-ID: <4b66c381-09c5-496e-b95e-100d1ba20dc5@gmail.com>
+Date: Tue, 28 Apr 2026 17:43:25 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/9] hw/core: Make CPU topology enumeration
+ arch-agnostic
+To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+ Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+ kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Zhenyu Wang <zhenyu.z.wang@intel.com>, Dapeng Mi <dapeng1.mi@linux.intel.com>
+Cc: Yongwei Ma <yongwei.ma@intel.com>
+References: <20241101083331.340178-1-zhao1.liu@intel.com>
+ <20241101083331.340178-3-zhao1.liu@intel.com>
+From: EwanHai <ewandevelop@gmail.com>
+Content-Language: en-US
+In-Reply-To: <20241101083331.340178-3-zhao1.liu@intel.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wCHeop0cPBplDlxCA--.30779S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJF1fGw1DWry7tw1ftFW5Jrb_yoWrAFykpF
- s3G34fur4kt3WSvwsxtF4UZFyF9FZ5XF45CrsrK34UCrn8AF18Xw4akFyYk34jkr4DJF1a
- qrn0vrWkuFZ8XFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jCQ6LUUUUU=
-X-Originating-IP: [220.248.55.69]
-X-CM-SenderInfo: xjvbzxhxjd0qqrwthudrp/xtbC5BbP-WnwcHZjxQAA35
-Received-SPF: pass client-ip=117.135.210.3; envelope-from=gs_liugan@163.com;
- helo=m16.mail.163.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::122a;
+ envelope-from=ewandevelop@gmail.com; helo=mail-dl1-x122a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 28 Apr 2026 09:35:34 -0400
+X-Mailman-Approved-At: Tue, 28 Apr 2026 09:35:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,98 +122,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: liugan1 <liugan1@lixiang.com>
+Apologies for the noise, please ignore my previous reply, the corporate mailer
+collapsed all the newlines. Resending in plain text below.
 
-The existing code uses a blanket `regno < 2` check to make
-ICC_AP1R0_EL1 and ICC_AP1R1_EL1 writes from Non-secure code WI
-(Write Ignore) when EL3 is present. This is intended to prevent
-NS code from claiming active interrupts in the Secure priority
-range, which could block Secure interrupt delivery.
+Zhao Liu wrote on 11/1/24 4:33 PM:
+> Cache topology needs to be defined based on CPU topology levels. Thus,
+> define CPU topology enumeration in qapi/machine.json to make it generic
+> for all architectures.
+> 
+> To match the general topology naming style, rename CPU_TOPO_LEVEL_* to
+> CPU_TOPOLOGY_LEVEL_*, and rename SMT and package levels to thread and
+> socket.
+> 
+> Also, enumerate additional topology levels for non-i386 arches, and add
+> a CPU_TOPOLOGY_LEVEL_DEFAULT to help future smp-cache object to work
+> with compatibility requirement of arch-specific cache topology models.
+> 
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
 
-However, that check assumes prebits=7 (4 APR registers), where the
-NS priority range (128..255) maps entirely to AP1R2/AP1R3. Since
-commit 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of
-priority bits for the CPU", first in 7.1), all QEMU AArch64 CPUs
-are initialised with gic_pribits=5 (one APR register), so NS
-priorities map to AP1R0 bits [16:31]. Blanket WI of the entire
-AP1R0 register prevents NS code from clearing its own NS active
-priority bits. Machines using hw_compat_7_0 (e.g. virt-7.0) still
-force pribits=8 via force-8-bit-prio and are therefore unaffected.
+...
 
-A concrete consequence observed in virtualisation scenarios: when
-a guest VM acknowledges an SPI interrupt but does not perform EOI,
-is force-killed and restarted, the new guest's attempt to clear
-the residual active state by writing ICC_AP1R0_EL1=0 is silently
-ignored. The running priority (RPR) remains stuck at the old
-interrupt's priority, preventing all equal-or-lower priority
-interrupts (including timer interrupts) from being delivered, and
-hanging the guest.
 
-Fix this by computing the exact Secure/NS boundary within the APR
-bank based on prebits. For registers entirely in the Secure range,
-keep the WI behaviour. For the register that straddles the
-boundary, preserve only the Secure bits while allowing NS bits to
-be modified. For registers entirely in the NS range, allow full
-write access.
+> @@ -373,17 +373,17 @@ static void encode_topo_cpuid1f(CPUX86State *env, uint32_t count,
+>      unsigned long level, base_level, next_level;
+>      uint32_t num_threads_next_level, offset_next_level;
+>  
+> -    assert(count <= CPU_TOPO_LEVEL_PACKAGE);
+> +    assert(count <= CPU_TOPOLOGY_LEVEL_SOCKET);
+>  
 
-The new logic produces identical behaviour to the old code when
-prebits=7, preserving existing behaviour for machines that use
-force-8-bit-prio.
+Hi Zhao,
 
-Fixes: 39f29e599355 ("hw/intc/arm_gicv3: Use correct number of priority bits for the CPU")
-Signed-off-by: liugan1 <liugan1@lixiang.com>
----
- hw/intc/arm_gicv3_cpuif.c | 35 +++++++++++++++++++++++++++++++++--
- 1 file changed, 33 insertions(+), 2 deletions(-)
+While booting Linux under TCG QEMU (-kernel + rootfs) with a CPU model that
+enables cpuid_0x1f (e.g. Shijidadao-v2), I hit this assert: when the guest
+queries CPUID.1F with a topology level greater than CPU_TOPOLOGY_LEVEL_SOCKET,
+QEMU aborts. Under KVM the path isn't reached (CPUID is served from
+KVM_SET_CPUID2), so this is TCG-only, which is probably why it hadn't been
+caught earlier.
 
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index fcb3922fa0..921d1fdfde 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -1869,9 +1869,40 @@ static void icc_ap_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      * at a priority outside the Non-secure range (128..255), since this
-      * would otherwise allow malicious NS code to block delivery of S interrupts
-      * by writing a bad value to these registers.
-+     *
-+     * The NS priority range (128..255) maps to APR bits starting at
-+     * aprbit = 0x80 >> (8 - prebits). Depending on prebits, this boundary
-+     * may fall within AP1R0 or AP1R1, so we cannot simply WI the entire
-+     * register. Instead we calculate which bits within each register
-+     * correspond to the Secure range and preserve those, while allowing
-+     * NS code to modify only the NS range bits.
-+     *
-+     *   prebits=4: num_aprs=1, NS starts at AP1R0[8]
-+     *   prebits=5: num_aprs=1, NS starts at AP1R0[16]
-+     *   prebits=6: num_aprs=2, NS starts at AP1R1[0]
-+     *   prebits=7: num_aprs=4, NS starts at AP1R2[0]
-      */
--    if (grp == GICV3_G1NS && regno < 2 && arm_feature(env, ARM_FEATURE_EL3)) {
--        return;
-+    if (grp == GICV3_G1NS && arm_feature(env, ARM_FEATURE_EL3)) {
-+        int ns_start_bit = 0x80 >> (8 - cs->prebits);
-+        int ns_start_regno = ns_start_bit / 32;
-+        int ns_start_regbit = ns_start_bit % 32;
-+
-+        if (regno < ns_start_regno) {
-+            /* This entire register is in the Secure range: WI */
-+            return;
-+        } else if (regno == ns_start_regno && ns_start_regbit > 0) {
-+            /*
-+             * This register is split: low bits are Secure, high bits are NS.
-+             * Preserve the Secure bits (below ns_start_regbit) from the
-+             * current value, and take the NS bits (at and above
-+             * ns_start_regbit) from the written value.
-+             */
-+            uint32_t secure_mask = MAKE_64BIT_MASK(0, ns_start_regbit);
-+
-+            value = (cs->icc_apr[grp][regno] & secure_mask) |
-+                    (value & ~secure_mask);
-+        }
-+        /* else: regno > ns_start_regno, entire register is NS: allow write */
-     }
- 
-     if (cs->nmi_support) {
--- 
-2.48.1
+I'm not sure the assert is necessary: the code that follows already handles
+the "input level out of range" case correctly. find_next_bit() returns SOCKET
+once the bitmap is exhausted, the loop breaks with level = INVALID, and the
+encoding path below produces the SDM-defined invalid-domain response (EAX=0,
+EBX=0, ECX = count | INVALID_type, EDX = apic_id).
+
+Per Intel SDM, CPUID Leaf 1FH does not constrain the input ECX value, so guest
+software is free to query any sub-leaf index. Did the assert intentionally
+protect an invariant I'm missing, or is it a leftover defensive check?
+
+For reference, the KVM kernel side (arch/x86/kvm/cpuid.c kvm_cpuid()) has
+explicitly handled out-of-range 0x1F subleaves this way since 2019:
+    } else {
+        *eax = *ebx = *ecx = *edx = 0;
+        /*
+         * When leaf 0BH or 1FH is defined, CL is pass-through
+         * and EDX is always the x2APIC ID, even for undefined
+         * subleaves. ...
+         */
+        if (function == 0xb || function == 0x1f) {
+            entry = kvm_find_cpuid_entry_index(vcpu, function, 1);
+            if (entry) {
+                *ecx = index & 0xff;
+                *edx = entry->edx;
+            }
+        }
+    }
+introduced in commit 43561123ab37 ("kvm: x86: Improve emulation of CPUID leaves
+0BH and 1FH"). So KVM-accelerated guests already see the SDM-compliant response;
+only TCG aborts.
+
+Thanks,
+Ewan
+
+
+>      /*
+>       * Find the No.(count + 1) topology level in avail_cpu_topo bitmap.
+> -     * The search starts from bit 0 (CPU_TOPO_LEVEL_SMT).
+> +     * The search starts from bit 0 (CPU_TOPOLOGY_LEVEL_THREAD).
+>       */
+> -    level = CPU_TOPO_LEVEL_SMT;
+> +    level = CPU_TOPOLOGY_LEVEL_THREAD;
+>      base_level = level;
+>      for (int i = 0; i <= count; i++) {
+>          level = find_next_bit(env->avail_cpu_topo,
+> -                              CPU_TOPO_LEVEL_PACKAGE,
+> +                              CPU_TOPOLOGY_LEVEL_SOCKET,
+>                                base_level);
+>  
+>          /*
+> @@ -391,20 +391,20 @@ static void encode_topo_cpuid1f(CPUX86State *env, uint32_t count,
+>           * and it just encodes the invalid level (all fields are 0)
+>           * into the last subleaf of 0x1f.
+>           */
+> -        if (level == CPU_TOPO_LEVEL_PACKAGE) {
+> -            level = CPU_TOPO_LEVEL_INVALID;
+> +        if (level == CPU_TOPOLOGY_LEVEL_SOCKET) {
+> +            level = CPU_TOPOLOGY_LEVEL_INVALID;
+>              break;
+>          }
+>          /* Search the next level. */
+>          base_level = level + 1;
+>      }
+>  
+> -    if (level == CPU_TOPO_LEVEL_INVALID) {
+> +    if (level == CPU_TOPOLOGY_LEVEL_INVALID) {
+>          num_threads_next_level = 0;
+>          offset_next_level = 0;
+>      } else {
+>          next_level = find_next_bit(env->avail_cpu_topo,
+> -                                   CPU_TOPO_LEVEL_PACKAGE,
+> +                                   CPU_TOPOLOGY_LEVEL_SOCKET,
+>                                     level + 1);
+>          num_threads_next_level = num_threads_by_topo_level(topo_info,
+>                                                             next_level);
+...
 
 

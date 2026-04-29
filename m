@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD3CFF8875
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:06:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B97FFF8875
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:06:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIAEh-00020a-5K; Wed, 29 Apr 2026 15:06:15 -0400
+	id 1wIAEU-0001kw-0Q; Wed, 29 Apr 2026 15:06:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEg-0001y3-2S
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:14 -0400
-Received: from p-west3-cluster3-host10-snip4-10.eps.apple.com ([57.103.72.251]
+ id 1wIAES-0001jy-Ur
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:00 -0400
+Received: from p-west3-cluster3-host5-snip4-2.eps.apple.com ([57.103.72.133]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEe-0000St-9W
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:13 -0400
+ id 1wIAER-0000M5-33
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:00 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPS id
- 8E8F618000E9; Wed, 29 Apr 2026 19:06:09 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAE1fDl4fBBdGGVUERx5dVl4eGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCAEkKXQJYAF4LTgZeD0YDQhQVXAVWBlcUeQ1dHUUOVhlaDFIPWw4cFktGExlOG1dNWg1AGVgGbRRWFVIEWQ==
+ EA96D18002F3; Wed, 29 Apr 2026 19:05:55 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJB01fDl4fBBdGGVUERx5dVl4eGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCAEkKXQJYAF4LTgZeD0YFXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1777489571; x=1780081571;
- bh=iP9tdJ6jkY5u7kiEfu0n/jB1gTl+WbYwZraw8G3pTMI=;
+ s=sig1; t=1777489557; x=1780081557;
+ bh=RKeKTruTQhw0BrD8MoPykuk5OrCXpP7XgpgOwvcDr2U=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=HGz/A+xuj8BYWKG5JK6HRdvjyGqvRSGZQU+O0djNiMjqiMoi/e8Vpm8jTNDLyVS7/CnYAa6V0xkTTjSs3hzSvWHi3iAVkTeulHU9j1pY9VognpE1AhBkzLWkMbZqXUJzE6KGyzMnbrx3uv0rmvqpHTBSYF5/uTfIKFGp3/clYfHF/w+2HLMYcD4DYednfeKTy3CpYo0vfBWmKlkbq/fwoEbTK5HgrqGSB+DW/5yxmB7XclKn60zRd6oMab31J6ej4sVx5J4PERudUxrCkfZu52atlPYgpVIr64OrgaT/qFZrp7uh6e3CYppaCaxFwBmPE2IUY4O4TGf8lraeekFASA==
+ b=GcaWqtpzC40EzBikqqnbb9e5YlZ/TTsPvLmpd4yO/20laEj5sruYjc7jrRleGNeS0vX3lfkI46ZyIdLv+fa3g8jkS+kghi0jCbStHt3soxEoC5kF7G0WhB5KcKeSrXY2jXvs9UxcqmQ3lXc3sc851R9hVfglV0JQZidcJs5RRFlS8nXIYfkZjfMhRZtQlYN8ByHaNmoenQcyKaMTRW2YFA1+OO8FPdwid6BoF8cevpaOUg67ICcvIOBrL4Gmu/hi6X3dpkx9f+muCF2uBb91YEqa1MfO56wPbW1dXN0jN0sBU4cGlM1JekgiwnnIlE4kS9ErDx62pwb+T0l/E5EbNw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPSA id
- A0B5918002DD; Wed, 29 Apr 2026 19:06:06 +0000 (UTC)
+ D1D7F18005E8; Wed, 29 Apr 2026 19:05:52 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -44,39 +44,38 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v21 11/15] target/arm: hvf: pass through CNTHCTL_EL2 and
- MDCCINT_EL1
-Date: Wed, 29 Apr 2026 21:05:28 +0200
-Message-ID: <20260429190532.26538-12-mohamed@unpredictable.fr>
+ Mohamed Mediouni <mohamed@unpredictable.fr>, Mads Ynddal <mads@ynddal.dk>
+Subject: [PATCH v21 06/15] hvf: only call hvf_sync_vtimer() when running
+ without the platform vGIC
+Date: Wed, 29 Apr 2026 21:05:23 +0200
+Message-ID: <20260429190532.26538-7-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260429190532.26538-1-mohamed@unpredictable.fr>
 References: <20260429190532.26538-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=S+jUAYsP c=1 sm=1 tr=0 ts=69f256a2
+X-Authority-Info-Out: v=2.4 cv=I7pohdgg c=1 sm=1 tr=0 ts=69f25695
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
  a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=L1bH-B2CdzmaWMF7168A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=PzQS8Z__MZ2uSZov3vkA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 6PiupehAnuchHIJGeP2gkUsd2Y0hA37i
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDE5MCBTYWx0ZWRfX2Aqj/wTjqSNA
- NpsWEERJTRzK45u3wmGmgVjgVkuieXXihDqzKvXDA++MCOZLS9Gp34yQ7nuepjcsYy1AGGqZie4
- Z6h4/RKO6oF2PUxGsDQXc8LDvKq2poHSIGx9NX6a3POQiAcB4u6ePDH8x0lHaD7J5xOWDzD8R/3
- DSuzU96w7o/I43exG2pkvtHZkgfuBp5rAl+HSxdosqbSaxCApc1WOK05rf+irTH9Heib7LFREUN
- VhLnDFZ4MvxTBGSazI8ah5vCAclRETfTfV0ao6e370YnVzDZIQSo/Fj7GU6bBpDUV/vpRowcpxX
- aH05sKN4nd0KsvfI152ZJgIfp82PcK3uXnCSwV9JuQ7FKq2B/6MOlYzAhNalFk=
-X-Proofpoint-GUID: 6PiupehAnuchHIJGeP2gkUsd2Y0hA37i
-Received-SPF: pass client-ip=57.103.72.251;
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDE5MCBTYWx0ZWRfX5F0tss85WtHp
+ 30vs9clHsgliVSSjHrZzYArZMAIRlqLjaRqmZIoK4W77sYnhf5q1OjMNxhmJfLOlLDdB/jHVyOF
+ bHCOWx6Xn0XFJch756nK6YnwCVqLhfp5kmMPF4VqSVRcKbrjAJMzsk3wmS57I10xys0GJ1xUze/
+ hEvKYaq1pqhJYVu8iohxfTlfI76+ZYcAvOeyZk0+m8kmxppPO3oxQttbI9q7CRcLTJZJp3+93PD
+ sqYAF/Gfu1rmNdqiuqomVpgQKN70eDxYZQDGWmBFDe+/estaS1RP6qgmfR8LO9yyiiJNPGk3PWs
+ LLsF3uucKxH1G29mn+rXcxqbqojuIxZjBT/3hhciPz1Kr+01TCl2Lt+FOicqpo=
+X-Proofpoint-GUID: g9xCGkOwUnl5DkdkJ7FZ96OLR5P68K6S
+X-Proofpoint-ORIG-GUID: g9xCGkOwUnl5DkdkJ7FZ96OLR5P68K6S
+Received-SPF: pass client-ip=57.103.72.133;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,62 +91,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-HVF traps accesses to CNTHCTL_EL2. For nested guests, HVF traps accesses to MDCCINT_EL1.
-Pass through those accesses to the Hypervisor.framework library.
+When running with the Apple vGIC, the EL1 vtimer is handled by the platform.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
+Reviewed-by: Mads Ynddal <mads@ynddal.dk>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ target/arm/hvf/hvf.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index c40327ea2f..ceeb61fbc0 100644
+index 09f41094e5..fa0a22fdc3 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -296,6 +296,10 @@ void hvf_arm_init_debug(void)
- #define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
- #define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
+@@ -2368,7 +2368,9 @@ static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
  
-+/* EL2 registers */
-+#define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
-+#define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
-+
- #define WFX_IS_WFE (1 << 0)
- 
- #define TMR_CTL_ENABLE  (1 << 0)
-@@ -1719,6 +1723,14 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        if (__builtin_available(macOS 15.0, *)) {
-+            assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
+     switch (exit->reason) {
+     case HV_EXIT_REASON_EXCEPTION:
+-        hvf_sync_vtimer(cpu);
++        if (!hvf_irqchip_in_kernel()) {
++            hvf_sync_vtimer(cpu);
 +        }
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_ICC_AP0R0_EL1:
-     case SYSREG_ICC_AP0R1_EL1:
-     case SYSREG_ICC_AP0R2_EL1:
-@@ -2007,6 +2019,14 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-     case SYSREG_OSDLR_EL1:
-         /* Dummy register */
-         return 0;
-+    case SYSREG_CNTHCTL_EL2:
-+        if (__builtin_available(macOS 15.0, *)) {
-+            assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
-+        }
-+        return 0;
-+    case SYSREG_MDCCINT_EL1:
-+        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
-+        return 0;
-     case SYSREG_LORC_EL1:
-         /* Dummy register */
-         return 0;
+         ret = hvf_handle_exception(cpu, &exit->exception);
+         break;
+     case HV_EXIT_REASON_VTIMER_ACTIVATED:
 -- 
 2.50.1 (Apple Git-155)
 

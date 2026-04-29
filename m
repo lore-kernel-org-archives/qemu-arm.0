@@ -4,63 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 238BFFF8875
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 12:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360DECCFA13
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 17:47:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wI4IQ-0003qn-MO; Wed, 29 Apr 2026 08:45:46 -0400
+	id 1wI8zw-0002EY-SI; Wed, 29 Apr 2026 13:46:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wI34u-0002AB-Tf; Wed, 29 Apr 2026 07:27:40 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jic23@kernel.org>)
- id 1wI34t-0006rp-F7; Wed, 29 Apr 2026 07:27:40 -0400
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 32EC940440;
- Wed, 29 Apr 2026 11:27:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C339C2BCC4;
- Wed, 29 Apr 2026 11:27:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1777462056;
- bh=Xq+n2bbiLDEKLGpiOU5SVgpFI+rU//O6b93BK78badw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=jjoyoL+z6rpszkKXUzm+eYIPuElFAdq9H3fsZztRGrj2MZM/nXSOrcW0GSOKBHZ4r
- OAQ9rKA9zJwWc4qUnzTWP9MBFFUx2iMwdOMjTqaaeJgbcgA23PMkrfBiCDTtQVRH/h
- SMAi70zmo/4PnN+3bxbpJKCRn6y8cGOp3l79T9rYtcuKpaoJ6+NIkyJR/c01IGXBZ9
- u9gVBzRu0SNXKkh5OF+wm1hyXKdyP9u/tkejQ5D6OAuujSlzxkD/pRfZ8tqqTXFOg7
- Omrl1BjkdYsnoYNHTb9jOBBxvWU+EQ7pyCqEPbXVY8KRF/laVk2FTUKydRDgAMotje
- xOnERJY/hlllA==
-Date: Wed, 29 Apr 2026 12:27:27 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>, Jonathan
- Cameron <jonathan.cameron@huawei.com>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>, Peter
- Maydell <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Fan Ni <fan.ni@samsung.com>
-Subject: Re: [PATCH 02/16] hw/cxl: Define cxl_fmws_get_all_sorted() stub
-Message-ID: <20260429122727.1c7d31a9@jic23-huawei>
-In-Reply-To: <20260423170229.64655-3-philmd@linaro.org>
-References: <20260423170229.64655-1-philmd@linaro.org>
- <20260423170229.64655-3-philmd@linaro.org>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wI8zv-0002Dx-Sf
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 13:46:55 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wI8zu-0002R9-Fb
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 13:46:55 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-488ab2db91aso199115e9.3
+ for <qemu-arm@nongnu.org>; Wed, 29 Apr 2026 10:46:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777484813; x=1778089613; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RkIXZXeSBHNXV33qZhjL4CNCiZuR+6rWWs7KYOUfSTU=;
+ b=QZXm1hVx6bp/HEWTL1ZGDsJRb0y9U7R+OmSCcZUeeE7WRbDenfiGuzEbf0gZNXBVkz
+ qjqL1jmnAZel0rAIwNTuORkOYfmtTvfntcc7stsUS1p3xjvytMleMmGYvuzCXxeghxZj
+ 75WZD9Df7AEuRqfS04oMXqQUnj0CBrug3ikOFdBTPINPo9dCv6xpQ0sCu6MDnyU2nyk/
+ fmm49V/G6hnUClvd6gq+r650JctvhfWqdJLH7N1qdcjbMHNSIlbHaIwaoJ++mXlZGlUu
+ NOmCLoV0tv0zWiJiatgCSM+s+yaK0p53npcuqp61f3qQjH11i+GGRFRtD6alF435JRBd
+ USHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777484813; x=1778089613;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RkIXZXeSBHNXV33qZhjL4CNCiZuR+6rWWs7KYOUfSTU=;
+ b=k1tCvKZfFtAmYru8UJGLt1c/ImKKjLgjidmcKs1J7sUuQrXG9J+FAJbiNsnomjrTER
+ zJgA0Bry7mlUB8aUdZFHFScbyNZGTXw8C63kNVvgn6hTy1b9V9eCUBALmquO0jxKCYHF
+ S+9i6ipOs8VI6GJ+WOXDsn7LM4faTsovHwLpNHq+w7/1o5us3HWwts371/yzEbffyzmn
+ UNo3ZrRPdDa5hNwAn9BX5ZkpzOt+j/uMcwjNyVzXoRQIKcVp4n4hcnGxMCsD0bbwGdRE
+ kNWPrvbg7wsBCD2/El5N8ATzPRyPMHkXw16bI+2uCmDbjsqfNDfhw3L+IvTkMVB5PaO+
+ A1Hw==
+X-Gm-Message-State: AOJu0YzBWf6eWWeEPlpwrdeufUmw9DONqk//j03g7lu8SibCPpoEeh6C
+ FmUbazTqkOj1Ok1k5IPdamtH4OU+ibWDsDuV1mLpnbftAsUqH2gGm2VagwBXg3l8y8Y=
+X-Gm-Gg: AeBDiesK352hsWp7AKXj9dgEd4xiPvmwytsrnEpumKfxYc7lq8XSMX+rWr4ZgLNvN+p
+ J6etBGtfC4CtkM7/jVwhFcQJ2JCeXJYk9EkJpyNiRZug86hvIp8SfauUc4jNRyCowDg5q6nSl9E
+ MX6a9qOMbmPXIDY0qmvdQhnpn20+rLw4biAs9aXda6JenDhkfnhSNWp+gS1LKTJgkCp7xv6nFkN
+ t/gbNrbytl55C8r2DsgwXwYSdrMce57RpmichIZgjpuorG3UPOtoKZtm4QlgHZcRXm66AAdQmvE
+ mDuR6qDDmSaKIvpdYHWQa0pQUDw7aVSV1wxM29e/YGNrtwkcfPMz7oTPpnBji57UllZ117Kxu5Y
+ BHcCc2oOiy85mt2Z95qHW6QpBflwg8sxvtTjmRsvXGHvQWK3PmOpP3g89mTZprleum9agnZHK3O
+ Sp28MO8Wnwtzb7ti+hZbl95r7GNc001svpZ7jWNiHKM2vUvbBLj8s/T8B6c7GmnCDHb7vdBazxT
+ GwD
+X-Received: by 2002:a05:600c:859a:b0:48a:56de:d62a with SMTP id
+ 5b1f17b1804b1-48a7b519560mr61940545e9.11.1777484812485; 
+ Wed, 29 Apr 2026 10:46:52 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a7c3057ecsm22772285e9.20.2026.04.29.10.46.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Apr 2026 10:46:51 -0700 (PDT)
+Message-ID: <e1da2b86-0c13-4e31-aadb-55ca877ce204@linaro.org>
+Date: Wed, 29 Apr 2026 19:46:49 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=jic23@kernel.org; helo=sea.source.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 10/84] fpu: Drop parts_{add,sub}_normal
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org
+References: <20260426134002.865628-1-richard.henderson@linaro.org>
+ <20260426134002.865628-11-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260426134002.865628-11-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 29 Apr 2026 08:45:40 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,38 +102,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Apr 2026 19:02:14 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
-
-> Add a stub for cxl_fmws_get_all_sorted() to fix building
-> a QEMU configured with the '--without-default-devices' option:
->=20
->   Undefined symbols for architecture arm64:
->     "_cxl_fmws_get_all_sorted", referenced from:
->         _cxl_build_cedt in hw_acpi_cxl.c.o
->=20
-> Note, the CXL <-> ACPI Kconfig relationship is a bit convoluted.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On 26/4/26 15:38, Richard Henderson wrote:
+> Drop the forward declarations and the _Generic macros.
+> Add partsW() for use by muladd_scalbn.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
+>   fpu/softfloat.c           | 16 ++--------------
+>   fpu/softfloat-parts.c.inc | 12 ++++++------
+>   2 files changed, 8 insertions(+), 20 deletions(-)
 
-Acked-by: Jonathan Cameron <jic23@kernel.org>
-
->  hw/cxl/cxl-host-stubs.c | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-> index c015baac813..9b515913ea4 100644
-> --- a/hw/cxl/cxl-host-stubs.c
-> +++ b/hw/cxl/cxl-host-stubs.c
-> @@ -18,3 +18,8 @@ hwaddr cxl_fmws_set_memmap(hwaddr base, hwaddr max_addr)
->  void cxl_fmws_update_mmio(void) {};
-> =20
->  const MemoryRegionOps cfmws_ops;
-> +
-> +GSList *cxl_fmws_get_all_sorted(void)
-> +{
-> +    g_assert_not_reached();
-> +}
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -4,80 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E606ACCFA13
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:09:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C708CFF8875
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:26:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIAEX-0001mC-OG; Wed, 29 Apr 2026 15:06:05 -0400
+	id 1wIAXV-0005zj-E9; Wed, 29 Apr 2026 15:25:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEW-0001m4-F2
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:04 -0400
-Received: from p-west3-cluster3-host9-snip4-10.eps.apple.com ([57.103.72.241]
- helo=outbound.ms.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEU-0000NQ-R3
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:04 -0400
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPS id
- BBDC718000C5; Wed, 29 Apr 2026 19:05:58 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJB01fDl4fBBdGGVUERx5dVl4eGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCAEkKXQJYAF4LTgZeD0YKXVQXWwxaDlYwTBZDH1IPWxNNGVEBUkVUAgdYRxRHDg8TTAtHAlo0Vh9UGVoD
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1777489561; x=1780081561;
- bh=okJ5cnEaqKHvGtSWn7uQC28UhrgcqlO+u8jRZ447zdE=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=VgAXrGmd1RTg8i3p3hCpPBig9F502cQ/mJZB2JYBCI+ja2OIwaOFlfF+rnJwEDgTnmYky3bIBQC4+N/kjn7XN2PZfbZ46KzvEscj+xWzvgLm2W/S7GhQq9y9BRwpI7Fo3oE4qgPz3APP2Oc2pNJl0mc97vydaqX3XZP7dWv2o5CWOFUxp4kp3S0LZf+XMxf+v4/9jUxZvrofdjyXgMmi2q8GAnfGO3ernimcxiLAZsOKdbaKSkcnnWf5uY4L/XylxB6pfoWBdDDyk+BIlzavqgqTeKOzFtluUo+wn+pFTsWgt6TAYIPZHUv02zlaW/XunrXgtYeGY2rBrjqAL1rymA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPSA id
- A0DBA18002E8; Wed, 29 Apr 2026 19:05:55 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
- Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v21 07/15] hvf: gate ARM_FEATURE_PMU register emulation when
- using the Apple vGIC
-Date: Wed, 29 Apr 2026 21:05:24 +0200
-Message-ID: <20260429190532.26538-8-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260429190532.26538-1-mohamed@unpredictable.fr>
-References: <20260429190532.26538-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1wIAXQ-0005yK-0x
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:25:37 -0400
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1wIAXO-0007J8-1w
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:25:35 -0400
+Received: by mail-oi1-x230.google.com with SMTP id
+ 5614622812f47-47c3b830c99so124339b6e.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Apr 2026 12:25:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777490732; cv=none;
+ d=google.com; s=arc-20240605;
+ b=A+D7DKvc0KW6LZmrVtJgwe6xGizJOUvmSsfqcP0Ue/dITx4gjaoD7XOEYoNZDFGpMM
+ xPXL5oLFqauY+JFXHjlbZFTXTnf0wsBQdazmI413ptU09oMh16nxzyeAu8v9TP93ByY5
+ er87X7RBBa3itlTFB4guGCbN8wN2mRUl+t9cznl0kMTu5J49ufKbQl+hcjZkEnCgKyXl
+ 3OPuAKXQ+oTeNurV6INmC0RKd1eR8xWv/dL+0RrB836vckJwrP1kt40qfj/GSD1DmnwP
+ xvMnN1H5q/lCn5dY/jRtYA5U0PFRrIDmYwbQsbSc1rqVpVgpcwTMfv7WpHTiUOFfZUix
+ L/XQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=PCfJVk5QzJgss4BpyoIAnlfL4C3sSPEnkOOMEArHUC4=;
+ fh=BXx45KI7z6nO6T+AQuKVm05rLEJizDyKDVEnEZhcBpA=;
+ b=SC2ANkWyyh96+sGTzedK6Si/5GgPj32CeUmoRTfEZLgrVHMqgBfMZd/Hq2/fHVJZ5O
+ BCqmidycg/zzIJ29Xq7oArU1N7AB1sC6vSe2Nzyh9e1P2OeRkVn5o++jJSCgk4jOmdux
+ VLXoFbV7jhDAMCHZjpbk56i6T0JOOtWQpb5idm0AdesunJPSpHi4LCRHOdt8JuAjoMO4
+ /rm+ZbU/WbSdNzsCWm1WpO8BwziiX8Gg5VMLY96aJZkNXLu3/mQt97uYj0u7lIPGTokV
+ wSW9y4hVR3uyTVbdvDfU2uqzLCl6KksLnq6KlHwZNOU+yL7jJ8SWn+FYARyRXqnW1tbX
+ l0Xg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1777490732; x=1778095532; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PCfJVk5QzJgss4BpyoIAnlfL4C3sSPEnkOOMEArHUC4=;
+ b=r+doJxrAlWrRoqN1eb5myZ3ZwJ9r2Wplkwd7hVYorPydJKryiF6db3SwzFOmytPk6d
+ Ghe6mGL1s9cUTjn8rrsfNp6Y7QNhcgIHjw0kygFgk5s/bnVIXomonOGgG3PNYveAzmpc
+ wjWuXX6sxr5Ariw5LPLW/uWDmZTin9HIXuW2od9LWaXxUrDmh/99Kfhr3P+b0z36Kmr+
+ 51vFYlot22VzfaHItoFXuGNhWSh2xBcM9olGYFXpMpzyY3wl/9Du4/V60YBInRVjbl9X
+ 6bG61gA81mLiSv/Edwp791oGECvF7F3kWpPLT/7YKTBBtf7Nch9BzQBGjRIGSU1HJ1Nx
+ nEFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777490732; x=1778095532;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=PCfJVk5QzJgss4BpyoIAnlfL4C3sSPEnkOOMEArHUC4=;
+ b=EZ0RMAMVWXaP5Ro7/BbbgOAFABP3RFL/Qp3TqGHV1KAhNOr/i9Im/IAa5AgSnyIHbQ
+ NKGbDJe8fxTnd//jpWdUWsjhhmkvA/3FLjlKhP7OBPFGIwqnvk4QLBUseJMBRxk4UP1H
+ 4gJI6DCJlhB4RSr6nmEQJyga/hazHpeqgDWIasUGQliBItR00rpZMw058fK3ghD8Q5x8
+ lBFMfchmup5JKNBLM/cW+1m7rAQ/V838SBTzQ702Poa0Mi6LK4UtBq1AT4gLM0Xmx8fY
+ cnaRKtyHoyN743OaWVSe+pVnKEfTesN6GEb3ZBy1kS9DE577n5nKDcexlsg0eNa25Dym
+ WONg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8azwC8oIW9DHM+Hxvsy+VRKREq4ULasdLwdbOmC2x0i0AGVizMmw+l71EgBufQZ+2tOCMV03taAQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwprYbz7VBbPwbx5DxZKGeZhazDLjf0QS3Kf6cfxhOQuTZnOUAS
+ tEMX3Ng+p2NDe3eqyVEZrvkEhk4lpMNJv9LmzTXyDBcPoxX0L+suZBgZQSS3CXG6VAlzcm5uOdg
+ rWpM8+ONRW7gS5W9qhKNt6EeWCSLilTA=
+X-Gm-Gg: AeBDieuZP+k4r9qBLkJXNVaelhdMXFPuTC5fT8ALUuYPxqBbTFhtXMoJEPlJtXvf+bZ
+ c5cV8TfmuaOf9CZRacJaf7Tr6HZrjKvHOY5O17dvwYri9K16DMNzbEGKwa/LQSdl+G7UZqVqmeA
+ AX6YFpGJ4uz0XORBBdGg15y1xL4JbxlOGjk/vwdeTacHTK0g7ddTVV3enOk7JITyKpjNhJcvU46
+ H4WQ1Ev69V3PB7TG8mhMu9A174HFIaUjM1yNPn0UTKeo+eRRiyLmdKRtQaSZZTvdaW2UaB1lvem
+ qLUOByujZF8GI4UV/Q==
+X-Received: by 2002:a05:6808:d49:b0:479:fbdb:4f85 with SMTP id
+ 5614622812f47-47c5f19c0f1mr85724b6e.0.1777490732289; Wed, 29 Apr 2026
+ 12:25:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=bcFmkePB c=1 sm=1 tr=0 ts=69f25698
- cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=TzKBU_9rahY9vEVlUJ4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDE5MCBTYWx0ZWRfX+BvahotabncE
- lBg+pkYd+AW5Rzfmt63auj8IxV5kcXijmSMigjf5w7ihkwSusAJGrl0yuZzQWkWfdNUgOIzI/0U
- GBvJMfUuFCaqaVqfk1aFzFIreMTnaNKQsck+OQPXGGxlbGjDxiZzFZui0qdrZcY2LJJihi3VAk+
- p18Z4k9gMCux3ym2TpcAt6odOvZDSgwcYUQP6pG95FcxilQ47mlObd9xnI4XOpBQPjQSN8aQqL2
- PurW2yL2uGZwIP+HD4HobxH7anyN6izH2YgbdKpgKckPlCH5+xdQow4pPCt3KzvP79VIi/wWEA+
- R856341yxTFhJS/YgHANn/GpxiOv3QjTrJBDRfyxYm69ZsqrVQsti8yld8f8O4=
-X-Proofpoint-GUID: P_1tUE1L_zcqw_geOAwAWCtloDsnZgfZ
-X-Proofpoint-ORIG-GUID: P_1tUE1L_zcqw_geOAwAWCtloDsnZgfZ
-Received-SPF: pass client-ip=57.103.72.241;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <CAN-aV1EiKRh-Zpb9=77rXYPD2uT7HZmeNfvVW-wAToT+gaVC=A@mail.gmail.com>
+ <87v7dvgw58.fsf@pond.sub.org>
+ <CAN-aV1ERB-vdvMyRuNo2tog9-EPPyCunXJkk-kC=DkX-kU6VCQ@mail.gmail.com>
+In-Reply-To: <CAN-aV1ERB-vdvMyRuNo2tog9-EPPyCunXJkk-kC=DkX-kU6VCQ@mail.gmail.com>
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Date: Wed, 29 Apr 2026 21:25:21 +0200
+X-Gm-Features: AVHnY4I9GvHD5cXveSzznX9tl0o9wlXsWSg_zblf_NvEG_gfuitDjsq989ddjyQ
+Message-ID: <CAN-aV1HDZfoJv3OCm9_f3epNtvvr5CrvB-1Fi4y7jGLwF3Xx7g@mail.gmail.com>
+Subject: Re: Question on preferred location for QEMU sample projects
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com, 
+ takahiro.nakata.wr@renesas.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::230;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-oi1-x230.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,51 +120,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From Apple documentation:
+On Mon, Apr 13, 2026 at 4:04=E2=80=AFPM Ruslan Ruslichenko
+<ruslichenko.r@gmail.com> wrote:
+>
+> On Mon, Apr 13, 2026 at 9:25=E2=80=AFAM Markus Armbruster <armbru@redhat.=
+com> wrote:
+> >
+> > Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
+> >
+> > > Hi everyone,
+> > >
+> > > We are currently preparing the v2 patch series for the Remote-Port
+> > > Co-simulation protocol for interfacing with SystemC modules. The firs=
+t
+> > > revision was here:
+> > > https://lists.nongnu.org/archive/html/qemu-devel/2026-02/msg01760.htm=
+l.
+> > >
+> > > As part of this submission, we would like to publish a sample project
+> > > serving as a demonstration of how to connect a QEMU Remote-Port
+> > > frontend to a SystemC backend.
+> > >
+> > > The sample project implements a standard SystemC IP core and uses
+> > > several external components such as:
+> > > - libsystemctlm-soc: https://github.com/Xilinx/libsystemctlm-soc
+> > > - VCML Library: https://github.com/machineware-gmbh/vcml
+> > > - SystemC Library: https://github.com/accellera-official/systemc
+> > >
+> > > We have a question regarding the location for this kind of project.
+> > > Could you please suggest if there is a preferred location or some
+> > > standard practice for hosting such a sample project?
+> >
+> > Location within the QEMU source tree?
+> >
+>
+> Hello Markus,
+>
+> Yes, it would be good to include this project within the QEMU source tree=
+.
+> To build the project, the mentioned SystemC, libsystemctlm-soc and
+> VCML libraries and their specific dependencies need to be built and
+> installed separately.
+> Would this approach be acceptable?
+>
+> Alternatively, is there an auxiliary repository within the QEMU
+> infrastructure that is better suited for these types of sample
+> projects,
+> perhaps somewhere under https://gitlab.com/qemu-project?
+>
+> --
+> BR,
+> Ruslan
 
-> When EL2 is disabled, PMU register accesses trigger "Trapped MSR, MRS, or
-> System Instruction" exceptions. When this happens, hv_vcpu_run() returns, and the
->  hv_vcpu_exit_t object contains the information about this exception.
+Hello Markus,
 
-> When EL2 is enabled, the handling of PMU register accesses is determined by the PMUVer
-> field of ID_AA64DFR0_EL1 register.
-> If the PMUVer field value is zero or is invalid, PMU register accesses generate "Undefined"
-> exceptions, which are sent to the guest.
-> If the PMUVer field value is non-zero and valid, PMU register accesses are emulated by the framework.
-> The ID_AA64DFR0_EL1 register can be modified via hv_vcpu_set_sys_reg API.
+Do you have any thoughts on the preferred location for this sample project?
 
-However, despite what that documentation says this is actually gated on using the Apple vGIC
-instead of nested virtualisation per se. Apple introduced both at the same time.
-
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
----
- target/arm/hvf/hvf.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index fa0a22fdc3..9d64f2e1a5 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1601,7 +1601,7 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
-     ARMCPU *arm_cpu = ARM_CPU(cpu);
-     CPUARMState *env = &arm_cpu->env;
- 
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCR_EL0:
-             *val = env->cp15.c9_pmcr;
-@@ -1862,7 +1862,7 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-                            SYSREG_OP2(reg),
-                            val);
- 
--    if (arm_feature(env, ARM_FEATURE_PMU)) {
-+    if (!hvf_irqchip_in_kernel() && arm_feature(env, ARM_FEATURE_PMU)) {
-         switch (reg) {
-         case SYSREG_PMCCNTR_EL0:
-             pmu_op_start(env);
--- 
-2.50.1 (Apple Git-155)
-
+Best regards,
+Ruslan
 

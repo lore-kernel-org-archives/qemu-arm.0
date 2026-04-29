@@ -4,36 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC88CFF8875
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:06:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BD3CFF8875
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Apr 2026 19:06:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIAEf-0001vt-H8; Wed, 29 Apr 2026 15:06:13 -0400
+	id 1wIAEh-00020a-5K; Wed, 29 Apr 2026 15:06:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEd-0001s6-TA
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:11 -0400
-Received: from p-west3-cluster3-host7-snip4-10.eps.apple.com ([57.103.72.201]
+ id 1wIAEg-0001y3-2S
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:14 -0400
+Received: from p-west3-cluster3-host10-snip4-10.eps.apple.com ([57.103.72.251]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIAEb-0000R3-10
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:11 -0400
+ id 1wIAEe-0000St-9W
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 15:06:13 -0400
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPS id
- B2FA418005ED; Wed, 29 Apr 2026 19:06:06 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAE1fDl4fBBdGGVUERx5dVl4eGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCAEkKXQJYAF4LTgZeD0YDQRQVXAVWBlcUeQ1dHUUOVhlaDFIPWw4cFktGExlOG1dNWg1AGVgGbRRWFVIEWQ==
+ 8E8F618000E9; Wed, 29 Apr 2026 19:06:09 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRJAE1fDl4fBBdGGVUERx5dVl4eGQJRHFYNV0NUBF9QSQxBUGxaAEcXSB1dGVlvUF0cDhhZG0AVXRFQGVYJXhUXHkFNWgJWTQVKA18BWwZCAEkKXQJYAF4LTgZeD0YDQhQVXAVWBlcUeQ1dHUUOVhlaDFIPWw4cFktGExlOG1dNWg1AGVgGbRRWFVIEWQ==
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1777489567; x=1780081567;
- bh=S/YYV6/sLaH5DGZiOicMcJLSUKhjsA0gq+dKJ4/hfiA=;
+ s=sig1; t=1777489571; x=1780081571;
+ bh=iP9tdJ6jkY5u7kiEfu0n/jB1gTl+WbYwZraw8G3pTMI=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=WX0gT54h6umS+MOG+FvWID8dkPRYh4nYRDOBhL9JmMh1l7y4Xmkcc0myxQY9nB9/MFo5/1h3ZlWoQiCeIyvdDVwFNgg3W1KStuZHDBirZHWQKtIARftC/1JfId4r/joZO38uKSOg6/lJeXXrN2s3WTdlfTw+u4jRM9ymhdq5p6A3vn7wk+yOWB2WDUDxPX9aitlCmzprJxm9DviXPEo2vMZpTyB2QJWoDpRmommrJy3NWtYBTpykPHG3c0rUfaxyE4k8r67o8JCc7Cp3mo9U57l3t4fSPtx44GxQQLmMesPgmX1uaRn4Ku9I8uY7HR3HHfQhMlobtaTAfe8+bOvCzQ==
+ b=HGz/A+xuj8BYWKG5JK6HRdvjyGqvRSGZQU+O0djNiMjqiMoi/e8Vpm8jTNDLyVS7/CnYAa6V0xkTTjSs3hzSvWHi3iAVkTeulHU9j1pY9VognpE1AhBkzLWkMbZqXUJzE6KGyzMnbrx3uv0rmvqpHTBSYF5/uTfIKFGp3/clYfHF/w+2HLMYcD4DYednfeKTy3CpYo0vfBWmKlkbq/fwoEbTK5HgrqGSB+DW/5yxmB7XclKn60zRd6oMab31J6ej4sVx5J4PERudUxrCkfZu52atlPYgpVIr64OrgaT/qFZrp7uh6e3CYppaCaxFwBmPE2IUY4O4TGf8lraeekFASA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-6 (Postfix) with ESMTPSA id
- F3BD518002CB; Wed, 29 Apr 2026 19:06:03 +0000 (UTC)
+ A0B5918002DD; Wed, 29 Apr 2026 19:06:06 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -45,29 +45,30 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v21 10/15] hvf: sync registers used at EL2
-Date: Wed, 29 Apr 2026 21:05:27 +0200
-Message-ID: <20260429190532.26538-11-mohamed@unpredictable.fr>
+Subject: [PATCH v21 11/15] target/arm: hvf: pass through CNTHCTL_EL2 and
+ MDCCINT_EL1
+Date: Wed, 29 Apr 2026 21:05:28 +0200
+Message-ID: <20260429190532.26538-12-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260429190532.26538-1-mohamed@unpredictable.fr>
 References: <20260429190532.26538-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: aPgPvV8mqebDN-kp7rK4HaEcMrjCN6eO
-X-Proofpoint-ORIG-GUID: aPgPvV8mqebDN-kp7rK4HaEcMrjCN6eO
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDE5MCBTYWx0ZWRfX9Yl051/m/gds
- Y1ec8ziIXeqehIl57XXACARcLRfdRNrSd5MJc1+R6OzfEe/Uus4YoVPCTqa29l/pXDdxw361xYv
- Gqvge20CUu4sI8HBgAb7W8qriJi+0HESkNqGDe6sB0L7ntnOVtPYTFHG+lrLAviLys5pYmQ9C4E
- KbrAFJxXfGp0/Meta1TRZgepwMSjxGPiNEm/GwRxfFX5P9Dd9+sKweIhT+2yzZa1KzICdzxaugy
- wNK2cOPl1g0xcHQqIVpCsLqgotBQine4ufcNnh5sSUMZ7L/u0hKs8MCXLVHWQnVEFpjqWF/8JnW
- a0P3IQ3qrYPUuh3/xswl2YvFt7LyLwvfxTZTd9SwfwtDmFpk/RroJOHYE0ACUU=
-X-Authority-Info-Out: v=2.4 cv=eovSD4pX c=1 sm=1 tr=0 ts=69f2569f
+X-Authority-Info-Out: v=2.4 cv=S+jUAYsP c=1 sm=1 tr=0 ts=69f256a2
  cx=c_apl:c_pps:t_out a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
  a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=Ml6fgdKjPmdD6r9HfocA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=L1bH-B2CdzmaWMF7168A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
  a=cvBusfyB2V15izCimMoJ:22
-Received-SPF: pass client-ip=57.103.72.201;
+X-Proofpoint-ORIG-GUID: 6PiupehAnuchHIJGeP2gkUsd2Y0hA37i
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDE5MCBTYWx0ZWRfX2Aqj/wTjqSNA
+ NpsWEERJTRzK45u3wmGmgVjgVkuieXXihDqzKvXDA++MCOZLS9Gp34yQ7nuepjcsYy1AGGqZie4
+ Z6h4/RKO6oF2PUxGsDQXc8LDvKq2poHSIGx9NX6a3POQiAcB4u6ePDH8x0lHaD7J5xOWDzD8R/3
+ DSuzU96w7o/I43exG2pkvtHZkgfuBp5rAl+HSxdosqbSaxCApc1WOK05rf+irTH9Heib7LFREUN
+ VhLnDFZ4MvxTBGSazI8ah5vCAclRETfTfV0ao6e370YnVzDZIQSo/Fj7GU6bBpDUV/vpRowcpxX
+ aH05sKN4nd0KsvfI152ZJgIfp82PcK3uXnCSwV9JuQ7FKq2B/6MOlYzAhNalFk=
+X-Proofpoint-GUID: 6PiupehAnuchHIJGeP2gkUsd2Y0hA37i
+Received-SPF: pass client-ip=57.103.72.251;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -91,194 +92,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When starting up the VM at EL2, more sysregs are available. Sync the state of those.
-
-In addition, sync the state of the EL1 physical timer when the vGIC is used, even
-if running at EL1. However, no OS running at EL1 is expected to use those registers.
+HVF traps accesses to CNTHCTL_EL2. For nested guests, HVF traps accesses to MDCCINT_EL1.
+Pass through those accesses to the Hypervisor.framework library.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/arm/hvf/hvf.c        | 61 +++++++++++++++++++++++++++++++++----
- target/arm/hvf/sysreg.c.inc | 44 ++++++++++++++++++++++++++
- 2 files changed, 99 insertions(+), 6 deletions(-)
+ target/arm/hvf/hvf.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 38f88c1a80..c40327ea2f 100644
+index c40327ea2f..ceeb61fbc0 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -467,37 +467,75 @@ static const struct hvf_reg_match hvf_sme2_preg_match[] = {
-  *
-  * SME2 registers are guarded by a runtime availability attribute instead of a
-  * compile-time def, so verify those at runtime in hvf_arch_init_vcpu() below.
-+ *
-+ * Nested virt registers are handled via a runtime check, so override the guarded
-+ * availability check done by Clang.
-  */
+@@ -296,6 +296,10 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_DBGWVR15_EL1   SYSREG(2, 0, 0, 15, 6)
+ #define SYSREG_DBGWCR15_EL1   SYSREG(2, 0, 0, 15, 7)
  
-+#pragma clang diagnostic push
-+#pragma clang diagnostic ignored "-Wunguarded-availability"
++/* EL2 registers */
++#define SYSREG_CNTHCTL_EL2    SYSREG(3, 4, 14, 1, 0)
++#define SYSREG_MDCCINT_EL1    SYSREG(2, 0, 0, 2, 0)
 +
- #define DEF_SYSREG(HVF_ID, ...) \
-   QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
- #define DEF_SYSREG_15_02(...)
+ #define WFX_IS_WFE (1 << 0)
  
-+#define DEF_SYSREG_EL2(HVF_ID, ...) \
-+  QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
-+
-+#define DEF_SYSREG_VGIC(HVF_ID, ...) \
-+  QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
-+
-+#define DEF_SYSREG_VGIC_EL2(HVF_ID, ...) \
-+  QEMU_BUILD_BUG_ON(HVF_ID != KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
-+
- #include "sysreg.c.inc"
- 
- #undef DEF_SYSREG
- #undef DEF_SYSREG_15_02
-+#undef DEF_SYSREG_EL2
-+#undef DEF_SYSREG_VGIC
-+#undef DEF_SYSREG_VGIC_EL2
- 
--#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  HVF_ID,
-+#define DEF_SYSREG(HVF_ID, op0, op1, crn, crm, op2)  {HVF_ID},
- #define DEF_SYSREG_15_02(...)
-+#define DEF_SYSREG_EL2(HVF_ID, op0, op1, crn, crm, op2)  {HVF_ID, .el2 = true},
-+#define DEF_SYSREG_VGIC(HVF_ID, op0, op1, crn, crm, op2)  {HVF_ID, .vgic = true},
-+#define DEF_SYSREG_VGIC_EL2(HVF_ID, op0, op1, crn, crm, op2)  {HVF_ID, true, true},
-+
-+struct hvf_sreg {
-+    hv_sys_reg_t sreg;
-+    bool vgic;
-+    bool el2;
-+};
- 
--static const hv_sys_reg_t hvf_sreg_list[] = {
-+static struct hvf_sreg hvf_sreg_list[] = {
- #include "sysreg.c.inc"
- };
- 
- #undef DEF_SYSREG
- #undef DEF_SYSREG_15_02
-+#undef DEF_SYSREG_EL2
-+#undef DEF_SYSREG_VGIC
-+#undef DEF_SYSREG_VGIC_EL2
-+
-+#pragma clang diagnostic pop
- 
- #define DEF_SYSREG(...)
--#define DEF_SYSREG_15_02(HVF_ID, op0, op1, crn, crm, op2) HVF_ID,
-+#define DEF_SYSREG_15_02(HVF_ID, op0, op1, crn, crm, op2) {HVF_ID},
-+#define DEF_SYSREG_EL2(...)
-+#define DEF_SYSREG_VGIC(...)
-+#define DEF_SYSREG_VGIC_EL2(...)
- 
- API_AVAILABLE(macos(15.2))
--static const hv_sys_reg_t hvf_sreg_list_sme2[] = {
-+static struct hvf_sreg hvf_sreg_list_sme2[] = {
- #include "sysreg.c.inc"
- };
- 
- #undef DEF_SYSREG
- #undef DEF_SYSREG_15_02
-+#undef DEF_SYSREG_EL2
-+#undef DEF_SYSREG_VGIC
-+#undef DEF_SYSREG_VGIC_EL2
- 
- /*
-  * For FEAT_SME2 migration, we need to store PSTATE.{SM,ZA} bits which are
-@@ -1335,6 +1373,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- #define DEF_SYSREG_15_02(HVF_ID, ...) \
-         g_assert(HVF_ID == KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_ARGS__)));
- #define DEF_SYSREG(...)
-+#define DEF_SYSREG_EL2(...)
-+#define DEF_SYSREG_VGIC(...)
-+#define DEF_SYSREG_VGIC_EL2(...)
- 
- #include "sysreg.c.inc"
- 
-@@ -1362,11 +1403,19 @@ int hvf_arch_init_vcpu(CPUState *cpu)
- 
-     /* Populate cp list for all known sysregs */
-     for (i = 0; i < ARRAY_SIZE(hvf_sreg_list); i++) {
--        hv_sys_reg_t hvf_id = hvf_sreg_list[i];
-+        hv_sys_reg_t hvf_id = hvf_sreg_list[i].sreg;
-         uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
-         uint32_t key = kvm_to_cpreg_id(kvm_id);
-         const ARMCPRegInfo *ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
- 
-+        if (hvf_sreg_list[i].vgic && !hvf_irqchip_in_kernel()) {
-+            continue;
+ #define TMR_CTL_ENABLE  (1 << 0)
+@@ -1719,6 +1723,14 @@ static int hvf_sysreg_read(CPUState *cpu, uint32_t reg, uint64_t *val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTHCTL_EL2:
++        if (__builtin_available(macOS 15.0, *)) {
++            assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
 +        }
-+
-+        if (hvf_sreg_list[i].el2 && !hvf_nested_virt_enabled()) {
-+            continue;
++        return 0;
++    case SYSREG_MDCCINT_EL1:
++        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
++        return 0;
+     case SYSREG_ICC_AP0R0_EL1:
+     case SYSREG_ICC_AP0R1_EL1:
+     case SYSREG_ICC_AP0R2_EL1:
+@@ -2007,6 +2019,14 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
++    case SYSREG_CNTHCTL_EL2:
++        if (__builtin_available(macOS 15.0, *)) {
++            assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTHCTL_EL2, val));
 +        }
-+
-         if (ri) {
-             assert(!(ri->type & ARM_CP_NO_RAW));
-             arm_cpu->cpreg_indexes[sregs_cnt++] = kvm_id;
-@@ -1375,7 +1424,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     if (__builtin_available(macOS 15.2, *)) {
-         if (hvf_arm_sme2_supported()) {
-             for (i = 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
--                hv_sys_reg_t hvf_id = hvf_sreg_list_sme2[i];
-+                hv_sys_reg_t hvf_id = hvf_sreg_list_sme2[i].sreg;
-                 uint64_t kvm_id = HVF_TO_KVMID(hvf_id);
-                 uint32_t key = kvm_to_cpreg_id(kvm_id);
-                 const ARMCPRegInfo *ri = get_arm_cp_reginfo(arm_cpu->cp_regs, key);
-diff --git a/target/arm/hvf/sysreg.c.inc b/target/arm/hvf/sysreg.c.inc
-index 7a2f880f78..c11dbf274e 100644
---- a/target/arm/hvf/sysreg.c.inc
-+++ b/target/arm/hvf/sysreg.c.inc
-@@ -153,3 +153,47 @@ DEF_SYSREG_15_02(HV_SYS_REG_ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
- DEF_SYSREG_15_02(HV_SYS_REG_ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
- DEF_SYSREG_15_02(HV_SYS_REG_SMPRI_EL1, 3, 0, 1, 2, 4)
- DEF_SYSREG_15_02(HV_SYS_REG_SMCR_EL1, 3, 0, 1, 2, 6)
-+/*
-+ * Block these because of the same issue as virtual counters in
-+ * that caused the revert in 28b0ed32b32c7e5094cf2f1ec9c0645c65fad2aa
-+ *
-+ * DEF_SYSREG_VGIC(HV_SYS_REG_CNTP_CTL_EL0, 3, 3, 14, 2, 1)
-+ * DEF_SYSREG_VGIC(HV_SYS_REG_CNTP_CVAL_EL0, 3, 3, 14, 2, 2)
-+ */
-+#ifdef SYNC_NO_RAW_REGS
-+DEF_SYSREG_VGIC(HV_SYS_REG_CNTP_TVAL_EL0, 3, 3, 14, 2, 0)
-+#endif
-+
-+/*
-+ * Also block these because of the same issue as virtual counters in
-+ * that caused the revert in 28b0ed32b32c7e5094cf2f1ec9c0645c65fad2aa
-+ *
-+ * DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHP_CVAL_EL2, 3, 4, 14, 2, 2)
-+ * DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHP_CTL_EL2, 3, 4, 14, 2, 1)
-+ */
-+DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHCTL_EL2, 3, 4, 14, 1, 0)
-+#ifdef SYNC_NO_RAW_REGS
-+DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTHP_TVAL_EL2, 3, 4, 14, 2, 0)
-+#endif
-+DEF_SYSREG_VGIC_EL2(HV_SYS_REG_CNTVOFF_EL2, 3, 4, 14, 0, 3)
-+
-+DEF_SYSREG_EL2(HV_SYS_REG_CPTR_EL2, 3, 4, 1, 1, 2)
-+DEF_SYSREG_EL2(HV_SYS_REG_ELR_EL2, 3, 4, 4, 0, 1)
-+DEF_SYSREG_EL2(HV_SYS_REG_ESR_EL2, 3, 4, 5, 2, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_FAR_EL2, 3, 4, 6, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_HCR_EL2, 3, 4, 1, 1, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_HPFAR_EL2, 3, 4, 6, 0, 4)
-+DEF_SYSREG_EL2(HV_SYS_REG_MAIR_EL2, 3, 4, 10, 2, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_MDCR_EL2, 3, 4, 1, 1, 1)
-+DEF_SYSREG_EL2(HV_SYS_REG_SCTLR_EL2, 3, 4, 1, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_SPSR_EL2, 3, 4, 4, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_SP_EL2, 3, 6, 4, 1, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_TCR_EL2, 3, 4, 2, 0, 2)
-+DEF_SYSREG_EL2(HV_SYS_REG_TPIDR_EL2, 3, 4, 13, 0, 2)
-+DEF_SYSREG_EL2(HV_SYS_REG_TTBR0_EL2, 3, 4, 2, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_TTBR1_EL2, 3, 4, 2, 0, 1)
-+DEF_SYSREG_EL2(HV_SYS_REG_VBAR_EL2, 3, 4, 12, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_VMPIDR_EL2, 3, 4, 0, 0, 5)
-+DEF_SYSREG_EL2(HV_SYS_REG_VPIDR_EL2, 3, 4, 0, 0, 0)
-+DEF_SYSREG_EL2(HV_SYS_REG_VTCR_EL2, 3, 4, 2, 1, 2)
-+DEF_SYSREG_EL2(HV_SYS_REG_VTTBR_EL2, 3, 4, 2, 1, 0)
++        return 0;
++    case SYSREG_MDCCINT_EL1:
++        assert_hvf_ok(hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_MDCCINT_EL1, val));
++        return 0;
+     case SYSREG_LORC_EL1:
+         /* Dummy register */
+         return 0;
 -- 
 2.50.1 (Apple Git-155)
 

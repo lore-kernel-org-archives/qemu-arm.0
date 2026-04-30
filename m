@@ -4,122 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D82CD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 17:33:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA15CD13D3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 17:41:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIVFw-0000xq-Dq; Thu, 30 Apr 2026 13:32:57 -0400
+	id 1wIVOG-00070W-Qm; Thu, 30 Apr 2026 13:41:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIVFW-0000ET-Em
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:32:33 -0400
-Received: from 12.mo533.mail-out.ovh.net ([178.33.248.79])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIVFS-0007Pk-KT
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:32:29 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [51.68.94.138])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4g61T25SP3z61Nx;
- Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.90])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4g61T232tbz7trq; Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.2])
- (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EA5D09416C6; 
- Thu, 30 Apr 2026 17:32:20 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G0018f7417ea-e8db-4db6-b72f-26738ce481e9,
- 9F47DE0B15482FF6BC55B1CE858CC0DAC5AE7A4F) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.14.253.154
-Message-ID: <261f2311-225f-4895-b1d8-0f0cf8811a60@kaod.org>
-Date: Thu, 30 Apr 2026 19:32:20 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIVNH-0006RT-77
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:40:33 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIVN9-0001QO-VX
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:40:27 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-656d749109cso742603d50.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 10:40:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777570819; cv=none;
+ d=google.com; s=arc-20240605;
+ b=XnjIOyqV5Z9JQ6lhvbfugF45AtH1fyaX0IMaA9KJnMa32Tn0vysZqnL1hoAEUm6BF/
+ iJhwQbJJ3hjwvSin+tW///8tsuBbsw3jmjUT+Ots869jomSW/0dnb011G7l/VzqXDaZk
+ U6RhWdcfEL8pSketsooqde9q2vs7/1LZvDw/29Unnj9XCEHnSOQRmUJALFiK2AD/XS91
+ 3kNx//LzidY8BVL04ExhNz5tX3vgHYgs4nZbGCzGurRxfBBKWVRpBtr5Iu2dMYAJv6is
+ ICX/U414JxLIg+vKC52E0KVnac68IM33UMLv5WigLo1r33hJpx0qVSuzPLgJqMltKIbl
+ mZjg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=wRNqp1a791PplT4I6/Q+eQ0RRbtFxylwW9MjMq9JYVU=;
+ fh=hvcz60CBxbhy2A0hdHY9nKgTtdGRzKwBT92QnRSbisw=;
+ b=UAqw0XNDRAWqGqsUqQXwzZz+jUSZBIzRTuE1mH6aY/ZO+bdh5+AZ3e3N9oQNSOkKGf
+ WiFQaL9D7WOK1IGqGDbaxDfCstF4ah2OT4aezu9lOdbOaaF6FxEznoCoScrx3o/yMCwW
+ vU8GeJ6vs+UWOMpoL4oTle3KIkaiKNBeJQ0sW4CPBqVVUJPaHpk4naTBR2rRfqgKmvfI
+ 85bfsXLCn62q92nyz/dT3LGsqksIxJMhtLD71kslGCqtboFJ1E4Qh347Z+Yvv18NDeP8
+ dwoijXCok8rTf5T0a6p0NEdqaf1fdotDfDdd0iCtlxhQGb9ovNJwGdl4tZPd4uR3pVXk
+ ao3A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777570819; x=1778175619; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=wRNqp1a791PplT4I6/Q+eQ0RRbtFxylwW9MjMq9JYVU=;
+ b=gZRFeiEmbtFGVqDfmSRFE3o61wCOt4HPC8s/iCG//wSjRmKWl6rAFitO3QjlQ8Ii1e
+ HVK11m+9siAsxxx7AOz6jYZ6zxggiMCczKJnTCuIINJgIaclZQe3ApXQipnlhybDhFdM
+ /zyJOMELBjpq6IFLvAeNL/crKUsAjoFZ3H04wDs5hkiQ7vQ5hzNX8NaxBmevxTT2VazZ
+ 4RLPqB+7lGk1GJ5kv0A9Hev1fhOD53IeXH/C4rE1VCKE59E66+CcLECOKjqjl8moBGhi
+ +3+1WJaUzyoXNi5vSE6RvyZuM24dbzJ6+8ZW26sJs7npOgzO0tG4NFSm6fBvr3Qe3QhJ
+ Xhvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777570819; x=1778175619;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=wRNqp1a791PplT4I6/Q+eQ0RRbtFxylwW9MjMq9JYVU=;
+ b=Rorzs/hBbX+1SyYIOMfXdgaRcEYJzlSKBgPC/TMfN24UoxSshJMhBypuk4pTRvsSjg
+ xDoZjROvY1vXdI1aOH688RYj5cKH2SEH9YOyWXYb0Ly4laTZiahRyzgMobZSXsQkQl5k
+ qhzf8MMPDbeY/YtMhSXThQ/1aLCmJgihGdaxjqs2ssXUefJwoOOlw3jlyofMyzJXgKfE
+ dVPvQ7BInkxxBFPFvdsTfqR8TDFkZ6RSw3Ox3+EB20WO9754fmGQ0PGfFHG3eLdkEwdK
+ MCCahrdp8yhVKtbeZ21eotlsHjUvXydhRnQguPhi4JSiOttKowxhKfnEc9Zo0s6gF7bY
+ 9y9Q==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8xAo+xH/H/Ygi6dKc1rGi5JeqBij0ES3s1bgrO0223fZvfOGhbRNlEYDfxDV2JSjtMH6zWlPgyOg==@nongnu.org
+X-Gm-Message-State: AOJu0Yza8I1wCB6nB0RGT+ohiZX1eb0KzI8ck0BgHseUKSuYAhcsW2Ln
+ jP6GYZOi9zGjKzdz9bUSMpPcIe5VhWc8OnA4CHMnQZovjPe9Y3DVBp8lL9p6T9mOS3jLlUoFF5q
+ 9qRjy+BU2qFzdSMcJ02kkixvahfm3W1ZVZT7a4YqgpQ==
+X-Gm-Gg: AeBDiesohWocCo83dMxoffM1PvWfXbjYOjZt/FpytQs911zDB+HBK4LzhLiTPxLXRNw
+ 4LRT+mGCvZl/6NK0MxVNJF7mrnyY0nGI4gGgLEVuGCq1v5pcuBe0GT6bZWmaV95AzLM8MjVVAV1
+ WszGcm1c7mzc66Kjs4h4+I4vy0S3bL/QmnN/bhBd7LL0UMTMEqbUORjq61WKHRnF7P3T9rnBodN
+ fzvJ8R7+7el0N4RToAnxgFF6zHBo4JfitaU+wr/CIAHHWMltbdaooPwzuOoSxMR91SYffRGlIVE
+ 3c4qOh4dTAbZ/5tSpcgtLO1jEoBe5uL67QDYCjcJqP5SNUQieqj32mHdcACcjClxWGsPK7ZGOaj
+ wZtpmETOcKarT
+X-Received: by 2002:a05:690e:4092:b0:649:6b96:8025 with SMTP id
+ 956f58d0204a3-65c18b04cfemr3212339d50.9.1777570818956; Thu, 30 Apr 2026
+ 10:40:18 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 31/41] hw/arm/aspeed: free fmc_model and spi_model on
- finalization
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
- <20260427-qom-tests-v1-31-c413f3605311@redhat.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260427-qom-tests-v1-31-c413f3605311@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 10531104782745971739
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFTIkxvobcF6oSVoAzrTjLrjV+nnpqae9MtzyUEVPscw4wrQh7sVN/1k2tD0Xu7TGr6f6rOJQC6krZ2CSSR6OckswrRFcbtgeirYgDjb+hMtB17EroG1aXMbBFBOM9lvQBngZwVZfDwX54Yp1crO9wpsWCeac4fTM6vv4iy/azjsjVN9kHrVomkmZA3F+u/X+nq0cKhRn0fc+CuEeBqLXKlGZRtodFckvrwyint9+9sPqA4+ixvd4OtcFKGG45IhqmFLdKmf1BFdazqBELi2a1xRf+h4mGleTSvMyLLq+l8++iVyhBuWhVZItxESDxM4N+B5a6umI2Gej+iWwBMLqJSlXJ24H/bW4pbKmr2qofR7emxwbggbCPpFcgyWWs9t74pvyVrFH5fb8R9Zz6fadXC63napkjbCbVF6PdDfmh1psz76kZAlcDChxk8zA+bXdz6QynpnLoyRLKK7O74YxCBGNSWlpdIHtcnzs6Kxf/+pc9ZEZ0UcFvYdlzASFJTqS1KTTRJzT43G6lbS7CCB1lmp06Tzh6xwvGMm8jCJdoJSB1yqSKHIm2NP23nYfRiDtdc4rhi4ZA5nKAkR6UKhGc++NGNhYvocEu2ePRBwTIHMfiglTKeHib8kGsbE08B8s7DLGOVZtsYWeyZGm7nm7GFn1xIbJDZxi6lX2Qddvsd9w
-DKIM-Signature: a=rsa-sha256; bh=Sl/KtSdQZKCGH0M8LhZHZBhUD+ERC5eTzHmT46PZ7BY=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1777570343; v=1;
- b=DY7ogC9pU4UYGy4s15bkLsCKm/wNzqTIkVdgN9zXQtV/Rd5w9TPmm5KqbJ7gbJpVpVNxZN4d
- 74xkpsdTYyBYRD2JG0w6CWK7gcSuiam8m1wR5tXTBiAYpcTBI3mk0svO2tcZzQNxFA8fQ3OpaTs
- YurTGu+FMw3ceDShev1OoaVbptPoS06IYRqVeHkhrjBPWAsGooLSbJmwDwlqJBDE9brWR4Fyljr
- tb/5l1hJCscBq4JW2c6p9XCT+vQdw1CObhAwfubsEek0qaw6aIDRFPOhLGM+LulmOgvK2y5Gghq
- sTax6/1xYP5n+FlDhmyE/A1d8aV32ig0NuthXz/jy4QMQ==
-Received-SPF: pass client-ip=178.33.248.79; envelope-from=clg@kaod.org;
- helo=12.mo533.mail-out.ovh.net
+References: <20260420064933.64765-1-thuth@redhat.com>
+ <c51c87a7-e224-4785-8f64-f4c59af0d066@tls.msk.ru>
+In-Reply-To: <c51c87a7-e224-4785-8f64-f4c59af0d066@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 18:40:06 +0100
+X-Gm-Features: AVHnY4IExqn23MVcz5gIFdch2_2WomB86JJbwsWg5gPi572yXRiM0muQ21qYRbI
+Message-ID: <CAFEAcA_brmxEaxR+fzNFCaC+n0TnJg_5vF8vrpuah7PvWPD8fQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Remove hw_error() for the unimplemented
+ CM_LMBUSCNT register
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ qemu-stable <qemu-stable@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,50 +119,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/27/26 21:42, Marc-André Lureau wrote:
-> The fmc_model and spi_model strings are allocated via g_strdup in
-> property setters but never freed when the machine object is destroyed.
-> 
-> Fixes: 9820e52fbef7 ("hw/arm/aspeed: Add machine properties to define the flash models")
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->   hw/arm/aspeed.c | 9 +++++++++
->   1 file changed, 9 insertions(+)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a3db3406c5f..a48c4420583 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -419,12 +419,21 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
->       aspeed_machine_class_props_init(oc);
->   }
->   
-> +static void aspeed_machine_instance_finalize(Object *obj)
-> +{
-> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-> +
-> +    g_free(bmc->fmc_model);
-> +    g_free(bmc->spi_model);
-> +}
-> +
->   static const TypeInfo aspeed_machine_types[] = {
->       {
->           .name          = TYPE_ASPEED_MACHINE,
->           .parent        = TYPE_MACHINE,
->           .instance_size = sizeof(AspeedMachineState),
->           .instance_init = aspeed_machine_instance_init,
-> +        .instance_finalize = aspeed_machine_instance_finalize,
->           .class_size    = sizeof(AspeedMachineClass),
->           .class_init    = aspeed_machine_class_init,
->           .abstract      = true,
-> 
+On Thu, 30 Apr 2026 at 17:50, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> On 20.04.2026 09:49, Thomas Huth wrote:
+> > From: Thomas Huth <thuth@redhat.com>
+> >
+> > When writing to this register, QEMU currently aborts:
+> >
+> >   $ echo "readl 0x10000018" | ./qemu-system-arm -audiodev none,id=snd0 \
+> >      -M integratorcp,accel=qtest,audiodev=snd0 -display none -qtest stdio
+> >   [I 0.000000] OPENED
+> >   [R +0.001907] readl 0x10000018
+> >   qemu: hardware error: integratorcm_read: CM_LMBUSCNT
+> >   [...]
+> >   Aborted                    (core dumped)
+> >
+> > This is bad, a guest should ideally never be able to kill QEMU like this.
+> >
+> > Now, according to the "Intergrator/CP User Guide" from:
+> >
+> >   https://developer.arm.com/documentation/dui0159/b/porting-integrator-ap-and-im-pd1/registers
+> >
+> >   "The Integrator/AP CM_LMBUSCNT has been removed."
+> >
+> > That means this register does not seem to be implemented on real CP boards
+> > at all, only for older AP boards. Thus it should be fine if we simply
+> > ignore this register in QEMU and handle it like all other unimplemented
+> > registers in the "default" handler of the case statement.
+> >
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3407
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+>
+> Not sure how important it is, but from the bug report it seems this is
+> a real issue which triggers for real use cases
 
+No, it absolutely isn't. It's just somebody who's been pointing
+an LLM at the codebase and asking it to find cases where the
+guest can do things like triggering asserts or aborts. No
+real guest is going to touch this register, because (as the
+commit message notes) it doesn't exist on the real hardware.
+It's a harmless change to pick to stable if you want to, though.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
+-- PMM
 

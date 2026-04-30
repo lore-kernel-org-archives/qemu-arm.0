@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91583FF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D47FF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:39:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wINqk-0004az-JF; Thu, 30 Apr 2026 05:38:26 -0400
+	id 1wINr4-0004xZ-2x; Thu, 30 Apr 2026 05:38:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINqg-0004Y2-NB
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:24 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1wINqq-0004g1-0V
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:32 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINqY-0002Rh-H9
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:20 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-448528f4e69so430590f8f.3
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:13 -0700 (PDT)
+ id 1wINqi-0002Sk-HE
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:31 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-43cf7683a28so463979f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777541892; x=1778146692; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=MmDOEj12GRPvL+JBzfQAUxV+HPwRkzr7BQY5EX/ShUY=;
- b=wkUck88i6LtVge2jomAkivon0GnLwgzpjFNJNs9OdSQwyONdO31siQnLzuUcdXU/Lj
- uaD6WK9MsuQEYrb8Chj2cV7tHnNO+0xziMUiK+/6RPxS2zlwIm3cOqv9Lxms/qB32zdi
- Bb7g9HEEltKin7RQQrZglClB82bDZcM5DHvLqCf+7p0sAtjLHDuqnWFfw3PjGkM3lHEY
- BsSoDyyEew+afBvPWS2S+l9I48MJ1i+djOIs6qDQla1PU7ZSnlW4+goslX2l5OXNbvxE
- FVq+f3oqgFPRl5Ks0zMSqO3g9mOSnxmIsNYQme9OrdLieoDjshKa2536qhujPpf26hf0
- iebg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777541892; x=1778146692;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777541895; x=1778146695; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MmDOEj12GRPvL+JBzfQAUxV+HPwRkzr7BQY5EX/ShUY=;
- b=rvI5lC/45sCewKeOsRqD6HRqhoJ0tPOdmedW23cVK1o7PsEzcJwEaG4gNlaq+rGe4F
- HJD2d4U9jaZoM1UaCTHlTA4I2jB/Yed+wx9LhwOhVtQ9bDSRh6xElsREqEore7qEjveR
- fUy+oFbcdXNiJtlM19I6Wjxa3qq8pHs5G+NECKRUz+kHi4lC+lsMY6oIVpR5XfNMwhw2
- 1624KzZDLhqajeEXjoaz6B9Sfi9vfJZrX4z7g4AjdCpc6xiaR/FzJu5mO6NcHy+5i6En
- 4qWYPD7SSa9foaSaGufV+EvO/NoPhEofFavKT6A3jlfn/XlUORyHsHJVIMDsvTajxse9
- OkWw==
-X-Gm-Message-State: AOJu0Yy1YZXExmkqypLIs6oPjIgkAhMf8bKF5KjcwQFsYtPmcvW1O2RY
- z+baoBglsT9TotrioatuFH8CvR5bc7127l0WSlRq5JRq47pD/Mpxiw4bX4/r5dCOlOU=
-X-Gm-Gg: AeBDieuvvBJY/nD3WltAsoM5s2m0TF6uUj7aTIehGSPpwCljPvHkqhvGMtYvj+ozng4
- zhhZpZXCX7atABJvFQa4RszOITRMF20AJPU/801mB9YOkxsR5Mvtd9BAzW5H5aySkxDCash5yjL
- ldEoV1sIkF7muPS6JBMx7/Du/rYpnRl5TT4fBc1T6Z5rFoKQ7Vg4csZRZkqC2vlu7ak3703WmB8
- EREFL0UoorKYyM3E/SAYBg9jCs2IB8d2wPTqJdQkEaetorAS4j+sLxOnxcR9ZN3O2E1JJPuF9ZG
- 8K74QSdMHSfLVhWFBQMcZtSSz1wj12eeUst5F8mVqbO6HqS3cIJP2lL8rwsBEmDShCWWF+ViEBT
- mo3SXRJdyXU4KdkQGcvTx/6vpe+RLs5O6nU20fPiReluK3nZ5SH+9cPquGWT8cCGcTTc+7g2mTf
- OIE8LUWRaK6kww+RAM+UdisoYV7kqfQeePPA69W8LR4AGDcn42RKgrR4w7SHHCfsnv/yYdWoeO2
- 40mZRoomBmfYOfkGGmI+G2ZfLSXIvvmzTPLz/Gk79wxQT9Owabh
-X-Received: by 2002:a05:6000:40c9:b0:43d:9bb5:bda5 with SMTP id
- ffacd0b85a97d-4493ee4d4c5mr3067189f8f.40.1777541891983; 
- Thu, 30 Apr 2026 02:38:11 -0700 (PDT)
+ bh=WbM3cM2bDzJO93KlH0zKhh0sYblzAm78jBIigZVtZpY=;
+ b=cnpgdseOmEmem2a4jVGY6WNxdMGRES52bT2c4AKy582VMgCcSYclXF7cBgKqzJNfj8
+ Onbu0CqFZvD/bJNC0Er+v5PQ8AfvlqYXwFjaZcwL7NG64qlSkCbpowHD39XY+HX60r6w
+ anVJdeAaMukWKXwajyprueMEFyvpvztrHjI2HTZgRRdOS5bBVcV7PmJOOd21XrnK7GcP
+ ke5N7gSOd0cHz5LlDL0wsDmGVxYmxDxpm9wUEgX9exxkNgxRb0WDTAs1NvyRN+cwgsbm
+ 6b05pS0AdkI1IH+zfVlXjI3sI9vxvLZHCztfOZtDSgPmCuQABS2b5ZW76h+FUbUL37D1
+ Drsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777541895; x=1778146695;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=WbM3cM2bDzJO93KlH0zKhh0sYblzAm78jBIigZVtZpY=;
+ b=q7RWZAn2ETrPTR0cVQW8n+QirN/keQVYJcUl9aBFCl0UKGufweK/XcnjwXCW5wyCsH
+ RxbgV5GLQjDob+bYvH8QBDDHWrsBaMNu5PMmz8B5EYqaVz3YdcOAvQID9DUBMrlMsKtb
+ +Cbq4eETUzQIjd0MtqVO2pH7QEdQ9ETr1uCFyAg+qf5i3WxtZOhrd9/+IMRpZCmbDHoK
+ kMuKHv2N5CgJiHm7+XoTuSRHMCSvWA5hYCUWbyf5Ub6Ed9BZRA0LA5rAgCVsFTB8CQHk
+ Jmv/1g5Pf97fVOikKOF2fDOHE1atHmhHQ/EJWdlRQtnE1XCOTNgGb+aw9vqjreEcxY0w
+ 4H5Q==
+X-Gm-Message-State: AOJu0YzelC9Ggeek3stKi7y9IYTvxnVgODEEioY1U/NX/Eai5atRIEtK
+ JBeXn+x8fSy86008tZEO/Xx7HxBYFLxlA1CopWzAI2cLZgJaH1xGWF4vvoMmGV0lM30=
+X-Gm-Gg: AeBDievTipdc1aPT0d07AJQ4gB2SP5Pd0AOfC/WONaaAViboo56GexEEl61rMG2F2SN
+ lQd6tZ4Dc3Ihhi1pAJa0G7SRq+B2ITeqFLVSxlqrzyhgcIrB8tdwzpi1Cq9sd+DyC463tPVCZx9
+ V6IZRRMxZqkjbL2Wx3QH7vHpIihTVjCBRYqPqrx2FeACJszxApy0LE2JfwH4rNFGQpHL1go/Ggh
+ Bw/zPRmmkwv07MfsI65StpS/uSDFkdXwnsIhDOPgomal/T3flznyBCGQIyKnE8xxMDsRpmPMnOO
+ jJGkbTid4qjwcGJv13/SzxmB+Ts2ihyP9G2flQz/8UP4wYsgANarZ+5oOTmWs4yyTguqPha3gIk
+ OBZtXosec5nQdao/FKfdNMg1LUHkt9xTyv7qvGgEYs/5r8HasajslQCAOa100EfK/OkIWH4ACdn
+ WDWzwp6x2WFT9ZiLj/rkHU0yfiNLU9WHAq4XnKL6bahDoaXPC8rewqFA60lURD1MvvVnsDEeIak
+ /8KlaY5JE45p32yqanXCi+qfsHaDyRYfNtkSyubGw==
+X-Received: by 2002:a5d:5f47:0:b0:43e:a70d:763c with SMTP id
+ ffacd0b85a97d-4493f71a4f1mr3482410f8f.42.1777541894561; 
+ Thu, 30 Apr 2026 02:38:14 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.10
+ ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 02:38:11 -0700 (PDT)
+ Thu, 30 Apr 2026 02:38:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -89,15 +90,18 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  David Hildenbrand <david@kernel.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 00/25] Handle sub-page granularity in cpu_memory_rw_debug()
-Date: Thu, 30 Apr 2026 10:37:45 +0100
-Message-ID: <20260430093810.2762539-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 02/25] target/riscv: Make get_phys_page_debug handle
+ non-page-aligned addrs
+Date: Thu, 30 Apr 2026 10:37:47 +0100
+Message-ID: <20260430093810.2762539-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260430093810.2762539-1-peter.maydell@linaro.org>
+References: <20260430093810.2762539-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,161 +124,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Currently our implementations of SysemuCPUOps::get_phys_page_debug
+and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
+non-page-aligned virtual address and returns the corresponding
+non-page-aligned physical address" and "only returns a page-aligned
+physical address".  This is awkward for callsites, which in practice
+all want the physical address for an arbitrary virtual address and
+have to work around the possibility of getting a page-aligned
+address, and it doesn't account for protection being possibly on a
+sub-page-sized granularity.  We want to standardize on the
+implementation having to handle non-page-aligned addresses.
 
-A while back we added support for targets having memory protection at
-a sub-page granularity in TCG: the target returns a CPUTLBEntryFull
-with a lg_page_size field that tells TCG how big a block of memory the
-translation covers. At the moment we only use this in Arm, for the
-M-profile and R-profile MPU which can set protections on small regions
-of memory.
+The only thing in the riscv implementation that we need to fix
+is the place where we explicitly round the return value down to
+a page boundary before returning it. Drop that.
 
-However, we forgot about cpu_memory_rw_debug(), which still assumes
-that translations cover target-page sized regions. It rounds the input
-virtual address down to a page boundary, translates that, and then
-puts the offset within the page back in again. This causes problems
-for the Arm MPU case, because if the MPU is set up so that the memory
-at the rounded-down address isn't within a valid region then we
-incorrectly conclude that we can't read the memory at the address we
-were actually asked about.
-https://gitlab.com/qemu-project/qemu/-/work_items/3292 is a report of
-this for the semihosting case, but it applies also to general debug
-accesses.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Chao Liu <chao.liu.zevorn@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20260417173105.1648172-2-peter.maydell@linaro.org
+---
+ target/riscv/cpu_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This series fixes this by providing and using a new
-cpu_translate_for_debug() function which takes a non-page-aligned
-virtual address and returns all of:
- - the exact physical address for that virtual address
- - the memory attributes
- - the lg_page_size the translation is valid for
-
-Changes in v2:
- - I noticed that I'd missed that a vapic.c callsite currently relies
-   on the i386 "always return a page-aligned result" behaviour;
-   patch 1 is new and makes it work with both "returns the page
-   address" and "returns the exact adress"
- - fixed a TARGET_PAGE_BITS/TARGET_PAGE_SIZE mixup pointed out
-   in code review
- - in the arm translate_for_debug patch, name a (preexisting) bool
-   variable 'fault' rather than 'ret' to help clarify that it is
-   true-on-failure
- - the last 7 patches are new, and update callers of
-   cpu_get_phys_addr_debug() to use the new cpu_translate_for_debug();
-   this means we can remove cpu_get_phys_addr_debug() and
-   cpu_get_phys_addr_attrs_debug(), so there is only one API
-   now for doing debug virt-to-phys translations
-
-Further cleanup for once this series is accepted:
- - we could convert the 15 targets using get_phys_addr_debug and the
-   two using get_phys_addr_attrs_debug to translate_for_debug, so we
-   only have one CPU method for phys-to-virt translations instead of
-   three
-
-Patches 1, 18, and 19-25 need review.
-
-thanks
--- PMM
-
-Peter Maydell (25):
-  hw/i386/vapic: Cope with non-page-aligned return from
-    cpu_get_phys_page_debug()
-  target/riscv: Make get_phys_page_debug handle non-page-aligned addrs
-  target/alpha: Make get_phys_page_debug handle non-page-aligned addrs
-  target/microblaze: Make get_phys_page_attrs_debug handle
-    non-page-aligned addrs
-  target/sparc: Make get_phys_page_debug handle non-page-aligned addrs
-  target/x86: Make get_phys_page_attrs_debug handle non-page-aligned
-    addrs
-  target/s390x: Make get_phys_page_debug handle non-page-aligned addrs
-  target/ppc: Make get_phys_page_debug handle non-page-aligned addrs
-  target: Rename get_phys_page_debug to get_phys_addr_debug
-  target: Rename cpu_get_phys_page_{,attrs_}debug
-  hw/core: Update docs for get_phys_addr_{attrs_,}debug
-  target/arm: Rename arm_cpu_get_phys_page()
-  monitor: hmp_gva2gpa: Don't page-align cpu_get_phys_addr_debug() arg
-    and return
-  plugins/api.c: Trust cpu_get_phys_addr_debug() return address
-  hw/core: Implement new cpu_translate_for_debug()
-  hw/core: Implement cpu_get_phys_addr_attrs_debug() with
-    cpu_translate_for_debug()
-  target/arm: Implement translate_for_debug
-  system/physmem: Use translate_for_debug() in cpu_memory_rw_debug()
-  hw/i386/vapic.c: Use cpu_translate_for_debug()
-  target/sparc: Use cpu_translate_for_debug()
-  hw/xtensa: Use cpu_translate_for_debug()
-  target/xtensa/xtensa-semi: Use cpu_translate_for_debug()
-  monitor/hmp-cmds: Use cpu_translate_for_debug()
-  plugins/api.c: Use cpu_translate_for_debug()
-  Remove cpu_get_phys_addr_debug() and cpu_get_phys_addr_attrs_debug()
-
- hw/core/cpu-system.c             | 47 ++++++++++++++++++--------------
- hw/i386/vapic.c                  | 13 +++++----
- hw/xtensa/sim.c                  |  6 +++-
- hw/xtensa/xtfpga.c               |  6 +++-
- include/hw/core/cpu.h            | 40 +++++++++++++++------------
- include/hw/core/sysemu-cpu-ops.h | 39 ++++++++++++++++++++++----
- monitor/hmp-cmds.c               |  8 ++----
- plugins/api.c                    |  8 +++---
- system/physmem.c                 | 38 ++++++++++++++++----------
- target/alpha/cpu.c               |  2 +-
- target/alpha/cpu.h               |  2 +-
- target/alpha/helper.c            |  3 +-
- target/arm/cpu.c                 |  2 +-
- target/arm/cpu.h                 |  3 --
- target/arm/internals.h           |  4 +++
- target/arm/ptw.c                 | 39 +++++++++++++++-----------
- target/avr/cpu.c                 |  2 +-
- target/avr/cpu.h                 |  2 +-
- target/avr/helper.c              |  2 +-
- target/hppa/cpu.c                |  2 +-
- target/hppa/cpu.h                |  2 +-
- target/hppa/mem_helper.c         |  2 +-
- target/i386/cpu.c                |  2 +-
- target/i386/cpu.h                |  2 +-
- target/i386/helper.c             |  4 +--
- target/i386/whpx/whpx-all.c      |  2 +-
- target/loongarch/cpu-mmu.h       |  2 +-
- target/loongarch/cpu.c           |  2 +-
- target/loongarch/cpu_helper.c    |  2 +-
- target/m68k/cpu.c                |  2 +-
- target/m68k/cpu.h                |  2 +-
- target/m68k/helper.c             |  2 +-
- target/microblaze/cpu.c          |  2 +-
- target/microblaze/cpu.h          |  2 +-
- target/microblaze/helper.c       | 11 ++++----
- target/mips/cpu.c                |  2 +-
- target/mips/internal.h           |  2 +-
- target/mips/system/physaddr.c    |  2 +-
- target/or1k/cpu.c                |  2 +-
- target/or1k/cpu.h                |  2 +-
- target/or1k/mmu.c                |  2 +-
- target/ppc/cpu.h                 |  2 +-
- target/ppc/cpu_init.c            |  2 +-
- target/ppc/mmu-hash32.c          |  2 +-
- target/ppc/mmu_common.c          |  4 +--
- target/riscv/cpu.c               |  2 +-
- target/riscv/cpu.h               |  2 +-
- target/riscv/cpu_helper.c        |  4 +--
- target/rx/cpu.c                  |  2 +-
- target/rx/cpu.h                  |  2 +-
- target/rx/helper.c               |  2 +-
- target/s390x/cpu-system.c        |  2 +-
- target/s390x/helper.c            | 20 ++++----------
- target/s390x/s390x-internal.h    |  1 -
- target/sh4/cpu.c                 |  2 +-
- target/sh4/cpu.h                 |  2 +-
- target/sh4/helper.c              |  2 +-
- target/sparc/cpu.c               |  2 +-
- target/sparc/cpu.h               |  2 +-
- target/sparc/mmu_helper.c        | 23 ++++++++++++----
- target/tricore/cpu.c             |  2 +-
- target/tricore/cpu.h             |  2 +-
- target/tricore/helper.c          |  2 +-
- target/xtensa/cpu.c              |  2 +-
- target/xtensa/cpu.h              |  2 +-
- target/xtensa/mmu_helper.c       |  2 +-
- target/xtensa/xtensa-semi.c      |  9 ++++--
- 67 files changed, 246 insertions(+), 176 deletions(-)
-
+diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+index dd6c861a90..475e9cfd57 100644
+--- a/target/riscv/cpu_helper.c
++++ b/target/riscv/cpu_helper.c
+@@ -1677,7 +1677,7 @@ hwaddr riscv_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+         }
+     }
+ 
+-    return phys_addr & TARGET_PAGE_MASK;
++    return phys_addr;
+ }
+ 
+ void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
 -- 
 2.43.0
 

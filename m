@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B7C5CD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 18:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA8ECD13D3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 18:27:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIW6Z-0006nt-NN; Thu, 30 Apr 2026 14:27:19 -0400
+	id 1wIW6Z-0006oD-WE; Thu, 30 Apr 2026 14:27:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wIW61-0006XZ-Sh
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 14:26:49 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1wIW5o-0006Wn-QD
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 14:26:41 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <matyas.bobek@gmail.com>)
- id 1wIW5i-0005Uo-37
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 14:26:29 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-43fe608cb92so786534f8f.2
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 11:26:25 -0700 (PDT)
+ id 1wIW5g-0005UV-3g
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 14:26:26 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43eb05b1875so720046f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 11:26:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777573584; x=1778178384; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1777573582; x=1778178382; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3dVxY32CjowmtmVFCE73w8gSca6PnatFzVRgmRIRyW8=;
- b=acnyPf0+t86KbP2jZodTrLh9Qr0Q72onw3c2Lixrz2bb3ENzMB+TG/eoh2TWg5nRkq
- XxGWUf+zCQzlovq1De41iT0zXbpnl3v6Q/bovZK2hRVqf3iOg0/N5mZ4wfj6Lu8SyOzj
- wkbYiRnpBa4be9Ufketq6VmPkWP7XZt4ESdtnd6VxRrh3hquzvUp3LvqJy+CC4JgwYwK
- sjvyCko80y1RQ14ZKZD7mPZ38gZ/gHmzaE9DZaPCm2H3kt2U7Rkwon1CtYHEZASlrluC
- R7K0tw0te/PFN6O5MWCsP3AFNS0M59ZF86ieZRQNm2Y4WYayWb81XGe69YdTrJtyakAI
- Az1Q==
+ bh=yU5p0Qal7TIrydfhdgqI7vYB9T5z3NA1ZhtZXwkHHcI=;
+ b=oQgWljS2HKPdMuMavOV+moA0t3a8qbTzrYjnlKmUsJ2oF62RVX+riEYPdsXd5iRhER
+ vc0I/k6Fs9ey1rEctCdnKvCJgd11W5T03O1F9Lc6GSYNptWGI/0Pc/6Pyizt9sqCSfcu
+ rbD7zSrY92sfwUByJjqJJhgX5vxUpCznMPS7BB3YUmJiKGiAKyQdttn/g1TS+TvQ1QE7
+ p1545vzO/EXn6f4A/N+bk1hm8qIJn8Tvf+gyc+o2rFmGaevUIg1lT/ltA+QCdpn7UyP1
+ 5SG5i1Cv3Z8de0eUe5ghmiRkPRLFLnd0+9CnY2jLN1XPEp2TXwGE5C4v+j1BJ465TtIG
+ PMYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777573584; x=1778178384;
+ d=1e100.net; s=20251104; t=1777573582; x=1778178382;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=3dVxY32CjowmtmVFCE73w8gSca6PnatFzVRgmRIRyW8=;
- b=lBBva5kWhKvknNenxjlNx3tY9hVtDC+SSiI+GvrJGHthTsWKD9wlgVF5VQYwhPGgQM
- /S9LSm9SHertivwgp6mRrn16YJLhtkk0BD06IqGRwTh28T6YRjAROV/WVP1xg039OAui
- UE8/taGCOUBopvcQAH1kVrqgOo7tw0EVSNwEkF8Fv5X0VT+fPEvDptROuV4bBkwhlML4
- +QKmHU2o0hX3cwUowTBhOGVwCrtV6C/uLyNpducAI0WCUM1QemtwjKj6kBMGANAGz5If
- mQJtcQ1PMih+87/ruMdu3cjXI/hLLYPxplacp5Fi5yQp8TuiD5IVfONRfizh3OKRCgrq
- 8FhA==
-X-Gm-Message-State: AOJu0YzbuU6CCutFF/f15WSUPD/rD4rfZTGXjIi7zC5WeaxQF853UY4b
- 0CKIzoPOIcLfvE92QqpH0555v1U6pg/rHFj1R4D1RWGJiJZTtgOaNl1G
-X-Gm-Gg: AeBDievYzH46C7/YfpCP5vlbj95QO5Bjx/YN0g+dEBQdObzIr4r6DhdhMYT6cheF7LI
- cawXXg6k3n1HrmYjVQrRfCy4VlCP7vhdY35nhe3qrkoG4JTM9mFOatibCe3MKDU5vuwiPLBp8Ln
- UiTNGRyC6xDmMWHqDs3pMRJYr9cYlueRrSGksgjGVpViq45ozR8oCgdDHRJiODw9Xu6Dh3WL0i2
- Icxyfifq1bw9NZol7fCUgipD2oev3B4PbzWaEConaE9kheT/tJA8beoHTOVdO4fry/WWmAwVXHj
- K9lJXj0JftrBrt0MqrIeIKdxtmuj13DTbTlOvT0GhgyytwYZqh+3/qywmoKRfdtk3cjbd1PK4Zo
- 4yJeeEWe4LyZ6TkUq5D+J4mUCtplLp8O+DASXkid9yxxYOiofogVZb1rnvHljPUMeKDqfRiApTT
- XVhjDhgRYp1MYRbUwpR/hhxBOs6P4Lr3R3OoNRAN6dE3m/6en04xi+JVaH2oEVWLf+
-X-Received: by 2002:a5d:588c:0:b0:43f:dfbc:8c71 with SMTP id
- ffacd0b85a97d-4493e2ba985mr7641432f8f.25.1777573584083; 
- Thu, 30 Apr 2026 11:26:24 -0700 (PDT)
+ bh=yU5p0Qal7TIrydfhdgqI7vYB9T5z3NA1ZhtZXwkHHcI=;
+ b=n8xBaO0Edidsyxo72B2bdFaIu6yeL3N/x6oWYAhYIwXAZfkXq8apJGw5/TrCxLnw2P
+ jC1z6FYzPHdeqYP8kDJJbJt4XHpJIwtc8R6XFcwa48/3ZDcn89maK2HxknonSJQ/ScBx
+ xwfhFUhJn2+cC1nHqFKWSwWPd29ll+Zg5UOXmHbTML6udScl/Q4qvGxgLplJWh6i48Ne
+ 41kNF02LZgcD21R9IxgUyGfecEMY490baV6dNRdJmYxqPSUjWfnFE7e1QaQN7U2K+qAk
+ RBR5h7hx72mik7puhyeAQ1W6CWSMFxdsN6yg8qHremV1zmnRklqx0BPVboRGjhXBDQS0
+ QECg==
+X-Gm-Message-State: AOJu0Ywy9AIAW68WdrH7kXgsIjgLqqZXyLMhOYBUaULsxHRj1CWyC1Xk
+ b0m1plzZ0oEfC0Cre/PXuRlHVkttcmRe1NvU48Xwcq7UuXHavfeesH3y
+X-Gm-Gg: AeBDieuubJfByLr3lNxBWcosB2twJD2ZaCcYbOP+L23mtkQ1Vb0zbIYYwgVttxszPou
+ P4ivT91CXHdqhV6RMJyWb2RcCRHmP0SZsA3WQDqaUb//LFhVQdaTMigZLrOrnI+UVAvO9fzst7z
+ oUFwFbwxWnRVqWM47NpHdgaLRqH9nrKc//+thWrysWdhkmHWUs9eauiL3idhrHolNJo3GREnRf7
+ 0Ql7InOtInXRwJxFmN2pjlxgfHt/wg/aLG8qSsmBMcOk/5cktnk7+J3w42az+fmxzIdpSCf2STr
+ qzYr7479k1npZ8b9gSXcQIbHvLhcDNsocqa0NLUdOv5x0eShJhuMP+zXSGfjj0DNdtOjHAfbUFJ
+ MnFrbI/zHsRiFcLujvrsm9fduJdtm1rjPSDZKoc9nzweb/ra8Pg8ozqVdA57A5yKJetMMX7HZ1+
+ L2U5/e7TfUT2EbvX5IQWK722VLcNpsc9lhc09+YM9Lfh0maWLomuRP0C2oGnSkUcVlUDeSFoBQr
+ YI=
+X-Received: by 2002:a5d:5f89:0:b0:441:1fa5:4577 with SMTP id
+ ffacd0b85a97d-4493f621d07mr7044430f8f.26.1777573581814; 
+ Thu, 30 Apr 2026 11:26:21 -0700 (PDT)
 Received: from acidburn.pod.cvut.cz (acidburn.pod.cvut.cz. [147.32.90.2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b76e5c00sm14674925f8f.25.2026.04.30.11.26.23
+ ffacd0b85a97d-447b76e5c00sm14674925f8f.25.2026.04.30.11.26.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 11:26:23 -0700 (PDT)
+ Thu, 30 Apr 2026 11:26:21 -0700 (PDT)
 From: =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
 To: qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
  Pavel Pisa <pisa@fel.cvut.cz>, Bernhard Beschow <shentey@gmail.com>
@@ -72,17 +73,17 @@ Cc: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
  Nikita Ostrenkov <n.ostrenkov@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Maty=C3=A1=C5=A1=20Bobek?= <matyas.bobek@gmail.com>
-Subject: [PATCH v3 5/7] hw/arm: Plug FlexCAN into FSL_IMX6 and Sabrelite
-Date: Thu, 30 Apr 2026 20:26:07 +0200
-Message-ID: <9e1dbfc5153fa1e952275f3cce30ddb60b423da8.1777571962.git.matyas.bobek@gmail.com>
+Subject: [PATCH v3 3/7] hw/misc/imx6_ccm: Add PLL3 and CAN clock
+Date: Thu, 30 Apr 2026 20:26:05 +0200
+Message-ID: <b59f2d162e0cae19855d3c9d68c2d2197c9497c3.1777571962.git.matyas.bobek@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <cover.1777571962.git.matyas.bobek@gmail.com>
 References: <cover.1777571962.git.matyas.bobek@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=matyas.bobek@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=matyas.bobek@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -105,11 +106,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-FlexcanState is added to the FslIMX6State struct like other peripherals.
+Add fixed frequency (480 MHz) PLL3, of which the FlexCAN
+clock is derived, and compute FlexCAN frequency based on
+the divider configuration (CCM_CSCMR2).
 
-Add two new machine properties to Sabrelite machine for linking
-the embedded FlexCAN instances to QEMU CAN buses by name.
-No other machine uses FslIMX6State.
+The clock frequency will be used for computing timestamps
+in FlexCAN emulator.
 
 Signed-off-by: Matyáš Bobek <matyas.bobek@gmail.com>
 Signed-off-by: Pavel Pisa <pisa@fel.cvut.cz>
@@ -117,178 +119,106 @@ Tested-by: Pavel Pisa <pisa@fel.cvut.cz>
 Reviewed-by: Bernhard Beschow <shentey@gmail.com>
 Reviewed-by: Pavel Pisa <pisa@fel.cvut.cz>
 ---
- hw/arm/Kconfig            |  1 +
- hw/arm/fsl-imx6.c         | 29 +++++++++++++++++++++++++++++
- hw/arm/sabrelite.c        | 24 ++++++++++++++++++++++++
- include/hw/arm/fsl-imx6.h |  6 ++++++
- 4 files changed, 60 insertions(+)
+ hw/misc/imx6_ccm.c         | 24 ++++++++++++++++++++++++
+ hw/misc/trace-events       |  2 ++
+ include/hw/misc/imx6_ccm.h |  4 ++++
+ include/hw/misc/imx_ccm.h  |  1 +
+ 4 files changed, 31 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index c31752e83a..5bd0d0972e 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -518,6 +518,7 @@ config FSL_IMX6
-     select IMX_FEC
-     select IMX_I2C
-     select IMX_USBPHY
-+    select CAN_FLEXCAN
-     select WDT_IMX2
-     select PL310  # cache controller
-     select PCI_EXPRESS_DESIGNWARE
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index f663ddbf0a..337921d17d 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -90,6 +90,10 @@ static void fsl_imx6_init(Object *obj)
-         snprintf(name, NAME_SIZE, "spi%d", i + 1);
-         object_initialize_child(obj, name, &s->spi[i], TYPE_IMX_SPI);
-     }
-+    for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
-+        snprintf(name, NAME_SIZE, "flexcan%d", i + 1);
-+        object_initialize_child(obj, name, &s->can[i], TYPE_CAN_FLEXCAN);
-+    }
-     for (i = 0; i < FSL_IMX6_NUM_WDTS; i++) {
-         snprintf(name, NAME_SIZE, "wdt%d", i);
-         object_initialize_child(obj, name, &s->wdt[i], TYPE_IMX2_WDT);
-@@ -377,6 +381,27 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(gic, spi_table[i].irq));
-     }
- 
-+    /* Initialize all FLEXCANs */
-+    for (i = 0; i < FSL_IMX6_NUM_CANS; i++) {
-+        static const struct {
-+            hwaddr addr;
-+            unsigned int irq;
-+        } flexcan_table[FSL_IMX6_NUM_CANS] = {
-+            { FSL_IMX6_CAN1_ADDR, FSL_IMX6_FLEXCAN1_IRQ },
-+            { FSL_IMX6_CAN2_ADDR, FSL_IMX6_FLEXCAN2_IRQ },
-+        };
-+
-+        s->can[i].ccm = IMX_CCM(&s->ccm);
-+        object_property_set_link(OBJECT(&s->can[i]), "canbus",
-+                                 OBJECT(s->canbus[i]), &error_abort);
-+
-+        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &error_abort);
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, flexcan_table[i].addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
-+                           qdev_get_gpio_in(gic, flexcan_table[i].irq));
-+    }
-+
-     object_property_set_uint(OBJECT(&s->eth), "phy-num", s->phy_num,
-                              &error_abort);
-     qemu_configure_nic_device(DEVICE(&s->eth), true, NULL);
-@@ -480,6 +505,10 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
- 
- static const Property fsl_imx6_properties[] = {
-     DEFINE_PROP_UINT32("fec-phy-num", FslIMX6State, phy_num, 0),
-+    DEFINE_PROP_LINK("canbus0", FslIMX6State, canbus[0], TYPE_CAN_BUS,
-+                     CanBusState *),
-+    DEFINE_PROP_LINK("canbus1", FslIMX6State, canbus[1], TYPE_CAN_BUS,
-+                     CanBusState *),
- };
- 
- static void fsl_imx6_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 7e036e6388..84bbc2f979 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -24,6 +24,7 @@ struct SabreliteMachineState {
-     MachineState parent_obj;
- 
-     FslIMX6State soc;
-+    CanBusState *canbus[FSL_IMX6_NUM_CANS];
- };
- 
- #define TYPE_SABRELITE_MACHINE MACHINE_TYPE_NAME("sabrelite")
-@@ -64,6 +65,13 @@ static void sabrelite_init(MachineState *machine)
-     /* Ethernet PHY address is 6 */
-     object_property_set_int(OBJECT(&s->soc), "fec-phy-num", 6, &error_fatal);
- 
-+    for (int i = 0; i < FSL_IMX6_NUM_CANS; i++) {
-+        g_autofree char *bus_name = g_strdup_printf("canbus%d", i);
-+
-+        object_property_set_link(OBJECT(&s->soc), bus_name,
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+    }
-+
-     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
-@@ -112,6 +120,21 @@ static void sabrelite_init(MachineState *machine)
-     }
+diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+index a10b67d396..45fdd0d5a8 100644
+--- a/hw/misc/imx6_ccm.c
++++ b/hw/misc/imx6_ccm.c
+@@ -257,6 +257,15 @@ static uint64_t imx6_analog_get_pll2_clk(IMX6CCMState *dev)
+     return freq;
  }
  
-+static void sabrelite_machine_instance_init(Object *obj)
++static uint64_t imx6_analog_get_pll3_clk(IMX6CCMState *dev)
 +{
-+    SabreliteMachineState *s = SABRELITE_MACHINE(obj);
++    uint64_t freq = 480000000;
 +
-+    object_property_add_link(obj, "canbus0", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[0],
-+                             object_property_allow_set_link,
-+                             0);
++    trace_imx6_analog_get_pll3_clk(freq);
 +
-+    object_property_add_link(obj, "canbus1", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[1],
-+                             object_property_allow_set_link,
-+                             0);
++    return freq;
 +}
 +
- static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
+ static uint64_t imx6_analog_get_pll2_pfd0_clk(IMX6CCMState *dev)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -128,6 +151,7 @@ static const TypeInfo sabrelite_machine_init_typeinfo = {
-     .name          = TYPE_SABRELITE_MACHINE,
-     .parent        = TYPE_MACHINE,
-     .class_init    = sabrelite_machine_class_init,
-+    .instance_init = sabrelite_machine_instance_init,
-     .instance_size = sizeof(SabreliteMachineState),
-     .abstract      = false,
-     .interfaces    = arm_machine_interfaces,
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index cddd100dd6..8ea1677e86 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -30,12 +30,14 @@
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/imx_spi.h"
- #include "hw/net/imx_fec.h"
-+#include "hw/net/flexcan.h"
- #include "hw/usb/chipidea.h"
- #include "hw/usb/imx-usb-phy.h"
- #include "hw/pci-host/designware.h"
- #include "hw/core/or-irq.h"
- #include "system/memory.h"
- #include "target/arm/cpu.h"
-+#include "net/can_emu.h"
- #include "qom/object.h"
+     uint64_t freq = 0;
+@@ -344,6 +353,18 @@ static uint64_t imx6_ccm_get_per_clk(IMX6CCMState *dev)
+     return freq;
+ }
  
- #define TYPE_FSL_IMX6 "fsl-imx6"
-@@ -51,6 +53,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6State, FSL_IMX6)
- #define FSL_IMX6_NUM_WDTS 2
- #define FSL_IMX6_NUM_USB_PHYS 2
- #define FSL_IMX6_NUM_USBS 4
-+#define FSL_IMX6_NUM_CANS 2
- 
- struct FslIMX6State {
-     /*< private >*/
-@@ -73,6 +76,7 @@ struct FslIMX6State {
-     IMXUSBPHYState     usbphy[FSL_IMX6_NUM_USB_PHYS];
-     ChipideaState      usb[FSL_IMX6_NUM_USBS];
-     IMXFECState        eth;
-+    FlexcanState       can[FSL_IMX6_NUM_CANS];
-     DesignwarePCIEHost pcie;
-     OrIRQState         pcie4_msi_irq;
-     MemoryRegion       rom;
-@@ -80,6 +84,8 @@ struct FslIMX6State {
-     MemoryRegion       ocram;
-     MemoryRegion       ocram_alias;
-     uint32_t           phy_num;
++static uint64_t imx6_ccm_get_can_clk(IMX6CCMState *dev)
++{
++    uint64_t freq = 0;
 +
-+    CanBusState       *canbus[FSL_IMX6_NUM_CANS];
- };
++    freq = imx6_analog_get_pll3_clk(dev) / 8;
++    freq /= (1 + EXTRACT(dev->ccm[CCM_CSCMR2], CAN_CLK_PODF));
++
++    trace_imx6_ccm_get_can_clk(freq);
++
++    return freq;
++}
++
+ static uint32_t imx6_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+ {
+     uint32_t freq = 0;
+@@ -358,6 +379,9 @@ static uint32_t imx6_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+     case CLK_IPG_HIGH:
+         freq = imx6_ccm_get_per_clk(s);
+         break;
++    case CLK_CAN:
++        freq = imx6_ccm_get_can_clk(s);
++        break;
+     case CLK_32k:
+         freq = CKIL_FREQ;
+         break;
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index b88accc437..99910fc068 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -242,11 +242,13 @@ imx6_analog_get_periph_clk(uint32_t freq) "freq = %u Hz"
+ imx6_analog_get_pll2_clk(uint32_t freq) "freq = %u Hz"
+ imx6_analog_get_pll2_pfd0_clk(uint32_t freq) "freq = %u Hz"
+ imx6_analog_get_pll2_pfd2_clk(uint32_t freq) "freq = %u Hz"
++imx6_analog_get_pll3_clk(uint32_t freq) "freq = %u Hz"
+ imx6_analog_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
+ imx6_analog_write(const char *reg, uint32_t value) "reg[%s] <= 0x%" PRIx32
+ imx6_ccm_get_ahb_clk(uint32_t freq) "freq = %u Hz"
+ imx6_ccm_get_ipg_clk(uint32_t freq) "freq = %u Hz"
+ imx6_ccm_get_per_clk(uint32_t freq) "freq = %u Hz"
++imx6_ccm_get_can_clk(uint32_t freq) "freq = %u Hz"
+ imx6_ccm_get_clock_frequency(unsigned clock, uint32_t freq) "(Clock = %d) = %u"
+ imx6_ccm_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
+ imx6_ccm_reset(void) ""
+diff --git a/include/hw/misc/imx6_ccm.h b/include/hw/misc/imx6_ccm.h
+index ccf46d7353..a54b940686 100644
+--- a/include/hw/misc/imx6_ccm.h
++++ b/include/hw/misc/imx6_ccm.h
+@@ -164,6 +164,10 @@
+ #define PERCLK_PODF_SHIFT        (0)
+ #define PERCLK_PODF_LENGTH       (6)
  
++/* CCM_CSCMR2 */
++#define CAN_CLK_PODF_SHIFT       (2)
++#define CAN_CLK_PODF_LENGTH      (6)
++
+ /* CCM_ANALOG_PFD_528 */
+ #define PFD0_FRAC_SHIFT          (0)
+ #define PFD0_FRAC_LENGTH         (6)
+diff --git a/include/hw/misc/imx_ccm.h b/include/hw/misc/imx_ccm.h
+index c4212d04ea..6839716ea3 100644
+--- a/include/hw/misc/imx_ccm.h
++++ b/include/hw/misc/imx_ccm.h
+@@ -46,6 +46,7 @@ typedef enum  {
+     CLK_EXT,
+     CLK_HIGH_DIV,
+     CLK_HIGH,
++    CLK_CAN,
+ } IMXClk;
  
+ struct IMXCCMClass {
 -- 
 2.53.0
 

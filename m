@@ -4,104 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D23CFF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:46:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A823CCFA13
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:47:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIOu3-0001gg-IS; Thu, 30 Apr 2026 06:45:55 -0400
+	id 1wIOt7-0008Mb-7t; Thu, 30 Apr 2026 06:44:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIOu2-0001Vk-0e
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:45:54 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wIOsy-0008Gl-SK
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:49 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIOu0-0005kh-H0
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:45:53 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-7bb0d18c7f9so7978677b3.0
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:45:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777545951; cv=none;
- d=google.com; s=arc-20240605;
- b=P+191CTvrrwO1wABzPuSsUux1vi2tQ1xvzH4WURdMSvFIuDvuuuUbcpU0L07Vhy1qd
- KKoYBgv5yrhfrRUC41MaUEzyGe9XTsWMg1iqrfR4DXMWqeNGElya12TROZJs9lwuVtG4
- qyJllXEr9hpxizQgsN0/mczOKz2ReRLqyIlLsgjNGwh4aK6JFQ4bIn0KxlWkXzAAfSV0
- 8tyXSuwOL4RSgI7msd9aRgFwOxJlNPO2XWDPzcS/SsIMkSKrLnrOOA1Yr+ZfoMoXxUMo
- h2XzTlzE23s9mkGZ66SIH9ZpLzbPFXy1+Y3PSk8jXyOPXECVPAYd/s5Uta3UmvHcf7XG
- jb1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
- fh=+qC5O8rA++MRXW1VhIpFZ2ZVHgzYJeiVRjde1+dPNgk=;
- b=D0PCbQYw3fVQHAiv9K0Oi3YZpUzGqDRVggvrd1ypYvV9Pxz2qIyKzM9J4GS1wyCETn
- M4U6r+RhFTSBxBs3K+Mw1n9TeeSMk0QAt1CeGhhdeAa56jMMlGEy8Vy9YfMhmfszVvrY
- sjbg93E89Ufm9aT25rqYIfCjUDIrWQsKmRLV1J22ID/fGSGbtO60HQaQQkpeQHGY+pdz
- com2av20j8fpqcpjaMGjK3J00XOvLVGuIFON9dogzixChsOBkPHp+CAxLOeAHL70AGIY
- Ly1OUNaeMNuL+6rpInH70SraxzHGUuFqZxt11gX3bKvlAnQRLs5IQ16WVPb18JH6t7eK
- EBXQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wIOsu-0005LB-F0
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:48 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-488af96f6b2so10110095e9.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:44:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777545951; x=1778150751; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
- b=ZGrEWOvcWxevGpL8LuBKhYBuFpoedPXj+U5YibHsiv6U3ZiVOiTnreIPKodovoZJZ7
- thbxRqIKhpO8vHtTlJ0dAKKQUh6Gx+I5mUIC9pGokOxxheWRZZwBO/Sx/awmyYdiUJJ+
- EYe03IOm8QoHkaDhQ23Y3l6jhlrswDTgfsC4KNjkq4N3JfbAXV1EFbXSgywGMAMsmew4
- Yrmy68qqNR+4p9FBYdLJghA4LFfeCxQgGJGwxUSiJhEo4I7wX9ak2++DWvWN03Ov6zeV
- Y4aQW4iuF826AOFYm4zFgcAzf9KKd7fkDsu2H91iOgHg19S3OQIrIDWQfSeyah81Z8XU
- 1k9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777545951; x=1778150751;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777545881; x=1778150681; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
- b=XgZtHN7oybHMORjwDYagPIr7SxNaRXQvHdcZa7+gkC9PgqMxBKYCW7UFaWk6GGqqkS
- n+Tj3TpfUtadvl91muzt/8MBWaYmVqcr2bUsFvWBB6NNa9ivq01bPPQCWDhgWpT96MKg
- jpqikq/f33bYQa4QmrjueaLpgOkjB7m81Kq86XZak7FyXPyWyXMxTR4YXm0p66FOcqyX
- FbMDH1xfPjBHFgSEBmc/bd/aVnc7n2x0mR73FVSSPc6XREYZM1PiasL1vlOgNZ66Uawb
- kySrBpbBun0SEu2InB+pPafuh0XZBkuVopvDoLsGfPZCd2Bo6db+1lmxctVZ5yPC/VjZ
- uOHg==
+ bh=IcPSBiwzrF8PlqagZ+bzBqOtmIa2hTG8ka0zp0wOeJQ=;
+ b=DsfR6PUzNJ8BWzigpIAZjf1xA7tNoZELc2oceB618l5Em9IP9AK2Y/1hxVKry8r6V1
+ ZYYF9QES1wVz68R+vgaipJy4d0hfxh9O4oFZ3ok9NyG3xwx4j2pWodQDGKAi2/xVN5oS
+ oX8STPHa+s+r5HQ/GhgH9V7VHzkUuxecseLltYBe+tPWTSzFCn6How2iGg35jGxaO1yP
+ ilQwB5Jq1c6IwHRMA5JxDNa+lwS4TLxjtTKmSx3+ygR7fT4nzk9N7Ez9+Hid70EZpXzC
+ QaQMzecuDvvp7e/pI49xZ1pnhSvle9ttujTNKq2xxnDCIiodC+bO5fJgcKCsKWH3Zuwo
+ S9tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777545881; x=1778150681;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=IcPSBiwzrF8PlqagZ+bzBqOtmIa2hTG8ka0zp0wOeJQ=;
+ b=MRwCZHwURqJ6O5qItk0jd2NWCPwHG6NwY537p+PfGPB14ktXRHNPxPUh5frdQ5mpHH
+ +OXK5JNlv9trsXMlevXAb+amxPrtCeFIUP4gFpm6mVRTBVOUgqNryDTiMUADfHglupXl
+ DpxGNx5MyK8GwdK6z6UuOqYwjVfzZpAqHP5Css7ZF+ZTzmxf8UuXyhuQw85g1ZjJbkMx
+ w1vq35DCboaSCaXHn+j6g7ktT/jqarsxIiayriMCF4IT1MGYsjb6LfA2QbFqp3d+0Xvh
+ 7+ndl034eCGoabxtmQdJhOgLFPt20Wcnz0UViyYWMP/nmXlOS1xKCq5SCG2Ficumqwyu
+ X9TA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9Th9CS7D8DbURgjtGPLjrye+f1fmLnfYMUt02estpe0gx7ltbzsNKMAFFeuXh6SP8FB/GoWxzIOw==@nongnu.org
-X-Gm-Message-State: AOJu0YxTfJs3Okz6gBudsy64YmlVV5HexT4TLEPyf5Fr3k0lMPNOrRfV
- 7COphsVhlh3H2GvhH8Rb6B3gS5igF3iGbi5MNhQ7Q9Zh+c+XBwN4M/rAJAlYZjHRYzig6XkuEXq
- T1lD+TnN4eXLXt/QfHsViL42S81G8sAAvNq4zMUVYGQ==
-X-Gm-Gg: AeBDietr6z5CsA5l9ohhi7SwDKTlZFtPHT3q1ZuuAisQiSPLvlZsI8wsf01izJhkapm
- u8UFV+PBeEXAM+8dQWVTSjVDx8TyUenJhSsaQXZd+Vvt8w5s2oEWkMbqbKdWo01K6p4egAv5qWw
- 2bApb0NYS7pkLwmRIl/Hyy7rOEe5sclgsdm8DEK97SPTJQ5uM90UvHB/rpJyU8Nd+TuGp32uDHL
- chDGEsxH0TQ5hOiiJ9NqBlA/MTVrWRQXaxaQUjdQ0pqN13N618tPVogGfhdrtKttnwTFdDQf9Yy
- pyZw9iMIR+Gr2gBS0SYV+DpyLooxjmtSarj2yRcFO/ftN8AOZouxfaskx3/HAsK5ROMpm/g5Rlu
- bGA==
-X-Received: by 2002:a05:690c:dc8:b0:79f:b903:88be with SMTP id
- 00721157ae682-7bd5286ec35mr24805137b3.16.1777545951020; Thu, 30 Apr 2026
- 03:45:51 -0700 (PDT)
+ AFNElJ8wDrJfqtdmxVAWY5en+wpa+rqoCSIafKPE7aoUg8BTf+F66uR6m6V/SnMLZ7HnljQh0phwPGZ75A==@nongnu.org
+X-Gm-Message-State: AOJu0Yxk/SgVb3idz5PUdcSD0ZijbgPWUfpyoTTcFL6z/8o/RZ/jSh56
+ 9DzHbJrh5bUkYSPTMUcPcPXXfNcF/IoK6J3c6ZB42OqI+i+s2R+7ekWFJApJ8TB3oNE=
+X-Gm-Gg: AeBDies1Zv7H/gfFcJamuXvvvLB3LDqJiOrWhQ+DChDqwBL3grjFFSEvNk8XoXgTc8o
+ rU4Y4IYLM1F7t9inebV5faqM/kEWfEl/LmiaPzQ0bnFrY5jlsMWZ+JMgjZOraDVDXUl/WJhMRiN
+ Ec/pRPm8g711A8SnQcoGnyZb5bFLQkVpHP6SDqeIFnkPYIZuw4xfgOENnyME97TxeZ7M9yXQsSO
+ NA3F75igqV0SB5DUTAHk7st1PVogSakWt5OctZvJKsHiioNj++oZx21e07qI5vTx79Ttzc5VyRS
+ LE3rcX4t2oNy1ZmEp7DwrCcnBDeyUngCdO0viwVwUT7AUSguMuFCIk9Zw06cYAbt9633QzoptCe
+ NGHlh1Gn3Lr5egKdlXp5lLCnqzRm73gjm1WbldVCq3NUxy0Sm2Wsj6L0QMHcVyusPb1WndKCbMJ
+ pvVza1jVsmORTt9iJFpIuL04S3i/8vXUj0Ng==
+X-Received: by 2002:a05:600c:3e10:b0:488:bc6a:528d with SMTP id
+ 5b1f17b1804b1-48a844721d9mr41943205e9.22.1777545880894; 
+ Thu, 30 Apr 2026 03:44:40 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a7c31c6ddsm39447895e9.27.2026.04.30.03.44.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Apr 2026 03:44:38 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 64EE35F944;
+ Thu, 30 Apr 2026 11:44:35 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v4 6/7] target/arm: handle the WFE trap case
+Date: Thu, 30 Apr 2026 11:44:33 +0100
+Message-ID: <20260430104434.1482407-7-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260430104434.1482407-1-alex.bennee@linaro.org>
+References: <20260430104434.1482407-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20260409035015.132370-1-richard.henderson@linaro.org>
-In-Reply-To: <20260409035015.132370-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 11:45:39 +0100
-X-Gm-Features: AVHnY4IYbt_Y4eG0oHQudzG_zLHAvsPw9rSRj-bEwJ6YRJpT3_MD5jjAzA_UR1U
-Message-ID: <CAFEAcA-mEC7feX5r=W_bvawe-sFdO=8neP8V4-hvYHFYkugeZg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/7] target/arm: Remove bswap_code
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pierrick.bouvier@linaro.org, 
- philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,29 +109,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Apr 2026 at 04:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Based-on: 20260407222208.271838-1-pierrick.bouvier@linaro.org
-> ("[PATCH v11 00/21] target/arm: single-binary")
->
-> Version 2 here should probably be RFC.  This time around, all
-> instruction loading, and more decode, is done by translate.
-> A new CPUARMState field is added for passing data to EXCP_SWI
-> and EXCP_NWFPE.
->
->
-> r~
->
->
-> Richard Henderson (7):
->   linux-user/arm: Restrict regpairs_aligned
->   target/arm: Only define aarch64_untagged_addr for aarch64
->   target/arm: Segregate target-specific user-only fields
+Now WFE can actually suspend on A-profile we also need to handle when
+its trapped. To do this we need to pass the instruction size so we can
+deal with the is_16bit syndrome encoding.
 
-I've applied these first 3 patches to target-arm.next, as
-they're good cleanups independent of the bswap_code parts.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/tcg/helper-defs.h   |  2 +-
+ target/arm/tcg/op_helper.c     | 15 ++++++++++++++-
+ target/arm/tcg/translate-a64.c |  2 +-
+ target/arm/tcg/translate.c     |  2 +-
+ 4 files changed, 17 insertions(+), 4 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
+index a05f2258f29..ebdf09be38a 100644
+--- a/target/arm/tcg/helper-defs.h
++++ b/target/arm/tcg/helper-defs.h
+@@ -54,7 +54,7 @@ DEF_HELPER_2(exception_swstep, noreturn, env, i32)
+ DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
+ DEF_HELPER_1(setend, void, env)
+ DEF_HELPER_2(wfi, void, env, i32)
+-DEF_HELPER_1(wfe, void, env)
++DEF_HELPER_2(wfe, void, env, i32)
+ DEF_HELPER_2(wfit, void, env, i32)
+ DEF_HELPER_1(yield, void, env)
+ DEF_HELPER_1(pre_hvc, void, env)
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index d0f45522b05..77ac6161e93 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -574,7 +574,7 @@ static int64_t gt_calc_next_event_stream(CPUARMState *env)
+ }
+ #endif
+ 
+-void HELPER(wfe)(CPUARMState *env)
++void HELPER(wfe)(CPUARMState *env, uint32_t insn_len)
+ {
+ #ifdef CONFIG_USER_ONLY
+     /*
+@@ -592,12 +592,25 @@ void HELPER(wfe)(CPUARMState *env)
+      */
+     CPUState *cs = env_cpu(env);
+     ARMCPU *cpu = ARM_CPU(cs);
++    uint32_t excp;
++    int target_el = check_wfx_trap(env, true, &excp);
+ 
+     if (env->event_register) {
+         env->event_register = false;
+         return;
+     }
+ 
++    /* We might sleep, so now we check to see if we should trap */
++    if (target_el) {
++        if (env->aarch64) {
++            env->pc -= insn_len;
++        } else {
++            env->regs[15] -= insn_len;
++        }
++        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false, WFE, insn_len == 2),
++                        target_el);
++    }
++
+     /*
+      * If the CPU has entered the exclusive region we could sleep
+      * until the global monitor moves from Exclusive to Open Access.
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 8b97136e78b..a6f392a28f8 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -10938,7 +10938,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+          */
+         case DISAS_WFE:
+             gen_a64_update_pc(dc, 4);
+-            gen_helper_wfe(tcg_env);
++            gen_helper_wfe(tcg_env, tcg_constant_i32(4));
+             tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_WFI:
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 3ab49887ce6..686980b58e3 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -6836,7 +6836,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_WFE:
+-            gen_helper_wfe(tcg_env);
++            gen_helper_wfe(tcg_env, tcg_constant_i32(curr_insn_len(dc)));
+             /*
+              * The helper can return if the event register is set, so we
+              * must go back to the main loop to check for events.
+-- 
+2.47.3
+
 

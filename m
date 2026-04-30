@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A5FCFF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2F1CCFA13
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:46:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wINrI-0005Rx-Mc; Thu, 30 Apr 2026 05:39:00 -0400
+	id 1wINr2-0004uJ-F1; Thu, 30 Apr 2026 05:38:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINrC-0005BZ-2o
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:54 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1wINqo-0004fA-V4
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:31 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINqy-0002mT-8S
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:53 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-43d76dd4ee8so575071f8f.2
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:39 -0700 (PDT)
+ id 1wINqi-0002Te-HT
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:30 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-43d73352cf2so612043f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777541918; x=1778146718; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777541897; x=1778146697; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WDQ7la2K8WbK8u2/23ch5pBkMkaDcwKmzot+lA8IzKQ=;
- b=pdNILHMJZ7QVh0cmQ6Y6dadwjvmv63QU75CS7bYaPTq8IkSxG9BxEg93lhFBL7+0mh
- zGa8XhGMK+TbUcPplaSDcxOjQ3qt4ENXLid7WNgb8FeHulS9+1jj8jBo+owRLU8xHLtV
- GKDVN8pF847wC5Y1nE9vNuDR8tqgNgAfmgKqpuOcJhlsEiGDozPwlQvTo/+jY0hOOWgd
- r66FXpy5Aw3y3E4+M2dSNCO+03hLUdljAHNYrvD7CsOJrD3ndhnK8289YdWyhBgtXI5u
- CYX4YPkLLzIEcKz5PoEOUqgW6nU/Mx5OYEgzVXBxxcL5qZC17y4g0dEtSprjY2vZKogo
- GEFA==
+ bh=KFFUBwd5+aMPX9c8MeW3RKBPUCvj4D64vvXRmnvq3Ag=;
+ b=wYzPFoAUVZgvi4uNGx7brV4+KhEelIRb5GY/M9EDbdZotK73VFGZQyeAhsNUMhj0bH
+ CkB7t2+4QMUgaEGbYuGu3eR3R+Q+AmiNgPtJcoP4P62B+iBqy9VDPWERholB1SVtLi6G
+ h1dlnjTVJsL7kY5J5+fby4Ha7zJy0sS7oPTjcIijShZ/j/cwNcX7gkLdBhMO510HxBS3
+ I5oAJBvNHkIkpHRpGn9iN4tuoqIgaVMvt+sUeQr8rTtm6dMz+oFajiF0nNJqky6Lbg0v
+ efJ9IgPUFbq4dtmrAZ5DRZ0kP2GLtty7TZUM4YSXqlwmkasYvh0f05M7XDjhAy6NLyJL
+ iK7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777541918; x=1778146718;
+ d=1e100.net; s=20251104; t=1777541897; x=1778146697;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=WDQ7la2K8WbK8u2/23ch5pBkMkaDcwKmzot+lA8IzKQ=;
- b=KMc3n6Kmhqy4ykaC+sXBTYgJQpLOY5g8kvwHtFbX1RDCNne0O3knDh10SQ7bRolESj
- Z4iYyIQaoycJrDi4JIQq5/1yVAF6rK/SERNFNr45QoCkiig6mHueLOZC1FJWRypisA8R
- NwP7SetDPhjlrBVvQXjXsGoJauwLQuKLGWTMzbK8DrUefyoMsvSSyjx9Q6v889u3WGVp
- 7NnWw8KJBMGp+oHchsyPcvaoYC977GH+b7YdtH8da8pfOF9T1WaC5ektCMe++/yMXFtK
- mYG2i6HQh9fjE6E+yzGxTmDiF5XQachPIPeLQZd9SgFUCta0kXbRCVB3+skCdXv1DXCS
- 66sw==
-X-Gm-Message-State: AOJu0YyJHS2PCy3xtBBiuSXo0RpfZ71R90JXCpbICJXevRwNd8B8syj2
- 92NN9/YIhGnIjaSJV5pX0d4c2u4MNUoA6QBrjb5pY6st3MqGri1gD8cWHCnW8EbqFCfoeP84Wqu
- ++QFe
-X-Gm-Gg: AeBDieuLPkOPAWfty3qoIqXMCVij+V2zBizi8mrNEj5+t13ChLS6EsbbhkRNw+3P+xo
- FsTrj44Ds4RSjjaYL1P+IQoZBbyslcdaHqS6RgK7XDfssay/LGpPkXhtze2xancH728EsJepgxY
- +tEGgTKDk0AbYdHjSKxpzd4QrLMQFiTwzydDtukCmSagIitrVehigZuL2dh6yVp6/eSjewqixyi
- LheN19hJ8XA1aHuomtihoPpT2cPERN9L0nkf60kb6DnJRwEc43c07ir1ufzk5fcAaFTOI+gl/v8
- sL2fi6+qJtv8eamkwuXYWYokAZQ7XFtsPyGvfy/2vkYWMGLgA2h4SghLfdz/ApwIeJsjqwTd4cx
- MylWWhdsoxRe1/xaLip8JQ3Yt2XGNu8R5+tAx5SJRgPUaAYaigadNANh6q0PogWIF2Iv8rk10qm
- AMcduXVZZ6behn2jGfxtYhPnzRS34vA0UNIXvqjRoCyI/JOVDt6mpJ85XnBjISifUJ/R3bj+asT
- OPdRgOEHBCGmJdKu+G7nRnFvUVptgrSjHzbcawbbA==
-X-Received: by 2002:a05:6000:2585:b0:43b:498f:dceb with SMTP id
- ffacd0b85a97d-4493c37ef0cmr3506822f8f.9.1777541917911; 
- Thu, 30 Apr 2026 02:38:37 -0700 (PDT)
+ bh=KFFUBwd5+aMPX9c8MeW3RKBPUCvj4D64vvXRmnvq3Ag=;
+ b=j89JTXiogQw64yd1Rl7Pv/24vx1JwxzgCJ7pF7bwc1tBtP/FaAAlaxPiX5aiaxqwfs
+ RRAQYLsJW+a6YZcXiDzSU0ujFGvBzR2xoT45xAOCmTSqwKhC8POyCSizU+tblXAYdxPl
+ KNGV6h43jrJI1FhJp5g8w2PCkzv1VaWM37p+TlEcJ3F1oUDBkWhz3Szeyz1AnpAnE3OB
+ b6uybHHxCJzChfy2luY81Mx6cHrVJRyWOrBOv7GTqpTs8lohmCKbTF6N2CoXzq0rqyBG
+ XBFbJISU+u2pRlpK1BGSPc7qw7Is9zUvOd0upDGGkiBBQO3CnksQOoin16BDdhmP9Dgw
+ 1vRA==
+X-Gm-Message-State: AOJu0Yw/ii/ShYqSOa2PoE1C1iqZdZD+zf4TncoQH3a01PzL7A6+SC+P
+ SqRL0yHS5x4H5i1ycJnhdL636m7wQoEUtw6Mo35BCuOUxqFAMEV+iPc8FmNGPnsBoeE=
+X-Gm-Gg: AeBDies/d3A1cYeEh5qh2VhJtDPp9sSTK8lLRoWI7Iejm9ukEFFsIi11fhSWG5jCWpy
+ vZ4XObVLnDKi1mKLJ/Mu8gkr3TTEhMj5FVn9bvapvQ1WsY39Sbb8mACk4+5Ky+q7FkBjrd/l/ru
+ viXXIy5C0JHh/CVMbi4f5s9zpdzzLGE/ndesolDrEEZNXfUigHyHHgvTO0LwT2q+4j14z5zKbbZ
+ sd86tGsq/FnE2RzuFNc7Y8R9cmNz8Hsj6U4fxzHyvo5e8UawYd83XwF7JzJK9rpIVn+weuNLbEI
+ /VV9rSI0V5gMYBOdo/60bCcYmmb/oaqL8Pvjb0ZSEDxefonjs7A+jdIvb1GQaWr/4suDeHsBZom
+ xMqrPNSMTzpkbceZG0HdAoxGwWiyZOzQm46sC8jSj2JZGeeDB7FKfbKA5Uf7nPyeSY3Id0tAoL9
+ RWb6v79ss5fS7Akx4zcskYldlHdjIkkyg5bFQL0wCeWT1WA3S/tjuH1IUtr1sQwtG4oERKdYd5A
+ 5e1bAK4IYeKHqMbJspbVpdqKdDopKBSk+mjBaCemw==
+X-Received: by 2002:a05:6000:2681:b0:448:69c0:8da0 with SMTP id
+ ffacd0b85a97d-4493c28a81amr3534235f8f.7.1777541897052; 
+ Thu, 30 Apr 2026 02:38:17 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.36
+ ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 02:38:37 -0700 (PDT)
+ Thu, 30 Apr 2026 02:38:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -91,16 +90,18 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  David Hildenbrand <david@kernel.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 20/25] target/sparc: Use cpu_translate_for_debug()
-Date: Thu, 30 Apr 2026 10:38:05 +0100
-Message-ID: <20260430093810.2762539-21-peter.maydell@linaro.org>
+Subject: [PATCH v2 04/25] target/microblaze: Make get_phys_page_attrs_debug
+ handle non-page-aligned addrs
+Date: Thu, 30 Apr 2026 10:37:49 +0100
+Message-ID: <20260430093810.2762539-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260430093810.2762539-1-peter.maydell@linaro.org>
 References: <20260430093810.2762539-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,66 +124,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We want to remove the cpu_get_phys_addr_debug() function; update the
-sparc dump_mmu() function to use cpu_translate_for_debug() instead.
+Currently our implementations of SysemuCPUOps::get_phys_page_debug
+and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
+non-page-aligned virtual address and returns the corresponding
+non-page-aligned physical address" and "only returns a page-aligned
+physical address".  This is awkward for callsites, which in practice
+all want the physical address for an arbitrary virtual address and
+have to work around the possibility of getting a page-aligned
+address, and it doesn't account for protection being possibly on a
+sub-page-sized granularity.  We want to standardize on the
+implementation having to handle non-page-aligned addresses.
 
-The "mmu_probe succeeds but debug translate fails" cases are probably
-not possible in practice; since cpu_get_phys_addr_debug() would
-return -1 in that situation we make this conversion retain that
-behaviour.
+For microblaze, we just need to remove the explicit rounding down to
+the page boundary that we were doing in
+mb_cpu_get_phys_page_attrs_debug() when calculating the output
+physaddr from the results of the MMU lookup.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-id: 20260417173105.1648172-4-peter.maydell@linaro.org
 ---
- target/sparc/mmu_helper.c | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ target/microblaze/helper.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index e1abd520c4..e441ffb8f7 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -360,26 +360,39 @@ void dump_mmu(CPUSPARCState *env)
-     unsigned int n, m, o;
-     hwaddr pa;
-     uint32_t pde;
-+    TranslateForDebugResult tres;
+diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
+index a1857b7217..da8abe063e 100644
+--- a/target/microblaze/helper.c
++++ b/target/microblaze/helper.c
+@@ -284,7 +284,6 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+                                         MemTxAttrs *attrs)
+ {
+     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
+-    vaddr vaddr;
+     hwaddr paddr = 0;
+     MicroBlazeMMULookup lu;
+     int mmu_idx = cpu_mmu_index(cs, false);
+@@ -297,12 +296,12 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+     if (mmu_idx != MMU_NOMMU_IDX) {
+         hit = mmu_translate(cpu, &lu, addr, 0, 0);
+         if (hit) {
+-            vaddr = addr & TARGET_PAGE_MASK;
+-            paddr = lu.paddr + vaddr - lu.vaddr;
++            paddr = lu.paddr + addr - lu.vaddr;
+         } else
+             paddr = 0; /* ???.  */
+-    } else
+-        paddr = addr & TARGET_PAGE_MASK;
++    } else {
++        paddr = addr;
++    }
  
-     qemu_printf("Root ptr: " HWADDR_FMT_plx ", ctx: %d\n",
-                 (hwaddr)env->mmuregs[1] << 4, env->mmuregs[2]);
-     for (n = 0, va = 0; n < 256; n++, va += 16 * 1024 * 1024) {
-         pde = mmu_probe(env, va, 2);
-         if (pde) {
--            pa = cpu_get_phys_addr_debug(cs, va);
-+            if (!cpu_translate_for_debug(cs, va, &tres)) {
-+                pa = -1;
-+            } else {
-+                pa = tres.physaddr;
-+            }
-             qemu_printf("VA: " TARGET_FMT_lx ", PA: " HWADDR_FMT_plx
-                         " PDE: " TARGET_FMT_lx "\n", va, pa, pde);
-             for (m = 0, va1 = va; m < 64; m++, va1 += 256 * 1024) {
-                 pde = mmu_probe(env, va1, 1);
-                 if (pde) {
--                    pa = cpu_get_phys_addr_debug(cs, va1);
-+                    if (!cpu_translate_for_debug(cs, va1, &tres)) {
-+                        pa = -1;
-+                    } else {
-+                        pa = tres.physaddr;
-+                    }
-                     qemu_printf(" VA: " TARGET_FMT_lx ", PA: "
-                                 HWADDR_FMT_plx " PDE: " TARGET_FMT_lx "\n",
-                                 va1, pa, pde);
-                     for (o = 0, va2 = va1; o < 64; o++, va2 += 4 * 1024) {
-                         pde = mmu_probe(env, va2, 0);
-                         if (pde) {
--                            pa = cpu_get_phys_addr_debug(cs, va2);
-+                            if (!cpu_translate_for_debug(cs, va2, &tres)) {
-+                                pa = -1;
-+                            } else {
-+                                pa = tres.physaddr;
-+                            }
-                             qemu_printf("  VA: " TARGET_FMT_lx ", PA: "
-                                         HWADDR_FMT_plx " PTE: "
-                                         TARGET_FMT_lx "\n",
+     return paddr;
+ }
 -- 
 2.43.0
 

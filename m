@@ -4,85 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA28FF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 00:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E7BCFF887E
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 00:25:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIF9M-0006Ji-Ek; Wed, 29 Apr 2026 20:21:04 -0400
+	id 1wIFDR-000698-3s; Wed, 29 Apr 2026 20:25:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wIF9K-0006IM-4O
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 20:21:02 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wIF9I-00068W-75
- for qemu-arm@nongnu.org; Wed, 29 Apr 2026 20:21:01 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-82f431c0ab6so189391b3a.0
- for <qemu-arm@nongnu.org>; Wed, 29 Apr 2026 17:20:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wIFD1-0005p1-DR
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 20:25:03 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wIFCz-0007Ah-QK
+ for qemu-arm@nongnu.org; Wed, 29 Apr 2026 20:24:51 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 63TNeVB5831469
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 00:24:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 5Kkdc3OQFPGK6WIcxjNrvWLnswrUNrhK1wroj+ZbsJ0=; b=KHRPdymNUHpSeqq3
+ am+Dnq0eD62STgCJlu4xlNTBzEPKDHvL9Lidtqiawl1ZRmzeEd7lexzDx8CUwopm
+ nvYnxaG2AwpTtqNyqB/CVJfTANJCuBoORZ8SWXJazL0KTPfiVa/Onxi0gX3XRM7I
+ bQG0pQRbcyoHA/89P0lNZqq164N1B0dRTeu0MLrpfv3U3XfJdRxSmsjdrB0STY7K
+ vWU8LFqZ7QRoUjOlcgjwhpq42z3Lhk/Ezp8dNlqdc6PpXoPueNO42vZSVT+wqN1T
+ 8ERtq/+XMEhVYqLLh0F+FhcN3nO1wZ5VqZKdx7RBdQHGMFaIlpbmC5eIzjUuyyQZ
+ t+XjBg==
+Received: from mail-dl1-f72.google.com (mail-dl1-f72.google.com [74.125.82.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4duuvb0353-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 00:24:47 +0000 (GMT)
+Received: by mail-dl1-f72.google.com with SMTP id
+ a92af1059eb24-12c20d5d7f4so712179c88.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Apr 2026 17:24:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777508459; x=1778113259; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4YvroQ+OX1f6mxsnmADZcQbu7faHJd4ipBsXfUGJ1g8=;
- b=Y5UEW88NcsolbicbcZDAnZFOMJM9E5Mu080yZeALGdVa/9mq14vsKBRSh48KxrtF7n
- J8hhmtZIQnInLvocs+sPVpUNWDiS45PjwWsJh2rSTmEcrziInujSEAb0hN8mWGtMIXRJ
- mutpaNtk+62FeqH11IrqPl56gJcaTaDBNnkrHHUT2vN81V/OibxDO1z6jZ0HWW91o6x4
- IYKlh7gS7v79F/5mbo09fCPN+PdDRHMWCS7OlzhXNMf3xenVXoi8AbHHvsIcdqwrpSiR
- tsLpaL2CP4J2VGqxCqKP9JKMteY/dEK4su69n2lgpL2GJ19FBX3CDRlaQ8kIpZFFQ5BT
- yIEw==
+ d=oss.qualcomm.com; s=google; t=1777508687; x=1778113487; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5Kkdc3OQFPGK6WIcxjNrvWLnswrUNrhK1wroj+ZbsJ0=;
+ b=HGFunM0QBpI5Tnu4O3x4H4V6fAQPN/gdSfk63z5dpEVzhSdz/dTx40NddNzvLVa5KN
+ n3oIRDu/5vXTb9EA5g8S3/Fmk1NWIoRA62vfU4iqpMVw7rws5faC5Uq0vcInxGNDq1Tg
+ iKH/BJgVt/EMtlCSog870EJnydRajepSJyhIHJSQRPwC0/DqsVsQcIL7BCNtalW4GU5U
+ rygQSFDWshFGyNSyPLnpjetIfa4R6XsWR6M4kz3OUUKl5iRdNG+qZN3l0KwwOZAR0FKB
+ GJHek3uLeaVH0mT5R+b5VHIKDvjfezQOJ0CvdduiWNtcHAUl5CUrdOwah7XLTv9/0Knh
+ hRIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777508459; x=1778113259;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=4YvroQ+OX1f6mxsnmADZcQbu7faHJd4ipBsXfUGJ1g8=;
- b=YELOdv7rsLSPXcm1FY7A5DtuO6putP+FRTi1fPtyL0NIBBkNHYRJ6kQHO+lNCaiLy9
- lWXo0E1/J0Qr8kbND0Tgta0IX2fIq8t3tOgv2FLAHR4RyRMlUz8arqnfxmMEDAflIWBF
- vgFzcg92CAi1rm0ThGHnXw8PW3WEaMlam5kecAjo6VR0Ht826+uC0muJTQYOy0lxBsCw
- +9R1FLgplGkZM+xpT85XMj6kbHcqBzwCIO4p6/cR+RgX790dOm2emqn6CKh3a3DugALc
- Yw/NaTvBwf6RloNCamedPYyGuLOIl8T3ZVg6uVDl2eAqhkn3SVcsc/pKdmm1ps2+7+GR
- gMNg==
-X-Gm-Message-State: AOJu0Ywt2Jx/a8e4QhMIxk/8QHNnLd75v3KAiZ78ZixN5w6V42pZDyGJ
- 5X3ArF843Ds1BG5eAvQcijw9094+fokqEtNVLBHwxA79RBCZUWScJtaslao1wlV3GScXVEfD7og
- 6BON+1NE=
-X-Gm-Gg: AeBDievutUQr08p8+McYgzskwpOR+of8zW9KGJB5DfzOo1WtU4jCw8HQWka7HTdq5nI
- GIGB+1lMf2bQNnNNu7m5nLNN6dDo/ydS/9MVJodGQ6es/qraVdfiVzHlzKlKGpIr0G75qno5ugg
- Iu3eBCWZ9A6FxLauFq1fCF1Rax4N3ThHph/g6xmUZ7R3yQxGEH12NqhyFIGPba9Dx+r6Zh3CtBf
- 8+zSCVySnsvPRjBeGx2b4OH5fgwZrG9qeJ7D/TSFw5k/f5jy7XA/9kwXH7gCOXs5+cHkBdSbslK
- PeYBSy4tdyJqOgP84QaIhOw+65pKBRfzYXpM++NkC8IVzc70tHBaoUiJz1w94dKuTCA5GwmJppK
- hyUBDZ4itBvMrCIHTfH17ba26xi4q9HlrrQchZzhvg2fVf0OJ+StfTw0fvR4ptaE8wQZSUDtHD8
- kbloLsjmTC8GNJfEdHLRsnpAArH5ohTzQSOooMy5g6
-X-Received: by 2002:a05:6a00:2d85:b0:829:8c23:f70e with SMTP id
- d2e1a72fcca58-834fdd5e0cdmr845409b3a.45.1777508458781; 
- Wed, 29 Apr 2026 17:20:58 -0700 (PDT)
-Received: from stoup.. ([180.233.125.15]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-834ed5cd3b8sm3461727b3a.16.2026.04.29.17.20.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Apr 2026 17:20:58 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 03/47] target/arm: Implement FEAT_FAMINMAX for SME
-Date: Thu, 30 Apr 2026 10:20:02 +1000
-Message-ID: <20260430002046.59739-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260430002046.59739-1-richard.henderson@linaro.org>
-References: <20260430002046.59739-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20251104; t=1777508687; x=1778113487;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5Kkdc3OQFPGK6WIcxjNrvWLnswrUNrhK1wroj+ZbsJ0=;
+ b=BHWvTyrMm4nrSoE4Psxk340pe3q4HbCMT1hsldTgb/oztBHp6sTUtE+EVLc0Bm44d3
+ oGrAe/rOelgngdnpUpJ681uvmQK5HrAsYQChRyhES1gN6NtvTSg6DsBerK61Pwc544O0
+ f3serKAYb5rxXD4cuPqdT/BRV5s/drjc2JRNSqYWaSXfvmlCAtYpKXr3YrRynn/jQIfQ
+ z+90jYTBM+7ZYPVIDWCa+tU0Jnog2iGBj4EPMwOQPT2zufgUbWjG4wRv1bq8cWSlbVVK
+ xpgCmZPwjkCd1mwrrHZLW3inM6CtANQXPq8mCTS0hdKr1V8KfNUrV4qgB5TsbZOfdXYC
+ xu0Q==
+X-Gm-Message-State: AOJu0YxkNGm0Dqy0C7q8SWKHBtwi5IPwPE9cHqP/yh4UM92cVND0dfC9
+ ecEyi4uF4w4uT6zQfDQbyyMc2uggAQeGMrKe8d9ED3sswWpKNkEwUrKuBLekmIpQnUIx8G1oRC3
+ OLKVqcKNWqwF4DpckwDTxdwl5vwJIhgyhssTVQgq6Kikmfmrjk5XHsP8=
+X-Gm-Gg: AeBDietocXkfocQiCZBc5lT/StfypIyVL3tJeXDH3ywp/9BnTy9g9SCcubCaGkcCs2w
+ japxOfCzdDO+lBvlpgxyBbezKHBU5EPoXoqtfLzpjm4H3fYOQ4ZgZJj/F/+oCRMX1DQY/ZGCR4y
+ q4Ox+YW6QimUWF4525+/VZk7GqpM9Gw2oW26k7pSr93uLa4Vhmegz9BZcvi3vxo9JEWnTUN+BhS
+ JRhpaIZKICLbEpo8isAoZgJ7rbzVHfnbqQzTLa6ozV37frFeYdNlfhQCKBaWZkfAniWotKh6P/L
+ RKOWeLcZjfwih535inXeuVz/lTpMuNIh3ge6/s1/48mWI+g9fg6eMPpvnbjxLzWkFknsckmp0I1
+ CX3Djh7pErl6slbPAPBAN3p/a019hsAU+Zfq4ZshbXyyT/GeZW+xuyghJZoemSTd64KOWfw1Z5k
+ lucbmuh66Ko1YRD4ZDD+cg9r/v
+X-Received: by 2002:a05:7022:5f1c:b0:12d:ed19:e6a2 with SMTP id
+ a92af1059eb24-12ded19e754mr56834c88.36.1777508686895; 
+ Wed, 29 Apr 2026 17:24:46 -0700 (PDT)
+X-Received: by 2002:a05:7022:5f1c:b0:12d:ed19:e6a2 with SMTP id
+ a92af1059eb24-12ded19e754mr56823c88.36.1777508686300; 
+ Wed, 29 Apr 2026 17:24:46 -0700 (PDT)
+Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12de3261533sm5180046c88.9.2026.04.29.17.24.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Apr 2026 17:24:45 -0700 (PDT)
+Message-ID: <ef8e4474-7237-4857-b425-902cb61573cd@oss.qualcomm.com>
+Date: Wed, 29 Apr 2026 17:24:44 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/47] target/arm: Implement FEAT_FP8
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org
+References: <20260430002046.59739-1-richard.henderson@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260430002046.59739-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: Gn--ZE5MCPwE1-OdE6BSwfocHGWgbBMS
+X-Proofpoint-ORIG-GUID: Gn--ZE5MCPwE1-OdE6BSwfocHGWgbBMS
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDMwMDAwMiBTYWx0ZWRfX8szTTqBNpLT3
+ yqA8Flp/6A5d8O/QRAZcUIZpDMMTm4jmhnz3VZahirLnpL/PuwamFDx58nAPjeWhJpyMytSamLL
+ ke1C5WvlqttPvdnHK8yNPm+aQTLtgX9cQ4wraYTCCx2SFUIXii9uQMhNS6Y54xLGSoEh7jiKwZC
+ XWvt6SVAQo7YofxE458KgipJcWH+qugZc/W5czZxAQx3NvqCteE4ax4Xkxf8Uz7gR/0e3xPqO16
+ A3c1vr0+s574WBamvI19eM83DQxRKJ6z1dHqubEp10781MOUD36OKhoU5pSnSEOGF6All+MfWVK
+ p9hVrUyo44Zy6mpEshj4QiHyvW1JxKOI8RqonVP5i1s5LfNqDQVHBg0IJQFyub0eJoEM9rdx73G
+ qJVsaMHBg2StyTZwwY9zSveMjj+5XzIkcGLIiepJFABK7ZbFdF2dS0kPM9UxVYVIf0VF34ndAKT
+ o8AXFkAQgElHmpBBz8w==
+X-Authority-Analysis: v=2.4 cv=V+JNF+ni c=1 sm=1 tr=0 ts=69f2a14f cx=c_pps
+ a=bS7HVuBVfinNPG3f6cIo3Q==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=mKqt3sDg1JzNYCk9nD0A:9 a=QEXdDO2ut3YA:10
+ a=vBUdepa8ALXHeOFLBtFW:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-29_02,2026-04-28_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 spamscore=0 suspectscore=0 malwarescore=0 bulkscore=0
+ lowpriorityscore=0 impostorscore=0 adultscore=0 priorityscore=1501
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2604200000
+ definitions=main-2604300002
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,106 +150,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since there is no bfloat16 variant of FAMINMAX,
-check for missing function pointer in do_z2z_nn_fpst.
+On 4/29/2026 5:19 PM, Richard Henderson wrote:
+> Based-on: 20260430000524.56046-1-richard.henderson@linaro.org
+> ("[PATCH v2 00/40] fpu: Export some internals for targets")
+> 
+> v2: https://lore.kernel.org/qemu-devel/20260424043014.46305-1-richard.henderson@linaro.org/
+> 
+> Changes for v3:
+>   - Rebase on softfloat-parts.h, which allows us to drop some
+>     local changes to fpu/.
+>   - Enable ID_AA64FPFR0.F8{E5M2,E4M3}.
+>   - Implement FEAT_SME_LUTv2.
+>   - Implement FEAT_FP8FMA, FEAT_SSVE_FP8FMA.
+> 
+> I still haven't addressed the required firmware update for
+> 
+>   tests/functional/aarch64/test_rme_virt.py
+>   tests/functional/aarch64/test_rme_sbsaref.py
+>
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu-features.h      |  5 +++++
- target/arm/tcg/translate-sme.c | 23 +++++++++++++++++++++--
- target/arm/tcg/sme.decode      |  5 +++++
- 3 files changed, 31 insertions(+), 2 deletions(-)
+Feel free to send me the needed TF-A (and TF-RMM if needed) patches, and
+I'll apply this, and send you update url for assets.
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index f84b451626..e297bc0a0e 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1579,6 +1579,11 @@ static inline bool isar_feature_aa64_sme2_f64f64(const ARMISARegisters *id)
-     return isar_feature_aa64_sme2(id) && isar_feature_aa64_sme_f64f64(id);
- }
- 
-+static inline bool isar_feature_aa64_sme2_faminmax(const ARMISARegisters *id)
-+{
-+    return isar_feature_aa64_sme2(id) && isar_feature_aa64_faminmax(id);
-+}
-+
- static inline bool isar_feature_aa64_sve_i8mm(const ARMISARegisters *id)
- {
-     return isar_feature_aa64_sve(id) && isar_feature_aa64_sme_sve_i8mm(id);
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 08254b088e..a67501226f 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -19,6 +19,7 @@
- 
- #include "qemu/osdep.h"
- #include "cpu.h"
-+#include "helper-a64.h"
- #include "helper-sme.h"
- #include "helper-sve.h"
- #include "translate.h"
-@@ -742,9 +743,12 @@ static bool do_z2z_nn_fpst(DisasContext *s, arg_z2z_en *a,
-                            gen_helper_gvec_3_ptr * const fns[4])
- {
-     int esz = a->esz, n, dn, dm, vsz;
--    gen_helper_gvec_3_ptr *fn;
-+    gen_helper_gvec_3_ptr *fn = fns[esz];
-     TCGv_ptr fpst;
- 
-+    if (fn == NULL) {
-+        return false;
-+    }
-     if (esz == MO_8 && !dc_isar_feature(aa64_sme_b16b16, s)) {
-         return false;
-     }
-@@ -753,7 +757,6 @@ static bool do_z2z_nn_fpst(DisasContext *s, arg_z2z_en *a,
-     }
- 
-     fpst = fpstatus_ptr(esz == MO_16 ? FPST_A64_F16 : FPST_A64);
--    fn = fns[esz];
-     n = a->n;
-     dn = a->zdn;
-     dm = a->zm;
-@@ -812,6 +815,22 @@ static gen_helper_gvec_3_ptr * const f_vector_fminnm[4] = {
- TRANS_FEAT(FMINNM_n1, aa64_sme2, do_z2z_n1_fpst, a, f_vector_fminnm)
- TRANS_FEAT(FMINNM_nn, aa64_sme2, do_z2z_nn_fpst, a, f_vector_fminnm)
- 
-+static gen_helper_gvec_3_ptr * const f_vector_famax[4] = {
-+    NULL,
-+    gen_helper_gvec_famax_h,
-+    gen_helper_gvec_famax_s,
-+    gen_helper_gvec_famax_d,
-+};
-+TRANS_FEAT(FAMAX_nn, aa64_sme2_faminmax, do_z2z_nn_fpst, a, f_vector_famax)
-+
-+static gen_helper_gvec_3_ptr * const f_vector_famin[4] = {
-+    NULL,
-+    gen_helper_gvec_famin_h,
-+    gen_helper_gvec_famin_s,
-+    gen_helper_gvec_famin_d,
-+};
-+TRANS_FEAT(FAMIN_nn, aa64_sme2_faminmax, do_z2z_nn_fpst, a, f_vector_famin)
-+
- /* Add/Sub vector Z[m] to each Z[n*N] with result in ZA[d*N]. */
- static bool do_azz_n1(DisasContext *s, arg_azz_n *a, int esz,
-                       GVecGen3FnVar *fn)
-diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
-index 6bb9aa2a90..9dec7318a4 100644
---- a/target/arm/tcg/sme.decode
-+++ b/target/arm/tcg/sme.decode
-@@ -286,6 +286,11 @@ URSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 1    @z2z_4x4
- SQDMULH_nn     1100000 1 .. 1 ..... 1011.1 00000 .... 0    @z2z_2x2
- SQDMULH_nn     1100000 1 .. 1 ..... 1011.1 00000 .... 0    @z2z_4x4
- 
-+FAMAX_nn       1100000 1 .. 1 ..... 1011.0 01010 .... 0    @z2z_2x2
-+FAMAX_nn       1100000 1 .. 1 ..... 1011.0 01010 .... 0    @z2z_4x4
-+FAMIN_nn       1100000 1 .. 1 ..... 1011.0 01010 .... 1    @z2z_2x2
-+FAMIN_nn       1100000 1 .. 1 ..... 1011.0 01010 .... 1    @z2z_4x4
-+
- ### SME2 Multi-vector Multiple and Single Array Vectors
- 
- &azz_n          n off rv zn zm
--- 
-2.43.0
-
+Regards,
+Pierrick
 

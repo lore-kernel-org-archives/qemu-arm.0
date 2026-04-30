@@ -4,98 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41170CD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 16:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39F1CCD13D3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 17:29:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIUbA-0006Ho-QU; Thu, 30 Apr 2026 12:50:48 -0400
+	id 1wIVAE-0004hp-IE; Thu, 30 Apr 2026 13:27:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wIUb7-0006Gr-GJ; Thu, 30 Apr 2026 12:50:46 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIV9s-0003RB-Vj
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:26:43 -0400
+Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wIUb3-0003GT-Ts; Thu, 30 Apr 2026 12:50:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1777567748; bh=8gxqLapNuGKYCqdFCNVrIXi6aQnkwhuoXLKn3wUXMU8=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=Fv5uQUoZq9UFNcQWNN3uL7A1IDdGzpK+dzNCBa15LSyUT0gJRMFipabk2sSgeWiny
- I9TrzGoqq7hphT0OcfpubiPqDOKMLtDx10PSPEHv0aIaZLYSJuwgnFQNtPgIhTmVM6
- n+5rPzbsH+8vWisRK/7x8W8l4WGuXcBDgehD54zziA12pTgEho8+7ezAxJrgDt+GoU
- vgprb1nl35jRW40cyhqS86FX0TzTa+h86AjiRLiFpJWxA4q1ujyYPfEP7scpeEUkR+
- u19leSnE3sgbTWj+fDZ3kH3dGfJn49HcgiNfNqQOW9asXOKErMWugEJ+aWN2tLgvzo
- xz4BNZlVJBrUA==
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by isrv.corpit.ru (Postfix) with ESMTP id 3EBFE1A566E;
- Thu, 30 Apr 2026 19:49:08 +0300 (MSK)
-Message-ID: <c51c87a7-e224-4785-8f64-f4c59af0d066@tls.msk.ru>
-Date: Thu, 30 Apr 2026 19:50:38 +0300
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIV9o-0005j6-Hf
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:26:39 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4g61L94yVdz60bW;
+ Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.211])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4g61L9154zz1yWl; Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 98FE312E3B06;
+ Thu, 30 Apr 2026 17:26:23 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-110S0045a52405d-64cd-4768-82cf-e5c71d11a058,
+ 9F47DE0B15482FF6BC55B1CE858CC0DAC5AE7A4F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 90.14.253.154
+Message-ID: <2b4f5cca-f064-4326-863c-9ab164e11c44@kaod.org>
+Date: Thu, 30 Apr 2026 19:26:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm: Remove hw_error() for the unimplemented
- CM_LMBUSCNT register
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
-References: <20260420064933.64765-1-thuth@redhat.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20260420064933.64765-1-thuth@redhat.com>
+Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
+ write operations
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
+ <20260428055254.76581-2-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260428055254.76581-2-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 10430618215129394200
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEgGWTxKP2OrnC9CrTg7KM5rhzmqMsYXlRL5OXDqVkEp5ZazjpU5sB6KcjkXimWtlf3F63zWpprfqAJMGlaLNZamW2cx0JNyvNqOBQTYOeg+MjoLLEXsyHf67COpTMx4tsMEMHLwBFb7aSd2IlD5Oh1+oxEUV0jFPf6mEgQb4xz2nhETMnv1Tnd9WLkFX9fdpRhogPzHYVJOK8h/HqIUh8BAXzhw6KcWrvoZXwYCpnlQmGG11GueMxAF34isofA6j3qMKaIWZg49wIYK5JPXIokZ1cbK1TdJ71EPA6foUZSPmTZFv8c+Puv3X7uRCzeqLTRq8UWLo4ahb+5zXkNtQEHH1rPPZW3yij1T1O6U7BuZ9KTeFbPZ6yazqdmvAKEWxKu9lKKSk/tvwUF9KBMN+SdQTm5IdEf+o3+Fres2PDIN2HW9RRIUc2e5js4X8VUnGCnZnw/MT4NDB229LA64laoaAbvueNrSe9HEE0SCKG3QiTzuLmaL0TrLbyxjKI16Uo8Y/hCKb2UMCpQ3KbOmnSUlvzh56SmsBpaSmPLiiCDdsXMB1oBd5Q7VILB3HShuoA4766ZWWzOgMD0SSmq+Bwkhmtr0vBXU9Op7kMhaA4vDMO5mk9wqexfrt36Kb0i3sPPeflTPVahRfSt1+uvneYB0J1BXP37DETb5HoFPzaovg
+DKIM-Signature: a=rsa-sha256; bh=ktVqB4Cjr+fw3mxyKs0wKBnXRD6VXaPPYkedZgFeZs0=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1777569986; v=1;
+ b=evvKmoOkrO7ho5p34NzsA5ubi5JPXdVA0Ki2gtazGensl5JZcDs+1MFgTL5szzMaFLXoC/oz
+ OpdSqMA9V5clT6hdzI7rvR27iO1eMAlCUSBd/qi0/6/EM+wxMc4havn21EVIqkamIupzUfUFs7z
+ 0ioFTTA3EkWnUgcKtDl6KwJ/KPlAH66ATK99nGt6NqnLIB1aO4e2bQdlObKNGDK3wonfC+xIaHi
+ erUX9e7UCUew0l+bDvSzvCTTtGbRm2vxqaRMy9symcnxnt+atURctKtKpablsYKo79mTrKfXtVd
+ ncb0nz9ZKq2u651Gm/TuAKdfNnpCEcFHPqeT8U3h3+T0A==
+Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
+ helo=10.mo533.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,40 +138,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20.04.2026 09:49, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+On 4/28/26 07:52, Kane Chen wrote:
+> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
+> model in how the guest-provided address is handled.
+> aspeed_sbc_otp_prog() passes a word-indexed address directly
+> to address_space_write() without converting it to a byte offset,
+> whereas aspeed_otp_write() expects a byte offset and applies an
+> additional shift (otp_addr << 2). This double-shift confusion means
+> that an out-of-range word address can lead to a write beyond the
+> allocated storage.
 > 
-> When writing to this register, QEMU currently aborts:
+> Fix this by adding bounds checking on the word offset before
+> converting to byte offset and passing to address_space_write().
+> This matches the existing bounds check in aspeed_sbc_otp_read().
 > 
->   $ echo "readl 0x10000018" | ./qemu-system-arm -audiodev none,id=snd0 \
->      -M integratorcp,accel=qtest,audiodev=snd0 -display none -qtest stdio
->   [I 0.000000] OPENED
->   [R +0.001907] readl 0x10000018
->   qemu: hardware error: integratorcm_read: CM_LMBUSCNT
->   [...]
->   Aborted                    (core dumped)
+> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3436
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>   hw/misc/aspeed_sbc.c  | 14 +++++++++++---
+>   hw/nvram/aspeed_otp.c | 13 ++++++-------
+>   2 files changed, 17 insertions(+), 10 deletions(-)
 > 
-> This is bad, a guest should ideally never be able to kill QEMU like this.
-> 
-> Now, according to the "Intergrator/CP User Guide" from:
-> 
->   https://developer.arm.com/documentation/dui0159/b/porting-integrator-ap-and-im-pd1/registers
-> 
->   "The Integrator/AP CM_LMBUSCNT has been removed."
-> 
-> That means this register does not seem to be implemented on real CP boards
-> at all, only for older AP boards. Thus it should be fine if we simply
-> ignore this register in QEMU and handle it like all other unimplemented
-> registers in the "default" handler of the case statement.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3407
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index 065e822e70..8b74dca13c 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -159,13 +159,21 @@ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+>       MemTxResult ret;
+>       AspeedOTPState *otp = &s->otp;
+>       uint32_t value = s->regs[R_CAMP1];
+> +    uint32_t otp_offset = otp_addr << 2;
+>   
+> -    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
+> -                        &value, sizeof(value));
+> +    if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Invalid OTP addr 0x%x\n",
+> +                      otp_addr);
 
-Not sure how important it is, but from the bug report it seems this is
-a real issue which triggers for real use cases, so I'm picking this one
-up for qemu stable series.  Please let me know if I shouldn't.
+This log event could be on one line.
+
+> +        return false;
+> +    }
+> +
+> +    ret = address_space_write(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
+> +                              &value, sizeof(value));
+>       if (ret != MEMTX_OK) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "Failed to write OTP memory, addr = %x\n",
+> -                      otp_addr);
+> +                      otp_offset);
+>           return false;
+>       }
+>   
+> diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
+> index a60289000c..1a9d3841b8 100644
+> --- a/hw/nvram/aspeed_otp.c
+> +++ b/hw/nvram/aspeed_otp.c
+> @@ -57,12 +57,12 @@ static bool valid_program_data(uint32_t otp_addr,
+>       return has_programmable_bits != 0;
+>   }
+>   
+> -static bool program_otpmem_data(void *opaque, uint32_t otp_addr,
+> +static bool program_otpmem_data(void *opaque, hwaddr otp_offset,
+>                                uint32_t prog_bit, uint32_t *value)
+>   {
+>       AspeedOTPState *s = opaque;
+> +    uint32_t otp_addr = otp_offset >> 2;
+
+I think 'opt_addr' is a bit confusing. It's a word offset.
+
+valid_program_data() could also use an 'otp_offset' arg and
+I would introduce a small inline helper to replace variable
+'is_odd'
 
 Thanks,
 
-/mjt
+C.
+
+
+
+>       bool is_odd = otp_addr & 1;
+> -    uint32_t otp_offset = otp_addr << 2;
+>   
+>       memcpy(value, s->storage + otp_offset, sizeof(uint32_t));
+>   
+> @@ -79,26 +79,25 @@ static bool program_otpmem_data(void *opaque, uint32_t otp_addr,
+>       return true;
+>   }
+>   
+> -static void aspeed_otp_write(void *opaque, hwaddr otp_addr,
+> +static void aspeed_otp_write(void *opaque, hwaddr otp_offset,
+>                                   uint64_t val, unsigned size)
+>   {
+>       AspeedOTPState *s = opaque;
+> -    uint32_t otp_offset, value;
+> +    uint32_t value;
+>   
+> -    if (!program_otpmem_data(s, otp_addr, val, &value)) {
+> +    if (!program_otpmem_data(s, otp_offset, val, &value)) {
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Failed to program data, value = %x, bit = %"PRIx64"\n",
+>                         __func__, value, val);
+>           return;
+>       }
+>   
+> -    otp_offset = otp_addr << 2;
+>       memcpy(s->storage + otp_offset, &value, size);
+>   
+>       if (s->blk) {
+>           if (blk_pwrite(s->blk, otp_offset, size, &value, 0) < 0) {
+>               qemu_log_mask(LOG_GUEST_ERROR,
+> -                          "%s: Failed to write %x to %x\n",
+> +                          "%s: Failed to write %x to %"HWADDR_PRIx"\n",
+>                             __func__, value, otp_offset);
+>   
+>               return;
+
 

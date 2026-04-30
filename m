@@ -4,89 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1D80FF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D23CFF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:46:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIOt8-0008O0-N8; Thu, 30 Apr 2026 06:44:58 -0400
+	id 1wIOu3-0001gg-IS; Thu, 30 Apr 2026 06:45:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wIOt0-0008H2-8E
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:51 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIOu2-0001Vk-0e
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:45:54 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wIOsu-0005LP-F9
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:49 -0400
-Received: by mail-wr1-x442.google.com with SMTP id
- ffacd0b85a97d-43d6fbd0954so601708f8f.1
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:44:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIOu0-0005kh-H0
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:45:53 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-7bb0d18c7f9so7978677b3.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:45:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777545951; cv=none;
+ d=google.com; s=arc-20240605;
+ b=P+191CTvrrwO1wABzPuSsUux1vi2tQ1xvzH4WURdMSvFIuDvuuuUbcpU0L07Vhy1qd
+ KKoYBgv5yrhfrRUC41MaUEzyGe9XTsWMg1iqrfR4DXMWqeNGElya12TROZJs9lwuVtG4
+ qyJllXEr9hpxizQgsN0/mczOKz2ReRLqyIlLsgjNGwh4aK6JFQ4bIn0KxlWkXzAAfSV0
+ 8tyXSuwOL4RSgI7msd9aRgFwOxJlNPO2XWDPzcS/SsIMkSKrLnrOOA1Yr+ZfoMoXxUMo
+ h2XzTlzE23s9mkGZ66SIH9ZpLzbPFXy1+Y3PSk8jXyOPXECVPAYd/s5Uta3UmvHcf7XG
+ jb1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
+ fh=+qC5O8rA++MRXW1VhIpFZ2ZVHgzYJeiVRjde1+dPNgk=;
+ b=D0PCbQYw3fVQHAiv9K0Oi3YZpUzGqDRVggvrd1ypYvV9Pxz2qIyKzM9J4GS1wyCETn
+ M4U6r+RhFTSBxBs3K+Mw1n9TeeSMk0QAt1CeGhhdeAa56jMMlGEy8Vy9YfMhmfszVvrY
+ sjbg93E89Ufm9aT25rqYIfCjUDIrWQsKmRLV1J22ID/fGSGbtO60HQaQQkpeQHGY+pdz
+ com2av20j8fpqcpjaMGjK3J00XOvLVGuIFON9dogzixChsOBkPHp+CAxLOeAHL70AGIY
+ Ly1OUNaeMNuL+6rpInH70SraxzHGUuFqZxt11gX3bKvlAnQRLs5IQ16WVPb18JH6t7eK
+ EBXQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777545882; x=1778150682; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5z/E+NEUk6p/y4Qsh2ZiVobxIRwHiu1lhqMJeWdQLKM=;
- b=uHsO6JMo6sVIpJLRApTlqkt024zQ+YnYE/Vu28o7qPGaFZfYyY84PYPyHY4GiBUQae
- BTQ9mv/r5/WgHQakUVNRgjGh2QS4MQnZUFfXHRAAY7IJ2HfBB6FzEdFMQ1UE0wX4C60Q
- UaqwXV2qNcZpwkPjj7derqRMNENeqPFVNNoqNnr0TxuD8v1XmuRuhmusj05zEX7IBscz
- /rIE5XEu8fQICXmUfGFvcwA5wAOx6mU3Vy3pAExtabexN/kNqMecVsh0+1i6rJ0rUWpL
- hlaTyP9tNd3NqzZ1t1H6RQ5vFQMgZwl6sBcbMCel+wX959hGaa23rh0G6XIxVwhoQ75h
- 73tA==
+ d=linaro.org; s=google; t=1777545951; x=1778150751; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
+ b=ZGrEWOvcWxevGpL8LuBKhYBuFpoedPXj+U5YibHsiv6U3ZiVOiTnreIPKodovoZJZ7
+ thbxRqIKhpO8vHtTlJ0dAKKQUh6Gx+I5mUIC9pGokOxxheWRZZwBO/Sx/awmyYdiUJJ+
+ EYe03IOm8QoHkaDhQ23Y3l6jhlrswDTgfsC4KNjkq4N3JfbAXV1EFbXSgywGMAMsmew4
+ Yrmy68qqNR+4p9FBYdLJghA4LFfeCxQgGJGwxUSiJhEo4I7wX9ak2++DWvWN03Ov6zeV
+ Y4aQW4iuF826AOFYm4zFgcAzf9KKd7fkDsu2H91iOgHg19S3OQIrIDWQfSeyah81Z8XU
+ 1k9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777545882; x=1778150682;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=5z/E+NEUk6p/y4Qsh2ZiVobxIRwHiu1lhqMJeWdQLKM=;
- b=INnuS7SMFDOzBoL+yvYLBygbQR89v/Kk0QvGwy7J06nAIsgH9X3lD4ZYIerdrQ71kP
- 2/1kASj3W2HRctz+pppH57tblheIJq6tod6A4euTi0YmHX1rma9PrAY1mO3trV2R8eko
- QREridPVv30p7QPGksi9BhKkvplrcG7gIoF1u6BvvwhSpOeqLflPICXkjcUTc/wp5M1j
- 8yBmWZvVLihsXQgUl0DdJVCClicXg6d1f5lLKtmw6H2yRRA9iLi5PQghaXVHfTaCHPxj
- F3NFuPptImmxRuA1LpiPnWdrPCY8/I1IQHdFegqwoEptP3xVOAJy+1+qDCdE4Vz6vb7g
- vgXw==
+ d=1e100.net; s=20251104; t=1777545951; x=1778150751;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=BHNxHJBuaO20juKE/pLga5H1LtRXixgb5UTlH1CgSfA=;
+ b=XgZtHN7oybHMORjwDYagPIr7SxNaRXQvHdcZa7+gkC9PgqMxBKYCW7UFaWk6GGqqkS
+ n+Tj3TpfUtadvl91muzt/8MBWaYmVqcr2bUsFvWBB6NNa9ivq01bPPQCWDhgWpT96MKg
+ jpqikq/f33bYQa4QmrjueaLpgOkjB7m81Kq86XZak7FyXPyWyXMxTR4YXm0p66FOcqyX
+ FbMDH1xfPjBHFgSEBmc/bd/aVnc7n2x0mR73FVSSPc6XREYZM1PiasL1vlOgNZ66Uawb
+ kySrBpbBun0SEu2InB+pPafuh0XZBkuVopvDoLsGfPZCd2Bo6db+1lmxctVZ5yPC/VjZ
+ uOHg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ93CdlEggU/s9PZDNxz/WGP+x2WBGFOGgjzGFDtbTHabWZJdTSlZ8ob6LnLW9uNAQGnFPGtS3r3Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YwvdQTiycnoFWgOufB+/z+LQBe58+i5gHKA3xNHJYR97dQZ+jat
- 0JIJgIy4J+OdZQoXGZeKXM0BM60Vm78/P7PMah5JMUND1vIJeTDx8yNkpCwe60pKQrI=
-X-Gm-Gg: AeBDiev5yQj41DhVl6+MqLXiGSevIVUFT2ab/X/IWr2LYrVKzZC0Rb8EFyyfoSrE7DK
- N6nv2eJc8StkadhKUU/4vqfahTAqBo3yMB56eohzT/OovkdZLnTZ346z+CW9S+ed4wf9qnNth6p
- QpQmZ+Xru4cabCZNp4A4YM/u1QmyOYNLOfeHrfJPj5+wDwPFjAQV4hzbBfg/lGb1dEH8kJX6lLv
- M8dcTbiOhSyBPSora0yyNOqz97Tj8egOJS4k6xuta7+gdyRdUyBFV7y/wIFRvsyvgOJq9N6HXqA
- cJmfs/bGB3pR56eScaJH6Rm9jMvH8dJ2x/MFuPEi1e1QsOWAm6RRux0biKNY/XgAlD0WvAU+wPt
- ryhc8ydULgWtl82ZhCIBZTBp65lXYSYIEo9bjzYhsS3Cdqe+CrqUXavlu7WAyWi+SMLgeEYFKjv
- f/9Z3RD9HQlCTI0yV/vi0HatvsNTZ4I3edSA==
-X-Received: by 2002:a5d:5847:0:b0:43f:e791:a347 with SMTP id
- ffacd0b85a97d-4493e982935mr3711927f8f.26.1777545881915; 
- Thu, 30 Apr 2026 03:44:41 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b7217afesm12338368f8f.23.2026.04.30.03.44.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 03:44:39 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7D1855F954;
- Thu, 30 Apr 2026 11:44:35 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 7/7] target/arm: implement WFET
-Date: Thu, 30 Apr 2026 11:44:34 +0100
-Message-ID: <20260430104434.1482407-8-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260430104434.1482407-1-alex.bennee@linaro.org>
-References: <20260430104434.1482407-1-alex.bennee@linaro.org>
+ AFNElJ9Th9CS7D8DbURgjtGPLjrye+f1fmLnfYMUt02estpe0gx7ltbzsNKMAFFeuXh6SP8FB/GoWxzIOw==@nongnu.org
+X-Gm-Message-State: AOJu0YxTfJs3Okz6gBudsy64YmlVV5HexT4TLEPyf5Fr3k0lMPNOrRfV
+ 7COphsVhlh3H2GvhH8Rb6B3gS5igF3iGbi5MNhQ7Q9Zh+c+XBwN4M/rAJAlYZjHRYzig6XkuEXq
+ T1lD+TnN4eXLXt/QfHsViL42S81G8sAAvNq4zMUVYGQ==
+X-Gm-Gg: AeBDietr6z5CsA5l9ohhi7SwDKTlZFtPHT3q1ZuuAisQiSPLvlZsI8wsf01izJhkapm
+ u8UFV+PBeEXAM+8dQWVTSjVDx8TyUenJhSsaQXZd+Vvt8w5s2oEWkMbqbKdWo01K6p4egAv5qWw
+ 2bApb0NYS7pkLwmRIl/Hyy7rOEe5sclgsdm8DEK97SPTJQ5uM90UvHB/rpJyU8Nd+TuGp32uDHL
+ chDGEsxH0TQ5hOiiJ9NqBlA/MTVrWRQXaxaQUjdQ0pqN13N618tPVogGfhdrtKttnwTFdDQf9Yy
+ pyZw9iMIR+Gr2gBS0SYV+DpyLooxjmtSarj2yRcFO/ftN8AOZouxfaskx3/HAsK5ROMpm/g5Rlu
+ bGA==
+X-Received: by 2002:a05:690c:dc8:b0:79f:b903:88be with SMTP id
+ 00721157ae682-7bd5286ec35mr24805137b3.16.1777545951020; Thu, 30 Apr 2026
+ 03:45:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x442.google.com
+References: <20260409035015.132370-1-richard.henderson@linaro.org>
+In-Reply-To: <20260409035015.132370-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 11:45:39 +0100
+X-Gm-Features: AVHnY4IYbt_Y4eG0oHQudzG_zLHAvsPw9rSRj-bEwJ6YRJpT3_MD5jjAzA_UR1U
+Message-ID: <CAFEAcA-mEC7feX5r=W_bvawe-sFdO=8neP8V4-hvYHFYkugeZg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] target/arm: Remove bswap_code
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, pierrick.bouvier@linaro.org, 
+ philmd@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,178 +117,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we have the event stream and SEV/SEVL implemented we can finally
-enable WFET for Aarch64.
+On Thu, 9 Apr 2026 at 04:50, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Based-on: 20260407222208.271838-1-pierrick.bouvier@linaro.org
+> ("[PATCH v11 00/21] target/arm: single-binary")
+>
+> Version 2 here should probably be RFC.  This time around, all
+> instruction loading, and more decode, is done by translate.
+> A new CPUARMState field is added for passing data to EXCP_SWI
+> and EXCP_NWFPE.
+>
+>
+> r~
+>
+>
+> Richard Henderson (7):
+>   linux-user/arm: Restrict regpairs_aligned
+>   target/arm: Only define aarch64_untagged_addr for aarch64
+>   target/arm: Segregate target-specific user-only fields
 
-To avoid issues with QEMU's incomplete ldst exclusive handling causing
-potential deadlocks in common WFE enabled locking patterns we take
-advantage of the architectures flexibility and treat being in the
-exclusive region as a reason to exit.
+I've applied these first 3 patches to target-arm.next, as
+they're good cleanups independent of the bswap_code parts.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
----
-v2
-  - fix exception syndrome by using enum value
-  - use env->halt_reason
-v3
-  - fix check_wfx_trap(s/false/true/) as it is a WFE
-v4
-  - defer expensive calculations until needed
-  - treat cs->exclusive_addr as a IMPDEF WFE exit
-  - update commit message
----
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/op_helper.c     | 95 ++++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c | 15 +++---
- 3 files changed, 104 insertions(+), 7 deletions(-)
-
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index ebdf09be38a..5e4d828dd55 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -56,6 +56,7 @@ DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
- DEF_HELPER_2(wfe, void, env, i32)
- DEF_HELPER_2(wfit, void, env, i32)
-+DEF_HELPER_2(wfet, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 77ac6161e93..8421c548303 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -640,6 +640,101 @@ void HELPER(wfe)(CPUARMState *env, uint32_t insn_len)
- #endif
- }
- 
-+void HELPER(wfet)(CPUARMState *env, uint32_t rd)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * As for WFIT make it NOP here, because trying to raise EXCP_HLT
-+     * would trigger an abort.
-+     */
-+    return;
-+#else
-+    CPUState *cs = env_cpu(env);
-+    uint32_t excp;
-+    int target_el;
-+    ARMCPU *cpu;
-+    uint64_t cntval, timeout, offset, cntvct, nexttick;
-+    int64_t next_event;
-+
-+    /*
-+     * As for WFE if the event register is already set we can consume
-+     * the event and return immediately.
-+     */
-+    if (env->event_register) {
-+        env->event_register = false;
-+        return;
-+    }
-+
-+    /*
-+     * Don't bother to go into our "low power state" if
-+     * we would just wake up immediately.
-+     *
-+     * We want the value that we would get if we read CNTVCT_EL0 from
-+     * the current exception level, so the direct_access offset, not
-+     * the indirect_access one. Compare the pseudocode LocalTimeoutEvent(),
-+     * which calls VirtualCounterTimer().
-+     */
-+    cntval = gt_get_countervalue(env);
-+    offset = gt_direct_access_timer_offset(env, GTIMER_VIRT);
-+    cntvct = cntval - offset;
-+    timeout = env->xregs[rd];
-+    if (cpu_has_work(cs) || cntvct >= timeout) {
-+        return;
-+    }
-+
-+    /* We might sleep, so now we check to see if we should trap */
-+    target_el = check_wfx_trap(env, true, &excp);
-+    if (target_el) {
-+        env->pc -= 4;
-+        raise_exception(env, excp, syn_wfx(1, 0xe, rd, true, WFET, false), target_el);
-+    }
-+
-+    /*
-+     * If the CPU has entered the exclusive region we could sleep
-+     * until the global monitor moves from Exclusive to Open Access.
-+     * However it would be expensive for QEMU to fully model the
-+     * global monitor and not doing so would potentially trigger
-+     * deadlocks in WFE enabled locking code. However as WFE is a hint
-+     * instruction the architecture allows for the PE to leave
-+     * low-power state for any reason. QEMU chooses to treat being in
-+     * an exclusive region as such and return directly.
-+     */
-+    if (env->exclusive_addr != -1) {
-+        return;
-+    }
-+
-+    /*
-+     * Finally work out if the timeout or event stream will kick in
-+     * earlier.
-+     *
-+     * The WFET should time out when CNTVCT_EL0 >= the specified value.
-+     */
-+    cpu = env_archcpu(env);
-+    if (uadd64_overflow(timeout, offset, &nexttick)) {
-+        nexttick = UINT64_MAX;
-+    }
-+    if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-+        nexttick = INT64_MAX;
-+    }
-+
-+    next_event = gt_calc_next_event_stream(env);
-+    if (next_event > 0 && next_event < nexttick) {
-+        timer_mod(cpu->wfxt_timer, next_event);
-+    } else {
-+        if (nexttick == INT64_MAX) {
-+            timer_mod_ns(cpu->wfxt_timer, INT64_MAX);
-+        } else {
-+            timer_mod(cpu->wfxt_timer, nexttick);
-+        }
-+    }
-+
-+    env->halt_reason = HALT_WFE;
-+    cs->exception_index = EXCP_HLT;
-+    cs->halted = 1;
-+    cpu_loop_exit(cs);
-+#endif
-+}
-+
- void HELPER(yield)(CPUARMState *env)
- {
-     CPUState *cs = env_cpu(env);
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index a6f392a28f8..ead2a7ff81f 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2086,14 +2086,15 @@ static bool trans_WFET(DisasContext *s, arg_WFET *a)
-         return false;
-     }
- 
--    /*
--     * We rely here on our WFE implementation being a NOP, so we
--     * don't need to do anything different to handle the WFET timeout
--     * from what trans_WFE does.
--     */
--    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
--        s->base.is_jmp = DISAS_WFE;
-+    if (s->ss_active) {
-+        /* Act like a NOP under architectural singlestep */
-+        return true;
-     }
-+
-+    gen_a64_update_pc(s, 4);
-+    gen_helper_wfet(tcg_env, tcg_constant_i32(a->rd));
-+    /* Go back to the main loop to check for interrupts */
-+    s->base.is_jmp = DISAS_EXIT;
-     return true;
- }
- 
--- 
-2.47.3
-
+thanks
+-- PMM
 

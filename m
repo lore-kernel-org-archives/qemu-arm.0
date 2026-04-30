@@ -4,104 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503B1CCFA13
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 08:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91583FF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:39:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIN1d-0003mx-2Y; Thu, 30 Apr 2026 04:45:37 -0400
+	id 1wINqk-0004az-JF; Thu, 30 Apr 2026 05:38:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIN1Z-0003mM-3e
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 04:45:35 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1wINqg-0004Y2-NB
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:24 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIN1X-0007Uo-90
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 04:45:32 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-651c5d525f6so546449d50.3
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 01:45:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777538730; cv=none;
- d=google.com; s=arc-20240605;
- b=RpFSaeutMtltAg57+wgfj1HcDeJNx3gfCcbXQf0cDHcdy3cclcHZsE7wByXfajvTc3
- axs7eLDo+vPryaziuciJiIJXH57rNDSGGwlrbzAHRRXtnwXGtYdrn5ZPIxf3KXFrOVpu
- swaxTwW6SaVIWNe8oc4nm86BZZDS4VpcX55aTgvf/XRrGCZr6vk+UksRjWe2QE+Qzttr
- gbb+HYrBu/69ebWHM0nCUP5pDYJZgITVEHQQBhHIFTfRNpb/Hyc4Y+2U1ooHRW4TvP7v
- di8x3grSxu9ZQ+0MbcctUykwVgE1Ad7OmT41l3VtU5uDeOrODRqoLxjfGv4Ms4fphaWJ
- /hZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=CMEf52uglyiYHqZr1cDPKczbvu/oVf/r6eASVF3S1B0=;
- fh=OThJdUiIXW8zHnrDRmrWAWMV7d/bDHBu/rk9QoWhLok=;
- b=OyOzI7GeoaxGx8THHCRcSUXLoalq0Bn1IwJI5rfe5OAjhftgJuQHrCmz22zN1pxWBA
- KDNxr29tD1GPC6ReB1rD7Z6cJ8kye0ti+dLJEXTfRGYNrfJTH0laMBCsVqe2wuBsrZ1x
- m1cgkSyyS9VskzH5lhiaVQGkfUkZCbNxgiA/S2cFnb6iwX/DFirvCSfA1/0M1gnXOB6K
- gbtNlIIoUV4vhElo3gEeWqO4tcGUr4X/e/GMDIvkct61P2BM6J6opdM4AEmx9eH9Zl8M
- NOb1vebLFL3PDcs/6NoMGh1GEdKN8d66BInmMeAZDH733JwaY+0/9fKMLOo+d3jOrlVV
- +SFg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1wINqY-0002Rh-H9
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:20 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-448528f4e69so430590f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777538730; x=1778143530; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CMEf52uglyiYHqZr1cDPKczbvu/oVf/r6eASVF3S1B0=;
- b=NlBjVnxHVs9jKgLTwUdJv53HTKT5S2efK8nh3gyKu12/Z5vrMbf/NQOW8AZ2yBrw3s
- wPdqHiojAlSAnEstXrUgd1auE8M9qC4oLiaSWDyj+SWMKHIa4fT3uvc0nv/d/i3DEFiR
- e+S7RjL+jQI7mGB6mHq9ruCzkI4cLI1O5AeZveJbU4XXoy+H3nkGTKg4R2JMa+XiGvDy
- U8N8VU8iof0z2Wfl8ppArhijdrWGYFpswUCNhRttJBV2nn5sZEyQ10hqGtQkxIs+JmZI
- Gfgjn4qCf8lNR0gp096yjIassW+xIksYYphd1Jt59CQfDp0Ja5/na/uQSrPopr2otDjx
- lVZA==
+ d=linaro.org; s=google; t=1777541892; x=1778146692; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=MmDOEj12GRPvL+JBzfQAUxV+HPwRkzr7BQY5EX/ShUY=;
+ b=wkUck88i6LtVge2jomAkivon0GnLwgzpjFNJNs9OdSQwyONdO31siQnLzuUcdXU/Lj
+ uaD6WK9MsuQEYrb8Chj2cV7tHnNO+0xziMUiK+/6RPxS2zlwIm3cOqv9Lxms/qB32zdi
+ Bb7g9HEEltKin7RQQrZglClB82bDZcM5DHvLqCf+7p0sAtjLHDuqnWFfw3PjGkM3lHEY
+ BsSoDyyEew+afBvPWS2S+l9I48MJ1i+djOIs6qDQla1PU7ZSnlW4+goslX2l5OXNbvxE
+ FVq+f3oqgFPRl5Ks0zMSqO3g9mOSnxmIsNYQme9OrdLieoDjshKa2536qhujPpf26hf0
+ iebg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777538730; x=1778143530;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=CMEf52uglyiYHqZr1cDPKczbvu/oVf/r6eASVF3S1B0=;
- b=qVak67HCvkQw+F3kOUzTwBgXPOc9y+QoW7pTwR3tky3Up3qWChdf9S7TVafKeAsXDx
- MNHzBQUeX+RmgIzrwqOWg7ZaJ9vgy4skIwO+z7DwGmF28P5YfmQmlAdXonR+hnCKUAfW
- f4SeLzn+snDFjAUzOjKGkoxuRsNPS119k/i6WuUQ4+rBoYw147u4vjZDNM2NFLSciYF3
- BzBDmvZh7ymhwfkEx8mNwut7oOsRSb4vfyCNfKgUk301Uj0rveFtYSkNKeb3aWXvToVa
- pgDLzuC9dUIlEPpeiUQw/NJJa8kiw4l6oD6cf5jUJvPHYsU6iXJAcTo5pHQyO4guSkZy
- okgA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/+zO/cjJPrYByl7bCdTspP8qU4ayLWkBWBueuZxET2lbXYGw2fSKnAunsGlHtnKUJ9lEXEQrzJzA==@nongnu.org
-X-Gm-Message-State: AOJu0YwXRs3h6ml1kEOHx0qqo7uoFSC8jFP8XWvNWghkkfL0vkQbVq3P
- ps6QhWX9ZQyhLg6vrbRVlHv2ZgnodloMVFrAvgRAaryCsAzQ9Edw/rSdBIQtd1O/1VbH2Ldtu+t
- XEGxWO9g3Jsa3L1IKPbO51r6xh7E8HINVIg6P9SE7JA==
-X-Gm-Gg: AeBDiesEpc9mzScZIZ5DgYIJacEeZYHXzSjbuL714Wq2bCER/lHw1Jp3HVH9JAj0L5h
- o4twuHMcdg0rO5kZbuGit77+9ida4Lyi+tcdo31dcXqMCld/1h1JPHQd1EOcj3YWTCjRhHsU0b6
- aTroH6Clmc8x8hUfYQ/2huXpD13hMGZsHNeK+FTQxucOKt+TyR5j/AteeLuqjC6LIjusampsIn9
- gzeIAb7KyHwGBlF+/fs/Jd7XgmrexQLmBaihVq+tPWGCmB6J3jaSvnbSOohFqo2xhxEX29CXCGd
- V57FgF4P4bdg2O/Bhf/sJpgw9S+ScyZYbZviz/mppJEy4q0KGtgtSbhU4VzEvAqewgdQsxRXjlX
- lYVMHu07R+Np9
-X-Received: by 2002:a53:b44d:0:b0:651:c1b7:2761 with SMTP id
- 956f58d0204a3-65c18c4c5a5mr1048587d50.16.1777538729696; Thu, 30 Apr 2026
- 01:45:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAN-aV1EiKRh-Zpb9=77rXYPD2uT7HZmeNfvVW-wAToT+gaVC=A@mail.gmail.com>
- <87v7dvgw58.fsf@pond.sub.org>
- <CAN-aV1ERB-vdvMyRuNo2tog9-EPPyCunXJkk-kC=DkX-kU6VCQ@mail.gmail.com>
- <CAN-aV1HDZfoJv3OCm9_f3epNtvvr5CrvB-1Fi4y7jGLwF3Xx7g@mail.gmail.com>
- <875x59vysu.fsf@pond.sub.org>
-In-Reply-To: <875x59vysu.fsf@pond.sub.org>
+ d=1e100.net; s=20251104; t=1777541892; x=1778146692;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MmDOEj12GRPvL+JBzfQAUxV+HPwRkzr7BQY5EX/ShUY=;
+ b=rvI5lC/45sCewKeOsRqD6HRqhoJ0tPOdmedW23cVK1o7PsEzcJwEaG4gNlaq+rGe4F
+ HJD2d4U9jaZoM1UaCTHlTA4I2jB/Yed+wx9LhwOhVtQ9bDSRh6xElsREqEore7qEjveR
+ fUy+oFbcdXNiJtlM19I6Wjxa3qq8pHs5G+NECKRUz+kHi4lC+lsMY6oIVpR5XfNMwhw2
+ 1624KzZDLhqajeEXjoaz6B9Sfi9vfJZrX4z7g4AjdCpc6xiaR/FzJu5mO6NcHy+5i6En
+ 4qWYPD7SSa9foaSaGufV+EvO/NoPhEofFavKT6A3jlfn/XlUORyHsHJVIMDsvTajxse9
+ OkWw==
+X-Gm-Message-State: AOJu0Yy1YZXExmkqypLIs6oPjIgkAhMf8bKF5KjcwQFsYtPmcvW1O2RY
+ z+baoBglsT9TotrioatuFH8CvR5bc7127l0WSlRq5JRq47pD/Mpxiw4bX4/r5dCOlOU=
+X-Gm-Gg: AeBDieuvvBJY/nD3WltAsoM5s2m0TF6uUj7aTIehGSPpwCljPvHkqhvGMtYvj+ozng4
+ zhhZpZXCX7atABJvFQa4RszOITRMF20AJPU/801mB9YOkxsR5Mvtd9BAzW5H5aySkxDCash5yjL
+ ldEoV1sIkF7muPS6JBMx7/Du/rYpnRl5TT4fBc1T6Z5rFoKQ7Vg4csZRZkqC2vlu7ak3703WmB8
+ EREFL0UoorKYyM3E/SAYBg9jCs2IB8d2wPTqJdQkEaetorAS4j+sLxOnxcR9ZN3O2E1JJPuF9ZG
+ 8K74QSdMHSfLVhWFBQMcZtSSz1wj12eeUst5F8mVqbO6HqS3cIJP2lL8rwsBEmDShCWWF+ViEBT
+ mo3SXRJdyXU4KdkQGcvTx/6vpe+RLs5O6nU20fPiReluK3nZ5SH+9cPquGWT8cCGcTTc+7g2mTf
+ OIE8LUWRaK6kww+RAM+UdisoYV7kqfQeePPA69W8LR4AGDcn42RKgrR4w7SHHCfsnv/yYdWoeO2
+ 40mZRoomBmfYOfkGGmI+G2ZfLSXIvvmzTPLz/Gk79wxQT9Owabh
+X-Received: by 2002:a05:6000:40c9:b0:43d:9bb5:bda5 with SMTP id
+ ffacd0b85a97d-4493ee4d4c5mr3067189f8f.40.1777541891983; 
+ Thu, 30 Apr 2026 02:38:11 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Apr 2026 02:38:11 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 09:45:17 +0100
-X-Gm-Features: AVHnY4IdWT8BfHE623Hblc_Gi0_tYdEFs2Kr4-nflbjx3I18wB2e5zU2WZW69hw
-Message-ID: <CAFEAcA_-7oLAqqmq0buCKtt0sy_22_o3SwOiYrRTjxLug2Sjmw@mail.gmail.com>
-Subject: Re: Question on preferred location for QEMU sample projects
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- artem_mygaiev@epam.com, takahiro.nakata.wr@renesas.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>, Peter Xu <peterx@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Hildenbrand <david@kernel.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
+Subject: [PATCH v2 00/25] Handle sub-page granularity in cpu_memory_rw_debug()
+Date: Thu, 30 Apr 2026 10:37:45 +0100
+Message-ID: <20260430093810.2762539-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,60 +120,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 30 Apr 2026 at 05:48, Markus Armbruster <armbru@redhat.com> wrote:
->
-> Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
->
-> > On Mon, Apr 13, 2026 at 4:04=E2=80=AFPM Ruslan Ruslichenko
-> > <ruslichenko.r@gmail.com> wrote:
-> >> Yes, it would be good to include this project within the QEMU source t=
-ree.
-> >> To build the project, the mentioned SystemC, libsystemctlm-soc and
-> >> VCML libraries and their specific dependencies need to be built and
-> >> installed separately.
-> >> Would this approach be acceptable?
->
-> We have a few (small) examples under contrib/.  However, Peter (cc'ed)
-> has been trying to clean out that directory.
->
-> >>
-> >> Alternatively, is there an auxiliary repository within the QEMU
-> >> infrastructure that is better suited for these types of sample
-> >> projects,
-> >> perhaps somewhere under https://gitlab.com/qemu-project?
-> >>
-> >> --
-> >> BR,
-> >> Ruslan
-> >
-> > Hello Markus,
-> >
-> > Do you have any thoughts on the preferred location for this sample proj=
-ect?
 
+A while back we added support for targets having memory protection at
+a sub-page granularity in TCG: the target returns a CPUTLBEntryFull
+with a lg_page_size field that tells TCG how big a block of memory the
+translation covers. At the moment we only use this in Arm, for the
+M-profile and R-profile MPU which can set protections on small regions
+of memory.
 
-> Peter, what about you?
+However, we forgot about cpu_memory_rw_debug(), which still assumes
+that translations cover target-page sized regions. It rounds the input
+virtual address down to a page boundary, translates that, and then
+puts the offset within the page back in again. This causes problems
+for the Arm MPU case, because if the MPU is set up so that the memory
+at the rounded-down address isn't within a valid region then we
+incorrectly conclude that we can't read the memory at the address we
+were actually asked about.
+https://gitlab.com/qemu-project/qemu/-/work_items/3292 is a report of
+this for the semihosting case, but it applies also to general debug
+accesses.
 
-My general feeling is that we should not have sample projects
-in the QEMU repo, because I think they tend to degenerate into
-"this is old, unmaintained, and probably breaks without anybody
-noticing it". We have enough trouble with the code that is
-part of QEMU proper. This is why I am hoping we can clean
-up "contrib/" -- I don't want unmaintained code that nobody
-takes ownership of, and having a "contrib/" directory is like
-a big sign saying "dump your garbage here and run away".
+This series fixes this by providing and using a new
+cpu_translate_for_debug() function which takes a non-page-aligned
+virtual address and returns all of:
+ - the exact physical address for that virtual address
+ - the memory attributes
+ - the lg_page_size the translation is valid for
 
-If we do have sample projects, we would need to have a
-general approach to them which involved, for instance:
- * integrating them into our documentation, so that the
-   docs for the associated QEMU feature could refer to them
- * shipping them in 'make install' as part of the docs
- * some kind of automated testing that they still work
-   (by analogy with the way e.g. rust documentation code
-   snippets can be tested)
+Changes in v2:
+ - I noticed that I'd missed that a vapic.c callsite currently relies
+   on the i386 "always return a page-aligned result" behaviour;
+   patch 1 is new and makes it work with both "returns the page
+   address" and "returns the exact adress"
+ - fixed a TARGET_PAGE_BITS/TARGET_PAGE_SIZE mixup pointed out
+   in code review
+ - in the arm translate_for_debug patch, name a (preexisting) bool
+   variable 'fault' rather than 'ret' to help clarify that it is
+   true-on-failure
+ - the last 7 patches are new, and update callers of
+   cpu_get_phys_addr_debug() to use the new cpu_translate_for_debug();
+   this means we can remove cpu_get_phys_addr_debug() and
+   cpu_get_phys_addr_attrs_debug(), so there is only one API
+   now for doing debug virt-to-phys translations
 
-That's a lot of work.
+Further cleanup for once this series is accepted:
+ - we could convert the 15 targets using get_phys_addr_debug and the
+   two using get_phys_addr_attrs_debug to translate_for_debug, so we
+   only have one CPU method for phys-to-virt translations instead of
+   three
+
+Patches 1, 18, and 19-25 need review.
 
 thanks
 -- PMM
+
+Peter Maydell (25):
+  hw/i386/vapic: Cope with non-page-aligned return from
+    cpu_get_phys_page_debug()
+  target/riscv: Make get_phys_page_debug handle non-page-aligned addrs
+  target/alpha: Make get_phys_page_debug handle non-page-aligned addrs
+  target/microblaze: Make get_phys_page_attrs_debug handle
+    non-page-aligned addrs
+  target/sparc: Make get_phys_page_debug handle non-page-aligned addrs
+  target/x86: Make get_phys_page_attrs_debug handle non-page-aligned
+    addrs
+  target/s390x: Make get_phys_page_debug handle non-page-aligned addrs
+  target/ppc: Make get_phys_page_debug handle non-page-aligned addrs
+  target: Rename get_phys_page_debug to get_phys_addr_debug
+  target: Rename cpu_get_phys_page_{,attrs_}debug
+  hw/core: Update docs for get_phys_addr_{attrs_,}debug
+  target/arm: Rename arm_cpu_get_phys_page()
+  monitor: hmp_gva2gpa: Don't page-align cpu_get_phys_addr_debug() arg
+    and return
+  plugins/api.c: Trust cpu_get_phys_addr_debug() return address
+  hw/core: Implement new cpu_translate_for_debug()
+  hw/core: Implement cpu_get_phys_addr_attrs_debug() with
+    cpu_translate_for_debug()
+  target/arm: Implement translate_for_debug
+  system/physmem: Use translate_for_debug() in cpu_memory_rw_debug()
+  hw/i386/vapic.c: Use cpu_translate_for_debug()
+  target/sparc: Use cpu_translate_for_debug()
+  hw/xtensa: Use cpu_translate_for_debug()
+  target/xtensa/xtensa-semi: Use cpu_translate_for_debug()
+  monitor/hmp-cmds: Use cpu_translate_for_debug()
+  plugins/api.c: Use cpu_translate_for_debug()
+  Remove cpu_get_phys_addr_debug() and cpu_get_phys_addr_attrs_debug()
+
+ hw/core/cpu-system.c             | 47 ++++++++++++++++++--------------
+ hw/i386/vapic.c                  | 13 +++++----
+ hw/xtensa/sim.c                  |  6 +++-
+ hw/xtensa/xtfpga.c               |  6 +++-
+ include/hw/core/cpu.h            | 40 +++++++++++++++------------
+ include/hw/core/sysemu-cpu-ops.h | 39 ++++++++++++++++++++++----
+ monitor/hmp-cmds.c               |  8 ++----
+ plugins/api.c                    |  8 +++---
+ system/physmem.c                 | 38 ++++++++++++++++----------
+ target/alpha/cpu.c               |  2 +-
+ target/alpha/cpu.h               |  2 +-
+ target/alpha/helper.c            |  3 +-
+ target/arm/cpu.c                 |  2 +-
+ target/arm/cpu.h                 |  3 --
+ target/arm/internals.h           |  4 +++
+ target/arm/ptw.c                 | 39 +++++++++++++++-----------
+ target/avr/cpu.c                 |  2 +-
+ target/avr/cpu.h                 |  2 +-
+ target/avr/helper.c              |  2 +-
+ target/hppa/cpu.c                |  2 +-
+ target/hppa/cpu.h                |  2 +-
+ target/hppa/mem_helper.c         |  2 +-
+ target/i386/cpu.c                |  2 +-
+ target/i386/cpu.h                |  2 +-
+ target/i386/helper.c             |  4 +--
+ target/i386/whpx/whpx-all.c      |  2 +-
+ target/loongarch/cpu-mmu.h       |  2 +-
+ target/loongarch/cpu.c           |  2 +-
+ target/loongarch/cpu_helper.c    |  2 +-
+ target/m68k/cpu.c                |  2 +-
+ target/m68k/cpu.h                |  2 +-
+ target/m68k/helper.c             |  2 +-
+ target/microblaze/cpu.c          |  2 +-
+ target/microblaze/cpu.h          |  2 +-
+ target/microblaze/helper.c       | 11 ++++----
+ target/mips/cpu.c                |  2 +-
+ target/mips/internal.h           |  2 +-
+ target/mips/system/physaddr.c    |  2 +-
+ target/or1k/cpu.c                |  2 +-
+ target/or1k/cpu.h                |  2 +-
+ target/or1k/mmu.c                |  2 +-
+ target/ppc/cpu.h                 |  2 +-
+ target/ppc/cpu_init.c            |  2 +-
+ target/ppc/mmu-hash32.c          |  2 +-
+ target/ppc/mmu_common.c          |  4 +--
+ target/riscv/cpu.c               |  2 +-
+ target/riscv/cpu.h               |  2 +-
+ target/riscv/cpu_helper.c        |  4 +--
+ target/rx/cpu.c                  |  2 +-
+ target/rx/cpu.h                  |  2 +-
+ target/rx/helper.c               |  2 +-
+ target/s390x/cpu-system.c        |  2 +-
+ target/s390x/helper.c            | 20 ++++----------
+ target/s390x/s390x-internal.h    |  1 -
+ target/sh4/cpu.c                 |  2 +-
+ target/sh4/cpu.h                 |  2 +-
+ target/sh4/helper.c              |  2 +-
+ target/sparc/cpu.c               |  2 +-
+ target/sparc/cpu.h               |  2 +-
+ target/sparc/mmu_helper.c        | 23 ++++++++++++----
+ target/tricore/cpu.c             |  2 +-
+ target/tricore/cpu.h             |  2 +-
+ target/tricore/helper.c          |  2 +-
+ target/xtensa/cpu.c              |  2 +-
+ target/xtensa/cpu.h              |  2 +-
+ target/xtensa/mmu_helper.c       |  2 +-
+ target/xtensa/xtensa-semi.c      |  9 ++++--
+ 67 files changed, 246 insertions(+), 176 deletions(-)
+
+-- 
+2.43.0
+
 

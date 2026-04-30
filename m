@@ -4,87 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA4B9FF8873
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 15:18:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10094FF8873
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 15:20:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIT9h-0006sx-HP; Thu, 30 Apr 2026 11:18:21 -0400
+	id 1wITAq-0007oc-Rc; Thu, 30 Apr 2026 11:19:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wIT9f-0006ry-FD
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:18:19 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wITAg-0007ma-0W
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:19:23 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wIT9c-0004zR-UR
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:18:19 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-48374014a77so12729815e9.3
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 08:18:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wITAb-00058Y-Mv
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:19:19 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-7982c3b7dfcso11185927b3.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 08:19:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777562356; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Nikp0unRzonC+f0iXF7wvRhn/LcOdQqKqIOSLEndMvMKObC/1t4VK1lFsIHNtKnCQw
+ xqbbZ2FLIGGZCXQEUtZBJ2FeesFPEuroCSdVkQmRgawcfK7yQEelYo+EnnwB8r+VxsMD
+ yweNjyishx8SeSx49OKHHt0tREjU8zeiEh6QSpeIyaG/xPtUnXcsL9zbHD1ePD05Cfqb
+ +6g9v158Vi1/RNWIgJG3T5xEhnU7Es2WmrsvOohbv1ugMebcvsga7Dq4tGeC287Rzwfb
+ XkgZ9f4rQzvIphBsevqLCF/2IoRMA6tdo8GAdSNQKeNk5QDEu/ozO89SF/I7XmGMNWKq
+ tZag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
+ fh=h7QKGDsiTCSRE/0WMdOYSTXo250LmVrrYTcuDFzvMqE=;
+ b=CgiGObOxPjXz4vbyy6BwC6U7VJKPllwroywV0/PNbGMznUF2Miz0BmX8r/V5U7cfu+
+ mLg7OdZYb3Oy9HvV+7AQQ8tuRcRgYO72rf4WSCkaTPlJBewM3H6I994pKK3njlAyk2F+
+ cKUJVL4TdFyOLuGR+S4ZJy460QEXG3jYaZXd7JZiYA6raF7oJmjHihkl2PY9sJsTigKS
+ wWSPAsms7qIXZjf/GknYuXXF65HgU8TKkk8tv95g3n8+GVUj1q/zrfsjGnb+NU5iP0lA
+ ja2OQRocw8Mae5Hn5ISYXAmsH8bMIq+I304ravrzwYRpUZn2UNzjZlcxYSxWqs78M1bM
+ C7Sw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777562295; x=1778167095; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=aud8pDPxeNhXNTzV9GXGEznrMjuzzaYfxmv2pzhKJAg=;
- b=qkn8F0WhT662ZT/5mMt+eVxk12dGLf/zH9tD436+z9y+Qomkpev9IALnhoLCMfsWF2
- o4NgcgdRutvwxzivT+WfSoTGKznPDJnBgzjXXtOw+psLQmGMEuNM+HTa160c6uJRkgA+
- DrwOqjVAK/Hqpxsx3exhGX4jrJ3f6M70aLzxLIzz+Lb4BMuM3fp40gBxg3ZrhFqQueNk
- vEB/oelvl6zK0iKskDc4qYOilmfnA709ThDYVbEshN/yKfSG0xS6xlfgfBCl1vSMgiV1
- JVhqwTXrFCYZznqc5jUAnboPJuuvf518vWNmtFmiYeYBYUG0p13bFrFl3Emp1wZ44q4a
- sj9w==
+ d=linaro.org; s=google; t=1777562356; x=1778167156; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
+ b=qc6tBiCrTIC76Jdj9Zie91aHqUb4rDUKN44bEq5sYUDj5hLc7NIt/d5jDyfCIrMuTM
+ SMniVTpyfXuzPHCQIK/VRzRirLzzEr3RcKKXxPPi1uJi/HljOK1I8U7y05x9p8oSLnOo
+ 5R9qETKuuMCUDcBshqnSQ9AbiykdjDBa99arjryZWKYL7rV9e3Qj6a3d8dpYn7W5zBxi
+ yAmVN+d4Dqmf+RmbDETRoq0vvTmIcDxV/kb/ZrToH6uPfmtuFG1qpgAurQ5FbGQ7QNzQ
+ eH3rWkTABVEVr5vf01yFht5MHCm8EgP7MXgTjgRtuVX0IWlBfnlVb1KRpNRHadGRJYer
+ Jhew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777562295; x=1778167095;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=aud8pDPxeNhXNTzV9GXGEznrMjuzzaYfxmv2pzhKJAg=;
- b=hdPMF4L60QFS5UPbPNKrnwXAhhqVA4QtSlV6XAXb4AWo64Od5b7y8Vd74i8f2PrfUt
- 5vjX/KV4ccUc0Gf+IGk9jGASLEzJ5LRimRPz6Fy+cKMwwgzpszEvbVjLOM5B/b9wWZtm
- u3TBbnjrMHs7mhyJCc7dyNwFOpB//DOawG6+zyRfS1XaAKLqmuAAH119OhBQRFffCHyq
- j0ts7hUlFps1sPZU2R/ffJgXtqLLch0VZYHqqY/IWThDicYeUU0GWgs8Uhy05JvffP+E
- +WMRlZ2gm3Ri7hPI8sRA8+tFbEMKfsIAg111JFvYVCAte6AdH2IvEMoVOvTHssRDXB57
- g4vg==
+ d=1e100.net; s=20251104; t=1777562356; x=1778167156;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
+ b=o0k/WbohpEZLAhl4q9+Out4TgEHOzj/p7AeU/NNA5NjZUMuSwigi0iYxUP8WxsDsut
+ 6KewXGOOD4E8HErLq/p7Kamlr/py0mmhiJMq2DHo2JdSWdrCKvGAXZ2aS692Kk7UUpuS
+ 6SAPWJDCGCRGSqiK2lDxeFlchL4zcFGCs60f/sXXv8eDo3BdpUWs61fq6Ek7Xn1KW9qP
+ 4Mw5871ttHLl5sB+VIhEldGRsCn+fOpzNTX70HAwtKim0K3r+uMrytnLBUVl3U8pI2QF
+ pEL9rSSZqAomCgdadVqZZJKADjE8EluZF9OQtTqWaICTLDPBr7MazzKQTe5TCdoSrR2f
+ 8w1A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8yd/ohvv6u8yr1CWr3TsCTUoRtxx2tC+N+ARAwNfuXMKZ/ZaXFzv627/LZ/oGiVGRBB1W+GlZljw==@nongnu.org
-X-Gm-Message-State: AOJu0YzwWRismFWz6/fDUbPlXwEz55BwjYqE2P5mPz48wEnZ9T+AZgBf
- V5FpHE2hNcORfAH9szqairjColCUkFQ6BgR118UYE24YOum3v+7aYwb0OVo7Rf4hWzY=
-X-Gm-Gg: AeBDietkNJkZvnG1vXU4FGuyn0yVHz+KtqyyPt3+C1ZDQEUtORvJ136led5X9z2YvlG
- tsmpZnTRV7VT9I/1gRX6vOWsxWk5ZZkjeahXc1Ntmn8rJi2I3x69gO8rTritQVdCxlXCFb5RReA
- Fipm1Gres1RLnRy1/LrIf2ojmyPmPTc0dxGJ7Sfh+CVQgcXjE24gEjtXT1Gu3RhvMswIvys6ayB
- pgWrLHTuJ7qjLHwVKvaQpysYFDzN2x9tdLywGD1tUB83Ah1Wo6A4Q0ss5GAJH7JqM8C0PhE+zYh
- BrMFuqTTiQhgQTUuZ6z6MWb7fWALsAX1wcPGVtIbDKUFoTpCddM9gwZbTgjBH6J6+b5c6tvB+1v
- kImM0IMfXaE/41H5dhRu51kf9lnE/ZFrCzJrl5FHoYzmTWF7DJp57A3dGy+4G0OBwu0h/EyyU0U
- ray1mzF/PJlHL63tKi5Tf0tycBz8CmVP2qtJlHRkWGFDatcuQhoMm78bUVspAxlMRSZxtbMSR5t
- L7N
-X-Received: by 2002:a05:600c:3504:b0:489:5022:39a4 with SMTP id
- 5b1f17b1804b1-48a84441004mr54496165e9.9.1777562294579; 
- Thu, 30 Apr 2026 08:18:14 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b76e5c7csm13908244f8f.26.2026.04.30.08.18.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Apr 2026 08:18:13 -0700 (PDT)
-Message-ID: <4f90d39a-560f-4922-ac54-2c975dae249d@linaro.org>
-Date: Thu, 30 Apr 2026 17:18:13 +0200
+ AFNElJ/aC0CBLrNUwsnM2bdKQjZhILsLuolmAPLYRqBWVGjsBI+c/O6pvG7yOdVDbmQeEQ8Gl4Bo2hIQgA==@nongnu.org
+X-Gm-Message-State: AOJu0YxvVVUfjXhAv8G5IVn5VIes8cDZh+Wd4BxE2c7S3y6H032ySsy+
+ OteOJaxrdl08rJG+gbqZHYXLnw2DK6+nF2Uwg32kdpDLvmRVmol8AQpKeeUcTrXhjKPp8EDXbMe
+ Syfpn+O3GryU/z3xWTqxPB2SJYDNqYyeg03MBMlCY7g==
+X-Gm-Gg: AeBDiet83522bYXIF+UhAZ02cpiBDzH1SbSQMsCngpeGgTMyxq3SXkuNrkmueoeAdmq
+ aRZ5FgsEuQQuEIwY4FR2ZJT/W6RD+h/a4QdRLH2YMlZ4Koe8RxHT9QHpte3mnz4fupSEtznFdHL
+ f046DwNaF+uH8l+51IiTwt6hJaKk5NIQ1hh9uu22WmR+Rl5QzwbnjMKy172novVNE4f2gSJz/nK
+ AsJ4MMXJwQ+VMbC3I4fut6o5BJcU7u+8sCaALlpw9Zgq+obqDPrXBJfg2aQlmXX9ZlrWkFMPreB
+ Xzt6LCqbBOzq5DXNXo8eFpRlUjmJidxDcF+0yCgxrJam91QTSd+t8vFDIVnStMTGsiNBqweX5Tc
+ tzw==
+X-Received: by 2002:a05:690e:1698:b0:651:c782:6a8 with SMTP id
+ 956f58d0204a3-65c18b3e650mr2689922d50.15.1777562355894; Thu, 30 Apr 2026
+ 08:19:15 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 34/41] hw/arm/virt: free flash devices and OEM strings on
- finalization
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org
-References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
- <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
- <CAFEAcA-tSqa7SQUE-f5yTq_P9eW6p_XrnNSnHZjw4g=Z2WncAQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA-tSqa7SQUE-f5yTq_P9eW6p_XrnNSnHZjw4g=Z2WncAQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+References: <20260428093339.2087081-1-peter.maydell@linaro.org>
+ <20260428093339.2087081-3-peter.maydell@linaro.org>
+ <22ce7f65-39ee-45cb-a021-ac275d036f38@linaro.org>
+ <CAFEAcA8SpD+X0kLg-6kQ+TR2VSJqhtMpzQrfsOqEZE_EzfkW3Q@mail.gmail.com>
+ <afNyLaTjM2uz_wX8@x1.local>
+In-Reply-To: <afNyLaTjM2uz_wX8@x1.local>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 16:19:04 +0100
+X-Gm-Features: AVHnY4L8ffegCxy6WgVelwFpiPEguSAXzWiZn8Q-5hseD1q-jQs-MWIgp5jjCDs
+Message-ID: <CAFEAcA8V0p4TqLFhhh8Aokw2g=vqKkU4wc-kDnKSG1ceG-bqNA@mail.gmail.com>
+Subject: Re: [PATCH 2/4] hw/npcm7xx_fiu: Specify .impl for
+ npcm7xx_fiu_flash_ops
+To: Peter Xu <peterx@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Chao Liu <chao.liu.zevorn@gmail.com>, Tyrone Ting <kfting@nuvoton.com>, 
+ Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,47 +130,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 30/4/26 17:12, Peter Maydell wrote:
-> On Mon, 27 Apr 2026 at 20:45, Marc-André Lureau
-> <marcandre.lureau@redhat.com> wrote:
->>
->> Flash devices created in instance_init via qdev_new() hold an extra
->> reference that is only dropped on sysbus_realize_and_unref(). When the
->> machine is destroyed before realization, the flash objects leak. Also,
->> the oem_id and oem_table_id strings from g_strndup() are never freed.
->>
->> Fixes: 602b458201ff ("acpi: Permit OEM ID and OEM table ID fields to be changed")
->> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->> ---
->>   hw/arm/virt.c | 14 ++++++++++++++
->>   1 file changed, 14 insertions(+)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index f62253e1aba..fac825ccd47 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -4032,6 +4032,19 @@ static void virt_instance_init(Object *obj)
->>       cxl_machine_init(obj, &vms->cxl_devices_state);
->>   }
->>
->> +static void virt_instance_finalize(Object *obj)
->> +{
->> +    VirtMachineState *vms = VIRT_MACHINE(obj);
->> +
->> +    for (int i = 0; i < ARRAY_SIZE(vms->flash); i++) {
->> +        if (vms->flash[i] && !qdev_is_realized(DEVICE(vms->flash[i]))) {
->> +            object_unref(OBJECT(vms->flash[i]));
->> +        }
-> 
-> We currently use qdev_is_realized() almost nowhere in
-> the codebase. Isn't there some way to do this such that we
-> don't have to care about this because the object is
-> parented and gets auto-dereffed ? Having each object
-> have to care about the possibility of "inited but
-> not realized" devices in finalize seems like it's going
-> to result in a lot of bugs...
+On Thu, 30 Apr 2026 at 16:16, Peter Xu <peterx@redhat.com> wrote:
+>
+> On Wed, Apr 29, 2026 at 01:26:36PM +0100, Peter Maydell wrote:
+> > On Wed, 29 Apr 2026 at 08:38, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
+o.org> wrote:
+> > >
+> > > On 28/4/26 11:33, Peter Maydell wrote:
+> > > > Currently npcm7xx_fiu_flash_ops provides no .impl substruct; this
+> > > > means that it gets the default of "implements 1, 2 and 4 byte align=
+ed
+> > > > accesses".  This is more constrained than the device permits in its
+> > > > .valid substruct, and also narrower than the functions are written =
+to
+> > > > handle.
+> > > >
+> > > > Add a .impl substruct matching the .valid substruct; this means tha=
+t
+> > > > all guest accesses are handled directly by the read and write
+> > > > functions, and are never synthesized by the memory subsystem
+> > > > performing multiple accesses to the device (which would not behave
+> > > > correctly, as these read and write fucntions have side effects).
+> > >
+> > > Typo "functions".
+> > >
+> > > >
+> > > > Based-on-a-patch-by: CJ Chen <cjchen@igel.co.jp>
+> > > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > > > ---
+> > > >   hw/ssi/npcm7xx_fiu.c | 5 +++++
+> > > >   1 file changed, 5 insertions(+)
+> > > >
+> > > > diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+> > > > index 02707de350..2d5bed005a 100644
+> > > > --- a/hw/ssi/npcm7xx_fiu.c
+> > > > +++ b/hw/ssi/npcm7xx_fiu.c
+> > > > @@ -250,6 +250,11 @@ static const MemoryRegionOps npcm7xx_fiu_flash=
+_ops =3D {
+> > > >       .read =3D npcm7xx_fiu_flash_read,
+> > > >       .write =3D npcm7xx_fiu_flash_write,
+> > > >       .endianness =3D DEVICE_LITTLE_ENDIAN,
+> > > > +    .impl =3D {
+> > > > +        .min_access_size =3D 1,
+> > > > +        .max_access_size =3D 8,
+> > >
+> > > IMO this device should be adapted to have byte granularity ops handle=
+rs,
+> > > thus .max_access_size =3D 1.
+> >
+> > Looking at the implementation that doesn't look like it
+> > would be possible. The implementation does operations
+> > to start an SSI transfer, then transfers the number
+> > of bytes written. That makes "guest does an 8 byte
+> > write" different from "guest does 8 separate byte writes",
+> > and so the read/write fns need to really handle all
+> > the possible access sizes.
+>
+> I tend to agree.
+>
+> AFAIU, a split could cause non-atomic issues (even I'm not sure if there'=
+s
+> any need of it in reality..). Since the use of deposit64/extract64 should
+> mean they're ready for 8B accesses, then it sounds wise to support 8B.
 
-Why are we creating pflash devices if we aren't realizing them
-(thus not using them at all)? Destroying them when unneeded
-would avoid that manual cleanup, right?
+My guess from the fact this device previously didn't set .impl
+at all is that the author didn't realize (and we didn't catch
+in code review) that to define an MR that accepts the full
+range of widths and alignment you need to specify both .impl
+and .valid, and then they didn't notice it in testing because
+it works for 1..4 byte widths. Adding the .impl matching the
+existing .valid is I think changing the code to match the
+author intention.
+
+thanks
+-- PMM
 

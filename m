@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE35FF886F
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC35FF886F
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:42:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wINrL-0005ZA-JY; Thu, 30 Apr 2026 05:39:03 -0400
+	id 1wINrL-0005ZF-Iz; Thu, 30 Apr 2026 05:39:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINrE-0005ID-70
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:56 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1wINrF-0005Lj-Nq
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:57 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINr0-0002nI-2z
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:55 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-43d73352cf2so612524f8f.1
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:40 -0700 (PDT)
+ id 1wINr1-0002pw-C9
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:57 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4891cd41959so6386485e9.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777541919; x=1778146719; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777541922; x=1778146722; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xL8OwV5x8S3IokvAE6V255e7vRqVHIthpETVqBABDt4=;
- b=ozdklPecS9+5OuP1UBCB1EPBCjkDYOAsGNGfHVCE9WVnJVJSKIeW+fMHh86oxHFJdB
- nvkVLUwVztXS5ABkLitxyRNGn5mPCkkkAymX+x1q7JcGYEKTRqIveE297sbFbIfU6jVD
- 8aEOXxIlDLI8zOvrFstuRexAgpztTCqyoHUn+I3cyOkfolimWR9b6dcEY0OS/+h1oyjB
- tjlZehJhvKxZbIBGhMeLybZe/BzqKgfZCr+fRmkUwffoOvTYcnLNRzn9sqEkl8boUysT
- QoW9esrz5IwoftVQoW56x4u9n8pGGnlzyodjbh49LxuD5R/C7OcLK3zlV9MbgcnunbYH
- imNg==
+ bh=WCh2RmxvYZV/ZNYedrXNpgq7MB2RbmztWhGGLEAmQKE=;
+ b=NHMMIryZJ3T0hN38xfIijGnCf6Gw8wVkfFH1I+E29DBm1sJpIJZ0vsF9Dh8o/iKtiC
+ Bd93aGXbK/Js1KG9eRYV61nCmNTDrOWdVB2LNtpBNX+PGIXIJ8olM/IMDOcoP0E2KW7J
+ o7fGSV3UfSEzq/jl+U5whM0poja+AmzweendhOcIcxtiFTq6CEOLAeCf/fSvKwu4+1KZ
+ AwHBRFfb9IyCROYjEf23KbOtv4yvNcdRSOyINrsNNvWyJH8dFldZ1KGQx/4eQ7RviPwt
+ XhafervI6ScriK1YxUG3GuFGgEgc0MgdxnNi9nx2hl1JlBYSsHDi63sdFIqLieuHcJr8
+ YXPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777541919; x=1778146719;
+ d=1e100.net; s=20251104; t=1777541922; x=1778146722;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=xL8OwV5x8S3IokvAE6V255e7vRqVHIthpETVqBABDt4=;
- b=VpexMMRfZl9NYPc8q/LFwdVamNqhWhtX/xl4UIGaKaBcWbl4gqAIOVnTasisJ0Wfmz
- TrQdCJjivzNd9wz7QJJGOX17FaB964scDl3eKorPC7gqfs1yVH5MxmTAXuvoKpkyhIC/
- fsKFxe/j5PLjJOJ1K4tV+9OTMcRewN3fgj5wZvzsLcTynZrLdjZbc5TSDeO+BQvGAZpF
- qYmNF6VDv+CdJGrle+iVOeBnD7VXdH62nrN6YSaV1VNRp7Cou6Xz3ePZ+b66DKZ5RTKf
- ZZyEWYJDaNyxmGcCbVyqz8lMbCQ0NvOAjlONE6NKu9eDTl4MNeN7Lcqn9HtVCdRf2irj
- UcDw==
-X-Gm-Message-State: AOJu0Yw2/S+M3O+9aVqFfJ4GsEHyhJIOWbdLpHWZXEkS/Wbd1JCgDV6I
- sSRZBXOrRc1wkGYzmqbc8mMR2OcqyaNEJ4Fg2x/Dbs/BDhlh9Ps/TGXDtFHkOasY45bZkz5oj8h
- 8KxKs
-X-Gm-Gg: AeBDieutp6I4vXeE0eqh1B2LMcakI7MvshzE1Bp0MdY2PTvesRH9cWzvZSzApZlTug6
- ksDHGFP0Nzo9Hnj8BQ2Wnb4URLC2r4dkDizR+SQ7uV5wm/TWK6mHTt7C06b0Rq8MxitmU2sbeiI
- 6HNp0o9QgshlC5/eAriTXEYAgDJhWPmNAFanvN60ZIXYih9wLtEGzCtSjatUD/c7TTHvzjgldpn
- YozUEkQMcUi3vKUDvBGMxOKGvcrnrJoYc4fRWpcCFxCDt+pcTHgo8BX27jKA7ABMevlnt6hc2O3
- rLwIOFes8ZQ79ZRouLKFKbTg12gBZt8brsses3ilIVKha9g7rqIOvhZuLtg775fpkaIo3GnYSiA
- 5y1XQvzrqjbvwpH53lRUlRNY8+eUpVgTQgg5sLXimyulUdqAb+nEBBHBLMwk1i0YawnsCR4M8tA
- s00EFry6ELKLoKy7P9NjqkkSFj+jzd/vl424stYxiYqU9yv2mCKtOl4/D5NCASBLh3vZccTSbQR
- MlKJRLfiwUriMneM1I8abJ9ufe02cwhL/rRgJ4mbA==
-X-Received: by 2002:a05:6000:144b:b0:43d:7e6f:3816 with SMTP id
- ffacd0b85a97d-4493f42c2c2mr3374636f8f.40.1777541919166; 
- Thu, 30 Apr 2026 02:38:39 -0700 (PDT)
+ bh=WCh2RmxvYZV/ZNYedrXNpgq7MB2RbmztWhGGLEAmQKE=;
+ b=ZaBPRIyYy3sb8E0ItB3nNCaY8dG8PToYGpkYTUyxtW6e5PfJNoId18Q7P+Ra8PvKmr
+ Vg5EHsllJpck4fv6Y19gN2z3lmqUuFlQGavbXZ94hI2iJ4YMmp9MHuWl+b79Vlzsf23Q
+ dEs2iKtB1rNoKaqfXkAxXSvoJZdG2/ZmfTsso8Sbpe3EzH6BfhjWH8AXmuKr4QKfQBy4
+ 9j09EaNnUyAYmAh+DvBkk0lgou+7S4w2ZL/PjQCE451ILY9K67aLYKSmO+MUQK21PlOK
+ JybYrxsrwg/KBhX0cecqhVums1NQ371qh2JWkO/F6GcXznpK8xavbqnONnBUtycOw2nV
+ cyLw==
+X-Gm-Message-State: AOJu0YxJbsG/mU1jdbNLEqPPQ2PqevvgqCssFLc+KDf7gFRP3yUMTrok
+ LpnaPhu8MhVpg+7gzqH2Fu15jEAfBFiR8etk88sCIKpCJcKCqnCw9+thViTfPKRAIvY=
+X-Gm-Gg: AeBDiev6X/Aq2ZsXJu3AVxqqcHGzd+OOf7Ry2RfCCZjKHvWSQplnkH87fJHsnIPrzR5
+ FGlDoBaTTfV44gJQdrPkLTp7nEb1n6edqEodV/m/xE1CtJOFFX9VBCTOS4VB6Yv1VMb0COEg3XB
+ 8oP9WGvaXIlpko93DFSpDKZ2XmB5ti7Vn9z+/e7W/qQai5Dph4yFnIe0xPx4oT7AVYrDkBPzaNl
+ FSRkJnQBkZFjwUA0sHVIgTvQXcZ/6Fr4COODaAe8+k770P35djxoT2H+4LcMIopHUESnMe78pkB
+ ba6nDp49eFZReduZr6dZ4GpfbY2ND6zchpxWqDe5kiXiMMtVcU3kAt0CJG6RPq279ViCbZrUwOk
+ b0JWvQiP7mWjhf77NcNYErdXhHsUAQpC6ZgHjuaIwLtqFFU9iqS31nRGdX7g6snSKqM+4qhYStt
+ KMHn9hUUxlhJ01Xmp2GW8kMzZo3WXIMaFqh/AhSA2HIG/Xdpi6HP9yVmKGOdQ2uSY4rC1Sxkgna
+ JmvZw82aX5tlId/IBiI9hLGiV6LfAAi2eGs4ve89A==
+X-Received: by 2002:a05:600c:4594:b0:488:e7e4:8425 with SMTP id
+ 5b1f17b1804b1-48a8445d10cmr36275865e9.23.1777541921847; 
+ Thu, 30 Apr 2026 02:38:41 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.38
+ ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 02:38:38 -0700 (PDT)
+ Thu, 30 Apr 2026 02:38:40 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
@@ -91,23 +90,23 @@ Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  David Hildenbrand <david@kernel.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 21/25] hw/xtensa: Use cpu_translate_for_debug()
-Date: Thu, 30 Apr 2026 10:38:06 +0100
-Message-ID: <20260430093810.2762539-22-peter.maydell@linaro.org>
+Subject: [PATCH v2 23/25] monitor/hmp-cmds: Use cpu_translate_for_debug()
+Date: Thu, 30 Apr 2026 10:38:08 +0100
+Message-ID: <20260430093810.2762539-24-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260430093810.2762539-1-peter.maydell@linaro.org>
 References: <20260430093810.2762539-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,50 +123,40 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 We want to remove the cpu_get_phys_addr_debug() function; update the
-xtensa boards to use cpu_translate_for_debug() instead.
+HMP gva2gpa command implementation to use cpu_translate_for_debug()
+instead.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/xtensa/sim.c    | 6 +++++-
- hw/xtensa/xtfpga.c | 6 +++++-
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ monitor/hmp-cmds.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 32eb16442f..835cd04fe0 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -40,8 +40,12 @@
- static uint64_t translate_phys_addr(void *opaque, uint64_t addr)
+diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
+index f8380bda58..2acdcf7d78 100644
+--- a/monitor/hmp-cmds.c
++++ b/monitor/hmp-cmds.c
+@@ -713,18 +713,17 @@ void hmp_gva2gpa(Monitor *mon, const QDict *qdict)
  {
-     XtensaCPU *cpu = opaque;
+     vaddr addr = qdict_get_int(qdict, "addr");
+     CPUState *cs = mon_get_cpu(mon);
+-    hwaddr gpa;
 +    TranslateForDebugResult tres;
  
--    return cpu_get_phys_addr_debug(CPU(cpu), addr);
-+    if (!cpu_translate_for_debug(CPU(cpu), addr, &tres)) {
-+        return -1;
-+    }
-+    return tres.physaddr;
+     if (!cs) {
+         monitor_printf(mon, "No cpu\n");
+         return;
+     }
+ 
+-    gpa  = cpu_get_phys_addr_debug(cs, addr);
+-    if (gpa == -1) {
++    if (!cpu_translate_for_debug(cs, addr, &tres)) {
+         monitor_printf(mon, "Unmapped\n");
+     } else {
+-        monitor_printf(mon, "gpa: 0x%" HWADDR_PRIx "\n", gpa);
++        monitor_printf(mon, "gpa: 0x%" HWADDR_PRIx "\n", tres.physaddr);
+     }
  }
  
- static void sim_reset(void *opaque)
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index 256497e162..33a2d9485c 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -191,8 +191,12 @@ static PFlashCFI01 *xtfpga_flash_init(MemoryRegion *address_space,
- static uint64_t translate_phys_addr(void *opaque, uint64_t addr)
- {
-     XtensaCPU *cpu = opaque;
-+    TranslateForDebugResult tres;
- 
--    return cpu_get_phys_addr_debug(CPU(cpu), addr);
-+    if (!cpu_translate_for_debug(CPU(cpu), addr, &tres)) {
-+        return -1;
-+    }
-+    return tres.physaddr;
- }
- 
- static void xtfpga_reset(void *opaque)
 -- 
 2.43.0
 

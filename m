@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39F1CCD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 17:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D82CD13D3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 17:33:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIVAE-0004hp-IE; Thu, 30 Apr 2026 13:27:02 -0400
+	id 1wIVFw-0000xq-Dq; Thu, 30 Apr 2026 13:32:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIV9s-0003RB-Vj
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:26:43 -0400
-Received: from 10.mo533.mail-out.ovh.net ([46.105.72.194])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIVFW-0000ET-Em
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:32:33 -0400
+Received: from 12.mo533.mail-out.ovh.net ([178.33.248.79])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIV9o-0005j6-Hf
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:26:39 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4g61L94yVdz60bW;
- Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.211])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4g61L9154zz1yWl; Thu, 30 Apr 2026 17:26:25 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wIVFS-0007Pk-KT
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 13:32:29 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [51.68.94.138])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4g61T25SP3z61Nx;
+ Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.90])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4g61T232tbz7trq; Thu, 30 Apr 2026 17:32:22 +0000 (UTC)
 Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 98FE312E3B06;
- Thu, 30 Apr 2026 17:26:23 +0000 (UTC)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EA5D09416C6; 
+ Thu, 30 Apr 2026 17:32:20 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-110S0045a52405d-64cd-4768-82cf-e5c71d11a058,
+ (GARM-95G0018f7417ea-e8db-4db6-b72f-26738ce481e9,
  9F47DE0B15482FF6BC55B1CE858CC0DAC5AE7A4F) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 90.14.253.154
-Message-ID: <2b4f5cca-f064-4326-863c-9ab164e11c44@kaod.org>
-Date: Thu, 30 Apr 2026 19:26:22 +0200
+Message-ID: <261f2311-225f-4895-b1d8-0f0cf8811a60@kaod.org>
+Date: Thu, 30 Apr 2026 19:32:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
- write operations
-To: Kane Chen <kane_chen@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH 31/41] hw/arm/aspeed: free fmc_model and spi_model on
+ finalization
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: armbru@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
- <20260428055254.76581-2-kane_chen@aspeedtech.com>
+ qemu-arm@nongnu.org
+References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
+ <20260427-qom-tests-v1-31-c413f3605311@redhat.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -99,29 +96,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260428055254.76581-2-kane_chen@aspeedtech.com>
+In-Reply-To: <20260427-qom-tests-v1-31-c413f3605311@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 10430618215129394200
+x-ovh-tracer-id: 10531104782745971739
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEgGWTxKP2OrnC9CrTg7KM5rhzmqMsYXlRL5OXDqVkEp5ZazjpU5sB6KcjkXimWtlf3F63zWpprfqAJMGlaLNZamW2cx0JNyvNqOBQTYOeg+MjoLLEXsyHf67COpTMx4tsMEMHLwBFb7aSd2IlD5Oh1+oxEUV0jFPf6mEgQb4xz2nhETMnv1Tnd9WLkFX9fdpRhogPzHYVJOK8h/HqIUh8BAXzhw6KcWrvoZXwYCpnlQmGG11GueMxAF34isofA6j3qMKaIWZg49wIYK5JPXIokZ1cbK1TdJ71EPA6foUZSPmTZFv8c+Puv3X7uRCzeqLTRq8UWLo4ahb+5zXkNtQEHH1rPPZW3yij1T1O6U7BuZ9KTeFbPZ6yazqdmvAKEWxKu9lKKSk/tvwUF9KBMN+SdQTm5IdEf+o3+Fres2PDIN2HW9RRIUc2e5js4X8VUnGCnZnw/MT4NDB229LA64laoaAbvueNrSe9HEE0SCKG3QiTzuLmaL0TrLbyxjKI16Uo8Y/hCKb2UMCpQ3KbOmnSUlvzh56SmsBpaSmPLiiCDdsXMB1oBd5Q7VILB3HShuoA4766ZWWzOgMD0SSmq+Bwkhmtr0vBXU9Op7kMhaA4vDMO5mk9wqexfrt36Kb0i3sPPeflTPVahRfSt1+uvneYB0J1BXP37DETb5HoFPzaovg
-DKIM-Signature: a=rsa-sha256; bh=ktVqB4Cjr+fw3mxyKs0wKBnXRD6VXaPPYkedZgFeZs0=; 
+X-VR-SPAMCAUSE: dmFkZTFTIkxvobcF6oSVoAzrTjLrjV+nnpqae9MtzyUEVPscw4wrQh7sVN/1k2tD0Xu7TGr6f6rOJQC6krZ2CSSR6OckswrRFcbtgeirYgDjb+hMtB17EroG1aXMbBFBOM9lvQBngZwVZfDwX54Yp1crO9wpsWCeac4fTM6vv4iy/azjsjVN9kHrVomkmZA3F+u/X+nq0cKhRn0fc+CuEeBqLXKlGZRtodFckvrwyint9+9sPqA4+ixvd4OtcFKGG45IhqmFLdKmf1BFdazqBELi2a1xRf+h4mGleTSvMyLLq+l8++iVyhBuWhVZItxESDxM4N+B5a6umI2Gej+iWwBMLqJSlXJ24H/bW4pbKmr2qofR7emxwbggbCPpFcgyWWs9t74pvyVrFH5fb8R9Zz6fadXC63napkjbCbVF6PdDfmh1psz76kZAlcDChxk8zA+bXdz6QynpnLoyRLKK7O74YxCBGNSWlpdIHtcnzs6Kxf/+pc9ZEZ0UcFvYdlzASFJTqS1KTTRJzT43G6lbS7CCB1lmp06Tzh6xwvGMm8jCJdoJSB1yqSKHIm2NP23nYfRiDtdc4rhi4ZA5nKAkR6UKhGc++NGNhYvocEu2ePRBwTIHMfiglTKeHib8kGsbE08B8s7DLGOVZtsYWeyZGm7nm7GFn1xIbJDZxi6lX2Qddvsd9w
+DKIM-Signature: a=rsa-sha256; bh=Sl/KtSdQZKCGH0M8LhZHZBhUD+ERC5eTzHmT46PZ7BY=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1777569986; v=1;
- b=evvKmoOkrO7ho5p34NzsA5ubi5JPXdVA0Ki2gtazGensl5JZcDs+1MFgTL5szzMaFLXoC/oz
- OpdSqMA9V5clT6hdzI7rvR27iO1eMAlCUSBd/qi0/6/EM+wxMc4havn21EVIqkamIupzUfUFs7z
- 0ioFTTA3EkWnUgcKtDl6KwJ/KPlAH66ATK99nGt6NqnLIB1aO4e2bQdlObKNGDK3wonfC+xIaHi
- erUX9e7UCUew0l+bDvSzvCTTtGbRm2vxqaRMy9symcnxnt+atURctKtKpablsYKo79mTrKfXtVd
- ncb0nz9ZKq2u651Gm/TuAKdfNnpCEcFHPqeT8U3h3+T0A==
-Received-SPF: pass client-ip=46.105.72.194; envelope-from=clg@kaod.org;
- helo=10.mo533.mail-out.ovh.net
+ t=1777570343; v=1;
+ b=DY7ogC9pU4UYGy4s15bkLsCKm/wNzqTIkVdgN9zXQtV/Rd5w9TPmm5KqbJ7gbJpVpVNxZN4d
+ 74xkpsdTYyBYRD2JG0w6CWK7gcSuiam8m1wR5tXTBiAYpcTBI3mk0svO2tcZzQNxFA8fQ3OpaTs
+ YurTGu+FMw3ceDShev1OoaVbptPoS06IYRqVeHkhrjBPWAsGooLSbJmwDwlqJBDE9brWR4Fyljr
+ tb/5l1hJCscBq4JW2c6p9XCT+vQdw1CObhAwfubsEek0qaw6aIDRFPOhLGM+LulmOgvK2y5Gghq
+ sTax6/1xYP5n+FlDhmyE/A1d8aV32ig0NuthXz/jy4QMQ==
+Received-SPF: pass client-ip=178.33.248.79; envelope-from=clg@kaod.org;
+ helo=12.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -138,126 +135,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/28/26 07:52, Kane Chen wrote:
-> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
-> model in how the guest-provided address is handled.
-> aspeed_sbc_otp_prog() passes a word-indexed address directly
-> to address_space_write() without converting it to a byte offset,
-> whereas aspeed_otp_write() expects a byte offset and applies an
-> additional shift (otp_addr << 2). This double-shift confusion means
-> that an out-of-range word address can lead to a write beyond the
-> allocated storage.
+On 4/27/26 21:42, Marc-André Lureau wrote:
+> The fmc_model and spi_model strings are allocated via g_strdup in
+> property setters but never freed when the machine object is destroyed.
 > 
-> Fix this by adding bounds checking on the word offset before
-> converting to byte offset and passing to address_space_write().
-> This matches the existing bounds check in aspeed_sbc_otp_read().
-> 
-> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> Cc: qemu-stable@nongnu.org
-> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3436
-> Reported-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Fixes: 9820e52fbef7 ("hw/arm/aspeed: Add machine properties to define the flash models")
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->   hw/misc/aspeed_sbc.c  | 14 +++++++++++---
->   hw/nvram/aspeed_otp.c | 13 ++++++-------
->   2 files changed, 17 insertions(+), 10 deletions(-)
+>   hw/arm/aspeed.c | 9 +++++++++
+>   1 file changed, 9 insertions(+)
 > 
-> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index 065e822e70..8b74dca13c 100644
-> --- a/hw/misc/aspeed_sbc.c
-> +++ b/hw/misc/aspeed_sbc.c
-> @@ -159,13 +159,21 @@ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
->       MemTxResult ret;
->       AspeedOTPState *otp = &s->otp;
->       uint32_t value = s->regs[R_CAMP1];
-> +    uint32_t otp_offset = otp_addr << 2;
->   
-> -    ret = address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFIED,
-> -                        &value, sizeof(value));
-> +    if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "Invalid OTP addr 0x%x\n",
-> +                      otp_addr);
-
-This log event could be on one line.
-
-> +        return false;
-> +    }
-> +
-> +    ret = address_space_write(&otp->as, otp_offset, MEMTXATTRS_UNSPECIFIED,
-> +                              &value, sizeof(value));
->       if (ret != MEMTX_OK) {
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "Failed to write OTP memory, addr = %x\n",
-> -                      otp_addr);
-> +                      otp_offset);
->           return false;
->       }
->   
-> diff --git a/hw/nvram/aspeed_otp.c b/hw/nvram/aspeed_otp.c
-> index a60289000c..1a9d3841b8 100644
-> --- a/hw/nvram/aspeed_otp.c
-> +++ b/hw/nvram/aspeed_otp.c
-> @@ -57,12 +57,12 @@ static bool valid_program_data(uint32_t otp_addr,
->       return has_programmable_bits != 0;
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a3db3406c5f..a48c4420583 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -419,12 +419,21 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
+>       aspeed_machine_class_props_init(oc);
 >   }
 >   
-> -static bool program_otpmem_data(void *opaque, uint32_t otp_addr,
-> +static bool program_otpmem_data(void *opaque, hwaddr otp_offset,
->                                uint32_t prog_bit, uint32_t *value)
->   {
->       AspeedOTPState *s = opaque;
-> +    uint32_t otp_addr = otp_offset >> 2;
+> +static void aspeed_machine_instance_finalize(Object *obj)
+> +{
+> +    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
+> +
+> +    g_free(bmc->fmc_model);
+> +    g_free(bmc->spi_model);
+> +}
+> +
+>   static const TypeInfo aspeed_machine_types[] = {
+>       {
+>           .name          = TYPE_ASPEED_MACHINE,
+>           .parent        = TYPE_MACHINE,
+>           .instance_size = sizeof(AspeedMachineState),
+>           .instance_init = aspeed_machine_instance_init,
+> +        .instance_finalize = aspeed_machine_instance_finalize,
+>           .class_size    = sizeof(AspeedMachineClass),
+>           .class_init    = aspeed_machine_class_init,
+>           .abstract      = true,
+> 
 
-I think 'opt_addr' is a bit confusing. It's a word offset.
 
-valid_program_data() could also use an 'otp_offset' arg and
-I would introduce a small inline helper to replace variable
-'is_odd'
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
-
-
->       bool is_odd = otp_addr & 1;
-> -    uint32_t otp_offset = otp_addr << 2;
->   
->       memcpy(value, s->storage + otp_offset, sizeof(uint32_t));
->   
-> @@ -79,26 +79,25 @@ static bool program_otpmem_data(void *opaque, uint32_t otp_addr,
->       return true;
->   }
->   
-> -static void aspeed_otp_write(void *opaque, hwaddr otp_addr,
-> +static void aspeed_otp_write(void *opaque, hwaddr otp_offset,
->                                   uint64_t val, unsigned size)
->   {
->       AspeedOTPState *s = opaque;
-> -    uint32_t otp_offset, value;
-> +    uint32_t value;
->   
-> -    if (!program_otpmem_data(s, otp_addr, val, &value)) {
-> +    if (!program_otpmem_data(s, otp_offset, val, &value)) {
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Failed to program data, value = %x, bit = %"PRIx64"\n",
->                         __func__, value, val);
->           return;
->       }
->   
-> -    otp_offset = otp_addr << 2;
->       memcpy(s->storage + otp_offset, &value, size);
->   
->       if (s->blk) {
->           if (blk_pwrite(s->blk, otp_offset, size, &value, 0) < 0) {
->               qemu_log_mask(LOG_GUEST_ERROR,
-> -                          "%s: Failed to write %x to %x\n",
-> +                          "%s: Failed to write %x to %"HWADDR_PRIx"\n",
->                             __func__, value, otp_offset);
->   
->               return;
 
 

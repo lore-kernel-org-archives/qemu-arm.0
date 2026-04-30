@@ -4,117 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10094FF8873
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 15:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FEBCCD13DA
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 15:27:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wITAq-0007oc-Rc; Thu, 30 Apr 2026 11:19:32 -0400
+	id 1wITI6-0001gz-P9; Thu, 30 Apr 2026 11:27:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wITAg-0007ma-0W
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:19:23 -0400
-Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wITAb-00058Y-Mv
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:19:19 -0400
-Received: by mail-yw1-x112a.google.com with SMTP id
- 00721157ae682-7982c3b7dfcso11185927b3.0
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 08:19:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777562356; cv=none;
- d=google.com; s=arc-20240605;
- b=Nikp0unRzonC+f0iXF7wvRhn/LcOdQqKqIOSLEndMvMKObC/1t4VK1lFsIHNtKnCQw
- xqbbZ2FLIGGZCXQEUtZBJ2FeesFPEuroCSdVkQmRgawcfK7yQEelYo+EnnwB8r+VxsMD
- yweNjyishx8SeSx49OKHHt0tREjU8zeiEh6QSpeIyaG/xPtUnXcsL9zbHD1ePD05Cfqb
- +6g9v158Vi1/RNWIgJG3T5xEhnU7Es2WmrsvOohbv1ugMebcvsga7Dq4tGeC287Rzwfb
- XkgZ9f4rQzvIphBsevqLCF/2IoRMA6tdo8GAdSNQKeNk5QDEu/ozO89SF/I7XmGMNWKq
- tZag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
- fh=h7QKGDsiTCSRE/0WMdOYSTXo250LmVrrYTcuDFzvMqE=;
- b=CgiGObOxPjXz4vbyy6BwC6U7VJKPllwroywV0/PNbGMznUF2Miz0BmX8r/V5U7cfu+
- mLg7OdZYb3Oy9HvV+7AQQ8tuRcRgYO72rf4WSCkaTPlJBewM3H6I994pKK3njlAyk2F+
- cKUJVL4TdFyOLuGR+S4ZJy460QEXG3jYaZXd7JZiYA6raF7oJmjHihkl2PY9sJsTigKS
- wWSPAsms7qIXZjf/GknYuXXF65HgU8TKkk8tv95g3n8+GVUj1q/zrfsjGnb+NU5iP0lA
- ja2OQRocw8Mae5Hn5ISYXAmsH8bMIq+I304ravrzwYRpUZn2UNzjZlcxYSxWqs78M1bM
- C7Sw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777562356; x=1778167156; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
- b=qc6tBiCrTIC76Jdj9Zie91aHqUb4rDUKN44bEq5sYUDj5hLc7NIt/d5jDyfCIrMuTM
- SMniVTpyfXuzPHCQIK/VRzRirLzzEr3RcKKXxPPi1uJi/HljOK1I8U7y05x9p8oSLnOo
- 5R9qETKuuMCUDcBshqnSQ9AbiykdjDBa99arjryZWKYL7rV9e3Qj6a3d8dpYn7W5zBxi
- yAmVN+d4Dqmf+RmbDETRoq0vvTmIcDxV/kb/ZrToH6uPfmtuFG1qpgAurQ5FbGQ7QNzQ
- eH3rWkTABVEVr5vf01yFht5MHCm8EgP7MXgTjgRtuVX0IWlBfnlVb1KRpNRHadGRJYer
- Jhew==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wITI4-0001gX-3p
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:27:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wITI2-0007Ei-Bp
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:26:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777562817;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=AfuLjk0ckcITtpdP7fbvc86SvFMubnat1hWAe5rmLlc=;
+ b=EiNomSH4OwX4DNvuPhDj579cFb/I5oI2QUJ5W6BgPEAiTdxgiH6JXIBy7tIuo5Qk09x+RY
+ 4hci+V4aNz8JbZrt6q7NjVm2VlvevoZFTNYJsGCsxn1x+ct8tEIy3tKaAfhi93nmOeKNA+
+ 741rsU8cfM7I14Yj0+RUWj6Qk2ktOWU=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-648-aJBD54BwOGyT96tUoiu0mA-1; Thu, 30 Apr 2026 11:26:55 -0400
+X-MC-Unique: aJBD54BwOGyT96tUoiu0mA-1
+X-Mimecast-MFC-AGG-ID: aJBD54BwOGyT96tUoiu0mA_1777562815
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-8a1accb970fso26665886d6.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 08:26:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777562356; x=1778167156;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=/JG22Ej56EUWFFEmowD0xO80QDs/wj1cEGKJ/VNon7c=;
- b=o0k/WbohpEZLAhl4q9+Out4TgEHOzj/p7AeU/NNA5NjZUMuSwigi0iYxUP8WxsDsut
- 6KewXGOOD4E8HErLq/p7Kamlr/py0mmhiJMq2DHo2JdSWdrCKvGAXZ2aS692Kk7UUpuS
- 6SAPWJDCGCRGSqiK2lDxeFlchL4zcFGCs60f/sXXv8eDo3BdpUWs61fq6Ek7Xn1KW9qP
- 4Mw5871ttHLl5sB+VIhEldGRsCn+fOpzNTX70HAwtKim0K3r+uMrytnLBUVl3U8pI2QF
- pEL9rSSZqAomCgdadVqZZJKADjE8EluZF9OQtTqWaICTLDPBr7MazzKQTe5TCdoSrR2f
- 8w1A==
+ d=1e100.net; s=20251104; t=1777562815; x=1778167615;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AfuLjk0ckcITtpdP7fbvc86SvFMubnat1hWAe5rmLlc=;
+ b=Bb1ydF/qcEYxNKHcVdA7YN0E9PO3YoKgMQ2uU6U0xMg1oILHideURIZSedjEa076gM
+ TkBLhuLmSDn9a3AFaTMW2DcUjWQzF1wqwqut09kQ8dLXqDtmAcSIZMfue3LfJwJmrjug
+ Cm7F6RO0fHRhi9sep64ZuTXxwTdW+W5qZUKrSkLCONWTmXSQgScUqa2k36Du7Y40v7CK
+ Ddx0ydU5t8yzZC3GYm+EgN1cQXjYvoUCcGFhhdeeTQXWqIj2N/x/Vo4X1HF2Ea9aHAuh
+ r4FFDoPLmj3xrrA/r7vb3PReInGYyAJ8pNrny9vnZBUeeFdXWDfR5oijv6QrIjNBz3KR
+ ANkg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/aC0CBLrNUwsnM2bdKQjZhILsLuolmAPLYRqBWVGjsBI+c/O6pvG7yOdVDbmQeEQ8Gl4Bo2hIQgA==@nongnu.org
-X-Gm-Message-State: AOJu0YxvVVUfjXhAv8G5IVn5VIes8cDZh+Wd4BxE2c7S3y6H032ySsy+
- OteOJaxrdl08rJG+gbqZHYXLnw2DK6+nF2Uwg32kdpDLvmRVmol8AQpKeeUcTrXhjKPp8EDXbMe
- Syfpn+O3GryU/z3xWTqxPB2SJYDNqYyeg03MBMlCY7g==
-X-Gm-Gg: AeBDiet83522bYXIF+UhAZ02cpiBDzH1SbSQMsCngpeGgTMyxq3SXkuNrkmueoeAdmq
- aRZ5FgsEuQQuEIwY4FR2ZJT/W6RD+h/a4QdRLH2YMlZ4Koe8RxHT9QHpte3mnz4fupSEtznFdHL
- f046DwNaF+uH8l+51IiTwt6hJaKk5NIQ1hh9uu22WmR+Rl5QzwbnjMKy172novVNE4f2gSJz/nK
- AsJ4MMXJwQ+VMbC3I4fut6o5BJcU7u+8sCaALlpw9Zgq+obqDPrXBJfg2aQlmXX9ZlrWkFMPreB
- Xzt6LCqbBOzq5DXNXo8eFpRlUjmJidxDcF+0yCgxrJam91QTSd+t8vFDIVnStMTGsiNBqweX5Tc
- tzw==
-X-Received: by 2002:a05:690e:1698:b0:651:c782:6a8 with SMTP id
- 956f58d0204a3-65c18b3e650mr2689922d50.15.1777562355894; Thu, 30 Apr 2026
- 08:19:15 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260428093339.2087081-1-peter.maydell@linaro.org>
- <20260428093339.2087081-3-peter.maydell@linaro.org>
- <22ce7f65-39ee-45cb-a021-ac275d036f38@linaro.org>
- <CAFEAcA8SpD+X0kLg-6kQ+TR2VSJqhtMpzQrfsOqEZE_EzfkW3Q@mail.gmail.com>
- <afNyLaTjM2uz_wX8@x1.local>
-In-Reply-To: <afNyLaTjM2uz_wX8@x1.local>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 16:19:04 +0100
-X-Gm-Features: AVHnY4L8ffegCxy6WgVelwFpiPEguSAXzWiZn8Q-5hseD1q-jQs-MWIgp5jjCDs
-Message-ID: <CAFEAcA8V0p4TqLFhhh8Aokw2g=vqKkU4wc-kDnKSG1ceG-bqNA@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/npcm7xx_fiu: Specify .impl for
- npcm7xx_fiu_flash_ops
-To: Peter Xu <peterx@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
+ AFNElJ8n3OCNFfGWdjhpzjdqYjRM/+/S+VSmarTFdgiQJyK7XaxyG7DdQy7Ns5/BBBqKqDDaHtG13hKQRg==@nongnu.org
+X-Gm-Message-State: AOJu0YwA+M5BTlXxuP8Z6AKn0MjPvxdu+Vwb4LWdR/c7sO+gd+1TjMsf
+ d3ZMK+2YkWW/NOfczMaJcCvbw1AcOls4Wau5JeOFdDnUIUS6LyopTT8aWHq5Fa8p89LhrCdudmI
+ a1nFVI8ysH1zPZvq8qxRgm5MhgSwarI89Nxp8rH0crUhKVGCkZ5PD9A==
+X-Gm-Gg: AeBDiesw2nBMUbxkf2WUqA061NR3GnJ2Qsq14S9O8lPvL3hMx01MXnFJ9D3Fk/3NWjs
+ q08R7IgNZbwBlBoSRmBEVr1KDJDy6W9QKz1JRsy8fq3Sf3SC2tTJUWA1jsYTZD6TbDf8rfyyo/K
+ St3vF3JRWTXaNKJs92XdIqsU+sRgyXw5cListZNT7dgfhnJg7vOF2Ym6Qh8cUl5WFTK+FeDgrBK
+ x/hBrlVQT31yxq2Uq5fFcjPwZ5Urqd0ZRUUrJjig+voXxamBBbG0izuWRwTqunTsi+SDjHM46xK
+ 2lXY6D/OM6tw8MjPfC5RPLgusO1QPXearFCCM/+VEuOa/Mg8y5AVdydTHGqoR/K+0fBFOXJE0pm
+ G8dtGlBbXBmZB3v5a1YcYv6jzpgO1yAGSg6R/SoBh+LFKJVMdimptsXo0GA==
+X-Received: by 2002:a0c:e005:0:b0:8b0:2fbd:8e28 with SMTP id
+ 6a1803df08f44-8b3fe77eaeemr42081666d6.5.1777562814917; 
+ Thu, 30 Apr 2026 08:26:54 -0700 (PDT)
+X-Received: by 2002:a0c:e005:0:b0:8b0:2fbd:8e28 with SMTP id
+ 6a1803df08f44-8b3fe77eaeemr42081176d6.5.1777562814358; 
+ Thu, 30 Apr 2026 08:26:54 -0700 (PDT)
+Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-8b3ff057fb7sm21033286d6.0.2026.04.30.08.26.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Apr 2026 08:26:53 -0700 (PDT)
+Date: Thu, 30 Apr 2026 11:26:52 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu.zevorn@gmail.com>, Tyrone Ting <kfting@nuvoton.com>, 
- Hao Wu <wuhaotsh@google.com>, Max Filippov <jcmvbkbc@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>,
+ Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 0/4] MemoryRegionOps .impl cleanups
+Message-ID: <afN0vAmIwRXnOz_Q@x1.local>
+References: <20260428093339.2087081-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+In-Reply-To: <20260428093339.2087081-1-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: YltmXrpJYzDB_r3OeqbAfXv2wre0cGm0rg-pIIZzR1Q_1777562815
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,78 +116,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 30 Apr 2026 at 16:16, Peter Xu <peterx@redhat.com> wrote:
->
-> On Wed, Apr 29, 2026 at 01:26:36PM +0100, Peter Maydell wrote:
-> > On Wed, 29 Apr 2026 at 08:38, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
-> > >
-> > > On 28/4/26 11:33, Peter Maydell wrote:
-> > > > Currently npcm7xx_fiu_flash_ops provides no .impl substruct; this
-> > > > means that it gets the default of "implements 1, 2 and 4 byte align=
-ed
-> > > > accesses".  This is more constrained than the device permits in its
-> > > > .valid substruct, and also narrower than the functions are written =
-to
-> > > > handle.
-> > > >
-> > > > Add a .impl substruct matching the .valid substruct; this means tha=
-t
-> > > > all guest accesses are handled directly by the read and write
-> > > > functions, and are never synthesized by the memory subsystem
-> > > > performing multiple accesses to the device (which would not behave
-> > > > correctly, as these read and write fucntions have side effects).
-> > >
-> > > Typo "functions".
-> > >
-> > > >
-> > > > Based-on-a-patch-by: CJ Chen <cjchen@igel.co.jp>
-> > > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > > > ---
-> > > >   hw/ssi/npcm7xx_fiu.c | 5 +++++
-> > > >   1 file changed, 5 insertions(+)
-> > > >
-> > > > diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
-> > > > index 02707de350..2d5bed005a 100644
-> > > > --- a/hw/ssi/npcm7xx_fiu.c
-> > > > +++ b/hw/ssi/npcm7xx_fiu.c
-> > > > @@ -250,6 +250,11 @@ static const MemoryRegionOps npcm7xx_fiu_flash=
-_ops =3D {
-> > > >       .read =3D npcm7xx_fiu_flash_read,
-> > > >       .write =3D npcm7xx_fiu_flash_write,
-> > > >       .endianness =3D DEVICE_LITTLE_ENDIAN,
-> > > > +    .impl =3D {
-> > > > +        .min_access_size =3D 1,
-> > > > +        .max_access_size =3D 8,
-> > >
-> > > IMO this device should be adapted to have byte granularity ops handle=
-rs,
-> > > thus .max_access_size =3D 1.
-> >
-> > Looking at the implementation that doesn't look like it
-> > would be possible. The implementation does operations
-> > to start an SSI transfer, then transfers the number
-> > of bytes written. That makes "guest does an 8 byte
-> > write" different from "guest does 8 separate byte writes",
-> > and so the read/write fns need to really handle all
-> > the possible access sizes.
->
-> I tend to agree.
->
-> AFAIU, a split could cause non-atomic issues (even I'm not sure if there'=
-s
-> any need of it in reality..). Since the use of deposit64/extract64 should
-> mean they're ready for 8B accesses, then it sounds wise to support 8B.
+On Tue, Apr 28, 2026 at 10:33:35AM +0100, Peter Maydell wrote:
+> This patchset is some fixes to MemoryRegionOps that were
+> accidentally setting odd .impl values, plus an extra assert
+> that we can now add that a MemoryRegionOps doesn't set
+> .impl.unaligned true but .valid.unaligned false. They're
+> originally from the CJ Chen / Tomoyuki Hirose patchset that
+> aims to support proper synthesis of unaligned accesses in
+> the memory system core. I still want to get that patchset
+> upstream, but for the moment this is a set of simple
+> cleanups:
+> 
+>  * riscv_iommu_trap_ops set .impl.unaligned but not
+>    .valid.unaligned
+>  * npcm7xx_fiu_flash_ops failed to set any .impl at all
+>  * xtensa_mx_pic_ops failed to set any .impl, and was
+>    less strict than it could be about .valid
+> 
+> Patches 1 and 4 have been reviewed.
+> 
+> thanks
+> -- PMM
+> 
+> CJ Chen (2):
+>   hw/riscv: iommu-trap: remove .impl.unaligned = true
+>   system/memory: assert on invalid MemoryRegionOps .unaligned combo
+> 
+> Peter Maydell (2):
+>   hw/npcm7xx_fiu: Specify .impl for npcm7xx_fiu_flash_ops
+>   hw/xtensa/mx_pic: Specify xtensa_mx_pic_ops .impl settings
 
-My guess from the fact this device previously didn't set .impl
-at all is that the author didn't realize (and we didn't catch
-in code review) that to define an MR that accepts the full
-range of widths and alignment you need to specify both .impl
-and .valid, and then they didn't notice it in testing because
-it works for 1..4 byte widths. Adding the .impl matching the
-existing .valid is I think changing the code to match the
-author intention.
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-thanks
--- PMM
+-- 
+Peter Xu
+
 

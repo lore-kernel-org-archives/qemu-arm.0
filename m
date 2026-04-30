@@ -4,100 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3179FF8873
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 15:40:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21EB1FF8873
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 16:10:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wITUm-0005jv-7T; Thu, 30 Apr 2026 11:40:08 -0400
+	id 1wITy2-0002er-Rt; Thu, 30 Apr 2026 12:10:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wITUi-0005g6-DA
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:40:04 -0400
+ id 1wITxv-0002Vo-4X
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 12:10:15 -0400
 Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wITUg-0001w9-Bu
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 11:40:03 -0400
+ id 1wITxs-00013V-Jk
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 12:10:14 -0400
 Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-64e87a81639so991962d50.0
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 08:40:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777563601; cv=none;
+ 956f58d0204a3-65492d097acso1017338d50.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 09:10:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777565411; cv=none;
  d=google.com; s=arc-20240605;
- b=eNmcyooGYSdzBfAdYQxqybtjyBm1rF+WF38iQvmDOdsuba1Y9rp6bhcDA8StmVWASe
- uwTr0iVIm5yN/WzHGvBKJxs0BeGeAaRmpKArkqtoDWtoFfUrC5XL+TiLw9GD6RjLC9E2
- ULLErsyOd3Sdnzq0Yrw4maekuFBMTkH36JvAHHJzWB0ywsgWcgCnuqO7px02wixgfYkO
- CaHS+UnFfmpz8XEDm9l+ILazL8/1Kgs+h+0yIT8Ln68+ojtpkv5XRG/vWSJV7t7902xv
- H1cEvuQSZpSDbGJLfhdzrKwTGpqLZ5vpsRezauZ6a6TLaPJqEXFeB2nE4fvWpBpicnq4
- AiQw==
+ b=AI/xS071qu6zcxhiv6SOTIvz0jN+k32uiqtuFoa1+Q+O7ByYIyFTW2emMtdFMYPIr6
+ EYVKoQyP3t6sqhl5V7iUwMID2B4zSMzVFNZ+HILjGAZfjJReKv1JdJf3HPFRTNTPP4Pg
+ Y9gbWwhET8SjSpHp+Gs+J7CBrxIS4YAsZC7yG5snMq4Rw0ZpOkeMP1F88UtZlhq1UoDl
+ R+yc4ktVJRpfnD4XXSaKxrpwAW5s82IgG1g0Px3/QLqlpfo2wk8LWG/gKkBkUgd6lmCe
+ tQ9iNooGjoKmbCIlSVH6l0tWM5cEQ59/Yfc85dlAEOeXuKygTmbYz4cKWeYrQAxw+pwL
+ KIRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
- fh=5cPsl/bc2rMqjSi2Lnwp+mOaI18KTT72XS0xqClF2Kk=;
- b=c7W31+NrNgEqoycynVBiyiCQ/KYRrVjIqhD/GZqRVaaaX0cy27yb2U79dMfaOhHaEj
- 8boM7CFPncI8ZwPEXjWQAIWv5F3YmP3/JARSMX1gJI16VjSAOqz3t1hgb0hm9VrRi+t/
- CPm7LdFD/FcUSNdc5VcNdH7U8cgQ7QEDRDF80FtQ6bm+JVI17veNBrHJg0uT6JrtIBsz
- uMHiKNitQqNiTQ1ZqsSsBDP7UPzvHuhxSRVAVK7rv96G3oSPGidliNGt8wwxjvd9fiel
- yKPz/yt7F/uT37XSkPyPOW0EviELDae8WIzhgd7cNwe69zmtSuQQCfMxo6sYVsyNavMv
- xLrA==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=yIRhBPiNG2fZPL4JkXkwwlyyh7IKbh7lsx43tGMtUXg=;
+ fh=2hLFU2N63d02t6JpB/A1XfvISTZyAWaPecggrvHMT54=;
+ b=Gtsdng+v0LntuaGEGHGXS9j7CDzEGGd4ENqJVl/bN0HESXzPAPZq7zlnZVPw3ETaCP
+ MN8+bxpBplc+vJuBlwhoQg2hEZ53kTGqPi2dUYwiLhTuCNKwPb5TgxGd+MCySZS4XpG1
+ GPtmPihl1a1sUjJfaNsBncXs0PBndXgFPpqpQbkKyMAeXqeZFF6vVT7JCLuLgzYAohP3
+ 7ExmZDn8IMnStJnK+AyQHu77C8sQLdGj7LOB6wT1BDLHnpzkKnHt7VZYlv9bM6f0b2lr
+ 8PnVfkqHAWaOMdyoLBdg8wvBlP1kDaPwYbGSYnk4yWedAcx2TBirU6vDT7E+TG/mTjWs
+ uXhA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777563601; x=1778168401; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
- b=VwKL/nJkikvNyFYp6LoqNCS5hZOwiL2C2KoXYAYje169uarkMz39pDaRv8szXZDR4d
- 4sV/ERlL6OxZWOcXp8SVJL6xG0G5MUL5hA48sDc2UZR6f3SvxJCEYmX2HenBFIfaipY1
- mJF3ua8PUnD+xvZjIyqJv+SUdPUcX09tCG91Z1+2ndKvJXy8kz1N/wkVRPfaDQIL63iq
- RpDyR/WHdJlJpteD31M+Q7NMskWvN9c13V0OzFESNuMMNIWaTZLbzp8XzRtuT75X17a/
- 8Cpb69OON7wIVmOhqHnVzaat756y6RQSHNn9s9twpsUZ5yFA4pdzPntW5Hu1YsQlKVw1
- BmRQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777563601; x=1778168401;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777565411; x=1778170211; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
- b=Xrat5QaGqQLFAbeuLGg5eqHwbmkEhBJX2SKisj0yn08nsp7UeQGkjO9NUuCR9s38tK
- aQxsk9HFb62SbNNBXf/0VqSpPvQDnxr1B27fKov1YrAnalE+dewv84h7sfRfDnW3IutS
- nBvsjyVkVQuKrBdzPFTQrqfS0SjVvtgdUD9PJfBD18l6o7kCLRq1ttfKb3PcTQY/rawm
- M71/plKUNzjtJnh4CH1WAxw0wszS+NUrDAKi5gOA1yZMoT5JjC32GKnXgWWBka89fULU
- jD3oLiC+UMaVIzNsHHuDZZ9TLnvg21U21/rfnAgI+XXQAfmbM3/fE7oY0vZH5oBySsBF
- O8tw==
+ bh=yIRhBPiNG2fZPL4JkXkwwlyyh7IKbh7lsx43tGMtUXg=;
+ b=ue+6m8KGWYjmpDFKfDYhUEniFARbtv3+JSp3fOlB/l4dHAY/mi5uCWp8ClpvHWJ01a
+ clS8qruu9ub50BM5x7aXjZXtpSdeuo8u9P/TrXfrJpHn3AYGfmb51GcAUuYLZJ4kANEd
+ 9xrcIJr1EoodQdm1xTPLJp0VZ/AwQNDFJ6kBu3iOh/HvwmsjObjunW2vbLxfGfXOfQ8f
+ 5DsUMF/qmyVfkdE5L6QS5x7tXXN68w7WI7w4BPvbVWNp9+StJVY+fJ0YLkJMEcGFZkE1
+ EEizUmH2JzfVFOguerkdHAXYG1M742OGDnNZOBjCOt+auTEg+Y+e/gnETu/0RMKnQLl1
+ HpUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777565411; x=1778170211;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=yIRhBPiNG2fZPL4JkXkwwlyyh7IKbh7lsx43tGMtUXg=;
+ b=SDdSXOXlVjlikaZiBmqbSoOokY0kTPHDqHb5uztefhT4lAIU+TmHOU97q/PzxK4Tva
+ 04Vq15cw88zjiDboqUA/0xkWrNh0AV2lwbV7dvuq1gEN9JyXFSGB77puAL8YJ++E7wl/
+ hZSCmB3MOICJCWb4dqm6lcejmpqA9P4tWSvf2ETduaT/aZvY2srK0tJ2dkF8wlgc1j/2
+ MkMpDBM5aHt9nIdxTXAZejXEfjCrEo5bYYl57EzPYvDis5o/5vgxvGrCRxnSv1JGU1PN
+ 4mvsEAq+DOjdvAxEzR/vEQGlFJ/a/7m886d+LxsaV07joSknWPw2T9xLzNKw7DBI0TKD
+ PtGQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+v67BQHXeBnv05TSmbzpaVRWCWZhsRAjFVIh9vlGHkiAE3SoTByqEZRM/+srysaEshSiaEGX47+g==@nongnu.org
-X-Gm-Message-State: AOJu0YwCYt9TyT/HN/DvLb9Leu0sURz/appkar6ah5vfPstix7Gvqdmr
- Git3Tk9CN4zfkFGDDIK7mcTURsltl2N1NrZ3KYfXhIxyYbYHf+pzzIhFFOfubxuTOlO9bVHWggV
- xK/5JNk7i6iADwwlEZqSqYRvcxKqX9oX2pGlIfWYACA==
-X-Gm-Gg: AeBDiesWxwS5fn8xoaNYRXkecR6SkB1TyJw3tHyUxKU8xxl/uENIqn/5TTFZJkA12ih
- lOlC+LM3i4MH6JBSf1wrftls295eutI5ZFhtk8z1Pp+WkM6oyhdR2tUJHTxtzVtqahwrCoCtziz
- PWP5/w8dM7k8OEZBMo9Dd7Xh5/FqfDfhBAGaPmyRpq3It2AYdRwjZp+08TsOPErAz6i7XQ2LxHi
- 6V0lN0lTjX7+01+BODbYFLUTNeR46K+PBdQHNoXbTgLFhxszsOKHF6gWj6lXIj0mSE2yhpU3lFk
- 3bZ8QmQWKixJ31sZ8eIPQTDDiTA6idVn3AbGefP52zPIQMXonl0GaFgwqSGRuK3MNt5C408CFdT
- eNg==
-X-Received: by 2002:a05:690e:1206:b0:658:ac79:ad4d with SMTP id
- 956f58d0204a3-65c18f55fe5mr2776193d50.47.1777563600816; Thu, 30 Apr 2026
- 08:40:00 -0700 (PDT)
+ AFNElJ8bg7SePBcXDJgtDJxR5kf66g3qDdli0AVepeAFIPsnUxq229ARYnZGbIWj9bWFaxv/ZibfGWQ8bQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwrHhxvslRVpsqtNmx8D10tOdnnCKN8bzcVlKgxX90K3CR82YlE
+ fVTBhsfDKCNbuH4GjRPILIJNzNQ9kHeL/jsAs53L08nhSVT5G50M5r8SbK4lT+s0tPHBzInVJ65
+ /qEu4/wV2ZYOUp8COEVKZ4dMK2X671jFesJaGy6n51Q==
+X-Gm-Gg: AeBDiesZSyejuWr+oSyjIQZ8V6tWychH34Mr6NsaClRVEbzOw4H/Luht0s2S4wPHtP7
+ KLlswKVGPqVN3+KHgcZHRNrcC+Vw+UJLw4VMnDiLVEn2u1x4SIQTxAU3VJmYc/2JQL4xFSpkt8R
+ cIaa8sa7Tc5Bf2Cn+x7HCLbaHP2FWThfaj5v6EpZx27Xr7BKeSY4B+vhcRI3jaUAx60MKHVtlYs
+ toUzHmAbcPYHJ9psHVBz56EGctQSlPjDSzrozgogb1YFvBMyK2s2MEOFXXsqW9i8RtQ5xXdvDAB
+ 6PGQMlCmJ4kHWOwnyHGY7Nwxn0A5pYU/xgu4ZUOmaNpklwmmPrFMslqQbxDuI+di3w+vpI5iWQv
+ eGQ==
+X-Received: by 2002:a05:690e:d51:b0:64e:f106:60e5 with SMTP id
+ 956f58d0204a3-65c18f66c0cmr2674463d50.52.1777565410827; Thu, 30 Apr 2026
+ 09:10:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-4-shentey@gmail.com>
-In-Reply-To: <20260308203516.160103-4-shentey@gmail.com>
+References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
+ <20260427-qom-tests-v1-29-c413f3605311@redhat.com>
+In-Reply-To: <20260427-qom-tests-v1-29-c413f3605311@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 16:39:48 +0100
-X-Gm-Features: AVHnY4J8zxXW6fxl_n0y_3WVqX0LkzYyp3tUTgzLovV3Dib0GiEAegikkClToJw
-Message-ID: <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
-Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, 
- qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Date: Thu, 30 Apr 2026 17:09:59 +0100
+X-Gm-Features: AVHnY4Ke4Cid2FV_aVKZWaQIt0WEv-APM4TG41TEi3GLqv3C2uD5CedPrO88uOA
+Message-ID: <CAFEAcA-krpQw4atHeDkCae_7EJEtUrwGNHMnYxu4eNAXdyykeQ@mail.gmail.com>
+Subject: Re: [PATCH 29/41] hw/fsi: move OPBus address space init to realize
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, armbru@redhat.com, 
+ Ninad Palsule <ninad@linux.ibm.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
  envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
@@ -106,7 +109,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,56 +125,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
+On Mon, 27 Apr 2026 at 20:45, Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
 >
-> object_new() leaves a reference count of one, and object_property_add_child()
-> then leaves it at two. This would leak the SoC object if the machine object was
-> destroyed since the machine is the SoC's sole owner. Fix this by converting to
-> object_new_with_props() which gets the parenting and reference count right in
-> one go.
+> The OPBus instance_init initializes an AddressSpace, registering it in
+> the global address_spaces list. When a bare OPBus object is created
+> and destroyed (e.g. by qom-tests), there is no finalize to remove the
+> stale entry, leading to a heap-use-after-free when a subsequent
+> flatviews_reset iterates the list.
 >
-> Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
-> cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> Move address_space_init to the bus realize callback and add the
+> corresponding address_space_destroy in unrealize, following the
+> NubusBus pattern. Also fix the memory_region_init owner from NULL to
+> the OPBus object, so the MR is properly parented instead of dangling
+> under the "unattached" container.
+>
+> Fixes: eb04c35da2c0 ("hw/fsi: Aspeed APB2OPB & On-chip peripheral bus")
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 > ---
->  hw/arm/imx8mp-evk.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/fsi/aspeed_apb2opb.c | 31 +++++++++++++++++++++++--------
+>  1 file changed, 23 insertions(+), 8 deletions(-)
 >
-> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-> index b84ac91a17..cfc3038c36 100644
-> --- a/hw/arm/imx8mp-evk.c
-> +++ b/hw/arm/imx8mp-evk.c
-> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
->          .modify_dtb = imx8mp_evk_modify_dtb,
->      };
+> diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
+> index b9d72f3ecf6..5d1e471288b 100644
+> --- a/hw/fsi/aspeed_apb2opb.c
+> +++ b/hw/fsi/aspeed_apb2opb.c
+> @@ -282,13 +282,6 @@ static void fsi_aspeed_apb2opb_realize(DeviceState *=
+dev, Error **errp)
+>      AspeedAPB2OPBState *s =3D ASPEED_APB2OPB(dev);
+>      int i;
 >
-> -    s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
-> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-> +    s = FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(machine),
-> +                                         "soc", &error_fatal, NULL));
->      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+> -    /*
+> -     * TODO: The OPBus model initializes the OPB address space in
+> -     * the .instance_init handler and this is problematic for test
+> -     * device-introspect-test. To avoid a memory corruption and a QEMU
+> -     * crash, qbus_init() should be called from realize(). Something to
+> -     * improve. Possibly, OPBus could also be removed.
+> -     */
 
-Looking again at this, is this really right?
-object_property_add_child(...) creates the object (refcount 1),
-adds it as a child of the specified parent (refcount 2), then
-does object_unref() (refcount 1). Then in this code we call
-sysbus_realize_and_unref(), which calls qdev_realize_and_unref().
-That function:
- * (indirectly) calls bus_add_child(), which takes a reference and
-   hands it to the link property on the parent (refcount 2)
- * calls object_unref(), as its name suggests (refcount 1)
+I think that what this TODO comment is trying to note is that
+we do the qbus_init() in realize because the implementation
+of the bus does things in its instance_init that it ought
+to be deferring to realize. If we fix the bus to do those
+things in realize instead, we ought to be able to move
+this qbus_init() to the fsi_aspeed_apb2opb_init function
+where it more logically belongs.
 
-So now we have the object with refcount 1, so it doesn't just
-vanish, but on the other hand both the QOM tree parent and the
-qbus tree parent think they own a reference to the object,
-so our refcount is wrong.
+C=C3=A9dric, I think you wrote this comment; what do you think?
 
-I think the existing code here was correct: we get a reference
-because we call object_new(), and then we drop it by calling
-the realize_and_unref function.
+>      for (i =3D 0; i < ASPEED_FSI_NUM; i++) {
+>          qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s),
+>                    NULL);
+> @@ -348,15 +341,37 @@ static void fsi_opb_init(Object *o)
+>  {
+>      OPBus *opb =3D OP_BUS(o);
+>
+> -    memory_region_init(&opb->mr, 0, TYPE_FSI_OPB, UINT32_MAX);
+> +    memory_region_init(&opb->mr, o, TYPE_FSI_OPB, UINT32_MAX);
+> +}
+> +
+> +static void fsi_opb_realize(BusState *bus, Error **errp)
+> +{
+> +    OPBus *opb =3D OP_BUS(bus);
+> +
+>      address_space_init(&opb->as, &opb->mr, TYPE_FSI_OPB);
+>  }
+>
+> +static void fsi_opb_unrealize(BusState *bus)
+> +{
+> +    OPBus *opb =3D OP_BUS(bus);
+> +
+> +    address_space_destroy(&opb->as);
+> +}
+> +
+> +static void fsi_opb_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    BusClass *bc =3D BUS_CLASS(klass);
+> +
+> +    bc->realize =3D fsi_opb_realize;
+> +    bc->unrealize =3D fsi_opb_unrealize;
+> +}
+> +
+>  static const TypeInfo opb_info =3D {
+>      .name =3D TYPE_OP_BUS,
+>      .parent =3D TYPE_BUS,
+>      .instance_init =3D fsi_opb_init,
+>      .instance_size =3D sizeof(OPBus),
+> +    .class_init =3D fsi_opb_class_init,
+>  };
+>
+>  static void fsi_opb_register_types(void)
 
-I'm going to drop this patch from target-arm.next.
-
+thanks
 -- PMM
 

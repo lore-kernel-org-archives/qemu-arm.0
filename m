@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ECE2FF8873
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CCEFF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:45:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIRgM-0006Hy-00; Thu, 30 Apr 2026 09:43:59 -0400
+	id 1wIRhY-0006Tg-QB; Thu, 30 Apr 2026 09:45:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wIRfx-0006FT-3p
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:43:33 -0400
+ id 1wIRgd-0006K1-L4
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:44:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wIRfu-0001Fr-75
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:43:31 -0400
+ id 1wIRgb-0001Yd-Or
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:44:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777556609;
+ s=mimecast20190719; t=1777556652;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Tnpun3S7hYr75FrrnF0LzR2AlCohcHbUd1yYrXTr5Zs=;
- b=Csx3VP1IBnI7ClShzgA2018rwC6OA4BAHFGqnMx4v6eWLggSBi4ON4TyE6D+v2NnwieSu1
- p3xWuK5Rz3pwpZ24kUCUG8oLlOtiWhdooDdut9tRYsga5jhgGI1cl1AZwYkC88XegitVZ3
- 0qlbxEVxLtKBBJxlbVjFSYxgTRPIndQ=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=cDxYja7+LsqUXvxH96Cnyw4lrAQPTFphBhCPL76+H3c=;
+ b=bOJN4MCd7PTlk6UOrGdeZIH528QT8r5lPsZeWvlAYWggJqw7TPBmfqTmM3seW4xYwytQ3H
+ +GV0VeN05s+KcezZeoXtQ6Krs1TnAMBLYdko4ynLB1WNWe3ThEw/tRkWuNknupl1JdYzOo
+ a5J66eJXvIAixbJNVz23VEqGJf3eBpw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-561-p-UdgYsMNmS6SQTJEGwTJw-1; Thu,
- 30 Apr 2026 09:43:21 -0400
-X-MC-Unique: p-UdgYsMNmS6SQTJEGwTJw-1
-X-Mimecast-MFC-AGG-ID: p-UdgYsMNmS6SQTJEGwTJw_1777556598
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-481-hKVFkXSxMOWejx-2n3GWHg-1; Thu,
+ 30 Apr 2026 09:44:09 -0400
+X-MC-Unique: hKVFkXSxMOWejx-2n3GWHg-1
+X-Mimecast-MFC-AGG-ID: hKVFkXSxMOWejx-2n3GWHg_1777556646
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 568E71800601; Thu, 30 Apr 2026 13:43:17 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 08C8B19560B6; Thu, 30 Apr 2026 13:44:05 +0000 (UTC)
 Received: from [10.44.50.160] (unknown [10.44.50.160])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DB58519560A6; Thu, 30 Apr 2026 13:43:13 +0000 (UTC)
-Message-ID: <eb93bdfd-02db-4cf1-929d-fbb14dbb4c98@redhat.com>
-Date: Thu, 30 Apr 2026 15:43:12 +0200
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CD2731953947; Thu, 30 Apr 2026 13:44:01 +0000 (UTC)
+Message-ID: <7c15ed6b-f0e6-4582-a28c-2ac28ae37197@redhat.com>
+Date: Thu, 30 Apr 2026 15:44:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 21/37] target: i386: HLT type that ignores EFLAGS.IF
+Subject: Re: [PATCH v3 35/37] whpx: i386: nested virt settings
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
@@ -59,7 +59,7 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
  Wei Liu <wei.liu@kernel.org>, Phil Dennis-Jordan <phil@philjordan.eu>,
  Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
 References: <20260422214225.2242-1-mohamed@unpredictable.fr>
- <20260422214225.2242-22-mohamed@unpredictable.fr>
+ <20260422214225.2242-36-mohamed@unpredictable.fr>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Autocrypt: addr=pbonzini@redhat.com; keydata=
  xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
@@ -96,9 +96,9 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
  JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
  dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
  b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <20260422214225.2242-22-mohamed@unpredictable.fr>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: f-Rbo_1WicbiYB1j54QB5AeJVnUQ8qsLanpiin21pRc_1777556598
+In-Reply-To: <20260422214225.2242-36-mohamed@unpredictable.fr>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: PfsmqnlCqWCvSgH69tex87eSwI8aD8Vl2q3ek8qPorM_1777556646
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -111,7 +111,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,75 +128,149 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 4/22/26 23:42, Mohamed Mediouni wrote:
-> The TLFS says:
-> 
->> A partition which possesses the AccessGuestIdleMsr privilege may trigger
->> entry into the virtual processor idle sleep state through a read to the
->> hypervisor-defined MSR HV_X64_MSR_GUEST_IDLE. The virtual processor will
->> be woken when an interrupt arrives, regardless of whether the interrupt
->> is enabled on the virtual processor or not.
-> 
-> Meanwhile, Windows 24H2+ calls this MSR anyway without the privilege being set.
-> 
-> Add the infrastructure to support it on the generic QEMU side.
-> 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   target/i386/cpu.c | 10 ++++++----
->   target/i386/cpu.h |  2 ++
->   2 files changed, 8 insertions(+), 4 deletions(-)
-> 
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index a5f1a1a8fd..c9ed9b7580 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -10474,13 +10474,15 @@ int x86_cpu_pending_interrupt(CPUState *cs, int interrupt_request)
->                      (((env->hflags2 & HF2_VINTR_MASK) &&
->                        (env->hflags2 & HF2_HIF_MASK)) ||
->                       (!(env->hflags2 & HF2_VINTR_MASK) &&
-> -                     (env->eflags & IF_MASK &&
-> -                      !(env->hflags & HF_INHIBIT_IRQ_MASK))))) {
-> +                     ((env->eflags & IF_MASK &&
-> +                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
-> +                        || env->hflags2 & HF2_HYPERV_HLT_MASK)))) {
->               return CPU_INTERRUPT_HARD;
->           } else if (env->hflags2 & HF2_VGIF_MASK) {
->               if((interrupt_request & CPU_INTERRUPT_VIRQ) &&
-> -                   (env->eflags & IF_MASK) &&
-> -                   !(env->hflags & HF_INHIBIT_IRQ_MASK)) {
-> +                   ((env->eflags & IF_MASK &&
-> +                      !(env->hflags & HF_INHIBIT_IRQ_MASK))
-> +                        || env->hflags2 & HF2_HYPERV_HLT_MASK)) {
 
-This should be a new function, and for simplicity it can also be used in 
-hvf_inject_interrupts().
-
-I'll do this when applying.
+This should use the VMX and SVM CPU features.
 
 Paolo
-
->                           return CPU_INTERRUPT_VIRQ;
->               }
+> ---
+>   accel/whpx/whpx-common.c       |  1 +
+>   include/system/whpx-internal.h |  2 +
+>   target/i386/whpx/whpx-all.c    | 68 +++++++++++++++++++++++++++++++---
+>   3 files changed, 66 insertions(+), 5 deletions(-)
+> 
+> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+> index d846e08714..305b2ae1d0 100644
+> --- a/accel/whpx/whpx-common.c
+> +++ b/accel/whpx/whpx-common.c
+> @@ -556,6 +556,7 @@ static void whpx_accel_instance_init(Object *obj)
+>       whpx->hyperv_enlightenments_enabled = false;
+>       whpx->ignore_unknown_msr = true;
+>       whpx->intercept_msr_gp = false;
+> +    whpx->nested_virt_enabled = true;
+>   }
+>   
+>   static const TypeInfo whpx_accel_type = {
+> diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+> index 15027a7d52..4436cfe6ba 100644
+> --- a/include/system/whpx-internal.h
+> +++ b/include/system/whpx-internal.h
+> @@ -47,6 +47,8 @@ struct whpx_state {
+>       bool hyperv_enlightenments_required;
+>       bool hyperv_enlightenments_enabled;
+>   
+> +    bool nested_virt_enabled;
+> +
+>       bool ignore_unknown_msr;
+>       bool intercept_msr_gp;
+>   };
+> diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+> index ea5d1e535c..d17db73cff 100644
+> --- a/target/i386/whpx/whpx-all.c
+> +++ b/target/i386/whpx/whpx-all.c
+> @@ -2974,6 +2974,39 @@ static void whpx_set_intercept_msr_gp(Object *obj, Visitor *v,
+>       }
+>   }
+>   
+> +static void whpx_set_nested_virt(Object *obj, Visitor *v,
+> +                                   const char *name, void *opaque,
+> +                                   Error **errp)
+> +{
+> +    struct whpx_state *whpx = &whpx_global;
+> +    OnOffAuto mode;
+> +
+> +    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
+> +        return;
+> +    }
+> +
+> +    switch (mode) {
+> +    case ON_OFF_AUTO_ON:
+> +        whpx->nested_virt_enabled = true;
+> +        break;
+> +
+> +    case ON_OFF_AUTO_OFF:
+> +        whpx->nested_virt_enabled = false;
+> +        break;
+> +
+> +    case ON_OFF_AUTO_AUTO:
+> +        whpx->nested_virt_enabled = true;
+> +        break;
+> +    default:
+> +        /*
+> +         * The value was checked in visit_type_OnOffAuto() above. If
+> +         * we get here, then something is wrong in QEMU.
+> +         */
+> +        abort();
+> +    }
+> +}
+> +
+> +
+>   void whpx_arch_accel_class_init(ObjectClass *oc)
+>   {
+>       object_class_property_add(oc, "ignore-unknown-msr", "OnOffAuto",
+> @@ -2986,6 +3019,11 @@ void whpx_arch_accel_class_init(ObjectClass *oc)
+>           NULL, NULL);
+>       object_class_property_set_description(oc, "intercept-msr-gp",
+>           "Intercept #GP to log erroring MSR accesses.");
+> +    object_class_property_add(oc, "nested", "OnOffAuto",
+> +        NULL, whpx_set_nested_virt,
+> +        NULL, NULL);
+> +    object_class_property_set_description(oc, "intercept-msr-gp",
+> +        "Toggle nested virtualization off/on.");
+>   }
+>   
+>   int whpx_accel_init(AccelState *as, MachineState *ms)
+> @@ -3166,7 +3204,8 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+>       whpx_rdtsc_cap = processor_features.Bank0.RdtscpSupport;
+>       whpx_invpcid_cap = processor_features.Bank0.InvpcidSupport;
+>   
+> -    if (whpx_irqchip_in_kernel() && processor_features.Bank1.NestedVirtSupport) {
+> +    if (whpx_irqchip_in_kernel() && whpx->nested_virt_enabled
+> +        && processor_features.Bank1.NestedVirtSupport) {
+>           memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
+>           prop.NestedVirtualization = 1;
+>           hr = whp_dispatch.WHvSetPartitionProperty(
+> @@ -3174,11 +3213,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+>               WHvPartitionPropertyCodeNestedVirtualization,
+>               &prop,
+>               sizeof(WHV_PARTITION_PROPERTY));
+> -            if (FAILED(hr)) {
+> -                error_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
+> -                ret = -EINVAL;
+> -                goto error;
+> +        if (FAILED(hr)) {
+> +            error_report("WHPX: Failed to enable nested virtualization, hr=%08lx", hr);
+> +            ret = -EINVAL;
+> +            goto error;
 >           }
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index 0b539155c4..67f508dc10 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -225,6 +225,7 @@ typedef enum X86Seg {
->   #define HF2_NPT_SHIFT            6 /* Nested Paging enabled */
->   #define HF2_IGNNE_SHIFT          7 /* Ignore CR0.NE=0 */
->   #define HF2_VGIF_SHIFT           8 /* Can take VIRQ*/
-> +#define HF2_HYPERV_HLT_SHIFT     9 /* Hyper-V HV_X64_MSR_GUEST_IDLE */
+> +    } else if (whpx->nested_virt_enabled) {
+> +        whpx->nested_virt_enabled = 0;
+> +        info_report("WHPX: nested virtualisation not available");
+>       }
 >   
->   #define HF2_GIF_MASK            (1 << HF2_GIF_SHIFT)
->   #define HF2_HIF_MASK            (1 << HF2_HIF_SHIFT)
-> @@ -235,6 +236,7 @@ typedef enum X86Seg {
->   #define HF2_NPT_MASK            (1 << HF2_NPT_SHIFT)
->   #define HF2_IGNNE_MASK          (1 << HF2_IGNNE_SHIFT)
->   #define HF2_VGIF_MASK           (1 << HF2_VGIF_SHIFT)
-> +#define HF2_HYPERV_HLT_MASK     (1 << HF2_HYPERV_HLT_SHIFT)
+>       hr = whp_dispatch.WHvSetPartitionProperty(
+> @@ -3222,6 +3264,22 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+>           synthetic_features.Bank0.EnableExtendedGvaRangesForFlushVirtualAddressList = 1;
+>       }
 >   
->   #define CR0_PE_SHIFT 0
->   #define CR0_MP_SHIFT 1
+> +    if (whpx->nested_virt_enabled) {
+> +        /* enlightened VMCS is an Intel-specific enlightenment. */
+> +        hr = whp_dispatch.WHvGetCapability(
+> +            WHvCapabilityCodeProcessorVendor, &whpx_cap,
+> +            sizeof(whpx_cap), &whpx_cap_size);
+> +        if (FAILED(hr)) {
+> +            error_report("WHPX: Failed to query processor vendor, hr=%08lx", hr);
+> +            ret = -ENOSPC;
+> +            goto error;
+> +        }
+> +        if (whpx_cap.ProcessorVendor == WHvProcessorVendorIntel) {
+> +            synthetic_features.Bank0.EnlightenedVmcs = 1;
+> +            synthetic_features.Bank0.NestedDebugCtl = 1;
+> +        }
+> +    }
+> +
+>       if (is_modern_os && whpx->hyperv_enlightenments_allowed) {
+>           whpx->hyperv_enlightenments_enabled = true;
+>           hr = whp_dispatch.WHvSetPartitionProperty(
 
 

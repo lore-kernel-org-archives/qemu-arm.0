@@ -4,96 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A823CCFA13
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2365AFF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 11:04:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIOt7-0008Mb-7t; Thu, 30 Apr 2026 06:44:57 -0400
+	id 1wIPBr-000052-R0; Thu, 30 Apr 2026 07:04:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wIOsy-0008Gl-SK
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:49 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIPBa-0008Sg-M9
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 07:04:04 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wIOsu-0005LB-F0
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:44:48 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-488af96f6b2so10110095e9.0
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:44:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIPBY-0001aC-3o
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 07:04:02 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-65c0bda7f15so742206d50.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 04:03:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777547039; cv=none;
+ d=google.com; s=arc-20240605;
+ b=VsnJ5a4w4F3vnKKq9sde0xVMGzczoJ/hRC2T03JgT6+9dCg9RC+DU5kAQfzBbZwrWm
+ feLYGJlZ7fHtKXfHLaTSZnsS7ItD0sg0+w74XqDlu6gsHCa896m8T1QV3Me6wgcvCgzp
+ l1+08jXU5lh/xo8SLZgyC+ycs3t5LaiU9oOQy3EGLBrYUYtLoBWK/S/WLj8Ymcvf8qBU
+ xY5/1uK7RhW7uj08lvi6rJJDtIWan79ampOOIBtv0pZmO1xRAqCztXULp6aX7rXSqwYr
+ w3f2UEN7fs79sEgjqZOEq1yyJzOZJ2v/PXwcV5Mb0hYMD1BnPSUJGmCw+Op1fJquDY/J
+ d6KA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=E7q++YOPrYLptnVGanGUQ+j8Ph9Xt1q9SNXtQGZ8Osc=;
+ fh=zXXiwwbfI1NzVLhmi/xt030ByHX29bN2Lx6KvwvLqhI=;
+ b=FkQUFYQZQEgfjo8eI5Lc9p4Tj6R7ZfVlTZ67YH82sGkEVrjkbR2v0xw9dfgd4wU+sq
+ /bd285ribh86FneA0Sm+r634flTgbiV0AW0+V8TjCszRE0oP9mc9iaiaEdRmRyI7Bjdm
+ ooAKM0GZmbGH1EAuTF+H/teVczjx3DttjoTjgiPEhlG1AKlGZDM4Db2fYA8rreo5BYIn
+ J87bcmTrNxwz1WBP8WVeil8L7GNKZZeREMynKXutvzOvwgO0rut76wow8WycFGk0SkpG
+ 8+eNTMdM2nPxqNNlv5+LzuAN8LizRgWPSoPkIXf/szGimQH+tTDn6T5ACvPmeH9KYq/a
+ m2Og==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777545881; x=1778150681; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777547039; x=1778151839; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IcPSBiwzrF8PlqagZ+bzBqOtmIa2hTG8ka0zp0wOeJQ=;
- b=DsfR6PUzNJ8BWzigpIAZjf1xA7tNoZELc2oceB618l5Em9IP9AK2Y/1hxVKry8r6V1
- ZYYF9QES1wVz68R+vgaipJy4d0hfxh9O4oFZ3ok9NyG3xwx4j2pWodQDGKAi2/xVN5oS
- oX8STPHa+s+r5HQ/GhgH9V7VHzkUuxecseLltYBe+tPWTSzFCn6How2iGg35jGxaO1yP
- ilQwB5Jq1c6IwHRMA5JxDNa+lwS4TLxjtTKmSx3+ygR7fT4nzk9N7Ez9+Hid70EZpXzC
- QaQMzecuDvvp7e/pI49xZ1pnhSvle9ttujTNKq2xxnDCIiodC+bO5fJgcKCsKWH3Zuwo
- S9tw==
+ bh=E7q++YOPrYLptnVGanGUQ+j8Ph9Xt1q9SNXtQGZ8Osc=;
+ b=u7Wsr4o/xnircL6XhLNIZBhac6sRUNvrRAe8QENmlq3RMh3HfG7OX75d4cbJqUhY67
+ nDl6hdHPbE2mRmnsb8iQ5BYDrL9IPvfUkG6ye20hvJ4cPeY4giE9JjW3NSUpoRlHrKBN
+ TPF94FunZTjreuOPsUSPZIsfvV0MpcGEykgQgkbDfOucTKnGIagyxYbCdNiPLsLDSM5A
+ /A0ADKYH5b9xvnVguHVT2hhy5Y6U2Sxu486zcagrpTsVZ+i9KJb4c8l0lCov0kHrF6jJ
+ f+T+xUWxlKodN4LdIYSdXlb+CXoqInfSm18t3/+tW8F9GUom57xmhUbcHuU6waFSlOUn
+ wXAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777545881; x=1778150681;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20251104; t=1777547039; x=1778151839;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=IcPSBiwzrF8PlqagZ+bzBqOtmIa2hTG8ka0zp0wOeJQ=;
- b=MRwCZHwURqJ6O5qItk0jd2NWCPwHG6NwY537p+PfGPB14ktXRHNPxPUh5frdQ5mpHH
- +OXK5JNlv9trsXMlevXAb+amxPrtCeFIUP4gFpm6mVRTBVOUgqNryDTiMUADfHglupXl
- DpxGNx5MyK8GwdK6z6UuOqYwjVfzZpAqHP5Css7ZF+ZTzmxf8UuXyhuQw85g1ZjJbkMx
- w1vq35DCboaSCaXHn+j6g7ktT/jqarsxIiayriMCF4IT1MGYsjb6LfA2QbFqp3d+0Xvh
- 7+ndl034eCGoabxtmQdJhOgLFPt20Wcnz0UViyYWMP/nmXlOS1xKCq5SCG2Ficumqwyu
- X9TA==
+ bh=E7q++YOPrYLptnVGanGUQ+j8Ph9Xt1q9SNXtQGZ8Osc=;
+ b=c9uqcl2EsiLTkfEQ6bOVKjBToQy3eifRsN+lxf0LQJNZlZbX66IFGsRNxFRMGFDmkR
+ 5Ol3uRa8yQ9BG3jyldb0jc+Qd3go+YZ8EoXV0aCLLuqmY9Cb/pyn7vowd7xnAKasyMkx
+ 9fns+QYv9L034Tj6wfHCHG+zRivuSOJRmaDMR0LhZYZtSMZRZ0mZClZznljMDNTAYvT8
+ IzbWoVLxDQATSIOp9rkcvxqOYb182d6NSSQgIQw9uy62OkjHqlodfG757OqJderJEoiu
+ nXKtwiuOioQH0M7aKzGCSr9i3rtSW2w6VQcPDHTMdbS7I/6lH0qwiCl5MqZQrTTPDqV4
+ 0DtQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8wDrJfqtdmxVAWY5en+wpa+rqoCSIafKPE7aoUg8BTf+F66uR6m6V/SnMLZ7HnljQh0phwPGZ75A==@nongnu.org
-X-Gm-Message-State: AOJu0Yxk/SgVb3idz5PUdcSD0ZijbgPWUfpyoTTcFL6z/8o/RZ/jSh56
- 9DzHbJrh5bUkYSPTMUcPcPXXfNcF/IoK6J3c6ZB42OqI+i+s2R+7ekWFJApJ8TB3oNE=
-X-Gm-Gg: AeBDies1Zv7H/gfFcJamuXvvvLB3LDqJiOrWhQ+DChDqwBL3grjFFSEvNk8XoXgTc8o
- rU4Y4IYLM1F7t9inebV5faqM/kEWfEl/LmiaPzQ0bnFrY5jlsMWZ+JMgjZOraDVDXUl/WJhMRiN
- Ec/pRPm8g711A8SnQcoGnyZb5bFLQkVpHP6SDqeIFnkPYIZuw4xfgOENnyME97TxeZ7M9yXQsSO
- NA3F75igqV0SB5DUTAHk7st1PVogSakWt5OctZvJKsHiioNj++oZx21e07qI5vTx79Ttzc5VyRS
- LE3rcX4t2oNy1ZmEp7DwrCcnBDeyUngCdO0viwVwUT7AUSguMuFCIk9Zw06cYAbt9633QzoptCe
- NGHlh1Gn3Lr5egKdlXp5lLCnqzRm73gjm1WbldVCq3NUxy0Sm2Wsj6L0QMHcVyusPb1WndKCbMJ
- pvVza1jVsmORTt9iJFpIuL04S3i/8vXUj0Ng==
-X-Received: by 2002:a05:600c:3e10:b0:488:bc6a:528d with SMTP id
- 5b1f17b1804b1-48a844721d9mr41943205e9.22.1777545880894; 
- Thu, 30 Apr 2026 03:44:40 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a7c31c6ddsm39447895e9.27.2026.04.30.03.44.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 03:44:38 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 64EE35F944;
- Thu, 30 Apr 2026 11:44:35 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v4 6/7] target/arm: handle the WFE trap case
-Date: Thu, 30 Apr 2026 11:44:33 +0100
-Message-ID: <20260430104434.1482407-7-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260430104434.1482407-1-alex.bennee@linaro.org>
-References: <20260430104434.1482407-1-alex.bennee@linaro.org>
+ AFNElJ/ev3FFylffu/yETd0+9WD8+4nKWLxUTWdXvf8ni/TG3ydMUl+1UXhHBmQgOI1fL1wlOKGCS977Rg==@nongnu.org
+X-Gm-Message-State: AOJu0YxZ/zcznbt1Jpy3PnY+rGI5adeh+1Zjo2HyhQ9E8HyVVSqGgsJo
+ FUJQX6jB4+cCx/NL3rgIDbVEuDZLCrAADrSBvsTPJ0AE4trub8lsTPIOHtlCi/MlZQM8IdjSzo7
+ 5bsh6zkfZNoZ2qcu/jCEe1B9yRQaLSS+R2U72nlDlpw==
+X-Gm-Gg: AeBDietXmuIX2jpgNMzt7EF1/qgoOpTXP3kIhuOmD/LZrLm3cx8xy3aU7Dh4b9Acy6Y
+ +fBxCGDt+kwv47tPVOTqoFw/EkmLumYBQmD+DkxVHqHyihnozTs/LRwLOgsWbgDEi4x6xrrO+J6
+ DI7JbUH8ym0GrKDYXuQVnyRSobsMpGSH9KeiMf01UZWanaMBJ3sT3mYyeabvY3V89AOlQOo01l0
+ x8tJEzo5EQR1sl85SgTcMn1xPfMUnya17aWp6vH0XOSuqdAvzV83nFiASiam6cfBgMYwQIKoKIq
+ cJqm0rz/GmCnz0oRRWukjH79+c469q9pS0HHrIjI3LbWDAc3LQ3XotFvoD0j3AMUg5PLDKnasNz
+ 6AqzU+8EXs7QB
+X-Received: by 2002:a05:690e:b45:b0:654:c28:598 with SMTP id
+ 956f58d0204a3-65c18aec741mr1726257d50.9.1777547038679; Thu, 30 Apr 2026
+ 04:03:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
+References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
+ <20260428055254.76581-2-kane_chen@aspeedtech.com>
+In-Reply-To: <20260428055254.76581-2-kane_chen@aspeedtech.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 12:03:46 +0100
+X-Gm-Features: AVHnY4IFen5KA8fZusdxr76RW5tZDif4YPg0lC7lXI4mYoR7FWcZzQysA2JYDkM
+Message-ID: <CAFEAcA8i+v_7KVPBMHGkjf=tuGuVCW_d-XUBb1cr-ezmD_F7xg@mail.gmail.com>
+Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
+ write operations
+To: Kane Chen <kane_chen@aspeedtech.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, 
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,97 +128,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now WFE can actually suspend on A-profile we also need to handle when
-its trapped. To do this we need to pass the instruction size so we can
-deal with the is_16bit syndrome encoding.
+On Tue, 28 Apr 2026 at 06:53, Kane Chen <kane_chen@aspeedtech.com> wrote:
+>
+> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
+> model in how the guest-provided address is handled.
+> aspeed_sbc_otp_prog() passes a word-indexed address directly
+> to address_space_write() without converting it to a byte offset,
+> whereas aspeed_otp_write() expects a byte offset and applies an
+> additional shift (otp_addr << 2). This double-shift confusion means
+> that an out-of-range word address can lead to a write beyond the
+> allocated storage.
+>
+> Fix this by adding bounds checking on the word offset before
+> converting to byte offset and passing to address_space_write().
+> This matches the existing bounds check in aspeed_sbc_otp_read().
+>
+> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3436
+> Reported-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>  hw/misc/aspeed_sbc.c  | 14 +++++++++++---
+>  hw/nvram/aspeed_otp.c | 13 ++++++-------
+>  2 files changed, 17 insertions(+), 10 deletions(-)
+>
+> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+> index 065e822e70..8b74dca13c 100644
+> --- a/hw/misc/aspeed_sbc.c
+> +++ b/hw/misc/aspeed_sbc.c
+> @@ -159,13 +159,21 @@ static bool aspeed_sbc_otp_prog(AspeedSBCState *s,
+>      MemTxResult ret;
+>      AspeedOTPState *otp =3D &s->otp;
+>      uint32_t value =3D s->regs[R_CAMP1];
+> +    uint32_t otp_offset =3D otp_addr << 2;
+>
+> -    ret =3D address_space_write(&otp->as, otp_addr, MEMTXATTRS_UNSPECIFI=
+ED,
+> -                        &value, sizeof(value));
+> +    if (otp_addr >=3D OTP_TOTAL_DWORD_COUNT) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "Invalid OTP addr 0x%x\n",
+> +                      otp_addr);
+> +        return false;
+> +    }
+> +
+> +    ret =3D address_space_write(&otp->as, otp_offset, MEMTXATTRS_UNSPECI=
+FIED,
+> +                              &value, sizeof(value));
+>      if (ret !=3D MEMTX_OK) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "Failed to write OTP memory, addr =3D %x\n",
+> -                      otp_addr);
+> +                      otp_offset);
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/tcg/helper-defs.h   |  2 +-
- target/arm/tcg/op_helper.c     | 15 ++++++++++++++-
- target/arm/tcg/translate-a64.c |  2 +-
- target/arm/tcg/translate.c     |  2 +-
- 4 files changed, 17 insertions(+), 4 deletions(-)
+I would stick to reporting otp_addr here:
+ - it's the value the guest actually writes
+ - it matches the logging for "invalid OTP addr above"
+ - it matches what aspeed_sbc_otp_read() logs in the equivalent case
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index a05f2258f29..ebdf09be38a 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -54,7 +54,7 @@ DEF_HELPER_2(exception_swstep, noreturn, env, i32)
- DEF_HELPER_2(exception_pc_alignment, noreturn, env, vaddr)
- DEF_HELPER_1(setend, void, env)
- DEF_HELPER_2(wfi, void, env, i32)
--DEF_HELPER_1(wfe, void, env)
-+DEF_HELPER_2(wfe, void, env, i32)
- DEF_HELPER_2(wfit, void, env, i32)
- DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index d0f45522b05..77ac6161e93 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -574,7 +574,7 @@ static int64_t gt_calc_next_event_stream(CPUARMState *env)
- }
- #endif
- 
--void HELPER(wfe)(CPUARMState *env)
-+void HELPER(wfe)(CPUARMState *env, uint32_t insn_len)
- {
- #ifdef CONFIG_USER_ONLY
-     /*
-@@ -592,12 +592,25 @@ void HELPER(wfe)(CPUARMState *env)
-      */
-     CPUState *cs = env_cpu(env);
-     ARMCPU *cpu = ARM_CPU(cs);
-+    uint32_t excp;
-+    int target_el = check_wfx_trap(env, true, &excp);
- 
-     if (env->event_register) {
-         env->event_register = false;
-         return;
-     }
- 
-+    /* We might sleep, so now we check to see if we should trap */
-+    if (target_el) {
-+        if (env->aarch64) {
-+            env->pc -= insn_len;
-+        } else {
-+            env->regs[15] -= insn_len;
-+        }
-+        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false, WFE, insn_len == 2),
-+                        target_el);
-+    }
-+
-     /*
-      * If the CPU has entered the exclusive region we could sleep
-      * until the global monitor moves from Exclusive to Open Access.
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 8b97136e78b..a6f392a28f8 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -10938,7 +10938,7 @@ static void aarch64_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-          */
-         case DISAS_WFE:
-             gen_a64_update_pc(dc, 4);
--            gen_helper_wfe(tcg_env);
-+            gen_helper_wfe(tcg_env, tcg_constant_i32(4));
-             tcg_gen_exit_tb(NULL, 0);
-             break;
-         case DISAS_WFI:
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 3ab49887ce6..686980b58e3 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -6836,7 +6836,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             tcg_gen_exit_tb(NULL, 0);
-             break;
-         case DISAS_WFE:
--            gen_helper_wfe(tcg_env);
-+            gen_helper_wfe(tcg_env, tcg_constant_i32(curr_insn_len(dc)));
-             /*
-              * The helper can return if the event register is set, so we
-              * must go back to the main loop to check for events.
--- 
-2.47.3
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 

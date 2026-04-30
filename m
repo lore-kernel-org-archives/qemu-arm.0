@@ -4,73 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE56CD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 07:14:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1000CD13D3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 08:02:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wILbN-0005MR-In; Thu, 30 Apr 2026 03:14:25 -0400
+	id 1wIMLK-0002Uk-7m; Thu, 30 Apr 2026 04:01:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1wILai-00056o-R3; Thu, 30 Apr 2026 03:13:46 -0400
-Received: from mgamail.intel.com ([192.198.163.13])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wIMLH-0002Tn-84
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 04:01:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1wILaf-0008G4-2P; Thu, 30 Apr 2026 03:13:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1777533221; x=1809069221;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=GYtv3/y1PAiYkNdPRh1yU0HKiNPcdFTz7LmXJapcAb8=;
- b=nLTywqprvCwptADEubvX2Rvg9LYkaGeEI6Kz3dAbFXIEy8wlAeV5LTJ6
- 2vZPqHX8bWWiRZtV/vCT3h0rwXtR5WfXYqbALvNmUxD9kzj1gCldgGU1g
- wmb27t/y9RlsJ70jU5ykfdEd12DjRSB8KjAu+EcFGDWVfJP9RMHZ/mYOW
- e5d27Gv0m7Pqax1hBgJIhc9uuRpw6Jq5ZQsBNvx0nzlUoLcjSj0MMhSI7
- GjfR/VCXGa5frvV2pb/Sqg/Vw4bhjRiawGshqvSlD/0Eafbh44SwK5pP/
- OxDJ3bSlqBbuOG7v+T3781+7xcW6USfp+IabS5SEUHTESL41UYtkoHRjI w==;
-X-CSE-ConnectionGUID: zBDeOgClSE66AumqwhQjMw==
-X-CSE-MsgGUID: NaMbZiXjR2+8o/HQq4cr5g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11771"; a="81051578"
-X-IronPort-AV: E=Sophos;i="6.23,207,1770624000"; d="scan'208";a="81051578"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2026 00:13:39 -0700
-X-CSE-ConnectionGUID: lkPAgVpgStGtfNir11SX0Q==
-X-CSE-MsgGUID: 3b5JeeReQMa0bOjKspMG7w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,207,1770624000"; d="scan'208";a="234771432"
-Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.230.229])
- by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2026 00:13:36 -0700
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
-To: qemu-devel@nongnu.org
-Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
- jasowang@redhat.com, jgg@nvidia.com, nicolinc@nvidia.com,
- skolothumtho@nvidia.com, joao.m.martins@oracle.com,
- clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
- xudong.hao@intel.com, Zhenzhong Duan <zhenzhong.duan@intel.com>,
- qemu-arm@nongnu.org
-Subject: [PATCH v4 02/15] iommufd: Extend attach/detach_hwpt callbacks to
- support pasid
-Date: Thu, 30 Apr 2026 03:12:58 -0400
-Message-ID: <20260430071315.354333-3-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260430071315.354333-1-zhenzhong.duan@intel.com>
-References: <20260430071315.354333-1-zhenzhong.duan@intel.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wIMLD-0001yS-8I
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 04:01:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777536103;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Jmtt5lto2u/K0oq9NhicdZHqihFsi/Fl8MNjB6MkTLc=;
+ b=i8vq3ImmUJdDDwH6HgPAjolYysS64kDD3h2Wka1/CFxkvElOjC3SFnRXtITgMtMSWtIeWg
+ quVH0Al/eSgk7IUSB9gRp/kER/YOcBZJA1CAdZh9kSfNI+RnTFk8zvfS1QN8lJF+Ivajxa
+ htqUwaRvYLfZ4Nvi+TAeZZ8kuIIYPSo=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-586-FutSyGIxN7yr4WiEw-Qyzg-1; Thu,
+ 30 Apr 2026 04:01:39 -0400
+X-MC-Unique: FutSyGIxN7yr4WiEw-Qyzg-1
+X-Mimecast-MFC-AGG-ID: FutSyGIxN7yr4WiEw-Qyzg_1777536098
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B6BBD19560BD; Thu, 30 Apr 2026 08:01:37 +0000 (UTC)
+Received: from redhat.com (unknown [10.44.48.62])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4EEF91800347; Thu, 30 Apr 2026 08:01:35 +0000 (UTC)
+Date: Thu, 30 Apr 2026 09:01:31 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, artem_mygaiev@epam.com, takahiro.nakata.wr@renesas.com
+Subject: Re: Question on preferred location for QEMU sample projects
+Message-ID: <afMMWz5dgkGJc0cI@redhat.com>
+References: <CAN-aV1EiKRh-Zpb9=77rXYPD2uT7HZmeNfvVW-wAToT+gaVC=A@mail.gmail.com>
+ <87v7dvgw58.fsf@pond.sub.org>
+ <CAN-aV1ERB-vdvMyRuNo2tog9-EPPyCunXJkk-kC=DkX-kU6VCQ@mail.gmail.com>
+ <CAN-aV1HDZfoJv3OCm9_f3epNtvvr5CrvB-1Fi4y7jGLwF3Xx7g@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAN-aV1HDZfoJv3OCm9_f3epNtvvr5CrvB-1Fi4y7jGLwF3Xx7g@mail.gmail.com>
+User-Agent: Mutt/2.3.1 (2026-03-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: ws2hqzzguhLuf4EfEr4TITbNdaQUFpN0AwKPPB9chto_1777536098
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.13;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,227 +90,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Same for the two wrappers and their call sites.
+On Wed, Apr 29, 2026 at 09:25:21PM +0200, Ruslan Ruslichenko wrote:
+> On Mon, Apr 13, 2026 at 4:04 PM Ruslan Ruslichenko
+> <ruslichenko.r@gmail.com> wrote:
+> >
+> > On Mon, Apr 13, 2026 at 9:25 AM Markus Armbruster <armbru@redhat.com> wrote:
+> > >
+> > > Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
+> > >
+> > > > Hi everyone,
+> > > >
+> > > > We are currently preparing the v2 patch series for the Remote-Port
+> > > > Co-simulation protocol for interfacing with SystemC modules. The first
+> > > > revision was here:
+> > > > https://lists.nongnu.org/archive/html/qemu-devel/2026-02/msg01760.html.
+> > > >
+> > > > As part of this submission, we would like to publish a sample project
+> > > > serving as a demonstration of how to connect a QEMU Remote-Port
+> > > > frontend to a SystemC backend.
+> > > >
+> > > > The sample project implements a standard SystemC IP core and uses
+> > > > several external components such as:
+> > > > - libsystemctlm-soc: https://github.com/Xilinx/libsystemctlm-soc
+> > > > - VCML Library: https://github.com/machineware-gmbh/vcml
+> > > > - SystemC Library: https://github.com/accellera-official/systemc
+> > > >
+> > > > We have a question regarding the location for this kind of project.
+> > > > Could you please suggest if there is a preferred location or some
+> > > > standard practice for hosting such a sample project?
+> > >
+> > > Location within the QEMU source tree?
+> >
+> > Yes, it would be good to include this project within the QEMU source tree.
+> > To build the project, the mentioned SystemC, libsystemctlm-soc and
+> > VCML libraries and their specific dependencies need to be built and
+> > installed separately.
+> > Would this approach be acceptable?
+> >
+> > Alternatively, is there an auxiliary repository within the QEMU
+> > infrastructure that is better suited for these types of sample
+> > projects,
+> > perhaps somewhere under https://gitlab.com/qemu-project?
+> 
+> Do you have any thoughts on the preferred location for this sample project?
 
-Suggested-by: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Suggested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-Reviewed-by: Yi Liu <yi.l.liu@intel.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Xudong Hao <xudong.hao@intel.com>
----
- include/system/iommufd.h    | 16 +++++++++++-----
- backends/iommufd.c          |  9 +++++----
- hw/arm/smmuv3-accel.c       | 12 ++++++++----
- hw/i386/intel_iommu_accel.c | 19 ++++++++++---------
- hw/vfio/iommufd.c           | 10 +++++-----
- 5 files changed, 39 insertions(+), 27 deletions(-)
+Why not just publish it under its own standalone git repo ? 
 
-diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-index 2925d116ac..da98e79439 100644
---- a/include/system/iommufd.h
-+++ b/include/system/iommufd.h
-@@ -138,14 +138,16 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @hiodi: host IOMMU device backed by IOMMUFD backend.
-      *
-+     * @pasid: target pasid of the device to be attached.
-+     *
-      * @hwpt_id: ID of IOMMUFD hardware page table.
-      *
-      * @errp: pass an Error out when attachment fails.
-      *
-      * Returns: true on success, false on failure.
-      */
--    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t hwpt_id,
--                        Error **errp);
-+    bool (*attach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-+                        uint32_t hwpt_id, Error **errp);
-     /**
-      * @detach_hwpt: detach host IOMMU device from IOMMUFD hardware page table.
-      * VFIO and VDPA device can have different implementation.
-@@ -154,15 +156,19 @@ struct HostIOMMUDeviceIOMMUFDClass {
-      *
-      * @hiodi: host IOMMU device backed by IOMMUFD backend.
-      *
-+     * @pasid: target pasid of the device to be detached.
-+     *
-      * @errp: pass an Error out when attachment fails.
-      *
-      * Returns: true on success, false on failure.
-      */
--    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, Error **errp);
-+    bool (*detach_hwpt)(HostIOMMUDeviceIOMMUFD *hiodi, uint32_t pasid,
-+                        Error **errp);
- };
- 
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp);
--bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, uint32_t hwpt_id,
-                                            Error **errp);
-+bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
-+                                           uint32_t pasid, Error **errp);
- #endif
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 410b044370..cfde6f2b2c 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -539,23 +539,24 @@ bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
- }
- 
- bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp)
-+                                           uint32_t pasid, uint32_t hwpt_id,
-+                                           Error **errp)
- {
-     HostIOMMUDeviceIOMMUFDClass *hiodic =
-         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
- 
-     g_assert(hiodic->attach_hwpt);
--    return hiodic->attach_hwpt(hiodi, hwpt_id, errp);
-+    return hiodic->attach_hwpt(hiodi, pasid, hwpt_id, errp);
- }
- 
- bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           Error **errp)
-+                                           uint32_t pasid, Error **errp)
- {
-     HostIOMMUDeviceIOMMUFDClass *hiodic =
-         HOST_IOMMU_DEVICE_IOMMUFD_GET_CLASS(hiodi);
- 
-     g_assert(hiodic->detach_hwpt);
--    return hiodic->detach_hwpt(hiodi, errp);
-+    return hiodic->detach_hwpt(hiodi, pasid, errp);
- }
- 
- static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 862be814a0..2947e2e5dc 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -300,7 +300,8 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-         return false;
-     }
- 
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         if (s1_hwpt) {
-             iommufd_backend_free_id(hiodi->iommufd, s1_hwpt->hwpt_id);
-             g_free(s1_hwpt);
-@@ -575,7 +576,8 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
- 
-     /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                               errp)) {
-         goto free_veventq;
-     }
-     return true;
-@@ -665,7 +667,8 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
-     hiodi = accel_dev->hiodi;
-     accel = accel_dev->s_accel;
-     /* Re-attach the default s2 hwpt id */
--    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id, NULL)) {
-+    if (!host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                               hiodi->hwpt_id, NULL)) {
-         error_report("Unable to attach the default HW pagetable: hiodi devid "
-                      "0x%x", hiodi->devid);
-     }
-@@ -879,7 +882,8 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
- 
-     hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
-     QLIST_FOREACH(accel_dev, &accel->device_list, next) {
--        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi, hwpt_id,
-+        if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->hiodi,
-+                                                   IOMMU_NO_PASID, hwpt_id,
-                                                    &local_err)) {
-             error_append_hint(&local_err, "Failed to attach GBPA hwpt %u for "
-                               "hiodi devid %u", hwpt_id,
-diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
-index ed3793602b..3217a2afac 100644
---- a/hw/i386/intel_iommu_accel.c
-+++ b/hw/i386/intel_iommu_accel.c
-@@ -121,8 +121,9 @@ static bool vtd_device_attach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
-         }
-     }
- 
--    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hwpt_id, errp);
--    trace_vtd_device_attach_hwpt(hiodi->devid, vtd_as->pasid, hwpt_id, ret);
-+    ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID, hwpt_id,
-+                                                errp);
-+    trace_vtd_device_attach_hwpt(hiodi->devid, IOMMU_NO_PASID, hwpt_id, ret);
-     if (ret) {
-         /* Destroy old fs_hwpt if it's a replacement */
-         vtd_destroy_old_fs_hwpt(hiodi, vtd_as);
-@@ -141,22 +142,22 @@ static bool vtd_device_detach_iommufd(VTDHostIOMMUDevice *vtd_hiod,
- {
-     HostIOMMUDeviceIOMMUFD *hiodi = HOST_IOMMU_DEVICE_IOMMUFD(vtd_hiod->hiod);
-     IntelIOMMUState *s = vtd_as->iommu_state;
--    uint32_t pasid = vtd_as->pasid;
-     bool ret;
- 
-     if (s->dmar_enabled && s->root_scalable) {
--        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, errp);
--        trace_vtd_device_detach_hwpt(hiodi->devid, pasid, ret);
-+        ret = host_iommu_device_iommufd_detach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                                    errp);
-+        trace_vtd_device_detach_hwpt(hiodi->devid, IOMMU_NO_PASID, ret);
-     } else {
-         /*
-          * If DMAR remapping is disabled or guest switches to legacy mode,
-          * we fallback to the default HWPT which contains shadow page table.
-          * So guest DMA could still work.
-          */
--        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, hiodi->hwpt_id,
--                                                    errp);
--        trace_vtd_device_reattach_def_hwpt(hiodi->devid, pasid, hiodi->hwpt_id,
--                                           ret);
-+        ret = host_iommu_device_iommufd_attach_hwpt(hiodi, IOMMU_NO_PASID,
-+                                                    hiodi->hwpt_id, errp);
-+        trace_vtd_device_reattach_def_hwpt(hiodi->devid, IOMMU_NO_PASID,
-+                                           hiodi->hwpt_id, ret);
-     }
- 
-     if (ret) {
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index f86f6f0d7b..78e7b6a045 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -934,21 +934,21 @@ static void vfio_iommu_iommufd_class_init(ObjectClass *klass, const void *data)
- 
- static bool
- host_iommu_device_iommufd_vfio_attach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           uint32_t hwpt_id, Error **errp)
-+                                           uint32_t pasid, uint32_t hwpt_id,
-+                                           Error **errp)
- {
-     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
- 
--    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, IOMMU_NO_PASID,
--                                                hwpt_id, errp);
-+    return !iommufd_cdev_pasid_attach_ioas_hwpt(vbasedev, pasid, hwpt_id, errp);
- }
- 
- static bool
- host_iommu_device_iommufd_vfio_detach_hwpt(HostIOMMUDeviceIOMMUFD *hiodi,
--                                           Error **errp)
-+                                           uint32_t pasid, Error **errp)
- {
-     VFIODevice *vbasedev = HOST_IOMMU_DEVICE(hiodi)->agent;
- 
--    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, IOMMU_NO_PASID, errp);
-+    return iommufd_cdev_pasid_detach_ioas_hwpt(vbasedev, pasid, errp);
- }
- 
- static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
--- 
-2.47.3
+With regards,
+Daniel
 
 

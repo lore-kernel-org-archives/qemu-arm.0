@@ -4,104 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2F1CCFA13
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 09:46:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 038A5FF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 10:43:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wINr2-0004uJ-F1; Thu, 30 Apr 2026 05:38:44 -0400
+	id 1wIOrB-0007Mv-Pr; Thu, 30 Apr 2026 06:42:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINqo-0004fA-V4
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:31 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ id 1wIOrA-0007Lb-1k
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:42:56 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wINqi-0002Te-HT
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 05:38:30 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-43d73352cf2so612043f8f.1
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 02:38:18 -0700 (PDT)
+ id 1wIOr7-0004z6-Db
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 06:42:55 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-6501418152cso662002d50.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 03:42:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777545772; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FDBXwR2vciThBZw4YFjtUI18kPRDyj0OqU3u87VT75WfnTbjFAGXI+t2UaLnSCmwM/
+ e0MD72Zl3GEsxpYkaV2wJexiwt2snE4ITaRVwCI4aK7pGzGTTkf+Qt1UCLwdujPrWdYb
+ WRdKLL+/MDKEW0AoA/UJKp8eaCuxApg44hFzfWd0gXNyqiSmEjjc9SHNtTuRNJ3mZzCT
+ YwZN0SfIfgBKN1Yg96pcoUcSSazq3sIvNLojyipTn5midUzrI0LADKXmfKUS0T8aYf69
+ GbvLJjtEEZVWiAJRxv6UeBuofDGaDWcVYQqhPwApI7RsRxheXsDGB2WjThJA34lwz9j2
+ vYlA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ fh=8Kt0J7rK4Bt2ryn0RuN9gbVo61ys5R3foI3I0pJUcv4=;
+ b=BqRBABB3BAx2rEfO7jLZJeqp71x//smFtMOsuRmD/ZjnkTfPgVDowdt++PM/E+2iPa
+ 7AZboOBGq1mkAcLKBLAqIYymuMVTNagW5W+xdsLyIyhZFjfpWDzmHpvzHx/T8xyVsIvj
+ ZzrBblw0tBcDRoRksk+VCJzN27OpNOEJffxRQvpVlZ6wtIwFX7b36ETAmN3G7hl/vcPn
+ AUR5K2BYrT7MoXD5AGLOJBXLhifSWxqXfTqIAapGC+HN2L4MTxffMxTHKC5qQlgGXeAI
+ x2tsfLl++HtPTJDjpCSGdwCMC3dnXCmCaFvPp0NEk1f8ElFpcXmZTxlndBU/HZ6VL6ZM
+ xfjQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777541897; x=1778146697; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=KFFUBwd5+aMPX9c8MeW3RKBPUCvj4D64vvXRmnvq3Ag=;
- b=wYzPFoAUVZgvi4uNGx7brV4+KhEelIRb5GY/M9EDbdZotK73VFGZQyeAhsNUMhj0bH
- CkB7t2+4QMUgaEGbYuGu3eR3R+Q+AmiNgPtJcoP4P62B+iBqy9VDPWERholB1SVtLi6G
- h1dlnjTVJsL7kY5J5+fby4Ha7zJy0sS7oPTjcIijShZ/j/cwNcX7gkLdBhMO510HxBS3
- I5oAJBvNHkIkpHRpGn9iN4tuoqIgaVMvt+sUeQr8rTtm6dMz+oFajiF0nNJqky6Lbg0v
- efJ9IgPUFbq4dtmrAZ5DRZ0kP2GLtty7TZUM4YSXqlwmkasYvh0f05M7XDjhAy6NLyJL
- iK7Q==
+ d=linaro.org; s=google; t=1777545772; x=1778150572; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ b=u2CXR4cBppGDhrV2A68ihgDWzSPPtclXe/tzhEm/X9Cbw74n7Q2A5MLTB3GXN7eEZV
+ kShllx9KuR5JPMGhAuq73WQsvacYgCY5JJRsVcl+LH75KMuMMkrsZ0ZvS6dSp9ZWURTJ
+ H2Hdx/nViUZp3vFShu//T71zWpWjOp8cUhkH4maciR5+s1lOwKLSzq+ehR4La3PiwcrC
+ vYpJXtiUI8LjvcRwcDVU5dMo1wwm1Bryf4faJXbLBjSdAdI15e4VFTdpD+kMYqXgPBQv
+ vltiKxr1vbeBPAyZ9s+BWdiNQVBAK0Nwqj1mzJ8pjlMnGKPHS/SCzWaQ7xMmWC3bx38x
+ 5Z1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777541897; x=1778146697;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=KFFUBwd5+aMPX9c8MeW3RKBPUCvj4D64vvXRmnvq3Ag=;
- b=j89JTXiogQw64yd1Rl7Pv/24vx1JwxzgCJ7pF7bwc1tBtP/FaAAlaxPiX5aiaxqwfs
- RRAQYLsJW+a6YZcXiDzSU0ujFGvBzR2xoT45xAOCmTSqwKhC8POyCSizU+tblXAYdxPl
- KNGV6h43jrJI1FhJp5g8w2PCkzv1VaWM37p+TlEcJ3F1oUDBkWhz3Szeyz1AnpAnE3OB
- b6uybHHxCJzChfy2luY81Mx6cHrVJRyWOrBOv7GTqpTs8lohmCKbTF6N2CoXzq0rqyBG
- XBFbJISU+u2pRlpK1BGSPc7qw7Is9zUvOd0upDGGkiBBQO3CnksQOoin16BDdhmP9Dgw
- 1vRA==
-X-Gm-Message-State: AOJu0Yw/ii/ShYqSOa2PoE1C1iqZdZD+zf4TncoQH3a01PzL7A6+SC+P
- SqRL0yHS5x4H5i1ycJnhdL636m7wQoEUtw6Mo35BCuOUxqFAMEV+iPc8FmNGPnsBoeE=
-X-Gm-Gg: AeBDies/d3A1cYeEh5qh2VhJtDPp9sSTK8lLRoWI7Iejm9ukEFFsIi11fhSWG5jCWpy
- vZ4XObVLnDKi1mKLJ/Mu8gkr3TTEhMj5FVn9bvapvQ1WsY39Sbb8mACk4+5Ky+q7FkBjrd/l/ru
- viXXIy5C0JHh/CVMbi4f5s9zpdzzLGE/ndesolDrEEZNXfUigHyHHgvTO0LwT2q+4j14z5zKbbZ
- sd86tGsq/FnE2RzuFNc7Y8R9cmNz8Hsj6U4fxzHyvo5e8UawYd83XwF7JzJK9rpIVn+weuNLbEI
- /VV9rSI0V5gMYBOdo/60bCcYmmb/oaqL8Pvjb0ZSEDxefonjs7A+jdIvb1GQaWr/4suDeHsBZom
- xMqrPNSMTzpkbceZG0HdAoxGwWiyZOzQm46sC8jSj2JZGeeDB7FKfbKA5Uf7nPyeSY3Id0tAoL9
- RWb6v79ss5fS7Akx4zcskYldlHdjIkkyg5bFQL0wCeWT1WA3S/tjuH1IUtr1sQwtG4oERKdYd5A
- 5e1bAK4IYeKHqMbJspbVpdqKdDopKBSk+mjBaCemw==
-X-Received: by 2002:a05:6000:2681:b0:448:69c0:8da0 with SMTP id
- ffacd0b85a97d-4493c28a81amr3534235f8f.7.1777541897052; 
- Thu, 30 Apr 2026 02:38:17 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-447b421721fsm10816795f8f.15.2026.04.30.02.38.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Apr 2026 02:38:16 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Dr. David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>, Peter Xu <peterx@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu.zevorn@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- David Hildenbrand <david@kernel.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 04/25] target/microblaze: Make get_phys_page_attrs_debug
- handle non-page-aligned addrs
-Date: Thu, 30 Apr 2026 10:37:49 +0100
-Message-ID: <20260430093810.2762539-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260430093810.2762539-1-peter.maydell@linaro.org>
-References: <20260430093810.2762539-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20251104; t=1777545772; x=1778150572;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ b=QwH5mwo29ATHpjmRKccHBcpX1eAvv/wsUnjojh29kwz3cdbShPV4kGuD+qDy3bKmk0
+ s2na3cRSh28sI4e3cI6ntSrh9/UpwR7WHwuYeCtJZ0DMNW+Wh0bCPWRZ3hmZq8cLkZuq
+ EsxqAwrHwCATF4d13iPh3IN/NohI/6Gfdg1pSOuDBrBSmPZMsc2SjAncyElXDfeHAjQi
+ lg1+7kL6ZM50LctFHhK3rm+33usbdtSbzhW2Y37CEJq5Gc+eQF7znQQXMZVZBVk3Kmuk
+ FtAzPLmIqDZpgRIQjEBjVY6CRzedtvohErznMRv05cKhUkuM5+t3f8FjZsnJPpcdynRh
+ RFPA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/AtyZo4CUUJ6RL8jgYqI5NZXZkVuT/1uImSbStiH7GhmNYEGbdLWNAmWG7V+A147qFbBoQLe3o6g==@nongnu.org
+X-Gm-Message-State: AOJu0YyFlI9NVG7FwjJzF4mOa+szSNql8FgYuiHWbWMXJOei/kgwyjuZ
+ L9NIDtWyyO8TvkuzIbo9nXLCwYzWvfp+BvJm0iJCemBCGXGf7CgmNpjh+z4aULtYkREMxJwEIAm
+ L5OPnYOFw+1jMPjpf2AfknuxlKRn1OtkSE8YOm1mUeQ==
+X-Gm-Gg: AeBDiet+Xc2VqpLRoz6Lr1dqGQqzm0JKb2zmsNuoGUtUElk8wEzXjtTWAypcVjN0xzt
+ QxlaJohHKxBly2Fw/j+vEoXyfZePfmfDfHRksNQfbdXI+hQBzonzZq0xAde9axk5Q4CZ6OON/gU
+ 0qOdLsCRfbP5fXvofDmZthD+29vOIRBbM8mc3fg2oiaULdNpXbWfRdQkuiR2Zk7Ny7wKU/SMLl1
+ 2B96nmJ8EG++x752khPAqILRrUiUIfdInFjdQNNI7j3LfNBGXwUZOo+KY1ZiUQiKEne8x4AeRE/
+ Coe8W8sPA2UR8sk5ZiEHHupuyud5RYpfQcigDAeXIK34O8pwRDiD4Dg0CJKQK67GitO/4q5AYG1
+ pjP70e8ZM75DU
+X-Received: by 2002:a53:d104:0:b0:64e:d610:71cf with SMTP id
+ 956f58d0204a3-65c18fce8afmr1242841d50.58.1777545771829; Thu, 30 Apr 2026
+ 03:42:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20260308203516.160103-1-shentey@gmail.com>
+In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 11:42:40 +0100
+X-Gm-Features: AVHnY4JM2dYns_HE7ObRADh3zyxX8nLpEzAfCcCKftBVuoCubM6J_aRvFr41S54
+Message-ID: <CAFEAcA8DbrVdRQK4Cy8gqU__FXYsTa0nZERqrd4he0Y1WRW7uA@mail.gmail.com>
+Subject: Re: [PATCH 0/5] Trivial cleanup
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, 
+ qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,60 +120,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently our implementations of SysemuCPUOps::get_phys_page_debug
-and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
-non-page-aligned virtual address and returns the corresponding
-non-page-aligned physical address" and "only returns a page-aligned
-physical address".  This is awkward for callsites, which in practice
-all want the physical address for an arbitrary virtual address and
-have to work around the possibility of getting a page-aligned
-address, and it doesn't account for protection being possibly on a
-sub-page-sized granularity.  We want to standardize on the
-implementation having to handle non-page-aligned addresses.
+On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> This series contains some low-hanging fruit fixes I came up with when
+> investigating Rust for QEMU, especially QOM object lifecycle vs. the Drop trait.
+>
+> I noticed that no finalize methods were called in Rust sysbus devices when QEMU
+> quits, and neither are its C variants. What is probably missing in the first
+> place is a
+>
+>   object_unref(object_get_root());
+>
+> at the end of qemu_cleanup() in runstate.c (see TODO there). Adding it before
+> this series won't clean up machines since their refcount won't reach zero. With
+> this series applied this additional line will cause various issues when quitting
+> QEMU, allowing the problem to be investigated. Fixing it is beyond the scope of
+> this series (and my time budget).
+>
+> Testing done:
+> * `make check`
+> * Run imx8mp-evk with a Buildroot image
+>
+> Bernhard Beschow (5):
+>   hw/arm/fsl-imx8mp: Do not create redundant unimplemented devices
+>   hw/arm/fsl-imx8mp: Fix parent of ocram memory region
+>   hw/arm/imx8mp-evk: Fix reference count of SoC object
+>   system/vl: Fix reference count of machine object
+>   Revert "sysbus: add irq_routing_notifier"
 
-For microblaze, we just need to remove the explicit rounding down to
-the page boundary that we were doing in
-mb_cpu_get_phys_page_attrs_debug() when calculating the output
-physaddr from the results of the MMU lookup.
+Hi; I've applied patches 1, 2, 3 and 5 to target-arm.next, since
+they're all either arm-specific or the obviously-OK patch that
+deletes the unused connect_irq_notifier method.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-id: 20260417173105.1648172-4-peter.maydell@linaro.org
----
- target/microblaze/helper.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+Patch 4 (the system/vl one) I am not applying, because it hasn't been
+reviewed and I don't know enough to know if it's correct or not.
+(My guess is that it is correct.) You might want to repost
+it as a standalone patch to try to get it a bit more attention.
 
-diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
-index a1857b7217..da8abe063e 100644
---- a/target/microblaze/helper.c
-+++ b/target/microblaze/helper.c
-@@ -284,7 +284,6 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-                                         MemTxAttrs *attrs)
- {
-     MicroBlazeCPU *cpu = MICROBLAZE_CPU(cs);
--    vaddr vaddr;
-     hwaddr paddr = 0;
-     MicroBlazeMMULookup lu;
-     int mmu_idx = cpu_mmu_index(cs, false);
-@@ -297,12 +296,12 @@ hwaddr mb_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
-     if (mmu_idx != MMU_NOMMU_IDX) {
-         hit = mmu_translate(cpu, &lu, addr, 0, 0);
-         if (hit) {
--            vaddr = addr & TARGET_PAGE_MASK;
--            paddr = lu.paddr + vaddr - lu.vaddr;
-+            paddr = lu.paddr + addr - lu.vaddr;
-         } else
-             paddr = 0; /* ???.  */
--    } else
--        paddr = addr & TARGET_PAGE_MASK;
-+    } else {
-+        paddr = addr;
-+    }
- 
-     return paddr;
- }
--- 
-2.43.0
-
+thanks
+-- PMM
 

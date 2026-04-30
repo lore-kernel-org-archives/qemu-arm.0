@@ -4,115 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76277FF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:33:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84EB0CCFA13
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:34:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIRWC-0004n4-7y; Thu, 30 Apr 2026 09:33:28 -0400
+	id 1wIRXW-00052s-RW; Thu, 30 Apr 2026 09:34:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wIRV2-0004Yq-OG
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:32:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wIRV0-0002LW-PO
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:32:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777555933;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Mmo6x0H63WcpgtjtRfHrZyIa/z6SM44RQPJouu1KSXg=;
- b=UFEgQcJES08+wmI+v/LgkLWTiW4sIt9jUPbN9Oj5q4w/8+5OJ7mM9nH+00QRqyCk1M0iC4
- YSwNhOIfh5kOmXaMOsQqUr1rrC5/q2uZ460yS7bhQHoybIsJEPL0o78wFogiKiKPoInrbl
- tZIRSaKrmZTc9dVIXxk6sin4FiGeKh0=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-422-MHWCsSx-ObuO0Muqvu8SKg-1; Thu,
- 30 Apr 2026 09:32:07 -0400
-X-MC-Unique: MHWCsSx-ObuO0Muqvu8SKg-1
-X-Mimecast-MFC-AGG-ID: MHWCsSx-ObuO0Muqvu8SKg_1777555924
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E7E69195605A; Thu, 30 Apr 2026 13:32:03 +0000 (UTC)
-Received: from [10.44.50.160] (unknown [10.44.50.160])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 09D6E300019F; Thu, 30 Apr 2026 13:31:59 +0000 (UTC)
-Message-ID: <93269d70-ab63-40d1-b7ab-bf27d3e82d97@redhat.com>
-Date: Thu, 30 Apr 2026 15:31:58 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wIRWb-0004tP-1u
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:33:53 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wIRWY-0003NT-A0
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:33:52 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-488b0e1b870so15679145e9.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 06:33:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777556028; x=1778160828; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dEpvF3607F+qemfhpeYGfsinknF3G0PYbhra3ynjbnU=;
+ b=sVoMLJ170faQeixgmjKgvFUrOzt59dlOEK3wKzW4bJBeFyuMOQh4uUS+og47/EEaL6
+ R9LY+9gSAdEFX4WDpwJNQbIAOOtnSuvR4w/65TwwqzHi6nH470ShH2lSH5AajbMqXPxx
+ KAz21NVNX/630rjG8xJMb9gZU4mkMfcrO3aOaqsvmVudH8KQBdj31o5wNbvfiin/05Tc
+ e3XYr4yYhES09D1eJzTZAxT9/TPMjL/m40y3VMde/u2C5djOp+JL22AttBz4fb27b4G0
+ NMV946sHsOaEbi3ezLefceIYIGU9KNo7KqGblo1XSdVtENBS25kP/OsLgMKmDaqoaa/j
+ /RqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777556028; x=1778160828;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dEpvF3607F+qemfhpeYGfsinknF3G0PYbhra3ynjbnU=;
+ b=FuZbBX1G5XSKn5YGQmAOlUcjie3lD36E4uAXNv8ADHMTfbLE0WkorvmWBWkamCVYkb
+ LNyNz0bkYo2RFdvgviZUt2ia3pDkl3lAglIQ7aJILmfyzEnG3yC8u6cRgRr4Bbdk/LB7
+ rczIejfs7NL7HGB3Bq6ilrCzIrXUjBdl9Zf6ySRHZhm0q6Ct0Fq9DxTAxDKV7Q9N6QOe
+ sgN6E85aoZEEO3Eh/utSvVG26BwPta794elKyd/m9ElEJuQy9/UGYvhZABisc17NW8fg
+ nrDaJooI7gKnVqE2gNpgyMSGUsPZYVWr1UszNf9QqKPRPBFMt7qoXkxtictW96Z6W0s8
+ kI+Q==
+X-Gm-Message-State: AOJu0Yy1IcmrX/NcWu4DMClDwxg15uGWuycxIrz9k9JPmcrq4trOeK2Z
+ g/BTc8q2ZKgd1OTU6YduAyO9OdvhkAbE9kSPZ02UocoMwH2E0eJfCJD50wfkT3SS9/0=
+X-Gm-Gg: AeBDievA1me4qBylaw9o+660f4NoOyKRAeUfkaIpvIGzss2TYFk/YFyRgQybjtB2Oyk
+ AjDIPSse7Ex82CCV6f+f9qMyovr4vbB45pfJgB1PQ7OX7uHjtZ0RWQzwtFIg66u/3tR7ZaVaPiv
+ PZ/fhCh99MysIdj0pwEKPO+DxicnoQHERp8Gjtjwzsjno4SYs7F5pfbTCyi1zcf+SDm+EVH07Bu
+ 4r1XvOCAJc5t+ikfkxdvFoR1/1TYIV4AmllVBQNWux73iCqPt9TSQy0WiG7ybXBxbHhiI6ka/ya
+ phHmx7w4gX/CqntJ2mNSzIazvihpGGO5YYT5/edQwClBFjOvNsq+TQqKV+59tbPPqZYOCpe03Ak
+ KzyQb4SJq4HQjsaelsLCwB/bnvMcHYUsOnbYw717reC3hnKTwQJ72CD8M3kWTREguu+dNn5U9Lj
+ q4v6duY7i8KAS1fEd0HfUDtED9tCKlahmv1iV37p2eY/W3ZFcdTtZAJre7uAhBPYYNWSI7MAVIq
+ 1Gp
+X-Received: by 2002:a05:600c:3e8d:b0:48a:53ea:140b with SMTP id
+ 5b1f17b1804b1-48a844a4728mr50392305e9.28.1777556027849; 
+ Thu, 30 Apr 2026 06:33:47 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a7c310048sm40810635e9.22.2026.04.30.06.33.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Apr 2026 06:33:47 -0700 (PDT)
+Message-ID: <71c7f6ef-e22d-4fd8-b57f-1408c1aabaf6@linaro.org>
+Date: Thu, 30 Apr 2026 15:33:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 28/37] target/i386: add de/compaction to xsave_helper
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Wei Liu <wei.liu@kernel.org>, Phil Dennis-Jordan <phil@philjordan.eu>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Magnus Kulke <magnuskulke@linux.microsoft.com>
-References: <20260422214225.2242-1-mohamed@unpredictable.fr>
- <20260422214225.2242-29-mohamed@unpredictable.fr>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- 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
-In-Reply-To: <20260422214225.2242-29-mohamed@unpredictable.fr>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: iaR0wc25idAjsSokKDB7fXQSbO6Fs9KTTCWj_NisF74_1777555924
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 01/25] hw/i386/vapic: Cope with non-page-aligned return
+ from cpu_get_phys_page_debug()
 Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Peter Xu <peterx@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Hildenbrand <david@kernel.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
+References: <20260430093810.2762539-1-peter.maydell@linaro.org>
+ <20260430093810.2762539-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260430093810.2762539-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,53 +123,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/22/26 23:42, Mohamed Mediouni wrote:
-> From: Magnus Kulke <magnuskulke@linux.microsoft.com>
+On 30/4/26 11:37, Peter Maydell wrote:
+> Currently the i386 implementation of get_phys_page_debug() always
+> returns an address aligned to a page boundary, and the vapic.c code
+> assumes this: it adds back in the page offset after the call.  Change
+> this to OR in the page offset, so that it works whether
+> cpu_get_phys_page_debug() returns the page address or the exact
+> physical address. This will mean the code continues to work when
+> we change the semantics to standardize on "return exact
+> physical address".
 > 
-> HyperV use XSAVES which stores extended state in compacted format in
-> which components are packed contiguously, while QEMU's internal XSAVE
-> representation use the standard format in which each component is places
-> at a fixed offset. Hence for this purpose we add two conversion fn's to
-> the xsave helper to roundtrip XSAVE state in a migration.
-> 
-> - decompact_xsave_area(): converts compacted format to standard.
->    XSTATE_BV is masked to host XCR0 since IA32_XSS is managed
->    by the hypervisor.
-> 
-> - compact_xsave_area(): converts standard format back to compacted
->    format. XCOMP_BV is set from the host's CPUID 0xD.0 rather than the
->    guest's XCR0, as this is what the hypervisor expects.
-> 
-> Both functions use the host's CPUID leaf 0xD subleaves to determine component
-> sizes, offsets, and alignment requirements.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/i386/vapic.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-This means we have to move xsave_helper.c under the individual hypervisors:
-
-diff --git a/target/i386/meson.build b/target/i386/meson.build
-index d385eafdf7e..14b1d2977d5 100644
---- a/target/i386/meson.build
-+++ b/target/i386/meson.build
-@@ -3,14 +3,13 @@ i386_ss.add(files(
-    'cpu.c',
-    'gdbstub.c',
-    'helper.c',
--  'xsave_helper.c',
-    'cpu-dump.c',
-  ))
-  i386_ss.add(when: 'CONFIG_SEV', if_true: files('host-cpu.c', 'confidential-guest.c'))
-  
-  # x86 cpu type
--i386_ss.add(when: 'CONFIG_KVM', if_true: files('host-cpu.c'))
--i386_ss.add(when: 'CONFIG_HVF', if_true: files('host-cpu.c'))
-+i386_ss.add(when: 'CONFIG_KVM', if_true: files('xsave_helper.c', 'host-cpu.c'))
-+i386_ss.add(when: 'CONFIG_HVF', if_true: files('xsave_helper.c', 'host-cpu.c'))
-  i386_ss.add(when: 'CONFIG_WHPX', if_true: files('host-cpu.c'))
-  i386_ss.add(when: 'CONFIG_NVMM', if_true: files('host-cpu.c'))
-  i386_ss.add(when: 'CONFIG_MSHV', if_true: files('host-cpu.c'))
-
-
-Otherwise, TCG would not compile.
-
-Paolo
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

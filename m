@@ -4,104 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 679A4FF8875
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:22:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70EC2FF8875
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 13:24:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIRLi-0002H7-2K; Thu, 30 Apr 2026 09:22:38 -0400
+	id 1wIRNU-0002jt-I3; Thu, 30 Apr 2026 09:24:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIRLS-0002Bp-4P
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:22:22 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIRLQ-0007r8-Mr
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:22:21 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-35fc2b18363so938763a91.0
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 06:22:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777555339; cv=none;
- d=google.com; s=arc-20240605;
- b=Rmd8uzzhAZrBI12tKvOfe9R1GOVZinlslFLacEZDoKQvLN6qSDVbXAr7uDiI/wHzwJ
- fxoWUsO9mDIFld21KsY1aKydWhtRmhx3dRTPOVfA202o2LmujU745kHzcA2xFb5a7yTt
- Rs+h9BOo6u00uhRhatXyd2X2dnPJsK1XQKwUv29a9X7JgUcfB5sc0BGLVPEuDYrWOwRC
- sJlTltPeXVXSiNFkVL6kT35bnswhKQfAo5tIc87EDrc5iTPua2xgvWXrncZw3SVOHV/J
- vjroYbd8tO5DnQHqSfKn1LlelSmZ7WLh/kS72H5pD+X9bt5eeoJqx4jIRuURvdCJLOKG
- FpRg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=FxbWF8KbXOGlfQKsgorPOT1msBKMLNNbj2kYslbT5dc=;
- fh=CTXXC38/yBVsN9uXZTTi5r6EksD2g/K9AewOmMKIFUI=;
- b=Yh9YZHmksiZGDIEiVgo7VHGibBwQ5MYJyfdMeU6TyyEziYTjtt/U+rzUp/8gNddlwE
- HkSBFG4LkC+OnXsIslokndU65BfPOVLKsMJOI3a5F3NJY+DhMOdwNfL6olhYinEXAHLN
- x142LkHJjpXNofN9kCF2ra7Cj8kwbetWuhdyM2a3tQPwflQhT+kvtPi0UAhE0xldWIVQ
- Wg7R05vDoSUSwfSbeYFa83FRXIPR3Ov3xFSUC4j2AUHe4tUpQwpoqqbP5JE3cphNYOaV
- lsx8VM1DpXCTXx8oKpkGg4HB/dDAwhO3pn3fc5BAjATrt2QJ2jaCwFnwevhgV5x5Fkwc
- mtMQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777555339; x=1778160139; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=FxbWF8KbXOGlfQKsgorPOT1msBKMLNNbj2kYslbT5dc=;
- b=cuWiPD+kLyCZLy43azMxrV1wPYSs7dXdxJjTA7HbWTq6gnCK+MBiZ1D0o8RpWoAoVN
- 1cXV75igyAZ5uRTn3Fj0iObcURVm/3EPZS2xdAzjWzR9sX5P9KvPyu3BkF11t87UX1mI
- I5jyDSKgtoe4wR6qPyBHGcOzl6bT4GGDQNd8qxb+gUS2oQj/f4xLwVLiA//zU8mAKkW6
- dJfe6KARaCwjNGQRYVHZBv5ffC3CSAEeb7UixQwG7rUU6GRSAGgqO3yqFovnIoi4Cb7r
- CI8tWNu7UPBNXboN5JxgXibv9bALuHnMs+SZn/nmILEIKKuM6kIJ/gIeR4v1V5En8D8y
- 4hyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777555339; x=1778160139;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FxbWF8KbXOGlfQKsgorPOT1msBKMLNNbj2kYslbT5dc=;
- b=RUx3aDRsZduHcGpRGsV22FPDk5NgdMpoFTc8WhNy5plumYJR6ZpBIOJww/ZaMpwokn
- yE2FMVVPpA5FHjmY+tayGNycSBUU3hXenFz0oHzTrSGif0GhjB4K+dTDShcAD/t1W/Ll
- h090WrZCfxv2xD0CQcZ2dI/kwq2qhHWwoGPoPSqy5a7UlLtk7xX/N6F1S1ZYq4nxVcVB
- drIApMdfNCv38162CoXKVlOq/nLLcjUU2KHipMdT5vSk13l9+vWELe3H2lxXtrmkA2AH
- B18dQMv5mm678F02dq9FsknzXXD3zUZwzfaIheGlTdps1A/co19R8Dw0Yrj8PZZAyuvP
- ZDnQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ84DQZTZ1LR50n+HT94qFCEGrT63Zu057Obya3ZEEbpojYdAp/p/2T6yG5N5XfgD5B2R6JivUwWaQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxgq/M8/UtFpJfMjLFG7G2FGd4qLc8cWN6pF3ly8fBoj+xJ7jiQ
- ueEu8gS3SkoVuD+Ijeh8QN2anDhkzZ8z06KHTPCgECw7jFyuk2lutKTdkCAK0MHzzFHu0bgyT3Y
- BRFFExpSpxmbVuoh/kOc1gP+YLQ8eQCoXBq268S7MkugPVmcjO1sj
-X-Gm-Gg: AeBDies4vLNgO8t0Cv24bA5Bqe2dl+hh/q9/7jK06RnFOPGDkkdMoQgH/3Xr1P4X96X
- GcTgKvh/O+LTq5a1eEFDTSZhgKRJD6Due0kKN6rrvCYLOIwmxm+qiB71efzxSpmLXTNazEl3QZX
- gCxyL9ICX2LSl3Mmk9x+2Ue/GEs02e87RgU/frT9fiBed6RFxiJJ4je78lIYDA0yJda+kr+X25d
- HiiDT3Up+dQiRaWjfpowNZ/hxmttskNAUptMN1fJyc+48Sld5XBTA0H6rSL7o6jf6elaYlbki/r
- ofKEGoWE3G3dOB87C9Oh/VjTb8D41gjUd9lu7wnubdm/j6wv5GEhBvauEUog7wgVtMbs30hFu1A
- 2lg==
-X-Received: by 2002:a05:690e:2451:b0:649:ed08:1a01 with SMTP id
- 956f58d0204a3-65c18de27b4mr1561059d50.35.1777554591429; Thu, 30 Apr 2026
- 06:09:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1wIRNK-0002hz-Pg
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:24:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1wIRNJ-0008BP-5u
+ for qemu-arm@nongnu.org; Thu, 30 Apr 2026 09:24:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777555456;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Ei/JiBarx99zKkJN3MukTGL7jS1eCljl5MC4ClhshKY=;
+ b=PHF5+xd7xrTX18tGS2vErmISAebj8DVgXrmr7orhOo7aDD6SqyW+k4OJJwVc7La+j2+hVD
+ SkaBvGKHkkFh6P6Ta+2clfODiZR3EOR2i2eL4Bi34uT6/gLf/bagLs8Q3KkkQpZ0qlfLPm
+ mxDiTD7TYPDxoe2ZG96YHU6QALc81J8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-66-au-qcht0N4iluBpyjIwXpA-1; Thu,
+ 30 Apr 2026 09:24:12 -0400
+X-MC-Unique: au-qcht0N4iluBpyjIwXpA-1
+X-Mimecast-MFC-AGG-ID: au-qcht0N4iluBpyjIwXpA_1777555451
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D2F9B19560A3; Thu, 30 Apr 2026 13:24:10 +0000 (UTC)
+Received: from [10.44.50.160] (unknown [10.44.50.160])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B3FCB19560AB; Thu, 30 Apr 2026 13:24:06 +0000 (UTC)
+Message-ID: <d9f053a4-d867-4a9a-a522-cadc0829cce1@redhat.com>
+Date: Thu, 30 Apr 2026 15:24:05 +0200
 MIME-Version: 1.0
-References: <20260428-features-v1-1-1841b39da7e6@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260428-features-v1-1-1841b39da7e6@rsg.ci.i.u-tokyo.ac.jp>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 14:09:40 +0100
-X-Gm-Features: AVHnY4ISyJss64q1Mf2DvH6h2BtrzOWFl1ukcMtkQZ4nxtYAaw3YZoAhJwZVxFM
-Message-ID: <CAFEAcA9_Sc=+Cn7JiPOo9GjOZFU4KCc7nFVqU=9=QAsNBG6AsQ@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/kvm: Cache host CPU probe failure
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=peter.maydell@linaro.org; helo=mail-pj1-x102c.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 26/37] target/i386: emulate: use exception_payload for
+ fault address
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
+ Magnus Kulke <magnuskulke@linux.microsoft.com>
+Cc: Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Wei Liu <wei.liu@kernel.org>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
+References: <20260422214225.2242-1-mohamed@unpredictable.fr>
+ <20260422214225.2242-27-mohamed@unpredictable.fr>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
+ CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
+ hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
+ DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
+ P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
+ Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
+ UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
+ tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
+ wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0j
+ UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT7CwU0EEwECACMFAlRCcBICGwMH
+ CwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB+FRAMzTZpsbceDp9IIN6BIA0Ol7MoB15E
+ 11kRz/ewzryFY54tQlMnd4xxfH8MTQ/mm9I482YoSwPMdcWFAKnUX6Yo30tbLiNB8hzaHeRj
+ jx12K+ptqYbg+cevgOtbLAlL9kNgLLcsGqC2829jBCUTVeMSZDrzS97ole/YEez2qFpPnTV0
+ VrRWClWVfYh+JfzpXmgyhbkuwUxNFk421s4Ajp3d8nPPFUGgBG5HOxzkAm7xb1cjAuJ+oi/K
+ CHfkuN+fLZl/u3E/fw7vvOESApLU5o0icVXeakfSz0LsygEnekDbxPnE5af/9FEkXJD5EoYG
+ SEahaEtgNrR4qsyxyAGYgZlS70vkSSYJ+iT2rrwEiDlo31MzRo6Ba2FfHBSJ7lcYdPT7bbk9
+ AO3hlNMhNdUhoQv7M5HsnqZ6unvSHOKmReNaS9egAGdRN0/GPDWr9wroyJ65ZNQsHl9nXBqE
+ AukZNr5oJO5vxrYiAuuTSd6UI/xFkjtkzltG3mw5ao2bBpk/V/YuePrJsnPFHG7NhizrxttB
+ nTuOSCMo45pfHQ+XYd5K1+Cv/NzZFNWscm5htJ0HznY+oOsZvHTyGz3v91pn51dkRYN0otqr
+ bQ4tlFFuVjArBZcapSIe6NV8C4cEiSTOwE0EVEJx7gEIAMeHcVzuv2bp9HlWDp6+RkZe+vtl
+ KwAHplb/WH59j2wyG8V6i33+6MlSSJMOFnYUCCL77bucx9uImI5nX24PIlqT+zasVEEVGSRF
+ m8dgkcJDB7Tps0IkNrUi4yof3B3shR+vMY3i3Ip0e41zKx0CvlAhMOo6otaHmcxr35sWq1Jk
+ tLkbn3wG+fPQCVudJJECvVQ//UAthSSEklA50QtD2sBkmQ14ZryEyTHQ+E42K3j2IUmOLriF
+ dNr9NvE1QGmGyIcbw2NIVEBOK/GWxkS5+dmxM2iD4Jdaf2nSn3jlHjEXoPwpMs0KZsgdU0pP
+ JQzMUMwmB1wM8JxovFlPYrhNT9MAEQEAAcLBMwQYAQIACQUCVEJx7gIbDAAKCRB+FRAMzTZp
+ sadRDqCctLmYICZu4GSnie4lKXl+HqlLanpVMOoFNnWs9oRP47MbE2wv8OaYh5pNR9VVgyhD
+ OG0AU7oidG36OeUlrFDTfnPYYSF/mPCxHttosyt8O5kabxnIPv2URuAxDByz+iVbL+RjKaGM
+ GDph56ZTswlx75nZVtIukqzLAQ5fa8OALSGum0cFi4ptZUOhDNz1onz61klD6z3MODi0sBZN
+ Aj6guB2L/+2ZwElZEeRBERRd/uommlYuToAXfNRdUwrwl9gRMiA0WSyTb190zneRRDfpSK5d
+ usXnM/O+kr3Dm+Ui+UioPf6wgbn3T0o6I5BhVhs4h4hWmIW7iNhPjX1iybXfmb1gAFfjtHfL
+ xRUr64svXpyfJMScIQtBAm0ihWPltXkyITA92ngCmPdHa6M1hMh4RDX+Jf1fiWubzp1voAg0
+ JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
+ dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
+ b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
+In-Reply-To: <20260422214225.2242-27-mohamed@unpredictable.fr>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: Mb_ieUybi1m4K3BPJGOyLnk06jccDkKY-opRu6z3Bb0_1777555451
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,43 +129,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 28 Apr 2026 at 09:07, Akihiko Odaki
-<odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
->
-> kvm_arm_set_cpu_features_from_host() does not properly handle host CPU
-> probe failure with caching. The current algorithm can be summarized as
-> follows:
->
->     If dtb_compatible is not cached:
->         If kvm_arm_create_scratch_host_vcpu() fails:
->             Report failure
->
->         Cache dtb_compatible
->
->         If getting register values fails:
->             Report failure
->
->     Report success
->
-> This algorithm has the following problems:
->
-> - If kvm_arm_create_scratch_host_vcpu() fails, probing may be repeated.
-> - If getting register values fails, later invocations incorrectly report
->   success.
->
-> Make two changes to fix them:
->
-> - Cache dtb_compatible whenever a probe is attempted.
-> - Record probe failure by assigning QEMU_KVM_ARM_TARGET_NONE to
->   arm_host_cpu_features.target.
->
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+On 4/22/26 23:42, Mohamed Mediouni wrote:
+> Instead of directly putting it in cr[2], put it in exception_payload.
+
+Magnus, can you add on your todo list to handle exceptions from the 
+emulator in target/i386/mshv?
+
+Thanks,
+
+Paolo
+
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
-> Supersedes: <20260422-arm-v1-1-106a9a9e22dd@rsg.ci.i.u-tokyo.ac.jp>
+>   target/i386/emulate/x86_mmu.c | 3 ++-
+>   target/i386/whpx/whpx-all.c   | 6 +++---
+>   2 files changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/target/i386/emulate/x86_mmu.c b/target/i386/emulate/x86_mmu.c
+> index 007de582de..8d4371467f 100644
+> --- a/target/i386/emulate/x86_mmu.c
+> +++ b/target/i386/emulate/x86_mmu.c
+> @@ -277,7 +277,8 @@ static MMUTranslateResult x86_write_mem_ex(CPUState *cpu, void *data, target_ulo
+>           translate_res = mmu_gva_to_gpa(cpu, gva, &gpa, translate_flags);
+>           if (translate_res) {
+>               int error_code = translate_res_to_error_code(translate_res, true, is_user(cpu));
+> -            env->cr[2] = gva;
+> +            env->exception_has_payload = 1;
+> +            env->exception_payload = gva;
+>               x86_emul_raise_exception(env, EXCP0E_PAGE, error_code);
+>               return translate_res;
+>           }
+> diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+> index 8e54fcc403..8d51293384 100644
+> --- a/target/i386/whpx/whpx-all.c
+> +++ b/target/i386/whpx/whpx-all.c
+> @@ -1903,11 +1903,11 @@ static void whpx_inject_exceptions(CPUState* cpu)
+>           WHV_REGISTER_VALUE reg = {};
+>           reg.ExceptionEvent.EventPending = 1;
+>           reg.ExceptionEvent.EventType = WHvX64PendingEventException;
+> -        reg.ExceptionEvent.DeliverErrorCode = 1;
+> +        reg.ExceptionEvent.DeliverErrorCode = env->has_error_code;
+>           reg.ExceptionEvent.Vector = env->exception_nr;
+>           reg.ExceptionEvent.ErrorCode = env->error_code;
+> -        if (env->exception_nr == EXCP0E_PAGE) {
+> -            reg.ExceptionEvent.ExceptionParameter = env->cr[2];
+> +        if (env->exception_has_payload) {
+> +            reg.ExceptionEvent.ExceptionParameter = env->exception_payload;
+>           }
+>           whpx_set_reg(cpu, WHvRegisterPendingEvent, reg);
+>       }
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
 

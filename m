@@ -4,85 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F755CD3423
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 16:27:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D797CD3427
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 23:14:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIqhp-0007hy-2S; Fri, 01 May 2026 12:27:09 -0400
+	id 1wIx3d-0001Qs-UH; Fri, 01 May 2026 19:14:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIqhl-0007fS-Ia
- for qemu-arm@nongnu.org; Fri, 01 May 2026 12:27:06 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIqhk-00088y-0Y
- for qemu-arm@nongnu.org; Fri, 01 May 2026 12:27:05 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48984d29fe3so30661605e9.0
- for <qemu-arm@nongnu.org>; Fri, 01 May 2026 09:27:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777652822; x=1778257622; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=r/XvK7vLIANXLNEYBnV3CyH3GLQskKOmAzyK3K6rMN8=;
- b=oaFbASJEzkjYPRdnbcDIRevCkQ2mo+5+AQ5VoxGOHurEvwfz45QCaHn0eZWGnapeis
- JCPUVqmpBp6/Z2CNBM6BKXLgLoU/skRn/LwbRMnKXLZlFrQ8z87kakfvO2SaNU77DFar
- TZ6nMsSFwuV7UsZCyDvavK6tFk/EbNjiJS5gF+uBZYMQm7wgdTEkBkoUvJ41Lwl24o2Q
- 3lzCflH5IRpAqwV47svNEV3wqySgvcYEVFkC6yB5jKpZZKyp62bEnHV77ljM9+1Ws8GO
- EDD/3d/eNTNc82WLB3Nolm3D5ca/yX7ibau80/kEkHiYvSX6kcPUVAGVT5GD0ws0n8qB
- 11HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777652822; x=1778257622;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r/XvK7vLIANXLNEYBnV3CyH3GLQskKOmAzyK3K6rMN8=;
- b=BznevwKzx5vd45djNRZ209iHYcpBrGAy7msrFmivCJ3QB7qpAapHSlomCr7TvWFCiJ
- /kFkgpOdLlHp0T1dxdsBuuatRnfQL+UUZTh0IZHI4BEMX1UdMvHdkp7AlcluIQ/yCndR
- /+PrkPXvviw7MS2HhPTKtJ9qen5l+gYn4QyUfSMhzaEkZ3gM9Mnix+NnEfHN/AJSVfBx
- tLlsEDcxAvHPUvwqLifdj1CDiibr/cLMOb3A33LQeMJ93ngYieTF7icrSHuM0OwCFVYU
- 6yZ5KlPXjWl7GzrM8UyMCdAwQpp4YTJDd5sxqnQ/pv9IPZMxgPDHKxNQqLew/1zPEMVu
- 0FcQ==
-X-Gm-Message-State: AOJu0YzigJ5gJ0vj8wC6UX0vot5mpFw3SL5VIyPNcFObAVjhAb4gSkuv
- NFdHGk7AgfXNOq0xJ9dI/QUpSOzxPCU32keaad8CGD2X7LKwEF4BOivqjTq08988PZohZVKzb+q
- CRq1l
-X-Gm-Gg: AeBDievGjWwj3RY2iDAQvwiq0RbVv8SJbP5IXvW66ogxZwEN8QDfm73naCC6W0o3enp
- 35jnzLB4Cyr2YcazQjpx/WfiI+CepM5uNE8LZSw2p+feRvmpojTCMIdYrRfNeaGFcSIt+GU2Cp6
- e4psEMCjfEbD5ZUN8WUEPwDJkMfptb//vG8UAljMIVWjxSwH+gjcvqVRZCDECgy8FgJmM3LXOq7
- 6o+OTVMobC1XwKba1w/MLD21lontYg/iS/DR9tYdOXDBDU7snoDUs/R3Xo7ElZuQR/WNO2Mu4C/
- iGycvHDgc+Gcyd1iv9oeJHhyQc4R+z+WubgI26ZvTDGucIGAbb4wx65NSIsL57q+rDHkesFhuoM
- dMYc2pRBWikGBONOD95rHSQ4j/0x1oCfJLcoQFQmL3g2S7YM06q5gt1c2QlST8GhY7qDmG5frJb
- /a7mj69Zu9t6W2d4JOdP8QH/xqg1qsLj8RnfgQjbuyv88zqxA+GRB8gaaKUs9Lb1KY16R6rkuBX
- yyvwJKyRwhGR4f48JMTKVmlKQUzPCumpE1HbYS1hg==
-X-Received: by 2002:a05:600c:1907:b0:488:c683:be89 with SMTP id
- 5b1f17b1804b1-48a83d6ee9dmr133144235e9.9.1777652821930; 
- Fri, 01 May 2026 09:27:01 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a8feb6647sm16297535e9.16.2026.05.01.09.27.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 May 2026 09:27:01 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] hw/misc/bcm2835_rng: Specify valid memory access sizes
-Date: Fri,  1 May 2026 17:27:00 +0100
-Message-ID: <20260501162700.4092512-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wIx3c-0001Qh-On
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 19:14:04 -0400
+Received: from qs-2003i-snip4-11.eps.apple.com ([57.103.86.93]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wIx3a-0005Ff-FT
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 19:14:04 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
+ C72AD1823FD5; Fri, 01 May 2026 23:13:57 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRNEwVSB11NVg1HD1geXBQXCUBDXgheH0wcHQ5YBhIATQoONgZZBV4JVgNDBTYSFF1FRgNHGVcUUBtHDFUHV15fChMAXg8PTAtIAVsHXgJBC0sCXgJYHEYKSQtZGlofHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1777677238; x=1780269238;
+ bh=CGSs6CJWNP1wY+Ol4DxldizRyP5cLjjcFoEWVaZx0V0=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=PoKnL/FClq1LtCzW70rFj+adz6rGPG6Cvn7/ma5ehSyeWWxvCqS3XQi8Du1FcveSf3lzmbSoZFrOyrRtphFdpxXupL/aDjRZ5gl7c1z4/GoMBvsTXY3pwle2N2hGcFy2oW0+dnqnpwgaBSyMEkf2umrs06PHOtB7Ma6tj1B7z0uyF9bizp18fLZfLOwPhwutEKwT8a2x0saxSiBlwxIclPOoOI2AekV0pxiyTl4ohJvYoEEUv9pNd9+yJU/U2uN6P9jnDimu4d+2FhCDenH/VbR+5EQSV8QwW6nxY84mvSMi8WcFRgGQ/vQpQ6f4oiN5+t78xJtxbtDEASaeeILJRg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
+ 032B21823FCE; Fri, 01 May 2026 23:13:55 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH] hvf: arm: override HV_SYS_REG_MDCR_EL2
+Date: Sat,  2 May 2026 01:13:53 +0200
+Message-ID: <20260501231353.63184-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-ORIG-GUID: FUAH6HWu1Bov-7rRZiUtYvdvycdJn30K
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTAxMDIzMCBTYWx0ZWRfX5SdMU6Dwsh6j
+ 0M8BaVWuBXO99AYcvSn5JmFDm0wiwtM25P5QHzl621+TQqDL8mo9Uih3eGlx0zpYBp8qar6+qKr
+ oXAIodf0jKT17arx64dN3ZDfWWGniOiHjNTBzNlnGoTt1QnBptX7DetDuTPdQ4Cso2jWnh2Tpv3
+ YJ7WQ4g9HmLEuljo1DTZmDXDVx8mxm/4Kz9iC4glwrlEKTVVCC7CU+/bEMEdY77IHKSMsuqkrXx
+ DXfnf8Zh9m+Ka3YNs5hq+XgLNZr/SpGAP56pWxEDxx435QZGaZhWR2vidbG/iHK4l2qLABjOze4
+ 6wSUy29YRE4t2sNDHjEjSjgnjMpWljkeYPEh+Q7Wu+B0PaaBtsJs8iwMH9Mzuc=
+X-Proofpoint-GUID: FUAH6HWu1Bov-7rRZiUtYvdvycdJn30K
+X-Authority-Info-Out: v=2.4 cv=Pu2ergM3 c=1 sm=1 tr=0 ts=69f533b6
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VwQbUJbxAAAA:8 a=t-IPkPogAAAA:8 a=KvODUgOX9gEuU6Qg7WAA:9
+Received-SPF: pass client-ip=57.103.86.93;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -99,32 +81,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The BCM2835 RNG has 32-bit registers only; specify this in
-the MemoryRegionOps so wrong-sized accesses are rejected rather
-than getting to the assertions in the read and write functions.
+In older SDKs, MDCR_EL2 was defined incorrectly.
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3394
-Fixes: 54a5ba13a9f ("target-arm: Implement BCM2835 hardware RNG")
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+As such, override it with a #define if compiling with an older macOS
+SDK.
+
+This is a workaround because the macOS CI setup we currently rely on
+has not been kept up to date, to be able to land nested virtualization
+support.
+
+Once CI is updated, the SME stubs can be removed and this
+commit can be reverted.
+
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- hw/misc/bcm2835_rng.c | 2 ++
- 1 file changed, 2 insertions(+)
+ target/arm/hvf/hvf.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
-index e4d2c224c8..bd4acade5b 100644
---- a/hw/misc/bcm2835_rng.c
-+++ b/hw/misc/bcm2835_rng.c
-@@ -93,6 +93,8 @@ static const MemoryRegionOps bcm2835_rng_ops = {
-     .read = bcm2835_rng_read,
-     .write = bcm2835_rng_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
- };
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 4f0f7ffba1..79209bc8e9 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -468,6 +468,15 @@ static const struct hvf_reg_match hvf_sme2_preg_match[] = {
+ #define HVF_TO_KVMID(HVF)  \
+     (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
  
- static const VMStateDescription vmstate_bcm2835_rng = {
++/*
++ * In older SDKs, MDCR_EL2 was defined incorrectly.
++ * As such, override it with a #define if compiling with an older macOS SDK.
++ * https://lore.kernel.org/qemu-devel/BCCED674-EAEF-4755-9BE1-116FB36FB5C9@apple.com/
++ */
++#if !defined(MAC_OS_VERSION_26_0)
++#define HV_SYS_REG_MDCR_EL2 0xe089
++#endif
++
+ /*
+  * Verify this at compile-time.
+  *
 -- 
-2.43.0
+2.50.1 (Apple Git-155)
 
 

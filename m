@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EFB2FF885A
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 08:22:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A37FF885A
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 08:28:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIj8g-0000q7-LC; Fri, 01 May 2026 04:22:23 -0400
+	id 1wIjEI-00029x-LY; Fri, 01 May 2026 04:28:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIj8e-0000po-RZ
- for qemu-arm@nongnu.org; Fri, 01 May 2026 04:22:20 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ id 1wIjEG-00029G-R0
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 04:28:08 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIj8d-0006Iv-AR
- for qemu-arm@nongnu.org; Fri, 01 May 2026 04:22:20 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-651c366f7efso1848870d50.1
- for <qemu-arm@nongnu.org>; Fri, 01 May 2026 01:22:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777623738; cv=none;
+ id 1wIjEF-0007og-B2
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 04:28:08 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-79a60975dc5so20234967b3.0
+ for <qemu-arm@nongnu.org>; Fri, 01 May 2026 01:28:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777624086; cv=none;
  d=google.com; s=arc-20240605;
- b=Eq7eV/jxh161+iRm/QzRO0sTWFuDsW9eLXsS+YhBgLQ/eD0Uasx6u8XO/YP7T5tOzY
- EpjSd+7tOH4Us4xOWKjX3vTrWKCyY9G1nlbtcNVdlzFHwbY60ioRFQ2yoHZY7nU5xqLe
- qUwxXRPNj2aYXRWOuJhdGOlFVsUPanO21cqwjb9CcBhJ0lFVNOTy+JvMbAo7ec2LK5J/
- PKcKe0ZnMJDd2po8R5iYNp1O7q95tyz5DxuvOClT4v5f4YlyXiyz9wrZftNRCHjsUz8H
- afNlxG4qgBImKBmi4ACjFw9L4EDniPdnK7zOGlflghh7V7S6nCAo0ppZw7YZnvuKWOo7
- Cgxg==
+ b=cFFSUhxDUZX75RInPT8PYSwdihOCPMw2sg9NP8EOLnKuLnC9QTySmp1zo9C6CEJm4q
+ CCQYlAHSHgCFM8aaX2A8UIhtpyiUDVciNf+yVVxR1H9De7v8RQau0gDc89TFDwOS1Xop
+ 7HyT5XXmb6xLvRT0kToOfde93cBcCykf0ibbVagLuR1GbZSvbhvla2iAVop/HqzWyCrB
+ egK0if5MfoPDPIluWf3g8KgpXk+8h2mM8iDhlDa9GRiE95fmLybX2B0A0jGRQpbdAAct
+ VHdjF+ov92J8qnCmC2Dm2vgUzR1Gg9Zubukt4Awc05rYCLxPlj7y+mnmRNo4jE5UYRxz
+ V12A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
- fh=Pj7/QxLa8l3eL/XK9krmjELmKYwMvEVVG6U09b9Sy0g=;
- b=kEKxS/oR66+TVRSBolgC+pkiSoLe28ydLep9qd0SzV3HXjBpeLLCGcekn1M6yCNfhk
- HKlsOipfNUPd8J0NCnnZDJ72lVlKsSl/U8DFnXE/YHxjjDYzc663UW7B8clJzsX2Xxn4
- SoTLRcqHkJ6P3yDDb5dp3Of3f5w+yA4zQ57UXRTzm5bTnjmfPmb0bSAzdpdeKlN4DvrL
- w3ePOp34lrUFYJf04vF3tsjicm9+BJ4VwjDTB43PPnS6Uwd9BtqhlGFElLcyJHJKJItt
- KvNRh4WnhQIVyq3Z4CzrdQaDBS9tYlAeEfH8YAkhPmsZxgscT/bgTnFtYjQCg17Yc1U6
- X8Ew==; darn=nongnu.org
+ bh=zdQB4DaMRDeYxlRocZwZMiI/ETSV0ATJmp7CBqXalRg=;
+ fh=iL7j6mnNyQkgLzXqO+OEV99GV8ED8XR6WkfNpZMZMeU=;
+ b=TfYoehvcMyc+uDK8InPddz0XeK1DjGqMJ9mjM4o+SIjQHJMAUDdlqHlhc2t7c4RnOP
+ 6zbkh+F56ffV77i7cTORHAelQLa4nq1yGaRBGgHpBp62uDNGmw7XzsDRbxQT/FYTQLbR
+ yvfO/i7es6crNND7Qsz0oduifFmLCdBa6P30uj33XNCgD+lGjUG0TmdN5mzI+wRj0dzd
+ Yhmohjj54PfieNec1isEVtlBZ6ByiwumhlvR1dGb8/x14z1Ny2C31HY/HZZV6Tw9TATh
+ gtxf5v0Sx0N1tQfy2TYD+DAGI5fojk+iIJbmzV/98PEZbGXmRlpZkjDWoGNhB0yULuXp
+ nmgQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777623738; x=1778228538; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777624086; x=1778228886; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
- b=BcTLMR9FY47sN5cbxlC13URAUOwPR1/cGe7VxYPqqmB5j6uOfScX8ku57z1bXKkgJJ
- t6WO6C/lvUHsMLUbRNUL3JruFODOcwMytdFa8nl2NZnrU2O1gG7gyCUcHbJnOpb2UTB+
- 08+1AoTP2QwtGyBPcU8oNOK3LBExnwtneFvB7fGEF4MimURf2oSo5uwl/2ISRhIcJoG8
- OIa3lE7eowF68bL02Tr57H9fAEQkzn+AQIFpeS+D+3S4U2HKAP3Xi/mSyp9zmZYyxkrP
- +oV4J+5APelD5gaCHxA/H01G7xBtR8bunZDNAqNgbYTMS3VECl6BXWbL6dunGlgd2ieu
- W66A==
+ bh=zdQB4DaMRDeYxlRocZwZMiI/ETSV0ATJmp7CBqXalRg=;
+ b=JDvOfX3Kd4dy6Lfhwe0ZDkPJMAun4hyYRANkzkrrnLUQKf4kD+NjBOt9482JN5JJDK
+ sUhicMT5WGbor2B3quD/TLFyoVRUrYlAhfxv566Bs315rb3T7oP5SLTgC7/CFOvjWknZ
+ /uRkGumc2hwbQjYx2aJsmB+pUsS1euaxmg+gVoCS8fHuIexc6jspQSY+GiV+ZIC7yfff
+ jPR+CLejTlumpYGPCSgjFdtTwJGA11D8DwqBoRqhawvvOw53Sywtl9B2YvT56gSNXsv0
+ 9zYtdfqLiNlZcGGhvMRNkG0all03fzSn/Lgvc56sXqTexSaa0pQ7msCqzHN87idolwyF
+ 9wOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777623738; x=1778228538;
+ d=1e100.net; s=20251104; t=1777624086; x=1778228886;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
- b=tVOs0vL/rZ55l3AMUWyEqK/BKDleDO6ndO0bypgLbDQkumbBQQrbDeqmwLWC457vub
- ZUwed+elFEB6MSPxzDINtX+ErzaTaAW//QqwgJY9SBjn19NzNE9fh2LWEhv/jKxmK0e5
- iWz+ZinudZF+SRLNUJ+zEua+NARICEsOrPKNmpqKFtQ5+LSCLlWb1gfGJxlPM0br27wH
- XBW4G+PFb1bRP43R00w7nDz/5DYD5a4tDj1/Rim/10Pg27poOPUcYhGzgzPteQrXsSME
- xT9YomOlI/+THO5DedvF9L4PgDuAzyAKVAKEE67uc98gp/6Jtj08V2Fha1jj15rsAw/I
- q2OA==
+ bh=zdQB4DaMRDeYxlRocZwZMiI/ETSV0ATJmp7CBqXalRg=;
+ b=M5p8ANYAAX29TVfjWMRBpS37sxZRtUpRwOa2Ynyj2o9iHhYmZSD2uIb2ASiXLzGeOx
+ q5bf+RzTTttIDYfT+4V0qbHmU8tGzas6gT4QVj+15BwurJ54+JwvlygiPPo8sr3BFPME
+ Ca00OoLjRv+TshwGW/N38z3WswScZyEHDny2C/HH7na7vqn7WtNjG0gtvIN0T0ACDiKA
+ 3sIexLm0yDUFS6lme2PxtM23yt3fiVHo+2eUjPuuKSo0vNH5FFcJ3G/B7RXwTLmKNetS
+ upCWETRH9pA6JjS73dxz7PNNaVIc9CPoLyrs0vib9bskW1XiQSpuGLwTSu6jH89MeoEv
+ 6goA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+quk1XOxUykXa4jRslACew8jsCJAgYNMvyqutZRmYQ1MbLo4R12JoZxz8O88e5y3Tqb2x89PyYbw==@nongnu.org
-X-Gm-Message-State: AOJu0YwKfejK+YBtkT3Mv+vto7sDe4eO2Yo0whEjBwKV1Oi9+3chrLki
- eaE+2lCBBaAAohl+8Y6IPkPGNLhHNTLon1yEkSVs/1nqO7y5yrbxxfDqConwMIuiKqD0QmJhj6G
- nonbYvYsPmkZvNCHh0R+reRAQC/h0ONS3gQdSjLszEg==
-X-Gm-Gg: AeBDiesIbQuAL13Ry+WV4Aj/B3liESsg8gJHp2rkICPhhrTLAt64OA8VCJz1feD2hlf
- 2KGvPWYswcGcS0e4WhZe8pJ4CGQjy3Ua2Il6WiBGHSG8JBqXhkmG4XRP6cQmoB6zj+tFFAiWssN
- LJRZVEH8etrlLXSnaCFWE7h8qkX8qdiSDlLYvDcx42zlUJtK79DSALZnhVd0IEsLWGrpyLeZ9TQ
- ZiaAsSpaV6lja4JOjcSaq1RKLDzSOUhEr9zxDl8djG4s61yQO3DjHIXB9pEbat8m+P7shsLN51e
- 3BED0hedyKUM1jjpaasr1hZz3QAmoGjlekez9BdD0cTBSRC1T3sQcktVgoocEVJ2GUK30U8q7cL
- 4GnF6tPO6FV8k
-X-Received: by 2002:a05:690e:191d:b0:654:1261:8b57 with SMTP id
- 956f58d0204a3-65c30518267mr1806097d50.6.1777623737892; Fri, 01 May 2026
- 01:22:17 -0700 (PDT)
+ AFNElJ+ExRXdB6lTIz8MdG0B4wlL59Ni/FE/gozEMLSGUt1y/wJucytN/pgecldSkHYFzVgmaF9viNU8EA==@nongnu.org
+X-Gm-Message-State: AOJu0YxMEclYvzSuGvBwt2gcPJD8iFsnH3OMjT8O700GNZro3Iv3NBW+
+ YRpYf4PauFgMQi3Nep1tqU/oRXk0n4Z40VooCXI9G46sqLgiLI/hMehGE9TX27/DqafUWdKDQVB
+ hHbBJQUkFnBD6HVpybkiyjajGGnliJ9tEF5ht5wqHMg==
+X-Gm-Gg: AeBDieuNLLqz583qfqBO1Abyr9PV9uQFRIyesETiuw2p2Ha6lwXqEe7yvu0pjwTobxE
+ R5UHEmvrQMuXWj+1GR526niCYwp0puvYNCFRwrClqMhKQlGLGeuIBBbxs25y5UToMEk6i23za8b
+ 8aXvzaogarPZhkhlRpdQbIqQP4NYqaygAi3ExVEqY8a9ewwZHLrEqRKVknP+F2Jub6ARCpVk/w0
+ cvumtIXRL3JotqqRYLu5ghW9JEOf35M0zltfTAxY0hPECM2GWaXf8SFIQIzgrkrqJBlLEubEEgG
+ PM8+y946nmyWUJ6rjeYj51+znRd4zRb+2mBywKDE2bjNE8ADPvZG6HXsz/3wkvXJpenaUPTv485
+ Rig==
+X-Received: by 2002:a05:690c:93:b0:7bd:6432:dab with SMTP id
+ 00721157ae682-7bd643214a6mr30724147b3.43.1777624086066; Fri, 01 May 2026
+ 01:28:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260429190532.26538-1-mohamed@unpredictable.fr>
- <20260429190532.26538-4-mohamed@unpredictable.fr>
-In-Reply-To: <20260429190532.26538-4-mohamed@unpredictable.fr>
+ <20260429190532.26538-14-mohamed@unpredictable.fr>
+In-Reply-To: <20260429190532.26538-14-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 1 May 2026 09:22:06 +0100
-X-Gm-Features: AVHnY4KuyM6gYc5WFFzASu4wWdDm24T8QkofWmZBaWEjMzwcNkGwL1CsRgsKUtI
-Message-ID: <CAFEAcA-H-E4ERsz2534i5qVnr+VF9uy0N66MOs3QHmwkP8i1DQ@mail.gmail.com>
-Subject: Re: [PATCH v21 03/15] accel, hw/arm, include/system/hvf:
- infrastructure changes for HVF vGIC
+Date: Fri, 1 May 2026 09:27:54 +0100
+X-Gm-Features: AVHnY4LD9doMrkdvVfXyBUewM98Q9OeB9-W6KyQfg_-jN2Yig-EndN3N3AkaTdA
+Message-ID: <CAFEAcA-f21a7hHcGNrAAA=2x_AUtQDOs7jUkmv=gxnLSM39c5A@mail.gmail.com>
+Subject: Re: [PATCH v21 13/15] hvf: arm: physical timer emulation
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
  Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -100,8 +99,8 @@ Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
  Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,18 +123,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 29 Apr 2026 at 20:05, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Wed, 29 Apr 2026 at 20:06, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
-> Misc changes needed for HVF vGIC enablement.
->
-> Note: x86_64 macOS exposes interrupt controller virtualisation since macOS 12.
-> Keeping an #ifdef here in case we end up supporting that...
->
-> However, given that x86_64 macOS is on its way out, it'll probably (?)
-> not be supported in QEMU.
+> Enable this through leveraging TCG's physical timer emulation.
+> This allows nested virtualisation to work with a kernel-irqchip=off + GICv2.
 >
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
+>  target/arm/hvf/hvf.c | 28 +++++++++++++++++++---------
+>  1 file changed, 19 insertions(+), 9 deletions(-)
+
+The TCG emulation code looks like it ought to be OK called
+from an hvf context, though we do seem to be gradually
+extending the set of TCG sysreg implementations that are
+now silently required to work with HVF too...
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

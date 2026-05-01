@@ -4,115 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284B0FF8864
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 07:17:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EFB2FF885A
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 08:22:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIi7c-0007CC-Em; Fri, 01 May 2026 03:17:12 -0400
+	id 1wIj8g-0000q7-LC; Fri, 01 May 2026 04:22:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1wIi7Z-0007B6-KB; Fri, 01 May 2026 03:17:09 -0400
-Received: from mail-northcentralusazon11013069.outbound.protection.outlook.com
- ([40.107.201.69] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1wIi7X-0001hD-Ds; Fri, 01 May 2026 03:17:09 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HcfcS53B2FeU60UD6HFzNYidxdGk6J2wiMavDPekO2msydBV1c2CqWk/lMyde1x+cWYy7Mh2ferKUzi0ccQMlaDEwtTCmzUk5SfY4NLC5PxtRKKmcSxe5KxkUatu9shzPcoNpynfCKdSMFalWOYtuubwrS43sSsxIb6Mv/b+U5qlTxfVmySDUwhhNavZqGzfcm2LWsCGwNzkMcBHMS77XVx157hj/WjI5MOxJg0hh4wpRg4ch7ptGp+Yagfa7WbnUASXEaupfDa1VqhvpjS6lCnSvVgYl8qpNUStYF0ceYe8+jSj+Vpff8dwWCCXeq333TT+izYJnIbSMp6E0t8Hqw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3xC1xgD5105+XOtHwggseqN4CL+uGpq72S9CcHXqQc8=;
- b=mSe0wytGk2JcXam/knI3w6CrRHFHhmOlsNu0CrWCvFhhNZhIl+t6GbSC+fadZj0MuWIMKcl0ga0Eej4LhLJL6x2bP/peFDWp90NR9eKUXmCCywHaW52Udn6TFz7nL8uj2gh04XqYRQ4l1SpJG6Dvb6rCFFVltb5YxsjkMS3ALpb6O0eObHSrYSAmLb/TJNKWBxk8e6D1dNgmuCt+s5XmdZeMvKZp/k+DJus83po4LxwJ1GBAE9jIzMAQa5IFaZVLBEhhK89d/v2iG6iRdwMqhP2ukoF7YCL9bcBt4CHPDLBUSdghxkf5JHIny1RDK0ltSXx651zrmn8+nSq+IjAeTQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=tls.msk.ru smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3xC1xgD5105+XOtHwggseqN4CL+uGpq72S9CcHXqQc8=;
- b=XTKcZI92HOtltQTCKp4Ot2B5GE1WDz7cs6iBoIPC3/zFS33EsCxRhrASv4QtXkMu7xaLzliayBliUm7nfeT/4ySLuwa/QH/M9y54DMrUm+zlFtEoKbzP9lALeS4yrgN2zFkmUZ1/oAsaUk1mA5Y8X4nIQBDpKI8NQ0sGLE+jg/M=
-Received: from PH7PR10CA0016.namprd10.prod.outlook.com (2603:10b6:510:23d::8)
- by LV3PR12MB9119.namprd12.prod.outlook.com (2603:10b6:408:1a2::9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.15; Fri, 1 May
- 2026 07:11:59 +0000
-Received: from MW1PEPF0001615D.namprd21.prod.outlook.com
- (2603:10b6:510:23d:cafe::64) by PH7PR10CA0016.outlook.office365.com
- (2603:10b6:510:23d::8) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9870.23 via Frontend Transport; Fri,
- 1 May 2026 07:11:58 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
-Received: from satlexmb08.amd.com (165.204.84.17) by
- MW1PEPF0001615D.mail.protection.outlook.com (10.167.249.88) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9891.0 via Frontend Transport; Fri, 1 May 2026 07:11:56 +0000
-Received: from satlexmb07.amd.com (10.181.42.216) by satlexmb08.amd.com
- (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Fri, 1 May
- 2026 02:11:56 -0500
-Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by satlexmb07.amd.com
- (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17 via Frontend
- Transport; Fri, 1 May 2026 02:11:54 -0500
-Date: Fri, 1 May 2026 09:11:53 +0200
-From: Luc Michel <luc.michel@amd.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-CC: <qemu-devel@nongnu.org>, Thomas Huth <thuth@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
- Frederic Konrad <frederic.konrad@amd.com>, "Edgar E . Iglesias"
- <edgar.iglesias@amd.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>,
- <qemu-arm@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>
-Subject: Re: [PATCH] hw/core/register: add register_array_get_owner
-Message-ID: <afRSOdoqW27KAvRQ@XFR-LUMICHEL-L2.amd.com>
-References: <20260424155646.533334-1-luc.michel@amd.com>
- <6d8bded7-a796-4144-b4cc-cb1b2f227528@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIj8e-0000po-RZ
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 04:22:20 -0400
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIj8d-0006Iv-AR
+ for qemu-arm@nongnu.org; Fri, 01 May 2026 04:22:20 -0400
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-651c366f7efso1848870d50.1
+ for <qemu-arm@nongnu.org>; Fri, 01 May 2026 01:22:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777623738; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Eq7eV/jxh161+iRm/QzRO0sTWFuDsW9eLXsS+YhBgLQ/eD0Uasx6u8XO/YP7T5tOzY
+ EpjSd+7tOH4Us4xOWKjX3vTrWKCyY9G1nlbtcNVdlzFHwbY60ioRFQ2yoHZY7nU5xqLe
+ qUwxXRPNj2aYXRWOuJhdGOlFVsUPanO21cqwjb9CcBhJ0lFVNOTy+JvMbAo7ec2LK5J/
+ PKcKe0ZnMJDd2po8R5iYNp1O7q95tyz5DxuvOClT4v5f4YlyXiyz9wrZftNRCHjsUz8H
+ afNlxG4qgBImKBmi4ACjFw9L4EDniPdnK7zOGlflghh7V7S6nCAo0ppZw7YZnvuKWOo7
+ Cgxg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
+ fh=Pj7/QxLa8l3eL/XK9krmjELmKYwMvEVVG6U09b9Sy0g=;
+ b=kEKxS/oR66+TVRSBolgC+pkiSoLe28ydLep9qd0SzV3HXjBpeLLCGcekn1M6yCNfhk
+ HKlsOipfNUPd8J0NCnnZDJ72lVlKsSl/U8DFnXE/YHxjjDYzc663UW7B8clJzsX2Xxn4
+ SoTLRcqHkJ6P3yDDb5dp3Of3f5w+yA4zQ57UXRTzm5bTnjmfPmb0bSAzdpdeKlN4DvrL
+ w3ePOp34lrUFYJf04vF3tsjicm9+BJ4VwjDTB43PPnS6Uwd9BtqhlGFElLcyJHJKJItt
+ KvNRh4WnhQIVyq3Z4CzrdQaDBS9tYlAeEfH8YAkhPmsZxgscT/bgTnFtYjQCg17Yc1U6
+ X8Ew==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777623738; x=1778228538; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
+ b=BcTLMR9FY47sN5cbxlC13URAUOwPR1/cGe7VxYPqqmB5j6uOfScX8ku57z1bXKkgJJ
+ t6WO6C/lvUHsMLUbRNUL3JruFODOcwMytdFa8nl2NZnrU2O1gG7gyCUcHbJnOpb2UTB+
+ 08+1AoTP2QwtGyBPcU8oNOK3LBExnwtneFvB7fGEF4MimURf2oSo5uwl/2ISRhIcJoG8
+ OIa3lE7eowF68bL02Tr57H9fAEQkzn+AQIFpeS+D+3S4U2HKAP3Xi/mSyp9zmZYyxkrP
+ +oV4J+5APelD5gaCHxA/H01G7xBtR8bunZDNAqNgbYTMS3VECl6BXWbL6dunGlgd2ieu
+ W66A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777623738; x=1778228538;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VBNpCNuiCpFV2nOlypxmB0JL1T6t5pZBpv1vCJf9xMk=;
+ b=tVOs0vL/rZ55l3AMUWyEqK/BKDleDO6ndO0bypgLbDQkumbBQQrbDeqmwLWC457vub
+ ZUwed+elFEB6MSPxzDINtX+ErzaTaAW//QqwgJY9SBjn19NzNE9fh2LWEhv/jKxmK0e5
+ iWz+ZinudZF+SRLNUJ+zEua+NARICEsOrPKNmpqKFtQ5+LSCLlWb1gfGJxlPM0br27wH
+ XBW4G+PFb1bRP43R00w7nDz/5DYD5a4tDj1/Rim/10Pg27poOPUcYhGzgzPteQrXsSME
+ xT9YomOlI/+THO5DedvF9L4PgDuAzyAKVAKEE67uc98gp/6Jtj08V2Fha1jj15rsAw/I
+ q2OA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+quk1XOxUykXa4jRslACew8jsCJAgYNMvyqutZRmYQ1MbLo4R12JoZxz8O88e5y3Tqb2x89PyYbw==@nongnu.org
+X-Gm-Message-State: AOJu0YwKfejK+YBtkT3Mv+vto7sDe4eO2Yo0whEjBwKV1Oi9+3chrLki
+ eaE+2lCBBaAAohl+8Y6IPkPGNLhHNTLon1yEkSVs/1nqO7y5yrbxxfDqConwMIuiKqD0QmJhj6G
+ nonbYvYsPmkZvNCHh0R+reRAQC/h0ONS3gQdSjLszEg==
+X-Gm-Gg: AeBDiesIbQuAL13Ry+WV4Aj/B3liESsg8gJHp2rkICPhhrTLAt64OA8VCJz1feD2hlf
+ 2KGvPWYswcGcS0e4WhZe8pJ4CGQjy3Ua2Il6WiBGHSG8JBqXhkmG4XRP6cQmoB6zj+tFFAiWssN
+ LJRZVEH8etrlLXSnaCFWE7h8qkX8qdiSDlLYvDcx42zlUJtK79DSALZnhVd0IEsLWGrpyLeZ9TQ
+ ZiaAsSpaV6lja4JOjcSaq1RKLDzSOUhEr9zxDl8djG4s61yQO3DjHIXB9pEbat8m+P7shsLN51e
+ 3BED0hedyKUM1jjpaasr1hZz3QAmoGjlekez9BdD0cTBSRC1T3sQcktVgoocEVJ2GUK30U8q7cL
+ 4GnF6tPO6FV8k
+X-Received: by 2002:a05:690e:191d:b0:654:1261:8b57 with SMTP id
+ 956f58d0204a3-65c30518267mr1806097d50.6.1777623737892; Fri, 01 May 2026
+ 01:22:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <6d8bded7-a796-4144-b4cc-cb1b2f227528@tls.msk.ru>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW1PEPF0001615D:EE_|LV3PR12MB9119:EE_
-X-MS-Office365-Filtering-Correlation-Id: 16e36b2e-71c7-4b04-bffe-08dea750ee21
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|36860700016|82310400026|22082099003|18002099003|56012099003|13003099007;
-X-Microsoft-Antispam-Message-Info: hWGiVTqNjX6NGs9FRM/xk03OuNUEsKGpT3bcb8Jeha60ig++IbS9uZxhF1lJn34PmKxygrrW1pqSAdOxQjEw36Kh/dC0J99887ESYm8EuN7Yw1MOc2wqXFDjE/9upe1ieRKKVkdGYYEYEeTnfPPI+CiXRsvWaMtejsQs+f2u+kEDzR3ubHpUoxakeg/2QTk/Sh3g9kD3EqwVarYnBfSLEp1QzW++EgOXX0YSOpz27nMsTPZtryOYr1Xs3/jTnOVqhmjbsY39K+HC4IMOylEUVSLGwYwEFh0sZtJ2qyYJBWNtkgcUkS8AWBBv1X9MydsB4gKnwk6eSh0vA7qSqzXbvqXnFQn7L8cxtMcjGZFIabV7eDh83BXgPTFcMqiIpRTAsqMGkeXYHRCiVd6Wv3JjksXdJ19cemC2sxS1vW9imMJEQhqBRmU4d8qLVZS7LLWdgu5mLlN/tz5hDWIaShK3ftS19D6fNUx3XvWhkDzmZiuBmWrGGo4dITMmL6tT3gX/82Jquv0uTFVeX4wzRGosvrye3jbvCZwX/xWkVEFihlYaROh92tNMu1PVkHcavFNBgz6brM8usVcqGMPxyFpN8Mk344811F89cGqX8IARB6tpTllbrN887faItLjjI8J/NIVtGznJqHpj1fifpI157MNh0ncfpqPYNoF6x/atTdaq2dvl/Rrc0/XQbnOxcl5v
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:satlexmb08.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(36860700016)(82310400026)(22082099003)(18002099003)(56012099003)(13003099007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: bc78cXNAuAQWY/FBaJ19MOtddFbpLXBCnesrCXVi3cup0qYmxkJDMJ9EyPwr16OOhLAhF37E9eP9+FCjmPlH2bdsrgRk4ryV52vXEkYoyCZ1+e3uXeVHOB/cy44BenBzcamdCM0ri7dyhOOJT1lfxY9o5789aCrByS6naWyv2wsccr6VS+lLOa8YNgN8tZ6mKxww/saJFbaivMclEzVrXt+n3yRvmEXz4+5kUhGJZFthpaHsoj2/QF5ywGMafN0hrvWxWnMJLnXhG7LYPUdFiXf8wWS9TOYZplKg+hBeLVRtDsGNRjCAQ167ZJWsQRPKbZTke8oxewtGX4HBGBK8lmyP06xAIlCkAYbbt1SqMiLweW+yTpP77drH7SiFXYz9cvEHS20OpcrAe2NcwsAuvVjByphwmlyOYVqeqHYD1+pjvUPdj4SwuJ7h2gAAGJLK
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2026 07:11:56.6304 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 16e36b2e-71c7-4b04-bffe-08dea750ee21
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[satlexmb08.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: MW1PEPF0001615D.namprd21.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9119
-Received-SPF: permerror client-ip=40.107.201.69;
- envelope-from=Luc.Michel@amd.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
+References: <20260429190532.26538-1-mohamed@unpredictable.fr>
+ <20260429190532.26538-4-mohamed@unpredictable.fr>
+In-Reply-To: <20260429190532.26538-4-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 1 May 2026 09:22:06 +0100
+X-Gm-Features: AVHnY4KuyM6gYc5WFFzASu4wWdDm24T8QkofWmZBaWEjMzwcNkGwL1CsRgsKUtI
+Message-ID: <CAFEAcA-H-E4ERsz2534i5qVnr+VF9uy0N66MOs3QHmwkP8i1DQ@mail.gmail.com>
+Subject: Re: [PATCH v21 03/15] accel, hw/arm, include/system/hvf:
+ infrastructure changes for HVF vGIC
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,44 +124,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 19:45 Thu 30 Apr     , Michael Tokarev wrote:
-> On 24.04.2026 18:56, Luc Michel wrote:
-> > Add the register_array_get_owner function to the register API. This
-> > function can be used to retrieve the device owning the given
-> > RegisterInfoArray.
-> > 
-> > This was previously done inline by some devices.
-> > 5c6367bc1c8850f74812eeaaf87cff9911be58de modified the way register
-> > blocks are created and parented to the device. Since this is an
-> > implementation detail of the register API, it makes sense to have a
-> > function for this.
-> > 
-> > Use it in the Versal OSPI and Versal/ZynqMP eFuse models instead of
-> > tinkering with the API internals.
-> > 
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3421
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3422
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3423
-> > Signed-off-by: Luc Michel <luc.michel@amd.com>
-> > ---
-> >   include/hw/core/register.h        | 11 +++++++++++
-> >   hw/core/register.c                |  5 +++++
-> >   hw/nvram/xlnx-versal-efuse-ctrl.c |  4 ++--
-> >   hw/nvram/xlnx-zynqmp-efuse.c      |  4 ++--
-> >   hw/ssi/xlnx-versal-ospi.c         | 10 +++-------
-> >   5 files changed, 23 insertions(+), 11 deletions(-)
-> 
-> This looks like a qemu-stable material (for 11.0.x series), I'm picking
-> it up.  Please let me know if I shouldn't.
+On Wed, 29 Apr 2026 at 20:05, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> Misc changes needed for HVF vGIC enablement.
+>
+> Note: x86_64 macOS exposes interrupt controller virtualisation since macOS 12.
+> Keeping an #ifdef here in case we end up supporting that...
+>
+> However, given that x86_64 macOS is on its way out, it'll probably (?)
+> not be supported in QEMU.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
 
-Indeed, thank you!
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Luc
-
-> 
-> Thanks,
-> 
-> /mjt
-
--- 
+thanks
+-- PMM
 

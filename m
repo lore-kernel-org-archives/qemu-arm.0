@@ -4,104 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41377CD13D3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Apr 2026 19:00:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284B0FF8864
+	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 07:17:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIWcg-0001x5-9P; Thu, 30 Apr 2026 15:00:31 -0400
+	id 1wIi7c-0007CC-Em; Fri, 01 May 2026 03:17:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIWcX-0001pl-Lt
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 15:00:25 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIWcW-0006CD-7A
- for qemu-arm@nongnu.org; Thu, 30 Apr 2026 15:00:21 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-651b4d09141so1948406d50.1
- for <qemu-arm@nongnu.org>; Thu, 30 Apr 2026 12:00:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777575619; cv=none;
- d=google.com; s=arc-20240605;
- b=S7OuvUA8/5CFSP8QVBCXyQiUIPUPIHmulVOPOKOSG2zrYNN4+iCyarS9/7LSY2UMhX
- s0SjUJ3unbSYBNge5I5URYagRcQGtOoE7FagTPGBQaemfZ/0rDLSs1zZXXaCWBqkYkZa
- 4qC2Sq/jPn2cqhMLpQvBgc9ld2m6trOi0Mkybp/QwfgsUUIEdaayNOWOdmF/jbJ9NWBq
- N5yE+nIrcVvnfT/33MPurpjrKtZuxp7BdGe5QUnepS6lpx7JCcXXTOsx0g7v+8/xKFzH
- ZSs/Bve8Myf3SaCzrxwFxWV+cWC6gqGZNarWDEJWV51BfgO3cBQ2lOulHuvKN6ld/dra
- 46Vg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=33PsOdfRzSkdPROcUPsbwRof+hEAHu2aY8Z1kMr6zvs=;
- fh=rg0aCDj36b2my0DyZkuMQaZjiqi1EMNn/JF6zdVBS+w=;
- b=PFsYqNQ/MMO7cl1wTS9wWBfZO9juuERwp4/a+5F8f+1zGx+TEp6olLP4AGlE1DUHfy
- YQLg3KVwjlADOmgmnb5FQgptybyaTm8sxnDu9o8qPibWDoe1EGS0WvLrNQh3m5pXjz9p
- g4KjeeCM9fq+263TbjOq+8GvP3EPifewR7qLlik4I0NByCya5OVKU88QgdUg6Qp0hYrp
- fiGxGGHXl/VH5ZJKsjbw/keJhSXwkcSqjflTjGtmdGPEKPTuHw3FZse2930G66ZwiDcO
- 4p/bvoZLZqB7OIrvNznd5muwW9BYvZHFUY0RAk16xGWFiM7ngCHA0wKyZJ7w5zhYS2s1
- /C+A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777575619; x=1778180419; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=33PsOdfRzSkdPROcUPsbwRof+hEAHu2aY8Z1kMr6zvs=;
- b=wfZ5RmLyy1aeg9tydWBBrvlTovPmV85YU6oPfZSp6RgcK2vUr71thVxrq4YpgoTY5V
- herAt3fXnn+oSh8NyDsUdytOWzBEhrrgUAF7yElMwx6Y7DF0jRmk6zlkZqlGfwaCb/Tb
- MaB3XAJ3GICHzN5z0Hwt3buWg/8XNriGn2yIZTgJvZQsqwfAsq0sxp957QR8/5EQeboh
- SyNheuB1C9x2CHESs01B1e5kc1DKq+eCwicAW3LNvy+w5Ea/ldq/PYQqRkle0/HtDV/3
- jRDsDG8jh0H9EUta7S/OEbpEXL2e5XQTnx00T5ZGbbNClIhYPG5qiCauBJb0NYkYb/uK
- hCqg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777575619; x=1778180419;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=33PsOdfRzSkdPROcUPsbwRof+hEAHu2aY8Z1kMr6zvs=;
- b=OXOS0WJAZPrRkENkwL1wQqvzsccF3IImuQsID6iqGzxYQhJS8D14LRfm3BfyFvFgnI
- SFNx7rejllA25204m/BZ+Sa4OtJNOnUBKZillmTcIgzzBNwSnxoK/hklAdlAYXhil+1Z
- 98EnbyIm6OFoXs9hJWRM8nTTSBO+jj67SUr8ds9MDzBlK3SpoUxSPrVmSSQMf9n/96qh
- jYxSPDKWYNi2e1JowikPhgOCnLz+yau+FTi53A6JlA3bpa8WLIXBQBl2RnNHAKQalxKl
- 1yjLmtoQzryyt5DAkA+xlFyLgHIbf1cCT+nJTk4167CJPaFvraPnBlNQ4Zk7uuNufVoS
- mV9g==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8OPZgQgb5BEJ982DKeY7E0iMd3vulTQe9qoLuEiSN7ZiQcXEAyVB86hu9ZZixJg3NcUJhXDGQ05A==@nongnu.org
-X-Gm-Message-State: AOJu0YyM2oo7Inh5OkITKY/WA8pgkWhFDrlx7ugUFVkEP6k8DD1ooMcX
- 7S2rfk9dN+rsdGMvk8pZNxOHv0btofEQzIPzmgBaKK1c5O78hx0R5abnZInoUzChFZsVtAk6RP5
- tyLuasIPoiHgwiwuQ5yHjOLfac0GLdhz8eEbYBW9JnA==
-X-Gm-Gg: AeBDievfVgzNAoCnX4frSwq4re8MrGDcV31le3Go7WROkDIrwggAo1hGSGQWDJJl/Mv
- 5CvYkvJmFED/b52vC3YMH9NFwcLWzdhZPcr/EbUN0T9efLo23kOlvgtl3hoHDpQd032PGSV5qxm
- fqgSlSEyiWav7DHxRlVzuX+HDn+o8+DRK/sqFnYuqs6UF+5a0+yukB58V/3SS32n2ePe/VjhySN
- KCy9tbtHZHs8VkproJJl0gJP6UHdgjM9sXeWhULXlkDdWgkB8OwdcAhq+ICJ4wGyWVOVh/a/Ono
- P4OYYn3ygkFxJ57ai/bLks3D+MVVMLrqwgpoINs4QaTUxojdWbe90yEtYRF7h5aPRRSSMhdMSw8
- zHQ==
-X-Received: by 2002:a05:690e:1207:b0:65c:2dde:1f20 with SMTP id
- 956f58d0204a3-65c2dde2dcemr379405d50.22.1777575618555; Thu, 30 Apr 2026
- 12:00:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1wIi7Z-0007B6-KB; Fri, 01 May 2026 03:17:09 -0400
+Received: from mail-northcentralusazon11013069.outbound.protection.outlook.com
+ ([40.107.201.69] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
+ id 1wIi7X-0001hD-Ds; Fri, 01 May 2026 03:17:09 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=HcfcS53B2FeU60UD6HFzNYidxdGk6J2wiMavDPekO2msydBV1c2CqWk/lMyde1x+cWYy7Mh2ferKUzi0ccQMlaDEwtTCmzUk5SfY4NLC5PxtRKKmcSxe5KxkUatu9shzPcoNpynfCKdSMFalWOYtuubwrS43sSsxIb6Mv/b+U5qlTxfVmySDUwhhNavZqGzfcm2LWsCGwNzkMcBHMS77XVx157hj/WjI5MOxJg0hh4wpRg4ch7ptGp+Yagfa7WbnUASXEaupfDa1VqhvpjS6lCnSvVgYl8qpNUStYF0ceYe8+jSj+Vpff8dwWCCXeq333TT+izYJnIbSMp6E0t8Hqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3xC1xgD5105+XOtHwggseqN4CL+uGpq72S9CcHXqQc8=;
+ b=mSe0wytGk2JcXam/knI3w6CrRHFHhmOlsNu0CrWCvFhhNZhIl+t6GbSC+fadZj0MuWIMKcl0ga0Eej4LhLJL6x2bP/peFDWp90NR9eKUXmCCywHaW52Udn6TFz7nL8uj2gh04XqYRQ4l1SpJG6Dvb6rCFFVltb5YxsjkMS3ALpb6O0eObHSrYSAmLb/TJNKWBxk8e6D1dNgmuCt+s5XmdZeMvKZp/k+DJus83po4LxwJ1GBAE9jIzMAQa5IFaZVLBEhhK89d/v2iG6iRdwMqhP2ukoF7YCL9bcBt4CHPDLBUSdghxkf5JHIny1RDK0ltSXx651zrmn8+nSq+IjAeTQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=tls.msk.ru smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3xC1xgD5105+XOtHwggseqN4CL+uGpq72S9CcHXqQc8=;
+ b=XTKcZI92HOtltQTCKp4Ot2B5GE1WDz7cs6iBoIPC3/zFS33EsCxRhrASv4QtXkMu7xaLzliayBliUm7nfeT/4ySLuwa/QH/M9y54DMrUm+zlFtEoKbzP9lALeS4yrgN2zFkmUZ1/oAsaUk1mA5Y8X4nIQBDpKI8NQ0sGLE+jg/M=
+Received: from PH7PR10CA0016.namprd10.prod.outlook.com (2603:10b6:510:23d::8)
+ by LV3PR12MB9119.namprd12.prod.outlook.com (2603:10b6:408:1a2::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.15; Fri, 1 May
+ 2026 07:11:59 +0000
+Received: from MW1PEPF0001615D.namprd21.prod.outlook.com
+ (2603:10b6:510:23d:cafe::64) by PH7PR10CA0016.outlook.office365.com
+ (2603:10b6:510:23d::8) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9870.23 via Frontend Transport; Fri,
+ 1 May 2026 07:11:58 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb08.amd.com; pr=C
+Received: from satlexmb08.amd.com (165.204.84.17) by
+ MW1PEPF0001615D.mail.protection.outlook.com (10.167.249.88) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9891.0 via Frontend Transport; Fri, 1 May 2026 07:11:56 +0000
+Received: from satlexmb07.amd.com (10.181.42.216) by satlexmb08.amd.com
+ (10.181.42.217) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17; Fri, 1 May
+ 2026 02:11:56 -0500
+Received: from XFR-LUMICHEL-L2.amd.com (10.180.168.240) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.17 via Frontend
+ Transport; Fri, 1 May 2026 02:11:54 -0500
+Date: Fri, 1 May 2026 09:11:53 +0200
+From: Luc Michel <luc.michel@amd.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+CC: <qemu-devel@nongnu.org>, Thomas Huth <thuth@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Francisco Iglesias <francisco.iglesias@amd.com>,
+ Frederic Konrad <frederic.konrad@amd.com>, "Edgar E . Iglesias"
+ <edgar.iglesias@amd.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alistair Francis <alistair@alistair23.me>,
+ <qemu-arm@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>
+Subject: Re: [PATCH] hw/core/register: add register_array_get_owner
+Message-ID: <afRSOdoqW27KAvRQ@XFR-LUMICHEL-L2.amd.com>
+References: <20260424155646.533334-1-luc.michel@amd.com>
+ <6d8bded7-a796-4144-b4cc-cb1b2f227528@tls.msk.ru>
 MIME-Version: 1.0
-References: <20260428-features-v1-1-1841b39da7e6@rsg.ci.i.u-tokyo.ac.jp>
- <CAFEAcA9_Sc=+Cn7JiPOo9GjOZFU4KCc7nFVqU=9=QAsNBG6AsQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9_Sc=+Cn7JiPOo9GjOZFU4KCc7nFVqU=9=QAsNBG6AsQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 20:00:05 +0100
-X-Gm-Features: AVHnY4IS446GOgig4mj2hWyzIYZXt735BiHhTy8NoMwOpE3wZw3c3RnA8q9fDSc
-Message-ID: <CAFEAcA8kk=mUYaqzbqT_C55398SknRUdCmkWKk1ruLMnr=0vOw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/kvm: Cache host CPU probe failure
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <6d8bded7-a796-4144-b4cc-cb1b2f227528@tls.msk.ru>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW1PEPF0001615D:EE_|LV3PR12MB9119:EE_
+X-MS-Office365-Filtering-Correlation-Id: 16e36b2e-71c7-4b04-bffe-08dea750ee21
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|376014|36860700016|82310400026|22082099003|18002099003|56012099003|13003099007;
+X-Microsoft-Antispam-Message-Info: hWGiVTqNjX6NGs9FRM/xk03OuNUEsKGpT3bcb8Jeha60ig++IbS9uZxhF1lJn34PmKxygrrW1pqSAdOxQjEw36Kh/dC0J99887ESYm8EuN7Yw1MOc2wqXFDjE/9upe1ieRKKVkdGYYEYEeTnfPPI+CiXRsvWaMtejsQs+f2u+kEDzR3ubHpUoxakeg/2QTk/Sh3g9kD3EqwVarYnBfSLEp1QzW++EgOXX0YSOpz27nMsTPZtryOYr1Xs3/jTnOVqhmjbsY39K+HC4IMOylEUVSLGwYwEFh0sZtJ2qyYJBWNtkgcUkS8AWBBv1X9MydsB4gKnwk6eSh0vA7qSqzXbvqXnFQn7L8cxtMcjGZFIabV7eDh83BXgPTFcMqiIpRTAsqMGkeXYHRCiVd6Wv3JjksXdJ19cemC2sxS1vW9imMJEQhqBRmU4d8qLVZS7LLWdgu5mLlN/tz5hDWIaShK3ftS19D6fNUx3XvWhkDzmZiuBmWrGGo4dITMmL6tT3gX/82Jquv0uTFVeX4wzRGosvrye3jbvCZwX/xWkVEFihlYaROh92tNMu1PVkHcavFNBgz6brM8usVcqGMPxyFpN8Mk344811F89cGqX8IARB6tpTllbrN887faItLjjI8J/NIVtGznJqHpj1fifpI157MNh0ncfpqPYNoF6x/atTdaq2dvl/Rrc0/XQbnOxcl5v
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:satlexmb08.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(36860700016)(82310400026)(22082099003)(18002099003)(56012099003)(13003099007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: bc78cXNAuAQWY/FBaJ19MOtddFbpLXBCnesrCXVi3cup0qYmxkJDMJ9EyPwr16OOhLAhF37E9eP9+FCjmPlH2bdsrgRk4ryV52vXEkYoyCZ1+e3uXeVHOB/cy44BenBzcamdCM0ri7dyhOOJT1lfxY9o5789aCrByS6naWyv2wsccr6VS+lLOa8YNgN8tZ6mKxww/saJFbaivMclEzVrXt+n3yRvmEXz4+5kUhGJZFthpaHsoj2/QF5ywGMafN0hrvWxWnMJLnXhG7LYPUdFiXf8wWS9TOYZplKg+hBeLVRtDsGNRjCAQ167ZJWsQRPKbZTke8oxewtGX4HBGBK8lmyP06xAIlCkAYbbt1SqMiLweW+yTpP77drH7SiFXYz9cvEHS20OpcrAe2NcwsAuvVjByphwmlyOYVqeqHYD1+pjvUPdj4SwuJ7h2gAAGJLK
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 May 2026 07:11:56.6304 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 16e36b2e-71c7-4b04-bffe-08dea750ee21
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[satlexmb08.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: MW1PEPF0001615D.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR12MB9119
+Received-SPF: permerror client-ip=40.107.201.69;
+ envelope-from=Luc.Michel@amd.com;
+ helo=CH4PR04CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,48 +129,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 30 Apr 2026 at 14:09, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 28 Apr 2026 at 09:07, Akihiko Odaki
-> <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
-> >
-> > kvm_arm_set_cpu_features_from_host() does not properly handle host CPU
-> > probe failure with caching. The current algorithm can be summarized as
-> > follows:
-> >
-> >     If dtb_compatible is not cached:
-> >         If kvm_arm_create_scratch_host_vcpu() fails:
-> >             Report failure
-> >
-> >         Cache dtb_compatible
-> >
-> >         If getting register values fails:
-> >             Report failure
-> >
-> >     Report success
-> >
-> > This algorithm has the following problems:
-> >
-> > - If kvm_arm_create_scratch_host_vcpu() fails, probing may be repeated.
-> > - If getting register values fails, later invocations incorrectly report
-> >   success.
-> >
-> > Make two changes to fix them:
-> >
-> > - Cache dtb_compatible whenever a probe is attempted.
-> > - Record probe failure by assigning QEMU_KVM_ARM_TARGET_NONE to
-> >   arm_host_cpu_features.target.
-> >
-> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+On 19:45 Thu 30 Apr     , Michael Tokarev wrote:
+> On 24.04.2026 18:56, Luc Michel wrote:
+> > Add the register_array_get_owner function to the register API. This
+> > function can be used to retrieve the device owning the given
+> > RegisterInfoArray.
+> > 
+> > This was previously done inline by some devices.
+> > 5c6367bc1c8850f74812eeaaf87cff9911be58de modified the way register
+> > blocks are created and parented to the device. Since this is an
+> > implementation detail of the register API, it makes sense to have a
+> > function for this.
+> > 
+> > Use it in the Versal OSPI and Versal/ZynqMP eFuse models instead of
+> > tinkering with the API internals.
+> > 
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3421
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3422
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3423
+> > Signed-off-by: Luc Michel <luc.michel@amd.com>
 > > ---
-> > Supersedes: <20260422-arm-v1-1-106a9a9e22dd@rsg.ci.i.u-tokyo.ac.jp>
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> >   include/hw/core/register.h        | 11 +++++++++++
+> >   hw/core/register.c                |  5 +++++
+> >   hw/nvram/xlnx-versal-efuse-ctrl.c |  4 ++--
+> >   hw/nvram/xlnx-zynqmp-efuse.c      |  4 ++--
+> >   hw/ssi/xlnx-versal-ospi.c         | 10 +++-------
+> >   5 files changed, 23 insertions(+), 11 deletions(-)
+> 
+> This looks like a qemu-stable material (for 11.0.x series), I'm picking
+> it up.  Please let me know if I shouldn't.
 
+Indeed, thank you!
 
+Luc
 
-Applied to target-arm.next, thanks.
+> 
+> Thanks,
+> 
+> /mjt
 
--- PMM
+-- 
 

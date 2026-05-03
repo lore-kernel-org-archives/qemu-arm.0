@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D797CD3427
-	for <qemu-arm@archiver.kernel.org>; Fri,  1 May 2026 23:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 165A5FF885A
+	for <qemu-arm@archiver.kernel.org>; Sun,  3 May 2026 07:36:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wIx3d-0001Qs-UH; Fri, 01 May 2026 19:14:06 -0400
+	id 1wJRMz-00081f-Ke; Sun, 03 May 2026 03:36:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIx3c-0001Qh-On
- for qemu-arm@nongnu.org; Fri, 01 May 2026 19:14:04 -0400
-Received: from qs-2003i-snip4-11.eps.apple.com ([57.103.86.93]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wJRMx-000814-2T
+ for qemu-arm@nongnu.org; Sun, 03 May 2026 03:36:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1wIx3a-0005Ff-FT
- for qemu-arm@nongnu.org; Fri, 01 May 2026 19:14:04 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPS id
- C72AD1823FD5; Fri, 01 May 2026 23:13:57 +0000 (UTC)
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRNEwVSB11NVg1HD1geXBQXCUBDXgheH0wcHQ5YBhIATQoONgZZBV4JVgNDBTYSFF1FRgNHGVcUUBtHDFUHV15fChMAXg8PTAtIAVsHXgJBC0sCXgJYHEYKSQtZGlofHVYQUgBSD3IFVwhBCFMCUQRYGl8IGQ1AThkMSh1SVlEFSgxcAGgPXR1YEV0=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1777677238; x=1780269238;
- bh=CGSs6CJWNP1wY+Ol4DxldizRyP5cLjjcFoEWVaZx0V0=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=PoKnL/FClq1LtCzW70rFj+adz6rGPG6Cvn7/ma5ehSyeWWxvCqS3XQi8Du1FcveSf3lzmbSoZFrOyrRtphFdpxXupL/aDjRZ5gl7c1z4/GoMBvsTXY3pwle2N2hGcFy2oW0+dnqnpwgaBSyMEkf2umrs06PHOtB7Ma6tj1B7z0uyF9bizp18fLZfLOwPhwutEKwT8a2x0saxSiBlwxIclPOoOI2AekV0pxiyTl4ohJvYoEEUv9pNd9+yJU/U2uN6P9jnDimu4d+2FhCDenH/VbR+5EQSV8QwW6nxY84mvSMi8WcFRgGQ/vQpQ6f4oiN5+t78xJtxbtDEASaeeILJRg==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-0 (Postfix) with ESMTPSA id
- 032B21823FCE; Fri, 01 May 2026 23:13:55 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH] hvf: arm: override HV_SYS_REG_MDCR_EL2
-Date: Sat,  2 May 2026 01:13:53 +0200
-Message-ID: <20260501231353.63184-1-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wJRMv-0003TJ-8U
+ for qemu-arm@nongnu.org; Sun, 03 May 2026 03:36:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777793759;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=eJbqFxtHUzeCNhZy2Eqbtv3ldmKnEXIaIpe/lLouE+8=;
+ b=eMM6RV4okjL7RSYH6VrUfuOoQuaoP4WmghtPJ/PkbSqlG02hiOpF/QimD9aYKmp7RHeYas
+ KFs1V+S4KIV6rAK2LQcYUzgKWioyVsFIBN7FjdlDgEAddtrIxqWG09xvdFbf2xKlwU0mD3
+ EXfnZPkKgu9VjJ3STytWSxRFnt36VP8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-p8La373fM-iT3TSbbUu7nw-1; Sun,
+ 03 May 2026 03:35:55 -0400
+X-MC-Unique: p8La373fM-iT3TSbbUu7nw-1
+X-Mimecast-MFC-AGG-ID: p8La373fM-iT3TSbbUu7nw_1777793754
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 76029195608B; Sun,  3 May 2026 07:35:53 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.48.25])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 047FA1801481; Sun,  3 May 2026 07:35:46 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, cohuck@redhat.com, sebott@redhat.com,
+ skolothumtho@nvidia.com, philmd@linaro.org
+Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
+Subject: [PATCH v4 00/17] kvm/arm: Introduce a customizable aarch64 KVM host
+ model
+Date: Sun,  3 May 2026 09:33:20 +0200
+Message-ID: <20260503073541.790215-1-eric.auger@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: flFkcL6KzRVRDhVzyMsDOagkmCh5IUI-iJ6nH9Tb3vk_1777793754
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: FUAH6HWu1Bov-7rRZiUtYvdvycdJn30K
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTAxMDIzMCBTYWx0ZWRfX5SdMU6Dwsh6j
- 0M8BaVWuBXO99AYcvSn5JmFDm0wiwtM25P5QHzl621+TQqDL8mo9Uih3eGlx0zpYBp8qar6+qKr
- oXAIodf0jKT17arx64dN3ZDfWWGniOiHjNTBzNlnGoTt1QnBptX7DetDuTPdQ4Cso2jWnh2Tpv3
- YJ7WQ4g9HmLEuljo1DTZmDXDVx8mxm/4Kz9iC4glwrlEKTVVCC7CU+/bEMEdY77IHKSMsuqkrXx
- DXfnf8Zh9m+Ka3YNs5hq+XgLNZr/SpGAP56pWxEDxx435QZGaZhWR2vidbG/iHK4l2qLABjOze4
- 6wSUy29YRE4t2sNDHjEjSjgnjMpWljkeYPEh+Q7Wu+B0PaaBtsJs8iwMH9Mzuc=
-X-Proofpoint-GUID: FUAH6HWu1Bov-7rRZiUtYvdvycdJn30K
-X-Authority-Info-Out: v=2.4 cv=Pu2ergM3 c=1 sm=1 tr=0 ts=69f533b6
- cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=VwQbUJbxAAAA:8 a=t-IPkPogAAAA:8 a=KvODUgOX9gEuU6Qg7WAA:9
-Received-SPF: pass client-ip=57.103.86.93;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,44 +89,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In older SDKs, MDCR_EL2 was defined incorrectly.
+This series enhances the current host KVM model with capability to
+set writable ID reg fields.
 
-As such, override it with a #define if compiling with an older macOS
-SDK.
+Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
+of a subset of ID regs. The list of writable fields continues to grow.
+The feature ID range is defined as the AArch64 System register space
+with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
 
-This is a workaround because the macOS CI setup we currently rely on
-has not been kept up to date, to be able to land nested virtualization
-support.
+The end goal is to get more flexibility when migrating guests
+between different host hardware.
 
-Once CI is updated, the SME stubs can be removed and this
-commit can be reverted.
+QEMU retrieves the writable ID fields from KVM UAPI [1] and
+match them against a generated description of ID regs and their
+named fields that stem from AARCHMRS Registers.json file.
+Current description is based on latest 2026-03 edition.
+The content of the generated files was compared against kernel
+linux/arch/arm64/tools/sysreg file [3] . It is not straightforward
+to have unit tests for python scripts as there are many cases for
+field extraction.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/arm/hvf/hvf.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+For each writable named field a uint64 property is created
+following the "SYSREG_<REG>_<FIELD>" naming convention. REG and
+FIELD names are those described in ARM ARM Reference manual.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 4f0f7ffba1..79209bc8e9 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -468,6 +468,15 @@ static const struct hvf_reg_match hvf_sme2_preg_match[] = {
- #define HVF_TO_KVMID(HVF)  \
-     (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
- 
-+/*
-+ * In older SDKs, MDCR_EL2 was defined incorrectly.
-+ * As such, override it with a #define if compiling with an older macOS SDK.
-+ * https://lore.kernel.org/qemu-devel/BCCED674-EAEF-4755-9BE1-116FB36FB5C9@apple.com/
-+ */
-+#if !defined(MAC_OS_VERSION_26_0)
-+#define HV_SYS_REG_MDCR_EL2 0xe089
-+#endif
-+
- /*
-  * Verify this at compile-time.
-  *
+The list of SYSREG_ID properties can be retrieved through the qmp
+monitor using query-cpu-model-expansion [2].
+
+Connie & Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/arm-cpu-model-v4
+
+References:
+
+[1]
+KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES
+KVM_ARM_GET_REG_WRITABLE_MASKS
+Documentation/virt/kvm/api.rst
+
+[2]
+qemu-system-aarch64 -qmp unix:/home/augere/TEST/QEMU/qmp-sock,server,nowait -M virt --enable-kvm -cpu custom
+sudo build/run qmp-shell /home/augere/TEST/QEMU/qmp-sock
+Welcome to the QMP low-level shell!
+Connected to QEMU 11.0.50
+(QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+
+[3]
+linux/arch/arm64/tools/sysreg and gen-sysreg.awk
+./tools/include/generated/asm/sysreg-defs.h
+
+
+Cornelia Huck (4):
+  target/arm/kvm: Introduce kvm_get_writable_id_regs
+  arm/cpu: accessors for writable id registers
+  arm-qmp-cmds: introspection for ID register props
+  arm/cpu-features: document ID reg properties
+
+Eric Auger (13):
+  scripts: introduce scripts/update-aarch64-cpu-sysregs-header.py
+  target/arm/cpu-sysregs.h.inc: Sort by name alphabetical order
+  target/arm/cpu-sysregs.h.inc: Update with automatic generation
+  arm/cpu: Add infra to handle generated ID register definitions
+  scripts: Introduce scripts/aarch64_sysreg_helpers module
+  scripts: Introduce scripts/update-aarch64-cpu-sysreg-properties.py
+  target/arm/cpu-sysreg-properties.c: Generate code with new script
+  arm/kvm: Allow reading all the writable ID registers
+  arm/kvm: write back modified ID regs to KVM
+  target/arm/kvm: Introduce kvm_arm_expose_idreg_properties
+  target/arm/kvm: Special case REVIDR_EL1 and AIDR_EL1
+  target/arm/kvm: Special case ID_AA64ISAR0_EL1 RES0 [24, 27] bits
+  arm/cpu: Expose writable ID reg field properties on the kvm host vcpu
+    model
+
+ docs/system/arm/cpu-features.rst              | 104 ++-
+ scripts/aarch64_sysreg_helpers.py             | 109 +++
+ .../update-aarch64-cpu-sysreg-properties.py   | 169 +++++
+ scripts/update-aarch64-cpu-sysregs-header.py  |  51 ++
+ target/arm/arm-qmp-cmds.c                     |  19 +
+ target/arm/cpu-idregs.h                       |  59 ++
+ target/arm/cpu-sysreg-properties.c            | 673 ++++++++++++++++++
+ target/arm/cpu-sysregs.h.inc                  |  57 +-
+ target/arm/cpu.c                              |  12 +
+ target/arm/cpu.h                              |  36 +
+ target/arm/cpu64.c                            |  26 +-
+ target/arm/kvm-stub.c                         |   3 +-
+ target/arm/kvm.c                              | 313 +++++++-
+ target/arm/kvm_arm.h                          |  19 +-
+ target/arm/meson.build                        |   3 +-
+ target/arm/trace-events                       |   6 +
+ 16 files changed, 1622 insertions(+), 37 deletions(-)
+ create mode 100644 scripts/aarch64_sysreg_helpers.py
+ create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
+ create mode 100755 scripts/update-aarch64-cpu-sysregs-header.py
+ create mode 100644 target/arm/cpu-idregs.h
+ create mode 100644 target/arm/cpu-sysreg-properties.c
+
 -- 
-2.50.1 (Apple Git-155)
+2.53.0
 
 

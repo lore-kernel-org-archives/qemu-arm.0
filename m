@@ -4,150 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BEC7CD342C
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 09:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFDDCFF885A
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 11:19:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wJpxN-000755-9I; Mon, 04 May 2026 05:51:17 -0400
+	id 1wJrKI-0003a4-Li; Mon, 04 May 2026 07:19:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxL-00074k-BD
- for qemu-arm@nongnu.org; Mon, 04 May 2026 05:51:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxJ-0002cr-BF
- for qemu-arm@nongnu.org; Mon, 04 May 2026 05:51:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777888272;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
- b=DYfuZpqUvu6twKVlnjcOqZuSVIS+pSFaBvvGWy9jhO3oGMpuF2o4j3xwsAa4crJcu3QUz8
- PS129B4WSNhVh6x5Q+wZxINghfK1SsN4R++LT/fFw6C6FYo7bTLZUgjH9pmzK/6Snv8sV6
- 2gwF3bTQQN/3nEmLkdElgMUh0TXngAc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-376-da6pOjZ9OteG5Qj17dv5ZA-1; Mon, 04 May 2026 05:51:09 -0400
-X-MC-Unique: da6pOjZ9OteG5Qj17dv5ZA-1
-X-Mimecast-MFC-AGG-ID: da6pOjZ9OteG5Qj17dv5ZA_1777888268
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4836abfc742so32145755e9.0
- for <qemu-arm@nongnu.org>; Mon, 04 May 2026 02:51:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wJrKH-0003Zd-Qy
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 07:19:01 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wJrKG-00049e-1w
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 07:19:01 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-48d102471a4so5607105e9.2
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2026 04:18:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777893538; x=1778498338; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EWkhdjd8w9JPIG9/QFaza7FS/udKEtwbZEkSffwJoQE=;
+ b=sxqEk38DRMmqz4bkUpsPLMfTfFjmxqCaoeg03w+tizDAJlY3DyYsBXX5fD7JfEOJT+
+ 1kOtHa/gc50PTRxDTpKcA4r27H56Rg+66q4Fb2Yfhl+sZX8ZOe+PnUK1lpqL9Xm/5LzN
+ ZMAtypic+Kvb41tLdI0jLk0v/6eHtSNZemGAnVdA3yedRG7on9hT4ZKYlUAJJSniOn2n
+ 4kBjoWYVHOd82F0GTQ0QXZjwhrD5VfB6wx6gxhT4HQF1bmqIVlgLfxCcE8cqUCVsrgrx
+ wbHgQ663kXbzfN5BJO1KM20pxeKr2Gvm0K8I/aMC/L++IqgFRsGQ4TtObNfZsxaAhWht
+ NJ6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777888268; x=1778493068;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
- b=igijMzBLos7vTDcFySvAeKbpt7pZKije3CfYvrRKT2S87v2OB4AzJDJvUkhh200DxV
- zCEmHE582hD4OTf/6vwCSWr/rvGdUuKSwEZNe69thxvUQma7G6DpwnvHGiJ66irPRt8I
- w0dUlOdFiUUB6ioILPlxiGDOr0/Q8LARUiTZ/X6NkZPcYnAQykH2H10TU4ds7etPPbRh
- rSNWHKEq0rkn8PzIHmLNF05dAG5zaGfnO3kKXNJ4t2isctwwkJxzpfv2UtJGiIrnINcW
- G1NsR8+0qLQDVXmk17TBV0PAp+6peE5SWVQvcr6JQezCn82Hi/eYFurAdsDMHF9H29hA
- wyVA==
+ d=1e100.net; s=20251104; t=1777893538; x=1778498338;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EWkhdjd8w9JPIG9/QFaza7FS/udKEtwbZEkSffwJoQE=;
+ b=QI6JG0SONLANhV+8zgvmWuI5zMerdlrlXk46bK4KAOwHrMIf+j86FlUsJDzc9SE4Mb
+ 7JVnMilBkN5d1skxWPo0/4akpuooRiEzIt+Wr0GTPPvkO3VpfKhefM9tSw9QN/72c7OL
+ Tq5bYxbB6Q2L2NmIRrWBUPi3nLS8eTb2rzX5ejFwUqYwafYyqy8dNeL4SC3zzApFfRIQ
+ B0Y87GMFJdq7uzPMUv0YrRsqtjRTeb3NxJW2uiRZ+q73ZUAD1v15v7jufYPqz59Vhkss
+ LJT4vsKtxiosjH4vwYji0Zg6UxwIXV4q3MjJSIP9/2LuysQYV4OhnFjF4rfGGnYP2YGw
+ SjYw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8B0IPpK9edjjoibUK4rBmQlqbpBsnv8mQLNGn1tKL7U9GWLOV0CxUXlRx5vP1i0+F0IMY62ZiZpQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzjiMoIcbWpfwOWFUGokiVqk3pSx4iRhebRy1bhhSUSeuUbC1lh
- piIykWJWa06cSba/krpqc87RY2KRcHG34vlrlwT8epTF5Z7Je9otcqVJX++py6XlhxNeQYN+CvQ
- pwThrqoY+UwumOLB4KRpe2Hg9k/MjtqCPOjgEqvnA4KCHnHBjOVfgmA==
-X-Gm-Gg: AeBDievGjUfDAXVKXV8y8OntcvxlrAZWsvq1hxgz/5m+OTayyYtathlFJzJoVI+CrlR
- WwkSyyx0qsuO/U5vyPJdFGraOzvoEZ1ytHQad/xsz4r63QAwDDMBsq/8z58woRH9A+zI+N/rEGi
- H+fj/vXqkUTYf9s04G8/PZUzTT3AL/24ga7s2o3p5cdExQ6+ZpsZrzR1aGnITE7u5eVIqLXBQQS
- nzfuLeVOrBqEy1NRS9KkXspXv1YPaC0Xz42mi2f0zqxQqMd0wW64xzlTQK/K1Q0bxRzl4ZXzlZY
- kHrR7GZmFM/lWcjMErJ3xna4uNGAdQOGER7JVB5jF8RH9sFv6nEleCBN+8nywx4vcOIgRbTOLPC
- FgPEYwVcDvOR0+1fa5bZSjlZ6OfBO0qeKYjJgVzM3/OjBn0xUgbNA8U/s1zhIgzv9orO9wao=
-X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
- 5b1f17b1804b1-48a986734c9mr145401385e9.27.1777888267992; 
- Mon, 04 May 2026 02:51:07 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
- 5b1f17b1804b1-48a986734c9mr145400925e9.27.1777888267485; 
- Mon, 04 May 2026 02:51:07 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a8fe92b3asm86518015e9.4.2026.05.04.02.51.06
+ AFNElJ/Et1uwuuxfN76X5JWy/szBKMAaeqqGY4P12olb0eaFPzQtbh1SM0thLNRzEBRe0Iu5Z9yVexC8Cw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzjivr3DlAMh9mFyepMUQ+pBJve/Mum3RtCAzayBGab9kF++4jp
+ w/+G3+KH0HgrmKH/eIODj1w2fk9hyuKk182fWpA0N6EnQnGArXZnotBRjY2qv1s6tDE=
+X-Gm-Gg: AeBDievYz9AncT55Q9ytDmUwPMLiBO+WhZtlyh5cpf5JmW54ODcTlRhV2F3xq96P+DN
+ IqBqulkixHZcIarCgSSNSXenI6+kp2vP250ubvurR32cC1RiGnb5M7XlHoZ3PZ2uTrotof0F41n
+ yw7TXLAF+SnskEOQlEV0ilK03bCVIBPTLhgcVWShY+kvZIvL7E187BoSrug3R7oKPTMJTqgwAz5
+ CjO0EdcaKEx3V/+abN7ct27JKPPQ7udUO9EzAcDy17d18o4742AaDnHTGCra91+cUQQ1qM1ZV1A
+ XlCjN5B9YuJI0gOy7ICdC9zzsjTUkQl3QtFR4TrCQQSt3IpXHYaNS/xs589tzYj1aMORlqFjXd6
+ k3x+yqEOaUYU/xWEknq/V1zBu2MlxBY6GOYg7W/1CebSjfWf20N84tNAQmm9+ON8xeJlQu/6vda
+ iUvrGxY8K5pLaeHn/toAbw1UNh1NlDR5WvgkPZOMF+n2uyIJ3S+FKo+WlHCOMS42/OyriDLsQQk
+ TNs6O9DWSFvQFI=
+X-Received: by 2002:a05:600c:46d1:b0:489:1d74:56d with SMTP id
+ 5b1f17b1804b1-48a988ca441mr148430985e9.29.1777893537695; 
+ Mon, 04 May 2026 04:18:57 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a8eba865fsm240434095e9.10.2026.05.04.04.18.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2026 02:51:06 -0700 (PDT)
-Message-ID: <16c03bd7-5db7-43c0-a1ca-0bf904cba03d@redhat.com>
-Date: Mon, 4 May 2026 11:51:05 +0200
+ Mon, 04 May 2026 04:18:57 -0700 (PDT)
+Message-ID: <67a45038-e4bb-48f8-af08-af0d5c308ece@linaro.org>
+Date: Mon, 4 May 2026 13:18:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini
- <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-6-shentey@gmail.com>
- <af77b92d-9303-4ed0-942d-6188e00ccdde@redhat.com>
- <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 8Z8JKNDCYqiNEctk6mjKVzzXwjih31KwRlz01ijzRzg_1777888268
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
+Subject: Re: [PATCH v6 08/11] hw/usb/hcd-ehci: Add ctrldssegment-default
+ property
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ "peterx@redhat.com" <peterx@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Zhao Liu <zhao1.liu@intel.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
+ "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260504025342.1452605-1-jamin_lin@aspeedtech.com>
+ <20260504025342.1452605-9-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260504025342.1452605-9-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,64 +116,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/27/26 12:30, Bernhard Beschow wrote:
+On 4/5/26 04:53, Jamin Lin wrote:
+> When 64-bit addressing is supported, the Linux EHCI driver programs the
+> segment register to zero. See ehci_run function:
+> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-hcd.c
 > 
+> The driver comment also notes that descriptor structures allocated from
+> the DMA pool use segment zero semantics.
 > 
-> Am 9. März 2026 09:19:10 UTC schrieb "Cédric Le Goater" <clg@redhat.com>:
->> On 3/8/26 21:35, Bernhard Beschow wrote:
->>> The callback has been introduced in commit 715ca691daca ("sysbus: add
->>> irq_routing_notifier") for use in VFIO platform. Meanwhile, VFIO
->>> platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
->>> platform'") which was its only user. Remove this unused code.
->>>
->>> This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8.
->>>
->>> cc: Cédric Le Goater <clg@redhat.com>
->>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>> ---
->>>    include/hw/core/sysbus.h | 1 -
->>>    hw/core/sysbus.c         | 6 ------
->>>    2 files changed, 7 deletions(-)
->>>
->>> diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
->>> index c0d18d9e00..f3c4259d29 100644
->>> --- a/include/hw/core/sysbus.h
->>> +++ b/include/hw/core/sysbus.h
->>> @@ -50,7 +50,6 @@ struct SysBusDeviceClass {
->>>         * omitted then. (This is not considered a fatal error.)
->>>         */
->>>        char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
->>> -    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
->>>    };
->>>      struct SysBusDevice {
->>> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
->>> index 3adf2f2faf..3e1160ee92 100644
->>> --- a/hw/core/sysbus.c
->>> +++ b/hw/core/sysbus.c
->>> @@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n)
->>>      void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
->>>    {
->>> -    SysBusDeviceClass *sbd = SYS_BUS_DEVICE_GET_CLASS(dev);
->>> -
->>>        qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, n, irq);
->>> -
->>> -    if (sbd->connect_irq_notifier) {
->>> -        sbd->connect_irq_notifier(dev, irq);
->>> -    }
->>>    }
->>>      /* Check whether an MMIO region exists */
->>
->> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->>
->> Thanks,
->>
->> C.
+> Descriptor memory is allocated using the DMA API. The platform driver
+> configures a 64-bit DMA mask so memory can be allocated above 4GB.
+> See ehci_platform_probe function:
+> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-platform.c
 > 
-> Who will pick up this patch?
-I would say this is a qdev related matter, so Paolo ?
+> On AST2700 platforms, system DRAM is mapped above 4GB at 0x400000000.
+> As a result, descriptor addresses constructed directly from the guest
+> EHCI registers do not match the actual system address used by the
+> controller when fetching queue heads (QH) and queue element transfer
+> descriptors (qTD).
+> 
+> Add a ctrldssegment-default property so platforms can provide a
+> descriptor address offset when constructing descriptor addresses.
+> This allows systems where DRAM resides above 4GB to access EHCI
+> descriptors correctly.
+> 
+> The default value is zero, so existing machines are not affected.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   hw/usb/hcd-ehci.h | 5 ++++-
+>   hw/usb/hcd-ehci.c | 1 +
+>   2 files changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+> index 8e6a8cdfb0..3d57e1de5f 100644
+> --- a/hw/usb/hcd-ehci.h
+> +++ b/hw/usb/hcd-ehci.h
+> @@ -264,6 +264,7 @@ struct EHCIState {
+>       uint32_t maxframes;
+>       bool migrate_fetch_addr_64bit;
+>       bool caps_64bit_addr;
+> +    uint32_t ctrldssegment_default;
+>   
+>       /*
+>        *  EHCI spec version 1.0 Section 2.3
+> @@ -322,7 +323,9 @@ struct EHCIState {
+>       DEFINE_PROP_BOOL("x-migrate-fetch-addr-64bit", _state, \
+>                        ehci.migrate_fetch_addr_64bit, true), \
+>       DEFINE_PROP_BOOL("caps-64bit-addr", _state, \
+> -                     ehci.caps_64bit_addr, false)
+> +                     ehci.caps_64bit_addr, false), \
+> +    DEFINE_PROP_UINT32("ctrldssegment-default", _state, \
+> +                       ehci.ctrldssegment_default, 0)
 
-Thanks,
+ctrl-ds-segment-default and ctrl_ds_segment_default?
 
-C.
+Otherwise,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

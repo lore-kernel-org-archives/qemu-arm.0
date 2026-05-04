@@ -4,101 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1ED0FF885A
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 15:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B37CD3427
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 16:02:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wJva3-000140-3i; Mon, 04 May 2026 11:51:35 -0400
+	id 1wJvkL-00016f-2a; Mon, 04 May 2026 12:02:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wJva1-00012b-Cy
- for qemu-arm@nongnu.org; Mon, 04 May 2026 11:51:33 -0400
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wJvZz-0006GO-PL
- for qemu-arm@nongnu.org; Mon, 04 May 2026 11:51:33 -0400
-Received: by mail-qk1-x72f.google.com with SMTP id
- af79cd13be357-8d68f702851so480532685a.0
- for <qemu-arm@nongnu.org>; Mon, 04 May 2026 08:51:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777909890; x=1778514690; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=i0UGA6W7acHfQzFgg07ojZd+ADYp8WlSjAFL26/Ip64=;
- b=fO3m9a+t/HLeev320Hpgi63nhC672ysBTnDAjBA6qvNix/PVpFgTMA1Bp7kZ5v2dSv
- 1/MXmo3j59xir6gPT/kVC7WQAM7f1TOcZVw/YJ8z7D8hccccFnkEaCAkvNAL6N97AT5o
- O1K6k9hvx6Q/9ihK92kPQ8clHzIHOmQ07bef8grMqAcOUfzROjQbbau8jOqzhAFyfOc1
- B+MEqiTgzlOjK3VuRJzUAN+yiVKievTf1Ul8iqSMEmEiOxuNVSK+c/rPY9pDxIbx9l8G
- Pl5KKaav50ed/gRslk0uGPTZYO/mqFsyPsOINV9qyoCpACiF5NQtV9uk6hvtQRfI3zAU
- tMTQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wJvjS-0000mM-Cu
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 12:01:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wJvjQ-0008A7-K5
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 12:01:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777910475;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JJZ+j+/C1nuMP3Jo9t7IR0Qkle0T7gUt1LCimRZnXgY=;
+ b=MZn0JLcVj22K0CXA9PSI0hr01ZY3icSADpj4/LqnEWPlCYrjCA9aDuCCg7hS3UWwL3RK2z
+ QsNInvZwz09Clj2E08br4/21My53yhWt7ddkkdR65fITktg9UwGiV1wDtdQYRSk8NYal2/
+ eGTqXQLyn4WY42nGjXAAAFoxNxrCgEM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-444-IEgZOp5UOYSqX2LOCDvgjQ-1; Mon, 04 May 2026 12:01:13 -0400
+X-MC-Unique: IEgZOp5UOYSqX2LOCDvgjQ-1
+X-Mimecast-MFC-AGG-ID: IEgZOp5UOYSqX2LOCDvgjQ_1777910471
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-488c0fcc6deso24259245e9.2
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2026 09:01:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777909890; x=1778514690;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=i0UGA6W7acHfQzFgg07ojZd+ADYp8WlSjAFL26/Ip64=;
- b=o+VaoluyAogroiMAMq3Xdw5Q8UbvO8VRO07moOQdMSqyEKcQbQF0dtELbuyJzdTsoA
- 47DIPGYe3p1s6Il3mkhvE8lpJ//HFHHUVmW78iFzHmZZBA3pfKFnxL0rITtI47dzINnD
- GAUw/zIpFPt8r/k0JQg0HQnsne4fRqKqduRHvlrAkhvQF4eWNx1mZfGv/XjXuLN7ZHb8
- Y8TKysWR38W6DlCGCajX20TBWFUFICpK90YmfhJRL4v4IKSzHbM3MdVFybU9civ8gGYW
- e0cO7k0fVXA5N+dJZ1qNVR/LrNoUPJ8p0NF1TrnUNxMmJVW5PUNBSYwnbKGiipsVGiOd
- mxzA==
+ d=1e100.net; s=20251104; t=1777910471; x=1778515271;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=JJZ+j+/C1nuMP3Jo9t7IR0Qkle0T7gUt1LCimRZnXgY=;
+ b=GbjriFImnJ5AZ1B2awMdbzCnoulkSh3RpxgE4o23nqqEI3HLDoHpuKtc0CrUSG5yGa
+ bBNW+t6BFFm3tJGWbWSv1lWylt91AAn+9Hamtn4jNc+/V4iNAEmStoCS4p7IzYtir1ec
+ RLM5t1Qow3lhJBL/MjQLwge8tUPeg2nKRcjWo1FRyinbyjYA9uEvIUALtwjhHLxes1A3
+ Wrdwyi9rWTFpXUpTIgk3iacRfPDcCtoiPBmTOaEYeN/TNOuNw4B7+eVDAINMy9qStUEs
+ P0+Jk64njZE/8YL/yF8xFft+PT9BcRdLLCgF+yAoZ4SbwoN7QwvhcHyWe2+tH3qkrfcW
+ iy0A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+i/5uiPs02406Hl5C3vM+D7rmbQLSRRN96AJZZZ25llCGr0NfVnIAlA0UVERs1ujaoC5Js4MtMdg==@nongnu.org
-X-Gm-Message-State: AOJu0YyPYU4kfVvKh6t3MHJ0dsUqpJGcUAlk3/bz0x+OQca4ja6hfvxu
- 2dPEP95uWAZ7hF16Clhndik+HC9Pd6Ondi67pzpo3b+9NM8/OEE66bwU
-X-Gm-Gg: AeBDieu2uEitAXNGu0QKhb0sIx5ngyR1q+sudqU0FxriOfOFEghBD/GmmEvUEPgFP8c
- jR5Jv5kHIfV33vAS2hTGuD4NoZxW7ygS50NKL0eO4ZGZeBrYaEeiDByTVYxFCUQJ8bXE0oMnUsN
- V0REFHtZUR7dCZx63lH3k5oqLnNnt4j20i4GtJ3bEMSjHmzdwGVNUrWL/dGcakN6YcGeyCqliYG
- WVccRTAn2XaYkZ2bla0kn5fQOR0zhW1DK2iC5dI3foBdmxxiMoo2sKvf8p1nzDunldEF/+3qmtS
- T1yiOI4G1qZ2rzA5EUPzN4Inq5i8Tur4OheqiETWj+3Pm1TzsrpsxuXYf7yitHQYs3ybpAS61Zk
- N+QK2f1i+ycvRjL7Cqxb0Eh6tycCyj8mHU6otqab6sKUV8E4ZAfZcNuMn+jZkXu1tpimsw4az9p
- 400b/jomOfRS13NFKfiBm24jrJH14FI4OQq5fRGikkkSsh7UMdn6w=
-X-Received: by 2002:a05:622a:30a:b0:50e:5c31:5d56 with SMTP id
- d75a77b69052e-5104bde5513mr149947601cf.6.1777909890237; 
- Mon, 04 May 2026 08:51:30 -0700 (PDT)
-Received: from [192.168.1.164] ([2600:1009:a021:c665:5296:905f:3e4a:eb90])
+ AFNElJ9W/ofTkwCKat0oNZZLu1RsHSgnnAXQWzg4TGJiCYfuqkYkaAsou210NpgmmPpleqxLEoag5rnc4A==@nongnu.org
+X-Gm-Message-State: AOJu0YyQMNzWs6mtpzECkBatl8w4uS5b9MPo9j42Rb7ntJIAlfzRGeyW
+ 3CTp6xrExaE0pcDQUOXYBzmGDU9r+8+fZvj+R37T/b3hQDE1RSOWSK6iY4bHXFQuw4NlReROb8w
+ alal9Jpq6G1HHUjXnLw8m/i97mEX7jLZBnCCGul+xhqjvHzwXXO8ECg==
+X-Gm-Gg: AeBDiet9E98CiB5RJzMFL2bLrZXnszmau1IIcKpatFaiIMjalkw/IVW3LKqnHDHtU1D
+ 4rk/es4q6LvvCyvMd2Dmsw5hz/jIB/nVEmlYN0TVW5kzpjc9TaNTYy/8f8ByBJm8ERi2UEHUyVQ
+ bAAA9+QhbyWXdcD88o33Xutljoub/6M9reNtBWH/AVyOYNTTEVO3FABCWegEGzrLIcDpNB+i3Bd
+ kLB7xeFXMiGmKmPSZT5eDmdTFXjTA08sBXBfrlu/Gfc3UHVTCzfZMNXjEqxXqNr26/J8CIG1aJA
+ SFsjULiZ69Sy4n1fiDj8VwedU7p9RLliGU0DpgoTPL/VTq3xdiCK+19fLucy6FONAe1iU7erz1K
+ nlYcMj14/phTPlPm8ZrVs3AJcdxDcTzHYrJyT49VVOGp1zikD5hIws7eAxnGJxztQRIyIi2HT2Y
+ rJrvCO
+X-Received: by 2002:a05:600c:8b0e:b0:485:ae14:8191 with SMTP id
+ 5b1f17b1804b1-48a9852d122mr161545315e9.5.1777910471208; 
+ Mon, 04 May 2026 09:01:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:8b0e:b0:485:ae14:8191 with SMTP id
+ 5b1f17b1804b1-48a9852d122mr161544265e9.5.1777910470482; 
+ Mon, 04 May 2026 09:01:10 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-51040931552sm99599011cf.12.2026.05.04.08.51.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 May 2026 08:51:29 -0700 (PDT)
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 04 May 2026 11:50:47 -0400
-Subject: [PATCH v5 14/15] tests/tcg: add test for MTE FAR
+ 5b1f17b1804b1-48a8ebc4201sm451562435e9.15.2026.05.04.09.01.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 May 2026 09:01:09 -0700 (PDT)
+Message-ID: <e1a3cb59-1faf-428e-8e85-f3f4059ee1cf@redhat.com>
+Date: Mon, 4 May 2026 18:01:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 13/31] hw/arm/tegra241-cmdqv: Implement CMDQV vIOMMU
+ alloc/free
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ kjaju@nvidia.com, phrdina@redhat.com
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-14-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260415105552.622421-14-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 31LqI92Z02qc22bsz0FeTvHqxr2lynBFFZ_CwJiYpRs_1777910471
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260504-feat-mte4-v5-14-232a648e63c6@gmail.com>
-References: <20260504-feat-mte4-v5-0-232a648e63c6@gmail.com>
-In-Reply-To: <20260504-feat-mte4-v5-0-232a648e63c6@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, 
- Gabriel Brookman <brookmangabriel@gmail.com>, Helge Deller <deller@gmx.de>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777909867; l=2355;
- i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=t9UKuOxOMkff21yBSwiqqFvgFWXDPNIeJTAexYT0IVc=;
- b=VvH0Dw+EA0dM1al44fe87BzYHM1c7TEalnO+8csbUNT90B88V4p/ES2x2ERnZPMq6TF4JfASw
- 4U72rhH18ycB7pUM2h8Mv4ya+L96lnMn5ruW5B0W37hmyCyGx2Ir9Zm
-X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
- pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72f;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qk1-x72f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,90 +120,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This functionality was previously enabled but not advertised or tested.
-This commit adds a new test, mte-9, that tests the code for proper
-full-address reporting. FEAT_MTE_TAGGED_FAR requires that FAR_ELx
-report the full logical address, including tag bits.
 
-Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/aarch64/Makefile.target |  2 +-
- tests/tcg/aarch64/mte-9.c         | 48 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+), 1 deletion(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 9fa8687453..b491cfb5e1 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -64,7 +64,7 @@ AARCH64_TESTS += bti-2
- 
- # MTE Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
--AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8
-+AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9
- mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
- endif
- 
-diff --git a/tests/tcg/aarch64/mte-9.c b/tests/tcg/aarch64/mte-9.c
-new file mode 100644
-index 0000000000..9626a90c13
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-9.c
-@@ -0,0 +1,48 @@
-+/*
-+ * Memory tagging, full-address reporting.
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+static void *faulting_ptr;
-+
-+void pass(int sig, siginfo_t *info, void *uc)
-+{
-+    assert(faulting_ptr == info->si_addr);
-+    exit(0);
-+}
-+
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    int *p0, *p1, *p2;
-+    long excl = 1;
-+
-+    enable_mte(PR_MTE_TCF_SYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* Create two differently tagged pointers. */
-+    asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(excl));
-+    asm("gmi %0,%1,%0" : "+r"(excl) : "r" (p1));
-+    assert(excl != 1);
-+    asm("irg %0,%1,%2" : "=r"(p2) : "r"(p0), "r"(excl));
-+    assert(p1 != p2);
-+
-+    /* Store the tag from the first pointer.  */
-+    asm("stg %0, [%0]" : : "r"(p1));
-+
-+    *p1 = 0;
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    faulting_ptr = p2;
-+    *p2 = 0;
-+
-+    abort();
-+}
+On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> Replace the stub implementation with real vIOMMU allocation for
+> Tegra241 CMDQV.
+>
+> Allocate a matching vEVENTQ together with the vIOMMU, since it is
+> specific to the Tegra241 CMDQV vIOMMU and used to receive CMDQV
+> events.
+>
+> Free both objects on teardown.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
--- 
-2.54.0
+Eric
+> ---
+>  hw/arm/tegra241-cmdqv.h |  1 +
+>  hw/arm/tegra241-cmdqv.c | 46 ++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 46 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index 2a34a4b6b4..fa0aa3ab04 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -30,6 +30,7 @@ typedef struct Tegra241CMDQV {
+>      SMMUv3AccelState *s_accel;
+>      MemoryRegion mmio_cmdqv;
+>      qemu_irq irq;
+> +    IOMMUFDVeventq *veventq;
+>  } Tegra241CMDQV;
+>  
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index ccd3c6d275..2f1084b55f 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -25,13 +25,57 @@ static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
+>  
+>  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
+>  {
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +    IOMMUFDViommu *viommu = accel->viommu;
+> +    Tegra241CMDQV *cmdqv = accel->cmdqv;
+> +    IOMMUFDVeventq *veventq = cmdqv->veventq;
+> +
+> +    if (!viommu) {
+> +        return;
+> +    }
+> +    if (veventq) {
+> +        close(veventq->veventq_fd);
+> +        iommufd_backend_free_id(viommu->iommufd, veventq->veventq_id);
+> +        g_free(veventq);
+> +        cmdqv->veventq = NULL;
+> +    }
+> +    iommufd_backend_free_id(viommu->iommufd, viommu->viommu_id);
+>  }
+>  
+>  static bool
+>  tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>                              uint32_t *out_viommu_id, Error **errp)
+>  {
+> -    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
+> +    Tegra241CMDQV *cmdqv = s->s_accel->cmdqv;
+> +    uint32_t viommu_id, veventq_id, veventq_fd;
+> +    IOMMUFDVeventq *veventq;
+> +
+> +    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
+> +                                      IOMMU_VIOMMU_TYPE_TEGRA241_CMDQV,
+> +                                      idev->hwpt_id, &cmdqv->cmdqv_data,
+> +                                      sizeof(cmdqv->cmdqv_data), &viommu_id,
+> +                                      errp)) {
+> +        return false;
+> +    }
+> +
+> +    if (!iommufd_backend_alloc_veventq(idev->iommufd, viommu_id,
+> +                                       IOMMU_VEVENTQ_TYPE_TEGRA241_CMDQV,
+> +                                       1 << 16, &veventq_id, &veventq_fd,
+> +                                       errp)) {
+> +        error_append_hint(errp, "Tegra241 CMDQV: failed to alloc veventq");
+> +        goto free_viommu;
+> +    }
+> +
+> +    veventq = g_new(IOMMUFDVeventq, 1);
+> +    veventq->veventq_id = veventq_id;
+> +    veventq->veventq_fd = veventq_fd;
+> +    cmdqv->veventq = veventq;
+> +
+> +    *out_viommu_id = viommu_id;
+> +    return true;
+> +
+> +free_viommu:
+> +    iommufd_backend_free_id(idev->iommufd, viommu_id);
+>      return false;
+>  }
+>  
 
 

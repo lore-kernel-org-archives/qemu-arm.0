@@ -4,95 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F3F9CD3423
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 07:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BEC7CD342C
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 09:51:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wJnsW-0005PR-Tp; Mon, 04 May 2026 03:38:08 -0400
+	id 1wJpxN-000755-9I; Mon, 04 May 2026 05:51:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wJnsV-0005Mb-JQ
- for qemu-arm@nongnu.org; Mon, 04 May 2026 03:38:07 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wJnsU-0007Tz-0k
- for qemu-arm@nongnu.org; Mon, 04 May 2026 03:38:07 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-488ad135063so32412085e9.0
- for <qemu-arm@nongnu.org>; Mon, 04 May 2026 00:38:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777880284; x=1778485084; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xa+CGLnrL+V4mfXhcp5ZkTFXOdRkvFFxI9x4qHtyRqU=;
- b=XO3PIn4WKHhLQ1nDVgHIhGDkAcTxxVJl5U5YIHzj/P/9MrjiHDa1f0ef5fd9x5Ggkg
- jA/xgqg2Ot0v1u+OoO5s7+5U9Hsz5+iBiU/ugfXL4ahBnezq3e1mi/LWxuYRGovZ/F4j
- pnkfC7+gxBD04lTIVGcj7eu9/u6mZdPqyoIe+MsoPIAsFl7gZLxRvdXT/0bqiCLpc0tz
- uEkqIQwMAq7dMSFQHGTHpmxTiV+l+qcx5iA6RjXAXUT3Nh+aFOQNkYo8J9DiGoJ1cC7f
- mPKOFSBG4hFAS9SVyccndLL5knaS5GlhMH4s49U/57wQZjzWlXYWsIQkq5pe1B/ZjY3T
- 2PUg==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxL-00074k-BD
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 05:51:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxJ-0002cr-BF
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 05:51:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777888272;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
+ b=DYfuZpqUvu6twKVlnjcOqZuSVIS+pSFaBvvGWy9jhO3oGMpuF2o4j3xwsAa4crJcu3QUz8
+ PS129B4WSNhVh6x5Q+wZxINghfK1SsN4R++LT/fFw6C6FYo7bTLZUgjH9pmzK/6Snv8sV6
+ 2gwF3bTQQN/3nEmLkdElgMUh0TXngAc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-376-da6pOjZ9OteG5Qj17dv5ZA-1; Mon, 04 May 2026 05:51:09 -0400
+X-MC-Unique: da6pOjZ9OteG5Qj17dv5ZA-1
+X-Mimecast-MFC-AGG-ID: da6pOjZ9OteG5Qj17dv5ZA_1777888268
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4836abfc742so32145755e9.0
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2026 02:51:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777880284; x=1778485084;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xa+CGLnrL+V4mfXhcp5ZkTFXOdRkvFFxI9x4qHtyRqU=;
- b=Pv4PTprM1Y/WIzN5GSoZ1khCOEvUDzvgWZjbXiDjsUjOxx2FUcufa67gNEMFded6Xi
- eMnNaaKmlqe/CTrqSleqxR4b185pg9q6xf5o6+6jMvmwI9k7ypMNJzDjpHzapovhZkk0
- ZCiuxw4qTkkfmu3RExsKrZ9tImJco/J24J6RHszJIfbbYLLE2jilzUdq06uL+KMgRMCW
- rprIZmrzX4mMBYzpVXW3G1EK5RUMNNL/gvhNtrohqrmUh6I0q7CIJT1rpjoNyf1IRQoP
- lhi2J3mTgHVmiQ5mqPjKk+T/txffs+Fe8jj7wnOkBgasNR74d2npzCLVm2SyvLZL4RzM
- ro3g==
+ d=1e100.net; s=20251104; t=1777888268; x=1778493068;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
+ b=igijMzBLos7vTDcFySvAeKbpt7pZKije3CfYvrRKT2S87v2OB4AzJDJvUkhh200DxV
+ zCEmHE582hD4OTf/6vwCSWr/rvGdUuKSwEZNe69thxvUQma7G6DpwnvHGiJ66irPRt8I
+ w0dUlOdFiUUB6ioILPlxiGDOr0/Q8LARUiTZ/X6NkZPcYnAQykH2H10TU4ds7etPPbRh
+ rSNWHKEq0rkn8PzIHmLNF05dAG5zaGfnO3kKXNJ4t2isctwwkJxzpfv2UtJGiIrnINcW
+ G1NsR8+0qLQDVXmk17TBV0PAp+6peE5SWVQvcr6JQezCn82Hi/eYFurAdsDMHF9H29hA
+ wyVA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ85JvPnuyVwA4/P8GUxiRk5GroYdlvhr/oLskacBIBtnNK9oe7twG9hOPG0ybSD0EScgVbiip52jA==@nongnu.org
-X-Gm-Message-State: AOJu0Yxysu/itSfLHPn235n6FvE8YpLqET8n3K5NnlQh/VakNa6k+Gpv
- PzIeE5YRrc2crBqwr87GJoMCXilOqJb3nlWgooj05WmGyS48q3WKEKqj9tt4GgRKVM0=
-X-Gm-Gg: AeBDies3L2FxegCgz3B+4NFFxcdXbh/q84cxnArKL/YkKN5uw2EHoA1z7l6EdeEgNWv
- wncmSPt1SfpD9se4jZBcrczBT6f8O2J4pgyhmRtAxFlHE15yhlGAEdkYLm9KEuNJR+114LO+emv
- V2rz5Nnka1J+2lp5Fznben43H9B2lipxjbImYb85UEY1eaH7wZT3/6bWXOTnoon4ybVJX1lR/Ro
- XI+XTppQqhjBs7qAtk4FUWgOY5OIRmFsjL5fttWkFhZrpCDabiWJDIf+dYDMmeTCbEPJn3OnSrv
- lMmlRVHLRSpO1JYa8brX3498Y7yy4bsRDYYM8eHKvdMo/mVttAWpt1dhpB0GaM/Fb8yHcsZRX9Z
- g72i1d/DuvG4hpdVU4nwJBo1MW2Bgzg31WkjRAJ9uBL6ECaf2bVnowz0vgrhqiCSOY0T3pYJBU7
- u8487ASf91sNth2PvObz1qUqoXQy+S2GxeCfAlJxbqgXy3CSfIq06qQpvtn5lB2eL66XMJ9WEgp
- xJADINQiwEzizI=
-X-Received: by 2002:a05:600c:540e:b0:48a:5574:3a5d with SMTP id
- 5b1f17b1804b1-48a98874ab4mr125264155e9.7.1777880283870; 
- Mon, 04 May 2026 00:38:03 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a8feec1easm74216055e9.24.2026.05.04.00.38.02
+ AFNElJ8B0IPpK9edjjoibUK4rBmQlqbpBsnv8mQLNGn1tKL7U9GWLOV0CxUXlRx5vP1i0+F0IMY62ZiZpQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzjiMoIcbWpfwOWFUGokiVqk3pSx4iRhebRy1bhhSUSeuUbC1lh
+ piIykWJWa06cSba/krpqc87RY2KRcHG34vlrlwT8epTF5Z7Je9otcqVJX++py6XlhxNeQYN+CvQ
+ pwThrqoY+UwumOLB4KRpe2Hg9k/MjtqCPOjgEqvnA4KCHnHBjOVfgmA==
+X-Gm-Gg: AeBDievGjUfDAXVKXV8y8OntcvxlrAZWsvq1hxgz/5m+OTayyYtathlFJzJoVI+CrlR
+ WwkSyyx0qsuO/U5vyPJdFGraOzvoEZ1ytHQad/xsz4r63QAwDDMBsq/8z58woRH9A+zI+N/rEGi
+ H+fj/vXqkUTYf9s04G8/PZUzTT3AL/24ga7s2o3p5cdExQ6+ZpsZrzR1aGnITE7u5eVIqLXBQQS
+ nzfuLeVOrBqEy1NRS9KkXspXv1YPaC0Xz42mi2f0zqxQqMd0wW64xzlTQK/K1Q0bxRzl4ZXzlZY
+ kHrR7GZmFM/lWcjMErJ3xna4uNGAdQOGER7JVB5jF8RH9sFv6nEleCBN+8nywx4vcOIgRbTOLPC
+ FgPEYwVcDvOR0+1fa5bZSjlZ6OfBO0qeKYjJgVzM3/OjBn0xUgbNA8U/s1zhIgzv9orO9wao=
+X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
+ 5b1f17b1804b1-48a986734c9mr145401385e9.27.1777888267992; 
+ Mon, 04 May 2026 02:51:07 -0700 (PDT)
+X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
+ 5b1f17b1804b1-48a986734c9mr145400925e9.27.1777888267485; 
+ Mon, 04 May 2026 02:51:07 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a8fe92b3asm86518015e9.4.2026.05.04.02.51.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2026 00:38:03 -0700 (PDT)
-Message-ID: <77227abc-9ea3-41a3-9407-5a00555a4718@linaro.org>
-Date: Mon, 4 May 2026 09:38:02 +0200
+ Mon, 04 May 2026 02:51:06 -0700 (PDT)
+Message-ID: <16c03bd7-5db7-43c0-a1ca-0bf904cba03d@redhat.com>
+Date: Mon, 4 May 2026 11:51:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hvf: arm: override HV_SYS_REG_MDCR_EL2
-Content-Language: en-US
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20260501231353.63184-1-mohamed@unpredictable.fr>
- <e36f1d1b-89db-443b-aa48-6247831a8247@linaro.org>
- <D84A47B8-1555-4ED6-9BC5-C4C433D5D7AD@unpredictable.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <D84A47B8-1555-4ED6-9BC5-C4C433D5D7AD@unpredictable.fr>
+Subject: Re: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
+References: <20260308203516.160103-1-shentey@gmail.com>
+ <20260308203516.160103-6-shentey@gmail.com>
+ <af77b92d-9303-4ed0-942d-6188e00ccdde@redhat.com>
+ <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 8Z8JKNDCYqiNEctk6mjKVzzXwjih31KwRlz01ijzRzg_1777888268
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,62 +163,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/5/26 08:59, Mohamed Mediouni wrote:
+On 4/27/26 12:30, Bernhard Beschow wrote:
 > 
 > 
->> On 4. May 2026, at 08:49, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> On 2/5/26 01:13, Mohamed Mediouni wrote:
->>> In older SDKs, MDCR_EL2 was defined incorrectly.
->>> As such, override it with a #define if compiling with an older macOS
->>> SDK.
->>> This is a workaround because the macOS CI setup we currently rely on
->>> has not been kept up to date, to be able to land nested virtualization
->>> support.
->>> Once CI is updated, the SME stubs can be removed and this
->>> commit can be reverted.
->>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Am 9. März 2026 09:19:10 UTC schrieb "Cédric Le Goater" <clg@redhat.com>:
+>> On 3/8/26 21:35, Bernhard Beschow wrote:
+>>> The callback has been introduced in commit 715ca691daca ("sysbus: add
+>>> irq_routing_notifier") for use in VFIO platform. Meanwhile, VFIO
+>>> platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
+>>> platform'") which was its only user. Remove this unused code.
+>>>
+>>> This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8.
+>>>
+>>> cc: Cédric Le Goater <clg@redhat.com>
+>>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 >>> ---
->>>   target/arm/hvf/hvf.c | 9 +++++++++
->>>   1 file changed, 9 insertions(+)
->>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->>> index 4f0f7ffba1..79209bc8e9 100644
->>> --- a/target/arm/hvf/hvf.c
->>> +++ b/target/arm/hvf/hvf.c
->>> @@ -468,6 +468,15 @@ static const struct hvf_reg_match hvf_sme2_preg_match[] = {
->>>   #define HVF_TO_KVMID(HVF)  \
->>>       (CP_REG_ARM64 | CP_REG_SIZE_U64 | CP_REG_ARM64_SYSREG | (HVF))
->>>   +/*
->>> + * In older SDKs, MDCR_EL2 was defined incorrectly.
->>> + * As such, override it with a #define if compiling with an older macOS SDK.
->>> + * https://lore.kernel.org/qemu-devel/BCCED674-EAEF-4755-9BE1-116FB36FB5C9@apple.com/
->>> + */
->>> +#if !defined(MAC_OS_VERSION_26_0)
+>>>    include/hw/core/sysbus.h | 1 -
+>>>    hw/core/sysbus.c         | 6 ------
+>>>    2 files changed, 7 deletions(-)
+>>>
+>>> diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
+>>> index c0d18d9e00..f3c4259d29 100644
+>>> --- a/include/hw/core/sysbus.h
+>>> +++ b/include/hw/core/sysbus.h
+>>> @@ -50,7 +50,6 @@ struct SysBusDeviceClass {
+>>>         * omitted then. (This is not considered a fatal error.)
+>>>         */
+>>>        char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
+>>> -    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
+>>>    };
+>>>      struct SysBusDevice {
+>>> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+>>> index 3adf2f2faf..3e1160ee92 100644
+>>> --- a/hw/core/sysbus.c
+>>> +++ b/hw/core/sysbus.c
+>>> @@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n)
+>>>      void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
+>>>    {
+>>> -    SysBusDeviceClass *sbd = SYS_BUS_DEVICE_GET_CLASS(dev);
+>>> -
+>>>        qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, n, irq);
+>>> -
+>>> -    if (sbd->connect_irq_notifier) {
+>>> -        sbd->connect_irq_notifier(dev, irq);
+>>> -    }
+>>>    }
+>>>      /* Check whether an MMIO region exists */
 >>
->> Not sure about this check, i.e. wouldn't it clash with 26.1 release?
->> I'd expect a check such:
+>> Reviewed-by: Cédric Le Goater <clg@redhat.com>
 >>
->>    #if MAC_OS_X_VERSION_MAX_ALLOWED < 260000
+>> Thanks,
+>>
+>> C.
 > 
-> Hi,
-> 
-> MAC_OS_VERSION_26_0 will be defined in all future SDKs.
-> 
-> See AvailabilityVersions.h in the macOS SDK, has all of them since 10.0
+> Who will pick up this patch?
+I would say this is a qdev related matter, so Paolo ?
 
-Right.
+Thanks,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
->>
->>> +#define HV_SYS_REG_MDCR_EL2 0xe089
->>> +#endif
->>> +
->>>   /*
->>>    * Verify this at compile-time.
->>>    *
->>
->>
-> 
+C.
 
 

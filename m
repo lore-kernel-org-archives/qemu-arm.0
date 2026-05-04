@@ -4,99 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B5CFF885A
-	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 13:12:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 581EFCD3430
+	for <qemu-arm@archiver.kernel.org>; Mon,  4 May 2026 14:59:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wJt5z-0003Ed-Q9; Mon, 04 May 2026 09:12:23 -0400
+	id 1wJukh-0006ek-1Q; Mon, 04 May 2026 10:58:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJt5x-0003D4-Et
- for qemu-arm@nongnu.org; Mon, 04 May 2026 09:12:21 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJukc-0006eF-Tf
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 10:58:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJt5v-00019x-EO
- for qemu-arm@nongnu.org; Mon, 04 May 2026 09:12:21 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJuka-0005Qr-0j
+ for qemu-arm@nongnu.org; Mon, 04 May 2026 10:58:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777900337;
+ s=mimecast20190719; t=1777906703;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=mkA8xPgK3fBNtILTmFFJzACoGTv7z8Bj8WR9cXSIViI=;
- b=L1rwEUlVGvZPGz6NAESYp9b2uF1T6tCCJCXq1Uv/2twEN/rVuWO1YIjN/4YNKIyclbO99P
- WWvA1RgbVnwuvG+k5XQw1m8M6OZXOTbNpkjVmHAf0aas7F3x2ooWGcorHk2ecNAP2NodZk
- 4dGszY2XwOGJTgVn5LqNXuNOhGi8t5Q=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=71yVqRbbZQkSWbuB+RkiKwvWO3igM1/EmA0f6JVEUuY=;
+ b=GoKJPI1Q28a+amkxcbL7JZN17J74JBuy6V1nI8hQ5w6t3On30dthKf4D7tpn4UxXK6wdiP
+ Uikbuy6Nb7vLd1Y6Zx66UTo7MRIBVjOW0psOGl4IGUXS1B+WhwNRdUvB5dq7kN7frm1UWQ
+ UxN3QigsZ6lxGrriCsVcxln1PVo8Zgk=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-452-HlT4-ssUM9GLlbTj534cMA-1; Mon, 04 May 2026 09:12:16 -0400
-X-MC-Unique: HlT4-ssUM9GLlbTj534cMA-1
-X-Mimecast-MFC-AGG-ID: HlT4-ssUM9GLlbTj534cMA_1777900335
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48d05e7b117so9327735e9.0
- for <qemu-arm@nongnu.org>; Mon, 04 May 2026 06:12:16 -0700 (PDT)
+ us-mta-300-S_kFnQ90OIyY9Ajd8C_-Ug-1; Mon, 04 May 2026 10:58:20 -0400
+X-MC-Unique: S_kFnQ90OIyY9Ajd8C_-Ug-1
+X-Mimecast-MFC-AGG-ID: S_kFnQ90OIyY9Ajd8C_-Ug_1777906699
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-4470d6d2a4fso4775552f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 04 May 2026 07:58:20 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777900335; x=1778505135;
+ d=1e100.net; s=20251104; t=1777906699; x=1778511499;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mkA8xPgK3fBNtILTmFFJzACoGTv7z8Bj8WR9cXSIViI=;
- b=X3Dbx0IuSnNMNKeovpUrUo9oLxLx3q1+aGtEhYC6OtfAKnXqy0DZRX+ASN6M/khzwe
- lVfFAxbVRX7dNrad8ECdr76aoJ3HQMo1PUJs71S0tvg9iagrnbujC+i6AqPDSt3KL648
- t+lvOrzmzh5xpX8EjsUYGSfdn+e3QiFuvJxFMyr/2Sf4rdgvpSUMkWv12u/Ek52W8P3S
- Q4JVSzkU3wod3i8kBIyGFi1CHDXrB4ca3wUIuuzPbES8rDiBOdW5Bna3qiOBeuneg9eM
- YpjLyg1wZFY+EOCOPY4r5Zm53+Pde0L4NlGH3xPTFu8v99VV7rG7ZojtUwOGp68Vp28f
- cZsg==
+ bh=71yVqRbbZQkSWbuB+RkiKwvWO3igM1/EmA0f6JVEUuY=;
+ b=RxqtaAk6mafTIZe42BKXqgbwyfyYnFHya1mObgxRnKZO1vejpT/3Z0xrxLrWrP0iNJ
+ c5PCUjkndopoeZxgX+OFCoJnL/5szz1fJ9vRAIi5yRpKP/KfXn9tBsAo68qQ7aBkjdHJ
+ k6FE8JQyW1ZkpkZWxS2qOxoe8CsoIFMt08mwjLK2aelUXlqwZRSbh7om5gIDQptHLzqc
+ Wj7ieCHKtQI4cKz3urxCcXpkfbHwicrdmLs//TMONkIsiRalyhtZHqeEeGjv89qReMqE
+ cufS7vOCKNhArcH/d2+yZpe/L4QqsnQCvumLUNw3A6YmCufy2ujYJL6OLuZYcZUoZUUq
+ Fi8A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+9xuzE6e7Q25eeFyeGDQDxPimsTsMOcw5yP+/4NiaVo27vjDqYNDT2Iwkg1TJoaP6VJls4r3eNqA==@nongnu.org
-X-Gm-Message-State: AOJu0YxvwHr48Rv9W1E3ecJjPtiTrirts3yQ+OAGEnIboJfBoSPsb8Um
- LohuYSVG6aVt2hwykCsxaXMdI97KB3oayxSOKAsTVSS1spORUeZuBnanpubkrpB3XoE2PDgTwxE
- +VPctC1svzO1i5v2Jsuhsz45cSPxzs2CJmhK9+yrkpQU/7UOg7qxmIw==
-X-Gm-Gg: AeBDiesy4Ayi3PGQgoC5HCstw4As+pXkXyl9V8RfJOCfTP4H8IGQfLm8tlO7WonugU4
- hV/PcaROe3vxgWbkpIAQIvGh6klyWXm3bn+AJ8HEuHnfY67riFY8nrqDp+sDKkW6/w91DzX02/X
- Ra4UlbuOlkVzuh+fsN7q+KEv6ufW8xrGwadmI0aAqlocyDf7AEPJhE92JDA6uohzdy8hKIto77j
- TLgdyOvfCR3ou585kezTVoQmPX7Nxu4/D27eSRYkMQrX0YJWp62KOsxo1WLXNZvzv2s2wEAxL9/
- k42aLi8k4Hzz0ljxr8t4LLBz+rN562+8ShHV7lGDifHZ/BpnM96CQUR5gDOX6t9W3fuKHTmMZBw
- fLYMoQ+5+GfW4m891oVwUp0C1oXCiAcsyeDa+U6XDOBZ1ZZ95nDeaTJ3l6hLkVm1ojizbQV0=
-X-Received: by 2002:a05:600c:4450:b0:487:4eb:d125 with SMTP id
- 5b1f17b1804b1-48a98639086mr142212955e9.9.1777900335084; 
- Mon, 04 May 2026 06:12:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:4450:b0:487:4eb:d125 with SMTP id
- 5b1f17b1804b1-48a98639086mr142212105e9.9.1777900334512; 
- Mon, 04 May 2026 06:12:14 -0700 (PDT)
+ AFNElJ/LVq6mfSmcKaU+nTl36/y1k6SmvY6B2lftBgCuKyDT6T3bff57pLPPrwjwaTRXqt80ejllO41rUg==@nongnu.org
+X-Gm-Message-State: AOJu0YwETP3vRtksIShyKA33ba2IGO8TLOqdDETec6yxAob+YjZM7P/o
+ r8wnx9RLcUozd8I2ugE8/hkjOqJUfWmu51XX2bKhpUlmFaVwvyhNB9tURC4lANnDPXa7tA32eiB
+ h2D3Qm1TQhi8UgRmdNey3OAITXlF271cQQifPPqv2WUKaCTZ7KnKdVA==
+X-Gm-Gg: AeBDievhnXQb+5RlyoZux+qg1DN10xuJdElx/MmMp4M/zH09d6M+rFmDxg26IbKxPft
+ Z/EaMBkU/iIbnNJCzSdnbSX/p/ZEGmmiXCSVHPpSxUmyV5F+9GttJJK7iBmDyBHPCWizezNfcqA
+ 7TSslvsm/iJQih3oxo+zumj+2g0Hb7DeZzxXAz/tlNbVXAYJK9tSQ9GYJphJJWKDlkEvCgBzeXQ
+ IpsmaJLsVOxRIOQ9dLMGgV5cEP/GQ5yj2JBVk05h7ECCY1nt2Fz1OCiwEqQmpZjDdy9nMJPaBhb
+ W7Qaf8fi629i6Zpe4dM3MlZ4QulFW5nzYeKbwiNAyk/C557KihbQsoulRRTlmOpTLIY8wkXObY5
+ WOrqMO4WPcYGalSedJDowv2SQsd3XMqsIicEPgqTJkb53o3ZaSppKuTVFZjWjCyDeKeelnys=
+X-Received: by 2002:a05:600c:5253:b0:48a:5574:3a48 with SMTP id
+ 5b1f17b1804b1-48a9865d948mr159645165e9.16.1777906699391; 
+ Mon, 04 May 2026 07:58:19 -0700 (PDT)
+X-Received: by 2002:a05:600c:5253:b0:48a:5574:3a48 with SMTP id
+ 5b1f17b1804b1-48a9865d948mr159644785e9.16.1777906698877; 
+ Mon, 04 May 2026 07:58:18 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-44a98b768fdsm25227505f8f.33.2026.05.04.06.12.13
+ 5b1f17b1804b1-48a82301ad1sm513642425e9.9.2026.05.04.07.58.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2026 06:12:13 -0700 (PDT)
-Message-ID: <1ed28a9f-ad15-4109-88f8-e7657fe33235@redhat.com>
-Date: Mon, 4 May 2026 15:12:12 +0200
+ Mon, 04 May 2026 07:58:18 -0700 (PDT)
+Message-ID: <9ed5337c-abaf-4f5b-b17e-04dc87165ffa@redhat.com>
+Date: Mon, 4 May 2026 16:58:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/11] hw/usb/hcd-ehci: Add ctrldssegment-default
- property
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, "peterx@redhat.com"
- <peterx@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+Subject: Re: [PATCH v2 0/7] hw/arm/smmuv3-accel: Resolve AUTO properties
+To: Nathan Chen <nathanc@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Zhao Liu <zhao1.liu@intel.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
- "flwu@google.com" <flwu@google.com>,
- "nabihestefan@google.com" <nabihestefan@google.com>
-References: <20260504025342.1452605-1-jamin_lin@aspeedtech.com>
- <20260504025342.1452605-9-jamin_lin@aspeedtech.com>
- <67a45038-e4bb-48f8-af08-af0d5c308ece@linaro.org>
- <e45a4765-0c3d-4fc0-8080-cdad5f877a92@redhat.com>
- <d9c8bf73-70f3-4bb3-b1cc-0f64f1ee5bc2@linaro.org>
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+References: <20260422204335.23116-1-nathanc@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -141,13 +132,13 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <d9c8bf73-70f3-4bb3-b1cc-0f64f1ee5bc2@linaro.org>
+In-Reply-To: <20260422204335.23116-1-nathanc@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IChM9uHW2t9SVOltRQfyDTzFgcNj307QJbYuqrFxEfc_1777900335
+X-Mimecast-MFC-PROC-ID: eI78pjZe7uR_VQGpYAU15PxTD35tBKV14W1pwXEQE30_1777906699
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -156,7 +147,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -172,116 +163,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/4/26 14:42, Philippe Mathieu-Daudé wrote:
-> On 4/5/26 14:17, Cédric Le Goater wrote:
->> On 5/4/26 13:18, Philippe Mathieu-Daudé wrote:
->>> On 4/5/26 04:53, Jamin Lin wrote:
->>>> When 64-bit addressing is supported, the Linux EHCI driver programs the
->>>> segment register to zero. See ehci_run function:
->>>> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci- hcd.c
->>>>
->>>> The driver comment also notes that descriptor structures allocated from
->>>> the DMA pool use segment zero semantics.
->>>>
->>>> Descriptor memory is allocated using the DMA API. The platform driver
->>>> configures a 64-bit DMA mask so memory can be allocated above 4GB.
->>>> See ehci_platform_probe function:
->>>> https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci- platform.c
->>>>
->>>> On AST2700 platforms, system DRAM is mapped above 4GB at 0x400000000.
->>>> As a result, descriptor addresses constructed directly from the guest
->>>> EHCI registers do not match the actual system address used by the
->>>> controller when fetching queue heads (QH) and queue element transfer
->>>> descriptors (qTD).
->>>>
->>>> Add a ctrldssegment-default property so platforms can provide a
->>>> descriptor address offset when constructing descriptor addresses.
->>>> This allows systems where DRAM resides above 4GB to access EHCI
->>>> descriptors correctly.
->>>>
->>>> The default value is zero, so existing machines are not affected.
->>>>
->>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>>> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->>>> ---
->>>>   hw/usb/hcd-ehci.h | 5 ++++-
->>>>   hw/usb/hcd-ehci.c | 1 +
->>>>   2 files changed, 5 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
->>>> index 8e6a8cdfb0..3d57e1de5f 100644
->>>> --- a/hw/usb/hcd-ehci.h
->>>> +++ b/hw/usb/hcd-ehci.h
->>>> @@ -264,6 +264,7 @@ struct EHCIState {
->>>>       uint32_t maxframes;
->>>>       bool migrate_fetch_addr_64bit;
->>>>       bool caps_64bit_addr;
->>>> +    uint32_t ctrldssegment_default;
->>>>       /*
->>>>        *  EHCI spec version 1.0 Section 2.3
->>>> @@ -322,7 +323,9 @@ struct EHCIState {
->>>>       DEFINE_PROP_BOOL("x-migrate-fetch-addr-64bit", _state, \
->>>>                        ehci.migrate_fetch_addr_64bit, true), \
->>>>       DEFINE_PROP_BOOL("caps-64bit-addr", _state, \
->>>> -                     ehci.caps_64bit_addr, false)
->>>> +                     ehci.caps_64bit_addr, false), \
->>>> +    DEFINE_PROP_UINT32("ctrldssegment-default", _state, \
->>>> +                       ehci.ctrldssegment_default, 0)
->>>
->>> ctrl-ds-segment-default and ctrl_ds_segment_default?
->>>
->>> Otherwise,
->>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>
->>
->> yeah. I agree. That's the general pattern for property names.
+Hello Nathan,
+
+On 4/22/26 22:43, Nathan Chen wrote:
+> Hi,
 > 
-> I don't get the '-default' suffix. Alternatives:
+> This series introduces support for resolving 'auto' for arm-smmuv3
+> accelerated mode's ATS, RIL, SSIDSIZE, and OAS feature properties based
+> on host IOMMU capabilities. This is dependent on the series [0] for
+> changing these property types to accept 'auto' values.
 > 
-> dram-segment-base-addr or even x-dram-segment-base-addr 
+> Accelerated SMMUv3 Address Translation Services support is derived from
+> IDR0, Range Invalidation support is derived from IDR3, Substream ID
+> size is derived from IDR1, and output address space is derived from
+> IDR5.
+> 
+> The default values are set to 'auto' for all properties. If accel=off
+> and the values are set to 'auto' or are omitted and resolve to 'auto',
+> the default property values defined in smmuv3_init_id_regs() for OAS
+> and RIL will remain unchanged, while SSIDSIZE and ATS values will
+> remain initialized at 0.
+> 
+> A complete branch can be found here:
+> https://github.com/NathanChenNVIDIA/qemu/tree/smmuv3-accel-auto-resolve-v2
+> 
+> Please take a look and let me know your feedback.
+> 
+> Thanks,
+> Nathan
+> 
+> [0] https://lore.kernel.org/qemu-arm/20260323182454.1416110-1-nathanc@nvidia.com/
+> 
+> Example usage:
+> qemu-system-aarch64 \
+>    -object iommufd,id=iommufd0 \
+>    -machine virt,accel=kvm,gic-version=3,ras=on,highmem-mmio-size=4T \
+>    -cpu host -smp cpus=4 -m size=16G -nographic \
+>    -object memory-backend-ram,size=16G,id=m0 \
+>    -numa node,memdev=m0,cpus=0-3,nodeid=0 \
+>    -numa node,nodeid=1 -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 \
+>    -numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 -numa node,nodeid=8 \
+>    -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_node=0 \
+>    -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.1,accel=on,ats=auto,ssidsize=auto,ril=auto,oas=auto \
+>    -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,io-reserve=0 \
+>    -device vfio-pci-nohotplug,host=0009:06:00.0,bus=pcie.port1,rombar=0,id=dev0,iommufd=iommufd0,ats=auto \
+>    -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=1 \
+>    -object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=2 \
+>    -object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=3 \
+>    -object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=4 \
+>    -object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=5 \
+>    -object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=6 \
+>    -object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=7 \
+>    -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=8 \
+>    -bios /usr/share/AAVMF/AAVMF_CODE.fd \
+>    -device nvme,drive=nvme0,serial=deadbeaf1,bus=pcie.0 \
+>    -drive file=/var/lib/libvirt/images/guest.qcow2,index=0,media=disk,format=qcow2,if=none,id=nvme0 \
+>    -device e1000,romfile=/usr/local/share/qemu/efi-e1000.rom,netdev=net0,bus=pcie.0 \
+>    -netdev user,id=net0,hostfwd=tcp::5558-:22,hostfwd=tcp::5586-:5586
+> 
+> Testing:
+> Basic sanity testing was performed on an NVIDIA Grace platform with GPU
+> device assignment and running CUDA test apps on the guest. Observed the
+> feature properties being set based on host IOMMU capabilities.
+> Verified that the VM boot will fail without a cold-plugged device, and
+> that a hot-plugged device re-uses the resolved values from the initial
+> cold-plug. Additional testing and feedback are welcome.
 
-What ever makes sense. EHCI specs have :
+It is helpful to have a changelog between different versions of
+the same series of patches.
 
-   CTRLDSSEGMENT  4G Segment Selector
+So, the linux headers and vfio update are not required anymore ?
 
-The purpose of the "ctrldssegment-default" property is to force
-a default value of the CTRLDSSEGMENT register for the ast2700.
-
-Jamin, how are we sure the DMAs are allocated in this 4G segment ?
-because RAM covers 8G :
-
-       0000000400000000-00000005ffffffff (prio 0, ram): ram
-
-
-> since I still believe this is a AST2700 issue, likely not mapping 
-> RAM appropriately.
-
-Other controllers would be impacted no ?
-Linux (upstream) forces the CTRLDSSEGMENT value :
-
-	/*
-	 * hcc_params controls whether ehci->regs->segment must (!!!)
-	 * be used; it constrains QH/ITD/SITD and QTD locations.
-	 * dma_pool consistent memory always uses segment zero.
-	 * streaming mappings for I/O buffers, like dma_map_single(),
-	 * can return segments above 4GB, if the device allows.
-	 *
-	 * NOTE:  the dma mask is visible through dev->dma_mask, so
-	 * drivers can pass this info along ... like NETIF_F_HIGHDMA,
-	 * Scsi_Host.highmem_io, and so forth.  It's readonly to all
-	 * host side drivers though.
-	 */
-	hcc_params = ehci_readl(ehci, &ehci->caps->hcc_params);
-	if (HCC_64BIT_ADDR(hcc_params)) {
-		ehci_writel(ehci, 0, &ehci->regs->segment);       <------- here
-#if 0
-// this is deeply broken on almost all architectures
-		if (!dma_set_mask(hcd->self.controller, DMA_BIT_MASK(64)))
-			ehci_info(ehci, "enabled 64bit DMA\n");
-#endif
-	}
-
+Thanks,
 
 C.
+
+
+> 
+> Nathan Chen (7):
+>    hw/arm/smmuv3-accel: Add helper for resolving auto parameters
+>    hw/arm/smmuv3-accel: Implement "auto" value for "ats"
+>    hw/arm/smmuv3-accel: Implement "auto" value for "ril"
+>    hw/arm/smmuv3-accel: Implement "auto" value for "ssidsize"
+>    hw/arm/smmuv3-accel: Implement "auto" value for "oas"
+>    hw/arm/smmuv3: Set default ats, ril, ssidsize, oas to auto
+>    qemu-options.hx: Support "auto" for accel SMMUv3 properties
+> 
+>   hw/arm/smmuv3-accel.c   | 80 ++++++++++++++++++++++++++++++++++++++++-
+>   hw/arm/smmuv3-accel.h   |  2 ++
+>   hw/arm/smmuv3.c         | 63 +++++++++++++++-----------------
+>   hw/core/machine.c       |  8 +++++
+>   include/hw/arm/smmuv3.h |  2 ++
+>   qemu-options.hx         | 33 +++++++++++------
+>   6 files changed, 143 insertions(+), 45 deletions(-)
+> 
 
 

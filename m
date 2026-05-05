@@ -4,129 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F12FF8855
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 20:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3B6AFF8855
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 20:54:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKMOl-0002Eq-7N; Tue, 05 May 2026 16:29:44 -0400
+	id 1wKMmQ-0002wT-I0; Tue, 05 May 2026 16:54:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wKMOU-0001nr-Be; Tue, 05 May 2026 16:29:29 -0400
-Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1wKMOP-00032N-H5; Tue, 05 May 2026 16:29:24 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XqshD6KHZGgEUKjBgayXbxreyNK2VHB6mRErGUEJkfkTUoPSO9LBvER8Nrhi7RecG8baGZ6RCEanJveyh+DyuIHW63L/LO1bkUzzqSAIlIZ4hfhjZzgQb/CxeFGwzxDJxlTSjlA2O+AMkvQ4cjlEcrnVe/Y7o2yL++5eIY9mvL4rBw3ZcPYQKHpHgALeQB1C+eLD7zX9RQZbSABREU44aok3SDqjDfUMzQmiNC1+gsnL+pVw/yIdhIzxa5laBia+8dDKjl9M4R5kuxGQGZ7ENiIiWJEhCJPyaddi1PJAYM8/lNUROj0TdkOGsjSdiq+m3QsAmCUi9wKZ64dLYZoz3Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=bYpmhuMHqfnaou3DO3OD2xMT0KY2+zEAQskR25CMpnU=;
- b=l2BKM92k7qo+/aZKkPpIeJPayCUpfpbdfkwPIoaLUUTVKuXYAExuQpLZpuXYgebpg2/eIEk9CoIfQXL5qisi+zBlt+IFgImNUTrThfpRaiS7rSLw2+xUR/zurKmw5qKBrwx7VbDPB/bBqubqmXXxpQZDAK3NoT01hYlIcpaT4bXPTPgsxQlrQ8m1l9k1PRXEhyT9z8WMlMDKYnVLU6x2c/Hm0z6W+f9H54EC8JaM3gLju29WWmThcuWvcv3FklEg3WVL4YWYRLq1rkRdsCV1qNTz1mfFZXkDgevtifazJVgx7P/62E1hLvVqsPreb0Y+LhYTu9F3mQp1+0cAm5/v0A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=bYpmhuMHqfnaou3DO3OD2xMT0KY2+zEAQskR25CMpnU=;
- b=G9TwHZJ/0AsYQPysbuUskWMlFLjaCplOIwuSYpBXaKU/ukLgUMaDKiAo7ebwbyCG+Drl2V//W3h5jNcFj52TKmH/X2NM7AYVVCF8YmehNYhy4oU1Eh9GtAx8ickwTV7c7GuHEKxFOMArUYnkTVgdepGC6FZXPvlpBfk1nM7PPGcCGGECS8e/tqDYX81mG0UsKRuayKSIqArMt/PjVLvzzUl0nFKTbltsKfLdOwDfhIIszKXTjPTDqvshCEBISY2VpKnBADkwhRUNBK5BS8UMOoGNQWi7kH+faPlFwBwPzQzlHSAs3+afgIss3eOkWkRs96kgEs5ggdbsU+xzQzCcyw==
-Received: from DM6PR07CA0129.namprd07.prod.outlook.com (2603:10b6:5:330::23)
- by DS7PR12MB6167.namprd12.prod.outlook.com (2603:10b6:8:98::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Tue, 5 May
- 2026 20:29:12 +0000
-Received: from DM2PEPF00003FC3.namprd04.prod.outlook.com
- (2603:10b6:5:330:cafe::f7) by DM6PR07CA0129.outlook.office365.com
- (2603:10b6:5:330::23) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9870.27 via Frontend Transport; Tue,
- 5 May 2026 20:29:12 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- DM2PEPF00003FC3.mail.protection.outlook.com (10.167.23.21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9891.9 via Frontend Transport; Tue, 5 May 2026 20:29:11 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 5 May
- 2026 12:52:35 -0700
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 5 May
- 2026 12:52:35 -0700
-Received: from nvidia.com (10.127.8.13) by mail.nvidia.com (10.129.68.7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Tue, 5 May 2026 12:52:31 -0700
-Date: Tue, 5 May 2026 12:52:28 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
- <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jiandi An
- <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
- <kjaju@nvidia.com>, "phrdina@redhat.com" <phrdina@redhat.com>
-Subject: Re: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0
- as VCMDQ backing
-Message-ID: <afpKfEvuT3ZeBSiH@nvidia.com>
-References: <20260415105552.622421-1-skolothumtho@nvidia.com>
- <20260415105552.622421-21-skolothumtho@nvidia.com>
- <afk+zBZLQx+x+ODl@nvidia.com>
- <CH3PR12MB754892989B2A76D3D3A941D6AB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKMmM-0002vr-OF
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 16:54:07 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKMmL-0001Q5-2R
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 16:54:06 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-444826c16ffso5461774f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 13:54:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1778014443; x=1778619243; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3OlMkUnK67P6OiqTbgbKmspu7e+U7zl/NOy2A2SBzKk=;
+ b=KiLCzHTkuP8bcvK83ASSS/8SCb7V+j6GCnWs1wwImxheiHN+iIeTF8SpA2/zvsHQx+
+ okkjR73RYkg6PuMPnFWeuzmwzQpnDVajRGhR9nnMSkF2gKuGo8luZkvOo5YeKOdAmtVu
+ ZOBoaN1ojKxayJ6b5aUKwi2HBrU1rAeBL6AxkVCqxcOBNSK/VD9nX3XrMkvIE649ODl0
+ Ue2ImL+3deGWVlBwvpv/A3krOXhx3Ru5PC8evXxjApfdaWAETUZu+TqixhcmyhlNufeq
+ ew03cEWph0+CWsCWPVDmj0ZVx3NnCAhZv7cxisYFsfgD0Tro0m6dSvABc3cA9/j23ycn
+ 3G/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778014443; x=1778619243;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=3OlMkUnK67P6OiqTbgbKmspu7e+U7zl/NOy2A2SBzKk=;
+ b=WgKgzsHXYCXxCRuxJWMsKaPkLymX03TZByEWZZKddkwW7Qbh0IoaTOS4xwnqC+bLkU
+ 3PkhaPC5MW/5tcjyMt5t6LV7CUtdGu/JF6VbtIjShVEeuJC33KTkQS4GlfKJvbAo/uSA
+ W9M+KeqVoyzCwz4UOnh6szM8UjqGvaq/sCAxmZcIqLnJwTkp2X2YosxmWA+mJfQ1Ld9G
+ Ijwe6VvCIR8+AAvD2/hsIcrpHr6l29PhJ2uQ90qHJLiFdT2IWGjSNKQqMFTTm1Di0gNr
+ OW9J/dNxzU3Cr2qGXaB1bX7qDCreU6UJN07vk1fqpp2VH27MnZnPt+siOsZ03W9KorUi
+ bEdw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ98s83YQXoDBfQtlT9QTTz78sR96Ka/SKmfehV7hw/8saPdaK6dJEl5LQEwReNvfTV2buewlYM38g==@nongnu.org
+X-Gm-Message-State: AOJu0YyOiIdbcyYPn5mTik5uYRG2jcXP9CnCdC5zE+SBBiO2gB4UNjTn
+ DlR+dKlMd2s4OMofF49mSpqf5Mxq4+OIlvNVK2Ny7ibFpvE6tHo+nsut
+X-Gm-Gg: AeBDieuK7Aj7aWUCpNDWj1KdQBZ7yh8XNO4SCw9Tln5btdLdP5qgA5oWDiv/8yhpGUT
+ je4r9DXwc87cgV015atvPhCbSXI0PvG7jpHOAz060mU7vaRZyd8x321/2xWBrNYFNaADNhPwBfm
+ rIlca6YrrXxE5P11tuNWv6qK7JeQMyrdIJS8BWCpQYf64McsD2CvLVnAnj6V5jrpBWdEyFz5eKe
+ XjAawWDN05ciqercT12Q6vZz2Heyj/6YgW8pc7VxwkVx9xbYA6WM/Bop6bjP2qhNjqBEZvysgHx
+ tCYyoJq2eY4kwmgS/tevVXH4QbnTTVUICC+Cb2LmSH4ZDgujgMxllQKlPlLDmuE6K2YPPyQAE7E
+ UNxz06VPE80117QLQoJlxqxWYjyhShejgm0g30DXpXEl7LJxlfI8ONpI1CnX8/ijjaEs+RIUqsE
+ aKQvIxx+JUQWFMFoHywFe9NSe0rL+Ws3khgkZalO9Iosz9Q+aLEdfiBdI0NelDzJYHgNYknpYfC
+ aDhE+XMDypeiEVBw5UQFPjTKHxKUWW0MawxEnNNAXS447ugsVYqagiA
+X-Received: by 2002:a05:6000:61e:b0:441:2335:ac3f with SMTP id
+ ffacd0b85a97d-4515d4d114fmr1157861f8f.31.1778014443322; 
+ Tue, 05 May 2026 13:54:03 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (dynamic-2a02-3100-2288-5100-c87f-e1c3-d3c0-0c97.310.pool.telefonica.de.
+ [2a02:3100:2288:5100:c87f:e1c3:d3c0:c97])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4505238e7c0sm6410810f8f.3.2026.05.05.13.54.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 May 2026 13:54:01 -0700 (PDT)
+Date: Tue, 05 May 2026 20:53:57 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
+In-Reply-To: <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
+References: <20260308203516.160103-1-shentey@gmail.com>
+ <20260308203516.160103-4-shentey@gmail.com>
+ <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
+Message-ID: <842AA964-4C27-47B7-85AB-A26BC607BD5D@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <CH3PR12MB754892989B2A76D3D3A941D6AB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM2PEPF00003FC3:EE_|DS7PR12MB6167:EE_
-X-MS-Office365-Filtering-Correlation-Id: 80a89370-3c5b-4dcd-b1f3-08deaae4f7d4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|1800799024|36860700016|376014|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: SEDH05vLwMA9krB1/NWG3xGcSblIZ7sEJVz/TlOBi8h1S2T8lS2QLM9RWdLAX4E8vtvi/zEFMLsCMo77TWy3XQQPg+W/5E5e48wR0II5Nm/THz1BgMdKCQtY766NLT7lQzURmxWqX/tfFAPNHy7X+3j6c8+E2sLX4CD2/qsCi0waUSPgaTXaSroCTasmDpL4jlT2sHvoRS6AR3qnpwQ5Occ/elP0Wjl0wY8HTiSy9kPD2tJ7tzcIxql9R+Iqa9LKmF0UFOYNvx5blxQZp0l/rvD4miilV2V5O1USAzgKKSMmSCTYGHq2LzwqoftH4soj3JJ5PQ8Gm9pDQUwMWqOMSjDJTIpRso1WQdTzlA4JzQ0eMB6K7kE4PRPopi8sEJTbPvuUgFVEgytLjCGHlew5xQSkfh9gJz751Pe7+R+IS2R+csJZ7Du+EPL+S80NeBm6TgfpjPvouJJmsRPv+ZJdvLJvR89fXnZAgR5epwBNUBxrFxNyGgw+dJkzT2bblIx8rtQdGDmICAGOWYn5Th3jafVZXtEsaseQ6uQr8pHYpeiElDWSm8befvR4iyc9EzkvcCklZc4WAZNS7OZdXC90RIUTzzeI2kBOeLh93pngOb+U9nnWJnl937VEljvVI9QSK+onHhzVAG7cZzdHPXQlv3FWsyYZK/YE/pG/1fFBEdShPu0xBm64S7DCdjtS/vwZuEAAmKJqWUJKcIHmWkdDe9tub2Bdo4c70HpfV1nJe7U=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(1800799024)(36860700016)(376014)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: qj5QJkqoaphnAZO13J26FiibimU9R6jURRFEhCM/6zjp1Sxud/xvwagrGcU1GUXr+vVHukEHRutzP0HZljbULJIajypoxp+RPn8yIM7UsTnF7PsE3lU67YRIdA5UYMy83lKTOOhVGk2BTC4KAKVQLidts2E3Vu1T0QIjymoBJnGs2IM7Mc6MsJ2EuGfUVGDeEg3a7Qxh8d9SGTCh/c6ftOjdeoqAO5p3Lp85acQ+uTUa20TbYx42OWbOWC1qgQDVLYfl6vGrA1YyIAThM2zg9WwX36/bLkaQezvkQWv3AMpoSnNtRmniuMuVw/NINY2WwjiCcKEUWGfsUATDBlAoUUsnZr9wixr7OKelBpnzMxS9xbRoK41Hx1zUm2yHqfQ3ECC0U4tzb/CNYxl3YwRQoTB/jU/4zIwM6bFfhcekeSMg/Mox+8JHosfmsiVEjbaj
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 May 2026 20:29:11.8859 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 80a89370-3c5b-4dcd-b1f3-08deaae4f7d4
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM2PEPF00003FC3.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6167
-Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
- envelope-from=nicolinc@nvidia.com;
- helo=CY3PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,47 +110,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, May 05, 2026 at 08:13:40AM -0700, Shameer Kolothum Thodi wrote:
-> > From: Nicolin Chen <nicolinc@nvidia.com>
-> > On Wed, Apr 15, 2026 at 11:55:41AM +0100, Shameer Kolothum wrote:
-> > > The pre-to-post-alloc transition is triggered by the BASE register
-> > > write that initiates IOMMU_HW_QUEUE_ALLOC. No cache-to-hardware
-> > > synchronisation is needed at transition time. The hardware mandated
-> > > init sequence requires BASE to be written first; PROD_INDX, CONS_INDX
-> > > and CONFIG.CMDQ_EN are programmed only after BASE and are therefore
-> > always post-alloc.
-> > >
-> > > Any pre-alloc writes to those registers update only the register
-> > > cache, which is discarded at the transition.
-> > 
-> > Is "discard" the correct action?
-> > 
-> > Guest OS might expect HW (VM) to retain what it writes to those
-> > page0 registers?
-> 
-> As explained above, I reached that conclusion based on spec p.174/175:
-> 
-> Under "Enabling the Virtual CMDQ" it specifies the init order as below:
-> 
-> - Program the VIRT_CMDQ_BASE 
-> - Init the PROD_INDX/ CONS_INDX to 0 or a consistent value
-> - Program the VIRT_CMDQ_CONFIG to enable the CMDQ
-> 
-> Since we set up the HW QUEUE on BASE write, a spec compliant guest is
-> expected to program the Page0 registers as above after that, and we pass
-> those writes directly to the VINTF Page0. There are no GERRORN writes
-> before HW queue setup either.
 
-I don't think we can make an assumption that guest would follow
-what spec suggests.
 
-Could this be a case:
- - Write the PROD_INDX/ CONS_INDX with a consistent value (0xf)
- - Program the VIRT_CMDQ_BASE 
- - Read the PROD_INDX/CONS_INDX, expecting 0xf
- - Write the PROD_INDX/ CONS_INDX with 0x0
- - Program the VIRT_CMDQ_CONFIG to enable the CMDQ
-?
+Am 30=2E April 2026 15:39:48 UTC schrieb Peter Maydell <peter=2Emaydell@li=
+naro=2Eorg>:
+>On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
+:
+>>
+>> object_new() leaves a reference count of one, and object_property_add_c=
+hild()
+>> then leaves it at two=2E This would leak the SoC object if the machine =
+object was
+>> destroyed since the machine is the SoC's sole owner=2E Fix this by conv=
+erting to
+>> object_new_with_props() which gets the parenting and reference count ri=
+ght in
+>> one go=2E
+>>
+>> Fixes: a4eefc69b237 ("hw/arm: Add i=2EMX 8M Plus EVK board")
+>> cc: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>  hw/arm/imx8mp-evk=2Ec | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/imx8mp-evk=2Ec b/hw/arm/imx8mp-evk=2Ec
+>> index b84ac91a17=2E=2Ecfc3038c36 100644
+>> --- a/hw/arm/imx8mp-evk=2Ec
+>> +++ b/hw/arm/imx8mp-evk=2Ec
+>> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
+>>          =2Emodify_dtb =3D imx8mp_evk_modify_dtb,
+>>      };
+>>
+>> -    s =3D FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
+>> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
+>> +    s =3D FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(mac=
+hine),
+>> +                                         "soc", &error_fatal, NULL));
+>>      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fata=
+l);
+>>      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+>
+>Looking again at this, is this really right?
+>object_property_add_child(=2E=2E=2E) creates the object (refcount 1),
+>adds it as a child of the specified parent (refcount 2), then
+>does object_unref() (refcount 1)=2E Then in this code we call
+>sysbus_realize_and_unref(), which calls qdev_realize_and_unref()=2E
+>That function:
+> * (indirectly) calls bus_add_child(), which takes a reference and
+>   hands it to the link property on the parent (refcount 2)
+> * calls object_unref(), as its name suggests (refcount 1)
+>
+>So now we have the object with refcount 1, so it doesn't just
+>vanish, but on the other hand both the QOM tree parent and the
+>qbus tree parent think they own a reference to the object,
+>so our refcount is wrong=2E
+>
+>I think the existing code here was correct: we get a reference
+>because we call object_new(), and then we drop it by calling
+>the realize_and_unref function=2E
+>
+>I'm going to drop this patch from target-arm=2Enext=2E
 
-Nicolin
+Yeah, makes sense=2E Thanks foe the clarification=2E
+
+We'll need to fix imx8mm-evk now since it uses the same broken pattern (I =
+cc'd Gurav who incorporated this patch into his series)=2E I'll send a fix=
+=2E
+
+Best regards,
+Bernhard
 

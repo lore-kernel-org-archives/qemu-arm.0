@@ -4,95 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 566DCFF885A
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 11:00:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90424CD342F
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 11:20:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKDVp-0002qv-NQ; Tue, 05 May 2026 07:00:25 -0400
+	id 1wKDp6-0007Dx-Hh; Tue, 05 May 2026 07:20:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKDVn-0002q1-3G
- for qemu-arm@nongnu.org; Tue, 05 May 2026 07:00:23 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wKDp6-0007Dg-3g
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 07:20:20 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKDVf-0004cR-BF
- for qemu-arm@nongnu.org; Tue, 05 May 2026 07:00:16 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4891f625344so54853885e9.0
- for <qemu-arm@nongnu.org>; Tue, 05 May 2026 04:00:14 -0700 (PDT)
+ id 1wKDp4-0005op-8R
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 07:20:19 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-48d102471a4so18063835e9.2
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 04:20:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777978813; x=1778583613; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1777980016; x=1778584816; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=bsDTUqj2zX/6REcWVqYEDDMZA+WrT6bCoLyt03GXGdc=;
- b=wFg6LQba7bKrs9fdTNQ9v4PqjP1r2SCTD4EVq+94yOeyWWoei67w0VDMRSD8qNrd5q
- NhniHkysNQ0i3QuOuKkz6E9qY7LebBkfSafO52GO8j/SomCy2vRfBktcTh+hceRlB1+6
- 9/kZ+13OBBHg8us8m8Z7FdB5IpWUypoRuo+JFXH9plKL3LDmrx/4ILXsQ23MEA29kUJE
- Fs7KnrVR6/hEEN4O0LbvqyXudVuvOsWCXGpaHUdaxW6i1r3r8uNGK0IukQ/peDSqJlIR
- qiCdmEcR2W8hQNFMUaDsDvkiLMRXvefVYUHJImi87c97BwiURQ1sWgvIUFBTz6qzg3WI
- SiXw==
+ bh=RsPS9jH4wqzZMo8K63vD2xS0qPk68eIqWMM62PQ4Kyc=;
+ b=zdRSeKTdP8UvICeFCnwjcAfkL+LdkwoqeWMorlp+VYWQ63NV43fbMAhY4SuEJv5mVq
+ ezsFqK2GrkodvnueGcUdc/vOhStVHmKzov4FAg6+Ow35ZQbqmtVJG+2a0erkDW2F2a1C
+ 7/ym0OXhPzcvEzYi3Xd2XZSNknibucvyPp0VKUij4GAnomn+Rx70/TL2vtDWNFmyH6Rw
+ rFu+08a6vReJd0ZaePO+mdVlAoyzKDbA/pSI4dGmVxsqtXwinX6+1Fs3Y2Y7ZqERQa+B
+ ZabYC5aVGVIKjWcZxYSQgkKhHgqLAP9ovbvlwrvGjGVHrZf7gYLoAk4UwaQPkTEgYIUJ
+ oggQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777978813; x=1778583613;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=bsDTUqj2zX/6REcWVqYEDDMZA+WrT6bCoLyt03GXGdc=;
- b=qRTU5L2Kx58pABti6pFcZ2uQ4ujWqiegFtryFPj/is+4RkbstFqX0ig1SOjeNtekuL
- C/bJwPXmnK7EOJtLEWbLpwaKWrg6vevHXSeR0rInnnnvJWTbbIfwn47ePRo8hpa1hluz
- 2l6NnwqDG8klB/BqsPdJmS4MbrO8aQY67v0huDi6LwMnvy2DF+Q3xUtYU3Z9KgnwrtPM
- +4Ps/Ll6VPrY4SN/5Cs2RcHVQKou/ipWiIUHkPtjcctGhhWFSfiwW6LWNRFTbR6tmdkQ
- 3npOS33Pc0/tsQRjeR6mtuEBBfcAcu8KwqwCTLX/6YZP7GNrB36HOXjwyuXMFTjjY3EX
- bwlg==
+ d=1e100.net; s=20251104; t=1777980016; x=1778584816;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=RsPS9jH4wqzZMo8K63vD2xS0qPk68eIqWMM62PQ4Kyc=;
+ b=rkhlT+DKebdsktDHcz/vpl0tVfHc1oSs1oPJM5+edizq5t9FWkqrDhLBpo9LX/Dcr2
+ KZ3JuQI8vQVNMjLq8pk+3hmuz+MYHpQ0En77I4FJWHBXM0zBSlS9LnBe9PM5X68YHJ53
+ to8cnnZ94bG48rEomfrM53w4GmWUGM3BuSch6IiE+woOcoKFS1BO+uSslj7sP10XDjkj
+ k+L93Iayt4IT4PqbjeDcNnpwLbAysV56eOC+Wd2PHRwNpZE1mWEJ55/7AJlDAhTEAR+p
+ Vaa8eNf+E81VacolxhwDYe402zTxsY1Nv1JirVPVYno/wuaLF2LA7ntMw4gFJ1d3nAsP
+ t6Cg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ94tHr5R+VfPlGnZ/sQyLZJHWUP85ByntQkZZ+sq3rpMsHD6qX2gcC6Il12QuHs1ub25U2k+EULzQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwX2udnqaDQEgWUHDaoewJE7E9jQLwNPHf3S10mdUpZ6f6qD7Jo
- k/W4zIapDHOacR5mz0e6DxRKxD1sEGh1exwnrhBmUhR/BlB4uCWZq3xTGm9WSdOWzlo=
-X-Gm-Gg: AeBDiev5sbZ2HxLJhqjl6n/+a7cIXZb1pMj6A6iIgcSW3eBDXssWxjKJaVtFfXuVeFk
- Vn9jk/GnLX3LJDuymw2gzRB0mpcNCgxpl7Qgj0rFbTx2PVQhdCWq+XpU+vX09q+twitQb8HhZ4Y
- qX7lVx7xhYaeRLtShqDThSOSey5htOJB9h0OMQSf1hHWOAL4I1hlcEriYracvHO3iSb4i445kkJ
- naNaPrr9/KQTo9Ge0DUkr+On39zdjzCPo8niGqzILuYwU9p8oJjibuvJFLLqNeCP4xCN2QW5KfJ
- Cio5tPg5lt43Tyii0wY1GISkOPJISc6YZW7yKu1Keam/um8OInBWDj1OTmz/dK4yLFJvYQkqO8S
- /npMIzv76+68kamF+qCWBDqrudtURZOxhCxOxmUtsKsNs4rxOvi8LUmumB4r9RAyeIOnPvnyF+U
- 7gSSNXbthQecblP/iZHck2Ppt87u8LouY7BjsiXNtjYApp
-X-Received: by 2002:a05:600c:c096:b0:48a:5821:6006 with SMTP id
- 5b1f17b1804b1-48d142331dcmr35997945e9.4.1777978812830; 
- Tue, 05 May 2026 04:00:12 -0700 (PDT)
+ AFNElJ+sY4DldHG1kx5u0M20+nY5qLlzp9zXmRj6ab0rGLyNwsoNvk6NXU+T6mhmUJwvtGplKMc9xQYIaQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzpro+JzAoG33iy22ikuXRT6CFFQqms0oSkfjnEU2t1l7hZWHck
+ fu1bhnIGAnJVJG2cwdSZs/QDtmTsfU+lIvR7g6m66Ujnf0aWBgVE1HyeW+paU9wLvd4=
+X-Gm-Gg: AeBDietOUykFzjtZ2RZ26OBJGc5asKvyKVwFWvhXCSN/u0SiUp4chD1hElEvv0kM1QI
+ 7ESzB5Y82Am6/f25MAsPA9pWGjJV7+M/gIdMR/aT8yp6t0t2HnHovYsxmX82K2dSvitcf/2/NMC
+ J8R4ZpuDzegdtF/X6R8VarcntaBuHEDlwVagv2s+CFyq0NwIVx8OBxO+kbHdAcMQI91QZ7bBZzK
+ 4Gk1nTcZWHYo9irlkDyoV+Yrrcyj/7chiCRgZT/TIPjQXhXBKsVa55O9W6W/enQI8wiKNcifz6l
+ mNDNKaiP4GhR4G88PLlle8jo1z745TX4j6Dmy9pq2k+Xvu/c8b2dMH0rzMkz1uJWYZRuHd6rwMD
+ 4RT7Bc4GUvjZVNt0oycXDwqumk042NBGcrKa5lIWpuGjxwn29Rv54EPG4T2qBWwhYWmfu4m+05x
+ vbIa6zpPhCBzUMz4iHvEgsMkAuoH7cRtuFiA==
+X-Received: by 2002:a05:600c:8710:b0:489:1cd2:610a with SMTP id
+ 5b1f17b1804b1-48a9887194dmr215435815e9.9.1777980016036; 
+ Tue, 05 May 2026 04:20:16 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48d17710bfbsm18626915e9.7.2026.05.05.04.00.11
+ 5b1f17b1804b1-48d17ff628esm39906375e9.1.2026.05.05.04.20.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 May 2026 04:00:11 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B74365F8E7;
- Tue, 05 May 2026 12:00:10 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  Thomas Huth <th.huth+qemu@posteo.eu>,  Thomas
- Huth <thuth@redhat.com>,  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- qemu-arm@nongnu.org,  Peter Xu <peterx@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Brad Smith <brad@comstyle.com>,
- Fabiano Rosas <farosas@suse.de>,  Kyle Evans <kevans@freebsd.org>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Dau?=
- =?utf-8?Q?d=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH 1/5] configure: report unsigned qemu binaries for check-tcg
-In-Reply-To: <CAFEAcA-rFhHmS2+ToEZkr1+HE_e710-ZyyPESHLzCeW0QopY_A@mail.gmail.com>
- (Peter Maydell's message of "Tue, 5 May 2026 11:43:08 +0100")
-References: <20260505103649.68361-1-alex.bennee@linaro.org>
- <20260505103649.68361-2-alex.bennee@linaro.org>
- <CAFEAcA-rFhHmS2+ToEZkr1+HE_e710-ZyyPESHLzCeW0QopY_A@mail.gmail.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 05 May 2026 12:00:10 +0100
-Message-ID: <87bjeunmth.fsf@draig.linaro.org>
+ Tue, 05 May 2026 04:20:15 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 7F83E5F94B;
+ Tue, 05 May 2026 12:20:14 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ Alexander Graf <agraf@csgraf.de>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v5 2/7] target/arm: redefine event stream fields
+Date: Tue,  5 May 2026 12:20:08 +0100
+Message-ID: <20260505112014.102993-3-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260505112014.102993-1-alex.bennee@linaro.org>
+References: <20260505112014.102993-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,41 +110,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+The event stream control bits are the same for both CNTHCTL and
+CNTKCTL so rather than duplicating the definitions rename them to be
+useful in both cases.
 
-> On Tue, 5 May 2026 at 11:36, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->>
->> On MacOS the initial binaries are created with the unsigned suffix.
->> The user is expected to sign them before they can access the
->> hypervisor APIs. However for TCG testing we can run the unsigned
->> binaries so lets make sure the make variable is correctly set so we
->> can run the TCG tests.
->
-> We have a scripts/entitlement.sh, and this seems to have
-> at least some plumbing into meson.build. What stops us from
-> running this at build time so that macos users, like everybody
-> else, have a working "qemu-system-foo" in the build tree ?
-> Having to work around this by knowing that you have an
-> "-unsigned" suffix until install is awkward for our own
-> scripts and for humans.
+We will need these in a later commit when we start implementing event
+streams.
 
-Hmm it gets built if you do:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/internals.h | 11 +++++++----
+ target/arm/helper.c    |  8 ++++----
+ 2 files changed, 11 insertions(+), 8 deletions(-)
 
-  =E2=9E=9C  make qemu-system-aarch64
-  [1/6] Generating qemu-version.h with a custom command (wrapped by meson t=
-o capture output)
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 4a1ea5465d7..24423a200ff 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -269,14 +269,17 @@ FIELD(VSTCR, SA, 30, 1)
+  * have different bit definitions, and EL1PCTEN might be
+  * bit 0 or bit 10. We use _E2H1 and _E2H0 suffixes to
+  * disambiguate if necessary.
++ *
++ * The event stream bits (EVN*) are in the same position for
++ * CNTKCTL_EL1/CTNKCTL.
+  */
+ FIELD(CNTHCTL, EL0PCTEN_E2H1, 0, 1)
+ FIELD(CNTHCTL, EL0VCTEN_E2H1, 1, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H0, 0, 1)
+ FIELD(CNTHCTL, EL1PCEN_E2H0, 1, 1)
+-FIELD(CNTHCTL, EVNTEN, 2, 1)
+-FIELD(CNTHCTL, EVNTDIR, 3, 1)
+-FIELD(CNTHCTL, EVNTI, 4, 4)
++FIELD(CNTxCTL, EVNTEN, 2, 1)
++FIELD(CNTxCTL, EVNTDIR, 3, 1)
++FIELD(CNTxCTL, EVNTI, 4, 4)
+ FIELD(CNTHCTL, EL0VTEN, 8, 1)
+ FIELD(CNTHCTL, EL0PTEN, 9, 1)
+ FIELD(CNTHCTL, EL1PCTEN_E2H1, 10, 1)
+@@ -286,7 +289,7 @@ FIELD(CNTHCTL, EL1TVT, 13, 1)
+ FIELD(CNTHCTL, EL1TVCT, 14, 1)
+ FIELD(CNTHCTL, EL1NVPCT, 15, 1)
+ FIELD(CNTHCTL, EL1NVVCT, 16, 1)
+-FIELD(CNTHCTL, EVNTIS, 17, 1)
++FIELD(CNTxCTL, EVNTIS, 17, 1)
+ FIELD(CNTHCTL, CNTVMASK, 18, 1)
+ FIELD(CNTHCTL, CNTPMASK, 19, 1)
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7e7677a584d..dfdb77a9fe2 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1746,9 +1746,9 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     uint32_t valid_mask =
+         R_CNTHCTL_EL0PCTEN_E2H1_MASK |
+         R_CNTHCTL_EL0VCTEN_E2H1_MASK |
+-        R_CNTHCTL_EVNTEN_MASK |
+-        R_CNTHCTL_EVNTDIR_MASK |
+-        R_CNTHCTL_EVNTI_MASK |
++        R_CNTxCTL_EVNTEN_MASK |
++        R_CNTxCTL_EVNTDIR_MASK |
++        R_CNTxCTL_EVNTI_MASK |
+         R_CNTHCTL_EL0VTEN_MASK |
+         R_CNTHCTL_EL0PTEN_MASK |
+         R_CNTHCTL_EL1PCTEN_E2H1_MASK |
+@@ -1763,7 +1763,7 @@ static void gt_cnthctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+             R_CNTHCTL_EL1TVCT_MASK |
+             R_CNTHCTL_EL1NVPCT_MASK |
+             R_CNTHCTL_EL1NVVCT_MASK |
+-            R_CNTHCTL_EVNTIS_MASK;
++            R_CNTxCTL_EVNTIS_MASK;
+     }
+     if (cpu_isar_feature(aa64_ecv, cpu)) {
+         valid_mask |= R_CNTHCTL_ECV_MASK;
+-- 
+2.47.3
 
-and there seems to be logic in that refers to test_emulator =3D
-emulators['qemu-system-' + target_base] which ensures the other targets
-have it built. I'll see if there is a good place to hook that
-requirement in for check-tcg.
-
->
-> thanks
-> -- PMM
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

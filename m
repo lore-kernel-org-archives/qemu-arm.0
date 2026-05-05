@@ -4,90 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E646BCD3427
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 18:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98380FF8855
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 18:42:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKK7S-0001v2-P4; Tue, 05 May 2026 14:03:42 -0400
+	id 1wKKig-0006cR-4f; Tue, 05 May 2026 14:42:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKK72-0001sh-8Q
- for qemu-arm@nongnu.org; Tue, 05 May 2026 14:03:19 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wKKif-0006cJ-De
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 14:42:09 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKK6s-0005RZ-H3
- for qemu-arm@nongnu.org; Tue, 05 May 2026 14:03:10 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-43d73352cf2so5080138f8f.1
- for <qemu-arm@nongnu.org>; Tue, 05 May 2026 11:03:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wKKid-0004Nc-P1
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 14:42:09 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-65c7a459105so72301d50.0
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 11:42:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778006526; cv=none;
+ d=google.com; s=arc-20240605;
+ b=a3WijTIgAZCpqaj8zlE/BfNJ0SNklq6K5HOhXqJ5wxLB9XaGOq2gBhiUMj85GZji5R
+ hUmwbUzSeLHFQfEQO8h2qgOe1bjxTXQ2Ts1NqEd2fyhzPmTi8Qv7WcjyhSHkcj2f/GUw
+ Ra/ZkbeOLCykZd5s9YxOYvnUt6mlYNZWBwf4cyHfwVdKwWhBRiL5M/Yp4gWvGlhYB+wG
+ gKgQSzS3DDJddnlDUVRdqXbLyxkFu0G7iNmtcaNirCt1A7n7hxn4uOTYVZbL/EMquQvd
+ m53YCqM/3OUdgaUriyO+/i8CfiL3FYXECXf52pXCemRPWIQekSpQc/XNZ+/bVQaIM5fH
+ TsUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=QhWgxVD87K48Iy1+q5naoIAHxckRFpYt2Sd5qZUK67g=;
+ fh=drL5BGM1gh60+PR9TYigtb44V/M3+PFlVJFlZZKc/G0=;
+ b=iF+KEfAUdO91YCithmrE+yAIuBtpyBkiEFlSqvzP5m+o1ssL+ietIhq9PrZiilDyhf
+ D/yMsKouyoLq+kcMZ4hhMOr2yv5QUTKqAGt9Fw9WF8ORYpk3q0PWfWQGhhwTa+46IA9F
+ f+6dmVdg4YvbfT//eHzdNlnzDodN7060Wznk3sZzsuFa9fYrIm3+5Lj2KOT27W3hhKlH
+ XrafTKUflVBRdfZ/zE41HLr+DGR+Oj5Dem9/9GJ3/bYJskEE7fhA99cdOrC5DaVlav0R
+ CCZUtaF0F1nesI9iARnJZrnxKJ/xjTSMwTsgW+gsoJft5p25j2G/ee8n6eEzoetWxPkQ
+ 59MQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778004183; x=1778608983; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1778006526; x=1778611326; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dCTx84tlBdBwEyORHk4E+U0CrSuvcjYEig/jnRcdvoI=;
- b=XRk/jj2aquR47x7Q4HlVLb9yrgvWpXaBq7Ek041n/hZWlq5LLTyxJhsXad4yYToEob
- uFSTxygAgCe39qKM+UFz55s27len1uUlOFSRaTftUjLvr4WemophYjk83Y0q8/LfcGuK
- 6KqHp2vaktEZkQhKb6tQnoiRBJlu6y3qbc77b2f1mjndd6jlvSc9/OnfsnIDVI09pK7R
- ghlnV7sA1vouDx/giYPRCR0u5XH5m+VBYSVNcFgAq3VpKmr4WuRn11MIA5mgTRuO99uV
- cSRmMamopbvxwgf3k6AYXnb94U1IG3Y4WRN0voFQ7JmsIobCDAlGBjOk3gSpIQJ5bUGQ
- G4JA==
+ bh=QhWgxVD87K48Iy1+q5naoIAHxckRFpYt2Sd5qZUK67g=;
+ b=k7eXQ3Xzs8RjBatDpFA32yi9W6dQFvIS0LyCa41dct0iyU0CZU0W/Mq9qwvZy4CapS
+ Q/GN+k5vctH0hk85gGk94Q8v/RbYGZSzgWdwCdwM3SryRcC372B6aUugaotbyUk88Ulx
+ lZzqe6EuoR7sN5HAPx1bL5cOZHAhSTixHeqcs8yndOzoLbf/K8SQNIvvcDjrl4mfkgui
+ FTb8j2A/V+m0aS6a8FA4EkfOytNc/btMWQNpoSkmaG9Af5+FtffUSl8BfycbA+cmb718
+ onju4Ah872RuxLoDiTTDo8j9D4zJuNcwmE9u4GB2EKlWV1iv1J1l9NWwEOYvYRKBDaQM
+ HYUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778004183; x=1778608983;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20251104; t=1778006526; x=1778611326;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=dCTx84tlBdBwEyORHk4E+U0CrSuvcjYEig/jnRcdvoI=;
- b=StGtYmSmu4gbTfmqf16ieCf2BWZH1zUhrVGZ9m/JC+SmXN79xmbgEwLWq7VatdCeSL
- 8apCmHlLX79X30uYxiFeMkjY7qIQ7O5Di5W4wnYp8wbL8C2p9MYK/a9lRurU5UzTCDyc
- 3jGth6fm/9gwz557PnrAOurXediAOA86+0c8RWG4fLBmL1ihpSW74SKgviYWDL1NBOiQ
- 4zQI5Tcjeo2JeYzDY4rwi06i/vigF32jSzwIYlI2ruqEJHAT0gmdyvrijiMPiOdxkSKe
- Fj4oPvzpri/n+7VgJiTs/Eo6O4c7ipiDu1egZnq3k/biw7PRqTmatnvzNQ60aqT/LcZs
- ZKQA==
-X-Gm-Message-State: AOJu0YxIYZJSceGDOtsmCRlbfA6t4sa9WJh0ieuKaBQTOFFR2qpEq3ev
- jmUbwqWZDGdKp/VAew8Pu1PQ6yq/87O1YNbDvKi3s+Hu0koX6iC0VT1Q
-X-Gm-Gg: AeBDietj/DvqQ6E0YJ+GfBCposGjnyK+LidnhVN5NQjpFLFq2QFyYJSPzYQeliJyy8A
- tf/fqCb3gc/QPlLyJIZF5jdj9C4phdrwXGzmXkzkDVPwzoq1KWclM/fM1fUYfet4BpLC8lI8YTC
- 0zePIOPpykqhRpYxQn80nvJp2QrHyUbxMw4+KOONzRwUEHNykIBvXtksQo285Cl6rfmaLnoCRRY
- WOQIVSiiWvPJdFOc4YiRKz3uYcwVuM3lazBX7mzD9rrg6IgQPlhacNlM1EAO1x7ONNbYrZX+ITl
- eO1GeU644iLdqKSxnPBBgxENRVjQtp94vQqmQkcP9rYFabglDUDwNLMvqrC8panfbchqXqt0/UT
- LyUBnV4WK5YS2L2wO5T5RieWCQ4lc02Xf3vepIBjbDgcExNlZKn63E3FVQllLcUyo0G8f+9GiLS
- aXIju4BO+3pffo8TzR1TNgnbviwZKkKQxnbZJ49DY=
-X-Received: by 2002:a05:6000:2910:b0:43f:ea25:20ff with SMTP id
- ffacd0b85a97d-4515d3dc31bmr210955f8f.29.1778004182992; 
- Tue, 05 May 2026 11:03:02 -0700 (PDT)
-Received: from ehlo.thunderbird.net ([62.214.191.67])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45055f2203csm6396491f8f.37.2026.05.05.11.03.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 May 2026 11:03:01 -0700 (PDT)
-Date: Tue, 05 May 2026 18:02:59 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?UTF-8?Q?Maty=C3=A1=C5=A1_Bobek?= <matyas.bobek@gmail.com>,
- qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
- Pavel Pisa <pisa@fel.cvut.cz>
-CC: qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>,
- Oliver Hartkopp <socketcan@hartkopp.net>,
- Nikita Ostrenkov <n.ostrenkov@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 0/7] hw/arm/sabrelite: Add FlexCAN support
-In-Reply-To: <cover.1777571962.git.matyas.bobek@gmail.com>
-References: <cover.1777571962.git.matyas.bobek@gmail.com>
-Message-ID: <1B6ED5DC-6808-4A41-B8FA-B2C97C5C8933@gmail.com>
+ bh=QhWgxVD87K48Iy1+q5naoIAHxckRFpYt2Sd5qZUK67g=;
+ b=S7G1Ml6pz8BbyqUmvBfjCN978wnjbSXUEgt+dZ8Vk1ryyfB+zy1Sh+T9g9AXQuV3TK
+ 1ShwvJk2EOzHOdSmk+vXCPLqTtij1D6/1onwJ9wkD/BpFN8DNqPPPJkLmJY++k9eesPm
+ qJHRKkDKtW4/zgsse1ED6r7XWkdv92bOjlR8fMSn60U7WwTV4qqw48L6QPhXCc4qxnEB
+ VlgfTqAFYWSZaWagGjoG5x7VojbELs6G003IJm9VUDtt5VmeFyUR7Ts3rKR8FA/BggU3
+ m4o8+cC79ier5xRrl+pq2XI3d33W+YDt+f5SfOnDYD8DVBCcKqfjzYBiRlTPmZWn31Tw
+ t3HA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/1B5XyG/roVUcPswiE12Iz6wIIjay4uXYTnM4OsmYlHO1qyabz6fa7Z/a9jgSf1bKz5geJMgjg1A==@nongnu.org
+X-Gm-Message-State: AOJu0YwhCsDOOj94mH7YJLmptq/LOuNION/F7t421hxCQgI59HBxXnYC
+ /Ox1uefQC++NfZTeg1dtnqsZOLoF5x3mmZNu6W0zOXF7Lz7l1O9szOwnxVIPPDpiT1vKLm12/RQ
+ feSB0yByMFeVrOMwctz4A63V5Yg+LYcV0Iw/TTrc8iQ==
+X-Gm-Gg: AeBDies/hajOsvxHsYiQn0u1mk83YjBzMfCeHGQ6Tx1mSsh0ImQ97daQevXmnpQ2nqF
+ SXiGeF3a1inoA0Eo2X4c7zK8mjO286quqsrtrOHgOzYLYIMIQWjwkCY5UtQAnceq47Kjj1RJPsV
+ GfI0EAlbuEvkIleeeNv+DDfTaPC3Ff2TeVOLgUqEnccWj+Z7OvXJDcwO4POS2Z3obvmNev1MLew
+ 7PbwcX80LSOWs9vfx6fQSCE8Hx07zCEW6uf9iAJ5WGGOHi6Ln13T2HMze1DXlVFDE8RPZrp6RGV
+ Le5J0cPn9rKq0KMk5GdK4pDpRL76risjFuO2ENCKn5IR2KB2x7wRYfRGzzPlvzZz7GBDvauPBCP
+ EWQ==
+X-Received: by 2002:a05:690e:169d:b0:65c:7492:9d5c with SMTP id
+ 956f58d0204a3-65c7492a244mr1746285d50.28.1778006526107; Tue, 05 May 2026
+ 11:42:06 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <cover.1777571962.git.matyas.bobek@gmail.com>
+ <1B6ED5DC-6808-4A41-B8FA-B2C97C5C8933@gmail.com>
+In-Reply-To: <1B6ED5DC-6808-4A41-B8FA-B2C97C5C8933@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 May 2026 19:41:52 +0100
+X-Gm-Features: AVHnY4Jd62kNEZX-JTP15GNvAtu-L-pBRSl-sg6WFwHKHP2gqGOamvQZiBnUW9Q
+Message-ID: <CAFEAcA9kQNdx=gwSd_Ec=R2nwegT1R-BEiC9yXvfr23VJHDZiA@mail.gmail.com>
+Subject: Re: [PATCH v3 0/7] hw/arm/sabrelite: Add FlexCAN support
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: =?UTF-8?B?TWF0ecOhxaEgQm9iZWs=?= <matyas.bobek@gmail.com>, 
+ qemu-devel@nongnu.org, Matyas Bobek <bobekmat@fel.cvut.cz>,
+ Pavel Pisa <pisa@fel.cvut.cz>, 
+ qemu-arm@nongnu.org, Marc Kleine-Budde <mkl@pengutronix.de>, 
+ Oliver Hartkopp <socketcan@hartkopp.net>,
+ Nikita Ostrenkov <n.ostrenkov@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,109 +124,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Tue, 5 May 2026 at 19:03, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+>
+>
+> Am 30. April 2026 18:26:02 UTC schrieb "Maty=C3=A1=C5=A1 Bobek" <matyas.b=
+obek@gmail.com>:
+> >This series adds emulation of the FlexCAN CAN controller, version 2,
+> >found in NXP i.MX6 series SoCs. The controller is integrated into
+> >fsl-imx6 and the Sabrelite ARM board.
+> >
+> >The chip has two FlexCAN controllers, but the Linux Sabrelite
+> >device tree enables only one by default. Linux kernel with both
+> >controllers enabled has been tested to work properly (using a custom
+> >device tree).
+> >See docs/system/devices/can.rst for an example of QEMU command line
+> >invocation.
+> >
+> >More information about the implementation can be found in my bachelor
+> >thesis [1].
+> >
+> >The headers (struct FlexcanRegs and flexcan_regs.h macros) were copied
+> >from the Linux kernel. Marc Kleine-Budde is the copyright holder. He
+> >has been kindly asked to provide consent, to confirm his approval for
+> >the inclusion of said header fragments into QEMU. The approval is still
+> >pending, hopefully it will be resolved soon. I will update the patchset
+> >on request if another wording/solution for the copyright statement is
+> >proposed/requested.
+>
+> Tested with imx8mp-evk: https://github.com/shentok/qemu/commits/imx8mp-fl=
+excan/ which works excellent. Next step after this series is merged would b=
+e upstreaming that branch.
+>
+> I guess the only open issue is the licensing of struct FlexcanRegs [1] wh=
+ich originates from Linux? How do we proceed here?
+>
+> Best regards,
+> Bernhard
+>
+> [1] https://lore.kernel.org/qemu-devel/202603211316.18181.pisa@fel.cvut.c=
+z/
 
+Could you say what the problem is? In general there is no problem
+with taking header structs from the Linux kernel, as they are
+GPL-2-only and that is a QEMU-compatible license. The relevant
+source files or pieces of source files would need to be noted
+as 2-only rather than our default of 2-or-later, but that is
+doable -- we already do that for other things we have borrowed
+from the kernel.
 
-Am 30=2E April 2026 18:26:02 UTC schrieb "Maty=C3=A1=C5=A1 Bobek" <matyas=
-=2Ebobek@gmail=2Ecom>:
->This series adds emulation of the FlexCAN CAN controller, version 2,
->found in NXP i=2EMX6 series SoCs=2E The controller is integrated into
->fsl-imx6 and the Sabrelite ARM board=2E
->
->The chip has two FlexCAN controllers, but the Linux Sabrelite
->device tree enables only one by default=2E Linux kernel with both
->controllers enabled has been tested to work properly (using a custom
->device tree)=2E
->See docs/system/devices/can=2Erst for an example of QEMU command line
->invocation=2E
->
->More information about the implementation can be found in my bachelor
->thesis [1]=2E
->
->The headers (struct FlexcanRegs and flexcan_regs=2Eh macros) were copied
->from the Linux kernel=2E Marc Kleine-Budde is the copyright holder=2E He
->has been kindly asked to provide consent, to confirm his approval for
->the inclusion of said header fragments into QEMU=2E The approval is still
->pending, hopefully it will be resolved soon=2E I will update the patchset
->on request if another wording/solution for the copyright statement is
->proposed/requested=2E
-
-Tested with imx8mp-evk: https://github=2Ecom/shentok/qemu/commits/imx8mp-f=
-lexcan/ which works excellent=2E Next step after this series is merged woul=
-d be upstreaming that branch=2E
-
-I guess the only open issue is the licensing of struct FlexcanRegs [1] whi=
-ch originates from Linux? How do we proceed here?
-
-Best regards,
-Bernhard
-
-[1] https://lore=2Ekernel=2Eorg/qemu-devel/202603211316=2E18181=2Episa@fel=
-=2Ecvut=2Ecz/
-
->
->Changes from v2:
->- moved variable declarations to the top-of-the-block
->- cleanup
->- removed redundant license boilerplate
->- rebased onto latest master
->- Link to v2: https://lore=2Ekernel=2Eorg/qemu-devel/cover=2E1773866323=
-=2Egit=2Ematyas=2Ebobek@gmail=2Ecom/
->
->Changes from v1 to v2:
->- removed DPRINTF (turned into traces or guest errors)
->- removed gotos and unnecessary continues
->- register memory region shortened to actual length w/o padding
->- make flexcan_* fns private
->- used DEVICE(s)->canonical_path instead of allocating new strings
->- changed DEVICE_NATIVE_ENDIAN to DEVICE_LITTLE_ENDIAN
->- removed ugly USE macro
->- used enums instead of define sequences in flexcan=2Ec
->- fixed FlexCAN KConfig conf (fixes build on non-arm-softmmu)
->- fixed style and other issues from Bernhard's review
->- better wording in docs
->- rebased onto latest master
->- Link to v1: https://lore=2Ekernel=2Eorg/qemu-devel/cover=2E1765826753=
-=2Egit=2Ematyas=2Ebobek@gmail=2Ecom
->
->Thanks Bernhard Beschow for the review and his patience=2E
->I borrowed some fixes from his flexcan branch at [2]=2E
->
->[1] http://dspace=2Ecvut=2Ecz/bitstream/handle/10467/122654/F3-BP-2025-Bo=
-bek-Matyas-BP_Bobek_FlexCAN_final_4=2Epdf
->[2] https://github=2Ecom/shentok/qemu/tree/flexcan
->
->Maty=C3=A1=C5=A1 Bobek (7):
->  hw/arm/sabrelite: Open code DEFINE_MACHINE_ARM
->  hw/arm/sabrelite: Introduce class SabreliteMachineState
->  hw/misc/imx6_ccm: Add PLL3 and CAN clock
->  hw/net/can/flexcan: NXP FlexCAN core emulation
->  hw/arm: Plug FlexCAN into FSL_IMX6 and Sabrelite
->  tests: Add qtests for FlexCAN
->  docs/arm/sabrelite: Mention FlexCAN support
->
-> MAINTAINERS                   |    9 +
-> docs/system/arm/sabrelite=2Erst |    1 +
-> docs/system/devices/can=2Erst   |   24 +
-> hw/arm/Kconfig                |    1 +
-> hw/arm/fsl-imx6=2Ec             |   29 +
-> hw/arm/sabrelite=2Ec            |   68 +-
-> hw/misc/imx6_ccm=2Ec            |   24 +
-> hw/misc/trace-events          |    2 +
-> hw/net/Kconfig                |    5 +
-> hw/net/can/flexcan=2Ec          | 1395 +++++++++++++++++++++++++++++++++
-> hw/net/can/flexcan_regs=2Eh     |  193 +++++
-> hw/net/can/meson=2Ebuild        |    1 +
-> hw/net/can/trace-events       |   18 +
-> include/hw/arm/fsl-imx6=2Eh     |    6 +
-> include/hw/misc/imx6_ccm=2Eh    |    4 +
-> include/hw/misc/imx_ccm=2Eh     |    1 +
-> include/hw/net/flexcan=2Eh      |  139 ++++
-> tests/qtest/flexcan-test=2Ec    |  421 ++++++++++
-> tests/qtest/meson=2Ebuild       |    1 +
-> 19 files changed, 2332 insertions(+), 10 deletions(-)
-> create mode 100644 hw/net/can/flexcan=2Ec
-> create mode 100644 hw/net/can/flexcan_regs=2Eh
-> create mode 100644 include/hw/net/flexcan=2Eh
-> create mode 100644 tests/qtest/flexcan-test=2Ec
->
+thanks
+-- PMM
 

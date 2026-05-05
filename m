@@ -4,89 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F753CD342F
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 08:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22698CD3430
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 08:27:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKB3M-0000kd-Rc; Tue, 05 May 2026 04:22:52 -0400
+	id 1wKB7f-0002SG-Vn; Tue, 05 May 2026 04:27:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKB3K-0000kD-Rc
- for qemu-arm@nongnu.org; Tue, 05 May 2026 04:22:50 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKB3J-0001ef-67
- for qemu-arm@nongnu.org; Tue, 05 May 2026 04:22:50 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-44c4cc7c1cfso1864463f8f.0
- for <qemu-arm@nongnu.org>; Tue, 05 May 2026 01:22:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777969367; x=1778574167; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=aWArJXnjfOZ0xlGMfGo/BBYJ+DAHxE4dKD8cXaJkyjI=;
- b=GfW8Y2BF8ZrfM8BatLPBsZLZLo24v9eP8481FhZjEM+OQOamm3dozuLa7FtOjhmynQ
- aqWnugkcj8IVxB0pc6j1VCRGpAmxFMwjaYGKzM4fCTK6EuWARsLZqhgL2JLcElLh9F+/
- Cc+s008Yxkza28WtVLkvRXL9iylb/HeW3bHTjsUwz43oLF9zI6xE9Odmw8eOaII5FF1G
- 1YXBrVe37HSmcz1o3uYpWL5qsPcguHOOZRHDamignjLYr5OK5d+3iFuK28Svb3WzsOIG
- o6ZeV0l0Bd8GX8n2n41BmuekRjfY77zwAnEEDWfxF+6kvkEQSWi6yXx6612ceSoZHV1f
- 306w==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKB7d-0002Rs-0r
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 04:27:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKB7X-0003zu-Ns
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 04:27:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777969631;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=WRoNF7R2rM7/wnVrKn6V8fKrg+kh2dLUkDBdHDxgAPs=;
+ b=Ix04LeAyEmxV/uDea1d7lgV8cJZI+ZL5EmU0ayIlnIqe0hOjVE42xgriAV5FaFDRzb/U5J
+ a0j8qZVe+iTcGpqU9S2E8VxCMWkFWJIzmA+lkxEE7UfA1yS8ZI66BH101W1OzYS5fhqNwa
+ sWxjl3Nqfn8Uv0vfWZ4bwpkNwL3+ZBs=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-556-XprQ_gMYPLewUNJPxM2krQ-1; Tue, 05 May 2026 04:27:09 -0400
+X-MC-Unique: XprQ_gMYPLewUNJPxM2krQ-1
+X-Mimecast-MFC-AGG-ID: XprQ_gMYPLewUNJPxM2krQ_1777969628
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-4411a1f9601so3681693f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 01:27:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777969367; x=1778574167;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=aWArJXnjfOZ0xlGMfGo/BBYJ+DAHxE4dKD8cXaJkyjI=;
- b=WU1Us5P/hmhiqWVwtpg9j81WSl18mMbS48PVWV6mhh4Do7ecfNuHQdQXF78DrrZS/j
- gqJloCCQvrpj1y8sBvYVa67vFFCXyenpxGUTxKb7N0FWeuXAAElYUx4SgpudG2sKQjF6
- WLoZ1wX6CQePJzKmip9xzEoNJr37PVMWuRgK9RwF98QPb8RsqNSrDdVY0YQofcjNPu5C
- eROMapFbFe8lb8fEu0CS23xQ/yfWQaaCo+EVe6DD7unW2cVrRbuQR6b9WHjhJWYgYJmj
- tqy+TwD9TGhBwMEHHgg2itO+unNFe4q4g/e/dJARGX7ZgGUsjqMwJxtfumah22VG00y2
- QXTw==
-X-Gm-Message-State: AOJu0Ywghd8qpCvXRBMCSYvDBNYbTzmrowlmpdNPRhY1+xYJF/0z8DQZ
- jwmA0v2FGerkph50SzhxwbN5cTPFicIHsx+fqFdTh9gh6aaNyNf+5ufePggGzEFfYhY=
-X-Gm-Gg: AeBDieuKUJ4Ng6moi4wmITAaRXVKpDx/Q7mHWyvtYA0H8hu+oXdD53ifYBOpfGfSrvF
- em4It9UkAu/yyTypLoEh/39XUXya+dbxBwPefaSYdTf13n4irOY5ptr8Zb34i236IYkUaSl55OA
- zMi9qQWGe6BIxxMOGLitr/5tkJPE6r9EAkqfv1eC4gqC+SPUQoK+dc949uCzu5VWiOyLJkRUr2Y
- oBmigKsPkfF2RzyNVj6YGqi+LjaQXg8/FbYncjaIVezzBkiFl6IclF7RfuFNAs6jofEd/P8Hsuw
- +VQmdwg67Srgba6krHzPrxUBLrYVKp4RcFWX1jHyy+fyK0Z0k42kVmsB0HDly8qZJQGK8PykI6n
- zgTSjUIkjrPobWkCjjxiY/z5mG+nPEJsdrBoUmpTWOTGBp3u0I7Mgg//QISITBOKzviF/E5w6zl
- HdbKFn0wbMqwf5m2JrLOayyHOKmdfKqW/GlALL4WVwi1M3MixTA4JkeZ/0mI7uSSAyPbPQ0QI=
-X-Received: by 2002:a05:6000:420c:b0:43d:7bc9:9b2c with SMTP id
- ffacd0b85a97d-44bb406ce60mr22379412f8f.17.1777969367461; 
- Tue, 05 May 2026 01:22:47 -0700 (PDT)
-Received: from [10.115.35.66] (95.170.88.92.rev.sfr.net. [92.88.170.95])
+ d=1e100.net; s=20251104; t=1777969628; x=1778574428;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WRoNF7R2rM7/wnVrKn6V8fKrg+kh2dLUkDBdHDxgAPs=;
+ b=R5CeCozWkhNukQQdsgbgBIUBHmaB0ZS1b4pORqSbRdFQzLt+Emc+AKIE6BTYNLdB3V
+ DJvCqrxr3z/TpfUsq12dfuhjfwZkvdYiEE2O8g/GQGAHoPMOTjNBVwvYgmnKibOvqjxf
+ x0O1JjQYsGoMcJzacvdvWzHyoM5PmbAg5UgUyPFnVLUp4zqDFKorS5fl6AzTQesFb14Z
+ JHfNJviug0brUytKLRAly0bNxG3oWkTcACw3vmjtCyowbA6gYFLlpmavPSjp0n2sKxji
+ /8viMuOVYipqA/LV2r5xsKl6GNj1M2cJR61z1WY8VyXcRvwigV4X/PoCGzmIjaopr08j
+ 3VPQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8uv3yIltke6spQ7XWOJrShojs+hBl/wLyEFOzE7v4h11M0fisDD7bOlYF3gEbERK2T+B62s5bRpg==@nongnu.org
+X-Gm-Message-State: AOJu0YwkqAmJQx+4nU6qEEp3FAEe5yp2+zGAsAZlYeuvHteMkivTGqPo
+ EsJOB43U2UejTMAYJNmLbmi2KUqogY9nxFGf5gCiWlaV88KEWjz5xN/+HL/a03cW/ESK5jGw8yq
+ 7cCQ7cH1T0Lg6B3O6iXsSRfrpl55I/5hlEXGHRnMCX+8HXyEMnEUDfA==
+X-Gm-Gg: AeBDietaHDrGpGdw/rkb0UiEw2tJdf/akt5Q47RHeUB4q03pn10oofalcbGlN0r+7Ok
+ ZfcptFMRl5gQTxZ9xFSM27wMWCWzANQ6kKCCVwFGiVWM7tJaT+fv160LT6d4i+SoVjxYzx6ZtJm
+ 9/IQmEUAWu37IUlgT5vl8D6cMoS4HVDUkWxuCo/HS7VZ2/9RyMaTecVhvvbfmcx0Wu25ejm3C9/
+ 8OOOSgyDhj/F9AeEX9LgMu2R3D18WvY6i54S72FFN26nIWFxiLWjAN9+OKya7ye+ffIT/553Pvk
+ FMxDe1C2PyPzJhY7q0BGCue/JRN0mYERxENHf11oWsT8FB0Lu7QyefaDKkXSsZL8EnLukRciUJA
+ JPV8HViaS5Bfr59myZqAftrJspQpQuhxHAe5x4Mm5DD16VB520LQlD5hmu/R9XIIkaBOWUlQ=
+X-Received: by 2002:a05:600c:628c:b0:48a:768b:eea9 with SMTP id
+ 5b1f17b1804b1-48d186dc476mr31998135e9.4.1777969628233; 
+ Tue, 05 May 2026 01:27:08 -0700 (PDT)
+X-Received: by 2002:a05:600c:628c:b0:48a:768b:eea9 with SMTP id
+ 5b1f17b1804b1-48d186dc476mr31997545e9.4.1777969627711; 
+ Tue, 05 May 2026 01:27:07 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45055f2203csm2987963f8f.37.2026.05.05.01.22.46
+ 5b1f17b1804b1-48d1a98247fsm16681255e9.0.2026.05.05.01.27.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 May 2026 01:22:46 -0700 (PDT)
-Message-ID: <0a0be8c5-d9ea-4f8d-887d-9950aebdd19f@linaro.org>
-Date: Tue, 5 May 2026 10:22:45 +0200
+ Tue, 05 May 2026 01:27:07 -0700 (PDT)
+Message-ID: <ad0dac7a-cd60-4735-8ece-23fe526ca883@redhat.com>
+Date: Tue, 5 May 2026 10:27:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/bcm2835_rng: Specify valid memory access sizes
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20260501162700.4092512-1-peter.maydell@linaro.org>
- <dac8ddbe-37c6-42b0-a6b7-8f42d96d24e6@linaro.org>
- <CAFEAcA_HyLZN_wk2cAotb=Hs6Di+DxPgV8jOAk7pHJ2f+tT4Zw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_HyLZN_wk2cAotb=Hs6Di+DxPgV8jOAk7pHJ2f+tT4Zw@mail.gmail.com>
+Subject: Re: [PATCH v2 0/7] hw/arm/smmuv3-accel: Resolve AUTO properties
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Nathan Chen <nathanc@nvidia.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Matt Ochs <mochs@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+References: <20260422204335.23116-1-nathanc@nvidia.com>
+ <9ed5337c-abaf-4f5b-b17e-04dc87165ffa@redhat.com>
+ <CH3PR12MB754856D3DB7C0DC18EA2224AAB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <CH3PR12MB754856D3DB7C0DC18EA2224AAB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -vsusOW4o3z9m6qB3ZPeIf9hBEL-TrR0YunoE2Jcogg_1777969628
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,63 +165,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/5/26 10:16, Peter Maydell wrote:
-> On Mon, 4 May 2026 at 13:29, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Hi Peter,
->>
->> On 1/5/26 18:27, Peter Maydell wrote:
->>> The BCM2835 RNG has 32-bit registers only; specify this in
->>> the MemoryRegionOps so wrong-sized accesses are rejected rather
->>> than getting to the assertions in the read and write functions.
->>>
->>> Cc: qemu-stable@nongnu.org
->>> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3394
->>> Fixes: 54a5ba13a9f ("target-arm: Implement BCM2835 hardware RNG")
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>>    hw/misc/bcm2835_rng.c | 2 ++
->>>    1 file changed, 2 insertions(+)
->>>
->>> diff --git a/hw/misc/bcm2835_rng.c b/hw/misc/bcm2835_rng.c
->>> index e4d2c224c8..bd4acade5b 100644
->>> --- a/hw/misc/bcm2835_rng.c
->>> +++ b/hw/misc/bcm2835_rng.c
->>> @@ -93,6 +93,8 @@ static const MemoryRegionOps bcm2835_rng_ops = {
->>>        .read = bcm2835_rng_read,
->>>        .write = bcm2835_rng_write,
->>>        .endianness = DEVICE_NATIVE_ENDIAN,
->>> +    .valid.min_access_size = 4,
->>> +    .valid.max_access_size = 4,
->>
->> .impl is clearly 4 (why not set it? I tend to think the default
->> values -- where unset -- come from adapting pre-MemoryRegionOps models,
->> and today better be explicit and avoid implicit defaults here).
->>
->> What is the rationale for max_access_size=4, that the ARM core is
->> a 32-bit CPU? I guess remember these peripherals are on an AXI bus
->> accessible by the videocore as 64-bit accesses. But QEMU doesn't
->> model that, and other peripherals are also limited to 32-bit max.
->> So good enough for now I suppose.
-> 
-> The rationale is that the registers are all 32 bit, and we're
-> already asserting that size == 4, so we know there's no code
-> out there in the wild that's trying to do accesses at different
-> sizes.
+Hello Shameer,
 
-My worry is about someone extending the model, allowing different
-access sizes.
+On 5/5/26 09:59, Shameer Kolothum Thodi wrote:
+> Hi Cédric,
+> 
+>> -----Original Message-----
+>> From: Cédric Le Goater <clg@redhat.com>
+>> Sent: 04 May 2026 15:58
+>> To: Nathan Chen <nathanc@nvidia.com>; qemu-arm@nongnu.org; qemu-
+>> devel@nongnu.org
+>> Cc: Eric Auger <eric.auger@redhat.com>; Peter Maydell
+>> <peter.maydell@linaro.org>; Marcel Apfelbaum
+>> <marcel.apfelbaum@gmail.com>; Philippe Mathieu-Daudé
+>> <philmd@linaro.org>; Yanan Wang <wangyanan55@huawei.com>; Zhao Liu
+>> <zhao1.liu@intel.com>; Shameer Kolothum Thodi
+>> <skolothumtho@nvidia.com>; Matt Ochs <mochs@nvidia.com>; Nicolin Chen
+>> <nicolinc@nvidia.com>
+>> Subject: Re: [PATCH v2 0/7] hw/arm/smmuv3-accel: Resolve AUTO properties
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> Hello Nathan,
+>>
+>> On 4/22/26 22:43, Nathan Chen wrote:
+>>> Hi,
+>>>
+>>> This series introduces support for resolving 'auto' for arm-smmuv3
+>>> accelerated mode's ATS, RIL, SSIDSIZE, and OAS feature properties
+>>> based on host IOMMU capabilities. This is dependent on the series [0]
+>>> for changing these property types to accept 'auto' values.
+>>>
+>>> Accelerated SMMUv3 Address Translation Services support is derived
+>>> from IDR0, Range Invalidation support is derived from IDR3, Substream
+>>> ID size is derived from IDR1, and output address space is derived from
+>>> IDR5.
+>>>
+>>> The default values are set to 'auto' for all properties. If accel=off
+>>> and the values are set to 'auto' or are omitted and resolve to 'auto',
+>>> the default property values defined in smmuv3_init_id_regs() for OAS
+>>> and RIL will remain unchanged, while SSIDSIZE and ATS values will
+>>> remain initialized at 0.
+>>>
+>>> A complete branch can be found here:
+>>> https://github.com/NathanChenNVIDIA/qemu/tree/smmuv3-accel-auto-
+>> resolv
+>>> e-v2
+>>>
+>>> Please take a look and let me know your feedback.
+>>>
+>>> Thanks,
+>>> Nathan
+>>>
+>>> [0]
+>>> https://lore.kernel.org/qemu-arm/20260323182454.1416110-1-
+>> nathanc@nvid
+>>> ia.com/
+>>>
+>>> Example usage:
+>>> qemu-system-aarch64 \
+>>>     -object iommufd,id=iommufd0 \
+>>>     -machine virt,accel=kvm,gic-version=3,ras=on,highmem-mmio-size=4T \
+>>>     -cpu host -smp cpus=4 -m size=16G -nographic \
+>>>     -object memory-backend-ram,size=16G,id=m0 \
+>>>     -numa node,memdev=m0,cpus=0-3,nodeid=0 \
+>>>     -numa node,nodeid=1 -numa node,nodeid=2 -numa node,nodeid=3 -
+>> numa node,nodeid=4 \
+>>>     -numa node,nodeid=5 -numa node,nodeid=6 -numa node,nodeid=7 -
+>> numa node,nodeid=8 \
+>>>     -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0,numa_node=0 \
+>>>     -device arm-smmuv3,primary-
+>> bus=pcie.1,id=smmuv3.1,accel=on,ats=auto,ssidsize=auto,ril=auto,oas=auto \
+>>>     -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,io-reserve=0 \
+>>>     -device vfio-pci-
+>> nohotplug,host=0009:06:00.0,bus=pcie.port1,rombar=0,id=dev0,iommufd=i
+>> ommufd0,ats=auto \
+>>>     -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=1 \
+>>>     -object acpi-generic-initiator,id=gi1,pci-dev=dev0,node=2 \
+>>>     -object acpi-generic-initiator,id=gi2,pci-dev=dev0,node=3 \
+>>>     -object acpi-generic-initiator,id=gi3,pci-dev=dev0,node=4 \
+>>>     -object acpi-generic-initiator,id=gi4,pci-dev=dev0,node=5 \
+>>>     -object acpi-generic-initiator,id=gi5,pci-dev=dev0,node=6 \
+>>>     -object acpi-generic-initiator,id=gi6,pci-dev=dev0,node=7 \
+>>>     -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=8 \
+>>>     -bios /usr/share/AAVMF/AAVMF_CODE.fd \
+>>>     -device nvme,drive=nvme0,serial=deadbeaf1,bus=pcie.0 \
+>>>     -drive
+>> file=/var/lib/libvirt/images/guest.qcow2,index=0,media=disk,format=qcow2,if
+>> =none,id=nvme0 \
+>>>     -device e1000,romfile=/usr/local/share/qemu/efi-
+>> e1000.rom,netdev=net0,bus=pcie.0 \
+>>>     -netdev user,id=net0,hostfwd=tcp::5558-:22,hostfwd=tcp::5586-:5586
+>>>
+>>> Testing:
+>>> Basic sanity testing was performed on an NVIDIA Grace platform with
+>>> GPU device assignment and running CUDA test apps on the guest.
+>>> Observed the feature properties being set based on host IOMMU
+>> capabilities.
+>>> Verified that the VM boot will fail without a cold-plugged device, and
+>>> that a hot-plugged device re-uses the resolved values from the initial
+>>> cold-plug. Additional testing and feedback are welcome.
+>>
+>> It is helpful to have a changelog between different versions of the same series
+>> of patches.
+>>
+>> So, the linux headers and vfio update are not required anymore ?
+> 
+> Just jumping in as Nathan is on PTO.
+> 
+> My understanding is that the Linux headers and VFIO updates are not
+> included in this series because, based on previous feedback, the
+> ATS related VFIO changes will be sent as an independent series.
 
-> 
-> Adding
-> 
->   +    .impl.min_access_size = 4,
->   +    .impl.max_access_size = 4,
-> 
-> is probably a good idea here, I agree.
+OK.
+
+The linux headers update is handled here :
+
+   https://lore.kernel.org/qemu-devel/20260427070029.1059386-1-gaosong@loongson.cn/
+
+We should help Song Gao.
+
+
+The VFIO part adding an ats property :
+
+   https://lore.kernel.org/qemu-devel/20260401010231.4166776-5-nathanc@nvidia.com/
+
+will need an update.
 
 Thanks,
 
-Phil.
+C.
+
 
 

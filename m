@@ -4,90 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16210CD3427
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 13:12:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECE48FF885A
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 13:18:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKFZw-00057U-ML; Tue, 05 May 2026 09:12:49 -0400
+	id 1wKFf7-00076f-DK; Tue, 05 May 2026 09:18:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKFZv-00056x-UI
- for qemu-arm@nongnu.org; Tue, 05 May 2026 09:12:47 -0400
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+ id 1wKFf6-00076J-9m
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 09:18:08 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKFZp-0002Q9-MG
- for qemu-arm@nongnu.org; Tue, 05 May 2026 09:12:44 -0400
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-5a62f43b76aso4765208e87.3
- for <qemu-arm@nongnu.org>; Tue, 05 May 2026 06:12:41 -0700 (PDT)
+ id 1wKFf3-0004hq-5v
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 09:18:07 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-488ba840146so46077665e9.1
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 06:18:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777986759; x=1778591559; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777987083; x=1778591883; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NCyPu/+8kpyqyuj5Mo1NFau7dJXf0qONfqi2NDsUJ78=;
- b=gZx7XwgeeBddWd2jci9xPPAdknhErQ/iK6exC5TVS7nsIflox06/uFxB5F6CQBXkZH
- 9FGYVKeZ9JSqwDvBaqAetTi4YNK4t9IHmLQeKxdINqcQ6ggkc72b0FU5SbU5XZ7OqEdq
- RWUzFUPOjKbE6pKpIB+L4iSsNlKcIPp41/fdTJoZ2xvQo4FVLXzZxnJBadIEjZr45eMF
- TyxYSjqxGvh5W35XFexKFqwiugWZsEFRmxxPdo19k0bi7wlvyZodfekFwiGgF8czHTFm
- RXOw/nlfMI9z+ZlIRz2scASEjwByMBVb+Py+FELKt+ZN1ui/hv8Jz3XD/LFBwAxXQjFv
- /7xA==
+ bh=Ar1rOur+4l4JeHNOGjq46BVBA9xUcd+1UWbkzSZd4MY=;
+ b=bWTt1ak5BtCbkAP0fCBTCmq20inpqj+jBUTeh1JwLFaZUF3KEi72N5xfG8bGi7EfxY
+ e7pN37bzGM/tmXjw/E1lL3TmxbJY75FSckoQ1m2uRyh1XPuLk+kBRb4JXmtw95z//hxH
+ pEyz+IC3QuwCnQL3F3gs/7yZMZH+EOuVr1xkIsd5snrYoS+xtKqfqLDvCmpvKMzYGRDc
+ buANogo8AkJnrd9d1pLTdqLcyIO2d07vEDBdbP+J44nLVLdcXrxKm13EsLSVeHawfZVt
+ 01RgkEC8afALw+WgoIYjDbS3UsHxDXLP7fjwf3oo0crW409hDIzEP9+Ydg9SHr0GkCVd
+ bYKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777986759; x=1778591559;
+ d=1e100.net; s=20251104; t=1777987083; x=1778591883;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NCyPu/+8kpyqyuj5Mo1NFau7dJXf0qONfqi2NDsUJ78=;
- b=nNUNhA8cNWCBod57T4tMoCum5fR63aYd8R4OlVqrzjK6twSCdb7kMUAUq3ogb/GhA9
- CL/0UyJGfJ6Lp14Rgk74/liHILshgOXt/AdXGtUWREF+xekvlHHdoCw99CfMBYZOIeW1
- koADu+PoVBEUNOz0Giv+XBW8F8JHnudKxGGJAMIMONPtmz4+Fft6f5B2QPhmrfFPWF6z
- CcXZu+eyS5IJCnZg/oH5g4e4AcUCt3nhuwO9IvUD+DOFuTh/wxBs8HzUe2moPpczcpVZ
- nMyehrhyeyYeLpAwzM8WrV7rguSO533ZDr8k2TGuGfZVBCyB/DbE3h4vj+NJE+8Vh2Xw
- N+7A==
-X-Gm-Message-State: AOJu0YyUt7lzRWFXxOCmm04Qw/9C5SDzl9Gn6Pz9XEWuDv5mNUwBBWP4
- j/PdfeI5hUpXEWpSmccWe/0q9HYkFhLcOozs3KxwF4BxfEzTxel4wTQy/Ti2yQfWmCE=
-X-Gm-Gg: AeBDietAkSk/5d6MAtaVPLfrNG6lYgPWh2JUJBHC2nUt9hf9MSI4NX3LGd1w0WMxrp2
- hqF3jIVH4f8cGzqX8FOF5v2hSrzhidskB3YuhKdmBIzM3GjLOGv1EVVvQjEvGZWyuw2/bTCB6u4
- x74QeRQnTqWqr6hZODJ3MS7iXTjwjCED/FOi9z429NMx85mkH2r8hZZiBI0lXipEbuyI4C+Cz0U
- MiXZD3yV9ytuAAcpAahIcVqA8760ZsLXYK1Uc2CqTPpYuFXx/chtFznoAtx9qq/IO6pDFLwZ4lw
- BFlatQCLjPbsrhu0gMgdB8KJSN0e3gKaMOmrUB8bE0+cSYH3Jl5uouwJRisN4208Evt0dGIBJxz
- qLMewYVvWuFQGquMCX/xSroANlw0Q09h/zAX4NWoovMQcAYwlBl4s/fyhnjBKG8zYW6OLNIunlj
- 0OVveSEbCTlMbvwB//jBUztrfOX94u8r0ethZgNaeIlHgD
-X-Received: by 2002:a05:6512:4007:b0:5a4:74e:5f75 with SMTP id
- 2adb3069b0e04-5a862ec0f9emr4364681e87.1.1777986759409; 
- Tue, 05 May 2026 06:12:39 -0700 (PDT)
+ bh=Ar1rOur+4l4JeHNOGjq46BVBA9xUcd+1UWbkzSZd4MY=;
+ b=qp9A3ITCDG/KKCejvNCCIBAmM40WNe9eo5h82GobcnxjgnLM2hxpklHlD4vusDvACB
+ gkJn/20o0jjGEPNVYxwo57ivjEgsLeRh+UvAIOTWjtjYN8J/WaxUVhlAUxNgWpxx1JBZ
+ Hyn1EZa6bmcs/XXH7Ea0+9wbuikjVlTTiIADGMKcoSVRQHE+apgK24GHLsi8b9InS/OG
+ MScBytPdWp6QAzgEukU/qRjoxp2kFiPUMCrEtV8AkHuU8OaXUv/vEGwbsC1u7pwV8AwC
+ zQgDpp7QKlkWCKFVVXVmX/xD1JiJ/z/98/oXic3jbf4DNI1vK1IlNZkVhGFG1vKg45X/
+ VJDw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8r046RPhrrr8ILynvdH+BKqMyRnItGS2KwJiYqlL9teSQFYFcyRT2nc4s34NEdG7m6wmR0LEnJSA==@nongnu.org
+X-Gm-Message-State: AOJu0YzY2IWuqAG47YhS07x938Z2f1CCAjinw7Wla1brMdYTruTGoNId
+ uD4GTgCkOgOKqaXDPCOThW6zbKIOp/QiOSDXhw2PtWVax9hVafMn14pLEbzoHENGctgQBuqK+zW
+ hIeYv7cU=
+X-Gm-Gg: AeBDieukaIuPNMLldwquc+WUhhKZM/H0k6Sj3xSYCt6LPKZXWk5ZNBiXA0WD+z4ESe1
+ 2yVI6Qmxd1TVabIMBWpjW8z0uoE6jt2G/+6DvBzo0gaga4BR+d+SYjECJywzfw9mo0HfQWBNQmq
+ wXkkf4gCBiGnk1FHVpqzoX0hZqJpri2UanTCdFqTrJtuWHqhRtoVVp6HMdMnEEPsXPtkovCjhX4
+ be5S9j5Jtem5wONopDTKVvZTxt+4lWxsq6Lgv1qzqbcOdzbiv0Y6tptQitzaqFAGFRODWfs4E3q
+ 0SNB0GjfTjC6T3+RL5M8FIGtmODAfyTx5y+X8W6pKVoBuLwJWJ4xNtWLeO5omxv6B3O1a1ZXp2A
+ genA8E77iuYebAh935QvE3RSIYfScGopUgMH6Ellk2LMpgUyElpaYr665tORB1CPBu7qVJE/TaQ
+ qGfg+hP5MeHL+LOC6pp+Ee+19Cq+KEGEFGxA==
+X-Received: by 2002:a05:600c:1991:b0:488:ac01:72b6 with SMTP id
+ 5b1f17b1804b1-48d18be473dmr51416455e9.21.1777987083403; 
+ Tue, 05 May 2026 06:18:03 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4504f4857ffsm4360390f8f.0.2026.05.05.06.12.38
+ ffacd0b85a97d-45052a48c04sm4512005f8f.15.2026.05.05.06.18.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 May 2026 06:12:38 -0700 (PDT)
+ Tue, 05 May 2026 06:18:02 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5D30A5F8E7;
- Tue, 05 May 2026 14:12:37 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 891685F8E7;
+ Tue, 05 May 2026 14:18:01 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-stable@nongnu.org
-Subject: Re: [PATCH] target/arm: Report IL=0 for Thumb 16-bit BKPT insn
-In-Reply-To: <20260505103726.419195-1-peter.maydell@linaro.org> (Peter
- Maydell's message of "Tue, 5 May 2026 11:37:26 +0100")
-References: <20260505103726.419195-1-peter.maydell@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  Thomas Huth <th.huth+qemu@posteo.eu>,  Pierrick
+ Bouvier <pierrick.bouvier@linaro.org>,  qemu-arm@nongnu.org,  Peter Xu
+ <peterx@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Pierrick
+ Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Brad Smith
+ <brad@comstyle.com>,  Fabiano Rosas <farosas@suse.de>,  Kyle Evans
+ <kevans@freebsd.org>,  Peter Maydell <peter.maydell@linaro.org>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Dau?=
+ =?utf-8?Q?d=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH 4/5] gitlab: add initial MacOS 15 on gitlab runner
+In-Reply-To: <1993d589-5e6c-4b60-a2f0-c5e61f88b961@redhat.com> (Thomas Huth's
+ message of "Tue, 5 May 2026 13:44:07 +0200")
+References: <20260505103649.68361-1-alex.bennee@linaro.org>
+ <20260505103649.68361-5-alex.bennee@linaro.org>
+ <1993d589-5e6c-4b60-a2f0-c5e61f88b961@redhat.com>
 User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 05 May 2026 14:12:37 +0100
-Message-ID: <874ikmngoq.fsf@draig.linaro.org>
+Date: Tue, 05 May 2026 14:18:01 +0100
+Message-ID: <87se86m1va.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=alex.bennee@linaro.org; helo=mail-lf1-x134.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,26 +117,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Thomas Huth <thuth@redhat.com> writes:
 
-> The Thumb BKPT insn is 16-bit, and the ESR_ELx syndrome register
-> definition requires that we set the IL bit to 0 for this, and 1 for
-> the 32-bit A32 and A64 BKPT/BRK.
+> On 05/05/2026 12.36, Alex Benn=C3=A9e wrote:
+>> The gitlab runners are currently in beta but available to projects on
+>> the Premium and Ultimate plans (which QEMU is via the Open Source
+>> program).
+>> We install some compilers via brew so we can run some of the
+>> check-tcg
+>> softmmu test cases.
+>> We disable rust as the version is too old.
+>> We disable plugins because we haven't taught the test harness about
+>> .dynlib vs .so yet.
+>> There is a discrepancy between the vars and version of MacOS because
+>> lcitool needs teaching about other versions (although I don't think it
+>> matters as brew is shared across versions).
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>   .gitlab-ci.d/macos-14.vars    | 16 ++++++++++++
+>>   .gitlab-ci.d/macos.yml        | 49 +++++++++++++++++++++++++++++++++++
+>>   .gitlab-ci.d/qemu-project.yml |  1 +
+>>   tests/lcitool/refresh         | 11 ++++++++
+>>   4 files changed, 77 insertions(+)
+>>   create mode 100644 .gitlab-ci.d/macos-14.vars
+>>   create mode 100644 .gitlab-ci.d/macos.yml
+>> diff --git a/.gitlab-ci.d/macos-14.vars b/.gitlab-ci.d/macos-14.vars
+>> new file mode 100644
+>> index 00000000000..def77cfdea5
+>> --- /dev/null
+>> +++ b/.gitlab-ci.d/macos-14.vars
+>> @@ -0,0 +1,16 @@
+>> +# THIS FILE WAS AUTO-GENERATED
+>> +#
+>> +#  $ lcitool variables macos-14 qemu
+>> +#
+>> +# https://gitlab.com/libvirt/libvirt-ci
+>> +
+>> +CCACHE=3D'/opt/homebrew/bin/ccache'
+>> +CPAN_PKGS=3D''
+>> +CROSS_PKGS=3D''
+>> +MAKE=3D'/opt/homebrew/bin/gmake'
+>> +NINJA=3D'/opt/homebrew/bin/ninja'
+>> +PACKAGING_COMMAND=3D'brew'
+>> +PIP3=3D'/opt/homebrew/bin/pip3'
+>> +PKGS=3D'bash bc bindgen bison bzip2 capstone ccache cmocka coreutils
+>> ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed
+>> gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy
+>> libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1
+>> libusb llvm lzo make meson mtools ncurses nettle ninja pixman
+>> pkg-config python-setuptools python3 rpm2cpio rust sdl2 sdl2_image
+>> snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3
+>> vulkan-tools xorriso zlib zstd'
+>> +PYPI_PKGS=3D'PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'
+>> +PYTHON=3D'/opt/homebrew/bin/python3'
+>> diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+>> new file mode 100644
+>> index 00000000000..edb500e937b
+>> --- /dev/null
+>> +++ b/.gitlab-ci.d/macos.yml
+>> @@ -0,0 +1,49 @@
+>> +.macos_job_template:
+>> +  extends: .base_job_template
+>> +  stage: build
+>> +  tags:
+>> +    - saas-macos-large-m2pro
+>> +  needs: []
+>> +  timeout: 80m
+>> +  artifacts:
+>> +    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+>> +    expire_in: 7 days
+>> +    paths:
+>> +      - build/meson-logs/
+>> +      - build/tests/tcg/
+>> +    reports:
+>> +      junit: build/meson-logs/*.junit.xml
+>> +    when: always
+>> +  before_script:
+>> +    - set -o allexport
+>> +    - source .gitlab-ci.d/macos-14.vars
+>> +    - set +o allexport
+>> +    - export PATH=3D"$PATH_EXTRA:$PATH"
+>> +    - export PKG_CONFIG_PATH=3D"$PKG_CONFIG_PATH"
+>> +    - brew update
+>> +    - brew install $PKGS
+>> +    - brew install gdb aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
+>> +    - python3 ./scripts/probe-gdb-support.py $(which gdb)
 >
-> We used to do this correctly, but accidentally lost it in the
-> conversion to decodetree, because we converted the A32 BKPT first,
-> and then when we converted the T16 BKPT we forgot that trans_BKPT()
-> was unconditionally setting IL=3D1.
+> Is the probe-gdb-support.py required here? If not, I'd rather remove
+> that line again.
 >
-> Pass the right value for syn_aa32_bkpt()'s is_16bit argument.
+>> +    - if test -n "$PYPI_PKGS" ; then PYLIB=3D$($PYTHON -c 'import sysco=
+nfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGE=
+D; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
+>> +  script:
+>> +    - mkdir build
+>> +    - cd build
+>> +    - env
 >
-> Cc: qemu-stable@nongnu.org
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3474
-> Fixes: 43f7e42c7d515f ("target/arm: Convert T16, Miscellaneous 16-bit ins=
-tructions")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> dito, the "env" looks like debugging leftovers ... I'd rather drop it.
+>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Yes both are debug left overs. Will fix.
+
+>> +    - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log =
+meson-logs/meson-log.txt; exit 1; }
+>> +    - $MAKE -j$(sysctl -n hw.ncpu)
+>> +    - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done
+>> +
+>> +aarch64-macos-15-build:
+>> +  extends: .macos_job_template
+>> +  image: macos-15-xcode-16
+>> +  variables:
+>> +    NAME: macos-15
+>> +    PATH_EXTRA: /opt/homebrew/ccache/libexec:/opt/homebrew/gettext/bin
+>
+> As far as I can see, there is no cache configured for this runner ...
+> so could you please drop the ccache stuff from this patch? It will
+> only slow down compilation if the results get thrown away afterwards.
+
+Yeah will drop that. The machine is beefy enough and the job duration is
+~12 mins and most of that is installing brew bits.
+
+>
+>  Thomas
+>
+>> +    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncu=
+rses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
+>> +    CONFIGURE_ARGS:
+>> +        --target-list=3Daarch64-softmmu,i386-softmmu,x86_64-softmmu
+>> +        --cross-prefix-aarch64=3Daarch64-elf-
+>> +        --cross-prefix-i386=3Di686-elf-
+>> +        --cross-prefix-x86_64=3Dx86_64-elf-
+>> +        --disable-plugins
+>> +    TEST_TARGETS: check-unit check-tcg
+>> diff --git a/.gitlab-ci.d/qemu-project.yml b/.gitlab-ci.d/qemu-project.y=
+ml
+>> index 4d914c4897b..9cbb5fe787f 100644
+>> --- a/.gitlab-ci.d/qemu-project.yml
+>> +++ b/.gitlab-ci.d/qemu-project.yml
+>> @@ -19,3 +19,4 @@ include:
+>>     - local: '/.gitlab-ci.d/custom-runners.yml'
+>>     - local: '/.gitlab-ci.d/cirrus.yml'
+>>     - local: '/.gitlab-ci.d/windows.yml'
+>> +  - local: '/.gitlab-ci.d/macos.yml'
+>> diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+>> index fa4a16e3583..4289cc381a6 100755
+>> --- a/tests/lcitool/refresh
+>> +++ b/tests/lcitool/refresh
+>> @@ -87,6 +87,12 @@ def generate_cirrus(target, trailer=3DNone):
+>>       generate(filename, cmd, trailer)
+>>     +def generate_vars(target, trailer=3DNone):
+>> +    filename =3D Path(src_dir, ".gitlab-ci.d", target + ".vars")
+>> +    cmd =3D lcitool_cmd + ["variables", "--format", "shell", target, "q=
+emu"]
+>> +    generate(filename, cmd, trailer)
+>> +
+>> +
+>>   def generate_pkglist(vm, target, project=3D"qemu"):
+>>       filename =3D Path(src_dir, "tests", "vm", "generated", vm + ".json=
+")
+>>       cmd =3D lcitool_cmd + ["variables", "--format", "json", target, pr=
+oject]
+>> @@ -312,6 +318,11 @@ try:
+>>       #
+>>       generate_cirrus("freebsd-14")
+>>   +    #
+>> +    # GitLab packages lists
+>> +    #
+>> +    generate_vars("macos-14")
+>> +
+>>       #
+>>       # VM packages lists
+>>       #
 
 --=20
 Alex Benn=C3=A9e

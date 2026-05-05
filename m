@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A96FDCD342F
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 10:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC40CD342F
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 10:38:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKD9R-0001Nx-Ta; Tue, 05 May 2026 06:37:17 -0400
+	id 1wKD9U-0001QI-QS; Tue, 05 May 2026 06:37:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKD9E-0001La-4y
+ id 1wKD9E-0001Lc-54
  for qemu-arm@nongnu.org; Tue, 05 May 2026 06:37:08 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wKD98-0007xY-Tc
- for qemu-arm@nongnu.org; Tue, 05 May 2026 06:37:02 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-488ab2db91aso60711155e9.3
- for <qemu-arm@nongnu.org>; Tue, 05 May 2026 03:36:56 -0700 (PDT)
+ id 1wKD98-0007x7-Rk
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 06:37:01 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-48374014a77so60078975e9.3
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 03:36:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777977415; x=1778582215; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777977414; x=1778582214; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BP0T5olRmt8l3+HmgwMWOd0mUAJJRQ2aQs3fFSKAUAI=;
- b=BgxOPX+XL9GmTDB299fXWqvGeztMlGq6K2hw8MWU94UaGPFL+6ZqH1xa7GfntLB8i7
- nyuVQhhigpL9YLRMlwbVutJsX1VNCYJX42K+x0vjRuZoTHpwI/4IphzI4Lcm8/SJcAqs
- RfOD3LCAh53um0dKSvXiBznJsIDP8RLbPl4Y4ZG8HNGvK9pxTosLAOqzzLmyTMp/trv3
- Fti3sktZ2BPVOQiqXNyc5xKtr76CAl1tgaLvR/74xu96cM43fpUV5xOP9+OadZvRNKWC
- 93+lNKMEHc0c+8ijEeDvClJMiwrYS5qGsGj2QGyzogpFhnYFo8PDl9fFmhTCY4QRUAG3
- uBVQ==
+ bh=HbF8A1Ujf51MtJ+wzlrq2naggs0k6C0Otrfh2/imI5o=;
+ b=DbmLtSwZgmHczc+a0vFLxFDLJj9HfBrjTEW6VmDfzUyUtfwSGtZ/KOutM83h3AmJpB
+ KCDIU0voL5InzP2vcXuJInTEoN7kauDtoGdtqClnsU5DjJDnQNMCyjNnJIvSVC8zZU4F
+ BF9jh0M9CkSsG9QI5qcSYoMbe68Wgqh2lx/ZM9J+fLyAdLZlcgju4Vl1iqsnbr6j5Sz0
+ NIQJlugog/1EWirhJvLuaPuDuYGEyqFEBhvO2e8PAGuqsMmyYVfpIdbRq9yug3dh4VcL
+ Z5m4BrLQGUtalhW+1FgXkyTFR/7WYwRT5m2y+5q6JEfqPRrMzNxoCsv9h2dljYtNzQVY
+ wytA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777977415; x=1778582215;
+ d=1e100.net; s=20251104; t=1777977414; x=1778582214;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=BP0T5olRmt8l3+HmgwMWOd0mUAJJRQ2aQs3fFSKAUAI=;
- b=No25qNK0RTmHt9mAsIALEiJ3PW54s4nw9rhSUqjYPwiOdcnD7HVcVWW3Z5y2n875aU
- KQswxZTccbYTam0EeOHoAckNnv1CQxuOKVG8eXxKLPCNmZliZsSaRIZD1ySuik8usB+j
- txmkYYGE2OMRPIgI06cmnwLONk8Ce1eHyehuu4KmkjjWySShg9pq7OozuEPSWE9SHy7W
- jSEpoW381EUsEVS71pxzWKIVKDmDyeHygQ8li8ZSWCzk7vruCbZ6gn7gtfSfPQmmD6GO
- iljtrbHXNdw6Ql+1a5pIn+9RsFO7tzd/OmkEiEqtEzIYwg4GX9toIZENP3jSwnUZPlLV
- w21A==
+ bh=HbF8A1Ujf51MtJ+wzlrq2naggs0k6C0Otrfh2/imI5o=;
+ b=GpUCrn6sbfXY1xQeyZ/U4Yrt2LDQcwF11Qvr7fHY1rBqpPahYzJfyup5xUgGD6r4is
+ loVnW4CIkZAjkp0An32rdhAwBcxbagisDbKVMC5EMzGYuSxqkRohJwX6kZmFJVc1fGr2
+ 4Nf5DNzhtz7M3/U+3GABe2aZQLWhs//f23rdXeem+ANju0zy0BIK1HnIniNT/UPBivd6
+ WBcCDKf8DgeaZNG/cxqeX/PZFpjvQjhDI/dOzD3CRvjNQq8U8iP4MHOnvy/c7P2J+JBx
+ HBgCdGB3rVpnIZjK1pzjO0/nttrcQU6KU3pQDL6y63woGQhmbMaSWPrdwTHjkJW4UzkY
+ s4Gw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ++p/9czsnWAk0Uq1ZtrzGzbj8btW2zRfu/+w5ih4IKk93ZZOKTzyK/irR/AGwe/OoUt/lHf8mAvw==@nongnu.org
-X-Gm-Message-State: AOJu0YwnfLbvqmdfNHjtvTVmWvernAJtTGqb7LhBcl00Gesyaw55YEAx
- Uf6UWQAeISEHJUwNxzoFEC72oc5dkrwmV5zapLPsVhzWGVfowp7fTBsqTpWjQ+Ru0YY=
-X-Gm-Gg: AeBDiest4tQkyKCg9EnvCGkI6TsptZyZFgYYygXJpP0S/sKsZ4FfVLr+mOWYjm6zbpW
- 7zI2qOqqFb1Y1GoPSH3I9e6c+392/5HpAnNpkLHAblo/w98whQQhKla1eWgZRFoUAwTHLPYwKa6
- +punEnLJeSPx8N/pT1JKBLGW1YR4RsNFwzEQRak6+GaDJh4H1fqZhfGGYZhrX/Tdnc9Hh+ot3S9
- 19wS/g14DsuyN+sqOgVuBO8Bqcm0MRGWXO0lfh/QqcfdWcvhP2ADNLbA/wY6UBXZP5uw7U7923d
- BXdN4nj5sepIKD/Dv/0KLmEpmouwyKAfOC5eYWNyR0SNPFknXgIPvj0CN5WOj2EehIiqRARxtXC
- VpXsVnOLStNy3EbIKzJIV/RTtj1XP3i0wcveD+BIvxQv0p/F5Wo6nVlD7iP956L4WIiztR3atpC
- nPhQxeWYroz7s/LGFSRfhCa2P3Qy97Bgl9pyzXzJfaEwCL
-X-Received: by 2002:a05:600c:a10c:b0:48a:56de:d62a with SMTP id
- 5b1f17b1804b1-48a9863a03dmr168544465e9.11.1777977415282; 
- Tue, 05 May 2026 03:36:55 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a8eb72a17sm356606415e9.6.2026.05.05.03.36.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AFNElJ8vOPRWQAUIuyX2kwJXZ5AzGrgIZxngw+bWE0dA+HnAMRLtLyNF+pRuV4L7ACu5ukygdNzaJ0PDwQ==@nongnu.org
+X-Gm-Message-State: AOJu0YywDE9hrtktbAz4jpBpv7IxRlZkSId6udO/PvNjJRFux5Io4aYa
+ HdCe0GKwtWoY3iNTPrKBpYl5ioRXIurhF8R6uj5KWacuqTzJAh3wFI9466NXGrEPrZiTkpJdDuB
+ ykbCC8pA=
+X-Gm-Gg: AeBDiesYGIYylJJLOW4jl5eCg5Z9fzz0N0LXSW76QF86noeXd6Dhmlhq4eJ/3ARoc0Q
+ H7VK5yKGlXH2fTbCG6FYA7SqKn2V5q5o1uQXgUf6c3l2JBoKpySjGeFM946bFJ0a2DU0hsXM8Q1
+ cKJrdbgrzipfZKti1fJRdOpgA2qKnD4zNNAmVB/ssiANsYwK83RZB4ILKcD12waxZtVzOPULfSp
+ /8BKwuQlLKGbfBjeIBl1XslnwRvYR3N+1XpysOdB/8Q0Vs2pc1K9XoQFnfC+Fsh82KsVjsDSFEV
+ Ukc8MWs0KNmKz0HPX+xLvuALOouKtHO0mqr5DTX3TVrqLdnWpDRv2UT1NhJEjQ1gx8mNz1E1Zq7
+ UBYSNRr0cZXdk6E4N+rjFq/CEATar8Fs8kIFshryZRUX8qcdr+JdCas0syw5AcFhIalZ3w+rIvb
+ gnF/10kfPTW8A1WOxkMX+0n9y3TyM4YdPqpw==
+X-Received: by 2002:a05:600c:1e8b:b0:48a:6315:da26 with SMTP id
+ 5b1f17b1804b1-48a98676d48mr219377445e9.26.1777977414001; 
  Tue, 05 May 2026 03:36:54 -0700 (PDT)
+Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48af0d5a613sm141108645e9.2.2026.05.05.03.36.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 May 2026 03:36:51 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 2176E5FA6F;
+ by draig.lan (Postfix) with ESMTP id 0C40E5FA53;
  Tue, 05 May 2026 11:36:50 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -82,17 +83,17 @@ Cc: Thomas Huth <th.huth+qemu@posteo.eu>, Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Warner Losh <imp@bsdimp.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 5/5] gitlab: add MacOS 26 job on gitlab runner (!broken)
-Date: Tue,  5 May 2026 11:36:49 +0100
-Message-ID: <20260505103649.68361-6-alex.bennee@linaro.org>
+Subject: [PATCH 4/5] gitlab: add initial MacOS 15 on gitlab runner
+Date: Tue,  5 May 2026 11:36:48 +0100
+Message-ID: <20260505103649.68361-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260505103649.68361-1-alex.bennee@linaro.org>
 References: <20260505103649.68361-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,79 +116,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-gitlab supports 3 MacOS images with 15 and 26 being the current
-supported ones. To get ahead of the curve lets enable 26 as well.
+The gitlab runners are currently in beta but available to projects on
+the Premium and Ultimate plans (which QEMU is via the Open Source
+program).
 
-It re-uses the same brew list but also attempts to work around python
-configure failure by setting DYLD_LIBRARY_PATH:
-/opt/homebrew/opt/expat/lib/
+We install some compilers via brew so we can run some of the check-tcg
+softmmu test cases.
+
+We disable rust as the version is too old.
+
+We disable plugins because we haven't taught the test harness about
+.dynlib vs .so yet.
+
+There is a discrepancy between the vars and version of MacOS because
+lcitool needs teaching about other versions (although I don't think it
+matters as brew is shared across versions).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-This is currently broken, I'm still seeing:
+ .gitlab-ci.d/macos-14.vars    | 16 ++++++++++++
+ .gitlab-ci.d/macos.yml        | 49 +++++++++++++++++++++++++++++++++++
+ .gitlab-ci.d/qemu-project.yml |  1 +
+ tests/lcitool/refresh         | 11 ++++++++
+ 4 files changed, 77 insertions(+)
+ create mode 100644 .gitlab-ci.d/macos-14.vars
+ create mode 100644 .gitlab-ci.d/macos.yml
 
-$ if test -n "$PYPI_PKGS" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
-Traceback (most recent call last):
-  File "/opt/homebrew/bin/pip3", line 6, in <module>
-    sys.exit(main())
-             ~~~~^^
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/cli/main.py", line 83, in main
-    command = create_command(cmd_name, isolated=("--isolated" in cmd_args))
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/commands/__init__.py", line 121, in create_command
-    module = importlib.import_module(module_path)
-  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/importlib/__init__.py", line 88, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
-  File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
-  File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
-  File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
-  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
-  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/commands/install.py", line 27, in <module>
-    import pip._internal.self_outdated_check  # noqa: F401
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/self_outdated_check.py", line 19, in <module>
-    from pip._internal.index.package_finder import PackageFinder
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/index/package_finder.py", line 42, in <module>
-    from pip._internal.req import InstallRequirement
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/req/__init__.py", line 12, in <module>
-    from .req_install import InstallRequirement
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/req/req_install.py", line 37, in <module>
-    from pip._internal.operations.install.wheel import install_wheel
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_internal/operations/install/wheel.py", line 33, in <module>
-    from pip._vendor.distlib.scripts import ScriptMaker
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_vendor/distlib/scripts.py", line 16, in <module>
-    from .compat import sysconfig, detect_encoding, ZipFile
-  File "/opt/homebrew/lib/python3.14/site-packages/pip/_vendor/distlib/compat.py", line 81, in <module>
-    import xmlrpc.client as xmlrpclib
-  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/xmlrpc/client.py", line 138, in <module>
-    from xml.parsers import expat
-  File "/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/xml/parsers/expat.py", line 4, in <module>
-    from pyexpat import *
-ImportError: dlopen(/opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload/pyexpat.cpython-314-darwin.so, 0x0002): Symbol not found: _XML_SetAllocTrackerActivationThreshold
-  Referenced from: <44AFDBDF-C9C3-35EF-A723-C0C54E2C9C3F> /opt/homebrew/Cellar/python@3.14/3.14.4_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload/pyexpat.cpython-314-darwin.so
-  Expected in:     <4D62FA9D-D86A-3DD0-98F2-C6D0718849E8> /usr/lib/libexpat.1.dylib
----
- .gitlab-ci.d/macos.yml | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
-index edb500e937b..aae42ca88f9 100644
---- a/.gitlab-ci.d/macos.yml
-+++ b/.gitlab-ci.d/macos.yml
-@@ -47,3 +47,19 @@ aarch64-macos-15-build:
-         --cross-prefix-x86_64=x86_64-elf-
-         --disable-plugins
-     TEST_TARGETS: check-unit check-tcg
+diff --git a/.gitlab-ci.d/macos-14.vars b/.gitlab-ci.d/macos-14.vars
+new file mode 100644
+index 00000000000..def77cfdea5
+--- /dev/null
++++ b/.gitlab-ci.d/macos-14.vars
+@@ -0,0 +1,16 @@
++# THIS FILE WAS AUTO-GENERATED
++#
++#  $ lcitool variables macos-14 qemu
++#
++# https://gitlab.com/libvirt/libvirt-ci
 +
-+aarch64-macos-26-build:
++CCACHE='/opt/homebrew/bin/ccache'
++CPAN_PKGS=''
++CROSS_PKGS=''
++MAKE='/opt/homebrew/bin/gmake'
++NINJA='/opt/homebrew/bin/ninja'
++PACKAGING_COMMAND='brew'
++PIP3='/opt/homebrew/bin/pip3'
++PKGS='bash bc bindgen bison bzip2 capstone ccache cmocka coreutils ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python-setuptools python3 rpm2cpio rust sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 vulkan-tools xorriso zlib zstd'
++PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'
++PYTHON='/opt/homebrew/bin/python3'
+diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+new file mode 100644
+index 00000000000..edb500e937b
+--- /dev/null
++++ b/.gitlab-ci.d/macos.yml
+@@ -0,0 +1,49 @@
++.macos_job_template:
++  extends: .base_job_template
++  stage: build
++  tags:
++    - saas-macos-large-m2pro
++  needs: []
++  timeout: 80m
++  artifacts:
++    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
++    expire_in: 7 days
++    paths:
++      - build/meson-logs/
++      - build/tests/tcg/
++    reports:
++      junit: build/meson-logs/*.junit.xml
++    when: always
++  before_script:
++    - set -o allexport
++    - source .gitlab-ci.d/macos-14.vars
++    - set +o allexport
++    - export PATH="$PATH_EXTRA:$PATH"
++    - export PKG_CONFIG_PATH="$PKG_CONFIG_PATH"
++    - brew update
++    - brew install $PKGS
++    - brew install gdb aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
++    - python3 ./scripts/probe-gdb-support.py $(which gdb)
++    - if test -n "$PYPI_PKGS" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
++  script:
++    - mkdir build
++    - cd build
++    - env
++    - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log meson-logs/meson-log.txt; exit 1; }
++    - $MAKE -j$(sysctl -n hw.ncpu)
++    - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done
++
++aarch64-macos-15-build:
 +  extends: .macos_job_template
-+  image: macos-26-xcode-26
++  image: macos-15-xcode-16
 +  variables:
-+    NAME: macos-26
-+    DYLD_LIBRARY_PATH: /opt/homebrew/opt/expat/lib/
++    NAME: macos-15
 +    PATH_EXTRA: /opt/homebrew/ccache/libexec:/opt/homebrew/gettext/bin
 +    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
 +    CONFIGURE_ARGS:
@@ -197,6 +219,44 @@ index edb500e937b..aae42ca88f9 100644
 +        --cross-prefix-x86_64=x86_64-elf-
 +        --disable-plugins
 +    TEST_TARGETS: check-unit check-tcg
+diff --git a/.gitlab-ci.d/qemu-project.yml b/.gitlab-ci.d/qemu-project.yml
+index 4d914c4897b..9cbb5fe787f 100644
+--- a/.gitlab-ci.d/qemu-project.yml
++++ b/.gitlab-ci.d/qemu-project.yml
+@@ -19,3 +19,4 @@ include:
+   - local: '/.gitlab-ci.d/custom-runners.yml'
+   - local: '/.gitlab-ci.d/cirrus.yml'
+   - local: '/.gitlab-ci.d/windows.yml'
++  - local: '/.gitlab-ci.d/macos.yml'
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index fa4a16e3583..4289cc381a6 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -87,6 +87,12 @@ def generate_cirrus(target, trailer=None):
+     generate(filename, cmd, trailer)
+ 
+ 
++def generate_vars(target, trailer=None):
++    filename = Path(src_dir, ".gitlab-ci.d", target + ".vars")
++    cmd = lcitool_cmd + ["variables", "--format", "shell", target, "qemu"]
++    generate(filename, cmd, trailer)
++
++
+ def generate_pkglist(vm, target, project="qemu"):
+     filename = Path(src_dir, "tests", "vm", "generated", vm + ".json")
+     cmd = lcitool_cmd + ["variables", "--format", "json", target, project]
+@@ -312,6 +318,11 @@ try:
+     #
+     generate_cirrus("freebsd-14")
+ 
++    #
++    # GitLab packages lists
++    #
++    generate_vars("macos-14")
++
+     #
+     # VM packages lists
+     #
 -- 
 2.47.3
 

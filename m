@@ -4,54 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C048FF885A
-	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 03:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 717CCFF885A
+	for <qemu-arm@archiver.kernel.org>; Tue,  5 May 2026 07:27:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wK6ke-0003zt-BM; Mon, 04 May 2026 23:47:16 -0400
+	id 1wKABT-0000RN-8T; Tue, 05 May 2026 03:27:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1wK6kb-0003zB-6P; Mon, 04 May 2026 23:47:13 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72]
- helo=twmbx01.aspeedtech.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKABR-0000Qj-3M
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 03:27:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1wK6kX-00029X-NW; Mon, 04 May 2026 23:47:12 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 5 May
- 2026 11:46:55 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 5 May 2026 11:46:55 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, "Andrew
- Jeffery" <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, "open list:All patches
- CC here" <qemu-devel@nongnu.org>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <longzl2@lenovo.com>,
- <yunlin.tang@aspeedtech.com>, <steven_lee@aspeedtech.com>
-Subject: [RFC PATCH v2 1/1] hw/arm: aspeed: PoC integration for Caliptra Root
- of Trust
-Date: Tue, 5 May 2026 11:46:54 +0800
-Message-ID: <20260505034654.815746-2-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260505034654.815746-1-steven_lee@aspeedtech.com>
-References: <20260505034654.815746-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKABN-00009M-TE
+ for qemu-arm@nongnu.org; Tue, 05 May 2026 03:27:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777966024;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DqZXWSPNcUPBLZavDcucIL1KZfl/Drgz+DHAA7NcgHM=;
+ b=ckPGWZW2RG4JEqH6AxFRJ6E2GfhmM7Dxa4Eo6v63wWtLxOY4EDp5My+4alWgYn+FLdEqxQ
+ 4ttC//0LH9f8Gk2QFhBq5Kr2+/RgcqEz72H5izFzWcBtY228OalgbZ4LXXgapT67bC5JnX
+ I2RusKTplMbEHtIdhB9ht05OXidLe1E=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-387-LtVoAwbaM2WzVJR9g0Uw9g-1; Tue, 05 May 2026 03:27:03 -0400
+X-MC-Unique: LtVoAwbaM2WzVJR9g0Uw9g-1
+X-Mimecast-MFC-AGG-ID: LtVoAwbaM2WzVJR9g0Uw9g_1777966022
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-44f56d5523eso926166f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 05 May 2026 00:27:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777966022; x=1778570822;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DqZXWSPNcUPBLZavDcucIL1KZfl/Drgz+DHAA7NcgHM=;
+ b=c2OfP/mY9rcUzYWa1Eqjrd0HteG5ct7VaXuSGr1bX3Dvjsj27y4db+/Lh7earlYsD4
+ 6PFWMOcUzkr40HbFNMvMsIqCyJiKWv64mLrtb6R2roneltx2yU25oRdI3btaPtnteCO+
+ y5RZFgBqAt4nN4eHJfI+4nwNYC101I/Pro+GBiXYO2EKadbLqgRXgRf3WQzY0MP56Hoy
+ Cm3GK4kX7pOBHOMK1hbKiOqOcSCzwikahVAdQ+jZtcyMxNCp7hjH6OnUP2cz2eAZovMt
+ XgwzthrgCE+c8FsqcuRBJzl3zZ4Ueymg3OKNXEfT5kezlqQTCDplzXYuQXltkx/VF1RZ
+ Mhlg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/rJxKJkULJWIy/RNpcMtOik5PHXCqjJLvzuWwR9YPTQJDu8edT7OJz+n1nFVrYut/KD5+4Z2L5dg==@nongnu.org
+X-Gm-Message-State: AOJu0YwSIeDJEf2vuqe4y96bYoCCFP8PLJoNTfyjXj/a1rXOZG4zVlm9
+ et6u6FODDmiMRStoAE2EPGeSYPL5guPXov7FN9vLZfdRaOy7cq4tsUzvH2pmLQG+8FoFwVJlpQl
+ NpRqQ+UUqSroHyAEdrzooOB4HN96LRvJZm6rVV6EJicm58rOW/22TTQ==
+X-Gm-Gg: AeBDieux5Hv5W1lidWqsxd8+0eho8U7rLjz8cc8fUcZjVUcVijXV9XnztYswoldCTcL
+ AeO32cLvcFY5esnLCkY40A64+q1LopdDI1brdf/hgmzLIp08uU4MKV8G8HqvCmYcUZFeSKNFRT5
+ vnD1QXhi962FsTtKGcqS1hqXCwD4WSEZbhuKa/CAveG5RX9PU6oF2vFwsZY5Sz/fyX8yzPfdaxR
+ W1x7up3gQuLnqtsEMLAuIziGpk/YsrdHWmQBee9Eqg8qYIpRqBHnItKXlXHP9S7lSb+wcOkX1E1
+ uczNman/NFYAewK6uaw2qKrHDoMv6iw4OKs8NP7HR+jpxRlL2hYWa0f2x/+0SYqwNFKSPFJDC8C
+ Hq/xcnNecOsilFn9nnW1csZcXbbBROz5lJnKKO1XieddOvSrKhqDhF4iuWI/ckWMScdJbqOyOi/
+ ksp/e4
+X-Received: by 2002:a05:600c:c08d:b0:488:ffad:6728 with SMTP id
+ 5b1f17b1804b1-48d18ce221dmr19744455e9.19.1777966021930; 
+ Tue, 05 May 2026 00:27:01 -0700 (PDT)
+X-Received: by 2002:a05:600c:c08d:b0:488:ffad:6728 with SMTP id
+ 5b1f17b1804b1-48d18ce221dmr19744165e9.19.1777966021469; 
+ Tue, 05 May 2026 00:27:01 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45052a48911sm2443751f8f.11.2026.05.05.00.27.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 May 2026 00:27:00 -0700 (PDT)
+Message-ID: <279d7659-b2e6-4620-a5c9-fbc71c55d099@redhat.com>
+Date: Tue, 5 May 2026 09:26:59 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=steven_lee@aspeedtech.com; helo=twmbx01.aspeedtech.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 14/31] hw/arm/tegra241-cmdqv: Emulate CMDQ-V Config
+ region
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ kjaju@nvidia.com, phrdina@redhat.com
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-15-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260415105552.622421-15-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vsATWBoc1lYmFfj1D8lYAIIucUOhsr76Ou0XCZHeXh4_1777966022
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,601 +120,405 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
-From:  Steven Lee via <qemu-arm@nongnu.org>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-ast27x0 integrates a Caliptra Root of Trust core, but QEMU does not
-currently have an agreed model for ASPEED Caliptra emulation.
+Hi Shameer,
 
-This patch adds an ASPEED-specific sysbus device that exposes the
-Caliptra mailbox/SOC-IFC MMIO window and forwards guest register
-accesses to an external `caliptra-server` backend over a Unix socket.
-This allows evaluation of the QEMU/Caliptra integration shape without
-pulling the upstream `caliptra-sw` hw-model into the QEMU build.
+On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> Tegra241 CMDQV exposes control and status registers in the CMDQ-V
+> Config page (offset [0x0, 0x10000)) used to configure virtual command
+> queue allocation and interrupt behavior.
+>
+> Add read/write emulation for the CMDQ-V Config region
+> ([CMDQV_BASE, CMDQV_CMDQ_BASE]), backed by a simple register cache.
+> This includes CONFIG, PARAM, STATUS, VI error and interrupt maps, CMDQ
+> allocation map and the VINTF0 related registers defined in the CMDQ-V
+> Config space. Only VINTF0 is supported; VINTF1-63 are not.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/tegra241-cmdqv.h | 127 +++++++++++++++++++++++++++++++
+>  hw/arm/tegra241-cmdqv.c | 163 ++++++++++++++++++++++++++++++++++++++--
+>  hw/arm/trace-events     |   4 +
+>  3 files changed, 288 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index fa0aa3ab04..965670066d 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -10,10 +10,14 @@
+>  #ifndef HW_ARM_TEGRA241_CMDQV_H
+>  #define HW_ARM_TEGRA241_CMDQV_H
+>  
+> +#include "hw/core/registerfields.h"
+> +
+>  #define CMDQV_VER                 1
+>  #define CMDQV_NUM_CMDQ_LOG2       1
+>  #define CMDQV_NUM_SID_PER_VI_LOG2 4
+>  
+> +#define TEGRA241_CMDQV_MAX_CMDQ   (1U << CMDQV_NUM_CMDQ_LOG2)
+> +
+>  /*
+>   * Tegra241 CMDQV MMIO layout (64KB pages)
+>   *
+> @@ -31,8 +35,131 @@ typedef struct Tegra241CMDQV {
+>      MemoryRegion mmio_cmdqv;
+>      qemu_irq irq;
+>      IOMMUFDVeventq *veventq;
+> +
+> +    /* Register Cache */
+> +    uint32_t config;
+> +    uint32_t param;
+> +    uint32_t status;
+> +    uint32_t vi_err_map[2];
+> +    uint32_t vi_int_mask[2];
+> +    uint32_t cmdq_err_map[4];
+> +    uint32_t cmdq_alloc_map[TEGRA241_CMDQV_MAX_CMDQ];
+> +    uint32_t vintf_config;
+> +    uint32_t vintf_status;
+> +    uint32_t vintf_sid_match[16];
+> +    uint32_t vintf_sid_replace[16];
+> +    uint32_t vintf_cmdq_err_map[4];
+>  } Tegra241CMDQV;
+>  
+> +/* CMDQ-V Config page registers (offset 0x00000) */
+> +REG32(CONFIG, 0x0)
+> +FIELD(CONFIG, CMDQV_EN, 0, 1)
+> +FIELD(CONFIG, CMDQV_PER_CMD_OFFSET, 1, 3)
+> +FIELD(CONFIG, CMDQ_MAX_CLK_BATCH, 4, 8)
+> +FIELD(CONFIG, CMDQ_MAX_CMD_BATCH, 12, 8)
+> +FIELD(CONFIG, CONS_DRAM_EN, 20, 1)
+> +
+> +REG32(PARAM, 0x4)
+> +FIELD(PARAM, CMDQV_VER, 0, 4)
+> +FIELD(PARAM, CMDQV_NUM_CMDQ_LOG2, 4, 4)
+> +FIELD(PARAM, CMDQV_NUM_VI_LOG2, 8, 4)
+> +FIELD(PARAM, CMDQV_NUM_SID_PER_VI_LOG2, 12, 4)
+> +
+> +REG32(STATUS, 0x8)
+> +FIELD(STATUS, CMDQV_ENABLED, 0, 1)
+> +
+> +/* SMMU_CMDQV_VI_ERR_MAP_0/1 definitions */
+> +#define A_VI_ERR_MAP_0 0x14
+> +#define A_VI_ERR_MAP_1 0x18
+> +#define V_VI_ERR_MAP_NO_ERROR (0)
+> +#define V_VI_ERR_MAP_ERROR (1)
+> +
+> +/* SMMU_CMDQV_VI_INT_MASK_0/1 definitions */
+> +#define A_VI_INT_MASK 0x1c
+pls use spec terminology: _0
 
-The reference `caliptra-server` implementation used in this RFC is
-available at:
-  https://github.com/stevenlee7189/caliptra-server
 
-The device provides a 128 KiB MMIO window at 0x14c60000, matching the
-ast27x0 bootmcu Caliptra mailbox node, and maps it onto the backend APB
-register space.
+> +#define A_VI_INT_MASK_1 0x20
+> +#define V_VI_INT_MASK_NOT_MASKED (0)
+> +#define V_VI_INT_MASK_MASKED (1)
+> +
+> +/* SMMU_CMDQV_CMDQ_ERR_MAP_0-3 definitions */
+> +#define A_CMDQ_ERR_MAP_0 0x24
+> +#define A_CMDQ_ERR_MAP_1 0x28
+> +#define A_CMDQ_ERR_MAP_2 0x2c
+> +#define A_CMDQ_ERR_MAP_3 0x30
+> +
+> +/*
+> + * CMDQ_ALLOC_MAP: one entry per physical VCMDQ. Hardware supports up to 128
+> + * entries (CMDQV_NUM_CMDQ_LOG2=7), but QEMU only exposes
+> + * TEGRA241_CMDQV_MAX_CMDQ (=2) VCMDQs per VM so only entries 0 and 1 are
+> + * defined here.
+> + */
+> +/* 2 identical register entries */
+> +#define SMMU_CMDQV_CMDQ_ALLOC_MAP_(i)        \
+> +    REG32(CMDQ_ALLOC_MAP_##i, 0x200 + i * 4) \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, ALLOC, 0, 1)   \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, LVCMDQ, 1, 7)  \
+> +    FIELD(CMDQ_ALLOC_MAP_##i, VIRT_INTF_INDX, 15, 6)
+> +
+> +SMMU_CMDQV_CMDQ_ALLOC_MAP_(0)
+> +SMMU_CMDQV_CMDQ_ALLOC_MAP_(1)
+> +
+> +
+> +/* Only VINTF0 is exposed to the guest; vintf = 0 */
+is it supposed to evolve? Otherwise we can keep things simple and just
+define a single
 
-https://github.com/AspeedTech-BMC/zephyr/blob/v00.03.07/dts/riscv/aspeed/ast27xx.dtsi#L310-L312
+SMMU_CMDQV_VINTF0_CONFIG_0 and same for the rest.
 
-On the real ast27x0, Caliptra bring-up and secure-boot
-orchestration are handled by bootmcu; CA35 is not involved in that path.
-This patch uses the CA35-visible Caliptra MMIO window as an initial
-integration point to validate the socket-backed external backend
-approach, not to model the final boot architecture.
 
-This is an RFC PoC only. It assumes the backend is already running,
-does not implement boot/reset handshaking or migration support, and
-uses a minimal wire protocol designed to be replaced with a
-standardized IPC scheme.
+> +#define SMMU_CMDQV_VINTFi_CONFIG_(vi)                 \
+> +    REG32(VINTF##vi##_CONFIG, 0x1000 + vi * 0x100) \
+> +    FIELD(VINTF##vi##_CONFIG, ENABLE, 0, 1)       \
+> +    FIELD(VINTF##vi##_CONFIG, VMID, 1, 16)        \
+> +    FIELD(VINTF##vi##_CONFIG, HYP_OWN, 17, 1)
+> +
+> +SMMU_CMDQV_VINTFi_CONFIG_(0)
+> +
+> +#define SMMU_CMDQV_VINTFi_STATUS_(vi)                 \
+> +    REG32(VINTF##vi##_STATUS, 0x1004 + vi * 0x100) \
+> +    FIELD(VINTF##vi##_STATUS, ENABLE_OK, 0, 1)    \
+> +    FIELD(VINTF##vi##_STATUS, STATUS, 1, 3)       \
+> +    FIELD(VINTF##vi##_STATUS, VI_NUM_LVCMDQ, 16, 8)
+> +
+> +SMMU_CMDQV_VINTFi_STATUS_(0)
+> +
+> +#define V_VINTF_STATUS_NO_ERROR (0 << 1)
+> +#define V_VINTF_STATUS_VCMDQ_ERROR (1 << 1)
+> +
+> +/*
+> + * SID_MATCH/SID_REPLACE: 16 entries per VINTF (CMDQV_NUM_SID_PER_VI_LOG2=4).
+> + * vintf = 0, 16 identical register entries
+> + */
+> +#define SMMU_CMDQV_VINTFi_SID_MATCH_(vi, j)  
+this could also be simplified
+>                         \
+> +    REG32(VINTF##vi##_SID_MATCH_##j, 0x1040 + j * 4 + vi * 0x100) \
+> +    FIELD(VINTF##vi##_SID_MATCH_##j, ENABLE, 0, 1)               \
+> +    FIELD(VINTF##vi##_SID_MATCH_##j, VIRT_SID, 1, 20)
+> +
+> +SMMU_CMDQV_VINTFi_SID_MATCH_(0, 0)
+> +/* Omitting [0][1~14] as not being directly called */
+> +SMMU_CMDQV_VINTFi_SID_MATCH_(0, 15)
+> +
+> +/* vintf = 0, 16 identical register entries */
+> +#define SMMU_CMDQV_VINTFi_SID_REPLACE_(vi, j)                          \
+> +    REG32(VINTF##vi##_SID_REPLACE_##j, 0x1080 + j * 4 + vi * 0x100) \
+> +    FIELD(VINTF##vi##_SID_REPLACE_##j, PHYS_SID, 0, 20)
+> +
+> +SMMU_CMDQV_VINTFi_SID_REPLACE_(0, 0)
+> +/* Omitting [0][1~14] as not being directly called */
+why?
+> +SMMU_CMDQV_VINTFi_SID_REPLACE_(0, 15)
+> +
+> +/*
+> + * LVCMDQ_ERR_MAP: hardware defines 4 registers per VINTF (offset
+> + * 0x10c0..0x10cc), each covering 32 logical VCMDQs. All 4 are accessible
+> + * by the guest. With TEGRA241_CMDQV_MAX_CMDQ=2 only MAP_0 bits [1:0]
+> + * carry meaningful error state; MAP_1..MAP_3 always read as 0.
+> + * vintf = 0, 4 identical register entries
+> + */
+> +#define SMMU_CMDQV_VINTFi_LVCMDQ_ERR_MAP_(vi, j)  
+Again I won't add this extra complexity, get rid of vi everywhere for now.
+>                         \
+> +    REG32(VINTF##vi##_LVCMDQ_ERR_MAP_##j, 0x10c0 + j * 4 + vi * 0x100) \
+> +    FIELD(VINTF##vi##_LVCMDQ_ERR_MAP_##j, LVCMDQ_ERR_MAP, 0, 32)
+> +
+> +SMMU_CMDQV_VINTFi_LVCMDQ_ERR_MAP_(0, 0)
+> +/* MAP_1 and MAP_2 omitted; not referenced directly */
+> +SMMU_CMDQV_VINTFi_LVCMDQ_ERR_MAP_(0, 3)
+> +
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+>  
+>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index 2f1084b55f..3b08ed0ff3 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -8,19 +8,170 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/log.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+>  #include "smmuv3-accel.h"
+>  #include "tegra241-cmdqv.h"
+> +#include "trace.h"
+>  
+> -static uint64_t tegra241_cmdqv_read(void *opaque, hwaddr offset, unsigned size)
+> +static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV *cmdqv,
+> +                                                 hwaddr offset)
+>  {
+> -    return 0;
+> +    int i;
+> +
+> +    switch (offset) {
+> +    case A_VINTF0_CONFIG:
+> +        return cmdqv->vintf_config;
+> +    case A_VINTF0_STATUS:
+> +        return cmdqv->vintf_status;
+> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
+> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
+> +        return cmdqv->vintf_sid_match[i];
+> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
+> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
+> +        return cmdqv->vintf_sid_replace[i];
+> +    case A_VINTF0_LVCMDQ_ERR_MAP_0 ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        i = (offset - A_VINTF0_LVCMDQ_ERR_MAP_0) / 4;
+> +        return cmdqv->vintf_cmdq_err_map[i];
+> +    default:
+> +        /*
+> +         * GLB_FILT_CFG_0 (offset 0xC) and GLB_FILT_DATA_0 (offset 0x10) are
+> +         * filter config and filter data registers. They are not required for
+> +         * normal VINTF operation and are not emulated.
+> +         */
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +        return 0;
+> +    }
+> +}
+> +
+> +static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
+> +                                              hwaddr offset, uint64_t value)
+> +{
+> +    int i;
+> +
+> +    switch (offset) {
+> +    case A_VINTF0_CONFIG:
+> +        /*
+> +         * Mask out HYP_OWN on guest writes. This bit selects Hypervisor (1) vs
+> +         * Guest (0) ownership of the CMDQ. Force it to 0 so the VINTF always
+> +         * remains guest-owned.
+> +         */
+> +        value &= ~R_VINTF0_CONFIG_HYP_OWN_MASK;
+> +
+> +        cmdqv->vintf_config = value;
+> +        if (value & R_VINTF0_CONFIG_ENABLE_MASK) {
+> +            cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
+> +        } else {
+> +            cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
+> +        }
+> +        break;
+> +    case A_VINTF0_SID_MATCH_0 ... A_VINTF0_SID_MATCH_15:
+> +        i = (offset - A_VINTF0_SID_MATCH_0) / 4;
+> +        cmdqv->vintf_sid_match[i] = value;
+> +        break;
+> +    case A_VINTF0_SID_REPLACE_0 ... A_VINTF0_SID_REPLACE_15:
+> +        i = (offset - A_VINTF0_SID_REPLACE_0) / 4;
+> +        cmdqv->vintf_sid_replace[i] = value;
+> +        break;
+> +    default:
+> +        /*
+> +         * GLB_FILT_CFG_0 (offset 0xC) and GLB_FILT_DATA_0 (offset 0x10) are
+> +         * filter config and filter data registers. They are not required for
+> +         * normal VINTF operation and are not emulated.
+> +         */
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +        return;
+> +    }
+> +}
+> +
+> +static uint64_t tegra241_cmdqv_read_mmio(void *opaque, hwaddr offset,
+> +                                         unsigned size)
+> +{
+> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
+> +    uint64_t val = 0;
+> +
+> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s offset 0x%" PRIx64 " off limit (0x%x)\n", __func__,
+> +                      offset, TEGRA241_CMDQV_IO_LEN);
+> +        goto out;
+> +    }
+> +
+> +    switch (offset) {
+> +    case A_CONFIG:
+> +        val = cmdqv->config;
+> +        break;
+> +    case A_PARAM:
+> +        val = cmdqv->param;
+> +        break;
+> +    case A_STATUS:
+> +        val = cmdqv->status;
+> +        break;
+> +    case A_VI_ERR_MAP_0 ... A_VI_ERR_MAP_1:
+> +        val = cmdqv->vi_err_map[(offset - A_VI_ERR_MAP_0) / 4];
+> +        break;
+> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
+> +        val = cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4];
+> +        break;
+> +    case A_CMDQ_ERR_MAP_0 ... A_CMDQ_ERR_MAP_3:
+> +        val = cmdqv->cmdq_err_map[(offset - A_CMDQ_ERR_MAP_0) / 4];
+> +        break;
+> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
+> +        val = cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4];
+> +        break;
+> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        val = tegra241_cmdqv_config_vintf_read(cmdqv, offset);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled read access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +    }
+> +
+> +out:
+> +    trace_tegra241_cmdqv_read_mmio(offset, val, size);
+> +    return val;
+>  }
+>  
+> -static void tegra241_cmdqv_write(void *opaque, hwaddr offset, uint64_t value,
+> -                                 unsigned size)
+> +static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+> +                                      uint64_t value, unsigned size)
+>  {
+> +    Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
+> +
+> +    if (offset >= TEGRA241_CMDQV_IO_LEN) {
+> +        qemu_log_mask(LOG_UNIMP,
+> +                      "%s offset 0x%" PRIx64 " off limit (0x%x)\n", __func__,
+> +                      offset, TEGRA241_CMDQV_IO_LEN);
+> +        goto out;
+> +    }
+> +
+> +    switch (offset) {
+> +    case A_CONFIG:
+> +        cmdqv->config = value;
+> +        if (value & R_CONFIG_CMDQV_EN_MASK) {
+> +            cmdqv->status |= R_STATUS_CMDQV_ENABLED_MASK;
+> +        } else {
+> +            cmdqv->status &= ~R_STATUS_CMDQV_ENABLED_MASK;
+> +        }
+> +        break;
+> +    case A_VI_INT_MASK ... A_VI_INT_MASK_1:
+> +        cmdqv->vi_int_mask[(offset - A_VI_INT_MASK) / 4] = value;
+> +        break;
+> +    case A_CMDQ_ALLOC_MAP_0 ... A_CMDQ_ALLOC_MAP_1:
+> +        cmdqv->cmdq_alloc_map[(offset - A_CMDQ_ALLOC_MAP_0) / 4] = value;
+> +        break;
+> +    case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
+> +        tegra241_cmdqv_config_vintf_write(cmdqv, offset, value);
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+> +                      __func__, offset);
+> +    }
+> +
+> +out:
+> +    trace_tegra241_cmdqv_write_mmio(offset, value, size);
+>  }
+>  
+>  static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
+> @@ -84,8 +235,8 @@ static void tegra241_cmdqv_reset(SMMUv3State *s)
+>  }
+>  
+>  static const MemoryRegionOps mmio_cmdqv_ops = {
+> -    .read = tegra241_cmdqv_read,
+> -    .write = tegra241_cmdqv_write,
+> +    .read = tegra241_cmdqv_read_mmio,
+> +    .write = tegra241_cmdqv_write_mmio,
+>      .endianness = DEVICE_LITTLE_ENDIAN,
+>  };
+>  
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index 3457536fb0..8c61d66a26 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -72,6 +72,10 @@ smmuv3_accel_unset_iommu_device(int devfn, uint32_t devid) "devfn=0x%x (idev dev
+>  smmuv3_accel_translate_ste(uint32_t vsid, uint32_t hwpt_id, uint64_t ste_1, uint64_t ste_0) "vSID=0x%x hwpt_id=0x%x ste=%"PRIx64":%"PRIx64
+>  smmuv3_accel_install_ste(uint32_t vsid, const char * type, uint32_t hwpt_id) "vSID=0x%x ste type=%s hwpt_id=0x%x"
+>  
+> +# tegra241-cmdqv
+> +tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
+> +tegra241_cmdqv_write_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
+> +
+>  # strongarm.c
+>  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+>  strongarm_ssp_read_underrun(void) "SSP rx underrun"
+Thanks
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
----
- MAINTAINERS                          |   2 +
- docs/system/arm/aspeed.rst           |  35 +++
- include/hw/arm/aspeed_caliptra_emu.h |  29 +++
- hw/arm/aspeed_ast27x0-fc.c           |  55 +++++
- hw/arm/aspeed_caliptra_emu.c         | 338 +++++++++++++++++++++++++++
- hw/arm/meson.build                   |   1 +
- 6 files changed, 460 insertions(+)
- create mode 100644 include/hw/arm/aspeed_caliptra_emu.h
- create mode 100644 hw/arm/aspeed_caliptra_emu.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index afa178c5cc..eb01ab4c11 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1263,6 +1263,8 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/*/*aspeed*
- F: include/hw/*/*aspeed*
-+F: hw/arm/aspeed_caliptra_emu.c
-+F: include/hw/arm/aspeed_caliptra_emu.h
- F: hw/net/ftgmac100.c
- F: include/hw/net/ftgmac100.h
- F: docs/system/arm/aspeed.rst
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index d0054a7dbb..e0f511f098 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -423,6 +423,41 @@ Steps to boot the AST2700fc machine:
-        -snapshot \
-        -S -nographic
- 
-+The ``ast2700fc`` machine can also forward CA35 accesses to the on-die
-+Caliptra Root-of-Trust core to an external Caliptra backend over a Unix
-+socket.  The backend (``caliptra-server``) is launched independently with
-+the Caliptra ROM and firmware bundle, boots the Caliptra emulated model
-+to runtime-ready, then listens on a Unix socket.  QEMU connects to that
-+socket from the device's ``realize()`` and forwards every CA35 read/write
-+in the Caliptra MMIO window as an APB transaction on the socket.
-+
-+The socket path is configured with the ``caliptra-socket`` machine
-+property.  If the property is not set, no Caliptra backend is attached
-+and the Caliptra MMIO window is left unmapped.
-+
-+For example, to run Caliptra firmware from ``caliptra-sw``:
-+
-+.. code-block:: bash
-+
-+  # Terminal 1: start caliptra-server with the ROM/firmware images.
-+  # It boots the model to runtime-ready before opening the socket.
-+  $ caliptra-server \
-+       --socket /tmp/caliptra.sock \
-+       --rom    images/caliptra-rom-with-log.bin \
-+       --firmware images/caliptra-fw.bundle
-+
-+  # Terminal 2: launch QEMU; the CA35 starts running immediately.
-+  $ qemu-system-aarch64 \
-+       -M ast2700fc,caliptra-socket=/tmp/caliptra.sock \
-+       ...
-+
-+There is no boot handshake between QEMU and the backend: by the time the
-+device's ``realize()`` runs, ``caliptra-server`` is already at
-+runtime-ready, so the CA35 is not held in reset.  The wire protocol
-+between QEMU and the backend is APB-level: ``APB_READ`` / ``APB_WRITE``
-+requests from QEMU are answered by ``APB_RDATA`` / ``APB_WACK`` from the
-+backend.  This protocol is RFC-stage and may change.
-+
- After launching QEMU, serial devices will be automatically redirected.
- Example output:
- 
-diff --git a/include/hw/arm/aspeed_caliptra_emu.h b/include/hw/arm/aspeed_caliptra_emu.h
-new file mode 100644
-index 0000000000..a4b70bbe18
---- /dev/null
-+++ b/include/hw/arm/aspeed_caliptra_emu.h
-@@ -0,0 +1,29 @@
-+/*
-+ * ASPEED Caliptra emulator backend
-+ *
-+ * Copyright (C) 2026 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_CALIPTRA_EMU_H
-+#define ASPEED_CALIPTRA_EMU_H
-+
-+#define TYPE_ASPEED_CALIPTRA_EMU "aspeed-caliptra-emu"
-+
-+/*
-+ * RFC/PoC integration hook only.
-+ *
-+ * This address is used by the current QEMU experiment to attach the
-+ * external Caliptra backend to the AST2700fc machine. It must not be
-+ * interpreted as the final functional interface used by real hardware:
-+ * early Caliptra interaction is bootmcu-owned, and CA35 does not use
-+ * this path for functional access to the Caliptra core.
-+ *
-+ * The 128 KiB region covers:
-+ *   +0x00000  mailbox CSR   (caliptra APB 0x30020000)
-+ *   +0x10000  SOC IFC       (caliptra APB 0x30030000)
-+ */
-+#define ASPEED_CALIPTRA_MMIO_BASE 0x14c60000ULL
-+
-+#endif /* ASPEED_CALIPTRA_EMU_H */
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index 5eb6680da9..ac452a5a2a 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -22,6 +22,8 @@
- #include "hw/arm/boot.h"
- #include "hw/block/flash.h"
- #include "hw/arm/aspeed_coprocessor.h"
-+#include "hw/arm/aspeed_caliptra_emu.h"
-+#include "hw/core/sysbus.h"
- #include "hw/arm/machines-qom.h"
- 
- #define TYPE_AST2700FC MACHINE_TYPE_NAME("ast2700fc")
-@@ -34,6 +36,8 @@ static struct arm_boot_info ast2700fc_board_info = {
- struct Ast2700FCState {
-     MachineState parent_obj;
- 
-+    char *caliptra_socket;
-+
-     MemoryRegion ca35_memory;
-     MemoryRegion ca35_dram;
-     MemoryRegion ca35_boot_rom;
-@@ -198,9 +202,51 @@ static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
- 
- static void ast2700fc_init(MachineState *machine)
- {
-+    Ast2700FCState *s = AST2700FC(machine);
-+
-     ast2700fc_ca35_init(machine, &error_abort);
-     ast2700fc_ssp_init(machine, &error_abort);
-     ast2700fc_tsp_init(machine, &error_abort);
-+
-+    if (s->caliptra_socket) {
-+        SysBusDevice *sbd;
-+        DeviceState *dev = qdev_new(TYPE_ASPEED_CALIPTRA_EMU);
-+
-+        qdev_prop_set_string(dev, "socket-path", s->caliptra_socket);
-+        sbd = SYS_BUS_DEVICE(dev);
-+        sysbus_realize_and_unref(sbd, &error_abort);
-+        /*
-+         * Map the Caliptra APB MMIO region into the CA35 address space.
-+         * 0x14000000..0x14FFFFFF.
-+         */
-+        memory_region_add_subregion_overlap(&s->ca35_memory,
-+                                            ASPEED_CALIPTRA_MMIO_BASE,
-+                                            sysbus_mmio_get_region(sbd, 0),
-+                                            1);
-+    }
-+}
-+
-+static char *ast2700fc_get_caliptra_socket(Object *obj, Error **errp)
-+{
-+    Ast2700FCState *s = AST2700FC(obj);
-+
-+    return g_strdup(s->caliptra_socket ? s->caliptra_socket : "");
-+}
-+
-+static void ast2700fc_set_caliptra_socket(Object *obj, const char *value,
-+                                          Error **errp)
-+{
-+    Ast2700FCState *s = AST2700FC(obj);
-+
-+    g_free(s->caliptra_socket);
-+    s->caliptra_socket = g_strdup(value);
-+}
-+
-+static void ast2700fc_instance_finalize(Object *obj)
-+{
-+    Ast2700FCState *s = AST2700FC(obj);
-+
-+    g_free(s->caliptra_socket);
- }
- 
- static void ast2700fc_class_init(ObjectClass *oc, const void *data)
-@@ -212,6 +258,14 @@ static void ast2700fc_class_init(ObjectClass *oc, const void *data)
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->min_cpus = mc->max_cpus = mc->default_cpus = 6;
-+
-+    object_class_property_add_str(oc, "caliptra-socket",
-+                                  ast2700fc_get_caliptra_socket,
-+                                  ast2700fc_set_caliptra_socket);
-+    object_class_property_set_description(oc, "caliptra-socket",
-+        "Unix socket path for the external Caliptra backend (caliptra-server). "
-+        "caliptra-server is launched independently with the ROM/firmware images "
-+        "and must be listening before QEMU is started.");
- }
- 
- static const TypeInfo ast2700fc_types[] = {
-@@ -220,6 +274,7 @@ static const TypeInfo ast2700fc_types[] = {
-         .parent         = TYPE_MACHINE,
-         .class_init     = ast2700fc_class_init,
-         .instance_size  = sizeof(Ast2700FCState),
-+        .instance_finalize = ast2700fc_instance_finalize,
-         .interfaces     = aarch64_machine_interfaces,
-     },
- };
-diff --git a/hw/arm/aspeed_caliptra_emu.c b/hw/arm/aspeed_caliptra_emu.c
-new file mode 100644
-index 0000000000..e91ca6e83d
---- /dev/null
-+++ b/hw/arm/aspeed_caliptra_emu.c
-@@ -0,0 +1,338 @@
-+/*
-+ * ASPEED Caliptra external backend (PoC)
-+ *
-+ * Forwards CA35 MMIO accesses on the Caliptra APB window to an external
-+ * caliptra-server process over a Unix socket.  caliptra-server is expected
-+ * to be started independently with the Caliptra ROM and firmware bundle
-+ * and to be listening on socket-path before QEMU is launched.
-+ *
-+ * Copyright (C) 2026 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/arm/aspeed_caliptra_emu.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/core/sysbus.h"
-+#include "io/channel.h"
-+#include "io/channel-socket.h"
-+#include "qapi/error.h"
-+#include "qemu/bswap.h"
-+#include "qemu/error-report.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/units.h"
-+#include "system/memory.h"
-+
-+/*
-+ * Wire protocol (little-endian).  Symmetric with caliptra-server.
-+ *
-+ *   Header (12 bytes):
-+ *     u32 magic        -- 0x43505452 ("CPTR")
-+ *     u16 version      -- 1
-+ *     u16 command
-+ *     u32 payload_len
-+ *
-+ *   Commands (after the connection is established):
-+ *     APB_READ   QEMU -> server   {u32 apb_addr}
-+ *     APB_RDATA  server -> QEMU   {u32 data}
-+ *     APB_WRITE  QEMU -> server   {u32 apb_addr, u32 data}
-+ *     APB_WACK   server -> QEMU   {} (empty payload)
-+ *
-+ * There is no boot handshake: caliptra-server boots its emulated model to
-+ * runtime-ready before listen()/accept(), and QEMU just connects and starts
-+ * forwarding APB traffic.
-+ */
-+#define CALIPTRA_SOCKET_MAGIC          0x43505452
-+#define CALIPTRA_SOCKET_VERSION        1
-+#define CALIPTRA_SOCKET_CMD_APB_READ   3
-+#define CALIPTRA_SOCKET_CMD_APB_RDATA  4
-+#define CALIPTRA_SOCKET_CMD_APB_WRITE  5
-+#define CALIPTRA_SOCKET_CMD_APB_WACK   6
-+#define CALIPTRA_SOCKET_MAX_PAYLOAD    (4 * MiB)
-+
-+/*
-+ * Base address of the Caliptra APB register space as seen by caliptra-hw-model.
-+ * Mailbox CSR starts at 0x30020000; SOC IFC starts at 0x30030000.
-+ * Total mapped size: 0x20000 (128 KiB).
-+ *
-+ * MMIO offset from ASPEED_CALIPTRA_MMIO_BASE in the CA35 address space is
-+ * mapped 1:1 to APB address CALIPTRA_APB_BASE + offset.
-+ */
-+#define CALIPTRA_APB_BASE  0x30020000
-+#define CALIPTRA_MMIO_SIZE 0x20000
-+
-+typedef struct QEMU_PACKED CaliptraSocketHeader {
-+    uint32_t magic;
-+    uint16_t version;
-+    uint16_t command;
-+    uint32_t payload_len;
-+} CaliptraSocketHeader;
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedCaliptraEmuState, ASPEED_CALIPTRA_EMU)
-+
-+struct AspeedCaliptraEmuState {
-+    SysBusDevice parent_obj;
-+    char *socket_path;
-+    QIOChannelSocket *sioc;
-+    QemuMutex ioc_mutex;
-+    MemoryRegion mmio;
-+};
-+
-+static bool caliptra_socket_write_msg(QIOChannel *ioc, uint16_t command,
-+                                      const uint8_t *payload, size_t len,
-+                                      Error **errp)
-+{
-+    CaliptraSocketHeader hdr = {
-+        .magic = cpu_to_le32(CALIPTRA_SOCKET_MAGIC),
-+        .version = cpu_to_le16(CALIPTRA_SOCKET_VERSION),
-+        .command = cpu_to_le16(command),
-+        .payload_len = cpu_to_le32(len),
-+    };
-+
-+    if (qio_channel_write_all(ioc, (const char *)&hdr, sizeof(hdr), errp) < 0) {
-+        return false;
-+    }
-+    if (len &&
-+        qio_channel_write_all(ioc, (const char *)payload, len, errp) < 0) {
-+        return false;
-+    }
-+    return true;
-+}
-+
-+static bool caliptra_socket_read_header(QIOChannel *ioc, uint16_t command,
-+                                        CaliptraSocketHeader *hdr,
-+                                        Error **errp)
-+{
-+    if (qio_channel_read_all(ioc, (char *)hdr, sizeof(*hdr), errp) < 0) {
-+        return false;
-+    }
-+
-+    hdr->magic = le32_to_cpu(hdr->magic);
-+    hdr->version = le16_to_cpu(hdr->version);
-+    hdr->command = le16_to_cpu(hdr->command);
-+    hdr->payload_len = le32_to_cpu(hdr->payload_len);
-+
-+    if (hdr->magic != CALIPTRA_SOCKET_MAGIC) {
-+        error_setg(errp, "Invalid Caliptra socket magic 0x%08x", hdr->magic);
-+        return false;
-+    }
-+    if (hdr->version != CALIPTRA_SOCKET_VERSION) {
-+        error_setg(errp, "Unsupported Caliptra socket version %u",
-+                   hdr->version);
-+        return false;
-+    }
-+    if (hdr->command != command) {
-+        error_setg(errp, "Unexpected Caliptra socket command %u (expected %u)",
-+                   hdr->command, command);
-+        return false;
-+    }
-+    if (hdr->payload_len > CALIPTRA_SOCKET_MAX_PAYLOAD) {
-+        error_setg(errp, "Caliptra socket response too large: %u bytes",
-+                   hdr->payload_len);
-+        return false;
-+    }
-+    return true;
-+}
-+
-+static bool caliptra_apb_send_recv(AspeedCaliptraEmuState *s,
-+                                   uint16_t req_cmd, uint16_t rsp_cmd,
-+                                   const uint8_t *req_payload, size_t req_len,
-+                                   uint8_t *rsp_buf, size_t rsp_len,
-+                                   Error **errp)
-+{
-+    CaliptraSocketHeader hdr;
-+    QIOChannel *ioc;
-+
-+    if (!s->sioc) {
-+        error_setg(errp, "Caliptra APB access with no backend connection");
-+        return false;
-+    }
-+    ioc = QIO_CHANNEL(s->sioc);
-+
-+    if (!caliptra_socket_write_msg(ioc, req_cmd, req_payload, req_len, errp)) {
-+        return false;
-+    }
-+    if (!caliptra_socket_read_header(ioc, rsp_cmd, &hdr, errp)) {
-+        return false;
-+    }
-+
-+    if (rsp_len) {
-+        if (hdr.payload_len < rsp_len) {
-+            error_setg(errp,
-+                       "Caliptra short response for cmd %u: got %u, expected %zu",
-+                       rsp_cmd, hdr.payload_len, rsp_len);
-+            return false;
-+        }
-+        if (qio_channel_read_all(ioc, (char *)rsp_buf, rsp_len, errp) < 0) {
-+            return false;
-+        }
-+        /* Discard any trailing bytes. */
-+        if (hdr.payload_len > rsp_len) {
-+            g_autofree uint8_t *extra = g_malloc(hdr.payload_len - rsp_len);
-+            if (qio_channel_read_all(ioc, (char *)extra,
-+                                     hdr.payload_len - rsp_len, errp) < 0) {
-+                return false;
-+            }
-+        }
-+    } else if (hdr.payload_len) {
-+        g_autofree uint8_t *extra = g_malloc(hdr.payload_len);
-+        if (qio_channel_read_all(ioc, (char *)extra,
-+                                 hdr.payload_len, errp) < 0) {
-+            return false;
-+        }
-+    }
-+    return true;
-+}
-+
-+static uint64_t caliptra_mmio_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedCaliptraEmuState *s = opaque;
-+    uint8_t req[4], rsp[4] = {};
-+    Error *err = NULL;
-+
-+    stl_le_p(req, CALIPTRA_APB_BASE + (uint32_t)offset);
-+
-+    /*
-+     * Release the BQL before blocking on the socket so the QEMU event loop
-+     * stays responsive while caliptra-server processes the request.
-+     */
-+    bql_unlock();
-+    qemu_mutex_lock(&s->ioc_mutex);
-+    caliptra_apb_send_recv(s,
-+                           CALIPTRA_SOCKET_CMD_APB_READ,
-+                           CALIPTRA_SOCKET_CMD_APB_RDATA,
-+                           req, sizeof(req),
-+                           rsp, sizeof(rsp), &err);
-+    qemu_mutex_unlock(&s->ioc_mutex);
-+    bql_lock();
-+
-+    if (err) {
-+        error_report("caliptra APB read 0x%08" PRIx32 ": %s",
-+                     CALIPTRA_APB_BASE + (uint32_t)offset,
-+                     error_get_pretty(err));
-+        error_free(err);
-+        return 0xdeadbeef;
-+    }
-+    return ldl_le_p(rsp);
-+}
-+
-+static void caliptra_mmio_write(void *opaque, hwaddr offset,
-+                                uint64_t value, unsigned size)
-+{
-+    AspeedCaliptraEmuState *s = opaque;
-+    uint8_t req[8];
-+    Error *err = NULL;
-+
-+    stl_le_p(req + 0, CALIPTRA_APB_BASE + (uint32_t)offset);
-+    stl_le_p(req + 4, (uint32_t)value);
-+
-+    bql_unlock();
-+    qemu_mutex_lock(&s->ioc_mutex);
-+    caliptra_apb_send_recv(s,
-+                           CALIPTRA_SOCKET_CMD_APB_WRITE,
-+                           CALIPTRA_SOCKET_CMD_APB_WACK,
-+                           req, sizeof(req),
-+                           NULL, 0, &err);
-+    qemu_mutex_unlock(&s->ioc_mutex);
-+    bql_lock();
-+
-+    if (err) {
-+        error_report("caliptra APB write 0x%08" PRIx32 " = 0x%08" PRIx32 ": %s",
-+                     CALIPTRA_APB_BASE + (uint32_t)offset, (uint32_t)value,
-+                     error_get_pretty(err));
-+        error_free(err);
-+    }
-+}
-+
-+static const MemoryRegionOps caliptra_mmio_ops = {
-+    .read  = caliptra_mmio_read,
-+    .write = caliptra_mmio_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_caliptra_emu_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedCaliptraEmuState *s = ASPEED_CALIPTRA_EMU(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    SocketAddress addr;
-+    QIOChannelSocket *sioc;
-+
-+    if (!s->socket_path || !s->socket_path[0]) {
-+        error_setg(errp, "caliptra-emu: socket-path must be set");
-+        return;
-+    }
-+
-+    memory_region_init_io(&s->mmio, OBJECT(s), &caliptra_mmio_ops, s,
-+                          "caliptra-apb", CALIPTRA_MMIO_SIZE);
-+    sysbus_init_mmio(sbd, &s->mmio);
-+
-+    /*
-+     * Connect to caliptra-server synchronously.  The server is expected to be
-+     * already listening with the Caliptra ROM/firmware booted to runtime-ready.
-+     */
-+    memset(&addr, 0, sizeof(addr));
-+    addr.type = SOCKET_ADDRESS_TYPE_UNIX;
-+    addr.u.q_unix.path = s->socket_path;
-+
-+    sioc = qio_channel_socket_new();
-+    if (qio_channel_socket_connect_sync(sioc, &addr, errp) < 0) {
-+        object_unref(OBJECT(sioc));
-+        return;
-+    }
-+    if (!qio_channel_set_blocking(QIO_CHANNEL(sioc), true, errp)) {
-+        object_unref(OBJECT(sioc));
-+        return;
-+    }
-+    s->sioc = sioc;
-+}
-+
-+static void aspeed_caliptra_emu_instance_init(Object *obj)
-+{
-+    AspeedCaliptraEmuState *s = ASPEED_CALIPTRA_EMU(obj);
-+
-+    qemu_mutex_init(&s->ioc_mutex);
-+}
-+
-+static void aspeed_caliptra_emu_finalize(Object *obj)
-+{
-+    AspeedCaliptraEmuState *s = ASPEED_CALIPTRA_EMU(obj);
-+
-+    if (s->sioc) {
-+        object_unref(OBJECT(s->sioc));
-+    }
-+    qemu_mutex_destroy(&s->ioc_mutex);
-+}
-+
-+static const Property aspeed_caliptra_emu_props[] = {
-+    DEFINE_PROP_STRING("socket-path", AspeedCaliptraEmuState, socket_path),
-+};
-+
-+static void aspeed_caliptra_emu_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = aspeed_caliptra_emu_realize;
-+    dc->desc    = "ASPEED Caliptra external backend (PoC)";
-+    device_class_set_props(dc, aspeed_caliptra_emu_props);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+}
-+
-+static const TypeInfo aspeed_caliptra_emu_type_info = {
-+    .name              = TYPE_ASPEED_CALIPTRA_EMU,
-+    .parent            = TYPE_SYS_BUS_DEVICE,
-+    .instance_size     = sizeof(AspeedCaliptraEmuState),
-+    .instance_init     = aspeed_caliptra_emu_instance_init,
-+    .instance_finalize = aspeed_caliptra_emu_finalize,
-+    .class_init        = aspeed_caliptra_emu_class_init,
-+};
-+
-+static void aspeed_caliptra_emu_register_type(void)
-+{
-+    type_register_static(&aspeed_caliptra_emu_type_info);
-+}
-+type_init(aspeed_caliptra_emu_register_type)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 84b8ec5fb5..25e2b58284 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -72,6 +72,7 @@ arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-   'aspeed_ast1700.c',
-   'aspeed_ast27x0.c',
-   'aspeed_ast27x0_evb.c',
-+  'aspeed_caliptra_emu.c',
-   'aspeed_ast27x0-fc.c',
-   'aspeed_ast27x0-ssp.c',
-   'aspeed_ast27x0-tsp.c',
--- 
-2.43.0
+Eric
 
 

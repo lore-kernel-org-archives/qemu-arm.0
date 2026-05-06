@@ -4,97 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0154CD342C
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 13:49:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 234A7CD342C
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 13:54:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKccC-0005aS-Ix; Wed, 06 May 2026 09:48:40 -0400
+	id 1wKchf-0007kZ-1h; Wed, 06 May 2026 09:54:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKcc8-0005Xj-ND
- for qemu-arm@nongnu.org; Wed, 06 May 2026 09:48:37 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKcc7-0004XC-2L
- for qemu-arm@nongnu.org; Wed, 06 May 2026 09:48:36 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-7991db3dc98so67962627b3.0
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 06:48:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778075313; x=1778680113; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=aAG+KvUEewg8B86niHrQB7Jf/yP/IUSg2UD6qboiwVM=;
- b=fWhuk1ABFZVbbcuLbt+EI8HB9ZfVa5cW3O5CVFaLccHObv4HW+zrosn+s3OIMMYsuM
- PQKhmGaU6T4hYa7di2CPn/UEeIfMLByuYIHITBKxmhLEj1kYxIBEDZXZJi0eezMvV5VB
- 6RViJi3hYDvUG6jnYJVB+FHd3S7RxeeoMmFR+Iza8Di/z0aTgGNE5DzmOTUk8W/6f00f
- i16y4rY7EtPmQI0p7F7xefQ82Lo8JmaBURt1nP6vr5vJO7HfX2yeZ/qBBPIdgmqYIVQH
- EXPlwiSxKyaqyLWOH736S2x1wymsWoNr6j3jvSvXXHD/ZM9ZdtS6WneKSUeAl4HSMPhg
- I0qg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778075313; x=1778680113;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=aAG+KvUEewg8B86niHrQB7Jf/yP/IUSg2UD6qboiwVM=;
- b=luHKOEVtTBq94i9FJOvTqQoSQB7Ym8wkO3nSb+SDZk27SvZLI2quoyJFpNuHs9WdmH
- SDyKBQk5yPKrRxSjx2+E2UqMhceBC3G1/B9szAomyWp5DQYnER0FAIT1KnEkn0CBhIAk
- cHHWBL8dzQDX6a2TSq97Vw4+WZpISakicwqVUqZhH6xflBmdgqDrE0dQBo1A0TOH5Uyk
- bPoFbRwN/Tf1wJs2Cfa8p9RWAapyCUYajickCLa7357OsBYBPjq9DTTCYJbZjtubMRmY
- 44v5AnU1LxsbSJBBPD7b62i8S8pWcfzygAJ3jFfwIsdjPq3Zb543H6vurErIRS+xPu0J
- e1Ig==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+UamEeWMn+GkkEmi9DnTsg2gUiVCfkCZOfcVCz1g2Ok+SAZHzuPlbPTgXitvApsc1t07hoA9DXcA==@nongnu.org
-X-Gm-Message-State: AOJu0YyPwRe/JUK1Sui6I3GJV9Rba1hDP8vH8BbOBkH5G5XlckTR2ktV
- Eh6l2Kmj4OW1exB+Gpg260ubD6/qFca7fSCW9MDZAjKibf2moSxUZAb6F9qZq3A+gmw=
-X-Gm-Gg: AeBDievirqpnwdImcFBU1xeMH4HWodt6aI5gGRX5YflORwethBpwQvjDFHUI/579KeB
- C/EQ32otGngvFnMCzRHvQNcY2aJ9/k4miDRmJCbxw6ORZMu3HOVr6TTO4p1N7DS7y/oewuyqm41
- hth8+dqDwqasQP3e0a3jobFTJnSnglKhZaocikdunvhQ41BlPNxeY4i6guvWR58LFTNZUcUqP2c
- yxsqn/dojC3iDJfUQzivNAK5hx3RS0QwW/HrBosOE0SbhRKo0sDwNnpSlgzDI8ZYqKLxUFd725s
- SBn/J1qP1jzv4zHtdD2qRXz8IFxiGGx8jsXkHEtJ93a1P17aTh2YxMj2oJkGTU2Fv9uHZZZxs8C
- 13jZukRh7s8AAjfZubL0X67y7Ry1lWqoIY/zolsO7Q359dZ5ilyeDjVOzvwHcRK/CMC5YMLJzCY
- woIhv5A25NrpIsRmPzbWPhM1FWRvoBKhNpJ2UMMWqqFNUVPl81FjCaJI5tqqbTuaM5Qu2s99rlc
- wLKWaKRAQOgraYDZlsG
-X-Received: by 2002:a05:690c:81:b0:7ba:f3a2:553c with SMTP id
- 00721157ae682-7bdf5dc7b67mr39581007b3.11.1778075313437; 
- Wed, 06 May 2026 06:48:33 -0700 (PDT)
-Received: from ?IPV6:2600:381:c938:6375:5307:cd92:1ec8:e891?
- ([2600:381:c938:6375:5307:cd92:1ec8:e891])
- by smtp.gmail.com with ESMTPSA id
- 00721157ae682-7bd66896b35sm77571417b3.47.2026.05.06.06.48.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 06:48:33 -0700 (PDT)
-Message-ID: <ecd55b46-2536-407d-b3e9-da74a5f02c7d@linaro.org>
-Date: Wed, 6 May 2026 08:48:30 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wKchc-0007k8-Vx
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 09:54:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wKcha-0007N0-Pi
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 09:54:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778075652;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=+QhbvYAmYNexNcjfjTevz8GNne3BxIxGTPeqj8Oq9UA=;
+ b=aVshB/BAcjAry9cEE6kDu33UtBzKoL4+/ZWY0TEIMyGkZD1B3PixQVqmTtqkUntWECRGW2
+ x0Q6M+FglwwQ9ilPVYSfw5Lg24Ew5BEEVw62kcqxERd9bOczGW90JxJSQ1BAmCw/H18X5w
+ w5MTX5Un6o65CJHqnt+5VTBKHVA7JIE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-ZEcnUJmEO2-Q4sOUebK2Sg-1; Wed,
+ 06 May 2026 09:54:09 -0400
+X-MC-Unique: ZEcnUJmEO2-Q4sOUebK2Sg-1
+X-Mimecast-MFC-AGG-ID: ZEcnUJmEO2-Q4sOUebK2Sg_1778075645
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 43A4319560AD; Wed,  6 May 2026 13:54:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A307E3002D31; Wed,  6 May 2026 13:54:04 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3D34B21E6A01; Wed, 06 May 2026 15:54:02 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: qemu-devel@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Thomas Huth <thuth@redhat.com>,
+ linux-edac@vger.kernel.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH] MAINTAINERS: update HEST maintainership entries
+In-Reply-To: <6316f5b788cdc6b63e808606649dc5862271b22e.1778075257.git.mchehab+huawei@kernel.org>
+ (Mauro Carvalho Chehab's message of "Wed, 6 May 2026 15:47:37 +0200")
+References: <6316f5b788cdc6b63e808606649dc5862271b22e.1778075257.git.mchehab+huawei@kernel.org>
+Date: Wed, 06 May 2026 15:54:02 +0200
+Message-ID: <87y0hwabk5.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 08/15] target/arm: add canonical MTE check logic
-To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-References: <20260504-feat-mte4-v5-0-232a648e63c6@gmail.com>
- <20260504-feat-mte4-v5-8-232a648e63c6@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260504-feat-mte4-v5-8-232a648e63c6@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=richard.henderson@linaro.org; helo=mail-yw1-x112e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: yTcTVmZYjyFrIM34oTIfKQbZ2dq0tg3VoGy1cwfNTlE_1778075645
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,18 +91,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/4/26 10:50, Gabriel Brookman wrote:
-> With MTX active, address tag bits are checked for canonicity if the
-> corresponding memory regions are not allocation tagged. See
-> AArch64_CheckTag.
-> 
-> Signed-off-by: Gabriel Brookman<brookmangabriel@gmail.com>
-> ---
->   target/arm/tcg/mte_helper.c | 30 ++++++++++++++++++++++++++----
->   1 file changed, 26 insertions(+), 4 deletions(-)
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> writes:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Mark HEST code as maintained and assign them to me.
+>
+> While here, add a "L" entry to EDAC ML as RAS discussions
+> usually happen there.
+>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
+Thank you!
 
-r~
+Acked-by: Markus Armbruster <armbru@redhat.com>
+
 

@@ -4,148 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC9ECD3436
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DAFCCD342C
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:29:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKbMP-0005Wk-6O; Wed, 06 May 2026 08:28:17 -0400
+	id 1wKbMP-0005Wl-94; Wed, 06 May 2026 08:28:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKbMM-0005W7-6U
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:14 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKbMM-0005WN-TH
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKbMB-0001oC-MJ
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:12 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKbMJ-0001og-JN
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778070479;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1778070481;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=kWbdYPK9ijBNeZPnqCRf5jGhK4jLag5YL0PqMZr3XHs=;
- b=Zuvjinj4h16TLTV4VvFa5HtHlYemjLinUfazpqgAlzC5Begz+wD0ZTl5UBrujzZAmwz0lI
- 8E6Q2XkNTdHkLieaOJcYagNANkqSLRF78/gRZFYj44fKftrLJAP37ktLwVwyJqyUvru8dT
- WCOLvs95e6PU07FooN1wG0BBPRzZmuY=
+ in-reply-to:in-reply-to:references:references;
+ bh=/PoO/YSWuuQn8MYN48uxszW/67/0bMvM+epWQ24oSxM=;
+ b=XCqO7iDIeabf6YAZoUqEtYFock49rKHABdUZpD45TnN4WhvrU/G+NBuoBx+aWrQp/ZHgZY
+ J+6eOR4XVwzm/bz7I969RgGKkp7AU7x9ywM829/6h539JujjpUGV6fuhBMLAjiCeP1QGUn
+ x5mgVclySpj5yuaWz+U78CAKKg2je10=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-298-CmoouiBAMlOz1Bcpsb689g-1; Wed, 06 May 2026 08:27:58 -0400
-X-MC-Unique: CmoouiBAMlOz1Bcpsb689g-1
-X-Mimecast-MFC-AGG-ID: CmoouiBAMlOz1Bcpsb689g_1778070477
+ us-mta-402-0tTk1WkYMWi5V-syWssbqw-1; Wed, 06 May 2026 08:28:00 -0400
+X-MC-Unique: 0tTk1WkYMWi5V-syWssbqw-1
+X-Mimecast-MFC-AGG-ID: 0tTk1WkYMWi5V-syWssbqw_1778070479
 Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-488f973ddfeso47375585e9.3
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:27:57 -0700 (PDT)
+ 5b1f17b1804b1-488c2cc0cbaso55374755e9.3
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:27:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778070477; x=1778675277;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1778070479; x=1778675279;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kWbdYPK9ijBNeZPnqCRf5jGhK4jLag5YL0PqMZr3XHs=;
- b=A3inE6XDAjQ81bmtTnDNILoQkXnUiB4/NgLbmbuARtcsCqK6p9NEky/4gNkjodrTAi
- phHUcxP90SZ3qWx1qO8LWeDBRgP91bz64g/gTE1Zw3PVxwhsdcsu8YjTYUmvd0/EIAYG
- nt2hkj9oXF5+tyXb/VCbfQo6TlJFxaKxAyF/cf2MVOGTyp6YzofJJRUxYsYGqo9/Tt3a
- J7MgpTJosRbg+EM7zQyWQW99Z8ejzvLFB6h5wIlwYZOTaAsK+eqQikloZEI6UK1iCQwQ
- tbJptzGeqnT4SV2D60Hh/bTojObo1e27hQ6YSKITYH3bR90UjJyCNKyMgw6b7nsyANPw
- W2kw==
+ bh=/PoO/YSWuuQn8MYN48uxszW/67/0bMvM+epWQ24oSxM=;
+ b=hTDp8EkOTi/HJfh7I32rbSQMrRGdQ0bbZkUd8M5DCWIckAgnXhgSxGc7YpHwES0BzM
+ +oyAiz7tteVAr/VWZAa0BhyYfTSIG6xQhCHC58hrheX55MoJFCZu28OPBzm3n/HMAKXr
+ LFs8PQNKjRuNg6E61ThIidSOh1zVrp1ASIspeTT1q52d2HmnMi7Ncv9rM+IqCdFzQJlh
+ LG1DVzIrQ1ruvxfMnZdKwFSZ19lJCcMzPUX53P9EjyVFqKNvmk3VZwg17geUarVSxEXm
+ E4kOrHIbdriBs36JbUw47WPQW0FpRWWKtTKrB3aHoTIXQdkHzmCbiKPTSIfm6iQR5DmR
+ uiYQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/VsHW9kTZHlduGGezVETh+VQqYOMUrrzlMw2RPYVZm8c1IoKNqim9aeOGp75XV9zPm5mYOIE76kw==@nongnu.org
-X-Gm-Message-State: AOJu0YwfeQ1tztSBJ9ZwLHhVcdPjl79bz+lkCGbZehfGjOOK2cXrU/YC
- UOI46cbssrtIaJ2GJpZ6USPo5soIg3MjyqNhP5bSxCQmuYD6opAiDaimZ9FozfN6HfP1rkTBgeT
- +69XS6+L75X+hM+Y1caY1lxuP0KVc6A8zZhHa/l76HKbqiPJ+Sc7ggQ==
-X-Gm-Gg: AeBDievNL2t3cZUSijg2/18BzjLFLGviP+9WhkrW+s9xydq7ouC5x6E/Z9hOyDwsSmg
- WdwnaguvbWj3LUkP0heu4WCZc9KcX0yH7m2/SqSdYfTdHhO6zMHfjFoY3J7vaK8g7SvyI/GjCrI
- QWGD5QXy3NPdl4O4Pcef5sWRawWbgtjCCLgCc4p/N7iU5ur4OVa+hMJyr5cKKZlvPNNpBHxfMhY
- Mk4lGc+QPgyW0q4rdd5ps++7hMCEKotg8lcrmEC1ASEsGw7+dCYqJRm27K/cJeB/4JeptkYB1lh
- +dNbZE7hCbGhDqzewSB3XMKODPKsdE+h4ry+M0z+ckSpjza+GAXTvD20xrv8/+5xcSyoKXwz2+x
- 0v8EZmgrIL2BsTGMxT+gxM9OndgW1y/zmIApr8TYkw4sqnHjYsApZwJcm/qs6D0MbDCzc81E=
-X-Received: by 2002:a05:600c:3b17:b0:489:e696:836f with SMTP id
- 5b1f17b1804b1-48e51e15718mr51702745e9.10.1778070476888; 
- Wed, 06 May 2026 05:27:56 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b17:b0:489:e696:836f with SMTP id
- 5b1f17b1804b1-48e51e15718mr51702135e9.10.1778070476470; 
- Wed, 06 May 2026 05:27:56 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AFNElJ9kBIXNBVr9L9zQGLRPdpr9e2MLpuJh+7iCIlQdCb7HssdR/13bECRLVTs/xBmoR1GHcaZscfsfxA==@nongnu.org
+X-Gm-Message-State: AOJu0YzFKhxbRshJ3Mt/NG6P/6/3sMRhWX63z6fEff2+PKpPcX2WRolB
+ kGsycYKC8FFicXtzGWI8tkixi/49EtVzwg434hFKpmP0V4Pn7l52GetRRLG1tYXE0f3XWazE0Gc
+ BRG5Oh2+Cbrq1QswJ7mN00/tDQ4bfK3l1S+/X9XPp6iWPvgpTjwTzIg==
+X-Gm-Gg: AeBDievGxrDmpCniRWnC8LwFzQY6cfVx5Skyc8S+pWvBkkaJ5x9vjDZelzBV2Mr2j2B
+ NwQJKod7SCE/UrpW4L/1dSrJxLhYX2wVP+n4Mzp/5adym+bEcTZQoYy4fflpehqQ2ZVcQ5iKV9W
+ s1/0C6gDvXlO+viXNbak9NbUFBT1uwXPWSs1wJu7RHwfrck3E2lHLKLXF/UF3DA/PPpPqoXqZzV
+ NpL6ijmmrBjVgr5ff84GMBOsdwEQE/iSbdqsDzD471xLyhrFQt99nWuL+lcNgXAwO+pbb7OfW/e
+ cg8whX4z5fxFtDm/nDOyKJcI5KUqbS0QAMvuCkQBzywgD7Xr8CljO9ivivT1nE3xR2cku00CLlC
+ wcxADMReEWAqre5ypVFVEHCxanzNMq532n1WDVlh2Ph4dJL6O0leakXO2unRooRoDGABfZC7xSM
+ li6YMl
+X-Received: by 2002:a05:600c:6095:b0:485:39b2:a47c with SMTP id
+ 5b1f17b1804b1-48e51f48352mr55998245e9.25.1778070478823; 
+ Wed, 06 May 2026 05:27:58 -0700 (PDT)
+X-Received: by 2002:a05:600c:6095:b0:485:39b2:a47c with SMTP id
+ 5b1f17b1804b1-48e51f48352mr55997815e9.25.1778070478407; 
+ Wed, 06 May 2026 05:27:58 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45052a48c04sm12668833f8f.15.2026.05.06.05.27.55
+ 5b1f17b1804b1-48e5389da63sm44587985e9.4.2026.05.06.05.27.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 05:27:56 -0700 (PDT)
-Message-ID: <7d05a03d-9f29-4b7c-90ce-b61d23e5d07e@redhat.com>
-Date: Wed, 6 May 2026 14:27:55 +0200
+ Wed, 06 May 2026 05:27:57 -0700 (PDT)
+Message-ID: <869487dc-ae63-4a86-b680-8ec70789e18a@redhat.com>
+Date: Wed, 6 May 2026 14:27:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] aspeed/hace: security fixes
-To: Kane Chen <kane_chen@aspeedtech.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>
-References: <20260504213421.710035-1-clg@redhat.com>
- <SI6PR06MB7631B46DF67C1532B154FFE1F73F2@SI6PR06MB7631.apcprd06.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI6PR06MB7631B46DF67C1532B154FFE1F73F2@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
+ VCMDQ backing
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ kjaju@nvidia.com, phrdina@redhat.com
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-21-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260415105552.622421-21-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CQFlEGyOGvBSc0EzqSY9Hyk4kpAUx3TKKmSGqLWksuo_1778070477
+X-Mimecast-MFC-PROC-ID: WqJ-jQzQ2Dnk3S2Wk_a_mbhrAiPocHj0nPB5tgpU1ag_1778070479
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -158,63 +120,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/6/26 11:53, Kane Chen wrote:
->> -----Original Message-----
->> From: Cédric Le Goater <clg@redhat.com>
->> Sent: Tuesday, May 5, 2026 5:34 AM
->> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
->> Cc: Peter Maydell <peter.maydell@linaro.org>; Steven Lee
->> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->> <jamin_lin@aspeedtech.com>; Kane Chen <kane_chen@aspeedtech.com>; Cé
->> dric Le Goater <clg@redhat.com>
->> Subject: [PATCH 0/2] aspeed/hace: security fixes
->>
->> Hello,
->>
->> A couple of issues in the Aspeed HACE model were reported on the
->> qemu-security list. Here are fixes.
->>
->> Thanks,
->>
->> C.
->>
->> Cédric Le Goater (2):
->>    aspeed/hace: Fix out-of-bounds read in has_padding()
->>    aspeed/hace: Prevent total_req_len overflow
->>
->>   hw/misc/aspeed_hace.c | 29 +++++++++++++++++++++++++++--
->>   1 file changed, 27 insertions(+), 2 deletions(-)
->>
->> --
->> 2.54.0
-> 
-> Hi Cédric,
-> 
-> Thank you for fixing the defects. These changes look good. However,
-> I have one question regarding another potential issue.
-> 
-> In the do_hash_operation function, after calling hash_prepare_sg_iov
-> and hash_prepare_direct_iov, the function may return early if iov_idx
-> is -1. In this case, the code flow will not reach hash_execute_acc_mode
-> or hash_execute_non_acc_mode, which means the mapped address may not be
-> unmapped properly.
-> 
-> I think we may also need to unmap the address when this error condition
-> occurs. Do you think this should be included in this patch series, or
-> would a separate patch be preferred?
-> 
-> If a separate patch is preferred, 
 
-yes. Do you have time for it ?
 
-> then for this patch series:
-> Reviewed-by: Kane Chen kane_chen@aspeedtech.com
+On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+> Introduce tegra241_cmdqv_vintf_ptr() to route VCMDQ register accesses
+> through the mmap'd VINTF page0 backing once a hardware queue has been
+> allocated.
+>
+> There are two QEMU trapped MMIO apertures for VCMDQ registers:
+s/VCMDQ registers/ VCMDQ Page0 registers
+>
+>   - Direct VCMDQ aperture (offset 0x10000)
+emphasize this is page 0
+>   - VINTF Page0 (offset 0x30000)
+>
+> These are hardware aliases: they address the same underlying registers.
+> A subsequent patch maps the VINTF aperture as a guest-direct RAM region;
+> in this patch both remain QEMU-trapped.
+>
+> VCMDQ register accesses operate in one of two mutually exclusive modes,
+> depending on whether a hardware queue (IOMMU_HW_QUEUE_ALLOC) has been
+> allocated for the VCMDQ:
+>
+> Pre-alloc: vintf_ptr is NULL. Both apertures use QEMU's register
+> cache. Hardware is not yet engaged;
+>
+> Post-alloc: vintf_ptr is valid. Both QEMU trapped apertures access
+> registers directly via the mmap'd vintf_page0 pointer, bypassing
+> the cache. Hardware is the single source of truth.
+>
+> The pre-to-post-alloc transition is triggered by the BASE register write
+> that initiates IOMMU_HW_QUEUE_ALLOC. No cache-to-hardware synchronisation
+> is needed at transition time. The hardware mandated init sequence requires
+> BASE to be written first; PROD_INDX, CONS_INDX and CONFIG.CMDQ_EN are
+> programmed only after BASE and are therefore always post-alloc.
+>
+> Any pre-alloc writes to those registers update only the register cache,
+> which is discarded at the transition.
+>
+> CMDQV acceleration only becomes active once the guest enables VINTF and
+> programs the VCMDQ BASE register. Until then, all VCMDQ accesses are
+> served from the emulated register cache with no real hardware command
+> processing. This matches the CMDQV hardware specification: if the logical
+> CMDQ index does not map to any allocated Virtual CMDQ, "the access is
+> dropped with no Fault/Interrupt".
+>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/tegra241-cmdqv.c | 48 ++++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 47 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index b5f2f74cf2..eb619e1134 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -75,17 +75,45 @@ static bool tegra241_cmdqv_setup_vcmdq(Tegra241CMDQV *cmdqv, int index,
+>      return true;
+>  }
+>  
+> +static inline uint32_t *tegra241_cmdqv_vintf_ptr(Tegra241CMDQV *cmdqv,
+> +                                                 int index, hwaddr offset0)
+> +{
+> +    if (!cmdqv->vcmdq[index] || !cmdqv->vintf_page0) {
+> +        return NULL;
+> +    }
+> +    return (uint32_t *)(cmdqv->vintf_page0 +
+> +                        (index * CMDQV_VCMDQ_STRIDE) +
+> +                        (offset0 - CMDQV_VCMDQ_PAGE0_BASE));
+> +}
+> +
+>  /*
+>   * Read a VCMDQ register using VCMDQ0_* offsets.
+>   *
+>   * The caller normalizes the MMIO offset such that @offset0 always refers
+>   * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
+>   *
+> - * All VCMDQ accesses return cached registers.
+> + * If the VCMDQ is allocated and VINTF page0 is mmap'd, read directly
+> + * from the VINTF page0 backing. Otherwise, fall back to cached state.
+>   */
+>  static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>                                            int index)
+>  {
+> +    uint32_t *ptr = tegra241_cmdqv_vintf_ptr(cmdqv, index, offset0);
+> +
+> +    if (ptr) {
+> +        switch (offset0) {
+> +        case A_VCMDQ0_CONS_INDX:
+> +        case A_VCMDQ0_PROD_INDX:
+> +        case A_VCMDQ0_CONFIG:
+> +        case A_VCMDQ0_STATUS:
+> +        case A_VCMDQ0_GERROR:
+> +        case A_VCMDQ0_GERRORN:
+> +            return *ptr;
+> +        default:
+are there other page0 regs which are not modeled for which this
+implement would return 0?
+> +            break;
+> +        }
+> +    }
+I would prefer we have a clear separation between page0 accesses and
+page1 accesses (meaning 2 different helpers).
 
-Thanks,
+This would help understand that page1 accesses are always trapped
+whereas page0 access can be either cached or mmapped.
+> +
+>      switch (offset0) {
+>      case A_VCMDQ0_CONS_INDX:
+>          return cmdqv->vcmdq_cons_indx[index];
+> @@ -120,11 +148,29 @@ static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>   *
+>   * The caller normalizes the MMIO offset such that @offset0 always refers
+>   * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
+> + *
+> + * If the VCMDQ is allocated and VINTF page0 is mmap'd, write directly
+> + * to the VINTF page0 backing. Otherwise, update cached state.
+>   */
+>  static void tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>                                         int index, uint64_t value,
+>                                         unsigned size, Error **errp)
+>  {
+> +    uint32_t *ptr = tegra241_cmdqv_vintf_ptr(cmdqv, index, offset0);
+> +
+> +    if (ptr) {
+> +        switch (offset0) {
+> +        case A_VCMDQ0_CONS_INDX:
+> +        case A_VCMDQ0_PROD_INDX:
+> +        case A_VCMDQ0_CONFIG:
+> +        case A_VCMDQ0_GERRORN:
+> +            *ptr = (uint32_t)value;
+> +            return;
+> +        default:
+> +            break;
+> +        }
+> +    }
+> +
+>      switch (offset0) {
+>      case A_VCMDQ0_CONS_INDX:
+>          cmdqv->vcmdq_cons_indx[index] = (uint32_t)value;
+Thanks
 
-C.
+Eric
 
 

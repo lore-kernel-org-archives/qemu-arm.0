@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E13CD342C
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:45:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D1AFF8855
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:50:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKbcj-0002Jn-De; Wed, 06 May 2026 08:45:09 -0400
+	id 1wKbhD-0004cH-MR; Wed, 06 May 2026 08:49:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKbcf-0002EY-6b
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:45:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wKbhC-0004c8-JA
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:49:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKbcc-0005gt-KH
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:45:04 -0400
+ id 1wKbhA-0006du-Lc
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:49:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778071501;
+ s=mimecast20190719; t=1778071783;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R2zUJRp5isIzC4I+U9uuUTm0bVtshQuzDJK0Ti/Oc0g=;
- b=Ipl6G2uZPqqXlpRlGuZnhfR739DrtTyyifRLy9QRX+gJKyYwbIsnbWumS08kImlpSIV1qU
- UNgcooWJa0W4BWU+ELADMpUxuE3Krqg2cNLQIBWU23DNbkoVWCq7bazBqkx/+Ll43X/DYq
- 783IHd3p2HJfDtsAL927T+bWfNpalz4=
+ bh=rKK+8xeHmWK8j0e8XBFbmARtqKIf5WMBbUeUSi3fkLI=;
+ b=ByIAg2NHrvbtkQ4bjaU3uyd5E1LuCfA0/brDZ/BnunLDC8m0+2b4jyuwicO704uAkRdLuF
+ q9RXhh66MpcdgiNN5U/uof9a5XzGHKmQhAGodEe3scR4+ecllSJ+usEVKjkbFX6siPP4NF
+ jXqoo1H4ltWuv9vaUzUN4WsvZdI8GAE=
 Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
  [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-690-GWI0J6V7MTC-xmaWo_TZkA-1; Wed, 06 May 2026 08:45:00 -0400
-X-MC-Unique: GWI0J6V7MTC-xmaWo_TZkA-1
-X-Mimecast-MFC-AGG-ID: GWI0J6V7MTC-xmaWo_TZkA_1778071499
+ us-mta-677-SUrFa1BaNvaUqYpUk53fDw-1; Wed, 06 May 2026 08:49:42 -0400
+X-MC-Unique: SUrFa1BaNvaUqYpUk53fDw-1
+X-Mimecast-MFC-AGG-ID: SUrFa1BaNvaUqYpUk53fDw_1778071781
 Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-488c0fcc6deso37064315e9.2
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:45:00 -0700 (PDT)
+ 5b1f17b1804b1-48a589c7879so6556445e9.1
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:49:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778071499; x=1778676299;
+ d=1e100.net; s=20251104; t=1778071781; x=1778676581;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=R2zUJRp5isIzC4I+U9uuUTm0bVtshQuzDJK0Ti/Oc0g=;
- b=YPw0V7FHTF6pzB80rbBFj/l9ED81XqYyiBGatipxmVG/Rl+exy8D4FJKn7JDEfOh6G
- uNA0yEIM44HgWl2hg47ibA5gMFefnRRs1QY1FPK2sZJ6boo+SDih3WJpoIZQ+X9FC+jl
- oP0/6J5L0hTinFNan1ofjE/Ts66BSp9EBhbyXIh7DORSZZzvAEwPiuK4uoloQxb8QNrZ
- ZLSnohidyuNBMlYSwMl2VDLJqrURxi3S+NV4SCqh31NrKYG4BTCAWhKhVSBOx3XYCUny
- n8qTA0AR7nXeVJTrOGchIOL9wXHCuXp37fGdup1D7nP8Go0ZhsQtnsF9LJ+msCpc+gSt
- IJFA==
+ bh=rKK+8xeHmWK8j0e8XBFbmARtqKIf5WMBbUeUSi3fkLI=;
+ b=IVwE7sW/dbgjcJ90IsvRDaFkuY33Xivj/hG29pDDLkZ2hojyujGFo2SZfAEz2VQAei
+ DQFVz6dhgTwd15pII1aSqBouWpIdbUH6ht6G6Jdt5BVgbpAUYrUBnqiv2zI3utqLtMeH
+ l7fBPhAZqzqXHwvsYYvy206DF/C2dm2fXjqnrMhlNIXhZpWux7ceERZHRkzo8o++jLdP
+ 8OIK8HWZDjFccm2RE9nyo2cqjTk01f04y4VMfQ8ZG9lOrvw94nW9ayAE2h0watUF78ob
+ SBUQdiVKjOgHJksBzUjsbikUKA+m7wU5W3wYV+2ZBhmg7TZW5p/I6oL6fl75rNoFKNxo
+ WAiw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/OO2S9AopVAINeKBJfXY8r7Bll5pwv3tftCjLsiBedI2ucrn5tOsw4jiOswdC7MM6eu6Ki8FGZGA==@nongnu.org
-X-Gm-Message-State: AOJu0YwUj4tGjDEBIHvoS/IxWA0iT5C8+Zd1cb1/FlrIhZgNiUg2wLY/
- bk/lLqnepcEfldFa0GeWCgeDqqbqmALXbUOfGMmzVjmdAJ8n+gPtOvDxqkBqnDQoyyeF3dyQfV7
- qfbh4TYFvWEK/lfYXIVubLRnajcMILy4UU4vFg5YWsi8s2ik49zNjgA==
-X-Gm-Gg: AeBDieujJB9aMjR2gUejx1Cp+cPMdxIU+jYnSUeHPQwbTznDkbZoAIURdGYwqFs0Rm7
- jeO4DjYLFsjvNGP+iqwmTSbcubun+F4aLDzQeEx6+Zu4taFPTzt5nyl3heLIsVpuw9d92Eiatsd
- 526gnCjGfhRUyKUooo/92Xy2CnNwW9Ei+mjct1V4BrIM56BocOc+9mnHjVgpRK6JirGHID1RO+6
- NHsUKaRyj8IAlln2VQVcK+vNxgKQBAbu1X+EdVF6qJe47uyykgrTZRk7nBx4bSPEpbAfP8UHXhB
- C9niSnhtNW7MhkJpYV3TY1M2Ep1nJIYTTEuec9wU1XX31r9CoFa7ty+VlB14SNl7rm2aouy0L/W
- sESBAu3yGA1g0FRDmbI/KdaDlrgZnmBEnauz06yNMLEfN0PBR6nU0NfPsZqwTo0wSEroJzgJL9I
- yuVugV
-X-Received: by 2002:a05:600c:8b0c:b0:48a:7a10:4f47 with SMTP id
- 5b1f17b1804b1-48e51e0a620mr60627865e9.3.1778071499000; 
- Wed, 06 May 2026 05:44:59 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b0c:b0:48a:7a10:4f47 with SMTP id
- 5b1f17b1804b1-48e51e0a620mr60627415e9.3.1778071498627; 
- Wed, 06 May 2026 05:44:58 -0700 (PDT)
+ AFNElJ+WCsz7uDuZO41C93f7hsiJ3XAzLh6/6ww+QqINq2UjFIRPJTc4bXxK80jNBBb6JWYiH9jzevV4Qw==@nongnu.org
+X-Gm-Message-State: AOJu0YxHcV1UmduWJXRE7XSOaHGtNcslV98GQFR0B2gW9Rgiq8Fn4+33
+ blbFqVkmgs54xHo2iYr3eo4TxgvsqT9lQIEMvhaGIntdilTTx942EqnQHrOUO0NAldsXghen8nm
+ ZTYOpkJ6uM23VBIxOcwZEDt0vLsjPV5wehNbXHbeGUxZOFEGUPqieudFqEe1zog==
+X-Gm-Gg: AeBDievVmY1XpdXJQ3dSZFxsNcpi2MT7GI0IjP1upVz/NtAEiT2+33cUUg/GodDsI2j
+ B4bhMELC3Otonlicvd/vp1dc13al0lNiUEA9K3uk1O52sK6KU05DrGp/t1T/D4zoVWDyjHQDP0C
+ TQkPNOCB+bFVFcEN1Su1d3i0nbQngKdT3rjBHvZtV5saTmu3nBXD6WfgDKwtQAU5IwmySFfBh68
+ 0fxl9qoJ5m+OJDkxM95/htIwFGENnE0Xtna4gOly939lCf85JZoCNawlMOlC3Y7S9lHOmn7st7X
+ MX0CCB7R/bjWEClj6pCeveOFMQqhnJu05p8XQWTCS1RWTD1FXhbERRiPpvuByMWhc33s1AI2dET
+ BukyF3tNwijxBbn5K5ams6kNyu8tMySQjHv08q4qVoI1yFU4WiqldNOylftLOSVE4A5cxuY+cIw
+ eKgi91
+X-Received: by 2002:a05:600c:8908:b0:48d:50a:6ef4 with SMTP id
+ 5b1f17b1804b1-48e522b8577mr32425655e9.11.1778071781009; 
+ Wed, 06 May 2026 05:49:41 -0700 (PDT)
+X-Received: by 2002:a05:600c:8908:b0:48d:50a:6ef4 with SMTP id
+ 5b1f17b1804b1-48e522b8577mr32425375e9.11.1778071780630; 
+ Wed, 06 May 2026 05:49:40 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e538fad5fsm50164865e9.10.2026.05.06.05.44.57
+ 5b1f17b1804b1-48e59b74277sm8141125e9.3.2026.05.06.05.49.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 05:44:58 -0700 (PDT)
-Message-ID: <4918654a-7c79-474b-9ede-5418460a5a76@redhat.com>
-Date: Wed, 6 May 2026 14:44:56 +0200
+ Wed, 06 May 2026 05:49:40 -0700 (PDT)
+Message-ID: <123b3178-8fb9-495f-b4f7-9af40f7a1a99@redhat.com>
+Date: Wed, 6 May 2026 14:49:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/31] hw/arm/tegra241-cmdqv: Map VINTF page0 into
- guest MMIO space
+Subject: Re: [PATCH v4 23/31] hw/arm/smmuv3-accel: Introduce common helper for
+ veventq read
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
@@ -90,23 +90,23 @@ Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
  jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
  kjaju@nvidia.com, phrdina@redhat.com
 References: <20260415105552.622421-1-skolothumtho@nvidia.com>
- <20260415105552.622421-23-skolothumtho@nvidia.com>
+ <20260415105552.622421-24-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260415105552.622421-23-skolothumtho@nvidia.com>
+In-Reply-To: <20260415105552.622421-24-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mb51A4TjxqAr0B6LFu19p50r74ejb4PtCJFIoGwfhHY_1778071499
+X-Mimecast-MFC-PROC-ID: 0mSbsnLVJkkCog0odfO-Z1WSN6YMV16HAQNrI8y1JSs_1778071781
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,121 +124,157 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+
 
 On 4/15/26 12:55 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
+> Move the vEVENTQ read and validation logic into a common helper
+> smmuv3_accel_event_read_validate(). The helper performs the read(),
+> checks for overflow and short reads, validates the sequence number,
+> and updates the sequence state.
 >
-> Once a VCMDQ is allocated, map the mmap'd vintf_page0 region directly
-> into the guest-visible MMIO space at offset 0x30000 as a RAM-backed
-> MemoryRegion. This eliminates QEMU trapping for hot-path CONS/PROD
-> index updates.
+> This helper can be reused for Tegra241 CMDQV vEVENTQ support in a
+> subsequent patch.
 >
-> After this patch, the two VCMDQ apertures use different access paths:
-> the direct aperture (0x10000) remains QEMU-trapped and writes via
-> vintf_ptr, while the VI aperture (0x30000) is a direct guest RAM
-> mapping. Both paths write to the same underlying vintf_page0 memory,
-> so no synchronisation between the apertures is needed.
-
-I fail to understand when the previous trapped path using ptr in
-tegra241_cmdqv_read/write_vcmdq gets used versus that path. Is it
-eventually used?
+> Error handling is slightly adjusted: instead of reporting errors
+> directly in the read handler, the helper now returns errors via
+> Error **. Sequence gaps are reported as warnings.
 >
-> The mapping is installed lazily on first successful VCMDQ hardware
-> queue allocation and removed when CMDQV or VINTF is disabled.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Co-developed-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/tegra241-cmdqv.h |  1 +
->  hw/arm/tegra241-cmdqv.c | 37 +++++++++++++++++++++++++++++++++++++
->  2 files changed, 38 insertions(+)
->
-> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
-> index 039d86374f..2befa6205e 100644
-> --- a/hw/arm/tegra241-cmdqv.h
-> +++ b/hw/arm/tegra241-cmdqv.h
-> @@ -46,6 +46,7 @@ typedef struct Tegra241CMDQV {
->      IOMMUFDVeventq *veventq;
->      IOMMUFDHWqueue *vcmdq[TEGRA241_CMDQV_MAX_CMDQ];
->      void *vintf_page0;
-> +    MemoryRegion *mr_vintf_page0;
->  
->      /* Register Cache */
->      uint32_t config;
-> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
-> index eb619e1134..bf989dd51f 100644
-> --- a/hw/arm/tegra241-cmdqv.c
-> +++ b/hw/arm/tegra241-cmdqv.c
-> @@ -15,6 +15,40 @@
->  #include "tegra241-cmdqv.h"
->  #include "trace.h"
->  
-> +static void tegra241_cmdqv_guest_unmap_vintf_page0(Tegra241CMDQV *cmdqv)
-> +{
-> +    if (!cmdqv->mr_vintf_page0) {
-> +        return;
-> +    }
-> +
-> +    memory_region_del_subregion(&cmdqv->mmio_cmdqv, cmdqv->mr_vintf_page0);
-> +    object_unparent(OBJECT(cmdqv->mr_vintf_page0));
-> +    g_free(cmdqv->mr_vintf_page0);
-> +    cmdqv->mr_vintf_page0 = NULL;
-> +}
-> +
-> +static void tegra241_cmdqv_guest_map_vintf_page0(Tegra241CMDQV *cmdqv)
-> +{
-> +    char *name;
-> +
-> +    if (cmdqv->mr_vintf_page0) {
-> +        return;
-> +    }
-> +
-> +    name = g_strdup_printf("%s vintf-page0",
-> +                           memory_region_name(&cmdqv->mmio_cmdqv));
-> +    cmdqv->mr_vintf_page0 = g_malloc0(sizeof(*cmdqv->mr_vintf_page0));
-> +    memory_region_init_ram_device_ptr(cmdqv->mr_vintf_page0,
-> +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
-> +                                      name, VINTF_PAGE_SIZE,
-> +                                      cmdqv->vintf_page0);
-> +    cmdqv->mr_vintf_page0->ram_device_skip_iommu_map = true;
-I guess you need a setter, here to.
-> +    memory_region_add_subregion_overlap(&cmdqv->mmio_cmdqv,
-> +                                        CMDQV_VINTF_PAGE0_BASE,
-> +                                        cmdqv->mr_vintf_page0, 1);
-> +    g_free(name);
-> +}
-> +
->  static void tegra241_cmdqv_free_vcmdq(Tegra241CMDQV *cmdqv, int index)
->  {
->      IOMMUFDViommu *viommu = cmdqv->s_accel->viommu;
-> @@ -72,6 +106,7 @@ static bool tegra241_cmdqv_setup_vcmdq(Tegra241CMDQV *cmdqv, int index,
->      hw_queue->viommu = viommu;
->      cmdqv->vcmdq[index] = hw_queue;
->  
-> +    tegra241_cmdqv_guest_map_vintf_page0(cmdqv);
->      return true;
->  }
->  
-> @@ -312,6 +347,7 @@ static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
->                  cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
->              }
->          } else {
-> +            tegra241_cmdqv_guest_unmap_vintf_page0(cmdqv);
->              tegra241_cmdqv_free_all_vcmdq(cmdqv);
->              tegra241_cmdqv_munmap_vintf_page0(cmdqv, errp);
->              cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
-> @@ -438,6 +474,7 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
->          if (value & R_CONFIG_CMDQV_EN_MASK) {
->              cmdqv->status |= R_STATUS_CMDQV_ENABLED_MASK;
->          } else {
-> +            tegra241_cmdqv_guest_unmap_vintf_page0(cmdqv);
->              tegra241_cmdqv_free_all_vcmdq(cmdqv);
->              cmdqv->status &= ~R_STATUS_CMDQV_ENABLED_MASK;
->          }
-Thanks
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
 Eric
+> ---
+>  hw/arm/smmuv3-accel.h       |  2 ++
+>  hw/arm/smmuv3-accel-stubs.c | 11 ++++++
+>  hw/arm/smmuv3-accel.c       | 67 ++++++++++++++++++++++---------------
+>  3 files changed, 53 insertions(+), 27 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index 28bceca061..448f47c0ca 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -71,6 +71,8 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+>                                  Error **errp);
+>  void smmuv3_accel_idr_override(SMMUv3State *s);
+>  bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
+> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
+> +                                      void *buf, size_t size, Error **errp);
+>  void smmuv3_accel_reset(SMMUv3State *s);
+>  
+>  #endif /* HW_ARM_SMMUV3_ACCEL_H */
+> diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
+> index c08caa6fa4..e8f08dc833 100644
+> --- a/hw/arm/smmuv3-accel-stubs.c
+> +++ b/hw/arm/smmuv3-accel-stubs.c
+> @@ -41,6 +41,17 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
+>  {
+>  }
+>  
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+> +{
+> +    return true;
+> +}
+> +
+> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
+> +                                      void *buf, size_t size, Error **errp)
+> +{
+> +    return true;
+> +}
+> +
+>  void smmuv3_accel_reset(SMMUv3State *s)
+>  {
+>  }
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 9068e65e2b..230f608f03 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -436,47 +436,60 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *bs, void *cmd, SMMUDevice *sdev,
+>                     sizeof(Cmd), &entry_num, cmd, errp);
+>  }
+>  
+> -static void smmuv3_accel_event_read(void *opaque)
+> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
+> +                                      void *buf, size_t size, Error **errp)
+>  {
+> -    SMMUv3State *s = opaque;
+> -    IOMMUFDVeventq *veventq = s->s_accel->veventq;
+> -    struct {
+> -        struct iommufd_vevent_header hdr;
+> -        struct iommu_vevent_arm_smmuv3 vevent;
+> -    } buf;
+> -    enum iommu_veventq_type type = IOMMU_VEVENTQ_TYPE_ARM_SMMUV3;
+> -    uint32_t id = veventq->veventq_id;
+>      uint32_t last_seq = veventq->last_event_seq;
+> +    uint32_t id = veventq->veventq_id;
+> +    struct iommufd_vevent_header *hdr;
+>      ssize_t bytes;
+>  
+> -    bytes = read(veventq->veventq_fd, &buf, sizeof(buf));
+> +    bytes = read(veventq->veventq_fd, buf, size);
+>      if (bytes <= 0) {
+>          if (errno == EAGAIN || errno == EINTR) {
+> -            return;
+> +            return true;
+>          }
+> -        error_report_once("vEVENTQ(type %u id %u): read failed (%m)", type, id);
+> -        return;
+> +        error_setg(errp, "vEVENTQ(type %u id %u): read failed (%m)", type, id);
+> +        return false;
+>      }
+> -
+> -    if (bytes == sizeof(buf.hdr) &&
+> -        (buf.hdr.flags & IOMMU_VEVENTQ_FLAG_LOST_EVENTS)) {
+> -        error_report_once("vEVENTQ(type %u id %u): overflowed", type, id);
+> +    hdr = (struct iommufd_vevent_header *)buf;
+> +    if (bytes == sizeof(*hdr) &&
+> +        (hdr->flags & IOMMU_VEVENTQ_FLAG_LOST_EVENTS)) {
+> +        error_setg(errp, "vEVENTQ(type %u id %u): overflowed", type, id);
+>          veventq->event_start = false;
+> -        return;
+> +        return false;
+>      }
+> -    if (bytes < sizeof(buf)) {
+> -        error_report_once("vEVENTQ(type %u id %u): short read(%zd/%zd bytes)",
+> -                          type, id, bytes, sizeof(buf));
+> -        return;
+> +    if (bytes < size) {
+> +        error_setg(errp, "vEVENTQ(type %u id %u): short read(%zd/%zd bytes)",
+> +                          type, id, bytes, size);
+> +        return false;
+>      }
+> -
+>      /* Check sequence in hdr for lost events if any */
+> -    if (veventq->event_start && (buf.hdr.sequence - last_seq != 1)) {
+> -        error_report_once("vEVENTQ(type %u id %u): lost %u event(s)",
+> -                          type, id, buf.hdr.sequence - last_seq - 1);
+> +    if (veventq->event_start && (hdr->sequence - last_seq != 1)) {
+> +        warn_report("vEVENTQ(type %u id %u): lost %u event(s)",
+> +                    type, id, hdr->sequence - last_seq - 1);
+>      }
+> -    veventq->last_event_seq = buf.hdr.sequence;
+> +    veventq->last_event_seq = hdr->sequence;
+>      veventq->event_start = true;
+> +    return true;
+> +}
+> +
+> +static void smmuv3_accel_event_read(void *opaque)
+> +{
+> +    SMMUv3State *s = opaque;
+> +    IOMMUFDVeventq *veventq = s->s_accel->veventq;
+> +    struct {
+> +        struct iommufd_vevent_header hdr;
+> +        struct iommu_vevent_arm_smmuv3 vevent;
+> +    } buf;
+> +    Error *local_err = NULL;
+> +
+> +    if (!smmuv3_accel_event_read_validate(veventq,
+> +                                          IOMMU_VEVENTQ_TYPE_ARM_SMMUV3, &buf,
+> +                                          sizeof(buf), &local_err)) {
+> +        warn_report_err_once(local_err);
+> +        return;
+> +    }
+>      smmuv3_propagate_event(s, (Evt *)&buf.vevent);
+>  }
+>  
 
 

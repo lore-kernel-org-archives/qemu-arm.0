@@ -4,98 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36AC3CD343B
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 14:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D8FCD342C
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 15:27:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKdi3-0000ZB-Si; Wed, 06 May 2026 10:58:47 -0400
+	id 1wKe9h-0001bF-7d; Wed, 06 May 2026 11:27:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKdi2-0000Yn-HR
- for qemu-arm@nongnu.org; Wed, 06 May 2026 10:58:46 -0400
-Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKdi0-0007Tb-Ii
- for qemu-arm@nongnu.org; Wed, 06 May 2026 10:58:46 -0400
-Received: by mail-oo1-xc2f.google.com with SMTP id
- 006d021491bc7-6966d16b978so2399046eaf.3
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 07:58:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778079523; x=1778684323; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=g0rg90ZocJHBJKvIpaOqgBFKQLqTHRAsXu1ufA5FD2A=;
- b=sPwkl4I6oltDn742j6SkBJ2PrVKWheAGyA7JuS6ZMXNj/iPvt797aQAGMFbj+FwrrB
- 8YaQ5i2w8z+Pu+O+2OmvRJe0/VTyRVeAndx4KSUH+LAx6Byiy+U83dsEWozzqEQn2acA
- PAMZHjyjQAezGVjRrKlKuU2XqrR3sDMmJ6yxrl+l2rxUHh475KctO5EVbBxGu3JgQ84U
- kIfKKQQqm5TMYzmDWnglZqHnpzr7VbrINdDuozvGyCqwSAN0s7FJqY0Six536LOrLUOX
- q4eF1kV/3/4xlFFPWxfTuG4sdoBu6m+0nd9hnGuhisHNdCv/9dczocURGTefis7rDAU7
- vBjw==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wKe9g-0001av-6h
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 11:27:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wKe9e-0008AF-Ii
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 11:27:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778081237;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=u2T5xde/UtWWzJw4y+B8UwuzneDjtmJD2qAanQG+R5w=;
+ b=BYLC1r6uV5S/ZWTdPEjXotqu0Zogdydrot30M1Ud2YJzaJqu42v7fx5P6/Hi3Kzmu0bXCb
+ jFcElLAb/NbmBDuFGH6rpJHXjldIx/ybqfCWjvO1nhgCof4TsbEUXYxkaUv8OAXKOE4kjd
+ n9Q47zw9XACyigow6olx/jxT2DfygMo=
+Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
+ [209.85.222.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-646-1WHPC4k-PvawePBdvWp31g-1; Wed, 06 May 2026 11:27:15 -0400
+X-MC-Unique: 1WHPC4k-PvawePBdvWp31g-1
+X-Mimecast-MFC-AGG-ID: 1WHPC4k-PvawePBdvWp31g_1778081235
+Received: by mail-ua1-f72.google.com with SMTP id
+ a1e0cc1a2514c-95862466f3cso3836151241.2
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 08:27:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778079523; x=1778684323;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=g0rg90ZocJHBJKvIpaOqgBFKQLqTHRAsXu1ufA5FD2A=;
- b=omKmP5/8QiXZ4LoRCUQMRVN7MwtApu5mI0Y3j7HpsBZJWTqeSSgJtwdse8IPG2Y/4J
- o3Vm5SX8UKr46zVhQz99y+rmztpwm4QAaaywCX6kYcDWb+WCbs/QRJkbvnRqcu3SAslc
- O+oc3xHHnR6pKskeJwRxZYNoviJdeeryUsa0EmwzjPaMIvRnrXOYgbO25ny374XcjBnZ
- L4U6q248VZt1HsLwEa5ZOvVbNU12dOAPMUGLfnldNreIa7ZTMRQAyFI6DldfC7ET8two
- QDepHGoRGpEvMPqwbpu4xHdIoUWaNU0+M89AneojqGnk/Loo/wacYu6uaqRmPW+cwD7N
- M62w==
+ d=1e100.net; s=20251104; t=1778081235; x=1778686035;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=u2T5xde/UtWWzJw4y+B8UwuzneDjtmJD2qAanQG+R5w=;
+ b=cZfTVJj8CEsWEWOkHqaZFHmU9JA7bOCUb8uzYoYplOu6/a75HQ6cXH+8NnPB6yRgkz
+ vSs6A4dExKPicVz7xOwZ0unxky5MUgWQ/2nVZpLitxuck8H7g2PO0lu6BgdR2i/41/tB
+ ZpnW211qN5BBXgrON9mughrwVwLQZ026BSPYKP+qMWqnhzK2Dh+6irngvBgZmqlq5rp5
+ ftS+WhiCSW3KV8NGAtC4Ki/pq2QNDAVUEjsiUGJmpx70ZAjadRNkBQJZaGWL+jq/sri1
+ cCH37yMlzBX565kB3FKSk71mj0lsdYq+8sIJJKC3kx1g45vSSkVK9LJMr/0PCfCE+ofw
+ FB2w==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8jmU2h6/T5jh+t6og0b2IDt7fujuWf1HF+tTqHlR3nSYjtKAep3DQie4Z/igK6ja19wmQjOkYqkw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyb4Fc7m4ympN9zmqHudHqRibFY4PuMuA36mk2kgXN/oCmqRfye
- +z+oIUwzfT0Biknk8+5VUrKS+LzaregpuN1WDTu/hxwgTy9T/lY5hcgAM7K/ibz066g=
-X-Gm-Gg: AeBDieuNlLaT9wYtCCLDODm2RB8d8F+yhtwVoEJFtxMW3v5iDsI3kFR90vxfN/4oLlL
- S0R7yso+2s5MmCsHsYf/MYFwLhI9ZbrHpNL3KJmq+N+N+PJQbUv0SXDdJj1rUgn4kvy9gWy9zZ9
- ziw+Kl3hGNjgsf+7lkYEV39kCMNPiTqtFtnRk7wkhRK8ZZ1JN9xYq56dCaA7msj258ot0wNLolQ
- S/hMVlBaGMmOGhvWqV1bMTs2Kb6RFgfTqtqdzA4FyGyUBcS0phQiW7+Jqfl/Hj/MBjhnOWwTCTK
- Krg0bvGpPhEM25WZXhLwkif9pHT30n+lYEi9dcxjuqI4MUd24HPQsdqqoMwX87ej9MWEDbEpQU3
- kBICjw8w5qYEZNTM1C5yGAqtMP38UmgRYAW/u2NLWGS8S3Xj3tgjyTYt4zNs2tT0DUo8w07MmzS
- 7qGJ2kxCs8vfA6KTTrUFC6u421eVbLprfUIPFJmdoFS6bnSOblOIRqoa2/0GW2+c+JKlE/dUyWa
- Q3k82VIXCQVBpSMrMMi
-X-Received: by 2002:a05:6820:4dc4:b0:696:64ab:cd83 with SMTP id
- 006d021491bc7-69998d5dc0fmr1796434eaf.55.1778079522968; 
- Wed, 06 May 2026 07:58:42 -0700 (PDT)
-Received: from ?IPV6:2600:381:c938:6375:5307:cd92:1ec8:e891?
- ([2600:381:c938:6375:5307:cd92:1ec8:e891])
- by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-4347294b5afsm14516620fac.8.2026.05.06.07.58.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 07:58:42 -0700 (PDT)
-Message-ID: <c5f8f8cb-8eb5-44fd-99bc-e192b5c16d4f@linaro.org>
-Date: Wed, 6 May 2026 09:58:39 -0500
+ AFNElJ/4kSgzfJiQqdE+XgOIQYmzyVoujBKgAajFUGCtNBtBgOBPQHOUutQjZeD5dIRpEyNdD9dzmaCPlw==@nongnu.org
+X-Gm-Message-State: AOJu0YxULq7ZuX1x3GG5/pyowgwzBqg4bQjMLf3IH43OfVxo4VbB+Ugj
+ 1I/jqDyGV3qSW2BMhYW1/mNpHv220fytcYdCImOIGurHZ36zXCD0ZvHf29NvM5LFR0hNaBCGvxa
+ kBoYreNCjOKmOW9yEGRg7TULeUxnea0iYKCjbd7yyw/8cpI+e7DIMfw==
+X-Gm-Gg: AeBDieu4jfOzaHZUuR91x2dvDukJk0e69jYyaoXC75bE6YrY/cmgb3qHpAvsTjHoAQa
+ i3iFyHnhPMtYNFpK8zW0n6lDwyAJkLYCG+TGXQYP7fz6KOea1fJpdiy6yNOKYi18KDiv1hIzQcT
+ Eqgb4/QW4waQOqBDHAE0/vdjMZbm/ahIU1HLNRlRVyhQHIzE5Lyvv4JgMWKG+gpCe3cch3lSK6w
+ is3+lSdgii+RW8As9xhrBMO0SLt1rJ6xua9LGD38WOy1Ni+UgXJcxeZJKddGRRrIZIiBVZcUipN
+ HDCnEGrOXzjP6iMuVuDzc5EGDo9gAFRPJhvCR4KfI4wY6XS+tU8C13jrEawz4lr5IrOAzTJ0uvo
+ yahVRscugeZ5gaPZufZM093R1FFjfQCsOgrC2woNI9byuBoQhDHEBxQVk0w==
+X-Received: by 2002:a05:6122:e26d:b0:56f:1ed6:1d29 with SMTP id
+ 71dfb90a1353d-575596891f1mr2207382e0c.9.1778081235068; 
+ Wed, 06 May 2026 08:27:15 -0700 (PDT)
+X-Received: by 2002:a05:6122:e26d:b0:56f:1ed6:1d29 with SMTP id
+ 71dfb90a1353d-575596891f1mr2207299e0c.9.1778081234106; 
+ Wed, 06 May 2026 08:27:14 -0700 (PDT)
+Received: from x1.local ([142.189.10.167]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-8b53ca982a1sm204102286d6.38.2026.05.06.08.27.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 May 2026 08:27:13 -0700 (PDT)
+Date: Wed, 6 May 2026 11:27:10 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Chao Liu <chao.liu.zevorn@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ David Hildenbrand <david@kernel.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
+Subject: Re: [PATCH v2 18/25] system/physmem: Use translate_for_debug() in
+ cpu_memory_rw_debug()
+Message-ID: <aftdzpB-hSjo7PEz@x1.local>
+References: <20260430093810.2762539-1-peter.maydell@linaro.org>
+ <20260430093810.2762539-19-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 11/15] target/arm: skip tag bit bounds check if MTX is
- on
-To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-References: <20260504-feat-mte4-v5-0-232a648e63c6@gmail.com>
- <20260504-feat-mte4-v5-11-232a648e63c6@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260504-feat-mte4-v5-11-232a648e63c6@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20260430093810.2762539-19-peter.maydell@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qLtuYxi7q5psaBeN252eCrLnd8cQsyj2vdwYVV9GxIA_1778081235
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,156 +131,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/4/26 10:50, Gabriel Brookman wrote:
-> Virtual address canonicity checks should ignore mismatch in tag bits
-> during translation step if MTX is set. This mismatch is checked during
-> the tag check instead, in that case.
+On Thu, Apr 30, 2026 at 10:38:03AM +0100, Peter Maydell wrote:
+> Currently cpu_memory_rw_debug() assumes page-granularity for translations,
+> and it works in a loop where each iteration translates for the vaddr
+> rounded down to a page boundary and then copies up to the end of the
+> page boundary.
 > 
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> ---
->   target/arm/helper.c    |  6 +++++-
->   target/arm/internals.h |  1 +
->   target/arm/ptw.c       | 29 ++++++++++++++++++++++++++---
->   3 files changed, 32 insertions(+), 4 deletions(-)
+> Rewrite it to use the new cpu_translate_for_debug(): we no longer want
+> to round down the input address, and the boundary we copy up to is now
+> determined by the lg_page_size it returns rather than being assumed
+> to be page-sized.
 > 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 18352bd186..0e70822d34 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -9693,7 +9693,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->   {
->       uint64_t tcr = regime_tcr(env, mmu_idx);
->       bool epd, hpd, tsz_oob, ds, ha, hd, pie = false;
-> -    bool aie = false;
-> +    bool mtx, aie = false;
->       int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
->       ARMGranuleSize gran;
->       ARMCPU *cpu = env_archcpu(env);
-> @@ -9730,6 +9730,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->           ha = extract32(tcr, 21, 1) && cpu_isar_feature(aa64_hafs, cpu);
->           hd = extract32(tcr, 22, 1) && cpu_isar_feature(aa64_hdbs, cpu);
->           ds = extract64(tcr, 32, 1);
-> +        mtx = extract64(tcr, 33, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
->       } else {
->           bool e0pd;
->   
-> @@ -9745,6 +9746,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->               sh = extract32(tcr, 12, 2);
->               hpd = extract64(tcr, 41, 1);
->               e0pd = extract64(tcr, 55, 1);
-> +            mtx = extract64(tcr, 60, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
->           } else {
->               tsz = extract32(tcr, 16, 6);
->               gran = tg1_to_gran_size(extract32(tcr, 30, 2));
-> @@ -9752,6 +9754,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->               sh = extract32(tcr, 28, 2);
->               hpd = extract64(tcr, 42, 1);
->               e0pd = extract64(tcr, 56, 1);
-> +            mtx = extract64(tcr, 61, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
->           }
->           ps = extract64(tcr, 32, 3);
->           ha = extract64(tcr, 39, 1) && cpu_isar_feature(aa64_hafs, cpu);
-> @@ -9851,6 +9854,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
->           .gran = gran,
->           .pie = pie,
->           .aie = aie,
-> +        .mtx = mtx,
->       };
->   }
->   
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 779eafabc8..d313d36603 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1407,6 +1407,7 @@ typedef struct ARMVAParameters {
->       ARMGranuleSize gran : 2;
->       bool pie        : 1;
->       bool aie        : 1;
-> +    bool mtx        : 1;
->   } ARMVAParameters;
->   
->   /**
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 4fdb27697d..4fa50d0320 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -1931,7 +1931,17 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
->        * validation to do here.
->        */
->       if (inputsize < addrsize) {
-> -        uint64_t top_bits = sextract64(address, inputsize,
-> +        /*
-> +         * If MTX is enabled, bits 56-59 aren't checked for canonicity
-> +         * during translation, since they will later be checked during
-> +         * the tag check step.
-> +         */
-> +        uint64_t top_bits;
-> +        uint64_t masked_address = address;
-> +        if (param.mtx) {
-> +            masked_address = deposit64(address, 56, 4, param.select * 0xf);
-> +        }
-> +        top_bits = sextract64(masked_address, inputsize,
->                                              addrsize - inputsize);
->           if (-top_bits != param.select) {
+> This, together with the implementation of translate_for_debug for
+> Arm targets, fixes the bug where semihosting would incorrectly
+> fail to access parameter blocks that were in memory where the
+> start of the 4K region they were in was inaccessible due to MPU
+> region settings, even if the parameter block itself was readable.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3292
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Message-id: 20260417173105.1648172-18-peter.maydell@linaro.org
 
-Hmm.  I know AArch64_VAIsOutOfRange inserts bits just like this, but it isn't the most 
-efficient way to ignore bits for comparison.
+Acked-by: Peter Xu <peterx@redhat.com>
 
-Perhaps
+-- 
+Peter Xu
 
-	uint64_t cmp_mask = MAKE_64BIT_MASK(inputsize, addrsize - inputsize);
-
-         if (param.mtx) {
-             cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
-         }
-         if ((address ^ -param.select) & cmp_mask) {
-
-is clearer?
-
-
->               /* The gap between the two regions is a Translation fault */
-> @@ -3492,15 +3502,28 @@ static bool get_phys_addr_disabled(CPUARMState *env,
->           if (arm_el_is_aa64(env, r_el)) {
->               int pamax = arm_pamax(env_archcpu(env));
->               uint64_t tcr = env->cp15.tcr_el[r_el];
-> -            int addrtop, tbi;
-> +            int addrtop, tbi, mtx;
-> +            bool bit55;
->   
->               tbi = aa64_va_parameter_tbi(tcr, mmu_idx);
-> +            mtx = aa64_va_parameter_mtx(tcr, mmu_idx);
->               if (access_type == MMU_INST_FETCH) {
->                   tbi &= ~aa64_va_parameter_tbid(tcr, mmu_idx);
->               }
-> -            tbi = (tbi >> extract64(address, 55, 1)) & 1;
-> +            bit55 = extract64(address, 55, 1);
-> +            tbi = (tbi >> bit55) & 1;
-> +            mtx = (mtx >> bit55) & 1;
->               addrtop = (tbi ? 55 : 63);
->   
-> +            /*
-> +             * With MTX enabled, bits 56-59 are not checked according to
-> +             * AArch64.S1DisabledOutput.
-> +             */
-> +            if (cpu_isar_feature(aa64_mte_mtx, env_archcpu(env)) && mtx &&
-> +                access_type != MMU_INST_FETCH) {
-> +                address = deposit64(address, 56, 4, bit55 * 0xF);
-> +            }
-
-Likewise.  And reorder things to avoid computing mtx unless required:
-
-     uint64_t cmp_mask = MAKE_64BIT_MASK(pamax, addrtop - pamax + 1);
-
-     if (access_type != MMU_INST_FETCH
-         && cpu_isar_feature(aa64_mte_mtx, env_archcpu(env))) {
-         int mtx = aa64_va_parameter_mtx(tcr, mmu_idx);
-         if (mtx & (1 << bit55)) {
-             cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
-         }
-     }
-
-     if (address & cmp_mask) {
-
-
-r~
 

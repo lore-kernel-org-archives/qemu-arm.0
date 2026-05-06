@@ -4,110 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D1AFF8855
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B25FFF8855
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 13:16:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKbhD-0004cH-MR; Wed, 06 May 2026 08:49:47 -0400
+	id 1wKc6v-00020i-Dp; Wed, 06 May 2026 09:16:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKbhC-0004c8-JA
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:49:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wKc6l-0001zP-4w; Wed, 06 May 2026 09:16:12 -0400
+Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKbhA-0006du-Lc
- for qemu-arm@nongnu.org; Wed, 06 May 2026 08:49:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778071783;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rKK+8xeHmWK8j0e8XBFbmARtqKIf5WMBbUeUSi3fkLI=;
- b=ByIAg2NHrvbtkQ4bjaU3uyd5E1LuCfA0/brDZ/BnunLDC8m0+2b4jyuwicO704uAkRdLuF
- q9RXhh66MpcdgiNN5U/uof9a5XzGHKmQhAGodEe3scR4+ecllSJ+usEVKjkbFX6siPP4NF
- jXqoo1H4ltWuv9vaUzUN4WsvZdI8GAE=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-677-SUrFa1BaNvaUqYpUk53fDw-1; Wed, 06 May 2026 08:49:42 -0400
-X-MC-Unique: SUrFa1BaNvaUqYpUk53fDw-1
-X-Mimecast-MFC-AGG-ID: SUrFa1BaNvaUqYpUk53fDw_1778071781
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-48a589c7879so6556445e9.1
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:49:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778071781; x=1778676581;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rKK+8xeHmWK8j0e8XBFbmARtqKIf5WMBbUeUSi3fkLI=;
- b=IVwE7sW/dbgjcJ90IsvRDaFkuY33Xivj/hG29pDDLkZ2hojyujGFo2SZfAEz2VQAei
- DQFVz6dhgTwd15pII1aSqBouWpIdbUH6ht6G6Jdt5BVgbpAUYrUBnqiv2zI3utqLtMeH
- l7fBPhAZqzqXHwvsYYvy206DF/C2dm2fXjqnrMhlNIXhZpWux7ceERZHRkzo8o++jLdP
- 8OIK8HWZDjFccm2RE9nyo2cqjTk01f04y4VMfQ8ZG9lOrvw94nW9ayAE2h0watUF78ob
- SBUQdiVKjOgHJksBzUjsbikUKA+m7wU5W3wYV+2ZBhmg7TZW5p/I6oL6fl75rNoFKNxo
- WAiw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+WCsz7uDuZO41C93f7hsiJ3XAzLh6/6ww+QqINq2UjFIRPJTc4bXxK80jNBBb6JWYiH9jzevV4Qw==@nongnu.org
-X-Gm-Message-State: AOJu0YxHcV1UmduWJXRE7XSOaHGtNcslV98GQFR0B2gW9Rgiq8Fn4+33
- blbFqVkmgs54xHo2iYr3eo4TxgvsqT9lQIEMvhaGIntdilTTx942EqnQHrOUO0NAldsXghen8nm
- ZTYOpkJ6uM23VBIxOcwZEDt0vLsjPV5wehNbXHbeGUxZOFEGUPqieudFqEe1zog==
-X-Gm-Gg: AeBDievVmY1XpdXJQ3dSZFxsNcpi2MT7GI0IjP1upVz/NtAEiT2+33cUUg/GodDsI2j
- B4bhMELC3Otonlicvd/vp1dc13al0lNiUEA9K3uk1O52sK6KU05DrGp/t1T/D4zoVWDyjHQDP0C
- TQkPNOCB+bFVFcEN1Su1d3i0nbQngKdT3rjBHvZtV5saTmu3nBXD6WfgDKwtQAU5IwmySFfBh68
- 0fxl9qoJ5m+OJDkxM95/htIwFGENnE0Xtna4gOly939lCf85JZoCNawlMOlC3Y7S9lHOmn7st7X
- MX0CCB7R/bjWEClj6pCeveOFMQqhnJu05p8XQWTCS1RWTD1FXhbERRiPpvuByMWhc33s1AI2dET
- BukyF3tNwijxBbn5K5ams6kNyu8tMySQjHv08q4qVoI1yFU4WiqldNOylftLOSVE4A5cxuY+cIw
- eKgi91
-X-Received: by 2002:a05:600c:8908:b0:48d:50a:6ef4 with SMTP id
- 5b1f17b1804b1-48e522b8577mr32425655e9.11.1778071781009; 
- Wed, 06 May 2026 05:49:41 -0700 (PDT)
-X-Received: by 2002:a05:600c:8908:b0:48d:50a:6ef4 with SMTP id
- 5b1f17b1804b1-48e522b8577mr32425375e9.11.1778071780630; 
- Wed, 06 May 2026 05:49:40 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e59b74277sm8141125e9.3.2026.05.06.05.49.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 05:49:40 -0700 (PDT)
-Message-ID: <123b3178-8fb9-495f-b4f7-9af40f7a1a99@redhat.com>
-Date: Wed, 6 May 2026 14:49:39 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 23/31] hw/arm/smmuv3-accel: Introduce common helper for
- veventq read
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
- jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
- kjaju@nvidia.com, phrdina@redhat.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wKc6j-0004IQ-8H; Wed, 06 May 2026 09:16:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=XDAjD6iiLO2b/eXqj/niq2qp6Huqw86+n3gPBkfGyKJJRy2aGdWQdyjIQ6sswi/8mqyG59cZEyO+kk9NZ50lqvftQdgeAQ1YOIRRaO0Iqdr0lwk5MwmNV6kYGmrRuDAls6GecZSWL61N3FpS4wRZgRW6HbkZneDJ1J95gwPItHjqA6iiTkAJPQUrRF3hfpBxVx0w7ZwEXG7oC7/VsqETFs3DQZuSwAS7/1sJCjz/BvGgPAmzgeobICU24fFQP1pgTTXVSdtcXveGWGTvVpIJ3OoaK5JfpWKgnhmTFumWbOPR69uUckUMOmjpDpH2PruJqINw6PybhY3vtUN268t6Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=H7zXIAGO74LTJ/SN69x9fDbKJ81QpMnjXZBwus+wcgU=;
+ b=x84wqH2VKJQUYuWVZejjNZxUOwKmlG8HpgV9BuIQ30egzQ9sWsU09+VHD41G+HijYSAnSZ6IiRRfVs3XnOzgtRsfbJUU11FJfSyzz8ag1MvbSSXXvBFbpHXF6+w0wFMBA3KO75ytyzGd6IyJO5h0gNHgEBSwpnNc/Oc/tNxsn0O2xN86N3i2fW3zA52wxUniI7wEySwPRrQVNquoxeqxI4lBzTK0BWYmtyaXVG0eqT5jwfsx/7bwiWRcQlTGDpMG0a/r27BvJFFGtZiwyn9TE0BpLWeCrg2Nd+nSNEDhXFGcBrt76nf/TOCC3lJjg9WHHPDPKN/ZoZoywWop8x6YYA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=H7zXIAGO74LTJ/SN69x9fDbKJ81QpMnjXZBwus+wcgU=;
+ b=LHmuDLgu5wXBnjIEzh4spx/V73L+SeKWrO30DXMREFoPNhFJU1zD3HTtpQ3hIwkIUtxRBEhKRF9mRzNW+RltiZrMwDrt+QmJrz/VPs8gaigJNgS57mCNHgMGKMvv9Sim0TFmqiVhUZvFowY20UBIiK8csmz81jARoJAYg22B3kYbTTx5SfIRxpySOaJ2opAKj2fLLLkhpqPXLnhMMmNlh/9Gdnq6b5C7UcaqrxNKA5fYTsxtT2UGo6seOLn6EsD+m7u3/DEmGqU7a3fTFPEFuwFe66pjxD/f8PM2tcT3BGr+pjPlm78tD6EqG9c7vsSy8EsOApcUQFM/nJJsvqKgMw==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CH3PR12MB9281.namprd12.prod.outlook.com (2603:10b6:610:1c8::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Wed, 6 May
+ 2026 13:16:01 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.20.9891.008; Wed, 6 May 2026
+ 13:16:00 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>, "eric.auger@redhat.com"
+ <eric.auger@redhat.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "clg@redhat.com" <clg@redhat.com>,
+ "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen <nathanc@nvidia.com>, Matt
+ Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+Subject: RE: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0 as
+ VCMDQ backing
+Thread-Topic: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF page0
+ as VCMDQ backing
+Thread-Index: AQHczMa/jfzTjyAD+0CcG7hTHjM1ybX+uL4AgADqScCAAFTSAIABAS7Q
+Date: Wed, 6 May 2026 13:16:00 +0000
+Message-ID: <CH3PR12MB7548E76E38625713F6AE9F78AB3F2@CH3PR12MB7548.namprd12.prod.outlook.com>
 References: <20260415105552.622421-1-skolothumtho@nvidia.com>
- <20260415105552.622421-24-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260415105552.622421-24-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0mSbsnLVJkkCog0odfO-Z1WSN6YMV16HAQNrI8y1JSs_1778071781
-X-Mimecast-Originator: redhat.com
+ <20260415105552.622421-21-skolothumtho@nvidia.com>
+ <afk+zBZLQx+x+ODl@nvidia.com>
+ <CH3PR12MB754892989B2A76D3D3A941D6AB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <afpKfEvuT3ZeBSiH@nvidia.com>
+In-Reply-To: <afpKfEvuT3ZeBSiH@nvidia.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Mentions: eric.auger@redhat.com
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH3PR12MB9281:EE_
+x-ms-office365-filtering-correlation-id: abd617be-5c51-4f24-ef1a-08deab719e12
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|38070700021|56012099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: Rd/lfuRhLpN1648PSX9M6iqbXIRzbYlucnpvq1BE6IVC+V11ArBuA+b5dmB6k+e2UMin/VjuhP5Wu3+Jdh3yb6CT4tdSP1rdanyYh3RJjSAnTVcSYeGY96D+fCpOCnb5P69PqtzX5TV1A0ddpMHUEO862Hg77ZwiAQSkQkEFcSB+wEx58vfzNVJSHoarqr9ep3sTOdLi1hwh/GojekpZ4p9B5bXsg1wN5oYGoupKGFNRGnGbx0X3AETSz2RYJHedKN27N9iJ1m4+syWeQrqU3q1FQytjaJF2uO9gHRKC4I097XNo310mQmxVbpYZOZ8WaPH4HDRILhbbi2jJgHUZu08QyWwvXgSiUFl9lTsdOxPjzh683QO/zJrQyzqE9N1Y++nnNsBcJ8tINhYQsw41dG1alGDH52LeJEfkRxIBWbZD1DwOf9Wddg1b8vTKlCeNOr9BQNgZLTYE0TPoFvwg7v/i6z4h5XzKu509RAZ6mh+DI1wUQF56gOwD/tB/B3Vz0Apjd6+oW4cmm4poBFZ6jJqG/pphqN/OGV+eXywZDOUWfMihA3vca56XKiQpWaJfjbJAttM/sfjk9AGNp3Yc2mUlC1GPht2IJwsI2kRBXg28xRYeQvjHGRNQIKjb5hiGlf24ZfZ1hE/HtZAfcwiq1uBbcqy/E7SNL9i5VT9tu7U2z8HPfXK+hngpBcpZigoJV1LhUFAyVJa0u2vzvhm0+Gu+F0dO7OeDaAMfPd9yTsWBkM/Dtf70gMZS7Satzi2o
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(38070700021)(56012099003)(18002099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?JpPVl/PB0vS50l3f6Pzau+BwnNb21wY0n3Kj/2OQzTYUoKUCVYspeUyKxmg4?=
+ =?us-ascii?Q?O2mWo6VFrH8sissFVlwwzKS824H1zojCaFfgZGVR8lR4EzvkASCmIMscd62h?=
+ =?us-ascii?Q?v+dLxE6IoN0gkRvhA4XxRA99SayoUuNsNUtMxN+6lutdHOmgY4oEHavpMN1Q?=
+ =?us-ascii?Q?Ixzej++CHWBvYVJfGI1YnhHJ0+Efl+QhWbS8vucYT85xIVAuttZ5lElO+t3b?=
+ =?us-ascii?Q?OMjOJ7AG2g5Kb4+NDYL636toWw1mBougBdRKKOBDkkHLUfMC1tuPU4rPNrE2?=
+ =?us-ascii?Q?I3sHDVkGAM8yxFcPSa1fEyfA+neeYdgSlMDuelbA2UuP4gpctNgq94Vw8JSq?=
+ =?us-ascii?Q?CjWKwdOFLnBLGMI7cMYOMo3NFocpDWvcbdZaLwnBEukLV54mYDRfmmYE2oVq?=
+ =?us-ascii?Q?Jd9T4iqw7yY7OEiG034+Y3OeOnSDz2Hk7ZgSM6ABLsnrMxr9T2FEYyuGqK7O?=
+ =?us-ascii?Q?0tGEdRzwrdOdborYNDltydxtNi5HT8XSQkHfNqc6qyTyhc9zhx10nxi6vX/A?=
+ =?us-ascii?Q?NHZWPAtQRiGw8Emij7pe/lkcbOzFrbiZpfFMSlzBzmtEHAs7ADfFbrZkGsBG?=
+ =?us-ascii?Q?8zUGlQhwHdS+MChiyf4rffp0O5nWQS4NRam/r9fD6SuYB7etY5eTs8jy4CYr?=
+ =?us-ascii?Q?mCfycNkGkjsYSkwH2Se36mM+CV+xpLK/L24mJWWlaCYXecs5HWwQsnofupZr?=
+ =?us-ascii?Q?JF9ezEwcyc6hAQI2dz9Eu/5Ab2Tif7lqGifcmbe/qTyuYS5gh08Is8WJjIsM?=
+ =?us-ascii?Q?V8TEQoxzoRmhmMMRjNDKAdJYi/MQ7fpWgHrh4tGxcoAzA5Bj1RtsFtX8pGU2?=
+ =?us-ascii?Q?YESAc2S9X9dpZTz1DXQey2Kg20tBxJHR/CbHmIA6bgHRG+m9N+LN9+1AP/b5?=
+ =?us-ascii?Q?ES/6nAMUdw98OGG32P4clfP1oP15/Q+0VbNchCubwW3Ep9i0SZCleL9wNAQl?=
+ =?us-ascii?Q?9P0jg+kwCRQ5JXfHd4px5Wq9JY6vz5b6MNpafVPPPnglaqPxqZhAfMbAl61a?=
+ =?us-ascii?Q?GwV2bTTikqI9NQgNBAHZs0m/98drph2rlTSOQY8CfDgzVvEGEhkYQHl6cuCg?=
+ =?us-ascii?Q?aQcrJQbjs6EWNmwzkNSvXDc7gN5NEHGY+R4uAi3J15rgqRgNYcFflImCilCf?=
+ =?us-ascii?Q?R1c9r4daS9+1o3f2i58Q1LsFA1wYxBOL9tpK757qYYycTrWFON4MmvYHQ/c+?=
+ =?us-ascii?Q?GyqkZk+LkiPfezHaUp+YyohQxMaKG65y8H0o3UpI3oUcVsM2IRqNS+44hGk3?=
+ =?us-ascii?Q?ZNgZFuwgIFCfJ8Tl7rCjtzRigNIk9xygF3w1F+ZVOvfF6YBL27Wcst/QMQQn?=
+ =?us-ascii?Q?Uzthj2CTaaet5sADqHu77GZYazcreLRf+Q2brUZ09Db5B1N+YpFIeMlGEi2j?=
+ =?us-ascii?Q?05HScnR4coehgyf/EkDneLzsOTxJouYnKBmh/SMTJ+B4GYRI1vXDwK/Bjv6t?=
+ =?us-ascii?Q?aYwAoKmjqLCLZl7vOnWYVr0+0wY4HogvTS5ch6v02aSQrRMiP0+iB8XVf03/?=
+ =?us-ascii?Q?+XddZ2zK27sLJ1gy2saHUv8T3/2EyUwZSEV5TO3fQ1jE+C56RTcNplRFfHBs?=
+ =?us-ascii?Q?3ve29PD1ueBpxSwgyFirMHXmvT/pi6hIhpo2dtnzZbyCQ7es7uBzTyf8cGKv?=
+ =?us-ascii?Q?tVmI2PQMoOc6y/gYAcFmWgva9eH2gP0jRiId3rg/4MFVPQt++1pFNClBmtmV?=
+ =?us-ascii?Q?vKn6yuqBLHEQIAxlOwB3XZZLthOEHJmN9w/cV0D/2ZvG/RzHl+Vvfr8THwyr?=
+ =?us-ascii?Q?EbeGMuI6nQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: abd617be-5c51-4f24-ef1a-08deab719e12
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2026 13:16:00.4564 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +ZeQsX/MCcLsgJm74wDmS9ySlDSU3RhX0e6sAJGoHVoG2adCxZp2GInjOkSxfeqcFs8QxK6+5gJD+6YB00yUnw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9281
+Received-SPF: permerror client-ip=2a01:111:f403:c10d::3;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SN4PR0501CU005.outbound.protection.outlook.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,161 +151,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 4/15/26 12:55 PM, Shameer Kolothum wrote:
-> Move the vEVENTQ read and validation logic into a common helper
-> smmuv3_accel_event_read_validate(). The helper performs the read(),
-> checks for overflow and short reads, validates the sequence number,
-> and updates the sequence state.
->
-> This helper can be reused for Tegra241 CMDQV vEVENTQ support in a
-> subsequent patch.
->
-> Error handling is slightly adjusted: instead of reporting errors
-> directly in the read handler, the helper now returns errors via
-> Error **. Sequence gaps are reported as warnings.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: 05 May 2026 20:52
+> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; clg@redhat.com;
+> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
+> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>;
+> phrdina@redhat.com
+> Subject: Re: [PATCH v4 20/31] hw/arm/tegra241-cmdqv: Use mmap'd VINTF
+> page0 as VCMDQ backing
+>=20
+> On Tue, May 05, 2026 at 08:13:40AM -0700, Shameer Kolothum Thodi
+> wrote:
+> > > From: Nicolin Chen <nicolinc@nvidia.com>
+> > > On Wed, Apr 15, 2026 at 11:55:41AM +0100, Shameer Kolothum wrote:
+> > > > The pre-to-post-alloc transition is triggered by the BASE register
+> > > > write that initiates IOMMU_HW_QUEUE_ALLOC. No cache-to-hardware
+> > > > synchronisation is needed at transition time. The hardware mandated
+> > > > init sequence requires BASE to be written first; PROD_INDX, CONS_IN=
+DX
+> > > > and CONFIG.CMDQ_EN are programmed only after BASE and are
+> therefore
+> > > always post-alloc.
+> > > >
+> > > > Any pre-alloc writes to those registers update only the register
+> > > > cache, which is discarded at the transition.
+> > >
+> > > Is "discard" the correct action?
+> > >
+> > > Guest OS might expect HW (VM) to retain what it writes to those
+> > > page0 registers?
+> >
+> > As explained above, I reached that conclusion based on spec p.174/175:
+> >
+> > Under "Enabling the Virtual CMDQ" it specifies the init order as below:
+> >
+> > - Program the VIRT_CMDQ_BASE
+> > - Init the PROD_INDX/ CONS_INDX to 0 or a consistent value
+> > - Program the VIRT_CMDQ_CONFIG to enable the CMDQ
+> >
+> > Since we set up the HW QUEUE on BASE write, a spec compliant guest is
+> > expected to program the Page0 registers as above after that, and we pas=
+s
+> > those writes directly to the VINTF Page0. There are no GERRORN writes
+> > before HW queue setup either.
+>=20
+> I don't think we can make an assumption that guest would follow
+> what spec suggests.
+>=20
+> Could this be a case:
+>  - Write the PROD_INDX/ CONS_INDX with a consistent value (0xf)
+>  - Program the VIRT_CMDQ_BASE
+>  - Read the PROD_INDX/CONS_INDX, expecting 0xf
+>  - Write the PROD_INDX/ CONS_INDX with 0x0
+>  - Program the VIRT_CMDQ_CONFIG to enable the CMDQ
 
-Eric
-> ---
->  hw/arm/smmuv3-accel.h       |  2 ++
->  hw/arm/smmuv3-accel-stubs.c | 11 ++++++
->  hw/arm/smmuv3-accel.c       | 67 ++++++++++++++++++++++---------------
->  3 files changed, 53 insertions(+), 27 deletions(-)
->
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index 28bceca061..448f47c0ca 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -71,6 +71,8 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
->                                  Error **errp);
->  void smmuv3_accel_idr_override(SMMUv3State *s);
->  bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
-> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
-> +                                      void *buf, size_t size, Error **errp);
->  void smmuv3_accel_reset(SMMUv3State *s);
->  
->  #endif /* HW_ARM_SMMUV3_ACCEL_H */
-> diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
-> index c08caa6fa4..e8f08dc833 100644
-> --- a/hw/arm/smmuv3-accel-stubs.c
-> +++ b/hw/arm/smmuv3-accel-stubs.c
-> @@ -41,6 +41,17 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->  {
->  }
->  
-> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
-> +{
-> +    return true;
-> +}
-> +
-> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
-> +                                      void *buf, size_t size, Error **errp)
-> +{
-> +    return true;
-> +}
-> +
->  void smmuv3_accel_reset(SMMUv3State *s)
->  {
->  }
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 9068e65e2b..230f608f03 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -436,47 +436,60 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *bs, void *cmd, SMMUDevice *sdev,
->                     sizeof(Cmd), &entry_num, cmd, errp);
->  }
->  
-> -static void smmuv3_accel_event_read(void *opaque)
-> +bool smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
-> +                                      void *buf, size_t size, Error **errp)
->  {
-> -    SMMUv3State *s = opaque;
-> -    IOMMUFDVeventq *veventq = s->s_accel->veventq;
-> -    struct {
-> -        struct iommufd_vevent_header hdr;
-> -        struct iommu_vevent_arm_smmuv3 vevent;
-> -    } buf;
-> -    enum iommu_veventq_type type = IOMMU_VEVENTQ_TYPE_ARM_SMMUV3;
-> -    uint32_t id = veventq->veventq_id;
->      uint32_t last_seq = veventq->last_event_seq;
-> +    uint32_t id = veventq->veventq_id;
-> +    struct iommufd_vevent_header *hdr;
->      ssize_t bytes;
->  
-> -    bytes = read(veventq->veventq_fd, &buf, sizeof(buf));
-> +    bytes = read(veventq->veventq_fd, buf, size);
->      if (bytes <= 0) {
->          if (errno == EAGAIN || errno == EINTR) {
-> -            return;
-> +            return true;
->          }
-> -        error_report_once("vEVENTQ(type %u id %u): read failed (%m)", type, id);
-> -        return;
-> +        error_setg(errp, "vEVENTQ(type %u id %u): read failed (%m)", type, id);
-> +        return false;
->      }
-> -
-> -    if (bytes == sizeof(buf.hdr) &&
-> -        (buf.hdr.flags & IOMMU_VEVENTQ_FLAG_LOST_EVENTS)) {
-> -        error_report_once("vEVENTQ(type %u id %u): overflowed", type, id);
-> +    hdr = (struct iommufd_vevent_header *)buf;
-> +    if (bytes == sizeof(*hdr) &&
-> +        (hdr->flags & IOMMU_VEVENTQ_FLAG_LOST_EVENTS)) {
-> +        error_setg(errp, "vEVENTQ(type %u id %u): overflowed", type, id);
->          veventq->event_start = false;
-> -        return;
-> +        return false;
->      }
-> -    if (bytes < sizeof(buf)) {
-> -        error_report_once("vEVENTQ(type %u id %u): short read(%zd/%zd bytes)",
-> -                          type, id, bytes, sizeof(buf));
-> -        return;
-> +    if (bytes < size) {
-> +        error_setg(errp, "vEVENTQ(type %u id %u): short read(%zd/%zd bytes)",
-> +                          type, id, bytes, size);
-> +        return false;
->      }
-> -
->      /* Check sequence in hdr for lost events if any */
-> -    if (veventq->event_start && (buf.hdr.sequence - last_seq != 1)) {
-> -        error_report_once("vEVENTQ(type %u id %u): lost %u event(s)",
-> -                          type, id, buf.hdr.sequence - last_seq - 1);
-> +    if (veventq->event_start && (hdr->sequence - last_seq != 1)) {
-> +        warn_report("vEVENTQ(type %u id %u): lost %u event(s)",
-> +                    type, id, hdr->sequence - last_seq - 1);
->      }
-> -    veventq->last_event_seq = buf.hdr.sequence;
-> +    veventq->last_event_seq = hdr->sequence;
->      veventq->event_start = true;
-> +    return true;
-> +}
-> +
-> +static void smmuv3_accel_event_read(void *opaque)
-> +{
-> +    SMMUv3State *s = opaque;
-> +    IOMMUFDVeventq *veventq = s->s_accel->veventq;
-> +    struct {
-> +        struct iommufd_vevent_header hdr;
-> +        struct iommu_vevent_arm_smmuv3 vevent;
-> +    } buf;
-> +    Error *local_err = NULL;
-> +
-> +    if (!smmuv3_accel_event_read_validate(veventq,
-> +                                          IOMMU_VEVENTQ_TYPE_ARM_SMMUV3, &buf,
-> +                                          sizeof(buf), &local_err)) {
-> +        warn_report_err_once(local_err);
-> +        return;
-> +    }
->      smmuv3_propagate_event(s, (Evt *)&buf.vevent);
->  }
->  
+Yes, if Guest is not spec compliant then this can be any order.
 
+However,
+
+>  - Program the VIRT_CMDQ_BASE -- suppose we call setup_vcmdq()
+then kernel will reset PROD/CONS, right?
+https://lore.kernel.org/all/20260129224341.1594785-1-nicolinc@nvidia.com/
+
+Again, the question is whether we should handle all these non-compliant
+cases to prevent the guest from shooting itself in the foot, or simply
+propagate any hardware error events due to the non-compliant
+behaviour.
+
+On the other side, if we discard the register values, the read-what-you-wri=
+te
+contract is broken.
+
+I am not sure what is QEMU guideline w.r.t a non-spec compliant Guest
+behaviour.
+
+@Eric,  any thoughts?
+
+We already have a spec-compliant behaviour assumption for accel
+vEVENTQ support, as discussed here:
+
+https://lore.kernel.org/qemu-devel/CH3PR12MB75485AFF456B4133B9FB3770ABA0A@C=
+H3PR12MB7548.namprd12.prod.outlook.com/
+
+Thanks,
+Shameer
+
+
+=20
 

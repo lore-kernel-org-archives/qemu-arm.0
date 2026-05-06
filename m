@@ -4,118 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC484CD3436
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 11:14:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC9ECD3436
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 12:28:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKaD0-0004uc-Sy; Wed, 06 May 2026 07:14:31 -0400
+	id 1wKbMP-0005Wk-6O; Wed, 06 May 2026 08:28:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKaCz-0004uL-Pa
- for qemu-arm@nongnu.org; Wed, 06 May 2026 07:14:29 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKbMM-0005W7-6U
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wKaCv-0002sl-VV
- for qemu-arm@nongnu.org; Wed, 06 May 2026 07:14:29 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wKbMB-0001oC-MJ
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 08:28:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778066065;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1778070479;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FdxOvKWd7QjpPcjWvOUERL3A7gVOS1Cgkr9jPfltKc4=;
- b=UnDQNs3LsC+UicYghC00ZIMLeJuhDxAqHhE2JE4dLfzakN/eQDV+4wKpyRmUv/4xIX6ByY
- shPpddqStC9NRz2va/oc41ZGxI3X9SxNfe4Z83OOq7i/yvanF209g/MRxY1xIl1fW03plo
- TEqhEg/1ZYHnnsq99mHlmYJOoQltMzE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=kWbdYPK9ijBNeZPnqCRf5jGhK4jLag5YL0PqMZr3XHs=;
+ b=Zuvjinj4h16TLTV4VvFa5HtHlYemjLinUfazpqgAlzC5Begz+wD0ZTl5UBrujzZAmwz0lI
+ 8E6Q2XkNTdHkLieaOJcYagNANkqSLRF78/gRZFYj44fKftrLJAP37ktLwVwyJqyUvru8dT
+ WCOLvs95e6PU07FooN1wG0BBPRzZmuY=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-32-J3J2KQovN1-TBsN-ed974g-1; Wed, 06 May 2026 07:14:21 -0400
-X-MC-Unique: J3J2KQovN1-TBsN-ed974g-1
-X-Mimecast-MFC-AGG-ID: J3J2KQovN1-TBsN-ed974g_1778066061
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-43d103e46c3so4140857f8f.3
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 04:14:21 -0700 (PDT)
+ us-mta-298-CmoouiBAMlOz1Bcpsb689g-1; Wed, 06 May 2026 08:27:58 -0400
+X-MC-Unique: CmoouiBAMlOz1Bcpsb689g-1
+X-Mimecast-MFC-AGG-ID: CmoouiBAMlOz1Bcpsb689g_1778070477
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-488f973ddfeso47375585e9.3
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 05:27:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778066060; x=1778670860;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1778070477; x=1778675277;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FdxOvKWd7QjpPcjWvOUERL3A7gVOS1Cgkr9jPfltKc4=;
- b=mNIcZyfeStQBPONC5mm0oi45kSEg2Y3HELLE0raDwz3noC+uxS4pl3VYuEtrNZXj9X
- UevxSfRSr1CMsG2BT5VFIl0SSBoHO9hAlvlzLJqJ92rQjJpVGOPBnJzfwfFzSmX1Rc8n
- ByjRICK3KLFxe10s6K6NHmSQt0CDFgUrJ0Uq3g3hncWCu3Ayvyksbtz8wvhga+wVmNZw
- 2dSo7kJpIU+ChnkJMl27gLiKjAwBo11ZaWA8+2BKKKRJC64rwHE91P+7yKMm/3L/bivZ
- RnZigWspgAAEykKCRdw7+b9QvdbbmUCoArOAShileaCWpXMcDkyoWnNdQT01kuS7ZDXA
- jFLA==
+ bh=kWbdYPK9ijBNeZPnqCRf5jGhK4jLag5YL0PqMZr3XHs=;
+ b=A3inE6XDAjQ81bmtTnDNILoQkXnUiB4/NgLbmbuARtcsCqK6p9NEky/4gNkjodrTAi
+ phHUcxP90SZ3qWx1qO8LWeDBRgP91bz64g/gTE1Zw3PVxwhsdcsu8YjTYUmvd0/EIAYG
+ nt2hkj9oXF5+tyXb/VCbfQo6TlJFxaKxAyF/cf2MVOGTyp6YzofJJRUxYsYGqo9/Tt3a
+ J7MgpTJosRbg+EM7zQyWQW99Z8ejzvLFB6h5wIlwYZOTaAsK+eqQikloZEI6UK1iCQwQ
+ tbJptzGeqnT4SV2D60Hh/bTojObo1e27hQ6YSKITYH3bR90UjJyCNKyMgw6b7nsyANPw
+ W2kw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+rhpCBhsN21htVPPHrdu5suGO7XDARgn7rDo+p7yeZYQ7su5P2HaKI9ZxZo3ooYncEuIIscmDeFw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxt/oTMaphKLdFq3fzHOjEmZKGFcsZUEeBYSy5rAuKrkXsihTYc
- evWHAI4hz95/XUYw+wj7CxXS0X1BNW7sCjrPr/QxSchdSTskRtin+UoJ2oXPauMhqd4IRCZFEFt
- 2eCcHJEqnPfiW5Swjy5f8+CsoxFd5e5GGmILFB8B440MG1IA2HoJR0w==
-X-Gm-Gg: AeBDiesMKoQ/txRDBgRJ8Xaizj1NnI1Id7tst5dMqFEYYJFhtZV3K7uYFn0SS3k6ibk
- d4gPyRGPps6/oKxSbQaTpo11xj/pA8lzSjEF3ln4GJZO0U2y43525vvGRoT8cxTt3HzvU4GVqNl
- IoFZnnb4yQiFZFZ4yapPOVZK2/ZTxmH7vYeHhhd78EC6CchfY9WWrFGVDVB0kHaqSq/urulLi9s
- VTQCHDhat0zc7BRmA15rUGnyhM5wdUdNBxp+LAgEzZeK+OPr0Smy383jqguZgFENxA+u75hCxKN
- Ak/Dri5qwTiWF0Zm8ryymgixt53fUL6FoZcxzIBPGA/jFZoPBPQ5EmR8lErcK1BGQC0cNLHbnw6
- 73W8EU059baYk3I4AWWgK4i+ZwVRH0wJs1kNpxmffRzOT1rhRyh5GRrOtFt3ELOwF1jeqzwuNez
- EU7I+V
-X-Received: by 2002:a5d:588b:0:b0:43d:6787:9934 with SMTP id
- ffacd0b85a97d-4515b057282mr5226252f8f.9.1778066060483; 
- Wed, 06 May 2026 04:14:20 -0700 (PDT)
-X-Received: by 2002:a5d:588b:0:b0:43d:6787:9934 with SMTP id
- ffacd0b85a97d-4515b057282mr5226196f8f.9.1778066059970; 
- Wed, 06 May 2026 04:14:19 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AFNElJ/VsHW9kTZHlduGGezVETh+VQqYOMUrrzlMw2RPYVZm8c1IoKNqim9aeOGp75XV9zPm5mYOIE76kw==@nongnu.org
+X-Gm-Message-State: AOJu0YwfeQ1tztSBJ9ZwLHhVcdPjl79bz+lkCGbZehfGjOOK2cXrU/YC
+ UOI46cbssrtIaJ2GJpZ6USPo5soIg3MjyqNhP5bSxCQmuYD6opAiDaimZ9FozfN6HfP1rkTBgeT
+ +69XS6+L75X+hM+Y1caY1lxuP0KVc6A8zZhHa/l76HKbqiPJ+Sc7ggQ==
+X-Gm-Gg: AeBDievNL2t3cZUSijg2/18BzjLFLGviP+9WhkrW+s9xydq7ouC5x6E/Z9hOyDwsSmg
+ WdwnaguvbWj3LUkP0heu4WCZc9KcX0yH7m2/SqSdYfTdHhO6zMHfjFoY3J7vaK8g7SvyI/GjCrI
+ QWGD5QXy3NPdl4O4Pcef5sWRawWbgtjCCLgCc4p/N7iU5ur4OVa+hMJyr5cKKZlvPNNpBHxfMhY
+ Mk4lGc+QPgyW0q4rdd5ps++7hMCEKotg8lcrmEC1ASEsGw7+dCYqJRm27K/cJeB/4JeptkYB1lh
+ +dNbZE7hCbGhDqzewSB3XMKODPKsdE+h4ry+M0z+ckSpjza+GAXTvD20xrv8/+5xcSyoKXwz2+x
+ 0v8EZmgrIL2BsTGMxT+gxM9OndgW1y/zmIApr8TYkw4sqnHjYsApZwJcm/qs6D0MbDCzc81E=
+X-Received: by 2002:a05:600c:3b17:b0:489:e696:836f with SMTP id
+ 5b1f17b1804b1-48e51e15718mr51702745e9.10.1778070476888; 
+ Wed, 06 May 2026 05:27:56 -0700 (PDT)
+X-Received: by 2002:a05:600c:3b17:b0:489:e696:836f with SMTP id
+ 5b1f17b1804b1-48e51e15718mr51702135e9.10.1778070476470; 
+ Wed, 06 May 2026 05:27:56 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4511d8cd160sm7213615f8f.8.2026.05.06.04.14.18
+ ffacd0b85a97d-45052a48c04sm12668833f8f.15.2026.05.06.05.27.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 04:14:19 -0700 (PDT)
-Message-ID: <9e936551-dc4c-441d-8ea2-f60c6d88f9d6@redhat.com>
-Date: Wed, 6 May 2026 13:14:18 +0200
+ Wed, 06 May 2026 05:27:56 -0700 (PDT)
+Message-ID: <7d05a03d-9f29-4b7c-90ce-b61d23e5d07e@redhat.com>
+Date: Wed, 6 May 2026 14:27:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 15/31] hw/arm/tegra241-cmdqv: Emulate VCMDQ register
- reads
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
- Jason Gunthorpe <jgg@nvidia.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
- <phrdina@redhat.com>
-References: <20260415105552.622421-1-skolothumtho@nvidia.com>
- <20260415105552.622421-16-skolothumtho@nvidia.com>
- <b5589dbb-c553-4218-8cb5-53b99ec828d5@redhat.com>
- <CH3PR12MB7548B9F1FFF1AFE039C33226AB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548B9F1FFF1AFE039C33226AB3E2@CH3PR12MB7548.namprd12.prod.outlook.com>
+Subject: Re: [PATCH 0/2] aspeed/hace: security fixes
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+References: <20260504213421.710035-1-clg@redhat.com>
+ <SI6PR06MB7631B46DF67C1532B154FFE1F73F2@SI6PR06MB7631.apcprd06.prod.outlook.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <SI6PR06MB7631B46DF67C1532B154FFE1F73F2@SI6PR06MB7631.apcprd06.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GN6aizxfhs2CEfO4UyrnGDCX7Bv8Ip8QP22sJ_F1SMM_1778066061
+X-Mimecast-MFC-PROC-ID: CQFlEGyOGvBSc0EzqSY9Hyk4kpAUx3TKKmSGqLWksuo_1778070477
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,450 +158,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 5/5/26 3:27 PM, Shameer Kolothum Thodi wrote:
->
+On 5/6/26 11:53, Kane Chen wrote:
 >> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 05 May 2026 11:13
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
->> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
->> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
->> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
->> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>;
->> phrdina@redhat.com
->> Subject: Re: [PATCH v4 15/31] hw/arm/tegra241-cmdqv: Emulate VCMDQ
->> register reads
+>> From: Cédric Le Goater <clg@redhat.com>
+>> Sent: Tuesday, May 5, 2026 5:34 AM
+>> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+>> Cc: Peter Maydell <peter.maydell@linaro.org>; Steven Lee
+>> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Jamin Lin
+>> <jamin_lin@aspeedtech.com>; Kane Chen <kane_chen@aspeedtech.com>; Cé
+>> dric Le Goater <clg@redhat.com>
+>> Subject: [PATCH 0/2] aspeed/hace: security fixes
 >>
->> External email: Use caution opening links or attachments
+>> Hello,
 >>
+>> A couple of issues in the Aspeed HACE model were reported on the
+>> qemu-security list. Here are fixes.
 >>
->> Hi,
+>> Thanks,
 >>
->> On 4/15/26 12:55 PM, Shameer Kolothum wrote:
->>> From: Nicolin Chen <nicolinc@nvidia.com>
->>>
->>> Tegra241 CMDQV exposes per-VCMDQ register windows through two
->> MMIO
->>> apertures:
->>>
->>>   CMDQV_CMDQ_BASE (0x10000/0x20000): VCMDQ Page0/Page1
->> (global)
->>>   CMDQV_VI_CMDQ_BASE (0x30000/0x40000): VINTF VCMDQ
->> Page0/Page1
->> (logical)
->>> VINTF Page0 (0x30000) and VCMDQ Page0 (0x10000) are hardware aliases
->> what about page1?
-> Right. Page1 is also an alias, but kernel only provides mmap support for Page0.
-> Hence Page1 is always served from register cache. I will update.
->
->>> addressing the same underlying registers. Add read emulation for both
->>> apertures, backed by a register cache. VINTF Page0 reads are translated
->>> to their VCMDQ Page0 equivalent and served from the same cached state.
->>>
->>> Once IOMMU_HW_QUEUE_ALLOC and viommu_mmap are wired up in a
->> subsequent
->>> patch, Page0 register reads will be served directly from the hardware
->>> backed mmap'd page instead of the cache. Page1 registers are always
->>> served from cache.
->> I would add add that
->> Page 0 contains VCMDQ control and status registers
->> while Page 1 contains VCMDQ base and DRAM address registers
+>> C.
 >>
+>> Cédric Le Goater (2):
+>>    aspeed/hace: Fix out-of-bounds read in has_padding()
+>>    aspeed/hace: Prevent total_req_len overflow
 >>
->> I would add Nicolin's explanation
->> "
+>>   hw/misc/aspeed_hace.c | 29 +++++++++++++++++++++++++++--
+>>   1 file changed, 27 insertions(+), 2 deletions(-)
 >>
->> The global page 0 programmable at any time so long as CMDQV_EN
->> is enabled.
->>
->> The logical (VINTF) page 0 are programmable only when SW allocates and
->> maps
->> global vcmdq(s) to a VINTF. "logical" also means "local" to that
->> VINTF.
->> "
-> Ok. Will add.
->
->>> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
->>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->>> ---
->>>  hw/arm/tegra241-cmdqv.h | 185
->> ++++++++++++++++++++++++++++++++++++++++
->>>  hw/arm/tegra241-cmdqv.c |  73 ++++++++++++++++
->>>  2 files changed, 258 insertions(+)
->>>
->>> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
->>> index 965670066d..b8bd8cd8ff 100644
->>> --- a/hw/arm/tegra241-cmdqv.h
->>> +++ b/hw/arm/tegra241-cmdqv.h
->>> @@ -29,6 +29,13 @@
->>>   */
->>>  #define TEGRA241_CMDQV_IO_LEN 0x50000
->>>
->>> +/* CMDQV MMIO aperture bases and VCMDQ stride */
->>> +#define CMDQV_VCMDQ_PAGE0_BASE  0x10000  /* CMDQV_CMDQ_BASE
->> */
->>> +#define CMDQV_VCMDQ_PAGE1_BASE  0x20000
->>> +#define CMDQV_VINTF_PAGE0_BASE  0x30000  /*
->> CMDQV_VI_CMDQ_BASE */
->>> +#define CMDQV_VINTF_PAGE1_BASE  0x40000
->>> +#define CMDQV_VCMDQ_STRIDE      0x80
->>> +
->>>  typedef struct Tegra241CMDQV {
->>>      struct iommu_viommu_tegra241_cmdqv cmdqv_data;
->>>      SMMUv3AccelState *s_accel;
->>> @@ -49,6 +56,14 @@ typedef struct Tegra241CMDQV {
->>>      uint32_t vintf_sid_match[16];
->>>      uint32_t vintf_sid_replace[16];
->>>      uint32_t vintf_cmdq_err_map[4];
->> I would add a comment explaining that those cached registers store the
->> consistent/idenftical values for both the global and logical regs (they
->> are same)
->>> +    uint32_t vcmdq_cons_indx[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vcmdq_prod_indx[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vcmdq_config[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vcmdq_status[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vcmdq_gerror[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint32_t vcmdq_gerrorn[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint64_t vcmdq_base[TEGRA241_CMDQV_MAX_CMDQ];
->>> +    uint64_t vcmdq_cons_indx_base[TEGRA241_CMDQV_MAX_CMDQ];
->>>  } Tegra241CMDQV;
->>>
->>>  /* CMDQ-V Config page registers (offset 0x00000) */
->>> @@ -160,6 +175,176 @@
->> SMMU_CMDQV_VINTFi_LVCMDQ_ERR_MAP_(0, 0)
->>>  /* MAP_1 and MAP_2 omitted; not referenced directly */
->>>  SMMU_CMDQV_VINTFi_LVCMDQ_ERR_MAP_(0, 3)
->>>
->>> +/*
->>> + * VCMDQ register windows.
->>> + *
->>> + * Page 0 @ 0x10000: VCMDQ control and status registers
->>> + * Page 1 @ 0x20000: VCMDQ base and DRAM address registers
->> Can you clearly separate regs that belong to page 0 from regs that
->> belong to page 1
->>> + */
->>> +#define A_VCMDQi_CONS_INDX(i)
->> same remark as for config registers. Please use the spec terminology
->>
->> SMMU_CMDQV_VCMDQi_CONS_INDX_0
->>
->>>                \
->>> +    REG32(VCMDQ##i##_CONS_INDX, 0x10000 + i * 0x80) \
->>> +    FIELD(VCMDQ##i##_CONS_INDX, RD, 0, 20)          \
->>> +    FIELD(VCMDQ##i##_CONS_INDX, ERR, 24, 7)
->>> +
->>> +A_VCMDQi_CONS_INDX(0)
->>> +A_VCMDQi_CONS_INDX(1)
->>> +
->>> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_NONE 0
->>> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ILL_OPCODE 1
->>> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ABT 2
->>> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ATC_INV_SYNC 3
->>> +#define V_VCMDQ_CONS_INDX_ERR_CERROR_ILL_ACCESS 4
->>> +
->>> +#define A_VCMDQi_PROD_INDX(i)
->> SMMU_CMDQV_VCMDQi_PROD_INDX_0
->>>                        \
->>> +    REG32(VCMDQ##i##_PROD_INDX, 0x10000 + 0x4 + i * 0x80) \
->>> +    FIELD(VCMDQ##i##_PROD_INDX, WR, 0, 20)
->>> +
->>> +A_VCMDQi_PROD_INDX(0)
->>> +A_VCMDQi_PROD_INDX(1)
->>> +
->>> +#define A_VCMDQi_CONFIG(i)
->> SMMU_CMDQV_VCMDQi_CONFIG_0(i)
->>>                   \
->>> +    REG32(VCMDQ##i##_CONFIG, 0x10000 + 0x8 + i * 0x80) \
->> 0x80, isn't it the stride you defined earlier, ie
->>
->>  CMDQV_VCMDQ_STRIDE ?
->>
->>> +    FIELD(VCMDQ##i##_CONFIG, CMDQ_EN, 0, 1)
->>> +
->>> +A_VCMDQi_CONFIG(0)
->>> +A_VCMDQi_CONFIG(1)
->>> +
->>> +#define A_VCMDQi_STATUS(i)                             \
->>> +    REG32(VCMDQ##i##_STATUS, 0x10000 + 0xc + i * 0x80) \
->>> +    FIELD(VCMDQ##i##_STATUS, CMDQ_EN_OK, 0, 1)
->>> +
->>> +A_VCMDQi_STATUS(0)
->>> +A_VCMDQi_STATUS(1)
->>> +
->>> +#define A_VCMDQi_GERROR(i)                               \
->>> +    REG32(VCMDQ##i##_GERROR, 0x10000 + 0x10 + i * 0x80)  \
->>> +    FIELD(VCMDQ##i##_GERROR, CMDQ_ERR, 0, 1)             \
->>> +    FIELD(VCMDQ##i##_GERROR, CONS_DRAM_WR_ABT_ERR, 1, 1) \
->>> +    FIELD(VCMDQ##i##_GERROR, CMDQ_INIT_ERR, 2, 1)
->>> +
->>> +A_VCMDQi_GERROR(0)
->>> +A_VCMDQi_GERROR(1)
->>> +
->>> +#define A_VCMDQi_GERRORN(i)                               \
->>> +    REG32(VCMDQ##i##_GERRORN, 0x10000 + 0x14 + i * 0x80)  \
->>> +    FIELD(VCMDQ##i##_GERRORN, CMDQ_ERR, 0, 1)             \
->>> +    FIELD(VCMDQ##i##_GERRORN, CONS_DRAM_WR_ABT_ERR, 1, 1) \
->>> +    FIELD(VCMDQ##i##_GERRORN, CMDQ_INIT_ERR, 2, 1)
->>> +
->>> +A_VCMDQi_GERRORN(0)
->>> +A_VCMDQi_GERRORN(1)
->> /* Page 1 */
->>> +
->>> +#define A_VCMDQi_BASE_L(i)
->> ditto remove the A_ prefix and use spec terminology
->>>               \
->>> +    REG32(VCMDQ##i##_BASE_L, 0x20000 + i * 0x80) \
->>> +    FIELD(VCMDQ##i##_BASE_L, LOG2SIZE, 0, 5)     \
->>> +    FIELD(VCMDQ##i##_BASE_L, ADDR, 5, 27)
->>> +
->>> +A_VCMDQi_BASE_L(0)
->>> +A_VCMDQi_BASE_L(1)
->>> +
->>> +#define A_VCMDQi_BASE_H(i)                             \
->>> +    REG32(VCMDQ##i##_BASE_H, 0x20000 + 0x4 + i * 0x80) \
->> may instead of using 0x20000 define macros for the base address of each
->> region
->>> +    FIELD(VCMDQ##i##_BASE_H, ADDR, 0, 16)
->>> +
->>> +A_VCMDQi_BASE_H(0)
->>> +A_VCMDQi_BASE_H(1)
->>> +
->>> +#define A_VCMDQi_CONS_INDX_BASE_DRAM_L(i)                             \
->>> +    REG32(VCMDQ##i##_CONS_INDX_BASE_DRAM_L, 0x20000 + 0x8 + i *
->> 0x80) \
->>> +    FIELD(VCMDQ##i##_CONS_INDX_BASE_DRAM_L, ADDR, 0, 32)
->>> +
->>> +A_VCMDQi_CONS_INDX_BASE_DRAM_L(0)
->>> +A_VCMDQi_CONS_INDX_BASE_DRAM_L(1)
->>> +
->>> +#define A_VCMDQi_CONS_INDX_BASE_DRAM_H(i)                             \
->>> +    REG32(VCMDQ##i##_CONS_INDX_BASE_DRAM_H, 0x20000 + 0xc + i *
->> 0x80) \
->>> +    FIELD(VCMDQ##i##_CONS_INDX_BASE_DRAM_H, ADDR, 0, 16)
->>> +
->>> +A_VCMDQi_CONS_INDX_BASE_DRAM_H(0)
->>> +A_VCMDQi_CONS_INDX_BASE_DRAM_H(1)
->> I would group all regs definition par page. The layout would look
->> clearer to me.
->>> +
->>> +/*
->>> + * VI_VCMDQ register windows (VCMDQs mapped via VINTF).
->>> + *
->>> + * Page 0 @ 0x30000: VI_VCMDQ control and status registers
->>> + * Page 1 @ 0x40000: VI_VCMDQ base and DRAM address registers
->> same here, pls separate page 0 and page 1 definitions
->>> + */
->>> +#define A_VI_VCMDQi_CONS_INDX(i)
->> A_
->>>                  \
->>> +    REG32(VI_VCMDQ##i##_CONS_INDX, 0x30000 + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_CONS_INDX, RD, 0, 20)          \
->>> +    FIELD(VI_VCMDQ##i##_CONS_INDX, ERR, 24, 7)
->>> +
->>> +A_VI_VCMDQi_CONS_INDX(0)
->>> +A_VI_VCMDQi_CONS_INDX(1)
->>> +
->>> +#define A_VI_VCMDQi_PROD_INDX(i)                             \
->>> +    REG32(VI_VCMDQ##i##_PROD_INDX, 0x30000 + 0x4 + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_PROD_INDX, WR, 0, 20)
->>> +
->>> +A_VI_VCMDQi_PROD_INDX(0)
->>> +A_VI_VCMDQi_PROD_INDX(1)
->>> +
->>> +#define A_VI_VCMDQi_CONFIG(i)                             \
->>> +    REG32(VI_VCMDQ##i##_CONFIG, 0x30000 + 0x8 + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_CONFIG, CMDQ_EN, 0, 1)
->>> +
->>> +A_VI_VCMDQi_CONFIG(0)
->>> +A_VI_VCMDQi_CONFIG(1)
->>> +
->>> +#define A_VI_VCMDQi_STATUS(i)                             \
->>> +    REG32(VI_VCMDQ##i##_STATUS, 0x30000 + 0xc + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_STATUS, CMDQ_EN_OK, 0, 1)
->>> +
->>> +A_VI_VCMDQi_STATUS(0)
->>> +A_VI_VCMDQi_STATUS(1)
->>> +
->>> +#define A_VI_VCMDQi_GERROR(i)                               \
->>> +    REG32(VI_VCMDQ##i##_GERROR, 0x30000 + 0x10 + i * 0x80)  \
->>> +    FIELD(VI_VCMDQ##i##_GERROR, CMDQ_ERR, 0, 1)             \
->>> +    FIELD(VI_VCMDQ##i##_GERROR, CONS_DRAM_WR_ABT_ERR, 1, 1) \
->>> +    FIELD(VI_VCMDQ##i##_GERROR, CMDQ_INIT_ERR, 2, 1)
->>> +
->>> +A_VI_VCMDQi_GERROR(0)
->>> +A_VI_VCMDQi_GERROR(1)
->>> +
->>> +#define A_VI_VCMDQi_GERRORN(i)                               \
->>> +    REG32(VI_VCMDQ##i##_GERRORN, 0x30000 + 0x14 + i * 0x80)  \
->>> +    FIELD(VI_VCMDQ##i##_GERRORN, CMDQ_ERR, 0, 1)             \
->>> +    FIELD(VI_VCMDQ##i##_GERRORN, CONS_DRAM_WR_ABT_ERR, 1, 1) \
->>> +    FIELD(VI_VCMDQ##i##_GERRORN, CMDQ_INIT_ERR, 2, 1)
->>> +
->>> +A_VI_VCMDQi_GERRORN(0)
->>> +A_VI_VCMDQi_GERRORN(1)
->>> +
->>> +#define A_VI_VCMDQi_BASE_L(i)                       \
->>> +    REG32(VI_VCMDQ##i##_BASE_L, 0x40000 + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_BASE_L, LOG2SIZE, 0, 5)     \
->>> +    FIELD(VI_VCMDQ##i##_BASE_L, ADDR, 5, 27)
->>> +
->>> +A_VI_VCMDQi_BASE_L(0)
->>> +A_VI_VCMDQi_BASE_L(1)
->>> +
->>> +#define A_VI_VCMDQi_BASE_H(i)                             \
->>> +    REG32(VI_VCMDQ##i##_BASE_H, 0x40000 + 0x4 + i * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_BASE_H, ADDR, 0, 16)
->>> +
->>> +A_VI_VCMDQi_BASE_H(0)
->>> +A_VI_VCMDQi_BASE_H(1)
->>> +
->>> +#define A_VI_VCMDQi_CONS_INDX_BASE_DRAM_L(i)                             \
->>> +    REG32(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_L, 0x40000 + 0x8 + i
->> * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_L, ADDR, 0, 32)
->>> +
->>> +A_VI_VCMDQi_CONS_INDX_BASE_DRAM_L(0)
->>> +A_VI_VCMDQi_CONS_INDX_BASE_DRAM_L(1)
->>> +
->>> +#define A_VI_VCMDQi_CONS_INDX_BASE_DRAM_H(i)                             \
->>> +    REG32(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_H, 0x40000 + 0xc + i
->> * 0x80) \
->>> +    FIELD(VI_VCMDQ##i##_CONS_INDX_BASE_DRAM_H, ADDR, 0, 16)
->>> +
->>> +A_VI_VCMDQi_CONS_INDX_BASE_DRAM_H(0)
->>> +A_VI_VCMDQi_CONS_INDX_BASE_DRAM_H(1)
->>> +
->>>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
->>>
->>>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
->>> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
->>> index 3b08ed0ff3..35e6f0bbd6 100644
->>> --- a/hw/arm/tegra241-cmdqv.c
->>> +++ b/hw/arm/tegra241-cmdqv.c
->>> @@ -15,6 +15,46 @@
->>>  #include "tegra241-cmdqv.h"
->>>  #include "trace.h"
->>>
->>> +/*
->>> + * Read a VCMDQ register using VCMDQ0_* offsets.
->>> + *
->>> + * The caller normalizes the MMIO offset such that @offset0 always refers
->>> + * to a VCMDQ0_* register, while @index selects the VCMDQ instance.
->>> + *
->>> + * All VCMDQ accesses return cached registers.
->>> + */
->>> +static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv,
->> hwaddr offset0,
->>> +                                          int index)
->>> +{
->>> +    switch (offset0) {
->>> +    case A_VCMDQ0_CONS_INDX:
->>> +        return cmdqv->vcmdq_cons_indx[index];
->>> +    case A_VCMDQ0_PROD_INDX:
->>> +        return cmdqv->vcmdq_prod_indx[index];
->>> +    case A_VCMDQ0_CONFIG:
->>> +        return cmdqv->vcmdq_config[index];
->>> +    case A_VCMDQ0_STATUS:
->>> +        return cmdqv->vcmdq_status[index];
->>> +    case A_VCMDQ0_GERROR:
->>> +        return cmdqv->vcmdq_gerror[index];
->>> +    case A_VCMDQ0_GERRORN:
->>> +        return cmdqv->vcmdq_gerrorn[index];
->>> +    case A_VCMDQ0_BASE_L:
->>> +        return cmdqv->vcmdq_base[index];
->>> +    case A_VCMDQ0_BASE_H:
->>> +        return cmdqv->vcmdq_base[index] >> 32;
->>> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
->>> +        return cmdqv->vcmdq_cons_indx_base[index];
->>> +    case A_VCMDQ0_CONS_INDX_BASE_DRAM_H:
->>> +        return cmdqv->vcmdq_cons_indx_base[index] >> 32;
->>> +    default:
->>> +        qemu_log_mask(LOG_UNIMP,
->>> +                      "%s unhandled read access at 0x%" PRIx64 "\n",
->>> +                      __func__, offset0);
->>> +        return 0;
->>> +    }
->>> +}
->>> +
->>>  static uint64_t tegra241_cmdqv_config_vintf_read(Tegra241CMDQV
->> *cmdqv,
->>>                                                   hwaddr offset)
->>>  {
->>> @@ -92,6 +132,7 @@ static uint64_t tegra241_cmdqv_read_mmio(void
->> *opaque, hwaddr offset,
->>>  {
->>>      Tegra241CMDQV *cmdqv = (Tegra241CMDQV *)opaque;
->>>      uint64_t val = 0;
->>> +    int index;
->>>
->>>      if (offset >= TEGRA241_CMDQV_IO_LEN) {
->>>          qemu_log_mask(LOG_UNIMP,
->>> @@ -125,6 +166,38 @@ static uint64_t tegra241_cmdqv_read_mmio(void
->> *opaque, hwaddr offset,
->>>      case A_VINTF0_CONFIG ... A_VINTF0_LVCMDQ_ERR_MAP_3:
->>>          val = tegra241_cmdqv_config_vintf_read(cmdqv, offset);
->>>          break;
->>> +    case A_VI_VCMDQ0_CONS_INDX ... A_VI_VCMDQ1_GERRORN:
->>> +        /*
->>> +         * VINTF Page0 registers have the same per-VCMDQ layout as the
->>> +         * VCMDQ Page0 registers. Translate the VINTF aperture offset to the
->>> +         * equivalent VCMDQ aperture offset, then fall through to reuse the
->>> +         * common VCMDQ decoding logic below.
->>> +         */
->>> +        offset -= CMDQV_VINTF_PAGE0_BASE -
->> CMDQV_VCMDQ_PAGE0_BASE;
->>> +        QEMU_FALLTHROUGH;
->>> +    case A_VCMDQ0_CONS_INDX ... A_VCMDQ1_GERRORN:
->>> +        /*
->>> +         * Decode a per-VCMDQ register access.
->>> +         *
->>> +         * The hardware supports up to 128 identical VCMDQ instances; we
->>> +         * currently expose TEGRA241_CMDQV_MAX_CMDQ (= 2). Each
->> VCMDQ
->>> +         * occupies a CMDQV_VCMDQ_STRIDE-byte window within the page.
->>> +         *
->>> +         * Extract the VCMDQ index and normalize to the VCMDQ0_* register
->>> +         * offset. A single helper services all instances via @index.
->>> +         */
->>> +        index = (offset - CMDQV_VCMDQ_PAGE0_BASE) /
->> CMDQV_VCMDQ_STRIDE;
->>> +        return tegra241_cmdqv_read_vcmdq(cmdqv,
->>> +                offset - index * CMDQV_VCMDQ_STRIDE, index);
->>> +    case A_VI_VCMDQ0_BASE_L ...
->> A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
->>> +        /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above */
->>> +        offset -= CMDQV_VINTF_PAGE1_BASE -
->> CMDQV_VCMDQ_PAGE1_BASE;
->>> +        QEMU_FALLTHROUGH;
->>> +    case A_VCMDQ0_BASE_L ... A_VCMDQ1_CONS_INDX_BASE_DRAM_H:
->>> +        /* Same decode logic as VCMDQ Page0 case above */
->>> +        index = (offset - CMDQV_VCMDQ_PAGE1_BASE) /
->> CMDQV_VCMDQ_STRIDE;
->>> +        return tegra241_cmdqv_read_vcmdq(cmdqv,
->>> +                offset - index * CMDQV_VCMDQ_STRIDE, index);
->> Please add trace points for read & write accesses
-> Just to clarify, we already have trace_tegra241_cmdqv_read_mmio and
-> trace_tegra241_cmdqv_write_mmio, so this suggestion is for to have 
-> another pair for vcmdq read/write, right?
-nope I did not see that
+>> --
+>> 2.54.0
+> 
+> Hi Cédric,
+> 
+> Thank you for fixing the defects. These changes look good. However,
+> I have one question regarding another potential issue.
+> 
+> In the do_hash_operation function, after calling hash_prepare_sg_iov
+> and hash_prepare_direct_iov, the function may return early if iov_idx
+> is -1. In this case, the code flow will not reach hash_execute_acc_mode
+> or hash_execute_non_acc_mode, which means the mapped address may not be
+> unmapped properly.
+> 
+> I think we may also need to unmap the address when this error condition
+> occurs. Do you think this should be included in this patch series, or
+> would a separate patch be preferred?
+> 
+> If a separate patch is preferred, 
 
-trace_tegra241_cmdqv_write_mmio also applied to those accesses.
-To be honest I would have prefered to have different traces points for different types of MMIO (CMDQV Config, VCMDQ P0 (when not mmaped), VCMDQ P1) to easily differentiate them but if you fell that's too heavy that's enough.
+yes. Do you have time for it ?
 
-Eric
+> then for this patch series:
+> Reviewed-by: Kane Chen kane_chen@aspeedtech.com
 
->
-> (Agree with all other suggestions above)
->
-> Thanks,
-> Shameer
+Thanks,
+
+C.
 
 

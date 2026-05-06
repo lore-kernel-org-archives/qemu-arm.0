@@ -4,150 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4D83CD342C
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 16:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 614ADCD342C
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 16:51:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKeq3-0004wQ-PJ; Wed, 06 May 2026 12:11:07 -0400
+	id 1wKfTC-0005Rd-Nk; Wed, 06 May 2026 12:51:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wKepu-0004us-4l; Wed, 06 May 2026 12:10:59 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKfTB-0005RN-Fn
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 12:51:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wKepr-0007kl-Un; Wed, 06 May 2026 12:10:57 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NaBkifJdKX9GXeRDVV/velZ4f/6xnxv9gY9+AkswOMqEotxu+u+MGa0FMtqFyF/ULsd3FRxsJ4tEGa8v0pGrqqLS4JPnvEfjzQGvBP8RWFyH2DFKz89RSqSebWfkdV/STNhF00wujX1dW0t5JAtnUtia3XkfvqspXG2H341F8WWTNNXg7TfuW9qj67305UNjXrYrA0Pu8QWRVNUz9bdwqwU1SUKUIx1v700OjLwk5c+288Ve6Zo7xMOVhBRlUGYM/ipdVfyJngN4N0nNeRunbWxmWkB3TxybT503PlfNNAxPiUBeUgTaCxjG9ThYRHhr1WgI9OLEKA1knGmkGri+VA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WL8j0TDOl1oABNCGoN8ogO9NcdMk45cg9GyIhtoXi5s=;
- b=SNkaV419eiq5o+niV/jEhg1YnLuOrj5zgpc7D5kpgdbuSI3Gld1E7fn7A3CWgZUGzm/NdQXMpnN1jSXK46VyerETW8EaOEY0emyifHysF1+AJtQO4YBxBP3IH3ARheLijsiQVcPwd8clpvJZR9G/8dBhvet0Rr3Hj5bXhbU65n8flCTR55CQJz9Pus87Rsb9AgF7bsTnC+KOwFjgyBPVPbB0G87Bxv4q+mWF+DJ5hjB9BgNMC2uofzBCKYBludVqeqoXVOdPwDQgS57CbNAAuD9jZEpM6/lo9hvxJCjz1NBNam5WA9LUdsTgaAIp6XLdjXL1IQOUHopcegWBR0Xrlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WL8j0TDOl1oABNCGoN8ogO9NcdMk45cg9GyIhtoXi5s=;
- b=hWvDvFWPcKlUqwU5Zjrj5L8GMNS8tRvnk0vYUsGvfCcmbUe7uU4aLm8bSNGYRTI1W4EMdYkibXrBvauVzDNnDWVI+4XF7dXzWYVfAxaomh3odv4cTR7kwZD6YMFWoTN5ixPIFxnwp/V4FcJVAVoTOhHmMHYEcX2U51slkOqnbNTVHMSuX3oyOW9SCt5WwWPzpVawx9DJsQ1qbrEblwc8R8rEFZOHpGQjijBVpgxSgXYM2nHz6yG7rI5ssvL3NL0BmfS7r/RtWwfhrRgsx7DnAKcSH+/rT3GVA8bjbj+A74CaFaMqKEqPVoLlg9EwJJd2gt1AV8mS/ecKjDhrxDTqGQ==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by IA1PR12MB8238.namprd12.prod.outlook.com (2603:10b6:208:3f9::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.27; Wed, 6 May
- 2026 16:10:48 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.20.9891.008; Wed, 6 May 2026
- 16:10:48 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev"
- <kvmarm@lists.linux.dev>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>, "philmd@linaro.org"
- <philmd@linaro.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "oliver.upton@linux.dev"
- <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-Subject: RE: [PATCH v4 02/17] target/arm/cpu-sysregs.h.inc: Sort by name
- alphabetical order
-Thread-Topic: [PATCH v4 02/17] target/arm/cpu-sysregs.h.inc: Sort by name
- alphabetical order
-Thread-Index: AQHc2s+GtFsAJnO1bEOB9Oh0Jl+DOLYBLoLQ
-Date: Wed, 6 May 2026 16:10:47 +0000
-Message-ID: <CH3PR12MB75485D446DD0633DF463A415AB3F2@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-3-eric.auger@redhat.com>
-In-Reply-To: <20260503073541.790215-3-eric.auger@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|IA1PR12MB8238:EE_
-x-ms-office365-filtering-correlation-id: d68d7cbf-9b4f-42e0-2a02-08deab8a091a
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|366016|1800799024|22082099003|18002099003|56012099003|921020|38070700021;
-x-microsoft-antispam-message-info: cGR6H8a++JyMnoI/iVuYiC5tQXtw3VMekAiO7STmyFaVrp/BpI/Q8EEv7XijCX/VXHxk3+71XEiPzPx1deul1ydRI+7x86B6QCke9BrfvtDnjPHhSKE6h1+IuRbi7p/0Md/mFet1qMjm9lEX8GA1MWcyRpv6MHnsFsvosIWccKceUuAoeaD4S36hzAkDFvs3ttQW5PgZLLUw+J4xoilqjMkYwMSBSyvpie/ExpjhYphtuNFiOuU+SbXEubOXZffSQXsjjnBEPBjXKEfIK90qnoB37DouIwcnhJQOvfzokM9Ja0eymA0MXIOrftp4qKEpmjELMzBpOqY8LU5jLP8mR7bv5cZ2XUs16fuHQXyB9ogyswgNH4Wcn1qT5AF64NlHdlVxHOeD0eAVEHpHLpHZQjYsj2yObzrrs2kI0Kb1zrSOIkHDKjDWtKla0/at8Ai3sdSapP2e46XaeNPvfkozNTufaBCUNqmIulTBqfkTA4bVbcEbW+cTbKdaWqT7IXEraI/5oxTlLWU8cDNSCuppubUizzVUhNMxC0hSUptxaWYoYv8W9+x3jB6/bzFgwQ0/8GZr3Mpe06Z+hPxihObvmljlUkOvO8YOdLHlXAzniYpocdI7Zhub/Z/n8K+xIyQ4Q1nfSUrA+BU1nrlVva/SrghgTFf/JLLnlKpiwY43UOcH5qQZWwsfF1RMfwqMJYYgyaQpC9fnx80K7rzudR8tMOUv8ACYuzeJUd5yXwquQbdirf8tdQ/FJ6pn6OGvttV6wn/AiKh5hpLFL96EZiPKOw==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024)(22082099003)(18002099003)(56012099003)(921020)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YVpBbk9HTTFJYU9GWWgrRzFPc1BjeTJCWGo1aHRhblBwYUdYMEZuV1R0Smk2?=
- =?utf-8?B?MGNUMDdGa3dnV0hWM1BmS0s5SnpvUEd6VVpTY0hWWC94aGU0N0tWVTBqcnRD?=
- =?utf-8?B?R3FUUEZIQ2tZZjgwSkVqSTRhZUp2K2RWVVc1SWlkb1NZQnVwVm42NTVWbXJY?=
- =?utf-8?B?aTM4NHJ1dVd0dDJ4aGtMNVh5cjJYdWZQTHJVUDdZbk80c0NLM09EclJGWm1R?=
- =?utf-8?B?dm9YblZHRCt0c0hTV1d3SThob3pxSmFlSmc5R0lWVU5Cei85Z2lDQW1mSm9z?=
- =?utf-8?B?aEk4WWxpZ2cxZFRDZ3hSSEljV0VVM0QzTHBaa3NpZ3lTU01GdTNMTHdZQWhk?=
- =?utf-8?B?MjZoRjVTT2wzYTBwQ0hyVy9tTzJLYmg0Nlh6NzBkWUlXa24ycC9HbW90QXcw?=
- =?utf-8?B?bStRdDh0SjlGYiszbllKK0pjZFQzZVl6aWhZZ292WHJqekVKLzYyRlZTZWdS?=
- =?utf-8?B?eVltOE5RanE5MC9Uck5CaENkY3RVcEhhSFl2OGtvV1NCYTdYdGFLcjlKM2Fs?=
- =?utf-8?B?OWYrSm05RmFmUm13YWlGUEhERUtDenBockw1N3N5UTJLT05XWk9BSXYwNElD?=
- =?utf-8?B?RDExdGpYTzhaM1JwNjZkT3IxOHdNU1k5TkVsNVpQaWFpQ3ZHZG1qQTJCSVMy?=
- =?utf-8?B?aEt6cTZrUTZoMmFid1g2S3FNaHJ5WTJsL3N4QnN4SFJvNFlhN2wzRlYvSVFl?=
- =?utf-8?B?d1RUdkx2cWM5MTZOTStMbVJZZTF1clhOS1ZzNnl5RkNsVnhiTUU5c0E1aTc2?=
- =?utf-8?B?TEFOa3VaK0dzMWtvRFVKb1JhK1c4WjhvRFd0MHpMWlA1bC80NGpCZ2dVSnRY?=
- =?utf-8?B?aEpjUlhGSFpkcjkvYUhnNzRUWFhjUC9KZ2F2aE8xQS9IejgzT2ZKNnNEdDRo?=
- =?utf-8?B?MWFMNHhiZCtZWm1KektTcUhmdkMzUWZ0TkcrQS83blNOZFhIQStLeTVOZFZ4?=
- =?utf-8?B?SmhiT0UvYVA3TnRSTkVRVk8wdWxuUm9tNm96RXEvUnRqQWtwSEcvRVZndVlx?=
- =?utf-8?B?dXJhc1A1RlQ3WU13Z292K1hWcXVIL3B4azVxclN1bU40Ulc5Z255Q0JuMmpU?=
- =?utf-8?B?REdpYzlwK1QwZ1lCN3NXaGppRnVCeE5vTCtNcGFlUHFMM3hYc3JoRm5BQys3?=
- =?utf-8?B?NW9qRzM5ZGFWb0VWVlRub2w1QVhGRUdxK04ydGJjMHJrVmFSdVBBTVJrRGtK?=
- =?utf-8?B?djlYS1BGV2d0Y203NDRMWU9Cb213Ri83WUgwcG9uc3h5dG1hTFpnQWlHSHA2?=
- =?utf-8?B?Z1dYa3RFT05wY3VPdGp1dXZrVzNSSmVTcTYrOGVxb3dlZFhRWXp0cXFyaXJ2?=
- =?utf-8?B?clZFdjZINFZMazRjQjBIZjJidHdPc21ac1VMbCt5ZC9jdTByayswQzNjdHlr?=
- =?utf-8?B?NnBNdVVBUjllQzRhZUNRTlJ4eStCMnlBWGZ6ZURTbzl0V0xXcnNxMk5Dc1dG?=
- =?utf-8?B?bndjZE12YnhLMFZ1bkU3K21tMzhNb3FYbUI0VVd0dHdCM2Q3UnRWL2NlQUhG?=
- =?utf-8?B?bmFzVnlkc0krZnZLRTR6TXBlVEc2V3k5U0FhRjZmK3h2K3Z0cTlRZEFDVGE4?=
- =?utf-8?B?cTZubWcvUXBqZGhBaFllUllaMW1sekNWdE5kcTFlSkNGNlkvdDBnYndWTGRD?=
- =?utf-8?B?Rk40c3NuUmphejJ1WUxSak1sbHNYem9Wb0d5U1ZoOVpIa1Q0dTB2WFlJcEhr?=
- =?utf-8?B?N0F1UWRTY2U0T0RleXJwRDA5YmwxaXgwM2xoVldYaWZzT2lRS2UyY3Bwa0h0?=
- =?utf-8?B?THU5amVhTG9ibTAxNTRmRXlNb2p5c3A1bzBzSUNrYmVQWnRwTXc1Z1ZwTkQ1?=
- =?utf-8?B?TjNlQmM4RjhIa04vWm1xckIraS9nMDV6SlJBV3IxSlFhRExxSmNUR1g0K2k1?=
- =?utf-8?B?cTk1UVpNelo5eGF1TVdmT01NbExDV29EenZuWTR1cHVEOVJlS0dCNXViVTJ2?=
- =?utf-8?B?dFNnbmoxQXhBSVI1SEZOUGlmcVNtYk5oaURrbEY3cFQ0a25sM3I2eURKSSsx?=
- =?utf-8?B?SlY5cGVhR0xPSjRXY1Q0T3V0QzNkRkdSb0o0YmlNbUpXWDR1QmMvK1FCWXRH?=
- =?utf-8?B?SFUrZW9UQzEyYmJNMXlLZkFoL3BtRXQ4anUxSGdvZWRMaStEdHpPV3VMUklL?=
- =?utf-8?B?L3lYR0JjRUNNR0l0V2txMkFmUFV5c2JVcHZNZHlPZXJ0Y2pESFhteUJUUmZ0?=
- =?utf-8?B?STk0Wjg3WE5NQjNFdWhpSlJRTnhZQUE0RmhKajkyN1Q3S0lsOGNnSElsOGda?=
- =?utf-8?B?QVh3djZNSDE0WjZ1OFlnZVNVM2NXWTRPUXhabEtFYW14ZWVKVnk2SmwxNXQw?=
- =?utf-8?B?aWgyNTF0UEdnUUUvREJ3b3h3WWduUDljZFBURzJKeTJaZEJvOWc2QT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wKfT8-0007E3-98
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 12:51:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778086288;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qkT2VaFQm84cIr+N6Lpren9ub+vmz8zB0amDfCvGA6g=;
+ b=C1Ga3A300kROsYmtoZ/sKbFghp6EowK85Ohb6Cp4WnSvvyWIybTINoNS4cdEq+AbHTguoC
+ 1b7LnmcQbNg2yBVht5A9UQ4H1TyHMJIjhqAHsWSgKwS6e+eb6a4+K57UcLfVYBkECmU2M6
+ QK/OPiOgJU1Q8NlIseQpiaZXWIP96Gc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-680-R4joCWWTNd2jX47vYZQoFA-1; Wed, 06 May 2026 12:51:27 -0400
+X-MC-Unique: R4joCWWTNd2jX47vYZQoFA-1
+X-Mimecast-MFC-AGG-ID: R4joCWWTNd2jX47vYZQoFA_1778086286
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-44696b11265so6876655f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 09:51:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778086286; x=1778691086;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qkT2VaFQm84cIr+N6Lpren9ub+vmz8zB0amDfCvGA6g=;
+ b=AXL8mrlqyLsB6d6e2XknBfJdWoUz0mfu7JBhVBSYk2PUkNTMaUKfsEV6uU3p09r9za
+ BVmC/FE8TIvgBlUPPNzDrThNFraWSKYNm5Y08yUl912TJhAA6D6jG96HtmPIdPxzSRzW
+ 6b7SsqU8/DPN+6xEIJ6BWsNs55LxpflwOJjf7SOwhG7iXDoTnSFoBe0099vOZSc7WuP5
+ Ft0F161pQDyFVkiCmbS50VZqHnLZHN+zPgtuQfpoiAV/ka1ufTYCMn0/zxtJ31aM6WYF
+ c1e+EaiOsPnDENie5s7kTD7vfsiFcP7ig5NMXXxviJttSmCh0guYYJPOFqLen/aCajd3
+ KJXA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+BabiUu6OARWkMUbCoD/k+fUSoxQ1spIGrq+6HcF2CL4xGw22i2xRZPv68XiDhj3RdRCdL8kExtg==@nongnu.org
+X-Gm-Message-State: AOJu0YyTPYF7s6EyyGCwGiu69KVagvwgmwO8GjWJ7U2/jhw73nrK6Afy
+ f7Wnk/4jlxDUIn2Z2VqAz4C9r9akXtjq/YA9Iftpx1lmmsfsh3PlhVszARxHAY9GvFngqviQ0O3
+ E45PsBC2dNhtHp2D3gwV4caBrEjGBhgDXi9JWjhEjWqidNG8+4OWgqA==
+X-Gm-Gg: AeBDievZM3uOtM9D44HkHL5OyG3al0PNaVdvdC8p4jtAEyaNGWHfhXsduIKg4+hDDhv
+ sgNeitrRvtowjj1wSM8q7W3/rxRFltG/QUp/h4k1oqyXjj6bDhlNtcczStnmgRurlOvwKXbvPA0
+ MEf/aoqIy57d6zmQUrc1OMwutm7hE4yGztHG+FlAghB82CuLapqiZfeuZSozlyIw8b+TRzFq13e
+ ZnbzEnPFvG18fvgnLgbycsIaHBChXCrDjKA9ajE9vDpAaFN0YHCZAcAsAT7MOZkgnAhtBQuQ2z5
+ 9N8N5c7Pe32WR6NCwV/O293oXjJQMPGaJy1eD309981kkaRpce5/B2fbsGHaloi5hZSkwyqyJCk
+ JlDDRtF9drfi3XETohkOleadVgSHIlNdCpAPSWo2WqP+DkgSZMHcJjSzO6weI87hPgtGOByS9ZS
+ 98g5DqPsy+ZiX3ci0=
+X-Received: by 2002:a05:600c:a405:b0:489:1a3a:9e45 with SMTP id
+ 5b1f17b1804b1-48e51f54230mr64626035e9.26.1778086286453; 
+ Wed, 06 May 2026 09:51:26 -0700 (PDT)
+X-Received: by 2002:a05:600c:a405:b0:489:1a3a:9e45 with SMTP id
+ 5b1f17b1804b1-48e51f54230mr64625375e9.26.1778086285875; 
+ Wed, 06 May 2026 09:51:25 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48e538d2878sm94271805e9.15.2026.05.06.09.51.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 May 2026 09:51:25 -0700 (PDT)
+Message-ID: <db7e22fc-f4e0-4caa-894c-fbffe8fae4b1@redhat.com>
+Date: Wed, 6 May 2026 18:51:24 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d68d7cbf-9b4f-42e0-2a02-08deab8a091a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 May 2026 16:10:47.8663 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: RlTHB8466u0hlEV0h4P7V+gwavAdKcYqDGP/5Ke4//e8624VnZhtNcCGBKTSOdKqoE1LLWTrJNNxHN5LKsZ6QQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB8238
-Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
- envelope-from=skolothumtho@nvidia.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 19/31] hw/arm/tegra241-cmdqv: Allocate HW VCMDQs on
+ base register programming
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ kjaju@nvidia.com, phrdina@redhat.com
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-20-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260415105552.622421-20-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: lDe6gESu-wI1ng6df7aC8uCsgStHfitRttn7QuhOKis_1778086286
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,79 +120,206 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
-Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiAwMyBNYXkgMjAyNiAwODozMw0KPiBUbzogZXJp
-Yy5hdWdlci5wcm9AZ21haWwuY29tOyBlcmljLmF1Z2VyQHJlZGhhdC5jb207IHFlbXUtDQo+IGRl
-dmVsQG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7IGt2bWFybUBsaXN0cy5saW51eC5k
-ZXY7DQo+IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsgcmljaGFyZC5oZW5kZXJzb25AbGluYXJv
-Lm9yZzsNCj4gY29odWNrQHJlZGhhdC5jb207IHNlYm90dEByZWRoYXQuY29tOyBTaGFtZWVyIEtv
-bG90aHVtIFRob2RpDQo+IDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHBoaWxtZEBsaW5hcm8u
-b3JnDQo+IENjOiBtYXpAa2VybmVsLm9yZzsgb2xpdmVyLnVwdG9uQGxpbnV4LmRldjsgcGJvbnpp
-bmlAcmVkaGF0LmNvbTsNCj4gYXJtYnJ1QHJlZGhhdC5jb207IGJlcnJhbmdlQHJlZGhhdC5jb207
-IGFib2xvZ25hQHJlZGhhdC5jb207DQo+IGpkZW5lbWFyQHJlZGhhdC5jb20NCj4gU3ViamVjdDog
-W1BBVENIIHY0IDAyLzE3XSB0YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jOiBTb3J0IGJ5IG5h
-bWUNCj4gYWxwaGFiZXRpY2FsIG9yZGVyDQo+IA0KPiBFeHRlcm5hbCBlbWFpbDogVXNlIGNhdXRp
-b24gb3BlbmluZyBsaW5rcyBvciBhdHRhY2htZW50cw0KPiANCj4gDQo+IHRhcmdldC9hcm0vY3B1
-LXN5c3JlZ3MuaC5pbmM6IFNvcnQgYnkgbmFtZSBhbHBoYWJldGljYWwgb3JkZXINCj4gDQo+IFNv
-cnQgYnkgcmVnaXN0ZXIgbmFtZSBhbHBoYWJldGljYWwgb3JkZXIuIFRoaXMgd2lsbCBhbGxvdyB0
-bw0KPiBlYXNpbHkgZGlmZiB3aXRoIHRoZSBmdXR1cmUgY29udGVudCwgYXV0b21hdGljYWxseSBn
-ZW5lcmF0ZWQuDQo+IA0KPiBObyBmdW5jdGlvbmFsIGNoYW5nZSBpbnRlbmRlZC4NCj4gDQo+IFNp
-Z25lZC1vZmYtYnk6IEVyaWMgQXVnZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4gU2lnbmVk
-LW9mZi1ieTogQ29ybmVsaWEgSHVjayA8Y29odWNrQHJlZGhhdC5jb20+DQo+IE1lc3NhZ2UtSUQ6
-IDwyMDI1MTIwODE2Mzc1MS42MTExODYtMy1lcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IC0tLQ0K
-PiAgdGFyZ2V0L2FybS9jcHUtc3lzcmVncy5oLmluYyB8IDQzICsrKysrKysrKysrKysrKysrKy0t
-LS0tLS0tLS0tLS0tLS0tLQ0KPiAgMSBmaWxlIGNoYW5nZWQsIDIyIGluc2VydGlvbnMoKyksIDIx
-IGRlbGV0aW9ucygtKQ0KDQpUb29rIGEgd2hpbGUgdG8gZmlndXJlIG91dCB0aGUgZXh0cmEgYWRk
-aXRpb24g8J+Yig0KK0RFRihDQ1NJRFJfRUwxLCAzLCAxLCAwLCAwLCAwKQ0KDQpNYXkgYmUgd29y
-dGggbWVudGlvbmluZyBpbiBjb21taXQgbG9nLg0KDQpUaGFua3MsDQpTaGFtZWVyDQoNCj4gDQo+
-IGRpZmYgLS1naXQgYS90YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jIGIvdGFyZ2V0L2FybS9j
-cHUtc3lzcmVncy5oLmluYw0KPiBpbmRleCAzZDFlZDQwZjA0Li5kNjFmMGQwYTE5IDEwMDY0NA0K
-PiAtLS0gYS90YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jDQo+ICsrKyBiL3RhcmdldC9hcm0v
-Y3B1LXN5c3JlZ3MuaC5pbmMNCj4gQEAgLTEsMTIgKzEsMTIgQEANCj4gIC8qIFNQRFgtTGljZW5z
-ZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyICovDQo+IC1ERUYoSURfQUE2NFBGUjBfRUwx
-LCAzLCAwLCAwLCA0LCAwKQ0KPiAtREVGKElEX0FBNjRQRlIxX0VMMSwgMywgMCwgMCwgNCwgMSkN
-Cj4gLURFRihJRF9BQTY0UEZSMl9FTDEsIDMsIDAsIDAsIDQsIDIpDQo+IC1ERUYoSURfQUE2NFNN
-RlIwX0VMMSwgMywgMCwgMCwgNCwgNSkNCj4gLURFRihJRF9BQTY0REZSMF9FTDEsIDMsIDAsIDAs
-IDUsIDApDQo+IC1ERUYoSURfQUE2NERGUjFfRUwxLCAzLCAwLCAwLCA1LCAxKQ0KPiArREVGKEND
-U0lEUl9FTDEsIDMsIDEsIDAsIDAsIDApDQo+ICtERUYoQ0xJRFJfRUwxLCAzLCAxLCAwLCAwLCAx
-KQ0KPiArREVGKENUUl9FTDAsIDMsIDMsIDAsIDAsIDEpDQo+ICtERUYoRENaSURfRUwwLCAzLCAz
-LCAwLCAwLCA3KQ0KPiAgREVGKElEX0FBNjRBRlIwX0VMMSwgMywgMCwgMCwgNSwgNCkNCj4gIERF
-RihJRF9BQTY0QUZSMV9FTDEsIDMsIDAsIDAsIDUsIDUpDQo+ICtERUYoSURfQUE2NERGUjBfRUwx
-LCAzLCAwLCAwLCA1LCAwKQ0KPiArREVGKElEX0FBNjRERlIxX0VMMSwgMywgMCwgMCwgNSwgMSkN
-Cj4gIERFRihJRF9BQTY0SVNBUjBfRUwxLCAzLCAwLCAwLCA2LCAwKQ0KPiAgREVGKElEX0FBNjRJ
-U0FSMV9FTDEsIDMsIDAsIDAsIDYsIDEpDQo+ICBERUYoSURfQUE2NElTQVIyX0VMMSwgMywgMCwg
-MCwgNiwgMikNCj4gQEAgLTE1LDI5ICsxNSwzMCBAQCBERUYoSURfQUE2NE1NRlIxX0VMMSwgMywg
-MCwgMCwgNywgMSkNCj4gIERFRihJRF9BQTY0TU1GUjJfRUwxLCAzLCAwLCAwLCA3LCAyKQ0KPiAg
-REVGKElEX0FBNjRNTUZSM19FTDEsIDMsIDAsIDAsIDcsIDMpDQo+ICBERUYoSURfQUE2NE1NRlI0
-X0VMMSwgMywgMCwgMCwgNywgNCkNCj4gLURFRihJRF9QRlIwX0VMMSwgMywgMCwgMCwgMSwgMCkN
-Cj4gLURFRihJRF9QRlIxX0VMMSwgMywgMCwgMCwgMSwgMSkNCj4gLURFRihJRF9ERlIwX0VMMSwg
-MywgMCwgMCwgMSwgMikNCj4gK0RFRihJRF9BQTY0UEZSMF9FTDEsIDMsIDAsIDAsIDQsIDApDQo+
-ICtERUYoSURfQUE2NFBGUjFfRUwxLCAzLCAwLCAwLCA0LCAxKQ0KPiArREVGKElEX0FBNjRQRlIy
-X0VMMSwgMywgMCwgMCwgNCwgMikNCj4gK0RFRihJRF9BQTY0U01GUjBfRUwxLCAzLCAwLCAwLCA0
-LCA1KQ0KPiArREVGKElEX0FBNjRaRlIwX0VMMSwgMywgMCwgMCwgNCwgNCkNCj4gIERFRihJRF9B
-RlIwX0VMMSwgMywgMCwgMCwgMSwgMykNCj4gLURFRihJRF9NTUZSMF9FTDEsIDMsIDAsIDAsIDEs
-IDQpDQo+IC1ERUYoSURfTU1GUjFfRUwxLCAzLCAwLCAwLCAxLCA1KQ0KPiAtREVGKElEX01NRlIy
-X0VMMSwgMywgMCwgMCwgMSwgNikNCj4gLURFRihJRF9NTUZSM19FTDEsIDMsIDAsIDAsIDEsIDcp
-DQo+ICtERUYoSURfREZSMF9FTDEsIDMsIDAsIDAsIDEsIDIpDQo+ICtERUYoSURfREZSMV9FTDEs
-IDMsIDAsIDAsIDMsIDUpDQo+ICBERUYoSURfSVNBUjBfRUwxLCAzLCAwLCAwLCAyLCAwKQ0KPiAg
-REVGKElEX0lTQVIxX0VMMSwgMywgMCwgMCwgMiwgMSkNCj4gIERFRihJRF9JU0FSMl9FTDEsIDMs
-IDAsIDAsIDIsIDIpDQo+ICBERUYoSURfSVNBUjNfRUwxLCAzLCAwLCAwLCAyLCAzKQ0KPiAgREVG
-KElEX0lTQVI0X0VMMSwgMywgMCwgMCwgMiwgNCkNCj4gIERFRihJRF9JU0FSNV9FTDEsIDMsIDAs
-IDAsIDIsIDUpDQo+IC1ERUYoSURfTU1GUjRfRUwxLCAzLCAwLCAwLCAyLCA2KQ0KPiAgREVGKElE
-X0lTQVI2X0VMMSwgMywgMCwgMCwgMiwgNykNCj4gK0RFRihJRF9NTUZSMF9FTDEsIDMsIDAsIDAs
-IDEsIDQpDQo+ICtERUYoSURfTU1GUjFfRUwxLCAzLCAwLCAwLCAxLCA1KQ0KPiArREVGKElEX01N
-RlIyX0VMMSwgMywgMCwgMCwgMSwgNikNCj4gK0RFRihJRF9NTUZSM19FTDEsIDMsIDAsIDAsIDEs
-IDcpDQo+ICtERUYoSURfTU1GUjRfRUwxLCAzLCAwLCAwLCAyLCA2KQ0KPiArREVGKElEX01NRlI1
-X0VMMSwgMywgMCwgMCwgMywgNikNCj4gK0RFRihJRF9QRlIwX0VMMSwgMywgMCwgMCwgMSwgMCkN
-Cj4gK0RFRihJRF9QRlIxX0VMMSwgMywgMCwgMCwgMSwgMSkNCj4gK0RFRihJRF9QRlIyX0VMMSwg
-MywgMCwgMCwgMywgNCkNCj4gIERFRihNVkZSMF9FTDEsIDMsIDAsIDAsIDMsIDApDQo+ICBERUYo
-TVZGUjFfRUwxLCAzLCAwLCAwLCAzLCAxKQ0KPiAgREVGKE1WRlIyX0VMMSwgMywgMCwgMCwgMywg
-MikNCj4gLURFRihJRF9QRlIyX0VMMSwgMywgMCwgMCwgMywgNCkNCj4gLURFRihJRF9ERlIxX0VM
-MSwgMywgMCwgMCwgMywgNSkNCj4gLURFRihJRF9NTUZSNV9FTDEsIDMsIDAsIDAsIDMsIDYpDQo+
-IC1ERUYoQ0xJRFJfRUwxLCAzLCAxLCAwLCAwLCAxKQ0KPiAtREVGKElEX0FBNjRaRlIwX0VMMSwg
-MywgMCwgMCwgNCwgNCkNCj4gLURFRihDVFJfRUwwLCAzLCAzLCAwLCAwLCAxKQ0KPiAtREVGKERD
-WklEX0VMMCwgMywgMywgMCwgMCwgNykNCj4gLS0NCj4gMi41My4wDQoNCg==
+
+
+On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> Add support for allocating IOMMUFD hardware queues when the guest
+> programs the VCMDQ BASE registers.
+>
+> VCMDQ_EN is part of the VCMDQ_CONFIG register, which is accessed
+> through the VINTF Page0 region. A subsequent patch maps this region
+> directly into the guest address space, so QEMU does not trap writes
+> to VCMDQ_CONFIG.
+>
+> Since VCMDQ_EN writes are not trapped, QEMU cannot allocate the
+> hardware queue based on that bit. Instead, allocate the IOMMUFD
+> hardware queue when the guest writes a VCMDQ BASE register with a
+> valid RAM-backed address and when CMDQV and VINTF are enabled.
+>
+> If a hardware queue was previously allocated for the same VCMDQ,
+> free it before reallocation.
+>
+> Writes with invalid addresses are ignored.
+>
+> All allocated VCMDQs are freed when CMDQV or VINTF is disabled.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/tegra241-cmdqv.h | 11 +++++++
+>  hw/arm/tegra241-cmdqv.c | 70 +++++++++++++++++++++++++++++++++++++++--
+>  2 files changed, 78 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index 88572ad939..039d86374f 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -44,6 +44,7 @@ typedef struct Tegra241CMDQV {
+>      MemoryRegion mmio_cmdqv;
+>      qemu_irq irq;
+>      IOMMUFDVeventq *veventq;
+> +    IOMMUFDHWqueue *vcmdq[TEGRA241_CMDQV_MAX_CMDQ];
+>      void *vintf_page0;
+>  
+>      /* Register Cache */
+> @@ -348,6 +349,16 @@ A_VI_VCMDQi_CONS_INDX_BASE_DRAM_L(1)
+>  A_VI_VCMDQi_CONS_INDX_BASE_DRAM_H(0)
+>  A_VI_VCMDQi_CONS_INDX_BASE_DRAM_H(1)
+>  
+> +static inline bool tegra241_cmdq_enabled(Tegra241CMDQV *cmdqv)
+> +{
+> +    return cmdqv->status & R_STATUS_CMDQV_ENABLED_MASK;
+> +}
+> +
+> +static inline bool tegra241_vintf_enabled(Tegra241CMDQV *cmdqv)
+> +{
+> +    return cmdqv->vintf_status & R_VINTF0_STATUS_ENABLE_OK_MASK;
+> +}
+> +
+>  const SMMUv3AccelCmdqvOps *tegra241_cmdqv_get_ops(void);
+>  
+>  #endif /* HW_ARM_TEGRA241_CMDQV_H */
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index cdd941cec9..b5f2f74cf2 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -15,6 +15,66 @@
+>  #include "tegra241-cmdqv.h"
+>  #include "trace.h"
+>  
+> +static void tegra241_cmdqv_free_vcmdq(Tegra241CMDQV *cmdqv, int index)
+> +{
+> +    IOMMUFDViommu *viommu = cmdqv->s_accel->viommu;
+> +    IOMMUFDHWqueue *vcmdq = cmdqv->vcmdq[index];
+> +
+> +    if (!vcmdq) {
+> +        return;
+> +    }
+> +    iommufd_backend_free_id(viommu->iommufd, vcmdq->hw_queue_id);
+> +    g_free(vcmdq);
+> +    cmdqv->vcmdq[index] = NULL;
+> +}
+> +
+> +static void tegra241_cmdqv_free_all_vcmdq(Tegra241CMDQV *cmdqv)
+> +{
+> +    /* Free in reverse order to avoid "resource busy" error */
+> +    for (int i = (TEGRA241_CMDQV_MAX_CMDQ - 1); i >= 0; i--) {
+> +        tegra241_cmdqv_free_vcmdq(cmdqv, i);
+uapi/linux/iommufd.h says:        
+* - alloc starts from the lowest @index=0 in ascending order
+* - destroy starts from the last allocated @index in descending order
+
+so this seems a requirement of the uapi if I understand correctly
+
+Eric
+
+> +    }
+> +}
+> +
+> +static bool tegra241_cmdqv_setup_vcmdq(Tegra241CMDQV *cmdqv, int index,
+> +                                       Error **errp)
+> +{
+> +    SMMUv3AccelState *accel = cmdqv->s_accel;
+> +    uint64_t base_mask = (uint64_t)R_VCMDQ0_BASE_L_ADDR_MASK |
+> +                         (uint64_t)R_VCMDQ0_BASE_H_ADDR_MASK << 32;
+> +    uint64_t addr = cmdqv->vcmdq_base[index] & base_mask;
+> +    uint64_t log2 = cmdqv->vcmdq_base[index] & R_VCMDQ0_BASE_L_LOG2SIZE_MASK;
+> +    uint64_t size = 1ULL << (log2 + 4);
+> +    IOMMUFDViommu *viommu = accel->viommu;
+> +    IOMMUFDHWqueue *hw_queue;
+> +    uint32_t hw_queue_id;
+> +
+> +    /* Ignore any invalid address. This may come as part of reset etc. */
+> +    if (!address_space_is_ram(&address_space_memory, addr) ||
+> +        !address_space_is_ram(&address_space_memory, addr + size - 1)) {
+> +        return true;
+> +    }
+> +
+> +    if (!tegra241_cmdq_enabled(cmdqv) || !tegra241_vintf_enabled(cmdqv)) {
+> +        return true;
+> +    }
+> +
+> +    tegra241_cmdqv_free_vcmdq(cmdqv, index);
+> +
+> +    if (!iommufd_backend_alloc_hw_queue(viommu->iommufd, viommu->viommu_id,
+> +                                        IOMMU_HW_QUEUE_TYPE_TEGRA241_CMDQV,
+> +                                        index, addr, size, &hw_queue_id,
+> +                                        errp)) {
+> +        return false;
+> +    }
+> +    hw_queue = g_new(IOMMUFDHWqueue, 1);
+> +    hw_queue->hw_queue_id = hw_queue_id;
+> +    hw_queue->viommu = viommu;
+> +    cmdqv->vcmdq[index] = hw_queue;
+> +
+> +    return true;
+> +}
+> +
+>  /*
+>   * Read a VCMDQ register using VCMDQ0_* offsets.
+>   *
+> @@ -63,7 +123,7 @@ static uint64_t tegra241_cmdqv_read_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>   */
+>  static void tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>                                         int index, uint64_t value,
+> -                                       unsigned size)
+> +                                       unsigned size, Error **errp)
+>  {
+>      switch (offset0) {
+>      case A_VCMDQ0_CONS_INDX:
+> @@ -91,11 +151,13 @@ static void tegra241_cmdqv_write_vcmdq(Tegra241CMDQV *cmdqv, hwaddr offset0,
+>                  (cmdqv->vcmdq_base[index] & 0xffffffff00000000ULL) |
+>                  (value & 0xffffffffULL);
+>          }
+> +        tegra241_cmdqv_setup_vcmdq(cmdqv, index, errp);
+>          return;
+>      case A_VCMDQ0_BASE_H:
+>          cmdqv->vcmdq_base[index] =
+>              (cmdqv->vcmdq_base[index] & 0xffffffffULL) |
+>              ((uint64_t)value << 32);
+> +        tegra241_cmdqv_setup_vcmdq(cmdqv, index, errp);
+>          return;
+>      case A_VCMDQ0_CONS_INDX_BASE_DRAM_L:
+>          if (size == 8) {
+> @@ -204,6 +266,7 @@ static void tegra241_cmdqv_config_vintf_write(Tegra241CMDQV *cmdqv,
+>                  cmdqv->vintf_status |= R_VINTF0_STATUS_ENABLE_OK_MASK;
+>              }
+>          } else {
+> +            tegra241_cmdqv_free_all_vcmdq(cmdqv);
+>              tegra241_cmdqv_munmap_vintf_page0(cmdqv, errp);
+>              cmdqv->vintf_status &= ~R_VINTF0_STATUS_ENABLE_OK_MASK;
+>          }
+> @@ -329,6 +392,7 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+>          if (value & R_CONFIG_CMDQV_EN_MASK) {
+>              cmdqv->status |= R_STATUS_CMDQV_ENABLED_MASK;
+>          } else {
+> +            tegra241_cmdqv_free_all_vcmdq(cmdqv);
+>              cmdqv->status &= ~R_STATUS_CMDQV_ENABLED_MASK;
+>          }
+>          break;
+> @@ -363,7 +427,7 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+>           */
+>          index = (offset - CMDQV_VCMDQ_PAGE0_BASE) / CMDQV_VCMDQ_STRIDE;
+>          tegra241_cmdqv_write_vcmdq(cmdqv, offset - index * CMDQV_VCMDQ_STRIDE,
+> -                                   index, value, size);
+> +                                   index, value, size, &local_err);
+>          break;
+>      case A_VI_VCMDQ0_BASE_L ... A_VI_VCMDQ1_CONS_INDX_BASE_DRAM_H:
+>          /* Same VINTF-to-VCMDQ translation as VINTF Page0 case above */
+> @@ -373,7 +437,7 @@ static void tegra241_cmdqv_write_mmio(void *opaque, hwaddr offset,
+>          /* Same decode logic as VCMDQ Page0 case above */
+>          index = (offset - CMDQV_VCMDQ_PAGE1_BASE) / CMDQV_VCMDQ_STRIDE;
+>          tegra241_cmdqv_write_vcmdq(cmdqv, offset - index * CMDQV_VCMDQ_STRIDE,
+> -                                   index, value, size);
+> +                                   index, value, size, &local_err);
+>          break;
+>      default:
+>          qemu_log_mask(LOG_UNIMP, "%s unhandled write access at 0x%" PRIx64 "\n",
+
 

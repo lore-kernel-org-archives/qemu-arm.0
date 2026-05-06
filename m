@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95832FF8855
-	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 13:34:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FFB0CD342C
+	for <qemu-arm@archiver.kernel.org>; Wed,  6 May 2026 13:40:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKcOU-0006Bw-3p; Wed, 06 May 2026 09:34:30 -0400
+	id 1wKcTp-0000Ni-In; Wed, 06 May 2026 09:40:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKcOR-0006BS-03
- for qemu-arm@nongnu.org; Wed, 06 May 2026 09:34:27 -0400
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+ id 1wKcTj-0000Fe-FB
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 09:39:56 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wKcOP-0001zq-Gq
- for qemu-arm@nongnu.org; Wed, 06 May 2026 09:34:26 -0400
-Received: by mail-oi1-x231.google.com with SMTP id
- 5614622812f47-479e6bc357eso2454291b6e.2
- for <qemu-arm@nongnu.org>; Wed, 06 May 2026 06:34:25 -0700 (PDT)
+ id 1wKcTh-0006zL-AH
+ for qemu-arm@nongnu.org; Wed, 06 May 2026 09:39:54 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-79a2ee65171so67616077b3.2
+ for <qemu-arm@nongnu.org>; Wed, 06 May 2026 06:39:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778074464; x=1778679264; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778074791; x=1778679591; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=MTBxwUdDAXq/27h3AIzTobRIIsRqrZ0As0hz6xY9Dsk=;
- b=P/hdhFWq1CefuOFM5YVDE9Px03Hx3V4e22r/BoYmrtc8RGPx4Nuf5FDe/ylhb59xXe
- qjmfVrmiuB7CPXbbo8HfsAw8ik+5fgT+20auQ86nlV4lD4lrvD87y1/hZg6aYc04BUDB
- R8yjnirI9p3eV3YHYivyDw76Yn7SB4IyxK1ZnWBJerc3Cc21RemuR671ZVwAe2Q4QBve
- 8Bvtyagi/mQxJFQyjPw2Cefwv+PZG7Npu7I3d1KWCXzIVmo0Jzh1pMpJYjWY5I3SiuZX
- LxCwSzz3FVub8g0w9W29qJOY4ChkeQGcZuHG1vMQlD2o21usSIccPon6Jh8R5KKelPL9
- dpsQ==
+ bh=WKVgFAzVfqzQY9IEe4RfflolbrKsfqDi1J4nmML3MUA=;
+ b=sjgalF2OhjxmjJVzhIWd79kKuLmtLyxfD5aNlJ/V2BDxKoVQbjTWW3HlqwWNtNf924
+ 2mlQ4kMHt29BmKZw74fx2+p2CyjXJBrCQ/sChewQEXkQXZdx5vkt7dhNCT/VwSoEVAr1
+ rkiGC0LPlxE7+lShDpIpTzDYD7Fd+9zE/XLSOlaoEG2mAcIHgKjDoICAo8cDPAmCaxlC
+ XYeaemKFQrd6wSfLvGiYRrDLaKxDRyfOJ5dcV76CnK/8fWeOLxlZbH/qgfKUDiWyU1CB
+ yjKsQYVVBpCela56fwUhKeW0SlofCOPczB1AIALDqPeaHyIjpG7LeweB3JuF6oetxV1Y
+ ILRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778074464; x=1778679264;
+ d=1e100.net; s=20251104; t=1778074791; x=1778679591;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MTBxwUdDAXq/27h3AIzTobRIIsRqrZ0As0hz6xY9Dsk=;
- b=psr1d4U5P+U5D/aCq6kNYtIPdFd9oB7VW38+NK6xyx+mknO8j0rBTG4I3g+t6S/jBh
- +RN8pJdgq+jnl4KvMFF4rWn7PE2SPbRj30xIi9K00PGWC+EnLkPiYGDabJ48XVHGhkiw
- F3ifOx6Db50QMo3VYDvz9MmHbIEau1ecQ678V/OVO6P2w49dkFbJX5ysuHuDoU/nUH/3
- ZTFC71amXI7AeWOZ7Pqk06fSzpazDFKaYi49ww72DulpEpVy7Ixpk8ZJq4CxiNKpM2yI
- YE1uj5m01PQmU8MQRwr+Tb0sDrcJtqPsjUpMdF4WMd2TbdSjQWa0i6MiMmlzZhgxIujp
- gV+w==
+ bh=WKVgFAzVfqzQY9IEe4RfflolbrKsfqDi1J4nmML3MUA=;
+ b=m8DwGmLGu0KrXlaR1E5V4DL294A3w0zDX0MPnNICAguURNQj6C2p+VWywj/YqqVkwK
+ H1JuwbYcPH1/30rqGh5UF1oMNCvlw4XCnw/PmeNNM9htiCAlDFwLKd2JB+rSsyRqvJkU
+ cMvWLYWIDlZYD+XgB8HSyEu5bVrXOW/eezbrLIAU03Clm7A0JGGyD1muHf/cgPKERsTH
+ ZppG/V09m04Q4Wp0JBnqHcHnJNnQ8VM+1krmhMxy3JwUqJW+vYsv8Rfk08UXZ71SNvGh
+ AQFGXkDBhMOokT38lvqp5UNAdZzwYeAQNoEXWwI3OihTewWFn7fcGv9ZHLOjgyIvZcrx
+ P2dw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9LqvjoaObzPa/AV0NcU5XII4uuwOBFKNDb9f1Q7379nc9guMfmBnazXk2sdFehf/u1d3dXmLTy/w==@nongnu.org
-X-Gm-Message-State: AOJu0YwTH+Hih40PALnE/LLZRPVJKyE1DVBY6QldOHeihXT/a1HUAuz6
- 3f4fxQNoqFHeVwpljEzB2RHLPHy+2QVu467OOJUL2d1wwqs0SIBewBc87uhDI5q+CDQ=
-X-Gm-Gg: AeBDieukJPLS8jHSPt1+yjGDIYi9o4ZLS64yjPaU2NQNJbv0aep+mI//VK7Z3DKWAqQ
- dohxLKJ9ZofLZp1a/qr+fNSTaWwBXRycky6BQqQWfzyvqmfQBqgX0G8NP8Nku1KlCYCOHI2AnsI
- SR/qLloAKno+0HKIKblcQEAIbdlr0N2So9YEtEuyljswD5Xk1bL0d6YtfR18b1F888aJ6QpeJNJ
- 5LXHFqgw17nec9s0GYEDHYjqvWZJcu2EjBDGAsZXCrZJAJ7BX49ohkpimm5Y3ujaSPXpL3Lg6q7
- juyvCNlHZgCLlJEuI5rUIYbSuDC0UWCxMa/2iqbcQvUBOrN3XEsTL2tMBXf8ae+phifiLxecldS
- 3qa1JkOiKs0TM/3yu1Knn3daFnn53SeEfTw/DLI2IU9kjsxhzKHPKgMGMFfCeNDK4tYXuRsjVcg
- 5yWcZ5dlZfZkvJrmpAlZt9msqxygo5jAvPkBGo6V4V1dK/fFloRpNXZWTCWVlkAuCJUvbgD33ol
- HpvsGLVwppsXz0TWKMd3TFRD9gPlfI=
-X-Received: by 2002:a05:6820:2015:b0:694:9cb9:ace9 with SMTP id
- 006d021491bc7-69998d5b2a0mr1532022eaf.52.1778074464013; 
- Wed, 06 May 2026 06:34:24 -0700 (PDT)
+ AFNElJ/e+Y7zVjdZ9yZb32EbDVjefoJKmJ3Kf/755QFGHA1Bu6rQsVHPssAGCzFCBqACpkgj8iw/veAGeQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxN3+THB37Rpf2HP6Xa883de0pIIN3feiPyjF0VFVuSp94RoIEf
+ /ufOuEoj8Qsxk7Nfub+tu0eb1BjrHIqm/tU0f+XT+j1g5acjD4eTS6r8Nv9oblkuTR0=
+X-Gm-Gg: AeBDievR3gNr1Itd9t69LwdJDJUSrEyduqjh3595jF2PIC56v09BMfcmwQqZ8/eKpeR
+ 3aR8uQY4K0wKV47sD1xApE/E2L+Wp9qsb1dbKduU6M+nvDzgYPoS1xaaWrHo/imxCVvr5OXyRem
+ pVf/6OrnmXEPnbKj1Cz9AMfq86KbrGNExSTNQWuT36rQcamrQJbdljDcVu+5AJk45/xkMKeA1Jy
+ n6c3GsD+gZ0t3Y7YQbUvHIHU2U/c6d2BuYB0n1SDPenzNUHQB56PfTgGkW2mNTqOy6TsdsuTND+
+ 1YjbezHuA82GwnQ+sPd1FXSjj4PejAjNPvWfOMfR4rrZplnG0fILlu4xySMeaJsqLKWIPcxCKpS
+ QVe8OUMmDn/h63rc/lUxJIfgRCm3Qsbdh5x8Gss23SJWnRpls+v9UlTlroTjTOzXAI1rGaBmmqp
+ Two+qNguyh34+6TZJfWrWMjVhxicypuMFXxOYLLpUIWp6FTTR2X5d4nKCY9bg/zobPJzyCuSkEZ
+ h9sy/MdLtE5sQuLZ8GY
+X-Received: by 2002:a05:690c:ed6:b0:7bd:5d03:dc1a with SMTP id
+ 00721157ae682-7bdf5d7f3a4mr42062777b3.1.1778074791164; 
+ Wed, 06 May 2026 06:39:51 -0700 (PDT)
 Received: from ?IPV6:2600:381:c938:6375:5307:cd92:1ec8:e891?
  ([2600:381:c938:6375:5307:cd92:1ec8:e891])
  by smtp.gmail.com with ESMTPSA id
- 006d021491bc7-6968947934esm9870521eaf.8.2026.05.06.06.34.22
+ 00721157ae682-7bd66527421sm77820107b3.2.2026.05.06.06.39.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 May 2026 06:34:23 -0700 (PDT)
-Message-ID: <83afc091-2825-4a63-af3a-ae5697e02b8f@linaro.org>
-Date: Wed, 6 May 2026 08:34:21 -0500
+ Wed, 06 May 2026 06:39:50 -0700 (PDT)
+Message-ID: <31bac9a2-e91c-49bc-ac99-0ba88f83e6ed@linaro.org>
+Date: Wed, 6 May 2026 08:39:47 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 01/15] target/arm: implement MTE_PERM
+Subject: Re: [PATCH v5 05/15] target/arm: emit tag check when MTX without TBI
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>, Helge Deller <deller@gmx.de>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 References: <20260504-feat-mte4-v5-0-232a648e63c6@gmail.com>
- <20260504-feat-mte4-v5-1-232a648e63c6@gmail.com>
+ <20260504-feat-mte4-v5-5-232a648e63c6@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260504-feat-mte4-v5-1-232a648e63c6@gmail.com>
+In-Reply-To: <20260504-feat-mte4-v5-5-232a648e63c6@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x231.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=richard.henderson@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,15 +111,20 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/4/26 10:50, Gabriel Brookman wrote:
-> Introduces a new stage 2 memory attribute, NoTagAccess, that raises a
-> stage 2 data abort on a tag check, tag read, or tag write.
+> Previously, the TBI bit was used to mediate whether tag checks happened.
+> With MTE4, if the MTX bits are enabled, then tag checking happens even
+> if TBI is disabled. See AccessIsTagChecked.
 > 
 > Signed-off-by: Gabriel Brookman<brookmangabriel@gmail.com>
 > ---
->   target/arm/cpu-features.h   |  5 +++++
->   target/arm/ptw.c            | 25 ++++++++++++++++++++++---
->   target/arm/tcg/mte_helper.c | 38 ++++++++++++++++++++++++++++++++++++--
->   3 files changed, 63 insertions(+), 5 deletions(-)
+>   target/arm/helper.c         | 10 ++++++++++
+>   target/arm/internals.h      | 13 ++++++++-----
+>   target/arm/tcg/helper-a64.c |  7 ++++---
+>   target/arm/tcg/hflags.c     |  9 +++++----
+>   target/arm/tcg/mte_helper.c |  9 ++++++---
+>   target/arm/tcg/sme_helper.c |  4 ++--
+>   target/arm/tcg/sve_helper.c |  6 +++---
+>   7 files changed, 38 in
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

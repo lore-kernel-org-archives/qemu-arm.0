@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35384CD343F
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 19:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C9ECD343F
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 19:49:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL4iB-0002wJ-KM; Thu, 07 May 2026 15:48:45 -0400
+	id 1wL4iG-00030Z-9C; Thu, 07 May 2026 15:48:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wL4hZ-0002mW-Gb
+ id 1wL4hZ-0002mT-1J
  for qemu-arm@nongnu.org; Thu, 07 May 2026 15:48:09 -0400
 Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wL4hW-00068Y-PK
- for qemu-arm@nongnu.org; Thu, 07 May 2026 15:48:05 -0400
+ id 1wL4hV-0006B0-50
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 15:48:04 -0400
 Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-48334ee0aeaso9618425e9.1
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 12:47:33 -0700 (PDT)
+ 5b1f17b1804b1-4891c0620bcso9624485e9.1
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 12:47:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778183253; x=1778788053; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778183259; x=1778788059; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TwQoznHfoi6X0cMFnSCdgFp2onTlRFNtNkmcJ9GY4w8=;
- b=M/hCKBEjjDEvqrp5nqZlsfv9ubd5TEQXKJTRdeE3PuIk3KhtR0T23Pz7+8GZ0rVOJt
- +Tv8SpJVW+Ri2obPvI5ZMF7F0sI7H2bXoTYMiZ5LDyWMfePRYY5Ly/fDQOmJONe0L2d7
- zqadIvTe8IyiTU7gwlIR8LungJg/7tEERQt/aKI5mMi/NcIuXqXnZM1euvpKy/1VD1cM
- w4I8Rz5MzigI+JSodEoK5+0eVfiK5LoSaO/Cs1MJcXogS7zW+hPJqKNFZmoFogOOvrgj
- WF1cYG6jORPKIzN0kRjc9LPT5PGY8qWfxGhO6kR5bFNsHXFL2+fposlPDhEX8pgGfstC
- SrYw==
+ bh=vxuCQv75FqOTgqHf7uhOh33FKyFMH0uLqFU9OhcHcj0=;
+ b=wV7CCIE/2rpgp71aFO0kOFdSBy5TG422y3T8y3SCUSvyrWJIzjIoznsPLXF31vfMCH
+ 63tBTWyY7gBpCFlsBDqikvjRSgITTcdXRaLgCRmxJToN9asn5PLt4cvo2AOjk+x+bxeo
+ YXAhXXXWK1rfMU6zCbgGzslwBjQnkYE0/K4tV2O7EhkHsKz7m3KuxcSl9PaYO0zzVlVr
+ 9yBPnBoymOPm4UTmWBPmaBHEiJbr/uHXkYPqcXaOFTeQw3haB9HJ0gg0A79N7dxv+EOX
+ Y2CTjlKajFbMRPwyIbIMNkEHaXWfjOSG6P1/F1CoClLr03fIWNY2A21AOFWeN2kf2+QT
+ rScw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778183253; x=1778788053;
+ d=1e100.net; s=20251104; t=1778183259; x=1778788059;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=TwQoznHfoi6X0cMFnSCdgFp2onTlRFNtNkmcJ9GY4w8=;
- b=ckO+usU0tQMIX+nIW+0iXRVeU49nAWNbZ8HgMRHC6f+zLtTuGHRwg3pBolihcczwR+
- lZ4o6UW9HfurF7SUMqpkOfF6Ot5SjHJo+PGHEk8iUMsHA1mCfzYwAfmGLFG7MGLCb49P
- 3pAsRkfUnlluXH+xQAHKb3fMNfUMS6/45KBcRMRjY3hN5HSHVWifFj1LecKvpCOC2AFp
- U5mAg32EkDSn2pUYEE2KgkW+zoEUXn9vC8mWDw7Z73osmGbYA/cJ+uVIDmXzT3EMnBGI
- xJiLbzjJXsi234i4u9ZERV5s5mtJMeffkZ+P3vTAVzuAjfEHXDWeKD6Y9hJ4Ad/mKPv6
- 4bXA==
-X-Gm-Message-State: AOJu0YzKs6dtGgt9bE5AdLYVOjwPSywkm2WUisx2Dr/fKPfQKoN8AZB2
- J0lJ5uaamAhiNsM7YYnJQL2uQR8OvHxamu/qjt/iqvlyh4wuvJn4tezoG+9BrMsTEFk+svvUlMy
- mRD8h
-X-Gm-Gg: AeBDieuYhdNfpKY/UVJLGz3S+C7NpiryHJT4+XjyInKND3L1Hx7cSiGZubIKIa1csRG
- N3P6hOs5ytR7Jt8ySBJm9LLqxuYrmKWf1kbQF3kpZ14M5u6S8ZmXwjXYbsIqavYN52v5hYr6UyM
- K08bxBiNZ0jqDRDWWwwxcO3CoXc5XLVMZ3PVIciFc8BPNLZjUHLf+oflwqYOMpSgzp1Td8oLuO2
- g+tYsR0qQUQ2F54HmuXf13cMSl39tMoHlCtD5hvVdx8uCFaJFCx99By754570JPpiL/qyMdUep7
- Lt1/YcY8X6ublJudzfkrnNUHCjPCZpOPx5v+Zx5lPCNLSyP1yKxIUQwVHW7SPE0zh/4us/rkOQX
- ZxOP29Rq5jKSdIj58ryja1n74BHSjG4bd4ft2/bltYsc172ICvmSupzXsAlTq3BTYAwxE58sqPz
- lHS1oY+BWYF/0HGmnmiVo9XCgACtNlV0IUxQ/LGjP9XHtguX0zV7Qtoy9VicaaolanWewimZ18/
- GXuUUmJSC9pIBwcqUMWgA2+1FybxOE=
-X-Received: by 2002:a05:600c:a111:b0:471:700:f281 with SMTP id
- 5b1f17b1804b1-48e51f46e24mr123393295e9.25.1778183252784; 
- Thu, 07 May 2026 12:47:32 -0700 (PDT)
+ bh=vxuCQv75FqOTgqHf7uhOh33FKyFMH0uLqFU9OhcHcj0=;
+ b=Mq1gKrX+SGzXJ+ZzkJ5b5tZWJ/fPrfdrFJjek6oh0YGfqPeh1luD8YXXeOXk3cQNZr
+ w3EIu/UGmksXLTv24VSEWZVJBIN/oqJz4mMV4L/43Gzaoe6cwgvfRxve/An8IxPgYQkh
+ WS//72B8GBgGDsAjz5uMknBWNnK8N7XLec5TR6hSX99+q1oU996gZRVxGGRtm8+BfsN3
+ lEfsEpyaSi/SAsmM5hEC+HYrmIn25mc8WO22ZbADw9aoUkyKjDP3Ims78ZUtS4OA/Gr2
+ f/40AHnfrWfHQJ+BdYEFluz0r16kLhqTaeiCPrzGYM76biB+P4j36ZzW12Rq18wHfq/3
+ Xk/w==
+X-Gm-Message-State: AOJu0Yzjle15LkyoSutj9qAmlGve8X6e8Rh+h32stqMK4sWDS/qeUVAE
+ k2ZgMIRUZmM2EffqMRsNqGy4TomVqYFASWH7CTrYTifJuyJ0vIEWsnb7j+kJHTb+mj5HvblvYuj
+ wZVz0
+X-Gm-Gg: AeBDieu/q/gkNVrbzYcA+kMQQH2xcB33nngZ5P89YH7V4UkX3lEqXRg4RrNQbRm5TvI
+ 1FFRt8Xrv2UCZ6NjUxt9yMBLgW8Mc0HQhmUeXXVfvcgdRIWTpsZUJDXmKgRY2GsMXEqYXIvsyoK
+ JtvZXqOW3z8oM/Cv9t3uh8JhGohebLyHh6YG/0isTGmjEW3ZLaxxKdY0APi9Hyrg+b3iEJRVQoJ
+ IvcxYPNDL44E0i+o5lGuWpgyM/9fFPj7VzP4CNzK3gRjuuocrKnKQ7kQ5z3gFJCTVHxnfNh2XTQ
+ gUFoDzgn3ralzIxsR3pj4PJ12b4/w2fJsc9cn60ZrkxCTMXYln+EUA/Ujw7lr/mzh7c1K6JahWH
+ 0jGMEjSUtVmqzB+Sr3g9cVw0DlkgWLa9IxmxpZb75arKZn9VgCLJ+dGTfHElfKpKUzh8smYFsZ/
+ M0T1MEu9AMQeNfnagUpbOe29wGyxWApgyUYRgtIOVzoZjnJo+iqlRxqZqxnpKDyYKzDY5m8+r74
+ yxdYGizhrF2WvlUpKXq8W3iVJvoe5s=
+X-Received: by 2002:a05:600c:1504:b0:48a:525b:e148 with SMTP id
+ 5b1f17b1804b1-48e51f1856dmr82943195e9.4.1778183258755; 
+ Thu, 07 May 2026 12:47:38 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e65c145aasm958375e9.25.2026.05.07.12.47.31
+ 5b1f17b1804b1-48e65c145aasm958375e9.25.2026.05.07.12.47.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2026 12:47:31 -0700 (PDT)
+ Thu, 07 May 2026 12:47:37 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -74,10 +74,9 @@ Cc: Elena Ufimtseva <elena.ufimtseva@oracle.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 2/6] tests/functional/test_virt_vbsa: Skip UEFI test if
- virtualization not supported
-Date: Thu,  7 May 2026 20:47:24 +0100
-Message-ID: <20260507194728.2034696-3-peter.maydell@linaro.org>
+Subject: [PATCH 6/6] tests/functional/test_tuxrun: Restrict to TCG
+Date: Thu,  7 May 2026 20:47:28 +0100
+Message-ID: <20260507194728.2034696-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260507194728.2034696-1-peter.maydell@linaro.org>
 References: <20260507194728.2034696-1-peter.maydell@linaro.org>
@@ -91,7 +90,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,49 +106,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If you try to run the functional tests on an AArch64 host which doesn't
-support nested virtualization in KVM, the UEFI test fails with:
-
-   Output: qemu-system-aarch64: mach-virt: host kernel KVM does
-   not support providing Virtualization extensions to the guest CPU
-
-Catch the VMLaunchFailure exception and if it matches the error
-messages the virt board puts out for virtualization not being
-supported, skip the test.
+The tuxrun tests specify the cortex-a57 CPU; this doesn't work on a
+KVM-only QEMU build, where the default accelerator is KVM but KVM
+doesn't support that CPU type.  Restrict the test to TCG, to avoid
+failures on KVM-only AArch64 builds:
+        Output: qemu-system-aarch64: kvm_init_vcpu: kvm_arch_init_vcpu failed (0): Invalid argument
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/functional/aarch64/test_virt_vbsa.py | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ tests/functional/aarch64/test_tuxrun.py | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
-index 57bfe5d7af..04b5ff0f9e 100755
---- a/tests/functional/aarch64/test_virt_vbsa.py
-+++ b/tests/functional/aarch64/test_virt_vbsa.py
-@@ -17,6 +17,7 @@
- from qemu_test import get_qemu_img, skipIfMissingCommands
- from qemu_test import wait_for_console_pattern
- from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
-+from qemu.machine.machine import VMLaunchFailure
+diff --git a/tests/functional/aarch64/test_tuxrun.py b/tests/functional/aarch64/test_tuxrun.py
+index 75adc8acb8..7dd50c3de1 100755
+--- a/tests/functional/aarch64/test_tuxrun.py
++++ b/tests/functional/aarch64/test_tuxrun.py
+@@ -25,6 +25,7 @@ class TuxRunAarch64Test(TuxRunBaselineTest):
  
+     def test_arm64(self):
+         self.set_machine('virt')
++        self.require_accelerator('tcg')
+         self.cpu='cortex-a57'
+         self.console='ttyAMA0'
+         self.wait_for_shutdown=False
+@@ -40,6 +41,7 @@ def test_arm64(self):
  
- @skipIfMissingCommands("mformat", "mcopy", "mmd")
-@@ -96,7 +97,14 @@ def test_aarch64_vbsa_uefi_tests(self):
-                          f'file={img_path},format=raw,if=none,id=drive0')
-         self.vm.add_args('-device', 'virtio-blk-pci,drive=drive0')
- 
--        self.vm.launch()
-+        try:
-+            self.vm.launch()
-+        except VMLaunchFailure as excp:
-+            if "does not support providing Virtualization" in excp.output:
-+                self.skipTest("accelerator has no virtualization support")
-+            else:
-+                self.log.info("unhandled launch failure: %s", excp.output)
-+                raise excp
- 
-         # wait for EFI prompt
-         self.wait_for_console_pattern('Shell>')
+     def test_arm64be(self):
+         self.set_machine('virt')
++        self.require_accelerator('tcg')
+         self.cpu='cortex-a57'
+         self.console='ttyAMA0'
+         self.wait_for_shutdown=False
 -- 
 2.43.0
 

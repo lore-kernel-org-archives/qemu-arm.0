@@ -4,140 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C54CD3442
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 10:08:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53B74CD3445
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 10:17:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKve2-0006uM-6r; Thu, 07 May 2026 06:07:50 -0400
+	id 1wKvnX-00089P-Sd; Thu, 07 May 2026 06:17:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wKvdy-0006tn-Ux; Thu, 07 May 2026 06:07:46 -0400
-Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1wKvdx-0000au-0i; Thu, 07 May 2026 06:07:46 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=twj0k+zT37PJALaLAmuK33dm4zECcRayeiOtJESErzXHbQFGvDWJ52qFQUXcFVELZ6YYyvCiwii/wuONEMsgq41AD8+MwHiB9xPG8fgvdsfuldTeL4JYqrdbCT9f1rDZtobfyLXT2FVII03q+1AvG0W5CMN6MBU/HUZiwJ14QLQM62hZDfIjOkE9J702HcrL/H8LIkhtR9UIaiVqi4ayNrOX+2VJRJRWknx40m2KLUvlWuxOjdXTzTVMca/XFU2iVkafFkX+96WyH9UUXFe7cFDzWHSYVm/PflplDRR2ffgGReVsqCKObLejuC8G7CTl37SvoqI88bCZNut1OGiCQg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=idGzSL63QJV+Xaqp0bZQp9KHQEDw6HVunmTSGGO4/N8=;
- b=QAcDwSr/d7pF5BleBWtmPnrKq9Z7F/5wMCc+GDNSA7aaHZaxHAv22+5zAlh63sm7hj8dL7/40tP7eBW8Max9n2phLTUUGudDrf2eSavCiRMRy+17u0e5TcmbI3iu2iVMMsnFgpIh/SIm0wqG+6NYZAIzkxs7Vl7lS9Ekyvq4snSAXoT4ojMK77HNhOKgLYWQ0peo7Y51vIB1v9HcB4/962031J2klwykKlx+HgRGNCSaiqLNuHniLgs1bu1XIsVFK5dW7lJTQjy9yspKk7ul0wq0yOGnhG/VHiW21udYpxBVv/aTeyFJbODqvoU6hAPr8v0XRpk+27WHi/HK7U6HxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=idGzSL63QJV+Xaqp0bZQp9KHQEDw6HVunmTSGGO4/N8=;
- b=DKzyWblhzPAF+uX0D0/kMC+XjFQZaBpsblnqMXsfToB3L6c65/f002CAS/VG6weAm3WbZ79KtTTd1acE1vtZPIkpJyOVtT6il3ytHIcxj9LTbFUkDfxZrgzPlSuy7BHjkfyDlMUMPhIXSNtuRK4zjIY2zrQyTiTe4NoblCDXTauiWpFOA9P0WTJqpYiLyMqvvLwRnfsDtVqnEIsU6/70hq3NhcwG/b7aCeBVuYJx1wT6ZmgVRvcuEX88E0FF9DcJMW6MmSCY9CRC/4jj8UmO7KIAMrrAa+7Kk5ZyZ8KW+WOCn/cyPyk+LOnC4RKluUtMZe7ZFWJMye3FLD00TGVOUg==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by SA1PR12MB6824.namprd12.prod.outlook.com (2603:10b6:806:25f::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.17; Thu, 7 May
- 2026 10:07:33 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.20.9891.017; Thu, 7 May 2026
- 10:07:33 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev"
- <kvmarm@lists.linux.dev>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>, "philmd@linaro.org"
- <philmd@linaro.org>
-CC: "maz@kernel.org" <maz@kernel.org>, "oliver.upton@linux.dev"
- <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-Subject: RE: [PATCH v4 08/17] target/arm/kvm: Introduce
- kvm_get_writable_id_regs
-Thread-Topic: [PATCH v4 08/17] target/arm/kvm: Introduce
- kvm_get_writable_id_regs
-Thread-Index: AQHc2s+ZXUsdhdzNhkmk5nd+llDsZrYCXGDg
-Date: Thu, 7 May 2026 10:07:33 +0000
-Message-ID: <CH3PR12MB75488AAC8601BD74D6095FA6AB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-9-eric.auger@redhat.com>
-In-Reply-To: <20260503073541.790215-9-eric.auger@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|SA1PR12MB6824:EE_
-x-ms-office365-filtering-correlation-id: 2cfd9b79-cfb4-401e-06c8-08deac2074df
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|921020|38070700021|3023799003|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: YdPGmZGI39RP5zVKCO/MhG+cLRV9D7r855MVuAqHLZPC8bZpzGfbriewZAiKMars5WYYm2UAOtzY62kPqipHo1keXKxg1uJiHK1uapLNf0ODQ3uNhwRuYYAKPzpG/Ad1/7thiJMuWeEZ39VhAG3w6KfsneKEqZjcslLpW7HA6w/Dz0e+NzG6v3qJPC5Sfw6JAbga+etZbcyuy/q47syXHt0FoCo2dSlJJ35PWO6acVNm0blCa0agSlqq7f2wFAxAmYy4CU7eyfFgeCl1aD9I15qGgZO8u9U35x4/Zpb2IIz0KfPKc/di1e0q+P+DqtQ0bQvZAGHbJ8mUH3PfUyG27kZjzjKufSnpsYifqGTW9301sdZ/Z/ObmPmD4cKkroQNMAirPoLKAhUUkKVlvqcHnkdguf9RCAcpiXX8RGI0IYVY0hSH3UBvu64JMj85OnuruxYuwZHkWuxAkL/XazYRUCNOnZVX30AMipHmy4wSzoGY0R9WdlVHQrZiuvSNFyjBCpNLju+u1Z9FzVaL+kzbnpXoml1XJk6DCiRot6QZyYkGJNJTqgHznZlU7lOpLcJRKGiqJ+3WGNDO5Tx75a4W7ce5ZCYIqSnA1/JPtg7KT/+t2bTxlJShHLQy4N6hoqrp+pR8WypdzcXnTNLag6znHvOM444wtKYpYYesHyTX7n0KSTVX9R5BPBSvPdxqxY0Ti7dn3vmRrzNxBmTOL7e8Z0l+B/pc2INbBzqjIq/jJAWBoQMFJyqUQEHWT7wf/Lwl3SVkLXelUjnpzEx9RAknzA==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(921020)(38070700021)(3023799003)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?qvWOWYM3pA+LUrwYzBD///8NS/LhMgXIyBnO22WWlc9uMPyHLNy99v4vsz0T?=
- =?us-ascii?Q?tZ0ttCPV/jWOUrlnLHmDcxa8YOEYs5nnPi07P+Kx0Nj2Ks/jHrXiBQeLoIhs?=
- =?us-ascii?Q?OTwiZ/pTOfrG/ck2vXIPpTg8z4ZsxQK2XmHnY4LJ7x7TrreIHpgfi1oJr3cp?=
- =?us-ascii?Q?bG5+MFBWy6W2N9dh23/VDKSkFsh6N6NULRMb+0wjh7INbyCX1Pe59KY+jWwy?=
- =?us-ascii?Q?QE9aMPeBDZjypwLDkcPTwGsJmyqIZraHVB1wp4uPUwsf623pbjmei3b7m3bw?=
- =?us-ascii?Q?5sRe8VnG7nemWt/iPwPXRSB0tN/v865MJ/cc/istnbSqgms6CTvsr5OY6K/O?=
- =?us-ascii?Q?N/P1+TX19+ze6KlMiSYJJFTYVcof+F5sD90gk8u9zbI6Dt1kcQcGoCPA8mLx?=
- =?us-ascii?Q?46FuPLWi74FnrLgnT6YCR3RhC/m01BskaqofIb2Qa5Q+9kqql2GAHeWGHyp5?=
- =?us-ascii?Q?JJVXXSNE063upjghsiScnGtVk3nBoA8OZgV85lXpYRs9R5P5wRG3zzkdpXep?=
- =?us-ascii?Q?nE0u+ixE14auISmujDhbrhZkXPePFvRT/SuNvWpdMdFHCsr8mLQaHk4Y5avI?=
- =?us-ascii?Q?4a7WTjb+vzgQRMw1BuGxhlLzoTkfDYrNjgK8yk5sWBUPerf/M1JM5Yrv7R0N?=
- =?us-ascii?Q?vvPUL8R9nZlyKz3pJC05yvub+/7fjR5LngSdQOvTj/MdUV49J8AAfXjuhTNN?=
- =?us-ascii?Q?Jw+V6/i+7tZiZEKaMObK7Zm7OLKko4cysrHQ77BkPkbeQwk+LJ1U+J8qS6oW?=
- =?us-ascii?Q?hHCMeRZvbHfo8y5pcUTaqYGK82jmpEdD0g3nd/Z8as2bXnyDurUnJzjU3Ebz?=
- =?us-ascii?Q?V8TXykGyUTaHLyYzPCz9xaQwaxt2qI5Y1UILaztJ7aSiFSsnuY500Hgmfg/j?=
- =?us-ascii?Q?fmYt3vIOO0JEYRHyv6zAyrAqiCqwI+zQXePplTW67uiq3D5Wz050bPWQjq8D?=
- =?us-ascii?Q?1wfPfk4v/hYps6jf1pDG8MP2IvS8exyxAXBOJP+gZ6fsYV2NOYJ8XMj/UnrV?=
- =?us-ascii?Q?uP3JWiHyVSDO37CsIPkLPYVzJ7st3qL6ZtFWvNPmV6xnnU/XQP5xH0QWX4WH?=
- =?us-ascii?Q?GvYOG8t5RIhSH+/Kcfmhiya4Nj8a46pWgRQnzGl8ZtO10X7TvLR1B5qa7frc?=
- =?us-ascii?Q?wJQjI1ph1a2JQjacAED8mzw+8xNSHKmUfEKGLpZhmhNMOH1G5xXb0FPbvOm6?=
- =?us-ascii?Q?zRw/44fMyrEHOsrxsUdqx4zFNvuoAENJ0o8LlEwOmiJBt5F/YIYZzIF9VjlN?=
- =?us-ascii?Q?jhTpLrxij0AG+NC3oIELoAtFZFzTirm9aRUoYUhj9R+Ld28ykVFQC2UGlgzd?=
- =?us-ascii?Q?ggqM6CrmSoOf4gjLciQjUf8YeAOoFWZCfqCSXg2egpx3vWQHWUPe5l6sTkRU?=
- =?us-ascii?Q?SQSc0KDi4mbHLKwr5xqd68j77rL9ljdqiPbiVIefgTAR/Y/ei+fOIAOTtqQg?=
- =?us-ascii?Q?m95xWZ7rdPxBexMvEsazmZXQUxYC3flNoAl2GGJXRFauU/RwCs2vJxI0Ba0x?=
- =?us-ascii?Q?Xl2JbVc9AAa+QtayzaD45m3QjhWFc5u9LMjVWcY5lEBRKE1bVFhhvUAhMIJM?=
- =?us-ascii?Q?4EmL2E5hN0yvoX1g6x6KxvWU+ipEw+QlFZNdXtFMahwU1UTcbrRcYi1ul+5b?=
- =?us-ascii?Q?oHRHDP2DwLQcPJJyRtAVgNj+JwBjQvcXtBTn1EZjPlCfijb9JPS2XBgbg0e4?=
- =?us-ascii?Q?XXp08C/y6uXgOpq2LF8eaWQZqoezwwjAoSGgYG4/BSH1Qu1Ra9cnQsxdn778?=
- =?us-ascii?Q?UOb9WNRbhQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKvnX-000895-6N
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 06:17:39 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKvnV-0002eM-7F
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 06:17:38 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-453903ee4adso196288f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 03:17:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1778149054; x=1778753854; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/ZU0xFFedTu8SnMhVzIjPhGWcJbqjTEA0Xc3KlmnmeM=;
+ b=uA9IVt+NHeHPz41zhGwnYkjYQelmJk2yoWjfI3Y0I+oOImM2boFsL4zRMEkwssuOPz
+ qC07HdozPd5IHjAzbGzFTXetKUv8x4twCUZG2jzf355BfTRYMR+ULLDWCyWgQmCTinGZ
+ HgKzoZcM/883vWKqXu7xP1bL2p9URg53t+8elhOPWw5az5JXLL9mUvpsVTQAj9GAp5bX
+ e8qqf/Q884+xBlaK8m8cHRQ4eoTbHVLBHFfJPqzf7I6hK/0JGIpuh3kUpDBSCIsVd1H1
+ i/uUE3b8fFSG4UT8opn39Zc/HLR2PAx2YK0JGt6NzBhfWCK997O1LImiYnMV/ZaZcsPx
+ G2DQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778149054; x=1778753854;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/ZU0xFFedTu8SnMhVzIjPhGWcJbqjTEA0Xc3KlmnmeM=;
+ b=I0CL0w92rSMjkQNbHWIPl1swLhrVXQvAHqxkEuUH1i+ZIDLM3nTjGQoYKy0S+Izvgl
+ ulx+cdxyqEmu7JseQWgY1JTjnpsZcn6sA0bt9fa0lr6OUMcDAGXLSGMyLRokExSmS/PP
+ 8S+i6gmWjWwmT+7FRbcHlCbbJUZvHxuTX6LIka2IaHttfrV8wWJ0V1S7vlARPEkcJ1cv
+ zbOPD3aTJBXPwPQlFt2R1IQLCb1a5vu8ed1JIA1HqRJ3bbdN5JfnYcnt6/U4aF+ihmDc
+ q3jU/U/L9jDeHyVvIMxGZs8fai2L/eyBFYlL7x2GODDYRVo5j3DzSWIRHJ45h0n727k2
+ diHw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8LXqpxrvxdgTUd73a0x1Dqk/9XAiQitnqgwncLGusDqDrDvK4G86NbLs/cjOmqpjRowe7DGo18iw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxsa7dp9HUO+V9M8GZD1MppzcRJ5ADmhAfOImDKdABOY/EXLB23
+ 1rolJtOJSRdFV34tdcxWc7jPF2QO7dUEEg4idtWTA3i7IVFq68VRoGKKJ7yV69sHNE4=
+X-Gm-Gg: AeBDiev2KGjqNaeBNewZGuP+vfQRDSQ7Yt28ZAC4klfZuLD9oa3GMH1KmHQ1ErIRGDm
+ GsNDN0jr/AkeybyAsV4uNukyXfVX2WLXDOBWSuisYAtBm9SrkjoSCZJylASk//jcAN+IJnLga2p
+ 4k6mKTA//vlvhzJ91kvPBig+WUUHEaYixnsFp0Z034KNMT8BksFD26i9kTK6ChkjHO/qlC0LwT4
+ YKvPsBAPy8gPRKg6Ws7EBPLs7Ot+R8ZzOLyLfL6ymz4r9d6//3jF/R8JW20ZkxP+T5sgQviy/8S
+ Zo4onY8LtGDlgK1aECLIaMYwxpvofHUmbdCUUtQJRe4oWS0ixh3bTwNxw2cGq82JRgAFX8/3FrT
+ IzTtXx7vjysqnuSlo3ABTZ/PW8H5ZGS/dRCbXxH154iTaHyXyWaaPUHq0GJSlDYxO9TYVNfcLCV
+ adaPetzCRJEGLYcWeCpacV+eXjjgP4qsxZ8w1diKM9a02SgtT7iOPshuOms66n4gv51bPxVXzdG
+ NJo
+X-Received: by 2002:a05:6000:2309:b0:43d:773d:78ff with SMTP id
+ ffacd0b85a97d-4515ce1c7a9mr12676585f8f.27.1778149053723; 
+ Thu, 07 May 2026 03:17:33 -0700 (PDT)
+Received: from [192.168.69.200] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45052a48c04sm20144598f8f.15.2026.05.07.03.17.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 May 2026 03:17:33 -0700 (PDT)
+Message-ID: <f72abfd1-bef7-407f-a62d-465d9aea0aca@linaro.org>
+Date: Thu, 7 May 2026 12:17:32 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2cfd9b79-cfb4-401e-06c8-08deac2074df
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 May 2026 10:07:33.2300 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1EwFoW3wq079hXSzqqkge/hn6gVzzvQFsX8exB+Gsxo5t0iIc3TPkeqH2fp8g00pWbjHA2qMCNeOq1RejX8SIA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB6824
-Received-SPF: permerror client-ip=2a01:111:f403:c107::3;
- envelope-from=skolothumtho@nvidia.com;
- helo=PH0PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: Future of target/arm "max" CPU type
+Content-Language: en-US
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Jim MacArthur <jim.macarthur@linaro.org>,
+ Gustavo Bueno Romero <gustavo.romero@linaro.org>
+References: <CAFEAcA-WB+vfiHZpPut=AdEOCXacsTfrvxiGAmhaGH1abHD8ag@mail.gmail.com>
+ <4a46393d-08be-40e9-8f52-788d46ab36cf@oss.qualcomm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <4a46393d-08be-40e9-8f52-788d46ab36cf@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.443,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,165 +109,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 7/5/26 00:17, Pierrick Bouvier wrote:
+> Hi Peter,
+> 
+> On 5/1/2026 6:26 AM, Peter Maydell wrote:
+>> This is something we've discussed before. I don't think I have a very
+>> solid grip on it and I suspect I may be missing some parts of the
+>> "problem description" (i.e. what are we trying to achieve) and perhaps
+>> some implications of the choice. Overall it feels to me like a "no
+>> obviously correct answer, make a tradeoff" question. I've written this
+>> up to try to clarify my thinking and canvass for opinions and for
+>> people to point out what I'm missing.
+>>
+>> For a long time now the arm targets have defined a "max" CPU type
+>> whose definition is roughly "all the features that QEMU
+>> implements". This is helpful for:
+>>
+>>   - giving us a way to provide newly emulated CPU features to users
+>>     without having to define a specific named CPU type matching some
+>>     hardware that implements the feature (which might not exist at the
+>>     point we add the emulation, or which might also need some other
+>>     features we don't yet support)
+>>   - giving users a way to say "I just want everything"
+>>
+>> Mostly this has worked pretty well, I think. (It can cause problems
+>> for some workloads that break when a new feature is added; TF-A
+>> firmware seems particularly prone to this.)
+>>
+>> However, it doesn't work so well if the architecture decides to drop a
+>> feature and mandate that newer implementations may not implement
+>> it. Up til now that hasn't been a big deal, as only a few very niche
+>> items (like FEAT_DoubleLock, an old mechanism for quiescing external
+>> debug before a CPU power-down) have ever been removed.
+>>
+>> With the Armv9.0 architecture, a big feature gets removed: support for
+>> running in 32-bit mode at anything above userspace (EL1, EL2, EL3) is
+>> not allowed to be implemented.  We've got away so far with ignoring
+>> that requirement, but as new v9.x features are added, they are
+>> designed under the assumption that there is no 32-bit system mode
+>> code. For instance, the GICv5 CPU interface defines only 64-bit system
+>> registers, and our non-compliant "32-bit is actually there"
+>> implementation would give you a 32-bit OS that couldn't handle
+>> interrupts. Other similar (or harder to spot) issues are likely to
+>> also turn up.
+>>
+>> So my suggestion is that we should have two new CPU types:
+>>
+>>   v8-max : "all the features we implement that are valid
+>>     for the v8.x architecture"
+>>   v9-max : "all the features we implement that are valid
+>>     for the v9.x architecture"
+>>
+>> v9-max would not implement AArch32 EL1/2/3; v8-max wouldn't implement
+>> any feature the architecture says is v9-or-later.
 
+Certainly clearer than what we currently have.
 
-> -----Original Message-----
-> From: Eric Auger <eric.auger@redhat.com>
-> Sent: 03 May 2026 08:33
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
-> peter.maydell@linaro.org; richard.henderson@linaro.org;
-> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>; philmd@linaro.org
-> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
-> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
-> jdenemar@redhat.com
-> Subject: [PATCH v4 08/17] target/arm/kvm: Introduce
-> kvm_get_writable_id_regs
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
-> From: Cornelia Huck <cohuck@redhat.com>
->=20
-> Add an helper to retrieve the writable id reg bitmask. The
-> status of the query is stored in the CPU struct so that an
-> an error, if any, can be reported on vcpu realize().
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  target/arm/cpu.h     | 26 ++++++++++++++++++++++++++
->  target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++++
->  target/arm/kvm_arm.h |  3 +++
->  3 files changed, 61 insertions(+)
->=20
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index be14a47c35..2aa22360d2 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -866,6 +866,26 @@ typedef struct {
->      uint32_t map, init, supported;
->  } ARMVQMap;
->=20
-> +typedef enum ARMIdRegsState {
-> +    WRITABLE_ID_REGS_UNKNOWN,
-> +    WRITABLE_ID_REGS_NOT_DISCOVERABLE,
-> +    WRITABLE_ID_REGS_FAILED,
-> +    WRITABLE_ID_REGS_AVAIL,
-> +} ARMIdRegsState;
-> +
-> +/*
-> + * The following structures are for the purpose of mapping the output of
-> + * KVM_ARM_GET_REG_WRITABLE_MASKS that also may cover id registers
-> we do
-> + * not support in QEMU
-> + * ID registers in op0=3D=3D3, op1=3D=3D{0,1,3}, crn=3D0, crm=3D=3D{0-7}=
-, op2=3D=3D{0-7},
-> + * as used by the KVM_ARM_GET_REG_WRITABLE_MASKS ioctl call.
-> + */
-> +#define NR_ID_REG_MASKS (3 * 8 * 8)
+>> For the existing 'max' CPU:
+>>   - on qemu-system-arm this would be a synonym for v8-max
+>>     (since it must be 32-bit)
+>>   - on qemu-aarch64 and qemu-system-aarch64 this would be a synonym
+>>     for v9-max
+>>   - on qemu-arm it can also be v9-max, since v9 doesn't drop 32-bit
+>>     usermode support. (Though we don't currently implement qemu-arm
+>>     max this way, so it might end up being effectively v8-max until
+>>     we get round to implementing support for selecting AArch64 CPUs in
+>>     qemu-arm.)
+>>
+> 
+> This seems like a good approach. A side effect is to solve the
+> duplication we encounter for the single-binary also, by correctly
+> deduplicating QOM types associated.
+> 
+> The concept of having a "max" alias that maps to a specific type (in
+> this case, distinct depending on the binary) could be used for other
+> arch if needed also.
+> 
+>> I don't think it's worth claiming 'max' as deprecated and dropping it:
+>> as an alias it's trivial to support, and there are a lot of workloads
+>> that won't ever notice this change.
 
-Probably can re-use KVM_ARM_FEATURE_ID_RANGE_SIZE here.
-Looks like used for the same purpose in:
-tools/testing/selftests/kvm/arm64/set_id_regs.c
+We could display a note though.
 
-Thanks,
-Shameer
-> +
-> +typedef struct IdRegMap {
-> +    uint64_t regs[NR_ID_REG_MASKS]; /* writable masks for registers */
-> +} IdRegMap;
-> +
->  /* REG is ID_XXX */
->  #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       =
-\
->      ({                                                                  =
-\
-> @@ -1054,6 +1074,12 @@ struct ArchCPU {
->       */
->      bool host_cpu_probe_failed;
->=20
-> +    /*
-> +     * state of writable id regs query used to report an error, if any,
-> +     * on vcpu model realize
-> +     */
-> +    ARMIdRegsState writable_id_regs_status;
-> +
->      /* QOM property to indicate we should use the back-compat CNTFRQ
-> default */
->      bool backcompat_cntfrq;
->=20
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index d4a68874b8..f06a60804d 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -51,6 +51,7 @@ const KVMCapabilityInfo
-> kvm_arch_required_capabilities[] =3D {
->  static bool cap_has_mp_state;
->  static bool cap_has_inject_serror_esr;
->  static bool cap_has_inject_ext_dabt;
-> +static int cap_writable_id_regs;
->=20
->  /**
->   * ARMHostCPUFeatures: information about the host CPU (identified
-> @@ -499,6 +500,37 @@ void
-> kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
->      env->features =3D arm_host_cpu_features.features;
->  }
->=20
-> +int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
-> +{
-> +    struct reg_mask_range range =3D {
-> +        .range =3D 0, /* up to now only a single range is supported */
-> +        .addr =3D (uint64_t)idregmap,
-> +    };
-> +    int ret;
-> +
-> +    if (!kvm_enabled()) {
-> +        cpu->writable_id_regs_status =3D
-> WRITABLE_ID_REGS_NOT_DISCOVERABLE;
-> +        return -ENOSYS;
-> +    }
-> +
-> +    cap_writable_id_regs =3D
-> +        kvm_check_extension(kvm_state,
-> KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
-> +
-> +    if (!cap_writable_id_regs ||
-> +        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
-> +        cpu->writable_id_regs_status =3D
-> WRITABLE_ID_REGS_NOT_DISCOVERABLE;
-> +        return -ENOSYS;
-> +    }
-> +
-> +    ret =3D kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS,
-> &range);
-> +    if (ret) {
-> +        cpu->writable_id_regs_status =3D WRITABLE_ID_REGS_FAILED;
-> +        return ret;
-> +     }
-> +    cpu->writable_id_regs_status =3D WRITABLE_ID_REGS_AVAIL;
-> +    return ret;
-> +}
-> +
->  static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
->  {
->      return !ARM_CPU(obj)->kvm_adjvtime;
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index e7c40fb003..b22a56fc17 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -240,4 +240,7 @@ void arm_gic_cap_kvm_probe(GICCapability *v2,
-> GICCapability *v3);
->   */
->  char *kvm_print_register_name(uint64_t regidx);
->=20
-> +typedef struct IdRegMap IdRegMap;
-> +int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap);
-> +
->  #endif
-> --
-> 2.53.0
+   "Using 'v9-max' for requested 'max' CPU".
 
+> 
+> I agree.
+> 
+>> It's possible some workloads currently using "max" will need to switch
+>> to 'v8-max", but I think this will be rare: it would have to be
+>> emulation of an EL2 guest which is itself 64-bit but which runs some
+>> inner-guest VM within itself that is 32-bit. The failure mode will be
+>> that the (outer) guest will report that it can't run a 32-bit (inner)
+>> guest (in whatever way that hypervisor reports that kind of error).
+>>
+> 
+> That's a good solution, and only a small minority of users (the one that
+> has to really deal with this) will be concerned.
+> 
+>> So that's my sketch of a proposal -- what do people think? What
+>> have I forgotten about?
+>>
+>> thanks
+>> -- PMM
+>>
+> 
+> Do you have a time frame in mind for this? It's on the path for having
+> the single-binary, and we can help with it if needed.
+> 
+> It should be a pretty straightforward change, just renaming QOM types,
+> and adding the "max" selection mechanic.
+
+Per Peter description, it doesn't seem renaming types is a 1:1 change.
+
+ From a reviewer point of view, it would be better to first add the
+v8-max and v9-max clearly defined / documented types; then migrate
+current 'max' to the appropriate new type for each binary, mentioning
+the adjustments done; and finally do the alias replacement.
 

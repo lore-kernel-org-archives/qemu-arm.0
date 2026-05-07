@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF49CD3439
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 13:47:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 315B7CD343F
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 13:48:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKz4r-0007wC-GP; Thu, 07 May 2026 09:47:45 -0400
+	id 1wKz4N-0007o5-Rl; Thu, 07 May 2026 09:47:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKz4b-0007rQ-8T
- for qemu-arm@nongnu.org; Thu, 07 May 2026 09:47:31 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKz4M-0007no-L8
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 09:47:14 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKz4Z-0004T3-9i
- for qemu-arm@nongnu.org; Thu, 07 May 2026 09:47:28 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-48909558b3aso10502445e9.0
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 06:47:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wKz4L-0004RU-54
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 09:47:14 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-488b8bc6bc9so5667815e9.3
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 06:47:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778161645; x=1778766445; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=q9chL/SLwUMeu/2j+R75W2A1pHuRpO6RtXQfsY6XREY=;
- b=Xyl6YXSz1Q+5iVz9eLoTbjSrRzZ2qayN7VAq10jx5pFh7gYiEpxj5iWt9oGETJSFrK
- qiCardtFl+dV8GrkNCdsLe08N4Bjr17cQmJxE2JJEBBvVusJkUFjk+/paOacr65MbhHa
- vy7HF5nGFY7LgPPB4CKgbuAMY5CbKbNswBh5wLNPvwOWdq9TjVqjyBSycXOFudu7qjb6
- 7NmzxIdbTIq8iXwOraP+55zDIAqpZ5vlQehgzthjWPNpp5DcwsXdEu8MKpO8yIYAbA7z
- vO89JuCSMI/X1hN6uQTJUXNwPXQ7BAdK5b7mvBFDyQVQB3wynHcaTtOxvPrNk28WlWhQ
- ulQg==
+ d=linaro.org; s=google; t=1778161631; x=1778766431; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=OYM0ceOmVLY8micd18GQNUk/LrS4y/oDCZHHn4KjKz8=;
+ b=deyZQISmYG/MvfXpSsi32f5C6WjmufTID552UcZXp5cudykPK54HrNpz31+f31PoxL
+ vagesHwM2EM4oOTwTJm07NXfzRS+o1MZqw/QnjIJP1RDx91CRBg/mT2Fp1eZGOV+L+Dj
+ TRJqcaCSAkjrw9XRZPzXPt6EV4qwSz3jopbDfjcZsO3/NOeFTDK1NYi7Tb0ODYxstFQD
+ WblKdibuyqolXXTaZ+empyiDqDX2CH9wRoDAR7asH3nm4B8joiMG2DxjihJsI2NNYtZL
+ 7q9ZNNHPpWdVUwXF0YTILAq2+F3W8kATx1d6xx5KvfxPjR1R1oKgpB80MC+pXXYSyZpb
+ LwbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778161645; x=1778766445;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=q9chL/SLwUMeu/2j+R75W2A1pHuRpO6RtXQfsY6XREY=;
- b=Yua1+UWNzmFlTiBNeMBAdjvZy1Bs/oJLAup7B/t6kZlW4U8dULqn7q7vpUFWUrGAaR
- NXztTP4h4Mzdqn1doeFi8OT7uujMQv2/KKlh9fQ8AUx3lrzs2iLXUqvvlPuB9yemShRF
- eTESfTkBnVIfMpmsG5mDL4T2SFZQKfgwm2Sr+4SCSO6yXFSgqQZirMuffqivKLWytBLw
- FUmu0oJd46PCGx3n2aBykbtrCiNZezvIrmyxTVPptDBSDOS8+kyuiFeKJNNZLByXpZYv
- 06qb2J9kmT+EEXmAboBay0YIvBjP+PzC3i8H3lK1RAkC8pw1TJ538Tj52i2zLu+FiR91
- mMeg==
+ d=1e100.net; s=20251104; t=1778161631; x=1778766431;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OYM0ceOmVLY8micd18GQNUk/LrS4y/oDCZHHn4KjKz8=;
+ b=SQ6QGH/FGdwRJyeYpHWEscv/MdM0qA/knkjaXYb748xMBtu7I8zk276hnukmbfzJFW
+ C974VGlKF1C7pb3/43DeIbLiyMbFUCdvjM1YP70+xpoptVk10IDDSQhPL3iKyMZ45u5T
+ iu3cHhOEU8cVTOE+MSp9ZxOLEzLTlqcE/UWWwBBtS7ZtKD+P8jM/FggYZrG1M4tt6pvg
+ 6q9uEqbi7c2Kyyf9LMQL//qkldxYIi2xhRmtCatPifjBsFCx6TMbZz4KrYE1oHq0OXRs
+ c9bL/ruMbJ9SWmuZu79ozpAnPsoLI7AFE2zoMriINXCIbC6+7u1DkRMnwR2gdcN76rDM
+ Wtlg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/Di696ac23VKkUy6VXciwgpGOreDvJBowEn5UdUb5CAzJz9BEKUHCQS3OrrjM4dP0d7JqgP/8MLw==@nongnu.org
-X-Gm-Message-State: AOJu0YwwU+sRe8LGaeuDxIZJO+Sg53AfULGKxVahT0GX9tmLXSUqXmGs
- tCxzbR5owuKPw9k34Zqrd/hW4gnJHsruZFuGrzY58e+kJlKjbtEcVN5Z8/T78sQo2oLfiCWGvSZ
- LpL0Adgc=
-X-Gm-Gg: AeBDieuBd9vnFLWlbaMa7np7czo7niISxQJ/iI0+858HcURfavdrSjKuCCJkK6WAOSq
- 2i4XF+2Ep7fsVdwdtFc5rCN3otmYG0EhZ4GPuomcnI2kHkfnFe5lEXlwqyIb3NzTatHvIDhbDDX
- djgnS09HCfIHHPonZwOg9e+HfDAm7LdNQk+jT7arWjqw2gWmRrmv+2+wtIrh58fQKiL61xYU95K
- 0FdvUNgwG0I4eIj7GRXVz1Doy6nVZDkOM76p/eJay3LqE8NXDWNpZeW1knrnSp8jhKCacupja3p
- /M9Nlh3SUfIWwjNNhPrJk9CYV0/k2XlD8nRm6SMECiI6pxdIX0BE22JlECdB4TTA8v+Q9LYlGFM
- 14ZwMYngAmeTY30XBU9NxpbZimC4xZWW10EekKbCzyA0SKfCMI3qAw07NppA/AFIIdcejnwYdWp
- PluuxEMnjWEeHqV8apRsYWAWZ8YCGDC8ig8FubP5a2l+auMh+4DmU2gXjb4JoV6al62ye0dU7zr
- +XgOG/9Sjc=
-X-Received: by 2002:a05:600c:354b:b0:488:ab26:8fe0 with SMTP id
- 5b1f17b1804b1-48e51f32bdemr132794885e9.15.1778161645105; 
- Thu, 07 May 2026 06:47:25 -0700 (PDT)
+ AFNElJ/CAoxyw5Q3ZFRE15QDmS3LFRhYi08LO6T/l/wy/mqAOB0e5bhnNH1/GbyPFo3NNgxARyMOr6Xygw==@nongnu.org
+X-Gm-Message-State: AOJu0YzV8p5+I4q0nf8Lm/miOxjFCT+PE4iQpT4fIS+IESuVRrmqdm4D
+ 0vOMkx00txUj+l8ZLB13OlRhBSYucTt4SklsGrT0vEjhuPiR/PAutF8dJ3wQr+Ix3P0+g1E1Wpa
+ 7MQHbsmA=
+X-Gm-Gg: AeBDievnly+kvQN0SpUD2QmY1jzCCqzGlirTA1gL9EWV+iDBDZkxGdpqh6/52X6+s/Z
+ wdf/T4UZ+RImmm+6TULcJzFiNZFePUn10Atj8xcxLqbdaU6H4hW7lg/Egr35xZ8y5pFythOi/kB
+ SV3Fku/OwR/ZJqsW1qS21BPqQd/H+r3QBbv3GOwyOWly9uf0oQW1CZB3sintmWPNj/jl+dr1ZDw
+ /yVlUWIXUHnWc5UnhaLcgtKc2WyaLfFN1mdcFUXdElWq3PlGGlFFvYubpqY1RvdtZBLS9Uca/SC
+ HSKSKruMTWKYb+V+lPghNc/Y9rGfkjtCcmQShErkEh1ZOtAeewO0nF3TeBs93q/y8wAv450iTmp
+ GdijuVVg7l+KDCUcK9zkh2uCOPpbccOeufUTcqBkJPQkRN6q09sU6puN8LdPXrzL+kAfLuK7io2
+ SgU5NxtZZCjlH3gmkQXhF6qcy8IIgdRPnWDtZmIMDVacE+EGmCvsw+zVcsrQaJ/R7icSSO5PNtq
+ 2i0xypO4zQ=
+X-Received: by 2002:a05:600c:3f18:b0:48e:5990:9698 with SMTP id
+ 5b1f17b1804b1-48e5990978bmr88364155e9.24.1778161631254; 
+ Thu, 07 May 2026 06:47:11 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e53891d62sm200348655e9.1.2026.05.07.06.47.24
+ 5b1f17b1804b1-48e538aaa0fsm153929075e9.7.2026.05.07.06.47.10
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 07 May 2026 06:47:24 -0700 (PDT)
+ Thu, 07 May 2026 06:47:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 2/2] target/arm: Extract IDAU interface to its own unit
-Date: Thu,  7 May 2026 15:47:09 +0200
-Message-ID: <20260507134709.70507-3-philmd@linaro.org>
+Subject: [PATCH 0/2] target/arm: Extract IDAU interface to its own unit
+Date: Thu,  7 May 2026 15:47:07 +0200
+Message-ID: <20260507134709.70507-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260507134709.70507-1-philmd@linaro.org>
-References: <20260507134709.70507-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,161 +101,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move IDAU TypeInfo structure to its own source file and
-build it once as common ARM object.
+Trivial series moving TYPE_IDAU_INTERFACE to its
+own unit, and moving its header under the tcg/ namespace.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
+Philippe Mathieu-Daudé (2):
+  target/arm: Rename Aarch64-specific methods
+  target/arm: Extract IDAU interface to its own unit
+
  include/hw/arm/armv7m.h     |  2 +-
  include/hw/misc/tz-msc.h    |  2 +-
+ target/arm/internals.h      |  8 ++++----
  target/arm/{ => tcg}/idau.h |  0
  hw/arm/armv7m.c             |  2 +-
- target/arm/cpu.c            |  2 +-
+ target/arm/cpu.c            | 10 +++++-----
+ target/arm/cpu32-stubs.c    |  8 ++++----
+ target/arm/cpu64.c          | 12 ++++++------
  target/arm/ptw.c            |  2 +-
  target/arm/tcg/cpu32.c      |  8 --------
  target/arm/tcg/idau.c       | 20 ++++++++++++++++++++
  target/arm/tcg/meson.build  |  1 +
- 9 files changed, 26 insertions(+), 13 deletions(-)
+ 12 files changed, 44 insertions(+), 31 deletions(-)
  rename target/arm/{ => tcg}/idau.h (100%)
  create mode 100644 target/arm/tcg/idau.c
 
-diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-index 98ad08db036..70555962bb9 100644
---- a/include/hw/arm/armv7m.h
-+++ b/include/hw/arm/armv7m.h
-@@ -13,7 +13,7 @@
- #include "hw/core/sysbus.h"
- #include "hw/intc/armv7m_nvic.h"
- #include "hw/misc/armv7m_ras.h"
--#include "target/arm/idau.h"
-+#include "target/arm/tcg/idau.h"
- #include "qom/object.h"
- #include "hw/core/clock.h"
- 
-diff --git a/include/hw/misc/tz-msc.h b/include/hw/misc/tz-msc.h
-index 07112d8caa3..6cf4c6b09eb 100644
---- a/include/hw/misc/tz-msc.h
-+++ b/include/hw/misc/tz-msc.h
-@@ -51,7 +51,7 @@
- #define TZ_MSC_H
- 
- #include "hw/core/sysbus.h"
--#include "target/arm/idau.h"
-+#include "target/arm/tcg/idau.h"
- #include "qom/object.h"
- 
- #define TYPE_TZ_MSC "tz-msc"
-diff --git a/target/arm/idau.h b/target/arm/tcg/idau.h
-similarity index 100%
-rename from target/arm/idau.h
-rename to target/arm/tcg/idau.h
-diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-index a29eab6c915..68a1cbd6316 100644
---- a/hw/arm/armv7m.c
-+++ b/hw/arm/armv7m.c
-@@ -20,7 +20,7 @@
- #include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
--#include "target/arm/idau.h"
-+#include "target/arm/tcg/idau.h"
- #include "target/arm/cpu.h"
- #include "target/arm/cpu-features.h"
- #include "target/arm/cpu-qom.h"
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index d670ffe4de0..7b29532e6ee 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -24,7 +24,7 @@
- #include "qemu/log.h"
- #include "exec/page-vary.h"
- #include "system/whpx.h"
--#include "target/arm/idau.h"
-+#include "target/arm/tcg/idau.h"
- #include "qemu/module.h"
- #include "qapi/error.h"
- #include "cpu.h"
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 316e201cfe0..ff7b7a4d0c8 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -17,7 +17,7 @@
- #include "cpu.h"
- #include "internals.h"
- #include "cpu-features.h"
--#include "idau.h"
-+#include "target/arm/tcg/idau.h"
- 
- typedef struct S1Translate {
-     /*
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index 2127d456ad6..73d21c6cf7d 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -12,7 +12,6 @@
- #include "cpu.h"
- #include "accel/tcg/cpu-ops.h"
- #include "internals.h"
--#include "target/arm/idau.h"
- #if !defined(CONFIG_USER_ONLY)
- #include "hw/core/boards.h"
- #endif
-@@ -899,17 +898,10 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
- #endif
- };
- 
--static const TypeInfo idau_interface_type_info = {
--    .name = TYPE_IDAU_INTERFACE,
--    .parent = TYPE_INTERFACE,
--    .class_size = sizeof(IDAUInterfaceClass),
--};
--
- static void arm_tcg_cpu_register_types(void)
- {
-     size_t i;
- 
--    type_register_static(&idau_interface_type_info);
-     for (i = 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
-         arm_cpu_register(&arm_tcg_cpus[i]);
-     }
-diff --git a/target/arm/tcg/idau.c b/target/arm/tcg/idau.c
-new file mode 100644
-index 00000000000..57e5c658e9d
---- /dev/null
-+++ b/target/arm/tcg/idau.c
-@@ -0,0 +1,20 @@
-+/*
-+ * QEMU ARM CPU -- interface for the Arm v8M IDAU
-+ *
-+ * Copyright (c) 2018 Linaro Ltd
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "target/arm/tcg/idau.h"
-+
-+static const TypeInfo idau_types[] = {
-+    {
-+        .name       = TYPE_IDAU_INTERFACE,
-+        .parent     = TYPE_INTERFACE,
-+        .class_size = sizeof(IDAUInterfaceClass),
-+    }
-+};
-+
-+DEFINE_TYPES(idau_types)
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index d2364aa39c4..fa1e3d6640c 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -56,6 +56,7 @@ arm_common_ss.add(zlib)
- arm_common_ss.add(files(
-   'arith_helper.c',
-   'crypto_helper.c',
-+  'idau.c',
- ))
- 
- arm_common_system_ss.add(
 -- 
 2.53.0
 

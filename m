@@ -4,107 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DD6ECD343F
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 11:03:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F8FCD343F
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 11:51:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wKwVs-0005Ai-CO; Thu, 07 May 2026 07:03:29 -0400
+	id 1wKxGB-0005HT-KZ; Thu, 07 May 2026 07:51:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wKwVm-0005AE-Jr
- for qemu-arm@nongnu.org; Thu, 07 May 2026 07:03:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wKxG4-0005H4-Gp; Thu, 07 May 2026 07:51:12 -0400
+Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wKwVk-0003qv-FG
- for qemu-arm@nongnu.org; Thu, 07 May 2026 07:03:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778151798;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JYrAMlHX47YSOPiGSbLAq62RGAWlOvY02a0IhouBuXE=;
- b=HVpUKX+vcjg86RJwcRMIs0+VRcKAyKDH4m347UAMXs35dBiu6iNUH449GECQ9xBJbU46+j
- slCpwuF6voY1aWoIr5LmHBBEYa7YIZWv4eqp6aRnIOpeC9js5uix3uBDGSPe6re2hLNW4l
- CbMMh5fgF01SfgDj3pKT+AMGWBSRoAk=
-Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
- [209.85.215.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-161-df6OUvNJNhKp_CB1kr2bSQ-1; Thu, 07 May 2026 07:03:15 -0400
-X-MC-Unique: df6OUvNJNhKp_CB1kr2bSQ-1
-X-Mimecast-MFC-AGG-ID: df6OUvNJNhKp_CB1kr2bSQ_1778151795
-Received: by mail-pg1-f200.google.com with SMTP id
- 41be03b00d2f7-b6097ca315bso1084807a12.3
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 04:03:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778151795; x=1778756595;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=dJBcgVPA9/WP7hs51QbhMs6flx0KjCGwmiWfAVLc7cs=;
- b=Mp84FKPmshJcZ9VQbUcHlWzXJWcD7uqBUCxHTxS0YK+f/is8KDdfk2+gJdwFFqDUvQ
- SRIhvkvkhICxujCqNYtSpEGJ5WBC1nyjqD3M00HfX7IQi1SRIAeTQoaku9vkFfRVnwpH
- spJ9oGvzWbUDW7EoKTCsd4BoRtpLLvqTBi8AohzhzZFE37U+U/HDprFZhAJmcC6LrE3i
- jMi9BhpJ60/0UXQqgNelFMIiRg2XEO2wLGta/p5hJ3w+iadFZMlw1CnAMAqmh1GikPx9
- qECRw81Mrhb1r9jkLDNCMcULHXIG5QMAwJuHHpmy0WRfpPLHh1COuIuLx1sEwyaFj5y+
- TMuA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/sPrVk89mOKonZnhenYYZVad0xAhot41/284MKP+D8vttNy4JXP/w1V3xZpYH5TfFzVrHkpSlI7w==@nongnu.org
-X-Gm-Message-State: AOJu0YwPK0sMb9rOZzoU0ytWWhFGdQ0lso9d0XQnDRqzcESfPV9tqSUT
- v9J//9bSes7x1cCem5Aolkyu+gdB6ecgcl6QD8hKqd4ercHgTMh9xlh0njyLS4+Kx3QAMIn+JOg
- LXB6ZmpftGNHc0jeknqXfod+E+L9+90QR54WBp1k8Cl4gxTb939DXTQ==
-X-Gm-Gg: AeBDievipyhmzRi6oS9S1q2wvdRgxTgvuAUAjY4MUSYLozpKRjx9H3Yont16epA7JhQ
- vLvsPFCPowErQDn8S5GZ/8MjTGGGxe6R3JH6RYIAdojGsZRxwoDeduuLakMomY7diY2wOoPTjcZ
- 8LvnmK8XJsnn0w0Ih2BPxiCE2rSNvoIEP7XZREncVNde1PTez98ROFS8uLumfpZHNd3PWgi+dTt
- rAIwT5oDVI0tRAZVrOG4Mqt7lK/QQk1JubjlPJxYw0pRFyounl1RaJZypdmhi3EJYYcJFvnH/GS
- vLb936uGW6+n8fZi2TDdjczRpZpIpgqYWqofAmkOYli7s+iP0L+DLispCb2kMdJatA8/fKIbiVm
- BiURYTtExxW2REKgMhvgiLVfGcpg5E8D6OTPMuAVg2D0fpDC6Hac6UCUPJIfgBAdeLicUCQ1+FX
- dzMKnb5MLDTm7aTAlT+2GR
-X-Received: by 2002:a05:6a00:cc1:b0:82f:9e98:1356 with SMTP id
- d2e1a72fcca58-83a5c4bdb96mr7650327b3a.20.1778151794786; 
- Thu, 07 May 2026 04:03:14 -0700 (PDT)
-X-Received: by 2002:a05:6a00:cc1:b0:82f:9e98:1356 with SMTP id
- d2e1a72fcca58-83a5c4bdb96mr7650306b3a.20.1778151794335; 
- Thu, 07 May 2026 04:03:14 -0700 (PDT)
-Received: from smtpclient.apple ([122.163.114.34])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-839679c8634sm10338515b3a.39.2026.05.07.04.03.10
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 07 May 2026 04:03:13 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
-Subject: Re: [PATCH v2] whpx: i386, arm: do partition reset on boot CPU reset
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <94C6AAAA-BF20-4202-9965-081192A392A2@unpredictable.fr>
-Date: Thu, 7 May 2026 16:32:57 +0530
-Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <8F3BC33B-9884-41EC-8E81-9E0C80A396F3@redhat.com>
-References: <20260421205749.55060-1-mohamed@unpredictable.fr>
- <a8cb94f0-9970-40b8-912b-3ab81a5907f4@linaro.org>
- <94C6AAAA-BF20-4202-9965-081192A392A2@unpredictable.fr>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: Apple Mail (2.3864.500.181)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZBk2nrufHXuj6r7ZX8bxWvPI8YMuLayqiwWtirxj4YU_1778151795
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=utf-8
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1wKxG2-0006cf-0v; Thu, 07 May 2026 07:51:11 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=OkVXJSoJx5J9vNyGE9yodW1AsC2RP5FAfw6RF7ih9bns8F6uWHOip6R5eFP0cKZpT/qLoNN+maslnU/R+ASMpUUcsrkxuep44GoiIMDJy6rufuVrISARMtCCHzDH4cL09oaUrY9OXCYrmPVtB0dPPBGeKRqwDJuce8gN2Yn7SvlmKtK3cufUexWrONEN0jr6ArcFZkaVTRc69UpYEe6KLVBrq7Pws3O1AZiMsehoObtcf0Xi79mlPstsXhSeKt0rzTRs5TX0vLYIbsjdxb5lEIIQQtM+aCvirxP6OK5kEgBzkA9RW3PH2Cd4+iNp6YYjT+0ZRe7DujKDGREAycSKvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9VEkYncv8oJub53rACAQzqz1nS+newePmWhpXEY2RMw=;
+ b=aUsm2xZb3Mz6KJcKAeFykMx9/BoyHL52+LRKFWAlvWhiQwHroi4RU3otZPwtQexp3Jk5zLWC/rjvDyjXuaKxo8/imby7EGUuXSf++JmkeR4dJgTdQlaWjHuKUWllokfaIm/Ayzj7HviDseyIDOYshv0tms1wGte8v4aN2oLDN19taKZFqRgbrNAFQAHOCOWMlwjegn1TCmlYWncuPMB5C/W1fND7qqUuIdLtZAkvwgOdud2G7sCxyMnW9hshPTAUr+2U0adIui3bkxsifvgeEKtU63k3dEVjbmuTqDT2x0EJM8Soejxv2dOhOsdplvFDl9+uwNCy3sS50dt5gTacMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=9VEkYncv8oJub53rACAQzqz1nS+newePmWhpXEY2RMw=;
+ b=QPi6aNdgl7xX3e/KAUNdUhscQyJWrOnumZAazD/st3neEb21HkyS8wub03Lh7pJpnJ34FAOkvAiRwVxzbxUoyDMRyrVqiFZM3q8Ji/MGmp1O3AXxLVbFk8TKB2mGi1NMqPtwcN1fljVasA1L2r1SINPFZJBnSOQw+LPX8zGR2w1xtSAGRN18DSKmyyK5WjnNlgyQ1byLBs7Yc9PDXFbt5unCt8uh63/cXzS7qgmP+5bxxzF5aD+9e9tMPPBN7+YhlBegjNjH3jVGPD/Fo6ovADENQgCBXU9HMT2EjGda/JEixfGiIv+QpGkawzaupxo+uGYXswtdVlNHpUvIEyS+DQ==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by DS5PPF2FA070BDF.namprd12.prod.outlook.com (2603:10b6:f:fc00::649)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.26; Thu, 7 May
+ 2026 11:50:57 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%6]) with mapi id 15.20.9891.017; Thu, 7 May 2026
+ 11:50:57 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
+ <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev"
+ <kvmarm@lists.linux.dev>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "sebott@redhat.com" <sebott@redhat.com>, "philmd@linaro.org"
+ <philmd@linaro.org>
+CC: "maz@kernel.org" <maz@kernel.org>, "oliver.upton@linux.dev"
+ <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>, "berrange@redhat.com"
+ <berrange@redhat.com>, "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+Subject: RE: [PATCH v4 10/17] arm/kvm: Allow reading all the writable ID
+ registers
+Thread-Topic: [PATCH v4 10/17] arm/kvm: Allow reading all the writable ID
+ registers
+Thread-Index: AQHc2s+h6qbOSNdMDEa7G4XmgseR1bYCeWHg
+Date: Thu, 7 May 2026 11:50:57 +0000
+Message-ID: <CH3PR12MB7548063DB7204E6D2FEC1167AB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260503073541.790215-1-eric.auger@redhat.com>
+ <20260503073541.790215-11-eric.auger@redhat.com>
+In-Reply-To: <20260503073541.790215-11-eric.auger@redhat.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DS5PPF2FA070BDF:EE_
+x-ms-office365-filtering-correlation-id: 789f7a49-916b-481d-589e-08deac2ee6b3
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|1800799024|376014|366016|921020|56012099003|22082099003|18002099003|3023799003|38070700021;
+x-microsoft-antispam-message-info: 2skm3n5pppkoLSbL8Hvt611noi5FSB+lV0kcttdNso5XK6tHgL1uuvxeyEN7cVoa9y85loCfALEt4lg6d8IZx9l/95pPwp1AwRxiGi2hf5I0PNuybaa9cQ2U5TIkJCUumgClzqp2NhpAA9R1Ou+wqSMaLxfm2HalDXhdFRChZqdFbPtB+UxDuKJqT+ZLVwEXrJ6v5zlKjrBKCiRRWWs7w9BSLY3vBunzZ6YKc1zq50vvlGcRenVYIsUAb58RfzSRvorf9yMu+TuoQG+el6ToAJj85aJ3+HSly20LRcCf4Tc3kW7pL2lVJr9r6M+RDkf//sD5JknTDWbOs5iTNou34WC+8ZpZPY0CE7cSB9wwnIbxSG/gruh9TU4tXBPUZvnM2L6bollxjFvloOzsPKZT0o60XXX/Gh5cVBIetL9psZmMTX1JNvzVOBPgRZcEXx2IXDZ38+XO0mR6fytMyOkvzfAzwRjhDeyUfD/EQj8WoyQGzfSVIhI30JHvQ2gMKyDUWx8Yvv9X6IstYj0bMULzITA8I9sWTg5n/DC2LPwTCYhq5qGbB2M1kNE5r2dZa9k/PqO25K3139R9r0uNkLFyRNW+z3InBcmbdY5jV9EYVw6pdDHUWU710nCAESwagQB+q4DjyGRnVL9hkQ6VcqAQskLpexO0FTcJLcNfmh3jj86/l6iNbograqgY4S0AaJg2uesF6mjpxhtP2MT4FooyKMcNPM9TkDlEsNuzxmxnwp2KHnUeR1wvfiNh8zvNeIGCQy3kZXS6T4+wXYHk9a98iw==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(1800799024)(376014)(366016)(921020)(56012099003)(22082099003)(18002099003)(3023799003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GgzsmrfxN0BmBA2ZP5/ii6xoe2EvatWIH8SeH7/ZCyoP3z3HaqIt5j8wJujt?=
+ =?us-ascii?Q?T4IKWYHL8a+DtXV2w2k6FOaisLzAlFUEJVytjWD/GuZ3/sPFSeG7xZTjcxbg?=
+ =?us-ascii?Q?99g5gh0zxqBljuqZRPfmiAayj9oSw/RrhdoBCPY8GFXBTZ8zyiel+fcPnkz5?=
+ =?us-ascii?Q?5LRW4BKU2uCuaN0l/V58l0CcwsoLnQjBpnax0YEVKfHD5q1bEgR3Yxz9XTdn?=
+ =?us-ascii?Q?P3vGsNh8gcaDEhVcV0PL6fqgdHt2ACRqJp78vEREqaiTGEA3pnXfYQ4U9o5z?=
+ =?us-ascii?Q?YKqVzD9ISr8Pq1XJfPBV9/iUnhi4FhvzyMEeTvEBHqsYspQZYmMEdsflAoRR?=
+ =?us-ascii?Q?BYIABX3X5ER/vTD/LE+1NYy44TdBMd8xrAZzePxO/KFklEeLAjwXDRhJQ/nf?=
+ =?us-ascii?Q?8AcoZwK/6h/0HQrYjP0V+ds1WpLE8EfR9Of65SP9WP1Ta1LLtdQjyn6IrzSS?=
+ =?us-ascii?Q?Y5z8H7HAKvCmoo7OQnbvmC1w6ckzuWU6MZQaiIkDcOZe3RBRQlC8ctx4cID8?=
+ =?us-ascii?Q?Ifn7fLpYTbpRdswxMaUtLMQxoUrMHjNiIZ9sCpv0LB9hCb/e9VaspczbHMY6?=
+ =?us-ascii?Q?EDZcnfAMFACCyiEh3JOamAAdAx8YlG7KrDE2UlAEuzn+FHJmSuV74MmIL6/C?=
+ =?us-ascii?Q?vQimMWyJUIMsMxUhISOGi2lVC+gyxxlAdmoIH3evYNSd/xsjuVVWZgjoWnf/?=
+ =?us-ascii?Q?KVHMXk0JZ1jhvDu7pOC6XdCoNAdEXevZKA1IvIcLkWVk1E5LhYlya5Pw5zDO?=
+ =?us-ascii?Q?oFe/4X7MQKEGrTHqKBSlrmjIAmYR6acbxu+gh2Lj0aDtIvGCMTKmcXy7DHu/?=
+ =?us-ascii?Q?lUcMDydA/T9LzulEEORNOjpUMkXHq1cHtAHrsHEEnk4HLBWgrpw5tTrYg99t?=
+ =?us-ascii?Q?Op7+Iqa/HooUtIW9SeimG7ysU9dHhGSPB8ujdrVjqXQiLc6DjZ3vqWXT/efQ?=
+ =?us-ascii?Q?fesD3fN0JKSqVDCZXoyB8iQtelNqqtt11MxRzLwWnfzVUlUPFZazT+f0mbFH?=
+ =?us-ascii?Q?+1B95GpP580n9nOm6UtL/5pN7PHSGwdIIrRX3tnC5MRUoCuWRyKdZRnxu51Z?=
+ =?us-ascii?Q?bSFp0MNxA4p6D0keNdyxQb2qlanQXhStK7EqWhcqXC3nOdGlEjlUm5grjD6v?=
+ =?us-ascii?Q?CGCI7e/qEV67pcMlQPBPjGBLeiSrwwaSaEa9GgsH1nVbdhyfxSgGnSHBhkng?=
+ =?us-ascii?Q?QeSnqhkc+NxkUdLUWops8JjwCgKHihjSwX9JrfQ6DAzzTjSO+C5y8+aoReh4?=
+ =?us-ascii?Q?uO0dM4CsaqLRYggqp17wwv90iyk+GrlPzjv4S8hsK5PHfYK43mJJGcTrYd1H?=
+ =?us-ascii?Q?OYU3yH5OaJT/c6thPtPcFW/ZzQVG3Si6szOL2UFHic5LkuvczRqnHaNPU04+?=
+ =?us-ascii?Q?+YQx36gRW+OFzsTEvmuMezsp8TDfCmrC+0h+x6shkiAS2x3qxLhYBzgqO+d5?=
+ =?us-ascii?Q?xf25lNct++2iLK9X4mqfZJxwVrk8PGBT2yDi/V4UfDOnay1/fxJkqEMXGZvQ?=
+ =?us-ascii?Q?Ll3dm90scMmFUjSMtCr878t9/2moiMkGJIc7qQoRUGDSwGIZaQ7s2+rUBnAe?=
+ =?us-ascii?Q?OFcN9VgTeIzKzUmvw2ArbBPtfpRFfXcTGj8TDUmneWPa2FWPvgeCddh0y4iQ?=
+ =?us-ascii?Q?sVWBTH62Fpqj2EyhlR7MTTDN49bqU9Mc1TVOuNDX8W/7Yj8q4UXJ7ecIWIIU?=
+ =?us-ascii?Q?vsywwfW4uVgXyTOlUZcD0q0WJmeHQY8sAjMZi1+HES6kjIDixyixcY4vFIyZ?=
+ =?us-ascii?Q?psKiZ8Z3UA=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 789f7a49-916b-481d-589e-08deac2ee6b3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 May 2026 11:50:57.2080 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Y3nuef1NK5wt8vzfakY2cYPK/UiZCHc2PgNwoet1KDvVLnYZk1PUGJXZ5hEyVszFJ+TVpLfqckTwptIoiaJ+hw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS5PPF2FA070BDF
+Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH4PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,40 +156,271 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-> On 22 Apr 2026, at 6:38=E2=80=AFPM, Mohamed Mediouni <mohamed@unpredictab=
-le.fr> wrote:
+> -----Original Message-----
+> From: Eric Auger <eric.auger@redhat.com>
+> Sent: 03 May 2026 08:34
+> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
+> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
+> peter.maydell@linaro.org; richard.henderson@linaro.org;
+> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
+> <skolothumtho@nvidia.com>; philmd@linaro.org
+> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
+> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
+> jdenemar@redhat.com
+> Subject: [PATCH v4 10/17] arm/kvm: Allow reading all the writable ID regi=
+sters
+>=20
+> External email: Use caution opening links or attachments
 >=20
 >=20
+> At the moment kvm_arm_get_host_cpu_features() reads a subset of the
+> ID regs. As we want to introduce properties for all writable ID reg
+> fields, we want more genericity and read more default host register
+> values.
 >=20
->> On 22. Apr 2026, at 14:46, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->>=20
->> +Ani
->>=20
->> On 21/4/26 22:57, Mohamed Mediouni wrote:
->>> WHvResetPartition resets partition state, and is not supported on Windo=
-ws 10.
->>> On Arm, it's supposed to be used for reboots. The prior location of the
->>> WHvResetPartition call wasn't right, as other vCPUs might still have
->>> been running, causing the call to fail.
->>=20
->> Is it very different from the conceptual step introduced in commit
->> 4003e5e65fe ("hw/accel: add a per-accelerator callback to change
->> VM accelerator handle")?
+> Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
+> boolean parameter to kvm_arm_get_host_cpu_features() and
+> kvm_arm_set_cpu_features_from_host() to select the right behavior.
+> The host cpu model will keep the legacy behavior unless the writable
+> id register interface is available.
 >=20
-> Hello,
+> A writable_map IdRegMap is introduced in the CPU object. A subsequent
+> patch will populate it.
 >=20
-> The difference is that we reset the partition state but don=E2=80=99t hav=
-e to=20
-> re-do any of the memory mappings in the Hyper-V case (or otherwise tear
-> down the context).
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  target/arm/cpu.h        |  3 ++
+>  target/arm/cpu64.c      |  2 +-
+>  target/arm/kvm-stub.c   |  3 +-
+>  target/arm/kvm.c        | 77 +++++++++++++++++++++++++++++++++++++++--
+>  target/arm/kvm_arm.h    |  6 +++-
+>  target/arm/trace-events |  1 +
+>  6 files changed, 86 insertions(+), 6 deletions(-)
 >=20
-> We could fallback outright into the CoCo case which would work too.
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 0ac0fd13cf..87fb0047eb 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1087,6 +1087,9 @@ struct ArchCPU {
+>       */
+>      ARMIdRegsState writable_id_regs_status;
+>=20
+> +    /* ID reg writable bitmask (KVM only) */
+> +    IdRegMap *writable_map;
+> +
+>      /* QOM property to indicate we should use the back-compat CNTFRQ
+> default */
+>      bool backcompat_cntfrq;
+>=20
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index b940842d9e..1b3d3fb245 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -862,7 +862,7 @@ static void aarch64_host_initfn(Object *obj)
+>=20
+>  #if defined(CONFIG_KVM)
+>      kvm_arm_set_cpreg_mig_tolerances(cpu);
+> -    kvm_arm_set_cpu_features_from_host(cpu);
+> +    kvm_arm_set_cpu_features_from_host(cpu, false);
+>      aarch64_add_sve_properties(obj);
+>  #elif defined(CONFIG_HVF)
+>      hvf_arm_set_cpu_features_from_host(cpu);
+> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+> index 88cbe8d85c..94478c5690 100644
+> --- a/target/arm/kvm-stub.c
+> +++ b/target/arm/kvm-stub.c
+> @@ -45,7 +45,8 @@ bool kvm_arm_el2_supported(void)
+>  /*
+>   * These functions should never actually be called without KVM support.
+>   */
+> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
+> +                                        bool get_all_writable_id_regs)
+>  {
+>      g_assert_not_reached();
+>  }
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index f06a60804d..1a9b91bf8a 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -42,6 +42,7 @@
+>  #include "hw/acpi/ghes.h"
+>  #include "target/arm/gtimer.h"
+>  #include "migration/blocker.h"
+> +#include "cpu-idregs.h"
+>=20
+>  const KVMCapabilityInfo kvm_arch_required_capabilities[] =3D {
+>      KVM_CAP_INFO(DEVICE_CTRL),
+> @@ -274,7 +275,63 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
+>      return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+>  }
+>=20
+> -static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+> +static int idregs_idx_to_kvm_feature_idx(ARMIDRegisterIdx idx)
+> +{
+> +    ARMSysRegs sysreg =3D id_register_sysreg[idx];
+> +
+> +    return KVM_ARM_FEATURE_ID_RANGE_IDX((sysreg &
+> CP_REG_ARM64_SYSREG_OP0_MASK)
+> +                                            >> CP_REG_ARM64_SYSREG_OP0_S=
+HIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
+1_MASK)
+> +                                            >> CP_REG_ARM64_SYSREG_OP1_S=
+HIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
+N_MASK)
+> +                                            >> CP_REG_ARM64_SYSREG_CRN_S=
+HIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_CR=
+M_MASK)
+> +                                            >> CP_REG_ARM64_SYSREG_CRM_S=
+HIFT,
+> +                                        (sysreg & CP_REG_ARM64_SYSREG_OP=
+2_MASK)
+> +                                            >> CP_REG_ARM64_SYSREG_OP2_S=
+HIFT);
+> +}
+> +
+> +/*
+> + * get_host_cpu_idregs: Read all the writable ID reg host values
+> + *
+> + * Need to be called once the writable mask has been populated
+> + * Note we may want to read all the known id regs but some of them are n=
+ot
+> + * writable and return an error, hence the choice of reading only those =
+which
+> + * are writable. Those are also readable!
+> + */
+> +static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures
+> *ahcf)
+> +{
+> +    int err =3D 0;
+> +    int i;
+> +
+> +    for (i =3D 0; i < NUM_ID_IDX; i++) {
+> +        ARM64SysReg *sysregdesc =3D &arm64_id_regs[i];
+> +        ARMSysRegs sysreg =3D sysregdesc->sysreg;
+> +        uint64_t writable_mask =3D
+> +             cpu->writable_map->regs[idregs_idx_to_kvm_feature_idx(i)];
 
-The rebuild_vm() callback is used only when the vcpus are not resettable (s=
-o Coco case). If vcpus are resettable (non-CoCo), then that callback won=E2=
-=80=99t be called. Within the callback, you can do whatever you need to do.=
-=20
+Nit: I can see writable_map  is always populated by the time it reaches
+here, but may be good to have:=20
+g_assert(cpu->writable_map);
 
+Thanks,
+Shameer
+
+> +        uint64_t *reg;
+> +        int ret;
+> +
+> +        if (!writable_mask) {
+> +            continue;
+> +        }
+> +
+> +        reg =3D &ahcf->isar.idregs[i];
+> +        ret =3D read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg)=
+);
+> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
+> +        if (ret) {
+> +            error_report("%s error reading value of host %s register (%m=
+)",
+> +                         __func__, sysregdesc->name);
+> +
+> +            err =3D ret;
+> +        }
+> +    }
+> +    return err;
+> +}
+> +
+> +static bool
+> +kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures
+> *ahcf,
+> +                              bool get_all_writable_id_regs)
+>  {
+>      /* Identify the feature bits corresponding to the host CPU, and
+>       * fill out the ARMHostCPUClass fields accordingly. To do this
+> @@ -401,6 +458,18 @@ static bool
+> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>          err |=3D get_host_cpu_reg(fd, ahcf, ID_DFR1_EL1_IDX);
+>          err |=3D get_host_cpu_reg(fd, ahcf, ID_MMFR5_EL1_IDX);
+>=20
+> +        /* Make sure writable ID reg values are read */
+> +        if (get_all_writable_id_regs) {
+> +            err |=3D get_host_cpu_idregs(cpu, fd, ahcf);
+> +        }
+> +
+> +        /*
+> +         * temporarily override the CLIDR_EL1 value since host value doe=
+s
+> +         * not seem to be supported. Getting "Unified type is not implem=
+ented
+> +         * at level n" error in fdt_add_cpu_nodes()
+> +         */
+> +        SET_IDREG(&ahcf->isar, CLIDR, 0x0);
+> +
+>          /*
+>           * DBGDIDR is a bit complicated because the kernel doesn't
+>           * provide an accessor for it in 64-bit mode, which is what this
+> @@ -477,13 +546,15 @@ static bool
+> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      return true;
+>  }
+>=20
+> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
+> +                                        bool get_all_writable_id_regs)
+>  {
+>      CPUARMState *env =3D &cpu->env;
+>=20
+>      if (!arm_host_cpu_features.dtb_compatible) {
+>          if (!kvm_enabled() ||
+> -            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
+> +            !kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features,
+> +                                           get_all_writable_id_regs)) {
+>              /* We can't report this error yet, so flag that we need to
+>               * in arm_cpu_realizefn().
+>               */
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index b22a56fc17..91a7d5cc4b 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -127,11 +127,15 @@ void kvm_arm_destroy_scratch_host_vcpu(int
+> *fdarray);
+>  /**
+>   * kvm_arm_set_cpu_features_from_host:
+>   * @cpu: ARMCPU to set the features for
+> + * @get_all_writable_id_regs: if true, get the contents of all writable =
+ID
+> + *                            registers as well
+>   *
+>   * Set up the ARMCPU struct fields up to match the information probed
+>   * from the host CPU.
+> + *
+>   */
+> -void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+> +void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
+> +                                        bool get_all_writable_id_regs);
+>=20
+>  /**
+>   * kvm_arm_add_vcpu_properties:
+> diff --git a/target/arm/trace-events b/target/arm/trace-events
+> index 8502fb3265..8c7faf57c7 100644
+> --- a/target/arm/trace-events
+> +++ b/target/arm/trace-events
+> @@ -13,6 +13,7 @@ arm_gt_update_irq(int timer, int irqstate)
+> "gt_update_irq: timer %d irqstate %d"
+>=20
+>  # kvm.c
+>  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova =3D
+> 0x%"PRIx64" is translated into 0x%"PRIx64
+> +get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host
+> value for %s is 0x%"PRIx64
+>=20
+>  # cpu.c
+>  arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
+> --
+> 2.53.0
 
 

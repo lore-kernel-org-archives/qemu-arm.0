@@ -4,142 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E183CD343F
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 20:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12909CD3445
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 23:44:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL5kS-0006ew-Vz; Thu, 07 May 2026 16:55:09 -0400
+	id 1wL8OF-0000A2-0u; Thu, 07 May 2026 19:44:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wL5kQ-0006b3-Lj
- for qemu-arm@nongnu.org; Thu, 07 May 2026 16:55:06 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wL5kO-0003Yh-5J
- for qemu-arm@nongnu.org; Thu, 07 May 2026 16:55:06 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 647IFHAQ3157738
- for <qemu-arm@nongnu.org>; Thu, 7 May 2026 20:55:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- qTJ7jAQV9Bq3MZFnxRQrIHL1++tQ1fQnlXQcS7CiTx4=; b=TNFtuYN4YneSLx3u
- wUMmWlykQbmCEYOY16iQziypgPMTvN+SK41ZNDpsNy1jqjjmeRusQZjvSkBHdJTs
- d+lLDDv7I1ShbIkhU0DTn/9KjEDhfd3oxc/DCUwOl+VVsNl/lVZEiubTM6BBHfqA
- LD50BPHrem3LV0QlWSLpyh9oeklILKNdO7xJim73xyN+btMGDk8jFWtXnk8vq+8J
- u67p0ds1GQsQ6TexDhjDfGgPT5s9PVw8G9AyQuMT7c6xro3Ol1y34yOELxx6QP2k
- Ku13nc+JCnezdCAy4IbQ49OjrQ/S/UQUTHUW1IBsA3PhDUEU9zEmzAwWdmfkFEaY
- QhYS/w==
-Received: from mail-dl1-f70.google.com (mail-dl1-f70.google.com [74.125.82.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4e0mhf3jes-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 20:55:02 +0000 (GMT)
-Received: by mail-dl1-f70.google.com with SMTP id
- a92af1059eb24-130aab78a09so1236304c88.0
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 13:55:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wL8OC-000085-QY
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:20 -0400
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wL8O9-0000yX-SC
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:20 -0400
+Received: by mail-ot1-x32c.google.com with SMTP id
+ 46e09a7af769-7dcdaf06498so1087225a34.2
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 16:44:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1778187301; x=1778792101; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qTJ7jAQV9Bq3MZFnxRQrIHL1++tQ1fQnlXQcS7CiTx4=;
- b=Ve0XpDDdhUD68OcqjjJL7GKbmtC++Vhs/F0oPY9teDBzuZvORGKJrRA0kLmxG+dRji
- y+VbXO2y1MXW3pvby2yAQRjgx1LwBWCs7V2AIfX06pMDmJSZAP1yutfWtsI9d7TSQbVD
- BDEmvatX0WiRg4mG6t+KWIFhJ9pTLKocPwiyBVXWyvIxi+yX5Ffo3lYYVnklqX6vGl6S
- BNmiCHd3npEsO2VtN2Zr6zNC0J5N78CJxNQWO+RQ7l5NTrg0sKaYbUjPPCQo2tCu1bt+
- DHfwycGwu/7zE99NxML4xA0Pr/VCjUVmZ2BoKbrEx6CDuC1y75h/N3hWyzMEmci8+n7B
- ZcQw==
+ d=linaro.org; s=google; t=1778197456; x=1778802256; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SLBUgvemDVI7RU2td5O8ML7A96sLCDah7D9rLOrhH9o=;
+ b=cRFRs0oua/wqoYxHXWeSPXumPXOC3TWt1N9kqviBa74y44cajn2wPA3sDNKIP4MiP5
+ r2eFtypNUY52ZooaXnk5EhgI+DTo3ZukXtlP2fLLfgw0Pc5Bsxz6hjYVEL3S2r0eLBB8
+ O2oiAwsTfbfhGEEFW8pRRHcJJA1bhqK+ftrrEGIHoKGC+A4HreEqgIz1q3ay0Nl0rwse
+ xU2hNJWoRyRtSQ1yqH57wzLNL2DpunoYw0msVqiTFNIo8+t4FmssC7TjGEKdfqglxDwg
+ tgsPyYVXG7orR5xNrvsC2dUpCSV19Qn8smRwSoWe+41hdzYGMEKOfZD0dnc48P+IaZ5I
+ aWbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778187301; x=1778792101;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qTJ7jAQV9Bq3MZFnxRQrIHL1++tQ1fQnlXQcS7CiTx4=;
- b=IWFGYzRJYYeJcZUHWoimQvPRZfWEObOrJ0HTUXViy5Yv+rsrPAdv3yiF4PIFDIR5MJ
- eH6UFKabxShRY94p7elHIjn1Kk9rUK7bQj44r2wpy0uxHEorxjwZ0XUXq9C/tRRAEOkm
- 22w+TKJiOgFsZ4ADmhmHlzt5dGP7B4CpzE6IcbNXeX4CIpNGtmuMlbyGXW4ELNnCUsuW
- ngan2Jaz+q+ELDA5b9zQKZruLesvtGqQZSMnNCS68KHrl3PPgMv7CTcTFqIKSmJnfD85
- SI4sygegppLtyPfSe9jMPykX27eljSuIKO07aLBXZ42jG0YG1x1PSlOY3QuITyWNEZ+J
- JB9g==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9HPQUxfH0N/0iuQycPIN+9WMtIIfdUcXbeMbiFBDSKzVv/9nVMZckc7HGiHK80HYveakrTPfa2sw==@nongnu.org
-X-Gm-Message-State: AOJu0YydkUxw1rZRLqY0ObiYOLMyACB13jpDg4JhdpfSQTwlq794Zk4e
- 2S/jhBpykicliNeUQmf8pUD+meZxHZJ8BaUWx8LdGF4OM2VTCCmK+jzSrZYZj1KXOxceK7Yyr+1
- mh20IFp4MlSXqKRJi5MNp64ogVHv5RpDMKqCg2kx7MESwegsLr7KhyME=
-X-Gm-Gg: AeBDieuh95GJgwH5W/nM0PNxqAPLM86ygxp5glXIsm8CQPMhy+Y7SdmfevRHT+tqMvt
- VaZTPKzkKWNmEBDTM29AQtvo2WwZSH5uSA1iyw3kOuoaiq3jpm4trkTmqlLzLk74q3r0z3rIgbf
- pf1qOr+f1pT5TSjKvReiwNXXZcAy6nYRCH0CZq6k/OmRF9J4ITEN8zZgmsmJNug5xrWtSxoMcJG
- z46+wTVun9Txi2KCc2R6gWczWsn/tmH3N6CrgEynlWx3HambaBUVGBCD56/VtcTylav5CKJTq/i
- S3adlhJCMCv9Wc3LVZ8Ls9eGKZr6sMk9GTepADIppmA3hi1t7xCKEAyvOzLnJeFBGVCMQ8DADZ1
- NujnkbATAZ+L7o+nPON7C4+yalUaEBinw8/l0b5D1z44hYNfKcZUnKjcJiqVhwj8tt3Vrro8ylS
- IKnnvQKa+WqCkkHQ==
-X-Received: by 2002:a05:7022:fa07:b0:12d:f0af:110d with SMTP id
- a92af1059eb24-1318ea2dc7bmr4612606c88.28.1778187300932; 
- Thu, 07 May 2026 13:55:00 -0700 (PDT)
-X-Received: by 2002:a05:7022:fa07:b0:12d:f0af:110d with SMTP id
- a92af1059eb24-1318ea2dc7bmr4612580c88.28.1778187300303; 
- Thu, 07 May 2026 13:55:00 -0700 (PDT)
-Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13270901ba2sm195177c88.11.2026.05.07.13.54.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2026 13:54:59 -0700 (PDT)
-Message-ID: <f6b9b16a-0273-4dc7-a8e0-df074d246a01@oss.qualcomm.com>
-Date: Thu, 7 May 2026 13:54:58 -0700
+ d=1e100.net; s=20251104; t=1778197456; x=1778802256;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=SLBUgvemDVI7RU2td5O8ML7A96sLCDah7D9rLOrhH9o=;
+ b=qvlPwvSwQXEl/t0jTES/olPt/13/baJvoaqWjaLleF0aapf0DzL00BjYN0mPLN3bG0
+ GMNIe9FCp6fMhEMMHbvdUfPrzGR9nGKEBoZBcEJaHLeuYnfN/BIQgCX8Od3Mc8Z3I10R
+ riLe6OvK2NZSmIyCWpzEdQGTCw0Q6++jkADTGB0MuSr16rRg3NpcOK0M+yfUv+Bpm4cF
+ Izk5dr/pJEyx2W0fzgRvxYWU6GV8u0mEhxEgg6NcqRTVxLSWQ0eRKER1wnpZyUloKYT1
+ amwEf7QcTVirApBuwc7s4PEP944fND5Jud2pWNZXCQ32ZIfTiS/iVuoVHkcoUhaoLgaB
+ se8w==
+X-Gm-Message-State: AOJu0YzNLjSeaKP0FaveR7DWj7sblR0ejtzZl6JvHMbzunGh5dNwdsFG
+ Ec8HbM6xbIPnYo3hJR28Ea7DhE/Oz+t09v/Qir9fKbMyqVXeI6sdCm3ZHCzUwThNon4=
+X-Gm-Gg: AeBDietm4k9bRtc1gUCOXqDRt8TDIemN1e5lVZqRbsJXIzP5Sy1II/dz95k00nmj8WG
+ x+nMR9jDGB0AIdef1/BST4MJcQ4FHCpix0pZFHmZsckhfkxd5tsj/tzxXPD11yaTs8wzI+fSU/l
+ wLBRmizZS42r63f5GNwHjEgPfR8LuXnlZk8XZN+f5e8WLKdVv28UiEwPgLLIoEDJ679KmCmSa7g
+ sxLBvB9aFBUB3pBXw/gee9Syer+xCZZ7MlBhQNEjPDloycaH6U6cMYOt539mFtQ/mEf7DYoi1wL
+ EH0CDIrTTf5tYLEvSG4CXdpCnCuQPF1raRkGZP4HGWcnYVSYmTk0cOihZPEqwGn8IpOkEb1fF7t
+ 7CYbztD2N7oo/6t2RWQrX+ggdJNkVmFNMLgK9dCkm6OCLMgT8ygadegXuCxoPOO0GflIH0aMPN/
+ e31iMI6KtlDpex3Ed4TBDEZNrwhZX2riLJFfZsGr1mZC68Ppq1zPI5Umbz
+X-Received: by 2002:a05:6830:81c7:b0:7d7:51af:4aa1 with SMTP id
+ 46e09a7af769-7e1defeb3a5mr6520339a34.18.1778197456507; 
+ Thu, 07 May 2026 16:44:16 -0700 (PDT)
+Received: from stoup.attlocal.net ([2600:381:c938:6375:9641:bbb2:a93a:bb4c])
+ by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-7e367d8feb1sm84320a34.23.2026.05.07.16.44.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 May 2026 16:44:16 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 01/60] target/arm: Implement ID_AA64ISAR3
+Date: Thu,  7 May 2026 18:43:14 -0500
+Message-ID: <20260507234413.643512-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260507234413.643512-1-richard.henderson@linaro.org>
+References: <20260507234413.643512-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] target/arm: Fix functional test failures in KVM-only
- builds
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20260507194728.2034696-1-peter.maydell@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260507194728.2034696-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA3MDIwOSBTYWx0ZWRfXy13+OILgoyOQ
- AzalgcndpdQthDQDhp0u+bWs4KaA4vimDcUoXLhoQ46xXSaf0NW8Y/Mjbhpay1vJyQfbC3r59Je
- UaOOW1Jnr2VeH2IAB+8PTnZ1QNUb+hCbzxrnYn32SPEw/1no9I1edHgEAELf7XameV8FHl1wYGs
- Fc7LH1gBCXNAVD5ZESYrctX6jk0r5tityMwMJ+bGXNZUPPJ9zab5dRmVOd3P8KOqIqIdWPrfGc4
- c7iBEUkyEiasoUPfo1EeLRPPLFRRvD/uyB1wmxeHpyOqiIcq4u4BkcjjtClH/Qkx0nxNGMLO3re
- YmimjHHDCTsvhlZQzjzvS1QLkXCoBU8M71SvLW/cI08ZuhrN/odz21oCZtF/t2we0lGTKqklpYH
- 36Tdch5B+VUiOfAhSoM99EwJhFoFlKbbrNky/SF1BDa3CPsBQtHFPfa4Z+m5kL7o3nDZGnyFzZO
- Qv0i72tgIBUcgZro4Rg==
-X-Proofpoint-ORIG-GUID: lgUqpIUUAgUzMUtG0dqNUPzGE_-crzKe
-X-Authority-Analysis: v=2.4 cv=SuagLvO0 c=1 sm=1 tr=0 ts=69fcfc26 cx=c_pps
- a=SvEPeNj+VMjHSW//kvnxuw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=EUspDBNiAAAA:8 a=Z8H6kxiZWI1TnuwXCkYA:9 a=QEXdDO2ut3YA:10
- a=Kq8ClHjjuc5pcCNDwlU0:22
-X-Proofpoint-GUID: lgUqpIUUAgUzMUtG0dqNUPzGE_-crzKe
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-07_02,2026-05-06_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 malwarescore=0 suspectscore=0 bulkscore=0 lowpriorityscore=0
- impostorscore=0 spamscore=0 adultscore=0 phishscore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2605070209
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,46 +99,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 5/7/2026 12:47 PM, Peter Maydell wrote:
-> If you build QEMU with --disable-tcg on an AArch64 system, some of the
-> "make check-functional" tests fail. This patchset fixes them.
-> 
-> The first patch fixes a bug in QEMU proper, where we broke the
-> "x-remote" machine because we forgot to mark it up as being
-> OK to expose in the qemu-system-arm and qemu-system-aarch64
-> binaries, the way we do for "none" and for all the actual Arm
-> machine types.
-> 
-> The rest are tweaks to the tests:
->  * tests that run '-machine virt,virtualization=on' need to
->    check for failure because the machine reports that the hypervisor
->    can't support nested virt
->  * tests that use a specific CPU type need to either be
->    restricted to TCG-only, or else changed to use 'max' instead
->    (since that's the only CPU that will work on both TCG and KVM)
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (6):
->   hw/remote/machine.c: Mark x-remote machine as OK for AArch64 and
->     AArch32
->   tests/functional/test_virt_vbsa: Skip UEFI test if virtualization not
->     supported
->   tests/functional/test_kvm.py: Use -cpu max, not cortex-a72
->   tests/functional/test_kvm.py: Skip if virtualization not supported
->   tests/functional/test_hotplug_pci.py: Require TCG
->   tests/functional/test_tuxrun: Restrict to TCG
-> 
->  hw/remote/machine.c                          |  3 +++
->  tests/functional/aarch64/test_hotplug_pci.py |  1 +
->  tests/functional/aarch64/test_kvm.py         | 12 ++++++++++--
->  tests/functional/aarch64/test_tuxrun.py      |  2 ++
->  tests/functional/aarch64/test_virt_vbsa.py   | 10 +++++++++-
->  5 files changed, 25 insertions(+), 3 deletions(-)
-> 
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu-features.h    | 9 +++++++++
+ target/arm/helper.c          | 8 ++++++--
+ target/arm/cpu-sysregs.h.inc | 1 +
+ 3 files changed, 16 insertions(+), 2 deletions(-)
 
-For series:
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 88fe3ed287..252044b057 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -244,6 +244,15 @@ FIELD(ID_AA64ISAR2, CSSC, 52, 4)
+ FIELD(ID_AA64ISAR2, LUT, 56, 4)
+ FIELD(ID_AA64ISAR2, ATS1A, 60, 4)
+ 
++FIELD(ID_AA64ISAR3, CPA, 0, 4)
++FIELD(ID_AA64ISAR3, FAMINMAX, 4, 4)
++FIELD(ID_AA64ISAR3, TLBIW, 8, 4)
++FIELD(ID_AA64ISAR3, PACM, 12, 4)
++FIELD(ID_AA64ISAR3, LSFE, 16, 4)
++FIELD(ID_AA64ISAR3, OCCMO, 20, 4)
++FIELD(ID_AA64ISAR3, LSUI, 24, 4)
++FIELD(ID_AA64ISAR3, FPRCVT, 28, 4)
++
+ FIELD(ID_AA64PFR0, EL0, 0, 4)
+ FIELD(ID_AA64PFR0, EL1, 4, 4)
+ FIELD(ID_AA64PFR0, EL2, 8, 4)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 7e7677a584..66813bb298 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6498,11 +6498,11 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_tid3,
+               .resetvalue = GET_IDREG(isar, ID_AA64ISAR2)},
+-            { .name = "ID_AA64ISAR3_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
++            { .name = "ID_AA64ISAR3_EL1", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 3,
+               .access = PL1_R, .type = ARM_CP_CONST,
+               .accessfn = access_tid3,
+-              .resetvalue = 0 },
++              .resetvalue = GET_IDREG(isar, ID_AA64ISAR3) },
+             { .name = "ID_AA64ISAR4_EL1_RESERVED", .state = ARM_CP_STATE_AA64,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 6, .opc2 = 4,
+               .access = PL1_R, .type = ARM_CP_CONST,
+@@ -6731,6 +6731,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+                                R_ID_AA64ISAR2_BC_MASK |
+                                R_ID_AA64ISAR2_RPRFM_MASK |
+                                R_ID_AA64ISAR2_CSSC_MASK },
++            { .name = "ID_AA64ISAR3_EL1",
++              .exported_bits = R_ID_AA64ISAR3_FAMINMAX_MASK |
++                               R_ID_AA64ISAR3_LSFE_MASK |
++                               R_ID_AA64ISAR3_FPRCVT_MASK },
+             { .name = "ID_AA64ISAR*_EL1_RESERVED",
+               .is_glob = true },
+         };
+diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+index 3d1ed40f04..b99579f773 100644
+--- a/target/arm/cpu-sysregs.h.inc
++++ b/target/arm/cpu-sysregs.h.inc
+@@ -10,6 +10,7 @@ DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
+ DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
+ DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
+ DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
++DEF(ID_AA64ISAR3_EL1, 3, 0, 0, 6, 3)
+ DEF(ID_AA64MMFR0_EL1, 3, 0, 0, 7, 0)
+ DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
+ DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
+-- 
+2.43.0
 
 

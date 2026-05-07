@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CDBECD343F
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 16:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D244CCD3442
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 16:50:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL1qK-0003LG-Nj; Thu, 07 May 2026 12:44:56 -0400
+	id 1wL1vL-0004hq-DQ; Thu, 07 May 2026 12:50:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wL1qJ-0003KQ-Nb
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:44:55 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1wL1v1-0004aa-Qk
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 12:49:48 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wL1qH-0000UX-Is
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:44:55 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-43fe3e22e33so735146f8f.0
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 09:44:52 -0700 (PDT)
+ id 1wL1uw-0001gx-GN
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 12:49:47 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-488b3f8fa2bso22124345e9.1
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 09:49:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778172291; x=1778777091; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778172581; x=1778777381; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CuiGuKD6lwcnZRJZhLkYNJ8PANSTQizjBrUnUtpF7LY=;
- b=DJdizwoopDqkKWVoqGFAXI1IIZDAhzZbdT4kLNd4gLriwkxzZIrCiqZUqawsKD7YBI
- cFpmh4A8pfX5ZtpNG8DI60OYn2s0VPy2X+5Y2RN/j0tkMeIEDPbfvzluWyistWm8YFJH
- gkVRwPpkRjTzlaq/OlxN50hARukZ0nb9r1cviqwsVSsosB/Rtq+o97Xzw4iCvHqJFnCV
- /4KEuXyLZp8uLbmxhgK2gytmZl8PdC1yx6j5qzjGlkhJdDSBdc5LUM/eHboHoSTvEEbl
- yISGrc42VCNn65YJCb16uOjYoIgGgtduYdQF3VPbP+BDZWXASRoNU88hFipLmANW+HaD
- AqdA==
+ bh=WZtP9nnXpyHsTr6q8nhruspaH75p7XSNAmy7nQTwSps=;
+ b=sOPipinkt1kkxVVTVBS0tKMSX455q1/M+FCga/6ttI6O1hGyZJy4NycYf14rHx9l1x
+ OnZtScg9OBHR0k9wXbCAH2oENWUPWqJmWWPCVn4kh3NC9JDCWn3ykfGtFjvbnZB3G8Uv
+ Rl9mRCF2a0mVxxoCiBez/k2yTIWIAwCbVPs/u94qLlew552dsr3zDImsUqw8SzL6DtHW
+ fgsjqohp4xqzKUHbMaUbxQKNoeDeAv9xHfTZGLCkfiMgDaNjzEXZDh2pOFA00ZnYyIMb
+ 6pYLU+bcTyhk//2ebC1zhDCd2rWDf0DJzp+961kAmLGJQvXEHcfurngSpHnE8eBa3t5I
+ +cyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778172291; x=1778777091;
+ d=1e100.net; s=20251104; t=1778172581; x=1778777381;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CuiGuKD6lwcnZRJZhLkYNJ8PANSTQizjBrUnUtpF7LY=;
- b=kHh/ZDpUO6PG32jy3tXjTO/SIWa9DxdgsPZ+JWTMwMpi2ZIKa93PByQP3EFsSbpP2v
- 6NwoRJIheGQtVKlxLxZwlRB8jV5A6ZHvxxFwCe1nf91qk0UrzGSStGW2Bz95WzL0WxS6
- iuzs6X+XA0HuRok8SXT4FjDKmRgUHthkMrMhQN4iWBzRkzxpGQhLTLWinS9XpEsE638Y
- Fs8U1ZfH2Gc+6vnEqVsoK3Cj5VjYWJ1f2Xqm1hYMk9SpCQ77JRO7k6KCqdzzqVsssyxt
- 8cHL/YOE1JLm1r1FlcREQLr265QLzQmKNBfSdH6oQ553kFysT4lM5XORzMBdwA49iU1+
- Izcw==
+ bh=WZtP9nnXpyHsTr6q8nhruspaH75p7XSNAmy7nQTwSps=;
+ b=VngmAFUFy+/Mf8OnvGZir88hBmo8/CUywuoKv3pEYkgaaa8F++W51+7wcnh9DygoA6
+ 5S/jHLHvyfGTCMRqcq8IqsIoMRyHTwdAKoVQnqKPH0KMjDL0bx6f6yOxYvl0hMhT2OOe
+ YHO+VexTZ4rvyA8CD7/fY2HUTnze1TVTZLOrw02yHCCLcl5a0CHDMPFSgBzr0T2lJ4SN
+ iGGqLJLMJQZtcjgscRwv6x+BLx7JPSKhJFSRyghhXAUAJQKrpL/5Wtc1LbynIkfbgILE
+ ta/sjqJHkMRITRRDVKXBersPqVNd8JsFkdQOTaJLk6hX+8gUNa5d2Mige1ObTaIL1nCr
+ PKvQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9AJoECjrzUpZ5hZCCfHjFUWLG2uEw4GSi9aEJTwNPzphu8IQ2vaDJlsGAQ4HpxFe6dRYiOO5JPxg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw37lcThXWbuNwGuuNbef83EjR+y77N1YG7TPI0T65+37oiFj4V
- ObrcEz6JtxYK08tbjBOTlPnluVCaX8z8yCyxprbAUYizZOqHgZ/dcO8pxqg4EJ0y844=
-X-Gm-Gg: AeBDieu+hHTr4ZFu0m6JrW/gKYvBwSQAuD1UlBhk5IUCUyu4jkLPVgCwtNyB3sA/MLc
- 8fxLt/6wwbq2gKdHdj4SJwUjrq2Ety3A/aflsR7xbgbVlfNI0I+ZxbM8RtLda2D9yO/0AIDbShU
- FqxBv4z/BzL82jVFWB2NMrU3j5Ldk3wENNepfXTTjDsNfLFgGv5yQfOllPBQrfahHRSNkL4E1L0
- 7OqtDdm64a3FzsxJ5BDgpf6lHXq9AB0cGB7hlyKwt5iPtBbPWW5KbM1+Af3bG48R3gfTOULB11y
- PqNT3JLzu9li4fULp6Sf/sasonsfdJO82TFYp4BObu+F7aSJBQ7KBg6AME3Rlaf61cZj9jQEo8D
- oy0d/Zl8p6glMi4CWq3vw8trdgj37OjEs6Y4MN7RDzaLi0XFKeaoR0sAQ/RcQ2icq1S7iV8nSdw
- JzJXzdC16EXidA5T7ak1F6j8w=
-X-Received: by 2002:a05:6000:26c9:b0:44b:cb31:b767 with SMTP id
- ffacd0b85a97d-4515d2e6d77mr14460626f8f.36.1778172291300; 
- Thu, 07 May 2026 09:44:51 -0700 (PDT)
+ AFNElJ9QfE94jYjTNr14qkTUAqJdw+xKxUmJDhhCYDeQgAqdrOWD3X5dqAbhYeZO7NafQi2AJnNMS4gY/A==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7aujGQsk8XP9esv58IKZZMr4zY8bWOR+yWUXvNYz0lIX/Y81d
+ ANK42LdiMQjHIIh8Bbzan4qNcPomotQ7IHa3Huc1OVaegYKZT+dqzYyvtXSN+xKFBwI=
+X-Gm-Gg: AeBDiet3Eacfa8sJW8l9JyXgsiQxf8kVusos6exyzA7uRLp5wbbQOzXcJ0MpIKFdnUq
+ EgCne9Sot2LAau74bsJ6WfHRA8kiOzgmhDo5KgjjLLaHf4y8iZL6Ki0v854FpVfTYBZ6po6j0Rf
+ E7HyJcB6Pxb4wP/Eyx+SBqinxsuCczyftieQF/usGhv+6975YStqSx74u387hgN16NlnA5CiCy9
+ ek6Z1qoYoi8qdAwu41t/JKNotR+hy8Fyx9I4VCnVSDYLMuJ4tRrslamSsu3Vqd32MdBPpDC2ZVQ
+ Z1h8GYNbOm1ix61RyG9wiFFo4fJHzMWVSlbYV0Pj/fL3FvmAwU/oWHKB3ECyuFS+vmtHHMHav8R
+ DY3mnTyTT5lAHbckFm+VPn04TK1kNvoDrpNYhpmypRpz3eLga9mCTCGDFYLv1UCyzN0HHrHMdWE
+ Z46ZcYbkZFzWxTdw86ugOG/L8=
+X-Received: by 2002:a05:600c:45c7:b0:48a:761:5816 with SMTP id
+ 5b1f17b1804b1-48e5dfdb8famr55502165e9.8.1778172580532; 
+ Thu, 07 May 2026 09:49:40 -0700 (PDT)
 Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-454177df883sm183623f8f.34.2026.05.07.09.44.50
+ 5b1f17b1804b1-48e53158dd9sm42395715e9.36.2026.05.07.09.49.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2026 09:44:50 -0700 (PDT)
+ Thu, 07 May 2026 09:49:38 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 557195F83E;
- Thu, 07 May 2026 17:44:49 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id E01705F7C1;
+ Thu, 07 May 2026 17:49:36 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
@@ -89,20 +89,20 @@ Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
  Ilya Leoshkevich <iii@linux.ibm.com>,  David Hildenbrand
  <david@kernel.org>,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>,  Max Filippov <jcmvbkbc@gmail.com>
-Subject: Re: [PATCH v2 01/25] hw/i386/vapic: Cope with non-page-aligned
- return from cpu_get_phys_page_debug()
-In-Reply-To: <20260430093810.2762539-2-peter.maydell@linaro.org> (Peter
- Maydell's message of "Thu, 30 Apr 2026 10:37:46 +0100")
+Subject: Re: [PATCH v2 04/25] target/microblaze: Make
+ get_phys_page_attrs_debug handle non-page-aligned addrs
+In-Reply-To: <20260430093810.2762539-5-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Thu, 30 Apr 2026 10:37:49 +0100")
 References: <20260430093810.2762539-1-peter.maydell@linaro.org>
- <20260430093810.2762539-2-peter.maydell@linaro.org>
+ <20260430093810.2762539-5-peter.maydell@linaro.org>
 User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Thu, 07 May 2026 17:44:49 +0100
-Message-ID: <87a4ubkw3i.fsf@draig.linaro.org>
+Date: Thu, 07 May 2026 17:49:36 +0100
+Message-ID: <874ikjkvvj.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,16 +127,26 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Currently the i386 implementation of get_phys_page_debug() always
-> returns an address aligned to a page boundary, and the vapic.c code
-> assumes this: it adds back in the page offset after the call.  Change
-> this to OR in the page offset, so that it works whether
-> cpu_get_phys_page_debug() returns the page address or the exact
-> physical address. This will mean the code continues to work when
-> we change the semantics to standardize on "return exact
-> physical address".
+> Currently our implementations of SysemuCPUOps::get_phys_page_debug
+> and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
+> non-page-aligned virtual address and returns the corresponding
+> non-page-aligned physical address" and "only returns a page-aligned
+> physical address".  This is awkward for callsites, which in practice
+> all want the physical address for an arbitrary virtual address and
+> have to work around the possibility of getting a page-aligned
+> address, and it doesn't account for protection being possibly on a
+> sub-page-sized granularity.  We want to standardize on the
+> implementation having to handle non-page-aligned addresses.
+>
+> For microblaze, we just need to remove the explicit rounding down to
+> the page boundary that we were doing in
+> mb_cpu_get_phys_page_attrs_debug() when calculating the output
+> physaddr from the results of the MMU lookup.
 >
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-id: 20260417173105.1648172-4-peter.maydell@linaro.org
 
 Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 

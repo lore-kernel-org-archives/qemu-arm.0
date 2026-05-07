@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71418CD343F
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 23:47:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B696FCD343F
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 23:48:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL8OO-0000KK-6q; Thu, 07 May 2026 19:44:32 -0400
+	id 1wL8OY-0000Ub-Ni; Thu, 07 May 2026 19:44:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wL8OM-0000It-QC
- for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:30 -0400
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+ id 1wL8OX-0000Sq-5A
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:41 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wL8OK-000138-UO
- for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:30 -0400
-Received: by mail-ot1-x334.google.com with SMTP id
- 46e09a7af769-7d1872504cbso1372186a34.0
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 16:44:28 -0700 (PDT)
+ id 1wL8OV-00017y-Cw
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 19:44:40 -0400
+Received: by mail-ot1-x332.google.com with SMTP id
+ 46e09a7af769-7dca4debedaso1461356a34.2
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 16:44:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778197468; x=1778802268; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778197478; x=1778802278; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=fqZpb5WA9ogYuItOtSvNo6b9diPbxGpZ/yvrjuO5kXZ6ftAaUKFYVau1YuI0Zy9UGP
- WSkNZUTzgjushbHFtuz9vP+TZzkeJcfqMfCUDEvuqwyIiegZOolVwb17jLcrU0NLll7d
- wjF8WRqa/2gbGhvqVhrpCGC5h01Fz3d3M54OPKBI+eUkD01vWcB0+E9KEfeYeYXxoP/5
- pJArxT0AcixbDgVAi0K90/LtwziOGqoFj0g2gGYtTBvtSq2X9a7UxukTLGKWrEK94/Yq
- M/Q3JXQPFg0dYrb7W6wB+yt2nn/tiQdb0u1Ac1Q+EARehgC8hiBqrYBeFPePSyDxreOu
- cGRQ==
+ bh=/3ZYczjBLknuUeNMVIXhQkwoCzh7YbfOFDsAqbQIrfk=;
+ b=UVuij7frX/fLLpYwNpddJ3g+u+To3vIs6rNMCKmQ0l8IjbXkQ0gByb5awAXL2az34Z
+ U0mcuqW2TY83bMIBQTRiPLRPtmrCx3+F1hHsbxNihKBC9nVzLbdyHiMaDQCE6pcywQlH
+ vWfK3yrZP5CfW9vwUxoe6LHbVV4MmTRFR47LJN+iostYk9ebgbdtTvmiI45vofOH5RGJ
+ Q1GlW/dwQ07C+i5umZVd55Cp1YxMYKpMP+SZ5mDWlZ1QD/DAspO2F0IwuSeRGJA6kXkM
+ qzCTAbcnSGEMKKDRENBlPqERSM+0DoCiYtYdJ8VCdliwxixglLg7pj/RoEsn9MDwGlAP
+ YJFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778197468; x=1778802268;
+ d=1e100.net; s=20251104; t=1778197478; x=1778802278;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZVsvcQjrwAu/Fw5QeICNMsfPv4wnEzD0NNefmVwM0W0=;
- b=BT53VokZY4atHru4lQ7we7LjSYnl879ohv0t4CqUAvVV/gqtjW+aNSY6ftBvswq7Lk
- +x1vYR9/W4DEOzgmEUZ/4hM4W/tV7MJOh3rn/IU6Q4u3fChSbcsehx5wTRQTU1ohrhHe
- 4FX36TjZa74rSspuWaisXKkqzX8lUinrVyBg2hGixQrbVN6KhYI+We6ebNwORf6Y7RTh
- BW9JlLAMMRIIdBiC+PtJvLHrpEUOVElCgv+CgG9h9HOVZPcuLTJrhhYR1D+wjL3GAM+L
- ivTBkO4FFluNMA4EtRAR6+QbmxG21DKPg2OOkkIoVojjX38jQqwtLYnecdBnhPJHwymq
- TpCw==
-X-Gm-Message-State: AOJu0YyzNhjBIcWFx9GpP1PwGRzrMeukiO6RUoW3XZ6a50pMbbjUb+/c
- hR2TNlHlNXVaNcTj6W8aDQXhevaKzpqiZ4J31IcmppVefownzd4XKyHTTXQS1ur6FNA=
-X-Gm-Gg: AeBDiet7S5PgwITWGQObVSztV5tGle0bQ/QIQ3E0TFWDYQbHeel3HebSgUOtifyl3Wg
- UI063YLgN6QFyB5PnOHf8imoJsM5iFPqA0L2Vd2ArpjIk1vhqrHQCm69WfCA4NY4cZPnvhx+ZAu
- 8MHFIbbMNyQY1QMNZ2JmO2BYUdL5ckVDgXXbNR/rSuc3vrq3CyMNPUl/gTzVhE9SCYggrbqZ2+t
- Tqx/lKi1A2gvMeeVFnl5hx9ws7mczNsXVIvHU6wQuav6ZKIg4/b1GuUku3EVo2AjmMLc9tilmTI
- GtZEPFOSdsLfvgoQP+nY7r7I0s6QSKIX8rYKR5dt+yRaPu8ozNIEcG81y8LbXL5m/A0oLxlJJot
- iSk6tv23ItSDbsVhBfMNlQIG/wDSCDnI8ljYjXn5dd5n1xTlyGe6UgLNJmREbG3QJCPjWRAHKKR
- 3a9dmtaSX/tv2eVYo5lCe90GwiqD7na4R13I3dT2gS9ARopddoR4ohtfqh
-X-Received: by 2002:a05:6830:d18:b0:7dc:cf5d:df17 with SMTP id
- 46e09a7af769-7e1fd481d99mr2885455a34.18.1778197467784; 
- Thu, 07 May 2026 16:44:27 -0700 (PDT)
+ bh=/3ZYczjBLknuUeNMVIXhQkwoCzh7YbfOFDsAqbQIrfk=;
+ b=cpJeIVJ3YUVVSicqGUvXNIdAqoFs+WKzplciKRPEdmcmJuNdt6XMGdlZu9sSccu7NY
+ /NUHbvN/Sny3evmaBnRXuv6RaWxWfmBdpvFUMsHaEo7qPnbgaXz2nWy33ocgmXdWsfDa
+ L76F1f+tJ34ZYShS4HoIGyyHj4jEXCTQsBR1y2cxSn+bvG06kk97WQ7dgF93c6cl4stt
+ yi6BqHH+iQmb/a8S3CcgnPWR5wOGRbSFmLr8K3Dnz1DjXXd0KjbHiCd/yow6lJTW/P3n
+ 2A7X2E5Mc0pJO2V5ZtKD3Nr9K1AMBguSYjstmUVesr+Ul4SD1OophSnmRXS0h+OlJ42s
+ XOgQ==
+X-Gm-Message-State: AOJu0Yz+lKBAaq/3CN1l7psWYtO/WSaFZD8WXkfvivBWXCc7twMh0pEt
+ 7NW7KAPy6y4FuSApKouTB2rNiT0Uqqru42YR8ebT40mvRSCxjTwkY/percKfpV4vU7I=
+X-Gm-Gg: AeBDievzlatdqhcYR+tsS9res/lGjcl0+cmJebRyo0os80XAPKkzOG2lfW9x4gz7T8q
+ IXUPr3r75Tg+HZ/3ZsCziCxm/cydVrqeZLUtuugbZT74AnwdgBES+QEbxNOZI2JalrwNEpmxy+p
+ TlCT/UeyVYc0b4/zghsrM/t7eG47prV278d/29giV2WF2RawU1JXmb8r3aLs0MpRESrZFDIQbM4
+ 2M9jA99AHIkar99eKzufLix34F8gL+okMFWsTThypkVI0+2MPjyHSNdJGW6jc/Irjpg8gda1Xvk
+ MdV4i+eFuAGZXanB+PT/O0CgRwXRJBMq1gBvKnGbKRbgYwgKIqHaO9Zpz50xk90f6YI70i2GIIX
+ /ImWuFcjxE7dW3N//Gss2DdfIjCWI40msYJKco8qqChts1Jtj703wc01NKCJy/cq9nizgrO9hCM
+ amSvsxi1eYZO1WsqOlHFZHI7Pdq+d3O2rcdQ4uf1xwUFVLGXj9EAXMvFx+
+X-Received: by 2002:a05:6830:82bb:b0:7de:427d:34ba with SMTP id
+ 46e09a7af769-7e1df16f061mr6452201a34.19.1778197478200; 
+ Thu, 07 May 2026 16:44:38 -0700 (PDT)
 Received: from stoup.attlocal.net ([2600:381:c938:6375:9641:bbb2:a93a:bb4c])
  by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-7e367d8feb1sm84320a34.23.2026.05.07.16.44.27
+ 46e09a7af769-7e367d8feb1sm84320a34.23.2026.05.07.16.44.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2026 16:44:27 -0700 (PDT)
+ Thu, 07 May 2026 16:44:37 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v4 14/60] tests/functional/aarch64/rme: update images to
- support FEAT_FP8
-Date: Thu,  7 May 2026 18:43:27 -0500
-Message-ID: <20260507234413.643512-15-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v4 25/60] target/arm: Implement BF1CVT, BF1CVTL, BF2CVT,
+ BF2CVTL for SME
+Date: Thu,  7 May 2026 18:43:38 -0500
+Message-ID: <20260507234413.643512-26-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260507234413.643512-1-richard.henderson@linaro.org>
 References: <20260507234413.643512-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::334;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x334.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,75 +100,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-
-As well, use -smp 1 since there is no visible speedup running with -smp 2.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/functional/aarch64/test_rme_sbsaref.py | 7 ++++---
- tests/functional/aarch64/test_rme_virt.py    | 7 ++++---
- 2 files changed, 8 insertions(+), 6 deletions(-)
+ target/arm/tcg/helper-fp8-defs.h |  2 ++
+ target/arm/tcg/fp8_helper.c      | 47 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/translate-sme.c   | 19 +++++++++++++
+ target/arm/tcg/sme.decode        |  5 ++++
+ 4 files changed, 73 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_rme_sbsaref.py b/tests/functional/aarch64/test_rme_sbsaref.py
-index efea80c578..d252101ac6 100755
---- a/tests/functional/aarch64/test_rme_sbsaref.py
-+++ b/tests/functional/aarch64/test_rme_sbsaref.py
-@@ -20,12 +20,13 @@ class Aarch64RMESbsaRefMachine(QemuSystemTest):
+diff --git a/target/arm/tcg/helper-fp8-defs.h b/target/arm/tcg/helper-fp8-defs.h
+index 18ff483bb0..966f83d796 100644
+--- a/target/arm/tcg/helper-fp8-defs.h
++++ b/target/arm/tcg/helper-fp8-defs.h
+@@ -5,3 +5,5 @@
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_sbsa_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_SBSA = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_sbsa_release-6a2dfc5.tar.xz'),
--         '5adba482aa069912292a8da746c6b21268224d9d81c97fe7c0bed690579ebdcb')
-+         'releases/download/build/rme_sbsa_release-74b7fab.tar.xz'),
-+         '82a754bacea04e709cb1cf2759d1d12d09fabd612e014961eb32368723c7920a')
+ DEF_HELPER_FLAGS_4(advsimd_bfcvtl, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+ DEF_HELPER_FLAGS_4(sve2_bfcvt, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(sme2_bfcvt_hb, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
++DEF_HELPER_FLAGS_4(sme2_bfcvtl_hb, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
+diff --git a/target/arm/tcg/fp8_helper.c b/target/arm/tcg/fp8_helper.c
+index ceb36bc926..427ec4cc3d 100644
+--- a/target/arm/tcg/fp8_helper.c
++++ b/target/arm/tcg/fp8_helper.c
+@@ -140,3 +140,50 @@ void HELPER(sve2_bfcvt)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
  
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -57,7 +58,7 @@ def test_aarch64_rme_sbsaref(self):
-                           ' --params "root=/dev/vda rw init=/init"')
+     fp8_finish(env, &ctx);
+ }
++
++void HELPER(sme2_bfcvt_hb)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
++{
++    FP8Context ctx = fp8_src_start(env, desc, 0x3f);
++    fp8_input_fn *input_fmt = fp8_input_fmt[ctx.f8fmt];
++    uint8_t *n = vn;
++    uint16_t *d0 = vd;
++    uint16_t *d1 = vd + sizeof(ARMVectorReg);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nelem = oprsz / 2;
++    ARMVectorReg scratch;
++
++    if (vectors_overlap(vd, 2, vn, 1)) {
++        n = memcpy(&scratch, vn, oprsz);
++    }
++
++    for (size_t i = 0; i < nelem; ++i) {
++        d0[H2(i)] = fcvt_fp8_to_b16(n[H1(i)], input_fmt,
++                                    ctx.scale, &ctx.stat);
++    }
++    for (size_t i = 0; i < nelem; ++i) {
++        d1[H2(i)] = fcvt_fp8_to_b16(n[H1(i + nelem)], input_fmt,
++                                    ctx.scale, &ctx.stat);
++    }
++
++    fp8_finish(env, &ctx);
++}
++
++void HELPER(sme2_bfcvtl_hb)(void *vd, void *vn, CPUARMState *env, uint32_t desc)
++{
++    FP8Context ctx = fp8_src_start(env, desc, 0x3f);
++    fp8_input_fn *input_fmt = fp8_input_fmt[ctx.f8fmt];
++    uint8_t *n = vn;
++    uint16_t *d0 = vd;
++    uint16_t *d1 = vd + sizeof(ARMVectorReg);
++    size_t oprsz = simd_oprsz(desc);
++    size_t nelem = oprsz / 2;
++
++    for (size_t i = 0; i < nelem; ++i) {
++        uint8_t e0 = n[H1(2 * i + 0)];
++        uint8_t e1 = n[H1(2 * i + 1)];
++        d0[H2(i)] = fcvt_fp8_to_b16(e0, input_fmt, ctx.scale, &ctx.stat);
++        d1[H2(i)] = fcvt_fp8_to_b16(e1, input_fmt, ctx.scale, &ctx.stat);
++    }
++
++    fp8_finish(env, &ctx);
++}
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 88c1d78c40..2841b2b8cb 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -22,6 +22,7 @@
+ #include "helper-a64.h"
+ #include "helper-sme.h"
+ #include "helper-sve.h"
++#include "helper-fp8.h"
+ #include "translate.h"
+ #include "translate-a64.h"
+ #include "tcg/tcg-op.h"
+@@ -1532,6 +1533,24 @@ TRANS_FEAT(UUNPK_4bh, aa64_sme2, do_zz, a, 0, gen_helper_sme2_uunpk4_bh)
+ TRANS_FEAT(UUNPK_4hs, aa64_sme2, do_zz, a, 0, gen_helper_sme2_uunpk4_hs)
+ TRANS_FEAT(UUNPK_4sd, aa64_sme2, do_zz, a, 0, gen_helper_sme2_uunpk4_sd)
  
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'sbsa-ref')
-         self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-diff --git a/tests/functional/aarch64/test_rme_virt.py b/tests/functional/aarch64/test_rme_virt.py
-index dcb18678bf..2afcdc6b07 100755
---- a/tests/functional/aarch64/test_rme_virt.py
-+++ b/tests/functional/aarch64/test_rme_virt.py
-@@ -19,12 +19,13 @@ class Aarch64RMEVirtMachine(QemuSystemTest):
++static bool do_f8cvt(DisasContext *s, arg_zz_n *a,
++                     gen_helper_gvec_2_ptr *fn, bool issrc2)
++{
++    if (fpmr_access_check(s) && sme_sm_enabled_check(s)) {
++        int svl = streaming_vec_reg_size(s);
++        tcg_gen_gvec_2_ptr(vec_full_reg_offset(s, a->zd),
++                           vec_full_reg_offset(s, a->zn),
++                           tcg_env, svl, svl,
++                           issrc2 | (FPST_ZA << 2), fn);
++    }
++    return true;
++}
++
++TRANS_FEAT(BF1CVT, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_bfcvt_hb, 0)
++TRANS_FEAT(BF2CVT, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_bfcvt_hb, 1)
++TRANS_FEAT(BF1CVTL, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_bfcvtl_hb, 0)
++TRANS_FEAT(BF2CVTL, aa64_sme2_f8cvt, do_f8cvt, a, gen_helper_sme2_bfcvtl_hb, 1)
++
+ static bool do_zipuzp_4(DisasContext *s, arg_zz_e *a,
+                         gen_helper_gvec_2 * const fn[5])
+ {
+diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
+index 7a8e1abb59..df9586c1a5 100644
+--- a/target/arm/tcg/sme.decode
++++ b/target/arm/tcg/sme.decode
+@@ -853,6 +853,11 @@ UUNPK_4bh       11000001 011 10101 111000 ....0 ...01       @zz_4x2_n1
+ UUNPK_4hs       11000001 101 10101 111000 ....0 ...01       @zz_4x2_n1
+ UUNPK_4sd       11000001 111 10101 111000 ....0 ...01       @zz_4x2_n1
  
-     # Stack is inspired from:
-     # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # Built from:
-     # https://github.com/p-b-o/qemu-linux-stack/tree/rme_release
-     # ./build.sh && ./archive_artifacts.sh out.tar.xz
-     ASSET_RME_STACK_VIRT = Asset(
-         ('https://github.com/p-b-o/qemu-linux-stack/'
--         'releases/download/build/rme_release-56bc99e.tar.xz'),
--         '0e3dc6b8a4b828dbae09c951a40dcb710eded084b32432b50c69cf4173ffa4be')
-+         'releases/download/build/rme_release-2701e89.tar.xz'),
-+         '8c40af440f5bd1518f7add7d0a43b39289865ee48430979db8024cb897a74790')
- 
-     # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-     # and launching a nested VM using it.
-@@ -44,7 +45,7 @@ def test_aarch64_rme_virt(self):
-         rootfs = join(rme_stack, 'out', 'host.ext4')
- 
-         self.vm.add_args('-cpu', 'max,x-rme=on')
--        self.vm.add_args('-smp', '2')
-+        self.vm.add_args('-smp', '1')
-         self.vm.add_args('-m', '2G')
-         self.vm.add_args('-M', 'virt,acpi=off,'
-                          'virtualization=on,'
++BF1CVT          11000001 011 00110 111000 ..... ....0       @zz_2x1
++BF2CVT          11000001 111 00110 111000 ..... ....0       @zz_2x1
++BF1CVTL         11000001 011 00110 111000 ..... ....1       @zz_2x1
++BF2CVTL         11000001 111 00110 111000 ..... ....1       @zz_2x1
++
+ ZIP_4           11000001 esz:2 1 10110 111000 ...00 ... 00   \
+                 &zz_e zd=%zd_ax4 zn=%zn_ax4
+ ZIP_4           11000001 001     10111 111000 ...00 ... 00   \
 -- 
 2.43.0
 

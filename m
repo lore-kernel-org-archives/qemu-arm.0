@@ -4,112 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D244CCD3442
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 16:50:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BFFCCD3442
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 16:51:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL1vL-0004hq-DQ; Thu, 07 May 2026 12:50:12 -0400
+	id 1wL1wv-0005Ty-Dg; Thu, 07 May 2026 12:51:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wL1v1-0004aa-Qk
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:49:48 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wL1uw-0001gx-GN
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:49:47 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-488b3f8fa2bso22124345e9.1
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 09:49:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778172581; x=1778777381; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=WZtP9nnXpyHsTr6q8nhruspaH75p7XSNAmy7nQTwSps=;
- b=sOPipinkt1kkxVVTVBS0tKMSX455q1/M+FCga/6ttI6O1hGyZJy4NycYf14rHx9l1x
- OnZtScg9OBHR0k9wXbCAH2oENWUPWqJmWWPCVn4kh3NC9JDCWn3ykfGtFjvbnZB3G8Uv
- Rl9mRCF2a0mVxxoCiBez/k2yTIWIAwCbVPs/u94qLlew552dsr3zDImsUqw8SzL6DtHW
- fgsjqohp4xqzKUHbMaUbxQKNoeDeAv9xHfTZGLCkfiMgDaNjzEXZDh2pOFA00ZnYyIMb
- 6pYLU+bcTyhk//2ebC1zhDCd2rWDf0DJzp+961kAmLGJQvXEHcfurngSpHnE8eBa3t5I
- +cyg==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wL1wr-0005QW-5M
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 12:51:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wL1wo-0002LH-U3
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 12:51:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778172697;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=T8kiIjydpHjmWLd5Ofrh2ka7+rp/VfScy8/WFFrDyo4=;
+ b=ULXZnaNiyHnUGM8IKrnPitEqCXU6haq/NvSHHbZ3P93i2iiSGQfcvSxdkFR6Wdv8WqqskD
+ nvqxxG7Uo4Ntl3Il63HefBW8I0cJW/ytifRrd5ey+WFIx9nFFHA0a8Y/UR2LBQomjsJwUp
+ UNNzReFAe4T/paDCzasq3SBqhhmbfZA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-320-yqWbR-rvP966Z_TNCWIRjg-1; Thu, 07 May 2026 12:51:36 -0400
+X-MC-Unique: yqWbR-rvP966Z_TNCWIRjg-1
+X-Mimecast-MFC-AGG-ID: yqWbR-rvP966Z_TNCWIRjg_1778172695
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-44b186b715aso756098f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 09:51:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778172581; x=1778777381;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WZtP9nnXpyHsTr6q8nhruspaH75p7XSNAmy7nQTwSps=;
- b=VngmAFUFy+/Mf8OnvGZir88hBmo8/CUywuoKv3pEYkgaaa8F++W51+7wcnh9DygoA6
- 5S/jHLHvyfGTCMRqcq8IqsIoMRyHTwdAKoVQnqKPH0KMjDL0bx6f6yOxYvl0hMhT2OOe
- YHO+VexTZ4rvyA8CD7/fY2HUTnze1TVTZLOrw02yHCCLcl5a0CHDMPFSgBzr0T2lJ4SN
- iGGqLJLMJQZtcjgscRwv6x+BLx7JPSKhJFSRyghhXAUAJQKrpL/5Wtc1LbynIkfbgILE
- ta/sjqJHkMRITRRDVKXBersPqVNd8JsFkdQOTaJLk6hX+8gUNa5d2Mige1ObTaIL1nCr
- PKvQ==
+ d=1e100.net; s=20251104; t=1778172695; x=1778777495;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=T8kiIjydpHjmWLd5Ofrh2ka7+rp/VfScy8/WFFrDyo4=;
+ b=m4UPUZMN6dqYFj5wpnfSaZ30DR8OwWfxfQa+Kq7Sm2FE0yytVg7NREGWULmEduyav3
+ VSaCYL91yI/abN3fChHHQ5MXN0icVNrTIgJNkR5qrUAQjMy/9XH0lc65URN+HM+qV1n9
+ YPbICz34cv7PHPAsFipoqz4lrJvj37wGn0Afp83QZYchXhsOoKCAZ+RNqpfo++/ZGeS5
+ kOXstJBk7yb4X2XGPNIzNWg+Yw+5MkbVobj20nCx44rNyzDI9QpNVPQ27n5ewrzeoI6g
+ rrJHUeFEySPLwVnWut3vW6j5uPyjFwsL0QZFjXDTJ/FxoYZeoiJ+3whh3QfXQWE6phGv
+ yK4A==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9QfE94jYjTNr14qkTUAqJdw+xKxUmJDhhCYDeQgAqdrOWD3X5dqAbhYeZO7NafQi2AJnNMS4gY/A==@nongnu.org
-X-Gm-Message-State: AOJu0Yx7aujGQsk8XP9esv58IKZZMr4zY8bWOR+yWUXvNYz0lIX/Y81d
- ANK42LdiMQjHIIh8Bbzan4qNcPomotQ7IHa3Huc1OVaegYKZT+dqzYyvtXSN+xKFBwI=
-X-Gm-Gg: AeBDiet3Eacfa8sJW8l9JyXgsiQxf8kVusos6exyzA7uRLp5wbbQOzXcJ0MpIKFdnUq
- EgCne9Sot2LAau74bsJ6WfHRA8kiOzgmhDo5KgjjLLaHf4y8iZL6Ki0v854FpVfTYBZ6po6j0Rf
- E7HyJcB6Pxb4wP/Eyx+SBqinxsuCczyftieQF/usGhv+6975YStqSx74u387hgN16NlnA5CiCy9
- ek6Z1qoYoi8qdAwu41t/JKNotR+hy8Fyx9I4VCnVSDYLMuJ4tRrslamSsu3Vqd32MdBPpDC2ZVQ
- Z1h8GYNbOm1ix61RyG9wiFFo4fJHzMWVSlbYV0Pj/fL3FvmAwU/oWHKB3ECyuFS+vmtHHMHav8R
- DY3mnTyTT5lAHbckFm+VPn04TK1kNvoDrpNYhpmypRpz3eLga9mCTCGDFYLv1UCyzN0HHrHMdWE
- Z46ZcYbkZFzWxTdw86ugOG/L8=
-X-Received: by 2002:a05:600c:45c7:b0:48a:761:5816 with SMTP id
- 5b1f17b1804b1-48e5dfdb8famr55502165e9.8.1778172580532; 
- Thu, 07 May 2026 09:49:40 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e53158dd9sm42395715e9.36.2026.05.07.09.49.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 May 2026 09:49:38 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E01705F7C1;
- Thu, 07 May 2026 17:49:36 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org,  qemu-s390x@nongnu.org,  Philippe =?utf-8?Q?Mathi?=
- =?utf-8?Q?eu-Daud=C3=A9?=
- <philmd@linaro.org>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,  Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  "Dr. David Alan Gilbert"
- <dave@treblig.org>,  Alexandre Iooss <erdnaxe@crans.org>,  Mahmoud Mandour
- <ma.mandourr@gmail.com>,  Peter Xu <peterx@redhat.com>,  "Edgar E.
- Iglesias" <edgar.iglesias@gmail.com>,  Jiaxun Yang
- <jiaxun.yang@flygoat.com>,  Nicholas Piggin <npiggin@gmail.com>,  Chinmay
- Rath <rathc@linux.ibm.com>,  Glenn Miles <milesg@linux.ibm.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Alistair Francis
- <alistair.francis@wdc.com>,  Weiwei Li <liwei1518@gmail.com>,  Daniel
- Henrique Barboza <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu.zevorn@gmail.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,  David Hildenbrand
- <david@kernel.org>,  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,  Max Filippov <jcmvbkbc@gmail.com>
-Subject: Re: [PATCH v2 04/25] target/microblaze: Make
- get_phys_page_attrs_debug handle non-page-aligned addrs
-In-Reply-To: <20260430093810.2762539-5-peter.maydell@linaro.org> (Peter
- Maydell's message of "Thu, 30 Apr 2026 10:37:49 +0100")
-References: <20260430093810.2762539-1-peter.maydell@linaro.org>
- <20260430093810.2762539-5-peter.maydell@linaro.org>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Thu, 07 May 2026 17:49:36 +0100
-Message-ID: <874ikjkvvj.fsf@draig.linaro.org>
+ AFNElJ+43JLB25uGgCKOYjUPu3JgUatcNnWc37nFOcriQ9axDS+GqwNgeZcE6mfdKFF4R2+Anxlifft0lg==@nongnu.org
+X-Gm-Message-State: AOJu0YyTXQlqHP9efApkStEa2OguwUqlZhhK6b9yf7u2gBg19W2XWy0I
+ oGj0fbdoe0o/Kf+qhTnTFWNXuLsptGrFw0aAHlT5T1Id6/tfNDcflTnQYZOxM0xGECOdcTUbsSg
+ pHn7zpHyb/3L14+HImZTPU8Eu0MA59z9m/gOx7PxT92x7yWu6fOvBZg==
+X-Gm-Gg: AeBDiesrwmSIIwozweFV6aX+lnoR0FEe4QKO8uK6XHfYGlWvfGHm02ktcl9ErH5VyOy
+ AZ1ubVGnuym83f9nWlW9DsExMzdPYlYsnUMOmsHB7fcw6lWYOtydnww850BI6b9EgvgWiuxOO+I
+ gY5RDC4KSTTEg91CrES2/qCZ08uOEhd6RIQ+0RVQKReOcKxhuZ8cWET320bufANaNk4+1j2Idj0
+ uXbQo/dY0GZWviryi81EW/dUoQ7HcV8GvT9JYL4WhOYscq/5T41auMKCDnZ4Ht5GT0Yc2QjHGEA
+ v2Luq4Qz/h5anPkr/oiZ93tzav3acPjT0TgafDmsmYXHCyPdji19nTa5/39l5eR2JGyHc//Lsl7
+ o5duY3/jl310VyF5iGnphWVgySGLQuyuwJCTGJR0re2sNPYTzq/Itcgg=
+X-Received: by 2002:a05:600c:4512:b0:488:ac01:72b6 with SMTP id
+ 5b1f17b1804b1-48e51f3a538mr142165845e9.21.1778172694657; 
+ Thu, 07 May 2026 09:51:34 -0700 (PDT)
+X-Received: by 2002:a05:600c:4512:b0:488:ac01:72b6 with SMTP id
+ 5b1f17b1804b1-48e51f3a538mr142164735e9.21.1778172693510; 
+ Thu, 07 May 2026 09:51:33 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48e5390f854sm131236655e9.14.2026.05.07.09.51.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 May 2026 09:51:32 -0700 (PDT)
+Message-ID: <667dd47e-bb1a-47d7-bd19-194efade286a@redhat.com>
+Date: Thu, 7 May 2026 18:51:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 25/31] hw/arm/tegra241-cmdqv: Add reset handler
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ kjaju@nvidia.com, phrdina@redhat.com
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-26-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260415105552.622421-26-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: RluWsrX5D405JP3mJssouIHAzrjnNIh8p83ecRuoBpk_1778172695
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,35 +118,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
 
-> Currently our implementations of SysemuCPUOps::get_phys_page_debug
-> and SysemuCPUOps::get_phys_page_attrs_debug are a mix of "accepts a
-> non-page-aligned virtual address and returns the corresponding
-> non-page-aligned physical address" and "only returns a page-aligned
-> physical address".  This is awkward for callsites, which in practice
-> all want the physical address for an arbitrary virtual address and
-> have to work around the possibility of getting a page-aligned
-> address, and it doesn't account for protection being possibly on a
-> sub-page-sized granularity.  We want to standardize on the
-> implementation having to handle non-page-aligned addresses.
+
+On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
 >
-> For microblaze, we just need to remove the explicit rounding down to
-> the page boundary that we were doing in
-> mb_cpu_get_phys_page_attrs_debug() when calculating the output
-> physaddr from the results of the MMU lookup.
+> Introduce a reset handler for the Tegra241 CMDQV and initialize its
+> register state.
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-id: 20260417173105.1648172-4-peter.maydell@linaro.org
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/tegra241-cmdqv.h |  2 ++
+>  hw/arm/tegra241-cmdqv.c | 50 +++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events     |  1 +
+>  3 files changed, 53 insertions(+)
+>
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> index 2befa6205e..b2a444daef 100644
+> --- a/hw/arm/tegra241-cmdqv.h
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -79,6 +79,8 @@ FIELD(CONFIG, CMDQ_MAX_CLK_BATCH, 4, 8)
+>  FIELD(CONFIG, CMDQ_MAX_CMD_BATCH, 12, 8)
+>  FIELD(CONFIG, CONS_DRAM_EN, 20, 1)
+>  
+> +#define V_CONFIG_RESET 0x00020403
+> +
+>  REG32(PARAM, 0x4)
+>  FIELD(PARAM, CMDQV_VER, 0, 4)
+>  FIELD(PARAM, CMDQV_NUM_CMDQ_LOG2, 4, 4)
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> index 9c2fc02b92..af68add2f0 100644
+> --- a/hw/arm/tegra241-cmdqv.c
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -8,6 +8,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+>  #include "qemu/log.h"
+>  
+>  #include "hw/arm/smmuv3.h"
+> @@ -645,8 +646,57 @@ free_viommu:
+>      return false;
+>  }
+>  
+> +static void tegra241_cmdqv_init_regs(SMMUv3State *s, Tegra241CMDQV *cmdqv)
+> +{
+> +    int i;
+> +
+> +    cmdqv->config = V_CONFIG_RESET;
+> +    cmdqv->param = FIELD_DP32(0, PARAM, CMDQV_VER, CMDQV_VER);
+hw/core/registerfields.h:#define FIELD_DP32(storage, reg, field, val)
+what does this 0?
+> +    cmdqv->param = FIELD_DP32(cmdqv->param, PARAM, CMDQV_NUM_CMDQ_LOG2,
+> +                              CMDQV_NUM_CMDQ_LOG2);
+I was a bit puzzled by the FIELD name being the value name but well.
+> +    cmdqv->param = FIELD_DP32(cmdqv->param, PARAM, CMDQV_NUM_SID_PER_VI_LOG2,
+> +                              CMDQV_NUM_SID_PER_VI_LOG2);
+> +    trace_tegra241_cmdqv_init_regs(cmdqv->param);
+> +    cmdqv->status = R_STATUS_CMDQV_ENABLED_MASK;
+> +    for (i = 0; i < 2; i++) {
+> +        cmdqv->vi_err_map[i] = 0;
+> +        cmdqv->vi_int_mask[i] = 0;
+> +        cmdqv->cmdq_err_map[i] = 0;
+> +    }
+> +    cmdqv->cmdq_err_map[2] = 0;
+> +    cmdqv->cmdq_err_map[3] = 0;
+the split looks pretty strange, ie. loop of 2 + continue with individual
+setting. why don't you do the init of 
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+cmdqv->cmdq_err_map in the x4 loop below
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> +    cmdqv->vintf_config = 0;
+> +    cmdqv->vintf_status = 0;
+> +    for (i = 0; i < 4; i++) {
+> +        cmdqv->vintf_cmdq_err_map[i] = 0;
+> +    }
+> +    for (i = 0; i < TEGRA241_CMDQV_MAX_CMDQ; i++) {
+> +        cmdqv->cmdq_alloc_map[i] = 0;
+> +        cmdqv->vcmdq_cons_indx[i] = 0;
+> +        cmdqv->vcmdq_prod_indx[i] = 0;
+> +        cmdqv->vcmdq_config[i] = 0;
+> +        cmdqv->vcmdq_status[i] = 0;
+> +        cmdqv->vcmdq_gerror[i] = 0;
+> +        cmdqv->vcmdq_gerrorn[i] = 0;
+> +        cmdqv->vcmdq_base[i] = 0;
+> +        cmdqv->vcmdq_cons_indx_base[i] = 0;
+> +    }
+> +}
+> +
+>  static void tegra241_cmdqv_reset(SMMUv3State *s)
+>  {
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +    Tegra241CMDQV *cmdqv = accel->cmdqv;
+> +
+> +    if (!cmdqv) {
+> +        return;
+> +    }
+> +
+> +    tegra241_cmdqv_guest_unmap_vintf_page0(cmdqv);
+> +    tegra241_cmdqv_munmap_vintf_page0(cmdqv, NULL);
+> +    tegra241_cmdqv_free_all_vcmdq(cmdqv);
+> +
+> +    tegra241_cmdqv_init_regs(s, cmdqv);
+>  }
+>  
+>  static const MemoryRegionOps mmio_cmdqv_ops = {
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index fd6441bfa7..6f602b9eda 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -76,6 +76,7 @@ smmuv3_accel_install_ste(uint32_t vsid, const char * type, uint32_t hwpt_id) "vS
+>  tegra241_cmdqv_read_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
+>  tegra241_cmdqv_write_mmio(uint64_t offset, uint64_t val, unsigned size) "offset: 0x%"PRIx64" val: 0x%"PRIx64" size: 0x%x"
+>  tegra241_cmdqv_err_map(uint32_t map3, uint32_t map2, uint32_t map1, uint32_t map0) "hw irq received. error (hex) maps: %04X:%04X:%04X:%04X"
+> +tegra241_cmdqv_init_regs(uint32_t param) "hw info received. param: 0x%04X"
+>  
+>  # strongarm.c
+>  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
+Thanks
+
+Eric
+
 

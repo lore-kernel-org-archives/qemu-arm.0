@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BFFCCD3442
-	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 16:51:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76F66CD3442
+	for <qemu-arm@archiver.kernel.org>; Thu,  7 May 2026 17:04:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wL1wv-0005Ty-Dg; Thu, 07 May 2026 12:51:47 -0400
+	id 1wL28x-0001es-MI; Thu, 07 May 2026 13:04:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wL1wr-0005QW-5M
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:51:41 -0400
+ id 1wL28r-0001cf-GA
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 13:04:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wL1wo-0002LH-U3
- for qemu-arm@nongnu.org; Thu, 07 May 2026 12:51:40 -0400
+ id 1wL28l-0005Nk-RY
+ for qemu-arm@nongnu.org; Thu, 07 May 2026 13:04:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778172697;
+ s=mimecast20190719; t=1778173436;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=T8kiIjydpHjmWLd5Ofrh2ka7+rp/VfScy8/WFFrDyo4=;
- b=ULXZnaNiyHnUGM8IKrnPitEqCXU6haq/NvSHHbZ3P93i2iiSGQfcvSxdkFR6Wdv8WqqskD
- nvqxxG7Uo4Ntl3Il63HefBW8I0cJW/ytifRrd5ey+WFIx9nFFHA0a8Y/UR2LBQomjsJwUp
- UNNzReFAe4T/paDCzasq3SBqhhmbfZA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=RBbDuAKWNq6vxsxytQTB6e1y0xj2M0FbXNW45x08AoE=;
+ b=FkPmhV7WSdo35HUByyp/u4WxJPiJ/NHB3GhXmo8VUhJRI+P2halhAPNVnUrodQZKpgtRQJ
+ Dh+2npGUWTb71MowCUVpk5REtyfzshV3IzUFt1aV5/k/6h37gnZK6JQ75AHtgRakTXJ+m/
+ +ASSItSDlI11s3d8CHBkHhD6kDspR34=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-320-yqWbR-rvP966Z_TNCWIRjg-1; Thu, 07 May 2026 12:51:36 -0400
-X-MC-Unique: yqWbR-rvP966Z_TNCWIRjg-1
-X-Mimecast-MFC-AGG-ID: yqWbR-rvP966Z_TNCWIRjg_1778172695
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-44b186b715aso756098f8f.0
- for <qemu-arm@nongnu.org>; Thu, 07 May 2026 09:51:36 -0700 (PDT)
+ us-mta-548-7ZswDJfVMY-hQnEJ_f67jQ-1; Thu, 07 May 2026 13:03:55 -0400
+X-MC-Unique: 7ZswDJfVMY-hQnEJ_f67jQ-1
+X-Mimecast-MFC-AGG-ID: 7ZswDJfVMY-hQnEJ_f67jQ_1778173434
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-488c0120047so6626725e9.0
+ for <qemu-arm@nongnu.org>; Thu, 07 May 2026 10:03:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778172695; x=1778777495;
+ d=1e100.net; s=20251104; t=1778173434; x=1778778234;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T8kiIjydpHjmWLd5Ofrh2ka7+rp/VfScy8/WFFrDyo4=;
- b=m4UPUZMN6dqYFj5wpnfSaZ30DR8OwWfxfQa+Kq7Sm2FE0yytVg7NREGWULmEduyav3
- VSaCYL91yI/abN3fChHHQ5MXN0icVNrTIgJNkR5qrUAQjMy/9XH0lc65URN+HM+qV1n9
- YPbICz34cv7PHPAsFipoqz4lrJvj37wGn0Afp83QZYchXhsOoKCAZ+RNqpfo++/ZGeS5
- kOXstJBk7yb4X2XGPNIzNWg+Yw+5MkbVobj20nCx44rNyzDI9QpNVPQ27n5ewrzeoI6g
- rrJHUeFEySPLwVnWut3vW6j5uPyjFwsL0QZFjXDTJ/FxoYZeoiJ+3whh3QfXQWE6phGv
- yK4A==
+ bh=RBbDuAKWNq6vxsxytQTB6e1y0xj2M0FbXNW45x08AoE=;
+ b=XZj6Bo/Aqpadm5TNYaVrFa1akEpCfOxsihvTZsOMfe9pBxQThpTjsbzUUUILFHUCOk
+ PmbPS561k6LXo2SFiPQcOAV2MCECIw0/yO1phTXj4+ZOKweMfpKzasLRCP6yNvB1dfre
+ g6ubQ6K9vqblQ1cClX954myhO1+egVq6LBUHBQvxL9L3D7wCBeWz3mI1tmFZf9ZgAdGV
+ XmUrW4TS+iwSIxGZGfpclPM0D3GkiPoqKx2EXVSyqLjuyRxRIIpFIwxosiwclnMSSOxy
+ bKHC4YObibEzAU6sa/4eQyMr+aVyPvrJo0VvLoqrxi85Dr/2EXltH0fBB5mrVsV6Aq2k
+ VmGw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+43JLB25uGgCKOYjUPu3JgUatcNnWc37nFOcriQ9axDS+GqwNgeZcE6mfdKFF4R2+Anxlifft0lg==@nongnu.org
-X-Gm-Message-State: AOJu0YyTXQlqHP9efApkStEa2OguwUqlZhhK6b9yf7u2gBg19W2XWy0I
- oGj0fbdoe0o/Kf+qhTnTFWNXuLsptGrFw0aAHlT5T1Id6/tfNDcflTnQYZOxM0xGECOdcTUbsSg
- pHn7zpHyb/3L14+HImZTPU8Eu0MA59z9m/gOx7PxT92x7yWu6fOvBZg==
-X-Gm-Gg: AeBDiesrwmSIIwozweFV6aX+lnoR0FEe4QKO8uK6XHfYGlWvfGHm02ktcl9ErH5VyOy
- AZ1ubVGnuym83f9nWlW9DsExMzdPYlYsnUMOmsHB7fcw6lWYOtydnww850BI6b9EgvgWiuxOO+I
- gY5RDC4KSTTEg91CrES2/qCZ08uOEhd6RIQ+0RVQKReOcKxhuZ8cWET320bufANaNk4+1j2Idj0
- uXbQo/dY0GZWviryi81EW/dUoQ7HcV8GvT9JYL4WhOYscq/5T41auMKCDnZ4Ht5GT0Yc2QjHGEA
- v2Luq4Qz/h5anPkr/oiZ93tzav3acPjT0TgafDmsmYXHCyPdji19nTa5/39l5eR2JGyHc//Lsl7
- o5duY3/jl310VyF5iGnphWVgySGLQuyuwJCTGJR0re2sNPYTzq/Itcgg=
+ AFNElJ+T+n9sJIOu3ydkiPQKo5X8jGSH1wwdiXL+eTo1hivxZbNQviLXhFLLuovK4FjguGehfm32L/7d9Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyLafSwypD0WykKVi4mrM9OKubbYiei4Tvq6R/CiolTlqmXhZhD
+ IxrqrM11tZ0mgMVPdMhCttTpCgtNwlV24NX8qRz9O4Sg/994YIk3fQuhBOY2567E2wSS0p/GoSb
+ FtaEiCnetzcomDYoVHebeLCKZ0IKnmVJDSJz2T1SXmrwjqlvBqWuBCg==
+X-Gm-Gg: AeBDieu3qmfWt2t3g6SAkO0sn2UzM4FgC3nRUoRXIo7n/MO5hHzbfLWKEvWaUMC7xEf
+ qcpZylyLs7CotHlLWF7yH5SsunIU+n2LUOiqemSQsdjCrV8f8LgeoA8jYPwKCOJq4OvQh8ciofe
+ Y62lrZfUjF9zwNe2Px9qrRM/eQ+MFw2CbhqPti3Pghutd6c3RvBKr4fLPfbgMsO1RlDXc0eVgcl
+ GWCB3+VD0+qA/eFpBqxUTzmyQu4RL0MpKglX+a8be5ngHAfhS8Y/ZQfy/SCQbH2Sr6uLXzoo/Hk
+ RR9Vm6r+GnKn1E2sC9C+94XnlIYnz67brGhwX0WlEfhxA+RbcOWGjhLCkJYJrwBY3uK1msQn9ln
+ PDLFATp+d1GVaivMRvmrLmL5nxImp1UKd90sfjQCbrpvWlESvV/Nmd6zy170jIDG4HaHkVA==
 X-Received: by 2002:a05:600c:4512:b0:488:ac01:72b6 with SMTP id
- 5b1f17b1804b1-48e51f3a538mr142165845e9.21.1778172694657; 
- Thu, 07 May 2026 09:51:34 -0700 (PDT)
+ 5b1f17b1804b1-48e51f3a538mr142812095e9.21.1778173434140; 
+ Thu, 07 May 2026 10:03:54 -0700 (PDT)
 X-Received: by 2002:a05:600c:4512:b0:488:ac01:72b6 with SMTP id
- 5b1f17b1804b1-48e51f3a538mr142164735e9.21.1778172693510; 
- Thu, 07 May 2026 09:51:33 -0700 (PDT)
+ 5b1f17b1804b1-48e51f3a538mr142811115e9.21.1778173433075; 
+ Thu, 07 May 2026 10:03:53 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e5390f854sm131236655e9.14.2026.05.07.09.51.31
+ ffacd0b85a97d-45412820303sm479472f8f.4.2026.05.07.10.03.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 May 2026 09:51:32 -0700 (PDT)
-Message-ID: <667dd47e-bb1a-47d7-bd19-194efade286a@redhat.com>
-Date: Thu, 7 May 2026 18:51:31 +0200
+ Thu, 07 May 2026 10:03:52 -0700 (PDT)
+Message-ID: <4fefb00e-44f3-42ca-8835-38e6bc731cb2@redhat.com>
+Date: Thu, 7 May 2026 19:03:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v4 25/31] hw/arm/tegra241-cmdqv: Add reset handler
@@ -92,7 +92,7 @@ References: <20260415105552.622421-1-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20260415105552.622421-26-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: RluWsrX5D405JP3mJssouIHAzrjnNIh8p83ecRuoBpk_1778172695
+X-Mimecast-MFC-PROC-ID: 5Y0gQIbR0rKZz_wU7wHLIJGLrzkGs-r8Btx4t-AZpC0_1778173434
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -147,6 +147,12 @@ On 4/15/26 12:55 PM, Shameer Kolothum wrote:
 >  FIELD(CONFIG, CONS_DRAM_EN, 20, 1)
 >  
 > +#define V_CONFIG_RESET 0x00020403
+please add a comment to explain what 
+
+0x00020403 value means
+
+Eric
+
 > +
 >  REG32(PARAM, 0x4)
 >  FIELD(PARAM, CMDQV_VER, 0, 4)
@@ -173,11 +179,8 @@ On 4/15/26 12:55 PM, Shameer Kolothum wrote:
 > +
 > +    cmdqv->config = V_CONFIG_RESET;
 > +    cmdqv->param = FIELD_DP32(0, PARAM, CMDQV_VER, CMDQV_VER);
-hw/core/registerfields.h:#define FIELD_DP32(storage, reg, field, val)
-what does this 0?
 > +    cmdqv->param = FIELD_DP32(cmdqv->param, PARAM, CMDQV_NUM_CMDQ_LOG2,
 > +                              CMDQV_NUM_CMDQ_LOG2);
-I was a bit puzzled by the FIELD name being the value name but well.
 > +    cmdqv->param = FIELD_DP32(cmdqv->param, PARAM, CMDQV_NUM_SID_PER_VI_LOG2,
 > +                              CMDQV_NUM_SID_PER_VI_LOG2);
 > +    trace_tegra241_cmdqv_init_regs(cmdqv->param);
@@ -189,11 +192,6 @@ I was a bit puzzled by the FIELD name being the value name but well.
 > +    }
 > +    cmdqv->cmdq_err_map[2] = 0;
 > +    cmdqv->cmdq_err_map[3] = 0;
-the split looks pretty strange, ie. loop of 2 + continue with individual
-setting. why don't you do the init of 
-
-cmdqv->cmdq_err_map in the x4 loop below
-
 > +    cmdqv->vintf_config = 0;
 > +    cmdqv->vintf_status = 0;
 > +    for (i = 0; i < 4; i++) {
@@ -241,8 +239,5 @@ cmdqv->cmdq_err_map in the x4 loop below
 >  
 >  # strongarm.c
 >  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
-Thanks
-
-Eric
 
 

@@ -4,106 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A20BCCD3436
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 May 2026 13:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E395FCD3436
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 May 2026 14:35:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLLgK-0006gd-D2; Fri, 08 May 2026 09:55:56 -0400
+	id 1wLMIY-0007tp-6b; Fri, 08 May 2026 10:35:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wLLgF-0006fa-ES
- for qemu-arm@nongnu.org; Fri, 08 May 2026 09:55:51 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wLLgB-0004LB-5X
- for qemu-arm@nongnu.org; Fri, 08 May 2026 09:55:49 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-488ba840146so18202295e9.1
- for <qemu-arm@nongnu.org>; Fri, 08 May 2026 06:55:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778248545; x=1778853345; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RkYiSiXEG8VtBXFSrZkOuCGdCZfTZPWsV+8t5J2QHn8=;
- b=k6c1mSR24nhMUQrF/kLGGvtfBgEiUyeXfBYQITQocMkuN7uNNxI5fmDzz+WD6Oo/1p
- xfiZGe0SL+ad7fqzuOFczIZcROXplIovmaWKk64pvJGYdGac59lnJS1j6m15cytuwqwY
- UmfYMhjHJFrYu1H0LLG77I8/AibnJX2plz6L5biK8za+qUcXWZzj708UTVDtSfJkK+qE
- hrN4VCFq38vhKwfeIwhsrkqpGuQXVidl4AJZCVnqgdrOYstLU6PpO2C2U9ct6xmhIl6c
- fMmmZpZAqMagbFATtcnWYbrqVAemUDQT7uLzNLDby9HtcqqxUX2WL+2+SsnQ+PbsWrlj
- YurA==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wLMIW-0007qk-6i
+ for qemu-arm@nongnu.org; Fri, 08 May 2026 10:35:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wLMIU-0006pB-Aw
+ for qemu-arm@nongnu.org; Fri, 08 May 2026 10:35:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778250921;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=b9aWkoTsVfU36kTen9GYLthEt7/fGAO30KXkkbX41rw=;
+ b=MsKGXfrqJWSoGZ1/oG8PN8KO8PgWxhcoBPnfk9VW/thhmBU34bbR2lBz/uCM1gvliQ6bxm
+ TVgZwoLzVWJzdRw/37Kl52VjuO8ysNJVnZRTAwdqFl5ZvoqDB36WOA00sc9gF92oJKdb30
+ 2uGJOOP4be0bIauSRsttwSv2z7ZLlmM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-711-JOHrrJMPPl2xYTPMpyw6aw-1; Fri, 08 May 2026 10:35:15 -0400
+X-MC-Unique: JOHrrJMPPl2xYTPMpyw6aw-1
+X-Mimecast-MFC-AGG-ID: JOHrrJMPPl2xYTPMpyw6aw_1778250914
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48d046fac74so11956035e9.3
+ for <qemu-arm@nongnu.org>; Fri, 08 May 2026 07:35:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778248545; x=1778853345;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RkYiSiXEG8VtBXFSrZkOuCGdCZfTZPWsV+8t5J2QHn8=;
- b=do/3/lELL5DK7+bxxYW6jt9e79wRHDcp5t98faLzQeBWzseBb/ZSkVczhV3IHO/R2Y
- iLCiDsdhwEgqh88vDItg8OH18vxsmS85iTO3XTbAyigLx/QJUv/QjPJq04EKJSuJV74T
- txal4PpwI1XFOyigK2c+2xGIzktuBXF7Cm9tUcyup7adP8DYievnDqT9ugHRmRWBmrbl
- ejC5B9sqLWQMu4n+yEc/m6AsFmd5QVz6OvwLZFGk2OiKDlEwtXHZMpBk5wnJ4rpBh8YD
- hoK3GXIAd8hbH+6bfKNHlYzZgTWNpD5pgwbLZhxNehMSOdBmwGqbKDt7ONKFP0NF1CS9
- rGjw==
+ d=1e100.net; s=20251104; t=1778250914; x=1778855714;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=b9aWkoTsVfU36kTen9GYLthEt7/fGAO30KXkkbX41rw=;
+ b=gHz+hGbYUXIvOpivzdgPNvcZO/a5Xwqb04Bu/qkzZxBdxR1L3omSdobuiI0gk/REwN
+ QA0EEwrIYi8sL7u4sFQeZetywDJAQVGpyKg73ikVLcPgbIlKoOHEU4DcAnsy7RFkk34N
+ AnVbIGiuumjkQTS9GrUwafc5TAfNgfbNX4UV9YLBuEPBS86BWJQYg/CNgjLT7Bhb3u4u
+ eLdOB9BXbwl8a7pUip//qjmtF1zfprca08+aP2F5ZS+/bv3G+aN88kqQiOV9rbf8Lbso
+ avKHyEmg6I4d9RbqJXjMRgiNxIz7UvTxR+XdldtLIHgwKSo7+fxxdQn052bD1w89Q4vj
+ 2aJg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9DooMbTS0p7FbfebBp91gqp4Zq2EL6i2gCX4F/LJCMs/RyEKLpoPJkilGJCwkn4Db01GVZrZxHeg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2SBNmAnHS7N/JVZXCWy7UIurcktv8z84L9GP7dZL7zJ+yjl6x
- wT/IWWVT/byRZ39ozLhdNyTynKJHVacLZlqhgKFhtbAgrfwfY20v4gYGiS1Mqbt6GE8=
-X-Gm-Gg: AeBDies1RDKthUZgqPIYpMlYAn4TgsdwSvoiQntRSAuIFYbY0Yg79K+ZPqHeISwQhTG
- VaSUl68UMvjv2Z8U7LdgLQA0PY8VZvxddI7sSFP69ku58MNfS4YhzRvp4c4v9ICxGAYL8061SFT
- AGgQx2/MpnMRpILhAcS86BUSaeNBkMsOusLco+Ai5kznC7jlu18QFLpb7Lqfch0e7QsZESla5r7
- RMNBj3Hv0GJmx5b4RDE8zvHNo6K8in+D7mGZcOQuP3Fz7RF2X5SihN/FQTyRnVXdhcK/LqNeYsw
- JG+gxGlsaFmHXNBincXuKkDfI+GufZVeODF5vwQVTLLug3Ur/+J6/FocgdQRnDZyCc9dGTuDAKx
- p6HQGLv5wOi3RZKRTIk/CJ0JcEXDIxcF2BqENs/ccG2HhZYfjwHkQ39QET0UQlSKCR4xt/o45zQ
- cUMsOYiq3S7y5t/6cxo+NbOBRhLjfnTQU8aQ==
-X-Received: by 2002:a05:600c:628e:b0:48e:60a3:220a with SMTP id
- 5b1f17b1804b1-48e60a32224mr103071145e9.0.1778248545084; 
- Fri, 08 May 2026 06:55:45 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e68ed0f29sm66993145e9.2.2026.05.08.06.55.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 May 2026 06:55:44 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 55A965F877;
- Fri, 08 May 2026 14:55:43 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Santiago MC <santimonserr@gmail.com>
-Cc: Kohei Tokunaga <ktokunaga.mail@gmail.com>,  qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Thomas Huth
- <thuth@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?=
- Lureau <marcandre.lureau@redhat.com>,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
- WANG Xuerui <git@xen0n.name>,  Aurelien Jarno <aurelien@aurel32.net>,
- Huacai Chen <chenhuacai@kernel.org>,  Jiaxun Yang
- <jiaxun.yang@flygoat.com>,  Aleksandar Rikalo <arikalo@gmail.com>,  Palmer
- Dabbelt <palmer@dabbelt.com>,  Alistair Francis
- <Alistair.Francis@wdc.com>,  Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org,  qemu-riscv@nongnu.org,  Stefan Hajnoczi
- <stefanha@redhat.com>,  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: Re: [PATCH v4 01/33] tcg/wasm64: Add tcg-target.h
-In-Reply-To: <CABE6Nn2h0z+LPOsh++mqEqMcyA3=LJNUq1WfpU7Fu5PQFEY0Mg@mail.gmail.com>
- (Santiago MC's message of "Fri, 8 May 2026 12:41:28 +0200")
-References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
- <1061c734ff63e09ea0544ebecf09abfd6fc25b11.1769407033.git.ktokunaga.mail@gmail.com>
- <CABE6Nn2h0z+LPOsh++mqEqMcyA3=LJNUq1WfpU7Fu5PQFEY0Mg@mail.gmail.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Fri, 08 May 2026 14:55:43 +0100
-Message-ID: <87y0huj99c.fsf@draig.linaro.org>
+ AFNElJ9xQal7ytss+F+ce6GJeoonxsW2TER9Yv+ru2ZWKwZaTWA2alRTcizdmRd1ZgSLQ+hPWjWOJJMthg==@nongnu.org
+X-Gm-Message-State: AOJu0YyxuV7fKstVz0NmJqdJFKdhpgxLu8O2SoZbj422AMY/Q5RQAfjm
+ 6vIyW/F4xcImW+MnhWyf+XtZz1Lag0kqDVOvH2NBRGNzgVbRov6VYrXPAZ3EL6ljUkKZcm8SIvb
+ 8meTqT6XvsZQNALndc5rdB63PBlszX84wgVysHyNG9OMnhAJwCjIVkg==
+X-Gm-Gg: AeBDiet9To4ydeEXgQ21cwzZXIr2vFC/zUBIRYLpPwImwUuo93QsNhRfTwZfahXyHDR
+ Pr9GrCkfy28/Bra4F9stNq+lYbV9CeEDzM/GQ0JgKbQsRh2SI2MC7Cp/D2Czx2Y4bHuNhlvTnSz
+ Rap8yELUEIRcwvnHe7nG79uVk2xIVAvYz8nd5ZqQxz0/NrBUrEcLzY3d9+Y4J6KtN3N6yqSImCc
+ GRzArcbmKOQq/HcJKbVaOO1PTkI6Ef+TWJ3kvCbo1alkply0K+vztfjspvGMcQIqbHS3N4WM5es
+ oNrJBYcafQeKcvxeABciqcvlQJOWT0Aja70a+YhLiItf5FhTy0VmzkwnS7Djrg7jupDzrQeN+S0
+ I3b7p8xpNzwGk1VyOTBwAAy6FSPBypWv6GhexRtczfU88cDYF/YM9SvYVFFMhl77gTduOFw==
+X-Received: by 2002:a05:600c:64c5:b0:488:b241:2c5f with SMTP id
+ 5b1f17b1804b1-48e51f4584fmr204665205e9.26.1778250913697; 
+ Fri, 08 May 2026 07:35:13 -0700 (PDT)
+X-Received: by 2002:a05:600c:64c5:b0:488:b241:2c5f with SMTP id
+ 5b1f17b1804b1-48e51f4584fmr204664655e9.26.1778250913220; 
+ Fri, 08 May 2026 07:35:13 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48e6d8d69a0sm1269585e9.2.2026.05.08.07.35.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 May 2026 07:35:12 -0700 (PDT)
+Message-ID: <c5fa0f1c-70b5-4ba3-b141-f903f3e93c56@redhat.com>
+Date: Fri, 8 May 2026 16:35:10 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 22/31] hw/arm/tegra241-cmdqv: Map VINTF page0 into
+ guest MMIO space
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
+ Matt Ochs <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>,
+ Jason Gunthorpe <jgg@nvidia.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "phrdina@redhat.com"
+ <phrdina@redhat.com>
+References: <20260415105552.622421-1-skolothumtho@nvidia.com>
+ <20260415105552.622421-23-skolothumtho@nvidia.com>
+ <4918654a-7c79-474b-9ede-5418460a5a76@redhat.com>
+ <CH3PR12MB75486E45A43C6CD5A203D03BAB3F2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <73730082-679d-4cee-afee-659684e420c2@redhat.com>
+ <CH3PR12MB75488E10D03A85E9F0C0D622AB3D2@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB75488E10D03A85E9F0C0D622AB3D2@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2hVUeT0qsPLOGAJ7ge5QKzeFB-UHC8WuyuxjNzW8Gv8_1778250914
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.44,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,131 +129,122 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Santiago MC <santimonserr@gmail.com> writes:
 
-> Did this get merged somewhere?
 
-No - it needs review before it can be merged.
+On 5/8/26 11:03 AM, Shameer Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 07 May 2026 17:24
+>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
+>> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
+>> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
+>> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
+>> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>;
+>> phrdina@redhat.com
+>> Subject: Re: [PATCH v4 22/31] hw/arm/tegra241-cmdqv: Map VINTF page0
+>> into guest MMIO space
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> On 5/6/26 4:24 PM, Shameer Kolothum Thodi wrote:
+>>> Hi Eric,
+>>>
+>>>> -----Original Message-----
+>>>> From: Eric Auger <eric.auger@redhat.com>
+>>>> Sent: 06 May 2026 13:45
+>>>> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>>>> arm@nongnu.org; qemu-devel@nongnu.org
+>>>> Cc: peter.maydell@linaro.org; clg@redhat.com; alex@shazbot.org; Nicolin
+>>>> Chen <nicolinc@nvidia.com>; Nathan Chen <nathanc@nvidia.com>; Matt
+>>>> Ochs <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason
+>> Gunthorpe
+>>>> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
+>>>> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>;
+>>>> phrdina@redhat.com
+>>>> Subject: Re: [PATCH v4 22/31] hw/arm/tegra241-cmdqv: Map VINTF page0
+>>>> into guest MMIO space
+>>>>
+>>>> External email: Use caution opening links or attachments
+>>>>
+>>>>
+>>>> Hi Shameer,
+>>>>
+>>>> On 4/15/26 12:55 PM, Shameer Kolothum wrote:
+>>>>> From: Nicolin Chen <nicolinc@nvidia.com>
+>>>>>
+>>>>> Once a VCMDQ is allocated, map the mmap'd vintf_page0 region directly
+>>>>> into the guest-visible MMIO space at offset 0x30000 as a RAM-backed
+>>>>> MemoryRegion. This eliminates QEMU trapping for hot-path CONS/PROD
+>>>>> index updates.
+>>>>>
+>>>>> After this patch, the two VCMDQ apertures use different access paths:
+>>>>> the direct aperture (0x10000) remains QEMU-trapped and writes via
+>>>>> vintf_ptr, while the VI aperture (0x30000) is a direct guest RAM
+>>>>> mapping. Both paths write to the same underlying vintf_page0 memory,
+>>>>> so no synchronisation between the apertures is needed.
+>>>> I fail to understand when the previous trapped path using ptr in
+>>>> tegra241_cmdqv_read/write_vcmdq gets used versus that path. Is it
+>>>> eventually used?
+>>> The spec does not prevent a guest from using the 0x10000 path for
+>> allocated
+>>> VCMDQs, so the trap path remains valid and QEMU forwards those accesses
+>> to
+>>> the mmap'd vintf_page0 via vintf_ptr.
+>>>
+>>> We cannot map 0x10000 directly to the guest as RAM because the kernel
+>>> mmap only backs VCMDQs actually allocated via HW_QUEUE ioctl. If the
+>>> guest allocates only 1 of 2 VCMDQs, exposing the full direct aperture page0
+>>> as RAM would give the guest access to unallocated VCMDQ slots. Hence, it
+>>> remains trapped and QEMU only fwds to vintf page0 for allocated queues.
+>> Actually my question rather was why don't we use a subregion_overlap for
+>> global vcmdq page0, mapping to vintf_page0 once cmdqv->vintf_page0 is
+>> set, just as we do for VINTF0 page0? I understand
+>> tegra241_cmdqv_read/write_vcmdq would return the same content anyway.
+> This is my understanding why we cannot map direct VCMDQ aperture(0x10000)
+> to vintf_page0:
+>
+>  - Unallocated VCMDQs accessed via vintf_page0 get "access dropped with no
+>     Fault/Interrupt" behaviour per spec((p.172)
+>
+>  - Mapping the direct VCMDQ aperture (0x10000) to vintf_page0 would replicate
+>    this behaviour for unallocated VCMDQ accesses via the direct aperture too.
+>
+>  - However, per spec p.176, software can program VCMDQs via the direct
+>    VCMDQ aperture without going through the VINTF. Mapping vintf_page0
+>    at 0x10000 violates this. 
+>
+>   - Partial allocation case (VCMDQ0 allocated, VCMDQ1 not): the trap correctly
+>     serves VCMDQ1 accesses from QEMU cache while forwarding VCMDQ0 accesses
+>     to vintf_page0. A direct RAM mapping cannot make this distinction.
 
->
-> El lun, 26 ene 2026 a la(s) 8:03=E2=80=AFa.m., Kohei Tokunaga (ktokunaga.=
-mail@gmail.com) escribi=C3=B3:
->
->  Since WebAssembly instructions vary in size and can include single-byte
->  instructions, TCG_TARGET_INSN_UNIT_SIZE is set to 1.
->
->  Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
->  ---
->   MAINTAINERS             |  5 ++++
->   tcg/wasm64/tcg-target.h | 61 +++++++++++++++++++++++++++++++++++++++++
->   2 files changed, 66 insertions(+)
->   create mode 100644 tcg/wasm64/tcg-target.h
->
->  V4:
->  - Removed tcg-target-reg-bits.h as the 32bit support has been removed and
->    TCG_TARGET_REG_BITS is no longer needed.
->
->  diff --git a/MAINTAINERS b/MAINTAINERS
->  index c1e586c58f..470b15eeb7 100644
->  --- a/MAINTAINERS
->  +++ b/MAINTAINERS
->  @@ -4107,6 +4107,11 @@ F: tcg/tci/
->   F: tcg/tci.c
->   F: disas/tci.c
->
->  +WebAssembly TCG target
->  +M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
->  +S: Maintained
->  +F: tcg/wasm64/
->  +
->   Block drivers
->   -------------
->   VMDK
->  diff --git a/tcg/wasm64/tcg-target.h b/tcg/wasm64/tcg-target.h
->  new file mode 100644
->  index 0000000000..f00761d19f
->  --- /dev/null
->  +++ b/tcg/wasm64/tcg-target.h
->  @@ -0,0 +1,61 @@
->  +/* SPDX-License-Identifier: MIT */
->  +/*
->  + * Tiny Code Generator for QEMU
->  + *
->  + * Based on tci/tcg-target.h
->  + *
->  + * Copyright (c) 2009, 2011 Stefan Weil
->  + *
->  + * Permission is hereby granted, free of charge, to any person obtainin=
-g a copy
->  + * of this software and associated documentation files (the "Software")=
-, to deal
->  + * in the Software without restriction, including without limitation th=
-e rights
->  + * to use, copy, modify, merge, publish, distribute, sublicense, and/or=
- sell
->  + * copies of the Software, and to permit persons to whom the Software is
->  + * furnished to do so, subject to the following conditions:
->  + *
->  + * The above copyright notice and this permission notice shall be inclu=
-ded in
->  + * all copies or substantial portions of the Software.
->  + *
->  + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPR=
-ESS OR
->  + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABIL=
-ITY,
->  + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SH=
-ALL
->  + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR=
- OTHER
->  + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARIS=
-ING FROM,
->  + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALIN=
-GS IN
->  + * THE SOFTWARE.
->  + */
->  +
->  +#ifndef TCG_TARGET_H
->  +#define TCG_TARGET_H
->  +
->  +#define TCG_TARGET_INSN_UNIT_SIZE 1
->  +#define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
->  +
->  +/* Number of registers available. */
->  +#define TCG_TARGET_NB_REGS 16
->  +
->  +/* List of registers which are used by TCG. */
->  +typedef enum {
->  +    TCG_REG_R0 =3D 0,
->  +    TCG_REG_R1,
->  +    TCG_REG_R2,
->  +    TCG_REG_R3,
->  +    TCG_REG_R4,
->  +    TCG_REG_R5,
->  +    TCG_REG_R6,
->  +    TCG_REG_R7,
->  +    TCG_REG_R8,
->  +    TCG_REG_R9,
->  +    TCG_REG_R10,
->  +    TCG_REG_R11,
->  +    TCG_REG_R12,
->  +    TCG_REG_R13,
->  +    TCG_REG_R14,
->  +    TCG_REG_R15,
->  +
->  +    TCG_REG_TMP =3D TCG_REG_R13,
->  +    TCG_AREG0 =3D TCG_REG_R14,
->  +    TCG_REG_CALL_STACK =3D TCG_REG_R15,
->  +} TCGReg;
->  +
->  +#endif /* TCG_TARGET_H */
->  --=20
->  2.43.0
+I agree that normally we shouldn't use VINTF view for the global view. 
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+When you say "the trap correctly serves VCMDQ1 accesses from QEMU cache
+while forwarding VCMDQ0 accesses to vintf_page0", the filtering is done by
+tegra241_cmdqv_vintf_ptr. Whatever the queue being enabled,
+cmdqv->vintf_page0 is allocated. So only the test on cmdqv->vcmdq[index]
+does the filtering in that case, correct?
+
+If so I now share your pov
+
+Eric
+>
+>> Besides, I would recommend that all over the code, page0 and page1 are
+>> clearly differentiated in terms of accessors and comments and we use the
+>> same terminology through the code for global vcmdq and vintf vcmdqs.
+> Sure. I will address this.
+>
+> Thanks,
+> Shameer
+>
+
 

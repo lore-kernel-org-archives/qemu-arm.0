@@ -4,117 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00753CD3445
-	for <qemu-arm@archiver.kernel.org>; Fri,  8 May 2026 20:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208C2CD37B2
+	for <qemu-arm@archiver.kernel.org>; Fri,  8 May 2026 20:43:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLS23-0002Nj-3B; Fri, 08 May 2026 16:42:47 -0400
+	id 1wLS22-0002Ml-BZ; Fri, 08 May 2026 16:42:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wLQ5Q-0006h5-KZ; Fri, 08 May 2026 14:38:08 -0400
+ id 1wLQ5Y-0006jj-Nt; Fri, 08 May 2026 14:38:16 -0400
 Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
  ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wLQ5P-0002b2-4Q; Fri, 08 May 2026 14:38:08 -0400
+ id 1wLQ5T-0002b2-Kj; Fri, 08 May 2026 14:38:14 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=eT0FLiYrrnD8zhY2JlBq7gdL/O7SGz2cEQdyK1GniyjalQrxrOOZtsaBfR19//6eUU3Cw8eHtTcQwrQ+zD6/5nwjXNtRwMnnMUDqJQnW8tub5FSRHIzfaCT63DR6uSv/4vxskd+J58i8D0DT6dg/k8topfu+sIDwny9AYBCFRFOD3LYaV/zwZ/Gt5qCp2LSzXcn8yGZT+29eOn+5srUoGC6g3klj7ABqaZPZQ8IyFtFDW6Prllru8e9ceY4VLey8ZFOdhHtAGNpWQx7kJz6IkmuBUyMr6AYVB5HNhUTbR6RA3+aqBdgSq2Ih6AboQPOPgeL6cfIDShx7lkBIMn4o7Q==
+ b=eqZq4FdQOzqMOFoVmld+5x5yfQmATNoFIcvPuIxQDb0RXN6mL1oZnnuc5YSZ829B6CxqzQ14xVCPMmk4Eu5lZTQfXhsZ4uduVQwrnzACZIxCsEt+uKBz+nXZjkKYOI2TBHXGYgfDPVa6wBSlIXaMdSmX+XQOEpX7v0wiQ1f4hGBWvMzBij6lWqPyAjDFVLb8YSTO2i6c4Ie9/0uwOxRB0sxMeey5G/E5v5Bunqyd+41CyVGsUnRgMYR/8vhgahRqW/60w+QUCHAKQEPjFDSanK02l2h+mS+i/a8zSvmu1oXYRve3BXipYDoGVW+WNuNbUTAzncSka43FpbgJgpAbjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cj57KYpH+U+ZkBnHApaa/HFz/IbHpgaR9J4GKr3XX24=;
- b=FOQXXh8F1xVQwOONNfqCvPbge9lCxQZCIoiGoYYESfzBXyqtN6ckMgr7nXf0XvLBWwWHk4YoKU2x0CLzrkwtH+jDDJ8285Yctijbg216Yf3W2c9rjdsonV43ipVsgFBq6ekiHG/DoRnrI0JUukixTMaW+QcsUshY44xXr3G88wLfNPXj/rdD1LpqLDS6osaE7j/dI8+ipDoGmdcJUEmzFWfwh3eEnfOp7WDITC0pG2U9uN6AxPx9+RyPfAnA5t7IxPyzh5KrYKOnIcTd/9J9bvtZ1fuozYGsWkppg5XILf1Ig24+BXEE4r6Y6xmH6F/E3g3BvkQvvpcmDxP5J68FXQ==
+ bh=3BmZzqD5g0RjTtepjL+pk+Y22ANUW4q9Gg58vJr4ggA=;
+ b=qF8FC3Y6navVIjEIw4rtZwYWnV1znESVZtk9hjzlreE9IBW1LT3QuhWw9SYoMarxXa+Frm8jUOUNkc0GEETKuPVa6GViBMeqpLzK7kAifrieFV7E6qba8sFnKMZ6YIS8hV9d22lRRMKaHSBYjUXhaKsNN1R1xiTiFvVbFYbo4coAdUyFomDz5CHzJfwopZLDgGdPXRxPjHRRKlmRinHvDCyu9wyw9vcq5t9LYXvh0ifruq6/UscZU0jEfKzVui1g+cncdBRRAxgNvYvjrNSSkRV8swNgL5y0a6XNUHMRE+XZQiy0WNvzpcwRC/9GI4gxCxGnyeZV1sS4lzoLepKUOQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cj57KYpH+U+ZkBnHApaa/HFz/IbHpgaR9J4GKr3XX24=;
- b=pxEOEInbgSZ+oQ4NwA6FzN1NUNEqfQ9gc2a7FI5qklh4aVSZEEcvGRicQSAfhCCwInKZ04cYHXYyZuZJ3rvqauAhLRabPia5caFc2p9o168H570nwMAEAWg3ZS9zn7oDZ19XUT6dWhhnunxdPSkECy3CHpf69+FIlyMWqiqYL3yTRr3Um1R9lb9/qVG+4EGu41o5jfP64qidPBDrEFUWBZxlaQYQXl5ODoWLLhEtxEhI5x1HvhaNb4uivm95jsYz0g/J5Jf2+qj7wxwpQQKLZmp1hk6d5rGmL4phSZPnIVVaP0rs6V9GyX5zjJqjbIy5m4ZafdJNE7tzIvfObuRX9A==
+ bh=3BmZzqD5g0RjTtepjL+pk+Y22ANUW4q9Gg58vJr4ggA=;
+ b=mQtH6eN9/dvf3QPdvkbqREk9lxTSD1Cv6Jk8HssoyOkiNNV7Cvxq3n+BFCz91lmEVkoSiKayLRlUQY0VDexDaDicFybNFxF5XsM83Gkvn8y0IqW8WFHfEU0dMHYOnF1NBwI23BIeNK6jyGDwBvrirGZngOQeIHmlTwESVPeejC39sVnWJr1PQNLv9Hvuy2ioWTerrKN/EeQjmLIc5tVm1rKvZIiRBe+weAbzo74y41gyX0ypgrhXkjv3pLEp921I3YFRot1BLDggjyeGs6xNIuw1H+eGx7OZBYiQ2G3cLIgu80LzKhBRabeT4TN+MgwTwrdtC0wuaj2hDeDvwDJgzA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from BY5PR12MB4179.namprd12.prod.outlook.com (2603:10b6:a03:211::8)
  by DM4PR12MB6205.namprd12.prod.outlook.com (2603:10b6:8:a8::19) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Fri, 8 May
- 2026 18:37:53 +0000
+ 2026 18:37:59 +0000
 Received: from BY5PR12MB4179.namprd12.prod.outlook.com
  ([fe80::2036:e8b:9b3:f325]) by BY5PR12MB4179.namprd12.prod.outlook.com
  ([fe80::2036:e8b:9b3:f325%4]) with mapi id 15.20.9891.019; Fri, 8 May 2026
- 18:37:53 +0000
+ 18:37:58 +0000
 From: Tushar Dave <tdave@nvidia.com>
 To: qemu-devel@nongnu.org
 Cc: alwilliamson@nvidia.com, jgg@nvidia.com, skolothumtho@nvidia.com,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
  marcel.apfelbaum@gmail.com, devel@edk2.groups.io
-Subject: [RFC PATCH 6/8] hw/pci: finalize bridge prefetch windows after BAR
- allocation
-Date: Fri,  8 May 2026 13:37:15 -0500
-Message-Id: <20260508183717.193630-7-tdave@nvidia.com>
+Subject: [RFC PATCH 8/8] hw/arm/virt: add pci-pre-enum machine property
+Date: Fri,  8 May 2026 13:37:17 -0500
+Message-Id: <20260508183717.193630-9-tdave@nvidia.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260508183717.193630-1-tdave@nvidia.com>
 References: <20260508183717.193630-1-tdave@nvidia.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: BN9PR03CA0939.namprd03.prod.outlook.com
- (2603:10b6:408:108::14) To BY5PR12MB4179.namprd12.prod.outlook.com
+X-ClientProxiedBy: MN0PR04CA0024.namprd04.prod.outlook.com
+ (2603:10b6:208:52d::14) To BY5PR12MB4179.namprd12.prod.outlook.com
  (2603:10b6:a03:211::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: BY5PR12MB4179:EE_|DM4PR12MB6205:EE_
-X-MS-Office365-Filtering-Correlation-Id: 929ce5f3-2add-4657-8224-08dead30ea64
+X-MS-Office365-Filtering-Correlation-Id: 10276576-64e8-4e5f-0acc-08dead30ed16
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|22082099003|18002099003|56012099003; 
-X-Microsoft-Antispam-Message-Info: h50peUehNe2TI53gNJnMaKv9Gb8kzNXGt30xVoVnLLinerphPhHRRSegMh56AYjdYOY/Kg9y9OeFao+cvcx2GqTeDQPSBkpQTkgDtmjIViuA+8/OzHMmT5kQObL7vk/mTUSaMMLI+PmcH2k31PPGoCGp5zDpCU8t2pz614feTF5oV79hKn5HyUgeSqoU+pHTUsnGSkHzlIh8hQO16aCgg2HaMIhkwtCBnsXQvfUEo9BCfOkYkz7ZClIJxKLaQXsfbcn+ffLtuFWEdC50Rb5ecGTZO0yLgPcoP+0u34Ye3liX2I0/ed7V2FOFSWcrU7fPh2yJZN++htn97fjQ+hmxXsoqiI0gbTI3Zz7u7oZYHl2Paih3CEwXFh/u/jutd46Zl1hZ/GEc/sw0F0Ri8ZhXCF2O5qygL058ZeFm0MAlbmfJbSJZTmhvRCYmgTNri4wJ5XtM0mwUMqHuCRbut5OGH7MBUJmrffG9m1NejN/ldezVKU3zk4qrs2gPxksrrrvg4kkVk/d/azOghxZzbpmFSz2+Ot1A7bm9PizRAA+22ZBIc1c46ZqnhagWK279oaOd5XVxFlQdrKfZEukmfjG1dlGjd6M1x2q8OE/6HOBJmXBQ4Z4LHVFuB92/aYMQyfpdj0CIeBuxkYWFDnpZg1UWHg5femBMAZ6KrUi5oN1KsU5EiqwoYhmc+xqIhrqjxvJd
+ ARA:13230040|366016|1800799024|376014|22082099003|18002099003|56012099003|3023799003;
+X-Microsoft-Antispam-Message-Info: 1mbtS108Ad2Im9h41cs0MDVzTO84ku6mE+4M6jA03+Mzsl6vlSx5kDHb4QRMltoKeMCLDQcsf7pjtL/YUfSgcJ+x7hK9dcJSf6zmvQXsAq8nqUmeQ9nQPAEA1KFtG4wwKOPUwwz7P//biab/4qPGowJHmoc/19Oc06AqyyH5udUZiUvBs9G4/XVplddY8YxWPYrc3PnUUi9rtpvCtvDX+pSyDkD59g0T8ZdYV33LSk1/gmITQj2Z9bhLku1ww4qCbdmAEsAiLO7KZBKYfp1XhPZ+jnwUstB17yOJ21VCBGsZ7xlN31GtMIS9zlSQVvpTeywCYiq9HL/PfiHskl22/Sy0FfxVPYOA8RtdMV+6YuR45x37ldUzMUpKcjlXymTVyIl7YlO6aI93As9XtM9Miq1sKk4fay5ZkvCbLF018g6aKTAk9n3diYAsLkXQKqgxDipMcKE+C9o5WraIKr3jeVo8E6pzzJpOqZ5O/7FpnrNmvIAqYlpMTa8m6jweS+WjI19Q0vEpblOOk6N0OxUa5/PalxdJ17jdUp5jbXa3SBvx5GO4ieei6bRge71RjrIwowzYV+li0P66IFwFhKWdrq5ea2peWB1nY75hRpoQfmMnjGr55MTmT2ZN/WxJNiWb0iWpPopfcZjF8v90pgkip3T9LO4XAp97NjhiclS18+xq2M7A2QzydKXRVfOmmiZI
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR12MB4179.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(22082099003)(18002099003)(56012099003);
+ SFS:(13230040)(366016)(1800799024)(376014)(22082099003)(18002099003)(56012099003)(3023799003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?xHXZRtrlz4OQ0TfPI23YJrURC4EVzZMqQuErw/qWe0pa5NcwH8NGM44SozCl?=
- =?us-ascii?Q?q394xXWYiFTrjD8tqU6X7eXOT5xgTuMp1uIygOXwjJPN9aHs/f0VraH7eR+r?=
- =?us-ascii?Q?bYdueMwYYn/EoCf7kMHKrmpEELvkNFegYU5XTS5TCJf/bqoRu+KchWlvIryl?=
- =?us-ascii?Q?A4GBsXN+w3OsoxZn74uT6ky06uUTNuEd7LJ1GiFmAaVatwb8rDZweLT/A3ux?=
- =?us-ascii?Q?LGQj2Ih6kRBVlOORgzOhUsrYHw0BIMX6SdkiXSxZkbigdFG+/keTZrkxnFez?=
- =?us-ascii?Q?rK/njA3QsoQJd+rj8HJoAoo7TIiVJKOy/RpzCIX9+1obBQlAexR3syOaVu0N?=
- =?us-ascii?Q?k+j9l4n0Hf1+E9QeS6f3OOgcGDwGm73kI3X3LNXWua9nWO6YNiv3wCBUysD1?=
- =?us-ascii?Q?pUlIl2AhHL4835mjesUmRIIAcRC+gMpwIUWzdmTxOmghXwqSa3TbNQ9e4lhW?=
- =?us-ascii?Q?SzSIEcrzqFfSsbZSVAtEbcEsPSJP4qE5O9GDMa1UJUekaXvgTE1oF/38cpFC?=
- =?us-ascii?Q?hGT5MhLMyJJ8YUa9xCLGmhWrOwuD/RF6U+NAsXpUMAxHo/sHbjUku21ZNAx0?=
- =?us-ascii?Q?cFxEH6fCAzT3RYlOLWs9EXM7gxxFNjinC9/ziLjuzS6EqOhK7sFlZIh+8bEm?=
- =?us-ascii?Q?Xw6pNCpXr/z5NCY1H3jc+tY1ad8WeNV6wKheRnWFRaY92MLDqww+FM6Dg/8z?=
- =?us-ascii?Q?z0unudIZ6u1UAIAjvkjD680qqqL2jDHJG7Px1OlQXGkYI3mM8k/VztAq47Sk?=
- =?us-ascii?Q?QVZU/uSJjBMtjkynTmDD0eWKN8bhyO38eG6UvD4y5sE8WY4S1mGJalduCmLg?=
- =?us-ascii?Q?KiUTJjn63QxjxD3FKLIovoAzZuh63illGaNmMq0QIqq3Ci340TrNvkfMtUJ4?=
- =?us-ascii?Q?0m+TaVIYjjaRlzgvEddjCna0EFdiWG9qsXFODhM+LfNcarQJejrTimq2WwiP?=
- =?us-ascii?Q?RH3tpKVFea4FbYfCaS2ROddFApYRrp5M4BwC4oI3a4kZyRilY2qpDFE0b/Qu?=
- =?us-ascii?Q?WsUJ0+dH9+//Ep1zgKbTBK3ZKKev9yphtzMV0WUrhefK/imzU+PfcIH+dOa6?=
- =?us-ascii?Q?q+c7M+rPww8Jj1iYuqO72OxwQJCHT4YgaF7ZLCk4B1v3IW83WYR+4BY5B83C?=
- =?us-ascii?Q?o2+Z7aUg/TTnN/+Hur8z+AmjzoIrvihi+ctvEgWOiajwNCMhUObmtSGYh2Oz?=
- =?us-ascii?Q?mMgeLapNzmOZ3rbfmvmAYOdB2dYlF8MAeMw3xDnOjzDX5687JQeQwOYt/NOa?=
- =?us-ascii?Q?MQTqjunDDyzfVsUKSoyRnjvlwmGWmmoahRDEVEVSO2d0sbEN8GgyT1MkQ95D?=
- =?us-ascii?Q?PcLkrSobQB1o33h2wMaCpF2l3rsGXNp0WRPR+blAMKmYoKO6n5SwNHVLR3TQ?=
- =?us-ascii?Q?Oz953Bpp5WydCBcoSclc0B3K9j0s+6cgrqn4j1Lgv84krdagZ3TMC28J56N6?=
- =?us-ascii?Q?uB49MigSt4RDSPzlpuiLQyEnLxnCVcqSBYaxC8HJQCZgybkUhWdcFUh+X4M0?=
- =?us-ascii?Q?J9m8eW6EoMPiLesyQRxxrF1I6ugJLoYtdtrw+8BSjmwtyBGx1lscKCYQ/8mI?=
- =?us-ascii?Q?/Fz3EGM30LRYxIEgT/reKo3je28Ae2JeHVo+4FBaT8Rw1rvU2EwDsxyVDX48?=
- =?us-ascii?Q?J20XJjYkvO0o5bSUMLTfQRs4QZRqjk2YGv76E1KRuVFxci3RLkqbLIBJdT/X?=
- =?us-ascii?Q?/xdG3CtGxBvYudKf4UfE1BjQtyIducVpkdImoP35oamPWChH75KwyIFv61d1?=
- =?us-ascii?Q?Yx96MY3+YA=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?wUdyKEgwyAvbMyuX2X1tp+MnZi0ajBKONOrzBRgrRSBgOSmWdn0LBaYHwYsx?=
+ =?us-ascii?Q?9MGteLvsqk0iOAf5skDadkfDtEXWF55FPKT3CtDsW5QRQaqZdUpT581ox+Zw?=
+ =?us-ascii?Q?xgLGdYK79rdafv/sLdnZUclV0GoHdfSGvdR1rMoEJpAtJ1C4qUPa52mqqvV1?=
+ =?us-ascii?Q?jofMQxUoQa0+JGdq24y5CPOSDk+RaY4EDXwt6Ipq482p5zgvELckA2dzou6N?=
+ =?us-ascii?Q?QAPLH73KzrUCh3mNdUYh3dRVps9O0fPRZcjLQ4Jr597jefzRg++iMVqvHXwM?=
+ =?us-ascii?Q?BAlvyLLY1l/JxqlGfn33qPpkcgr9bMcs0c3KAjArMjOtNDpAsU6+b/tdm2cM?=
+ =?us-ascii?Q?TXXGNsIUyYC8TMSYIa3WHJYjoKBG4FFNNWjnxcFU3GuNxVYycLjeExSbARAT?=
+ =?us-ascii?Q?BYAF089Z7k40sKk4E3Le4z7QjVYFYXjyuOhdslbXr85K7qLBy+ftbTS2BIGK?=
+ =?us-ascii?Q?9bq1vn5T8qQHA3zyaPbKSiGEHEwah/y/GYHaE+KXpYZYesrrvlbCUBPHP6i5?=
+ =?us-ascii?Q?jimzLrlisVqnwysXR/PZOr+E/R+wvN4Kt4cAYn6+I247pK1I2717krXv4oQG?=
+ =?us-ascii?Q?YCNfG4ttdoFMRXdMNwsDPPVyaMlWkwDfGUpUAmXhOjPoHWCscreQ48FmOSEU?=
+ =?us-ascii?Q?rNGKMTc1zwQalvUF41FVp+tSIGPwn7MYuATVS3uG7xNZTtlYorzyeV6dC5oa?=
+ =?us-ascii?Q?xTLJDyshBqzNZekkQ/5oPSB5SIPLDOTzC+38mKKLh/x/iVZHvyLslrfqSt3U?=
+ =?us-ascii?Q?JuMJxeW4veQxxAhxzcKGiUza3WrGcmtD6SPsqPpitM71oLsB5BU4mwgkhCyY?=
+ =?us-ascii?Q?o1ERBhv87i/b1+YhNfjQ5WwFVER46pc2008Dbv+UfpAWWD2+zqc0FmzckMK+?=
+ =?us-ascii?Q?MnFjeUTNj0icSVM2ijZtrKYaH7zTNy+1MPCdkcchNs0BPSMslR1oUmtmfsUc?=
+ =?us-ascii?Q?nkr0lxNlFDARoflnHASyhq/3hioqMwwtn4amOlMuiuQmvZ8BSXsxbjYc386f?=
+ =?us-ascii?Q?Mk+l4YuaOr8u/ixvgphDKvpiloLl2nfFBvLsfxD4bzB8tigkpxOYslUNvTj+?=
+ =?us-ascii?Q?sCWwCFME1nAnnr3FxNOGLyqV6XTATHpkQwK85bIFB4mpec0xdadhcEl3iySK?=
+ =?us-ascii?Q?8IETGbOlOce8Ph5IqYTjGGaVdoap3JTuQnWVmNLZ3Yr1HZxlmytrB98Gjo+w?=
+ =?us-ascii?Q?r7Va3x33mE2Sr+j7kqVOWVP0FkimzHIWLehVWfG4sqvAuNFWiyzHElOWaeOI?=
+ =?us-ascii?Q?/53TtFsO4zKTMrUDx2VVQULJhkwzOK9jtCQiq1bGuznMc7m8sUoGTvAIJz0O?=
+ =?us-ascii?Q?H2th12m9JhL8bXAQnJgebhNspWAVX5fmZc1hzlu/5E9sUU7LqObmSOXWO7+9?=
+ =?us-ascii?Q?6z3UZ5wb4MxY7m3HdSh+WVQ193oYpviQ/JaYzeB5jLnK0uNUR0ULYXdiYtG3?=
+ =?us-ascii?Q?sf0thVwSAVkEnqqbF2RQRZx+mxYS+2me+nc+Hze90uQvrndHkdwKqZ2IAOms?=
+ =?us-ascii?Q?nNEQCoZOtGo4stX6ZAlAxCSfXa46rsWHnoazATDyH4kejo/LGn49/fPsSqwA?=
+ =?us-ascii?Q?wODxJQSMDzUd1YHKjz4SK1Bew6RdKYjOjuxrimJUIbETxpicWIR1t8uZalFk?=
+ =?us-ascii?Q?PlHbnH1Vi31DwiXrF6j+LXuu6w/71Q0ZFlkaQwSigJHG5E1mb/n+2GYkCRlS?=
+ =?us-ascii?Q?sUB+DpyOAiUBSq8yeY/F6oF8M1xFgeyxqLMuR6FlGEb7IfZVpdmi+L68B2Mu?=
+ =?us-ascii?Q?CPMWKeJTJA=3D=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 929ce5f3-2add-4657-8224-08dead30ea64
+X-MS-Exchange-CrossTenant-Network-Message-Id: 10276576-64e8-4e5f-0acc-08dead30ed16
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB4179.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2026 18:37:53.7701 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2026 18:37:58.2351 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qNznszFYscpEfsMg7ZUlRvbzYEJvYkhdvTvvEifwQTvU0KbwX9Em9W+admZWEsJQcienTFTQKfnDkHcVMYMq3w==
+X-MS-Exchange-CrossTenant-UserPrincipalName: x79vPuThMU3c+/VYYEvq+Z3Xa++cVmi9yOjltDZ+Sj5Puyr/MlKfi7bpr6su/fn1YfN0dpxZTnrqLMTzztYuxg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6205
 Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
  envelope-from=tdave@nvidia.com;
@@ -142,127 +141,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a final reconciliation pass to update bridge prefetch windows
-after all BARs have been assigned across all phases.
+Add a "pci-pre-enum" option for the virt machine. When enabled, QEMU
+performs PCI enumeration and programs BARs before handing control to
+firmware.
 
-This ensures bridge windows accurately reflect final BAR placement
-across all buses.
+This is intended for use with the "fixed-bars" property, where the
+user assigns fixed BAR addresses and expects firmware to preserve the
+configuration.
 
-SR-IOV virtual functions are not included when sizing bridge prefetch
-apertures and may require additional work.
+pci-pre-enum is exposed as a separate machine property rather than
+being implied by the presence of fixed-bars. This allows QEMU's PCI
+enumeration path to be exercised independently (for example, to
+verify that QEMU produces the same device enumeration as EDK2)
+without requiring any device to specify fixed BARs.
+
+When enabled, a "pci-enum-done" property is added to the PCI node in
+the device tree to indicate to firmware (e.g. EDK2) that PCI
+enumeration has already been performed.
+
+When disabled (default), behavior is unchanged.
 
 Signed-off-by: Tushar Dave <tdave@nvidia.com>
 ---
- hw/pci/pci-resource.c | 89 +++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 89 insertions(+)
+ hw/arm/virt.c         | 70 +++++++++++++++++++++++++++++++++++++++++--
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 68 insertions(+), 3 deletions(-)
 
-diff --git a/hw/pci/pci-resource.c b/hw/pci/pci-resource.c
-index e2d2adc7de..01db59c4af 100644
---- a/hw/pci/pci-resource.c
-+++ b/hw/pci/pci-resource.c
-@@ -190,6 +190,76 @@ static void pci_update_prefetch_window(PCIBus *bus, uint64_t base, uint64_t limi
-                                  4);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 55f41c7e46..7d41bfc457 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -52,6 +52,7 @@
+ #include "system/whpx.h"
+ #include "system/qtest.h"
+ #include "system/system.h"
++#include "system/reset.h"
+ #include "hw/core/loader.h"
+ #include "qapi/error.h"
+ #include "qemu/bitops.h"
+@@ -94,6 +95,8 @@
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
++#include "hw/pci/pci-resource.h"
++#include "hw/pci/pci-enumerate.h"
+ 
+ static GlobalProperty arm_virt_compat_defaults[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+@@ -1697,6 +1700,10 @@ static void create_pcie(VirtMachineState *vms)
+     qemu_fdt_setprop_cell(ms->fdt, nodename, "#interrupt-cells", 1);
+     create_pcie_irq_map(ms, vms->gic_phandle, irq, nodename);
+ 
++    if (vms->pci_pre_enum) {
++        qemu_fdt_setprop_cell(ms->fdt, nodename, "pci-enum-done", 1);
++    }
++
+     if (vms->iommu) {
+         vms->iommu_phandle = qemu_fdt_alloc_phandle(ms->fdt);
+ 
+@@ -1832,6 +1839,20 @@ static void virt_build_smbios(VirtMachineState *vms)
+     }
  }
  
-+static void pci_get_bridge_window(PCIBus *bus, void *opaque)
++static void virt_pci_apply_fix_bar_after_reset(void *opaque)
 +{
-+    PCIDevice *bridge = pci_bridge_get_device(bus);
-+    PciAllocCfg *pci_res = (PciAllocCfg *)opaque;
++    VirtMachineState *vms = opaque;
++    PciFixedBarMmioParams mmio = {
++      .mmio32_base = vms->memmap[VIRT_PCIE_MMIO].base,
++      .mmio32_size = vms->memmap[VIRT_PCIE_MMIO].size,
++      .mmio64_base = vms->memmap[VIRT_HIGH_PCIE_MMIO].base,
++      .mmio64_size = vms->memmap[VIRT_HIGH_PCIE_MMIO].size,
++    };
 +
-+    if (!bridge) {
-+        pci_res->wbase = pci_res->mmio32_base;
-+        pci_res->wlimit = pci_res->mmio32_base + pci_res->mmio32_size - 1;
-+        pci_res->wbase64 = pci_res->mmio64_base;
-+        pci_res->wlimit64 = pci_res->mmio64_base + pci_res->mmio64_size - 1;
-+    } else {
-+        pci_res->wbase = pci_bridge_get_base(bridge, PCI_BASE_ADDRESS_MEM_TYPE_32);
-+        pci_res->wlimit = pci_bridge_get_limit(bridge, PCI_BASE_ADDRESS_MEM_TYPE_32);
-+        pci_res->wbase64 = pci_bridge_get_base(bridge, PCI_BASE_ADDRESS_MEM_PREFETCH);
-+        pci_res->wlimit64 = pci_bridge_get_limit(bridge, PCI_BASE_ADDRESS_MEM_PREFETCH);
-+    }
++    pci_enumerate_bus(vms->bus);
++    pci_fixed_bar_allocator(vms->bus, &mmio);
 +}
 +
-+static void pci_collect_mmio64_window(PCIBus *bus, PCIDevice *dev, void *opaque)
-+{
-+    PciAllocCfg *pci_res = (PciAllocCfg *)opaque;
-+    uint64_t rbase, rlimit;
-+    uint32_t idx;
-+
-+    for (idx = 0; idx < PCI_ROM_SLOT; idx++) {
-+        PCIIORegion *res = &dev->io_regions[idx];
-+
-+        if (!res->size) {
-+            continue;
-+        }
-+        rbase = res->addr;
-+        rlimit = res->addr + res->size - 1;
-+        /* Entire BAR must lie in the window; do not count partial overlap. */
-+        if (rbase < pci_res->wbase64 || rlimit > pci_res->wlimit64) {
-+            continue;
-+        }
-+        pci_res->rbase = MIN(pci_res->rbase, rbase);
-+        pci_res->rlimit = MAX(pci_res->rlimit, rlimit);
-+    }
-+
-+    if (IS_PCI_BRIDGE(dev)) {
-+        rbase = pci_bridge_get_base(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-+        rlimit = pci_bridge_get_limit(dev, PCI_BASE_ADDRESS_MEM_PREFETCH);
-+
-+        if ((rbase < pci_res->wbase64) ||
-+            (rbase > pci_res->wlimit64) ||
-+            (rlimit < pci_res->wbase64) ||
-+            (rlimit > pci_res->wlimit64)) {
-+            return;
-+        }
-+
-+        pci_res->rbase = MIN(pci_res->rbase, rbase);
-+        pci_res->rlimit = MAX(pci_res->rlimit, rlimit);
-+    }
-+}
-+
-+static void pci_bus_update_prefetch_window(PCIBus *bus, void *opaque)
-+{
-+    PciAllocCfg *pci_res = (PciAllocCfg *)opaque;
-+    pci_res->rbase = ~0;
-+    pci_res->rlimit = 0;
-+
-+    assert(pci_bridge_get_device(bus));
-+    pci_for_each_device_under_bus(bus, pci_collect_mmio64_window, pci_res);
-+
-+    if (pci_res->rlimit > pci_res->rbase) {
-+        pci_update_prefetch_window(bus, pci_res->rbase, pci_res->rlimit);
-+    }
-+}
-+
- static inline bool is_64bit_pref_bar(PCIIORegion *r)
+ static
+ void virt_machine_done(Notifier *notifier, void *data)
  {
-     if (!r->size) {
-@@ -1004,6 +1074,25 @@ void pci_fixed_bar_allocator(PCIBus *root, const PciFixedBarMmioParams *mmio)
-     /* Phase 3: allocate BARs for buses that have no fixed-BAR devices */
-     pci_for_each_bus(bus, pci_bus_phase3_allocate_no_fixed_bars, &pctx);
+@@ -1864,11 +1885,30 @@ void virt_machine_done(Notifier *notifier, void *data)
+     if (arm_load_dtb(info->dtb_start, info, info->dtb_limit, as, ms, cpu) < 0) {
+         exit(1);
+     }
+-
+-    pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
+-                                       &error_abort);
++    /*
++     * In pci-pre-enum mode, EDK2 does not perform PCI enumeration or
++     * resource assignment (PcdPciDisableBusEnumeration = TRUE). All root
++     * bridges are marked ResourceAssigned, meaning the topology and
++     * MMIO/MMIO64 apertures provided by QEMU are treated as final.
++     *
++     * In this mode, each root bridge is consumed as an independent resource
++     * domain. Exposing additional root bridges (e.g. PXB extra roots) that
++     * share identical MMIO/MMIO64 apertures creates duplicate resource domains
++     * with overlapping address spaces, which is invalid in this mode.
++     *
++     * Therefore, extra root bridges are not exposed in pre-enumeration mode.
++     */
++    if (!vms->pci_pre_enum) {
++        pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
++                                           &error_abort);
++    }
  
-+    memset(pci_res, 0, sizeof(PciAllocCfg));
-+    pci_resource_init_from_mmio(pci_res, mmio);
+     virt_acpi_setup(vms);
 +
-+    /* TODO: 32-bit MMIO/ROM adjustment */
-+    /* TODO: PIO assignment */
-+    /* TODO: 64-bit non-prefetchable */
-+
-+    /* Align bridge prefetch window with assigned BAR ranges */
-+    pci_get_bridge_window(bus, pci_res);
-+
-+    QLIST_FOREACH(bus, &bus->child, sibling) {
-+        pci_res->bus = bus;
-+        /* Use the full mmio64 window */
-+        pci_res->wbase64 = pci_res->mmio64_base;
-+        pci_res->wlimit64 = pci_res->mmio64_base + pci_res->mmio64_size - 1;
-+
-+        pci_for_each_bus(bus, pci_bus_update_prefetch_window, pci_res);
++    if (vms->pci_pre_enum) {
++        qemu_register_reset(virt_pci_apply_fix_bar_after_reset, vms);
 +    }
 +
-     /* Cleanup */
-     g_hash_table_destroy(pctx.had_fixed);
-     fixed_claim_regions_reset();
+     virt_build_smbios(vms);
+ }
+ 
+@@ -2988,6 +3028,20 @@ static void virt_set_mte(Object *obj, bool value, Error **errp)
+     vms->mte = value;
+ }
+ 
++static bool virt_get_pci_pre_enum(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->pci_pre_enum;
++}
++
++static void virt_set_pci_pre_enum(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->pci_pre_enum = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -3726,6 +3780,13 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "in ACPI table header."
+                                           "The string may be up to 8 bytes in size");
+ 
++    object_class_property_add_bool(oc, "pci-pre-enum",
++                                   virt_get_pci_pre_enum,
++                                   virt_set_pci_pre_enum);
++    object_class_property_set_description(oc, "pci-pre-enum",
++                                          "Set on/off to enable/disable PCI enumeration and resource assignment"
++                                          " in QEMU. When enabled, QEMU programs BARs (including fixed-bars"
++                                          " addresses) before handing control to firmware.");
+ }
+ 
+ static void virt_instance_init(Object *obj)
+@@ -3768,6 +3829,9 @@ static void virt_instance_init(Object *obj)
+     /* MTE is disabled by default.  */
+     vms->mte = false;
+ 
++    /* PCI pre-enumeration disabled by default */
++    vms->pci_pre_enum = false;
++
+     /* Supply kaslr-seed and rng-seed by default */
+     vms->dtb_randomness = true;
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 410df857c7..0786f4a4fc 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -187,6 +187,7 @@ struct VirtMachineState {
+     MemoryRegion *sysmem;
+     MemoryRegion *secure_sysmem;
+     bool pci_preserve_config;
++    bool pci_pre_enum;
+     hwaddr override_pcie_mmio_base;
+     hwaddr override_pcie_mmio_size;
+ };
 -- 
 2.34.1
 

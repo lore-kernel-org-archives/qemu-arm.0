@@ -4,118 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F6DCD342F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB1FCD3445
 	for <qemu-arm@archiver.kernel.org>; Fri,  8 May 2026 20:43:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLS22-0002NS-SG; Fri, 08 May 2026 16:42:46 -0400
+	id 1wLS23-0002Ny-AF; Fri, 08 May 2026 16:42:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wLQ5E-0006eZ-AE; Fri, 08 May 2026 14:37:56 -0400
+ id 1wLQSu-0006qP-Nz; Fri, 08 May 2026 15:02:25 -0400
 Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
  ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wLQ5C-0002Yg-KO; Fri, 08 May 2026 14:37:56 -0400
+ id 1wLQSs-00017e-Jl; Fri, 08 May 2026 15:02:24 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xxKkGqmuuIs63zltx+H8jpj467ES8n7KOtXzXPIwM02/dd1mEI1MBXBT8s+WezDQnHMMyNuqu562eBqBXVqNOMW5jJhhPB7rn4QS6pQU4bMuW0kRp674LkGgD0YQxjj1gSGThHorCXr3pSoZo5oyUoBf7NTSm8CgYuxUcEt/qINEivYsL2ZEXgXD9lHmhwEfczFn560/O8hKlN89SFhwDuJdKET/fS+Kyp7djfYOLyaD5jnW2+C77P9qCmEXz3VCSzUFNARwDXurCrJn8gQowPUJfqWeXppPWD/J/rdMStrwRjOT/Lay+WYC1H7lDfKB+UnUON9VOGe/v6QlXvo5mw==
+ b=pEuyTkOmW9yhX91E/Pd5i48OJh3lKRCM9oh0xZdKoomNcqQhX3Jt2JMlfGtx+5IqCSCj0HEyVcCPO/B6JQtAelIK0nkgco+W4XVnP64YIUpin1CFKyWX2iBefrl2F5U3bhtOxk5S2a6fMasOzaCCwvYW6LuJ2Du082k/FmwnmTy/vwqfovmrSDIpgPa+NcwqHJkuhRFvClGY94Dhdcbw/zzZcd86aE3IdSCVmIPX6+4iFsX6BMz/lbMKuw98jLAChtTxNGw1NCii5yNrhGv/UxRa0gAmlC1nQO9g5iCN+4yYb4nqE8IDAobm7GZIwLek/j2VnKzHhZMHGT3/PPK5sQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wzeKAO+rXcuLDHgcb16pHML/zJ2nWk54OrooHG4hgVA=;
- b=Or9KA3WQ6FMsrXolc7Pj/AxJkQMbBeUESYatqwg4KYveKDz66cuLOTWgo9+YBFa47KRPW9vhOR2nH9tGiONCk46zfCBNijXG3qpU8gqJpX04hJzF5bDDWBncAXmC9iat4uQGtWV/Cb17f8tX+4ZT7CFiVu9cvyAmQXe58WJRvL9CHvywXwMvhFCUJredf9sDJf4lFXwkctI6+Th1C2MNITOKMVCKChsfyRC7cF6WOszt8Kf9N4Hjhc5RS7gaKLWV8bPDhrI0GKztaOTwRJHz7TlugQDiId/B5yy1hCWY4InbdIIUsfBDeUcDlFqHMsydsZrOLoZfQ/+O4w/itPaIRg==
+ bh=Eey7wHf/KRuPLqhlbZakh3b8sxTzhOabA8w1jyIY0FY=;
+ b=fpOeP8a3RcDImz0PBcS9V+RtZC/sZYpCug9WLobK/Q6CNTHDWCxxU9ggsMdN00dsmKOBIvHjaVbvA8wq8F77mwpcbsQ76OgKTmCWPXWuXR/12KVxFZQQSr9qTQrBhzFVjIqWPkp/VBBueoPct5Zx2/ix0OuWUPXf+F2OfHBmXwsQLqxVHLstb8TMhCt3uPPqmoL2FW7umrXM2OdEh/4fWbAPl8haVOsZmD32LwZJUKyocspTM8FqwAO6xuwTXjfDsX8iDoAZiyyvofcEpsb/ailFcFn/yLnwL5moGOjL7KSWl5uU12AyXwJyvecfPFWVO9NiS5jX7xDVxag8utp6gg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wzeKAO+rXcuLDHgcb16pHML/zJ2nWk54OrooHG4hgVA=;
- b=gszBdSVTpMaxoxdwTiSq6obN3yvUfnJgL0y5yfBQa2TLLjxpGyFZjnOzStycrK6u1WQY33atEqA1WCtGJKA19PJDXWRuZmfokJh+wMZq/KgDPMUGUNH8SJlgMoh5aXKNfEGzEwvtehNyuZHx88ohFHdAvscnL6MPYiSr2ijYanykyOuL4bk6gFoPj8f5kSePtKDeq12PayE64jmd6B7k37DxwOt3erxq/y2JUAWCIdRvgvQpa7892e/Z65F1A4KTD3w4eTjaVAV4jRy6WjtBXA+6MHDdm7uFFrjhD3JMOUZ6eCfE1WUlV46CayNd65gA/K0u2TDqIdUNZW1rn/zMsA==
+ bh=Eey7wHf/KRuPLqhlbZakh3b8sxTzhOabA8w1jyIY0FY=;
+ b=clMnrMwlVtOWFPg8CAnubYEUqP1sxWuUDhjaNeRiT77q8srQHKklmoEP/Z66RW3k7GQ4sm0zvhjd92+PUArZk6S4kYqCUaT5KIPqH4Yluc2wZlHBtzulqpJ9VD5hgcw7GCNrJK49/kKz5iofPBydFTgriX2pIe0RJCz5kZld6PZyM9vtBWhPdAq7cStclZ9+5C7svfFbgWkcrTELJhmaeCzkwI0yyBf/F6hiENqPOScr2pjgsbYeLOrM7NbUDg0e88LZyM3hIldHlivAmC8gB3KDW+4/dP3Fgnuy7vdq4oYCoaaMA2NjyGRH3g1HIOu7EEzQvsehENgz5uH6XZu/8w==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
 Received: from BY5PR12MB4179.namprd12.prod.outlook.com (2603:10b6:a03:211::8)
- by CH3PR12MB8482.namprd12.prod.outlook.com (2603:10b6:610:15b::8)
+ by IA1PR12MB7519.namprd12.prod.outlook.com (2603:10b6:208:418::22)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.20; Fri, 8 May
- 2026 18:37:44 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.19; Fri, 8 May
+ 2026 19:02:16 +0000
 Received: from BY5PR12MB4179.namprd12.prod.outlook.com
  ([fe80::2036:e8b:9b3:f325]) by BY5PR12MB4179.namprd12.prod.outlook.com
  ([fe80::2036:e8b:9b3:f325%4]) with mapi id 15.20.9891.019; Fri, 8 May 2026
- 18:37:44 +0000
+ 19:02:15 +0000
 From: Tushar Dave <tdave@nvidia.com>
-To: qemu-devel@nongnu.org
-Cc: alwilliamson@nvidia.com, jgg@nvidia.com, skolothumtho@nvidia.com,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- marcel.apfelbaum@gmail.com, devel@edk2.groups.io
-Subject: [RFC PATCH 1/8] hw/pci: add fixed-bars property to allow fixed BAR
- addresses
-Date: Fri,  8 May 2026 13:37:10 -0500
-Message-Id: <20260508183717.193630-2-tdave@nvidia.com>
+To: devel@edk2.groups.io
+Cc: qemu-devel@nongnu.org, alwilliamson@nvidia.com, jgg@nvidia.com,
+ skolothumtho@nvidia.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, marcel.apfelbaum@gmail.com
+Subject: [PATCH 1/1] OvmfPkg/Fdt: Honor pci-enum-done for pre-enumerated PCI
+Date: Fri,  8 May 2026 14:01:50 -0500
+Message-Id: <20260508190150.203200-1-tdave@nvidia.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260508183717.193630-1-tdave@nvidia.com>
-References: <20260508183717.193630-1-tdave@nvidia.com>
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain
-X-ClientProxiedBy: MN0PR04CA0029.namprd04.prod.outlook.com
- (2603:10b6:208:52d::34) To BY5PR12MB4179.namprd12.prod.outlook.com
+X-ClientProxiedBy: BLAPR03CA0145.namprd03.prod.outlook.com
+ (2603:10b6:208:32e::30) To BY5PR12MB4179.namprd12.prod.outlook.com
  (2603:10b6:a03:211::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BY5PR12MB4179:EE_|CH3PR12MB8482:EE_
-X-MS-Office365-Filtering-Correlation-Id: 367e1f7f-9c98-4194-e3b4-08dead30e349
+X-MS-TrafficTypeDiagnostic: BY5PR12MB4179:EE_|IA1PR12MB7519:EE_
+X-MS-Office365-Filtering-Correlation-Id: b0ebc7f4-b270-4220-ffe0-08dead3451ec
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|18002099003|56012099003|22082099003; 
-X-Microsoft-Antispam-Message-Info: 0pb1G/CMYMLLce3OgjPr7PH4yHgqHV2y3ELixEVaSgl1O22hP0GXcz/ESaWd8bEMxRg5P2vjABtOKcMYabBgatwmiUij+IRPLB8G/8/L578h/S5CcNdXjCPFug1NlF1OuE3DKp6n3m0Rm3X5ijiX/CDxaUsDhUyv01ek7YoDzJjdOoeOmGdW8lZItkucuiIUdikGnBoqad5qDQs5m8UwJ/+BckEGviJ0IDZSl0PAfgHw+8YY+iSAqn6pT3iV6tLjGHOjg4w/JwTKxOSLDYXN1NxVZTe76WX3VWgOfXA1NNgTtpFZxqolrdZqFQDaiK4yQhK/KdT1f2mrn0qFShG3gZ4MsQ3Xfvzo/RcRpj4Jy3vCSZRpsd4qvp23GZZSTg9VCetjC6upCvpsROq6VJ1sPOR6yfJJ4hgIdS/sEnX69kSeeITU0eVh04HxSsWuRz8gLIG+bF1vOKTgP8cy0HFMtP8dK3ptezFpklw3R69X8khdPKuQR3ybmrSxjSOJ/Y66+qB8VW4g1FHz3eJJ31tlt5zTHJdH5j1np0vSFQKS607p76RH2ZmsWk6W4YQXUVVOAB9vNyqTmgUjufUxNkhn8XyGHnXGtLlvnCrgAJe6mmP/tIbPSMaj97w1FqLhTInMckyCypmdNtce30fYTFP2C4U6SI9H6+q8JuWFzSTLgo2dTK3xMYx/rBkjwbL6vzg9
+ ARA:13230040|366016|376014|1800799024|56012099003|3023799003|18002099003; 
+X-Microsoft-Antispam-Message-Info: 6ydn6UhfTf+mWXeiUF9F8CaF3mmCSM9zaenRzP9rQvOF/1+U0WIs1cSx6DRNVQXMJg4NxfmFp5KiG+KZyXYYx1M+/Kt0Vhzl3tA8wnWFhnZjzkndQc3BwvD69KeRKmIjcrzpPOCCTrikRioxC9xQOYR3FFPYD/fcwMTndJtr+X97T3s3Pf3mX081zTKscGMpQuqd55gKWrl1CoQQdRyfOhaHBtuDdCf85Fzpqg+NWTN0tWkglodPx9MpqM42kr2a9AYlixdCS5+n0BbfEjgf79pIA83Dk3RkfS1iCFsFUTCUW7WQf3O9waOhWjrHV3Wd+HBIexC5aIbqSNCyAxSufBMkcXwWVEgVar0k+qml8aFyxt7tlMLKzN4Z+Bxx3EMNLSEzQwlVKapGrsC8YCfdyVNZ3WhbfjkKofHPR7gygmrDkt9VZ33sL03A63qpv2+Y3bP3xllKWOMzZycwKqdkJpFWk+SFuSE5K07KsgnQEo9BSpXCaovjemGEU5FPbZYoIZmqfRmblkKpJ7c2MFju/l7OpScRjh6Y+QvZasgbZ6qe26V1T0wd18Bjv3yoqnoxxbgi1Bm0Vn2J6J3Y1pDjrPDn+EecQhtn7VEXmhAX89uLS95G9zoh3LzGec9MZgV0mUF+VoLuchbKkjSODo/wFG3+BXFJSlTJ3XaLToWw1ggBGgRTOrrE3hNjoiME4XiswQML0R3Voxmi8NTr2BWJzQ==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BY5PR12MB4179.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(18002099003)(56012099003)(22082099003);
+ SFS:(13230040)(366016)(376014)(1800799024)(56012099003)(3023799003)(18002099003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Ry/S1oklQYrbDDv5qYtbAmtRiRwsF6EF+zzV4UVIr9/+N56+bWSM9hphlYp0?=
- =?us-ascii?Q?bHj8MkEEdXbQG117itWj42LRxBBA9k0zzL95ZmfeIaL/8Y33qbK3tcHieCBM?=
- =?us-ascii?Q?1ja4H74ftJBp52QETZ18RafcS2NzcB+EslQvOAv62Xxlt+DsmTlfNBsw0HVj?=
- =?us-ascii?Q?Sn4jhEsfdODQ0IcQvd/Or6CtkSmk5+if7g8kE+a3lt6vRnGjCHEiq/MeKTWj?=
- =?us-ascii?Q?HfkfSgy349HwqQmyRn+ST8WSKpey/3GXD5c38kOiOmmQ/Pahze/gEqJGbEHB?=
- =?us-ascii?Q?NmIC22M4NgZmRaUwj5fS+ahHtDst9TJqzPdBUVakAsmwYh1FaZWZUS9eEpBx?=
- =?us-ascii?Q?s+4egGspg0BsO7a7ykp47wV03O9lDsRtYr40+wqV0rAsNuEYPMFA10L+IOpj?=
- =?us-ascii?Q?h662b/OC/ipXYEj0DEuIydHd9JbFVrckDYOnT1C842vioXcx0PVcBgECvvG1?=
- =?us-ascii?Q?F+Q0Z7bJQ19Q5bPHdNOQKiyTGh2ixaa16WjYcsuZ4FGznRgxQZkn3AGNTVrV?=
- =?us-ascii?Q?4nHVO02/q0M10+VYaaoj8chjhkOQLjqsCqjESrpeic0TG7UA8pGr5nJYRkHh?=
- =?us-ascii?Q?O38vb9hVv7scmWM7RgSIir26ReQhNOyDElu0IlZI7m8kNDsI25E2lAYqaeL7?=
- =?us-ascii?Q?bWIjjiLj1bJeptZBwH8c6guzXrKYyh2WR7LeSJuGODwGyFr0KQmFdoP4yAl9?=
- =?us-ascii?Q?pM28ifTnKVeA5zmuAvrx2X6hkJnD93t7YNhjOO3gVDoEI1wpuAx6l7n7G0fg?=
- =?us-ascii?Q?U3Am8cOcWj3eJIG0Ro3X0bk68E0YQiTsjzQKpVINO7ES92ADueo9KTQjDeuq?=
- =?us-ascii?Q?YRNLxBMNxcXckGbqllObz4U8dcDCXuUFpbQOFnEyc4jjwG80GleVykHDqMjC?=
- =?us-ascii?Q?eRGqSpE0PWWh/QDzbsfBupp1tLC50JXLxGHoGqn6LehXixwuoNnpIMM10x6j?=
- =?us-ascii?Q?QmogR2UUkzHmGvx7PJa82i114AYz0vy6XqNmLOox9tdyvaIRQRbEXX/4BesK?=
- =?us-ascii?Q?DOQqeyeHkWW7Bu1UckjHwPR1FMxBrF8F3iiNrr5NUTUepuCoS+O/2yHy2rEN?=
- =?us-ascii?Q?Cs64MvxiGjOS0JWP/OkAyx8kATRi2wQnt5E1s7jPgeW4V6twgvXkylWO45et?=
- =?us-ascii?Q?jfiSspINMvyxMgCw/OyRzGaWLrEe9kunFvpXdhjIJlNTLeYCS6iM1PIpMygh?=
- =?us-ascii?Q?F4OkUvlg3K8e7Pp8nZHExnz3b8aEZFaa2xS7ifzaDfo9jvhAMNFznpDW5O8K?=
- =?us-ascii?Q?bvP/wzbJNXYds92pyOpMgvhu6bTsScYpq4dPNRPs1BJ2aVrfQWeksGxS7e6q?=
- =?us-ascii?Q?OJPoxNtuezXV/l8qcOM4Q402MxsIy64rtMm3QNO/qyglfV8s5ZCvNqgEszts?=
- =?us-ascii?Q?Xig+u2+9PXZ90mnPBVBUuYwKEnJxB8Vwj9drX7QPKVNOsrnJjCbgYY9nbnox?=
- =?us-ascii?Q?2u3JnkJzAFLGq6ZcJBFwA0nxXtkWTMpL2XtJCNkviYpDw5ScU79BCEc5oXjv?=
- =?us-ascii?Q?UU4bWEbDJXLr6ZAqFmk7jqgffbOrKk/jEHn962hc/Hxhqm/Dpqs6EpAar/l5?=
- =?us-ascii?Q?C23Sj8rLCF7DuBMYFmBSOpIekohNIrKUf8VnBQa9ZYySoQ7m40f0MMWAuN6r?=
- =?us-ascii?Q?+T4ka7WnTKocueIhlgX+PnRJXFhu6tw9C4KOhl9atkobJ/nxzBv1A+0iybcQ?=
- =?us-ascii?Q?nwj6/G5KwNozGm1aUFn/2B+r0ld3C2qT7Jcg7hF1sZiwrfm7iJIDeB1gE3MM?=
- =?us-ascii?Q?byNhFppPQQ=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2/hEy/xh0G93DjsWj9JItsw1pGELf+pgphdlJ8c5kt3GpkBCp0t/wmkvrHmA?=
+ =?us-ascii?Q?2d7OHSQ8zAcSsWo2U49w7sziRruBsAlurDRzPvOvMLTp1mer/oAKdTLJWAL1?=
+ =?us-ascii?Q?+mXmm5F9GHc+XJ7qrnvZOVcqXPdmWrJOVlvJYDWt8L/PD3vER/zBJcaXwHjm?=
+ =?us-ascii?Q?H6VG7KLiBKA7Fbrn+lBjo3lJRq9SyOhdAU20vDOkEphD6BcH3vWOkoQg4ATM?=
+ =?us-ascii?Q?C9p3M7qPV1zNB57MI78iwNL0m4Yzo2pqeoXC9d5vpqNRave9z6V/DlVn4PAj?=
+ =?us-ascii?Q?w5J+kpuUZ9wA0txvgNm4hhoKjhopm+OzNLYbBH+fTE9otiDjNC09a2c/ZDhO?=
+ =?us-ascii?Q?S0/mrqMPoYPtHYMR2fIoKNI9ETdITPSrmbaf5GJajwB4UAwHrNrwSLUO50Qt?=
+ =?us-ascii?Q?dYjQgPwsPOjlewkL6Aw9A5I/LgUtWnIRzu5gjhN8URZMgP3aCwoxGZ/gzYV4?=
+ =?us-ascii?Q?IMIfQsSd82UtQyqufa/fyo+Uadtc5vA3C49fXExJVOwq91VFIZiKCuHrusjV?=
+ =?us-ascii?Q?KqY+LK6so/4GJGzfL6eapBpcYkelgfmX3+hyiZOsgTh60pLrdDOdu3b3NGIG?=
+ =?us-ascii?Q?RouxXxcXnGcTtEH0Uh7grHbXrytFvsBWT7NazqLWvexfkAbHOO1Q+B6SOkOe?=
+ =?us-ascii?Q?PEiXHdl+AZ415VBTPJSStCKQ5iF6RzAh7GZ/2QW24xfgKUCP7LhvTqc6hH3r?=
+ =?us-ascii?Q?XsKzB/iKknFknlT5StUF1Rxs7oZC1PqBtuWKkYtQXBF2nceB6DJxXKrWZfNJ?=
+ =?us-ascii?Q?G3mLbetFKSwUo/6u1j6cl1MmzqVaWbjECoyb3lovc02zglQMIcXv3lxAhFYB?=
+ =?us-ascii?Q?6VUwaZD+k7WnbFOHTVMvrsq7Z5eKr1SwA9zOXBR5mMObKX4bPfTc/Q+9hxER?=
+ =?us-ascii?Q?/AToPyfXy5Us9xVwbYyG32pKhJRgfV6kfS8wTgJiqqV/FpHvgMnHaXuIWAEY?=
+ =?us-ascii?Q?w82pRbGY8ZWes+uIgYB5MmDjicp96jSI8PZI9JOt64YoV2Aza3kw+mSABPTr?=
+ =?us-ascii?Q?M0rRpf/b/VRVHOK5OUkP6+uAPfZ1CulZGwAVg1D7DGKl+m+8+aYP/ZdFH7RY?=
+ =?us-ascii?Q?2Zwm2e8o4ODNVwhO1kl8GeuAuAGrpiU0ESt+vJS226n34GAyPl7lYPgnsvIM?=
+ =?us-ascii?Q?Utk7Xfh+d5oNdUyVdwr8xFboO0gDN82Ys3RDn6jhGwgNAqm/O0C4c83JoWFU?=
+ =?us-ascii?Q?aEFY8GV0mVM9Ing37sZ8sVX94dOi7FYP9dQk6ZBAeu6OPaYmHVh34NInvgiI?=
+ =?us-ascii?Q?7IAFryRjNaeFQOy38aZyKnyYm2/QZI98Lh24DDmYeqkDsqbVFdxGAzFF7xyt?=
+ =?us-ascii?Q?q/9VTs8Em0/EMtIWq7MHe3BE+AUnit6UnxVlMLse0fwWxT7Wsnca48E0/fEN?=
+ =?us-ascii?Q?GMXYL8m4VokXQRgmV2sNlpktbX6apOn/qPN1szqAMn8KTrLd+lj6eceEfveq?=
+ =?us-ascii?Q?3KjQQhUiwTfrRdstdu9Rbk43W6D3rAaxabmzW5Cn8YATFUSXNTd8Oqz+UzEI?=
+ =?us-ascii?Q?Ki530Eqk0LAvfnqrjfXsnn2baJPuDot49EqNZY2zwbIhHk+Zd8W14Oj0RSAa?=
+ =?us-ascii?Q?gLbYaoRwt0sSzGTKHCE6GBvnd23/zR4+iYbcjVjZcYoy10ZVGuq3GDz64XZF?=
+ =?us-ascii?Q?2L2NJVarSUaypzDI4QEDPCdmaYuF0YE/2NCvoKqkvfNl7ceGIDIitwE9lzaV?=
+ =?us-ascii?Q?vMFJy4mOsfg6sifxYP4LxAd2W42BvwSdmAJhRH/kA88jkM295xUaHIZera3b?=
+ =?us-ascii?Q?Z/+IRbTI5Q=3D=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 367e1f7f-9c98-4194-e3b4-08dead30e349
+X-MS-Exchange-CrossTenant-Network-Message-Id: b0ebc7f4-b270-4220-ffe0-08dead3451ec
 X-MS-Exchange-CrossTenant-AuthSource: BY5PR12MB4179.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2026 18:37:41.7928 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2026 19:02:15.8965 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mdjBOkoyMNRU2udJg+30J4MYTBrDMQ+ORe98hlReOP7hXjEt4lJRB58m0U3kyfHGzxGxy9qeMzI3oNsDjwVbgw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8482
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6KCPDQHsm9eagKGE94NELo1WsMQt+0k/nEcSVvUcVtRaL25mg+/WWtqCHrx8QhKJmcm9qrlvdH290Y4VzE2f8A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB7519
 Received-SPF: permerror client-ip=2a01:111:f403:c111::5;
  envelope-from=tdave@nvidia.com;
  helo=DM1PR04CU001.outbound.protection.outlook.com
@@ -127,7 +124,7 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.44,
  FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 08 May 2026 16:42:44 -0400
+X-Mailman-Approved-At: Fri, 08 May 2026 16:42:45 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,199 +139,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a per-device fixed-bars property that allows users to provide
-fixed PCI BAR addresses for PCI endpoint devices.
+The ARM FDT PCI producer path does not preserve the platform
+PcdPciDisableBusEnumeration value. After parsing the PCI host node
+from the device tree, it always sets that PCD to FALSE. This is
+reasonable when firmware must discover and assign PCI resources
+itself.
 
-The fixed-bars property cannot be supported on hot-plugged PCI devices.
-PCI BARs for the hot-plugged device are programmed by the guest at the
-time the device appears.
+However, there are setups where the hypervisor (e.g. QEMU with
+pre-enumeration) has already performed PCI bus enumeration and BAR
+programming and expects firmware to preserve that configuration.
+Always forcing the PCD to FALSE on this path removes that option,
+so EDK2 will re-enumerate the bus regardless of hypervisor intent.
 
-Property format:
-- Comma-separated list of BAR entries, each as:
-  barN@<addr>[,barM@<addr>]*
+If the FDT PCI node contains "pci-enum-done", set
+PcdPciDisableBusEnumeration to TRUE so EDK2 can treat the topology
+as pre-configured. When absent, set it to FALSE and retain the
+previous behavior (full firmware enumeration).
 
-- Example:
-  -device vfio-pci,...,fixed-bars=bar2@0x6b8000000000
-
-- Multiple BARs:
-  -device vfio-pci,host=...,id=dev0
-  -set dev0.fixed-bars=bar0@0x400000000000,bar4@0x410000000000
+Also, mark the root bridges with ResourceAssigned based on the
+PCD in FdtPciHostBridgeLib so the PCI bus driver does not
+re-enumerate the bus.
 
 Signed-off-by: Tushar Dave <tdave@nvidia.com>
 ---
- hw/pci/pci.c                | 108 ++++++++++++++++++++++++++++++++++++
- include/hw/pci/pci_device.h |  10 ++++
- 2 files changed, 118 insertions(+)
+This patch accompanies the QEMU RFC series "hw/arm/virt, hw/pci:
+PCI pre-enumeration and fixed BAR allocation" posted to qemu-devel:
+https://lore.kernel.org/qemu-devel/20260508183717.193630-1-tdave@nvidia.com/
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 2c3657d00d..054fc2c0fa 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -50,6 +50,7 @@
- #include "hw/core/boards.h"
- #include "hw/nvram/fw_cfg.h"
- #include "qapi/error.h"
-+#include "qapi/util.h"
- #include "qemu/cutils.h"
- #include "pci-internal.h"
- 
-@@ -81,6 +82,7 @@ static const Property pci_props[] = {
-     DEFINE_PROP_STRING("romfile", PCIDevice, romfile),
-     DEFINE_PROP_UINT32("romsize", PCIDevice, romsize, UINT32_MAX),
-     DEFINE_PROP_INT32("rombar",  PCIDevice, rom_bar, -1),
-+    DEFINE_PROP_STRING("fixed-bars", PCIDevice, fixed_bars),
-     DEFINE_PROP_BIT("multifunction", PCIDevice, cap_present,
-                     QEMU_PCI_CAP_MULTIFUNCTION_BITNR, false),
-     DEFINE_PROP_BIT("x-pcie-lnksta-dllla", PCIDevice, cap_present,
-@@ -218,6 +220,103 @@ static void pci_bus_unrealize(BusState *qbus)
-     vmstate_unregister(NULL, &vmstate_pcibus, bus);
- }
- 
-+#define FIXED_BARS_ERR "fixed-bars: expected barN@<addr>[,barM@<addr>]*; "
-+
-+static int pci_parse_bar_token(const char *tok, Error **errp)
-+{
-+    int v = qapi_enum_parse(&OffAutoPCIBAR_lookup, tok, -1, errp);
-+
-+    if (v < 0) {
-+        return -1;
-+    }
-+    if (v < OFF_AUTO_PCIBAR_BAR0) {
-+        error_setg(errp, FIXED_BARS_ERR "invalid BAR '%s', expected bar0..bar5", tok);
-+        return -1;
-+    }
-+    return v - OFF_AUTO_PCIBAR_BAR0;
-+}
-+
-+/*
-+ * Parse fixed-bars=barN@<addr>[,barM@<addr>]*
-+ * BAR type, size, and alignment validation is deferred to the allocator,
-+ * which has the full device context needed to perform those checks.
-+ * On error, sets *@errp.
-+ */
-+static void pci_parse_fixed_bars(PCIDevice *pci_dev, Error **errp)
-+{
-+    Error *local_err = NULL;
-+    char **entries = NULL;
-+    char **parts = NULL;
-+    const char *endp;
-+    char **e;
-+    uint64_t bar_addr;
-+    int index;
-+    int i, ret;
-+
-+    if (!pci_dev->fixed_bars || !*pci_dev->fixed_bars) {
-+        return;
-+    }
-+    if (DEVICE(pci_dev)->hotplugged) {
-+        error_setg(&local_err,
-+                   "fixed-bars is not supported on hot-plugged PCI devices");
-+        goto out;
-+    }
-+
-+    entries = g_strsplit(pci_dev->fixed_bars, ",", -1);
-+    for (e = entries; e && *e; e++) {
-+        const char *entry = g_strstrip(*e);
-+        if (*entry == '\0') {
-+            error_setg(&local_err, FIXED_BARS_ERR "empty field in list");
-+            goto out;
-+        }
-+
-+        parts = g_strsplit(entry, "@", 2);
-+        if (!parts[0] || !parts[1]) {
-+            error_setg(&local_err, FIXED_BARS_ERR "not '%s'", entry);
-+            goto out;
-+        }
-+
-+        index = pci_parse_bar_token(parts[0], &local_err);
-+        if (index < 0) {
-+            goto out;
-+        }
-+
-+        ret = qemu_strtou64(parts[1], &endp, 0, &bar_addr);
-+        if (ret) {
-+            error_setg(&local_err, FIXED_BARS_ERR "unparseable address in '%s'",
-+                       entry);
-+            goto out;
-+        }
-+        if (*endp != '\0') {
-+            error_setg(&local_err, FIXED_BARS_ERR "trailing data after address in '%s'",
-+                       entry);
-+            goto out;
-+        }
-+        g_clear_pointer(&parts, g_strfreev);
-+
-+        if (!pci_dev->fixed_bar_addrs) {
-+            pci_dev->fixed_bar_addrs = g_new(pcibus_t, PCI_NUM_REGIONS - 1);
-+            for (i = 0; i < PCI_NUM_REGIONS - 1; i++) {
-+                pci_dev->fixed_bar_addrs[i] = PCI_BAR_UNMAPPED;
-+            }
-+        }
-+        if (pci_dev->fixed_bar_addrs[index] != PCI_BAR_UNMAPPED) {
-+            error_setg(&local_err, FIXED_BARS_ERR "bar%d specified more than once",
-+                       index);
-+            goto out;
-+        }
-+        pci_dev->fixed_bar_addrs[index] = (pcibus_t)bar_addr;
-+    }
-+
-+out:
-+    g_clear_pointer(&parts, g_strfreev);
-+    g_strfreev(entries);
-+    if (local_err) {
-+        g_clear_pointer(&pci_dev->fixed_bar_addrs, g_free);
-+        error_propagate(errp, local_err);
-+    }
-+}
-+
- static int pcibus_num(PCIBus *bus)
- {
-     if (pci_bus_is_root(bus)) {
-@@ -1473,6 +1572,8 @@ static void pci_qdev_unrealize(DeviceState *dev)
-     pci_del_option_rom(pci_dev);
-     pcie_sriov_unregister_device(pci_dev);
- 
-+    g_clear_pointer(&pci_dev->fixed_bar_addrs, g_free);
-+
-     if (pc->exit) {
-         pc->exit(pci_dev);
-     }
-@@ -2369,6 +2470,13 @@ static void pci_qdev_realize(DeviceState *qdev, Error **errp)
-         is_default_rom = true;
-     }
- 
-+    pci_parse_fixed_bars(pci_dev, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        pci_qdev_unrealize(DEVICE(pci_dev));
-+        return;
-+    }
-+
-     pci_add_option_rom(pci_dev, is_default_rom, &local_err);
-     if (local_err) {
-         error_propagate(errp, local_err);
-diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
-index 5cac6e1688..3e46876985 100644
---- a/include/hw/pci/pci_device.h
-+++ b/include/hw/pci/pci_device.h
-@@ -179,6 +179,16 @@ struct PCIDevice {
-     char *failover_pair_id;
-     uint32_t acpi_index;
- 
-+    /*
-+     * When fixed-bars property is in use, fixed_bar_addrs is non-NULL
-+     * and has PCI_NUM_REGIONS - 1 elements (bar0..bar5); each slot is
-+     * either PCI_BAR_UNMAPPED (no fixed address for that BAR) or the
-+     * fixed address for that BAR.  NULL if the property is unused/empty
-+     * or the map is not yet allocated.
-+     */
-+    char *fixed_bars;
-+    pcibus_t *fixed_bar_addrs;
-+
-     /*
-      * Indirect DMA region bounce buffer size as configured for the device. This
-      * is a configuration parameter that is reflected into bus_master_as when
--- 
+ .../FdtPciHostBridgeLib/FdtPciHostBridgeLib.c |  8 ++++-
+ .../FdtPciHostBridgeLib.inf                   |  1 +
+ .../FdtPciPcdProducerLib.c                    | 30 ++++++++++++++++++-
+ 3 files changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.c b/OvmfPk=
+g/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.c
+index 9af8c21a21..d84d15617d 100644
+--- a/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.c
++++ b/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.c
+@@ -444,7 +444,7 @@ PciHostBridgeGetRootBridges (
+   PMemAbove4G.Base  =3D MAX_UINT64;=0D
+   PMemAbove4G.Limit =3D 0;=0D
+ =0D
+-  return PciHostBridgeUtilityGetRootBridges (=0D
++  PCI_ROOT_BRIDGE  *Bridges =3D PciHostBridgeUtilityGetRootBridges (=0D
+            Count,=0D
+            Attributes,=0D
+            AllocationAttributes,=0D
+@@ -458,6 +458,12 @@ PciHostBridgeGetRootBridges (
+            &PMem,=0D
+            &PMemAbove4G=0D
+            );=0D
++  if (Bridges !=3D NULL) {=0D
++    for (UINTN Index =3D 0; Index < *Count; Index++) {=0D
++      Bridges[Index].ResourceAssigned =3D PcdGetBool (PcdPciDisableBusEnum=
+eration);=0D
++    }=0D
++  }=0D
++  return Bridges;=0D
+ }=0D
+ =0D
+ /**=0D
+diff --git a/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.inf b/Ovmf=
+Pkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.inf
+index 26b38b5966..636871866a 100644
+--- a/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.inf
++++ b/OvmfPkg/Fdt/FdtPciHostBridgeLib/FdtPciHostBridgeLib.inf
+@@ -41,6 +41,7 @@
+ [Pcd]=0D
+   gEfiMdePkgTokenSpaceGuid.PcdPciIoTranslation=0D
+   gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress=0D
++  gEfiMdeModulePkgTokenSpaceGuid.PcdPciDisableBusEnumeration=0D
+ =0D
+ [Depex]=0D
+   gFdtClientProtocolGuid=0D
+diff --git a/OvmfPkg/Fdt/FdtPciPcdProducerLib/FdtPciPcdProducerLib.c b/Ovmf=
+Pkg/Fdt/FdtPciPcdProducerLib/FdtPciPcdProducerLib.c
+index a3b09e547f..f5e30d8852 100644
+--- a/OvmfPkg/Fdt/FdtPciPcdProducerLib/FdtPciPcdProducerLib.c
++++ b/OvmfPkg/Fdt/FdtPciPcdProducerLib/FdtPciPcdProducerLib.c
+@@ -96,6 +96,9 @@ FdtPciPcdProducerLibConstructor (
+   RETURN_STATUS        RetStatus;=0D
+   UINT64               IoTranslation;=0D
+   RETURN_STATUS        PcdStatus;=0D
++  CONST VOID           *PropertyPtr;=0D
++  UINT32               TempLen;=0D
++  BOOLEAN              DisableBusEnumeration;=0D
+ =0D
+   PciExpressBaseAddress =3D PcdGet64 (PcdPciExpressBaseAddress);=0D
+   if (PciExpressBaseAddress !=3D MAX_UINT64) {=0D
+@@ -135,7 +138,32 @@ FdtPciPcdProducerLibConstructor (
+     if (!EFI_ERROR (Status) && (RegSize =3D=3D 2 * sizeof (UINT64))) {=0D
+       PciExpressBaseAddress =3D SwapBytes64 (*Reg);=0D
+ =0D
+-      PcdStatus =3D PcdSetBoolS (PcdPciDisableBusEnumeration, FALSE);=0D
++      //=0D
++      // If the FDT node has "pci-enum-done", the host (e.g. QEMU) has alr=
+eady=0D
++      // run PCI enumeration and BAR allocation; allow PcdPciDisableBusEnu=
+meration=0D
++      // to remain as set by the platform. Otherwise force it to FALSE so =
+EDK2=0D
++      // performs full PCI enumeration.=0D
++      //=0D
++      PropertyPtr =3D NULL;=0D
++      TempLen     =3D 0;=0D
++      Status      =3D FdtClient->GetNodeProperty (=0D
++                      FdtClient,=0D
++                      Node,=0D
++                      "pci-enum-done",=0D
++                      &PropertyPtr,=0D
++                      &TempLen=0D
++                      );=0D
++=0D
++      DisableBusEnumeration =3D FALSE;=0D
++      if (!EFI_ERROR (Status) && (TempLen > 0)) {=0D
++        DisableBusEnumeration =3D TRUE;=0D
++        DEBUG ((=0D
++          DEBUG_INFO,=0D
++          "  Found pci-enum-done property, disabling full PCI bus enumerat=
+ion\n"=0D
++          ));=0D
++      }=0D
++=0D
++      PcdStatus =3D PcdSetBoolS (PcdPciDisableBusEnumeration, DisableBusEn=
+umeration);=0D
+       ASSERT_RETURN_ERROR (PcdStatus);=0D
+ =0D
+       IoTranslation =3D 0;=0D
+--=20
 2.34.1
 
 

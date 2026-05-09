@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C708CD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:51:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4864CD3447
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:51:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFe-0000aG-Ql; Sat, 09 May 2026 06:49:42 -0400
+	id 1wLfEl-0008CD-37; Sat, 09 May 2026 06:48:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF2-0008KZ-7E; Sat, 09 May 2026 06:49:05 -0400
+ id 1wLfEY-00086A-2H; Sat, 09 May 2026 06:48:34 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEx-0001e9-Hh; Sat, 09 May 2026 06:49:03 -0400
+ id 1wLfEV-0001bH-8o; Sat, 09 May 2026 06:48:33 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2C090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2N090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:47:59 +0900 (JST)
+ Sat, 9 May 2026 19:48:02 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=ctYWFW44+JRS6P/6Fa2o8C0z5VCfh5rD+JQVUvCvh1Y=; 
+DKIM-Signature: a=rsa-sha256; bh=wjb9QepD+N9kOBgJ3LwWLhwaARwVJCtdWkB5L24skKQ=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323679; v=1;
- b=NKLfL7r33zhnImhPmqERT9PsrudcoabDGGtVeid5EXlcWWlpHUizQQ0EpahZ86HS
- b1iNo+JCw6y7/S3u2OrAjUkj47ssMaNLN6+ZAX5Z3K35hZ7KZiouqesuTPIRDQLI
- zNksm1EL+pg4VTxZQ1J4swB5/WxjMcrVDQh1DjzoN3IlN0fScyqapQt4bv5xIFEw
- H/grfQr0HBHxzVOMbYa4frr3Wm3tv6VTOsY03rvp4t2aNTYgvmSsBHL+JotIN1aZ
- Um1+y4Jyl19BYeQ1uijyJWSOhJvUMSlmqAebmIJauoADGMYab7laJ0v2q7TswPoq
- VvPSuhg8/LGW5kmT0MXreg==
+ s=rs20250326; t=1778323682; v=1;
+ b=Fp95rBWsKkIYNuWZf4Xv66Z6dwrCVwceAq5tt5M2+xAzhyNh+OvCw+bD6cBDtZI6
+ jXX1s78kiTCwCdQJ+EVMXFh/FPo5lnPLixX2ZtnFlaasRWfqdeOhdPYXeHX4hVb1
+ wAYnu4l0mRhuDwTlwFNB4wrXdU8LmBeiJiJCZb4/ePvQa0iqPJUCwVXXrOaMyR4I
+ 9jbwy3g7g1IcGURRccjorc+pWV1Pba+AGNtvDULpe1qh9rFQvp/PhEhE2fd3XJQt
+ z/iQevt79/8H1+JnUAPV/+3XZZJ+nb09P3QKcFwu9ZlPjsT8jLLerNk+i9kjYtbu
+ SWqxD/E3kQqoPDfhnie36w==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:23 +0900
-Subject: [PATCH RFC 11/28] hw/input/hid: Use Linux key codes
+Date: Sat, 09 May 2026 19:34:34 +0900
+Subject: [PATCH RFC 22/28] ui/keymaps: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-11-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260509-input-v1-22-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1012;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=998;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=F6pNPUoV378dGf+lw/tgs4TqsOj9bQ11tihkFkSZ+wg=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gcuxnDveLHLvmDFhom7qcZ3vPB9yZk+LsZz4NjKJd
- U+/8PJNHaUsDGJcDLJiiiwpRbu5NaJrPxUmxLfAzGFlAhnCwMUpABOx1WT4w5NUOO1r+vfcMyd7
- J5fcqkhN/f1HteG1waNNr7/MubfH4zPD//RS1ldt+hZxSp97X1zxLH/lzHWE71r0L6msV7Pqt3f
- uYQIA
+ bh=GjLnmWFMm6QbQ3xMT3K1z5h8XWlcrfyqsaRBaDqGi1k=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gRsr91wVDYv58852Y4dcmdN6W1XprPx1RwXePO7/G
+ da3sC29o5SFQYyLQVZMkSWlaDe3RnTtp8KE+BaYOaxMIEMYuDgFYCJOZxgZTuQsqv3P2e11fr8j
+ 352zocUFmn514aGnbnE1qB8L78+qZfhnV/f/04MlJ+cVcx/78Oec9jbGeTa/77c5ee44e9PozrM
+ HbAA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,26 +96,24 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/input/hid.c | 3 +--
+ ui/keymaps.c | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index 013840562f60..467ba8f14f32 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -224,11 +224,10 @@ static void hid_keyboard_event(DeviceState *dev, QemuConsole *src,
-                                QemuInputEvent *evt)
- {
-     HIDState *hs = (HIDState *)dev;
--    int qcode = qemu_input_linux_to_qcode(evt->key.key);
-     int scancodes[3], i, count;
-     int slot;
- 
--    count = qemu_input_qcode_to_scancode(qcode, evt->key.down,
-+    count = qemu_input_linux_to_scancode(evt->key.key, evt->key.down,
-                                          scancodes);
-     if (hs->n + count > QUEUE_LENGTH) {
-         trace_hid_kbd_queue_full();
+diff --git a/ui/keymaps.c b/ui/keymaps.c
+index 7a7c13c47a0c..ad54cbbc5c8c 100644
+--- a/ui/keymaps.c
++++ b/ui/keymaps.c
+@@ -255,9 +255,8 @@ int keysym2scancode(kbd_layout_t *k, int keysym,
+          * On keyup: Try find a key which is actually down.
+          */
+         for (i = 0; i < keysym2code->count; i++) {
+-            QKeyCode qcode = qemu_input_key_number_to_qcode
++            unsigned int lnx = qemu_input_key_number_to_linux
+                 (keysym2code->keycodes[i]);
+-            unsigned int lnx = qemu_input_map_qcode_to_linux[qcode];
+             if (kbd && qkbd_state_key_get(kbd, lnx)) {
+                 return keysym2code->keycodes[i];
+             }
 
 -- 
 2.54.0

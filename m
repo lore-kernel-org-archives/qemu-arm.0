@@ -4,48 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A9ACD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E22D6CD3447
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFj-0000w4-7z; Sat, 09 May 2026 06:49:47 -0400
+	id 1wLfFk-00014G-CC; Sat, 09 May 2026 06:49:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF4-0008Mg-32; Sat, 09 May 2026 06:49:07 -0400
+ id 1wLfF5-0008Oq-Ti; Sat, 09 May 2026 06:49:09 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEx-0001dy-2B; Sat, 09 May 2026 06:49:03 -0400
+ id 1wLfF0-0001fK-3a; Sat, 09 May 2026 06:49:06 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY21090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2J090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:47:56 +0900 (JST)
+ Sat, 9 May 2026 19:48:01 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=ovxDiLwATszUSIXbNJjZtgyq5rkuZWGQM63LhlHsYP8=; 
+DKIM-Signature: a=rsa-sha256; bh=6y1UpLEqR3haXQERpXObg2630L3bGSBDTthm07GFH88=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323676; v=1;
- b=tLSsWsSNnjC8XkCWR8u8T5JZt9kN1gNEdia/QnYW02ddYnfkUTIvJf6WW3zlfMOK
- W1r2TSndSO6SndIbXZRN88NYACYVePCtf/hV7CjWTO7TG0/zYJGK8BUrxp6YNJGJ
- H8ZsLu1vaJIWjtmMK9Tma4lSlSddquyHNgOQ+qGgEKMTuGlkwuLCMp8W4pjJhCoI
- NzWjgIDHLrHueaOOkp91PNuKXpzrzLHPsw07HszDmBuu+DlpIlP74zdE9gg41KIm
- yPbyAMQz+QMLKBiSytdFfjtcsBGJb9JNUBdXnRGDYkJTkPDsTzBCJ238NKYKx/2P
- d0mUue9rRBpmclLCkGCpFQ==
+ s=rs20250326; t=1778323681; v=1;
+ b=oo8n2a1wTQQJPo/gvrS1HfAbImRsSH9a5lFzKb69VlhP4gz+oIz3AcuAFlmHt/12
+ gEns38pv8qNqj4tUe1H7ZZQznDBIculY+eBtczepY6wtUGEMSCzU5tj6mbUdhjpu
+ l0CKdTutEIPL8dti20Xu3X4+2OOkzD4DHl8HEpjB03tGrQV6g1GBHWFWEA6x+zmA
+ EPAT/g8418uDROdDc9j6rYujVx018/Fa9yNQYule1H+7T5EjiXyU//y4rRzG87Xs
+ zS8nlVsrE94TZSYP0INBM+7LfEuDCbYRDrb2obLHyQbSjRZ00EjJr++KJyfT1n0a
+ C1erddqFG/uWNYOM7lU7iQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Subject: [PATCH RFC 00/28] ui/input: Decouple internal and QAPI input
- events
-Date: Sat, 09 May 2026 19:34:12 +0900
-Message-Id: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Date: Sat, 09 May 2026 19:34:30 +0900
+Subject: [PATCH RFC 18/28] ui/gtk: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDEyML3cy8gtISXcskS5M0YwvL1ERTUyWg2oKi1LTMCrA50UpBbs5KsRD
- B4tKkrNTkEpAJSrW1ADQ8cuVuAAAA
-X-Change-ID: 20260428-input-9b94f389ea55
+Message-Id: <20260509-input-v1-18-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
@@ -61,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5387;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8756;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=2A4nLI8GQSqRf8xd8/ph1Hzv+R//RZaWsnk5gl8duCY=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/geOnFgurv+7QvlGm316sWSj5sL2hakrGPqF+V4Gvi
- jms7ds6SlkYxLgYZMUUWVKKdnNrRNd+KkyIb4GZw8oEMoSBi1MAJjJVhpFhbxBDzkyZz1P2PKhv
- qr/hVFa9iU3IrqLi9uzm8IcRHFJpjAzNj/5JTbkYK1WRo8WYuDbqe8uFX5zvrtr/W6hv0hl1OZk
- fAA==
+ bh=1hU4vdVyspHc02WHXuzADNhy5i+hIxN7RJnRwkPpUIs=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gWtz5ptZ6p0uChOLqM/y3bxF8oyHmczOUoeAA1d/3
+ gwNbAvuKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEgCD8N/b4bmT++vTP2TXnNy
+ ilvXWz5X+e1dUSn2DoktKbEpE+8bMjJsem3RNnNOiUS1VKfKPJl2n+zUl7Mv553ObBLbsjgsfBk
+ TAA==
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -93,125 +90,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The internal input event representation has different requirements from
-the QAPI representation. Using QAPI types directly spreads QAPI-specific
-constraints throughout the internal input code. Keep that impact
-localized by decoupling the two representations with a dedicated
-conversion layer. The decoupled internal representation has the
-following benefits:
-
-- It avoids wrapper structs and pointer indirections required by QAPI.
-  They are useful at the QMP boundary, but unnecessary for internal
-  input events and make handlers more verbose.
-
-- It enforces a single key code set while QAPI input events allow key
-  codes to be stored either as qnum or qcode. Having two code sets is
-  useful for QMP compatibility, but complicates internal input handling.
-  Commit af07e5ff02ae ("ui: convert key events to QKeyCodes
-  immediately") made qcode the only key code set used internally, but
-  the QAPI type does not enforce that and accessing the key code is
-  still tedious.
-
-- It uses Linux key codes. They cover all keys represented by qcodes,
-  include additional keys, and allow QEMU to pass codes through from
-  Linux hosts to Linux guests. This also simplifies the code by avoiding
-  qcode aliases and matches the approach used by virtio and Xen. Since
-  this is an internal representation, QEMU can extend the key code set
-  if a QEMU-specific need arises.
-
-Only the switch to Linux key codes is intended to change functional
-behavior. The interfaces that require QKeyCode are still preserved and
-QKeyCode_str() is still used to query key names. Changing QAPI to accept
-Linux key codes is possible, but out of scope for this series.
-
-This series is organized as follows:
-Patches 1-6 convert the internal interfaces.
-Patches 7-26 convert their users.
-Patches 27-28 remove the old internal interfaces.
+QemuInputEvent now stores Linux key codes for key events. Use those
+codes directly instead of translating between internal key code
+representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-
 ---
-Akihiko Odaki (28):
-      ui/input: Introduce QemuInputEvent typedef
-      ui/input: Remove QAPI wrappers from QemuInputEvent
-      ui/input: Store QKeyCode directly in QemuInputKeyEvent
-      ui/input: Use Linux key codes for internal key events
-      ui/console: Add qemu_text_console_put_linux()
-      ui/kbd-state: Use Linux key codes
-      hw/arm/musicpal: Use Linux key codes
-      hw/char/escc: Use Linux key codes
-      hw/display/xenfb: Use Linux key codes
-      hw/input/adb-kbd: Use Linux key codes
-      hw/input/hid: Use Linux key codes
-      hw/input/ps2: Use Linux key codes
-      hw/input/virtio-input: Use Linux key codes
-      hw/m68k/next-kbd: Use Linux key codes
-      replay: Use Linux key codes
-      ui/cocoa: Use Linux key codes
-      ui/dbus: Use Linux key codes
-      ui/gtk: Use Linux key codes
-      ui/input-barrier: Use Linux key codes
-      ui/input-legacy: Use Linux key codes
-      ui/input-linux: Use Linux key codes
-      ui/keymaps: Use Linux key codes
-      ui/sdl2: Use Linux key codes
-      ui/spice: Use Linux key codes
-      ui/vnc: Use Linux key codes
-      qemu-keymap: Use Linux key codes
-      ui/console: Remove qemu_text_console_put_qcode()
-      ui/input: Remove unused QKeyCode helpers and keymaps
+ ui/x_keymap.h |  3 ++-
+ ui/gtk.c      | 50 ++++++++++++++++++++++++++++----------------------
+ ui/x_keymap.c | 24 +++++++++++++-----------
+ 3 files changed, 43 insertions(+), 34 deletions(-)
 
- include/qemu/typedefs.h      |   1 +
- include/system/replay.h      |   2 +-
- include/ui/console.h         |   3 +-
- include/ui/input.h           |  92 ++++++++------
- include/ui/kbd-state.h       |   8 +-
- replay/replay-internal.h     |   6 +-
- ui/x_keymap.h                |   3 +-
- chardev/msmouse.c            |  12 +-
- chardev/wctablet.c           |  10 +-
- hw/arm/musicpal.c            |  31 +++--
- hw/char/escc.c               |  45 +++----
- hw/display/xenfb.c           |  51 +++-----
- hw/input/adb-kbd.c           | 246 ++++++++++++++++++-------------------
- hw/input/adb-mouse.c         |  22 ++--
- hw/input/hid.c               |  41 +++----
- hw/input/ps2.c               | 116 +++++++++--------
- hw/input/stellaris_gamepad.c |  11 +-
- hw/input/virtio-input-hid.c  |  89 +++++++-------
- hw/m68k/next-kbd.c           | 128 +++++++++----------
- qemu-keymap.c                |  41 +++----
- replay/replay-events.c       |   6 +-
- replay/replay-input.c        | 117 ++++++------------
- replay/replay.c              |   2 +-
- replay/stubs-system.c        |   2 +-
- ui/console.c                 |  62 ++++++----
- ui/dbus-console.c            |   8 +-
- ui/gtk.c                     |  49 ++++----
- ui/input-barrier.c           |  26 ++--
- ui/input-keymap.c            |  74 +++++------
- ui/input-legacy.c            |  47 +++----
- ui/input-linux.c             |   3 +-
- ui/input.c                   | 229 ++++++++++++++--------------------
- ui/kbd-state.c               |  55 +++++----
- ui/keymaps.c                 |   4 +-
- ui/sdl2-input.c              |  17 +--
- ui/spice-input.c             |   3 +-
- ui/vdagent.c                 |  20 ++-
- ui/vnc.c                     |  25 ++--
- ui/x_keymap.c                |  24 ++--
- hw/input/trace-events        |   2 +-
- ui/cocoa.m                   | 287 ++++++++++++++++++++++---------------------
- ui/meson.build               |  29 +++--
- ui/trace-events              |   3 +-
- 43 files changed, 962 insertions(+), 1090 deletions(-)
----
-base-commit: 759c456b1d22fe4083c8b384da27d3f56fd53f82
-change-id: 20260428-input-9b94f389ea55
+diff --git a/ui/x_keymap.h b/ui/x_keymap.h
+index 0395e335fffd..0d58459dd210 100644
+--- a/ui/x_keymap.h
++++ b/ui/x_keymap.h
+@@ -27,6 +27,7 @@
+ 
+ #include <X11/Xlib.h>
+ 
+-const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen);
++const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen,
++                                          bool *evdev);
+ 
+ #endif
+diff --git a/ui/gtk.c b/ui/gtk.c
+index 3e3fd57c7638..a276aab95d82 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -55,6 +55,7 @@
+ #include <math.h>
+ 
+ #include "trace.h"
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/input.h"
+ #include "system/runstate.h"
+ #include "system/system.h"
+@@ -120,6 +121,7 @@
+ 
+ static const guint16 *keycode_map;
+ static size_t keycode_maplen;
++static bool keycode_xorgevdev;
+ 
+ struct VCChardev {
+     Chardev parent;
+@@ -1211,39 +1213,42 @@ static gboolean gd_touch_event(GtkWidget *widget, GdkEventTouch *touch,
+     return TRUE;
+ }
+ 
+-static const guint16 *gd_get_keymap(size_t *maplen)
++static const guint16 *gd_get_keymap(size_t *maplen, bool *xorgevdev)
+ {
+     GdkDisplay *dpy = gdk_display_get_default();
+ 
++    *maplen = 0;
++    *xorgevdev = false;
++
+ #ifdef GDK_WINDOWING_X11
+     if (GDK_IS_X11_DISPLAY(dpy)) {
+         trace_gd_keymap_windowing("x11");
+         return qemu_xkeymap_mapping_table(
+-            gdk_x11_display_get_xdisplay(dpy), maplen);
++            gdk_x11_display_get_xdisplay(dpy), maplen, xorgevdev);
+     }
+ #endif
+ 
+ #ifdef GDK_WINDOWING_WAYLAND
+     if (GDK_IS_WAYLAND_DISPLAY(dpy)) {
+         trace_gd_keymap_windowing("wayland");
+-        *maplen = qemu_input_map_xorgevdev_to_qcode_len;
+-        return qemu_input_map_xorgevdev_to_qcode;
++        *xorgevdev = true;
++        return NULL;
+     }
+ #endif
+ 
+ #ifdef GDK_WINDOWING_WIN32
+     if (GDK_IS_WIN32_DISPLAY(dpy)) {
+         trace_gd_keymap_windowing("win32");
+-        *maplen = qemu_input_map_atset1_to_qcode_len;
+-        return qemu_input_map_atset1_to_qcode;
++        *maplen = qemu_input_map_atset1_to_linux_len;
++        return qemu_input_map_atset1_to_linux;
+     }
+ #endif
+ 
+ #ifdef GDK_WINDOWING_QUARTZ
+     if (GDK_IS_QUARTZ_DISPLAY(dpy)) {
+         trace_gd_keymap_windowing("quartz");
+-        *maplen = qemu_input_map_osx_to_qcode_len;
+-        return qemu_input_map_osx_to_qcode;
++        *maplen = qemu_input_map_osx_to_linux_len;
++        return qemu_input_map_osx_to_linux;
+     }
+ #endif
+ 
+@@ -1253,8 +1258,8 @@ static const guint16 *gd_get_keymap(size_t *maplen)
+         g_warning("experimental: using broadway, x11 virtual keysym\n"
+                   "mapping - with very limited support. See also\n"
+                   "https://bugzilla.gnome.org/show_bug.cgi?id=700105");
+-        *maplen = qemu_input_map_x11_to_qcode_len;
+-        return qemu_input_map_x11_to_qcode;
++        *maplen = qemu_input_map_x11_to_linux_len;
++        return qemu_input_map_x11_to_linux;
+     }
+ #endif
+ 
+@@ -1269,8 +1274,11 @@ static const guint16 *gd_get_keymap(size_t *maplen)
+ }
+ 
+ 
+-static int gd_map_keycode(int scancode)
++static unsigned int gd_map_keycode(int scancode)
+ {
++    if (keycode_xorgevdev) {
++        return scancode < 8 ? KEY_RESERVED : scancode - 8;
++    }
+     if (!keycode_map) {
+         return 0;
+     }
+@@ -1307,12 +1315,12 @@ static gboolean gd_text_key_down(GtkWidget *widget,
+     QemuTextConsole *con = QEMU_TEXT_CONSOLE(vc->gfx.dcl.con);
+ 
+     if (key->keyval == GDK_KEY_Delete) {
+-        qemu_text_console_put_qcode(con, Q_KEY_CODE_DELETE, false);
++        qemu_text_console_put_linux(con, KEY_DELETE, false);
+     } else if (key->length) {
+         qemu_text_console_put_string(con, key->string, key->length);
+     } else {
+-        int qcode = gd_map_keycode(gd_get_keycode(key));
+-        qemu_text_console_put_qcode(con, qcode, false);
++        unsigned int lnx = gd_map_keycode(gd_get_keycode(key));
++        qemu_text_console_put_linux(con, lnx, false);
+     }
+     return TRUE;
+ }
+@@ -1320,7 +1328,7 @@ static gboolean gd_text_key_down(GtkWidget *widget,
+ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
+ {
+     VirtualConsole *vc = opaque;
+-    int keycode, qcode;
++    int keycode, lnx;
+ 
+ #ifdef G_OS_WIN32
+     /* on windows, we ought to ignore the reserved key event? */
+@@ -1343,20 +1351,18 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
+         || key->hardware_keycode == VK_PAUSE
+ #endif
+         ) {
+-        qkbd_state_key_event(vc->gfx.kbd,
+-                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_PAUSE],
++        qkbd_state_key_event(vc->gfx.kbd, KEY_PAUSE,
+                              key->type == GDK_KEY_PRESS);
+         return TRUE;
+     }
+ 
+     keycode = gd_get_keycode(key);
+-    qcode = gd_map_keycode(keycode);
++    lnx = gd_map_keycode(keycode);
+ 
+-    trace_gd_key_event(vc->label, keycode, qemu_input_map_qcode_to_linux[qcode],
++    trace_gd_key_event(vc->label, keycode, lnx,
+                        (key->type == GDK_KEY_PRESS) ? "down" : "up");
+ 
+-    qkbd_state_key_event(vc->gfx.kbd, qemu_input_map_qcode_to_linux[qcode],
+-                         key->type == GDK_KEY_PRESS);
++    qkbd_state_key_event(vc->gfx.kbd, lnx, key->type == GDK_KEY_PRESS);
+ 
+     return TRUE;
+ }
+@@ -2660,7 +2666,7 @@ static void early_gtk_display_init(DisplayOptions *opts)
+ #endif
+     }
+ 
+-    keycode_map = gd_get_keymap(&keycode_maplen);
++    keycode_map = gd_get_keymap(&keycode_maplen, &keycode_xorgevdev);
+ 
+ #if defined(CONFIG_VTE)
+     type_register_static(&char_gd_vc_type_info);
+diff --git a/ui/x_keymap.c b/ui/x_keymap.c
+index 2ce7b899615f..f7dc2edb91d6 100644
+--- a/ui/x_keymap.c
++++ b/ui/x_keymap.c
+@@ -52,11 +52,12 @@ static gboolean check_for_xquartz(Display *dpy)
+     return match;
+ }
+ 
+-const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
++const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen,
++                                          bool *evdev)
+ {
+     XkbDescPtr desc;
+     const gchar *keycodes = NULL;
+-    const guint16 *map;
++    const guint16 *map = NULL;
+ 
+     /* There is no easy way to determine what X11 server
+      * and platform & keyboard driver is in use. Thus we
+@@ -81,24 +82,26 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
+         XkbFreeKeyboard(desc, XkbGBN_AllComponentsMask, True);
+     }
+ 
++    *maplen = 0;
++    *evdev = false;
++
+     if (check_for_xwin(dpy)) {
+         trace_xkeymap_keymap("xwin");
+-        *maplen = qemu_input_map_xorgxwin_to_qcode_len;
+-        map = qemu_input_map_xorgxwin_to_qcode;
++        *maplen = qemu_input_map_xorgxwin_to_linux_len;
++        map = qemu_input_map_xorgxwin_to_linux;
+     } else if (check_for_xquartz(dpy)) {
+         trace_xkeymap_keymap("xquartz");
+-        *maplen = qemu_input_map_xorgxquartz_to_qcode_len;
+-        map = qemu_input_map_xorgxquartz_to_qcode;
++        *maplen = qemu_input_map_xorgxquartz_to_linux_len;
++        map = qemu_input_map_xorgxquartz_to_linux;
+     } else if ((keycodes && g_str_has_prefix(keycodes, "evdev")) ||
+                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x70)) {
+         trace_xkeymap_keymap("evdev");
+-        *maplen = qemu_input_map_xorgevdev_to_qcode_len;
+-        map = qemu_input_map_xorgevdev_to_qcode;
++        *evdev = true;
+     } else if ((keycodes && g_str_has_prefix(keycodes, "xfree86")) ||
+                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x63)) {
+         trace_xkeymap_keymap("kbd");
+-        *maplen = qemu_input_map_xorgkbd_to_qcode_len;
+-        map = qemu_input_map_xorgkbd_to_qcode;
++        *maplen = qemu_input_map_xorgkbd_to_linux_len;
++        map = qemu_input_map_xorgkbd_to_linux;
+     } else {
+         trace_xkeymap_keymap("NULL");
+         g_warning("Unknown X11 keycode mapping '%s'.\n"
+@@ -110,7 +113,6 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
+                   "  - xprop -root\n"
+                   "  - xdpyinfo\n",
+                   keycodes ? keycodes : "<null>");
+-        map = NULL;
+     }
+     if (keycodes) {
+         XFree((void *)keycodes);
 
-Best regards,
---  
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+-- 
+2.54.0
 
 

@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E22D6CD3447
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B325CD37B5
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFk-00014G-CC; Sat, 09 May 2026 06:49:48 -0400
+	id 1wLfFa-0000Ip-B1; Sat, 09 May 2026 06:49:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF5-0008Oq-Ti; Sat, 09 May 2026 06:49:09 -0400
+ id 1wLfEa-00088V-6P; Sat, 09 May 2026 06:48:36 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF0-0001fK-3a; Sat, 09 May 2026 06:49:06 -0400
+ id 1wLfEV-0001bD-At; Sat, 09 May 2026 06:48:35 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2J090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY27090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:48:01 +0900 (JST)
+ Sat, 9 May 2026 19:47:58 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=6y1UpLEqR3haXQERpXObg2630L3bGSBDTthm07GFH88=; 
+DKIM-Signature: a=rsa-sha256; bh=UZEisyAdVNdTB2Cvi/n+lPCOojjdZuM5xsvr/g4rYy0=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323681; v=1;
- b=oo8n2a1wTQQJPo/gvrS1HfAbImRsSH9a5lFzKb69VlhP4gz+oIz3AcuAFlmHt/12
- gEns38pv8qNqj4tUe1H7ZZQznDBIculY+eBtczepY6wtUGEMSCzU5tj6mbUdhjpu
- l0CKdTutEIPL8dti20Xu3X4+2OOkzD4DHl8HEpjB03tGrQV6g1GBHWFWEA6x+zmA
- EPAT/g8418uDROdDc9j6rYujVx018/Fa9yNQYule1H+7T5EjiXyU//y4rRzG87Xs
- zS8nlVsrE94TZSYP0INBM+7LfEuDCbYRDrb2obLHyQbSjRZ00EjJr++KJyfT1n0a
- C1erddqFG/uWNYOM7lU7iQ==
+ s=rs20250326; t=1778323678; v=1;
+ b=WG4EeNz0BhJxFsu+tLYdf/h7f0/W6KS/KjLtyvsJdyTUAegHD92hJ0r3NKOe8TqQ
+ k39AGkAZTDi+sA3V1qByb22w6xyPVoBg4iRodTV8KGsbdHBCvkZ+06htAtMo32F2
+ WHz737uTYOq0UCkPN0Vtmec/h8Yg2Y3yumYm58MiAjNgzHCoJJz54MEFBYNvWaPQ
+ ssFSA1+s6k4DF8BM2pIxMTgXlx502NInjXvFpIoeNcY2G+Kdn0aj0p5d4iViqr2d
+ TOwvfzV8U5u+RcmlCPpKYtMkuHBnPpNHf5Ux3firfqhqDbfhvWGOKBRxhrN3EmK1
+ ruyMTVMV3a0P5u09qhSt6g==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:30 +0900
-Subject: [PATCH RFC 18/28] ui/gtk: Use Linux key codes
+Date: Sat, 09 May 2026 19:34:18 +0900
+Subject: [PATCH RFC 06/28] ui/kbd-state: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-18-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260509-input-v1-6-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8756;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=15815;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=1hU4vdVyspHc02WHXuzADNhy5i+hIxN7RJnRwkPpUIs=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gWtz5ptZ6p0uChOLqM/y3bxF8oyHmczOUoeAA1d/3
- gwNbAvuKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmEgCD8N/b4bmT++vTP2TXnNy
- ilvXWz5X+e1dUSn2DoktKbEpE+8bMjJsem3RNnNOiUS1VKfKPJl2n+zUl7Mv553ObBLbsjgsfBk
- TAA==
+ bh=odzPk+1Je+4NyMwOFyWTQYhGWXC0mcHIaoheKSnAvAA=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gQsH0l+2PX25fZsT86OcC58l3n8/rfN294rTUfO05
+ 9/2tpmf01HKwiDGxSArpsiSUrSbWyO69lNhQnwLzBxWJpAhDFycAjCRbkOG/yH+dppTLkS3KLXx
+ LPPpXrfuT8cjxYW1QRednvwv/WGaws3wV0Z03uZrrRy8i08xaZVp1f7t9Z6zvDlxa92ar4vYzrm
+ /ZgMA
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,240 +96,389 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- ui/x_keymap.h |  3 ++-
- ui/gtk.c      | 50 ++++++++++++++++++++++++++++----------------------
- ui/x_keymap.c | 24 +++++++++++++-----------
- 3 files changed, 43 insertions(+), 34 deletions(-)
+ include/ui/kbd-state.h |  8 +++---
+ ui/dbus-console.c      |  4 +--
+ ui/gtk.c               |  7 +++---
+ ui/kbd-state.c         | 55 +++++++++++++++++++++--------------------
+ ui/keymaps.c           |  3 ++-
+ ui/sdl2-input.c        |  3 ++-
+ ui/vnc.c               | 10 +++++---
+ ui/cocoa.m             | 67 +++++++++++++++++++++++++++++++++++++-------------
+ 8 files changed, 99 insertions(+), 58 deletions(-)
 
-diff --git a/ui/x_keymap.h b/ui/x_keymap.h
-index 0395e335fffd..0d58459dd210 100644
---- a/ui/x_keymap.h
-+++ b/ui/x_keymap.h
-@@ -27,6 +27,7 @@
+diff --git a/include/ui/kbd-state.h b/include/ui/kbd-state.h
+index 1f37b932eb62..102634d917e5 100644
+--- a/include/ui/kbd-state.h
++++ b/include/ui/kbd-state.h
+@@ -53,10 +53,10 @@ void qkbd_state_free(QKbdState *kbd);
+  * for a key not pressed for example).
+  *
+  * @kbd: state tracker state.
+- * @qcode: the key pressed or released.
++ * @lnx: the key pressed or released.
+  * @down: true for key down events, false otherwise.
+  */
+-void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down);
++void qkbd_state_key_event(QKbdState *kbd, unsigned int lnx, bool down);
  
- #include <X11/Xlib.h>
+ /**
+  * qkbd_state_set_delay: set key press delay.
+@@ -75,9 +75,9 @@ void qkbd_state_set_delay(QKbdState *kbd, int delay_ms);
+  * Returns true when the key is down.
+  *
+  * @kbd: state tracker state.
+- * @qcode: the key to query.
++ * @lnx: the key to query.
+  */
+-bool qkbd_state_key_get(QKbdState *kbd, QKeyCode qcode);
++bool qkbd_state_key_get(QKbdState *kbd, unsigned int lnx);
  
--const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen);
-+const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen,
-+                                          bool *evdev);
+ /**
+  * qkbd_state_modifier_get: get modifier state.
+diff --git a/ui/dbus-console.c b/ui/dbus-console.c
+index 85e215ef2334..a46c2531c6f8 100644
+--- a/ui/dbus-console.c
++++ b/ui/dbus-console.c
+@@ -344,7 +344,7 @@ dbus_kbd_press(DBusDisplayConsole *ddc,
  
- #endif
+     trace_dbus_kbd_press(arg_keycode);
+ 
+-    qkbd_state_key_event(ddc->kbd, qcode, true);
++    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], true);
+ 
+     qemu_dbus_display1_keyboard_complete_press(ddc->iface_kbd, invocation);
+ 
+@@ -360,7 +360,7 @@ dbus_kbd_release(DBusDisplayConsole *ddc,
+ 
+     trace_dbus_kbd_release(arg_keycode);
+ 
+-    qkbd_state_key_event(ddc->kbd, qcode, false);
++    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], false);
+ 
+     qemu_dbus_display1_keyboard_complete_release(ddc->iface_kbd, invocation);
+ 
 diff --git a/ui/gtk.c b/ui/gtk.c
-index 3e3fd57c7638..a276aab95d82 100644
+index 9ebe7e8df0de..3e3fd57c7638 100644
 --- a/ui/gtk.c
 +++ b/ui/gtk.c
-@@ -55,6 +55,7 @@
- #include <math.h>
- 
- #include "trace.h"
-+#include "standard-headers/linux/input-event-codes.h"
- #include "ui/input.h"
- #include "system/runstate.h"
- #include "system/system.h"
-@@ -120,6 +121,7 @@
- 
- static const guint16 *keycode_map;
- static size_t keycode_maplen;
-+static bool keycode_xorgevdev;
- 
- struct VCChardev {
-     Chardev parent;
-@@ -1211,39 +1213,42 @@ static gboolean gd_touch_event(GtkWidget *widget, GdkEventTouch *touch,
-     return TRUE;
- }
- 
--static const guint16 *gd_get_keymap(size_t *maplen)
-+static const guint16 *gd_get_keymap(size_t *maplen, bool *xorgevdev)
- {
-     GdkDisplay *dpy = gdk_display_get_default();
- 
-+    *maplen = 0;
-+    *xorgevdev = false;
-+
- #ifdef GDK_WINDOWING_X11
-     if (GDK_IS_X11_DISPLAY(dpy)) {
-         trace_gd_keymap_windowing("x11");
-         return qemu_xkeymap_mapping_table(
--            gdk_x11_display_get_xdisplay(dpy), maplen);
-+            gdk_x11_display_get_xdisplay(dpy), maplen, xorgevdev);
-     }
- #endif
- 
- #ifdef GDK_WINDOWING_WAYLAND
-     if (GDK_IS_WAYLAND_DISPLAY(dpy)) {
-         trace_gd_keymap_windowing("wayland");
--        *maplen = qemu_input_map_xorgevdev_to_qcode_len;
--        return qemu_input_map_xorgevdev_to_qcode;
-+        *xorgevdev = true;
-+        return NULL;
-     }
- #endif
- 
- #ifdef GDK_WINDOWING_WIN32
-     if (GDK_IS_WIN32_DISPLAY(dpy)) {
-         trace_gd_keymap_windowing("win32");
--        *maplen = qemu_input_map_atset1_to_qcode_len;
--        return qemu_input_map_atset1_to_qcode;
-+        *maplen = qemu_input_map_atset1_to_linux_len;
-+        return qemu_input_map_atset1_to_linux;
-     }
- #endif
- 
- #ifdef GDK_WINDOWING_QUARTZ
-     if (GDK_IS_QUARTZ_DISPLAY(dpy)) {
-         trace_gd_keymap_windowing("quartz");
--        *maplen = qemu_input_map_osx_to_qcode_len;
--        return qemu_input_map_osx_to_qcode;
-+        *maplen = qemu_input_map_osx_to_linux_len;
-+        return qemu_input_map_osx_to_linux;
-     }
- #endif
- 
-@@ -1253,8 +1258,8 @@ static const guint16 *gd_get_keymap(size_t *maplen)
-         g_warning("experimental: using broadway, x11 virtual keysym\n"
-                   "mapping - with very limited support. See also\n"
-                   "https://bugzilla.gnome.org/show_bug.cgi?id=700105");
--        *maplen = qemu_input_map_x11_to_qcode_len;
--        return qemu_input_map_x11_to_qcode;
-+        *maplen = qemu_input_map_x11_to_linux_len;
-+        return qemu_input_map_x11_to_linux;
-     }
- #endif
- 
-@@ -1269,8 +1274,11 @@ static const guint16 *gd_get_keymap(size_t *maplen)
- }
- 
- 
--static int gd_map_keycode(int scancode)
-+static unsigned int gd_map_keycode(int scancode)
- {
-+    if (keycode_xorgevdev) {
-+        return scancode < 8 ? KEY_RESERVED : scancode - 8;
-+    }
-     if (!keycode_map) {
-         return 0;
-     }
-@@ -1307,12 +1315,12 @@ static gboolean gd_text_key_down(GtkWidget *widget,
-     QemuTextConsole *con = QEMU_TEXT_CONSOLE(vc->gfx.dcl.con);
- 
-     if (key->keyval == GDK_KEY_Delete) {
--        qemu_text_console_put_qcode(con, Q_KEY_CODE_DELETE, false);
-+        qemu_text_console_put_linux(con, KEY_DELETE, false);
-     } else if (key->length) {
-         qemu_text_console_put_string(con, key->string, key->length);
-     } else {
--        int qcode = gd_map_keycode(gd_get_keycode(key));
--        qemu_text_console_put_qcode(con, qcode, false);
-+        unsigned int lnx = gd_map_keycode(gd_get_keycode(key));
-+        qemu_text_console_put_linux(con, lnx, false);
-     }
-     return TRUE;
- }
-@@ -1320,7 +1328,7 @@ static gboolean gd_text_key_down(GtkWidget *widget,
- static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
- {
-     VirtualConsole *vc = opaque;
--    int keycode, qcode;
-+    int keycode, lnx;
- 
- #ifdef G_OS_WIN32
-     /* on windows, we ought to ignore the reserved key event? */
-@@ -1343,20 +1351,18 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
+@@ -1343,7 +1343,8 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
          || key->hardware_keycode == VK_PAUSE
  #endif
          ) {
--        qkbd_state_key_event(vc->gfx.kbd,
--                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_PAUSE],
-+        qkbd_state_key_event(vc->gfx.kbd, KEY_PAUSE,
+-        qkbd_state_key_event(vc->gfx.kbd, Q_KEY_CODE_PAUSE,
++        qkbd_state_key_event(vc->gfx.kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_PAUSE],
                               key->type == GDK_KEY_PRESS);
          return TRUE;
      }
- 
+@@ -1351,10 +1352,10 @@ static gboolean gd_key_event(GtkWidget *widget, GdkEventKey *key, void *opaque)
      keycode = gd_get_keycode(key);
--    qcode = gd_map_keycode(keycode);
-+    lnx = gd_map_keycode(keycode);
+     qcode = gd_map_keycode(keycode);
  
--    trace_gd_key_event(vc->label, keycode, qemu_input_map_qcode_to_linux[qcode],
-+    trace_gd_key_event(vc->label, keycode, lnx,
+-    trace_gd_key_event(vc->label, keycode, qcode,
++    trace_gd_key_event(vc->label, keycode, qemu_input_map_qcode_to_linux[qcode],
                         (key->type == GDK_KEY_PRESS) ? "down" : "up");
  
--    qkbd_state_key_event(vc->gfx.kbd, qemu_input_map_qcode_to_linux[qcode],
--                         key->type == GDK_KEY_PRESS);
-+    qkbd_state_key_event(vc->gfx.kbd, lnx, key->type == GDK_KEY_PRESS);
+-    qkbd_state_key_event(vc->gfx.kbd, qcode,
++    qkbd_state_key_event(vc->gfx.kbd, qemu_input_map_qcode_to_linux[qcode],
+                          key->type == GDK_KEY_PRESS);
  
      return TRUE;
- }
-@@ -2660,7 +2666,7 @@ static void early_gtk_display_init(DisplayOptions *opts)
- #endif
-     }
+diff --git a/ui/kbd-state.c b/ui/kbd-state.c
+index 52ed28b8a89b..8e5e6f418ac9 100644
+--- a/ui/kbd-state.c
++++ b/ui/kbd-state.c
+@@ -5,6 +5,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "qemu/bitmap.h"
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/console.h"
+ #include "ui/input.h"
+ #include "ui/kbd-state.h"
+@@ -12,15 +13,15 @@
+ struct QKbdState {
+     QemuConsole *con;
+     int key_delay_ms;
+-    DECLARE_BITMAP(keys, Q_KEY_CODE__MAX);
++    DECLARE_BITMAP(keys, KEY_CNT);
+     DECLARE_BITMAP(mods, QKBD_MOD__MAX);
+ };
  
--    keycode_map = gd_get_keymap(&keycode_maplen);
-+    keycode_map = gd_get_keymap(&keycode_maplen, &keycode_xorgevdev);
- 
- #if defined(CONFIG_VTE)
-     type_register_static(&char_gd_vc_type_info);
-diff --git a/ui/x_keymap.c b/ui/x_keymap.c
-index 2ce7b899615f..f7dc2edb91d6 100644
---- a/ui/x_keymap.c
-+++ b/ui/x_keymap.c
-@@ -52,11 +52,12 @@ static gboolean check_for_xquartz(Display *dpy)
-     return match;
- }
- 
--const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
-+const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen,
-+                                          bool *evdev)
+ static void qkbd_state_modifier_update(QKbdState *kbd,
+-                                      QKeyCode qcode1, QKeyCode qcode2,
++                                       unsigned int lnx1, unsigned int lnx2,
+                                       QKbdModifier mod)
  {
-     XkbDescPtr desc;
-     const gchar *keycodes = NULL;
--    const guint16 *map;
-+    const guint16 *map = NULL;
- 
-     /* There is no easy way to determine what X11 server
-      * and platform & keyboard driver is in use. Thus we
-@@ -81,24 +82,26 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
-         XkbFreeKeyboard(desc, XkbGBN_AllComponentsMask, True);
-     }
- 
-+    *maplen = 0;
-+    *evdev = false;
-+
-     if (check_for_xwin(dpy)) {
-         trace_xkeymap_keymap("xwin");
--        *maplen = qemu_input_map_xorgxwin_to_qcode_len;
--        map = qemu_input_map_xorgxwin_to_qcode;
-+        *maplen = qemu_input_map_xorgxwin_to_linux_len;
-+        map = qemu_input_map_xorgxwin_to_linux;
-     } else if (check_for_xquartz(dpy)) {
-         trace_xkeymap_keymap("xquartz");
--        *maplen = qemu_input_map_xorgxquartz_to_qcode_len;
--        map = qemu_input_map_xorgxquartz_to_qcode;
-+        *maplen = qemu_input_map_xorgxquartz_to_linux_len;
-+        map = qemu_input_map_xorgxquartz_to_linux;
-     } else if ((keycodes && g_str_has_prefix(keycodes, "evdev")) ||
-                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x70)) {
-         trace_xkeymap_keymap("evdev");
--        *maplen = qemu_input_map_xorgevdev_to_qcode_len;
--        map = qemu_input_map_xorgevdev_to_qcode;
-+        *evdev = true;
-     } else if ((keycodes && g_str_has_prefix(keycodes, "xfree86")) ||
-                (XKeysymToKeycode(dpy, XK_Page_Up) == 0x63)) {
-         trace_xkeymap_keymap("kbd");
--        *maplen = qemu_input_map_xorgkbd_to_qcode_len;
--        map = qemu_input_map_xorgkbd_to_qcode;
-+        *maplen = qemu_input_map_xorgkbd_to_linux_len;
-+        map = qemu_input_map_xorgkbd_to_linux;
+-    if (test_bit(qcode1, kbd->keys) || test_bit(qcode2, kbd->keys)) {
++    if (test_bit(lnx1, kbd->keys) || test_bit(lnx2, kbd->keys)) {
+         set_bit(mod, kbd->mods);
      } else {
-         trace_xkeymap_keymap("NULL");
-         g_warning("Unknown X11 keycode mapping '%s'.\n"
-@@ -110,7 +113,6 @@ const guint16 *qemu_xkeymap_mapping_table(Display *dpy, size_t *maplen)
-                   "  - xprop -root\n"
-                   "  - xdpyinfo\n",
-                   keycodes ? keycodes : "<null>");
--        map = NULL;
+         clear_bit(mod, kbd->mods);
+@@ -32,14 +33,14 @@ bool qkbd_state_modifier_get(QKbdState *kbd, QKbdModifier mod)
+     return test_bit(mod, kbd->mods);
+ }
+ 
+-bool qkbd_state_key_get(QKbdState *kbd, QKeyCode qcode)
++bool qkbd_state_key_get(QKbdState *kbd, unsigned int lnx)
+ {
+-    return test_bit(qcode, kbd->keys);
++    return test_bit(lnx, kbd->keys);
+ }
+ 
+-void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down)
++void qkbd_state_key_event(QKbdState *kbd, unsigned int lnx, bool down)
+ {
+-    bool state = test_bit(qcode, kbd->keys);
++    bool state = test_bit(lnx, kbd->keys);
+ 
+     if (down == false  /* got key-up event   */ &&
+         state == false /* key is not pressed */) {
+@@ -59,35 +60,35 @@ void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down)
+ 
+     /* update key and modifier state */
+     if (down) {
+-        set_bit(qcode, kbd->keys);
++        set_bit(lnx, kbd->keys);
+     } else {
+-        clear_bit(qcode, kbd->keys);
++        clear_bit(lnx, kbd->keys);
      }
-     if (keycodes) {
-         XFree((void *)keycodes);
+-    switch (qcode) {
+-    case Q_KEY_CODE_SHIFT:
+-    case Q_KEY_CODE_SHIFT_R:
+-        qkbd_state_modifier_update(kbd, Q_KEY_CODE_SHIFT, Q_KEY_CODE_SHIFT_R,
++    switch (lnx) {
++    case KEY_LEFTSHIFT:
++    case KEY_RIGHTSHIFT:
++        qkbd_state_modifier_update(kbd, KEY_LEFTSHIFT, KEY_RIGHTSHIFT,
+                                    QKBD_MOD_SHIFT);
+         break;
+-    case Q_KEY_CODE_CTRL:
+-    case Q_KEY_CODE_CTRL_R:
+-        qkbd_state_modifier_update(kbd, Q_KEY_CODE_CTRL, Q_KEY_CODE_CTRL_R,
++    case KEY_LEFTCTRL:
++    case KEY_RIGHTCTRL:
++        qkbd_state_modifier_update(kbd, KEY_LEFTCTRL, KEY_RIGHTCTRL,
+                                    QKBD_MOD_CTRL);
+         break;
+-    case Q_KEY_CODE_ALT:
+-        qkbd_state_modifier_update(kbd, Q_KEY_CODE_ALT, Q_KEY_CODE_ALT,
++    case KEY_LEFTALT:
++        qkbd_state_modifier_update(kbd, KEY_LEFTALT, KEY_LEFTALT,
+                                    QKBD_MOD_ALT);
+         break;
+-    case Q_KEY_CODE_ALT_R:
+-        qkbd_state_modifier_update(kbd, Q_KEY_CODE_ALT_R, Q_KEY_CODE_ALT_R,
++    case KEY_RIGHTALT:
++        qkbd_state_modifier_update(kbd, KEY_RIGHTALT, KEY_RIGHTALT,
+                                    QKBD_MOD_ALTGR);
+         break;
+-    case Q_KEY_CODE_CAPS_LOCK:
++    case KEY_CAPSLOCK:
+         if (down) {
+             change_bit(QKBD_MOD_CAPSLOCK, kbd->mods);
+         }
+         break;
+-    case Q_KEY_CODE_NUM_LOCK:
++    case KEY_NUMLOCK:
+         if (down) {
+             change_bit(QKBD_MOD_NUMLOCK, kbd->mods);
+         }
+@@ -99,7 +100,7 @@ void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down)
+ 
+     /* send to guest */
+     if (qemu_console_is_graphic(kbd->con)) {
+-        qemu_input_event_send_key_qcode(kbd->con, qcode, down);
++        qemu_input_event_send_key_linux(kbd->con, lnx, down);
+         if (kbd->key_delay_ms) {
+             qemu_input_event_send_key_delay(kbd->key_delay_ms);
+         }
+@@ -108,11 +109,11 @@ void qkbd_state_key_event(QKbdState *kbd, QKeyCode qcode, bool down)
+ 
+ void qkbd_state_lift_all_keys(QKbdState *kbd)
+ {
+-    int qcode;
++    unsigned int lnx;
+ 
+-    for (qcode = 0; qcode < Q_KEY_CODE__MAX; qcode++) {
+-        if (test_bit(qcode, kbd->keys)) {
+-            qkbd_state_key_event(kbd, qcode, false);
++    for (lnx = 0; lnx < KEY_CNT; lnx++) {
++        if (test_bit(lnx, kbd->keys)) {
++            qkbd_state_key_event(kbd, lnx, false);
+         }
+     }
+ }
+diff --git a/ui/keymaps.c b/ui/keymaps.c
+index d1b3f43dc8a3..7a7c13c47a0c 100644
+--- a/ui/keymaps.c
++++ b/ui/keymaps.c
+@@ -257,7 +257,8 @@ int keysym2scancode(kbd_layout_t *k, int keysym,
+         for (i = 0; i < keysym2code->count; i++) {
+             QKeyCode qcode = qemu_input_key_number_to_qcode
+                 (keysym2code->keycodes[i]);
+-            if (kbd && qkbd_state_key_get(kbd, qcode)) {
++            unsigned int lnx = qemu_input_map_qcode_to_linux[qcode];
++            if (kbd && qkbd_state_key_get(kbd, lnx)) {
+                 return keysym2code->keycodes[i];
+             }
+         }
+diff --git a/ui/sdl2-input.c b/ui/sdl2-input.c
+index 2286df4223dc..fdbdc427dc9e 100644
+--- a/ui/sdl2-input.c
++++ b/ui/sdl2-input.c
+@@ -41,7 +41,8 @@ void sdl2_process_key(struct sdl2_console *scon,
+     qcode = qemu_input_map_usb_to_qcode[ev->keysym.scancode];
+     trace_sdl2_process_key(ev->keysym.scancode, qcode,
+                            ev->type == SDL_KEYDOWN ? "down" : "up");
+-    qkbd_state_key_event(scon->kbd, qcode, ev->type == SDL_KEYDOWN);
++    qkbd_state_key_event(scon->kbd, qemu_input_map_qcode_to_linux[qcode],
++                         ev->type == SDL_KEYDOWN);
+ 
+     if (QEMU_IS_TEXT_CONSOLE(con)) {
+         QemuTextConsole *s = QEMU_TEXT_CONSOLE(con);
+diff --git a/ui/vnc.c b/ui/vnc.c
+index ad8d58a23d7c..940dae1a0010 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -1807,8 +1807,11 @@ static void pointer_event(VncState *vs, int button_mask, int x, int y)
+ 
+ static void press_key(VncState *vs, QKeyCode qcode)
+ {
+-    qkbd_state_key_event(vs->vd->kbd, qcode, true);
+-    qkbd_state_key_event(vs->vd->kbd, qcode, false);
++    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
++                         true);
++
++    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
++                         false);
+ }
+ 
+ static void vnc_led_state_change(VncState *vs)
+@@ -1916,7 +1919,8 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
+         }
+     }
+ 
+-    qkbd_state_key_event(vs->vd->kbd, qcode, down);
++    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
++                         down);
+     if (QEMU_IS_TEXT_CONSOLE(vs->vd->dcl.con)) {
+         QemuTextConsole *con = QEMU_TEXT_CONSOLE(vs->vd->dcl.con);
+         bool numlock = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK);
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index 9093d1e408ff..2322c590cbc0 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -770,7 +770,8 @@ - (void) setFullGrab:(id)sender
+ }
+ 
+ - (void) toggleKey: (int)keycode {
+-    qkbd_state_key_event(kbd, keycode, !qkbd_state_key_get(kbd, keycode));
++    unsigned int lnx = qemu_input_map_qcode_to_linux[keycode];
++    qkbd_state_key_event(kbd, lnx, !qkbd_state_key_get(kbd, lnx));
+ }
+ 
+ // Does the work of sending input to the monitor
+@@ -892,34 +893,62 @@ - (bool) handleEventLocked:(NSEvent *)event
+      */
+     if (!!(modifiers & NSEventModifierFlagCapsLock) !=
+         qkbd_state_modifier_get(kbd, QKBD_MOD_CAPSLOCK)) {
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_CAPS_LOCK, true);
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_CAPS_LOCK, false);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_CAPS_LOCK],
++                             true);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_CAPS_LOCK],
++                             false);
+     }
+ 
+     if (!(modifiers & NSEventModifierFlagShift)) {
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_SHIFT, false);
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_SHIFT_R, false);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_SHIFT],
++                             false);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_SHIFT_R],
++                             false);
+     }
+     if (!(modifiers & NSEventModifierFlagControl)) {
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_CTRL, false);
+-        qkbd_state_key_event(kbd, Q_KEY_CODE_CTRL_R, false);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_CTRL],
++                             false);
++        qkbd_state_key_event(kbd,
++                             qemu_input_map_qcode_to_linux[Q_KEY_CODE_CTRL_R],
++                             false);
+     }
+     if (!(modifiers & NSEventModifierFlagOption)) {
+         if (swap_opt_cmd) {
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_META_L, false);
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_META_R, false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_META_L],
++                                 false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_META_R],
++                                 false);
+         } else {
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_ALT, false);
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_ALT_R, false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_ALT],
++                                 false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_ALT_R],
++                                 false);
+         }
+     }
+     if (!(modifiers & NSEventModifierFlagCommand)) {
+         if (swap_opt_cmd) {
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_ALT, false);
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_ALT_R, false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_ALT],
++                                 false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_ALT_R],
++                                 false);
+         } else {
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_META_L, false);
+-            qkbd_state_key_event(kbd, Q_KEY_CODE_META_R, false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_META_L],
++                                 false);
++            qkbd_state_key_event(kbd,
++                                 qemu_input_map_qcode_to_linux[Q_KEY_CODE_META_R],
++                                 false);
+         }
+     }
+ 
+@@ -1026,7 +1055,9 @@ - (bool) handleEventLocked:(NSEvent *)event
+             }
+ 
+             if (qemu_console_is_graphic(dcl.con)) {
+-                qkbd_state_key_event(kbd, keycode, true);
++                qkbd_state_key_event(kbd,
++                                     qemu_input_map_qcode_to_linux[keycode],
++                                     true);
+             } else {
+                 [self handleMonitorInput: event];
+             }
+@@ -1041,7 +1072,9 @@ - (bool) handleEventLocked:(NSEvent *)event
+             }
+ 
+             if (qemu_console_is_graphic(dcl.con)) {
+-                qkbd_state_key_event(kbd, keycode, false);
++                qkbd_state_key_event(kbd,
++                                     qemu_input_map_qcode_to_linux[keycode],
++                                     false);
+             }
+             return true;
+         case NSEventTypeScrollWheel:
 
 -- 
 2.54.0

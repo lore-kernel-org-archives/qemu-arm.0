@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F940CD37B2
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5ACCD3447
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFf-0000bR-1T; Sat, 09 May 2026 06:49:43 -0400
+	id 1wLfFj-000113-U3; Sat, 09 May 2026 06:49:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF2-0008Ke-82; Sat, 09 May 2026 06:49:05 -0400
+ id 1wLfF5-0008Ok-SU; Sat, 09 May 2026 06:49:09 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEx-0001eB-Ir; Sat, 09 May 2026 06:49:02 -0400
+ id 1wLfEz-0001f3-Ph; Sat, 09 May 2026 06:49:06 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2I090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2F090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
  Sat, 9 May 2026 19:48:00 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=kULJOiJnDDjssqVDbI5iwGpZTZrb3TnrgM+JgQAbtfc=; 
+DKIM-Signature: a=rsa-sha256; bh=f4nMAQnz85jIi6jdDFcVx4lxK79NORQbClAxHDODkiQ=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323681; v=1;
- b=U7FvxOZYb64dASiStS8BYG0QX9xqQOpZaG2vOiD81Rlf2Cp8TbwcgU5rr752oPph
- 9MGipn7EliRW4uuk9qMoi9pOu95ZPjeniOhz7o+qts5lTr5BaGNHBGOhuxXY5vVr
- hdfTZqLO62gPqN/b10sJL7P9R0XtbF+hoMxRObdmwSC9LvEKTuiDkpM+pZauJPHK
- TUxbnx752HSlz6cyXbpPStsJAOOHc4TepjfXIhwFjRL7yS87EfDq8G8TG1oB0c6e
- WqtmQvkEmaINu/vsAx+5j0/zPSJeY4Oqw7GymMFtgb65PEQY4Nzhn3HpBA0Jsnmb
- m3wWx9gqG3w91Klt33dj3g==
+ s=rs20250326; t=1778323680; v=1;
+ b=mkWozBtIhSQ4AErzPubxtD762Kk4buzYx8ChukK/HzpnL3QUE2HfOlfsbXCGcQLY
+ Cm9OAO0R4TlKWJQuZR7cWD91wQYcHeayJWfY3H1kbb5t6l0XLRzfSMMIQTa08mkD
+ k07uQZvGLtbCIP0ZXNHpuZTB1Nu9vhzLqn9atc5rNz8LWVeOhq9wYmPO8glQXBx0
+ nKM1e1/8YLtvM9mpAoEZ5qiuQdz0hp4On1cB4wUWeexrlrmsr7d1G/DANIb3GzAj
+ arQ31vS1fRfccHvZzYXeeK4lwLgH9YBArxPobVIqeuBNz/TMt0yicUsRclRigYfN
+ 9aIgyonBSPJP+3H7aa6KHQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:29 +0900
-Subject: [PATCH RFC 17/28] ui/dbus: Use Linux key codes
+Date: Sat, 09 May 2026 19:34:26 +0900
+Subject: [PATCH RFC 14/28] hw/m68k/next-kbd: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-17-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260509-input-v1-14-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1585;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5735;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=xAuXkeg2eNkRQq4YBbr0QEEzWGOMz8DYnOVntd0qrj0=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gWuXo1R/6JfWaxc65h9V3zL3t7zKKqktF+eICFUXP
- P+2uHl3RykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwETaYhkZjq0zP3c28VffKpVZ
- LtePbl/FyTF3+Tfb598vfFcvPqG1tobhf27D4/K9lk/2Gy7cnbYhUTByyZqIlb8/G5s7J1sHdQa
- fYAAA
+ bh=iyLiD2EoMRDRtaROtRWs8sE4KAkgfKNGzp5wMpy28GQ=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gSsKE61i8g7VZT+d07hUrfdU++y2ltBH3EGHZArWx
+ zp+CPLsKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmMi28wz/fabx+od63yyqvST5
+ 52crq7GqX9rM/VJxvtuMz/9ItztmxMhwatcr+R91c+ep+Iu+d/1WkKde9VX1YceOuQFKl189SXr
+ NAgA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,41 +96,171 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- ui/dbus-console.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/m68k/next-kbd.c | 118 ++++++++++++++++++++++++++---------------------------
+ 1 file changed, 59 insertions(+), 59 deletions(-)
 
-diff --git a/ui/dbus-console.c b/ui/dbus-console.c
-index a46c2531c6f8..c7f2c69baf2c 100644
---- a/ui/dbus-console.c
-+++ b/ui/dbus-console.c
-@@ -340,11 +340,11 @@ dbus_kbd_press(DBusDisplayConsole *ddc,
-                GDBusMethodInvocation *invocation,
-                guint arg_keycode)
+diff --git a/hw/m68k/next-kbd.c b/hw/m68k/next-kbd.c
+index 7efbd806b7c8..7be5ab2fb798 100644
+--- a/hw/m68k/next-kbd.c
++++ b/hw/m68k/next-kbd.c
+@@ -31,6 +31,7 @@
+ #include "qemu/log.h"
+ #include "hw/core/sysbus.h"
+ #include "hw/m68k/next-cube.h"
++#include "standard-headers/linux/input-event-codes.h"
+ #include "ui/console.h"
+ #include "migration/vmstate.h"
+ #include "qom/object.h"
+@@ -165,59 +166,59 @@ static const MemoryRegionOps kbd_ops = {
+     .endianness = DEVICE_BIG_ENDIAN,
+ };
+ 
+-static const int qcode_to_nextkbd_keycode[] = {
+-    [Q_KEY_CODE_ESC]           = 0x49,
+-    [Q_KEY_CODE_1]             = 0x4a,
+-    [Q_KEY_CODE_2]             = 0x4b,
+-    [Q_KEY_CODE_3]             = 0x4c,
+-    [Q_KEY_CODE_4]             = 0x4d,
+-    [Q_KEY_CODE_5]             = 0x50,
+-    [Q_KEY_CODE_6]             = 0x4f,
+-    [Q_KEY_CODE_7]             = 0x4e,
+-    [Q_KEY_CODE_8]             = 0x1e,
+-    [Q_KEY_CODE_9]             = 0x1f,
+-    [Q_KEY_CODE_0]             = 0x20,
+-    [Q_KEY_CODE_MINUS]         = 0x1d,
+-    [Q_KEY_CODE_EQUAL]         = 0x1c,
+-    [Q_KEY_CODE_BACKSPACE]     = 0x1b,
+-
+-    [Q_KEY_CODE_Q]             = 0x42,
+-    [Q_KEY_CODE_W]             = 0x43,
+-    [Q_KEY_CODE_E]             = 0x44,
+-    [Q_KEY_CODE_R]             = 0x45,
+-    [Q_KEY_CODE_T]             = 0x48,
+-    [Q_KEY_CODE_Y]             = 0x47,
+-    [Q_KEY_CODE_U]             = 0x46,
+-    [Q_KEY_CODE_I]             = 0x06,
+-    [Q_KEY_CODE_O]             = 0x07,
+-    [Q_KEY_CODE_P]             = 0x08,
+-    [Q_KEY_CODE_RET]           = 0x2a,
+-    [Q_KEY_CODE_A]             = 0x39,
+-    [Q_KEY_CODE_S]             = 0x3a,
+-
+-    [Q_KEY_CODE_D]             = 0x3b,
+-    [Q_KEY_CODE_F]             = 0x3c,
+-    [Q_KEY_CODE_G]             = 0x3d,
+-    [Q_KEY_CODE_H]             = 0x40,
+-    [Q_KEY_CODE_J]             = 0x3f,
+-    [Q_KEY_CODE_K]             = 0x3e,
+-    [Q_KEY_CODE_L]             = 0x2d,
+-    [Q_KEY_CODE_SEMICOLON]     = 0x2c,
+-    [Q_KEY_CODE_APOSTROPHE]    = 0x2b,
+-    [Q_KEY_CODE_GRAVE_ACCENT]  = 0x26,
+-    [Q_KEY_CODE_Z]             = 0x31,
+-    [Q_KEY_CODE_X]             = 0x32,
+-    [Q_KEY_CODE_C]             = 0x33,
+-    [Q_KEY_CODE_V]             = 0x34,
+-
+-    [Q_KEY_CODE_B]             = 0x35,
+-    [Q_KEY_CODE_N]             = 0x37,
+-    [Q_KEY_CODE_M]             = 0x36,
+-    [Q_KEY_CODE_COMMA]         = 0x2e,
+-    [Q_KEY_CODE_DOT]           = 0x2f,
+-    [Q_KEY_CODE_SLASH]         = 0x30,
+-
+-    [Q_KEY_CODE_SPC]           = 0x38,
++static const int linux_to_nextkbd_keycode[] = {
++    [KEY_ESC]        = 0x49,
++    [KEY_1]          = 0x4a,
++    [KEY_2]          = 0x4b,
++    [KEY_3]          = 0x4c,
++    [KEY_4]          = 0x4d,
++    [KEY_5]          = 0x50,
++    [KEY_6]          = 0x4f,
++    [KEY_7]          = 0x4e,
++    [KEY_8]          = 0x1e,
++    [KEY_9]          = 0x1f,
++    [KEY_0]          = 0x20,
++    [KEY_MINUS]      = 0x1d,
++    [KEY_EQUAL]      = 0x1c,
++    [KEY_BACKSPACE]  = 0x1b,
++
++    [KEY_Q]          = 0x42,
++    [KEY_W]          = 0x43,
++    [KEY_E]          = 0x44,
++    [KEY_R]          = 0x45,
++    [KEY_T]          = 0x48,
++    [KEY_Y]          = 0x47,
++    [KEY_U]          = 0x46,
++    [KEY_I]          = 0x06,
++    [KEY_O]          = 0x07,
++    [KEY_P]          = 0x08,
++    [KEY_ENTER]      = 0x2a,
++    [KEY_A]          = 0x39,
++    [KEY_S]          = 0x3a,
++
++    [KEY_D]          = 0x3b,
++    [KEY_F]          = 0x3c,
++    [KEY_G]          = 0x3d,
++    [KEY_H]          = 0x40,
++    [KEY_J]          = 0x3f,
++    [KEY_K]          = 0x3e,
++    [KEY_L]          = 0x2d,
++    [KEY_SEMICOLON]  = 0x2c,
++    [KEY_APOSTROPHE] = 0x2b,
++    [KEY_GRAVE]      = 0x26,
++    [KEY_Z]          = 0x31,
++    [KEY_X]          = 0x32,
++    [KEY_C]          = 0x33,
++    [KEY_V]          = 0x34,
++
++    [KEY_B]          = 0x35,
++    [KEY_N]          = 0x37,
++    [KEY_M]          = 0x36,
++    [KEY_COMMA]      = 0x2e,
++    [KEY_DOT]        = 0x2f,
++    [KEY_SLASH]      = 0x30,
++
++    [KEY_SPACE]      = 0x38,
+ };
+ 
+ static void nextkbd_put_keycode(NextKBDState *s, int keycode)
+@@ -246,15 +247,14 @@ static void nextkbd_event(DeviceState *dev, QemuConsole *src,
+                           QemuInputEvent *evt)
  {
--    QKeyCode qcode = qemu_input_key_number_to_qcode(arg_keycode);
-+    unsigned int lnx = qemu_input_key_number_to_linux(arg_keycode);
+     NextKBDState *s = NEXTKBD(dev);
+-    int qcode, keycode;
++    int keycode;
  
-     trace_dbus_kbd_press(arg_keycode);
+-    qcode = qemu_input_linux_to_qcode(evt->key.key);
+-    if (qcode >= ARRAY_SIZE(qcode_to_nextkbd_keycode)) {
++    if (evt->key.key >= ARRAY_SIZE(linux_to_nextkbd_keycode)) {
+         return;
+     }
  
--    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], true);
-+    qkbd_state_key_event(ddc->kbd, lnx, true);
+     /* Shift key currently has no keycode, so handle separately */
+-    if (qcode == Q_KEY_CODE_SHIFT) {
++    if (evt->key.key == KEY_LEFTSHIFT) {
+         if (evt->key.down) {
+             s->shift |= KD_LSHIFT;
+         } else {
+@@ -262,7 +262,7 @@ static void nextkbd_event(DeviceState *dev, QemuConsole *src,
+         }
+     }
  
-     qemu_dbus_display1_keyboard_complete_press(ddc->iface_kbd, invocation);
+-    if (qcode == Q_KEY_CODE_SHIFT_R) {
++    if (evt->key.key == KEY_RIGHTSHIFT) {
+         if (evt->key.down) {
+             s->shift |= KD_RSHIFT;
+         } else {
+@@ -270,7 +270,7 @@ static void nextkbd_event(DeviceState *dev, QemuConsole *src,
+         }
+     }
  
-@@ -356,11 +356,11 @@ dbus_kbd_release(DBusDisplayConsole *ddc,
-                  GDBusMethodInvocation *invocation,
-                  guint arg_keycode)
- {
--    QKeyCode qcode = qemu_input_key_number_to_qcode(arg_keycode);
-+    unsigned int lnx = qemu_input_key_number_to_linux(arg_keycode);
- 
-     trace_dbus_kbd_release(arg_keycode);
- 
--    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], false);
-+    qkbd_state_key_event(ddc->kbd, lnx, false);
- 
-     qemu_dbus_display1_keyboard_complete_release(ddc->iface_kbd, invocation);
- 
+-    keycode = qcode_to_nextkbd_keycode[qcode];
++    keycode = linux_to_nextkbd_keycode[evt->key.key];
+     if (!keycode) {
+         return;
+     }
 
 -- 
 2.54.0

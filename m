@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E08CD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06108CD343F
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:50:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFU-0000B7-6q; Sat, 09 May 2026 06:49:32 -0400
+	id 1wLfF5-0008Np-NG; Sat, 09 May 2026 06:49:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEZ-000888-BI; Sat, 09 May 2026 06:48:36 -0400
+ id 1wLfEZ-00087z-8a; Sat, 09 May 2026 06:48:36 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEV-0001b4-Dh; Sat, 09 May 2026 06:48:35 -0400
+ id 1wLfEV-0001b1-AO; Sat, 09 May 2026 06:48:34 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2O090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2G090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:48:02 +0900 (JST)
+ Sat, 9 May 2026 19:48:00 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=YTUJN8DvpmZZcN9mDHOpec3svSSoyNrcd98/RwrJvLw=; 
+DKIM-Signature: a=rsa-sha256; bh=uJTvyFxVV0KiKR88wATfRrbdCU5rpbZH8pTJ+9EpZgo=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323682; v=1;
- b=DyjeJ6PUd5UqbALRrC/mi1p+ibniqWi79qeUsWTcqYNqDVXvFpCAOPFnMX+5kHiy
- wOMJ56imL+NxJYGxuILmX81SUwO4IBugKzQRHqZS/sfljCToix8Alm1avwjCFYp7
- 8LVs333zTwY+9iIzyzTyu/ZxsajzitJFRGzA7jUMLqWHv8Rrqn33WP6r1MuMS9P/
- hh9v+G1hBI9lOtNXtT4UNA27Vpk08/gxS6RMaaXqjmQbMiE6NrfmVPmGxdC+FNJ9
- fNQFsc+KwcSc0xMFxgPrPA3sfkGeFAyOfNUrHcJ2nD4758AVIvJ5t2KFb3hlnuve
- l4aUjBb910hUuDTnLc9e5Q==
+ s=rs20250326; t=1778323680; v=1;
+ b=ck991oxPhvCSI7vlQnQmqDhO8qPNpIzbu7vQgVPPFIogHVvJJp6FOUtEbLRQs7Wq
+ rJybWJpAWrQKHDhTosWtzhajw2VXe/kw3fqKqiG2UhS9trsPHRXw5t29i1L3Pa2s
+ +j0bnxv4lZ7iKLJ+RSnx/Fk6fV06j1QEd0f2DZaYOkH+hIvabREPjGBGXAfix4UT
+ u5sxCXEef9jdvlJ4+vb2i2Iaa1BR1/88G7zSBM9FftH39xA9FNW9i9w0sJwKTfQE
+ R8iErBOQm5A6UBQcyPdBjMiMgsjAiy42tAkuW960cpjVozRZs7xwxt+nafvBV0Ls
+ pc6J3r84Hg0rUW0OzLGetw==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:35 +0900
-Subject: [PATCH RFC 23/28] ui/sdl2: Use Linux key codes
+Date: Sat, 09 May 2026 19:34:27 +0900
+Subject: [PATCH RFC 15/28] replay: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-23-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260509-input-v1-15-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2925;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2453;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=OdEPbaMV5dgyq/JC3Lwkk0j6DIE06Qr7DPFSHzAnI3M=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gZvTT4U2ss8NKJdvXeg2Y0de6btz/9wzLLeGS7zfk
- B6u4t/eUcrCIMbFICumyJJStJtbI7r2U2FCfAvMHFYmkCEMXJwCMBGmuYwMx+5Pata+Zh5Wn7q0
- I/L81PVyX9e94Hu3UUX9sfJmsY9tkYwMR1dwi33gvrf35Esls9dyZyvKls2+PEGvyb9Ik03yePN
- DHgA=
+ bh=VN8yQ5lgMxcp3qE4EJjzPaXZLmpoeQItNok0BraEMYc=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gautArYL7NVW29YU/82Suvbv1+mU9UyamRs3sy+8c
+ O1P+/W5HaUsDGJcDLJiiiwpRbu5NaJrPxUmxLfAzGFlAhnCwMUpABOZZM3wz26v8oI5qjXvGxZy
+ vDj3JaP5tf5XTkkXuTjpzYxcrldXaTIyXGPb6Kos+3ROQNmxc851LwXPL1cJKFylWjyxeb+YNMN
+ ETgA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,72 +96,65 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- ui/sdl2-input.c | 18 +++++++++---------
- ui/trace-events |  2 +-
- 2 files changed, 10 insertions(+), 10 deletions(-)
+ replay/replay-input.c | 20 +++-----------------
+ replay/replay.c       |  2 +-
+ 2 files changed, 4 insertions(+), 18 deletions(-)
 
-diff --git a/ui/sdl2-input.c b/ui/sdl2-input.c
-index fdbdc427dc9e..7bebc3f3e5ce 100644
---- a/ui/sdl2-input.c
-+++ b/ui/sdl2-input.c
-@@ -24,6 +24,7 @@
- /* Ported SDL 1.2 code to 2.0 by Dave Airlie. */
+diff --git a/replay/replay-input.c b/replay/replay-input.c
+index acf0993c7285..c86e00af0efd 100644
+--- a/replay/replay-input.c
++++ b/replay/replay-input.c
+@@ -23,8 +23,7 @@ void replay_save_input_event(QemuInputEvent *evt)
  
- #include "qemu/osdep.h"
-+#include "standard-headers/linux/input-event-codes.h"
- #include "ui/console.h"
- #include "ui/input.h"
- #include "ui/sdl2.h"
-@@ -32,28 +33,27 @@
- void sdl2_process_key(struct sdl2_console *scon,
-                       SDL_KeyboardEvent *ev)
+     switch (evt->type) {
+     case INPUT_EVENT_KIND_KEY:
+-        replay_put_dword(KEY_VALUE_KIND_QCODE);
+-        replay_put_dword(qemu_input_linux_to_qcode(evt->key.key));
++        replay_put_dword(evt->key.key);
+         replay_put_byte(evt->key.down);
+         break;
+     case INPUT_EVENT_KIND_BTN:
+@@ -55,25 +54,12 @@ void replay_save_input_event(QemuInputEvent *evt)
+ QemuInputEvent *replay_read_input_event(void)
  {
+     QemuInputEvent *evt = g_new(QemuInputEvent, 1);
 -    int qcode;
-+    unsigned int lnx;
-     QemuConsole *con = scon->dcl.con;
  
--    if (ev->keysym.scancode >= qemu_input_map_usb_to_qcode_len) {
-+    if (ev->keysym.scancode >= qemu_input_map_usb_to_linux_len) {
-         return;
-     }
--    qcode = qemu_input_map_usb_to_qcode[ev->keysym.scancode];
--    trace_sdl2_process_key(ev->keysym.scancode, qcode,
-+    lnx = qemu_input_map_usb_to_linux[ev->keysym.scancode];
-+    trace_sdl2_process_key(ev->keysym.scancode, lnx,
-                            ev->type == SDL_KEYDOWN ? "down" : "up");
--    qkbd_state_key_event(scon->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         ev->type == SDL_KEYDOWN);
-+    qkbd_state_key_event(scon->kbd, lnx, ev->type == SDL_KEYDOWN);
+     evt->type = replay_get_dword();
+     switch (evt->type) {
+     case INPUT_EVENT_KIND_KEY:
+-        switch (replay_get_dword()) {
+-        case KEY_VALUE_KIND_NUMBER:
+-            qcode = qemu_input_key_number_to_qcode(replay_get_qword());
+-            evt->key.down = replay_get_byte();
+-            break;
+-        case KEY_VALUE_KIND_QCODE:
+-            qcode = (QKeyCode)replay_get_dword();
+-            evt->key.down = replay_get_byte();
+-            break;
+-        default:
+-            g_assert_not_reached();
+-        }
+-        evt->key.key = qcode < qemu_input_map_qcode_to_linux_len ?
+-                       qemu_input_map_qcode_to_linux[qcode] : 0;
++        evt->key.key = replay_get_dword();
++        evt->key.down = replay_get_byte();
+         break;
+     case INPUT_EVENT_KIND_BTN:
+         evt->btn.button = (InputButton)replay_get_dword();
+diff --git a/replay/replay.c b/replay/replay.c
+index 2e5c6fa82eaa..14437b32566b 100644
+--- a/replay/replay.c
++++ b/replay/replay.c
+@@ -22,7 +22,7 @@
  
-     if (QEMU_IS_TEXT_CONSOLE(con)) {
-         QemuTextConsole *s = QEMU_TEXT_CONSOLE(con);
-         bool ctrl = qkbd_state_modifier_get(scon->kbd, QKBD_MOD_CTRL);
-         if (ev->type == SDL_KEYDOWN) {
--            switch (qcode) {
--            case Q_KEY_CODE_RET:
-+            switch (lnx) {
-+            case KEY_ENTER:
-                 qemu_text_console_put_keysym(s, '\n');
-                 break;
-             default:
--                qemu_text_console_put_qcode(s, qcode, ctrl);
-+                qemu_text_console_put_linux(s, lnx, ctrl);
-                 break;
-             }
-         }
-diff --git a/ui/trace-events b/ui/trace-events
-index 4d112bd2ba3b..c417d988893a 100644
---- a/ui/trace-events
-+++ b/ui/trace-events
-@@ -108,7 +108,7 @@ input_event_mtt(int conidx, const char *axis, int value) "con %d, axis %s, value
- input_event_sync(void) ""
+ /* Current version of the replay mechanism.
+    Increase it when file format changes. */
+-#define REPLAY_VERSION              0xe0200d
++#define REPLAY_VERSION              0xe0200e
+ /* Size of replay log header */
+ #define HEADER_SIZE                 (sizeof(uint32_t) + sizeof(uint64_t))
  
- # sdl2-input.c
--sdl2_process_key(int sdl_scancode, int qcode, const char *action) "translated SDL scancode %d to QKeyCode %d (%s)"
-+sdl2_process_key(int sdl_scancode, unsigned int lnx, const char *action) "translated SDL scancode %d to Linux scancode %u (%s)"
- 
- # spice-display.c
- qemu_spice_add_memslot(int qid, uint32_t slot_id, unsigned long virt_start, unsigned long virt_end, int async) "%d %u: host virt 0x%lx - 0x%lx async=%d"
 
 -- 
 2.54.0

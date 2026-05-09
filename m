@@ -4,77 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2905FCD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D33DCD3445
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 15:55:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFk-00012Y-3s; Sat, 09 May 2026 06:49:48 -0400
+	id 1wLk1e-0002pH-VN; Sat, 09 May 2026 11:55:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF2-0008KV-6s; Sat, 09 May 2026 06:49:05 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk1e-0002p9-2O
+ for qemu-arm@nongnu.org; Sat, 09 May 2026 11:55:34 -0400
+Received: from smtpout4.mo534.mail-out.ovh.net ([188.165.54.92])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEx-0001e6-Ib; Sat, 09 May 2026 06:49:02 -0400
-Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
- [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2E090834
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:47:59 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=jYzmLTbWax8JogN3WJf0BurekwSvWMhETlPn4yFttW0=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323680; v=1;
- b=iunl5CceMu7WtKDfvF4u1wtP4gK8f2BvxgidjHusJV9SVQMKD/7i69jH8M1ebFU3
- 8OmeptkXILo4vLeHMJMqccFaQr/CGDspkHNnC1+ssA8QFjq/P5uJ0vBAaiCKvPld
- zsgVNMNyo9G6pG4aoAHSasB1Pnvjl/NUWeXFzCYsZHhXt0eF4nSnhrG9qhl8hysh
- 4loo6PYKlcLs3l2b1hM7zIqjzB4+XHqgLFv2dKyXwVH1io0bD+rTTDBKC7l1+upV
- 0xpR+OFd0lIwWXPJVgsDGC+nnmBRIu99BtWyPTXpQ9UC8CinnVfJfI8RB4QdU7PV
- fNDJbFAXY33ow3cKZaUMrA==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:25 +0900
-Subject: [PATCH RFC 13/28] hw/input/virtio-input: Use Linux key codes
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk1b-00061z-3E
+ for qemu-arm@nongnu.org; Sat, 09 May 2026 11:55:33 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gCVtw1kBYz6CTq;
+ Sat,  9 May 2026 15:55:19 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Sat,  9 May 2026 15:55:19 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.229])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gCVtv3hPgz1xqj; Sat,  9 May 2026 15:55:19 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.6])
+ (Authenticated sender: clg@kaod.org)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 3DDA8940FE0; 
+ Sat,  9 May 2026 15:55:17 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-113S0074c52f93e-0a9e-4fd0-8972-54da93aee7dd,
+ 3D272E53171ADE400D76652CEA3707ABC032970B) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <d21f5891-8d58-4ace-b1a9-16d4e252cc0e@kaod.org>
+Date: Sat, 9 May 2026 17:55:16 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-13-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 2/2] hw/usb/hcd-ehci: Rename CTRLDSSEGMENT default
+ property
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3015;
- i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=EmtPHZ4VrwnBl0E92Q8PvtguFqdBkezuol02LtNVvV0=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gSvzfv+xztew1A+df7T50dHW53turpq15NGvZXNlS
- vW/r47f1VHKwiDGxSArpsiSUrSbWyO69lNhQnwLzBxWJpAhDFycAjCRa2cYGS6cPLNlwn1OU/c2
- qY6GvRsP5i3et6l30cfC6DMc/2Y8dExn+CvGt4ndQ6pMOqLZK1Ohxn69sG3GNOMZhvZXdSpXbjF
- QZQIA
-X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
- fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
+ "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>
+References: <20260506032643.2510575-1-jamin_lin@aspeedtech.com>
+ <20260506032643.2510575-3-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260506032643.2510575-3-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 6406088996091505709
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFBfURumOGmCmFQb4sjl+N91ueSrBgiBKoXewnNDtuijjljXypbxl1JR5afzCGcWbnBBTTuERXpzoTmco2lxYCIsAe76twNORWoLJdzyCSEwj8nTrAVlMG8SVewl4pbRSNPhE2MlrLUoQcH0cT+MMJByamv7oYffteVKm2jr+oiqEqGoBarcyo2fe23Y4fkW8s/9gUTcVKoMgBqaSzzRJwrPUBJoCwOhRp0u0Yg14TQm41r2EX1RoEeerN4jxbEOnZ+JQsH0fsFdLYaHkKD7Kg3sNNQvw+Ful02wKZLSG6/LlmuEeZAFdNfwhR4m7etlvKyQidg/njPmwS/SZSWXxo7k2w3A2eRYD0xIa/HbOZxfTb8fAm1/ACGTqRoTCpe0JwK4jGM+WFCbzUZpbHq6T/aW3bI0mA1RbtffrWVN9L4W9rYQDsMUbap9jSK1NxFr6yYtuS282m9V+hjIlJamUgwkX60mjOha9XlajKnjSkD2PINmX4W4Qmk8UFda/h2N4nbsZRTE45q03H1WgsK5RluGcPphhrN5gSVonW4Sedv27YZFkKC3Lwv2tzCvVV3/PtT1m1jEDFQKKd2F1gA1e4qz+s+/E7yvs3ierI805No0au+Tt/poRr36k1V+Ow6PXAelF11AhTEqnaEcGWlYykaVCCRAe5wZ7PFUc+RktEBJA
+DKIM-Signature: a=rsa-sha256; bh=9XHfh7FjYdytlssQ2iKkv7CoKQxusYtIpSUQytcDrpk=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1778342121; v=1;
+ b=iarjIK05288/Bup1kAIM8A6KpY095c9Mp8C14eEvLyinO8E4Jgads6p7/yvlH/Kg8OWuGPvs
+ BA3flZ3nEKPx1V5ci2LSrnD17TT68++8wkLM4bBVeykyJx7SqyzMICD/YPLTHtnZx1W8SkuttYn
+ 8f+LRx0zgqxs43Wah4URNG3mzKeNvNLju3foq1Df8oFMyIk2OWW7AJF/MTdEvYg/yJKbJ7f86Nu
+ u1itpyaXCZibJwoyJvwGw8RC+wc8tjpPdxEyrefY0zNJCUtYH8ZFUjS218V01emMb8j7YY/xj0x
+ QzrCcH070N7cLlgVw195OKMFaj0g9L6Ie9K/8Zzj/WCDQ==
+Received-SPF: pass client-ip=188.165.54.92; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo534.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,81 +140,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QemuInputEvent now stores Linux key codes for key events. Use those
-codes directly instead of translating between internal key code
-representations.
+On 5/6/26 05:26, Jamin Lin wrote:
+> Rename the EHCI CTRLDSSEGMENT default property and
+> internal field to improve readability.
 
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
- hw/input/virtio-input-hid.c | 40 +++++++++++++++++++++++-----------------
- 1 file changed, 23 insertions(+), 17 deletions(-)
+I'd rather keep the previous name since it machines the
+EHCI specs. See :
 
-diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
-index 1d2e922567ab..75fe45d89a2a 100644
---- a/hw/input/virtio-input-hid.c
-+++ b/hw/input/virtio-input-hid.c
-@@ -83,23 +83,13 @@ static void virtio_input_handle_event(DeviceState *dev, QemuConsole *src,
- {
-     VirtIOInput *vinput = VIRTIO_INPUT(dev);
-     virtio_input_event event;
--    int qcode;
- 
-     switch (evt->type) {
-     case INPUT_EVENT_KIND_KEY:
--        qcode = qemu_input_linux_to_qcode(evt->key.key);
--        if (qcode < qemu_input_map_qcode_to_linux_len &&
--            qemu_input_map_qcode_to_linux[qcode]) {
--            event.type  = cpu_to_le16(EV_KEY);
--            event.code  = cpu_to_le16(qemu_input_map_qcode_to_linux[qcode]);
--            event.value = cpu_to_le32(evt->key.down ? 1 : 0);
--            virtio_input_send(vinput, &event);
--        } else {
--            if (evt->key.down) {
--                fprintf(stderr, "%s: unmapped key: %d [%s]\n", __func__,
--                        qcode, QKeyCode_str(qcode));
--            }
--        }
-+        event.type  = cpu_to_le16(EV_KEY);
-+        event.code  = cpu_to_le16(evt->key.key);
-+        event.value = cpu_to_le32(evt->key.down ? 1 : 0);
-+        virtio_input_send(vinput, &event);
-         break;
-     case INPUT_EVENT_KIND_BTN:
-         if ((evt->btn.button == INPUT_BUTTON_WHEEL_UP ||
-@@ -293,12 +283,28 @@ static void virtio_keyboard_init(Object *obj)
- {
-     VirtIOInputHID *vhid = VIRTIO_INPUT_HID(obj);
-     VirtIOInput *vinput = VIRTIO_INPUT(obj);
-+    virtio_input_config ext = {
-+        .select = VIRTIO_INPUT_CFG_EV_BITS,
-+        .subsel = EV_KEY,
-+        .size = DIV_ROUND_UP(KEY_REPLY, 8)
-+    };
-+    unsigned int i;
- 
-     vhid->handler = &virtio_keyboard_handler;
-     virtio_input_init_config(vinput, virtio_keyboard_config);
--    virtio_input_extend_config(vinput, qemu_input_map_qcode_to_linux,
--                               qemu_input_map_qcode_to_linux_len,
--                               VIRTIO_INPUT_CFG_EV_BITS, EV_KEY);
-+
-+    /*
-+     * Cover as many keys as possible since we cannot tell what keys the host
-+     * supports. This follows Linux xen-kbdfront's approach:
-+     * https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/diff/drivers/input/xen-kbdfront.c?id=4ee36dc08e5c4d16d078f59acd6d9d536f9718dd
-+     *
-+     * Stop before KEY_REPLY for migration compatibility.
-+     */
-+    for (i = KEY_ESC; i < KEY_REPLY; i++) {
-+        ext.u.bitmap[i / 8] |= (1 << (i % 8));
-+    }
-+
-+    virtio_input_add_config(vinput, &ext);
- }
- 
- static const TypeInfo virtio_keyboard_info = {
+   2.3.5 CTRLDSSEGMENT Control Data Structure Segment Register
 
--- 
-2.54.0
+So I will drop this patch unless we have a very good reason
+not to.
+
+Thanks,
+
+C.
+
+
+> 
+> No functional change.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/usb/hcd-ehci.h       | 6 +++---
+>   hw/arm/aspeed_ast27x0.c | 2 +-
+>   hw/usb/hcd-ehci.c       | 2 +-
+>   3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
+> index b5ac9c8670..b739c81870 100644
+> --- a/hw/usb/hcd-ehci.h
+> +++ b/hw/usb/hcd-ehci.h
+> @@ -268,7 +268,7 @@ struct EHCIState {
+>        */
+>       bool migrate_fetch_addr_64bit;
+>       bool caps_64bit_addr;
+> -    uint32_t ctrldssegment_default;
+> +    uint32_t ctrl_ds_segment_default;
+>   
+>       /*
+>        *  EHCI spec version 1.0 Section 2.3
+> @@ -335,8 +335,8 @@ struct EHCIState {
+>                        ehci.migrate_fetch_addr_64bit, true), \
+>       DEFINE_PROP_BOOL("caps-64bit-addr", _state, \
+>                        ehci.caps_64bit_addr, false), \
+> -    DEFINE_PROP_UINT32("ctrldssegment-default", _state, \
+> -                       ehci.ctrldssegment_default, 0)
+> +    DEFINE_PROP_UINT32("ctrl-ds-segment-default", _state, \
+> +                       ehci.ctrl_ds_segment_default, 0)
+>   
+>   extern const VMStateDescription vmstate_ehci;
+>   
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index a8f0bc389c..5865894658 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -856,7 +856,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>   
+>       /* EHCI */
+>       for (i = 0; i < sc->ehcis_num; i++) {
+> -        object_property_set_int(OBJECT(&s->ehci[i]), "ctrldssegment-default",
+> +        object_property_set_int(OBJECT(&s->ehci[i]), "ctrl-ds-segment-default",
+>                                   sc->memmap[ASPEED_DEV_SDRAM] >> 32,
+>                                   &error_abort);
+>           object_property_set_bool(OBJECT(&s->ehci[i]), "caps-64bit-addr", true,
+> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+> index 56ac8f6ae5..133501b0f4 100644
+> --- a/hw/usb/hcd-ehci.c
+> +++ b/hw/usb/hcd-ehci.c
+> @@ -1134,7 +1134,7 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
+>                             "64-bit addressing capability is disabled\n");
+>               return;
+>           }
+> -        val |= s->ctrldssegment_default;
+> +        val |= s->ctrl_ds_segment_default;
+>           break;
+>   
+>       case ASYNCLISTADDR:
 
 

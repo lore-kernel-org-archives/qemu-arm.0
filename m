@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F7F2CD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F940CD37B2
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:54:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFf-0000cF-39; Sat, 09 May 2026 06:49:43 -0400
+	id 1wLfFf-0000bR-1T; Sat, 09 May 2026 06:49:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF4-0008Me-3L; Sat, 09 May 2026 06:49:07 -0400
+ id 1wLfF2-0008Ke-82; Sat, 09 May 2026 06:49:05 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEy-0001eP-4v; Sat, 09 May 2026 06:49:05 -0400
+ id 1wLfEx-0001eB-Ir; Sat, 09 May 2026 06:49:02 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY28090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2I090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:47:58 +0900 (JST)
+ Sat, 9 May 2026 19:48:00 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=z/EGey40LOEv17Pvn66VgBRZhGLL4HJQUkguBO+Y1og=; 
+DKIM-Signature: a=rsa-sha256; bh=kULJOiJnDDjssqVDbI5iwGpZTZrb3TnrgM+JgQAbtfc=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323678; v=1;
- b=GYMIwyk8UNicrCM4cO6ol5CgpiMFcpyJRHEzaB1y5mMJ+e3G+jJD2FY7wc/tdjei
- 7uUvvXCo6sKFT+7m2CiA6Sn6VjJdZ6yMVyLdypAGnRE6FR49gnosYvZwSGdD0BNJ
- BLt8KWwisGb+lka6q95XTW5npP71NUeEmPKae8cz2NKD+4z1APN3rVOO8Btis6XC
- 2vD9H3TXrYSEtxq+CvV0GYaknE6MAWunPOAB5whuoXeCFzt0P6mwKFQo2swNQX6L
- eR2rCUwiOvOlH3rNFroJPwuT2QqE4ar4Tp8nvmErDCT9a6LIUYdVfCfuDmLGufaz
- yq6BbhtvoCB0m8ld80Q1rQ==
+ s=rs20250326; t=1778323681; v=1;
+ b=U7FvxOZYb64dASiStS8BYG0QX9xqQOpZaG2vOiD81Rlf2Cp8TbwcgU5rr752oPph
+ 9MGipn7EliRW4uuk9qMoi9pOu95ZPjeniOhz7o+qts5lTr5BaGNHBGOhuxXY5vVr
+ hdfTZqLO62gPqN/b10sJL7P9R0XtbF+hoMxRObdmwSC9LvEKTuiDkpM+pZauJPHK
+ TUxbnx752HSlz6cyXbpPStsJAOOHc4TepjfXIhwFjRL7yS87EfDq8G8TG1oB0c6e
+ WqtmQvkEmaINu/vsAx+5j0/zPSJeY4Oqw7GymMFtgb65PEQY4Nzhn3HpBA0Jsnmb
+ m3wWx9gqG3w91Klt33dj3g==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:19 +0900
-Subject: [PATCH RFC 07/28] hw/arm/musicpal: Use Linux key codes
+Date: Sat, 09 May 2026 19:34:29 +0900
+Subject: [PATCH RFC 17/28] ui/dbus: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-7-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260509-input-v1-17-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1974;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1585;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=RnkN4NRWsDSiP2qNkaQCIyNqKJi7Ny8kXSY3/H4eSpI=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gYvPjmwQMus5Pi/fPct8to3mcd5pYs93zy5bH+/D+
- b53sfWDjlIWBjEuBlkxRZaUot3cGtG1nwoT4ltg5rAygQxh4OIUgIlkqzP8M515nLfzurpPbNha
- jc28ofbaTSt2xdss37tO9u5e55n3djL896hgWnhaYVHuhojiOVV1d2OUp01esjVzWnrC7VncsVL
- nWAE=
+ bh=xAuXkeg2eNkRQq4YBbr0QEEzWGOMz8DYnOVntd0qrj0=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gWuXo1R/6JfWaxc65h9V3zL3t7zKKqktF+eICFUXP
+ P+2uHl3RykLgxgXg6yYIktK0W5ujejaT4UJ8S0wc1iZQIYwcHEKwETaYhkZjq0zP3c28VffKpVZ
+ LtePbl/FyTF3+Tfb598vfFcvPqG1tobhf27D4/K9lk/2Gy7cnbYhUTByyZqIlb8/G5s7J1sHdQa
+ fYAAA
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,71 +96,41 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/arm/musicpal.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ ui/dbus-console.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index bddbfb5d20a3..10722e2f6d07 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -24,6 +24,7 @@
- #include "hw/core/ptimer.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/block/flash.h"
-+#include "standard-headers/linux/input-event-codes.h"
- #include "ui/console.h"
- #include "hw/i2c/i2c.h"
- #include "hw/i2c/bitbang_i2c.h"
-@@ -1068,40 +1069,39 @@ static void musicpal_key_event(DeviceState *dev, QemuConsole *src,
-                                QemuInputEvent *evt)
+diff --git a/ui/dbus-console.c b/ui/dbus-console.c
+index a46c2531c6f8..c7f2c69baf2c 100644
+--- a/ui/dbus-console.c
++++ b/ui/dbus-console.c
+@@ -340,11 +340,11 @@ dbus_kbd_press(DBusDisplayConsole *ddc,
+                GDBusMethodInvocation *invocation,
+                guint arg_keycode)
  {
-     musicpal_key_state *s = MUSICPAL_KEY(dev);
--    int qcode = qemu_input_linux_to_qcode(evt->key.key);
-     uint32_t event = 0;
-     int i;
+-    QKeyCode qcode = qemu_input_key_number_to_qcode(arg_keycode);
++    unsigned int lnx = qemu_input_key_number_to_linux(arg_keycode);
  
--    switch (qcode) {
--    case Q_KEY_CODE_UP:
-+    switch (evt->key.key) {
-+    case KEY_UP:
-         event = MP_KEY_WHEEL_NAV | MP_KEY_WHEEL_NAV_INV;
-         break;
+     trace_dbus_kbd_press(arg_keycode);
  
--    case Q_KEY_CODE_DOWN:
-+    case KEY_DOWN:
-         event = MP_KEY_WHEEL_NAV;
-         break;
+-    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], true);
++    qkbd_state_key_event(ddc->kbd, lnx, true);
  
--    case Q_KEY_CODE_LEFT:
-+    case KEY_LEFT:
-         event = MP_KEY_WHEEL_VOL | MP_KEY_WHEEL_VOL_INV;
-         break;
+     qemu_dbus_display1_keyboard_complete_press(ddc->iface_kbd, invocation);
  
--    case Q_KEY_CODE_RIGHT:
-+    case KEY_RIGHT:
-         event = MP_KEY_WHEEL_VOL;
-         break;
+@@ -356,11 +356,11 @@ dbus_kbd_release(DBusDisplayConsole *ddc,
+                  GDBusMethodInvocation *invocation,
+                  guint arg_keycode)
+ {
+-    QKeyCode qcode = qemu_input_key_number_to_qcode(arg_keycode);
++    unsigned int lnx = qemu_input_key_number_to_linux(arg_keycode);
  
--    case Q_KEY_CODE_F:
-+    case KEY_F:
-         event = MP_KEY_BTN_FAVORITS;
-         break;
+     trace_dbus_kbd_release(arg_keycode);
  
--    case Q_KEY_CODE_TAB:
-+    case KEY_TAB:
-         event = MP_KEY_BTN_VOLUME;
-         break;
+-    qkbd_state_key_event(ddc->kbd, qemu_input_map_qcode_to_linux[qcode], false);
++    qkbd_state_key_event(ddc->kbd, lnx, false);
  
--    case Q_KEY_CODE_RET:
-+    case KEY_ENTER:
-         event = MP_KEY_BTN_NAVIGATION;
-         break;
+     qemu_dbus_display1_keyboard_complete_release(ddc->iface_kbd, invocation);
  
--    case Q_KEY_CODE_M:
-+    case KEY_M:
-         event = MP_KEY_BTN_MENU;
-         break;
-     }
 
 -- 
 2.54.0

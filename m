@@ -4,45 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39683CD343F
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8A9ACD343F
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 10:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLfFa-0000Mk-PW; Sat, 09 May 2026 06:49:38 -0400
+	id 1wLfFj-0000w4-7z; Sat, 09 May 2026 06:49:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfF0-0008J8-5n; Sat, 09 May 2026 06:49:03 -0400
+ id 1wLfF4-0008Mg-32; Sat, 09 May 2026 06:49:07 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wLfEv-0001bV-Va; Sat, 09 May 2026 06:49:01 -0400
+ id 1wLfEx-0001dy-2B; Sat, 09 May 2026 06:49:03 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY2Q090834
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 649AlY21090834
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 9 May 2026 19:48:02 +0900 (JST)
+ Sat, 9 May 2026 19:47:56 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=5nVwcoBUMe6NuInaiAkPhWnMmFp6lK3p5hpEA3XbroE=; 
+DKIM-Signature: a=rsa-sha256; bh=ovxDiLwATszUSIXbNJjZtgyq5rkuZWGQM63LhlHsYP8=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778323682; v=1;
- b=XvWsSBeGcADW6BFvNqawo+H/2rF9dExFEwYJSr4ID+K1+jA8klG51WioCjgDfTRu
- GLQZjhvQ3Mshx6rFbwL4oxHBhij/Ze1H1t2Dh5Team7KwaAfJTGDaECNLWjRkdlD
- EISdwjHVMoM9Dh8URZ5C52jRIPoC4UMym2QZumWF8JHSsDfrNimFRGjMy9Us4gr3
- HwjrvtMxzuJtwBe6ehfRcEFH0KCw0aa2uRFAZTibIiYoCMKqLsCo8KcwQ9R3Ll5x
- o4FjXt7lgP+vBhbm+nby7DpCxRb+xEo8zxuoM+W22YtfvAM8kCtKjrRADCy3bf+e
- qw6f/sVAiLiURg/PpkUjhA==
+ s=rs20250326; t=1778323676; v=1;
+ b=tLSsWsSNnjC8XkCWR8u8T5JZt9kN1gNEdia/QnYW02ddYnfkUTIvJf6WW3zlfMOK
+ W1r2TSndSO6SndIbXZRN88NYACYVePCtf/hV7CjWTO7TG0/zYJGK8BUrxp6YNJGJ
+ H8ZsLu1vaJIWjtmMK9Tma4lSlSddquyHNgOQ+qGgEKMTuGlkwuLCMp8W4pjJhCoI
+ NzWjgIDHLrHueaOOkp91PNuKXpzrzLHPsw07HszDmBuu+DlpIlP74zdE9gg41KIm
+ yPbyAMQz+QMLKBiSytdFfjtcsBGJb9JNUBdXnRGDYkJTkPDsTzBCJ238NKYKx/2P
+ d0mUue9rRBpmclLCkGCpFQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 09 May 2026 19:34:37 +0900
-Subject: [PATCH RFC 25/28] ui/vnc: Use Linux key codes
+Subject: [PATCH RFC 00/28] ui/input: Decouple internal and QAPI input
+ events
+Date: Sat, 09 May 2026 19:34:12 +0900
+Message-Id: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260509-input-v1-25-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260509-input-v1-0-66f18d2edde6@rsg.ci.i.u-tokyo.ac.jp>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDEyML3cy8gtISXcskS5M0YwvL1ERTUyWg2oKi1LTMCrA50UpBbs5KsRD
+ B4tKkrNTkEpAJSrW1ADQ8cuVuAAAA
+X-Change-ID: 20260428-input-9b94f389ea55
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
@@ -58,13 +61,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3923;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5387;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=QerukY73VtCo9ipWBLNsjflRN8tp0sdYEDVJmULTugw=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/gVuNCgeePe6uMpwkVrMyq+69pwSL/aS9ypcy+xQcE
- jXm65/vKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmAjPT4b/rttWTd/2aVffWcXN
- 5r9n2j9ebzvh76TqKGH7Q1MecU8UqmNkeFS70ItXTsvCvr358pbJd15f330i3ZPp8L26889WXZF
- w5wEA
+ bh=2A4nLI8GQSqRf8xd8/ph1Hzv+R//RZaWsnk5gl8duCY=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ+Z/geOnFgurv+7QvlGm316sWSj5sL2hakrGPqF+V4Gvi
+ jms7ds6SlkYxLgYZMUUWVKKdnNrRNd+KkyIb4GZw8oEMoSBi1MAJjJVhpFhbxBDzkyZz1P2PKhv
+ qr/hVFa9iU3IrqLi9uzm8IcRHFJpjAzNj/5JTbkYK1WRo8WYuDbqe8uFX5zvrtr/W6hv0hl1OZk
+ fAA==
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -90,103 +93,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QemuInputEvent now stores Linux key codes for key events. Use those
-codes directly instead of translating between internal key code
-representations.
+The internal input event representation has different requirements from
+the QAPI representation. Using QAPI types directly spreads QAPI-specific
+constraints throughout the internal input code. Keep that impact
+localized by decoupling the two representations with a dedicated
+conversion layer. The decoupled internal representation has the
+following benefits:
+
+- It avoids wrapper structs and pointer indirections required by QAPI.
+  They are useful at the QMP boundary, but unnecessary for internal
+  input events and make handlers more verbose.
+
+- It enforces a single key code set while QAPI input events allow key
+  codes to be stored either as qnum or qcode. Having two code sets is
+  useful for QMP compatibility, but complicates internal input handling.
+  Commit af07e5ff02ae ("ui: convert key events to QKeyCodes
+  immediately") made qcode the only key code set used internally, but
+  the QAPI type does not enforce that and accessing the key code is
+  still tedious.
+
+- It uses Linux key codes. They cover all keys represented by qcodes,
+  include additional keys, and allow QEMU to pass codes through from
+  Linux hosts to Linux guests. This also simplifies the code by avoiding
+  qcode aliases and matches the approach used by virtio and Xen. Since
+  this is an internal representation, QEMU can extend the key code set
+  if a QEMU-specific need arises.
+
+Only the switch to Linux key codes is intended to change functional
+behavior. The interfaces that require QKeyCode are still preserved and
+QKeyCode_str() is still used to query key names. Changing QAPI to accept
+Linux key codes is possible, but out of scope for this series.
+
+This series is organized as follows:
+Patches 1-6 convert the internal interfaces.
+Patches 7-26 convert their users.
+Patches 27-28 remove the old internal interfaces.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+
 ---
- ui/vnc.c | 29 +++++++++++++----------------
- 1 file changed, 13 insertions(+), 16 deletions(-)
+Akihiko Odaki (28):
+      ui/input: Introduce QemuInputEvent typedef
+      ui/input: Remove QAPI wrappers from QemuInputEvent
+      ui/input: Store QKeyCode directly in QemuInputKeyEvent
+      ui/input: Use Linux key codes for internal key events
+      ui/console: Add qemu_text_console_put_linux()
+      ui/kbd-state: Use Linux key codes
+      hw/arm/musicpal: Use Linux key codes
+      hw/char/escc: Use Linux key codes
+      hw/display/xenfb: Use Linux key codes
+      hw/input/adb-kbd: Use Linux key codes
+      hw/input/hid: Use Linux key codes
+      hw/input/ps2: Use Linux key codes
+      hw/input/virtio-input: Use Linux key codes
+      hw/m68k/next-kbd: Use Linux key codes
+      replay: Use Linux key codes
+      ui/cocoa: Use Linux key codes
+      ui/dbus: Use Linux key codes
+      ui/gtk: Use Linux key codes
+      ui/input-barrier: Use Linux key codes
+      ui/input-legacy: Use Linux key codes
+      ui/input-linux: Use Linux key codes
+      ui/keymaps: Use Linux key codes
+      ui/sdl2: Use Linux key codes
+      ui/spice: Use Linux key codes
+      ui/vnc: Use Linux key codes
+      qemu-keymap: Use Linux key codes
+      ui/console: Remove qemu_text_console_put_qcode()
+      ui/input: Remove unused QKeyCode helpers and keymaps
 
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 940dae1a0010..8ad24f82f776 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -43,6 +43,7 @@
- #include "qapi/qapi-events-ui.h"
- #include "qapi/error.h"
- #include "qapi/qapi-commands-ui.h"
-+#include "standard-headers/linux/input-event-codes.h"
- #include "ui/input.h"
- #include "crypto/hash.h"
- #include "crypto/tlscreds.h"
-@@ -1805,13 +1806,10 @@ static void pointer_event(VncState *vs, int button_mask, int x, int y)
-     qemu_input_event_sync();
- }
- 
--static void press_key(VncState *vs, QKeyCode qcode)
-+static void press_key(VncState *vs, QKeyCode lnx)
- {
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         true);
--
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         false);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, true);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, false);
- }
- 
- static void vnc_led_state_change(VncState *vs)
-@@ -1852,15 +1850,15 @@ static void kbd_leds(void *opaque, int ledstate)
- 
- static void do_key_event(VncState *vs, int down, int keycode, int sym)
- {
--    QKeyCode qcode = qemu_input_key_number_to_qcode(keycode);
-+    QKeyCode lnx = qemu_input_key_number_to_linux(keycode);
- 
-     /* QEMU console switch */
--    switch (qcode) {
--    case Q_KEY_CODE_1 ... Q_KEY_CODE_9: /* '1' to '9' keys */
-+    switch (lnx) {
-+    case KEY_1 ... KEY_9: /* '1' to '9' keys */
-         if (down &&
-             qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_CTRL) &&
-             qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_ALT)) {
--            QemuConsole *con = qemu_console_lookup_by_index(qcode - Q_KEY_CODE_1);
-+            QemuConsole *con = qemu_console_lookup_by_index(lnx - KEY_1);
-             if (con) {
-                 unregister_displaychangelistener(&vs->vd->dcl);
-                 qkbd_state_switch_console(vs->vd->kbd, con);
-@@ -1886,12 +1884,12 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
-         if (keysym_is_numlock(vs->vd->kbd_layout, sym & 0xFFFF)) {
-             if (!qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK)) {
-                 trace_vnc_key_sync_numlock(true);
--                press_key(vs, Q_KEY_CODE_NUM_LOCK);
-+                press_key(vs, KEY_NUMLOCK);
-             }
-         } else {
-             if (qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK)) {
-                 trace_vnc_key_sync_numlock(false);
--                press_key(vs, Q_KEY_CODE_NUM_LOCK);
-+                press_key(vs, KEY_NUMLOCK);
-             }
-         }
-     }
-@@ -1909,18 +1907,17 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
-         if (capslock) {
-             if (uppercase == shift) {
-                 trace_vnc_key_sync_capslock(false);
--                press_key(vs, Q_KEY_CODE_CAPS_LOCK);
-+                press_key(vs, KEY_CAPSLOCK);
-             }
-         } else {
-             if (uppercase != shift) {
-                 trace_vnc_key_sync_capslock(true);
--                press_key(vs, Q_KEY_CODE_CAPS_LOCK);
-+                press_key(vs, KEY_CAPSLOCK);
-             }
-         }
-     }
- 
--    qkbd_state_key_event(vs->vd->kbd, qemu_input_map_qcode_to_linux[qcode],
--                         down);
-+    qkbd_state_key_event(vs->vd->kbd, lnx, down);
-     if (QEMU_IS_TEXT_CONSOLE(vs->vd->dcl.con)) {
-         QemuTextConsole *con = QEMU_TEXT_CONSOLE(vs->vd->dcl.con);
-         bool numlock = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK);
+ include/qemu/typedefs.h      |   1 +
+ include/system/replay.h      |   2 +-
+ include/ui/console.h         |   3 +-
+ include/ui/input.h           |  92 ++++++++------
+ include/ui/kbd-state.h       |   8 +-
+ replay/replay-internal.h     |   6 +-
+ ui/x_keymap.h                |   3 +-
+ chardev/msmouse.c            |  12 +-
+ chardev/wctablet.c           |  10 +-
+ hw/arm/musicpal.c            |  31 +++--
+ hw/char/escc.c               |  45 +++----
+ hw/display/xenfb.c           |  51 +++-----
+ hw/input/adb-kbd.c           | 246 ++++++++++++++++++-------------------
+ hw/input/adb-mouse.c         |  22 ++--
+ hw/input/hid.c               |  41 +++----
+ hw/input/ps2.c               | 116 +++++++++--------
+ hw/input/stellaris_gamepad.c |  11 +-
+ hw/input/virtio-input-hid.c  |  89 +++++++-------
+ hw/m68k/next-kbd.c           | 128 +++++++++----------
+ qemu-keymap.c                |  41 +++----
+ replay/replay-events.c       |   6 +-
+ replay/replay-input.c        | 117 ++++++------------
+ replay/replay.c              |   2 +-
+ replay/stubs-system.c        |   2 +-
+ ui/console.c                 |  62 ++++++----
+ ui/dbus-console.c            |   8 +-
+ ui/gtk.c                     |  49 ++++----
+ ui/input-barrier.c           |  26 ++--
+ ui/input-keymap.c            |  74 +++++------
+ ui/input-legacy.c            |  47 +++----
+ ui/input-linux.c             |   3 +-
+ ui/input.c                   | 229 ++++++++++++++--------------------
+ ui/kbd-state.c               |  55 +++++----
+ ui/keymaps.c                 |   4 +-
+ ui/sdl2-input.c              |  17 +--
+ ui/spice-input.c             |   3 +-
+ ui/vdagent.c                 |  20 ++-
+ ui/vnc.c                     |  25 ++--
+ ui/x_keymap.c                |  24 ++--
+ hw/input/trace-events        |   2 +-
+ ui/cocoa.m                   | 287 ++++++++++++++++++++++---------------------
+ ui/meson.build               |  29 +++--
+ ui/trace-events              |   3 +-
+ 43 files changed, 962 insertions(+), 1090 deletions(-)
+---
+base-commit: 759c456b1d22fe4083c8b384da27d3f56fd53f82
+change-id: 20260428-input-9b94f389ea55
 
--- 
-2.54.0
+Best regards,
+--  
+Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 
 

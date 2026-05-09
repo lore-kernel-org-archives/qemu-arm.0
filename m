@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D33DCD3445
-	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 15:55:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11972CD3445
+	for <qemu-arm@archiver.kernel.org>; Sat,  9 May 2026 16:02:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wLk1e-0002pH-VN; Sat, 09 May 2026 11:55:35 -0400
+	id 1wLk6O-000496-Sd; Sat, 09 May 2026 12:00:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk1e-0002p9-2O
- for qemu-arm@nongnu.org; Sat, 09 May 2026 11:55:34 -0400
-Received: from smtpout4.mo534.mail-out.ovh.net ([188.165.54.92])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk6L-00047l-F5
+ for qemu-arm@nongnu.org; Sat, 09 May 2026 12:00:25 -0400
+Received: from 5.mo534.mail-out.ovh.net ([54.36.140.176])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk1b-00061z-3E
- for qemu-arm@nongnu.org; Sat, 09 May 2026 11:55:33 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wLk6I-0008OO-Lu
+ for qemu-arm@nongnu.org; Sat, 09 May 2026 12:00:25 -0400
 Received: from director4.derp.mail-out.ovh.net
  (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gCVtw1kBYz6CTq;
- Sat,  9 May 2026 15:55:19 +0000 (UTC)
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gCW0f5wfvz6Lx5;
+ Sat,  9 May 2026 16:00:18 +0000 (UTC)
 Received: from director4.derp.mail-out.ovh.net
  (director4.derp.mail-out.ovh.net. [127.0.0.1])
  by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Sat,  9 May 2026 15:55:19 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.229])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4gCVtv3hPgz1xqj; Sat,  9 May 2026 15:55:19 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.6])
+ for <jamin_lin@aspeedtech.com>; Sat,  9 May 2026 16:00:18 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.135])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gCW0f3cPMz1xqj;
+ Sat,  9 May 2026 16:00:18 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 3DDA8940FE0; 
- Sat,  9 May 2026 15:55:17 +0000 (UTC)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 85DEC2034FA; 
+ Sat,  9 May 2026 16:00:16 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-113S0074c52f93e-0a9e-4fd0-8972-54da93aee7dd,
+ (GARM-113S007e0eed196-7bf3-4ce7-89e3-e7b40c3e3832,
  3D272E53171ADE400D76652CEA3707ABC032970B) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <d21f5891-8d58-4ace-b1a9-16d4e252cc0e@kaod.org>
-Date: Sat, 9 May 2026 17:55:16 +0200
+Message-ID: <56330071-f967-42db-a285-6aa2ee873f10@kaod.org>
+Date: Sat, 9 May 2026 18:00:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] hw/usb/hcd-ehci: Rename CTRLDSSEGMENT default
- property
+Subject: Re: [PATCH v1 0/2] hw/usb/ehci: Improve migration helper and property
+ naming
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "philmd@linaro.org" <philmd@linaro.org>,
  "peterx@redhat.com" <peterx@redhat.com>,
@@ -56,7 +56,6 @@ Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
  "flwu@google.com" <flwu@google.com>,
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260506032643.2510575-1-jamin_lin@aspeedtech.com>
- <20260506032643.2510575-3-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -101,30 +100,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260506032643.2510575-3-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260506032643.2510575-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 6406088996091505709
+x-ovh-tracer-id: 6490250014553320493
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFBfURumOGmCmFQb4sjl+N91ueSrBgiBKoXewnNDtuijjljXypbxl1JR5afzCGcWbnBBTTuERXpzoTmco2lxYCIsAe76twNORWoLJdzyCSEwj8nTrAVlMG8SVewl4pbRSNPhE2MlrLUoQcH0cT+MMJByamv7oYffteVKm2jr+oiqEqGoBarcyo2fe23Y4fkW8s/9gUTcVKoMgBqaSzzRJwrPUBJoCwOhRp0u0Yg14TQm41r2EX1RoEeerN4jxbEOnZ+JQsH0fsFdLYaHkKD7Kg3sNNQvw+Ful02wKZLSG6/LlmuEeZAFdNfwhR4m7etlvKyQidg/njPmwS/SZSWXxo7k2w3A2eRYD0xIa/HbOZxfTb8fAm1/ACGTqRoTCpe0JwK4jGM+WFCbzUZpbHq6T/aW3bI0mA1RbtffrWVN9L4W9rYQDsMUbap9jSK1NxFr6yYtuS282m9V+hjIlJamUgwkX60mjOha9XlajKnjSkD2PINmX4W4Qmk8UFda/h2N4nbsZRTE45q03H1WgsK5RluGcPphhrN5gSVonW4Sedv27YZFkKC3Lwv2tzCvVV3/PtT1m1jEDFQKKd2F1gA1e4qz+s+/E7yvs3ierI805No0au+Tt/poRr36k1V+Ow6PXAelF11AhTEqnaEcGWlYykaVCCRAe5wZ7PFUc+RktEBJA
-DKIM-Signature: a=rsa-sha256; bh=9XHfh7FjYdytlssQ2iKkv7CoKQxusYtIpSUQytcDrpk=; 
+X-VR-SPAMCAUSE: dmFkZTEU+dg/QwQjktXvmR28+mBvYWbBe4TVtNDuoPEqLYt972DAkaa8Q6uT07EwiSRpGjxwahEcKNAXjWkdBLeiEvbAIB3E522MN4xoAnAQYk6heHLYXfArtrjGM61/zYe8toez4tlnefqT5zUY6+1mVymKmhQ/qOeCoB+ano8y2tbEOLyIlkJQEIqcyBgc+0KNN6P5e3Sixc3wzXsFWfGEL5/D5lYFT7ucuv9+3CQH6K6LSFE/tXZ3kw//C+M4pFrH/oWvjVrGbPMVJywEiyp95SmE8I7yUcfpKaM2Ip7bpLJ6TcVI8Xe+Rh20llAAw/CZyy+a8NwOp29fB9CvvWi8wfb9dN84fzjwOlCFAuSmoLE2B5/+leThz/VU/HV8jw8E5x4aOstFiAcuMifgfD+GXAO4ZgY7883JB3kEkp7c6w7RQufJj6Stz+bVYBQOqiNnFzmg3hIfTTIJNO7+pq+pRYHWs5Hp54DXBO6fcv8wd6ngbIbVsiuNra+H/QudFBoXaxPCCU/Heqpm6bFlaGgbd484r1btWjU8Z3U6hj1vm7j4n5c9lbMHvaaOKEs1I+tCvMhuMwe2G+4BPToH86nKMe5pOWzblOpm2erqDwHpST3WmmdiNoWNRVu0+Zk/G7Nz5wJH0qOh8naPwUs/qcn1UD2TNfDpQjXuNTaLLdNwOC79og
+DKIM-Signature: a=rsa-sha256; bh=W5jJa21ALl1eE7KsYlXN+rhU81cBuAWiCsOVqkLArnU=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1778342121; v=1;
- b=iarjIK05288/Bup1kAIM8A6KpY095c9Mp8C14eEvLyinO8E4Jgads6p7/yvlH/Kg8OWuGPvs
- BA3flZ3nEKPx1V5ci2LSrnD17TT68++8wkLM4bBVeykyJx7SqyzMICD/YPLTHtnZx1W8SkuttYn
- 8f+LRx0zgqxs43Wah4URNG3mzKeNvNLju3foq1Df8oFMyIk2OWW7AJF/MTdEvYg/yJKbJ7f86Nu
- u1itpyaXCZibJwoyJvwGw8RC+wc8tjpPdxEyrefY0zNJCUtYH8ZFUjS218V01emMb8j7YY/xj0x
- QzrCcH070N7cLlgVw195OKMFaj0g9L6Ie9K/8Zzj/WCDQ==
-Received-SPF: pass client-ip=188.165.54.92; envelope-from=clg@kaod.org;
- helo=smtpout4.mo534.mail-out.ovh.net
+ t=1778342419; v=1;
+ b=WHAvEvwF42PU10NMLeOwj4Hc9wIQ2Jz1GoV8XfCNCsqYr5psc1aBw3f3YitQJRPLeY07wSUI
+ Dwa9VJapZfSHVPRRXicWx6VW7MSmnfncOpseRdRFGHrN9ETwURLc3IQHNmOLa1bGJ0bioubId2c
+ RxaaCp/3+UZ7VaryAi4knjBiKIa+U0aufBKzoVNuYRH+bXg1jN4yiN/0hs+pcPjwU7gfn2eDKdx
+ qYxd7JDlQqqkXx5AFhIb9td2wb//BgBlztfkrufRQs/Y4Ph2vLqFWYUZrT4ETgN1G5Z8vSW2eRK
+ RQXxtVWiQvrdQrbwb1/9Fit7RrupqaGDqerTrGq7+FZ3w==
+Received-SPF: pass client-ip=54.36.140.176; envelope-from=clg@kaod.org;
+ helo=5.mo534.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,82 +139,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+JAmin,
+
 On 5/6/26 05:26, Jamin Lin wrote:
-> Rename the EHCI CTRLDSSEGMENT default property and
-> internal field to improve readability.
+> This patch series is based on the following patch series:
+> 
+> https://patchwork.kernel.org/project/qemu-devel/list/?series=1089061
+> 
+> hw/usb/ehci: Add 64-bit descriptor addressing support
+> 
+> The above patch series has already been applied to the aspeed-next
+> branch of:
+> https://github.com/legoater/qemu
+> 
+> This series only contains naming and comment improvements based on
+> reviewer suggestions.
+> 
+> This patch series depends on the aspeed-next branch of:
+> https://github.com/legoater/qemu
+> 
+> v1:
+>   1. Rename migration compatibility fetch address fields
+>   2. Rename CTRLDSSEGMENT default property
+> 
+> Jamin Lin (2):
+>    hw/usb/hcd-ehci: Rename migration compatibility fetch address fields
+>    hw/usb/hcd-ehci: Rename CTRLDSSEGMENT default property
+> 
+>   hw/usb/hcd-ehci.h       | 23 +++++++++++++++++------
+>   hw/arm/aspeed_ast27x0.c |  2 +-
+>   hw/usb/hcd-ehci.c       | 14 +++++++-------
+>   3 files changed, 25 insertions(+), 14 deletions(-)
+> 
 
-I'd rather keep the previous name since it machines the
-EHCI specs. See :
-
-   2.3.5 CTRLDSSEGMENT Control Data Structure Segment Register
-
-So I will drop this patch unless we have a very good reason
-not to.
+I still haven't read comments on v6 ... Since we have time for
+QEMU 11.1, please wait a bit before resending.
 
 Thanks,
 
 C.
 
-
-> 
-> No functional change.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/usb/hcd-ehci.h       | 6 +++---
->   hw/arm/aspeed_ast27x0.c | 2 +-
->   hw/usb/hcd-ehci.c       | 2 +-
->   3 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-> index b5ac9c8670..b739c81870 100644
-> --- a/hw/usb/hcd-ehci.h
-> +++ b/hw/usb/hcd-ehci.h
-> @@ -268,7 +268,7 @@ struct EHCIState {
->        */
->       bool migrate_fetch_addr_64bit;
->       bool caps_64bit_addr;
-> -    uint32_t ctrldssegment_default;
-> +    uint32_t ctrl_ds_segment_default;
->   
->       /*
->        *  EHCI spec version 1.0 Section 2.3
-> @@ -335,8 +335,8 @@ struct EHCIState {
->                        ehci.migrate_fetch_addr_64bit, true), \
->       DEFINE_PROP_BOOL("caps-64bit-addr", _state, \
->                        ehci.caps_64bit_addr, false), \
-> -    DEFINE_PROP_UINT32("ctrldssegment-default", _state, \
-> -                       ehci.ctrldssegment_default, 0)
-> +    DEFINE_PROP_UINT32("ctrl-ds-segment-default", _state, \
-> +                       ehci.ctrl_ds_segment_default, 0)
->   
->   extern const VMStateDescription vmstate_ehci;
->   
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index a8f0bc389c..5865894658 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -856,7 +856,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->   
->       /* EHCI */
->       for (i = 0; i < sc->ehcis_num; i++) {
-> -        object_property_set_int(OBJECT(&s->ehci[i]), "ctrldssegment-default",
-> +        object_property_set_int(OBJECT(&s->ehci[i]), "ctrl-ds-segment-default",
->                                   sc->memmap[ASPEED_DEV_SDRAM] >> 32,
->                                   &error_abort);
->           object_property_set_bool(OBJECT(&s->ehci[i]), "caps-64bit-addr", true,
-> diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-> index 56ac8f6ae5..133501b0f4 100644
-> --- a/hw/usb/hcd-ehci.c
-> +++ b/hw/usb/hcd-ehci.c
-> @@ -1134,7 +1134,7 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
->                             "64-bit addressing capability is disabled\n");
->               return;
->           }
-> -        val |= s->ctrldssegment_default;
-> +        val |= s->ctrl_ds_segment_default;
->           break;
->   
->       case ASYNCLISTADDR:
 
 

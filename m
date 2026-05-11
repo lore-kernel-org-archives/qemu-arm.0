@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B198CD37AC
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 14:04:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20EFDCD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 14:05:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMRDV-0004Uf-4W; Mon, 11 May 2026 10:02:41 -0400
+	id 1wMRE6-0005f1-6n; Mon, 11 May 2026 10:03:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wMRCJ-0003xR-Uz
- for qemu-arm@nongnu.org; Mon, 11 May 2026 10:01:35 -0400
-Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
+ id 1wMRDs-0005J2-4n
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 10:03:04 -0400
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wMRCC-000653-Im
- for qemu-arm@nongnu.org; Mon, 11 May 2026 10:01:27 -0400
-Received: by mail-qv1-xf34.google.com with SMTP id
- 6a1803df08f44-8b4298d271fso76091476d6.3
- for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:01:19 -0700 (PDT)
+ id 1wMRDp-0006WS-0m
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 10:03:02 -0400
+Received: by mail-oo1-xc2b.google.com with SMTP id
+ 006d021491bc7-6967080e6beso1322798eaf.2
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:03:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778508078; x=1779112878; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1778508179; x=1779112979; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=f97sAgovvneMg91EA00GUYMTrKlW3fVlRmKKW6/GCj4=;
- b=ETRMC4sfA1Z82+wV3pWhD2VKWZHslY378RZXbfJH9iDScQXvmR5OOWpsZk3ALA+WAy
- kE00+c6kv7teSVQ3mLHVan8rKNnsIer9biEz5e1OGP1oIZtQBxIJkCKkkYNyqm+abejg
- omXSrEiE31AL0tX0NtDLScjZ+9VqF07kPGhBsENJHm1hS3yrbxgv+FYKtvDOeLD4ubby
- qgqujdJZ2xaAOtG+281j59sMVSdkPpc0FVC4Dm1CQ79lEkzn9Oi9tbvqcq0aMFyGu702
- aKZjL+3pJ94WOooXHAz7lGP+iT+GlhmjAB6VU53K426NLNhtS2vwF6Ao/H4QifsDQ0c3
- uCHg==
+ :reply-to; bh=QSmDQRrB6e1D8na4i2hbR1VmlezIVrTYO+OHtxE4XeY=;
+ b=TPPygsf5EzsQjBHBXjNKVCqJziHkjg1jhNikpkz+Ee1F8PPxmf6PgbCdp1DDjq3u+M
+ dmD2sBu3BcTH5f8avmdCm1jmwrmbyJdZEXyJQv+EG/nc4u8TYohvhXRunTScquGIOjp0
+ 7hmB77oS7Haz6MW6+0wlvrxzpJD+Ze/+IKGHjdgb7Sv+yM90471uNpS9S0gaDB6JVV2j
+ 4PbokPtOy09/ShslvhR5hmZWm6y35qQ1yhM/HqNDTeKqxlCuu7Pa4xBuhnFe72wICgV2
+ /Chli/CHbqEb0I80M7H6q2M+JTY9194WWp48YLqFNkVaHbrS4z4GZQtPnSeT32nB+Z/u
+ kATg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778508078; x=1779112878;
+ d=1e100.net; s=20251104; t=1778508179; x=1779112979;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=f97sAgovvneMg91EA00GUYMTrKlW3fVlRmKKW6/GCj4=;
- b=IwXv7hj9GGx7pNPOU8x67mKfdAEKEe2PPIgRlxltEkUjw7AKle1DkfWyFEVh7VYoan
- LKNh+/Pq4Mc7l6ZCKtNJ8desJK+95loHiXQ5gEJ4Ob2H2A3xs9Alh+o0GeEOx/CZHZPw
- gVEdEmoR/8NHqKwGMXRpgphw3w3oHMAlAILoyiFf2tzypeORBYlbNZlwEfrn9+6FwW96
- urnCV12tkibLgOnUKm1TyfsisQFL7KUijTjPXUMiQpnA/A2P4mjGI5OFEPGoiaSb/wlk
- YBNxvmjuclZq6SQy2wUKcYWMMkua3E7csyHwmNScZsnJ6WSJPZjcgFDD9UyTu3cDgpAG
- Jk3w==
+ bh=QSmDQRrB6e1D8na4i2hbR1VmlezIVrTYO+OHtxE4XeY=;
+ b=RyZQzle1bnhbzMTgDO6JOMGnZ8cRaKzsUqJJ4H1PNSqRJdS7IQFWTlxBkTgklOpeTT
+ 3hlE2prS8ZrzRJ4udBhihsiQULn03CIdqoCuJ/Ih83K0BLnp/IGXDoIWdRrn8BIl8a6c
+ h53PUZYIYhCRPYvschJRYqY6tnUypreK9ko1u0oTTguHqeUXoYI4bz4aKZwPxu5UmRTh
+ XArOfNYt3181CtETFSvKPaYN3U92U31rFjQ2Ktte8331XQZdoTbQxg92jGD4mxfxyIzl
+ 6zQW+iY3QELBh8WqoFXUB9Gg4QCsUuxBj52KrIiCL3yH9RanN5p+yS0jGun+qpXK8V3F
+ UOjg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+Zm7hDGekAZAI6UH8wdlFO1rkE5WWJ8plWtayKqyAXKpueMTlSSmld7tgPQCQ/4hRvND5koQOagw==@nongnu.org
-X-Gm-Message-State: AOJu0YwbLoJbV++fnb4nOO8j3uosiuIeW2Zt9EF47MUh586Q+bCm0dJE
- tikMNzQGOFOw97hupN4YLXjV4A9W37p3QAe99YXiYzY4X4SWmgQOJzcC
-X-Gm-Gg: Acq92OHtHVl8a7cCGYDZlfrthYd+VYi8AKR6TLcrI16Px4XtM63NC448tkEJiYB5s2O
- 6DJWDVYGK8lBtSzJij7tWlX7TK5o3BjnoYleHAgS4cTQH4c3KmahhR2LseGWbxJWPPNcA682MdB
- VSEGzSwNeiOui7/ELgtxTLXR6Eg2bQCgGaluOrtZL59IiC4pU7LNN7j/ZLeUaeiIbnMpMRaGNNj
- XdmIL/hibKl5yHE7r2aGCKYa7ZbAm+0+WYZT/ub7vCyUKSgUhf1O7Z9oHJPXjCppZnS4/NH2V27
- cyFz2DNwASuodDx20nU/cCvta5vgE3hBUXj7cMjKJ3ATLMltd0PHPiBqXxrYuKBjTeBEk7MFUq6
- 9vO0YvxHxBPKXd/WPQrCRl9Qkl/mT2TI4uE2X1exWzzabTs8+3YMP/BVag1Zsx+tiLOjjTfcu45
- qrd3016rQlpfA9HUW++xabrFlRi+OhpJaRztr63Rco
-X-Received: by 2002:a05:6214:5b85:b0:8a1:34df:bbe3 with SMTP id
- 6a1803df08f44-8bc443d5a41mr375890326d6.28.1778508077796; 
- Mon, 11 May 2026 07:01:17 -0700 (PDT)
+ AFNElJ/9tWvFqNSuUf2qZ9NfZJopF3HL+mYV+XXEDnD6pbAktB8vDDUo5ZqFr931MXO+QBmpPn8fqvx3kA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw7SRbyer3bT4nXs6jOk47wV3D4Ol1rR7hfh0+RmY16GZQrsLXf
+ K4uqbUosu7lSXjicmuBkcNJiBoxDsGfwL/hqRYzIQyRldR7C+Npj2g8rlUJOGG+T
+X-Gm-Gg: Acq92OH/yNvUUoCUNxv9zQYUV0h+zHN91H6M3ONucCz5MY4YInli0QFca4JtyHtnu8f
+ 5jAZf7SpTJxQ/07aYrsnxL2f83GxoQx79o7hUbbjvvYFggVQwVd74+LphlPAte7cXVf/hAzNJ+w
+ xpdFJ0bMWcSALJD1YurWksNVZbRKpYS7uC/qr1kmFO48+pEg7jmL+1hZC2295x4ltPRSs07FxLA
+ R6EDFikCeLMAoWl19M5h7FkCpGzUwBNpIjX4k+7tg82amP7Fdpn0UeTTbktu7MtLrt/wF73FWgS
+ zbCXvoZhGV7+v8vTL4Gv8KuEKV/t4v4cNjQHLUqy6rj2Z65hp8Q+mrF86vRFn0Rc6RuDUhMh7qI
+ P73yFe2lpzI9SH9u0yHbz7FRe63jZy8K85WPMNDQfWhydPqikVWpCR60MTD8AR44kQHbMz3Jnaz
+ cNzRNN9DhS2S25kgNMNF1GV8cv5qRJsLmL87ZERGTwbGFLpszL3qc=
+X-Received: by 2002:a05:6214:1c4c:b0:8bd:de6d:c349 with SMTP id
+ 6a1803df08f44-8c1a461dd4dmr154548546d6.30.1778508076311; 
+ Mon, 11 May 2026 07:01:16 -0700 (PDT)
 Received: from [192.168.1.160] ([2600:4041:54f3:a400:c013:3550:ed5f:a59a])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8bf39c7dd09sm94773756d6.31.2026.05.11.07.01.16
+ 6a1803df08f44-8bf39c7dd09sm94773756d6.31.2026.05.11.07.01.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2026 07:01:17 -0700 (PDT)
+ Mon, 11 May 2026 07:01:15 -0700 (PDT)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 11 May 2026 10:01:06 -0400
-Subject: [PATCH v6 08/15] target/arm: add canonical MTE check logic
+Date: Mon, 11 May 2026 10:01:05 -0400
+Subject: [PATCH v6 07/15] target/arm: add canonical tag check helper
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260511-feat-mte4-v6-8-8557cc1313b9@gmail.com>
+Message-Id: <20260511-feat-mte4-v6-7-8557cc1313b9@gmail.com>
 References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
 In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
 To: qemu-devel@nongnu.org
@@ -83,15 +83,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1778508062; l=3812;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1778508062; l=1412;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=2L9HEB41G779r2QZ9fho3irTF36kpNHlmsTc5qrI5Vk=;
- b=Vpcq9R//+VLC04ga57rQKsKOEbpVXVwtxyRN6O0xolCeiTKkm2XcrGM+BEeTQNavAcKaL+N7E
- SCin8q8DFwLAnsmPOfzQdEzT1L5gTRgC8+Pe3YLU/s0rf7Z1t8znYGh
+ bh=kFLv9CCcyzQ9X4nylsyRnwd9Y7Ab46WH0h0K69LE1Qg=;
+ b=p298eyZYu8co5o2bs9nJ5yeIrlqOm4daIqSYwX7p56E6h96q7q+ikYqDei2aprQGnZLQEiilh
+ vQNBpSqJC8vD0mw9si2x58vTkCieWEwqLVOsA+zXfz+wjRbZV7s2/2z
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f34;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf34.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2b;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-oo1-xc2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,97 +114,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-With MTX active, address tag bits are checked for canonicity if the
-corresponding memory regions are not allocation tagged. See
-AArch64_CheckTag.
+Add a helper that checks whether mtx is active from MTEDESC. Refactored
+an existing function to use it.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h      |  6 ++++++
- target/arm/tcg/mte_helper.c | 30 ++++++++++++++++++++++++++----
- 2 files changed, 32 insertions(+), 4 deletions(-)
+ target/arm/internals.h | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 192e6a2d47..779eafabc8 100644
+index 6df2c547c5..192e6a2d47 100644
 --- a/target/arm/internals.h
 +++ b/target/arm/internals.h
-@@ -1629,6 +1629,12 @@ static inline uint64_t address_with_allocation_tag(uint64_t ptr, int rtag)
-     return deposit64(ptr, 56, 4, rtag);
+@@ -1636,6 +1636,12 @@ static inline bool tbi_or_mtx_check(uint32_t desc, int bit55)
+     return desc & (mask << bit55);
  }
  
-+/* Return true if mtx bits mean that the access is canonically checked.  */
-+static inline bool mtx_check(uint32_t desc, int bit55)
++/* Return whether or not the second nibble of a VA matches bit 55.  */
++static inline bool tag_is_canonical(int ptr_tag, int bit55)
 +{
-+    return (desc >> (R_MTEDESC_MTX_SHIFT + bit55)) & 1;
++    return ((ptr_tag + bit55) & 0xf) == 0;
 +}
 +
- /* Return true if tbi or mtx bits mean that the access is tag checked.  */
- static inline bool tbi_or_mtx_check(uint32_t desc, int bit55)
+ /* Return true if tcma bits mean that the access is unchecked.  */
+ static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
  {
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 61cdf92c54..d35e3ef04d 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -858,6 +858,14 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
-         mem1 = allocation_tag_mem(env, mmu_idx, ptr, type, sizem1 + 1,
-                                   MMU_DATA_LOAD, ra);
-         if (!mem1) {
-+            /*
-+             * If mtx is enabled, then the access is MemTag_CanonicallyTagged,
-+             * otherwise it is Untagged. See AArch64.S1DecodeMemAttrs and
-+             * AArch64.S1DisabledOutput.
-+             */
-+            if (mtx_check(desc, bit55)) {
-+                return tag_is_canonical(ptr_tag, bit55);
-+            }
-             return 1;
-         }
-         /* Perform all of the comparisons. */
-@@ -873,18 +881,24 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
- 
-         /*
-          * Perform all of the comparisons.
--         * Note the possible but unlikely case of the operation spanning
--         * two pages that do not both have tagging enabled.
-+         * Note the possible but unlikely case of the operation spanning two
-+         * pages that do not both have allocation tagging enabled. This can
-+         * happen with or without mtx (canonical tagging) enabled.
-          */
-         n = c = (next_page - tag_first) / TAG_GRANULE;
-         if (mem1) {
-             n = checkN(mem1, ptr & TAG_GRANULE, ptr_tag, c);
-+        } else if (mtx_check(desc, bit55) &&
-+                   !tag_is_canonical(ptr_tag, bit55)) {
-+            return 0;
-         }
-         if (n == c) {
--            if (!mem2) {
-+            if (mem2) {
-+                n += checkN(mem2, 0, ptr_tag, tag_count - c);
-+            } else if (!mtx_check(desc, bit55) ||
-+                       tag_is_canonical(ptr_tag, bit55)) {
-                 return 1;
-             }
--            n += checkN(mem2, 0, ptr_tag, tag_count - c);
-         }
-     }
- 
-@@ -999,6 +1013,14 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
-     mem = allocation_tag_mem(env, mmu_idx, align_ptr, MMU_DATA_STORE,
-                              dcz_bytes, MMU_DATA_LOAD, ra);
-     if (!mem) {
-+        /*
-+         * If mtx is enabled, then the access is MemTag_CanonicallyTagged,
-+         * otherwise it is Untagged. See AArch64.S1DecodeMemAttrs and
-+         * AArch64.S1DisabledOutput.
-+         */
-+        if (mtx_check(desc, bit55) && !tag_is_canonical(ptr_tag, bit55)) {
-+            mte_check_fail(env, desc, ptr, ra);
-+        }
-         goto done;
-     }
- 
+@@ -1643,7 +1649,7 @@ static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
+      * We had extracted bit55 and ptr_tag for other reasons, so fold
+      * (ptr<59:55> == 00000 || ptr<59:55> == 11111) into a single test.
+      */
+-    bool match = ((ptr_tag + bit55) & 0xf) == 0;
++    bool match = tag_is_canonical(ptr_tag, bit55);
+     bool tcma = (desc >> (R_MTEDESC_TCMA_SHIFT + bit55)) & 1;
+     return tcma && match;
+ }
 
 -- 
 2.54.0

@@ -4,95 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889DBCD37AC
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 14:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 555F4CD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 14:56:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMRvx-0006UC-5m; Mon, 11 May 2026 10:48:37 -0400
+	id 1wMS3F-00017m-AP; Mon, 11 May 2026 10:56:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMRvo-0006Pe-9F
- for qemu-arm@nongnu.org; Mon, 11 May 2026 10:48:33 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1wMS2x-0000y8-Tj
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 10:55:53 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMRvm-0002OH-8r
- for qemu-arm@nongnu.org; Mon, 11 May 2026 10:48:28 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-bcc9fdc959cso281774766b.2
- for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:48:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778510902; cv=none;
+ id 1wMS2s-00053D-IR
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 10:55:48 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-67c566cb519so8318101a12.3
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:55:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778511345; cv=none;
  d=google.com; s=arc-20240605;
- b=aexNRc6GtsXMKriplCezLcY4g1foMzMQgh+GBqPBoFRdU7PHKzCQr4c+CBDghfDY6K
- 7ZehS0OtDhs49WPlRZ8G6nvtAjakZQ2fjpmQEsyqHpzWC+IxQ4HV/66Xz3fHNhj/1GnJ
- SV3bkNs+tVVhu5hHq6n37zLH/d8Q3noqfGjkHHVFNtAlc4PxbBDQjRkT8nV05JgJpM5K
- uBvWkc3i7PqoQfIEteDI88wBgDFxrsUQztF4n2PqKSFptzY5ByJecW18rTZoz9QmbKdP
- dh8rOFVYpIJtz/jp+BMb1E1+pJwdgtjzKjnD1l67Gv1jjMjQR0OT7r9NjRAh7S3hvdG7
- cKFg==
+ b=K4efaQJdeGq4slPKTBop+fpaWNePBMpoNRBAHHlvuFEuA2DtV4JgovWP10plGGddAE
+ 130mOi6vHr2vBBVfLC5F3yG8DNR+FRoUg7X1A/6Bcfagl4J0DbH/VnvXH2FRg2hLuJ5Y
+ UubZZLiUf2Rg/ORd9laFcM6dPJ4XrFs88+J4QqTLqcNYN4QCOOrmnMSAx+YmMV3Lj7OD
+ p+r24E/2N0uTNRkKdXw40oL2JDJ5TrMFySt3FiItie0QYTBQTQHARdITVyeyvciNh9XF
+ l4tvDFFtE5jQjO9XXJf9Rf9tzMGb/N6G28tIwakMs3K2uR2suvJ1azO3A6N7Q4NqWcV2
+ qWyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=PWJxoxz6bXD5xX/7icrkmlXM2C8ow3SYmXGh1OIVtkQ=;
- fh=DK5C60vGgoJRE/lYxLFTwqj/hnZ6r3Nigc6769h7JGg=;
- b=CqrFK6l59eA/7jLiTw2Ng+FSWbmiTZ1uipGR9pLj4dmH8pEAhh/BEMRq1Bgg5p3vIh
- w6camgu4KaCnBDKLYrYRw3aiSCZAn+DnqeyvKWFrYYquop00hrABBJKnyZhTlChEJaU7
- wGLzI8gReXI2ee6KPaFkbqFHdSC68dwKAZgokMxJwjE9ix6r4Cr8rhkV7QzcETo5EMDG
- 6hD1d9RH6ezisiACYtKDESRk4FtgDh3QbMHHSOviJgDdS2nEFMKEtr7rwrESkFrvqhD0
- rkVHiYjHv9diz6iTPYyGkTEPWMk8N9E4u7IMK3KNgSIZBnVwuQTL9sIPju+sSuQilqUs
- 1sag==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=VNijOCZkE4OPNW65AVHwTEPv8tZ0Qv0gS7rrW1ZRJ2I=;
+ fh=tcAB78Y68aXOEGA38JKn7qbjPlTeynDp440rqDjt+tE=;
+ b=Feti72sIFBA3bH4V+xqu0xS2LJ59NlQgW08OKsmN3FnIep5P/4OEKNVRH7eCq+QI6l
+ ToaRplWorlHAfwkkQ3hVPrjKcpa7bB+7t3+yw0AhyXStdnIFMbE5Y94g2JMZYnARnuiH
+ O5MsLfmLkGXGslo8Eqtju9uNwVuLCLeuTzyv45CJ5nAaP88ir9hjQMpcmeEtuTonU7hW
+ M0ye8yY1oET+V+anPL0hVLZVTcQgBr8Q9Es2UajWjt3D0z4mJ4nXclrmAPtXHAI8scAX
+ 1xVqPRbjSyLSZ8kODcN70arvKhWtckBgg4szk+NIS/7vnpb6ZznwR5hw9vVBIdR6vvk0
+ WpRA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778510902; x=1779115702; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PWJxoxz6bXD5xX/7icrkmlXM2C8ow3SYmXGh1OIVtkQ=;
- b=WRsxlT5KICTzv0MsTEnx26TAQ4b1TtN7R0pEc0LUKrRQz7RVtx1I/CzNiWG/9jgVSn
- tA/raix2Yf3e+WL5sF3XO8PTKtSMrgs2RL4u0X0OZpAG+saEwjtina47u1qB4ihdVAQQ
- Wdkbn3qGSMXnM1ezfe/3ecmivn0Ojct08vLimft6QOnZByDXOscNK77pDORa+fgc9+dK
- G2EchMkZ/8nMaE5HpqkhYBmSjfGNohQClT0fHklCKHjkjuqiUo2wvPo7jsrNgD+hlIr8
- A8d1v8uEjiqQJazcPe752xu4HP6f8TkCy7s7zC1x8spnYRXloZPTP1tYupmbL8Msf47N
- NhXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778510902; x=1779115702;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1778511345; x=1779116145; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PWJxoxz6bXD5xX/7icrkmlXM2C8ow3SYmXGh1OIVtkQ=;
- b=egyOfrlEfSaVJ/a+5kh8/HcAwl7uLM+jmCXL8CdxzZX2U1eNTpEWUSf1s9llGf9/+C
- mbdwcbZoO4pLdr20ldO1bbirTRAmOoYU2scITYWIUFN8B0CuRrAatL2BRqU3ltM+f758
- fL8qpAq0A/a7k/IO2AJPNyN9/IDXk9Y5nsZUoXpAUDtEpYKAtlK/uxjxiQbmY7y2wHZt
- eq/FBfrtFtAhS6FzT4TuV7GZlngCiV3HoJqhxlwY0Qcr/9SDm+DlMKTp51BPzV/Jps3W
- aNfjgfS+jESZmzRK/sEq9Pr5IqOWTMxogtF/MkwJ+aHPhR7RNWh9UTnP2LnJgEPNlB0h
- JOyA==
-X-Gm-Message-State: AOJu0YwPCVlmFIhg1H56L1CADlBgfUiAU35f90ZrPWUVgs1KdrImEeaa
- oQ/p0nBG4hnmNTB8oyynjY42Xx90qb9jQwDsMFIL+vJ2kJCYXIT2onZMtaaJ6j8SO+rW/cvKaZ8
- DeVlFSjvsZ0WcWO+xtOxLg2cGbDhQ6zu5I0kC0gsZ0X+Se1yqLdZe
-X-Gm-Gg: Acq92OG+P8sEQh3wSdCLH3wdfOfDPAeNyLg8FllpsBMMPDLdIWidJaHfvDNrfeEOGHb
- k7Jp+bEoZtKU1JlH3TCQkoDJ/c7Ps97L/KQxqApjBaUr50HX/wcIEL/HMzWkVFU9mjW+j4+CswD
- v6yCHM5CP2v6DLBmhDhHjI3wpM4RbhGWrUxKoUyVlPT5DflboVfhg22ea89YXa4yxvWmJ564B2m
- 5ajHcLEvvc+WkNE/YvuqUm259NFZ+U55KXdj3J7MyP1Q8AiVG+eLUN4mdef3hMN/1smk7R1lG8B
- krdIc1RcHJHzFTWGnauPOCvPgqXAClPOm09XQ3YsCzuAsUzMJLNMBKYQ2OdjhcHXlgYsfEgnqD2
- TZA==
-X-Received: by 2002:a17:907:2d2a:b0:bd2:2657:9b7f with SMTP id
- a640c23a62f3a-bd226579ff1mr15516466b.44.1778510902069; Mon, 11 May 2026
- 07:48:22 -0700 (PDT)
+ bh=VNijOCZkE4OPNW65AVHwTEPv8tZ0Qv0gS7rrW1ZRJ2I=;
+ b=IzYlYsLRsjPN82lDVBSk5Ym8n9c+mgZxVS/xtesxxLlOCiCr/F8bBs9r7L0zqZZrj1
+ M5AZhAYAEWLwH6bdOcdl9pf3fk935lhf9iMJOHP+QxXogWlsltTDyocy8wHFpZu6rtOW
+ nxc56+XUfReHaKpC2X3AnvnNTFANeVZQqfQjUvY/WIPb4mxOU8WHC6eoTLirfBKHYEyM
+ 6BT2pzNOCEtIzu78e+bP/abOI3OkSvxsWDlCPlYXJSY++oWm/LiSbkarOoB95hgq5kTa
+ YFairw/yihApxEKMj5qF3C2WSYTUDqHA5P84MyKpRQJ/HzwcB+j9JQsFMwcsSFsFClgC
+ wAEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778511345; x=1779116145;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=VNijOCZkE4OPNW65AVHwTEPv8tZ0Qv0gS7rrW1ZRJ2I=;
+ b=Y7I/beqvjjRQFIX+IETaRPO9p31YSy0DXyi10ALQSwYf8seSkYQdVsOdrQPy8wIzx1
+ YF5IZtkzockQzfAbQTxGGKZJm/IkntL7qPaqe0RIoCxPwCcQ9T3EieueL3EnPFHDqCgn
+ pWcGwzs8VKPbI8wc1fb+PGW8OuYgkJybEsWtR9d/E5J+gAnWKgoHTwGZooQHKjbUcD3o
+ mOg56cICOwMyN/LGf+/CcMQHu4V0eQ8Rzd+qLh7SoarvWtYiV562KyUrPXkvNBBRHqTa
+ iYFWskCtSG7qFSXnSfkHsN98WaaR6ug9JWyxgjXf5d8l2id4gd5MM2SWLx6vHFZ7wdCF
+ AIqg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8j8xk5hfD9Rim9eePr1chlzTzr8s4ogWbvTI7paP7D3W5ozLiyiL1B/xMFYm3KkQmaBvcnAxltQg==@nongnu.org
+X-Gm-Message-State: AOJu0YwCZn+OtIogqb2/EIVlh55I+6RLAkhFThuIj1yB8jvXhnT8E162
+ kBlZ6TOWp5wH2rrEG0JShxfu3CbPW/PEcUY7WHwzzXAvVFhKCwDMXv717QjFSOaAGYQ8d+KVw7u
+ R4SBQDx1MVc2VBYHE81okLn4Dx0LyeiD52iVqGmKr8g==
+X-Gm-Gg: Acq92OF3LIPZ+XFiyCqh+XbuZpd1Ig5PWGELIxZ4e+NVY2BcXuwre18wvV0hr6DTq3y
+ 3yvbAteRCMFrRO1V/LfRsGPjKLwOqh0FVSdDYQqkfNiNZUMkostjC3lDen7bJCtNbXasatncfnA
+ KfdyMrINLYg4+seGmzpnDRILrde/+0cnE3qBHb+CTDV5RKWS8ieIJMUBgsz6apb2Xw7avQhmzhi
+ LURzlUHcVJABpeitVReCEJP3RfZmyHlBpDoL/WnomvJy60i0L3oRimTtXsFo+gswZyAO+S9tuDb
+ y/VjdYGpBCL5tXVNpcZLCT0L5ZPrczSCp4r5jDgc1uB5TPo5G71/eYNEkabh3xZo9rU=
+X-Received: by 2002:a05:6402:358a:b0:67d:7e99:bf4e with SMTP id
+ 4fb4d7f45d1cf-67d7e99dbf8mr12904734a12.23.1778511344777; Mon, 11 May 2026
+ 07:55:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260501162634.4092394-1-peter.maydell@linaro.org>
-In-Reply-To: <20260501162634.4092394-1-peter.maydell@linaro.org>
+References: <20260507135816.71171-1-philmd@linaro.org>
+In-Reply-To: <20260507135816.71171-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 May 2026 15:48:08 +0100
-X-Gm-Features: AVHnY4Ke74-rHdd7oNHHu8_a75Gv12LA2ZSPZd-O17t0MakMwH2_0Q5sZa39nIM
-Message-ID: <CAFEAcA8nVfzFrQ8y5x9_Qp62QogVcvN09Q0JkqcFrJv73g80oQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c/microbit_i2c: Don't index off end of
- twi_read_sequence[]
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>
+Date: Mon, 11 May 2026 15:55:32 +0100
+X-Gm-Features: AVHnY4Ie-olQv5pFeO2VeMx-01TWBPN7at8OUMBeA8XwpiKIsGjEvNGjXwgvRis
+Message-ID: <CAFEAcA-d2EspJcjyfbBNPX3x6GF0kbDCO1bnoDWb4pyEnFgRhw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: Build ARM/HVF GICv3 stub once
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x631.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,44 +120,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi; ping for review?
+On Thu, 7 May 2026 at 14:58, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> Move arm_gicv3_hvf_stub.c, introduced in commit 48396ad6ce9
+> ("hw/intc: arm_gicv3_hvf: save/restore Apple GIC state"), to
+> the global stub_ss[] source set which holds stub files being
+> built once for all binaries, instead of one time per system
+> binary. This prevents symbol clash when trying to build a
+> single QEMU system binary:
+>
+>   clang: error: linker command failed with exit code 1 (use -v to see inv=
+ocation)
+>   duplicate symbol '_vmstate_gicv3_hvf' in:
+>       libqemu-aarch64-softmmu.a.p/hw_intc_arm_gicv3_hvf_stub.c.o
+>       libqemu-arm-softmmu.a.p/hw_intc_arm_gicv3_hvf_stub.c.o
+>   ld: 1 duplicate symbols
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-thanks
+
+
+Applied to target-arm.next, thanks.
+
 -- PMM
-
-On Fri, 1 May 2026 at 17:26, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> If the guest tries to read more bytes from our fake stub I2C device
-> than we have provided, we incorrectly read one byte beyond the end of
-> this array. Avoid this, and instead keep reporting the RXD register
-> as containing the last byte of the "data transfer".
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 9d68bf564ec ("arm: Stub out NRF51 TWI magnetometer/accelerometer detection")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3408
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/i2c/microbit_i2c.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/i2c/microbit_i2c.c b/hw/i2c/microbit_i2c.c
-> index 2291d6370e..d9689b6f1a 100644
-> --- a/hw/i2c/microbit_i2c.c
-> +++ b/hw/i2c/microbit_i2c.c
-> @@ -41,8 +41,13 @@ static uint64_t microbit_i2c_read(void *opaque, hwaddr addr, unsigned int size)
->          data = 0x01;
->          break;
->      case NRF51_TWI_REG_RXD:
-> +        /*
-> +         * Return the next byte from our fake data sequence. If
-> +         * the guest keeps reading the register after that, keep
-> +         * returning the same last byte value.
-> +         */
->          data = twi_read_sequence[s->read_idx];
-> -        if (s->read_idx < G_N_ELEMENTS(twi_read_sequence)) {
-> +        if (s->read_idx + 1 < G_N_ELEMENTS(twi_read_sequence)) {
->              s->read_idx++;
->          }
->          break;
-> --
 

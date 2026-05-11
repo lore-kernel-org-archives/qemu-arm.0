@@ -4,129 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181A7CD37AC
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 13:17:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B608FCD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 13:26:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMQ8i-0002yr-GR; Mon, 11 May 2026 08:53:42 -0400
+	id 1wMQ8l-0002zI-VT; Mon, 11 May 2026 08:53:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1wMPCp-0000oc-NS; Mon, 11 May 2026 07:53:53 -0400
-Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1wMPCn-0000hF-Ig; Mon, 11 May 2026 07:53:51 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Mt16SHULV0CVUWWc4O23ZrkaO4nkMFenCahMHGA0N65+apGfRxSqAsaL2uVWM6Gn5wdoqTV6pK3RhvB/xv2+kbc3R8hOiLSyyU/Ke/mazpblZXSbhENT7rj6BhX8h1eKzxuj5v4QFIJHoZDio1gLS/RwKTIUTMy2XUFIWOdj5im64Kq5YBLwZoq9ociBSMnkI4foFQrlmUqSJw1UNWd5qI65DQm4dNtNw9/QUpj4jDSrd0oJAuGmEts7oXJbNTZgBOx5AIUSktn5K9blSpfs7sbljOjHw3pfR/VNGE2lq4ovI2LQ5om9M2vFf79rbYEtZxWvmDSwBmK8Dwe2Qj0Q+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CkoGDdWG3fk616xeCXHbrrpL0C627vPOgs1YM8VTG4w=;
- b=Sqb7RdZBgbbiYbo0u8Vc5pF5SBxLjQ07TZyEulHCBOeJaSD0twGqXD7Iih3N7zJ9EMBsfzwTnBk7qEbbBkftEzEyJcH1Yo8G+Uwq/gr6LPTL5g1qy2pVYQBBwSKnyVlfvzDx1aBluBSPUEn6FuTSDrhhLIXmefn3LduIzcTvKdLEDO9FF9eLwpisCSiTQrwRVHMqH/n2dQ0OSthTmqhhW4SOSYnQ7QvAqPKPgu/qP9RHsUa5IrK1MnRi/A7g0qSC8B4GPFdSR4Gx0TTADucxDHL+1bsGlfiCD1QF9GDKQ0nrgWQpnVj9ngDyHh9TEykbBhCs4VrfKA50f7rEsjJ0CQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CkoGDdWG3fk616xeCXHbrrpL0C627vPOgs1YM8VTG4w=;
- b=hHNaZuwl1brNC2N29k3TGi4u4TkQqIlryeZ6URE2H8eRYnZKbFjstNXx/WI0ThcUHLh1oJzUyRn4HXY/VZiWAlWPE3nbe5VVPLKt1nBpjQrH1PnqLsmy35Zlbuk9M3bNmzVrpecGtE0JOLnyZoCLVc1l5SBV4iGJH61tfIzCjew83rMMucf63kImdyvebmBbUbwlAVJPtkI4nnRN1i3zj3lMOdq39jThdlrAAUoS9ydlK66LYBlEEkfgMnE41pF0Be9msJIPRH1TP3MX/hhz4Rn7ZM6WMPu60FYXR6kjH7vFBqZ5pUmto8PfpIqstIjEhOu91LzKq1fK5dkrGAY6Gw==
-Received: from AM0PR04MB4370.eurprd04.prod.outlook.com (2603:10a6:208:6e::32)
- by AM8PR04MB7410.eurprd04.prod.outlook.com (2603:10a6:20b:1d5::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.23; Mon, 11 May
- 2026 11:53:44 +0000
-Received: from AM0PR04MB4370.eurprd04.prod.outlook.com
- ([fe80::fe3b:fb2c:9dfc:9b]) by AM0PR04MB4370.eurprd04.prod.outlook.com
- ([fe80::fe3b:fb2c:9dfc:9b%6]) with mapi id 15.20.9891.021; Mon, 11 May 2026
- 11:53:44 +0000
-From: Gaurav Sharma <gaurav.sharma_7@nxp.com>
-To: Bernhard Beschow <shentey@gmail.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-Subject: Adding AMP (Asymmetric Multiprocessing) support for the i.MX8MP SoC
- in QEMU
-Thread-Topic: Adding AMP (Asymmetric Multiprocessing) support for the i.MX8MP
- SoC in QEMU
-Thread-Index: AdzhPFYpCkI1fsg9TF6Q60JeeLkprg==
-Date: Mon, 11 May 2026 11:53:43 +0000
-Message-ID: <AM0PR04MB437090062D4587ECEC9A3B8E87382@AM0PR04MB4370.eurprd04.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: AM0PR04MB4370:EE_|AM8PR04MB7410:EE_
-x-ms-office365-filtering-correlation-id: 48fd9d67-d1d7-4133-efaa-08deaf53f3cb
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|19092799006|376014|38070700021|11063799003|56012099003|18002099003;
-x-microsoft-antispam-message-info: Sye+ithYNLJk+dy3IuR25tlKa6/06eevpBwHLVmvpfu5572O0fOCSO5+epq4O1B7NeMd1hK4luatd+E1hA/w8dDmcAnmQ3WdZHKXYLwo+YVz7vunjROFF6WDzhuL91Df/zH42bSzrCpZlbFMuAZNMMja6Kuz+Zfqe4//sHzlx0RoF0+HjH23/x88Mi/RjZcNwG2Pz/oSOArJfD+zncIZ0/MMlEFivcB/D1ezo9e5wd5Dq+jnWE34EI1d01bRwTlr2x2py2lxGvbGTfCZZLXUW1O0sQp7VgtH3L/DNHvYpwUuBNeUDnI6h2+33UFPCw0suM0GbJUismsMB3V7WcCVDakyu5I/Dml9bR7FCoN0NBIBGga0WLH5puHNfs/3yieSszZJ4SXT9rm3KmaN+DQo0HqXbMyeItwbvHqn8yifgnURAppa3ZwF0AJke69iHU1xrWinTdoRwvqehEGzIlXl1YtBTxU4k7/FuEZFiklhJBR9XpxzRAPpn0OSf1X19GokbfTB+XIjCwAao53nifD6OQSSVy68qemJTrpF96T2JTzqdAAEWvWwRhnToKETEWqoN4hBI8Ni+M4/CiXCwWMBXYDeOol8mTbCW2GV2KIZBcSVvAerFFtA3RQsRZuO+czs3BJgHYJQ3Zra0YmJ4AtZwd7xXuguZ9SkVrh3/RKj4kLORBH5PJiGzM0S64e+Es28DfV+OVXjmIOGVgHB1n+9P91VIJyYUC6o4CXT0dR1TVjTmy3rOdI6BSY7cRBuX2D/
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:AM0PR04MB4370.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(19092799006)(376014)(38070700021)(11063799003)(56012099003)(18002099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?UbmwDAH247tJbGyk6039ck4LkpyYyObk+QbHQ5gcMdLSsckgDXXAiomT0zHE?=
- =?us-ascii?Q?+jw88eNvb4VpuokGy9UmDBXfbCzwLTeYU43SPLpoBW+GmMOys0YCU4ZijNQQ?=
- =?us-ascii?Q?oe0c+Yfq8Pb7c0SUrP6oq0nM3zAAgz6MqpsD6ZPk1Atfp7Lri6kZYZHd/JY+?=
- =?us-ascii?Q?vdeFg865/LBn7iFGObfS9XURyIKoagG9fBKC3pQ8nVL1f+2GRKSXpcO6stkn?=
- =?us-ascii?Q?QKWgTRw+K8HdK3YvgAx4ZHca6mIkNLGApx89LLqMNPoh1agQVyUhysS0A8xX?=
- =?us-ascii?Q?u0l5pvgvX3kyUKWW/6KD4TZMurq/E1qfve7AXk2c1wUftRVK5LPPiyC9nJDP?=
- =?us-ascii?Q?p7/CykXBcs6Tk5D63B6Mt2CpmkHKAHKAb5hXKWJafznc0MK+lEHBnmFRFZsZ?=
- =?us-ascii?Q?y+tWuJ2VCy3StjJASQwQtllCfTyN+Ob26I2IfUyS8vsjNe40VX4YABcLw4TG?=
- =?us-ascii?Q?GiZIAMyGZsAf70WKRqYTPeCbe/Zq/QieKSH3cCxWcN7Nzow3IOD296FFJxjv?=
- =?us-ascii?Q?AAXv2ltIS9KnV1Ng9il4dXoxoRycWM/Dow43IxB60NdkuoxZxvgYX/rU0sBq?=
- =?us-ascii?Q?gcK2u7L0Gn53/aCy8axk3uYz6mkJt4T1iidL6L8YKLe9aSToddklpveGwbYO?=
- =?us-ascii?Q?vJxEciB3zoccOKYoDfWpkn5fqZKQyOfaFx17PWUVbJFLlMjMVNy5B/crZ8zs?=
- =?us-ascii?Q?nSco2TUFtp+WbENiCzKkWsF+yqp3BP+8yQhF5fFZtV/GJD3IZfMYJdae0gxL?=
- =?us-ascii?Q?1+kltkBl5mFSRtxvGfhvPixS+rUt04u8lhvxH0Mt8GtIOEJ5wWnwRvaCTQvD?=
- =?us-ascii?Q?LiMb+ajNP0lwIDrfloNrcX1WwVUx5/i2o41rQhM1w7flnnUJ9IajjyzfHwjQ?=
- =?us-ascii?Q?36Cq4J/OuocQ4p/KG8ofkvQATSWnnJ9XoMbV3eqMhZDcyoyviLbgTe7HSTFW?=
- =?us-ascii?Q?8KLFGYcAAgWhfrBkqRegkkP16QCkCRkHQvLx4pyjgx2cHtI/UYrwLhGrhLO9?=
- =?us-ascii?Q?DnQDGQJlXNA3oANPmBe0Y57kLcocxQ1iKqfhpIDCDThCjt+rN4S+M7sEK3t3?=
- =?us-ascii?Q?r8SQxXLS/slAJsM0W7gavnz7jBzzWcYl63ZjTZFC2ZXSmcDubJ7s5aoA8vXs?=
- =?us-ascii?Q?52vY1H+V+3kwuTlPUzbDmN2jWuf5wJiXt+ZOHgRWDvgtv51dUlAi+A7kwyXZ?=
- =?us-ascii?Q?GpVxgnZVenUL1dUj9j/NLRzK0pLiONT5u2xnCLDbXkAjSikDI6ecPHmDGjrb?=
- =?us-ascii?Q?+PTPo+rSjRInzVS6C71VPdJ3pP8F8al+ILRDhKB1qPwNV/PGNbYUhyOMkayF?=
- =?us-ascii?Q?SVnJFACsapaPKd766p1GIXL565mxeoChfCjDRXt5HPUarUsdpMMQWxHXFSck?=
- =?us-ascii?Q?W9Ta0mXK0pwLE4QvpkhMyq7GzV2aOW2CUBWf/6acSCRo80Nh1EuDDcVjl8uz?=
- =?us-ascii?Q?duo/NByaLnejagjPkVCY2HBiRXcdypfubQJx222BReG7pnP3nBCGR3JmI4zM?=
- =?us-ascii?Q?bLArUayu6vw8banY623SrDd/NXKmoAEXCVil7ve6ReTvWazr2tBhAsW8P/oZ?=
- =?us-ascii?Q?BPpi0dvuDeB5Jl7ymrBAepe8SeCymyBzxq53fCSW51VBHosJQtoFm6onDqsj?=
- =?us-ascii?Q?PuOMDtdwR6nlmr0EGw4bfK2vLC6HpTo62cYgjUP8EM2LmyoH5k40X0GJ1IDu?=
- =?us-ascii?Q?7B/6sGHEYnBUH/x9nozgLRuOUCx7mvC39+iOfw/+TPYsLK+HJXGVacLxzIX8?=
- =?us-ascii?Q?KrUNjOA0Zw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <agarwal.vineet2006@gmail.com>)
+ id 1wMPIm-0002UX-Oz
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 08:00:00 -0400
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <agarwal.vineet2006@gmail.com>)
+ id 1wMPIk-0001ea-QG
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 08:00:00 -0400
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-36643b96b99so2567469a91.0
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 04:59:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1778500796; x=1779105596; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=tBn1VGxNnAc4aB1p1N+PvHCKFDMtL5hRTj5MOOdEZoU=;
+ b=sW9bF0JDyNNfrixqwBZ+aya53h3UwX2NImrDkma/Vi3R4FPBCKunvigbRaRDOviuSW
+ A8y03jrUfV7MLP+sYGNyMuNgRV6MdhDVBpv5bzEIuSxzltm/NykUmHtSpVU7ypGXiOz6
+ h66CvfHKcJDswxfsKLcHgVa/tCd3ERB9FrkP0+gUhYoJ1+bJz3RwhHZ8x1ZzyCL3oEPA
+ HBTE3Aat2zIihBp74w0fMphk5qiO21Wa7clgp1frFjcjAOpYJles2iDk3hcLIHTYvTnn
+ WDONINdBPDMirs93CrNVyTQtBJh7U1ihovFhgOyV08PtUj95qOEL5h9qf9kUZG0+nZz3
+ cp1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778500796; x=1779105596;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tBn1VGxNnAc4aB1p1N+PvHCKFDMtL5hRTj5MOOdEZoU=;
+ b=RJP//0Pb9ATOHNODsbombbm1in/9joZfDNgkqrp0hTK7svEHm1Hq7PVw+kitR9/c+1
+ xXpnex3a/KHtldk51kRCuy2tf8h5pp8lWKLdJbFHIotkzYgqzyj0I2kMkkOQvjYt9Xo4
+ Z0D/xZjSctyj/XvGArSdjlZ4dY+ckg1Nv5GqiJvOS5b8Y8ROCgjkx2v/ZbxefEUP5WyR
+ npH0hTrwsEoC4X6C2+0N3Si1KBcF9BWpfMVMlZJY/Eer05aJ21S6h30mmmpHEPP3Ol0G
+ pSA3mU8YOcBGZv/RMEiFlJ95HyUPaexng9XuzAVNep2VU+8RpV6DwkPQp3/gMOpBc976
+ 4zUQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/nnND87Nk643edY/UDbuWC8NF5P/31v87ldIkWf+8E/b+qXtPw7mD+enzqhkgHgGYSBBfeZjOdnw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy79vEh0hqJkpTSREAC0b6Je335id8Bij03tkDqal7sFWArB3sd
+ snqoaGKYHtUVgctbmJaoylVjCX6L1bQOlac7CxKczwHw3AA6wyUhpa59
+X-Gm-Gg: Acq92OG9oVmMdWFACw8mH6MwTdc3SJ2csWAT/wsZZD5QdKTVbFQgkl8KhTW+mPRa3QI
+ uccP8p//WvfcAaxgy1Ev45XsrbX8dVv+J+NFPC2fdLt9kECff/1ZdY6/IcSXnZ6Fr3WTMvUkL4c
+ IRSDDddIUM/yI6yVv4C0BEBJlFVvPwEgHN4PYxCxctXMmxlXtN8O1mY+a1xPf04iAnChf5ocQ5p
+ whzBGoTFbR5pCA9TS2GHMiNEaZ+V9OsUZJNaFz5lq6KVePMJYwh7tf6SS/sbajcVfc699eOzIyP
+ aNixscOJ7Q6KYxiHvcdTM8JXv8v1xTAD1GJpb9mBMQ90SUp/WBHZLziJZBNZcBa1uTzv4jkj4nq
+ 1GwTOgBlYpdmrxVAfByMBSKvjSupKDgdo/WGXPqKTwuwNMV3dQG1ssX/b7nYOHzwYrzw0mMuseS
+ DTH0zlnGGYpWjjsb2oaj0ja0ZSC+urzg==
+X-Received: by 2002:a17:90b:5603:b0:366:479c:59e7 with SMTP id
+ 98e67ed59e1d1-366479c5dc4mr15361917a91.4.1778500796514; 
+ Mon, 11 May 2026 04:59:56 -0700 (PDT)
+Received: from vini ([2401:4900:8fc8:73c6:dda6:576b:fa0d:f68e])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-367d65ed459sm9891405a91.14.2026.05.11.04.59.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2026 04:59:56 -0700 (PDT)
+From: Vineet Agarwal <agarwal.vineet2006@gmail.com>
+To: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Vineet Agarwal <agarwal.vineet2006@gmail.com>
+Subject: [PATCH] hw/arm: fsl-imx8mm: Don't call qdev_get_machine in init
+Date: Mon, 11 May 2026 17:29:18 +0530
+Message-ID: <20260511115918.32765-1-agarwal.vineet2006@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB4370.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 48fd9d67-d1d7-4133-efaa-08deaf53f3cb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2026 11:53:43.9502 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1JRNbNfNRrASyGfj7GEq+RdezSu2kY7h0mSmErwwgOqpAt3AQsxoUV4xMKZpnvfYN/uU3Wa3AiX59A0Hra3Qyg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7410
-Received-SPF: permerror client-ip=2a01:111:f403:c200::1;
- envelope-from=gaurav.sharma_7@nxp.com;
- helo=DB3PR0202CU003.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=agarwal.vineet2006@gmail.com; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 11 May 2026 08:53:37 -0400
+X-Mailman-Approved-At: Mon, 11 May 2026 08:53:38 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,23 +101,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Bernhard,
+Calling qdev_get_machine() from fsl_imx8mm_init() can trigger
+an assertion failure because the machine may not be created yet.
 
-I've been working on adding AMP (Asymmetric Multiprocessing) support for th=
-e i.MX8MP SoC in QEMU, which enables:-
-1. Cortex-M7 core to boot alongside the A-core.=20
-2. Device emulation for Messaging Unit.=20
-3. Linux running on A53 to load Cortex-M7 bare metal images via remoteproc[=
-It can start and stop the M7 core].=20
+Reproducer:
 
-So far, I have successfully tested the above with minimal SRC stub. I notic=
-ed that you have a SRC implementation in your private repo which is not mai=
-nlined yet.
-Is it planned to be mainlined ? If yes, shall I base my changes on top of y=
-our SRC implementation.
+  ./qemu-system-aarch64 -S -display none \
+      -M virt -device fsl-imx8mm,help
 
+This hits:
 
-Regards
+../hw/core/qdev.c:844: Object *qdev_get_machine(void):
+Assertion `dev' failed.
 
+Move the CPU initialization into realize(), where accessing the
+machine state is safe.
+
+Signed-off-by: Vineet Agarwal <agarwal.vineet2006@gmail.com>
+---
+ hw/arm/fsl-imx8mm.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/hw/arm/fsl-imx8mm.c b/hw/arm/fsl-imx8mm.c
+index 97c3f8542c..875e92bb34 100644
+--- a/hw/arm/fsl-imx8mm.c
++++ b/hw/arm/fsl-imx8mm.c
+@@ -157,16 +157,9 @@ static const struct {
+ 
+ static void fsl_imx8mm_init(Object *obj)
+ {
+-    MachineState *ms = MACHINE(qdev_get_machine());
+     FslImx8mmState *s = FSL_IMX8MM(obj);
+-    const char *cpu_type = ms->cpu_type ?: ARM_CPU_TYPE_NAME("cortex-a53");
+     int i;
+ 
+-    for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX8MM_NUM_CPUS); i++) {
+-        g_autofree char *name = g_strdup_printf("cpu%d", i);
+-        object_initialize_child(obj, name, &s->cpu[i], cpu_type);
+-    }
+-
+     object_initialize_child(obj, "gic", &s->gic, gicv3_class_name());
+ 
+     object_initialize_child(obj, "ccm", &s->ccm, TYPE_IMX8MP_CCM);
+@@ -229,6 +222,8 @@ static void fsl_imx8mm_realize(DeviceState *dev, Error **errp)
+     MachineState *ms = MACHINE(qdev_get_machine());
+     FslImx8mmState *s = FSL_IMX8MM(dev);
+     DeviceState *gicdev = DEVICE(&s->gic);
++    const char *cpu_type =
++        ms->cpu_type ?: ARM_CPU_TYPE_NAME("cortex-a53");
+     int i;
+ 
+     if (ms->smp.cpus > FSL_IMX8MM_NUM_CPUS) {
+@@ -237,6 +232,12 @@ static void fsl_imx8mm_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    for (i = 0; i < ms->smp.cpus; i++) {
++        g_autofree char *name = g_strdup_printf("cpu%d", i);
++        object_initialize_child(OBJECT(dev), name,
++                                &s->cpu[i], cpu_type);
++    }
++
+     /* CPUs */
+     for (i = 0; i < ms->smp.cpus; i++) {
+         /* On uniprocessor, the CBAR is set to 0 */
+-- 
+2.54.0
 
 

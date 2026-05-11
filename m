@@ -4,76 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E27F2CD3427
-	for <qemu-arm@archiver.kernel.org>; Sun, 10 May 2026 16:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2BDCD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 06:14:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wM7TI-0007ve-P5; Sun, 10 May 2026 12:57:40 -0400
+	id 1wMJtz-0001VE-LD; Mon, 11 May 2026 02:14:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wM7TG-0007oo-Gm
- for qemu-arm@nongnu.org; Sun, 10 May 2026 12:57:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMJtx-0001UB-FK
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 02:14:02 -0400
+Received: from 12.mo533.mail-out.ovh.net ([178.33.248.79])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wM7TC-0008KQ-Oa
- for qemu-arm@nongnu.org; Sun, 10 May 2026 12:57:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778432253;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QcRKN2wZCwD6+EMN5P6GUhH+I/u/T14J6ZeyRNSVNIk=;
- b=V9UQW+IO+Cb8i0GEiPx5Rs4cky23vuTOAZWTelGL7hlZyRDOmhpyrxo616VDxadjiesoMj
- GMn3ENM1PREKtOFOdoLZI17S1JNFTamxqlXJPUH6GTxfmp+0mrofKwmC7S3k31kK8hyWxE
- IDR+8LlA63iHcPlAlvTs9VKcQvvVIk0=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-Z0lTLPArPpuFylbO2gDTRQ-1; Sun,
- 10 May 2026 12:57:27 -0400
-X-MC-Unique: Z0lTLPArPpuFylbO2gDTRQ-1
-X-Mimecast-MFC-AGG-ID: Z0lTLPArPpuFylbO2gDTRQ_1778432246
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C7F3C195608C; Sun, 10 May 2026 16:57:25 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.49.156])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5D9F31800465; Sun, 10 May 2026 16:57:22 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- pierrick.bouvier@oss.qualcomm.com
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, kane_chen@aspeedtech.com,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 3/4] hw/arm: Remove fp5280g2-bmc machine
-Date: Sun, 10 May 2026 18:57:03 +0200
-Message-ID: <20260510165704.2935316-4-clg@redhat.com>
-In-Reply-To: <20260510165704.2935316-1-clg@redhat.com>
-References: <20260510165704.2935316-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMJtZ-0000iK-02
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 02:13:40 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [51.255.22.22])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gDTtd55Zfz5yM8;
+ Mon, 11 May 2026 06:13:29 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 11 May 2026 06:13:29 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.96.179])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gDTtd01tyz7thp; Mon, 11 May 2026 06:13:29 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id D02C71B4363F;
+ Mon, 11 May 2026 06:13:26 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-112S0064a14c32e-95b7-4b84-bb08-71f84f95a4ac,
+ AF0BFEC086191C1369F7EC03D32B7A83D87952B1) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <5fe87f4d-9c44-44b3-a684-511d243f0f75@kaod.org>
+Date: Mon, 11 May 2026 08:13:26 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: POKdeNDpaphQ8uk4GUljxhVq15G9OzLcAZzaqzZW41g_1778432246
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 00/11] hw/usb/ehci: Add 64-bit descriptor addressing
+ support
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Zhao Liu <zhao1.liu@intel.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
+ "flwu@google.com" <flwu@google.com>,
+ "nabihestefan@google.com" <nabihestefan@google.com>
+References: <20260504025342.1452605-1-jamin_lin@aspeedtech.com>
+ <0abcf804-f16f-43b6-a345-e14642e54718@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <0abcf804-f16f-43b6-a345-e14642e54718@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+x-ovh-tracer-id: 8325185389208185901
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGRG7swY4LYRBwZZRP+Z0Whfs06LYHVZBcyDkGbfbXwwT3Is9HYZKOs6Qmr4jPnYPT+iZFQFVPeCENA83BFWuQGRzsfxPh96cszycSe7EhRrkwrmUJPwCIVbOZ7aEheoaztHLyPhRYK0t5mr7D065mux3f/gBy4k7AFFFuASQR+i5E5/AEAD6XjiEVUeBlE7fQe1Cn/M46rAY16qeTMnzh9TCZNYl2SE8dZCUrD/fMFYp+O3+ogz9XE+97w1ngKqYB3iCtf0g09oveHou62NHvEY0XGNL0V34T1avrmSOuS8QnfYqcGuf78/Hj/FblD0qafFz4zTwi1NGLF30gNIQxVHeQQQ82gP72KeGotKdTeGtL/GtmXDMTBwhY52JnPSqm7jmIOohcb0eYTReJnRfXCXpGHU8LbwrUnCuqcs7GLqbMOTjnBURUvzVHvuh0F/6Zd2+Q6lY/Vu7fgSykp/+c961zpMI4N+Yt7qIhMayph+OD+kkkiTJ8HW7QSYcBp1uzngcFnWCR9lOdpTcaYRRMHkR8HZO6FNi98fOURKwA70KioF1IISK7sQrsrlGLJXbpJUK+vs4MgLXNX1PDwbbolhLAhLJrw+/Ohnn7Dn8vim/JGOkYecFYzxGER8nwCf6vQACbqL0mV+K5vsOav4ImTaXNrgXaV97FvHcVhcXte5Q
+DKIM-Signature: a=rsa-sha256; bh=1+ykgI+ks6hof+ji0bJlerrlZhMA0AhAhWAp3ebb1LI=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1778480011; v=1;
+ b=bVmEyT8wtL1N1OsWFhuLX6vcnrR+PXga0Fi88XxVRF/cJaHQD0t5LX1Bak1ytFPcuPMXKx/f
+ rPEkPfH+9ClZwJz4T0oLRvfTblDUgd/F0BWBsoasxwsdKHOM1X0Zp1wLpy//OuI0KsUM1LLKBTM
+ YacP0LKRVAQ2WqDwLF85kC7nZ2KGG+NG6JYyE3ROgzc4LdpYjQchuQhyXN9Jx8gAPhmmqtWfxrC
+ wqRThL24/RZRuivqeykzDumqU+QUxedM/EHLXJ9+pstQ8pJZTyxcEdPxuVaeg9qhekennWUhTZp
+ +2z3jeWOlaYO2Y9SuUlLMdVK2bcIiqiyRWTtG8ju4cTkA==
+Received-SPF: pass client-ip=178.33.248.79; envelope-from=clg@kaod.org;
+ helo=12.mo533.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,188 +141,169 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The fp5280g2-bmc machine was deprecated in QEMU 10.2 and is now
-removed in QEMU 11.1.
+On 5/4/26 07:27, Cédric Le Goater wrote:
+> On 5/4/26 04:53, Jamin Lin wrote:
+>> EHCI supports 64-bit addressing through the CTRLDSSEGMENT register,
+>> which provides the upper 32 bits of descriptor addresses when the
+>> controller advertises 64-bit capability.
+>>
+>> Currently QEMU EHCI model only partially supports this functionality and
+>> descriptor addresses are effectively treated as 32-bit. This becomes
+>> problematic on systems where system memory is located above the 4GB
+>> boundary.
+>>
+>> The Linux EHCI driver enables 64-bit addressing if the controller
+>> advertises the capability. During initialization it programs the
+>> segment register to zero:
+>>
+>>    https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-hcd.c#L600
+>>
+>> The driver also notes that descriptor structures allocated from the
+>> DMA pool use segment zero semantics. Descriptor memory is allocated
+>> using the DMA API and platforms may configure a 64-bit DMA mask,
+>> allowing descriptor memory to be placed above 4GB.
+>>
+>> On AST2700 platforms, system DRAM is mapped at 0x400000000. As a
+>> result, descriptor addresses constructed directly from the EHCI
+>> registers do not match the actual system addresses used by the
+>> controller when accessing queue heads (QH) and queue element transfer
+>> descriptors (qTD).
+>>
+>> This patch series implements full 64-bit descriptor addressing support
+>> in the EHCI emulation. Descriptor address handling is updated to use
+>> 64-bit values and the descriptor structures (QH, qTD, iTD and siTD)
+>> are extended to support the upper address bits provided by the segment
+>> register.
+>>
+>> Add a ctrldssegment-default property so platforms can provide a
+>> descriptor address offset when constructing descriptor addresses.
+>> This allows systems where DRAM resides above 4GB to access EHCI
+>> descriptors correctly.
+>>
+>> The AST2700 machine uses this property to account for its DRAM mapping
+>> at 0x400000000 and enables 64-bit EHCI DMA addressing.
+>>
+>> Test Result:
+>> 1. EHCI 32bits with ast2600-evb machine
+>> Command line:
+>> ./build/qemu-system-arm \
+>>    -machine ast2600-evb \
+>>    -m 1G \
+>>    -drive file=image-bmc,if=mtd,format=raw \
+>>    -nographic \
+>>    -device usb-kbd,bus=usb-bus.1,id=mykbd \
+>>    -drive id=usbdisk,if=none,file=image0.ext4,format=raw \
+>>    -device usb-storage,bus=usb-bus.1,id=mystorage,drive=usbdisk
+>>    -snapshot \
+>>    -nographic
+>> Result:
+>> unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.3-v00.08.01-g172b7e27a30d ehci_hcd EHCI Host Controller
+>> Bus 001 Device 002: ID 0627:0001 QEMU QEMU USB Keyboard
+>> Bus 001 Device 003: ID 46f4:0001 QEMU QEMU USB HARDDRIVE
+>> Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.3-v00.08.01-g172b7e27a30d uhci_hcd Generic UHCI Host Controller
+>>
+>> 2. EHCI 64bits with ast2700a2-evb machine
+>> Command line:
+>> ./build/qemu-system-aarch64 -M ast2700a2-evb -nographic\
+>>   -bios ast27x0_bootrom.bin \
+>>   -drive file=image-bmc,format=raw,if=mtd \
+>>   -snapshot \
+>>   -device usb-kbd,bus=usb-bus.3,id=mykbd \
+>>   -drive id=usbdisk,if=none,file=image0.ext4,format=raw \
+>>   -device usb-storage,bus=usb-bus.3,id=mystorage,drive=usbdisk
+>> Result:
+>> root@ast2700-default:~# lsusb
+>> unable to initialize usb specBus 001 Device 001: ID 1d6b:0001 Linux 6.18.3-v00.08.01-g172b7e27a30d uhci_hcd Generic UHCI Host Controller
+>> Bus 002 Device 001: ID 1d6b:0002 Linux 6.18.3-v00.08.01-g172b7e27a30d ehci_hcd EHCI Host Controller
+>> Bus 002 Device 002: ID 0627:0001 QEMU QEMU USB Keyboard
+>> Bus 002 Device 003: ID 46f4:0001 QEMU QEMU USB HARDDRIVE
+>> v1
+>>   1. Fix checkpatch coding style issues
+>>   2. Implement 64-bit addressing for QH/qTD/iTD/siTD descriptors
+>>   3. Add descriptor address offset property
+>>   4. Enable 64-bit EHCI DMA addressing on AST2700
+>>   5. Configure descriptor address offset for AST2700
+>>
+>> v2
+>>   1. Remove unused EHCIfstn structure and dead code
+>>   2. Replace fprintf(stderr, ...) with qemu_log_mask(LOG_GUEST_ERROR)
+>>   3. Replace DPRINTF debug logs with trace events
+>>   4. Add functional tests for USB EHCI on AST2600 and AST2700 A1/A2
+>>   5. Fix review issue
+>>
+>> v3:
+>>   1. Add Migration version test function
+>>   2. Add EHCI 64-bit buffer pointer fields description in commit log
+>>
+>> v4:
+>>   1. Reorder patches in the series
+>>   2. Fix EHCI migration issues
+>>   3. Introduce a common properties macro for both sysbus and PCI
+>>   4. Drop the descriptor address offset property
+>>   5. Add ctrldssegment-default property
+>>   6. Address review comments
+>>
+>> v5:
+>>   1. Add 11.0 machine compatibility properties
+>>
+>> v6:
+>>   1. Update reviewer suggested improvements.
+>> Jamin Lin (11):
+>>    tests/functional/arm/test_aspeed_ast2600_sdk: Add USB EHCI test for
+>>      AST2600 SDK
+>>    hw/usb/hcd-ehci: Change descriptor addresses to 64-bit with migration
+>>      compatibility
+>>    hw/usb/hcd-ehci: Add property to advertise 64-bit addressing
+>>      capability
+>>    hw/usb/hcd-ehci: Implement 64-bit QH descriptor addressing
+>>    hw/usb/hcd-ehci: Implement 64-bit qTD descriptor addressing
+>>    hw/usb/hcd-ehci: Implement 64-bit iTD descriptor addressing
+>>    hw/usb/hcd-ehci: Implement 64-bit siTD descriptor addressing
+>>    hw/usb/hcd-ehci: Add ctrldssegment-default property
+>>    hw/arm/aspeed_ast27x0: Set EHCI ctrldssegment-default
+>>    hw/arm/aspeed_ast27x0: Enable 64-bit EHCI DMA addressing
+>>    tests/functional/aarch64/test_aspeed_ast2700: Add USB EHCI test for
+>>      AST2700 A1/A2
+>>
+>>   hw/usb/hcd-ehci.h                             |  29 +++-
+>>   hw/arm/aspeed_ast27x0.c                       |   5 +
+>>   hw/core/machine.c                             |   5 +-
+>>   hw/usb/hcd-ehci.c                             | 162 +++++++++++++-----
+>>   hw/usb/trace-events                           |  26 +--
+>>   .../aarch64/test_aspeed_ast2700a1.py          |   7 +
+>>   .../aarch64/test_aspeed_ast2700a2.py          |   7 +
+>>   .../functional/arm/test_aspeed_ast2600_sdk.py |   7 +
+>>   8 files changed, 185 insertions(+), 63 deletions(-)
+>>
+> 
+> Applied to
+> 
+>      https://github.com/legoater/qemu aspeed-next
 
-This Inspur FP5280G2 BMC board does not rely on specific device models
-and can be replaced by the ast2500-evb machine with appropriate
-fmc-model and I2C device configuration via command line.
+Jamin,
 
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- docs/about/deprecated.rst        |  8 ---
- docs/about/removed-features.rst  |  8 +++
- docs/system/arm/aspeed.rst       |  5 +-
- hw/arm/aspeed_ast2500_fp5280g2.c | 88 --------------------------------
- hw/arm/meson.build               |  1 -
- 5 files changed, 10 insertions(+), 100 deletions(-)
- delete mode 100644 hw/arm/aspeed_ast2500_fp5280g2.c
+I dropped the series from aspeed-next and kept :
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index bbb4a9886fbc..e416f3d8a74b 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -250,14 +250,6 @@ deprecated; use the new name ``dtb-randomness`` instead. The new name
- better reflects the way this property affects all random data within
- the device tree blob, not just the ``kaslr-seed`` node.
- 
--Arm ``fp5280g2-bmc`` machine (since 10.2)
--'''''''''''''''''''''''''''''''''''''''''
--
--The ``fp5280g2-bmc`` machine does not rely on any specific device
--models, it can be replaced by the ``ast2500-evb`` machine using the
--``fmc-model`` option to specify the flash type. The I2C devices
--connected to the board can be defined via the QEMU command line.
--
- Arm ``fby35`` machine (since 10.2)
- ''''''''''''''''''''''''''''''''''
- 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index b9e9d43dada3..2da8283d0e1e 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -1205,6 +1205,14 @@ machine using the ``fmc-model`` option to specify the flash type. The
- I2C devices connected to the board can be defined via the QEMU command
- line.
- 
-+Arm ``fp5280g2-bmc`` machine (removed in 11.1)
-+''''''''''''''''''''''''''''''''''''''''''''''
-+
-+The ``fp5280g2-bmc`` machine does not rely on any specific device
-+models, it can be replaced by the ``ast2500-evb`` machine using the
-+``fmc-model`` option to specify the flash type. The I2C devices
-+connected to the board can be defined via the QEMU command line.
-+
- linux-user mode CPUs
- --------------------
- 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index cbaab5edd65c..df2f539b0257 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--================================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+==============================================================================================================================================================================================================================================================================================================================
- 
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -22,7 +22,6 @@ AST2500 SoC based machines :
- - ``ast2500-evb``          Aspeed AST2500 Evaluation board
- - ``romulus-bmc``          OpenPOWER Romulus POWER9 BMC
- - ``witherspoon-bmc``      OpenPOWER Witherspoon POWER9 BMC
--- ``fp5280g2-bmc``         Inspur FP5280G2 BMC
- - ``g220a-bmc``            Bytedance G220A BMC
- - ``yosemitev2-bmc``       Facebook YosemiteV2 BMC
- - ``tiogapass-bmc``        Facebook Tiogapass BMC
-diff --git a/hw/arm/aspeed_ast2500_fp5280g2.c b/hw/arm/aspeed_ast2500_fp5280g2.c
-deleted file mode 100644
-index 858e0388714b..000000000000
---- a/hw/arm/aspeed_ast2500_fp5280g2.c
-+++ /dev/null
-@@ -1,88 +0,0 @@
--/*
-- * Inspur FP5280G2
-- *
-- * Copyright 2016 IBM Corp.
-- *
-- * SPDX-License-Identifier: GPL-2.0-or-later
-- */
--
--#include "qemu/osdep.h"
--#include "qapi/error.h"
--#include "hw/arm/machines-qom.h"
--#include "hw/arm/aspeed.h"
--#include "hw/arm/aspeed_soc.h"
--#include "hw/nvram/eeprom_at24c.h"
--#include "hw/i2c/i2c_mux_pca954x.h"
--#include "hw/sensor/tmp105.h"
--
--/* FP5280G2 hardware value: 0XF100D286 */
--#define FP5280G2_BMC_HW_STRAP1 (                                      \
--        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
--        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
--        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
--        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
--        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
--        SCU_HW_STRAP_MAC1_RGMII |                                       \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
--        SCU_AST2500_HW_STRAP_RESERVED1)
--
--static void fp5280g2_bmc_i2c_init(AspeedMachineState *bmc)
--{
--    AspeedSoCState *soc = bmc->soc;
--    I2CSlave *i2c_mux;
--
--    /* The at24c256 */
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x50, 32768);
--
--    /* The fp5280g2 expects a TMP112 but a TMP105 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), TYPE_TMP105,
--                     0x49);
--
--    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
--                     "pca9546", 0x70);
--    /* It expects a TMP112 but a TMP105 is compatible */
--    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), TYPE_TMP105,
--                     0x4a);
--
--    /* It expects a ds3232 but a ds1338 is good enough */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "ds1338", 0x68);
--
--    /* It expects a pca9555 but a pca9552 is compatible */
--    aspeed_create_pca9552(soc, 8, 0x30);
--}
--
--static void aspeed_machine_fp5280g2_class_init(ObjectClass *oc,
--                                               const void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
--
--    mc->desc       = "Inspur FP5280G2 BMC (ARM1176)";
--    mc->deprecation_reason = "use 'ast2500-evb' instead";
--    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = FP5280G2_BMC_HW_STRAP1;
--    amc->fmc_model = "n25q512a";
--    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 2;
--    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
--    amc->i2c_init  = fp5280g2_bmc_i2c_init;
--    mc->default_ram_size = 512 * MiB;
--    aspeed_machine_class_init_cpus_defaults(mc);
--};
--
--static const TypeInfo aspeed_ast2500_fp5280g2_types[] = {
--    {
--        .name          = MACHINE_TYPE_NAME("fp5280g2-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_fp5280g2_class_init,
--        .interfaces    = arm_machine_interfaces,
--    }
--};
--
--DEFINE_TYPES(aspeed_ast2500_fp5280g2_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 2be74b575efc..063abf2cf654 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -47,7 +47,6 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2400_quanta-q71l.c',
-   'aspeed_ast2400_supermicrox11.c',
-   'aspeed_ast2500_evb.c',
--  'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
-   'aspeed_ast2500_romulus.c',
-   'aspeed_ast2500_supermicro-x11spi.c',
--- 
-2.54.0
+   tests/functional/arm/test_aspeed_ast2600_sdk: Add USB EHCI test for AST2600 SDK
+
+The USB subsystem is orphan but it is still used in the virt world.
+This series is modifying the EHCI internals in such way that migration
+is impacted and the CTRLDSSEGMENT (Control Data Structure Segment
+Register) implementation is incomplete AFAICT. From EHCI specs :
+
+    This register allows the host software to locate all control data
+    structures within the *same 4 Gigabyte memory segment*.
+
+Linux driver seems buggy too.
+
+Overall, the risk of regression is too high given the time I can dedicate
+to this topic.
+
+Thanks for all the good work you done there, specially for migration.
+If someone can Ack the series and step forward to become USB maintainer,
+then I will reconsider.
+
+
+C.
 
 

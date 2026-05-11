@@ -4,72 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4429CD4855
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B3FCD37BE
 	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 20:23:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMX9S-0005jY-2W; Mon, 11 May 2026 16:22:54 -0400
+	id 1wMX9r-0007Cx-QJ; Mon, 11 May 2026 16:23:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wMX9R-0005bP-9T
- for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wMX9m-00072W-Ll
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 16:23:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wMX9P-0002IA-IU
- for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:53 -0400
+ id 1wMX9l-0002Md-28
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 16:23:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778530970;
+ s=mimecast20190719; t=1778530991;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2C0RocEaioxRTatUpe6UZmuTE1Y097AlBK4Uk3G/4Yk=;
- b=IqrIiF7BJfCiQyivILBCQbwd2pCKhqdeoGu6C+JjrXJmXKRiFJK+lP7Q75HqUQ9VepXPcI
- iqEmcJQj0SSvzikbICZq3kDC7yDIGRwau3UYpsLZDtN5Y7BLoleQXGs5yWbCTHOCCyKtam
- kpMzt0RDHs/FsG1V8NDA9ufYDBINsCw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=ZQy+NU8C0RinKCdFv+xlIMSg10VBOsE5SofX/O6Ilz8=;
+ b=MbyawPOoVQY8WfaDILd17vFmgq42Vc4vzIoKSl7eeOd0yujG4bA63xnvf1orXvIZC5Z4jw
+ JZ359JjUFILDjQnYcIs69zJW5tsXN7jsFok8lJbHFlzTQHSKZgEHJSMl0mrHXnP40vHrbZ
+ urTBv/3SvVW9d5PC+ivTQ2wsRWSda2s=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-391-Y7VxbRrTNp6pNM2TO3WMIw-1; Mon,
- 11 May 2026 16:22:46 -0400
-X-MC-Unique: Y7VxbRrTNp6pNM2TO3WMIw-1
-X-Mimecast-MFC-AGG-ID: Y7VxbRrTNp6pNM2TO3WMIw_1778530964
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-676-SkfVHJAdMti97mV7ht17Cw-1; Mon,
+ 11 May 2026 16:23:07 -0400
+X-MC-Unique: SkfVHJAdMti97mV7ht17Cw-1
+X-Mimecast-MFC-AGG-ID: SkfVHJAdMti97mV7ht17Cw_1778530986
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A0F8118002CB; Mon, 11 May 2026 20:22:44 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 378A519560B4; Mon, 11 May 2026 20:23:06 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.4])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BC2481955D84; Mon, 11 May 2026 20:22:42 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CD6461803A8E; Mon, 11 May 2026 20:23:04 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: stefanha@redhat.com,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Ninad Palsule <ninad@linux.ibm.com>,
- qemu-arm@nongnu.org (open list:ASPEED BMCs)
-Subject: [PULL 16/24] hw/fsi: move OPBus qbus_init() to instance_init
-Date: Tue, 12 May 2026 00:21:02 +0400
-Message-ID: <20260511202111.3091440-17-marcandre.lureau@redhat.com>
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PULL 20/24] hw/arm/virt: free flash devices and OEM strings on
+ finalization
+Date: Tue, 12 May 2026 00:21:06 +0400
+Message-ID: <20260511202111.3091440-21-marcandre.lureau@redhat.com>
 In-Reply-To: <20260511202111.3091440-1-marcandre.lureau@redhat.com>
 References: <20260511202111.3091440-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: BqGTx7p82Vp9l7hKrZ2Mwy4_0VSSt4TZ6xTdkq4mTa8_1778530964
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: xhv6dWPtA8yh9zVTjvRElenRLyjJfESEnl2IAOU4yuE_1778530986
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -77,7 +73,7 @@ X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,47 +92,50 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Remove the TODO comment that documented the workaround, as it is
-no longer needed.
+Flash devices created in instance_init via qdev_new() hold an extra
+reference that is only dropped on sysbus_realize_and_unref(). When the
+machine is destroyed before realization, the flash objects leak. Also,
+the oem_id and oem_table_id strings from g_strndup() are never freed.
 
-Suggested-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Fixes: 602b458201ff ("acpi: Permit OEM ID and OEM table ID fields to be changed")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/fsi/aspeed_apb2opb.c | 13 +------------
- 1 file changed, 1 insertion(+), 12 deletions(-)
+ hw/arm/virt.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
-index 36092468391..058abc86452 100644
---- a/hw/fsi/aspeed_apb2opb.c
-+++ b/hw/fsi/aspeed_apb2opb.c
-@@ -273,6 +273,7 @@ static void fsi_aspeed_apb2opb_init(Object *o)
-     for (i = 0; i < ASPEED_FSI_NUM; i++) {
-         object_initialize_child(o, "fsi-master[*]", &s->fsi[i],
-                                 TYPE_FSI_MASTER);
-+        qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s), NULL);
-     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 10b19543826..b090233893c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -4321,6 +4321,19 @@ static void virt_instance_init(Object *obj)
+     cxl_machine_init(obj, &vms->cxl_devices_state);
  }
  
-@@ -282,18 +283,6 @@ static void fsi_aspeed_apb2opb_realize(DeviceState *dev, Error **errp)
-     AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
-     int i;
- 
--    /*
--     * TODO: The OPBus model initializes the OPB address space in
--     * the .instance_init handler and this is problematic for test
--     * device-introspect-test. To avoid a memory corruption and a QEMU
--     * crash, qbus_init() should be called from realize(). Something to
--     * improve. Possibly, OPBus could also be removed.
--     */
--    for (i = 0; i < ASPEED_FSI_NUM; i++) {
--        qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s),
--                  NULL);
--    }
--
-     sysbus_init_irq(sbd, &s->irq);
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_apb2opb_ops, s,
++static void virt_instance_finalize(Object *obj)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    for (int i = 0; i < ARRAY_SIZE(vms->flash); i++) {
++        if (vms->flash[i] && !qdev_is_realized(DEVICE(vms->flash[i]))) {
++            object_unref(OBJECT(vms->flash[i]));
++        }
++    }
++    g_free(vms->oem_id);
++    g_free(vms->oem_table_id);
++}
++
+ static const TypeInfo virt_machine_info = {
+     .name          = TYPE_VIRT_MACHINE,
+     .parent        = TYPE_MACHINE,
+@@ -4329,6 +4342,7 @@ static const TypeInfo virt_machine_info = {
+     .class_size    = sizeof(VirtMachineClass),
+     .class_init    = virt_machine_class_init,
+     .instance_init = virt_instance_init,
++    .instance_finalize = virt_instance_finalize,
+     .interfaces = (const InterfaceInfo[]) {
+          { TYPE_HOTPLUG_HANDLER },
+          { }
 -- 
 2.54.0
 

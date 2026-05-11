@@ -4,148 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 276F8CD37B5
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 06:31:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF228CD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 09:41:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMKAU-0005E9-Fd; Mon, 11 May 2026 02:31:08 -0400
+	id 1wMN7p-0001w7-R6; Mon, 11 May 2026 05:40:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wMKAM-0005CY-KE; Mon, 11 May 2026 02:31:02 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wMKAK-0004g4-HY; Mon, 11 May 2026 02:30:58 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=p0ue8PslRXuKRhqDEI5h1n0kfmu4im+BJy/MBCjSR3EQSeJBhSvF4oP0+7JfTm9PPbCjERZ4d+r+e8Mhj0/N6l+TkB1DvHqbnzwZfJDoldzB2W/QmwHR9wthh/Ayl/+c1ZVTxm6b4rjVcEDTnlqZoQsrGGRxk3umIfwgv24CNtEK/A7ZkZGPfqRatd40YrVr74JIiYn0b18/0y5N+gM5/3PbfKBex9+CTxrfbYgP1YfdJq6iAHN/27WzI3JR/rvpzS9lQIEd7A3BAD5g3apUgCGshfwp/9niaAe2eLsVoDnB7hJu1Fci/yBKLrva8j0X3kdN94UC5Ch9D0iLEMfIBg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8Ls3rT+3ZYgsx1xDLzx3KuYWBi8L3IEP0LCj9cGBMOE=;
- b=amHEm7jhnZ/bGfQFLdeKhkCeIpCAKHqStipAa/qkzihJBUDVECNCodoGo+2ZQW81nsqUGh0sVER7oIejNTZbPJL7wLRNVtmwI6iEDFx7p62cI76Y23cBZI6LI/4KoOyILWDrJd9fMH9aQOVzHIaVqC/Mdoa2P2X5TbkI+JEQyKzV9IH3BK7OvkQ+KHQMaDBGLXRgtYQC+J7waPEDUi344nju9B7heJbqRLQlLudRsN/GWjmRupBP2fq+oS+c6KPDQa8yXyfWeZEXuik7ZbYl6lSewVSuT7PuBQq4rdN/GE8x6sgWQbrZlgDieb6ERU+VVWXiF0YTlY0TPk+FG51yuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8Ls3rT+3ZYgsx1xDLzx3KuYWBi8L3IEP0LCj9cGBMOE=;
- b=PjHZSqAjNRcKJsZDU8un+WigpyRrMEw2+eDVWuPziEGnZv2NP11uMru5GGwZ8Ycluecgyrx2cbHP7zuCI9FYHgD1My1coklvFB3m8IKZ0/oF3q02YD/Ww2NYBrCrQbtTJbJgo3BB/KawqCXA4llEbsI7tolY2Z95UQJ0VgtC5VB3wLBwpjI0l2NlJH36mJ1YHBjVbji+EImPUnB+L59t1tef7BJ9U0OcDnD5lBuI2EqcskaC8eaWnR0xTW/EJgVvSjipdy8cIgEN7Gob7m1CIUN1mOXNmLasgCus8G3/OiIY+CdlSLyja1K6QSCAw/jCA9d7pxSTiy+UMLM3y+ublQ==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SEZPR06MB6060.apcprd06.prod.outlook.com (2603:1096:101:ed::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.22; Mon, 11 May
- 2026 06:30:46 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::e659:1ead:77cb:f6d3%2]) with mapi id 15.20.9891.021; Mon, 11 May 2026
- 06:30:46 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, "philmd@linaro.org"
- <philmd@linaro.org>, "peterx@redhat.com" <peterx@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Zhao Liu
- <zhao1.liu@intel.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "farosas@suse.de" <farosas@suse.de>,
- "flwu@google.com" <flwu@google.com>, "nabihestefan@google.com"
- <nabihestefan@google.com>
-Subject: RE: [PATCH v6 00/11] hw/usb/ehci: Add 64-bit descriptor addressing
- support
-Thread-Topic: [PATCH v6 00/11] hw/usb/ehci: Add 64-bit descriptor addressing
- support
-Thread-Index: AQHc23E4Zae50w4sSUmC3BP0jFUSeLX9Vo2AgAsNHwCAAAOIoA==
-Date: Mon, 11 May 2026 06:30:45 +0000
-Message-ID: <TYPPR06MB820617F90DCAF66D872A9279FC382@TYPPR06MB8206.apcprd06.prod.outlook.com>
-References: <20260504025342.1452605-1-jamin_lin@aspeedtech.com>
- <0abcf804-f16f-43b6-a345-e14642e54718@kaod.org>
- <5fe87f4d-9c44-44b3-a684-511d243f0f75@kaod.org>
-In-Reply-To: <5fe87f4d-9c44-44b3-a684-511d243f0f75@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SEZPR06MB6060:EE_
-x-ms-office365-filtering-correlation-id: 3d6329ab-ee41-4913-55b4-08deaf26d58f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7416014|921020|38070700021|56012099003|18002099003|22082099003;
-x-microsoft-antispam-message-info: MjJmbHjebPpQifEsDTQZE+lqGKDJlD+wKlVO48FlgsxbOjkC3vIyK53o37QHoAQLJA9gvQKwpa67aVy4BnPgxAbj3AkuyTUuuk9KO/6RCY2ZPcqRmJjEJIfa5usNEx5VKtvxyT9NoQjwmMiKiuSNqaTvtdtO+yW4UyRdzM1+sxQfRmTg12iTP0au/UIR/rrr27Du6cLF2knx/nEDkUPq4AJJdxkWpMdpqKClodfkgXs6aMKGzey3DIcNPzn89Ap1URcGtbUmXyWmW5aElLn4dSgd6hUYVRba0WSDGr8mWT5WEO27DxtVbDIUVjtOAztxvZBaVgWNZRn7TPLLrpZS+4jjXwU797VKqQ6H1WlCR/2kkSiA5yj0VEif4BpxrG1tL+s5R+PGnTUonCfsnR0/wAk8YFI7o2XQkxgA99kH688A0yoB9lw4DCbgLRFDy4uyFNW18HKms29UXUfCfZ50xN/eni7Km4Xc/ckhOjGa35dz6ml6al5tsoTJUo5hddfzA1bck3ZJkINu34FRCgMWeGR6t55Kl/6S5rjlUMywmcYmxGJjxJdO6is+ACZ360G89iMQvV7TuUR0VWCdD/SM+9e73q14dPXTHt9vXAeTSGaVM1Y9ZMEbJda4j75x03uAaPF89/zs4tsDj3O6M3h1TKeEAwS7/MWwG1jBlzjY5Bv+8BB1Ri4p6OFczcAEvGbf7+vkOKqHxlV/qpVmbyU7ULMAoRAzPDAyTTlU0XKTXsEX2iUTxVCUlTD3/pVV7ybj29bmy26LNnPgvHePNDTkOg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(38070700021)(56012099003)(18002099003)(22082099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NmJXMENrenJFWUtPdUlwdUY5azBhRzE4T0VXL2Z1WEZKbWRxbHE4WTZoSTlS?=
- =?utf-8?B?RUFnSm91b0lBUVZUN0NIL0pUUU5WL1kwMzdmaVZuNVdFL1JvSnlieVpjNmh0?=
- =?utf-8?B?bnNnNksvdUVseHFuVXcwSU9ZcUVzNlA3UUZ6RVFKRnM3MzJldlpmV3RYeFBN?=
- =?utf-8?B?U1V1TXBuYWtsRkFsRXR3VmM5UzJSSFd0enZlT0V6N25uVjJpQkNoNUpWUDBF?=
- =?utf-8?B?eTBBSExmR3JjVm9oTXgxVzR2UVJsRlR0QkJmTmdDL2hZYXNPZFVVcElnUGdB?=
- =?utf-8?B?cHh1Q0FUT3R2cFR3OFdGTFpjdzQzcDJZQ0tyQng0dlBoQURkcG4vbWNZT3Nw?=
- =?utf-8?B?TUhsdGxmUTVmSGVLdFlnS2lmYkhIZlFFQktCM0liYXR1NDhFTE1XVTI2T3A2?=
- =?utf-8?B?dFUvU0taZ1cyNktKa1pBbjhhc1QyREpGeWR1ZHdnM1o1VXUvQU9lTnZpdHRw?=
- =?utf-8?B?dDVpU1V4Q1l4Y2xpR1ArejR0c3BBQmsydTBnVXgyaVhyU0JCMjJ4NXpCRFBm?=
- =?utf-8?B?NEtNQUFPc0YxZjVPajhRaE84WkRkbkM2K3hwWElKbzloWGxPUmwxQVRpeGsz?=
- =?utf-8?B?bW9YYVJQR3dGUlo3aVhzZWd2YVRmSXhlcTd1ZW9TV1BhS09mTVhPS3V2Z3Jv?=
- =?utf-8?B?c2dYRnpIdmV2WlVzdEFTNGpoRVUwTDBFOFNJQXhpbEFJcWo5cS9SRWs3QURL?=
- =?utf-8?B?anpham50U1JjUEs4NVAzK1p0VG9jOWcyRlR6dUpmRWNEVmJnTDFNL2dnOHd1?=
- =?utf-8?B?Szk0OEZGWmVPZTZQZk4ycE5QdkkxSjhOV2pmMVV6WDN6a1ltRXFLUUliTlJ4?=
- =?utf-8?B?UUVrUC8rTVd6eEUyOXZNbG1sQTdmaGUxWEpzNTVGTVJDYXNJTXhxbVphV3hF?=
- =?utf-8?B?TGpIemN2bDhDRDI2ZGR4WWV6VGUwOVhtdUZ3TVV2a1QydU13Mjd5OWd2RVlC?=
- =?utf-8?B?VXV0YWgwWnhZdytsOEdvWnNlclZnMWVKVFNaMzlyN01DUzYyYVBNV3h0MFVw?=
- =?utf-8?B?bm5PQ2lLTDJaY2tGRkl2dDRWelZXVVc3SG81UFJ2NCszYlNZVEI2VEpkNDdy?=
- =?utf-8?B?U1JpL1NORFI3RDcwQkh6YnF6SGtEU3JLUFhoYURIN0RVUU9qWjVWdkpMWnQ4?=
- =?utf-8?B?eU54UVZxbCtUN2dpMlptVXNqWDNoODJKZHZHbWM1ZzNEaUV0V05uN0l2TFR0?=
- =?utf-8?B?Y2RaMVU2R2JrVGMxTisvcWZySVl4WWIrZFE5K09DZm8yb2h1ZGg0MkkvUkZo?=
- =?utf-8?B?aG5pUG10RGVWdFE5eEk5Ry9NWHo1WkdWNFphOXphTTZwT0Y2VFgwQTdkb1Jm?=
- =?utf-8?B?ZFJaTVRyRnNRa25ZMFowMTJrck9MdWxkZS8vdUxoSGpuK0xJSlpYYWR5SDNo?=
- =?utf-8?B?c3ZRMnhIREVxU0x5ZWZ1bCtXZ2VIR0JVbldpekpCUjJIcFF6bi8vV3M0aFA1?=
- =?utf-8?B?QWJ0bzNmZFlsdjZuUzF4Z1dZYTRuZlloc1FpUG9GSlREdFJWbnZiVXJ5YU4y?=
- =?utf-8?B?MmdBTUxFM2k2Q04yMW42ejNQb3BiRklZdk4reEtzYmdaVFoweGtzVzRUcTdy?=
- =?utf-8?B?cTJpVWFRVXZZVk1mZzFHTkV4YmRNelplMHpVSkp0OHVzYTg1VExSc0gvNGRr?=
- =?utf-8?B?V3JsZG5PYXVkK2YxODdnYWRsZFlKYXhJZFJBbXdqZVkzT01aOGpPd0w3dlRD?=
- =?utf-8?B?NW4yQ1N3bEV6VzVPdkpZSFI0MHBrbU9WSGgxRzZqR0lybHBOUU5ISElLbWVx?=
- =?utf-8?B?bjlDbGlHRk9FbEY0TUNvdHowWlFhdEpQL0ZndHhpZkwrUzVJM1JyOEZLbWlN?=
- =?utf-8?B?NHZDRVhJOXRpckpRKzgwZ1BMOXJybEFxMDYxSmltWmN4WHI5alNzVDV6WDIx?=
- =?utf-8?B?Z0NORml4MGZ5ZWtCWXpIelByZCtMNUNhbE4vQmJ2RzQ0dzE3K1VjU0EvaVVh?=
- =?utf-8?B?WkNsWHk5QXVvRm9KQzAvbk1tTGNmZi9vNHZBVlowSmhoWE1Cbnl3TThkZWU2?=
- =?utf-8?B?TnpleldWbXYyT0ZNaU42YXFEM00wRW1wQlNCbkgxUDhWaG9KRWZLc2tackxy?=
- =?utf-8?B?a3NGdjJDRmZ0amIwRDI1S2c5YkJMcE9uS255dVFCMUxYV1FBZ09EQVF4dFpo?=
- =?utf-8?B?aHhHOXRqVlp3S0VhN0pkQWx4MWxUZ3NpcDF4MllCK2E5OXRDVkRxRWJwVjg2?=
- =?utf-8?B?cW85SnliNUVJclg3UWlNdzZad21vQ2VrWC9EYlU0L21CZTdmM1ptMXVuY3gz?=
- =?utf-8?B?TVJuYUw5RHRabFdyZGE1ZzhvTjE2L0ZFNFhiWDh0alRKRFhzQm9oV3dsQ3dX?=
- =?utf-8?B?UVBuNDlzTkpGVlhxZmJJYyt1MXFRMTJ0NXpnNGNGeWpmbG5zVTlGQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wMN6d-0001S5-5Y
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 05:39:24 -0400
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wMN6A-0006Nx-Ko
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 05:39:05 -0400
+Received: by mail-dl1-x1236.google.com with SMTP id
+ a92af1059eb24-1329507c387so6671414c88.1
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 02:38:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778492316; cv=none;
+ d=google.com; s=arc-20240605;
+ b=ir2t0S7A9ZCxzaiaVH6TnBlwmToFra6SPIcD47aEmrmhdMsaRNxpOzGPoQeX3Uqhuc
+ CcJ0rrlGm9O6VdmJFMpGrvoJLdBltXeBQPLeRQ8eOFzBLh4QC2IzCsNjV7Q7tVezpEeQ
+ bpN6gefCIJM1zCSx8yy23KfUzQAQ/kihuQK4DozS/W/dJMVqmpEseqvLK3kGtNtwe3G/
+ guXt1dHx8cjzUXXLyMcVPDPHg30SqAXHrgjAHk2eoExxjTYA1x3hdafEsaBR2MWg+eW9
+ paz/uaDdCPY9hm3Hcq+XFDvydhue/lUpdU7npA9Zu1FmVKz44hS1aeF5A8Df05+hIqsB
+ uW7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=7m2jz84B9ksxD8ZH9ghgs3kEtAtNrw6tbDwuxw0Q0T8=;
+ fh=9cLPEomEvYQp2xZ76josjANprQSmF1Gdjio0YzAObHs=;
+ b=YJfYA6TQH7svwFaJSeZjtr33DRjbfAYpuanqf2eZFxCZYtFbTiBMjeNsEoRszEBJbB
+ Rr0iXGlMDj2KPAmZMWfd/9z/mSYr/7Cf7iCkoedFmP9YMefPIBNkig0jWULo42p8Kd24
+ DOJx6DlRe2MTyD95VejCpqHXG/THxpN8/XcPe5qE0nD2Dorie87AzGbjEPtkohDpy4HN
+ SjZa/rlkX4WRnV1TLygK5X3tISKB2093bBpvfCJIAkGn60vW83MePah/Qp7UK42cTyW4
+ pW083m9LKggU6vxX79jePF96jlMDbw28CbN/we0XkkO24ZYyYB3Nri+WAWB2s40Vhcwu
+ L9QQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1778492316; x=1779097116; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=7m2jz84B9ksxD8ZH9ghgs3kEtAtNrw6tbDwuxw0Q0T8=;
+ b=VmscAMmiDGiK07QmXRRq38HD5V6iN1paxz3YGQ3QumYMNEz7FXvyVJeljfQ4c1zy6b
+ f1VeOU59x1STmlBZkQ8EIoOTBOOI8V+2gywRg7BUSqV4FaRPj4eY4WIBZ5ZKZtoYQ1NY
+ uYZY/oH1Ktsa+VEpthY3NzeV62sCliKwQuEINmdsYMI5NP2oxNtLhUNMPVoOzwqSy2y5
+ TM2cyRfdIubwD4f5kuRPQHNU/Q2cuxHKb4Ox8VuniLhv9tTDmQEB2cbcxaPUEkzzuEbA
+ 7Vdsh2asXGozW3lMBrRwnctGizZFm4r+2Jy1tfRs55idUYrWeGWG/xPnCpODgQzz3oCP
+ KDog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778492316; x=1779097116;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7m2jz84B9ksxD8ZH9ghgs3kEtAtNrw6tbDwuxw0Q0T8=;
+ b=o+EP2vDf8bL+MQxaaqqkDMpdw6HIVJwcuOtjkMLzZDGaUesg1UGLAVdI26Ql/Id6nJ
+ n+XNCjDSqgxEL5EJ2YJw7kOGw0dLgM2HCaVOZEJeeVgaia/KV3aMtwo4n7gvl78BM5zM
+ XniUsQ+TXx0R4J+dgNhx4bs2HemCHbpI317D3uk5slgdg87ZxNgHm9pay8ZXlie0em34
+ P2b4oiyc/Ba1SL4bW5iKGCbwdubnYjfN9s3r7wlXZhzBvZFbDUFgZSFkJJj9ynDEn8kT
+ H6lFi2iAV4+/IVT7toXJnLySmuCH3O114nYiXWV6NBkXjwgoV8TJUQJMHbMZ36f33cDt
+ 97/w==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+9RGbkmF62+6uqPmajDCtSZEPsGHX+NHaR3S5R40VmYGQHfnleC+d7/Y7ssSrO5hLOtKmA4S5n+w==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/elphHOGGPmS0GSpcPJbygyOsFJbxUFPpTxjaqhWJTlPw04SK
+ 7aj1bCD2wY2S2XL30zDAAcbwmxegt9bb/cQuM4YIAcCQh4IjgRGIXLd3knxjfylO8aPA2AlGgJp
+ D5kicPV0kTH7CkQN/NxaIFBo3K2Sr4Ijv97fkYUtfFGgpXtLbRjjZ
+X-Gm-Gg: Acq92OHzjE/Fn/N+NNVWc6SB/TuvICly8berq0AfDkBKCxKaaUvl3adZRyqR5jJ5ODB
+ oySOfDRArsVDqYtQYrcv+3pj+vNxU4hiFvQDsEbPM8pUvtkBObaL6Dhs9TvpqCCXwTg0/YjZ31n
+ zSSud92ZMfMKjqvHBZrMuU5Qz+PhSWTtS6Fun5JdEIvr1pwoc7te38BQCrdiXZOG71pYbPYGOK2
+ UpA6ImdmGrIJaWmsrDVR/l1dNw3QDGwh2WXNSVcYfro2m2H7aHxroillOCftedCb3A952t/uv+y
+ 0pY4E/Het7JRd8ftZjUCD9T/qzzgXkfx5JFVjVqO27bz3I1/wPN/YybntB77JB7hjpU=
+X-Received: by 2002:a05:690e:168c:b0:651:b938:188b with SMTP id
+ 956f58d0204a3-65c79c46c58mr22996973d50.24.1778485629370; Mon, 11 May 2026
+ 00:47:09 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: KHnHyZ0to6SnXkfkPdTIueEj4jDyYnonEKRHE1vZ1bk24+41doIGEr8aZ51xwBe7g7o58Gnlmov88sKWQElDTnTE2C3o0WVATUBNe6+aBpWOdC+wao5CNX0toDgKkmko7dS+GoLB+cpsrIY2njDW8yn88vFhkrcR2aMT9umvpnWVu5Vl9YO9zW/KjL6eVY9r8OH3XhILq5LF5oGJ8gG+FjQ8nHJpmeLcTrbUlXjf7Yqa4pwrcVN2L1/k8Lq74YNSwDxmcrQkS+1goVF4mKGnVVRBilLSgwbfhCz2MEtOweCI4Q5xTB31HFP93ct0XEv/GfAzGCXgQ/baOD7m7q2CaQ==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3d6329ab-ee41-4913-55b4-08deaf26d58f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2026 06:30:45.9504 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: uCX+l/18S3oFvq71mcWDtlAN97wHD9H46VxyQERQNcKd1GNKZC/pF9L7bkyOJ49MTAJ2guT6mWbISxGIfXjZ8171Ck98tdCNLZCv0Wvi/KI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6060
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+References: <20260508183717.193630-1-tdave@nvidia.com>
+In-Reply-To: <20260508183717.193630-1-tdave@nvidia.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 11 May 2026 08:46:57 +0100
+X-Gm-Features: AVHnY4KJvyGgwSg3VDb4jYfnlrdFQ4HsXNAOChkVA_oRqH9XIYfUWmwNkWZrZBA
+Message-ID: <CAFEAcA9KxUF6c555Q_Kqn_NVE3z1ojr91+KuatYudj_T4GjbxA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/8] hw/arm/virt, hw/pci: PCI pre-enumeration and
+ fixed BAR allocation
+To: Tushar Dave <tdave@nvidia.com>
+Cc: qemu-devel@nongnu.org, alwilliamson@nvidia.com, jgg@nvidia.com, 
+ skolothumtho@nvidia.com, qemu-arm@nongnu.org, mst@redhat.com, 
+ marcel.apfelbaum@gmail.com, devel@edk2.groups.io
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1236;
+ envelope-from=peter.maydell@linaro.org; helo=mail-dl1-x1236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -162,25 +118,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgZmx3dSwgTmFiaWgNCg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY2IDAwLzExXSBody91c2Iv
-ZWhjaTogQWRkIDY0LWJpdCBkZXNjcmlwdG9yIGFkZHJlc3NpbmcNCj4gc3VwcG9ydA0KPiBKYW1p
-biwNCj4gDQo+IEkgZHJvcHBlZCB0aGUgc2VyaWVzIGZyb20gYXNwZWVkLW5leHQgYW5kIGtlcHQg
-Og0KPiANCj4gICAgdGVzdHMvZnVuY3Rpb25hbC9hcm0vdGVzdF9hc3BlZWRfYXN0MjYwMF9zZGs6
-IEFkZCBVU0IgRUhDSSB0ZXN0IGZvcg0KPiBBU1QyNjAwIFNESw0KPiANCj4gVGhlIFVTQiBzdWJz
-eXN0ZW0gaXMgb3JwaGFuIGJ1dCBpdCBpcyBzdGlsbCB1c2VkIGluIHRoZSB2aXJ0IHdvcmxkLg0K
-PiBUaGlzIHNlcmllcyBpcyBtb2RpZnlpbmcgdGhlIEVIQ0kgaW50ZXJuYWxzIGluIHN1Y2ggd2F5
-IHRoYXQgbWlncmF0aW9uIGlzDQo+IGltcGFjdGVkIGFuZCB0aGUgQ1RSTERTU0VHTUVOVCAoQ29u
-dHJvbCBEYXRhIFN0cnVjdHVyZSBTZWdtZW50DQo+IFJlZ2lzdGVyKSBpbXBsZW1lbnRhdGlvbiBp
-cyBpbmNvbXBsZXRlIEFGQUlDVC4gRnJvbSBFSENJIHNwZWNzIDoNCj4gDQo+ICAgICBUaGlzIHJl
-Z2lzdGVyIGFsbG93cyB0aGUgaG9zdCBzb2Z0d2FyZSB0byBsb2NhdGUgYWxsIGNvbnRyb2wgZGF0
-YQ0KPiAgICAgc3RydWN0dXJlcyB3aXRoaW4gdGhlICpzYW1lIDQgR2lnYWJ5dGUgbWVtb3J5IHNl
-Z21lbnQqLg0KPiANCj4gTGludXggZHJpdmVyIHNlZW1zIGJ1Z2d5IHRvby4NCj4gDQo+IE92ZXJh
-bGwsIHRoZSByaXNrIG9mIHJlZ3Jlc3Npb24gaXMgdG9vIGhpZ2ggZ2l2ZW4gdGhlIHRpbWUgSSBj
-YW4gZGVkaWNhdGUgdG8gdGhpcw0KPiB0b3BpYy4NCj4gDQo+IFRoYW5rcyBmb3IgYWxsIHRoZSBn
-b29kIHdvcmsgeW91IGRvbmUgdGhlcmUsIHNwZWNpYWxseSBmb3IgbWlncmF0aW9uLg0KPiBJZiBz
-b21lb25lIGNhbiBBY2sgdGhlIHNlcmllcyBhbmQgc3RlcCBmb3J3YXJkIHRvIGJlY29tZSBVU0Ig
-bWFpbnRhaW5lciwNCj4gdGhlbiBJIHdpbGwgcmVjb25zaWRlci4NCj4gDQo+IA0KDQpKdXN0IHRv
-IGxldCB5b3Uga25vdyB0aGUgdXBzdHJlYW0gc3RhdHVzLg0KSWYgeW91IHdhbnQgdG8gdXNlIFVT
-QiBFSENJIG9uIEFTVDI3MDAsIHBsZWFzZSBhcHBseSB0aGlzIHBhdGNoIHNlcmllcyB0byB5b3Vy
-IGNvZGViYXNlLg0KDQpUaGFua3MsDQpKYW1pbg0KDQo+IEMuDQoNCg==
+On Fri, 8 May 2026 at 19:37, Tushar Dave <tdave@nvidia.com> wrote:
+>
+> This RFC introduces a mechanism to specify Guest Physical Addresses
+> (GPAs) for PCI BARs, allowing explicit placement of guest MMIO BAR
+> addresses to match host physical addresses for assigned devices.
+>
+> On some platforms, P2P DMA is performed between devices within the same
+> IOMMU group. The PCI fabric ACS is configured to permit direct P2P
+> without going through the host bridge in order to achieve the required
+> performance.
+>
+> To support this multi-device IOMMU group P2P scenario in virtualization,
+> the VM may need to use the same MMIO BAR addresses as the host physical
+> address layout.
+
+This feels like something's wrong in the design. A VM doesn't
+necessarily have the same memory layout as the host: the
+VM hardware is all about making that possible.
+
+> Why QEMU programs PCI resources rather than EDK2:
+>
+> To support fixed BAR placement, QEMU performs PCI bus enumeration and
+> resource assignment prior to firmware execution. EDK2 already provides
+> a PCD-controlled mechanism (PcdPciDisableBusEnumeration) that allows
+> the platform to skip PCI enumeration and resource allocation. This
+> series leverages that mechanism so that, when enabled, firmware runs in
+> a discovery-only mode and preserves the configuration established by
+> QEMU.
+
+I'm definitely not enthusiastic about having QEMU do PCI bus
+enumeration. This isn't the way the hardware does it, and it's a
+lot of code that's duplicating what the guest already has (there's
+over a thousand lines of code in this patchset).
+
+> We use the virt machine in this series as the concrete example
+> consuming the fixed-BAR model. Other machines may require their own
+> machine-specific mechanism (such as pcie-mmio-window) if they want to
+> adopt the same approach.
+>
+> Example usage:
+>
+>   -machine virt,...,pcie-mmio-window=0x400000000000:0x400000000000,pci-pre-enum=on \
+>   -device vfio-pci,host=0009:06:00.0,id=dev0 \
+>   -set device.dev0.fixed-bars=bar2@0x6b8000000000,bar4@0x6c8000000000
+
+...and you end up with enormous command lines like this full of
+magic numbers relating to address space layout.
+
+I think it would be better to find a way of doing this that
+doesn't have the "VM address space layout has to match the
+host layout" restriction.
+
+-- PMM
 

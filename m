@@ -4,127 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68572CD4842
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 12:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAA3CD37BE
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 13:02:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMPii-0000hN-P5; Mon, 11 May 2026 08:26:48 -0400
+	id 1wMQH8-0008Tf-1H; Mon, 11 May 2026 09:02:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1wMPif-0000gS-2h; Mon, 11 May 2026 08:26:45 -0400
-Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1wMPid-0007hD-9i; Mon, 11 May 2026 08:26:44 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Ie0X7Myug3X5tcjHYu1pYBNmFvz81M2Rw0fJD0nlWP9chTdoVtKjmP96X5rQq9snOetSNPlLoqkbC077H6zBrGvVXI8WVhIisjiOVHx9krokdNQ1m5nxFkRfZGiFfR1oT/PFPW+QrYEezpERNghh4t1MGvgrD2tN7EZ64CXFLJUkxmBLZjYodPKgRSL+9Lw2IJg0VzqUhkAXat9GW9r5v3QwqDp62xvKPhwpuLnkynnNEZn0LPa0jY6n70uOlnNJmNGmfzY2jPoob2SLohViZPiTz7DVcsxsz4o5neAvHyYmxCdtZFQ6cB7OfIxoEioMuRlcUw2isT/KwSFOK6e5og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=xA/jkjZnVeGieOwbv1xK8l9yaXzX6+CFCPukrgb5VqU=;
- b=VSAJ+xgXYzi4LSI8HF9s0rCqtRkTQ53ndiQc575eOH0TOM2wdCUeS1hRnjptoCL7277Lu9On64O7kQhaHGmJEZIEHocQEleExBqCKXqBXbypvTdOGe5N/Cyf4AN4FAfzOqCuipxgteT6aZ+U0+LA0t2B7MXtWC/DmSvu60KZ38cOl+ZyypeZ6dotx9CCTLrACIH+YBAN6DbtKyOfreIidYbQNG10eQMYV50ep7jxFa9nSK3/od5M/MW3CRh7+/ymdf/ldbfykelLlo/m3kggZDH4z/meyF9ZKZ+cHAJmZ2qj+ovTTqmWbfQ40VTnRLKGvRGtdSJqb1e38ILFwJjwmQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=xA/jkjZnVeGieOwbv1xK8l9yaXzX6+CFCPukrgb5VqU=;
- b=FDJsLqzxdmg7+mjesLC97koaJ/LRaUDgnF7qMKu46o5r5qqvtZoJX+MvUfQ9xLwqgTS3/ujDpvZBBDbkzm0x+rH6tZTHVXvIOrBeLfozaOJEzL/si/bjDFW/wlyv7KZX3L0Oc7J/ZsuSUvPc9WWgNgzA0iPMUCIDbUwNKYw0xSwZ+olOIHHL315GR+B0AxZeF/HkgNku1lgws2rmukEXi8cZSsaND4o4tn2cFd0V/EKgSRfu03+2THtjfYWL/z8Kv3/873fHe7F8K0fqapKwOxH7ER0XIl9P32F7Rp5mhBicNTItJuGm/t7e+jwHYOgwsqkMrSY6pRsAGrvP9hFdIA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com (2603:10b6:408:2a1::19)
- by SA1PR12MB7367.namprd12.prod.outlook.com (2603:10b6:806:2b5::12)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.22; Mon, 11 May
- 2026 12:26:34 +0000
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528]) by LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528%5]) with mapi id 15.20.9891.021; Mon, 11 May 2026
- 12:26:34 +0000
-Date: Mon, 11 May 2026 09:26:33 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org,
- alwilliamson@nvidia.com, skolothumtho@nvidia.com,
- qemu-arm@nongnu.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
- devel@edk2.groups.io
-Subject: Re: [RFC PATCH 0/8] hw/arm/virt, hw/pci: PCI pre-enumeration and
- fixed BAR allocation
-Message-ID: <20260511122633.GE1116784@nvidia.com>
-References: <20260508183717.193630-1-tdave@nvidia.com>
- <CAFEAcA9KxUF6c555Q_Kqn_NVE3z1ojr91+KuatYudj_T4GjbxA@mail.gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9KxUF6c555Q_Kqn_NVE3z1ojr91+KuatYudj_T4GjbxA@mail.gmail.com>
-X-ClientProxiedBy: BL1PR13CA0118.namprd13.prod.outlook.com
- (2603:10b6:208:2b9::33) To LV8PR12MB9620.namprd12.prod.outlook.com
- (2603:10b6:408:2a1::19)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1wMQGQ-0008BP-Fy
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 09:01:52 -0400
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1wMQGN-0008BP-OD
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 09:01:38 -0400
+Received: by mail-dy1-x132b.google.com with SMTP id
+ 5a478bee46e88-2f68f3b075fso5158053eec.0
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 06:01:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778504493; cv=none;
+ d=google.com; s=arc-20240605;
+ b=F405Vsay+yDHaIOEzQcg1nA0+Bfg09jyy20E7PHLMfojaSymvd8xuW8fq2N1fZA8mD
+ JnrMZ+1cdedJmXh1Scm0BzbFlCp100g0L/aYO5GDaY3ljey5/aNQ1hCa0PlsBOVI2t3x
+ OEyYlScpK8y0pYsw7I/BTGaMYw9zw6l+27kcqEfYfPTdog+oogq3CB4dLghY4izgfVT4
+ P3G4/ABanVe2j3iHwor/Nl7zXL2a0uYm2q3fza/79sF83gSN0biGvr/TQ82s+4myd9zF
+ EICTZlHnGHbitk215Ca310Zev119sBpktbhdnIug3z38XLFIsWZVjn+74z7KS1xYYLaM
+ OGIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
+ fh=iPgu6S197FMUMapcFeGEHUsZDnnxi66JleiL2vvHC04=;
+ b=cDCd//bXogbOBA9tJVzNh+HxJ2V9ZnThtiEXOivc477uboCa/DdrgGP+iHT+TCmPrO
+ 471CTrtn/w5RTnesmbmQq6tX46wobANLxznQbTCjceApR49AvjfuexUGYPFZZfdeQfAw
+ HtTb891Rgvt5HWaxkc5GTtqnaDY/8AnstroOShumVBk2MgdnDMP+/sOQtUo+5jedDNHT
+ 0CwTgcBxbykyTcNljVYjFelXk/2WY3QsWW3FR2UzXYVypDIfsu/wRF+Bg8Dm/N0Dw5UZ
+ eTKTK3debKfdb1ke+FrcKt+Bg2uxMtmyLQtv0KHFxl+lv5g4YYFVqA8S3ouofMnvAG7T
+ RlVQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; s=google; t=1778504493; x=1779109293; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
+ b=W9x9bHGFlaZg7JhsrdeyaxtRa+IDRa30Nny9/MX2TLSc8MvxqgPV7R4M3DRvyhkaiD
+ ZgvQ7Yjyxx2YhKJI5nCj5cI5bRe63rw9azSmLAwpR79o6QvUcygxjhqLHKE0/WpQLSre
+ BiV+ltrgKVxEmYULRYzX589HyG2sl5pzKzddCFUyqLo0TAySUuxvyNz8A1S4ftDiL3CO
+ uww0E4PtJ21WaNxrF9AMoZXv1YNYR2mQ0eY6FiPjSMrSHtvwVf257IhCfdW4YGgIrowG
+ DqhnzK++rHUEGj8cso7UGhVJPIlYqoykjTkihddhbHoKL1gwYZSGASPPvtJ87qz5qe5/
+ W/8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778504493; x=1779109293;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
+ b=tRCRRwAEyd01KbyvRirf/krxHOuV5nSfNnTO0CByrKBU2CcFrWfNvc4zzKvmB9ZW6Z
+ zwHULGAirti6m+3rC5lGRBdGVIADrbehmIH25dZNt0C2JgrldRgb3RKpEY0YWUAbUzuw
+ qlFdHOBj80F5UnyN0m7zo0eVhn8HA4p8ljYkan/CnOOw1k0YmbIAnhK+H+SyMn0bfeIQ
+ qbi92PiPGymvMrT1yECLby896ha57yoDVrh5eADsVKVmZsZT2Y2Ngsk6YBM9+1kr8TPA
+ Tl1vrVmDK/wny0YH9mzd9AJjrzxNQAQsTtAWhH5tfX/XZ+pAm2OUoT2U0h8Zvt5TXvsx
+ z7Kw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/bhdfKwQBnJQFTIGQIpLFJ5+Joz8S0dG2Fg1GVNixygfm2CnefHlSTzEj6YhPrNDRy/p6xWQFDDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwK5wTq/MiMjit+e4KzdHq3DorNM5J67MA5/E5D76q3jb/0gle/
+ PccZWmBeXDr0PZseOUUU7TP9FOHx+/Lfz3vTuIqowPB/INPgGpZGoefcJ8dunb2pkYk16TA4sv3
+ j6y8fTvCXEG0X2Q2OmFlGa3V3F1rmkKs=
+X-Gm-Gg: Acq92OFWyI7Xri8Y99hH0EsFnyesEYuMZmYHizlaYJ5NYofEDXWLmPWIoK7FL7pxC7C
+ xfKH6r9hU4nqix3L8ANmXGGxh7/xi0kYjHqxwoAvmTQ2mI69m/Utk3EcaGyrCgwVTBzrRne3Zmz
+ YNUPqGVj1GqT3MS2y36Jeog6VDG9Mz7HRrJgHlt4adrIoiQmMFULnFZO6hLN5qJqfnK2b7CrheA
+ iZIXcv+TGPTeiX8ZAykTBGi9WPgBXoY/dKjTBoXVGvTXCZhLEwy1N/1w9h5lIoGHKyz4t+i5JSz
+ TFKtP1kCmiYU4bRJCA/DDiw2EEyg4Pd1ur6V9GTMLD27tQSOVA==
+X-Received: by 2002:a05:7301:6783:b0:2f2:5c68:5052 with SMTP id
+ 5a478bee46e88-2f85c17af84mr6126956eec.13.1778504492327; Mon, 11 May 2026
+ 06:01:32 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV8PR12MB9620:EE_|SA1PR12MB7367:EE_
-X-MS-Office365-Filtering-Correlation-Id: c8ebf6dc-d4f7-45bb-8abd-08deaf5889fd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|11063799003|56012099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: K5P0y8R9MoGSEJdTKhO454xR0OwcCRsrMk/czmh7rzPDbJlFwcSfdXR1QgNXXbNQQhg7BZraTiSDDwR22hgAo71NyV5vcsEwe3cTBCH5FilkxQU1JKi/gEf+Lp+mhA6j8rmBWAzVNppeQGvse9iHFOKfr7UBM3cYC1kjWrXJRRBdduGIb1xKPTzhV/jXiHCIaSP2XS2QugCFZOGAcHXCeeqy7rSWOWlyv0zqLV9iRcRkOWesmZbcE06gMqPWdX0KqC4MKTpj4EWHWOYMbdXe/q6yXb8mB+8QeL9PNZwVwrEAWnwWDQjWMshfnm62AgpsPXIukejLbJfUR7OnHMNYx40sEz1ZfzlzkSeMV87vp1R/owX759YX/lw2U8uc+bmbBhadLJupxyCsFGAnmiekSpTcj+W1zfqhDQyVL0reBTv2xpkOzSvrZ+l9xX07+CqSkNBVdVnNHEJH1k+rC1Mw+mp69cfl03vppTqvvFoA/M+8O/7DKV24g56E6V2q9b1eONTsUZrBak2TewA/EuI/4AufDy8lsIEM72dC/0S+VxY8N8K/O2kZdUKTqVsisSYdLG0TRCn+170eiaIlmbxF+20MFSXL6portxg3RRt6OaHWKP9w0kTHNtyZYMtH2GmWd++2G1PZtMUwHF4k25lJskyKDKiZHj69vfJLLLdu9VlqDeswIBh+JGQaGR7O1nrf
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV8PR12MB9620.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(11063799003)(56012099003)(18002099003)(22082099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TnLiwulyeKlPkpOSeTBiNPI6W6O6eQLiET/hw1C+WExJ87wiBxXTDH086dyR?=
- =?us-ascii?Q?NXAfRkGPjv5SCLVaF5dlTbdFwrYB9F0K43iAgnNhHAGpkeCs0lIEezpCueN4?=
- =?us-ascii?Q?z5QN7DYmzP6JGNB/GnHlypX6Yr8VoNCWxr+BrvM2CVLjAW0Tktb7ofnOw6iT?=
- =?us-ascii?Q?PU2uROrhDoXMK3hSNsbzv2+VcCtm577FOpd82K//mWsRah6t8fHK0pzZXh8c?=
- =?us-ascii?Q?tGHYGpRviYZzho8AiZ0Pi25ZFoS8PZD2SpReo1Udlis8lTeYK8m3joH2KBcu?=
- =?us-ascii?Q?Dfph+zUuSRzAQFA2LV2IYBH3+QM5rJAcI4R7n2TptvXmseKMG+cCbV/L+0Cv?=
- =?us-ascii?Q?qQTPyKd4sc54XZWI0FEU7Y5PFx5dV06xb85g9cUAwQtqWEthq5SWYegJ2P9M?=
- =?us-ascii?Q?nehqljWMuDqAXWTgP8Z6hPsODk5ahIa+onPQ7+9wjXxkQhrOBBdr/n8EmpOS?=
- =?us-ascii?Q?ITQw6GH62fqvyXiIsmGQSmSHZ/KbjMVQAmeVqCvuqoVTvVvsdvaSWulmhLgH?=
- =?us-ascii?Q?3L/8H+fdWoGX/OMndep8og0wFG5jNCqRvJI6j7cBkS9zazAiovNBkf7YF+8i?=
- =?us-ascii?Q?2leAIF5tZd9uqnHg6ICXAcHw18rOVNOuIaCR8BxXFhHz4ic+oXzJEDbSwO/O?=
- =?us-ascii?Q?eVYadFkY0vw7UOPxTj50Cy1yPIQdGR6eRKVWAxbbKR7Bzwk1t3IPr6llW/Rn?=
- =?us-ascii?Q?N5tUDYpIqkIAIme8wIUlkOX2RVaEvDNtQ9HbjdyNvUjq70JPLaHMqEXSY4Sk?=
- =?us-ascii?Q?qilUFmt2IoNN88p9layCnnKUfPmG54rRk9li8iauiquUFI/8HeM7FNkfwFHL?=
- =?us-ascii?Q?/5EVWRuyvCW9HZxkoS5t+kEJmLV+eAO89Jp/i9CustzQHAZY+V6EZRf2Y0We?=
- =?us-ascii?Q?li40ALSU8mlCmc/ZXnbK+Hgt+eYJcwtLpgp/pthgRqV6jVfYnvPdmsfMicuj?=
- =?us-ascii?Q?tdOl262f9/Q3ICa2zy6wsF6nhQXf6WiRSyT1SFZ+U7io78WmZ+YgD24NTMGi?=
- =?us-ascii?Q?F6/b86ahwlQzGtRQjsvtQqnFYEGY6p04C2Q/UEW5pvQ74EzGfJLBsZEtHbA3?=
- =?us-ascii?Q?aUuz9prvxzwCVkBHH2tvcDZHflENYLBTPyQvR7xquwuOumkLoUupHNAIpIS7?=
- =?us-ascii?Q?rsDiVYdQN2TqFvxWMlRYqan2dChyT+I7+EW2kIaC+cvXetGZNFtQBhuqBhQb?=
- =?us-ascii?Q?tLRYYfw1xH6fvExMji7kU7TZJGgzeYSplPwXJCIWvLEIAMogfA8a0cymfm+G?=
- =?us-ascii?Q?shLPb+yVhh4SgiBb82oJoGD53tXHyQAPKCWdoA6h/Ijc5e1vWO8w9qKWq+vT?=
- =?us-ascii?Q?FGxaHXrlKQr2Y9Bj7FUEOk4w/Mzp249Dn8Bjpp4u438UlB1aL6LY9K18Epos?=
- =?us-ascii?Q?fpVHkODVfQSjp4zcYGUFoLcn8zfKf4eAZxLM8XlP6YTiFBYx+vyGdB+MynL0?=
- =?us-ascii?Q?B/nv7UKN7vukW+o8lfgWzhTC7cht7HLuA8fTQctbaV5NfIuKPFJpjlgPPYfs?=
- =?us-ascii?Q?8kLlvvUzDBvbP7/76G/3R/X5P/I5kxw41E1enKs0o4FSiA4TehViEDAx1dco?=
- =?us-ascii?Q?RIVD7tHXoAH5dEg5FspKAkvs/5p3rKjDqQFnS+QlWWi/rZpG4Tf5h9ZeREy6?=
- =?us-ascii?Q?p9mG4HhpRoPUweQMFJMYWITWBf8zA10FZVRomKiLCNJZoPKEemZjdh/hxzhp?=
- =?us-ascii?Q?ZVCOSio3/I+RtC/bmD06iBQB9k2aJmzveONuEnsrKOeg8i0m?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c8ebf6dc-d4f7-45bb-8abd-08deaf5889fd
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR12MB9620.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 May 2026 12:26:34.1980 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YXpZJ1m+O2SN4XOV7fnG6OwYMBBYv5h6s9Yr4tzwCUrp07offbEPa/SdBErsAcgA
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7367
-Received-SPF: permerror client-ip=2a01:111:f403:c107::3;
- envelope-from=jgg@nvidia.com;
- helo=PH0PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
+ <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
+ <CAFEAcA-tSqa7SQUE-f5yTq_P9eW6p_XrnNSnHZjw4g=Z2WncAQ@mail.gmail.com>
+ <4f90d39a-560f-4922-ac54-2c975dae249d@linaro.org>
+ <CAFEAcA_LcHgtAAYFjqm+P68ULwSRJWfr6LipMg9YsviyWDxH7Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA_LcHgtAAYFjqm+P68ULwSRJWfr6LipMg9YsviyWDxH7Q@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Mon, 11 May 2026 17:01:20 +0400
+X-Gm-Features: AVHnY4LUUZJj-Uy0PeC5jOSV9tGBO4n3odeOOGNkax2UoonWn0NhbVICukz_7p4
+Message-ID: <CAJ+F1CKFcPy3NtKgVfUruN_Mp1498EiQpRNz65HNE6YeqJD3CA@mail.gmail.com>
+Subject: Re: [PATCH 34/41] hw/arm/virt: free flash devices and OEM strings on
+ finalization
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-dy1-x132b.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,35 +124,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, May 11, 2026 at 08:46:57AM +0100, Peter Maydell wrote:
-> On Fri, 8 May 2026 at 19:37, Tushar Dave <tdave@nvidia.com> wrote:
+Hi
+
+On Thu, Apr 30, 2026 at 7:32=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> On Thu, 30 Apr 2026 at 16:18, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
+org> wrote:
 > >
-> > This RFC introduces a mechanism to specify Guest Physical Addresses
-> > (GPAs) for PCI BARs, allowing explicit placement of guest MMIO BAR
-> > addresses to match host physical addresses for assigned devices.
+> > On 30/4/26 17:12, Peter Maydell wrote:
+> > > On Mon, 27 Apr 2026 at 20:45, Marc-Andr=C3=A9 Lureau
+> > > <marcandre.lureau@redhat.com> wrote:
+> > >>
+> > >> +static void virt_instance_finalize(Object *obj)
+> > >> +{
+> > >> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
+> > >> +
+> > >> +    for (int i =3D 0; i < ARRAY_SIZE(vms->flash); i++) {
+> > >> +        if (vms->flash[i] && !qdev_is_realized(DEVICE(vms->flash[i]=
+))) {
+> > >> +            object_unref(OBJECT(vms->flash[i]));
+> > >> +        }
+> > >
+> > > We currently use qdev_is_realized() almost nowhere in
+> > > the codebase. Isn't there some way to do this such that we
+> > > don't have to care about this because the object is
+> > > parented and gets auto-dereffed ? Having each object
+> > > have to care about the possibility of "inited but
+> > > not realized" devices in finalize seems like it's going
+> > > to result in a lot of bugs...
 > >
-> > On some platforms, P2P DMA is performed between devices within the same
-> > IOMMU group. The PCI fabric ACS is configured to permit direct P2P
-> > without going through the host bridge in order to achieve the required
-> > performance.
-> >
-> > To support this multi-device IOMMU group P2P scenario in virtualization,
-> > the VM may need to use the same MMIO BAR addresses as the host physical
-> > address layout.
-> 
-> This feels like something's wrong in the design. A VM doesn't
-> necessarily have the same memory layout as the host: the
-> VM hardware is all about making that possible.
+> > Why are we creating pflash devices if we aren't realizing them
+> > (thus not using them at all)? Destroying them when unneeded
+> > would avoid that manual cleanup, right?
+>
+> I wondered that, but what happens is that we init the pflash
+> devices in the machine's instance_init by calling virt_flash_create(),
+> and then later we do the "configure, realize, map" part in
+> virt_flash_map() in the MachineClass::init method. So if
+> you init the Machine object but never call its init method
+> before finalizing it, the flash devices are still in the
+> inited-but-not-realized state. (This is similar to how with
+> a normal qdev object, if you init it but don't realize it
+> it will init but not realize all its child objects.)
+> (We need to create the flash devices earlier than we do
+> the other devices on the board to make the machine properties
+> that virt_flash_create() sets up work.)
+>
+> Since virt_flash_create1() calls object_property_add_child()
+> to make the flash device a child of the machine, I think
+> we could make that be the only reference, by having
+> virt_flash_create1() do:
+>
+>  Object *obj =3D object_new_with_props(TYPE_PFLASH_CFI01, OBJECT(vms),
+>                                      name, &error_fatal, NULL);
+>  DeviceState *dev =3D DEVICE(obj);
+>
+> and then using sysbus_realize() rather than sysbus_realize_and_unref()
+> in virt_flash_map1(). Not tested, though...
 
-The HW running these systems is unfortunately limited and doesn't have
-ATS support. Without the right HW features the physical PCI topology
-is leaked into the VM and there is no choice but to have the VM guest
-physical and true physical match, otherwise the VM can't work.
+Yes, in general, if a device creates & keeps a reference to an
+instance, it should be a strong reference (we don't have support for
+weak reference the way gobject has for ex). It should then unref it
+unconditonally on finalize. Is it ok if it is addressed in a follow-up
+series after this one lands? I am afraid it would delay this series or
+make it longer, and a shift its focus
 
-There is no other way to support these VM shapes on this HW.
-
-Newer CPUs in this family have more HW features and won't need to do
-these things.
-
-Jason
+thanks
 

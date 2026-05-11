@@ -4,64 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 528F7CD37BE
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 20:23:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4429CD4855
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 20:23:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMX9V-00064M-5Q; Mon, 11 May 2026 16:22:57 -0400
+	id 1wMX9S-0005jY-2W; Mon, 11 May 2026 16:22:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wMX9T-0005rw-F0
- for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:55 -0400
+ id 1wMX9R-0005bP-9T
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:53 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wMX9R-0002J2-V9
- for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:55 -0400
+ id 1wMX9P-0002IA-IU
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 16:22:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778530973;
+ s=mimecast20190719; t=1778530970;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZgRr3BB07aQYVQGC7Oar0fp/I3aHyKM846fAkj8iX1k=;
- b=YEtnIhb5Y4wfd2TvlfWrKi9E4t2arSA5dmKknVbJF298gBsupdfDDwuoitqoPJwscSsLkf
- EemkBgEsFBlx0xVg+X3QMugjodCw2/G9NCAOWM67Rda3c+vx2PBJ/M52jB3ZTtazoD1X9W
- BS9jk8B/0aJjn/JpNXCNBd29QTnwM5A=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=2C0RocEaioxRTatUpe6UZmuTE1Y097AlBK4Uk3G/4Yk=;
+ b=IqrIiF7BJfCiQyivILBCQbwd2pCKhqdeoGu6C+JjrXJmXKRiFJK+lP7Q75HqUQ9VepXPcI
+ iqEmcJQj0SSvzikbICZq3kDC7yDIGRwau3UYpsLZDtN5Y7BLoleQXGs5yWbCTHOCCyKtam
+ kpMzt0RDHs/FsG1V8NDA9ufYDBINsCw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-47-qYJslyQqMu2vLZW5wkzumA-1; Mon,
- 11 May 2026 16:22:51 -0400
-X-MC-Unique: qYJslyQqMu2vLZW5wkzumA-1
-X-Mimecast-MFC-AGG-ID: qYJslyQqMu2vLZW5wkzumA_1778530970
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-391-Y7VxbRrTNp6pNM2TO3WMIw-1; Mon,
+ 11 May 2026 16:22:46 -0400
+X-MC-Unique: Y7VxbRrTNp6pNM2TO3WMIw-1
+X-Mimecast-MFC-AGG-ID: Y7VxbRrTNp6pNM2TO3WMIw_1778530964
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F2D2219560AB; Mon, 11 May 2026 20:22:49 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A0F8118002CB; Mon, 11 May 2026 20:22:44 +0000 (UTC)
 Received: from localhost (unknown [10.44.24.4])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A1D101955D84; Mon, 11 May 2026 20:22:48 +0000 (UTC)
+ id BC2481955D84; Mon, 11 May 2026 20:22:42 +0000 (UTC)
 From: marcandre.lureau@redhat.com
 To: qemu-devel@nongnu.org
 Cc: stefanha@redhat.com,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- qemu-ppc@nongnu.org (open list:pca955x),
- qemu-arm@nongnu.org (open list:pca955x)
-Subject: [PULL 17/24] hw/gpio/pca9552: fix state_str leak in pca955x_set_led
-Date: Tue, 12 May 2026 00:21:03 +0400
-Message-ID: <20260511202111.3091440-18-marcandre.lureau@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Ninad Palsule <ninad@linux.ibm.com>,
+ qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PULL 16/24] hw/fsi: move OPBus qbus_init() to instance_init
+Date: Tue, 12 May 2026 00:21:02 +0400
+Message-ID: <20260511202111.3091440-17-marcandre.lureau@redhat.com>
 In-Reply-To: <20260511202111.3091440-1-marcandre.lureau@redhat.com>
 References: <20260511202111.3091440-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 4zpTnMIYLHMP1mLdsyGF_yleCnZX1As3rYpfdl12Bxs_1778530970
+X-Mimecast-MFC-PROC-ID: BqGTx7p82Vp9l7hKrZ2Mwy4_0VSSt4TZ6xTdkq4mTa8_1778530964
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -92,30 +96,47 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-visit_type_str() allocates state_str, but the function never frees it
-on any code path. Use g_autofree to ensure it is freed on return.
+Remove the TODO comment that documented the workaround, as it is
+no longer needed.
 
-Fixes: a90d8f84674d ("misc/pca9552: Add qom set and get")
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Suggested-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/gpio/pca9552.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/fsi/aspeed_apb2opb.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index dd3f1536b65..472d8ad9571 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -342,7 +342,7 @@ static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
-     PCA955xState *s = PCA955X(obj);
-     int led, rc, reg, val;
-     uint8_t state;
--    char *state_str;
-+    g_autofree char *state_str = NULL;
+diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
+index 36092468391..058abc86452 100644
+--- a/hw/fsi/aspeed_apb2opb.c
++++ b/hw/fsi/aspeed_apb2opb.c
+@@ -273,6 +273,7 @@ static void fsi_aspeed_apb2opb_init(Object *o)
+     for (i = 0; i < ASPEED_FSI_NUM; i++) {
+         object_initialize_child(o, "fsi-master[*]", &s->fsi[i],
+                                 TYPE_FSI_MASTER);
++        qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s), NULL);
+     }
+ }
  
-     if (!visit_type_str(v, name, &state_str, errp)) {
-         return;
+@@ -282,18 +283,6 @@ static void fsi_aspeed_apb2opb_realize(DeviceState *dev, Error **errp)
+     AspeedAPB2OPBState *s = ASPEED_APB2OPB(dev);
+     int i;
+ 
+-    /*
+-     * TODO: The OPBus model initializes the OPB address space in
+-     * the .instance_init handler and this is problematic for test
+-     * device-introspect-test. To avoid a memory corruption and a QEMU
+-     * crash, qbus_init() should be called from realize(). Something to
+-     * improve. Possibly, OPBus could also be removed.
+-     */
+-    for (i = 0; i < ASPEED_FSI_NUM; i++) {
+-        qbus_init(&s->opb[i], sizeof(s->opb[i]), TYPE_OP_BUS, DEVICE(s),
+-                  NULL);
+-    }
+-
+     sysbus_init_irq(sbd, &s->irq);
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_apb2opb_ops, s,
 -- 
 2.54.0
 

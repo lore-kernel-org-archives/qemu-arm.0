@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7879ACD484C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD1CCD37BE
 	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 14:06:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMRDU-0004TE-7S; Mon, 11 May 2026 10:02:40 -0400
+	id 1wMRDV-0004UU-31; Mon, 11 May 2026 10:02:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wMRCL-0003xa-TY
+ id 1wMRCM-0003xg-PB
  for qemu-arm@nongnu.org; Mon, 11 May 2026 10:01:35 -0400
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
+Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1wMRCJ-00065B-2Z
- for qemu-arm@nongnu.org; Mon, 11 May 2026 10:01:29 -0400
-Received: by mail-ot1-x32a.google.com with SMTP id
- 46e09a7af769-7d55b97f358so3102803a34.3
- for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:01:20 -0700 (PDT)
+ id 1wMRCJ-000662-MS
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 10:01:30 -0400
+Received: by mail-vs1-xe30.google.com with SMTP id
+ ada2fe7eead31-63127c440ccso2714092137.3
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 07:01:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778508079; x=1779112879; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1778508086; x=1779112886; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=flsMkxVZdaULEyDvpuorZkfSVk5CbpOpC/8S7Sou9gw=;
- b=Uit0JQ98woHF3vWhoYDY3Zv+8vnXerk2SDFr9MNuOF98bhz7vPEQijJIOAgfc7FarG
- j3i9jhrHeulnjL6oGRKPpw/Qhh3RMf58hcIuh8f6U5aNUoo+Z1Z2Ojz969aUtEk/qXLd
- Mb/gJwjxL7vPvz256r0fw3EG4gtOZypO/sIBo1vAb+yIrMfBr3azjVI7BOozhaSGUBTo
- V3c2bjtVatz47DunrJmVGcQ2sno+y1J5biBV5usFb4E+1vujIXxJu/DJ1sdFmBYbq+NX
- 4cSWxAKAtmbfyE3T6bgaEHZ/9CDGWPi5s3PIpsAlT5ymIgZNvc0StlibEv1wmL9YkX+7
- mFnA==
+ :reply-to; bh=Do+ufpOA4YSJpqU1qNqftH/AxWOZ177vIBGpoAZmUk4=;
+ b=dQIX7OwEoo0B3dfqJ241fdeZu1AI+nM3BnptVv8/i5Pi5jgU+CW+7FUfeOqR9eSUWV
+ 5t61FVCtF6MpGMdgi9BAzWkzvkDpf5A9PHDRE6fJLuMWyTurfoXcsnsild5LW5a8biCZ
+ PtDm8w330aRlGCkNEk5SNsjzm6fDWVOdX4/wf2lz8viP5i6OAFZKn+3sm1vJCAUmKtnY
+ eDgi9LkOYxGf1s7oRkRomC8eU/7eYJR2NC+uXF2scjBh/uABWZhamtFiUJyUFP78/ASV
+ 77cVmQ+KJwH0HiWeG+jkV378VewIyVLdxfwPeuU1cISqaPGyv6fGyon4K7q/crsUVlGD
+ mD/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778508079; x=1779112879;
+ d=1e100.net; s=20251104; t=1778508086; x=1779112886;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=flsMkxVZdaULEyDvpuorZkfSVk5CbpOpC/8S7Sou9gw=;
- b=gTuouWTIbrhmuquEZFpVbdRmh0diUrMamAVNGf3cjXTkDn+t4+Gt02gMHxEAI6tdbe
- tgZE6CwIP4TXhJwRKhc74+baaNoIeSNW8zz7+Ufz/ynOHhAab0sztlXEGUb+R+AuD5rc
- UmF5CScmr0bU4CRWhdYHs1SCXs+HVN5YieQlp6kC3kKTaEI/tC5GiXPH1GsSad0Y9qR6
- iHuxaeHvTA6t2z/eLVisugOR7GU4UAkBmD1AVOIvxfUqGP5G1Jup6pQqEUijY2i+18+9
- ZVhqEq4H8rkfhvWBfuuopEYN8dViYUmDVxZVj4FdsdyvQOJ+gVm8pyeIP0pHOdAKao8G
- 8owg==
+ bh=Do+ufpOA4YSJpqU1qNqftH/AxWOZ177vIBGpoAZmUk4=;
+ b=iXLeT0JLvWQL/XN42Sw1EBfGHjqZvwGsRIL4C1Hj3HEPznb1fPn1AXt0XgtWl1R8GV
+ 4VqVWpolguLOo4C8OA10Ev4viK2PMrxt39LJ5HIv+OAz1d7MwNMFxWqQZPUqptbKc6mv
+ doDvKO8PQmDzVz2W9af83IMqNk73nKQFcyiKX9qZepoqtZu/k/Mv6rEP2YqbaAwz4inS
+ e9ZqWDWBKOvmQcW2jdAcMjKtca/iyZB1TllxkzOyzi4Not1UJnHMS3XbKD2qW9JH4qIo
+ Xr6lFN7FXZ0oFXX/yXl+I1KWR0vrvWuLc/T+Kij1J2Q2esL5oP4QivMs07MXN/rsNpDR
+ 9qEA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ98TVBOYJDsa0w4qGF87B2LEeojdQ0ESZW5flZvvCxhmEjoxI7c42RqFcCwe4CHop3qzkwxT2J/mQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwuczuYATjUyiD14mN5KOwwxKXJDrz5KyaoNaqEefNjtiyAdDLx
- KhNXvPwyCr1/TcAsCWRSHeDoPiNe5JM7zvf/y2Gkznq+IOHPz8cvHQQf
-X-Gm-Gg: Acq92OFDNlS3irUfiE4Hku14PxGUkkwhJJLmJi/r63h6RtWFLthMdeRZE9rEMAO6b2b
- NW1o/VyECEQQfwEBZXR3kCpvmcNeMNv/iN9KM4Ihup47lbJA84qIUWS2ybTYd44i0lJlrNQ3gyT
- zmIyRzB/k+0e1xRNs0NrQfd8L1TTRC70RCFsgEMyXios3qhFcgBPFWzNDgnKjhbGUZ2RGC5QFlw
- 0vgvW1Z9Mx+HbuO7u/JvM++pXxJwox4yhBVX1US87R6ZpPjttlOEDp5HevGdmae13Ic//8U0nIf
- 84q3B8jRSAIUcv3lQonYIDz8yYwydU7YKEcvOTdLvdynBDjqeTqHc/4yF46CsrSbLskFe2W38wo
- cv+aMRHDNi6+5r7nt5Lms2YlH4XkZDxnVjqzOyXkJ7AY7s0Zu08cKL4pJ8xGXkCor/hANgDG5Wt
- GRLGp0RTS2JZyHm/xnFqo5lioX2/MOaSYStMzF6D6A
-X-Received: by 2002:a05:6820:3383:10b0:69b:569b:e64b with SMTP id
- 006d021491bc7-69b569bee6emr1282078eaf.40.1778508079065; 
- Mon, 11 May 2026 07:01:19 -0700 (PDT)
+ AFNElJ8xm15R0RtY3+Jjobpgu0CZt6s3/m0BT72FpVdGD4Q2Di2nvBqpJol8jIPxFydqytLJDR5d8XJ6Fg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywjm0AtTFMnfHSGepTnpj7x7Sjs2URvI1H+Nh7+tQfugKKfXWKN
+ OKW1x8Ymz2PsdnnwdgHE7UtLASJ9iavW9QhTPR53Cmc1WeFVo/UpYVaH
+X-Gm-Gg: Acq92OFjEMJZj1EPi02RjEHHmgcct0mMT7vN3PGmIQMMS6NzkWuLsMQBttR60BdPT/R
+ ylqvlLCTzKglDPnmbdyfBXKZtEqtXAPep2jOSMLpHGOd6fZBXzRGSTTNa8ZoTNgxED8ni5VbhOd
+ z7+fQi3a9RbT+Bdm0zs5LlG+fDa5LF+OylPfgHGQiBuHQs6ilZZrdGWMOrG9X8ADaIH0K9E5F/G
+ SRnQdRcZ/7RYvaomHbId73rF8w/iCNwe/DsIfQHkww9ZSUEf/NYlglPLQbWoZjuX3+3rxCmbB64
+ d+HMCzPVV/k6mtmPyoS9GkNG6hmAHxXWAb+7SdXIvz5fvJ3r8rX/nwVROwdkYz5QY9yQpToR1rD
+ eoziM7qcrBz2EJNHS4ajRGipy4Qr5emXs7CHZZBlWwLRunYDTzGebIHGWLNiP1nMxWplbiSrdqz
+ lGf/UuHSz7CEbN+jNNCOLzoOOQfmB58E+Uax9sjopwNsK0oJJe3FY=
+X-Received: by 2002:a05:6102:3a0c:b0:631:8665:3510 with SMTP id
+ ada2fe7eead31-631dc7ac519mr3885381137.31.1778508081818; 
+ Mon, 11 May 2026 07:01:21 -0700 (PDT)
 Received: from [192.168.1.160] ([2600:4041:54f3:a400:c013:3550:ed5f:a59a])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8bf39c7dd09sm94773756d6.31.2026.05.11.07.01.17
+ 6a1803df08f44-8bf39c7dd09sm94773756d6.31.2026.05.11.07.01.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2026 07:01:18 -0700 (PDT)
+ Mon, 11 May 2026 07:01:20 -0700 (PDT)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 11 May 2026 10:01:07 -0400
-Subject: [PATCH v6 09/15] target/arm: load on canonical tag loads ext bits
+Date: Mon, 11 May 2026 10:01:09 -0400
+Subject: [PATCH v6 11/15] target/arm: skip tag bit bounds check if MTX is
+ on
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260511-feat-mte4-v6-9-8557cc1313b9@gmail.com>
+Message-Id: <20260511-feat-mte4-v6-11-8557cc1313b9@gmail.com>
 References: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
 In-Reply-To: <20260511-feat-mte4-v6-0-8557cc1313b9@gmail.com>
 To: qemu-devel@nongnu.org
@@ -83,15 +84,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1778508062; l=4361;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1778508062; l=5222;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=+Y8JKofNZz02HbynA8gMOZLU9OEkRKp61GT6ZG95lao=;
- b=upB0YcqqUbet/AhhWv5Cqx/DisGx8mgiNKBWp1TWKod6ufddZUnqQZUcLuAEPqgT0swfSwy9k
- lKZxdtyWgsrBXvC5Tj/WVmX4f+3ZIA2XendeCR/jW91Wi7aebtrqyB2
+ bh=8jE/ExnW0afjmNINEpEf2ghGWWW+eTv/eM0GgsItKvo=;
+ b=IzdpqFoLBsC4f/A5VQt3FOCjt3HJPfl8/b+lLGMG4Wf+JhG9U/uYBm8GGrgbQQNtqhPh9lf7B
+ nb1g7CQhkX8DpCHSUB3BqS1jOLvhe5aG4D9PWwp+Lhh9kaXL8rnOULl
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32a;
- envelope-from=brookmangabriel@gmail.com; helo=mail-ot1-x32a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e30;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-vs1-xe30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,105 +115,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Loading tags from canonically tagged regions should use the canonical
-tags (extension bits), not allocation tags. See AArch64_MemTagRead().
+Virtual address canonicity checks should ignore mismatch in tag bits
+during translation step if MTX is set. This mismatch is checked during
+the tag check instead, in that case.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/tcg/helper-a64-defs.h |  4 ++--
- target/arm/tcg/mte_helper.c      | 14 ++++++++++++--
- target/arm/tcg/translate-a64.c   |  4 ++--
- 3 files changed, 16 insertions(+), 6 deletions(-)
+ target/arm/helper.c    |  6 +++++-
+ target/arm/internals.h |  1 +
+ target/arm/ptw.c       | 35 ++++++++++++++++++++++++++++++-----
+ 3 files changed, 36 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/tcg/helper-a64-defs.h b/target/arm/tcg/helper-a64-defs.h
-index 3c3c5dddb7..c08c8c3991 100644
---- a/target/arm/tcg/helper-a64-defs.h
-+++ b/target/arm/tcg/helper-a64-defs.h
-@@ -102,14 +102,14 @@ DEF_HELPER_FLAGS_3(mte_check, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(mte_check_zva, TCG_CALL_NO_WG, i64, env, i32, i64)
- DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
- DEF_HELPER_FLAGS_4(addsubg, TCG_CALL_NO_RWG_SE, i64, env, i64, s32, i32)
--DEF_HELPER_FLAGS_3(ldg, TCG_CALL_NO_WG, i64, env, i64, i64)
-+DEF_HELPER_FLAGS_4(ldg, TCG_CALL_NO_WG, i64, env, i64, i64, i32)
- DEF_HELPER_FLAGS_3(stg, TCG_CALL_NO_WG, void, env, i64, i64)
- DEF_HELPER_FLAGS_3(stg_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
- DEF_HELPER_FLAGS_2(stg_stub, TCG_CALL_NO_WG, void, env, i64)
- DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
- DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
- DEF_HELPER_FLAGS_2(st2g_stub, TCG_CALL_NO_WG, void, env, i64)
--DEF_HELPER_FLAGS_2(ldgm, TCG_CALL_NO_WG, i64, env, i64)
-+DEF_HELPER_FLAGS_3(ldgm, TCG_CALL_NO_WG, i64, env, i64, i32)
- DEF_HELPER_FLAGS_3(stgm, TCG_CALL_NO_WG, void, env, i64, i64)
- DEF_HELPER_FLAGS_3(stzgm_tags, TCG_CALL_NO_WG, void, env, i64, i64)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 18352bd186..0e70822d34 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9693,7 +9693,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+ {
+     uint64_t tcr = regime_tcr(env, mmu_idx);
+     bool epd, hpd, tsz_oob, ds, ha, hd, pie = false;
+-    bool aie = false;
++    bool mtx, aie = false;
+     int select, tsz, tbi, max_tsz, min_tsz, ps, sh;
+     ARMGranuleSize gran;
+     ARMCPU *cpu = env_archcpu(env);
+@@ -9730,6 +9730,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         ha = extract32(tcr, 21, 1) && cpu_isar_feature(aa64_hafs, cpu);
+         hd = extract32(tcr, 22, 1) && cpu_isar_feature(aa64_hdbs, cpu);
+         ds = extract64(tcr, 32, 1);
++        mtx = extract64(tcr, 33, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
+     } else {
+         bool e0pd;
  
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index d35e3ef04d..c382f0149f 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -304,7 +304,7 @@ int load_tag1(uint64_t ptr, uint8_t *mem)
-     return extract32(*mem, ofs, 4);
+@@ -9745,6 +9746,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+             sh = extract32(tcr, 12, 2);
+             hpd = extract64(tcr, 41, 1);
+             e0pd = extract64(tcr, 55, 1);
++            mtx = extract64(tcr, 60, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
+         } else {
+             tsz = extract32(tcr, 16, 6);
+             gran = tg1_to_gran_size(extract32(tcr, 30, 2));
+@@ -9752,6 +9754,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+             sh = extract32(tcr, 28, 2);
+             hpd = extract64(tcr, 42, 1);
+             e0pd = extract64(tcr, 56, 1);
++            mtx = extract64(tcr, 61, 1) && cpu_isar_feature(aa64_mte_mtx, cpu);
+         }
+         ps = extract64(tcr, 32, 3);
+         ha = extract64(tcr, 39, 1) && cpu_isar_feature(aa64_hafs, cpu);
+@@ -9851,6 +9854,7 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+         .gran = gran,
+         .pie = pie,
+         .aie = aie,
++        .mtx = mtx,
+     };
  }
  
--uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-+uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt, uint32_t mtx)
- {
-     int mmu_idx = arm_env_mmu_index(env);
-     uint8_t *mem;
-@@ -317,6 +317,9 @@ uint64_t HELPER(ldg)(CPUARMState *env, uint64_t ptr, uint64_t xt)
-     /* Load if page supports tags. */
-     if (mem) {
-         rtag = load_tag1(ptr, mem);
-+    } else if (mtx) {
-+        uint64_t bit55 = extract64(ptr, 55, 1);
-+        rtag = 0xF * bit55;
-     }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 779eafabc8..d313d36603 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1407,6 +1407,7 @@ typedef struct ARMVAParameters {
+     ARMGranuleSize gran : 2;
+     bool pie        : 1;
+     bool aie        : 1;
++    bool mtx        : 1;
+ } ARMVAParameters;
  
-     return address_with_allocation_tag(xt, rtag);
-@@ -458,7 +461,7 @@ void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
-     }
- }
- 
--uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
-+uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr, uint32_t mtx)
- {
-     int mmu_idx = arm_env_mmu_index(env);
-     uintptr_t ra = GETPC();
-@@ -476,6 +479,13 @@ uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
- 
-     /* The tag is squashed to zero if the page does not support tags.  */
-     if (!tag_mem) {
-+        /* Load canonical value if mtx is set (untagged memory region) */
-+        if (mtx) {
-+            bool bit55 = extract64(ptr, 55, 1);
-+            ret = extract64(-bit55, 0, 1 << gm_bs);
-+            shift = extract64(ptr, LOG2_TAG_GRANULE, 4) * 4;
-+            return ret << shift;
+ /**
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 467d815e0d..64778a7649 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1951,9 +1951,18 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+      * validation to do here.
+      */
+     if (inputsize < addrsize) {
+-        uint64_t top_bits = sextract64(address, inputsize,
+-                                           addrsize - inputsize);
+-        if (-top_bits != param.select) {
++        /*
++         * If MTX is enabled, bits 56-59 aren't checked for canonicity
++         * during translation, since they will later be checked during
++         * the tag check step.
++         */
++
++        uint64_t cmp_mask = MAKE_64BIT_MASK(inputsize, addrsize - inputsize);
++
++        if (param.mtx) {
++            cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
 +        }
-         return 0;
-     }
++        if ((address ^ -param.select) & cmp_mask) {
+             /* The gap between the two regions is a Translation fault */
+             goto do_translation_fault;
+         }
+@@ -3513,15 +3522,31 @@ static bool get_phys_addr_disabled(CPUARMState *env,
+             int pamax = arm_pamax(env_archcpu(env));
+             uint64_t tcr = env->cp15.tcr_el[r_el];
+             int addrtop, tbi;
++            bool bit55;
  
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index cd86178d56..5fbc54de4b 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -4711,7 +4711,7 @@ static bool trans_LDGM(DisasContext *s, arg_ldst_tag *a)
-     tcg_rt = cpu_reg(s, a->rt);
+             tbi = aa64_va_parameter_tbi(tcr, mmu_idx);
+             if (access_type == MMU_INST_FETCH) {
+                 tbi &= ~aa64_va_parameter_tbid(tcr, mmu_idx);
+             }
+-            tbi = (tbi >> extract64(address, 55, 1)) & 1;
++            bit55 = extract64(address, 55, 1);
++            tbi = (tbi >> bit55) & 1;
+             addrtop = (tbi ? 55 : 63);
  
-     if (s->ata[0]) {
--        gen_helper_ldgm(tcg_rt, tcg_env, addr);
-+        gen_helper_ldgm(tcg_rt, tcg_env, addr, tcg_constant_i32(s->mtx));
-     } else {
-         MMUAccessType acc = MMU_DATA_LOAD;
-         int size = 4 << s->gm_blocksize;
-@@ -4746,7 +4746,7 @@ static bool trans_LDG(DisasContext *s, arg_ldst_tag *a)
-     tcg_gen_andi_i64(addr, addr, -TAG_GRANULE);
-     tcg_rt = cpu_reg(s, a->rt);
-     if (s->ata[0]) {
--        gen_helper_ldg(tcg_rt, tcg_env, addr, tcg_rt);
-+        gen_helper_ldg(tcg_rt, tcg_env, addr, tcg_rt, tcg_constant_i32(s->mtx));
-     } else {
-         /*
-          * Tag access disabled: we must check for aborts on the load
+-            if (extract64(address, pamax, addrtop - pamax + 1) != 0) {
++            /*
++             * With MTX enabled, bits 56-59 are not checked according to
++             * AArch64.S1DisabledOutput.
++             */
++            uint64_t cmp_mask = MAKE_64BIT_MASK(pamax, addrtop - pamax + 1);
++
++            if (access_type != MMU_INST_FETCH &&
++                cpu_isar_feature(aa64_mte_mtx, env_archcpu(env))) {
++                int mtx = aa64_va_parameter_mtx(tcr, mmu_idx);
++                if (mtx & (1 << bit55)) {
++                    cmp_mask &= ~MAKE_64BIT_MASK(56, 4);
++                }
++            }
++
++            if (address & cmp_mask) {
+                 fi->type = ARMFault_AddressSize;
+                 fi->level = 0;
+                 fi->stage2 = false;
 
 -- 
 2.54.0

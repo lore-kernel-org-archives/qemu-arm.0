@@ -4,142 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D764ECD37BE
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 20:28:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6B4CD484E
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 22:10:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMXEm-0004SL-Vn; Mon, 11 May 2026 16:28:25 -0400
+	id 1wMYp3-0000iD-LG; Mon, 11 May 2026 18:09:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1wMXEk-0004R6-E8; Mon, 11 May 2026 16:28:22 -0400
-Received: from mail-eastus2azlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c110::3] helo=BN8PR05CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wMYoy-0000hh-SZ
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 18:09:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1wMXEi-0004lZ-Tl; Mon, 11 May 2026 16:28:22 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=g978tvwsDCTRFMmgtpXWztpfnsA99S6OFcdo1xVYFJaiOJxqkZ4stYXFZHSWF7ef8RsXCxDyMZeIBJBM0mQOEEaAVXQlsLmI863NCYb4eEZDFV55ySCpn3N3/mD4RUpEtOTtUnoAC1jWZVyNM5aF3S8AnG8tfA4T9AFmB0n4HgOqZfQsLYsk2ExbYDW9/18ijZP8B4PSSAaHKHPuQyIVnKKv5BABAQmMwx0fvX/3IsUrcKkPQGZ4AjknQaZ9FOsdiK/4NY28m4x5VLZPKEUZgnMRP6gb7Vr3s2TVZPSp5QkH+r85d3lkUkJQj9yzZFnvVM3/Nc3ixzKc7C6G8qjmKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4Zt8ErBavkMm9c3KG/D3DFFVI+17g0H7C3d/VwYh4zQ=;
- b=cQPrS9qHNuDkCYSr50x+BO4sV3kdlGpZ3lLy1R08LnwSDhzak1aKlhWLgx4EJz9zjTNR3fvY7JVn6SEU+HBpjbRdJDvk1L/k1FItTP7ibkX9DUm6k12J6JaoK+hludQGUaCOyLr7qmkzBsu4oWMMJ2G7F5GFMF0i0XxlJnOyDkHrpV2Rp1RGiS4uE0IQA0EQGAmEM9EStDbhkXFZQMZISSZezYJ9QYXKTueAFUvKcyl0WAAEBSf77TImFdwmPQUPP+k385162ROgSv+W1JnZQMeGiQcGqktcoLfRDqhx3qQMkkVnwFtD5q31CJMBNPZzjWdXdAfgp5nYz8FXyqgMBg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4Zt8ErBavkMm9c3KG/D3DFFVI+17g0H7C3d/VwYh4zQ=;
- b=Tqy0EDH0rnnRm5T8+nNO6yE+/nChAmFvZpcdwfTrO+LJ4BglP1k1fobd2y145noRQxgzQXgt5W5tGQ/vFZRgWS4keFEiKmhn9XHXhaUaEHFu1VAwt+vcU5IO2AcOckarlk8svhsxwwvmZtLdlDW5tzBdsigsaAs/PH16Wv9dE7ujNEklz++La/GmaMrp8XjrUHOz86X9iooMaKTfZ0r9MSS9gc3SD9sI8z20FjGQkkdB2EeKIb8g0KcienyBD4gFzsLaz6BCxG9sarLUgDqUmgh3JkmWahmgjelbA30rEuD3ZM2YuprmprttxGV5A0zXD1ZYIZSlNeAqtAyoSrY1SA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com (2603:10b6:408:2a1::19)
- by CH1PPFF5B95D789.namprd12.prod.outlook.com
- (2603:10b6:61f:fc00::62a) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.20; Mon, 11 May
- 2026 20:28:13 +0000
-Received: from LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528]) by LV8PR12MB9620.namprd12.prod.outlook.com
- ([fe80::299d:f5e0:3550:1528%5]) with mapi id 15.20.9891.021; Mon, 11 May 2026
- 20:28:12 +0000
-Date: Mon, 11 May 2026 17:28:11 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org,
- alwilliamson@nvidia.com, skolothumtho@nvidia.com,
- qemu-arm@nongnu.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
- devel@edk2.groups.io
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wMYox-0001gg-C8
+ for qemu-arm@nongnu.org; Mon, 11 May 2026 18:09:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778537390;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=8lfM790bPPcW9+6QJ2OF4Giuvz/HJzNJe7b9mqE9Dco=;
+ b=eF/+R662366o54EJjCDmVhlinIZ+cAFRPxVnJMZ03hV8+xQndhnYDRgmZXcBUeF+TAb66r
+ T4YHXsqpDz1rpRJYz7G8FXurmVQfHbVtCenMVunEQJmSn1d8E4tErdNss84zxbaGL6zmTK
+ iht+InkyEiIUzh1yB96/iUi0fyiaXj4=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-78-sHdT_I08OPWZkFOKZu1EWQ-1; Mon, 11 May 2026 18:09:47 -0400
+X-MC-Unique: sHdT_I08OPWZkFOKZu1EWQ-1
+X-Mimecast-MFC-AGG-ID: sHdT_I08OPWZkFOKZu1EWQ_1778537386
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-43ff19e54beso3363907f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 11 May 2026 15:09:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778537386; x=1779142186;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=8lfM790bPPcW9+6QJ2OF4Giuvz/HJzNJe7b9mqE9Dco=;
+ b=Snp2ll153CdCmeEbADgVwK5sesS1hBTnkirOGV5YqHjATfQggbVEr8cEJA7NS/Xdij
+ M+U8gQR8OWpbF6PuqlLihU4kCDjDV6UlV2msuuV0nxOq93JDG10RE23xRavevaNGhwZE
+ uNHoW+ZLAeXaSv14vupHbQcih1MUbsKlGjbf0LKFlJL+sLXYYKc5PpdLEMzrtegEG6xr
+ NY+0qwUag2Iww5ch6MoNFZmZQGE55torWaDeObYGl2iBA/Q5oenCv/g9kivl+1vl0gXk
+ 1eUuPbrCTYqKDb8K2ta//+gcwi2PTng1LrXKPrW82XeI9Xm8KZsVhKub5+Hqb8T7oGM5
+ 2dXg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8D0UOX0aA4AfqhFdPM+kuxDvPFNWWLtBFV1fqH33u8xjKc4YH0q5y8jFfGSYtXh9Rooa3txnxJcQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzUfaF23Yq50TwMYCqk04BgG2v35KHCggVgo5/k+XL8n5qyrUY3
+ lsbxRdahuR7L35/l6vZ1ujUzCpm8hLBdRgMv/EE/A/4Q9fT5+CHSQPhL+k+1oWvAR6z3kPs+MAc
+ knBMwkcRu4kNjo4M3Ujdx7ahyLYJH8kqH+JSqwycfqzKZt6xHOTQFMw==
+X-Gm-Gg: Acq92OEliQ64TzaIiZtmAIWbz9rJdhpXKw1vBGe8t3TdIEMrrtiBQUVglZS6q9te8Cq
+ 63ktLKe6/Y2EsvtHyA3qZLBlnurue/yiLfaDKR++W3rYGuIuHDZZO/n9I8XDF0vc1YOcBwYfnd4
+ Yfa88n9Q1NQwDRlK9CpC67ZC5ZJsPODkYIo2w1n4yiM7/M9rDQogpvSsWiC6iIfwvcdKkaZzi+B
+ PLDtz/owrVqqyTOKd31/9QcP6WDZauOaX0+0Ka9Yyn0fy4SS6LhyyEV1AkZ+PA/O//QZOZ8oBTs
+ s4NPyeN1sQosx0byDu9iyCVx9spiOIh/rz3YBUVYMP6OVZ9CUvnqIRw398UA/0+3AfqTnG1rhrR
+ 8iAXHlh93x7L8WDOM8Ww2lVx4B53qVOc7SXFOxJDP
+X-Received: by 2002:a05:6000:25c2:b0:448:659b:abec with SMTP id
+ ffacd0b85a97d-45460e3f5f9mr23691016f8f.8.1778537385874; 
+ Mon, 11 May 2026 15:09:45 -0700 (PDT)
+X-Received: by 2002:a05:6000:25c2:b0:448:659b:abec with SMTP id
+ ffacd0b85a97d-45460e3f5f9mr23690981f8f.8.1778537385429; 
+ Mon, 11 May 2026 15:09:45 -0700 (PDT)
+Received: from redhat.com (IGLD-80-230-48-7.inter.net.il. [80.230.48.7])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4548ec6b071sm27715403f8f.14.2026.05.11.15.09.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 May 2026 15:09:45 -0700 (PDT)
+Date: Mon, 11 May 2026 18:09:42 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Tushar Dave <tdave@nvidia.com>
+Cc: qemu-devel@nongnu.org, alwilliamson@nvidia.com, jgg@nvidia.com,
+ skolothumtho@nvidia.com, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, devel@edk2.groups.io
 Subject: Re: [RFC PATCH 0/8] hw/arm/virt, hw/pci: PCI pre-enumeration and
  fixed BAR allocation
-Message-ID: <20260511202811.GF1116784@nvidia.com>
+Message-ID: <20260511180533-mutt-send-email-mst@kernel.org>
 References: <20260508183717.193630-1-tdave@nvidia.com>
- <CAFEAcA9KxUF6c555Q_Kqn_NVE3z1ojr91+KuatYudj_T4GjbxA@mail.gmail.com>
- <20260511122633.GE1116784@nvidia.com>
- <D6827AC4-0852-4068-A1A8-111EBDF957CC@unpredictable.fr>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <D6827AC4-0852-4068-A1A8-111EBDF957CC@unpredictable.fr>
-X-ClientProxiedBy: YT4PR01CA0072.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:b01:111::26) To LV8PR12MB9620.namprd12.prod.outlook.com
- (2603:10b6:408:2a1::19)
+ <20260511050459-mutt-send-email-mst@kernel.org>
+ <d5190676-11e7-40e8-ab12-da69aa751301@nvidia.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: LV8PR12MB9620:EE_|CH1PPFF5B95D789:EE_
-X-MS-Office365-Filtering-Correlation-Id: 529205f4-c522-4184-a478-08deaf9bd2f0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|11063799003|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: GpykXpgTC65B1p+cEWhBf1dd1x/+ke42y206hSIYfz9LIS0dhBjOFAlieIuh3xUvGPhF8Kr2RPgQW3NudxrgZSFrkCik98UKp9SuypaseEr8LZCaXizR6dIxyKqXSETdcvlBNhGBRyaImFxQDAAgKrR7oVUTdAJQVkGKCRL3URv1CftBC2jvlc/v/BzDOS56F94UgDDcUWzQVAy8VLaC3ZcvIDE1Tqa2/h7Dof1fOGTa5NOcN0ja7cR/T7dLDDeKHtYCYqxYTgLTfAY/fodfhGx4QyxP7eSB2qHvPFBbb2mInlfBsEo3eYWVfw5+33Lg7PMvuodzlVlwMmzxegYx5p/+DNRA6rvccSH32y1V7zNnw/SORyTMwI5Jee4PseODxlJcnnDWANAHURO2ncP+NJCY2/1G6u8aiv9zdfmEDy0QCSpuSpmRxtxNCM85w0LUVQUbu44h7pidTgvN+Lj1E5Fr9VF/ry55A+Im/ynuG5/w1bOBpyemp69U1aoCIroZFDWLjmt19AKmUvDi4qyXp+u4564n9qZhezKmyFUShQl+X4zplGcgYHsZEAMQaa91b3HHmgDMfivtzwTkl5fFHOMG/+2hY/kx6Wazc+bIRN475PCs2p1HgJYUKoteTlCYF6gaSYqdz3g9AzavV07jhQ0y0dHUOyJKwIjOATEgeRomfKsEvLvq97uGbaHKZS6P
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:LV8PR12MB9620.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(11063799003)(22082099003)(56012099003)(18002099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eDBTeVk2MHM0aXk0NlAwUGFwM1g5ZXNreldBRDFpQ3ZlbTBwa2dTOFFIaklr?=
- =?utf-8?B?M3EvQTFTeHhHZ3REK2xncHJwVDBvQzQyQTd4aXhrRHc4eHNHVkltMkd0aXNr?=
- =?utf-8?B?ZSs0NktPMUdDSnZ3ZlRNcEdwTlJyNDN0d0ovbEFtNXpReG9mTHYrTzhtTytn?=
- =?utf-8?B?RFJwVm0yLzRENTBLOHhNWmdVQlpjYmYxOUhiSWgwQWVJeWZYYXBJbTFINllU?=
- =?utf-8?B?bXY1R2d3S2hrRU44VTk2YzRIa1ZJd0IyTFNPZkdVT2N5WldMeFpTdUJkMjh4?=
- =?utf-8?B?cVRkcUp1U1BlaGtaQ1N3R012dGNsaU53VmdZb3ZCV0gxUXgyaytNQVkvOWZn?=
- =?utf-8?B?QWNJM0VENmY2SDVvdTZJRkRqc3hSTGkvYXRWR3IyRWdDeUVvYnlISmh2S2hC?=
- =?utf-8?B?VjVlTlNvenMzQkxqUzdZdS9nTnk2UEZNUkxxSjBQVEY4QnM5L2k3cE5vWEdj?=
- =?utf-8?B?K1FuMHlra252L01aeGhkWDU0MS9IdmswMUhSSWFteHJRMko1QVdxakpFRVcw?=
- =?utf-8?B?NzVqL2dRcXordTdWd29JSVFDTzVIN1NObVFHbkRlUjY1NDdjbE1FTmkyNlRH?=
- =?utf-8?B?MEw5WG9vSjlOZ1ZlR0dtTXBzaEU2VWxlSFArS1R4VDlqTWZQVFJ5ZkZubVQ4?=
- =?utf-8?B?NXNTb1Q3VzhYaTRJUnZnTmhwMDNhMXZsaDFERHhCelY5c1hzaEM4L0gzbEo0?=
- =?utf-8?B?a0ZqN0JjUHFqemtIbElLWXdKUFdCY1Nhcy9WZ3RVdXN6ODlsS1JULythR3dU?=
- =?utf-8?B?N0RBbWFCZFdZTjVMSDR3U0lQOWp0K2FrR3M0Z25rdHZDdE96VUZmcWRDVytx?=
- =?utf-8?B?Uzk4SXhaZGNhSjJML1pLcWFRWUlSai83OXdUOElwSnNNS1dNcGtZbDlQandT?=
- =?utf-8?B?NisrbDJ1anJYRXh0emxreFF6YTVLWUlueStMU2l2c0hxZWhnMUk2aWo0K0lG?=
- =?utf-8?B?N0tjR0FtdVBFUEZKWkdkaGZZeUE5WTdMUVRkWC92UThtaFp1VkZIeFlKOS95?=
- =?utf-8?B?ZWV0a1J4L1VVb2xVUkg3QStKaWJTUVB5bHd0bHNCOU1wRmNHanA1QjduUHZK?=
- =?utf-8?B?dWVWTkN4cmQ4L2tiYS9taC9nbm1WQ1Y0VUlPZ2x5bFZ0TTJraEFCQTNiT1p1?=
- =?utf-8?B?aDNZb0FsZ3puOHB2Z3FuTUt3VUNBd3NuQmdVWmtuOE5maWtNYURDaEJxc0Iy?=
- =?utf-8?B?UG9oZ1V4SzZuWW5pamhhY3VtaGZRTHl1c1ArMlZKTHFUTkNUN3VVRDZRaytF?=
- =?utf-8?B?bHRSQ3Y1bnF2VFVUalljSUtTYSs4ZloyMGNIZE1FcXJRK2NxVzQ5RWxFOVVU?=
- =?utf-8?B?NEJ5U1Q1U3VYc1BmbHZwS0Vta3NXSitjaTFIV0xSSHA1ZkdSaUgwM1pBMlVu?=
- =?utf-8?B?c25DVjBTTTZia3FCSVZGd0JsKzArMnN2ell3Tlg1YnQrVEh1WlZCakg5Mkxh?=
- =?utf-8?B?YUpmRW5PelV2ZFpsWVRqQTZOczYrK2ErenFlM1U3NmN4TUlsOEk2V1RPVWJk?=
- =?utf-8?B?ZUdQM1BZSlkwV1NjTXBvRithd2NTNGxpa1JGQ0pQWUV3bWp3dWx3SUhHUUtD?=
- =?utf-8?B?TW42bk43MER4Mk9rQ0JaZlovaTczNFRLbEF3RFlsd1VmWmxUNFFPaGxjS1lJ?=
- =?utf-8?B?S2tuS1hHV0hyR1pia2x1VTBGd3U2MjlxQm5peUNaUUdFR1RIaE14cWNLdzVD?=
- =?utf-8?B?aEJtcWNLN3UzcjJ3YkZkSDhvczJvdWJvKzk4Smh1VEFTLzRVUERpMmFNMUti?=
- =?utf-8?B?UnBrenZhRkVmN00zd1RvaXAvaDZVNEppRUZ3enptNVpuTDZEQlJMYTFKcEgx?=
- =?utf-8?B?b2ZpZldqS3VTR3BzbkhINFJ6Q0twaHE0WndieHYvcEZDS3NrV1M5RHB5MUdO?=
- =?utf-8?B?YmtwNUJCL3krOFdKR2hLRWpRdlJNK0pSTkJ5eXN1M2t6eDBjdTRJc2pvODdk?=
- =?utf-8?B?MmlwYjdXVWZDdCt1RStzZXNFVnNZUXJFblBhOG9PS1E4eEFlMTZzQ2x6ZktP?=
- =?utf-8?B?NVJsb3F3S1BYQXAyV2krWEhSUlRSQWVsY0dKMDhmY2FUL2dlQmUwblZTTUdZ?=
- =?utf-8?B?WFdEQ1FsTDVkNnVMQ2ozaTFOT2FTeVlUdkxzSjBydWZKRTZMWDg0UlFTU0RE?=
- =?utf-8?B?eWF6M2JKUENISUhMczh4VXNUT2VkQmlwdEwvWkpiOHlKK1N3amx6VWhzRmg3?=
- =?utf-8?B?S2ViZEw1K0MvTVZESjhieVZnSHlRT0cvbHJBSFVHRW1QTTBSeUtLQjhLemt1?=
- =?utf-8?B?bjNqQUE1ZVQ1eGJvTElRcVFWTkpITUZpMmRHalpUM2UxZ3B1NS82akF5RHJ4?=
- =?utf-8?Q?PjrHPLe7KJCOkNL/Rh?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 529205f4-c522-4184-a478-08deaf9bd2f0
-X-MS-Exchange-CrossTenant-AuthSource: LV8PR12MB9620.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 May 2026 20:28:12.8657 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: rI0mei9DSnWOdL15dQAC1ZX/SRXsCQKCIScXBuzoy8nF2XsLluMiTV9cFYvbJPi3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PPFF5B95D789
-Received-SPF: permerror client-ip=2a01:111:f403:c110::3;
- envelope-from=jgg@nvidia.com;
- helo=BN8PR05CU002.outbound.protection.outlook.com
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+In-Reply-To: <d5190676-11e7-40e8-ab12-da69aa751301@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MQCj5aISdwP1bGmTXvI-OErCKYUtkO2t_9EEbMZVs7A_1778537386
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,26 +113,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, May 11, 2026 at 08:38:44PM +0200, Mohamed Mediouni wrote:
+On Mon, May 11, 2026 at 01:10:43PM -0500, Tushar Dave wrote:
+> 
+> 
+> On 5/11/2026 4:09 AM, Michael S. Tsirkin wrote:
+> > On Fri, May 08, 2026 at 01:37:09PM -0500, Tushar Dave wrote:
+> >> This RFC introduces a mechanism to specify Guest Physical Addresses
+> >> (GPAs) for PCI BARs, allowing explicit placement of guest MMIO BAR
+> >> addresses to match host physical addresses for assigned devices.
+> >>
+> >> On some platforms, P2P DMA is performed between devices within the same
+> >> IOMMU group. The PCI fabric ACS is configured to permit direct P2P
+> >> without going through the host bridge in order to achieve the required
+> >> performance.
+> > 
+> > Pass this info to guest firmware, let it set bars any way it wants?
+> 
+> We are using firmware, relying on the existing EDK2-supported mode
+> enabled by PcdPciDisableBusEnumeration, where firmware is expected
+> to preserve the PCI topology and BAR programming established by
+> the hypervisor.
+> 
+> In our case, the hypervisor is QEMU, which performs PCI enumeration
+> and resource assignment before handing control to firmware. EDK2
+> then explicitly refrains from re-enumerating or reallocating PCI
+> BARs, as this is already a supported firmware behavior.
+> 
+> -Tushar
 
-> And not very relevant to Grace + GPU systems specifically, but any hopes of live
-> migration support are lost outside of very awkward placement trickery when using
-> this to match host addresses.
 
-I think live migration is still possible, it does further limit
-migration pairs to ones with identical physical topology though.
+I see no advantage in performing pci enumeration in qemu when firmware
+is already doing an adequate job of it. If you want firmware to map
+specific devices at specific addresses, pass that info along to it.
 
-> Is this specific to the NIC attached directly to the GPU (that is
-> then attached over C2C) configuration?
+-- 
+MST
 
-Something like that, it is convoluted.
-
-> Using PCIe passthrough with ATS disabled doesn’t sound like such a great idea
-> on the security side of things imo.
-
-The platform was specifically designed in a way that this is
-secure. Yes it is not a great idea in general but with careful choices
-it can be made safe.
-
-Jason
 

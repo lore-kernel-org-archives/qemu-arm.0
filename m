@@ -4,112 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAA3CD37BE
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 13:02:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181A7CD37AC
+	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 13:17:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMQH8-0008Tf-1H; Mon, 11 May 2026 09:02:27 -0400
+	id 1wMQ8i-0002yr-GR; Mon, 11 May 2026 08:53:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wMQGQ-0008BP-Fy
- for qemu-arm@nongnu.org; Mon, 11 May 2026 09:01:52 -0400
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wMQGN-0008BP-OD
- for qemu-arm@nongnu.org; Mon, 11 May 2026 09:01:38 -0400
-Received: by mail-dy1-x132b.google.com with SMTP id
- 5a478bee46e88-2f68f3b075fso5158053eec.0
- for <qemu-arm@nongnu.org>; Mon, 11 May 2026 06:01:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778504493; cv=none;
- d=google.com; s=arc-20240605;
- b=F405Vsay+yDHaIOEzQcg1nA0+Bfg09jyy20E7PHLMfojaSymvd8xuW8fq2N1fZA8mD
- JnrMZ+1cdedJmXh1Scm0BzbFlCp100g0L/aYO5GDaY3ljey5/aNQ1hCa0PlsBOVI2t3x
- OEyYlScpK8y0pYsw7I/BTGaMYw9zw6l+27kcqEfYfPTdog+oogq3CB4dLghY4izgfVT4
- P3G4/ABanVe2j3iHwor/Nl7zXL2a0uYm2q3fza/79sF83gSN0biGvr/TQ82s+4myd9zF
- EICTZlHnGHbitk215Ca310Zev119sBpktbhdnIug3z38XLFIsWZVjn+74z7KS1xYYLaM
- OGIw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
- fh=iPgu6S197FMUMapcFeGEHUsZDnnxi66JleiL2vvHC04=;
- b=cDCd//bXogbOBA9tJVzNh+HxJ2V9ZnThtiEXOivc477uboCa/DdrgGP+iHT+TCmPrO
- 471CTrtn/w5RTnesmbmQq6tX46wobANLxznQbTCjceApR49AvjfuexUGYPFZZfdeQfAw
- HtTb891Rgvt5HWaxkc5GTtqnaDY/8AnstroOShumVBk2MgdnDMP+/sOQtUo+5jedDNHT
- 0CwTgcBxbykyTcNljVYjFelXk/2WY3QsWW3FR2UzXYVypDIfsu/wRF+Bg8Dm/N0Dw5UZ
- eTKTK3debKfdb1ke+FrcKt+Bg2uxMtmyLQtv0KHFxl+lv5g4YYFVqA8S3ouofMnvAG7T
- RlVQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; s=google; t=1778504493; x=1779109293; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
- b=W9x9bHGFlaZg7JhsrdeyaxtRa+IDRa30Nny9/MX2TLSc8MvxqgPV7R4M3DRvyhkaiD
- ZgvQ7Yjyxx2YhKJI5nCj5cI5bRe63rw9azSmLAwpR79o6QvUcygxjhqLHKE0/WpQLSre
- BiV+ltrgKVxEmYULRYzX589HyG2sl5pzKzddCFUyqLo0TAySUuxvyNz8A1S4ftDiL3CO
- uww0E4PtJ21WaNxrF9AMoZXv1YNYR2mQ0eY6FiPjSMrSHtvwVf257IhCfdW4YGgIrowG
- DqhnzK++rHUEGj8cso7UGhVJPIlYqoykjTkihddhbHoKL1gwYZSGASPPvtJ87qz5qe5/
- W/8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778504493; x=1779109293;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=xrGfqbDAa0NvbHQFVcegD2ewwESeKh0udY4eiR8vTiA=;
- b=tRCRRwAEyd01KbyvRirf/krxHOuV5nSfNnTO0CByrKBU2CcFrWfNvc4zzKvmB9ZW6Z
- zwHULGAirti6m+3rC5lGRBdGVIADrbehmIH25dZNt0C2JgrldRgb3RKpEY0YWUAbUzuw
- qlFdHOBj80F5UnyN0m7zo0eVhn8HA4p8ljYkan/CnOOw1k0YmbIAnhK+H+SyMn0bfeIQ
- qbi92PiPGymvMrT1yECLby896ha57yoDVrh5eADsVKVmZsZT2Y2Ngsk6YBM9+1kr8TPA
- Tl1vrVmDK/wny0YH9mzd9AJjrzxNQAQsTtAWhH5tfX/XZ+pAm2OUoT2U0h8Zvt5TXvsx
- z7Kw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/bhdfKwQBnJQFTIGQIpLFJ5+Joz8S0dG2Fg1GVNixygfm2CnefHlSTzEj6YhPrNDRy/p6xWQFDDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwK5wTq/MiMjit+e4KzdHq3DorNM5J67MA5/E5D76q3jb/0gle/
- PccZWmBeXDr0PZseOUUU7TP9FOHx+/Lfz3vTuIqowPB/INPgGpZGoefcJ8dunb2pkYk16TA4sv3
- j6y8fTvCXEG0X2Q2OmFlGa3V3F1rmkKs=
-X-Gm-Gg: Acq92OFWyI7Xri8Y99hH0EsFnyesEYuMZmYHizlaYJ5NYofEDXWLmPWIoK7FL7pxC7C
- xfKH6r9hU4nqix3L8ANmXGGxh7/xi0kYjHqxwoAvmTQ2mI69m/Utk3EcaGyrCgwVTBzrRne3Zmz
- YNUPqGVj1GqT3MS2y36Jeog6VDG9Mz7HRrJgHlt4adrIoiQmMFULnFZO6hLN5qJqfnK2b7CrheA
- iZIXcv+TGPTeiX8ZAykTBGi9WPgBXoY/dKjTBoXVGvTXCZhLEwy1N/1w9h5lIoGHKyz4t+i5JSz
- TFKtP1kCmiYU4bRJCA/DDiw2EEyg4Pd1ur6V9GTMLD27tQSOVA==
-X-Received: by 2002:a05:7301:6783:b0:2f2:5c68:5052 with SMTP id
- 5a478bee46e88-2f85c17af84mr6126956eec.13.1778504492327; Mon, 11 May 2026
- 06:01:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260427-qom-tests-v1-0-c413f3605311@redhat.com>
- <20260427-qom-tests-v1-34-c413f3605311@redhat.com>
- <CAFEAcA-tSqa7SQUE-f5yTq_P9eW6p_XrnNSnHZjw4g=Z2WncAQ@mail.gmail.com>
- <4f90d39a-560f-4922-ac54-2c975dae249d@linaro.org>
- <CAFEAcA_LcHgtAAYFjqm+P68ULwSRJWfr6LipMg9YsviyWDxH7Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA_LcHgtAAYFjqm+P68ULwSRJWfr6LipMg9YsviyWDxH7Q@mail.gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Mon, 11 May 2026 17:01:20 +0400
-X-Gm-Features: AVHnY4LUUZJj-Uy0PeC5jOSV9tGBO4n3odeOOGNkax2UoonWn0NhbVICukz_7p4
-Message-ID: <CAJ+F1CKFcPy3NtKgVfUruN_Mp1498EiQpRNz65HNE6YeqJD3CA@mail.gmail.com>
-Subject: Re: [PATCH 34/41] hw/arm/virt: free flash devices and OEM strings on
- finalization
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
+ id 1wMPCp-0000oc-NS; Mon, 11 May 2026 07:53:53 -0400
+Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
+ id 1wMPCn-0000hF-Ig; Mon, 11 May 2026 07:53:51 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Mt16SHULV0CVUWWc4O23ZrkaO4nkMFenCahMHGA0N65+apGfRxSqAsaL2uVWM6Gn5wdoqTV6pK3RhvB/xv2+kbc3R8hOiLSyyU/Ke/mazpblZXSbhENT7rj6BhX8h1eKzxuj5v4QFIJHoZDio1gLS/RwKTIUTMy2XUFIWOdj5im64Kq5YBLwZoq9ociBSMnkI4foFQrlmUqSJw1UNWd5qI65DQm4dNtNw9/QUpj4jDSrd0oJAuGmEts7oXJbNTZgBOx5AIUSktn5K9blSpfs7sbljOjHw3pfR/VNGE2lq4ovI2LQ5om9M2vFf79rbYEtZxWvmDSwBmK8Dwe2Qj0Q+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CkoGDdWG3fk616xeCXHbrrpL0C627vPOgs1YM8VTG4w=;
+ b=Sqb7RdZBgbbiYbo0u8Vc5pF5SBxLjQ07TZyEulHCBOeJaSD0twGqXD7Iih3N7zJ9EMBsfzwTnBk7qEbbBkftEzEyJcH1Yo8G+Uwq/gr6LPTL5g1qy2pVYQBBwSKnyVlfvzDx1aBluBSPUEn6FuTSDrhhLIXmefn3LduIzcTvKdLEDO9FF9eLwpisCSiTQrwRVHMqH/n2dQ0OSthTmqhhW4SOSYnQ7QvAqPKPgu/qP9RHsUa5IrK1MnRi/A7g0qSC8B4GPFdSR4Gx0TTADucxDHL+1bsGlfiCD1QF9GDKQ0nrgWQpnVj9ngDyHh9TEykbBhCs4VrfKA50f7rEsjJ0CQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CkoGDdWG3fk616xeCXHbrrpL0C627vPOgs1YM8VTG4w=;
+ b=hHNaZuwl1brNC2N29k3TGi4u4TkQqIlryeZ6URE2H8eRYnZKbFjstNXx/WI0ThcUHLh1oJzUyRn4HXY/VZiWAlWPE3nbe5VVPLKt1nBpjQrH1PnqLsmy35Zlbuk9M3bNmzVrpecGtE0JOLnyZoCLVc1l5SBV4iGJH61tfIzCjew83rMMucf63kImdyvebmBbUbwlAVJPtkI4nnRN1i3zj3lMOdq39jThdlrAAUoS9ydlK66LYBlEEkfgMnE41pF0Be9msJIPRH1TP3MX/hhz4Rn7ZM6WMPu60FYXR6kjH7vFBqZ5pUmto8PfpIqstIjEhOu91LzKq1fK5dkrGAY6Gw==
+Received: from AM0PR04MB4370.eurprd04.prod.outlook.com (2603:10a6:208:6e::32)
+ by AM8PR04MB7410.eurprd04.prod.outlook.com (2603:10a6:20b:1d5::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.23; Mon, 11 May
+ 2026 11:53:44 +0000
+Received: from AM0PR04MB4370.eurprd04.prod.outlook.com
+ ([fe80::fe3b:fb2c:9dfc:9b]) by AM0PR04MB4370.eurprd04.prod.outlook.com
+ ([fe80::fe3b:fb2c:9dfc:9b%6]) with mapi id 15.20.9891.021; Mon, 11 May 2026
+ 11:53:44 +0000
+From: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+To: Bernhard Beschow <shentey@gmail.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: Adding AMP (Asymmetric Multiprocessing) support for the i.MX8MP SoC
+ in QEMU
+Thread-Topic: Adding AMP (Asymmetric Multiprocessing) support for the i.MX8MP
+ SoC in QEMU
+Thread-Index: AdzhPFYpCkI1fsg9TF6Q60JeeLkprg==
+Date: Mon, 11 May 2026 11:53:43 +0000
+Message-ID: <AM0PR04MB437090062D4587ECEC9A3B8E87382@AM0PR04MB4370.eurprd04.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AM0PR04MB4370:EE_|AM8PR04MB7410:EE_
+x-ms-office365-filtering-correlation-id: 48fd9d67-d1d7-4133-efaa-08deaf53f3cb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|19092799006|376014|38070700021|11063799003|56012099003|18002099003;
+x-microsoft-antispam-message-info: Sye+ithYNLJk+dy3IuR25tlKa6/06eevpBwHLVmvpfu5572O0fOCSO5+epq4O1B7NeMd1hK4luatd+E1hA/w8dDmcAnmQ3WdZHKXYLwo+YVz7vunjROFF6WDzhuL91Df/zH42bSzrCpZlbFMuAZNMMja6Kuz+Zfqe4//sHzlx0RoF0+HjH23/x88Mi/RjZcNwG2Pz/oSOArJfD+zncIZ0/MMlEFivcB/D1ezo9e5wd5Dq+jnWE34EI1d01bRwTlr2x2py2lxGvbGTfCZZLXUW1O0sQp7VgtH3L/DNHvYpwUuBNeUDnI6h2+33UFPCw0suM0GbJUismsMB3V7WcCVDakyu5I/Dml9bR7FCoN0NBIBGga0WLH5puHNfs/3yieSszZJ4SXT9rm3KmaN+DQo0HqXbMyeItwbvHqn8yifgnURAppa3ZwF0AJke69iHU1xrWinTdoRwvqehEGzIlXl1YtBTxU4k7/FuEZFiklhJBR9XpxzRAPpn0OSf1X19GokbfTB+XIjCwAao53nifD6OQSSVy68qemJTrpF96T2JTzqdAAEWvWwRhnToKETEWqoN4hBI8Ni+M4/CiXCwWMBXYDeOol8mTbCW2GV2KIZBcSVvAerFFtA3RQsRZuO+czs3BJgHYJQ3Zra0YmJ4AtZwd7xXuguZ9SkVrh3/RKj4kLORBH5PJiGzM0S64e+Es28DfV+OVXjmIOGVgHB1n+9P91VIJyYUC6o4CXT0dR1TVjTmy3rOdI6BSY7cRBuX2D/
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM0PR04MB4370.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(19092799006)(376014)(38070700021)(11063799003)(56012099003)(18002099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?UbmwDAH247tJbGyk6039ck4LkpyYyObk+QbHQ5gcMdLSsckgDXXAiomT0zHE?=
+ =?us-ascii?Q?+jw88eNvb4VpuokGy9UmDBXfbCzwLTeYU43SPLpoBW+GmMOys0YCU4ZijNQQ?=
+ =?us-ascii?Q?oe0c+Yfq8Pb7c0SUrP6oq0nM3zAAgz6MqpsD6ZPk1Atfp7Lri6kZYZHd/JY+?=
+ =?us-ascii?Q?vdeFg865/LBn7iFGObfS9XURyIKoagG9fBKC3pQ8nVL1f+2GRKSXpcO6stkn?=
+ =?us-ascii?Q?QKWgTRw+K8HdK3YvgAx4ZHca6mIkNLGApx89LLqMNPoh1agQVyUhysS0A8xX?=
+ =?us-ascii?Q?u0l5pvgvX3kyUKWW/6KD4TZMurq/E1qfve7AXk2c1wUftRVK5LPPiyC9nJDP?=
+ =?us-ascii?Q?p7/CykXBcs6Tk5D63B6Mt2CpmkHKAHKAb5hXKWJafznc0MK+lEHBnmFRFZsZ?=
+ =?us-ascii?Q?y+tWuJ2VCy3StjJASQwQtllCfTyN+Ob26I2IfUyS8vsjNe40VX4YABcLw4TG?=
+ =?us-ascii?Q?GiZIAMyGZsAf70WKRqYTPeCbe/Zq/QieKSH3cCxWcN7Nzow3IOD296FFJxjv?=
+ =?us-ascii?Q?AAXv2ltIS9KnV1Ng9il4dXoxoRycWM/Dow43IxB60NdkuoxZxvgYX/rU0sBq?=
+ =?us-ascii?Q?gcK2u7L0Gn53/aCy8axk3uYz6mkJt4T1iidL6L8YKLe9aSToddklpveGwbYO?=
+ =?us-ascii?Q?vJxEciB3zoccOKYoDfWpkn5fqZKQyOfaFx17PWUVbJFLlMjMVNy5B/crZ8zs?=
+ =?us-ascii?Q?nSco2TUFtp+WbENiCzKkWsF+yqp3BP+8yQhF5fFZtV/GJD3IZfMYJdae0gxL?=
+ =?us-ascii?Q?1+kltkBl5mFSRtxvGfhvPixS+rUt04u8lhvxH0Mt8GtIOEJ5wWnwRvaCTQvD?=
+ =?us-ascii?Q?LiMb+ajNP0lwIDrfloNrcX1WwVUx5/i2o41rQhM1w7flnnUJ9IajjyzfHwjQ?=
+ =?us-ascii?Q?36Cq4J/OuocQ4p/KG8ofkvQATSWnnJ9XoMbV3eqMhZDcyoyviLbgTe7HSTFW?=
+ =?us-ascii?Q?8KLFGYcAAgWhfrBkqRegkkP16QCkCRkHQvLx4pyjgx2cHtI/UYrwLhGrhLO9?=
+ =?us-ascii?Q?DnQDGQJlXNA3oANPmBe0Y57kLcocxQ1iKqfhpIDCDThCjt+rN4S+M7sEK3t3?=
+ =?us-ascii?Q?r8SQxXLS/slAJsM0W7gavnz7jBzzWcYl63ZjTZFC2ZXSmcDubJ7s5aoA8vXs?=
+ =?us-ascii?Q?52vY1H+V+3kwuTlPUzbDmN2jWuf5wJiXt+ZOHgRWDvgtv51dUlAi+A7kwyXZ?=
+ =?us-ascii?Q?GpVxgnZVenUL1dUj9j/NLRzK0pLiONT5u2xnCLDbXkAjSikDI6ecPHmDGjrb?=
+ =?us-ascii?Q?+PTPo+rSjRInzVS6C71VPdJ3pP8F8al+ILRDhKB1qPwNV/PGNbYUhyOMkayF?=
+ =?us-ascii?Q?SVnJFACsapaPKd766p1GIXL565mxeoChfCjDRXt5HPUarUsdpMMQWxHXFSck?=
+ =?us-ascii?Q?W9Ta0mXK0pwLE4QvpkhMyq7GzV2aOW2CUBWf/6acSCRo80Nh1EuDDcVjl8uz?=
+ =?us-ascii?Q?duo/NByaLnejagjPkVCY2HBiRXcdypfubQJx222BReG7pnP3nBCGR3JmI4zM?=
+ =?us-ascii?Q?bLArUayu6vw8banY623SrDd/NXKmoAEXCVil7ve6ReTvWazr2tBhAsW8P/oZ?=
+ =?us-ascii?Q?BPpi0dvuDeB5Jl7ymrBAepe8SeCymyBzxq53fCSW51VBHosJQtoFm6onDqsj?=
+ =?us-ascii?Q?PuOMDtdwR6nlmr0EGw4bfK2vLC6HpTo62cYgjUP8EM2LmyoH5k40X0GJ1IDu?=
+ =?us-ascii?Q?7B/6sGHEYnBUH/x9nozgLRuOUCx7mvC39+iOfw/+TPYsLK+HJXGVacLxzIX8?=
+ =?us-ascii?Q?KrUNjOA0Zw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::132b;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-dy1-x132b.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+MIME-Version: 1.0
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AM0PR04MB4370.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 48fd9d67-d1d7-4133-efaa-08deaf53f3cb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 May 2026 11:53:43.9502 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 1JRNbNfNRrASyGfj7GEq+RdezSu2kY7h0mSmErwwgOqpAt3AQsxoUV4xMKZpnvfYN/uU3Wa3AiX59A0Hra3Qyg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7410
+Received-SPF: permerror client-ip=2a01:111:f403:c200::1;
+ envelope-from=gaurav.sharma_7@nxp.com;
+ helo=DB3PR0202CU003.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 11 May 2026 08:53:37 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,71 +141,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
+Hi Bernhard,
 
-On Thu, Apr 30, 2026 at 7:32=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Thu, 30 Apr 2026 at 16:18, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.=
-org> wrote:
-> >
-> > On 30/4/26 17:12, Peter Maydell wrote:
-> > > On Mon, 27 Apr 2026 at 20:45, Marc-Andr=C3=A9 Lureau
-> > > <marcandre.lureau@redhat.com> wrote:
-> > >>
-> > >> +static void virt_instance_finalize(Object *obj)
-> > >> +{
-> > >> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> > >> +
-> > >> +    for (int i =3D 0; i < ARRAY_SIZE(vms->flash); i++) {
-> > >> +        if (vms->flash[i] && !qdev_is_realized(DEVICE(vms->flash[i]=
-))) {
-> > >> +            object_unref(OBJECT(vms->flash[i]));
-> > >> +        }
-> > >
-> > > We currently use qdev_is_realized() almost nowhere in
-> > > the codebase. Isn't there some way to do this such that we
-> > > don't have to care about this because the object is
-> > > parented and gets auto-dereffed ? Having each object
-> > > have to care about the possibility of "inited but
-> > > not realized" devices in finalize seems like it's going
-> > > to result in a lot of bugs...
-> >
-> > Why are we creating pflash devices if we aren't realizing them
-> > (thus not using them at all)? Destroying them when unneeded
-> > would avoid that manual cleanup, right?
->
-> I wondered that, but what happens is that we init the pflash
-> devices in the machine's instance_init by calling virt_flash_create(),
-> and then later we do the "configure, realize, map" part in
-> virt_flash_map() in the MachineClass::init method. So if
-> you init the Machine object but never call its init method
-> before finalizing it, the flash devices are still in the
-> inited-but-not-realized state. (This is similar to how with
-> a normal qdev object, if you init it but don't realize it
-> it will init but not realize all its child objects.)
-> (We need to create the flash devices earlier than we do
-> the other devices on the board to make the machine properties
-> that virt_flash_create() sets up work.)
->
-> Since virt_flash_create1() calls object_property_add_child()
-> to make the flash device a child of the machine, I think
-> we could make that be the only reference, by having
-> virt_flash_create1() do:
->
->  Object *obj =3D object_new_with_props(TYPE_PFLASH_CFI01, OBJECT(vms),
->                                      name, &error_fatal, NULL);
->  DeviceState *dev =3D DEVICE(obj);
->
-> and then using sysbus_realize() rather than sysbus_realize_and_unref()
-> in virt_flash_map1(). Not tested, though...
+I've been working on adding AMP (Asymmetric Multiprocessing) support for th=
+e i.MX8MP SoC in QEMU, which enables:-
+1. Cortex-M7 core to boot alongside the A-core.=20
+2. Device emulation for Messaging Unit.=20
+3. Linux running on A53 to load Cortex-M7 bare metal images via remoteproc[=
+It can start and stop the M7 core].=20
 
-Yes, in general, if a device creates & keeps a reference to an
-instance, it should be a strong reference (we don't have support for
-weak reference the way gobject has for ex). It should then unref it
-unconditonally on finalize. Is it ok if it is addressed in a follow-up
-series after this one lands? I am afraid it would delay this series or
-make it longer, and a shift its focus
+So far, I have successfully tested the above with minimal SRC stub. I notic=
+ed that you have a SRC implementation in your private repo which is not mai=
+nlined yet.
+Is it planned to be mainlined ? If yes, shall I base my changes on top of y=
+our SRC implementation.
 
-thanks
+
+Regards
+
+
 

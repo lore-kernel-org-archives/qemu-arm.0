@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85785CD4F25
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 17:15:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86FCECD4F24
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 17:15:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMqgz-0006wH-Av; Tue, 12 May 2026 13:14:51 -0400
+	id 1wMqhh-0007Xo-Ln; Tue, 12 May 2026 13:15:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgV-0006n5-LT
- for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgN-0006mK-5t
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:21 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgR-0000kZ-Cm
- for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:18 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgL-0000bY-Ns
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778606051;
+ s=mimecast20190719; t=1778606049;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=U687+bHItKB6v7ipuiaJlcNS8f/FJaPS/VGSRgaHYXI=;
- b=O5bMevWsOS8FV4LCM8kizX2x8DKaamuEfq45mpu4hUzWDALUbOtMrIKV7U67IlNe6Rz2tQ
- xHujUXFvNWdetedP0Qdwx/rE8TK14NC76GHA48wkU2mUO52AEz6vT7qZgFXwpL91KeptNO
- WKjd4J9sHMT3NhbaEBd9VaTlckA2Y4w=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=3FECxusx0MidqsN3aGBxWxbLHCe132kVJIBHB1EIJRo=;
+ b=LhDpYnBLy1vY1PKMQXAdZZ8DHLkiVx81v2arCuZlAWw6cw0DPK2fyDKCa58A/wPThvmfaf
+ dyarmaUP7Tqrm1MwKvKCd8pRM8zaOX9LJ5+dvIpUAiSz0Y9DEIiUvp2NljoEXfKkcxTP8U
+ bDTEt1C26zhd1dTWzBrDoFeT1fKZEv0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-504-7Ogyz3SyO4-lX8vQmkcZzQ-1; Tue,
- 12 May 2026 13:14:07 -0400
-X-MC-Unique: 7Ogyz3SyO4-lX8vQmkcZzQ-1
-X-Mimecast-MFC-AGG-ID: 7Ogyz3SyO4-lX8vQmkcZzQ_1778606045
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-380-U5y6EH8COVCzYpVljo2dUQ-1; Tue,
+ 12 May 2026 13:14:04 -0400
+X-MC-Unique: U5y6EH8COVCzYpVljo2dUQ-1
+X-Mimecast-MFC-AGG-ID: U5y6EH8COVCzYpVljo2dUQ_1778606043
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ACAE81955D75; Tue, 12 May 2026 17:14:05 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4754118005BA; Tue, 12 May 2026 17:14:03 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.49.156])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id ED6051944B22; Tue, 12 May 2026 17:14:03 +0000 (UTC)
+ id 871681944B27; Tue, 12 May 2026 17:14:01 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Katherine Leaver <katherine.j.leaver@gmail.com>, qemu-stable@nongnu.org
-Subject: [PULL 3/9] aspeed/hace: Prevent total_req_len overflow
-Date: Tue, 12 May 2026 19:13:48 +0200
-Message-ID: <20260512171354.4183887-4-clg@redhat.com>
+Subject: [PULL 2/9] aspeed/hace: Fix out-of-bounds read in has_padding()
+Date: Tue, 12 May 2026 19:13:47 +0200
+Message-ID: <20260512171354.4183887-3-clg@redhat.com>
 In-Reply-To: <20260512171354.4183887-1-clg@redhat.com>
 References: <20260512171354.4183887-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: hlp6aZrpcVEbnt539RlS-Ca8-_3JBAfPjUVM0HUpa1A_1778606045
+X-Mimecast-MFC-PROC-ID: dSvkjGoanfiMDZ_qGu6EBEqTm_6vZGfrSIU_IRyG8M4_1778606043
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -85,68 +85,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In accumulate mode, total_req_len is incremented with plen (hwaddr)
-for each hash request. Repeated additions can overflow total_req_len
-(uint32_t) and potentially bypass validation checks in has_padding().
+The has_padding() function reads the last 8 bytes of a DMA buffer
+without validating req_len. req_len is guest-controlled (via
+R_HASH_SRC_LEN register or scatter-gather entries) and values less
+than 8 cause integer underflow. This can result in an out-of-bounds
+read of QEMU process memory.
 
-Add a helper function to detect overflow before incrementing
-total_req_len and reject the request if overflow would occur.
+Add a check to ensure req_len >= 8 before accessing the buffer.
 
 Reported-by: Katherine Leaver <katherine.j.leaver@gmail.com>
 Cc: qemu-stable@nongnu.org
 Fixes: 5cd7d8564a8b ("aspeed/hace: Support AST2600 HACE")
-Link: https://lore.kernel.org/qemu-devel/20260504213421.710035-3-clg@redhat.com
+Link: https://lore.kernel.org/qemu-devel/20260504213421.710035-2-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_hace.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+ hw/misc/aspeed_hace.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index ef698b3ecb72..0504d61cbf0a 100644
+index 23e8030cd966..ef698b3ecb72 100644
 --- a/hw/misc/aspeed_hace.c
 +++ b/hw/misc/aspeed_hace.c
-@@ -205,6 +205,19 @@ static uint64_t hash_get_source_addr(AspeedHACEState *s)
-     return src_addr;
- }
- 
-+static bool hash_accumulate_len(AspeedHACEState *s, hwaddr plen)
-+{
-+    if (plen > UINT32_MAX - s->total_req_len) {
+@@ -154,6 +154,14 @@ static bool has_padding(AspeedHACEState *s, struct iovec *iov,
+                         hwaddr req_len, uint32_t *total_msg_len,
+                         uint32_t *pad_offset)
+ {
++    /* Need at least 8 bytes to read the total message length field */
++    if (req_len < 8) {
 +        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: total_req_len overflow, current=0x%x, adding=0x%"
-+                      HWADDR_PRIx "\n", __func__, s->total_req_len, plen);
++                      "%s: invalid request length=0x%" HWADDR_PRIx "\n",
++                      __func__, req_len);
 +        return false;
 +    }
 +
-+    s->total_req_len += plen;
-+    return true;
-+}
-+
- static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov,
-                                    bool acc_mode, bool *acc_final_request)
- {
-@@ -232,7 +245,9 @@ static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov,
-     iov_idx = 1;
- 
-     if (acc_mode) {
--        s->total_req_len += plen;
-+        if (!hash_accumulate_len(s, plen)) {
-+            return -1;
-+        }
- 
-         if (has_padding(s, &iov[0], plen, &total_msg_len,
-                         &pad_offset)) {
-@@ -299,7 +314,9 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
- 
-         iov[iov_idx].iov_base = haddr;
-         if (acc_mode) {
--            s->total_req_len += plen;
-+            if (!hash_accumulate_len(s, plen)) {
-+                return -1;
-+            }
- 
-             if (has_padding(s, &iov[iov_idx], plen, &total_msg_len,
-                             &pad_offset)) {
+     *total_msg_len = (uint32_t)(ldq_be_p(iov->iov_base + req_len - 8) / 8);
+     /*
+      * SG_LIST_LEN_LAST asserted in the request length doesn't mean it is the
 -- 
 2.54.0
 

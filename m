@@ -4,92 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A8CFCD4F24
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 16:47:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA80CD343F
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 16:52:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMqGB-00027r-OE; Tue, 12 May 2026 12:47:08 -0400
+	id 1wMqKm-00058W-1N; Tue, 12 May 2026 12:51:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wMqG7-000265-Br
- for qemu-arm@nongnu.org; Tue, 12 May 2026 12:47:03 -0400
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wMqG4-0004HE-SC
- for qemu-arm@nongnu.org; Tue, 12 May 2026 12:47:03 -0400
-Received: by mail-qk1-x72d.google.com with SMTP id
- af79cd13be357-90d042fa745so142038985a.1
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 09:46:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778604417; x=1779209217; darn=nongnu.org;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7IezjjKN4X9JWmBtNjXCJ3bHoXex+8rlWRjK21uO+BE=;
- b=M4eq7N7IfOyt91L1S89t/jMzdgGeYIRPInWe0+7Foa0RSJFj/2j9kNb4BGwN9zvD2h
- gEI2eAovYakmlTdJScEGuJSsWK+3pNmyk88SEVxsBFF2EH8E8aXVCoy0q39eTDePubV9
- 8EsSQHFFwLZEMBJteMIgbjn7XP9zIiz8NLVP/rFzcwM5pD7MKZZbVeyLNLp/ay0x9nhw
- GoOgVQXZlUS0A0QqOxrjfAkBIniPKAkEyjLhhz2iMZbtt0sE+L39++AfGThSiftChHqd
- uXuq6I93LdBP7kVZ3dr77pV/8CQ9mx3EGTvL/UfGdQww1YwPva9GNzfFhsibyn6s1HdY
- q3PQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778604417; x=1779209217;
- h=in-reply-to:references:to:from:subject:cc:message-id:date
- :content-transfer-encoding:mime-version:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7IezjjKN4X9JWmBtNjXCJ3bHoXex+8rlWRjK21uO+BE=;
- b=BlpkAC4Z/gCLT3Nps2jSLvPbihEXKmc6Qfb+ZLwUT2Q+Xeuy+E+cwS9pfNf3H7+xra
- dTiGeBV0wmFUhAP/k59e4ormmraB3Ef605vcZgiqTXEe+9bJv/0W2NmmxPl7bljasOYo
- CbUw13NQXvTlhFHFVvO1TL0SvjPb/H+G7agynixKx5GsiQUeIiIqEgBjRcy+MM4ZiUN9
- tvHmBgnlNUB4iI0/AqRGzZefBMbLngMq61AtVD9T1Pn0Vw+vW7lGmBLUUQx6Ht1H6me0
- vlzW1gNXlCOZmDBierydHUj91ubF3oPR3x+5dfgSDPm0lbMi7x+q8zxs/zXB0V5MtYAM
- Na3Q==
-X-Gm-Message-State: AOJu0Ywf3Uk+2TSw7CrZldwDzM4f67fT/j2dbDcvAxXA1gWCjTi1kKCY
- ueqRj/ZJtxbO/1kkYNVBi7eoYGjj0QPy4RAGXmTSAsUjlRz+FIxxGHoB
-X-Gm-Gg: Acq92OEBjNDjWJjQnUBEG6FBgKDm25GopAwVANF5jZV1EV08Ga5mD8X52fYlvH41UxQ
- iC4zwfXdtqaC3+Mdd0te2GjopTgqqLknq3DpTzrdE2dwZA6FzajBhfW3clQr4GvNU+XNm88zq+N
- uOoHYT40rkdTMcg5lbkeR6Ae0UbI38SDNnLEv1cf90kLtOb/uuWWwn8gp4H5815XoiZyK9ArNDq
- 01tZcRCrPXAsVZPhA6N9OFQ1xJegDxI7SdUy21CVCkIwY3rNTAnbee/1cpMoaxA+/blhJ+H45M5
- r6JJR63F7NNN+AkpI3b0D1M9BUvovky5Swce8KZ2cVmARhvst+Zgdtuv9gDRT5Z8RxWrykPC1bn
- UNgdxdBKw7pSUpIdrFH3saZQ4qDkcxD21Ie2kGrzRTPiz5z3oAKWDhIXlMxRDI61028f6lAUgN6
- O4Z8Ny0yItDZ/IE/H9Eu6Iuw3kYNTQGfKJ7pt4K3rTNPxrbrDnBld2ZdmG0Goopprfc19/3Qb8g
- A6B1rxe6Fzecr8=
-X-Received: by 2002:a05:620a:3952:b0:8ed:e1d4:1644 with SMTP id
- af79cd13be357-90cfb4c0cd6mr551761985a.3.1778604417182; 
- Tue, 12 May 2026 09:46:57 -0700 (PDT)
-Received: from localhost ([2603:7000:4df0:8300:fdb5:4a2a:97d0:addf])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-90d77f64627sm145576385a.15.2026.05.12.09.46.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2026 09:46:56 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Tue, 12 May 2026 12:46:55 -0400
-Message-Id: <DIGUN8EOAZ7C.3VYBVHXL4F06O@gmail.com>
-Cc: <qemu-arm@nongnu.org>, "Alexander Graf" <agraf@csgraf.de>, "Phil
- Dennis-Jordan" <phil@philjordan.eu>, "Roman Bolshakov"
- <rbolshakov@ddn.com>, =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3] target/arm/hvf: Fix WFI halting to stop idle vCPU
- spinning
-From: "Scott J. Goldman" <scottjgo@gmail.com>
-To: "Peter Maydell" <peter.maydell@linaro.org>
-X-Mailer: aerc 0.21.0
-References: <20260410055045.63001-1-scottjgo@gmail.com>
- <20260427195516.46256-1-scottjgo@gmail.com>
-In-Reply-To: <20260427195516.46256-1-scottjgo@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
- envelope-from=scottjgo@gmail.com; helo=mail-qk1-x72d.google.com
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMqKj-00057g-Gr
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 12:51:49 -0400
+Received: from 12.mo534.mail-out.ovh.net ([46.105.38.145])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMqKe-0006i6-Ae
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 12:51:49 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo534.mail-out.ovh.net (Postfix) with ESMTPS id 4gFN0X2369z6M5d;
+ Tue, 12 May 2026 16:51:40 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Tue, 12 May 2026 16:51:40 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.245])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gFN0X13SPz1xp6; Tue, 12 May 2026 16:51:40 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 3CAEA20351E; 
+ Tue, 12 May 2026 16:51:38 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S002d3b7caa5-50c4-4a48-af21-7b94a067ec64,
+ 39874C6F3F9F68F15966500C6FBBDB0B53A96BD7) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <a1e15c3f-de4c-4dc6-9d89-9b869ea16b47@kaod.org>
+Date: Tue, 12 May 2026 18:51:37 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/5] hw/sensor: MAX31790 support
+To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
+Cc: Titus Rwantare <titusr@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+References: <20260512102157.176511-1-alexander.hansen@9elements.com>
+ <20260512102157.176511-4-alexander.hansen@9elements.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
+ BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
+ M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
+ 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
+ jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
+ TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
+ neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
+ VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
+ QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
+ ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
+ WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
+ wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
+ SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
+ cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
+ S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
+ 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
+ hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
+ tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
+ t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
+ OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
+ KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
+ o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
+ ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
+ IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
+ d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
+ +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
+ HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
+ l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
+ 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
+ ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
+ KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260512102157.176511-4-alexander.hansen@9elements.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+x-ovh-tracer-id: 6529093560901348591
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFofAR+MPxDH79cnNlsevaw7cZCBQtEKw2YWzF0y3jS3XM47JCVUr0+N0/3cX+AFqTQZNI1pN+OWfEzQ9eVjRuFMvQzFoJOqgN0QaxDj1FYMB7eqEzLRuKEPGORhX8AtFxNX3r4t2NFkFiethokluC73ksB+j/RqyZmuoUO7tqN2IXmBZEWiXg7I2iBSLlLWAgEKqOJzadJvsDnNBsUf7bTsWPVa4sJRAZfTGzGd5v0oLwpudyM6IAYZ+g3q+1mfaInfibcYCK3qqjMS5vg3NYW4M0HZ3iPtcGLP2wyWNLVmUZ5ZZS5HSKDUinRrciGd+RxoBXX/CrSpw6VOPWuIXYTiq0olXkPOb+fNEXwugwbvHrXRWvBdTYnwo7id2vktDbfVPI4Lcwa73CZKEsJikNk6pms8rGEE6Q5tMp931tDrIfMZ/QA2taZmfI4xSSiYOjnyWwKnX8n0jcAk9r+bafJn3iWvS2U/CByjKQo3zSHHmfkRZi5lzm728NYZiBeTFB3Wl5dnMczBrXy9HeH8ek+D0Si16SmuAouQoben0YE/roRnFrQFKTeSs0LAYSNK+koAbNt8dyL+TvmYh1jNroXUC7YHzxeHbqIW+M2EgYPj69BBEKEfQsCLubX18pjMCPbylwfBMCJ9PxXNHhKApg40wWjhXQ2FJk/EpH3H/h13Q
+DKIM-Signature: a=rsa-sha256; bh=07Q2vPLsXRYQbPcCZKhoalTFnnNbhveN6O74WBSO1Ns=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1778604700; v=1;
+ b=XmaRu0rZTMGqvISKgaEuBLcQMJLQkCv6RWdc6x+G26ZcpTbGOyNZU1Lxthtrxow5nRFlStjC
+ ebKzxBxx5xHpE0HNDXlSsqT4sXZ7ish4rNsg+ybmTqpe9p2ZAZHl6i0ybm8zFGcLtIHhldkPSyO
+ jLblxqLLjcnjuCYTsJAQEypHqzPMsqnwPPlb8o8vE0rkLDbweXhXcNVu7Dz7KJ3Wob26opN5rKO
+ KUE/Jy2V6SU2Pi81/mJwhZau0aVEy213KuOrD+JdpEsP6JOndurMN8QXJ10fRbXU5LJhcCZ1xfK
+ zbBzwZIJwelp3Z0h4mjEUzmjX9Z/OxiurvWgArSDcd68g==
+Received-SPF: pass client-ip=46.105.38.145; envelope-from=clg@kaod.org;
+ helo=12.mo534.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,292 +135,773 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon Apr 27, 2026 at 3:55 PM EDT, Scott J. Goldman wrote:
-> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
-> changed hvf_wfi() from blocking the vCPU thread with pselect() to
-> returning EXCP_HLT, intending QEMU's main event loop to handle the
-> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
-> always returns false and the vCPU thread spins at 100% CPU per core
-> while the guest is idle.
->
-> Fix this by:
->
-> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps on
->    halt_cond in qemu_process_cpu_events().
->
-> 2. Arming a per-vCPU QEMU_CLOCK_VIRTUAL timer to fire when the guest's
->    virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
->    because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->    hv_vcpu_run(), which is not called while the CPU is halted. The
->    timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
->    vtimer IRQ through the GIC and marks vtimer_masked, causing the
->    interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
->
-> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
->    indicates a pending interrupt, and cancelling the WFI timer.
->
-> 4. Re-arming the WFI timer from hvf_vm_state_change() on the resume
->    transition for any halted vCPU, since the QEMUTimer is per-instance
->    state and is not migrated. After cpu_synchronize_all_states() the
->    migrated vtimer state is mirrored in env, so we can read CNTV_CTL
->    and CNTV_CVAL from there. If the vtimer has already expired by the
->    time the destination resumes, hvf_wfi_timer_cb() is invoked
->    directly so the halted vCPU is woken up.
->
-> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
-> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
+On 5/12/26 12:20, Alexander Hansen wrote:
+> Product: [1]
+> Datasheet: [2]
+> 
+> MAX31790 Support:
+> - fan inputs are reading
+> - tach reading propertional to pwm setting from linux driver
+> - fans do not show any fault
+> - 6 PWM registers influence 6 TACH registers
+> 
+> There is intentional stub behavior in some places and various functions
+> of the device are currently unsupported.
+> 
+> MAX31790 currently unsupported:
+> - slave address restriction
+> - fan dynamics
+> - spin-up configuration
+> - fault state / failure possibility
+> - rate-of-change control
+> - tach mode
+> - mixed layouts where number of fans != number of tachs
+> - see Figure 5.9 in [2] for example of mixed layout
+> 
+> Anyone could expand it in the future for more accurate emulation.
+> 
+> The reason for adding this device is to support Yosemite V4 emulation.
+> 
+> Tested: on yosemite 4 qemu
+> 
+> root@yosemite4:~# ls /sys/class/hwmon/hwmon2/
+> device	    fan2_fault   fan3_target  fan5_fault   fan6_target  pwm2	     pwm5
+> fan1_enable  fan2_input   fan4_enable  fan5_input   name	pwm2_enable  pwm5_enable
+> fan1_fault   fan2_target  fan4_fault   fan5_target  of_node	pwm3	     pwm6
+> fan1_input   fan3_enable  fan4_input   fan6_enable  power	pwm3_enable  pwm6_enable
+> fan1_target  fan3_fault   fan4_target  fan6_fault   pwm1	pwm4	     subsystem
+> fan2_enable  fan3_input   fan5_enable  fan6_input   pwm1_enable  pwm4_enable  uevent
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_input
+> 4551
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_enable
+> 1
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_fault
+> 0
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/fan1_target
+> 2048
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/pwm1
+> 178
+> root@yosemite4:~# cat /sys/class/hwmon/hwmon2/name
+> max31790
+> 
+> Trace output:
+> max31790_realize i2c_addr: 0x20
+> max31790_realize i2c_addr: 0x2f
+> max31790_realize i2c_addr: 0x20
+> max31790_realize i2c_addr: 0x2f
+> max31790_event i2c_addr: 0x20, event: 0x01
+> max31790_send i2c_addr: 0x20, data: 0x02
+> max31790_event i2c_addr: 0x20, event: 0x00
+> max31790_recv i2c_addr: 0x20, reg_addr: 0x02
+> max31790_recv_return i2c_addr: 0x20, returns: 0x08
+> ...
+> 
+> References:
+> [1] https://www.analog.com/en/products/MAX31790.html
+> [2] https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf
+> 
+> Cc: Titus Rwantare <titusr@google.com>
+> Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
+> Cc: qemu-arm@nongnu.org
+> Cc: qemu-devel@nongnu.org
+> Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 > ---
-> Changes since v2:
->  - Use QEMU_CLOCK_VIRTUAL instead of QEMU_CLOCK_HOST so the timer
->    pauses with the VM and a halted vCPU isn't woken (or its IRQ
->    raised) while the user has stopped the guest. (Peter)
->  - Convert vtimer ticks to nanoseconds with muldiv64() to avoid
->    intermediate overflow. (Peter)
->  - Re-arm the WFI timer from hvf_vm_state_change() on the resume
->    transition so a halted vCPU on the migration destination is
->    woken when its vtimer expires (the QEMUTimer is per-instance
->    state and isn't migrated). (Peter)
-> v2: https://lore.kernel.org/qemu-devel/20260410055045.63001-1-scottjgo@gm=
-ail.com/
-> v1: https://lore.kernel.org/qemu-devel/20260410044726.61853-1-scottjgo@gm=
-ail.com/
->
->  include/system/hvf_int.h |   1 +
->  target/arm/hvf/hvf.c     | 124 ++++++++++++++++++++++++++++++++++++++-
->  2 files changed, 124 insertions(+), 1 deletion(-)
->
-> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-> index 2621164cb2..58fb865eba 100644
-> --- a/include/system/hvf_int.h
-> +++ b/include/system/hvf_int.h
-> @@ -48,6 +48,7 @@ struct AccelCPUState {
->      hv_vcpu_exit_t *exit;
->      bool vtimer_masked;
->      bool guest_debug_enabled;
-> +    struct QEMUTimer *wfi_timer;
->  #endif
->  };
-> =20
-> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-> index 678afe5c8e..a19d7a5e1f 100644
-> --- a/target/arm/hvf/hvf.c
-> +++ b/target/arm/hvf/hvf.c
-> @@ -28,6 +28,7 @@
->  #include "hw/core/boards.h"
->  #include "hw/core/irq.h"
->  #include "qemu/main-loop.h"
-> +#include "qemu/timer.h"
->  #include "system/cpus.h"
->  #include "arm-powerctl.h"
->  #include "target/arm/cpu.h"
-> @@ -301,6 +302,8 @@ void hvf_arm_init_debug(void)
->  #define TMR_CTL_IMASK   (1 << 1)
->  #define TMR_CTL_ISTATUS (1 << 2)
-> =20
-> +static void hvf_wfi_timer_cb(void *opaque);
+>   MAINTAINERS                              |   1 +
+>   hw/arm/Kconfig                           |   1 +
+>   hw/arm/aspeed_ast2600_fby4.c             |   5 +-
+>   hw/sensor/Kconfig                        |   4 +
+>   hw/sensor/max31790.c                     | 499 +++++++++++++++++++++++
+>   hw/sensor/meson.build                    |   1 +
+>   hw/sensor/trace-events                   |   8 +
+>   include/hw/sensor/max31790.h             |   7 +
+
+Please add to your .gitconfig :
+
+   [diff]
+	orderFile = /path/to/qemu/scripts/git.orderfile
+
+
+>   tests/functional/arm/test_aspeed_fby4.py |  18 +
+>   9 files changed, 542 insertions(+), 2 deletions(-)
+>   create mode 100644 hw/sensor/max31790.c
+>   create mode 100644 include/hw/sensor/max31790.h
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 93a1e4e482..9c991f8e70 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -3981,6 +3981,7 @@ S: Maintained
+>   F: hw/i2c/pmbus_device.c
+>   F: hw/sensor/adm1272.c
+>   F: hw/sensor/isl_pmbus_vr.c
+> +F: hw/sensor/max31790.c
+>   F: hw/sensor/max34451.c
+>   F: include/hw/i2c/pmbus_device.h
+>   F: include/hw/sensor/isl_pmbus_vr.h
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 5b198402d5..99864eb878 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -552,6 +552,7 @@ config ASPEED_SOC
+>       select LED
+>       select PMBUS
+>       select MAX31785
+> +    select MAX31790
+>       select FSI_APB2OPB_ASPEED
+>       select AT24C
+>       select PCI_EXPRESS
+> diff --git a/hw/arm/aspeed_ast2600_fby4.c b/hw/arm/aspeed_ast2600_fby4.c
+> index d79a88e2fe..a7c2dc09ea 100644
+> --- a/hw/arm/aspeed_ast2600_fby4.c
+> +++ b/hw/arm/aspeed_ast2600_fby4.c
+> @@ -11,6 +11,7 @@
+>   #include "hw/arm/aspeed.h"
+>   #include "hw/arm/aspeed_soc.h"
+>   #include "hw/nvram/eeprom_at24c.h"
+> +#include "hw/sensor/max31790.h"
+>   #include "hw/i2c/i2c_mux_pca954x.h"
+>   #include "hw/gpio/pca9552.h"
+>   
+> @@ -164,7 +165,7 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
+>           /* TODO */
+>   
+>           /* maxim,max31790 @ 0x20   (pwm) */
+> -        /* TODO */
+> +        i2c_slave_create_simple(bus, TYPE_MAX31790, 0x20);
+>   
+>           /*
+>            * ti,tca6424 @ 0x22       (gpio)
+> @@ -182,7 +183,7 @@ static void fby4_i2c_init_fanboard(I2CSlave *fan_mux, size_t eepromSize)
+>            */
+>   
+>           /* maxim,max31790 @ 0x2f   (pwm) */
+> -        /* TODO */
+> +        i2c_slave_create_simple(bus, TYPE_MAX31790, 0x2f);
+>   
+>           /* maxim,max11615 @ 0x33   (adc) */
+>           /* TODO */
+> diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+> index bc6331b4ab..ece2f2b167 100644
+> --- a/hw/sensor/Kconfig
+> +++ b/hw/sensor/Kconfig
+> @@ -43,3 +43,7 @@ config ISL_PMBUS_VR
+>   config MAX31785
+>       bool
+>       depends on PMBUS
 > +
->  static uint32_t chosen_ipa_bit_size;
-> =20
->  typedef struct HVFVTimer {
-> @@ -1214,6 +1217,9 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->  {
->      hv_return_t ret;
-> =20
-> +    timer_free(cpu->accel->wfi_timer);
-> +    cpu->accel->wfi_timer =3D NULL;
-> +
->      ret =3D hv_vcpu_destroy(cpu->accel->fd);
->      assert_hvf_ok(ret);
->  }
-> @@ -1352,6 +1358,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->                                arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]=
-);
->      assert_hvf_ok(ret);
-> =20
-> +    cpu->accel->wfi_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
-> +                                          hvf_wfi_timer_cb, cpu);
-> +
->      aarch64_add_sme_properties(OBJECT(cpu));
->      return 0;
->  }
-> @@ -2027,8 +2036,67 @@ static uint64_t hvf_vtimer_val_raw(void)
->      return mach_absolute_time() - hvf_state->vtimer_offset;
->  }
-> =20
-> +static void hvf_wfi_timer_cb(void *opaque)
-> +{
-> +    CPUState *cpu =3D opaque;
-> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
-> +
-> +    /*
-> +     * vtimer expired while the CPU was halted for WFI.
-> +     * Mirror HV_EXIT_REASON_VTIMER_ACTIVATED: raise the vtimer
-> +     * interrupt and mark as masked so hvf_sync_vtimer() will
-> +     * check and unmask when the guest handles it.
-> +     *
-> +     * The interrupt delivery chain (GIC -> cpu_interrupt ->
-> +     * qemu_cpu_kick) wakes the vCPU thread from halt_cond.
-> +     */
-> +    qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
-> +    cpu->accel->vtimer_masked =3D true;
-> +}
-> +
+> +config MAX31790
+> +    bool
+> +    depends on PMBUS
+> diff --git a/hw/sensor/max31790.c b/hw/sensor/max31790.c
+> new file mode 100644
+> index 0000000000..16525cba9b
+> --- /dev/null
+> +++ b/hw/sensor/max31790.c
+> @@ -0,0 +1,499 @@
 > +/*
-> + * Arm a host-side QEMU_CLOCK_VIRTUAL timer to fire when the guest's
-> + * vtimer (CNTV_CVAL_EL0) is scheduled to expire. HVF only delivers
-> + * HV_EXIT_REASON_VTIMER_ACTIVATED during hv_vcpu_run(), which we won't
-> + * call while the vCPU is halted, so we need this to wake the vCPU.
+> + * Maxim MAX31790 PMBus 6-Channel Fan Controller
 > + *
-> + * QEMU_CLOCK_VIRTUAL pauses while the VM is stopped, which keeps the
-> + * timer in lockstep with the guest's view of vtime across pause/resume.
+> + * Datasheet:
+> + * https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31790.pdf
 > + *
-> + * Caller must supply the current CNTV_CTL_EL0 and CNTV_CVAL_EL0 values,
-> + * since the appropriate source (HVF vs. env) depends on context.
+> + * Copyright 2026 9elements
 > + *
-> + * Returns 0 if the timer was armed (or if the vtimer is disabled/masked
-> + * and the vCPU should still halt waiting on another event), or -1 if
-> + * the vtimer has already expired.
+> + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
-> +static int hvf_arm_wfi_timer(CPUState *cpu, uint64_t ctl, uint64_t cval)
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/sensor/max31790.h"
+> +#include "hw/i2c/i2c.h"
+> +#include "migration/vmstate.h"
+> +#include "qapi/error.h"
+> +#include "qapi/visitor.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
+> +#include "qom/object.h"
+> +#include "trace.h"
+> +
+> +#define MAX31790_NUM_FANS 6
+> +#define MAX31790_NUM_TACHS 12
+> +
+> +#define MAX31790_REG_GLOBAL_CONFIG 0x00
+> +#define MAX31790_REG_PWM_FREQ 0x01
+> +
+> +/* 0x02 to 0x07: N = 0 .. 5 */
+> +#define MAX31790_REG_FAN_CONFIG(N) (0x02 + N)
+> +
+> +/* 0x08 to 0x0d: N = 0 .. 5 */
+> +#define MAX31790_REG_FAN_DYNAMICS(N) (0x08 + N)
+> +
+> +#define MAX31790_REG_FAN_FAULT_STATUS_2 0x10
+> +#define MAX31790_REG_FAN_FAULT_STATUS_1 0x11
+> +#define MAX31790_REG_FAN_FAULT_MASK_2 0x12
+> +#define MAX31790_REG_FAN_FAULT_MASK_1 0x13
+> +#define MAX31790_REG_FAILED_FAN_OPT 0x14
+> +
+> +/* 0x18 to 0x2f: N = 0 .. 11 */
+> +#define MAX31790_REG_TACH_COUNT_MSB(N) (0x18 + 2 * N)
+> +#define MAX31790_REG_TACH_COUNT_LSB(N) (0x19 + 2 * N)
+> +
+> +/* 0x30 to 0x3b: N = 0 .. 5 */
+> +#define MAX31790_REG_PWM_DUTY_CYCLE_MSB(N) (0x30 + 2 * N)
+> +#define MAX31790_REG_PWM_DUTY_CYCLE_LSB(N) (0x31 + 2 * N)
+> +
+> +/* .. reserved registers ... */
+> +
+> +/* 0x40 to 0x4b: N = 0 .. 5 */
+> +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(N) (0x40 + 2 * N)
+> +#define MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(N) (0x41 + 2 * N)
+> +
+> +/* ... 'User Byte' registers ... */
+> +
+> +/* 0x50 to 0x5b: N = 0 .. 5 */
+> +#define MAX31790_REG_TACH_TARGET_COUNT_MSB(N) (0x50 + 2 * N)
+> +#define MAX31790_REG_TACH_TARGET_COUNT_LSB(N) (0x51 + 2 * N)
+> +
+> +struct MAX31790State {
+> +  I2CSlave i2c;
+
+indent is wrong : 2-space instead of 4-space
+
+Check docs/devel/style.rst.
+
+> +
+> +  uint8_t fan_config[MAX31790_NUM_FANS];
+> +  uint8_t fan_dynamics[MAX31790_NUM_FANS];
+> +
+> +  uint16_t pwm[MAX31790_NUM_FANS];
+> +  uint16_t tach_target[MAX31790_NUM_FANS];
+> +  uint16_t rpm[MAX31790_NUM_TACHS];
+> +
+> +  /* command buffer */
+> +  uint8_t len;
+> +  uint8_t buf[2];
+> +
+> +  /* output buffer */
+> +  uint8_t outlen;
+> +  uint8_t outbuf[2];
+> +
+> +  /* selected register for read/write operation */
+> +  uint8_t pointer;
+> +};
+> +
+> +struct MAX31790Class {
+> +  I2CSlaveClass parent_class;
+> +};
+> +
+> +OBJECT_DECLARE_TYPE(MAX31790State, MAX31790Class, MAX31790)
+> +
+> +static void max31790_read(MAX31790State *s)
 > +{
-> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
-> +    uint64_t now;
-> +    int64_t delta_ns;
+> +  size_t index = 0;
+> +  uint8_t out0 = 0;
+> +  uint8_t out1 = 0;
 > +
-> +    if (!(ctl & TMR_CTL_ENABLE) || (ctl & TMR_CTL_IMASK)) {
-> +        return 0;
-> +    }
+> +  switch (s->pointer) {
+> +  case MAX31790_REG_FAN_CONFIG(0):
+> +  case MAX31790_REG_FAN_CONFIG(1):
+> +  case MAX31790_REG_FAN_CONFIG(2):
+> +  case MAX31790_REG_FAN_CONFIG(3):
+> +  case MAX31790_REG_FAN_CONFIG(4):
+> +  case MAX31790_REG_FAN_CONFIG(5):
+> +    out0 = s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)];
+> +    break;
+> +  case MAX31790_REG_FAN_DYNAMICS(0):
+> +  case MAX31790_REG_FAN_DYNAMICS(1):
+> +  case MAX31790_REG_FAN_DYNAMICS(2):
+> +  case MAX31790_REG_FAN_DYNAMICS(3):
+> +  case MAX31790_REG_FAN_DYNAMICS(4):
+> +  case MAX31790_REG_FAN_DYNAMICS(5):
+> +    out0 = s->fan_dynamics[s->pointer - MAX31790_REG_FAN_DYNAMICS(0)];
+> +    break;
+> +  case MAX31790_REG_FAN_FAULT_STATUS_1:
+> +  case MAX31790_REG_FAN_FAULT_STATUS_2:
+> +    /* we do not have any fan fault */
+> +    out0 = 0x00;
+> +    out1 = 0x00;
+> +    break;
+> +  case MAX31790_REG_TACH_COUNT_MSB(0):
+> +  case MAX31790_REG_TACH_COUNT_MSB(1):
+> +  case MAX31790_REG_TACH_COUNT_MSB(2):
+> +  case MAX31790_REG_TACH_COUNT_MSB(3):
+> +  case MAX31790_REG_TACH_COUNT_MSB(4):
+> +  case MAX31790_REG_TACH_COUNT_MSB(5):
+> +  case MAX31790_REG_TACH_COUNT_MSB(6):
+> +  case MAX31790_REG_TACH_COUNT_MSB(7):
+> +  case MAX31790_REG_TACH_COUNT_MSB(8):
+> +  case MAX31790_REG_TACH_COUNT_MSB(9):
+> +  case MAX31790_REG_TACH_COUNT_MSB(10):
+> +  case MAX31790_REG_TACH_COUNT_MSB(11):
+> +    index = (s->pointer - MAX31790_REG_TACH_COUNT_MSB(0)) / 2;
+> +    out0 = (s->rpm[index] >> 8) & 0xff;
+> +    out1 = s->rpm[index] & 0xff;
+> +    break;
 > +
-> +    now =3D hvf_vtimer_val_raw();
-> +    if (cval <=3D now) {
-> +        return -1;
-> +    }
+> +  case MAX31790_REG_TACH_COUNT_LSB(0):
+> +  case MAX31790_REG_TACH_COUNT_LSB(1):
+> +  case MAX31790_REG_TACH_COUNT_LSB(2):
+> +  case MAX31790_REG_TACH_COUNT_LSB(3):
+> +  case MAX31790_REG_TACH_COUNT_LSB(4):
+> +  case MAX31790_REG_TACH_COUNT_LSB(5):
+> +  case MAX31790_REG_TACH_COUNT_LSB(6):
+> +  case MAX31790_REG_TACH_COUNT_LSB(7):
+> +  case MAX31790_REG_TACH_COUNT_LSB(8):
+> +  case MAX31790_REG_TACH_COUNT_LSB(9):
+> +  case MAX31790_REG_TACH_COUNT_LSB(10):
+> +  case MAX31790_REG_TACH_COUNT_LSB(11):
+> +    index = (s->pointer - MAX31790_REG_TACH_COUNT_LSB(0)) / 2;
+> +    out0 = s->rpm[index] & 0xff;
+> +    break;
 > +
-> +    delta_ns =3D muldiv64(cval - now, NANOSECONDS_PER_SECOND,
-> +                        arm_cpu->gt_cntfrq_hz);
-> +    timer_mod(cpu->accel->wfi_timer,
-> +              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + delta_ns);
-> +    return 0;
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(0):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(1):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(2):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(3):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(4):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_MSB(0)) / 2;
+> +    out0 = (s->pwm[index] >> 8) & 0xff;
+> +    out1 = s->pwm[index] & 0xff;
+> +    break;
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(0):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(1):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(2):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(3):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(4):
+> +  case MAX31790_REG_PWM_DUTY_CYCLE_LSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_DUTY_CYCLE_LSB(0)) / 2;
+> +    out0 = s->pwm[index] & 0xff;
+> +    break;
+> +
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
+> +    out0 = (s->pwm[index] >> 8) & 0xff;
+> +    out1 = s->pwm[index] & 0xff;
+> +    break;
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
+> +    out0 = s->pwm[index] & 0xff;
+> +    break;
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
+> +    out0 = (s->tach_target[index] >> 8) & 0xff;
+> +    out1 = s->tach_target[index] & 0xff;
+> +    break;
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
+> +    index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0)) / 2;
+> +    out0 = s->tach_target[index] & 0xff;
+> +    break;
+> +  default:
+> +    qemu_log_mask(LOG_UNIMP, "%s: read of register %d", __func__, s->pointer);
+> +    break;
+> +  }
+> +
+> +  s->outbuf[0] = out0;
+> +  s->outbuf[1] = out1;
 > +}
 > +
->  static int hvf_wfi(CPUState *cpu)
->  {
-> +    uint64_t ctl, cval;
-> +    hv_return_t r;
-> +
->      if (cpu_has_work(cpu)) {
->          /*
->           * Don't bother to go into our "low power state" if
-> @@ -2037,6 +2105,22 @@ static int hvf_wfi(CPUState *cpu)
->          return 0;
->      }
-> =20
-> +    /*
-> +     * Read the vtimer state directly from HVF. We're on the vCPU thread=
-,
-> +     * just exited from hv_vcpu_run(), so HVF holds the authoritative
-> +     * values and env may be stale.
-> +     */
-> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, &=
-ctl);
-> +    assert_hvf_ok(r);
-> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, =
-&cval);
-> +    assert_hvf_ok(r);
-> +
-> +    if (hvf_arm_wfi_timer(cpu, ctl, cval) < 0) {
-> +        /* vtimer already expired, don't halt */
-> +        return 0;
-> +    }
-> +
-> +    cpu->halted =3D 1;
->      return EXCP_HLT;
->  }
-> =20
-> @@ -2332,7 +2416,11 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
->      hv_return_t r;
-> =20
->      if (cpu->halted) {
-> -        return EXCP_HLT;
-> +        if (!cpu_has_work(cpu)) {
-> +            return EXCP_HLT;
-> +        }
-> +        cpu->halted =3D 0;
-> +        timer_del(cpu->accel->wfi_timer);
->      }
-> =20
->      flush_cpu_state(cpu);
-> @@ -2376,11 +2464,45 @@ static const VMStateDescription vmstate_hvf_vtime=
-r =3D {
->  static void hvf_vm_state_change(void *opaque, bool running, RunState sta=
-te)
->  {
->      HVFVTimer *s =3D opaque;
-> +    CPUState *cpu;
-> =20
->      if (running) {
->          /* Update vtimer offset on all CPUs */
->          hvf_state->vtimer_offset =3D mach_absolute_time() - s->vtimer_va=
-l;
->          cpu_synchronize_all_states();
-> +
-> +        /*
-> +         * After migration restore (or any resume), the wfi_timer is not
-> +         * scheduled on this QEMU instance, so re-arm it for any halted
-> +         * vCPU with a pending vtimer. For a non-migration resume the
-> +         * QEMU_CLOCK_VIRTUAL timer was already scheduled; recomputing t=
-he
-> +         * deadline produces the same value and is a harmless no-op.
-> +         *
-> +         * cpu_synchronize_all_states() above ensures env mirrors the
-> +         * authoritative vtimer state (whether that came from HVF or fro=
-m
-> +         * the migration stream), so we can safely read it here from the
-> +         * iothread.
-> +         */
-> +        CPU_FOREACH(cpu) {
-> +            ARMCPU *arm_cpu;
-> +            uint64_t ctl, cval;
-> +
-> +            if (!cpu->accel || !cpu->halted) {
-> +                continue;
-> +            }
-> +
-> +            arm_cpu =3D ARM_CPU(cpu);
-> +            ctl =3D arm_cpu->env.cp15.c14_timer[GTIMER_VIRT].ctl;
-> +            cval =3D arm_cpu->env.cp15.c14_timer[GTIMER_VIRT].cval;
-> +
-> +            if (hvf_arm_wfi_timer(cpu, ctl, cval) < 0) {
-> +                /*
-> +                 * vtimer already expired while we were paused; raise th=
-e
-> +                 * IRQ now so the halted vCPU wakes up.
-> +                 */
-> +                hvf_wfi_timer_cb(cpu);
-> +            }
-> +        }
->      } else {
->          /* Remember vtimer value on every pause */
->          s->vtimer_val =3D hvf_vtimer_val_raw();
+> +static void max31790_set_rpm(MAX31790State *s, size_t index, uint16_t rpm)
+> +{
+> +  /* datasheet: lowest 5 bits are 0 */
+> +  s->rpm[index] = rpm & ~0b11111;
 
-Hi Peter--
+ok. binary literals are not that common. Nothing wrong though.
 
-Sorry to nag, just was wondering if you could take a look at this follow-up
-to your earlier review comments in:
-https://lore.kernel.org/qemu-devel/CAFEAcA9RHQ+7++=3DkLn2goJwcgzDnaqdkQtQBt=
-xQ2Rw1-uiKY=3Dg@mail.gmail.com/#t
+> +}
+> +
+> +static void max31790_pwm_write(MAX31790State *s, size_t index, uint16_t value)
+> +{
+> +  trace_max31790_pwm_write(s->i2c.address, index, value);
+> +
+> +  s->pwm[index] = value;
+> +
+> +  /* change rpm based on pwm input */
+> +  const uint16_t pwm_no_reserve = s->pwm[index] >> 7;
+> +
+> +  /*
+> +   * This formula has magic values which model the relationship
+> +   * of PWM input to a fan. Not derived from datasheet.
+> +   */
+> +  max31790_set_rpm(s, index, 0x1000 + (pwm_no_reserve << 3));
+> +}
+> +
+> +static void max31790_write_2_byte(MAX31790State *s)
+> +{
+> +  size_t index = 0;
+> +  const uint8_t value0 = s->buf[0];
+> +  const uint8_t value1 = s->buf[1];
 
-It's a bit of an unfortunate regression, so I was hoping to get some form o=
-f
-the fix in.
+a newline to delimit the variables from the code is nice to have.
 
-Additionally, re: migration under hvf being broken, it  looks like one of m=
-y
-fixes got merged, but there is one patch remaining here as well:
-https://lore.kernel.org/qemu-devel/5e123304-628a-4da9-81ca-585498c809b6@lin=
-aro.org/
+> +  switch (s->pointer) {
+> +  case MAX31790_REG_FAN_CONFIG(0):
+> +  case MAX31790_REG_FAN_CONFIG(1):
+> +  case MAX31790_REG_FAN_CONFIG(2):
+> +  case MAX31790_REG_FAN_CONFIG(3):
+> +  case MAX31790_REG_FAN_CONFIG(4):
+> +  case MAX31790_REG_FAN_CONFIG(5):
+> +    break; /* handled by one byte write */
+> +  case MAX31790_REG_FAN_DYNAMICS(0):
+> +  case MAX31790_REG_FAN_DYNAMICS(1):
+> +  case MAX31790_REG_FAN_DYNAMICS(2):
+> +  case MAX31790_REG_FAN_DYNAMICS(3):
+> +  case MAX31790_REG_FAN_DYNAMICS(4):
+> +  case MAX31790_REG_FAN_DYNAMICS(5):
+> +    break; /* handled by one byte write */
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
+> +    max31790_pwm_write(s, index, value0 << 8 | value1);
+> +    break;
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
+> +    s->tach_target[index] = (value0 << 8) | value1;
+> +    break;
+> +  default:
+> +    qemu_log_mask(LOG_UNIMP, "%s: write to register %d", __func__, s->pointer);
+> +    break;
+> +  }
+> +}
+> +
+> +static void max31790_write_1_byte(MAX31790State *s)
+> +{
+> +
+> +  size_t index = 0;
+> +  uint16_t pwm = 0;
+> +  const uint8_t value = s->buf[0];
+> +  switch (s->pointer) {
+> +  case MAX31790_REG_FAN_CONFIG(0):
+> +  case MAX31790_REG_FAN_CONFIG(1):
+> +  case MAX31790_REG_FAN_CONFIG(2):
+> +  case MAX31790_REG_FAN_CONFIG(3):
+> +  case MAX31790_REG_FAN_CONFIG(4):
+> +  case MAX31790_REG_FAN_CONFIG(5):
+> +    s->fan_config[s->pointer - MAX31790_REG_FAN_CONFIG(0)] = value;
+> +    break;
+> +  case MAX31790_REG_FAN_DYNAMICS(0):
+> +  case MAX31790_REG_FAN_DYNAMICS(1):
+> +  case MAX31790_REG_FAN_DYNAMICS(2):
+> +  case MAX31790_REG_FAN_DYNAMICS(3):
+> +  case MAX31790_REG_FAN_DYNAMICS(4):
+> +  case MAX31790_REG_FAN_DYNAMICS(5):
+> +    s->fan_dynamics[s->pointer - MAX31790_REG_FAN_DYNAMICS(0)] = value;
+> +    break;
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(1):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(2):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(3):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(4):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_MSB(0)) / 2;
+> +    pwm = (value << 8) | (s->pwm[index] & 0x00ff);
+> +    max31790_pwm_write(s, index, pwm);
+> +    break;
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(1):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(2):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(3):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(4):
+> +  case MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(5):
+> +    index = (s->pointer - MAX31790_REG_PWM_TARGET_DUTY_CYCLE_LSB(0)) / 2;
+> +    pwm = (s->pwm[index] & 0xff00) | (value & 0x00ff);
+> +    max31790_pwm_write(s, index, pwm);
+> +    break;
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(0):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(1):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(2):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(3):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(4):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_MSB(5):
+> +    index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_MSB(0)) / 2;
+> +    s->tach_target[index] = (s->tach_target[index] & 0x00ff) | (value << 8);
+> +    break;
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(0):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(1):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(2):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(3):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(4):
+> +  case MAX31790_REG_TACH_TARGET_COUNT_LSB(5):
+> +    index = (s->pointer - MAX31790_REG_TACH_TARGET_COUNT_LSB(0)) / 2;
+> +    s->tach_target[index] = (s->tach_target[index] & 0xff00) | value;
+> +    break;
+> +  default:
+> +    qemu_log_mask(LOG_UNIMP, "%s: write to register %d", __func__, s->pointer);
+> +    break;
+> +  }
+> +}
+> +
+> +static int max31790_send(I2CSlave *i2c, uint8_t data)
+> +{
+> +  MAX31790State *s = MAX31790(i2c);
+> +
+> +  trace_max31790_send(s->i2c.address, data);
+> +
+> +  if (s->len == 0) {
+> +    /* first byte is the register pointer for a read / write operation */
+> +    s->pointer = data;
+> +    s->len++;
+> +    return 0;
+> +  }
+> +
+> +  if (s->len > 2) {
+> +    qemu_log_mask(LOG_GUEST_ERROR, "%s: write too many bytes", __func__);
+> +    return 1; /* NAK */
+> +  }
+> +
+> +  /* second / third byte is the data to write */
+> +  s->buf[s->len - 1] = data;
+> +  s->len++;
+> +
+> +  if (s->len == 2) {
+> +    max31790_write_1_byte(s);
+> +  } else if (s->len == 3) {
+> +    max31790_write_2_byte(s);
+> +  }
+> +
+> +  return 0;
+> +}
+> +
+> +static uint8_t max31790_recv(I2CSlave *i2c)
+> +{
+> +  MAX31790State *s = MAX31790(i2c);
+> +  trace_max31790_recv(s->i2c.address, s->pointer);
+> +
+> +  max31790_read(s);
+> +  s->len = 0;
+> +
+> +  if (s->outlen >= 2) {
+> +    /* error */
+> +    s->outlen = 0;
+> +  }
+> +
+> +  const uint8_t data = s->outbuf[s->outlen++];
+> +
+> +  trace_max31790_recv_return(s->i2c.address, data);
+> +  return data;
+> +}
+> +
+> +static int max31790_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +  MAX31790State *s = MAX31790(i2c);
+> +
+> +  trace_max31790_event(s->i2c.address, event);
+> +
+> +  switch (event) {
+> +  case I2C_START_RECV:
+> +    s->outlen = 0;
+> +    break;
+> +  case I2C_START_SEND:
+> +    s->len = 0;
+> +    break;
+> +  default:
+> +    break;
+> +  }
+> +
+> +  return 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_max31790 = {
+> +    .name = TYPE_MAX31790,
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +    .fields = (const VMStateField[]){
+> +        VMSTATE_UINT8(len, MAX31790State),
+> +        VMSTATE_UINT8_ARRAY(fan_config, MAX31790State, MAX31790_NUM_FANS),
+> +        VMSTATE_UINT8_ARRAY(fan_dynamics, MAX31790State, MAX31790_NUM_FANS),
+> +        VMSTATE_UINT16_ARRAY(pwm, MAX31790State, MAX31790_NUM_FANS),
+> +        VMSTATE_UINT16_ARRAY(tach_target, MAX31790State, MAX31790_NUM_FANS),
+> +        VMSTATE_UINT16_ARRAY(rpm, MAX31790State, MAX31790_NUM_TACHS),
+> +        VMSTATE_UINT8_ARRAY(buf, MAX31790State, 2),
+> +        VMSTATE_UINT8(outlen, MAX31790State),
+> +        VMSTATE_UINT8_ARRAY(outbuf, MAX31790State, 2),
+> +        VMSTATE_UINT8(pointer, MAX31790State),
+> +        VMSTATE_I2C_SLAVE(i2c, MAX31790State), VMSTATE_END_OF_LIST()}
+> +};
+> +
+> +static void max31790_init(Object *obj) { /* Nothing to do */ }
 
-Thanks, and hope the ping is ok (just following the docs that say to retry
-every 2 weeks)
--sjg
+So don't define max31790_init then.
+> +
+> +static void max31790_reset(I2CSlave *i2c)
+> +{
+> +  MAX31790State *s = MAX31790(i2c);
+> +
+> +  for (int i = 0; i < MAX31790_NUM_FANS; i++) {
+> +    /* POR-State 0b 0XX0 0000 */
+> +    s->fan_config[i] = 0b00000000;
+> +
+> +    /* same as POR-State */
+> +    s->tach_target[i] = 0b0011110000000000;
+> +
+> +    /* same as POR-State */
+> +    s->fan_dynamics[i] = 0b01001100;
+> +
+> +    s->pwm[i] = 0;
+> +  }
+> +
+> +  for (int i = 0; i < MAX31790_NUM_TACHS; i++) {
+> +    max31790_set_rpm(s, i, 0x4444);
+> +  }
+> +}
+> +
+> +static void max31790_realize(DeviceState *dev, Error **errp)
+> +{
+> +  MAX31790State *s = MAX31790(dev);
+> +
+> +  trace_max31790_realize(s->i2c.address);
+> +
+> +  max31790_reset(&s->i2c);
+
+calling reset from realize is incorrect. Use dc->reset instead.
+
+
+> +}
+> +
+> +static void max31790_class_init(ObjectClass *klass, const void *data)
+> +{
+> +  DeviceClass *dc = DEVICE_CLASS(klass);
+> +  I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+> +
+> +  dc->realize = max31790_realize;
+> +  dc->desc = "Maxim MAX31790 6-Channel Fan Controller";
+> +  dc->vmsd = &vmstate_max31790;
+> +  k->event = max31790_event;
+> +  k->recv = max31790_recv;
+> +  k->send = max31790_send;
+> +}
+> +
+> +static const TypeInfo max31790_info = {
+> +    .name = TYPE_MAX31790,
+> +    .parent = TYPE_I2C_SLAVE,
+> +    .instance_size = sizeof(MAX31790State),
+> +    .class_size = sizeof(MAX31790Class),
+> +    .instance_init = max31790_init,
+> +    .class_init = max31790_class_init,
+> +};
+> +
+> +static void max31790_register_types(void)
+> +{
+> +  type_register_static(&max31790_info);
+> +}
+> +
+> +type_init(max31790_register_types)
+> diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+> index 420fdc3359..4987c3b253 100644
+> --- a/hw/sensor/meson.build
+> +++ b/hw/sensor/meson.build
+> @@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
+>   system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
+>   system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
+>   system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
+> +system_ss.add(when: 'CONFIG_MAX31790', if_true: files('max31790.c'))
+> diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
+> index a3fe54fa6d..c15c0a7e93 100644
+> --- a/hw/sensor/trace-events
+> +++ b/hw/sensor/trace-events
+> @@ -4,3 +4,11 @@
+>   tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
+>   tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
+>   tmp105_write_shutdown(uint8_t dev) "device: 0x%02x"
+> +
+> +# max31790.c
+> +max31790_send(uint8_t i2c_addr, uint8_t send) "i2c_addr: 0x%02x, data: 0x%02x"
+> +max31790_recv(uint8_t i2c_addr, uint8_t reg_addr) "i2c_addr: 0x%02x, reg_addr: 0x%02x"
+> +max31790_recv_return(uint8_t i2c_addr, uint8_t data) "i2c_addr: 0x%02x, returns: 0x%02x"
+> +max31790_event(uint8_t i2c_addr, uint8_t event) "i2c_addr: 0x%02x, event: 0x%02x"
+> +max31790_realize(uint8_t i2c_addr) "i2c_addr: 0x%02x"
+> +max31790_pwm_write(uint8_t i2c_addr, size_t index, uint16_t value) "i2c_addr: 0x%02x, index: %zu, value: 0x%04x"
+> diff --git a/include/hw/sensor/max31790.h b/include/hw/sensor/max31790.h
+> new file mode 100644
+> index 0000000000..7ead420926
+> --- /dev/null
+> +++ b/include/hw/sensor/max31790.h
+> @@ -0,0 +1,7 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +#ifndef QEMU_MAX31790_H
+> +#define QEMU_MAX31790_H
+
+the header guard definition does not match the path of the file.
+
+> +
+> +#define TYPE_MAX31790 "max31790"
+
+
+I'd use the "max31790" type directly in the machine. As you wish.
+
+
+Thanks,
+
+C.
+
+> +
+> +#endif
+> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
+> index a3124c240f..d29423add7 100755
+> --- a/tests/functional/arm/test_aspeed_fby4.py
+> +++ b/tests/functional/arm/test_aspeed_fby4.py
+> @@ -7,6 +7,8 @@
+>   from qemu_test import Asset
+>   from aspeed import AspeedTest
+>   
+> +from qemu_test import wait_for_console_pattern, exec_command
+> +from qemu_test import exec_command_and_wait_for_pattern
+>   
+>   class YosemiteV4Machine(AspeedTest):
+>   
+> @@ -33,6 +35,22 @@ def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
+>           # different from the other machines.
+>           self.wait_for_console_pattern('yosemite4 login:')
+>   
+> +        # perform login
+> +        exec_command_and_wait_for_pattern(self,
+> +                                          "root", "Password:");
+> +
+> +        exec_command_and_wait_for_pattern(self, "0penBmc", "#");
+> +
+> +        # MAX31790 test
+> +        exec_command_and_wait_for_pattern(self,
+> +            "cat /sys/class/hwmon/hwmon2/name", "max31790");
+> +        exec_command_and_wait_for_pattern(self,
+> +            "cat /sys/class/hwmon/hwmon2/fan1_input", "4530");
+> +        exec_command_and_wait_for_pattern(self,
+> +            "cat /sys/class/hwmon/hwmon2/fan1_enable", "1");
+> +        exec_command_and_wait_for_pattern(self,
+> +            "cat /sys/class/hwmon/hwmon2/fan1_fault", "0");
+> +
+>       def test_arm_ast2600_yosemitev4_openbmc(self):
+>           image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
+>   
+
 

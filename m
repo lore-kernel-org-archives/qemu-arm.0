@@ -4,123 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A429FCD4F24
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 14:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D3CCD4851
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 14:47:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMnpO-00030C-1w; Tue, 12 May 2026 10:11:20 -0400
+	id 1wMoNY-0003R4-Hn; Tue, 12 May 2026 10:46:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMnpJ-0002zl-Pg
- for qemu-arm@nongnu.org; Tue, 12 May 2026 10:11:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1wMoNS-0003PI-HZ
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 10:46:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMnpF-0004Mc-Qj
- for qemu-arm@nongnu.org; Tue, 12 May 2026 10:11:12 -0400
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1wMoNP-0000Ea-87
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 10:46:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778595068;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1778597183;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uUE9BrfvgANCe3PYuItXPVWdLqAc8hiA/X97MqevMTg=;
- b=Lf7OHIXLUPre755//G9wprsmTTjHtyh3jgRlp1i9ksTqW4yA3WQr16lgMRDOz7vxfZUtXp
- iFjnJwXLZiUEKJY6AHF2znx+Ze1vx8nfFyF1TPlMbNF7GxQYJEAl9usV7qvvKDLZNw5Vtu
- 5HAncicD/aC8TSzgtAGgETOD8CGpyW8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8eqFZGo7bqqC/7WbJ2AxbrIAghKZbUfRI1lIy9wNfRI=;
+ b=fa7ask3L+VNUVuokXEUeU9QAjU7SMJFqM+VEdGt18D4z6hFH0FWXPwr6rDnxwJzbysofWx
+ p5UH8w04Yu2Oa9uEoSg5DKNAInYc7mHvGl2ZQIczGZHe2y0b6hghXO4CfEEXUJqz2jesfa
+ NeCQzLYmHK3DkFqtWWHq0wsPR+LJwS8=
+Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
+ [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-636-8t-veTSgNqSrD88sVHuPbA-1; Tue, 12 May 2026 10:11:04 -0400
-X-MC-Unique: 8t-veTSgNqSrD88sVHuPbA-1
-X-Mimecast-MFC-AGG-ID: 8t-veTSgNqSrD88sVHuPbA_1778595064
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48919890a95so36249175e9.2
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 07:11:04 -0700 (PDT)
+ us-mta-149-73bu2DQ1O9WEkaPH1E28dQ-1; Tue, 12 May 2026 10:46:17 -0400
+X-MC-Unique: 73bu2DQ1O9WEkaPH1E28dQ-1
+X-Mimecast-MFC-AGG-ID: 73bu2DQ1O9WEkaPH1E28dQ_1778597176
+Received: by mail-pf1-f198.google.com with SMTP id
+ d2e1a72fcca58-82fa5ecd760so2969055b3a.0
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 07:46:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778595063; x=1779199863;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uUE9BrfvgANCe3PYuItXPVWdLqAc8hiA/X97MqevMTg=;
- b=qD3bPzHAuD/4Jg7KKrTWrciBZ6xt7zoVdGF5e7t6O7z34Vu1o+fyI3cXp828Y8mQCx
- KA3LJmon3Px1PN93anIFQPu5M4xFmU+nXyhNimEv8K8Mh/pXIc3rnytBtWn6zKw/SPhj
- 8JicyD44Do3xzoVPG1vyh3G+hYup1uTVg90JaMd7reIfv0gde1onEMLMFOjBGTdLgPFB
- VTNjJdwBagnxNWNvIAYhFO2l6uxJxMv3fsEmR3vVL+dj+uXqEGx1u0ULw60OodGgXcAL
- r3k8wgT2Vez6nXIyo/STIXfw1POaWRRxR35QE+SJ+zXkZdI4xkB3OZUP99lUnMdSEAT0
- qETA==
+ d=1e100.net; s=20251104; t=1778597176; x=1779201976;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-gg:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=+sz1D8FB0DY7piXNhjmP858LGUGVUSa94FPd7NONQZg=;
+ b=Gyc7PiqFp2DYACuJL4YvFAWApaJzLZnM8A//ha+YtzueqKljCFEmHUgL3lzOyb7fmc
+ M/HI2hl+MOhUk45aCsxjh2tQQjsajqjBGsx7BtBSUmp3BeU0lIFFa1vp8JAS6NdmwMYT
+ YEBLqK8NYakKcfbu/5slbfAv4uMTQ4azz2WjGd8cM5SNDWamjC2hDYNxnRLCn7eh6nR/
+ Po1OD3RVgxlEzMm0R1+Biw+jnEUzoryeIXstskU7NfQTn5CStXFzrNymJchllvoRk8CL
+ VWDn4pf9xRdcv6JWrBtEtCROgbfWicucq3gE5pNYhbN7EBNbUul5hY4JvooDz7LobjjF
+ 7uoQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8GpCIVud5Pumzaz2l+WLvEjC0X7ujce3xw3NSMvmnB7gGM/5hNPVVORC2RhW8e7HJFe5Ab82Zakw==@nongnu.org
-X-Gm-Message-State: AOJu0YzYu018zSlMdMY2Us1NRkrzjzd9VEGquSuJyL4KuTIhwk8AcUgm
- QwB306qGZm+JFUb7/SZ2FAtlHHOXiaKnaeIKTTQGEQl2GbL2+lPU5iRQfYGBAJnZCnCnzS2yY3O
- BZgKT9PuIoZDL8cRMCf6UvZ1c7WTSJM2A8a4atHwEUEgaIr3P+YajtA==
-X-Gm-Gg: Acq92OG/nbTQNm5xvRrAUao8gAfHZUyldDeda6LCRgo+ULUo/g2/08Jih03K2kow4Ws
- JG44LvzjsauLTQcCD0czM6YB+02KkqRAYKC/cY5AMVMTghNP3gbCJ5fFqOp1lTH6TMzaQqTV7a/
- NHFNRuD57MOL8NQ3qIO9iVGqIIb5IBaSFt1GMZaECeNY2CTwcDWhVYLAKHu+UKzFJSlhb8Yll2p
- BLVvOKd3UkE+OEghqtS0EoRGbOWuBessNWz5gFllVs5/Kj+r63rtHqLRrk7MuKlS6xibxPVVM+n
- cnxKLMEE71EU7Eh3ckD+yu4z1i6pb28NslJKUN94V+fxwKpZChtgVZlhJGCDnmgrIegyu08Ztjk
- m3nEy63+Xo/EuubqTKw369DYfjyIQj9gBwVVA1BtRqARePpB+MG36kIji9WFuJQfWOaH0dg==
-X-Received: by 2002:a05:600c:5250:b0:48f:99a9:bbed with SMTP id
- 5b1f17b1804b1-48f99a9be7cmr9305975e9.22.1778595063390; 
- Tue, 12 May 2026 07:11:03 -0700 (PDT)
-X-Received: by 2002:a05:600c:5250:b0:48f:99a9:bbed with SMTP id
- 5b1f17b1804b1-48f99a9be7cmr9305505e9.22.1778595062933; 
- Tue, 12 May 2026 07:11:02 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AFNElJ/uZZuljYaRTbc/+oeL8TADBu+bAIhPh3h1GhsN/HARJ9j0P+Bpf3y4Q6oZdJqcc8gQRUEmJw+flA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywr/t7c6hs9G4OqWLHIYqWTP15TzyjGE0CqXco3E/qCTNzZfghG
+ 9XG/JrXfexd9cf+W99fl79DsByhuLRjJb9Nn0qMj6knQIsh9phaK/rxmjCTQmjiF+DrYETBF2c2
+ MDBxud1bf0FkFVWcHOFz6jSohs5YNj79rYvn1L1yo5txUrQsb0i5xHQ==
+X-Gm-Gg: Acq92OEolbBWeKRbIAcEHTHBI2VpvBRjqK6xPBeJMFe7ioamJUjuJ+ChbZSc3A4xTzd
+ f44iBA3IiT9QKljdB+MEwxnFQY0WXqox9cZ47qK5pcPzlfENy9wCZC2F+lpFf+wOK30PSdhZIau
+ u/p7bCj7o5sLOVY4xQtoUXTqNHohCQlYlMTkv4Z9prrX7UGz9oKzeP7hF96Wp4hKQEzQIpdks/2
+ 37eDxcszGvHZ7Xmgz9cOZBKe9y03PYXJV+o6Jb0g6yCaY1U6SPyNIJ6vVQuSHht8QAFY5ZTLIsz
+ idX+mNIK+c4z3vtZmRV7Uco6/0RKgm7j+An0kocCidZUW3vwkrl02GlmCa9M1XeKfLT6xCeMJ5f
+ I/LvVU3n9vq0XCub7V0PEPdbOWerBrOHZ/99cjdqU4TG3j5elQ6RlFqbRW2A4LtUHutA89BSSSd
+ w=
+X-Received: by 2002:a05:6a00:2e83:b0:83b:b0c2:17ea with SMTP id
+ d2e1a72fcca58-83eebd6e52cmr3692388b3a.37.1778597176276; 
+ Tue, 12 May 2026 07:46:16 -0700 (PDT)
+X-Received: by 2002:a05:6a00:2e83:b0:83b:b0c2:17ea with SMTP id
+ d2e1a72fcca58-83eebd6e52cmr3692350b3a.37.1778597175763; 
+ Tue, 12 May 2026 07:46:15 -0700 (PDT)
+Received: from smtpclient.apple ([122.163.114.34])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e8f3e7829sm29426115e9.4.2026.05.12.07.11.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2026 07:11:02 -0700 (PDT)
-Message-ID: <5101bb04-8acf-4d3b-8db6-701d7c41d5c2@redhat.com>
-Date: Tue, 12 May 2026 16:11:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 03/17] target/arm/cpu-sysregs.h.inc: Update with
- automatic generation
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-4-eric.auger@redhat.com>
- <CH3PR12MB7548C2AB4989FEF96C247D47AB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
- <c7bfd8f7-3e3f-49fe-a8f4-ac0212a1762b@redhat.com>
- <CH3PR12MB7548FB661824C44F18C72A01AB392@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548FB661824C44F18C72A01AB392@CH3PR12MB7548.namprd12.prod.outlook.com>
+ d2e1a72fcca58-8396563f03bsm24450070b3a.9.2026.05.12.07.46.12
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 12 May 2026 07:46:15 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v2 00/21] Introduce ACPI watchdog for Q35 and arm/virt
+ boards
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <20260512153057.1a353c3e@imammedo>
+Date: Tue, 12 May 2026 20:15:59 +0530
+Cc: qemu-devel@nongnu.org, mst@redhat.com, pbonzini@redhat.com,
+ peter.maydell@linaro.org, shannon.zhaosl@gmail.com, philmd@linaro.org,
+ zhao1.liu@intel.com, rad@semihalf.com, leif.lindholm@oss.qualcomm.com,
+ qemu-arm@nongnu.org
+Message-Id: <9E96C22B-D035-4CA8-8127-96D8A8E5E4AA@redhat.com>
+References: <20260303092532.2410177-1-imammedo@redhat.com>
+ <20260428161215.49cc1c0f@imammedo> <20260512153057.1a353c3e@imammedo>
+To: Igor Mammedov <imammedo@redhat.com>
+X-Mailer: Apple Mail (2.3864.500.181)
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rfB-cm3ktHBugGuAvtx4ksSez4ofadaCbee-ewIKSMQ_1778595064
+X-Mimecast-MFC-PROC-ID: ZObtyeGpdthUuFOvNjVTT92j2vvKRNRgKCUu0kd6iiU_1778597176
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,52 +116,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
 
-On 5/12/26 11:41 AM, Shameer Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 12 May 2026 07:39
->> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>;
->> eric.auger.pro@gmail.com; qemu-devel@nongnu.org; qemu-
->> arm@nongnu.org; kvmarm@lists.linux.dev; peter.maydell@linaro.org;
->> richard.henderson@linaro.org; cohuck@redhat.com; sebott@redhat.com;
->> philmd@linaro.org
->> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
->> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
->> jdenemar@redhat.com
->> Subject: Re: [PATCH v4 03/17] target/arm/cpu-sysregs.h.inc: Update with
->> automatic generation
->>
-> [...]
->
->>>> +DEF(MPIDR_EL1, 3, 0, 0, 0, 5)
->>> Do we need MPIDR_EL1 as well? Is this considered as a feature ID
->>> register and is writable? I don't think so.
->> MPIDR_EL1 is part of the ID regs range defined in the kernel doc
->>
->> op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
->>
->> That's why the python script extracts it. Effectively it is not writable yet.
->>
->> I can exclude it from the automatic generation but do we really need to? Any
->> specific reason?
-> No specific reason. The only thing is it's not really a feature ID register but
-> a topology register and is not writable now.  I leave that to you.
 
-noted. I leave it as is for now and we will decide upon further reviews.
+> On 12 May 2026, at 7:00=E2=80=AFPM, Igor Mammedov <imammedo@redhat.com> w=
+rote:
+>=20
+> On Tue, 28 Apr 2026 16:12:15 +0200
+> Igor Mammedov <imammedo@redhat.com> wrote:
+>=20
+>> On Tue,  3 Mar 2026 10:25:11 +0100
+>> Igor Mammedov <imammedo@redhat.com> wrote:
+>>=20
+>>> Changelog:
+>>>  v2:
+>>>     * ditch generic '-machine acpi-watchdog' option in favor of
+>>>       board specific variants:
+>>>           x86/q35:  -machine wdat=3D{on|off}
+>>>           arm/virt: -device sbsa_gwdt,wdat=3D{on|off}
+>>>     * arm/virt: add FDT and GTDT ACPI entries for GWDT when it's presen=
+t
+>>>       and hide GDTD one when WDAT is enabled.
+>>>     * arm/virt: add test case for GTDT=20
+>>>     * [18-21] optional GWDT cleanup/fixes in handling WCV register upda=
+te,
+>>>       make QEMU behave according to spec (at least the way I read it an=
+d
+>>>       it appears MS also read it that way). It fixes Windows 11 reboots=
+ when
+>>>       GWDT is present (without WDAT). With that fixed it's up to MS to =
+fix
+>>>       their driver to set sane timeout as with the current one wdatchdo=
+g
+>>>       will never trigger. =20
+>>=20
+>> given merge window should be open by now,
+>> gentle ping
+>=20
+> 2 weeks later,
+> yet another ping
 
-Thanks
+I have this in my queue for review.
 
-Eric
->
-> Thanks,
-> Shameer
->
 
 

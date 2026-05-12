@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 751D3CD4F21
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 20:34:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D66CD343F
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 20:35:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMtoX-0002YI-8y; Tue, 12 May 2026 16:34:49 -0400
+	id 1wMtoR-0002TW-D3; Tue, 12 May 2026 16:34:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMtoQ-0002SR-84
- for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:42 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1wMtoE-0002Nt-1E
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:35 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMtoJ-0002TA-P9
- for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:41 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4896c22fcbaso52493285e9.0
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 13:34:29 -0700 (PDT)
+ id 1wMtoA-0002Qf-QX
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:29 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-48e82c23840so24438055e9.3
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 13:34:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778618068; x=1779222868; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778618064; x=1779222864; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=bsNeZkaC7GdaQ5kxXCko2bCs7QLvmjxtM37k/tk14/4=;
- b=XJl6deRlkw5pJaJQVm6uiuOGi0KKE+bsQh6O6p1gP0J0VOqbq+qhsbS2p3we5CtEpd
- 3s90j8S1wUeAKUwaAaU33JapGuo6hXt7ikBMltefp/z1l5+WXA7KG3k4fwwppRKURgv0
- nBndViUV+eKm5og1UrO62PGoFYUAMAdDdau0k4nl5Q3SACQXcC5S/6zRvvoXhfnq7BTg
- OGDOpZL1XPvUCrD2lWWqrQEtgK4tb03eu+leu7pgXnUM79jNDtJQrvFDv3gusApbafG0
- dBinp/vYG3yGChtWhD1tKb87xJxmEbgm11+h1S6b4muevb3uJmYluLUiYVtOPkGL8Ll6
- FVug==
+ :reply-to; bh=KPoAYypSDNORF0pUxIKtlzts64GOfXtKmSc+PiEhbG8=;
+ b=DEuUG7o2M4zgljy7owxpms3bCI71lTupK6twm+2GqgcZedmGRvqS4McPzKtyvMnvws
+ LQpJCbiXhW1fFZVMnaWsKF4+Yd8HZrStjs1hVFF8fJBqb9sZ7epugnGPp7BQgIBxmho9
+ ZkJUKKR2RSGLfPm3CwQII7n6tyXOohgZ22f8JFM5F4ZJGDYLWIw1gT5q2LUAEfTS33Fo
+ AwhfRBWMgdKpUtvfaar/cRJutCMbJ2CkLk/Jk+XKeCioGKPmFO2LAygZosRlwy5miba/
+ qhxhtkJ0nIM9YCWWv9mcQwjpIfR+vq5usbo2vK6huqerowMqool76ke24Z13OMr13Xwp
+ orwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778618068; x=1779222868;
+ d=1e100.net; s=20251104; t=1778618064; x=1779222864;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=bsNeZkaC7GdaQ5kxXCko2bCs7QLvmjxtM37k/tk14/4=;
- b=YMc+Ig/vD05sQV2elA4B9aK4ZnS0Gbat28BhfKoiEPerP2bboiCeOQgzrb1qfktxpw
- GP80CQ4QN2FhKZIeQXMUM4C7buAg2mmeQJqsmA2wDqtN+8C5qvivgSZ99GcGkUVh5Lei
- Yn0PZRx+GZEw9jeixpXJyaC/gyUx9xGzLvgqu/7dPUQ6WxQ3OKcohqFF7OeIKUXckVRZ
- JB2sT43trZ8j90xgr0hJaB0xdmivxZZQbOiI8STQFYI0GM+DGw/srihTgjCHxas1al+e
- mGMlgkd/onHlaIVL36hVSeS0LEsZ0KI9JrC5y2qbjbDdhWbdbw4Ag+muicw+Y8aCJMXY
- iiLg==
-X-Gm-Message-State: AOJu0Yzu3n/5cRB4p5crAyRDLHPzDHBMP7WX5bfh2ygfpnLXOAb10jMK
- fHHd0yLWLzIAgZNa3Hyk9pv5BBrxdk9uSfbw89K9asxliX7Uk/w4wlVtAHcazNyNB2p5aZCcXIg
- IGbnZ
-X-Gm-Gg: Acq92OESQLJgBWBUj6JACLKdcx+FO+fDCy7w8NVQsrfa8n263QS9HMQGvpe8wDg36FO
- QkKdZAdldYha4MnOQwbbODQkPAZFSRnnohlzY9NNAhlyylnARIqJAGQM1E36ri0IwMtRn6yH9Ik
- iNdDP81bjtxPeEaJSVkfH9p64x3WUQqU3t8PqCCpHlPLhjo6X3JYANCeO5pIU+845JFJcT0JuOj
- zwXSVkuhwbidar/PVC8Onp7poBaq2RcOfHpVRcZujRP9GJZ51scOgSavQdndzUoAKgTwSXol4aW
- 2FndxTKLqRI7/PmyGn+bJ0cQfSr/QDPHXfT6aUVESWLgi3Hg0OmBlDKsxk6b72cGFj1FLTL4GYl
- iHlYFAKc1Y6jP7nyD3N9L/m0I9Jc7LCbrj7JjjNjXoahvs/TNwTaDwWpJiTwA92VWkg0/L39STd
- lXT2dcIQtE21xULASh/xznpcTDdB8K6+bej0k9gMfW6NIFQrI8xqdeudFgEneCrB1AGJdzKrsyN
- HniWda+nSCn8ErKbmEqguj9D/7mttg=
-X-Received: by 2002:a05:600c:c167:b0:488:a977:8de with SMTP id
- 5b1f17b1804b1-48fc9a345b8mr5424605e9.16.1778618068095; 
- Tue, 12 May 2026 13:34:28 -0700 (PDT)
+ bh=KPoAYypSDNORF0pUxIKtlzts64GOfXtKmSc+PiEhbG8=;
+ b=mGUsHcDCtijdSfDGm8nXhkWi2DhahSJXBq46c0z/nj4LsTWHCAZqddWb5ACUL7XsQJ
+ zKzVvh3MNqNEa89rrj2vKJyxGk6X9GRItM7I2ayXtZfBeMWvPP/CD/vmOoMhpC6zRBMg
+ MmhD62eLaVpXAVCJb+g7PaanZhlUM/VL7erS0lI1hZ7hnzVppSE8V/8Dh0CivTl5MRZT
+ Z59pq4uHzsrGcUhlN1p/RQ39bqwqivBSaNK+JSjJ9e6RwktLW8ANIsUPQ1be1fN6yjz+
+ 6qu71Kpo08Fi03tH3gzYYK/BLlWsc/zv/Axul72HqEhBpqhcHTDpClCvJW6Ra2aEC2Uz
+ 2gjw==
+X-Gm-Message-State: AOJu0Yx6iaztqrg2zHmwt38ouMVJLNX8fiN1NjSZQHjAYupWQFzkzhHK
+ kpM9iZqBIPiwzueykruRXt4YnIUWHpm+Wmusu/XpAQZ6kxUonGgeDguzFIVUSgqogxGQr0pwwt9
+ UlTyG
+X-Gm-Gg: Acq92OFWnC0nT5xjTMvU0tzSFtxMqDw9+qEKSR558RxD0umHF4qRxa3Ol2ooicj1EZ+
+ LzCgxcmu+QTyes7H0YqYEiQwKLiU9h4DXaEQRQB3nyXR3g8hNY9KbmbVKr49H+GnTNVv9a1ohLE
+ ua6y+T3I3NJfUWS0MaUKVDEjbBR3TUog37wkMX1B4ByRFK6p6x5BXNr6PGAEjcfvXOJufVHIjYn
+ 7pAvzIM06d/BzhXc7TuGWeW2F7D/+RMDGXdO/PKihuWDtyUdFr8J7s8xRq1aDdbXViFAWvQ1kMi
+ BGhzfb6R3nBaqxm8LJZENyqPdaxL7czMsNRmY2j9UDvh7uUb5+xcolbRqJdISzD1mrmLSlMP9HY
+ vPhuB9VzwJcFwCqJaSIgzSO3P9dF+HxpurKP5uN3VPJkeSJy9ZVY5WNyHcznExIBzDWYLwsiebJ
+ LWfUotANoFCTGzWJgIQPh20EiTm4OE9x2/+Fokss6acNMIANIRa2roCqy2tuXRkmFEgojZas39G
+ itl5YLXJzHB6VwRtuKiFZ3+3HPlsRzThlE8odEz+A==
+X-Received: by 2002:a05:600c:6291:b0:48e:6f39:f7be with SMTP id
+ 5b1f17b1804b1-48fc9a09fc3mr5897735e9.10.1778618063518; 
+ Tue, 12 May 2026 13:34:23 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fc8d69d0bsm16350635e9.13.2026.05.12.13.34.27
+ 5b1f17b1804b1-48fc8d69d0bsm16350635e9.13.2026.05.12.13.34.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2026 13:34:27 -0700 (PDT)
+ Tue, 12 May 2026 13:34:22 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 10/12] hw/dma/omap_dma: Remove 3.1 mapping handling
-Date: Tue, 12 May 2026 21:34:12 +0100
-Message-ID: <20260512203414.3633237-11-peter.maydell@linaro.org>
+Subject: [PATCH 06/12] hw/arm/omap: Remove unused wakeup irq
+Date: Tue, 12 May 2026 21:34:08 +0100
+Message-ID: <20260512203414.3633237-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260512203414.3633237-1-peter.maydell@linaro.org>
 References: <20260512203414.3633237-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,114 +100,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now we have no 3.2 DMA support, the omap_dma_enable_3_1_mapping()
-function is called at reset, and there is no longer anywhere that
-disables it.  Remove the function and the unused
-omap_3_1_mapping_disabled struct field, and drop the indirection from
-omap_dma_interrupts_update() through the intr_update function pointer
-to omap_dma_interrupts_3_1_update(), instead inlining that last
-function into omap_dma_interrupts_update().
+The OMAP code creates a qemu_irq whose set function is
+omap_mpu_wakeup(), and passes that irq into omap_mpuio_init(), which
+saves it in its omap_mpuio_s::wakeup field.  However nothing ever
+touches that qemu_irq again, so omap_mpu_wakeup() is never called.
 
-The only other thing omap_dma_enable_3_1_mapping() was doing was
-setting s->chans; since this is now never changed at runtime we can
-move its setting into the init function rather than reset.
+Remove all this as dead code.  This lets us remove a direct call to
+cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB) from within board/SoC code,
+which is pretty ugly and might not even do the right thing these
+days.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/dma/omap_dma.c | 52 ++++++++++++++++++++---------------------------
- 1 file changed, 22 insertions(+), 30 deletions(-)
+ hw/arm/omap1.c        | 18 ++----------------
+ include/hw/arm/omap.h |  2 --
+ 2 files changed, 2 insertions(+), 18 deletions(-)
 
-diff --git a/hw/dma/omap_dma.c b/hw/dma/omap_dma.c
-index fe43fec58d..b05e46724c 100644
---- a/hw/dma/omap_dma.c
-+++ b/hw/dma/omap_dma.c
-@@ -106,8 +106,6 @@ struct omap_dma_s {
-     struct omap_mpu_state_s *mpu;
-     omap_clk clk;
-     qemu_irq irq[4];
--    void (*intr_update)(struct omap_dma_s *s);
--    int omap_3_1_mapping_disabled;
+diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
+index 40ca8c9890..80168644ce 100644
+--- a/hw/arm/omap1.c
++++ b/hw/arm/omap1.c
+@@ -1846,7 +1846,6 @@ struct omap_mpuio_s {
+     qemu_irq kbd_irq;
+     qemu_irq *in;
+     qemu_irq handler[16];
+-    qemu_irq wakeup;
+     MemoryRegion iomem;
  
-     uint32_t gcr;
-     uint32_t ocp;
-@@ -134,7 +132,27 @@ struct omap_dma_s {
+     uint16_t inputs;
+@@ -2074,14 +2073,13 @@ static void omap_mpuio_onoff(void *opaque, int line, int on)
  
- static inline void omap_dma_interrupts_update(struct omap_dma_s *s)
+ static struct omap_mpuio_s *omap_mpuio_init(MemoryRegion *memory,
+                 hwaddr base,
+-                qemu_irq kbd_int, qemu_irq gpio_int, qemu_irq wakeup,
++                qemu_irq kbd_int, qemu_irq gpio_int,
+                 omap_clk clk)
  {
--    s->intr_update(s);
-+    struct omap_dma_channel_s *ch = s->ch;
-+
-+    /* First three interrupts are shared between two channels each. */
-+    if (ch[0].status | ch[6].status) {
-+        qemu_irq_raise(ch[0].irq);
-+    }
-+    if (ch[1].status | ch[7].status) {
-+        qemu_irq_raise(ch[1].irq);
-+    }
-+    if (ch[2].status | ch[8].status) {
-+        qemu_irq_raise(ch[2].irq);
-+    }
-+    if (ch[3].status) {
-+        qemu_irq_raise(ch[3].irq);
-+    }
-+    if (ch[4].status) {
-+        qemu_irq_raise(ch[4].irq);
-+    }
-+    if (ch[5].status) {
-+        qemu_irq_raise(ch[5].irq);
-+    }
- }
+     struct omap_mpuio_s *s = g_new0(struct omap_mpuio_s, 1);
  
- static void omap_dma_channel_load(struct omap_dma_channel_s *ch)
-@@ -294,32 +312,6 @@ static void omap_dma_channel_end_prog(struct omap_dma_s *s,
+     s->irq = gpio_int;
+     s->kbd_irq = kbd_int;
+-    s->wakeup = wakeup;
+     s->in = qemu_allocate_irqs(omap_mpuio_set, s, 16);
+     omap_mpuio_reset(s);
+ 
+@@ -3693,16 +3691,6 @@ static void omap_setup_dsp_mapping(MemoryRegion *system_memory,
      }
  }
  
--static void omap_dma_interrupts_3_1_update(struct omap_dma_s *s)
+-void omap_mpu_wakeup(void *opaque, int irq, int req)
 -{
--    struct omap_dma_channel_s *ch = s->ch;
+-    struct omap_mpu_state_s *mpu = opaque;
+-    CPUState *cpu = CPU(mpu->cpu);
 -
--    /* First three interrupts are shared between two channels each. */
--    if (ch[0].status | ch[6].status)
--        qemu_irq_raise(ch[0].irq);
--    if (ch[1].status | ch[7].status)
--        qemu_irq_raise(ch[1].irq);
--    if (ch[2].status | ch[8].status)
--        qemu_irq_raise(ch[2].irq);
--    if (ch[3].status)
--        qemu_irq_raise(ch[3].irq);
--    if (ch[4].status)
--        qemu_irq_raise(ch[4].irq);
--    if (ch[5].status)
--        qemu_irq_raise(ch[5].irq);
+-    if (cpu->halted) {
+-        cpu_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+-    }
 -}
 -
--static void omap_dma_enable_3_1_mapping(struct omap_dma_s *s)
--{
--    s->omap_3_1_mapping_disabled = 0;
--    s->chans = 9;
--    s->intr_update = omap_dma_interrupts_3_1_update;
--}
--
- static void omap_dma_process_request(struct omap_dma_s *s, int request)
- {
-     int channel;
-@@ -660,7 +652,6 @@ void omap_dma_reset(struct soc_dma_s *dma)
-     s->lcd_ch.condition = 0;
-     s->lcd_ch.interrupts = 0;
-     s->lcd_ch.dual = 0;
--    omap_dma_enable_3_1_mapping(s);
-     for (i = 0; i < s->chans; i ++) {
-         s->ch[i].suspend = 0;
-         s->ch[i].prefetch = 0;
-@@ -1193,6 +1184,7 @@ struct soc_dma_s *omap_dma_init(hwaddr base, qemu_irq *irqs,
-     s->clk = clk;
-     s->lcd_ch.irq = lcd_irq;
-     s->lcd_ch.mpu = mpu;
-+    s->chans = 9;
+ static const struct dma_irq_map omap1_dma_irq_map[] = {
+     { 0, OMAP_INT_DMA_CH0_6 },
+     { 0, OMAP_INT_DMA_CH1_7 },
+@@ -3765,8 +3753,6 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
+     s->sdram_size = memory_region_size(dram);
+     s->sram_size = OMAP15XX_SRAM_SIZE;
  
-     s->dma = soc_dma_init(9);
-     s->dma->freq = omap_clk_getrate(clk);
+-    s->wakeup = qemu_allocate_irq(omap_mpu_wakeup, s, 0);
+-
+     /* Clocks */
+     omap_clk_init(s);
+ 
+@@ -3912,7 +3898,7 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
+     s->mpuio = omap_mpuio_init(system_memory, 0xfffb5000,
+                                qdev_get_gpio_in(s->ih[1], OMAP_INT_KEYBOARD),
+                                qdev_get_gpio_in(s->ih[1], OMAP_INT_MPUIO),
+-                               s->wakeup, omap_findclk(s, "clk32-kHz"));
++                               omap_findclk(s, "clk32-kHz"));
+ 
+     s->gpio = qdev_new("omap-gpio");
+     omap_gpio_set_clk(OMAP1_GPIO(s->gpio), omap_findclk(s, "arm_gpio_ck"));
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index 14d6e9d214..ea5c0eff8b 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -463,8 +463,6 @@ struct omap_mpu_state_s {
+ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *sdram,
+                 const char *core);
+ 
+-void omap_mpu_wakeup(void *opaque, int irq, int req);
+-
+ #define OMAP_BAD_REG(paddr)        \
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad register %#08"HWADDR_PRIx"\n", \
+                       __func__, paddr)
 -- 
 2.43.0
 

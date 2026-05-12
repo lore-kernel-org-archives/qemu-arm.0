@@ -4,100 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E6B4CD484E
-	for <qemu-arm@archiver.kernel.org>; Mon, 11 May 2026 22:10:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B59CD484E
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 00:43:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMYp3-0000iD-LG; Mon, 11 May 2026 18:09:57 -0400
+	id 1wMbDk-00067r-9B; Mon, 11 May 2026 20:43:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wMYoy-0000hh-SZ
- for qemu-arm@nongnu.org; Mon, 11 May 2026 18:09:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1wMbDf-00067S-UC; Mon, 11 May 2026 20:43:31 -0400
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wMYox-0001gg-C8
- for qemu-arm@nongnu.org; Mon, 11 May 2026 18:09:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778537390;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8lfM790bPPcW9+6QJ2OF4Giuvz/HJzNJe7b9mqE9Dco=;
- b=eF/+R662366o54EJjCDmVhlinIZ+cAFRPxVnJMZ03hV8+xQndhnYDRgmZXcBUeF+TAb66r
- T4YHXsqpDz1rpRJYz7G8FXurmVQfHbVtCenMVunEQJmSn1d8E4tErdNss84zxbaGL6zmTK
- iht+InkyEiIUzh1yB96/iUi0fyiaXj4=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-78-sHdT_I08OPWZkFOKZu1EWQ-1; Mon, 11 May 2026 18:09:47 -0400
-X-MC-Unique: sHdT_I08OPWZkFOKZu1EWQ-1
-X-Mimecast-MFC-AGG-ID: sHdT_I08OPWZkFOKZu1EWQ_1778537386
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-43ff19e54beso3363907f8f.2
- for <qemu-arm@nongnu.org>; Mon, 11 May 2026 15:09:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778537386; x=1779142186;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8lfM790bPPcW9+6QJ2OF4Giuvz/HJzNJe7b9mqE9Dco=;
- b=Snp2ll153CdCmeEbADgVwK5sesS1hBTnkirOGV5YqHjATfQggbVEr8cEJA7NS/Xdij
- M+U8gQR8OWpbF6PuqlLihU4kCDjDV6UlV2msuuV0nxOq93JDG10RE23xRavevaNGhwZE
- uNHoW+ZLAeXaSv14vupHbQcih1MUbsKlGjbf0LKFlJL+sLXYYKc5PpdLEMzrtegEG6xr
- NY+0qwUag2Iww5ch6MoNFZmZQGE55torWaDeObYGl2iBA/Q5oenCv/g9kivl+1vl0gXk
- 1eUuPbrCTYqKDb8K2ta//+gcwi2PTng1LrXKPrW82XeI9Xm8KZsVhKub5+Hqb8T7oGM5
- 2dXg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8D0UOX0aA4AfqhFdPM+kuxDvPFNWWLtBFV1fqH33u8xjKc4YH0q5y8jFfGSYtXh9Rooa3txnxJcQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzUfaF23Yq50TwMYCqk04BgG2v35KHCggVgo5/k+XL8n5qyrUY3
- lsbxRdahuR7L35/l6vZ1ujUzCpm8hLBdRgMv/EE/A/4Q9fT5+CHSQPhL+k+1oWvAR6z3kPs+MAc
- knBMwkcRu4kNjo4M3Ujdx7ahyLYJH8kqH+JSqwycfqzKZt6xHOTQFMw==
-X-Gm-Gg: Acq92OEliQ64TzaIiZtmAIWbz9rJdhpXKw1vBGe8t3TdIEMrrtiBQUVglZS6q9te8Cq
- 63ktLKe6/Y2EsvtHyA3qZLBlnurue/yiLfaDKR++W3rYGuIuHDZZO/n9I8XDF0vc1YOcBwYfnd4
- Yfa88n9Q1NQwDRlK9CpC67ZC5ZJsPODkYIo2w1n4yiM7/M9rDQogpvSsWiC6iIfwvcdKkaZzi+B
- PLDtz/owrVqqyTOKd31/9QcP6WDZauOaX0+0Ka9Yyn0fy4SS6LhyyEV1AkZ+PA/O//QZOZ8oBTs
- s4NPyeN1sQosx0byDu9iyCVx9spiOIh/rz3YBUVYMP6OVZ9CUvnqIRw398UA/0+3AfqTnG1rhrR
- 8iAXHlh93x7L8WDOM8Ww2lVx4B53qVOc7SXFOxJDP
-X-Received: by 2002:a05:6000:25c2:b0:448:659b:abec with SMTP id
- ffacd0b85a97d-45460e3f5f9mr23691016f8f.8.1778537385874; 
- Mon, 11 May 2026 15:09:45 -0700 (PDT)
-X-Received: by 2002:a05:6000:25c2:b0:448:659b:abec with SMTP id
- ffacd0b85a97d-45460e3f5f9mr23690981f8f.8.1778537385429; 
- Mon, 11 May 2026 15:09:45 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-48-7.inter.net.il. [80.230.48.7])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4548ec6b071sm27715403f8f.14.2026.05.11.15.09.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 May 2026 15:09:45 -0700 (PDT)
-Date: Mon, 11 May 2026 18:09:42 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Tushar Dave <tdave@nvidia.com>
-Cc: qemu-devel@nongnu.org, alwilliamson@nvidia.com, jgg@nvidia.com,
- skolothumtho@nvidia.com, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, marcel.apfelbaum@gmail.com, devel@edk2.groups.io
-Subject: Re: [RFC PATCH 0/8] hw/arm/virt, hw/pci: PCI pre-enumeration and
- fixed BAR allocation
-Message-ID: <20260511180533-mutt-send-email-mst@kernel.org>
-References: <20260508183717.193630-1-tdave@nvidia.com>
- <20260511050459-mutt-send-email-mst@kernel.org>
- <d5190676-11e7-40e8-ab12-da69aa751301@nvidia.com>
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1wMbDe-0002vN-6s; Mon, 11 May 2026 20:43:31 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=v21XJsGYHDQ4PR5NlL4RyMDWxztyFt9fOEJIz7HdW3ye/zVwaMUJOauQajvZ2IPQzV/XRnuP5/hCDE7Ztyq+zN3vFxyJYwOJHuC49rfEcxrqq3n5OR+k0olMC9Yx1tjzXNgedxxOcCgufsW7uoqrTcMtHFaOwv6rCpcgLzMEe3QIqiwavruNMO3qIwBpHUCa0k/4MOMGO4fkWH6wy1EVdHClLFpITed0XLiVvr5lGQPQChnvX0tJx11QCLsyKWmvNHgga7aOW0pKf+/JPKSLEOwhrCT8X+yM82zoAqztYJqIUTJyfGcdMIg3zZ40mlntS4MokoT3QjPEOauyIZi2fw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Wgu3cBMyLecwzj5yTnwWHtjQkr5m/HFL6Gxy3qqgtQo=;
+ b=xpMiv4rJdLNRTka5yzGWUcfxKvtKIxsCecLsFKoGJtJ7A+BGtvZ/hnTu2Xwog2mzH3nmVi4EfJTSJHML4mbspRnwVYLF7A0jXk7khrtEAPpaDQMi/4Q6lacqEy+DI4TT17L8lYdAQZPdVpYx4VPxqJUvPd3s/HMZk0b9Qidt9hXLBoL1HYMAZg4ZUouJNqKtdWHSvrgBlveWPeirHDvH0DC6rtE8wbaORqPEWpNGSvYHfEfBkMkKpCOs6xN1rW4iwKw7sk0U3EQw+QSq0hyiXo6bdkK2BoSVtqi9yU8ZLrXkZkVQSM6RJfuFx24Oa0txo3IWycvZD57RYBt+K55/pw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Wgu3cBMyLecwzj5yTnwWHtjQkr5m/HFL6Gxy3qqgtQo=;
+ b=dp1BXf9u5pTm/MmzCxFHKJKhDtwbIdkf382TKxFD+GL1jn9K5bbJmKExaxwiirhk6YtJswbsIZZ9mwrgvZLFCUO83GwiibzbtOjdhLJfzeabajUBLOTeAGgVJzvUH4+JYuWaBuZgQiUkrZW/k8panM420sdwJfd5TK94a6MYCSgr3ntLEypyvfsqYrgIGtFzVM9psc83aqN1mH+68X4f/wS2kUpNdtNSho38IKAlZcvw8bgMSzTo593+UF8bzPqNjt+GhzxchBRp8JoGTy7REV4dVa3LxG69B1DYjETuYSS/etrstoAOIihiU8/y9c2s/LnMwAqI9A+6h5MLz3dlDg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com (2603:10b6:8:27c::8) by
+ CH8PR12MB9744.namprd12.prod.outlook.com (2603:10b6:610:27a::7) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9891.23; Tue, 12 May 2026 00:43:23 +0000
+Received: from DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5]) by DS2PR12MB9567.namprd12.prod.outlook.com
+ ([fe80::636:1b52:24ca:d7e5%2]) with mapi id 15.20.9913.009; Tue, 12 May 2026
+ 00:43:22 +0000
+Message-ID: <d193da58-27e5-4c1b-b11b-1e83b359bf6f@nvidia.com>
+Date: Mon, 11 May 2026 17:43:20 -0700
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 7/7] qemu-options.hx: Support "auto" for accel SMMUv3
+ properties
+To: eric.auger@redhat.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+References: <20260422204335.23116-1-nathanc@nvidia.com>
+ <20260422204335.23116-8-nathanc@nvidia.com>
+ <cfdc0d2e-59ed-4460-adb2-23dee2ca157b@redhat.com>
+Content-Language: en-US
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <cfdc0d2e-59ed-4460-adb2-23dee2ca157b@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: SJ0PR03CA0335.namprd03.prod.outlook.com
+ (2603:10b6:a03:39c::10) To DS2PR12MB9567.namprd12.prod.outlook.com
+ (2603:10b6:8:27c::8)
 MIME-Version: 1.0
-In-Reply-To: <d5190676-11e7-40e8-ab12-da69aa751301@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MQCj5aISdwP1bGmTXvI-OErCKYUtkO2t_9EEbMZVs7A_1778537386
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS2PR12MB9567:EE_|CH8PR12MB9744:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0114f6d8-8a95-4904-a3e2-08deafbf7846
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|18002099003|22082099003|56012099003|3023799003|11063799003;
+X-Microsoft-Antispam-Message-Info: HqVt4/xX8ucnAvVe2dwgOWV1LfV0J+Q04ZOusvAHPt093sSZOA6GGRI3YrGcFkuyW/Xy+ABC3VVWkn5jpaxcEISowXGWK/AADwBDjU9ozKPq4Z1toJ2eGh0qOgP2gcu8jMTPu1TKu22qdvbR9WFnHalu2T79BfeP/2QyS7xlbIpRUBo4EOD+SBaoQX0sxa3AlfFHKtq4Rr6kVhSgm857qbRs3fzFHYS/RcUa3sjY4pOxmMSz0e1D7uLLI25us358CR6RyBXABx4adm1FvQgTHwznpJuDO7h0vcHvIbhbwLJp8RotOf+LgHGULG04agTyG9PUy2liWxRmrvfB+KptskXzfK/ak+eQUjHpWOqOY8qcbHV/Dug/0HIA27pe7GtaB4zz2ALdexo+RuFgTNG0RmlbJfW95vTPK6K3nTS48mAi81xGw+NNSGvonjlhidBQ2Lb5f040x9VDp6KamSWkkmLBR0nWcO7XCvSyC9CUNYbkZ8Zc9Hof0An0Sx1u6TbOx9brFsCJRLnaK05xbzHBYzpsmCexEQM3D0nghRp7cMIUQklTvAeTBVWR1/T7uGZ6iVZBnp5LIhhm5ckh/ETC0FoVTAqoosWs82d18QQ0BVag1uWlzCrXxubkfSckv77j4RgnG7CQWQO0LaPl5k1LWUAx8PY8jlNcHf7lhkDaVZYOsmol2Bx5s1LCwFqaB4kt
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS2PR12MB9567.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(18002099003)(22082099003)(56012099003)(3023799003)(11063799003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TEU0RmJ1SHk2Mm9SRTIva0JucU02N0NXSmFLY3duVU1ZQXN5Y2pvOXIveHM3?=
+ =?utf-8?B?RlF0K0Jkd0dGQ0Y5aWl0eEVITzQvajRaM2hHcms2L05pdGhXYXBRTHUyek5B?=
+ =?utf-8?B?M2FUaHBjbHBVamV3M3VEK0F3MXpwMzJ6TFJXMm0rbVV0dVdsL254VGhkZ1k5?=
+ =?utf-8?B?N1F6YTRCaU5uVVRCcDY5RFpsN2hRQzU0aytxYzh0YXIzckVlTFJIbHY5T3Nz?=
+ =?utf-8?B?Vk1QbzNMQkg5TGtHMHFiSnNTQkJIWmFHMmlkVmZaeE9xdGtNckVEVXM3cGcx?=
+ =?utf-8?B?Z29xSU4xcHhBUFlQOGlwYVorUG1Jb1F0NmwzdmJGSnpuVXRxR3JkWU1ydkFU?=
+ =?utf-8?B?UzlaWmw3d2pkR1lBeDREaStYWmp3Nlp5cnZjVW1RenlRSkNadUlVQlk5Nmk2?=
+ =?utf-8?B?TUZqS1IycFdpYkg4Yjdldm9TaFdPMzM2Q21CMVBHTlVUeHQxa0hRb1IvMDZm?=
+ =?utf-8?B?bEJqMG12ZXJnRFhuUUdXMUF6Zk5Tb2RUUUdCaUo5eEtNaXFwaytaT0pDL0p5?=
+ =?utf-8?B?OFF4ZHp3aGRzOEtLVC9nWkt3a2YwZk44YU5BN2JyWWZPaUZlR1FqeXRVbHFI?=
+ =?utf-8?B?cUxhNHVkMHQ1WDFTVjNKWFR2UjNBd1lqTEd4WitWdHg2RlFDWTd4NVRKaEFx?=
+ =?utf-8?B?ZURyZWV5Mzc2ckxCRlhLRndOT3lvQ0w0V0tFb2tYTmhPZFYxR0Q4L3FIa3Jn?=
+ =?utf-8?B?ay9HRWREbW9aNktkVDNyUHdnQjZidFZaSkVISnFLRjFQNVhzS20rcFlpL2VV?=
+ =?utf-8?B?bWJYUmo4L2ltM0o4OW5GT2JaZks5R284UUVUSjIvZ3VzdElvK3R3OWo3WHd3?=
+ =?utf-8?B?SzlldzZVODQwbkZobDhybXBPaG1pbGNabUZDWlBlcTNQdzJEREFvZWV2VUFC?=
+ =?utf-8?B?aDhKaWFRRU9vS01aQjZnNUlFREp0eGNmanV6MjhRMUlHQnJQbnhOMHN4TGhu?=
+ =?utf-8?B?NWF0VEJUamdtYndiRWhkcEJGaDlDMWpTLzBDbW1nZUliN2ErL2dmQWU0em53?=
+ =?utf-8?B?Yjl5bjZsQ0J5cWRSaVRZeTd5eTJYZytHOFVMR091dFg1cWtLdjBQbTNnMG1D?=
+ =?utf-8?B?KzNraHlNeW1QaTRHV0lDUWNHZ3N2Z1pZbFRLM0dMZVcvWGNTNFJrWlJPMitq?=
+ =?utf-8?B?d1NWUXlIVG9JQ2RjZGlabXFPRVFwR3JrdUJHd3RaWXBzWHVDZlkxWlBocnJD?=
+ =?utf-8?B?OUxNTncreGdMQ0o3RTVvTG9PcU9vQ29RaFdodjRzTE94ZnJka2I1eFd1QTFx?=
+ =?utf-8?B?bFBOcHZDVEF3QVpEOXBXTDN3TURjdVpWYnJkTDVTMHF6TUNDUGIvdkVidEky?=
+ =?utf-8?B?RnpCbDNHSzErYzYxV3NHUUt5QTBCTitjMmhUYS8yMUlZTVUwVFRVTG1hOGpD?=
+ =?utf-8?B?VWRTT2p2cEMzdWxwVjIvZFdPKzdqc3YzZGt2MUpoVkowMVcyTGVSVE55ZFJq?=
+ =?utf-8?B?U2x4VG9lQTVVTTVOVExiUkFJSjd3SFlhbFJNQzl0RVlQaWN0dnlOaHJRdk1k?=
+ =?utf-8?B?Mlo3bHVTT0Jhbm5EM1BJajhCL1E1cjFYRm5nS0xoR2J2N0xpRnhGRkZKUzRS?=
+ =?utf-8?B?L1Q5eit6Mk5ESkdMbmNhWHoyWnZ3WXQxWWVJby9JSW9EcUFpL25vK0grc2dZ?=
+ =?utf-8?B?cFNFQTBHUUs4Q0ZvWUJ5cDlid1JFdWREVE4vMkU0TjlWK3BiVmxkd0MvZmJu?=
+ =?utf-8?B?bDdxbXlwV3Aza2xvSXFENmVKbW9BR3V0cUIxamRsZWNpOVJBNEE0R2lmamNT?=
+ =?utf-8?B?WnJuM1JnOGd4UVY3TkVGeUdoRSs2TUdkK1pVS2FyaXByUTc5V3FweWxDblY5?=
+ =?utf-8?B?VWFMRXNKMXBxMk1Ycy9BbmNWaG5OcE9mL0ZnQ3RvUlBrQjVWY2VQMnQwL2RE?=
+ =?utf-8?B?VTBmS2QvYmhJd3Z1QWk0R2ZWVnppeTVxdWhkb0VnTFhqbnIvVjBMUk5yYmxI?=
+ =?utf-8?B?SWIyZC9Ec3ZLVEd3cmlDN3BVQkpUc1V6d05VY2pQL3hOTUpZY2xMMUhVYVBh?=
+ =?utf-8?B?MUlndWtnMkxmdzhiSThVN1FuR1pHYlpwNjdtY0hTaERJbDJwUW9pWmFkbXo0?=
+ =?utf-8?B?dXVzTDgweWNUUGVrM2hGT3VMYlFpbDBld29BSHd2blh4VlJFblRJb3didlhU?=
+ =?utf-8?B?TnRSbU4vdjJCZTNCWUdicHdCNURBQVJIWTdXOWhrSGNDZXcvWGpYRUUrVkx1?=
+ =?utf-8?B?VFNtTjJ2enNKRUtQTVI3dnFoazJ4YnkzbERmT2VTRGt4cHE4SE9nQVpYb29n?=
+ =?utf-8?B?bEswK2lmYkxRVm1Ha0l4VnpYK2dpN0RVejh5ckR1QzltdklPVWthYWQ1S2ZT?=
+ =?utf-8?B?VmFyTHlhYllrU1FtVGw5Z2o3S3R0bFRGQXFMYldPQ0M3YjEwY3RHZz09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0114f6d8-8a95-4904-a3e2-08deafbf7846
+X-MS-Exchange-CrossTenant-AuthSource: DS2PR12MB9567.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2026 00:43:22.7680 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ulIZLR58ewqVfA2w+zjpGtiXtap0Sa6OI4UFL42nSB7xSCMMcBapgGaPYgYNS9QFN1eiSLBbtzbn6nPRmqQmpQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH8PR12MB9744
+Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+ envelope-from=nathanc@nvidia.com;
+ helo=BN1PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,40 +156,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, May 11, 2026 at 01:10:43PM -0500, Tushar Dave wrote:
-> 
-> 
-> On 5/11/2026 4:09 AM, Michael S. Tsirkin wrote:
-> > On Fri, May 08, 2026 at 01:37:09PM -0500, Tushar Dave wrote:
-> >> This RFC introduces a mechanism to specify Guest Physical Addresses
-> >> (GPAs) for PCI BARs, allowing explicit placement of guest MMIO BAR
-> >> addresses to match host physical addresses for assigned devices.
-> >>
-> >> On some platforms, P2P DMA is performed between devices within the same
-> >> IOMMU group. The PCI fabric ACS is configured to permit direct P2P
-> >> without going through the host bridge in order to achieve the required
-> >> performance.
-> > 
-> > Pass this info to guest firmware, let it set bars any way it wants?
-> 
-> We are using firmware, relying on the existing EDK2-supported mode
-> enabled by PcdPciDisableBusEnumeration, where firmware is expected
-> to preserve the PCI topology and BAR programming established by
-> the hypervisor.
-> 
-> In our case, the hypervisor is QEMU, which performs PCI enumeration
-> and resource assignment before handing control to firmware. EDK2
-> then explicitly refrains from re-enumerating or reallocating PCI
-> BARs, as this is already a supported firmware behavior.
-> 
-> -Tushar
+Hi Eric,
 
+On 5/8/2026 5:08 AM, Eric Auger wrote:
+> Hi Nathan,
+> On 4/22/26 10:43 PM, Nathan Chen wrote:
+>> Update documentation now that "auto" is supported for accelerated SMMUv3
+>> properties.
+>>
+>> Signed-off-by: Nathan Chen<nathanc@nvidia.com>
+>> ---
+>>   qemu-options.hx | 33 +++++++++++++++++++++++----------
+>>   1 file changed, 23 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/qemu-options.hx b/qemu-options.hx
+>> index 21972f8326..2c6ba16a26 100644
+>> --- a/qemu-options.hx
+>> +++ b/qemu-options.hx
+>> @@ -1291,30 +1291,43 @@ SRST
+>>           Enabling accel configures the host SMMUv3 in nested mode to support
+>>           vfio-pci passthrough.
+>>   
+>> -     The following options are available when accel=on.
+>> -     Note: 'auto' mode is not currently supported.
+>> -
+>> -    ``ril=on|off`` (default: on)
+>> +     The following options will be set to auto by default if not manually
+>> +     set. When accel=on and these properties are set to auto, the value is
+>> +     derived from the host SMMUv3 capabilities via IOMMU_GET_HW_INFO. With
+>> +     accel=on, this requires at least one cold-plugged vfio-pci device; if
+>> +     none is present at machine init, QEMU will abort.
+>> +
+>> +     If accel=off and these property values are set to auto, the values will
+>> +     not be derived from the host SMMUv3 capabilities. Instead, they will
+>> +     resolve to the defaults described below, and a cold-plugged vfio-pci
+>> +     device is not required.
+> I would simply say:
+> 
+> If accel=off auto values resolve to the non accel default given below.
+> 
+Got it, I will simplify the accel=off explanation accordingly.
 
-I see no advantage in performing pci enumeration in qemu when firmware
-is already doing an adequate job of it. If you want firmware to map
-specific devices at specific addresses, pass that info along to it.
+> 
+>> +
+>> +    ``ril=on|off`` (default: auto)
+> ril=on|off|auto (default: auto)
+>            -------
+> 
+> I would rewrite it into:
+> 
+> Support for Range Invalidation, which allows the SMMUv3 driver to
+> invalidate TLB entries for a range of IOVAs at once instead of issuing
+> separate commands to invalidate each page.
+> - with accel=on auto means the value is automatically derived from the host SMMU
+>    if explicitly set to 'on', the host must also support it.
+> - with accel=off auto is resolved into 'on'
+> 
+> If we have this explanation here in object_class_property_set_description()
+> just explain the basic semantic and list the valid values and default value.
+> No use to rexplain the auto mode semantic.
+> 
+> 
+> 
+>>           Support for Range Invalidation, which allows the SMMUv3 driver to
+>>           invalidate TLB entries for a range of IOVAs at once instead of issuing
+>>           separate commands to invalidate each page. Must match with host SMMUv3
+>> -        Range Invalidation support.
+>> +        Range Invalidation support. If accel=off and ril is set to auto, this
+>> +        property value will resolve to on.
+> Same for the others ...
+Ok, I will leave the auto explanation out of 
+object_class_property_set_description() and keep it here.
 
--- 
-MST
-
+Thanks,
+Nathan
 

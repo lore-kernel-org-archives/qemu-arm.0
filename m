@@ -4,120 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3D2ACD4F24
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 15:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C6B4CD4F24
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 16:03:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMp6l-0001hT-K5; Tue, 12 May 2026 11:33:20 -0400
+	id 1wMpYZ-0004ub-Ug; Tue, 12 May 2026 12:02:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMp6j-0001gu-Hr
- for qemu-arm@nongnu.org; Tue, 12 May 2026 11:33:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMpYC-0004l4-6J
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 12:01:40 -0400
+Received: from smtpout1.mo533.mail-out.ovh.net ([51.210.94.138])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMp6h-0007gA-NK
- for qemu-arm@nongnu.org; Tue, 12 May 2026 11:33:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778599994;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=H5+xnXbVYTH65ka/uxiCb0qLOyxZQA+00M7WtNB18gU=;
- b=Pfqt6ZTsRwVox98h7bRXxUpgFaXFLF3wRkXE/d4UsafE72oSea5wh0wHYjtY/hFFGetQ7P
- PuOmUrLXMbj4/cNtl0Hqz6SMxg1T3U0dlySLTT8cpz5+fWLRbpQdT/FuAzKPGoydoCi6GO
- DuTaXpjssXX7BEv9s0b7mGvtcgnu+zQ=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-650-ETfG3ZFDMaWWIPh-H2P4rw-1; Tue, 12 May 2026 11:33:09 -0400
-X-MC-Unique: ETfG3ZFDMaWWIPh-H2P4rw-1
-X-Mimecast-MFC-AGG-ID: ETfG3ZFDMaWWIPh-H2P4rw_1778599988
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-48e86e6c6b7so19543535e9.1
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 08:33:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778599988; x=1779204788;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=H5+xnXbVYTH65ka/uxiCb0qLOyxZQA+00M7WtNB18gU=;
- b=qLrG52+Rpo3AIu5fEV2FbQdiEZx0kC+T9PcsymADM+EHwtbA4YHRoGE2ZdndiOEOob
- CgDM75vAz3mRjNnquMZmrroXUYW1gbrGfJl2nEeE+OGRZ7tNab6OGFBXPa4lCGbIH517
- yDBx1rAv40kwfMycdh7IMjTDEfrmqeLEQxzgJLgI9yBk3n2/LNreWWjy2SMC9q4igGFs
- eCOBaoH9D/OPcLLObYUSW9tZvbMVUstDHi1c4h42ztfukNyLAX9y38uSUus8wG0Gcz2d
- qlBZOHkxJ/WP5qFR95UWG+t32Ya9NAVpnKXv3IqjU8PBDdeqUSxVeViNDhCw+XHe/F7p
- fLQA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ80Mtm30RthuPF0hOGaoGabSWUeqkOQZhP61KseFUPrBEcMscyXY/t/BzaAvstyamNj5/8FOPW+Cw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz3CxeAxlDurfkrnMo5UYjXFOaZMqaxRmljm+ez8KfnPntRxK2L
- wAr23hO2CBwfkUT+jqm59EBZ04TGMgbf1m3B6OILSvKuuUof3kGkbqPQn4UdIWxPQj21sy14oUu
- 9QNqaM+bPY7U8IN+OKq5jc+FJzUit1x/g20Nv5Nked1kZyvBbLyH27g==
-X-Gm-Gg: Acq92OE7+aQgJJUbtyWEAxRG4BVlINx4yp5GiAxBnipoXuOBk2KO1CCaYoABggXLnBk
- mChvOOt8fKFZWQl74D6Ab6AmlNxFCBPKOhJStEhcR+l1SvqoVcBBn39iMSAuKK2+fQaZeIYtECG
- AnMxGHAn+ONZezLfkLWidKDrjJRchIkQdtqGV6dFail5tEdozzrNCmFyemcTcWfJY2CDooHj/hk
- OmQwAQiZpho9VJzrfj1OEA1+BbupqDEzpfQ0Yy425svnG92K5zoCs27YbOR+Qo1cxx6h7ytdY01
- w/P+gKhsN8P1aLKLR/UbA5Ff64F6wwiuv3DB7vUvhy+s7GefHFhzUBQTuPKvTAwD43T3JqG8VwY
- YykdUfqOaiLmeAEJZgoMtL0lnQ+gaAW9mAcPnKK2kiWB+SdgZoGO7KKGTi3m4PMMt3wDGWw==
-X-Received: by 2002:a05:600c:8115:b0:48a:9540:1a3a with SMTP id
- 5b1f17b1804b1-48e51e196f9mr472852295e9.8.1778599987833; 
- Tue, 12 May 2026 08:33:07 -0700 (PDT)
-X-Received: by 2002:a05:600c:8115:b0:48a:9540:1a3a with SMTP id
- 5b1f17b1804b1-48e51e196f9mr472851615e9.8.1778599987380; 
- Tue, 12 May 2026 08:33:07 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e8f445f83sm18667735e9.29.2026.05.12.08.33.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2026 08:33:06 -0700 (PDT)
-Message-ID: <ada244d4-0bfd-4bbd-b594-c3278a5570dc@redhat.com>
-Date: Tue, 12 May 2026 17:33:03 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wMpY9-0001F1-HF
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 12:01:39 -0400
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net [51.68.80.175])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gFLtk03cSz613s;
+ Tue, 12 May 2026 16:01:33 +0000 (UTC)
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net. [127.0.0.1])
+ by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Tue, 12 May 2026 16:01:33 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.168.184])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gFLtj4f8jz5w9Y; Tue, 12 May 2026 16:01:33 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id EBEC11B43591;
+ Tue, 12 May 2026 16:01:31 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001e58bd7d4-4e0a-45dd-8ed6-0a240e2513bd,
+ 39874C6F3F9F68F15966500C6FBBDB0B53A96BD7) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <90c17098-c8d9-41a4-b988-8657fe84926d@kaod.org>
+Date: Tue, 12 May 2026 18:01:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 09/17] arm/cpu: accessors for writable id registers
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>
-Cc: "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-10-eric.auger@redhat.com>
- <CH3PR12MB7548053696CA900F2A2349BDAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548053696CA900F2A2349BDAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bnEMPU7hLIcTFytNa-v6qVIuJJRzRt_my4TgFAAEQa4_1778599988
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v2 4/4] ast2600: yosemite4 initial support
+To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, titusr@google.com
+References: <20260505154410.230969-1-alexander.hansen@9elements.com>
+ <20260505154410.230969-5-alexander.hansen@9elements.com>
+ <78ded35c-18d9-4469-a20d-6974646e4557@kaod.org>
+ <1fec82cd-33ff-4cbf-9f8b-c14a5cf622a5@9elements.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <1fec82cd-33ff-4cbf-9f8b-c14a5cf622a5@9elements.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+x-ovh-tracer-id: 5682698307035966475
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFrXGij6xEoILIO68TlpBxfC7cigd34mIYVX0KTo1/WZe8Fx6tpnAXwfgi9FukATrze8jEEE5BXNF6GxPENDX6D+sTsVI6qTvLu3oD9QX3ZArPj1666YYDkFHCteU03NxdxY4/PwBGSjNhcSFwLYwb53uNyf05SmSI96L5tdStmHQ7D50d3qyu5NCUqi/DC5VIjy8Y03St7J3H+wPhJIv3I3PBtB6b0CdOKJJPynWNT9hMBQtMD1PiJRL7mGFZvh3+9TnDdhOsQvJ6qOBVuIGcNnocxaVbM+hztmrQFgfVTzT9kcsCfssSF7JH+pauLQt1wcG6KNaYw0XaG5QAghe9pt66PTkpaZB1xn0yELGpCZ+3k0zrifCwyyGhSQylhecBtnvChbu9iOPBbZedZ6O8TPCrRkpC/xKPwqwzb/33vatMthX4nddHG70RavPfrGKLsaFvEsxj5Uu4bGB9bJvCIQ3iFr8D5doXeHYFMocsNQboCZupot/JyhnP1FIrfBfyo/lIJEmQ4pTiu6AVZHtScRxBrS7d+yKRBXl1Hc4c63Ga585OcjXH7X96KnipfnhTFzxIh/0twEecqwekbyMmMqetYJmi9yP0XyD0F/QmVBsCZF3i7htDnFSCmQbx5sg9dzNjXGlvChNY4IltzpVdlsBqPNP3qbg3KnNf5Mysy2g
+DKIM-Signature: a=rsa-sha256; bh=WP3qwgeatGs7hK9isQtYQzJvr9o01yFxZwkD9rc4G68=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1778601694; v=1;
+ b=KWvshc1hSeUnhheFy4QrwmqwJHo77zouv2S+xtX0KTFBQak88BS5GPWmPpBwochaSGXZIhyk
+ wpc32oJdMm1fkWZY+aZ7g/tJnN5ewMReQaphkK0wtMo2tgKdp93PLJ17RaFTd0y1WdwFivyRIhx
+ c/FMisVTTNR6bMT8mp+RejDz10EEzko7bRd33iA4Ou6U35OIdFBoGnRGawcnI09RaToUAghjPdT
+ eVPMdOi2vRdRSHk+sVJSBVowWYN6FpUBEMo7JQD6hki7+py3F45vZNdbW1Mt6xhMVrk4k+H5NHy
+ 2OTjAwBACtAJ7eGmUUKjI6IqX4iI0zs039aoq6c0XQW4g==
+Received-SPF: pass client-ip=51.210.94.138; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo533.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,76 +132,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hello,
 
+On 5/12/26 12:39, Alexander Hansen wrote:
+> Hi Cedric,
+> 
+> thanks for your ongoing review :)
 
-On 5/7/26 12:32 PM, Shameer Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 03 May 2026 08:33
->> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
->> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
->> peter.maydell@linaro.org; richard.henderson@linaro.org;
->> cohuck@redhat.com; sebott@redhat.com; Shameer Kolothum Thodi
->> <skolothumtho@nvidia.com>; philmd@linaro.org
->> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
->> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
->> jdenemar@redhat.com
->> Subject: [PATCH v4 09/17] arm/cpu: accessors for writable id registers
->>
->> External email: Use caution opening links or attachments
->>
->>
->> From: Cornelia Huck <cohuck@redhat.com>
->>
->> Introduce ARM_FEATURE_ID_RANGE_IDX macro that converts opcodes
->> into the index used to access the 3 * 8 * 8 feature id array.
->>
->> KVM_ARM_GET_REG_WRITABLE_MASKS populates writable masks with
->> that indexing.
->>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  target/arm/cpu.h | 7 +++++++
->>  1 file changed, 7 insertions(+)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index 2aa22360d2..0ac0fd13cf 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -886,6 +886,13 @@ typedef struct IdRegMap {
->>      uint64_t regs[NR_ID_REG_MASKS]; /* writable masks for registers */
->>  } IdRegMap;
->>
->> +#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
->> +        ({                                                              \
->> +                __u64 __op1 = (op1) & 3;                                \
->> +                __op1 -= (__op1 == 3);                                  \
->> +                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
->> +        })
->> +
-> It looks like this macro is not used anywhere and in next patch it
-> uses KVM_ARM_FEATURE_ID_RANGE_IDX instead.
+yeah. It takes a few respins.
 
-Thanks for pointing this out. Removed that patch
+> I sent v5, summary of changes:
 
-Eric
->
-> Please check.
->
-> Thanks,
-> Shameer
->
->
->>  /* REG is ID_XXX */
->>  #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
->>      ({                                                                  \
->> --
->> 2.53.0
+I see a v3.
+
+What's below would have been great in a cover letter ;)
+
+> - I CCd you and Titus on all the patches now.
+> - removed the backticks (markdown syntax) from my patches. I was used to this workflow since some other projects use commit linters which get tripped up by log outputs.
+> - restructured the series as you suggested (board, then functional test, then sensors)
+> - removed some unused includes on the machine file
+> - removed some unnecessary variables from the machine file
+> - linked to your github tree for the fw image for the functional test, since the image is now available there
+> - added new section for each sensor to the functional test with some command sequences and expected outputs
+> - added new entries in MAINTAINERS file for Titus for the individual sensors. Your maintenance of the fby4 seems to already be covered by existing regex.
+> 
+> Let me know in case there is extra tests i should write for the sensors other than the functional test.
+> 
+> I saw the tests/qtest/tmp105-test.c , would that be helpful for the new sensors as well to write a test like that?
+
+It is always useful to have, especially for covering corner cases
+in the model that are harder to exercise when running a full OS
+image. Some MMIO sequences are much easier to test in qtest than
+by building custom firmware for them. It really depends on the
+complexity and criticality of the model.
+
+Thanks,
+
+C.
 
 

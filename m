@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2ECDCD4F24
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 14:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC591CD4851
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 15:12:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMoT9-0005TU-7C; Tue, 12 May 2026 10:52:23 -0400
+	id 1wMomn-0004yi-UX; Tue, 12 May 2026 11:12:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMoT5-0005Se-JL
- for qemu-arm@nongnu.org; Tue, 12 May 2026 10:52:19 -0400
+ id 1wMomm-0004yI-OL
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 11:12:40 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wMoT3-0002mJ-DW
- for qemu-arm@nongnu.org; Tue, 12 May 2026 10:52:19 -0400
+ id 1wMomj-00066H-Sq
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 11:12:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778597536;
+ s=mimecast20190719; t=1778598756;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9sxtl+GdLK5NvMOI7xxInAx13XkVbqDs2a0iwKfW4fk=;
- b=e8pfEHwdCOGH56itjGR9xDXMADtmE/lk9bmSMJeJ8lYR3Bekv5PkGkXjO55AzqUKf1YGf7
- zoKKWrOKHzylcbvuOYYhvl2vhSW9kvVDMWjMupuOHpUnnfVqY8Os+QRPkcVNq8/a1sQ6dg
- JR39aX21wZnO4D1UxxTqR+FiHDPCkpI=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=xHAgB6HV5/4LAPiF6vh00PMIU5wdo+azoQixOlaMg7A=;
+ b=jABvI57+5Wg0SU57ndO8J3kyi2isPN260D66nXUqWe0Vto+5H0RyjRGXHwL9IRZIHF9TqU
+ FUR/LSApqKW3xMZvQDOfnZhZKzBs1eIs7Mo6gLXQwdYGsNBX7D7626p2v3kjcu3AFYwvMK
+ pee3ENz4v0e5z9rp2em+vzWdOyZHu7Q=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-113-Cm2ynVTpMEuq5Jp18Lwg9A-1; Tue, 12 May 2026 10:52:09 -0400
-X-MC-Unique: Cm2ynVTpMEuq5Jp18Lwg9A-1
-X-Mimecast-MFC-AGG-ID: Cm2ynVTpMEuq5Jp18Lwg9A_1778597528
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-b9360e9f43bso588548366b.3
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 07:52:09 -0700 (PDT)
+ us-mta-627-Dvg5m6zvMD-QSksSu72PUw-1; Tue, 12 May 2026 11:12:35 -0400
+X-MC-Unique: Dvg5m6zvMD-QSksSu72PUw-1
+X-Mimecast-MFC-AGG-ID: Dvg5m6zvMD-QSksSu72PUw_1778598754
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-48fc8dd6be2so299205e9.1
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 08:12:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778597528; x=1779202328;
+ d=1e100.net; s=20251104; t=1778598754; x=1779203554;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9sxtl+GdLK5NvMOI7xxInAx13XkVbqDs2a0iwKfW4fk=;
- b=PuwhTrUeLtUi2V6y+pLletRXvFS2RVUPkYu7xFxBu+R1spys3ZtVVwMpNwK163oGEX
- XykL1Qag9lNgYrkyk6ER5IapDidyJLJ7gt6L9PwxyUetegueqgHXA8IWu9c42ne5sxsk
- /2520+muZTjoh90R3V5yLzPzLqLOyofveftgzlpBsEo3adZ6Wx8VI2HlW8MjDscdpCSH
- vyPdyi6cb+cKDv0JTdo1MUvdyTnUU/eypGX8aBS5M83zTDuVt1RVHmS0u+iBIeBedKGc
- WlD3B88o1MfHNFYLZcoYyEVLz0ABhXtrd4RfC6b8x3mgRfIdW1ridjuT7vO3M3UgW0dD
- l6YQ==
+ bh=xHAgB6HV5/4LAPiF6vh00PMIU5wdo+azoQixOlaMg7A=;
+ b=gmax1dLwmV6TUd7w+6KILIU49WGX6McZrXVTouDuki03jzc04mp/MjQ/r4vksLpUAK
+ EtpOZaDGvZFyDZr5mX0IGZ6LiBZMYA0Uy5VYKEnKy/U6nlGoErxlo+iAagLzwYApal13
+ t/oD/n3vdHgy2BdeLH5XRoRpUedD0wtYLUMgAtCLcTkd1zaRFwjCfWDDUvk+H1gI6QfP
+ ATDAsOYmD/K3xZOhCuCC7KH3uoU27PG3NxOAbVxayOBg+lLr3GMlqFyaZJEdmyLuY+Yx
+ tRz3w5LuLL5kxn5MUcIb/qYMjwn0TS/6CpUqPMl1jE4RcugDzEgd2FPyEBR7QSfq5hjB
+ p+Bw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/JBTo9lb8dXmLRgzOm8eEZaUR6zCgPPUU3TUyjJIBWvRthTbn+ehNY6hIH2V1/wWLkBjju3A0nVw==@nongnu.org
-X-Gm-Message-State: AOJu0YwRQEm4GrN41cIqpcPn7JEFPnbj4MWM7cy1sFgk4dQKjLZA4VFy
- +nRjMVIwgGiXixfEZXsxqzWcGP9RemDLPZzzML9lMp7n6fJiwqDgIkFkmY/5HEmXLPvnEc/X1IU
- C5hdh0H8y3BWd5I+mFTmV5adbvsLo8YNUdu2f4zoMKFNV9jxrXnYm1A==
-X-Gm-Gg: Acq92OFQHu1ZxMw6zeNT4lJfMOP0kDQ7wu/kCxyDc26c35te9MSzKi2V8JTyZwhowQC
- ie1Bm4BfLObhR9q2kDqffkALFSKCs1H/j0eJ0RP++XgnjuQTfZzMBJ+1NLBFle1w7EqHQYwdJaY
- WO1jIJf+s5vneHPlWJ+MYjavPiIuuEa3Dudvaa0jBaU/eTTXPvslySfpoq6Ou8S2isq7b2KrLld
- TATDvcaQPcogz/jGQMVCbPmJtTZAvpgL9MGF6zVH2BVWcqeDGcYQchR1IGdlAAwZbVnhS/d67ml
- OICI1JDtk/1As7D90izfxesOIyR/zKMZNSzhb6O0kBb8uqqGpS8XHFFK80UBWz5iRSuFE6Rl+9F
- IVH76pDTtwIAmrfKOCoNBsOJ1gY7+6+ARtRtHIvYrKeze1/5yHeZcin4VW4izsPDqwhxc6Q==
-X-Received: by 2002:a17:907:d388:b0:bd3:8192:c8ed with SMTP id
- a640c23a62f3a-bd38192d0camr8429566b.34.1778597528160; 
- Tue, 12 May 2026 07:52:08 -0700 (PDT)
-X-Received: by 2002:a17:907:d388:b0:bd3:8192:c8ed with SMTP id
- a640c23a62f3a-bd38192d0camr8424866b.34.1778597527658; 
- Tue, 12 May 2026 07:52:07 -0700 (PDT)
+ AFNElJ/kzDjkErr2BxsZFQuLF2sCcxJgNnoZdOYIIKDXTK9zhi9B6AFr8hJlMNd2Cv0ubITjFd7hzPlBWQ==@nongnu.org
+X-Gm-Message-State: AOJu0YweNZIt5ceu5xZGe0RcBtCBp8KVnynh2dCe1JyBW2+ga47gcnYf
+ UdpoJjWcSAULrlW0EhdXaqIhGEAQr5qQHWQargPY7r1ej9GaVKr+edLTcwNFhiNCi4sn/YaU8Ht
+ cPf70mihHuvBtMtjv05+eebLjiuYbB8CGXqKvza4LSvt06yhIE83Hng==
+X-Gm-Gg: Acq92OHO3adzCTk5+avOqLRIJux6/dMEy9Li7NrAPcpcUElNaKx6xYppD730SRj/nS1
+ HO4PwRfb3YdVoDL1WL9NnaGP1KSUm5WMZnEB4luqfE+dxFfVYSEM7JEtHKT1UGBUQYsTtICVGm3
+ FjlB5vX3SwUNTHPudHmjCIQXVKjttwD9f810VA2KdGixg4qSeGpMG+v7eY/gcOmm0UVEh3PHqv1
+ s45r2y+kBIOgN2yKtdsgCJtIF8kQp4XBvGRdEQXZyseQvLoyyHx3ok0KVAzZOAriasioKKdIq5d
+ xqSxh6KjDpolXLquwkIaNHwO0FD0HhUFWw3o44z6YZftE/DLiHztGmu6zGBDFzONjIL9Oj5L7Nv
+ WzmxO+bAAezk6cRTBRinEKU/KXGtAauecZZJLnbIAiWBFj/lk/IjXCuwS652Ub+gcvgLrcA==
+X-Received: by 2002:a05:600c:8214:b0:48a:6268:18a9 with SMTP id
+ 5b1f17b1804b1-48e706b262amr240043235e9.13.1778598753991; 
+ Tue, 12 May 2026 08:12:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:8214:b0:48a:6268:18a9 with SMTP id
+ 5b1f17b1804b1-48e706b262amr240042675e9.13.1778598753531; 
+ Tue, 12 May 2026 08:12:33 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-67ef0dfd367sm5202207a12.17.2026.05.12.07.52.05
+ ffacd0b85a97d-45491f8d4c3sm33029374f8f.34.2026.05.12.08.12.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2026 07:52:06 -0700 (PDT)
-Message-ID: <9e1ef1c6-3ae1-4952-a295-147c1dfe82de@redhat.com>
-Date: Tue, 12 May 2026 16:52:05 +0200
+ Tue, 12 May 2026 08:12:33 -0700 (PDT)
+Message-ID: <7678a671-db5e-43dc-b38f-1376bb0459e9@redhat.com>
+Date: Tue, 12 May 2026 17:12:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 04/17] arm/cpu: Add infra to handle generated ID
- register definitions
+Subject: Re: [PATCH v4 08/17] target/arm/kvm: Introduce
+ kvm_get_writable_id_regs
 To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
  "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -100,16 +100,16 @@ Cc: "maz@kernel.org" <maz@kernel.org>,
  "abologna@redhat.com" <abologna@redhat.com>,
  "jdenemar@redhat.com" <jdenemar@redhat.com>
 References: <20260503073541.790215-1-eric.auger@redhat.com>
- <20260503073541.790215-5-eric.auger@redhat.com>
- <CH3PR12MB7548456E92BB5137C5B5846FAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20260503073541.790215-9-eric.auger@redhat.com>
+ <CH3PR12MB75488AAC8601BD74D6095FA6AB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB7548456E92BB5137C5B5846FAB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <CH3PR12MB75488AAC8601BD74D6095FA6AB3C2@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: r3bsSslAb7IJ6IuIFang0J8FlGBjam8rvd7v7Xoqg2Q_1778597528
+X-Mimecast-MFC-PROC-ID: KjhX011t70ha2xhc2Jy8aBzGvC7e4kGTIJTsel_TUo4_1778598754
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -118,7 +118,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,7 +137,7 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 5/7/26 10:58 AM, Shameer Kolothum Thodi wrote:
+On 5/7/26 12:07 PM, Shameer Kolothum Thodi wrote:
 >
 >> -----Original Message-----
 >> From: Eric Auger <eric.auger@redhat.com>
@@ -150,193 +150,154 @@ On 5/7/26 10:58 AM, Shameer Kolothum Thodi wrote:
 >> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
 >> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
 >> jdenemar@redhat.com
->> Subject: [PATCH v4 04/17] arm/cpu: Add infra to handle generated ID register
->> definitions
+>> Subject: [PATCH v4 08/17] target/arm/kvm: Introduce
+>> kvm_get_writable_id_regs
 >>
 >> External email: Use caution opening links or attachments
 >>
 >>
->> The known ID regs are populated in a new initialization function
->> named initialize_cpu_sysreg_properties(). That code will be
->> automatically generated from AARCHMRS Registers.json. For the
->> time being let's just describe a single id reg, CTR_EL0. In this
->> description we only care about non RES/RAZ fields, ie. named fields.
+>> From: Cornelia Huck <cohuck@redhat.com>
 >>
->> The registers are populated in an array indexed by ARMIDRegisterIdx
->> and their fields are added in a sorted list.
+>> Add an helper to retrieve the writable id reg bitmask. The
+>> status of the query is stored in the CPU struct so that an
+>> an error, if any, can be reported on vcpu realize().
 >>
->> [CH: adapted to reworked register storage]
 >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 >> ---
->>  target/arm/cpu-idregs.h            | 59 ++++++++++++++++++++++++++++++
->>  target/arm/cpu-sysreg-properties.c | 30 +++++++++++++++
->>  target/arm/cpu64.c                 |  3 ++
->>  target/arm/meson.build             |  3 +-
->>  4 files changed, 94 insertions(+), 1 deletion(-)
->>  create mode 100644 target/arm/cpu-idregs.h
->>  create mode 100644 target/arm/cpu-sysreg-properties.c
+>>  target/arm/cpu.h     | 26 ++++++++++++++++++++++++++
+>>  target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++++
+>>  target/arm/kvm_arm.h |  3 +++
+>>  3 files changed, 61 insertions(+)
 >>
->> diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
->> new file mode 100644
->> index 0000000000..4a9034594d
->> --- /dev/null
->> +++ b/target/arm/cpu-idregs.h
->> @@ -0,0 +1,59 @@
->> +/*
->> + * handle ID registers and their fields
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +#ifndef ARM_CPU_CUSTOM_H
->> +#define ARM_CPU_CUSTOM_H
-> ARM_CPU_IDREGS_H ?
-indeed: TARGET_ARM_CPU_IDREGS__H
->
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/error-report.h"
->> +#include "cpu.h"
->> +#include "cpu-sysregs.h"
->> +
->> +typedef struct ARM64SysRegField {
->> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
->> +    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
->> +    int lower; /* lowest bit number of the field in the register */
->> +    int upper; /* highest bit number */
->> +} ARM64SysRegField;
->> +
->> +typedef struct ARM64SysReg {
->> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
->> +    ARMSysRegs sysreg;
->> +    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
->> +    GList *fields; /* list of named fields, excluding RES* */
->> +} ARM64SysReg;
->> +
->> +void initialize_cpu_sysreg_properties(void);
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index be14a47c35..2aa22360d2 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -866,6 +866,26 @@ typedef struct {
+>>      uint32_t map, init, supported;
+>>  } ARMVQMap;
+>>
+>> +typedef enum ARMIdRegsState {
+>> +    WRITABLE_ID_REGS_UNKNOWN,
+>> +    WRITABLE_ID_REGS_NOT_DISCOVERABLE,
+>> +    WRITABLE_ID_REGS_FAILED,
+>> +    WRITABLE_ID_REGS_AVAIL,
+>> +} ARMIdRegsState;
 >> +
 >> +/*
->> + * List of exposed ID regs (automatically populated from AARCHMRS
->> Registers.json)
+>> + * The following structures are for the purpose of mapping the output of
+>> + * KVM_ARM_GET_REG_WRITABLE_MASKS that also may cover id registers
+>> we do
+>> + * not support in QEMU
+>> + * ID registers in op0==3, op1=={0,1,3}, crn=0, crm=={0-7}, op2=={0-7},
+>> + * as used by the KVM_ARM_GET_REG_WRITABLE_MASKS ioctl call.
 >> + */
->> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
->> +
->> +/* Allocate a new field and insert it at the head of the @reg list */
-> It says insert at the head...
->
->> +static inline GList *arm64_sysreg_add_field(ARM64SysReg *reg, const char
->> *name,
->> +                                     uint8_t min, uint8_t max) {
->> +
->> +     ARM64SysRegField *field = g_new0(ARM64SysRegField, 1);
->> +
->> +     field->name = name;
->> +     field->lower = min;
->> +     field->upper = max;
->> +     field->index = reg->index;
->> +
->> +     reg->fields = g_list_append(reg->fields, field);
-> But this is adding to the tail, right?
-indeed use prepend instead
->
->> +     return reg->fields;
-> Don't think the return is used anywhere.
-now becoming static inline void 
+>> +#define NR_ID_REG_MASKS (3 * 8 * 8)
+> Probably can re-use KVM_ARM_FEATURE_ID_RANGE_SIZE here.
+> Looks like used for the same purpose in:
+> tools/testing/selftests/kvm/arm64/set_id_regs.c
 
-arm64_sysreg_add_field()
+removed. The writable_map array is now dynamically allocated in
+kvm_arch_init_vcpu()
 
 Thanks
 
 Eric
-
 >
 > Thanks,
 > Shameer
->
->> +}
 >> +
->> +static inline ARM64SysReg *arm64_sysreg_get(ARMIDRegisterIdx index)
->> +{
->> +        ARM64SysReg *reg = &arm64_id_regs[index];
+>> +typedef struct IdRegMap {
+>> +    uint64_t regs[NR_ID_REG_MASKS]; /* writable masks for registers */
+>> +} IdRegMap;
 >> +
->> +        reg->index = index;
->> +        reg->sysreg = id_register_sysreg[index];
->> +        return reg;
->> +}
->> +
->> +#endif
->> diff --git a/target/arm/cpu-sysreg-properties.c b/target/arm/cpu-sysreg-
->> properties.c
->> new file mode 100644
->> index 0000000000..5cc06c8f24
->> --- /dev/null
->> +++ b/target/arm/cpu-sysreg-properties.c
->> @@ -0,0 +1,30 @@
->> +/*
->> + * QEMU ARM CPU SYSREG PROPERTIES
->> + * will be automatically generated
->> + *
->> + * Copyright (c) Red Hat, Inc. 2026
->> + *
->> + */
->> +
->> + /* SPDX-License-Identifier: GPL-2.0-or-later */
->> +
->> +#include "cpu-idregs.h"
->> +
->> +ARM64SysReg arm64_id_regs[NUM_ID_IDX];
->> +
->> +void initialize_cpu_sysreg_properties(void)
->> +{
->> +    memset(arm64_id_regs, 0, sizeof(ARM64SysReg) * NUM_ID_IDX);
->> +    /* CTR_EL0 */
->> +    ARM64SysReg *CTR_EL0 = arm64_sysreg_get(CTR_EL0_IDX);
->> +    CTR_EL0->name = "CTR_EL0";
->> +    arm64_sysreg_add_field(CTR_EL0, "TminLine", 32, 37);
->> +    arm64_sysreg_add_field(CTR_EL0, "DIC", 29, 29);
->> +    arm64_sysreg_add_field(CTR_EL0, "IDC", 28, 28);
->> +    arm64_sysreg_add_field(CTR_EL0, "CWG", 24, 27);
->> +    arm64_sysreg_add_field(CTR_EL0, "ERG", 20, 23);
->> +    arm64_sysreg_add_field(CTR_EL0, "DminLine", 16, 19);
->> +    arm64_sysreg_add_field(CTR_EL0, "L1Ip", 14, 15);
->> +    arm64_sysreg_add_field(CTR_EL0, "IminLine", 0, 3);
->> +}
->> +
->> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
->> index a93ad2da5a..b940842d9e 100644
->> --- a/target/arm/cpu64.c
->> +++ b/target/arm/cpu64.c
->> @@ -37,6 +37,7 @@
->>  #include "hw/core/qdev-properties.h"
->>  #include "internals.h"
->>  #include "cpu-features.h"
->> +#include "cpu-idregs.h"
+>>  /* REG is ID_XXX */
+>>  #define FIELD_DP64_IDREG(ISAR, REG, FIELD, VALUE)                       \
+>>      ({                                                                  \
+>> @@ -1054,6 +1074,12 @@ struct ArchCPU {
+>>       */
+>>      bool host_cpu_probe_failed;
 >>
->>  /* convert between <register>_IDX and SYS_<register> */
->>  #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
->> @@ -906,6 +907,8 @@ static void aarch64_cpu_register_types(void)
+>> +    /*
+>> +     * state of writable id regs query used to report an error, if any,
+>> +     * on vcpu model realize
+>> +     */
+>> +    ARMIdRegsState writable_id_regs_status;
+>> +
+>>      /* QOM property to indicate we should use the back-compat CNTFRQ
+>> default */
+>>      bool backcompat_cntfrq;
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index d4a68874b8..f06a60804d 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -51,6 +51,7 @@ const KVMCapabilityInfo
+>> kvm_arch_required_capabilities[] = {
+>>  static bool cap_has_mp_state;
+>>  static bool cap_has_inject_serror_esr;
+>>  static bool cap_has_inject_ext_dabt;
+>> +static int cap_writable_id_regs;
+>>
+>>  /**
+>>   * ARMHostCPUFeatures: information about the host CPU (identified
+>> @@ -499,6 +500,37 @@ void
+>> kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+>>      env->features = arm_host_cpu_features.features;
+>>  }
+>>
+>> +int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
+>> +{
+>> +    struct reg_mask_range range = {
+>> +        .range = 0, /* up to now only a single range is supported */
+>> +        .addr = (uint64_t)idregmap,
+>> +    };
+>> +    int ret;
+>> +
+>> +    if (!kvm_enabled()) {
+>> +        cpu->writable_id_regs_status =
+>> WRITABLE_ID_REGS_NOT_DISCOVERABLE;
+>> +        return -ENOSYS;
+>> +    }
+>> +
+>> +    cap_writable_id_regs =
+>> +        kvm_check_extension(kvm_state,
+>> KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
+>> +
+>> +    if (!cap_writable_id_regs ||
+>> +        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
+>> +        cpu->writable_id_regs_status =
+>> WRITABLE_ID_REGS_NOT_DISCOVERABLE;
+>> +        return -ENOSYS;
+>> +    }
+>> +
+>> +    ret = kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS,
+>> &range);
+>> +    if (ret) {
+>> +        cpu->writable_id_regs_status = WRITABLE_ID_REGS_FAILED;
+>> +        return ret;
+>> +     }
+>> +    cpu->writable_id_regs_status = WRITABLE_ID_REGS_AVAIL;
+>> +    return ret;
+>> +}
+>> +
+>>  static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
 >>  {
->>      size_t i;
+>>      return !ARM_CPU(obj)->kvm_adjvtime;
+>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+>> index e7c40fb003..b22a56fc17 100644
+>> --- a/target/arm/kvm_arm.h
+>> +++ b/target/arm/kvm_arm.h
+>> @@ -240,4 +240,7 @@ void arm_gic_cap_kvm_probe(GICCapability *v2,
+>> GICCapability *v3);
+>>   */
+>>  char *kvm_print_register_name(uint64_t regidx);
 >>
->> +    initialize_cpu_sysreg_properties();
+>> +typedef struct IdRegMap IdRegMap;
+>> +int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap);
 >> +
->>      for (i = 0; i < ARRAY_SIZE(aarch64_cpus); ++i) {
->>          arm_cpu_register(&aarch64_cpus[i]);
->>      }
->> diff --git a/target/arm/meson.build b/target/arm/meson.build
->> index 192ac7c31e..e2f740e48f 100644
->> --- a/target/arm/meson.build
->> +++ b/target/arm/meson.build
->> @@ -9,7 +9,8 @@ arm_user_ss.add(files('gdbstub.c'))
->>
->>  arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
->>    'cpu64.c',
->> -  'gdbstub64.c'
->> +  'gdbstub64.c',
->> +  'cpu-sysreg-properties.c',
->>  ))
->>
->>  arm_common_ss.add(files(
+>>  #endif
 >> --
 >> 2.53.0
 

@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC95FCD4855
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:39:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851FACD4851
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:40:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMjZy-0008Jq-Oa; Tue, 12 May 2026 05:39:06 -0400
+	id 1wMjZy-0008JU-0b; Tue, 12 May 2026 05:39:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZx-0008J0-90
- for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:05 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1wMjZw-0008IQ-0R
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:04 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZv-0004oJ-05
- for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:04 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-44a044cb827so4144602f8f.0
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:39:02 -0700 (PDT)
+ id 1wMjZt-0004nR-3N
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:03 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43fe62837baso2730553f8f.3
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:39:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778578741; x=1779183541; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778578739; x=1779183539; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=mMiEiZELjpk4cjktkRPxm3pXmOfuJINIuLF6ke/BYnY=;
- b=Ww6nj7r+t875hB1Md7FTtM8s6SFSrCKPQEELMSHmSudUj6y2sKyq5SaYFQQK+ge+yJ
- jYS3g2821zIOnDRWgO7aKU3YZLY+Rj1L3T2yZfiHXPfIpZ3BSUm7FjpE5hFTwovxeYXs
- E86J8SeNa2qW4pOGqfhsHvl0SgyjVFZwTATjz/7SIsczGtUJHzWx0teiV067BbrpAr5Z
- SO41G04MWdXC04bPHzCSXvkDF8crIhhwAWckNTnZHoZFg+LfUiD/5S7IuYmDhTHL4REs
- XM90O5+32Xa1SeelmArQjhJrOcaj2UiEnS0XgjjlBPD13BowlV1McGgST7Vc6eE8QX7W
- jJgg==
+ :reply-to; bh=2x1gTXoUQl7esPZgHPEC5mc0dO4FVec/dPz764aIyC0=;
+ b=lpEhRVBLsSgidoY92X0KgDsSA+bhZ7SOsxknDzRrQHdVRqQq3ivBDWG/OiCFQMNWeI
+ AJkrrwenR2AZQc+/tNxRt3cNcaiKNoAe5EoFx6V8109n3dNMnyWrUy+WiOWyh2ZrJ+4k
+ GEgG2fuecJsaSc0kPulLOhy7kIOBlfMIwmso3P/1A+l3URtB6CIfQMjYrpv3pbxXyHE5
+ MBt3K2dUeT4zAF96K6TZnvkkeQT493F1kcpHeRbt2Pn3OSLYGxPH7vGiuUWDAC2NkHT5
+ iIEHf2pySPXmASSxilpTINU/nGXkZ5p2W7GEDJwSPPCWQnaVWNH6qYrzrVfYx5cdA6TQ
+ SJ+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778578741; x=1779183541;
+ d=1e100.net; s=20251104; t=1778578739; x=1779183539;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=mMiEiZELjpk4cjktkRPxm3pXmOfuJINIuLF6ke/BYnY=;
- b=ekwWIIsB2+tWO7EQq+FqRtnnWU2EcUI5xKWKVa+2bKD5zMuekwr3OjLEWtNXHppxOK
- fEmhaQ/nHUC4G7IaVlsrFP8OQvKQTE6wQD/r8zmrJxxyey1zpy3mFKMOUrpp/N71FE2w
- cwtGiZnx/ym3bcE3oKtLfvb4Ek92KVjJiIpkqiySgGnJgNMZt5eF73LzA503TYflmjhv
- y8PNDll7d68Dp82n+GGLM00JZBjaLu6zHS6lx1Cc7REaGuGQkRN2lWJb8oAbsZDvOWaz
- W6YoBmalPGlimvQrV+ITX8SLlbpiE7mawJ07w8X75IbCdxCtKYm7aFt7GF5B8vwYKNxv
- RoTg==
-X-Gm-Message-State: AOJu0YzOttO7z0ZMPkV7qMJUSes2iDdBDpndp+wgthMyFvMAmiHfsn9w
- fuYRzkubWF6RjzeUqtQvnbA51ak0hgrhRHnnUZgRIDCeHedpifm0lxm7XHXtJuXcs/lovEqmYEw
- oORP9
-X-Gm-Gg: Acq92OFOHHQJS5FUTZiF4iVFUtoXpIN0Cbkx1KFWj3q82skrtvKkZmkOUsOZsRHsh0a
- nrgKR74EIRQSIQyc4Ddj2lH2ayGk3BLtOWEm0Bhh9Cv2OQTX3fH0XCxXi4cFllSJKu2LODXzGzR
- QN5BWv/7kN1OBSKxapwMPSYoFV7BwyHCJaEijBKNMpyM3BN2Yo5B34/SHUslW5/ZL9m2SXrfkyd
- 5JSPh3xVm5qQx1FcWYhbkJ4F2JViOc96mzoAUy721LkHFVjdE3E6fKNIlxMs4MnjuERhd+jWkgN
- mLPevcPFdBw198L4mnJvlwWfu1oAtH6jLAwYY5wGSS0R30i4qZWRTvaCLzgUpFFMbyLQL06UDPP
- YXTfCDUXvHC298SoQqIWpk1rOCFvznXmQt1Vr5aaC4zfOXJSkMvPKZ6qcl6oVCoCWhFtPGdxDYO
- sjMlA0GFj6PiJxppekUhQ1ynrg8wrZWFVAnA6DqHAoVIjfXyBGuUfLTpBeHbwKUVZblhPjOLEGK
- 3NSBp78jKr8kb3NaZLIUxpa5UNJ0H4=
-X-Received: by 2002:a05:6000:1868:b0:44f:da54:da6c with SMTP id
- ffacd0b85a97d-4515ce1c84emr47414188f8f.26.1778578741504; 
- Tue, 12 May 2026 02:39:01 -0700 (PDT)
+ bh=2x1gTXoUQl7esPZgHPEC5mc0dO4FVec/dPz764aIyC0=;
+ b=dzVax9E1in5Up6HIylnGAVrHloxzJupG5rOYWYvE4HMiD4KVqeCJqdgRUoI0bDjuOq
+ cHavcBaLR4LdKgnDc+6LDLwGMbb/yBkgLs2xN48Z5R5Wd5CSU7lsvhCX2l+KWqU+AStm
+ ApQlaNROA1wv5FQv3eCgWoH4/0suHWKBnbep3sAh69JLEQoMW88r2+7VnDJDMCAVBVa2
+ ki/rCkrcVwZZ0wFl27lql71ZiO0GTUhqdGZOj6NB4cS2okqPq1oCasAG457wZb9Y1xnI
+ hSqFHmuSAdk37u5Z/yxFP5cfyUiix2vJSORM3WjmlyEZmVNbAWAJ8asvH3CGvKNXGQOi
+ /mEg==
+X-Gm-Message-State: AOJu0YzFiM+4NyFk1ESDC0CiL8TCibrNrvUnJoE0zxKKaUcRIQ/lgC7s
+ X64Cg1MWbKzSy0SrP9Yv1fodsXYivqPWpncw54L3HRsNm1FY2pYw0oH3e9J5yzCAwF7wwTf1ChR
+ Wkog9
+X-Gm-Gg: Acq92OGEpjB80oy3vQwfOElVLkHr2FCDGpDgjw6uuLQVADPxneIMwBwcbfBMSvAzPxF
+ AZQdQf/vEcBWHBIW84bCsBgeP/KLYJJO8/MpfyzXPUO9CVwhnw23Y/jk32yhDwRHTu4Vti4pNEr
+ WvwuiZRCH/+F6/QqHGe8U2Pfiz+GgLUWOFos8yyxgTZjMC+WGFVXIE4EXvPnDzFX+NnKwtSl66e
+ E0R6nyKczLD0cZ4TJK5EiqgxWRKdRiqkaZzRvU0icqE6+6tm6M7x4SwcpQP1ahhlkZE3NAockZz
+ r85X4Q5r267mYTfSrLkZ3CbdMyXewtclrwL0exdVhHAXvBh5nsFK+y0SzdalkgtoomP4doz4Mwe
+ uikmrXyIIeNJcburRV8e570q7PSXnUqBqbzYuZOEqfX0rUpxdfJzjO2HqKQDQ8ap65Shmnf/nHO
+ h8tgj89NpSp6sGUDx+Ud2h4bGzRYfrZQwqny386qLgpfuc7l6ZZY2AtrdtHEGA5Irjwp/8Bq0oa
+ S5B4miEbMOr88RfwdtT0MKisvr1lPs=
+X-Received: by 2002:a05:6000:1acc:b0:43d:7883:87ce with SMTP id
+ ffacd0b85a97d-45b1441c919mr3176486f8f.34.1778578739359; 
+ Tue, 12 May 2026 02:38:59 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.39.00
+ ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.38.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2026 02:39:00 -0700 (PDT)
+ Tue, 12 May 2026 02:38:58 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 3/4] hw/intc/arm_gicv5: Avoid NULL dereference in trace line
-Date: Tue, 12 May 2026 10:38:55 +0100
-Message-ID: <20260512093856.3197700-4-peter.maydell@linaro.org>
+Subject: [PATCH 1/4] target/arm: GICv5 cpuif: Fix overflow in left shift
+Date: Tue, 12 May 2026 10:38:53 +0100
+Message-ID: <20260512093856.3197700-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260512093856.3197700-1-peter.maydell@linaro.org>
 References: <20260512093856.3197700-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,35 +100,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the handling of writes to the IRS_SPI_RESAMPLER register,
-we call a trace function, passing it information about the SPI
-being resampled. However, spi could be NULL if the guest tried
-to resample a nonexistent SPI or one configured for a different
-domain. Move the trace statement inside the "if (spi)" block,
-as it's only interesting trace if we actually did a resample
-and potentially changed the state of the SPI.
+Coverity points out that we forgot the "ULL" suffix when shifting 1
+right by a bitcount in various places, so for bit counts above 31 we
+end up shifting off the end of the word.  Fix the three problems
+Coverity noticed and one more of the same kind that it didn't.
 
-CID: 1959593
-Fixes: 33185e1d64e ("hw/intc/arm_gicv5: Update SPI state for CLEAR/SET events")
+CID: 1659588, 1659591, 1659559
+Fixes: ce245ac6957 ("target/arm: GICv5 cpuif: Calculate the highest priority PPI")
+Fixes: 3f79212abae ("target/arm: GICv5 cpuif: Implement GICR CDIA command")
+Fixes: 49f4c98648c ("target/arm: GICv5 cpuif: Implement GIC CDDI")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/arm/tcg/gicv5-cpuif.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 493d664625..7ad274e369 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -1643,8 +1643,8 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-         if (spi) {
-             spi_sample(spi);
-             irs_recalc_hppi(s, spi->domain, spi->iaffid);
-+            trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
+diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
+index bc44a7fc11..98238ada19 100644
+--- a/target/arm/tcg/gicv5-cpuif.c
++++ b/target/arm/tcg/gicv5-cpuif.c
+@@ -275,7 +275,7 @@ static void gic_recalc_ppi_hppi(CPUARMState *env)
+             int ppi;
+             int bit = ctz64(en_pend_nact);
+ 
+-            en_pend_nact &= ~(1 << bit);
++            en_pend_nact &= ~(1ULL << bit);
+ 
+             ppi = i * 64 + bit;
+             prio = extract64(env->gicv5_cpuif.ppi_priority[ppi / 8],
+@@ -631,7 +631,7 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
+      * gicv5_activate() cause a re-evaluation of HPPIs they use the
+      * right (new) running priority.
+      */
+-    env->gicv5_cpuif.icc_apr[domain] |= (1 << hppi.prio);
++    env->gicv5_cpuif.icc_apr[domain] |= (1ULL << hppi.prio);
+     switch (type) {
+     case GICV5_PPI:
+     {
+@@ -639,7 +639,7 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ 
+         assert(id < GICV5_NUM_PPIS);
+         ppireg = id / 64;
+-        ppibit = 1 << (id % 64);
++        ppibit = 1ULL << (id % 64);
+ 
+         env->gicv5_cpuif.ppi_active[ppireg] |= ppibit;
+         if (!(env->gicv5_cpuif.ppi_hm[ppireg] & ppibit)) {
+@@ -707,7 +707,7 @@ static void gic_cddi_write(CPUARMState *env, const ARMCPRegInfo *ri,
          }
--        trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
-         return true;
-     }
-     case A_IRS_CR0:
+ 
+         ppireg = id / 64;
+-        ppibit = 1 << (id % 64);
++        ppibit = 1ULL << (id % 64);
+ 
+         env->gicv5_cpuif.ppi_active[ppireg] &= ~ppibit;
+         gic_recalc_ppi_hppi(env);
 -- 
 2.43.0
 

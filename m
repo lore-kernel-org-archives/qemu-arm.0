@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 851FACD4851
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE575CD4855
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:40:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMjZy-0008JU-0b; Tue, 12 May 2026 05:39:06 -0400
+	id 1wMjZz-0008K8-9x; Tue, 12 May 2026 05:39:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZw-0008IQ-0R
- for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:04 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1wMjZw-0008IY-6u
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:05 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZt-0004nR-3N
+ id 1wMjZu-0004nv-1z
  for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:03 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-43fe62837baso2730553f8f.3
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:39:00 -0700 (PDT)
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-44ccbd3290aso4169297f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:39:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778578739; x=1779183539; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778578740; x=1779183540; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=2x1gTXoUQl7esPZgHPEC5mc0dO4FVec/dPz764aIyC0=;
- b=lpEhRVBLsSgidoY92X0KgDsSA+bhZ7SOsxknDzRrQHdVRqQq3ivBDWG/OiCFQMNWeI
- AJkrrwenR2AZQc+/tNxRt3cNcaiKNoAe5EoFx6V8109n3dNMnyWrUy+WiOWyh2ZrJ+4k
- GEgG2fuecJsaSc0kPulLOhy7kIOBlfMIwmso3P/1A+l3URtB6CIfQMjYrpv3pbxXyHE5
- MBt3K2dUeT4zAF96K6TZnvkkeQT493F1kcpHeRbt2Pn3OSLYGxPH7vGiuUWDAC2NkHT5
- iIEHf2pySPXmASSxilpTINU/nGXkZ5p2W7GEDJwSPPCWQnaVWNH6qYrzrVfYx5cdA6TQ
- SJ+A==
+ :reply-to; bh=0KudvLHguH9tRc9Lgq+2mRst/v85r9PXfkOE55p48us=;
+ b=oAAH7RPpQBnPLJxL8z8k+3VOC7Yzxym1W9CWMDWkis0WukHLwIjZ+t0jeXi4Kld+MX
+ 2qaT3bQfNDUFugW4k6J+t/2LtC1PPW89/Jp2ubDuYCcm8fv6cL7zpRzHhS8NccAh8r8g
+ Gah5ciMxdRODR08eaNCmyGOX07RwDPYObLDryKYwY7PxJT/UcnJZOI3s4+R2fMo55T0C
+ dVA6OmYHwBEHpDVy20yn0MZkSBZBtqW2+qzISAAAbjS7gnFUwKViSQRSkvVnUpdOKiiv
+ 6/1C+BmPWpUNdhTdCCY5n3YdXWFlsuglO93uXpELKBKXNXGGMfPoixRXNckOnthMFV0I
+ gNmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778578739; x=1779183539;
+ d=1e100.net; s=20251104; t=1778578740; x=1779183540;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=2x1gTXoUQl7esPZgHPEC5mc0dO4FVec/dPz764aIyC0=;
- b=dzVax9E1in5Up6HIylnGAVrHloxzJupG5rOYWYvE4HMiD4KVqeCJqdgRUoI0bDjuOq
- cHavcBaLR4LdKgnDc+6LDLwGMbb/yBkgLs2xN48Z5R5Wd5CSU7lsvhCX2l+KWqU+AStm
- ApQlaNROA1wv5FQv3eCgWoH4/0suHWKBnbep3sAh69JLEQoMW88r2+7VnDJDMCAVBVa2
- ki/rCkrcVwZZ0wFl27lql71ZiO0GTUhqdGZOj6NB4cS2okqPq1oCasAG457wZb9Y1xnI
- hSqFHmuSAdk37u5Z/yxFP5cfyUiix2vJSORM3WjmlyEZmVNbAWAJ8asvH3CGvKNXGQOi
- /mEg==
-X-Gm-Message-State: AOJu0YzFiM+4NyFk1ESDC0CiL8TCibrNrvUnJoE0zxKKaUcRIQ/lgC7s
- X64Cg1MWbKzSy0SrP9Yv1fodsXYivqPWpncw54L3HRsNm1FY2pYw0oH3e9J5yzCAwF7wwTf1ChR
- Wkog9
-X-Gm-Gg: Acq92OGEpjB80oy3vQwfOElVLkHr2FCDGpDgjw6uuLQVADPxneIMwBwcbfBMSvAzPxF
- AZQdQf/vEcBWHBIW84bCsBgeP/KLYJJO8/MpfyzXPUO9CVwhnw23Y/jk32yhDwRHTu4Vti4pNEr
- WvwuiZRCH/+F6/QqHGe8U2Pfiz+GgLUWOFos8yyxgTZjMC+WGFVXIE4EXvPnDzFX+NnKwtSl66e
- E0R6nyKczLD0cZ4TJK5EiqgxWRKdRiqkaZzRvU0icqE6+6tm6M7x4SwcpQP1ahhlkZE3NAockZz
- r85X4Q5r267mYTfSrLkZ3CbdMyXewtclrwL0exdVhHAXvBh5nsFK+y0SzdalkgtoomP4doz4Mwe
- uikmrXyIIeNJcburRV8e570q7PSXnUqBqbzYuZOEqfX0rUpxdfJzjO2HqKQDQ8ap65Shmnf/nHO
- h8tgj89NpSp6sGUDx+Ud2h4bGzRYfrZQwqny386qLgpfuc7l6ZZY2AtrdtHEGA5Irjwp/8Bq0oa
- S5B4miEbMOr88RfwdtT0MKisvr1lPs=
-X-Received: by 2002:a05:6000:1acc:b0:43d:7883:87ce with SMTP id
- ffacd0b85a97d-45b1441c919mr3176486f8f.34.1778578739359; 
- Tue, 12 May 2026 02:38:59 -0700 (PDT)
+ bh=0KudvLHguH9tRc9Lgq+2mRst/v85r9PXfkOE55p48us=;
+ b=a/OomD0AFumYDVGMoKve/8NXYUDwt63Y+uPEEXn7GANIgeDhbSTgsLOaJuCy9+2vzF
+ BsH5Wu4Lu4M+uLabQphd52L5f5+8VqfWHCa1GPjksuNiwfA9QNRYssrZyKL2LOXvV8G5
+ E8+mS2gjlbiag6Qtg+FLZpS1Qx6j9c0r10caIKH/50q5IfqVyOoD9WqAGc0yLxIRVC8v
+ 2XFYkTiEssRV5sjI5ZnJSC2eL4+qEYZZcVG8hDZ21A1K+ae7JSMm0r7U4fkJqAdZsBiQ
+ kYc4PHxLJJcEaGI9xMVRFhk1E89SABU/H/dWrf3xL4Lu5LGdmrRy6VkZRiumTj0wRVUQ
+ rJCA==
+X-Gm-Message-State: AOJu0YwMwF9c0RjQvqhg6+ATkFyt/a6iAybhwAUBZc8t3tyyMGFrofwV
+ JgbY+4RxAVjNkuRmFQiEZvZofGoNzW8YFMQT/82M/qrfZdRSwsuFhFTsvSzwUBOMudIr91cTiHX
+ aBQOM
+X-Gm-Gg: Acq92OGtwwbIqxvMYdYLk5+AP0rf7i9gIGd5GmVDJbAc9d4lP+uAhFItq8u0wIfY5lj
+ yV4IYJXRld0unW5with6vdL8ZdZwgA+1aTP1uCY6JIuD4sDmmjrRQ5AZr+pDXKJeZUR8g/EEeUA
+ CQO5obrXbCOpjtH2+9ZpEIhoX6a6iXzUv/ecdQN4bmr6iy/b7SRjOFKjxrza+VCguJpbEKP5v8w
+ X0eTxNejqT6zsEkgmb9fXz0PMIeokSZLYWwozFx0ZSNXYUDoU4AWQAFAzQFmjfuo+ba+IO/AvkX
+ +vC+LXLPPavDJH7HIY3OMm73TVbxANM9GVQVl9n0m85WiB6AbXSolGlpHDHSajw754aaUvW0kzb
+ +KJZa9iAlJvfwHC1p9T93A6UG3J84FbtaCXNRChvcgLd1ss+4mFdArfsmDegWONMlaP7aiqJSNK
+ /DHOOZJykzl1s834iwXXfeVF1xDChIIu7zi+F16z5o/moh9alzyuu1o1p70/EvB9lGfV5RYUtu/
+ cGiTHtcNrNDUwJCqyLtk920buQF+pw=
+X-Received: by 2002:a5d:5850:0:b0:43f:e934:50ac with SMTP id
+ ffacd0b85a97d-45b115c7e50mr3034894f8f.7.1778578740514; 
+ Tue, 12 May 2026 02:39:00 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.38.58
+ ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.38.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2026 02:38:58 -0700 (PDT)
+ Tue, 12 May 2026 02:38:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/4] target/arm: GICv5 cpuif: Fix overflow in left shift
-Date: Tue, 12 May 2026 10:38:53 +0100
-Message-ID: <20260512093856.3197700-2-peter.maydell@linaro.org>
+Subject: [PATCH 2/4] target/arm: GICv5 cpuif: Don't set HPPIV bit in
+ GICv5PendingIrq::intid
+Date: Tue, 12 May 2026 10:38:54 +0100
+Message-ID: <20260512093856.3197700-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260512093856.3197700-1-peter.maydell@linaro.org>
 References: <20260512093856.3197700-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,60 +101,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Coverity points out that we forgot the "ULL" suffix when shifting 1
-right by a bitcount in various places, so for bit counts above 31 we
-end up shifting off the end of the word.  Fix the three problems
-Coverity noticed and one more of the same kind that it didn't.
+In gic_hppi() we return the current highest priority pending
+interrupt in a GICv5PendingIrq struct.  We try to set up the intid
+field of that struct to be the form that is used by the ICC_HPPIR
+register, which has a "valid" bit in bit 33.  Unfortunately the
+GICv5PendingIrq defines the intid field as a uint32_t, so Coverity
+points out that the bit doesn't actually fit.  Move the handling of
+the valid bit to the callsite, and make this function report "no
+pending interrupt" with GICv5PendingIrq::prio == PRIO_IDLE,
+consistently with how we use this struct in other places.
 
-CID: 1659588, 1659591, 1659559
-Fixes: ce245ac6957 ("target/arm: GICv5 cpuif: Calculate the highest priority PPI")
-Fixes: 3f79212abae ("target/arm: GICv5 cpuif: Implement GICR CDIA command")
-Fixes: 49f4c98648c ("target/arm: GICv5 cpuif: Implement GIC CDDI")
+CID: 1659594
+Fixes: 9edad4ff3 ("target/arm: GICv5 cpuif: Implement ICC_HPPIR_EL1")
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/gicv5-cpuif.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/intc/arm_gicv5_types.h |  2 ++
+ target/arm/tcg/gicv5-cpuif.c      | 18 ++++++++++--------
+ 2 files changed, 12 insertions(+), 8 deletions(-)
 
+diff --git a/include/hw/intc/arm_gicv5_types.h b/include/hw/intc/arm_gicv5_types.h
+index eaed42f49f..de4f78a149 100644
+--- a/include/hw/intc/arm_gicv5_types.h
++++ b/include/hw/intc/arm_gicv5_types.h
+@@ -97,6 +97,8 @@ typedef enum GICv5TriggerMode {
+  *
+  * In this struct the intid includes the interrupt type in bits
+  * [31:29] (i.e. it is in the form defined by R_TJPHS).
++ *
++ * "No pending interrupt" is represented by @prio == PRIO_IDLE.
+  */
+ typedef struct GICv5PendingIrq {
+     uint32_t intid;
 diff --git a/target/arm/tcg/gicv5-cpuif.c b/target/arm/tcg/gicv5-cpuif.c
-index bc44a7fc11..98238ada19 100644
+index 98238ada19..dd2f696511 100644
 --- a/target/arm/tcg/gicv5-cpuif.c
 +++ b/target/arm/tcg/gicv5-cpuif.c
-@@ -275,7 +275,7 @@ static void gic_recalc_ppi_hppi(CPUARMState *env)
-             int ppi;
-             int bit = ctz64(en_pend_nact);
- 
--            en_pend_nact &= ~(1 << bit);
-+            en_pend_nact &= ~(1ULL << bit);
- 
-             ppi = i * 64 + bit;
-             prio = extract64(env->gicv5_cpuif.ppi_priority[ppi / 8],
-@@ -631,7 +631,7 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
-      * gicv5_activate() cause a re-evaluation of HPPIs they use the
-      * right (new) running priority.
+@@ -129,10 +129,9 @@ static GICv5PendingIrq gic_hppi(CPUARMState *env, GICv5Domain domain)
+ {
+     /*
+      * Return the current highest priority pending interrupt for the
+-     * specified domain, if it has sufficient priority to preempt. The
+-     * intid field of the return value will be in the format of the
+-     * ICC_HPPIR register (and will be zero if and only if there is no
+-     * interrupt that can preempt).
++     * specified domain, if it has sufficient priority to preempt.
++     * If there is no interrupt that can preempt we signal this by
++     * returning a struct with prio == PRIO_IDLE.
       */
--    env->gicv5_cpuif.icc_apr[domain] |= (1 << hppi.prio);
-+    env->gicv5_cpuif.icc_apr[domain] |= (1ULL << hppi.prio);
-     switch (type) {
-     case GICV5_PPI:
-     {
-@@ -639,7 +639,7 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
  
-         assert(id < GICV5_NUM_PPIS);
-         ppireg = id / 64;
--        ppibit = 1 << (id % 64);
-+        ppibit = 1ULL << (id % 64);
+     GICv5Common *gic = gicv5_get_gic(env);
+@@ -166,7 +165,6 @@ static GICv5PendingIrq gic_hppi(CPUARMState *env, GICv5Domain domain)
+         best.prio >= gic_running_prio(env, domain)) {
+         return (GICv5PendingIrq) { .intid = 0, .prio = PRIO_IDLE };
+     }
+-    best.intid |= R_ICC_HPPIR_EL1_HPPIV_MASK;
+     return best;
+ }
  
-         env->gicv5_cpuif.ppi_active[ppireg] |= ppibit;
-         if (!(env->gicv5_cpuif.ppi_hm[ppireg] & ppibit)) {
-@@ -707,7 +707,7 @@ static void gic_cddi_write(CPUARMState *env, const ARMCPRegInfo *ri,
-         }
+@@ -575,7 +573,12 @@ static uint64_t gic_icc_hppir_el1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     GICv5Domain domain = gicv5_logical_domain(env);
+     GICv5PendingIrq hppi = gic_hppi(env, domain);
+-    return hppi.intid;
++
++    if (hppi.prio == PRIO_IDLE) {
++        /* No valid interrupt */
++        return 0;
++    }
++    return hppi.intid | R_ICC_HPPIR_EL1_HPPIV_MASK;
+ }
  
-         ppireg = id / 64;
--        ppibit = 1 << (id % 64);
-+        ppibit = 1ULL << (id % 64);
+ static bool gic_hppi_is_nmi(CPUARMState *env, GICv5PendingIrq hppi,
+@@ -602,13 +605,12 @@ static uint64_t gicr_cdia_read(CPUARMState *env, const ARMCPRegInfo *ri)
  
-         env->gicv5_cpuif.ppi_active[ppireg] &= ~ppibit;
-         gic_recalc_ppi_hppi(env);
+     bool cdnmia = ri->opc2 == 1;
+ 
+-    if (!hppi.intid) {
++    if (hppi.prio == PRIO_IDLE) {
+         /* No interrupt available to acknowledge */
+         trace_gicv5_gicr_cdia_fail(domain,
+                                    "no available interrupt to acknowledge");
+         return 0;
+     }
+-    assert(hppi.prio != PRIO_IDLE);
+ 
+     if (gic_hppi_is_nmi(env, hppi, domain) != cdnmia) {
+         /* GICR CDIA only acknowledges non-NMI; GICR CDNMIA only NMI */
 -- 
 2.43.0
 

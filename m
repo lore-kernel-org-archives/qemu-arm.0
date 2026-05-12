@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10689CD4851
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:39:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC95FCD4855
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 09:39:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMjZv-0008IE-Ol; Tue, 12 May 2026 05:39:03 -0400
+	id 1wMjZy-0008Jq-Oa; Tue, 12 May 2026 05:39:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZu-0008HN-GP
- for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:02 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1wMjZx-0008J0-90
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:05 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMjZs-0004nB-V0
- for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:02 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-449de065cb3so4804589f8f.2
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:38:59 -0700 (PDT)
+ id 1wMjZv-0004oJ-05
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 05:39:04 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-44a044cb827so4144602f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 02:39:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778578738; x=1779183538; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=0m+7L8s9bvYXTy0H0lp7ALP+WJost942y/rubT7Rl+w=;
- b=i1Rt62DSbZjVOstMnJMSa31IQSh3LlghL6LF/fByTNpHGMEh2QpSKL4ABHCHIBsUmj
- 9N2KyN3ZzOSC/Z2fVHXWZlwh/fr/7OOF5GfAUrgbe4ZvmqcDsYZCsFlGnC1ImNoHirXv
- xoBBzwucs8lxXhmr6BesBKIlVd8Zs7Rg3me9S+sfN0kcoWYFLBhgAsbcOUsxIPO/hC+f
- 6wJw6gGYQh8B95Mf/28fp2Sz5oHsg5CQrnX/T7rfCyEyJLZS0vvxtX5WtRSdHn4rcksB
- m82mX+juE20UJC1mp8ag5Apre3AjxSzK+jsh7jdlC+IJKTNpiOlKZteqJN4DlRtn9QHt
- 6n2A==
+ d=linaro.org; s=google; t=1778578741; x=1779183541; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=mMiEiZELjpk4cjktkRPxm3pXmOfuJINIuLF6ke/BYnY=;
+ b=Ww6nj7r+t875hB1Md7FTtM8s6SFSrCKPQEELMSHmSudUj6y2sKyq5SaYFQQK+ge+yJ
+ jYS3g2821zIOnDRWgO7aKU3YZLY+Rj1L3T2yZfiHXPfIpZ3BSUm7FjpE5hFTwovxeYXs
+ E86J8SeNa2qW4pOGqfhsHvl0SgyjVFZwTATjz/7SIsczGtUJHzWx0teiV067BbrpAr5Z
+ SO41G04MWdXC04bPHzCSXvkDF8crIhhwAWckNTnZHoZFg+LfUiD/5S7IuYmDhTHL4REs
+ XM90O5+32Xa1SeelmArQjhJrOcaj2UiEnS0XgjjlBPD13BowlV1McGgST7Vc6eE8QX7W
+ jJgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778578738; x=1779183538;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0m+7L8s9bvYXTy0H0lp7ALP+WJost942y/rubT7Rl+w=;
- b=kLhwjCcTleExhjgRYvsEeBBC3TKqmwX3RVHuxu0kuif+8whshyaI2jIeiMev+rJM/Y
- M7BhVGrLhGT/VQkc2jr0FeWovwFujZQg//nrvlspBkt0Zy0o6OVM0Lceix06QwypsYKD
- G6ve2fVQ2g282t1yIVItO/sje7XlPlez/xf5tnZUj4wVjXCzW8QqYb1SKB/zr6lH+d+p
- ux/MFz4KE45/tx0RguYWhR9ohtfOGfdjxefZj8TCzaNl+zCORAIFDv8pfNHI5XNUpMaX
- Jjay28NHXs3nSdlg8l84BnTMN/oNiMFpD8EscsQcFCBi7ZeChB83Yitg6xS9VBxq1jfS
- vZyg==
-X-Gm-Message-State: AOJu0YwIuq1Mv37HVftRlVEQFlrEE15e+6J9/ghjyh4hPH2Cp8AX/lRG
- yBw59ikVHnbY5Pp/AB6tuV4bK9jZvi6hNBSD7RHqSd6eyej/bgvg2oqbPcK/+uuo4dIPV82uHf0
- X+r/i
-X-Gm-Gg: Acq92OF9svk2A/lv/lNifyLvqaZDtqfGrI0NMshLCRbHqERb2FMTcTH+7UnI44pxUci
- 123ehVGQrotDVRiv0JMKmAZmtCRxu7FAACFJhLBT2xj0RvnQB6Ost1BEqW1xwwt5l4mhGIEpm/G
- Jc+ASg3gYEthoocmB9p/+bX6GKVLOFr9VhodEhE4MFkj2ugqu7QN5bjbbsRQneSV7UkJ3GZXjdV
- tEkxPZ+LGYQbWyUU5R+A1V4L/BjukT67NBsQIKNLZ3KPrAMpM3ymHRfWX8QLdvIv2la/CA3tFc9
- 96/BM6woNFplQT4yFPPoWXm0HLXRxPBaAKzpqg/rat3SkjDGhlpRPezCf8XGIJwGGBQUBs3797W
- SjA/tLzm5PzJZvNNkPcDXcGH7KKK+6CXUKchDaMhvARolqGPd7rECp2TV2L9eq5MbWRmBJnqcL2
- ljwjFCMkqDZKaCqA9XlybExmAO65pukcpSB9BlOl9MWqOjB8HcFFZWEwOcGAmOMCyOiV6yPo3dr
- Zis34J9aK391ujlj3qNIbkSfviWzjVIKOn0KUFmxg==
-X-Received: by 2002:a05:6000:220e:b0:441:1fa5:457f with SMTP id
- ffacd0b85a97d-4515cf1273emr48843107f8f.28.1778578738178; 
- Tue, 12 May 2026 02:38:58 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1778578741; x=1779183541;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=mMiEiZELjpk4cjktkRPxm3pXmOfuJINIuLF6ke/BYnY=;
+ b=ekwWIIsB2+tWO7EQq+FqRtnnWU2EcUI5xKWKVa+2bKD5zMuekwr3OjLEWtNXHppxOK
+ fEmhaQ/nHUC4G7IaVlsrFP8OQvKQTE6wQD/r8zmrJxxyey1zpy3mFKMOUrpp/N71FE2w
+ cwtGiZnx/ym3bcE3oKtLfvb4Ek92KVjJiIpkqiySgGnJgNMZt5eF73LzA503TYflmjhv
+ y8PNDll7d68Dp82n+GGLM00JZBjaLu6zHS6lx1Cc7REaGuGQkRN2lWJb8oAbsZDvOWaz
+ W6YoBmalPGlimvQrV+ITX8SLlbpiE7mawJ07w8X75IbCdxCtKYm7aFt7GF5B8vwYKNxv
+ RoTg==
+X-Gm-Message-State: AOJu0YzOttO7z0ZMPkV7qMJUSes2iDdBDpndp+wgthMyFvMAmiHfsn9w
+ fuYRzkubWF6RjzeUqtQvnbA51ak0hgrhRHnnUZgRIDCeHedpifm0lxm7XHXtJuXcs/lovEqmYEw
+ oORP9
+X-Gm-Gg: Acq92OFOHHQJS5FUTZiF4iVFUtoXpIN0Cbkx1KFWj3q82skrtvKkZmkOUsOZsRHsh0a
+ nrgKR74EIRQSIQyc4Ddj2lH2ayGk3BLtOWEm0Bhh9Cv2OQTX3fH0XCxXi4cFllSJKu2LODXzGzR
+ QN5BWv/7kN1OBSKxapwMPSYoFV7BwyHCJaEijBKNMpyM3BN2Yo5B34/SHUslW5/ZL9m2SXrfkyd
+ 5JSPh3xVm5qQx1FcWYhbkJ4F2JViOc96mzoAUy721LkHFVjdE3E6fKNIlxMs4MnjuERhd+jWkgN
+ mLPevcPFdBw198L4mnJvlwWfu1oAtH6jLAwYY5wGSS0R30i4qZWRTvaCLzgUpFFMbyLQL06UDPP
+ YXTfCDUXvHC298SoQqIWpk1rOCFvznXmQt1Vr5aaC4zfOXJSkMvPKZ6qcl6oVCoCWhFtPGdxDYO
+ sjMlA0GFj6PiJxppekUhQ1ynrg8wrZWFVAnA6DqHAoVIjfXyBGuUfLTpBeHbwKUVZblhPjOLEGK
+ 3NSBp78jKr8kb3NaZLIUxpa5UNJ0H4=
+X-Received: by 2002:a05:6000:1868:b0:44f:da54:da6c with SMTP id
+ ffacd0b85a97d-4515ce1c84emr47414188f8f.26.1778578741504; 
+ Tue, 12 May 2026 02:39:01 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.38.57
+ ffacd0b85a97d-4548e6a6a64sm32805208f8f.6.2026.05.12.02.39.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2026 02:38:57 -0700 (PDT)
+ Tue, 12 May 2026 02:39:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/4] target/arm: Fix Coverity issues in GICv5 code
-Date: Tue, 12 May 2026 10:38:52 +0100
-Message-ID: <20260512093856.3197700-1-peter.maydell@linaro.org>
+Subject: [PATCH 3/4] hw/intc/arm_gicv5: Avoid NULL dereference in trace line
+Date: Tue, 12 May 2026 10:38:55 +0100
+Message-ID: <20260512093856.3197700-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260512093856.3197700-1-peter.maydell@linaro.org>
+References: <20260512093856.3197700-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -98,23 +100,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Coverity found a handful of bugs in the newly-landed GICv5 code;
-this patchset provides fixes for them.
+In the handling of writes to the IRS_SPI_RESAMPLER register,
+we call a trace function, passing it information about the SPI
+being resampled. However, spi could be NULL if the guest tried
+to resample a nonexistent SPI or one configured for a different
+domain. Move the trace statement inside the "if (spi)" block,
+as it's only interesting trace if we actually did a resample
+and potentially changed the state of the SPI.
 
-thanks
--- PMM
+CID: 1959593
+Fixes: 33185e1d64e ("hw/intc/arm_gicv5: Update SPI state for CLEAR/SET events")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/intc/arm_gicv5.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Peter Maydell (4):
-  target/arm: GICv5 cpuif: Fix overflow in left shift
-  target/arm: GICv5 cpuif: Don't set HPPIV bit in GICv5PendingIrq::intid
-  hw/intc/arm_gicv5: Avoid NULL dereference in trace line
-  hw/intc/arm_gicv5: Add missing early return in gicv5_set_handling()
-
- hw/intc/arm_gicv5.c               |  3 ++-
- include/hw/intc/arm_gicv5_types.h |  2 ++
- target/arm/tcg/gicv5-cpuif.c      | 26 ++++++++++++++------------
- 3 files changed, 18 insertions(+), 13 deletions(-)
-
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index 493d664625..7ad274e369 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -1643,8 +1643,8 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+         if (spi) {
+             spi_sample(spi);
+             irs_recalc_hppi(s, spi->domain, spi->iaffid);
++            trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
+         }
+-        trace_gicv5_spi_state(id, spi->level, spi->pending, spi->active);
+         return true;
+     }
+     case A_IRS_CR0:
 -- 
 2.43.0
 

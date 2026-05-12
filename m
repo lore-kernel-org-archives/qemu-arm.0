@@ -4,87 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5790CD343F
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 20:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E78B9CD343F
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 20:51:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMtoT-0002VX-Bx; Tue, 12 May 2026 16:34:45 -0400
+	id 1wMu4h-000386-Hf; Tue, 12 May 2026 16:51:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMtoC-0002NJ-Is
- for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:35 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wMto5-0002Ll-Rp
- for qemu-arm@nongnu.org; Tue, 12 May 2026 16:34:26 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-48e56c1bf5dso36775405e9.3
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 13:34:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778618059; x=1779222859; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=cEpKJWK5V6JDGRyw7DYJPQ9RxwfD1fQlpX/kpuDU7mw=;
- b=uqHUhGpEllQQWFqohi2RbiYU6QYP6zZrqTXgF+hEnSdxzir3KHsmbZY7OWewweIe7D
- sdemjkjskauCuweR0eREzA/DKhDFc4N8Nk1e8iv86xwCRKX/b2NIInIbujSB30wxaa3g
- XwW1sDM7ax0d559YnzDwRVtSgPTS3jj3YHibBvkHuOvukouFcRem+TVhK3L5rmZiR9/1
- k0pzXZ2Kf4zW/nhjm/aXM8crdg9dXFERlTCK4nw2aw442N4LU1GYCynHta87CWzSxizv
- Ra0yAK3AANOanEH6q1h4Ij6xudUsUBlA6KtVVvFmQ0MF+/4NGl0k0r27MmADdpR+P/JJ
- QwYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778618059; x=1779222859;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=cEpKJWK5V6JDGRyw7DYJPQ9RxwfD1fQlpX/kpuDU7mw=;
- b=crMOI59Y66eKwyEGk0C0L0E30jhHtP9PBt28/JFj1bJ+YgdaTuFW2nPM7ciiu/2/C9
- xOUerhOHGv3IW0RMfWDA9Nn//HoUFsJNBOgtyXaSMfMUrdBEwovaPpqygoE00cCDaTkX
- miC9f44C7tc7anEDa6lzdODkD3wQNboW+Co/CosRUY4UmpuJqRRC5L78Ipey/aG3bgRz
- Hck5LkCbXI4ANDMppBEoC1cipwXR8gp+BCGWMAJE+gGdLGQnk2H65f4/MSNgYqfiI0CC
- B8jLr7/pDj/Ihb70xc3rCVvM55U8hSDGR2hvsdkX7YVouL1TtYJLhUJ9xZMWSP5/AFtb
- o91w==
-X-Gm-Message-State: AOJu0YwRypA7ZJUUDjOJt5rRaxZLpFBDaNpeUOmUlBIkSkYuhxZqJG9l
- Lr2hpR2wvIK1Gfy5WHzJmrKN75eVDAKNs/STTHflXbu8dlGEv5Oxm1mN2+Wr4SeeXND5Xk4MU9c
- c7qo+
-X-Gm-Gg: Acq92OGoSvj419STnjlhl5yHc0gME0vXvd5nStXodKfR0oh826+PZaZabTniEhfUMQK
- aoWsx9C3bBC/68/isoAdMtjbWvVXlX9ZwYUjhaySMK858QU7s8b9vGDtRAOOoNU3HTYGTTC2WyO
- TASi7dV1PR7iYuYmaiYrCjDceGmHPHZD5qNSr/Z1X2UhhRvSezWWlYuZeZfTmSEq0d8KF5YmHgy
- vGbZgAbor97jipQyjxWvItcXLy/adEzFLqwaQ6YLcGTbl8nZPWHuo9dEe9Hx1yjPiqthoGV2OhR
- RGbFwFYllUpcpS4vorJ4aKVF9Z7p6xgBajx8EYNfa+Ozq0QPZpBkVcGhg66lhMM0T26MVeemGyY
- 4oMW4aAGnmiDoupPngo3j1SwsYhnKQhy1A2RRW416rES8C6As6HbuNMb84kkakWhFxYefd1Ptk+
- Mu6B9QYdrZTMst1dOuoQDMA/6kyVpaodQZOUKVCtpGlGBdJuLE3Oaea453od+EzTlgmR+86VZiu
- rCLNJoq/flpQffmBqW3EN3eoUk9wcuuH00+jjPNDw==
-X-Received: by 2002:a05:600c:1d03:b0:48a:906a:9050 with SMTP id
- 5b1f17b1804b1-48fc9a100damr6299365e9.10.1778618058987; 
- Tue, 12 May 2026 13:34:18 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48fc8d69d0bsm16350635e9.13.2026.05.12.13.34.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 May 2026 13:34:18 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 01/12] hw/arm/omap: Remove omap_mpu_model remnants
-Date: Tue, 12 May 2026 21:34:03 +0100
-Message-ID: <20260512203414.3633237-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260512203414.3633237-1-peter.maydell@linaro.org>
-References: <20260512203414.3633237-1-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wMu4g-00037n-Ci
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 16:51:30 -0400
+Received: from qs-2007a-snip4-2.eps.apple.com ([57.103.84.133]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wMu4c-00016O-U2
+ for qemu-arm@nongnu.org; Tue, 12 May 2026 16:51:30 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-11 (Postfix) with ESMTPS id
+ 6A8C918000AD; Tue, 12 May 2026 20:51:20 +0000 (UTC)
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQFIHV8DWRxBAUkdXw9LVxQEFVwFVgZXFHkNXR1FDlYZWgxSD1sOHBZLWFUJCgZdGFgVVgl3HlwASx1XBFQfUxJVHR0LRUtAEwRAEwVSB11NVg1HD1geXBQXCUBDXgheH0wcHQ5YBhIATQoONgZZBV4JVgNDBTYSFF1FRgNHGVcUUBtHDFUHV15fChMAXg8PTAtBBS8OUnNCFEkKKXJGBkUPQB4sA1kLXQBABykAWQZJfE8FWHceXABLHVcEVB9TElUdHQtFVRIEQAhWUFQeQQRWFWwJWAZTGVc=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1778619083; x=1781211083;
+ bh=dowCJmv0YyQe/HYja0aiB9YSlxqwGMSaD9jzrNcVu7U=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=Kqj7sSjCid+JukTbL+ITHC9BgtZZOlC/l1aokDYAmBql6TdIA4OfvZADNflVQ+ACFMhdfHFr3F4zZZh8Zd165ECXsDT6aBxM2HxHTNDS16iyiXHXoIQZyD4IHR0cEIBgxjCMsJ5Oc3kqGHNLjkEAtNTkY1GFki7Htad79jLROsqgi7R6gWTVeUiFejNkW6p2TMGEHKahczRhzx9oJUsP/Iy4F+FBEocvmBConOMxBteTidVBQ86rYjr/v/b4nqcuVTgVSa9V+P2kQuvlF25cPKSmwIf0xmSjhTEZ/IZaFT8IrtjFufMtxW8491fhoK914REnxPQFuOWTpsI/8jygNg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-11 (Postfix) with ESMTPSA id
+ A496918000A0; Tue, 12 May 2026 20:51:18 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH v3] target/arm/hvf: Fix WFI halting to stop idle vCPU
+ spinning
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <DIGZJ3V3TPDK.3LY9W3NAULWWA@gmail.com>
+Date: Tue, 12 May 2026 22:51:06 +0200
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <296B99A2-19DE-4568-A429-984D7249E765@unpredictable.fr>
+References: <20260410055045.63001-1-scottjgo@gmail.com>
+ <20260427195516.46256-1-scottjgo@gmail.com>
+ <794CB795-9462-4299-B7EC-528B0E4F1923@unpredictable.fr>
+ <DIGZJ3V3TPDK.3LY9W3NAULWWA@gmail.com>
+To: "Scott J. Goldman" <scottjgo@gmail.com>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Proofpoint-ORIG-GUID: iH1Xj6mGbit2X58s7RzFs4CGg5Dxdfz1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEyMDIxNCBTYWx0ZWRfXzg+lOXFNnPvG
+ 03acgZDzdcT82tBnYrSbEIW/XHatVm3Q/hjHVBcyMo+3lUFDzFObEsXR1+n1CS6bgcWjozhLQIu
+ hblXjMFDJRva+vQ/RVL0j5wT+7ympS7TXm1eC63FBf/ra/0hJbyTi39IDmzkYBLySUEm1ELgnkQ
+ kHAhYvGuqwSbkHC0QmroBjTwKICVMLJxNUrzn6fct2nhNVl6q7utO0loHXng3WNxk8q0HveL/Ys
+ EhFCrT3fi9C3++b/FSypBFQPlQpPm5ETkniVi0VHzxphPQ0KDEJ9p6v7kIfAbKsBeXDr2MGAf26
+ WTkrsxi+8u5kbfB206sq3iDrqFuEy9rY6k0fkgNv51AUDrz22hXh/mUUltCQLU=
+X-Proofpoint-GUID: iH1Xj6mGbit2X58s7RzFs4CGg5Dxdfz1
+X-Authority-Info-Out: v=2.4 cv=fMA0HJae c=1 sm=1 tr=0 ts=6a0392c9
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=NGcC8JguVDcA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8 a=dMFe32L-kBhxwVrZe4QA:9
+ a=QEXdDO2ut3YA:10 a=O8hF6Hzn-FEA:10
+Received-SPF: pass client-ip=57.103.84.133;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,183 +92,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The omap1.c code has handling for an mpu_model field which is
-an enum of which OMAP SoC model it is. We removed most of our
-OMAP support some time ago, and now the only OMAP SoC we
-implement is the OMAP310, which sets s->mpu_model = omap310
-in omap310_mpu_init().
 
-That makes all the handling for other settings of mpu_model dead
-code; remove them.  This includes the omap GPIO device's mpu_model
-property which we set but which the device makes no use of, and the
-omap-id-e20 memory region (because the OMAP310 satisfies
-cpu_is_omap15xx(), so never executed the old if() block).
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/omap1.c        | 28 ++--------------------------
- hw/gpio/omap_gpio.c   |  6 ------
- hw/misc/omap_clk.c    |  9 +--------
- include/hw/arm/omap.h | 18 ------------------
- 4 files changed, 3 insertions(+), 58 deletions(-)
+> On 12. May 2026, at 22:36, Scott J. Goldman <scottjgo@gmail.com> =
+wrote:
+>=20
+> On Tue May 12, 2026 at 1:54 PM EDT, Mohamed Mediouni wrote:
+>>=20
+>>=20
+>>> On 27. Apr 2026, at 21:55, Scott J. Goldman <scottjgo@gmail.com> =
+wrote:
+>>>=20
+>>> Commit b5f8f77271 ("accel/hvf: Implement WFI without using =
+pselect()")
+>>> changed hvf_wfi() from blocking the vCPU thread with pselect() to
+>>> returning EXCP_HLT, intending QEMU's main event loop to handle the
+>>> idle wait. However, cpu->halted was never set, so =
+cpu_thread_is_idle()
+>>> always returns false and the vCPU thread spins at 100% CPU per core
+>>> while the guest is idle.
+>>>=20
+>>> Fix this by:
+>>>=20
+>>> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps =
+on
+>>>  halt_cond in qemu_process_cpu_events().
+>>>=20
+>>> 2. Arming a per-vCPU QEMU_CLOCK_VIRTUAL timer to fire when the =
+guest's
+>>>  virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
+>>>  because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
+>>>  hv_vcpu_run(), which is not called while the CPU is halted. The
+>>>  timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
+>>>  vtimer IRQ through the GIC and marks vtimer_masked, causing the
+>>>  interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
+>>>=20
+>>> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
+>>>  indicates a pending interrupt, and cancelling the WFI timer.
+>>>=20
+>>> 4. Re-arming the WFI timer from hvf_vm_state_change() on the resume
+>>>  transition for any halted vCPU, since the QEMUTimer is per-instance
+>>>  state and is not migrated. After cpu_synchronize_all_states() the
+>>>  migrated vtimer state is mirrored in env, so we can read CNTV_CTL
+>>>  and CNTV_CVAL from there. If the vtimer has already expired by the
+>>>  time the destination resumes, hvf_wfi_timer_cb() is invoked
+>>>  directly so the halted vCPU is woken up.
+>>>=20
+>>> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using =
+pselect()")
+>>> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
+>>=20
+>> Hi,
+>>=20
+>> A bit of a side note for reproducing this:
+>>=20
+>> To reproduce this on current master, as far as I can tell you need =
+either=20
+>> -M kernel-irqchip=3Doff or -M virt-11.0 or earlier. -M virt(-11.1) on =
+master uses=20
+>> the HVF vGIC path.
+>=20
+> Just wanted to confirm that I re-tested and it seems like you are
+> correct. This must have changed semi recently?
 
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index 980959166d..c9f9c3ef40 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -948,8 +948,6 @@ static void omap_pin_cfg_init(MemoryRegion *system_memory,
- static uint64_t omap_id_read(void *opaque, hwaddr addr,
-                              unsigned size)
- {
--    struct omap_mpu_state_s *s = opaque;
--
-     if (size != 4) {
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: read at offset 0x%" HWADDR_PRIx
-                       " with bad width %d\n", __func__, addr, size);
-@@ -968,25 +966,10 @@ static uint64_t omap_id_read(void *opaque, hwaddr addr,
-         return 0xcafeb574;
- 
-     case 0xfffed400:    /* JTAG_ID_LSB */
--        switch (s->mpu_model) {
--        case omap310:
--            return 0x03310315;
--        case omap1510:
--            return 0x03310115;
--        default:
--            hw_error("%s: bad mpu model\n", __func__);
--        }
--        break;
-+        return 0x03310315; /* omap310 */
- 
-     case 0xfffed404:    /* JTAG_ID_MSB */
--        switch (s->mpu_model) {
--        case omap310:
--            return 0xfb57402f;
--        case omap1510:
--            return 0xfb47002f;
--        default:
--            hw_error("%s: bad mpu model\n", __func__);
--        }
-+        return 0xfb57402f; /* omap310 */
-         break;
-     }
- 
-@@ -1022,11 +1005,6 @@ static void omap_id_init(MemoryRegion *memory, struct omap_mpu_state_s *mpu)
-     memory_region_init_alias(&mpu->id_iomem_ed4, NULL, "omap-id-ed4", &mpu->id_iomem,
-                              0xfffed400, 0x100);
-     memory_region_add_subregion(memory, 0xfffed400, &mpu->id_iomem_ed4);
--    if (!cpu_is_omap15xx(mpu)) {
--        memory_region_init_alias(&mpu->id_iomem_ed4, NULL, "omap-id-e20",
--                                 &mpu->id_iomem, 0xfffe2000, 0x800);
--        memory_region_add_subregion(memory, 0xfffe2000, &mpu->id_iomem_e20);
--    }
- }
- 
- /* MPUI Control (Dummy) */
-@@ -3819,7 +3797,6 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
-     MemoryRegion *system_memory = get_system_memory();
- 
-     /* Core */
--    s->mpu_model = omap310;
-     s->cpu = ARM_CPU(cpu_create(cpu_type));
-     s->sdram_size = memory_region_size(dram);
-     s->sram_size = OMAP15XX_SRAM_SIZE;
-@@ -3974,7 +3951,6 @@ struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *dram,
-                                s->wakeup, omap_findclk(s, "clk32-kHz"));
- 
-     s->gpio = qdev_new("omap-gpio");
--    qdev_prop_set_int32(s->gpio, "mpu_model", s->mpu_model);
-     omap_gpio_set_clk(OMAP1_GPIO(s->gpio), omap_findclk(s, "arm_gpio_ck"));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(s->gpio), &error_fatal);
-     sysbus_connect_irq(SYS_BUS_DEVICE(s->gpio), 0,
-diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-index ee3ddb09e3..16da9a88d9 100644
---- a/hw/gpio/omap_gpio.c
-+++ b/hw/gpio/omap_gpio.c
-@@ -45,7 +45,6 @@ struct Omap1GpioState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion iomem;
--    int mpu_model;
-     void *clk;
-     struct omap_gpio_s omap1;
- };
-@@ -228,17 +227,12 @@ void omap_gpio_set_clk(Omap1GpioState *gpio, omap_clk clk)
-     gpio->clk = clk;
- }
- 
--static const Property omap_gpio_properties[] = {
--    DEFINE_PROP_INT32("mpu_model", Omap1GpioState, mpu_model, 0),
--};
--
- static void omap_gpio_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = omap_gpio_realize;
-     device_class_set_legacy_reset(dc, omap_gpif_reset);
--    device_class_set_props(dc, omap_gpio_properties);
-     /* Reason: pointer property "clk" */
-     dc->user_creatable = false;
- }
-diff --git a/hw/misc/omap_clk.c b/hw/misc/omap_clk.c
-index e927ef22a0..dc398570ac 100644
---- a/hw/misc/omap_clk.c
-+++ b/hw/misc/omap_clk.c
-@@ -707,14 +707,7 @@ void omap_clk_init(struct omap_mpu_state_s *mpu)
- {
-     struct clk **i, *j, *k;
-     int count;
--    int flag;
--
--    if (cpu_is_omap310(mpu))
--        flag = CLOCK_IN_OMAP310;
--    else if (cpu_is_omap1510(mpu))
--        flag = CLOCK_IN_OMAP1510;
--    else
--        return;
-+    int flag = CLOCK_IN_OMAP310;
- 
-     for (i = onchip_clks, count = 0; *i; i ++)
-         if ((*i)->flags & flag)
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 66a435a3d7..6ea47293a6 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -542,24 +542,7 @@ void omap_mmc_set_clk(DeviceState *dev, omap_clk clk);
- /* omap_i2c.c */
- I2CBus *omap_i2c_bus(DeviceState *omap_i2c);
- 
--#define cpu_is_omap310(cpu)        (cpu->mpu_model == omap310)
--#define cpu_is_omap1510(cpu)       (cpu->mpu_model == omap1510)
--#define cpu_is_omap1610(cpu)       (cpu->mpu_model == omap1610)
--#define cpu_is_omap1710(cpu)       (cpu->mpu_model == omap1710)
--
--#define cpu_is_omap15xx(cpu)       \
--        (cpu_is_omap310(cpu) || cpu_is_omap1510(cpu))
--#define cpu_is_omap16xx(cpu)       \
--        (cpu_is_omap1610(cpu) || cpu_is_omap1710(cpu))
--
- struct omap_mpu_state_s {
--    enum omap_mpu_model {
--        omap310,
--        omap1510,
--        omap1610,
--        omap1710,
--    } mpu_model;
--
-     ARMCPU *cpu;
- 
-     qemu_irq *drq;
-@@ -571,7 +554,6 @@ struct omap_mpu_state_s {
-     MemoryRegion id_iomem;
-     MemoryRegion id_iomem_e18;
-     MemoryRegion id_iomem_ed4;
--    MemoryRegion id_iomem_e20;
-     MemoryRegion mpui_iomem;
-     MemoryRegion tcmi_iomem;
-     MemoryRegion clkm_iomem;
--- 
-2.43.0
+Hi,
+
+It finally got merged last week.
+
+> I was just running with `-M virt` before. Either way, it's good that =
+the defaults seem to work
+> better now. Either way, I guess the fix still needs to go in for the
+> non vGIC path?
+>=20
+
+Yes. I=E2=80=99ll do a review. This patch is also a qemu-stable =
+candidate.
+
+
 
 

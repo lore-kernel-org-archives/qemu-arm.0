@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 249D0CD4F24
-	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 17:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27AA6CD4F24
+	for <qemu-arm@archiver.kernel.org>; Tue, 12 May 2026 17:16:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMqhm-0007te-47; Tue, 12 May 2026 13:15:38 -0400
+	id 1wMqhm-0007yb-Nx; Tue, 12 May 2026 13:15:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgb-0006ni-BH
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgb-0006ng-AY
  for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgT-0000lO-Q4
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wMqgT-00010F-Q4
  for qemu-arm@nongnu.org; Tue, 12 May 2026 13:14:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778606051;
+ s=mimecast20190719; t=1778606056;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jmYeEfhR+gNeyUlbslHqcOhionCHuWh/odLQyvFxQhk=;
- b=gTvRbZalzjZow5ZJyO068SWzS8sJDeI1F+NNg0GrSixrw7yo8hNlFZbTHC+hKllujRd9k1
- OWnXesrzb4gbAqzHK99YX7XyP4Mql1XYb9xV8u7sNWFX8pu4295Fa8ls6+NVEGh+luqeGr
- RXhhDxmoDlkokKfqmjaCpU+jOrlF3Jk=
+ bh=ZRIyYw94xvrketksuvpIVwvaTf49S9Y9tH0tGaG3ZVM=;
+ b=TVsmCj1/wHj1sEo0kSDAVuAnyTSuamMWr6arN07XUV1rx5OtMAwBaAWWDPvITWDI78xRf8
+ l734wuJc4mDYayox/MmJDZtw6hP+ESPY9UokOWsaOPt/7wy7YbkS+L5qU0COsDZudmPdRt
+ HcYWzHG5pDwzS0GgfFB3V5ferVwX3Hk=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-241-KxzuKOpyO8-8h3tPkRtxWg-1; Tue,
- 12 May 2026 13:14:09 -0400
-X-MC-Unique: KxzuKOpyO8-8h3tPkRtxWg-1
-X-Mimecast-MFC-AGG-ID: KxzuKOpyO8-8h3tPkRtxWg_1778606048
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-203-FnpOpyaZMxWp7ti3NLZ5rQ-1; Tue,
+ 12 May 2026 13:14:13 -0400
+X-MC-Unique: FnpOpyaZMxWp7ti3NLZ5rQ-1
+X-Mimecast-MFC-AGG-ID: FnpOpyaZMxWp7ti3NLZ5rQ_1778606052
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3E07B180061E; Tue, 12 May 2026 17:14:08 +0000 (UTC)
+ id 52BAC18005BE; Tue, 12 May 2026 17:14:12 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.49.156])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2B10B1953947; Tue, 12 May 2026 17:14:05 +0000 (UTC)
+ id ACD0A1955D84; Tue, 12 May 2026 17:14:10 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 4/9] aspeed/hace: Fix mapped address may not be unmapped issue
-Date: Tue, 12 May 2026 19:13:49 +0200
-Message-ID: <20260512171354.4183887-5-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PULL 6/9] hw/arm: Remove qcom-dc-scm-v1-bmc and qcom-firework-bmc
+ machines
+Date: Tue, 12 May 2026 19:13:51 +0200
+Message-ID: <20260512171354.4183887-7-clg@redhat.com>
 In-Reply-To: <20260512171354.4183887-1-clg@redhat.com>
 References: <20260512171354.4183887-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: zlbIIiJZgtOms8SZnWiCUWguiVlgwRfRJua3e8GOMwE_1778606048
+X-Mimecast-MFC-PROC-ID: xHH0JPFEBgOwzvZR6HmVGSHgYXsrrrShcvlQXs6QD8U_1778606052
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -69,7 +70,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,225 +86,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane Chen <kane_chen@aspeedtech.com>
+The qcom-dc-scm-v1-bmc and qcom-firework-bmc machines were deprecated
+in QEMU 10.2 and are now removed in QEMU 11.1.
 
-In the do_hash_operation, the code may be returned earlier because
-hash_prepare_sg_iov or hash_prepare_direct_iov may return a failure.
-When this condition is happened, current code flow doesn't go through
-later code segments. Finally, it causes the mapped address isn't
-unmapped properly.
+These Qualcomm lab servers never entered production and do not rely on
+specific device models. They can be replaced by the ast2600-evb
+machine with appropriate fmc-model and I2C device configuration via
+command line.
 
-This change unmaps any mapped addresses when an error occurs,
-preventing a resource leak.
-
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260512065002.1516704-2-kane_chen@aspeedtech.com
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Link: https://lore.kernel.org/qemu-devel/20260510165704.2935316-3-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/misc/aspeed_hace.c | 63 ++++++++++++++++++++++++++++++-------------
- 1 file changed, 45 insertions(+), 18 deletions(-)
+ docs/about/deprecated.rst              | 10 ---
+ docs/about/removed-features.rst        | 10 +++
+ docs/system/arm/aspeed.rst             |  6 +-
+ hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c | 55 ----------------
+ hw/arm/aspeed_ast2600_qcom-firework.c  | 91 --------------------------
+ hw/arm/meson.build                     |  2 -
+ 6 files changed, 12 insertions(+), 162 deletions(-)
+ delete mode 100644 hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
+ delete mode 100644 hw/arm/aspeed_ast2600_qcom-firework.c
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index 0504d61cbf0a..a322905cb37b 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -218,8 +218,19 @@ static bool hash_accumulate_len(AspeedHACEState *s, hwaddr plen)
-     return true;
- }
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index cc75afe55d95..bbb4a9886fbc 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -250,16 +250,6 @@ deprecated; use the new name ``dtb-randomness`` instead. The new name
+ better reflects the way this property affects all random data within
+ the device tree blob, not just the ``kaslr-seed`` node.
  
-+static void hash_iov_unmap(AspeedHACEState *s, struct iovec *iov,
-+                           hwaddr *mapped_lens, int iov_count)
-+{
-+    for (; iov_count > 0; iov_count--) {
-+        address_space_unmap(&s->dram_as, iov[iov_count - 1].iov_base,
-+                            mapped_lens[iov_count - 1], false,
-+                            mapped_lens[iov_count - 1]);
-+    }
-+}
+-Arm ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` machine (since 10.2)
+-'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-
+-The ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` represent lab
+-servers that never entered production. Since they do not rely on any
+-specific device models, they can be replaced by the ``ast2600-evb``
+-machine using the ``fmc-model`` option to specify the flash type. The
+-I2C devices connected to the board can be defined via the QEMU command
+-line.
+-
+ Arm ``fp5280g2-bmc`` machine (since 10.2)
+ '''''''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 02e3c06b2988..b9e9d43dada3 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -1195,6 +1195,16 @@ using the ``fmc-model`` option to specify the flash type. The I2C
+ devices connected to the board can be defined via the QEMU command
+ line.
+ 
++Arm ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` machine (removed in 11.1)
++''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 +
- static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov,
--                                   bool acc_mode, bool *acc_final_request)
-+                                   bool acc_mode, bool *acc_final_request,
-+                                   hwaddr *mapped_lens)
- {
-     uint32_t total_msg_len;
-     uint32_t pad_offset;
-@@ -243,9 +254,11 @@ static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov,
- 
-     iov[0].iov_base = haddr;
-     iov_idx = 1;
-+    mapped_lens[0] = plen;
- 
-     if (acc_mode) {
-         if (!hash_accumulate_len(s, plen)) {
-+            hash_iov_unmap(s, iov, mapped_lens, 1);
-             return -1;
-         }
- 
-@@ -265,7 +278,8 @@ static int hash_prepare_direct_iov(AspeedHACEState *s, struct iovec *iov,
- }
- 
- static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
--                               bool acc_mode, bool *acc_final_request)
-+                               bool acc_mode, bool *acc_final_request,
-+                               hwaddr *mapped_lens)
- {
-     uint32_t total_msg_len;
-     uint32_t pad_offset;
-@@ -275,6 +289,7 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
-     int iov_idx;
-     hwaddr plen;
-     void *haddr;
-+    int iov_mapped = 0;
- 
-     src = hash_get_source_addr(s);
-     for (iov_idx = 0; !(len & SG_LIST_LEN_LAST); iov_idx++) {
-@@ -282,7 +297,7 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "%s: Failed to set end of sg list marker\n",
-                           __func__);
--            return -1;
-+            goto fail;
-         }
- 
-         len = address_space_ldl_le(&s->dram_as, src,
-@@ -307,15 +322,17 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
-                           "%s: Unable to map address, sg_addr=0x%x, "
-                           "plen=0x%" HWADDR_PRIx "\n",
-                           __func__, sg_addr, plen);
--            return -1;
-+            goto fail;
-         }
- 
-         src += SG_LIST_ENTRY_SIZE;
- 
-         iov[iov_idx].iov_base = haddr;
-+        iov_mapped = iov_idx + 1;
-+        mapped_lens[iov_idx] = plen;
-         if (acc_mode) {
-             if (!hash_accumulate_len(s, plen)) {
--                return -1;
-+                goto fail;
-             }
- 
-             if (has_padding(s, &iov[iov_idx], plen, &total_msg_len,
-@@ -332,6 +349,10 @@ static int hash_prepare_sg_iov(AspeedHACEState *s, struct iovec *iov,
-     }
- 
-     return iov_idx;
++The ``qcom-dc-scm-v1-bmc`` and ``qcom-firework-bmc`` represent lab
++servers that never entered production. Since they do not rely on any
++specific device models, they can be replaced by the ``ast2600-evb``
++machine using the ``fmc-model`` option to specify the flash type. The
++I2C devices connected to the board can be defined via the QEMU command
++line.
 +
-+fail:
-+    hash_iov_unmap(s, iov, mapped_lens, iov_mapped);
-+    return -1;
- }
+ linux-user mode CPUs
+ --------------------
  
- static uint64_t hash_get_digest_addr(AspeedHACEState *s)
-@@ -350,6 +371,7 @@ static uint64_t hash_get_digest_addr(AspeedHACEState *s)
- static void hash_write_digest_and_unmap_iov(AspeedHACEState *s,
-                                             struct iovec *iov,
-                                             int iov_idx,
-+                                            hwaddr *mapped_lens,
-                                             uint8_t *digest_buf,
-                                             size_t digest_len)
- {
-@@ -369,15 +391,12 @@ static void hash_write_digest_and_unmap_iov(AspeedHACEState *s,
-         hace_hexdump("digest", (char *)digest_buf, digest_len);
-     }
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 1871f31713d4..cbaab5edd65c 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,5 +1,5 @@
+-Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+-===============================================================================================================================================================================================================================================================================================================================================================================================
++Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++================================================================================================================================================================================================================================================================================================================================================
  
--    for (; iov_idx > 0; iov_idx--) {
--        address_space_unmap(&s->dram_as, iov[iov_idx - 1].iov_base,
--                            iov[iov_idx - 1].iov_len, false,
--                            iov[iov_idx - 1].iov_len);
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+ Aspeed evaluation boards. They are based on different releases of the
+@@ -35,8 +35,6 @@ AST2600 SoC based machines :
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
+ - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+-- ``qcom-dc-scm-v1-bmc``   Qualcomm DC-SCM V1 BMC
+-- ``qcom-firework-bmc``    Qualcomm Firework BMC
+ 
+ Supported devices
+ -----------------
+diff --git a/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c b/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
+deleted file mode 100644
+index bbdeb6023686..000000000000
+--- a/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
++++ /dev/null
+@@ -1,55 +0,0 @@
+-/*
+- * Qualcomm DC-SCM V1
+- *
+- * Copyright 2016 IBM Corp.
+- *
+- * SPDX-License-Identifier: GPL-2.0-or-later
+- */
+-
+-#include "qemu/osdep.h"
+-#include "qapi/error.h"
+-#include "hw/arm/machines-qom.h"
+-#include "hw/arm/aspeed.h"
+-#include "hw/arm/aspeed_soc.h"
+-
+-/* Qualcomm DC-SCM hardware value */
+-#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
+-#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
+-
+-static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
+-}
+-
+-static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+-                                                     const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
+-    mc->deprecation_reason = "use 'ast2600-evb' instead";
+-    amc->soc_name  = "ast2600-a3";
+-    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
+-    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
+-    amc->fmc_model = "n25q512a";
+-    amc->spi_model = "n25q512a";
+-    amc->num_cs    = 2;
+-    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+-    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
+-    mc->default_ram_size = 1 * GiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-};
+-
+-static const TypeInfo aspeed_ast2600_qcom_dc_scm_v1_types[] = {
+-    {
+-        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
+-        .interfaces    = arm_machine_interfaces,
 -    }
-+    hash_iov_unmap(s, iov, mapped_lens, iov_idx);
- }
- 
- static void hash_execute_non_acc_mode(AspeedHACEState *s, int algo,
--                                      struct iovec *iov, int iov_idx)
-+                                      struct iovec *iov, int iov_idx,
-+                                      hwaddr *mapped_lens)
- {
-     g_autofree uint8_t *digest_buf = NULL;
-     Error *local_err = NULL;
-@@ -389,15 +408,17 @@ static void hash_execute_non_acc_mode(AspeedHACEState *s, int algo,
-                       "%s: qcrypto hash bytesv failed : %s",
-                       __func__, error_get_pretty(local_err));
-         error_free(local_err);
-+        hash_iov_unmap(s, iov, mapped_lens, iov_idx);
-         return;
-     }
- 
--    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
-+    hash_write_digest_and_unmap_iov(s, iov, iov_idx, mapped_lens,
-+                                    digest_buf, digest_len);
- }
- 
- static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
-                                   struct iovec *iov, int iov_idx,
--                                  bool final_request)
-+                                  bool final_request, hwaddr *mapped_lens)
- {
-     g_autofree uint8_t *digest_buf = NULL;
-     Error *local_err = NULL;
-@@ -411,6 +432,7 @@ static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash new failed : %s",
-                           __func__, error_get_pretty(local_err));
-             error_free(local_err);
-+            hash_iov_unmap(s, iov, mapped_lens, iov_idx);
-             return;
-         }
-     }
-@@ -419,6 +441,7 @@ static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto hash updatev failed : %s",
-                       __func__, error_get_pretty(local_err));
-         error_free(local_err);
-+        hash_iov_unmap(s, iov, mapped_lens, iov_idx);
-         return;
-     }
- 
-@@ -438,22 +461,25 @@ static void hash_execute_acc_mode(AspeedHACEState *s, int algo,
-         s->total_req_len = 0;
-     }
- 
--    hash_write_digest_and_unmap_iov(s, iov, iov_idx, digest_buf, digest_len);
-+    hash_write_digest_and_unmap_iov(s, iov, iov_idx, mapped_lens,
-+                                    digest_buf, digest_len);
- }
- 
- static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-                               bool acc_mode)
- {
-     QEMU_UNINITIALIZED struct iovec iov[ASPEED_HACE_MAX_SG];
-+    hwaddr mapped_lens[ASPEED_HACE_MAX_SG] = { 0 };
-     bool acc_final_request = false;
-     int iov_idx = -1;
- 
-     /* Prepares the iov for hashing operations based on the selected mode */
-     if (sg_mode) {
--        iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request);
-+        iov_idx = hash_prepare_sg_iov(s, iov, acc_mode, &acc_final_request,
-+                                      mapped_lens);
-     } else {
-         iov_idx = hash_prepare_direct_iov(s, iov, acc_mode,
--                                          &acc_final_request);
-+                                          &acc_final_request, mapped_lens);
-     }
- 
-     if (iov_idx <= 0) {
-@@ -468,9 +494,10 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
- 
-     /* Executes the hash operation */
-     if (acc_mode) {
--        hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request);
-+        hash_execute_acc_mode(s, algo, iov, iov_idx, acc_final_request,
-+                              mapped_lens);
-     } else {
--        hash_execute_non_acc_mode(s, algo, iov, iov_idx);
-+        hash_execute_non_acc_mode(s, algo, iov, iov_idx, mapped_lens);
-     }
- }
- 
+-};
+-
+-DEFINE_TYPES(aspeed_ast2600_qcom_dc_scm_v1_types)
+diff --git a/hw/arm/aspeed_ast2600_qcom-firework.c b/hw/arm/aspeed_ast2600_qcom-firework.c
+deleted file mode 100644
+index a4dbe6eea8ab..000000000000
+--- a/hw/arm/aspeed_ast2600_qcom-firework.c
++++ /dev/null
+@@ -1,91 +0,0 @@
+-/*
+- * Qualcomm DC-SCM V1/Firework
+- *
+- * Copyright 2016 IBM Corp.
+- *
+- * SPDX-License-Identifier: GPL-2.0-or-later
+- */
+-
+-#include "qemu/osdep.h"
+-#include "qapi/error.h"
+-#include "hw/arm/machines-qom.h"
+-#include "hw/arm/aspeed.h"
+-#include "hw/arm/aspeed_soc.h"
+-#include "hw/i2c/i2c_mux_pca954x.h"
+-#include "hw/sensor/tmp105.h"
+-
+-/* Qualcomm DC-SCM Firework hardware value */
+-#define QCOM_DC_SCM_FIREWORK_BMC_HW_STRAP1  0x00000000
+-#define QCOM_DC_SCM_FIREWORK_BMC_HW_STRAP2  0x00000041
+-
+-#define TYPE_LM75 TYPE_TMP105
+-
+-static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
+-}
+-
+-static void qcom_dc_scm_firework_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-    I2CSlave *therm_mux, *cpuvr_mux;
+-
+-    /* Create the generic DC-SCM hardware */
+-    qcom_dc_scm_bmc_i2c_init(bmc);
+-
+-    /* Now create the Firework specific hardware */
+-
+-    /* I2C7 CPUVR MUX */
+-    cpuvr_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
+-                                        "pca9546", 0x70);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 0), "pca9548", 0x72);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 1), "pca9548", 0x72);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 2), "pca9548", 0x72);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(cpuvr_mux, 3), "pca9548", 0x72);
+-
+-    /* I2C8 Thermal Diodes*/
+-    therm_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
+-                                        "pca9548", 0x70);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 0), TYPE_LM75, 0x4C);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 1), TYPE_LM75, 0x4C);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 2), TYPE_LM75, 0x48);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 3), TYPE_LM75, 0x48);
+-    i2c_slave_create_simple(pca954x_i2c_get_bus(therm_mux, 4), TYPE_LM75, 0x48);
+-
+-    /* I2C9 Fan Controller (MAX31785) */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "max31785", 0x52);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "max31785", 0x54);
+-}
+-
+-static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
+-                                                    const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "Qualcomm DC-SCM V1/Firework BMC (Cortex A7)";
+-    mc->deprecation_reason = "use 'ast2600-evb' instead";
+-    amc->soc_name  = "ast2600-a3";
+-    amc->hw_strap1 = QCOM_DC_SCM_FIREWORK_BMC_HW_STRAP1;
+-    amc->hw_strap2 = QCOM_DC_SCM_FIREWORK_BMC_HW_STRAP2;
+-    amc->fmc_model = "n25q512a";
+-    amc->spi_model = "n25q512a";
+-    amc->num_cs    = 2;
+-    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+-    amc->i2c_init  = qcom_dc_scm_firework_i2c_init;
+-    mc->default_ram_size = 1 * GiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-};
+-
+-static const TypeInfo aspeed_ast2600_qcom_firework_types[] = {
+-    {
+-        .name          = MACHINE_TYPE_NAME("qcom-firework-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_qcom_firework_class_init,
+-        .interfaces    = arm_machine_interfaces,
+-    }
+-};
+-
+-DEFINE_TYPES(aspeed_ast2600_qcom_firework_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 098015357ddc..2be74b575efc 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -61,8 +61,6 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_fby35.c',
+   'aspeed_ast2600_fuji.c',
+   'aspeed_ast2600_gb200nvl.c',
+-  'aspeed_ast2600_qcom-dc-scm-v1.c',
+-  'aspeed_ast2600_qcom-firework.c',
+   'aspeed_ast2600_rainier.c',
+   'aspeed_ast10x0.c',
+   'aspeed_ast10x0_evb.c',
 -- 
 2.54.0
 

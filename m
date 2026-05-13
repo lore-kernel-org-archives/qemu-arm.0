@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A9E1CD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 336BFCD4F40
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:44:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN70v-0004Rz-S2; Wed, 13 May 2026 06:40:29 -0400
+	id 1wN70Z-00046o-7C; Wed, 13 May 2026 06:40:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN70T-00041B-4t; Wed, 13 May 2026 06:40:04 -0400
+ id 1wN70P-00040I-09; Wed, 13 May 2026 06:39:58 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN70N-0002Qn-88; Wed, 13 May 2026 06:39:58 -0400
+ id 1wN70M-0002Lx-Gy; Wed, 13 May 2026 06:39:56 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64DAcPda044648
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64DAcPdi044648
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 13 May 2026 19:38:56 +0900 (JST)
+ Wed, 13 May 2026 19:38:58 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=ctYWFW44+JRS6P/6Fa2o8C0z5VCfh5rD+JQVUvCvh1Y=; 
+DKIM-Signature: a=rsa-sha256; bh=/WoU4lGhfUf+Gwfd7jBdTN2SQsh5aEl/Q6cpkMQSwyE=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778668737; v=1;
- b=vCNxWvLDQB7VRjG7AGRYnv1kNGXTDei3BoRuKRHc2QOtgn8aE+1BLKU6jhKt/dBC
- V6vX6TFl7QTQQsfNttvdSa8YN8XTE9k9cCvzSB1pWa7zx05si5c411R+QffrztIG
- E+Gd2Am8NSgiBPhJqKSkf3lkzuZknR64YZyfFy7b5RQ9SyXdyRgioPekyMThpYT0
- BeFFomMEUb4efcdBZhTPmilv96XS2tq1JQt06r4T12IBiK9Uq0iJtu0ihAMTNIuR
- tVr5fFgThSCA3Q/T2SVFhaKhjKrmyv+VI3k+pWGNLm5xTw91zqHzdlz9JTkt+tFr
- qsXJZcnnpx68Ud1OZHWIsA==
+ s=rs20250326; t=1778668739; v=1;
+ b=VHdfqrGAF2QfKayYJSIMj843aj67MY4rFgRyWgyBYMDpQPZv2bnnjK8FPXO7EqqR
+ T4Wiry5mA44V30po9n/KQXDddIYNjaig+frXIu3fbuKZU+v5keuIlBMh/BV7hE6B
+ UBs60aU8tglfdXOei0l4+BvbKFErhJUMJwCysrl5tb/hc0z0RItHYf3VxD+izX+o
+ WUsmhR/KWCYM0SsXOTlNbwiBWizJcA3FPo51f+61qpvw7IFT+8Z0xXH/ILGF/44L
+ C+Mfh54fz8A+jx8C1Nflvfan0pXEqqKIXrho1aL8oVi4iouaqogvaPcobBgvksHQ
+ SZNCGlb5QaRqHY0/RrXvWQ==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 13 May 2026 19:38:28 +0900
-Subject: [PATCH v2 12/29] hw/input/hid: Use Linux key codes
+Date: Wed, 13 May 2026 19:38:36 +0900
+Subject: [PATCH v2 20/29] ui/input-barrier: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260513-input-v2-12-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260513-input-v2-20-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1012;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3193;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=F6pNPUoV378dGf+lw/tgs4TqsOj9bQ11tihkFkSZ+wg=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZLyAYNccHpfJPOex+SVGH85CoQvtRZo9DsKv+zLRl33
- +bFWJ/tKGVhEONikBVTZEkp2s2tEV37qTAhvgVmDisTyBAGLk4BmIj0SkaGv7xtGUuYBJdN650S
- 7x5YFfz2UtAtdpG83Cq7SEXbhElXGP6n7DG4wx11nYPh+Z83OlNjryppse/JNFib3MXiI3LhlRs
- HAA==
+ bh=S1Kp78IZinQdzXxZR0DnhehmbKKrJ9FGVU6iaznbTls=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZLyDaWJSc3ckRqXj++4XSV6sXLly+0pf4Pv1RjeWFCj
+ +SzTWudOkpZGMS4GGTFFFlSinZza0TXfipMiG+BmcPKBDKEgYtTACZiYMLw35fr0BTVHHZnMy3t
+ +Zdunby88/mdSW4TqxddSrRvzS5lj2BkWBJfvZfzXPy8U4t27rORb1T9sYKjjk3OVk7fV1NsytR
+ ubgA=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -96,26 +96,73 @@ representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- hw/input/hid.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ ui/input-barrier.c | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/hw/input/hid.c b/hw/input/hid.c
-index 013840562f60..467ba8f14f32 100644
---- a/hw/input/hid.c
-+++ b/hw/input/hid.c
-@@ -224,11 +224,10 @@ static void hid_keyboard_event(DeviceState *dev, QemuConsole *src,
-                                QemuInputEvent *evt)
- {
-     HIDState *hs = (HIDState *)dev;
--    int qcode = qemu_input_linux_to_qcode(evt->key.key);
-     int scancodes[3], i, count;
-     int slot;
+diff --git a/ui/input-barrier.c b/ui/input-barrier.c
+index 042f63cc5a18..4c2ff847131a 100644
+--- a/ui/input-barrier.c
++++ b/ui/input-barrier.c
+@@ -84,11 +84,11 @@ static const char *cmd_names[] = {
  
--    count = qemu_input_qcode_to_scancode(qcode, evt->key.down,
-+    count = qemu_input_linux_to_scancode(evt->key.key, evt->key.down,
-                                          scancodes);
-     if (hs->n + count > QUEUE_LENGTH) {
-         trace_hid_kbd_queue_full();
+ static kbd_layout_t *kbd_layout;
+ 
+-static int input_barrier_to_qcode(uint16_t keyid, uint16_t keycode)
++static int input_barrier_to_linux(uint16_t keyid, uint16_t keycode)
+ {
+     /* keycode is optional, if it is not provided use keyid */
+-    if (keycode && keycode <= qemu_input_map_xorgkbd_to_qcode_len) {
+-        return qemu_input_map_xorgkbd_to_qcode[keycode];
++    if (keycode && keycode <= qemu_input_map_xorgkbd_to_linux_len) {
++        return qemu_input_map_xorgkbd_to_linux[keycode];
+     }
+ 
+     if (keyid >= 0xE000 && keyid <= 0xEFFF) {
+@@ -99,10 +99,10 @@ static int input_barrier_to_qcode(uint16_t keyid, uint16_t keycode)
+     if (kbd_layout) {
+         keycode = keysym2scancode(kbd_layout, keyid, NULL, false);
+ 
+-        return qemu_input_key_number_to_qcode(keycode);
++        return qemu_input_key_number_to_linux(keycode);
+     }
+ 
+-    return qemu_input_map_x11_to_qcode[keyid];
++    return qemu_input_map_x11_to_linux[keyid];
+ }
+ 
+ static int input_barrier_to_mouse(uint8_t buttonid)
+@@ -431,23 +431,23 @@ static gboolean writecmd(InputBarrier *ib, struct barrierMsg *msg)
+ 
+     /* keyboard */
+     case barrierCmdDKeyDown:
+-        qemu_input_event_send_key_qcode(NULL,
+-                        input_barrier_to_qcode(msg->key.keyid, msg->key.button),
++        qemu_input_event_send_key_linux(NULL,
++                        input_barrier_to_linux(msg->key.keyid, msg->key.button),
+                                         true);
+         break;
+     case barrierCmdDKeyRepeat:
+         for (i = 0; i < msg->repeat.repeat; i++) {
+-            qemu_input_event_send_key_qcode(NULL,
+-                  input_barrier_to_qcode(msg->repeat.keyid, msg->repeat.button),
++            qemu_input_event_send_key_linux(NULL,
++                  input_barrier_to_linux(msg->repeat.keyid, msg->repeat.button),
+                                             false);
+-            qemu_input_event_send_key_qcode(NULL,
+-                  input_barrier_to_qcode(msg->repeat.keyid, msg->repeat.button),
++            qemu_input_event_send_key_linux(NULL,
++                  input_barrier_to_linux(msg->repeat.keyid, msg->repeat.button),
+                                             true);
+         }
+         break;
+     case barrierCmdDKeyUp:
+-        qemu_input_event_send_key_qcode(NULL,
+-                        input_barrier_to_qcode(msg->key.keyid, msg->key.button),
++        qemu_input_event_send_key_linux(NULL,
++                        input_barrier_to_linux(msg->key.keyid, msg->key.button),
+                                         false);
+         break;
+     default:
 
 -- 
 2.54.0

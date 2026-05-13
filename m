@@ -4,104 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C8DCD4851
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 12:05:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B11BCD4851
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 12:26:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN8KX-00077h-Fd; Wed, 13 May 2026 08:04:49 -0400
+	id 1wN8f1-0004aV-4y; Wed, 13 May 2026 08:25:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wN8KO-00075q-MK
- for qemu-arm@nongnu.org; Wed, 13 May 2026 08:04:41 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wN8er-0004ZD-NG
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 08:25:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wN8KN-0006mu-9S
- for qemu-arm@nongnu.org; Wed, 13 May 2026 08:04:40 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wN8el-0006wL-Qo
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 08:25:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778673878;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1778675142;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=i0MKkhU2DlWweFtYjhDaS0THBiPb7Ntla0RhsEZpnEc=;
- b=eWsR/ahEv6we9t11F19GMmfHQwjkRauniACzxQRcxoOPJLF+oQuiwMvIaEFQVio5uAWbFx
- L1AaAJJ6bw/OUv0nhhu7ongyiKgINs9xPWyRldXmMTCN+TdMICJgaOEPxiksN3BkKHWBDF
- 5QdhtOZGRLYpi9SEK7ngPGjvPO5UKH8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-392-VtIjCp26NlSBUuSL_iXtww-1; Wed,
- 13 May 2026 08:04:33 -0400
-X-MC-Unique: VtIjCp26NlSBUuSL_iXtww-1
-X-Mimecast-MFC-AGG-ID: VtIjCp26NlSBUuSL_iXtww_1778673871
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B2CE9180075C; Wed, 13 May 2026 12:04:30 +0000 (UTC)
-Received: from localhost (unknown [10.44.24.4])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8983A1800576; Wed, 13 May 2026 12:04:27 +0000 (UTC)
+ bh=Qpd7X3pKJdNMM1bukDTwHMcg5PQRKQfPgiyD65tPkLQ=;
+ b=J2wIiz9azFhATbJ0+lxAa+prjaPBt3Pvvv6trvo+p9NzyWKlVUB+XFEGMN6P4fs3uni+ux
+ vxjCx1/IQZxrWa/r41ukL6yvqJxl6H2+XUg0XxY0aZJu8WbaokNd0Uz1adOoE6DskdmPNU
+ oj4veAitlPTrb+s3Om5++blJW0hhXEY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-60-8EIS355TN-ylJo1AntPNEg-1; Wed, 13 May 2026 08:25:38 -0400
+X-MC-Unique: 8EIS355TN-ylJo1AntPNEg-1
+X-Mimecast-MFC-AGG-ID: 8EIS355TN-ylJo1AntPNEg_1778675138
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48a589c7879so58634015e9.1
+ for <qemu-arm@nongnu.org>; Wed, 13 May 2026 05:25:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778675137; x=1779279937;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Qpd7X3pKJdNMM1bukDTwHMcg5PQRKQfPgiyD65tPkLQ=;
+ b=VLsH5xVcCChTcu4crMqTzXn3+ZH6t2zNHp/q2Ws/eNirFITuElPWvRGkvRNLI+aG/+
+ IWA3WHiFoPc/1h59fxAawf2VRW42FsfptLEecODkINWcMNn5wmoMriC4pYqQXntfCZqE
+ 0hEBrqZuG5eA2VynXDPcaEAW381HYKtnYjCCZzSXlM0+3zNiqSSnC0oKFC56R74mc0s5
+ frrWh0+VV6NiTZIb5lglz2cKhEQfadFGFqwvbYLAFL5BCXnX1+cGqk269bXsx4ehlugo
+ aeGSpoNWB3bm6LGQzfBM4VYiURZ6mGIBJrAt8pCP3YrMDvhH4ddciSoij5ui5L5doWv5
+ MjLQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9I8XN65xyi70K8rw+BOZOYIPEYISwyzUgHWRr0Cuc3wyIUasUV2h5v9/wO9sXUZOGiyNGGFzndhQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yyq+mFAt19HRf2v+KUob/wFDKMpYtNWTGbUdzIp/5RI+Rnk9h+D
+ 9ecm7yyS1+P1JSUUjepW6R3irqDOpN43hwfwDQdxCXI4jUGWVq3RcCV5SaWQymvlb/VCp0rTxEW
+ YBCALT88hVHq1Gw4NXFhaEv6Sp2ttArDF2BcBU+Ov11Sp/h7hZBv0/A==
+X-Gm-Gg: Acq92OEMcy7Xsr2lVD0o/LOSS/vop3pCeEUMm7GdZJQTz2VFtlCclsMnxPjBKzZHGLG
+ izpEu1bWgwjQKucGkffzsR8MDfEsT4AnpETVc5sE/lxnKag9sRbdOI+Y9Wt3wp+UhdD0jUBJGro
+ j+GOGkp9fexJo0QByABp/zJa8DkSRJoPZU4g6Dia1XZ7DDq7ZrEUkX8Zk9FR5QSfQjB4qtLZd9R
+ hd5wtq0/8y+MuaVjAK5DkVnAO/bJ6IyAbZ4oJ1Pie6B72Utf/3nAh+g3uDtAOehAz3qZdK9t9Sx
+ VTaKbTLbsAMuvMqGTaW5XNvZsHj9N8GL9Eh/OL4O7gdxy3TFItEWFSiy868IhWO13jSkZOUnUXh
+ wKKe3U/r3+jjnQLHiqWvBwKSTlYNdYZSKwfbKO0CLaA/vkXP/XaZbMDeUeClboFeUmHcQ8w==
+X-Received: by 2002:a05:600c:4503:b0:48a:534a:eed8 with SMTP id
+ 5b1f17b1804b1-48fc971f11bmr46791575e9.1.1778675137156; 
+ Wed, 13 May 2026 05:25:37 -0700 (PDT)
+X-Received: by 2002:a05:600c:4503:b0:48a:534a:eed8 with SMTP id
+ 5b1f17b1804b1-48fc971f11bmr46791055e9.1.1778675136670; 
+ Wed, 13 May 2026 05:25:36 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48e8f410558sm82315715e9.5.2026.05.13.05.25.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 May 2026 05:25:35 -0700 (PDT)
+Message-ID: <0fc08e52-d62c-4c40-9221-9f4e659c2aa5@redhat.com>
+Date: Wed, 13 May 2026 14:25:33 +0200
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 04/29] ui/input: Use Linux key codes for internal
- key events
-From: marcandre.lureau@redhat.com
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Cc: qemu-devel@nongnu.org, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Thomas Huth <th.huth+qemu@posteo.eu>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org, 
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260513-input-v2-4-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
- <20260513-input-v2-4-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 13 May 2026 16:04:22 +0400
-Message-Id: <177867386225.1892592.16024787865842059974.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=775;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Anq7yXco+X1mi20QRWxcBqyiGY4fDU/WWzl124Mz/4g=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqBGjI3IxMJhYDcrd7h7LrwA/s7wkFjQp78Xlpt
- 9MAwvf6uL+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCagRoyAAKCRDa6OEJdZac
- 5fG7D/0aA+TFuo2ZmqydIhuFFNcl2pMw6kHugICvUbJ4TZzKoFKctORxenskhOq92t+zRHXt/iG
- MsOmxEvGNg40ZUlbTKII0eMXLeo/VGl+pLwiV3HiKT93OgXRC+1KlOZaWf5cMJO22XphqnAAELf
- 1e4G5Evjl1hy5rW5TKXEPCXIFX21B5AeDm09PtQ15CRf8eodmUlw7IlBfefyJVDEvZjaGItsFUp
- SyQOsMUlEXIDmIgTPvpUimrI8An0MSuEAm+uZNPX0PLTw5uY3hoMXvQ6Mu3JKutlXJeMTXJHFji
- ABIkvAOTNITwflwAXQTEz3EaJewO/vI7o82twgip3If6w+SgtA/6K3qyLaYl7P4SPjLe3svKIlV
- blshMGmP7wMnkEcRfjZ6AptxZUDt/p+PNbnoevf+uhPIRU6xB0n0RZp/f+HH+Qi9oOfY3+l9+U8
- m2Hy643qxNN0GCLzNMXVLOwaJe4+vJzZM78xccHFZjLpeQnWu+8BAxsZxwckLchag1aoxiwjvj5
- d1r2QIZGAVZ4wupvKh2seR9QDbCssmwg7UojkI2RxHbKc38Psf02PvBON6jZMQsL+E4FCaYwTua
- 5f5e5PlJsMwjaa35FoocRQB3KohYuXcMy1c54dE1mOtXohOH+1nWLwtqn4zWG2FhJJjfYQYNhw3
- 9y2Rj+q6ZNAS8kg==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: xYpt1zUjR8hWCenDHJclesO0oqKpO3S3bvLcEnUdbrs_1778673871
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v19 3/8] hw/arm/virt: add cache hierarchy to device tree
+To: Gustavo Romero <gustavo.romero@linaro.org>,
+ Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+ mst@redhat.com
+Cc: anisinha@redhat.com, armbru@redhat.com, berrange@redhat.com,
+ dapeng1.mi@linux.intel.com, farman@linux.ibm.com, imammedo@redhat.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com, linuxarm@huawei.com,
+ maobibo@loongson.cn, mtosatti@redhat.com, peter.maydell@linaro.org,
+ philmd@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
+ shannon.zhaosl@gmail.com, zhao1.liu@intel.com
+References: <20260311160609.358-1-alireza.sanaee@huawei.com>
+ <20260311160609.358-4-alireza.sanaee@huawei.com>
+ <19ecc22b-747a-4568-a178-da2dd12eae50@linaro.org>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <19ecc22b-747a-4568-a178-da2dd12eae50@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vD53jYJH-c5cZ0BbtTo_d-YbS_KRohzepg2qu675XK8_1778675138
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,27 +122,580 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 13 May 2026 19:38:20 +0900, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
-> diff --git a/ui/input.c b/ui/input.c
-> index 9232dd7fdae..5d155e3af07 100644
-> --- a/ui/input.c
-> +++ b/ui/input.c
-> @@ -412,8 +391,8 @@ void qemu_input_event_send_key(QemuConsole *src, KeyValue *key, bool down)
->  
->  void qemu_input_event_send_key_number(QemuConsole *src, int num, bool down)
->  {
-> -    QKeyCode code = qemu_input_key_number_to_qcode(num);
-> -    qemu_input_event_send_key_qcode(src, code, down);
-> +    unsigned int lnx = qemu_input_key_number_to_linux(num);
-> +    qemu_input_event_send_key_qcode(src, lnx, down);
->  }
+Hi,
 
-Shouldn't it be qemu_input_event_send_key_linux(src, lnx, down) here?
+On 3/31/26 4:38 AM, Gustavo Romero wrote:
+> Hi Alireza,
+>
+> On 3/11/26 13:06, Alireza Sanaee wrote:
+>> Specify which level (core/cluster/socket) caches found at in the CPU
+>> topology. Updating cache topology to device tree (spec v0.4).
+>> Example:
+>>
+>> For example, 2 sockets (packages), and 2 clusters, 4 cores and 2 threads
+>> created, in aggregate 2*2*4*2 logical cores. In the smp-cache object,
+>> cores will have L1d and L1i.  However, extending this is not difficult.
+>> The clusters will share a unified L2 level cache, and finally sockets
+>> will share L3. In this patch, threads will share L1 caches by default,
+>> but this can be adjusted if case required.
+>>
+>> Only three levels of caches are supported.  The patch does not
+>> allow partial declaration of caches. In other words, the topology level
+>> of every cache must be specified if that of any level is.
+>>
+>> ./qemu-system-aarch64 \
+>>      -machine virt,\
+>>           smp-cache.0.cache=l1i,smp-cache.0.topology=core,\
+>>           smp-cache.1.cache=l1d,smp-cache.1.topology=core,\
+>>           smp-cache.2.cache=l2,smp-cache.2.topology=cluster,\
+>>           smp-cache.3.cache=l3,smp-cache.3.topology=socket\
+>>      -cpu max \
+>>      -m 2048 \
+>>      -smp sockets=2,clusters=2,cores=4,threads=1 \
+>>      -kernel ./Image.gz \
+>>      -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+>>      -initrd rootfs.cpio.gz \
+>>      -bios ./edk2-aarch64-code.fd \
+>>      -nographic
+>>
+>> For instance, following device tree will be generated for a scenario
+>> where we have 2 sockets, 2 clusters, 2 cores and 2 threads, in total 16
+>> PEs. L1i and L1d are private to each thread, and L2 and L3 are shared at
+>> socket level as an example.
+>>
+>> Limitation: SMT cores cannot share L1 cache for now. This
+>> problem does not exist in PPTT tables.
+>>
+>> Co-developed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>> Signed-off-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>> Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+>> ---
+>> Thanks for the review Gustavo.
+>> Change log:
+>>       v18->v19:
+>>            - Fix comments. Adding more details to the commit message.
+>>            - Removed the extra check on existence of cache at the
+>> topology level
+>>                 in add_cpu_cache_hierarchy function since it is
+>> already checked
+>>                 in fdt_add_cpu_nodes function.
+>>            - Fixed typos.
+>>
+>>   hw/arm/virt.c         | 335 +++++++++++++++++++++++++++++++++++++++++-
+>>   include/hw/arm/virt.h |  17 ++-
+>>   include/hw/core/cpu.h |  12 ++
+>>   3 files changed, 362 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 7456614d05..87fb31ec6b 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -91,6 +91,7 @@
+>>   #include "hw/virtio/virtio-md-pci.h"
+>>   #include "hw/virtio/virtio-iommu.h"
+>>   #include "hw/char/pl011.h"
+>> +#include "hw/core/cpu.h"
+>>   #include "hw/cxl/cxl.h"
+>>   #include "hw/cxl/cxl_host.h"
+>>   #include "qemu/guest-random.h"
+>> @@ -281,6 +282,86 @@ static bool ns_el2_virt_timer_present(void)
+>>           arm_feature(env, ARM_FEATURE_EL2) &&
+>> cpu_isar_feature(aa64_vh, cpu);
+>>   }
+>>   +void set_cpu_cache(CPUCoreCaches *cpu_cache, enum CacheType
+>> cache_type,
+>> +                   int cache_level, bool is_i_cache0)
+>> +{
+>> +    int bank_index = ((cache_level - 1) * 2) | is_i_cache0;
+>> +    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
+>> +    bool ccidx = cpu_isar_feature(any_ccidx, armcpu);
+>> +
+>> +    if (ccidx) {
+>> +        *cpu_cache = (CPUCoreCaches){
+>> +            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index],
+>> CCSIDR_EL1,
+>> +                                         CCIDX_LINESIZE) + 4),
+>> +            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index],
+>> CCSIDR_EL1,
+>> +                                        CCIDX_ASSOCIATIVITY) + 1,
+>> +            .sets = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+>> +                               CCIDX_NUMSETS) + 1,
+>> +        };
+>> +    } else {
+>> +        *cpu_cache = (CPUCoreCaches){
+>> +            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index],
+>> CCSIDR_EL1,
+>> +                                         LINESIZE) + 4),
+>> +            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index],
+>> CCSIDR_EL1,
+>> +                                        ASSOCIATIVITY) + 1,
+>> +            .sets =
+>> +                FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+>> NUMSETS) + 1,
+>> +        };
+>> +    }
+>> +    cpu_cache->type = cache_type;
+>> +    cpu_cache->level = cache_level;
+>> +    cpu_cache->size = cpu_cache->associativity *
+>> +                             cpu_cache->sets *
+>> +                             cpu_cache->linesize;
+>> +
+>> +    return;
+>> +}
+>> +
+>> +unsigned int virt_get_caches(const VirtMachineState *vms,
+>> CPUCoreCaches *caches)
+>> +{
+>> +    int num_cache = 0;
+>> +    ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0)); /* assume homogeneous
+>> CPUs */
+>> +    ARMISARegisters *isar = &armcpu->isar;
+>> +    uint32_t clidr = GET_IDREG(isar, CLIDR); 
+One question: In KVM mode where is CLIDR set. I don't see it read from
+host so where is it set? Is it assumed to be 0?
 
--- 
-Marc-André Lureau <marcandre.lureau@redhat.com>
+Thanks
+
+Eric
+>> +
+>> +    for (int cache_level = 1; cache_level <=
+>> CLIDR_CTYPE_MAX_CACHE_LEVEL;
+>> +         cache_level++) {
+>> +        uint8_t ctype =
+>> +            (clidr >> (3 * (cache_level - 1))) &
+>> CLIDR_CTYPE_MAX_CACHE_LEVEL;
+>> +
+>> +        if (ctype == CLIDR_CTYPE_NO_CACHE) {
+>> +            /*
+>> +             * If a "No cache" cache type is found it means no
+>> manageable caches
+>> +             * exist at further-out levels of hierarchy, so ignore
+>> them.
+>> +             */
+>> +            break;
+>> +        } else if (ctype == CLIDR_CTYPE_SEPARATE_I_D_CACHES) {
+>> +            /*
+>> +             * Create separate D and I caches. D-cache is stored first.
+>> +             */
+>> +            enum CacheType cache_type;
+>> +            for (cache_type = DATA_CACHE; cache_type <=
+>> INSTRUCTION_CACHE;
+>> +                 cache_type++) {
+>> +                set_cpu_cache(&caches[num_cache++], cache_type,
+>> cache_level,
+>> +                              cache_type == INSTRUCTION_CACHE ? true
+>> : false);
+>> +            }
+>> +        } else if (ctype == CLIDR_CTYPE_UNIFIED_CACHE) {
+>> +            set_cpu_cache(&caches[num_cache++], UNIFIED_CACHE,
+>> cache_level,
+>> +                          false);
+>> +        } else if (ctype == CLIDR_CTYPE_D_CACHE) {
+>> +            set_cpu_cache(&caches[num_cache++], DATA_CACHE,
+>> cache_level, false);
+>> +        } else if (ctype == CLIDR_CTYPE_I_CACHE) {
+>> +            set_cpu_cache(&caches[num_cache++], INSTRUCTION_CACHE,
+>> cache_level,
+>> +                          true);
+>> +        } else {
+>> +            error_setg(&error_abort, "Unrecognized cache type");
+>> +            return 0;
+>> +        }
+>> +    }
+>> +
+>> +    return num_cache;
+>> +}
+>> +
+>>   static void create_fdt(VirtMachineState *vms)
+>>   {
+>>       MachineState *ms = MACHINE(vms);
+>> @@ -431,13 +512,124 @@ static void fdt_add_timer_nodes(const
+>> VirtMachineState *vms)
+>>       }
+>>   }
+>>   +static void add_cache_node(void *fdt, char *nodepath,
+>> CPUCoreCaches cache,
+>> +                           uint32_t *next_level)
+>> +{
+>> +    /* Assume L2/3 are unified caches. */
+>> +
+>> +    uint32_t phandle;
+>> +
+>> +    qemu_fdt_add_path(fdt, nodepath);
+>> +    phandle = qemu_fdt_alloc_phandle(fdt);
+>> +    qemu_fdt_setprop_cell(fdt, nodepath, "phandle", phandle);
+>> +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-level", cache.level);
+>> +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-size", cache.size);
+>> +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-block-size",
+>> cache.linesize);
+>> +    qemu_fdt_setprop_cell(fdt, nodepath, "cache-sets", cache.sets);
+>> +    qemu_fdt_setprop(fdt, nodepath, "cache-unified", NULL, 0);
+>> +    qemu_fdt_setprop_string(fdt, nodepath, "compatible", "cache");
+>> +    if (cache.level != 3) {
+>> +        /* top level cache doesn't have next-level-cache property */
+>> +        qemu_fdt_setprop_cell(fdt, nodepath, "next-level-cache",
+>> *next_level);
+>> +    }
+>> +
+>> +    *next_level = phandle;
+>> +}
+>> +
+>> +static bool add_cpu_cache_hierarchy(void *fdt, CPUCoreCaches* cache,
+>> +                                    uint32_t cache_cnt,
+>> +                                    uint32_t top_level,
+>> +                                    uint32_t bottom_level,
+>> +                                    uint32_t cpu_id,
+>> +                                    uint32_t *next_level) {
+>> +    bool found_cache = false;
+>> +
+>> +    for (int level = top_level; level >= bottom_level; level--) {
+>> +        for (int i = 0; i < cache_cnt; i++) {
+>> +            char *nodepath;
+>> +
+>> +            if (i != level) {
+>> +                continue;
+>> +            }
+>> +
+>> +            nodepath = g_strdup_printf("/cpus/cpu@%d/l%d-cache",
+>> +                                       cpu_id, level);
+>> +            add_cache_node(fdt, nodepath, cache[i], next_level);
+>> +            found_cache = true;
+>> +            g_free(nodepath);
+>> +
+>> +        }
+>> +    }
+>> +
+>> +    return found_cache;
+>> +}
+>> +
+>> +static void set_cache_properties(void *fdt, const char *nodename,
+>> +                                 const char *prefix, CPUCoreCaches
+>> cache)
+>> +{
+>> +    char prop_name[64];
+>> +
+>> +    snprintf(prop_name, sizeof(prop_name), "%s-block-size", prefix);
+>> +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.linesize);
+>> +
+>> +    snprintf(prop_name, sizeof(prop_name), "%s-size", prefix);
+>> +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.size);
+>> +
+>> +    snprintf(prop_name, sizeof(prop_name), "%s-sets", prefix);
+>> +    qemu_fdt_setprop_cell(fdt, nodename, prop_name, cache.sets);
+>> +}
+>> +
+>> +static bool partial_cache_description(const MachineState *ms, int
+>> num_caches)
+>> +{
+>> +    assert(num_caches - 1 < CACHE_LEVEL_AND_TYPE__MAX);
+>> +    enum CpuTopologyLevel topo_level;
+>> +    enum CacheLevelAndType cache_level;
+>> +
+>> +    for (cache_level = 0; cache_level < num_caches; cache_level++) {
+>> +        topo_level = machine_get_cache_topo_level(ms, cache_level);
+>> +        if (topo_level == CPU_TOPOLOGY_LEVEL_DEFAULT) {
+>> +            /* No topology level described for this cache level. */
+>> +            return true;
+>> +        }
+>> +    }
+>> +
+>> +    return false;
+>> +}
+>> +
+>>   static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+>>   {
+>>       int cpu;
+>>       int addr_cells = 1;
+>>       const MachineState *ms = MACHINE(vms);
+>> +    const MachineClass *mc = MACHINE_GET_CLASS(ms);
+>>       const VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>>       int smp_cpus = ms->smp.cpus;
+>> +    int socket_id, cluster_id, core_id;
+>> +    uint32_t next_level = 0;
+>> +    uint32_t socket_offset = 0;
+>> +    uint32_t cluster_offset = 0;
+>> +    uint32_t core_offset = 0;
+>> +    int last_socket = -1;
+>> +    int last_cluster = -1;
+>> +    int last_core = -1;
+>> +    int top_node = 3;
+>> +    int top_cluster = 3;
+>> +    int top_core = 3;
+>> +    int bottom_node = 3;
+>> +    int bottom_cluster = 3;
+>> +    int bottom_core = 3;
+>> +    unsigned int num_cache;
+>> +    CPUCoreCaches caches[CPU_MAX_CACHES];
+>> +    bool cache_created = false;
+>> +    bool cache_at_topo_level;
+>> +
+>> +    num_cache = virt_get_caches(vms, caches);
+>> +
+>> +    if (mc->smp_props.has_caches &&
+>> +        partial_cache_description(ms, num_cache)) {
+>> +        error_setg(&error_fatal, "Missing cache description");
+>> +        return;
+>> +    }
+>>         /*
+>>        * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+>> @@ -466,9 +658,14 @@ static void fdt_add_cpu_nodes(const
+>> VirtMachineState *vms)
+>>       qemu_fdt_setprop_cell(ms->fdt, "/cpus", "#size-cells", 0x0);
+>>         for (cpu = smp_cpus - 1; cpu >= 0; cpu--) {
+>> +        socket_id = cpu / (ms->smp.clusters * ms->smp.cores *
+>> ms->smp.threads);
+>> +        cluster_id = cpu / (ms->smp.cores * ms->smp.threads) %
+>> ms->smp.clusters;
+>> +        core_id = cpu / ms->smp.threads % ms->smp.cores;
+>> +
+>>           char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+>>           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
+>>           CPUState *cs = CPU(armcpu);
+>> +        const char *prefix = NULL;
+>>             qemu_fdt_add_subnode(ms->fdt, nodename);
+>>           qemu_fdt_setprop_string(ms->fdt, nodename, "device_type",
+>> "cpu");
+>> @@ -498,6 +695,136 @@ static void fdt_add_cpu_nodes(const
+>> VirtMachineState *vms)
+>>                                     qemu_fdt_alloc_phandle(ms->fdt));
+>>           }
+>>   +        if (!vmc->no_cpu_topology && num_cache) {
+>> +            for (uint8_t i = 0; i < num_cache; i++) {
+>> +                /* Only level 1 in the CPU entry. */
+>> +                if (caches[i].level > 1) {
+>> +                    continue;
+>> +                }
+>> +
+>> +                if (caches[i].type == INSTRUCTION_CACHE) {
+>> +                    prefix = "i-cache";
+>> +                } else if (caches[i].type == DATA_CACHE) {
+>> +                    prefix = "d-cache";
+>> +                } else if (caches[i].type == UNIFIED_CACHE) {
+>> +                    error_setg(&error_fatal,
+>> +                               "Unified type is not implemented at
+>> level %d",
+>> +                               caches[i].level);
+>> +                    return;
+>> +                } else {
+>> +                    error_setg(&error_fatal, "Undefined cache type");
+>> +                    return;
+>> +                }
+>> +
+>> +                set_cache_properties(ms->fdt, nodename, prefix,
+>> caches[i]);
+>> +            }
+>> +        }
+>> +
+>> +        if (socket_id != last_socket) {
+>> +            bottom_node = top_node;
+>> +            /* This assumes socket as the highest topological level. */
+>> +            socket_offset = 0;
+>> +            cluster_offset = 0;
+>> +            cache_at_topo_level =
+>> +                machine_find_lowest_level_cache_at_topo_level(ms,
+>> +                    &bottom_node,
+>> +                    CPU_TOPOLOGY_LEVEL_SOCKET);
+>> +            if (cache_at_topo_level) {
+>> +                if (bottom_node == 1 && !virt_is_acpi_enabled(vms))
+>> +                    error_setg(
+>> +                        &error_fatal,
+>> +                        "Cannot share L1 at socket_id %d."
+>> +                        "DT limitation on sharing at cache level = 1",
+>> +                        socket_id);
+>> +
+>> +                cache_created = add_cpu_cache_hierarchy(ms->fdt,
+>> caches,
+>> +                                                        num_cache,
+>> +                                                        top_node,
+>> +                                                        bottom_node,
+>> cpu,
+>> +                                                       
+>> &socket_offset);
+>> +
+>> +                if (!cache_created) {
+>> +                    error_setg(&error_fatal,
+>> +                               "Socket: No caches at levels %d-%d",
+>> +                               top_node, bottom_node);
+>> +                    return;
+>> +                }
+>> +
+>> +                top_cluster = bottom_node - 1;
+>> +            }
+>> +
+>> +            last_socket = socket_id;
+>> +        }
+>> +
+>> +        if (cluster_id != last_cluster) {
+>> +            bottom_cluster = top_cluster;
+>> +            cluster_offset = socket_offset;
+>> +            core_offset = 0;
+>> +            cache_at_topo_level =
+>> +                machine_find_lowest_level_cache_at_topo_level(ms,
+>> +                    &bottom_cluster,
+>> +                    CPU_TOPOLOGY_LEVEL_CLUSTER);
+>> +            if (cache_at_topo_level) {
+>> +                cache_created = add_cpu_cache_hierarchy(ms->fdt,
+>> caches,
+>> +                                                        num_cache,
+>> +                                                        top_cluster,
+>> +                                                       
+>> bottom_cluster, cpu,
+>> +                                                       
+>> &cluster_offset);
+>> +                if (bottom_cluster == 1 &&
+>> !virt_is_acpi_enabled(vms)) {
+>> +                    error_setg(&error_fatal,
+>> +                        "Cannot share L1 at socket_id %d, cluster_id
+>> %d. "
+>> +                        "DT limitation on sharing at cache level = 1.",
+>> +                        socket_id, cluster_id);
+>> +                }
+>> +
+>> +                if (!cache_created) {
+>> +                    error_setg(&error_fatal,
+>> +                               "Cluster: No caches at levels %d-%d.",
+>> +                               top_cluster, bottom_cluster);
+>> +                    return;
+>> +                }
+>> +
+>> +                top_core = bottom_cluster - 1;
+>> +            } else if (top_cluster == bottom_node - 1) {
+>> +                top_core = bottom_node - 1;
+>> +            }
+>> +
+>> +            last_cluster = cluster_id;
+>> +        }
+>> +
+>> +        if (core_id != last_core) {
+>> +            bottom_core = top_core;
+>> +            core_offset = cluster_offset;
+>> +            cache_at_topo_level =
+>> +                machine_find_lowest_level_cache_at_topo_level(ms,
+>> +                    &bottom_core,
+>> +                    CPU_TOPOLOGY_LEVEL_CORE);
+>> +            if (cache_at_topo_level) {
+>> +                if (bottom_core == 1 && top_core > 1) {
+>> +                    bottom_core++;
+>> +                    cache_created = add_cpu_cache_hierarchy(ms->fdt,
+>> +                                                            caches,
+>> +                                                            num_cache,
+>> +                                                            top_core,
+>> +                                                           
+>> bottom_core, cpu,
+>> +                                                           
+>> &core_offset);
+>> +
+>> +                    if (!cache_created) {
+>> +                        error_setg(&error_fatal,
+>> +                                   "Core: No caches at levels %d-%d",
+>> +                                   top_core, bottom_core);
+>> +                        return;
+>> +                    }
+>> +                }
+>> +            }
+>> +
+>> +            last_core = core_id;
+>> +        }
+>> +
+>> +        next_level = core_offset;
+>> +        qemu_fdt_setprop_cell(ms->fdt, nodename, "next-level-cache",
+>> +                              next_level);
+>> +
+>>           g_free(nodename);
+>>       }
+>>   @@ -2912,7 +3239,7 @@ static void virt_set_oem_table_id(Object
+>> *obj, const char *value,
+>>   }
+>>     -bool virt_is_acpi_enabled(VirtMachineState *vms)
+>> +bool virt_is_acpi_enabled(const VirtMachineState *vms)
+>>   {
+>>       if (vms->acpi == ON_OFF_AUTO_OFF) {
+>>           return false;
+>> @@ -3496,6 +3823,12 @@ static void
+>> virt_machine_class_init(ObjectClass *oc, const void *data)
+>>       hc->unplug = virt_machine_device_unplug_cb;
+>>       mc->nvdimm_supported = true;
+>>       mc->smp_props.clusters_supported = true;
+>> +
+>> +    /* Supported caches */
+>> +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1D] = true;
+>> +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L1I] = true;
+>> +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L2] = true;
+>> +    mc->smp_props.cache_supported[CACHE_LEVEL_AND_TYPE_L3] = true;
+>>       mc->auto_enable_numa_with_memhp = true;
+>>       mc->auto_enable_numa_with_memdev = true;
+>>       /* platform instead of architectural choice */
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index dba8ac7f2f..b22868c210 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -41,6 +41,7 @@
+>>   #include "system/kvm.h"
+>>   #include "hw/intc/arm_gicv3_common.h"
+>>   #include "qom/object.h"
+>> +#include "hw/core/cpu.h"
+>>     #define NUM_GICV2M_SPIS       64
+>>   #define NUM_VIRTIO_TRANSPORTS 32
+>> @@ -52,6 +53,8 @@
+>>   /* GPIO pins */
+>>   #define GPIO_PIN_POWER_BUTTON  3
+>>   +#define CPU_MAX_CACHES 16
+>> +
+>>   enum {
+>>       VIRT_FLASH,
+>>       VIRT_MEM,
+>> @@ -195,7 +198,19 @@ struct VirtMachineState {
+>>   OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+>>     void virt_acpi_setup(VirtMachineState *vms);
+>> -bool virt_is_acpi_enabled(VirtMachineState *vms);
+>> +bool virt_is_acpi_enabled(const VirtMachineState *vms);
+>> +
+>> +#define CLIDR_CTYPE_NO_CACHE 0x00
+>> +#define CLIDR_CTYPE_I_CACHE 0x01
+>> +#define CLIDR_CTYPE_D_CACHE 0x02
+>> +#define CLIDR_CTYPE_SEPARATE_I_D_CACHES 0x03
+>> +#define CLIDR_CTYPE_UNIFIED_CACHE 0x04
+>> +#define CLIDR_CTYPE_MAX_CACHE_LEVEL 7
+>> +
+>> +unsigned int virt_get_caches(const VirtMachineState *vms,
+>> +                             CPUCoreCaches *caches);
+>> +void set_cpu_cache(CPUCoreCaches *cpu_cache, enum CacheType cache_type,
+>> +                   int cache_level, bool is_i_cache);
+>>     /* Return number of redistributors that fit in the specified
+>> region */
+>>   static uint32_t virt_redist_capacity(VirtMachineState *vms, int
+>> region)
+>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+>> index 7d2f4459d2..08f8df3586 100644
+>> --- a/include/hw/core/cpu.h
+>> +++ b/include/hw/core/cpu.h
+>> @@ -1218,4 +1218,16 @@ enum CacheType {
+>>       UNIFIED_CACHE
+>>   };
+>>   +struct CPUCoreCaches {
+>> +    enum CacheType type;
+>> +    uint32_t sets;
+>> +    uint32_t size;
+>> +    uint32_t level;
+>> +    uint16_t linesize;
+>> +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write
+>> through */
+>> +    uint8_t associativity;
+>> +};
+>> +
+>> +typedef struct CPUCoreCaches CPUCoreCaches;
+>> +
+>>   #endif
+>
+> Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+>
+>
+> Cheers,
+> Gustavo
+>
 
 

@@ -4,77 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A089CD4F35
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22411CD4F24
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:56:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN702-0003sm-Jm; Wed, 13 May 2026 06:39:34 -0400
+	id 1wN7Fo-0003F9-P4; Wed, 13 May 2026 06:55:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN6zz-0003pD-Bs; Wed, 13 May 2026 06:39:31 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN6zv-0002P0-NE; Wed, 13 May 2026 06:39:31 -0400
-Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
- [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64DAcPdY044648
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 13 May 2026 19:38:56 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=w+G4mYrT3E579hEsUmrs6jCM3wwxrAco3XtOrTTZDg4=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778668736; v=1;
- b=pxfbA1V9MSpA+URvfP2D0sZR3oZPBGQtGyVjKql1G0Dv7Kjn7wYSigPL33726gNv
- G/tRjOEDpoWqQ+supKYbPtVM1wUztlGpPgE05EK8+c+i+UGn8gGGKrUgsvZ/2D4R
- vu1cf4fUvjorsrk0fS7A7Bh0IlJfF9I2/TQ4mV7/OhR4TDRFgbufA21I5Ps2U6N4
- ctruCUzXQHJKkGtCC8WBGcw/1DAEnXoKCDj14v1N10FCMSthdP68ZKhVJFcktwjb
- xVLFDzGbZS4B9ok+jF4yrbTEYZtYk115DCyBequ4lczBYRvUPu7EQ9dbxfp2j+hV
- 2YEYIBF/vQg30ESvA1Sctw==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 13 May 2026 19:38:26 +0900
-Subject: [PATCH v2 10/29] hw/display/xenfb: Use Linux key codes
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260513-input-v2-10-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
-References: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1wN7FX-000383-Bs
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:39 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1wN7FO-0001Mr-Hx
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:32 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-48984d29fe3so70482405e9.0
+ for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1778669721; x=1779274521; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Aoto7sWRwkvdYQ7EeipOLEozah24d4tm9ReeE9yn5cE=;
+ b=UIQ67yTUasNV7UXQ6hJfDxgVE5Bdt2VI4UxKOpryYqoBvo0W3kpXjphpXkeG+mXmfR
+ QM/K4fojzNhzaIEZfo8wCcNuSs7GIdpVw6PyM5VC1a8iNqYvKOV54Thf6Ce81q3xRg0v
+ NziJYYjzSyWcN9I+V4iani3aayT0xbsWoz5q1Kmx5C+VagBwhKsS3AD1AWJfqeYFi+LJ
+ 99Qw3pN5oTyiS0RcwdxkDW0OqP1I+HiDIdUFHhaGodosPIPN3A8uth7C1wvdL3B3NrkB
+ dYJ0Px30W5LP3tFBX/MgmEgJbnG4hsvUyfH3wzHyRiGWWc3z1/SdQmEUM6GKBquNvGs8
+ pbuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778669721; x=1779274521;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Aoto7sWRwkvdYQ7EeipOLEozah24d4tm9ReeE9yn5cE=;
+ b=QIfGZ4JMcrMMYEfd2yfwViwEdf/RT6orQDh89I9mIzBHCLS1ALEay9YInQSzbTfdit
+ xnSrT2/i62OXNGxNpEKVlEb3PP1K8qexZO5WeQynu6Bfqn7vwezvAQo6MxkFXb3pbs+g
+ 6Q7yOnNSZLd7/8oNaIHt731uhyiJfyd18JmHkhXAWXHi/eiXnuzM4u6g0AbdoYYef3at
+ svTI9lPR7DRhO8PNBmHgST8kmt60jfmcgGNY2iHXvZ7LwmZBpYJETB0PZwe+VbaNeEqg
+ PXBV81UDiMamJ5fA2lHrm+gu/59OxnM401Zl6KwfBFDqV5hJGIJAeI/PE7T3N9dPVLlp
+ r+1A==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ97yxxz2z29pp5BzCn+uNj0fjxos4CCDtvHqAoO7xY6lFqKtgXp+dQSpkPSiWN+C7ZWC0qTkqr2Ew==@nongnu.org
+X-Gm-Message-State: AOJu0YxIojBM00MTHdCZmLWhuXe94WS+WKEk+HmDgaSF8alDB/lyoeB4
+ Yd45XQ+ILDUxTwtnWxUQlUBDX9HJ49TnSmZygnzCcVlQ+QSyUbxS5/Tz
+X-Gm-Gg: Acq92OF0BqtmzQnrfmZ3Tbz91VvFmbUlk9VR3mzFil1eZwsDnJ51ahI3oThy9+VnZKG
+ dPv5Bj22FnYpmyra/wF69vhCRHVwiIOTDBjwbL1tJKBBJf7yVWEYrvRaALOPJf1Yd9Y49aiXAVJ
+ TI6slKSpUTv0JBKog2L6eN4Gx33P/wnUOQRns5D51It3dX5oBvhgOsjMS+XKKGAG7irQGnjOY0Z
+ JUMigj2f6q0ysbiNtgtob4kU0GNxKa8eQdMAehn5/GorZcKZqvRXbxvFg8A1MRfTrOOn76F+9ed
+ BvYvnl7p0ykdg4f7v8Cbw0otW10HTHgviWOICO01mc0paLjcaOmAAqSFCDcKNk6Vf96yEJRIRVm
+ R6Oe2/ppkXxM+jV6rCyx+64zAaO5Nkkk1m7j/+1jZYNdYLXbS0V9CsKixJ+D8bOyUGF3KVKQC6w
+ YkcDk7gNZjTpfIZ97bi72V05bIKRv0xTdFQO2cmvxCf/+K
+X-Received: by 2002:a05:600c:3107:b0:48a:89d9:a419 with SMTP id
+ 5b1f17b1804b1-48fc9a09fedmr39022605e9.11.1778669720593; 
+ Wed, 13 May 2026 03:55:20 -0700 (PDT)
+Received: from PC-DA2D10.beckhoff.com ([195.226.174.196])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2026 03:55:20 -0700 (PDT)
+From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Jan Kiszka <jan.kiszka@web.de>,
+Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Anthony PERARD <anthony@xenproject.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
+ Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1604;
- i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=XcfBuuudisNZMFU+Lz64jMl2gKGv+YTeVpp7yLYFGCs=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZLyDpG48/zzm+ctJ2nvXZH5pt7Cu36a18bLTYzvjnre
- dWeec4rOkpZGMS4GGTFFFlSinZza0TXfipMiG+BmcPKBDKEgYtTACayIYWR4V7AR59Qg6uhUz5Z
- PNkvp7jp9G7nrFfv5Dm+L1zp9MCPP4/hf7mRyGbVadbhkvPm5K//Ldzz9F1u+GpuneyOdbuDzcI
- ZGQA=
-X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
- fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ YannickV <Y.Vossen@beckhoff.com>
+Subject: [PATCH v6 01/15] hw/timer: Make frequency configurable
+Date: Wed, 13 May 2026 12:55:03 +0200
+Message-ID: <20260513105517.146706-2-corvin.koehne@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260513105517.146706-1-corvin.koehne@gmail.com>
+References: <20260513105517.146706-1-corvin.koehne@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,54 +110,146 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QemuInputEvent now stores Linux key codes for key events. Use those
-codes directly instead of translating between internal key code
-representations.
+From: YannickV <Y.Vossen@beckhoff.com>
 
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+The a9 global timer and arm mp timers rely on the PERIPHCLK as
+their clock source. The current implementation does not take
+that into account. That causes problems for applications assuming
+other frequencies than 1 GHz.
+
+We can now configure frequencies for the a9 global timer and
+arm mp timer. By allowing these values to be set according to
+the application's needs, we ensure that the timers behave
+consistently with the expected system configuration. The SoC
+configures the device correctly.
+
+Information can be found in the Zynq 7000 SoC Technical
+Reference Manual under Timers.
+https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+
+Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
 ---
- hw/display/xenfb.c | 21 +++------------------
- 1 file changed, 3 insertions(+), 18 deletions(-)
+ hw/timer/a9gtimer.c            |  9 ++++++---
+ hw/timer/arm_mptimer.c         | 15 +++++++++++----
+ include/hw/timer/a9gtimer.h    |  1 +
+ include/hw/timer/arm_mptimer.h |  2 ++
+ 4 files changed, 20 insertions(+), 7 deletions(-)
 
-diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-index 218f37f07400..ae302b217fe9 100644
---- a/hw/display/xenfb.c
-+++ b/hw/display/xenfb.c
-@@ -191,29 +191,14 @@ static int xenfb_send_position(struct XenInput *xenfb,
-     return xenfb_kbd_event(xenfb, &event);
- }
- 
--/*
-- * Send a key event from the client to the guest OS
-- * QEMU gives us a QCode.
-- * We have to turn this into a Linux Input layer keycode.
-- *
-- * Wish we could just send scancodes straight to the guest which
-- * already has code for dealing with this...
-- */
-+/* Send a key event from the client to the guest OS */
- static void xenfb_key_event(DeviceState *dev, QemuConsole *src,
-                             QemuInputEvent *evt)
+diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+index 3a086915c8..699cea8c89 100644
+--- a/hw/timer/a9gtimer.c
++++ b/hw/timer/a9gtimer.c
+@@ -63,9 +63,9 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
+ static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
  {
-     struct XenInput *xenfb = (struct XenInput *)dev;
--    int qcode = qemu_input_linux_to_qcode(evt->key.key);
--    int lnx;
- 
--    if (qcode < qemu_input_map_qcode_to_linux_len) {
--        lnx = qemu_input_map_qcode_to_linux[qcode];
+     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
+-                                  R_CONTROL_PRESCALER_LEN);
 -
--        if (lnx) {
--            trace_xenfb_key_event(xenfb, lnx, evt->key.down);
--            xenfb_send_key(xenfb, evt->key.down, lnx);
--        }
--    }
-+    trace_xenfb_key_event(xenfb, evt->key.key, evt->key.down);
-+    xenfb_send_key(xenfb, evt->key.down, evt->key.key);
+-    return (prescale + 1) * 10;
++                                  R_CONTROL_PRESCALER_LEN) + 1;
++    uint64_t scaled_prescaler = prescale * 10;
++    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, s->freq_hz);
  }
  
- /*
-
+ static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
+@@ -374,6 +374,9 @@ static const VMStateDescription vmstate_a9_gtimer = {
+ };
+ 
+ static const Property a9_gtimer_properties[] = {
++    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
++    DEFINE_PROP_UINT64("clock-frequency", A9GTimerState, freq_hz,
++                       NANOSECONDS_PER_SECOND),
+     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
+ };
+ 
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index 88158144b2..f67f26ad9a 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -59,9 +59,11 @@ static inline void timerblock_update_irq(TimerBlock *tb)
+ }
+ 
+ /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
+-static inline uint32_t timerblock_scale(uint32_t control)
++static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
+ {
+-    return (((control >> 8) & 0xff) + 1) * 10;
++    uint64_t prescale = (((control >> 8) & 0xff) + 1);
++    uint64_t scaled_prescaler = prescale * 10;
++    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, tb->freq_hz);
+ }
+ 
+ /* Must be called within a ptimer transaction block */
+@@ -155,7 +157,7 @@ static void timerblock_write(void *opaque, hwaddr addr,
+             ptimer_stop(tb->timer);
+         }
+         if ((control & 0xff00) != (value & 0xff00)) {
+-            ptimer_set_period(tb->timer, timerblock_scale(value));
++            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
+         }
+         if (value & 1) {
+             uint64_t count = ptimer_get_count(tb->timer);
+@@ -222,7 +224,8 @@ static void timerblock_reset(TimerBlock *tb)
+         ptimer_transaction_begin(tb->timer);
+         ptimer_stop(tb->timer);
+         ptimer_set_limit(tb->timer, 0, 1);
+-        ptimer_set_period(tb->timer, timerblock_scale(0));
++        ptimer_set_period(tb->timer,
++            timerblock_scale(tb, tb->control));
+         ptimer_transaction_commit(tb->timer);
+     }
+ }
+@@ -269,6 +272,7 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
+      */
+     for (i = 0; i < s->num_cpu; i++) {
+         TimerBlock *tb = &s->timerblock[i];
++        tb->freq_hz = s->freq_hz;
+         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
+         sysbus_init_irq(sbd, &tb->irq);
+         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
+@@ -301,6 +305,9 @@ static const VMStateDescription vmstate_arm_mptimer = {
+ };
+ 
+ static const Property arm_mptimer_properties[] = {
++    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
++    DEFINE_PROP_UINT64("clock-frequency", ARMMPTimerState, freq_hz,
++                       NANOSECONDS_PER_SECOND),
+     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
+ };
+ 
+diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
+index 5c9b048b95..571c05f638 100644
+--- a/include/hw/timer/a9gtimer.h
++++ b/include/hw/timer/a9gtimer.h
+@@ -76,6 +76,7 @@ struct A9GTimerState {
+ 
+     MemoryRegion iomem;
+     /* static props */
++    uint64_t freq_hz;
+     uint32_t num_cpu;
+ 
+     QEMUTimer *timer;
+diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
+index 4c6f569631..93ae532c9a 100644
+--- a/include/hw/timer/arm_mptimer.h
++++ b/include/hw/timer/arm_mptimer.h
+@@ -31,6 +31,7 @@ typedef struct {
+     uint32_t control;
+     uint32_t status;
+     struct ptimer_state *timer;
++    uint64_t freq_hz;
+     qemu_irq irq;
+     MemoryRegion iomem;
+ } TimerBlock;
+@@ -43,6 +44,7 @@ struct ARMMPTimerState {
+     SysBusDevice parent_obj;
+     /*< public >*/
+ 
++    uint64_t freq_hz;
+     uint32_t num_cpu;
+     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
+     MemoryRegion iomem;
 -- 
-2.54.0
+2.47.3
 
 

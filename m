@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874B6CD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:42:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E45CD4F24
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:42:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN714-0004kt-Tj; Wed, 13 May 2026 06:40:38 -0400
+	id 1wN702-0003sh-6E; Wed, 13 May 2026 06:39:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN70S-00040h-Qg; Wed, 13 May 2026 06:40:04 -0400
+ id 1wN6zz-0003pE-CD; Wed, 13 May 2026 06:39:31 -0400
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1wN70M-0002QS-Rp; Wed, 13 May 2026 06:39:57 -0400
+ id 1wN6zv-0002MJ-Kh; Wed, 13 May 2026 06:39:31 -0400
 Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
  [133.11.54.183]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64DAcPdq044648
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 64DAcPdl044648
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Wed, 13 May 2026 19:39:00 +0900 (JST)
+ Wed, 13 May 2026 19:38:59 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=RyTCIvwVaozeLTAhpbHAq66Za8rIDYOF4QelkPaMxcQ=; 
+DKIM-Signature: a=rsa-sha256; bh=mtv5CQiiL9+yXaZVzizyS5P1nD5trt4s3x8guX+CpgE=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=From:Message-Id:To:Subject:Date;
- s=rs20250326; t=1778668740; v=1;
- b=Q3I4olhyAMBayNLNuhohUxb8Tu7GY037MXW5+AF9/LyzlI6gmqJDh7elh0044AIm
- wBGZ/sQgOMwRFygVqI4QUaF5UuLuf/MZ7X04QtgWA5s0/LYBWU7ovSAejJPW+iYp
- bcQO4BOuELVcPdK6nQdFnPje9vaFejxioqcdu4chpyOP8cTbVNQI2YmUpc9Ro+Yl
- dUtBZ6tdkoflKC01tVFJcH68ub8etNsPfSB6BYvlpqIXzftcXgOqBWG4JGSPwvgp
- b3LBQZEoVI1+1JJynAsAc9XqM65Gns1aWwl13m8LTdPHQeYiE0gsQaQt4p6y8jLI
- KM7P0VnmIJld1iqh2GJp+w==
+ s=rs20250326; t=1778668739; v=1;
+ b=cP6s6/jKSB9z04JWkaKHIL6ktgTaVbqAyRqrv7OwxmCiqsU5y53Y+2mHFjgLvpzt
+ N/+QGPWp0R2Fv6uQnH4NwlwZHizO7UsRjA4uAdS7W/91td7M85t6ex6+mtwP2p/a
+ xbZnKnwtPGKSTfKsA82JbrUcq/YmuKGiyeSQ/s6IYRFZdxfCKe9PR4Ie2JqCdjWx
+ ReC7zuV2TsKyyr+3fuMyME5x8E/sx+Y0YAZL6511tLbvuHakYCmoMDVSZqWsjPq+
+ 7+bPpEFECtMfT/xZl6KH397FTfpBmdmHQaPC/09Br8v5yd2k4BOUFFRg/Pq0YC22
+ NtcsMuDMjO8d/9ZwwqwKiA==
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date: Wed, 13 May 2026 19:38:44 +0900
-Subject: [PATCH v2 28/29] ui/console: Remove qemu_text_console_put_qcode()
+Date: Wed, 13 May 2026 19:38:39 +0900
+Subject: [PATCH v2 23/29] ui/keymaps: Use Linux key codes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260513-input-v2-28-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
+Message-Id: <20260513-input-v2-23-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 References: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 In-Reply-To: <20260513-input-v2-0-b3cc0470308a@rsg.ci.i.u-tokyo.ac.jp>
 To: qemu-devel@nongnu.org
@@ -58,13 +58,13 @@ Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 X-Mailer: b4 0.16-dev-16047
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1398;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=998;
  i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
- bh=ThSU88la05KIjFwROp/cneKNiRlHnev55PgTZdXOqEg=;
- b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZLyJ7t1zs7Fu16Hb+R45t/mW9C7BrnTYFJduf3dqQbS
- z9+UuTQUcrCIMbFICumyJJStJtbI7r2U2FCfAvMHFYmkCEMXJwCMBFnbYa/QgHSUqv3OU44zrqt
- ua1Hc+qd6TPeSZROY3s7U+PG4gWZ0xgZFs7rrsqr3sT4n7u1Q3b52SixwgdZ3fqJmv9Y2BMNPFa
- wAwA=
+ bh=JSYEPF6QuhGlyghPcnd/kD7DgQn3AulpARBsJb4qeIk=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQxZLyI7sVwnrOCf/SfSaubdx5tS3m8v0FdaGZQhd5fXNk
+ J3ss06no5SFQYyLQVZMkSWlaDe3RnTtp8KE+BaYOaxMIEMYuDgFYCICSxn+p0a+97M1mXPjvuSL
+ lcKyt6N4vrkmMK0JfXF5x1kZsZUWzIwMexdpPssPT/J7vHJ38zNr5tsi9zNb+HZnHpp19O2kC0E
+ feAE=
 X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
  fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
 Received-SPF: pass client-ip=49.212.243.89;
@@ -90,43 +90,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It is no longer used.
+QemuInputEvent now stores Linux key codes for key events. Use those
+codes directly instead of translating between internal key code
+representations.
 
 Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- include/ui/console.h | 1 -
- ui/console.c         | 6 ------
- 2 files changed, 7 deletions(-)
+ ui/keymaps.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/include/ui/console.h b/include/ui/console.h
-index 691040f5948d..a31c5a4995c6 100644
---- a/include/ui/console.h
-+++ b/include/ui/console.h
-@@ -108,7 +108,6 @@ bool qemu_mouse_set(int index, Error **errp);
- #define QEMU_KEY_CTRL_PAGEDOWN   0xe407
- 
- void qemu_text_console_put_keysym(QemuTextConsole *s, int keysym);
--bool qemu_text_console_put_qcode(QemuTextConsole *s, int qcode, bool ctrl);
- bool qemu_text_console_put_linux(QemuTextConsole *s, unsigned int lnx,
-                                  bool ctrl);
- void qemu_text_console_put_string(QemuTextConsole *s, const char *str, int len);
-diff --git a/ui/console.c b/ui/console.c
-index fd1038a22c0b..e8c1a4c97906 100644
---- a/ui/console.c
-+++ b/ui/console.c
-@@ -328,12 +328,6 @@ static const int ctrl_linux_to_keysym[] = {
-     [KEY_PAGEDOWN]   = QEMU_KEY_CTRL_PAGEDOWN,
- };
- 
--bool qemu_text_console_put_qcode(QemuTextConsole *s, int qcode, bool ctrl)
--{
--    unsigned int lnx = qemu_input_map_qcode_to_linux[qcode];
--    return qemu_text_console_put_linux(s, lnx, ctrl);
--}
--
- bool qemu_text_console_put_linux(QemuTextConsole *s, unsigned int lnx,
-                                  bool ctrl)
- {
+diff --git a/ui/keymaps.c b/ui/keymaps.c
+index a448efab3202..d145b5dd3a8c 100644
+--- a/ui/keymaps.c
++++ b/ui/keymaps.c
+@@ -255,9 +255,8 @@ int keysym2scancode(kbd_layout_t *k, int keysym,
+          * On keyup: Try find a key which is actually down.
+          */
+         for (i = 0; i < keysym2code->count; i++) {
+-            QKeyCode qcode = qemu_input_key_number_to_qcode
++            unsigned int lnx = qemu_input_key_number_to_linux
+                 (keysym2code->keycodes[i]);
+-            unsigned int lnx = qemu_input_map_qcode_to_linux[qcode];
+             if (kbd && qkbd_state_key_get(kbd, lnx)) {
+                 return keysym2code->keycodes[i];
+             }
 
 -- 
 2.54.0

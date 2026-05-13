@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2FDCD37B6
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 05:38:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A88F0CD4851
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 05:43:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN2IL-0002fo-QA; Wed, 13 May 2026 01:38:10 -0400
+	id 1wN2Mz-0003dB-1H; Wed, 13 May 2026 01:42:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wN2IH-0002fK-Nn
- for qemu-arm@nongnu.org; Wed, 13 May 2026 01:38:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wN2IF-0004x0-FQ
- for qemu-arm@nongnu.org; Wed, 13 May 2026 01:38:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778650681;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=XkYNinsYEGPyxvrSjwgj1bi8typGS7e9QH2V7czgNYg=;
- b=c8CbzY1bl3QV2I9fjgSHmmdCGMgaTD1mindSS9UcWp69NNGwxuvuCkD08JClfxjNfNoIBa
- wkda3A/oQ7Etb8jnjwhB3Hn01hateT8awrpJhBmoq5KyOGwfCvfoAn6evZzjD2VXxWcf6z
- BUiQuOiVKwriKffk1chBjrcLe+xx9P0=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-363-Hv9iJrN3PPCwm3sO9CeqaQ-1; Wed,
- 13 May 2026 01:37:58 -0400
-X-MC-Unique: Hv9iJrN3PPCwm3sO9CeqaQ-1
-X-Mimecast-MFC-AGG-ID: Hv9iJrN3PPCwm3sO9CeqaQ_1778650676
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DDE441800359; Wed, 13 May 2026 05:37:55 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.44.49.156])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C3B421800576; Wed, 13 May 2026 05:37:51 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, kane_chen@aspeedtech.com,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH] hw/misc/aspeed_scu: Fix AST2600_RNG definitions
-Date: Wed, 13 May 2026 07:37:49 +0200
-Message-ID: <20260513053749.132759-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wN2Mx-0003cs-6H
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 01:42:55 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wN2Mu-0006oS-Lm
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 01:42:54 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-44dd5cb0f81so4658288f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 12 May 2026 22:42:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1778650971; x=1779255771; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=NB/jCwlfQ2uFQsakTEAKgPRfsZ7fv11fG8ThOhE3jsQ=;
+ b=ca37PNLhMBlM61vNCbZbzoEjoj5U1FEy1tMr4xEKPZFYj4j/56qwkAcELIv8gc+PW1
+ 59yLefGFCxxALtNavjAenZnueML1vHwkCLILp5MklZG0Nkxt17f3DjplCGw7bNZ/TlYW
+ etOtgDgz1RT6ri6YjqAtR0mTJwC/fFiruxazdLBYj0H3R8Ek2qvrJvbmDzZ1laOhHSf5
+ FfpgoOG/YPVOONZCQUEK8QIvLlWOodxRskBhQ00rf4tDbej3M06s98Xjde6EBdqODQ6q
+ IpTEjNWJjn3BLQ+vGFMe02wBvOo3/6PZaDhZb3943PzQyy8vziCK4UOvoKEs51kPRmUF
+ svEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778650971; x=1779255771;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NB/jCwlfQ2uFQsakTEAKgPRfsZ7fv11fG8ThOhE3jsQ=;
+ b=D++UlbytqNr8OClzsfWh+xpslAnsguR1ISL1NcEB13z5k+XcP8+FiJAP6KU8e/FpKY
+ yeyAoKJMjzN9pPUHXjuZ4lqqZBWPaAGbeBpaZI7V5yXHsbzgp5BWRa+Z9GQBl8KYTo0x
+ id1FdpRQikfrhf5GrPGF/M8DymCpBrBSJWunFF1SsU9HvkZxZ40nQFl30/RX+PGku8+i
+ crkhbJ7PYg10ZRXhRx+VPAyaRrtW5FKTdlVq7HMOGb6GyQx4gmwLgRE4wCthwPlokvhP
+ c0zXmyS2tE1W6XhjC1vzdSYGOjmMT0bJov8ei4StU4/ozCua4mKObU9drD/lHC21bRVF
+ r/bQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8hPZxpuvOM6Nxwr+jQXKXLKkyY37+GWgpS50HJ61Gngp2/mhMhfEZcpYBt44rlohmv3Sb1Mxe7ZA==@nongnu.org
+X-Gm-Message-State: AOJu0YzXyGqHjXlNbR4cX2PBNanlJXZjPu+VUv2oC0vc16gqam4EWklb
+ juR419i3G8VJp5555EPlpG+N0lcCaX+6Pb6lyCr562XKmTqf1uqZgLoariFYihmuhAs=
+X-Gm-Gg: Acq92OFz3JbmkK4DbqT5TCMamC9pkBieExvK22yPrDC8L4R/frsn23sDj4BTHVlZGbp
+ oh4DgHh6uhE9xVpkgenRCajXwd7gptr26a8xb8ywb0DgraN/x3GGPBTAVDGWRxLox+8hp75xSUt
+ YNnMoq2ETtV6QbZEZRkMyK9tDx6NzYSCJCSDyzynUrUcu0yxtu5rcKubD20k9b4/LG+uFyp1Ily
+ f+qBCmpQxtU93a/eKoN9YXxNX2VzitGqNVLlM7oPhaf540KkYvPhmu/mEjVpjbvfgQK/lF22F9m
+ z90qotIl3GphzOkcByGyhSmiJMVQ2UZy7uVt2HKMrUVsKulUIGIydXDG6WU5RMJCDjtIKiCeCGw
+ 6tsE1ky0kgMJ4V3Jyw/yzGe6XTQjE5KFyd0fE/2imKhj7Bjb2q6X1oIz8mjOQHKMfwoFo8hk+xf
+ IuyXPHwqg2WtuIB7BPYuXdKB8Ri4tpiuzxlftSDBqzYYfKMP4YAWDrL9BsItGk+w34Ag==
+X-Received: by 2002:a05:6000:298e:20b0:441:2397:f40f with SMTP id
+ ffacd0b85a97d-45ac0b2d93fmr7242105f8f.4.1778650969990; 
+ Tue, 12 May 2026 22:42:49 -0700 (PDT)
+Received: from [192.168.69.200] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-454913049ecsm36701094f8f.19.2026.05.12.22.42.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 12 May 2026 22:42:49 -0700 (PDT)
+Message-ID: <4162b580-3e22-4aed-b5b7-d4bf2d073c33@linaro.org>
+Date: Wed, 13 May 2026 07:42:48 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: NaJMaEr359dZ-nrRvFwzbIkoxmDORYXNUGDavnl_bpk_1778650676
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/12] hw/arm/omap: Remove omap_mpu_model remnants
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260512203414.3633237-1-peter.maydell@linaro.org>
+ <20260512203414.3633237-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260512203414.3633237-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,45 +103,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support") introduced
-a typo on the definitions of the Random Number Generator registers.
-Fix that.
+On 12/5/26 22:34, Peter Maydell wrote:
+> The omap1.c code has handling for an mpu_model field which is
+> an enum of which OMAP SoC model it is. We removed most of our
+> OMAP support some time ago, and now the only OMAP SoC we
+> implement is the OMAP310, which sets s->mpu_model = omap310
+> in omap310_mpu_init().
+> 
+> That makes all the handling for other settings of mpu_model dead
+> code; remove them.  This includes the omap GPIO device's mpu_model
+> property which we set but which the device makes no use of, and the
+> omap-id-e20 memory region (because the OMAP310 satisfies
+> cpu_is_omap15xx(), so never executed the old if() block).
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/omap1.c        | 28 ++--------------------------
+>   hw/gpio/omap_gpio.c   |  6 ------
+>   hw/misc/omap_clk.c    |  9 +--------
+>   include/hw/arm/omap.h | 18 ------------------
+>   4 files changed, 3 insertions(+), 58 deletions(-)
 
-The implementation of RNG_CTRL and RNG_DATA should be rechecked on HW
-since the QEMU implementation always generates random data, regardless
-of RNG_CTRL. A comment in aspeed_ast2600_scu_read() admits uncertainty
-about the behavior :
-
-    /*
-     * On hardware, RNG_DATA works regardless of the state of the
-     * enable bit in RNG_CTRL
-     *
-     * TODO: Check this is true for ast2600
-     */
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2350
-Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- hw/misc/aspeed_scu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index e4160356e443..9d9f43e6b563 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -128,8 +128,8 @@
- #define AST2600_HW_STRAP2         TO_REG(0x510)
- #define AST2600_HW_STRAP2_CLR     TO_REG(0x514)
- #define AST2600_HW_STRAP2_PROT    TO_REG(0x518)
--#define AST2600_RNG_CTRL          TO_REG(0x524)
--#define AST2600_RNG_DATA          TO_REG(0x540)
-+#define AST2600_RNG_CTRL          TO_REG(0x520)
-+#define AST2600_RNG_DATA          TO_REG(0x524)
- #define AST2600_CHIP_ID0          TO_REG(0x5B0)
- #define AST2600_CHIP_ID1          TO_REG(0x5B4)
- 
--- 
-2.54.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

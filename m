@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9419BCD37AC
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 16:37:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B35CD37AC
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 16:38:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNCaG-0000Zs-IT; Wed, 13 May 2026 12:37:20 -0400
+	id 1wNCaL-0000fa-PP; Wed, 13 May 2026 12:37:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shaju.abraham@nutanix.com>)
- id 1wNCXj-0003KR-7m; Wed, 13 May 2026 12:34:44 -0400
-Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
+ id 1wNCXt-0003Mk-4M; Wed, 13 May 2026 12:34:53 -0400
+Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shaju.abraham@nutanix.com>)
- id 1wNCXg-0000if-2X; Wed, 13 May 2026 12:34:42 -0400
-Received: from pps.filterd (m0127844.ppops.net [127.0.0.1])
- by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64DGLKTn4149398; Wed, 13 May 2026 09:34:29 -0700
+ id 1wNCXp-0000mp-0n; Wed, 13 May 2026 12:34:52 -0400
+Received: from pps.filterd (m0127838.ppops.net [127.0.0.1])
+ by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64DGKdnV1855322; Wed, 13 May 2026 09:34:22 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=cvUzVq5os+U/Y3Wb81SC3XIp5miUUCaIolEld9owm
- QE=; b=p0G8URFXmHMosWYzvGEid99RYCQ0dwsRG/K0IuVARyupUONSYRVtc+W4a
- WDopOIpbP9ii6HwqansdSMEeuje7kSOmUF1eP1Jr26wEjYTmmPgQY6uC0xlOgAUu
- FdbId7bkmuN+dWCp+/6V741tzM+z0CV+QlDDlU1e3hxsOy56H4QI6dFwj4tQlrDg
- bFFzfb8byQXZVfaLFYOEuG7hZ1CQr5d7lIYSZJpSkNj7n6YIamlPCJ/BNm//vX6u
- rNq4460AEVmhicnKut1Eb/+0hQguw9sEtDE+EqoUwRXtAz3Nqt/27eTcsgoYraNo
- DyueUILKWrLG0nOIYngXVIir8eqfA==
-Received: from sn4pr0501cu005.outbound.protection.outlook.com
- (mail-southcentralusazon11021113.outbound.protection.outlook.com
- [40.93.194.113])
- by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4e3nva675w-2
+ proofpoint20171006; bh=qQia2sTu14gaaSj1X2ihN36jAvHDyr7AuM5sfCilu
+ 5U=; b=nrKUfEnFzk36WL4V2EglYekR2uvS0tg3uHaBWd9HfAsIpYPXlWGzOYeWf
+ OL98gIPB0ADRFYwyfF1KBrAqsgk3VfW3ipDFgYh0P9jyLd9oadqw7oM6mVxIeOCK
+ IXayeIX9LKo2sOOkp5tb2GBayZMK4AxDtqUdzRVo4uqFvTvz4ivYlz7DYar8R3D7
+ i+G5T63BgpTJYHt/SBKD6i9aCIUe65LusmTfBH9vaXwK80lysK15TnA6VHPPBDg3
+ JKJTMbqpkbwxtm5HwnJ829X6TD9HzjzecTgSUSmh6mAiNR6UL+e3Eh9EKOcs2ZhJ
+ 1nIcUXIKDmQN+TJqbOhj5YIpG9LwQ==
+Received: from ch5pr02cu005.outbound.protection.outlook.com
+ (mail-northcentralusazon11022087.outbound.protection.outlook.com
+ [40.107.200.87])
+ by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4e3nvke988-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Wed, 13 May 2026 09:34:28 -0700 (PDT)
+ Wed, 13 May 2026 09:34:22 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=EbroLbfzmgkfUQgp7QQxJOXR1z1pDEgS0jXc9MfshsT/H0/Rkj7cVJKQCPygtdPzbVEbU1Cblr7Zx3kDi3N97qvFBxxa+CdjNDvsdCMw2P+4QWfIDEY5TMKMSzEbIxiS9hB8p3OTfG9T4jV0R8YOjpPaLjJtXsQiX6mIjK4TK2yBvhVdZGkWvNlJWvFGcwr9dR49xh1g2OTjYv5qg4HB+uPpyClxkz3FeRZO3Rx+gMPSGHpikwBBwDH5wfcLWmMNfIwckOHCNc1h+yzrqy1HbJ4nQOwnAyyRYTdA1ta55ReDXQgG1ggzldGANJ4E7wz0zrWAAXMEzKxORkRFAZfNiw==
+ b=ycJ2i14kNxlRZVQlBWsLvWta7FZPDasorXLNJipoPCDv78VLGaQEIUWQz10tTu1+EH8O1DE6ntiGE0sX6HZgj696Isi8gY00yzAuTitGsLaalHGombgKHJE1sOr4i+X1+QNdvI/XHwbqIfTOh85laDptXTbwvO/NEjx5+q/xfJzmP6GfF4zp3Z2NeU6j85RsLP3AHASz/JqOaRkdclsdH77woe+JRh7L6kas9DOiH9FUgqJnKrC7MVJ7ybqKfuPF1TNIKqoUw7MBC16Ugc/Zn8zsf2ocsyW9ss6hmjx3QQhiNzyPSiwPNdUCpiiLqnxtsFCnfBC1KdFlJQLW1fjUwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cvUzVq5os+U/Y3Wb81SC3XIp5miUUCaIolEld9owmQE=;
- b=IfhBJN5tHnxVZe13vIBPpNesIj431wxIdjqEaEj/I9NbQHQpMRlKmqeA0Q+2kuTdBDry5rk8IOb+KRPyDEwpuDd51S1MPgGRyRkX8yrUvkoNktxmumGWmZGW0MKdmVVdykqTctqIZmT0Mjpa+ivvj1xu4EXiZGA5AmUBabzbB+gymoARE6yxWtpdj2bUSjLVSejAPkdqlIdWpB1nEl+1k0yk7npVpOPWm1ACpX9zh0LFsEPSBRfvZNLwg1SR4Y4sUuHbntXas9BaiVDTwUqcuFb6yE+DFLBczljNxhNkDWIJvNYGU/kRpP18jy8G6qgP8vZCwbeY5OIMY0h4MZkIUQ==
+ bh=qQia2sTu14gaaSj1X2ihN36jAvHDyr7AuM5sfCilu5U=;
+ b=PN1m7MIVTsy2VfrU4aQWaix548tnFkYZuy5T09nwQXFXWXBugpTHgOoZsVohr2A3Dk8u8OXz5pxcGHH85uq2mqwFjgyr7Rs0NMPfhYmGdURHVoLtb1/1actKJhAzij9O8hBKo1hQi0WFhhbI8pZa+onCG13+k1X9/bDPPFcKpbDT+jApCKBmxwi6Q4YR9cI1CHKwdjJKaEv2n+iV7Dzganay/dpywSAdzTLNetzi76f751Es21kJBI/BpwbEGUQ2ehQgWn/4ldLZxCmeWriQM44y6i8XCwFF5YDCYYldIiR07Yc+nm21G5bma4EFur2IY1eIsvj2+ewwsYveXAf/WA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=cvUzVq5os+U/Y3Wb81SC3XIp5miUUCaIolEld9owmQE=;
- b=PIdsxRkd5drikAoIj1ldENujRggAxWM8Z5jsZjDZ+NsM1zYFdLVrpawWUMG+xfcoRpP4hgw45sKRiRT5VXgXGwGV1+5LntCWcLYtPv4uPgDA0Sa3eKpwPgXmiJ3LFVV2EdEgLFEdwXNmbzwDplQ+fE1g9MBiipa4eYzQ6laJjYF4RzdyLulPpMMzcHdqnXxz6ry/kcoiHwQYFMY+PgFByW5B/n4Vs8R9xJdcZ/swx4HwUxl3ieKlSexMGirg3dF51I2whdxFrJyVuNW/xoeQoJh6eZoVY/h3RuBJRgZ+MNDGM+BRrVlpQmwAet7DXY6YGii54BqJ8HSpHTsXtS3Vbg==
+ bh=qQia2sTu14gaaSj1X2ihN36jAvHDyr7AuM5sfCilu5U=;
+ b=v4Wo/Ed6oqGmbSxSm3nkLcu6LMnKvXFyszYnkgn5F134xk9XfEf6q5dH4I0cbXRw+8toMmOdXrTjbbHKch/pvAiwO9e8dQh6sHhn/Vtltyvb/H1N1G3dpcTL3caeO/hcTmoRuaxPHg2MCV4TfZ0x/Aatd05/mu717NHMwrhUUWhCnLaSiGtJmM30W4d2UyW2AqQAvapwGGbrQe/1Qf8Vm17MrwVi7TsuHIccJpN9VR0gSm3JLy40w7somqgAVwuPrVoAVl1TAUT78d8+RkpCL1t8W0LBseYbWiBpEQkpTr5qdjQtFnHZjxTQZD9WeARnPmzDhXGAPeIGQv7PvgT0WA==
 Received: from PH7PR02MB10160.namprd02.prod.outlook.com
  (2603:10b6:510:2e7::19) by SJ0PR02MB8813.namprd02.prod.outlook.com
  (2603:10b6:a03:3d6::9) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Wed, 13 May
- 2026 16:34:26 +0000
+ 2026 16:34:19 +0000
 Received: from PH7PR02MB10160.namprd02.prod.outlook.com
  ([fe80::4ed7:5c74:48e0:ff23]) by PH7PR02MB10160.namprd02.prod.outlook.com
  ([fe80::4ed7:5c74:48e0:ff23%7]) with mapi id 15.20.9891.021; Wed, 13 May 2026
- 16:34:26 +0000
+ 16:34:19 +0000
 From: Shaju Abraham <shaju.abraham@nutanix.com>
 To: eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -70,10 +70,10 @@ Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  prerna.saxena@nutanix.com, jon@nutanix.com, jond@nutanix.com,
  Shaju Abraham <shaju.abraham@nutanix.com>,
  Khushit Shah <khushit.shah@nutanix.com>
-Subject: [RFC PATCH v1 10/13] target/arm: named_cpu_model: Register Arm64
- properties for host model
-Date: Wed, 13 May 2026 16:33:53 +0000
-Message-ID: <20260513163356.3033159-11-shaju.abraham@nutanix.com>
+Subject: [RFC PATCH v1 07/13] target/arm: named_cpu_model: define ARM
+ properties
+Date: Wed, 13 May 2026 16:33:50 +0000
+Message-ID: <20260513163356.3033159-8-shaju.abraham@nutanix.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
 References: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
@@ -85,90 +85,90 @@ X-ClientProxiedBy: CY5PR10CA0003.namprd10.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: PH7PR02MB10160:EE_|SJ0PR02MB8813:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6e168396-f713-455a-61b5-08deb10d7f1d
+X-MS-Office365-Filtering-Correlation-Id: 1cf236d0-0094-4b12-b8d8-08deb10d7b2f
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|7416014|376014|366016|1800799024|921020|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: fPxdIwAsDijviSm6lRhqY2MhKbjlaYSKpwz7FIXSe78lClbdouiou36iUz6fr8Rncy1qr88x8SL9ewDvwzsSRS+lrY57peqsUjm9cURWBSysiXHebVe/rp8VGDm605LG+M89t52qBi5z4FwGiYU2zQ72acLtLY56Dbo6MKkwWYRwV2cJ5FSViR6DCVUUJQj0Gdx8bjZERV7M5qU1rJDoeHC6tEjyRX1Q0G72L2iV5AdmKbInzhpBnSRiPRJ1FDiMXdLGFh7iUGJzkzXsvV/mFfXkqiUxrASKFAbiXVZxtpV8eEesBxMlQTNTnJefyMTksdPZo8+JTEfa4F77wrlxxCKk4fLmnsiMMP+Ag/Mby9fGH9bGzjxECeFDtiCtimlt0dLe2F2Sr0FxQG9oXiwyxzuFg2BcUXcdjqFEqL77E5YKt0lT5b/ICKdzVsID7je9lskqN1XKx3+es1vX6vOQ0VhWFg1ZsGyqwpGjp1GKD9HePzYgR9CJ0XUHANI8N1FZKMuionnf3Bgr2wVtX5A8RGQDDfaINPU2UcfzXUS9OmdujYAFMHGEYxIRoB+MkTDX9xYMoSSmEl9a31GpPJCauC7Iyw4S8sJ6xhclLjws2dSPT/U/XRTc6IoklfEEuQ6+FTPJrsYCpW+ix0fa3gnxFJ8SpYG4E3+9fKz04Q/1IEsFQ/Cf+BRWbKy+ysUvPG8xxuH70aQLIk/zc5FlpDQUcuJWnQJV3Hxee6t9svWVog0=
+X-Microsoft-Antispam-Message-Info: FwDxsfcLl3UucvSleC7s77OFQEvZC/tJTv1c7xI20tzztSUXVknkU7jSyjdcvnnnS3fCwkdi6loE+w4TagaGMort3biSmWa8zchZl48a9YZAgOuZmHWfp5iBr6GRkKtbsP+YXSAiQzpdMr/5AEY1Iy6eBLcZ9mBvK1yHKxqd4JJfaPpG/RoAsjwxEwBoAPMGrgI7Levf5F9M9xxEc/8bL/WY3baTZCUk4+930OxlchomDexp9faIHPs6dqNFHIz8OMxxW2VkrlNKopzIfFNNH6C25okBQs5sKt9y7h0QHzB/kO0k46uP9B7stN8GjXfrWN6I0OX3WK0Gcth9hiIh0qa4lTpnShH8LSjEHanP7F9XLAubzTTajIflsTWm4aiZDNvpJamRE9CbZd0zwzCCKX3bpNFvQfulJT6NC+Sd7VIK88DoRBxX4ZH78ELm9qw+cgqvP/8FhEMR9gWQ1Z/QJq9nPbwTwp0Sxg8SNJE4fqMmyjp/Qv4Eea6xesBRW7wog/pJvom8DLfMd0eWMInTz8iAymtpX9p7yplMepdPDiF1z/owgqmQJW94Zi3NkMvlInyAosecpoImfbLBlBj8Xgj3Ngo1tb3WIXCQpJwU/mLeFIw/Dx1vWnoV/C4nSgS1pfsnqYxrVcxO3l07WUKJ1eiwpHsHb0uf5QHWSKa1FF7eNmyCQvTO/LA0SnZXAEX4mpLy7c/qFnGEffJy23Qb5WKfdNg+g/8zP3MuY0cPG/U=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PH7PR02MB10160.namprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(7416014)(376014)(366016)(1800799024)(921020)(18002099003)(22082099003)(56012099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?k6MxTUjH+HhqWiREWsVTdjxADZV0v4SNZGZrN4d3OfCneMiUoe8rl+9a6ySb?=
- =?us-ascii?Q?g/U4kAZHetgtyjL/z396cjTCRle1TXwwWGiQdaeIFWUYbbarDkcnBTqaDln/?=
- =?us-ascii?Q?VucOs3pQ5fmZCqgo6Mqoc41fWjOmbXmLp3F7SYyEFr/IFZ11UBJihRdW+p44?=
- =?us-ascii?Q?1JBE8cpwiyFEPEGRzry33ZiRoqaYjDgFvfL2aTindNeZBujgroS423g0qfPZ?=
- =?us-ascii?Q?Qm72T1gHgCRA/5srLu4bkt70Uc8J89pUwCFaJwMPE8zrzE2+HyMIYV5eGbVt?=
- =?us-ascii?Q?VUPvj5qsyFAwF6BIgztagZIj7/UkwecdmpQTRDb++gDqgGwqf5Dnj1upEYoq?=
- =?us-ascii?Q?HwaAb395gr+M80dB4HYKgK4c1YdNbty4wxx8ThzVjpfr0djSyuIa7t9uYh65?=
- =?us-ascii?Q?FMMeHoRJT+imee+gPeQRPCIN2VlAfYY7xbSpuc43bNgz8CXgPzZUbSYtjFgi?=
- =?us-ascii?Q?3b0DHiuHCP4nPJJ9kAMGzT+ETh3Q7zeUKrflzHWuHO87V7wIAyRYDtmC3Al5?=
- =?us-ascii?Q?6heo5HRtgjM9kG9QW5WMygXgxP5UzSDTx52nNPD5izKL+YOLP44WHrdiap6j?=
- =?us-ascii?Q?TtLdLM5hrj+lJXhozvAC5ppKynBTUxgkU0y8PGPVcoe+JW1CoD5ymizHYWUN?=
- =?us-ascii?Q?zCCCvkhnomBA+bagNPw451akmXwsp7OvndtD0/DvLMUNXUxzwHK0a1xgRsH2?=
- =?us-ascii?Q?piOds/GV9DySEujgAFiOoaSfDIoiR1rYOQyZ7Y5oYW3zxeYRCbI2cZrohke/?=
- =?us-ascii?Q?aPgHm+K6H54D4zDwFXvyC6ZiGsfdYPIx3tqSXGEbpjmZDx5GSGivlyjyDZsY?=
- =?us-ascii?Q?JQJgIA1TKEjaz2dytps62Y6FM9W6Laigwt536t4/bvXI/Ee49P+wP39dizYF?=
- =?us-ascii?Q?Ok92434XBIokpzMyr7FrQLPmu2WHCvS8jp0+c5Kr8226t8Sm6im5l5vDMDXB?=
- =?us-ascii?Q?sDYY0+zhh51Bypo4dICA6MLfr5jbjH4em1np/82g9l8P5Ht0yUzex9RZP8wO?=
- =?us-ascii?Q?ZtzfqlawunaTpjRrshRDw4Y4wWCQLSZQXg5xhPfMU/Sta9S3kQo1HQRoAFY6?=
- =?us-ascii?Q?DhYm8W8aGF1DZHsLcwVMEITB9GvcoKAfYh470M/9efdvwmc6pnswRmZmo9D6?=
- =?us-ascii?Q?KjN98QMPtieIDNQD5/x4+Ha/d3fMglExxO5kdH55UBGxSgOQsm3UwaVIOOwz?=
- =?us-ascii?Q?djsH4y8A3svw7nLjDO5VJJb4NwDFVb+sg2uRzgK6/xrpD8GmDLxRIrKm4PM0?=
- =?us-ascii?Q?BPZHqzTYChRYYvxPmI6skGe1PvQ9ep2mf1olF7nqQW/YGd41Z7qXFz8T6gAk?=
- =?us-ascii?Q?mGeUI4C8MR6drxdcKDwkVFBN0ilIiLdF8pm4BUxhBT0vuprPjyNWCBH6Y26a?=
- =?us-ascii?Q?S4wKGq6d9+f7EJzD2cb5toAFStO9Y+kVsRSzQ2nzBwgUcqTCuXbp/lTFNK9P?=
- =?us-ascii?Q?kDo+KvWIYzYb7q2+MLTlUrW0tu4uxXRYdhDamle6eErBi1ykXl1TjjJdNvIK?=
- =?us-ascii?Q?mzA4YLhehklQxeHj7Ol6oP9YV2MASVs+vEovqeMk2u1iyw3GO4VpGx7RACi2?=
- =?us-ascii?Q?Nr609LhNgcZDbH/iZf8hpyBWHcc2XrFU60CiX/Y41ChIoT8JHqOiJdrrjcBp?=
- =?us-ascii?Q?Lsr2QHDf/pmR/407iYtByl7Hm8XYxU31w5oc/gUpSNgEgyXmFn3kgUoCPK1S?=
- =?us-ascii?Q?DnBzfTyLldy0UN1YLPlZhzcW0ca523/cm5M1PhJNCvF/nhtbW14JbBeONgOY?=
- =?us-ascii?Q?t5q7VFfPZs3DpOse6HQNdrNBV5PL1K8=3D?=
-X-Exchange-RoutingPolicyChecked: GUqnHGh8tigGMR3KL3XF+8thBzeRrYnFJ4PQIf8KTahgo3acsAXizA/J/BWegFuVisTHOFVWJi84llkVY0laaKiYzK4tbu+QtiqoT+Qr7ctIPad6CVUBCpqKb1y9BGsz6BH/IRwGXqsy/D5JPnbzFafLl4V60uPVgR6uReFfxMUucbLH4qH6kPLSRnUc4L4oZf9DSOThIdVxHr81ChzVtG1pnySd5zZevMpYcq0I81fdrUEGe3tIUXIa9zGKg8Gulrzf7MCNVc1ap7IuGL3Af1o5G9MBXhShQAlIdfmDZ5/4ETGjha49Y3XLsVEUrCEslcXw6s+d/jIpdHc9Uf6oGA==
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pjCteXg8ZUdSdVqHvymdf5zIR/OGGvYHYiOs6T6uSNR4Vi15wx89+exde+Ow?=
+ =?us-ascii?Q?fRgaxmOJxkK3moQGAD2F0kSJjTgMqc0uN4OATpqyurnB7E17kk+l1CCmvqTT?=
+ =?us-ascii?Q?QCrllHRIGlvwc2aITzRIf3Tww/vfviC5IYsz8vX0FSlokiQgr4ZMWHgV8gxA?=
+ =?us-ascii?Q?SLSa7XHus22TaDSy5t2+03uto3zCaGktkmWDVVNIvW1ANO9X20eqMoPvOtCf?=
+ =?us-ascii?Q?EWAXwmYPeXyN+4INbmfSI/lz3ASaJO4WPcHxjntFBV2TQOf46g4KnZyQt6bV?=
+ =?us-ascii?Q?uwywOmOfDLCAH2+IuVX6tbS70UvlQKkl8apf01h442YaeNwwGIDvuxNMt7QS?=
+ =?us-ascii?Q?dqEzGnPgQcifxN1cO4+wuOrlGJuof6gtOgCIyOyWN/kYNFj+m3tobT9lXDrn?=
+ =?us-ascii?Q?iHCJBveBIbpWhqcpZu+gnnO3l6phN1Mjfuxn82gAeTuKTPGh76ueGUtw3ahq?=
+ =?us-ascii?Q?HPAYJbG/2I3k3lAvBMceYeSZpDShqs4ydOR1CBWC+xT0QmMA8E6KVHAUZqD0?=
+ =?us-ascii?Q?0o+zyuKQ2TzF63PgoywMJFXmB6utvWsxbFSnScsxxBvgYBtt5jlr+k+HhTHn?=
+ =?us-ascii?Q?W4vPosuo59k2jdHb53M86itHi0Z3o3rHNpa9OTb3e50pJPPaXlOxChk20W33?=
+ =?us-ascii?Q?NZnxjqe3NQITrEBZ0U5uIb04rqegfEheek48OxMYNryTN1Melxbh11b+HszL?=
+ =?us-ascii?Q?quaPi0ZiyqRYUVHRJFOOHoKa+swWCp8hM6U9FQMFgWi7KflhSfs6iE6kzuWp?=
+ =?us-ascii?Q?kk3elC6+IkYDaItgeDkO/2j33+x744JKrbnpp8kb0KAcR8fllraIGN8SFJJq?=
+ =?us-ascii?Q?3SFe0czI+YrmzeiBc4QiWRBlBhNlwhn5Ka+xufN1iQFbwuRGB9WDmvZgZPZD?=
+ =?us-ascii?Q?W6kOUsEt1PPhoq2C8CX58p/9n6eb2YpwU3fLgF1b4hCcU52Jc9lw5820SRGj?=
+ =?us-ascii?Q?t9P8mPU2xMZR3bvSxSngLSnQRrXESgDSDRcHWVYouTTaGJz587FBoaXPLAbY?=
+ =?us-ascii?Q?lo2j/Esm12XWwjvO+We4StYMeQvrVp/Uv9kiiYYoR2RrsmCJSfrUiNnkloNh?=
+ =?us-ascii?Q?IjOsnlwcJ5wY1IpPq69woLGZQTd9QC+qxuXXQBM5QaBt+FiAfViU3EDypNxe?=
+ =?us-ascii?Q?hZR4cb1qj5oAcyMlGqg//FO9trhfgLRULyxW02TFROjOnWrPWrfqiTlQVzYe?=
+ =?us-ascii?Q?ymT3Z+gMi4h4s48x/IIyHsFCwHfdKM/3uSFh4mI9FUBV9dBuQPsXjgAIlhps?=
+ =?us-ascii?Q?HD4PO3sAKFCT3ZmRe4EPY2806vo0E7sz8EhVImVPKDJSvooplkWIEdg8Ze++?=
+ =?us-ascii?Q?msBitya1Hke1ltvX/1EGHR0XhEk4qFv04Vi3B/T4rj5iBdlL1Ie+muvPzWue?=
+ =?us-ascii?Q?CQJNaRwS0YEVjD8VHlt+Y08q5g09TZ5phTE96N6rTI2PMUTg/MFJdoqzMAMC?=
+ =?us-ascii?Q?M805h8Z6Ben2T8X6kXVVveeHo0r/YsxGX2cmOsmTz99OmiyBkRiIA8MEVh1W?=
+ =?us-ascii?Q?aFqy3FCK8kTYwN1hMFrteUdyQD3E3P3lI6kLQCrDaOHMiba/sCrBRqxVyrh6?=
+ =?us-ascii?Q?ltYH1zZzqH10e1MLaq7Ua3I7QAdrYDMa8SDKkzhSYO9j/58dfQZjs8ElUu3Z?=
+ =?us-ascii?Q?zGVucHTsAbzbn8Sz6bXRpk47MyGJDinYm3bbddXE4CyAMZbgyicijQrnHroS?=
+ =?us-ascii?Q?qDfqmZ9736/acE7yDSpx7yOaTQzoRYTBk6ROl8jg5LTru8Es9MuyXEeeyW2O?=
+ =?us-ascii?Q?IeCR/5rsoqVzOdVe7AsdB3xzp2AS5qA=3D?=
+X-Exchange-RoutingPolicyChecked: WRMuTbgDEV9kWXgmKabePPO7JUUHcwFlIDhwYygzzuYs06Wf2krj6P3qdEj/+C0hpT3sVADeM/SzPUQpyf9yJzCLACCkVnP8BF9CkAcYURvwrPDJaMisy8WsBHLOZecCYXerSxjp8hcX1X2+PuQlhO+hrdv534dDndxn6dNBenHbWaa8YAKMSS2Xti1DAY004gbfYbjpSmbiIoR8J77d1qbaWiwsH51QfC7IjaR0aC/r9AmE3x3jshCXqnxM4Eb05fo5Up5xAHrlD9tPQH4Jj5pdi+xGZxiR0OxR5K+SiHWsXpC66cDKcpSeRdy5x/8B5rC51l2O1lRifAC4a+Uc+Q==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6e168396-f713-455a-61b5-08deb10d7f1d
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1cf236d0-0094-4b12-b8d8-08deb10d7b2f
 X-MS-Exchange-CrossTenant-AuthSource: PH7PR02MB10160.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2026 16:34:26.0746 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2026 16:34:19.6141 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LBDZQ1LfRRLc0LlZJO9ERNyW30k3VssJQCtqPr1pYLCJXw98eeyBIIbly9ZsUZ276R7LV08dUQUrDK2KK/8U6BeWnPepipcB1UxTIIIR2e4=
+X-MS-Exchange-CrossTenant-UserPrincipalName: 71VLqTltxZCDMIDHQCekjRMkb7Pi9bwAorxkvtixsCgamxQC2kTbNppqULYEpDhAlFXz9j+LVMumjY5nLPgtkrssQQZuIBzbFo1HWQFna00=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR02MB8813
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEzMDE2OCBTYWx0ZWRfXzCGICApIilXE
- SuJ3bnip2GDfaA1X8zjurBtqAiC28HMc0bIOy38TdP4sT0afgVxTexRIGZUkXivnC9oL0jgG/1l
- kPmg4kNMRA/yBxLpp5N8YTJRIeoyTmJ2tROP420biv7i2BTV7XwWeZZQWSrplfeolCblx6f/FD6
- 5HqWjjsWBoSZd6mqwvbj+G/XT7D5Q4c7fRlxDcTrYuyngkwEe1dh5s9h0CTe9BeLToyyhMI/c9v
- JvXtIt8UDjCX4alZVqimgvecFtJzJrDibbFLlUMqFKh9YxQoRuUVKQoa5hzCgkBVmAo+0G7E5DB
- vOby3W4nzl24f6trndpBvtqxf9Bt6oLTXa22Ox7trNuA/JLJCansQW7iKv8Eem8tvUOt+/Hoop5
- vBVBQ68Jk9cV5s8xzqPYsachmpFkd6qmV55jMYD9TGYQBrf5quaABqZBe/jllrVtOBT2w2RcnX0
- n+9nAvjgJIhTq1i+auQ==
-X-Authority-Analysis: v=2.4 cv=evLvCIpX c=1 sm=1 tr=0 ts=6a04a815 cx=c_pps
- a=+jjOclGHkOGhuepu6R0Llw==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+X-Proofpoint-GUID: 6Q3erpIlI5hwl3Y89pM1FQneuNuJKgTZ
+X-Authority-Analysis: v=2.4 cv=WcU8rUhX c=1 sm=1 tr=0 ts=6a04a80e cx=c_pps
+ a=sjA+6HJZU54iCSkNkQ7fig==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
  a=xqWC_Br6kY4A:10 a=NGcC8JguVDcA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=0LlEyIVc8U2lsR7dKhuH:22
- a=64Cc0HZtAAAA:8 a=wZ7dmE2_5clyT-bJU3wA:9
-X-Proofpoint-ORIG-GUID: m2j_JzDUZkGZFhLRUFiJiPf6kM7rWV5y
-X-Proofpoint-GUID: m2j_JzDUZkGZFhLRUFiJiPf6kM7rWV5y
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=1L6crL_YRTbalZ11mEUO:22
+ a=64Cc0HZtAAAA:8 a=lbUGho734beyiQ__YtEA:9
+X-Proofpoint-ORIG-GUID: 6Q3erpIlI5hwl3Y89pM1FQneuNuJKgTZ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEzMDE2OCBTYWx0ZWRfX1la9rHU7UPiR
+ UmdBdP+MQY27SMnoxrbTK9fF2DJbttQxhGfAszS4a93ghRydY9bDYjM3oUJb33VrcVsFbtd2/dB
+ bG8bcuriDMS0B8vBr1mV8SlbFZfkBQwIXkhVU+Rtq4KBHGqGY3rFuAyNxQH94+RkIArGkwNx/oJ
+ Vzzk9aAji7myqVG1jxqupPw0ssvICohL+C7aHa5EGvPiNV8Mp86sKsjE/xxNRCxvdW4pt6Wj3Xl
+ OY2VVg2fCcg/bY87abHrHbYlJ8MoBI+hs+WIhrESWeHHv2h/lPryxAx5t+UHYFxbTtfiST4brb4
+ ggISkS5MfsXvCqPHzZ8dmHFXoF0+ajqCa/Kuj7Uo/Yaom+4jIj+kPHkM65BxR6c0jfcwQy2wDoY
+ 26nnmf01FUmcdlB+wW/D6dqyZ8ydsuH4zKEegr+Xlo5C28iW6mK+L5JGUG3WALtEoI9xTp2Ya9h
+ NoUHB0LxlG9d51VYlWw==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-05-13_01,2026-05-13_01,2025-10-01_01
 X-Proofpoint-Spam-Reason: safe
-Received-SPF: pass client-ip=148.163.155.12;
- envelope-from=shaju.abraham@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+Received-SPF: pass client-ip=148.163.151.68;
+ envelope-from=shaju.abraham@nutanix.com; helo=mx0a-002c1b01.pphosted.com
 X-Spam_score_int: -31
 X-Spam_score: -3.2
 X-Spam_bar: ---
 X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 13 May 2026 12:37:18 -0400
+X-Mailman-Approved-At: Wed, 13 May 2026 12:37:19 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,274 +183,247 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Register all the defined Arm properties to the host model if CONFIG_KVM is
-enabled. Add property finder, getter/setter functions, and wire up the
-property registration in the CPU initialization path.
+Define X-macros to generate tables for all user-facing CPU properties,
+including fractional properties.
+
+Properties that map to fields that are not supported by the linux kernel
+(i.e. not in the ftr_bits array) are not included.
 
 Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
 Signed-off-by: Shaju Abraham <shaju.abraham@nutanix.com>
 ---
- target/arm/arm-cpu-props.c | 216 +++++++++++++++++++++++++++++++++++++
- target/arm/arm-cpu-props.h |   2 +-
- target/arm/cpu64.c         |   3 +-
- 3 files changed, 219 insertions(+), 2 deletions(-)
+ target/arm/arm-cpu-frac.inc.h  |  34 +++++++
+ target/arm/arm-cpu-props.inc.h | 180 +++++++++++++++++++++++++++++++++
+ 2 files changed, 214 insertions(+)
+ create mode 100644 target/arm/arm-cpu-frac.inc.h
+ create mode 100644 target/arm/arm-cpu-props.inc.h
 
-diff --git a/target/arm/arm-cpu-props.c b/target/arm/arm-cpu-props.c
-index f22fe7f08b..1a34428c00 100644
---- a/target/arm/arm-cpu-props.c
-+++ b/target/arm/arm-cpu-props.c
-@@ -41,3 +41,219 @@ const ArmCpuPropDesc arm_cpu_props[] = {
- #include "arm-cpu-props.inc.h"
-     { .name = NULL },
- };
+diff --git a/target/arm/arm-cpu-frac.inc.h b/target/arm/arm-cpu-frac.inc.h
+new file mode 100644
+index 0000000000..6c194daf7c
+--- /dev/null
++++ b/target/arm/arm-cpu-frac.inc.h
+@@ -0,0 +1,34 @@
 +
-+static const ArmCpuPropDesc *arm_find_prop(const char *name)
-+{
-+    const ArmCpuPropDesc *p;
-+    for (p = arm_cpu_props; p->name; p++) {
-+        if (g_str_equal(p->name, name)) {
-+            return p;
-+        }
-+    }
-+    return NULL;
-+}
++/* SPDX-License-Identifier: GPL-2.0-or-later */
 +
-+static void arm_single_field_get(ARMCPU *cpu, const ArmCpuPropDesc *p,
-+                                 Visitor *v, const char *name, Error **errp)
-+{
-+    uint64_t value;
-+    char *s;
-+    bool b;
++FRAC_TABLE_START(CSV2)
++FRAC_VAL("0.0", 0, 0)
++FRAC_VAL("1.0", 1, 0)
++FRAC_VAL("1.1", 1, 1)
++FRAC_VAL("1.2", 1, 2)
++FRAC_VAL("2.0", 2, 0)
++FRAC_VAL("3.0", 3, 0)
++FRAC_TABLE_END(CSV2)
 +
-+    arm_idreg_field_read(cpu, p->base_field, &value);
++FRAC_TABLE_START(MPAM)
++FRAC_VAL("0.0", 0, 0)
++FRAC_VAL("0.1", 0, 1)
++FRAC_VAL("1.0", 1, 0)
++FRAC_VAL("1.1", 1, 1)
++FRAC_TABLE_END(MPAM)
 +
-+    switch (p->type) {
-+    case ARM_PROP_STRING: {
-+        s = g_strdup(arm_arch_val_name(p->base_field, value));
++FRAC_TABLE_START(RAS)
++FRAC_VAL("0.0", 0, 0)
++FRAC_VAL("1.0", 1, 0)
++FRAC_VAL("1.1", 1, 1)
++FRAC_VAL("1.1_base", 2, 0)
++FRAC_VAL("2.0", 3, 0)
++FRAC_TABLE_END(RAS)
 +
-+        if (!s) {
-+            error_setg(errp, "Property '%s': unknown value %" PRIu64,
-+                       name, value);
-+            return;
-+        }
-+        visit_type_str(v, name, &s, errp);
-+        g_free(s);
-+        break;
-+    }
-+    case ARM_PROP_BOOLEAN: {
-+        b = value != 0;
-+        visit_type_bool(v, name, &b, errp);
-+        break;
-+    }
-+    case ARM_PROP_NUMERIC:
-+        visit_type_uint64(v, name, &value, errp);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
++FRAC_TABLE_START(NV)
++FRAC_VAL("0.0", 0, 0)
++FRAC_VAL("1.0", 1, 0)
++FRAC_VAL("2.0", 2, 0)
++FRAC_VAL("2.0_only", 2, 1)
++FRAC_VAL("2.1", 2, 2)
++FRAC_TABLE_END(NV)
+diff --git a/target/arm/arm-cpu-props.inc.h b/target/arm/arm-cpu-props.inc.h
+new file mode 100644
+index 0000000000..13a82e5b22
+--- /dev/null
++++ b/target/arm/arm-cpu-props.inc.h
+@@ -0,0 +1,180 @@
 +
-+static void arm_fractional_get(ARMCPU *cpu, const ArmCpuPropDesc *p,
-+                               Visitor *v, const char *name, Error **errp)
-+{
-+    uint64_t base_val, frac_val;
-+    const ArmFracVal *val;
-+    char *s;
++/* SPDX-License-Identifier: GPL-2.0-or-later */
 +
-+    arm_idreg_field_read(cpu, p->base_field, &base_val);
-+    arm_idreg_field_read(cpu, p->frac_field, &frac_val);
++ARM_PROP("feat_AES",         STRING,  ID_AA64ISAR0, AES)
++ARM_PROP("feat_SHA1",        STRING,  ID_AA64ISAR0, SHA1)
++ARM_PROP("feat_SHA2",        STRING,  ID_AA64ISAR0, SHA2)
++ARM_PROP("feat_CRC32",       STRING,  ID_AA64ISAR0, CRC32)
++ARM_PROP("feat_ATOMIC",      STRING,  ID_AA64ISAR0, ATOMIC)
++ARM_PROP("feat_RDM",         STRING,  ID_AA64ISAR0, RDM)
++ARM_PROP("feat_SHA3",        STRING,  ID_AA64ISAR0, SHA3)
++ARM_PROP("feat_SM3",         STRING,  ID_AA64ISAR0, SM3)
++ARM_PROP("feat_SM4",         STRING,  ID_AA64ISAR0, SM4)
++ARM_PROP("feat_DP",          STRING,  ID_AA64ISAR0, DP)
++ARM_PROP("feat_FHM",         STRING,  ID_AA64ISAR0, FHM)
++ARM_PROP("feat_TS",          STRING,  ID_AA64ISAR0, TS)
++ARM_PROP("feat_TLB",         STRING,  ID_AA64ISAR0, TLB)
++ARM_PROP("feat_RNDR",        STRING,  ID_AA64ISAR0, RNDR)
 +
-+    for (val = p->vals; val->name; val++) {
-+        if (val->base_val == base_val && val->frac_val == frac_val) {
-+            s = g_strdup(val->name);
-+            visit_type_str(v, name, &s, errp);
-+            g_free(s);
-+            return;
-+        }
-+    }
++ARM_PROP("feat_DPB",         STRING,  ID_AA64ISAR1, DPB)
++ARM_PROP("hw_prop_APA",      STRING,  ID_AA64ISAR1, APA)
++ARM_PROP("hw_prop_API",      STRING,  ID_AA64ISAR1, API)
++ARM_PROP("feat_JSCVT",       STRING,  ID_AA64ISAR1, JSCVT)
++ARM_PROP("feat_FCMA",        STRING,  ID_AA64ISAR1, FCMA)
++ARM_PROP("feat_LRCPC",       STRING,  ID_AA64ISAR1, LRCPC)
++ARM_PROP("hw_prop_GPA",      STRING,  ID_AA64ISAR1, GPA)
++ARM_PROP("hw_prop_GPI",      STRING,  ID_AA64ISAR1, GPI)
++ARM_PROP("feat_FRINTTS",     STRING,  ID_AA64ISAR1, FRINTTS)
++ARM_PROP("feat_SB",          STRING,  ID_AA64ISAR1, SB)
++ARM_PROP("feat_SPECRES",     STRING,  ID_AA64ISAR1, SPECRES)
++ARM_PROP("feat_BF16",        STRING,  ID_AA64ISAR1, BF16)
++ARM_PROP("feat_DGH",         STRING,  ID_AA64ISAR1, DGH)
++ARM_PROP("feat_I8MM",        STRING,  ID_AA64ISAR1, I8MM)
++ARM_PROP("feat_XS",          STRING,  ID_AA64ISAR1, XS)
++ARM_PROP("feat_LS64",        STRING,  ID_AA64ISAR1, LS64)
 +
-+    error_setg(errp,
-+               "Property '%s': unknown fractional value %" PRIu64
-+               ".%" PRIu64, name, base_val, frac_val);
-+}
++ARM_PROP("feat_WFXT",        STRING,  ID_AA64ISAR2, WFXT)
++ARM_PROP("feat_RPRES",       STRING,  ID_AA64ISAR2, RPRES)
++ARM_PROP("hw_prop_GPA3",     STRING,  ID_AA64ISAR2, GPA3)
++ARM_PROP("hw_prop_APA3",     STRING,  ID_AA64ISAR2, APA3)
++ARM_PROP("feat_MOPS",        STRING,  ID_AA64ISAR2, MOPS)
++ARM_PROP("feat_BC",          STRING,  ID_AA64ISAR2, BC)
++ARM_PROP("feat_CLRBHB",      STRING,  ID_AA64ISAR2, CLRBHB)
++ARM_PROP("feat_RPRFM",       STRING,  ID_AA64ISAR2, RPRFM)
++ARM_PROP("feat_CSSC",        STRING,  ID_AA64ISAR2, CSSC)
++ARM_PROP("feat_LUT",         STRING,  ID_AA64ISAR2, LUT)
 +
-+static void arm_cpu_prop_get(Object *obj, Visitor *v, const char *name,
-+                             void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    const ArmCpuPropDesc *p = arm_find_prop(name);
++ARM_PROP("feat_FAMINMAX",    STRING,  ID_AA64ISAR3, FAMINMAX)
++ARM_PROP("feat_LSFE",        STRING,  ID_AA64ISAR3, LSFE)
++ARM_PROP("feat_FPRCVT",      STRING,  ID_AA64ISAR3, FPRCVT)
 +
-+    if (!p) {
-+        error_setg(errp, "Property %s not found", name);
-+        return;
-+    }
++ARM_PROP("el0_mode",         STRING,  ID_AA64PFR0, EL0)
++ARM_PROP("el1_mode",         STRING,  ID_AA64PFR0, EL1)
++ARM_PROP("el2_mode",         STRING,  ID_AA64PFR0, EL2)
++ARM_PROP("el3_mode",         STRING,  ID_AA64PFR0, EL3)
++ARM_PROP("feat_FP",          STRING,  ID_AA64PFR0, FP)
++ARM_PROP("feat_AdvSIMD",     STRING,  ID_AA64PFR0, ADVSIMD)
++ARM_PROP("feat_GIC",         STRING,  ID_AA64PFR0, GIC)
++ARM_PROP("feat_SVE",         STRING,  ID_AA64PFR0, SVE)
++ARM_PROP("feat_SEL2",        STRING,  ID_AA64PFR0, SEL2)
++ARM_PROP("feat_AMU",         STRING,  ID_AA64PFR0, AMU)
++ARM_PROP("feat_DIT",         STRING,  ID_AA64PFR0, DIT)
++ARM_PROP("feat_CSV3",        STRING,  ID_AA64PFR0, CSV3)
 +
-+    switch (p->type) {
-+    case ARM_PROP_STRING:
-+    case ARM_PROP_BOOLEAN:
-+    case ARM_PROP_NUMERIC:
-+        arm_single_field_get(cpu, p, v, name, errp);
-+        break;
-+    case ARM_PROP_FRACTIONAL:
-+        arm_fractional_get(cpu, p, v, name, errp);
-+        break;
-+    }
-+}
++ARM_PROP("feat_BT",          STRING,  ID_AA64PFR1, BT)
++ARM_PROP("feat_SSBS",        STRING,  ID_AA64PFR1, SSBS)
++ARM_PROP("feat_MTE",         STRING,  ID_AA64PFR1, MTE)
++ARM_PROP("feat_NMI",         STRING,  ID_AA64PFR1, NMI)
++ARM_PROP("feat_MTE_FRAC",    STRING,  ID_AA64PFR1, MTE_FRAC)
++ARM_PROP("feat_GCS",         STRING,  ID_AA64PFR1, GCS)
++ARM_PROP("feat_DF2",         STRING,  ID_AA64PFR1, DF2)
 +
-+static void arm_single_field_set(ARMCPU *cpu, const ArmCpuPropDesc *p,
-+                                 Visitor *v, const char *name, Error **errp)
-+{
-+    uint64_t value;
-+    char *str = NULL;
-+    bool b;
++ARM_PROP("feat_MTESTOREONLY", STRING, ID_AA64PFR2, MTESTOREONLY)
++ARM_PROP("feat_MTEFAR",      STRING,  ID_AA64PFR2, MTEFAR)
++ARM_PROP("feat_FPMR",        STRING,  ID_AA64PFR2, FPMR)
 +
-+    switch (p->type) {
-+    case ARM_PROP_STRING: {
++ARM_PROP("hw_prop_PARANGE",  STRING,  ID_AA64MMFR0, PARANGE)
++ARM_PROP("hw_prop_ASIDBITS", STRING,  ID_AA64MMFR0, ASIDBITS)
++ARM_PROP("feat_BIGEND",      STRING,  ID_AA64MMFR0, BIGEND)
++ARM_PROP("feat_SNSMEM",      STRING,  ID_AA64MMFR0, SNSMEM)
++ARM_PROP("feat_BIGENDEL0",   STRING,  ID_AA64MMFR0, BIGENDEL0)
++ARM_PROP("hw_prop_TGRAN16",  STRING,  ID_AA64MMFR0, TGRAN16)
++ARM_PROP("hw_prop_TGRAN64",  STRING,  ID_AA64MMFR0, TGRAN64)
++ARM_PROP("hw_prop_TGRAN4",   STRING,  ID_AA64MMFR0, TGRAN4)
++ARM_PROP("hw_prop_TGRAN16_2", STRING, ID_AA64MMFR0, TGRAN16_2)
++ARM_PROP("hw_prop_TGRAN64_2", STRING, ID_AA64MMFR0, TGRAN64_2)
++ARM_PROP("hw_prop_TGRAN4_2", STRING,  ID_AA64MMFR0, TGRAN4_2)
++ARM_PROP("feat_EXS",         STRING,  ID_AA64MMFR0, EXS)
++ARM_PROP("feat_FGT",         STRING,  ID_AA64MMFR0, FGT)
++ARM_PROP("feat_ECV",         STRING,  ID_AA64MMFR0, ECV)
 +
-+        if (!visit_type_str(v, name, &str, errp)) {
-+            return;
-+        }
-+        if (!arm_arch_val_from_name(p->base_field, str, &value)) {
-+            error_setg(errp, "Property '%s': invalid value '%s'", name, str);
-+            g_free(str);
-+            return;
-+        }
-+        g_free(str);
-+        break;
-+    }
-+    case ARM_PROP_BOOLEAN: {
++ARM_PROP("feat_HAFDBS",      STRING,  ID_AA64MMFR1, HAFDBS)
++ARM_PROP("hw_prop_VMIDBITS", STRING,  ID_AA64MMFR1, VMIDBITS)
++ARM_PROP("feat_VH",          STRING,  ID_AA64MMFR1, VH)
++ARM_PROP("feat_HPDS",        STRING,  ID_AA64MMFR1, HPDS)
++ARM_PROP("feat_LO",          STRING,  ID_AA64MMFR1, LO)
++ARM_PROP("feat_PAN",         STRING,  ID_AA64MMFR1, PAN)
++ARM_PROP("feat_SpecSEI",     STRING,  ID_AA64MMFR1, SPECSEI)
++ARM_PROP("feat_XNX",         STRING,  ID_AA64MMFR1, XNX)
++ARM_PROP("feat_TWED",        STRING,  ID_AA64MMFR1, TWED)
++ARM_PROP("feat_ETS",         STRING,  ID_AA64MMFR1, ETS)
++ARM_PROP("feat_HCX",         STRING,  ID_AA64MMFR1, HCX)
++ARM_PROP("feat_AFP",         STRING,  ID_AA64MMFR1, AFP)
++ARM_PROP("feat_TIDCP1",      STRING,  ID_AA64MMFR1, TIDCP1)
++ARM_PROP("feat_ECBHB",       STRING,  ID_AA64MMFR1, ECBHB)
 +
-+        if (!visit_type_bool(v, name, &b, errp)) {
-+            return;
-+        }
-+        value = b ? 1 : 0;
-+        break;
-+    }
-+    case ARM_PROP_NUMERIC:
-+        if (!visit_type_uint64(v, name, &value, errp)) {
-+            return;
-+        }
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
++ARM_PROP("feat_CNP",         STRING,  ID_AA64MMFR2, CNP)
++ARM_PROP("feat_UAO",         STRING,  ID_AA64MMFR2, UAO)
++ARM_PROP("feat_LSM",         STRING,  ID_AA64MMFR2, LSM)
++ARM_PROP("feat_IESB",        STRING,  ID_AA64MMFR2, IESB)
++ARM_PROP("hw_prop_VARANGE",  STRING,  ID_AA64MMFR2, VARANGE)
++ARM_PROP("hw_prop_CCIDX",    STRING,  ID_AA64MMFR2, CCIDX)
++ARM_PROP("hw_prop_ST",       STRING,  ID_AA64MMFR2, ST)
++ARM_PROP("feat_AT",          STRING,  ID_AA64MMFR2, AT)
++ARM_PROP("hw_prop_IDS",      STRING,  ID_AA64MMFR2, IDS)
++ARM_PROP("hw_prop_FWB",      STRING,  ID_AA64MMFR2, FWB)
++ARM_PROP("feat_TTL",         STRING,  ID_AA64MMFR2, TTL)
++ARM_PROP("feat_BBM",         STRING,  ID_AA64MMFR2, BBM)
++ARM_PROP("feat_EVT",         STRING,  ID_AA64MMFR2, EVT)
++ARM_PROP("feat_E0PD",        STRING,  ID_AA64MMFR2, E0PD)
 +
-+    if (!arm_idreg_field_write(cpu, p->base_field, value, errp)) {
-+        error_prepend(errp, "Property '%s': ", name);
-+    }
-+}
++ARM_PROP("feat_TCRX",        STRING,  ID_AA64MMFR3, TCRX)
++ARM_PROP("feat_SCTLRX",      STRING,  ID_AA64MMFR3, SCTLRX)
++ARM_PROP("feat_S1PIE",       STRING,  ID_AA64MMFR3, S1PIE)
++ARM_PROP("feat_S1POE",       STRING,  ID_AA64MMFR3, S1POE)
 +
-+static void arm_fractional_set(ARMCPU *cpu, const ArmCpuPropDesc *p,
-+                               Visitor *v, const char *name, Error **errp)
-+{
-+    char *str = NULL;
-+    const ArmFracVal *val;
++ARM_PROP("feat_E2H0",        STRING,  ID_AA64MMFR4, E2H0)
 +
-+    if (!visit_type_str(v, name, &str, errp)) {
-+        return;
-+    }
++ARM_PROP("feat_DBG",         STRING,  ID_AA64DFR0, DEBUGVER)
++ARM_PROP("feat_PMU",         STRING,  ID_AA64DFR0, PMUVER)
++ARM_PROP("hw_prop_BRPS",     NUMERIC, ID_AA64DFR0, BRPS)
++ARM_PROP("hw_prop_WRPs",     NUMERIC, ID_AA64DFR0, WRPS)
++ARM_PROP("hw_prop_CTX_CMPs", NUMERIC, ID_AA64DFR0, CTX_CMPS)
++ARM_PROP("hw_prop_PMSVer",   STRING,  ID_AA64DFR0, PMSVER)
++ARM_PROP("feat_DoubleLock",  STRING,  ID_AA64DFR0, DOUBLELOCK)
 +
-+    for (val = p->vals; val->name; val++) {
-+        if (g_str_equal(val->name, str)) {
-+            if (!arm_idreg_field_write(cpu, p->base_field,
-+                                       val->base_val, errp)) {
-+                error_prepend(errp, "Property '%s': ", name);
-+                g_free(str);
-+                return;
-+            }
-+            if (!arm_idreg_field_write(cpu, p->frac_field,
-+                                       val->frac_val, errp)) {
-+                error_prepend(errp, "Property '%s': ", name);
-+            }
-+            g_free(str);
-+            return;
-+        }
-+    }
++ARM_PROP("hw_prop_SVEVer",   STRING,  ID_AA64ZFR0, SVEVER)
++ARM_PROP("feat_SVE_AES",     STRING,  ID_AA64ZFR0, AES)
++ARM_PROP("feat_SVE_ELTPERM", STRING,  ID_AA64ZFR0, ELTPERM)
++ARM_PROP("feat_SVE_BITPERM", STRING,  ID_AA64ZFR0, BITPERM)
++ARM_PROP("feat_SVE_BFLOAT16", STRING, ID_AA64ZFR0, BFLOAT16)
++ARM_PROP("feat_SVE_B16B16",  STRING,  ID_AA64ZFR0, B16B16)
++ARM_PROP("feat_SVE_SHA3",    STRING,  ID_AA64ZFR0, SHA3)
++ARM_PROP("feat_SVE_SM4",     STRING,  ID_AA64ZFR0, SM4)
++ARM_PROP("feat_SVE_I8MM",    STRING,  ID_AA64ZFR0, I8MM)
++ARM_PROP("feat_SVE_F16MM",   STRING,  ID_AA64ZFR0, F16MM)
++ARM_PROP("feat_SVE_F32MM",   STRING,  ID_AA64ZFR0, F32MM)
++ARM_PROP("feat_SVE_F64MM",   STRING,  ID_AA64ZFR0, F64MM)
 +
-+    error_setg(errp, "Property '%s': invalid fractional value '%s'",
-+               name, str);
-+    g_free(str);
-+}
++ARM_PROP("feat_F8E5M2",      BOOLEAN, ID_AA64FPFR0, F8E5M2)
++ARM_PROP("feat_F8E4M3",      BOOLEAN, ID_AA64FPFR0, F8E4M3)
++ARM_PROP("feat_F8MM4",       BOOLEAN, ID_AA64FPFR0, F8MM4)
++ARM_PROP("feat_F8MM8",       BOOLEAN, ID_AA64FPFR0, F8MM8)
++ARM_PROP("feat_F8DP2",       BOOLEAN, ID_AA64FPFR0, F8DP2)
++ARM_PROP("feat_F8DP4",       BOOLEAN, ID_AA64FPFR0, F8DP4)
++ARM_PROP("feat_F8FMA",       BOOLEAN, ID_AA64FPFR0, F8FMA)
++ARM_PROP("feat_F8CVT",       BOOLEAN, ID_AA64FPFR0, F8CVT)
 +
-+static void arm_cpu_prop_set(Object *obj, Visitor *v, const char *name,
-+                             void *opaque, Error **errp)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    const ArmCpuPropDesc *p = arm_find_prop(name);
++ARM_PROP("hw_prop_IMInline", NUMERIC, CTR_EL0, IMINLINE)
++ARM_PROP("hw_prop_L1IP",     STRING,  CTR_EL0, L1IP)
++ARM_PROP("hw_prop_DMInline", NUMERIC, CTR_EL0, DMINLINE)
++ARM_PROP("hw_prop_ERG",      NUMERIC, CTR_EL0, ERG)
++ARM_PROP("hw_prop_CWG",      NUMERIC, CTR_EL0, CWG)
++ARM_PROP("hw_prop_IDC",      BOOLEAN, CTR_EL0, IDC)
++ARM_PROP("hw_prop_DIC",      BOOLEAN, CTR_EL0, DIC)
++ARM_PROP("hw_prop_BS",       NUMERIC, DCZID_EL0, BS)
++ARM_PROP("hw_prop_DZP",      BOOLEAN, DCZID_EL0, DZP)
 +
-+    if (!p) {
-+        error_setg(errp, "Property %s not found", name);
-+        return;
-+    }
++ARM_PROP("cpu_revision",     NUMERIC, MIDR, REVISION)
++ARM_PROP("cpu_partnum",      NUMERIC, MIDR, PARTNUM)
++ARM_PROP("cpu_architecture", NUMERIC, MIDR, ARCHITECTURE)
++ARM_PROP("cpu_variant",      NUMERIC, MIDR, VARIANT)
++ARM_PROP("cpu_implementer",  NUMERIC, MIDR, IMPLEMENTER)
++ARM_PROP("cpu_revidr",       NUMERIC, REVIDR, VAL)
++ARM_PROP("cpu_aidr",         NUMERIC, AIDR, VAL)
 +
-+    switch (p->type) {
-+    case ARM_PROP_STRING:
-+    case ARM_PROP_BOOLEAN:
-+    case ARM_PROP_NUMERIC:
-+        arm_single_field_set(cpu, p, v, name, errp);
-+        break;
-+    case ARM_PROP_FRACTIONAL:
-+        arm_fractional_set(cpu, p, v, name, errp);
-+        break;
-+    }
-+}
-+
-+void arm_add_cpu_props(Object *obj)
-+{
-+    const char *type;
-+    const ArmCpuPropDesc *p;
-+
-+    for (p = arm_cpu_props; p->name; p++) {
-+        switch (p->type) {
-+        case ARM_PROP_STRING:
-+        case ARM_PROP_FRACTIONAL:
-+            type = "string";
-+            break;
-+        case ARM_PROP_BOOLEAN:
-+            type = "bool";
-+            break;
-+        case ARM_PROP_NUMERIC:
-+            type = "number";
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        object_property_add(obj, p->name, type,
-+                            arm_cpu_prop_get, arm_cpu_prop_set, NULL, NULL);
-+    }
-+}
-diff --git a/target/arm/arm-cpu-props.h b/target/arm/arm-cpu-props.h
-index 1dc3786ea9..48f9c46ccb 100644
---- a/target/arm/arm-cpu-props.h
-+++ b/target/arm/arm-cpu-props.h
-@@ -32,5 +32,5 @@ typedef struct ArmCpuPropDesc {
-     ArmFieldIdx frac_field;
-     const ArmFracVal *vals;
- } ArmCpuPropDesc;
--
-+void arm_add_cpu_props(Object *obj);
- #endif
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index a93ad2da5a..0300f8677f 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -37,7 +37,7 @@
- #include "hw/core/qdev-properties.h"
- #include "internals.h"
- #include "cpu-features.h"
--
-+#include "arm-cpu-props.h"
- /* convert between <register>_IDX and SYS_<register> */
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
-     [NAME##_IDX] = SYS_##NAME,
-@@ -863,6 +863,7 @@ static void aarch64_host_initfn(Object *obj)
-     kvm_arm_set_cpreg_mig_tolerances(cpu);
-     kvm_arm_set_cpu_features_from_host(cpu);
-     aarch64_add_sve_properties(obj);
-+    arm_add_cpu_props(obj);
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
- #elif defined(CONFIG_WHPX)
++/* Fractional properties */
++ARM_FRACTIONAL_PROP("feat_CSV2", ID_AA64PFR0, CSV2, ID_AA64PFR1, CSV2_FRAC)
++ARM_FRACTIONAL_PROP("feat_MPAM", ID_AA64PFR0, MPAM, ID_AA64PFR1, MPAM_FRAC)
++ARM_FRACTIONAL_PROP("feat_RAS",  ID_AA64PFR0, RAS,  ID_AA64PFR1, RAS_FRAC)
++ARM_FRACTIONAL_PROP("feat_NV",   ID_AA64MMFR2, NV,  ID_AA64MMFR4, NV_FRAC)
 -- 
 2.52.0
 

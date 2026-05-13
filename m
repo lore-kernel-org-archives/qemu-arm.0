@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F9CCD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF16CD4F35
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:59:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN7Il-0005LM-Ny; Wed, 13 May 2026 06:58:55 -0400
+	id 1wN7HK-00044c-I6; Wed, 13 May 2026 06:57:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FX-00037u-8L
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:39 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1wN7Ff-0003BH-Q0
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:47 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FO-0001NH-Ij
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:34 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-45562c41ec7so3116704f8f.1
- for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:23 -0700 (PDT)
+ id 1wN7FY-0001QX-TO
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:42 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-488b3f8fa2bso72137925e9.1
+ for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778669722; x=1779274522; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1778669733; x=1779274533; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XTomJ8d/soqsaSE8O3gG0DgzgBSQSKl73BuiKRWsZCc=;
- b=Mh3gPyYakQ+f95pC1tRiWpDTjCZ9gC9WRpWzIxqEx24RcCOAwflWduiE74UnZgCue1
- IpoULZUR8wYufZ1ZJL2GdFQA82CwGRmIK+zi7OYT61dlF/XpirP7uLdKvXqen25LT/rq
- 27pivVYijgHdn9FVgUhhKq7MHZkRWml9QYbWRUsCtrwzXfscNrWAr/b9QUehtEd8TbBD
- UMY6WUsv6qtRshhnA1mjgI1bZSRtn1TaumKB62J7/1CNkO9yl7fv3lAo7J4zbMXo4jtE
- ATvld/nwD9VsOAlFiv8f7WjAw83kq0StpEpDb1M+iHdZJx+o9d2E0bKgGU16EI4of1PW
- /BDA==
+ bh=fFbMJnTEsCC1r8PkjEmqH4GX8V4YsZPmK0Ug1b+QLeY=;
+ b=SnsxL7iLISQa5MltajR+eCkOQ24C6dkEPVhB+Zkr45gu4vJb5BCFIP4AGL/47Y7z2S
+ jGK61io4ZE8DZagwJvmA+51Ue1MvIB7zgTV0Vx5yTDVBdihrFub2TosFclMcBONVI7sm
+ kM6hYXI77m+3+LTsvRapHz+TP2M9uD1mMzV+8S0CRSjw0dEBPtzvVc2eFyzRlt07FnUL
+ awzqFtEoSiTraehiZf8I8yQGaaMUH2wU1Zc1slj8kY7SUDuxZqGSVj1CrTFS9D0rx4g0
+ i9JJkhNyCPCQ+v8WjHdh+H4p2qSpwm/ThC/ZIXyculGPdpWeZGaGGEn2l3Y0fisnnGt+
+ 90rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778669722; x=1779274522;
+ d=1e100.net; s=20251104; t=1778669733; x=1779274533;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=XTomJ8d/soqsaSE8O3gG0DgzgBSQSKl73BuiKRWsZCc=;
- b=Tgsn7h15Dk6I5NPoXGoGL6qF5UWGyA+LbVtYPv4URJFFFT0lnn+sZtCbz2+DdxKYZS
- IH84VcWrhMFyro58E0RhzaSfhhKozQhcOOOGsMAaPUXM6mIhQ7Yy4yVjT5MQKQrSeX0z
- PAkxNooOy7zIJiKRY58e/QkH6Tc5KLoySfjBdjxIF05XTIpzhJfzH+u61riEk+W+Ygps
- 9gPZmyrHz9JjaMlIzOwOLadgQ4keg9fXpWmkAl8JD0Ds4Uw1HujKWjOtZzZdxmBiv8xx
- a7aHrjQS73FTmKZFzooh8hWODHeRELcJcZFw0d+mlHMoeEc+at1/VojGp1SG8RY8Zs9U
- Fsdg==
+ bh=fFbMJnTEsCC1r8PkjEmqH4GX8V4YsZPmK0Ug1b+QLeY=;
+ b=dIY/qkEpZ3Ccdz0otPEFjdF2EKz8MXyYTyNlv3Y6vX2KNxlZI7xxZ4tNzY67F5zfXY
+ M/8NDgkgWEqLqgCDkmO5uij2ECIGGUL0LoK0ejvj5yGTR8OQJgSna32epKSbNin/k98X
+ JeousCQOP/kK2HgB1kKS2KBLqZdm7PJKMuVNv17FSND/t1qQikzm89Dbs+e50otqRsw7
+ RnjCsJEvPkbYJE4OQ7iXtfhYZ06dPM7tp5cJFan0CrOZ7V1z484XTZ1Gd32t5L2l5Nol
+ R8s0mSf1Mqn3Rei9WApk3UUlUUCjTWOyC8h70smUIHT1h2RGLMAMVYaw7y1pJ+1C3Pqx
+ Us/g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8SnHF7kaFyvGtM+Y7QzJfr0V0gTYyjvna/1FV+JYmOdtPE0UJXRi9BITXXukGznICDCGVXybRtew==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7GCQ5nt+wZbIG8ddrJYB8bRhqTpAR5U55pJNH/h65VdudgqpS
- 0nlFLZttE1843APeTg2i1ZfxFqwuG76/AxXjYVPw8FrWfXRf5vUfoW3n
-X-Gm-Gg: Acq92OGLIwo9AQrXg8RoblzC1E5NBFwKrkxSANGYbOIo7W3E6ywGGXKvYvC8i/HkJN1
- otsRhVLHsXwIRYC7N/rmY9YzMoHscQTJg/ynNW2Hzgk5NjunGVvBoE0EY6kMkmh6Auk1nO+ZSUF
- ot7sxb14ARQpf9Y0XrEFMjYNNJ3cnxu6BFJkCXgXJhuzL75loB4m2UiNVTKje4v9A7XfvzCnk/u
- O67pBvj2mS76A2DhHdIzlxiMJvF51xjxKGJF+L7uB2orCISU9qWr9yPvHF+uhrSAne5hB6VpThg
- Gx9wumz1Qgs+MQGQfmEQbyPeeR2KaIUKszu8ZDhOU5EzdC1ctU+rXB6oqFWWku8GqMez6RjOQOG
- Jyu7oMGGSeQCYaiIKI9owA/IJEVE2hmGFeprbtVZ/o5Zn3ChRt8ruc+uKHWQ205PvLT3pnB1MVh
- AwdRrbbsuLUr63v2sspmRGP0KWISqr4HG5dDQTA3UHQUAy
-X-Received: by 2002:a05:600c:5397:b0:48a:7aad:4425 with SMTP id
- 5b1f17b1804b1-48fc9a089c8mr34237715e9.3.1778669721779; 
- Wed, 13 May 2026 03:55:21 -0700 (PDT)
+ AFNElJ/Vcffmnn5pmmepxCPkHB47bu6dOTRgQ065U+fFgDIY1e112KfVBMDCaIc+50db/iIv2KeDD7Oziw==@nongnu.org
+X-Gm-Message-State: AOJu0YwqjPaGIxfB+yPP2EllEtNq5DYMfjHQYVBEX9o22LAYClKwy94A
+ HaE9WMbtXaCNkXmWuscl7Tc621hAPlkmBwg+azk2lfJ/XWGN5n8O0mQE
+X-Gm-Gg: Acq92OExo5cmlZce+Ex1H38QKUShEPTgAKZym8OGY+MuoGKUBb+S1YbHH/yhvSNaYUo
+ PDIXJzIWOavK+ERNN7+6GDzzZ4eMvaBjRIgDb3tiSqg7lDxMSfAFi8433sFXsGPqc0q3uV2dx9n
+ Pguv3NDsNFBmJb/tz63SjxYG0goihdLHi/Y/jg9uUPfdI9cw5kZUu+bdhoYqQ0wecVAWVfnnXCL
+ gH5Tmt5lr7vcj9HhPs17vrxwPcIn/NKrsauNso/SAq8qVKK+c7I5oYFjWVve7u37C/GS78ZpTll
+ N61wTs1EWgnK2ri9BGEzzXUeHRpML0U/nLKbOapYPp3201dYcXjJbR1tGmynFDJ/vQjvWO7YvtI
+ vpgix51dEQBEF4Zt4t5ux/KDINWPS2q7JwNnmxMT8Oz9+6C+fAfdDIQO3CgIEmsAfLA+H42dUnu
+ xbj8ria52HrEk08R5cWJdVWlTNnXNku0inHEB2py1dPe/b
+X-Received: by 2002:a05:600c:45cd:b0:485:3c2e:60d5 with SMTP id
+ 5b1f17b1804b1-48fc971f0ecmr39912515e9.2.1778669733523; 
+ Wed, 13 May 2026 03:55:33 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com ([195.226.174.196])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.20
+ 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 May 2026 03:55:21 -0700 (PDT)
+ Wed, 13 May 2026 03:55:33 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
@@ -77,19 +77,17 @@ Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- YannickV <Y.Vossen@beckhoff.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 02/15] hw/timer: Make PERIPHCLK divider configurable
-Date: Wed, 13 May 2026 12:55:04 +0200
-Message-ID: <20260513105517.146706-3-corvin.koehne@gmail.com>
+ YannickV <Y.Vossen@beckhoff.com>
+Subject: [PATCH v6 10/15] hw/misc: Add Beckhoff CCAT device
+Date: Wed, 13 May 2026 12:55:12 +0200
+Message-ID: <20260513105517.146706-11-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260513105517.146706-1-corvin.koehne@gmail.com>
 References: <20260513105517.146706-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,169 +112,393 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-The A9 global timer and ARM MP timer use PERIPHCLK as
-their clock source. The frequency of PERIPHCLK is derived
-by dividing the main clock (CLK) by a configurable
-divider (must be at least 2). Previously, the PERIPHCLK
-divider was not configurable, which could lead to
-unexspected behavior if the application exspected a
-different PERIPHCLK rate.
+This adds the Beckhoff Communication Controller (CCAT). The information
+block, EEPROM interface and DMA controller are currently  implemented.
 
-The property periphclk-divider specifies by which value
-the main clock is divided to generate PERIPHCLK. This
-allows flexible configuration of the timer clocks to
-match application requirements.
+The EEPROM provides production information for Beckhoff Devices.
+An EEPORM binary must therefor be handed over. It should be aligned to
+a power of two. If no EEPROM binary is handed over an empty EEPROM of
+size 4096 is initialized.
 
-Information can be found in the Zynq 7000 Soc Technical
-Reference Manual under Timers.
-https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+This device is needed for the Beckhoff CX7200 board emulation.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/timer/a9gtimer.c            | 19 ++++++++++++++++++-
- hw/timer/arm_mptimer.c         | 19 ++++++++++++++++++-
- include/hw/timer/a9gtimer.h    |  1 +
- include/hw/timer/arm_mptimer.h |  2 ++
- 4 files changed, 39 insertions(+), 2 deletions(-)
+ hw/misc/Kconfig         |   3 +
+ hw/misc/beckhoff_ccat.c | 339 ++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build     |   1 +
+ 3 files changed, 343 insertions(+)
+ create mode 100644 hw/misc/beckhoff_ccat.c
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 699cea8c89..5fb3aa6c77 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -27,6 +27,7 @@
- #include "hw/timer/a9gtimer.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 1543ee6653..2217b2005b 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -257,4 +257,7 @@ config XLNX_VERSAL_TRNG
+ config XLNX_ZYNQ_DDRC
+     bool
+ 
++config BECKHOFF_CCAT
++    bool
++
+ source macio/Kconfig
+diff --git a/hw/misc/beckhoff_ccat.c b/hw/misc/beckhoff_ccat.c
+new file mode 100644
+index 0000000000..a29e9f6166
+--- /dev/null
++++ b/hw/misc/beckhoff_ccat.c
+@@ -0,0 +1,339 @@
++/*
++ * Beckhoff Communication Controller Emulation
++ *
++ * Copyright (c) Beckhoff Automation GmbH. & Co. KG
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/core/sysbus.h"
++#include "qemu/units.h"
++#include "hw/core/register.h"
++#include "qemu/bitops.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "system/block-backend.h"
++#include "system/address-spaces.h"
++#include "system/memory.h"
++#include "system/dma.h"
 +#include "qemu/error-report.h"
- #include "qemu/timer.h"
- #include "qemu/bitops.h"
- #include "qemu/log.h"
-@@ -62,9 +63,17 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
- 
- static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
- {
-+    /*
-+     * Referring to the ARM-Cortex-A9 MPCore TRM
-+     *
-+     * The a9 global timer relies on the PERIPHCLK as its clock source.
-+     * The PERIPHCLK clock period must be configured as a multiple of the
-+     * main clock CLK. The conversion from the qemu clock (1GHz) to a9
-+     * gtimer ticks can be calculated like this:
-+     */
-     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
-                                   R_CONTROL_PRESCALER_LEN) + 1;
--    uint64_t scaled_prescaler = prescale * 10;
-+    uint64_t scaled_prescaler = prescale * s->periphclk_divider;
-     return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, s->freq_hz);
- }
- 
-@@ -312,6 +321,12 @@ static void a9_gtimer_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->iomem);
-     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, a9_gtimer_update_no_sync, s);
- 
-+    if (s->periphclk_divider < 2) {
-+        error_setg(errp, "Invalid periphclk-divider (%lu), must be >= 2",
-+                   s->periphclk_divider);
++#include "block/block.h"
++#include "block/block_int.h"
++#include "block/qdict.h"
++#include "hw/block/block.h"
++#include "migration/vmstate.h"
++#include "qemu/bswap.h"
++
++#ifndef CCAT_ERR_DEBUG
++#define CCAT_ERR_DEBUG 0
++#endif
++
++#define TYPE_BECKHOFF_CCAT "beckhoff-ccat"
++OBJECT_DECLARE_SIMPLE_TYPE(BeckhoffCcat, BECKHOFF_CCAT)
++
++#define MAX_NUM_SLOTS 32
++#define CCAT_FUNCTION_BLOCK_SIZE 16
++
++#define CCAT_EEPROM_OFFSET 0x100
++#define CCAT_DMA_OFFSET 0x8000
++
++#define CCAT_MEM_SIZE (64 * KiB)
++#define CCAT_DMA_SIZE 0x800
++#define CCAT_EEPROM_SIZE 0x20
++
++#define EEPROM_MEMORY_SIZE 0x1000
++
++#define EEPROM_CMD_OFFSET (CCAT_EEPROM_OFFSET + 0x00)
++    #define EEPROM_CMD_WRITE_MASK 0x2
++    #define EEPROM_CMD_READ_MASK 0x1
++#define EEPROM_ADR_OFFSET (CCAT_EEPROM_OFFSET + 0x04)
++#define EEPROM_DATA_OFFSET (CCAT_EEPROM_OFFSET + 0x08)
++
++#define DMA_BUFFER_OFFSET (CCAT_DMA_OFFSET + 0x00)
++#define DMA_DIRECTION_OFFSET (CCAT_DMA_OFFSET + 0x7c0)
++    #define DMA_DIRECTION_MASK 1
++#define DMA_TRANSFER_OFFSET (CCAT_DMA_OFFSET + 0x7c4)
++#define DMA_HOST_ADR_OFFSET (CCAT_DMA_OFFSET + 0x7c8)
++#define DMA_TRANSFER_LENGTH_OFFSET (CCAT_DMA_OFFSET + 0x7cc)
++
++/*
++ * The informationblock  is always located at address 0x0.
++ * Address and size are therefor replaced by two identifiers.
++ * The Parameter give information about the maximal number of
++ * function slots and the creation date (in this case 01.01.2001)
++ */
++#define CCAT_ID_1 0x88a4
++#define CCAT_ID_2 0x54414343
++#define CCAT_INFO_BLOCK_PARAMS ((MAX_NUM_SLOTS << 0) | (0x1 << 8) | \
++                              (0x1 << 16) | (0x1 << 24))
++
++#define CCAT_FUN_TYPE_ENTRY 0x0001
++#define CCAT_FUN_TYPE_EEPROM 0x0012
++#define CCAT_FUN_TYPE_DMA 0x0013
++
++typedef struct BeckhoffCcat {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++    uint8_t mem[CCAT_MEM_SIZE];
++
++    BlockBackend *eeprom_blk;
++    uint8_t *eeprom_storage;
++    uint32_t eeprom_size;
++} BeckhoffCcat;
++
++static void sync_eeprom(BeckhoffCcat *s)
++{
++    if (!s->eeprom_blk) {
 +        return;
 +    }
++    blk_pwrite(s->eeprom_blk, 0, s->eeprom_size, s->eeprom_storage, 0);
++}
 +
-     for (i = 0; i < s->num_cpu; i++) {
-         A9GTimerPerCPU *gtb = &s->per_cpu[i];
- 
-@@ -378,6 +393,8 @@ static const Property a9_gtimer_properties[] = {
-     DEFINE_PROP_UINT64("clock-frequency", A9GTimerState, freq_hz,
-                        NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
-+    DEFINE_PROP_UINT64("periphclk-divider", A9GTimerState,
-+                       periphclk_divider, 10),
- };
- 
- static void a9_gtimer_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index f67f26ad9a..6a5bc62422 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -27,6 +27,7 @@
- #include "hw/timer/arm_mptimer.h"
- #include "migration/vmstate.h"
- #include "qapi/error.h"
-+#include "qemu/error-report.h"
- #include "qemu/module.h"
- #include "hw/core/cpu.h"
- 
-@@ -61,8 +62,16 @@ static inline void timerblock_update_irq(TimerBlock *tb)
- /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
- static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
- {
-+    /*
-+     * Referring to the ARM-Cortex-A9 MPCore TRM
-+     *
-+     * The arm mp timer relies on the PERIPHCLK as its clock source.
-+     * The PERIPHCLK clock period must be configured as a multiple of the
-+     * main clock CLK. The conversion from the qemu clock (1GHz) to arm mp
-+     * timer ticks can be calculated like this:
-+     */
-     uint64_t prescale = (((control >> 8) & 0xff) + 1);
--    uint64_t scaled_prescaler = prescale * 10;
-+    uint64_t scaled_prescaler = prescale * tb->periphclk_divider;
-     return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, tb->freq_hz);
- }
- 
-@@ -273,6 +282,12 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < s->num_cpu; i++) {
-         TimerBlock *tb = &s->timerblock[i];
-         tb->freq_hz = s->freq_hz;
-+        if (s->periphclk_divider < 2) {
-+            error_setg(errp, "Invalid periphclk-divider (%lu), must be >= 2",
-+                       s->periphclk_divider);
++static uint64_t beckhoff_ccat_eeprom_read(void *opaque, hwaddr addr,
++                                          unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++    return ldn_le_p(&s->mem[addr], size);
++}
++
++static void beckhoff_ccat_eeprom_write(void *opaque, hwaddr addr, uint64_t val,
++                              unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++    uint64_t eeprom_adr;
++    uint64_t buf;
++    uint32_t bytes_to_read;
++
++    switch (addr) {
++    case EEPROM_CMD_OFFSET:
++        eeprom_adr = ldl_le_p(&s->mem[EEPROM_ADR_OFFSET]);
++        eeprom_adr = (eeprom_adr * 2) % s->eeprom_size;
++        if (val & EEPROM_CMD_READ_MASK) {
++            buf = 0;
++            bytes_to_read = 8;
++            if (eeprom_adr > s->eeprom_size - 8) {
++                bytes_to_read = s->eeprom_size - eeprom_adr;
++            }
++            buf = ldn_le_p(s->eeprom_storage + eeprom_adr, bytes_to_read);
++            stq_le_p(&s->mem[EEPROM_DATA_OFFSET], buf);
++        } else if (val & EEPROM_CMD_WRITE_MASK) {
++            buf = ldl_le_p(&s->mem[EEPROM_DATA_OFFSET]);
++            stw_le_p((uint16_t *)(s->eeprom_storage + eeprom_adr), buf);
++            sync_eeprom(s);
++        }
++        break;
++    default:
++        stn_le_p(&s->mem[addr], size, val);
++    }
++}
++
++static uint64_t beckhoff_ccat_dma_read(void *opaque, hwaddr addr, unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++
++    switch (addr) {
++    case DMA_TRANSFER_OFFSET:
++        if (s->mem[DMA_TRANSFER_OFFSET] & 0x1) {
++            s->mem[DMA_TRANSFER_OFFSET] = 0;
++        }
++        break;
++    }
++    return ldn_le_p(&s->mem[addr], size);
++}
++
++static void beckhoff_ccat_dma_write(void *opaque, hwaddr addr, uint64_t val,
++                           unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++    dma_addr_t dmaAddr;
++    uint8_t len;
++    uint8_t *mem_buf;
++
++    switch (addr) {
++    case DMA_TRANSFER_OFFSET:
++        len = s->mem[DMA_TRANSFER_LENGTH_OFFSET];
++        mem_buf = &s->mem[DMA_BUFFER_OFFSET];
++        dmaAddr = ldl_le_p(&s->mem[DMA_HOST_ADR_OFFSET]);
++        if (s->mem[DMA_DIRECTION_OFFSET] & DMA_DIRECTION_MASK) {
++            dma_memory_read(&address_space_memory, dmaAddr,
++                            mem_buf, len * 8, MEMTXATTRS_UNSPECIFIED);
++        } else {
++            /*
++             * The write transfer uses Host DMA Address + 8 as the target
++             * offset, as described in the CCAT manual Version 0.0.41
++             * section 20.2.
++             */
++            dma_memory_write(&address_space_memory, dmaAddr + 8,
++                                mem_buf, len * 8, MEMTXATTRS_UNSPECIFIED);
++        }
++        break;
++    }
++    stn_le_p(&s->mem[addr], size, val);
++}
++
++static uint64_t beckhoff_ccat_read(void *opaque, hwaddr addr, unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++    uint64_t val = 0;
++
++    assert(addr <= CCAT_MEM_SIZE - size);
++
++    if (addr >= CCAT_EEPROM_OFFSET &&
++                        addr <= CCAT_EEPROM_OFFSET + s->eeprom_size) {
++        return beckhoff_ccat_eeprom_read(opaque, addr, size);
++    } else if (addr >= CCAT_DMA_OFFSET &&
++                        addr <= CCAT_DMA_OFFSET + CCAT_DMA_SIZE) {
++        return beckhoff_ccat_dma_read(opaque, addr, size);
++    } else {
++        val = ldn_le_p(&s->mem[addr], size);
++    }
++
++    return val;
++}
++
++static void beckhoff_ccat_write(void *opaque, hwaddr addr, uint64_t val,
++                                unsigned size)
++{
++    BeckhoffCcat *s = opaque;
++
++    assert(addr <= CCAT_MEM_SIZE - size);
++
++    if (addr >= CCAT_EEPROM_OFFSET &&
++                        addr <= CCAT_EEPROM_OFFSET + s->eeprom_size) {
++        beckhoff_ccat_eeprom_write(opaque, addr, val, size);
++    } else if (addr >= CCAT_DMA_OFFSET &&
++                        addr <= CCAT_DMA_OFFSET + CCAT_DMA_SIZE) {
++        beckhoff_ccat_dma_write(opaque, addr, val, size);
++    } else {
++        stn_le_p(&s->mem[addr], size, val);
++    }
++}
++
++static const MemoryRegionOps beckhoff_ccat_ops = {
++    .read = beckhoff_ccat_read,
++    .write = beckhoff_ccat_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++    },
++};
++
++static void beckhoff_ccat_reset(DeviceState *dev)
++{
++    BeckhoffCcat *s = BECKHOFF_CCAT(dev);
++
++    memset(&s->mem[0], 0, MAX_NUM_SLOTS * CCAT_FUNCTION_BLOCK_SIZE);
++
++    size_t offset = 0 * CCAT_FUNCTION_BLOCK_SIZE;
++    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_ENTRY);
++    stw_le_p(&s->mem[offset + 2], 0x0001);
++    stl_le_p(&s->mem[offset + 4], CCAT_INFO_BLOCK_PARAMS);
++    stl_le_p(&s->mem[offset + 8], CCAT_ID_1);
++    stl_le_p(&s->mem[offset + 12], CCAT_ID_2);
++
++    offset = 11 * CCAT_FUNCTION_BLOCK_SIZE;
++    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_EEPROM);
++    stw_le_p(&s->mem[offset + 2], 0x0001);
++    stl_le_p(&s->mem[offset + 4], 0);
++    stl_le_p(&s->mem[offset + 8], CCAT_EEPROM_OFFSET);
++    stl_le_p(&s->mem[offset + 12], CCAT_EEPROM_SIZE);
++
++    offset = 15 * CCAT_FUNCTION_BLOCK_SIZE;
++    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_DMA);
++    stw_le_p(&s->mem[offset + 2], 0x0000);
++    stl_le_p(&s->mem[offset + 4], 0);
++    stl_le_p(&s->mem[offset + 8], CCAT_DMA_OFFSET);
++    stl_le_p(&s->mem[offset + 12], CCAT_DMA_SIZE);
++}
++
++static void beckhoff_ccat_realize(DeviceState *dev, Error **errp)
++{
++    BeckhoffCcat *s = BECKHOFF_CCAT(dev);
++    BlockBackend *blk;
++
++    blk = s->eeprom_blk;
++
++    if (blk) {
++        uint64_t blk_size = blk_getlength(blk);
++        if (!is_power_of_2(blk_size)) {
++            error_setg(errp, "Blockend size is not a power of two.");
 +            return;
 +        }
-+        tb->periphclk_divider = s->periphclk_divider;
-         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
-         sysbus_init_irq(sbd, &tb->irq);
-         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
-@@ -309,6 +324,8 @@ static const Property arm_mptimer_properties[] = {
-     DEFINE_PROP_UINT64("clock-frequency", ARMMPTimerState, freq_hz,
-                        NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
-+    DEFINE_PROP_UINT64("periphclk-divider", ARMMPTimerState,
-+                       periphclk_divider, 10),
- };
++
++        if (blk_size < 512) {
++            error_setg(errp, "Blockend size is too small.");
++            return;
++        } else {
++            blk_set_perm(blk, BLK_PERM_WRITE, BLK_PERM_ALL, errp);
++
++            s->eeprom_size = blk_size;
++            s->eeprom_blk = blk;
++            s->eeprom_storage = blk_blockalign(s->eeprom_blk, s->eeprom_size);
++
++            if (!blk_check_size_and_read_all(s->eeprom_blk, DEVICE(s),
++                                             s->eeprom_storage, s->eeprom_size,
++                                             errp)) {
++                return;
++            }
++        }
++    } else {
++        s->eeprom_size = EEPROM_MEMORY_SIZE;
++        s->eeprom_storage = blk_blockalign(NULL, s->eeprom_size);
++        memset(s->eeprom_storage, 0x00, s->eeprom_size);
++    }
++}
++
++static void beckhoff_ccat_init(Object *obj)
++{
++    BeckhoffCcat *s = BECKHOFF_CCAT(obj);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &beckhoff_ccat_ops, s,
++                          TYPE_BECKHOFF_CCAT, CCAT_MEM_SIZE);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const VMStateDescription vmstate_beckhoff_ccat = {
++    .name = "beckhoff-ccat",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT8_ARRAY(mem, BeckhoffCcat, CCAT_MEM_SIZE),
++        VMSTATE_UINT32(eeprom_size, BeckhoffCcat),
++        VMSTATE_VBUFFER_UINT32(eeprom_storage, BeckhoffCcat, 1, NULL,
++                               eeprom_size),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const Property beckhoff_ccat_properties[] = {
++    DEFINE_PROP_DRIVE("eeprom", BeckhoffCcat, eeprom_blk),
++};
++
++static void beckhoff_ccat_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    dc->realize = beckhoff_ccat_realize;
++    device_class_set_legacy_reset(dc, beckhoff_ccat_reset);
++    dc->vmsd = &vmstate_beckhoff_ccat;
++    device_class_set_props(dc, beckhoff_ccat_properties);
++}
++
++static const TypeInfo beckhoff_ccat_info = {
++ .name = TYPE_BECKHOFF_CCAT,
++ .parent = TYPE_SYS_BUS_DEVICE,
++ .instance_size = sizeof(BeckhoffCcat),
++ .instance_init = beckhoff_ccat_init,
++ .class_init = beckhoff_ccat_class_init,
++};
++
++static void beckhoff_ccat_register_types(void)
++{
++    type_register_static(&beckhoff_ccat_info);
++}
++
++type_init(beckhoff_ccat_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 3b7f908d9d..d313e87ed1 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -15,6 +15,7 @@ system_ss.add(when: 'CONFIG_PL310', if_true: files('arm_l2x0.c'))
+ system_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_true: files('arm_integrator_debug.c'))
+ system_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
+ system_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))
++system_ss.add(when: 'CONFIG_BECKHOFF_CCAT', if_true: files('beckhoff_ccat.c'))
  
- static void arm_mptimer_class_init(ObjectClass *klass, const void *data)
-diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
-index 571c05f638..1c65cec914 100644
---- a/include/hw/timer/a9gtimer.h
-+++ b/include/hw/timer/a9gtimer.h
-@@ -77,6 +77,7 @@ struct A9GTimerState {
-     MemoryRegion iomem;
-     /* static props */
-     uint64_t freq_hz;
-+    uint64_t periphclk_divider;
-     uint32_t num_cpu;
+ system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))
  
-     QEMUTimer *timer;
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 93ae532c9a..6eb0cedc90 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -32,6 +32,7 @@ typedef struct {
-     uint32_t status;
-     struct ptimer_state *timer;
-     uint64_t freq_hz;
-+    uint64_t periphclk_divider;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
-@@ -45,6 +46,7 @@ struct ARMMPTimerState {
-     /*< public >*/
- 
-     uint64_t freq_hz;
-+    uint64_t periphclk_divider;
-     uint32_t num_cpu;
-     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
-     MemoryRegion iomem;
 -- 
 2.47.3
 

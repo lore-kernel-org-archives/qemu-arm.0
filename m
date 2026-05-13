@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480DACD4F21
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 14:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C7D8CD4F24
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 14:56:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNAdG-0005Lq-Lz; Wed, 13 May 2026 10:32:18 -0400
+	id 1wNB0V-0003vG-Gf; Wed, 13 May 2026 10:56:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1wNAcm-0005Gp-E6; Wed, 13 May 2026 10:31:53 -0400
-Received: from mgamail.intel.com ([192.198.163.12])
+ id 1wNB0N-0003u7-8j; Wed, 13 May 2026 10:56:11 -0400
+Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1wNAcP-0004We-N6; Wed, 13 May 2026 10:31:43 -0400
+ id 1wNB0K-0007vl-SI; Wed, 13 May 2026 10:56:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778682686; x=1810218686;
+ t=1778684169; x=1810220169;
  h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=gz2Uo7DN26CdPDBWOHlAvyg9gcml/bM2joxaunqaRms=;
- b=g+Ho+CLCgsSk899TvBYvdqqetPJgI1IJahsGGoXnkBRHgeZKPprnJdZ5
- NZQozfiGv3/AemS84q8wKzPC7yj2rexwDUzqDiXcMwtBM/t+u6Jzm+iAd
- glNEgEqLJiWQNNmBPWS46LJQKlSqYT0EGUms1mZHWB8oBY3n8y51T2pd0
- hZiiw90SNwRwikArLP7vZaiDulci5+YA47FbADlBbWd6k9C69y22xCP6L
- 0oJ0Vxr4vfEHNAqLmyuo+Xk7r0B/gFcIsHVoc1of3NHGf8iB7t36MU/Ns
- UcWZLeuiHkVTZKboYpxmzXAtqaHqhRVGbvnhlcHx1cgaDgF/UxIXJ5CKA Q==;
-X-CSE-ConnectionGUID: Rn5CnqHeTN2Vkn3fKBIgMQ==
-X-CSE-MsgGUID: OGWFMUsMQN+YZiWb8et1jQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11784"; a="83464104"
-X-IronPort-AV: E=Sophos;i="6.23,232,1770624000"; d="scan'208";a="83464104"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2026 07:31:16 -0700
-X-CSE-ConnectionGUID: LhtCSqA/T/eNbZDreP0PWw==
-X-CSE-MsgGUID: 0Sk+hQYMSAmbFrDKmpxzeA==
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=eFDkngCr6PJxUkPIzXh+oXkJrbgAkB7APfnrW/D4P1Y=;
+ b=Baa0JYlgA3zROAGYyGwEmzNiu67AEr4W2cLhyWSQUmx8+coTwNmh5grD
+ dmHq9SyZWfwq+QzlkOCfmdmoZcGkvyng53NyoU4D9gOsUWTjIC/92sg3j
+ 7bSSAC1+QYPJjGBrcD00NumbP14QyMHytdgVyKR2OA1f8Pnfv81aIeaAl
+ kVHknKZtEnwKK1OjSq8LCjQPkfN+rYRdZrRgIUozY5Ly4oSSCCE/Mp1Gq
+ U2//WRM5W9SSX1lSsQz7m11BS9C+dRyAoG+zamX8khU20mt3n2qxJTvjA
+ LC+E/ih+fpVFVN6KwSa0xOdVoMlxU3bSwt0mh51eKPF7Fuvg3wuVrm6Lr A==;
+X-CSE-ConnectionGUID: d0rKM4beRd2nNs6AREORpg==
+X-CSE-MsgGUID: Or/sSkjNTGWe+VPCDCayoA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11785"; a="97039420"
+X-IronPort-AV: E=Sophos;i="6.23,232,1770624000"; d="scan'208";a="97039420"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 May 2026 07:56:05 -0700
+X-CSE-ConnectionGUID: kJvyDbeqQU2kkUoHdThAPw==
+X-CSE-MsgGUID: nAk0a65VQ9mv2W05zsVXPw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,232,1770624000"; d="scan'208";a="235037411"
+X-IronPort-AV: E=Sophos;i="6.23,232,1770624000"; d="scan'208";a="242113328"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by fmviesa007.fm.intel.com with ESMTP; 13 May 2026 07:31:13 -0700
-Date: Wed, 13 May 2026 22:58:58 +0800
+ by orviesa003.jf.intel.com with ESMTP; 13 May 2026 07:56:02 -0700
+Date: Wed, 13 May 2026 23:23:47 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Igor Mammedov <imammedo@redhat.com>
 Cc: qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
  pbonzini@redhat.com, peter.maydell@linaro.org,
  shannon.zhaosl@gmail.com, philmd@linaro.org, rad@semihalf.com,
  leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 02/21] x86: q35: add 'wdat' property
-Message-ID: <agSRsqaRsGBBwewT@intel.com>
+Subject: Re: [PATCH v2 01/21] acpi: add API to build WDAT instructions
+Message-ID: <agSXg/yEbRzD9V+F@intel.com>
 References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-3-imammedo@redhat.com>
+ <20260303092532.2410177-2-imammedo@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20260303092532.2410177-3-imammedo@redhat.com>
-Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20260303092532.2410177-2-imammedo@redhat.com>
+Received-SPF: pass client-ip=198.175.65.10; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -47
 X-Spam_score: -4.8
@@ -83,21 +84,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Mar 03, 2026 at 10:25:13AM +0100, Igor Mammedov wrote:
-> Date: Tue,  3 Mar 2026 10:25:13 +0100
+On Tue, Mar 03, 2026 at 10:25:12AM +0100, Igor Mammedov wrote:
+> Date: Tue,  3 Mar 2026 10:25:12 +0100
 > From: Igor Mammedov <imammedo@redhat.com>
-> Subject: [PATCH v2 02/21] x86: q35: add 'wdat' property
+> Subject: [PATCH v2 01/21] acpi: add API to build WDAT instructions
 > 
-> Used for enabling WDAT based watchdog for builtin iTCO watchdog.
-> Usage:
->     -M q35,wdat={on|off}
-> By default it is disabled.
+> Add definitions for WDAT[1] actions/instructions
+> and build_append_wdat_ins() API to build table entries.
+> 
+> 1)
+> "Hardware Watchdog Timers Design Specification"
+>   https://uefi.org/acpi 'Watchdog Action Table (WDAT)'
 > 
 > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Ani Sinha <anisinha@redhat.com>
 > ---
->  include/hw/i386/pc.h |  1 +
->  hw/i386/pc_q35.c     | 18 ++++++++++++++++++
->  2 files changed, 19 insertions(+)
+>  include/hw/acpi/wdat.h | 118 +++++++++++++++++++++++++++++++++++++++++
+>  hw/acpi/aml-build.c    |  14 +++++
+>  2 files changed, 132 insertions(+)
+>  create mode 100644 include/hw/acpi/wdat.h
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 

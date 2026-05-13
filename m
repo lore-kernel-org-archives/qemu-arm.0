@@ -4,98 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9003DCD343F
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 02:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2FDCD37B6
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 05:38:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wMzIP-0003zJ-OW; Tue, 12 May 2026 22:26:01 -0400
+	id 1wN2IL-0002fo-QA; Wed, 13 May 2026 01:38:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wMzIL-0003yP-1L
- for qemu-arm@nongnu.org; Tue, 12 May 2026 22:25:57 -0400
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <scottjgo@gmail.com>)
- id 1wMzII-0005a1-59
- for qemu-arm@nongnu.org; Tue, 12 May 2026 22:25:56 -0400
-Received: by mail-qt1-x82d.google.com with SMTP id
- d75a77b69052e-515226c0cdbso10507421cf.3
- for <qemu-arm@nongnu.org>; Tue, 12 May 2026 19:25:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778639152; x=1779243952; darn=nongnu.org;
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7z2FOBWMAaefvXZumCi2Edzmn5NvQidHEEc5IEP+AVY=;
- b=sEaMUydKqoOJnVyhEd2q+yO5kj9bc7hBbM0+r7FCTnhrK51Lst09s7ELiDmOFqZAyt
- IknfT5oWuAdAi9xMgPIdikhjBNb2RSSK22NC+fBvjrqYs263nFcuCkNOsVzfL8XGIt3F
- BT+5PHspD8rXxVLjBFf3O/orEWXp2jCcxirpB+7BA8SSTB9h+5M//TzDJdfsVr1yf38S
- G/BmIFqolq6zyp48XXHpJ/nr0O9j9h6OHGtJKTaOdYjIaLLkNwDljzvqsnpySfT9YHed
- l104nh+1R9Rn3oamvgVwRXKxQi1SWTFOl41eG+1D+AlwMDaXfULcGrodIADuSwmhj6c2
- pgTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778639152; x=1779243952;
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:x-gm-gg:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=7z2FOBWMAaefvXZumCi2Edzmn5NvQidHEEc5IEP+AVY=;
- b=TKfZ/vY0Ewu621ptuWCHgWsZOsBeUZpnz4C84yGgDKK+pcfEtMnXootOgAwtjD9sA4
- MgTA/+Bljm7zlQY//PQdCnzX1nKFfxwwIrl1brEw9IPJCHwQK4LzlZyc8jq6UBQQokEX
- wL8ZKfHmsHRZefScveR8S88YwzqhYlPmdxtMOktix173qWClWL7P2HgwpThgaYqLuu1I
- m/rsGcyxxLUA/Av9mDP+ar9fALt5yn8d7JgaeuU8UVY/0Iww+HTymMQbmY38TA5u3Sgv
- LrBJtNm81nyK8lgFPTt2ftaYB6NZCyB2c+cIHu5OffnULOG+L3NE6jItlTlkoCwdzFFF
- tWlQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9cWWcvAB7Rav2BdHkjwrb4TdMF826mimhQro5CDEygvHDqUgpZC4vCJ733Lwg19KYMiXzzeuUoag==@nongnu.org
-X-Gm-Message-State: AOJu0Yzqrciqea/b7XE62ByIMwyqfS/tlcTyCo/XHkIPBJbCV7e5UwiO
- MIEziHCihJm+9hYJy47E7MhG9Z0XNzGNA+8VDp9SjepMUx5qydYDLl68
-X-Gm-Gg: Acq92OGttKHsipdxrGbPw4b16d4aDdSjIeOjXFZj3iplgJAWiZ41Aaosfkysiwl/uij
- AlBk8pcmi1lvDvf0S5lX4Ts5FckYoW7CqojtrIf1/zPoo2mfCDv+7Mrc5qRWipeFJVXGEqfzSLC
- oBm7obOPYPBnwXl0R9YSKRggNelE8b9faR2cKnJOimCl46sVoRmeIQFQBDiTIkplRR4msuaSQAD
- opSS0ufj9jj7s/0k1Nqpa4PHgJ6VL5UkSTPNBXl+u3hrxrNQpy4vKECPTkF6bF0bTGtqrK7WSGv
- s2HJtIQDNc3XXAosZpeKWUe/hRuQJx3FjNv6tgjiw9O5q+WLeubNKEXMTC8Nq8v01lq1gaRJ3Zd
- 4NYcyTyUMlSgX6sOZs5IKZq7oslQscYjJmEntiLIFvpyyLkjYobKIYE8LHMXIjBwLo6gb/lEOuT
- 4ZaNZFBHbwZzGSz3tBzAkQ0pMaEghHRpfX9ENYMeSZQdq17vX5WCYCAnlBY10njv+sE/b2E0jd3
- prhhqrrWOihVp0=
-X-Received: by 2002:ac8:7fc1:0:b0:50e:6054:ba with SMTP id
- d75a77b69052e-5162f43fbb9mr19595011cf.9.1778639152465; 
- Tue, 12 May 2026 19:25:52 -0700 (PDT)
-Received: from localhost ([2603:7000:4df0:8300:fdb5:4a2a:97d0:addf])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-5148e630729sm144814631cf.4.2026.05.12.19.25.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 May 2026 19:25:51 -0700 (PDT)
-Mime-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wN2IH-0002fK-Nn
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 01:38:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wN2IF-0004x0-FQ
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 01:38:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778650681;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=XkYNinsYEGPyxvrSjwgj1bi8typGS7e9QH2V7czgNYg=;
+ b=c8CbzY1bl3QV2I9fjgSHmmdCGMgaTD1mindSS9UcWp69NNGwxuvuCkD08JClfxjNfNoIBa
+ wkda3A/oQ7Etb8jnjwhB3Hn01hateT8awrpJhBmoq5KyOGwfCvfoAn6evZzjD2VXxWcf6z
+ BUiQuOiVKwriKffk1chBjrcLe+xx9P0=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-363-Hv9iJrN3PPCwm3sO9CeqaQ-1; Wed,
+ 13 May 2026 01:37:58 -0400
+X-MC-Unique: Hv9iJrN3PPCwm3sO9CeqaQ-1
+X-Mimecast-MFC-AGG-ID: Hv9iJrN3PPCwm3sO9CeqaQ_1778650676
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DDE441800359; Wed, 13 May 2026 05:37:55 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.49.156])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C3B421800576; Wed, 13 May 2026 05:37:51 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, kane_chen@aspeedtech.com,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH] hw/misc/aspeed_scu: Fix AST2600_RNG definitions
+Date: Wed, 13 May 2026 07:37:49 +0200
+Message-ID: <20260513053749.132759-1-clg@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: NaJMaEr359dZ-nrRvFwzbIkoxmDORYXNUGDavnl_bpk_1778650676
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Date: Tue, 12 May 2026 22:25:49 -0400
-Message-Id: <DIH6YGXVPFD4.2O7V71XKGBIB@gmail.com>
-From: "Scott J. Goldman" <scottjgo@gmail.com>
-To: "Mohamed Mediouni" <mohamed@unpredictable.fr>, "Scott J. Goldman"
- <scottjgo@gmail.com>
-Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, "Peter Maydell"
- <peter.maydell@linaro.org>, "Alexander Graf" <agraf@csgraf.de>, "Phil
- Dennis-Jordan" <phil@philjordan.eu>, "Roman Bolshakov"
- <rbolshakov@ddn.com>, =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Subject: Re: [PATCH v3] target/arm/hvf: Fix WFI halting to stop idle vCPU
- spinning
-X-Mailer: aerc 0.21.0
-References: <20260410055045.63001-1-scottjgo@gmail.com>
- <20260427195516.46256-1-scottjgo@gmail.com>
- <E8468087-647B-45B5-AF4E-85DD15A6D35C@unpredictable.fr>
-In-Reply-To: <E8468087-647B-45B5-AF4E-85DD15A6D35C@unpredictable.fr>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
- envelope-from=scottjgo@gmail.com; helo=mail-qt1-x82d.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,315 +86,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue May 12, 2026 at 9:21 PM EDT, Mohamed Mediouni wrote:
->
->> On 27. Apr 2026, at 21:55, Scott J. Goldman <scottjgo@gmail.com> wrote:
->>=20
->> Commit b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
->> changed hvf_wfi() from blocking the vCPU thread with pselect() to
->> returning EXCP_HLT, intending QEMU's main event loop to handle the
->> idle wait. However, cpu->halted was never set, so cpu_thread_is_idle()
->> always returns false and the vCPU thread spins at 100% CPU per core
->> while the guest is idle.
->>=20
->> Fix this by:
->>=20
->> 1. Setting cpu->halted =3D 1 in hvf_wfi() so the vCPU thread sleeps on
->>  halt_cond in qemu_process_cpu_events().
->>=20
->> 2. Arming a per-vCPU QEMU_CLOCK_VIRTUAL timer to fire when the guest's
->>  virtual timer (CNTV_CVAL_EL0) would expire. This is necessary
->>  because HVF only delivers HV_EXIT_REASON_VTIMER_ACTIVATED during
->>  hv_vcpu_run(), which is not called while the CPU is halted. The
->>  timer callback mirrors the VTIMER_ACTIVATED handler: it raises the
->>  vtimer IRQ through the GIC and marks vtimer_masked, causing the
->>  interrupt delivery chain to wake the vCPU via qemu_cpu_kick().
->>=20
->> 3. Clearing cpu->halted in hvf_arch_vcpu_exec() when cpu_has_work()
->>  indicates a pending interrupt, and cancelling the WFI timer.
->>=20
->> 4. Re-arming the WFI timer from hvf_vm_state_change() on the resume
->>  transition for any halted vCPU, since the QEMUTimer is per-instance
->>  state and is not migrated. After cpu_synchronize_all_states() the
->>  migrated vtimer state is mirrored in env, so we can read CNTV_CTL
->>  and CNTV_CVAL from there. If the vtimer has already expired by the
->>  time the destination resumes, hvf_wfi_timer_cb() is invoked
->>  directly so the halted vCPU is woken up.
->>=20
->> Fixes: b5f8f77271 ("accel/hvf: Implement WFI without using pselect()")
->> Signed-off-by: Scott J. Goldman <scottjgo@gmail.com>
->> ---
->> Changes since v2:
->> - Use QEMU_CLOCK_VIRTUAL instead of QEMU_CLOCK_HOST so the timer
->>  pauses with the VM and a halted vCPU isn't woken (or its IRQ
->>  raised) while the user has stopped the guest. (Peter)
->> - Convert vtimer ticks to nanoseconds with muldiv64() to avoid
->>  intermediate overflow. (Peter)
->> - Re-arm the WFI timer from hvf_vm_state_change() on the resume
->>  transition so a halted vCPU on the migration destination is
->>  woken when its vtimer expires (the QEMUTimer is per-instance
->>  state and isn't migrated). (Peter)
->> v2: https://lore.kernel.org/qemu-devel/20260410055045.63001-1-scottjgo@g=
-mail.com/
->> v1: https://lore.kernel.org/qemu-devel/20260410044726.61853-1-scottjgo@g=
-mail.com/
->
-> For QEMU 11.0 (for backporting to stable):
->
-> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->
-> For QEMU 11.1:
->
-> Adding some checks for !hvf_irqchip_in_kernel() needed
-> but can do them on my side if you prefer.
->
-> Looks ready apart from that bit.
+Commit e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support") introduced
+a typo on the definitions of the Random Number Generator registers.
+Fix that.
 
-Hi Mohamed,
+The implementation of RNG_CTRL and RNG_DATA should be rechecked on HW
+since the QEMU implementation always generates random data, regardless
+of RNG_CTRL. A comment in aspeed_ast2600_scu_read() admits uncertainty
+about the behavior :
 
-TFTR - I sent a follow-up patch that gates the wfi timer as you requested.
-For applying this v3 version to the stable tree, is there anyone else I
-should ping? I'm not very familiar with the process.
-=20
-Thanks!
--sjg
+    /*
+     * On hardware, RNG_DATA works regardless of the state of the
+     * enable bit in RNG_CTRL
+     *
+     * TODO: Check this is true for ast2600
+     */
 
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2350
+Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/misc/aspeed_scu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
->
->>=20
->> include/system/hvf_int.h |   1 +
->> target/arm/hvf/hvf.c     | 124 ++++++++++++++++++++++++++++++++++++++-
->> 2 files changed, 124 insertions(+), 1 deletion(-)
->>=20
->> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->> index 2621164cb2..58fb865eba 100644
->> --- a/include/system/hvf_int.h
->> +++ b/include/system/hvf_int.h
->> @@ -48,6 +48,7 @@ struct AccelCPUState {
->>    hv_vcpu_exit_t *exit;
->>    bool vtimer_masked;
->>    bool guest_debug_enabled;
->> +    struct QEMUTimer *wfi_timer;
->> #endif
->> };
->>=20
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index 678afe5c8e..a19d7a5e1f 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -28,6 +28,7 @@
->> #include "hw/core/boards.h"
->> #include "hw/core/irq.h"
->> #include "qemu/main-loop.h"
->> +#include "qemu/timer.h"
->> #include "system/cpus.h"
->> #include "arm-powerctl.h"
->> #include "target/arm/cpu.h"
->> @@ -301,6 +302,8 @@ void hvf_arm_init_debug(void)
->> #define TMR_CTL_IMASK   (1 << 1)
->> #define TMR_CTL_ISTATUS (1 << 2)
->>=20
->> +static void hvf_wfi_timer_cb(void *opaque);
->> +
->> static uint32_t chosen_ipa_bit_size;
->>=20
->> typedef struct HVFVTimer {
->> @@ -1214,6 +1217,9 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
->> {
->>    hv_return_t ret;
->>=20
->> +    timer_free(cpu->accel->wfi_timer);
->> +    cpu->accel->wfi_timer =3D NULL;
->> +
->>    ret =3D hv_vcpu_destroy(cpu->accel->fd);
->>    assert_hvf_ok(ret);
->> }
->> @@ -1352,6 +1358,9 @@ int hvf_arch_init_vcpu(CPUState *cpu)
->>                              arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX])=
-;
->>    assert_hvf_ok(ret);
->>=20
->> +    cpu->accel->wfi_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
->> +                                          hvf_wfi_timer_cb, cpu);
->> +
-> adding !hvf_irqchip_in_kernel()
->
->>     aarch64_add_sme_properties(OBJECT(cpu));
->>    return 0;
->> }
->> @@ -2027,8 +2036,67 @@ static uint64_t hvf_vtimer_val_raw(void)
->>    return mach_absolute_time() - hvf_state->vtimer_offset;
->> }
->>=20
->> +static void hvf_wfi_timer_cb(void *opaque)
->> +{
->> +    CPUState *cpu =3D opaque;
->> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
->> +
->> +    /*
->> +     * vtimer expired while the CPU was halted for WFI.
->> +     * Mirror HV_EXIT_REASON_VTIMER_ACTIVATED: raise the vtimer
->> +     * interrupt and mark as masked so hvf_sync_vtimer() will
->> +     * check and unmask when the guest handles it.
->> +     *
->> +     * The interrupt delivery chain (GIC -> cpu_interrupt ->
->> +     * qemu_cpu_kick) wakes the vCPU thread from halt_cond.
->> +     */
->> +    qemu_set_irq(arm_cpu->gt_timer_outputs[GTIMER_VIRT], 1);
->> +    cpu->accel->vtimer_masked =3D true;
->> +}
->> +
->> +/*
->> + * Arm a host-side QEMU_CLOCK_VIRTUAL timer to fire when the guest's
->> + * vtimer (CNTV_CVAL_EL0) is scheduled to expire. HVF only delivers
->> + * HV_EXIT_REASON_VTIMER_ACTIVATED during hv_vcpu_run(), which we won't
->> + * call while the vCPU is halted, so we need this to wake the vCPU.
->> + *
->> + * QEMU_CLOCK_VIRTUAL pauses while the VM is stopped, which keeps the
->> + * timer in lockstep with the guest's view of vtime across pause/resume=
-.
->> + *
->> + * Caller must supply the current CNTV_CTL_EL0 and CNTV_CVAL_EL0 values=
-,
->> + * since the appropriate source (HVF vs. env) depends on context.
->> + *
->> + * Returns 0 if the timer was armed (or if the vtimer is disabled/maske=
-d
->> + * and the vCPU should still halt waiting on another event), or -1 if
->> + * the vtimer has already expired.
->> + */
->> +static int hvf_arm_wfi_timer(CPUState *cpu, uint64_t ctl, uint64_t cval=
-)
->> +{
->> +    ARMCPU *arm_cpu =3D ARM_CPU(cpu);
->> +    uint64_t now;
->> +    int64_t delta_ns;
->> +
->> +    if (!(ctl & TMR_CTL_ENABLE) || (ctl & TMR_CTL_IMASK)) {
->> +        return 0;
->> +    }
->> +
->> +    now =3D hvf_vtimer_val_raw();
->> +    if (cval <=3D now) {
->> +        return -1;
->> +    }
->> +
->> +    delta_ns =3D muldiv64(cval - now, NANOSECONDS_PER_SECOND,
->> +                        arm_cpu->gt_cntfrq_hz);
->> +    timer_mod(cpu->accel->wfi_timer,
->> +              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + delta_ns);
->> +    return 0;
->> +}
->> +
->> static int hvf_wfi(CPUState *cpu)
->> {
->> +    uint64_t ctl, cval;
->> +    hv_return_t r;
->> +
->>    if (cpu_has_work(cpu)) {
->>        /*
->>         * Don't bother to go into our "low power state" if
->> @@ -2037,6 +2105,22 @@ static int hvf_wfi(CPUState *cpu)
->>        return 0;
->>    }
->>=20
->> +    /*
->> +     * Read the vtimer state directly from HVF. We're on the vCPU threa=
-d,
->> +     * just exited from hv_vcpu_run(), so HVF holds the authoritative
->> +     * values and env may be stale.
->> +     */
->> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, =
-&ctl);
->> +    assert_hvf_ok(r);
->> +    r =3D hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0,=
- &cval);
->> +    assert_hvf_ok(r);
->> +
->> +    if (hvf_arm_wfi_timer(cpu, ctl, cval) < 0) {
->> +        /* vtimer already expired, don't halt */
->> +        return 0;
->> +    }
->> +
->> +    cpu->halted =3D 1;
->>    return EXCP_HLT;
->> }
->>=20
->> @@ -2332,7 +2416,11 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
->>    hv_return_t r;
->>=20
->>    if (cpu->halted) {
->> -        return EXCP_HLT;
->> +        if (!cpu_has_work(cpu)) {
->> +            return EXCP_HLT;
->> +        }
->> +        cpu->halted =3D 0;
->> +        timer_del(cpu->accel->wfi_timer);
-> !hvf_irqchip_in_kernel(), we shouldn=E2=80=99t have the wfi timer otherwi=
-se
->>     }
->>=20
->>    flush_cpu_state(cpu);
->> @@ -2376,11 +2464,45 @@ static const VMStateDescription vmstate_hvf_vtim=
-er =3D {
->> static void hvf_vm_state_change(void *opaque, bool running, RunState sta=
-te)
->> {
->>    HVFVTimer *s =3D opaque;
->> +    CPUState *cpu;
->>=20
->>    if (running) {
->>        /* Update vtimer offset on all CPUs */
->>        hvf_state->vtimer_offset =3D mach_absolute_time() - s->vtimer_val=
-;
->>        cpu_synchronize_all_states();
->> +
->> +        /*
->> +         * After migration restore (or any resume), the wfi_timer is no=
-t
->> +         * scheduled on this QEMU instance, so re-arm it for any halted
->> +         * vCPU with a pending vtimer. For a non-migration resume the
->> +         * QEMU_CLOCK_VIRTUAL timer was already scheduled; recomputing =
-the
->> +         * deadline produces the same value and is a harmless no-op.
->> +         *
->> +         * cpu_synchronize_all_states() above ensures env mirrors the
->> +         * authoritative vtimer state (whether that came from HVF or fr=
-om
->> +         * the migration stream), so we can safely read it here from th=
-e
->> +         * iothread.
->> +         */
->
-> This should be gated behind !hvf_irqchip_in_kernel()
->
->> +        CPU_FOREACH(cpu) {
->> +            ARMCPU *arm_cpu;
->> +            uint64_t ctl, cval;
->> +
->> +            if (!cpu->accel || !cpu->halted) {
->> +                continue;
->> +            }
->> +
->> +            arm_cpu =3D ARM_CPU(cpu);
->> +            ctl =3D arm_cpu->env.cp15.c14_timer[GTIMER_VIRT].ctl;
->> +            cval =3D arm_cpu->env.cp15.c14_timer[GTIMER_VIRT].cval;
->> +
->> +            if (hvf_arm_wfi_timer(cpu, ctl, cval) < 0) {
->> +                /*
->> +                 * vtimer already expired while we were paused; raise t=
-he
->> +                 * IRQ now so the halted vCPU wakes up.
->> +                 */
->> +                hvf_wfi_timer_cb(cpu);
->> +            }
->> +        }
->>    } else {
->>        /* Remember vtimer value on every pause */
->>        s->vtimer_val =3D hvf_vtimer_val_raw();
->> --=20
->> 2.50.1 (Apple Git-155)
->>=20
->>=20
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index e4160356e443..9d9f43e6b563 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -128,8 +128,8 @@
+ #define AST2600_HW_STRAP2         TO_REG(0x510)
+ #define AST2600_HW_STRAP2_CLR     TO_REG(0x514)
+ #define AST2600_HW_STRAP2_PROT    TO_REG(0x518)
+-#define AST2600_RNG_CTRL          TO_REG(0x524)
+-#define AST2600_RNG_DATA          TO_REG(0x540)
++#define AST2600_RNG_CTRL          TO_REG(0x520)
++#define AST2600_RNG_DATA          TO_REG(0x524)
+ #define AST2600_CHIP_ID0          TO_REG(0x5B0)
+ #define AST2600_CHIP_ID1          TO_REG(0x5B4)
+ 
+-- 
+2.54.0
 
 

@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22411CD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:56:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6EECCD4F24
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:56:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN7Fo-0003F9-P4; Wed, 13 May 2026 06:55:54 -0400
+	id 1wN7G5-0003HZ-CO; Wed, 13 May 2026 06:56:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FX-000383-Bs
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:39 -0400
+ id 1wN7FS-000311-Tr
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:37 -0400
 Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FO-0001Mr-Hx
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:32 -0400
+ id 1wN7FO-0001MS-Hx
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:30 -0400
 Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-48984d29fe3so70482405e9.0
- for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:21 -0700 (PDT)
+ 5b1f17b1804b1-488b0046078so54693685e9.1
+ for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778669721; x=1779274521; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Aoto7sWRwkvdYQ7EeipOLEozah24d4tm9ReeE9yn5cE=;
- b=UIQ67yTUasNV7UXQ6hJfDxgVE5Bdt2VI4UxKOpryYqoBvo0W3kpXjphpXkeG+mXmfR
- QM/K4fojzNhzaIEZfo8wCcNuSs7GIdpVw6PyM5VC1a8iNqYvKOV54Thf6Ce81q3xRg0v
- NziJYYjzSyWcN9I+V4iani3aayT0xbsWoz5q1Kmx5C+VagBwhKsS3AD1AWJfqeYFi+LJ
- 99Qw3pN5oTyiS0RcwdxkDW0OqP1I+HiDIdUFHhaGodosPIPN3A8uth7C1wvdL3B3NrkB
- dYJ0Px30W5LP3tFBX/MgmEgJbnG4hsvUyfH3wzHyRiGWWc3z1/SdQmEUM6GKBquNvGs8
- pbuw==
+ d=gmail.com; s=20251104; t=1778669719; x=1779274519; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=EqXB20e2lB1n4B/l+2XeP0j/2vhshqy0w7MeGRh9Fl8=;
+ b=tNXIj1EFjbLiZ8zNWPk4lj+ndKh0HS+aur48Fbz5jdWmA8f0eoe1OwSzeH1fOs+sgF
+ FWOp0hEBQuMEg84IL7kVUOmPZAl/hRlRqty/8kyM7VUoPCU50DBE3dEZ6OpMm4JOpDc8
+ gFeFFgSjcFEaWeg2hvU2bLs6gBKO2OsXjTCJSxJxZf+hL4GBo0MLnUI85UheNwtf4N/D
+ hxnhnXDcc4PLmXXCRn25+XI1xhhlaiSr/PeSkub3+XYzTGOp50bhFXzDUEzSzJAH5cTY
+ kkBb2NOnfh+fxP/zglmdSySAMWNNG4sUeaNMUz/QC3aG136826y7+tMzRHtnhmqS3aoy
+ v2QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778669721; x=1779274521;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Aoto7sWRwkvdYQ7EeipOLEozah24d4tm9ReeE9yn5cE=;
- b=QIfGZ4JMcrMMYEfd2yfwViwEdf/RT6orQDh89I9mIzBHCLS1ALEay9YInQSzbTfdit
- xnSrT2/i62OXNGxNpEKVlEb3PP1K8qexZO5WeQynu6Bfqn7vwezvAQo6MxkFXb3pbs+g
- 6Q7yOnNSZLd7/8oNaIHt731uhyiJfyd18JmHkhXAWXHi/eiXnuzM4u6g0AbdoYYef3at
- svTI9lPR7DRhO8PNBmHgST8kmt60jfmcgGNY2iHXvZ7LwmZBpYJETB0PZwe+VbaNeEqg
- PXBV81UDiMamJ5fA2lHrm+gu/59OxnM401Zl6KwfBFDqV5hJGIJAeI/PE7T3N9dPVLlp
- r+1A==
+ d=1e100.net; s=20251104; t=1778669719; x=1779274519;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EqXB20e2lB1n4B/l+2XeP0j/2vhshqy0w7MeGRh9Fl8=;
+ b=cHt5VcHx0izF79WjJc9smQ9IgPmhKKEOo9xkrA6o7SKuR1yKogFLD3iUhBIvd7WGzf
+ oK+0puXjaFt3ihNOTp6TGik6YTqooyBz/Ba24sYUf4H34WlI2LxgoufaGz9tFsGbLsf5
+ s7Z2NOMJxwQ4MtCBPrYdmaE0plAuB/hWCxuLucYjFGa7sGzZdjudVDnLnC3xf3Tt0/4H
+ Q2+h1DpiYJcKZIq4aMOE68m2+DKnSf8rqKnT/tj3t2fTCaLHqOIhhkuLM3zankeFyURZ
+ bnB1dha8yS3PagMYQf1llW//ppMekGnMfx9c88bwV+X4n/7fmcorJxGUh51ml0W5aP/c
+ w61g==
 X-Forwarded-Encrypted: i=1;
- AFNElJ97yxxz2z29pp5BzCn+uNj0fjxos4CCDtvHqAoO7xY6lFqKtgXp+dQSpkPSiWN+C7ZWC0qTkqr2Ew==@nongnu.org
-X-Gm-Message-State: AOJu0YxIojBM00MTHdCZmLWhuXe94WS+WKEk+HmDgaSF8alDB/lyoeB4
- Yd45XQ+ILDUxTwtnWxUQlUBDX9HJ49TnSmZygnzCcVlQ+QSyUbxS5/Tz
-X-Gm-Gg: Acq92OF0BqtmzQnrfmZ3Tbz91VvFmbUlk9VR3mzFil1eZwsDnJ51ahI3oThy9+VnZKG
- dPv5Bj22FnYpmyra/wF69vhCRHVwiIOTDBjwbL1tJKBBJf7yVWEYrvRaALOPJf1Yd9Y49aiXAVJ
- TI6slKSpUTv0JBKog2L6eN4Gx33P/wnUOQRns5D51It3dX5oBvhgOsjMS+XKKGAG7irQGnjOY0Z
- JUMigj2f6q0ysbiNtgtob4kU0GNxKa8eQdMAehn5/GorZcKZqvRXbxvFg8A1MRfTrOOn76F+9ed
- BvYvnl7p0ykdg4f7v8Cbw0otW10HTHgviWOICO01mc0paLjcaOmAAqSFCDcKNk6Vf96yEJRIRVm
- R6Oe2/ppkXxM+jV6rCyx+64zAaO5Nkkk1m7j/+1jZYNdYLXbS0V9CsKixJ+D8bOyUGF3KVKQC6w
- YkcDk7gNZjTpfIZ97bi72V05bIKRv0xTdFQO2cmvxCf/+K
-X-Received: by 2002:a05:600c:3107:b0:48a:89d9:a419 with SMTP id
- 5b1f17b1804b1-48fc9a09fedmr39022605e9.11.1778669720593; 
- Wed, 13 May 2026 03:55:20 -0700 (PDT)
+ AFNElJ99Wzr2JYGsmfgdsnNrbmU7LIALxvPquKxJA9WuFCejiRIzKz4roooPiuvfCvvaSgwQkNOJcmM65w==@nongnu.org
+X-Gm-Message-State: AOJu0YxN0j4EPivgoFoqyBwCSnloDAKKbRYRb7mAJ+Iy6pFXfMCDFwGq
+ rmvJ9edK9rIFpk0oXGN2zDp576NTx5hn1vpq/2rzSt+tjvLb8a55VTDR
+X-Gm-Gg: Acq92OE2dDbiILGn2vTe7axXZ618GXT5UTkG5K1WeS6MthMKvYXibMqNWxMh6HEMsjc
+ WWamvR6t2Bq25P08/d5RkZBQUm/87tdVItts/LBJiB6NFsKC7KWIR6W5edTukrYCsRiA5fqkDHM
+ 7k3sBmEAnyRd9/rk8LW2J4GSPGf/VAXU5Det4xk5i6rgRVL0sg/NataXNNPTm3RVJN9Sr89WAsF
+ bsUhr+wnTM2YDkPU0CzqD2YJsINqni3majBxl5UgyiBHsOPEPfpMRPy2nwKBVL5jPemXjX9YYwN
+ ursI6EQj12Vb3lrxzRHBLyBj+JSb/PG4OEHuTpTi4BUYgrkL5DRCUw/o6OhLydaPQNBzEnu4Mny
+ qIpQgyeCj5ztYpUwmbk3aYqPaCsM2FAFCWeeG/rJ5Q9gtP3VKoUC70IcR6vF3sVrpVKgIsCaX8r
+ cdBEiKlfKEhfcrY88NM6EC9wtb/51RkRsf5lAZbiPMvwAs
+X-Received: by 2002:a05:600c:8210:b0:489:ad:7b5b with SMTP id
+ 5b1f17b1804b1-48fc9a46ff0mr33761355e9.24.1778669719471; 
+ Wed, 13 May 2026 03:55:19 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com ([195.226.174.196])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.19
+ 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 May 2026 03:55:20 -0700 (PDT)
+ Wed, 13 May 2026 03:55:18 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
@@ -76,15 +75,13 @@ Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
  Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH v6 01/15] hw/timer: Make frequency configurable
-Date: Wed, 13 May 2026 12:55:03 +0200
-Message-ID: <20260513105517.146706-2-corvin.koehne@gmail.com>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Subject: [PATCH v6 00/15] hw/arm: add Beckhoff CX7200 board
+Date: Wed, 13 May 2026 12:55:02 +0200
+Message-ID: <20260513105517.146706-1-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260513105517.146706-1-corvin.koehne@gmail.com>
-References: <20260513105517.146706-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::334;
  envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x334.google.com
@@ -110,145 +107,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: YannickV <Y.Vossen@beckhoff.com>
+From: Corvin Köhne <c.koehne@beckhoff.com>
 
-The a9 global timer and arm mp timers rely on the PERIPHCLK as
-their clock source. The current implementation does not take
-that into account. That causes problems for applications assuming
-other frequencies than 1 GHz.
+Hi,
 
-We can now configure frequencies for the a9 global timer and
-arm mp timer. By allowing these values to be set according to
-the application's needs, we ensure that the timers behave
-consistently with the expected system configuration. The SoC
-configures the device correctly.
+Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+platform. This commit series adds the Beckhoff CX7200 as new board variant to
+QEMU.
 
-Information can be found in the Zynq 7000 SoC Technical
-Reference Manual under Timers.
-https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+The emulation is able to successfully boot an CX7200 image. The image includes
+some self tests executed on every boot. Only the cache self test fails due to
+QEMU emulating the cache as always being coherent. The self tests include f.e.:
 
-Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
----
- hw/timer/a9gtimer.c            |  9 ++++++---
- hw/timer/arm_mptimer.c         | 15 +++++++++++----
- include/hw/timer/a9gtimer.h    |  1 +
- include/hw/timer/arm_mptimer.h |  2 ++
- 4 files changed, 20 insertions(+), 7 deletions(-)
+* Network
+* Flash
+* CCAT DMA + EEPROM [1]
+* TwinCAT (Beckhoff's automation control software [2])
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 3a086915c8..699cea8c89 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -63,9 +63,9 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
- static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
- {
-     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
--                                  R_CONTROL_PRESCALER_LEN);
--
--    return (prescale + 1) * 10;
-+                                  R_CONTROL_PRESCALER_LEN) + 1;
-+    uint64_t scaled_prescaler = prescale * 10;
-+    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, s->freq_hz);
- }
- 
- static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
-@@ -374,6 +374,9 @@ static const VMStateDescription vmstate_a9_gtimer = {
- };
- 
- static const Property a9_gtimer_properties[] = {
-+    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
-+    DEFINE_PROP_UINT64("clock-frequency", A9GTimerState, freq_hz,
-+                       NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
- };
- 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 88158144b2..f67f26ad9a 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -59,9 +59,11 @@ static inline void timerblock_update_irq(TimerBlock *tb)
- }
- 
- /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
--static inline uint32_t timerblock_scale(uint32_t control)
-+static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
- {
--    return (((control >> 8) & 0xff) + 1) * 10;
-+    uint64_t prescale = (((control >> 8) & 0xff) + 1);
-+    uint64_t scaled_prescaler = prescale * 10;
-+    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, tb->freq_hz);
- }
- 
- /* Must be called within a ptimer transaction block */
-@@ -155,7 +157,7 @@ static void timerblock_write(void *opaque, hwaddr addr,
-             ptimer_stop(tb->timer);
-         }
-         if ((control & 0xff00) != (value & 0xff00)) {
--            ptimer_set_period(tb->timer, timerblock_scale(value));
-+            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
-         }
-         if (value & 1) {
-             uint64_t count = ptimer_get_count(tb->timer);
-@@ -222,7 +224,8 @@ static void timerblock_reset(TimerBlock *tb)
-         ptimer_transaction_begin(tb->timer);
-         ptimer_stop(tb->timer);
-         ptimer_set_limit(tb->timer, 0, 1);
--        ptimer_set_period(tb->timer, timerblock_scale(0));
-+        ptimer_set_period(tb->timer,
-+            timerblock_scale(tb, tb->control));
-         ptimer_transaction_commit(tb->timer);
-     }
- }
-@@ -269,6 +272,7 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-      */
-     for (i = 0; i < s->num_cpu; i++) {
-         TimerBlock *tb = &s->timerblock[i];
-+        tb->freq_hz = s->freq_hz;
-         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
-         sysbus_init_irq(sbd, &tb->irq);
-         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
-@@ -301,6 +305,9 @@ static const VMStateDescription vmstate_arm_mptimer = {
- };
- 
- static const Property arm_mptimer_properties[] = {
-+    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
-+    DEFINE_PROP_UINT64("clock-frequency", ARMMPTimerState, freq_hz,
-+                       NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
- };
- 
-diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
-index 5c9b048b95..571c05f638 100644
---- a/include/hw/timer/a9gtimer.h
-+++ b/include/hw/timer/a9gtimer.h
-@@ -76,6 +76,7 @@ struct A9GTimerState {
- 
-     MemoryRegion iomem;
-     /* static props */
-+    uint64_t freq_hz;
-     uint32_t num_cpu;
- 
-     QEMUTimer *timer;
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 4c6f569631..93ae532c9a 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -31,6 +31,7 @@ typedef struct {
-     uint32_t control;
-     uint32_t status;
-     struct ptimer_state *timer;
-+    uint64_t freq_hz;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
-@@ -43,6 +44,7 @@ struct ARMMPTimerState {
-     SysBusDevice parent_obj;
-     /*< public >*/
- 
-+    uint64_t freq_hz;
-     uint32_t num_cpu;
-     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
-     MemoryRegion iomem;
+[1] https://github.com/beckhoff/ccat
+[2] https://www.beckhoff.com/en-us/products/automation/
+
+YannickV (15):
+  hw/timer: Make frequency configurable
+  hw/timer: Make PERIPHCLK divider configurable
+  hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
+  hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
+  hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
+    user mode
+  hw/dma/zynq-devcfg: Simulate dummy PL reset
+  hw/dma/zynq-devcfg: Indicate power-up status of PL
+  hw/misc: Add dummy ZYNQ DDR controller
+  hw/misc/zynq_slcr: Add logic for DCI configuration
+  hw/misc: Add Beckhoff CCAT device
+  hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
+  hw/arm/xilinx_zynq: Split xilinx_zynq into header and implementation
+    files
+  hw/arm/xilinx_zynq: Add flash-type property
+  hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
+  docs/system/arm: Add support for Beckhoff CX7200
+
+ docs/system/arm/beckhoff-cx7200.rst |  57 ++++
+ docs/system/target-arm.rst          |   1 +
+ hw/arm/Kconfig                      |   7 +
+ hw/arm/beckhoff_CX7200.c            | 104 +++++++
+ hw/arm/meson.build                  |   1 +
+ hw/arm/xilinx_zynq.c                |  54 ++--
+ hw/block/m25p80.c                   |   3 +-
+ hw/dma/xlnx-zynq-devcfg.c           |  27 +-
+ hw/misc/Kconfig                     |   6 +
+ hw/misc/beckhoff_ccat.c             | 339 +++++++++++++++++++++++
+ hw/misc/meson.build                 |   2 +
+ hw/misc/xlnx-zynq-ddrc.c            | 413 ++++++++++++++++++++++++++++
+ hw/misc/zynq_slcr.c                 |  31 +++
+ hw/timer/a9gtimer.c                 |  26 +-
+ hw/timer/arm_mptimer.c              |  32 ++-
+ include/hw/arm/xilinx_zynq.h        |  37 +++
+ include/hw/misc/xlnx-zynq-ddrc.h    | 148 ++++++++++
+ include/hw/timer/a9gtimer.h         |   2 +
+ include/hw/timer/arm_mptimer.h      |   4 +
+ 19 files changed, 1263 insertions(+), 31 deletions(-)
+ create mode 100644 docs/system/arm/beckhoff-cx7200.rst
+ create mode 100644 hw/arm/beckhoff_CX7200.c
+ create mode 100644 hw/misc/beckhoff_ccat.c
+ create mode 100644 hw/misc/xlnx-zynq-ddrc.c
+ create mode 100644 include/hw/arm/xilinx_zynq.h
+ create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
+
 -- 
 2.47.3
 

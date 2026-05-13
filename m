@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 181E6CD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE0BCCD4F24
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 10:57:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wN7Go-0003W6-Ic; Wed, 13 May 2026 06:56:56 -0400
+	id 1wN7Gq-0003X7-J3; Wed, 13 May 2026 06:56:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FX-000384-C6
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:39 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1wN7FZ-00038F-9d
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:41 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1wN7FO-0001Np-In
- for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:33 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-48909558b3aso65925975e9.0
- for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:25 -0700 (PDT)
+ id 1wN7FS-0001O8-Hg
+ for qemu-arm@nongnu.org; Wed, 13 May 2026 06:55:35 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-488a88aeec9so73868765e9.2
+ for <qemu-arm@nongnu.org>; Wed, 13 May 2026 03:55:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778669724; x=1779274524; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1778669725; x=1779274525; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=QGkrVLFS7cW0IKrQNJ4/JeWHeoQPDU3gaIf/fmkwr+c=;
- b=tCvm3JZhCWvrVP3kstQQZTpQL4KFEEeV9a67zkRz2+r7NJnOom+74W1ButUhCK3qjZ
- sMZL3CmrzDxSd5LqxVPFBJ//1V+rh8Gfz3crfIbY3lKYl4zQvkzAGdMDWzRWr2drCLPn
- qGMrdhb0kdup4jyMez12ulUdmxJVkuC02Mxa9PAhonuJjMrYNUxDVuqwTpMA5vZBo8J8
- uJBAcm6XYRmdb4FOnetGitlOAHwJEsfc4IlCcA7QY/Ne5tcut9wfLabJpIFGNEb7D96Z
- iBSsUjjC8QJ46sPy7QS8ZL2Vvp50NpXtzzuxCZRHrDF9EZB/04rJCPgiC1KWNZXEh7Hp
- e9PQ==
+ bh=k2UZAwblmFCL8Lm8n5wVmaatXyzHPE9hb4BFthu5ZrY=;
+ b=JJ1N8334iwK5UFps/J4cB3IxFdxZjBFO/wWUcsIVF/V7D0Yu12a54uV41osK9yLdLy
+ h3gpSiG/a+rNolkIOpbSxQKcySUiSIvVq18q+MtP5Z217hkl9TBfjzyh4jonsgkC27Y7
+ fUw9KYn60VYmsVYh5OhSZdFaxAArVbL+InMVEAh49iktmxPHeuWVyEn0Yvmla4dy/sa/
+ IqtyB7UaqLaAwlPCRvJNLfc1UYWT17w/kUkVlV7XERnH5kY2ZwvCvoHOG+X6orpMcZmA
+ ogQBsciBqfMqvyUeXH6dP5NmFOCiGZWtRQgUaO8gzESUPEFqomShdWSYk/k4Sf9FBerw
+ hlvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778669724; x=1779274524;
+ d=1e100.net; s=20251104; t=1778669725; x=1779274525;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=QGkrVLFS7cW0IKrQNJ4/JeWHeoQPDU3gaIf/fmkwr+c=;
- b=OliEINSoDBAwpG6Iff4hCNdLKn2SxTPhEtZcwoxszWEhNj9E1+NEq1gWaM8M6/64HR
- d2Uh4Nmoi2C9lsO27v/Q2yuzFDSI/xTQMAGV+AhJiaSkZo1Hfz3uJJtuLInwtssHdr+L
- 1FfI+SmbT3M6Pa/khNwoiAsT3ZCYklSB/7cU8QJTL9pitWEgF7jmyCXoy8Yd/+fHU+lI
- niXDt+QBn3Xg8IIWesS0fNY4IPU+pHA0c/FCOFT/lYUSlejoxI6avIpNS4/xBHIN2EfB
- lYCgLrxCJud32nm7q/6QySqm0g++u9Hres05RBlrA4tVibEwBGG7fhRNyFpgstqivt6U
- OsPQ==
+ bh=k2UZAwblmFCL8Lm8n5wVmaatXyzHPE9hb4BFthu5ZrY=;
+ b=eXhmLuDEi6HICxWgYrdR42cNxLAetIX1mIDFJsEP28f8VQ2BpquyLclQ5VDQFAbjKb
+ 7yRxq6zSl9ZChGKrvu8bCx//b9OKcNesogiy+rbfwtcHaykbNobyv8NDZHVZ3Iffr59x
+ goJuodgqEos9hMLZc5Q4ljxzpBF1AJWMef3KyFr5sLdUKro5CTCNamlTABb++SWLWmrA
+ b4ojzkWeeCwy+k54loz9xcObMZVEu72MZ1hO4LpSG3RB+HV8Vlmclk0MOYMk8bEeKhmR
+ NCMuLHOjBEIP2Tou9cHd+WBM5IiJu0KPNJWM6Gy0SaNyKm6kLQf9P9m3/ebd9vKpzHnO
+ BXUA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+S82cv4HvUnSvaeNliflyJJr4U0raS65+hyM3YP7k1wtwp81jwzVbliqpFmgO+VVk/80Jbti2wVg==@nongnu.org
-X-Gm-Message-State: AOJu0YyfBPmdDbECmmdJ+OZKQpWTg7It+87LNTiwv9KCCONJg/bQpvda
- nO23nxkaQiIqqwfJro2KxYqvtPA5k3SM6Tc5/Nx2yb+7Bpnx3bPKhw7+gTfS+OGX
-X-Gm-Gg: Acq92OHtN81vQ/tkKL784iYBuIIgZKCkstH8iQuiLDftz+m+S+QzAYmRnwEUTS45bxz
- YDYk3gEbKYLhqdn3z13ebeSrE9HLZC6tUujWCu8A6ciidISoqKX/Gz5Pp9rPrT8jI1kl1iQ6RWg
- OaCNKP2YBKVEblIkKN7JrhH69qOPOMWe3+9AH3rSIBSGBsGJomWCy8BrDrHvZxAWydp1avo++7p
- AqIDx5eUrfauyB9c7VBFl9Q+4e4A9heIsnK6aiLms7WEsl9c91jnwXAR8Z+WU43M2FrL2xaJ6Tr
- kVrakX1ODr//pfUZu4jCvLVUJ5Dpv0WcJIsgJzlFT0is64j5l5Cam7d4QgFJURZFDNGrNCmmajX
- Yas9VlGDO7hMinBX2yM0n03TmB18P5PpPRm/s0MRuUwIuv0srJX+FEIfq385SVb+jTPKRm726Hf
- bhdzBYB4bGnsBDftI/b2wb1eEFyxNEeLkzItie41n7YrUR
-X-Received: by 2002:a05:600c:8b57:b0:485:4eaf:eb53 with SMTP id
- 5b1f17b1804b1-48fce9f71c5mr34992345e9.19.1778669724357; 
- Wed, 13 May 2026 03:55:24 -0700 (PDT)
+ AFNElJ+kU7VpX8lMzSD0goEGcvS0AaZFRMAkCVaGRrsz3weokx37tKoX0JZonuqvdYARMWZcm204Yefheg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy17KQCBAVf/UiCGKcQLFAC8UrEYbi+m37DPq763NZcmpa6IM3q
+ cuiSyDi8t4kDZhgrNzKFFhOhiI0k+KWrkFOUGMaSUfVq8KIagYIY8MMo
+X-Gm-Gg: Acq92OEepNMzvaOelOGh6nBeUaFEQSOWwhXP9S6bVwxv4iAqYKwARK2yseEnrQNRcSi
+ fUAOIhq7C2FoKClHgvS6iqVhlbrOU12tItcOKHG9TZOJ7YeOWgkS0igO6HKJJ3EfVdn/Pg6NQ+N
+ EMWtjcMOQ25rm/WJuelViQQ/dOBsF0wo4axRoniA6zHMovtnQd0CpfF36HllC6y/n019t9K+A1v
+ iyZVzth4g35103iiubHuXNLB5vkR+fh+hz+98PWF8WuTgra5ZgcKraxE3Nvc+skwE79VhiZ9MA/
+ c8oewuyWoiyq26QjonqFQJw1b5yopmMcYCVRVcQKTTzVOrdzwjFmM9wPkpQysvHM6/tJksYfNSl
+ 39Gab1ZRNwWuIeJR6LNbSRaE9ntV8ih5ZMwY+FgV2F7zsdX2ov6XNEIMu6IN/CaxA+NoVmzrHrM
+ 7Nmg1spPrxdzQmUoBjHGoRHiBVMnQ3o9gafVxdu+SbEYKv
+X-Received: by 2002:a05:600c:1d06:b0:483:2c98:4368 with SMTP id
+ 5b1f17b1804b1-48fc9a3122amr44055015e9.18.1778669725465; 
+ Wed, 13 May 2026 03:55:25 -0700 (PDT)
 Received: from PC-DA2D10.beckhoff.com ([195.226.174.196])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.23
+ 5b1f17b1804b1-48e8f410d9fsm56062295e9.6.2026.05.13.03.55.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 May 2026 03:55:23 -0700 (PDT)
+ Wed, 13 May 2026 03:55:25 -0700 (PDT)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
@@ -79,17 +79,17 @@ Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  YannickV <Y.Vossen@beckhoff.com>,
  "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v6 04/15] hw/arm/zynq-devcfg: Prevent unintended unlock during
- initialization
-Date: Wed, 13 May 2026 12:55:06 +0200
-Message-ID: <20260513105517.146706-5-corvin.koehne@gmail.com>
+Subject: [PATCH v6 05/15] hw/dma/zynq: Ensure PCFG_DONE bit remains set to
+ indicate PL is in user mode
+Date: Wed, 13 May 2026 12:55:07 +0200
+Message-ID: <20260513105517.146706-6-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260513105517.146706-1-corvin.koehne@gmail.com>
 References: <20260513105517.146706-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,33 +114,31 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-During the emulation startup, all registers are reset, which triggers the
-`r_unlock_post_write` function with a value of 0. This led to an
-unintended memory access disable, making the devcfg unusable.
-
-During startup, the memory space no longer gets locked.
+All register bits are clear on write by writing 1s to those bits, however
+the register bits will only be cleared if the condition that sets the
+interrupt flag is no longer true. Since we can assume that programming
+is always done, the `PCFG_DONE` flag is always set to 1, so it will not
+never be cleared.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
 Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/dma/xlnx-zynq-devcfg.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/dma/xlnx-zynq-devcfg.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index 9708200760..afe6ffd326 100644
+index afe6ffd326..7370ab941f 100644
 --- a/hw/dma/xlnx-zynq-devcfg.c
 +++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -221,7 +221,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
+@@ -188,6 +188,8 @@ static void r_ixr_post_write(RegisterInfo *reg, uint64_t val)
  {
      XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
-     const char *device_prefix = object_get_typename(OBJECT(s));
--
-+    if (device_is_in_reset(DEVICE(s))) {
-+        return;
-+    }
-     if (val == R_UNLOCK_MAGIC) {
-         DB_PRINT("successful unlock\n");
-         s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
+ 
++    s->regs[R_INT_STS] |= R_INT_STS_PCFG_DONE_MASK;
++
+     xlnx_zynq_devcfg_update_ixr(s);
+ }
+ 
 -- 
 2.47.3
 

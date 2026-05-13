@@ -4,103 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5DACD4F24
-	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 15:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C846CD4F21
+	for <qemu-arm@archiver.kernel.org>; Wed, 13 May 2026 16:37:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNBVq-0007By-RP; Wed, 13 May 2026 11:28:44 -0400
+	id 1wNCaJ-0000bQ-H8; Wed, 13 May 2026 12:37:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wNBVc-0006yt-9Z
- for qemu-arm@nongnu.org; Wed, 13 May 2026 11:28:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <shaju.abraham@nutanix.com>)
+ id 1wNCXl-0003L7-MF; Wed, 13 May 2026 12:34:46 -0400
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wNBVZ-0003VN-VE
- for qemu-arm@nongnu.org; Wed, 13 May 2026 11:28:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778686087;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vRpgOAZ7+0bePiQu9eN5bPZwH8rZureOkJxlzx2kRt0=;
- b=XMwwRP2q34cTAs2vgKOMOtUBaQLlZaMYzxEDxJQRSY8hQvzhErIq9oGZiLGXiv3wJCsuT+
- HwOa5Bh03dSzVCOn9ZfkmokXv1bI5bSAlomvIIIVvqM0eWU9MRRxDoh3KvUO71cdSBsWJm
- 3nPumAhtneKafb+5ZS78VXWQ0H2M8b4=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-529-ouwkB992PriWFig7u03g2Q-1; Wed, 13 May 2026 11:28:06 -0400
-X-MC-Unique: ouwkB992PriWFig7u03g2Q-1
-X-Mimecast-MFC-AGG-ID: ouwkB992PriWFig7u03g2Q_1778686085
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-67fd8c53ccdso3764421a12.3
- for <qemu-arm@nongnu.org>; Wed, 13 May 2026 08:28:06 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778686085; x=1779290885;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vRpgOAZ7+0bePiQu9eN5bPZwH8rZureOkJxlzx2kRt0=;
- b=o6dkEu3TUvDxgVNUQIieUe0NzU3bn2An++xBTf0Fb9WF9By8HS4l0Afjl6e2QcgB2K
- pmU3vE51B4EonPJvZGjavtCMB0EYuzm5DWV4oVfKns2LxhnyBWDtjSDkZdaqZD1AxZFp
- tyfQ/YlX/5ycSDRDb8SU+Gf54wfapMP+UtEJ4LG++3uE4KAqyP/hNdSFIKGLax4hRwNo
- 8XIpSHLJdHmQFZrT2aNnl6EApzN+H7l7VkZLNvfDIDy7dP+WmpjjENZQd1kagreptHgT
- lC2e95jIT/3oL0N7rt0oWePThydrt39e/cw9x7jVsHGUfTEKbUFLXBEELjXyINl2iG6x
- fPbw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8yJJcciZKCy7tol2TeSYsuww06vY5aVUkDSI5dFayMvRk6L4V9Wlf2938ykAa0ZEd/3a4o5EY6yA==@nongnu.org
-X-Gm-Message-State: AOJu0YylyhCc1s+n4YwfUMp7BoVCC+VjOdYilo8jNseHjhWym9fOBnvg
- ZRdwlu6oZyc0a609RLaeOoPqSmljVMBRNttSWmt02zxs47jHQJDjmxQlCO8/3HV57ypoOxKrQLM
- V8vRErY9880Csi3d0kT8prg75G95DH3Vb+ygGdCCB1GDdTXlfjr253Q==
-X-Gm-Gg: Acq92OETKPef64z0RnkMRL8GsSO1PLjzmtJ2Hp/FzF2JiKdGR/9il89KvtFfzqSHn8k
- GhPize+5ECNMSi/DdjRY8zTxterH/MW2/2ruRM+IhsFbwFqX+N4bO5nhq/VCEtikEzUV6IezXoD
- NQD/gpR7l4IaJeMqdxeEKb6/zTiZZFZ0TANmUNE3ljMiIOQDbsDEZX/ZsOoaidfEbTDd4uqD9Fx
- FkQCHF19xj2TlZXJdyhwJHA14zboLwWJ6nvs1Z0MRF571IrompMQgRAyr7btuq/T8T9yxrsQYnb
- QMe5TK2/CZ1LKBSPd7OhoNhFs6vV5LfYJZdhbWC6WuBaWLt4C6dSg7UiFHNHu8YopbVl5bPX078
- Kf/YQY3HeexDtgY00HmNk2WU2kgSNtVhRhvKPyUhL
-X-Received: by 2002:a17:907:388b:b0:bd1:d4e8:42a4 with SMTP id
- a640c23a62f3a-bd3bf77aca8mr270887266b.11.1778686085345; 
- Wed, 13 May 2026 08:28:05 -0700 (PDT)
-X-Received: by 2002:a17:907:388b:b0:bd1:d4e8:42a4 with SMTP id
- a640c23a62f3a-bd3bf77aca8mr270881166b.11.1778686084558; 
- Wed, 13 May 2026 08:28:04 -0700 (PDT)
-Received: from redhat.com (IGLD-80-230-48-7.inter.net.il. [80.230.48.7])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-458b3664e3esm26206076f8f.3.2026.05.13.08.28.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 May 2026 08:28:04 -0700 (PDT)
-Date: Wed, 13 May 2026 11:28:01 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- anisinha@redhat.com, pbonzini@redhat.com, peter.maydell@linaro.org,
- shannon.zhaosl@gmail.com, philmd@linaro.org, rad@semihalf.com,
- leif.lindholm@oss.qualcomm.com, qemu-arm@nongnu.org
-Subject: Re: [PATCH v2 03/21] x86: q35: generate WDAT ACPI table
-Message-ID: <20260513112745-mutt-send-email-mst@kernel.org>
-References: <20260303092532.2410177-1-imammedo@redhat.com>
- <20260303092532.2410177-4-imammedo@redhat.com>
- <agSdBwKQh3C9UgdF@intel.com>
-MIME-Version: 1.0
-In-Reply-To: <agSdBwKQh3C9UgdF@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: TohXQB7AL4RNuIoZow8gDfNWvEXyhBwKqaQRteaxd2c_1778686085
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ (Exim 4.90_1) (envelope-from <shaju.abraham@nutanix.com>)
+ id 1wNCXk-0000ku-32; Wed, 13 May 2026 12:34:45 -0400
+Received: from pps.filterd (m0127841.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64DGKYmV2540280; Wed, 13 May 2026 09:34:35 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=A4OHX5bXpzeWyRKysDAO4klw4Wzyj/cMbBTWHsbXY
+ 88=; b=ucDCNkAEkqHCLeAx7tFkEh1K5VTJF4lYWfoucRlK+uXMpps2+dG+KZBNk
+ hv6P/M9X9JcKp0CdhN183R+ZYUlgwQgRlS+LmxNFiUfiES4DpI8LcZP60DcFDZ5j
+ TQ3T9EJET5/gRXkteLXO86+h4Tmm54EjXVNBUlfxSK4h0wfzn6ux0hftRGZq4fWQ
+ bfkYZvV5pe+s8DDS1LFOBTE3GYMXuCmAW54GCj957JZhRNu2+7Dnd1qDf9ltMgAb
+ dDI7O40/XuLhl7UniUSIBhy3T++JBYaRzSj39fO6Yo/YPORPc/3XLk/WwMI2ofbp
+ 4JDpARFIa6gg1yR3pmLdzb5aVL6ew==
+Received: from sn4pr0501cu005.outbound.protection.outlook.com
+ (mail-southcentralusazon11021101.outbound.protection.outlook.com
+ [40.93.194.101])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4e3nv8p7bg-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Wed, 13 May 2026 09:34:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=t+nb3zicCVDZ25xoeI6r6yvo7QVODyu4JU5n4pWoggZt0ohKgASJV+84AvoWZJE68gtseT0lF/scEaUqCJ4jfwiO+5Z34S9pIqEm3CFzifyybgoqzgXVYScfI8AmUVE0crRMJ3i/aG0fHkjawp/DBW1TweCfOpJiRX+3iMQP36tXBD4/fX9hjq8jSOiJ7Y4R1pcTwjW81sG1ecG9w7B90C3fZwVnZnk/5desYWJFrshHAc5gupUKs7JIsJz3E0ebQvwbpd5F9k/V8yp8dAnP+PMfcPRy2e/V22E02jbFnwkUiEGd9NJKO2YA4IjU12aiq9+iGMoQ/7L4Gft2pPSVZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A4OHX5bXpzeWyRKysDAO4klw4Wzyj/cMbBTWHsbXY88=;
+ b=oal4DPw7jnN3sUY9mLUAvKJC1kaMWVik50DdELW9eBJsZL0QqECNdpwRTj/SYQ3eZUVGDHhP14GdRl5USLXJxoXbePiwpiuCFsd1q1/Lh72hmgmzTRN6kCdRmTDUBCymGIoJZhl0OOC5/RR7VGCZ5gW6pKXQ2Gk2VMl24cmWdtNFOuEtdfncDHwxHGFUgcNjVAVvbmARi3CaUt1Djwhhm3JJWWVldPEBgDSkX3cE2iwQqVpIcTIFnCnd1Ba9dRajTeXI+OJvWwA1lh5L10HahDcu9mHXS7+n/YMa0W5tKXc76twq7XO/MeA47dDXVBDib8DEx071qgcdaUvozu9W1A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A4OHX5bXpzeWyRKysDAO4klw4Wzyj/cMbBTWHsbXY88=;
+ b=mQNBZfQr+lZaUfns2YEzrUG6oC12EtTHwVpteyMtl0EsqgqoorY1H0NZ/B1sDsdK76nosetD7WyRe62cVzKwgUB2TWBzhnjAC5tImgWu9+H+1L28FDm18U45ePIpmzh7DHJLbKS1bYfvv6jPXSiERsxyjzB6XhVUT0UzugWbAvE4/qxRkiJmaeQgszKEefDKvTOpudoNOegpymKc3Nj+PKbSdT4ZCwBmMisWmekCowDRwGVlk61L4KFFB0sb5cERERirSElisQHsLjfvyrWwMFUrdRNnTN+gluHdbbxsz0QHZpgUkMc317ygWfJ2jnBjdZaS1W8+8fKhGzhEOCd0Ag==
+Received: from PH7PR02MB10160.namprd02.prod.outlook.com
+ (2603:10b6:510:2e7::19) by SJ0PR02MB8813.namprd02.prod.outlook.com
+ (2603:10b6:a03:3d6::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Wed, 13 May
+ 2026 16:34:31 +0000
+Received: from PH7PR02MB10160.namprd02.prod.outlook.com
+ ([fe80::4ed7:5c74:48e0:ff23]) by PH7PR02MB10160.namprd02.prod.outlook.com
+ ([fe80::4ed7:5c74:48e0:ff23%7]) with mapi id 15.20.9891.021; Wed, 13 May 2026
+ 16:34:31 +0000
+From: Shaju Abraham <shaju.abraham@nutanix.com>
+To: eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, cohuck@redhat.com, sebott@redhat.com,
+ skolothumtho@nvidia.com, philmd@linaro.org
+Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ prerna.saxena@nutanix.com, jon@nutanix.com, jond@nutanix.com,
+ Khushit Shah <khushit.shah@nutanix.com>
+Subject: [RFC PATCH v1 13/13] target/arm/kvm: enable writable implementation
+ ID registers
+Date: Wed, 13 May 2026 16:33:56 +0000
+Message-ID: <20260513163356.3033159-14-shaju.abraham@nutanix.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
+References: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+Content-Type: text/plain
+X-ClientProxiedBy: CY5PR10CA0003.namprd10.prod.outlook.com
+ (2603:10b6:930:1c::30) To PH7PR02MB10160.namprd02.prod.outlook.com
+ (2603:10b6:510:2e7::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR02MB10160:EE_|SJ0PR02MB8813:EE_
+X-MS-Office365-Filtering-Correlation-Id: 76b5cb64-6a3f-4756-2b13-08deb10d8280
+x-proofpoint-crosstenant: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|1800799024|921020|18002099003|22082099003|56012099003;
+X-Microsoft-Antispam-Message-Info: wZ64Vd6Blqb2/DTZAtCdjLLteS1V4tdwackDaGyPANotZcPQNCv90wDpDsZRZMpasmmEEokVZKnx/1UGhA9j+jHK/KMLpiXIjXsP2uk11vc+Q9nbv3I3jOMPNElEimL8Neo1AOFcZ5qrchDcTbUN7MABawsY+XkYGc/KtocmZhrGWMX6KZv0/TZAq6jJy1/vhL1SoIZp4BbGawf59jEEVqT3hnx4UVBm+/PsFwCLCyC70eMIEp7BsVUwPVBs9vUitcw8EpNHTSpQ1y/N7jVgh7MCMgVdRBxQc3PJ3+tumepLUXQrJlbCGlXXjwOVslBsm6OIdLHnbbwdQgFgE67QbkThnBDTzv+xHf0X/lKuucmKoMzQXbISfUtr00L02VegXv/SuFlSNksbI6+P/nb36NnwjBpJOE+U2fuSDkx+CLkS0mErekB0r21ImUaJ2GbomB1aEX4BWjs/TD492GrATlWpRr2SLLhMl4VLQM/lHzdVHhhWLAfx0TvRTC730VMTNqjlMEw8w3VqBuQlYV+iY2J5jAqqbX64LRV7PCRPizEkfrrh2pALGMxfjUIi1JtsI9pvTelSnUgdCnffLlWBopaTiMdKLFj0GS4FFnJi4cz9SSzNMe9GMgMUhYCnAmcZ8pCGSsfjEBWoo/n4wm+slf54B2xJBGczYNNMSEOC+VqPziZwJRorqnwcaHgtFf4mWvwO3RESnEOG/LNDN0sSgdgjvU80nCAanQqVigz2aXk=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH7PR02MB10160.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(921020)(18002099003)(22082099003)(56012099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?phVDmO5Sh46wc5DoMb/DXdYOkdwy93mSY5+z+EHEQfcUoQ3ycUgoHmE3h2s0?=
+ =?us-ascii?Q?2tiLX4MJHJpvR7Wv/5VbQVRhAE69Lqsp0TdcMVPk0fUADYgHKU1fvLQ+QQi0?=
+ =?us-ascii?Q?vjTcGVwxDO7IyPRRIPDUY5kEMF6w1Oo3ZJD52lA8idu1oYyyy93YyQ9MhCMh?=
+ =?us-ascii?Q?LK5dnMJ7dMwZW3SJEZUMWx50mkvfuvsiou0k1g6KuCVm6tz0Ze5eYZrr7xx3?=
+ =?us-ascii?Q?VMpZrpYeWI0a4qLj88FveVOnG/bzyAOl9ZOWnEj5t6ogjy/VJpA/t63H/Efx?=
+ =?us-ascii?Q?9YQDn7wV/4My3NvkIB8V9QzGN7Z6NC+23G08C2K0gN94gTjTi0Z8Jfe4NTUq?=
+ =?us-ascii?Q?QAMRAf80F4g/GU0pG9w5KCwnqMX9z6XLxScV8yJzKFpX2H25r54N/0NY6+a3?=
+ =?us-ascii?Q?F3Kih95YOF6Il7MHexu+YRpjHG0jNwrYkZNCufxenYjeMUu06GTUX3dJfcys?=
+ =?us-ascii?Q?Nkp9cm4777cHC70aA0NRTfJhWbTpZjcO2neX07PMZP/+J6HzfpKcJcMwJ8Vg?=
+ =?us-ascii?Q?Sw9QqAMLWhfuu14kbsl4pgI45ALjDQ4bLHjmSk+q25bVonxV/z6ur2VYGg5U?=
+ =?us-ascii?Q?biIv72Vk3+z8he1CUYP1xrFYgdlKqkyrW/np1SBkH9c34QqSjeJXIVUDLNQ1?=
+ =?us-ascii?Q?qNvNv0ObyTPLYINPRpKqNtgvFZWs/PEfIw/RS5kKXYic4DNpLQVL08fSikIJ?=
+ =?us-ascii?Q?L4O0pf8uuRkD1srQuTMCiwyOhLyyE+hKiQGyzPDNjKKhsSCopzOUdg7VeZDp?=
+ =?us-ascii?Q?vOdySnyxRYLk0U68mFt6gxYONFrWdO+Nj+CV6RWMnOOa+F2b9+r77GLuK8ah?=
+ =?us-ascii?Q?1MsWYK2xiRkSQciUF3Ed/91inewUvyoheXcE7ut+L2ISBSdqcCSAJZnzxibK?=
+ =?us-ascii?Q?bdSvIHhcpj9k/M5nDMNeGVPj3fonYhZ7VEp8Q5CuXEiFeNmDvoZUvYCkgAub?=
+ =?us-ascii?Q?S8M6bvFweVpVgG4rke+VCxWruwre+LNE6+gCFazo2Dl3OQzTECWNfjiwdXdo?=
+ =?us-ascii?Q?fFatIv4kEB5OTgahcR3r2L2AIC/JUZstYsQ+oKzvL5PqMvpquZmDsBUvI4et?=
+ =?us-ascii?Q?1GKAIPzFrwOe5zWwYWfWqNcDubA1RxQgo6kO86uvsEOwDwaVbbTUmH07z+a8?=
+ =?us-ascii?Q?g/oHZmhFWQObbez9+Xgud8HH5VMQlrQz3O1JMMbLpZWZNCWfExbL7pwf6JUl?=
+ =?us-ascii?Q?f9IYWAP/Ne4CVLhb2rX8wP3lW2A803+PBsasuRAeKpY9PaTrBy3BwMrBpnpS?=
+ =?us-ascii?Q?TqjCEQ3LBmHN/NBaiSDXI0oj/nJ8TfL4X9DO6Gqpu7eJdoX8XbZxePRfmMED?=
+ =?us-ascii?Q?ZgsHF4iD3Uhilr+uSIOVMObR40B/wA/hDL9q7NZZVxVZ048gyB+RaL2jAAGC?=
+ =?us-ascii?Q?AsePGUWWXokCnDCFcmeRBItoqSaGgd5i/Oty41vSfMTLT3nK8U0y1bT3koIX?=
+ =?us-ascii?Q?fsdQ+Vrn9BVdgL6zgJImCyXY7V8ZXVD63UqKevPMHqQ9RVTuBB/Jr0y4GqMm?=
+ =?us-ascii?Q?BG+yvDDDbWleFvUsSmUkRDXgmYY6pqlgCNjDas1J0zavTxZMKze5luwrTsg2?=
+ =?us-ascii?Q?4jat6p32tC9wST3z8FV5JT5FVyJFCpCkTscTdlikRKay9xwPQmelggTzhY1q?=
+ =?us-ascii?Q?37sK5DVmF+e4D7QB4+SrRRwzB1xrexLe1m+roWRf+aewnhk/V33eLURPdks1?=
+ =?us-ascii?Q?K42bQfjK0FokP+XNukTe0kiuF/A8CwRLlQ+Dob+Ky2jt8B6SbzLS913WJUze?=
+ =?us-ascii?Q?QeFIRvrNgoR7+Xo5kKxn6kMXrxjwca0=3D?=
+X-Exchange-RoutingPolicyChecked: Jl1MrMJYIoCfbKk52C00vlxThJuGGwox4T8QAIPyx+fR27ksvRBocGcQajMB54Wv2S+O0DXg/pu8TUDz8VXwvOnC5mOU37pC72IIGNhFWpEsGINkb6GBA6TFtinm/XnZtcT02GJ51+WxZjSSPmc5jZjM1nDPhegIWenW0B7VOpA6HgZ9V9+JcILjEFV/+N+C3+JVy1mOZWap24/yXlq9vN9WpP9axEUjPGS2woLx4BbVMa+XiDfXxV+On/OD+yyaaWJ/o6ipg9zwCTa3+wjrXsnZSSa27XsJ3VknfTLI3lV27qjTO0m3nNzMtMZEfZyRKbwQFubyDa3nGJxl5AiN1g==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76b5cb64-6a3f-4756-2b13-08deb10d8280
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR02MB10160.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2026 16:34:31.7429 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DhXX9ZU46IHyc0R5eXBWjKvqlyeHS36aLGaN/WVWOPljE19l/J5mDDg4ub6dTHkD7j0YgTa2rEiEJTJh5r8Y7HNabtq93U0Q/Du5f6Mz95U=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR02MB8813
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEzMDE2OCBTYWx0ZWRfX6taMs2rRzb8w
+ YBow2eOAJzbv1drXi3YgMe0qZZ+qij9v1Mm/Yynha9jXLmE7sGI7NBXP7TfDGl4SjLUpAuNE6z1
+ /siVpyUHOhFso7YEGJ6BhOTfUC50OULmgSBV3WrnDENg1vcJcYz32ihP7Feu7SwHoA0vsuNKOK9
+ fgaAHz6Lf0WsYUwDIye2buWMcTgsoGZZGJpjLjeDd/dB7qWgTJ0zuCFKA48TqRfImwxrqH/jxEK
+ dY8w6MYbDd74FWWUj4/lP91w9GqQvBhbVTafv5szHF7NVRhOXRNyKZzbwrjb12Y1riFtYCxfmed
+ 8g0zJRGu3o4qH7F7ZUmCHPnnUC//dyyvWT+s5PZnYpfDumc37GtljbzDhG3mhcHqKqVYUbJxqVJ
+ 1wOaexFQqVF75iEu0naeGug+V+6PRyoqDmGbJvZ5SCPowuvY2jS4FLsVmxJxI1Zd+hvsPUG9rTQ
+ ahEoMa1DGacvYeJANwg==
+X-Proofpoint-ORIG-GUID: ATqqBg8fSzgWlSzGQEdfr7wyINzCACT5
+X-Authority-Analysis: v=2.4 cv=PdjPQChd c=1 sm=1 tr=0 ts=6a04a81a cx=c_pps
+ a=+kXwOJT9iXP9BgnuWAWdUA==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=NGcC8JguVDcA:10 a=0kUYKlekyDsA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=jxMXjlTPpCISP5mWtjnE:22
+ a=64Cc0HZtAAAA:8 a=i7znhvatu4o865_pIWsA:9
+X-Proofpoint-GUID: ATqqBg8fSzgWlSzGQEdfr7wyINzCACT5
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-13_01,2026-05-13_01,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=shaju.abraham@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 13 May 2026 12:37:18 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,80 +182,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, May 13, 2026 at 11:47:19PM +0800, Zhao Liu wrote:
-> On Tue, Mar 03, 2026 at 10:25:14AM +0100, Igor Mammedov wrote:
-> > Date: Tue,  3 Mar 2026 10:25:14 +0100
-> > From: Igor Mammedov <imammedo@redhat.com>
-> > Subject: [PATCH v2 03/21] x86: q35: generate WDAT ACPI table
-> > 
-> > It will generate WDAT table [1] customized for TCO watchdog.
-> > This allows Windows guests (Windows Server 2008/Vista+) to
-> > use TCO watchdog using built-in generic driver, which
-> > alleviates need to install vendor specific drivers.
-> > 
-> > Given that enabling it might change guest behaviour
-> > (both Windows/Linux) the feature is disabled by default.
-> > 
-> > Users that need it can enable the feature with
-> > following CLI option.
-> >     -machine wdat=on
-> > 
-> > 1)
-> >    "Hardware Watchdog Timers Design Specification"
-> >     https://uefi.org/acpi 'Watchdog Action Table (WDAT)'
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > Reviewed-by: Ani Sinha <anisinha@redhat.com>
-> > ---
-> >  include/hw/acpi/wdat-ich9.h | 15 +++++++
-> >  hw/acpi/meson.build         |  3 +-
-> >  hw/acpi/wdat-ich9-stub.c    | 15 +++++++
-> >  hw/acpi/wdat-ich9.c         | 90 +++++++++++++++++++++++++++++++++++++
-> >  hw/i386/acpi-build.c        | 12 +++++
-> >  5 files changed, 134 insertions(+), 1 deletion(-)
-> >  create mode 100644 include/hw/acpi/wdat-ich9.h
-> >  create mode 100644 hw/acpi/wdat-ich9-stub.c
-> >  create mode 100644 hw/acpi/wdat-ich9.c
-> 
-> ...
-> 
-> > +void build_ich9_wdat(GArray *table_data, BIOSLinker *linker, const char *oem_id,
-> > +                     const char *oem_table_id, uint64_t tco_base)
-> > +{
-> > +    AcpiTable table = { .sig = "WDAT", .rev = 1, .oem_id = oem_id,
-> > +                        .oem_table_id = oem_table_id };
-> > +    struct AcpiGenericAddress tco_rld =  TCO_REG(tco_base, 0x0, 16);
-> > +    struct AcpiGenericAddress tco2_sts = TCO_REG(tco_base, 0x6, 16);
-> > +    struct AcpiGenericAddress tco1_cnt = TCO_REG(tco_base, 0x8, 16);
-> > +    struct AcpiGenericAddress tco_tmr =  TCO_REG(tco_base, 0x12, 16);
-> > +
-> > +    acpi_table_begin(&table, table_data);
-> > +    build_append_int_noprefix(table_data, 0x20, 4); /* Watchdog Header Length */
-> > +    build_append_int_noprefix(table_data, 0xff, 2); /* PCI Segment */
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Bus Number */
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Device Number */
-> > +    build_append_int_noprefix(table_data, 0xff, 1); /* PCI Function Number */
-> > +    build_append_int_noprefix(table_data, 0, 3);    /* Reserved */
-> > +    /*
-> > +     * limits/resolution are defined by ICH9 TCO spec
-> > +     */
-> > +    build_append_int_noprefix(table_data, 0x258, 4);/* Timer Period, ms */
-> > +    build_append_int_noprefix(table_data, 0x3ff, 4);/* Maximum Count */
-> > +    build_append_int_noprefix(table_data, 0x4, 4);  /* Minimum Count */
-> 
-> Spec said: The time-out period before the WDT fires is recommended to be at
-> least 5 minutes and is required to be less than 4,294,967,296 count
-> intervals.
-> 
-> Here we encode 0x4 * 0x258 = 2400ms, less than 5 minutes. But I
-> understand because "5 minutes" is just "recommanded" by spec, so 2400ms is
-> okay.
-> 
-> LGTM,
-> 
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+From: Khushit Shah <khushit.shah@nutanix.com>
 
+Enable KVM_CAP_ARM_WRITABLE_IMP_ID_REGS if the host kernel supports it.
+This allows QEMU to write implementation-defined ID registers (MIDR,
+REVIDR) so that named CPU models can present the correct values to the
+guest instead of inheriting the host's identity.
 
-maybe a comment why it's shorter?
+Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+---
+ target/arm/kvm.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index dc64cfbeb6..288b5ebe85 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -711,6 +711,13 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
+     }
+ 
++    if (kvm_check_extension(s, KVM_CAP_ARM_WRITABLE_IMP_ID_REGS)) {
++        if (kvm_vm_enable_cap(s, KVM_CAP_ARM_WRITABLE_IMP_ID_REGS, 0)) {
++            error_report("Failed to enable "
++                         "KVM_CAP_ARM_WRITABLE_IMP_ID_REGS cap");
++        }
++    }
++
+     if (s->kvm_eager_split_size) {
+         uint32_t sizes;
+ 
+-- 
+2.52.0
 
 

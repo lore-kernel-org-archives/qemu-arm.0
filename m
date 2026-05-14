@@ -4,71 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3E28CD37AC
-	for <qemu-arm@archiver.kernel.org>; Thu, 14 May 2026 18:23:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 507BFCD4F39
+	for <qemu-arm@archiver.kernel.org>; Thu, 14 May 2026 18:48:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNahW-0005HW-VZ; Thu, 14 May 2026 14:22:27 -0400
+	id 1wNb6w-0004Il-Pq; Thu, 14 May 2026 14:48:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wNahV-0005H4-Vz
- for qemu-arm@nongnu.org; Thu, 14 May 2026 14:22:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wNb6o-0004F1-Gb; Thu, 14 May 2026 14:48:34 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wNahU-0002kU-5H
- for qemu-arm@nongnu.org; Thu, 14 May 2026 14:22:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778782943;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rinGv0NCSy+a/0dqAE0w56NtAts8bcvDhOr+VaYGoq8=;
- b=DoOnTO79kW7y7q10NGrubcRS7EqaBC97TLwThoybnY2njmAtB8R/0v6EQjRfqMQlRRc3zN
- ONVoWI4+eZbI6bYLKI61wsSv+XH8LF7Vhl/nWLmqq8rxzwXmVKbAwi1SMn3HYmKoVeRn0x
- UbiBu8p8dAyv14s6Z+pyxQ6PuVfx3og=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-259-gtLKN0fhNvifvhSdmE7z2w-1; Thu,
- 14 May 2026 14:22:21 -0400
-X-MC-Unique: gtLKN0fhNvifvhSdmE7z2w-1
-X-Mimecast-MFC-AGG-ID: gtLKN0fhNvifvhSdmE7z2w_1778782941
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DAE791956056; Thu, 14 May 2026 18:22:20 +0000 (UTC)
-Received: from localhost (unknown [10.2.17.3])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7A33C30001A2; Thu, 14 May 2026 18:22:20 +0000 (UTC)
-Date: Thu, 14 May 2026 12:26:34 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PULL 0/9] aspeed queue
-Message-ID: <20260514162634.GA1482440@fedora>
-References: <20260512171354.4183887-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wNb6k-0006Y0-CN; Thu, 14 May 2026 14:48:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1778784487; bh=H33hHaJXEIYKFPTasnf4oGiAw5MDsr5/iRLHkbOPfVU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=AUT7EYO+A3TGk0AqOKmmCy6QGDnNFenaH4cMoXpSExyVslH8BKMIRILzWQV7batF0
+ 0+BFnoVOzIuIN5ZWlmcMFTc78mEa1yX0pD13OnUsZLQLubrh2i/xq3L9XCOgwUQnnr
+ elqFOF4D1CP+DCdFBY3/AL3jQvTzDWUMpSMAPYaNs10X/qbOjmk1KUaKKx/Cfyqczs
+ MF5t7hZ0q4sLhL7kEKOQ6KJbMj46OtANS6Ala45RJjAcmf0EbcUxm1A08/BLWMlOMB
+ CERDSiornrvVkJvtDvV7xGkH7fDW2T2n8uI0Mi31IQYPri/Jq4eyTdrtkxGHKMjjI+
+ t9WkhMxnQgAPw==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id AE4661AB578;
+ Thu, 14 May 2026 21:48:07 +0300 (MSK)
+Message-ID: <c2b76041-81d8-43e0-b50b-af88c1c658b5@tls.msk.ru>
+Date: Thu, 14 May 2026 21:48:15 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="Uy91fl7e+o382HoE"
-Content-Disposition: inline
-In-Reply-To: <20260512171354.4183887-1-clg@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/1] hw/misc/aspeed_sbc: Add bounds checking for OTP
+ write operations
+To: Kane Chen <kane_chen@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+References: <20260428055254.76581-1-kane_chen@aspeedtech.com>
+ <20260428055254.76581-2-kane_chen@aspeedtech.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260428055254.76581-2-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,30 +119,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 28.04.2026 08:52, Kane Chen wrote:
+> There is a mismatch between the Aspeed OTP model and the Aspeed SBC
+> model in how the guest-provided address is handled.
+> aspeed_sbc_otp_prog() passes a word-indexed address directly
+> to address_space_write() without converting it to a byte offset,
+> whereas aspeed_otp_write() expects a byte offset and applies an
+> additional shift (otp_addr << 2). This double-shift confusion means
+> that an out-of-range word address can lead to a write beyond the
+> allocated storage.
+> 
+> Fix this by adding bounds checking on the word offset before
+> converting to byte offset and passing to address_space_write().
+> This matches the existing bounds check in aspeed_sbc_otp_read().
+> 
+> Cc: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Cc: qemu-stable@nongnu.org
+> Fixes: 1a00754ccf15 ("hw/misc: Add Aspeed Secure Boot Controller model")
 
---Uy91fl7e+o382HoE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-Applied, thanks.
+FWIW (this change has already landed in the master branch, so it's cast
+in stone), I can't find this commit in my git clone of qemu repository.
+Neither hash ID nor the name.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/11.1 for any user-visible changes.
+Is it this one maybe? https://marc.info/?l=qemu-arm&m=164500409921734,
+which is commit e1acf581c9 in qemu?  It has a different commit message
+though.
 
---Uy91fl7e+o382HoE
-Content-Type: application/pgp-signature; name=signature.asc
+And this patch does not apply to 10.0.x, - in there, there's no
+hw/nvram/aspeed_otp.c (688a3dae78 hw/nvram/aspeed_otp: Add ASPEED OTP
+memory device model).  I assume it's not needed for 10.0.x, but in
+that case, the Fixes: tag isn't even commit e1acf581c9.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
 
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmoF97oACgkQnKSrs4Gr
-c8gD6AgAj3/Af9nIcjConLqwdh0iqvN6sdCivYXRbbT5c+C4WF2CrBaJEWAANqgg
-u8XcBLSrvOQio3ksPpRb0/3QE69cXdMWrJCOZy5vk/+DK+DnKB3n7bkTfdRKJA3x
-rIy1LoPUJhJPnM4K76wwkXYa/v9qiLnPTS/EUUGnd+pUQcjD9qmVBubdnin39YRy
-SwGNHfUtZ6HeqslQxcLWPN+0sKniJhGdWrhdQpaCLUEaKaRJVp+TOEF/BCCnLw/I
-MqB86mGjKuZc0RqiYHkyDkOKKvBoFHCxRkDqwNKSqnsjDItS9s4k4Wm7UnR7rcPE
-gg/23GYGtUr3bH9JFaApLsZWFarirQ==
-=Qodl
------END PGP SIGNATURE-----
-
---Uy91fl7e+o382HoE--
-
+/mjt
 

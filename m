@@ -4,88 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC16CD343F
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33073CD4F25
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:27:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtUm-0006kX-Ow; Fri, 15 May 2026 10:26:32 -0400
+	id 1wNtVh-0001d6-Ab; Fri, 15 May 2026 10:27:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNtUN-00060H-6l
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:26:07 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtVU-0001HF-O3
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:27:17 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNtUG-00011m-W4
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:26:05 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-44b052142e1so5182519f8f.1
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:25:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtVS-0001jL-FD
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:27:16 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-48fde648a71so7887335e9.0
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:27:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778855157; x=1779459957; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=vA+cQBnC8tVbvSe9RbhVXRcVemldMP+qSodEma1dh88=;
- b=nCxZ1gWxX2NO8rdAx8x7oRSuhPmCuQ6jWXalV+VwFZPUzja7ZzsyInfHBueqqmOJP9
- anfZzuSVE+M8rcdSDnu5MVoJWcFV0KO6znUEF2cHMYhBldTqwNcOfNCdCyr0IjO4Fbul
- V8MdYFQKfPLOaKbBshFjpQ80jca93pGkAI/vPIRvuuURZsixoH43k6b8jOM1epxnZ9I/
- 0bTdmFWVr6PIdNe1SIYgq+qOsAaGoi3XPdX9BmB8+0ZktcNxk+8OCxOagNL1IYaJIWha
- +NEpwEsgoT+/+Jytl7pjZXC4hF34egQu65kfOeioyDKDHP2yi6aVdiC3ejv4AQrFTCzK
- s5Cw==
+ d=linaro.org; s=google; t=1778855232; x=1779460032; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=LFlWrHtrooj3T+FPBTdpwgY0NsCd17aVmwDZTMr2Vdo=;
+ b=zgxyI0vc6Gm8WzdhlA2/4Yw0POTqoxlHYIXlN82YoJSC9yAf+3nY9FPJ01zyXbXaYH
+ 6n79zW5H0P/BsdIP32cG8wzfpDmtpuD9Igvgw8USykr0hBD9YtDu6H27+/TBh63NBv2Q
+ zwnlYbMYdqugNM+A4adsURMd5bqVPr16xtD2fA4fIDgPkt3CkhIeio/wXq9imbtzqdaP
+ gTkSFW9SF6KstLXI2TCENQmYtbAdf31b4oexoPjBjno2aQd3mEe0S/v+JJ2nKbOuEVux
+ kBWNVs7MrGnJxfSfy8llZgCU50vc8s63C3qiD3a4FjERuR8n3fLYCumZGxgHOcBYMMUa
+ ViNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778855157; x=1779459957;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=vA+cQBnC8tVbvSe9RbhVXRcVemldMP+qSodEma1dh88=;
- b=Ls5UD9EZxEwy+q40eYyuAtfWKH5eZLqMSm5Srm/176oIsL2+LZsIxIT7aWqHwO7g+e
- owNQJvMPWPNiqEtCuR4tobCWRo0A5mcIM4qdpWUSvO7opTh95lLcbS1xkXdKjR1iN29Y
- p0YjwStbv66HCS1tQ3W1aCvZmnsbxLaGs9UFfIfVaUqK+BgETBJ9k6mGgD/NG8wV4km2
- kF4V385YMtmhaltKJ0/GtbfsKiiYi1Il7QSTWR3DwPJ+gFWGMvC8iCBFuaGb/MAxP6UD
- lNYfL92RFG/m1APnNHn6oPRL4YNFZ9kFi7wfDUc9W/X9XULNjEp4AyTp65ncRUZqFOmG
- /WuQ==
-X-Gm-Message-State: AOJu0YzekMqwrl85iJ6b56ITvkpRCUt29HXMKlgIRXeSCE2Yk3K/ryKG
- D4PzHyc7yOUQFU+3ZXSleUc6rHsiv2LR6DPZpFBfR5tgekH/CDgZ0nfwXhSjnBAEa6ecn/QnzAd
- s9vOR
-X-Gm-Gg: Acq92OFwNhknEx5tPF3gNT9PU7k7UHiT64Vuyda1UMH1qeo2oAs+be6gz0gOtkObHED
- 2pzDjwWSjJUE8NGVVxqweWNqXmRuEAb+NNJx8nhuYysM8RM+PrlXtGOitZoOoEhGFJeyyfRzby0
- Eu6UETjm8ynX+tPpkyHjUdYZi0NNdIvSeD4rOB11E4ySxbXKTBqDErhG8fPsSiFQ8c8kV7GDrtZ
- IDyOgEpxNKyrz8+KQoEfkh25DZ5Hthhb1lYYq1KbXd77de0/2j9ExHq91GVa52EL8YFeAqVqhNW
- b5MNbSU/vKtUp5jat/STxHU1xIgxQanc5cFmcSa8dY42oRDu/ituW71MvtI3iG4tF4ep+0ddQIs
- idZ5ytFpoi9WmFzYhntYx1lz+dFyA0n10PUDqpP3EPtQTOSIBsGr92h0bsINeijt/KGMddSg9kG
- gVkN/XVWcabY93ppWKAFd13kgqM9H59QbW5DKDOkALAKl0BvTE3E6awMkX3eNbCT4lZxsUx8sHf
- G+axplfQ+g4v/xpqWe3Z6s030E1Izpw5B6pJ+cB2g==
-X-Received: by 2002:a05:6000:2601:b0:456:e27d:d6aa with SMTP id
- ffacd0b85a97d-45e5c5b3975mr5677124f8f.2.1778855156777; 
- Fri, 15 May 2026 07:25:56 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da15a666fsm13560603f8f.36.2026.05.15.07.25.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 May 2026 07:25:56 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [RFC PATCH 14/14] target/arm/ptw: Flip sense of get_phys_addr return
- value
-Date: Fri, 15 May 2026 15:25:41 +0100
-Message-ID: <20260515142541.571911-15-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260515142541.571911-1-peter.maydell@linaro.org>
-References: <20260515142541.571911-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20251104; t=1778855232; x=1779460032;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LFlWrHtrooj3T+FPBTdpwgY0NsCd17aVmwDZTMr2Vdo=;
+ b=XUrQ2i8vGznYmgcZ112BHyKKZvNgQZAGY5wCJs8sTH/PxJfkeZ8UoLFO1NGbKJcufp
+ OHWDoJHct16RzsYvyJXEH+/z6ZBpC4cwAlplZ7ErIffyiGwges888Gf6Eok34ftgkY/g
+ Oi1pdy8tkCGkFsdBsKV8V9cRPnOHgK5BYajXqHmFle6TNBuIxYGDTNbbisC0/pZq/xZG
+ wLLz/VuEqvgZ/YVFZyReW5QB3p92AyzBVgc0Q0OHOnrVkwWWkHua9zBd5Cq0W015fZM9
+ LzQ8N6LH658fJulVBIXconS8UF8t231U5FNA+lm2sKcE2JYuC1UeexIAV4dBWlvS81Pi
+ jbgg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8b/tFekGDS08ulqpg4pO8GVg/ffd61cdafFZbhv7EiTqg853P9HB+/QG2R3c7G74Jbsb05rBKUXw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/Myoz1QTrDfzRQCRJDVn9XpoTfEVsJP1p0JauBWjieXJWrg8N
+ n5tPwFLU5hXhqBXHuIrJFAOBNBJNpX9+hr9cM+MmdRx4tmCmkaHB6cVQwOzEpdSo798=
+X-Gm-Gg: Acq92OHdbsq9XBw5iK/U0Xp/OSdOnCc1g6Z93ItQn8fTFFXuNOVpX4zfea495TUquNC
+ /ONZUTYSMWcY7gutsJj4xGS10qNVUy7f3fgx7uynO9MRAVzbvx7AzQYGgnHjT0Wv2d/Bnatb78G
+ E22JNhsBJF4z5FXTC3v9RA3KKwhbMYIDZmL3g7XG+hz9wuDgQwU8fa3Yut1Rhbs0uINUOQnhx/o
+ f/JKHaZPf4KEqWp8STdRujiRz9413YfqIEIrJZ3lIvLzhJMP1oHd7cEoCmDJizHsLdu2lr0/33U
+ rZB/BaEfxRxwGfUWerE+xkjViT/gArqQjvskAmlKBILO+1b+YlkZeTnigf5FWzk+xqjjCB0NZoQ
+ 3Y3wFgLxBh1AJS15GKq2SMF4c9VjoTmpco5h9jeLSVh3YVI3c3UYYItlDJdwSglm1QxquSEiCHQ
+ IF5cKnpyuBj2mVw1HETKdgP4W9UP9pPGgtClUgGoFXDSOIbl/YzYFSITHd4XpSau243A==
+X-Received: by 2002:a05:600c:83c7:b0:48f:e230:29f5 with SMTP id
+ 5b1f17b1804b1-48fe53a8eccmr60399335e9.16.1778855232409; 
+ Fri, 15 May 2026 07:27:12 -0700 (PDT)
+Received: from [192.168.69.200] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48fe5694fbfsm117392865e9.6.2026.05.15.07.27.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 May 2026 07:27:10 -0700 (PDT)
+Message-ID: <1bc4c344-aead-4ad8-baa5-8b01d7d702cc@linaro.org>
+Date: Fri, 15 May 2026 16:27:08 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 09/20] target/arm: Build cpu64.o as common object
+Content-Language: en-US
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, Kane Chen <kane_chen@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
+ <steven_lee@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>
+References: <20260515141032.3271-1-philmd@linaro.org>
+ <20260515141032.3271-10-philmd@linaro.org>
+ <CAAjaMXbmCR10cGb8DsYF+vHFxb2NNVpxGJsijh76o3fOEXH=CQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAAjaMXbmCR10cGb8DsYF+vHFxb2NNVpxGJsijh76o3fOEXH=CQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,101 +111,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This completes the conversion of this family of functions to
-returning true on success and false on failure.
+On 15/5/26 16:21, Manos Pitsidianakis wrote:
+> On Fri, May 15, 2026 at 5:11 PM Philippe Mathieu-Daudé
+> <philmd@linaro.org> wrote:
+>>
+>> While gdbstub64.o is already built once, build it as
+>> common object, reducing target-specific set in arm_ss[].
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+> 
+> The commit message was copied from the gdbstub patch, but this patch
+> touches the decodetree a64 gen files
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/internals.h      | 2 +-
- target/arm/ptw.c            | 2 +-
- target/arm/tcg/m_helper.c   | 8 ++++----
- target/arm/tcg/tlb_helper.c | 6 +++---
- 4 files changed, 9 insertions(+), 9 deletions(-)
+Indeed I should mention it in the commit description.
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 7fd8312477..d47ffb67c0 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1500,7 +1500,7 @@ typedef struct GetPhysAddrResult {
-  * by doing a translation table walk on MMU based systems or using the
-  * MPU state on MPU based systems.
-  *
-- * Returns false if the translation was successful. Otherwise, phys_ptr, attrs,
-+ * Returns true if the translation was successful. Otherwise, phys_ptr, attrs,
-  * prot and page_size may not be filled in, and the populated fsr value provides
-  * information on why the translation aborted, in the format of a
-  * DFSR/IFSR fault register, with the following caveats:
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 6a002c25e1..8dc9c67712 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3939,7 +3939,7 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
-         .in_prot_check = 1 << access_type,
-     };
- 
--    return !get_phys_addr_gpc(env, &ptw, address, access_type,
-+    return get_phys_addr_gpc(env, &ptw, address, access_type,
-                              memop, result, fi);
- }
- 
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index f2059ed8b0..c5a553a5d4 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -222,7 +222,7 @@ static bool v7m_stack_write(ARMCPU *cpu, uint32_t addr, uint32_t value,
-     int exc;
-     bool exc_secure;
- 
--    if (get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
-+    if (!get_phys_addr(env, addr, MMU_DATA_STORE, 0, mmu_idx, &res, &fi)) {
-         /* MPU/SAU lookup failed */
-         if (fi.type == ARMFault_QEMU_SFault) {
-             if (mode == STACK_LAZYFP) {
-@@ -311,7 +311,7 @@ static bool v7m_stack_read(ARMCPU *cpu, uint32_t *dest, uint32_t addr,
-     bool exc_secure;
-     uint32_t value;
- 
--    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-+    if (!get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-         /* MPU/SAU lookup failed */
-         if (fi.type == ARMFault_QEMU_SFault) {
-             qemu_log_mask(CPU_LOG_INT,
-@@ -2023,7 +2023,7 @@ static bool v7m_read_half_insn(ARMCPU *cpu, ARMMMUIdx mmu_idx, bool secure,
-                       "...really SecureFault with SFSR.INVEP\n");
-         return false;
-     }
--    if (get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
-+    if (!get_phys_addr(env, addr, MMU_INST_FETCH, 0, mmu_idx, &res, &fi)) {
-         /* the MPU lookup failed */
-         env->v7m.cfsr[env->v7m.secure] |= R_V7M_CFSR_IACCVIOL_MASK;
-         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_MEM, env->v7m.secure);
-@@ -2059,7 +2059,7 @@ static bool v7m_read_sg_stack_word(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-     ARMMMUFaultInfo fi = {};
-     uint32_t value;
- 
--    if (get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-+    if (!get_phys_addr(env, addr, MMU_DATA_LOAD, 0, mmu_idx, &res, &fi)) {
-         /* MPU/SAU lookup failed */
-         if (fi.type == ARMFault_QEMU_SFault) {
-             qemu_log_mask(CPU_LOG_INT,
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index bbe1e70bc4..f90765cb59 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -361,9 +361,9 @@ bool arm_cpu_tlb_fill_align(CPUState *cs, CPUTLBEntryFull *out, vaddr address,
-         fi->type = ARMFault_Alignment;
-     } else if (address & ((1 << memop_alignment_bits(memop)) - 1)) {
-         fi->type = ARMFault_Alignment;
--    } else if (!get_phys_addr(&cpu->env, address, access_type, memop,
--                              core_to_arm_mmu_idx(&cpu->env, mmu_idx),
--                              &res, fi)) {
-+    } else if (get_phys_addr(&cpu->env, address, access_type, memop,
-+                             core_to_arm_mmu_idx(&cpu->env, mmu_idx),
-+                             &res, fi)) {
-         res.f.extra.arm.pte_attrs = res.cacheattrs.attrs;
-         res.f.extra.arm.shareability = res.cacheattrs.shareability;
-         *out = res.f;
--- 
-2.43.0
+> 
+> For the patch changes:
+> 
+> Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> 
+> 
+>>   target/arm/tcg/meson.build | 7 ++++---
+>>   1 file changed, 4 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+>> index 9eeccb2adca..f821331fbee 100644
+>> --- a/target/arm/tcg/meson.build
+>> +++ b/target/arm/tcg/meson.build
+>> @@ -27,15 +27,13 @@ translate32_d = [
+>>     decodetree.process('t16.decode', extra_args: ['-w', '16', '--static-decode=disas_t16']),
+>>   ]
+>>
+>> -arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
+>>   arm_stubs_ss.add(files('stubs32.c'))
+>>
+>>   arm_ss.add(files(
+>>     'cpu32.c',
+>>   ))
+>>
+>> -arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>> -  'cpu64.c',
+>> +arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64 + files(
+>>     'gengvec64.c',
+>>     'translate-a64.c',
+>>     'translate-sve.c',
+>> @@ -79,6 +77,9 @@ arm_common_user_system_ss.add(
+>>     'vec_helper.c',
+>>     'vfp_helper.c',
+>>   ))
+>> +arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>> +  'cpu64.c',
+>> +))
+>>
+>>   arm_common_system_ss.add(files(
+>>     'cpregs-at.c',
+>> --
+>> 2.53.0
+>>
 
 

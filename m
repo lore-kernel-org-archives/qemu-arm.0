@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED29ACD4F25
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:12:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27010CD343F
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:12:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtGV-0005yN-8M; Fri, 15 May 2026 10:11:47 -0400
+	id 1wNtGq-0006me-8g; Fri, 15 May 2026 10:12:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtGT-0005sm-S6
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:11:45 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtGi-0006c0-MQ
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:12:01 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtGR-00048J-Ja
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:11:45 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-44a14580111so6697229f8f.0
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:11:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtGg-0004BS-4v
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:11:59 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-488b150559bso72931375e9.1
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:11:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778854302; x=1779459102; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778854316; x=1779459116; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mPHHkuT68LQ8THDPOQM1jypUgrX1zdRt0XHWxhQhz5I=;
- b=T61bIlh26ZAWb4Ox/oMXW/yaFzl256ZJNd27NvY3iB1XcqNAE/yWXAvmB1l1UQD4k3
- hQV/YTz1a5kQ7KOEccCfPuEjgFhHESDZDMBPRznAkxqvNq7IQTnOJgbJqxr86B2rHszR
- 1HjDjkg/ps+QsULzqFXACZUa77WT++VUUHGfDbrHV13Gn84rICl332KQDPAaT87fg2gb
- Gahpl6BTKNOGyx75dZaGfQuEk4EK2icmYQSSxE5Tkmy3D1F6GuW/if3z8LPrPgYnFrQ8
- LZE7yT9ubgBqEp/1p4seAltk/NpfTNxzLmLwx/2orNrnFCqhMr++6BMh7X8ceJYahtsr
- k/KA==
+ bh=X4z7sxEcq8cgRQJzCS3+RxU14e+GbTMxdJeSkxmfOJw=;
+ b=hpGeArNBD4Mwkogag54w4+B9D2R2u+jp3G9RyoFVRwNFtFg+I6bbZNEF/+P7NU4bqh
+ wqm+1nozmpimelPF4DkKbaMbw71oSw/Dcl4XFEYOSKFTJ5PPYGj8CBMBcQvNNYPug1eR
+ lp54ko0AOQY0V9TJi5f2IifM+XVfVRhnYOVmStDPGta73cpt7QR/8Sk/v3rEugsfltYS
+ FL3iLD9+LL+maw9TyCFiAYwRj3eH6V1nbAnFpknDG+zxqhXK9QKkN08LrfG1mrFJHSd6
+ dL2VwRXrYETpCQ2pZif1Unz3qS+BxJXqHz5aL5F/5hWQ1FLhtyCAuESx+q5e+NmagCX4
+ XJCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778854302; x=1779459102;
+ d=1e100.net; s=20251104; t=1778854316; x=1779459116;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=mPHHkuT68LQ8THDPOQM1jypUgrX1zdRt0XHWxhQhz5I=;
- b=CP2mQke/QP5BOoFlos8XVhp/f5XceipLF2AgfQj4ZPIEPJVzag0PWhc8yPaCrAffWV
- HIxA1PAeo/hOVbWW+jN9xdtDUv8F8+63ub7ZRs6XA8ECyPJuIp4JtgUQ2rDq3kvAtiz9
- /K5M0qyA3+lomriGNwSrM9GRArhFt+8mQeKz2m/zq+01l1Lw4FDgPK7kTP/GCpz4UTsF
- Jc/qjalsvSxa/h7JdLHZb3UX+RW2aJlmyQ0TJ3MW9fknvCVkWh607PmbjaNZxFmH5QyY
- 8NbgA+EUBMr1WsXaOoCM9aADuH1MoErgcuDrVbB/eaHbtnHsQuGtC7UB2uUNh5TNQBaD
- Jz0w==
+ bh=X4z7sxEcq8cgRQJzCS3+RxU14e+GbTMxdJeSkxmfOJw=;
+ b=Wgll8vg8ALR0Y+knx5/97CC/BBFW1pe1M48wezSbpzLP0sBa43oqR02sKOHZYCgbmW
+ dcCknWX9+tK641D/i2dA4HjT2vVhHIhn/yBQlDl2OyWUZ4/F4zu094nqfZmFV97NXHri
+ z/v4j5QgAGaBEDp/oAsikM1Hd0hQdLIgE0PuhWsPeoryC88zeSR85okqW8GYqCyVIroI
+ TiTmecevI8/Vi5S7Q3o2rPAxWnWr8cGjSrGuOgveKC2Bpjsp81mg6D2B7nZbEpbEtiTA
+ BKyBSOWhcsab7+87q2XSYE8bUb4jxc/36F20p5DwU6vqL9CnS618IfstEqPmOGzjyiy+
+ /xmQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+jUWQ9pflJFGWBLboCFpE9wQJMgpPpUPvs9jDA4i+HHi0fE6MfmZTz2BvA5lI3VxekzUtBUXnPcg==@nongnu.org
-X-Gm-Message-State: AOJu0YwvnmF94F/iDv0+uzoQpQrI5hirofIvm3EWnqN3j3VdzxHMXVSQ
- ElGmbz6jDvFRPdh7TC5mb9cI0w1BifC0AG7vR7xYOydb37+jFwkando0wOA/1dgAdnM=
-X-Gm-Gg: Acq92OEdGt0WdMyHMNAIiPFk/mOmegbR37i0MbNxYtvECXGZeUw1CDZyHIPO6lHsux4
- I34cwt7YJPoigg2Jp/Lp2gdbhShYyXF6VuEM1cUpjH9gh/J3Co0IhjTvF8qw2BgzElc99hExmP8
- jwJWe8nZMCf51e0H5bRScLL9R6FvqR64a7MM85s4PB45hS/pErbXkdr/oGqBYqKJcn8sKbohvor
- gFbEB9kccegQvAQeke6NB8Lvmk5NSd7DXe7GzVLn5harjGOu7FEKg4H6UUMn07+/jZIAj632d/p
- UYnywtzZnlhRRC5MEVBVBOBEM/6FoHbHvxhzWCYS/LJCMIWGneu0MF0An+RG94gP6InPCystL7b
- 3IWP8v/fwVSaU16deR+1DyPIKoEBHdonF/EubM5yQd7vbPvis3GFc+K/4fmeoVfvLPwxGuuTE57
- HpdhfpgmDrH5qpZXUJxOEz1KZ++OBEtuFrlSJkyFPIfSK3pIbmEsWqug6ffEDSYT9V0Ixe5ptey
- eVGtG4LtAo=
-X-Received: by 2002:a5d:5d01:0:b0:452:a293:4d91 with SMTP id
- ffacd0b85a97d-45e5c34b279mr6122960f8f.0.1778854301916; 
- Fri, 15 May 2026 07:11:41 -0700 (PDT)
+ AFNElJ8K7htF52IIuAAhDvqjvHvF5HipOpqQCtB5A7wT6yJiPOSpUirvqsmEzHS9doAHz/4M6H/DGWX+1g==@nongnu.org
+X-Gm-Message-State: AOJu0YzzBRlPnetS4g2tjtIzErHDXxe9K8UdYz68fMkRrkB8Xz2FTYU4
+ o1hyTcPKAFBfKq6/LlY2irEG/aW+3T/L+SsH5JIuPQlL+yoEvJUJSy8WdK1l72bgoBo=
+X-Gm-Gg: Acq92OF5f39mrbpJXfMXJSmwwJpwjZSBZcbqoisgCxZb1BnMrsidqsjEEFBWV3KYHa9
+ Cihy0Q3BKtm+/0Z11bWRNYRvrVEcJutjrnykE8ANoWIvhIOPYv5n94P1fePDCn3FKhkAPeCxhFP
+ fYaA6otQjR+RU3tJzixpOVY/GT69aDyEjR7p/n4S76rMitcizDFncv8e1gwkNfMkfoAzLjucOIG
+ FcBWE3j08XAmeKmjEvavO8mkL2XiLwOzo3saPmh00cDkiorR9/LOmtX1yHZv52rntz+y/NOwfZG
+ QEgnyXD81gr886ebdIoOrWAUQ58X+YXQAxiFSwbA77MZmwxYG7eLUofSIjxObRgQd25AjSDJqPy
+ QQmUMs61bqZN3fgqtu6qgOHsFg1JIt8kmLfl0IuArKDyzliET4QYgFjUTpSkbh3SDr4DH1mXOvc
+ dI1DBJ3Flg9Yg1ehPWgxLxscKfMggSVPYzDOt57uYHWyuDlVqBBgU34iNL6R6sOYIFg0p2mZmFJ
+ z95ibPUIPk=
+X-Received: by 2002:a05:600c:c087:b0:48a:7b55:12a6 with SMTP id
+ 5b1f17b1804b1-48fe5cb36aamr50828545e9.0.1778854316524; 
+ Fri, 15 May 2026 07:11:56 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da15a666fsm13484679f8f.36.2026.05.15.07.11.40
+ 5b1f17b1804b1-48fead1c364sm16411955e9.8.2026.05.15.07.11.55
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 15 May 2026 07:11:41 -0700 (PDT)
+ Fri, 15 May 2026 07:11:55 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,17 +78,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v6 09/20] target/arm: Build cpu64.o as common object
-Date: Fri, 15 May 2026 16:10:20 +0200
-Message-ID: <20260515141032.3271-10-philmd@linaro.org>
+Subject: [PATCH v6 11/20] target/arm: Rename Aarch64-specific methods
+Date: Fri, 15 May 2026 16:10:22 +0200
+Message-ID: <20260515141032.3271-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260515141032.3271-1-philmd@linaro.org>
 References: <20260515141032.3271-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,45 +111,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While gdbstub64.o is already built once, build it as
-common object, reducing target-specific set in arm_ss[].
-
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 ---
- target/arm/tcg/meson.build | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ target/arm/internals.h   |  8 ++++----
+ target/arm/cpu.c         |  8 ++++----
+ target/arm/cpu32-stubs.c |  8 ++++----
+ target/arm/cpu64.c       | 12 ++++++------
+ 4 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 9eeccb2adca..f821331fbee 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -27,15 +27,13 @@ translate32_d = [
-   decodetree.process('t16.decode', extra_args: ['-w', '16', '--static-decode=disas_t16']),
- ]
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 3edc15c7b4a..00830b17248 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1750,10 +1750,10 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg);
+ int aarch64_gdb_get_tls_reg(CPUState *cs, GByteArray *buf, int reg);
+ int aarch64_gdb_set_tls_reg(CPUState *cs, uint8_t *buf, int reg);
+-void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+-void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
+-void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+-void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
++void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
++void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
++void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
++void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
+ void aarch64_max_tcg_initfn(Object *obj);
+ void aarch64_add_pauth_properties(Object *obj);
+ void aarch64_add_sve_properties(Object *obj);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 76f5909e902..31e1fd6cd51 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1707,25 +1707,25 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+     Error *local_err = NULL;
  
--arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64)
- arm_stubs_ss.add(files('stubs32.c'))
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+-        arm_cpu_sve_finalize(cpu, &local_err);
++        aarch64_cpu_sve_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
+             return;
+         }
  
- arm_ss.add(files(
-   'cpu32.c',
- ))
+-        arm_cpu_sme_finalize(cpu, &local_err);
++        aarch64_cpu_sme_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
+             return;
+         }
  
--arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
--  'cpu64.c',
-+arm_ss.add(when: 'TARGET_AARCH64', if_true: gen_a64 + files(
-   'gengvec64.c',
-   'translate-a64.c',
-   'translate-sve.c',
-@@ -79,6 +77,9 @@ arm_common_user_system_ss.add(
-   'vec_helper.c',
-   'vfp_helper.c',
- ))
-+arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
-+  'cpu64.c',
-+))
+-        arm_cpu_pauth_finalize(cpu, &local_err);
++        aarch64_cpu_pauth_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
+             return;
+         }
  
- arm_common_system_ss.add(files(
-   'cpregs-at.c',
+-        arm_cpu_lpa2_finalize(cpu, &local_err);
++        aarch64_cpu_lpa2_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
+             return;
+diff --git a/target/arm/cpu32-stubs.c b/target/arm/cpu32-stubs.c
+index 9e50bb1b0b5..d42b1a5d6a6 100644
+--- a/target/arm/cpu32-stubs.c
++++ b/target/arm/cpu32-stubs.c
+@@ -4,22 +4,22 @@
+ #include "target/arm/cpu.h"
+ #include "target/arm/internals.h"
+ 
+-void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+ {
+     g_assert_not_reached();
+ }
+ 
+-void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
+     g_assert_not_reached();
+ }
+ 
+-void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+ {
+     g_assert_not_reached();
+ }
+ 
+-void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+ {
+     g_assert_not_reached();
+ }
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index a93ad2da5ad..b38a78aac3f 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -60,7 +60,7 @@ int get_sysreg_idx(ARMSysRegs sysreg)
+ 
+ #undef DEF
+ 
+-void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+ {
+     /*
+      * If any vector lengths are explicitly enabled with sve<N> properties,
+@@ -121,7 +121,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+              * Disable all SVE extensions as well. Note that some ZFR0
+              * fields are used also by SME so must not be wiped in
+              * an SME-no-SVE config. We will clear the rest in
+-             * arm_cpu_sme_finalize() if necessary.
++             * aarch_cpu_sme_finalize() if necessary.
+              */
+             FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F64MM, 0);
+             FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F32MM, 0);
+@@ -336,7 +336,7 @@ static void cpu_arm_set_sve(Object *obj, bool value, Error **errp)
+     FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, SVE, value);
+ }
+ 
+-void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+ {
+     uint32_t vq_map = cpu->sme_vq.map;
+     uint32_t vq_init = cpu->sme_vq.init;
+@@ -408,7 +408,7 @@ static void cpu_arm_set_sme(Object *obj, bool value, Error **errp)
+     /*
+      * For now, write 0 for "off" and 1 for "on" into the PFR1 field.
+      * We will correct this value to report the right SME
+-     * level (SME vs SME2) in arm_cpu_sme_finalize() later.
++     * level (SME vs SME2) in aarch_cpu_sme_finalize() later.
+      */
+     FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR1, SME, value);
+ }
+@@ -548,7 +548,7 @@ void aarch64_add_sme_properties(Object *obj)
+ #endif
+ }
+ 
+-void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+ {
+     ARMPauthFeature features = cpu_isar_feature(pauth_feature, cpu);
+     ARMISARegisters *isar = &cpu->isar;
+@@ -666,7 +666,7 @@ void aarch64_add_pauth_properties(Object *obj)
+     }
+ }
+ 
+-void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
++void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+ {
+     uint64_t t;
+ 
 -- 
 2.53.0
 

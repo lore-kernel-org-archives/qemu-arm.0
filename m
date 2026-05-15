@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F34CD343F
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43FACD343F
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:25:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtS7-0004Fs-R3; Fri, 15 May 2026 10:23:52 -0400
+	id 1wNtSz-0004aO-Le; Fri, 15 May 2026 10:24:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtRt-0004DV-NV
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:23:34 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1wNtSe-0004OZ-Dp
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:24:23 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtRr-0008Gw-IP
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:23:33 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-488ff90d6c7so80752005e9.2
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:23:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778855010; cv=none;
+ id 1wNtSa-0008WK-Lf
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:24:19 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-488a9033b2cso80848375e9.2
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:24:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778855054; cv=none;
  d=google.com; s=arc-20240605;
- b=g0YcqdpzApMyI12mGMyry/2cDtu7IxQna4/6evRIo91ICjZB12semITiW6IoARsRw3
- bdP9TlsWKVXufpcnyNx7JMC7iq+uMDhX5GdRZGvO6clcQSXM2nrY5QTfxm2j+cM6DBU2
- GcZYwWevvyYa102Ozd4axyoVE9x3ReMs+bsu5PC6I6EUiID5aeKfeoMF7WAJimIDK4kZ
- qqASfNH7YFiO6dSJC39xRVxJZFKqZHaAUrG7L4bZ8MHraDzG6Uo5/xSx733ow5a2d00F
- Gi55g4AFkVYVaVc8pI2GZgG7fFVnVt9bU8ToK8RwcNNjuViD5Z1FmrakYicOECZu8WS9
- MGIg==
+ b=Gl2ak/mHUQczpndyuo2VFeoFHEWqkH3aQiTsWGE/TjlnHYk15e9ULVG1yPj/1VZ9Vk
+ ecMiN4nuZJlezOfjOh8AHlP490PhKX6DXLQZpQOk8zlJ4Kk8CjGhpOQhkG+Y5MTKV6eP
+ AzPVsphsqY4OW1jdZlI2VjGZ8OzIXILJTkGFLqLZzMiNFHVEmVxQTJE2yb2UsJaZYu/p
+ He1kdHoqsrVC91MDfhDoQrtkS2okIDFy6wVsMhiKA384Rwq6uSwa3mz6t1vT2tA+LA/f
+ c60eKtVx/AQ3P5jKCXdkoFHOpU3lJZikQIFtLu377qVohh4F5a6gyIoinpQ536683U2n
+ PEBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=pS6+hIU7k2tWi+tHU0YDo8T8AoOJIkTgkEACRJxPM3g=;
- fh=xGEKFP8MTRs7jmqprweWayqx7/iVVu2RAiI5wMJs4gM=;
- b=S/wp9kb7HAP0qIV81ZIb+dUVQduRT2gdgMn1QxEyIuGe5tYT155zpoZuD2JmUAsijI
- 2CQpux6VS58f/6XyFaeHLrtuc3iPES2NbMeD0ZwT6VhPmFOEhC+T9kXccztxOlt2BxfG
- AE38IPESRe/9YMsRaAIJlHxnuDFvNKbiYY/Qwl5cv35onBANkY+LLvYmMwegZqFwughb
- AccXCHevzPKNek4ZEE8sePkFPz3vXB0CrKJf9OZnoh8aBEWKRXTQRhSGb/aZNZjy9IwI
- t+AhOwkso6MH46pdeTEFhWROJ06zER1q7izVySATkfiLz95h/1QSz47tfdDDTnmVcpNN
- AZVg==; darn=nongnu.org
+ bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
+ fh=cNo61cPP8TH8U37SBFZRyWOQ35efn+NF1BKJ9aJS58I=;
+ b=FdCmbkOnRTTYW9bnSuTDham3hZfsrCPJZN6uHg7iveuQ0XB2P1fieHzWveFOmQcxL0
+ YR2NTTPAsoX/NaEd5eDAMIWEIHnBJ7t95QccjBPkuh55+H158bfK4LWdbVhLa1tLRzw4
+ 8TBF/cELDFUuLjqgikiHe7rO9+gHTjs9IeX7ZBO6YZfOAjFfC9R6w02KY2TCp8dqtaFM
+ y1lz7IWYBjClj61yq7tPYjMJsEb6OG9Zv/HxBTyHWyQiWDGwpZ4tXT849jWOfJ9VW9j7
+ OUbAobgFuYEy1/QnXVpGa9r/5mijqJrlNrkPTFIcu+W2pEH+Lu4k9Lta/k7Rbt6zMWCk
+ mwkQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778855010; x=1779459810; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778855054; x=1779459854; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pS6+hIU7k2tWi+tHU0YDo8T8AoOJIkTgkEACRJxPM3g=;
- b=ITdKyJIbMBcZV/JLpFX/5ZOVwv4fhqCH5zpm3AGZcYqxHbZFwcSvPXveNhHHUgfwJZ
- cWWVI8NZjWQ9nh+yfA/KRlCi+JRWd7Ba+I3rA3rb/xSksLt08arilrwCNMm3ihh0JaDJ
- F7BvDusszhT/WsKWOFoKctLJ5jFc5sK/Y2UPcXGh08eUPCl8SrXgXuF4oqQ+y5O+6KBb
- WDvdSq4yOIdD2pjaH1MhmgD/GsRgK5Pvr/PyiCGLEV5MK3pNutoJpcMY6qR5w2FvBxU1
- VEBZqvvDWjA8cE83oM3S5yh2CLF84dlNgtkdLn2h+W2oqosNd+74wgV++vsBuHMEUAoR
- SrOg==
+ bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
+ b=Tmxjh8649qz+3BpBnSB8Jb/A60pRCvlByDncCdqWQbY4hZb2TGxI0zh0WR0rJ+A4QP
+ Ka0vU823VB1qW7LVbcrH3YIcMhUmLr0orIJi19MBPogJEuV282nuO0AoklfmTAB9Hylr
+ ZVDNFNZM6pGo4bBO2wbnpr+tFyPmcnC8CwCvbotnBTH8HIAsUy8bQAllE01F3SPIsByK
+ sCE6x3IEBxviFVaZNEtnDYlj5+TIiiQJy5OhxHjwL3cGLSPyeaggmLTb8v8rG8oJ/YXq
+ OeXyN8s/SRHu/nvDTCWY+bMdDnQZBjGXBrmdVOotPwbRYGsOMoGOdos0WFky271o19MI
+ 8j/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778855010; x=1779459810;
+ d=1e100.net; s=20251104; t=1778855054; x=1779459854;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=pS6+hIU7k2tWi+tHU0YDo8T8AoOJIkTgkEACRJxPM3g=;
- b=D4R+Zxcjh2s0kRtwsaifbgH5ZdugMhth969PCzLBzb1lUBrnb4z3LUGIcfBM/oZkJQ
- sD4gR7LusrcT6JKAuR+hOtUfFV4doM8/bdKrXsFHsXrXTCu3UO5ErVR/0N8B9mnt6Tjt
- F01vuEtXAelqg2DDayKyfZ/CGQfjocZFJIjgk4r+VFnQJE0e39stE2lnzakn6wyB9TRL
- mbEC1nXnQZ0ay60a+ahiThKdT2Pc6kIjrU+xul+wU2kswfpvqyD6o/rhSsMtev7uEsCQ
- HJ3SOVOsrdKK0uRjXxYfJw8/ilXSn9BucDzyvXe7MWzA4gepeG1PRwxtaAfdKG2h8HbC
- z1VA==
+ bh=NBvzPX5JQzQqn/Diim4ka1qTU1UwKGkci3Lx7p+HPtw=;
+ b=dQALSOKXzpLOFcmAXmjd3kzngrEMoKW83WTSrmWcPi15z0leg/wB3ip9AxiOLuONwe
+ kl6l4pMJUbUE1z2Tm902BPWgb/cPRRZLyLJ5krmNBeH/xcg7W+MPUc6FCpmHglt9Nlrc
+ Gt4FISvxGufqm61JoKfpC8IfC38uJuMckbNN35GI6L1GKQl9KXn9hYSNj/diVdelgaQ2
+ J0fFGjwH4w+b73cOKNPXCGPkLZIPgN1cFnFfVbWo/uaEAmYQjXLcLuNewFax5mn3usIN
+ K6vBgy75QLrq3znpsWqE90vu9tM77bwx6o9595kw2qOZGlDEwCnQl8EJ8kIpvRFZxhwl
+ vXxQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9gYMAxWONVV7MaV791BzwgqnstrhnootZO1AcxgSyouY+rIZTtMmfdRXuZsspM+ZmiNt4Zb+cJfA==@nongnu.org
-X-Gm-Message-State: AOJu0YypKXH0MjD7ZWD4VyU+qTIdYT1jd1odOSu81/mMhcb7HmzJKslF
- zpNeYt0uHBxDkf3UhZ587/Lpnf5pJrAX6Q+NCvOr+aNOLmCvO2jFQ7X7rh6JNmjse/91tLdnp7d
- AsSK9Qdh9q9/sE8lvmlZsjJEswE48oIwsmiUobyC3SA==
-X-Gm-Gg: Acq92OHoAQyDJyOGIfqjSGGGaTX6gImof1XhehwZKM+uXAvBNh9Bl0OEGhyPwdm+S6/
- ucCbJy3le7SUG/OrHDL93gqp01yOQH06eRUIYaPsrJ+JzpnjBcE9VaDkgh8V52SLpycaN6HAM8i
- dyZSZqGLP/GhYNoP2yxw2zKVC1pZKRqKKgtc3nSUvGo3+kgepDOLV5T6r/AsdUQtSxJWftifs/x
- KJFb6AsPjvJ0Et46UWaCeNyfmCTiAOyOxe8gYms6LsTk04pcJz8hEzHW3iNa+0qlvgl3Kw20uzP
- bCQA036kQImEerumjpIglo4YN3lrqswJulUawTWJmyxAV47Ihg==
-X-Received: by 2002:a05:600c:1389:b0:48f:de4e:882b with SMTP id
- 5b1f17b1804b1-48fe60e524dmr57072865e9.6.1778855009122; Fri, 15 May 2026
- 07:23:29 -0700 (PDT)
+ AFNElJ//VbQtLjjJaRJ0iP7EziHyRHEqF4vjQAyAa93+XTh11xt+CZotjyiE8kjgqIF9bADnYVYuxb/WmA==@nongnu.org
+X-Gm-Message-State: AOJu0YyXVuinQiJzIAZSB8Vw7q7GR1aj5ueTkINYsWpCYz3CXewOLVds
+ XCyBW0jjYx3po0jMwWiZ2THjibIlsemi975usjiwABBI+TuUkSk6VcmWjAc5dMfDPXtBPPdaGYs
+ 7wI/5x+qz+9208zYacvtNLeoxCzL5asi1352OJDacwg==
+X-Gm-Gg: Acq92OGYIphV95QuutTbZRTNwHnLo9f7DjWBeaECzLwpM3uq/S2d09feBtE0vznq8wV
+ jSEgHYSLwQitolkoH/PqH2dpbExnQcFqDvTD5UEYSFUQmiDPCtp4+WFvpMTYxwcfZOEu57KDGGH
+ ZNYoG7U90MFNho5aB8UO0BGi64V9CG4Oo/+YItmXp+RUjXeE3pNpfSRi+6G5yE5n0tDXgkgnP10
+ sKe/6rscqDx5sDL6d+lZCZOnYoSxpG9W8mzWy7EHYPr7IJee+NyV/fiYYu0pOlOCve7nV3B0rgM
+ hjG6m1PPZx658WiOgs0qLnCdG66aHMJG30mO6a+8WQEjeVbmen7oer8y8uEg
+X-Received: by 2002:a05:600c:1505:b0:48f:ed68:6760 with SMTP id
+ 5b1f17b1804b1-48fed6867famr18430725e9.29.1778855053728; Fri, 15 May 2026
+ 07:24:13 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260515141032.3271-1-philmd@linaro.org>
- <20260515141032.3271-11-philmd@linaro.org>
-In-Reply-To: <20260515141032.3271-11-philmd@linaro.org>
+ <20260515141032.3271-12-philmd@linaro.org>
+In-Reply-To: <20260515141032.3271-12-philmd@linaro.org>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 15 May 2026 17:23:02 +0300
-X-Gm-Features: AVHnY4KIvkL0_0vfP15IKf7_TLPd1zEFm2dUQHg-ZrUWyiN0LpAFGxbdNQQFHMY
-Message-ID: <CAAjaMXYJr7Xg+0xSVNaxkG+5ykzJCL=uNwpmeN=GYbbGd34ZjQ@mail.gmail.com>
-Subject: Re: [PATCH v6 10/20] target/arm: Restrict IDAU interface to TCG
- namespace
+Date: Fri, 15 May 2026 17:23:46 +0300
+X-Gm-Features: AVHnY4KXrEtl6HQ-aLWpONcnBxT2pz0ORYtoERYZlCH_Z422Q5gCY26vKEdIJ1g
+Message-ID: <CAAjaMXY0Fa-POojxwcBjWjJwOL1NeTOHo+L+OjJN1UJUnFFU=Q@mail.gmail.com>
+Subject: Re: [PATCH v6 11/20] target/arm: Rename Aarch64-specific methods
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -103,8 +102,8 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,181 +129,165 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Fri, May 15, 2026 at 5:11=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> Emphasis the IDAU interface is restricted to TCG by
-
-Emphasis?
-
-> moving the header under target/arm/tcg/. Move the
-> definition to cpu-v7m.c which also contains v7/v8
-> hardware (NVIC), keeping only CPU types in cpu32.c.
->
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
->  include/hw/arm/armv7m.h     |  2 +-
->  include/hw/misc/tz-msc.h    |  2 +-
->  target/arm/{ =3D> tcg}/idau.h |  4 ++--
->  hw/arm/armv7m.c             |  2 +-
->  target/arm/cpu.c            |  2 +-
->  target/arm/ptw.c            |  2 +-
->  target/arm/tcg/cpu-v7m.c    | 11 +++++++++++
->  target/arm/tcg/cpu32.c      |  8 --------
->  8 files changed, 18 insertions(+), 15 deletions(-)
->  rename target/arm/{ =3D> tcg}/idau.h (97%)
+>  target/arm/internals.h   |  8 ++++----
+>  target/arm/cpu.c         |  8 ++++----
+>  target/arm/cpu32-stubs.c |  8 ++++----
+>  target/arm/cpu64.c       | 12 ++++++------
+>  4 files changed, 18 insertions(+), 18 deletions(-)
 >
-> diff --git a/include/hw/arm/armv7m.h b/include/hw/arm/armv7m.h
-> index 98ad08db036..70555962bb9 100644
-> --- a/include/hw/arm/armv7m.h
-> +++ b/include/hw/arm/armv7m.h
-> @@ -13,7 +13,7 @@
->  #include "hw/core/sysbus.h"
->  #include "hw/intc/armv7m_nvic.h"
->  #include "hw/misc/armv7m_ras.h"
-> -#include "target/arm/idau.h"
-> +#include "target/arm/tcg/idau.h"
->  #include "qom/object.h"
->  #include "hw/core/clock.h"
->
-> diff --git a/include/hw/misc/tz-msc.h b/include/hw/misc/tz-msc.h
-> index 07112d8caa3..6cf4c6b09eb 100644
-> --- a/include/hw/misc/tz-msc.h
-> +++ b/include/hw/misc/tz-msc.h
-> @@ -51,7 +51,7 @@
->  #define TZ_MSC_H
->
->  #include "hw/core/sysbus.h"
-> -#include "target/arm/idau.h"
-> +#include "target/arm/tcg/idau.h"
->  #include "qom/object.h"
->
->  #define TYPE_TZ_MSC "tz-msc"
-> diff --git a/target/arm/idau.h b/target/arm/tcg/idau.h
-> similarity index 97%
-> rename from target/arm/idau.h
-> rename to target/arm/tcg/idau.h
-> index 0ef5251971d..e5736ad848d 100644
-> --- a/target/arm/idau.h
-> +++ b/target/arm/tcg/idau.h
-> @@ -25,8 +25,8 @@
->   * connected to the CPU using a link property.
->   */
->
-> -#ifndef TARGET_ARM_IDAU_H
-> -#define TARGET_ARM_IDAU_H
-> +#ifndef TARGET_ARM_TCG_IDAU_H
-> +#define TARGET_ARM_TCG_IDAU_H
->
->  #include "qom/object.h"
->
-> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
-> index a29eab6c915..68a1cbd6316 100644
-> --- a/hw/arm/armv7m.c
-> +++ b/hw/arm/armv7m.c
-> @@ -20,7 +20,7 @@
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "qemu/log.h"
-> -#include "target/arm/idau.h"
-> +#include "target/arm/tcg/idau.h"
->  #include "target/arm/cpu.h"
->  #include "target/arm/cpu-features.h"
->  #include "target/arm/cpu-qom.h"
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 3edc15c7b4a..00830b17248 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1750,10 +1750,10 @@ int aarch64_gdb_get_tag_ctl_reg(CPUState *cs, GBy=
+teArray *buf, int reg);
+>  int aarch64_gdb_set_tag_ctl_reg(CPUState *cs, uint8_t *buf, int reg);
+>  int aarch64_gdb_get_tls_reg(CPUState *cs, GByteArray *buf, int reg);
+>  int aarch64_gdb_set_tls_reg(CPUState *cs, uint8_t *buf, int reg);
+> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
+> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
+> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp);
+> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp);
+> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp);
+>  void aarch64_max_tcg_initfn(Object *obj);
+>  void aarch64_add_pauth_properties(Object *obj);
+>  void aarch64_add_sve_properties(Object *obj);
 > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 31e0a12a986..76f5909e902 100644
+> index 76f5909e902..31e1fd6cd51 100644
 > --- a/target/arm/cpu.c
 > +++ b/target/arm/cpu.c
-> @@ -24,7 +24,6 @@
->  #include "qemu/log.h"
->  #include "exec/page-vary.h"
->  #include "system/whpx.h"
-> -#include "target/arm/idau.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
->  #include "cpu.h"
-> @@ -42,6 +41,7 @@
->  #include "hw/intc/arm_gicv5_stream.h"
->  #ifdef CONFIG_TCG
->  #include "hw/intc/armv7m_nvic.h"
-> +#include "target/arm/tcg/idau.h"
->  #endif /* CONFIG_TCG */
->  #endif /* !CONFIG_USER_ONLY */
->  #include "system/tcg.h"
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index 8706dd59dd6..a4842a4b62b 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -17,7 +17,7 @@
->  #include "cpu.h"
->  #include "internals.h"
->  #include "cpu-features.h"
-> -#include "idau.h"
-> +#include "target/arm/tcg/idau.h"
+> @@ -1707,25 +1707,25 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error=
+ **errp)
+>      Error *local_err =3D NULL;
 >
->  typedef struct S1Translate {
->      /*
-> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-> index dc249ce1f14..02abd831e6a 100644
-> --- a/target/arm/tcg/cpu-v7m.c
-> +++ b/target/arm/tcg/cpu-v7m.c
-> @@ -11,6 +11,7 @@
->  #include "qemu/osdep.h"
->  #include "cpu.h"
->  #include "accel/tcg/cpu-ops.h"
-> +#include "target/arm/tcg/idau.h"
->  #include "internals.h"
+>      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> -        arm_cpu_sve_finalize(cpu, &local_err);
+> +        aarch64_cpu_sve_finalize(cpu, &local_err);
+>          if (local_err !=3D NULL) {
+>              error_propagate(errp, local_err);
+>              return;
+>          }
 >
->  #if !defined(CONFIG_USER_ONLY)
-> @@ -40,6 +41,16 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, i=
-nt interrupt_request)
->      return ret;
+> -        arm_cpu_sme_finalize(cpu, &local_err);
+> +        aarch64_cpu_sme_finalize(cpu, &local_err);
+>          if (local_err !=3D NULL) {
+>              error_propagate(errp, local_err);
+>              return;
+>          }
+>
+> -        arm_cpu_pauth_finalize(cpu, &local_err);
+> +        aarch64_cpu_pauth_finalize(cpu, &local_err);
+>          if (local_err !=3D NULL) {
+>              error_propagate(errp, local_err);
+>              return;
+>          }
+>
+> -        arm_cpu_lpa2_finalize(cpu, &local_err);
+> +        aarch64_cpu_lpa2_finalize(cpu, &local_err);
+>          if (local_err !=3D NULL) {
+>              error_propagate(errp, local_err);
+>              return;
+> diff --git a/target/arm/cpu32-stubs.c b/target/arm/cpu32-stubs.c
+> index 9e50bb1b0b5..d42b1a5d6a6 100644
+> --- a/target/arm/cpu32-stubs.c
+> +++ b/target/arm/cpu32-stubs.c
+> @@ -4,22 +4,22 @@
+>  #include "target/arm/cpu.h"
+>  #include "target/arm/internals.h"
+>
+> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      g_assert_not_reached();
 >  }
 >
-> +static const TypeInfo arm_v8m_types[] =3D {
-> +    {
-> +        .name =3D TYPE_IDAU_INTERFACE,
-> +        .parent =3D TYPE_INTERFACE,
-> +        .class_size =3D sizeof(IDAUInterfaceClass),
-> +    }
-> +};
-> +
-> +DEFINE_TYPES(arm_v8m_types)
-> +
->  #endif /* !CONFIG_USER_ONLY */
->
->  static void cortex_m0_initfn(Object *obj)
-> diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-> index 2127d456ad6..73d21c6cf7d 100644
-> --- a/target/arm/tcg/cpu32.c
-> +++ b/target/arm/tcg/cpu32.c
-> @@ -12,7 +12,6 @@
->  #include "cpu.h"
->  #include "accel/tcg/cpu-ops.h"
->  #include "internals.h"
-> -#include "target/arm/idau.h"
->  #if !defined(CONFIG_USER_ONLY)
->  #include "hw/core/boards.h"
->  #endif
-> @@ -899,17 +898,10 @@ static const ARMCPUInfo arm_tcg_cpus[] =3D {
->  #endif
->  };
->
-> -static const TypeInfo idau_interface_type_info =3D {
-> -    .name =3D TYPE_IDAU_INTERFACE,
-> -    .parent =3D TYPE_INTERFACE,
-> -    .class_size =3D sizeof(IDAUInterfaceClass),
-> -};
-> -
->  static void arm_tcg_cpu_register_types(void)
+> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
 >  {
->      size_t i;
+>      g_assert_not_reached();
+>  }
 >
-> -    type_register_static(&idau_interface_type_info);
->      for (i =3D 0; i < ARRAY_SIZE(arm_tcg_cpus); ++i) {
->          arm_cpu_register(&arm_tcg_cpus[i]);
+> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      g_assert_not_reached();
+>  }
+>
+> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      g_assert_not_reached();
+>  }
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index a93ad2da5ad..b38a78aac3f 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -60,7 +60,7 @@ int get_sysreg_idx(ARMSysRegs sysreg)
+>
+>  #undef DEF
+>
+> -void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      /*
+>       * If any vector lengths are explicitly enabled with sve<N> properti=
+es,
+> @@ -121,7 +121,7 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+>               * Disable all SVE extensions as well. Note that some ZFR0
+>               * fields are used also by SME so must not be wiped in
+>               * an SME-no-SVE config. We will clear the rest in
+> -             * arm_cpu_sme_finalize() if necessary.
+> +             * aarch_cpu_sme_finalize() if necessary.
+>               */
+>              FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F64MM, 0);
+>              FIELD_DP64_IDREG(&cpu->isar, ID_AA64ZFR0, F32MM, 0);
+> @@ -336,7 +336,7 @@ static void cpu_arm_set_sve(Object *obj, bool value, =
+Error **errp)
+>      FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR0, SVE, value);
+>  }
+>
+> -void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      uint32_t vq_map =3D cpu->sme_vq.map;
+>      uint32_t vq_init =3D cpu->sme_vq.init;
+> @@ -408,7 +408,7 @@ static void cpu_arm_set_sme(Object *obj, bool value, =
+Error **errp)
+>      /*
+>       * For now, write 0 for "off" and 1 for "on" into the PFR1 field.
+>       * We will correct this value to report the right SME
+> -     * level (SME vs SME2) in arm_cpu_sme_finalize() later.
+> +     * level (SME vs SME2) in aarch_cpu_sme_finalize() later.
+>       */
+>      FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR1, SME, value);
+>  }
+> @@ -548,7 +548,7 @@ void aarch64_add_sme_properties(Object *obj)
+>  #endif
+>  }
+>
+> -void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      ARMPauthFeature features =3D cpu_isar_feature(pauth_feature, cpu);
+>      ARMISARegisters *isar =3D &cpu->isar;
+> @@ -666,7 +666,7 @@ void aarch64_add_pauth_properties(Object *obj)
 >      }
+>  }
+>
+> -void arm_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+> +void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+>  {
+>      uint64_t t;
+>
 > --
 > 2.53.0
 >

@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 218E4CD4F25
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 15:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20922CD4F25
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 15:56:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNukc-0002qR-I1; Fri, 15 May 2026 11:46:58 -0400
+	id 1wNusg-0004eN-Pc; Fri, 15 May 2026 11:55:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wNuka-0002q2-RV
- for qemu-arm@nongnu.org; Fri, 15 May 2026 11:46:56 -0400
+ id 1wNusR-0004cP-5V
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 11:55:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wNukZ-0005fl-C5
- for qemu-arm@nongnu.org; Fri, 15 May 2026 11:46:56 -0400
+ id 1wNusO-0008Np-Oe
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 11:55:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1778860012;
+ s=mimecast20190719; t=1778860499;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YvOUScZZ/Xv4TAXhr6Aj3DCRwHhk5SYpQlDYhFoqcQE=;
- b=hIecpRQskD0Ublyhw7GM3bvRhhyGsvzd27QIRd6uwK2KU72UZNn5DpIptrzjOm1UaAdCxO
- dOtzYVRqQCBP2E++JEJ3qx/fVoIt3OoQvWl8zBcyjdHhq4PTc2G+SHZdsNSJ03AVLZLF22
- xPturAyJNgerT0D+BMvTlhyMdKnXx1M=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=A97hbXYKzUL1GQXcULFqEomdMtwQ7TyYIOUUyECdXM8=;
+ b=NS2hX1Ba79JzrP+fffepBxNaZDSPKFj6gpilMcTZ9WLK1LwWtvcgvAwWYkkazLITKgCG84
+ XL7O5/nqD2kJOcv0FZI9IDJNsPMLStchunw6c/ux8TfLxgy5WhkvLcMDmb0Nhg431ItvDw
+ EZaCkEE22v0ct6n7DB/dQtNNY4oOp2s=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-275-Qldr9kdFMpKhvSaNotnN3A-1; Fri, 15 May 2026 11:46:51 -0400
-X-MC-Unique: Qldr9kdFMpKhvSaNotnN3A-1
-X-Mimecast-MFC-AGG-ID: Qldr9kdFMpKhvSaNotnN3A_1778860010
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-48fd3dbd16aso25388095e9.0
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 08:46:50 -0700 (PDT)
+ us-mta-489-1SV3usDSMJylIeWnFsdEig-1; Fri, 15 May 2026 11:54:57 -0400
+X-MC-Unique: 1SV3usDSMJylIeWnFsdEig-1
+X-Mimecast-MFC-AGG-ID: 1SV3usDSMJylIeWnFsdEig_1778860496
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-48fd9c22b8fso15363485e9.3
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 08:54:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778860010; x=1779464810;
+ d=1e100.net; s=20251104; t=1778860496; x=1779465296;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YvOUScZZ/Xv4TAXhr6Aj3DCRwHhk5SYpQlDYhFoqcQE=;
- b=SAbY1a3wlsA2Iea1XPSF/E47dzC6UindnjK2BCDoazm2O20IDor0dXTvKEEuVg0Z7d
- UPFThZNZv1r55Ii0C4HQtzUGTh6mx1sNfUPF5PSgxSFNbFv8BSZ5j5jESO/6qQY6IA2u
- g1krJLajkFca1W9yxiOBRyq7tuRKbDAduGK53nd5L7yBXsz3EhoQkEve1AAEPEjTZeaa
- uUHiW5sMR012JAN6bxfMey+UQceZTGggwtpMHGWIZBoJr3+JbnM4f3k19+ZaXnT6UtLN
- HF9v1zpm5SyAg4Wz7iUuXL31REU6s9k2Hw72Jg3tbnI77SRxWwAZInJia/Wu5cKQlJvb
- UPnQ==
+ bh=A97hbXYKzUL1GQXcULFqEomdMtwQ7TyYIOUUyECdXM8=;
+ b=mtq304f9Qynqm+Yc6G3RAOJEoZokcqqejK/V0hPBjf19y5ztoabZGpy+2W9Mm8yE5L
+ XCBawMA/+tY7kx+PP2cAyD6kPSBvgZMQgrLix/VIMHOn8kpzxm9367ZiwkyedvyK/nBp
+ qRy9i7N8Q/TJflxo3/+ai8ZGi6r/tvDXMN0GDtSRAV7h71KO2BGvzbIaZKwyveEZfiGB
+ AyRKWSB/dYN1jhbh9ojeJpsBbtOFpEJXcr0SJJTTQJ2NK6c4VL+pu4uUKvLp7NWnsl7G
+ 2DYGtbiGunr/FooXpduhGjMvOx4UxZI4+vtT3jZW5Siqjem88RoPw9RP8yjRZpscn/lE
+ 9Nzw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ972nW64k3UlKCtmA4mK3JXjRdmhybt2Ci8LIxjtBTGrqevYodwUSGUQmb9Pz8lcVaGPcC6rLNuHQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6s9zaKFcQkzoCpLTE61SBkO5t3m6Wh1kIzgLGvMQfQebDF+wh
- KIGDslHH737Gxsb8hObx85rYvm98IAKSl5/0/miCdRcHGRrU4deYRr7drgpWOVVfP1Ls3qterBD
- YL0viSP2dI7dnSFYd/bReZ9DKBlxT3Iga2QJQGiQbbfsbbtsUn5Y19g==
-X-Gm-Gg: Acq92OEF1a0j2NySn6ehj6oqyxbiSiAySbuRnrRwDjktkTyRoBw0h8ZBD57tHQaVMdF
- pboxRwY4k3/wrQkSyogim35SRdNiFUr8KhLb5FzYvZ2TA8Oogfr61yx0//0hjYIXxU/3HZzBNOi
- 3Pb8+YKXDtAt+J3xEP3dRqC9rrirof1M7o/WS6W73bNHOy2osHpl+BVSCjtbsMUM3CRM2ywrwBK
- /ayARAuC2kALT/FC3m/0N7dz8aLxRXgGvM7aZ0iv7rilt/2/vm5Rur+JTTj99CB1zahCIZ8lZ/1
- seaqrhmvjAanc2pS5+ElVdvE3B/Kseh8ehAHG+gg8Oa+GfCQyuanyQk0PDMg1X+cRzk/eEJ6brG
- KcgrUbUM6ujxe6XDgAa55oaRTqruh5Tr6hfIYvsmQH7ZQUkS7YAD6ym1UG7dwK8O/geF7qg==
-X-Received: by 2002:a05:600c:8189:b0:488:ac01:72b6 with SMTP id
- 5b1f17b1804b1-48fe6323addmr69927715e9.21.1778860010030; 
- Fri, 15 May 2026 08:46:50 -0700 (PDT)
-X-Received: by 2002:a05:600c:8189:b0:488:ac01:72b6 with SMTP id
- 5b1f17b1804b1-48fe6323addmr69927295e9.21.1778860009715; 
- Fri, 15 May 2026 08:46:49 -0700 (PDT)
+ AFNElJ+6mGL4LQfq68Ln74SupC7WIFeJrW4VHn2Ho2ntzLV7X5RK85dariXjnfJSvFqtW50iQzP0i+utAg==@nongnu.org
+X-Gm-Message-State: AOJu0YyvIJWDbw59xhMVd8ACT2R70Np+s9fOPYQXDnsKpdQfxbHCP6l8
+ kGISBJUcYD4YLIUP7hizJBSxhLttbQjrT0pTm8qLZqAZdL4ax4EMS2fN45Dvc0YqbNL00C2E7Bv
+ WsyBZfGtPnJNo9bVN96KMNRaz4Kpb6lc8+4F48+oWuBrQUFvYreJdaw==
+X-Gm-Gg: Acq92OE8OCWmNKkCl38xcNF31ZJdzCkqGpld/qJsHxMGc9iQbp9TDdYXDfzYBoB6Y8d
+ mC9SxUnCMlczv7MC+OmJNZH8YkyIbrs3quMm63ctA9kemF6vtWxpujfG3JHog+HkQkapjeD8YS2
+ FNCmUngXT0mNF/sdZdEkgGRbbiD7RHcdMWbwa6ebrNw70CWnhOEuMo5xwkw9aL79F+kloVmWRZg
+ J515Hwp9SLzsUeyAOknqbITyI2jKNCBoww4SzAAAkmi8tEjGK6grae/0V+SS6AyOacSI7/96Tpe
+ afknxcaa2HPrBWCM77qPN1ib8JJmQ2NtBzGptiA1Map+jcR5FhB1m2Aj0vVN/nMYu0qAkxP0U7f
+ J7xVxdbg119IIKKstzqN4GH6rsxQ76Uno0zNiWtJDVUVcgJ2+/Jzh2awVMie+YCIAqHbEgg==
+X-Received: by 2002:a05:600c:4692:b0:48a:592c:e632 with SMTP id
+ 5b1f17b1804b1-48fe6325f18mr69509055e9.16.1778860496306; 
+ Fri, 15 May 2026 08:54:56 -0700 (PDT)
+X-Received: by 2002:a05:600c:4692:b0:48a:592c:e632 with SMTP id
+ 5b1f17b1804b1-48fe6325f18mr69508315e9.16.1778860495789; 
+ Fri, 15 May 2026 08:54:55 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45d9ec39ff1sm15937194f8f.10.2026.05.15.08.46.48
+ ffacd0b85a97d-45da0a1a22csm14852814f8f.19.2026.05.15.08.54.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 15 May 2026 08:46:49 -0700 (PDT)
-Message-ID: <338ec6f3-499f-4232-9049-17118209c05f@redhat.com>
-Date: Fri, 15 May 2026 17:46:47 +0200
+ Fri, 15 May 2026 08:54:55 -0700 (PDT)
+Message-ID: <1d4360a0-0611-4b3d-a7a6-3815d57a1d6d@redhat.com>
+Date: Fri, 15 May 2026 17:54:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v1 05/13] target/arm: named_cpu_model: replace FIELD
- macro with IDREG_FIELD
+Subject: Re: [RFC PATCH v1 02/13] target/arm: named_cpu_model: Add ID Register
+ Fields
 To: Khushit Shah <khushit.shah@nutanix.com>
 Cc: Shaju Abraham <shaju.abraham@nutanix.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
@@ -98,13 +98,13 @@ Cc: Shaju Abraham <shaju.abraham@nutanix.com>,
  Prerna Saxena <prerna.saxena@nutanix.com>, Jon Kohler <jon@nutanix.com>,
  Jonathan Davies <jond@nutanix.com>
 References: <20260513163356.3033159-1-shaju.abraham@nutanix.com>
- <20260513163356.3033159-6-shaju.abraham@nutanix.com>
- <2a1eb06f-1293-4d6a-8354-445891ba36ec@redhat.com>
- <A84C8759-6EF8-4DFA-B5C5-A4381022F81C@nutanix.com>
+ <20260513163356.3033159-3-shaju.abraham@nutanix.com>
+ <0b9d0320-96ab-4ccd-9440-0c0494af5aaa@redhat.com>
+ <189B12F2-68DF-4442-8657-D5F295F710DC@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <A84C8759-6EF8-4DFA-B5C5-A4381022F81C@nutanix.com>
+In-Reply-To: <189B12F2-68DF-4442-8657-D5F295F710DC@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3pEcv0XTYrpYJNEbl4OYMeFP_M-NvDbQr6Bpulvq5rE_1778860010
+X-Mimecast-MFC-PROC-ID: 2tg0_J5aiwN6CH-DsWJb1pBydf2dZEQESijXASEwPfM_1778860496
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -136,21 +136,73 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 5/15/26 5:36 PM, Khushit Shah wrote:
+On 5/15/26 5:27 PM, Khushit Shah wrote:
+>> On 5/13/26 6:33 PM, Shaju Abraham wrote:
+>>> Add a declarative description of every architecturally defined field in the
+>>> Arm64 ID registers in cpu-idregs.h.inc file. This file will be included
+>>> multiple times with different definitions to build the per-field arch values,
+>>> per-register field descriptor arrays, arm-idregs table etc. The architecturely
+>>> defined values for each ID register field is extracted from kernel's
+>>> arch/arm64/tools/sysreg file. The safe-value tags and default values are
+>> In the past we were rather advised to use AARCHMRS instead of sysreg.
+>> This is what is currently done in [PATCH v4 00/17] kvm/arm: Introduce a
+>> customizable aarch64 KVM host model.
+> I am not sure if we can get safe rules from AARCHMRS. Otherwise it’s fine.
+I don't think it is there.
 >
->> On 15 May 2026, at 8:58 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>> derived from the kernel's ftr_bits array. Aarch32 ID registers are added
+>>> with dummy field so they can be defaulted to 0 by later commits.
+>>>
+>>> X-macro structure:
+>>> IDREG_START(REG)
+>>> IDREG_FIELD_START(REG, FIELD, SHIFT, LENGTH, SAFE_RULE, DEFAULT_VAL)
+>> Why do you need SAFE_RULE/DEFAULT_VAL? As far as I understand this is
+>> used when we have different flavours of CPUS in SMP and we face
+>> mismatches between CPU features. Why do we care here?
 >>
->> MIDR_EL1 is also described in 
->>
->> target/arm/cpu-idregs.h.inc 
->> so it could be removed I guess. Please check others
-> I do not see MIDR_EL1 in cpu.h, both MIDR and REVIDR are
-> maintained separately in ArchCPU struct and are not in cpu.isar->idregs[] (or is duplicated).
-it is defined in cpu-features.h just after CTR_EL0
+>> I don't see safe_rule used anywhere.
+>> I see arm_idregs_reset_to_defaults() uses the default value though.
+>> Should we use the Registers.json reset value instead?
+> Kernel uses safe_rules to show a common denominator of cpu features in SMP and same rules are
+> used by KVM to verify if certain field value is valid to show to guest on the given host.
+> KVM_SET_ONE_REG validates the writable fields with the SAFE_RULE defined in ftr_bits table.
+OK so you plan to duplicate the logic at both qemu and KVM level. Can't
+we simply rely on KVM which already implements that logic. Also if the
+check is against a given host, is it relevant here? I need to look again
+at the kernel logic though.
+>
+> So, SAFE_RULE will be used in v2 to validate idregs even before we writeback to the KVM, and to
+> pass supported field values for a property on a given host to management stack (libvirt). Something like
+> feat_AES supports (off, aes, pmull) on this host.
+>
+> Registers.json can probably be used for default_vals, but I will need to check further on this.
+Registers.json gives the reset value and not the safe value, as far as I
+know.
+
+Manual import of those values from the kernel looks tedious and error
+prone to me.
 
 Eric
+
+
 >
-> Warm Regards, 
+> In short: default_vals -> show no feature.
+>                safe_rule -> valid values for guest given host values.
+>
+>> taking FHM field if I compare with sysreg I have:
+>> UnsignedEnum    51:48   FHM
+>>         0b0000  NI
+>>         0b0001  IMP
+>>         0b0010  F16F32DOT
+>>         0b0011  F16F32MM
+>> So why do we miss some values?
+> The table was created based on sysreg file in 6.18.
+> A script added the arch values. Register, Fields, safe values and default values are
+> maintained manually.
+>
+> Warm Regards,
 > Khushit
+>
+>
 
 

@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68BF9CD343F
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA4BCD4F25
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:16:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtKL-0004Yn-PZ; Fri, 15 May 2026 10:15:45 -0400
+	id 1wNtKW-0004h2-Cq; Fri, 15 May 2026 10:15:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtK3-0004Nj-KP
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:15:28 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1wNtKR-0004fZ-UB
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:15:52 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtK1-0005Ml-Is
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:15:27 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-44ccbd3290aso7593654f8f.2
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:15:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778854523; cv=none;
+ id 1wNtKQ-0005SF-7y
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:15:51 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-48e82c23840so51341425e9.3
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:15:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778854549; cv=none;
  d=google.com; s=arc-20240605;
- b=CBmQT1Z7bUOa2aNbd4PgSc+UrA83ACVwkN/BqFdSrfx5EyP/ZTWVZTdRRpGFHSkOhv
- q3zW+dTt/HyTtuG3kBOUsL3N5Qi/g+kkgo6xEsuaaSRN1K2g7hMmoi7Sv4hk0EsCC032
- eDy5hyhNsnn2lSJYnM9uD/DRR9dVmu/CXqeIZ6XGQGsQK376Mj9p5KC3itnqt1TPGmB1
- k6A+iT74HsiZZA9qsAXohYaaFXRa/h/GZYllSojGJ2aqMsJoiwNJNdijMNJ7Y9lH0NEO
- P2Zb7ZJF2AOzUeKFBxFp4Y84sLEtOou7Yb+fSOAMFwmbB2IrvIApJyAFWcDC0Yyy69Wb
- LlmQ==
+ b=Aazza+qJemHvkkjlvLkY3TAEYXB8BxUXCA4k+2g/etzIoV4JroQuAj0CExWHrfKwnw
+ n0uXWRvcvrmRvdAJhdF7w0H8wj74rre50ZAAAHCMzpEg//zC1GDxwGShQR74zQnASUCS
+ 6FYVI5UAVL7Wc50cy6V3/9NNXWGF5Y2u7978Lz0nNBpIZuTXEHAVeQeEcljs8L/NDSra
+ finXkBq8vJcvwzvpqgl/lgHcFJGU6uqyjwueW7KC2kBYItIVpchsytjA0wWDel0UUZDr
+ D4gKahE/4hDpULa29hBbq/CZ2944xaXdIJi6cnr6Bsxqo1LyrtqEvTzt4ozntFX676ak
+ qnUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=KpXZHB+kDlNhT0NyY42JfPpcBVeskn/dfBQ3/alXHXU=;
- fh=4jh/7NrZWcqf/NfGzMX//Y/nCzhLFNeupMCjAL/peLE=;
- b=VMEDgPPMM7ZBkKJaziSUV1CSCN6Uz2BsipmYNY7wKAbr92Qin5ACCqjGgAdcctlyc5
- UcwhQB5QewMFUPMUDw27KUMuoru4F7GEpCtj1IoU/TX8iLwDLnTlV1C6uFYX8Je0GJBx
- oQI64fAbtcKfGJ0RO9BnG7nrELf/Xs3YR7SMhLhxbxYsOl6z81PhQUaVywfhHDjzeFw4
- Pzu5MGUOyU7zCLmL+AJWTPSqC+ytp5HvfKq8EX/51dBlklXLGpyA8ocUw5uMiwkkwzxr
- GDiYrzBjFKxlgLFDOziR0JTZ1+Njfkc5dAaOY+1+M9b3qy37kKZCqj+l6b3ZplMdYync
- L72w==; darn=nongnu.org
+ bh=1d9w2+FoGd+jgDsmSJm8V0KL/IwlX9fOqPjHhF1Gaq8=;
+ fh=LYoSReHF6uBLnaqWAiybS9Z+uyPkeGphNoFBbfdBWj4=;
+ b=Jab8189tzKxHR7Up5hZNcbzvdRRubodnGl8RAupq3qiXBSuh+bUPRWWsFcKOi2Q4NB
+ a+e8OOZf+dZB1DKdW8p1wqtJ5aEjG8cTjnzqM0FRNIgGNm5GyqawbCRCG9uo90DrOgKT
+ NSMX9bpt3xzSXtz7rm45O0YxsUcdXqH197yxMvvyRlUet/WaPMjC2BKhqdiL9nEN9Pt1
+ kEqHf4DgCwQd/0ZykGU+AbVfmalXIBuUBvw8lf7OvTS4xugp4IjagD5o9M5T8EzLVmvs
+ 9+RF54Irrakbtg9jlTgR7sQh+dXlRZLGgvZAXws+a+0YsUV27QazIVlvgJeILhZlqkvU
+ U4Yw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778854523; x=1779459323; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778854549; x=1779459349; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KpXZHB+kDlNhT0NyY42JfPpcBVeskn/dfBQ3/alXHXU=;
- b=MD71SUcqW/QN8lV5kDnCo5lTj5Oyjlg9N8LxNA73+tiKVZuQXTGTFSNt5wfMLYnXc2
- mH6eGtmhm48IvF96JtLpu+eKDwR/n8pCBOZoY9ddFtKZw/pSDXAZJgM5GiFPR9eYBKxd
- xpCTaN484Ow5Lhn2e65QIaMh0/d22RC6nqRaW5pGkKInj0sOMU93aovdF9glL7ua3Tln
- 7MXtOS7pXQY1tYHPW2JPD4pWUA92EgP/3gJx7P/8CaCHzZOSreSFl7JN1JrIGnXWfMmk
- d4ObxLtGnG3Ne+HLWCtsuMtH6qWbE0umUSTPHZIpYhzrbMODr9ZzTG3Wrd0Swxc5UU+v
- B5aA==
+ bh=1d9w2+FoGd+jgDsmSJm8V0KL/IwlX9fOqPjHhF1Gaq8=;
+ b=zei09q3nlQ/DeVFzuVbaUbAMTL3qfzFLd1zncEx6iEHJOssY0pxOkrCZ7r6VPqYtEK
+ idFivpuQpdjb2HD8O3tQL8a8Ct80y3M7NPRiqi/SlQj2gHVq0xobrd7zCZlBGPmQdsac
+ aBf1DQQPjuTc9kRO+lKPlx9s6uXmd9GE2k2zQT5EP2kADbUHZeF+BPOcsKqjTAMJQAeI
+ FsJHOllJpSG9721OnIlopgNEH+YWnL3D0aVc3WjIQvsCdAjylHEHcIN/4Xoz+CKwMunM
+ g+GzLLUlnZ5rwYzWllrjqobMKpCU9wdr9Y4h1czloydd+/cICw2+XYMdKf9cFc47m5ME
+ g4Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778854523; x=1779459323;
+ d=1e100.net; s=20251104; t=1778854549; x=1779459349;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=KpXZHB+kDlNhT0NyY42JfPpcBVeskn/dfBQ3/alXHXU=;
- b=DdJHX4NAoXegRc/+Ifaxn/BoziHPDs6rrwxUgzuuPcsglhf+f0ml1wIdhHqzGgDqjR
- tf0fGIwfaQ7ItQiOpubfnfQtRWIiWqhwwmfEGx26DO7s6h3IQxQn5uEtd8EyAcYDMwD3
- pOw3SJcyM0pqtnEMbOj3uBaTDouK8r/yxS/ubs/AhWq00USgNKN6yqs2/lulf2pKFX5i
- PGONymwVfDj+5iPwDlOWezWqba32I79JMVO+gNxI/WiyUrbVjLG9v+DflWrsT8hWzAQ4
- AsB4yvqC4d5xxberVkB9z2zrx67U0I0zmMpXqLrt8r4ROtNVjsfYdjC84iZX5iJS3JHB
- jAvQ==
+ bh=1d9w2+FoGd+jgDsmSJm8V0KL/IwlX9fOqPjHhF1Gaq8=;
+ b=VAe95IniU/DCjaexhcGYqCgHMNjYpEld5aLc69So8lkOFo1ZRn83VtJBRuiOFnW9wC
+ O1UOs3Z7uEPU2O0pOD5iIbbLBgVSkSpvwq8K7eCVmo7mnOMJNQbungwACwMMjNmD3ukb
+ 5+Vbg+vR0Mmmdwayv26OM1AfZk04yOHb+LEE8SwsyuNgUpg/KhKT5DnvGnzpXLHzsNHG
+ 5BzHoZowSToS7knDQLU/u+npsWzy6gVCtQdgOTdgJC4GTGIXs/yBe1Fa3Pr0KxWT+t52
+ 1yMfhD75YSeV33D5fwTVnzJkKF3XkFk9ItiI97YxENVnhEA58OHbAlbBNE9+k8Sd3Heu
+ 3z3Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8yMXwHdRZ+yI+97PanJftdcYAuqTKPX96zYrsQFONV4LEIttmajXlvk5rABHS7rs/GztmATMifdQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzQe85yOBuRDjxX8qquyc9F3QUfanKVqrOgvrt7T08p9sSj3zDC
- hdMGNudBCbS89H/Q4fuUvkgWxiGtgqrXSmJqEMQY3T3bLEbC1jOHxhDXEFVaKEj7dt+sotCUndp
- AtlzL6RdDHDiYa+AZD4J0BPc2YJniLRHwTFuLXS5xaA==
-X-Gm-Gg: Acq92OFia09Gf9XSDfRbyf9Sxcf/Sve2iByCaTotvrCX6avcH2SuQNuyoWrv994ZHvW
- n087sht9BjdD3WGh4BxfrBBeTdGgMmzdDBGJ2rUdbxew2Oa0Cs6UGsEjOS4itC9TfHcD844P6G2
- nsHfxynkV126XBZh1Hh7DJ28P60O/QqkM9j6LBfOsry+pqW5vk+Se4Wj16oAiEaZwypsGEbDDvR
- SXg9IuD9PBAhF3kFPKDS654yNj8T1JL2je1MuDu85ZdK+zL8MmfuX7jpu1tXctbqyFoY4i/4O9s
- EshVo7IJsE/090wDI9bgwtCZRuul/KqqdqtU5LX4xcexFgh4QQ==
-X-Received: by 2002:a5d:5d85:0:b0:441:2335:ac3f with SMTP id
- ffacd0b85a97d-45e5c59f46fmr5588686f8f.31.1778854523383; Fri, 15 May 2026
- 07:15:23 -0700 (PDT)
+ AFNElJ+ivKA0rytgznqR4YNHv6nBMJJ2YpeDGJ/MzSfe6QarNm7gaQggvYQGlcUOJyNwr/tn6ulNVB6MyA==@nongnu.org
+X-Gm-Message-State: AOJu0YxRvdCZC1XCmgT3OzGb/dWPqCiwoAX4uVcmPLyN3DFQ8Hg89cDR
+ ZbofhYCqCjRLSecOZEK3T2zcQAKXTfAm8ZA2I5Ivn+NzX/6qMvY1jxLY3BU0qnkCh1J+MN4pLUa
+ qA22FRCdMbiVEGkUEbl85XS/XSaBUMkGtSoEtKXdCig==
+X-Gm-Gg: Acq92OGW8Ebw11MXC5mglHCG4B7X5GaD8HQvc367BhxJaMVaaT9R281NJKGEIhi7JHo
+ ZPJJd35S+s64aBv/hxSfSlteUZKGG19UdbJUFLDcVTtUfoUhJ04chzPtY5YaPTWmc0Pf44i4yOq
+ vwmrrt1GceXCD3zeG+oPmSB+2uqLGaARy7Nry75VWbDU1Gou3sqM7cvTugq3B3NgU5vUIyimyCw
+ z7ZSgDCruTckbjKY+uPbiALFMJEqfaaCWc2ajFbi8I22UfSnu5/rPrzxbjq2DdJb7GrgB/IC67t
+ D+PNCWi2HCuNj9g5smLIromexxuwPYHD2JsE6HLGNApBKEoG/Q==
+X-Received: by 2002:a05:600c:354d:b0:48f:e230:72f9 with SMTP id
+ 5b1f17b1804b1-48fe662a15cmr52279165e9.30.1778854548663; Fri, 15 May 2026
+ 07:15:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260515141032.3271-1-philmd@linaro.org>
- <20260515141032.3271-5-philmd@linaro.org>
-In-Reply-To: <20260515141032.3271-5-philmd@linaro.org>
+ <20260515141032.3271-3-philmd@linaro.org>
+In-Reply-To: <20260515141032.3271-3-philmd@linaro.org>
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 15 May 2026 17:14:56 +0300
-X-Gm-Features: AVHnY4IxwooRJB8jhnP3pElR_5TuYYNfIw8UutdaZgwIQDOpOMZH6MnuQbP0Cpw
-Message-ID: <CAAjaMXaNxSGQqoRaYr7FFQmH__9HvFoesUd-+h5u8NSnX7VZZQ@mail.gmail.com>
-Subject: Re: [PATCH v6 04/20] hw/arm/aspeed: Initialize 64-bit CPU types
- during DeviceRealize()
+Date: Fri, 15 May 2026 17:15:22 +0300
+X-Gm-Features: AVHnY4KxUoiTXLy6v457wFnHOe1l4XGFsG5OkaTn0uvdLNPjkFS8n_GtdCZRcQE
+Message-ID: <CAAjaMXaaFZmYys0Kw6p3Bfb-qzWD4Jy-+Q7igpqJPNPKtbkkmA@mail.gmail.com>
+Subject: Re: [PATCH v6 02/20] hw/arm/raspi: Initialize 64-bit CPU types during
+ DeviceRealize()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -103,15 +103,15 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,57 +127,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, May 15, 2026 at 5:11=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+On Fri, May 15, 2026 at 5:10=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> aspeed_ast27x0.c models 2 similar SoC based on a 64-bit only
-> CPU (Cortex-A35), only available in the 64-bit binary.
+> bcm2836.c models 3 similar SoC: BCM2835, BCM2836 and BCM2837.
+> The BCM2837 is a 64-bit only SoC (Cortex-A53), only available
+> in the 64-bit binary.
 >
-> If we build this file as common object, these SoCs become
+> If we build this file as common object, all BCM SoCs become
 > available in both 32 and 64-bit binaries; however when running
-> the introspection test on the 32-bit binary, the init() method
-> tries to init the Cortex-A35 type -- although not realizing it
-> -- which is not available. This can be avoided by deferring the
-> CPU type initialization to the SoC DeviceRealize step (this is
-> safe because nothing uses the CPU type before, only the GIC
-> access them, just after their realization).
+> the introspection test on the 32-bit binary, the BCM2837 init()
+> method tries to init the Cortex-A53 type -- although not
+> realizing it -- which is not available. This can be avoided by
+> deferring the CPU type initialization to the SoC DeviceRealize
+> step (this is safe because nothing uses the CPU type before,
+> only the GIC access them, just after their realization).
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
->  hw/arm/aspeed_ast27x0.c | 7 ++-----
->  1 file changed, 2 insertions(+), 5 deletions(-)
+>  hw/arm/bcm2836.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 87dcb82e1b0..e50125bfeec 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -418,11 +418,6 @@ static void aspeed_soc_ast2700_init(Object *obj)
->          g_assert_not_reached();
->      }
+> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+> index ee2f44debd1..03825e69d06 100644
+> --- a/hw/arm/bcm2836.c
+> +++ b/hw/arm/bcm2836.c
+> @@ -25,12 +25,7 @@ static void bcm283x_base_init(Object *obj)
+>  {
+>      BCM283XBaseState *s =3D BCM283X_BASE(obj);
+>      BCM283XBaseClass *bc =3D BCM283X_BASE_GET_CLASS(obj);
+> -    int n;
 >
-> -    for (i =3D 0; i < sc->num_cpus; i++) {
-> -        object_initialize_child(obj, "cpu[*]", &a->cpu[i],
-> -                                aspeed_soc_cpu_type(sc->valid_cpu_types)=
-);
+> -    for (n =3D 0; n < bc->core_count; n++) {
+> -        object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
+> -                                bc->cpu_type);
 > -    }
-> -
->      object_initialize_child(obj, "gic", &a->gic, gicv3_class_name());
->
->      object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCU);
-> @@ -701,6 +696,8 @@ static void aspeed_soc_ast2700_realize(DeviceState *d=
-ev, Error **errp)
->
->      /* CPU */
->      for (i =3D 0; i < sc->num_cpus; i++) {
-> +        object_initialize_child(OBJECT(dev), "cpu[*]", &a->cpu[i],
-> +                                aspeed_soc_cpu_type(sc->valid_cpu_types)=
+>      if (bc->core_count > 1) {
+>          qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_pro=
+perty);
+>          qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count=
 );
->          object_property_set_int(OBJECT(&a->cpu[i]), "mp-affinity",
->                                  aspeed_calc_affinity(i), &error_abort);
+> @@ -65,6 +60,11 @@ bool bcm283x_common_realize(DeviceState *dev, BCMSocPe=
+ripheralBaseState *ps,
+>      BCM283XBaseClass *bc =3D BCM283X_BASE_GET_CLASS(dev);
+>      Object *obj;
 >
+> +    for (int n =3D 0; n < bc->core_count; n++) {
+> +        object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
+> +                                bc->cpu_type);
+> +    }
+> +
+>      /* common peripherals from bcm2835 */
+>
+>      obj =3D object_property_get_link(OBJECT(dev), "ram", &error_abort);
 > --
 > 2.53.0
 >

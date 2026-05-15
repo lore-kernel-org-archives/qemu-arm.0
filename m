@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C724CD343F
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 08:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B99CD4851
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 08:12:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNncd-0006Wa-Rq; Fri, 15 May 2026 04:10:15 -0400
+	id 1wNneC-0002SY-8a; Fri, 15 May 2026 04:11:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNncc-0006TF-LB
- for qemu-arm@nongnu.org; Fri, 15 May 2026 04:10:14 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1wNneA-0002Oi-RA
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 04:11:50 -0400
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNncb-0003F8-1C
- for qemu-arm@nongnu.org; Fri, 15 May 2026 04:10:14 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-651b4d09141so1467393d50.1
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 01:10:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778832612; cv=none;
+ id 1wNne9-0003sG-6o
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 04:11:50 -0400
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-65c2cd216c9so10410108d50.3
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 01:11:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778832708; cv=none;
  d=google.com; s=arc-20240605;
- b=RJQTS8QwTD1aO82MrF/KwQgdDKRaiQWpu7XSrkJxwzieCzbkJqSKGN3ImSUwP1e1Sc
- ni9HeVaiq9JYpmNFHI9bdDgDWMCv6RXoM7FVsTtf+m9H1PAPdeMCLS62XxsUSpKI8bQh
- fub5vUjsXsDfkWrVBN1/9VM2i1LxwNjNOpcAQDfUbk1x+dligQGOQHivauzvB9ZUsJGd
- wx34nCk6Fi4nyxA9lulgHGfjLFrcoWjh1PVvrgOFn8e/+IZEm7i4Pkq5/HMOamYCt0hC
- JC6mqmtf961cmSUVaQqPMPs61kSYvPhhiQmBjerqI9wA3HbXJoOyey0LE64kgQHtKBef
- aZDg==
+ b=K0n4rm4up7lWOyrp0hCm7N2pnin6NkHRnkk9xmKQnRIHKFlSxtt0AWwbqzjQ7puOP5
+ b4MsATyKXmrEAQX+1nfCPrZg17qXVuzrvXnYgbcV5wLdvmkoNtZsjrij9gTfv+2xa1VD
+ GutunZirOYRDcHj38+bzu78XcaKzEgDIE6q7RIqGH4bCadmRBZQgy9P8JwJqjlJdsbA8
+ ZceqHsDQuHSduVhHALgiAPM5V7lF3F/D/CtjC5dfUf9i3R8nzBKCcS8/CHyhlkkVw1ag
+ v3WSEGIzCfXlbUd1aBcqnU08zzSJtB/w7QKDGhuXnzz9LHrK5k6QR9LOBtsVLlMPnmiq
+ Dzcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=d5k81WlaxgiwhjPZuLN9+Zyth4LlK2+5FnTxOpjqhA8=;
- fh=PMBWxEpNylEPJMDsynKrBKwNrWlhU8CezWkXYHW4uAY=;
- b=aRAU6XJG0qcIcv1V1NN2t7TrSAk4eI0xWqEfy69KMaIRMegmS46IbcdvxLwi7oYKV5
- GADDBvk1iXaizHl5DBySZIZ4C719rONfS4ksNWBMmh+/mOhmp/wOYD540knpEEbukWHV
- nSEMpoT2Jlc8ATc+RkkmTo6MTyIN1Gf0iHm4f6lChIa/CN/eo/BUl8wswJGzOiSIrzHz
- otGc6MaFOrBDJJ0nfvJBKHXAMn0h0fryb7bqnP+fUDjtiCnxcPiM6FHYzp6OEU8VoRhf
- ZnnyU4LwcUit7Wpk0Bss83LyOUrR2Iak2rYKrgNrKtsE48lqzas+3FBMKjdcre34FR0Q
- 3fwA==; darn=nongnu.org
+ bh=ZDR/TctYAg7dyCpCTZzxSFUFUkHrHKvXimU1RucBfc4=;
+ fh=8RkjfNBjWO3naoExImlI+rzf8sVgUZS6b1nIKZSI4m4=;
+ b=go2xF9LN0Cj5C3dSwSZs5275a8lx8wQWEPv7hraxmRFA0QxL3iOSkHnIr9OSn/Sfkq
+ JVEbhprFl0hvKWK1r+q25s5FEsspWiDZfrOBXfuAONtG8nhDOwfcLJxGvadcY3tGvQdV
+ vYN2fkoLiL9U4QENw2pr6pYFe8DTPHaXx1cmBbkT2rJ0WhRLej9HhbviG/ziH0sKqKZI
+ RrCmDX9VRTeHynuKvi+0e9vr4HYeQk2ggDJZ8sw04BlONx2o/Y8cVi9E3eozrDD59WmC
+ KSMO7ANFBnqKDZ0vVW2XN6vEi8eAFfyTG6g8JuSknNZTUZ1RKmfGDJSVOouK2P4Q3epb
+ np/w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778832612; x=1779437412; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778832708; x=1779437508; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=d5k81WlaxgiwhjPZuLN9+Zyth4LlK2+5FnTxOpjqhA8=;
- b=WbAr9EWkd1VQFmGwQOMs+RGheSdz4TZz7Wnkj0X6/2HJIHCrF8jxjEFdQJIkszlvT3
- 99mRrDaDG5qEAKlFwath5TJjGWszAwY4AS+Dk4GChqf8Q44Nuh940zQN+d2qgYMjrFES
- cE+Zqm3VvpK6zkAI/MKJSLqg/H3WSz23Ut4YoD2frX0Y/j3yBrWoP+Jf4f4Ni3zoxssM
- t0LT6j1q0TSYSccgqLU2A2rEH4Eu1oNCeBBeEd27odlMYQuuU0n7Sh7OzMSbRwT5bvaG
- XVPNKrWFsG8INBu5+/KRuSknP7iI5r15UuChLX7Bhj9+evhncZJcDPWrAwP+7LuqN2EP
- EWTg==
+ bh=ZDR/TctYAg7dyCpCTZzxSFUFUkHrHKvXimU1RucBfc4=;
+ b=yKJUVe5buHJ6qj7hNfeLAg7qW0ES0MgltTSJG2KOUgKzX/y156ivJJtlbtktFKZwAm
+ AVZ3C2SmAYnB+Z0ODUvUpDYrsVIn5+4ZUet/2Wc/su+iLwXvDokQQzQ5lSQzqH7yR68V
+ MRP68A06V4mfh/vs/iDdsz5Om5a7itj4kRf6vIvUkfVYmIv2e1RH3a+oZYTqCPzowRPx
+ QMFbmznuBx5wpEXk0Qt5OB9yzZ8xkNQupb27Tbp5G2GvessWmNs3lQRxrHYeSt1OaE5b
+ iIZiAJ8pV9Pjv3I60vwby6jQ6w+/yFwd9fARzOj2ItyTcge0p6hoMje/Ux4+A2x9l49U
+ 66PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778832612; x=1779437412;
+ d=1e100.net; s=20251104; t=1778832708; x=1779437508;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=d5k81WlaxgiwhjPZuLN9+Zyth4LlK2+5FnTxOpjqhA8=;
- b=NXnTLwErC5iIr9R5Xry0VMPEBeOmGgJwv6LFA3ZOKzw8JCK3eh2eoUHPdw98swWr2V
- eT7x4truKSZe8skLdjQ7QJXGxuN5boQ1iOQXyfUX4HVK/rIL+ljx89UeTO2F/whKkt3s
- NWwTlbqhMGGdCBzdGh6azkDn8rCcQfKMwiWCEDIbQH9hmhhm1teY2JR5NYu1XqdVA74P
- LnN+xynudLeNkzHoH31EW0MyayKNYa9Hn7k87zdOkdWtAF0rHPY46eZ/wfdXTyI3YmSf
- GJSDUNn6kBvDhAot8FTUcL4QFA87ZJOqptIaDcCurPeaTEen+mS/M/+LYuuOT7lHZL5R
- imtA==
+ bh=ZDR/TctYAg7dyCpCTZzxSFUFUkHrHKvXimU1RucBfc4=;
+ b=VPKV+A0VCX/qKIe1sK4yqFbL1TimPwOp+MYRyWegOZMSeVC9odeikwM8cQ1qiNrpR2
+ b7MAH+mBkYgiQR2+zzdRNmt9XtthxBzLFhMM4HZKCGtANQIbsYo0FLOvgaplDxOSlY9E
+ 1hZUHMHp+7p6fgDNM0cZxBNJbaPffkuNrQ0NwVZCf5trwT7u/dDhTEA1R5oct7U6i/Im
+ LKfbbXwU/hnNcDRD93hGZ8azUVZALEU/SdnwmArJEwWMtCWJXWlI6QFFquTJRW6Y0XBN
+ gqiXYedgLusx/nyaHRnqWfgvbz6yePvDZMD9pgrQD18sOFrIDTKKE8fGwvPFaGGrLPtf
+ WUrg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9o8XOw07p5GJKfet483AlJBjF9pAINl/8/CQpX19DbfNu2KtqlcvwBgNmESf6bOU02vXj09TdTug==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/Cz7Xdl1uddOf0DIfDq7N4fv+6X+xo2p0H91n2DceIzFgE1Kb
- 1A51crIJoQuDixkP98l4qnqw9NR9B2I6TneNbgwlCK66rIoKzUpXsWn4vmZPb9VkwMA6WJVzYi9
- 3qtJkgfeiyI98+Sd5MUv4i3Eyvm88PYiQ+7adOcbCEQ==
-X-Gm-Gg: Acq92OFKhyxxy+BMiqG4ArboYO1mFeUiX7UL/gBkyve0x4ST+llTadllPsGhzgzpRL/
- /D+LtcDhrrkp4EfLjPu+i4q7L4O35QdRUa/mBpJDR6rIo/0gwKlbwj9NnepQ+tmg0G73eeYQQBt
- F5476iBczP+o1yuehVlTQ0By9xL9/J1uymXL7m5JPq3wqysfZMfUPYOPdnzuSEit0j8pCVq0njZ
- jZ5q8Tln/aEFqZXiBh7yU7gE/pakisV2HgApMWXO6c0xhc4f4M3O+qGrWNbUmE7ebw5wrpP+Tko
- 5siGRpBvzoKtvQCyU92nO9XbmFN1HL8gFeZ3VMCPh53h1jMBFizXAkmKrpolyrrtFpI=
-X-Received: by 2002:a53:d005:0:b0:65c:6f05:ae25 with SMTP id
- 956f58d0204a3-65e216d83d6mr2228597d50.30.1778832611887; Fri, 15 May 2026
- 01:10:11 -0700 (PDT)
+ AFNElJ8QCBmHKwc6b+4BTCrUeb0AUDy/ioehvYlv12gv2AZ8QkmtCaruKpvpjdUXtyehrm/5i6pmNCnSjg==@nongnu.org
+X-Gm-Message-State: AOJu0YxquwRQJghM4pMJJ79dq2+9yfwFN3GW4gN2LFzYIiwgaumbjYdE
+ cR6SuK5oNF0JVcVkWcG5rWm1Yb6cij27pPojopx4CNAmzn/Yay0QwhVC2mFQeWpUYz8uuxBVCij
+ Xr/r+sAmdIJN7/olJFEHfGHwHoJwXWSZK/tS2lCI6SwXpckw6hbiao5c=
+X-Gm-Gg: Acq92OEkiHwZ0cutS9byRMbLKFyVhlNESFjOQOa9z4TddjCdwooRAU0pc6GkkctFxZN
+ D8JEWeKF58BtkhLFb7YKpNMKU5SczWHXoCA5auIxaMVzKPJcrYRV4fm1+UA8OKMqn8enlVAIHJ6
+ fNMMhnYNYfNk7x297lfPHnhfT8XIWWzizjppeUKUU3ITqRzgtamOmm4LNvmwo+wG01kAvkWWOvC
+ Nb6F4Zt6kyj/yXc8Cg/eo9wo+d6mafiviznzGuzaw26UGp8ZBtHCMLY/+CEJMELcLny1gydnhNK
+ YpO9VAYXpVt/uH8Xti3llW6i6ADG65gOddaAZvsemcSoVFmeuYzGbs2eCTlSfNC3+Z8=
+X-Received: by 2002:a05:690e:4409:10b0:650:18fc:f557 with SMTP id
+ 956f58d0204a3-65e2285bec6mr2437951d50.56.1778832707833; Fri, 15 May 2026
+ 01:11:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260513105517.146706-1-corvin.koehne@gmail.com>
- <20260513105517.146706-16-corvin.koehne@gmail.com>
-In-Reply-To: <20260513105517.146706-16-corvin.koehne@gmail.com>
+ <20260513105517.146706-9-corvin.koehne@gmail.com>
+In-Reply-To: <20260513105517.146706-9-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 May 2026 09:10:00 +0100
-X-Gm-Features: AVHnY4LhsCS6ErLIDSYFXTu_d6loJrxsEyIId2t14nGsemNciIMXY7n1NSdyhgs
-Message-ID: <CAFEAcA8aLT4LQZ1HaQtduZeWm9w+62bDaXmLetbnJQHN3xq3jg@mail.gmail.com>
-Subject: Re: [PATCH v6 15/15] docs/system/arm: Add support for Beckhoff CX7200
+Date: Fri, 15 May 2026 09:11:36 +0100
+X-Gm-Features: AVHnY4In3s5nVTtvcAWbR1qVW2DMDAag6GjZGnCWkp1a5--5BW6TB4a8zQLv4bw
+Message-ID: <CAFEAcA8mESUEDOOizjppQtODoF9fj4p6JXe6zAnTiyEMFhJpbQ@mail.gmail.com>
+Subject: Re: [PATCH v6 08/15] hw/misc: Add dummy ZYNQ DDR controller
 To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, 
  Hanna Reitz <hreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
@@ -102,8 +102,8 @@ Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,19 +131,21 @@ rote:
 >
 > From: YannickV <Y.Vossen@beckhoff.com>
 >
-> This commit offers some documentation on the Beckhoff CX7200
-> qemu emulation.
+> A dummy DDR controller for ZYNQ has been added. While all registers are p=
+resent,
+> not all are functional. Read and write access is validated, and the user =
+mode
+> can be set. This provides a basic DDR controller initialization, preventi=
+ng
+> system hangs due to endless polling or similar issues.
 >
 > Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+> ---
 
-I had review comments on this patch too:
+Please address the code review comments from v5:
+
 https://patchew.org/QEMU/20251204093502.50582-1-corvin.koehne@gmail.com/202=
-51204093502.50582-16-corvin.koehne@gmail.com/
-
-Please don't just ignore code review and repost a series.
-If you disagree with the review or have a reason why you
-don't want to address it, that's fine -- we can have that
-discussion. But ignoring review silently is not a good idea.
+51204093502.50582-9-corvin.koehne@gmail.com/
 
 thanks
 -- PMM

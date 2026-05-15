@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38DEDCD343F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6068CD4F47
 	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:26:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtUk-0006ba-0C; Fri, 15 May 2026 10:26:30 -0400
+	id 1wNtUl-0006fS-9f; Fri, 15 May 2026 10:26:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNtUL-0005xU-D0
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:26:05 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1wNtUD-0005qo-PB
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:25:57 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNtUH-00010x-00
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:26:04 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-43d7645adbdso5105927f8f.1
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:25:56 -0700 (PDT)
+ id 1wNtU9-0000xi-BQ
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:25:56 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-448528f4e69so5312202f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:25:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778855156; x=1779459956; darn=nongnu.org;
+ d=linaro.org; s=google; t=1778855151; x=1779459951; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=sbEPi44KKLT30E1Ya7Xgq7lsZNIAggwXePt17au81Fc=;
- b=Y4rKCy4yMlvd3j9Pzz9hP55AuKtCx20xPo4/D3HUSetEqdRBMZDF7VudGwVUq41hQs
- HtKYNV3uIi6QRwATjm05FFYLxd7u3pQE0ljTM8H/Z+iG1X3rLxlkyeqHhsTiyMnYdsjR
- 2lNXYXfjRg8DYkFQLkqvFvvGg+ZcnO051sDjz54pv0rI6rUGkzrWoTiZbMNwr9lyxMmK
- NeDIFVDynYMAhvg1ztovqhhpTLkppTxwxYdK39eTmMk7Z0bF4X0/+jgIuJXvPoGX/sfl
- 4szHzC4IchEvtkdSx8bSZvAzHdCe2sqth23do0q1LT+K49sLJQaVdNuhemoSFf+XLOOU
- sIwA==
+ :reply-to; bh=dG4YbbQLzdn6s6+yCfVqlzQwYjjvxFEtdufrlxMzgL4=;
+ b=Uw9g5njR/dDRRoyiPO0XdzmZa+lG1znEV6c8pA/tAgkOTb4j0W827XR92BD3hfZtiN
+ o1/V7RME3zjLTyk630/S7agOfVbO2u+T5YIC6cY+blrziTMhEYMK8kHXr8tbiaydCzrK
+ BEifc4zXV4d+YyXGgWitkvXuTFXbLGPoczVm/IxEZ6tngbj7lxi2lFSUEpTI4ouh/Jx9
+ 8HXZ7llnbQZHKzq/Shm73auzJmt/oElrYq2zYnmy0vDwW2hsxpT921Wv7dZmmypy4VQ5
+ 8BdNijsB12D2kT92D9B9NDpV0SemeOnde/jEqWruwR7+PkDXBPTQwltBn74HbOghzzrr
+ 5qkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778855156; x=1779459956;
+ d=1e100.net; s=20251104; t=1778855151; x=1779459951;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=sbEPi44KKLT30E1Ya7Xgq7lsZNIAggwXePt17au81Fc=;
- b=J91dnIxib80fSeQoDjWr3kIZroSpc6HZkRzGl2gQGEo0bVyay5EwPm+QVtvUSz4T7l
- Hr4MWKZDu9kh+aRvLdYvrwZ6Bjdv15nEafK/iL/t91l5vTy/GzquQcSx0hE71wuJySZA
- a0NavuntP2n/1qYJ8X6FZMWZihiSdBtQJiyFsZrOhQeH8l91BIrFhJ1Gdj9q0pnMqhcI
- x9zaddvv1PbYP0h8liPfkNEla9fUenmME2G9Wrm9KYli+JISWycXzRlvXmoRZ4EcdaxC
- AyC9g4gVYq2WuC4I30nLzACS7D+iHaLrbZ3VZ5ju6Xhoy5AmFdEnCcSYTzrBIpUicqdM
- FRDQ==
-X-Gm-Message-State: AOJu0YylUY9k9KW9+NOLHIdSxvEDWx4fV5mb3qyytvA38lF8encxoF8/
- uRC3cBbxFdvX+uH0rqT0JYGY1YCe2y/oxfWnXYC/CRoRpFJA4+yQEtNl24HIO5U5xgSH7Tgyh/e
- IhdNt
-X-Gm-Gg: Acq92OEhlCumivsllM1qjRh+RsSU4qeWPpjyCxHxhzW3rB/I6XeVNZ8viegAmYwAbZx
- 8t1RnH5d2xBnzuanZtPN6C0oQGrYcZMKHGjQb+jx+oMw2ryS5jqxFXYjo26ULwUw+KJ1LHLz1Xo
- EEX8c/zkGCW95YjH/FxwxmFarIMIXRSrEmGsJFrhQlzfvIMkXgLvUeFety1U0Ai5nVxO0FAckfx
- vlmJwtMRrZ1sYCZI5iXzicIdx4IGlrF3ouRw3Y5I1ranJybPbpjEUdXfNAHe+6xhKodtJGrYzj6
- QijR6ul1VuE2bjqQHeObMZdJZ82MAzECKFL+gA/DHKA1fbCE2RcgShrncP0Ta6Rinc2j9tClN4i
- Oh0od4NUYvZJ4xSsoaeDJXtC6SbNqI3RKI5GSNYSdQeTW9U8C3LR/gJeQ/bqg4MP/INMf0P9dK4
- Bh/8+uM3iyePN3CBZFxjlXgqGGD2cJSAxar4tkPdlvB4bnDrXNuV3HA/3N8+cOdOxiNwPDb9u2E
- YrE1ahT/R8VI0i3eEdMXa+OCT4t/VX82zPjKBC5dg==
-X-Received: by 2002:a5d:5d10:0:b0:45a:dd7a:e33c with SMTP id
- ffacd0b85a97d-45e5c596c14mr5570592f8f.33.1778855155760; 
- Fri, 15 May 2026 07:25:55 -0700 (PDT)
+ bh=dG4YbbQLzdn6s6+yCfVqlzQwYjjvxFEtdufrlxMzgL4=;
+ b=L8Qy3Gyff5m47FEP77mWC9idclm992YlB2KR6HaC3WyAJZ0rH89ynrBWtGgAjctFtO
+ +hzothGWve0natVHgTlxvyT3ozLgE89Tx8YlLMtRniuSizvk3K07pYqkqa3dxMLONZ/d
+ 39elNHU0EvxGUpQdQEPWMiGch+pwBIIlg+xIYQTIB8YE6cZpNlG7/xRIKZfyi/8/JZOB
+ cE6AXRAmiJzxpMr+J0er4Mgs4nV3pRaAZdV6+0ieAsRDeJgYOqaeYGG9hmr++0DvuMAQ
+ k0xJorYYkUcXbWhuh/UB2oK1THv21EQu4YK1Ng2Q+qS1QqSO44bqKj+Aw05RxuVT1EZB
+ qLpg==
+X-Gm-Message-State: AOJu0YwNZ46WZ/RxmS03KKbYEdpHvUs/1qzzAPT7B23gTSpxlyi/CPr2
+ 3HEV/wg+n1ErWFfmWh9tiLvvybbLJSNO1Zy0S/kktbK9Ll7lWsjnvDiZHlTlwGeqVCfTXY8nkHl
+ 4qAl3
+X-Gm-Gg: Acq92OHy0YrW0CaFygvyFeta637UD1FIdB1Km0LKv/RXgPCj4QV+yBfQmwf+dHWwGtf
+ FPKDBU0m8UQD6mDuS7U4JMukJkg+QhOsMBx93UiIsniwUNqjey+CPcjKlejQGBojI/AW4MjVjPT
+ EbqxSmfmRL2gWngq1SF4WHpJKb6/eW/dUp2xwbAlMKOjsX1Nr8hw/7czCqD1f6lD3GWkQRSOhHE
+ 5VWqvrTpiJk8llrBi5ZYStueHgTae9XdWPR/jCuxU+WZpbu7PoBgoXtxIJ/9Wpyn8UCTIBSnyGJ
+ CKdJzEJk37hoQ+7y/J2hviyP8xF0C5ZlsNoCA/lRq3p6C8pvAlrJyumdzekS8fSYzoZYkQOUEAm
+ 3HH682NSmv4Wc2N8XVhxVQb9w1PQYGtrayJqqh846qvagRzMo5H7hr2+jyw+DbnwNY3mf9r3mkC
+ 63NH577QmyqdA21Fs8L6C63WOhsnI+HCmacyIfRDUhLjoSCCNGCHShwIAICa/G0UJTazkCrK8AL
+ e8j2ShHDjiXUSn1EN8YPcMULR1aCvE=
+X-Received: by 2002:a05:6000:1ace:b0:43d:775b:c9bd with SMTP id
+ ffacd0b85a97d-45e5c58906amr5815222f8f.10.1778855151388; 
+ Fri, 15 May 2026 07:25:51 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45da15a666fsm13560603f8f.36.2026.05.15.07.25.54
+ ffacd0b85a97d-45da15a666fsm13560603f8f.36.2026.05.15.07.25.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 May 2026 07:25:55 -0700 (PDT)
+ Fri, 15 May 2026 07:25:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [RFC PATCH 13/14] target/arm/ptw: Flip sense of get_phys_addr_for_at
+Subject: [RFC PATCH 08/14] target/arm/ptw: Flip sense of pmsav8_mpu_lookup
  return value
-Date: Fri, 15 May 2026 15:25:40 +0100
-Message-ID: <20260515142541.571911-14-peter.maydell@linaro.org>
+Date: Fri, 15 May 2026 15:25:35 +0100
+Message-ID: <20260515142541.571911-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260515142541.571911-1-peter.maydell@linaro.org>
 References: <20260515142541.571911-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,81 +103,57 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/internals.h     |  2 ++
- target/arm/ptw.c           |  2 +-
- target/arm/tcg/cpregs-at.c | 12 ++++++------
- 3 files changed, 9 insertions(+), 7 deletions(-)
+ target/arm/ptw.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 3edc15c7b4..7fd8312477 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1526,6 +1526,8 @@ bool get_phys_addr(CPUARMState *env, vaddr address,
-  *
-  * Similar to get_phys_addr, but for use by AccessType_AT, i.e.
-  * system instructions for address translation.
-+ *
-+ * Returns: false on translation failure, true on success.
-  */
- bool get_phys_addr_for_at(CPUARMState *env, vaddr address, unsigned prot_check,
-                           ARMMMUIdx mmu_idx, ARMSecuritySpace space,
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index ea036a541c..6a002c25e1 100644
+index 9e5a7e77c0..c89cccd431 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -3851,7 +3851,7 @@ bool get_phys_addr_for_at(CPUARMState *env, vaddr address,
-      * check is handled or bypassed by .in_prot_check) and "memop = MO_8"
-      * bypasses any alignment check.
+@@ -2844,6 +2844,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+      * If the region hit doesn't cover the entire TARGET_PAGE the address
+      * is within, then we set the result page_size to 1 to force the
+      * memory system to use a subpage.
++     * Return true on success, false on fault.
       */
--    return !get_phys_addr_nogpc(env, &ptw, address,
-+    return get_phys_addr_nogpc(env, &ptw, address,
-                                MMU_DATA_LOAD, MO_8, result, fi);
+     ARMCPU *cpu = env_archcpu(env);
+     bool is_user = regime_is_user(mmu_idx);
+@@ -2944,7 +2945,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+                 if (arm_feature(env, ARM_FEATURE_M)) {
+                     fi->level = 1;
+                 }
+-                return true;
++                return false;
+             }
+ 
+             matchregion = n;
+@@ -2958,7 +2959,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+         } else {
+             fi->type = ARMFault_Permission;
+         }
+-        return true;
++        return false;
+     }
+ 
+     if (matchregion == -1) {
+@@ -3020,7 +3021,7 @@ bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         fi->level = 1;
+     }
+-    return (prot_check & ~result->f.prot) != 0;
++    return (prot_check & ~result->f.prot) == 0;
  }
  
-diff --git a/target/arm/tcg/cpregs-at.c b/target/arm/tcg/cpregs-at.c
-index 53dd67375d..1c819c1cdb 100644
---- a/target/arm/tcg/cpregs-at.c
-+++ b/target/arm/tcg/cpregs-at.c
-@@ -31,17 +31,17 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-     bool format64 = false;
-     ARMMMUFaultInfo fi = {};
-     GetPhysAddrResult res = {};
--    bool ret = get_phys_addr_for_at(env, value, prot_check,
--                                    mmu_idx, ss, &res, &fi);
-+    bool ok = get_phys_addr_for_at(env, value, prot_check,
-+                                   mmu_idx, ss, &res, &fi);
+ static bool v8m_is_sau_exempt(CPUARMState *env,
+@@ -3222,7 +3223,7 @@ static bool get_phys_addr_pmsav8(CPUARMState *env,
+         }
+     }
  
+-    ret = !pmsav8_mpu_lookup(env, address, access_type, ptw->in_prot_check,
++    ret = pmsav8_mpu_lookup(env, address, access_type, ptw->in_prot_check,
+                             mmu_idx, secure, result, fi, NULL);
      /*
-      * ATS operations only do S1 or S1+S2 translations, so we never
-      * have to deal with the ARMCacheAttrs format for S2 only.
-      * (Note that res fields are only valid on ptw success.)
-      */
--    assert(ret || !res.cacheattrs.is_s2_format);
-+    assert(!ok || !res.cacheattrs.is_s2_format);
- 
--    if (ret) {
-+    if (!ok) {
-         /*
-          * Some kinds of translation fault must cause exceptions rather
-          * than being reported in the PAR.
-@@ -144,7 +144,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-     if (format64) {
-         /* Create a 64-bit PAR */
-         par64 = (1 << 11); /* LPAE bit always set */
--        if (!ret) {
-+        if (ok) {
-             par64 |= res.f.phys_addr & ~0xfffULL;
-             if (!res.f.attrs.secure) {
-                 par64 |= (1 << 9); /* NS */
-@@ -169,7 +169,7 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
-          * translation table format (with WnR always clear).
-          * Convert it to a 32-bit PAR.
-          */
--        if (!ret) {
-+        if (ok) {
-             /* We do not set any attribute bits in the PAR */
-             if (res.f.lg_page_size == 24
-                 && arm_feature(env, ARM_FEATURE_V7)) {
+      * For two-stage PMSA translations, s2prot holds the stage 2
 -- 
 2.43.0
 

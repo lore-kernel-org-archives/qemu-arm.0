@@ -4,100 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F249CD4F3D
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 07:58:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B59FCD4851
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 08:04:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNnRe-0005em-Ql; Fri, 15 May 2026 03:58:54 -0400
+	id 1wNnWG-0006rc-NK; Fri, 15 May 2026 04:03:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNnRc-0005Yw-OR
- for qemu-arm@nongnu.org; Fri, 15 May 2026 03:58:52 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ id 1wNnWC-0006qO-R4
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 04:03:37 -0400
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wNnRb-0008HP-84
- for qemu-arm@nongnu.org; Fri, 15 May 2026 03:58:52 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-65c396d3b36so11544090d50.0
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 00:58:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778831930; cv=none;
+ id 1wNnWB-0001K5-Ag
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 04:03:36 -0400
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-651b4d09141so1455209d50.1
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 01:03:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1778832214; cv=none;
  d=google.com; s=arc-20240605;
- b=Toh1D8XFII3yC7kOdY0bmSaGrqPpOaPr16S6PtU1PpRkr1w5EZMTvYxvFTVyQJmtc+
- qprMnGkH0komVqiFBUL4llRrqH10IyGZlkPkxHAHMFl+YhBZMi8t2/n4vbp8NkPx41Qu
- VsClT9nutjPaHIq19crsiWqn9SyXPb7OAmxeOFxJXjoYp9P90s6GTTXYpLpStApToatU
- T3xGDNp7g/eCHpgRMJ/B1oR72Zy2ORtcxhVYrnFbw7N4YM4zx5IIlGjoO5xMOIybmv8U
- /uZcDyp2yJPH2bu4VlzqlG9VacAN9s8a3ahc5b+jS4mJZJYT00xBdofj/N8ah9HbfYnH
- dHAQ==
+ b=loCasrKkPgdMKo6UZqbKKqPMYtU5GsplvDc4vWLcuc6F+1GBYvwGDfk/skegnKBBHR
+ 0DHrSDYesULwyOPjzWMcwSp+WepENbPmn+GIaIjgkCssWWfrKiJzI/ozWHoADp7lIJG1
+ KE9iJY7cn/1Kk/+Zhz0fzTv0XoQYPoeDxLyzIlZ4xIb5CdondvxGEH2Zc/vElFSSczX7
+ JctPiCIdIMJKF8wQbSl3yYj9tRXpXsWgSZHVcz+aTph0rinQIy0RFc55knU2aiIiLZ4Y
+ T5xBxb3FRG5YNcOnaIa1kjLQy+ajrE+B8SmD7ULdjPvt4GMgERiKmUbawsxb+e2NYJq3
+ heew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=aCWPdUf0X0iXViYYDjRF8om0aPEQZ7+tPs0RhD55C64=;
- fh=74rqlp/cOjSGKv19rRz3EC9s8AxtEGngZdZHMPd7Pvw=;
- b=IIEKw8sViRLIU9Ew4Q4dbLID0NjmUtc8Ck4filyMaNBmAKXjUonB1Garh1hkirmaoO
- BGdff6TbWBwcy/EPzmSrEoFE526XYbKbq1BdiquWRiW17YP7Tn3Qu8BYHs8+Io7rf3y+
- 4XRX+AY5Glu8Q/k8YfAKPreXC2X5U33yFtcRfJ9qZHrIkRpxNlSdVvLwUWYTW35aEsmw
- u37E1UYaeWYUDF1c/iF4/TOnD76Rc0jtRXZNzmlkPrL93vWl2Ui7KC8oXtLU1k2VR54f
- eTnen0/hosodQ41lWIiHNeA82cWAGSZuzhDB3qAEpLvkA7ohGc9KMPGx/fAhe5RxKuQs
- IixA==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=SCOyY7KDaMTThO3yLBJAEUbRwbm8BDSIF39YqyrR2Qo=;
+ fh=szV9ueHHpfDKA+H06WiyBCFdQDzNC7EMJlOpzek7KtM=;
+ b=kvokKOcEhUUxAvCSc5OFFcbEsL74Ar6c/a3yVi+GM+h5xSvS1mZTZK+qrnmfgIGJmD
+ w2dTEwg1aDY9x+WJALHdTnM5a5ljBSu2IyV+elJdjdKLnwNhotxCrt6sFTS9XDfBvjfb
+ nPo1oLrL0/+4RAQ36olrAwwSi8YrIHay0ORAlOcoQYqj/5HRWuY3UIDj5hxuoyMe4Ne+
+ yabOANGxD+7gbUidL8acuwLgsoSSqYFkDT930T1d/R66wvPLOQGN3vQhfLG+uCJzo2r/
+ FUgNvzUXDQnYNu8I1ATG8paRnfy/sm6WmKprhw9Gcc71HsQZj8s1jT8xZH8/BnisWkvo
+ ivSA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778831930; x=1779436730; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=aCWPdUf0X0iXViYYDjRF8om0aPEQZ7+tPs0RhD55C64=;
- b=bxSK66GiFHBYY/jt6IHL/Bqugw402vNwstDLDKTW0W4dNegkxQGPeKMyTOMdfi3Tu4
- OPD5MPHqYIv0ZvjSvTbeI52QpvlYqMrpK/x9WVX/tKylJ3pwqVYdMvBp62JsYlI/MX5D
- CVjCfItx4yRT3nesAn6pk/nJtTdSf4QFoDyrQsE/SjhzcW1dFWBqIsIa6kejUMfAjT1N
- 1M5btPXt0Xbhigcgs0NVMPviJvF947pYRoCu41jk8QH81tv4ZBVAPG7n83VZdhcRhyJa
- V1hOTj8h4e7yXzGwbaT4ta0Q0GHjaK1ilhReWJJfU60/thOPWjE43L8/ChZB1PSHcbv8
- ZT5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778831930; x=1779436730;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1778832214; x=1779437014; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aCWPdUf0X0iXViYYDjRF8om0aPEQZ7+tPs0RhD55C64=;
- b=hk+T3+rziYXs8KUavZkmi7VNnJociVPYdXFqWhUtV3afM8+TJBiNux7lKg+t5E1E+3
- /u8oQWz2ZYM3sGH+/XXXg3SKeTU64QGJmC2ALwCqcwc0/pv+htcF216drH3BZRFiTx2J
- yG2AcbVkTA6LXS03dve6fied+7Y/GhlYlM1fAT16sSS54pamYuRScDB1qva6jkT9JWp1
- Fgk6zvmkMEaB7vmYVxH71mXId4fStP+zkFvmu0v8crXefS5aKyY8JvkDQshTbN/gudp1
- 2wzNGEzpQQ9DZ775XYUa3j9RtaGjm/qUqv0kHG2/ceZsblJzur+7PLIvXBuL1u2vK2Yq
- Votg==
+ bh=SCOyY7KDaMTThO3yLBJAEUbRwbm8BDSIF39YqyrR2Qo=;
+ b=OD7QfoFkqwYTZx4cumwTTgeZ4aswjC7+3arD4OYkNk3FnUG5HRH8HgRck0g5iY8Mud
+ XJz5JAiDQ1tRLPpXTPmICofQWcYjU+1Nvs/st75Ph/SyLucSuy7TAz3bR++ox0A4iC7a
+ UMlgfUNIPgNQg529PV2kaQJIJ9fxI+nEN6nTJkSLSmc1UEzJEEsu3eUpMQgnKjiKPzk5
+ jLA6r8hQuuTrlNrUZEB1Z7G/KELWpk0uJP80I/KewdBIRPNadK6IISZRyFp9/LH0cOR2
+ S0e7NRIUuXeydJnFHUyPAOunNcBmYjMHvgOxkAcr/KeL492oJ7VTXz5zFXFtAdAWkG5Z
+ Ghxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778832214; x=1779437014;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=SCOyY7KDaMTThO3yLBJAEUbRwbm8BDSIF39YqyrR2Qo=;
+ b=eVQGgrQjdnI8ICycKGnIn3TzwAnEIG/k4PC557qzOCEYR1UidYd+7rOjBXUeaqPNC6
+ rfn+dDproJFkn0LUktXRc485v51VNvfEQVlCez6CBiSblmsDd4kZzP2C2vTj19JCrGDK
+ C/dMq+ppkLaVMYG3zvqU9rl9s7jVRBMhSa7xvVzrh9+7eJikNi0DCMumIZRcJeJJsmUK
+ slhSzpTe7uYxt9ieoj5v2vtq9DXNvntPJdpUnOcYxkShgeK4wfs0brKMmQLYBPs9iyf4
+ v+o3LyfEc9dyogjq/QQmIHZ4ayAEHRZE3Y77Bz2Uew8io6jufAeKqSczk5Np2xZ8qLcu
+ Shbw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+HPSnwgtf7ksHKLRKomR+q3u7SKOBdALf5nMpvtTVm+IgGp59A7vXf8RwQ2vUnrvC/NO/Y13sSYg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/qpeyZRCrT9y1QwDyjl07IhQGFmPOnTTmOUZsc8O6mM3MjL8k
- x0CUVIX9MHzN+kNDNZYuaetJ4b5pUpz7sQ8JYwdqLoIdH988K2x+nqmBCvbb1xc0TFB7zUVvYlE
- ixer6i0XA0gusdhcsJ2r6S4dWIZn8vEhhSkOBGvaRuA==
-X-Gm-Gg: Acq92OFUZ4ZWJfxMxTDLB8G4aH3g41Rg+liYBeyCp3shypsBShr8QwoRGdJRyCmVSUp
- ywDZNc+rdsG8R1nlDrR1ycBh/uxPOjKeN04sXwcUHHm6P5RxWFfsGTqqGzyk6EA8x2S07FlkqXz
- MggwPtz3E6dgZEzkr7C0PF2QS4I9XwBgcv8cCXtysq1FvRP/W8/TfuqL/muOCieFqr3nfSJJrVg
- GL6Bftdd7NU2C7XCOgHaA6HOmdrDEtB9nxxOUMSM8nMYdnGpIQ7ELsG75AXsvrVA4Zry4LfSWYl
- ACI/k9daNvsNJVSOSvpBs91CIPcz1VOD/DQ7zFqYADmkn3/VN8mgW5dPGzRYad05Ft4=
-X-Received: by 2002:a05:690e:4192:b0:651:c642:92a6 with SMTP id
- 956f58d0204a3-65e2276af55mr2483744d50.21.1778831929890; Fri, 15 May 2026
- 00:58:49 -0700 (PDT)
+ AFNElJ9VMjsP482rbKIc6edvkSWtipjYgLHfm/ae6R1LvWm39BR+kG837UH26IHmn1DHdL17XfUSvHM1+A==@nongnu.org
+X-Gm-Message-State: AOJu0YxyVEKKJDIT9ePoPOZGvNSFxvy5pmgRzcYUSJqYQ+uSxxKL0G4N
+ 8BuLA5hSrcdYIGqsWXXDZbjyVFRtFJ4gfl+EZamZvcSbpGi+UI89u+/12lab4WYXJdLq6r4Or6n
+ aedTIpEnsrvvjWAC8BavxY/R9tO9zJm7htkgAyIUOsQ==
+X-Gm-Gg: Acq92OFrsagJykcSNVyH1fJcPF0Fu9ZM+5EYxv4EmlhPlEgHKKQ9eqSgu+z35QJOCfZ
+ AELag3DDy8gMxA1HdQvWuN3oyBifHEtQWEl2fzFw8sT6CdzmIucR8PbBVkE5PLmh6tMlqKu7XPH
+ R29IWdypjhFxvNShSFLXOd9n8MoMCNzw5eqJ9eD0Ot7SeV4WWGwkrCY6OD/KpuOKiUCuu4cONSI
+ s84NvSDIdsdfeDeFFncNJa0eXycSJsLFeZUeEGbuu1s497lm/L6TKeMcrf/nd7uby/+JqxWlmNL
+ vjAkeJ1p5elPzE6nHHcJtHjUOjq+ihZ4bw5Vd6OW7p0o88UWpnev5L98tmPi0u4uUVc=
+X-Received: by 2002:a05:690e:150e:b0:65c:6220:5fd0 with SMTP id
+ 956f58d0204a3-65e214cf2f5mr2180435d50.8.1778832214063; Fri, 15 May 2026
+ 01:03:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260427232116.50586-1-scottjgo@gmail.com>
-In-Reply-To: <20260427232116.50586-1-scottjgo@gmail.com>
+References: <20260513105517.146706-1-corvin.koehne@gmail.com>
+In-Reply-To: <20260513105517.146706-1-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 May 2026 08:58:38 +0100
-X-Gm-Features: AVHnY4KkODd0CK1xC4rM8ECOFUrrGHLW2FhY5PEekLSGhg4ZO1_3B9Lqm13-vuM
-Message-ID: <CAFEAcA8_egumRiafxt88nFYBGgfAPaEW=1Gteei=4Mp+pimH2g@mail.gmail.com>
-Subject: Re: [PATCH 0/2] target/{arm,i386}/hvf: Fix HVF migration
-To: "Scott J. Goldman" <scottjgo@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Richard Henderson <richard.henderson@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Eric Auger <eric.auger@redhat.com>, "Scott J. Goldman" <scottjg@umich.edu>
+Date: Fri, 15 May 2026 09:03:21 +0100
+X-Gm-Features: AVHnY4IJGLtaKUKAAqETlMmv1N4v9lLsbYwbkqdBmbc9eYz-wD_Pxb5rfpoCaxg
+Message-ID: <CAFEAcA8KnmAONjnrzYRjeC5sFO+QLhgjgUx0n1apVk7CirzSxw@mail.gmail.com>
+Subject: Re: [PATCH v6 00/15] hw/arm: add Beckhoff CX7200 board
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org, 
+ Hanna Reitz <hreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,21 +125,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 28 Apr 2026 at 00:22, Scott J. Goldman <scottjgo@gmail.com> wrote:
+On Wed, 13 May 2026 at 11:55, Corvin K=C3=B6hne <corvin.koehne@gmail.com> w=
+rote:
 >
-> From: "Scott J. Goldman" <scottjg@umich.edu>
+> From: Corvin K=C3=B6hne <c.koehne@beckhoff.com>
 >
-> I've included two small HVF fixes that allow migration to work again.
-> I've only tested on ARM, but beforehand, starting the migration would
-> segfault immediately and now it works.
+> Hi,
 >
-> Scott J. Goldman (2):
->   target/arm/hvf, target/i386/hvf: Pass MR-relative offset to
->     memory_region_set_dirty()
->   target/arm/hvf: Stop pre-allocating cpreg_vmstate arrays
+> Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
+> platform. This commit series adds the Beckhoff CX7200 as new board varian=
+t to
+> QEMU.
+>
+> The emulation is able to successfully boot an CX7200 image. The image inc=
+ludes
+> some self tests executed on every boot. Only the cache self test fails du=
+e to
+> QEMU emulating the cache as always being coherent. The self tests include=
+ f.e.:
 
-It looks like patch 1 has already been picked up into git;
-I'm taking patch 2 into target-arm.next.
+I reviewed some of these patches in v5, and they haven't changed
+in v6, but you haven't carried across the Reviewed-by tags.
+Could you make sure you do that for any further respins, please?
+it makes it easier to see what still needs to be reviewed and what's new.
+
+For this version, I'll reply with the tags for the relevant patches.
 
 thanks
 -- PMM

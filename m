@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613B4CD4F47
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 16:32:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0E9CD4F47
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 16:33:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNvRd-0005rF-4P; Fri, 15 May 2026 12:31:25 -0400
+	id 1wNvRi-00064J-Lo; Fri, 15 May 2026 12:31:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wNvRN-0005eL-9X
- for qemu-arm@nongnu.org; Fri, 15 May 2026 12:31:13 -0400
-Received: from smtpout4.mo533.mail-out.ovh.net ([46.105.32.238])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wNvRg-0005yY-AK
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 12:31:28 -0400
+Received: from 5.mo533.mail-out.ovh.net ([54.36.140.180])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wNvRJ-00027U-UY
- for qemu-arm@nongnu.org; Fri, 15 May 2026 12:31:09 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gHCPJ1Jl1z5x4V;
- Fri, 15 May 2026 16:31:00 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <alexander.hansen@9elements.com>; Fri, 15 May 2026 16:31:00 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.128])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4gHCPH6sVzz7v41;
- Fri, 15 May 2026 16:30:59 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wNvRc-0002RX-Vn
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 12:31:28 -0400
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net [79.137.60.36])
+ by mo533.mail-out.ovh.net (Postfix) with ESMTPS id 4gHCPl1CkTz5wpN;
+ Fri, 15 May 2026 16:31:23 +0000 (UTC)
+Received: from director2.derp.mail-out.ovh.net
+ (director2.derp.mail-out.ovh.net. [127.0.0.1])
+ by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <alexander.hansen@9elements.com>; Fri, 15 May 2026 16:31:23 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.254.188])
+ by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4gHCPl0819z1xpG; Fri, 15 May 2026 16:31:23 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
  (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 905AC192358C; Fri, 15 May 2026 16:30:57 +0000 (UTC)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A7F8512E3598;
+ Fri, 15 May 2026 16:31:21 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-112S0063b2a4143-8bd1-4bf8-9a81-f26908497935,
+ (GARM-102R004aaf97d14-17fc-4e30-9f6a-eddfb572b3a5,
  EA554B2574883C805624521E1FD22DE9D7B94BA5) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 90.14.253.154
-Message-ID: <18bcf37a-29a6-436f-aa84-e5fd4d08a796@kaod.org>
-Date: Fri, 15 May 2026 18:30:56 +0200
+Message-ID: <5caa0cbb-1026-4b35-a439-7063a7f533f9@kaod.org>
+Date: Fri, 15 May 2026 18:31:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/5] ast2600: yosemite4 initial support
+Subject: Re: [PATCH v4 2/5] ast2600: yosemite4 functional test
 To: Alexander Hansen <alexander.hansen@9elements.com>, qemu-devel@nongnu.org
 Cc: Titus Rwantare <titusr@google.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -50,7 +50,7 @@ Cc: Titus Rwantare <titusr@google.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  qemu-arm@nongnu.org
 References: <20260515150610.381066-1-alexander.hansen@9elements.com>
- <20260515150610.381066-2-alexander.hansen@9elements.com>
+ <20260515150610.381066-3-alexander.hansen@9elements.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -95,30 +95,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260515150610.381066-2-alexander.hansen@9elements.com>
+In-Reply-To: <20260515150610.381066-3-alexander.hansen@9elements.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 5351120784617221131
+x-ovh-tracer-id: 5357876183776406539
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTESX7LLP6HJoy/mY35uOn0GAxlaohNKM2fWZsTuCrPUpFYuiTvHqbwAHOM1IwQqk3WkVHxLx8sNSlW4sHRnUL91/GDDni5l2DKPJo06yK4LZoURl2wlC1CXZuOWxpcxocZnPKoE1wxvRHlZSzSdB0JnksRO9a77PZP5a5LSWX9dUTZhd92HTm0DJad5ydn0hYQ/xFLC7m0S1DZviVZKsyDAYbc2DFZFUzQ9ScEd4NNfpAsEf1dqw2fCqAHmcGY0XUGw6Tz2X89EEH2wsGLL+/XK6ShOcXUls1uWxDrkg+qYa8rsqPKXJuDhC5llgjif77uOqOeRuLClq9073tDjXSQPrusskC3dfb0L2J1QlxvjxXduI0XH8GCtkSgsOyZeBuH8oXJBuNBPvU8OC99vx30fsMHlzT1AyH+b0BN5U8jW5moLTzWe5HTNaHHf1d+i96CbP8lPwLXbzPaR/d4CAU9cuMGcStOXIW9D4l9s9kTQmKNbLI82ld45befGxpIUKBgU7O4EhPNfYre7n7YlDFVJKJmwCICbsvYVlmbjn3ofLaL2ShuS38WY6dreZ+0/lgxTPlW9reV+AlL5cKvSi6AaL9WkHM7xR2F5QIfdsVthALt+WzCFBD4Ua+2xKwbulAXKc1oLC/gJfaLJ5xbOK38lpheZSE9Cr/LwCQtpawUxmw
-DKIM-Signature: a=rsa-sha256; bh=7fhVHrxk3Sv2lU2r+YeQbDyKhpe72/VIWvjADkWXdCA=; 
+X-VR-SPAMCAUSE: dmFkZTESX7LLP6HJoy/mY35uOn0GAxlaohNKM2fWZsTuCrPUpFYuiTvHqbwAHOM1IwQqk3WkVHxLx8sNSlW4sHRnUL91/GDDni5l2DKPJo06yK4LZoURl2wlC1CXZuOWxpcxocZnPKoE1wxvRHlZSzSdB0JnksRO9a77PZP5a5LSWX9dUTZhd92HTm0DJad5ydn0hYQ/xFLC7m0S1DZviVZKsyDAYbc2DFZFUzQ9ScEd4NNfpAsEf1dqw2fCqAHmcGY0XUGw6Tz2X89EEH2wsGLL+/XK6ShOcXUls1uWxDrkg+qYa8rsqPKXJuDhC5llgjif77uOqOeRuLClq9073tDjXSQPQzHYiqlsSmtJHe+voS0k8Qt1O8GZlVHoItpjrdUn+68vNgC8KGPy9Tpf6blQh5CldYL9YbC46dlwt90eFIOx+cCEyqiCAtgxR8+mcEjugppHcZUAy9bbq/XLC/rbTTvWF+mYDupP68RsF95J0CYgg+2Ija9/qxDzE2xsLDk1IZKuHJB1FCHIndFFTFp6AjtNEnf2oTiR/tA3i097AD10wm4jamuu/oEmDel0POe1zaY18pXNTdyxOAADr4lQbCYzvp4wYk9kKnE8KYuI9+e0yZv645dB10OVf2lwYY7YilYojsS0Eaq6GxZDlQDOjlQf3HruV7u+0chNuzgJptOtZQ
+DKIM-Signature: a=rsa-sha256; bh=7223dbm/lsnGZfFELJRzumyxlmnTx1n543xIz0XVVHU=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1778862661; v=1;
- b=s8fLbw8cZPD/zWo0uTb/c3G43wMSrbOpB7DdLbpad9SNwSNiByFm5POSzdWnY6C3bGR7i+oH
- c1IoSHrbfg3XSxaAZOGqFDYOP5ZVs1W9U+AxPELBfL1Lr7ucU0kfTev3j1iZfPfZF3rOzDj9s5Q
- DrgnnU4Ulpk3UQ0pMVFRVde5P4wy1lR1PpzmESFs22tmKRYhYifO1Y2KMAB1blVwAs2oLoRDJpc
- 0HLOwsaJIgNDBGvPC25Xm8fMQPMYMali2qb+/Ir1XyXDBtXNXsSresBQElx3zMFCgqaiD1PVCvu
- A23KckInxrm1JB+eAUNoVL1XBFNkZol2tBqxrKJ8hXqiQ==
-Received-SPF: pass client-ip=46.105.32.238; envelope-from=clg@kaod.org;
- helo=smtpout4.mo533.mail-out.ovh.net
+ t=1778862683; v=1;
+ b=TmdrDHXgeZ9m4jX6FgJprS7lwG7Hfkb4mqHjIK9dbVxXyt+GCqqR6lQwlfU5YaCHoV4qTqeF
+ ezlkI7ncBruHru7bt/ujQ3dGOCJQddQDQxZTSlk/Ib079lNTg+dbutmTjI0U+nclUOQ6PE4ATHJ
+ HNgu904TuG3w/iw+XwsAiZqxzn4fm4jnhzOpx4M/LQ41+lct3Y9v0cuex9hheaDXsEgwhu8PlbK
+ //tkKaVg5ZR77f/ge/Qj6/1hCwJWzF/XW2dYKvEiw3ep5SJ41Ety27f4NnPjBfn3YAm9LH2HHza
+ 8QRSGXqwMurjAVmdXnWdhcWk3+MRgWAjydmXv0+ODUTgA==
+Received-SPF: pass client-ip=54.36.140.180; envelope-from=clg@kaod.org;
+ helo=5.mo533.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,33 +135,12 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 5/15/26 16:57, Alexander Hansen wrote:
-> Initial patch based on [1] to support yosemite v4 bmc emulation.
+> Add a functional test for the Yosemite V4 (fby4-bmc) machine
+> that validates:
+> - U-Boot initialization and kernel boot sequence
 > 
-> The goal of this machine support is to support OpenBMC development.
-> 
-> Reference linux devicetree from openbmc linux is [2].
-> 
-> Status:
-> - Enclosure FRU:         showing up
-> - Management Board FRU:  showing up
-> - Blade Board FRU:       showing up
-> - Blade Board sensors:   not implemented
-> - Blade Chassis FRU:     showing up
-> - Fan Board FRU:         both showing up
-> - Fan Board sensors:     supported
-> 
-> Overall the emulation is incomplete but already helpful in development
-> and testing.
-> 
-> The focus of this initial support is on the FRU eeproms and fanboard
-> sensors.
-> 
-> Tested: booted an OpenBMC image for yosemite4 target.
-> 
-> References:
-> [1] https://github.com/9elements/qemu/commit/32139f913c2bd0ebe4bd26c46765861f6f9f2d49
-> [2] arch/arm/boot/dts/aspeed/aspeed-bmc-facebook-yosemite4.dts
-> [3] https://github.com/legoater/qemu-aspeed-boot/pull/5
+> The test uses an OpenBMC image built for the yosemite4 board and
+> validates console output through the boot process.
 > 
 > Cc: Titus Rwantare <titusr@google.com>
 > Cc: "Cédric Le Goater" <clg@kaod.org> (maintainer:ASPEED BMCs)
@@ -176,12 +155,82 @@ On 5/15/26 16:57, Alexander Hansen wrote:
 > Cc: qemu-devel@nongnu.org (open list:All patches CC here)
 > Signed-off-by: Alexander Hansen <alexander.hansen@9elements.com>
 > ---
->   hw/arm/aspeed_ast2600_fby4.c | 267 +++++++++++++++++++++++++++++++++++
->   hw/arm/meson.build           |   1 +
->   2 files changed, 268 insertions(+)
->   create mode 100644 hw/arm/aspeed_ast2600_fby4.c
+>   tests/functional/arm/meson.build         |  2 ++
+>   tests/functional/arm/test_aspeed_fby4.py | 44 ++++++++++++++++++++++++
+>   2 files changed, 46 insertions(+)
+>   create mode 100755 tests/functional/arm/test_aspeed_fby4.py
+> 
+> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+> index 2f538f29a2..10c0006f22 100644
+> --- a/tests/functional/arm/meson.build
+> +++ b/tests/functional/arm/meson.build
+> @@ -14,6 +14,7 @@ test_arm_timeouts = {
+>     'aspeed_ast2600_sdk_otp' : 720,
+>     'aspeed_bletchley' : 480,
+>     'aspeed_catalina' : 480,
+> +  'aspeed_fby4': 480,
+>     'aspeed_gb200nvl_bmc' : 480,
+>     'aspeed_rainier' : 480,
+>     'bpim2u' : 500,
+> @@ -47,6 +48,7 @@ tests_arm_system_thorough = [
+>     'aspeed_ast2600_sdk_otp',
+>     'aspeed_bletchley',
+>     'aspeed_catalina',
+> +  'aspeed_fby4',
+>     'aspeed_gb200nvl_bmc',
+>     'aspeed_rainier',
+>     'bpim2u',
+> diff --git a/tests/functional/arm/test_aspeed_fby4.py b/tests/functional/arm/test_aspeed_fby4.py
+> new file mode 100755
+> index 0000000000..a3124c240f
+> --- /dev/null
+> +++ b/tests/functional/arm/test_aspeed_fby4.py
+> @@ -0,0 +1,44 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots the ASPEED machines
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from qemu_test import Asset
+> +from aspeed import AspeedTest
+> +
+> +
+> +class YosemiteV4Machine(AspeedTest):
+> +
+> +    ASSET_YOSEMITE_V4_FLASH = Asset(
+> +        'https://github.com/legoater/qemu-aspeed-boot/raw/refs/heads/master/images/yosemite4-bmc/openbmc-20260505132843/obmc-phosphor-image-yosemite4-20260505132843.static.mtd.xz',
+> +        'dff6946363b41f952b15cfc3156482b89fcfc1b0ecfc3ec8b3ed496a5f001ef9')
+> +
+> +    def do_test_arm_aspeed_openbmc_no_network(self, machine, image, uboot,
+> +                                   cpu_id, soc):
+> +
+> +        self.set_machine(machine)
+> +        self.vm.set_console()
+> +        self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
+> +                         '-snapshot')
+> +        self.vm.launch()
+> +
+> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
+> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+> +        self.wait_for_console_pattern('Starting kernel ...')
+> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+> +        self.wait_for_console_pattern(f'ASPEED {soc}')
+> +        self.wait_for_console_pattern('/init as init process')
+> +        # yosemite v4 does not emit the hostname log which is
+> +        # different from the other machines.
+> +        self.wait_for_console_pattern('yosemite4 login:')
+> +
+> +    def test_arm_ast2600_yosemitev4_openbmc(self):
+> +        image_path = self.uncompress(self.ASSET_YOSEMITE_V4_FLASH)
+> +
+> +        self.do_test_arm_aspeed_openbmc_no_network('fby4-bmc', image=image_path,
+> +                                        uboot='2019.04', cpu_id='0xf00',
+> +                                        soc='AST2600 rev A3')
+> +
+> +if __name__ == '__main__':
+> +    AspeedTest.main()
 
-(Please add a cover letter)
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

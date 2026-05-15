@@ -4,108 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60685CD4F47
-	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:18:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A12FCD4F25
+	for <qemu-arm@archiver.kernel.org>; Fri, 15 May 2026 14:18:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wNtMl-0006aT-PH; Fri, 15 May 2026 10:18:19 -0400
+	id 1wNtH6-0007iO-7K; Fri, 15 May 2026 10:12:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtLu-0005kP-Os
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:17:30 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtH3-0007WU-Vx
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:12:22 -0400
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1wNtLr-0005wz-W3
- for qemu-arm@nongnu.org; Fri, 15 May 2026 10:17:22 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-48a563e4ef7so83704345e9.0
- for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:17:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1778854638; cv=none;
- d=google.com; s=arc-20240605;
- b=KR9ZZt+IJA0UbmqhVkyTN8G2dxzKdciWbqRI8IUDrJuxGsP7Bc5qTF3ECafTHdZXo9
- feLdql/A99Ff9XF1ricA5mLEmBU145Sjcy873iufEjxwLvxIPpwpzbikjD1db5U+LRhv
- usakSbqAbYp7U/W++NlnVX0z9DwxTfHj5QXBwYWL+1oIct4xMoka8oQ3YXw1I12FprYb
- uMzzkCl3ZdPkJLw80v9ZEwaJ8aBvttRu3gMBvy9PYHxsGI98A4oruoNhz4vTY9z0yCYV
- xin6RzwI5Ru9Sea1iqmry1KxrRZw4jcjKotQ0siiNgG8rz6nX/eIPj+WsgHFKYt/4ogt
- jwyA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=RpwF4bN9IyrPkq/1bQFEPnBnaxLa1OtsRvp4x+A6wU8=;
- fh=w9r1ZTK5a/B96Inlgt8Rt/FZ7ReiLsA/ZBX6sxIeeTs=;
- b=Mpyke5i2cUqg2fwTYwIWwrtLThGquDzE/ddMWSEswcIJuSSTdCxRSQKTnpfdMAsa9F
- uQGAzumLkYvLLgd0uphkXFZ3XVmA46amnNmva42aub5hBrr1lvrZzgi2y6MF+c7E2F+v
- QzpT0AG1+zeETqVcU4zBpJ7T2YL0TC0B1kT6RQIO3aWspn+lPy8LCrc9LAoyMHqdG2UD
- 8h+Nhpww+eNdswyoS7YUiXJwwwfemcmYp84XpLezk7JIxERSgJubFn0lFK60sKqFE18F
- B0d4HI70CBboD5HyMKLoONJ4CvaT+W/uMl9vmv+tfRSmZ5Q24Y2Ow3+AkQpfbVaTG1P7
- fZAA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wNtH2-0004GV-8Y
+ for qemu-arm@nongnu.org; Fri, 15 May 2026 10:12:21 -0400
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-44c350a5b87so5677172f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 15 May 2026 07:12:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1778854638; x=1779459438; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1778854338; x=1779459138; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RpwF4bN9IyrPkq/1bQFEPnBnaxLa1OtsRvp4x+A6wU8=;
- b=ZK4Nlr0pTINP14ONSFj1LO8nhdnFIAXTbnRrZXrFw6Hzp/xJfpjsGs0m02Kf2fVvrd
- onAt3U3E0qMSfoYMCe8kJzLMihSrtgT+E4FRLB9Kyvf79VsxWZkbEePOU6w6pU6W9Hug
- 7vNisO8QMDRIBSccK+8fRaLjY/voFDVb4Mnu3cYGmB3zavIonoAppQFh1+gaWTa7JQyG
- QEA4IX17jGrpPjQFW+cBc6c5DQh9QtjcjtO7KU/e/Nr0AtZdbEePIcj2MdgAnSj4AVzK
- M2VAR8CchS2YnjdjDdho5C1Amyp16el1Tkz8owMiH4xRtNhwYqYfz+XEK/QfHaMJjlWx
- iKFw==
+ bh=o4U8ZCCS2W/eS7opYuY30TphoIHkpy54aFpBL/IoRZY=;
+ b=UrpgxejORcUs/HmEPuamvghNO+9Fp0342gzrkr5FbmVhKW8MKPQ+sJB+MKdOZo9Ksk
+ lVwRGC6r8ztu7HBeVn/fTMqfs7ySPrRk5TdqyKPAEP7M6scguT85n/8IyKWgfIJIwHbe
+ qqq+rVbU7fKHZFIaQBQdnDqOh6Ls7YYZZ0IbnOzQA1PBxwBTe0Kw15ufhxN/ZX0WG5Az
+ YQOk5k/c3pinaBIw+gEo0p/erok6slqAgyfXHlXBCdWXiw2esNNS8s1EODfMq5AhjPyI
+ XEDYGJA4YkPGHdJC8E4Qqwd+wUBTf+B92zbwJsIVFEczAWwu6ohHDtj7DSp3f+wEf4DX
+ n4cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778854638; x=1779459438;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20251104; t=1778854338; x=1779459138;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=RpwF4bN9IyrPkq/1bQFEPnBnaxLa1OtsRvp4x+A6wU8=;
- b=RcVxSfUa5Hy762UAmYknm7fu/0m6IOkQex4r0giD186QtpOtT24rdc9QokTMSwpqwO
- z71SKe8AGgxx50XEZL/AFBG3jEBr1mPdiO//aI2BmOxHK2vowlO0tngHCX6uojN782eg
- LthnxU8bTd6sLdjsiYc1wTHqeoSI7uRH5IMh9jqPwaiJXnWqiIh/QRyMDXezq7uw13kS
- tSNgIMG5+jTAUfPPcULUovkuKHSlL0JJZEPMhSktjxs6szoyb02K6D9GfgcFjpT8ykaZ
- HcdVpxPGgGiUPrrg8NGwdPYoBU47Lt1AEDvSgFRgjrvUSjJ7MmOl5HwgGk5chD25d/5R
- K7hw==
+ bh=o4U8ZCCS2W/eS7opYuY30TphoIHkpy54aFpBL/IoRZY=;
+ b=Gah/qUWX4DsHU1S7G95erajQLWGjkXtITBrHSq4ysYwQriZ7K05/L7IFz9ezNu0TtE
+ kJHbXYSdkPzYn/g9Wrk8YVWz8m6+4kF3PL1my9mrqqEf1+CJhHUNU6/rNQaDzT0z8iiB
+ zMTKpxIHnzQIcmaXdwfYQ/4snQaBTs2PVIIoVngpOA/T6/VIYu1Tj45vM8Ue7eqbXBu2
+ HrbfjAKkqhRUhk/BnQn5zhAxdxDGewtgCd2v1xws/hM3YcNLWWHpsJWnRwAav9JxTysQ
+ OtqyNDC4Jhx7tKJhe6ob04MPmsPAPP9JCziBv6EOZ3v+PKkm8T1lCu3DXcAdECVnoq3f
+ aasA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8xdB1ntk5PHmRhT40V4S2of5qmLLn5TWu/1Pi+JvEMFvjwIWDxRK1D3icWq3h+68cNCObrSwZHZA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw5ldur5ok+Q6/TgVXLLGJqIVxz7xf4jd9OoL2WYGGaJRhXnamu
- Z378+INpn0SR1xewC3sWjBhnYdzc+cvPnAMuT0Wa5o8d9zjnDIPWf1BqCBoPj3xcd2ZAsOsUP74
- /vvPr2KMKXS833qSyzC1DN0akFmmmjMFD2zlV2RNfIQ==
-X-Gm-Gg: Acq92OHizWlpd+WCjcDW9b0NXMFOC03JjmpcYJbMxDw/TBpHk8mEFE4yQrCdpjaHxr6
- faOIxsflNMLylzDGassSapgwJFjIsTqLuDSs2Y1ap5bs9AOjsQ+JxHjChIbQTT3VRWo17Rz+m7v
- LtuX0eaRUY6v6yQGTFKsILSnOvo/McuyQrYz2p1UXpjdCxejk4MxDOSe0SOHbprbZR+TYmbbxZA
- wBE2V/tT4ihtn9W8MwZVhdxdkx5zpMgW7HX2/FoHg94MS/2sD2s/VDr1jOKVDKquMRhnZAxL0ay
- pKWwcjjzyBbfdZEe7nmGGvH04qmSotOCdMj6PaD+7S7MS5Axw2wewoSUHyCL
-X-Received: by 2002:a05:600c:3e1b:b0:486:fd5c:2b35 with SMTP id
- 5b1f17b1804b1-48fe60eccc3mr55950055e9.13.1778854638222; Fri, 15 May 2026
- 07:17:18 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260515141032.3271-1-philmd@linaro.org>
- <20260515141032.3271-7-philmd@linaro.org>
-In-Reply-To: <20260515141032.3271-7-philmd@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Fri, 15 May 2026 17:16:51 +0300
-X-Gm-Features: AVHnY4J7SapanDU5sGaXP6WITthqt-mdUGcPCtRE-bf2yeGZO9maOS-JQHCmEtU
-Message-ID: <CAAjaMXbiqcfhSoKHKJn5-+6XyTtOLd2OPb==HdYzC=qYxsuWpQ@mail.gmail.com>
-Subject: Re: [PATCH v6 06/20] hw/arm/meson: Remove now unused arm_ss[] source
- set
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
+ AFNElJ8JdA8tAIU+OrgLoGRArHqYcNldCbs2WHf+WegCd6g5TL6R8r/rr/ay6gwrEJbEDALsMLERVC3MCg==@nongnu.org
+X-Gm-Message-State: AOJu0YwdQ7xB3vcB5h3a3+yFTu+P8hzTXO06TmzDyto7ptc93mkwWyEG
+ KbNHoHoV5yVlSreEa4bDRdq9JhJiHPIc/vEc5kVkKQJg7F3vGr4WaeERiyzeeUadl7w=
+X-Gm-Gg: Acq92OHsJ8lCCtdeBpognjgzxCeWKgMhq+YGnJa+Gp9Gay8+zxWJZDajH91NVupXTxO
+ m6+hLeQDm2GIIsW62g1nVWXnLcktGCEN2MUYWmH3sVd/5MiZ579SKKqFqDJxbDDR63iKBR+auTk
+ CJPYyP/BnSXBYlBRt7mStWaDhaG183V525zkVYvw6cl8t29L4rplqLAvf0WGy1u8QFydlxWZ85v
+ dn9mMASbnPcJ0W6Zgs4TUNQBOe+I6uUtf8LBROCEydPbCAdcLannWS/i9UnbQsrNIZY4tV8EUeN
+ co6O0aHgCY8zTeYqa0aN6DffnnP2wGa0ovI4rd+evnche4AuSV2ycdgz5F84m4GgfidzrBwLxE9
+ tnjSJhXu8qxlSlIbOuqXW6tvSURjsq+LrDdOskWVdrLAktxC9mFjlcfgvp3zkhoPAmAfM/JGsEG
+ zS3twH5o6f/oAQNur9+LcoNPLV+nh+hdthr/WUr/I1+CA1nDb2aH6VSber2FatB5mLvL8QhCa+
+X-Received: by 2002:a5d:5f90:0:b0:45d:3cb0:5ab1 with SMTP id
+ ffacd0b85a97d-45e5c5f8424mr5697301f8f.38.1778854338158; 
+ Fri, 15 May 2026 07:12:18 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45d9ed30110sm16004845f8f.13.2026.05.15.07.12.16
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 15 May 2026 07:12:17 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Kane Chen <kane_chen@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, 
+ Troy Lee <leetroy@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32a.google.com
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [PATCH v6 14/20] target/arm: Implement DBGDEVID* registers in max
+ AArch32 CPU
+Date: Fri, 15 May 2026 16:10:25 +0200
+Message-ID: <20260515141032.3271-15-philmd@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260515141032.3271-1-philmd@linaro.org>
+References: <20260515141032.3271-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,36 +111,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, May 15, 2026 at 5:11=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
+32-bit ARM max CPU is a 'Cortex-A57 advertising none of the AArch64
+features'. Keep it as close as possible as the A57, by implementing
+the debug ID registers, following the changes in aarch64_a57_initfn
+added by commits 48eb3ae64b3 ("target-arm: Adjust debug ID registers
+per-CPU") and 09754ca867f ("target/arm: Implement AArch32 DBGDEVID,
+DBGDEVID1, DBGDEVID2").
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/tcg/cpu32.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
->  hw/arm/meson.build | 2 --
->  1 file changed, 2 deletions(-)
->
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 7c3d66f4378..88e7ad1a3ed 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -1,4 +1,3 @@
-> -arm_ss =3D ss.source_set()
->  arm_common_ss =3D ss.source_set()
->  arm_common_ss.add(when: 'CONFIG_ARM_VIRT', if_true: files('virt.c'))
->  arm_common_ss.add(when: 'CONFIG_ACPI', if_true: files('virt-acpi-build.c=
-'))
-> @@ -108,5 +107,4 @@ arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: f=
-iles('vexpress.c'))
->
->  arm_common_ss.add(files('boot.c'))
->
-> -hw_arch +=3D {'arm': arm_ss}
->  hw_common_arch +=3D {'arm': arm_common_ss}
-> --
-> 2.53.0
->
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index cf643ce43b1..2e8afc28602 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -755,6 +755,9 @@ static void arm_max_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR4, 0x00011142);
+     SET_IDREG(isar, ID_ISAR5, 0x00011121);
+     SET_IDREG(isar, ID_ISAR6, 0);
++    cpu->isar.dbgdidr = 0x3516d000;
++    cpu->isar.dbgdevid = 0x01110f13;
++    cpu->isar.dbgdevid1 = 0x2;
+     cpu->isar.reset_pmcr_el0 = 0x41013000;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+     /* 32KB L1 dcache */
+-- 
+2.53.0
+
 
